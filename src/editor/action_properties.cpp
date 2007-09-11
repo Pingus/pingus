@@ -23,21 +23,38 @@
 **  02111-1307, USA.
 */
 
+#include <iostream>
+#include <boost/bind.hpp>
+#include "gui_style.hpp"
+#include "checkbox.hpp"
+#include "pingu_enums.hpp"
+#include "inputbox.hpp"
 #include "action_properties.hpp"
 
 namespace Editor {
 
 /*
-
-ActionDialog: 
-[active] [Actionname] [count]
-...
-
+ *
+ * ActionDialog: 
+ * [active] [Actionname] [count]
+ *
  */
 ActionProperties::ActionProperties(EditorScreen* editor, const Rect& rect)
-: GroupComponent(rect)
+  : GroupComponent(rect),
+    y_pos(0)
 {
-
+  add_action(Actions::Basher);
+  add_action(Actions::Blocker);
+  add_action(Actions::Boarder);
+  add_action(Actions::Bomber);
+  add_action(Actions::Bridger);
+  add_action(Actions::Climber);
+  add_action(Actions::Digger);
+  add_action(Actions::Exiter);
+  add_action(Actions::Floater);
+  add_action(Actions::Jumper);
+  add_action(Actions::Miner);
+  add_action(Actions::Slider);
 }
 
 ActionProperties::~ActionProperties()
@@ -45,14 +62,44 @@ ActionProperties::~ActionProperties()
 }
 
 void
-ActionProperties::draw(DrawingContext& gc)
+ActionProperties::draw_background(DrawingContext& gc)
 {
+  GUIStyle::draw_raised_box(gc, Rect(0,0,rect.get_width(), rect.get_height()));
 }
 
 void
 ActionProperties::update (float delta)
 {
   
+}
+
+void
+ActionProperties::add_action(Actions::ActionName id)
+{
+  Checkbox* checkbox = new Checkbox(Rect(Vector2i(10,10 + y_pos), Size(80,20)), Actions::action_to_string(id));
+  Inputbox* inputbox = new Inputbox(Rect(Vector2i(100,10 + y_pos), Size(40,20)));
+
+  inputbox->set_text("20");
+ 
+  add(checkbox, true);
+  add(inputbox, true);
+  
+  checkbox->on_change.connect(boost::bind(&ActionProperties::on_checkbox_change, this, _1, id));
+  inputbox->on_change.connect(boost::bind(&ActionProperties::on_inputbox_change, this, _1, id));
+
+  y_pos += 22;
+}
+
+void
+ActionProperties::on_checkbox_change(bool t, Actions::ActionName id)
+{
+  std::cout << "ActionProperties::on_checkbox_change: " << id << " " << t << std::endl;
+}
+
+void
+ActionProperties::on_inputbox_change(const std::string& value, Actions::ActionName id)
+{
+  std::cout << "ActionProperties::on_inputbox_change: " << id << " " << value << std::endl;
 }
 
 } // namespace Editor

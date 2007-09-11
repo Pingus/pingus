@@ -37,6 +37,8 @@ class Panel;
 class EditorViewport;
 class ObjectSelector;
 class ObjectProperties;
+class ActionProperties;
+class LevelProperties;
 
 /** This class is the screen that contains all of the
     editor objects */
@@ -49,6 +51,8 @@ private:
   EditorViewport*   viewport;
   ObjectSelector*   object_selector;
   ObjectProperties* object_properties;
+  ActionProperties* action_properties;
+  LevelProperties*  level_properties;
   FileLoadDialog*   file_load_dialog;
   
   bool show_help;
@@ -104,10 +108,6 @@ public:
   void level_save_as();
   void level_play();
 
-  void show_level_properties();
-  void show_action_properties();
-  void show_object_properties();
-
   void objects_delete();
 
   void objects_raise_to_top();
@@ -124,6 +124,10 @@ public:
   void toggle_grid_snap();
 
   void toggle_object_selector();
+
+  void toggle_object_properties();
+  void toggle_action_properties();
+  void toggle_level_properties();
 
   void toggle_help();
 

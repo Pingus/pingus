@@ -23,6 +23,7 @@
 **  02111-1307, USA.
 */
 
+#include <iostream>
 #include "group_component.hpp"
 
 namespace GUI {
@@ -31,7 +32,8 @@ GroupComponent::GroupComponent(const Rect& rect, bool clip)
   : RectComponent(rect),
     drawing_context(rect, clip),
     mouse_over_comp(0),
-    press_over_comp(0)
+    press_over_comp(0),
+    focused_comp(0)
 {
 }
 
@@ -65,7 +67,11 @@ GroupComponent::update (float delta)
     }
 }
 
-bool is_at (int x, int y);
+bool
+GroupComponent::is_at (int x, int y)
+{
+  return (RectComponent::is_at(x,y) || component_at(drawing_context.screen_to_world(Vector2i(x, y))));
+}
 
 void
 GroupComponent::on_primary_button_press (int x, int y)
@@ -73,7 +79,17 @@ GroupComponent::on_primary_button_press (int x, int y)
   Vector2i mouse_pos = drawing_context.screen_to_world(Vector2i(x, y));
   Component* comp = component_at(mouse_pos);
   if (comp)
-    comp->on_primary_button_press(mouse_pos.x, mouse_pos.y);
+    {
+      comp->on_primary_button_press(mouse_pos.x, mouse_pos.y);
+      
+      if (focused_comp)
+        focused_comp->set_focus(false);
+
+      focused_comp = comp;
+
+      if (focused_comp)
+        focused_comp->set_focus(true);
+    }
   
   press_over_comp = comp;
 }
@@ -120,6 +136,17 @@ GroupComponent::on_secondary_button_release (int x, int y)
 }
 
 void
+GroupComponent::on_key_pressed(const unsigned short c)
+{
+  std::cout << "GroupComponent: " << int(c) << std::endl;
+
+  if (focused_comp)
+    focused_comp->on_key_pressed(c);
+  else if (mouse_over_comp)
+    mouse_over_comp->on_key_pressed(c);
+}
+
+void
 GroupComponent::on_pointer_move(int x, int y)
 {
   Vector2i mouse_pos = drawing_context.screen_to_world(Vector2i(x, y));
@@ -139,12 +166,6 @@ GroupComponent::on_pointer_move(int x, int y)
     }
 
   mouse_over_comp = comp;
-}
-
-void
-GroupComponent::on_key_pressed(const unsigned short c)
-{
-  
 }
 
 Component*

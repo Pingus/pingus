@@ -227,11 +227,18 @@ EditorViewport::on_pointer_move(int x_, int y_)
     }
 }
 
+void
+EditorViewport::on_key_pressed(const unsigned short c)
+{
+  std::cout << "EditorViewport::on_key_pressed: " << int(c) << " " << c << std::endl;
+}
+
 // Draws all of the objects in the viewport and the background (if any)
 void
 EditorViewport::draw(DrawingContext &gc)
 {
   drawing_context->clear();
+  drawing_context->fill_screen(Color(255,0,255));
   state.push(*drawing_context);
 	
   // Draw the level objects

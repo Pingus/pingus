@@ -26,6 +26,7 @@
 #ifndef HEADER_ACTION_PROPERTIES_HPP
 #define HEADER_ACTION_PROPERTIES_HPP
 
+#include "pingu_enums.hpp"
 #include "gui/group_component.hpp"
 
 namespace Editor {
@@ -33,18 +34,23 @@ namespace Editor {
 class EditorScreen;
 
 /** */
-class ActionProperties : GUI::GroupComponent
+class ActionProperties : public GUI::GroupComponent
 {
 private:
   EditorScreen* editor;
+  int y_pos;
 
 public:
   ActionProperties(EditorScreen* editor, const Rect& rect);
   ~ActionProperties();
 
-  void draw (DrawingContext& gc);
+  void draw_background(DrawingContext& gc);
   void update (float delta); 
+  
+  void add_action(Actions::ActionName id);
 
+  void on_checkbox_change(bool t, Actions::ActionName id);
+  void on_inputbox_change(const std::string& str, Actions::ActionName id);
 private:
   ActionProperties (const ActionProperties&);
   ActionProperties& operator= (const ActionProperties&);

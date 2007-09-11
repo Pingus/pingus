@@ -29,6 +29,7 @@ class EditorScreen;
 class Combobox;
 class ComboItem;
 class Checkbox;
+class Inputbox;
 
 /** */
 class ObjectProperties : public GUI::GroupComponent
@@ -47,6 +48,12 @@ private:
 
   Checkbox* stretch_x_checkbox;
   Checkbox* stretch_y_checkbox;
+  
+  Label*    para_x_label;
+  Inputbox* para_x_inputbox;
+
+  Label*    para_y_label;
+  Inputbox* para_y_inputbox;
 
 public:
   ObjectProperties(EditorScreen* editor, const Rect& rect);

@@ -201,7 +201,7 @@ GUIManager::process_button_event (unsigned int time_stamp, const Input::ButtonEv
       if (event.name == PRIMARY_BUTTON && event.state == Input::BUTTON_PRESSED)
 	{
 	  primary_pressed_component = comp;
-		change_focussed_comp(comp);
+          change_focussed_comp(comp);
 	  comp->on_primary_button_press (x_pos, y_pos);
 
           // FIXME: add double click detection here
@@ -241,7 +241,7 @@ GUIManager::process_button_event (unsigned int time_stamp, const Input::ButtonEv
       if (event.name == SECONDARY_BUTTON && event.state == Input::BUTTON_PRESSED)
 	{
 	  secondary_pressed_component = comp;
-		change_focussed_comp(comp);
+          change_focussed_comp(comp);
 	  comp->on_secondary_button_press (x_pos, y_pos);
 	}
       else if (event.name == SECONDARY_BUTTON && event.state == Input::BUTTON_RELEASED)
@@ -291,19 +291,21 @@ GUIManager::process_button_event (unsigned int time_stamp, const Input::ButtonEv
 void 
 GUIManager::process_keyboard_event (const Input::KeyboardEvent &event)
 {
-	// Pass key value to last pressed component.
-	if (focussed_component)
-		focussed_component->on_key_pressed(event.key);
+  // Pass key value to last pressed component.
+  if (focussed_component)
+    focussed_component->on_key_pressed(event.key);
 }
 
 void
 GUIManager::change_focussed_comp(Component* c)
 {
-	if (focussed_component)
-		focussed_component->set_focus(false);
-	focussed_component = c;
-	if (focussed_component)
-		focussed_component->set_focus(true);
+  if (focussed_component)
+    focussed_component->set_focus(false);
+
+  focussed_component = c;
+
+  if (focussed_component)
+    focussed_component->set_focus(true);
 }
 
 

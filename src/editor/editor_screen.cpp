@@ -42,6 +42,8 @@
 #include "level_objs.hpp"
 #include "object_selector.hpp"
 #include "object_properties.hpp"
+#include "action_properties.hpp"
+#include "level_properties.hpp"
 
 namespace Editor {
 
@@ -60,9 +62,12 @@ EditorScreen::EditorScreen()
   // Create the panel for the buttons
   panel = new Panel(this);
 
-  object_selector = new ObjectSelector(this);
-  object_properties = new ObjectProperties(this, Rect(Vector2i(0,440), Size(240, 160)));
+  object_selector   = new ObjectSelector(this);
+
+  object_properties = new ObjectProperties(this, Rect(Vector2i(0,400), Size(240, 200)));
   gui_manager->add(object_properties, true);
+
+
   file_load_dialog = new FileLoadDialog(this, Rect(Vector2i(50, 50), 
                                                    Size(Display::get_width() - 100, 
                                                         Display::get_height() - 100)));
@@ -71,6 +76,14 @@ EditorScreen::EditorScreen()
   gui_manager->add(file_load_dialog, true);
 
   viewport->selection_changed.connect(boost::bind(&ObjectProperties::set_objects, object_properties, _1));
+
+  action_properties = new ActionProperties(this, Rect(Vector2i(0, 38), Size(150, 284)));
+  action_properties->hide();
+  gui_manager->add(action_properties, true);
+
+  level_properties = new LevelProperties(this, Rect(Vector2i(0,38), Size(Display::get_width()-244,280)));
+  level_properties->hide();
+  gui_manager->add(level_properties, true);
 }
 
 // Destructor
@@ -113,17 +126,22 @@ bool
 EditorScreen::draw(DrawingContext& gc)
 {
   // Black out screen
-  gc.fill_screen(Color(255,0,255));
+  //gc.fill_screen(Color(255,0,255)); // FIXME: Could be removed for added speed
   gui_manager->draw(gc);
   
   if (show_help)
     {
       Size size(600, 400);
+      gc.draw_fillrect(int(gc.get_width()/2)  - size.width/2 - 2,
+                       int(gc.get_height()/2) - size.height/2 - 2,
+                       int(gc.get_width()/2)  + size.width/2 + 2,
+                       int(gc.get_height()/2) + size.height/2 + 2,
+                       Color(0,0,0));
       gc.draw_fillrect(int(gc.get_width()/2)  - size.width/2, 
                        int(gc.get_height()/2) - size.height/2,
                        int(gc.get_width()/2)  + size.width/2, 
                        int(gc.get_height()/2) + size.height/2,
-                       Color(0,0,0));
+                       Color(255,255,255));
       
       gc.print_center(Fonts::verdana11,
                       int(gc.get_width()/2),
@@ -228,24 +246,6 @@ EditorScreen::level_play()
 }
 
 void 
-EditorScreen::show_level_properties()
-{
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
-}
-
-void 
-EditorScreen::show_action_properties()
-{
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
-}
-
-void 
-EditorScreen::show_object_properties()
-{
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
-}
-
-void 
 EditorScreen::objects_delete()
 {
   viewport->delete_selected_objects();
@@ -309,13 +309,44 @@ EditorScreen::toggle_grid_snap()
 void 
 EditorScreen::toggle_object_selector()
 {
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+  // need trigger a relayout
+  if (object_selector->is_visible())
+    object_selector->hide();
+  else
+    object_selector->show();
 }
 
 void 
 EditorScreen::toggle_help()
 {
   show_help = !show_help;
+}
+
+void
+EditorScreen::toggle_object_properties()
+{
+  if (object_properties->is_visible())
+    object_properties->hide();
+  else
+    object_properties->show();  
+}
+
+void
+EditorScreen::toggle_action_properties()
+{
+  if (action_properties->is_visible())
+    action_properties->hide();
+  else
+    action_properties->show();
+}
+
+void
+EditorScreen::toggle_level_properties()
+{
+  if (level_properties->is_visible())
+    level_properties->hide();
+  else
+    level_properties->show();
 }
 
 void

@@ -42,8 +42,15 @@ public:
   LevelProperties(EditorScreen* editor, const Rect& rect);
   ~LevelProperties();
 
-  void draw (DrawingContext& gc);
+  void draw_background (DrawingContext& gc);
   void update (float delta); 
+
+  void on_author_change(const std::string& str);
+  void on_levelname_change(const std::string& str);
+  void on_description_change(const std::string& str);
+
+  void on_width_change(const std::string& str);
+  void on_height_change(const std::string& str);
 
 private:
   LevelProperties (const LevelProperties&);

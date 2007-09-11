@@ -163,11 +163,13 @@ Panel::Panel(EditorScreen* editor_)
              &EditorScreen::level_play);
   add_separator();
   add_button("core/editor/actions", "Configure actions", 
-             &EditorScreen::show_action_properties);
+             &EditorScreen::toggle_action_properties);
   add_button("core/editor/document-properties", "Configure level", 
-             &EditorScreen::show_level_properties);
+             &EditorScreen::toggle_level_properties);
   add_button("core/editor/object-properties", "Display object properties", 
-             &EditorScreen::show_object_properties);
+             &EditorScreen::toggle_object_properties);
+  add_button("core/editor/objects", "Show object insertion window", 
+             &EditorScreen::toggle_object_selector);
   add_separator();
   add_button("core/editor/delete", "Delete the selected objects", 
              &EditorScreen::objects_delete);
@@ -193,8 +195,6 @@ Panel::Panel(EditorScreen* editor_)
   add_separator();
   //add_button("core/editor/snap-grid", "Snap objects to grid", 
   //             &EditorScreen::toggle_grid_snap);
-  add_button("core/editor/objects", "Show object insertion window", 
-             &EditorScreen::toggle_object_selector);
   add_separator();
   add_button("core/editor/help", "Display help", 
              &EditorScreen::toggle_help);

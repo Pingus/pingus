@@ -26,6 +26,7 @@
 #include "gui_style.hpp"
 #include "groundtype.hpp"
 #include "combobox.hpp"
+#include "inputbox.hpp"
 #include "checkbox.hpp"
 #include "object_properties.hpp"
 
@@ -68,6 +69,15 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
 
   stretch_x_checkbox->on_change.connect(boost::bind(&ObjectProperties::on_stretch_x_change, this, _1));
   stretch_y_checkbox->on_change.connect(boost::bind(&ObjectProperties::on_stretch_y_change, this, _1));
+
+  add(para_x_label = new Label(Rect(Vector2i(10, 120), Size(80,20)), "Para-X"), true);
+  add(para_y_label = new Label(Rect(Vector2i(10, 150), Size(80,20)), "Para-Y"), true);
+
+  add(para_x_inputbox = new Inputbox(Rect(Vector2i(60, 120), Size(80,20))), true);
+  add(para_y_inputbox = new Inputbox(Rect(Vector2i(60, 150), Size(80,20))), true);
+
+  para_x_inputbox->set_text("Hello");
+  para_y_inputbox->set_text("World");
  
   if (0)
     {

@@ -40,6 +40,7 @@ private:
   DrawingContext drawing_context;
   Component*     mouse_over_comp;
   Component*     press_over_comp;
+  Component*     focused_comp;
   
 public:
   GroupComponent(const Rect& rect, bool clip = true);
@@ -59,16 +60,18 @@ public:
   void on_primary_button_click(int x, int y) {}
   void on_secondary_button_click(int x, int y) {}
 
+  void on_key_pressed(const unsigned short c);
+
   void on_pointer_enter() {}
   void on_pointer_leave() {}
 
   void on_pointer_move(int x, int y);
 
-  void on_key_pressed(const unsigned short c);
-
   void add(Component*, bool delete_comp);
 
   void update_layout();
+
+  bool is_at(int x, int y);
 
   Component* component_at (const Vector2i& pos);
 private:
