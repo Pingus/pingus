@@ -78,8 +78,6 @@ Important:
 
 - enable default fullscreen for release
 
-- fix level loading from command line
-
 - add some SConscript checks (for compiler missing)
 
 - fix graphic gliches caused by all Sprites being optimized (some
@@ -95,7 +93,7 @@ Important:
 
 - action-axis doesn't handle analog (do we even need this or could we do with axis-button?)
 
-- fix memory leaks in input2/ (Controller doesn't clean up)
+- fix memory leaks in input/ (Controller doesn't clean up)
 
 - menu crashes when you click a little wildely
 
@@ -106,6 +104,8 @@ Font: datadir://images/fonts/courier_small-iso-8859-9.png
   Error: glyphs found: 188, expected 189
   Format: bpp: 32
 
+- remove SceneContext from Credits, replace with DrawingContext
+
 Editor:
 =======
 
@@ -114,12 +114,8 @@ Editor:
 
 - fix align of exits
 
-- remove SceneContext from Credits, replace with DrawingContext
-
-- maybe have a scrollbar
-
-- add working scrolling to filedialog
 - add icons to filedialog
+
 - add options to show/hide hidden files and filter stuff
 
 - implement grab/ungrab input
@@ -128,10 +124,6 @@ Dialogs:
 
 Editor Properties:
 user name and email
-
-Load/Save are modal: 
-
-Levelproperties, Editorproperties, ActionDialog don't have to
 
 Nice to Have:
 =============
