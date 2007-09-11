@@ -67,6 +67,13 @@ Roadmap for Pingus 0.7.1
 Important:
 ==========
 
+- create verdana11 for latin2 and latin9
+
+- do we need z-pos for anything or does implicit object position serve
+  the same purpose?
+
+- object raising doesn't work for group
+
 - update ChangeLog
 
 - enable default fullscreen for release
@@ -105,54 +112,24 @@ Editor:
 - testing a game in the editor results in insanely fast speed (FPS
   handling likely still broken and wasting CPU)
 
-- add sidebar to select objects
-
 - fix align of exits
 
-- object selector: 48x48 tumbnails, keep aspect when possible, 
-types of objects:  13+ object types
-
-48 * 5 = 240
-30 * 8 = 240
+- remove SceneContext from Credits, replace with DrawingContext
 
 - maybe have a scrollbar
 
-Groundpiece (ground)
-Groundpiece (solid)
-Groundpiece (bridge)
-Groundpiece (transparent)
-Groundpiece (remove)
+- add working scrolling to filedialog
+- add icons to filedialog
+- add options to show/hide hidden files and filter stuff
 
-Hotspot
-Entrance
-Exit
-Liquid
-
-Special Objects
-Traps
-
-Weather
-
-Backgrounds
+- implement grab/ungrab input
 
 Dialogs:
-
-ActionDialog: 
-[active] [Actionname] [count]
-...
-
-Level Properties:
-Levelname, Description, Author, 
-Number of Pingus, Time, Pingus to Save,
-Width, Height, (could be handled elsewhere)
-Difficulty
-Comment
-Playable (unneeded)
 
 Editor Properties:
 user name and email
 
-Load/Save are modal
+Load/Save are modal: 
 
 Levelproperties, Editorproperties, ActionDialog don't have to
 
