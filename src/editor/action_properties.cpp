@@ -27,6 +27,7 @@
 #include <boost/bind.hpp>
 #include "gui_style.hpp"
 #include "checkbox.hpp"
+#include "editor_level.hpp"
 #include "pingu_enums.hpp"
 #include "inputbox.hpp"
 #include "action_properties.hpp"
@@ -91,6 +92,12 @@ ActionProperties::add_action(Actions::ActionName id)
 }
 
 void
+ActionProperties::set_level(EditorLevel* level_)
+{
+  level = level_;
+}
+
+void
 ActionProperties::on_checkbox_change(bool t, Actions::ActionName id)
 {
   std::cout << "ActionProperties::on_checkbox_change: " << id << " " << t << std::endl;
@@ -101,6 +108,7 @@ ActionProperties::on_inputbox_change(const std::string& value, Actions::ActionNa
 {
   std::cout << "ActionProperties::on_inputbox_change: " << id << " " << value << std::endl;
 }
+
 
 } // namespace Editor
 

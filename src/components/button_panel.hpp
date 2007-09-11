@@ -39,15 +39,11 @@ private:
   typedef std::vector<ActionButton*>::iterator AButtonIter;
   int pressed_button;
 
-  int  armageddon_pressed;
-
   bool left_pressed;
   unsigned int  last_press;
 
   int x_pos, y_pos;
 
-  ////CL_Slot wheel_slot;
-  ////void on_wheel_move(const CL_InputEvent& key);
 public:
   ButtonPanel(Client* c, int arg_x_pos, int arg_y_pos);
   virtual ~ButtonPanel();

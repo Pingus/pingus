@@ -103,7 +103,8 @@ bool EditorLevel::save_level(const std::string& filename)
   for (std::map<std::string, int>::const_iterator i = impl->actions.begin();
        i != impl->actions.end(); i++)
     {
-      fw.write_int(i->first.c_str(), i->second);
+      if (i->second > 0)
+        fw.write_int(i->first.c_str(), i->second);
     }
   fw.end_section();	// actions
 
@@ -251,6 +252,78 @@ void
 EditorLevel::add_object(LevelObj* obj)
 {
   impl->objects.push_back(obj);
+}
+
+void
+EditorLevel::set_description(const std::string& str)
+{
+  impl->description = str;
+}
+
+void
+EditorLevel::set_levelname(const std::string& str)
+{
+  impl->levelname = str;
+}
+
+void
+EditorLevel::set_author(const std::string& str)
+{
+  impl->author = str;
+}
+
+std::string
+EditorLevel::get_description() const
+{
+  return impl->description;
+}
+
+std::string
+EditorLevel::get_levelname() const
+{
+  return impl->levelname;
+}
+
+std::string
+EditorLevel::get_author() const
+{
+  return impl->author;
+}
+
+int
+EditorLevel::get_number_of_pingus() const
+{
+  return impl->number_of_pingus;
+}
+
+int
+EditorLevel::get_number_to_save() const
+{
+  return impl->number_to_save;
+}
+
+void
+EditorLevel::set_number_of_pingus(int i)
+{
+  impl->number_of_pingus = i;
+}
+
+void
+EditorLevel::set_number_to_save(int i)
+{
+  impl->number_to_save = i;
+}
+
+void
+EditorLevel::set_action(const std::string& actionname, int count)
+{
+  impl->actions[actionname] = count;
+}
+
+std::map<std::string, int>
+EditorLevel::get_actions() const
+{
+  return impl->actions;
 }
 
 } // namespace Editor

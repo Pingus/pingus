@@ -36,7 +36,6 @@ struct action_sorter {
 ButtonPanel::ButtonPanel(Client* c, int arg_x_pos, int arg_y_pos)
   : client(c),
     server(client->get_server()),
-    armageddon_pressed(false),
     left_pressed(0),
     last_press(0),
     x_pos (arg_x_pos),
@@ -67,23 +66,7 @@ ButtonPanel::ButtonPanel(Client* c, int arg_x_pos, int arg_y_pos)
     }
 
   pressed_button = 0;
-  ////wheel_slot = CL_Mouse::sig_key_down().connect(this, &ButtonPanel::on_wheel_move);
 }
-
-#if 0
-void
-ButtonPanel::on_wheel_move(const CL_InputEvent& key)
-{
-  if (key.id == CL_MOUSE_WHEEL_DOWN)
-    {
-      next_action();
-    }
-  else if (key.id == CL_MOUSE_WHEEL_UP)
-    {
-      previous_action();
-    }
-}
-#endif
 
 ButtonPanel::~ButtonPanel()
 {
@@ -96,18 +79,17 @@ ButtonPanel::~ButtonPanel()
 void
 ButtonPanel::update(float delta)
 {
-  a_buttons[pressed_button]->update(delta);
-
-  if (last_press + 350 < SDL_GetTicks())
-    {
-      armageddon_pressed = 0;
-    }
+  if (!a_buttons.empty())
+    a_buttons[pressed_button]->update(delta);
 }
 
 ActionName
 ButtonPanel::get_action_name()
 {
-  return a_buttons[pressed_button]->get_action_name();
+  if (!a_buttons.empty())
+    return a_buttons[pressed_button]->get_action_name();
+  else
+    return Actions::Bridger;
 }
 
 void

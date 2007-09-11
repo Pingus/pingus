@@ -23,9 +23,13 @@
 **  02111-1307, USA.
 */
 
+#include <iostream>
+#include <boost/bind.hpp>
+#include "string_util.hpp"
 #include "label.hpp"
 #include "inputbox.hpp"
 #include "gui_style.hpp"
+#include "editor_level.hpp"
 #include "level_properties.hpp"
 
 /*
@@ -41,21 +45,23 @@ Playable (unneeded)
 namespace Editor {
 
 LevelProperties::LevelProperties(EditorScreen* editor, const Rect& rect)
-  : GroupComponent(rect)
+  : GroupComponent(rect),
+    level(0)
 {
   int w = rect.get_width() - 120;
   add(new Label   (Rect(Vector2i( 10,  10), Size( 80, 20)), "Author:"), true);
-  add(new Inputbox(Rect(Vector2i(110,  10), Size(  w, 20))), true);
+  add(author = new Inputbox(Rect(Vector2i(110,  10), Size(  w, 20))), true);
   add(new Label   (Rect(Vector2i( 10,  32), Size( 80, 20)), "Levelname:"), true);
-  add(new Inputbox(Rect(Vector2i(110,  32), Size(  w, 20))), true);
+  add(levelname = new Inputbox(Rect(Vector2i(110,  32), Size(  w, 20))), true);
   add(new Label   (Rect(Vector2i( 10,  54), Size( 80, 20)), "Description:"), true);
-  add(new Inputbox(Rect(Vector2i(110,  54), Size(  w, 20*3))), true);
-  
+  add(description = new Inputbox(Rect(Vector2i(110,  54), Size(  w, 20*3))), true);
+
   int y = 116;
   add(new Label   (Rect(Vector2i( 10,  y), Size( 80, 20)), "Pingus Count:"), true);
-  add(new Inputbox(Rect(Vector2i(110,  y), Size(  w, 20))), true);
+  add(number_of_pingus = new Inputbox(Rect(Vector2i(110,  y), Size(  w, 20))), true);
   add(new Label   (Rect(Vector2i( 10,  y+22), Size( 80, 20)), "Pingus to Save:"), true);
-  add(new Inputbox(Rect(Vector2i(110,  y+22), Size(  w, 20))), true);
+  add(number_to_save = new Inputbox(Rect(Vector2i(110,  y+22), Size(  w, 20))), true);
+
   add(new Label   (Rect(Vector2i( 10,  y+44), Size( 80, 20)), "Time:"), true);
   add(new Inputbox(Rect(Vector2i(110,  y+44), Size(  w, 20))), true);
   add(new Label   (Rect(Vector2i( 10,  y+66), Size( 80, 20)), "Width:"), true);
@@ -67,6 +73,13 @@ LevelProperties::LevelProperties(EditorScreen* editor, const Rect& rect)
   add(new Inputbox(Rect(Vector2i(110, y+110), Size(  w, 20))), true);
   add(new Label   (Rect(Vector2i( 10, y+132), Size( 80, 20)), "Comment:"), true);
   add(new Inputbox(Rect(Vector2i(110, y+132), Size(  w, 20))), true);
+
+  author->on_change.connect(boost::bind(&LevelProperties::on_author_change, this, _1));
+  levelname->on_change.connect(boost::bind(&LevelProperties::on_levelname_change, this, _1));
+  description->on_change.connect(boost::bind(&LevelProperties::on_description_change, this, _1));
+
+  number_to_save->on_change.connect(boost::bind(&LevelProperties::on_number_to_save_change, this, _1));
+  number_of_pingus->on_change.connect(boost::bind(&LevelProperties::on_number_of_pingus_change, this, _1));
 }
 
 LevelProperties::~LevelProperties()
@@ -83,20 +96,35 @@ void
 LevelProperties::update(float delta)
 {
 }
+
+void
+LevelProperties::set_level(EditorLevel* level_)
+{
+  level = level_;
+  description->set_text(level->get_description());
+  levelname->set_text(level->get_levelname());
+  author->set_text(level->get_author());
+
+  number_of_pingus->set_text(StringUtil::to_string(level->get_number_of_pingus()));
+  number_to_save->set_text(StringUtil::to_string(level->get_number_to_save()));
+}
 
 void
 LevelProperties::on_author_change(const std::string& str)
 {
+  level->set_author(str);
 }
 
 void
 LevelProperties::on_levelname_change(const std::string& str)
 {
+  level->set_levelname(str);
 }
 
 void
 LevelProperties::on_description_change(const std::string& str)
 {
+  level->set_description(str);
 }
 
 void
@@ -107,6 +135,35 @@ LevelProperties::on_width_change(const std::string& str)
 void
 LevelProperties::on_height_change(const std::string& str)
 {
+}
+
+void
+LevelProperties::on_number_to_save_change(const std::string& str)
+{
+  int num;
+  if (StringUtil::from_string(str, num))
+    {
+      level->set_number_to_save(num);
+    }
+  else
+    {
+      std::cout << "LevelProperties::on_number_to_save_change: '" << str << "' not an integer" << std::endl;
+    }
+  
+}
+
+void
+LevelProperties::on_number_of_pingus_change(const std::string& str)
+{
+  int num;
+  if (StringUtil::from_string(str, num))
+    {
+      level->set_number_of_pingus(num);
+    }
+  else
+    {
+      std::cout << "LevelProperties::on_number_of_pingus_change: '" << str << "' not an integer" << std::endl;
+    }
 }
 
 } // namespace Editor

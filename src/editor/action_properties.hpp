@@ -32,12 +32,14 @@
 namespace Editor {
 
 class EditorScreen;
+class EditorLevel;
 
 /** */
 class ActionProperties : public GUI::GroupComponent
 {
 private:
   EditorScreen* editor;
+  EditorLevel*  level;
   int y_pos;
 
 public:
@@ -48,6 +50,8 @@ public:
   void update (float delta); 
   
   void add_action(Actions::ActionName id);
+
+  void set_level(EditorLevel* level);
 
   void on_checkbox_change(bool t, Actions::ActionName id);
   void on_inputbox_change(const std::string& str, Actions::ActionName id);

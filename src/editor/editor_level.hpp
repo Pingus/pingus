@@ -59,6 +59,23 @@ public:
   /** Return LevelImpl */
   LevelImpl* get_level_impl() { return impl; }
 
+  void set_description(const std::string& str);
+  void set_levelname(const std::string& str);
+  void set_author(const std::string& str);
+
+  std::string get_description() const;
+  std::string get_levelname() const;
+  std::string get_author() const;
+
+  void set_number_of_pingus(int i);
+  void set_number_to_save(int i);
+
+  int get_number_of_pingus() const;
+  int get_number_to_save() const;
+
+  void set_action(const std::string& actionname, int count); 
+  std::map<std::string, int> get_actions() const;
+
 private:
   LevelImpl* impl;
 
