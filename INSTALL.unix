@@ -5,12 +5,13 @@ Requirements:
 -------------
 To compile Pingus you need:
 
- SDL          - http://libsdl.org/
+ SDL           - http://libsdl.org/
  SDL_mixer
  SDL_image
- boost        - http://www.boost.org
- libpng       - http://libpng.org/
- scons        - http://scons.org/
+ boost         - http://www.boost.org
+ boost-signals - http://www.boost.org
+ libpng        - http://libpng.org/
+ scons         - http://scons.org/
 
 In most cases you will find those in your distribution.
 
