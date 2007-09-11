@@ -1,4 +1,7 @@
 (pingus-controller
+ (standard-keyboard
+  (sdl:keyboard))
+
   (standard-pointer
     (sdl:mouse-pointer))
 
