@@ -34,7 +34,33 @@ namespace Editor {
 EditorLevel::EditorLevel() :
   impl(new LevelImpl())
 {
+  impl->levelname   = "none";
+  impl->description = "none";
+  impl->author = "none";
+  impl->comment = "none";
+  impl->music   = "none";
 
+  impl->ambient_light = Color(255,255,255);
+  impl->size = Size(1800, 1200);
+
+  impl->number_of_pingus = 50;
+  impl->number_to_save   = 20;
+  
+  impl->actions["basher"]  = 20;
+  impl->actions["blocker"] = 20;
+  impl->actions["boarder"] = 20;
+  impl->actions["bomber"]  = 20;
+  impl->actions["bridger"] = 20;
+  impl->actions["climber"] = 20;
+  impl->actions["digger"]  = 20;
+  impl->actions["exiter"]  = 20;
+  impl->actions["floater"] = 20;
+  impl->actions["jumper"]  = 20;
+  impl->actions["miner"]   = 20;
+  impl->actions["slider"]  = 20;
+  
+  impl->time = -1;
+  impl->difficulty = 0;
 }
 
 // Default Destructor
@@ -128,6 +154,8 @@ bool EditorLevel::save_level(const std::string& filename)
 // Load an existing level from a file
 void EditorLevel::load_level(const Pathname& pathname)
 {
+  std::cout << "EditorLevel::load_level: " << pathname.str() << std::endl;
+
   if (impl)
     delete impl;
   impl = new LevelImpl();
@@ -324,6 +352,48 @@ std::map<std::string, int>
 EditorLevel::get_actions() const
 {
   return impl->actions;
+}
+
+int
+EditorLevel::get_difficulty() const
+{
+  return impl->difficulty;
+}
+
+std::string
+EditorLevel::get_comment() const
+{
+  return impl->comment;
+}
+
+int
+EditorLevel::get_time() const
+{
+  return impl->time;
+}
+
+void
+EditorLevel::set_time(int t)
+{
+  impl->time = t;
+}
+
+void
+EditorLevel::set_difficulty(int d)
+{
+  impl->difficulty = d;
+}
+
+void
+EditorLevel::set_comment(const std::string& str)
+{
+  impl->comment = str;
+}
+
+void
+EditorLevel::set_size(const Size& s)
+{
+  impl->size = s;
 }
 
 } // namespace Editor

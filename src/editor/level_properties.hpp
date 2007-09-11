@@ -48,12 +48,18 @@ private:
   Inputbox* number_of_pingus;
   Inputbox* number_to_save;
 
+  Inputbox* time;
+  Inputbox* width;
+  Inputbox* height;
+  Inputbox* difficulty;
+  Inputbox* comment;
+
 public:
   LevelProperties(EditorScreen* editor, const Rect& rect);
   ~LevelProperties();
 
   void draw_background (DrawingContext& gc);
-  void update (float delta); 
+  void update(float delta); 
 
   void set_level(EditorLevel* level);
 
@@ -61,11 +67,15 @@ public:
   void on_levelname_change(const std::string& str);
   void on_description_change(const std::string& str);
 
-  void on_width_change(const std::string& str);
-  void on_height_change(const std::string& str);
-
   void on_number_to_save_change(const std::string& str);
   void on_number_of_pingus_change(const std::string& str);
+
+  void on_time_change(const std::string& str);
+  void on_width_change(const std::string& str);
+  void on_height_change(const std::string& str);
+  void on_difficulty_change(const std::string& str);
+  void on_comment_change(const std::string& str);
+
 private:
   LevelProperties (const LevelProperties&);
   LevelProperties& operator= (const LevelProperties&);

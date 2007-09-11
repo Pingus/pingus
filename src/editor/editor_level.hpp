@@ -55,6 +55,7 @@ public:
   void add_object(LevelObj* obj);
 
   Size get_size() const;
+  void set_size(const Size& s);
 	
   /** Return LevelImpl */
   LevelImpl* get_level_impl() { return impl; }
@@ -72,6 +73,14 @@ public:
 
   int get_number_of_pingus() const;
   int get_number_to_save() const;
+
+  int get_time() const;
+  int get_difficulty() const;
+  std::string get_comment() const;
+
+  void set_time(int);
+  void set_difficulty(int);
+  void set_comment(const std::string&);
 
   void set_action(const std::string& actionname, int count); 
   std::map<std::string, int> get_actions() const;

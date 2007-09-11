@@ -42,6 +42,14 @@ private:
   EditorLevel*  level;
   int y_pos;
 
+  struct ActionComponent {
+    Checkbox* checkbox;
+    Inputbox* inputbox;
+  };
+
+  typedef std::map<Actions::ActionName, ActionComponent> ActionComponents;
+  ActionComponents action_comps;
+
 public:
   ActionProperties(EditorScreen* editor, const Rect& rect);
   ~ActionProperties();

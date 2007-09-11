@@ -84,6 +84,7 @@ EditorScreen::EditorScreen()
   level_properties = new LevelProperties(this, Rect(Vector2i(0,38), Size(Display::get_width()-244,280)));
   level_properties->hide();
   level_properties->set_level(plf);
+  action_properties->set_level(plf);
   gui_manager->add(level_properties, true);
 }
 
@@ -120,6 +121,7 @@ EditorScreen::load(const Pathname& file)
 {
   plf->load_level(file);
   level_properties->set_level(plf);
+  action_properties->set_level(plf);
   viewport->refresh();
 }
 

@@ -63,16 +63,16 @@ LevelProperties::LevelProperties(EditorScreen* editor, const Rect& rect)
   add(number_to_save = new Inputbox(Rect(Vector2i(110,  y+22), Size(  w, 20))), true);
 
   add(new Label   (Rect(Vector2i( 10,  y+44), Size( 80, 20)), "Time:"), true);
-  add(new Inputbox(Rect(Vector2i(110,  y+44), Size(  w, 20))), true);
+  add(time = new Inputbox(Rect(Vector2i(110,  y+44), Size(  w, 20))), true);
   add(new Label   (Rect(Vector2i( 10,  y+66), Size( 80, 20)), "Width:"), true);
-  add(new Inputbox(Rect(Vector2i(110,  y+66), Size(  w, 20))), true);
+  add(width = new Inputbox(Rect(Vector2i(110,  y+66), Size(  w, 20))), true);
   add(new Label   (Rect(Vector2i( 10,  y+88), Size( 80, 20)), "Height:"), true);
-  add(new Inputbox(Rect(Vector2i(110,  y+88), Size(  w, 20))), true);
+  add(height = new Inputbox(Rect(Vector2i(110,  y+88), Size(  w, 20))), true);
 
   add(new Label   (Rect(Vector2i( 10, y+110), Size( 80, 20)), "Difficulty:"), true);
-  add(new Inputbox(Rect(Vector2i(110, y+110), Size(  w, 20))), true);
+  add(difficulty = new Inputbox(Rect(Vector2i(110, y+110), Size(  w, 20))), true);
   add(new Label   (Rect(Vector2i( 10, y+132), Size( 80, 20)), "Comment:"), true);
-  add(new Inputbox(Rect(Vector2i(110, y+132), Size(  w, 20))), true);
+  add(comment = new Inputbox(Rect(Vector2i(110, y+132), Size(  w, 20))), true);
 
   author->on_change.connect(boost::bind(&LevelProperties::on_author_change, this, _1));
   levelname->on_change.connect(boost::bind(&LevelProperties::on_levelname_change, this, _1));
@@ -80,6 +80,12 @@ LevelProperties::LevelProperties(EditorScreen* editor, const Rect& rect)
 
   number_to_save->on_change.connect(boost::bind(&LevelProperties::on_number_to_save_change, this, _1));
   number_of_pingus->on_change.connect(boost::bind(&LevelProperties::on_number_of_pingus_change, this, _1));
+
+  width->on_change.connect(boost::bind(&LevelProperties::on_width_change, this, _1));
+  height->on_change.connect(boost::bind(&LevelProperties::on_height_change, this, _1));
+  time->on_change.connect(boost::bind(&LevelProperties::on_time_change, this, _1));
+  difficulty->on_change.connect(boost::bind(&LevelProperties::on_difficulty_change, this, _1));
+  comment->on_change.connect(boost::bind(&LevelProperties::on_comment_change, this, _1));
 }
 
 LevelProperties::~LevelProperties()
@@ -107,6 +113,12 @@ LevelProperties::set_level(EditorLevel* level_)
 
   number_of_pingus->set_text(StringUtil::to_string(level->get_number_of_pingus()));
   number_to_save->set_text(StringUtil::to_string(level->get_number_to_save()));
+
+  time->set_text(StringUtil::to_string(level->get_time()));
+  width->set_text(StringUtil::to_string(level->get_size().width));
+  height->set_text(StringUtil::to_string(level->get_size().height));
+  difficulty->set_text(StringUtil::to_string(level->get_difficulty()));
+  comment->set_text("");
 }
 
 void
@@ -130,11 +142,15 @@ LevelProperties::on_description_change(const std::string& str)
 void
 LevelProperties::on_width_change(const std::string& str)
 {
+  Size s = level->get_size();
+  level->set_size(Size(StringUtil::to<int>(str), s.height));  
 }
 
 void
 LevelProperties::on_height_change(const std::string& str)
 {
+  Size s = level->get_size();
+  level->set_size(Size(s.width, StringUtil::to<int>(str)));
 }
 
 void
@@ -164,6 +180,24 @@ LevelProperties::on_number_of_pingus_change(const std::string& str)
     {
       std::cout << "LevelProperties::on_number_of_pingus_change: '" << str << "' not an integer" << std::endl;
     }
+}
+
+void
+LevelProperties::on_time_change(const std::string& str)
+{
+  level->set_time(StringUtil::to<int>(str));
+}
+
+void
+LevelProperties::on_difficulty_change(const std::string& str)
+{
+  level->set_difficulty(StringUtil::to<int>(str));
+}
+
+void
+LevelProperties::on_comment_change(const std::string& str)
+{
+  level->set_comment(str);
 }
 
 } // namespace Editor
