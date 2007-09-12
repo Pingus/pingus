@@ -69,8 +69,11 @@ Inputbox::on_key_pressed(const unsigned short c)
     }
   else
     { // FIXME: This doesn't handle UTF8 properly 
-      text += c;
-      on_change(text);
+      if (c < 256)
+        {
+          text += (unsigned char)c;
+          on_change(text);
+        }
     }
 }
 
