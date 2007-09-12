@@ -113,11 +113,11 @@ System::opendir(const std::string& pathname, const std::string& pattern)
 	{
 	  if (coFindData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
 	    {
-	      dir_list.push_back(DirectoryEntry(coFindData.cFileName, DirectoryEntry::DE_DIRECTORY));
+	      dir_list.push_back(DirectoryEntry(coFindData.cFileName, System::DE_DIRECTORY));
 	    }
 	  else
 	    {
-	      dir_list.push_back(DirectoryEntry(coFindData.cFileName, DirectoryEntry::DE_FILE));
+	      dir_list.push_back(DirectoryEntry(coFindData.cFileName, System::DE_FILE));
 	    }
 	}
       while (FindNextFile(hFind,&coFindData));

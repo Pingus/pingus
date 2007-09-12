@@ -559,6 +559,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\pathname.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\pathname.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\pingu.cpp"
 				>
 			</File>
@@ -1206,6 +1214,74 @@
 				Name="editor"
 				>
 				<File
+					RelativePath=".\src\editor\action_properties.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\action_properties.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\button.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\button.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\checkbox.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\src\editor\checkbox.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\combobox.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\src\editor\combobox.hpp"
+					>
+				</File>
+				<File
 					RelativePath=".\src\editor\context_menu.cpp"
 					>
 				</File>
@@ -1238,6 +1314,54 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\editor\file_list.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\file_list.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\file_load_dialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\file_load_dialog.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\file_save_dialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\file_save_dialog.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\gui_style.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\gui_style.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\inputbox.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\inputbox.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\label.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\label.hpp"
+					>
+				</File>
+				<File
 					RelativePath=".\src\editor\level_impl.hpp"
 					>
 				</File>
@@ -1247,6 +1371,30 @@
 				</File>
 				<File
 					RelativePath=".\src\editor\level_objs.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\level_properties.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\level_properties.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\object_properties.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\object_properties.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\object_selector.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\object_selector.hpp"
 					>
 				</File>
 				<File
@@ -1318,6 +1466,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\gui\group_component.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\gui\group_component.hpp"
+					>
+				</File>
+				<File
 					RelativePath=".\src\gui\gui_manager.cpp"
 					>
 				</File>
@@ -1342,7 +1498,7 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\gui\input_debug_screen.hpp"
+					RelativePath=".\src\gui\rect_component.hpp"
 					>
 				</File>
 				<File

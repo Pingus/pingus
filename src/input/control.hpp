@@ -375,7 +375,7 @@ public:
   {}
 
   void send_char(unsigned short c) { chr = c; notify_parent(); }
-  unsigned char get_char() { return chr; }
+  unsigned short get_char() { return chr; }
 };
 
 class KeyboardGroup : public Keyboard

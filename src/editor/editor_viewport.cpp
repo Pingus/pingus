@@ -197,8 +197,8 @@ EditorViewport::on_pointer_move(int x_, int y_)
           for (unsigned i = 0; i < selected_objs.size(); i++)
             {
               Vector3f orig_pos(selected_objs[i]->get_orig_pos());
-              float x_offset = mouse_world_pos.x - drag_world_pos.x;
-              float y_offset = mouse_world_pos.y - drag_world_pos.y;
+              float x_offset = (float)(mouse_world_pos.x - drag_world_pos.x);
+              float y_offset = (float)(mouse_world_pos.y - drag_world_pos.y);
 
               if (snap_to)
                 {

@@ -28,6 +28,7 @@
 Pathname Pathname::tmpfile(const std::string& prefix)
 {
   assert(!"Unimplemented");
+  return Pathname();
 }
 
 Pathname::Pathname()
@@ -54,6 +55,7 @@ Pathname::get_sys_path() const
       default:
         assert(!"Never reached");
     }
+  return std::string();
 }
 
 std::string
@@ -102,7 +104,8 @@ Pathname::str() const
 
       default: 
         assert(!"never reached");
-    } 
+    }
+  return std::string();
 }
 
 std::ostream& operator<< (std::ostream& os, const Pathname& p)
@@ -121,6 +124,7 @@ std::ostream& operator<< (std::ostream& os, const Pathname& p)
       default: 
         assert(!"never reached");
     }
+  return os;
 }
 
 /* EOF */

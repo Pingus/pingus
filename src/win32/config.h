@@ -4,12 +4,12 @@
 #include <assert.h>
 
 #define PACKAGE "Pingus"
-#define VERSION  "0.7.0"
-#define PACKAGE_STRING "Pingus 0.7.0"
+#define VERSION  "0.7.1"
+#define PACKAGE_STRING "Pingus 0.7.1"
 #define MAJOR_VERSION 0
 #define MINOR_VERSION 7
-#define PATCH_VERSION 0
-#define VERSION_STRING "0.7.0"
+#define PATCH_VERSION 1
+#define VERSION_STRING "0.7.1"
 #define PINGUS_DATADIR "data"
 #define ENABLE_NLS 1
 
@@ -30,6 +30,7 @@
 #endif
 
 #define alloca _alloca
+#define getcwd _getcwd
 // ????
 #define LOCALEDIR "."
 #define LOCALE_ALIAS_PATH "."
@@ -39,5 +40,7 @@ typedef unsigned __int64 uintmax_t;
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
+
+#define PATH_MAX _MAX_PATH
 
 #endif

@@ -24,6 +24,7 @@
 
 #include <iosfwd>
 #include <string>
+#include "SDL.h"
 
 /** Simple class to allow a distinction of paths that rever to the
  *  filesystem and paths that refer to the datadir, it also hides

@@ -54,7 +54,7 @@ public:
         t = tmp;
         return true;
       }
-    return tmp;
+    return false;
   }
 
   template<class T>

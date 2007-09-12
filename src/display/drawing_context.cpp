@@ -407,13 +407,13 @@ DrawingContext::get_rect() const
 float
 DrawingContext::get_width() const
 {
-  return rect.get_width();
+  return (float)rect.get_width();
 }
 
 float
 DrawingContext::get_height() const
 {
-  return rect.get_height();  
+  return (float)rect.get_height();  
 }
 
 void
