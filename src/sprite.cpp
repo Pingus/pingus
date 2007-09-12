@@ -132,10 +132,10 @@ public:
         // FIXME: Could add a check to check if the surface is already optimized
         SDL_Surface* old_surface = surface;
 
-        if (surface->format->Amask == 0)
-          surface = SDL_DisplayFormat(old_surface);
-        else
+        if (surface->format->Amask != 0 || (surface->flags & SDL_SRCCOLORKEY))
           surface = SDL_DisplayFormatAlpha(old_surface);
+        else
+          surface = SDL_DisplayFormat(old_surface);
   
         SDL_FreeSurface(old_surface);
 
