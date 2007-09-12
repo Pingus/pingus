@@ -19,6 +19,7 @@
 
 #include <vector>
 #include <string>
+#include "resource.hpp"
 #include "combobox.hpp"
 #include "math.hpp"
 #include "../fonts.hpp"
@@ -27,6 +28,7 @@ namespace Editor {
 
 Combobox::Combobox(const Rect& rect)
   : RectComponent(rect),
+    sprite(Resource::load_sprite("core/editor/combobox")),
     current_item(-1),
     drop_down(false)
 {
@@ -117,6 +119,7 @@ Combobox::draw(DrawingContext &gc)
   else
     {
       gc.draw_fillrect(rect, Color(255,255,255));
+      gc.draw(sprite, rect.right - 12, rect.top);
       gc.draw_rect(rect, Color(0,0,0));
 
       if (current_item != -1)

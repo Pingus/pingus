@@ -24,6 +24,7 @@
 #include <vector>
 #include <string>
 #include <boost/signal.hpp>
+#include "sprite.hpp"
 #include "gui/component.hpp"
 #include "gui/rect_component.hpp"
 
@@ -45,6 +46,8 @@ public:
 class Combobox : public GUI::RectComponent
 {
 protected:
+  Sprite sprite;
+
   /** List of items in this Combobox */
   std::vector<ComboItem> item_list;
 

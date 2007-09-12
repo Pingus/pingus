@@ -47,6 +47,10 @@
           (section (name "editor")
 
                    (sprite
+                    (name "combobox")
+                    (image-file "../images/core/editor/combobox.png"))
+
+                   (sprite
                     (name "obj_background")
                     (image-file "../images/core/editor/obj_background.png"))
 
