@@ -317,9 +317,15 @@ EditorScreen::toggle_object_selector()
 {
   // need trigger a relayout
   if (object_selector->is_visible())
-    object_selector->hide();
+    {
+      object_selector->hide();
+      viewport->set_rect(Rect(0, 38, Display::get_width(), Display::get_height()));
+    }
   else
-    object_selector->show();
+    {
+      object_selector->show();
+      viewport->set_rect(Rect(0, 38, Display::get_width() - 244, Display::get_height()));
+    }
 }
 
 void 

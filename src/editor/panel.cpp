@@ -99,7 +99,12 @@ public:
 
     if (mouse_over)
       {
-        gc.print_center(Fonts::verdana11, pos.x + 17.f, pos.y + 38.f, tooltip, 1000.0f);
+        int t_w = Fonts::verdana11.get_width(tooltip);
+        Rect t_r(pos.x + 17 - t_w/2 - 4, pos.y + 38 - 2, 
+                 pos.x + 17 + t_w/2 + 4, pos.y + 38 + Fonts::verdana11.get_height() + 2);
+        gc.draw_fillrect(t_r, Color(255, 255, 200), 1000.0f);
+        gc.draw_rect(t_r, Color(0,0,0), 1000.0f);
+        gc.print_center(Fonts::verdana11, pos.x + 17.0f, pos.y + 38.0f, tooltip, 1000.0f);
       }
   }
 
@@ -150,7 +155,7 @@ Panel::Panel(EditorScreen* editor_)
 {  
   editor->get_gui_manager()->add(this, true);
 
-  add_button("core/editor/document-new",  "New level",
+  add_button("core/editor/document-new",  "    New level",
              &EditorScreen::level_new);
   add_button("core/editor/document-open", "Open level...",
              &EditorScreen::level_load);

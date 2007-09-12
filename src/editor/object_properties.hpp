@@ -36,7 +36,9 @@ class ObjectProperties : public GUI::GroupComponent
 {
 private:
   EditorScreen* editor;
-  std::vector<LevelObj*> objects;
+  typedef std::vector<LevelObj*> Objects;
+  Objects objects;
+
   Label* type_label;
   Label* mesg_label;
 
@@ -47,6 +49,10 @@ private:
   Label*    entrance_direction_label;
   Combobox* entrance_direction;
 
+  Label*    release_rate_label;
+  Inputbox* release_rate_inputbox;
+
+  Label*    stretch_label;
   Checkbox* stretch_x_checkbox;
   Checkbox* stretch_y_checkbox;
   
@@ -76,6 +82,7 @@ public:
   void set_objects(const std::vector<LevelObj*>& objs);
 
   void hide_all();
+  void advance();
   void place(GUI::RectComponent* comp);
   void place(GUI::RectComponent* comp1, GUI::RectComponent* comp2);
 

@@ -71,6 +71,7 @@ struct Entrance : public ObjectSelector::Object
     LevelObj* obj = new LevelObj("entrance", impl);
     obj->set_type("generic");
     obj->set_pos(Vector3f(pos.x, pos.y));
+    obj->set_direction("misc");
     obj->set_release_rate(150);
     obj->set_owner(0);
     return obj;
