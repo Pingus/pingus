@@ -540,6 +540,13 @@ System::realpath(const std::string& pathname)
           std::cout << "System::realpath: Error: couldn't getcwd()" << std::endl;
           return pathname;
         }
+#ifdef WIN32
+      for (char *p = buf; *p; ++p)
+        {
+          if (*p == '\\')
+            *p = '/';
+        }
+#endif
       
       fullpath = fullpath + buf + "/"  + pathname;
     }
