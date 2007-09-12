@@ -67,7 +67,7 @@ EditorScreen::EditorScreen()
 
   object_selector   = new ObjectSelector(this);
 
-  object_properties = new ObjectProperties(this, Rect(Vector2i(0,400), Size(240, 200)));
+  object_properties = new ObjectProperties(this, Rect(Vector2i(0,450), Size(200, 150)));
   gui_manager->add(object_properties, true);
 
   file_load_dialog = new FileLoadDialog(this, Rect(Vector2i(50, 50), 

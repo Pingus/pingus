@@ -38,6 +38,7 @@ private:
   EditorScreen* editor;
   std::vector<LevelObj*> objects;
   Label* type_label;
+  Label* mesg_label;
 
   // Groundpiece Type
   Label*    gptype_label;
@@ -55,6 +56,15 @@ private:
   Label*    para_y_label;
   Inputbox* para_y_inputbox;
 
+  Label*    scroll_x_label;
+  Inputbox* scroll_x_inputbox;
+
+  Label*    scroll_y_label;
+  Inputbox* scroll_y_inputbox;
+
+  Label*    owner_label;
+  Inputbox* owner_inputbox;
+
   int y_pos;
 public:
   ObjectProperties(EditorScreen* editor, const Rect& rect);
@@ -65,6 +75,7 @@ public:
 
   void set_objects(const std::vector<LevelObj*>& objs);
 
+  void hide_all();
   void place(GUI::RectComponent* comp);
   void place(GUI::RectComponent* comp1, GUI::RectComponent* comp2);
 
