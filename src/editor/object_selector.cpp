@@ -41,6 +41,96 @@
 
 namespace Editor {
 
+struct Groundpiece : public ObjectSelector::Object 
+{
+  ResDescriptor desc;
+  std::string   type;
+  
+  Groundpiece(const std::string& name, const std::string& type)
+    : Object(Resource::load_sprite(name)),
+      desc(name),
+      type(type)
+  {}      
+  
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
+    LevelObj* obj = new LevelObj("groundpiece", impl);
+    obj->set_pos(Vector3f(pos.x, pos.y));
+    obj->set_res_desc(desc);
+    obj->set_type(type);
+    return obj;
+  }
+};
+
+struct Entrance : public ObjectSelector::Object 
+{
+  Entrance()
+    : Object(Resource::load_sprite("entrances/generic"))
+  {}
+
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
+    LevelObj* obj = new LevelObj("entrance", impl);
+    obj->set_type("generic");
+    obj->set_pos(Vector3f(pos.x, pos.y));
+    obj->set_release_rate(150);
+    obj->set_owner(0);
+    return obj;
+  }
+};
+
+struct Exit : public ObjectSelector::Object 
+{
+  ResDescriptor desc;
+  
+  Exit(const std::string& name)
+    : Object(Resource::load_sprite(name)),
+      desc(name)
+  {}
+
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
+    LevelObj* obj = new LevelObj("exit", impl);
+    obj->set_pos(Vector3f(pos.x, pos.y));
+    obj->set_res_desc(desc);
+    // obj->set_para();
+    return obj;
+  }
+};
+
+struct Hotspot : public ObjectSelector::Object 
+{
+  ResDescriptor desc;
+  
+  Hotspot(const std::string& name)
+    : Object(Resource::load_sprite(name)),
+      desc(name)
+  {}
+
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
+    LevelObj* obj = new LevelObj("hotspot", impl);
+    obj->set_pos(Vector3f(pos.x, pos.y));
+    obj->set_res_desc(desc);
+    // obj->set_para();
+    return obj;
+  }
+};
+
+struct SurfaceBackground : public ObjectSelector::Object 
+{
+  ResDescriptor desc;
+  
+  SurfaceBackground(const std::string& name)
+    : Object(Resource::load_sprite(name)),
+      desc(name)
+  {}
+
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
+    LevelObj* obj = new LevelObj("surface-background", impl);
+    obj->set_pos(Vector3f(pos.x, pos.y));
+    obj->set_res_desc(desc);
+    // obj->set_para();
+    return obj;
+  }
+};
+
 class ObjectSelectorButton : public GUI::Component
 {
 private:
@@ -222,9 +312,9 @@ ObjectSelector::draw(DrawingContext& parent_gc)
                              Color(155,155,155), 10000);
               }
 
-            gc.draw(i->sprite, 
-                    x * 48 + std::max(0, (48 - i->sprite.get_width())/2), 
-                    y * 48 + std::max(0, (48 - i->sprite.get_height())/2));
+            gc.draw((*i)->sprite, 
+                    x * 48 + std::max(0, (48 - (*i)->sprite.get_width())/2), 
+                    y * 48 + std::max(0, (48 - (*i)->sprite.get_height())/2));
             ++i;
           }
         else
@@ -239,9 +329,9 @@ ObjectSelector::draw(DrawingContext& parent_gc)
 
   if (mode == OBJECT_DRAG)
     {
-      parent_gc.draw(objects[current_object].sprite, Vector3f(real_mouse_pos.x,
-                                                              real_mouse_pos.y,
-                                                              2000.0f));
+      parent_gc.draw(objects[current_object]->sprite, Vector3f(real_mouse_pos.x,
+                                                               real_mouse_pos.y,
+                                                               2000.0f));
     }
   parent_gc.draw(gc);
 }
@@ -294,10 +384,12 @@ ObjectSelector::on_primary_button_release (int x, int y)
       
       if (current_object != -1)
         {
-          LevelObj* obj = new LevelObj("groundpiece", editor->get_level()->get_level_impl());
-          obj->set_res_desc(objects[current_object].desc);
-          obj->set_pos(editor->get_viewport()->screen2world(x,y));
-          editor->add_object(obj);
+          LevelObj* obj = objects[current_object]->create(editor->get_viewport()->screen2world(x,y),
+                                                          editor->get_level()->get_level_impl());
+          if (obj)
+            editor->add_object(obj);
+          else
+            std::cout << "ObjectSelector::Object: create() not implemented" << std::endl;
         }
     }
 }
@@ -342,74 +434,125 @@ ObjectSelector::on_pointer_move (int x, int y)
 }
 
 void
+ObjectSelector::clear_object_list()
+{
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    delete (*i);
+  objects.clear();
+}
+
+void
 ObjectSelector::set_objects(const std::string& prefix)
 {
+  clear_object_list();
+
+  // FIXME: Simple debugging aid, needs to be replaced with custom code for the object types
   std::vector<std::string> lst = Resource::resmgr.get_section(prefix);
-  objects.clear();
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
     {
       std::cout << "Objects: " << *i << std::endl;
       Sprite sprite = Resource::load_sprite(*i);
       //sprite.scale(48, 48);
       // need to reset the align to top/left
-      Object obj(sprite);
-      obj.desc = ResDescriptor(*i);
-      objects.push_back(obj);
+      objects.push_back(new Object(sprite));
+    }
+}
+
+void
+ObjectSelector::set_groundpiece(const std::string& prefix, const std::string& type)
+{
+  clear_object_list();
+
+  std::vector<std::string> lst = Resource::resmgr.get_section(prefix);
+  for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
+    {
+      //sprite.scale(48, 48);
+      objects.push_back(new Groundpiece(*i, type));
     }
 }
 
 void
 ObjectSelector::set_gp_ground()
 {
-  set_objects("groundpieces/ground");
+  set_groundpiece("groundpieces/ground", "ground");
 }
 
 void
 ObjectSelector::set_gp_solid()
 {
-  set_objects("groundpieces/solid");
+  set_groundpiece("groundpieces/solid", "solid");
 }
 
 void
 ObjectSelector::set_gp_bridge()
 {
-  set_objects("groundpieces/bridge");
+  set_groundpiece("groundpieces/bridge", "bridge");
 }
 
 void
 ObjectSelector::set_gp_transparent()
 {
-  set_objects("groundpieces/transparent");
+  set_groundpiece("groundpieces/transparent", "transparent");
 }
 
 void
 ObjectSelector::set_gp_remove()
 {
-  set_objects("groundpieces/remove");
+  set_groundpiece("groundpieces/remove", "remove");
 }
 
 void
 ObjectSelector::set_hotspot()
 {
-  set_objects("hotspots");
+  clear_object_list();
+
+  std::vector<std::string> lst = Resource::resmgr.get_section("hotspots");
+  for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
+    {
+      //sprite.scale(48, 48);
+      objects.push_back(new Hotspot(*i));
+    }
 }
 
 void
 ObjectSelector::set_background()
 {
-  set_objects("textures");
+  clear_object_list();
+
+  std::vector<std::string> lst = Resource::resmgr.get_section("textures");
+  for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
+    {
+      //sprite.scale(48, 48);
+      objects.push_back(new SurfaceBackground(*i));
+    }
 }
 
 void
 ObjectSelector::set_entrance()
 {
-  set_objects("entrances");
+  clear_object_list();
+
+  objects.push_back(new Entrance());
+
+  std::vector<std::string> lst = Resource::resmgr.get_section("entrances");
+  for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
+    {
+      //sprite.scale(48, 48);
+      objects.push_back(new Hotspot(*i));
+    }
 }
 
 void
 ObjectSelector::set_exit()
 {
-  set_objects("exits");
+  clear_object_list();
+
+  std::vector<std::string> lst = Resource::resmgr.get_section("exit");
+  for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
+    {
+      //sprite.scale(48, 48);
+      objects.push_back(new Exit(*i));
+    }
 }
 
 void
@@ -421,6 +564,7 @@ ObjectSelector::set_liquid()
 void
 ObjectSelector::set_trap()
 {
+  // Need to differentiate the different trap types
   set_objects("traps");
 }
 

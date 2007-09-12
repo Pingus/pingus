@@ -1,7 +1,8 @@
 //  $Id$
 //
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Jason Green <jave27@gmail.com>,
+//                     Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -28,32 +29,55 @@
 #include "../display/drawing_context.hpp"
 
 namespace Editor {
-
+
 // Default constructor
-LevelObj::LevelObj(std::string obj_name, LevelImpl* level_) :
-  level(level_),
-  pos(Vector3f(0,0,0)),
-  translated_pos(Vector3f(0,0,0)),
-  section_name(obj_name),
-  speed(0),
-  parallax(0.0),
-  width(0),
-  owner_id(-1),
-  release_rate(0),
-  scroll_x(0),
-  scroll_y(0),
-  stretch_x(false),
-  stretch_y(false),
-  keep_aspect(false),
-  para_x(0),
-  para_y(0),
-  color(0,0,0,0),
-  attribs(get_attributes(obj_name)),
-  removed(false),
-  selected(false)
+LevelObj::LevelObj(std::string obj_name, LevelImpl* level_)
+  : level(level_),
+    pos(Vector3f(0,0,0)),
+    translated_pos(Vector3f(0,0,0)),
+    section_name(obj_name),
+    speed(0),
+    parallax(0.0),
+    width(0),
+    owner_id(0),
+    release_rate(0),
+    scroll_x(0),
+    scroll_y(0),
+    stretch_x(false),
+    stretch_y(false),
+    keep_aspect(false),
+    para_x(0),
+    para_y(0),
+    color(0,0,0,0),
+    attribs(get_attributes(obj_name)),
+    removed(false),
+    selected(false)
 {
   if (attribs & HAS_SURFACE_FAKE)
     load_generic_surface();
+}
+
+unsigned int
+LevelObj::get_attributes(std::string obj_type)
+{
+  if (obj_type == "groundpiece")
+    return HAS_TYPE | HAS_SURFACE | CAN_ROTATE;
+  else if (obj_type == "hotspot")
+    return HAS_SPEED | HAS_PARALLAX | HAS_SURFACE | CAN_ROTATE;
+  else if (obj_type == "liquid")
+    return HAS_SPEED | HAS_WIDTH | HAS_SURFACE;
+  else if (obj_type == "surface-background")
+    return HAS_COLOR | HAS_STRETCH | HAS_PARA | HAS_SCROLL | HAS_SURFACE;
+  else if (obj_type == "entrance" || obj_type == "woodthing")
+    return HAS_TYPE | HAS_DIRECTION | HAS_RELEASE_RATE | HAS_OWNER | HAS_SURFACE_FAKE;
+  else if (obj_type == "exit")
+    return HAS_OWNER | HAS_SURFACE;
+  else
+    {
+      std::cout << "Error: LevelObj::get_attributes(): unknown object type: '"
+                << obj_type << "'" << std::endl;
+      return 0;
+    }
 }
 
 void 
@@ -336,7 +360,7 @@ LevelObj::set_pos(Vector3f p)
   pos = p;
   set_translated_pos();
 }
-
+
 } // namespace Editor 
 
 /* EOF */

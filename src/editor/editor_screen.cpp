@@ -56,7 +56,10 @@ EditorScreen::EditorScreen()
     show_help(false)
 {
   // Create the viewport for the images and data
-  viewport = new EditorViewport(this);
+  viewport = new EditorViewport(this, Rect(0,
+                                           38,
+                                           Display::get_width() - 244, 
+                                           Display::get_height()));
   gui_manager->add(viewport, true);	
 	
   // Create the panel for the buttons
@@ -66,7 +69,6 @@ EditorScreen::EditorScreen()
 
   object_properties = new ObjectProperties(this, Rect(Vector2i(0,400), Size(240, 200)));
   gui_manager->add(object_properties, true);
-
 
   file_load_dialog = new FileLoadDialog(this, Rect(Vector2i(50, 50), 
                                                    Size(Display::get_width() - 100, 
@@ -332,7 +334,7 @@ EditorScreen::toggle_object_properties()
   if (object_properties->is_visible())
     object_properties->hide();
   else
-    object_properties->show();  
+    object_properties->show();
 }
 
 void

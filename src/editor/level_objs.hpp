@@ -48,28 +48,7 @@ const unsigned HAS_SURFACE =      1 << 11;
 // HAS_SURFACE_FAKE means it has a generic image in the editor, but isn't saved.
 const unsigned HAS_SURFACE_FAKE = 1 << 12;
 const unsigned CAN_ROTATE =       1 << 13;
-
-/** Returns a number representing which attributes this object possesses */
-inline unsigned int get_attributes(std::string obj_type)
-{
-  unsigned val;
-  if (obj_type == "groundpiece")
-    val = HAS_TYPE | HAS_SURFACE | CAN_ROTATE;
-  else if (obj_type == "hotspot")
-    val = HAS_SPEED | HAS_PARALLAX | HAS_SURFACE | CAN_ROTATE;
-  else if (obj_type == "liquid")
-    val = HAS_SPEED | HAS_WIDTH | HAS_SURFACE;
-  else if (obj_type == "surface-background")
-    val = HAS_COLOR | HAS_STRETCH | HAS_PARA | HAS_SCROLL | HAS_SURFACE;
-  else if (obj_type == "entrance" || obj_type == "woodthing")
-    val = HAS_TYPE | HAS_DIRECTION | HAS_RELEASE_RATE | HAS_OWNER | HAS_SURFACE_FAKE;
-  else if (obj_type == "exit")
-    val = HAS_OWNER | HAS_SURFACE;
-  else
-    val = 0;
-
-  return val;
-}
+const unsigned HAS_GPTYPE =       1 << 14;
 
 class LevelImpl;
 
@@ -176,7 +155,7 @@ public:
   Vector3f get_orig_pos() const { return orig_pos; }
 
   /** Retrieve this object's attribute number */
-  unsigned get_attribs() const { return attribs; }
+  unsigned int get_attribs() const { return attribs; }
 
   /** Retrieve the object's resource name */
   ResDescriptor get_res_desc() const { return desc; }
@@ -235,6 +214,12 @@ public:
   /////////////////////////////////////////////////////////
   /// Operations
 public:
+  /** Default Constructor */
+  LevelObj(const std::string obj_name, LevelImpl* level_);
+
+  /** Destructor */
+  virtual ~LevelObj() { }
+
   /** Set the object's position */
   void set_pos(const Vector3f p);
 	
@@ -323,19 +308,16 @@ public:
   /** Returns true if the mouse is hovering over this object */
   virtual bool is_at (int x, int y);
 
-  /** Default Constructor */
-  LevelObj(const std::string obj_name, LevelImpl* level_);
-
-  /** Destructor */
-  virtual ~LevelObj() { }
+  /** Returns a number representing which attributes this object possesses */
+  unsigned int get_attributes(std::string obj_type);
 
 private:
   LevelObj (const LevelObj&);
   LevelObj& operator= (const LevelObj&);
 
-};	// LevelObj class
-
-}		// Editor namespace
+};
+
+} // namespace Editor 
 
 #endif
 

@@ -35,11 +35,8 @@
 namespace Editor {
 
 // Constructor
-EditorViewport::EditorViewport(EditorScreen* e) 
-  : rect(0,
-         38,
-         Display::get_width() - 244, 
-         Display::get_height()),
+EditorViewport::EditorViewport(EditorScreen* e, const Rect& rect) 
+  : RectComponent(rect),
     state(rect.get_width(), rect.get_height()),
     drawing_context(new DrawingContext(rect)),
     editor(e),
@@ -469,6 +466,12 @@ EditorViewport::lower_objects_to_bottom()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
     lower_object_to_bottom(*i); 
+}
+
+void
+EditorViewport::update_layout()
+{
+  // FIXME: Insert code here
 }
 
 } // namespace Editor

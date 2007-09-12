@@ -37,6 +37,19 @@ class EditorScreen;
 /** */
 class ObjectSelector : public GUI::Component
 {
+public:
+  struct Object {
+    Sprite  sprite;
+    
+    Object(const Sprite& sprite_) 
+      : sprite(sprite_)
+    {}      
+
+    virtual ~Object() {}
+
+    virtual LevelObj* create(const Vector2i&, LevelImpl* impl) { return 0; }
+  };
+
 private:
   EditorScreen* editor;
   Vector2i button_pos;
@@ -51,16 +64,7 @@ private:
   enum Mode { NOTHING, SCROLLING, OBJECT_DRAG };
   Mode mode;
 
-  struct Object 
-  {
-    Sprite      sprite;
-    ResDescriptor desc;
-
-    Object(const Sprite& sprite_) 
-      : sprite(sprite_)
-    {}      
-  };
-  typedef std::vector<Object> Objects;
+  typedef std::vector<Object*> Objects;
   Objects objects;
 
   int current_object;
@@ -90,6 +94,9 @@ public:
 
   void set_objects(const std::string& prefix);
 
+  void clear_object_list();
+
+  void set_groundpiece(const std::string& prefix, const std::string& type);
   void set_gp_ground();
   void set_gp_solid();
   void set_gp_bridge();

@@ -55,6 +55,7 @@ private:
   Label*    para_y_label;
   Inputbox* para_y_inputbox;
 
+  int y_pos;
 public:
   ObjectProperties(EditorScreen* editor, const Rect& rect);
   ~ObjectProperties();
@@ -63,6 +64,9 @@ public:
   void draw_background(DrawingContext& gc);
 
   void set_objects(const std::vector<LevelObj*>& objs);
+
+  void place(GUI::RectComponent* comp);
+  void place(GUI::RectComponent* comp1, GUI::RectComponent* comp2);
 
   void on_gptype_change(const ComboItem& item);
   void on_stretch_x_change(bool t);

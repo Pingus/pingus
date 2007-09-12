@@ -21,7 +21,7 @@
 #ifndef HEADER_PINGUS_EDITOR_VIEWPORT_HXX
 #define HEADER_PINGUS_EDITOR_VIEWPORT_HXX
 
-#include "../gui/component.hpp"
+#include "../gui/rect_component.hpp"
 #include "../graphic_context_state.hpp"
 #include <boost/signal.hpp>
 #include <vector>
@@ -41,10 +41,9 @@ class ContextMenu;
 /** This class is where the actual level graphics will display in the
     level editor.  Objects can be added, deleted, moved, modified, etc. 
     inside of the EditorViewport */
-class EditorViewport : public GUI::Component 
+class EditorViewport : public GUI::RectComponent 
 {
 private:	
-  Rect rect;
   GraphicContextState state;
   DrawingContext* drawing_context;
 
@@ -86,7 +85,7 @@ private:
 public:
   /** Constructor
       @param e The EditorScreen to which this viewport belongs */
-  EditorViewport (EditorScreen* e);
+  EditorViewport(EditorScreen* e, const Rect& rect);
 
   /** Destructor */
   ~EditorViewport ();
@@ -150,6 +149,8 @@ public:
   void lower_objects_to_bottom();
 
   Vector2i screen2world(int x, int y) const;
+
+  void update_layout();
 
   boost::signal<void (const std::vector<LevelObj*>&)> selection_changed;
 private:
