@@ -107,6 +107,7 @@ LevelObj::draw(DrawingContext &gc)
           for(int x = int(pos.x); x < pos.x + width; x += sprite.get_width())
             gc.draw(sprite, Vector3f(static_cast<float>(x), pos.y, pos.z));
         }
+#if 0
       else if(attribs & HAS_STRETCH)
         {
           // Surface Background - tile it
@@ -114,6 +115,7 @@ LevelObj::draw(DrawingContext &gc)
             for (int y = 0; y < level->size.height; y += sprite.get_height())
               gc.draw(sprite, Vector3f((float)x, (float)y, pos.z));
         }
+#endif
       else
         {
           gc.draw(sprite, pos);
@@ -157,9 +159,7 @@ LevelObj::refresh_sprite()
   if (attribs & HAS_SURFACE)
     {
       sprite = Resource::load_sprite(desc);
-      ////int x, y;
-      ////sprite.get_alignment(origin, x, y);
-				
+#if 0				
       PixelBuffer pb;
 
       // Apply modifier, then change the sprite loaded for this object in memory.
@@ -196,11 +196,8 @@ LevelObj::refresh_sprite()
       else		// No stretch involved
         pb = Resource::load_pixelbuffer(desc);
 
-      ////SpriteDescription sprite_desc;
-      ////sprite_desc.add_frame(pb);
-      ////sprite = Sprite(sprite_desc);
       sprite = Sprite(pb);
-      ////sprite.set_alignment(origin, x, y);
+#endif
     }
   set_translated_pos();
 }

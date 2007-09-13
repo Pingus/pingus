@@ -48,7 +48,8 @@ struct Groundpiece : public ObjectSelector::Object
   std::string   type;
   
   Groundpiece(const std::string& name, const std::string& type)
-    : Object(Resource::load_thumb_sprite(name)),
+    : Object(Resource::load_sprite(name),
+             Resource::load_thumb_sprite(name)),
       desc(name),
       type(type)
   {}      
@@ -65,7 +66,8 @@ struct Groundpiece : public ObjectSelector::Object
 struct Entrance : public ObjectSelector::Object 
 {
   Entrance()
-    : Object(Resource::load_thumb_sprite("entrances/generic"))
+    : Object(Resource::load_sprite("entrances/generic"),
+             Resource::load_thumb_sprite("entrances/generic"))
   {}
 
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
@@ -84,7 +86,8 @@ struct Exit : public ObjectSelector::Object
   ResDescriptor desc;
   
   Exit(const std::string& name)
-    : Object(Resource::load_thumb_sprite(name)),
+    : Object(Resource::load_sprite(name), 
+             Resource::load_thumb_sprite(name)),
       desc(name)
   {}
 
@@ -102,7 +105,8 @@ struct Hotspot : public ObjectSelector::Object
   ResDescriptor desc;
   
   Hotspot(const std::string& name)
-    : Object(Resource::load_thumb_sprite(name)),
+    : Object(Resource::load_sprite(name),
+             Resource::load_thumb_sprite(name)),
       desc(name)
   {}
 
@@ -120,13 +124,18 @@ struct SurfaceBackground : public ObjectSelector::Object
   ResDescriptor desc;
   
   SurfaceBackground(const std::string& name)
-    : Object(Resource::load_thumb_sprite(name)),
+    : Object(Resource::load_sprite(name),
+             Resource::load_thumb_sprite(name)),
       desc(name)
   {}
 
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
     LevelObj* obj = new LevelObj("surface-background", impl);
     obj->set_pos(pos);
+    obj->set_para_x(1.0f);
+    obj->set_para_y(1.0f);
+    obj->set_scroll_x(0.0f);
+    obj->set_scroll_y(0.0f);
     obj->set_res_desc(desc);
     // obj->set_para();
     return obj;
@@ -299,7 +308,7 @@ ObjectSelector::draw_background(DrawingContext& parent_gc)
                              Color(155,155,155), 10000);
               }
 
-            gc.draw((*i)->sprite, 
+            gc.draw((*i)->thumbnail, 
                     Vector2i(x * 48 + std::max(0, (48 - (*i)->sprite.get_width())/2), 
                              y * 48 + std::max(0, (48 - (*i)->sprite.get_height())/2)));
             ++i;
@@ -441,10 +450,10 @@ ObjectSelector::set_objects(const std::string& prefix)
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
     {
       std::cout << "Objects: " << *i << std::endl;
-      Sprite sprite = Resource::load_sprite(*i);
       //sprite.scale(48, 48);
       // need to reset the align to top/left
-      objects.push_back(new Object(sprite));
+      objects.push_back(new Object(Resource::load_sprite(*i),
+                                   Resource::load_thumb_sprite(*i)));
     }
 }
 
@@ -528,7 +537,8 @@ ObjectSelector::set_entrance()
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
     {
       //sprite.scale(48, 48);
-      objects.push_back(new Hotspot(*i));
+      if (*i != "entrances/generic")
+        objects.push_back(new Hotspot(*i));
     }
 }
 

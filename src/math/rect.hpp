@@ -64,6 +64,14 @@ public:
   Rect(const Rect &rect)
   { left = rect.left; top = rect.top; right = rect.right; bottom = rect.bottom; }
 
+  // Moves each edge b away from the center, thus width = old_width + 2*b
+  Rect grow(int b) const {
+    return Rect(left   - b, 
+                top    - b,
+                right  + b,
+                bottom + b);
+  }
+
   //: Rect += Rect operator.
   Rect &operator+=(const Rect &r)
   { left += r.left; top += r.top; right += r.right; bottom += r.bottom; return *this; }

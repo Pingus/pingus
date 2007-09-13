@@ -38,11 +38,11 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
     editor(editor_)
 {
   add(type_label = new Label(Rect(Vector2i(4, 4), Size(120, 20)), "Object:"), true);
-  add(mesg_label = new Label(Rect(Vector2i(40, rect.get_height()/2- 20), Size(120, 20)), "nothing selected"), true);
+  add(mesg_label = new Label(Rect(Vector2i(10, 0), Size(180, 20)), "Nothing selected"), true);
     
   Rect label_rect(10,0, 80, 20);
   Rect box_rect(80,0, 190, 20);
- 
+ 
   // Groundpiece Type
   add(gptype_label = new Label(label_rect, "GPType:"), true);
   add(gptype_type  = new Combobox(box_rect), true);
@@ -57,7 +57,7 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
   gptype_type->set_selected_item(Groundtype::GP_GROUND);
 
   gptype_type->on_select.connect(boost::bind(&ObjectProperties::on_gptype_change, this, _1));
-  
+  
   add(entrance_direction_label = new Label(label_rect, "Direction:"), true);
   add(entrance_direction = new Combobox(box_rect), true);
   entrance_direction->add(0, "Left");
@@ -66,10 +66,12 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
   entrance_direction->set_selected_item(0);
 
   entrance_direction->on_select.connect(boost::bind(&ObjectProperties::on_entrance_direction_change, this, _1));
-
+
   add(release_rate_label = new Label(label_rect, "ReleaseRate:"), true);
   add(release_rate_inputbox = new Inputbox(box_rect), true);
-  
+
+  release_rate_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_release_rate_change, this, _1));
+  
   // Background Stretch
   add(stretch_label = new Label(label_rect, "Stretch:"), true);
   add(stretch_x_checkbox = new Checkbox(Rect(Vector2i(box_rect.left, box_rect.top), 
@@ -81,22 +83,29 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
 
   stretch_x_checkbox->on_change.connect(boost::bind(&ObjectProperties::on_stretch_x_change, this, _1));
   stretch_y_checkbox->on_change.connect(boost::bind(&ObjectProperties::on_stretch_y_change, this, _1));
-  
+  
   add(para_x_label = new Label(label_rect, "Para-X:"), true);
   add(para_y_label = new Label(label_rect, "Para-Y:"), true);
 
   add(para_x_inputbox = new Inputbox(box_rect), true);
   add(para_y_inputbox = new Inputbox(box_rect), true);
-  
+
+  para_x_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_para_x_change, this, _1));
+  para_y_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_para_y_change, this, _1));
+
   add(scroll_x_label = new Label(label_rect, "Scroll-X:"), true);
   add(scroll_y_label = new Label(label_rect, "Scroll-Y:"), true);
 
   add(scroll_x_inputbox = new Inputbox(box_rect), true);
   add(scroll_y_inputbox = new Inputbox(box_rect), true);
-  
+
+  scroll_x_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_scroll_x_change, this, _1));
+  scroll_y_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_scroll_y_change, this, _1));
+  
   add(owner_label    = new Label(label_rect, "Owner Id:"), true);
   add(owner_inputbox = new Inputbox(box_rect), true);
-
+  owner_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_owner_change, this, _1));
+
   set_object(0);
 }
 
@@ -146,6 +155,8 @@ ObjectProperties::place(GUI::RectComponent* comp1, GUI::RectComponent* comp2)
 void
 ObjectProperties::hide_all()
 {
+  y_pos = 30;
+      
   // Hide everything
   mesg_label->hide();
 
@@ -187,7 +198,6 @@ ObjectProperties::set_object(LevelObj* obj)
   if (obj)
     {
       unsigned int attr = obj->get_attribs();
-      y_pos = 30;
       if (attr & HAS_TYPE)
         {
           gptype_type->set_selected_item(Groundtype::string_to_type(obj->get_type()));
@@ -267,8 +277,10 @@ ObjectProperties::set_object(LevelObj* obj)
     }
   else
     {
-      mesg_label->show();
+      place(mesg_label);
+      advance();
     }
+  finalize();
 }
 
 void
@@ -303,6 +315,12 @@ ObjectProperties::set_objects(const std::vector<LevelObj*>& objs)
 }
 
 void
+ObjectProperties::finalize()
+{
+  set_rect(Rect(rect.left, rect.bottom - y_pos - 10, rect.right, rect.bottom));
+}
+
+void
 ObjectProperties::on_gptype_change(const ComboItem& item)
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
@@ -331,10 +349,52 @@ ObjectProperties::on_entrance_direction_change(const ComboItem& item)
       if (item.id == 0)
         (*i)->set_direction("left");
       else if (item.id == 1)
-        (*i)->set_direction("left");
+        (*i)->set_direction("misc");
       else // (item.id == 2)
         (*i)->set_direction("right");
     }
+}
+
+void
+ObjectProperties::on_owner_change(const std::string& str)
+{
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    (*i)->set_owner(StringUtil::to<int>(str));
+}
+
+void
+ObjectProperties::on_para_x_change(const std::string& str)
+{
+ for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+   (*i)->set_para_x(StringUtil::to<float>(str));
+}
+
+void
+ObjectProperties::on_para_y_change(const std::string& str)
+{
+ for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+   (*i)->set_para_y(StringUtil::to<float>(str));
+}
+
+void
+ObjectProperties::on_scroll_x_change(const std::string& str)
+{
+ for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+   (*i)->set_scroll_x(StringUtil::to<float>(str));
+}
+
+void
+ObjectProperties::on_scroll_y_change(const std::string& str)
+{
+ for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+   (*i)->set_scroll_y(StringUtil::to<float>(str));
+}
+
+void
+ObjectProperties::on_release_rate_change(const std::string& str)
+{
+ for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+   (*i)->set_release_rate(StringUtil::to<int>(str));
 }
 
 } // namespace Editor

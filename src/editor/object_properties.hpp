@@ -81,8 +81,10 @@ public:
 
   void set_objects(const std::vector<LevelObj*>& objs);
 
+  // GUI Placement functions
   void hide_all();
   void advance();
+  void finalize();
   void place(GUI::RectComponent* comp);
   void place(GUI::RectComponent* comp1, GUI::RectComponent* comp2);
 
@@ -90,6 +92,12 @@ public:
   void on_stretch_x_change(bool t);
   void on_stretch_y_change(bool t);
   void on_entrance_direction_change(const ComboItem& item);
+  void on_owner_change(const std::string& str);
+  void on_para_x_change(const std::string& str);
+  void on_para_y_change(const std::string& str);
+  void on_scroll_x_change(const std::string& str);
+  void on_scroll_y_change(const std::string& str);
+  void on_release_rate_change(const std::string& str);
 
 };
 

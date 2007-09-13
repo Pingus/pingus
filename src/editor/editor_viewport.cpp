@@ -122,8 +122,12 @@ EditorViewport::on_primary_button_press(int x_, int y_)
             {
               for (unsigned i = 0; i < selected_objs.size(); i++)
                 selected_objs[i]->unselect();
+                
               selected_objs.clear();
               obj->select();
+
+              obj->set_orig_pos(obj->get_pos());
+
               selected_objs.push_back(obj);
 
               selection_changed(selected_objs);
@@ -235,8 +239,12 @@ void
 EditorViewport::draw(DrawingContext &gc)
 {
   drawing_context->clear();
-  drawing_context->fill_screen(Color(255,0,255));
+  drawing_context->fill_screen(Color(155,0,155));
   state.push(*drawing_context);
+  drawing_context->draw_rect(Rect(Vector2i(0,0), editor->get_level()->get_size()), Color(255,255,255), 5000.0f);
+  drawing_context->draw_rect(Rect(Vector2i(0,0), editor->get_level()->get_size()).grow(1), Color(0,0,0), 5000.0f);
+
+  drawing_context->draw_rect(Rect(Vector2i(0,0), editor->get_level()->get_size()).grow(-100), Color(155,155,155), 5000.0f);
 	
   // Draw the level objects
   for (unsigned i = 0; i < objs.size(); i++)
@@ -314,7 +322,7 @@ void
 EditorViewport::refresh()
 {
   objs = editor->get_level()->get_objects();
-  state.set_limit(Rect(Vector2i(0, 0), editor->get_level()->get_size()));
+  state.set_limit(Rect(Vector2i(0,0), editor->get_level()->get_size()).grow(256));
   std::cout << editor->get_level()->get_size().width << ", "
             << editor->get_level()->get_size().height 
             << std::endl;

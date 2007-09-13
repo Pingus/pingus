@@ -92,6 +92,7 @@ EditorScreen::EditorScreen()
   level_properties->set_level(plf);
   action_properties->set_level(plf);
   gui_manager->add(level_properties, true);
+  viewport->refresh();
 }
 
 // Destructor
@@ -351,18 +352,28 @@ void
 EditorScreen::toggle_action_properties()
 {
   if (action_properties->is_visible())
-    action_properties->hide();
+    {
+      action_properties->hide();
+    }
   else
-    action_properties->show();
+    {
+      action_properties->show();
+      level_properties->hide();
+    }
 }
 
 void
 EditorScreen::toggle_level_properties()
 {
   if (level_properties->is_visible())
+    {
     level_properties->hide();
+    }
   else
+    {
     level_properties->show();
+    action_properties->hide();
+    }
 }
 
 void
