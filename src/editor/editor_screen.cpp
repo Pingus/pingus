@@ -65,7 +65,11 @@ EditorScreen::EditorScreen()
   // Create the panel for the buttons
   panel = new Panel(this);
 
-  object_selector   = new ObjectSelector(this);
+  //rect(Vector2i(Display::get_width() - 244 + 2,  38 + 3 + 62),
+  //      Size(240, Display::get_height() - (600 - 495))),
+
+  object_selector   = new ObjectSelector(this, Rect(Display::get_width()-244, 38,
+                                                    Display::get_width(), Display::get_height()));
 
   object_properties = new ObjectProperties(this, Rect(Vector2i(0,450), Size(200, 150)));
   gui_manager->add(object_properties, true);

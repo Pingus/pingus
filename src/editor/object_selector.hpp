@@ -35,7 +35,7 @@ namespace Editor {
 class EditorScreen;
 
 /** */
-class ObjectSelector : public GUI::Component
+class ObjectSelector : public GUI::GroupComponent
 {
 public:
   struct Object {
@@ -53,7 +53,6 @@ public:
 private:
   EditorScreen* editor;
   Vector2i button_pos;
-  Rect rect;
   DrawingContext* drawing_context;
   float    offset;
   float    old_offset;
@@ -74,14 +73,12 @@ public:
   typedef void (ObjectSelector::*Callback)();
   Callback callback;
 
-  ObjectSelector(EditorScreen* editor);
+  ObjectSelector(EditorScreen* editor, const Rect& rect);
   ~ObjectSelector();
 
-  void draw (DrawingContext& gc);
+  void draw_background(DrawingContext& gc);
   void update (float delta);
 
-  bool is_at (int x, int y);
-  
   void add_button(const std::string& image, const std::string& tooltip = "", Callback callback = 0);
 
   void on_primary_button_press (int x, int y);

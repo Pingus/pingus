@@ -359,5 +359,12 @@ Resource::get_mtime (const std::string& res_name)
   return 0;
 }
 
+Sprite
+Resource::load_thumb_sprite(const std::string& name)
+{
+  Sprite sprite = Resource::load_sprite(name);
+  sprite.scale(48,48);
+  return sprite;
+}
 
 /* EOF */

@@ -24,6 +24,7 @@
 */
 
 #include "gui/display.hpp"
+#include "gui_style.hpp"
 #include "sprite.hpp"
 #include "math/vector2i.hpp"
 #include "editor_screen.hpp"
@@ -47,7 +48,7 @@ struct Groundpiece : public ObjectSelector::Object
   std::string   type;
   
   Groundpiece(const std::string& name, const std::string& type)
-    : Object(Resource::load_sprite(name)),
+    : Object(Resource::load_thumb_sprite(name)),
       desc(name),
       type(type)
   {}      
@@ -64,7 +65,7 @@ struct Groundpiece : public ObjectSelector::Object
 struct Entrance : public ObjectSelector::Object 
 {
   Entrance()
-    : Object(Resource::load_sprite("entrances/generic"))
+    : Object(Resource::load_thumb_sprite("entrances/generic"))
   {}
 
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
@@ -83,7 +84,7 @@ struct Exit : public ObjectSelector::Object
   ResDescriptor desc;
   
   Exit(const std::string& name)
-    : Object(Resource::load_sprite(name)),
+    : Object(Resource::load_thumb_sprite(name)),
       desc(name)
   {}
 
@@ -101,7 +102,7 @@ struct Hotspot : public ObjectSelector::Object
   ResDescriptor desc;
   
   Hotspot(const std::string& name)
-    : Object(Resource::load_sprite(name)),
+    : Object(Resource::load_thumb_sprite(name)),
       desc(name)
   {}
 
@@ -119,7 +120,7 @@ struct SurfaceBackground : public ObjectSelector::Object
   ResDescriptor desc;
   
   SurfaceBackground(const std::string& name)
-    : Object(Resource::load_sprite(name)),
+    : Object(Resource::load_thumb_sprite(name)),
       desc(name)
   {}
 
@@ -132,7 +133,7 @@ struct SurfaceBackground : public ObjectSelector::Object
   }
 };
 
-class ObjectSelectorButton : public GUI::Component
+class ObjectSelectorButton : public GUI::RectComponent
 {
 private:
   ObjectSelector* object_selector;
@@ -142,7 +143,6 @@ private:
   Sprite sprite;
   bool   mouse_over;
   bool   mouse_down;
-  Vector2i    pos;
   std::string tooltip;
 
   typedef void (ObjectSelector::*Callback)();
@@ -150,39 +150,37 @@ private:
 
 public:
   ObjectSelectorButton(ObjectSelector* object_selector_,
-                       const Vector2i& pos_, const std::string& sprite, const std::string& tooltip_, 
+                       const Vector2i& pos, const std::string& sprite, const std::string& tooltip_, 
                        Callback callback_ = 0)
-    : object_selector(object_selector_),
+    : RectComponent(Rect(pos, Size(30, 30))),
+      object_selector(object_selector_),
       button_raised(Resource::load_sprite("core/editor/obj_button-raised")),
       button_pressed(Resource::load_sprite("core/editor/obj_button-pressed")),
       sprite(Resource::load_sprite(sprite)),
       mouse_over(false),
       mouse_down(false),
-      pos(pos_),
       tooltip(tooltip_),
       callback(callback_)
   {
   }
 
-  void draw (DrawingContext& gc)
+  void draw(DrawingContext& gc)
   {
     if (mouse_down)
-      gc.draw(button_pressed, pos);
+      gc.draw(button_pressed, Vector2i(rect.left, rect.top));
     else if (mouse_over)
-      gc.draw(button_raised, pos);
+      gc.draw(button_raised, Vector2i(rect.left, rect.top));
 
-    gc.draw(sprite, pos + Vector2i(3,3));
+    gc.draw(sprite, Vector2i(rect.left + 3, rect.top + 3));
 
     if (mouse_over)
       {
-        Rect rect(int(gc.get_width()) - 244,  38,
-                  int(gc.get_width()),        int(gc.get_height()));
-        
-        gc.print_left(Fonts::verdana11,
-                      //pos.x + 17.f, pos.y + 38.f,
-                      rect.left+2 + 2, 
-                      rect.top+2 + 62 + 2,
-                      tooltip, 1000);
+        int t_w = Fonts::verdana11.get_width(tooltip);
+        Rect t_r(rect.left + 17 - t_w/2 - 4, rect.top + 38 - 2, 
+                 rect.left + 17 + t_w/2 + 4, rect.top + 38 + Fonts::verdana11.get_height() + 2);
+        gc.draw_fillrect(t_r, Color(255, 255, 200), 1000.0f);
+        gc.draw_rect(t_r, Color(0,0,0), 1000.0f);
+        gc.print_center(Fonts::verdana11, rect.left + 17.0f, rect.top + 38.0f, tooltip, 1000.0f);
       }
   }
 
@@ -210,12 +208,6 @@ public:
       ((*object_selector).*callback)();
   }
   
-  bool is_at(int x, int y)
-  {
-    return (pos.x <= x && pos.x + 34 > x &&
-            pos.y <= y && pos.y + 34 > y);
-  }
-
   void update (float delta)
   {
     sprite.update();
@@ -224,14 +216,15 @@ public:
   int get_width() const {
     return 30;
   }
+
+  void update_layout() {}
 };
 
-ObjectSelector::ObjectSelector(EditorScreen* editor_)
-  : editor(editor_),
+ObjectSelector::ObjectSelector(EditorScreen* editor_, const Rect& rect_)
+  : GroupComponent(rect_, false),
+    editor(editor_),
     button_pos(0,0),
-    rect(Vector2i(Display::get_width() - 244 + 2,  38 + 3 + 62),
-         Size(240, Display::get_height() - (600 - 495))),
-    drawing_context(new DrawingContext(rect)),
+    drawing_context(new DrawingContext(Rect(2,64, rect.get_width() - 2, rect.get_height() - 2))),
     offset(0),
     old_offset(0),
     mode(NOTHING),
@@ -262,20 +255,13 @@ ObjectSelector::~ObjectSelector()
 }
 
 void
-ObjectSelector::draw(DrawingContext& parent_gc)
+ObjectSelector::draw_background(DrawingContext& parent_gc)
 {
-  Rect rect(int(parent_gc.get_width()) - 244,  38,
-            int(parent_gc.get_width()),        int(parent_gc.get_height()));
+  //  Rect rect(int(parent_gc.get_width()) - 244,  38,
+  //            int(parent_gc.get_width()),        int(parent_gc.get_height()));
 
   // FIXME: Should use draw_line
-  parent_gc.draw_fillrect(rect.left, rect.top, rect.right, rect.bottom,
-                          Color(255, 255, 255));
-
-  parent_gc.draw_fillrect(rect.left+1, rect.top+1, rect.right, rect.bottom,
-                          Color(169, 157, 140));
-                   
-  parent_gc.draw_fillrect(rect.left+1, rect.top+1, rect.right-1, rect.bottom-1,
-                          Color(237, 233, 227));
+  GUIStyle::draw_raised_box(parent_gc, Rect(0,0, rect.get_width(), rect.get_height()));
 
   DrawingContext& gc = *drawing_context;
 
@@ -345,13 +331,12 @@ ObjectSelector::update(float delta)
 void
 ObjectSelector::add_button(const std::string& image, const std::string& tooltip, Callback callback)
 {
-  editor->get_gui_manager()->add
-    (new ObjectSelectorButton(this,
-                              Vector2i(Display::get_width() - 242 + button_pos.x * 30,  
-                                       40 + button_pos.y * 30),
-                              image, tooltip,
-                              callback), true);
-
+  add(new ObjectSelectorButton(this,
+                               Vector2i(2 + button_pos.x * 30,  
+                                        2 + button_pos.y * 30),
+                               image, tooltip,
+                               callback), true);
+  
   button_pos.x += 1;
   if (button_pos.x > 7)
     {
@@ -360,15 +345,11 @@ ObjectSelector::add_button(const std::string& image, const std::string& tooltip,
     }
 }
 
-bool
-ObjectSelector::is_at(int x, int y)
-{
-  return rect.is_inside(Vector2i(x, y));
-}
-
 void
 ObjectSelector::on_primary_button_press (int x, int y)
 {
+  GroupComponent::on_primary_button_press(x, y);
+
   if (mode == NOTHING && current_object != -1)
     {
       drag_object = current_object;
@@ -379,6 +360,8 @@ ObjectSelector::on_primary_button_press (int x, int y)
 void
 ObjectSelector::on_primary_button_release (int x, int y)
 {
+  GroupComponent::on_primary_button_release(x, y);
+
   if (mode == OBJECT_DRAG)
     {
       mode = NOTHING;
@@ -398,6 +381,8 @@ ObjectSelector::on_primary_button_release (int x, int y)
 void
 ObjectSelector::on_secondary_button_press (int x, int y)
 {
+  GroupComponent::on_secondary_button_press(x, y);
+
   if (mode == NOTHING)
     {
       drag_start = Vector2i(x,y);
@@ -409,6 +394,8 @@ ObjectSelector::on_secondary_button_press (int x, int y)
 void
 ObjectSelector::on_secondary_button_release (int x, int y)
 {  
+  GroupComponent::on_secondary_button_release(x, y);
+
   if (mode == SCROLLING)
     mode = NOTHING;
 }
@@ -416,9 +403,11 @@ ObjectSelector::on_secondary_button_release (int x, int y)
 void
 ObjectSelector::on_pointer_move (int x, int y)
 {
-  real_mouse_pos = Vector2i(x, y);
-  mouse_pos = Vector2i(x - rect.left, 
-                       y - rect.top);
+  GroupComponent::on_pointer_move(x, y);
+  real_mouse_pos = Vector2i(x - rect.left, y - rect.top);
+
+  mouse_pos = Vector2i(x - rect.left - drawing_context->get_rect().left,
+                       y - rect.top  - drawing_context->get_rect().top);
 
   if (mode != OBJECT_DRAG)
     {
