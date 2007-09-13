@@ -112,8 +112,8 @@ SmallMap::draw (DrawingContext& gc)
       rect.bottom = y_pos + height;
     }
   
-  gc.draw(image->get_surface(), Vector3f((float)x_pos, (float)y_pos));
-  gc.draw_rect((float)rect.left, (float)rect.top, (float)rect.right, (float)rect.bottom,
+  gc.draw(image->get_surface(), Vector2i(x_pos, y_pos));
+  gc.draw_rect(rect.left, rect.top, rect.right, rect.bottom,
                Color(0, 255, 0));
 
   client->get_server()->get_world()->draw_smallmap(this);
@@ -125,7 +125,7 @@ SmallMap::draw (DrawingContext& gc)
       int x = static_cast<int>(x_pos + ((*i)->get_x() * width  / world->get_width()));
       int y = static_cast<int>(y_pos + ((*i)->get_y() * height / world->get_height()));
 
-      gc.draw_line((float)x, (float)y, (float)x, (float)y-2, Color(255, 255, 0));
+      gc.draw_line(x, y, x, y-2, Color(255, 255, 0));
     }
 
   gc_ptr = 0;

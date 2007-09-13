@@ -23,6 +23,7 @@
 #include "combobox.hpp"
 #include "math.hpp"
 #include "../fonts.hpp"
+#include "../math/vector2i.hpp"
 
 namespace Editor {
 
@@ -119,7 +120,7 @@ Combobox::draw(DrawingContext &gc)
   else
     {
       gc.draw_fillrect(rect, Color(255,255,255));
-      gc.draw(sprite, rect.right - 12, rect.top);
+      gc.draw(sprite, Vector2i(rect.right - 12, rect.top));
       gc.draw_rect(rect, Color(0,0,0));
 
       if (current_item != -1)

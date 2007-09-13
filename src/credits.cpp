@@ -260,20 +260,20 @@ Credits::update (float delta)
 void
 Credits::draw_background (DrawingContext& gc)
 {
-  float x;
-  float y;
-  float yof;
+  int x;
+  int y;
+  int yof;
 
-  x = (float)Display::get_width()/2;
-  y = offset;
+  x = Display::get_width()/2;
+  y = (int)offset;
 
-  gc.draw(background, Vector3f(gc.get_width()/2, gc.get_height()/2));
-  gc.draw(pingu, Vector3f(gc.get_width()/2, gc.get_height()/2 - 20));
+  gc.draw(background, Vector2i(gc.get_width()/2, gc.get_height()/2));
+  gc.draw(pingu, Vector2i(gc.get_width()/2, gc.get_height()/2 - 20));
   
   gc.print_right(Fonts::chalk_normal,
-                static_cast<float>(Display::get_width()/2 + 275),
-                static_cast<float>(Display::get_height()/2 + 110),
-								_("Exit"));
+                Display::get_width()/2 + 275,
+                Display::get_height()/2 + 110,
+                _("Exit"));
   
   yof = 0;
 

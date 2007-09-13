@@ -55,7 +55,7 @@ struct Groundpiece : public ObjectSelector::Object
   
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
     LevelObj* obj = new LevelObj("groundpiece", impl);
-    obj->set_pos(Vector3f(pos.x, pos.y));
+    obj->set_pos(pos);
     obj->set_res_desc(desc);
     obj->set_type(type);
     return obj;
@@ -71,7 +71,7 @@ struct Entrance : public ObjectSelector::Object
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
     LevelObj* obj = new LevelObj("entrance", impl);
     obj->set_type("generic");
-    obj->set_pos(Vector3f(pos.x, pos.y));
+    obj->set_pos(pos);
     obj->set_direction("misc");
     obj->set_release_rate(150);
     obj->set_owner(0);
@@ -90,7 +90,7 @@ struct Exit : public ObjectSelector::Object
 
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
     LevelObj* obj = new LevelObj("exit", impl);
-    obj->set_pos(Vector3f(pos.x, pos.y));
+    obj->set_pos(pos);
     obj->set_res_desc(desc);
     // obj->set_para();
     return obj;
@@ -108,7 +108,7 @@ struct Hotspot : public ObjectSelector::Object
 
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
     LevelObj* obj = new LevelObj("hotspot", impl);
-    obj->set_pos(Vector3f(pos.x, pos.y));
+    obj->set_pos(pos);
     obj->set_res_desc(desc);
     // obj->set_para();
     return obj;
@@ -126,7 +126,7 @@ struct SurfaceBackground : public ObjectSelector::Object
 
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
     LevelObj* obj = new LevelObj("surface-background", impl);
-    obj->set_pos(Vector3f(pos.x, pos.y));
+    obj->set_pos(pos);
     obj->set_res_desc(desc);
     // obj->set_para();
     return obj;
@@ -180,7 +180,7 @@ public:
                  rect.left + 17 + t_w/2 + 4, rect.top + 38 + Fonts::verdana11.get_height() + 2);
         gc.draw_fillrect(t_r, Color(255, 255, 200), 1000.0f);
         gc.draw_rect(t_r, Color(0,0,0), 1000.0f);
-        gc.print_center(Fonts::verdana11, rect.left + 17.0f, rect.top + 38.0f, tooltip, 1000.0f);
+        gc.print_center(Fonts::verdana11, rect.left + 17, rect.top + 38, tooltip, 1000.0f);
       }
   }
 
@@ -300,8 +300,8 @@ ObjectSelector::draw_background(DrawingContext& parent_gc)
               }
 
             gc.draw((*i)->sprite, 
-                    x * 48 + std::max(0, (48 - (*i)->sprite.get_width())/2), 
-                    y * 48 + std::max(0, (48 - (*i)->sprite.get_height())/2));
+                    Vector2i(x * 48 + std::max(0, (48 - (*i)->sprite.get_width())/2), 
+                             y * 48 + std::max(0, (48 - (*i)->sprite.get_height())/2)));
             ++i;
           }
         else
@@ -316,8 +316,8 @@ ObjectSelector::draw_background(DrawingContext& parent_gc)
 
   if (mode == OBJECT_DRAG)
     {
-      parent_gc.draw(objects[current_object]->sprite, Vector3f(real_mouse_pos.x,
-                                                               real_mouse_pos.y,
+      parent_gc.draw(objects[current_object]->sprite, Vector3f((float)real_mouse_pos.x,
+                                                               (float)real_mouse_pos.y,
                                                                2000.0f));
     }
   parent_gc.draw(gc);

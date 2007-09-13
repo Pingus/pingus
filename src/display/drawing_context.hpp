@@ -71,6 +71,7 @@ public:
       worth a try */
   void draw(DrawingContext& dc, float z = 0);
 
+  void draw(const Sprite& sprite, const Vector2i& pos);
   void draw(const Sprite& sprite, const Vector3f& pos);
   void draw(const Sprite& sprite, float x, float y, float z = 0);
   
@@ -79,11 +80,11 @@ public:
       queue */
   void fill_screen(const Color& color);
 
-  void draw_line (float x1, float y1, float x2, float y2, 
+  void draw_line (int x1, int y1, int x2, int y2, 
 		  const Color& color, float z = 0);
-  void draw_fillrect (float x1, float y1, float x2, float y2, 
+  void draw_fillrect (int x1, int y1, int x2, int y2, 
 		      const Color& color, float z = 0);
-  void draw_rect (float x1, float y1, float x2, float y2, 
+  void draw_rect (int x1, int y1, int x2, int y2, 
 		  const Color& color, float z = 0);
 
   void draw_fillrect (const Rect& rect,
@@ -121,17 +122,17 @@ public:
   void set_rect(const Rect& rect);
   Rect get_rect() const;
 
-  float get_width() const;
-  float get_height() const;
+  int get_width() const;
+  int get_height() const;
 
   /** Print a text left aligned */
-  void print_left (const Font& font, float x_pos, float y_pos, const std::string& str, float z = 0.0f);
+  void print_left (const Font& font, int x_pos, int y_pos, const std::string& str, float z = 0.0f);
 
   /** Print a text centred to the given position */
-  void print_center (const Font& font, float x_pos, float y_pos, const std::string& str, float z = 0.0f);
+  void print_center (const Font& font, int x_pos, int y_pos, const std::string& str, float z = 0.0f);
 
   /** Print a text right aligned */
-  void print_right (const Font& font, float x_pos, float y_pos, const std::string& str, float z = 0.0f);
+  void print_right (const Font& font, int x_pos, int y_pos, const std::string& str, float z = 0.0f);
 
   Vector3f screen_to_world (Vector3f pos);
   Vector3f world_to_screen (Vector3f pos);

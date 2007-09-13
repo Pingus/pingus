@@ -134,15 +134,15 @@ GroundMap::draw(SceneContext& gc)
           {
             //std::cout << "Drawing GroundMap Tile " << std::endl;
             gc.color().draw(tile[x][y].get_sprite(),
-                            Vector3f((float)x * tile_size, (float)y * tile_size));
+                            Vector2i(x * tile_size, y * tile_size));
           }
         else
           {
             if (0 /*pingus_debug_flags & PINGUS_DEBUG_TILES*/)
-              gc.color().draw_fillrect((float)x * tile_size,
-                                       (float)y * tile_size,
-                                       (float)x * tile_size + tile_size,
-                                       (float)y * tile_size + tile_size,
+              gc.color().draw_fillrect(x * tile_size,
+                                       y * tile_size,
+                                       x * tile_size + tile_size,
+                                       y * tile_size + tile_size,
                                        Color(255, 0, 0, 75));
           }
       }

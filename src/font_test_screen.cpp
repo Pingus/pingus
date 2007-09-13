@@ -36,7 +36,7 @@ FontTestScreen::FontTestScreen(const Pathname& fontfile)
 bool
 FontTestScreen::draw(DrawingContext& gc)
 {
-  float checker = 40.f;
+  int checker = 40;
   for(int y = 0; y < gc.get_height()/checker; y += 1)
     for(int x = 0; x < gc.get_width()/checker; x += 1)
       {
@@ -57,8 +57,8 @@ FontTestScreen::draw(DrawingContext& gc)
 
   for(int i = 0; i < 256; ++i)
     {
-      float x = 64.0f + (i%20)*(font.get_height() + 24);
-      float y = 64.0f + (i/20)*(font.get_height() + reference.get_height()*3);
+      int x = 64 + (i%20)*(font.get_height() + 24);
+      int y = 64 + (i/20)*(font.get_height() + reference.get_height()*3);
 
       // print the actual character
       gc.print_left(reference,

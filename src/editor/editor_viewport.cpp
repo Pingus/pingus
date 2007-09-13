@@ -96,7 +96,7 @@ EditorViewport::on_secondary_button_click(int x_, int y_)
         {
           //	std::vector<LevelObj*> objs;
           //	objs.push_back(obj);
-          context_menu = new ContextMenu(selected_objs, Vector3f((float)x_, (float)y_), this);
+          context_menu = new ContextMenu(selected_objs, Vector2i(x_, y_), this);
           editor->get_gui_manager()->add(context_menu, true);
         }
     }
@@ -243,8 +243,8 @@ EditorViewport::draw(DrawingContext &gc)
     objs[i]->draw(*drawing_context);
 
   if (current_action == HIGHLIGHTING)
-    drawing_context->draw_rect((float)highlighted_area.left, (float)highlighted_area.top, 
-                               (float)highlighted_area.right, (float)highlighted_area.bottom, 
+    drawing_context->draw_rect(highlighted_area.left, highlighted_area.top, 
+                               highlighted_area.right, highlighted_area.bottom, 
                                Color(255,0,255), 1000.0f);
   
   state.pop(*drawing_context);
@@ -274,11 +274,11 @@ EditorViewport::update(float delta)
         {
           if (mouse_screen_pos.x < autoscroll_border)
             state.set_pos(state.get_pos() - Vector2f(5, 0));
-          else if ((float)Display::get_width() - mouse_screen_pos.x < autoscroll_border)
+          else if (Display::get_width() - mouse_screen_pos.x < autoscroll_border)
             state.set_pos(state.get_pos() + Vector2f(5, 0));
           else if (mouse_screen_pos.y < autoscroll_border)
             state.set_pos(state.get_pos() - Vector2f(0, 5));
-          else if ((float)Display::get_height() - mouse_screen_pos.y < autoscroll_border)
+          else if (Display::get_height() - mouse_screen_pos.y < autoscroll_border)
             state.set_pos(state.get_pos() + Vector2f(0, 5));
         }
     }

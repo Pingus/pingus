@@ -68,10 +68,10 @@ PingusMenuManager::draw (DrawingContext& gc)
 {
   background.draw(gc);
 
-  gc.draw_fillrect(0.0,
-                   static_cast<float>(Display::get_height () - 26),
-                   static_cast<float>(Display::get_width ()),
-                   static_cast<float>(Display::get_height ()),
+  gc.draw_fillrect(0,
+                   Display::get_height () - 26,
+                   Display::get_width (),
+                   Display::get_height (),
                    Color(0, 0, 0, 255));
 
   for (MenuStackIter i = menu_stack.begin (); i != menu_stack.end (); ++i)

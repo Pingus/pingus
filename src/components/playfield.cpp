@@ -71,24 +71,24 @@ Playfield::draw(DrawingContext& gc)
   // Draw the scrolling band
   if (mouse_scrolling && !drag_drop_scrolling)
     {
-      gc.draw_line((float)mouse_pos.x, (float)mouse_pos.y,
-                   (float)scroll_center.x, (float)scroll_center.y-15,
+      gc.draw_line(mouse_pos.x, mouse_pos.y,
+                   scroll_center.x, scroll_center.y-15,
                    Color(0, 255, 0));
 
-      gc.draw_line((float)mouse_pos.x, (float)mouse_pos.y,
-                   (float)scroll_center.x, (float)scroll_center.y,
+      gc.draw_line(mouse_pos.x, mouse_pos.y,
+                   scroll_center.x, scroll_center.y,
                    Color(255, 0, 0));
 
-      gc.draw_line((float)mouse_pos.x, (float)mouse_pos.y,
-                   (float)scroll_center.x, (float)scroll_center.y+15,
+      gc.draw_line(mouse_pos.x, mouse_pos.y,
+                   scroll_center.x, scroll_center.y+15,
                    Color(0, 0, 255));
 
-      gc.draw_line((float)mouse_pos.x, (float)mouse_pos.y,
-                   (float)scroll_center.x + 15, (float)scroll_center.y,
+      gc.draw_line(mouse_pos.x, mouse_pos.y,
+                   scroll_center.x + 15, scroll_center.y,
                    Color(0, 255, 255));
 
-      gc.draw_line((float)mouse_pos.x, (float)mouse_pos.y,
-                   (float)scroll_center.x - 15, (float)scroll_center.y,
+      gc.draw_line(mouse_pos.x, mouse_pos.y,
+                   scroll_center.x - 15, scroll_center.y,
                    Color(255, 255, 0));
     }
 

@@ -60,8 +60,8 @@ public:
     if (!is_hidden)
       {
         SurfaceButton::draw(gc);
-        gc.print_right(Fonts::chalk_large, (float)Display::get_width()/2 + 230,
-                       (float)Display::get_height()/2 + 160, label);
+        gc.print_right(Fonts::chalk_large, Display::get_width()/2 + 230,
+                       Display::get_height()/2 + 160, label);
       }
   }
 
@@ -112,8 +112,8 @@ public:
 
   void draw (DrawingContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_left(Fonts::chalk_large, (float)Display::get_width()/2 - 280,
-                  (float)Display::get_height()/2 + 160, CANCEL_TEXT);
+    gc.print_left(Fonts::chalk_large, Display::get_width()/2 - 280,
+                  Display::get_height()/2 + 160, CANCEL_TEXT);
   }
 
   bool is_at(int x, int y) {
@@ -142,7 +142,7 @@ private:
   FileDialog* file_dialog;
 
   /** Where the image is located */
-  Vector3f pos;
+  Vector2i pos;
 
   /** Image used for the scroll button */
   Sprite sprite;
@@ -158,8 +158,8 @@ private:
 public:
   FileDialogScrollButton (FileDialog* f, int d, int height_offset)
     : file_dialog(f),
-      pos(Vector3f((float)Display::get_width()/2 + 210,
-                   (float)Display::get_height()/2 + height_offset)),
+      pos(Vector2i(Display::get_width()/2 + 210,
+                   Display::get_height()/2 + height_offset)),
       direction(d),
       is_hidden(false),
       hover(false)
@@ -190,8 +190,8 @@ public:
   {
     if (is_hidden)
       return false;
-    return (x > (int)pos.x && x < (int)pos.x + sprite.get_width()
-            && y > (int)pos.y && y < (int)pos.y + sprite.get_height());
+    return (x > pos.x && x < pos.x + sprite.get_width()
+            && y > pos.y && y < pos.y + sprite.get_height());
   }
 
   void show() { is_hidden = false; }
@@ -205,7 +205,7 @@ private:
   FileDialog* file_dialog;
 
   /** Where the image is located */
-  Vector3f pos;
+  Vector2i pos;
 
   /** Image used for the parent folder button */
   Sprite sprite;
@@ -215,8 +215,8 @@ private:
 public:
   FileDialogParentFolderButton (FileDialog* f)
     : file_dialog(f),
-      pos(Vector3f((float)Display::get_width()/2 + 230,
-                   (float)Display::get_height()/2 - 210)),
+      pos(Vector2i(Display::get_width()/2 + 230,
+                   Display::get_height()/2 - 210)),
       sprite(Resource::load_sprite("core/menu/parent_folder")),
       hover(false)
   {
@@ -242,8 +242,8 @@ public:
 
   bool is_at(int x, int y)
   {
-    return (x > (int)pos.x && x < (int)pos.x + sprite.get_width()
-            && y > (int)pos.y && y < (int)pos.y + sprite.get_height());
+    return (x > pos.x && x < pos.x + sprite.get_width()
+            && y > pos.y && y < pos.y + sprite.get_height());
   }
 };
 
@@ -272,29 +272,29 @@ FileDialog::FileDialog (FileDialogListener* listener_,
 
   // FIXME: Ugly - hardcoded values for items in file dialog.  Should be dynamic.
   // Create 8 FileDialogItems and add them to the gui_manager.
-  float center_x = (float)Display::get_width()/2;
-  float center_y = (float)Display::get_height()/2;
+  int center_x = Display::get_width()/2;
+  int center_y = Display::get_height()/2;
 
-  inputbox = new GUI::InputBox(450, Vector3f(center_x - 225, 
+  inputbox = new GUI::InputBox(450, Vector2i(center_x - 225, 
                                              center_y - 170), "", for_loading);
   gui_manager->add((GUI::Component*)inputbox, true);
 
   file_dialog_items.push_back(new FileDialogItem(this, 
-                                                 Vector3f(center_x - 280, center_y - 140)));
+                                                 Vector2i(center_x - 280, center_y - 140)));
   file_dialog_items.push_back(new FileDialogItem(this, 
-                                                 Vector3f(center_x - 280, center_y - 70)));
+                                                 Vector2i(center_x - 280, center_y - 70)));
   file_dialog_items.push_back(new FileDialogItem(this, 
-                                                 Vector3f(center_x - 280, center_y + 10)));
+                                                 Vector2i(center_x - 280, center_y + 10)));
   file_dialog_items.push_back(new FileDialogItem(this, 
-                                                 Vector3f(center_x - 280, center_y + 80)));
+                                                 Vector2i(center_x - 280, center_y + 80)));
   file_dialog_items.push_back(new FileDialogItem(this, 
-                                                 Vector3f(center_x - 10, center_y - 140)));
+                                                 Vector2i(center_x - 10, center_y - 140)));
   file_dialog_items.push_back(new FileDialogItem(this, 
-                                                 Vector3f(center_x - 10, center_y - 70)));
+                                                 Vector2i(center_x - 10, center_y - 70)));
   file_dialog_items.push_back(new FileDialogItem(this, 
-                                                 Vector3f(center_x - 10, center_y + 10)));
+                                                 Vector2i(center_x - 10, center_y + 10)));
   file_dialog_items.push_back(new FileDialogItem(this, 
-                                                 Vector3f(center_x - 10, center_y + 80)));
+                                                 Vector2i(center_x - 10, center_y + 80)));
 
   for (std::vector<FileDialogItem*>::const_iterator i = file_dialog_items.begin();
        i != file_dialog_items.end(); i++)
@@ -309,7 +309,7 @@ FileDialog::~FileDialog ()
 
 bool FileDialog::draw (DrawingContext& gc)
 {
-  gc.draw(sprite, Vector3f(gc.get_width ()/2 - sprite.get_width ()/2,
+  gc.draw(sprite, Vector2i(gc.get_width ()/2 - sprite.get_width ()/2,
                            gc.get_height ()/2 - sprite.get_height ()/2));
   gc.draw_rect(gc.get_width() / 2 - 285, gc.get_height() / 2 - 160,
                gc.get_width() / 2 + 285, gc.get_height() / 2 + 160, Color(0,0,0));

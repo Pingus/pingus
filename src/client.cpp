@@ -92,16 +92,16 @@ Client::draw_background (DrawingContext& gc)
   {
     Color border_color(50, 65, 75);
     // top
-    gc.draw_fillrect(0, 0, (float)Display::get_width(), (float)rect.top,
+    gc.draw_fillrect(0, 0, Display::get_width(), rect.top,
                      border_color);
     // bottom
-    gc.draw_fillrect(0, (float)rect.bottom, (float)Display::get_width(), (float)Display::get_height(),
+    gc.draw_fillrect(0, rect.bottom, Display::get_width(), Display::get_height(),
                  border_color);
     // left
-    gc.draw_fillrect(0, (float)rect.top, (float)rect.left, (float)rect.bottom,
+    gc.draw_fillrect(0, rect.top, rect.left, rect.bottom,
                  border_color);
     // right
-    gc.draw_fillrect((float)rect.right, (float)rect.top, (float)Display::get_width(), (float)rect.bottom,
+    gc.draw_fillrect(rect.right, rect.top, Display::get_width(), rect.bottom,
                  border_color);
   }
 }

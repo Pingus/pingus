@@ -104,7 +104,7 @@ void
 WorldMapManagerCreditsButton::draw (DrawingContext& gc)
 {
   SurfaceButton::draw(gc);
-  gc.print_center(Fonts::chalk_small, (float)(Display::get_width() - 59 - 24), 2, _("Show Ending?"));
+  gc.print_center(Fonts::chalk_small, Display::get_width() - 59 - 24, 2, _("Show Ending?"));
 }
 
 void
@@ -164,7 +164,7 @@ void
 WorldMapManagerCloseButton::draw (DrawingContext& gc)
 {
   SurfaceButton::draw(gc);
-  gc.print_center(Fonts::chalk_small, 44, (float)Display::get_height() - 25, _("Leave?"));
+  gc.print_center(Fonts::chalk_small, 44, Display::get_height() - 25, _("Leave?"));
 }
 
 void
@@ -196,14 +196,14 @@ WorldMapManagerEnterButton::draw (DrawingContext& gc)
 {
   if (WorldMapManager::instance()->get_worldmap()->get_pingus()->is_walking())
     {
-      gc.draw(button_surface, Vector3f((float)x_pos, (float)y_pos));
+      gc.draw(button_surface, Vector2i(x_pos, y_pos));
     }
   else
     {
       SurfaceButton::draw(gc);
       gc.print_center(Fonts::chalk_small,
-                    (float)Display::get_width() - 43 - 22,
-                    (float)Display::get_height() - 25,
+                    Display::get_width() - 43 - 22,
+                    Display::get_height() - 25,
                     _("Enter?"));
     }
 }
@@ -337,16 +337,16 @@ WorldMapComponent::draw (DrawingContext& gc)
   {
     Color border_color(50, 65, 75);
     // top
-    gc.draw_fillrect(0, 0, (float)Display::get_width(), (float)cliprect.top,
+    gc.draw_fillrect(0, 0, Display::get_width(), cliprect.top,
                      border_color);
     // bottom
-    gc.draw_fillrect(0, (float)cliprect.bottom, (float)Display::get_width(), (float)Display::get_height(),
+    gc.draw_fillrect(0, cliprect.bottom, Display::get_width(), Display::get_height(),
                  border_color);
     // left
-    gc.draw_fillrect(0, (float)cliprect.top, (float)cliprect.left, (float)cliprect.bottom,
+    gc.draw_fillrect(0, cliprect.top, cliprect.left, cliprect.bottom,
                  border_color);
     // right
-    gc.draw_fillrect((float)cliprect.right, (float)cliprect.top, (float)Display::get_width(), (float)cliprect.bottom,
+    gc.draw_fillrect(cliprect.right, cliprect.top, Display::get_width(), cliprect.bottom,
                  border_color);
   }
 }
@@ -363,7 +363,7 @@ WorldMapManager::draw_foreground(DrawingContext& gc)
 {
   // Draw the levelname
   gc.draw(levelname_bg,
-          Vector3f(gc.get_width()/2 - levelname_bg.get_width()/2,
+          Vector2i(gc.get_width()/2 - levelname_bg.get_width()/2,
                    gc.get_height() - levelname_bg.get_height()));
 
   gc.print_center(Fonts::chalk_small, gc.get_width()/2, gc.get_height() - 25,

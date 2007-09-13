@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_FILE_DIALOG_ITEM_HXX
 
 #include "gui/component.hpp"
-#include "math/vector3f.hpp"
+#include "math/vector2i.hpp"
 #include "sprite.hpp"
 #include "file_dialog.hpp"
 
@@ -39,7 +39,7 @@ private:
 	std::string status;
 
 	FileDialog* file_dialog;
-	Vector3f pos;
+	Vector2i pos;
 
 	/** This file_item name will change based on the current file list */
 	FileItem file_item;
@@ -49,7 +49,7 @@ private:
 
 public:
 	// Only Constructor
-	FileDialogItem(FileDialog* f, Vector3f p) ;
+	FileDialogItem(FileDialog* f, Vector2i p) ;
 
 	/** Set the current file assigned to this button */
 	void set_file(FileItem f);

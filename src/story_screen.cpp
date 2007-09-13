@@ -105,7 +105,7 @@ public:
 
   void draw (DrawingContext& gc)
   {
-	  gc.print_right(Fonts::chalk_small, (float)x_pos, (float)y_pos, SKIP_TEXT);
+    gc.print_right(Fonts::chalk_small, x_pos, y_pos, SKIP_TEXT);
   }
 
   bool is_at(int x, int y) {
@@ -154,15 +154,15 @@ StoryScreenComponent::StoryScreenComponent (WorldMapNS::WorldMapStory *arg_story
 void
 StoryScreenComponent::draw (DrawingContext& gc)
 {
-  gc.draw(background, Vector3f(gc.get_width()/2, gc.get_height()/2));
+  gc.draw(background, Vector2i(gc.get_width()/2, gc.get_height()/2));
 
-  gc.print_center(Fonts::chalk_large, static_cast<float>(Display::get_width()/2),
-                  static_cast<float>(Display::get_height()/2 - 200), story->get_title());
-  gc.draw(page_surface, Vector3f(gc.get_width()/2, gc.get_height()/2 - 65));
+  gc.print_center(Fonts::chalk_large, Display::get_width()/2,
+                  Display::get_height()/2 - 200, story->get_title());
+  gc.draw(page_surface, Vector2i(gc.get_width()/2, gc.get_height()/2 - 65));
 
   gc.print_left(Fonts::chalk_normal,
-                static_cast<float>(Display::get_width()/2  - 280),
-                static_cast<float>(Display::get_height()/2 + 35),
+                Display::get_width()/2  - 280,
+                Display::get_height()/2 + 35,
                 display_text);
 }
 

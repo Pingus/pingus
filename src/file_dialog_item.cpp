@@ -32,7 +32,7 @@
 #include "worldmap/metamap.hpp"
 
 	// Only Constructor
-	FileDialogItem::FileDialogItem(FileDialog* f, Vector3f p) 
+	FileDialogItem::FileDialogItem(FileDialog* f, Vector2i p) 
 		: mouse_over(false), 
 			is_hidden(true), 
 			file_dialog(f),
@@ -145,7 +145,7 @@
 			if (!mouse_over || file_item.is_directory)
 			{
 				// Draw title
-				gc.print_left(Fonts::pingus_small, pos.x + (float)sprite.get_width(), 
+				gc.print_left(Fonts::pingus_small, pos.x + sprite.get_width(), 
 					pos.y, get_filename());
 			}
 			else

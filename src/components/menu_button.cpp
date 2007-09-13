@@ -78,39 +78,39 @@ MenuButton::draw (DrawingContext& gc)
 {
   if (mouse_over && !pressed)
     {
-      gc.print_center(font, (float)Display::get_width() / 2,
-                      (float)(Display::get_height() - font.get_height() - 2),
+      gc.print_center(font, Display::get_width() / 2,
+                      Display::get_height() - font.get_height() - 2,
                       desc.c_str());
 
-      gc.draw(surface_p, Vector3f((float)(x_pos - surface_p.get_width()/2),
-                                (float)(y_pos - surface_p.get_height()/2)));
+      gc.draw(surface_p, Vector2i(x_pos - surface_p.get_width()/2,
+                                  y_pos - surface_p.get_height()/2));
 
-      gc.print_center(font_large, (float)x_pos + 32,
-                      (float)(y_pos - 32 - font_large.get_height()/2),
+      gc.print_center(font_large, x_pos + 32,
+                      y_pos - 32 - font_large.get_height()/2,
                       text);
     }
   else if (mouse_over && pressed)
     {
       float shrink = 0.9f;
 
-      gc.print_center(font, (float)Display::get_width() / 2,
-                      (float)Display::get_height() - 20,
+      gc.print_center(font, Display::get_width() / 2,
+                      Display::get_height() - 20,
                       desc.c_str());
 
       gc.draw(surface_p,
-              Vector3f((float)(x_pos - surface_p.get_width()/2 * shrink),
-                     (float)(y_pos - surface_p.get_height()/2 * shrink)));
+              Vector3f(x_pos - surface_p.get_width()/2 * shrink,
+                       y_pos - surface_p.get_height()/2 * shrink));
 
       gc.print_center(font_large,
-                      (float)x_pos + 32,
-                      (float)(y_pos - 32 - font_large.get_height()/2),
+                      x_pos + 32,
+                      y_pos - 32 - font_large.get_height()/2,
                       text);
     }
   else
     {
       gc.draw(surface_p,
-              Vector3f((float)(x_pos - surface_p.get_width()/2),
-                     (float)(y_pos - surface_p.get_height()/2)));
+              Vector2i(x_pos - surface_p.get_width()/2,
+                       y_pos - surface_p.get_height()/2));
     }
   UNUSED_ARG(gc);
 }

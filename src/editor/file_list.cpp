@@ -21,6 +21,7 @@
 #include "math.hpp"
 #include "fonts.hpp"
 #include "file_list.hpp"
+#include "../math/vector2i.hpp"
 
 namespace Editor {
 
@@ -96,9 +97,9 @@ FileList::draw(DrawingContext& gc)
       i != directory.begin() + end; ++i)
     {
       if (i->type == System::DE_DIRECTORY)
-        gc.draw(directory_icon, x, y);
+        gc.draw(directory_icon, Vector2i(x, y));
       else if (i->type == System::DE_FILE)
-        gc.draw(file_icon, x, y);
+        gc.draw(file_icon, Vector2i(x, y));
 
       if ((click_item == -1 && (i - directory.begin()) == current_item) ||
           (i - directory.begin()) == click_item)

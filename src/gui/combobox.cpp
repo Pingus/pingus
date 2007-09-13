@@ -26,7 +26,7 @@
 namespace GUI {
 
 // Constructor
-Combobox::Combobox (Vector3f p, ComboboxListener* listener_, std::string l) :
+Combobox::Combobox (Vector2i p, ComboboxListener* listener_, std::string l) :
   current_item(0),
   drop_down(false),
   hover(false),
@@ -36,8 +36,8 @@ Combobox::Combobox (Vector3f p, ComboboxListener* listener_, std::string l) :
   listener(listener_)
 {
   // Default to 20 characters wide.
-  width = Fonts::pingus_small.get_width('O') * 20.0f;
-  height = (float)Fonts::pingus_small.get_height();
+  width = Fonts::pingus_small.get_width('O') * 20;
+  height = Fonts::pingus_small.get_height();
 }
 
 // Destructor
@@ -89,25 +89,25 @@ bool
 Combobox::is_at(int x, int y)
 {
   if (enabled)
-    return ((float)x > pos.x && (float)x < pos.x + get_width() &&
-            (float)y > pos.y && (float)y < pos.y + get_height());
+    return (x > pos.x && x < pos.x + get_width() &&
+            y > pos.y && y < pos.y + get_height());
   else
     return false;
 }
 
 // Returns the width of the box
-float
+int
 Combobox::get_width()
 {
   return width;
 }
 
 // Returns the height of the box
-float
+int
 Combobox::get_height()
 {
   if (drop_down)
-    return height * ((float)item_list.size() + 1.0f);
+    return height * (item_list.size() + 1);
   else
     return height;
 }
@@ -122,7 +122,7 @@ Combobox::on_primary_button_click(int x, int y)
       drop_down = false;
       if (y > pos.y + height)
         {
-          current_item = item_list[static_cast<int>((y - pos.y - height) / height)];
+          current_item = item_list[(y - pos.y - height) / height];
           listener->combobox_changed(this);
         }
     }
@@ -153,14 +153,14 @@ Combobox::draw(DrawingContext &gc)
   if (drop_down && item_list.size() > 0)
     {
       // Draw the highlighted box
-      int y_offset = int(int(((mouse_pos.y - pos.y - height)/height)+1) * height);
+      int y_offset = (((mouse_pos.y - pos.y - height)/height)+1) * height;
       gc.draw_fillrect(pos.x, pos.y + y_offset, pos.x + get_width(), pos.y + y_offset + 
                        height, Color(128,128,128));
 		
       // Draw all of the items
       for (unsigned i = 0; i < item_list.size(); i++)
         {
-          gc.print_left(Fonts::pingus_small, pos.x + 5.0f, pos.y + ((i + 1) * height), 
+          gc.print_left(Fonts::pingus_small, pos.x + 5, pos.y + ((i + 1) * height), 
                         item_list[i]->get_displayed_string());
         }
     }
@@ -168,7 +168,7 @@ Combobox::draw(DrawingContext &gc)
   if (current_item)
     {
       // Print the currently selected item
-      gc.print_left(Fonts::pingus_small, pos.x + 3.0f, pos.y, current_item->get_displayed_string());
+      gc.print_left(Fonts::pingus_small, pos.x + 3, pos.y, current_item->get_displayed_string());
     }
 }
 

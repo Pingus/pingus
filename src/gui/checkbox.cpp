@@ -19,7 +19,7 @@
 
 #include "checkbox.hpp"
 #include "../fonts.hpp"
-#include "../math/vector3f.hpp"
+#include "../math/vector2i.hpp"
 #include "../resource.hpp"
 #include "../display/drawing_context.hpp"
 #include "../gui/checkbox_listener.hpp"
@@ -27,7 +27,7 @@
 
 namespace GUI {
 	
-Checkbox::Checkbox(Vector3f p, std::string label_, CheckboxListener* l) :
+Checkbox::Checkbox(Vector2i p, std::string label_, CheckboxListener* l) :
 	checkmark(Resource::load_sprite("core/misc/checkbox_clicked")),
 	is_checked(false),
 	pos(p),

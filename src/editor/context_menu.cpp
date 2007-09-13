@@ -29,7 +29,7 @@
 namespace Editor {
 
 // Determine which actions are available for these objects
-ContextMenu::ContextMenu(std::vector<LevelObj*> o, Vector3f p, EditorViewport* vp, bool base_menu)
+ContextMenu::ContextMenu(std::vector<LevelObj*> o, Vector2i p, EditorViewport* vp, bool base_menu)
   : objs(o), 
     viewport(vp),
     pos(p),
@@ -63,8 +63,8 @@ ContextMenu::~ContextMenu()
 void
 ContextMenu::on_pointer_move(int x, int y)
 {
-  mouse_at.x = (float)x; 
-  mouse_at.y = (float)y;
+  mouse_at.x = x; 
+  mouse_at.y = y;
 
   selected_action_offset = (unsigned)((mouse_at.y - pos.y) / item_height);
 }
@@ -99,8 +99,8 @@ bool
 ContextMenu::is_at(int x, int y)
 {
   if (show)
-    return (x > pos.x && x < pos.x + width &&
-            y > pos.y && y < pos.y + total_height);
+    return (x > pos.x && x < pos.x + (int)width &&
+            y > pos.y && y < pos.y + (int)total_height);
   else
     return false;
 }
@@ -160,7 +160,7 @@ ContextMenu::create_child_menus()
   ContextMenu* menu;
   if (available_attribs & CAN_ROTATE)
     {
-      menu = new ContextMenu(objs, Vector3f(pos.x + width, pos.y), viewport, false);
+      menu = new ContextMenu(objs, Vector2i(pos.x + width, pos.y), viewport, false);
       viewport->get_screen()->get_gui_manager()->add(menu, true);
       menu->add_action(ContextItem("0 degrees", "ROT0", ROTATE, 0));
       menu->add_action(ContextItem("90 Degrees", "ROT90", ROTATE, 0));
@@ -174,7 +174,7 @@ ContextMenu::create_child_menus()
     }
   if (available_attribs & HAS_OWNER)
     {
-      menu = new ContextMenu(objs, Vector3f(pos.x + width, pos.y), viewport, false);
+      menu = new ContextMenu(objs, Vector2i(pos.x + width, pos.y), viewport, false);
       viewport->get_screen()->get_gui_manager()->add(menu, true);
       menu->add_action(ContextItem("0", "0", SET_OWNER, 0));
       menu->add_action(ContextItem("1", "1", SET_OWNER, 0));
@@ -184,14 +184,14 @@ ContextMenu::create_child_menus()
     }
   if (available_attribs & HAS_DIRECTION)
     {
-      menu = new ContextMenu(objs, Vector3f(pos.x + width, pos.y), viewport, false);
+      menu = new ContextMenu(objs, Vector2i(pos.x + width, pos.y), viewport, false);
       viewport->get_screen()->get_gui_manager()->add(menu, true);
       menu->add_action(ContextItem("Left", "left", SET_DIRECTION, 0));
       menu->add_action(ContextItem("Right", "right", SET_DIRECTION, 0));
       menu->add_action(ContextItem("Misc.", "misc", SET_DIRECTION, 0));
       add_action(ContextItem("Direction >", "", SET_DIRECTION, menu));
     }
-  menu = new ContextMenu(objs, Vector3f(pos.x + width, pos.y), viewport, false);
+  menu = new ContextMenu(objs, Vector2i(pos.x + width, pos.y), viewport, false);
   viewport->get_screen()->get_gui_manager()->add(menu, true);
   menu->add_action(ContextItem("-50", "-50", SET_Z_POS, 0));
   menu->add_action(ContextItem("-25", "-25", SET_Z_POS, 0));

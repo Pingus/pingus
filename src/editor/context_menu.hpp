@@ -23,7 +23,7 @@
 
 #include <vector>
 #include <string>
-#include "../math/vector3f.hpp"
+#include "../math/vector2i.hpp"
 #include "../gui/component.hpp"
 
 namespace Editor {
@@ -67,10 +67,10 @@ private:
   std::vector<ContextItem> actions;
 
   /** Where the mouse is located */
-  Vector3f mouse_at;
+  Vector2i mouse_at;
 
   /** Location of context menu */
-  Vector3f pos;
+  Vector2i pos;
 
   /** Is the mouse over the menu? */
   bool hover;
@@ -92,7 +92,7 @@ private:
 
 public:
   // Constructor
-  ContextMenu (std::vector<LevelObj*>, Vector3f p, EditorViewport* v, bool base_menu = true);
+  ContextMenu (std::vector<LevelObj*>, Vector2i p, EditorViewport* v, bool base_menu = true);
 		
   // Desctructor
   ~ContextMenu ();

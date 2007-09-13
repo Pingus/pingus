@@ -353,7 +353,7 @@ Pingu::draw(SceneContext& gc)
       // FIXME: in ticks, should probally be in seconds]
       snprintf(str, 16, "%d", action_time/3);
 
-      gc.color().print_center(Fonts::lcd, pos_x, pos_y - 45 + 2, str);
+      gc.color().print_center(Fonts::lcd, (int)pos_x, (int)pos_y - 45 + 2, str);
     }
 }
 

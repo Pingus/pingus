@@ -20,17 +20,17 @@
 #include <algorithm>
 #include "input_box.hpp"
 #include "../display/drawing_context.hpp"
-#include "../math/vector3f.hpp"
+#include "../math/vector2i.hpp"
 #include "../fonts.hpp"
 
 namespace GUI {
 	
-InputBox::InputBox(float width_, Vector3f p, const std::string& default_value,
+InputBox::InputBox(int width_, Vector2i p, const std::string& default_value,
                    bool locked, const std::string& label_) 
   :	str(default_value),
 	pos(p),
 	width(width_),
-	height((float)Fonts::pingus_small.get_height()),
+	height(Fonts::pingus_small.get_height()),
 	is_locked(locked),
 	label(label_)
 {

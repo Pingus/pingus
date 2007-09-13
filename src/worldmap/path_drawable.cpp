@@ -36,8 +36,8 @@ PathDrawable::draw (DrawingContext& gc)
 
   for(Path::iterator next = prev + 1; next != path.end(); ++next)
     {
-      gc.draw_line(prev->x, prev->y,
-                   next->x, next->y,
+      gc.draw_line((int)prev->x, (int)prev->y,
+                   (int)next->x, (int)next->y,
                    Color(255, 255, 255));
       prev = next;
     }

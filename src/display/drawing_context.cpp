@@ -251,6 +251,12 @@ DrawingContext::draw(DrawingContext& dc, float z)
 }
 
 void
+DrawingContext::draw(const Sprite& sprite, const Vector2i& pos)
+{
+  draw(sprite, (float)pos.x, (float)pos.y, 0.f);
+}
+
+void
 DrawingContext::draw(const Sprite& sprite, const Vector3f& pos)
 {
   draw(sprite, pos.x, pos.y, pos.z);
@@ -266,7 +272,7 @@ DrawingContext::draw(const Sprite&   sprite,  float x, float y, float z)
 }
 
 void
-DrawingContext::draw_line (float x1, float y1, float x2, float y2, 
+DrawingContext::draw_line (int x1, int y1, int x2, int y2, 
                            const Color& color, float z)
 {
   draw(new LineDrawingRequest(Vector2i(int(x1 + translate_stack.back().x), int(y1 + translate_stack.back().y)),
@@ -298,7 +304,7 @@ DrawingContext::draw_rect (const Rect& rect, const Color& color, float z)
 }
 
 void
-DrawingContext::draw_fillrect (float x1, float y1, float x2, float y2, 
+DrawingContext::draw_fillrect (int x1, int y1, int x2, int y2, 
                                const Color& color, float z)
 {
   draw(new RectDrawingRequest(Rect(int(x1 + translate_stack.back().x), int(y1 + translate_stack.back().y), 
@@ -309,7 +315,7 @@ DrawingContext::draw_fillrect (float x1, float y1, float x2, float y2,
 }
 
 void
-DrawingContext::draw_rect (float x1, float y1, float x2, float y2, 
+DrawingContext::draw_rect (int x1, int y1, int x2, int y2, 
                            const Color& color, float z)
 {
   draw(new RectDrawingRequest(Rect(int(x1 + translate_stack.back().x), int(y1 + translate_stack.back().y), 
@@ -404,20 +410,20 @@ DrawingContext::get_rect() const
   return rect;
 }
 
-float
+int
 DrawingContext::get_width() const
 {
-  return (float)rect.get_width();
+  return rect.get_width();
 }
 
-float
+int
 DrawingContext::get_height() const
 {
-  return (float)rect.get_height();  
+  return rect.get_height();  
 }
 
 void
-DrawingContext::print_left (const Font& font_, float x_pos, float y_pos, const std::string& str, float z)
+DrawingContext::print_left (const Font& font_, int x_pos, int y_pos, const std::string& str, float z)
 {
   draw(new FontDrawingRequest(font_, 
                               origin_top_left,
@@ -428,7 +434,7 @@ DrawingContext::print_left (const Font& font_, float x_pos, float y_pos, const s
 }
 
 void
-DrawingContext::print_center (const Font& font_, float x_pos, float y_pos, const std::string& str, float z)
+DrawingContext::print_center (const Font& font_, int x_pos, int y_pos, const std::string& str, float z)
 {
   draw(new FontDrawingRequest(font_, 
                               origin_top_center,
@@ -439,7 +445,7 @@ DrawingContext::print_center (const Font& font_, float x_pos, float y_pos, const
 }
 
 void
-DrawingContext::print_right (const Font& font_, float x_pos, float y_pos, const std::string& str, float z)
+DrawingContext::print_right (const Font& font_, int x_pos, int y_pos, const std::string& str, float z)
 {
   draw(new FontDrawingRequest(font_, 
                               origin_top_right,

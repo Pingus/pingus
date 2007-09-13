@@ -23,7 +23,7 @@
 #include <vector>
 #include <string>
 #include "component.hpp"
-#include "../math/vector3f.hpp"
+#include "../math/vector2i.hpp"
 
 namespace GUI {
 	
@@ -91,19 +91,19 @@ protected:
   bool hover;
 
   /** Where the mouse is located */
-  Vector3f mouse_pos;
+  Vector2i mouse_pos;
 
   /** Width of the Combobox */
-  float width;
+  int width;
 
   /** Height of EACH ITEM in the Combobox.  So, when drop_down is false, this
       should be the height of the entire widget/component.  When drop_down is 
       true, the entire widget's height should be this height times the number of
       items */
-  float height;
+  int height;
 
   /** Location of the Combobox */
-  Vector3f pos;
+  Vector2i pos;
 
   /** Whether or not this combobox is enabled */
   bool enabled;
@@ -116,7 +116,7 @@ protected:
 
 public:
   /** Constructor */
-  Combobox (Vector3f p, ComboboxListener* listener, std::string label = std::string());
+  Combobox (Vector2i p, ComboboxListener* listener, std::string label = std::string());
 	
   /** Destructor */
   virtual ~Combobox ();
@@ -147,10 +147,10 @@ public:
 
   /** Returns the height of the Combobox at this given moment.  Will be tall if 
       drop_down = true, and short if drop_down = false */
-  virtual float get_height();
+  virtual int get_height();
 
   /** Returns the width of the Combobox */
-  virtual float get_width();
+  virtual int get_width();
 
   /** Gets emmited when a button is pressed and released over the
       same component */
@@ -158,7 +158,7 @@ public:
 	
   virtual void on_pointer_enter() { hover = true; }
   virtual void on_pointer_leave() { hover = false; }
-  virtual void on_pointer_move(int x, int y) { mouse_pos = Vector3f((float)x, (float)y); }
+  virtual void on_pointer_move(int x, int y) { mouse_pos = Vector2i(x, y); }
 	
   /** Sets whether or not this combobox is clickable */
   virtual void set_enabled(bool e) { enabled = e; }

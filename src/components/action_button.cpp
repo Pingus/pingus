@@ -96,14 +96,14 @@ VerticalActionButton::draw (DrawingContext& gc)
     {
       if (fast_mode) 
         {
-          gc.draw_fillrect((float)x_pos, (float)y_pos, (float)x_pos + 60, (float)y_pos + 35,
+          gc.draw_fillrect(x_pos, y_pos, x_pos + 60, y_pos + 35,
                            Color(255, 255, 255));
         } 
       else 
         {
           //CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35 ,
           //1.0, 1.0, 1.0, 0.5);
-          gc.draw(backgroundhl, (float)x_pos, (float)y_pos);
+          gc.draw(backgroundhl, Vector2i(x_pos, y_pos));
         }
     }
   else
@@ -113,14 +113,14 @@ VerticalActionButton::draw (DrawingContext& gc)
       if (fast_mode) {
         // do nothing
       } else {
-        gc.draw(background, (float)x_pos, (float)y_pos);
+        gc.draw(background, Vector2i(x_pos, y_pos));
       }
     }
 
   if (this->get_action_name() == Climber) {
-	  gc.draw(sprite, Vector3f((float)x_pos + 32, (float)y_pos + 32));
+	  gc.draw(sprite, Vector2i(x_pos + 32, y_pos + 32));
   } else {
-	  gc.draw(sprite, Vector3f((float)x_pos + 20, (float)y_pos + 32));
+	  gc.draw(sprite, Vector2i(x_pos + 20, y_pos + 32));
   }
 
   Font myfont  = font;
@@ -135,18 +135,18 @@ VerticalActionButton::draw (DrawingContext& gc)
       && x > x_pos      && x < x_pos + 60
       && y < y_pos + 35 && y > y_pos)
     {
-      gc.print_left(myfontb, (float)x_pos + 65, (float)y_pos-10, action_to_screenname(name));
+      gc.print_left(myfontb, x_pos + 65, y_pos-10, action_to_screenname(name));
     }
 
   if (Cheat::unlimited_actions)
     {
       // FIXME: insert unlimited surface here
-      gc.print_center(myfont, (float)x_pos + 46, (float)y_pos + 5, "oo");
+      gc.print_center(myfont, x_pos + 46, y_pos + 5, "oo");
     }
   else
     {
       std::string str = StringUtil::to_string(action_holder->get_available(name));
-      gc.print_center(myfont, (float)x_pos + 46, (float)y_pos + 5, str);
+      gc.print_center(myfont, x_pos + 46, y_pos + 5, str);
     }
 }
 
@@ -168,16 +168,16 @@ ArmageddonButton::draw (DrawingContext& gc)
 {
   if (server->get_world()->check_armageddon ())
     {
-      gc.draw(backgroundhl, Vector3f((float)x_pos, (float)y_pos));
-      gc.draw(sprite, Vector3f((float)x_pos, (float)y_pos));
+      gc.draw(backgroundhl, Vector2i(x_pos, y_pos));
+      gc.draw(sprite, Vector2i(x_pos, y_pos));
     }
   else
     {
       if (!fast_mode)
-        gc.draw(background, Vector3f((float)x_pos, (float)y_pos));
+        gc.draw(background, Vector2i(x_pos, y_pos));
 
       sprite.set_frame(7);
-      gc.draw(sprite, Vector3f((float)x_pos, (float)y_pos));
+      gc.draw(sprite, Vector2i(x_pos, y_pos));
     }
 }
 
@@ -246,15 +246,15 @@ ForwardButton::draw (DrawingContext& gc)
 {
   if (server->get_fast_forward())
     {
-      gc.draw(backgroundhl, Vector3f((float)x_pos, (float)y_pos));
+      gc.draw(backgroundhl, Vector2i(x_pos, y_pos));
     }
   else
     {
       if (!fast_mode)
-        gc.draw(background, Vector3f((float)x_pos, (float)y_pos));
+        gc.draw(background, Vector2i(x_pos, y_pos));
     }
 
-  gc.draw(surface, Vector3f((float)x_pos, (float)y_pos));
+  gc.draw(surface, Vector2i(x_pos, y_pos));
 }
 
 bool
@@ -294,15 +294,15 @@ PauseButton::draw (DrawingContext& gc)
 {
   if (server->get_pause())
     {
-      gc.draw(backgroundhl, Vector3f((float)x_pos, (float)y_pos));
+      gc.draw(backgroundhl, Vector2i(x_pos, y_pos));
     }
   else
     {
     if (!fast_mode)
-      gc.draw(background, Vector3f((float)x_pos, (float)y_pos));
+      gc.draw(background, Vector2i(x_pos, y_pos));
     }
 
-  gc.draw(surface, Vector3f((float)x_pos, (float)y_pos));
+  gc.draw(surface, Vector2i(x_pos, y_pos));
 }
 
 bool

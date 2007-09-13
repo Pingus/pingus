@@ -96,9 +96,9 @@ LevelObj::draw(DrawingContext &gc)
       // If selected, draw a highlighted box around it
       if (selected)
         {
-          gc.draw_rect(translated_pos.x, translated_pos.y, 
-                       translated_pos.x + sprite.get_width(), 
-                       translated_pos.y + sprite.get_height(), 
+          gc.draw_rect((int)translated_pos.x, (int)translated_pos.y, 
+                       (int)translated_pos.x + sprite.get_width(), 
+                       (int)translated_pos.y + sprite.get_height(), 
                        Color(255,0,0), 5000);
         }
 

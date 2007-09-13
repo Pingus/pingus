@@ -42,8 +42,8 @@ public:
 
   void draw (DrawingContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_right(Fonts::chalk_large, (float)Display::get_width()/2 - 80,
-                   (float)Display::get_height()/2 + 15, _("Yes"));
+    gc.print_right(Fonts::chalk_large, Display::get_width()/2 - 80,
+                   Display::get_height()/2 + 15, _("Yes"));
   }
 
   bool is_at(int x, int y) {
@@ -81,8 +81,8 @@ public:
 
   void draw(DrawingContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_right(Fonts::chalk_large, (float)Display::get_width()/2 + 80,
-                   (float)Display::get_height()/2 + 15, _("No"));
+    gc.print_right(Fonts::chalk_large, Display::get_width()/2 + 80,
+                   Display::get_height()/2 + 15, _("No"));
   }
 
   bool is_at(int x, int y) {
@@ -119,7 +119,7 @@ ExitMenu::draw(DrawingContext& gc)
 {
   //gc.draw_fillrect (0, 0, Display::get_width (), Display::get_height (),
   //0, 0, 0, 0.5);
-  gc.draw(sur, Vector3f(gc.get_width()/2 - sur.get_width()/2,
+  gc.draw(sur, Vector2i(gc.get_width()/2 - sur.get_width()/2,
                         gc.get_height()/2 - sur.get_height()/2));
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 - 70, _("Exit Pingus?"));
   PingusSubMenu::draw(gc);
