@@ -42,7 +42,7 @@ FileList::update_layout()
   vspace = 20;
 
   num_pages = directory.size() / items_per_page();
-  if (num_pages % items_per_page() > 0)
+  if ((directory.size() % items_per_page()) != 0 || num_pages == 0)
     num_pages += 1;
   
   if (page >= num_pages)
@@ -75,7 +75,7 @@ FileList::set_directory(const std::string& pathname, const std::string& pattern)
   std::sort(directory.begin(), directory.end(), DirectorySorter());
 
   num_pages = directory.size() / items_per_page();
-  if (directory.size() % items_per_page() != 0)
+  if ((directory.size() % items_per_page()) != 0 || num_pages == 0)
     num_pages += 1;
 
   page = 0;
