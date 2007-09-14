@@ -69,6 +69,10 @@ Important:
 
 - create verdana11 for latin2 and latin9
 
+- miner remove graphics looks wrong (cmap instead of gfx?)
+
+- What happened with StartPos?!
+
 - do we need z-pos for anything or does implicit object position serve
   the same purpose?
 
@@ -105,6 +109,25 @@ Font: datadir://images/fonts/courier_small-iso-8859-9.png
 Editor:
 =======
 
+- keyboard shortcuts:
+  d      - duplicate
+  delete - delete object
+  insert - show/hide objectselector
+  cursor - pixel width moves
+  f      - flip
+  r      - rotate
+
+- exit align looks ok, object flipping/rotation is broken (due to
+  change in loading (pb->sprite) I guess)
+
+- make combo box open to the top or bottom depending on variable
+
+- ObjectSelector scroll limit is missing, also doesn't display all objects
+
+- could/should rotate around object center
+
+- when drag&dropping objects, have them at center not top/left
+
 - testing a game in the editor results in insanely fast speed (FPS
   handling likely still broken and wasting CPU)
 
@@ -114,7 +137,10 @@ Editor:
 
 - add options to show/hide hidden files and filter stuff
 
-- implement grab/ungrab input
+- write a color select widget (Hue, Saturation.Value)
+
+- bridging gets more complicated has graphical error (background?!)
+  surface background doesn't handle larger res due to the Playfield being offsetted
 
 Dialogs:
 
@@ -123,9 +149,6 @@ user name and email
 
 Nice to Have:
 =============
-
-- bridging gets more complicated has graphical error (background?!)
-  surface background doesn't handle larger res due to the Playfield being offsetted
 
 - rapidly clicking the credits button causes the game to crash
 
@@ -160,6 +183,7 @@ Nice to Have:
 
 - hurry-up should be removed and replaced by something less heavy
   (isn't used in tutorial island, since those levels don't have time)
+  (have a blinking clock and tick sound or so)
 
 - "core/misc/404sprite" isn't returned for missing graphics
 
