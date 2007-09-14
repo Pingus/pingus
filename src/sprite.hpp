@@ -22,6 +22,7 @@
 
 #include <string>
 #include <boost/shared_ptr.hpp>
+#include "math/origin.hpp"
 #include "SDL.h"
 
 class Color;
@@ -46,6 +47,7 @@ public:
   void update(float delta = 0.033f);
 
   void draw(float x, float y, SDL_Surface* target);
+  void set_hotspot(Origin origin, int x, int y);
   void set_frame(int i);
   int  get_frame_count() const;
   int  get_current_frame() const;

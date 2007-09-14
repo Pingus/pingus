@@ -450,6 +450,13 @@ Sprite::make_single_user()
 }
 
 void
+Sprite::set_hotspot(Origin origin, int x, int y)
+{
+  // FIXME: offset and other stuff should be member of the Sprite, not the SpriteImpl
+  impl->offset = calc_origin(origin, impl->frame_size) - Vector2i(x, y);
+}
+
+void
 Sprite::optimize()
 {
   impl->optimize();

@@ -189,9 +189,7 @@ ObjectSelectorList::draw(DrawingContext& parent_gc)
                              Color(155,155,155), 10000);
               }
 
-            gc.draw((*i)->thumbnail, 
-                    Vector2i(x * 48 + std::max(0, (48 - (*i)->sprite.get_width())/2), 
-                             y * 48 + std::max(0, (48 - (*i)->sprite.get_height())/2)));
+            gc.draw((*i)->thumbnail, Vector2i(x * 48, y * 48));
             ++i;
           }
         else
@@ -208,7 +206,10 @@ ObjectSelectorList::draw(DrawingContext& parent_gc)
 
   if (mode == OBJECT_DRAG)
     {
-      parent_gc.draw(objects[current_object]->sprite, real_mouse_pos, 2000.0f);
+      parent_gc.draw(objects[current_object]->sprite, 
+                     real_mouse_pos - Vector2i(objects[current_object]->sprite.get_width()/2,
+                                               objects[current_object]->sprite.get_height()/2), 
+                     2000.0f);
     }
 }
 
@@ -238,9 +239,14 @@ ObjectSelectorList::on_primary_button_release (int x, int y)
           if (!object_selector->get_rect().is_inside(Vector2i(x + object_selector->get_rect().left,
                                                               y + object_selector->get_rect().top)))
             {
-              LevelObj* obj = objects[current_object]->create(editor->get_viewport()->screen2world(x + object_selector->get_rect().left,
-                                                                                                   y + object_selector->get_rect().top),
-                                                              editor->get_level()->get_level_impl());
+              Vector2i p = editor->get_viewport()->screen2world(x + object_selector->get_rect().left,
+                                                                y + object_selector->get_rect().top);
+
+              // place object with left/top instead of center origin
+              p -= Vector2i(objects[current_object]->sprite.get_width()/2,
+                            objects[current_object]->sprite.get_height()/2);
+
+              LevelObj* obj = objects[current_object]->create(p, editor->get_level()->get_level_impl());
               if (obj)
                 editor->add_object(obj);
               else
