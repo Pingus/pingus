@@ -34,8 +34,8 @@
 namespace Editor {
 
 // Constructor
-EditorViewport::EditorViewport(EditorScreen* e, const Rect& rect) 
-  : RectComponent(rect),
+EditorViewport::EditorViewport(EditorScreen* e, const Rect& rect_) 
+  : RectComponent(rect_),
     state(rect.get_width(), rect.get_height()),
     drawing_context(new DrawingContext(rect)),
     editor(e),

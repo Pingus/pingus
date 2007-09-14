@@ -35,7 +35,7 @@ namespace {
 SDL_Rect Intersection(SDL_Rect* r1, SDL_Rect* r2)
 {
   SDL_Rect rect;
-  rect.x = Math::max(r1->x, r2->y);
+  rect.x = Math::max(r1->x, r2->x);
   rect.y = Math::max(r1->y, r2->y);
   int endx = Math::min(r1->x + r1->w, r2->x + r2->w);
   rect.w = Math::max(endx - rect.x, 0);
@@ -392,7 +392,11 @@ Display::fill_rect(const Rect& rect, const Color& color)
 void
 Display::push_cliprect(const Rect& rect)
 {
-  SDL_Rect sdl_rect = { rect.left, rect.top, rect.get_width(), rect.get_height() };
+  SDL_Rect sdl_rect;
+  sdl_rect.x = rect.left;
+  sdl_rect.y = rect.top;
+  sdl_rect.w = rect.get_width();
+  sdl_rect.h = rect.get_height();
 
   if (!cliprect_stack.empty())
     sdl_rect = Intersection(&cliprect_stack.back(), &sdl_rect);
