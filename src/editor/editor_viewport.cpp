@@ -29,7 +29,6 @@
 #include "editor_level.hpp"
 #include "editor_screen.hpp"
 #include "editor_viewport.hpp"
-#include "context_menu.hpp"
 #include "level_objs.hpp"
 
 namespace Editor {
@@ -42,7 +41,6 @@ EditorViewport::EditorViewport(EditorScreen* e, const Rect& rect)
     editor(e),
     autoscroll(false),
     highlighted_area(0,0,0,0),
-    context_menu(0),
     snap_to(false),
     current_action(NOTHING)
 {
@@ -83,23 +81,6 @@ EditorViewport::on_secondary_button_click(int x_, int y_)
 {
   mouse_world_pos = screen2world(x_, y_);
   mouse_screen_pos = Vector2i(x_, y_);
-  
-  if (0) // old context menu code
-    {
-      remove_context_menu();
-
-      //Vector3f mouse_pos(x - (state.get_width()/2  - state.get_pos().x),
-      //                   y - (state.get_height()/2 - state.get_pos().y));
-
-      //	LevelObj* obj = object_at((int)mouse_pos.x, (int)mouse_pos.y);
-      if (!selected_objs.empty())
-        {
-          //	std::vector<LevelObj*> objs;
-          //	objs.push_back(obj);
-          context_menu = new ContextMenu(selected_objs, Vector2i(x_, y_), this);
-          editor->get_gui_manager()->add(context_menu, true);
-        }
-    }
 }
 
 // Select 1 or more LevelObjs, or drag them.
@@ -109,8 +90,6 @@ EditorViewport::on_primary_button_press(int x_, int y_)
   mouse_world_pos  = screen2world(x_, y_);
   mouse_screen_pos = Vector2i(x_, y_);
   
-  remove_context_menu();
-
   if (current_action == NOTHING)
     {
       LevelObj* obj = object_at(mouse_world_pos.x, mouse_world_pos.y);
@@ -304,18 +283,6 @@ EditorViewport::object_at (int x, int y)
         return *i;
     }
   return 0;
-}
-
-// Delete the context menu if it exists.
-void
-EditorViewport::remove_context_menu()
-{
-  if (context_menu)
-    {
-      editor->get_gui_manager()->remove(context_menu);
-      context_menu->display(false);
-      context_menu = 0;
-    }
 }
 
 void

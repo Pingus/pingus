@@ -56,8 +56,7 @@ EditorScreen::EditorScreen()
     show_help(false)
 {
   // Create the viewport for the images and data
-  viewport = new EditorViewport(this, Rect(0,
-                                           38,
+  viewport = new EditorViewport(this, Rect(0, 38,
                                            Display::get_width() - 244, 
                                            Display::get_height()));
   gui_manager->add(viewport, true);	

@@ -21,59 +21,39 @@
 #include "../debug.hpp"
 #include "../globals.hpp"
 #include "../input/event.hpp"
+#include "display.hpp"
 #include "game_delta.hpp"
 #include "gui_manager.hpp"
 
-
-using namespace GUI;
 using namespace Input;
 
+namespace GUI { 
+
 GUIManager::GUIManager ()
-  : primary_pressed_component (0),
-    secondary_pressed_component (0),
-		focussed_component(0),
-    mouse_over_component (0),
-    x_pos (400), y_pos (300)
+  : GroupComponent(Rect(0, 0, Display::get_width(), Display::get_height())),
+    mouse_pos(400,300)
 {
 }
-
+
+GUIManager::GUIManager(const Rect& rect)
+  : GroupComponent(rect),
+    mouse_pos(400,300)
+{
+}
+
 GUIManager::~GUIManager ()
 {
-  for (std::vector<Component*>::iterator i = components_for_delete.begin ();
-       i != components_for_delete.end (); ++i)
-    {
-      delete (*i);
-    }
-
-  components_for_delete.clear();
 }
-
+
 void
-GUIManager::draw (DrawingContext& gc)
-{
-  for (std::vector<Component*>::iterator i = components.begin ();
-       i != components.end (); ++i)
-    {
-      if ((*i)->is_visible())
-        (*i)->draw (gc);
-    }
-}
-
-void
-GUIManager::update (const GameDelta& delta)
+GUIManager::update(const GameDelta& delta)
 {
   process_input (delta);
-
-  for (std::vector<Component*>::iterator i = components.begin ();
-       i != components.end (); ++i)
-    {
-      if ((*i)->is_visible())
-        (*i)->update (delta.get_time ());
-    }
+  GroupComponent::update(delta.get_time());
 }
-
+
 void
-GUIManager::process_input (const GameDelta& delta)
+GUIManager::process_input(const GameDelta& delta)
 {
   const std::vector<Input::Event>& events = delta.get_events();
 
@@ -82,11 +62,26 @@ GUIManager::process_input (const GameDelta& delta)
       switch (i->type)
 	{
           case Input::POINTER_EVENT_TYPE:
-            process_pointer_event (i->pointer);
+            mouse_pos.x = int(i->pointer.x);
+            mouse_pos.y = int(i->pointer.y);
+            on_pointer_move(mouse_pos.x, mouse_pos.y);
             break;
 
           case Input::BUTTON_EVENT_TYPE:
-            process_button_event (delta.get_absolute_time(), i->button);
+            if (i->button.name == PRIMARY_BUTTON)
+              {
+                if (i->button.state == Input::BUTTON_PRESSED)
+                  on_primary_button_press(mouse_pos.x, mouse_pos.y);
+                else if (i->button.state == Input::BUTTON_RELEASED)
+                  on_primary_button_release(mouse_pos.x, mouse_pos.y);
+              }
+            else if (i->button.name == SECONDARY_BUTTON)
+              {
+                if (i->button.state == Input::BUTTON_PRESSED)
+                  on_secondary_button_press(mouse_pos.x, mouse_pos.y);
+                else if (i->button.state == Input::BUTTON_RELEASED)
+                  on_secondary_button_release(mouse_pos.x, mouse_pos.y);
+              }
             break;
 
           case Input::AXIS_EVENT_TYPE:
@@ -95,7 +90,7 @@ GUIManager::process_input (const GameDelta& delta)
             break;
 	
           case Input::KEYBOARD_EVENT_TYPE:
-            process_keyboard_event(i->keyboard);
+            on_key_pressed(i->keyboard.key);
             break;
 
           default:
@@ -104,209 +99,7 @@ GUIManager::process_input (const GameDelta& delta)
 	}
     }
 }
-
-void
-GUIManager::add(Component* c, bool delete_component)
-{
-  components.push_back(c);
-  if( delete_component )
-    components_for_delete.push_back(c);
-}
-
-void
-GUIManager::remove(Component* c)
-{
-  Components::iterator i = std::find(components.begin(), components.end(), c);
-  if (i != components.end())
-    components.erase(i); 
-}
-
-Component*
-GUIManager::component_at(int x, int y)
-{
-  // we travel reversly through the component list, so that we get the
-  // top most component at first
-  for (std::vector<Component*>::reverse_iterator i = components.rbegin ();
-       i != components.rend (); ++i)
-    {
-      if ((*i)->is_visible() && (*i)->is_at (x, y))
-	return *i;
-    }
-  return 0;
-}
-
-bool
-GUIManager::is_at (int x, int y)
-{
-  for (std::vector<Component*>::iterator i = components.begin ();
-       i != components.end (); ++i)
-    {
-      if ((*i)->is_visible() && (*i)->is_at (x, y))
-	return true;
-    }
-
-  return false;
-}
-
-void
-GUIManager::process_pointer_event (const Input::PointerEvent& event)
-{
-  x_pos = static_cast<int>(event.x);
-  y_pos = static_cast<int>(event.y);
-
-  Component* comp = component_at(x_pos, y_pos);//FIXME
-
-  if (primary_pressed_component)
-    primary_pressed_component->on_pointer_move (x_pos, y_pos);
-  else if (comp)
-    {
-      comp->on_pointer_move (x_pos, y_pos);
-    }
-
-  if (comp)
-    {
-      if (comp != mouse_over_component)
-	{
-	  if (mouse_over_component != 0)
-	    mouse_over_component->on_pointer_leave ();
-
-	  comp->on_pointer_enter ();
-	  mouse_over_component = comp;
-	}
-      else
-	{
-	  // nothing changed, so we don't trigger events
-	}
-    }
-  else
-    {
-      if (mouse_over_component)
-	{
-	  mouse_over_component->on_pointer_leave ();
-	  mouse_over_component = 0;
-	}
-    }
-
-}
-
-void
-GUIManager::process_button_event (unsigned int time_stamp, const Input::ButtonEvent& event)
-{
-  //std::cout << "GUIManager: Got button event: " << event.name << " " << event.state << std::endl;
-
-  Component* comp = component_at (x_pos, y_pos);//FIXME: x/y_pos should be inside controller
-
-  if (comp)
-    {
-      if (event.name == PRIMARY_BUTTON && event.state == Input::BUTTON_PRESSED)
-	{
-	  primary_pressed_component = comp;
-          change_focussed_comp(comp);
-	  comp->on_primary_button_press (x_pos, y_pos);
-
-          // FIXME: add double click detection here
-	}
-      else if (event.name == PRIMARY_BUTTON && event.state == Input::BUTTON_RELEASED)
-	{
-	  /** Send the release event to the same component
-	      which got the press event */
-	  if (primary_pressed_component)
-	    {
-	      primary_pressed_component->on_primary_button_release (x_pos, y_pos);
-
-	      if (primary_pressed_component == comp)
-		{
-		  //std::cout << "GUIManager: calling on_primary_button_click ()" << std::endl;
-		  comp->on_primary_button_click (x_pos, y_pos);
-		}
-	      else
-		{
-		  // discard click
-		}
-	      primary_pressed_component = 0;
-	    }
-	  else
-	    {
-	      /* FIXME: This happens when you press a button
-		 FIXME: in one GUIManager and switch in the
-		 FIXME: on_primary_button_press() method to another
-		 FIXME: manager, not sure if there is or
-		 FIXME: should be a workaround */
-	      if (maintainer_mode)
-                std::cout << "GUIManager: Got a release without a press, possibly a bug" << std::endl;
-	    }
-	}
-
-      // Secondary button
-      if (event.name == SECONDARY_BUTTON && event.state == Input::BUTTON_PRESSED)
-	{
-	  secondary_pressed_component = comp;
-          change_focussed_comp(comp);
-	  comp->on_secondary_button_press (x_pos, y_pos);
-	}
-      else if (event.name == SECONDARY_BUTTON && event.state == Input::BUTTON_RELEASED)
-	{
-	  /** Send the release event to the same component
-	      which got the press event */
-	  if (secondary_pressed_component)
-	    {
-	      secondary_pressed_component->on_secondary_button_release (x_pos, y_pos);
-
-	      if (secondary_pressed_component == comp)
-		{
-		  //std::cout << "GUIManager: calling on_secondary_button_click ()" << std::endl;
-		  comp->on_secondary_button_click (x_pos, y_pos);
-		}
-	      else
-		{
-		  // discard click
-		}
-	      secondary_pressed_component = 0;
-	    }
-	  else
-	    {
-	      /* FIXME: This happens when you press a button
-		 FIXME: in one GUIManager and switch in the
-		 FIXME: on_secondary_button_press() method to another
-		 FIXME: manager, not sure if there is or
-		 FIXME: should be a workaround */
-              if (maintainer_mode)
-                std::cout << "GUIManager: Got a release without a press, possibly a bug" << std::endl;
-	    }
-	}
-
-    }
-  else
-    {
-      if (secondary_pressed_component)
-	{
-	  secondary_pressed_component->on_secondary_button_release (x_pos, y_pos);
-	  secondary_pressed_component = 0;
-	}
-    }
-
-  UNUSED_ARG(time_stamp);
-}
-
-void 
-GUIManager::process_keyboard_event (const Input::KeyboardEvent &event)
-{
-  // Pass key value to last pressed component.
-  if (focussed_component)
-    focussed_component->on_key_pressed(event.key);
-}
-
-void
-GUIManager::change_focussed_comp(Component* c)
-{
-  if (focussed_component)
-    focussed_component->set_focus(false);
-
-  focussed_component = c;
-
-  if (focussed_component)
-    focussed_component->set_focus(true);
-}
-
+
+} // namespace GUI
 
 /* EOF */

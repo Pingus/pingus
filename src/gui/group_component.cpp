@@ -197,7 +197,7 @@ GroupComponent::on_pointer_move(int x, int y)
 Component*
 GroupComponent::component_at (const Vector2i& pos)
 {
-  for(Components::iterator i = children.begin(); i != children.end(); ++i)
+  for(Components::reverse_iterator i = children.rbegin(); i != children.rend(); ++i)
     {
       if ((*i)->is_visible() && (*i)->is_at(pos.x, pos.y))
         return *i;

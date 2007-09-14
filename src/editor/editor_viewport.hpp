@@ -103,9 +103,6 @@ public:
       coordinates */
   void on_pointer_move (int x, int y);
 
-  /** Get rid of context menu if it exists */
-  void remove_context_menu();
-
   /** Refresh the list of objects (do when loading or creating a new level) */
   void refresh();
 	

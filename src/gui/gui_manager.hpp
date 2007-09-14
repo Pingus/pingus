@@ -22,8 +22,7 @@
 
 #include <vector>
 #include "../input/event.hpp"
-#include "component.hpp"
-
+#include "group_component.hpp"
 
 class DrawingContext;
 class GameDelta;
@@ -39,55 +38,22 @@ namespace GUI {
     which point it is best to split the GameDelta into
     on_primary_button_press(), etc.
 */
-class GUIManager : public Component
+class GUIManager : public GroupComponent
 {
 private:
-  typedef std::vector<Component*> Components;
-  Components components;
-  Components components_for_delete;
-
-  /** The component which recieved the last pressed event */
-  Component* primary_pressed_component;
-  Component* secondary_pressed_component;
-
-  /** Component which currently has the focus (last clicked) */
-  Component* focussed_component;
-
-  /** The component over which the mouse was in the last update,
-      used to detecte enter/leave events */
-  Component* mouse_over_component;
-
-  // FIXME: Hack: should be handled inside the controller
-  int x_pos;
-  int y_pos;
+  Vector2i mouse_pos;
 
   void process_input (const GameDelta& delta);
   void process_pointer_event (const Input::PointerEvent& event);
   void process_button_event (unsigned int time_stamp, const Input::ButtonEvent& event);
   void process_keyboard_event (const Input::KeyboardEvent& event);
 
-  /** Change which component has the focus and notify the component */
-  void change_focussed_comp(Component* c);
-	
 public:
-  GUIManager ();
+  GUIManager();
+  GUIManager(const Rect&);
   virtual ~GUIManager ();
 
-  virtual void draw (DrawingContext& gc);
-  virtual void update (const GameDelta& delta);
-  virtual void update (float delta) { UNUSED_ARG (delta); }
-
-  /** Add a component to the manager, if delete_component is true
-      the component will get deleted on destruction of the manager,
-      if false is supplied the user has to handle the component
-      itself */
-  void add (Component*, bool delete_component);
-
-  /** */
-  void remove (Component*);
-
-  Component* component_at (int x, int y);
-  virtual bool is_at (int x, int y);
+  void update(const GameDelta& delta);
 
 private:
   GUIManager (const GUIManager&);

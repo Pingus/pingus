@@ -52,7 +52,7 @@ private:
   
 public:
   GroupComponent(const Rect& rect, bool clip = true);
-  ~GroupComponent();  
+  virtual ~GroupComponent();  
   	
   void draw(DrawingContext& gc);
   virtual void draw_background(DrawingContext& gc) {}

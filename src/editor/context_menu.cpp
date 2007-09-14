@@ -135,7 +135,7 @@ ContextMenu::on_primary_button_click(int x, int y)
                 break;
             }
         }
-      viewport->remove_context_menu();
+      // FIXME: should be handled differently: viewport->remove_context_menu();
     }
 }
 
