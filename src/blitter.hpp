@@ -25,10 +25,10 @@
 #include "math/color.hpp"
 #include "math/rect.hpp"
 
-class PixelBuffer;
+class Surface;
 
 /** A bunch of blitting and creation functions to operate on
-    PixelBuffer.  Some of them a similar to the ones in ClanLib, but
+    Surface.  Some of them a similar to the ones in ClanLib, but
     this are slower and work. */
 class Blitter
 {
@@ -37,27 +37,27 @@ public:
   static SDL_Surface* create_surface_rgb(int w, int h);
 
   /** Flip a surface horizontal */
-  static PixelBuffer flip_horizontal (PixelBuffer sur);
+  static Surface flip_horizontal (Surface sur);
 
   /** Flip a surface vertical */
-  static PixelBuffer flip_vertical (PixelBuffer sur);
+  static Surface flip_vertical (Surface sur);
 
   /** Rotate a surface 90 degrees */
-  static PixelBuffer rotate_90 (PixelBuffer sur);
+  static Surface rotate_90 (Surface sur);
 
-  static PixelBuffer rotate_180 (PixelBuffer sur);
+  static Surface rotate_180 (Surface sur);
 
-  static PixelBuffer rotate_270 (PixelBuffer sur);
+  static Surface rotate_270 (Surface sur);
 
-  static PixelBuffer rotate_90_flip (PixelBuffer sur);
+  static Surface rotate_90_flip (Surface sur);
 
-  static PixelBuffer rotate_180_flip (PixelBuffer sur);
+  static Surface rotate_180_flip (Surface sur);
 
-  static PixelBuffer rotate_270_flip (PixelBuffer sur);
+  static Surface rotate_270_flip (Surface sur);
 
   /** Creates a new surface with the given width and height and
       stretches the source surface onto it, the caller is responsible
-      to delete the returned PixelBuffer.
+      to delete the returned Surface.
 
       @param surface The source surface
       @param width The new width of the surface.
@@ -65,7 +65,7 @@ public:
       @return A newly created surface, the caller is responsible to delete it. */
   static SDL_Surface* scale_surface(SDL_Surface* surface, int width, int height);
 
-  static PixelBuffer scale_surface_to_canvas(PixelBuffer provider, int width, int height);
+  static Surface scale_surface_to_canvas(Surface provider, int width, int height);
 
 private:
   Blitter (const Blitter&);

@@ -34,8 +34,8 @@ public:
     //CL_Surface surf = Resource::load_surface("textures/stone", "textures");
     CL_Surface surf = Resource::load_surface("textures/greentex");
 
-    PixelBuffer buf(256, 256, 256*4, CL_PixelFormat::rgba8888);
-    PixelBuffer data = surf.get_pixeldata();
+    Surface buf(256, 256, 256*4, CL_PixelFormat::rgba8888);
+    Surface data = surf.get_pixeldata();
     Timer bench("Blit");
     Blitter::put_surface(buf, data, 0, 0);
     Blitter::fill_rect(buf, CL_Rect(-50, -50, 250, 250), Color(255, 150, 50, 128));

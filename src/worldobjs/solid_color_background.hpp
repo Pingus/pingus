@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_WORLDOBJS_SOLID_COLOR_BACKGROUND_HXX
 
 #include "../math/color.hpp"
-#include "../pixel_buffer.hpp"
 #include "../worldobj.hpp"
 
 namespace WorldObjsData {

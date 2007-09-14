@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_BLITTER_IMPL_HXX
 
 #include <iostream>
-#include "pixel_buffer.hpp"
+#include "surface.hpp"
 #include "pingus.hpp"
 
 /** A collection of helper functions for the blitter class */
@@ -177,17 +177,17 @@ struct transform_rot270_flip
 
 template<class TransF>
 inline
-PixelBuffer modify(PixelBuffer source_buffer, const TransF&)
+Surface modify(Surface source_buffer, const TransF&)
 {
   SDL_Surface* source = source_buffer.get_surface();
   SDL_LockSurface(source);
 
   if (source->format->palette)
     {
-      PixelBuffer target_buffer(TransF::get_width (source_buffer.get_width(), source_buffer.get_height()), 
-                                TransF::get_height(source_buffer.get_width(), source_buffer.get_height()),
-                                source->format->palette, 
-                                (source->flags & SDL_SRCCOLORKEY) ? source->format->colorkey : -1);
+      Surface target_buffer(TransF::get_width (source_buffer.get_width(), source_buffer.get_height()), 
+                            TransF::get_height(source_buffer.get_width(), source_buffer.get_height()),
+                            source->format->palette, 
+                            (source->flags & SDL_SRCCOLORKEY) ? source->format->colorkey : -1);
       SDL_Surface* target = target_buffer.get_surface();
       SDL_LockSurface(target);
 

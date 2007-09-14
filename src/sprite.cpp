@@ -26,7 +26,7 @@
 #include "SDL_image.h"
 #include "sprite.hpp"
 #include "blitter.hpp"
-#include "pixel_buffer.hpp"
+#include "surface.hpp"
 #include "pathname.hpp"
 #include "sprite_description.hpp"
 
@@ -91,11 +91,11 @@ public:
     optimize();
   }
 
-  SpriteImpl(const PixelBuffer& pixelbuffer)
+  SpriteImpl(const Surface& surface)
     : optimized(false),
       offset(0,0),
       frame_pos(0,0),
-      frame_size(pixelbuffer.get_width(), pixelbuffer.get_height()),
+      frame_size(surface.get_width(), surface.get_height()),
       frame_delay(0),
       array(1,1),
       loop(true),
@@ -104,19 +104,19 @@ public:
       frame(0),
       tick_count(0)
   {
-    if (pixelbuffer.get_surface())
+    if (surface.get_surface())
       {
-        if (pixelbuffer.get_surface()->format->Amask == 0)
-          surface = SDL_DisplayFormat(pixelbuffer.get_surface());
+        if (surface.get_surface()->format->Amask == 0)
+          this->surface = SDL_DisplayFormat(surface.get_surface());
         else
-          surface = SDL_DisplayFormatAlpha(pixelbuffer.get_surface());
+          this->surface = SDL_DisplayFormatAlpha(surface.get_surface());
 
         optimized = true;
       }
     else
       {
-        surface = 0;
-        std::cout << "Sprite: Error trying to create a Sprite out of an empty PixelBuffer"  << std::endl;
+        this->surface = 0;
+        std::cout << "Sprite: Error trying to create a Sprite out of an empty Surface"  << std::endl;
       }
   }
 
@@ -214,8 +214,8 @@ Sprite::Sprite(const Pathname& name)
   impl = boost::shared_ptr<SpriteImpl>(new SpriteImpl(desc));
 }
 
-Sprite::Sprite(const PixelBuffer& pixelbuffer)
-  : impl(new SpriteImpl(pixelbuffer))
+Sprite::Sprite(const Surface& surface)
+  : impl(new SpriteImpl(surface))
 {
   
 }

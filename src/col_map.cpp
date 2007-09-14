@@ -23,7 +23,6 @@
 #include "globals.hpp"
 #include "col_map.hpp"
 #include "collision_mask.hpp"
-#include "pixel_buffer.hpp"
 #include "pingus_error.hpp"
 #include "math.hpp"
 #include "gettext.h"
@@ -172,7 +171,7 @@ ColMap::put(const CollisionMask& mask, int sur_x, int sur_y, Groundtype::GPType 
 void
 ColMap::draw(DrawingContext& gc)
 {
-  PixelBuffer canvas(width, height);
+  Surface canvas(width, height);
   unsigned char* buffer;
 
   canvas.lock();

@@ -156,60 +156,60 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
   return new_surface;
 }
 
-PixelBuffer
-Blitter::scale_surface_to_canvas(PixelBuffer provider, int width, int height)
+Surface
+Blitter::scale_surface_to_canvas(Surface provider, int width, int height)
 {
-    return PixelBuffer(Blitter::scale_surface(provider.get_surface(), width, height));
+    return Surface(Blitter::scale_surface(provider.get_surface(), width, height));
 }
 
 /** Flip a surface horizontal */
-PixelBuffer
-Blitter::flip_horizontal (PixelBuffer prov)
+Surface
+Blitter::flip_horizontal (Surface prov)
 {
   return BlitterImpl::modify(prov, BlitterImpl::transform_flip());
 }
 
 /** Flip a surface vertical */
-PixelBuffer
-Blitter::flip_vertical (PixelBuffer sur)
+Surface
+Blitter::flip_vertical (Surface sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot180_flip());
 }
 
 /** Rotate a surface 90 degrees */
-PixelBuffer
-Blitter::rotate_90 (PixelBuffer sur)
+Surface
+Blitter::rotate_90 (Surface sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot90());
 }
 
 
-PixelBuffer
-Blitter::rotate_180 (PixelBuffer sur)
+Surface
+Blitter::rotate_180 (Surface sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot180());
 }
 
-PixelBuffer
-Blitter::rotate_270 (PixelBuffer sur)
+Surface
+Blitter::rotate_270 (Surface sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot270());
 }
 
-PixelBuffer
-Blitter::rotate_90_flip (PixelBuffer sur)
+Surface
+Blitter::rotate_90_flip (Surface sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot90_flip());
 }
 
-PixelBuffer
-Blitter::rotate_180_flip (PixelBuffer sur)
+Surface
+Blitter::rotate_180_flip (Surface sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot180_flip());
 }
 
-PixelBuffer
-Blitter::rotate_270_flip (PixelBuffer sur)
+Surface
+Blitter::rotate_270_flip (Surface sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot270_flip());
 }

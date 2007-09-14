@@ -26,7 +26,7 @@
 #include "SDL.h"
 
 class Color;
-class PixelBuffer;
+class Surface;
 class Pathname;
 class SpriteImpl;
 class SpriteDescription;
@@ -38,7 +38,7 @@ public:
   Sprite();
   Sprite(const Pathname& name);
   Sprite(const SpriteDescription& desc);
-  Sprite(const PixelBuffer& pixelbuffer);
+  Sprite(const Surface& surface);
   ~Sprite();
 
   int get_width()  const;

@@ -160,7 +160,7 @@ LevelObj::refresh_sprite()
     {
       sprite = Resource::load_sprite(desc);
 #if 0				
-      PixelBuffer pb;
+      Surface pb;
 
       // Apply modifier, then change the sprite loaded for this object in memory.
       if (stretch_x || stretch_y)
@@ -194,7 +194,7 @@ LevelObj::refresh_sprite()
                         
         }
       else		// No stretch involved
-        pb = Resource::load_pixelbuffer(desc);
+        pb = Resource::load_surface(desc);
 
       sprite = Sprite(pb);
 #endif

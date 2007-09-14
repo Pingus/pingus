@@ -38,15 +38,15 @@ PingusMenuManager::PingusMenuManager ()
 	if (w != 800 && h != 600)
 	{
 		background.add_layer (Blitter::scale_surface_to_canvas(
-			Resource::load_pixelbuffer("core/menu/layer1"), w, 185 * h / 600), 0, 0, 12, 0);
+			Resource::load_surface("core/menu/layer1"), w, 185 * h / 600), 0, 0, 12, 0);
 		background.add_layer (Blitter::scale_surface_to_canvas(
-			Resource::load_pixelbuffer("core/menu/layer2"), w, 362 * h / 600), 0, 150 * (float)h / 600, 25, 0);
+			Resource::load_surface("core/menu/layer2"), w, 362 * h / 600), 0, 150 * (float)h / 600, 25, 0);
 		background.add_layer (Blitter::scale_surface_to_canvas(
-			Resource::load_pixelbuffer("core/menu/layer3"), w, 306 * h / 600), 0, 200 * (float)h / 600, 50, 0);
+			Resource::load_surface("core/menu/layer3"), w, 306 * h / 600), 0, 200 * (float)h / 600, 50, 0);
 		background.add_layer (Blitter::scale_surface_to_canvas(
-			Resource::load_pixelbuffer("core/menu/layer4"), w, 171 * h / 600), 0, 429 * (float)h / 600, 100, 0);
+			Resource::load_surface("core/menu/layer4"), w, 171 * h / 600), 0, 429 * (float)h / 600, 100, 0);
 		background.add_layer (Blitter::scale_surface_to_canvas(
-			Resource::load_pixelbuffer("core/menu/layer5"), 302 * w / 800, 104 * h / 600), 0, 500 * (float)h / 600, 200, 0);
+			Resource::load_surface("core/menu/layer5"), 302 * w / 800, 104 * h / 600), 0, 500 * (float)h / 600, 200, 0);
 	}
 	else
 	{

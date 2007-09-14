@@ -21,14 +21,14 @@
 #define HEADER_COLLISION_MASK_HPP
 
 #include <string>
-#include "pixel_buffer.hpp"
+#include "surface.hpp"
 #include "res_descriptor.hpp"
 
 /** */
 class CollisionMask
 {
 public:
-  PixelBuffer pixelbuffer;
+  Surface    surface;
   uint8_t*    buffer;
   int         width;
   int         height;
@@ -42,7 +42,7 @@ public:
   int get_width() const;
   int get_height() const;
   
-  PixelBuffer get_pixelbuffer() const;
+  Surface get_surface() const;
   uint8_t* get_data() const;
 
 private:

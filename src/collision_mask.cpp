@@ -43,27 +43,27 @@ void
 CollisionMask::init(const ResDescriptor& res_desc)
 {
   //std::cout << "CollisionMask: " << name << std::endl;
-  pixelbuffer = Resource::load_pixelbuffer(res_desc);
-  //PixelBuffer cmap = pixelbuffer; // Resource::load_pixelbuffer(System::cut_ext(name) + "_cmap");
+  surface = Resource::load_surface(res_desc);
+  //Surface cmap = surface; // Resource::load_surface(System::cut_ext(name) + "_cmap");
 
-  int pitch = pixelbuffer.get_pitch();
-  width  = pixelbuffer.get_width();
-  height = pixelbuffer.get_height();
+  int pitch = surface.get_pitch();
+  width  = surface.get_width();
+  height = surface.get_height();
   
   buffer = new uint8_t[width * height];
 
-  SDL_Surface* surface = pixelbuffer.get_surface();
-  SDL_LockSurface(surface);
+  SDL_Surface* sdl_surface = surface.get_surface();
+  SDL_LockSurface(sdl_surface);
 
-  if (surface->format->palette)
+  if (sdl_surface->format->palette)
     {
-      uint8_t* source = static_cast<uint8_t*>(surface->pixels);
-      if (surface->flags & SDL_SRCCOLORKEY)
+      uint8_t* source = static_cast<uint8_t*>(sdl_surface->pixels);
+      if (sdl_surface->flags & SDL_SRCCOLORKEY)
         { // surface with transparent areas
           for(int y = 0; y < height; ++y)
             for(int x = 0; x < width; ++x)
               {
-                if (source[y*pitch + x] == surface->format->colorkey)
+                if (source[y*pitch + x] == sdl_surface->format->colorkey)
                   buffer[y*width + x] = 0;
                 else
                   buffer[y*width + x] = 1;
@@ -85,15 +85,15 @@ CollisionMask::init(const ResDescriptor& res_desc)
              "  bmask: 0x%08x\n"
              "  amask: 0x%08x\n",
              res_desc.res_name.c_str(),
-             int(surface->format->BitsPerPixel),
-             int(surface->format->BytesPerPixel),
-             (unsigned int)surface->format->Rmask,
-             (unsigned int)surface->format->Gmask,
-             (unsigned int)surface->format->Bmask,
-             (unsigned int)surface->format->Amask);
+             int(sdl_surface->format->BitsPerPixel),
+             int(sdl_surface->format->BytesPerPixel),
+             (unsigned int)sdl_surface->format->Rmask,
+             (unsigned int)sdl_surface->format->Gmask,
+             (unsigned int)sdl_surface->format->Bmask,
+             (unsigned int)sdl_surface->format->Amask);
     }
 
-  SDL_UnlockSurface(surface);
+  SDL_UnlockSurface(sdl_surface);
 }
 
 CollisionMask::~CollisionMask()
@@ -113,10 +113,10 @@ CollisionMask::get_height() const
   return height;
 }
 
-PixelBuffer
-CollisionMask::get_pixelbuffer() const
+Surface
+CollisionMask::get_surface() const
 {
-  return pixelbuffer;
+  return surface;
 }
 
 uint8_t*

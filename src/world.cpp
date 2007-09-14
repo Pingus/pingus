@@ -285,7 +285,7 @@ World::put(int x, int y, Groundtype::GPType p)
 void
 World::put(const CollisionMask& mask, int x, int y, Groundtype::GPType type)
 {
-  gfx_map->put(mask.get_pixelbuffer(), x, y);
+  gfx_map->put(mask.get_surface(), x, y);
   colmap->put(mask, x, y, type);
 }
 
@@ -297,7 +297,7 @@ World::remove(int x, int y)
 void
 World::remove(const CollisionMask& mask, int x, int y)
 {
-  gfx_map->remove(mask.get_pixelbuffer(), x, y);
+  gfx_map->remove(mask.get_surface(), x, y);
   colmap->remove(mask, x, y);
 }
 

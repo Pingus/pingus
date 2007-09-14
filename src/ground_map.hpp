@@ -25,7 +25,7 @@
 #include "globals.hpp"
 #include "worldobj.hpp"
 #include "ground_map.hpp"
-#include "pixel_buffer.hpp"
+#include "surface.hpp"
 
 class SceneContext;
 class PingusLevel;
@@ -36,15 +36,15 @@ class MapTile
 {
 private:
   Sprite       sprite;
-  PixelBuffer  pixelbuffer;
+  Surface  surface;
 
   void prepare();
 public:
   MapTile();
   ~MapTile();
 
-  void remove(PixelBuffer, int x, int y, int real_x, int real_y, GroundMap*);  
-  void put(PixelBuffer, int x, int y);  
+  void remove(Surface, int x, int y, int real_x, int real_y, GroundMap*);  
+  void put(Surface, int x, int y);  
 
   Sprite get_sprite() const { return sprite; }
 };
@@ -81,18 +81,18 @@ public:
   int  get_width();
 
   /** Put the gives surface provider onto the given coordinates */
-  void put(PixelBuffer, int x, int y);
+  void put(Surface, int x, int y);
 
   /** Remove the gives surface provider onto the given coordinates
       (everything non-transparent that isn't Groundtype::GP_Solid 
 			is removed from the map) */
-  void remove(PixelBuffer, int x, int y);
+  void remove(Surface, int x, int y);
 
   float get_z_pos () const { return 0; }
 
 	/** Low level version of the remove() call, acts on a single tile
       instead of the complete map-tiles */
-  void put_alpha_surface(PixelBuffer provider, PixelBuffer sprovider,
+  void put_alpha_surface(Surface provider, Surface sprovider,
 			 int x, int y, int real_x, int real_y);
 
 private:

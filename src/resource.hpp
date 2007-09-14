@@ -23,7 +23,7 @@
 #include <map>
 #include <vector>
 #include "sprite.hpp"
-#include "pixel_buffer.hpp"
+#include "surface.hpp"
 #include "res_descriptor.hpp"
 #include "resource_manager.hpp"
 #include "collision_mask.hpp"
@@ -54,7 +54,7 @@ public:
       Returns all sections if blank */
   static std::vector<std::string> get_sections(const std::string &section = std::string());
 #endif
-  static PixelBuffer apply_modifier_to_pixelbuffer(PixelBuffer, const ResDescriptor& res_desc);
+  static Surface apply_modifier_to_surface(Surface, const ResDescriptor& res_desc);
 
 public:
   static void init();
@@ -69,8 +69,8 @@ public:
   static Sprite        load_sprite(const std::string& res_name);
   static CollisionMask load_collision_mask(const std::string& res_name);
   static CollisionMask load_collision_mask(const ResDescriptor&);
-  static PixelBuffer   load_pixelbuffer(const std::string& res_name);
-  static PixelBuffer   load_pixelbuffer(const ResDescriptor&);
+  static Surface   load_surface(const std::string& res_name);
+  static Surface   load_surface(const ResDescriptor&);
 
   /** Load a font with res_name from datafile */
   static Font load_font(const std::string& res_name);

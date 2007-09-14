@@ -40,30 +40,30 @@ MapTile::~MapTile()
 void
 MapTile::prepare()
 {
-  if (!pixelbuffer)
+  if (!surface)
     {
-      pixelbuffer = PixelBuffer(tile_size, tile_size);
-      //Blitter::clear_canvas(pixelbuffer);
+      surface = Surface(tile_size, tile_size);
+      //Blitter::clear_canvas(surface);
     }
 }
 
 void
-MapTile::remove(PixelBuffer obj, int x, int y, 
+MapTile::remove(Surface obj, int x, int y, 
                 int real_x, int real_y, GroundMap* parent)
 {
   if (sprite)
     {
-      parent->put_alpha_surface(pixelbuffer, obj, x, y, real_x, real_y);
-      sprite = Sprite(pixelbuffer);
+      parent->put_alpha_surface(surface, obj, x, y, real_x, real_y);
+      sprite = Sprite(surface);
     }
 }
 
 void
-MapTile::put(PixelBuffer obj, int x, int y)
+MapTile::put(Surface obj, int x, int y)
 {
   prepare();
-  pixelbuffer.blit(obj, x, y);
-  sprite = Sprite(pixelbuffer);
+  surface.blit(obj, x, y);
+  sprite = Sprite(surface);
 }
 
 GroundMap::GroundMap(const PingusLevel& plf)
@@ -163,7 +163,7 @@ GroundMap::get_height(void)
 }
 
 void
-GroundMap::remove(PixelBuffer sprovider, int x, int y)
+GroundMap::remove(Surface sprovider, int x, int y)
 {
   // Get the start tile and end tile
   int start_x = Math::max(x / tile_size, 0);
@@ -182,7 +182,7 @@ GroundMap::remove(PixelBuffer sprovider, int x, int y)
 }
 
 void
-GroundMap::put_alpha_surface(PixelBuffer provider, PixelBuffer sprovider,
+GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
                              int x_pos, int y_pos, int real_x_arg, int real_y_arg)
 {
   if (sprovider.get_surface()->format->BitsPerPixel != 8)
@@ -266,7 +266,7 @@ GroundMap::put_alpha_surface(PixelBuffer provider, PixelBuffer sprovider,
 }
 
 void
-GroundMap::put(PixelBuffer source, int x, int y)
+GroundMap::put(Surface source, int x, int y)
 {
   // Get the start tile and end tile
   int start_x = std::max(0, x / tile_size);

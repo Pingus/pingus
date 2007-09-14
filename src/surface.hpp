@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PIXEL_BUFFER_HPP
-#define HEADER_PIXEL_BUFFER_HPP
+#ifndef HEADER_SURFACE_HPP
+#define HEADER_SURFACE_HPP
 
 #include "SDL.h"
 #include <string>
@@ -27,22 +27,22 @@
 #include "math/color.hpp"
 
 class Pathname;
-class PixelBufferImpl;
+class SurfaceImpl;
 
 /** */
-class PixelBuffer
+class Surface
 {
 public:
-  PixelBuffer();
-  PixelBuffer(const Pathname& name);
-  /** Create an empty RGBA PixelBuffer */
-  PixelBuffer(int width, int height);
+  Surface();
+  Surface(const Pathname& name);
+  /** Create an empty RGBA Surface */
+  Surface(int width, int height);
 
-  /** Create an empty Indexed PixelBuffer (8bit) */
-  PixelBuffer(int width, int height, SDL_Palette* palette, int colorkey = -1);
-  /** Create a PixelBuffer from a SDL_Surface */
-  PixelBuffer(SDL_Surface* surface);
-  ~PixelBuffer();
+  /** Create an empty Indexed Surface (8bit) */
+  Surface(int width, int height, SDL_Palette* palette, int colorkey = -1);
+  /** Create a Surface from a SDL_Surface */
+  Surface(SDL_Surface* surface);
+  ~Surface();
 
   uint8_t* get_data() const;
   void lock();
@@ -52,7 +52,7 @@ public:
   int get_height() const;
   int get_pitch()  const;
 
-  void blit(const PixelBuffer& source, int x, int y);
+  void blit(const Surface& source, int x, int y);
 
   Color get_pixel(int x, int y) const;
 
@@ -61,7 +61,7 @@ public:
   operator bool() const;
 
 protected:
-  boost::shared_ptr<PixelBufferImpl> impl;
+  boost::shared_ptr<SurfaceImpl> impl;
 };
 
 #endif

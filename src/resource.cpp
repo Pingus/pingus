@@ -103,11 +103,19 @@ Resource::deinit()
 Sprite
 Resource::load_sprite(const ResDescriptor& desc)
 {
-  return load_sprite(desc.res_name);
+  if (desc.modifier == ResourceModifierNS::ROT0)
+    {
+      return load_sprite(desc.res_name);
+    }
+  else
+    {
+      // FIXME: Add code to apply the modifier
+      return load_sprite(desc.res_name);
+    }
 }
 
-PixelBuffer
-Resource::apply_modifier_to_pixelbuffer(PixelBuffer prov, const ResDescriptor& desc)
+Surface
+Resource::apply_modifier_to_surface(Surface prov, const ResDescriptor& desc)
 {
   switch (desc.modifier)
     {
@@ -173,20 +181,20 @@ Resource::load_collision_mask(const ResDescriptor& res_desc)
   return CollisionMask(res_desc);
 }
 
-PixelBuffer
-Resource::load_pixelbuffer(const ResDescriptor& desc_)
+Surface
+Resource::load_surface(const ResDescriptor& desc_)
 {
   SpriteDescription* desc = resmgr.get_sprite_description(desc_.res_name);
   if (desc)
-    return apply_modifier_to_pixelbuffer(PixelBuffer(desc->filename), desc_);
+    return apply_modifier_to_surface(Surface(desc->filename), desc_);
   else
-    return apply_modifier_to_pixelbuffer(PixelBuffer(), desc_);
+    return apply_modifier_to_surface(Surface(), desc_);
 }
 
-PixelBuffer
-Resource::load_pixelbuffer(const std::string& res_name)
+Surface
+Resource::load_surface(const std::string& res_name)
 {
-  return load_pixelbuffer(ResDescriptor(res_name));
+  return load_surface(ResDescriptor(res_name));
 }
 
 #if 0
@@ -244,63 +252,6 @@ Resource::load_from_cache (const ResDescriptor& res_desc)
     {
       return i->second;
     }
-}
-#endif 
-
-#if 0 
-CL_Surface
-Resource::apply_modifier (const CL_Surface& surf, const ResDescriptor& res_desc)
-{
-  PixelBuffer prov = surf.get_pixeldata();
-
-  switch (res_desc.modifier)
-    {
-    case ResourceModifierNS::ROT0:
-      return CL_Surface(prov);
-
-    case ResourceModifierNS::ROT90:
-      return CL_Surface(Blitter::rotate_90(prov));
-
-    case ResourceModifierNS::ROT180:
-      return CL_Surface(Blitter::rotate_180(prov));
-                        
-    case ResourceModifierNS::ROT270:
-      return CL_Surface(Blitter::rotate_270(prov));
-
-    case ResourceModifierNS::ROT0FLIP:
-      return CL_Surface(Blitter::flip_horizontal(prov));
-
-    case ResourceModifierNS::ROT90FLIP:
-      return CL_Surface(Blitter::rotate_90_flip(prov));
-
-    case ResourceModifierNS::ROT180FLIP:
-      return CL_Surface(Blitter::rotate_180_flip(prov));
-
-    case ResourceModifierNS::ROT270FLIP:
-      return CL_Surface(Blitter::rotate_270_flip(prov));
-
-    default:
-      perr << "Resource: Unhandled modifier: " << res_desc.modifier << std::endl;
-      return CL_Surface(prov);
-    }
-}
-
-CL_Surface
-Resource::load_from_source (const ResDescriptor& res_desc)
-{
-  try {
-    return CL_Surface(res_desc.res_name, &resmgr);
-  } catch (CL_Error err) {
-    pout << "CL_Error: " << err.message << std::endl;
-    pout << "Resource:" << res_desc
-         <<  ":-404-:" << err.message << std::endl;
-    try {
-      return CL_Surface ("core/misc/404", &resmgr);
-    } catch (CL_Error err2) {
-      pout << "Resource: Fatal error, important gfx files (404.pcx) couldn't be loaded!" << std::endl;
-      throw err;
-    }
-  }
 }
 #endif 
 

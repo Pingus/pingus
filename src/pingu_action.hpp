@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_PINGU_ACTION_HXX
 
 #include "pingu_enums.hpp"
-#include "pixel_buffer.hpp"
+#include "surface.hpp"
 #include "collision_mask.hpp"
 
 class ActionHolder;

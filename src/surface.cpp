@@ -20,35 +20,35 @@
 #include "SDL_image.h"
 #include <sstream>
 #include <iostream>
-#include "pixel_buffer.hpp"
+#include "surface.hpp"
 
-class PixelBufferImpl
+class SurfaceImpl
 {
 public:
-  PixelBufferImpl(SDL_Surface* surface = NULL) : surface(surface) {}
-  ~PixelBufferImpl() {
+  SurfaceImpl(SDL_Surface* surface = NULL) : surface(surface) {}
+  ~SurfaceImpl() {
     SDL_FreeSurface(surface);
   }
   SDL_Surface* surface;
 };
 
-PixelBuffer::PixelBuffer()
+Surface::Surface()
 {
 }
 
-PixelBuffer::PixelBuffer(const Pathname& pathname)
-  : impl(new PixelBufferImpl())
+Surface::Surface(const Pathname& pathname)
+  : impl(new SurfaceImpl())
 {
   impl->surface = IMG_Load(pathname.get_sys_path().c_str());
   if (!impl->surface)
     std::cout << "XXXXXX Failed to load: " << pathname.str() << std::endl;
   ///else
-  //std::cout << "Loaded pixelbuffer: " << name << ": " << surface->w << "x" << surface->h << std::endl;
+  //std::cout << "Loaded surface: " << name << ": " << surface->w << "x" << surface->h << std::endl;
 
 }
 
-PixelBuffer::PixelBuffer(int width, int height, SDL_Palette* palette, int colorkey)
-  : impl(new PixelBufferImpl())
+Surface::Surface(int width, int height, SDL_Palette* palette, int colorkey)
+  : impl(new SurfaceImpl())
 {
   if (colorkey == -1)
     {
@@ -65,8 +65,8 @@ PixelBuffer::PixelBuffer(int width, int height, SDL_Palette* palette, int colork
   SDL_SetColors(impl->surface, palette->colors, 0, palette->ncolors);
 }
 
-PixelBuffer::PixelBuffer(int width, int height)
-  : impl(new PixelBufferImpl())
+Surface::Surface(int width, int height)
+  : impl(new SurfaceImpl())
 {
   impl->surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 32,
                                        0x000000ff,
@@ -76,25 +76,25 @@ PixelBuffer::PixelBuffer(int width, int height)
   //SDL_FillRect(surface, NULL, SDL_MapRGBA(surface->format, 0, 0, 0, 0));
 }
 
-PixelBuffer::PixelBuffer(SDL_Surface* surface)
-  : impl(new PixelBufferImpl(surface))
+Surface::Surface(SDL_Surface* surface)
+  : impl(new SurfaceImpl(surface))
 {
 }
 
-PixelBuffer::~PixelBuffer()
+Surface::~Surface()
 {
 }
 
 void
-PixelBuffer::blit(const PixelBuffer& src, int x, int y)
+Surface::blit(const Surface& src, int x, int y)
 {
   if (!get_surface())
     {
-      std::cout << "PixelBuffer: Trying to blit to empty surface" << std::endl;
+      std::cout << "Surface: Trying to blit to empty surface" << std::endl;
     }
   else if (!src.get_surface())
     {
-      std::cout << "PixelBuffer: Trying to blit with an empty surface" << std::endl;
+      std::cout << "Surface: Trying to blit with an empty surface" << std::endl;
     }
   else
     {
@@ -108,25 +108,25 @@ PixelBuffer::blit(const PixelBuffer& src, int x, int y)
 }
 
 void
-PixelBuffer::lock()
+Surface::lock()
 {
   SDL_LockSurface(get_surface());
 }
 
 void
-PixelBuffer::unlock()
+Surface::unlock()
 {
   SDL_UnlockSurface(get_surface());
 }
 
 uint8_t*
-PixelBuffer::get_data() const
+Surface::get_data() const
 {
   return static_cast<uint8_t*>(get_surface()->pixels);
 }
 
 int
-PixelBuffer::get_width()  const
+Surface::get_width()  const
 {
   if (get_surface())
     return get_surface()->w;
@@ -135,7 +135,7 @@ PixelBuffer::get_width()  const
 }
 
 int
-PixelBuffer::get_height() const
+Surface::get_height() const
 {
   if (get_surface())
     return get_surface()->h;
@@ -144,7 +144,7 @@ PixelBuffer::get_height() const
 }
 
 int
-PixelBuffer::get_pitch() const
+Surface::get_pitch() const
 {
   if (get_surface())
     return get_surface()->pitch;
@@ -153,18 +153,18 @@ PixelBuffer::get_pitch() const
 }
 
 SDL_Surface* 
-PixelBuffer::get_surface() const
+Surface::get_surface() const
 {
   return impl ? impl->surface : 0;
 }
 
-PixelBuffer::operator bool() const
+Surface::operator bool() const
 {
   return impl ? impl->surface != NULL : false;
 }
 
 Color
-PixelBuffer::get_pixel(int x, int y) const
+Surface::get_pixel(int x, int y) const
 {
   Uint8 *p = (Uint8 *)get_surface()->pixels + y * get_surface()->pitch + x * get_surface()->format->BytesPerPixel;
   Uint32 pixel;
