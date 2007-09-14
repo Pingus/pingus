@@ -251,9 +251,9 @@ DrawingContext::draw(DrawingContext& dc, float z)
 }
 
 void
-DrawingContext::draw(const Sprite& sprite, const Vector2i& pos)
+DrawingContext::draw(const Sprite& sprite, const Vector2i& pos, float z)
 {
-  draw(sprite, (float)pos.x, (float)pos.y, 0.f);
+  draw(sprite, (float)pos.x, (float)pos.y, z);
 }
 
 void

@@ -33,82 +33,26 @@ class DrawingContext;
 namespace Editor {
 
 class EditorScreen;
+class ObjectSelectorList;
 
 /** */
 class ObjectSelector : public GUI::GroupComponent
 {
-public:
-  struct Object {
-    Sprite  sprite;
-    Sprite  thumbnail;
-    
-    Object(const Sprite& sprite_, const Sprite& thumbnail_) 
-      : sprite(sprite_),
-        thumbnail(thumbnail_)
-    {}      
-
-    virtual ~Object() {}
-
-    virtual LevelObj* create(const Vector2i&, LevelImpl* impl) { return 0; }
-  };
-
 private:
   EditorScreen* editor;
   Vector2i button_pos;
-  DrawingContext* drawing_context;
-  float    offset;
-  float    old_offset;
-  Vector2i drag_start;
-  Vector2i mouse_pos;
-  Vector2i real_mouse_pos;
-  
-  enum Mode { NOTHING, SCROLLING, OBJECT_DRAG };
-  Mode mode;
-
-  typedef std::vector<Object*> Objects;
-  Objects objects;
-
-  int current_object;
-  int drag_object;
+  ObjectSelectorList* object_list;
 
 public:
-  typedef void (ObjectSelector::*Callback)();
+  typedef void (ObjectSelectorList::*Callback)();
   Callback callback;
 
   ObjectSelector(EditorScreen* editor, const Rect& rect);
   ~ObjectSelector();
 
   void draw_background(DrawingContext& gc);
-  void update (float delta);
 
   void add_button(const std::string& image, const std::string& tooltip = "", Callback callback = 0);
-
-  void on_primary_button_press (int x, int y);
-  void on_primary_button_release (int x, int y);
-
-  void on_secondary_button_press (int x, int y);
-  void on_secondary_button_release (int x, int y);
-
-  void on_pointer_move (int x, int y);
-
-  void set_objects(const std::string& prefix);
-
-  void clear_object_list();
-
-  void set_groundpiece(const std::string& prefix, const std::string& type);
-  void set_gp_ground();
-  void set_gp_solid();
-  void set_gp_bridge();
-  void set_gp_transparent();
-  void set_gp_remove();
-  void set_hotspot();
-  void set_background();
-  void set_entrance();
-  void set_exit();
-  void set_liquid();
-  void set_trap();
-  void set_weather();
-  void set_worldobj();
 
 private:
   ObjectSelector (const ObjectSelector&);

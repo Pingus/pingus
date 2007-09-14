@@ -32,8 +32,9 @@ GroupComponent::GroupComponent(const Rect& rect, bool clip)
   : RectComponent(rect),
     drawing_context(rect, clip),
     mouse_over_comp(0),
-    press_over_comp(0),
-    focused_comp(0)
+    focused_comp(0),
+    primary_pressed_comp(0),
+    secondary_pressed_comp(0)
 {
 }
 
@@ -90,8 +91,8 @@ GroupComponent::on_primary_button_press (int x, int y)
       if (focused_comp)
         focused_comp->set_focus(true);
     }
-  
-  press_over_comp = comp;
+
+  primary_pressed_comp = comp;
 }
 
 void
@@ -99,13 +100,20 @@ GroupComponent::on_primary_button_release (int x, int y)
 {
   Vector2i mouse_pos = drawing_context.screen_to_world(Vector2i(x, y));
   Component* comp = component_at(mouse_pos);
-  if (comp)
-    {
-      comp->on_primary_button_release(mouse_pos.x, mouse_pos.y);
-      if (press_over_comp)
-        press_over_comp->on_secondary_button_click(mouse_pos.x, mouse_pos.y);
       
-      press_over_comp = 0;
+  if (primary_pressed_comp)
+    {
+      primary_pressed_comp->on_primary_button_release(mouse_pos.x, mouse_pos.y);
+
+      if (comp == primary_pressed_comp)
+        primary_pressed_comp->on_primary_button_click(mouse_pos.x, mouse_pos.y);
+
+      primary_pressed_comp = 0;
+    }
+  else
+    {
+      if (comp)
+        comp->on_primary_button_release(mouse_pos.x, mouse_pos.y);
     }
 }
   
@@ -117,29 +125,36 @@ GroupComponent::on_secondary_button_press (int x, int y)
   if (comp)
     comp->on_secondary_button_press(mouse_pos.x, mouse_pos.y);
 
-  press_over_comp = comp;
+  if (!primary_pressed_comp)
+    secondary_pressed_comp = comp;
 }
 
 void
-GroupComponent::on_secondary_button_release (int x, int y)
+GroupComponent::on_secondary_button_release(int x, int y)
 {
   Vector2i mouse_pos = drawing_context.screen_to_world(Vector2i(x, y));
-  Component* comp = component_at(mouse_pos);
-  if (comp)
-    {
-      comp->on_secondary_button_release(mouse_pos.x, mouse_pos.y);
-      if (press_over_comp)
-        press_over_comp->on_secondary_button_click(mouse_pos.x, mouse_pos.y);
 
-      press_over_comp = 0;
+  Component* comp = component_at(mouse_pos);
+  
+  if (secondary_pressed_comp)
+    {
+      secondary_pressed_comp->on_secondary_button_release(mouse_pos.x, mouse_pos.y);
+      
+      if (comp == secondary_pressed_comp)
+        secondary_pressed_comp->on_secondary_button_click(mouse_pos.x, mouse_pos.y);
+      
+      secondary_pressed_comp = 0;
+    }
+  else
+    {
+      if (comp)
+        comp->on_secondary_button_release(mouse_pos.x, mouse_pos.y);
     }
 }
 
 void
 GroupComponent::on_key_pressed(const unsigned short c)
 {
-  std::cout << "GroupComponent: " << int(c) << std::endl;
-
   if (focused_comp)
     focused_comp->on_key_pressed(c);
   else if (mouse_over_comp)
@@ -150,22 +165,33 @@ void
 GroupComponent::on_pointer_move(int x, int y)
 {
   Vector2i mouse_pos = drawing_context.screen_to_world(Vector2i(x, y));
-  Component* comp = component_at(mouse_pos);
-  if (comp)
+  if (primary_pressed_comp)
     {
-      comp->on_pointer_move(mouse_pos.x, mouse_pos.y); 
+      primary_pressed_comp->on_pointer_move(mouse_pos.x, mouse_pos.y);
     }
-
-  if (comp != mouse_over_comp)
+  else if (secondary_pressed_comp)
     {
-      if (mouse_over_comp)
-        mouse_over_comp->on_pointer_leave();
-      
+      secondary_pressed_comp->on_pointer_move(mouse_pos.x, mouse_pos.y);
+    }
+  else
+    {
+      Component* comp = component_at(mouse_pos);
       if (comp)
-        comp->on_pointer_enter();
-    }
+        {
+          comp->on_pointer_move(mouse_pos.x, mouse_pos.y); 
+        }
 
-  mouse_over_comp = comp;
+      if (comp != mouse_over_comp)
+        {
+          if (mouse_over_comp)
+            mouse_over_comp->on_pointer_leave();
+      
+          if (comp)
+            comp->on_pointer_enter();
+        }
+
+      mouse_over_comp = comp;
+    }
 }
 
 Component*

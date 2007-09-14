@@ -71,7 +71,7 @@ public:
       worth a try */
   void draw(DrawingContext& dc, float z = 0);
 
-  void draw(const Sprite& sprite, const Vector2i& pos);
+  void draw(const Sprite& sprite, const Vector2i& pos, float z = 0);
   void draw(const Sprite& sprite, const Vector3f& pos);
   void draw(const Sprite& sprite, float x, float y, float z = 0);
   

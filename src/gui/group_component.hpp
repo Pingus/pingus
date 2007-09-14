@@ -38,9 +38,17 @@ private:
   typedef std::vector<Component*> Components;
   Components     children;
   DrawingContext drawing_context;
+
+  /** Used to detect enter/leave events */
   Component*     mouse_over_comp;
-  Component*     press_over_comp;
+
+  /** Used to decide where keyboard events should go */
   Component*     focused_comp;
+
+  /** Used to do a mouse grab, as long as a button is pressed, the
+      component that got the press gets moves and release events */
+  Component* primary_pressed_comp;
+  Component* secondary_pressed_comp;
   
 public:
   GroupComponent(const Rect& rect, bool clip = true);
