@@ -51,7 +51,7 @@ InputBox::draw(DrawingContext &gc)
   if (label != std::string())
     gc.print_right(Fonts::pingus_small, pos.x, pos.y, label);
      
-  if (has_focus)
+  if (has_focus())
     gc.draw_line(pos.x + Fonts::pingus_small.get_size(shrink_string(str)).width + 12,
                  pos.y, pos.x + Fonts::pingus_small.get_size(shrink_string(str)).width + 12, 
                  pos.y + height,	Color(0,255,255));

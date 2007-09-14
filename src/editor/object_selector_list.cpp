@@ -162,12 +162,12 @@ ObjectSelectorList::draw(DrawingContext& parent_gc)
 
   Objects::iterator i = objects.begin();
 
-  for(int y = 0; y < 20; ++y)
+  for(int y = 0; y < 20; ++y) // FIXME: This is incorrect
     for(int x = 0; x < 5; ++x)
       {
         if (i != objects.end())
-          {
-            if (current_object != -1 && (i - objects.begin()) == current_object)
+          { // draw a item
+            if (has_mouse_over() && current_object != -1 && (i - objects.begin()) == current_object)
               {
                 gc.draw_fillrect(x * 48,      y * 48, 
                                  x * 48 + 48, y * 48 + 48, 
@@ -195,7 +195,7 @@ ObjectSelectorList::draw(DrawingContext& parent_gc)
             ++i;
           }
         else
-          {
+          { // draw the quads for empty slots
             gc.draw_fillrect(x * 48,      y * 48, 
                              x * 48 + 48, y * 48 + 48, 
                              (((x-(y%2)) % 2) ? Color(0,0,0) : Color(100,100,100)));

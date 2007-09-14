@@ -70,8 +70,8 @@ public:
 
   void on_key_pressed(const unsigned short c);
 
-  void on_pointer_enter() {}
-  void on_pointer_leave() {}
+  void on_pointer_enter();
+  void on_pointer_leave();
 
   void on_pointer_move(int x, int y);
 

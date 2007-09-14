@@ -184,10 +184,16 @@ GroupComponent::on_pointer_move(int x, int y)
       if (comp != mouse_over_comp)
         {
           if (mouse_over_comp)
-            mouse_over_comp->on_pointer_leave();
+            {
+              mouse_over_comp->set_mouse_over(false);
+              mouse_over_comp->on_pointer_leave();
+            }
       
           if (comp)
-            comp->on_pointer_enter();
+            {
+              comp->set_mouse_over(true);
+              comp->on_pointer_enter();
+            }
         }
 
       mouse_over_comp = comp;
@@ -215,6 +221,23 @@ void
 GroupComponent::update_layout()
 {
   drawing_context.set_rect(rect);
+}
+
+void
+GroupComponent::on_pointer_enter()
+{
+  
+}
+
+void
+GroupComponent::on_pointer_leave()
+{
+  if (mouse_over_comp)
+    {
+      mouse_over_comp->set_mouse_over(false);
+      mouse_over_comp->on_pointer_leave();
+    }
+  mouse_over_comp = 0; 
 }
 
 } // namespace GUI

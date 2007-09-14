@@ -39,7 +39,7 @@ void
 Inputbox::draw(DrawingContext& gc)
 {
   gc.draw_fillrect(rect, Color(255,255,255));
-  gc.draw_rect(rect, has_focus ? Color(255,128,0) : Color(0,0,0));
+  gc.draw_rect(rect, has_focus() ? Color(255,128,0) : Color(0,0,0));
   
   gc.print_left(Fonts::verdana11, rect.left + 5, 
                 rect.top + rect.get_height()/2 - Fonts::verdana11.get_height()/2,

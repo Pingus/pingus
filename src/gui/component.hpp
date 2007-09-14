@@ -30,16 +30,26 @@ namespace GUI {
     some people might call it a widget */
 class Component
 {
-protected:
-  bool has_focus;
+private:
+  bool focus;
+  bool mouse_over;
   bool visible;
 
 public:
-  Component () : has_focus(false), visible(true) { }
+  Component () : focus(false), mouse_over(false), visible(true) { }
   virtual ~Component() {}
 
-  virtual void set_focus(bool val) { has_focus = val; }
+  virtual void set_focus(bool val) { focus = val; }
+  virtual void set_mouse_over(bool val) { mouse_over = val; }
 	
+  virtual bool has_mouse_over() const { return mouse_over; }
+  virtual bool has_focus() const { return focus; }
+
+  virtual void hide() { visible = false; }
+  virtual void show() { visible = true; }
+
+  virtual bool is_visible() const { return visible; }
+
   virtual void draw (DrawingContext& gc) =0;
   virtual void update (float delta) { UNUSED_ARG(delta);}
 
@@ -74,11 +84,6 @@ public:
   /** Emitted whenever a keyboard character is pressed.  Only certain 
       components should implement this */
   virtual void on_key_pressed(const unsigned short c) { UNUSED_ARG(c); }
-
-  virtual void hide() { visible = false; }
-  virtual void show() { visible = true; }
-
-  virtual bool is_visible() { return visible; }
 
 private:
   Component (const Component&);
