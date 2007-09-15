@@ -37,7 +37,7 @@ private:
   friend class Sprite;
 
   Surface  surface;
-
+  bool     optimized;
   Vector2i offset;
 
   Vector2i frame_pos;
@@ -60,7 +60,8 @@ public:
   }
 
   SpriteImpl(const SpriteDescription& desc, ResourceModifierNS::ResourceModifier mod = ResourceModifierNS::ROT0)
-    : finished(false),
+    : optimized(false),
+      finished(false),
       frame(0),
       tick_count(0)
   {
@@ -89,11 +90,11 @@ public:
 
     offset = calc_origin(desc.origin, frame_size) - desc.offset;
     
-    optimize();
   }
 
   SpriteImpl(const Surface& surface_)
     : surface(surface_),
+      optimized(false),
       offset(0,0),
       frame_pos(0,0),
       frame_size(surface.get_width(), surface.get_height()),
@@ -105,7 +106,6 @@ public:
       frame(0),
       tick_count(0)
   {
-    optimize();
   }
 
   ~SpriteImpl()
@@ -115,6 +115,7 @@ public:
   void optimize()
   {
     surface.optimize();
+    optimized = true;
   }
 
   void update(float delta)
@@ -146,6 +147,9 @@ public:
 
   void draw(float x, float y, SDL_Surface* dst)
   {
+    if (!optimized)
+      optimize();
+
     SDL_Rect dstrect;
     dstrect.x = (Sint16)(x - offset.x);
     dstrect.y = (Sint16)(y - offset.y);
@@ -407,12 +411,6 @@ Sprite::apply_mod(ResourceModifierNS::ResourceModifier mod)
     {
       std::cout << "Error: Sprite: apply_mod() only works with single frame Sprites" << std::endl;
     }
-}
-
-void
-Sprite::optimize()
-{
-  impl->optimize();
 }
 
 /* EOF */

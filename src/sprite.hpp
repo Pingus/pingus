@@ -70,10 +70,6 @@ public:
       will be lost. */
   void fill(const Color& color);
 
-  /** Call SDL_DisplayFormatAlpha() or SDL_DisplayFormat() to speed up
-      rendering of this sprite */
-  void optimize();
-
   /** Duplicate the underlying SDL_Surface to allow manipulation
       without affecting other references to it */
   void make_single_user();
