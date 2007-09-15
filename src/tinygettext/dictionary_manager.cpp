@@ -19,10 +19,10 @@
 
 #include <iostream>
 #include <sys/types.h>
-#ifdef HAVE_DIRENT_H
-#include <dirent.h>
+#ifndef WIN32
+#  include <dirent.h>
 #else
-#include "../win32/uce_dirent.h"
+# include "../win32/uce_dirent.h"
 #endif
 
 #include <fstream>
