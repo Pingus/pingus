@@ -290,7 +290,7 @@ Surface::clone() const
                                                                  impl->surface->w, impl->surface->h);
   SDL_BlitSurface(impl->surface, NULL, new_surface, NULL);
  
- return Surface(boost::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface, true)));
+  return Surface(boost::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface, true)));
 }
 
 Surface

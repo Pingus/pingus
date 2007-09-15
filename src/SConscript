@@ -106,6 +106,7 @@ env.Program('../pingus', [
 'editor/inputbox.cpp',
 'editor/object_selector.cpp',
 'editor/object_selector_list.cpp',
+'editor/object_selector_set.cpp',
 'editor/object_properties.cpp',
 'editor/level_properties.cpp',
 'editor/action_properties.cpp', 

@@ -37,6 +37,7 @@ class LevelObj;
 class LevelImpl;
 class EditorScreen;
 class ObjectSelector;
+class ObjectSelectorSet;
 
 /** */
 class ObjectSelectorList : public GUI::RectComponent
@@ -68,12 +69,12 @@ private:
   enum Mode { NOTHING, SCROLLING, OBJECT_DRAG };
   Mode mode;
 
-
   typedef std::vector<Object*> Objects;
-  Objects objects;
 
   int current_object;
   int drag_object;
+
+  ObjectSelectorSet* set;
 
 public:
   ObjectSelectorList(EditorScreen* editor_, ObjectSelector* object_selector_, const Rect& rect);
@@ -88,24 +89,7 @@ public:
 
   void draw(DrawingContext& gc);
 
-  void set_objects(const std::string& prefix);
-
-  void clear_object_list();
-
-  void set_groundpiece(const std::string& prefix, const std::string& type);
-  void set_gp_ground();
-  void set_gp_solid();
-  void set_gp_bridge();
-  void set_gp_transparent();
-  void set_gp_remove();
-  void set_hotspot();
-  void set_background();
-  void set_entrance();
-  void set_exit();
-  void set_liquid();
-  void set_trap();
-  void set_weather();
-  void set_worldobj();
+  void set_objects(ObjectSelectorSet* object_set);
 
   void update_layout() {}
 private:

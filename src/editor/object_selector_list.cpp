@@ -26,6 +26,7 @@
 #include <iostream>
 #include "math.hpp"
 #include "editor_screen.hpp"
+#include "object_selector_set.hpp"
 #include "object_selector.hpp"
 #include "editor_viewport.hpp"
 #include "editor_level.hpp"
@@ -36,107 +37,6 @@
 
 namespace Editor {
 
-struct Groundpiece : public ObjectSelectorList::Object 
-{
-  ResDescriptor desc;
-  std::string   type;
-  
-  Groundpiece(const std::string& name, const std::string& type)
-    : Object(Resource::load_sprite(name),
-             Resource::load_thumb_sprite(name)),
-      desc(name),
-      type(type)
-  {}      
-  
-  LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
-    LevelObj* obj = new LevelObj("groundpiece", impl);
-    obj->set_pos(pos);
-    obj->set_res_desc(desc);
-    obj->set_type(type);
-    return obj;
-  }
-};
-
-struct Entrance : public ObjectSelectorList::Object 
-{
-  Entrance()
-    : Object(Resource::load_sprite("entrances/generic"),
-             Resource::load_thumb_sprite("entrances/generic"))
-  {}
-
-  LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
-    LevelObj* obj = new LevelObj("entrance", impl);
-    obj->set_type("generic");
-    obj->set_pos(pos);
-    obj->set_direction("misc");
-    obj->set_release_rate(150);
-    obj->set_owner(0);
-    return obj;
-  }
-};
-
-struct Exit : public ObjectSelectorList::Object 
-{
-  ResDescriptor desc;
-  
-  Exit(const std::string& name)
-    : Object(Resource::load_sprite(name), 
-             Resource::load_thumb_sprite(name)),
-      desc(name)
-  {}
-
-  LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
-    LevelObj* obj = new LevelObj("exit", impl);
-    obj->set_pos(pos);
-    obj->set_res_desc(desc);
-    // obj->set_para();
-    return obj;
-  }
-};
-
-struct Hotspot : public ObjectSelectorList::Object 
-{
-  ResDescriptor desc;
-  
-  Hotspot(const std::string& name)
-    : Object(Resource::load_sprite(name),
-             Resource::load_thumb_sprite(name)),
-      desc(name)
-  {}
-
-  LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
-    LevelObj* obj = new LevelObj("hotspot", impl);
-    obj->set_pos(pos);
-    obj->set_res_desc(desc);
-    // obj->set_para();
-    return obj;
-  }
-};
-
-struct SurfaceBackground : public ObjectSelectorList::Object 
-{
-  ResDescriptor desc;
-  
-  SurfaceBackground(const std::string& name)
-    : Object(Resource::load_sprite(name),
-             Resource::load_thumb_sprite(name)),
-      desc(name)
-  {}
-
-  LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
-    LevelObj* obj = new LevelObj("surface-background", impl);
-    obj->set_pos(Vector3f((float)pos.x, (float)pos.y, -1000.0f)); // FIXME: Hack, z-pos handling is messed up
-    obj->set_para_x(1.0f);
-    obj->set_para_y(1.0f);
-    obj->set_scroll_x(0.0f);
-    obj->set_scroll_y(0.0f);
-    obj->set_res_desc(desc);
-    // obj->set_para();
-
-    return obj;
-  }
-};
-
 ObjectSelectorList::ObjectSelectorList(EditorScreen* editor_, ObjectSelector* object_selector_, const Rect& rect_)
   : RectComponent(rect_),
     editor(editor_),
@@ -146,55 +46,55 @@ ObjectSelectorList::ObjectSelectorList(EditorScreen* editor_, ObjectSelector* ob
     old_offset(0),
     mode(NOTHING),
     current_object(-1),
-    drag_object(-1)
+    drag_object(-1),
+    set(0)
 {  
 }
 
 void
 ObjectSelectorList::draw(DrawingContext& parent_gc)
 {
-  parent_gc.fill_screen(Color(0,0,0));
-
   DrawingContext& gc = *drawing_context;
   gc.clear();
   gc.fill_screen(Color(100, 100, 100));
-  gc.push_modelview();
-  gc.translate(0, offset);
 
-  Objects::iterator i = objects.begin();
-
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  if (set)
     {
-      int x = (i - objects.begin()) % 5;
-      int y = (i - objects.begin()) / 5;
+      gc.push_modelview();
+      gc.translate(0, offset);
 
-      gc.draw((*i)->thumbnail, Vector2i(x * 48, y * 48));
-
-      gc.draw_rect(x * 48,      y * 48, 
-                   x * 48 + 48, y * 48 + 48, 
-                   Color(155,155,155));
-
-      if (has_mouse_over() && current_object != -1 && (i - objects.begin()) == current_object)
+      for(Objects::const_iterator i = set->get_objects().begin(); i != set->get_objects().end(); ++i)
         {
-          gc.draw_fillrect(x * 48,      y * 48, 
-                           x * 48 + 48, y * 48 + 48, 
-                           Color(255,255,255, 100));
+          int x = (i - set->get_objects().begin()) % 5;
+          int y = (i - set->get_objects().begin()) / 5;
+
+          gc.draw((*i)->thumbnail, Vector2i(x * 48, y * 48));
 
           gc.draw_rect(x * 48,      y * 48, 
                        x * 48 + 48, y * 48 + 48, 
-                       Color(255,255,255));
-        }
-    }
-  
-  gc.pop_modelview();
+                       Color(155,155,155));
 
+          if (has_mouse_over() && current_object != -1 && (i - set->get_objects().begin()) == current_object)
+            {
+              gc.draw_fillrect(x * 48,      y * 48, 
+                               x * 48 + 48, y * 48 + 48, 
+                               Color(255,255,255, 100));
+
+              gc.draw_rect(x * 48,      y * 48, 
+                           x * 48 + 48, y * 48 + 48, 
+                           Color(255,255,255));
+            }
+        }
+  
+      gc.pop_modelview();
+    }
   parent_gc.draw(gc);
 
-  if (mode == OBJECT_DRAG)
+  if (set && mode == OBJECT_DRAG)
     {
-      parent_gc.draw(objects[current_object]->sprite, 
-                     real_mouse_pos - Vector2i(objects[current_object]->sprite.get_width()/2,
-                                               objects[current_object]->sprite.get_height()/2), 
+      parent_gc.draw(set->get_objects()[current_object]->sprite, 
+                     real_mouse_pos - Vector2i(set->get_objects()[current_object]->sprite.get_width()/2,
+                                               set->get_objects()[current_object]->sprite.get_height()/2), 
                      2000.0f);
     }
 }
@@ -202,6 +102,8 @@ ObjectSelectorList::draw(DrawingContext& parent_gc)
 void
 ObjectSelectorList::on_primary_button_press (int x, int y)
 {
+  if (!set) return;
+
   if (mode == NOTHING && current_object != -1)
     {
       drag_object = current_object;
@@ -212,6 +114,8 @@ ObjectSelectorList::on_primary_button_press (int x, int y)
 void
 ObjectSelectorList::on_primary_button_release (int x, int y)
 {
+  if (!set) return;
+
   if (mode == OBJECT_DRAG)
     {
       mode = NOTHING;
@@ -229,10 +133,10 @@ ObjectSelectorList::on_primary_button_release (int x, int y)
                                                                 y + object_selector->get_rect().top);
 
               // place object with left/top instead of center origin
-              p -= Vector2i(objects[current_object]->sprite.get_width()/2,
-                            objects[current_object]->sprite.get_height()/2);
+              p -= Vector2i(set->get_objects()[current_object]->sprite.get_width()/2,
+                            set->get_objects()[current_object]->sprite.get_height()/2);
 
-              LevelObj* obj = objects[current_object]->create(p, editor->get_level()->get_level_impl());
+              LevelObj* obj = set->get_objects()[current_object]->create(p, editor->get_level()->get_level_impl());
               if (obj)
                 editor->add_object(obj);
               else
@@ -245,6 +149,8 @@ ObjectSelectorList::on_primary_button_release (int x, int y)
 void
 ObjectSelectorList::on_secondary_button_press (int x, int y)
 {
+  if (!set) return;
+
   if (mode == NOTHING)
     {
       drag_start = Vector2i(x,y);
@@ -256,6 +162,8 @@ ObjectSelectorList::on_secondary_button_press (int x, int y)
 void
 ObjectSelectorList::on_secondary_button_release (int x, int y)
 {  
+  if (!set) return;
+
   if (mode == SCROLLING)
     mode = NOTHING;
 }
@@ -263,21 +171,23 @@ ObjectSelectorList::on_secondary_button_release (int x, int y)
 void
 ObjectSelectorList::on_pointer_move (int x, int y)
 {
+  if (!set) return;
+
   real_mouse_pos = Vector2i(x, y);
 
   mouse_pos = Vector2i(x - rect.left, y - rect.top);
 
   int width = 5;
-  int height = (objects.size() / width) + ((objects.size() % width > 0) ? 1 : 0);
+  int height = (set->get_objects().size() / width) + ((set->get_objects().size() % width > 0) ? 1 : 0);
 
   if (mode != OBJECT_DRAG)
     {
-      if (!objects.empty())
+      if (!set->get_objects().empty())
         {
           int obj_x = Math::clamp(0, mouse_pos.x / 48, width - 1);
           int obj_y = Math::clamp(0, int(mouse_pos.y - offset) / 48, height-1);
 
-          current_object = Math::clamp(-1, (obj_y * 5) + obj_x, int(objects.size()-1));
+          current_object = Math::clamp(-1, (obj_y * 5) + obj_x, int(set->get_objects().size()-1));
         }
     }
 
@@ -289,158 +199,9 @@ ObjectSelectorList::on_pointer_move (int x, int y)
 }
 
 void
-ObjectSelectorList::clear_object_list()
+ObjectSelectorList::set_objects(ObjectSelectorSet* set_)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-    delete (*i);
-  objects.clear();
-}
-
-void
-ObjectSelectorList::set_objects(const std::string& prefix)
-{
-  clear_object_list();
-
-  // FIXME: Simple debugging aid, needs to be replaced with custom code for the object types
-  std::vector<std::string> lst = Resource::resmgr.get_section(prefix);
-  for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
-    {
-      std::cout << "Objects: " << *i << std::endl;
-      //sprite.scale(48, 48);
-      // need to reset the align to top/left
-      objects.push_back(new Object(Resource::load_sprite(*i),
-                                   Resource::load_thumb_sprite(*i)));
-    }
-  offset = 0;
-}
-
-void
-ObjectSelectorList::set_groundpiece(const std::string& prefix, const std::string& type)
-{
-  clear_object_list();
-
-  std::vector<std::string> lst = Resource::resmgr.get_section(prefix);
-  for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
-    {
-      //sprite.scale(48, 48);
-      objects.push_back(new Groundpiece(*i, type));
-    }
-  offset = 0;
-}
-
-void
-ObjectSelectorList::set_gp_ground()
-{
-  set_groundpiece("groundpieces/ground", "ground");
-}
-
-void
-ObjectSelectorList::set_gp_solid()
-{
-  set_groundpiece("groundpieces/solid", "solid");
-}
-
-void
-ObjectSelectorList::set_gp_bridge()
-{
-  set_groundpiece("groundpieces/bridge", "bridge");
-}
-
-void
-ObjectSelectorList::set_gp_transparent()
-{
-  set_groundpiece("groundpieces/transparent", "transparent");
-}
-
-void
-ObjectSelectorList::set_gp_remove()
-{
-  set_groundpiece("groundpieces/remove", "remove");
-}
-
-void
-ObjectSelectorList::set_hotspot()
-{
-  clear_object_list();
-
-  std::vector<std::string> lst = Resource::resmgr.get_section("hotspots");
-  for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
-    {
-      //sprite.scale(48, 48);
-      objects.push_back(new Hotspot(*i));
-    }
-  offset = 0;
-}
-
-void
-ObjectSelectorList::set_background()
-{
-  clear_object_list();
-
-  std::vector<std::string> lst = Resource::resmgr.get_section("textures");
-  for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
-    {
-      //sprite.scale(48, 48);
-      objects.push_back(new SurfaceBackground(*i));
-    }
-  offset = 0;
-}
-
-void
-ObjectSelectorList::set_entrance()
-{
-  clear_object_list();
-
-  objects.push_back(new Entrance());
-
-  std::vector<std::string> lst = Resource::resmgr.get_section("entrances");
-  for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
-    {
-      //sprite.scale(48, 48);
-      if (*i != "entrances/generic")
-        objects.push_back(new Hotspot(*i));
-    }
-  offset = 0;
-}
-
-void
-ObjectSelectorList::set_exit()
-{
-  clear_object_list();
-
-  std::vector<std::string> lst = Resource::resmgr.get_section("exit");
-  for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
-    {
-      //sprite.scale(48, 48);
-      objects.push_back(new Exit(*i));
-    }
-  offset = 0;
-}
-
-void
-ObjectSelectorList::set_liquid()
-{
-  set_objects("liquids");
-}
-
-void
-ObjectSelectorList::set_trap()
-{
-  // Need to differentiate the different trap types
-  set_objects("traps");
-}
-
-void
-ObjectSelectorList::set_weather()
-{
-  //set_objects("weather");
-  std::cout << "ObjectSelector: unimplemented: " << __FILE__ << ":" << __LINE__ << std::endl;
-}
-
-void
-ObjectSelectorList::set_worldobj()
-{
-  std::cout << "ObjectSelector: unimplemented: " << __FILE__ << ":" << __LINE__ << std::endl;
+  set = set_;
 }
 
 } // namespace Editor

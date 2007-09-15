@@ -34,6 +34,7 @@ namespace Editor {
 
 class EditorScreen;
 class ObjectSelectorList;
+class ObjectSelectorSet;
 
 /** */
 class ObjectSelector : public GUI::GroupComponent
@@ -43,6 +44,20 @@ private:
   Vector2i button_pos;
   ObjectSelectorList* object_list;
 
+  ObjectSelectorSet*  gp_ground_set;
+  ObjectSelectorSet*  gp_solid_set;
+  ObjectSelectorSet*  gp_bridge_set;
+  ObjectSelectorSet*  gp_transparent_set;
+  ObjectSelectorSet*  gp_remove_set;
+  ObjectSelectorSet*  hotspot_set;
+  ObjectSelectorSet*  background_set;
+  ObjectSelectorSet*  entrance_set;
+  ObjectSelectorSet*  exit_set;
+  ObjectSelectorSet*  liquid_set;
+  ObjectSelectorSet*  trap_set;
+  ObjectSelectorSet*  weather_set;
+  ObjectSelectorSet*  worldobj_set;
+
 public:
   typedef void (ObjectSelectorList::*Callback)();
   Callback callback;
@@ -51,8 +66,23 @@ public:
   ~ObjectSelector();
 
   void draw_background(DrawingContext& gc);
+  void add_button(const std::string& image, const std::string& tooltip, ObjectSelectorSet* set);
 
-  void add_button(const std::string& image, const std::string& tooltip = "", Callback callback = 0);
+  ObjectSelectorSet* create_objects(const std::string& prefix);
+  ObjectSelectorSet* create_groundpiece(const std::string& prefix, const std::string& type);
+  ObjectSelectorSet* create_gp_ground();
+  ObjectSelectorSet* create_gp_solid();
+  ObjectSelectorSet* create_gp_bridge();
+  ObjectSelectorSet* create_gp_transparent();
+  ObjectSelectorSet* create_gp_remove();
+  ObjectSelectorSet* create_hotspot();
+  ObjectSelectorSet* create_background();
+  ObjectSelectorSet* create_entrance();
+  ObjectSelectorSet* create_exit();
+  ObjectSelectorSet* create_liquid();
+  ObjectSelectorSet* create_trap();
+  ObjectSelectorSet* create_weather();
+  ObjectSelectorSet* create_worldobj();
 
 private:
   ObjectSelector (const ObjectSelector&);

@@ -7,6 +7,8 @@ Stuff to do at all times:
 Roadmap for Pingus 0.8.0:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- pingu explosions are rects, should be circles (Vel(rand()%10, rand()%10) vs Vel(angle, length))
+
 - add VCR like effect for fast forward
 
 - add slow motion button (dead, turtle, pingu, rabbit)
@@ -76,6 +78,8 @@ Roadmap for Pingus 0.7.1
 
 Important:
 ==========
+
+- replace Windstille headers with Pingus header
 
 - create verdana11 for latin2 and latin9
 
@@ -157,16 +161,17 @@ Roadmap for Pingus Editor 0.7.1:
 Important:
 ==========
 
-- ObjectSelector scroll limit is missing, also doesn't display all objects
+- add color prop for surface-background
+
+- make GPType prop
 
 - ObjectSelector need to support more object types: Starbackground, SolidColorBackground
-
-- write ObjectSelectorSet: Collection of Objects for the selector
-  (thumbsize should be allowed to differ)
 
 - keyboard shortcuts need to be implemented (use input framework, but
   how without support for keymaps?)
 
+  a       - select all
+  shift+click - add object to selection/remove from selection
   d       - duplicate
   delete  - delete object
   insert  - show/hide objectselector
