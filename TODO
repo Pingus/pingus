@@ -74,7 +74,8 @@ Important:
 - What happened with StartPos?!
 
 - do we need z-pos for anything or does implicit object position serve
-  the same purpose?
+  the same purpose? Problem: Groundpieces all have the same z-level,
+  the editor doesn't handle that and allows insertions inbetween
 
 - object raising doesn't work for group
 
@@ -116,6 +117,12 @@ Editor:
   cursor - pixel width moves
   f      - flip
   r      - rotate
+
+-  
+
+- implement proper tmpfile Support (including backup use?)
+
+- ObjectSelector need to support more object types: Starbackground, SolidColorBackground
 
 - make combo box open to the top or bottom depending on variable
 

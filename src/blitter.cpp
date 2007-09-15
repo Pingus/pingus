@@ -254,12 +254,21 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
   if (surface->flags & SDL_SRCALPHA)
     flags |= SDL_SRCALPHA;
 
-  return SDL_CreateRGBSurface(flags, w, h,
-                              surface->format->BitsPerPixel, 
-                              surface->format->Rmask,
-                              surface->format->Gmask,
-                              surface->format->Bmask,
-                              surface->format->Amask);
+  SDL_Surface* new_surface = SDL_CreateRGBSurface(flags, w, h,
+                                                  surface->format->BitsPerPixel, 
+                                                  surface->format->Rmask,
+                                                  surface->format->Gmask,
+                                                  surface->format->Bmask,
+                                                  surface->format->Amask);
+
+  if (surface->format->palette)
+    SDL_SetPalette(new_surface, SDL_LOGPAL, surface->format->palette->colors, 
+                   0, surface->format->palette->ncolors);
+
+  if (surface->flags & SDL_SRCCOLORKEY)
+    SDL_SetColorKey(new_surface, SDL_SRCCOLORKEY, surface->format->colorkey);
+
+  return new_surface;
 }
 
 /* EOF */

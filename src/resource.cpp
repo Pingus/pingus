@@ -137,9 +137,16 @@ Resource::load_surface(const ResDescriptor& desc_)
 {
   SpriteDescription* desc = resmgr.get_sprite_description(desc_.res_name);
   if (desc)
-    return Surface(desc->filename).mod(desc_.modifier);
+    {
+      if (desc_.modifier == ResourceModifierNS::ROT0)
+        return Surface(desc->filename);
+      else
+        return Surface(desc->filename).mod(desc_.modifier);
+    }
   else
-    return Surface(desc->filename).mod(desc_.modifier);
+    {
+      return Surface(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
+    }
 }
 
 Surface

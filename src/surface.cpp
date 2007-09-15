@@ -24,7 +24,7 @@
 #include "debug.hpp"
 #include "blitter.hpp"
 #include "surface.hpp"
-
+
 class SurfaceImpl
 {
 public:
@@ -32,7 +32,13 @@ public:
   bool  delete_surface;
   bool       optimized;
 
-  SurfaceImpl(SDL_Surface* surface = NULL, bool delete_surface_ = true) 
+  SurfaceImpl()
+    : surface(0),
+      delete_surface(false),
+      optimized(false)
+  {}
+
+  SurfaceImpl(SDL_Surface* surface, bool delete_surface_ = true) 
     : surface(surface),
       delete_surface(delete_surface_),
       optimized(false)
@@ -44,7 +50,7 @@ public:
       SDL_FreeSurface(surface);
   }
 };
-
+
 Surface::Surface()
 {
 }
@@ -59,8 +65,7 @@ Surface::Surface(const Pathname& pathname)
   SDL_Surface* surface = IMG_Load(pathname.get_sys_path().c_str());
   if (surface)
     {
-      impl = boost::shared_ptr<SurfaceImpl>(new SurfaceImpl());
-      impl->surface = surface;
+      impl = boost::shared_ptr<SurfaceImpl>(new SurfaceImpl(surface, true));
     }
 }
 
@@ -302,16 +307,11 @@ Surface::subsection(const Rect& rect) const
     SDL_SetPalette(new_surface, SDL_LOGPAL, impl->surface->format->palette->colors, 
                    0, impl->surface->format->palette->ncolors);
 
+  if (impl->surface->flags & SDL_SRCCOLORKEY)
+    SDL_SetColorKey(new_surface, SDL_SRCCOLORKEY, impl->surface->format->colorkey);
+
   SDL_BlitSurface(impl->surface, NULL, new_surface, &dst_rect);
 
-  /* FIXME: Need to copy palette and color key?!
-    if (impl->surface->format->palette)
-    SDL_SetPalette(subsurface, SDL_LOGPAL, impl->surface->format->palette->colors, 
-    0, impl->surface->format->palette->ncolors);
-
-    if (impl->surface->flags & SDL_SRCCOLORKEY)
-    SDL_SetColorKey(subsurface, SDL_SRCCOLORKEY, impl->surface->format->colorkey);
-  */
 
   return Surface(boost::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface, true)));
 }
@@ -332,5 +332,5 @@ Surface::fill(const Color& color)
 
   SDL_FreeSurface(tmp);
 }
-
+
 /* EOF */

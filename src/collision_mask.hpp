@@ -28,10 +28,10 @@
 class CollisionMask
 {
 public:
-  Surface    surface;
-  uint8_t*    buffer;
-  int         width;
-  int         height;
+  Surface   surface;
+  uint8_t*  buffer;
+  int       width;
+  int       height;
 
 public:
   CollisionMask();
