@@ -46,13 +46,12 @@ private:
 
   MenuButton* start_button;
   MenuButton* quit_button;
-  MenuButton* credits_button;
+  MenuButton* editor_button;
 
 #ifdef NEW_MENU
   MenuButton* contrib_button;
   MenuButton* story_button;
   MenuButton* multiplayer_button;
-  MenuButton* editor_button;
 #endif
   FileDialog* filedialog;
   

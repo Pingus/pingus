@@ -67,8 +67,6 @@ Roadmap for Pingus 0.7.1
 Important:
 ==========
 
-- enable editor in the main menu again (replace credits)
-
 - create verdana11 for latin2 and latin9
 
 - miner remove graphics looks wrong (cmap instead of gfx?)

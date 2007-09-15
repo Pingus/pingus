@@ -58,11 +58,11 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
                                _("Exit"),
                                _("..:: Bye, bye ::.."));
 
-  credits_button = new MenuButton(this, Vector2i(Display::get_width() * 150 / 800,
+  editor_button = new MenuButton(this, Vector2i(Display::get_width() * 150 / 800,
                                           Display::get_height() * 390 / 600),
-                                  Resource::load_sprite("core/menu/credits_on"),
-                                  _("Credits"),
-                                 _("..:: See the credits ::.."));
+                                  Resource::load_sprite("core/menu/create_on"),
+                                  _("Level Editor"),
+                                 _("..:: Create your own levels ::.."));
 #ifdef NEW_MENU
   contrib_button = new MenuButton(this, Vector2i(Display::get_width() * 150 / 800,
                                           Display::get_height() * 450 / 600),
@@ -81,12 +81,6 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
                                       Resource::load_sprite("core/menu/multi_on"),
                                       _("Multiplayer"),
                                       _("..:: Multiplayer Match ::.."));
-
-  editor_button = new MenuButton(this, Vector2i(Display::get_width() * 400 / 800,
-                                         Display::get_height() * 450 / 600),
-                                 Resource::load_sprite("core/menu/create_on"),
-                                 _("Level Editor"),
-                                 _("..:: Create your own levels ::.."));
 #endif
 }
 
@@ -102,7 +96,7 @@ PingusMenu::setup_main_menu()
 
   gui_manager->add(quit_button, false);
   gui_manager->add(start_button, false);
-  gui_manager->add(credits_button, false);
+  gui_manager->add(editor_button, false);
 }
 
 #ifdef NEW_MENU
@@ -163,12 +157,11 @@ PingusMenu::~PingusMenu()
 {
   delete start_button;
   delete quit_button;
-  delete credits_button;
+  delete editor_button;
 #ifdef NEW_MENU
   delete contrib_button;
   delete story_button;
   delete multiplayer_button;
-  delete editor_button;
 #endif
   delete filedialog;
 }
@@ -286,9 +279,9 @@ PingusMenu::on_click(MenuButton* button)
     {
       do_quit();
     }
-  else if (button == credits_button)
+  else if (button == editor_button)
     {
-      show_credits();
+      do_edit();
     }
 #ifdef NEW_MENU
   else if (button == contrib_button)
@@ -302,10 +295,6 @@ PingusMenu::on_click(MenuButton* button)
   else if (button == multiplayer_button)
     {
       setup_main_menu();
-    }
-  else if (button == editor_button)
-    {
-      do_edit();
     }
 #endif
 }
