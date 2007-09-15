@@ -84,22 +84,8 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
     float fx, fy, fz;
     unsigned char *p1, *p2, *p3, *p4;
 
-    int Rmask, Gmask, Bmask, Amask;
-    if (SDL_BYTEORDER == SDL_LIL_ENDIAN) {
-      Rmask = 0x000000FF;
-      Gmask = 0x0000FF00;
-      Bmask = 0x00FF0000;
-      Amask = (bpp == 4) ? 0xFF000000 : 0;
-    } else {
-      int s = (bpp == 4) ? 0 : 8;
-      Rmask = 0xFF000000 >> s;
-      Gmask = 0x00FF0000 >> s;
-      Bmask = 0x0000FF00 >> s;
-      Amask = 0x000000FF >> s;
-    }
-
-    new_surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 8 * bpp,
-      Rmask, Gmask, Bmask, Amask);
+    new_surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, surface->format->BitsPerPixel,
+      surface->format->Rmask, surface->format->Gmask, surface->format->Bmask, surface->format->Amask);
 
     SDL_LockSurface(surface);
     SDL_LockSurface(new_surface);
