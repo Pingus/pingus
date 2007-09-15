@@ -159,6 +159,7 @@ LevelObj::refresh_sprite()
   if (attribs & HAS_SURFACE)
     {
       sprite = Resource::load_sprite(desc);
+      
 #if 0				
       Surface pb;
 
@@ -219,6 +220,7 @@ LevelObj::set_modifier(ResourceModifierNS::ResourceModifier modifier)
   // Set modifier
   if (attribs & CAN_ROTATE)
     desc.modifier = modifier;
+
   refresh_sprite();  
 }
 

@@ -25,9 +25,8 @@
 #include "pingus.hpp"
 
 /** A collection of helper functions for the blitter class */
-namespace BlitterImpl
-{
-
+namespace BlitterImpl {
+
 /** Rotate a surface 90 degree */
 struct transform_rot90
 {
@@ -206,13 +205,13 @@ Surface modify(Surface source_buffer, const TransF&)
     }
   else
     {
-      std::cout << "Error: Blitter::modify: Unsupported PixelFormat: "
+      std::cout << "Error: Blitter::modify: Unsupported PixelFormat: BytesPerPixel: "
                 << int(source->format->BytesPerPixel) << std::endl;
       SDL_UnlockSurface(source);
-      return source_buffer;
+      return source_buffer.clone();
     }
 }
-
+
 } // namespace BlitterImpl
 
 #endif

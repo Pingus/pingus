@@ -28,6 +28,7 @@
 #include "blitter.hpp"
 #include "surface.hpp"
 #include "pathname.hpp"
+#include "resource.hpp"
 #include "sprite_description.hpp"
 
 class SpriteImpl
@@ -35,8 +36,7 @@ class SpriteImpl
 private:
   friend class Sprite;
 
-  SDL_Surface* surface;
-  bool         optimized;
+  Surface  surface;
 
   Vector2i offset;
 
@@ -59,27 +59,28 @@ public:
   {
   }
 
-  SpriteImpl(const SpriteDescription& desc)
-    : surface(0),
-      optimized(false),
-      finished(false),
+  SpriteImpl(const SpriteDescription& desc, ResourceModifierNS::ResourceModifier mod = ResourceModifierNS::ROT0)
+    : finished(false),
       frame(0),
       tick_count(0)
   {
-    surface = IMG_Load(desc.filename.get_sys_path().c_str());
+    surface = Surface(desc.filename);
+    if (mod != ResourceModifierNS::ROT0)
+      surface = surface.mod(mod);
+
     if (!surface)
       {
-        std::cout << "Error: Couldn't load " << desc.filename << std::endl;
-        surface = IMG_Load(Pathname("images/core/misc/404.png", Pathname::DATA_PATH).str().c_str());
-        assert(surface);
+        std::cout << "Error: Surface: couldn't load '" << desc.filename << "'" << std::endl;
+        surface = Surface(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
+        if (!surface) assert(!"Surface Couldn't find 404");
       }
 
     frame_pos = desc.frame_pos;
 
     array = desc.array;
 
-    frame_size.width  = (desc.frame_size.width  == -1) ? surface->w/array.width  : desc.frame_size.width;
-    frame_size.height = (desc.frame_size.height == -1) ? surface->h/array.height : desc.frame_size.height;
+    frame_size.width  = (desc.frame_size.width  == -1) ? surface.get_width()/array.width   : desc.frame_size.width;
+    frame_size.height = (desc.frame_size.height == -1) ? surface.get_height()/array.height : desc.frame_size.height;
 
     frame_delay  = desc.speed;
 
@@ -92,8 +93,7 @@ public:
   }
 
   SpriteImpl(const Surface& surface)
-    : optimized(false),
-      offset(0,0),
+    : offset(0,0),
       frame_pos(0,0),
       frame_size(surface.get_width(), surface.get_height()),
       frame_delay(0),
@@ -104,43 +104,16 @@ public:
       frame(0),
       tick_count(0)
   {
-    if (surface.get_surface())
-      {
-        if (surface.get_surface()->format->Amask == 0)
-          this->surface = SDL_DisplayFormat(surface.get_surface());
-        else
-          this->surface = SDL_DisplayFormatAlpha(surface.get_surface());
-
-        optimized = true;
-      }
-    else
-      {
-        this->surface = 0;
-        std::cout << "Sprite: Error trying to create a Sprite out of an empty Surface"  << std::endl;
-      }
+    optimize();
   }
 
   ~SpriteImpl()
   {
-    SDL_FreeSurface(surface);
   }
 
   void optimize()
   {
-    if (!optimized)
-      {
-        // FIXME: Could add a check to check if the surface is already optimized
-        SDL_Surface* old_surface = surface;
-
-        if (surface->format->Amask != 0 || (surface->flags & SDL_SRCCOLORKEY))
-          surface = SDL_DisplayFormatAlpha(old_surface);
-        else
-          surface = SDL_DisplayFormat(old_surface);
-  
-        SDL_FreeSurface(old_surface);
-
-        optimized = true;
-      }
+    surface.optimize();
   }
 
   void update(float delta)
@@ -185,7 +158,7 @@ public:
     srcrect.x = frame_pos.x + (srcrect.w * (frame%array.width));
     srcrect.y = frame_pos.y + (srcrect.h * (frame/array.width));
 
-    SDL_BlitSurface(surface, &srcrect, dst, &dstrect);
+    SDL_BlitSurface(surface.get_surface(), &srcrect, dst, &dstrect);
   }
 
   void restart()
@@ -201,7 +174,7 @@ public:
     finished = true;
   }
 };
-
+
 Sprite::Sprite()
 {
   
@@ -220,8 +193,8 @@ Sprite::Sprite(const Surface& surface)
   
 }
 
-Sprite::Sprite(const SpriteDescription& desc)
-  : impl(new SpriteImpl(desc))
+Sprite::Sprite(const SpriteDescription& desc, ResourceModifierNS::ResourceModifier mod)
+  : impl(new SpriteImpl(desc, mod))
 {
 }
 
@@ -334,7 +307,7 @@ SDL_Surface*
 Sprite::get_surface() const
 {
   if (impl.get())
-    return impl->surface;
+    return impl->surface.get_surface();
   else
     return NULL;
 }
@@ -342,52 +315,27 @@ Sprite::get_surface() const
 void
 Sprite::scale(int w, int h)
 {
+  // FIXME: This doesn't work for animated graphics, in which case it will only handle the first frame
   if (impl->frame_size.width != w || impl->frame_size.height != h)
     {
       boost::shared_ptr<SpriteImpl> new_impl(new SpriteImpl());
 
-      if ((impl->frame_size.width  * impl->array.width)  == impl->surface->w && 
-          (impl->frame_size.height * impl->array.height) == impl->surface->h)
-        {
-          new_impl->surface = Blitter::scale_surface(impl->surface, 
-                                                     w * impl->array.width,
-                                                     h * impl->array.height);
+      
+      if ((impl->frame_size.width  * impl->array.width)  == impl->surface.get_width() && 
+          (impl->frame_size.height * impl->array.height) == impl->surface.get_height())
+        { // single frame Sprite
+          new_impl->surface = impl->surface.scale(w, h);
         }
       else
-        {
-          // Create a temporary surface that contains the subsection
-          // that is actually used for this Sprite
-          SDL_Surface* subsurface = SDL_CreateRGBSurfaceFrom((uint8_t*)(impl->surface->pixels)
-                                                             + (impl->frame_pos.y * impl->surface->pitch) 
-                                                             + (impl->frame_pos.x * impl->surface->format->BytesPerPixel),
-                                                             impl->array.width  * impl->frame_size.width,
-                                                             impl->array.height * impl->frame_size.height,
-                                                             impl->surface->format->BitsPerPixel, 
-                                                             impl->surface->pitch,
-                                                             impl->surface->format->Rmask,
-                                                             impl->surface->format->Gmask,
-                                                             impl->surface->format->Bmask,
-                                                             impl->surface->format->Amask);
-      
-          if (impl->surface->format->palette)
-            SDL_SetPalette(subsurface, SDL_LOGPAL, impl->surface->format->palette->colors, 
-                           0, impl->surface->format->palette->ncolors);
-
-          if (impl->surface->flags & SDL_SRCCOLORKEY)
-            SDL_SetColorKey(subsurface, SDL_SRCCOLORKEY, impl->surface->format->colorkey);
-
-          new_impl->surface = Blitter::scale_surface(subsurface, 
-                                                     w * impl->array.width,
-                                                     h * impl->array.height);
-
-          SDL_FreeSurface(subsurface);
+        { // multi frame sprite
+          new_impl->surface = impl->surface.subsection(Rect(impl->frame_pos, impl->frame_size)).scale(w, h);
         }
 
-      float scale_x = float(w) / float(impl->frame_size.width); // ok
-      float scale_y = float(h) / float(impl->frame_size.height); // ok
-            
+      float scale_x = float(w) / float(impl->frame_size.width);
+      float scale_y = float(h) / float(impl->frame_size.height);
+      
       new_impl->offset          = Vector2i(int(impl->offset.x * scale_x),
-                                           int(impl->offset.y * scale_y)); //ok
+                                           int(impl->offset.y * scale_y)); 
       new_impl->frame_pos       = Vector2i(0, 0);
       new_impl->frame_size      = Size(w, h);
       new_impl->frame_delay     = impl->frame_delay;
@@ -408,18 +356,7 @@ Sprite::fill(const Color& color)
   if (color.a != 0) 
     {
       make_single_user();
-
-      // FIXME: Couldn't get this to work with a RGBA surface for some
-      // reason, something to do with tmp format and impl->surface
-      // matching up maybe, anyway with RGB it works and it saves a
-      // little bit of space to
-      SDL_Surface* tmp = Blitter::create_surface_rgb(impl->surface->w, impl->surface->h);
-      SDL_FillRect(tmp, NULL, SDL_MapRGBA(tmp->format, color.r, color.g, color.b, 255));
-      SDL_SetAlpha(tmp, SDL_SRCALPHA, color.a);
-          
-      SDL_BlitSurface(tmp, NULL, impl->surface, NULL);
-
-      SDL_FreeSurface(tmp);
+      impl->surface.fill(color);
     }
 }
 
@@ -428,13 +365,7 @@ Sprite::make_single_user()
 {
   boost::shared_ptr<SpriteImpl> new_impl(new SpriteImpl());
   
-  if (impl->surface->format->Amask == 0)
-    new_impl->surface         = Blitter::create_surface_rgb(impl->surface->w, impl->surface->h);
-  else
-    new_impl->surface         = Blitter::create_surface_rgba(impl->surface->w, impl->surface->h);
-
-  SDL_BlitSurface(impl->surface, NULL, new_impl->surface, NULL);
-
+  new_impl->surface         = impl->surface.clone();
   new_impl->offset          = impl->offset;
   new_impl->frame_pos       = impl->frame_pos;
   new_impl->frame_size      = impl->frame_size;
@@ -454,6 +385,27 @@ Sprite::set_hotspot(Origin origin, int x, int y)
 {
   // FIXME: offset and other stuff should be member of the Sprite, not the SpriteImpl
   impl->offset = calc_origin(origin, impl->frame_size) - Vector2i(x, y);
+}
+
+void
+Sprite::apply_mod(ResourceModifierNS::ResourceModifier mod)
+{
+  // FIXME: This isn't all that useful, since Sprites are optimized
+  // per default and thus not modifiable, since the Modifier can only
+  // handle indexed images.
+  if (impl->frame_pos  == Vector2i(0, 0) &&
+      impl->frame_size == Size(impl->surface.get_width(), impl->surface.get_height()) &&
+      impl->array      == Size(1, 1))
+    {
+      make_single_user();
+      impl->surface = impl->surface.mod(mod);
+      impl->frame_size.width  = impl->surface.get_width();
+      impl->frame_size.height = impl->surface.get_height();
+    }
+  else
+    {
+      std::cout << "Error: Sprite: apply_mod() only works with single frame Sprites" << std::endl;
+    }
 }
 
 void

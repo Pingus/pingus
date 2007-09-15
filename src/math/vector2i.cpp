@@ -66,4 +66,10 @@ Vector2i::operator*= (int mul)
   return *this;
 }
 
+bool
+Vector2i::operator== (const Vector2i& other)
+{
+  return (other.x == x && other.y == y);
+}
+
 /* EOF */

@@ -101,52 +101,13 @@ Resource::deinit()
 }
 
 Sprite
-Resource::load_sprite(const ResDescriptor& desc)
+Resource::load_sprite(const ResDescriptor& res)
 {
-  if (desc.modifier == ResourceModifierNS::ROT0)
-    {
-      return load_sprite(desc.res_name);
-    }
+ SpriteDescription* desc = resmgr.get_sprite_description(res.res_name);
+  if (desc)
+    return Sprite(*desc, res.modifier);
   else
-    {
-      // FIXME: Add code to apply the modifier
-      return load_sprite(desc.res_name);
-    }
-}
-
-Surface
-Resource::apply_modifier_to_surface(Surface prov, const ResDescriptor& desc)
-{
-  switch (desc.modifier)
-    {
-    case ResourceModifierNS::ROT0:
-      return prov;
-
-    case ResourceModifierNS::ROT90:
-      return Blitter::rotate_90(prov);
-
-    case ResourceModifierNS::ROT180:
-      return Blitter::rotate_180(prov);
-
-    case ResourceModifierNS::ROT270:
-      return Blitter::rotate_270(prov);
-
-    case ResourceModifierNS::ROT0FLIP:
-      return Blitter::flip_horizontal(prov);
-
-    case ResourceModifierNS::ROT90FLIP:
-      return Blitter::rotate_90_flip(prov);
-
-    case ResourceModifierNS::ROT180FLIP:
-      return Blitter::rotate_180_flip(prov);
-
-    case ResourceModifierNS::ROT270FLIP:
-      return Blitter::rotate_270_flip(prov);
-
-    default:
-      perr << "Resource: Unhandled modifier: " << desc.modifier << std::endl;
-      return prov;
-    }
+    return Sprite();
 }
 
 Sprite
@@ -157,16 +118,6 @@ Resource::load_sprite(const std::string& res_name)
     return Sprite(*desc);
   else
     return Sprite();
-
-#if 0
-  try {
-    return CL_Sprite(res_name, &resmgr);
-  } catch (CL_Error& err) {
-    std::cout << "Resource::load_sprite: CL_Error: '" << res_name << "'" << std::endl;
-    std::cout << "CL_Error: " << err.message << std::endl;
-    return CL_Sprite("core/misc/404sprite", &resmgr);
-  }
-#endif
 }
 
 CollisionMask
@@ -186,9 +137,9 @@ Resource::load_surface(const ResDescriptor& desc_)
 {
   SpriteDescription* desc = resmgr.get_sprite_description(desc_.res_name);
   if (desc)
-    return apply_modifier_to_surface(Surface(desc->filename), desc_);
+    return Surface(desc->filename).mod(desc_.modifier);
   else
-    return apply_modifier_to_surface(Surface(), desc_);
+    return Surface(desc->filename).mod(desc_.modifier);
 }
 
 Surface
@@ -196,64 +147,6 @@ Resource::load_surface(const std::string& res_name)
 {
   return load_surface(ResDescriptor(res_name));
 }
-
-#if 0
-CL_Surface
-Resource::load_surface(const ResDescriptor& res_desc)
-{
-  // try to load from cache
-  CL_Surface surf = load_from_cache(res_desc);
-
-  if (!surf) // not in cache
-    {
-      ResDescriptor desc = res_desc;
-      desc.modifier = ResourceModifierNS::ROT0;
-
-      // Try to an unmodified version from cache
-      surf = load_from_cache(desc);
-
-      if (surf) // found unmodified version in cache
-	{
-	  pout(PINGUS_DEBUG_RESOURCES) << "Resource: Loading surface from cache 1/2: " << res_desc << std::endl;
-	  surf = apply_modifier (surf, res_desc);
-
-	  surface_map[res_desc] = surf;
-	}
-      else // never loaded, need to load it from source
-	{
-	  desc = res_desc;
-	  desc.modifier = ResourceModifierNS::ROT0;
-
-	  pout(PINGUS_DEBUG_RESOURCES) << "Resource: Loading surface from source: " << res_desc << std::endl;
-	  surf = load_from_source (desc);
-	  surface_map[desc] = surf; // add to cache
-
-	  surf = apply_modifier (surf, res_desc);
-	  surface_map[res_desc] = surf; // add modified version to cache
-	}
-    }
-  else
-    {
-      pout(PINGUS_DEBUG_RESOURCES) << "Resource: Loading surface from cache: " << res_desc << std::endl;
-    }
-
-  return surf;
-}
-
-CL_Surface
-Resource::load_from_cache (const ResDescriptor& res_desc)
-{
-  std::map<ResDescriptor, CL_Surface>::iterator i = surface_map.find(res_desc);
-  if (i == surface_map.end())
-    {
-      return CL_Surface();
-    }
-  else
-    {
-      return i->second;
-    }
-}
-#endif 
 
 Font
 Resource::load_font(const std::string& res_name)
@@ -276,38 +169,6 @@ Resource::cleanup ()
         res.unload();
     }
 #endif
-}
-
-unsigned int
-Resource::get_mtime (const std::string& res_name)
-{
-  /*
-    try
-    {
-    CL_ResourceManager res_man = Resource::get(datafile);
-
-    CL_Resource& res = res_man->get_resource(res_name);
-
-    std::string filename = res.get_full_location();
-
-    #ifndef WIN32
-    struct stat stat_buf;
-    if (stat(filename.c_str(), &stat_buf) == 0)
-    return stat_buf.st_mtime;
-    else
-    return 0;
-    #else
-    // FIXME: Win32 mtime getter not implemented
-    return 0;
-    }
-    catch (CL_Error& err)
-    {
-    std::cout << "Resource::get_mtime: CL_Error: " << err.message << std::endl;
-    return 0;
-    }
-    #endif
-  */
-  return 0;
 }
 
 Sprite

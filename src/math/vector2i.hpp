@@ -46,6 +46,8 @@ public:
   Vector2i& operator+= (const Vector2i& add);
   Vector2i& operator-= (const Vector2i& sub);
   Vector2i& operator*= (int mul);
+
+  bool operator== (const Vector2i& other);
 };
 
 #endif

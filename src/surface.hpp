@@ -23,9 +23,12 @@
 #include "SDL.h"
 #include <string>
 #include <boost/shared_ptr.hpp>
+#include "math/size.hpp"
+#include "resource_modifier.hpp"
 #include "pathname.hpp"
 #include "math/color.hpp"
 
+class Rect;
 class Pathname;
 class SurfaceImpl;
 
@@ -34,27 +37,43 @@ class Surface
 {
 public:
   Surface();
+
+  Surface(boost::shared_ptr<SurfaceImpl> impl);
+
   Surface(const Pathname& name);
+
   /** Create an empty RGBA Surface */
   Surface(int width, int height);
 
   /** Create an empty Indexed Surface (8bit) */
   Surface(int width, int height, SDL_Palette* palette, int colorkey = -1);
+
   /** Create a Surface from a SDL_Surface */
-  Surface(SDL_Surface* surface);
+  Surface(SDL_Surface* surface, bool delete_surface = true);
+
   ~Surface();
 
   uint8_t* get_data() const;
   void lock();
   void unlock();
 
+  Size get_size()  const;
   int get_width()  const;
   int get_height() const;
   int get_pitch()  const;
 
+
   void blit(const Surface& source, int x, int y);
 
   Color get_pixel(int x, int y) const;
+
+  void fill(const Color& color);
+  void optimize();
+
+  Surface scale(int w, int h);
+  Surface mod(ResourceModifierNS::ResourceModifier mod);
+  Surface clone() const;
+  Surface subsection(const Rect& rect) const;
 
   SDL_Surface* get_surface() const;
 

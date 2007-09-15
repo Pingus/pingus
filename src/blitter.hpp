@@ -35,6 +35,7 @@ class Blitter
 public:
   static SDL_Surface* create_surface_rgba(int w, int h);
   static SDL_Surface* create_surface_rgb(int w, int h);
+  static SDL_Surface* create_surface_from_format(SDL_Surface* surface, int w, int h);
 
   /** Flip a surface horizontal */
   static Surface flip_horizontal (Surface sur);

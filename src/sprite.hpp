@@ -23,6 +23,7 @@
 #include <string>
 #include <boost/shared_ptr.hpp>
 #include "math/origin.hpp"
+#include "resource_modifier.hpp"
 #include "SDL.h"
 
 class Color;
@@ -37,7 +38,7 @@ class Sprite
 public:
   Sprite();
   Sprite(const Pathname& name);
-  Sprite(const SpriteDescription& desc);
+  Sprite(const SpriteDescription& desc, ResourceModifierNS::ResourceModifier mod = ResourceModifierNS::ROT0);
   Sprite(const Surface& surface);
   ~Sprite();
 
@@ -76,6 +77,8 @@ public:
   /** Duplicate the underlying SDL_Surface to allow manipulation
       without affecting other references to it */
   void make_single_user();
+
+  void apply_mod(ResourceModifierNS::ResourceModifier mod);
 
 private:
   boost::shared_ptr<SpriteImpl> impl;
