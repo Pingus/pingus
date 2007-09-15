@@ -663,14 +663,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\src\pixel_buffer.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\pixel_buffer.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\src\plf_res_mgr.cpp"
 				>
 			</File>
@@ -848,6 +840,14 @@
 			</File>
 			<File
 				RelativePath=".\src\string_util.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\surface.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\surface.hpp"
 				>
 			</File>
 			<File
@@ -1395,6 +1395,14 @@
 				</File>
 				<File
 					RelativePath=".\src\editor\object_selector.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\object_selector_list.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\object_selector_list.hpp"
 					>
 				</File>
 				<File
