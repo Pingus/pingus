@@ -379,14 +379,49 @@ Display::draw_rect(const Rect& rect, const Color& color)
 void
 Display::fill_rect(const Rect& rect, const Color& color)
 {
-  SDL_Rect srcrect;
+  if (color.a == 255)
+    {
+      SDL_Rect srcrect;
 
-  srcrect.x = rect.left;
-  srcrect.y = rect.top;
-  srcrect.w = rect.get_width();
-  srcrect.h = rect.get_height();
+      srcrect.x = rect.left;
+      srcrect.y = rect.top;
+      srcrect.w = rect.get_width();
+      srcrect.h = rect.get_height();
 
-  SDL_FillRect(screen, &srcrect, SDL_MapRGB(screen->format, color.r, color.g, color.b));
+      SDL_FillRect(screen, &srcrect, SDL_MapRGB(screen->format, color.r, color.g, color.b));
+    }
+  else if (color.a != 0)
+    {
+      int top, bottom, left, right;
+      int clipx1, clipx2, clipy1, clipy2;
+      SDL_Rect cliprect;
+
+      SDL_GetClipRect(Display::get_screen(), &cliprect);
+      clipx1 = cliprect.x;
+      clipx2 = cliprect.x + cliprect.w - 1;
+      clipy1 = cliprect.y;
+      clipy2 = cliprect.y + cliprect.h - 1;
+
+      if (rect.right < clipx1 || rect.left > clipx2 || rect.bottom < clipy1 || rect.top > clipy2)
+        return;
+
+      top = rect.top < clipy1 ? clipy1 : rect.top;
+      bottom = rect.bottom > clipy2 ? clipy2 : rect.bottom;
+      left = rect.left < clipx1 ? clipx1 : rect.left;
+      right = rect.right > clipx2 ? clipx2 : rect.right;
+
+      draw_pixel_func draw_pixel = get_draw_pixel();
+      if (!draw_pixel)
+        return;
+
+      SDL_LockSurface(Display::get_screen());
+      for (int j = top; j <= bottom; ++j) {
+        for (int i = left; i <= right; ++i) {
+          draw_pixel(i, j, color);
+        }
+      }
+      SDL_UnlockSurface(Display::get_screen());
+    }
 }
 
 void
