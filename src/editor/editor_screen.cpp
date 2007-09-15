@@ -49,7 +49,7 @@ namespace Editor {
 
 // Default constructor
 EditorScreen::EditorScreen()
-  : plf(new EditorLevel()), 
+  : plf(new EditorLevel(this)), 
     panel(0),
     viewport(0),
     object_selector(0),
@@ -206,7 +206,6 @@ EditorScreen::update(const GameDelta &delta)
 void
 EditorScreen::add_object(LevelObj* obj)
 {
-  plf->add_object(obj);
   viewport->add_object(obj);
 }
 

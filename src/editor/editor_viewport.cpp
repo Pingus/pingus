@@ -105,12 +105,13 @@ EditorViewport::on_primary_button_press(int x_, int y_)
               selected_objs.clear();
               obj->select();
 
-              obj->set_orig_pos(obj->get_pos());
-
               selected_objs.push_back(obj);
 
               selection_changed(selected_objs);
             }
+
+          for (unsigned i = 0; i < selected_objs.size(); i++)
+            selected_objs[i]->set_orig_pos(selected_objs[i]->get_pos());
 
           // Allow dragging of the currently selected objects
           current_action = DRAGGING;
@@ -118,11 +119,11 @@ EditorViewport::on_primary_button_press(int x_, int y_)
         }
       else
         {
-          selected_objs.clear();
           current_action = HIGHLIGHTING;
           highlighted_area.left = highlighted_area.right  = mouse_world_pos.x;
           highlighted_area.top  = highlighted_area.bottom = mouse_world_pos.y;
 
+          selected_objs.clear();
           selection_changed(selected_objs);
         }
     }
@@ -288,7 +289,6 @@ EditorViewport::object_at (int x, int y)
 void
 EditorViewport::refresh()
 {
-  objs = editor->get_level()->get_objects();
   state.set_limit(Rect(Vector2i(0,0), editor->get_level()->get_size()).grow(256));
   std::cout << editor->get_level()->get_size().width << ", "
             << editor->get_level()->get_size().height 

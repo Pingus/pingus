@@ -125,13 +125,14 @@ struct SurfaceBackground : public ObjectSelectorList::Object
 
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
     LevelObj* obj = new LevelObj("surface-background", impl);
-    obj->set_pos(pos);
+    obj->set_pos(Vector3f(pos.x, pos.y, -1000.0f)); // FIXME: Hack, z-pos handling is messed up
     obj->set_para_x(1.0f);
     obj->set_para_y(1.0f);
     obj->set_scroll_x(0.0f);
     obj->set_scroll_y(0.0f);
     obj->set_res_desc(desc);
     // obj->set_para();
+
     return obj;
   }
 };

@@ -21,6 +21,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "editor_viewport.hpp"
 #include "editor_level.hpp"
 #include "level_impl.hpp"
 #include "level_objs.hpp"
@@ -30,9 +31,15 @@
 
 namespace Editor {
 
+static bool LevelObjSort(LevelObj *a, LevelObj *b)
+{
+  return (a->get_pos().z < b->get_pos().z);
+}
+
 // Default constructor
-EditorLevel::EditorLevel() :
-  impl(new LevelImpl())
+EditorLevel::EditorLevel(EditorScreen* editor_) 
+ : editor(editor_),
+   impl(new LevelImpl())
 {
   impl->levelname   = "none";
   impl->description = "none";
@@ -139,8 +146,9 @@ bool EditorLevel::save_level(const std::string& filename)
 
   // Write the objects
   fw.begin_section("objects");
-  for (unsigned i = 0; i < impl->objects.size(); i++)
-    impl->objects[i]->write_properties(fw);
+  std::vector<LevelObj*>* objects = editor->get_viewport()->get_objects();
+  for (unsigned i = 0; i < objects->size(); i++)
+    (*objects)[i]->write_properties(fw);
   fw.end_section();	// objects
 
   fw.end_section();	// pingus-level
@@ -269,17 +277,13 @@ void EditorLevel::load_level(const Pathname& pathname)
           obj->set_release_rate(tmp_int);
         }
 
-      impl->objects.push_back((LevelObj*)obj);
+      editor->get_viewport()->add_object(obj);
     }
 
   // Sort by Z coordinate
-  impl->sort_objs();
-}
-
-void
-EditorLevel::add_object(LevelObj* obj)
-{
-  impl->objects.push_back(obj);
+  std::stable_sort(editor->get_viewport()->get_objects()->begin(),
+                   editor->get_viewport()->get_objects()->end(),
+                   LevelObjSort);
 }
 
 void

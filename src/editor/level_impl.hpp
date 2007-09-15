@@ -25,14 +25,10 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include "editor_screen.hpp"
 #include "level_objs.hpp"
 
 namespace Editor {
-
-static bool LevelObjSort(LevelObj *a, LevelObj *b)
-{
-  return (a->get_pos().z < b->get_pos().z);
-}
 
 class LevelImpl
 {
@@ -48,11 +44,8 @@ public:
   /** Destructor */
   ~LevelImpl()
   {
-    for (unsigned i = 0; i < objects.size(); i++)
-      delete objects[i];
-    objects.clear();
   }
-                    
+                   
   std::string resname;
 
   std::string levelname;
@@ -72,14 +65,6 @@ public:
   std::string author;
   std::string comment;
   std::string music;
-
-  std::vector<LevelObj*> objects;
-
-  /** Sort the objects by their z position */
-  void sort_objs()
-  {
-    std::stable_sort(objects.begin(), objects.end(), LevelObjSort);
-  }
 
 private:
   LevelImpl (const LevelImpl&);

@@ -159,7 +159,9 @@ LevelObj::refresh_sprite()
   if (attribs & HAS_SURFACE)
     {
       sprite = Resource::load_sprite(desc);
-      
+    }
+  set_translated_pos();
+
 #if 0				
       Surface pb;
 
@@ -199,8 +201,6 @@ LevelObj::refresh_sprite()
 
       sprite = Sprite(pb);
 #endif
-    }
-  set_translated_pos();
 }
 
 // Set the modifier and actually modify the sprite loaded in memory

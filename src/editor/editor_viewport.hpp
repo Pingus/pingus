@@ -27,7 +27,6 @@
 #include <vector>
 #include <string>
 
-
 class Vector3f;
 class DrawingContext;
 class SceneContext;
@@ -148,6 +147,8 @@ public:
   Vector2i screen2world(int x, int y) const;
 
   void update_layout();
+
+  std::vector<LevelObj*>* get_objects() { return &objs; }
 
   boost::signal<void (const std::vector<LevelObj*>&)> selection_changed;
 private:

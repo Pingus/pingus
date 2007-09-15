@@ -29,12 +29,16 @@ class Pathname;
 namespace Editor {
 
 class LevelObj;
+class EditorScreen;
 
 class EditorLevel
 {
+private:
+  EditorScreen* editor;
+  
 public:
   /** Construct new blank level */
-  EditorLevel();
+  EditorLevel(EditorScreen* editor);
 
   /** Destructor */
   ~EditorLevel();
@@ -47,12 +51,6 @@ public:
 
   /** Load an existing level from a file */
   void load_level(const Pathname& pathname);
-
-  /** Return all objects in the level */
-  std::vector<LevelObj*> get_objects() const { return impl->objects; }
-	
-  /** Add an object to the level */
-  void add_object(LevelObj* obj);
 
   Size get_size() const;
   void set_size(const Size& s);

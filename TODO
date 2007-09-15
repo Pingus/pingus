@@ -120,7 +120,7 @@ Editor:
   f      - flip
   r      - rotate
 
--  
+- implement a minimap (just rects when surfaces are to tricky)
 
 - implement proper tmpfile Support (including backup use?)
 
