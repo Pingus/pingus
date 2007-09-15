@@ -314,6 +314,7 @@ PingusMain::check_args(int argc, char** argv)
 
         case 'e': // -e, --editor
           editor = true;
+          break;
 
         case 't': // -t, --set-speed
           game_speed = atoi(argp.get_argument().c_str());

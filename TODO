@@ -134,9 +134,6 @@ Editor:
 
 - when drag&dropping objects, have them at center not top/left
 
-- testing a game in the editor results in insanely fast speed (FPS
-  handling likely still broken and wasting CPU)
-
 - fix align of exits
 
 - add icons to filedialog
