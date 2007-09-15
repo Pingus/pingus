@@ -377,8 +377,11 @@ Display::draw_rect(const Rect& rect, const Color& color)
 }
 
 void
-Display::fill_rect(const Rect& rect, const Color& color)
+Display::fill_rect(const Rect& rect_, const Color& color)
 {
+  Rect rect = rect_;
+  rect.normalize();
+
   if (color.a == 255)
     {
       SDL_Rect srcrect;

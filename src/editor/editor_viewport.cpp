@@ -221,9 +221,12 @@ EditorViewport::draw(DrawingContext &gc)
   drawing_context->clear();
   drawing_context->fill_screen(Color(155,0,155));
   state.push(*drawing_context);
+  
+  // Level border
   drawing_context->draw_rect(Rect(Vector2i(0,0), editor->get_level()->get_size()), Color(255,255,255), 5000.0f);
   drawing_context->draw_rect(Rect(Vector2i(0,0), editor->get_level()->get_size()).grow(1), Color(0,0,0), 5000.0f);
 
+  // Safe area
   drawing_context->draw_rect(Rect(Vector2i(0,0), editor->get_level()->get_size()).grow(-100), Color(155,155,155), 5000.0f);
 	
   // Draw the level objects
@@ -231,9 +234,10 @@ EditorViewport::draw(DrawingContext &gc)
     objs[i]->draw(*drawing_context);
 
   if (current_action == HIGHLIGHTING)
-    drawing_context->draw_rect(highlighted_area.left, highlighted_area.top, 
-                               highlighted_area.right, highlighted_area.bottom, 
-                               Color(255,0,255), 1000.0f);
+    {
+      drawing_context->draw_fillrect(highlighted_area, Color(155,200,255, 100), 1000.0f);
+      drawing_context->draw_rect(highlighted_area, Color(155,200,255), 1000.0f);
+    }
   
   state.pop(*drawing_context);
   gc.draw(*drawing_context, -150);
