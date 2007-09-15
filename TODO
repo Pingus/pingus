@@ -117,10 +117,6 @@ Editor:
   f      - flip
   r      - rotate
 
-- exit align looks ok, object flipping/rotation is broken (due to
-  change in loading (pb->sprite) I guess)
-  -> Resource::load_sprite() doesn't apply modifier
-
 - make combo box open to the top or bottom depending on variable
 
 - ObjectSelector scroll limit is missing, also doesn't display all objects

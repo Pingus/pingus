@@ -92,8 +92,9 @@ public:
     optimize();
   }
 
-  SpriteImpl(const Surface& surface)
-    : offset(0,0),
+  SpriteImpl(const Surface& surface_)
+    : surface(surface_),
+      offset(0,0),
       frame_pos(0,0),
       frame_size(surface.get_width(), surface.get_height()),
       frame_delay(0),

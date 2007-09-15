@@ -62,7 +62,6 @@ public:
   int get_height() const;
   int get_pitch()  const;
 
-
   void blit(const Surface& source, int x, int y);
 
   Color get_pixel(int x, int y) const;

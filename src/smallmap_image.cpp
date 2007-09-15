@@ -95,65 +95,65 @@ SmallMapImage::update_surface()
           int i = y * pitch + 4 * x;
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-              const int red   = 3;
-              const int green = 2;
-              const int blue  = 1;
-              const int alpha = 0;
+          const int red   = 3;
+          const int green = 2;
+          const int blue  = 1;
+          const int alpha = 0;
 #else
-              const int red   = 0;
-              const int green = 1;
-              const int blue  = 2;
-              const int alpha = 3;
+          const int red   = 0;
+          const int green = 1;
+          const int blue  = 2;
+          const int alpha = 3;
 #endif 
 
           switch (colmap->getpixel_fast(x * cmap_width  / width,
                                         y * cmap_height / height))
             {
-            case Groundtype::GP_NOTHING:
-              cbuffer[i + red]   = 0;
-              cbuffer[i + green] = 0;
-              cbuffer[i + blue]  = 0;
-              cbuffer[i + alpha] = 255;
-              break;
+              case Groundtype::GP_NOTHING:
+                cbuffer[i + red]   = 0;
+                cbuffer[i + green] = 0;
+                cbuffer[i + blue]  = 0;
+                cbuffer[i + alpha] = 255;
+                break;
 
-            case Groundtype::GP_BRIDGE:
-              cbuffer[i + red]   =   0;
-              cbuffer[i + green] = 255;
-              cbuffer[i + blue]  = 100;
-              cbuffer[i + alpha] = 255;
-              break;
+              case Groundtype::GP_BRIDGE:
+                cbuffer[i + red]   =   0;
+                cbuffer[i + green] = 255;
+                cbuffer[i + blue]  = 100;
+                cbuffer[i + alpha] = 255;
+                break;
 
-            case Groundtype::GP_WATER:
-            case Groundtype::GP_LAVA:
-              cbuffer[i + red]   = 0;
-              cbuffer[i + green] = 0;
-              cbuffer[i + blue]  = 200;
-              cbuffer[i + alpha] = 255;
-              break;
+              case Groundtype::GP_WATER:
+              case Groundtype::GP_LAVA:
+                cbuffer[i + red]   = 0;
+                cbuffer[i + green] = 0;
+                cbuffer[i + blue]  = 200;
+                cbuffer[i + alpha] = 255;
+                break;
 
 #if 0
-              // FIXME: temporaty disabled for 0.6.0 release, since all liquids are currently lava
-            case Groundtype::GP_LAVA:
-              cbuffer[i + 3] = 255; // alpha
-              cbuffer[i + 2] = 255; // blue
-              cbuffer[i + 1] = 128;   // green
-              cbuffer[i + 0] = 128;   // red
-              break;
+                // FIXME: temporaty disabled for 0.6.0 release, since all liquids are currently lava
+              case Groundtype::GP_LAVA:
+                cbuffer[i + 3] = 255; // alpha
+                cbuffer[i + 2] = 255; // blue
+                cbuffer[i + 1] = 128;   // green
+                cbuffer[i + 0] = 128;   // red
+                break;
 #endif
 
-            case Groundtype::GP_SOLID:
-              cbuffer[i + red]   = 100;
-              cbuffer[i + green] = 100;
-              cbuffer[i + blue]  = 100;
-              cbuffer[i + alpha] = 255;
-              break;
+              case Groundtype::GP_SOLID:
+                cbuffer[i + red]   = 100;
+                cbuffer[i + green] = 100;
+                cbuffer[i + blue]  = 100;
+                cbuffer[i + alpha] = 255;
+                break;
 
-            default:
-              cbuffer[i + red]   = 200;
-              cbuffer[i + green] = 200;
-              cbuffer[i + blue]  = 200;
-              cbuffer[i + alpha] = 255;
-              break;
+              default:
+                cbuffer[i + red]   = 200;
+                cbuffer[i + green] = 200;
+                cbuffer[i + blue]  = 200;
+                cbuffer[i + alpha] = 255;
+                break;
             }
 	}
     }

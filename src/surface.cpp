@@ -255,7 +255,7 @@ Surface::mod(ResourceModifierNS::ResourceModifier modifier)
 void
 Surface::optimize()
 {
-  if (!impl->optimized)
+  if (impl.get() && !impl->optimized)
     {
       // FIXME: Could add a check to check if the surface is already optimized
       SDL_Surface* old_surface = impl->surface;
