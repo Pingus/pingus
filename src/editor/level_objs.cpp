@@ -93,18 +93,6 @@ LevelObj::draw(DrawingContext &gc)
 {
   if (!removed && attribs & (HAS_SURFACE | HAS_SURFACE_FAKE))
     {
-      // If selected, draw a highlighted box around it
-      if (selected)
-        {
-          Rect r((int)translated_pos.x, 
-                 (int)translated_pos.y, 
-                 (int)translated_pos.x + sprite.get_width(), 
-                 (int)translated_pos.y + sprite.get_height()); 
-
-          gc.draw_fillrect(r, Color(255,0,0,100), 5000);
-          gc.draw_rect(r, Color(255,0,0), 5000);
-        }
-
       if (attribs & HAS_WIDTH)
         {
           for(int x = int(pos.x); x < pos.x + width; x += sprite.get_width())
@@ -122,6 +110,18 @@ LevelObj::draw(DrawingContext &gc)
       else
         {
           gc.draw(sprite, pos);
+        }
+
+      // If selected, draw a highlighted box around it
+      if (selected)
+        {
+          Rect r((int)translated_pos.x, 
+                 (int)translated_pos.y, 
+                 (int)translated_pos.x + sprite.get_width(), 
+                 (int)translated_pos.y + sprite.get_height()); 
+
+          gc.draw_fillrect(r, Color(255,0,0,50));
+          gc.draw_rect(r, Color(255,0,0));
         }
     }
 }

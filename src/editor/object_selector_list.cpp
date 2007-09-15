@@ -141,7 +141,7 @@ ObjectSelectorList::ObjectSelectorList(EditorScreen* editor_, ObjectSelector* ob
   : RectComponent(rect_),
     editor(editor_),
     object_selector(object_selector_),
-    drawing_context(new DrawingContext(rect)),
+    drawing_context(new DrawingContext(rect, true)),
     offset(0),
     old_offset(0),
     mode(NOTHING),
@@ -157,49 +157,34 @@ ObjectSelectorList::draw(DrawingContext& parent_gc)
 
   DrawingContext& gc = *drawing_context;
   gc.clear();
-
+  gc.fill_screen(Color(100, 100, 100));
   gc.push_modelview();
   gc.translate(0, offset);
 
   Objects::iterator i = objects.begin();
 
-  for(int y = 0; y < 20; ++y) // FIXME: This is incorrect
-    for(int x = 0; x < 5; ++x)
-      {
-        if (i != objects.end())
-          { // draw a item
-            if (has_mouse_over() && current_object != -1 && (i - objects.begin()) == current_object)
-              {
-                gc.draw_fillrect(x * 48,      y * 48, 
-                                 x * 48 + 48, y * 48 + 48, 
-                                 Color(150,150,150));
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    {
+      int x = (i - objects.begin()) % 5;
+      int y = (i - objects.begin()) / 5;
 
+      gc.draw((*i)->thumbnail, Vector2i(x * 48, y * 48));
 
-                gc.draw_rect(x * 48,      y * 48, 
-                             x * 48 + 48, y * 48 + 48, 
-                             Color(255,255,255), 10000);
-              }
-            else
-              {
-                gc.draw_fillrect(x * 48,      y * 48, 
-                                 x * 48 + 48, y * 48 + 48, 
-                                 (((x-(y%2)) % 2) ? Color(0,0,0) : Color(100,100,100)));
-                
-                gc.draw_rect(x * 48,      y * 48, 
-                             x * 48 + 48, y * 48 + 48, 
-                             Color(155,155,155), 10000);
-              }
+      gc.draw_rect(x * 48,      y * 48, 
+                   x * 48 + 48, y * 48 + 48, 
+                   Color(155,155,155));
 
-            gc.draw((*i)->thumbnail, Vector2i(x * 48, y * 48));
-            ++i;
-          }
-        else
-          { // draw the quads for empty slots
-            gc.draw_fillrect(x * 48,      y * 48, 
-                             x * 48 + 48, y * 48 + 48, 
-                             (((x-(y%2)) % 2) ? Color(0,0,0) : Color(100,100,100)));
-          }
-      }
+      if (has_mouse_over() && current_object != -1 && (i - objects.begin()) == current_object)
+        {
+          gc.draw_fillrect(x * 48,      y * 48, 
+                           x * 48 + 48, y * 48 + 48, 
+                           Color(255,255,255, 100));
+
+          gc.draw_rect(x * 48,      y * 48, 
+                       x * 48 + 48, y * 48 + 48, 
+                       Color(255,255,255));
+        }
+    }
   
   gc.pop_modelview();
 
@@ -282,17 +267,24 @@ ObjectSelectorList::on_pointer_move (int x, int y)
 
   mouse_pos = Vector2i(x - rect.left, y - rect.top);
 
+  int width = 5;
+  int height = (objects.size() / width) + ((objects.size() % width > 0) ? 1 : 0);
+
   if (mode != OBJECT_DRAG)
     {
-      int obj_x = Math::clamp(0, mouse_pos.x / 48, 4);
-      int obj_y = Math::clamp(0, int(mouse_pos.y - offset) / 48, 200); // FIXME: 200 is placeholder
+      if (!objects.empty())
+        {
+          int obj_x = Math::clamp(0, mouse_pos.x / 48, width - 1);
+          int obj_y = Math::clamp(0, int(mouse_pos.y - offset) / 48, height-1);
 
-      current_object = Math::clamp(-1, (obj_y * 5) + obj_x, int(objects.size()-1));
+          current_object = Math::clamp(-1, (obj_y * 5) + obj_x, int(objects.size()-1));
+        }
     }
 
   if (mode == SCROLLING)
     {
       offset = old_offset + (y - drag_start.y);
+      offset = Math::clamp(Math::min(rect.get_height() - (height * 48.0f), 0.0f), offset, 0.0f);
     }
 }
 
@@ -319,6 +311,7 @@ ObjectSelectorList::set_objects(const std::string& prefix)
       objects.push_back(new Object(Resource::load_sprite(*i),
                                    Resource::load_thumb_sprite(*i)));
     }
+  offset = 0;
 }
 
 void
@@ -332,6 +325,7 @@ ObjectSelectorList::set_groundpiece(const std::string& prefix, const std::string
       //sprite.scale(48, 48);
       objects.push_back(new Groundpiece(*i, type));
     }
+  offset = 0;
 }
 
 void
@@ -375,6 +369,7 @@ ObjectSelectorList::set_hotspot()
       //sprite.scale(48, 48);
       objects.push_back(new Hotspot(*i));
     }
+  offset = 0;
 }
 
 void
@@ -388,6 +383,7 @@ ObjectSelectorList::set_background()
       //sprite.scale(48, 48);
       objects.push_back(new SurfaceBackground(*i));
     }
+  offset = 0;
 }
 
 void
@@ -404,6 +400,7 @@ ObjectSelectorList::set_entrance()
       if (*i != "entrances/generic")
         objects.push_back(new Hotspot(*i));
     }
+  offset = 0;
 }
 
 void
@@ -417,6 +414,7 @@ ObjectSelectorList::set_exit()
       //sprite.scale(48, 48);
       objects.push_back(new Exit(*i));
     }
+  offset = 0;
 }
 
 void

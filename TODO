@@ -1,5 +1,11 @@
-Roadmap for Pingus 0.8.0
-~~~~~~~~~~~~~~~~~~~~~~~~
+Stuff to do at all times:
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- grep for all the FIXME's and '#if 0' and find those that might be
+  important, add what you find to this TODO
+
+Roadmap for Pingus 0.8.0:
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - add VCR like effect for fast forward
 
@@ -35,7 +41,7 @@ Roadmap for Pingus 0.8.0
 
 - rework the UI, either go glas-like or use the blackbord style 
 
-- Font::draw() origin only works properly for left, right and center break with multiline text
+- Font::draw() origin only works properly for left, right and center, breaks with multiline text
 
 - file parsing easily crashes or asserts on incorrect files
 
@@ -61,6 +67,10 @@ Roadmap for Pingus 0.8.0
 
  * b) The big sign on the 'Tutorial Island' image
 
+- do we need z-pos for anything or does implicit object position serve
+  the same purpose? Problem: Groundpieces all have the same z-level,
+  the editor doesn't handle that and allows insertions inbetween
+
 Roadmap for Pingus 0.7.1
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -71,13 +81,7 @@ Important:
 
 - miner remove graphics looks wrong (cmap instead of gfx?)
 
-- What happened with StartPos?!
-
-- do we need z-pos for anything or does implicit object position serve
-  the same purpose? Problem: Groundpieces all have the same z-level,
-  the editor doesn't handle that and allows insertions inbetween
-
-- object raising doesn't work for group
+- separate gfx/colmap surfaces aren't used
 
 - update ChangeLog
 
@@ -86,6 +90,27 @@ Important:
 - add some SConscript checks (for compiler missing)
 
 - document the mouse-trap, fullscreen, etc. shortcuts somewhere
+
+- level converter has a bug that causes some object types to be
+  ignored (startpos and likely the other more excotic worldobj things)
+
+- menu crashes when you click a little wildely
+
+- "core/misc/404sprite" isn't returned for missing graphics
+
+### Loading font file: system://data/images/fonts/courier_small-iso-8859-9.font
+Font: datadir://images/fonts/courier_small-iso-8859-9.png
+  Error: glyphs found: 188, expected 189
+  Format: bpp: 32
+
+- bridging gets more complicated has graphical error (background?!)
+  surface background doesn't handle larger res due to the Playfield being offsetted
+
+- Liquids/water is 32, others are 64, this is causing trouble with the
+  collision map
+
+Less Important:
+===============
 
 - some people like auto-scrolling in window mode, in 0.6.0 it worked
   even when completly out of the window, in SDL the mouse coords don't
@@ -96,65 +121,9 @@ Important:
 
 - fix memory leaks in input/ (Controller doesn't clean up)
 
-- menu crashes when you click a little wildely
-
-- 404 image use
-
-### Loading font file: system://data/images/fonts/courier_small-iso-8859-9.font
-Font: datadir://images/fonts/courier_small-iso-8859-9.png
-  Error: glyphs found: 188, expected 189
-  Format: bpp: 32
-
 - remove SceneContext from Credits, replace with DrawingContext
 
-Editor:
-=======
-
-- keyboard shortcuts:
-  d      - duplicate
-  delete - delete object
-  insert - show/hide objectselector
-  cursor - pixel width moves
-  f      - flip
-  r      - rotate
-
-- implement a minimap (just rects when surfaces are to tricky)
-
-- implement proper tmpfile Support (including backup use?)
-
-- ObjectSelector need to support more object types: Starbackground, SolidColorBackground
-
-- make combo box open to the top or bottom depending on variable
-
-- ObjectSelector scroll limit is missing, also doesn't display all objects
-
-- could/should rotate around object center
-
-- when drag&dropping objects, have them at center not top/left
-
-- fix align of exits
-
-- add icons to filedialog
-
-- add options to show/hide hidden files and filter stuff
-
-- write a color select widget (Hue, Saturation.Value)
-
-- bridging gets more complicated has graphical error (background?!)
-  surface background doesn't handle larger res due to the Playfield being offsetted
-
-Dialogs:
-
-Editor Properties:
-user name and email
-
-Nice to Have:
-=============
-
-- rapidly clicking the credits button causes the game to crash
-
-- grep for all the FIXME's and '#if 0' and find those that might be
-  important, add what you find to this TODO
+- rapidly clicking the main menu buttons causes the game to crash
 
 - jumper dies sometimes in data/levels/tutorial/snow11-grumbel.scm when hitting the ground
 
@@ -164,17 +133,12 @@ Nice to Have:
 
 - story graphics have a missing vertical line (due to age old gimp scaling bug)
 
-- separate gfx/colmap surfaces aren't used
-
 - CollisionMask can't handle RGBA images and likely shouldn't (due to
   them being animated and stuff like that), we however don't have
   seperate colmask for those images
 
 - convert all levels and check all classic levels for issues (run
   branches/pingus_sdl/contribl/levelconvert.sh from SVN toplevel dir)
-
-- Liquids/water is 32, others are 64, this is causing trouble with the
-  collision map
 
 - add drag&drop scrolling
 
@@ -186,8 +150,61 @@ Nice to Have:
   (isn't used in tutorial island, since those levels don't have time)
   (have a blinking clock and tick sound or so)
 
-- "core/misc/404sprite" isn't returned for missing graphics
+
+Roadmap for Pingus Editor 0.7.1:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Important:
+==========
+
+- ObjectSelector scroll limit is missing, also doesn't display all objects
+
+- ObjectSelector need to support more object types: Starbackground, SolidColorBackground
+
+- write ObjectSelectorSet: Collection of Objects for the selector
+  (thumbsize should be allowed to differ)
+
+- keyboard shortcuts need to be implemented (use input framework, but
+  how without support for keymaps?)
+
+  d       - duplicate
+  delete  - delete object
+  insert  - show/hide objectselector
+  cursor  - pixel width moves
+  f       - hflip
+  shift+f - vflip
+  r       - rotate90
+  shift+r - rotate270
+
+- implement a minimap (just rects when surfaces are to tricky)
+
+- implement proper tmpfile Support (save tmp levels to ~/.pingus/tmp/
+  for backup purpose in case of editor crash or so)
+
+- make combo box open to the top or bottom depending on variable
+
+- could/should rotate around object center
+
+- fix align of exits
+
+- add options to show/hide hidden files and filter stuff
+
+- add new level and save level dialogs
+
+- write a README.input
+
+Less Important:
+===============
+
+- write a color select widget (Hue, Saturation.Value)
+
+- object raising doesn't work for group
+
+- add icons to filedialog
+
+- Dialogs: Editor Properties: user name and email
+
+
 Older Stuff:
 ~~~~~~~~~~~~
 
@@ -324,6 +341,5 @@ Other Wishes:
 > der sich an einem nahegelegenen Terminal an die Arbeit macht. Um
 > ihn da wegzubekommen, muesste man ihn natuerlich sprengen (wie im
 > echten Leben *grins*).
-
 
 # EOF #

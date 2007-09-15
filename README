@@ -5,14 +5,12 @@ Pingus
 Introduction
 
    Pingus is a free Lemmings(tm) clone for GNU/Linux, Win32 and other
-   operating systems supported by ClanLib. It is covered under the GPLv2,
+   operating systems supported by SDL. It is covered under the GPLv2,
    check the file COPYING, for more information.
    
    See INSTALL for generic install instructions, INSTALL.unix for
    instructions on how to compile and run Pingus from source on
-   GNU/Linux and INSTALL.Win32 for Windows. See README.binary on
-   informations how to use the binary versions of the game,
-   precompiled binaries are available at the Pingus webpage.
+   GNU/Linux and INSTALL.Win32 for Windows.
 
    Information about the game, new versions and additional
    documentation can be found at the Pingus webpage:
@@ -57,5 +55,4 @@ Bug Reports
 
     * http://savannah.nongnu.org/bugs/?group=pingus
 
----
-Last update  ... ir 2003-04-15
+# EOF #
