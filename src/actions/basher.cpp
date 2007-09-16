@@ -1,6 +1,7 @@
 //  $Id$
 //
-//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//  Pingus - A free Lemmings clone
+//  Copyright (C) 1999-2007 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
