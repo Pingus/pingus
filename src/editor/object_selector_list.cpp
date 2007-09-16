@@ -202,6 +202,7 @@ void
 ObjectSelectorList::set_objects(ObjectSelectorSet* set_)
 {
   set = set_;
+  current_object = -1;
 }
 
 } // namespace Editor
