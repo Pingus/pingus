@@ -1406,6 +1406,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\editor\object_selector_set.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\object_selector_set.hpp"
+					>
+				</File>
+				<File
 					RelativePath=".\src\editor\panel.cpp"
 					>
 				</File>
