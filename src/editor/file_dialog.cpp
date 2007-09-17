@@ -30,14 +30,14 @@
 
 namespace Editor {
 
-FileLoadDialog::FileLoadDialog(EditorScreen* editor_, const Rect& rect)
+FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect)
   : GroupComponent(rect),
     editor(editor_),
     file_list(Rect(4, 30 + 30 + 30,
                    rect.get_width()-4 - 30, rect.get_height() - 4 - 35))
 {
   add(&file_list, false);
-  file_list.on_click.connect(boost::bind(&FileLoadDialog::load_file, this, _1));
+  file_list.on_click.connect(boost::bind(&FileDialog::load_file, this, _1));
 
   Rect file_rect = file_list.get_rect();
   up_button = new Button(Rect(file_rect.right + 2, file_rect.top,
@@ -58,11 +58,11 @@ FileLoadDialog::FileLoadDialog(EditorScreen* editor_, const Rect& rect)
   cancel_button = new Button(Rect(Vector2i(rect.get_width() - 104 - 104, rect.get_height() - 4 - 30),
                                   Size(100, 30)), "Cancel");
   
-  up_button->on_click.connect(boost::bind(&FileLoadDialog::on_up, this));
-  down_button->on_click.connect(boost::bind(&FileLoadDialog::on_down, this));
-  home_button->on_click.connect(boost::bind(&FileLoadDialog::on_home, this));
-  open_button->on_click.connect(boost::bind(&FileLoadDialog::on_open, this));
-  cancel_button->on_click.connect(boost::bind(&FileLoadDialog::on_cancel, this));
+  up_button->on_click.connect(boost::bind(&FileDialog::on_up, this));
+  down_button->on_click.connect(boost::bind(&FileDialog::on_down, this));
+  home_button->on_click.connect(boost::bind(&FileDialog::on_home, this));
+  open_button->on_click.connect(boost::bind(&FileDialog::on_open, this));
+  cancel_button->on_click.connect(boost::bind(&FileDialog::on_cancel, this));
   
   add(up_button, true);
   add(down_button, true);
@@ -73,12 +73,12 @@ FileLoadDialog::FileLoadDialog(EditorScreen* editor_, const Rect& rect)
   add(cancel_button, true);
 }
 
-FileLoadDialog::~FileLoadDialog()
+FileDialog::~FileDialog()
 {
 }
 
 void
-FileLoadDialog::draw_background(DrawingContext& gc)
+FileDialog::draw_background(DrawingContext& gc)
 {
   GUIStyle::draw_raised_box(gc, Rect(0,0,rect.get_width(), rect.get_height()));
   gc.draw_fillrect(4,4,rect.get_width()-4, 30, Color(77,130,180));
@@ -97,7 +97,7 @@ FileLoadDialog::draw_background(DrawingContext& gc)
 }
   
 void
-FileLoadDialog::load_file(const System::DirectoryEntry& entry)
+FileDialog::load_file(const System::DirectoryEntry& entry)
 {
   if (entry.type == System::DE_DIRECTORY)
     {
@@ -112,7 +112,7 @@ FileLoadDialog::load_file(const System::DirectoryEntry& entry)
 }
 
 void
-FileLoadDialog::set_directory(const std::string& pathname_)
+FileDialog::set_directory(const std::string& pathname_)
 {
   filename = "";
   pathname = System::realpath(pathname_);
@@ -121,14 +121,14 @@ FileLoadDialog::set_directory(const std::string& pathname_)
 }
 
 void
-FileLoadDialog::on_cancel()
+FileDialog::on_cancel()
 {
   std::cout << "Cancel" << std::endl;
   hide();
 }
 
 void
-FileLoadDialog::on_open()
+FileDialog::on_open()
 {
   if (!filename.empty())
     {
@@ -140,21 +140,21 @@ FileLoadDialog::on_open()
 }
 
 void
-FileLoadDialog::on_up()
+FileDialog::on_up()
 {
   file_list.prev_page();
   update_button_state();
 }
 
 void
-FileLoadDialog::on_down()
+FileDialog::on_down()
 {
   file_list.next_page();
   update_button_state();
 }
 
 void
-FileLoadDialog::update_layout()
+FileDialog::update_layout()
 {
   GUI::GroupComponent::update_layout();
 
@@ -177,13 +177,13 @@ FileLoadDialog::update_layout()
 }
 
 void
-FileLoadDialog::on_home()
+FileDialog::on_home()
 {
   
 }
 
 void
-FileLoadDialog::update_button_state()
+FileDialog::update_button_state()
 {
   if (file_list.has_more_prev_pages())
     up_button->enable();

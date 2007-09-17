@@ -53,7 +53,7 @@ private:
   ObjectProperties* object_properties;
   ActionProperties* action_properties;
   LevelProperties*  level_properties;
-  FileLoadDialog*   file_load_dialog;
+  FileDialog*   file_dialog;
   
   bool show_help;
 

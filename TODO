@@ -79,7 +79,8 @@ Roadmap for Pingus 0.7.1
 Important:
 ==========
 
-- replace Windstille headers with Pingus header
+- rewrite Config file support, make game automatically write a default
+  config file, use s-expr
 
 - create verdana11 for latin2 and latin9
 
@@ -89,11 +90,7 @@ Important:
 
 - update ChangeLog
 
-- enable default fullscreen for release
-
 - add some SConscript checks (for compiler missing)
-
-- document the mouse-trap, fullscreen, etc. shortcuts somewhere
 
 - level converter has a bug that causes some object types to be
   ignored (startpos and likely the other more excotic worldobj things)
@@ -108,13 +105,19 @@ Font: datadir://images/fonts/courier_small-iso-8859-9.png
   Format: bpp: 32
 
 - bridging gets more complicated has graphical error (background?!)
-  surface background doesn't handle larger res due to the Playfield being offsetted
+  surface background doesn't handle larger res due to the Playfield
+  being offsetted (might be solveable with new DrawingContext that
+  features Rect)
 
 - Liquids/water is 32, others are 64, this is causing trouble with the
   collision map
 
 Less Important:
 ===============
+
+- rework command line parsing so that it actually works properly and
+  doesn't depend so much on the order (setting datadir causes trouble
+  with translation, since translation need datadir to work)
 
 - some people like auto-scrolling in window mode, in 0.6.0 it worked
   even when completly out of the window, in SDL the mouse coords don't
@@ -161,6 +164,8 @@ Roadmap for Pingus Editor 0.7.1:
 Important:
 ==========
 
+- add object duplication
+
 - add color prop for surface-background
 
 - make GPType prop
@@ -181,14 +186,10 @@ Important:
   r       - rotate90
   shift+r - rotate270
 
-- implement a minimap (just rects when surfaces are to tricky)
-
 - implement proper tmpfile Support (save tmp levels to ~/.pingus/tmp/
   for backup purpose in case of editor crash or so)
 
 - make combo box open to the top or bottom depending on variable
-
-- could/should rotate around object center
 
 - fix align of exits
 
@@ -200,6 +201,10 @@ Important:
 
 Less Important:
 ===============
+
+- implement a minimap (just rects when surfaces are to tricky)
+
+- could/should rotate around object center
 
 - write a color select widget (Hue, Saturation.Value)
 

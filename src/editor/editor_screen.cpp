@@ -30,7 +30,7 @@
 #include "../resource.hpp"
 #include "../fonts.hpp"
 #include "../file_dialog.hpp"
-#include "file_load_dialog.hpp"
+#include "file_dialog.hpp"
 #include "../path_manager.hpp"
 #include "../pathname.hpp"
 #include "game_session.hpp"
@@ -74,12 +74,12 @@ EditorScreen::EditorScreen()
   object_properties = new ObjectProperties(this, Rect(Vector2i(0,Display::get_height()-150), Size(200, 150)));
   gui_manager->add(object_properties, true);
 
-  file_load_dialog = new FileLoadDialog(this, Rect(Vector2i(50, 50), 
-                                                   Size(Display::get_width() - 100, 
-                                                        Display::get_height() - 100)));
-  file_load_dialog->set_directory(".");
-  file_load_dialog->hide();
-  gui_manager->add(file_load_dialog, true);
+  file_dialog = new FileDialog(this, Rect(Vector2i(50, 50), 
+                                          Size(Display::get_width() - 100, 
+                                               Display::get_height() - 100)));
+  file_dialog->set_directory(".");
+  file_dialog->hide();
+  gui_manager->add(file_dialog, true);
 
   viewport->selection_changed.connect(boost::bind(&ObjectProperties::set_objects, object_properties, _1));
 
@@ -225,13 +225,13 @@ EditorScreen::level_new()
 void 
 EditorScreen::level_load()
 {
-  if (file_load_dialog->is_visible())
-    file_load_dialog->hide();
+  if (file_dialog->is_visible())
+    file_dialog->hide();
   else 
     {
-      //file_load_dialog->set_rect(Rect(Vector2i(rand() % 200, rand() % 200),
+      //file_dialog->set_rect(Rect(Vector2i(rand() % 200, rand() % 200),
       //                                Size(rand()%600+200, rand()%600+300)));
-      file_load_dialog->show();
+      file_dialog->show();
     }
 }
 

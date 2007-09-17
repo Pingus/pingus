@@ -41,8 +41,7 @@
 
 
 PingusMenu::PingusMenu (PingusMenuManager* m)
-  : PingusSubMenu (m),
-    filedialog(0)
+  : PingusSubMenu (m)
 {
   is_init = false;
     
@@ -82,6 +81,8 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
                                       _("Multiplayer"),
                                       _("..:: Multiplayer Match ::.."));
 #endif
+
+  help = _("..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: fullscreen   ::   F12: screenshot ::..");
 }
 
 void
@@ -124,21 +125,25 @@ PingusMenu::show_credits()
 void
 PingusMenu::setup_contrib_menu()
 {
+#if 0
   if (filedialog)
     delete filedialog;
   filedialog = new FileDialog(this, ".pingus", 
                               path_manager.complete("levels/"), true);
   manager->push_menu (filedialog);
+#endif
 }
 
 void
 PingusMenu::setup_worldmap_menu()
 {
+#if 0
   if (filedialog)
     delete filedialog;
   filedialog = new FileDialog(this, ".worldmap", 
                               path_manager.complete("worldmaps/"), true);
   manager->push_menu (filedialog);
+#endif 
 }
 
 void
@@ -163,7 +168,6 @@ PingusMenu::~PingusMenu()
   delete story_button;
   delete multiplayer_button;
 #endif
-  delete filedialog;
 }
 
 void
@@ -244,6 +248,19 @@ PingusMenu::draw_foreground(DrawingContext& gc)
                 Display::get_height()-80,
                 "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are\n"
                 "welcome to redistribute it under certain conditions; see the file COPYING for details.\n");
+
+  if (hint.empty())
+    {
+      gc.print_center(Fonts::pingus_small, Display::get_width() / 2,
+                      Display::get_height() - Fonts::pingus_small.get_height(),
+                      help);
+    }
+  else
+    {
+      gc.print_center(Fonts::pingus_small, Display::get_width() / 2,
+                      Display::get_height() - Fonts::pingus_small.get_height(),
+                      hint);
+    }
 }
 
 void
@@ -297,6 +314,18 @@ PingusMenu::on_click(MenuButton* button)
       setup_main_menu();
     }
 #endif
+}
+
+void
+PingusMenu::set_hint(const std::string& str)
+{
+  hint = str;
+}
+
+void
+PingusMenu::update(float delta)
+{
+  //text_scroll_offset += 100.0f * delta;
 }
 
 /* EOF */

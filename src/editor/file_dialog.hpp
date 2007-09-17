@@ -29,7 +29,7 @@ class Button;
 class EditorScreen;
 
 /** */
-class FileLoadDialog : public GUI::GroupComponent
+class FileDialog : public GUI::GroupComponent
 {
 private:
   EditorScreen* editor;
@@ -45,8 +45,8 @@ private:
   std::string filename;
 
 public:
-  FileLoadDialog(EditorScreen* editor, const Rect& rect);
-  ~FileLoadDialog();
+  FileDialog(EditorScreen* editor, const Rect& rect);
+  ~FileDialog();
   
   void draw_background(DrawingContext& gc);
   void update_layout();
@@ -65,8 +65,8 @@ public:
 private:
   void update_button_state();
 
-  FileLoadDialog (const FileLoadDialog&);
-  FileLoadDialog& operator= (const FileLoadDialog&);
+  FileDialog (const FileDialog&);
+  FileDialog& operator= (const FileDialog&);
 };
 
 } // namespace Editor

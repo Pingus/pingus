@@ -23,12 +23,10 @@
 #include <vector>
 #include "fonts.hpp"
 #include "pingus_sub_menu.hpp"
-#include "file_dialog_listener.hpp"
 #include "layer_manager.hpp"
 
 class SurfaceButton;
 class GameDelta;
-class FileDialog;
 
 namespace GUI {
 class GUIManager;
@@ -36,10 +34,13 @@ class GUIManager;
 
 class MenuButton;
 
-class PingusMenu : public PingusSubMenu, public FileDialogListener
+class PingusMenu : public PingusSubMenu
 {
 public:
   bool is_init;
+  std::string hint;
+  std::string help;
+  float text_scroll_offset;
 private:
   Sprite background;
   LayerManager layer_manager;
@@ -53,7 +54,6 @@ private:
   MenuButton* story_button;
   MenuButton* multiplayer_button;
 #endif
-  FileDialog* filedialog;
   
   void on_resize (int w, int h);
 
@@ -86,6 +86,7 @@ public:
   ~PingusMenu();
 
   void on_click(MenuButton* button);
+  void set_hint(const std::string& str);
 
   /// Load all images and other stuff for the menu
   void preload ();
@@ -93,6 +94,8 @@ public:
 
   void on_escape_press ();
   void draw_foreground(DrawingContext& gc);
+
+  void update(float delta);
 private:
   PingusMenu (const PingusMenu&);
   PingusMenu& operator= (const PingusMenu&);

@@ -78,10 +78,6 @@ MenuButton::draw (DrawingContext& gc)
 {
   if (mouse_over && !pressed)
     {
-      gc.print_center(font, Display::get_width() / 2,
-                      Display::get_height() - font.get_height() - 2,
-                      desc.c_str());
-
       gc.draw(surface_p, Vector2i(x_pos - surface_p.get_width()/2,
                                   y_pos - surface_p.get_height()/2));
 
@@ -92,11 +88,6 @@ MenuButton::draw (DrawingContext& gc)
   else if (mouse_over && pressed)
     {
       float shrink = 0.9f;
-
-      gc.print_center(font, Display::get_width() / 2,
-                      Display::get_height() - 20,
-                      desc.c_str());
-
       gc.draw(surface_p,
               Vector3f(x_pos - surface_p.get_width()/2 * shrink,
                        y_pos - surface_p.get_height()/2 * shrink));
@@ -127,6 +118,7 @@ MenuButton::on_pointer_enter ()
   mouse_over = true;
   Sound::PingusSound::play_sound ("tick");
   //std::cout << "X: " << this << "enter" << std::endl;
+  menu->set_hint(desc);
 }
 
 void
@@ -134,6 +126,7 @@ MenuButton::on_pointer_leave ()
 {
   //std::cout << "X: " << this << "leave" << std::endl;
   mouse_over = false;
+  menu->set_hint("");
 }
 
 void
