@@ -40,7 +40,7 @@ SExprFileWriter::indent()
 void
 SExprFileWriter::begin_section(const char* name)
 {
-  (*out) << indent() << "(" << name << "\n";
+  (*out) << "\n" << indent() << "(" << name << " ";
   ++level;
 }
 
@@ -48,32 +48,32 @@ void
 SExprFileWriter::end_section()
 {
   --level;
-  (*out) << indent() << ")\n";
+  (*out) << ")";
 }
 
 void
 SExprFileWriter::write_int(const char* name, int value)
 {
-  (*out) << indent() << "(" << name << " " << value << ")\n";
+  (*out) << "\n" << indent() << "(" << name << " " << value << ")";
 }
 
 void
 SExprFileWriter::write_float(const char* name, float value)
 {
-  (*out) << indent() << "(" << name << " " << value << ")\n";
+  (*out) << "\n" << indent() << "(" << name << " " << value << ")";
 }
 
 void
 SExprFileWriter::write_color(const char* name, const Color& color)
 {
-  (*out) << indent() << "(" << name << " "
-         << (int)color.r << " " << (int)color.g << " " << (int)color.b << " " << (int)color.a << ")\n";
+  (*out) << "\n" << indent() << "(" << name << " "
+         << (int)color.r << " " << (int)color.g << " " << (int)color.b << " " << (int)color.a << ")";
 }
 
 void
 SExprFileWriter::write_bool(const char* name, bool value)
 {
-  (*out) << indent() << "(" << name << " " << (value ? "#t" : "#f") << ")\n";
+  (*out) << "\n" << indent() << "(" << name << " " << (value ? "#t" : "#f") << ")";
 }
 
 void
@@ -98,20 +98,20 @@ SExprFileWriter::write_string(const char* name, const std::string& value)
 		}
 	}
 	
-	(*out) << indent() << "(" << name << " \"" << new_value << "\")\n";
+	(*out) << "\n" << indent() << "(" << name << " \"" << new_value << "\")";
 }
 
 void
 SExprFileWriter::write_vector(const char* name, const Vector3f& value)
 {
-  (*out) << indent() << "(" << name << " "
-         << value.x << " " << value.y << " " << value.z << ")\n";
+  (*out) << "\n" << indent() << "(" << name << " "
+         << value.x << " " << value.y << " " << value.z << ")";
 }
 
 void
 SExprFileWriter::write_size(const char* name, const Size& size)
 {
-  (*out) << indent() << "(" << name << " " << size.width << " " << size.height << ")\n";
+  (*out) << "\n" << indent() << "(" << name << " " << size.width << " " << size.height << ")";
 }
 
 /* EOF */

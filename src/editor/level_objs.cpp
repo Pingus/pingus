@@ -204,7 +204,9 @@ LevelObj::write_properties(FileWriter &fw)
 
       const unsigned attribs = get_attributes(section_name);
 
-      // Write information about the main sprite
+      if (attribs & HAS_TYPE)
+        fw.write_string("type", object_type);
+
       if (attribs & HAS_SURFACE)
         {
           fw.begin_section("surface");
@@ -212,9 +214,9 @@ LevelObj::write_properties(FileWriter &fw)
           fw.write_string("modifier", ResourceModifierNS::rs_to_string(desc.modifier));
           fw.end_section();	// surface
         }
-      // Write the optional information
-      if (attribs & HAS_TYPE)
-        fw.write_string("type", object_type);
+
+      fw.write_vector("position", pos);
+      
       if (attribs & HAS_SPEED)
         fw.write_int("speed", speed);
       if (attribs & HAS_PARALLAX)
@@ -249,8 +251,6 @@ LevelObj::write_properties(FileWriter &fw)
       // Writes any extra properties that may be necessary (virtual function)
       write_extra_properties(fw);
       
-      fw.write_vector("position", pos);
-
       fw.end_section();	// object's section_name
     }
 }

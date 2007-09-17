@@ -157,6 +157,8 @@ Less Important:
 
 - convert all levels and check all classic levels for issues (run
   branches/pingus_sdl/contribl/levelconvert.sh from SVN toplevel dir)
+ 
+- level converter writes 0/1 instead of #t/#f
 
 - add drag&drop scrolling
 
