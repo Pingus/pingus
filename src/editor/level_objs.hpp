@@ -23,6 +23,7 @@
 #include "../sprite.hpp"
 #include "../math/color.hpp"
 #include "../math/origin.hpp"
+#include "../math/rect.hpp"
 #include "../math/vector3f.hpp"
 #include "../res_descriptor.hpp"
 #include "../file_writer.hpp"
@@ -77,6 +78,8 @@ protected:
 
   /** Optional type field for certain objects */
   std::string object_type;
+
+  std::string ground_type;
 
   /** Optional speed field for certain objects */
   int speed;
@@ -162,6 +165,8 @@ public:
   /** Retrieve the object's type */
   std::string get_type() const { return object_type; }
 
+  std::string get_ground_type() const { return ground_type; }
+
   /** Retrieve the object's speed */
   int get_speed() const { return speed; }
 
@@ -242,6 +247,8 @@ public:
   /** Set the object's type */
   void set_type(const std::string t) { object_type = t; }
 
+  void set_ground_type(const std::string t) { ground_type = t; }
+
   /** Set the object's speed */
   void set_speed(const int s) { speed = s; }
 
@@ -307,6 +314,8 @@ public:
 
   /** Returns a number representing which attributes this object possesses */
   unsigned int get_attributes(std::string obj_type);
+
+  Rect get_rect() const;
 
 private:
   LevelObj (const LevelObj&);

@@ -223,6 +223,11 @@ void EditorLevel::load_level(const Pathname& pathname)
           i->read_string("type", tmp_str);
           obj->set_type(tmp_str);
         }
+      if (attribs & HAS_GPTYPE)
+        {	
+          i->read_string("type", tmp_str);
+          obj->set_ground_type(tmp_str);
+        }
       if (attribs & HAS_SPEED)
         {
           i->read_int("speed", tmp_int);

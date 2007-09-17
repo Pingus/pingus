@@ -67,7 +67,10 @@ void
 SExprFileWriter::write_color(const char* name, const Color& color)
 {
   (*out) << "\n" << indent() << "(" << name << " "
-         << (int)color.r << " " << (int)color.g << " " << (int)color.b << " " << (int)color.a << ")";
+         << color.r/255.0f << " " 
+         << color.g/255.0f << " "
+         << color.b/255.0f << " " 
+         << color.a/255.0f << ")";
 }
 
 void

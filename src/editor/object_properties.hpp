@@ -74,6 +74,12 @@ private:
   Label*    pos_z_label;
   Inputbox* pos_z_inputbox;
 
+  Label*    color_label;
+  Inputbox* color_r_inputbox;
+  Inputbox* color_g_inputbox;
+  Inputbox* color_b_inputbox;
+  Inputbox* color_a_inputbox;
+
   int y_pos;
 public:
   ObjectProperties(EditorScreen* editor, const Rect& rect);
@@ -102,6 +108,11 @@ public:
   void on_scroll_y_change(const std::string& str);
   void on_release_rate_change(const std::string& str);
   void on_pos_z_change(const std::string& str);
+
+  void on_color_r_change(const std::string& str);
+  void on_color_g_change(const std::string& str);
+  void on_color_b_change(const std::string& str);
+  void on_color_a_change(const std::string& str);
 
 };
 

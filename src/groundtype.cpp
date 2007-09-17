@@ -40,7 +40,7 @@ Groundtype::string_to_type(const std::string& arg_type)
     return Groundtype::GP_REMOVE;
   else
     {
-      std::cout << "Groundtype: Unhandled type: " << arg_type << std::endl;
+      std::cout << "Groundtype: Unhandled type: '" << arg_type << "'" << std::endl;
       return Groundtype::GP_GROUND;
     }
 }

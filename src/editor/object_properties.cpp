@@ -42,7 +42,7 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
     
   Rect label_rect(10,0, 80, 20);
   Rect box_rect(80,0, 190, 20);
- 
+  
   // Groundpiece Type
   add(gptype_label = new Label(label_rect, "GPType:"), true);
   add(gptype_type  = new Combobox(box_rect), true);
@@ -57,7 +57,7 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
   gptype_type->set_selected_item(Groundtype::GP_GROUND);
 
   gptype_type->on_select.connect(boost::bind(&ObjectProperties::on_gptype_change, this, _1));
-  
+  
   add(entrance_direction_label = new Label(label_rect, "Direction:"), true);
   add(entrance_direction = new Combobox(box_rect), true);
   entrance_direction->add(0, "Left");
@@ -66,12 +66,12 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
   entrance_direction->set_selected_item(0);
 
   entrance_direction->on_select.connect(boost::bind(&ObjectProperties::on_entrance_direction_change, this, _1));
-
+  
   add(release_rate_label = new Label(label_rect, "ReleaseRate:"), true);
   add(release_rate_inputbox = new Inputbox(box_rect), true);
 
   release_rate_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_release_rate_change, this, _1));
-  
+  
   // Background Stretch
   add(stretch_label = new Label(label_rect, "Stretch:"), true);
   add(stretch_x_checkbox = new Checkbox(Rect(Vector2i(box_rect.left, box_rect.top), 
@@ -83,7 +83,7 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
 
   stretch_x_checkbox->on_change.connect(boost::bind(&ObjectProperties::on_stretch_x_change, this, _1));
   stretch_y_checkbox->on_change.connect(boost::bind(&ObjectProperties::on_stretch_y_change, this, _1));
-  
+  
   add(para_x_label = new Label(label_rect, "Para-X:"), true);
   add(para_y_label = new Label(label_rect, "Para-Y:"), true);
 
@@ -92,7 +92,7 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
 
   para_x_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_para_x_change, this, _1));
   para_y_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_para_y_change, this, _1));
-
+  
   add(scroll_x_label = new Label(label_rect, "Scroll-X:"), true);
   add(scroll_y_label = new Label(label_rect, "Scroll-Y:"), true);
 
@@ -101,15 +101,28 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
 
   scroll_x_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_scroll_x_change, this, _1));
   scroll_y_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_scroll_y_change, this, _1));
-  
+  
   add(owner_label    = new Label(label_rect, "Owner Id:"), true);
   add(owner_inputbox = new Inputbox(box_rect), true);
   owner_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_owner_change, this, _1));
-
+  
   add(pos_z_label    = new Label(label_rect, "Z-Pos:"), true);
   add(pos_z_inputbox = new Inputbox(box_rect), true);
   pos_z_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_pos_z_change, this, _1));
-
+  
+  Size color_s(box_rect.get_width()/4, box_rect.get_height());
+
+  add(color_label = new Label(label_rect, "Color:"), true);
+  add(color_r_inputbox = new Inputbox(Rect(Vector2i(box_rect.left + 0*color_s.width, box_rect.top), color_s)), true);
+  add(color_g_inputbox = new Inputbox(Rect(Vector2i(box_rect.left + 1*color_s.width, box_rect.top), color_s)), true);
+  add(color_b_inputbox = new Inputbox(Rect(Vector2i(box_rect.left + 2*color_s.width, box_rect.top), color_s)), true);
+  add(color_a_inputbox = new Inputbox(Rect(Vector2i(box_rect.left + 3*color_s.width, box_rect.top), color_s)), true);
+
+  color_r_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_color_r_change, this, _1));
+  color_g_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_color_g_change, this, _1));
+  color_b_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_color_b_change, this, _1));
+  color_a_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_color_a_change, this, _1));
+  
   set_object(0);
 }
 
@@ -194,6 +207,12 @@ ObjectProperties::hide_all()
 
   pos_z_label->hide();
   pos_z_inputbox->hide();
+
+  color_label->hide();
+  color_r_inputbox->hide();
+  color_g_inputbox->hide();
+  color_b_inputbox->hide();
+  color_a_inputbox->hide();
 }
 
 void
@@ -204,7 +223,7 @@ ObjectProperties::set_object(LevelObj* obj)
   if (obj)
     {
       unsigned int attr = obj->get_attribs();
-      if (attr & HAS_TYPE)
+      if (attr & HAS_GPTYPE)
         {
           gptype_type->set_selected_item(Groundtype::string_to_type(obj->get_type()));
           place(gptype_label, gptype_type);
@@ -225,15 +244,15 @@ ObjectProperties::set_object(LevelObj* obj)
         }
       
       if (attr & HAS_SPEED)
-        {
+        { // obsolete in large part, since sprites have their own speed
         }
       
       if (attr & HAS_PARALLAX)
-        {
+        { // used for hotspot
         }
         
       if (attr & HAS_WIDTH)
-        {
+        { // used by liquid and some obscure ones
         }
         
       if (attr & HAS_OWNER)
@@ -244,6 +263,17 @@ ObjectProperties::set_object(LevelObj* obj)
         
       if (attr & HAS_COLOR)
         {
+          color_r_inputbox->set_text(StringUtil::to_string((int)obj->get_color().r));
+          color_g_inputbox->set_text(StringUtil::to_string((int)obj->get_color().g));
+          color_b_inputbox->set_text(StringUtil::to_string((int)obj->get_color().b));
+          color_a_inputbox->set_text(StringUtil::to_string((int)obj->get_color().a));
+
+          place(color_label);
+          place(color_r_inputbox);
+          place(color_g_inputbox);
+          place(color_b_inputbox);
+          place(color_a_inputbox);
+          advance();
         }
 
       if (attr & HAS_SCROLL)
@@ -336,7 +366,7 @@ void
 ObjectProperties::on_gptype_change(const ComboItem& item)
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_type(Groundtype::type_to_string((Groundtype::GPType)item.id));
+    (*i)->set_ground_type(Groundtype::type_to_string((Groundtype::GPType)item.id));
 }
 
 void
@@ -350,7 +380,7 @@ void
 ObjectProperties::on_stretch_y_change(bool t)
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-      (*i)->set_stretch_y(t);
+    (*i)->set_stretch_y(t);
 }
 
 void
@@ -385,37 +415,82 @@ ObjectProperties::on_pos_z_change(const std::string& str)
 void
 ObjectProperties::on_para_x_change(const std::string& str)
 {
- for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-   (*i)->set_para_x(StringUtil::to<float>(str));
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    (*i)->set_para_x(StringUtil::to<float>(str));
 }
 
 void
 ObjectProperties::on_para_y_change(const std::string& str)
 {
- for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-   (*i)->set_para_y(StringUtil::to<float>(str));
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    (*i)->set_para_y(StringUtil::to<float>(str));
 }
 
 void
 ObjectProperties::on_scroll_x_change(const std::string& str)
 {
- for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-   (*i)->set_scroll_x(StringUtil::to<float>(str));
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    (*i)->set_scroll_x(StringUtil::to<float>(str));
 }
 
 void
 ObjectProperties::on_scroll_y_change(const std::string& str)
 {
- for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-   (*i)->set_scroll_y(StringUtil::to<float>(str));
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    (*i)->set_scroll_y(StringUtil::to<float>(str));
 }
 
 void
 ObjectProperties::on_release_rate_change(const std::string& str)
 {
- for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-   (*i)->set_release_rate(StringUtil::to<int>(str));
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    (*i)->set_release_rate(StringUtil::to<int>(str));
 }
+
+void
+ObjectProperties::on_color_r_change(const std::string& str)
+{
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    {
+      Color color = (*i)->get_color(); 
+      color.r = StringUtil::to<int>(str);
+      (*i)->set_color(color);
+    }
+}
+
+void
+ObjectProperties::on_color_g_change(const std::string& str)
+{
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    {
+      Color color = (*i)->get_color(); 
+      color.g = StringUtil::to<int>(str);
+      (*i)->set_color(color);
+    }
+}
+
+void
+ObjectProperties::on_color_b_change(const std::string& str)
+{
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    {
+      Color color = (*i)->get_color(); 
+      color.b = StringUtil::to<int>(str);
+      (*i)->set_color(color);
+    }
+}
+
+void
+ObjectProperties::on_color_a_change(const std::string& str)
+{
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    { 
+      Color color = (*i)->get_color(); 
+      color.a = StringUtil::to<int>(str);
+      (*i)->set_color(color);
+    }
+}
+
 
 } // namespace Editor
 

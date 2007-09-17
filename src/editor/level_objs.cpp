@@ -60,7 +60,7 @@ unsigned int
 LevelObj::get_attributes(std::string obj_type)
 {
   if (obj_type == "groundpiece")
-    return HAS_TYPE | HAS_SURFACE | CAN_ROTATE;
+    return HAS_GPTYPE | HAS_SURFACE | CAN_ROTATE;
   else if (obj_type == "hotspot")
     return HAS_SPEED | HAS_PARALLAX | HAS_SURFACE | CAN_ROTATE;
   else if (obj_type == "liquid")
@@ -207,6 +207,9 @@ LevelObj::write_properties(FileWriter &fw)
       if (attribs & HAS_TYPE)
         fw.write_string("type", object_type);
 
+      if (attribs & HAS_GPTYPE)
+        fw.write_string("type", ground_type);
+
       if (attribs & HAS_SURFACE)
         {
           fw.begin_section("surface");
@@ -282,6 +285,13 @@ float
 LevelObj::get_pos_z() const
 {
   return pos.z;
+}
+
+Rect
+LevelObj::get_rect() const
+{
+  return Rect(Vector2i((int)pos.x, (int)pos.y) - sprite.get_offset(),
+              Size(sprite.get_width(), sprite.get_height()));
 }
 
 } // namespace Editor 

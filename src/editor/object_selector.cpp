@@ -55,7 +55,7 @@ struct Groundpiece : public ObjectSelectorList::Object
     LevelObj* obj = new LevelObj("groundpiece", impl);
     obj->set_pos(pos);
     obj->set_res_desc(desc);
-    obj->set_type(type);
+    obj->set_ground_type(type);
     return obj;
   }
 };
