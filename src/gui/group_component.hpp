@@ -39,6 +39,8 @@ private:
   /** Used to decide where keyboard events should go */
   Component*     focused_comp;
 
+  Component*     grabbed_comp;
+
   /** Used to do a mouse grab, as long as a button is pressed, the
       component that got the press gets moves and release events */
   Component* primary_pressed_comp;
@@ -74,6 +76,10 @@ public:
   void update_layout();
 
   bool is_at(int x, int y);
+
+  // Causes all input directed to comp
+  void grab(Component* comp);
+  void ungrab(Component*);
 
   Component* component_at (const Vector2i& pos);
 private:
