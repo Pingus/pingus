@@ -24,6 +24,9 @@
 #include "editor_screen.hpp"
 #include "gui_style.hpp"
 #include "fonts.hpp"
+#include "gettext.h"
+#include "label.hpp"
+#include "inputbox.hpp"
 #include "pathname.hpp"
 #include "button.hpp"
 #include "file_dialog.hpp"
@@ -63,7 +66,13 @@ FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect)
   home_button->on_click.connect(boost::bind(&FileDialog::on_home, this));
   open_button->on_click.connect(boost::bind(&FileDialog::on_open, this));
   cancel_button->on_click.connect(boost::bind(&FileDialog::on_cancel, this));
+
+  add(filename_label = new Label(Rect(6, 4+30, 4 + 60, 26+30), "Filename:"), true);
+  add(pathname_label = new Label(Rect(6, 4+60, 4 + 60, 26+60), "Pathname:"), true);
   
+  add(filename_inputbox = new Inputbox(Rect(4 + 60, 4+30, rect.get_width()-4, 26+30)), true);
+  add(pathname_inputbox = new Inputbox(Rect(4 + 60, 4+60, rect.get_width()-4, 26+60)), true);
+
   add(up_button, true);
   add(down_button, true);
 
@@ -80,44 +89,36 @@ FileDialog::~FileDialog()
 void
 FileDialog::draw_background(DrawingContext& gc)
 {
+  // Window border and title 
   GUIStyle::draw_raised_box(gc, Rect(0,0,rect.get_width(), rect.get_height()));
   gc.draw_fillrect(4,4,rect.get_width()-4, 30, Color(77,130,180));
-  gc.print_center(Fonts::pingus_small, rect.get_width()/2, 2, "Open a level");
-
-  GUIStyle::draw_lowered_box(gc, Rect(4 + 60,4+30,rect.get_width()-4, 26+30),
-                             Color(255,255,255));
-
-  gc.print_left(Fonts::verdana11, 10, 8+30, "File: ");
-  gc.print_left(Fonts::verdana11, 10 + 60, 8+30, filename);
-
-  GUIStyle::draw_lowered_box(gc, Rect(4 + 60,4+60,rect.get_width()-4, 26+60),
-                             Color(255,255,255));
-  gc.print_left(Fonts::verdana11, 10, 8+60, "Path: ");
-  gc.print_left(Fonts::verdana11, 10 + 60, 8+60, pathname);
+  gc.print_center(Fonts::pingus_small, rect.get_width()/2, 2, _("Open a level"));
 }
   
 void
 FileDialog::load_file(const System::DirectoryEntry& entry)
-{
+{ // called when somebody clicks a file
+
   if (entry.type == System::DE_DIRECTORY)
     {
       //std::cout << "Directory: " << entry.name << std::endl;
-      set_directory(pathname + "/" + entry.name);
+      set_directory(pathname_inputbox->get_text() + "/" + entry.name);
     }
   else
     {
-      //std::cout << pathname + "/" + entry.name << std::endl;
-      filename = entry.name;
-    }
+      filename_inputbox->set_text(entry.name);
+    }  
 }
 
 void
 FileDialog::set_directory(const std::string& pathname_)
 {
-  filename = "";
-  pathname = System::realpath(pathname_);
+  std::string pathname = System::realpath(pathname_);
   file_list.set_directory(pathname);
   update_button_state();
+
+  filename_inputbox->set_text("");
+  pathname_inputbox->set_text(pathname);
 }
 
 void
@@ -130,9 +131,9 @@ FileDialog::on_cancel()
 void
 FileDialog::on_open()
 {
-  if (!filename.empty())
+  if (!filename_inputbox->get_text().empty())
     {
-      Pathname file(pathname + "/" + filename, Pathname::SYSTEM_PATH);
+      Pathname file(pathname_inputbox->get_text() + "/" + filename_inputbox->get_text(), Pathname::SYSTEM_PATH);
       std::cout << "Open: " << file << std::endl;
       editor->load(file);
       hide();

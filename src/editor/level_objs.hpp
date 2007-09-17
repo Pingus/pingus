@@ -222,6 +222,9 @@ public:
 
   /** Set the object's position */
   void set_pos(const Vector3f p);
+
+  void set_pos_z(float z);
+  float get_pos_z() const; 
 	
   /** Original position of the objects before being dragged around */
   void set_orig_pos(const Vector3f p) { orig_pos = p; }
@@ -314,7 +317,6 @@ public:
 private:
   LevelObj (const LevelObj&);
   LevelObj& operator= (const LevelObj&);
-
 };
 
 } // namespace Editor 

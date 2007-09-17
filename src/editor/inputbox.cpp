@@ -59,7 +59,8 @@ Inputbox::on_key_pressed(const unsigned short c)
     }
   else if (c == 13) // enter
     {
-      on_change(text);      
+      on_change(text);
+      on_enter(text);
     }
   else
     { // FIXME: This doesn't handle UTF8 properly 

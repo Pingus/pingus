@@ -21,6 +21,7 @@
 #include "math.hpp"
 #include "fonts.hpp"
 #include "file_list.hpp"
+#include "gui_style.hpp"
 #include "../math/vector2i.hpp"
 
 namespace Editor {
@@ -84,8 +85,7 @@ FileList::set_directory(const std::string& pathname, const std::string& pattern)
 void
 FileList::draw(DrawingContext& gc)
 {
-  gc.draw_fillrect(rect.left, rect.top, rect.right, rect.bottom,
-                   Color(255, 255, 255));
+  GUIStyle::draw_lowered_box(gc, rect, Color(255, 255, 255));
 
   int end = (page+1) * items_per_page();
   if (end > int(directory.size()))

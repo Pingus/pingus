@@ -106,6 +106,10 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
   add(owner_inputbox = new Inputbox(box_rect), true);
   owner_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_owner_change, this, _1));
 
+  add(pos_z_label    = new Label(label_rect, "Z-Pos:"), true);
+  add(pos_z_inputbox = new Inputbox(box_rect), true);
+  pos_z_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_pos_z_change, this, _1));
+
   set_object(0);
 }
 
@@ -188,6 +192,8 @@ ObjectProperties::hide_all()
   owner_label->hide();
   owner_inputbox->hide();
 
+  pos_z_label->hide();
+  pos_z_inputbox->hide();
 }
 
 void
@@ -273,6 +279,12 @@ ObjectProperties::set_object(LevelObj* obj)
         {
           release_rate_inputbox->set_text(StringUtil::to_string(obj->get_release_rate()));
           place(release_rate_label, release_rate_inputbox);
+        }
+
+      if (1) // everybody has z-pos
+        {
+          pos_z_inputbox->set_text(StringUtil::to_string(obj->get_pos_z()));
+          place(pos_z_label, pos_z_inputbox);
         }
     }
   else
@@ -360,6 +372,14 @@ ObjectProperties::on_owner_change(const std::string& str)
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_owner(StringUtil::to<int>(str));
+}
+
+
+void
+ObjectProperties::on_pos_z_change(const std::string& str)
+{
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    (*i)->set_pos_z(StringUtil::to<float>(str));
 }
 
 void

@@ -362,6 +362,18 @@ LevelObj::set_pos(Vector3f p)
   pos = p;
   set_translated_pos();
 }
+
+void
+LevelObj::set_pos_z(float z)
+{
+  pos.z = z;
+}
+
+float
+LevelObj::get_pos_z() const
+{
+  return pos.z;
+}
 
 } // namespace Editor 
 

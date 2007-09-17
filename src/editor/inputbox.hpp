@@ -43,6 +43,8 @@ public:
   void update_layout() {}
 
   boost::signal<void (const std::string&)> on_change;
+  boost::signal<void (const std::string&)> on_enter;
+
 private:
   Inputbox (const Inputbox&);
   Inputbox& operator= (const Inputbox&);

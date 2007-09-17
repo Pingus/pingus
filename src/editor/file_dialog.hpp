@@ -27,6 +27,8 @@ namespace Editor {
 
 class Button;
 class EditorScreen;
+class Inputbox;
+class Label;
 
 /** */
 class FileDialog : public GUI::GroupComponent
@@ -38,11 +40,13 @@ private:
   Button* down_button;
   Button* open_button;
   Button* cancel_button;
-
   Button* home_button;
 
-  std::string pathname;
-  std::string filename;
+  Label* pathname_label;
+  Label* filename_label;
+
+  Inputbox* pathname_inputbox;
+  Inputbox* filename_inputbox;
 
 public:
   FileDialog(EditorScreen* editor, const Rect& rect);
