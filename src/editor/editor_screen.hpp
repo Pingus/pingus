@@ -22,7 +22,7 @@
 #define HEADER_PINGUS_EDITOR_SCREEN_HXX
 
 #include "../gui/gui_screen.hpp"
-#include "file_load_dialog.hpp"
+#include "file_dialog.hpp"
 
 class DrawingContext;
 class FileDialog;

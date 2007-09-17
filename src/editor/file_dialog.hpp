@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_FILE_LOAD_DIALOG_HPP
-#define HEADER_FILE_LOAD_DIALOG_HPP
+#ifndef HEADER_FILE_DIALOG_HPP
+#define HEADER_FILE_DIALOG_HPP
 
 #include "file_list.hpp"
 #include "gui/group_component.hpp"

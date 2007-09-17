@@ -26,7 +26,7 @@
 #include "fonts.hpp"
 #include "pathname.hpp"
 #include "button.hpp"
-#include "file_load_dialog.hpp"
+#include "file_dialog.hpp"
 
 namespace Editor {
 
