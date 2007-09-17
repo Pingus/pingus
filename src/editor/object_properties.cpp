@@ -336,21 +336,21 @@ void
 ObjectProperties::on_gptype_change(const ComboItem& item)
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-    {
-      (*i)->set_type(Groundtype::type_to_string((Groundtype::GPType)item.id));
-    }
+    (*i)->set_type(Groundtype::type_to_string((Groundtype::GPType)item.id));
 }
 
 void
 ObjectProperties::on_stretch_x_change(bool t)
 {
-  std::cout << "ObjectProperties::on_stretch_x_change: switch to: " << t << std::endl;
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    (*i)->set_stretch_x(t);
 }
 
 void
 ObjectProperties::on_stretch_y_change(bool t)
 {
-  std::cout << "ObjectProperties::on_stretch_y_change: switch to: " << t << std::endl;
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+      (*i)->set_stretch_y(t);
 }
 
 void

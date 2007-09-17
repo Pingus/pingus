@@ -197,9 +197,18 @@ ObjectSelectorList::on_pointer_move (int x, int y)
 }
 
 void
-ObjectSelectorList::set_objects(ObjectSelectorSet* set_)
+ObjectSelectorList::set_objects(ObjectSelectorSet* new_set)
 {
-  set = set_;
+  if (set)
+    set->set_offset(offset);
+
+  if (new_set)
+    offset = new_set->get_offset();
+  else
+    offset = 0.0f;
+
+  set = new_set;
+
   current_object = -1;
 }
 

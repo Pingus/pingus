@@ -52,7 +52,7 @@ public:
   int get_thumb_height() const { return thumb_size.height; }
 
   float get_offset() const { return offset; }
-  void  set_offset(float o)  { offset = 0; }
+  void  set_offset(float o)  { offset = o; }
 
   const Objects& get_objects() const { return objects; }
 
