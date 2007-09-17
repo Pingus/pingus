@@ -5,6 +5,7 @@ Requirements:
 -------------
 To compile Pingus you need:
 
+ g++           - http://gcc.gnu.org/
  SDL           - http://libsdl.org/
  SDL_mixer
  SDL_image
@@ -13,7 +14,8 @@ To compile Pingus you need:
  libpng        - http://libpng.org/
  scons         - http://scons.org/
 
-In most cases you will find those in your distribution.
+In most cases you will find those in your distribution and there
+shouln't be a need to compile them manually.
 
 
 Compilation:

@@ -38,8 +38,8 @@ static bool LevelObjSort(LevelObj *a, LevelObj *b)
 
 // Default constructor
 EditorLevel::EditorLevel(EditorScreen* editor_) 
- : editor(editor_),
-   impl(new LevelImpl())
+  : editor(editor_),
+    impl(new LevelImpl())
 {
   impl->levelname   = "none";
   impl->description = "none";

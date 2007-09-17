@@ -385,6 +385,12 @@ Sprite::make_single_user()
   impl = new_impl;  
 }
 
+Vector2i
+Sprite::get_offset() const
+{
+  return impl->offset;
+}
+
 void
 Sprite::set_hotspot(Origin origin, int x, int y)
 {

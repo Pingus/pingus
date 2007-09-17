@@ -86,9 +86,11 @@ ObjectSelectorList::draw(DrawingContext& parent_gc)
 
   if (set && mode == OBJECT_DRAG)
     {
-      parent_gc.draw(set->get_objects()[current_object]->sprite, 
-                     real_mouse_pos - Vector2i(set->get_objects()[current_object]->sprite.get_width()/2,
-                                               set->get_objects()[current_object]->sprite.get_height()/2), 
+      Sprite sprite = set->get_objects()[current_object]->sprite;
+      parent_gc.draw(sprite,
+                     real_mouse_pos
+                     - Vector2i(sprite.get_width()/2, sprite.get_height()/2)
+                     + sprite.get_offset(), 
                      2000.0f);
     }
 }
@@ -129,6 +131,8 @@ ObjectSelectorList::on_primary_button_release (int x, int y)
               // place object with left/top instead of center origin
               p -= Vector2i(set->get_objects()[current_object]->sprite.get_width()/2,
                             set->get_objects()[current_object]->sprite.get_height()/2);
+
+              p += set->get_objects()[current_object]->sprite.get_offset();
 
               LevelObj* obj = set->get_objects()[current_object]->create(p, editor->get_level()->get_level_impl());
               if (obj)

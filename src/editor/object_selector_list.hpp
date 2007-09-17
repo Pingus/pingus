@@ -44,7 +44,8 @@ public:
     Object(const Sprite& sprite_, const Sprite& thumbnail_) 
       : sprite(sprite_),
         thumbnail(thumbnail_)
-    {}      
+    {
+    }
 
     virtual ~Object() {}
 

@@ -9,7 +9,7 @@
 
     (sprite
       (name "generic")
-;;      (origin "bottom_center")
+      (origin "bottom_center")
       (offset 0 0)
       (image-file "../images/entrances/generic.png"))
 

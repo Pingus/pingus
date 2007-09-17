@@ -49,6 +49,7 @@ public:
 
   void draw(float x, float y, SDL_Surface* target);
   void set_hotspot(Origin origin, int x, int y);
+  Vector2i get_offset() const;
   void set_frame(int i);
   int  get_frame_count() const;
   int  get_current_frame() const;

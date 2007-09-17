@@ -319,7 +319,7 @@ ObjectSelector::create_objects(const std::string& prefix)
     {
       // need to reset the align to top/left
       set->add(new ObjectSelectorList::Object(Resource::load_sprite(*i),
-                          Resource::load_thumb_sprite(*i)));
+                                              Resource::load_thumb_sprite(*i)));
     }
   
   return set;

@@ -1,3 +1,14 @@
+Release Checklist:
+~~~~~~~~~~~~~~~~~~
+
+- turn on fullscreen at default (do we really want this with
+  fullscreen key documented?)
+
+- make sure all important strings are translatable
+
+- run ./extract-po.sh && ./update-po.sh
+
+
 Stuff to do at all times:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -168,6 +179,8 @@ Important:
 
 - add color prop for surface-background
 
+- add position prop for all LevelObjs
+
 - make GPType prop
 
 - ObjectSelector need to support more object types: Starbackground, SolidColorBackground
@@ -190,8 +203,6 @@ Important:
   for backup purpose in case of editor crash or so)
 
 - make combo box open to the top or bottom depending on variable
-
-- fix align of exits
 
 - add options to show/hide hidden files and filter stuff
 

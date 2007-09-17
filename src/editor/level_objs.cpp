@@ -34,7 +34,6 @@ namespace Editor {
 LevelObj::LevelObj(std::string obj_name, LevelImpl* level_)
   : level(level_),
     pos(Vector3f(0,0,0)),
-    translated_pos(Vector3f(0,0,0)),
     section_name(obj_name),
     speed(0),
     parallax(0.0),
@@ -115,10 +114,8 @@ LevelObj::draw(DrawingContext &gc)
       // If selected, draw a highlighted box around it
       if (selected)
         {
-          Rect r((int)translated_pos.x, 
-                 (int)translated_pos.y, 
-                 (int)translated_pos.x + sprite.get_width(), 
-                 (int)translated_pos.y + sprite.get_height()); 
+          Rect r(Vector2i((int)pos.x, (int)pos.y) - sprite.get_offset(),
+                 Size(sprite.get_width(), sprite.get_height())); 
 
           gc.draw_fillrect(r, Color(255,0,0,50));
           gc.draw_rect(r, Color(255,0,0));
@@ -129,13 +126,18 @@ LevelObj::draw(DrawingContext &gc)
 bool
 LevelObj::is_at(int x, int y)
 {
-  if (!removed && attribs & (HAS_SURFACE | HAS_SURFACE_FAKE))
+  if (attribs & (HAS_SURFACE | HAS_SURFACE_FAKE))
     {
-      return (x > translated_pos.x && x < translated_pos.x + sprite.get_width()
-              && y > translated_pos.y && y < translated_pos.y + sprite.get_height());
-}
+      Vector2i offset = sprite.get_offset();
+      return (x > pos.x - offset.x &&
+              x < pos.x - offset.x + sprite.get_width() && 
+              y > pos.y - offset.y && 
+              y < pos.y - offset.y + sprite.get_height());
+    }
   else
-    return false;
+    {
+      return false;
+    }
 }
 
   void
@@ -163,47 +165,6 @@ LevelObj::refresh_sprite()
     {
       sprite = Resource::load_sprite(desc);
     }
-  set_translated_pos();
-
-#if 0				
-      Surface pb;
-
-      // Apply modifier, then change the sprite loaded for this object in memory.
-      if (stretch_x || stretch_y)
-        {
-          float w = (float)sprite.get_width();
-          float h = (float)sprite.get_height();
-			
-          // Determine the new dimensions for the sprite
-          if (stretch_x && !stretch_y)
-            {
-              if (keep_aspect)
-                h = h * Display::get_width() / w;
-              w = (float)Display::get_width();
-            }
-          else if (stretch_y && !stretch_x)
-            {
-              if (keep_aspect)
-                w = w * Display::get_height() / h;
-              h = (float)Display::get_height();
-            }
-          else
-            {
-              w = (float)Display::get_width();
-              h = (float)Display::get_height();
-            }
-
-          //FIXME: Sat Jan 13 10:26:15 2007
-          assert(0);
-          // pb = Blitter::scale_surface_to_canvas(
-          // sprite.get_frame_pixeldata(0), (int)w, (int)h);
-                        
-        }
-      else		// No stretch involved
-        pb = Resource::load_surface(desc);
-
-      sprite = Sprite(pb);
-#endif
 }
 
 // Set the modifier and actually modify the sprite loaded in memory
@@ -287,8 +248,7 @@ LevelObj::write_properties(FileWriter &fw)
 
       // Writes any extra properties that may be necessary (virtual function)
       write_extra_properties(fw);
-
-      // Write the Vector3f position - all objects have this
+      
       fw.write_vector("position", pos);
 
       fw.end_section();	// object's section_name
@@ -306,61 +266,10 @@ LevelObj::load_generic_surface()
     }
 }
 
-// The translated pos is where the object appears to be "at" instead
-// of using it's "translation origin" specified in the sprite resource files
-void
-LevelObj::set_translated_pos()
-{
-  if (!sprite)
-    return;
-	
-  translated_pos = pos;
-	
-  Origin orig = origin_top_left;
-  ////int x, y;
-  float w = (float)sprite.get_width();
-  float h = (float)sprite.get_height();
-	
-  ////sprite.get_alignment(orig, x, y);
-  switch (orig)
-    {
-      case origin_top_left :
-        break;
-      case origin_top_center :
-        translated_pos.x -= w / 2;
-        break;
-      case origin_top_right :
-        translated_pos.x -= w;
-        break;
-      case origin_center_left :
-        translated_pos.y -= w / 2;
-        break;
-      case origin_center :
-        translated_pos.x -= w / 2;
-        translated_pos.y -= h / 2;
-        break;
-      case origin_center_right :
-        translated_pos.x -= w;	
-        translated_pos.y -= h / 2;
-        break;
-      case origin_bottom_left :
-        translated_pos.y -= h;
-        break;
-      case origin_bottom_center :
-        translated_pos.x -= w / 2;
-        translated_pos.y -= h;
-        break;
-      case origin_bottom_right :
-        translated_pos.x -= w;
-        translated_pos.y -= h;
-    }
-}
-
 void
 LevelObj::set_pos(Vector3f p)
 {
   pos = p;
-  set_translated_pos();
 }
 
 void

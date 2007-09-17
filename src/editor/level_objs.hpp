@@ -69,10 +69,6 @@ protected:
   /** Location of this object in the World */
   Vector3f pos;
 
-  /** Only used for display functions - this is the pos Vector3f adjusted
-      by the translation origin of the sprite */
-  Vector3f translated_pos;
-
   /** Location of this object before moving it around */
   Vector3f orig_pos;
 
@@ -291,9 +287,7 @@ public:
 
   /** Soft delete of the object (needed for Undo action) */
   void remove() { removed = true; }
-
-  /** Undelete this object if it's been removed */
-  void unremove() { removed = false; }
+  bool is_removed() const { return removed; }
 
   /** Select or unselect this object */
   void select() { selected = true; }
