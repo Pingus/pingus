@@ -312,6 +312,10 @@ EditorViewport::delete_selected_objects()
     (*i)->remove();
   
   selected_objs.clear();
+
+  objs.erase(std::remove_if(objs.begin(), objs.end(), boost::mem_fn(&LevelObj::is_removed)),
+             objs.end());
+
   selection_changed(selected_objs);
 }
 
@@ -461,6 +465,7 @@ EditorViewport::clear()
   for(std::vector<LevelObj*>::iterator i = objs.begin(); i != objs.end(); ++i)
     delete *i;
   objs.clear();
+  selection_changed(selected_objs);
 }
 
 } // namespace Editor

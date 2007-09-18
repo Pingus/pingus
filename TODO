@@ -180,7 +180,12 @@ Important:
 
 - add object duplication
 
-- ObjectSelector need to support more object types: Starbackground, SolidColorBackground
+- ObjectSelector need to support more object types, missing types:
+
+   Starbackground, SolidColorBackground, *Liquid*, all kinds of traps,
+   weather, special objects
+
+- add real object remove
 
 - keyboard shortcuts need to be implemented (use input framework, but
   how without support for keymaps?)
@@ -199,12 +204,14 @@ Important:
 - implement proper tmpfile Support (save tmp levels to ~/.pingus/tmp/
   for backup purpose in case of editor crash or so)
 
-- add options to show/hide hidden files and filter stuff
-
-- add new level
+- add new level dialog
 
 Less Important:
 ===============
+
+- add type conversion (important to convert groundpieces in hotspots and visa verse)
+
+- add options to show/hide hidden files and filter stuff
 
 - added overwrite warning to file dialog
 

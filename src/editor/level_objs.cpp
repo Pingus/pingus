@@ -90,7 +90,7 @@ LevelObj::set_res_desc(const ResDescriptor d)
 void
 LevelObj::draw(DrawingContext &gc)
 {
-  if (!removed && attribs & (HAS_SURFACE | HAS_SURFACE_FAKE))
+  if (attribs & (HAS_SURFACE | HAS_SURFACE_FAKE))
     {
       if (attribs & HAS_WIDTH)
         {
@@ -126,7 +126,7 @@ LevelObj::draw(DrawingContext &gc)
 bool
 LevelObj::is_at(int x, int y)
 {
-  if (attribs & (HAS_SURFACE | HAS_SURFACE_FAKE))
+  if (attribs & HAS_SURFACE || attribs & HAS_SURFACE_FAKE)
     {
       Vector2i offset = sprite.get_offset();
       return (x > pos.x - offset.x &&
@@ -198,64 +198,61 @@ LevelObj::get_modifier() const
 void
 LevelObj::write_properties(FileWriter &fw)
 {
-  if (!removed)
+  fw.begin_section(section_name.c_str());
+
+  const unsigned attribs = get_attributes(section_name);
+
+  if (attribs & HAS_TYPE)
+    fw.write_string("type", object_type);
+
+  if (attribs & HAS_GPTYPE)
+    fw.write_string("type", ground_type);
+
+  if (attribs & HAS_SURFACE)
     {
-      fw.begin_section(section_name.c_str());
-
-      const unsigned attribs = get_attributes(section_name);
-
-      if (attribs & HAS_TYPE)
-        fw.write_string("type", object_type);
-
-      if (attribs & HAS_GPTYPE)
-        fw.write_string("type", ground_type);
-
-      if (attribs & HAS_SURFACE)
-        {
-          fw.begin_section("surface");
-          fw.write_string("image", desc.res_name);
-          fw.write_string("modifier", ResourceModifierNS::rs_to_string(desc.modifier));
-          fw.end_section();	// surface
-        }
-
-      fw.write_vector("position", pos);
-      
-      if (attribs & HAS_SPEED)
-        fw.write_int("speed", speed);
-      if (attribs & HAS_PARALLAX)
-        fw.write_float("parallax", parallax);
-      if (attribs & HAS_WIDTH)
-        fw.write_int("width", width);
-      if (attribs & HAS_OWNER)
-        fw.write_int("owner-id", owner_id);
-      if (attribs & HAS_DIRECTION)
-        fw.write_string("direction", direction);
-      if (attribs & HAS_RELEASE_RATE)
-        fw.write_int("release-rate", release_rate);
-      if (attribs & HAS_COLOR)
-        fw.write_color("color", color);
-      if (attribs & HAS_STRETCH)
-        {
-          fw.write_bool("stretch-x", stretch_x);
-          fw.write_bool("stretch-y", stretch_y);
-          fw.write_bool("keep-aspect", keep_aspect);
-        }
-      if (attribs & HAS_SCROLL)
-        {
-          fw.write_float("scroll-x", scroll_x);
-          fw.write_float("scroll-y", scroll_y);
-        }
-      if (attribs & HAS_PARA)
-        {
-          fw.write_float("para-x", para_x);
-          fw.write_float("para-y", para_y);
-        }
-
-      // Writes any extra properties that may be necessary (virtual function)
-      write_extra_properties(fw);
-      
-      fw.end_section();	// object's section_name
+      fw.begin_section("surface");
+      fw.write_string("image", desc.res_name);
+      fw.write_string("modifier", ResourceModifierNS::rs_to_string(desc.modifier));
+      fw.end_section();	// surface
     }
+
+  fw.write_vector("position", pos);
+      
+  if (attribs & HAS_SPEED)
+    fw.write_int("speed", speed);
+  if (attribs & HAS_PARALLAX)
+    fw.write_float("parallax", parallax);
+  if (attribs & HAS_WIDTH)
+    fw.write_int("width", width);
+  if (attribs & HAS_OWNER)
+    fw.write_int("owner-id", owner_id);
+  if (attribs & HAS_DIRECTION)
+    fw.write_string("direction", direction);
+  if (attribs & HAS_RELEASE_RATE)
+    fw.write_int("release-rate", release_rate);
+  if (attribs & HAS_COLOR)
+    fw.write_color("color", color);
+  if (attribs & HAS_STRETCH)
+    {
+      fw.write_bool("stretch-x", stretch_x);
+      fw.write_bool("stretch-y", stretch_y);
+      fw.write_bool("keep-aspect", keep_aspect);
+    }
+  if (attribs & HAS_SCROLL)
+    {
+      fw.write_float("scroll-x", scroll_x);
+      fw.write_float("scroll-y", scroll_y);
+    }
+  if (attribs & HAS_PARA)
+    {
+      fw.write_float("para-x", para_x);
+      fw.write_float("para-y", para_y);
+    }
+
+  // Writes any extra properties that may be necessary (virtual function)
+  write_extra_properties(fw);
+      
+  fw.end_section();	// object's section_name
 }
 
 void
