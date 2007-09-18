@@ -58,6 +58,8 @@ int         pingus_debug_flags              = 0;
 
 bool        fullscreen_enabled              = false;
 
+bool        resize_enabled                  = false;
+
 #if defined(WIN32) || defined(__APPLE__)
 // The clanSDL target is a little buggy on Windows and OSX - Use OpenGL by default
 bool        use_opengl                      = true;

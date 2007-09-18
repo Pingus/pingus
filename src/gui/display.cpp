@@ -91,16 +91,21 @@ Display::remove_flip_screen_hook(DisplayHook* hook)
 void
 Display::set_video_mode(int width, int height)
 {
+  Uint32 flags = 0;
+  
+  if (resize_enabled)
+    flags |= SDL_RESIZABLE;
+
   if (fullscreen_enabled)
+    flags |= SDL_FULLSCREEN;
+
+  screen = SDL_SetVideoMode(width, height, 0, flags);
+
+  if (screen == NULL) 
     {
-      screen = SDL_SetVideoMode(width, height, 0, SDL_FULLSCREEN);
-    } else {
-    screen = SDL_SetVideoMode(width, height, 0, SDL_DOUBLEBUF);
-  }
-  if (screen == NULL) {
-    printf("Unable to set video mode: %s\n", SDL_GetError());
-    exit(1);
-  }
+      std::cout << "Unable to set video mode: " << SDL_GetError() << std::endl;
+      exit(1);
+    }
 }
 
 int

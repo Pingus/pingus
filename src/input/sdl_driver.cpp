@@ -20,6 +20,8 @@
 */
 
 #include "global_event.hpp"
+#include "gui/screen_manager.hpp"
+#include "math/size.hpp"
 #include "file_reader.hpp"
 #include "sdl_driver.hpp"
 
@@ -206,6 +208,9 @@ SDLDriver::open_joystick(int device)
 void
 SDLDriver::update(float delta)
 {
+  // FIXME: Little hackywacky, better way would be to fetch event
+  // loops somewhere else and only forward the relevant SDL_Events to
+  // the SDLDriver
   SDL_Event event;
   while (SDL_PollEvent(&event))
     {
@@ -242,6 +247,10 @@ SDLDriver::update(float delta)
                       (*i).binding->set_state(BUTTON_RELEASED);
                   }
               }
+            break;
+
+          case SDL_VIDEORESIZE:
+            ScreenManager::instance()->resize(Size(event.resize.w, event.resize.h));
             break;
 
           case SDL_KEYDOWN:

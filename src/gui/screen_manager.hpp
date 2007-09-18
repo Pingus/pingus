@@ -25,7 +25,7 @@
 
 #include "screen_ptr.hpp"
 
-
+class Size;
 class DrawingContext;
 class Screen;
 
@@ -52,6 +52,8 @@ protected:
   ScreenManager ();
 public:
   ~ScreenManager();
+
+  void resize(const Size& size);
 
   /** Start the screen manager and let it take control, this will
       not return until the somebody signals a quit() */
@@ -97,7 +99,6 @@ private:
   ScreenManager (const ScreenManager&);
   ScreenManager& operator= (const ScreenManager&);
 };
-
 
 #endif
 

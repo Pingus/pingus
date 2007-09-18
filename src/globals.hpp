@@ -46,6 +46,7 @@ extern bool        auto_scrolling;                  ///< --enable-auto-scrolling
 extern bool        drag_drop_scrolling; 
 extern int         tile_size;                       ///< --tile-size
 extern bool        fullscreen_enabled;              ///< --enable-fullscreen
+extern bool        resize_enabled;                  ///< --resize-fullscreen
 extern int         screen_width;                    ///<
 extern int         screen_height;                   ///<
 extern bool        draw_collision_map;              ///<

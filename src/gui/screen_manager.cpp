@@ -20,6 +20,7 @@
 #include "SDL.h"
 #include <iostream>
 #include "../globals.hpp"
+#include "math/size.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
 #include "screen_manager.hpp"
@@ -287,6 +288,12 @@ ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
 }
 
 void
+ScreenManager::resize(const Size& size)
+{
+  std::cout << "Resize: " << size.width << "x" << size.height << std::endl;
+}
+
+void
 ScreenManager::init()
 {
   instance_ = 0;
@@ -298,6 +305,5 @@ ScreenManager::deinit()
   delete instance_;
   instance_ = 0;
 }
-
 
 /* EOF */

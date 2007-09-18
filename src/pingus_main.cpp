@@ -216,6 +216,8 @@ PingusMain::check_args(int argc, char** argv)
                   _("Start in Window Mode"));
   argp.add_option('f', "fullscreen", "",
                   _("Start in Fullscreen"));
+  argp.add_option('R', "allow-resize", "",
+                  _("Allow Window resize (buggy)"));
   argp.add_option(346, "enable-swcursor", "",
                   _("Enable software cursor"));
   argp.add_option('g', "geometry", "{width}x{height}",  
@@ -391,6 +393,10 @@ PingusMain::check_args(int argc, char** argv)
 
         case 'f': // --fullscreen
           fullscreen_enabled = true;
+          break;
+
+        case 'R': // --allow-resize
+          resize_enabled = true;
           break;
           
         case 'w': // --window
