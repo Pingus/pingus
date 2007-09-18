@@ -41,6 +41,12 @@ EditorLevel::EditorLevel(EditorScreen* editor_)
   : editor(editor_),
     impl(new LevelImpl())
 {
+  clear();
+}
+
+void
+EditorLevel::clear()
+{
   impl->levelname   = "none";
   impl->description = "none";
   impl->author = "none";
@@ -53,6 +59,7 @@ EditorLevel::EditorLevel(EditorScreen* editor_)
   impl->number_of_pingus = 50;
   impl->number_to_save   = 20;
   
+  impl->actions.clear();
   impl->actions["basher"]  = 20;
   impl->actions["blocker"] = 20;
   impl->actions["boarder"] = 20;

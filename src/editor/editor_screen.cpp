@@ -231,7 +231,12 @@ EditorScreen::add_objects(std::vector<LevelObj*> objs)
 void 
 EditorScreen::level_new()
 {
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+  // FIXME: dialogs don't update
+  level_pathname = Pathname();
+  viewport->clear();
+  plf->clear();
+  level_properties->set_level(plf);
+  action_properties->set_level(plf);
 }
 
 void 

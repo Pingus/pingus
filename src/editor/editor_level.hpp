@@ -43,6 +43,9 @@ public:
   /** Destructor */
   ~EditorLevel();
 
+  /** Sets default values */
+  void clear();
+
   /** Verify that level is valid */
   bool is_valid();
 

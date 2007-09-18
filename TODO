@@ -204,10 +204,10 @@ Important:
 - implement proper tmpfile Support (save tmp levels to ~/.pingus/tmp/
   for backup purpose in case of editor crash or so)
 
-- add new level dialog
-
 Less Important:
 ===============
+
+- add yes/no question when creating a new level
 
 - add type conversion (important to convert groundpieces in hotspots and visa verse)
 
