@@ -117,8 +117,8 @@ LevelObj::draw(DrawingContext &gc)
           Rect r(Vector2i((int)pos.x, (int)pos.y) - sprite.get_offset(),
                  Size(sprite.get_width(), sprite.get_height())); 
 
-          gc.draw_fillrect(r, Color(255,0,0,50));
-          gc.draw_rect(r, Color(255,0,0));
+          gc.draw_fillrect(r, Color(255,0,0,50), pos.z);
+          gc.draw_rect(r, Color(255,0,0), pos.z);
         }
     }
 }

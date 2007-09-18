@@ -178,6 +178,8 @@ Roadmap for Pingus Editor 0.7.1:
 Important:
 ==========
 
+- music property missing
+
 - add object duplication
 
 - ObjectSelector need to support more object types, missing types:

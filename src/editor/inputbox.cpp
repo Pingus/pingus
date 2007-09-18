@@ -49,7 +49,11 @@ Inputbox::set_text(const std::string& text_)
 void
 Inputbox::on_key_pressed(const unsigned short c)
 {
-  if (c == 8) // backspace
+  if (c == 0)
+    {
+      // ignore
+    }
+  else if (c == 8) // backspace
     {
       if (!text.empty())
         {
