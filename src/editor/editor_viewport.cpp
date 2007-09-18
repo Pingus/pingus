@@ -453,6 +453,15 @@ EditorViewport::update_layout()
   state.set_size(rect.get_width(), rect.get_height());
   drawing_context->set_rect(rect);
 }
+
+void
+EditorViewport::clear()
+{
+  selected_objs.clear();
+  for(std::vector<LevelObj*>::iterator i = objs.begin(); i != objs.end(); ++i)
+    delete *i;
+  objs.clear();
+}
 
 } // namespace Editor
 

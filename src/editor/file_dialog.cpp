@@ -22,6 +22,7 @@
 #include "display/drawing_context.hpp"
 #include "gui/gui_manager.hpp"
 #include "editor_screen.hpp"
+#include "system.hpp"
 #include "gui_style.hpp"
 #include "fonts.hpp"
 #include "gettext.h"
@@ -33,9 +34,10 @@
 
 namespace Editor {
 
-FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect)
+FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect, Mode mode_)
   : GroupComponent(rect),
     editor(editor_),
+    mode(mode_),
     file_list(Rect(4, 30 + 30 + 30,
                    rect.get_width()-4 - 30, rect.get_height() - 4 - 35))
 {
@@ -44,26 +46,29 @@ FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect)
 
   Rect file_rect = file_list.get_rect();
   up_button = new Button(Rect(file_rect.right + 2, file_rect.top,
-                                     rect.get_width()-4, file_rect.top + file_rect.get_height()/2 - 1),
-                                "/\\\n|");
+                              rect.get_width()-4, file_rect.top + file_rect.get_height()/2 - 1),
+                         "/\\\n|");
   down_button = new Button(Rect(file_rect.right + 2, file_rect.top + file_rect.get_height()/2 + 1,
                                 rect.get_width()-4, file_rect.bottom),
                            "|\n\\/");
 
-  // FIXME: This could be turned into system specific hotkeys (C:, D:,
-  // etc. on windows, Home, '/', Datadir on Linux)
-  home_button = new Button(Rect(Vector2i(4, rect.get_height() - 4 - 30),
-                                        Size(100, 30)), "Home");
+  datadir_button = new Button(Rect(Vector2i(4, rect.get_height() - 4 - 30),
+                                   Size(100, 30)), "Datadir");
+  userdir_button = new Button(Rect(Vector2i(4 + 110, rect.get_height() - 4 - 30),
+                                   Size(100, 30)), "Userdir");
   
   open_button = new Button(Rect(Vector2i(rect.get_width() - 104, rect.get_height() - 4 - 30),
-                                        Size(100, 30)), "Open");
+                                Size(100, 30)), mode == LOAD ? "Open" : "Save");
   
   cancel_button = new Button(Rect(Vector2i(rect.get_width() - 104 - 104, rect.get_height() - 4 - 30),
                                   Size(100, 30)), "Cancel");
   
   up_button->on_click.connect(boost::bind(&FileDialog::on_up, this));
   down_button->on_click.connect(boost::bind(&FileDialog::on_down, this));
-  home_button->on_click.connect(boost::bind(&FileDialog::on_home, this));
+
+  datadir_button->on_click.connect(boost::bind(&FileDialog::on_datadir, this));
+  userdir_button->on_click.connect(boost::bind(&FileDialog::on_userdir, this));
+
   open_button->on_click.connect(boost::bind(&FileDialog::on_open, this));
   cancel_button->on_click.connect(boost::bind(&FileDialog::on_cancel, this));
 
@@ -76,7 +81,8 @@ FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect)
   add(up_button, true);
   add(down_button, true);
 
-  add(home_button, true);
+  add(datadir_button, true);
+  add(userdir_button, true);
 
   add(open_button, true);
   add(cancel_button, true);
@@ -92,7 +98,8 @@ FileDialog::draw_background(DrawingContext& gc)
   // Window border and title 
   GUIStyle::draw_raised_box(gc, Rect(0,0,rect.get_width(), rect.get_height()));
   gc.draw_fillrect(4,4,rect.get_width()-4, 30, Color(77,130,180));
-  gc.print_center(Fonts::pingus_small, rect.get_width()/2, 2, _("Open a level"));
+  gc.print_center(Fonts::pingus_small, rect.get_width()/2, 2, 
+                  mode == LOAD ? _("Open a level") : _("Save your level"));
 }
   
 void
@@ -133,10 +140,20 @@ FileDialog::on_open()
 {
   if (!filename_inputbox->get_text().empty())
     {
-      Pathname file(pathname_inputbox->get_text() + "/" + filename_inputbox->get_text(), Pathname::SYSTEM_PATH);
-      std::cout << "Open: " << file << std::endl;
-      editor->load(file);
-      hide();
+      if (mode == LOAD)
+        {
+          Pathname file(pathname_inputbox->get_text() + "/" + filename_inputbox->get_text(), Pathname::SYSTEM_PATH);
+          std::cout << "Open: " << file << std::endl;
+          editor->load(file);
+          hide();
+        }
+      else if (mode == SAVE) 
+        {
+          Pathname file(pathname_inputbox->get_text() + "/" + filename_inputbox->get_text(), Pathname::SYSTEM_PATH);
+          std::cout << "Save: " << file << std::endl;
+          editor->save(file);
+          hide();
+        }
     }
 }
 
@@ -165,7 +182,7 @@ FileDialog::update_layout()
   Rect file_rect = file_list.get_rect();
 
   up_button->set_rect(Rect(file_rect.right + 2, file_rect.top,
-                          rect.get_width()-4, file_rect.top + file_rect.get_height()/2 - 1));
+                           rect.get_width()-4, file_rect.top + file_rect.get_height()/2 - 1));
                      
   down_button->set_rect(Rect(file_rect.right + 2, file_rect.top + file_rect.get_height()/2 + 1,
                              rect.get_width()-4, file_rect.bottom));
@@ -178,9 +195,15 @@ FileDialog::update_layout()
 }
 
 void
-FileDialog::on_home()
-{
-  
+FileDialog::on_userdir()
+{ 
+  set_directory(System::get_statdir() + "levels/");
+}
+
+void
+FileDialog::on_datadir()
+{ 
+  set_directory(Pathname("levels/", Pathname::DATA_PATH).get_sys_path());
 }
 
 void

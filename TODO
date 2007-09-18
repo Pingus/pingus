@@ -201,10 +201,12 @@ Important:
 
 - add options to show/hide hidden files and filter stuff
 
-- add new level and save level dialogs
+- add new level
 
 Less Important:
 ===============
+
+- added overwrite warning to file dialog
 
 - add pixel perfect object selection
 

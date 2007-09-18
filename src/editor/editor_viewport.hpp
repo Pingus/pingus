@@ -150,6 +150,8 @@ public:
 
   std::vector<LevelObj*>* get_objects() { return &objs; }
 
+  void clear();
+
   boost::signal<void (const std::vector<LevelObj*>&)> selection_changed;
 private:
   EditorViewport();

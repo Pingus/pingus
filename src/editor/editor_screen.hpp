@@ -22,6 +22,7 @@
 #define HEADER_PINGUS_EDITOR_SCREEN_HXX
 
 #include "../gui/gui_screen.hpp"
+#include "pathname.hpp"
 #include "file_dialog.hpp"
 
 class DrawingContext;
@@ -46,14 +47,16 @@ class EditorScreen : public GUIScreen
 {
 private:
   EditorLevel* plf;
-
+  Pathname level_pathname;
+  
   Panel* panel;
   EditorViewport*   viewport;
   ObjectSelector*   object_selector;
   ObjectProperties* object_properties;
   ActionProperties* action_properties;
   LevelProperties*  level_properties;
-  FileDialog*   file_dialog;
+  FileDialog*       file_load_dialog;
+  FileDialog*       file_save_dialog;
   
   bool show_help;
 
@@ -96,7 +99,7 @@ public:
   void cancel();
 
   /** Saves the currently loaded level */
-  void save(const std::string &file);
+  void save(const Pathname& file);
 
   /** Load a new level */
   void load(const Pathname& file);

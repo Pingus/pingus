@@ -33,14 +33,20 @@ class Label;
 /** */
 class FileDialog : public GUI::GroupComponent
 {
+public: 
+  enum Mode { LOAD, SAVE };
 private:
   EditorScreen* editor;
+  Mode mode;
+
   FileList file_list;
   Button* up_button;
   Button* down_button;
   Button* open_button;
   Button* cancel_button;
-  Button* home_button;
+
+  Button* datadir_button;
+  Button* userdir_button;
 
   Label* pathname_label;
   Label* filename_label;
@@ -49,7 +55,7 @@ private:
   Inputbox* filename_inputbox;
 
 public:
-  FileDialog(EditorScreen* editor, const Rect& rect);
+  FileDialog(EditorScreen* editor, const Rect& rect, Mode mode);
   ~FileDialog();
   
   void draw_background(DrawingContext& gc);
@@ -64,7 +70,8 @@ public:
   void on_up();
   void on_down();
   
-  void on_home();
+  void on_datadir();
+  void on_userdir();
 
 private:
   void update_button_state();

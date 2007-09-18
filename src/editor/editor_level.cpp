@@ -173,6 +173,8 @@ void EditorLevel::load_level(const Pathname& pathname)
     delete impl;
   impl = new LevelImpl();
 
+  editor->get_viewport()->clear();
+
   // Load the level from the file - we don't care what it's res_name is.
   PingusLevel level(pathname);
 	

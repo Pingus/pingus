@@ -74,12 +74,21 @@ EditorScreen::EditorScreen()
   object_properties = new ObjectProperties(this, Rect(Vector2i(0,Display::get_height()-150), Size(200, 150)));
   gui_manager->add(object_properties, true);
 
-  file_dialog = new FileDialog(this, Rect(Vector2i(50, 50), 
+  file_load_dialog = new FileDialog(this, Rect(Vector2i(50, 50), 
                                           Size(Display::get_width() - 100, 
-                                               Display::get_height() - 100)));
-  file_dialog->set_directory(".");
-  file_dialog->hide();
-  gui_manager->add(file_dialog, true);
+                                               Display::get_height() - 100)), 
+                               FileDialog::LOAD);
+  file_load_dialog->set_directory(".");
+  file_load_dialog->hide();
+  gui_manager->add(file_load_dialog, true);
+
+  file_save_dialog = new FileDialog(this, Rect(Vector2i(50, 50), 
+                                          Size(Display::get_width() - 100, 
+                                               Display::get_height() - 100)), 
+                                    FileDialog::SAVE);
+  file_save_dialog->set_directory(".");
+  file_save_dialog->hide();
+  gui_manager->add(file_save_dialog, true);
 
   viewport->selection_changed.connect(boost::bind(&ObjectProperties::set_objects, object_properties, _1));
 
@@ -117,16 +126,19 @@ EditorScreen::on_escape_press()
 
 // Save the current level
 void 
-EditorScreen::save(const std::string &file)
+EditorScreen::save(const Pathname& file)
 {
-  plf->save_level(file);
+  level_pathname = file;
+  std::cout << "Save to: " << file.str() << std::endl;
+  plf->save_level(level_pathname.get_sys_path());
 }
 
 // Load a new level
 void 
 EditorScreen::load(const Pathname& file)
 {
-  plf->load_level(file);
+  level_pathname = file;
+  plf->load_level(level_pathname);
   level_properties->set_level(plf);
   action_properties->set_level(plf);
   viewport->refresh();
@@ -225,27 +237,34 @@ EditorScreen::level_new()
 void 
 EditorScreen::level_load()
 {
-  if (file_dialog->is_visible())
-    file_dialog->hide();
+  if (file_load_dialog->is_visible())
+    file_load_dialog->hide();
   else 
-    {
-      //file_dialog->set_rect(Rect(Vector2i(rand() % 200, rand() % 200),
-      //                                Size(rand()%600+200, rand()%600+300)));
-      file_dialog->show();
-    }
+    file_load_dialog->show();
 }
 
 void 
 EditorScreen::level_save()
 {
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+  if (level_pathname.empty())
+    {
+      level_save_as();
+    }
+  else
+    {
+      save(level_pathname); 
+    }
 }
 
 void 
 EditorScreen::level_save_as()
 {
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+  if (file_save_dialog->is_visible())
+    file_save_dialog->hide();
+  else 
+    file_save_dialog->show();
 }
+
 void
 EditorScreen::level_play()
 {
