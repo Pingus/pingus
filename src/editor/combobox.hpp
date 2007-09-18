@@ -47,6 +47,7 @@ class Combobox : public GUI::RectComponent
 {
 protected:
   Sprite sprite;
+  Rect list_rect;
 
   /** List of items in this Combobox */
   std::vector<ComboItem> item_list;

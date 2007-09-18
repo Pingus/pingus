@@ -76,7 +76,7 @@ GroupComponent::on_primary_button_press (int x, int y)
 
   if (grabbed_comp)
     {
-      grabbed_comp->on_pointer_move(mouse_pos.x, mouse_pos.y);
+      grabbed_comp->on_primary_button_press(mouse_pos.x, mouse_pos.y);
     }
   else 
     {
@@ -105,7 +105,7 @@ GroupComponent::on_primary_button_release (int x, int y)
 
   if (grabbed_comp)
     {
-      grabbed_comp->on_pointer_move(mouse_pos.x, mouse_pos.y);
+      grabbed_comp->on_primary_button_release(mouse_pos.x, mouse_pos.y);
     }
   else 
     {
@@ -135,7 +135,7 @@ GroupComponent::on_secondary_button_press (int x, int y)
 
   if (grabbed_comp)
     {
-      grabbed_comp->on_pointer_move(mouse_pos.x, mouse_pos.y);
+      grabbed_comp->on_secondary_button_press(mouse_pos.x, mouse_pos.y);
     }
   else 
     {
@@ -157,7 +157,7 @@ GroupComponent::on_secondary_button_release(int x, int y)
   
   if (grabbed_comp)
     {
-      grabbed_comp->on_pointer_move(mouse_pos.x, mouse_pos.y);
+      grabbed_comp->on_secondary_button_release(mouse_pos.x, mouse_pos.y);
     }
   else if (secondary_pressed_comp)
     {
@@ -244,6 +244,7 @@ GroupComponent::component_at (const Vector2i& pos)
 void
 GroupComponent::add(Component* comp, bool delete_comp)
 {
+  comp->set_parent(this);
   children.push_back(comp);
 }
 
@@ -277,12 +278,14 @@ void
 GroupComponent::grab(Component* comp)
 {
   grabbed_comp = comp;
+  Component::grab();
 }
 
 void
 GroupComponent::ungrab(Component* comp)
 {
   grabbed_comp = 0;
+  Component::ungrab();
 }
 
 } // namespace GUI

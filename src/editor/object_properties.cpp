@@ -225,7 +225,7 @@ ObjectProperties::set_object(LevelObj* obj)
       unsigned int attr = obj->get_attribs();
       if (attr & HAS_GPTYPE)
         {
-          gptype_type->set_selected_item(Groundtype::string_to_type(obj->get_type()));
+          gptype_type->set_selected_item(Groundtype::string_to_type(obj->get_ground_type()));
           place(gptype_label, gptype_type);
         }
       

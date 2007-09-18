@@ -106,6 +106,8 @@ Important:
 - level converter has a bug that causes some object types to be
   ignored (startpos and likely the other more excotic worldobj things)
 
+- level converter writes 0/1 instead of #t/#f
+
 - menu crashes when you click a little wildely
 
 - "core/misc/404sprite" isn't returned for missing graphics
@@ -158,8 +160,6 @@ Less Important:
 - convert all levels and check all classic levels for issues (run
   branches/pingus_sdl/contribl/levelconvert.sh from SVN toplevel dir)
  
-- level converter writes 0/1 instead of #t/#f
-
 - add drag&drop scrolling
 
 - nuke button is unclean, other buttons not so great either -> repaint
@@ -170,6 +170,7 @@ Less Important:
   (isn't used in tutorial island, since those levels don't have time)
   (have a blinking clock and tick sound or so)
 
+- write a README.input
 
 Roadmap for Pingus Editor 0.7.1:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -178,12 +179,6 @@ Important:
 ==========
 
 - add object duplication
-
-- add color prop for surface-background
-
-- add position prop for all LevelObjs
-
-- make GPType prop
 
 - ObjectSelector need to support more object types: Starbackground, SolidColorBackground
 
@@ -195,7 +190,7 @@ Important:
   d       - duplicate
   delete  - delete object
   insert  - show/hide objectselector
-  cursor  - pixel width moves
+  cursor  - pixel width moves (alternative: hold a button for slow moves)
   f       - hflip
   shift+f - vflip
   r       - rotate90
@@ -204,16 +199,14 @@ Important:
 - implement proper tmpfile Support (save tmp levels to ~/.pingus/tmp/
   for backup purpose in case of editor crash or so)
 
-- make combo box open to the top or bottom depending on variable
-
 - add options to show/hide hidden files and filter stuff
 
 - add new level and save level dialogs
 
-- write a README.input
-
 Less Important:
 ===============
+
+- add pixel perfect object selection
 
 - implement a minimap (just rects when surfaces are to tricky)
 

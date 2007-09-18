@@ -26,17 +26,20 @@ class DrawingContext;
 
 namespace GUI {
 
+class GroupComponent;
+
 /** A component represents an area which recivies events in the GUI,
     some people might call it a widget */
 class Component
 {
 private:
+  GroupComponent* parent;
   bool focus;
   bool mouse_over;
   bool visible;
 
 public:
-  Component () : focus(false), mouse_over(false), visible(true) { }
+  Component () : parent(0), focus(false), mouse_over(false), visible(true) { }
   virtual ~Component() {}
 
   virtual void set_focus(bool val) { focus = val; }
@@ -84,6 +87,12 @@ public:
   /** Emitted whenever a keyboard character is pressed.  Only certain 
       components should implement this */
   virtual void on_key_pressed(const unsigned short c) { UNUSED_ARG(c); }
+
+  GroupComponent* get_parent() const;
+  void set_parent(GroupComponent* p);
+
+  void grab();
+  void ungrab();
 
 private:
   Component (const Component&);

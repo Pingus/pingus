@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <vector>
 #include <string>
 #include "resource.hpp"
@@ -73,6 +74,7 @@ Combobox::on_primary_button_press(int x, int y)
     {
       // Determine which item was selected, if any, and set the current item to it.
       drop_down = false;
+      ungrab();
       
       if (hover_item != -1)
         {
@@ -83,6 +85,13 @@ Combobox::on_primary_button_press(int x, int y)
   else
     {
       drop_down = true;
+      grab();
+
+      list_rect = Rect(Vector2i(rect.left, 
+                                rect.top + get_box_offset()),
+                       Size(rect.get_width(),
+                            rect.get_height() * item_list.size()));
+
       on_pointer_move(x,y);
     }
 }
@@ -90,16 +99,21 @@ Combobox::on_primary_button_press(int x, int y)
 void
 Combobox::draw(DrawingContext &gc)
 {
+  { // draw the unopened box
+    gc.draw_fillrect(rect, Color(255,255,255));
+    gc.draw(sprite, Vector2i(rect.right - 12, rect.top));
+    gc.draw_rect(rect, Color(0,0,0));
+
+    if (current_item != -1)
+      {
+        gc.print_left(Fonts::verdana11, rect.left + 5, 
+                      rect.top + rect.get_height()/2 - Fonts::verdana11.get_height()/2,
+                      item_list[current_item].label);
+      }
+  }
+
   if (drop_down && !item_list.empty())
     {
-      int y_offset = get_box_offset();
-
-      Rect list_rect(Vector2i(rect.left, 
-                              rect.top + y_offset),
-                     Size(rect.get_width(),
-                          item_list.size() * rect.get_height()));
-
-
       gc.draw_fillrect(list_rect, Color(255,255,255), 90);
 
       for (int i = 0; i < int(item_list.size()); ++i)
@@ -117,25 +131,16 @@ Combobox::draw(DrawingContext &gc)
 
       gc.draw_rect(list_rect, Color(0,0,0), 100);
     }
-  else
-    {
-      gc.draw_fillrect(rect, Color(255,255,255));
-      gc.draw(sprite, Vector2i(rect.right - 12, rect.top));
-      gc.draw_rect(rect, Color(0,0,0));
-
-      if (current_item != -1)
-        {
-          gc.print_left(Fonts::verdana11, rect.left + 5, 
-                        rect.top + rect.get_height()/2 - Fonts::verdana11.get_height()/2,
-                        item_list[current_item].label);
-        }
-    }
 }
 
 int
 Combobox::get_box_offset()
 {
-  return -(rect.get_height() * current_item);
+  // open over the current item
+  //return -(rect.get_height() * current_item);
+
+  // open to the top
+  return -(rect.get_height() * item_list.size());
 }
 
 bool
@@ -151,13 +156,19 @@ Combobox::set_selected_item(int id)
 }
 
 void
-Combobox::on_pointer_move(int x, int y) 
+Combobox::on_pointer_move(int x, int y)
 {
   if (drop_down)
     {
-      hover_item = (y - rect.top - get_box_offset()) / rect.get_height();
-      if (hover_item < 0 || hover_item >= int(item_list.size()))
-        hover_item = -1;
+      if (list_rect.is_inside(Vector2i(x,y)))
+        {
+          hover_item = (y - list_rect.top) / rect.get_height();
+          hover_item = Math::clamp(0, hover_item, int(item_list.size()-1));
+        }
+      else
+        {
+          hover_item = -1;
+        }
     }
 }
 

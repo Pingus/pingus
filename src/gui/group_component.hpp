@@ -79,7 +79,7 @@ public:
 
   // Causes all input directed to comp
   void grab(Component* comp);
-  void ungrab(Component*);
+  void ungrab(Component* comp);
 
   Component* component_at (const Vector2i& pos);
 private:
