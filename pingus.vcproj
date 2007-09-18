@@ -1314,27 +1314,37 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\editor\file_dialog.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\src\editor\file_dialog.hpp"
+					>
+				</File>
+				<File
 					RelativePath=".\src\editor\file_list.cpp"
 					>
 				</File>
 				<File
 					RelativePath=".\src\editor\file_list.hpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\editor\file_load_dialog.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\editor\file_load_dialog.hpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\editor\file_save_dialog.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\editor\file_save_dialog.hpp"
 					>
 				</File>
 				<File
@@ -1451,6 +1461,10 @@
 				</File>
 				<File
 					RelativePath=".\src\gui\combobox_listener.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\gui\component.cpp"
 					>
 				</File>
 				<File
