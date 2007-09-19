@@ -108,6 +108,8 @@ public:
       @param filename Example: "volcano.pingus" */
   void change_map (const std::string& filename, NodeId node);
 
+  Rect get_trans_rect() const;
+
   /** Singleton access function */
   static WorldMapManager* instance ();
   static void deinit();

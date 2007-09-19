@@ -21,31 +21,6 @@
 
 import sys, os
 
-def CheckPKG_CONFIG_DIR(context):
-    context.Message( 'Checking for PKG_CONFIG_PATH environment variable... ')
-    if os.environ.has_key('PKG_CONFIG_PATH'):
-        context.Result(os.environ['PKG_CONFIG_PATH'])
-        return 1
-    else:
-        context.Result('not set')
-        return 0
-
-def DefineOptions(filename, args):
-   opts = Options(filename, args)
-   opts.Add('CPPPATH', 'Additional preprocessor paths', [])
-   opts.Add('CPPFLAGS', 'Additional preprocessor flags', [])
-   opts.Add('CPPDEFINES', 'defined constants', [])
-   opts.Add('LIBPATH', 'Additional library paths', [])
-   opts.Add('LIBS', 'Additional libraries', [])
-   opts.Add('CCFLAGS', 'C Compiler flags', [])
-   opts.Add('LINKFLAGS', 'Linker Compiler flags', [])
-   opts.Add('CC', 'C Compiler', 'gcc')
-   opts.Add('CXX', 'C++ Compiler', 'g++')
-   opts.Add('debug', 'Build with debugging options', 0)
-   opts.Add('profile', 'Build with profiling support', 0)
-   opts.Add('optional_sources', 'Additional source files', [])
-   return opts
-
 pingus_sources = [
 # # 'gui/buffer_graphic_context.cpp', 
 # # 'pingus_level_test.cpp', 
@@ -177,8 +152,6 @@ pingus_sources = [
 'src/input/controller_description.cpp',
 'src/input/controller.cpp',
 'src/input/core_driver.cpp',
-'src/input/xinput_driver.cpp',
-'src/input/xinput_device.cpp',
 'src/input/sdl_driver.cpp',
 'src/input/manager.cpp',
 
@@ -318,6 +291,22 @@ pingus_sources = [
 'lib/binreloc/binreloc.c'
 ]
 
+def DefineOptions(filename, args):
+   opts = Options(filename, args)
+   opts.Add('CPPPATH', 'Additional preprocessor paths', [])
+   opts.Add('CPPFLAGS', 'Additional preprocessor flags', [])
+   opts.Add('CPPDEFINES', 'defined constants', [])
+   opts.Add('LIBPATH', 'Additional library paths', [])
+   opts.Add('LIBS', 'Additional libraries', [])
+   opts.Add('CCFLAGS', 'C Compiler flags', [])
+   opts.Add('LINKFLAGS', 'Linker Compiler flags', [])
+   opts.Add('CC', 'C Compiler', 'gcc')
+   opts.Add('CXX', 'C++ Compiler', 'g++')
+   opts.Add('debug', 'Build with debugging options', 0)
+   opts.Add('profile', 'Build with profiling support', 0)
+   opts.Add('optional_sources', 'Additional source files', [])
+   return opts
+
 Alias('configure')
     
 if ('configure' in COMMAND_LINE_TARGETS) or \
@@ -380,7 +369,6 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
 
     env = config.Finish()
     opts.Save("config.py", env)
-    opts.Update(env)
 
     print "Reports:"
     print reports

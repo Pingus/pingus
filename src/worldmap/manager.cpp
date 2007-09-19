@@ -314,10 +314,7 @@ WorldMapComponent::draw (DrawingContext& gc)
 {
   WorldMap* worldmap = WorldMapManager::instance()->worldmap;
 
-  Rect cliprect(Vector2i(Math::max((Display::get_width()  - worldmap->get_width())/2,  0),
-                         Math::max((Display::get_height() - worldmap->get_height())/2, 0)), 
-                Size(Math::min(Display::get_width(),  worldmap->get_width()),
-                 Math::min(Display::get_height(), worldmap->get_height())));
+  Rect cliprect = WorldMapManager::instance()->get_trans_rect();
 
   scene_context->clear();
   scene_context->push_modelview();
@@ -373,12 +370,7 @@ WorldMapManager::draw_foreground(DrawingContext& gc)
 void
 WorldMapComponent::on_primary_button_press (int x, int y)
 {
-  WorldMap* worldmap = WorldMapManager::instance ()->worldmap;
-  Rect cliprect(Vector2i(Math::max((Display::get_width()  - worldmap->get_width())/2,  0),
-                         Math::max((Display::get_height() - worldmap->get_height())/2, 0)), 
-                Size(Math::min(Display::get_width(),  worldmap->get_width()),
-                 Math::min(Display::get_height(), worldmap->get_height())));
-
+  Rect cliprect = WorldMapManager::instance()->get_trans_rect();
   WorldMapManager::instance ()->worldmap->on_primary_button_press(x - cliprect.left,
                                                                   y - cliprect.top);
 }
@@ -387,12 +379,7 @@ WorldMapComponent::on_primary_button_press (int x, int y)
 void
 WorldMapComponent::on_pointer_move (int x, int y)
 {
-  WorldMap* worldmap = WorldMapManager::instance ()->worldmap;
-  Rect cliprect(Vector2i(Math::max((Display::get_width()  - worldmap->get_width())/2,  0),
-                         Math::max((Display::get_height() - worldmap->get_height())/2, 0)), 
-                Size(Math::min(Display::get_width(),  worldmap->get_width()),
-                 Math::min(Display::get_height(), worldmap->get_height())));
-
+  Rect cliprect = WorldMapManager::instance()->get_trans_rect();
   WorldMapManager::instance ()->worldmap->on_pointer_move(x - cliprect.left,
                                                           y - cliprect.top);
 }
@@ -400,12 +387,7 @@ WorldMapComponent::on_pointer_move (int x, int y)
 void
 WorldMapComponent::on_secondary_button_press (int x, int y)
 {
-  WorldMap* worldmap = WorldMapManager::instance ()->worldmap;
-  Rect cliprect(Vector2i(Math::max((Display::get_width()  - worldmap->get_width())/2,  0),
-                         Math::max((Display::get_height() - worldmap->get_height())/2, 0)), 
-                Size(Math::min(Display::get_width(),  worldmap->get_width()),
-                 Math::min(Display::get_height(), worldmap->get_height())));
-
+  Rect cliprect = WorldMapManager::instance()->get_trans_rect();
   WorldMapManager::instance ()->worldmap->on_secondary_button_press(x - cliprect.left,
                                                                     y - cliprect.top);
 }
@@ -431,6 +413,15 @@ void WorldMapManager::deinit()
 {
 	delete instance_;
 	instance_ = 0;
+}
+
+Rect
+WorldMapManager::get_trans_rect() const
+{
+  return Rect(Vector2i(Math::max((Display::get_width()  - worldmap->get_width())/2,  0),
+                       Math::max((Display::get_height() - worldmap->get_height())/2, 0)), 
+              Size(Math::min(Display::get_width(),  worldmap->get_width()),
+                   Math::min(Display::get_height(), worldmap->get_height())));
 }
 
 } // namespace WorldMapNS
