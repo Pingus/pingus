@@ -20,8 +20,6 @@
 #ifndef HEADER_WIIMOTE_HPP
 #define HEADER_WIIMOTE_HPP
 
-#ifdef HAVE_CWIID
-
 #include <vector>
 #include "cwiid.h"
 
@@ -173,8 +171,6 @@ private:
   Wiimote(const Wiimote&);
   Wiimote& operator=(const Wiimote&);
 };
-
-#endif // HAVE_CWIID
 
 class Wiimote;
 extern Wiimote* wiimote;

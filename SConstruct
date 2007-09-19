@@ -180,9 +180,6 @@ pingus_sources = [
 'src/input/controller_description.cpp',
 'src/input/controller.cpp',
 'src/input/core_driver.cpp',
-'src/input/usbmouse_driver.cpp',
-'src/input/wiimote_driver.cpp',
-'src/input/wiimote.cpp',
 'src/input/xinput_driver.cpp',
 'src/input/xinput_device.cpp',
 'src/input/sdl_driver.cpp',
@@ -358,7 +355,8 @@ else:
         env['have_cwiid'] = True
         env['LIBS']       += ['cwiid']
         config_h_defines += [('HAVE_CWIID', 1)]
-        env['optional_sources'] += ['src/input/wiimote_driver.cpp']      
+        env['optional_sources'] += ['src/input/wiimote_driver.cpp',
+                                    'src/input/wiimote.cpp']
 
     if not config.CheckLib('Xi'):
         reports += "  * XInput support: no (library Xi not found)\n" ## FIXME: Need to set a define
@@ -368,7 +366,7 @@ else:
         env['have_xinput'] = True
         env['LIBS']       += ['Xi']
         env['optional_sources'] += ['src/input/xinput_driver.cpp',
-                                    'src/input/xinput_device.cpp']        
+                                    'src/input/xinput_device.cpp']
         
     if not config.CheckLib('boost_signals'):
         fatal_error += "  * library 'boost_signals' not found\n"
@@ -394,6 +392,7 @@ else:
 
 config_h = open('config.h', 'w')
 config_h.write('#define VERSION "0.7.0"\n')
+config_h.write('#define ICONV_CONST\n') # FIXME: make a check for this
 for (v,k) in config_h_defines:
     config_h.write('#define %s %s\n' % (v, k))
 config_h.close()
