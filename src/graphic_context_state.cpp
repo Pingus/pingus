@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <math.h>
+#include "math.hpp"
 #include "gui/display.hpp"
 #include "graphic_context_state.hpp"
 
@@ -227,8 +228,8 @@ GraphicContextState::screen2world(const Vector2i& pos_) const
   Vector2f pos(float(pos_.x - impl->rect.left),
                float(pos_.y - impl->rect.top));
 
-  float sa = (float)sin(-impl->rotation/180.0f*M_PI);
-  float ca = (float)cos(-impl->rotation/180.0f*M_PI);
+  float sa = (float)sin(-impl->rotation/180.0f*Math::pi);
+  float ca = (float)cos(-impl->rotation/180.0f*Math::pi);
 
   float dx = pos.x - (float)get_width()/2;
   float dy = pos.y - (float)get_height()/2;

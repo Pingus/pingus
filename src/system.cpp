@@ -41,6 +41,7 @@
 #define F_OK   0
 #endif
 
+#include <config.h>
 #include <iostream>
 #include <sstream>
 
