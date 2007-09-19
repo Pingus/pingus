@@ -27,8 +27,10 @@
 #ifdef HAVE_CWIID
 #  include "wiimote_driver.hpp"
 #endif 
-#ifndef WIN32
+#ifdef HAVE_XINPUT
 #  include "xinput_driver.hpp"
+#endif
+#ifdef HAVE_LINUXUSBMOUSE
 #  include "usbmouse_driver.hpp"
 #endif
 #include "manager.hpp"
@@ -220,9 +222,11 @@ Manager::load_driver(const std::string& name)
         driver = new SDLDriver();
       } else if (name == "core") {
         driver = new CoreDriver(this);
-#ifndef WIN32
+#ifdef HAVE_LINUXUSBMOUSE
       } else if (name == "usbmouse") {
         driver = new USBMouseDriver();
+#endif
+#ifdef HAVE_XINPUT
       } else if (name == "xinput") {
         driver = new XInputDriver();
 #endif

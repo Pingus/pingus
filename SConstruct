@@ -302,8 +302,11 @@ def DefineOptions(filename, args):
    opts.Add('LINKFLAGS', 'Linker Compiler flags', [])
    opts.Add('CC', 'C Compiler', 'gcc')
    opts.Add('CXX', 'C++ Compiler', 'g++')
-   opts.Add('debug', 'Build with debugging options', 0)
-   opts.Add('profile', 'Build with profiling support', 0)
+#   opts.Add('debug', 'Build with debugging options', 0)
+#   opts.Add('profile', 'Build with profiling support', 0)
+   opts.Add('with_xinput', 'Build with Xinput support', True)
+   opts.Add('with_linuxusbmouse', 'Build with Linux USB mouse support', True)
+   opts.Add('with_wiimote', 'Build with Wiimote support', True)
    opts.Add('optional_sources', 'Additional source files', [])
    return opts
 
@@ -331,34 +334,39 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
     config = env.Configure()
     fatal_error = ""
     reports = ""
-
-    if True:
-        env['optional_sources'] += ['src/input/usbmouse_driver.cpp']
-    
-    if not config.CheckHeader('cwiid.h'):
-        reports += "  * Wiimote support: no (cwiid.h not found)\n"
-        have_cwiid = False
+
+    if not env['with_linuxusbmouse']:
+        reports += "  * Linux USB mouse support: disabled\n"
     else:
+        reports += "  * Linux USB mouse support: ok\n"
+        config_h_defines  += [('HAVE_LINUXUSBMOUSE', 1)]
+        env['optional_sources'] += ['src/input/usbmouse_driver.cpp']
+    
+    if not env['with_linuxusbmouse']:
+        reports += "  * Wiimote support: no (cwiid.h not found)\n"        
+    elif config.CheckHeader('cwiid.h'):
         reports += "  * Wiimote support: yes\n"
-        have_cwiid = True
+        config_h_defines  += [('HAVE_CWIID', 1)]
         env['LIBS']       += ['cwiid']
-        config_h_defines += [('HAVE_CWIID', 1)]
         env['optional_sources'] += ['src/input/wiimote_driver.cpp',
                                     'src/input/wiimote.cpp']
-
-    if not config.CheckLib('Xi'):
+    else:
+        reports += "  * Wiimote support: no (cwiid.h not found)\n"        
+
+    if not env['with_xinput']:
+        reports += "  * XInput support: disable\n"
+    elif not config.CheckLib('Xi'):
         reports += "  * XInput support: no (library Xi not found)\n" ## FIXME: Need to set a define
-        have_xinput = False
     else:
         reports += "  * XInput support: yes\n"
-        have_xinput = True
-        env['LIBS']       += ['Xi']
+        config_h_defines  += [('HAVE_XINPUT', 1)]
+        env['LIBS'] += ['Xi']
         env['optional_sources'] += ['src/input/xinput_driver.cpp',
                                     'src/input/xinput_device.cpp']
-        
+        
     if not config.CheckLib('boost_signals'):
         fatal_error += "  * library 'boost_signals' not found\n"
-
+
     env.ParseConfig('sdl-config  --cflags --libs') # FIXME: Are those added to config.py?
     for lib in ['SDL_image', 'SDL_mixer']:
         if not config.CheckLib(lib):
@@ -366,7 +374,7 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
             fatal_error = True
         else:
             env['LIBS'] += [lib]
-
+
     env = config.Finish()
     opts.Save("config.py", env)
 
@@ -376,19 +384,32 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
     if not fatal_error == "":
         print "Fatal Errors:"
         print fatal_error
-
+        Exit(1)
+
     config_h = open('config.h', 'w')
     config_h.write('#define VERSION "0.7.0"\n')
     config_h.write('#define ICONV_CONST\n') # FIXME: make a check for this
     for (v,k) in config_h_defines:
         config_h.write('#define %s %s\n' % (v, k))
     config_h.close()
-    print "Wrote config.h and config.py, you can customize them to your needs"
-    print "\nConfiguration complete, run scons again to start the compile"
-
-else:
+    if ('configure' in COMMAND_LINE_TARGETS):
+        print "Configuration written to config.h and config.py, run:"
+        print ""
+        print "  scons"
+        print ""
+        print "To start the compile"
+    else:
+        print "Configuration written to config.h and config.py"
+    ARGUMENTS = {}
+
+if not ('configure' in COMMAND_LINE_TARGETS):
     if ARGUMENTS != {}:
-        print "Error: You must not supply arguments when building, run scons -c and try again"
+        print "Error: You must not supply arguments to the compile step."
+        print "Use:"
+        print ""
+        print "  scons configure [ARGUMENTS]..."
+        print ""
+        print "If you want to change the build configuration."
         os.sys.exit(1)
         
     opts = DefineOptions("config.py", {})
