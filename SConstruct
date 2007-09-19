@@ -43,9 +43,6 @@ def DefineOptions(filename, args):
    opts.Add('CXX', 'C++ Compiler', 'g++')
    opts.Add('debug', 'Build with debugging options', 0)
    opts.Add('profile', 'Build with profiling support', 0)
-   opts.Add('have_cwiid', 'Build with CWiid support', False)
-   opts.Add('have_xinput', 'Build with XInput support', False)
-   opts.Add('have_linuxusbmouse', 'Build with XInput support', False)
    opts.Add('optional_sources', 'Additional source files', [])
    return opts
 
@@ -321,19 +318,11 @@ pingus_sources = [
 'lib/binreloc/binreloc.c'
 ]
 
-Alias('configure', ['config.py', 'config.h'])
-
-if os.path.exists('config.py') or GetOption('clean'):
-    opts = DefineOptions("config.py", ARGUMENTS)
-    env = Environment(options = opts)
-    Help(opts.GenerateHelpText(env))
-
-    opts.Update(env)
-    env['CPPPATH'] += ['.', 'src/']
-    Default(env.Program('pingus', pingus_sources + env['optional_sources']))
-    Clean('pingus', ['config.py', 'config.h'])
-
-else:
+Alias('configure')
+    
+if ('configure' in COMMAND_LINE_TARGETS) or \
+   not (os.path.exists('config.py') and os.path.exists('config.h')) and \
+   not GetOption('clean'):
     opts = DefineOptions(None, ARGUMENTS)
     env = Environment(options = opts)
     Help(opts.GenerateHelpText(env))
@@ -359,10 +348,10 @@ else:
     
     if not config.CheckHeader('cwiid.h'):
         reports += "  * Wiimote support: no (cwiid.h not found)\n"
-        env['have_cwiid'] = False
+        have_cwiid = False
     else:
         reports += "  * Wiimote support: yes\n"
-        env['have_cwiid'] = True
+        have_cwiid = True
         env['LIBS']       += ['cwiid']
         config_h_defines += [('HAVE_CWIID', 1)]
         env['optional_sources'] += ['src/input/wiimote_driver.cpp',
@@ -370,10 +359,10 @@ else:
 
     if not config.CheckLib('Xi'):
         reports += "  * XInput support: no (library Xi not found)\n" ## FIXME: Need to set a define
-        env['have_xinput'] = False
+        have_xinput = False
     else:
         reports += "  * XInput support: yes\n"
-        env['have_xinput'] = True
+        have_xinput = True
         env['LIBS']       += ['Xi']
         env['optional_sources'] += ['src/input/xinput_driver.cpp',
                                     'src/input/xinput_device.cpp']
@@ -406,6 +395,22 @@ else:
     for (v,k) in config_h_defines:
         config_h.write('#define %s %s\n' % (v, k))
     config_h.close()
+    print "Wrote config.h and config.py, you can customize them to your needs"
     print "\nConfiguration complete, run scons again to start the compile"
+
+else:
+    if ARGUMENTS != {}:
+        print "Error: You must not supply arguments when building, run scons -c and try again"
+        os.sys.exit(1)
+        
+    opts = DefineOptions("config.py", {})
+    env = Environment(options = opts)
+    Help(opts.GenerateHelpText(env))
+
+    opts.Update(env)
+    env['CPPPATH'] += ['.', 'src/']
+    Default(env.Program('pingus', pingus_sources + env['optional_sources']))
+    Clean('pingus', ['config.py', 'config.h'])
+
     
 ## EOF ##
