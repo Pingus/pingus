@@ -20,19 +20,13 @@
 
 import os
 
-env = Environment(
-    # ENV = {'PKG_CONFIG_PATH' : os.getenv('PKG_CONFIG_PATH')},
-    # CXX = "g++-4.2",
-    CCFLAGS = ['-O0', '-Wall', '-Werror', '-g'],
-    CPPDEFINES = ['ENABLE_BINRELOC', 'HAVE_CWIID'],
-    CPPPATH = ['..', '.'],
-    LIBS = ['cwiid', 'Xi', 'boost_signals']) # FIXME: Make this configurable
+Import('env')
 
-env.ParseConfig('sdl-config  --cflags --libs')
-env['LIBS'] += ['SDL_image', 'SDL_mixer', 'png']
+sources = []
 
-env.Program('../pingus', [
+sources += additional_sources
 
+sources = [
 # # 'gui/buffer_graphic_context.cpp', 
 # # 'pingus_level_test.cpp', 
 # # 'sound/slot_manager.cpp', 
@@ -305,6 +299,8 @@ env.Program('../pingus', [
 'worldobjs/thunderstorm_background.cpp', 
 'worldobjs/woodthing.cpp',
 '../lib/binreloc/binreloc.c'
-])
+]
+
+env.Program('../pingus', sources)
 
 ## EOF ##
