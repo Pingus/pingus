@@ -321,25 +321,35 @@ pingus_sources = [
 'lib/binreloc/binreloc.c'
 ]
 
-Alias('configure', ['config.py', 'config.h', 'pingus'])
+Alias('configure', ['config.py', 'config.h'])
 
-Clean('pingus', ['config.py', 'config.h'])
+if os.path.exists('config.py') or GetOption('clean'):
+    opts = DefineOptions("config.py", ARGUMENTS)
+    env = Environment(options = opts)
+    Help(opts.GenerateHelpText(env))
 
-opts = DefineOptions("config.py", ARGUMENTS)
-env = Environment(options = opts)
-Help(opts.GenerateHelpText(env))
-
-config_h_defines = []
-        
-if os.environ.has_key('PATH'):
-    env['ENV']['PATH'] = os.environ['PATH']
-
-if os.environ.has_key('PKG_CONFIG_PATH'):
-    env['ENV']['PKG_CONFIG_PATH'] = os.environ.has['PKG_CONFIG_PATH']
-
-if not ('configure' in COMMAND_LINE_TARGETS or not os.path.exists('config.py')) or env.GetOption('clean'):
     opts.Update(env)
+    env['CPPPATH'] += ['.', 'src/']
+    Default(env.Program('pingus', pingus_sources + env['optional_sources']))
+    Clean('pingus', ['config.py', 'config.h'])
+
 else:
+    opts = DefineOptions(None, ARGUMENTS)
+    env = Environment(options = opts)
+    Help(opts.GenerateHelpText(env))
+
+    opts.Update(env)
+
+    if os.environ.has_key('PATH'):
+        env['ENV']['PATH'] = os.environ['PATH']
+
+    if os.environ.has_key('PKG_CONFIG_PATH'):
+        env['ENV']['PKG_CONFIG_PATH'] = os.environ.has['PKG_CONFIG_PATH']
+    
+    env['CPPPATH'] += ['.', 'src/']
+
+    config_h_defines = []      
+
     config = env.Configure()
     fatal_error = ""
     reports = ""
@@ -371,7 +381,7 @@ else:
     if not config.CheckLib('boost_signals'):
         fatal_error += "  * library 'boost_signals' not found\n"
 
-    env.ParseConfig('sdl-config  --cflags --libs')
+    env.ParseConfig('sdl-config  --cflags --libs') # FIXME: Are those added to config.py?
     for lib in ['SDL_image', 'SDL_mixer']:
         if not config.CheckLib(lib):
             fatal_error += "  * library '%s' not found\n" % lib
@@ -390,16 +400,12 @@ else:
         print "Fatal Errors:"
         print fatal_error
 
-config_h = open('config.h', 'w')
-config_h.write('#define VERSION "0.7.0"\n')
-config_h.write('#define ICONV_CONST\n') # FIXME: make a check for this
-for (v,k) in config_h_defines:
-    config_h.write('#define %s %s\n' % (v, k))
-config_h.close()
-
-env['CPPPATH'] += ['.', 'src/']
-env.ParseConfig('sdl-config  --cflags --libs')
-
-Default(env.Program('pingus', pingus_sources + env['optional_sources']))
+    config_h = open('config.h', 'w')
+    config_h.write('#define VERSION "0.7.0"\n')
+    config_h.write('#define ICONV_CONST\n') # FIXME: make a check for this
+    for (v,k) in config_h_defines:
+        config_h.write('#define %s %s\n' % (v, k))
+    config_h.close()
+    print "\nConfiguration complete, run scons again to start the compile"
     
 ## EOF ##

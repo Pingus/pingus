@@ -25,8 +25,6 @@
 
 Wiimote* wiimote = 0;
 
-#ifdef HAVE_CWIID
-
 std::string
 Wiimote::id2str(int id)
 {
@@ -575,7 +573,5 @@ Wiimote::mesg_callback(cwiid_wiimote_t* w, int mesg_count, union cwiid_mesg mesg
 {
   wiimote->mesg(w, mesg_count, mesg);
 }
-
-#endif // HAVE_CWIID
 
 /* EOF */
