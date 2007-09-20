@@ -157,9 +157,10 @@ Wiimote::connect()
   else 
     {
       std::cout << "Wiimote connected: " << m_wiimote << std::endl;
-      if (cwiid_set_mesg_callback(m_wiimote, &Wiimote::mesg_callback)) {
-        std::cerr << "Unable to set message callback" << std::endl;
-      }
+      if (cwiid_set_mesg_callback(m_wiimote, &Wiimote::mesg_callback))
+        {
+          std::cerr << "Unable to set message callback" << std::endl;
+        }
 
       // FIXME: Could init this depending on what events are actually bound
       if (cwiid_command(m_wiimote, CWIID_CMD_RPT_MODE, 
@@ -569,7 +570,7 @@ Wiimote::err_callback(cwiid_wiimote_t* w, const char *s, va_list ap)
 }
 
 void
-Wiimote::mesg_callback(cwiid_wiimote_t* w, int mesg_count, union cwiid_mesg mesg[])
+Wiimote::mesg_callback(cwiid_wiimote_t* w, int mesg_count, union cwiid_mesg mesg[], timespec*)
 {
   wiimote->mesg(w, mesg_count, mesg);
 }

@@ -68,7 +68,7 @@ class Wiimote
 {
 public:
   static void err_callback(cwiid_wiimote_t*, const char *s, va_list ap);
-  static void mesg_callback(cwiid_wiimote_t*, int mesg_count, union cwiid_mesg mesg[]);
+  static void mesg_callback(cwiid_wiimote_t*, int mesg_count, union cwiid_mesg mesg[], timespec*);
 
   static void init();
   static void deinit();
