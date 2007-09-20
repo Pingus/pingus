@@ -20,6 +20,7 @@
 #ifndef HEADER_SPRITE_DESCRIPTION_HPP
 #define HEADER_SPRITE_DESCRIPTION_HPP
 
+#include <iostream>
 #include "math/vector2i.hpp"
 #include "math/size.hpp"
 #include "math/origin.hpp"
@@ -61,7 +62,11 @@ public:
 
     reader.read_enum("origin", origin, string2origin);
     
-    reader.read_path("image-file",  filename);
+    if (!reader.read_path("image-file",  filename))
+      {
+        std::cout << "Error: SpriteDescription: " << reader.get_name() << " 'image-file' missing" << std::endl;
+      }    
+
     filename = Pathname("data/" + filename.get_raw_path(), filename.get_type()); // FIXME: Hack
     reader.read_size("image-array", array);
     reader.read_vector2i("image-pos",   frame_pos);

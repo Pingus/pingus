@@ -71,7 +71,7 @@ public:
 
     if (!surface)
       {
-        std::cout << "Error: Surface: couldn't load '" << desc.filename << "'" << std::endl;
+        std::cout << "Error: Sprite: couldn't load '" << desc.filename << "'" << std::endl;
         surface = Surface(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
         if (!surface) assert(!"Surface Couldn't find 404");
       }
@@ -320,29 +320,68 @@ Sprite::get_surface() const
 void
 Sprite::scale(int w, int h)
 {
-  // FIXME: This doesn't work for animated graphics, in which case it will only handle the first frame
-  if (impl->frame_size.width != w || impl->frame_size.height != h)
+  if (impl.get())
+    {
+      // FIXME: This doesn't work for animated graphics, in which case it will only handle the first frame
+      if (impl->frame_size.width != w || impl->frame_size.height != h)
+        {
+          boost::shared_ptr<SpriteImpl> new_impl(new SpriteImpl());
+
+      
+          if ((impl->frame_size.width  * impl->array.width)  == impl->surface.get_width() && 
+              (impl->frame_size.height * impl->array.height) == impl->surface.get_height())
+            { // single frame Sprite
+              new_impl->surface = impl->surface.scale(w, h);
+            }
+          else
+            { // multi frame sprite
+              new_impl->surface = impl->surface.subsection(Rect(impl->frame_pos, impl->frame_size)).scale(w, h);
+            }
+
+          float scale_x = float(w) / float(impl->frame_size.width);
+          float scale_y = float(h) / float(impl->frame_size.height);
+      
+          new_impl->offset          = Vector2i(int(impl->offset.x * scale_x),
+                                               int(impl->offset.y * scale_y)); 
+          new_impl->frame_pos       = Vector2i(0, 0);
+          new_impl->frame_size      = Size(w, h);
+          new_impl->frame_delay     = impl->frame_delay;
+          new_impl->array           = impl->array;
+          new_impl->loop            = impl->loop;
+          new_impl->loop_last_cycle = impl->loop_last_cycle;
+          new_impl->finished        = impl->finished;
+          new_impl->frame           = impl->frame;
+          new_impl->tick_count      = impl->tick_count;
+
+          impl = new_impl;
+        }
+    }
+}
+
+void
+Sprite::fill(const Color& color)
+{
+  if (impl.get())
+    {
+      if (color.a != 0) 
+        {
+          make_single_user();
+          impl->surface.fill(color);
+        }
+    }
+}
+
+void
+Sprite::make_single_user()
+{
+  if (impl.get())
     {
       boost::shared_ptr<SpriteImpl> new_impl(new SpriteImpl());
-
-      
-      if ((impl->frame_size.width  * impl->array.width)  == impl->surface.get_width() && 
-          (impl->frame_size.height * impl->array.height) == impl->surface.get_height())
-        { // single frame Sprite
-          new_impl->surface = impl->surface.scale(w, h);
-        }
-      else
-        { // multi frame sprite
-          new_impl->surface = impl->surface.subsection(Rect(impl->frame_pos, impl->frame_size)).scale(w, h);
-        }
-
-      float scale_x = float(w) / float(impl->frame_size.width);
-      float scale_y = float(h) / float(impl->frame_size.height);
-      
-      new_impl->offset          = Vector2i(int(impl->offset.x * scale_x),
-                                           int(impl->offset.y * scale_y)); 
-      new_impl->frame_pos       = Vector2i(0, 0);
-      new_impl->frame_size      = Size(w, h);
+  
+      new_impl->surface         = impl->surface.clone();
+      new_impl->offset          = impl->offset;
+      new_impl->frame_pos       = impl->frame_pos;
+      new_impl->frame_size      = impl->frame_size;
       new_impl->frame_delay     = impl->frame_delay;
       new_impl->array           = impl->array;
       new_impl->loop            = impl->loop;
@@ -351,71 +390,50 @@ Sprite::scale(int w, int h)
       new_impl->frame           = impl->frame;
       new_impl->tick_count      = impl->tick_count;
 
-      impl = new_impl;
+      impl = new_impl;  
     }
-}
-
-void
-Sprite::fill(const Color& color)
-{
-  if (color.a != 0) 
-    {
-      make_single_user();
-      impl->surface.fill(color);
-    }
-}
-
-void
-Sprite::make_single_user()
-{
-  boost::shared_ptr<SpriteImpl> new_impl(new SpriteImpl());
-  
-  new_impl->surface         = impl->surface.clone();
-  new_impl->offset          = impl->offset;
-  new_impl->frame_pos       = impl->frame_pos;
-  new_impl->frame_size      = impl->frame_size;
-  new_impl->frame_delay     = impl->frame_delay;
-  new_impl->array           = impl->array;
-  new_impl->loop            = impl->loop;
-  new_impl->loop_last_cycle = impl->loop_last_cycle;
-  new_impl->finished        = impl->finished;
-  new_impl->frame           = impl->frame;
-  new_impl->tick_count      = impl->tick_count;
-
-  impl = new_impl;  
 }
 
 Vector2i
 Sprite::get_offset() const
 {
-  return impl->offset;
+  if (impl.get())
+    return impl->offset;
+  else
+    return Vector2i();
 }
 
 void
 Sprite::set_hotspot(Origin origin, int x, int y)
 {
-  // FIXME: offset and other stuff should be member of the Sprite, not the SpriteImpl
-  impl->offset = calc_origin(origin, impl->frame_size) - Vector2i(x, y);
+  if (impl.get())
+    {
+      // FIXME: offset and other stuff should be member of the Sprite, not the SpriteImpl
+      impl->offset = calc_origin(origin, impl->frame_size) - Vector2i(x, y);
+    }
 }
 
 void
 Sprite::apply_mod(ResourceModifierNS::ResourceModifier mod)
 {
-  // FIXME: This isn't all that useful, since Sprites are optimized
-  // per default and thus not modifiable, since the Modifier can only
-  // handle indexed images.
-  if (impl->frame_pos  == Vector2i(0, 0) &&
-      impl->frame_size == Size(impl->surface.get_width(), impl->surface.get_height()) &&
-      impl->array      == Size(1, 1))
+  if (impl.get())
     {
-      make_single_user();
-      impl->surface = impl->surface.mod(mod);
-      impl->frame_size.width  = impl->surface.get_width();
-      impl->frame_size.height = impl->surface.get_height();
-    }
-  else
-    {
-      std::cout << "Error: Sprite: apply_mod() only works with single frame Sprites" << std::endl;
+      // FIXME: This isn't all that useful, since Sprites are optimized
+      // per default and thus not modifiable, since the Modifier can only
+      // handle indexed images.
+      if (impl->frame_pos  == Vector2i(0, 0) &&
+          impl->frame_size == Size(impl->surface.get_width(), impl->surface.get_height()) &&
+          impl->array      == Size(1, 1))
+        {
+          make_single_user();
+          impl->surface = impl->surface.mod(mod);
+          impl->frame_size.width  = impl->surface.get_width();
+          impl->frame_size.height = impl->surface.get_height();
+        }
+      else
+        {
+          std::cout << "Error: Sprite: apply_mod() only works with single frame Sprites" << std::endl;
+        }
     }
 }
 

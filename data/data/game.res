@@ -11,7 +11,7 @@
 
     (sprite
       (name "404")
-      (images "../images/core/misc/404.png"))
+      (image-file "../images/core/misc/404.png"))
 
     (sprite
       (name "dot_green")

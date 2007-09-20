@@ -140,6 +140,47 @@ struct SurfaceBackground : public ObjectSelectorList::Object
   }
 };
 
+struct SolidColorBackground : public ObjectSelectorList::Object
+{
+  SolidColorBackground() 
+    : Object(Resource::load_sprite("core/editor/solidcolorbackground_thumb"),
+             Resource::load_thumb_sprite("core/editor/solidcolorbackground_thumb"))
+  {}
+  
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
+    return 0;
+  }
+};
+
+struct StarfieldBackground : public ObjectSelectorList::Object
+{
+  StarfieldBackground() 
+    : Object(Resource::load_sprite("core/editor/starfield_thumb"),
+             Resource::load_thumb_sprite("core/editor/starfield_thumb"))
+  {}
+  
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
+    return 0;
+  }
+};
+
+#if 0
+struct Liquid : public ObjectSelectorList::Object
+{
+  ResDescriptor desc;
+
+  Liquid(const std::string& name) 
+    : Object(Resource::load_sprite("core/editor/starfield_thumb"),
+             Resource::load_thumb_sprite("core/editor/starfield_thumb")),
+      desc(name)
+  {}
+  
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
+    return 0;
+  }
+};
+#endif
+
 class ObjectSelectorButton : public GUI::RectComponent
 {
 private:
@@ -386,6 +427,10 @@ ObjectSelectorSet*
 ObjectSelector::create_background()
 {
   ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+  
+  set->add(new SolidColorBackground());
+  set->add(new StarfieldBackground());
+
   std::vector<std::string> lst = Resource::resmgr.get_section("textures");
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
     set->add(new SurfaceBackground(*i));

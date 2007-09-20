@@ -13,7 +13,14 @@
       (sprite
         (name "weather_snow")
         (images "../images/core/editor/weather_snow.png"))
-     )
+
+      (sprite
+        (name "solidcolorbackground_thumb")
+        (images "../images/core/editor/solidcolorbackground_thumb.png"))
+
+      (sprite
+        (name "starfield_thumb")
+        (images "../images/core/editor/starfield_thumb.png"))
 
     (section (name "Icons")
       (sprite

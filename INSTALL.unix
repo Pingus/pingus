@@ -20,12 +20,27 @@ shouln't be a need to compile them manually.
 
 Compilation:
 ------------
-Once all libraries are in place, compile Pingus with:
+Once all libraries are in place, you can compile Pingus with just:
 
  % scons
 
-The current SConscript doesn't do any extra checking for available
-libraries, so make sure you have installed them all.
+If you need to change the compiler or other build variables you can do
+so with:
+
+ % scons configure CXX="ccache g++" CPPPATH=/your/custom/path with_wiimote=True
+ % scons
+
+A full list of variables is available via:
+
+ % scons -h
+
+If the configuration step fails for any reason and you want to simply
+skip it, use: 
+
+ % scons configure ignore_errors=True
+ % scons
+
+So build might however fail if you do that.
 
 
 Running:

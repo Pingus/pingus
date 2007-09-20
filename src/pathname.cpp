@@ -52,10 +52,13 @@ Pathname::get_sys_path() const
       case DATA_PATH:
         return path_manager.complete(pathname);
 
+      case INVALID:
+        return "";
+
       default:
         assert(!"Never reached");
     }
-  return std::string();
+  return "";
 }
 
 std::string

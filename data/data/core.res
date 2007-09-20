@@ -45,6 +45,13 @@
                    )
 
           (section (name "editor")
+                   (sprite
+                    (name "solidcolorbackground_thumb")
+                    (image-file "../images/core/editor/solidcolorbackground_thumb.png"))
+
+                   (sprite
+                    (name "starfield_thumb")
+                    (image-file "../images/core/editor/starfield_thumb.png"))
 
                    (sprite
                     (name "combobox")
@@ -477,7 +484,7 @@
 
                    (sprite
                     (name "404")
-                    (images "../images/core/misc/404.png"))
+                    (image-file "../images/core/misc/404.png"))
 
                    (sprite
                     (name "404sprite")

@@ -105,9 +105,14 @@ Resource::load_sprite(const ResDescriptor& res)
 {
  SpriteDescription* desc = resmgr.get_sprite_description(res.res_name);
   if (desc)
-    return Sprite(*desc, res.modifier);
+    {
+      return Sprite(*desc, res.modifier);
+    }
   else
-    return Sprite();
+    {
+      std::cout << "Resource: Couldn't load sprite: '" << res.res_name << "'" << std::endl;
+      return Sprite(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
+    }
 }
 
 Sprite
@@ -115,9 +120,14 @@ Resource::load_sprite(const std::string& res_name)
 {
   SpriteDescription* desc = resmgr.get_sprite_description(res_name);
   if (desc)
-    return Sprite(*desc);
+    {
+      return Sprite(*desc);
+    }
   else
-    return Sprite();
+    {
+      std::cout << "Error: Resource: Couldn't load sprite: '" << res_name << "'" << std::endl;
+      return Sprite(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
+    }
 }
 
 CollisionMask

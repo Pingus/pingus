@@ -90,6 +90,8 @@ Roadmap for Pingus 0.7.1
 Important:
 ==========
 
+- disable cwiid per default if it doesn't work properly
+
 - rewrite Config file support, make game automatically write a default
   config file, use s-expr
 
@@ -101,8 +103,6 @@ Important:
 
 - update ChangeLog
 
-- add some SConscript checks (for compiler missing)
-
 - level converter has a bug that causes some object types to be
   ignored (startpos and likely the other more excotic worldobj things)
 
@@ -111,6 +111,8 @@ Important:
 - menu crashes when you click a little wildely
 
 - "core/misc/404sprite" isn't returned for missing graphics
+
+- disable fade-over when fast-mode is active
 
 ### Loading font file: system://data/images/fonts/courier_small-iso-8859-9.font
 Font: datadir://images/fonts/courier_small-iso-8859-9.png
@@ -184,8 +186,7 @@ Important:
 
 - ObjectSelector need to support more object types, missing types:
 
-   Starbackground, SolidColorBackground, *Liquid*, all kinds of traps,
-   weather, special objects
+   all kinds of traps, weather, special objects
 
 - add real object remove
 
