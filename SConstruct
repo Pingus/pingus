@@ -370,8 +370,9 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
     env.ParseConfig('sdl-config  --cflags --libs') # FIXME: Are those added to config.py?
     for lib in ['SDL_image', 'SDL_mixer']:
         if not config.CheckLib(lib):
-            fatal_error += "  * library '%s' not found\n" % lib
-            fatal_error = True
+            fatal_error += "  * library '%s' not found\n" % lib           
+        elif not config.CheckHeader(lib + ".h"):
+            fatal_error += "  * library header '%s' not found\n" % (lib + ".h")
         else:
             env['LIBS'] += [lib]
 
