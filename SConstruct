@@ -307,8 +307,18 @@ def DefineOptions(filename, args):
    opts.Add('with_xinput', 'Build with Xinput support', True)
    opts.Add('with_linuxusbmouse', 'Build with Linux USB mouse support', True)
    opts.Add('with_wiimote', 'Build with Wiimote support', True)
+   opts.Add('ignore_errors', 'Ignore any fatal configuration errors', False)
    opts.Add('optional_sources', 'Additional source files', [])
    return opts
+
+def CheckMyProgram(context, prgn):
+   context.Message('Checking for %s...' % prgn)
+   for i in context.env['ENV']['PATH'].split(":"):
+      if os.path.exists(i + "/sdl-config"):
+         context.Result(i + "/sdl-config")
+         return True
+   context.Result("failed")
+   return False
 
 Alias('configure')
     
@@ -331,7 +341,7 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
 
     config_h_defines = []      
 
-    config = env.Configure()
+    config = env.Configure(custom_tests = {'CheckMyProgram' : CheckMyProgram})
     fatal_error = ""
     reports = ""
 
@@ -342,20 +352,20 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
         config_h_defines  += [('HAVE_LINUXUSBMOUSE', 1)]
         env['optional_sources'] += ['src/input/usbmouse_driver.cpp']
     
-    if not env['with_linuxusbmouse']:
+    if not env['with_wiimote']:
         reports += "  * Wiimote support: no (cwiid.h not found)\n"        
-    elif config.CheckHeader('cwiid.h'):
+    elif config.CheckLibWithHeader('cwiid', 'cwiid.h', 'c++'):
         reports += "  * Wiimote support: yes\n"
         config_h_defines  += [('HAVE_CWIID', 1)]
         env['LIBS']       += ['cwiid']
         env['optional_sources'] += ['src/input/wiimote_driver.cpp',
                                     'src/input/wiimote.cpp']
     else:
-        reports += "  * Wiimote support: no (cwiid.h not found)\n"        
+        reports += "  * Wiimote support: no (libcwiid or cwiid.h not found)\n"
 
     if not env['with_xinput']:
         reports += "  * XInput support: disable\n"
-    elif not config.CheckLib('Xi'):
+    elif not config.CheckLibWithHeader('Xi', 'X11/extensions/XInput.h', 'c++'):
         reports += "  * XInput support: no (library Xi not found)\n" ## FIXME: Need to set a define
     else:
         reports += "  * XInput support: yes\n"
@@ -364,28 +374,32 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
         env['optional_sources'] += ['src/input/xinput_driver.cpp',
                                     'src/input/xinput_device.cpp']
         
-    if not config.CheckLib('boost_signals'):
+    if not config.CheckLibWithHeader('boost_signals', 'boost/signals.hpp', 'c++'):
         fatal_error += "  * library 'boost_signals' not found\n"
 
-    env.ParseConfig('sdl-config  --cflags --libs') # FIXME: Are those added to config.py?
-    for lib in ['SDL_image', 'SDL_mixer']:
-        if not config.CheckLib(lib):
-            fatal_error += "  * library '%s' not found\n" % lib           
-        elif not config.CheckHeader(lib + ".h"):
-            fatal_error += "  * library header '%s' not found\n" % (lib + ".h")
-        else:
-            env['LIBS'] += [lib]
+    if config.CheckMyProgram('sdl-config'):
+       env.ParseConfig('sdl-config  --cflags --libs')
+       for lib in ['SDL_image', 'SDL_mixer']:
+          if not config.CheckLibWithHeader(lib, lib + ".h", 'c++'):
+             fatal_error += "  * library '%s' not found\n" % lib           
+          else:
+             env['LIBS'] += [lib]
+    else:
+       fatal_error += "  * couldn't find sdl-config, SDL missing\n"
 
     env = config.Finish()
     opts.Save("config.py", env)
 
     print "Reports:"
     print reports
-        
+
     if not fatal_error == "":
         print "Fatal Errors:"
         print fatal_error
-        Exit(1)
+        if not env['ignore_errors']:
+           Exit(1)
+        else:
+           print "\nError are being ignored, the build continues"
 
     config_h = open('config.h', 'w')
     config_h.write('#define VERSION "0.7.0"\n')
