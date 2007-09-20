@@ -335,7 +335,7 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
         env['ENV']['PATH'] = os.environ['PATH']
 
     if os.environ.has_key('PKG_CONFIG_PATH'):
-        env['ENV']['PKG_CONFIG_PATH'] = os.environ.has['PKG_CONFIG_PATH']
+        env['ENV']['PKG_CONFIG_PATH'] = os.environ['PKG_CONFIG_PATH']
     
     env['CPPPATH'] += ['.', 'src/']
 
@@ -376,6 +376,9 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
         
     if not config.CheckLibWithHeader('boost_signals', 'boost/signals.hpp', 'c++'):
         fatal_error += "  * library 'boost_signals' not found\n"
+
+    if not config.CheckLibWithHeader('png', 'png.h', 'c++'):
+       fatal_error += "  * library 'png' not found\n"
 
     if config.CheckMyProgram('sdl-config'):
        env.ParseConfig('sdl-config  --cflags --libs')
