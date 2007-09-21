@@ -79,8 +79,18 @@ private:
   Inputbox* color_g_inputbox;
   Inputbox* color_b_inputbox;
   Inputbox* color_a_inputbox;
+  
+  Label*    small_stars_label;
+  Inputbox* small_stars_inputbox;
+
+  Label*    middle_stars_label;
+  Inputbox* middle_stars_inputbox;
+
+  Label*    large_stars_label;
+  Inputbox* large_stars_inputbox;
 
   int y_pos;
+
 public:
   ObjectProperties(EditorScreen* editor, const Rect& rect);
   ~ObjectProperties();
@@ -113,6 +123,10 @@ public:
   void on_color_g_change(const std::string& str);
   void on_color_b_change(const std::string& str);
   void on_color_a_change(const std::string& str);
+
+  void on_small_stars_change(const std::string& str);
+  void on_middle_stars_change(const std::string& str);
+  void on_large_stars_change(const std::string& str);
 
 };
 

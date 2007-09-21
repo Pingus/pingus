@@ -50,6 +50,7 @@ const unsigned HAS_SURFACE =      1 << 11;
 const unsigned HAS_SURFACE_FAKE = 1 << 12;
 const unsigned CAN_ROTATE =       1 << 13;
 const unsigned HAS_GPTYPE =       1 << 14;
+const unsigned HAS_STARFIELD =    1 << 15;
 
 class LevelImpl;
 
@@ -125,7 +126,11 @@ protected:
 	
   /** Optional translation origin of the sprite */
   Origin origin;
-
+  
+  int small_stars;
+  int middle_stars;
+  int large_stars;
+
   /** Number representing which attributes this object possesses */
   unsigned attribs;
 
@@ -316,6 +321,14 @@ public:
   unsigned int get_attributes(std::string obj_type);
 
   Rect get_rect() const;
+
+  int get_small_stars() const { return small_stars; }
+  int get_middle_stars() const { return middle_stars; }
+  int get_large_stars() const { return large_stars; }
+
+  void set_small_stars(int n)  {   small_stars = n; }
+  void set_middle_stars(int n) {  middle_stars = n; }
+  void set_large_stars(int n)  {   large_stars = n; }
 
 private:
   LevelObj (const LevelObj&);

@@ -41,12 +41,10 @@ ActionProperties::ActionProperties(EditorScreen* editor, const Rect& rect)
 {
   add_action(Actions::Basher);
   add_action(Actions::Blocker);
-  add_action(Actions::Boarder);
   add_action(Actions::Bomber);
   add_action(Actions::Bridger);
   add_action(Actions::Climber);
   add_action(Actions::Digger);
-  add_action(Actions::Exiter);
   add_action(Actions::Floater);
   add_action(Actions::Jumper);
   add_action(Actions::Miner);

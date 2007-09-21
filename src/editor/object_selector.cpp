@@ -143,12 +143,16 @@ struct SurfaceBackground : public ObjectSelectorList::Object
 struct SolidColorBackground : public ObjectSelectorList::Object
 {
   SolidColorBackground() 
-    : Object(Resource::load_sprite("core/editor/solidcolorbackground_thumb"),
+    : Object(Resource::load_sprite("core/editor/solidcolorbackground"),
              Resource::load_thumb_sprite("core/editor/solidcolorbackground_thumb"))
   {}
   
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
-    return 0;
+    LevelObj* obj = new LevelObj("solidcolor-background", impl);
+    obj->set_pos(Vector3f((float)pos.x, (float)pos.y, -1000.0f)); // FIXME: Hack, z-pos handling is messed up
+    obj->set_color(Color(255, 0, 255));
+    obj->set_res_desc(ResDescriptor("core/editor/solidcolorbackground"));
+    return obj;
   }
 };
 
@@ -160,7 +164,13 @@ struct StarfieldBackground : public ObjectSelectorList::Object
   {}
   
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
-    return 0;
+    LevelObj* obj = new LevelObj("starfield-background", impl);
+    obj->set_pos(Vector3f((float)pos.x, (float)pos.y, -1000.0f)); // FIXME: Hack, z-pos handling is messed up
+    obj->set_res_desc(ResDescriptor("core/editor/starfield_thumb"));
+    obj->set_small_stars(500);
+    obj->set_middle_stars(250);
+    obj->set_large_stars(125);
+    return obj;    
   }
 };
 

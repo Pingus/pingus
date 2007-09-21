@@ -63,12 +63,10 @@ EditorLevel::clear()
   impl->actions.clear();
   impl->actions["basher"]  = 20;
   impl->actions["blocker"] = 20;
-  impl->actions["boarder"] = 20;
   impl->actions["bomber"]  = 20;
   impl->actions["bridger"] = 20;
   impl->actions["climber"] = 20;
   impl->actions["digger"]  = 20;
-  impl->actions["exiter"]  = 20;
   impl->actions["floater"] = 20;
   impl->actions["jumper"]  = 20;
   impl->actions["miner"]   = 20;

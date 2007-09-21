@@ -109,7 +109,8 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
   add(pos_z_label    = new Label(label_rect, "Z-Pos:"), true);
   add(pos_z_inputbox = new Inputbox(box_rect), true);
   pos_z_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_pos_z_change, this, _1));
-  
+  // ___________________________________________________________________
+  //  
   Size color_s(box_rect.get_width()/4, box_rect.get_height());
 
   add(color_label = new Label(label_rect, "Color:"), true);
@@ -122,7 +123,21 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
   color_g_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_color_g_change, this, _1));
   color_b_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_color_b_change, this, _1));
   color_a_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_color_a_change, this, _1));
-  
+  // ___________________________________________________________________
+  //
+  add(small_stars_label    = new Label(label_rect, "Small Stars:"), true);
+  add(small_stars_inputbox = new Inputbox(box_rect), true);
+
+  add(middle_stars_label    = new Label(label_rect, "Middle Stars:"), true);
+  add(middle_stars_inputbox = new Inputbox(box_rect), true);
+
+  add(large_stars_label    = new Label(label_rect, "Large Stars:"), true);
+  add(large_stars_inputbox = new Inputbox(box_rect), true);
+
+  small_stars_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_small_stars_change, this, _1));
+  middle_stars_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_middle_stars_change, this, _1));
+  large_stars_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_large_stars_change, this, _1));
+
   set_object(0);
 }
 
@@ -213,6 +228,14 @@ ObjectProperties::hide_all()
   color_g_inputbox->hide();
   color_b_inputbox->hide();
   color_a_inputbox->hide();
+
+  small_stars_label->hide();
+  middle_stars_label->hide();
+  large_stars_label->hide();
+
+  small_stars_inputbox->hide();
+  middle_stars_inputbox->hide();
+  large_stars_inputbox->hide();
 }
 
 void
@@ -309,6 +332,17 @@ ObjectProperties::set_object(LevelObj* obj)
         {
           release_rate_inputbox->set_text(StringUtil::to_string(obj->get_release_rate()));
           place(release_rate_label, release_rate_inputbox);
+        }
+
+      if (attr & HAS_STARFIELD)
+        {
+          small_stars_inputbox->set_text(StringUtil::to_string(obj->get_small_stars()));
+          middle_stars_inputbox->set_text(StringUtil::to_string(obj->get_middle_stars()));
+          large_stars_inputbox->set_text(StringUtil::to_string(obj->get_large_stars()));
+
+          place(small_stars_label,  small_stars_inputbox);
+          place(middle_stars_label, middle_stars_inputbox);
+          place(large_stars_label,  large_stars_inputbox);
         }
 
       if (1) // everybody has z-pos
@@ -491,6 +525,32 @@ ObjectProperties::on_color_a_change(const std::string& str)
     }
 }
 
+void
+ObjectProperties::on_small_stars_change(const std::string& str)
+{
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    {
+      (*i)->set_small_stars(StringUtil::to<int>(str));
+    }
+}
+
+void
+ObjectProperties::on_middle_stars_change(const std::string& str)
+{
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    {
+      (*i)->set_middle_stars(StringUtil::to<int>(str));
+    }
+}
+
+void
+ObjectProperties::on_large_stars_change(const std::string& str)
+{
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    {
+      (*i)->set_large_stars(StringUtil::to<int>(str));
+    }  
+}
 
 } // namespace Editor
 

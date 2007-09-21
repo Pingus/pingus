@@ -4,84 +4,84 @@
     (section (name "Objects")
       (sprite
         (name "start_pos")
-        (images "../images/core/editor/start_pos.png"))
+        (image-file "../images/core/editor/start_pos.png"))
 
       (sprite
         (name "weather_rain")
-        (images "../images/core/editor/weather_rain.png"))
+        (image-file "../images/core/editor/weather_rain.png"))
 
       (sprite
         (name "weather_snow")
-        (images "../images/core/editor/weather_snow.png"))
+        (image-file "../images/core/editor/weather_snow.png"))
 
       (sprite
         (name "solidcolorbackground_thumb")
-        (images "../images/core/editor/solidcolorbackground_thumb.png"))
+        (image-file "../images/core/editor/solidcolorbackground_thumb.png"))
 
       (sprite
         (name "starfield_thumb")
-        (images "../images/core/editor/starfield_thumb.png"))
+        (image-file "../images/core/editor/starfield_thumb.png"))
 
     (section (name "Icons")
       (sprite
         (name "copy")
-        (images "../images/core/editor/tb_copy.png"))
+        (image-file "../images/core/editor/tb_copy.png"))
 
       (sprite
         (name "new")
-        (images "../images/core/editor/tb_new.png"))
+        (image-file "../images/core/editor/tb_new.png"))
 
       (sprite
         (name "open")
-        (images "../images/core/editor/tb_open.png"))
+        (image-file "../images/core/editor/tb_open.png"))
 
       (sprite
         (name "save")
-        (images "../images/core/editor/tb_save.png"))
+        (image-file "../images/core/editor/tb_save.png"))
 
       (sprite
         (name "exit")
-        (images "../images/core/editor/tb_exit.png"))
+        (image-file "../images/core/editor/tb_exit.png"))
 
       (sprite
         (name "clock_run")
-        (images "../images/core/editor/tb_clock_run.png"))
+        (image-file "../images/core/editor/tb_clock_run.png"))
 
       (sprite
         (name "edit")
-        (images "../images/core/editor/tb_edit.png"))
+        (image-file "../images/core/editor/tb_edit.png"))
 
       (sprite
         (name "preferences")
-        (images "../images/core/editor/tb_preferences.png"))
+        (image-file "../images/core/editor/tb_preferences.png"))
 
       (sprite
         (name "help")
-        (images "../images/core/editor/tb_help.png"))
+        (image-file "../images/core/editor/tb_help.png"))
 
       (sprite
         (name "delete")
-        (images "../images/core/editor/tb_trash.png"))
+        (image-file "../images/core/editor/tb_trash.png"))
 
       (sprite
         (name "index")
-        (images "../images/core/editor/tb_index.png"))
+        (image-file "../images/core/editor/tb_index.png"))
 
       (sprite
         (name "actions")
-        (images "../images/core/editor/actions.png"))
+        (image-file "../images/core/editor/actions.png"))
 
       (sprite
         (name "region-zoom")
-        (images "../images/core/editor/region-zoom.png"))
+        (image-file "../images/core/editor/region-zoom.png"))
 
       (sprite
         (name "zoom-in")
-        (images "../images/core/editor/zoom-in.png"))
+        (image-file "../images/core/editor/zoom-in.png"))
 
       (sprite
         (name "zoom-out")
-        (images "../images/core/editor/zoom-out.png"))
+        (image-file "../images/core/editor/zoom-out.png"))
      )
    )
  )

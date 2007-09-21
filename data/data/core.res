@@ -50,6 +50,10 @@
                     (image-file "../images/core/editor/solidcolorbackground_thumb.png"))
 
                    (sprite
+                    (name "solidcolorbackground")
+                    (image-file "../images/core/editor/solidcolorbackground.png"))
+
+                   (sprite
                     (name "starfield_thumb")
                     (image-file "../images/core/editor/starfield_thumb.png"))
 

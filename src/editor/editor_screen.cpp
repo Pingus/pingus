@@ -92,7 +92,7 @@ EditorScreen::EditorScreen()
 
   viewport->selection_changed.connect(boost::bind(&ObjectProperties::set_objects, object_properties, _1));
 
-  action_properties = new ActionProperties(this, Rect(Vector2i(0, 38), Size(150, 284)));
+  action_properties = new ActionProperties(this, Rect(Vector2i(0, 38), Size(150, 240)));
   action_properties->hide();
   gui_manager->add(action_properties, true);
 

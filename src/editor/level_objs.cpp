@@ -67,6 +67,10 @@ LevelObj::get_attributes(std::string obj_type)
     return HAS_SPEED | HAS_WIDTH | HAS_SURFACE;
   else if (obj_type == "surface-background")
     return HAS_COLOR | HAS_STRETCH | HAS_PARA | HAS_SCROLL | HAS_SURFACE;
+  else if (obj_type == "solidcolor-background")
+    return HAS_COLOR | HAS_SURFACE_FAKE;
+  else if (obj_type == "starfield-background")
+    return HAS_STARFIELD | HAS_SURFACE_FAKE;
   else if (obj_type == "entrance" || obj_type == "woodthing")
     return HAS_TYPE | HAS_DIRECTION | HAS_RELEASE_RATE | HAS_OWNER | HAS_SURFACE_FAKE;
   else if (obj_type == "exit")
@@ -90,7 +94,7 @@ LevelObj::set_res_desc(const ResDescriptor d)
 void
 LevelObj::draw(DrawingContext &gc)
 {
-  if (attribs & (HAS_SURFACE | HAS_SURFACE_FAKE))
+  if (attribs & HAS_SURFACE || attribs & HAS_SURFACE_FAKE)
     {
       if (attribs & HAS_WIDTH)
         {
@@ -106,6 +110,11 @@ LevelObj::draw(DrawingContext &gc)
               gc.draw(sprite, Vector3f((float)x, (float)y, pos.z));
         }
 #endif
+      else if (attribs & HAS_COLOR && section_name == "solidcolor-background")
+        { // FIXME: Should we have the object type in non-string form?
+          gc.draw_fillrect(Rect(Vector2i((int)pos.x, (int)pos.y), Size(256, 256)), color, pos.z);
+          gc.draw(sprite, pos);
+        }
       else
         {
           gc.draw(sprite, pos);
@@ -161,7 +170,7 @@ LevelObj::set_aspect(const bool a)
 void
 LevelObj::refresh_sprite()
 {
-  if (attribs & HAS_SURFACE)
+  if (attribs & HAS_SURFACE || attribs & HAS_SURFACE_FAKE)
     {
       sprite = Resource::load_sprite(desc);
     }
@@ -247,6 +256,13 @@ LevelObj::write_properties(FileWriter &fw)
     {
       fw.write_float("para-x", para_x);
       fw.write_float("para-y", para_y);
+    }
+
+  if (attribs & HAS_STARFIELD)
+    {
+      fw.write_int("small-stars", small_stars);
+      fw.write_int("middle-stars", middle_stars);
+      fw.write_int("large-stars", large_stars);
     }
 
   // Writes any extra properties that may be necessary (virtual function)
