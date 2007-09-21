@@ -273,10 +273,9 @@ EditorScreen::level_save_as()
 void
 EditorScreen::level_play()
 {
-  plf->save_level(path_manager.complete("levels/editortmpfile.pingus"));
-  PingusLevel level("levels/editortmpfile.pingus",
-                    Pathname("levels/editortmpfile.pingus", Pathname::DATA_PATH));
-
+  Pathname tmp(System::get_statdir() + "backup/editortmpfile.pingus", Pathname::SYSTEM_PATH);
+  plf->save_level(tmp.get_sys_path());
+  PingusLevel level(tmp);
   ScreenManager::instance()->push_screen(new PingusGameSession(level, false), true);
 }
 

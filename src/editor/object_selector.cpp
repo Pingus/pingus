@@ -500,7 +500,8 @@ ObjectSelectorSet*
 ObjectSelector::create_trap()
 {
   // Need to differentiate the different trap types
-  return create_objects("traps");
+  //return create_objects("traps");
+  return new ObjectSelectorSet(object_list, 48, 48);
 }
 
 ObjectSelectorSet*

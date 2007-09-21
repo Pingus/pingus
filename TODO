@@ -177,11 +177,13 @@ Roadmap for Pingus Editor 0.7.1:
 Important:
 ==========
 
-- implement proper tmpfile Support (save tmp levels to ~/.pingus/tmp/
-  for backup purpose in case of editor crash or so)
+- all done!
 
 Less Important:
 ===============
+
+- implement proper tmpfile Support (save tmp levels to ~/.pingus/tmp/
+  for backup purpose in case of editor crash or so)
 
 - keyboard shortcuts need to be implemented (use input framework, but
   how without support for keymaps?)

@@ -289,6 +289,9 @@ System::init_directories()
   // Recorded demos will per default be writen in this directory
   create_dir(statdir + "demos/");
 
+  // User created images
+  create_dir(statdir + "backup/");
+
   // Screenshots will be dumped to that directory:
   create_dir(statdir + "screenshots/");
   // create_dir(vardir);
