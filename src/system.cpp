@@ -309,6 +309,8 @@ System::get_statdir()
       homedir = 0;
       homedir = getenv("HOMEPATH");
       tmpstr = tmpstr + std::string(homedir) + "/.pingus/";
+      for (size_t pos = tmpstr.find('\\', 0); pos != std::string::npos; pos = tmpstr.find('\\', 0))
+        tmpstr[pos] = '/';
     }
   else
     tmpstr = "user/";
@@ -532,7 +534,11 @@ System::realpath(const std::string& pathname)
 {
   std::string fullpath;
   
-  if (pathname.size() > 0 && pathname[0] == '/')
+  if (pathname.size() > 0 && pathname[0] == '/'
+#ifdef WIN32
+    || (pathname.size() > 2 && pathname[1] == ':' && pathname[2] == '/')
+#endif
+	  )
     {
       fullpath = pathname;
     }
