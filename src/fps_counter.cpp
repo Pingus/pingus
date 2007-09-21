@@ -59,20 +59,14 @@ FPSCounter::on_event()
 
   if (odd_frame)
     {
-      font.draw(Display::get_width(),
-                Display::get_height() - (2 * font.get_height()),
-                "o");
-
+      font.draw(origin_center, Display::get_width()/2, 34, fps_string);
       odd_frame = false;
     }
   else
     {
+      font.draw(origin_center, Display::get_width()/2, 34, "+ " + std::string(fps_string) + " +");
       odd_frame = true;
     }
-
-  font.draw(Display::get_width() - 100,
-            Display::get_height() - font.get_height(),
-            fps_string);
 }
 
 void
