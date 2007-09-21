@@ -2,7 +2,7 @@ Release Checklist:
 ~~~~~~~~~~~~~~~~~~
 
 - turn on fullscreen at default (do we really want this with
-  fullscreen key documented?)
+  fullscreen key documented? -> Nope)
 
 - make sure all important strings are translatable
 
@@ -91,18 +91,19 @@ Roadmap for Pingus 0.7.1
 Important:
 ==========
 
-- create verdana11 for latin2 and latin9
-
 - miner remove graphics looks wrong (cmap instead of gfx?), others too (digger)
+
+- do german translation
+
+Less Important:
+===============
 
 ### Loading font file: system://data/images/fonts/courier_small-iso-8859-9.font
 Font: datadir://images/fonts/courier_small-iso-8859-9.png
   Error: glyphs found: 188, expected 189
   Format: bpp: 32
 
-
-Less Important:
-===============
+- fix verdana11 for latin2 and latin9 or go UTF-8
 
 - bridging gets more complicated has graphical error (background?!)
   surface background doesn't handle larger res due to the Playfield
