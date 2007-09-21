@@ -93,20 +93,21 @@ Important:
 
 - create verdana11 for latin2 and latin9
 
-- miner remove graphics looks wrong (cmap instead of gfx?)
+- miner remove graphics looks wrong (cmap instead of gfx?), others too (digger)
 
 ### Loading font file: system://data/images/fonts/courier_small-iso-8859-9.font
 Font: datadir://images/fonts/courier_small-iso-8859-9.png
   Error: glyphs found: 188, expected 189
   Format: bpp: 32
 
+
+Less Important:
+===============
+
 - bridging gets more complicated has graphical error (background?!)
   surface background doesn't handle larger res due to the Playfield
   being offsetted (might be solveable with new DrawingContext that
   features Rect)
-
-Less Important:
-===============
 
 - menu crashes when you click a little wildely
 

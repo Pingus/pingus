@@ -42,7 +42,7 @@ public:
   int get_width() const;
   int get_height() const;
   
-  Surface get_surface() const;
+  Surface  get_surface() const;
   uint8_t* get_data() const;
 
 private:

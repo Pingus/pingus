@@ -31,9 +31,9 @@ public:
   static std::string to_upper(const std::string &str);
 
   template<class T>
-  static T to(const std::string& s) 
+  static T to(const std::string& s, const T& val = T()) 
   {
-    T tmp;
+    T tmp = val;
     std::istringstream str(s);
     str >> tmp;
     return tmp;
