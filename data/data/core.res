@@ -58,6 +58,10 @@
                     (image-file "../images/core/editor/starfield_thumb.png"))
 
                    (sprite
+                    (name "starfield")
+                    (image-file "../images/core/editor/starfield.png"))
+
+                   (sprite
                     (name "combobox")
                     (image-file "../images/core/editor/combobox.png"))
 

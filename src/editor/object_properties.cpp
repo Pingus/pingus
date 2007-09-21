@@ -137,6 +137,11 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
   small_stars_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_small_stars_change, this, _1));
   middle_stars_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_middle_stars_change, this, _1));
   large_stars_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_large_stars_change, this, _1));
+  // ___________________________________________________________________
+  //
+  add(repeat_label    = new Label(label_rect, "Repeat:"), true);
+  add(repeat_inputbox = new Inputbox(box_rect), true);
+  repeat_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_repeat_change, this, _1));
 
   set_object(0);
 }
@@ -236,6 +241,9 @@ ObjectProperties::hide_all()
   small_stars_inputbox->hide();
   middle_stars_inputbox->hide();
   large_stars_inputbox->hide();
+
+  repeat_label->hide();
+  repeat_inputbox->hide();
 }
 
 void
@@ -274,8 +282,10 @@ ObjectProperties::set_object(LevelObj* obj)
         { // used for hotspot
         }
         
-      if (attr & HAS_WIDTH)
-        { // used by liquid and some obscure ones
+      if (attr & HAS_REPEAT)
+        { 
+          repeat_inputbox->set_text(StringUtil::to_string(obj->get_repeat()));
+          place(repeat_label, repeat_inputbox);
         }
         
       if (attr & HAS_OWNER)
@@ -550,6 +560,15 @@ ObjectProperties::on_large_stars_change(const std::string& str)
     {
       (*i)->set_large_stars(StringUtil::to<int>(str));
     }  
+}
+
+void
+ObjectProperties::on_repeat_change(const std::string& str)
+{
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    {
+      (*i)->set_repeat(StringUtil::to<int>(str));
+    }   
 }
 
 } // namespace Editor

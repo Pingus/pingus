@@ -89,6 +89,9 @@ private:
   Label*    large_stars_label;
   Inputbox* large_stars_inputbox;
 
+  Label*    repeat_label;
+  Inputbox* repeat_inputbox;
+
   int y_pos;
 
 public:
@@ -127,6 +130,8 @@ public:
   void on_small_stars_change(const std::string& str);
   void on_middle_stars_change(const std::string& str);
   void on_large_stars_change(const std::string& str);
+
+  void on_repeat_change(const std::string& str);
 
 };
 

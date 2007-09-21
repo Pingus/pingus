@@ -159,14 +159,14 @@ struct SolidColorBackground : public ObjectSelectorList::Object
 struct StarfieldBackground : public ObjectSelectorList::Object
 {
   StarfieldBackground() 
-    : Object(Resource::load_sprite("core/editor/starfield_thumb"),
+    : Object(Resource::load_sprite("core/editor/starfield"),
              Resource::load_thumb_sprite("core/editor/starfield_thumb"))
   {}
   
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
     LevelObj* obj = new LevelObj("starfield-background", impl);
     obj->set_pos(Vector3f((float)pos.x, (float)pos.y, -1000.0f)); // FIXME: Hack, z-pos handling is messed up
-    obj->set_res_desc(ResDescriptor("core/editor/starfield_thumb"));
+    obj->set_res_desc(ResDescriptor("core/editor/starfield"));
     obj->set_small_stars(500);
     obj->set_middle_stars(250);
     obj->set_large_stars(125);
@@ -174,22 +174,24 @@ struct StarfieldBackground : public ObjectSelectorList::Object
   }
 };
 
-#if 0
 struct Liquid : public ObjectSelectorList::Object
 {
   ResDescriptor desc;
 
   Liquid(const std::string& name) 
-    : Object(Resource::load_sprite("core/editor/starfield_thumb"),
-             Resource::load_thumb_sprite("core/editor/starfield_thumb")),
+    : Object(Resource::load_sprite(name),
+             Resource::load_thumb_sprite(name)),
       desc(name)
   {}
   
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
-    return 0;
+    LevelObj* obj = new LevelObj("liquid", impl);
+    obj->set_pos(Vector3f((float)pos.x, (float)pos.y));
+    obj->set_res_desc(desc);
+    obj->set_repeat(1);
+    return obj;     
   }
 };
-#endif
 
 class ObjectSelectorButton : public GUI::RectComponent
 {
@@ -474,7 +476,6 @@ ObjectSelector::create_exit()
  std::vector<std::string> lst = Resource::resmgr.get_section("exit");
  for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
     {
-      //sprite.scale(48, 48);
       set->add(new Exit(*i));
     }
  
@@ -484,7 +485,15 @@ ObjectSelector::create_exit()
 ObjectSelectorSet*
 ObjectSelector::create_liquid()
 {
-  return create_objects("liquids");
+ ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+
+ std::vector<std::string> lst = Resource::resmgr.get_section("liquids");
+ for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
+    {
+      set->add(new Liquid(*i));
+    }
+
+ return set;
 }
 
 ObjectSelectorSet*

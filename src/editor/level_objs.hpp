@@ -37,7 +37,7 @@ namespace Editor {
 const unsigned HAS_TYPE =         1 << 0;
 const unsigned HAS_SPEED =        1 << 1;
 const unsigned HAS_PARALLAX =     1 << 2;
-const unsigned HAS_WIDTH =        1 << 3;
+const unsigned HAS_REPEAT =        1 << 3;
 const unsigned HAS_OWNER =        1 << 4;
 const unsigned HAS_COLOR =        1 << 5;
 const unsigned HAS_SCROLL =       1 << 6;
@@ -88,8 +88,8 @@ protected:
   /** Optional parallax field for certain objects */
   float parallax;
 
-  /** Optional width field for certain objects */
-  int width;
+  /** Optional repeat field for certain objects */
+  int repeat;
 
   /** Optional owner id field for certain objects */
   int owner_id;
@@ -184,8 +184,8 @@ public:
   /** Retrieve the object's owner */
   int get_owner() const { return owner_id; }
 
-  /** Retrieve the object's width */
-  int get_width() const { return width; }
+  /** Retrieve the object's repeat */
+  int get_repeat() const { return repeat; }
 
   /** Retrieve the object's color */
   Color get_color() const { return color; }
@@ -263,8 +263,8 @@ public:
   /** Set the object's parallax */
   void set_parallax(const float para) { parallax = para; }
 
-  /** Set the object's width */
-  void set_width(const int w) { width = w; }
+  /** Set the object's repeat */
+  void set_repeat(const int w) { repeat = w; }
 
   /** Set the object's owner_id */
   void set_owner(const int id) { owner_id = id; }

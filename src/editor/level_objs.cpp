@@ -37,7 +37,7 @@ LevelObj::LevelObj(std::string obj_name, LevelImpl* level_)
     section_name(obj_name),
     speed(0),
     parallax(0.0),
-    width(0),
+    repeat(0),
     owner_id(0),
     release_rate(0),
     scroll_x(0),
@@ -64,7 +64,7 @@ LevelObj::get_attributes(std::string obj_type)
   else if (obj_type == "hotspot")
     return HAS_SPEED | HAS_PARALLAX | HAS_SURFACE | CAN_ROTATE;
   else if (obj_type == "liquid")
-    return HAS_SPEED | HAS_WIDTH | HAS_SURFACE;
+    return HAS_SPEED | HAS_REPEAT | HAS_SURFACE;
   else if (obj_type == "surface-background")
     return HAS_COLOR | HAS_STRETCH | HAS_PARA | HAS_SCROLL | HAS_SURFACE;
   else if (obj_type == "solidcolor-background")
@@ -96,9 +96,9 @@ LevelObj::draw(DrawingContext &gc)
 {
   if (attribs & HAS_SURFACE || attribs & HAS_SURFACE_FAKE)
     {
-      if (attribs & HAS_WIDTH)
+      if (attribs & HAS_REPEAT)
         {
-          for(int x = int(pos.x); x < pos.x + width; x += sprite.get_width())
+          for(int x = int(pos.x); x < pos.x + sprite.get_width()*repeat; x += sprite.get_width())
             gc.draw(sprite, Vector3f(static_cast<float>(x), pos.y, pos.z));
         }
 #if 0
@@ -123,11 +123,8 @@ LevelObj::draw(DrawingContext &gc)
       // If selected, draw a highlighted box around it
       if (selected)
         {
-          Rect r(Vector2i((int)pos.x, (int)pos.y) - sprite.get_offset(),
-                 Size(sprite.get_width(), sprite.get_height())); 
-
-          gc.draw_fillrect(r, Color(255,0,0,50), pos.z);
-          gc.draw_rect(r, Color(255,0,0), pos.z);
+          gc.draw_fillrect(get_rect(), Color(255,0,0,50), pos.z);
+          gc.draw_rect(get_rect(), Color(255,0,0), pos.z);
         }
     }
 }
@@ -135,6 +132,9 @@ LevelObj::draw(DrawingContext &gc)
 bool
 LevelObj::is_at(int x, int y)
 {
+  return get_rect().is_inside(Vector2i(x,y));
+#if 0  
+  // old code
   if (attribs & HAS_SURFACE || attribs & HAS_SURFACE_FAKE)
     {
       Vector2i offset = sprite.get_offset();
@@ -147,10 +147,11 @@ LevelObj::is_at(int x, int y)
     {
       return false;
     }
+#endif 
 }
 
-  void
-  LevelObj::set_stretch_x(const bool s)
+void
+LevelObj::set_stretch_x(const bool s)
 { 
   stretch_x = s;
 }
@@ -231,8 +232,8 @@ LevelObj::write_properties(FileWriter &fw)
     fw.write_int("speed", speed);
   if (attribs & HAS_PARALLAX)
     fw.write_float("parallax", parallax);
-  if (attribs & HAS_WIDTH)
-    fw.write_int("width", width);
+  if (attribs & HAS_REPEAT)
+    fw.write_int("repeat", repeat);
   if (attribs & HAS_OWNER)
     fw.write_int("owner-id", owner_id);
   if (attribs & HAS_DIRECTION)
@@ -303,8 +304,16 @@ LevelObj::get_pos_z() const
 Rect
 LevelObj::get_rect() const
 {
-  return Rect(Vector2i((int)pos.x, (int)pos.y) - sprite.get_offset(),
-              Size(sprite.get_width(), sprite.get_height()));
+  if (attribs & HAS_REPEAT)
+    {
+      return Rect(Vector2i((int)pos.x, (int)pos.y) - sprite.get_offset(),
+                  Size(sprite.get_width() * repeat, sprite.get_height()));
+    }
+  else
+    {
+      return Rect(Vector2i((int)pos.x, (int)pos.y) - sprite.get_offset(),
+                  Size(sprite.get_width(), sprite.get_height()));
+    }
 }
 
 } // namespace Editor 

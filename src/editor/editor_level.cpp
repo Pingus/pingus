@@ -241,10 +241,10 @@ void EditorLevel::load_level(const Pathname& pathname)
           i->read_int("speed", tmp_int);
           obj->set_speed(tmp_int);
         }
-      if (attribs & HAS_WIDTH)
+      if (attribs & HAS_REPEAT)
         {
-          i->read_int("width", tmp_int);
-          obj->set_width(tmp_int);
+          i->read_int("repeat", tmp_int);
+          obj->set_repeat(tmp_int);
         }
       if (attribs & HAS_PARALLAX)
         {
