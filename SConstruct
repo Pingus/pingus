@@ -304,9 +304,9 @@ def DefineOptions(filename, args):
    opts.Add('CXX', 'C++ Compiler', 'g++')
 #   opts.Add('debug', 'Build with debugging options', 0)
 #   opts.Add('profile', 'Build with profiling support', 0)
-   opts.Add('with_xinput', 'Build with Xinput support', True)
+   opts.Add('with_xinput', 'Build with Xinput support', False)
    opts.Add('with_linuxusbmouse', 'Build with Linux USB mouse support', True)
-   opts.Add('with_wiimote', 'Build with Wiimote support', True)
+   opts.Add('with_wiimote', 'Build with Wiimote support', False)
    opts.Add('ignore_errors', 'Ignore any fatal configuration errors', False)
    opts.Add('optional_sources', 'Additional source files', [])
    return opts
@@ -353,7 +353,7 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
         env['optional_sources'] += ['src/input/usbmouse_driver.cpp']
     
     if not env['with_wiimote']:
-        reports += "  * Wiimote support: no (cwiid.h not found)\n"        
+        reports += "  * Wiimote support: disable\n"        
     elif config.CheckLibWithHeader('cwiid', 'cwiid.h', 'c++'):
         reports += "  * Wiimote support: yes\n"
         config_h_defines  += [('HAVE_CWIID', 1)]
