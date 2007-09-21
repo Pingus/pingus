@@ -47,6 +47,7 @@ private:
   Inputbox* height;
   Inputbox* difficulty;
   Inputbox* comment;
+  Inputbox* music;
 
 public:
   LevelProperties(EditorScreen* editor, const Rect& rect);
@@ -69,6 +70,7 @@ public:
   void on_height_change(const std::string& str);
   void on_difficulty_change(const std::string& str);
   void on_comment_change(const std::string& str);
+  void on_music_change(const std::string& str);
 
 private:
   LevelProperties (const LevelProperties&);

@@ -180,15 +180,7 @@ Roadmap for Pingus Editor 0.7.1:
 Important:
 ==========
 
-- music property missing
-
 - add object duplication
-
-- ObjectSelector need to support more object types, missing types:
-
-   all kinds of traps, weather, special objects
-
-- add real object remove
 
 - keyboard shortcuts need to be implemented (use input framework, but
   how without support for keymaps?)
@@ -209,6 +201,9 @@ Important:
 
 Less Important:
 ===============
+
+- ObjectSelector need to support more object types, missing types:
+  all kinds of traps, weather, special objects
 
 - add yes/no question when creating a new level
 

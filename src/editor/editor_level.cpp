@@ -388,6 +388,12 @@ EditorLevel::get_comment() const
   return impl->comment;
 }
 
+std::string
+EditorLevel::get_music() const
+{
+  return impl->music;
+}
+
 int
 EditorLevel::get_time() const
 {
@@ -410,6 +416,12 @@ void
 EditorLevel::set_comment(const std::string& str)
 {
   impl->comment = str;
+}
+
+void
+EditorLevel::set_music(const std::string& str)
+{
+  impl->music = str;
 }
 
 void

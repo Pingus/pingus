@@ -67,6 +67,8 @@ LevelProperties::LevelProperties(EditorScreen* editor, const Rect& rect)
   add(difficulty = new Inputbox(Rect(Vector2i(110, y+110), Size(  w, 20))), true);
   add(new Label   (Rect(Vector2i( 10, y+132), Size( 80, 20)), "Comment:"), true);
   add(comment = new Inputbox(Rect(Vector2i(110, y+132), Size(  w, 20))), true);
+  add(new Label   (Rect(Vector2i( 10, y+154), Size( 80, 20)), "Music:"), true);
+  add(music = new Inputbox(Rect(Vector2i(110, y+154), Size(  w, 20))), true);
 
   author->on_change.connect(boost::bind(&LevelProperties::on_author_change, this, _1));
   levelname->on_change.connect(boost::bind(&LevelProperties::on_levelname_change, this, _1));
@@ -80,6 +82,7 @@ LevelProperties::LevelProperties(EditorScreen* editor, const Rect& rect)
   time->on_change.connect(boost::bind(&LevelProperties::on_time_change, this, _1));
   difficulty->on_change.connect(boost::bind(&LevelProperties::on_difficulty_change, this, _1));
   comment->on_change.connect(boost::bind(&LevelProperties::on_comment_change, this, _1));
+  music->on_change.connect(boost::bind(&LevelProperties::on_music_change, this, _1));
 }
 
 LevelProperties::~LevelProperties()
@@ -112,7 +115,8 @@ LevelProperties::set_level(EditorLevel* level_)
   width->set_text(StringUtil::to_string(level->get_size().width));
   height->set_text(StringUtil::to_string(level->get_size().height));
   difficulty->set_text(StringUtil::to_string(level->get_difficulty()));
-  comment->set_text("");
+  comment->set_text(level->get_comment());
+  music->set_text(level->get_music());
 }
 
 void
@@ -192,6 +196,12 @@ void
 LevelProperties::on_comment_change(const std::string& str)
 {
   level->set_comment(str);
+}
+
+void
+LevelProperties::on_music_change(const std::string& str)
+{ 
+  level->set_music(str);
 }
 
 } // namespace Editor

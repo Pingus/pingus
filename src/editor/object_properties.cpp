@@ -565,10 +565,13 @@ ObjectProperties::on_large_stars_change(const std::string& str)
 void
 ObjectProperties::on_repeat_change(const std::string& str)
 {
+  int r = StringUtil::to<int>(str);
+  if (r <= 0)
+    r = 1;
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
     {
-      (*i)->set_repeat(StringUtil::to<int>(str));
-    }   
+      (*i)->set_repeat(r);
+    }
 }
 
 } // namespace Editor
