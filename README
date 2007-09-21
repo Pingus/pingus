@@ -5,7 +5,7 @@ Pingus
 Introduction
 
    Pingus is a free Lemmings(tm) clone for GNU/Linux, Win32 and other
-   operating systems supported by SDL. It is covered under the GPLv2,
+   operating systems supported by SDL. It is covered under the GPL,
    check the file COPYING, for more information.
    
    See INSTALL for generic install instructions, INSTALL.unix for

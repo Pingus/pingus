@@ -40,7 +40,7 @@ skip it, use:
  % scons configure ignore_errors=True
  % scons
 
-So build might however fail if you do that.
+The build might however fail if you do that.
 
 
 Running:
