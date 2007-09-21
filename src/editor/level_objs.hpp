@@ -330,9 +330,7 @@ public:
   void set_middle_stars(int n) {  middle_stars = n; }
   void set_large_stars(int n)  {   large_stars = n; }
 
-private:
-  LevelObj (const LevelObj&);
-  LevelObj& operator= (const LevelObj&);
+  LevelObj* duplicate(const Vector2i& offset) const;
 };
 
 } // namespace Editor 

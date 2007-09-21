@@ -180,8 +180,6 @@ Roadmap for Pingus Editor 0.7.1:
 Important:
 ==========
 
-- add object duplication
-
 - keyboard shortcuts need to be implemented (use input framework, but
   how without support for keymaps?)
 

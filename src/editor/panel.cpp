@@ -170,6 +170,8 @@ Panel::Panel(EditorScreen* editor_)
   add_button("core/editor/objects", "Show object insertion window", 
              &EditorScreen::toggle_object_selector);
   add_separator();
+  add_button("core/editor/copy", "Duplicate the selected objects", 
+             &EditorScreen::objects_duplicate);
   add_button("core/editor/delete", "Delete the selected objects", 
              &EditorScreen::objects_delete);
   add_separator();
@@ -191,12 +193,12 @@ Panel::Panel(EditorScreen* editor_)
              &EditorScreen::objects_rotate_left);
   add_button("core/editor/object-rotate-right", "Rotate object -90 degree", 
              &EditorScreen::objects_rotate_right);
-  add_separator();
+  // add_separator();
   //add_button("core/editor/snap-grid", "Snap objects to grid", 
   //             &EditorScreen::toggle_grid_snap);
-  add_separator();
-  add_button("core/editor/help", "Display help", 
-             &EditorScreen::toggle_help);
+  // add_separator();
+  // add_button("core/editor/help", "Display help", 
+  //             &EditorScreen::toggle_help);
   add_separator();
   add_button("core/editor/exit", "Exit", 
              &EditorScreen::exit);

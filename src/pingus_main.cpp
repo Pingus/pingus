@@ -142,17 +142,6 @@ PingusMain::~PingusMain()
 {
 }
 
-char*
-PingusMain::get_title()
-{
-#ifdef OFFICIAL_PINGUS_BUILD
-  static char title[] = "Pingus "VERSION" - http://pingus.seul.org";
-#else
-  static char title[] = "Pingus "VERSION" (unofficial build) - http://pingus.seul.org";
-#endif
-  return title;
-}
-
 void
 PingusMain::read_rc_file (void)
 {
@@ -363,14 +352,15 @@ PingusMain::check_args(int argc, char** argv)
           break;
 
         case 'V':
-          std::cout << "Pingus Version " << VERSION
+          std::cout << "Pingus " << VERSION
 #ifndef OFFICIAL_PINGUS_BUILD
                     << " (unofficial build)"
 #endif
                     << std::endl;
             
           std::cout << "\n"
-            "Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>, see AUTHORS for a complete list\n"
+            "Copyright (C) 1998-2007 Ingo Ruhnke <grumbel@gmx.de>\n"
+            "See the file AUTHORS for a complete list of contributors.\n\n"
             "There is NO warranty.  You may redistribute this software\n"
             "under the terms of the GNU General Public License.\n"
             "For more information about these matters, see the files named COPYING." << std::endl;
@@ -854,7 +844,9 @@ PingusMain::init_sdl()
   }
   atexit(SDL_Quit); 
   Display::set_video_mode(screen_width, screen_height);
+
   SDL_WM_SetCaption("Pingus " VERSION " - SDL Edition", 0 /* icon */);
+
   SDL_EnableUNICODE(1);
 }
 

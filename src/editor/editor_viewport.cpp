@@ -99,12 +99,8 @@ EditorViewport::on_primary_button_press(int x_, int y_)
           // If the currently selected object isn't selected, select it and deselect the rest
           if (!obj->is_selected())
             {
-              for (unsigned i = 0; i < selected_objs.size(); i++)
-                selected_objs[i]->unselect();
-                
-              selected_objs.clear();
+              clear_selection();
               obj->select();
-
               selected_objs.push_back(obj);
 
               selection_changed(selected_objs);
@@ -123,7 +119,8 @@ EditorViewport::on_primary_button_press(int x_, int y_)
           highlighted_area.left = highlighted_area.right  = mouse_world_pos.x;
           highlighted_area.top  = highlighted_area.bottom = mouse_world_pos.y;
 
-          selected_objs.clear();
+          clear_selection();
+
           selection_changed(selected_objs);
         }
     }
@@ -306,6 +303,26 @@ EditorViewport::add_object(LevelObj* obj)
 }
 
 void
+EditorViewport::duplicate_selected_objects()
+{
+  std::vector<LevelObj*> new_objs;
+  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+    {
+      LevelObj* clone = (*i)->duplicate(Vector2i(32, 32));
+      if (clone)
+        {
+          new_objs.push_back(clone);
+          objs.push_back(clone);
+          clone->select();
+        }
+    }
+  
+  clear_selection();
+  selected_objs = new_objs;
+  selection_changed(selected_objs);  
+}
+
+void
 EditorViewport::delete_selected_objects()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
@@ -456,6 +473,15 @@ EditorViewport::update_layout()
 {
   state.set_size(rect.get_width(), rect.get_height());
   drawing_context->set_rect(rect);
+}
+
+void
+EditorViewport::clear_selection()
+{
+  for (unsigned i = 0; i < selected_objs.size(); i++)
+    selected_objs[i]->unselect();
+                
+  selected_objs.clear(); 
 }
 
 void

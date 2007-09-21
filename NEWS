@@ -1,10 +1,11 @@
 0.7.1 (??/Sep/2007)
 ===================
-* faster sprite drawing
-* level editor working
+* faster sprite drawing, so more overall fps
+* level editor rewritten
 * level loading from command line fixed
-* input subsystem rewritten from scratch (supports now gamepads,
-  usbmice, wiimote)
+* input subsystem rewritten from scratch, supports now gamepads,
+  usbmice, wiimote (some of those might be buggy and not work
+  properly)
 
 0.7.0 (25/Aug/2007)
 ===================

@@ -219,7 +219,7 @@
 
                    (sprite
                     (name "copy")
-                    (image-file "../images/core/editor/tb_copy.png"))
+                    (image-file "../images/core/editor/edit-copy.png"))
 
                    (sprite
                     (name "new")

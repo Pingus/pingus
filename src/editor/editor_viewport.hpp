@@ -126,6 +126,8 @@ public:
   void on_key_pressed(const unsigned short c);
 
   void delete_selected_objects();
+  void duplicate_selected_objects();
+
   void vflip_selected_objects();
   void hflip_selected_objects();
 
@@ -150,6 +152,7 @@ public:
 
   std::vector<LevelObj*>* get_objects() { return &objs; }
 
+  void clear_selection();
   void clear();
 
   boost::signal<void (const std::vector<LevelObj*>&)> selection_changed;

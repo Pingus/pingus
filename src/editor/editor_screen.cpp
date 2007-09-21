@@ -280,6 +280,12 @@ EditorScreen::level_play()
   ScreenManager::instance()->push_screen(new PingusGameSession(level, false), true);
 }
 
+void
+EditorScreen::objects_duplicate()
+{
+  viewport->duplicate_selected_objects();
+}
+
 void 
 EditorScreen::objects_delete()
 {

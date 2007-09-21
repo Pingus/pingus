@@ -53,7 +53,6 @@ public:
   virtual ~PingusMain();
 
   virtual int main(int argc, char** argv);
-  virtual char* get_title();
 
   void on_exit_press();
 private:

@@ -111,6 +111,7 @@ public:
   void level_save_as();
   void level_play();
 
+  void objects_duplicate();
   void objects_delete();
 
   void objects_raise_to_top();

@@ -234,16 +234,10 @@ PingusMenu::draw_foreground(DrawingContext& gc)
                        Display::get_height()/10));
     }
 
-#ifdef OFFICIAL_PINGUS_BUILD
   gc.print_left(Fonts::pingus_small, 25, 
-                Display::get_height()-114,
-                "Pingus version "VERSION", Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n");
-#else
-  gc.print_left(Fonts::pingus_small, 25, 
-                Display::get_height()-114,
-                "Pingus version "VERSION" (unofficial build), Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n");
-#endif
-
+                Display::get_height()-130,
+                "Pingus "VERSION", Copyright (C) 1998-2007 Ingo Ruhnke <grumbel@gmx.de>\n"
+                "See the file AUTHORS for a complete list of contributors.\n");
   gc.print_left(Fonts::pingus_small, 25, 
                 Display::get_height()-80,
                 "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are\n"

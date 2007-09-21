@@ -315,6 +315,15 @@ LevelObj::get_rect() const
                   Size(sprite.get_width(), sprite.get_height()));
     }
 }
+
+LevelObj*
+LevelObj::duplicate(const Vector2i& offset) const
+{
+  LevelObj* obj = new LevelObj(*this);
+  obj->pos.x += offset.x;
+  obj->pos.y += offset.y;
+  return obj;
+}
 
 } // namespace Editor 
 
