@@ -225,6 +225,10 @@ Less Important:
 
 - Dialogs: Editor Properties: user name and email
 
+- parallax scrolling is funky where background tiles are small. When scrolling right, the leftmost column of tiles gets overlapped by the next column a little bit. See the last tutorial level for an example.
+
+- decide whether to ignore cached_action != CA_NONE in ScreenManager::pop_screen. This causes the game to crash if [ESC] is quickly pressed repeatedly
+
 
 Older Stuff:
 ~~~~~~~~~~~~
