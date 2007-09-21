@@ -208,7 +208,102 @@ EditorViewport::on_pointer_move(int x_, int y_)
 void
 EditorViewport::on_key_pressed(const unsigned short c)
 {
-  std::cout << "EditorViewport::on_key_pressed: " << int(c) << " " << c << std::endl;
+  if (c < 256)
+    {
+      switch(c)
+        {
+          case 'A':
+            clear_selection();
+            selection_changed(selected_objs);
+            break;
+
+          case 'a':
+            if (selected_objs == objs)
+              {
+                clear_selection();
+              }
+            else 
+              {
+                clear_selection();
+                selected_objs = objs;
+                for (unsigned i = 0; i < selected_objs.size(); i++)
+                  selected_objs[i]->select();
+              }
+            selection_changed(selected_objs);
+            break;
+
+          case ']':
+          case 'w':
+            raise_objects();
+            break;
+            
+          case '}':
+          case 'W':
+            raise_objects_to_top();
+            break;
+
+          case '{':
+          case 'S':
+            lower_objects_to_bottom();
+            break;
+
+          case '[':
+          case 's':
+            lower_objects();
+            break;
+
+          case 'r':
+            rotate_90_selected_objects();
+            break;
+            
+          case 'R':
+            rotate_270_selected_objects();
+            break;
+
+          case 8: // backspace
+          case 127: // delete
+            delete_selected_objects();
+            break;
+             
+          case 'd':
+            duplicate_selected_objects();
+            break;
+
+          case 'V':
+          case 'f':
+            hflip_selected_objects();
+            break;
+
+          case 'F':
+          case 'v':
+            vflip_selected_objects();
+            break;
+            
+          case 'c': // dvorak-up
+          case 'i': // up
+            move_objects(Vector2i(0,-1));
+            break;
+
+          case 't': // dvorak-down
+          case 'k': // down
+            move_objects(Vector2i(0,1));
+            break;
+
+          case 'h': // dvorak-left
+          case 'j': // left
+            move_objects(Vector2i(-1,0));
+            break;
+
+          case 'n': // dvorak-right
+          case 'l': // right
+            move_objects(Vector2i(1,0));
+            break;
+
+          default:
+            std::cout << "EditorViewport::on_key_pressed: " << int(c) << " " << (char)c << std::endl;
+            break;
+        }
+    }
 }
 
 // Draws all of the objects in the viewport and the background (if any)
@@ -482,6 +577,16 @@ EditorViewport::clear_selection()
     selected_objs[i]->unselect();
                 
   selected_objs.clear(); 
+}
+
+void
+EditorViewport::move_objects(const Vector2i& offset)
+{
+  for (unsigned i = 0; i < selected_objs.size(); i++)
+    {
+      Vector3f p = selected_objs[i]->get_pos(); 
+      selected_objs[i]->set_pos(Vector3f(p.x + offset.x, p.y + offset.y, p.z));
+    }
 }
 
 void

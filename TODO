@@ -186,19 +186,8 @@ Less Important:
 - implement proper tmpfile Support (save tmp levels to ~/.pingus/tmp/
   for backup purpose in case of editor crash or so)
 
-- keyboard shortcuts need to be implemented (use input framework, but
-  how without support for keymaps?)
-
-  a       - select all
-  shift+click - add object to selection/remove from selection
-  d       - duplicate
-  delete  - delete object
-  insert  - show/hide objectselector
-  cursor  - pixel width moves (alternative: hold a button for slow moves)
-  f       - hflip
-  shift+f - vflip
-  r       - rotate90
-  shift+r - rotate270
+- keyboard shortcuts need to be implemented with input framework, but
+  how without support for keymaps?
 
 - ObjectSelector need to support more object types, missing types:
   all kinds of traps, weather, special objects

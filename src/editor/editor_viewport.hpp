@@ -146,6 +146,8 @@ public:
   void raise_objects_to_top();
   void lower_objects_to_bottom();
 
+  void move_objects(const Vector2i& offset);
+
   Vector2i screen2world(int x, int y) const;
 
   void update_layout();
