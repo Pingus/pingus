@@ -384,19 +384,19 @@ ObjectProperties::set_objects(const std::vector<LevelObj*>& objs)
   std::string obj_type;
   if (objects.empty())
     {
-      type_label->set_text("Object:");
-      mesg_label->set_text("Nothing selected");
+      type_label->set_text(_("Object:"));
+      mesg_label->set_text(_("Nothing selected"));
       set_object(0);
     }
   else if (objects.size() > 1)
     {
-      type_label->set_text("Object: [Group]");
-      mesg_label->set_text("Group not supported");
+      type_label->set_text(_("Object: [Group]"));
+      mesg_label->set_text(_("Group not supported"));
       set_object(0);
     }
   else
     {
-      type_label->set_text("Object: " + objects.front()->get_section_name());
+      type_label->set_text(_("Object: ") + objects.front()->get_section_name());
       set_object(objects.front());
     }
 }

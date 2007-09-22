@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-22 00:35+0200\n"
+"POT-Creation-Date: 2007-09-22 03:17+0200\n"
 "PO-Revision-Date: 2003-08-24 21:08+0200\n"
 "Last-Translator: Skule Solvang <sk-so@online.no>\n"
 "Language-Team: no <sk-so@online.no>\n"
@@ -646,112 +646,124 @@ msgstr ""
 msgid "Rotate object -90 degree"
 msgstr ""
 
-#: src/editor/object_properties.cpp:40
+#: src/editor/object_properties.cpp:41 src/editor/object_properties.cpp:387
 msgid "Object:"
 msgstr ""
 
-#: src/editor/object_properties.cpp:41
+#: src/editor/object_properties.cpp:42 src/editor/object_properties.cpp:388
 msgid "Nothing selected"
 msgstr ""
 
-#: src/editor/object_properties.cpp:50
+#: src/editor/object_properties.cpp:51
 #, fuzzy
 msgid "Transparent"
 msgstr "-Oversetting"
 
-#: src/editor/object_properties.cpp:51
+#: src/editor/object_properties.cpp:52
 #, fuzzy
 msgid "Solid"
 msgstr "Slider"
 
-#: src/editor/object_properties.cpp:52
+#: src/editor/object_properties.cpp:53
 #, fuzzy
 msgid "Ground"
 msgstr "Lyd:"
 
-#: src/editor/object_properties.cpp:53
+#: src/editor/object_properties.cpp:54
 #, fuzzy
 msgid "Bridge"
 msgstr "Bridger"
 
-#: src/editor/object_properties.cpp:54
+#: src/editor/object_properties.cpp:55
 #, fuzzy
 msgid "Water"
 msgstr "Waiter"
 
-#: src/editor/object_properties.cpp:55
+#: src/editor/object_properties.cpp:56
 #, fuzzy
 msgid "Lava"
 msgstr "Gå ut?"
 
-#: src/editor/object_properties.cpp:56
+#: src/editor/object_properties.cpp:57
 msgid "Remove"
 msgstr ""
 
-#: src/editor/object_properties.cpp:61
+#: src/editor/object_properties.cpp:62
 #, fuzzy
 msgid "Direction:"
 msgstr "Valg:"
 
-#: src/editor/object_properties.cpp:63
+#: src/editor/object_properties.cpp:64
 msgid "Left"
 msgstr ""
 
-#: src/editor/object_properties.cpp:64
+#: src/editor/object_properties.cpp:65
 #, fuzzy
 msgid "Misc"
 msgstr "-Musikk"
 
-#: src/editor/object_properties.cpp:65
+#: src/editor/object_properties.cpp:66
 msgid "Right"
 msgstr ""
 
-#: src/editor/object_properties.cpp:70
+#: src/editor/object_properties.cpp:71
 msgid "ReleaseRate:"
 msgstr ""
 
-#: src/editor/object_properties.cpp:87
+#: src/editor/object_properties.cpp:88
 msgid "Para-X:"
 msgstr ""
 
-#: src/editor/object_properties.cpp:88
+#: src/editor/object_properties.cpp:89
 msgid "Para-Y:"
 msgstr ""
 
-#: src/editor/object_properties.cpp:96
+#: src/editor/object_properties.cpp:97
 msgid "Scroll-X:"
 msgstr ""
 
-#: src/editor/object_properties.cpp:97
+#: src/editor/object_properties.cpp:98
 msgid "Scroll-Y:"
 msgstr ""
 
-#: src/editor/object_properties.cpp:105
+#: src/editor/object_properties.cpp:106
 msgid "Owner Id:"
 msgstr ""
 
-#: src/editor/object_properties.cpp:109
+#: src/editor/object_properties.cpp:110
 msgid "Z-Pos:"
 msgstr ""
 
-#: src/editor/object_properties.cpp:116
+#: src/editor/object_properties.cpp:117
 msgid "Color:"
 msgstr ""
 
-#: src/editor/object_properties.cpp:128
+#: src/editor/object_properties.cpp:129
 msgid "Small Stars:"
 msgstr ""
 
-#: src/editor/object_properties.cpp:131
+#: src/editor/object_properties.cpp:132
 msgid "Middle Stars:"
 msgstr ""
 
-#: src/editor/object_properties.cpp:134
+#: src/editor/object_properties.cpp:135
 msgid "Large Stars:"
 msgstr ""
 
-#: src/editor/object_properties.cpp:142
+#: src/editor/object_properties.cpp:143
 msgid "Repeat:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:393
+msgid "Object: [Group]"
+msgstr ""
+
+#: src/editor/object_properties.cpp:394
+msgid "Group not supported"
+msgstr ""
+
+#: src/editor/object_properties.cpp:399
+msgid "Object: "
 msgstr ""
 
 #: src/editor/file_dialog.cpp:56

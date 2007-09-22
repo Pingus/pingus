@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-22 00:35+0200\n"
-"PO-Revision-Date: 2007-09-22 00:40+0200\n"
+"POT-Creation-Date: 2007-09-22 03:17+0200\n"
+"PO-Revision-Date: 2007-09-22 03:21+0200\n"
 "Last-Translator: David Philippi <david@torangan.de>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
 "de>, Giray Devlet <giray@devlet.cc>\n"
@@ -640,106 +640,120 @@ msgstr "Objekt um 90 Grad drehen"
 msgid "Rotate object -90 degree"
 msgstr "Objekt um -90 Grad drehen"
 
-#: src/editor/object_properties.cpp:40
+#: src/editor/object_properties.cpp:41 src/editor/object_properties.cpp:387
 msgid "Object:"
 msgstr "Objekt:"
 
-#: src/editor/object_properties.cpp:41
+#: src/editor/object_properties.cpp:42 src/editor/object_properties.cpp:388
 msgid "Nothing selected"
 msgstr "Nichts markiert"
 
-#: src/editor/object_properties.cpp:50
+#: src/editor/object_properties.cpp:51
 #, fuzzy
 msgid "Transparent"
-msgstr "-Übersetzung"
+msgstr "Transparent"
 
-#: src/editor/object_properties.cpp:51
+#: src/editor/object_properties.cpp:52
 msgid "Solid"
 msgstr "Solide"
 
-#: src/editor/object_properties.cpp:52
+#: src/editor/object_properties.cpp:53
 msgid "Ground"
 msgstr "Boden"
 
-#: src/editor/object_properties.cpp:53
+#: src/editor/object_properties.cpp:54
 msgid "Bridge"
 msgstr "Brücke"
 
-#: src/editor/object_properties.cpp:54
+#: src/editor/object_properties.cpp:55
 msgid "Water"
 msgstr "Wasser"
 
-#: src/editor/object_properties.cpp:55
+#: src/editor/object_properties.cpp:56
 msgid "Lava"
 msgstr "Lava"
 
-#: src/editor/object_properties.cpp:56
+#: src/editor/object_properties.cpp:57
 msgid "Remove"
 msgstr "Entfernen"
 
-#: src/editor/object_properties.cpp:61
+#: src/editor/object_properties.cpp:62
 msgid "Direction:"
 msgstr "Richtung:"
 
-#: src/editor/object_properties.cpp:63
+#: src/editor/object_properties.cpp:64
 msgid "Left"
 msgstr "Links"
 
-#: src/editor/object_properties.cpp:64
-msgid "Misc"
-msgstr "Gemisch"
-
 #: src/editor/object_properties.cpp:65
+msgid "Misc"
+msgstr "Gemischt"
+
+#: src/editor/object_properties.cpp:66
 msgid "Right"
 msgstr "Rechts"
 
-#: src/editor/object_properties.cpp:70
+#: src/editor/object_properties.cpp:71
 msgid "ReleaseRate:"
-msgstr "EinlassRate:"
-
-#: src/editor/object_properties.cpp:87
-msgid "Para-X:"
-msgstr ""
+msgstr "Einlass Rate:"
 
 #: src/editor/object_properties.cpp:88
-msgid "Para-Y:"
-msgstr ""
+msgid "Para-X:"
+msgstr "Para-X:"
 
-#: src/editor/object_properties.cpp:96
-msgid "Scroll-X:"
-msgstr ""
+#: src/editor/object_properties.cpp:89
+msgid "Para-Y:"
+msgstr "Para-Y:"
 
 #: src/editor/object_properties.cpp:97
-msgid "Scroll-Y:"
-msgstr ""
+msgid "Scroll-X:"
+msgstr "Scroll-X:"
 
-#: src/editor/object_properties.cpp:105
+#: src/editor/object_properties.cpp:98
+msgid "Scroll-Y:"
+msgstr "Scroll-Y:"
+
+#: src/editor/object_properties.cpp:106
 msgid "Owner Id:"
 msgstr "Besitzer Id:"
 
-#: src/editor/object_properties.cpp:109
+#: src/editor/object_properties.cpp:110
 msgid "Z-Pos:"
-msgstr ""
+msgstr "Z-Pos:"
 
-#: src/editor/object_properties.cpp:116
+#: src/editor/object_properties.cpp:117
 msgid "Color:"
 msgstr "Farbe:"
 
-#: src/editor/object_properties.cpp:128
+#: src/editor/object_properties.cpp:129
 msgid "Small Stars:"
 msgstr "Sterne (klein):"
 
-#: src/editor/object_properties.cpp:131
+#: src/editor/object_properties.cpp:132
 msgid "Middle Stars:"
 msgstr "Sterne (mittel):"
 
-#: src/editor/object_properties.cpp:134
+#: src/editor/object_properties.cpp:135
 msgid "Large Stars:"
 msgstr "Sterne (groß):"
 
-#: src/editor/object_properties.cpp:142
+#: src/editor/object_properties.cpp:143
 msgid "Repeat:"
 msgstr "Anzahl:"
+
+#: src/editor/object_properties.cpp:393
+#, fuzzy
+msgid "Object: [Group]"
+msgstr "Objekt: [Gruppe]"
+
+#: src/editor/object_properties.cpp:394
+msgid "Group not supported"
+msgstr "Gruppen nicht unterstützt"
+
+#: src/editor/object_properties.cpp:399
+#, fuzzy
+msgid "Object: "
+msgstr "Objekt: "
 
 #: src/editor/file_dialog.cpp:56
 msgid "Datadir"
@@ -1028,7 +1042,7 @@ msgstr "--- Leerer Platzhalter Level ---"
 
 #: data/levels/tutorial/placeholder.pingus:6
 msgid "This Level is not playable and EMPTY!"
-msgstr ""
+msgstr "Dieser Level ist leer und nicht spielbar"
 
 #: data/levels/tutorial/snow10-grumbel.pingus:5
 msgid "Panic Island (float/bash)"
@@ -1259,11 +1273,11 @@ msgstr ""
 
 #: data/worldmaps/tutorial.worldmap:4
 msgid "Tutorial Island"
-msgstr ""
+msgstr "Übungs Insel"
 
 #: data/worldmaps/tutorial.worldmap:6
 msgid "Learn the basics"
-msgstr ""
+msgstr "Lerne die Grundlagen"
 
 #: data/worldmaps/tutorial.worldmap:15
 msgid "The Journey Begins"
@@ -1274,7 +1288,6 @@ msgid "The Journey Continues"
 msgstr "Die Reise geht weiter"
 
 #: data/worldmaps/tutorial.worldmap:22
-#, fuzzy
 msgid ""
 "For a long time, the Pingus have lived happily in peace on the South Pole "
 "along with all the other animals. Everything was in balance and it seemed "
@@ -1287,7 +1300,6 @@ msgstr ""
 "glücklich und es schien, als würde dies niemals enden.\n"
 
 #: data/worldmaps/tutorial.worldmap:30
-#, fuzzy
 msgid ""
 "But then one day, things began to change slowly: the sky got darker and the "
 "earth got warmer. Firstly, they thought this was just a normal fluctuation "
@@ -1300,7 +1312,6 @@ msgstr ""
 "zu Jahr immer schlimmer."
 
 #: data/worldmaps/tutorial.worldmap:38
-#, fuzzy
 msgid ""
 "The snow began to melt away in a few areas and food became an issue. Other "
 "animals tried to leave the region to search for colder areas, but the Pingus "
@@ -1314,7 +1325,6 @@ msgstr ""
 "dieses Problem getan werden."
 
 #: data/worldmaps/tutorial.worldmap:46
-#, fuzzy
 msgid ""
 "So the circle of the eldest came together to decide what to do about it. "
 "They decided to send out an expedition around the world to find the cause of "
@@ -1327,7 +1337,6 @@ msgstr ""
 "bestand aus hunderten der mutigsten Pingus des ganzen Südpols."
 
 #: data/worldmaps/tutorial.worldmap:54
-#, fuzzy
 msgid ""
 "And they picked you to lead them on their journey around the world. Since "
 "the journey will be dangerous and difficult, your first goal is the Island "
@@ -1342,7 +1351,6 @@ msgstr ""
 "die in die Welt gesandt wurden."
 
 #: data/worldmaps/tutorial.worldmap:63
-#, fuzzy
 msgid ""
 "The island consists of many areas that are ideal to teach the Pingus their "
 "abilities. The Pingus can learn to build bridges, climb, bash and use many "
@@ -1355,7 +1363,6 @@ msgstr ""
 "benötigen werden."
 
 #: data/worldmaps/tutorial.worldmap:70
-#, fuzzy
 msgid ""
 "While there, you can practice your abilities in commanding and guiding the "
 "Pingus. You can also get familiar with all the abilities the Pingus provide "
@@ -1369,7 +1376,6 @@ msgstr ""
 "Reise um die Welt benötigen."
 
 #: data/worldmaps/tutorial.worldmap:78
-#, fuzzy
 msgid ""
 "Now that you and the Pingus have arrived at Tutorial Island it is time to "
 "take command and begin your mission. Good Luck!"
@@ -1380,7 +1386,6 @@ msgstr ""
 "Viel Glück!"
 
 #: data/worldmaps/tutorial.worldmap:88
-#, fuzzy
 msgid ""
 "Now after you and the Pingus have learned the basics and practiced a bit it "
 "is time to move on and begin the journey into the world. Since the ice floe "
@@ -1396,7 +1401,6 @@ msgstr ""
 "Reise zu begleiten.\n"
 
 #: data/worldmaps/tutorial.worldmap:97
-#, fuzzy
 msgid ""
 "But as the eldest have said, the Tutorial Island provides not only a good "
 "way to practice, but it is also the starting point into the world. After "
@@ -1410,7 +1414,6 @@ msgstr ""
 "gutes Material, um ein Floß zu bauen.\n"
 
 #: data/worldmaps/tutorial.worldmap:106
-#, fuzzy
 msgid ""
 "So the Pingus set out and constructed some large rafts, enough to carry them "
 "all. After also packing a bunch of provisions they were prepared to start "
@@ -1424,7 +1427,6 @@ msgstr ""
 "Bereiche der Welt zu betreten.\n"
 
 #: data/worldmaps/tutorial.worldmap:114
-#, fuzzy
 msgid ""
 "So the Pingus sit on their raft, worrying about what's to come and where to "
 "go, while floating into the sunset.  To be continued..."
