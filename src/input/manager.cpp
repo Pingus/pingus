@@ -66,6 +66,14 @@ Manager::Manager()
   desc.add_button("action-10-button",    ACTION_10_BUTTON);
 }
 
+Manager::~Manager()
+{
+  for(Drivers::iterator i = drivers.begin(); i != drivers.end(); ++i)
+    {
+      delete *i;
+    }
+}
+
 static std::string get_driver_part(const std::string& fullname)
 {
   std::string::size_type i = fullname.find_first_of(':');

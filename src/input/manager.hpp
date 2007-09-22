@@ -38,6 +38,7 @@ private:
 
 public:
   Manager();
+  ~Manager();
 
   void update(float delta);
 
