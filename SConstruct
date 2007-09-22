@@ -353,7 +353,7 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
         env['optional_sources'] += ['src/input/usbmouse_driver.cpp']
     
     if not env['with_wiimote']:
-        reports += "  * Wiimote support: disable\n"        
+        reports += "  * Wiimote support: disabled\n"        
     elif config.CheckLibWithHeader('cwiid', 'cwiid.h', 'c++'):
         reports += "  * Wiimote support: yes\n"
         config_h_defines  += [('HAVE_CWIID', 1)]
@@ -364,7 +364,7 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
         reports += "  * Wiimote support: no (libcwiid or cwiid.h not found)\n"
 
     if not env['with_xinput']:
-        reports += "  * XInput support: disable\n"
+        reports += "  * XInput support: disabled\n"
     elif not config.CheckLibWithHeader('Xi', 'X11/extensions/XInput.h', 'c++'):
         reports += "  * XInput support: no (library Xi not found)\n" ## FIXME: Need to set a define
     else:
@@ -406,6 +406,7 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
 
     config_h = open('config.h', 'w')
     config_h.write('#define VERSION "0.7.1"\n')
+    config_h.write('#define ENABLE_BINRELOC 1\n')
     config_h.write('#define ICONV_CONST\n') # FIXME: make a check for this
     for (v,k) in config_h_defines:
         config_h.write('#define %s %s\n' % (v, k))

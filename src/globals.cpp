@@ -27,7 +27,6 @@ bool        music_enabled                   = true;
 bool        sound_enabled                   = true;
 bool        enable_demo_recording           = false;
 bool        play_demo                       = false;
-bool        cursor_enabled                  = false;
 bool        fast_mode                       = false;
 bool        maintainer_mode                 = false;
 std::string demo_file;
@@ -39,8 +38,6 @@ int         screen_width                    = 800;
 int         screen_height                   = 600;
 bool        draw_collision_map              = false;
 bool        swcursor_enabled                = false;
-std::string config_file;
-bool        max_cpu_usage                   = true;
 bool        action_help                     = true;
 bool        show_input_debug_screen         = false;
 bool        render_preview                  = false;
@@ -54,7 +51,7 @@ std::string global_username;
 std::string global_email;
 std::string default_language                = "en";
 
-int         pingus_debug_flags              = 0;
+unsigned int pingus_debug_flags              = 0;
 
 bool        fullscreen_enabled              = false;
 

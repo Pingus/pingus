@@ -37,7 +37,6 @@ extern bool        sound_enabled;                   ///< -s, --enable-sound
 extern bool        enable_demo_recording;
 extern bool        play_demo;                       ///< --play-demo
 
-extern bool        cursor_enabled;                  ///< --enable-cursor
 extern bool        debug_actions;                   ///< --debug-actions
 extern bool        fast_mode;                       ///< --fast
 extern bool        maintainer_mode;                 ///< --maintainer-mode
@@ -52,10 +51,8 @@ extern int         screen_height;                   ///<
 extern bool        draw_collision_map;              ///<
 extern bool        swcursor_enabled;                ///< --enable-swcursor
 
-extern std::string config_file;                     ///< --config-file
 extern std::string controller_file;                 ///< --controller
 
-extern bool        max_cpu_usage;                   ///< --max-cpu-usage
 extern bool        use_opengl;                      ///< --use-opengl
 extern bool        action_help;                     ///< --action-help
 extern bool        show_input_debug_screen;         ///<
@@ -64,7 +61,7 @@ extern bool        render_preview;                  ///<
 extern std::string global_username;                 ///< The name of the currently logged in user
 extern std::string global_email;                    ///< The email address of the currently logged in user
 extern std::string default_language;                ///< The default language, which is used when the env var LANG is not set
-extern int         pingus_debug_flags;              ///< Set some bits in this thing to get debug infos
+extern unsigned int pingus_debug_flags;              ///< Set some bits in this thing to get debug infos
 
 extern int         min_frame_skip;
 extern int         max_frame_skip;

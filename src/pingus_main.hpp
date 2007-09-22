@@ -23,31 +23,16 @@
 #include <string>
 #include "pingus.hpp"
 #include "SDL.h"
+#include "pingus_options.hpp"
 #include "pathname.hpp"
 
 void segfault_handler(int);
 
-
 class PingusMain
 {
 private:
-  bool    blitter_test;
-  bool    no_config_file;
-  bool    show_credits;
-  bool	  editor;
+  PingusOptions cmd_options;
 
-  /// the name of the exe: argv[0]
-  std::string executable_name;
-  Pathname levelfile;
-  Pathname fontfile;
-
-  /** Filename to which the level preview should be saved */
-  std::string preview_file;
-
-  std::string worldmapfile;
-  std::string resolution;
-  int refresh_rate;
-  
 public:
   PingusMain();
   virtual ~PingusMain();
@@ -62,8 +47,8 @@ private:
       controll. */
   void start_game();
 
-  void check_args(int argc, char** argv);
-  void quick_check_args(int argc, char** argv);
+  void parse_args(int argc, char** argv);
+  void apply_args();
   void read_rc_file(void);
 
   void print_greeting_message();

@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <sstream>
 #include "globals.hpp"
 #include "system.hpp"
 #include "debug.hpp"
@@ -49,39 +50,11 @@ PathManager::complete (const std::string& relative_path)
   return comp_path;
 }
 
-bool
-PathManager::find_path(const std::list<std::string>& file_list)
-{
-  for (PathIter i = path_list.begin (); !path_found && i != path_list.end (); ++i)
-    {
-      pout(PINGUS_DEBUG_PATHMGR) << "PathManager: Checking: " << *i << std::endl;
-
-      bool found_file = true;
-      for (PathIter f = file_list.begin (); found_file && f != file_list.end (); ++f)
-	{
-	  if (!System::exist(*i + "/" + *f))
-	    found_file = false;
-	}
-      if (found_file)
-	{
-	  path_found = true;
-	  base_path = *i;
-
-	  pout(PINGUS_DEBUG_PATHMGR) << "PathManager: Using base_path: " << base_path << std::endl;
-
-	  return true;
-	}
-    }
-
-  pout(PINGUS_DEBUG_PATHMGR) << "PathManager: No base path found" << std::endl;
-
-  return false;
-}
-
 /** Search for a path which contains the file 'file' */
 bool
 PathManager::find_path (const std::string& file)
 {
+  std::ostringstream out;
   for (PathIter i = path_list.begin (); !path_found && i != path_list.end (); ++i)
     {
       if (System::exist(*i + "/" + file))
@@ -89,13 +62,16 @@ PathManager::find_path (const std::string& file)
 	  path_found = true;
 	  base_path = *i;
 
-	  pout(PINGUS_DEBUG_PATHMGR) << "PathManager: Using base_path: " << base_path << std::endl;
-
 	  return true;
 	}
+      else
+        {
+          out << "PathManager: Checking for file: '" << *i << "/" << file << "' failed" << std::endl;
+        }
     }
 
-  pout(PINGUS_DEBUG_PATHMGR) << "PathManager: No base path found" << std::endl;
+  std::cout << out.str();
+  std::cout << "PathManager: No base path found" << std::endl;
 
   return false;
 }

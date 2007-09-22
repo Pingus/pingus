@@ -330,10 +330,6 @@ Config::set_value(const std::string& valueid, const std::string& value)
     {
       Cheat::unlimited_actions = str_to_bool(value);
     }
-  else if (valueid == "cursor-enabled")
-    {
-      cursor_enabled = str_to_bool(value);
-    }
   else if (valueid == "auto-scrolling")
     {
       auto_scrolling = str_to_bool(value);

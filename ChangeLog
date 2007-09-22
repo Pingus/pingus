@@ -1,3 +1,132 @@
+2007-09-22 04:52  jsalmon3
+
+	* TODO, src/gui/screen_manager.cpp:
+	  pop_screen can be called more than once when pressing escape
+	  repeatedly
+
+2007-09-22 04:29  jsalmon3
+
+	* src/editor/editor_viewport.cpp:
+	  Fixed memory leak
+
+2007-09-22 04:08  jsalmon3
+
+	* src/editor/object_selector_list.cpp,
+	  src/editor/object_selector_list.hpp:
+	  Fixed memory leak
+
+2007-09-22 04:04  jsalmon3
+
+	* data/images/entrances/cloudent.png,
+	  data/images/textures/thunderstorm.png:
+	  SDL_image does not support greyscale images
+
+2007-09-22 03:04  grumbel
+
+	* TODO, data/levels/playable/stone14-grumbel.pingus:
+	  - new test level
+
+2007-09-22 02:34  jsalmon3
+
+	* src/input/core_driver.cpp:
+	  Fixed mem leaks
+
+2007-09-22 02:27  jsalmon3
+
+	* src/input/control.hpp:
+	  Fixed memory leaks
+
+2007-09-22 02:19  jsalmon3
+
+	* src/input/manager.cpp, src/input/manager.hpp:
+	  Fixed memory leak
+
+2007-09-22 02:15  grumbel
+
+	* TODO:
+	  - reordered TODO for the 0.7.2 release
+
+2007-09-22 02:03  jsalmon3
+
+	* src/input/controller.cpp, src/input/controller.hpp:
+	  Fixed memory leak
+
+2007-09-22 02:00  grumbel
+
+	* data/images/core/buttons/armageddon_anim.png:
+	  - a few stray pixel fixed
+
+2007-09-22 01:52  jsalmon3
+
+	* src/gui/group_component.cpp, src/gui/group_component.hpp:
+	  Fixed memory leak
+
+2007-09-22 01:47  grumbel
+
+	* TODO, src/actions/basher.cpp, src/actions/bomber.cpp,
+	  src/actions/bridger.cpp, src/actions/digger.cpp,
+	  src/actions/digger.hpp, src/actions/miner.cpp,
+	  src/actions/miner.hpp, src/collision_mask.cpp,
+	  src/collision_mask.hpp, src/worldobjs/groundpiece.cpp:
+	  - added separate col/gfx maps for the actions again
+
+2007-09-22 01:23  grumbel
+
+	* data/po/cs.po, data/po/da.po, data/po/de.po, data/po/es.po,
+	  data/po/fi.po, data/po/fr.po, data/po/it.po, data/po/nb.po,
+	  data/po/nl.po, data/po/nn.po, data/po/pingus.pot, data/po/pt.po,
+	  data/po/sr.po, data/po/sv.po, data/po/tr.po,
+	  src/editor/object_properties.cpp:
+	  - some more translatable strings
+
+2007-09-22 01:13  grumbel
+
+	* src/editor/editor_viewport.cpp, src/editor/object_properties.cpp:
+	  - fixed memleak
+	  - fixed missing include
+
+2007-09-22 01:09  grumbel
+
+	* src/editor/file_dialog.cpp, src/editor/object_properties.cpp,
+	  src/editor/object_selector.cpp, src/editor/panel.cpp,
+	  src/pingus_menu.cpp:
+	  - gettext'ed some strings in the editor
+	  - removed the sub-text switching in the main menu
+
+2007-09-22 01:07  grumbel
+
+	* data/po/cs.po, data/po/da.po, data/po/de.po, data/po/es.po,
+	  data/po/fi.po, data/po/fr.po, data/po/it.po, data/po/nb.po,
+	  data/po/nl.po, data/po/nn.po, data/po/pingus.pot, data/po/pt.po,
+	  data/po/sr.po, data/po/sv.po, data/po/tr.po:
+	  - updated language files
+
+2007-09-21 20:42  grumbel
+
+	* src/fps_counter.cpp:
+	  - changed fps counter position
+
+2007-09-21 20:30  grumbel
+
+	* ChangeLog, TODO:
+	  Updated Changelog
+
+2007-09-21 20:20  grumbel
+
+	* data/images/fonts/verdana11-iso-8859-1.font,
+	  data/images/fonts/verdana11-iso-8859-2.font,
+	  data/images/fonts/verdana11-iso-8859-2.png,
+	  data/images/fonts/verdana11-iso-8859-9.font,
+	  data/images/fonts/verdana11-iso-8859-9.png:
+	  - added verdana11 fonts for iso-8859-2/9 (somewhat broken)
+
+2007-09-21 20:06  grumbel
+
+	* TODO, data/images/core/editor/play.png,
+	  src/editor/editor_viewport.cpp, src/editor/editor_viewport.hpp:
+	  - added keyboard shortcuts to the editor (the simple way, not
+	  using input subsystem)
+
 2007-09-21 19:09  grumbel
 
 	* contrib/unicode-mes1.rb:

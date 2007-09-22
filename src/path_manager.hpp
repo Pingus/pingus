@@ -38,10 +38,6 @@ public:
   PathManager ();
   ~PathManager ();
 
-  /** Search for a path which contains all the files given in
-      file_list */
-  bool find_path (const std::list<std::string>& file_list);
-
   /** Search for a path which contains the file 'file' */
   bool find_path (const std::string& file);
 
@@ -53,6 +49,7 @@ public:
   void add_path (const std::string& path);
 
   std::string get_base_path () { return base_path; }
+  void set_base_path (const std::string& d) { base_path = d; }
 
   /** Complete a releative path to the absolute path, the returned
       path contains a trailing slash */

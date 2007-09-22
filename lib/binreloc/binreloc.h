@@ -13,6 +13,8 @@
 #ifndef __BINRELOC_H__
 #define __BINRELOC_H__
 
+#include "config.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */

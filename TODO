@@ -3,13 +3,15 @@ Release Checklist:
 
 - turn on fullscreen at default (do we really want this with
   fullscreen key documented? -> Nope)
-y
+
 - make sure all important strings are translatable
 
 - run ./extract-po.sh && ./update-po.sh
 
-- update ChangeLog
+- update ChangeLog: svn2cl --break-before-msg
 
+- make sure that the game still runs after install.sh
+
 Stuff to do at all times:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -88,6 +90,28 @@ Roadmap for Pingus 0.7.2
 
 Important:
 ==========
+
+- remove verbose
+
+- option menu:
+
+  ----------------------------------
+  Language:                 [German]
+  ----------------------------------
+  Fast-Mode:                  Yes/No
+  Fullscreen:                 Yes/No
+  Allow Window Resize:        Yes/No
+  Resolution:              [800x600]
+  Frame Skip:              [Integer]
+  Software Cursor:          [Yes/No] (could add different styled ones)
+  ----------------------------------
+  Master Volume:       [#######    ]
+  Music Volume:        [####       ]
+  Sound FX Volume:     [########## ]
+  ----------------------------------
+  Scroll Mode: [DragDrop/Rubberband]
+  Enable Autoscrolling: [always, only in fullscreen, never]
+  ----------------------------------
 
 - add dynamic resize
 
