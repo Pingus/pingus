@@ -423,11 +423,13 @@ EditorViewport::delete_selected_objects()
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
     (*i)->remove();
   
-  selected_objs.clear();
-
   objs.erase(std::remove_if(objs.begin(), objs.end(), boost::mem_fn(&LevelObj::is_removed)),
              objs.end());
 
+  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+    delete (*i);
+
+  selected_objs.clear();
   selection_changed(selected_objs);
 }
 

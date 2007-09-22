@@ -24,6 +24,7 @@
 #include "level_objs.hpp"
 #include "fonts.hpp"
 #include "label.hpp"
+#include "gettext.h"
 #include "gui_style.hpp"
 #include "groundtype.hpp"
 #include "combobox.hpp"
