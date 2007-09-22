@@ -98,6 +98,12 @@ public:
     : Button(parent)
   {}
 
+  ~ButtonGroup()
+  {
+    for(std::vector<Button*>::iterator i = buttons.begin(); i != buttons.end(); ++i)
+      delete *i;
+  }
+
   void add_button(Button* button) {
     buttons.push_back(button);
   }
@@ -228,6 +234,12 @@ public:
     : Axis(parent)
   {}
 
+  ~AxisGroup()
+  {
+    for(std::vector<Axis*>::iterator i = axes.begin(); i != axes.end(); ++i)
+      delete *i;
+  }
+
   void add_axis(Axis* axis) {
     axes.push_back(axis);
   }
@@ -280,6 +292,12 @@ public:
     : Pointer(parent)
   {}
 
+  ~PointerGroup()
+  {
+    for(std::vector<Pointer*>::iterator i = pointer.begin(); i != pointer.end(); ++i)
+      delete *i;
+  }
+
   void update(Control* p) {
     Pointer* pointer = dynamic_cast<Pointer*>(p);
     assert(pointer);
@@ -328,6 +346,12 @@ public:
   ScrollerGroup(Control* parent)
     : Scroller(parent)
   {}
+
+  ~ScrollerGroup()
+  {
+    for(std::vector<Scroller*>::iterator i = scrollers.begin(); i != scrollers.end(); ++i)
+      delete *i;
+  }
 
   void update(float delta) {
     for(std::vector<Scroller*>::iterator i = scrollers.begin(); i != scrollers.end(); ++i)
@@ -387,6 +411,12 @@ public:
   KeyboardGroup(Control* parent)
     : Keyboard(parent)
   {}
+
+  ~KeyboardGroup()
+  {
+    for(std::vector<Keyboard*>::iterator i = keyboards.begin(); i != keyboards.end(); ++i)
+      delete *i;
+  }
 
   void update(float delta) {
   }
