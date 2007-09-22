@@ -50,6 +50,11 @@ EditorViewport::EditorViewport(EditorScreen* e, const Rect& rect_)
 EditorViewport::~EditorViewport ()
 {
   delete drawing_context;
+
+  for(std::vector<LevelObj*>::iterator i = objs.begin(); i != objs.end(); ++i)
+    {
+      delete *i;
+    }
 }
 
 void
