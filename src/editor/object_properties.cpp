@@ -37,8 +37,8 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
   : GUI::GroupComponent(rect, false),
     editor(editor_)
 {
-  add(type_label = new Label(Rect(Vector2i(4, 4), Size(120, 20)), "Object:"), true);
-  add(mesg_label = new Label(Rect(Vector2i(10, 0), Size(180, 20)), "Nothing selected"), true);
+  add(type_label = new Label(Rect(Vector2i(4, 4), Size(120, 20)), _("Object:")), true);
+  add(mesg_label = new Label(Rect(Vector2i(10, 0), Size(180, 20)), _("Nothing selected")), true);
     
   Rect label_rect(10,0, 80, 20);
   Rect box_rect(80,0, 190, 20);
@@ -47,27 +47,27 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
   add(gptype_label = new Label(label_rect, "GPType:"), true);
   add(gptype_type  = new Combobox(box_rect), true);
 
-  gptype_type->add(Groundtype::GP_TRANSPARENT, "Transparent");
-  gptype_type->add(Groundtype::GP_SOLID,       "Solid");
-  gptype_type->add(Groundtype::GP_GROUND,      "Ground");
-  gptype_type->add(Groundtype::GP_BRIDGE,      "Bridge");
-  gptype_type->add(Groundtype::GP_WATER,       "Water");
-  gptype_type->add(Groundtype::GP_LAVA,        "Lava");
-  gptype_type->add(Groundtype::GP_REMOVE,      "Remove");
+  gptype_type->add(Groundtype::GP_TRANSPARENT, _("Transparent"));
+  gptype_type->add(Groundtype::GP_SOLID,       _("Solid"));
+  gptype_type->add(Groundtype::GP_GROUND,      _("Ground"));
+  gptype_type->add(Groundtype::GP_BRIDGE,      _("Bridge"));
+  gptype_type->add(Groundtype::GP_WATER,       _("Water"));
+  gptype_type->add(Groundtype::GP_LAVA,        _("Lava"));
+  gptype_type->add(Groundtype::GP_REMOVE,      _("Remove"));
   gptype_type->set_selected_item(Groundtype::GP_GROUND);
 
   gptype_type->on_select.connect(boost::bind(&ObjectProperties::on_gptype_change, this, _1));
   
-  add(entrance_direction_label = new Label(label_rect, "Direction:"), true);
+  add(entrance_direction_label = new Label(label_rect, _("Direction:")), true);
   add(entrance_direction = new Combobox(box_rect), true);
-  entrance_direction->add(0, "Left");
-  entrance_direction->add(1, "Misc");
-  entrance_direction->add(2, "Right");
+  entrance_direction->add(0, _("Left"));
+  entrance_direction->add(1, _("Misc"));
+  entrance_direction->add(2, _("Right"));
   entrance_direction->set_selected_item(0);
 
   entrance_direction->on_select.connect(boost::bind(&ObjectProperties::on_entrance_direction_change, this, _1));
   
-  add(release_rate_label = new Label(label_rect, "ReleaseRate:"), true);
+  add(release_rate_label = new Label(label_rect, _("ReleaseRate:")), true);
   add(release_rate_inputbox = new Inputbox(box_rect), true);
 
   release_rate_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_release_rate_change, this, _1));
@@ -84,8 +84,8 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
   stretch_x_checkbox->on_change.connect(boost::bind(&ObjectProperties::on_stretch_x_change, this, _1));
   stretch_y_checkbox->on_change.connect(boost::bind(&ObjectProperties::on_stretch_y_change, this, _1));
   
-  add(para_x_label = new Label(label_rect, "Para-X:"), true);
-  add(para_y_label = new Label(label_rect, "Para-Y:"), true);
+  add(para_x_label = new Label(label_rect, _("Para-X:")), true);
+  add(para_y_label = new Label(label_rect, _("Para-Y:")), true);
 
   add(para_x_inputbox = new Inputbox(box_rect), true);
   add(para_y_inputbox = new Inputbox(box_rect), true);
@@ -93,8 +93,8 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
   para_x_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_para_x_change, this, _1));
   para_y_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_para_y_change, this, _1));
   
-  add(scroll_x_label = new Label(label_rect, "Scroll-X:"), true);
-  add(scroll_y_label = new Label(label_rect, "Scroll-Y:"), true);
+  add(scroll_x_label = new Label(label_rect, _("Scroll-X:")), true);
+  add(scroll_y_label = new Label(label_rect, _("Scroll-Y:")), true);
 
   add(scroll_x_inputbox = new Inputbox(box_rect), true);
   add(scroll_y_inputbox = new Inputbox(box_rect), true);
@@ -102,18 +102,18 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
   scroll_x_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_scroll_x_change, this, _1));
   scroll_y_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_scroll_y_change, this, _1));
   
-  add(owner_label    = new Label(label_rect, "Owner Id:"), true);
+  add(owner_label    = new Label(label_rect, _("Owner Id:")), true);
   add(owner_inputbox = new Inputbox(box_rect), true);
   owner_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_owner_change, this, _1));
   
-  add(pos_z_label    = new Label(label_rect, "Z-Pos:"), true);
+  add(pos_z_label    = new Label(label_rect, _("Z-Pos:")), true);
   add(pos_z_inputbox = new Inputbox(box_rect), true);
   pos_z_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_pos_z_change, this, _1));
   // ___________________________________________________________________
   //  
   Size color_s(box_rect.get_width()/4, box_rect.get_height());
 
-  add(color_label = new Label(label_rect, "Color:"), true);
+  add(color_label = new Label(label_rect, _("Color:")), true);
   add(color_r_inputbox = new Inputbox(Rect(Vector2i(box_rect.left + 0*color_s.width, box_rect.top), color_s)), true);
   add(color_g_inputbox = new Inputbox(Rect(Vector2i(box_rect.left + 1*color_s.width, box_rect.top), color_s)), true);
   add(color_b_inputbox = new Inputbox(Rect(Vector2i(box_rect.left + 2*color_s.width, box_rect.top), color_s)), true);
@@ -125,13 +125,13 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
   color_a_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_color_a_change, this, _1));
   // ___________________________________________________________________
   //
-  add(small_stars_label    = new Label(label_rect, "Small Stars:"), true);
+  add(small_stars_label    = new Label(label_rect, _("Small Stars:")), true);
   add(small_stars_inputbox = new Inputbox(box_rect), true);
 
-  add(middle_stars_label    = new Label(label_rect, "Middle Stars:"), true);
+  add(middle_stars_label    = new Label(label_rect, _("Middle Stars:")), true);
   add(middle_stars_inputbox = new Inputbox(box_rect), true);
 
-  add(large_stars_label    = new Label(label_rect, "Large Stars:"), true);
+      add(large_stars_label    = new Label(label_rect, _("Large Stars:")), true);
   add(large_stars_inputbox = new Inputbox(box_rect), true);
 
   small_stars_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_small_stars_change, this, _1));
@@ -139,7 +139,7 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
   large_stars_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_large_stars_change, this, _1));
   // ___________________________________________________________________
   //
-  add(repeat_label    = new Label(label_rect, "Repeat:"), true);
+  add(repeat_label    = new Label(label_rect, _("Repeat:")), true);
   add(repeat_inputbox = new Inputbox(box_rect), true);
   repeat_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_repeat_change, this, _1));
 

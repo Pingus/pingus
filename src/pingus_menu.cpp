@@ -243,13 +243,11 @@ PingusMenu::draw_foreground(DrawingContext& gc)
                 "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are\n"
                 "welcome to redistribute it under certain conditions; see the file COPYING for details.\n");
 
-  if (hint.empty())
-    {
-      gc.print_center(Fonts::pingus_small, Display::get_width() / 2,
-                      Display::get_height() - Fonts::pingus_small.get_height(),
-                      help);
-    }
-  else
+  gc.print_center(Fonts::pingus_small, Display::get_width() / 2,
+                  Display::get_height() - Fonts::pingus_small.get_height(),
+                  help);
+
+  if (0)
     {
       gc.print_center(Fonts::pingus_small, Display::get_width() / 2,
                       Display::get_height() - Fonts::pingus_small.get_height(),

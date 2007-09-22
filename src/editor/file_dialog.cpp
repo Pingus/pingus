@@ -53,15 +53,15 @@ FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect, Mode mode_)
                            "|\n\\/");
 
   datadir_button = new Button(Rect(Vector2i(4, rect.get_height() - 4 - 30),
-                                   Size(100, 30)), "Datadir");
+                                   Size(100, 30)), _("Datadir"));
   userdir_button = new Button(Rect(Vector2i(4 + 110, rect.get_height() - 4 - 30),
-                                   Size(100, 30)), "Userdir");
+                                   Size(100, 30)), _("Userdir"));
   
   open_button = new Button(Rect(Vector2i(rect.get_width() - 104, rect.get_height() - 4 - 30),
-                                Size(100, 30)), mode == LOAD ? "Open" : "Save");
+                                Size(100, 30)), mode == LOAD ? _("Open") : _("Save"));
   
   cancel_button = new Button(Rect(Vector2i(rect.get_width() - 104 - 104, rect.get_height() - 4 - 30),
-                                  Size(100, 30)), "Cancel");
+                                  Size(100, 30)), _("Cancel"));
   
   up_button->on_click.connect(boost::bind(&FileDialog::on_up, this));
   down_button->on_click.connect(boost::bind(&FileDialog::on_down, this));
@@ -72,8 +72,8 @@ FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect, Mode mode_)
   open_button->on_click.connect(boost::bind(&FileDialog::on_open, this));
   cancel_button->on_click.connect(boost::bind(&FileDialog::on_cancel, this));
 
-  add(filename_label = new Label(Rect(6, 4+30, 4 + 60, 26+30), "Filename:"), true);
-  add(pathname_label = new Label(Rect(6, 4+60, 4 + 60, 26+60), "Pathname:"), true);
+  add(filename_label = new Label(Rect(6, 4+30, 4 + 60, 26+30), _("Filename:")), true);
+  add(pathname_label = new Label(Rect(6, 4+60, 4 + 60, 26+60), _("Pathname:")), true);
   
   add(filename_inputbox = new Inputbox(Rect(4 + 60, 4+30, rect.get_width()-4, 26+30)), true);
   add(pathname_inputbox = new Inputbox(Rect(4 + 60, 4+60, rect.get_width()-4, 26+60)), true);

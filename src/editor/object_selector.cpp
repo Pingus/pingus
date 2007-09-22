@@ -21,6 +21,7 @@
 #include "gui/display.hpp"
 #include "gui_style.hpp"
 #include "sprite.hpp"
+#include "gettext.h"
 #include "math/vector2i.hpp"
 #include "editor_screen.hpp"
 #include "display/drawing_context.hpp"
@@ -303,20 +304,20 @@ ObjectSelector::ObjectSelector(EditorScreen* editor_, const Rect& rect_)
   weather_set    = create_weather();
   worldobj_set   = create_worldobj();
 
-  add_button("core/editor/obj_entrance",   "Entrance", entrance_set);
-  add_button("core/editor/obj_gp_ground",  "Groundpiece (ground)", gp_ground_set);
-  add_button("core/editor/obj_gp_solid",   "Groundpiece (solid)", gp_solid_set);
-  add_button("core/editor/obj_gp_bridge",  "Groundpiece (bridge)", gp_bridge_set);
-  add_button("core/editor/obj_gp_transparent", "Groundpiece (transparent)", gp_transparent_set);
-  add_button("core/editor/obj_gp_remove",  "Groundpiece (remove)", gp_remove_set);
-  add_button("core/editor/obj_hotspot",    "Hotspot", hotspot_set);
-  add_button("core/editor/obj_background", "Background", background_set);
+  add_button("core/editor/obj_entrance",   _("Entrance"), entrance_set);
+  add_button("core/editor/obj_gp_ground",  _("Groundpiece (ground)"), gp_ground_set);
+  add_button("core/editor/obj_gp_solid",   _("Groundpiece (solid)"), gp_solid_set);
+  add_button("core/editor/obj_gp_bridge",  _("Groundpiece (bridge)"), gp_bridge_set);
+  add_button("core/editor/obj_gp_transparent", _("Groundpiece (transparent)"), gp_transparent_set);
+  add_button("core/editor/obj_gp_remove",  _("Groundpiece (remove)"), gp_remove_set);
+  add_button("core/editor/obj_hotspot",    _("Hotspot"), hotspot_set);
+  add_button("core/editor/obj_background", _("Background"), background_set);
   // -------------------------------
-  add_button("core/editor/obj_exit",     "Exit", exit_set);
-  add_button("core/editor/obj_liquid",   "Liquid", liquid_set);
-  add_button("core/editor/obj_trap",     "Trap", trap_set);
-  add_button("core/editor/obj_weather",  "Weather", weather_set);
-  add_button("core/editor/obj_worldobj", "Special Object", worldobj_set);
+  add_button("core/editor/obj_exit",     _("Exit"), exit_set);
+  add_button("core/editor/obj_liquid",   _("Liquid"), liquid_set);
+  add_button("core/editor/obj_trap",     _("Trap"), trap_set);
+  add_button("core/editor/obj_weather",  _("Weather"), weather_set);
+  add_button("core/editor/obj_worldobj", _("Special Object"), worldobj_set);
 }
 
 ObjectSelector::~ObjectSelector()
