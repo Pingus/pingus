@@ -45,6 +45,11 @@ ObjectSelectorList::ObjectSelectorList(EditorScreen* editor_, ObjectSelector* ob
 {  
 }
 
+ObjectSelectorList::~ObjectSelectorList()
+{
+  delete drawing_context;
+}
+
 void
 ObjectSelectorList::draw(DrawingContext& parent_gc)
 {

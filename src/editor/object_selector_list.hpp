@@ -73,6 +73,7 @@ private:
 
 public:
   ObjectSelectorList(EditorScreen* editor_, ObjectSelector* object_selector_, const Rect& rect);
+  ~ObjectSelectorList();
 
   void on_primary_button_press (int x, int y);
   void on_primary_button_release (int x, int y);
