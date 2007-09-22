@@ -31,6 +31,7 @@ class GroupComponent : public RectComponent
 private:
   typedef std::vector<Component*> Components;
   Components     children;
+  Components     delete_children;
   DrawingContext drawing_context;
 
   /** Used to detect enter/leave events */

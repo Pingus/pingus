@@ -35,6 +35,10 @@ GroupComponent::GroupComponent(const Rect& rect, bool clip)
 
 GroupComponent::~GroupComponent()
 {
+  for(Components::iterator i = delete_children.begin(); i != delete_children.end(); ++i)
+    {
+      delete *i;
+    }
 }
   	
 void
@@ -246,6 +250,8 @@ GroupComponent::add(Component* comp, bool delete_comp)
 {
   comp->set_parent(this);
   children.push_back(comp);
+  if (delete_comp)
+    delete_children.push_back(comp);
 }
 
 void
