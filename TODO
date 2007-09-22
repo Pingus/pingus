@@ -51,8 +51,6 @@ Roadmap for Pingus 0.8.0:
 
 - split screen multiplayer
 
-- editor isn't working
-
 - rework the UI, either go glas-like or use the blackbord style 
 
 - Font::draw() origin only works properly for left, right and center, breaks with multiline text
@@ -85,13 +83,54 @@ Roadmap for Pingus 0.8.0:
   the same purpose? Problem: Groundpieces all have the same z-level,
   the editor doesn't handle that and allows insertions inbetween
 
-Roadmap for Pingus 0.7.1
+Roadmap for Pingus 0.7.2
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Important:
 ==========
 
-- all done
+- resource system needs a review/rewrite
+
+- "core/misc/404sprite" should be returned for missing graphics
+
+- main menu crashes when you click a little wildely:
+
+  decide whether to ignore cached_action != CA_NONE in
+  ScreenManager::pop_screen. This causes the game to crash if [ESC] is
+  quickly pressed repeatedly
+
+- disable fade-over when fast-mode is active
+
+- rewrite Config file support, make game automatically write a default
+  config file, use s-expr
+
+- level converter has a bug that causes some object types to be
+  ignored (startpos and likely the other more excotic worldobj things)
+
+- level converter writes 0/1 instead of #t/#f
+
+- bridging gets more complicated has graphical error (background?!)
+  surface background doesn't handle larger res due to the Playfield
+  being offsetted (might be solveable with new DrawingContext that
+  features Rect)
+
+- rework command line parsing so that it actually works properly and
+  doesn't depend so much on the order (setting datadir causes trouble
+  with translation, since translation need datadir to work)
+
+- jumper dies sometimes in data/levels/tutorial/snow11-grumbel.scm when hitting the ground
+
+- parallax scrolling is funky where background tiles are small. When
+  scrolling right, the leftmost column of tiles gets overlapped by the
+  next column a little bit. See the last tutorial level for an
+  example. (likely rounding error float/int)
+
+- CollisionMask can't handle RGBA images and likely shouldn't (due to
+  them being animated and stuff like that), we however don't have
+  seperate colmask for those images
+
+- convert all levels and check all classic levels for issues (run
+  branches/pingus_sdl/contribl/levelconvert.sh from SVN toplevel dir)
 
 Less Important:
 ===============
@@ -103,31 +142,8 @@ Font: datadir://images/fonts/courier_small-iso-8859-9.png
 
 - fix verdana11 for latin2 and latin9 or go UTF-8
 
-- bridging gets more complicated has graphical error (background?!)
-  surface background doesn't handle larger res due to the Playfield
-  being offsetted (might be solveable with new DrawingContext that
-  features Rect)
-
-- menu crashes when you click a little wildely
-
-- rewrite Config file support, make game automatically write a default
-  config file, use s-expr
-
-- level converter has a bug that causes some object types to be
-  ignored (startpos and likely the other more excotic worldobj things)
-
-- level converter writes 0/1 instead of #t/#f
-
-- "core/misc/404sprite" isn't returned for missing graphics
-
-- disable fade-over when fast-mode is active
-
 - Liquids/water is 32, others are 64, this is causing trouble with the
   collision map
-
-- rework command line parsing so that it actually works properly and
-  doesn't depend so much on the order (setting datadir causes trouble
-  with translation, since translation need datadir to work)
 
 - some people like auto-scrolling in window mode, in 0.6.0 it worked
   even when completly out of the window, in SDL the mouse coords don't
@@ -140,22 +156,9 @@ Font: datadir://images/fonts/courier_small-iso-8859-9.png
 
 - remove SceneContext from Credits, replace with DrawingContext
 
-- rapidly clicking the main menu buttons causes the game to crash
-
-- jumper dies sometimes in data/levels/tutorial/snow11-grumbel.scm when hitting the ground
-
-- resource system needs a review
-
 - sv.po, Swedish is incomplete, lacks level and story text
 
 - story graphics have a missing vertical line (due to age old gimp scaling bug)
-
-- CollisionMask can't handle RGBA images and likely shouldn't (due to
-  them being animated and stuff like that), we however don't have
-  seperate colmask for those images
-
-- convert all levels and check all classic levels for issues (run
-  branches/pingus_sdl/contribl/levelconvert.sh from SVN toplevel dir)
  
 - add drag&drop scrolling
 
@@ -169,31 +172,16 @@ Font: datadir://images/fonts/courier_small-iso-8859-9.png
 
 - write a README.input
 
-Roadmap for Pingus Editor 0.7.1:
+Roadmap for Pingus Editor 0.7.2:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Important:
 ==========
 
-- all done!
-
-Less Important:
-===============
-
 - implement proper tmpfile Support (save tmp levels to ~/.pingus/tmp/
   for backup purpose in case of editor crash or so)
 
-- keyboard shortcuts need to be implemented with input framework, but
-  how without support for keymaps?
-
-- ObjectSelector need to support more object types, missing types:
-  all kinds of traps, weather, special objects
-
 - add yes/no question when creating a new level
-
-- add type conversion (important to convert groundpieces in hotspots and visa verse)
-
-- add options to show/hide hidden files and filter stuff
 
 - added overwrite warning to file dialog
 
@@ -201,19 +189,28 @@ Less Important:
 
 - implement a minimap (just rects when surfaces are to tricky)
 
+- add icons to filedialog
+
+- Dialogs: Editor Properties: user name and email
+
+Less Important:
+===============
+
+- keyboard shortcuts need to be implemented with input framework, but
+  how without support for keymaps?
+
+- ObjectSelector need to support more object types, missing types:
+  all kinds of traps, weather, special objects
+
+- add type conversion (important to convert groundpieces in hotspots and visa verse)
+
+- add options to show/hide hidden files and filter stuff
+
 - could/should rotate around object center
 
 - write a color select widget (Hue, Saturation.Value)
 
 - object raising doesn't work for group
-
-- add icons to filedialog
-
-- Dialogs: Editor Properties: user name and email
-
-- parallax scrolling is funky where background tiles are small. When scrolling right, the leftmost column of tiles gets overlapped by the next column a little bit. See the last tutorial level for an example.
-
-- decide whether to ignore cached_action != CA_NONE in ScreenManager::pop_screen. This causes the game to crash if [ESC] is quickly pressed repeatedly
 
 
 Older Stuff:
