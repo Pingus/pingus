@@ -237,7 +237,7 @@ void
 PingusMain::parse_args(int argc, char** argv)
 {
   CommandLine argp;
-  argp.add_usage("pingus [OPTIONS]... [FILES]...");
+  argp.add_usage("pingus [OPTIONS]... [FILE]");
   argp.add_doc("Pingus is a puzzle game where you need to guide a bunch of little penguins around the world.");
 
   argp.add_option('h', "help", "", 

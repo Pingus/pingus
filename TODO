@@ -91,6 +91,8 @@ Roadmap for Pingus 0.7.2
 Important:
 ==========
 
+- frameskip seems broken
+
 - remove verbose
 
 - option menu:

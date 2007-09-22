@@ -21,6 +21,7 @@
 
 #include "string_util.hpp"
 #include "pingus_error.hpp"
+#include "pathname.hpp"
 #include "path_manager.hpp"
 #include "sdl_driver.hpp"
 #include "core_driver.hpp"
@@ -88,7 +89,7 @@ static std::string get_driver_part(const std::string& fullname)
 }
 
 Controller*
-Manager::create_controller(const std::string& filename)
+Manager::create_controller(const Pathname& filename)
 {
   std::auto_ptr<Controller> controller(new Controller(desc));
 
@@ -96,7 +97,7 @@ Manager::create_controller(const std::string& filename)
 
   if (reader.get_name() != "pingus-controller")
     {
-      PingusError::raise("Controller: invalid config file '" + filename + "'");
+      PingusError::raise("Controller: invalid config file '" + filename.str() + "'");
     }
   else
     {

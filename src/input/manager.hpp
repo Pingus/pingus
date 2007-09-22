@@ -42,7 +42,7 @@ public:
 
   void update(float delta);
 
-  Controller* create_controller(const std::string& filename);
+  Controller* create_controller(const Pathname& filename);
 
   Button*   create_button  (const FileReader& reader, Control* parent);
   Axis*     create_axis    (const FileReader& reader, Control* parent);

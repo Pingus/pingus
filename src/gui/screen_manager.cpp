@@ -21,6 +21,7 @@
 #include <iostream>
 #include "../globals.hpp"
 #include "math/size.hpp"
+#include "pathname.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
 #include "screen_manager.hpp"
@@ -52,9 +53,11 @@ ScreenManager::display()
   Input::Controller* input_controller = 0;
 
   if (controller_file.empty())
-    input_controller = input_manager.create_controller("data/controller/default.scm");
+    input_controller = input_manager.create_controller(Pathname("controller/default.scm", 
+                                                                Pathname::DATA_PATH));
   else
-    input_controller = input_manager.create_controller(controller_file);
+    input_controller = input_manager.create_controller(Pathname(controller_file,
+                                                                Pathname::SYSTEM_PATH));
 
   Cursor* cursor = 0;
   if (swcursor_enabled)
