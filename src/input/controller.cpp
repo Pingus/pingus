@@ -66,6 +66,30 @@ Controller::Controller(const ControllerDescription& desc)
     }
 }
 
+Controller::~Controller()
+{
+  for(std::vector<ControllerButton*>::iterator i = buttons.begin(); i != buttons.end(); ++i)
+    {
+      delete *i;
+    }
+  for(std::vector<ControllerAxis*>::iterator i = axes.begin(); i != axes.end(); ++i)
+    {
+      delete *i;
+    }
+  for(std::vector<ControllerPointer*>::iterator i = pointers.begin(); i != pointers.end(); ++i)
+    {
+      delete *i;
+    }
+  for(std::vector<ControllerScroller*>::iterator i = scrollers.begin(); i != scrollers.end(); ++i)
+    {
+      delete *i;
+    }
+  for(std::vector<ControllerKeyboard*>::iterator i = keyboards.begin(); i != keyboards.end(); ++i)
+    {
+      delete *i;
+    }
+}
+
 ControllerScroller*
 Controller::get_scroller(int id) 
 {

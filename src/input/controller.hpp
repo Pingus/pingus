@@ -54,7 +54,7 @@ public:
   std::vector<Event> poll_events();
 
   Controller(const ControllerDescription& desc);
-  ~Controller() {}
+  ~Controller();
   
   ControllerAxis*     get_axis(int id);
   ControllerButton*   get_button(int id);
