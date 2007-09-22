@@ -155,6 +155,14 @@ public:
   {
   }
 
+  ~ButtonScroller()
+  {
+    delete up;
+    delete down;
+    delete left;
+    delete right;
+  }
+
   void setup(Button* up_, Button* down_, Button* left_, Button* right_)
   {
     up    = up_;
