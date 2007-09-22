@@ -5,10 +5,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"#-#-#-#-#  fr.po (Pingus 0.6.0)  #-#-#-#-#\n"
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-16 20:03+0200\n"
+"POT-Creation-Date: 2007-09-22 00:35+0200\n"
 "PO-Revision-Date: 2004-04-08 01:50+0200\n"
 "Last-Translator: Philippe Saint-Pierre <stpere@linuxmail.org>\n"
 "Language-Team: Philippe Saint-Pierre <stpere@linuxmail.org>de>, Giray Devlet "
@@ -16,9 +15,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  fr.po (Pingus 0.6.0)  #-#-#-#-#\n"
 
-#: src/game_time.cpp:69
-#, c-format
+#: src/game_time.cpp:66
 msgid "unlimited"
 msgstr "illimité"
 
@@ -151,105 +150,74 @@ msgstr "Auteur: "
 msgid "Filename: "
 msgstr "Nom du fichier: "
 
-#: src/pingus_main.cpp:100
-msgid "| segfault_handler: catched a SIGSEGV."
-msgstr "| segfault_handler: SIGSEGV intercepté."
-
-#: src/pingus_main.cpp:102
-msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
-msgstr ""
-"| Oups, Pingus viens de s'effondrer. Félicitation, vous venez de découvrir "
-"un bogue."
-
-#: src/pingus_main.cpp:103
-msgid ""
-"| Please write a little bug report to <grumbel@gmx.de>, include informations"
-msgstr ""
-"| Veuillez écrire un petit rapport de bogue à <pingus-devel@nongnu.org>, "
-"incluant des informations"
-
-#: src/pingus_main.cpp:104
-msgid "| where exacly the SIGSEGV occured and how to reproduce it."
-msgstr ""
-"| à propos de l'endroit où s'est produit le SIGSEGV et comment le reproduire."
-
-#: src/pingus_main.cpp:105
-msgid "| Also try include a backtrace, you can get it like this:"
-msgstr ""
-"| Essayez également d'inclure une 'backtrace' que vous pouvez obtenir de "
-"cette façon:"
-
-#: src/pingus_main.cpp:111
-msgid "| If that doesn't work, try this:"
-msgstr "| Si cela ne fonctionnait pas, essayez ceci:"
-
-#: src/pingus_main.cpp:115
-msgid "| [play until it crashes again]"
-msgstr "| [réjouer jusqu'à ce que le bogue survienne de nouveau]"
-
-#: src/pingus_main.cpp:123
-msgid "| Warning: Pingus recieved a SIGINT, exiting now."
-msgstr ""
-"| Avertissement: Pingus vient de recevoir un SIGINT, fermeture en cours."
-
-#: src/pingus_main.cpp:205
-msgid "Options:"
-msgstr "Options:"
-
-#: src/pingus_main.cpp:207
-msgid "Set the resolution for pingus (default: 800x600)"
-msgstr "Ajuste la résolution de Pingus (standard: 800x600)"
-
-#: src/pingus_main.cpp:209
+#: src/pingus_main.cpp:191
 msgid "Displays this help"
 msgstr "Affiche cette aide"
 
-#: src/pingus_main.cpp:211
-msgid "Disable intro"
-msgstr "Désactive l'introduction"
+#: src/pingus_main.cpp:193
+#, fuzzy
+msgid ""
+"Print some more messages to stdout, can be set multiple times to increase "
+"verbosity"
+msgstr ""
+"Affiche quelques messages supplémentaires vers stdout, peut-être spécifié"
 
-#: src/pingus_main.cpp:213
+#: src/pingus_main.cpp:195
+#, fuzzy
+msgid "Print version number and exit"
+msgstr "Affiche le numéro de version et se ferme."
+
+#: src/pingus_main.cpp:198
 msgid "Use OpenGL"
 msgstr "Utilise OpenGL"
 
-#: src/pingus_main.cpp:215
+#: src/pingus_main.cpp:200
 msgid "Use SDL"
 msgstr ""
 
-#: src/pingus_main.cpp:217
+#: src/pingus_main.cpp:203
+msgid "Display:"
+msgstr ""
+
+#: src/pingus_main.cpp:205
 msgid "Start in Window Mode"
 msgstr "Démarre en mode fenêtre"
 
-#: src/pingus_main.cpp:219
+#: src/pingus_main.cpp:207
 msgid "Start in Fullscreen"
 msgstr "Démarre en mode plein-écran"
 
-#: src/pingus_main.cpp:221
-#, fuzzy
-msgid "Set the refresh rate in fullscreen (default: 60)"
+#: src/pingus_main.cpp:209
+msgid "Allow Window resize (buggy)"
+msgstr ""
+
+#: src/pingus_main.cpp:211
+msgid "Enable software cursor"
+msgstr "Activer le curseur logiciel"
+
+#: src/pingus_main.cpp:213
+msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "Ajuste la résolution de Pingus (standard: 800x600)"
 
-#: src/pingus_main.cpp:222
-msgid "PATH"
-msgstr ""
+#: src/pingus_main.cpp:215
+msgid "Sound:"
+msgstr "Son:"
+
+#: src/pingus_main.cpp:217
+msgid "Disable sound"
+msgstr "Désactive le son"
+
+#: src/pingus_main.cpp:219
+msgid "Disable music"
+msgstr "Désactive la musique"
 
 #: src/pingus_main.cpp:223
-msgid "Set the path to load the data files to 'path'"
+msgid "Select language to use with Pingus"
 msgstr ""
 
-#: src/pingus_main.cpp:224 src/pingus_main.cpp:226 src/pingus_main.cpp:244
-#: src/pingus_main.cpp:277
-#, fuzzy
-msgid "FILE"
-msgstr "FICHIER    "
-
 #: src/pingus_main.cpp:225
-msgid "Load a custom level from FILE"
-msgstr "Charger un niveau personnalisé à partir de FICHIER"
-
-#: src/pingus_main.cpp:227
-msgid "Load a custom worldmap from FILE"
-msgstr "Charger une carte de monde personnalisé à partir de FICHIER"
+msgid "List all available languages"
+msgstr ""
 
 #: src/pingus_main.cpp:229
 #, fuzzy
@@ -261,34 +229,36 @@ msgid "Test a font"
 msgstr ""
 
 #: src/pingus_main.cpp:233
-msgid "Select language for use with Pingus"
+msgid "Shows the credits"
 msgstr ""
 
 #: src/pingus_main.cpp:235
 #, fuzzy
-msgid ""
-"Print some more messages to stdout, can be set multiple times to increase "
-"verbosity"
+msgid "Misc Options:"
+msgstr "Options:"
+
+#: src/pingus_main.cpp:236
+msgid "PATH"
 msgstr ""
-"Affiche quelques messages supplémentaires vers stdout, peut-être spécifié"
 
 #: src/pingus_main.cpp:237
-msgid "Prints version number and exit"
-msgstr "Affiche le numéro de version et se ferme."
+msgid "Set the path to load the data files to 'path'"
+msgstr ""
 
-#: src/pingus_main.cpp:239
+#: src/pingus_main.cpp:240
 msgid "Disable automatic scrolling"
 msgstr "Désactive le défilement automatique"
 
-#: src/pingus_main.cpp:241
-msgid "Enable software cursor"
-msgstr "Activer le curseur logiciel"
-
-#: src/pingus_main.cpp:243
+#: src/pingus_main.cpp:242
 msgid "Don't read ~/.pingus/config"
 msgstr "Ignore ~/.pingus/config"
 
-#: src/pingus_main.cpp:245
+#: src/pingus_main.cpp:243 src/pingus_main.cpp:252 src/pingus_main.cpp:276
+#, fuzzy
+msgid "FILE"
+msgstr "FICHIER    "
+
+#: src/pingus_main.cpp:244
 #, fuzzy
 msgid ""
 "Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
@@ -297,164 +267,100 @@ msgstr ""
 "réduit la consommation de CPU, peut accélérer le jeu sur des machines plus "
 "lentes"
 
-#: src/pingus_main.cpp:248
+#: src/pingus_main.cpp:247
 msgid "Uses the controller given in FILE"
 msgstr "Utiliser le controller spécifié dans FICHIER"
 
-#: src/pingus_main.cpp:250
+#: src/pingus_main.cpp:249
 msgid "Debugging and experimental stuff:"
 msgstr "Options de dévermminage et expérimentales"
 
-#: src/pingus_main.cpp:252
-msgid "Enables some features, only interesting programmers"
+#: src/pingus_main.cpp:251
+#, fuzzy
+msgid "Enables some features, only interesting to programmers"
 msgstr ""
 "Active quelques fonctionnalitées, intéressant seulement les développeurs"
 
-#: src/pingus_main.cpp:254
+#: src/pingus_main.cpp:253
+msgid "Load a custom worldmap from FILE"
+msgstr "Charger une carte de monde personnalisé à partir de FICHIER"
+
+#: src/pingus_main.cpp:255
 #, fuzzy
 msgid ""
-"Enable the output of debugging infos, possibleOPTION's are tiles, gametime, "
+"Enable the output of debugging info, possibleOPTIONs are tiles, gametime, "
 "actions, sound, resources, gui,input, pathmgr"
 msgstr "disponible sont tiles, gametime, actions, sound, resources, gui,"
 
-#: src/pingus_main.cpp:258
+#: src/pingus_main.cpp:259
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "Saute au moins N images, des valeurs plus grandes accélèrent le jeu"
 
-#: src/pingus_main.cpp:260
+#: src/pingus_main.cpp:261
 msgid "Skip at most N frames"
 msgstr "Saute au plus N images"
 
-#: src/pingus_main.cpp:262
+#: src/pingus_main.cpp:263
 msgid "Set both min and max frameskip to N"
 msgstr "Détermine le min et le max d'images sautées à N"
 
-#: src/pingus_main.cpp:264
+#: src/pingus_main.cpp:265
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Détermine la vitesse du jeu (0=le plus vite, >0=plus lent)"
 
-#: src/pingus_main.cpp:266
+#: src/pingus_main.cpp:267
 msgid "Prints the fps to stdout"
 msgstr "Affiche le ratio images/seconde sur stdout"
 
-#: src/pingus_main.cpp:268
+#: src/pingus_main.cpp:269
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Détermine la taille des section (tiles) de la mappe (default: 32)"
 
-#: src/pingus_main.cpp:270
+#: src/pingus_main.cpp:271
 msgid "Disable some cpu intensive features"
 msgstr "Désactive quelques fonctionnalités coûteuses en CPU"
 
-#: src/pingus_main.cpp:272
+#: src/pingus_main.cpp:273
 msgid "Reduces the CPU usage by issuing sleep()"
 msgstr "Réduit l'utilisation du CPU en appelant sleep()"
 
-#: src/pingus_main.cpp:274
-msgid "Shows the credits"
-msgstr ""
-
-#: src/pingus_main.cpp:276
+#: src/pingus_main.cpp:275
 msgid "Demo playing and recording:"
 msgstr "Démonstration, enregistrement et lecture:"
 
-#: src/pingus_main.cpp:278
+#: src/pingus_main.cpp:277
 msgid "Plays a demo session from FILE"
 msgstr "Joue une démonstration à partir de FICHIER"
 
-#: src/pingus_main.cpp:280
+#: src/pingus_main.cpp:279
 msgid "Record demos for each played level"
 msgstr "Enregistre une démonstration pour chaque niveau joué"
 
-#: src/pingus_main.cpp:282
-msgid "Sound:"
-msgstr "Son:"
-
-#: src/pingus_main.cpp:284
-msgid "Disable sound"
-msgstr "Désactive le son"
-
-#: src/pingus_main.cpp:286
-msgid "Disable music"
-msgstr "Désactive la musique"
-
-#: src/pingus_main.cpp:347
+#: src/pingus_main.cpp:337
 msgid "Warning: Larger resolution than 800x600 will result in visual problems"
 msgstr ""
 " Avertissement: Une résolution supérieure à 800x600 va occasionner des "
 "problèmes visuels"
 
-#: src/pingus_main.cpp:656
-#, fuzzy
-msgid "language:                "
-msgstr "plein-écran:            "
-
-#: src/pingus_main.cpp:659
-msgid "sound support:           enabled"
-msgstr "Support sons:            activé"
-
-#: src/pingus_main.cpp:661
-msgid "sound support:          disabled"
-msgstr "Support sons:         désactivé"
-
-#: src/pingus_main.cpp:664
-msgid "music support:           enabled"
-msgstr "Support musique:         activé"
-
-#: src/pingus_main.cpp:666
-msgid "music support:          disabled"
-msgstr "Support musique:      désactivé"
-
-#: src/pingus_main.cpp:668
-#, fuzzy
-msgid "resolution:              "
-msgstr "résolution fixée à:     "
-
-#: src/pingus_main.cpp:669
-msgid "fullscreen:              "
-msgstr "plein-écran:            "
-
-#: src/pingus_main.cpp:670
-msgid " enabled"
-msgstr "   activé"
-
-#: src/pingus_main.cpp:670
-msgid "disabled"
-msgstr "désactivé"
-
-#: src/pingus_main.cpp:673
-#, fuzzy
-msgid "using OpenGL:            "
-msgstr "plein-écran:            "
-
-#: src/pingus_main.cpp:682
+#: src/pingus_main.cpp:679
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Démarrage de Main: "
 
-#: src/pingus_main.cpp:731
-msgid "PingusMain: Levelfile not found, ignoring: "
-msgstr "PingusMain: Fichier de niveau absent, ignore: "
-
-#: src/pingus_main.cpp:834
+#: src/pingus_main.cpp:814
 msgid "Error caught from Pingus: "
 msgstr "Erreur provenant de Pingus: "
 
-#: src/pingus_main.cpp:838
+#: src/pingus_main.cpp:818
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: mémoire insuffisante"
 
-#: src/pingus_main.cpp:842
+#: src/pingus_main.cpp:822
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Exception standard interceptée!:\n"
 
-#: src/pingus_main.cpp:846
+#: src/pingus_main.cpp:826
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Sortie (throw) inconnue interceptée!"
-
-#: src/system.cpp:321
-msgid "Environment variable $HOME not set, fix that and start again."
-msgstr ""
-"La variable d'environnement $HOME n'est pas définie, corrigez cela et "
-"réessayez."
 
 #: src/credits.cpp:82
 msgid "-Idea"
@@ -497,39 +403,40 @@ msgstr "-Scénario"
 msgid "-Translation"
 msgstr "-Traduction"
 
-#: src/credits.cpp:158
+#: src/credits.cpp:159
 msgid "-Special"
 msgstr "-Spécial"
 
-#: src/credits.cpp:159
+#: src/credits.cpp:160
 msgid "-Thanks to"
 msgstr "-Remerciements à"
 
-#: src/credits.cpp:203
+#: src/credits.cpp:204
 msgid "_And a very Special Thanks"
 msgstr "_Et un merci spécial"
 
-#: src/credits.cpp:204
+#: src/credits.cpp:205
 msgid "_to all the people who"
 msgstr "_à tout ceux qui"
 
-#: src/credits.cpp:205
+#: src/credits.cpp:206
 msgid "_contribute to"
 msgstr "_contribuent"
 
-#: src/credits.cpp:206
+#: src/credits.cpp:207
 msgid "_Free Software!"
 msgstr "_aux logiciels libres!"
 
-#: src/credits.cpp:212
+#: src/credits.cpp:213
 msgid "_Thank you for"
 msgstr "_Merci"
 
-#: src/credits.cpp:213
+#: src/credits.cpp:214
 msgid "_playing!"
 msgstr "_d'avoir joué!"
 
-#: src/credits.cpp:275 src/pingus_menu.cpp:57
+#: src/credits.cpp:276 src/editor/panel.cpp:204
+#: src/editor/object_selector.cpp:316 src/pingus_menu.cpp:57
 msgid "Exit"
 msgstr "Quitter"
 
@@ -611,8 +518,8 @@ msgid "Time left: "
 msgstr "Temps restant: "
 
 #: src/components/pingus_counter.cpp:49
-#, c-format, boost-format
-msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
+#, fuzzy, c-format, boost-format
+msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
 msgstr "Relachés:%3d/%-3d  Sortis:%3d Sauvés:%3d/%-3d"
 
 #: src/file_dialog_item.cpp:83
@@ -640,13 +547,9 @@ msgstr ""
 msgid "Couldn't open: "
 msgstr "Impossible d'ouvrir: "
 
-#: src/config.cpp:171
+#: src/config.cpp:171 src/config.cpp:205
 msgid "Unexpected char: '"
 msgstr "Caractère inattendu: '"
-
-#: src/config.cpp:205
-msgid "Unexpected char '"
-msgstr "Caractère inattendu '"
 
 #: src/screenshot.cpp:38
 msgid "Screenshot: Saving screenshot to: "
@@ -660,9 +563,295 @@ msgstr "Capture d'écran: La capture est terminée."
 msgid "Screenshot: Couldn't write file: "
 msgstr "Capture d'écran: Impossible d'écrire le fichier: "
 
-#: src/fps_counter.cpp:44
-msgid "unknown"
-msgstr "inconnu"
+#: src/editor/panel.cpp:153
+#, fuzzy
+msgid "    New level"
+msgstr "F5 - charger un niveau"
+
+#: src/editor/panel.cpp:155
+msgid "Open level..."
+msgstr ""
+
+#: src/editor/panel.cpp:157
+#, fuzzy
+msgid "Save level..."
+msgstr "Sauvegarde de ce niveau (F6)"
+
+#: src/editor/panel.cpp:159
+#, fuzzy
+msgid "Save level as..."
+msgstr "Sauvegarde de ce niveau (F6)"
+
+#: src/editor/panel.cpp:162
+msgid "Play level..."
+msgstr ""
+
+#: src/editor/panel.cpp:165
+msgid "Configure actions"
+msgstr ""
+
+#: src/editor/panel.cpp:167
+#, fuzzy
+msgid "Configure level"
+msgstr "Sauvegarde de ce niveau (F6)"
+
+#: src/editor/panel.cpp:169
+#, fuzzy
+msgid "Display object properties"
+msgstr "Modifier les propriétés de l'objet"
+
+#: src/editor/panel.cpp:171
+msgid "Show object insertion window"
+msgstr ""
+
+#: src/editor/panel.cpp:174
+#, fuzzy
+msgid "Duplicate the selected objects"
+msgstr "Dédoubler l'élément sélectionné (d)"
+
+#: src/editor/panel.cpp:176
+#, fuzzy
+msgid "Delete the selected objects"
+msgstr "Supprimer - supprimer l'objet sélectionné"
+
+#: src/editor/panel.cpp:179
+msgid "Raise object to top"
+msgstr ""
+
+#: src/editor/panel.cpp:181
+msgid "Raise object"
+msgstr ""
+
+#: src/editor/panel.cpp:183
+msgid "Lower object"
+msgstr ""
+
+#: src/editor/panel.cpp:185
+msgid "Lower object to bottom"
+msgstr ""
+
+#: src/editor/panel.cpp:188
+msgid "Flip object horizontally"
+msgstr ""
+
+#: src/editor/panel.cpp:190
+msgid "Flip object vertically"
+msgstr ""
+
+#: src/editor/panel.cpp:193
+msgid "Rotate object 90 degree"
+msgstr ""
+
+#: src/editor/panel.cpp:195
+msgid "Rotate object -90 degree"
+msgstr ""
+
+#: src/editor/object_properties.cpp:40
+msgid "Object:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:41
+msgid "Nothing selected"
+msgstr ""
+
+#: src/editor/object_properties.cpp:50
+#, fuzzy
+msgid "Transparent"
+msgstr "-Traduction"
+
+#: src/editor/object_properties.cpp:51
+#, fuzzy
+msgid "Solid"
+msgstr "Glisseur"
+
+#: src/editor/object_properties.cpp:52
+#, fuzzy
+msgid "Ground"
+msgstr "Son:"
+
+#: src/editor/object_properties.cpp:53
+#, fuzzy
+msgid "Bridge"
+msgstr "Charpentier"
+
+#: src/editor/object_properties.cpp:54
+#, fuzzy
+msgid "Water"
+msgstr "Patienteur"
+
+#: src/editor/object_properties.cpp:55
+#, fuzzy
+msgid "Lava"
+msgstr "Quitter?"
+
+#: src/editor/object_properties.cpp:56
+msgid "Remove"
+msgstr ""
+
+#: src/editor/object_properties.cpp:61
+#, fuzzy
+msgid "Direction:"
+msgstr "Options:"
+
+#: src/editor/object_properties.cpp:63
+msgid "Left"
+msgstr ""
+
+#: src/editor/object_properties.cpp:64
+#, fuzzy
+msgid "Misc"
+msgstr "-Musique"
+
+#: src/editor/object_properties.cpp:65
+msgid "Right"
+msgstr ""
+
+#: src/editor/object_properties.cpp:70
+msgid "ReleaseRate:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:87
+msgid "Para-X:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:88
+msgid "Para-Y:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:96
+msgid "Scroll-X:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:97
+msgid "Scroll-Y:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:105
+msgid "Owner Id:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:109
+msgid "Z-Pos:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:116
+msgid "Color:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:128
+msgid "Small Stars:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:131
+msgid "Middle Stars:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:134
+msgid "Large Stars:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:142
+msgid "Repeat:"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:56
+msgid "Datadir"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:58
+msgid "Userdir"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:61
+msgid "Open"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:61 src/file_dialog.cpp:262
+#, fuzzy
+msgid "Save"
+msgstr "Sauvés: "
+
+#: src/editor/file_dialog.cpp:64 src/file_dialog.cpp:34
+msgid "Cancel"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:75
+#, fuzzy
+msgid "Filename:"
+msgstr "Nom du fichier: "
+
+#: src/editor/file_dialog.cpp:76
+msgid "Pathname:"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:102
+msgid "Open a level"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:102
+#, fuzzy
+msgid "Save your level"
+msgstr "Sauvegarde de ce niveau (F6)"
+
+#: src/editor/object_selector.cpp:307
+#, fuzzy
+msgid "Entrance"
+msgstr "e - Entrée"
+
+#: src/editor/object_selector.cpp:308
+#, fuzzy
+msgid "Groundpiece (ground)"
+msgstr "g - Bordure (sol)"
+
+#: src/editor/object_selector.cpp:309
+#, fuzzy
+msgid "Groundpiece (solid)"
+msgstr "s - Bordure (acier/solide)"
+
+#: src/editor/object_selector.cpp:310
+#, fuzzy
+msgid "Groundpiece (bridge)"
+msgstr "b - Bordure (pont)"
+
+#: src/editor/object_selector.cpp:311
+#, fuzzy
+msgid "Groundpiece (transparent)"
+msgstr "n - Bordure (transparent)"
+
+#: src/editor/object_selector.cpp:312
+#, fuzzy
+msgid "Groundpiece (remove)"
+msgstr "r - Bordure (supprimer)"
+
+#: src/editor/object_selector.cpp:313
+#, fuzzy
+msgid "Hotspot"
+msgstr "h - Élément graphique (hotspot)"
+
+#: src/editor/object_selector.cpp:314
+#, fuzzy
+msgid "Background"
+msgstr "z - Arrière-plan"
+
+#: src/editor/object_selector.cpp:317
+#, fuzzy
+msgid "Liquid"
+msgstr "l - Liquide"
+
+#: src/editor/object_selector.cpp:318
+#, fuzzy
+msgid "Trap"
+msgstr "t - Trappe"
+
+#: src/editor/object_selector.cpp:319
+#, fuzzy
+msgid "Weather"
+msgstr "w - Climat"
+
+#: src/editor/object_selector.cpp:320
+#, fuzzy
+msgid "Special Object"
+msgstr "-Spécial"
 
 #: src/worldmap/worldmap.cpp:425
 msgid "...walking..."
@@ -682,25 +871,16 @@ msgstr "Quitter?"
 
 #: src/worldmap/manager.cpp:207
 #, fuzzy
-msgid "Enter"
+msgid "Enter?"
 msgstr "Commencer?"
 
 #: src/worldmap/level_dot.cpp:153 src/worldmap/level_dot.cpp:163
 msgid "locked"
 msgstr "vérouillé"
 
-#: src/file_dialog.cpp:34
-msgid "Cancel"
-msgstr ""
-
 #: src/file_dialog.cpp:262
 msgid "Load"
 msgstr ""
-
-#: src/file_dialog.cpp:262
-#, fuzzy
-msgid "Save"
-msgstr "Sauvés: "
 
 #: src/exit_menu.cpp:46 src/exit_menu.cpp:50
 msgid "Yes"
@@ -727,13 +907,13 @@ msgid "..:: Bye, bye ::.."
 msgstr "..:: Au revoir ::.."
 
 #: src/pingus_menu.cpp:63
-msgid "Credits"
-msgstr "Générique"
+msgid "Level Editor"
+msgstr ""
 
 #: src/pingus_menu.cpp:64
 #, fuzzy
-msgid "..:: See the credits ::.."
-msgstr "..:: Débute la partie ::.."
+msgid "..:: Create your own levels ::.."
+msgstr "..:: Démarre un niveau contribué ::.."
 
 #: src/pingus_menu.cpp:69
 #, fuzzy
@@ -767,20 +947,17 @@ msgstr "Multi"
 msgid "..:: Multiplayer Match ::.."
 msgstr "..:: Mode Multijoueurs ::.. statut expérimental ::.."
 
-#: src/pingus_menu.cpp:87
-msgid "Level Editor"
+#: src/pingus_menu.cpp:85
+msgid ""
+"..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
+"fullscreen   ::   F12: screenshot ::.."
 msgstr ""
 
-#: src/pingus_menu.cpp:88
-#, fuzzy
-msgid "..:: Create your own levels ::.."
-msgstr "..:: Démarre un niveau contribué ::.."
-
-#: data/levels/tutorial/basher-tutorial-grumbel.pingus
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
 msgid "If the way is blocked, bash away"
 msgstr "Si la route est bloquée, défonce le mur!"
 
-#: data/levels/tutorial/basher-tutorial-grumbel.pingus
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus:6
 msgid ""
 "Similar to the Digger action that you already know from previous levels, "
 "there is also an action that allows the Pingus to dig horizontally, as "
@@ -792,11 +969,11 @@ msgstr ""
 "horizontalement, contrairement au creusage vertical que l'action Digger "
 "procure. Cette nouvelle action est appelée 'Basher'. "
 
-#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:5
 msgid "Sacrifice a few and save the rest"
 msgstr "Sacrifie quelques-uns pour sauver les autres"
 
-#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:6
 msgid ""
 "Sometimes no other actions are available, so you have to bomb your way "
 "through the ground. The Pingus can do this by actually self- destructing. "
@@ -809,11 +986,11 @@ msgstr ""
 "le reste de la bande. bazan grubun geri kalanýný kurtarmak için gerekli "
 "olabilir. "
 
-#: data/levels/tutorial/digger-tutorial2-grumbel.pingus
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:5
 msgid "Learning to dig"
 msgstr "Apprendre à creuser"
 
-#: data/levels/tutorial/digger-tutorial2-grumbel.pingus
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:6
 msgid ""
 "This is your first mission. As always, it's pretty easy. All you have to do "
 "is to give a Pingu the command to dig a hole into the ground so that they "
@@ -824,11 +1001,11 @@ msgstr ""
 "dans le sol afin qu'il puisse atteindre la sortie. Ceci est accompli en "
 "cliquant simplement sur un Pingu. "
 
-#: data/levels/tutorial/floater-tutorial-grumbel.pingus
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus:5
 msgid "Float or Die"
 msgstr "Flotte ou Meurt"
 
-#: data/levels/tutorial/floater-tutorial-grumbel.pingus
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus:6
 msgid ""
 "Well done in mission one! Now let's start the next one. This time you will "
 "need to equip your Pingus with a little propeller, so that they can float to "
@@ -840,11 +1017,11 @@ msgstr ""
 "afin qu'ils puissent atterrir légèrement sur le sol. Si les Pingus tombent "
 "de trop haut, ils ne pourront survivre à la chute, alors soyez vigilant! "
 
-#: data/levels/tutorial/jumper-tutorial-grumbel.pingus
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:5
 msgid "Jump for joy"
 msgstr "Saute de joie"
 
-#: data/levels/tutorial/jumper-tutorial-grumbel.pingus
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:6
 msgid ""
 "Sometimes a Pingu needs to reach a platform that is far away, but not "
 "reachable by walking. That's when the Jumper comes in handy - it allows the "
@@ -855,11 +1032,11 @@ msgstr ""
 "utile, elle permet à un Pingu de faire un petit bond et lui rend possible "
 "l'atteinte de la plateforme. "
 
-#: data/levels/tutorial/miner-tutorial2-grumbel.pingus
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:5
 msgid "Miner's heaven"
 msgstr "Paradis des mineurs"
 
-#: data/levels/tutorial/miner-tutorial2-grumbel.pingus
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:6
 msgid ""
 "Another action hits the street - another digging action, this time a "
 "diagonal one. It allows a Pingu to dig diagonally through ground, thus "
@@ -871,20 +1048,18 @@ msgstr ""
 "pourront emprunter les autres Pingus. Cette action ce nomme 'Miner'. "
 
 #: data/levels/tutorial/placeholder.pingus:5
-#: data/levels/tutorial/placeholder.pingus
 msgid "--- Empty Placeholder Level ---"
 msgstr ""
 
 #: data/levels/tutorial/placeholder.pingus:6
-#: data/levels/tutorial/placeholder.pingus
 msgid "This Level is not playable and EMPTY!"
 msgstr ""
 
-#: data/levels/tutorial/snow10-grumbel.pingus
+#: data/levels/tutorial/snow10-grumbel.pingus:5
 msgid "Panic Island (float/bash)"
 msgstr "Ile de la Panique (float/bash)"
 
-#: data/levels/tutorial/snow10-grumbel.pingus
+#: data/levels/tutorial/snow10-grumbel.pingus:6
 msgid ""
 "While the previous levels have not required much quick action from you, this "
 "one gets a bit trickier. The Pingus are coming out of two entrances in "
@@ -895,11 +1070,11 @@ msgstr ""
 "Pingus proviennent de deux portes en parallèle et c'est votre tâche de "
 "coordonner les deux groupes intelligemment. "
 
-#: data/levels/tutorial/snow11-grumbel.pingus
+#: data/levels/tutorial/snow11-grumbel.pingus:5
 msgid "Jump'n Bump... and Bash..."
 msgstr "Saute, rebondis ... et défonce..."
 
-#: data/levels/tutorial/snow11-grumbel.pingus
+#: data/levels/tutorial/snow11-grumbel.pingus:6
 msgid ""
 "It's panic time again. The Pingus will not come out very fast, but since "
 "they turn around when they hit walls you will soon have some trouble "
@@ -912,11 +1087,11 @@ msgstr ""
 "en sauver 5, cela devrait être réalisable, mais si vous êtes en difficulté, "
 "utilisez le mode pause ('p') pour avoir une vue d'ensemble. "
 
-#: data/levels/tutorial/snow12-grumbel.pingus
+#: data/levels/tutorial/snow12-grumbel.pingus:5
 msgid "Two groups in parallel, coordinate wisely"
 msgstr "Deux groupes en parallèle, coordination essentielle"
 
-#: data/levels/tutorial/snow12-grumbel.pingus
+#: data/levels/tutorial/snow12-grumbel.pingus:6
 msgid ""
 "You have two groups to coordinate this time. No need to panic, since this "
 "level gives you enough time to think your actions through. No more tips this "
@@ -926,11 +1101,11 @@ msgstr ""
 "niveau vous donne suffisament de temps pour réfléchir à vos actions. Pas "
 "plus de conseils cette fois, mais bonne chance! "
 
-#: data/levels/tutorial/snow14-grumbel.pingus
+#: data/levels/tutorial/snow14-grumbel.pingus:5
 msgid "Block'a Rock"
 msgstr "Bloque la route"
 
-#: data/levels/tutorial/snow14-grumbel.pingus
+#: data/levels/tutorial/snow14-grumbel.pingus:6
 msgid ""
 "Once again it's time to combine the stuff you have learned in your previous "
 "levels. Blast your way free and make sure you also keep the rest of the "
@@ -940,11 +1115,11 @@ msgstr ""
 "niveaux précédants. Faites vous un passage et soyez sur de garder le "
 "contrôle sur les Pingus, l'action Blocker va vous aider. "
 
-#: data/levels/tutorial/snow15-grumbel.pingus
+#: data/levels/tutorial/snow15-grumbel.pingus:5
 msgid "Climb, Climber,... Boom!"
 msgstr "Plus haut, Plus haut, ... Boum!"
 
-#: data/levels/tutorial/snow15-grumbel.pingus
+#: data/levels/tutorial/snow15-grumbel.pingus:6
 msgid ""
 "As you might have already figured out from previous levels, you often have "
 "to combine different actions to get the job done. Due to the lack of a "
@@ -956,11 +1131,11 @@ msgstr ""
 "l'action Digger dans ce niveau, le Bomber d'entrer en action, mais comment "
 "peut-il atteindre l'endroit à dynamiter? "
 
-#: data/levels/tutorial/snow16-grumbel.pingus
+#: data/levels/tutorial/snow16-grumbel.pingus:5
 msgid "Bridging gets more complicated..."
 msgstr "La construction de pont devient complexe..."
 
-#: data/levels/tutorial/snow16-grumbel.pingus
+#: data/levels/tutorial/snow16-grumbel.pingus:6
 msgid ""
 "Once again you have to combine actions carefully and wisely. If you don't "
 "you could end up in the hole just before the exit, so think about how to "
@@ -970,11 +1145,11 @@ msgstr ""
 "intelligence, sans quoi vous allez terminer votre course dans le trou avant "
 "l'entrée. Alors pensez à un moyen d'éviter cela. "
 
-#: data/levels/tutorial/snow17-grumbel.pingus
+#: data/levels/tutorial/snow17-grumbel.pingus:5
 msgid "If too high, your Pingu will die..."
 msgstr "De trop haut, les Pingus en morceaux..."
 
-#: data/levels/tutorial/snow17-grumbel.pingus
+#: data/levels/tutorial/snow17-grumbel.pingus:6
 msgid ""
 "Teamwork is the way to the exit this time. You don't have enough Floaters to "
 "reach the exit, so just send a few and let them prepare the path for the "
@@ -984,11 +1159,11 @@ msgstr ""
 "suffisament de Floaters pour atteindre la sortie, alors n'en n'envoyez que "
 "quelques uns préparer la route pour les autres. "
 
-#: data/levels/tutorial/snow19-grumbel.pingus
+#: data/levels/tutorial/snow19-grumbel.pingus:5
 msgid "Learn to use the bridge"
 msgstr "Apprenez a utiliser le pont"
 
-#: data/levels/tutorial/snow19-grumbel.pingus
+#: data/levels/tutorial/snow19-grumbel.pingus:6
 msgid ""
 "If no Jumper is at hand and a large hole needs to be passed, a bridge can be "
 "pretty helpful. It takes some time to build, but unlike the jumper action it "
@@ -999,11 +1174,11 @@ msgstr ""
 "être construit, mais il permet les prochains Pingus d'également emprunter ce "
 "pont, ce que l'action Jumper ne permet pas. "
 
-#: data/levels/tutorial/snow20-grumbel.pingus
+#: data/levels/tutorial/snow20-grumbel.pingus:5
 msgid "Three solutions, it's up to you"
 msgstr "Trois solutions, c'est votre choix"
 
-#: data/levels/tutorial/snow20-grumbel.pingus
+#: data/levels/tutorial/snow20-grumbel.pingus:6
 msgid ""
 "Now that you've learned all the actions, it's time for some more practice. "
 "This level presents you with at least three different ways to solve it. It's "
@@ -1013,11 +1188,11 @@ msgstr ""
 "temps de les pratiquer. Ce niveau présente au moins trois différentes "
 "solutions, celle que vous prendrez ne dépend que de vous. "
 
-#: data/levels/tutorial/snow21-grumbel.pingus
+#: data/levels/tutorial/snow21-grumbel.pingus:5
 msgid "Climb, Climber, climb... and build a bridge"
 msgstr "Grimpe, Grimpe, Grimpe... et construit un pont"
 
-#: data/levels/tutorial/snow21-grumbel.pingus
+#: data/levels/tutorial/snow21-grumbel.pingus:6
 msgid ""
 "Once again you get access to a new action. The Climber action allows a Pingu "
 "to climb up straight walls, thus allowing him to reach stuff that might be "
@@ -1027,11 +1202,11 @@ msgstr ""
 "(Grimpeur) permet à un Pingu d'escalader un mur droit et ainsi d'atteindre "
 "des endroits impossible d'accès autrement. "
 
-#: data/levels/tutorial/snow22-grumbel.pingus
+#: data/levels/tutorial/snow22-grumbel.pingus:5
 msgid "Entrance high, Exit low"
 msgstr "Entrée haute, Sortie basse"
 
-#: data/levels/tutorial/snow22-grumbel.pingus
+#: data/levels/tutorial/snow22-grumbel.pingus:6
 msgid ""
 "If you don't have enough floaters to bring all the Pingus down to the exit - "
 "you have to find other ways to guide them down. You should have learned all "
@@ -1043,11 +1218,11 @@ msgstr ""
 "ce qui est nécessaire ici devrais avoir été appris dans les niveaux "
 "précédants. Donc ce ne devrait pas causer de problèmes. "
 
-#: data/levels/tutorial/snow7-grumbel.pingus
+#: data/levels/tutorial/snow7-grumbel.pingus:5
 msgid "One must prepare, the rest must follow"
 msgstr "Un fais le travail, les autres suivent"
 
-#: data/levels/tutorial/snow7-grumbel.pingus
+#: data/levels/tutorial/snow7-grumbel.pingus:6
 msgid ""
 "Sometimes there are situations where you don't have a Blocker at hand to "
 "coordinate your Pingus. You'll have to find other ways to keep them under "
@@ -1057,11 +1232,11 @@ msgstr ""
 "et vous avez a trouver d'autres façons de les garder sous contrôle, pendant "
 "qu'un seul d'entre eux prépare la route pour les autres. "
 
-#: data/levels/tutorial/snow8-grumbel.pingus
+#: data/levels/tutorial/snow8-grumbel.pingus:5
 msgid "Dig and float, but just don't fall and smash"
 msgstr "Creuse et flotte, mais ne tombe pas et éclate"
 
-#: data/levels/tutorial/snow8-grumbel.pingus
+#: data/levels/tutorial/snow8-grumbel.pingus:6
 msgid ""
 "Unlike the first two levels, you have two actions available in this level. "
 "Your job is again simple: select an action at the panel on the left and "
@@ -1073,11 +1248,11 @@ msgstr ""
 "le panneau de gauche et applique la sur les Pingus afin qu'ils puissent "
 "atteindre la sortie, et faites en sorte que peu d'entre eux ne meurrent. "
 
-#: data/levels/tutorial/snow9-grumbel.pingus
+#: data/levels/tutorial/snow9-grumbel.pingus:5
 msgid "Dig, bash and other problems"
 msgstr "Creuse, défonce et d'autres problèmes"
 
-#: data/levels/tutorial/snow9-grumbel.pingus
+#: data/levels/tutorial/snow9-grumbel.pingus:6
 msgid ""
 "The more levels you master, the more difficult they will get, but don't "
 "panic, as this one is still pretty easy. Just use the stuff that you've "
@@ -1091,11 +1266,11 @@ msgstr ""
 "croyez avoir atteint un stade où vous ne pourrez réussir le niveau, double "
 "cliquez sur le bouton Armageddon dans le coin inférieur droit. "
 
-#: data/levels/tutorial/solid-tutorial-grumbel.pingus
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus:5
 msgid "Solid ground can block the path"
 msgstr "L'acier bloque le passage"
 
-#: data/levels/tutorial/solid-tutorial-grumbel.pingus
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus:6
 msgid ""
 "As you have learned in earlier levels your Pingus can dig through basically "
 "any terrain, but there is one material which they can't penetrate: steel. "
@@ -1284,6 +1459,105 @@ msgstr ""
 "\n"
 "A suivre..."
 
+#~ msgid "| segfault_handler: catched a SIGSEGV."
+#~ msgstr "| segfault_handler: SIGSEGV intercepté."
+
+#~ msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
+#~ msgstr ""
+#~ "| Oups, Pingus viens de s'effondrer. Félicitation, vous venez de "
+#~ "découvrir un bogue."
+
+#~ msgid ""
+#~ "| Please write a little bug report to <grumbel@gmx.de>, include "
+#~ "informations"
+#~ msgstr ""
+#~ "| Veuillez écrire un petit rapport de bogue à <pingus-devel@nongnu.org>, "
+#~ "incluant des informations"
+
+#~ msgid "| where exacly the SIGSEGV occured and how to reproduce it."
+#~ msgstr ""
+#~ "| à propos de l'endroit où s'est produit le SIGSEGV et comment le "
+#~ "reproduire."
+
+#~ msgid "| Also try include a backtrace, you can get it like this:"
+#~ msgstr ""
+#~ "| Essayez également d'inclure une 'backtrace' que vous pouvez obtenir de "
+#~ "cette façon:"
+
+#~ msgid "| If that doesn't work, try this:"
+#~ msgstr "| Si cela ne fonctionnait pas, essayez ceci:"
+
+#~ msgid "| [play until it crashes again]"
+#~ msgstr "| [réjouer jusqu'à ce que le bogue survienne de nouveau]"
+
+#~ msgid "| Warning: Pingus recieved a SIGINT, exiting now."
+#~ msgstr ""
+#~ "| Avertissement: Pingus vient de recevoir un SIGINT, fermeture en cours."
+
+#~ msgid "Disable intro"
+#~ msgstr "Désactive l'introduction"
+
+#, fuzzy
+#~ msgid "Set the refresh rate in fullscreen (default: 60)"
+#~ msgstr "Ajuste la résolution de Pingus (standard: 800x600)"
+
+#~ msgid "Load a custom level from FILE"
+#~ msgstr "Charger un niveau personnalisé à partir de FICHIER"
+
+#, fuzzy
+#~ msgid "language:                "
+#~ msgstr "plein-écran:            "
+
+#~ msgid "sound support:           enabled"
+#~ msgstr "Support sons:            activé"
+
+#~ msgid "sound support:          disabled"
+#~ msgstr "Support sons:         désactivé"
+
+#~ msgid "music support:           enabled"
+#~ msgstr "Support musique:         activé"
+
+#~ msgid "music support:          disabled"
+#~ msgstr "Support musique:      désactivé"
+
+#, fuzzy
+#~ msgid "resolution:              "
+#~ msgstr "résolution fixée à:     "
+
+#~ msgid "fullscreen:              "
+#~ msgstr "plein-écran:            "
+
+#~ msgid " enabled"
+#~ msgstr "   activé"
+
+#~ msgid "disabled"
+#~ msgstr "désactivé"
+
+#, fuzzy
+#~ msgid "using OpenGL:            "
+#~ msgstr "plein-écran:            "
+
+#~ msgid "PingusMain: Levelfile not found, ignoring: "
+#~ msgstr "PingusMain: Fichier de niveau absent, ignore: "
+
+#~ msgid "Environment variable $HOME not set, fix that and start again."
+#~ msgstr ""
+#~ "La variable d'environnement $HOME n'est pas définie, corrigez cela et "
+#~ "réessayez."
+
+#~ msgid "Unexpected char '"
+#~ msgstr "Caractère inattendu '"
+
+#~ msgid "unknown"
+#~ msgstr "inconnu"
+
+#~ msgid "Credits"
+#~ msgstr "Générique"
+
+#, fuzzy
+#~ msgid "..:: See the credits ::.."
+#~ msgstr "..:: Débute la partie ::.."
+
 #, fuzzy
 #~ msgid "Pingus do time"
 #~ msgstr "Pingus à sauver: %d"
@@ -1385,9 +1659,6 @@ msgstr ""
 #~ msgid "F4 - play/test the level"
 #~ msgstr "F4 - jouer/tester le niveau"
 
-#~ msgid "F5 - load a level"
-#~ msgstr "F5 - charger un niveau"
-
 #~ msgid "F6 - save this level"
 #~ msgstr "F6 - sauvegarder ce niveau"
 
@@ -1450,9 +1721,6 @@ msgstr ""
 
 #~ msgid "Insert - insert new object"
 #~ msgstr "Insérer   - insérer un nouvel objet"
-
-#~ msgid "Remove - remove selected object"
-#~ msgstr "Supprimer - supprimer l'objet sélectionné"
 
 #~ msgid "g - ungroup/group current selection"
 #~ msgstr "g - séparer/regrouper la sélection actuelle"
@@ -1540,50 +1808,17 @@ msgstr ""
 #~ msgid "What object type do you want?"
 #~ msgstr "Quel type d'objet vous voulez?"
 
-#~ msgid "h - Hotspot"
-#~ msgstr "h - Élément graphique (hotspot)"
-
 #~ msgid "g - Groundpiece (ground) [not implemented]"
 #~ msgstr "g - Bordure (sol) [non implanté]"
 
 #~ msgid "Which object do you want?"
 #~ msgstr "Quel objet voulez-vous?"
 
-#~ msgid "g - Groundpiece (ground)"
-#~ msgstr "g - Bordure (sol)"
-
-#~ msgid "s - Groundpiece (solid)"
-#~ msgstr "s - Bordure (acier/solide)"
-
-#~ msgid "b - Groundpiece (bridge)"
-#~ msgstr "b - Bordure (pont)"
-
-#~ msgid "n - Groundpiece (transparent)"
-#~ msgstr "n - Bordure (transparent)"
-
-#~ msgid "r - Groundpiece (remove)"
-#~ msgstr "r - Bordure (supprimer)"
-
-#~ msgid "e - Entrance"
-#~ msgstr "e - Entrée"
-
 #~ msgid "x - Exit"
 #~ msgstr "x - Sortie"
 
-#~ msgid "l - Liquid"
-#~ msgstr "l - Liquide"
-
-#~ msgid "w - Weather"
-#~ msgstr "w - Climat"
-
-#~ msgid "t - Traps"
-#~ msgstr "t - Trappe"
-
 #~ msgid "o - WorldObject"
 #~ msgstr "o - WorldObject"
-
-#~ msgid "z - Background"
-#~ msgstr "z - Arrière-plan"
 
 #~ msgid "p - Prefab (ObjectGroup)"
 #~ msgstr "p - Prefab (Groupe d'objet)"
@@ -1612,20 +1847,11 @@ msgstr ""
 #~ msgid "Exit the editor (Escape)"
 #~ msgstr "Quitter l'éditeur (Échap)"
 
-#~ msgid "Save this level (F6)"
-#~ msgstr "Sauvegarde de ce niveau (F6)"
-
 #~ msgid "Delete marked objects (delete)"
 #~ msgstr "Efface les éléments marqués (Suppr)"
 
-#~ msgid "Duplicate current object (d)"
-#~ msgstr "Dédoubler l'élément sélectionné (d)"
-
 #~ msgid "Edit Level Properties"
 #~ msgstr "Modifier les propriétés du niveau"
-
-#~ msgid "Edit Object Properties"
-#~ msgstr "Modifier les propriétés de l'objet"
 
 #~ msgid "Start the level and test it (F4)"
 #~ msgstr "Démarrer le niveau et le tester (F4)"

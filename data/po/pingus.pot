@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-28 22:21+0200\n"
+"POT-Creation-Date: 2007-09-22 03:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,215 +149,202 @@ msgstr ""
 msgid "Filename: "
 msgstr ""
 
-#: src/pingus_main.cpp:203
-msgid "Options:"
-msgstr ""
-
-#: src/pingus_main.cpp:205
-msgid "Set the resolution for pingus (default: 800x600)"
-msgstr ""
-
-#: src/pingus_main.cpp:207
+#: src/pingus_main.cpp:191
 msgid "Displays this help"
 msgstr ""
 
-#: src/pingus_main.cpp:209
-msgid "Disable intro"
-msgstr ""
-
-#: src/pingus_main.cpp:213
-msgid "Use OpenGL"
-msgstr ""
-
-#: src/pingus_main.cpp:215
-msgid "Use SDL"
-msgstr ""
-
-#: src/pingus_main.cpp:218
-msgid "Start in Window Mode"
-msgstr ""
-
-#: src/pingus_main.cpp:220
-msgid "Start in Fullscreen"
-msgstr ""
-
-#: src/pingus_main.cpp:222
-msgid "Set the refresh rate in fullscreen (default: 60)"
-msgstr ""
-
-#: src/pingus_main.cpp:223
-msgid "PATH"
-msgstr ""
-
-#: src/pingus_main.cpp:224
-msgid "Set the path to load the data files to 'path'"
-msgstr ""
-
-#: src/pingus_main.cpp:225 src/pingus_main.cpp:227 src/pingus_main.cpp:247
-#: src/pingus_main.cpp:280
-msgid "FILE"
-msgstr ""
-
-#: src/pingus_main.cpp:226
-msgid "Load a custom level from FILE"
-msgstr ""
-
-#: src/pingus_main.cpp:228
-msgid "Load a custom worldmap from FILE"
-msgstr ""
-
-#: src/pingus_main.cpp:230
-msgid "Loads the level editor"
-msgstr ""
-
-#: src/pingus_main.cpp:232
-msgid "Test a font"
-msgstr ""
-
-#: src/pingus_main.cpp:234
-msgid "Select language to use with Pingus"
-msgstr ""
-
-#: src/pingus_main.cpp:236
-msgid "List all available languages"
-msgstr ""
-
-#: src/pingus_main.cpp:238
+#: src/pingus_main.cpp:193
 msgid ""
 "Print some more messages to stdout, can be set multiple times to increase "
 "verbosity"
 msgstr ""
 
-#: src/pingus_main.cpp:240
+#: src/pingus_main.cpp:195
 msgid "Print version number and exit"
 msgstr ""
 
-#: src/pingus_main.cpp:242
-msgid "Disable automatic scrolling"
+#: src/pingus_main.cpp:198
+msgid "Use OpenGL"
 msgstr ""
 
-#: src/pingus_main.cpp:244
+#: src/pingus_main.cpp:200
+msgid "Use SDL"
+msgstr ""
+
+#: src/pingus_main.cpp:203
+msgid "Display:"
+msgstr ""
+
+#: src/pingus_main.cpp:205
+msgid "Start in Window Mode"
+msgstr ""
+
+#: src/pingus_main.cpp:207
+msgid "Start in Fullscreen"
+msgstr ""
+
+#: src/pingus_main.cpp:209
+msgid "Allow Window resize (buggy)"
+msgstr ""
+
+#: src/pingus_main.cpp:211
 msgid "Enable software cursor"
 msgstr ""
 
-#: src/pingus_main.cpp:246
+#: src/pingus_main.cpp:213
+msgid "Set the resolution for pingus (default: 800x600)"
+msgstr ""
+
+#: src/pingus_main.cpp:215
+msgid "Sound:"
+msgstr ""
+
+#: src/pingus_main.cpp:217
+msgid "Disable sound"
+msgstr ""
+
+#: src/pingus_main.cpp:219
+msgid "Disable music"
+msgstr ""
+
+#: src/pingus_main.cpp:223
+msgid "Select language to use with Pingus"
+msgstr ""
+
+#: src/pingus_main.cpp:225
+msgid "List all available languages"
+msgstr ""
+
+#: src/pingus_main.cpp:229
+msgid "Loads the level editor"
+msgstr ""
+
+#: src/pingus_main.cpp:231
+msgid "Test a font"
+msgstr ""
+
+#: src/pingus_main.cpp:233
+msgid "Shows the credits"
+msgstr ""
+
+#: src/pingus_main.cpp:235
+msgid "Misc Options:"
+msgstr ""
+
+#: src/pingus_main.cpp:236
+msgid "PATH"
+msgstr ""
+
+#: src/pingus_main.cpp:237
+msgid "Set the path to load the data files to 'path'"
+msgstr ""
+
+#: src/pingus_main.cpp:240
+msgid "Disable automatic scrolling"
+msgstr ""
+
+#: src/pingus_main.cpp:242
 msgid "Don't read ~/.pingus/config"
 msgstr ""
 
-#: src/pingus_main.cpp:248
+#: src/pingus_main.cpp:243 src/pingus_main.cpp:252 src/pingus_main.cpp:276
+msgid "FILE"
+msgstr ""
+
+#: src/pingus_main.cpp:244
 msgid ""
 "Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
 "speed up the game on slower machines"
 msgstr ""
 
-#: src/pingus_main.cpp:251
+#: src/pingus_main.cpp:247
 msgid "Uses the controller given in FILE"
 msgstr ""
 
-#: src/pingus_main.cpp:253
+#: src/pingus_main.cpp:249
 msgid "Debugging and experimental stuff:"
 msgstr ""
 
-#: src/pingus_main.cpp:255
+#: src/pingus_main.cpp:251
 msgid "Enables some features, only interesting to programmers"
 msgstr ""
 
-#: src/pingus_main.cpp:257
+#: src/pingus_main.cpp:253
+msgid "Load a custom worldmap from FILE"
+msgstr ""
+
+#: src/pingus_main.cpp:255
 msgid ""
 "Enable the output of debugging info, possibleOPTIONs are tiles, gametime, "
 "actions, sound, resources, gui,input, pathmgr"
 msgstr ""
 
-#: src/pingus_main.cpp:261
+#: src/pingus_main.cpp:259
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr ""
 
-#: src/pingus_main.cpp:263
+#: src/pingus_main.cpp:261
 msgid "Skip at most N frames"
 msgstr ""
 
-#: src/pingus_main.cpp:265
+#: src/pingus_main.cpp:263
 msgid "Set both min and max frameskip to N"
 msgstr ""
 
-#: src/pingus_main.cpp:267
+#: src/pingus_main.cpp:265
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr ""
 
-#: src/pingus_main.cpp:269
+#: src/pingus_main.cpp:267
 msgid "Prints the fps to stdout"
 msgstr ""
 
-#: src/pingus_main.cpp:271
+#: src/pingus_main.cpp:269
 msgid "Set the size of the map tiles (default: 32)"
 msgstr ""
 
-#: src/pingus_main.cpp:273
+#: src/pingus_main.cpp:271
 msgid "Disable some cpu intensive features"
 msgstr ""
 
-#: src/pingus_main.cpp:275
+#: src/pingus_main.cpp:273
 msgid "Reduces the CPU usage by issuing sleep()"
 msgstr ""
 
-#: src/pingus_main.cpp:277
-msgid "Shows the credits"
-msgstr ""
-
-#: src/pingus_main.cpp:279
+#: src/pingus_main.cpp:275
 msgid "Demo playing and recording:"
 msgstr ""
 
-#: src/pingus_main.cpp:281
+#: src/pingus_main.cpp:277
 msgid "Plays a demo session from FILE"
 msgstr ""
 
-#: src/pingus_main.cpp:283
+#: src/pingus_main.cpp:279
 msgid "Record demos for each played level"
 msgstr ""
 
-#: src/pingus_main.cpp:285
-msgid "Sound:"
-msgstr ""
-
-#: src/pingus_main.cpp:287
-msgid "Disable sound"
-msgstr ""
-
-#: src/pingus_main.cpp:289
-msgid "Disable music"
-msgstr ""
-
-#: src/pingus_main.cpp:350
+#: src/pingus_main.cpp:337
 msgid "Warning: Larger resolution than 800x600 will result in visual problems"
 msgstr ""
 
-#: src/pingus_main.cpp:695
+#: src/pingus_main.cpp:679
 msgid "PingusMain: Starting Main: "
 msgstr ""
 
-#: src/pingus_main.cpp:744
-msgid "PingusMain: Levelfile not found, ignoring: "
-msgstr ""
-
-#: src/pingus_main.cpp:849
+#: src/pingus_main.cpp:814
 msgid "Error caught from Pingus: "
 msgstr ""
 
-#: src/pingus_main.cpp:853
+#: src/pingus_main.cpp:818
 msgid "Pingus: Out of memory!"
 msgstr ""
 
-#: src/pingus_main.cpp:857
+#: src/pingus_main.cpp:822
 msgid "Pingus: Standard exception caught!:\n"
 msgstr ""
 
-#: src/pingus_main.cpp:861
+#: src/pingus_main.cpp:826
 msgid "Pingus: Unknown throw caught!"
-msgstr ""
-
-#: src/system.cpp:321
-msgid "Environment variable $HOME not set, fix that and start again."
 msgstr ""
 
 #: src/credits.cpp:82
@@ -432,7 +419,8 @@ msgstr ""
 msgid "_playing!"
 msgstr ""
 
-#: src/credits.cpp:276 src/pingus_menu.cpp:57
+#: src/credits.cpp:276 src/editor/panel.cpp:204
+#: src/editor/object_selector.cpp:316 src/pingus_menu.cpp:57
 msgid "Exit"
 msgstr ""
 
@@ -553,6 +541,266 @@ msgstr ""
 msgid "Screenshot: Couldn't write file: "
 msgstr ""
 
+#: src/editor/panel.cpp:153
+msgid "    New level"
+msgstr ""
+
+#: src/editor/panel.cpp:155
+msgid "Open level..."
+msgstr ""
+
+#: src/editor/panel.cpp:157
+msgid "Save level..."
+msgstr ""
+
+#: src/editor/panel.cpp:159
+msgid "Save level as..."
+msgstr ""
+
+#: src/editor/panel.cpp:162
+msgid "Play level..."
+msgstr ""
+
+#: src/editor/panel.cpp:165
+msgid "Configure actions"
+msgstr ""
+
+#: src/editor/panel.cpp:167
+msgid "Configure level"
+msgstr ""
+
+#: src/editor/panel.cpp:169
+msgid "Display object properties"
+msgstr ""
+
+#: src/editor/panel.cpp:171
+msgid "Show object insertion window"
+msgstr ""
+
+#: src/editor/panel.cpp:174
+msgid "Duplicate the selected objects"
+msgstr ""
+
+#: src/editor/panel.cpp:176
+msgid "Delete the selected objects"
+msgstr ""
+
+#: src/editor/panel.cpp:179
+msgid "Raise object to top"
+msgstr ""
+
+#: src/editor/panel.cpp:181
+msgid "Raise object"
+msgstr ""
+
+#: src/editor/panel.cpp:183
+msgid "Lower object"
+msgstr ""
+
+#: src/editor/panel.cpp:185
+msgid "Lower object to bottom"
+msgstr ""
+
+#: src/editor/panel.cpp:188
+msgid "Flip object horizontally"
+msgstr ""
+
+#: src/editor/panel.cpp:190
+msgid "Flip object vertically"
+msgstr ""
+
+#: src/editor/panel.cpp:193
+msgid "Rotate object 90 degree"
+msgstr ""
+
+#: src/editor/panel.cpp:195
+msgid "Rotate object -90 degree"
+msgstr ""
+
+#: src/editor/object_properties.cpp:40
+msgid "Object:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:41
+msgid "Nothing selected"
+msgstr ""
+
+#: src/editor/object_properties.cpp:50
+msgid "Transparent"
+msgstr ""
+
+#: src/editor/object_properties.cpp:51
+msgid "Solid"
+msgstr ""
+
+#: src/editor/object_properties.cpp:52
+msgid "Ground"
+msgstr ""
+
+#: src/editor/object_properties.cpp:53
+msgid "Bridge"
+msgstr ""
+
+#: src/editor/object_properties.cpp:54
+msgid "Water"
+msgstr ""
+
+#: src/editor/object_properties.cpp:55
+msgid "Lava"
+msgstr ""
+
+#: src/editor/object_properties.cpp:56
+msgid "Remove"
+msgstr ""
+
+#: src/editor/object_properties.cpp:61
+msgid "Direction:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:63
+msgid "Left"
+msgstr ""
+
+#: src/editor/object_properties.cpp:64
+msgid "Misc"
+msgstr ""
+
+#: src/editor/object_properties.cpp:65
+msgid "Right"
+msgstr ""
+
+#: src/editor/object_properties.cpp:70
+msgid "ReleaseRate:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:87
+msgid "Para-X:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:88
+msgid "Para-Y:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:96
+msgid "Scroll-X:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:97
+msgid "Scroll-Y:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:105
+msgid "Owner Id:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:109
+msgid "Z-Pos:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:116
+msgid "Color:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:128
+msgid "Small Stars:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:131
+msgid "Middle Stars:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:134
+msgid "Large Stars:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:142
+msgid "Repeat:"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:56
+msgid "Datadir"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:58
+msgid "Userdir"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:61
+msgid "Open"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:61 src/file_dialog.cpp:262
+msgid "Save"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:64 src/file_dialog.cpp:34
+msgid "Cancel"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:75
+msgid "Filename:"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:76
+msgid "Pathname:"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:102
+msgid "Open a level"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:102
+msgid "Save your level"
+msgstr ""
+
+#: src/editor/object_selector.cpp:307
+msgid "Entrance"
+msgstr ""
+
+#: src/editor/object_selector.cpp:308
+msgid "Groundpiece (ground)"
+msgstr ""
+
+#: src/editor/object_selector.cpp:309
+msgid "Groundpiece (solid)"
+msgstr ""
+
+#: src/editor/object_selector.cpp:310
+msgid "Groundpiece (bridge)"
+msgstr ""
+
+#: src/editor/object_selector.cpp:311
+msgid "Groundpiece (transparent)"
+msgstr ""
+
+#: src/editor/object_selector.cpp:312
+msgid "Groundpiece (remove)"
+msgstr ""
+
+#: src/editor/object_selector.cpp:313
+msgid "Hotspot"
+msgstr ""
+
+#: src/editor/object_selector.cpp:314
+msgid "Background"
+msgstr ""
+
+#: src/editor/object_selector.cpp:317
+msgid "Liquid"
+msgstr ""
+
+#: src/editor/object_selector.cpp:318
+msgid "Trap"
+msgstr ""
+
+#: src/editor/object_selector.cpp:319
+msgid "Weather"
+msgstr ""
+
+#: src/editor/object_selector.cpp:320
+msgid "Special Object"
+msgstr ""
+
 #: src/worldmap/worldmap.cpp:425
 msgid "...walking..."
 msgstr ""
@@ -577,16 +825,8 @@ msgstr ""
 msgid "locked"
 msgstr ""
 
-#: src/file_dialog.cpp:34
-msgid "Cancel"
-msgstr ""
-
 #: src/file_dialog.cpp:262
 msgid "Load"
-msgstr ""
-
-#: src/file_dialog.cpp:262
-msgid "Save"
 msgstr ""
 
 #: src/exit_menu.cpp:46 src/exit_menu.cpp:50
@@ -614,11 +854,11 @@ msgid "..:: Bye, bye ::.."
 msgstr ""
 
 #: src/pingus_menu.cpp:63
-msgid "Credits"
+msgid "Level Editor"
 msgstr ""
 
 #: src/pingus_menu.cpp:64
-msgid "..:: See the credits ::.."
+msgid "..:: Create your own levels ::.."
 msgstr ""
 
 #: src/pingus_menu.cpp:69
@@ -647,12 +887,10 @@ msgstr ""
 msgid "..:: Multiplayer Match ::.."
 msgstr ""
 
-#: src/pingus_menu.cpp:87
-msgid "Level Editor"
-msgstr ""
-
-#: src/pingus_menu.cpp:88
-msgid "..:: Create your own levels ::.."
+#: src/pingus_menu.cpp:85
+msgid ""
+"..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
+"fullscreen   ::   F12: screenshot ::.."
 msgstr ""
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:5

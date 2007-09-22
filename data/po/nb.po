@@ -12,19 +12,18 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"#-#-#-#-#  no.po (0.6.0)  #-#-#-#-#\n"
 "Project-Id-Version: 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-16 20:03+0200\n"
+"POT-Creation-Date: 2007-09-22 00:35+0200\n"
 "PO-Revision-Date: 2003-08-24 21:08+0200\n"
 "Last-Translator: Skule Solvang <sk-so@online.no>\n"
 "Language-Team: no <sk-so@online.no>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  no.po (0.6.0)  #-#-#-#-#\n"
 
-#: src/game_time.cpp:69
-#, c-format
+#: src/game_time.cpp:66
 msgid "unlimited"
 msgstr "uendelig"
 
@@ -157,99 +156,73 @@ msgstr "Forfatter: "
 msgid "Filename: "
 msgstr "Filnavn: "
 
-#: src/pingus_main.cpp:100
-msgid "| segfault_handler: catched a SIGSEGV."
-msgstr "| segfault_handler: mottok en SIGSEV."
-
-#: src/pingus_main.cpp:102
-msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
-msgstr "| Woops, Pingus krasjet akkurat, gratulerer du har funnet en bug."
-
-#: src/pingus_main.cpp:103
-msgid ""
-"| Please write a little bug report to <grumbel@gmx.de>, include informations"
-msgstr ""
-"| Vennligst skriv en liten bug-rapport til <grumbel@gmx.de>, legg ved "
-"informasjon"
-
-#: src/pingus_main.cpp:104
-msgid "| where exacly the SIGSEGV occured and how to reproduce it."
-msgstr "| om hvor SIGSEV'en skjedde og hvordan reprodusere den."
-
-#: src/pingus_main.cpp:105
-msgid "| Also try include a backtrace, you can get it like this:"
-msgstr "| Prøv også å legge ved en backtrace, du kan lage den slik:"
-
-#: src/pingus_main.cpp:111
-msgid "| If that doesn't work, try this:"
-msgstr "| Hvis det ikke virker, prøv dette:"
-
-#: src/pingus_main.cpp:115
-msgid "| [play until it crashes again]"
-msgstr "| [spill til det krasjer igjen]"
-
-#: src/pingus_main.cpp:123
-msgid "| Warning: Pingus recieved a SIGINT, exiting now."
-msgstr "| Advarsel: Pingus mottok en SIGINT, avslutter nå."
-
-#: src/pingus_main.cpp:205
-msgid "Options:"
-msgstr "Valg:"
-
-#: src/pingus_main.cpp:207
-msgid "Set the resolution for pingus (default: 800x600)"
-msgstr "Velg oppløsning for pingus (standard: 800x600)"
-
-#: src/pingus_main.cpp:209
+#: src/pingus_main.cpp:191
 msgid "Displays this help"
 msgstr "Viser denne hjelpen"
 
-#: src/pingus_main.cpp:211
-msgid "Disable intro"
-msgstr "Deaktiver intro"
+#: src/pingus_main.cpp:193
+#, fuzzy
+msgid ""
+"Print some more messages to stdout, can be set multiple times to increase "
+"verbosity"
+msgstr "Skriv flere meldinger til stdout, kan bli slått på"
 
-#: src/pingus_main.cpp:213
+#: src/pingus_main.cpp:195
+#, fuzzy
+msgid "Print version number and exit"
+msgstr "Viser versjonsnummer og avslutter"
+
+#: src/pingus_main.cpp:198
 msgid "Use OpenGL"
 msgstr "Bruk OpenGL"
 
-#: src/pingus_main.cpp:215
+#: src/pingus_main.cpp:200
 msgid "Use SDL"
 msgstr ""
 
-#: src/pingus_main.cpp:217
+#: src/pingus_main.cpp:203
+msgid "Display:"
+msgstr ""
+
+#: src/pingus_main.cpp:205
 msgid "Start in Window Mode"
 msgstr "Start i Vindu Modus"
 
-#: src/pingus_main.cpp:219
+#: src/pingus_main.cpp:207
 msgid "Start in Fullscreen"
 msgstr "Start i Fullskjerm"
 
-#: src/pingus_main.cpp:221
-#, fuzzy
-msgid "Set the refresh rate in fullscreen (default: 60)"
+#: src/pingus_main.cpp:209
+msgid "Allow Window resize (buggy)"
+msgstr ""
+
+#: src/pingus_main.cpp:211
+msgid "Enable software cursor"
+msgstr "Aktiver programvare peker"
+
+#: src/pingus_main.cpp:213
+msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "Velg oppløsning for pingus (standard: 800x600)"
 
-#: src/pingus_main.cpp:222
-msgid "PATH"
-msgstr ""
+#: src/pingus_main.cpp:215
+msgid "Sound:"
+msgstr "Lyd:"
+
+#: src/pingus_main.cpp:217
+msgid "Disable sound"
+msgstr "Deaktiver lyd"
+
+#: src/pingus_main.cpp:219
+msgid "Disable music"
+msgstr "Deaktiver musikk"
 
 #: src/pingus_main.cpp:223
-msgid "Set the path to load the data files to 'path'"
+msgid "Select language to use with Pingus"
 msgstr ""
 
-#: src/pingus_main.cpp:224 src/pingus_main.cpp:226 src/pingus_main.cpp:244
-#: src/pingus_main.cpp:277
-#, fuzzy
-msgid "FILE"
-msgstr "FIL     "
-
 #: src/pingus_main.cpp:225
-msgid "Load a custom level from FILE"
-msgstr "Last et custom brett fra FIL"
-
-#: src/pingus_main.cpp:227
-msgid "Load a custom worldmap from FILE"
-msgstr "Last et custom verdenskart fra FIL"
+msgid "List all available languages"
+msgstr ""
 
 #: src/pingus_main.cpp:229
 #, fuzzy
@@ -261,193 +234,134 @@ msgid "Test a font"
 msgstr ""
 
 #: src/pingus_main.cpp:233
-msgid "Select language for use with Pingus"
+msgid "Shows the credits"
 msgstr ""
 
 #: src/pingus_main.cpp:235
 #, fuzzy
-msgid ""
-"Print some more messages to stdout, can be set multiple times to increase "
-"verbosity"
-msgstr "Skriv flere meldinger til stdout, kan bli slått på"
+msgid "Misc Options:"
+msgstr "Valg:"
+
+#: src/pingus_main.cpp:236
+msgid "PATH"
+msgstr ""
 
 #: src/pingus_main.cpp:237
-msgid "Prints version number and exit"
-msgstr "Viser versjonsnummer og avslutter"
+msgid "Set the path to load the data files to 'path'"
+msgstr ""
 
-#: src/pingus_main.cpp:239
+#: src/pingus_main.cpp:240
 msgid "Disable automatic scrolling"
 msgstr "Deaktiver automatisk rulling"
 
-#: src/pingus_main.cpp:241
-msgid "Enable software cursor"
-msgstr "Aktiver programvare peker"
-
-#: src/pingus_main.cpp:243
+#: src/pingus_main.cpp:242
 msgid "Don't read ~/.pingus/config"
 msgstr "Ikke les ~/.pingus/config"
 
-#: src/pingus_main.cpp:245
+#: src/pingus_main.cpp:243 src/pingus_main.cpp:252 src/pingus_main.cpp:276
+#, fuzzy
+msgid "FILE"
+msgstr "FIL     "
+
+#: src/pingus_main.cpp:244
 #, fuzzy
 msgid ""
 "Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
 "speed up the game on slower machines"
 msgstr "mink CPU bruk, kan øke farten på tregere maskiner"
 
-#: src/pingus_main.cpp:248
+#: src/pingus_main.cpp:247
 msgid "Uses the controller given in FILE"
 msgstr "Bruker kontrolleren gitt i FIL"
 
-#: src/pingus_main.cpp:250
+#: src/pingus_main.cpp:249
 msgid "Debugging and experimental stuff:"
 msgstr "Avlusing og eksperimentelle ting"
 
-#: src/pingus_main.cpp:252
-msgid "Enables some features, only interesting programmers"
+#: src/pingus_main.cpp:251
+#, fuzzy
+msgid "Enables some features, only interesting to programmers"
 msgstr "Aktiver noen egenskaper som kun er interessante for programmerere"
 
-#: src/pingus_main.cpp:254
+#: src/pingus_main.cpp:253
+msgid "Load a custom worldmap from FILE"
+msgstr "Last et custom verdenskart fra FIL"
+
+#: src/pingus_main.cpp:255
 #, fuzzy
 msgid ""
-"Enable the output of debugging infos, possibleOPTION's are tiles, gametime, "
+"Enable the output of debugging info, possibleOPTIONs are tiles, gametime, "
 "actions, sound, resources, gui,input, pathmgr"
 msgstr "VALG er, fliser, spilletid, hendelser, lyd, resurser, grensesnitt,"
 
-#: src/pingus_main.cpp:258
+#: src/pingus_main.cpp:259
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "Hopp ihvertfall N bilder, større verdier gjør spillet raskere"
 
-#: src/pingus_main.cpp:260
+#: src/pingus_main.cpp:261
 msgid "Skip at most N frames"
 msgstr "Hopp mest N bilder"
 
-#: src/pingus_main.cpp:262
+#: src/pingus_main.cpp:263
 msgid "Set both min and max frameskip to N"
 msgstr "Sett både min og max bildehopp til N"
 
-#: src/pingus_main.cpp:264
+#: src/pingus_main.cpp:265
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Set spillfart (0=raskest, >0=senere"
 
-#: src/pingus_main.cpp:266
+#: src/pingus_main.cpp:267
 msgid "Prints the fps to stdout"
 msgstr "Skriver fps til stdout"
 
-#: src/pingus_main.cpp:268
+#: src/pingus_main.cpp:269
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Set størrelsen på kartflisene (standard: 32)"
 
-#: src/pingus_main.cpp:270
+#: src/pingus_main.cpp:271
 msgid "Disable some cpu intensive features"
 msgstr "Deaktiver noen cpu intensive oppgaver"
 
-#: src/pingus_main.cpp:272
+#: src/pingus_main.cpp:273
 msgid "Reduces the CPU usage by issuing sleep()"
 msgstr "Minsker CPU bruken ved å beordre sleep()"
 
-#: src/pingus_main.cpp:274
-msgid "Shows the credits"
-msgstr ""
-
-#: src/pingus_main.cpp:276
+#: src/pingus_main.cpp:275
 msgid "Demo playing and recording:"
 msgstr "Demo spiller og tar opp:"
 
-#: src/pingus_main.cpp:278
+#: src/pingus_main.cpp:277
 msgid "Plays a demo session from FILE"
 msgstr "Spiller en demo fra FIL"
 
-#: src/pingus_main.cpp:280
+#: src/pingus_main.cpp:279
 msgid "Record demos for each played level"
 msgstr "Ta opp demoer på hvert spillt brett"
 
-#: src/pingus_main.cpp:282
-msgid "Sound:"
-msgstr "Lyd:"
-
-#: src/pingus_main.cpp:284
-msgid "Disable sound"
-msgstr "Deaktiver lyd"
-
-#: src/pingus_main.cpp:286
-msgid "Disable music"
-msgstr "Deaktiver musikk"
-
-#: src/pingus_main.cpp:347
+#: src/pingus_main.cpp:337
 msgid "Warning: Larger resolution than 800x600 will result in visual problems"
 msgstr ""
 "Advarsel: Høyere oppløsning en 800x600 vil forårsake visuelle problemer"
 
-#: src/pingus_main.cpp:656
-#, fuzzy
-msgid "language:                "
-msgstr "fullskjerm:              "
-
-#: src/pingus_main.cpp:659
-msgid "sound support:           enabled"
-msgstr "lyd støtte:           aktivert"
-
-#: src/pingus_main.cpp:661
-msgid "sound support:          disabled"
-msgstr "lyd støtte:          deaktivert"
-
-#: src/pingus_main.cpp:664
-msgid "music support:           enabled"
-msgstr "musikk støtte:           aktivert"
-
-#: src/pingus_main.cpp:666
-msgid "music support:          disabled"
-msgstr "musikk støtte:          deaktivert"
-
-#: src/pingus_main.cpp:668
-#, fuzzy
-msgid "resolution:              "
-msgstr "oppløsning satt til:       "
-
-#: src/pingus_main.cpp:669
-msgid "fullscreen:              "
-msgstr "fullskjerm:              "
-
-#: src/pingus_main.cpp:670
-msgid " enabled"
-msgstr " aktivert"
-
-#: src/pingus_main.cpp:670
-msgid "disabled"
-msgstr " deaktivert"
-
-#: src/pingus_main.cpp:673
-#, fuzzy
-msgid "using OpenGL:            "
-msgstr "fullskjerm:              "
-
-#: src/pingus_main.cpp:682
+#: src/pingus_main.cpp:679
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Starter Main: "
 
-#: src/pingus_main.cpp:731
-msgid "PingusMain: Levelfile not found, ignoring: "
-msgstr "PingusMain: Brettfil ikke funnet, ignorerer: "
-
-#: src/pingus_main.cpp:834
+#: src/pingus_main.cpp:814
 msgid "Error caught from Pingus: "
 msgstr "Fikk feil fra Pingus: "
 
-#: src/pingus_main.cpp:838
+#: src/pingus_main.cpp:818
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Ikke nok minne!"
 
-#: src/pingus_main.cpp:842
+#: src/pingus_main.cpp:822
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Fikk standard unntak!:\n"
 
-#: src/pingus_main.cpp:846
+#: src/pingus_main.cpp:826
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Fikk ukjent kast!"
-
-#: src/system.cpp:321
-msgid "Environment variable $HOME not set, fix that and start again."
-msgstr "Miljøvariabel $HOME er ikke satt, fiks det og start om igjen."
 
 #: src/credits.cpp:82
 msgid "-Idea"
@@ -490,39 +404,40 @@ msgstr "-Historie"
 msgid "-Translation"
 msgstr "-Oversetting"
 
-#: src/credits.cpp:158
+#: src/credits.cpp:159
 msgid "-Special"
 msgstr "-Spesielt"
 
-#: src/credits.cpp:159
+#: src/credits.cpp:160
 msgid "-Thanks to"
 msgstr "-Takk til"
 
-#: src/credits.cpp:203
+#: src/credits.cpp:204
 msgid "_And a very Special Thanks"
 msgstr "_Og en veldig spesiell takk"
 
-#: src/credits.cpp:204
+#: src/credits.cpp:205
 msgid "_to all the people who"
 msgstr "_til alle folkene som"
 
-#: src/credits.cpp:205
+#: src/credits.cpp:206
 msgid "_contribute to"
 msgstr "_bidrar til"
 
-#: src/credits.cpp:206
+#: src/credits.cpp:207
 msgid "_Free Software!"
 msgstr "_Åpen programvare!"
 
-#: src/credits.cpp:212
+#: src/credits.cpp:213
 msgid "_Thank you for"
 msgstr "_Takk for at"
 
-#: src/credits.cpp:213
+#: src/credits.cpp:214
 msgid "_playing!"
 msgstr "_du spiller!"
 
-#: src/credits.cpp:275 src/pingus_menu.cpp:57
+#: src/credits.cpp:276 src/editor/panel.cpp:204
+#: src/editor/object_selector.cpp:316 src/pingus_menu.cpp:57
 msgid "Exit"
 msgstr "Avslutt"
 
@@ -603,8 +518,8 @@ msgid "Time left: "
 msgstr "Tid igjen: "
 
 #: src/components/pingus_counter.cpp:49
-#, c-format, boost-format
-msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
+#, fuzzy, c-format, boost-format
+msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
 msgstr "Sluppet ut:%3d/%3d   Ute:%3d   Reddet:%3d/%3d"
 
 #: src/file_dialog_item.cpp:83
@@ -632,13 +547,9 @@ msgstr ""
 msgid "Couldn't open: "
 msgstr "Kunne ikke åpne: "
 
-#: src/config.cpp:171
+#: src/config.cpp:171 src/config.cpp:205
 msgid "Unexpected char: '"
 msgstr "Uventet tegn: '"
-
-#: src/config.cpp:205
-msgid "Unexpected char '"
-msgstr "Uventet tegn '"
 
 #: src/screenshot.cpp:38
 msgid "Screenshot: Saving screenshot to: "
@@ -652,9 +563,295 @@ msgstr "Skjermbilde: Ferdig med skjermbilde."
 msgid "Screenshot: Couldn't write file: "
 msgstr "Skjermbilde: Kunne ikke skrive fil: "
 
-#: src/fps_counter.cpp:44
-msgid "unknown"
-msgstr "ukjent"
+#: src/editor/panel.cpp:153
+#, fuzzy
+msgid "    New level"
+msgstr "F5 - last et brett"
+
+#: src/editor/panel.cpp:155
+msgid "Open level..."
+msgstr ""
+
+#: src/editor/panel.cpp:157
+#, fuzzy
+msgid "Save level..."
+msgstr "Lagre dette brettet (F6)"
+
+#: src/editor/panel.cpp:159
+#, fuzzy
+msgid "Save level as..."
+msgstr "Lagre dette brettet (F6)"
+
+#: src/editor/panel.cpp:162
+msgid "Play level..."
+msgstr ""
+
+#: src/editor/panel.cpp:165
+msgid "Configure actions"
+msgstr ""
+
+#: src/editor/panel.cpp:167
+#, fuzzy
+msgid "Configure level"
+msgstr "Lagre dette brettet (F6)"
+
+#: src/editor/panel.cpp:169
+#, fuzzy
+msgid "Display object properties"
+msgstr "Rediger Objekt Egenskaper"
+
+#: src/editor/panel.cpp:171
+msgid "Show object insertion window"
+msgstr ""
+
+#: src/editor/panel.cpp:174
+#, fuzzy
+msgid "Duplicate the selected objects"
+msgstr "Duplikker gjeldende objekt (d)"
+
+#: src/editor/panel.cpp:176
+#, fuzzy
+msgid "Delete the selected objects"
+msgstr "Remove - fjern valgt objekt"
+
+#: src/editor/panel.cpp:179
+msgid "Raise object to top"
+msgstr ""
+
+#: src/editor/panel.cpp:181
+msgid "Raise object"
+msgstr ""
+
+#: src/editor/panel.cpp:183
+msgid "Lower object"
+msgstr ""
+
+#: src/editor/panel.cpp:185
+msgid "Lower object to bottom"
+msgstr ""
+
+#: src/editor/panel.cpp:188
+msgid "Flip object horizontally"
+msgstr ""
+
+#: src/editor/panel.cpp:190
+msgid "Flip object vertically"
+msgstr ""
+
+#: src/editor/panel.cpp:193
+msgid "Rotate object 90 degree"
+msgstr ""
+
+#: src/editor/panel.cpp:195
+msgid "Rotate object -90 degree"
+msgstr ""
+
+#: src/editor/object_properties.cpp:40
+msgid "Object:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:41
+msgid "Nothing selected"
+msgstr ""
+
+#: src/editor/object_properties.cpp:50
+#, fuzzy
+msgid "Transparent"
+msgstr "-Oversetting"
+
+#: src/editor/object_properties.cpp:51
+#, fuzzy
+msgid "Solid"
+msgstr "Slider"
+
+#: src/editor/object_properties.cpp:52
+#, fuzzy
+msgid "Ground"
+msgstr "Lyd:"
+
+#: src/editor/object_properties.cpp:53
+#, fuzzy
+msgid "Bridge"
+msgstr "Bridger"
+
+#: src/editor/object_properties.cpp:54
+#, fuzzy
+msgid "Water"
+msgstr "Waiter"
+
+#: src/editor/object_properties.cpp:55
+#, fuzzy
+msgid "Lava"
+msgstr "Gå ut?"
+
+#: src/editor/object_properties.cpp:56
+msgid "Remove"
+msgstr ""
+
+#: src/editor/object_properties.cpp:61
+#, fuzzy
+msgid "Direction:"
+msgstr "Valg:"
+
+#: src/editor/object_properties.cpp:63
+msgid "Left"
+msgstr ""
+
+#: src/editor/object_properties.cpp:64
+#, fuzzy
+msgid "Misc"
+msgstr "-Musikk"
+
+#: src/editor/object_properties.cpp:65
+msgid "Right"
+msgstr ""
+
+#: src/editor/object_properties.cpp:70
+msgid "ReleaseRate:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:87
+msgid "Para-X:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:88
+msgid "Para-Y:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:96
+msgid "Scroll-X:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:97
+msgid "Scroll-Y:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:105
+msgid "Owner Id:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:109
+msgid "Z-Pos:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:116
+msgid "Color:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:128
+msgid "Small Stars:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:131
+msgid "Middle Stars:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:134
+msgid "Large Stars:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:142
+msgid "Repeat:"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:56
+msgid "Datadir"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:58
+msgid "Userdir"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:61
+msgid "Open"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:61 src/file_dialog.cpp:262
+#, fuzzy
+msgid "Save"
+msgstr "Reddet: "
+
+#: src/editor/file_dialog.cpp:64 src/file_dialog.cpp:34
+msgid "Cancel"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:75
+#, fuzzy
+msgid "Filename:"
+msgstr "Filnavn: "
+
+#: src/editor/file_dialog.cpp:76
+msgid "Pathname:"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:102
+msgid "Open a level"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:102
+#, fuzzy
+msgid "Save your level"
+msgstr "Lagre dette brettet (F6)"
+
+#: src/editor/object_selector.cpp:307
+#, fuzzy
+msgid "Entrance"
+msgstr "e - Inngang"
+
+#: src/editor/object_selector.cpp:308
+#, fuzzy
+msgid "Groundpiece (ground)"
+msgstr "g - Bakkestykke (mark)"
+
+#: src/editor/object_selector.cpp:309
+#, fuzzy
+msgid "Groundpiece (solid)"
+msgstr "s - Bakkestykke (solid)"
+
+#: src/editor/object_selector.cpp:310
+#, fuzzy
+msgid "Groundpiece (bridge)"
+msgstr "b - Bakkestykke (bro)"
+
+#: src/editor/object_selector.cpp:311
+#, fuzzy
+msgid "Groundpiece (transparent)"
+msgstr "n - Bakkestykke (gjennomsiktig)"
+
+#: src/editor/object_selector.cpp:312
+#, fuzzy
+msgid "Groundpiece (remove)"
+msgstr "r - Bakkestykke (fjern)"
+
+#: src/editor/object_selector.cpp:313
+#, fuzzy
+msgid "Hotspot"
+msgstr "h - Hotspot"
+
+#: src/editor/object_selector.cpp:314
+#, fuzzy
+msgid "Background"
+msgstr "z - Bakgrunn"
+
+#: src/editor/object_selector.cpp:317
+#, fuzzy
+msgid "Liquid"
+msgstr "l - Flytende"
+
+#: src/editor/object_selector.cpp:318
+#, fuzzy
+msgid "Trap"
+msgstr "t - Feller"
+
+#: src/editor/object_selector.cpp:319
+#, fuzzy
+msgid "Weather"
+msgstr "w - Værtype"
+
+#: src/editor/object_selector.cpp:320
+#, fuzzy
+msgid "Special Object"
+msgstr "-Spesielt"
 
 #: src/worldmap/worldmap.cpp:425
 msgid "...walking..."
@@ -674,25 +871,16 @@ msgstr "Gå ut?"
 
 #: src/worldmap/manager.cpp:207
 #, fuzzy
-msgid "Enter"
+msgid "Enter?"
 msgstr "Gå inn?"
 
 #: src/worldmap/level_dot.cpp:153 src/worldmap/level_dot.cpp:163
 msgid "locked"
 msgstr "låst"
 
-#: src/file_dialog.cpp:34
-msgid "Cancel"
-msgstr ""
-
 #: src/file_dialog.cpp:262
 msgid "Load"
 msgstr ""
-
-#: src/file_dialog.cpp:262
-#, fuzzy
-msgid "Save"
-msgstr "Reddet: "
 
 #: src/exit_menu.cpp:46 src/exit_menu.cpp:50
 msgid "Yes"
@@ -719,13 +907,13 @@ msgid "..:: Bye, bye ::.."
 msgstr "..:: Ha-det ::.."
 
 #: src/pingus_menu.cpp:63
-msgid "Credits"
-msgstr "Kreditter"
+msgid "Level Editor"
+msgstr ""
 
 #: src/pingus_menu.cpp:64
 #, fuzzy
-msgid "..:: See the credits ::.."
-msgstr "..:: Start spillet ::.."
+msgid "..:: Create your own levels ::.."
+msgstr "..:: Start et contrib brett ::.."
 
 #: src/pingus_menu.cpp:69
 #, fuzzy
@@ -759,20 +947,17 @@ msgstr "Fler"
 msgid "..:: Multiplayer Match ::.."
 msgstr "..:: Flerspiller moduser... eksperimentelle saker ::.."
 
-#: src/pingus_menu.cpp:87
-msgid "Level Editor"
+#: src/pingus_menu.cpp:85
+msgid ""
+"..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
+"fullscreen   ::   F12: screenshot ::.."
 msgstr ""
 
-#: src/pingus_menu.cpp:88
-#, fuzzy
-msgid "..:: Create your own levels ::.."
-msgstr "..:: Start et contrib brett ::.."
-
-#: data/levels/tutorial/basher-tutorial-grumbel.pingus
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
 msgid "If the way is blocked, bash away"
 msgstr "Hvis veien er blokkert, slå i vei"
 
-#: data/levels/tutorial/basher-tutorial-grumbel.pingus
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus:6
 msgid ""
 "Similar to the Digger action that you already know from previous levels, "
 "there is also an action that allows the Pingus to dig horizontally, as "
@@ -784,11 +969,11 @@ msgstr ""
 "motsetning til den vertikale gravingen en Digger gir deg. Denne nye "
 "handlingen kalles Basher. "
 
-#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:5
 msgid "Sacrifice a few and save the rest"
 msgstr "Ofre noen få og redd resten"
 
-#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:6
 msgid ""
 "Sometimes no other actions are available, so you have to bomb your way "
 "through the ground. The Pingus can do this by actually self- destructing. "
@@ -800,11 +985,11 @@ msgstr ""
 "ta livet av dem, men noen ganger er det nødvendig å ofre noen for å redde "
 "resten. "
 
-#: data/levels/tutorial/digger-tutorial2-grumbel.pingus
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:5
 msgid "Learning to dig"
 msgstr "Lær å grave"
 
-#: data/levels/tutorial/digger-tutorial2-grumbel.pingus
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:6
 msgid ""
 "This is your first mission. As always, it's pretty easy. All you have to do "
 "is to give a Pingu the command to dig a hole into the ground so that they "
@@ -814,11 +999,11 @@ msgstr ""
 "trenger å gjøre er å gi en Pingu ordre om å grave et hull i bakken så du kan "
 "nå utgangen. Dette kan gjøres bare ved å klikke på en Pingu. "
 
-#: data/levels/tutorial/floater-tutorial-grumbel.pingus
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus:5
 msgid "Float or Die"
 msgstr "Flyt eller dø"
 
-#: data/levels/tutorial/floater-tutorial-grumbel.pingus
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus:6
 msgid ""
 "Well done in mission one! Now let's start the next one. This time you will "
 "need to equip your Pingus with a little propeller, so that they can float to "
@@ -830,11 +1015,11 @@ msgstr ""
 "bakken. Hvis Pinguser faller for langt vil de ikke overleve fallet, så hold "
 "øynene åpne! "
 
-#: data/levels/tutorial/jumper-tutorial-grumbel.pingus
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:5
 msgid "Jump for joy"
 msgstr "Hopp av glede"
 
-#: data/levels/tutorial/jumper-tutorial-grumbel.pingus
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:6
 msgid ""
 "Sometimes a Pingu needs to reach a platform that is far away, but not "
 "reachable by walking. That's when the Jumper comes in handy - it allows the "
@@ -844,11 +1029,11 @@ msgstr ""
 "kan nås ved å gå. Det er da en Jumper er hendig - den tillater Pingusen å "
 "gjøre et lite hopp som gjør at den kan nå plattformen. "
 
-#: data/levels/tutorial/miner-tutorial2-grumbel.pingus
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:5
 msgid "Miner's heaven"
 msgstr "Gruvearbeiderens himmel"
 
-#: data/levels/tutorial/miner-tutorial2-grumbel.pingus
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:6
 msgid ""
 "Another action hits the street - another digging action, this time a "
 "diagonal one. It allows a Pingu to dig diagonally through ground, thus "
@@ -859,20 +1044,18 @@ msgstr ""
 "lager en vei for Pingusene som kommer etter. Handlingen kalles Miner. "
 
 #: data/levels/tutorial/placeholder.pingus:5
-#: data/levels/tutorial/placeholder.pingus
 msgid "--- Empty Placeholder Level ---"
 msgstr ""
 
 #: data/levels/tutorial/placeholder.pingus:6
-#: data/levels/tutorial/placeholder.pingus
 msgid "This Level is not playable and EMPTY!"
 msgstr ""
 
-#: data/levels/tutorial/snow10-grumbel.pingus
+#: data/levels/tutorial/snow10-grumbel.pingus:5
 msgid "Panic Island (float/bash)"
 msgstr "Panikkøya (flyt/slå)"
 
-#: data/levels/tutorial/snow10-grumbel.pingus
+#: data/levels/tutorial/snow10-grumbel.pingus:6
 msgid ""
 "While the previous levels have not required much quick action from you, this "
 "one gets a bit trickier. The Pingus are coming out of two entrances in "
@@ -882,11 +1065,11 @@ msgstr ""
 "blir litt vanskeligere. Pingusene kommer ut av to innganger i parallel og "
 "det er din jobb å koordinere de to gruppene på en fornuftig måte. "
 
-#: data/levels/tutorial/snow11-grumbel.pingus
+#: data/levels/tutorial/snow11-grumbel.pingus:5
 msgid "Jump'n Bump... and Bash..."
 msgstr "Hopp, sprett... og slå..."
 
-#: data/levels/tutorial/snow11-grumbel.pingus
+#: data/levels/tutorial/snow11-grumbel.pingus:6
 msgid ""
 "It's panic time again. The Pingus will not come out very fast, but since "
 "they turn around when they hit walls you will soon have some trouble "
@@ -898,11 +1081,11 @@ msgstr ""
 "Siden du kun trenger å redde 5 burde det la seg gjøre, men hvis alt annet "
 "feiler bruk pause-modusen ('p') for å få oversikten igjen. "
 
-#: data/levels/tutorial/snow12-grumbel.pingus
+#: data/levels/tutorial/snow12-grumbel.pingus:5
 msgid "Two groups in parallel, coordinate wisely"
 msgstr "To grupper i parallel, koordiner smart"
 
-#: data/levels/tutorial/snow12-grumbel.pingus
+#: data/levels/tutorial/snow12-grumbel.pingus:6
 msgid ""
 "You have two groups to coordinate this time. No need to panic, since this "
 "level gives you enough time to think your actions through. No more tips this "
@@ -912,11 +1095,11 @@ msgstr ""
 "dette brettet gir deg nok tid til å tenke gjennom handlingene dine. Ingen "
 "flere tips denne gangen, men lykke til! "
 
-#: data/levels/tutorial/snow14-grumbel.pingus
+#: data/levels/tutorial/snow14-grumbel.pingus:5
 msgid "Block'a Rock"
 msgstr "Blokk og spreng"
 
-#: data/levels/tutorial/snow14-grumbel.pingus
+#: data/levels/tutorial/snow14-grumbel.pingus:6
 msgid ""
 "Once again it's time to combine the stuff you have learned in your previous "
 "levels. Blast your way free and make sure you also keep the rest of the "
@@ -926,11 +1109,11 @@ msgstr ""
 "brettene. Spreng deg vei og sørg for at du også holder resten av Pingusene "
 "under kontroll. Blocker handlingen vil være hjelpsom· "
 
-#: data/levels/tutorial/snow15-grumbel.pingus
+#: data/levels/tutorial/snow15-grumbel.pingus:5
 msgid "Climb, Climber,... Boom!"
 msgstr "Klatre, klatrer,... Boom!"
 
-#: data/levels/tutorial/snow15-grumbel.pingus
+#: data/levels/tutorial/snow15-grumbel.pingus:6
 msgid ""
 "As you might have already figured out from previous levels, you often have "
 "to combine different actions to get the job done. Due to the lack of a "
@@ -942,11 +1125,11 @@ msgstr ""
 "handling i dette brettet må en Bomber trå til, men hvordan kan den nå "
 "plassen som skal bombes? "
 
-#: data/levels/tutorial/snow16-grumbel.pingus
+#: data/levels/tutorial/snow16-grumbel.pingus:5
 msgid "Bridging gets more complicated..."
 msgstr "Brobygging blir mer komplisert..."
 
-#: data/levels/tutorial/snow16-grumbel.pingus
+#: data/levels/tutorial/snow16-grumbel.pingus:6
 msgid ""
 "Once again you have to combine actions carefully and wisely. If you don't "
 "you could end up in the hole just before the exit, so think about how to "
@@ -955,11 +1138,11 @@ msgstr ""
 "Nok en gang må du kombinere handlinger nøye og klokt. Hvis ikke kan du ende "
 "opp i hullet rett før utgangen, så tenk på hvordan du kan unngå det. "
 
-#: data/levels/tutorial/snow17-grumbel.pingus
+#: data/levels/tutorial/snow17-grumbel.pingus:5
 msgid "If too high, your Pingu will die..."
 msgstr "For høyt, og Pingusene dine vil dø..."
 
-#: data/levels/tutorial/snow17-grumbel.pingus
+#: data/levels/tutorial/snow17-grumbel.pingus:6
 msgid ""
 "Teamwork is the way to the exit this time. You don't have enough Floaters to "
 "reach the exit, so just send a few and let them prepare the path for the "
@@ -968,11 +1151,11 @@ msgstr ""
 "Samarbeid er veien til utgangen denne gangen. Du har ikke nok Floatere til å "
 "nå utgangen, så du må sende noen få og la dem klargjøre veien for resten. "
 
-#: data/levels/tutorial/snow19-grumbel.pingus
+#: data/levels/tutorial/snow19-grumbel.pingus:5
 msgid "Learn to use the bridge"
 msgstr "Lær og bruke broen"
 
-#: data/levels/tutorial/snow19-grumbel.pingus
+#: data/levels/tutorial/snow19-grumbel.pingus:6
 msgid ""
 "If no Jumper is at hand and a large hole needs to be passed, a bridge can be "
 "pretty helpful. It takes some time to build, but unlike the jumper action it "
@@ -983,11 +1166,11 @@ msgstr ""
 "forhold til Jumper handlingen tillater den også de følgende Pingusene å nå "
 "den andre enden. "
 
-#: data/levels/tutorial/snow20-grumbel.pingus
+#: data/levels/tutorial/snow20-grumbel.pingus:5
 msgid "Three solutions, it's up to you"
 msgstr "Tre løsninger, det er opp til deg"
 
-#: data/levels/tutorial/snow20-grumbel.pingus
+#: data/levels/tutorial/snow20-grumbel.pingus:6
 msgid ""
 "Now that you've learned all the actions, it's time for some more practice. "
 "This level presents you with at least three different ways to solve it. It's "
@@ -996,11 +1179,11 @@ msgstr ""
 "Nå som du har lært alle handlingene er det på tide å øve litt mer. Det er "
 "minst tre måter å løse dette brettet på. Hvilken du velger er opp til deg. "
 
-#: data/levels/tutorial/snow21-grumbel.pingus
+#: data/levels/tutorial/snow21-grumbel.pingus:5
 msgid "Climb, Climber, climb... and build a bridge"
 msgstr "Klatre, klatrer, klatre... og bygg en bro"
 
-#: data/levels/tutorial/snow21-grumbel.pingus
+#: data/levels/tutorial/snow21-grumbel.pingus:6
 msgid ""
 "Once again you get access to a new action. The Climber action allows a Pingu "
 "to climb up straight walls, thus allowing him to reach stuff that might be "
@@ -1010,11 +1193,11 @@ msgstr ""
 "Pingus muligheten til å klatre opp loddrette vegger, noe som gir han tilgang "
 "til ting som kan være for høyt oppe til å nå på andre vis. "
 
-#: data/levels/tutorial/snow22-grumbel.pingus
+#: data/levels/tutorial/snow22-grumbel.pingus:5
 msgid "Entrance high, Exit low"
 msgstr "Inngang høyt, utgang lavt"
 
-#: data/levels/tutorial/snow22-grumbel.pingus
+#: data/levels/tutorial/snow22-grumbel.pingus:6
 msgid ""
 "If you don't have enough floaters to bring all the Pingus down to the exit - "
 "you have to find other ways to guide them down. You should have learned all "
@@ -1026,11 +1209,11 @@ msgstr ""
 "dette brettet i de foregående brettene, så dette skulle ikke være et for "
 "stort problem for deg. "
 
-#: data/levels/tutorial/snow7-grumbel.pingus
+#: data/levels/tutorial/snow7-grumbel.pingus:5
 msgid "One must prepare, the rest must follow"
 msgstr "En må gjøre det klart, resten må følge etter"
 
-#: data/levels/tutorial/snow7-grumbel.pingus
+#: data/levels/tutorial/snow7-grumbel.pingus:6
 msgid ""
 "Sometimes there are situations where you don't have a Blocker at hand to "
 "coordinate your Pingus. You'll have to find other ways to keep them under "
@@ -1040,11 +1223,11 @@ msgstr ""
 "koordinere Pingusene dine. Du må finne andre måter å kontrollere dem mens en "
 "enkelt klargjør veien for de andre. "
 
-#: data/levels/tutorial/snow8-grumbel.pingus
+#: data/levels/tutorial/snow8-grumbel.pingus:5
 msgid "Dig and float, but just don't fall and smash"
 msgstr "Grav og flyt, bare ikke dett og knus"
 
-#: data/levels/tutorial/snow8-grumbel.pingus
+#: data/levels/tutorial/snow8-grumbel.pingus:6
 msgid ""
 "Unlike the first two levels, you have two actions available in this level. "
 "Your job is again simple: select an action at the panel on the left and "
@@ -1056,11 +1239,11 @@ msgstr ""
 "den på Pingusene så de kan komme seg til utgangen. Sørg bare for at ikke så "
 "mange av dem dør. "
 
-#: data/levels/tutorial/snow9-grumbel.pingus
+#: data/levels/tutorial/snow9-grumbel.pingus:5
 msgid "Dig, bash and other problems"
 msgstr "Grav, slå og andre problemer"
 
-#: data/levels/tutorial/snow9-grumbel.pingus
+#: data/levels/tutorial/snow9-grumbel.pingus:6
 msgid ""
 "The more levels you master, the more difficult they will get, but don't "
 "panic, as this one is still pretty easy. Just use the stuff that you've "
@@ -1073,11 +1256,11 @@ msgstr ""
 "og det vil gå greit. Hvis du tror du er kommet til et punkt hvor du ikke "
 "kommer videre, dobbeltklikk på armageddon knappen nederst til høyre. "
 
-#: data/levels/tutorial/solid-tutorial-grumbel.pingus
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus:5
 msgid "Solid ground can block the path"
 msgstr "Fast grunn kan blokkere veien"
 
-#: data/levels/tutorial/solid-tutorial-grumbel.pingus
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus:6
 msgid ""
 "As you have learned in earlier levels your Pingus can dig through basically "
 "any terrain, but there is one material which they can't penetrate: steel. "
@@ -1260,6 +1443,96 @@ msgstr ""
 "\n"
 "Fortsettelse følger..."
 
+#~ msgid "| segfault_handler: catched a SIGSEGV."
+#~ msgstr "| segfault_handler: mottok en SIGSEV."
+
+#~ msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
+#~ msgstr "| Woops, Pingus krasjet akkurat, gratulerer du har funnet en bug."
+
+#~ msgid ""
+#~ "| Please write a little bug report to <grumbel@gmx.de>, include "
+#~ "informations"
+#~ msgstr ""
+#~ "| Vennligst skriv en liten bug-rapport til <grumbel@gmx.de>, legg ved "
+#~ "informasjon"
+
+#~ msgid "| where exacly the SIGSEGV occured and how to reproduce it."
+#~ msgstr "| om hvor SIGSEV'en skjedde og hvordan reprodusere den."
+
+#~ msgid "| Also try include a backtrace, you can get it like this:"
+#~ msgstr "| Prøv også å legge ved en backtrace, du kan lage den slik:"
+
+#~ msgid "| If that doesn't work, try this:"
+#~ msgstr "| Hvis det ikke virker, prøv dette:"
+
+#~ msgid "| [play until it crashes again]"
+#~ msgstr "| [spill til det krasjer igjen]"
+
+#~ msgid "| Warning: Pingus recieved a SIGINT, exiting now."
+#~ msgstr "| Advarsel: Pingus mottok en SIGINT, avslutter nå."
+
+#~ msgid "Disable intro"
+#~ msgstr "Deaktiver intro"
+
+#, fuzzy
+#~ msgid "Set the refresh rate in fullscreen (default: 60)"
+#~ msgstr "Velg oppløsning for pingus (standard: 800x600)"
+
+#~ msgid "Load a custom level from FILE"
+#~ msgstr "Last et custom brett fra FIL"
+
+#, fuzzy
+#~ msgid "language:                "
+#~ msgstr "fullskjerm:              "
+
+#~ msgid "sound support:           enabled"
+#~ msgstr "lyd støtte:           aktivert"
+
+#~ msgid "sound support:          disabled"
+#~ msgstr "lyd støtte:          deaktivert"
+
+#~ msgid "music support:           enabled"
+#~ msgstr "musikk støtte:           aktivert"
+
+#~ msgid "music support:          disabled"
+#~ msgstr "musikk støtte:          deaktivert"
+
+#, fuzzy
+#~ msgid "resolution:              "
+#~ msgstr "oppløsning satt til:       "
+
+#~ msgid "fullscreen:              "
+#~ msgstr "fullskjerm:              "
+
+#~ msgid " enabled"
+#~ msgstr " aktivert"
+
+#~ msgid "disabled"
+#~ msgstr " deaktivert"
+
+#, fuzzy
+#~ msgid "using OpenGL:            "
+#~ msgstr "fullskjerm:              "
+
+#~ msgid "PingusMain: Levelfile not found, ignoring: "
+#~ msgstr "PingusMain: Brettfil ikke funnet, ignorerer: "
+
+#~ msgid "Environment variable $HOME not set, fix that and start again."
+#~ msgstr "Miljøvariabel $HOME er ikke satt, fiks det og start om igjen."
+
+#~ msgid "Unexpected char '"
+#~ msgstr "Uventet tegn '"
+
+#~ msgid "unknown"
+#~ msgstr "ukjent"
+
+#~ msgid "Credits"
+#~ msgstr "Kreditter"
+
+#, fuzzy
+#~ msgid "..:: See the credits ::.."
+#~ msgstr "..:: Start spillet ::.."
+
 #, fuzzy
 #~ msgid "Pingus do time"
 #~ msgstr "Pinguer å redde: %d"
@@ -1358,9 +1631,6 @@ msgstr ""
 #~ msgid "F4 - play/test the level"
 #~ msgstr "F4 - spill/test brettet"
 
-#~ msgid "F5 - load a level"
-#~ msgstr "F5 - last et brett"
-
 #~ msgid "F6 - save this level"
 #~ msgstr "F6 - lagre dette brettet"
 
@@ -1423,9 +1693,6 @@ msgstr ""
 
 #~ msgid "Insert - insert new object"
 #~ msgstr "Insert - sett inn nytt objekt"
-
-#~ msgid "Remove - remove selected object"
-#~ msgstr "Remove - fjern valgt objekt"
 
 #~ msgid "g - ungroup/group current selection"
 #~ msgstr "g - de-grupper/grupper gjeldende valg"
@@ -1511,50 +1778,17 @@ msgstr ""
 #~ msgid "What object type do you want?"
 #~ msgstr "Hvilken objektype ønsker du?"
 
-#~ msgid "h - Hotspot"
-#~ msgstr "h - Hotspot"
-
 #~ msgid "g - Groundpiece (ground) [not implemented]"
 #~ msgstr "g - Bakkestykke (mark) [ikke implementert]"
 
 #~ msgid "Which object do you want?"
 #~ msgstr "Hvilket objekt ønsker du?"
 
-#~ msgid "g - Groundpiece (ground)"
-#~ msgstr "g - Bakkestykke (mark)"
-
-#~ msgid "s - Groundpiece (solid)"
-#~ msgstr "s - Bakkestykke (solid)"
-
-#~ msgid "b - Groundpiece (bridge)"
-#~ msgstr "b - Bakkestykke (bro)"
-
-#~ msgid "n - Groundpiece (transparent)"
-#~ msgstr "n - Bakkestykke (gjennomsiktig)"
-
-#~ msgid "r - Groundpiece (remove)"
-#~ msgstr "r - Bakkestykke (fjern)"
-
-#~ msgid "e - Entrance"
-#~ msgstr "e - Inngang"
-
 #~ msgid "x - Exit"
 #~ msgstr "x - Utgang"
 
-#~ msgid "l - Liquid"
-#~ msgstr "l - Flytende"
-
-#~ msgid "w - Weather"
-#~ msgstr "w - Værtype"
-
-#~ msgid "t - Traps"
-#~ msgstr "t - Feller"
-
 #~ msgid "o - WorldObject"
 #~ msgstr "o - WorldObject"
-
-#~ msgid "z - Background"
-#~ msgstr "z - Bakgrunn"
 
 #~ msgid "p - Prefab (ObjectGroup)"
 #~ msgstr "p - Prefab (ObjectGroup)"
@@ -1583,20 +1817,11 @@ msgstr ""
 #~ msgid "Exit the editor (Escape)"
 #~ msgstr "Avslutt redigereren (Escape)"
 
-#~ msgid "Save this level (F6)"
-#~ msgstr "Lagre dette brettet (F6)"
-
 #~ msgid "Delete marked objects (delete)"
 #~ msgstr "Slette merkede objekter (delete)"
 
-#~ msgid "Duplicate current object (d)"
-#~ msgstr "Duplikker gjeldende objekt (d)"
-
 #~ msgid "Edit Level Properties"
 #~ msgstr "Rediger Brett Egenskaper"
-
-#~ msgid "Edit Object Properties"
-#~ msgstr "Rediger Objekt Egenskaper"
 
 #~ msgid "Start the level and test it (F4)"
 #~ msgstr "Start brettet og test det (F4)"
