@@ -95,6 +95,18 @@ Important:
 
 - "core/misc/404sprite" should be returned for missing graphics
 
+- main menu crashes when you click a little wildely:
+
+  decide whether to ignore cached_action != CA_NONE in
+  ScreenManager::pop_screen. This causes the game to crash if [ESC] is
+  quickly pressed repeatedly
+
+  currently worked around by:
+  assert (cached_action == CA_NONE || cached_action == CA_POP);
+
+  but the menu still acts funky if one clicks heavily (i.e. two
+  screens get added instead of one or stuff like that)
+
 - disable fade-over when fast-mode is active
 
 - rewrite Config file support, make game automatically write a default
