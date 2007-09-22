@@ -119,6 +119,9 @@ bool EditorLevel::save_level(const std::string& filename)
 
   // Create new file (overwrite existing file)
   std::ofstream out_file(filename.c_str());
+  if (!out_file)
+    return false;
+
   SExprFileWriter fw(out_file);
 	
   out_file << ";; -*- scheme -*-" << std::endl;

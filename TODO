@@ -225,6 +225,8 @@ Important:
 
 - Dialogs: Editor Properties: user name and email
 
+- show an error message if save fails
+
 Less Important:
 ===============
 
