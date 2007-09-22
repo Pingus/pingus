@@ -95,12 +95,6 @@ Important:
 
 - "core/misc/404sprite" should be returned for missing graphics
 
-- main menu crashes when you click a little wildely:
-
-  decide whether to ignore cached_action != CA_NONE in
-  ScreenManager::pop_screen. This causes the game to crash if [ESC] is
-  quickly pressed repeatedly
-
 - disable fade-over when fast-mode is active
 
 - rewrite Config file support, make game automatically write a default
@@ -113,7 +107,7 @@ Important:
 
 - bridging gets more complicated has graphical error (background?!)
   surface background doesn't handle larger res due to the Playfield
-  being offsetted (might be solveable with new DrawingContext that
+  being offsetted (might be solvable with new DrawingContext that
   features Rect)
 
 - rework command line parsing so that it actually works properly and
@@ -153,8 +147,6 @@ Font: datadir://images/fonts/courier_small-iso-8859-9.png
   event to polling?!)
 
 - action-axis doesn't handle analog (do we even need this or could we do with axis-button?)
-
-- fix memory leaks in input/ (Controller doesn't clean up)
 
 - remove SceneContext from Credits, replace with DrawingContext
 

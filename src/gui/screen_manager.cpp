@@ -180,7 +180,7 @@ ScreenManager::push_screen (Screen* screen, bool delete_screen)
 void
 ScreenManager::pop_screen ()
 {
-  assert (cached_action == CA_NONE);
+  assert (cached_action == CA_NONE || cached_action == CA_POP);
   cached_action = CA_POP;
 }
 
