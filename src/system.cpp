@@ -533,15 +533,19 @@ std::string
 System::realpath(const std::string& pathname)
 {
   std::string fullpath;
+  std::string drive;
   
-  if (pathname.size() > 0 && pathname[0] == '/'
-#ifdef WIN32
-    || (pathname.size() > 2 && pathname[1] == ':' && pathname[2] == '/')
-#endif
-	  )
+  if (pathname.size() > 0 && pathname[0] == '/')
     {
       fullpath = pathname;
     }
+#ifdef WIN32
+  else if (pathname.size() > 2 && pathname[1] == ':' && pathname[2] == '/')
+    {
+      drive = pathname.substr(0, 2);
+      fullpath = pathname;
+    }
+#endif
   else
     {
       char buf[PATH_MAX];
@@ -556,9 +560,10 @@ System::realpath(const std::string& pathname)
           if (*p == '\\')
             *p = '/';
         }
+      drive.assign(buf, 2);
 #endif
       
-      fullpath = fullpath + buf + "/"  + pathname;
+      fullpath = fullpath + buf + "/" + pathname;
     }
   
   std::string result;
@@ -594,7 +599,7 @@ System::realpath(const std::string& pathname)
         }
     }
   
-  return "/" + std::string(result.rbegin(), result.rend());
+  return drive + "/" + std::string(result.rbegin(), result.rend());
 }
 
 /* EOF */

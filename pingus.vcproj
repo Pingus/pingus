@@ -117,7 +117,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="src;src\win32;include"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE=1"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE=1;OFFICIAL_PINGUS_BUILD"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -652,6 +652,10 @@
 			</File>
 			<File
 				RelativePath=".\src\pingus_menu_manager.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\pingus_options.hpp"
 				>
 			</File>
 			<File
