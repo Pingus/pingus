@@ -3,7 +3,7 @@ Release Checklist:
 
 - turn on fullscreen at default (do we really want this with
   fullscreen key documented? -> Nope)
-
+y
 - make sure all important strings are translatable
 
 - run ./extract-po.sh && ./update-po.sh
@@ -88,6 +88,8 @@ Roadmap for Pingus 0.7.2
 
 Important:
 ==========
+
+- add dynamic resize
 
 - resource system needs a review/rewrite
 
