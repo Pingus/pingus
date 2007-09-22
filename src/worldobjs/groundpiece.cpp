@@ -39,7 +39,7 @@ void
 Groundpiece::on_startup ()
 {
   // FIXME: using a CollisionMask is kind of unneeded here 
-  CollisionMask mask = Resource::load_collision_mask(desc);
+  CollisionMask mask(desc);
 
   // FIXME: overdrawing of bridges and similar things aren't handled here
   if (gptype == Groundtype::GP_REMOVE)

@@ -29,15 +29,8 @@ class Miner : public PinguAction
 {
 private:
   CollisionMask miner_radius;
-  CollisionMask miner_radius_gfx;
   StateSprite sprite;
   int slow_count;
-
-  /** Width of the miner_radius surface */
-  unsigned int miner_radius_width;
-
-  /** Width of the miner_radius_gfx surface */
-  unsigned int miner_radius_gfx_width;
 
 public:
   Miner (Pingu* p);

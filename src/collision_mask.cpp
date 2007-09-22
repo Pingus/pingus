@@ -27,32 +27,35 @@ CollisionMask::CollisionMask()
 {
 }
 
+CollisionMask::CollisionMask(const std::string& gfx_name, const std::string& col_name)
+{
+  surface = Resource::load_surface(gfx_name);
+  init_colmap(Resource::load_surface(col_name), col_name);
+}
+
 CollisionMask::CollisionMask(const std::string& name)
 {
-  ResDescriptor res_desc(name);
-  init(res_desc);
+  surface = Resource::load_surface(name);
+  init_colmap(surface, name);
 }
 
 CollisionMask::CollisionMask(const ResDescriptor& res_desc)
   : buffer(0)
 {
-  init(res_desc);
+  surface = Resource::load_surface(res_desc);
+  init_colmap(surface, res_desc.res_name);
 }
 
 void
-CollisionMask::init(const ResDescriptor& res_desc)
+CollisionMask::init_colmap(const Surface& surf, const std::string& surface_res)
 {
-  //std::cout << "CollisionMask: " << name << std::endl;
-  surface = Resource::load_surface(res_desc);
-  //Surface cmap = surface; // Resource::load_surface(System::cut_ext(name) + "_cmap");
-
-  int pitch = surface.get_pitch();
-  width  = surface.get_width();
-  height = surface.get_height();
+  int pitch = surf.get_pitch();
+  width  = surf.get_width();
+  height = surf.get_height();
   
   buffer = new uint8_t[width * height];
 
-  SDL_Surface* sdl_surface = surface.get_surface();
+  SDL_Surface* sdl_surface = surf.get_surface();
   SDL_LockSurface(sdl_surface);
 
   if (sdl_surface->format->palette)
@@ -84,7 +87,7 @@ CollisionMask::init(const ResDescriptor& res_desc)
              "  gmask: 0x%08x\n"
              "  bmask: 0x%08x\n"
              "  amask: 0x%08x\n",
-             res_desc.res_name.c_str(),
+             surface_res.c_str(),
              int(sdl_surface->format->BitsPerPixel),
              int(sdl_surface->format->BytesPerPixel),
              (unsigned int)sdl_surface->format->Rmask,

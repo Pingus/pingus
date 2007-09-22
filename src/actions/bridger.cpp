@@ -35,8 +35,8 @@ namespace Actions {
 Bridger::Bridger (Pingu* p)
   : PinguAction(p),
     mode(B_BUILDING),
-    brick_l(Resource::load_collision_mask("other/brick_left")),
-    brick_r(Resource::load_collision_mask("other/brick_right")),
+    brick_l("other/brick_left"),
+    brick_r("other/brick_right"),
     bricks(MAX_BRICKS),
     block_build(false),
     name(_("Bridger") + std::string(" (" + StringUtil::to_string(bricks) + ")"))
@@ -228,9 +228,9 @@ Bridger::place_a_brick()
   else
     {
       WorldObj::get_world()->put(brick_r,
-					       static_cast<int>(pingu->get_pos().x - 10),
-					       static_cast<int>(pingu->get_pos().y),
-					       Groundtype::GP_BRIDGE);
+                                 static_cast<int>(pingu->get_pos().x - 10),
+                                 static_cast<int>(pingu->get_pos().y),
+                                 Groundtype::GP_BRIDGE);
     }
 }
 

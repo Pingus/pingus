@@ -31,17 +31,13 @@ namespace Actions {
 
 Miner::Miner (Pingu* p)
   : PinguAction(p),
-    miner_radius(Resource::load_collision_mask("other/bash_radius")),
-    miner_radius_gfx(Resource::load_collision_mask("other/bash_radius_gfx")),
+    miner_radius("other/bash_radius_gfx", "other/bash_radius"),
     slow_count(0)
 {
   sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/player" + 
     pingu->get_owner_str() + "/miner/left"));
   sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
     pingu->get_owner_str() + "/miner/right"));
-
-  miner_radius_width = miner_radius.get_width();
-  miner_radius_gfx_width = miner_radius_gfx.get_width();
 }
 
 void
@@ -55,8 +51,8 @@ Miner::update ()
       if (!(slow_count % 3))
 	{
 	  WorldObj::get_world()->remove(miner_radius,
-                                        static_cast<int>(pingu->get_x() - (miner_radius_width / 2) + pingu->direction),
-                                        static_cast<int>(pingu->get_y() - miner_radius_width + 1));
+                                        static_cast<int>(pingu->get_x() - (miner_radius.get_width() / 2) + pingu->direction),
+                                        static_cast<int>(pingu->get_y() - miner_radius.get_width() + 1));
 	}
 
       pingu->set_pos(pingu->get_x() + pingu->direction, pingu->get_y() + 1);
@@ -65,8 +61,8 @@ Miner::update ()
   if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING)
     {
       WorldObj::get_world()->remove(miner_radius,
-                                    static_cast<int>(pingu->get_x() - (miner_radius_width / 2) + pingu->direction),
-                                    static_cast<int>(pingu->get_y() - miner_radius_width + 3) );
+                                    static_cast<int>(pingu->get_x() - (miner_radius.get_width() / 2) + pingu->direction),
+                                    static_cast<int>(pingu->get_y() - miner_radius.get_width() + 3) );
       pingu->set_action(Actions::Walker);
     }
   else if (rel_getpixel(0, -1) == Groundtype::GP_SOLID
@@ -76,8 +72,8 @@ Miner::update ()
 	Sound::PingusSound::play_sound("chink");
 
       WorldObj::get_world()->remove(miner_radius,
-                                    static_cast<int>(pingu->get_x() - (miner_radius_width / 2) + pingu->direction),
-                                    static_cast<int>(pingu->get_y() - miner_radius_width + 1) );
+                                    static_cast<int>(pingu->get_x() - (miner_radius.get_width() / 2) + pingu->direction),
+                                    static_cast<int>(pingu->get_y() - miner_radius.get_width() + 1) );
       pingu->set_action(Actions::Walker);
 
       // Stop Pingu walking further into the solid.

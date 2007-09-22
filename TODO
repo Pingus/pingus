@@ -91,9 +91,7 @@ Roadmap for Pingus 0.7.1
 Important:
 ==========
 
-- miner remove graphics looks wrong (cmap instead of gfx?), others too (digger)
-
-- do german translation
+- all done
 
 Less Important:
 ===============
@@ -126,8 +124,6 @@ Font: datadir://images/fonts/courier_small-iso-8859-9.png
 
 - Liquids/water is 32, others are 64, this is causing trouble with the
   collision map
-
-- separate gfx/colmap surfaces aren't used
 
 - rework command line parsing so that it actually works properly and
   doesn't depend so much on the order (setting datadir causes trouble

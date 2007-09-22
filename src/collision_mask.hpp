@@ -35,6 +35,7 @@ public:
 
 public:
   CollisionMask();
+  CollisionMask(const std::string& gfx_name, const std::string& col_name);
   CollisionMask(const std::string& name);
   CollisionMask(const ResDescriptor& res_desc);
   ~CollisionMask();
@@ -46,7 +47,7 @@ public:
   uint8_t* get_data() const;
 
 private:
-  void init(const ResDescriptor& res_desc);
+  void init_colmap(const Surface& surf, const std::string& surface_res);
 };
 
 #endif

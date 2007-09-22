@@ -40,7 +40,7 @@ Bomber::Bomber (Pingu* p)
     sound_played(false),
     gfx_exploded(false),
     colmap_exploded(false),
-    bomber_radius(Resource::load_collision_mask("other/bomber_radius")),
+    bomber_radius("other/bomber_radius_gfx", "other/bomber_radius"),
     explo_surf(Resource::load_sprite("pingus/player" + pingu->get_owner_str() + "/explo"))
 {
   sprite.load(Direction::LEFT,  "pingus/player" + pingu->get_owner_str() + "/bomber/left");

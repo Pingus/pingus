@@ -33,7 +33,7 @@ namespace Actions {
 
 Basher::Basher (Pingu* p)
   : PinguAction(p),
-    bash_radius(Resource::load_collision_mask("other/bash_radius")),
+    bash_radius("other/bash_radius_gfx", "other/bash_radius"),
     basher_c(0),
     first_bash(true)
 {

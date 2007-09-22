@@ -32,16 +32,9 @@ namespace Actions {
 
 Digger::Digger (Pingu* p)
   : PinguAction(p),
-    digger_radius(Resource::load_collision_mask("other/digger_radius")),
-    digger_radius_gfx(Resource::load_collision_mask("other/digger_radius")),
+    digger_radius("other/digger_radius_gfx", "other/digger_radius"),
     digger_c(0)
 {
-  digger_radius_width  = digger_radius.get_width();
-  digger_radius_height = digger_radius.get_height();
-
-  digger_radius_gfx_width  = digger_radius_gfx.get_width();
-  digger_radius_gfx_height = digger_radius_gfx.get_height();
-
   sprite = Resource::load_sprite("pingus/player" + pingu->get_owner_str() + "/digger/left");
 }
 
@@ -93,8 +86,8 @@ void
 Digger::dig ()
 {
   WorldObj::get_world()->remove(digger_radius,
-                                static_cast<int>(pingu->get_pos().x - (digger_radius_width / 2)),
-                                static_cast<int>(pingu->get_pos().y - digger_radius_height + 2));
+                                static_cast<int>(pingu->get_pos().x - (digger_radius.get_width() / 2)),
+                                static_cast<int>(pingu->get_pos().y - digger_radius.get_height() + 2));
   pingu->set_pos(pingu->get_pos().x, pingu->get_pos().y + 1.0f);
 }
 

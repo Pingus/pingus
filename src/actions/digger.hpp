@@ -28,21 +28,8 @@ class Digger : public PinguAction
 {
 private:
   CollisionMask digger_radius;
-  CollisionMask digger_radius_gfx;
   Sprite sprite;
   int digger_c;
-
-  /** Width of the digger_radius surface */
-  unsigned int digger_radius_width;
-
-  /** Height of the digger_radius surface */
-  unsigned int digger_radius_height;
-
-  /** Width of the digger_radius_gfx surface */
-  unsigned int digger_radius_gfx_width;
-
-  /** Height of the digger_radius_gfx surface */
-  unsigned int digger_radius_gfx_height;
 
 public:
   Digger(Pingu*);
