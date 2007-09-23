@@ -171,36 +171,36 @@ Panel::Panel(EditorScreen* editor_)
   add_button("core/editor/objects", _("Show object insertion window"), 
              &EditorScreen::toggle_object_selector);
   add_separator();
-  add_button("core/editor/copy", _("Duplicate the selected objects"), 
+  add_button("core/editor/copy", _("Duplicate the selected objects") + " (D)",  
              &EditorScreen::objects_duplicate);
-  add_button("core/editor/delete", _("Delete the selected objects"), 
+  add_button("core/editor/delete", _("Delete the selected objects") + " (Delete)",  
              &EditorScreen::objects_delete);
   add_separator();
-  add_button("core/editor/object-top",    _("Raise object to top"), 
+  add_button("core/editor/object-top",    _("Raise object to top") + " (Shift+])", 
              &EditorScreen::objects_raise_to_top);
-  add_button("core/editor/object-up",     _("Raise object"), 
+  add_button("core/editor/object-up",     _("Raise object") + " (])", 
              &EditorScreen::objects_raise);
-  add_button("core/editor/object-down",   _("Lower object"), 
+  add_button("core/editor/object-down",   _("Lower object") + " ([)", 
              &EditorScreen::objects_lower);
-  add_button("core/editor/object-bottom", _("Lower object to bottom"), 
+  add_button("core/editor/object-bottom", _("Lower object to bottom") + " (Shift+[)", 
              &EditorScreen::objects_lower_to_bottom);
   add_separator();
-  add_button("core/editor/object-flip-horizontal", _("Flip object horizontally"), 
+  add_button("core/editor/object-flip-horizontal", _("Flip object horizontally") + " (F)", 
              &EditorScreen::objects_flip_horizontal);
-  add_button("core/editor/object-flip-vertical", _("Flip object vertically"), 
+  add_button("core/editor/object-flip-vertical", _("Flip object vertically") + " (Shift+F)", 
              &EditorScreen::objects_flip_vertical);
   add_separator();
-  add_button("core/editor/object-rotate-left", _("Rotate object 90 degree"), 
+  add_button("core/editor/object-rotate-left",  _("Rotate object -90 degree") + " (Shift+R)", 
              &EditorScreen::objects_rotate_left);
-  add_button("core/editor/object-rotate-right", _("Rotate object -90 degree"), 
+  add_button("core/editor/object-rotate-right", _("Rotate object 90 degree") + " (R)", 
              &EditorScreen::objects_rotate_right);
   // add_separator();
   //add_button("core/editor/snap-grid", "Snap objects to grid", 
   //             &EditorScreen::toggle_grid_snap);
   // add_separator();
-  // add_button("core/editor/help", "Display help", 
-  //             &EditorScreen::toggle_help);
   add_separator();
+  add_button("core/editor/help", _("Display help"), 
+             &EditorScreen::toggle_help);
   add_button("core/editor/exit", _("Exit"), 
              &EditorScreen::exit);
 }

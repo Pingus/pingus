@@ -30,6 +30,7 @@
 #include "../resource.hpp"
 #include "../fonts.hpp"
 #include "../file_dialog.hpp"
+#include "gettext.h"
 #include "file_dialog.hpp"
 #include "../path_manager.hpp"
 #include "../pathname.hpp"
@@ -75,16 +76,16 @@ EditorScreen::EditorScreen()
   gui_manager->add(object_properties, true);
 
   file_load_dialog = new FileDialog(this, Rect(Vector2i(50, 50), 
-                                          Size(Display::get_width() - 100, 
-                                               Display::get_height() - 100)), 
-                               FileDialog::LOAD);
+                                               Size(Display::get_width() - 100, 
+                                                    Display::get_height() - 100)), 
+                                    FileDialog::LOAD);
   file_load_dialog->set_directory(".");
   file_load_dialog->hide();
   gui_manager->add(file_load_dialog, true);
 
   file_save_dialog = new FileDialog(this, Rect(Vector2i(50, 50), 
-                                          Size(Display::get_width() - 100, 
-                                               Display::get_height() - 100)), 
+                                               Size(Display::get_width() - 100, 
+                                                    Display::get_height() - 100)), 
                                     FileDialog::SAVE);
   file_save_dialog->set_directory(".");
   file_save_dialog->hide();
@@ -174,37 +175,67 @@ EditorScreen::draw(DrawingContext& gc)
                       int(gc.get_height()/2) - size.height/2 + 12,
                       "Editor Help");
 
-      gc.print_left(Fonts::verdana11,
-                    int(gc.get_width()/2 - size.width/2 + 12),
-                    int(gc.get_height()/2) - size.height/2 + 36,
-                    "F1 - display this help\n"
-                    "F2 - toggle background color\n"
-                    "F4 - play the level\n"
-                    "F5 - load a level\n"
-                    "F6 - save this level\n"
-                    "F8 - backup save\n"
-                    "F9 - change level width/height\n"
-                    );
+      int x = int(gc.get_width()/2 - size.width/2 + 12);
+      int y = int(gc.get_height()/2) - size.height/2 + 36;
+      gc.print_center(Fonts::verdana11, x + 50, y,
+                      "A\n"
+                      "Shift+A\n"
+                      "], w\n"
+                      "[, s\n"
+                      "Shift+]\n"
+                      "Shift+[\n"
+                      "R\n"
+                      "Shift+R\n"
+                      );
 
-      gc.print_left(Fonts::verdana11,
-                    int(gc.get_width()/2 + 12),
-                    int(gc.get_height()/2) - size.height/2 + 36,
-                    "F1 - display this help\n"
-                    "F2 - toggle background color\n"
-                    "F4 - play the level\n"
-                    "F5 - load a level\n"
-                    "F6 - save this level\n"
-                    "F8 - backup save\n"
-                    "F9 - change level width/height\n"
+      gc.print_left(Fonts::verdana11, x+100, y,
+                    _("Select all\n"
+                      "Clear Selection\n"
+                      "Raise objects\n"
+                      "Lower objects\n"
+                      "Lower objects to bottom\n"
+                      "Raise objects to top\n"
+                      "Rotate 90 degree\n"
+                      "Rotate 270 degree\n"));
+
+      x = int(gc.get_width()/2 + 12);
+      y = int(gc.get_height()/2) - size.height/2 + 36;
+      gc.print_center(Fonts::verdana11, x + 50, y,
+                      "F\n"
+                      "Shift+F\n"
+                      "Delete\n"
+                      "i\n"
+                      "k\n"
+                      "j\n"
+                      "l\n"
+                      );
+
+      gc.print_left(Fonts::verdana11, x + 100, y,
+                    _("Flip object horizontaly\n"
+                      "Flip object vertically\n"
+                      "Delete all marked objects\n"
+                      "Move objects up\n"
+                      "Move objects down\n"
+                      "Move objects left\n"
+                      "Move objects right\n")
                     );
 
       gc.print_left(Fonts::verdana11,
                     int(gc.get_width()/2 - size.width/2 + 12),
                     int(gc.get_height()/2) - 10,
-                    "Naming Convention: <levelname><number>-<creator>.pingus\n\n"
-                    "When you have created a level and want to have it included\n"
-                    "in the game mail it to pingus-devel@nongnu.org\n"
-                    "\n");
+                    _("You should name your level files systematically, i.e. by their theme, "
+                      "their number and your nickname:\n\n"
+                      "     <levelname><number>-<creator>.pingus\n\n"
+                      "So if you create a your second level with a stone theme, call it: "
+                      "stone2-yourname.pingus\n\n"
+                      "When you have created a level and want to have it included "
+                      "in the game mail it to:\n\n"
+                      "     pingus-devel@nongnu.org\n\n"
+                      "Only levels published under the GPL are allowed into the game. The editor "
+                      "automatically inserts a reference \n"
+                      "to the GPL, if you want to have your level under a different license, you "
+                      "have to change that reference.\n"
+                      ));
     }
   
   return true;
@@ -403,12 +434,12 @@ EditorScreen::toggle_level_properties()
 {
   if (level_properties->is_visible())
     {
-    level_properties->hide();
+      level_properties->hide();
     }
   else
     {
-    level_properties->show();
-    action_properties->hide();
+      level_properties->show();
+      action_properties->hide();
     }
 }
 
