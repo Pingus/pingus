@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-22 03:17+0200\n"
+"POT-Creation-Date: 2007-09-23 02:23+0200\n"
 "PO-Revision-Date: 2003-04-21 14:09+0200\n"
 "Last-Translator: Giuseppe D'Aqui' <kumber@tiscalinet.it>\n"
 "Language-Team: Italiano\n"
@@ -156,114 +156,99 @@ msgstr "Autor: "
 msgid "Filename: "
 msgstr "Nombre del archivo: "
 
-#: src/pingus_main.cpp:191
+#: src/pingus_main.cpp:244
 msgid "Displays this help"
 msgstr "Muestra ésta ayuda"
 
-#: src/pingus_main.cpp:193
-#, fuzzy
-msgid ""
-"Print some more messages to stdout, can be set multiple times to increase "
-"verbosity"
-msgstr "Visualiza algunos mensajes a stdout, puede establecerse"
-
-#: src/pingus_main.cpp:195
+#: src/pingus_main.cpp:246
 #, fuzzy
 msgid "Print version number and exit"
 msgstr "Visualiza el número de versión y sale "
 
-#: src/pingus_main.cpp:198
-msgid "Use OpenGL"
-msgstr "Usa OpenGL"
-
-#: src/pingus_main.cpp:200
-msgid "Use SDL"
-msgstr ""
-
-#: src/pingus_main.cpp:203
+#: src/pingus_main.cpp:248
 msgid "Display:"
 msgstr ""
 
-#: src/pingus_main.cpp:205
+#: src/pingus_main.cpp:250
 msgid "Start in Window Mode"
 msgstr "Inicia en ventana"
 
-#: src/pingus_main.cpp:207
+#: src/pingus_main.cpp:252
 msgid "Start in Fullscreen"
 msgstr "Inicia en pantalla completa"
 
-#: src/pingus_main.cpp:209
+#: src/pingus_main.cpp:254
 msgid "Allow Window resize (buggy)"
 msgstr ""
 
-#: src/pingus_main.cpp:211
+#: src/pingus_main.cpp:256
 msgid "Enable software cursor"
 msgstr "Activa cursor por software"
 
-#: src/pingus_main.cpp:213
+#: src/pingus_main.cpp:258
 msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "Establece la resolución de Pingus (predefinida: 800x600)"
 
-#: src/pingus_main.cpp:215
+#: src/pingus_main.cpp:260
 msgid "Sound:"
 msgstr "Sonido:"
 
-#: src/pingus_main.cpp:217
+#: src/pingus_main.cpp:262
 msgid "Disable sound"
 msgstr "Desactiva el sonido"
 
-#: src/pingus_main.cpp:219
+#: src/pingus_main.cpp:264
 msgid "Disable music"
 msgstr "Desactiva la musica"
 
-#: src/pingus_main.cpp:223
+#: src/pingus_main.cpp:268
 msgid "Select language to use with Pingus"
 msgstr ""
 
-#: src/pingus_main.cpp:225
+#: src/pingus_main.cpp:270
 msgid "List all available languages"
 msgstr ""
 
-#: src/pingus_main.cpp:229
+#: src/pingus_main.cpp:274
 #, fuzzy
 msgid "Loads the level editor"
 msgstr "..:: Eejcuta el editor de niveles ::.."
 
-#: src/pingus_main.cpp:231
+#: src/pingus_main.cpp:276
 msgid "Test a font"
 msgstr ""
 
-#: src/pingus_main.cpp:233
+#: src/pingus_main.cpp:278
 msgid "Shows the credits"
 msgstr ""
 
-#: src/pingus_main.cpp:235
+#: src/pingus_main.cpp:280
 #, fuzzy
 msgid "Misc Options:"
 msgstr "Opciones:"
 
-#: src/pingus_main.cpp:236
+#: src/pingus_main.cpp:281
 msgid "PATH"
 msgstr ""
 
-#: src/pingus_main.cpp:237
+#: src/pingus_main.cpp:282
 msgid "Set the path to load the data files to 'path'"
 msgstr ""
 
-#: src/pingus_main.cpp:240
+#: src/pingus_main.cpp:285
 msgid "Disable automatic scrolling"
 msgstr "Desactiva el desplazamiento automático"
 
-#: src/pingus_main.cpp:242
+#: src/pingus_main.cpp:287
 msgid "Don't read ~/.pingus/config"
 msgstr "Ignora ~/.pingus/config"
 
-#: src/pingus_main.cpp:243 src/pingus_main.cpp:252 src/pingus_main.cpp:276
+#: src/pingus_main.cpp:288
 #, fuzzy
 msgid "FILE"
 msgstr "ARCHIVO  "
 
-#: src/pingus_main.cpp:244
+#: src/pingus_main.cpp:289
 #, fuzzy
 msgid ""
 "Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
@@ -271,99 +256,83 @@ msgid ""
 msgstr ""
 "reduce el uso de la CPU, puede acelerar el juego en computadoras lentas"
 
-#: src/pingus_main.cpp:247
+#: src/pingus_main.cpp:292
 msgid "Uses the controller given in FILE"
 msgstr "Usa el controlador específico en ARCHIVO"
 
-#: src/pingus_main.cpp:249
+#: src/pingus_main.cpp:294
 msgid "Debugging and experimental stuff:"
 msgstr "Opciones experimentales de análisis ('debug'):"
 
-#: src/pingus_main.cpp:251
+#: src/pingus_main.cpp:296
 #, fuzzy
 msgid "Enables some features, only interesting to programmers"
 msgstr "Activa algunas funcionalidades que interesan sólo a programadores"
 
-#: src/pingus_main.cpp:253
-msgid "Load a custom worldmap from FILE"
+#: src/pingus_main.cpp:299
+#, fuzzy
+msgid "Load a custom worldmap"
 msgstr "Carga un mundo personalizado desde ARCHIVO"
 
-#: src/pingus_main.cpp:255
+#: src/pingus_main.cpp:301
 #, fuzzy
 msgid ""
-"Enable the output of debugging info, possibleOPTIONs are tiles, gametime, "
-"actions, sound, resources, gui,input, pathmgr"
+"Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
+"actions, sound, resources, gui, input, pathmgr"
 msgstr ""
 "como mosaicos, tiempo de juego, acciones, sonido, recursos, interfaz de "
 "usuario,"
 
-#: src/pingus_main.cpp:259
+#: src/pingus_main.cpp:305
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "Salta al menos N cuadros, valores más grandes aceleran el juego"
 
-#: src/pingus_main.cpp:261
+#: src/pingus_main.cpp:307
 msgid "Skip at most N frames"
 msgstr "Salta como máximo N cuadros"
 
-#: src/pingus_main.cpp:263
+#: src/pingus_main.cpp:309
 msgid "Set both min and max frameskip to N"
 msgstr "Establece N cuadros de salto al mínimo y al máximo"
 
-#: src/pingus_main.cpp:265
+#: src/pingus_main.cpp:311
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Establece la velocidad del juego (0=la más rápida, >0=la más lenta)"
 
-#: src/pingus_main.cpp:267
-msgid "Prints the fps to stdout"
-msgstr "Visualiza el número de cuadros por segundo a stdout"
-
-#: src/pingus_main.cpp:269
+#: src/pingus_main.cpp:313
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Establece las dimensiones del mosaico del mapa (default: 32)"
 
-#: src/pingus_main.cpp:271
+#: src/pingus_main.cpp:315
 msgid "Disable some cpu intensive features"
 msgstr "Desactiva algunas características que consumen ciclos de CPU"
 
-#: src/pingus_main.cpp:273
-msgid "Reduces the CPU usage by issuing sleep()"
-msgstr "Reduce el uso de la CPU usando sleep()"
-
-#: src/pingus_main.cpp:275
+#: src/pingus_main.cpp:319
 msgid "Demo playing and recording:"
 msgstr "Muestra y graba Demos:"
 
-#: src/pingus_main.cpp:277
-msgid "Plays a demo session from FILE"
+#: src/pingus_main.cpp:321
+#, fuzzy
+msgid "Plays a demo session"
 msgstr "Muestra una Demo desde ARCHIVO"
 
-#: src/pingus_main.cpp:279
+#: src/pingus_main.cpp:323
 msgid "Record demos for each played level"
 msgstr "Graba una Demo por cada nivel jugado"
 
-#: src/pingus_main.cpp:337
-msgid "Warning: Larger resolution than 800x600 will result in visual problems"
-msgstr ""
-"Atención: Una resolución más grande de 800x600 puede resultar en problemas "
-"de visión"
-
-#: src/pingus_main.cpp:679
-msgid "PingusMain: Starting Main: "
-msgstr "PingusMain: Iniciando Principal: "
-
-#: src/pingus_main.cpp:814
+#: src/pingus_main.cpp:715
 msgid "Error caught from Pingus: "
 msgstr "Error interceptado de Pingus: "
 
-#: src/pingus_main.cpp:818
+#: src/pingus_main.cpp:719
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: ¡memoria insuficiente!"
 
-#: src/pingus_main.cpp:822
+#: src/pingus_main.cpp:723
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: ¡Interceptada excepción estándar!:\n"
 
-#: src/pingus_main.cpp:826
+#: src/pingus_main.cpp:727
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: ¡Interceptado lanzamiento desconocido!"
 
@@ -568,6 +537,50 @@ msgstr "Captura de pantalla: Captura efectuada."
 msgid "Screenshot: Couldn't write file: "
 msgstr "Captura de pantalla : No puedo grabar el archivo: "
 
+#: src/editor/editor_screen.cpp:189
+msgid ""
+"Select all\n"
+"Clear Selection\n"
+"Raise objects\n"
+"Lower objects\n"
+"Lower objects to bottom\n"
+"Raise objects to top\n"
+"Rotate 90 degree\n"
+"Rotate 270 degree\n"
+msgstr ""
+
+#: src/editor/editor_screen.cpp:211
+msgid ""
+"Flip object horizontaly\n"
+"Flip object vertically\n"
+"Delete all marked objects\n"
+"Move objects up\n"
+"Move objects down\n"
+"Move objects left\n"
+"Move objects right\n"
+msgstr ""
+
+#: src/editor/editor_screen.cpp:223
+msgid ""
+"You should name your level files systematically, i.e. by their theme, their "
+"number and your nickname:\n"
+"\n"
+"     <levelname><number>-<creator>.pingus\n"
+"\n"
+"So if you create a your second level with a stone theme, call it: stone2-"
+"yourname.pingus\n"
+"\n"
+"When you have created a level and want to have it included in the game mail "
+"it to:\n"
+"\n"
+"     pingus-devel@nongnu.org\n"
+"\n"
+"Only levels published under the GPL are allowed into the game. The editor "
+"automatically inserts a reference \n"
+"to the GPL, if you want to have your level under a different license, you "
+"have to change that reference.\n"
+msgstr ""
+
 #: src/editor/panel.cpp:153
 #, fuzzy
 msgid "    New level"
@@ -644,12 +657,17 @@ msgid "Flip object vertically"
 msgstr ""
 
 #: src/editor/panel.cpp:193
-msgid "Rotate object 90 degree"
+msgid "Rotate object -90 degree"
 msgstr ""
 
 #: src/editor/panel.cpp:195
-msgid "Rotate object -90 degree"
+msgid "Rotate object 90 degree"
 msgstr ""
+
+#: src/editor/panel.cpp:202
+#, fuzzy
+msgid "Display help"
+msgstr "Muestra ésta ayuda"
 
 #: src/editor/object_properties.cpp:41 src/editor/object_properties.cpp:387
 msgid "Object:"
@@ -1469,6 +1487,30 @@ msgstr ""
 "sol.\n"
 "\n"
 "Continuará..."
+
+#, fuzzy
+#~ msgid ""
+#~ "Print some more messages to stdout, can be set multiple times to increase "
+#~ "verbosity"
+#~ msgstr "Visualiza algunos mensajes a stdout, puede establecerse"
+
+#~ msgid "Use OpenGL"
+#~ msgstr "Usa OpenGL"
+
+#~ msgid "Prints the fps to stdout"
+#~ msgstr "Visualiza el número de cuadros por segundo a stdout"
+
+#~ msgid "Reduces the CPU usage by issuing sleep()"
+#~ msgstr "Reduce el uso de la CPU usando sleep()"
+
+#~ msgid ""
+#~ "Warning: Larger resolution than 800x600 will result in visual problems"
+#~ msgstr ""
+#~ "Atención: Una resolución más grande de 800x600 puede resultar en "
+#~ "problemas de visión"
+
+#~ msgid "PingusMain: Starting Main: "
+#~ msgstr "PingusMain: Iniciando Principal: "
 
 #~ msgid "| segfault_handler: catched a SIGSEGV."
 #~ msgstr "| segfault_handler: interceptado SIGSEGV."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-22 03:17+0200\n"
+"POT-Creation-Date: 2007-09-23 02:23+0200\n"
 "PO-Revision-Date: 2003-04-15 17:28+0200\n"
 "Last-Translator: Çaðrý Çöltekin <cagri@metu.edu.tr>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
@@ -151,117 +151,102 @@ msgstr "Tasarlayan: "
 msgid "Filename: "
 msgstr "Dosya adý: "
 
-#: src/pingus_main.cpp:191
+#: src/pingus_main.cpp:244
 msgid "Displays this help"
 msgstr "Bu yardým ekranýný göster"
 
-#: src/pingus_main.cpp:193
-#, fuzzy
-msgid ""
-"Print some more messages to stdout, can be set multiple times to increase "
-"verbosity"
-msgstr "Stdout'a ayrýntýlý bilgi ver. Daha cok `v' ile"
-
-#: src/pingus_main.cpp:195
+#: src/pingus_main.cpp:246
 #, fuzzy
 msgid "Print version number and exit"
 msgstr "Sürümü ekrana basar ve çýkar"
 
-#: src/pingus_main.cpp:198
-msgid "Use OpenGL"
-msgstr "OpenGL kullan"
-
-#: src/pingus_main.cpp:200
-msgid "Use SDL"
-msgstr ""
-
-#: src/pingus_main.cpp:203
+#: src/pingus_main.cpp:248
 msgid "Display:"
 msgstr ""
 
 # FIXME: needs a better translation
-#: src/pingus_main.cpp:205
+#: src/pingus_main.cpp:250
 msgid "Start in Window Mode"
 msgstr "Pencerede baþlat"
 
-#: src/pingus_main.cpp:207
+#: src/pingus_main.cpp:252
 msgid "Start in Fullscreen"
 msgstr "Tümekran baþlat"
 
-#: src/pingus_main.cpp:209
+#: src/pingus_main.cpp:254
 msgid "Allow Window resize (buggy)"
 msgstr ""
 
-#: src/pingus_main.cpp:211
+#: src/pingus_main.cpp:256
 msgid "Enable software cursor"
 msgstr "Yazýlým imleci kullan"
 
-#: src/pingus_main.cpp:213
+#: src/pingus_main.cpp:258
 msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "Pingus çözünürlüðünü ayarla (öntanýlý: 640x480)"
 
-#: src/pingus_main.cpp:215
+#: src/pingus_main.cpp:260
 msgid "Sound:"
 msgstr "Ses"
 
-#: src/pingus_main.cpp:217
+#: src/pingus_main.cpp:262
 msgid "Disable sound"
 msgstr "Sesi Kapat"
 
-#: src/pingus_main.cpp:219
+#: src/pingus_main.cpp:264
 msgid "Disable music"
 msgstr "Müziði Kapat"
 
-#: src/pingus_main.cpp:223
+#: src/pingus_main.cpp:268
 msgid "Select language to use with Pingus"
 msgstr ""
 
-#: src/pingus_main.cpp:225
+#: src/pingus_main.cpp:270
 msgid "List all available languages"
 msgstr ""
 
-#: src/pingus_main.cpp:229
+#: src/pingus_main.cpp:274
 #, fuzzy
 msgid "Loads the level editor"
 msgstr "..:: Seviye Editörünü Çalýþtýr ::.."
 
-#: src/pingus_main.cpp:231
+#: src/pingus_main.cpp:276
 msgid "Test a font"
 msgstr ""
 
-#: src/pingus_main.cpp:233
+#: src/pingus_main.cpp:278
 msgid "Shows the credits"
 msgstr ""
 
-#: src/pingus_main.cpp:235
+#: src/pingus_main.cpp:280
 #, fuzzy
 msgid "Misc Options:"
 msgstr "Seçenekler:"
 
-#: src/pingus_main.cpp:236
+#: src/pingus_main.cpp:281
 msgid "PATH"
 msgstr ""
 
-#: src/pingus_main.cpp:237
+#: src/pingus_main.cpp:282
 #, fuzzy
 msgid "Set the path to load the data files to 'path'"
 msgstr ""
 "   -d, --datadir DÝZÝN/YOL  Data dosyalarýnýn yüklenecek `yol' (path)\n"
 
-#: src/pingus_main.cpp:240
+#: src/pingus_main.cpp:285
 msgid "Disable automatic scrolling"
 msgstr "Automatik kaydýrmayý kapat"
 
-#: src/pingus_main.cpp:242
+#: src/pingus_main.cpp:287
 msgid "Don't read ~/.pingus/config"
 msgstr "~/.pingus/config dosyasýný okuma"
 
-#: src/pingus_main.cpp:243 src/pingus_main.cpp:252 src/pingus_main.cpp:276
+#: src/pingus_main.cpp:288
 #, fuzzy
 msgid "FILE"
 msgstr "DOSYA    "
 
-#: src/pingus_main.cpp:244
+#: src/pingus_main.cpp:289
 #, fuzzy
 msgid ""
 "Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
@@ -269,100 +254,85 @@ msgid ""
 msgstr "CPU kullanýmýný azalt. Bu yavaþ makinalarda oyunu hýzlandýrabilir"
 
 # FIXME: better translation
-#: src/pingus_main.cpp:247
+#: src/pingus_main.cpp:292
 msgid "Uses the controller given in FILE"
 msgstr "DOSYA'daki denetleyiciyi kullan"
 
-#: src/pingus_main.cpp:249
+#: src/pingus_main.cpp:294
 msgid "Debugging and experimental stuff:"
 msgstr "Deneyseyl þeyler:"
 
-#: src/pingus_main.cpp:251
+#: src/pingus_main.cpp:296
 #, fuzzy
 msgid "Enables some features, only interesting to programmers"
 msgstr "Sadece programcýlariçin ilginç olan, bazý özellikleri çalýþtýrýr."
 
 # worldmap = ??
-#: src/pingus_main.cpp:253
-msgid "Load a custom worldmap from FILE"
+#: src/pingus_main.cpp:299
+#, fuzzy
+msgid "Load a custom worldmap"
 msgstr "DOSYAdan özel worldmap yükle"
 
-#: src/pingus_main.cpp:255
+#: src/pingus_main.cpp:301
 #, fuzzy
 msgid ""
-"Enable the output of debugging info, possibleOPTIONs are tiles, gametime, "
-"actions, sound, resources, gui,input, pathmgr"
+"Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
+"actions, sound, resources, gui, input, pathmgr"
 msgstr "SEÇENEKLER: tiles, gametime, actions, sound, resources, gui."
 
-#: src/pingus_main.cpp:259
+#: src/pingus_main.cpp:305
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "En az N resim karesini atla. Büyük N oyunu hýzlandýrýr"
 
-#: src/pingus_main.cpp:261
+#: src/pingus_main.cpp:307
 msgid "Skip at most N frames"
 msgstr "En fazla N resim karesi atla"
 
-#: src/pingus_main.cpp:263
+#: src/pingus_main.cpp:309
 msgid "Set both min and max frameskip to N"
 msgstr "Tam N resim karesi atla"
 
-#: src/pingus_main.cpp:265
+#: src/pingus_main.cpp:311
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Oyun hýzýný ayarla (0=en hýzlý, >0=daha yavaþ)"
 
-#: src/pingus_main.cpp:267
-msgid "Prints the fps to stdout"
-msgstr "stdout'a fps deðerini bas"
-
 # FIXME: better translation.
-#: src/pingus_main.cpp:269
+#: src/pingus_main.cpp:313
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Döþeme boyutunu ayarla (öntanýmlý: 32)"
 
-#: src/pingus_main.cpp:271
+#: src/pingus_main.cpp:315
 msgid "Disable some cpu intensive features"
 msgstr "Ýþlemci gerektiren bazý özellikleri kapat"
 
-#: src/pingus_main.cpp:273
-msgid "Reduces the CPU usage by issuing sleep()"
-msgstr "CPU kullanýmýný sleep() kullanarak azalt"
-
-#: src/pingus_main.cpp:275
+#: src/pingus_main.cpp:319
 msgid "Demo playing and recording:"
 msgstr "Demo oynatma ve kayýt:"
 
-#: src/pingus_main.cpp:277
-msgid "Plays a demo session from FILE"
+#: src/pingus_main.cpp:321
+#, fuzzy
+msgid "Plays a demo session"
 msgstr "DOSYA'dan bir demo oynat"
 
-#: src/pingus_main.cpp:279
+#: src/pingus_main.cpp:323
 msgid "Record demos for each played level"
 msgstr "Oynanan her oyun için demo kaydet"
 
-#: src/pingus_main.cpp:337
-msgid "Warning: Larger resolution than 800x600 will result in visual problems"
-msgstr "Dikkat: 800x600'den büyük çözünürlük görüntü sorunu yaratabilir"
-
-# 'Main' yerine baþka biþi uydurmak lazim buraya -gd
-#: src/pingus_main.cpp:679
-msgid "PingusMain: Starting Main: "
-msgstr "PingusMain: Main Baþlatýlýyor: "
-
-#: src/pingus_main.cpp:814
+#: src/pingus_main.cpp:715
 msgid "Error caught from Pingus: "
 msgstr "Pingus'ta hata saptandý: "
 
-#: src/pingus_main.cpp:818
+#: src/pingus_main.cpp:719
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Bellek yetersiz!"
 
 # bu komik oldu -cagri
 # daha mi iyi boyle :) -gd
-#: src/pingus_main.cpp:822
+#: src/pingus_main.cpp:723
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Genel olaðan dýþý durum saptandý!:\n"
 
-#: src/pingus_main.cpp:826
+#: src/pingus_main.cpp:727
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Bilinmeyen bir hata saptandý!"
 
@@ -566,6 +536,50 @@ msgstr "Screenshot: Ekran görüntüsü kaydedildi."
 msgid "Screenshot: Couldn't write file: "
 msgstr "Screenshot: Dosyaya yazýlamýyor: "
 
+#: src/editor/editor_screen.cpp:189
+msgid ""
+"Select all\n"
+"Clear Selection\n"
+"Raise objects\n"
+"Lower objects\n"
+"Lower objects to bottom\n"
+"Raise objects to top\n"
+"Rotate 90 degree\n"
+"Rotate 270 degree\n"
+msgstr ""
+
+#: src/editor/editor_screen.cpp:211
+msgid ""
+"Flip object horizontaly\n"
+"Flip object vertically\n"
+"Delete all marked objects\n"
+"Move objects up\n"
+"Move objects down\n"
+"Move objects left\n"
+"Move objects right\n"
+msgstr ""
+
+#: src/editor/editor_screen.cpp:223
+msgid ""
+"You should name your level files systematically, i.e. by their theme, their "
+"number and your nickname:\n"
+"\n"
+"     <levelname><number>-<creator>.pingus\n"
+"\n"
+"So if you create a your second level with a stone theme, call it: stone2-"
+"yourname.pingus\n"
+"\n"
+"When you have created a level and want to have it included in the game mail "
+"it to:\n"
+"\n"
+"     pingus-devel@nongnu.org\n"
+"\n"
+"Only levels published under the GPL are allowed into the game. The editor "
+"automatically inserts a reference \n"
+"to the GPL, if you want to have your level under a different license, you "
+"have to change that reference.\n"
+msgstr ""
+
 #: src/editor/panel.cpp:153
 #, fuzzy
 msgid "    New level"
@@ -642,12 +656,17 @@ msgid "Flip object vertically"
 msgstr ""
 
 #: src/editor/panel.cpp:193
-msgid "Rotate object 90 degree"
+msgid "Rotate object -90 degree"
 msgstr ""
 
 #: src/editor/panel.cpp:195
-msgid "Rotate object -90 degree"
+msgid "Rotate object 90 degree"
 msgstr ""
+
+#: src/editor/panel.cpp:202
+#, fuzzy
+msgid "Display help"
+msgstr "Bu yardým ekranýný göster"
 
 #: src/editor/object_properties.cpp:41 src/editor/object_properties.cpp:387
 msgid "Object:"
@@ -1464,6 +1483,29 @@ msgstr ""
 "almaya baþladýlar.\n"
 "\n"
 "                                                Devam edecek..."
+
+#, fuzzy
+#~ msgid ""
+#~ "Print some more messages to stdout, can be set multiple times to increase "
+#~ "verbosity"
+#~ msgstr "Stdout'a ayrýntýlý bilgi ver. Daha cok `v' ile"
+
+#~ msgid "Use OpenGL"
+#~ msgstr "OpenGL kullan"
+
+#~ msgid "Prints the fps to stdout"
+#~ msgstr "stdout'a fps deðerini bas"
+
+#~ msgid "Reduces the CPU usage by issuing sleep()"
+#~ msgstr "CPU kullanýmýný sleep() kullanarak azalt"
+
+#~ msgid ""
+#~ "Warning: Larger resolution than 800x600 will result in visual problems"
+#~ msgstr "Dikkat: 800x600'den büyük çözünürlük görüntü sorunu yaratabilir"
+
+# 'Main' yerine baþka biþi uydurmak lazim buraya -gd
+#~ msgid "PingusMain: Starting Main: "
+#~ msgstr "PingusMain: Main Baþlatýlýyor: "
 
 #~ msgid "| segfault_handler: catched a SIGSEGV."
 #~ msgstr "| segfault_handler: catched a SIGSEGV."

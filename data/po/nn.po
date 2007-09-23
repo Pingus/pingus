@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-22 03:17+0200\n"
+"POT-Creation-Date: 2007-09-23 02:23+0200\n"
 "PO-Revision-Date: 2007-07-17 18:53+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
@@ -151,112 +151,96 @@ msgstr "Forfattar: "
 msgid "Filename: "
 msgstr "Filnamn: "
 
-#: src/pingus_main.cpp:191
+#: src/pingus_main.cpp:244
 msgid "Displays this help"
 msgstr "Viser denne hjelpeteksten."
 
-#: src/pingus_main.cpp:193
-msgid ""
-"Print some more messages to stdout, can be set multiple times to increase "
-"verbosity"
-msgstr ""
-"Skriv fleire meldingar til stdout. Kan brukast fleire gongar for fleire "
-"meldingar."
-
-#: src/pingus_main.cpp:195
+#: src/pingus_main.cpp:246
 msgid "Print version number and exit"
 msgstr "Vis versjonsnummeret og avslutt."
 
-#: src/pingus_main.cpp:198
-msgid "Use OpenGL"
-msgstr "Bruk OpenGL."
-
-#: src/pingus_main.cpp:200
-msgid "Use SDL"
-msgstr "Bruk SDL."
-
-#: src/pingus_main.cpp:203
+#: src/pingus_main.cpp:248
 msgid "Display:"
 msgstr ""
 
-#: src/pingus_main.cpp:205
+#: src/pingus_main.cpp:250
 msgid "Start in Window Mode"
 msgstr "Start i vindaugsmodus."
 
-#: src/pingus_main.cpp:207
+#: src/pingus_main.cpp:252
 msgid "Start in Fullscreen"
 msgstr "Start i fullskjermsmodus."
 
-#: src/pingus_main.cpp:209
+#: src/pingus_main.cpp:254
 msgid "Allow Window resize (buggy)"
 msgstr ""
 
-#: src/pingus_main.cpp:211
+#: src/pingus_main.cpp:256
 msgid "Enable software cursor"
 msgstr "Bruk programvarebasert muspeikar."
 
-#: src/pingus_main.cpp:213
+#: src/pingus_main.cpp:258
 msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "Vel oppløysing for pingus (standard: 800x600)."
 
-#: src/pingus_main.cpp:215
+#: src/pingus_main.cpp:260
 msgid "Sound:"
 msgstr "Lyd:"
 
-#: src/pingus_main.cpp:217
+#: src/pingus_main.cpp:262
 msgid "Disable sound"
 msgstr "Slå av lyd."
 
-#: src/pingus_main.cpp:219
+#: src/pingus_main.cpp:264
 msgid "Disable music"
 msgstr "Slå av musikk."
 
-#: src/pingus_main.cpp:223
+#: src/pingus_main.cpp:268
 msgid "Select language to use with Pingus"
 msgstr "Vel språket som Pingus skal køyra i."
 
-#: src/pingus_main.cpp:225
+#: src/pingus_main.cpp:270
 msgid "List all available languages"
 msgstr "Vis alle tilgjengelege språk."
 
-#: src/pingus_main.cpp:229
+#: src/pingus_main.cpp:274
 msgid "Loads the level editor"
 msgstr "Start brettredigeringa."
 
-#: src/pingus_main.cpp:231
+#: src/pingus_main.cpp:276
 msgid "Test a font"
 msgstr "Test ei skrift."
 
-#: src/pingus_main.cpp:233
+#: src/pingus_main.cpp:278
 msgid "Shows the credits"
 msgstr "Viser rulleteksten."
 
-#: src/pingus_main.cpp:235
+#: src/pingus_main.cpp:280
 #, fuzzy
 msgid "Misc Options:"
 msgstr "Val:"
 
-#: src/pingus_main.cpp:236
+#: src/pingus_main.cpp:281
 msgid "PATH"
 msgstr "STIG"
 
-#: src/pingus_main.cpp:237
+#: src/pingus_main.cpp:282
 msgid "Set the path to load the data files to 'path'"
 msgstr "Vel stigen for henting av datafiler til «STIG»."
 
-#: src/pingus_main.cpp:240
+#: src/pingus_main.cpp:285
 msgid "Disable automatic scrolling"
 msgstr "Slå av automatisk rulling."
 
-#: src/pingus_main.cpp:242
+#: src/pingus_main.cpp:287
 msgid "Don't read ~/.pingus/config"
 msgstr "Ikkje les «~/.pingus/config»."
 
-#: src/pingus_main.cpp:243 src/pingus_main.cpp:252 src/pingus_main.cpp:276
+#: src/pingus_main.cpp:288
 msgid "FILE"
 msgstr "FIL"
 
-#: src/pingus_main.cpp:244
+#: src/pingus_main.cpp:289
 msgid ""
 "Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
 "speed up the game on slower machines"
@@ -264,95 +248,82 @@ msgstr ""
 "Les oppsett frå «FIL» (standard: ~/.pingus/config). Reduserer prosessorbruk, "
 "og kan gjera spelet raskare på gamle maskiner."
 
-#: src/pingus_main.cpp:247
+#: src/pingus_main.cpp:292
 msgid "Uses the controller given in FILE"
 msgstr "Bruk kontrollaren henta frå «FIL»."
 
-#: src/pingus_main.cpp:249
+#: src/pingus_main.cpp:294
 msgid "Debugging and experimental stuff:"
 msgstr "Feilsøking og eksperimentelle ting:"
 
-#: src/pingus_main.cpp:251
+#: src/pingus_main.cpp:296
 msgid "Enables some features, only interesting to programmers"
 msgstr "Slå på nokre funksjonar som berre er interessante for programmerarar."
 
-#: src/pingus_main.cpp:253
-msgid "Load a custom worldmap from FILE"
+#: src/pingus_main.cpp:299
+#, fuzzy
+msgid "Load a custom worldmap"
 msgstr "Last eit sjølvlaga verdskart frå «FIL»."
 
-#: src/pingus_main.cpp:255
+#: src/pingus_main.cpp:301
+#, fuzzy
 msgid ""
-"Enable the output of debugging info, possibleOPTIONs are tiles, gametime, "
-"actions, sound, resources, gui,input, pathmgr"
+"Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
+"actions, sound, resources, gui, input, pathmgr"
 msgstr ""
 "Slå på vising av feilsøkingsinfo. Moglege «VAL» er «tiles», «gametime», "
 "«action», «sound», «resources», «gui», «input» og «pathmgr»."
 
-#: src/pingus_main.cpp:259
+#: src/pingus_main.cpp:305
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "Hopp over minst kvart N-te bilete. Store verdiar gjer spelet raskare."
 
-#: src/pingus_main.cpp:261
+#: src/pingus_main.cpp:307
 msgid "Skip at most N frames"
 msgstr "Hopp over maks kvart N-te bilete."
 
-#: src/pingus_main.cpp:263
+#: src/pingus_main.cpp:309
 msgid "Set both min and max frameskip to N"
 msgstr "Set både minste og største bilethopp til N."
 
-#: src/pingus_main.cpp:265
+#: src/pingus_main.cpp:311
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Set spelfarten (0 = raskest og >0 = treigare)."
 
-#: src/pingus_main.cpp:267
-msgid "Prints the fps to stdout"
-msgstr "Skriv bilet per sekund til stdout."
-
-#: src/pingus_main.cpp:269
+#: src/pingus_main.cpp:313
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Set storleiken på kartflisene (standard: 32)."
 
-#: src/pingus_main.cpp:271
+#: src/pingus_main.cpp:315
 msgid "Disable some cpu intensive features"
 msgstr "Slår av nokre funksjonar som krev mykje prosessorkraft."
 
-#: src/pingus_main.cpp:273
-msgid "Reduces the CPU usage by issuing sleep()"
-msgstr "Reduserer prosessorbruk ved å senda sleep()-meldingar."
-
-#: src/pingus_main.cpp:275
+#: src/pingus_main.cpp:319
 msgid "Demo playing and recording:"
 msgstr "Avspeling og opptak av demoar:"
 
-#: src/pingus_main.cpp:277
-msgid "Plays a demo session from FILE"
+#: src/pingus_main.cpp:321
+#, fuzzy
+msgid "Plays a demo session"
 msgstr "Spel ei demoøkt frå «FIL»."
 
-#: src/pingus_main.cpp:279
+#: src/pingus_main.cpp:323
 msgid "Record demos for each played level"
 msgstr "Ta opp ei demoøkt for kvart spelte brett."
 
-#: src/pingus_main.cpp:337
-msgid "Warning: Larger resolution than 800x600 will result in visual problems"
-msgstr "Åtvaring: Høgare oppløysing enn 800x600 vil gje visuelle problem."
-
-#: src/pingus_main.cpp:679
-msgid "PingusMain: Starting Main: "
-msgstr "PingusMain: Startar Main: "
-
-#: src/pingus_main.cpp:814
+#: src/pingus_main.cpp:715
 msgid "Error caught from Pingus: "
 msgstr "Fekk feil frå Pingus: "
 
-#: src/pingus_main.cpp:818
+#: src/pingus_main.cpp:719
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Ikkje nok minne."
 
-#: src/pingus_main.cpp:822
+#: src/pingus_main.cpp:723
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Fekk standardunntak:\n"
 
-#: src/pingus_main.cpp:826
+#: src/pingus_main.cpp:727
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Fekk ukjent kast:"
 
@@ -554,6 +525,50 @@ msgstr "Skjermbilete: Skjermbiletet er lagra."
 msgid "Screenshot: Couldn't write file: "
 msgstr "Skjermbilete: Klarte ikkje lagra til fila: "
 
+#: src/editor/editor_screen.cpp:189
+msgid ""
+"Select all\n"
+"Clear Selection\n"
+"Raise objects\n"
+"Lower objects\n"
+"Lower objects to bottom\n"
+"Raise objects to top\n"
+"Rotate 90 degree\n"
+"Rotate 270 degree\n"
+msgstr ""
+
+#: src/editor/editor_screen.cpp:211
+msgid ""
+"Flip object horizontaly\n"
+"Flip object vertically\n"
+"Delete all marked objects\n"
+"Move objects up\n"
+"Move objects down\n"
+"Move objects left\n"
+"Move objects right\n"
+msgstr ""
+
+#: src/editor/editor_screen.cpp:223
+msgid ""
+"You should name your level files systematically, i.e. by their theme, their "
+"number and your nickname:\n"
+"\n"
+"     <levelname><number>-<creator>.pingus\n"
+"\n"
+"So if you create a your second level with a stone theme, call it: stone2-"
+"yourname.pingus\n"
+"\n"
+"When you have created a level and want to have it included in the game mail "
+"it to:\n"
+"\n"
+"     pingus-devel@nongnu.org\n"
+"\n"
+"Only levels published under the GPL are allowed into the game. The editor "
+"automatically inserts a reference \n"
+"to the GPL, if you want to have your level under a different license, you "
+"have to change that reference.\n"
+msgstr ""
+
 #: src/editor/panel.cpp:153
 msgid "    New level"
 msgstr ""
@@ -623,12 +638,17 @@ msgid "Flip object vertically"
 msgstr ""
 
 #: src/editor/panel.cpp:193
-msgid "Rotate object 90 degree"
+msgid "Rotate object -90 degree"
 msgstr ""
 
 #: src/editor/panel.cpp:195
-msgid "Rotate object -90 degree"
+msgid "Rotate object 90 degree"
 msgstr ""
+
+#: src/editor/panel.cpp:202
+#, fuzzy
+msgid "Display help"
+msgstr "Viser denne hjelpeteksten."
 
 #: src/editor/object_properties.cpp:41 src/editor/object_properties.cpp:387
 msgid "Object:"
@@ -1397,6 +1417,32 @@ msgstr ""
 "Så no sit pingusane der på flåten sin, og uroar seg for kva som er i vente, "
 "og kor dei skal dra, mens dei sakte flyt inn i solnedgangen. Framhald "
 "følgjer ..."
+
+#~ msgid ""
+#~ "Print some more messages to stdout, can be set multiple times to increase "
+#~ "verbosity"
+#~ msgstr ""
+#~ "Skriv fleire meldingar til stdout. Kan brukast fleire gongar for fleire "
+#~ "meldingar."
+
+#~ msgid "Use OpenGL"
+#~ msgstr "Bruk OpenGL."
+
+#~ msgid "Use SDL"
+#~ msgstr "Bruk SDL."
+
+#~ msgid "Prints the fps to stdout"
+#~ msgstr "Skriv bilet per sekund til stdout."
+
+#~ msgid "Reduces the CPU usage by issuing sleep()"
+#~ msgstr "Reduserer prosessorbruk ved å senda sleep()-meldingar."
+
+#~ msgid ""
+#~ "Warning: Larger resolution than 800x600 will result in visual problems"
+#~ msgstr "Åtvaring: Høgare oppløysing enn 800x600 vil gje visuelle problem."
+
+#~ msgid "PingusMain: Starting Main: "
+#~ msgstr "PingusMain: Startar Main: "
 
 #~ msgid "Credits"
 #~ msgstr "Rulletekst"

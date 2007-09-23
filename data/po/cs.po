@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-22 03:17+0200\n"
+"POT-Creation-Date: 2007-09-23 02:23+0200\n"
 "PO-Revision-Date: 2004-04-13 23:02+0200\n"
 "Last-Translator: Tomá¹ Bláha\n"
 "Language-Team: czech\n"
@@ -158,210 +158,180 @@ msgstr "Autor: "
 msgid "Filename: "
 msgstr "Jméno souboru: "
 
-#: src/pingus_main.cpp:191
+#: src/pingus_main.cpp:244
 msgid "Displays this help"
 msgstr "Zobrazí tuto nápovìdu"
 
-#: src/pingus_main.cpp:193
-#, fuzzy
-msgid ""
-"Print some more messages to stdout, can be set multiple times to increase "
-"verbosity"
-msgstr "Vypisovat více hlá¹ení na stdout - pokud zadáte"
-
-#: src/pingus_main.cpp:195
+#: src/pingus_main.cpp:246
 #, fuzzy
 msgid "Print version number and exit"
 msgstr "Vypsat èíslo verze a ukonèit"
 
-#: src/pingus_main.cpp:198
-msgid "Use OpenGL"
-msgstr "Pou¾ít OpenGL"
-
-#: src/pingus_main.cpp:200
-msgid "Use SDL"
-msgstr ""
-
-#: src/pingus_main.cpp:203
+#: src/pingus_main.cpp:248
 msgid "Display:"
 msgstr ""
 
-#: src/pingus_main.cpp:205
+#: src/pingus_main.cpp:250
 msgid "Start in Window Mode"
 msgstr "Spustit v oknì"
 
-#: src/pingus_main.cpp:207
+#: src/pingus_main.cpp:252
 msgid "Start in Fullscreen"
 msgstr "Spustit pøes celou obrazovku"
 
-#: src/pingus_main.cpp:209
+#: src/pingus_main.cpp:254
 msgid "Allow Window resize (buggy)"
 msgstr ""
 
-#: src/pingus_main.cpp:211
+#: src/pingus_main.cpp:256
 msgid "Enable software cursor"
 msgstr "Zapnout softwarový kursor"
 
-#: src/pingus_main.cpp:213
+#: src/pingus_main.cpp:258
 msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "Nastavit rozli¹ení (výchozí: 800x600)"
 
-#: src/pingus_main.cpp:215
+#: src/pingus_main.cpp:260
 msgid "Sound:"
 msgstr "Zvuk:"
 
-#: src/pingus_main.cpp:217
+#: src/pingus_main.cpp:262
 msgid "Disable sound"
 msgstr "Vypnout zvuk"
 
-#: src/pingus_main.cpp:219
+#: src/pingus_main.cpp:264
 msgid "Disable music"
 msgstr "Vypnout hudbu"
 
-#: src/pingus_main.cpp:223
+#: src/pingus_main.cpp:268
 msgid "Select language to use with Pingus"
 msgstr ""
 
-#: src/pingus_main.cpp:225
+#: src/pingus_main.cpp:270
 msgid "List all available languages"
 msgstr ""
 
-#: src/pingus_main.cpp:229
+#: src/pingus_main.cpp:274
 #, fuzzy
 msgid "Loads the level editor"
 msgstr "..:: Spustit editor úrovní ::.."
 
-#: src/pingus_main.cpp:231
+#: src/pingus_main.cpp:276
 msgid "Test a font"
 msgstr ""
 
-#: src/pingus_main.cpp:233
+#: src/pingus_main.cpp:278
 msgid "Shows the credits"
 msgstr ""
 
-#: src/pingus_main.cpp:235
+#: src/pingus_main.cpp:280
 #, fuzzy
 msgid "Misc Options:"
 msgstr "Volby:"
 
-#: src/pingus_main.cpp:236
+#: src/pingus_main.cpp:281
 msgid "PATH"
 msgstr ""
 
-#: src/pingus_main.cpp:237
+#: src/pingus_main.cpp:282
 msgid "Set the path to load the data files to 'path'"
 msgstr ""
 
-#: src/pingus_main.cpp:240
+#: src/pingus_main.cpp:285
 msgid "Disable automatic scrolling"
 msgstr "Vypnout automatický posuv"
 
-#: src/pingus_main.cpp:242
+#: src/pingus_main.cpp:287
 msgid "Don't read ~/.pingus/config"
 msgstr "Zakázat naètení ~/.pingus/config"
 
-#: src/pingus_main.cpp:243 src/pingus_main.cpp:252 src/pingus_main.cpp:276
+#: src/pingus_main.cpp:288
 #, fuzzy
 msgid "FILE"
 msgstr "SOUBOR     "
 
-#: src/pingus_main.cpp:244
+#: src/pingus_main.cpp:289
 #, fuzzy
 msgid ""
 "Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
 "speed up the game on slower machines"
 msgstr "Sní¾it zátì¾ CPU, co¾ mù¾e zrychlit hru na pomalých strojích"
 
-#: src/pingus_main.cpp:247
+#: src/pingus_main.cpp:292
 msgid "Uses the controller given in FILE"
 msgstr "Pou¾ít ovladaè ze zadaného souboru"
 
-#: src/pingus_main.cpp:249
+#: src/pingus_main.cpp:294
 msgid "Debugging and experimental stuff:"
 msgstr "Ladicí a experimentální volby:"
 
-#: src/pingus_main.cpp:251
+#: src/pingus_main.cpp:296
 #, fuzzy
 msgid "Enables some features, only interesting to programmers"
 msgstr "Zapnout nìkteré vlastnosti potøebné jen pro programátory"
 
-#: src/pingus_main.cpp:253
-msgid "Load a custom worldmap from FILE"
+#: src/pingus_main.cpp:299
+#, fuzzy
+msgid "Load a custom worldmap"
 msgstr "Nahrát mapu svìta ze souboru"
 
-#: src/pingus_main.cpp:255
+#: src/pingus_main.cpp:301
 #, fuzzy
 msgid ""
-"Enable the output of debugging info, possibleOPTIONs are tiles, gametime, "
-"actions, sound, resources, gui,input, pathmgr"
+"Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
+"actions, sound, resources, gui, input, pathmgr"
 msgstr "nastavení jsou: tiles, gametime, actions, sound, resources, gui,"
 
-#: src/pingus_main.cpp:259
+#: src/pingus_main.cpp:305
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "Pøeskoèit alespoò N snímkù, vy¹¹í hodnota zrychluje hru"
 
-#: src/pingus_main.cpp:261
+#: src/pingus_main.cpp:307
 msgid "Skip at most N frames"
 msgstr "Pøeskoèit maximálnì N snímkù"
 
-#: src/pingus_main.cpp:263
+#: src/pingus_main.cpp:309
 msgid "Set both min and max frameskip to N"
 msgstr "Nastavit maximální i minimální poèet snímkù k pøeskoèení na N"
 
-#: src/pingus_main.cpp:265
+#: src/pingus_main.cpp:311
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Nastavit rychlost hry (0=nejrychlej¹í, >0=pomalej¹í)"
 
-#: src/pingus_main.cpp:267
-msgid "Prints the fps to stdout"
-msgstr "Vypisovat fps na stdout"
-
-#: src/pingus_main.cpp:269
+#: src/pingus_main.cpp:313
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Nastavit velikost dílku mapy (výchozí: 32)"
 
-#: src/pingus_main.cpp:271
+#: src/pingus_main.cpp:315
 msgid "Disable some cpu intensive features"
 msgstr "Vypnout nìkteré operace nároèné na CPU"
 
-#: src/pingus_main.cpp:273
-msgid "Reduces the CPU usage by issuing sleep()"
-msgstr "Sni¾ovat zátì¾ CPU voláním sleep()"
-
-#: src/pingus_main.cpp:275
+#: src/pingus_main.cpp:319
 msgid "Demo playing and recording:"
 msgstr "Nahrávání a pøehrávání dem:"
 
-#: src/pingus_main.cpp:277
-msgid "Plays a demo session from FILE"
+#: src/pingus_main.cpp:321
+#, fuzzy
+msgid "Plays a demo session"
 msgstr "Pøehrát demo ze souboru"
 
-#: src/pingus_main.cpp:279
+#: src/pingus_main.cpp:323
 msgid "Record demos for each played level"
 msgstr "Zaznamenat demo ka¾dé odehrané úrovnì"
 
-#: src/pingus_main.cpp:337
-msgid "Warning: Larger resolution than 800x600 will result in visual problems"
-msgstr ""
-"Varování: Rozli¹ení vìt¹í, ne¾ 800x600 vyústí v problémy se zobrazením."
-
-#: src/pingus_main.cpp:679
-msgid "PingusMain: Starting Main: "
-msgstr "PingusMain: Spou¹tím main: "
-
-#: src/pingus_main.cpp:814
+#: src/pingus_main.cpp:715
 msgid "Error caught from Pingus: "
 msgstr "Odchycena chyba v Pingus: "
 
-#: src/pingus_main.cpp:818
+#: src/pingus_main.cpp:719
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Do¹la pamì»!"
 
-#: src/pingus_main.cpp:822
+#: src/pingus_main.cpp:723
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Odchycena standardní výjimka!:\n"
 
-#: src/pingus_main.cpp:826
+#: src/pingus_main.cpp:727
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Odchyceno neznámé throw!"
 
@@ -565,6 +535,50 @@ msgstr "Screenshot: Screenshot je hotový."
 msgid "Screenshot: Couldn't write file: "
 msgstr "Screenshot: Nemohu zapsat do souboru: "
 
+#: src/editor/editor_screen.cpp:189
+msgid ""
+"Select all\n"
+"Clear Selection\n"
+"Raise objects\n"
+"Lower objects\n"
+"Lower objects to bottom\n"
+"Raise objects to top\n"
+"Rotate 90 degree\n"
+"Rotate 270 degree\n"
+msgstr ""
+
+#: src/editor/editor_screen.cpp:211
+msgid ""
+"Flip object horizontaly\n"
+"Flip object vertically\n"
+"Delete all marked objects\n"
+"Move objects up\n"
+"Move objects down\n"
+"Move objects left\n"
+"Move objects right\n"
+msgstr ""
+
+#: src/editor/editor_screen.cpp:223
+msgid ""
+"You should name your level files systematically, i.e. by their theme, their "
+"number and your nickname:\n"
+"\n"
+"     <levelname><number>-<creator>.pingus\n"
+"\n"
+"So if you create a your second level with a stone theme, call it: stone2-"
+"yourname.pingus\n"
+"\n"
+"When you have created a level and want to have it included in the game mail "
+"it to:\n"
+"\n"
+"     pingus-devel@nongnu.org\n"
+"\n"
+"Only levels published under the GPL are allowed into the game. The editor "
+"automatically inserts a reference \n"
+"to the GPL, if you want to have your level under a different license, you "
+"have to change that reference.\n"
+msgstr ""
+
 #: src/editor/panel.cpp:153
 #, fuzzy
 msgid "    New level"
@@ -641,12 +655,17 @@ msgid "Flip object vertically"
 msgstr ""
 
 #: src/editor/panel.cpp:193
-msgid "Rotate object 90 degree"
+msgid "Rotate object -90 degree"
 msgstr ""
 
 #: src/editor/panel.cpp:195
-msgid "Rotate object -90 degree"
+msgid "Rotate object 90 degree"
 msgstr ""
+
+#: src/editor/panel.cpp:202
+#, fuzzy
+msgid "Display help"
+msgstr "Zobrazí tuto nápovìdu"
 
 #: src/editor/object_properties.cpp:41 src/editor/object_properties.cpp:387
 msgid "Object:"
@@ -1456,6 +1475,29 @@ msgstr ""
 "do západu slunce.\n"
 "\n"
 "Bude mít pokraèování..."
+
+#, fuzzy
+#~ msgid ""
+#~ "Print some more messages to stdout, can be set multiple times to increase "
+#~ "verbosity"
+#~ msgstr "Vypisovat více hlá¹ení na stdout - pokud zadáte"
+
+#~ msgid "Use OpenGL"
+#~ msgstr "Pou¾ít OpenGL"
+
+#~ msgid "Prints the fps to stdout"
+#~ msgstr "Vypisovat fps na stdout"
+
+#~ msgid "Reduces the CPU usage by issuing sleep()"
+#~ msgstr "Sni¾ovat zátì¾ CPU voláním sleep()"
+
+#~ msgid ""
+#~ "Warning: Larger resolution than 800x600 will result in visual problems"
+#~ msgstr ""
+#~ "Varování: Rozli¹ení vìt¹í, ne¾ 800x600 vyústí v problémy se zobrazením."
+
+#~ msgid "PingusMain: Starting Main: "
+#~ msgstr "PingusMain: Spou¹tím main: "
 
 #~ msgid "| segfault_handler: catched a SIGSEGV."
 #~ msgstr "| segfault_handler: Zachycen signál SIGSEGV."

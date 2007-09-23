@@ -28,7 +28,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-22 03:17+0200\n"
+"POT-Creation-Date: 2007-09-23 02:23+0200\n"
 "PO-Revision-Date: 2003-04-15 17:31+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
@@ -179,115 +179,100 @@ msgstr "Designer: "
 msgid "Filename: "
 msgstr "Filnavn: "
 
-#: src/pingus_main.cpp:191
+#: src/pingus_main.cpp:244
 msgid "Displays this help"
 msgstr "Viser denne brugsvejledning"
 
-#: src/pingus_main.cpp:193
-#, fuzzy
-msgid ""
-"Print some more messages to stdout, can be set multiple times to increase "
-"verbosity"
-msgstr "Udskriv flere efterretninger til stdout; kan"
-
-#: src/pingus_main.cpp:195
+#: src/pingus_main.cpp:246
 #, fuzzy
 msgid "Print version number and exit"
 msgstr "Udskriv versionsnummer og afslut"
 
-#: src/pingus_main.cpp:198
-msgid "Use OpenGL"
-msgstr "Benyt OpenGL"
-
-#: src/pingus_main.cpp:200
-msgid "Use SDL"
-msgstr ""
-
-#: src/pingus_main.cpp:203
+#: src/pingus_main.cpp:248
 msgid "Display:"
 msgstr ""
 
-#: src/pingus_main.cpp:205
+#: src/pingus_main.cpp:250
 msgid "Start in Window Mode"
 msgstr "Start Pingus i et vindue"
 
-#: src/pingus_main.cpp:207
+#: src/pingus_main.cpp:252
 msgid "Start in Fullscreen"
 msgstr "Start Pingus i fuld skærm"
 
-#: src/pingus_main.cpp:209
+#: src/pingus_main.cpp:254
 msgid "Allow Window resize (buggy)"
 msgstr ""
 
-#: src/pingus_main.cpp:211
+#: src/pingus_main.cpp:256
 msgid "Enable software cursor"
 msgstr "Brug software-markør (cursor)"
 
-#: src/pingus_main.cpp:213
+#: src/pingus_main.cpp:258
 msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "Indstil skærmopløsningen for Pingus (standard: 800x600)"
 
 # ? TEST
-#: src/pingus_main.cpp:215
+#: src/pingus_main.cpp:260
 msgid "Sound:"
 msgstr "Lyd:"
 
-#: src/pingus_main.cpp:217
+#: src/pingus_main.cpp:262
 msgid "Disable sound"
 msgstr "Slå lyd fra"
 
-#: src/pingus_main.cpp:219
+#: src/pingus_main.cpp:264
 msgid "Disable music"
 msgstr "Slå musik fra"
 
-#: src/pingus_main.cpp:223
+#: src/pingus_main.cpp:268
 msgid "Select language to use with Pingus"
 msgstr ""
 
-#: src/pingus_main.cpp:225
+#: src/pingus_main.cpp:270
 msgid "List all available languages"
 msgstr ""
 
-#: src/pingus_main.cpp:229
+#: src/pingus_main.cpp:274
 #, fuzzy
 msgid "Loads the level editor"
 msgstr "..:: Start banebyggeren ::.."
 
-#: src/pingus_main.cpp:231
+#: src/pingus_main.cpp:276
 msgid "Test a font"
 msgstr ""
 
-#: src/pingus_main.cpp:233
+#: src/pingus_main.cpp:278
 msgid "Shows the credits"
 msgstr ""
 
-#: src/pingus_main.cpp:235
+#: src/pingus_main.cpp:280
 #, fuzzy
 msgid "Misc Options:"
 msgstr "Indstillinger:"
 
-#: src/pingus_main.cpp:236
+#: src/pingus_main.cpp:281
 msgid "PATH"
 msgstr ""
 
-#: src/pingus_main.cpp:237
+#: src/pingus_main.cpp:282
 msgid "Set the path to load the data files to 'path'"
 msgstr ""
 
-#: src/pingus_main.cpp:240
+#: src/pingus_main.cpp:285
 msgid "Disable automatic scrolling"
 msgstr "Slå automatisk rulning (scroll) fra"
 
-#: src/pingus_main.cpp:242
+#: src/pingus_main.cpp:287
 msgid "Don't read ~/.pingus/config"
 msgstr "Undlad at indlæse ~/.pingus/config"
 
-#: src/pingus_main.cpp:243 src/pingus_main.cpp:252 src/pingus_main.cpp:276
+#: src/pingus_main.cpp:288
 #, fuzzy
 msgid "FILE"
 msgstr "FIL      "
 
-#: src/pingus_main.cpp:244
+#: src/pingus_main.cpp:289
 #, fuzzy
 msgid ""
 "Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
@@ -295,100 +280,85 @@ msgid ""
 msgstr ""
 "reducér CPU-belastning; kan sætte spillets fart op på langsommere maskiner"
 
-#: src/pingus_main.cpp:247
+#: src/pingus_main.cpp:292
 msgid "Uses the controller given in FILE"
 msgstr "Brug kontrollen der er angivet i FIL"
 
 # ?
-#: src/pingus_main.cpp:249
+#: src/pingus_main.cpp:294
 msgid "Debugging and experimental stuff:"
 msgstr "Debug- og eksperimentelle ting"
 
-#: src/pingus_main.cpp:251
+#: src/pingus_main.cpp:296
 #, fuzzy
 msgid "Enables some features, only interesting to programmers"
 msgstr "Slå visse features til; kun interessant for programmører"
 
 # TEST
-#: src/pingus_main.cpp:253
-msgid "Load a custom worldmap from FILE"
+#: src/pingus_main.cpp:299
+#, fuzzy
+msgid "Load a custom worldmap"
 msgstr "Indlæs et verdenskort fra FIL"
 
-#: src/pingus_main.cpp:255
+#: src/pingus_main.cpp:301
 #, fuzzy
 msgid ""
-"Enable the output of debugging info, possibleOPTIONs are tiles, gametime, "
-"actions, sound, resources, gui,input, pathmgr"
+"Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
+"actions, sound, resources, gui, input, pathmgr"
 msgstr "af OPTION er  tiles, gametime, actions, sound, resources, gui,"
 
-#: src/pingus_main.cpp:259
+#: src/pingus_main.cpp:305
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "Spring mindst N skærmbilleder over; højere værdier øger hastigheden"
 
-#: src/pingus_main.cpp:261
+#: src/pingus_main.cpp:307
 msgid "Skip at most N frames"
 msgstr "Spring højst N skærmbilleder over"
 
 # ? skær
-#: src/pingus_main.cpp:263
+#: src/pingus_main.cpp:309
 msgid "Set both min and max frameskip to N"
 msgstr "Spring præcis N skærmbilleder over"
 
-#: src/pingus_main.cpp:265
+#: src/pingus_main.cpp:311
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Indstil spillehastigheden (0 : hurtigst; >0 : langsommere)"
 
-#: src/pingus_main.cpp:267
-msgid "Prints the fps to stdout"
-msgstr "Udskriv FPS (skærmbilleder i sekundet) til stdout"
-
-#: src/pingus_main.cpp:269
+#: src/pingus_main.cpp:313
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Indstil størrelsen (i pixels) af kort-brikkerne (standard: 32)"
 
 # ?? TODO
-#: src/pingus_main.cpp:271
+#: src/pingus_main.cpp:315
 msgid "Disable some cpu intensive features"
 msgstr "Deaktivér visse CPU-intensive funktioner"
 
-#: src/pingus_main.cpp:273
-msgid "Reduces the CPU usage by issuing sleep()"
-msgstr "Reducerer CPU-belastningen ved at anvende sleep()"
-
-#: src/pingus_main.cpp:275
+#: src/pingus_main.cpp:319
 msgid "Demo playing and recording:"
 msgstr "Optagning og afspilning af demoer:"
 
-#: src/pingus_main.cpp:277
-msgid "Plays a demo session from FILE"
+#: src/pingus_main.cpp:321
+#, fuzzy
+msgid "Plays a demo session"
 msgstr "Afspiller en demo fra FIL"
 
-#: src/pingus_main.cpp:279
+#: src/pingus_main.cpp:323
 msgid "Record demos for each played level"
 msgstr "Optag demoer for hver spillet bane"
 
-#: src/pingus_main.cpp:337
-msgid "Warning: Larger resolution than 800x600 will result in visual problems"
-msgstr ""
-"Advarsel: Skærmopløsninger større end 800x600 kan medføre grafik-problemer"
-
-#: src/pingus_main.cpp:679
-msgid "PingusMain: Starting Main: "
-msgstr "PingusMain: Starter hovedprogram: "
-
-#: src/pingus_main.cpp:814
+#: src/pingus_main.cpp:715
 msgid "Error caught from Pingus: "
 msgstr "Fejl fra Pingus fanget: "
 
-#: src/pingus_main.cpp:818
+#: src/pingus_main.cpp:719
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Løbet tør for hukommelse!"
 
-#: src/pingus_main.cpp:822
+#: src/pingus_main.cpp:723
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standard-undtagelse (exception) fanget!:\n"
 
-#: src/pingus_main.cpp:826
+#: src/pingus_main.cpp:727
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Ukendt undtagelse (exception) fanget!"
 
@@ -596,6 +566,50 @@ msgstr "Skærmskud: Skærmbilledet er gemt."
 msgid "Screenshot: Couldn't write file: "
 msgstr "Skærmskud: Kunne ikke skrive til filen: "
 
+#: src/editor/editor_screen.cpp:189
+msgid ""
+"Select all\n"
+"Clear Selection\n"
+"Raise objects\n"
+"Lower objects\n"
+"Lower objects to bottom\n"
+"Raise objects to top\n"
+"Rotate 90 degree\n"
+"Rotate 270 degree\n"
+msgstr ""
+
+#: src/editor/editor_screen.cpp:211
+msgid ""
+"Flip object horizontaly\n"
+"Flip object vertically\n"
+"Delete all marked objects\n"
+"Move objects up\n"
+"Move objects down\n"
+"Move objects left\n"
+"Move objects right\n"
+msgstr ""
+
+#: src/editor/editor_screen.cpp:223
+msgid ""
+"You should name your level files systematically, i.e. by their theme, their "
+"number and your nickname:\n"
+"\n"
+"     <levelname><number>-<creator>.pingus\n"
+"\n"
+"So if you create a your second level with a stone theme, call it: stone2-"
+"yourname.pingus\n"
+"\n"
+"When you have created a level and want to have it included in the game mail "
+"it to:\n"
+"\n"
+"     pingus-devel@nongnu.org\n"
+"\n"
+"Only levels published under the GPL are allowed into the game. The editor "
+"automatically inserts a reference \n"
+"to the GPL, if you want to have your level under a different license, you "
+"have to change that reference.\n"
+msgstr ""
+
 #: src/editor/panel.cpp:153
 #, fuzzy
 msgid "    New level"
@@ -672,12 +686,17 @@ msgid "Flip object vertically"
 msgstr ""
 
 #: src/editor/panel.cpp:193
-msgid "Rotate object 90 degree"
+msgid "Rotate object -90 degree"
 msgstr ""
 
 #: src/editor/panel.cpp:195
-msgid "Rotate object -90 degree"
+msgid "Rotate object 90 degree"
 msgstr ""
+
+#: src/editor/panel.cpp:202
+#, fuzzy
+msgid "Display help"
+msgstr "Viser denne brugsvejledning"
 
 #: src/editor/object_properties.cpp:41 src/editor/object_properties.cpp:387
 msgid "Object:"
@@ -1501,6 +1520,29 @@ msgstr ""
 "og hvor de vil komme hen, og flyder mod solnedgangen.\n"
 "\n"
 "Fortsættes..."
+
+#, fuzzy
+#~ msgid ""
+#~ "Print some more messages to stdout, can be set multiple times to increase "
+#~ "verbosity"
+#~ msgstr "Udskriv flere efterretninger til stdout; kan"
+
+#~ msgid "Use OpenGL"
+#~ msgstr "Benyt OpenGL"
+
+#~ msgid "Prints the fps to stdout"
+#~ msgstr "Udskriv FPS (skærmbilleder i sekundet) til stdout"
+
+#~ msgid "Reduces the CPU usage by issuing sleep()"
+#~ msgstr "Reducerer CPU-belastningen ved at anvende sleep()"
+
+#~ msgid ""
+#~ "Warning: Larger resolution than 800x600 will result in visual problems"
+#~ msgstr ""
+#~ "Advarsel: Skærmopløsninger større end 800x600 kan medføre grafik-problemer"
+
+#~ msgid "PingusMain: Starting Main: "
+#~ msgstr "PingusMain: Starter hovedprogram: "
 
 #~ msgid "| segfault_handler: catched a SIGSEGV."
 #~ msgstr "| segfault_handler: fik en SIGSEGV (programfejl)."
