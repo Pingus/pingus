@@ -4,9 +4,10 @@
 * level editor rewritten from scratch
 * level loading from command line fixed
 * numerous other command line parsing bugs fixed
+* separate images for gfx and colmap are used again 
 * input subsystem rewritten from scratch, supports now gamepads,
-  usbmice, wiimote (some of those might be buggy and not work
-  properly)
+  usbmice, wiimote (some of those might unfinished and not enabled by
+  default)
 
 
 0.7.0 (25/Aug/2007)
