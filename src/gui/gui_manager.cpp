@@ -93,6 +93,9 @@ GUIManager::process_input(const GameDelta& delta)
             on_key_pressed(i->keyboard.key);
             break;
 
+          case Input::SCROLLER_EVENT_TYPE:
+            break;
+
           default:
             pwarn (PINGUS_DEBUG_GUI) << "GUIManager: unhandled event type " << i->type << std::endl;
             break;
