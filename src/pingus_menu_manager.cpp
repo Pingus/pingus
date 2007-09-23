@@ -77,6 +77,8 @@ PingusMenuManager::draw (DrawingContext& gc)
   for (MenuStackIter i = menu_stack.begin (); i != menu_stack.end (); ++i)
     (*i)->draw(gc);
 
+  SDL_Delay(10);
+
   return true;
 }
 

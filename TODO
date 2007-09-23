@@ -91,6 +91,18 @@ Roadmap for Pingus 0.7.2
 Important:
 ==========
 
+- FPS: issues: 
+
+  - Editor:     27fps - 20%
+  - Main Menu:  30fps - 50%
+  - Worldmap:   50fps - 22%
+  - Starscreen: 19fps - 14%
+  - Game:       32fps - 14%
+  - EndScreen:  50fps - 19%
+
+- Loading data/levels/playable/chouser02.pingus in Editor and saving
+  it again causes the background to be at the wrong position
+
 - frameskip seems broken
 
 - remove verbose

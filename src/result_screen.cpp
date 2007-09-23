@@ -246,6 +246,8 @@ ResultScreenComponent::draw(DrawingContext& gc)
 
   gc.print_left(Fonts::chalk_normal,  left_x, (y+=30), _("Time left: "));
   gc.print_right(Fonts::chalk_normal, right_x, y, time_str);
+
+  SDL_Delay(10);
 }
 
 ResultScreen::ResultScreen(Result arg_result)
