@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-23 02:23+0200\n"
+"POT-Creation-Date: 2007-09-23 15:49+0200\n"
 "PO-Revision-Date: 2003-08-29 21:01+0100\n"
 "Last-Translator: Ricardo Cruz <rick2@aeiou.pt>\n"
 "Language-Team: Portuguese\n"
@@ -538,7 +538,7 @@ msgstr "Instântaneo: Instântaneo tirado."
 msgid "Screenshot: Couldn't write file: "
 msgstr "Instântaneo: Não consegui escrever ficheiro: "
 
-#: src/editor/editor_screen.cpp:189
+#: src/editor/editor_screen.cpp:192
 msgid ""
 "Select all\n"
 "Clear Selection\n"
@@ -550,7 +550,7 @@ msgid ""
 "Rotate 270 degree\n"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:211
+#: src/editor/editor_screen.cpp:214
 msgid ""
 "Flip object horizontaly\n"
 "Flip object vertically\n"
@@ -561,7 +561,7 @@ msgid ""
 "Move objects right\n"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:223
+#: src/editor/editor_screen.cpp:226
 msgid ""
 "You should name your level files systematically, i.e. by their theme, their "
 "number and your nickname:\n"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-23 02:23+0200\n"
+"POT-Creation-Date: 2007-09-23 15:49+0200\n"
 "PO-Revision-Date: 2007-09-23 14:21+0200\n"
 "Last-Translator: David Philippi <david@torangan.de>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
@@ -526,7 +526,7 @@ msgstr "Screenshot: Screenshot wurde erstellt."
 msgid "Screenshot: Couldn't write file: "
 msgstr "Screenshot: Datei konnte nicht geschrieben werden: "
 
-#: src/editor/editor_screen.cpp:189
+#: src/editor/editor_screen.cpp:192
 msgid ""
 "Select all\n"
 "Clear Selection\n"
@@ -546,7 +546,7 @@ msgstr ""
 "Objekte um 90 Grad drehen\n"
 "Objekte um 270 Grad drehen\n"
 
-#: src/editor/editor_screen.cpp:211
+#: src/editor/editor_screen.cpp:214
 msgid ""
 "Flip object horizontaly\n"
 "Flip object vertically\n"
@@ -564,7 +564,7 @@ msgstr ""
 "Objekte nach links bewegen\n"
 "Objekte nach rechts bewegen\n"
 
-#: src/editor/editor_screen.cpp:223
+#: src/editor/editor_screen.cpp:226
 #, fuzzy
 msgid ""
 "You should name your level files systematically, i.e. by their theme, their "
@@ -589,15 +589,19 @@ msgstr ""
 "\n"
 "     <Thema><Nummer>-<Autor>.pingus\n"
 "\n"
-"Wenn zum Beispiel das Thema des Levels Steine sind und es der zweite Level mit diesem Thema ist, dann\n"
+"Wenn zum Beispiel das Thema des Levels Steine sind und es der zweite Level "
+"mit diesem Thema ist, dann\n"
 "wäre der Name: stone2-deinname.pingus\n"
 "\n"
-"When du einen Level erstellt hast und in ins Spiel eingefügt haben willst, sende ihn an:\n"
+"When du einen Level erstellt hast und in ins Spiel eingefügt haben willst, "
+"sende ihn an:\n"
 "\n"
 "   pingus-devel@nongnu.org\n"
 "\n"
-"Nur Level die unter der GPL stehen können ins Spiel aufgenommen werden. Alle mit diesem Editor erstellen\n"
-"Level enthälten automatisch einen Verweis auf die GPL, wer eine andere Lizenz will, muß selbigen\n"
+"Nur Level die unter der GPL stehen können ins Spiel aufgenommen werden. Alle "
+"mit diesem Editor erstellen\n"
+"Level enthälten automatisch einen Verweis auf die GPL, wer eine andere "
+"Lizenz will, muß selbigen\n"
 "Verweiss löschen. \n"
 
 #: src/editor/panel.cpp:153
@@ -1147,7 +1151,10 @@ msgid ""
 "Once again it's time to combine the stuff you have learned in your previous "
 "levels. Blast your way free and make sure you also keep the rest of the "
 "Pingus under control. The Blocker action will be helpful. "
-msgstr "Wieder ist es an der Zeit die Dinge die Du bereits gelernt hast zu verbinden. Sprenge Dir den Weg frei und achte darauf, dass du auch die restlichen Pingu unter Kontrolle hälst. Der Blocker wird Dir helfen. "
+msgstr ""
+"Wieder ist es an der Zeit die Dinge die Du bereits gelernt hast zu "
+"verbinden. Sprenge Dir den Weg frei und achte darauf, dass du auch die "
+"restlichen Pingu unter Kontrolle hälst. Der Blocker wird Dir helfen. "
 
 #: data/levels/tutorial/snow15-grumbel.pingus:5
 msgid "Climb, Climber,... Boom!"

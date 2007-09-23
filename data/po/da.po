@@ -28,7 +28,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-23 02:23+0200\n"
+"POT-Creation-Date: 2007-09-23 15:49+0200\n"
 "PO-Revision-Date: 2003-04-15 17:31+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
@@ -566,7 +566,7 @@ msgstr "Skærmskud: Skærmbilledet er gemt."
 msgid "Screenshot: Couldn't write file: "
 msgstr "Skærmskud: Kunne ikke skrive til filen: "
 
-#: src/editor/editor_screen.cpp:189
+#: src/editor/editor_screen.cpp:192
 msgid ""
 "Select all\n"
 "Clear Selection\n"
@@ -578,7 +578,7 @@ msgid ""
 "Rotate 270 degree\n"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:211
+#: src/editor/editor_screen.cpp:214
 msgid ""
 "Flip object horizontaly\n"
 "Flip object vertically\n"
@@ -589,7 +589,7 @@ msgid ""
 "Move objects right\n"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:223
+#: src/editor/editor_screen.cpp:226
 msgid ""
 "You should name your level files systematically, i.e. by their theme, their "
 "number and your nickname:\n"

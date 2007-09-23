@@ -1,3 +1,39 @@
+2007-09-22 17:21  jsalmon3
+
+	* TODO, src/editor/editor_level.cpp, src/editor/editor_screen.cpp:
+	  Need to prompt user if save fails
+
+2007-09-22 16:44  jsalmon3
+
+	* pingus.vcproj, src/system.cpp:
+	  Fixed drive letter on windows
+
+2007-09-22 16:12  grumbel
+
+	* src/editor/editor_screen.cpp:
+	  - reduced level editor sleep a bit
+
+2007-09-22 15:58  grumbel
+
+	* TODO, src/gui/screen_manager.cpp, src/input/manager.cpp,
+	  src/input/manager.hpp, src/pingus_main.cpp:
+	  - fixed bug in controller file handling
+
+2007-09-22 15:46  grumbel
+
+	* ChangeLog, NEWS, SConstruct, TODO, lib/binreloc/binreloc.c,
+	  lib/binreloc/binreloc.h, src/config.cpp, src/globals.cpp,
+	  src/globals.hpp, src/path_manager.cpp, src/path_manager.hpp,
+	  src/pingus_main.cpp, src/pingus_main.hpp, src/pingus_options.hpp:
+	  - rewrote command line parsing so that the ordering is correct
+	  - fixed a few spelling errors
+	  - fixed datadir option and binreloc
+
+2007-09-22 12:19  grumbel
+
+	* TODO:
+	  - readded main menu issue, since its not fully solved
+
 2007-09-22 04:52  jsalmon3
 
 	* TODO, src/gui/screen_manager.cpp:

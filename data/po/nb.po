@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-23 02:23+0200\n"
+"POT-Creation-Date: 2007-09-23 15:49+0200\n"
 "PO-Revision-Date: 2003-08-24 21:08+0200\n"
 "Last-Translator: Skule Solvang <sk-so@online.no>\n"
 "Language-Team: no <sk-so@online.no>\n"
@@ -533,7 +533,7 @@ msgstr "Skjermbilde: Ferdig med skjermbilde."
 msgid "Screenshot: Couldn't write file: "
 msgstr "Skjermbilde: Kunne ikke skrive fil: "
 
-#: src/editor/editor_screen.cpp:189
+#: src/editor/editor_screen.cpp:192
 msgid ""
 "Select all\n"
 "Clear Selection\n"
@@ -545,7 +545,7 @@ msgid ""
 "Rotate 270 degree\n"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:211
+#: src/editor/editor_screen.cpp:214
 msgid ""
 "Flip object horizontaly\n"
 "Flip object vertically\n"
@@ -556,7 +556,7 @@ msgid ""
 "Move objects right\n"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:223
+#: src/editor/editor_screen.cpp:226
 msgid ""
 "You should name your level files systematically, i.e. by their theme, their "
 "number and your nickname:\n"
