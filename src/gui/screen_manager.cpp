@@ -127,7 +127,7 @@ ScreenManager::display()
 	continue;
 
       // skip draw if the screen changed to avoid glitches
-      if (last_screen == get_current_screen())
+      if (last_screen == get_current_screen() || fast_mode)
       	{
 	  if (get_current_screen()->draw(*display_gc))
             {

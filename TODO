@@ -145,8 +145,6 @@ Important:
   but the menu still acts funky if one clicks heavily (i.e. two
   screens get added instead of one or stuff like that)
 
-- disable fade-over when fast-mode is active
-
 - rewrite Config file support, make game automatically write a default
   config file, use s-expr
 
