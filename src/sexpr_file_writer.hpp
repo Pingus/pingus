@@ -53,7 +53,7 @@ public:
   template<class E, class F>
   void write_enum(const char* name, E value, F enum2string)
   {
-    (*out) << indent() << "(" << name << " \"" << enum2string(value) << "\")\n";
+    (*out) << "\n" << indent() << "(" << name << " \"" << enum2string(value) << "\")";
   }
 
 private:
