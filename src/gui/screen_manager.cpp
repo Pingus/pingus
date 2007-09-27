@@ -221,7 +221,7 @@ ScreenManager::real_pop_screen ()
 
   if (!screens.empty ())
     {
-      screens.back ()->on_startup ();
+      screens.back()->on_startup ();
     }
 }
 
@@ -294,6 +294,12 @@ void
 ScreenManager::resize(const Size& size)
 {
   std::cout << "Resize: " << size.width << "x" << size.height << std::endl;
+
+  // FIXME: Calling this causes horrible flicker, any better way to resize the screen?
+  Display::set_video_mode(size.width, size.height);
+
+  get_current_screen()->resize(size);
+
 }
 
 void

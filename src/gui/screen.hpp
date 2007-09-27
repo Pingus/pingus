@@ -23,6 +23,7 @@
 #include "SDL.h"
 #include "game_delta.hpp"
 
+class Size;
 class DrawingContext;
 
 /** A interface for screens. A screen is a Pingus 'thing' which gets
@@ -52,6 +53,8 @@ public:
   /** Called once the screen gets replaced or poped or shadowed by a
       newly pushed screen */
   virtual void on_shutdown () {}
+
+  virtual void resize(const Size&) {}
 
 private:
   Screen (const Screen&);

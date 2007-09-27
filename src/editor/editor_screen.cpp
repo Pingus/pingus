@@ -47,7 +47,7 @@
 #include "level_properties.hpp"
 
 namespace Editor {
-
+
 // Default constructor
 EditorScreen::EditorScreen()
   : plf(new EditorLevel(this)), 
@@ -449,6 +449,21 @@ EditorScreen::exit()
   ScreenManager::instance()->pop_screen();  
 }
 
+void
+EditorScreen::resize(const Size& size)
+{
+  gui_manager->set_rect(Rect(Vector2i(0, 0), size));
+
+  object_selector->set_rect(Rect(size.width-244, 38, size.width, size.height));
+
+  if (object_selector->is_visible())
+    viewport->set_rect(Rect(0, 38, size.width - 244, size.height));
+  else
+    viewport->set_rect(Rect(0, 38, size.width, size.height));
+
+  object_properties->set_rect(Rect(Vector2i(0, size.height-150), Size(200, 150)));
+}
+
 } // namespace Editor 
 
 /* EOF */

@@ -30,7 +30,7 @@ using namespace Input;
 namespace GUI { 
 
 GUIManager::GUIManager ()
-  : GroupComponent(Rect(0, 0, Display::get_width(), Display::get_height())),
+  : GroupComponent(Rect(0, 0, Display::get_width(), Display::get_height()), false),
     mouse_pos(400,300)
 {
 }

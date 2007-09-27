@@ -30,12 +30,17 @@ class DrawingRequest
 {
 protected:
   Vector3f pos;
+  bool     valid;
+
+  std::vector<Rect> dirty_rects;
 
 public:
-  DrawingRequest(const Vector3f& pos_) : pos(pos_) {}
+  DrawingRequest(const Vector3f& pos_) : pos(pos_), valid(true) {}
   virtual ~DrawingRequest() {};
   
   virtual void render(SDL_Surface* gc, const Rect& rect) = 0;
+
+  virtual void mark(const Rect& r) { dirty_rects.push_back(r); }
   
   /** Returns true if the request contains an alpha channel and needs
       to be drawn in order */
@@ -43,6 +48,9 @@ public:
 
   /** Returns the position at which the request should be drawn */
   virtual float get_z_pos() { return pos.z; }
+
+  virtual void set_valid(bool v) { valid = v; }
+  virtual bool is_valid() const { return valid; }
 private:
   DrawingRequest (const DrawingRequest&);
   DrawingRequest& operator= (const DrawingRequest&);
