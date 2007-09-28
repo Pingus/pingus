@@ -358,7 +358,8 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
     else:
         reports += "  * Linux evdev support: ok\n"
         config_h_defines  += [('HAVE_LINUXEVDEV', 1)]
-        env['optional_sources'] += ['src/input/evdev_driver.cpp']
+        env['optional_sources'] += ['src/input/evdev_driver.cpp',
+                                    'src/input/evdev_device.cpp']
     
     if not env['with_wiimote']:
         reports += "  * Wiimote support: disabled\n"        

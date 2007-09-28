@@ -26,7 +26,7 @@ EvdevDriver::EvdevDriver()
 }
 
 EvdevDriver::~EvdevDriver() 
-{
+{ 
 }
 
 std::string
@@ -59,7 +59,7 @@ EvdevDriver::create_scroller(const FileReader& reader, Control* parent)
 }
 
 Pointer*
-EvdevDriver::create_pointer (const FileReader& reader, Control* parent)
+EvdevDriver::create_pointer(const FileReader& reader, Control* parent)
 {
   return 0;
 }

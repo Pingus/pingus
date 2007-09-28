@@ -34,6 +34,9 @@
 #ifdef HAVE_LINUXUSBMOUSE
 #  include "usbmouse_driver.hpp"
 #endif
+#ifdef HAVE_LINUXEVDEV
+#  include "evdev_driver.hpp"
+#endif
 #include "manager.hpp"
 
 namespace Input {
@@ -234,6 +237,10 @@ Manager::load_driver(const std::string& name)
 #ifdef HAVE_LINUXUSBMOUSE
       } else if (name == "usbmouse") {
         driver = new USBMouseDriver();
+#endif
+#ifdef HAVE_LINUXEVDEV
+      } else if (name == "evdev") {
+        driver = new EvdevDriver();
 #endif
 #ifdef HAVE_XINPUT
       } else if (name == "xinput") {
