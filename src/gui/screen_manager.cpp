@@ -293,7 +293,7 @@ ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
 void
 ScreenManager::resize(const Size& size)
 {
-  std::cout << "Resize: " << size.width << "x" << size.height << std::endl;
+  display_gc->set_rect(Rect(Vector2i(0, 0), size));
 
   // FIXME: Calling this causes horrible flicker, any better way to resize the screen?
   Display::set_video_mode(size.width, size.height);

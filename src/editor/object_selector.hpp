@@ -78,6 +78,7 @@ public:
   ObjectSelectorSet* create_weather();
   ObjectSelectorSet* create_worldobj();
 
+  void update_layout();
 private:
   ObjectSelector (const ObjectSelector&);
   ObjectSelector& operator= (const ObjectSelector&);

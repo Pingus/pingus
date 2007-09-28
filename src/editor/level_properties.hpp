@@ -72,6 +72,8 @@ public:
   void on_comment_change(const std::string& str);
   void on_music_change(const std::string& str);
 
+  void update_layout();
+
 private:
   LevelProperties (const LevelProperties&);
   LevelProperties& operator= (const LevelProperties&);

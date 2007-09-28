@@ -203,6 +203,29 @@ LevelProperties::on_music_change(const std::string& str)
 { 
   level->set_music(str);
 }
+
+void
+LevelProperties::update_layout()
+{
+  GroupComponent::update_layout();
+
+  int w = rect.get_width() - 120; 
+  author->set_rect(Rect(Vector2i(110,  10), Size(  w, 20)));
+  levelname->set_rect(Rect(Vector2i(110,  32), Size(  w, 20)));
+  description->set_rect(Rect(Vector2i(110,  54), Size(  w, 20*3)));
+  
+  int y = 116;
+  number_of_pingus->set_rect(Rect(Vector2i(110,  y), Size(  w, 20)));
+  number_to_save->set_rect(Rect(Vector2i(110,  y+22), Size(  w, 20))); 
+
+  time->set_rect(Rect(Vector2i(110,  y+44), Size(  w, 20)));
+  width->set_rect(Rect(Vector2i(110,  y+66), Size(  w, 20)));
+  height->set_rect(Rect(Vector2i(110,  y+88), Size(  w, 20)));
+  
+  difficulty->set_rect(Rect(Vector2i(110, y+110), Size(  w, 20)));
+  comment->set_rect(Rect(Vector2i(110, y+132), Size(  w, 20)));
+  music->set_rect(Rect(Vector2i(110, y+154), Size(  w, 20)));
+}
 
 } // namespace Editor
 

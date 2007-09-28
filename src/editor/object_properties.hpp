@@ -100,6 +100,7 @@ public:
   
   void set_object(LevelObj* obj);
   void draw_background(DrawingContext& gc);
+  void update_layout();
 
   void set_objects(const std::vector<LevelObj*>& objs);
 

@@ -87,7 +87,7 @@ public:
 
   void set_objects(ObjectSelectorSet* object_set);
 
-  void update_layout() {}
+  void update_layout();
 private:
   ObjectSelectorList (const ObjectSelectorList&);
   ObjectSelectorList& operator= (const ObjectSelectorList&);

@@ -216,6 +216,12 @@ ObjectSelectorList::set_objects(ObjectSelectorSet* new_set)
 
   current_object = -1;
 }
+
+void
+ObjectSelectorList::update_layout()
+{
+  drawing_context->set_rect(rect);
+}
 
 } // namespace Editor
 

@@ -573,7 +573,6 @@ EditorViewport::lower_objects_to_bottom()
 void
 EditorViewport::update_layout()
 {
-  std::cout << "Viewport: Rect: " << rect.get_width() << " " << rect.get_height() << std::endl;
   state.set_size(rect.get_width(), rect.get_height());
   drawing_context->set_rect(rect);
 }

@@ -461,7 +461,11 @@ EditorScreen::resize(const Size& size)
   else
     viewport->set_rect(Rect(0, 38, size.width, size.height));
 
-  object_properties->set_rect(Rect(Vector2i(0, size.height-150), Size(200, 150)));
+  object_properties->set_rect(Rect(Vector2i(0, size.height - object_properties->get_rect().get_height()), 
+                                   Size(object_properties->get_rect().get_width(),
+                                        object_properties->get_rect().get_height())));
+
+  level_properties->set_rect(Rect(Vector2i(0,38), Size(size.width-244,302)));
 }
 
 } // namespace Editor 

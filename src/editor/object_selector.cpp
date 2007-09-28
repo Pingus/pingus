@@ -519,6 +519,13 @@ ObjectSelector::create_worldobj()
   std::cout << "ObjectSelector: unimplemented: " << __FILE__ << ":" << __LINE__ << std::endl;
   return new ObjectSelectorSet(object_list, 48, 48);
 }
+
+void
+ObjectSelector::update_layout()
+{
+  GroupComponent::update_layout();
+  object_list->set_rect(Rect(2, 2 + 60 + 2, rect.get_width() - 2, rect.get_height() - 2)); 
+}
 
 } // namespace Editor
 

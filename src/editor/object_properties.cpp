@@ -574,6 +574,12 @@ ObjectProperties::on_repeat_change(const std::string& str)
       (*i)->set_repeat(r);
     }
 }
+
+void
+ObjectProperties::update_layout()
+{
+  GroupComponent::update_layout();
+}
 
 } // namespace Editor
 
