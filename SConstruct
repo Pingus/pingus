@@ -306,6 +306,7 @@ def DefineOptions(filename, args):
 #   opts.Add('profile', 'Build with profiling support', 0)
    opts.Add('with_xinput', 'Build with Xinput support', False)
    opts.Add('with_linuxusbmouse', 'Build with Linux USB mouse support', True)
+   opts.Add('with_linuxevdev', 'Build with Linux evdev support', True)
    opts.Add('with_wiimote', 'Build with Wiimote support', False)
    opts.Add('ignore_errors', 'Ignore any fatal configuration errors', False)
    opts.Add('optional_sources', 'Additional source files', [])
@@ -351,6 +352,13 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
         reports += "  * Linux USB mouse support: ok\n"
         config_h_defines  += [('HAVE_LINUXUSBMOUSE', 1)]
         env['optional_sources'] += ['src/input/usbmouse_driver.cpp']
+    
+    if not env['with_linuxevdev']:
+        reports += "  * Linux evdev support: disabled\n"
+    else:
+        reports += "  * Linux evdev support: ok\n"
+        config_h_defines  += [('HAVE_LINUXEVDEV', 1)]
+        env['optional_sources'] += ['src/input/evdev_driver.cpp']
     
     if not env['with_wiimote']:
         reports += "  * Wiimote support: disabled\n"        
