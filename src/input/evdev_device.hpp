@@ -22,6 +22,7 @@
 
 #include <vector>
 #include <string>
+#include "control.hpp"
 
 namespace Input {
 
@@ -49,6 +50,9 @@ private:
     Relative(int code_) : code(code_), pos(0) {}
     int code;
     int pos;
+
+    int binding_axis; // FIXME: Should be part of the binding
+    std::vector<Scroller*> bindings;
   };
 
   // Key Input Event
@@ -56,6 +60,7 @@ private:
     Key(int code_) : code(code_), pressed(false) {}
     int code;
     bool pressed;
+    std::vector<Button*> bindings;
   };
 
   int fd;
@@ -72,6 +77,9 @@ public:
   EvdevDevice(const std::string& filename);
   ~EvdevDevice();
   
+  std::string get_name() const { return name; }
+  std::string get_device() const { return device; }
+
   void update(float delta);
   void process_absolute(struct input_event& ev);
   void process_relative(struct input_event& ev);
@@ -80,6 +88,9 @@ public:
   int get_key_index_by_code(int code);
   int get_relative_index_by_code(int code);
   int get_absolute_index_by_code(int code);
+
+  Scroller* create_scroller(Control* parent, int x, int y);
+  Button*   create_button(Control* parent, int id);
 };
 
 } // namespace Input

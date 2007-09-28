@@ -95,7 +95,8 @@ EvdevDevice::EvdevDevice(const std::string& filename)
                         struct input_absinfo absinfo;
                         ioctl(fd, EVIOCGABS(j), &absinfo);
                         // FIXME: we are ignoring absinfo.fuzz and
-                        // absinfo.flat, not sure what they are good for
+                        // absinfo.flat = deadzone
+                        // absinfo.fuzz = values in which range can be considered the same (jitter)
                         absolutes.push_back(Absolute(j, absinfo.minimum, absinfo.maximum, absinfo.value));
                       }
                     else if (i == EV_REL) 
@@ -138,9 +139,18 @@ EvdevDevice::process_absolute(struct input_event& ev)
 void
 EvdevDevice::process_relative(struct input_event& ev)
 {
-  int relative_index = get_relative_index_by_code(ev.code);
+  int idx = get_relative_index_by_code(ev.code);
 
-  relatives[relative_index].pos += ev.value;
+  relatives[idx].pos += ev.value;
+
+  for(std::vector<Scroller*>::iterator i = relatives[idx].bindings.begin(); 
+      i != relatives[idx].bindings.end(); ++i)
+    {
+      if (relatives[idx].binding_axis == 0)
+        (*i)->set_delta(Vector2f(-ev.value * 0.125f, 0)); // FIXME: make scaling and inversion configurable
+      else if (relatives[idx].binding_axis == 1)
+        (*i)->set_delta(Vector2f(0, -ev.value * 0.125f));
+    }
 
 #if 0
   CL_InputEvent e; 
@@ -160,9 +170,16 @@ EvdevDevice::process_relative(struct input_event& ev)
 void
 EvdevDevice::process_key(struct input_event& ev)
 {
-  int button_index = get_key_index_by_code(ev.code);
+  int idx = get_key_index_by_code(ev.code);
 
-  keys[button_index].pressed = ev.value;
+  keys[idx].pressed = ev.value;
+  for(std::vector<Button*>::iterator i = keys[idx].bindings.begin(); i != keys[idx].bindings.end(); ++i)
+    {
+      if (ev.value)
+        (*i)->set_state(BUTTON_PRESSED);
+      else
+        (*i)->set_state(BUTTON_RELEASED);
+    }
 
 #if 0
   CL_InputEvent e; 
@@ -222,7 +239,7 @@ EvdevDevice::update(float delta)
     {
       for (int i = 0; i < rd / (int)sizeof(struct input_event); ++i)
         {
-          std::cout << ev[i].type << " " << ev[i].code << " " << ev[i].value << std::endl;
+          //std::cout << ev[i].type << " " << ev[i].code << " " << ev[i].value << std::endl;
 
           switch (ev[i].type)
             {
@@ -268,6 +285,54 @@ EvdevDevice::update(float delta)
             }
         }
     }
+}
+
+Scroller*
+EvdevDevice::create_scroller(Control* parent, int x, int y)
+{
+  Scroller* scroller = new Scroller(parent);
+  bool have_x = false;
+  bool have_y = false;
+  for(std::vector<Relative>::size_type i = 0; i != relatives.size(); ++i)
+    {
+      if (relatives[i].code == x)
+        {
+          relatives[i].binding_axis = 0;
+          relatives[i].bindings.push_back(scroller);
+          have_x = true;
+        }
+      else if (relatives[i].code == y)
+        {
+          relatives[i].binding_axis = 1;
+          relatives[i].bindings.push_back(scroller);          
+          have_y = true;
+        }
+    }
+
+  if (have_x && have_y)
+    {
+      return scroller;
+    }
+  else
+    {
+      delete scroller;
+      std::cout << "EvdevDevice: " << device << " doesn't have x or y: x=" << x << " y=" << y << std::endl;
+      return 0;
+    }
+}
+
+Button*
+EvdevDevice::create_button(Control* parent, int id)
+{
+  for(std::vector<Key>::size_type i = 0; i != keys.size(); ++i)
+    if (keys[i].code == id)
+      {
+        Button* button = new Button(parent);
+        keys[i].bindings.push_back(button);
+        return button;
+      }
+  std::cout << "EvdevDevice: " << device << " doesn't have button " << id << std::endl;
+  return 0;
 }
 
 } // namespace Input

@@ -24,10 +24,15 @@
 
 namespace Input {
 
+class EvdevDevice;
+
 /** */
 class EvdevDriver : public Driver
 {
 private:
+  typedef std::vector<EvdevDevice*> Devices;
+  Devices devices;
+
 public:
   EvdevDriver();
   ~EvdevDriver();
@@ -40,6 +45,8 @@ public:
   Scroller* create_scroller(const FileReader& reader, Control* parent);
   Pointer*  create_pointer (const FileReader& reader, Control* parent);
   Keyboard* create_keyboard(const FileReader& reader, Control* parent);
+
+  EvdevDevice* get_device(const std::string& device_filename);
 };
 
 } // namespace Input

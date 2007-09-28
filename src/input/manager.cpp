@@ -19,6 +19,8 @@
 **  02111-1307, USA.
 */
 
+#include "config.h"
+
 #include "string_util.hpp"
 #include "pingus_error.hpp"
 #include "pathname.hpp"

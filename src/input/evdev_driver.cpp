@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "evdev_device.hpp"
 #include "evdev_driver.hpp"
 
 namespace Input {
@@ -27,6 +28,10 @@ EvdevDriver::EvdevDriver()
 
 EvdevDriver::~EvdevDriver() 
 { 
+  for(Devices::iterator i = devices.begin(); i != devices.end(); ++i)
+    {
+      delete *i;
+    }
 }
 
 std::string
@@ -38,12 +43,42 @@ EvdevDriver::get_name() const
 void
 EvdevDriver::update(float delta)
 {
+  for(Devices::iterator i = devices.begin(); i != devices.end(); ++i)
+    {
+      (*i)->update(delta);
+    }
+}
+
+EvdevDevice*
+EvdevDriver::get_device(const std::string& device_filename)
+{
+  for(Devices::iterator i = devices.begin(); i != devices.end(); ++i)
+    {
+      if ((*i)->get_device() == device_filename)
+        return *i;
+    }
+
+  EvdevDevice* device = new EvdevDevice(device_filename);
+  devices.push_back(device);
+  return device;
 }
 
 Button*
-EvdevDriver::create_button  (const FileReader& reader, Control* parent)
+EvdevDriver::create_button(const FileReader& reader, Control* parent)
 {
-  return 0;
+  std::string device_filename;
+  int button;
+  if (reader.read_string("device", device_filename) &&
+      reader.read_int("button", button))
+    {
+      EvdevDevice* device = get_device(device_filename);
+      return device->create_button(parent, button);
+    }
+  else
+    {
+      std::cout << "Error: Some of 'device', 'button' missing" << std::endl;
+      return 0;
+    }
 }
 
 Axis*
@@ -55,7 +90,20 @@ EvdevDriver::create_axis(const FileReader& reader, Control* parent)
 Scroller*
 EvdevDriver::create_scroller(const FileReader& reader, Control* parent)
 {
-  return 0;
+  std::string device_filename;
+  int x, y;
+  if (reader.read_string("device", device_filename) &&
+      reader.read_int("x", x) &&
+      reader.read_int("y", y))
+    {
+      EvdevDevice* device = get_device(device_filename);
+      return device->create_scroller(parent, x, y);
+    }
+  else
+    {
+      std::cout << "Error: Some of 'device', 'x', 'y' missing" << std::endl;
+      return 0;
+    }
 }
 
 Pointer*
