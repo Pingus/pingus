@@ -30,6 +30,7 @@
 #ifndef __MATH_RECT_HPP__
 #define __MATH_RECT_HPP__
 
+#include <iosfwd>
 #include "origin.hpp"
 #include "vector3f.hpp"
 #include "size.hpp"
@@ -377,6 +378,8 @@ inline Rect::Rect(const Rectf& rect)
     right(static_cast<int>(rect.right)), 
     bottom(static_cast<int>(rect.bottom))
 {}
+
+std::ostream& operator<<(std::ostream& s, const Rect& r);
 
 #endif
 
