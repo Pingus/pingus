@@ -1396,6 +1396,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\editor\minimap.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\minimap.hpp"
+					>
+				</File>
+				<File
 					RelativePath=".\src\editor\object_properties.cpp"
 					>
 				</File>
