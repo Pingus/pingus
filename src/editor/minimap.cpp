@@ -29,7 +29,8 @@ namespace Editor {
 Minimap::Minimap(EditorScreen* editor_, const Rect& rect)
   : RectComponent(rect),
     editor(editor_),
-    drawing_context(new DrawingContext(rect.grow(-3)))
+    drawing_context(new DrawingContext(rect.grow(-3))),
+    dragging(false)
 {
 }
 
@@ -48,9 +49,6 @@ Minimap::draw(DrawingContext& gc)
   Rect minimap_rect = dc.get_rect();
   dc.draw_fillrect(Rect(Vector2i(0, 0), Size(minimap_rect.get_width(), minimap_rect.get_height())),
                    Color(0,0,0), -100000.0f);
-
-  // FIXME: add current viewport and scrolling
-  // editor->get_viewport()->get_rect();
 
   std::vector<LevelObj*>& objects = *editor->get_viewport()->get_objects();
   Size levelsize = editor->get_level()->get_size();
@@ -79,9 +77,27 @@ Minimap::draw(DrawingContext& gc)
       else // hotspot, background, etc.
         color = Color(255,0,0);
 
-      dc.draw_fillrect(r, color, (*i)->get_pos().z);
+      Color bg_color(int(color.r * 0.75f), 
+                     int(color.g * 0.75f), 
+                     int(color.b * 0.75f));
+
+      dc.draw_fillrect(r, bg_color, (*i)->get_pos().z);
+      dc.draw_rect(r, color, (*i)->get_pos().z);
     }
 
+  Vector2i viewport_pos  = editor->get_viewport()->get_scroll_pos();
+  Rect     viewport_rect = editor->get_viewport()->get_rect();
+
+  viewport_pos.x -= viewport_rect.get_width()/2;
+  viewport_pos.y -= viewport_rect.get_height()/2;
+
+  Rect view(Vector2i(viewport_pos.x * minimap_rect.get_width() / levelsize.width,
+                     viewport_pos.y * minimap_rect.get_height() / levelsize.height),
+            Size(viewport_rect.get_width()  * minimap_rect.get_width() / levelsize.width,
+                 viewport_rect.get_height() * minimap_rect.get_height() / levelsize.height));
+  dc.draw_fillrect(view, Color(255, 255, 0, 150), 1000000.0f);
+  dc.draw_rect(view, Color(255, 255, 0), 1000000.0f);
+  
   gc.draw(dc);
 }
 
@@ -89,6 +105,38 @@ void
 Minimap::update (float delta)
 {
   
+}
+
+void
+Minimap::on_pointer_move(int x, int y)
+{
+  if (dragging)
+    {
+      Rect minimap_rect = drawing_context->get_rect();
+      Size levelsize = editor->get_level()->get_size();
+
+      x -= 3 + rect.left; // take border into account
+      y -= 3 + rect.top;
+
+      x = x * levelsize.width / minimap_rect.get_width();
+      y = y * levelsize.height / minimap_rect.get_height();
+
+      editor->get_viewport()->set_scroll_pos(Vector2i(x, y));
+    }
+}
+
+void
+Minimap::on_primary_button_press (int x, int y)
+{
+  dragging = true;
+  on_pointer_move(x, y);
+}
+
+void
+Minimap::on_primary_button_release (int x, int y)
+{
+  on_pointer_move(x, y);
+  dragging = false;
 }
 
 void

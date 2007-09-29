@@ -605,6 +605,18 @@ EditorViewport::clear()
   objs.clear();
   selection_changed(selected_objs);
 }
+
+Vector2i
+EditorViewport::get_scroll_pos() const
+{
+  return Vector2i(state.get_pos());
+}
+
+void
+EditorViewport::set_scroll_pos(Vector2i pos)
+{
+  state.set_pos(pos);
+}
 
 } // namespace Editor
 

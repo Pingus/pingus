@@ -32,6 +32,7 @@ class Minimap : public GUI::RectComponent
 private:
   EditorScreen* editor;
   DrawingContext* drawing_context;
+  bool dragging;
   
 public:
   Minimap(EditorScreen*, const Rect& );
@@ -39,6 +40,10 @@ public:
 
   void draw (DrawingContext& gc);
   void update (float delta);
+
+  void on_primary_button_press (int x, int y);
+  void on_primary_button_release (int x, int y);
+  void on_pointer_move(int x, int y);
 
   void update_layout();
 };
