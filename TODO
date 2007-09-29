@@ -140,7 +140,7 @@ Font: datadir://images/fonts/courier_small-iso-8859-9.png
   Enable Autoscrolling: [always, only in fullscreen, never]
   ----------------------------------
 
-- add dynamic resize for the game and editor file dialog
+- add dynamic resize for the game
 
 - resource system needs a review/rewrite
 
