@@ -150,6 +150,10 @@
                     (image-file "../images/core/editor/objects.png"))
 
                    (sprite
+                    (name "minimap")
+                    (image-file "../images/core/editor/minimap.png"))
+
+                   (sprite
                     (name "object-properties")
                     (image-file "../images/core/editor/object-properties.png"))
 

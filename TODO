@@ -241,13 +241,15 @@ Important:
 
 - add pixel perfect object selection
 
-- implement a minimap (just rects when surfaces are to tricky)
+- move object rotate buttons to ObjectProperties
 
 - add icons to filedialog
 
 - Dialogs: Editor Properties: user name and email
 
 - show an error message if save fails
+
+- shrinking the editor window to much causes a crash
 
 Less Important:
 ===============

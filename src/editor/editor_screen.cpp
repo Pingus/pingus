@@ -69,15 +69,13 @@ EditorScreen::EditorScreen()
   //rect(Vector2i(Display::get_width() - 244 + 2,  38 + 3 + 62),
   //      Size(240, Display::get_height() - (600 - 495))),
 
-  object_selector   = new ObjectSelector(this, Rect(Display::get_width()-244, 38,
-                                                    Display::get_width(), Display::get_height() - 183));
+  object_selector = new ObjectSelector(this, Rect());
   gui_manager->add(object_selector, true);
 
-  minimap = new Minimap(this, Rect(Vector2i(Display::get_width()-244, Display::get_height()-183),
-                                   Size(244, 183)));
+  minimap = new Minimap(this, Rect());
   gui_manager->add(minimap, true);
 
-  object_properties = new ObjectProperties(this, Rect(Vector2i(0,Display::get_height()-150), Size(200, 150)));
+  object_properties = new ObjectProperties(this, Rect(Vector2i(), Size(200, 150)));
   gui_manager->add(object_properties, true);
 
   file_load_dialog = new FileDialog(this, Rect(Vector2i(50, 50), 
@@ -98,17 +96,18 @@ EditorScreen::EditorScreen()
 
   viewport->selection_changed.connect(boost::bind(&ObjectProperties::set_objects, object_properties, _1));
 
-  action_properties = new ActionProperties(this, Rect(Vector2i(0, 38), Size(150, 240)));
+  action_properties = new ActionProperties(this, Rect());
   action_properties->hide();
   gui_manager->add(action_properties, true);
 
-  level_properties = new LevelProperties(this, Rect(Vector2i(0,38), Size(Display::get_width()-244,302)));
+  level_properties = new LevelProperties(this, Rect());
   level_properties->hide();
   level_properties->set_level(plf);
   action_properties->set_level(plf);
   gui_manager->add(level_properties, true);
 
   viewport->refresh();
+  update_layout();
 }
 
 // Destructor
@@ -408,21 +407,27 @@ EditorScreen::toggle_grid_snap()
 {
   std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
 }
+ 
+void
+EditorScreen::toggle_minimap()
+{
+  if (minimap->is_visible())
+    minimap->hide();
+  else
+    minimap->show();
+
+  update_layout();
+}
 
 void 
 EditorScreen::toggle_object_selector()
 {
-  // need trigger a relayout
   if (object_selector->is_visible())
-    {
-      object_selector->hide();
-      viewport->set_rect(Rect(0, 38, Display::get_width(), Display::get_height()));
-    }
+    object_selector->hide();
   else
-    {
-      object_selector->show();
-      viewport->set_rect(Rect(0, 38, Display::get_width() - 244, Display::get_height()));
-    }
+    object_selector->show();
+  
+  update_layout();
 }
 
 void 
@@ -488,15 +493,24 @@ EditorScreen::update_layout()
     object_selector->set_rect(Rect(size.width-244, 38, size.width, size.height));
 
   if (object_selector->is_visible())
-    viewport->set_rect(Rect(0, 38, size.width - 244, size.height));
+    {
+      viewport->set_rect(Rect(0, 38, size.width - 244, size.height));
+      level_properties->set_rect(Rect(Vector2i(0,38), Size(size.width-244, 302))); 
+    }
   else
-    viewport->set_rect(Rect(0, 38, size.width, size.height));
+    {
+      viewport->set_rect(Rect(0, 38, size.width, size.height));
+      level_properties->set_rect(Rect(Vector2i(0,38), Size(size.width, 302))); 
+    }
 
   object_properties->set_rect(Rect(Vector2i(0, size.height - object_properties->get_rect().get_height()), 
                                    Size(object_properties->get_rect().get_width(),
                                         object_properties->get_rect().get_height())));
-
-  level_properties->set_rect(Rect(Vector2i(0,38), Size(size.width-244,302))); 
+  
+  file_load_dialog->set_rect(Rect(Vector2i(50, 50), Size(size.width  - 100, 
+                                                         size.height - 100)));
+  file_save_dialog->set_rect(Rect(Vector2i(50, 50), Size(size.width  - 100, 
+                                                         size.height - 100)));
 }
 
 void

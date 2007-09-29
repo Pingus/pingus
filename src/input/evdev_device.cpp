@@ -151,20 +151,6 @@ EvdevDevice::process_relative(struct input_event& ev)
       else if (relatives[idx].binding_axis == 1)
         (*i)->set_delta(Vector2f(0, -ev.value * 0.125f));
     }
-
-#if 0
-  CL_InputEvent e; 
-				
-  e.device       = CL_InputDevice(this);
-  e.type         = CL_InputEvent::relative_moved;
-  e.id           = relative_index;
-  e.mouse_pos.x  = ev.value;
-  e.mouse_pos.y  = 0;
-  e.axis_pos     = 0;
-  e.repeat_count = 0;
-
-  sig_relative_move(e);
-#endif
 }
 
 void

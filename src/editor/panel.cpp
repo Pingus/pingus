@@ -170,6 +170,8 @@ Panel::Panel(EditorScreen* editor_)
              &EditorScreen::toggle_object_properties);
   add_button("core/editor/objects", _("Show object insertion window"), 
              &EditorScreen::toggle_object_selector);
+  add_button("core/editor/minimap", _("Show minimap"), 
+             &EditorScreen::toggle_minimap);
   add_separator();
   add_button("core/editor/copy", _("Duplicate the selected objects") + " (D)",  
              &EditorScreen::objects_duplicate);

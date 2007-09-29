@@ -135,6 +135,7 @@ public:
   void toggle_object_properties();
   void toggle_action_properties();
   void toggle_level_properties();
+  void toggle_minimap();
 
   void toggle_help();
 

@@ -192,6 +192,12 @@ FileDialog::update_layout()
   
   cancel_button->set_rect(Rect(Vector2i(rect.get_width() - 104 - 104, rect.get_height() - 4 - 30),
                                Size(100, 30)));
+
+  filename_inputbox->set_rect(Rect(4 + 60, 4+30, rect.get_width()-4, 26+30));
+  pathname_inputbox->set_rect(Rect(4 + 60, 4+60, rect.get_width()-4, 26+60));
+
+  datadir_button->set_rect(Rect(Vector2i(4, rect.get_height() - 4 - 30), Size(100, 30)));
+  userdir_button->set_rect(Rect(Vector2i(4 + 110, rect.get_height() - 4 - 30), Size(100, 30)));
 }
 
 void
