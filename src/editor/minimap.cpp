@@ -85,14 +85,14 @@ Minimap::draw(DrawingContext& gc)
       dc.draw_rect(r, color, (*i)->get_pos().z);
     }
 
-  Vector2i viewport_pos  = editor->get_viewport()->get_scroll_pos();
+  Vector2f viewport_pos  = editor->get_viewport()->get_scroll_pos();
   Rect     viewport_rect = editor->get_viewport()->get_rect();
 
   viewport_pos.x -= viewport_rect.get_width()/2;
   viewport_pos.y -= viewport_rect.get_height()/2;
 
-  Rect view(Vector2i(viewport_pos.x * minimap_rect.get_width() / levelsize.width,
-                     viewport_pos.y * minimap_rect.get_height() / levelsize.height),
+  Rect view(Vector2i(int(viewport_pos.x * minimap_rect.get_width() / levelsize.width),
+                     int(viewport_pos.y * minimap_rect.get_height() / levelsize.height)),
             Size(viewport_rect.get_width()  * minimap_rect.get_width() / levelsize.width,
                  viewport_rect.get_height() * minimap_rect.get_height() / levelsize.height));
   dc.draw_fillrect(view, Color(255, 255, 0, 150), 1000000.0f);

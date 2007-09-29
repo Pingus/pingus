@@ -252,6 +252,25 @@ EditorScreen::update(const GameDelta &delta)
 {
   GUIScreen::update(delta);
 
+  const Input::EventLst& events = delta.get_events ();
+  for (Input::EventLst::const_iterator i = events.begin ();
+       i != events.end ();
+       ++i)
+    {
+      switch (i->type)
+	{
+          case Input::SCROLLER_EVENT_TYPE:
+            viewport->set_scroll_pos(viewport->get_scroll_pos() -
+                                     Vector2f(i->scroll.x_delta,
+                                              i->scroll.y_delta));
+            break;
+
+          default:
+            // other events are for most part handled by the GUIScreen/GUIManager
+            break;
+	}
+    }
+
   SDL_Delay(10); // FIXME: Brute force delay to get CPU usage down
 }
 
@@ -456,11 +475,17 @@ EditorScreen::exit()
 }
 
 void
-EditorScreen::resize(const Size& size)
+EditorScreen::update_layout()
 {
-  gui_manager->set_rect(Rect(Vector2i(0, 0), size));
+  Size size(gui_manager->get_rect().get_width(),
+            gui_manager->get_rect().get_height());
 
-  object_selector->set_rect(Rect(size.width-244, 38, size.width, size.height));
+  minimap->set_rect(Rect(Vector2i(size.width-244, size.height-183), Size(244, 183)));
+
+  if (minimap->is_visible())
+    object_selector->set_rect(Rect(size.width-244, 38, size.width, size.height - 183));
+  else
+    object_selector->set_rect(Rect(size.width-244, 38, size.width, size.height));
 
   if (object_selector->is_visible())
     viewport->set_rect(Rect(0, 38, size.width - 244, size.height));
@@ -471,7 +496,14 @@ EditorScreen::resize(const Size& size)
                                    Size(object_properties->get_rect().get_width(),
                                         object_properties->get_rect().get_height())));
 
-  level_properties->set_rect(Rect(Vector2i(0,38), Size(size.width-244,302)));
+  level_properties->set_rect(Rect(Vector2i(0,38), Size(size.width-244,302))); 
+}
+
+void
+EditorScreen::resize(const Size& size)
+{
+  gui_manager->set_rect(Rect(Vector2i(0, 0), size));
+  update_layout();
 }
 
 } // namespace Editor 

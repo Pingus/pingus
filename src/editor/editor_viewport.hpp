@@ -114,8 +114,8 @@ public:
   /** Return a pointer to the EditorScreen object */
   EditorScreen* get_screen() { return editor; }
 
-  Vector2i get_scroll_pos() const;
-  void     set_scroll_pos(Vector2i pos);
+  Vector2f get_scroll_pos() const;
+  void     set_scroll_pos(const Vector2f& pos);
 
   /// Mouse actions
   void on_primary_button_press(int x, int y);

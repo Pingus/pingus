@@ -606,14 +606,14 @@ EditorViewport::clear()
   selection_changed(selected_objs);
 }
 
-Vector2i
+Vector2f
 EditorViewport::get_scroll_pos() const
 {
-  return Vector2i(state.get_pos());
+  return state.get_pos();
 }
 
 void
-EditorViewport::set_scroll_pos(Vector2i pos)
+EditorViewport::set_scroll_pos(const Vector2f& pos)
 {
   state.set_pos(pos);
 }

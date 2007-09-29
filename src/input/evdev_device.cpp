@@ -231,10 +231,10 @@ EvdevDevice::get_absolute_index_by_code(int code)
 void
 EvdevDevice::update(float delta)
 {
-  struct input_event ev[64];
-	
-  int rd = read(fd, ev, sizeof(struct input_event) * 64);
-
+  struct input_event ev[128];
+  // FIXME: turn this into a while loop so all events get processed
+  int rd = read(fd, ev, sizeof(struct input_event) * 128);
+  //std::cout << rd / sizeof(struct input_event) << std::endl;
   if (rd >= (int) sizeof(struct input_event))
     {
       for (int i = 0; i < rd / (int)sizeof(struct input_event); ++i)
