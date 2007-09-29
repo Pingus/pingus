@@ -143,7 +143,19 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
   add(repeat_label    = new Label(label_rect, _("Repeat:")), true);
   add(repeat_inputbox = new Inputbox(box_rect), true);
   repeat_inputbox->on_change.connect(boost::bind(&ObjectProperties::on_repeat_change, this, _1));
+  // ___________________________________________________________________
+  //
+  add(flip_horizontal_button  = new Button(Rect(Vector2i(15+40*0-3, 0), Size(34, 34)), "|"), true);
+  add(flip_vertical_button    = new Button(Rect(Vector2i(15+40*1-3, 0), Size(34, 34)), "--"), true);
+  add(rotate_270_button       = new Button(Rect(Vector2i(15+40*2-3 + 20, 0), Size(34, 34)), "<-."), true);
+  add(rotate_90_button        = new Button(Rect(Vector2i(15+40*3-3 + 20, 0), Size(34, 34)), ".->"), true);
 
+  flip_vertical_button->on_click.connect(boost::bind(&ObjectProperties::on_flip_vertical, this));
+  flip_horizontal_button->on_click.connect(boost::bind(&ObjectProperties::on_flip_horizontal, this));
+  rotate_90_button->on_click.connect(boost::bind(&ObjectProperties::on_rotate_90, this));
+  rotate_270_button->on_click.connect(boost::bind(&ObjectProperties::on_rotate_270, this));
+  // ___________________________________________________________________
+  //
   set_object(0);
 }
 
@@ -245,6 +257,11 @@ ObjectProperties::hide_all()
 
   repeat_label->hide();
   repeat_inputbox->hide();
+
+  flip_horizontal_button->hide();
+  flip_vertical_button->hide();
+  rotate_90_button->hide();
+  rotate_270_button->hide();
 }
 
 void
@@ -360,6 +377,17 @@ ObjectProperties::set_object(LevelObj* obj)
         {
           pos_z_inputbox->set_text(StringUtil::to_string(obj->get_pos_z()));
           place(pos_z_label, pos_z_inputbox);
+        }
+
+
+      if (attr & CAN_ROTATE)
+        {
+          y_pos += 4;
+          place(flip_horizontal_button);
+          place(flip_vertical_button);
+          place(rotate_90_button);
+          place(rotate_270_button);
+          y_pos += 36;
         }
     }
   else
@@ -573,6 +601,34 @@ ObjectProperties::on_repeat_change(const std::string& str)
     {
       (*i)->set_repeat(r);
     }
+}
+
+void
+ObjectProperties::on_flip_horizontal()
+{
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    (*i)->set_modifier(ResourceModifierNS::horizontal_flip((*i)->get_modifier()));
+}
+
+void
+ObjectProperties::on_flip_vertical()
+{
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    (*i)->set_modifier(ResourceModifierNS::vertical_flip((*i)->get_modifier()));
+}
+
+void
+ObjectProperties::on_rotate_90()
+{
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    (*i)->set_modifier(ResourceModifierNS::rotate_90((*i)->get_modifier()));
+}
+
+void
+ObjectProperties::on_rotate_270()
+{
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    (*i)->set_modifier(ResourceModifierNS::rotate_270((*i)->get_modifier()));
 }
 
 void

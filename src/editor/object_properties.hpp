@@ -92,6 +92,11 @@ private:
   Label*    repeat_label;
   Inputbox* repeat_inputbox;
 
+  Button*   flip_horizontal_button;
+  Button*   flip_vertical_button;
+  Button*   rotate_90_button;
+  Button*   rotate_270_button;
+
   int y_pos;
 
 public:
@@ -133,6 +138,11 @@ public:
   void on_large_stars_change(const std::string& str);
 
   void on_repeat_change(const std::string& str);
+  
+  void on_flip_horizontal();
+  void on_flip_vertical();
+  void on_rotate_90();
+  void on_rotate_270();
 
 };
 

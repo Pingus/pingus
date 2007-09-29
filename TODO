@@ -93,10 +93,6 @@ Roadmap for Pingus 0.7.2
 Important:
 ==========
 
-- add something like FileReader::must_read_int() for cases where a
-  value isn't optional, something that can figure out values that
-  havn't be used would be nice as well
-
 - Regenerate Courier fonts for latin-1/2/9
 
 ### Loading font file: system://data/images/fonts/courier_small-iso-8859-9.font
@@ -195,6 +191,10 @@ Font: datadir://images/fonts/courier_small-iso-8859-9.png
 
 Less Important:
 ===============
+
+- add something like FileReader::must_read_int() for cases where a
+  value isn't optional, something that can figure out values that
+  havn't be used would be nice as well
 
 - fix verdana11 for latin2 and latin9 or go UTF-8
 
