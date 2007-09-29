@@ -144,7 +144,7 @@ Font: datadir://images/fonts/courier_small-iso-8859-9.png
   Enable Autoscrolling: [always, only in fullscreen, never]
   ----------------------------------
 
-- add dynamic resize for the game
+- add dynamic resize for the game and editor file dialog
 
 - resource system needs a review/rewrite
 
@@ -237,7 +237,7 @@ Important:
 
 - add yes/no question when creating a new level
 
-- added overwrite warning to file dialog
+- add overwrite warning to file dialog
 
 - add pixel perfect object selection
 

@@ -40,6 +40,7 @@ class ObjectSelector;
 class ObjectProperties;
 class ActionProperties;
 class LevelProperties;
+class Minimap;
 
 /** This class is the screen that contains all of the
     editor objects */
@@ -52,9 +53,11 @@ private:
   Panel* panel;
   EditorViewport*   viewport;
   ObjectSelector*   object_selector;
+  Minimap*          minimap;
   ObjectProperties* object_properties;
   ActionProperties* action_properties;
   LevelProperties*  level_properties;
+
   FileDialog*       file_load_dialog;
   FileDialog*       file_save_dialog;
   

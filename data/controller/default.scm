@@ -6,6 +6,7 @@
     (sdl:mouse-pointer))
 
   (standard-scroller
+   (evdev:scroller (device "/dev/input/spacenavigator") (x 0) (y 1))
    (core:button-scroller
     (up    (sdl:keyboard-button (key "up")))
     (down  (sdl:keyboard-button (key "down")))
@@ -13,10 +14,12 @@
     (right (sdl:keyboard-button (key "right")))))
 
   (primary-button
-    (sdl:mouse-button (button 1)))
+    (sdl:mouse-button (button 1))
+    (evdev:button (device "/dev/input/spacenavigator") (button 256)))
 
   (secondary-button
-    (sdl:mouse-button (button 3)))
+    (sdl:mouse-button (button 3))
+    (evdev:button (device "/dev/input/spacenavigator") (button 257)))
 
   (pause-button
    (sdl:keyboard-button (key "p")))

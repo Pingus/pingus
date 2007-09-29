@@ -38,6 +38,7 @@
 #include "editor_level.hpp"
 #include "panel.hpp"
 #include "panel.hpp"
+#include "minimap.hpp"
 #include "editor_screen.hpp"
 #include "editor_viewport.hpp"
 #include "level_objs.hpp"
@@ -69,8 +70,12 @@ EditorScreen::EditorScreen()
   //      Size(240, Display::get_height() - (600 - 495))),
 
   object_selector   = new ObjectSelector(this, Rect(Display::get_width()-244, 38,
-                                                    Display::get_width(), Display::get_height()));
+                                                    Display::get_width(), Display::get_height() - 183));
   gui_manager->add(object_selector, true);
+
+  minimap = new Minimap(this, Rect(Vector2i(Display::get_width()-244, Display::get_height()-183),
+                                   Size(244, 183)));
+  gui_manager->add(minimap, true);
 
   object_properties = new ObjectProperties(this, Rect(Vector2i(0,Display::get_height()-150), Size(200, 150)));
   gui_manager->add(object_properties, true);
@@ -102,6 +107,7 @@ EditorScreen::EditorScreen()
   level_properties->set_level(plf);
   action_properties->set_level(plf);
   gui_manager->add(level_properties, true);
+
   viewport->refresh();
 }
 

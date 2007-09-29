@@ -89,6 +89,7 @@ pingus_sources = [
 'src/editor/file_dialog.cpp',
 'src/editor/editor_screen.cpp',
 'src/editor/combobox.cpp', 
+'src/editor/minimap.cpp', 
 'src/editor/editor_viewport.cpp', 
 'src/editor/level_objs.cpp',
 'src/editor/inputbox.cpp',
