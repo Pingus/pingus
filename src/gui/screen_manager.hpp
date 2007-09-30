@@ -73,6 +73,10 @@ public:
 
   /** Remove all screens from the stack */
   void clear();
+
+  /** @return a pointer to the current Screen */
+  ScreenPtr& get_current_screen();
+
 private:
   void real_clear();
 
@@ -87,9 +91,6 @@ private:
 
   /** FadeOver test*/
   void fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen);
-
-  /** @return a pointer to the current Screen */
-  ScreenPtr& get_current_screen();
 
 public:
   static ScreenManager* instance ();
