@@ -19,7 +19,7 @@
 
 #include <math.h>
 #include "math.hpp"
-#include "gui/display.hpp"
+#include "display/display.hpp"
 #include "graphic_context_state.hpp"
 
 class GraphicContextStateImpl

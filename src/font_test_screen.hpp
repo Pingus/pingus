@@ -20,7 +20,7 @@
 #ifndef HEADER_FONT_TEST_SCREEN_HPP
 #define HEADER_FONT_TEST_SCREEN_HPP
 
-#include "gui/screen.hpp"
+#include "screen/screen.hpp"
 #include "font.hpp"
 
 /** */

@@ -22,7 +22,7 @@
 
 #include <string>
 #include "../gui/gui_manager.hpp"
-#include "../gui/gui_screen.hpp"
+#include "../screen/gui_screen.hpp"
 
 class SceneContext;
 

@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "SDL.h"
-#include "../gui/screen_manager.hpp"
+#include "../screen/screen_manager.hpp"
 
 #include "../debug.hpp"
 #include "../pingus_error.hpp"

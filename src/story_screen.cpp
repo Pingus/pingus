@@ -23,7 +23,7 @@
 #include "resource.hpp"
 #include "gui/gui_manager.hpp"
 #include "gui/surface_button.hpp"
-#include "gui/screen_manager.hpp"
+#include "screen/screen_manager.hpp"
 #include "gui/component.hpp"
 #include "math.hpp"
 #include "pingus_menu_manager.hpp"

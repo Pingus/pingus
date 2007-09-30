@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_RESULT_SCREEN_HXX
 
 #include "result.hpp"
-#include "gui/gui_screen.hpp"
+#include "screen/gui_screen.hpp"
 
 
 /** */

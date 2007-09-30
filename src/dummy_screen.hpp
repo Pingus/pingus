@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_DUMMY_SCREEN_HXX
 #define HEADER_PINGUS_DUMMY_SCREEN_HXX
 
-#include "gui/screen.hpp"
+#include "screen/screen.hpp"
 
 
 class DrawingContext;

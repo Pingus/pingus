@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "fonts.hpp"
-#include "gui/display.hpp" 
+#include "display/display.hpp" 
 #include "display/drawing_context.hpp"
 #include "resource.hpp"
 #include "sprite.hpp"

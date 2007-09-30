@@ -23,7 +23,7 @@
 #include "screenshot.hpp"
 #include "console.hpp"
 #include "fps_counter.hpp"
-#include "gui/screen_manager.hpp"
+#include "screen/screen_manager.hpp"
 #include "option_menu.hpp"
 #include "global_event.hpp"
 #include "globals.hpp"

@@ -20,11 +20,11 @@
 
 #include <iostream>
 #include <boost/bind.hpp>
-#include "../gui/display.hpp"
+#include "../display/display.hpp"
 #include "../system.hpp"
 #include "../sound/sound.hpp"
 #include "../gui/gui_manager.hpp"
-#include "../gui/screen_manager.hpp"
+#include "../screen/screen_manager.hpp"
 #include "../display/drawing_context.hpp"
 #include "../res_descriptor.hpp"
 #include "../resource.hpp"

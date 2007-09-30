@@ -22,7 +22,7 @@
 
 #include <string>
 #include "res_descriptor.hpp"
-#include "gui/gui_screen.hpp"
+#include "screen/gui_screen.hpp"
 #include "worldmap/worldmap_story.hpp"
 
 

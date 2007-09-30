@@ -23,7 +23,7 @@
 #include "pingus.hpp"
 #include <cmath>
 #include "sprite.hpp"
-#include "gui/display.hpp"
+#include "display/display.hpp"
 #include "display/drawing_context.hpp"
 
 

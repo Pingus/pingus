@@ -22,7 +22,7 @@
 #include <string>
 #include <iostream>
 #include "../gui/gui_manager.hpp"
-#include "../gui/display.hpp"
+#include "../display/display.hpp"
 #include "../display/drawing_context.hpp"
 #include "../math/vector3f.hpp"
 #include "../graphic_context_state.hpp"

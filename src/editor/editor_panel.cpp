@@ -20,7 +20,7 @@
 
 #include <vector>
 #include "../resource.hpp"
-#include "../gui/display.hpp"
+#include "../display/display.hpp"
 #include "../math/vector3f.hpp"
 #include "../display/drawing_context.hpp"
 #include "../gui/gui_manager.hpp"

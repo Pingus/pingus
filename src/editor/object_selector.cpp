@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <boost/bind.hpp>
-#include "gui/display.hpp"
+#include "display/display.hpp"
 #include "gui_style.hpp"
 #include "sprite.hpp"
 #include "gettext.h"

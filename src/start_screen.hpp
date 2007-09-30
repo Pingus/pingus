@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_START_SCREEN_HXX
 
 #include "pingus_level.hpp"
-#include "gui/gui_screen.hpp"
+#include "screen/gui_screen.hpp"
 
 
 /** */

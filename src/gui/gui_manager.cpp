@@ -21,8 +21,8 @@
 #include "../debug.hpp"
 #include "../globals.hpp"
 #include "../input/event.hpp"
-#include "display.hpp"
-#include "game_delta.hpp"
+#include "display/display.hpp"
+#include "screen/game_delta.hpp"
 #include "gui_manager.hpp"
 
 using namespace Input;

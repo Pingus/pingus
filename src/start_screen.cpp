@@ -21,7 +21,7 @@
 #include "gui/gui_manager.hpp"
 #include "gui/surface_button.hpp"
 #include "gui/component.hpp"
-#include "gui/screen_manager.hpp"
+#include "screen/screen_manager.hpp"
 #include "blitter.hpp"
 #include "gettext.h"
 #include "game_session.hpp"
@@ -34,7 +34,7 @@
 #include "sound/sound.hpp"
 #include "pingus_level.hpp"
 #include "string_format.hpp"
-#include "gui/display.hpp"
+#include "display/display.hpp"
 #include "string_util.hpp"
 
 class StartScreenComponent : public GUI::Component

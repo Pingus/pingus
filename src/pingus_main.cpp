@@ -45,7 +45,7 @@
 #include "tinygettext/dictionary_manager.hpp"
 #include "command_line.hpp"
 
-#include "gui/screen_manager.hpp"
+#include "screen/screen_manager.hpp"
 #include "dummy_screen.hpp"
 // #include "gui/input_debug_screen.hpp"
 #include "path_manager.hpp"

@@ -22,7 +22,7 @@
 
 #include <string>
 #include <iostream>
-#include "gui/display.hpp"
+#include "display/display.hpp"
 #include "font.hpp"
 
 class ConsoleBuffer :

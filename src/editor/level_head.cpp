@@ -29,7 +29,7 @@
 #include "../gettext.h"
 #include "level_head.hpp"
 #include "level_impl.hpp"
-#include "../gui/display.hpp"
+#include "../display/display.hpp"
 #include "editor_level.hpp"
 //#include "editor_panel.hpp"
 #include "editor_screen.hpp"

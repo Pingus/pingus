@@ -20,8 +20,8 @@
 #include <iostream>
 #include "../gettext.h"
 #include "../fonts.hpp"
-#include "../gui/display.hpp"
-#include "../gui/screen_manager.hpp"
+#include "../display/display.hpp"
+#include "../screen/screen_manager.hpp"
 #include "../gui/surface_button.hpp"
 #include "../path_manager.hpp"
 #include "../res_descriptor.hpp"

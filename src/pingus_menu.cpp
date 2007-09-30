@@ -29,7 +29,7 @@
 #include "story_screen.hpp"
 #include "worldmap/worldmap.hpp"
 #include "worldmap/manager.hpp"
-#include "gui/screen_manager.hpp"
+#include "screen/screen_manager.hpp"
 #include "pingus_menu_manager.hpp"
 #include "gui/gui_manager.hpp"
 #include "plf_res_mgr.hpp"

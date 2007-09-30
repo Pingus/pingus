@@ -19,8 +19,8 @@
 
 #include "../globals.hpp"
 #include "../debug.hpp"
+#include "gui/gui_manager.hpp"
 #include "gui_screen.hpp"
-#include "gui_manager.hpp"
 
 
 GUIScreen::GUIScreen()

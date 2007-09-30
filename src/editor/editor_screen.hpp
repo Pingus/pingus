@@ -21,7 +21,7 @@
 #ifndef HEADER_PINGUS_EDITOR_SCREEN_HXX
 #define HEADER_PINGUS_EDITOR_SCREEN_HXX
 
-#include "../gui/gui_screen.hpp"
+#include "../screen/gui_screen.hpp"
 #include "pathname.hpp"
 #include "file_dialog.hpp"
 

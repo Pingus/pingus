@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_GAME_SESSION_HXX
 
 #include <string>
-#include "gui/screen.hpp"
+#include "screen/screen.hpp"
 #include "pingus_level.hpp"
 
 

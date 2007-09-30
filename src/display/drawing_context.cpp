@@ -22,7 +22,7 @@
 #include <algorithm>
 #include "drawing_context.hpp"
 #include "math.hpp"
-#include "gui/display.hpp"
+#include "display/display.hpp"
 #include "../sprite.hpp"
 #include "../font.hpp"
 #include "../math/origin.hpp"

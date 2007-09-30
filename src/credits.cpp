@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "gui/screen_manager.hpp"
+#include "screen/screen_manager.hpp"
 #include "gui/surface_button.hpp"
 #include "gui/gui_manager.hpp"
 #include "sound/sound.hpp"
@@ -28,7 +28,7 @@
 #include "credits.hpp"
 #include "fonts.hpp"
 #include "gettext.h"
-#include "gui/display.hpp"
+#include "display/display.hpp"
 #include "blitter.hpp"
 
 class CreditsOkButton

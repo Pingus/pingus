@@ -99,7 +99,7 @@ FontTestScreen::draw(DrawingContext& gc)
 }
 
 void
-FontTestScreen::update (const GameDelta& delta)
+FontTestScreen::update(const GameDelta& delta)
 {
   const Input::EventLst& events = delta.get_events ();
 

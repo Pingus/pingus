@@ -20,7 +20,7 @@
 */
 
 #include "global_event.hpp"
-#include "gui/screen_manager.hpp"
+#include "screen/screen_manager.hpp"
 #include "math/size.hpp"
 #include "file_reader.hpp"
 #include "sdl_driver.hpp"

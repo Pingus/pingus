@@ -29,7 +29,7 @@
 #include "particles/rain_particle_holder.hpp"
 #include "particles/smoke_particle_holder.hpp"
 #include "particles/snow_particle_holder.hpp"
-#include "gui/display.hpp"
+#include "display/display.hpp"
 #include "pingu.hpp"
 #include "display/scene_context.hpp"
 #include "pingus_level.hpp"

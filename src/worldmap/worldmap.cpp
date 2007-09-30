@@ -19,7 +19,7 @@
 
 #include <assert.h>
 #include <iostream>
-#include "../gui/display.hpp"
+#include "../display/display.hpp"
 #include "../fonts.hpp"
 #include "../path_manager.hpp"
 #include "../stat_manager.hpp"
@@ -49,7 +49,7 @@
 #include "../stat_manager.hpp"
 
 #include "../story_screen.hpp"
-#include "../gui/screen_manager.hpp"
+#include "../screen/screen_manager.hpp"
 
 namespace WorldMapNS {
 

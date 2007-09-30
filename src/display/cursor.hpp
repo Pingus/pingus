@@ -17,33 +17,34 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <assert.h>
-#include "root_gui_manager.hpp"
-#include "../input/controller.hpp"
+#ifndef HEADER_PINGUS_CURSOR_HXX
+#define HEADER_PINGUS_CURSOR_HXX
 
+#include <string>
+#include "display/display.hpp"
+#include "../sprite.hpp"
 
-using namespace GUI;
-using namespace Input;
-
-RootGUIManager::RootGUIManager (Input::Controller* c)
-  : controller(c)
+/** A simple mouse cursor class and stupid. We can't use the X11/win32
+    nativ mouse cursor because we want also to support non-mouse input
+    devices and because we want to support multiple cursors */
+class Cursor : public DisplayHook
 {
-}
+private:
+  Sprite sprite;
 
-RootGUIManager::~RootGUIManager ()
-{
-}
+public:
+  Cursor (const std::string& ident);
+  virtual ~Cursor ();
 
-void
-RootGUIManager::update (float delta)
-{
-  assert (!"ERROR RootGUIManager absolete");
-  assert (controller);
-  //GUIManager::update (delta);
-  //process_input (controller->get_events ());
+  virtual void update (float delta);
+  virtual void on_event();
 
-  UNUSED_ARG(delta);
-}
+private:
+  Cursor (const Cursor&);
+  Cursor& operator= (const Cursor&);
+};
 
+
+#endif
 
 /* EOF */

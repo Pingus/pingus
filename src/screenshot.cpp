@@ -23,7 +23,7 @@
 #include <stdio.h>
 #include <fstream>
 #include <iostream>
-#include "gui/display.hpp"
+#include "display/display.hpp"
 #include "system.hpp"
 #include "screenshot.hpp"
 #include "gettext.h"

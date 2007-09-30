@@ -24,7 +24,7 @@
 #include "../resource.hpp"
 #include "../globals.hpp"
 #include "../blitter.hpp"
-#include "../gui/display.hpp"
+#include "../display/display.hpp"
 #include "surface_background.hpp"
 
 namespace WorldObjs {

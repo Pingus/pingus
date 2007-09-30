@@ -25,7 +25,7 @@
 #include "../blitter.hpp"
 #include "../resource.hpp"
 #include "../res_descriptor.hpp"
-#include "../gui/display.hpp"
+#include "../display/display.hpp"
 #include "../display/drawing_context.hpp"
 
 namespace Editor {

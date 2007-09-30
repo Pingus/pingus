@@ -19,7 +19,7 @@
 
 #include "../resource.hpp"
 #include "../fonts.hpp"
-#include "gui/display.hpp"
+#include "display/display.hpp"
 #include "hurry_up.hpp"
 
 HurryUp::HurryUp (Client* c)

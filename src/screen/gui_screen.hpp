@@ -22,7 +22,6 @@
 
 #include "screen.hpp"
 
-
 namespace GUI {
   class GUIManager;
 }

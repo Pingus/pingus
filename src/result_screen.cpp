@@ -19,10 +19,10 @@
 
 #include <iostream>
 #include "gettext.h"
-#include "gui/display.hpp"
+#include "display/display.hpp"
 #include "gui/surface_button.hpp"
 #include "gui/gui_manager.hpp"
-#include "gui/screen_manager.hpp"
+#include "screen/screen_manager.hpp"
 #include "blitter.hpp"
 #include "res_descriptor.hpp"
 #include "resource.hpp"

@@ -20,7 +20,7 @@
 #include <assert.h>
 #include <stdio.h>
 
-#include "../gui/display.hpp"
+#include "../display/display.hpp"
 #include "../globals.hpp"
 #include "../resource.hpp"
 #include "../world.hpp"

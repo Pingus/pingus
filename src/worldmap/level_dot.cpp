@@ -25,7 +25,7 @@
 #include "../system.hpp"
 #include "../fonts.hpp"
 #include "../display/drawing_context.hpp"
-#include "../gui/screen_manager.hpp"
+#include "../screen/screen_manager.hpp"
 #include "../resource.hpp"
 #include "../path_manager.hpp"
 #include "../start_screen.hpp"

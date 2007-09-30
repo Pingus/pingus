@@ -24,7 +24,7 @@
 #include "font.hpp"
 #include "line_iterator.hpp"
 #include "font_description.hpp"
-#include "gui/display.hpp"
+#include "display/display.hpp"
 
 static bool vline_empty(SDL_Surface* surface, int x, Uint8 threshold)
 {

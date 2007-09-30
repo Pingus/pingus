@@ -27,7 +27,7 @@
 #include "../server.hpp"
 #include "../true_server.hpp"
 #include "../pingu.hpp"
-#include "../gui/display.hpp"
+#include "../display/display.hpp"
 #include "button_panel.hpp"
 #include "playfield.hpp"
 
