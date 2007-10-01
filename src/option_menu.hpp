@@ -28,13 +28,14 @@ class OptionMenu : public GUIScreen
 {
 private:
   Sprite background;
+  Sprite ok_button;
 
 public:
   OptionMenu();
   ~OptionMenu();
   
   void draw_background (DrawingContext& gc);
-
+  void update (const GameDelta& delta);
   void on_escape_press ();
 
 private:

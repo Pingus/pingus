@@ -17,45 +17,40 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "gettext.h"
 #include "resource.hpp"
 #include "screen/screen_manager.hpp"
 #include "fonts.hpp"
 #include "display/drawing_context.hpp"
 #include "option_menu.hpp"
 
-/*
-  - option menu:
-
-  ----------------------------------
-  Language:                 [German]
-  ----------------------------------
-  Fast-Mode:                  Yes/No
-  Fullscreen:                 Yes/No
-  Allow Window Resize:        Yes/No
-  Resolution:              [800x600]
-  Frame Skip:              [Integer]
-  Software Cursor:          [Yes/No] (could add different styled ones)
-  ----------------------------------
-  Master Volume:       [#######    ]
-  Music Volume:        [####       ]
-  Sound FX Volume:     [########## ]
-  ----------------------------------
-  Scroll Mode: [DragDrop/Rubberband]
-  Enable Autoscrolling: [always, only in fullscreen, never]
-  ----------------------------------
-
-  [reset to defaults]
-*/
-
 OptionMenu::OptionMenu()
 {
   background = Resource::load_sprite("core/menu/filedialog");
+  ok_button  = Resource::load_sprite("core/start/ok");
 }
 
 OptionMenu::~OptionMenu()
 {
 }
+
+void
+OptionMenu::update(const GameDelta& delta)
+{
+  GUIScreen::update(delta);
+  SDL_Delay(50);
+}
   
+struct OptionEntry {
+  OptionEntry(const std::string& left_,
+        const std::string& right_)
+    : left(left_), right(right_)
+  {}
+  
+  std::string left;
+  std::string right;
+};
+
 void
 OptionMenu::draw_background(DrawingContext& gc)
 {
@@ -64,33 +59,40 @@ OptionMenu::draw_background(DrawingContext& gc)
 
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, 90, "Option Menu");
   
-  std::vector<std::string> strs;
-  strs.push_back("Resolution:");
-  strs.push_back("Fullscreen:");
-  strs.push_back("Allow Resize:");
-  strs.push_back("Fast Mode:");
-  strs.push_back("Master Volume:");
-  strs.push_back("Sound Volume:");
-  strs.push_back("Music Volume:");
+  std::vector<OptionEntry> strs;
+  strs.push_back(OptionEntry("Resolution:",    "<800x600>"));
+  strs.push_back(OptionEntry("Fullscreen:",    "[X]"));
+  strs.push_back(OptionEntry("Allow Resize:",  "[X]"));
+  strs.push_back(OptionEntry("Fast Mode:",     "[X]"));
+  strs.push_back(OptionEntry("Frame Skip:",      "<5>"));
+  strs.push_back(OptionEntry("Software Cursor:", "[X]"));
 
   int y = 130;
-  for(std::vector<std::string>::iterator i = strs.begin(); i != strs.end(); ++i)
+  for(std::vector<OptionEntry>::iterator i = strs.begin(); i != strs.end(); ++i)
     {
-      gc.print_left(Fonts::chalk_normal,  120, y += 32, *i);
-      gc.print_right(Fonts::chalk_normal, gc.get_width()/2 - 32, y, "[X]");
+      gc.print_left(Fonts::chalk_normal,  120, y += 32, i->left);
+      gc.print_right(Fonts::chalk_normal, gc.get_width()/2 - 32, y, i->right);
     }
 
-  std::vector<std::string> strs2;
-  strs2.push_back("Software Cursor:");
-  strs2.push_back("Scroll Mode:");
-  strs2.push_back("Frame Skip:");
+  std::vector<OptionEntry> strs2;
+  strs2.push_back(OptionEntry("Scroll Mode:",     "<drag&drop>"));
+  strs2.push_back(OptionEntry("Language:",        "<German>"));
+  strs2.push_back(OptionEntry("Master Volume:", "[||||||||||||||||||||||||||||||]"));
+  strs2.push_back(OptionEntry("Sound Volume:",  "[||||||||||||||||||||||||||||||]"));
+  strs2.push_back(OptionEntry("Music Volume:",  "[||||||||||||||||||||||||||||||]"));
 
   y = 130;
-  for(std::vector<std::string>::iterator i = strs2.begin(); i != strs2.end(); ++i)
+  for(std::vector<OptionEntry>::iterator i = strs2.begin(); i != strs2.end(); ++i)
     {
-      gc.print_left(Fonts::chalk_normal,  gc.get_width()/2 + 32, y += 32, *i);
-      gc.print_right(Fonts::chalk_normal, gc.get_width()/2 + 280, y, "[X]");
+      gc.print_left(Fonts::chalk_normal,  gc.get_width()/2 + 32, y += 32, i->left);
+      gc.print_right(Fonts::chalk_normal, gc.get_width()/2 + 280, y, i->right);
     }
+
+
+  gc.print_center(Fonts::chalk_normal, gc.get_width()/2 + 225 + 30, gc.get_height()/2 + 125 - 20, _("Close"));
+  gc.draw(ok_button, gc.get_width()/2 + 225, gc.get_height()/2 + 125);
+
+  gc.print_center(Fonts::chalk_normal, gc.get_width()/2, gc.get_height()/2 + 180, "Reset to Defaults [ ]");
 }
 
 void
