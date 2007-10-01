@@ -44,12 +44,12 @@ EvdevDevice::EvdevDevice(const std::string& filename)
 
   if (fd == -1)
     {
-      throw std::runtime_error(strerror(errno));
+      throw std::runtime_error(filename + ": " + std::string(strerror(errno)));
     }
 
   if (ioctl(fd, EVIOCGVERSION, &version)) 
     {
-      throw std::runtime_error("Error: EvdevDevice: Couldn't get version");
+      throw std::runtime_error("Error: EvdevDevice: Couldn't get version for " + filename);
     }
 
   if (1)

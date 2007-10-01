@@ -58,9 +58,14 @@ EvdevDriver::get_device(const std::string& device_filename)
         return *i;
     }
 
+  try {
   EvdevDevice* device = new EvdevDevice(device_filename);
   devices.push_back(device);
   return device;
+  } catch (std::exception& err) {
+    std::cout << "EvdevDriver: " << err.what() << std::endl;
+    return 0;
+  }
 }
 
 Button*
