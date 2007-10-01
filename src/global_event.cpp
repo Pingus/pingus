@@ -62,8 +62,8 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
 
 
       case SDLK_F5:
-        //if (!dynamic_cast<OptionMenu*>(&(ScreenManager::instance()->get_current_screen())))
-        ScreenManager::instance()->push_screen(new OptionMenu(), true);
+        if (!dynamic_cast<OptionMenu*>(ScreenManager::instance()->get_screen()))
+          ScreenManager::instance()->push_screen(new OptionMenu(), true);
         break;
 
       case SDLK_F12:

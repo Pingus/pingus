@@ -299,7 +299,12 @@ ScreenManager::resize(const Size& size)
   Display::set_video_mode(size.width, size.height);
 
   get_current_screen()->resize(size);
+}
 
+Screen*
+ScreenManager::get_screen()
+{
+  return get_current_screen().get();
 }
 
 void

@@ -347,6 +347,10 @@
                     (image-file "../images/core/menu/filedialog.png"))
 
                    (sprite
+                    (name "optionmenu")
+                    (image-file "../images/core/menu/optionmenu.png"))
+
+                   (sprite
                     (name "folder")
                     (image-file "../images/core/menu/folder.png"))
 

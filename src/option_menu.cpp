@@ -26,7 +26,7 @@
 
 OptionMenu::OptionMenu()
 {
-  background = Resource::load_sprite("core/menu/filedialog");
+  background = Resource::load_sprite("core/menu/optionmenu");
   ok_button  = Resource::load_sprite("core/start/ok");
 }
 
@@ -67,7 +67,7 @@ OptionMenu::draw_background(DrawingContext& gc)
   strs.push_back(OptionEntry("Frame Skip:",      "<5>"));
   strs.push_back(OptionEntry("Software Cursor:", "[X]"));
 
-  int y = 130;
+  int y = 145;
   for(std::vector<OptionEntry>::iterator i = strs.begin(); i != strs.end(); ++i)
     {
       gc.print_left(Fonts::chalk_normal,  120, y += 32, i->left);
@@ -75,13 +75,14 @@ OptionMenu::draw_background(DrawingContext& gc)
     }
 
   std::vector<OptionEntry> strs2;
-  strs2.push_back(OptionEntry("Scroll Mode:",     "<drag&drop>"));
   strs2.push_back(OptionEntry("Language:",        "<German>"));
   strs2.push_back(OptionEntry("Master Volume:", "[||||||||||||||||||||||||||||||]"));
   strs2.push_back(OptionEntry("Sound Volume:",  "[||||||||||||||||||||||||||||||]"));
   strs2.push_back(OptionEntry("Music Volume:",  "[||||||||||||||||||||||||||||||]"));
+  strs2.push_back(OptionEntry("Scroll Mode:",     "<drag&drop>"));
+  strs2.push_back(OptionEntry("Mouse Grab:",     "[X]"));
 
-  y = 130;
+  y = 145;
   for(std::vector<OptionEntry>::iterator i = strs2.begin(); i != strs2.end(); ++i)
     {
       gc.print_left(Fonts::chalk_normal,  gc.get_width()/2 + 32, y += 32, i->left);
@@ -92,7 +93,8 @@ OptionMenu::draw_background(DrawingContext& gc)
   gc.print_center(Fonts::chalk_normal, gc.get_width()/2 + 225 + 30, gc.get_height()/2 + 125 - 20, _("Close"));
   gc.draw(ok_button, gc.get_width()/2 + 225, gc.get_height()/2 + 125);
 
-  gc.print_center(Fonts::chalk_normal, gc.get_width()/2, gc.get_height()/2 + 180, "Reset to Defaults [ ]");
+  gc.print_center(Fonts::chalk_normal, gc.get_width()/2, gc.get_height()/2 + 160, "Reset to Defaults [ ]");
+  gc.print_left(Fonts::chalk_normal, gc.get_width()/2 - 280, gc.get_height()/2 + 160, "Save [ ]");
 }
 
 void
