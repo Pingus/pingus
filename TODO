@@ -120,26 +120,6 @@ Font: datadir://images/fonts/courier_small-iso-8859-9.png
 
 - remove verbose
 
-- option menu:
-
-  ----------------------------------
-  Language:                 [German]
-  ----------------------------------
-  Fast-Mode:                  Yes/No
-  Fullscreen:                 Yes/No
-  Allow Window Resize:        Yes/No
-  Resolution:              [800x600]
-  Frame Skip:              [Integer]
-  Software Cursor:          [Yes/No] (could add different styled ones)
-  ----------------------------------
-  Master Volume:       [#######    ]
-  Music Volume:        [####       ]
-  Sound FX Volume:     [########## ]
-  ----------------------------------
-  Scroll Mode: [DragDrop/Rubberband]
-  Enable Autoscrolling: [always, only in fullscreen, never]
-  ----------------------------------
-
 - add dynamic resize for the game
 
 - resource system needs a review/rewrite
@@ -251,6 +231,9 @@ Important:
 
 Less Important:
 ===============
+
+- make inputbox handle text longer then the rect size as well as
+  multiline text
 
 - keyboard shortcuts need to be implemented with input framework, but
   how without support for keymaps?

@@ -20,12 +20,15 @@
 #ifndef HEADER_OPTION_MENU_HPP
 #define HEADER_OPTION_MENU_HPP
 
+#include "sprite.hpp"
 #include "screen/gui_screen.hpp"
 
 /** */
 class OptionMenu : public GUIScreen
 {
 private:
+  Sprite background;
+
 public:
   OptionMenu();
   ~OptionMenu();
