@@ -335,6 +335,8 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
 
     if os.environ.has_key('PATH'):
         env['ENV']['PATH'] = os.environ['PATH']
+    if os.environ.has_key('HOME'):
+       env['ENV']['HOME'] = os.environ['HOME']
 
     if os.environ.has_key('PKG_CONFIG_PATH'):
         env['ENV']['PKG_CONFIG_PATH'] = os.environ['PKG_CONFIG_PATH']
