@@ -51,6 +51,7 @@ pingus_sources = [
 'src/actions/teleported.cpp', 
 'src/actions/waiter.cpp', 
 'src/actions/walker.cpp', 
+'src/addon_menu.cpp', 
 'src/blitter.cpp',
 # 'blitter_test.cpp', 
 'src/capture_rectangle.cpp', 
@@ -143,6 +144,7 @@ pingus_sources = [
 'src/screen/screen_ptr.cpp', 
 
 'src/line_iterator.cpp',
+'src/level_menu.cpp',
 
 'src/lisp/getters.cpp',
 'src/lisp/lexer.cpp',

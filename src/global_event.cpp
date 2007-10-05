@@ -25,6 +25,8 @@
 #include "fps_counter.hpp"
 #include "screen/screen_manager.hpp"
 #include "option_menu.hpp"
+#include "level_menu.hpp"
+#include "addon_menu.hpp"
 #include "global_event.hpp"
 #include "globals.hpp"
 
@@ -64,6 +66,16 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
       case SDLK_F5:
         if (!dynamic_cast<OptionMenu*>(ScreenManager::instance()->get_screen()))
           ScreenManager::instance()->push_screen(new OptionMenu(), true);
+        break;
+
+      case SDLK_F6:
+        if (!dynamic_cast<AddOnMenu*>(ScreenManager::instance()->get_screen()))
+          ScreenManager::instance()->push_screen(new AddOnMenu(), true);
+        break;
+
+      case SDLK_F7:
+        if (!dynamic_cast<LevelMenu*>(ScreenManager::instance()->get_screen()))
+          ScreenManager::instance()->push_screen(new LevelMenu(), true);
         break;
 
       case SDLK_F12:

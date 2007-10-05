@@ -81,6 +81,7 @@ OptionMenu::draw_background(DrawingContext& gc)
   strs2.push_back(OptionEntry("Music Volume:",  "[||||||||||||||||||||||||||||||]"));
   strs2.push_back(OptionEntry("Scroll Mode:",     "<drag&drop>"));
   strs2.push_back(OptionEntry("Mouse Grab:",     "[X]"));
+  //strs2.push_back(OptionEntry("Auto Online Updates:", "[X]"));
 
   y = 145;
   for(std::vector<OptionEntry>::iterator i = strs2.begin(); i != strs2.end(); ++i)

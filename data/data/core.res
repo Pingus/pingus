@@ -343,6 +343,10 @@
 
           (section (name "menu")
                    (sprite
+                    (name "marker")
+                    (image-file "../images/core/menu/marker.png"))
+
+                   (sprite
                     (name "filedialog")
                     (image-file "../images/core/menu/filedialog.png"))
 
