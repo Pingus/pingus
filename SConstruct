@@ -20,6 +20,7 @@
 ##  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 import sys, os
+import SCons.Util
 
 pingus_sources = [
 # # 'gui/buffer_graphic_context.cpp', 
@@ -294,27 +295,106 @@ pingus_sources = [
 'lib/binreloc/binreloc.c'
 ]
 
+class _SpaceListOptionClass:
+   """An option type for space-separated lists with arbitrary elements."""
+   def CheckDir(self, val):
+      if not os.path.isdir(val):
+         raise SCons.Errors.UserError("No directory at %s" % val)
+
+   def _convert(self, key, val, env):
+      if SCons.Util.is_List(val): # prefer val if it's already a list
+         return val
+      elif len(val) > 0 and val[0] == '[' and val[-1] == ']':
+         # or a repr of a list
+         return eval(val)
+      elif env: # otherwise, use whatever's in env
+         val = env[key]
+         if not SCons.Util.is_List(val):
+            val = val.split(None)
+         return val
+      else: # val was substituted into a string, losing its structure
+         # We'll be called again with env, hopefully that's more useful
+         raise TypeError("try again with the environment")
+
+   def _validate(self, val, env, check, converter):
+      for i in converter(val, env):
+         if check(i):
+            return True
+      return False
+
+   def __call__(self, key, help, check=None, default=[]):
+      def converter(val, env = None):
+         return self._convert(key, val, env)
+ 
+      validator = None
+      if check is not None:
+         validator = lambda k, v, e: self._validate(v, e, check, converter)
+      return (key, help, default, validator, converter)
+ 
+SpaceListOption = _SpaceListOptionClass()
+
 def DefineOptions(filename, args):
    opts = Options(filename, args)
-   opts.Add('CPPPATH', 'Additional preprocessor paths', [])
-   opts.Add('CPPFLAGS', 'Additional preprocessor flags', [])
-   opts.Add('CPPDEFINES', 'defined constants', [])
-   opts.Add('LIBPATH', 'Additional library paths', [])
-   opts.Add('LIBS', 'Additional libraries', [])
-   opts.Add('CCFLAGS', 'C Compiler flags', [])
-   opts.Add('LINKFLAGS', 'Linker Compiler flags', [])
    opts.Add('CC', 'C Compiler', 'gcc')
    opts.Add('CXX', 'C++ Compiler', 'g++')
 #   opts.Add('debug', 'Build with debugging options', 0)
 #   opts.Add('profile', 'Build with profiling support', 0)
-   opts.Add('with_xinput', 'Build with Xinput support', False)
-   opts.Add('with_linuxusbmouse', 'Build with Linux USB mouse support', True)
-   opts.Add('with_linuxevdev', 'Build with Linux evdev support', True)
-   opts.Add('with_wiimote', 'Build with Wiimote support', False)
-   opts.Add('ignore_errors', 'Ignore any fatal configuration errors', False)
+
+   opts.Add('CPPPATH',    'Additional preprocessor paths', [])
+   opts.Add('LIBPATH',    'Additional library paths',      [])
+   opts.Add('CPPFLAGS',   'Additional preprocessor flags', [])
+   opts.Add('CPPDEFINES', 'defined constants', [])
+   opts.Add('LIBS',       'Additional libraries', [])
+   opts.Add('CCFLAGS',    'C Compiler flags', [])
+   opts.Add('LINKFLAGS',  'Linker Compiler flags', [])
+
+   opts.Add(BoolOption('with_xinput',        'Build with Xinput support', False))
+   opts.Add(BoolOption('with_linuxusbmouse', 'Build with Linux USB mouse support', True))
+   opts.Add(BoolOption('with_linuxevdev',    'Build with Linux evdev support', True))
+   opts.Add(BoolOption('with_wiimote',       'Build with Wiimote support', False))
+   opts.Add(BoolOption('ignore_errors',      'Ignore any fatal configuration errors', False))
    opts.Add('optional_sources', 'Additional source files', [])
    return opts
 
+def CheckSDLLib(context, sdllib):
+   """
+   On some platforms, SDL does this ugly redefine-main thing, that can
+   interact badly with CheckLibWithHeader.
+   """
+   lib = "SDL_%s" % sdllib
+   context.Message('Checking for %s...' % lib)
+   text = """
+#include "SDL.h"
+#include "%s.h"
+int main(int argc, char* argv[]) { return 0; }
+""" % lib
+   context.AppendLIBS(lib)
+   if context.BuildProg(text, ".cpp"):
+      context.Result("failed")
+      return False
+   else:
+      context.Result("ok")
+      return True
+
+def CheckIconv(context):
+   text = """
+#include <iconv.h>
+int main() {
+   %s char *foo;
+   (void)iconv((iconv_t)0, &foo, (size_t*)0, (char**)0, (size_t*)0);
+   return 0;
+}
+"""
+   config.CheckLibWithHeader('iconv', 'iconv.h', 'c++') # Ok to fail
+   context.Message('Check how to call iconv...')
+
+   for i in ['', 'const']:
+      if config.TryCompile(text % i, ".cpp"):
+         context.Result("use '%s'" % i)
+         return i
+   context.Result("failed")
+   return False
+
 def CheckMyProgram(context, prgn):
    context.Message('Checking for %s...' % prgn)
    for i in context.env['ENV']['PATH'].split(":"):
@@ -347,7 +427,11 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
 
     config_h_defines = []      
 
-    config = env.Configure(custom_tests = {'CheckMyProgram' : CheckMyProgram})
+    config = env.Configure(custom_tests = {
+       'CheckMyProgram' : CheckMyProgram,
+       'CheckSDLLib': CheckSDLLib,
+       'CheckIconv': CheckIconv,
+    })
     fatal_error = ""
     reports = ""
 
@@ -396,13 +480,15 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
 
     if config.CheckMyProgram('sdl-config'):
        env.ParseConfig('sdl-config  --cflags --libs')
-       for lib in ['SDL_image', 'SDL_mixer']:
-          if not config.CheckLibWithHeader(lib, lib + ".h", 'c++'):
-             fatal_error += "  * library '%s' not found\n" % lib           
-          else:
-             env['LIBS'] += [lib]
+       for sdllib in ['image', 'mixer']:
+          if not config.CheckSDLLib(sdllib):
+             fatal_error += "  * SDL library '%s' not found\n" % sdllib
     else:
        fatal_error += "  * couldn't find sdl-config, SDL missing\n"
+
+    iconv_const = config.CheckIconv()
+    if iconv_const == False:
+       fatal_error += "  * can't call iconv\n"
 
     env = config.Finish()
     opts.Save("config.py", env)
@@ -421,7 +507,7 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
     config_h = open('config.h', 'w')
     config_h.write('#define VERSION "0.7.2"\n')
     config_h.write('#define ENABLE_BINRELOC 1\n')
-    config_h.write('#define ICONV_CONST\n') # FIXME: make a check for this
+    config_h.write('#define ICONV_CONST %s\n' % iconv_const)
     for (v,k) in config_h_defines:
         config_h.write('#define %s %s\n' % (v, k))
     config_h.close()
