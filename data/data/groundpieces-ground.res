@@ -2,6 +2,33 @@
 (pingus-resources
   (section (name "groundpieces")
     (section (name "ground")
+      (section (name "halloween")
+(sprite
+   (name "ground1")
+   (image-file "../images/groundpieces/ground/halloween/ground1.png"))
+(sprite
+   (name "ground2")
+   (image-file "../images/groundpieces/ground/halloween/ground2.png"))
+(sprite
+   (name "ground3")
+   (image-file "../images/groundpieces/ground/halloween/ground3.png"))
+(sprite
+   (name "ground4")
+   (image-file "../images/groundpieces/ground/halloween/ground4.png"))
+(sprite
+   (name "ground5")
+   (image-file "../images/groundpieces/ground/halloween/ground5.png"))
+(sprite
+   (name "ground6")
+   (image-file "../images/groundpieces/ground/halloween/ground6.png"))
+(sprite
+   (name "stairs")
+   (image-file "../images/groundpieces/ground/halloween/stairs.png"))
+(sprite
+   (name "stairs_top")
+   (image-file "../images/groundpieces/ground/halloween/stairs_top.png"))
+)
+
       (section (name "crystal")
         (sprite
           (name "block")

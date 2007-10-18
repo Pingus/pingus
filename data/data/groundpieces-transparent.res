@@ -2,6 +2,51 @@
 (pingus-resources
   (section (name "groundpieces")
     (section (name "transparent")
+      (section (name "halloween")
+  (sprite
+   (name "candle1")
+   (image-file "../images/groundpieces/transparent/halloween/candle1.png"))
+(sprite
+   (name "gravestone1")
+   (image-file "../images/groundpieces/transparent/halloween/gravestone1.png"))
+(sprite
+   (name "gravestone2")
+   (image-file "../images/groundpieces/transparent/halloween/gravestone2.png"))
+(sprite
+   (name "gravestone3")
+   (image-file "../images/groundpieces/transparent/halloween/gravestone3.png"))
+(sprite
+   (name "gravestone4")
+   (image-file "../images/groundpieces/transparent/halloween/gravestone4.png"))
+(sprite
+   (name "gravestone5")
+   (image-file "../images/groundpieces/transparent/halloween/gravestone5.png"))
+(sprite
+   (name "hat1")
+   (image-file "../images/groundpieces/transparent/halloween/hat1.png"))
+(sprite
+   (name "hat2")
+   (image-file "../images/groundpieces/transparent/halloween/hat2.png"))
+(sprite
+   (name "kirby1")
+   (image-file "../images/groundpieces/transparent/halloween/kirby1.png"))
+(sprite
+   (name "kirby2")
+   (image-file "../images/groundpieces/transparent/halloween/kirby2.png"))
+(sprite
+   (name "kirby3")
+   (image-file "../images/groundpieces/transparent/halloween/kirby3.png"))
+(sprite
+   (name "kirby4")
+   (image-file "../images/groundpieces/transparent/halloween/kirby4.png"))
+(sprite
+   (name "pot1")
+   (image-file "../images/groundpieces/transparent/halloween/pot1.png"))
+(sprite
+   (name "spiderweb1")
+   (image-file "../images/groundpieces/transparent/halloween/spiderweb1.png"))
+                           )
+
       (section (name "foliage")
         (sprite
           (name "grass1")
@@ -182,6 +227,26 @@
         (sprite
           (name "moos3")
           (image-file "../images/groundpieces/transparent/misc/moos3.png"))
+
+        (sprite
+          (name "moos4")
+          (image-file "../images/groundpieces/transparent/misc/moos4.png"))
+
+        (sprite
+          (name "moos5")
+          (image-file "../images/groundpieces/transparent/misc/moos5.png"))
+
+        (sprite
+          (name "moos6")
+          (image-file "../images/groundpieces/transparent/misc/moos6.png"))
+
+        (sprite
+          (name "moos7")
+          (image-file "../images/groundpieces/transparent/misc/moos7.png"))
+
+        (sprite
+          (name "moos8")
+          (image-file "../images/groundpieces/transparent/misc/moos8.png"))
 
         (sprite
           (name "weed1")
