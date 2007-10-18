@@ -25,6 +25,7 @@
 #include <string>
 #include <fstream>
 #include <exception>
+#include <string.h>
 
 //#include "physfs/physfs_stream.hpp"
 #include "parser.hpp"

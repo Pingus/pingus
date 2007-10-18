@@ -22,6 +22,8 @@
 #include <sstream>
 #include <errno.h>
 #include <stdexcept>
+#include <string.h>
+#include <stdlib.h>
 #include "iconv.hpp"
 
 namespace TinyGetText {
