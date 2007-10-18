@@ -35,6 +35,21 @@
 #include "string_util.hpp"
 #include "sexpr_file_reader.hpp"
 
+#if defined(__APPLE__)
+/* Can't use the include, some type names conflict.
+#include <CoreFoundation/CoreFoundation.h>
+*/
+extern "C" {
+       typedef unsigned char UInt8;
+       typedef void* CFTypeRef;
+       typedef CFTypeRef CFURLRef;
+       CFURLRef CFBundleGetMainBundle(void);
+       CFURLRef CFBundleCopyResourcesDirectoryURL(CFTypeRef);
+       bool CFURLGetFileSystemRepresentation(CFURLRef, bool, UInt8*, int);
+       void CFRelease(CFTypeRef);
+}
+#endif
+
 #include "SDL.h"
 
 #ifdef ENABLE_BINRELOC
