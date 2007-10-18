@@ -27,8 +27,16 @@
 (sprite
    (name "stairs_top")
    (image-file "../images/groundpieces/ground/halloween/stairs_top.png"))
+(sprite
+   (name "tree1")
+   (image-file "../images/groundpieces/ground/halloween/tree1.png"))
+(sprite
+   (name "tree2")
+   (image-file "../images/groundpieces/ground/halloween/tree2.png"))
+(sprite
+   (name "tree3")
+   (image-file "../images/groundpieces/ground/halloween/tree3.png"))
 )
-
       (section (name "crystal")
         (sprite
           (name "block")
