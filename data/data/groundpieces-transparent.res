@@ -44,9 +44,11 @@
    (image-file "../images/groundpieces/transparent/halloween/pot1.png"))
 (sprite
    (name "spiderweb1")
-   (image-file "../images/groundpieces/transparent/halloween/spiderweb1.png"))
-                           )
-
+   (image-file "../images/groundpieces/transparent/halloween/spiderweb1.png"))                        
+(sprite
+   (name "fence1")
+   (image-file "../images/groundpieces/transparent/halloween/fence1.png"))
+)
       (section (name "foliage")
         (sprite
           (name "grass1")
