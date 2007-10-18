@@ -57,10 +57,10 @@ public:
   void lock();
   void unlock();
 
-  Size get_size()  const;
-  int get_width()  const;
-  int get_height() const;
-  int get_pitch()  const;
+  Size get_size()   const;
+  int  get_width()  const;
+  int  get_height() const;
+  int  get_pitch()  const;
 
   void blit(const Surface& source, int x, int y);
 
@@ -77,6 +77,8 @@ public:
   SDL_Surface* get_surface() const;
 
   operator bool() const;
+
+  bool is_shared() const;
 
 protected:
   boost::shared_ptr<SurfaceImpl> impl;
