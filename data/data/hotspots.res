@@ -1,6 +1,21 @@
 ;; hotspots.xml
 (pingus-resources
   (section (name "hotspots")
+ (section (name "halloween")
+(sprite
+   (name "sign-down")
+   (image-file "../images/hotspots/halloween/sign-down.png"))
+(sprite
+   (name "sign-left")
+   (image-file "../images/hotspots/halloween/sign-left.png"))
+(sprite
+   (name "sign-right")
+   (image-file "../images/hotspots/halloween/sign-right.png"))
+(sprite
+   (name "sign-up")
+   (image-file "../images/hotspots/halloween/sign-up.png"))
+)
+
     (section (name "desert")
       (sprite
         (name "bigdimwall")
