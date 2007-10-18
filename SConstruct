@@ -419,7 +419,7 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
            print "\nError are being ignored, the build continues"
 
     config_h = open('config.h', 'w')
-    config_h.write('#define VERSION "0.7.1"\n')
+    config_h.write('#define VERSION "0.7.2"\n')
     config_h.write('#define ENABLE_BINRELOC 1\n')
     config_h.write('#define ICONV_CONST\n') # FIXME: make a check for this
     for (v,k) in config_h_defines:
