@@ -44,6 +44,12 @@
       (image-pos 0 0))
 
     (sprite
+      (name "halloween")
+;;      (origin "bottom_center")
+      (offset 0 0)
+      (image-file "../images/entrances/halloween.png"))
+
+    (sprite
       (name "wood_bottom")
 ;;      (origin "bottom_center")
       (offset 0 0)

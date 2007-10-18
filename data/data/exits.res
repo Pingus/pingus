@@ -20,6 +20,12 @@
       (image-file "../images/exits/ice2.png"))
 
     (sprite
+      (name "halloween")
+      (origin "bottom_center")
+      (offset 0 0)
+      (image-file "../images/exits/halloween.png"))
+
+    (sprite
       (name "stone")
       (origin "bottom_center")
       (offset 0 0)

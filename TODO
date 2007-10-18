@@ -212,6 +212,12 @@ Roadmap for Pingus Editor 0.7.2:
 Important:
 ==========
 
+- solid color background gets 0,0 size after load
+
+- drag&drop is behind minimap
+
+- fix pt_BR.po support, currently pt.po is loaded instead
+
 - implement proper tmpfile Support (save tmp levels to ~/.pingus/tmp/
   for backup purpose in case of editor crash or so)
 

@@ -12,7 +12,7 @@
     (time -1)
     (difficulty 0)
     (playable 1)
-    (comment "none")
+    (comment "")
     (music "none")
     (actions 
       (basher 20)
@@ -27,6 +27,12 @@
       (slider 20))
     (levelsize 2000 1000))
   (objects 
+    (exit 
+      (surface 
+        (image "exits/halloween")
+        (modifier "ROT0"))
+      (position 917 510 -100)
+      (owner-id 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -219,9 +225,6 @@
         (image "groundpieces/transparent/misc/moos6")
         (modifier "ROT0"))
       (position 603 423 0))
-    (solidcolor-background 
-      (position 19 139 -1000)
-      (color 0 0 0 1))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -252,26 +255,12 @@
       (owner-id 0)
       (direction "misc")
       (release-rate 150))
-    (hotspot 
-      (surface 
-        (image "entrances/snow_back")
-        (modifier "ROT0"))
-      (position 356 217 0)
-      (speed 0)
-      (parallax 0))
-    (hotspot 
-      (surface 
-        (image "entrances/snow_front")
-        (modifier "ROT0"))
-      (position 356 217 0)
-      (speed 0)
-      (parallax 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/ground3")
         (modifier "ROT0"))
-      (position 968 492 0))
+      (position 1051 466 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -343,13 +332,13 @@
       (surface 
         (image "groundpieces/transparent/halloween/kirby3")
         (modifier "ROT0"))
-      (position 989 474 0))
+      (position 1072 448 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/halloween/hat1")
         (modifier "ROT0"))
-      (position 984 462 0))
+      (position 1067 436 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -475,7 +464,7 @@
       (surface 
         (image "groundpieces/ground/halloween/ground2")
         (modifier "ROT0"))
-      (position 738 667 0))
+      (position 739 668 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -511,6 +500,80 @@
       (surface 
         (image "groundpieces/transparent/misc/moos6")
         (modifier "ROT0"))
-      (position 647 427 0))))
+      (position 647 427 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground2")
+        (modifier "ROT0"))
+      (position 741 506 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground2")
+        (modifier "ROT0"))
+      (position 700 506 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground2")
+        (modifier "ROT0"))
+      (position 829 504 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground2")
+        (modifier "ROT0"))
+      (position 787 531 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos6")
+        (modifier "ROT0"))
+      (position 739 504 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos6")
+        (modifier "ROT0"))
+      (position 793 505 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos6")
+        (modifier "ROT0"))
+      (position 849 505 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos6")
+        (modifier "ROT0"))
+      (position 911 505 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos6")
+        (modifier "ROT0"))
+      (position 692 505 0))
+    (hotspot 
+      (surface 
+        (image "entrances/halloween")
+        (modifier "ROT0"))
+      (position 359 197 100)
+      (speed 0)
+      (parallax 0))
+    (surface-background 
+      (surface 
+        (image "textures/cyanspace")
+        (modifier "ROT0"))
+      (position 202 -105 -1000)
+      (color 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))))
 
 ;; EOF ;;
