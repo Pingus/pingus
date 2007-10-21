@@ -432,6 +432,12 @@ void
 EditorLevel::set_size(const Size& s)
 {
   impl->size = s;
+
+  if (impl->size.width <= 0)
+    impl->size.width = 1;
+
+  if (impl->size.height <= 0)
+    impl->size.height = 1;
 }
 
 } // namespace Editor
