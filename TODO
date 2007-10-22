@@ -93,6 +93,16 @@ Roadmap for Pingus 0.7.2
 Important:
 ==========
 
+- Levels: All levels lack name and description
+
+halloween1-grumbel.pingus - gfx test only, not playable
+halloween2-grumbel.pingus - rescue by jump - lacks decore, playable
+halloween3-grumbel.pingus - digg tunnel - finished, needs testing
+halloween4-grumbel.pingus - wall bomb - lacks decore, playable
+halloween5-grumbel.pingus - join-jump - not playable
+halloween6-grumbel.pingus - jump high - lacks some decore, playable
+halloween7-grumbel.pingus - rescue - lacks decore, playable
+
 - bridge tile isn't flipped in bridger 
 
 - Regenerate Courier fonts for latin-1/2/9
