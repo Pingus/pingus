@@ -58,8 +58,10 @@ Manager::Manager()
   desc.add_button("armageddon-button",   ARMAGEDDON_BUTTON);
   desc.add_button("pause-button",        PAUSE_BUTTON);
   desc.add_button("escape-button",       ESCAPE_BUTTON);
+
   desc.add_button("action-up-button",    ACTION_UP_BUTTON);
   desc.add_button("action-down-button",  ACTION_DOWN_BUTTON);
+
   desc.add_button("action-1-button",     ACTION_1_BUTTON);
   desc.add_button("action-2-button",     ACTION_2_BUTTON);
   desc.add_button("action-3-button",     ACTION_3_BUTTON);
