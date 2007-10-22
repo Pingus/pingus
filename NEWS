@@ -1,8 +1,8 @@
-0.7.2 (23/Sep/2007)
+0.7.2 (31/Oct/2007)
 ===================
 * added window resize support to the editor (use --allow-resize)
 * added minimap to editor  
-
+* added halloween level set
 
 0.7.1 (23/Sep/2007)
 ===================
