@@ -503,6 +503,8 @@ EditorScreen::update_layout()
       level_properties->set_rect(Rect(Vector2i(0,38), Size(size.width, 302))); 
     }
 
+  action_properties->set_rect(Rect(Vector2i(0, 38), Size(150, 240)));
+
   object_properties->set_rect(Rect(Vector2i(0, size.height - object_properties->get_rect().get_height()), 
                                    Size(object_properties->get_rect().get_width(),
                                         object_properties->get_rect().get_height())));
