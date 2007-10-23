@@ -343,6 +343,11 @@
 
           (section (name "menu")
                    (sprite
+                    (name "menuitem")
+                    (origin "center")
+                    (image-file "../images/core/menu/menuitem.png"))
+
+                   (sprite
                     (name "marker")
                     (image-file "../images/core/menu/marker.png"))
 

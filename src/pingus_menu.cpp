@@ -45,38 +45,35 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
 {
   is_init = false;
     
-  start_button = new MenuButton(this, Vector2i(Display::get_width() * 400 / 800,
-                                        Display::get_height() * 390 / 600),
-                                Resource::load_sprite("core/menu/play_on"),
-                                _("Start"),
+  start_button = new MenuButton(this, Vector2i(Display::get_width()  * 250 / 800,
+                                               Display::get_height() * 330 / 600),
+                                _("Story"),
                                 _("..:: Start the game ::.."));
 
-  quit_button = new MenuButton(this, Vector2i(Display::get_width() * 650 / 800,
-                                       Display::get_height() * 390 / 600),
-                               Resource::load_sprite("core/menu/exit_on"),
+
+  editor_button = new MenuButton(this, Vector2i(Display::get_width()  * 550 / 800,
+                                                Display::get_height() * 330 / 600),
+                                 _("Editor"),
+                                 _("..:: Create your own levels ::.."));
+
+  quit_button = new MenuButton(this, Vector2i(Display::get_width()  * 550 / 800,
+                                              Display::get_height() * 410 / 600),
                                _("Exit"),
                                _("..:: Bye, bye ::.."));
 
-  editor_button = new MenuButton(this, Vector2i(Display::get_width() * 150 / 800,
-                                          Display::get_height() * 390 / 600),
-                                  Resource::load_sprite("core/menu/create_on"),
-                                  _("Level Editor"),
-                                 _("..:: Create your own levels ::.."));
-#ifdef NEW_MENU
-  contrib_button = new MenuButton(this, Vector2i(Display::get_width() * 150 / 800,
-                                          Display::get_height() * 450 / 600),
-                                  Resource::load_sprite("core/menu/options_on"),
-                                  _("Contrib\nLevels"),
+  contrib_button = new MenuButton(this, Vector2i(Display::get_width()  * 250 / 800,
+                                                 Display::get_height() * 410 / 600),
+                                  _("Levelsets"),
                                   _("..:: Play User Built levels ::.."));
 
+#ifdef NEW_MENU
   story_button  = new MenuButton(this, Vector2i(Display::get_width() * 400 / 800,
-                                         Display::get_height() * 340 / 600),
-                                 Resource::load_sprite("core/menu/credits_on"),
+                                                Display::get_height() * 340 / 600),
                                  _("Story"),
                                  _("..:: Start the story ::.."));
   
   multiplayer_button = new MenuButton(this, Vector2i(Display::get_width() * 150 / 800,
-                                              Display::get_height() * 340 / 600),
+                                                     Display::get_height() * 340 / 600),
                                       Resource::load_sprite("core/menu/multi_on"),
                                       _("Multiplayer"),
                                       _("..:: Multiplayer Match ::.."));
@@ -96,6 +93,7 @@ PingusMenu::setup_main_menu()
 #endif
 
   gui_manager->add(quit_button, false);
+  gui_manager->add(contrib_button, false);
   gui_manager->add(start_button, false);
   gui_manager->add(editor_button, false);
 }

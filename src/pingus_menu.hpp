@@ -48,9 +48,9 @@ private:
   MenuButton* start_button;
   MenuButton* quit_button;
   MenuButton* editor_button;
+  MenuButton* contrib_button;
 
 #ifdef NEW_MENU
-  MenuButton* contrib_button;
   MenuButton* story_button;
   MenuButton* multiplayer_button;
 #endif

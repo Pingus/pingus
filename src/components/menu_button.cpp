@@ -28,20 +28,20 @@
 
 
 MenuButton::MenuButton(PingusMenu* menu_,
-                       const Vector2i& pos_, const Sprite& sprite_, 
+                       const Vector2i& pos_,
                        const std::string& text_, const std::string& desc_)
   : menu(menu_)
 {
+  surface_p = Resource::load_sprite("core/menu/menuitem");
+
   text = text_;
   desc  = desc_;
 
   x_pos = pos_.x;
   y_pos = pos_.y;
 
-  surface_p = sprite_;
-  
   font       = Fonts::pingus_small;
-  font_large = Fonts::pingus_large;
+  font_large = Fonts::chalk_large;
 
   mouse_over = false;
   pressed    = false;
@@ -76,32 +76,20 @@ MenuButton::on_click ()
 void
 MenuButton::draw (DrawingContext& gc)
 {
-  if (mouse_over && !pressed)
+  if (mouse_over) // pressed
     {
-      gc.draw(surface_p, Vector2i(x_pos - surface_p.get_width()/2,
-                                  y_pos - surface_p.get_height()/2));
-
-      gc.print_center(font_large, x_pos + 32,
-                      y_pos - 32 - font_large.get_height()/2,
-                      text);
-    }
-  else if (mouse_over && pressed)
-    {
-      float shrink = 0.9f;
-      gc.draw(surface_p,
-              Vector3f(x_pos - surface_p.get_width()/2 * shrink,
-                       y_pos - surface_p.get_height()/2 * shrink));
-
-      gc.print_center(font_large,
-                      x_pos + 32,
-                      y_pos - 32 - font_large.get_height()/2,
-                      text);
+      gc.draw(surface_p,Vector3f(x_pos, y_pos));
+      gc.print_center(font_large, x_pos, y_pos - 28, text);
+      // poor mans bold formating
+      gc.print_center(font_large, x_pos-1, y_pos - 28 - 1, text);
+      gc.print_center(font_large, x_pos+1, y_pos - 28 + 1, text);
+      gc.print_center(font_large, x_pos+1, y_pos - 28 - 1, text);
+      gc.print_center(font_large, x_pos-1, y_pos - 28 + 1, text);
     }
   else
     {
-      gc.draw(surface_p,
-              Vector2i(x_pos - surface_p.get_width()/2,
-                       y_pos - surface_p.get_height()/2));
+      gc.draw(surface_p, Vector2i(x_pos, y_pos));
+      gc.print_center(font_large, x_pos, y_pos - 28, text);
     }
   UNUSED_ARG(gc);
 }

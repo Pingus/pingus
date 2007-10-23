@@ -47,10 +47,8 @@ protected:
   bool mouse_over;
   bool pressed;
 
-  ////CL_Signal_v0 click;
-
 public:
-  MenuButton(PingusMenu* menu, const Vector2i& pos, const Sprite& sprite, 
+  MenuButton(PingusMenu* menu, const Vector2i& pos, 
              const std::string& text, const std::string& desc);
   MenuButton();
   virtual ~MenuButton();
@@ -68,7 +66,7 @@ public:
   void on_primary_button_click (int x, int y) { on_click (); UNUSED_ARG(x); UNUSED_ARG(y); }
 
   virtual void on_click ();
-  ////CL_Signal_v0& sig_click() { return click; }
+
 private:
   MenuButton (const MenuButton&);
   MenuButton& operator= (const MenuButton&);
