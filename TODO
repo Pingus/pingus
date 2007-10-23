@@ -219,9 +219,6 @@ Less Important:
   (have a blinking clock and tick sound or so)
 
 - write a README.input
-
-- after finishing a bridge, if a pingu is turned into a blocker while he waits he still walks off of the bridge
-
 
 Roadmap for Pingus Editor 0.7.2:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -230,6 +227,9 @@ Important:
 ==========
 
 - default entrance hotspots to 100
+
+- changing the map size in the editor does not change the view bounds (GraphicState.set_limits())
+  until the map is reloaded
 
 - solid color background gets 0,0 size after load
 
@@ -275,8 +275,6 @@ Less Important:
 - write a color select widget (Hue, Saturation.Value)
 
 - object raising doesn't work for group
-
-- changing the map size in the editor does not change the view bounds until the map is reloaded
 
 
 Older Stuff:
