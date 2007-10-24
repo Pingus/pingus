@@ -93,6 +93,8 @@ Roadmap for Pingus 0.7.2
 Important:
 ==========
 
+- Water Glitch: the water on the minimap changes color after the colmap is altered or the first time
+
 - bridge tile isn't flipped in bridger 
 
 - Levels: All levels lack name and description
