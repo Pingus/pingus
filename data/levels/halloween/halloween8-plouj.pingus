@@ -15,21 +15,15 @@
     (comment "")
     (music "none")
     (actions 
-      (basher 1)
+      (basher 5)
       (blocker 10)
-      (bridger 7)
-      (climber 1)
+      (bridger 10)
+      (climber 6)
       (floater 20)
       (jumper 50)
-      (miner 1))
+      (miner 5))
     (levelsize 1500 900))
   (objects 
-    (groundpiece 
-      (type "transparent")
-      (surface 
-        (image "groundpieces/transparent/misc/moos4")
-        (modifier "ROT180FLIP"))
-      (position 563 245 0))
     (surface-background 
       (surface 
         (image "textures/cyanspace")
@@ -43,6 +37,12 @@
       (scroll-y 0)
       (para-x 0.5)
       (para-y 0.5))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos4")
+        (modifier "ROT180FLIP"))
+      (position 563 245 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -634,19 +634,13 @@
       (surface 
         (image "groundpieces/transparent/misc/weed1")
         (modifier "ROT0"))
-      (position 351 678 0))
+      (position 350 688 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/halloween/kirby1")
         (modifier "ROT0"))
       (position 1299 474 0))
-    (groundpiece 
-      (type "transparent")
-      (surface 
-        (image "groundpieces/transparent/misc/moos4")
-        (modifier "ROT0"))
-      (position 498 487 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -664,7 +658,7 @@
       (surface 
         (image "groundpieces/transparent/misc/moos8")
         (modifier "ROT270"))
-      (position 485 448 0))
+      (position 485 449 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -676,19 +670,19 @@
       (surface 
         (image "groundpieces/transparent/misc/weed2")
         (modifier "ROT0"))
-      (position 356 579 0))
+      (position 348 585 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/misc/weed2")
         (modifier "ROT0FLIP"))
-      (position 356 491 0))
+      (position 356 495 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/misc/weed2")
         (modifier "ROT0"))
-      (position 355 403 0))
+      (position 358 402 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -916,13 +910,13 @@
       (surface 
         (image "groundpieces/transparent/misc/moos4")
         (modifier "ROT0"))
-      (position 800 283 0))
+      (position 798 278 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/misc/moos6")
         (modifier "ROT0"))
-      (position 789 273 0))
+      (position 875 318 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -952,6 +946,12 @@
       (surface 
         (image "groundpieces/transparent/misc/moos1")
         (modifier "ROT0"))
-      (position 556 326 0))))
+      (position 556 326 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 1116 669 0))))
 
 ;; EOF ;;
