@@ -15,13 +15,13 @@
     (comment "")
     (music "none")
     (actions 
-      (basher 2)
+      (basher 1)
       (blocker 10)
-      (bridger 20)
-      (climber 2)
+      (bridger 7)
+      (climber 1)
       (floater 20)
       (jumper 50)
-      (miner 2))
+      (miner 1))
     (levelsize 1500 900))
   (objects 
     (groundpiece 
