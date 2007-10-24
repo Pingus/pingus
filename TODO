@@ -93,6 +93,8 @@ Roadmap for Pingus 0.7.2
 Important:
 ==========
 
+- bridge tile isn't flipped in bridger 
+
 - Levels: All levels lack name and description
 - check all entrances are properly done
 halloween1-grumbel.pingus - gfx test only, not playable
@@ -103,7 +105,14 @@ halloween5-grumbel.pingus - join-jump - not playable
 halloween6-grumbel.pingus - jump high - finished - needs testing
 halloween7-grumbel.pingus - rescue - finished - needs testing - number of pingus wrong
 
-- bridge tile isn't flipped in bridger 
+- jumper dies sometimes in data/levels/tutorial/snow11-grumbel.scm when hitting the ground
+
+- fix pt_BR.po support, currently pt.po is loaded instead
+
+- implement option menu
+
+Meduim Important:
+=================
 
 - Regenerate Courier fonts for latin-1/2/9
 
@@ -166,8 +175,6 @@ Font: datadir://images/fonts/courier_small-iso-8859-9.png
 - rework command line parsing so that it actually works properly and
   doesn't depend so much on the order (setting datadir causes trouble
   with translation, since translation need datadir to work)
-
-- jumper dies sometimes in data/levels/tutorial/snow11-grumbel.scm when hitting the ground
 
 - parallax scrolling is funky where background tiles are small. When
   scrolling right, the leftmost column of tiles gets overlapped by the
@@ -235,7 +242,10 @@ Important:
 
 - drag&drop is behind minimap
 
-- fix pt_BR.po support, currently pt.po is loaded instead
+- shrinking the editor window to much causes a crash (limit size as temporary fix)
+
+Medium Important:
+=================
 
 - implement proper tmpfile Support (save tmp levels to ~/.pingus/tmp/
   for backup purpose in case of editor crash or so)
@@ -251,8 +261,6 @@ Important:
 - Dialogs: Editor Properties: user name and email
 
 - show an error message if save fails
-
-- shrinking the editor window to much causes a crash
 
 Less Important:
 ===============
