@@ -21,10 +21,43 @@
       (bridger 5)
       (climber 5)
       (floater 5)
-      (jumper 20)
+      (jumper 10)
       (miner 3))
     (levelsize 1500 900))
   (objects 
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground6")
+        (modifier "ROT0"))
+      (position 777 727 0))
+    (surface-background 
+      (surface 
+        (image "textures/cyanspace")
+        (modifier "ROT0"))
+      (position -302 -272 -1000)
+      (color 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (hotspot 
+      (surface 
+        (image "hotspots/signposts/danger")
+        (modifier "ROT0"))
+      (position 972 279 -100)
+      (speed 0)
+      (parallax 0))
+    (liquid 
+      (surface 
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position -44 818 -100)
+      (speed 0)
+      (repeat 100))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -121,33 +154,6 @@
         (image "groundpieces/ground/halloween/ground2")
         (modifier "ROT0"))
       (position 791 188 0))
-    (surface-background 
-      (surface 
-        (image "textures/cyanspace")
-        (modifier "ROT0"))
-      (position -302 -272 -1000)
-      (color 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (hotspot 
-      (surface 
-        (image "hotspots/signposts/danger")
-        (modifier "ROT0"))
-      (position 972 279 -100)
-      (speed 0)
-      (parallax 0))
-    (liquid 
-      (surface 
-        (image "liquids/slime")
-        (modifier "ROT0"))
-      (position -44 816 -100)
-      (speed 0)
-      (repeat 100))
     (groundpiece 
       (type "ground")
       (surface 
@@ -412,18 +418,6 @@
         (image "groundpieces/ground/halloween/ground6")
         (modifier "ROT0"))
       (position 871 711 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground5")
-        (modifier "ROT0"))
-      (position 855 702 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground5")
-        (modifier "ROT0"))
-      (position 801 752 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -1025,12 +1019,6 @@
         (modifier "ROT0"))
       (position 802 337 0))
     (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground2")
-        (modifier "ROT0"))
-      (position 755 799 0))
-    (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/misc/moos6")
@@ -1168,12 +1156,6 @@
         (image "groundpieces/solid/misc/metalplate_large")
         (modifier "ROT0"))
       (position 771 571 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/misc/metalplate_vert")
-        (modifier "ROT0"))
-      (position 813 698 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -1378,26 +1360,6 @@
         (image "groundpieces/transparent/misc/moos4")
         (modifier "ROT0"))
       (position 561 429 0))
-    (hotspot 
-      (surface 
-        (image "entrances/halloween")
-        (modifier "ROT0"))
-      (position 650 516 100)
-      (speed 0)
-      (parallax 0))
-    (liquid 
-      (surface 
-        (image "liquids/slime")
-        (modifier "ROT0"))
-      (position -9 838 100)
-      (speed 0)
-      (repeat 100))
-    (entrance 
-      (type "generic")
-      (position 693 570 101)
-      (owner-id 0)
-      (direction "left")
-      (release-rate 200))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -1470,11 +1432,49 @@
         (image "groundpieces/transparent/misc/moos8")
         (modifier "ROT0"))
       (position 775 563 0))
+    (hotspot 
+      (surface 
+        (image "entrances/halloween")
+        (modifier "ROT0"))
+      (position 650 516 100)
+      (speed 0)
+      (parallax 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 771 732 0))
+    (liquid 
+      (surface 
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position -11 841 100)
+      (speed 0)
+      (repeat 100))
+    (entrance 
+      (type "generic")
+      (position 693 570 101)
+      (owner-id 0)
+      (direction "left")
+      (release-rate 200))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 813 698 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/misc/moos5")
         (modifier "ROT0"))
-      (position 804 715 0))))
+      (position 805 715 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 791 760 0))))
 
 ;; EOF ;;
