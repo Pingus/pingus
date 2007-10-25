@@ -22,6 +22,13 @@
       (miner 3))
     (levelsize 1700 1000))
   (objects 
+    (hotspot 
+      (surface 
+        (image "entrances/halloween")
+        (modifier "ROT0"))
+      (position 1263 254 100)
+      (speed 0)
+      (parallax 0))
     (surface-background 
       (surface 
         (image "textures/cyanspace")
@@ -193,10 +200,10 @@
       (position 1039 574 0))
     (entrance 
       (type "generic")
-      (position 1307 309 0)
+      (position 1307 309 110)
       (owner-id 0)
       (direction "left")
-      (release-rate 1000))
+      (release-rate 150))
     (groundpiece 
       (type "ground")
       (surface 
@@ -413,26 +420,6 @@
         (image "groundpieces/ground/halloween/ground6")
         (modifier "ROT90FLIP"))
       (position 605 626 0))
-    (hotspot 
-      (surface 
-        (image "entrances/halloween")
-        (modifier "ROT0"))
-      (position 1263 254 100)
-      (speed 0)
-      (parallax 0))
-    (hotspot 
-      (surface 
-        (image "entrances/halloween")
-        (modifier "ROT0"))
-      (position 316 229 100)
-      (speed 0)
-      (parallax 0))
-    (entrance 
-      (type "generic")
-      (position 360 283 110)
-      (owner-id 0)
-      (direction "right")
-      (release-rate 1000))
     (groundpiece 
       (type "ground")
       (surface 
@@ -498,6 +485,19 @@
       (surface 
         (image "groundpieces/ground/halloween/ground1")
         (modifier "ROT0"))
-      (position 962 -44 0))))
+      (position 962 -44 0))
+    (hotspot 
+      (surface 
+        (image "entrances/halloween")
+        (modifier "ROT0"))
+      (position 316 229 100)
+      (speed 0)
+      (parallax 0))
+    (entrance 
+      (type "generic")
+      (position 360 283 110)
+      (owner-id 0)
+      (direction "right")
+      (release-rate 150))))
 
 ;; EOF ;;
