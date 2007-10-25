@@ -78,7 +78,7 @@ MenuButton::draw (DrawingContext& gc)
 {
   if (mouse_over) // pressed
     {
-      gc.draw(surface_p,Vector3f(x_pos, y_pos));
+      gc.draw(surface_p,Vector2i(x_pos, y_pos));
       gc.print_center(font_large, x_pos, y_pos - 28, text);
       // poor mans bold formating
       gc.print_center(font_large, x_pos-1, y_pos - 28 - 1, text);

@@ -184,6 +184,10 @@
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
+			<File
+				RelativePath=".\src\win32\pingus.rc"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Source Files"
@@ -196,6 +200,14 @@
 			</File>
 			<File
 				RelativePath=".\src\action_holder.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\addon_menu.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\addon_menu.hpp"
 				>
 			</File>
 			<File
@@ -531,6 +543,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\level_menu.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\level_menu.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\line_iterator.cpp"
 				>
 			</File>
@@ -548,6 +568,14 @@
 			</File>
 			<File
 				RelativePath=".\src\mover.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\option_menu.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\option_menu.hpp"
 				>
 			</File>
 			<File
@@ -1174,6 +1202,58 @@
 				Name="display"
 				>
 				<File
+					RelativePath=".\src\display\cursor.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\src\display\cursor.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\display\display.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\src\display\display.hpp"
+					>
+				</File>
+				<File
 					RelativePath=".\src\display\drawing_context.cpp"
 					>
 				</File>
@@ -1484,26 +1564,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\gui\cursor.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\gui\cursor.hpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\gui\display.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\gui\display.hpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\gui\game_delta.hpp"
-					>
-				</File>
-				<File
 					RelativePath=".\src\gui\game_delta_recorder.hpp"
 					>
 				</File>
@@ -1524,14 +1584,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\gui\gui_screen.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\gui\gui_screen.hpp"
-					>
-				</File>
-				<File
 					RelativePath=".\src\gui\input_box.cpp"
 					>
 				</File>
@@ -1541,42 +1593,6 @@
 				</File>
 				<File
 					RelativePath=".\src\gui\rect_component.hpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\gui\root_gui_manager.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\gui\root_gui_manager.hpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\gui\screen.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\gui\screen.hpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\gui\screen_manager.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\gui\screen_manager.hpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\gui\screen_manager_impl.hpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\gui\screen_ptr.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\gui\screen_ptr.hpp"
 					>
 				</File>
 				<File
@@ -2290,15 +2306,131 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\win32\pingus.rc"
-					>
-				</File>
-				<File
 					RelativePath=".\src\win32\resource.h"
 					>
 				</File>
 				<File
 					RelativePath=".\src\win32\uce_dirent.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="screen"
+				>
+				<File
+					RelativePath=".\src\screen\game_delta.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\screen\gui_screen.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\src\screen\gui_screen.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\screen\input_debug_screen.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\screen\screen.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\src\screen\screen.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\screen\screen_manager.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\src\screen\screen_manager.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\screen\screen_manager_impl.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\screen\screen_ptr.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\src\screen\screen_ptr.hpp"
 					>
 				</File>
 			</Filter>

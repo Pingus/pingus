@@ -69,7 +69,7 @@ void
 LevelMenu::draw_background(DrawingContext& gc)
 {
   // gc.draw_fillrect(Rect(100, 100, 400, 400), Color(255, 0, 0));
-  gc.draw(background, gc.get_width()/2 - background.get_width()/2, gc.get_height()/2 - background.get_height()/2);
+  gc.draw(background, Vector2i(gc.get_width()/2 - background.get_width()/2, gc.get_height()/2 - background.get_height()/2));
 
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, 90, "Contrib Level Menu");
 

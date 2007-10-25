@@ -55,7 +55,7 @@ void
 OptionMenu::draw_background(DrawingContext& gc)
 {
   // gc.draw_fillrect(Rect(100, 100, 400, 400), Color(255, 0, 0));
-  gc.draw(background, gc.get_width()/2 - background.get_width()/2, gc.get_height()/2 - background.get_height()/2);
+  gc.draw(background, Vector2i(gc.get_width()/2 - background.get_width()/2, gc.get_height()/2 - background.get_height()/2));
 
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, 90, "Option Menu");
   
@@ -92,7 +92,7 @@ OptionMenu::draw_background(DrawingContext& gc)
 
 
   gc.print_center(Fonts::chalk_normal, gc.get_width()/2 + 225 + 30, gc.get_height()/2 + 125 - 20, _("Close"));
-  gc.draw(ok_button, gc.get_width()/2 + 225, gc.get_height()/2 + 125);
+  gc.draw(ok_button, Vector2i(gc.get_width()/2 + 225, gc.get_height()/2 + 125));
 
   gc.print_center(Fonts::chalk_normal, gc.get_width()/2, gc.get_height()/2 + 160, "Reset to Defaults [ ]");
   gc.print_left(Fonts::chalk_normal, gc.get_width()/2 - 280, gc.get_height()/2 + 160, "Save [ ]");
