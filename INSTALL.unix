@@ -17,6 +17,18 @@ To compile Pingus you need:
 In most cases you will find those in your distribution and there
 shouln't be a need to compile them manually.
 
+On Ubuntu you can install them by typing: 
+
+ % sudo apt-get install \
+     scons \
+     g++ \
+     libpng12-dev \
+     libsdl-image1.2-dev \
+     libsdl-mixer1.2-dev \
+     libsdl1.2-dev \
+     libboost-signals-dev \
+     libboost-dev
+
 
 Compilation:
 ------------
