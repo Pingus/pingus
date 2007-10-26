@@ -65,11 +65,14 @@ Savegame::Savegame(FileReader reader)
   read_sexpr(reader);
 }
 
-Savegame::Savegame(std::string arg_levelname, S_Status arg_status, int arg_time, int arg_saved_pingus)
-  : levelname(arg_levelname),
-    status(arg_status),
-    needed_time(arg_time),
-    saved_pingus(arg_saved_pingus)
+Savegame::Savegame(const std::string& filename_, 
+                   S_Status status_, 
+                   int      time_,
+                   int      saved_pingus_)
+  : filename(filename_),
+    status(status_),
+    needed_time(time_),
+    saved_pingus(saved_pingus_)
 {
 }
 
@@ -77,9 +80,9 @@ void
 Savegame::write_sexpr(SExprFileWriter& writer)
 {
   writer.begin_section("level");
-  writer.write_string ("name", levelname);
-  writer.write_enum   ("status", status, status_to_string);
-  writer.write_int    ("time", needed_time);
+  writer.write_string ("filename", filename);
+  writer.write_enum   ("status",   status, status_to_string);
+  writer.write_int    ("time",     needed_time);
   writer.write_int    ("saved-pingus", saved_pingus);
   writer.end_section();
 }
@@ -87,11 +90,10 @@ Savegame::write_sexpr(SExprFileWriter& writer)
 void
 Savegame::read_sexpr(FileReader reader)
 {
-  reader.read_string ("name", levelname);
-  reader.read_enum   ("status", status, string_to_status);
-  reader.read_int    ("time", needed_time);
+  reader.read_string ("filename", filename);
+  reader.read_enum   ("status",   status, string_to_status);
+  reader.read_int    ("time",     needed_time);
   reader.read_int    ("saved-pingus", saved_pingus);
 }
-
 
 /* EOF */

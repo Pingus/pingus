@@ -36,7 +36,6 @@ private:
   Sprite highlight_green_dot_sur;
   Sprite highlight_red_dot_sur;
 
-  std::string levelname;
   PingusLevel plf;
 
 public:

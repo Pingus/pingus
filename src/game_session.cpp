@@ -116,16 +116,10 @@ PingusGameSession::update (const GameDelta& delta)
       result.used_time = server->get_time();
 
       { // Write the savegame
-        Savegame savegame;
-        savegame.levelname    = result.plf.get_levelname();
-        savegame.needed_time  = result.used_time;
-        savegame.saved_pingus = result.saved;
-
-        if (result.saved >= result.needed)
-          savegame.status     = Savegame::FINISHED;
-        else
-          savegame.status     = Savegame::ACCESSIBLE;
-
+        Savegame savegame(result.plf.get_resname(),
+                          (result.saved >= result.needed) ? Savegame::FINISHED : Savegame::ACCESSIBLE,
+                          result.used_time,
+                          result.saved);
         SavegameManager::instance()->store(savegame);
       }
 

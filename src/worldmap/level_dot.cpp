@@ -50,7 +50,6 @@ LevelDot::LevelDot(FileReader reader)
   reader.read_string("levelname", resname); 
 
   plf = PLFResMgr::load_plf(resname);
-  levelname = plf.get_levelname();
 }
 
 void
@@ -67,12 +66,12 @@ LevelDot::draw(DrawingContext& gc)
   if (sqrt(x*x + y*y) < 30.0f)
     highlight = true;
 
-  Savegame* savegame = SavegameManager::instance()->get(levelname);
+  Savegame* savegame = SavegameManager::instance()->get(plf.get_resname());
   if (savegame
-      && (savegame->status == Savegame::FINISHED
-          || savegame->status == Savegame::ACCESSIBLE))
+      && (savegame->get_status() == Savegame::FINISHED
+          || savegame->get_status() == Savegame::ACCESSIBLE))
     {
-      if (savegame->status == Savegame::FINISHED)
+      if (savegame->get_status() == Savegame::FINISHED)
         if (highlight)
           {
             gc.draw (highlight_green_dot_sur, pos);
@@ -110,8 +109,8 @@ LevelDot::on_click()
 bool
 LevelDot::finished()
 {
-  Savegame* savegame = SavegameManager::instance()->get(levelname);
-  if (savegame && savegame->status == Savegame::FINISHED)
+  Savegame* savegame = SavegameManager::instance()->get(plf.get_resname());
+  if (savegame && savegame->get_status() == Savegame::FINISHED)
     return true;
   else
     return false;
@@ -120,8 +119,8 @@ LevelDot::finished()
 bool
 LevelDot::accessible()
 {
-  Savegame* savegame = SavegameManager::instance()->get(levelname);
-  if (savegame && savegame->status != Savegame::NONE)
+  Savegame* savegame = SavegameManager::instance()->get(plf.get_resname());
+  if (savegame && savegame->get_status() != Savegame::NONE)
     return true;
   else
     return false;
@@ -176,12 +175,13 @@ LevelDot::draw_hover(DrawingContext& gc)
 void
 LevelDot::unlock()
 {
-  Savegame* savegame = SavegameManager::instance()->get(levelname);
-  if (savegame == 0 || savegame->status == Savegame::NONE)
+  Savegame* savegame = SavegameManager::instance()->get(plf.get_resname());
+  if (savegame == 0 || savegame->get_status() == Savegame::NONE)
     {
-      Savegame savegame;
-      savegame.status = Savegame::ACCESSIBLE;
-      savegame.levelname = levelname;
+      Savegame savegame(plf.get_resname(),
+                        Savegame::ACCESSIBLE,
+                        0,
+                        0);
       SavegameManager::instance()->store(savegame);
     }
   else

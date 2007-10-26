@@ -82,8 +82,8 @@
 					ostr << difficulty;
 					file_info = _("Difficulty: ") + ostr.str();
 					file_item.is_accessible = true;
-					Savegame* sg = SavegameManager::instance()->get(file_item.friendly_name);
-					if (sg && sg->status == Savegame::FINISHED) {
+					Savegame* sg = SavegameManager::instance()->get(file_item.friendly_name); // FIXME: doesn't won't work
+					if (sg && sg->get_status() == Savegame::FINISHED) {
 						status = _("Finished!");
 						file_item.is_finished = true;
 					}

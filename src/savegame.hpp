@@ -30,17 +30,14 @@ class SExprFileWriter;
     level */
 class Savegame
 {
-private:
 public:
   enum S_Status { FINISHED,   // level is successfully finished
                   ACCESSIBLE, // level is accessible and can be played
                   NONE };     // level is not finished and cannot be accessed
 
-  static std::string status_to_string(S_Status s);
-  static S_Status string_to_status (std::string s);
-
-  std::string levelname;
-  S_Status status;
+private:
+  std::string filename;
+  S_Status    status;
 
   /** Time needed to finish the level, only valid if status == FINISHED */
   int needed_time;
@@ -48,13 +45,25 @@ public:
   /** Number of Pingus that where saved while playing the level */
   int saved_pingus;
 
+public:
+  static std::string status_to_string(S_Status s);
+  static S_Status string_to_status (std::string s);
+
   Savegame();
   ~Savegame() { }
   Savegame(FileReader node);
-  Savegame(std::string arg_levelname, S_Status arg_status, int arg_time, int arg_saved_pingus);
+  Savegame(const std::string& filename, 
+           S_Status arg_status, int arg_time, int arg_saved_pingus);
 
   void read_sexpr(FileReader node);
   void write_sexpr(SExprFileWriter& xml);
+
+  std::string get_filename() const { return filename; }
+
+  S_Status get_status() const { return status; }
+
+  int get_needed_time() const  { return needed_time;  }
+  int get_saved_pingus() const { return saved_pingus; }
 };
 
 

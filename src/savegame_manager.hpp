@@ -29,21 +29,26 @@ class SavegameManager
 {
 private:
   static SavegameManager* instance_;
-  typedef std::map<std::string, Savegame*> SavegameTable;
+  typedef std::vector<Savegame*> SavegameTable;
 
-  std::string filename;
+  std::string   filename;
   SavegameTable savegames;
+
+  SavegameTable::iterator find(const std::string& filename);
+
 public:
   static SavegameManager* instance();
   static void deinit();
   SavegameManager(const std::string& filename);
   ~SavegameManager();
 
-  Savegame* get(const std::string& levelname);
+  Savegame* get(const std::string& filename);
+                
   void store(Savegame&);
 
   /** Write the current savegames down to file */
   void flush();
+
 private:
   SavegameManager (const SavegameManager&);
   SavegameManager& operator= (const SavegameManager&);
