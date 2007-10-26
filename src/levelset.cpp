@@ -72,7 +72,7 @@ Levelset::get_description() const
 std::string
 Levelset::get_level(int num) const
 {
-  if (num >= 0 && num < levels.size())
+  if (num >= 0 && num < static_cast<int>(levels.size()))
     return levels[num];
   else
     return "";

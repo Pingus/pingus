@@ -551,6 +551,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\levelset.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\levelset.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\line_iterator.cpp"
 				>
 			</File>
