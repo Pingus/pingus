@@ -146,6 +146,7 @@ pingus_sources = [
 
 'src/line_iterator.cpp',
 'src/level_menu.cpp',
+'src/levelset.cpp',
 
 'src/lisp/getters.cpp',
 'src/lisp/lexer.cpp',
