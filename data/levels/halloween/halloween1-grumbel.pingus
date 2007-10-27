@@ -20,6 +20,32 @@
       (jumper 30))
     (levelsize 1400 950))
   (objects 
+    (surface-background 
+      (surface 
+        (image "textures/cyanspace")
+        (modifier "ROT0"))
+      (position -224 -254 -1000)
+      (color 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (exit 
+      (surface 
+        (image "exits/halloween")
+        (modifier "ROT0"))
+      (position 1140 398 -100)
+      (owner-id 0))
+    (liquid 
+      (surface 
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position -33 865 -100)
+      (speed 0)
+      (repeat 25))
     (groundpiece 
       (type "ground")
       (surface 
@@ -140,25 +166,6 @@
         (image "groundpieces/ground/halloween/ground4")
         (modifier "ROT180FLIP"))
       (position 659 396 0))
-    (surface-background 
-      (surface 
-        (image "textures/cyanspace")
-        (modifier "ROT0"))
-      (position -224 -254 -1000)
-      (color 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (exit 
-      (surface 
-        (image "exits/halloween")
-        (modifier "ROT0"))
-      (position 1140 398 -100)
-      (owner-id 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -261,12 +268,6 @@
         (image "groundpieces/transparent/misc/moos8")
         (modifier "ROT0"))
       (position 128 507 0))
-    (entrance 
-      (type "generic")
-      (position 938 119 110)
-      (owner-id 0)
-      (direction "left")
-      (release-rate 400))
     (groundpiece 
       (type "ground")
       (surface 
@@ -609,33 +610,12 @@
         (image "groundpieces/transparent/misc/moos6")
         (modifier "ROT0"))
       (position 995 604 0))
-    (hotspot 
-      (surface 
-        (image "entrances/halloween")
-        (modifier "ROT0"))
-      (position 893 66 100)
-      (speed 0)
-      (parallax 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/halloween/hat1")
         (modifier "ROT0"))
       (position 621 354 0))
-    (liquid 
-      (surface 
-        (image "liquids/slime")
-        (modifier "ROT0"))
-      (position -3 891 100)
-      (speed 0)
-      (repeat 25))
-    (liquid 
-      (surface 
-        (image "liquids/slime")
-        (modifier "ROT0"))
-      (position -33 865 -100)
-      (speed 0)
-      (repeat 25))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -643,28 +623,54 @@
         (modifier "ROT0"))
       (position 901 760 0))
     (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/misc/metalplate_small")
-        (modifier "ROT0"))
-      (position 892 230 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/misc/metalplate_vert")
-        (modifier "ROT0"))
-      (position 924 198 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/misc/metalplate_small")
-        (modifier "ROT0"))
-      (position 909 214 0))
-    (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/ground2")
         (modifier "ROT0"))
-      (position 345 524 0))))
+      (position 345 524 0))
+    (hotspot 
+      (surface 
+        (image "entrances/halloween")
+        (modifier "ROT0"))
+      (position 893 66 100)
+      (speed 0)
+      (parallax 0))
+    (liquid 
+      (surface 
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position -3 891 100)
+      (speed 0)
+      (repeat 25))
+    (entrance 
+      (type "generic")
+      (position 938 119 110)
+      (owner-id 0)
+      (direction "left")
+      (release-rate 400))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground4")
+        (modifier "ROT180FLIP"))
+      (position 894 213 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos6")
+        (modifier "ROT0"))
+      (position 896 216 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos4")
+        (modifier "ROT0"))
+      (position 953 213 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos5")
+        (modifier "ROT0"))
+      (position 911 218 0))))
 
 ;; EOF ;;
