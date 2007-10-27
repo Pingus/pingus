@@ -46,8 +46,9 @@ public:
 
   void set ()
   {
-    last_time = SDL_GetTicks();
-    absolute_time += last_time;
+    unsigned int ticks = SDL_GetTicks();
+    absolute_time += ticks - last_time;
+    last_time = ticks;
   }
 
   float get () const
