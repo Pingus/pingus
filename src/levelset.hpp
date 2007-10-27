@@ -24,6 +24,7 @@
 #include <vector>
 #include "pingus_level.hpp"
 #include "pathname.hpp"
+#include "sprite.hpp"
 
 /** */
 class Levelset
@@ -39,6 +40,8 @@ public:
 private:
   std::string title;
   std::string description;
+  Sprite image;
+
   std::vector<Level*> levels;
 
 public:
@@ -47,6 +50,8 @@ public:
 
   std::string get_title() const;
   std::string get_description() const;
+  Sprite get_image() const;
+
   Level* get_level(int num) const;
   int get_level_count() const;
 

@@ -33,6 +33,7 @@ MenuButton::MenuButton(PingusMenu* menu_,
   : menu(menu_)
 {
   surface_p = Resource::load_sprite("core/menu/menuitem");
+  highlight = Resource::load_sprite("core/menu/menuitem_highlight");
 
   text = text_;
   desc  = desc_;
@@ -79,12 +80,8 @@ MenuButton::draw (DrawingContext& gc)
   if (mouse_over) // pressed
     {
       gc.draw(surface_p,Vector2i(x_pos, y_pos));
+      gc.draw(highlight, Vector2i(x_pos, y_pos));
       gc.print_center(font_large, x_pos, y_pos - 28, text);
-      // poor mans bold formating
-      gc.print_center(font_large, x_pos-1, y_pos - 28 - 1, text);
-      gc.print_center(font_large, x_pos+1, y_pos - 28 + 1, text);
-      gc.print_center(font_large, x_pos+1, y_pos - 28 - 1, text);
-      gc.print_center(font_large, x_pos-1, y_pos - 28 + 1, text);
     }
   else
     {

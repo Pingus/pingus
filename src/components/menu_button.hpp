@@ -35,6 +35,7 @@ class MenuButton : public GUI::Component
 protected:
   PingusMenu* menu;
   Sprite surface_p;
+  Sprite highlight;
   Font   font;
   Font   font_large;
 

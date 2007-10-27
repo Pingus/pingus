@@ -23,6 +23,7 @@
 #include "levelset.hpp"
 #include "plf_res_mgr.hpp"
 #include "savegame_manager.hpp"
+#include "resource.hpp"
 
 Levelset::Levelset(const Pathname& pathname)
 {
@@ -35,6 +36,10 @@ Levelset::Levelset(const Pathname& pathname)
     {
       reader.read_string("title",       title);
       reader.read_string("description", description);
+      std::string image;
+      if (reader.read_string("image", image))
+        this->image = Resource::load_sprite(image);
+
       FileReader level_reader = reader.read_section("levels");
       std::vector<FileReader> sections = level_reader.get_sections();
       for(std::vector<FileReader>::iterator i = sections.begin(); i != sections.end(); ++i)
@@ -42,6 +47,7 @@ Levelset::Levelset(const Pathname& pathname)
           if (i->get_name() == "level")
             {
               Level* level = new Level();
+
               if (i->read_string("filename", level->resname))
                 {
                   level->plf        = PLFResMgr::load_plf(level->resname);
@@ -99,6 +105,12 @@ Levelset::get_completion()  const
 {
   // FIXME: insert savegame magic
   return 0;
+}
+
+Sprite
+Levelset::get_image() const
+{
+  return image;
 }
 
 void

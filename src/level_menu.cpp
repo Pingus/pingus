@@ -80,8 +80,10 @@ public:
         if (*i == current_levelset)
           gc.draw(marker, 0, y - 5);
 
-        gc.print_left(Fonts::chalk_normal, 30, 15 + y, (*i)->get_title());
-        gc.print_left(Fonts::chalk_small,  50, 40 + y, (*i)->get_description());
+        gc.draw((*i)->get_image(), 30, y);
+
+        gc.print_left(Fonts::chalk_normal, 85+30, 15 + y, (*i)->get_title());
+        gc.print_left(Fonts::chalk_small,  85+50, 40 + y, (*i)->get_description());
 
         gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, 15 + y, (boost::format("Completion: %1%%%") % (*i)->get_completion()).str());
         gc.print_right(Fonts::chalk_small,  rect.get_width() - 30, 60 + y, (boost::format("%1% levels") % (*i)->get_level_count()).str());

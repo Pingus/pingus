@@ -1,6 +1,12 @@
 ;; -*- scheme -*-
 ;; core.xml
 (pingus-resources
+ (section (name "levelsets") ;; doesn't really belong here 
+                   (sprite
+                    (name "halloween")
+                    (image-file "../images/levelsets/halloween.png"))
+           )
+
  (section (name "core")
           (section (name "cursors")
                    (sprite
@@ -346,6 +352,11 @@
                     (name "menuitem")
                     (origin "center")
                     (image-file "../images/core/menu/menuitem.png"))
+
+                   (sprite
+                    (name "menuitem_highlight")
+                    (origin "center")
+                    (image-file "../images/core/menu/menuitem_highlight.png"))
 
                    (sprite
                     (name "marker")
