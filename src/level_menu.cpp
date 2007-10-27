@@ -29,6 +29,8 @@
 #include "level_menu.hpp"
 #include "gui/rect_component.hpp"
 #include "gui/gui_manager.hpp"
+#include "game_session.hpp"
+#include "start_screen.hpp"
 
 class LevelsetSelector : public GUI::RectComponent
 {
@@ -125,12 +127,14 @@ private:
   Sprite marker;
   Sprite marker_locked;
   Levelset* levelset;
-
+  int current_level;
+  
 public:
   LevelSelector(LevelMenu* level_menu_, const Rect& rect_) 
     : RectComponent(rect_),
       level_menu(level_menu_),
-      levelset(0)
+      levelset(0),
+      current_level(-1)
   {
     marker        = Resource::load_sprite("core/menu/marker2");
     marker_locked = Resource::load_sprite("core/menu/marker_locked");
@@ -138,26 +142,35 @@ public:
 
   void draw(DrawingContext& gc) 
   {
+    gc.print_center(Fonts::chalk_large, 800/2, 90, _(levelset->get_title()));
+
+    gc.push_modelview();
+    gc.translate(rect.left, rect.top);
+
     if (levelset)
       {
-        gc.print_center(Fonts::chalk_large, 800/2, 90, _(levelset->get_title()));
+        //gc.draw_fillrect(Rect(Vector2i(0,0), Size(rect.get_width(), rect.get_height())),
+        //                 Color(255, 255, 0, 100));
 
-        gc.print_left(Fonts::chalk_normal,  120, 145, "Levelname");
-        gc.print_right(Fonts::chalk_normal, 660, 145, "Completed");
-        int y = 185;
+        gc.print_left(Fonts::chalk_normal,  30, -32, "Levelname");
+        gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, - 32, "Completed");
+
+        int y = 0;
         for(int i = 0; i < levelset->get_level_count(); ++i)
           {
-            if (i == 0)
-              gc.draw(marker, 100, y-4);
+            if (i == current_level)
+              gc.draw(marker, 0, y);
             else if (i > 3)
-              gc.draw(marker_locked, 100, y-4);
+              gc.draw(marker_locked, 0, y);
 
             std::string level = levelset->get_level(i);          
-            gc.print_left(Fonts::chalk_small, 120, y, level);
-            gc.print_right(Fonts::chalk_small, 660, y, "[x]");
+            gc.print_left(Fonts::chalk_small, 30, y+4, level);
+            gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, "[x]");
             y += 32;
           }
       }
+    
+    gc.pop_modelview();
   }
 
   void set_levelset(Levelset* levelset_)
@@ -170,12 +183,20 @@ public:
     x -= rect.left;
     y -= rect.top;
 
-    std::cout << x << " " << y << std::endl;
+    current_level = y / 32;
+    
+    if (current_level < 0 || current_level > levelset->get_level_count())
+      current_level = -1;
   }
 
   void on_primary_button_press (int x, int y)
   {
-    level_menu->set_levelset(0);
+    if (current_level != -1)
+      {
+        PingusLevel level(Pathname("levels/" + levelset->get_level(current_level), Pathname::DATA_PATH));
+        //ScreenManager::instance()->push_screen(new PingusGameSession(level, false), true);
+        ScreenManager::instance()->push_screen(new StartScreen(level), true);
+      }
   }
 
   void update_layout() {}
@@ -188,8 +209,8 @@ LevelMenu::LevelMenu()
   background = Resource::load_sprite("core/menu/filedialog");
   ok_button  = Resource::load_sprite("core/start/ok");
 
-  level_selector    = new LevelSelector(this, Rect(Vector2i(x_pos + 100, y_pos + 140), Size(600, 300)));
   levelset_selector = new LevelsetSelector(this, Rect(Vector2i(x_pos + 100, y_pos + 140), Size(600, 300)));
+  level_selector    = new LevelSelector(this, Rect(Vector2i(x_pos + 100, y_pos + 160), Size(600, 300)));
 
   gui_manager->add(levelset_selector, true);
   gui_manager->add(level_selector,    true);

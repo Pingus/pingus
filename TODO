@@ -95,6 +95,8 @@ Roadmap for Pingus 0.7.2
 Important:
 ==========
 
+- start_pos is missing in editor
+
 - Water Glitch: the water on the minimap changes color after the colmap is altered or the first time
 
 - Levels: All levels lack name and description
