@@ -24,6 +24,9 @@
 #include "sprite.hpp"
 #include "screen/gui_screen.hpp"
 
+class LevelSelector;
+class LevelsetSelector;
+
 /** */
 class LevelMenu : public GUIScreen
 {
@@ -33,24 +36,19 @@ private:
 
   Sprite background;
   Sprite ok_button;
-  Sprite marker;
-  Sprite marker_small;
-  Sprite marker_locked;
 
-  typedef std::vector<Levelset*> Levelsets;
-  Levelsets levelsets;
-
-  Levelset* current_levelset;
+  LevelSelector* level_selector;
+  LevelsetSelector* levelset_selector;
 
 public:
   LevelMenu();
   ~LevelMenu();
   
   void draw_background (DrawingContext& gc);
-  void update (const GameDelta& delta);
   void on_escape_press ();
-  void on_pointer_move (int x, int y);
-  void on_pause_press();
+  
+  void set_levelset(Levelset* levelset);
+
 private:
   LevelMenu (const LevelMenu&);
   LevelMenu& operator= (const LevelMenu&);
