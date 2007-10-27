@@ -29,14 +29,17 @@
 class DeltaManager
 {
 private:
-  unsigned int absolute_time;
-  unsigned int last_time;
+  unsigned int absolute_time; ///< time in milliseconds since the start of DeltaManager
+  unsigned int last_time; ///< number of ticks when we were last set
 public:
   DeltaManager ()
     : absolute_time(0),
       last_time (SDL_GetTicks())
   {}
 
+  /** @brief get the current delta and start a new one
+   * @return the current delta in seconds
+   */
   float getset ()
   {
     float ret = get ();
@@ -44,6 +47,7 @@ public:
     return ret;
   }
 
+  /** @brief set the start of the delta */
   void set ()
   {
     unsigned int ticks = SDL_GetTicks();
@@ -51,6 +55,7 @@ public:
     last_time = ticks;
   }
 
+  /** @return the current delta in seconds */
   float get () const
   {
     unsigned int t = SDL_GetTicks();
