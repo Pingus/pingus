@@ -24,6 +24,7 @@
 #include "debug.hpp"
 #include "globals.hpp"
 #include "sound/sound.hpp"
+#include "level_menu.hpp"
 #include "stat_manager.hpp"
 #include "start_screen.hpp"
 #include "story_screen.hpp"
@@ -161,8 +162,8 @@ PingusMenu::~PingusMenu()
   delete start_button;
   delete quit_button;
   delete editor_button;
-#ifdef NEW_MENU
   delete contrib_button;
+#ifdef NEW_MENU
   delete story_button;
   delete multiplayer_button;
 #endif
@@ -171,7 +172,7 @@ PingusMenu::~PingusMenu()
 void
 PingusMenu::do_quit()
 {
-  get_manager ()->show_exit_menu ();
+  get_manager()->show_exit_menu ();
 }
 
 void
@@ -290,11 +291,11 @@ PingusMenu::on_click(MenuButton* button)
     {
       do_edit();
     }
-#ifdef NEW_MENU
   else if (button == contrib_button)
     {
-      setup_contrib_menu();
+      ScreenManager::instance()->push_screen(new LevelMenu(), true);
     }
+#ifdef NEW_MENU
   else if (button == story_button)
     {
       setup_worldmap_menu();

@@ -39,10 +39,13 @@ Levelset::Levelset(const Pathname& pathname)
         {
           if (i->get_name() == "level")
             {
-              std::string filename;
-              if (i->read_string("filename", filename))
+              Level level;
+              level.accessible = false;
+              level.finished   = false;
+
+              if (i->read_string("filename", level.filename))
                 {
-                  levels.push_back(filename);
+                  levels.push_back(level);
                 }
               else
                 {
@@ -51,6 +54,9 @@ Levelset::Levelset(const Pathname& pathname)
             }
         }
     }
+
+  if (!levels.empty())
+    levels.front().accessible = true;
 }
 
 Levelset::~Levelset()
@@ -72,8 +78,8 @@ Levelset::get_description() const
 std::string
 Levelset::get_level(int num) const
 {
-  if (num >= 0 && num < static_cast<int>(levels.size()))
-    return levels[num];
+  if (num >= 0 && num < int(levels.size()))
+    return levels[num].filename;
   else
     return "";
 }
@@ -82,6 +88,13 @@ int
 Levelset::get_level_count() const
 {
   return levels.size();
+}
+
+int
+Levelset::get_completion()  const
+{
+  // FIXME: insert savegame magic
+  return 0;
 }
 
 /* EOF */

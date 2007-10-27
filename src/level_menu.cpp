@@ -26,36 +26,21 @@
 #include "option_menu.hpp"
 #include "level_menu.hpp"
 
-
 LevelMenu::LevelMenu()
 {
   background = Resource::load_sprite("core/menu/filedialog");
   ok_button  = Resource::load_sprite("core/start/ok");
   marker     = Resource::load_sprite("core/menu/marker");
 
-  levelsets.push_back(LevelsetEntry("Desert Set 1",
-                                    "20 Levels in a desert setting of easy difficulty\n"
-                                    "Author: John Foo <foo@example.com>",
-                                    78, 20));
-
-  levelsets.push_back(LevelsetEntry("Random Set 2",
-                                    "10 Levels in a random setting of easy difficulty\n"
-                                    "Author: John Foo <foo@example.com>",
-                                    48, 10));
-
-  levelsets.push_back(LevelsetEntry("Unsorted Levels",
-                                    "Levels that aren't group in any levelset\n"
-                                    "Created by lots of random people",
-                                    48, 10));
-
-  levelsets.push_back(LevelsetEntry("User Created Levels",
-                                    "Levels created by you\n"
-                                    "Use the editor to create them if you haven't already",
-                                    48, 10));
+  levelsets.push_back(new Levelset(Pathname("levelsets/halloween.levelset", Pathname::DATA_PATH)));
 }
 
 LevelMenu::~LevelMenu()
 {
+  for(Levelsets::iterator i = levelsets.begin(); i != levelsets.end(); ++i)
+    {
+      delete *i;
+    }
 }
 
 void
@@ -76,16 +61,22 @@ LevelMenu::draw_background(DrawingContext& gc)
   int y = 145;
   for(Levelsets::iterator i = levelsets.begin(); i != levelsets.end(); ++i)
     {
-      gc.print_left(Fonts::chalk_normal, 120,  0 + y, i->title);
-      gc.print_left(Fonts::chalk_small,  140, 25 + y, i->description);
+      gc.print_left(Fonts::chalk_normal, 120,  0 + y, (*i)->get_title());
+      gc.print_left(Fonts::chalk_small,  140, 25 + y, (*i)->get_description());
 
-      gc.print_right(Fonts::chalk_normal, 650, 0 + y, (boost::format("Completion: %1%%%") % i->completion).str());
-      gc.print_right(Fonts::chalk_small, 650, 45 + y, (boost::format("%1% levels") % i->number_of_levels).str());
+      gc.print_right(Fonts::chalk_normal, 650, 0 + y, (boost::format("Completion: %1%%%") % (*i)->get_completion()).str());
+      gc.print_right(Fonts::chalk_small, 650, 45 + y, (boost::format("%1% levels") % (*i)->get_level_count()).str());
 
       y += 90;
     }
   gc.draw(marker, 100, 136);
   //gc.draw(ok_button, 610, 145);
+}
+
+void
+LevelMenu::on_pointer_move (int x, int y)
+{
+  
 }
 
 void

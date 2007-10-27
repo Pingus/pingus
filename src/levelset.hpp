@@ -28,9 +28,15 @@
 class Levelset
 {
 private:
+  struct Level {
+    std::string filename;
+    bool accessible;
+    bool finished;
+  };
+
   std::string title;
   std::string description;
-  std::vector<std::string> levels;
+  std::vector<Level> levels;
 
 public:
   Levelset(const Pathname& pathname);
@@ -40,6 +46,9 @@ public:
   std::string get_description() const;
   std::string get_level(int num) const;
   int get_level_count() const;
+
+  /** Return the number of completed levels */
+  int get_completion()  const;
 
 private:
   Levelset (const Levelset&);

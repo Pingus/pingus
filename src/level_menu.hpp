@@ -20,6 +20,7 @@
 #ifndef HEADER_LEVEL_MENU_HPP
 #define HEADER_LEVEL_MENU_HPP
 
+#include "levelset.hpp"
 #include "sprite.hpp"
 #include "screen/gui_screen.hpp"
 
@@ -31,26 +32,7 @@ private:
   Sprite ok_button;
   Sprite marker;
 
-  struct LevelsetEntry
-  {
-    std::string title;
-    std::string description;
-
-    int completion;
-    int number_of_levels;
-
-    LevelsetEntry(const std::string& title,
-                  const std::string& description,
-                  int completion,
-                  int number_of_levels)
-      : title(title),
-        description(description),
-        completion(completion),
-        number_of_levels(number_of_levels)
-    {}
-  };
-
-  typedef std::vector<LevelsetEntry> Levelsets;
+  typedef std::vector<Levelset*> Levelsets;
   Levelsets levelsets;
 
 public:
@@ -60,6 +42,7 @@ public:
   void draw_background (DrawingContext& gc);
   void update (const GameDelta& delta);
   void on_escape_press ();
+  void on_pointer_move (int x, int y);
 
 private:
   LevelMenu (const LevelMenu&);
