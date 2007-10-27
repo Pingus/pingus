@@ -30,12 +30,14 @@
 
 LevelMenu::LevelMenu()
   : x_pos((Display::get_width()  - 800)/2),
-    y_pos((Display::get_height() - 600)/2)
+    y_pos((Display::get_height() - 600)/2),
+    current_levelset(0)
 {
   background = Resource::load_sprite("core/menu/filedialog");
   ok_button  = Resource::load_sprite("core/start/ok");
   marker     = Resource::load_sprite("core/menu/marker");
   marker_small = Resource::load_sprite("core/menu/marker2");
+  marker_locked = Resource::load_sprite("core/menu/marker_locked");
 
   std::string path = Pathname("levelsets", Pathname::DATA_PATH).get_sys_path();
   System::Directory directory = System::opendir(path, "*.levelset");
@@ -69,7 +71,7 @@ LevelMenu::draw_background(DrawingContext& gc)
   // gc.draw_fillrect(Rect(100, 100, 400, 400), Color(255, 0, 0));
   gc.draw(background, Vector2i(400 - background.get_width()/2, 300 - background.get_height()/2));
 
-  if (0)
+  if (!current_levelset)
     {
       gc.print_center(Fonts::chalk_large, 800/2, 90, _("Levelset Menu"));
 
@@ -104,6 +106,8 @@ LevelMenu::draw_background(DrawingContext& gc)
         {
           if (i == 0)
             gc.draw(marker_small, 100, y-4);
+          else if (i > 3)
+            gc.draw(marker_locked, 100, y-4);
 
           std::string level = levelset->get_level(i);          
           gc.print_left(Fonts::chalk_small, 120, y, level);
@@ -118,6 +122,20 @@ void
 LevelMenu::on_pointer_move (int x, int y)
 {
 
+}
+
+void 
+LevelMenu::on_pause_press()
+{
+  std::cout << "Click" << std::endl;
+  if (current_levelset)
+    {
+      current_levelset = 0;
+    }
+  else
+    {
+      current_levelset = levelsets.front();
+    }
 }
 
 void

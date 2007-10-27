@@ -352,6 +352,10 @@
                     (image-file "../images/core/menu/marker.png"))
 
                    (sprite
+                    (name "marker_locked")
+                    (image-file "../images/core/menu/marker_locked.png"))
+
+                   (sprite
                     (name "marker2")
                     (image-file "../images/core/menu/marker2.png"))
 

@@ -35,9 +35,12 @@ private:
   Sprite ok_button;
   Sprite marker;
   Sprite marker_small;
+  Sprite marker_locked;
 
   typedef std::vector<Levelset*> Levelsets;
   Levelsets levelsets;
+
+  Levelset* current_levelset;
 
 public:
   LevelMenu();
@@ -47,7 +50,7 @@ public:
   void update (const GameDelta& delta);
   void on_escape_press ();
   void on_pointer_move (int x, int y);
-
+  void on_pause_press();
 private:
   LevelMenu (const LevelMenu&);
   LevelMenu& operator= (const LevelMenu&);
