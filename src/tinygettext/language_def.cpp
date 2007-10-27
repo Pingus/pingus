@@ -67,6 +67,7 @@ LanguageDef lang_uk("uk", "Ukrainian",         3, plural3_1); // "nplurals=3; pl
 LanguageDef lang_sk("sk", "Slovak",            3, plural3_sk); // "nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;"
 LanguageDef lang_pl("pl", "Polish",            3, plural3_pl); // "nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);
 LanguageDef lang_sl("sl", "Slovenian",         3, plural3_sl); // "nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);"
+LanguageDef lang_sr("sr", "Serbian",           2, plural2_2); // "nplurals=2; plural=n>1;\n"
 //*}
 
 LanguageDef*
@@ -105,6 +106,7 @@ get_language_def(const std::string& name)
   else if (name == "sk") return &lang_sk;
   else if (name == "pl") return &lang_pl;
   else if (name == "sl") return &lang_sl;
+  else if (name == "sr") return &lang_sr;
   else return 0;
 }
 
