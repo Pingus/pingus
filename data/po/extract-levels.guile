@@ -14,6 +14,10 @@
     (pingus-worldmap (intro_story end_story) title)
     (pingus-worldmap (intro_story end_story) pages page text)))
 
+(define levelset-pattern-list
+  '((pingus-levelset title)
+    (pingus-worldmap description)))
+
 (define (escape-string str)
   (regexp-substitute/global #f "\"" str 'pre "\\\"" 'post))
 
@@ -70,6 +74,8 @@
                                  worldmap-pattern-list)
                                 ((string-suffix? ".pingus" file)
                                  level-pattern-list)
+                                ((string-suffix? ".levelset" file)
+                                 levelset-pattern-list)
                                 (else
                                  (error "Unknown file suffix\n"))))
                 (close-port port)))
