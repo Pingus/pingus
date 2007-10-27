@@ -69,43 +69,43 @@ LanguageDef lang_pl("pl", "Polish",            3, plural3_pl); // "nplurals=3; p
 LanguageDef lang_sl("sl", "Slovenian",         3, plural3_sl); // "nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);"
 //*}
 
-LanguageDef&
+LanguageDef*
 get_language_def(const std::string& name)
 {
-  if (name == "hu") return lang_hu;
-  else if (name == "ja") return lang_ja;
-  else if (name == "ko") return lang_ko;
-  else if (name == "tr") return lang_tr;
-  else if (name == "da") return lang_da;
-  else if (name == "nl") return lang_nl;
-  else if (name == "en") return lang_en;
-  else if (name == "fo") return lang_fo;
-  else if (name == "de") return lang_de;
-  else if (name == "nb") return lang_nb;
-  else if (name == "no") return lang_no;
-  else if (name == "nn") return lang_nn;
-  else if (name == "sv") return lang_sv;
-  else if (name == "et") return lang_et;
-  else if (name == "fi") return lang_fi;
-  else if (name == "el") return lang_el;
-  else if (name == "he") return lang_he;
-  else if (name == "it") return lang_it;
-  else if (name == "pt") return lang_pt;
-  else if (name == "es") return lang_es;
-  else if (name == "eo") return lang_eo;
-  else if (name == "fr") return lang_fr;
-  else if (name == "pt_BR") return lang_pt_BR;
-  else if (name == "lv") return lang_lv;
-  else if (name == "ga") return lang_ga;
-  else if (name == "lt") return lang_lt;
-  else if (name == "hr") return lang_hr;
-  else if (name == "cs") return lang_cs;
-  else if (name == "ru") return lang_ru;
-  else if (name == "uk") return lang_uk;
-  else if (name == "sk") return lang_sk;
-  else if (name == "pl") return lang_pl;
-  else if (name == "sl") return lang_sl;
-  else return lang_en; 
+  if (name == "hu") return &lang_hu;
+  else if (name == "ja") return &lang_ja;
+  else if (name == "ko") return &lang_ko;
+  else if (name == "tr") return &lang_tr;
+  else if (name == "da") return &lang_da;
+  else if (name == "nl") return &lang_nl;
+  else if (name == "en") return &lang_en;
+  else if (name == "fo") return &lang_fo;
+  else if (name == "de") return &lang_de;
+  else if (name == "nb") return &lang_nb;
+  else if (name == "no") return &lang_no;
+  else if (name == "nn") return &lang_nn;
+  else if (name == "sv") return &lang_sv;
+  else if (name == "et") return &lang_et;
+  else if (name == "fi") return &lang_fi;
+  else if (name == "el") return &lang_el;
+  else if (name == "he") return &lang_he;
+  else if (name == "it") return &lang_it;
+  else if (name == "pt") return &lang_pt;
+  else if (name == "es") return &lang_es;
+  else if (name == "eo") return &lang_eo;
+  else if (name == "fr") return &lang_fr;
+  else if (name == "pt_BR") return &lang_pt_BR;
+  else if (name == "lv") return &lang_lv;
+  else if (name == "ga") return &lang_ga;
+  else if (name == "lt") return &lang_lt;
+  else if (name == "hr") return &lang_hr;
+  else if (name == "cs") return &lang_cs;
+  else if (name == "ru") return &lang_ru;
+  else if (name == "uk") return &lang_uk;
+  else if (name == "sk") return &lang_sk;
+  else if (name == "pl") return &lang_pl;
+  else if (name == "sl") return &lang_sl;
+  else return 0;
 }
 
 } // namespace TinyGetText 

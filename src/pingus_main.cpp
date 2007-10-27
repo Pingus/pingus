@@ -186,7 +186,7 @@ PingusMain::apply_args()
       std::cout << "========================" << std::endl;
       std::set<std::string> lst = dictionary_manager.get_languages();
       for (std::set<std::string>::iterator i = lst.begin(); i != lst.end(); ++i)
-        std::cout << TinyGetText::get_language_def(*i).name << " (" << *i << ")" << std::endl;
+        std::cout << TinyGetText::get_language_def(*i)->name << " (" << *i << ")" << std::endl;
 
       std::cout << "\nLanguages can be used via:\n\n    pingus --language de\n" << std::endl; 
 
@@ -218,7 +218,7 @@ PingusMain::apply_args()
 
   // Misc
   if (options.language.is_set())
-    dictionary_manager.set_language(options.language.get());
+    dictionary_manager.set_current_dictionary(options.language.get());
 
   if (options.auto_scrolling.is_set())
     auto_scrolling = options.auto_scrolling.get();
@@ -627,7 +627,12 @@ PingusMain::print_greeting_message()
   std::cout << std::endl;
 
   std::cout << "data path:               " << path_manager.get_base_path() << std::endl;
-  std::cout << "language:                " << dictionary_manager.get_dictionary().get_language().name << std::endl;
+  std::cout << "language:                " 
+            << dictionary_manager.get_dictionary().get_language()->name 
+            << " ("
+            << dictionary_manager.get_dictionary().get_language()->code 
+            << ")"
+            << std::endl;
 
   Fonts::encoding = StringUtil::to_lower(dictionary_manager.get_dictionary().get_charset());
   std::cout << "font encoding:           " << Fonts::encoding << std::endl;

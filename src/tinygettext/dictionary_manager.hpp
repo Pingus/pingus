@@ -34,14 +34,15 @@ class DictionaryManager
 private:
   Dictionary empty_dict;
   
-  typedef std::map<std::string, Dictionary> Dictionaries;
+  typedef std::map<LanguageDef*, Dictionary> Dictionaries;
   Dictionaries dictionaries;
   typedef std::vector<std::string> SearchPath;
   SearchPath search_path;
   typedef std::map<std::string, std::string> Aliases;
   Aliases language_aliases;
-  std::string language;
-  Dictionary* current_dict;
+  // The two (de) or five letter (de_DE) language code
+  LanguageDef* language;
+  Dictionary*  current_dict;
   
 public:
   DictionaryManager();
@@ -51,11 +52,11 @@ public:
   Dictionary& get_dictionary()
   { return *current_dict; }
 
-  /** Get dictionary for lang */
-  Dictionary& get_dictionary(const std::string& langspec);
+  /** Get dictionary for the given lang_code */
+  Dictionary& get_dictionary(LanguageDef* lang);
 
   /** Set a language based on a four? letter country code */
-  void set_language(const std::string& langspec);
+  void set_current_dictionary(const std::string& langspec);
 
   /** Define an alias for a language */
   void set_language_alias(const std::string& alias, const std::string& lang);
@@ -68,8 +69,9 @@ public:
 
 private:
   void parseLocaleAliases();
-  /// returns the language part in a language spec (like de_DE.UTF-8 -> de)
-  std::string get_language_from_spec(const std::string& spec);
+
+  // de_DE.ISO-8859-1 -> de_DE, german -> de_DE, etc.
+  LanguageDef* get_canonical_language(const std::string& language);
 };
 
 } // namespace TinyGetText

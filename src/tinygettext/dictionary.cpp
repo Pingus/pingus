@@ -21,13 +21,15 @@
 
 namespace TinyGetText {
 
-Dictionary::Dictionary(const LanguageDef& language_, const std::string& charset_)
-  : language(language_), charset(charset_)
+Dictionary::Dictionary(LanguageDef* language_, const std::string& charset_)
+  : language(language_), 
+    charset(charset_)
 {
 }
 
 Dictionary::Dictionary()
-  : language(lang_en), charset("ISO-8859-1")
+  : language(&lang_en), 
+    charset("ISO-8859-1")
 {
 }
 
@@ -44,7 +46,7 @@ Dictionary::get_charset() const
 }
 
 void
-Dictionary::set_language(const LanguageDef& lang)
+Dictionary::set_language(LanguageDef* lang)
 {
   language = lang;
 }
@@ -57,7 +59,7 @@ Dictionary::translate(const std::string& msgid, const std::string& msgid2, int n
 
   if (i != plural_entries.end() && !msgstrs.empty())
     {
-      int g = language.plural(num);
+      int g = language->plural(num);
       std::map<int, std::string>::iterator j = msgstrs.find(g);
       if (j != msgstrs.end())
         {

@@ -41,19 +41,23 @@ static bool has_suffix(const std::string& lhs, const std::string rhs)
 }
 
 DictionaryManager::DictionaryManager()
-  : empty_dict(lang_en, "ISO-8859-1"),
-    current_dict(&empty_dict)
+  : empty_dict(&lang_en, "ISO-8859-1"),
+    current_dict(&empty_dict),
+    language(&lang_en)
 {
+#ifndef WIN32
   parseLocaleAliases();
+#endif
+
   // setup language from environment vars
   const char* lang = getenv("LC_ALL");
-  if(!lang)
+  if (!lang)
     lang = getenv("LC_MESSAGES");
-  if(!lang)
+  if (!lang)
     lang = getenv("LANG");
   
-  if(lang)
-    set_language(lang);
+  if (lang)
+    set_current_dictionary(lang);
 }
 
 void
@@ -80,23 +84,23 @@ DictionaryManager::parseLocaleAliases()
     }
     while(isspace(c) && !in.eof())
       in.get(c);
-    std::string language;
+    std::string lang;
     while(!isspace(c) && !in.eof()) {
-      language += c;
+      lang += c;
       in.get(c);
     }
 
     if(in.eof())
       break;
-    set_language_alias(alias, language);
+    
+    set_language_alias(alias, lang);
   }
 }
   
 Dictionary&
-DictionaryManager::get_dictionary(const std::string& spec)
+DictionaryManager::get_dictionary(LanguageDef* lang)
 {
-  std::string lang = get_language_from_spec(spec);
-  Dictionaries::iterator i = dictionaries.find(get_language_from_spec(lang));
+  Dictionaries::iterator i = dictionaries.find(lang);
   if (i != dictionaries.end())
     {
       return i->second;
@@ -105,9 +109,9 @@ DictionaryManager::get_dictionary(const std::string& spec)
     {
       Dictionary& dict = dictionaries[lang];
 
-      dict.set_language(get_language_def(lang));
+      dict.set_language(lang);
 
-      for (SearchPath::iterator p = search_path.begin(); p != search_path.end(); ++p)
+      for(SearchPath::iterator p = search_path.begin(); p != search_path.end(); ++p)
         {
           DIR* dir = opendir(p->c_str());
           if (!dir)
@@ -119,7 +123,7 @@ DictionaryManager::get_dictionary(const std::string& spec)
               struct dirent* ent;
               while((ent = readdir(dir)))
                 {
-                  if (std::string(ent->d_name) == lang + ".po")
+                  if (std::string(ent->d_name) == std::string(lang->code) + ".po")
                     {
                       std::string pofile = *p + "/" + ent->d_name;
                       std::ifstream in(pofile.c_str());
@@ -171,10 +175,20 @@ DictionaryManager::get_languages()
 }
 
 void
-DictionaryManager::set_language(const std::string& lang)
+DictionaryManager::set_current_dictionary(const std::string& lang)
 {
-  language = get_language_from_spec(lang);
-  current_dict = & (get_dictionary(language));
+  LanguageDef* new_lang = get_canonical_language(lang);
+  if (!new_lang)
+    {
+      std::cout << "Error: DictionaryManager: Couldn't find LanguageDef for '" << lang
+                << "', leaving current dictionary unchanged" << std::endl;
+    }
+  else
+    {
+      language = new_lang;
+      // std::cout << "Language: supplied: '" << lang << "' -> canonical: '" << language->code << "'" << std::endl;
+      current_dict = &(get_dictionary(language));
+    }
 }
 
 void
@@ -184,20 +198,29 @@ DictionaryManager::set_language_alias(const std::string& alias,
   language_aliases.insert(std::make_pair(alias, language));
 }
 
-std::string
-DictionaryManager::get_language_from_spec(const std::string& spec)
+LanguageDef*
+DictionaryManager::get_canonical_language(const std::string& spec)
 {
-  std::string lang = spec;
-  Aliases::iterator i = language_aliases.find(lang);
-  if(i != language_aliases.end()) {
-    lang = i->second;
-  }
-  
-  std::string::size_type s = lang.find_first_of("_.");
-  if(s == std::string::npos)
-    return lang;
+  std::string lang_code = spec;
 
-  return std::string(lang, 0, s);  
+  // Check for language aliases
+  Aliases::iterator i = language_aliases.find(spec);
+  if(i != language_aliases.end()) 
+    lang_code = i->second;
+
+  // Cut away any specification of the codeset (i.e. de_DE.ISO-8859-1)
+  std::string::size_type s = lang_code.find_first_of(".");
+
+  if (s != std::string::npos)
+    lang_code = std::string(spec, 0, s);
+
+  LanguageDef* lang_def = get_language_def(lang_code);
+  if (lang_def)
+    return lang_def;
+  else if (lang_code.length() == 5) // 'en_EN' failed, try 'en'
+    return get_language_def(lang_code.substr(0, 2));
+  else 
+    return 0;
 }
 
 void
@@ -205,7 +228,7 @@ DictionaryManager::add_directory(const std::string& pathname)
 {
   dictionaries.clear(); // adding directories invalidates cache
   search_path.push_back(pathname);
-  set_language(language);
+  current_dict = &(get_dictionary(language));
 }
 
 } // namespace TinyGetText

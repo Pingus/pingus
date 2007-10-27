@@ -39,7 +39,7 @@ struct LanguageDef {
 
 /** Read the content of the .po file given as \a in into the
     dictionary given as \a dict */
-LanguageDef& get_language_def(const std::string& name);
+LanguageDef* get_language_def(const std::string& name);
 
 extern LanguageDef lang_hu;
 extern LanguageDef lang_ja;
