@@ -21,6 +21,8 @@
 #include "pingus_error.hpp"
 #include "file_reader.hpp"
 #include "levelset.hpp"
+#include "plf_res_mgr.hpp"
+#include "savegame_manager.hpp"
 
 Levelset::Levelset(const Pathname& pathname)
 {
@@ -39,12 +41,14 @@ Levelset::Levelset(const Pathname& pathname)
         {
           if (i->get_name() == "level")
             {
-              Level level;
-              level.accessible = false;
-              level.finished   = false;
-
-              if (i->read_string("filename", level.filename))
+              Level* level = new Level();
+              if (i->read_string("filename", level->resname))
                 {
+                  level->plf        = PLFResMgr::load_plf(level->resname);
+                  
+                  level->accessible = false;
+                  level->finished   = false;
+                      
                   levels.push_back(level);
                 }
               else
@@ -55,12 +59,12 @@ Levelset::Levelset(const Pathname& pathname)
         }
     }
 
-  if (!levels.empty())
-    levels.front().accessible = true;
+  refresh();
 }
 
 Levelset::~Levelset()
 {
+  
 }
 
 std::string
@@ -75,13 +79,13 @@ Levelset::get_description() const
   return description;
 }
 
-std::string
+Levelset::Level*
 Levelset::get_level(int num) const
 {
   if (num >= 0 && num < int(levels.size()))
-    return levels[num].filename;
+    return levels[num];
   else
-    return "";
+    return 0;
 }
 
 int
@@ -95,6 +99,35 @@ Levelset::get_completion()  const
 {
   // FIXME: insert savegame magic
   return 0;
+}
+
+void
+Levelset::refresh()
+{
+  for(std::vector<Level*>::iterator i = levels.begin(); i != levels.end(); ++i)
+    {
+      Savegame* savegame = SavegameManager::instance()->get((*i)->resname);
+
+      if (savegame)
+        {
+          (*i)->accessible = (savegame->get_status() != Savegame::NONE);
+          (*i)->finished   = (savegame->get_status() == Savegame::FINISHED);
+        }
+    }
+
+  if (!levels.empty())
+    {
+      if (levels.size() == 1)
+        {
+          levels[0]->accessible = true; 
+        }
+      else
+        {
+          for(std::vector<Level*>::size_type i = 0; i < levels.size()-1; ++i)
+            if (levels[i]->finished)
+              levels[i+1]->accessible = true;
+        }
+    }
 }
 
 /* EOF */

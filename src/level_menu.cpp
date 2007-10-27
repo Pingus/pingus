@@ -149,23 +149,30 @@ public:
 
     if (levelset)
       {
+        levelset->refresh(); // should be better placed in on_startup() or so
+        
         //gc.draw_fillrect(Rect(Vector2i(0,0), Size(rect.get_width(), rect.get_height())),
         //                 Color(255, 255, 0, 100));
 
         gc.print_left(Fonts::chalk_normal,  30, -32, "Levelname");
-        gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, - 32, "Completed");
+        gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, - 32, "Status");
 
         int y = 0;
         for(int i = 0; i < levelset->get_level_count(); ++i)
           {
-            if (i == current_level)
-              gc.draw(marker, 0, y);
-            else if (i > 3)
+            if (!levelset->get_level(i)->accessible)
               gc.draw(marker_locked, 0, y);
-
-            std::string level = levelset->get_level(i);          
+            else if (i == current_level)
+              gc.draw(marker, 0, y);
+                        
+            std::string level = levelset->get_level(i)->plf.get_levelname();
             gc.print_left(Fonts::chalk_small, 30, y+4, level);
-            gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, "[x]");
+
+            if (levelset->get_level(i)->finished)
+              gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, "solved");
+            else
+              gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, "unsolved");
+
             y += 32;
           }
       }
@@ -193,9 +200,10 @@ public:
   {
     if (current_level != -1)
       {
-        PingusLevel level(Pathname("levels/" + levelset->get_level(current_level), Pathname::DATA_PATH));
-        //ScreenManager::instance()->push_screen(new PingusGameSession(level, false), true);
-        ScreenManager::instance()->push_screen(new StartScreen(level), true);
+        if (levelset->get_level(current_level)->accessible);
+          {
+            ScreenManager::instance()->push_screen(new StartScreen(levelset->get_level(current_level)->plf), true);
+          }
       }
   }
 

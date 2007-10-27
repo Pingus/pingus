@@ -22,21 +22,24 @@
 
 #include <string>
 #include <vector>
+#include "pingus_level.hpp"
 #include "pathname.hpp"
 
 /** */
 class Levelset
 {
-private:
+public:
   struct Level {
-    std::string filename;
+    std::string resname;
     bool accessible;
     bool finished;
+    PingusLevel plf;
   };
 
+private:
   std::string title;
   std::string description;
-  std::vector<Level> levels;
+  std::vector<Level*> levels;
 
 public:
   Levelset(const Pathname& pathname);
@@ -44,12 +47,13 @@ public:
 
   std::string get_title() const;
   std::string get_description() const;
-  std::string get_level(int num) const;
+  Level* get_level(int num) const;
   int get_level_count() const;
 
   /** Return the number of completed levels */
   int get_completion()  const;
 
+  void refresh();
 private:
   Levelset (const Levelset&);
   Levelset& operator= (const Levelset&);
