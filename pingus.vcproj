@@ -371,26 +371,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\src\file_dialog.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\file_dialog.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\file_dialog_item.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\file_dialog_item.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\file_dialog_listener.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\src\file_reader.cpp"
 				>
 			</File>

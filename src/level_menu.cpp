@@ -69,7 +69,7 @@ public:
     gc.print_center(Fonts::chalk_large, 800/2, 90, _("Levelset Menu"));
 
     gc.push_modelview();
-    gc.translate(rect.left, rect.top);
+    gc.translate(static_cast<float>(rect.left), static_cast<float>(rect.top));
 
     //gc.draw_fillrect(Rect(Vector2i(0,0), Size(rect.get_width(), rect.get_height())),
     //                 Color(255, 255, 0, 100));
@@ -78,9 +78,9 @@ public:
     for(Levelsets::iterator i = levelsets.begin(); i != levelsets.end(); ++i)
       {
         if (*i == current_levelset)
-          gc.draw(marker, 0, y - 5);
+          gc.draw(marker, Vector2i(0, y - 5));
 
-        gc.draw((*i)->get_image(), 30, y);
+        gc.draw((*i)->get_image(), Vector2i(30, y));
 
         gc.print_left(Fonts::chalk_normal, 85+30, 15 + y, (*i)->get_title());
         gc.print_left(Fonts::chalk_small,  85+50, 40 + y, (*i)->get_description());
@@ -147,7 +147,7 @@ public:
     gc.print_center(Fonts::chalk_large, 800/2, 90, _(levelset->get_title()));
 
     gc.push_modelview();
-    gc.translate(rect.left, rect.top);
+    gc.translate(static_cast<float>(rect.left), static_cast<float>(rect.top));
 
     if (levelset)
       {
@@ -163,9 +163,9 @@ public:
         for(int i = 0; i < levelset->get_level_count(); ++i)
           {
             if (!levelset->get_level(i)->accessible)
-              gc.draw(marker_locked, 0, y);
+              gc.draw(marker_locked, Vector2i(0, y));
             else if (i == current_level)
-              gc.draw(marker, 0, y);
+              gc.draw(marker, Vector2i(0, y));
                         
             std::string level = levelset->get_level(i)->plf.get_levelname();
             gc.print_left(Fonts::chalk_small, 30, y+4, level);
@@ -202,7 +202,7 @@ public:
   {
     if (current_level != -1)
       {
-        if (levelset->get_level(current_level)->accessible);
+        if (levelset->get_level(current_level)->accessible)
           {
             ScreenManager::instance()->push_screen(new StartScreen(levelset->get_level(current_level)->plf), true);
           }
@@ -236,7 +236,7 @@ void
 LevelMenu::draw_background(DrawingContext& gc)
 {
   gc.push_modelview();
-  gc.translate(x_pos, y_pos);
+  gc.translate(static_cast<float>(x_pos), static_cast<float>(y_pos));
 
   // gc.draw_fillrect(Rect(100, 100, 400, 400), Color(255, 0, 0));
   gc.draw(background, Vector2i(400 - background.get_width()/2, 300 - background.get_height()/2));
