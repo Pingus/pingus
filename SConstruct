@@ -109,8 +109,6 @@ pingus_sources = [
 'src/collision_mask.cpp',
 
 'src/exit_menu.cpp', 
-'src/file_dialog.cpp', 
-'src/file_dialog_item.cpp', 
 'src/file_reader.cpp',
 'src/sexpr_file_reader.cpp', 
 'src/sexpr_file_writer.cpp', 

@@ -352,6 +352,10 @@
                     (image-file "../images/core/menu/marker.png"))
 
                    (sprite
+                    (name "marker2")
+                    (image-file "../images/core/menu/marker2.png"))
+
+                   (sprite
                     (name "filedialog")
                     (image-file "../images/core/menu/filedialog.png"))
 

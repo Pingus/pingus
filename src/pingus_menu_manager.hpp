@@ -23,7 +23,6 @@
 #include "layer_manager.hpp"
 #include "exit_menu.hpp"
 #include "pingus_menu.hpp"
-#include "file_dialog.hpp"
 
 class PingusSubMenu;
 

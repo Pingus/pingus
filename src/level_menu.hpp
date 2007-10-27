@@ -28,9 +28,13 @@
 class LevelMenu : public GUIScreen
 {
 private:
+  int x_pos;
+  int y_pos;
+
   Sprite background;
   Sprite ok_button;
   Sprite marker;
+  Sprite marker_small;
 
   typedef std::vector<Levelset*> Levelsets;
   Levelsets levelsets;

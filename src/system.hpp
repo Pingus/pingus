@@ -36,6 +36,7 @@ private:
   static int verbose;
   static std::string default_email;
   static std::string default_username;
+
 public:
   enum FileType { DE_DIRECTORY, DE_FILE };
 

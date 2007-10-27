@@ -46,9 +46,9 @@ Bridger::Bridger (Pingu* p)
   walk_sprite.load (Direction::RIGHT, Resource::load_sprite("pingus/player" + 
                                                             pingu->get_owner_str() + "/bridger_walk/right"));
 
-  build_sprite.load (Direction::LEFT,  Resource::load_sprite("pingus/player" + 
+  build_sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/player" + 
                                                              pingu->get_owner_str() + "/bridger/left"));
-  build_sprite.load (Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+  build_sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
                                                              pingu->get_owner_str() + "/bridger/right"));
 }
 
@@ -227,7 +227,7 @@ Bridger::place_a_brick()
     }
   else
     {
-      WorldObj::get_world()->put(brick_r,
+      WorldObj::get_world()->put(brick_l,
                                  static_cast<int>(pingu->get_pos().x - 10),
                                  static_cast<int>(pingu->get_pos().y),
                                  Groundtype::GP_BRIDGE);

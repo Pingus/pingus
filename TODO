@@ -12,6 +12,8 @@ Release Checklist:
 
 - make sure that the game still runs after install.sh
 
+- remove test levelset before release
+
 - check NEWS, README, INSTALL.*
 
 Stuff to do at all times:
@@ -95,15 +97,13 @@ Important:
 
 - Water Glitch: the water on the minimap changes color after the colmap is altered or the first time
 
-- bridge tile isn't flipped in bridger 
-
 - Levels: All levels lack name and description
 - check all entrances are properly done
 - check that number of pingus and number to save are adjusted
 - check that actions are limited
 - add name and descriptions
 
-halloween1-grumbel.pingus - circle save - finished - needs testing (easy)
+halloween1-grumbel.pingus - circle save - finished - needs testing (easy) - demonstrates a Faller bug
 halloween2-grumbel.pingus - rescue by jump - finished - needs testing (easy)
 halloween3-grumbel.pingus - digg tunnel - finished - needs testing (medium)
 halloween4-grumbel.pingus - wall bomb - finished - needs testing (easy/medium)

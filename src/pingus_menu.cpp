@@ -36,7 +36,6 @@
 #include "plf_res_mgr.hpp"
 #include "path_manager.hpp"
 #include "pathname.hpp"
-#include "file_dialog.hpp"
 #include "editor/editor_screen.hpp"
 #include "credits.hpp"
 

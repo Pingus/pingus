@@ -29,7 +29,6 @@
 #include "../res_descriptor.hpp"
 #include "../resource.hpp"
 #include "../fonts.hpp"
-#include "../file_dialog.hpp"
 #include "gettext.h"
 #include "file_dialog.hpp"
 #include "../path_manager.hpp"
