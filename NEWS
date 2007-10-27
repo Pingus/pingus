@@ -1,8 +1,10 @@
 0.7.2 (31/Oct/2007)
 ===================
 * added window resize support to the editor (use --allow-resize)
-* added minimap to editor  
-* added halloween level set
+* added minimap to the editor  
+* added 8 new levels in the form of a halloween levelset
+* support for non-story levelsets
+
 
 0.7.1 (23/Sep/2007)
 ===================

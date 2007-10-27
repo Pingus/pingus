@@ -970,7 +970,7 @@ msgstr "..:: Contrib level Spielen ::.."
 #: src/pingus_menu.cpp:75
 #, fuzzy
 msgid "Story"
-msgstr "-Geschichte"
+msgstr "Geschichte"
 
 #: src/pingus_menu.cpp:76
 #, fuzzy
