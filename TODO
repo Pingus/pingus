@@ -112,7 +112,7 @@ halloween6-grumbel.pingus - jump high - finished - needs testing  (easy)
 halloween7-grumbel.pingus - rescue - finished - needs testing - number of pingus wrong (hard--)
 halloween8-plouj.pingus - bridge broken - (hard+)
 
-- jumper dies sometimes in data/levels/tutorial/snow11-grumbel.scm when hitting the ground
+- jumper dies sometimes in data/levels/tutorial/snow11-grumbel.scm when hitting the ground (src/actions/faller.cpp:107 is reached)
 
 - implement option menu
 
@@ -233,6 +233,10 @@ Less Important:
   (have a blinking clock and tick sound or so)
 
 - write a README.input
+
+- LANG=sr ./pingus|grep language shows "English" but ingame text is not English
+
+- using some languages (sr, cs, tr) causes some kind of font mapping errors
 
 Roadmap for Pingus Editor 0.7.2:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
