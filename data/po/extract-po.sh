@@ -26,10 +26,15 @@ echo "" >> "${OUT}.tmp"
 
 echo -n "Extracting strings from levels... "
 data/po/extract-levels.guile data/levels/tutorial/*.pingus >> "${OUT}.tmp"
+data/po/extract-levels.guile data/levels/halloween/*.pingus >> "${OUT}.tmp"
 echo "done"
 
 echo -n "Extracting strings from worldmaps... "
 data/po/extract-levels.guile data/worldmaps/tutorial.worldmap >> "${OUT}.tmp"
+echo "done"
+
+echo -n "Extracting strings from levelsets... "
+data/po/extract-levels.guile data/levelsets/*.levelset >> "${OUT}.tmp"
 echo "done"
 
 sed -i "s/^\"Content-Type: text\\/plain; charset=CHARSET/\"Content-Type: text\\/plain; charset=ASCII/" \
