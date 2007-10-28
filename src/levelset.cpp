@@ -24,8 +24,10 @@
 #include "plf_res_mgr.hpp"
 #include "savegame_manager.hpp"
 #include "resource.hpp"
+#include "math.hpp"
 
 Levelset::Levelset(const Pathname& pathname)
+  : completion(0)
 {
   FileReader reader = FileReader::parse(pathname);
   if (reader.get_name() != "pingus-levelset")
@@ -103,8 +105,7 @@ Levelset::get_level_count() const
 int
 Levelset::get_completion()  const
 {
-  // FIXME: insert savegame magic
-  return 0;
+  return completion;
 }
 
 Sprite
@@ -140,6 +141,12 @@ Levelset::refresh()
               levels[i+1]->accessible = true;
         }
     }
+
+  completion = 0;
+  for(std::vector<Level*>::iterator i = levels.begin(); i != levels.end(); ++i)
+    if ((*i)->finished)
+      completion += 1;
+  completion = Math::clamp(0, completion * 100 / int(levels.size()), 100);
 }
 
 /* EOF */

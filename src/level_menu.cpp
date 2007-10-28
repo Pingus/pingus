@@ -31,7 +31,42 @@
 #include "gui/gui_manager.hpp"
 #include "game_session.hpp"
 #include "start_screen.hpp"
+#include "gui/surface_button.hpp"
+#include "sound/sound.hpp"
 
+class LevelMenuAbortButton
+  : public GUI::SurfaceButton
+{
+private:
+  LevelMenu* parent;
+
+public:
+  LevelMenuAbortButton(LevelMenu* p)
+    : GUI::SurfaceButton(Display::get_width()/2 - 300,
+                         Display::get_height()/2 + 144,
+                         ResDescriptor("core/start/back"),
+                         ResDescriptor("core/start/back_clicked"),
+                         ResDescriptor("core/start/back_hover")),
+      parent(p)
+  {
+  }
+
+  void draw(DrawingContext& gc) {
+    SurfaceButton::draw(gc);
+    gc.print_center(Fonts::chalk_normal, x_pos + 55, y_pos, _("Abort"));
+  }
+
+  void on_click() {
+    parent->on_escape_press();
+  }
+
+  void on_pointer_enter()
+  {
+    SurfaceButton::on_pointer_enter();
+    Sound::PingusSound::play_sound ("tick");
+  }
+};
+
 class LevelsetSelector : public GUI::RectComponent
 {
 private:
@@ -216,7 +251,10 @@ LevelMenu::LevelMenu()
   : x_pos((Display::get_width()  - 800)/2),
     y_pos((Display::get_height() - 600)/2)
 {
-  background = Resource::load_sprite("core/menu/filedialog");
+  //background = Resource::load_sprite("core/menu/filedialog");
+  background = Resource::load_sprite("core/menu/startscreenbg");
+  background.scale(Display::get_width(), Display::get_height());
+
   ok_button  = Resource::load_sprite("core/start/ok");
 
   levelset_selector = new LevelsetSelector(this, Rect(Vector2i(x_pos + 100, y_pos + 140), Size(600, 300)));
@@ -224,6 +262,7 @@ LevelMenu::LevelMenu()
 
   gui_manager->add(levelset_selector, true);
   gui_manager->add(level_selector,    true);
+  gui_manager->add(new LevelMenuAbortButton(this), true);
 
   level_selector->hide();
 }
@@ -235,20 +274,22 @@ LevelMenu::~LevelMenu()
 void
 LevelMenu::draw_background(DrawingContext& gc)
 {
-  gc.push_modelview();
-  gc.translate(static_cast<float>(x_pos), static_cast<float>(y_pos));
-
-  // gc.draw_fillrect(Rect(100, 100, 400, 400), Color(255, 0, 0));
-  gc.draw(background, Vector2i(400 - background.get_width()/2, 300 - background.get_height()/2));
-
-  gc.pop_modelview();
+  gc.draw(background, gc.get_width()/2, gc.get_height()/2);
 }
 
 void
 LevelMenu::on_escape_press()
 {
-  std::cout << "OptionMenu: poping screen" << std::endl;
-  ScreenManager::instance()->pop_screen();
+  if (level_selector->is_visible())
+    {
+      levelset_selector->show();
+      level_selector->hide();           
+    }
+  else
+    {
+      //std::cout << "OptionMenu: poping screen" << std::endl;
+      ScreenManager::instance()->pop_screen();
+    }
 }
 
 void

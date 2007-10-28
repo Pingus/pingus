@@ -41,7 +41,7 @@ private:
   std::string title;
   std::string description;
   Sprite image;
-
+  int  completion;
   std::vector<Level*> levels;
 
 public:

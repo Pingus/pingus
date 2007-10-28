@@ -93,7 +93,6 @@ public:
   }
 };
 
-
 class StartScreenAbortButton
   : public GUI::SurfaceButton
 {
