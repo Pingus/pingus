@@ -104,7 +104,7 @@ public:
     gc.push_modelview();
     gc.translate(static_cast<float>(rect.left), static_cast<float>(rect.top));
 
-    gc.print_center(Fonts::chalk_large, rect.get_width()/2, -50, _("Levelset Menu"));
+    gc.print_center(Fonts::chalk_large, rect.get_width()/2, -50, _("Levelsets"));
 
     //gc.draw_fillrect(Rect(Vector2i(0,0), Size(rect.get_width(), rect.get_height())),
     //                 Color(255, 255, 0, 100));
@@ -120,7 +120,7 @@ public:
         gc.print_left(Fonts::chalk_normal, 85+30, 15 + y, (*i)->get_title());
         gc.print_left(Fonts::chalk_small,  85+50, 40 + y, (*i)->get_description());
 
-        gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, 15 + y, (boost::format("Completion: %1%%%") % (*i)->get_completion()).str());
+        gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, 15 + y, (boost::format("%1% %2%%%") % _("Solved:") % (*i)->get_completion()).str());
         gc.print_right(Fonts::chalk_small,  rect.get_width() - 30, 60 + y, (boost::format("%1% levels") % (*i)->get_level_count()).str());
 
         //gc.draw(ok_button, 620, y);

@@ -168,8 +168,8 @@ StartScreenComponent::draw(DrawingContext& gc)
   gc.print_left (Fonts::chalk_normal, left_x,  (y += 30), _("Time: "));
   gc.print_right(Fonts::chalk_normal, right_x, y, time_str);
 
-  gc.print_left (Fonts::chalk_normal, left_x,  (y += 30), _("Difficulty:"));
-  gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(plf.get_difficulty()) + "/100");
+  //gc.print_left (Fonts::chalk_normal, left_x,  (y += 30), _("Difficulty:"));
+  //gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(plf.get_difficulty()) + "/100");
 
   gc.print_center(Fonts::chalk_small, Display::get_width()/2,
                   Display::get_height()/2 + 270, _("Author: ") + plf.get_author());
