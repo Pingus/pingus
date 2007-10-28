@@ -239,6 +239,8 @@ Less Important:
 - LANG=sr ./pingus|grep language shows "English" but ingame text is not English
 
 - using some languages (sr, cs, tr) causes some kind of font mapping errors
+
+- replace "magic" numbers such as default screen size (800 and 600) with macros/globals or whatever is good programming practice
 
 Roadmap for Pingus Editor 0.7.2:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
