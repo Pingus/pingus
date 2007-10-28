@@ -14,6 +14,9 @@
 (sprite
    (name "sign-up")
    (image-file "../images/hotspots/halloween/sign-up.png"))
+(sprite
+   (name "moon")
+   (image-file "../images/hotspots/halloween/moon.png"))
 )
 
     (section (name "desert")
