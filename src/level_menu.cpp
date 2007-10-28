@@ -44,7 +44,7 @@ private:
 public:
   LevelsetSelector(LevelMenu* level_menu_, const Rect& rect_) 
     : RectComponent(rect_),
-      level_menu(level_menu_)
+      level_menu(level_menu_), current_levelset(NULL)
   {
     marker        = Resource::load_sprite("core/menu/marker");
 
@@ -104,10 +104,10 @@ public:
       {
         int i = y / 75;
 
-        if (i >= 0 && i < 4)
+        if (i >= 0 && i < static_cast<int>(levelsets.size()))
           current_levelset = levelsets[i];
         else
-          i = 0;
+          current_levelset = NULL;
       }
   }
 
