@@ -13,7 +13,7 @@
     (difficulty 0)
     (playable 1)
     (comment "")
-    (music "none")
+    (music "sorcerer.it")
     (actions 
       (blocker 5)
       (bomber 5)
