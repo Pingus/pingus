@@ -101,10 +101,10 @@ public:
   
   void draw(DrawingContext& gc)
   {
-    gc.print_center(Fonts::chalk_large, 800/2, 90, _("Levelset Menu"));
-
     gc.push_modelview();
     gc.translate(static_cast<float>(rect.left), static_cast<float>(rect.top));
+
+    gc.print_center(Fonts::chalk_large, rect.get_width()/2, -50, _("Levelset Menu"));
 
     //gc.draw_fillrect(Rect(Vector2i(0,0), Size(rect.get_width(), rect.get_height())),
     //                 Color(255, 255, 0, 100));
@@ -179,10 +179,10 @@ public:
 
   void draw(DrawingContext& gc) 
   {
-    gc.print_center(Fonts::chalk_large, 800/2, 90, _(levelset->get_title()));
-
     gc.push_modelview();
     gc.translate(static_cast<float>(rect.left), static_cast<float>(rect.top));
+
+    gc.print_center(Fonts::chalk_large, rect.get_width()/2, -70, _(levelset->get_title()));
 
     if (levelset)
       {
