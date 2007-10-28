@@ -7,8 +7,8 @@
     (levelname "none")
     (description "none")
     (author "none")
-    (number-of-pingus 50)
-    (number-to-save 20)
+    (number-of-pingus 40)
+    (number-to-save 30)
     (time -1)
     (difficulty 0)
     (playable 1)
@@ -23,6 +23,26 @@
       (miner 5))
     (levelsize 1600 800))
   (objects 
+    (surface-background 
+      (surface 
+        (image "textures/cyanspace")
+        (modifier "ROT0"))
+      (position -210 10 -1000)
+      (color 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (liquid 
+      (surface 
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position -57 721 -100)
+      (speed 0)
+      (repeat 27))
     (hotspot 
       (surface 
         (image "hotspots/halloween/sign-right")
@@ -120,19 +140,6 @@
         (image "groundpieces/transparent/halloween/fence1")
         (modifier "ROT0"))
       (position 542 369 0))
-    (surface-background 
-      (surface 
-        (image "textures/cyanspace")
-        (modifier "ROT0"))
-      (position -210 10 -1000)
-      (color 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
     (groundpiece 
       (type "ground")
       (surface 
@@ -374,13 +381,6 @@
         (image "groundpieces/transparent/halloween/gravestone3")
         (modifier "ROT0"))
       (position 971 390 0))
-    (hotspot 
-      (surface 
-        (image "entrances/halloween")
-        (modifier "ROT0"))
-      (position 404 212 100)
-      (speed 0)
-      (parallax 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -399,20 +399,6 @@
         (image "groundpieces/ground/halloween/ground6")
         (modifier "ROT180"))
       (position 776 553 0))
-    (liquid 
-      (surface 
-        (image "liquids/slime")
-        (modifier "ROT0"))
-      (position -57 721 -100)
-      (speed 0)
-      (repeat 27))
-    (liquid 
-      (surface 
-        (image "liquids/slime")
-        (modifier "ROT0"))
-      (position -21 738 100)
-      (speed 0)
-      (repeat 27))
     (groundpiece 
       (type "ground")
       (surface 
@@ -785,12 +771,6 @@
         (image "groundpieces/transparent/misc/moos8")
         (modifier "ROT0"))
       (position 766 722 0))
-    (entrance 
-      (type "generic")
-      (position 449 265 1000)
-      (owner-id 0)
-      (direction "misc")
-      (release-rate 150))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -904,6 +884,38 @@
       (surface 
         (image "groundpieces/transparent/halloween/candle1")
         (modifier "ROT0"))
-      (position 912 157 0))))
+      (position 912 157 0))
+    (hotspot 
+      (surface 
+        (image "entrances/halloween")
+        (modifier "ROT0"))
+      (position 404 212 100)
+      (speed 0)
+      (parallax 0))
+    (liquid 
+      (surface 
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position -21 738 100)
+      (speed 0)
+      (repeat 27))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 689 418 0))
+    (entrance 
+      (type "generic")
+      (position 449 265 1000)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 150))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 689 406 0))))
 
 ;; EOF ;;
