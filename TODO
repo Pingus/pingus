@@ -95,6 +95,51 @@ Roadmap for Pingus 0.7.2
 Important:
 ==========
 
+- The goal should be to provide fullscreen support for most common
+  monitors:
+
+Monitor Resolutions:
+
+  1600x1200
+  1920x1080
+  1400x1050
+  1280x1024
+  1152x864
+  1024x768
+
+Level Resolutions:
+
+data/levels/halloween/halloween1-grumbel.pingus:    (levelsize 1400  950))
+data/levels/halloween/halloween2-grumbel.pingus:    (levelsize 1700 1000))
+data/levels/halloween/halloween3-grumbel.pingus:    (levelsize 1600  800))
+data/levels/halloween/halloween4-grumbel.pingus:    (levelsize 1900 1000))
+data/levels/halloween/halloween5-grumbel.pingus:    (levelsize 1700 1000))
+data/levels/halloween/halloween6-grumbel.pingus:    (levelsize 2000 1000))
+data/levels/halloween/halloween7-grumbel.pingus:    (levelsize 2500 1000))
+data/levels/halloween/halloween8-plouj.pingus:      (levelsize 1500  900))
+
+data/levels/tutorial/basher-tutorial-grumbel.pingus:   (levelsize 1900  700))
+data/levels/tutorial/bomber-tutorial2-grumbel.pingus:  (levelsize 1200 1000))
+data/levels/tutorial/digger-tutorial2-grumbel.pingus:  (levelsize 1400  700))
+data/levels/tutorial/floater-tutorial-grumbel.pingus:  (levelsize 1230  900))
+data/levels/tutorial/jumper-tutorial-grumbel.pingus:   (levelsize 1200  600))
+data/levels/tutorial/miner-tutorial2-grumbel.pingus:   (levelsize 1000 1100))
+data/levels/tutorial/snow10-grumbel.pingus:            (levelsize 1400 1200))
+data/levels/tutorial/snow11-grumbel.pingus:            (levelsize 1200  600))
+data/levels/tutorial/snow12-grumbel.pingus:            (levelsize 1300  800))
+data/levels/tutorial/snow14-grumbel.pingus:            (levelsize 1200 1000))
+data/levels/tutorial/snow15-grumbel.pingus:            (levelsize 1400  600))
+data/levels/tutorial/snow16-grumbel.pingus:            (levelsize 1270  600))
+data/levels/tutorial/snow17-grumbel.pingus:            (levelsize 1700  600))
+data/levels/tutorial/snow19-grumbel.pingus:            (levelsize 2100 1000))
+data/levels/tutorial/snow20-grumbel.pingus:            (levelsize 2000  600))
+data/levels/tutorial/snow21-grumbel.pingus:            (levelsize 1400  600))
+data/levels/tutorial/snow22-grumbel.pingus:            (levelsize 1400 1200))
+data/levels/tutorial/snow7-grumbel.pingus:             (levelsize 1824  600))
+data/levels/tutorial/snow8-grumbel.pingus:             (levelsize 1216 1000))
+data/levels/tutorial/snow9-grumbel.pingus:             (levelsize 1500  600))
+data/levels/tutorial/solid-tutorial-grumbel.pingus:    (levelsize 1000  700))
+
 - remove difficulty display in startscreen
 
 - start_pos is missing in editor
