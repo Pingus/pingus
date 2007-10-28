@@ -42,8 +42,8 @@ static bool has_suffix(const std::string& lhs, const std::string rhs)
 
 DictionaryManager::DictionaryManager()
   : empty_dict(&lang_en, "ISO-8859-1"),
-    current_dict(&empty_dict),
-    language(&lang_en)
+    language(&lang_en),
+    current_dict(&empty_dict)    
 {
 #ifndef WIN32
   parseLocaleAliases();
