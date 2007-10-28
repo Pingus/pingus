@@ -274,7 +274,7 @@ LevelMenu::~LevelMenu()
 void
 LevelMenu::draw_background(DrawingContext& gc)
 {
-  gc.draw(background, gc.get_width()/2, gc.get_height()/2);
+  gc.draw(background, Vector2i(gc.get_width()/2, gc.get_height()/2));
 }
 
 void
