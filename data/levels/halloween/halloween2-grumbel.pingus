@@ -4,7 +4,7 @@
 (pingus-level 
   (version 2)
   (head 
-    (levelname "Halloween 1")
+    (levelname "One jump to catch them all")
     (description "none")
     (author "Ingo Ruhnke <grumbel@gmx.de>")
     (number-of-pingus 35)

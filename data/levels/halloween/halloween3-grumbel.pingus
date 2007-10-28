@@ -4,7 +4,7 @@
 (pingus-level 
   (version 2)
   (head 
-    (levelname "none")
+    (levelname "Bridgers Nightmare")
     (description "none")
     (author "none")
     (number-of-pingus 40)

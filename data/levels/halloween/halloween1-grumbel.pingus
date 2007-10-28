@@ -4,7 +4,7 @@
 (pingus-level 
   (version 2)
   (head 
-    (levelname "none")
+    (levelname "Full Circle")
     (description "none")
     (author "none")
     (number-of-pingus 20)

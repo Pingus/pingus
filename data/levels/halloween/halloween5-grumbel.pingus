@@ -4,7 +4,7 @@
 (pingus-level 
   (version 2)
   (head 
-    (levelname "none")
+    (levelname "Splatterfest")
     (description "none")
     (author "none")
     (number-of-pingus 40)
