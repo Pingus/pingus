@@ -95,8 +95,28 @@ Roadmap for Pingus 0.7.2
 Important:
 ==========
 
+- jumper dies sometimes in data/levels/tutorial/snow11-grumbel.scm when hitting the ground (src/actions/faller.cpp:107 is reached)
+
+- halloween1-grumbel.pingus - faller doesn't die even if it should
+  (workaround by moving the groundpiece a bit, fixing falling code is
+  however preferd)
+
+- start_pos is missing in editor
+
+- Levels: All levels lack description
+- check all entrances are properly done
+
 - The goal should be to provide fullscreen support for most common
   monitors:
+
+halloween1-grumbel.pingus - circle save - finished - needs testing (easy) - demonstrates a Faller bug
+halloween2-grumbel.pingus - rescue by jump - finished - needs testing (easy)
+halloween3-grumbel.pingus - digg tunnel - finished - needs testing (medium)
+halloween4-grumbel.pingus - wall bomb - finished - needs testing (easy/medium)
+halloween5-grumbel.pingus - join-jump - finished - needs testing (hard++)
+halloween6-grumbel.pingus - jump high - finished - needs testing  (easy)
+halloween7-grumbel.pingus - rescue - finished - needs testing - number of pingus wrong (hard--)
+halloween8-plouj.pingus - bridge broken - (hard+)
 
 Monitor Resolutions:
 --------------------
@@ -149,35 +169,14 @@ data/levels/tutorial/snow8-grumbel.pingus:             (levelsize 1216 1000)
 data/levels/tutorial/snow9-grumbel.pingus:             (levelsize 1500  600)
 data/levels/tutorial/solid-tutorial-grumbel.pingus:    (levelsize 1000  700)
 
-- remove difficulty display in startscreen
-
-- start_pos is missing in editor
+Meduim Important:
+=================
 
 - Water Glitch: the water on the minimap changes color after the colmap is altered or the first time
-
-- Levels: All levels lack name and description
-- check all entrances are properly done
-- check that number of pingus and number to save are adjusted
-- check that actions are limited
-- add name and descriptions
-
-halloween1-grumbel.pingus - circle save - finished - needs testing (easy) - demonstrates a Faller bug
-halloween2-grumbel.pingus - rescue by jump - finished - needs testing (easy)
-halloween3-grumbel.pingus - digg tunnel - finished - needs testing (medium)
-halloween4-grumbel.pingus - wall bomb - finished - needs testing (easy/medium)
-halloween5-grumbel.pingus - join-jump - finished - needs testing (hard++)
-halloween6-grumbel.pingus - jump high - finished - needs testing  (easy)
-halloween7-grumbel.pingus - rescue - finished - needs testing - number of pingus wrong (hard--)
-halloween8-plouj.pingus - bridge broken - (hard+)
-
-- jumper dies sometimes in data/levels/tutorial/snow11-grumbel.scm when hitting the ground (src/actions/faller.cpp:107 is reached)
 
 - implement option menu
 
 - make auto-scroll disableable in fullscreen
-
-Meduim Important:
-=================
 
 - Regenerate Courier fonts for latin-1/2/9
 
@@ -304,6 +303,10 @@ Roadmap for Pingus Editor 0.7.2:
 Important:
 ==========
 
+
+Medium Important:
+=================
+
 - default entrance hotspots to 100
 
 - changing the map size in the editor does not change the view bounds (GraphicState.set_limits())
@@ -314,9 +317,6 @@ Important:
 - drag&drop is behind minimap
 
 - shrinking the editor window to much causes a crash (limit size as temporary fix)
-
-Medium Important:
-=================
 
 - implement proper tmpfile Support (save tmp levels to ~/.pingus/tmp/
   for backup purpose in case of editor crash or so)
