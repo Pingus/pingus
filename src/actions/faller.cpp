@@ -56,18 +56,6 @@ Faller::update ()
   tumbler[pingu->direction].update();
   faller[pingu->direction].update();
 
-  // Pingu stands on ground
-  if (rel_getpixel(0, -1) !=  Groundtype::GP_NOTHING)
-    {
-      // FIXME: Why handle this here and not in the mover loop below?
-      std::cout << "Pingus landed: " << pingu->get_velocity().y << " deadly: " << deadly_velocity << std::endl;
-      if (pingu->get_velocity().y > deadly_velocity)
-        pingu->set_action(Actions::Splashed);
-      else
-        pingu->set_action(Actions::Walker);
-      return;
-    }
-
   // FIXME: This should be triggered at a later point, when close to
   // FIXME: deadly_velocity or something like that. A translation
   // FIXME: animation for the floater might also help
@@ -98,44 +86,9 @@ Faller::update ()
         {
           move = mover.remaining();
 
-          // If the Pingu collided into something while moving down...
-          if (velocity.y > 0.0f
-              && rel_getpixel(0, -2) != Groundtype::GP_NOTHING)
-            {
-              // Ping is on ground/water/something
-              if (rel_getpixel(0, -1) == Groundtype::GP_WATER
-                  || rel_getpixel(0, -1) == Groundtype::GP_LAVA)
-                {
-                  pingu->set_action(Actions::Drown);
-                }
-              // Did we stop too fast?
-              else if (fabs(pingu->get_velocity().y) > deadly_velocity)
-                {
-                  std::cout << "Pingus splashed: " << pingu->get_velocity().y << " " << deadly_velocity << std::endl;
-                  pingu->set_action(Actions::Splashed);
-                }
-              else if (fabs(pingu->get_velocity().x) > deadly_velocity)
-                {
-                  pout(PINGUS_DEBUG_ACTIONS) << "Pingu: x Smashed on ground, jumping" << std::endl;
-                  std::cout << "Pingus X Smash, what to do?: " << pingu->get_velocity().x << " " << deadly_velocity << std::endl;
-                }
-              else
-                {
-                  // ???
-                }
-
-              break;
-            }
-          // If the Pingu collided into something while moving up...
-          // NB: +1 because Mover backs out of something it has collided with.
-          else if (velocity.y < 0.0f
-                   && rel_getpixel(0, pingu_height + 1) != Groundtype::GP_NOTHING)
-            {
-              // Don't make the Pingu go up any further.
-              move.y     = 0.0f;
-              velocity.y = 0.0f;
-            }
-          else
+          if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING && 
+              rel_getpixel(0, -2) == Groundtype::GP_NOTHING &&
+              rel_getpixel(0, -3) == Groundtype::GP_NOTHING)
             {
               // Make Pingu bounce off wall
               move.x     = -(move.x / 3.0f);
@@ -151,6 +104,37 @@ Faller::update ()
 
               pingu->set_velocity(velocity);
               break;
+            }
+          else if (velocity.y > 0.0f) // If the Pingu collided into something while moving down...
+            {
+              // Ping is on ground/water/something
+              if (rel_getpixel(0, -1) == Groundtype::GP_WATER
+                  || rel_getpixel(0, -1) == Groundtype::GP_LAVA)
+                {
+                  pingu->set_action(Actions::Drown);
+                }
+              // Did we stop too fast?
+              else if (fabs(pingu->get_velocity().y) > deadly_velocity)
+                {
+                  //std::cout << "Pingus splashed: " << pingu->get_velocity().y << " " << deadly_velocity << std::endl;
+                  pingu->set_action(Actions::Splashed);
+                }
+              else
+                {
+                  // This is where the jumper bug happens
+                  //std::cout << "Reached the unreachable: " << pingu->get_velocity().y << std::endl;
+                  pingu->set_action(Actions::Walker);
+                }
+
+              break;
+            }
+          // If the Pingu collided into something while moving up...
+          // NB: +1 because Mover backs out of something it has collided with.
+          else // if (velocity.y < 0.0f)
+            {
+              // Don't make the Pingu go up any further.
+              move.y     = 0.0f;
+              velocity.y = 0.0f;
             }
         }
 
