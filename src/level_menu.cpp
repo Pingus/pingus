@@ -31,6 +31,7 @@
 #include "gui/gui_manager.hpp"
 #include "game_session.hpp"
 #include "start_screen.hpp"
+#include "globals.hpp"
 #include "gui/surface_button.hpp"
 #include "sound/sound.hpp"
 
@@ -202,8 +203,10 @@ public:
             else if (i == current_level)
               gc.draw(marker, Vector2i(0, y));
                         
-            std::string level = levelset->get_level(i)->plf.get_levelname();
-            gc.print_left(Fonts::chalk_small, 30, y+4, level);
+            if (maintainer_mode)
+              gc.print_left(Fonts::chalk_small, 30, y+4, levelset->get_level(i)->plf.get_resname());
+            else
+              gc.print_left(Fonts::chalk_small, 30, y+4, levelset->get_level(i)->plf.get_levelname());
 
             if (levelset->get_level(i)->finished)
               gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, "solved");

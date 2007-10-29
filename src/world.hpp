@@ -23,6 +23,7 @@
 #include "pingus.hpp"
 #include <vector>
 #include <string>
+#include "math/vector2i.hpp"
 #include "math/color.hpp"
 #include "groundtype.hpp"
 #include "collision_mask.hpp"
@@ -172,6 +173,9 @@ public:
 
   /** Get the acceleration due to gravity in the world */
   float get_gravity();
+
+  /** Returns the start pos for the given player */
+  Vector2i get_start_pos(int player_id);
 
 private:
   World (const World&);

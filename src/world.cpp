@@ -22,6 +22,7 @@
 #include <iostream>
 #include <typeinfo>
 #include "pingu_holder.hpp"
+#include "worldobjs/entrance.hpp"
 #include "sound/sound.hpp"
 #include "ground_map.hpp"
 #include "world.hpp"
@@ -37,7 +38,6 @@
 #include "col_map.hpp"
 #include "game_time.hpp"
 #include "debug.hpp"
-
 
 using Actions::Bomber;
 
@@ -310,6 +310,33 @@ World::get_worldobj(const std::string& id)
         return *obj;
     }
   return 0;
+}
+
+Vector2i
+World::get_start_pos(int player_id)
+{
+  // FIXME: Workaround for lack of start-pos
+  Vector2i pos;
+  int num_entrances = 0;
+  for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
+    {  
+      WorldObjs::Entrance* entrance = dynamic_cast<WorldObjs::Entrance*>(*obj);
+      if (entrance && entrance->get_owner_id() == player_id)
+        {
+          pos += Vector2i(static_cast<int>(entrance->get_pos().x),
+                          static_cast<int>(entrance->get_pos().y));
+          num_entrances += 1;
+        }
+    }
+
+  if (num_entrances > 0)
+    {
+      pos.x /= num_entrances;
+      pos.y /= num_entrances;
+      pos.y += 100;
+    }
+
+  return pos;
 }
 
 /* EOF */

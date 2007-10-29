@@ -48,7 +48,7 @@ Playfield::Playfield (Client* client_, const Rect& rect_)
   state.set_limit(Rect(Vector2i(0, 0), Size(world->get_width(), world->get_height())));
 
   // FIXME: Temporary workaround till start-pos is integrated a bit more properly
-  state.set_pos(Vector2f(world->get_width()/2, world->get_height()/2));
+  state.set_pos(world->get_start_pos(0));
 }
 
 Playfield::~Playfield()

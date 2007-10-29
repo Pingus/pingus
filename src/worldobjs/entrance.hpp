@@ -67,6 +67,8 @@ public:
 
   void  draw_smallmap(SmallMap* smallmap);
 
+  Vector3f get_pos() const { return pos; }
+  int get_owner_id() { return owner_id; }
 private:
   Entrance (const Entrance&);
   Entrance& operator= (const Entrance&);
