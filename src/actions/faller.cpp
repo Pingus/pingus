@@ -129,12 +129,12 @@ Faller::update ()
               break;
             }
           // If the Pingu collided into something while moving up...
-          // NB: +1 because Mover backs out of something it has collided with.
           else // if (velocity.y < 0.0f)
             {
               // Don't make the Pingu go up any further.
               move.y     = 0.0f;
               velocity.y = 0.0f;
+              break;
             }
         }
 
