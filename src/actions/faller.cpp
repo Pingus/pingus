@@ -59,7 +59,12 @@ Faller::update ()
   // Pingu stands on ground
   if (rel_getpixel(0, -1) !=  Groundtype::GP_NOTHING)
     {
-      pingu->set_action(Actions::Walker);
+      // FIXME: Why handle this here and not in the mover loop below?
+      std::cout << "Pingus landed: " << pingu->get_velocity().y << " deadly: " << deadly_velocity << std::endl;
+      if (pingu->get_velocity().y > deadly_velocity)
+        pingu->set_action(Actions::Splashed);
+      else
+        pingu->set_action(Actions::Walker);
       return;
     }
 
@@ -106,11 +111,17 @@ Faller::update ()
               // Did we stop too fast?
               else if (fabs(pingu->get_velocity().y) > deadly_velocity)
                 {
+                  std::cout << "Pingus splashed: " << pingu->get_velocity().y << " " << deadly_velocity << std::endl;
                   pingu->set_action(Actions::Splashed);
                 }
               else if (fabs(pingu->get_velocity().x) > deadly_velocity)
                 {
                   pout(PINGUS_DEBUG_ACTIONS) << "Pingu: x Smashed on ground, jumping" << std::endl;
+                  std::cout << "Pingus X Smash, what to do?: " << pingu->get_velocity().x << " " << deadly_velocity << std::endl;
+                }
+              else
+                {
+                  // ???
                 }
 
               break;
@@ -121,13 +132,13 @@ Faller::update ()
                    && rel_getpixel(0, pingu_height + 1) != Groundtype::GP_NOTHING)
             {
               // Don't make the Pingu go up any further.
-              move.y = 0.0f;
+              move.y     = 0.0f;
               velocity.y = 0.0f;
             }
           else
             {
               // Make Pingu bounce off wall
-              move.x = -(move.x / 3.0f);
+              move.x     = -(move.x / 3.0f);
               velocity.x = -(velocity.x / 3.0f);
 
               // Make the Pingu face the correct direction.  NB: Pingu may
