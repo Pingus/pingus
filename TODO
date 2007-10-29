@@ -172,7 +172,10 @@ data/levels/tutorial/solid-tutorial-grumbel.pingus:    (levelsize 1000  700)
 Meduim Important:
 =================
 
-- Water Glitch: the water on the minimap changes color after the colmap is altered or the first time
+- Water Glitch: the water on the minimap changes color after the
+  colmap is altered for the first time, caused by Sprite() 'stealing'
+  the Canvas and converting it to display format, thus SmallmapImages
+  assumptions about colorformat are wrong
 
 - implement option menu
 
