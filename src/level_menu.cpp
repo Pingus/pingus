@@ -192,7 +192,7 @@ public:
         //gc.draw_fillrect(Rect(Vector2i(0,0), Size(rect.get_width(), rect.get_height())),
         //                 Color(255, 255, 0, 100));
 
-        gc.print_left(Fonts::chalk_normal,  30, -32, "Levelname");
+        gc.print_left(Fonts::chalk_normal,  30, -32, "Title");
         gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, - 32, "Status");
 
         int y = 0;
@@ -278,6 +278,7 @@ void
 LevelMenu::draw_background(DrawingContext& gc)
 {
   gc.draw(background, Vector2i(gc.get_width()/2, gc.get_height()/2));
+  SDL_Delay(10);
 }
 
 void
