@@ -55,8 +55,8 @@ bool PinguCollider::operator() (World* const world, Vector3f current_pos,
 	  // If there is something in the way, then Pingu has collided with
 	  // something.  However, if not falling and colliding with a
 	  // Bridge, allow Pingu to go through it.
-	  if ((!falling || pixel != Groundtype::GP_BRIDGE)
-	      && pixel != Groundtype::GP_NOTHING)
+	  if (pixel != Groundtype::GP_NOTHING
+              && !(pixel == Groundtype::GP_BRIDGE && !falling))
 	    {
 	      collided = true;
 	      break;
