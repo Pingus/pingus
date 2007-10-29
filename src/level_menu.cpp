@@ -232,7 +232,7 @@ public:
 
     current_level = y / 32;
     
-    if (current_level < 0 || current_level > levelset->get_level_count())
+    if (current_level < 0 || current_level >= levelset->get_level_count())
       current_level = -1;
   }
 
