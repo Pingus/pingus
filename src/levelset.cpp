@@ -130,16 +130,10 @@ Levelset::refresh()
 
   if (!levels.empty())
     {
-      if (levels.size() == 1)
-        {
-          levels[0]->accessible = true; 
-        }
-      else
-        {
-          for(std::vector<Level*>::size_type i = 0; i < levels.size()-1; ++i)
-            if (levels[i]->finished)
-              levels[i+1]->accessible = true;
-        }
+      levels[0]->accessible = true; 
+      for(std::vector<Level*>::size_type i = 0; i < levels.size()-1; ++i)
+        if (levels[i]->finished)
+          levels[i+1]->accessible = true;
     }
 
   completion = 0;
