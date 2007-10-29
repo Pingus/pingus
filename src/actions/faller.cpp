@@ -125,9 +125,9 @@ Faller::update ()
       // If the Pingu collided into something while moving up...
       else // if (velocity.y < 0.0f)
         {
-          std::cout << "Head bounce" << std::endl;
           // Don't make the Pingu go up any further.
           velocity.y = 0;
+          velocity.x = (velocity.x / 3.0f);
 
           pingu->set_velocity(velocity);
         }
