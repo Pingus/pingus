@@ -44,6 +44,8 @@ Faller::Faller (Pingu* p)
                                                        pingu->get_owner_str() + "/tumbler/left"));
   tumbler.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
                                                        pingu->get_owner_str() + "/tumbler/right"));
+
+  // FIXME: add sprites for jumping here: if x_vel > y_vel, use them
 }
 
 Faller::~Faller () { }
@@ -96,8 +98,8 @@ Faller::update ()
               && rel_getpixel(0, -2) != Groundtype::GP_NOTHING)
             {
               // Ping is on ground/water/something
-              if (   rel_getpixel(0, -1) == Groundtype::GP_WATER
-                     || rel_getpixel(0, -1) == Groundtype::GP_LAVA)
+              if (rel_getpixel(0, -1) == Groundtype::GP_WATER
+                  || rel_getpixel(0, -1) == Groundtype::GP_LAVA)
                 {
                   pingu->set_action(Actions::Drown);
                 }
