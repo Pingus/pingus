@@ -30,148 +30,148 @@
 #include "../worldobj.hpp"
 #include "faller.hpp"
 
-  namespace Actions {
+namespace Actions {
 
-    Faller::Faller (Pingu* p)
-      : PinguAction(p)
+Faller::Faller (Pingu* p)
+  : PinguAction(p)
+{
+  faller.load(Direction::LEFT,  Resource::load_sprite("pingus/player" + 
+                                                      pingu->get_owner_str() + "/faller/left"));
+  faller.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+                                                      pingu->get_owner_str() + "/faller/right"));
+
+  tumbler.load(Direction::LEFT,  Resource::load_sprite("pingus/player" +
+                                                       pingu->get_owner_str() + "/tumbler/left"));
+  tumbler.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+                                                       pingu->get_owner_str() + "/tumbler/right"));
+}
+
+Faller::~Faller () { }
+
+void
+Faller::update ()
+{
+  tumbler[pingu->direction].update();
+  faller[pingu->direction].update();
+
+  // Pingu stands on ground
+  if (rel_getpixel(0, -1) !=  Groundtype::GP_NOTHING)
     {
-      faller.load(Direction::LEFT,  Resource::load_sprite("pingus/player" + 
-        pingu->get_owner_str() + "/faller/left"));
-      faller.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
-        pingu->get_owner_str() + "/faller/right"));
-
-      tumbler.load(Direction::LEFT,  Resource::load_sprite("pingus/player" +
-        pingu->get_owner_str() + "/tumbler/left"));
-      tumbler.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
-        pingu->get_owner_str() + "/tumbler/right"));
+      pingu->set_action(Actions::Walker);
+      return;
     }
 
-    Faller::~Faller () { }
+  // FIXME: This should be triggered at a later point, when close to
+  // FIXME: deadly_velocity or something like that. A translation
+  // FIXME: animation for the floater might also help
+  if (pingu->get_velocity().y > 5.0 && pingu->request_fall_action())
+    return;
 
-    void
-      Faller::update ()
+  // Apply gravity
+  pingu->set_velocity(pingu->get_velocity()
+                      + Vector3f(0.0f, WorldObj::get_world()->get_gravity()) );
+
+  Vector3f velocity = pingu->get_velocity();
+  Vector3f move = velocity;
+  bool collided;
+
+  Movers::LinearMover mover(WorldObj::get_world(), pingu->get_pos());
+
+  do
     {
-      tumbler[pingu->direction].update();
-      faller[pingu->direction].update();
+      // Move the Pingu as far is it can go
+      mover.update(move, Colliders::PinguCollider(pingu_height));
 
-      // Pingu stands on ground
-      if (rel_getpixel(0, -1) !=  Groundtype::GP_NOTHING)
-      {
-        pingu->set_action(Actions::Walker);
-        return;
-      }
+      pingu->set_pos(mover.get_pos());
 
-      // FIXME: This should be triggered at a later point, when close to
-      // FIXME: deadly_velocity or something like that. A translation
-      // FIXME: animation for the floater might also help
-      if (pingu->get_velocity().y > 5.0 && pingu->request_fall_action())
-        return;
+      collided = mover.collided();
 
-      // Apply gravity
-      pingu->set_velocity(pingu->get_velocity()
-        + Vector3f(0.0f, WorldObj::get_world()->get_gravity()) );
-
-      Vector3f velocity = pingu->get_velocity();
-      Vector3f move = velocity;
-      bool collided;
-
-      Movers::LinearMover mover(WorldObj::get_world(), pingu->get_pos());
-
-      do
-      {
-        // Move the Pingu as far is it can go
-        mover.update(move, Colliders::PinguCollider(pingu_height));
-
-        pingu->set_pos(mover.get_pos());
-
-        collided = mover.collided();
-
-        // If the Pingu collided with something...
-        if (collided)
+      // If the Pingu collided with something...
+      if (collided)
         {
           move = mover.remaining();
 
           // If the Pingu collided into something while moving down...
           if (velocity.y > 0.0f
-            && rel_getpixel(0, -2) != Groundtype::GP_NOTHING)
-          {
-            // Ping is on ground/water/something
-            if (   rel_getpixel(0, -1) == Groundtype::GP_WATER
-              || rel_getpixel(0, -1) == Groundtype::GP_LAVA)
+              && rel_getpixel(0, -2) != Groundtype::GP_NOTHING)
             {
-              pingu->set_action(Actions::Drown);
-            }
-            // Did we stop too fast?
-            else if (fabs(pingu->get_velocity().y) > deadly_velocity)
-            {
-              pingu->set_action(Actions::Splashed);
-            }
-            else if (fabs(pingu->get_velocity().x) > deadly_velocity)
-            {
-              pout(PINGUS_DEBUG_ACTIONS) << "Pingu: x Smashed on ground, jumping" << std::endl;
-            }
+              // Ping is on ground/water/something
+              if (   rel_getpixel(0, -1) == Groundtype::GP_WATER
+                     || rel_getpixel(0, -1) == Groundtype::GP_LAVA)
+                {
+                  pingu->set_action(Actions::Drown);
+                }
+              // Did we stop too fast?
+              else if (fabs(pingu->get_velocity().y) > deadly_velocity)
+                {
+                  pingu->set_action(Actions::Splashed);
+                }
+              else if (fabs(pingu->get_velocity().x) > deadly_velocity)
+                {
+                  pout(PINGUS_DEBUG_ACTIONS) << "Pingu: x Smashed on ground, jumping" << std::endl;
+                }
 
-            break;
-          }
+              break;
+            }
           // If the Pingu collided into something while moving up...
           // NB: +1 because Mover backs out of something it has collided with.
           else if (velocity.y < 0.0f
-            && rel_getpixel(0, pingu_height + 1) != Groundtype::GP_NOTHING)
-          {
-            // Don't make the Pingu go up any further.
-            move.y = 0.0f;
-            velocity.y = 0.0f;
-          }
+                   && rel_getpixel(0, pingu_height + 1) != Groundtype::GP_NOTHING)
+            {
+              // Don't make the Pingu go up any further.
+              move.y = 0.0f;
+              velocity.y = 0.0f;
+            }
           else
-          {
-            // Make Pingu bounce off wall
-            move.x = -(move.x / 3.0f);
-            velocity.x = -(velocity.x / 3.0f);
+            {
+              // Make Pingu bounce off wall
+              move.x = -(move.x / 3.0f);
+              velocity.x = -(velocity.x / 3.0f);
 
-            // Make the Pingu face the correct direction.  NB: Pingu may
-            // previously have been facing in the opposite direction of its
-            // velocity because of an explosion.
-            if (velocity.x > 0.0f)
-              pingu->direction.right();
-            else
-              pingu->direction.left();
+              // Make the Pingu face the correct direction.  NB: Pingu may
+              // previously have been facing in the opposite direction of its
+              // velocity because of an explosion.
+              if (velocity.x > 0.0f)
+                pingu->direction.right();
+              else
+                pingu->direction.left();
 
-            pingu->set_velocity(velocity);
-            break;
-          }
+              pingu->set_velocity(velocity);
+              break;
+            }
         }
 
-        // Update the Pingu's velocity
-        pingu->set_velocity(velocity);
-      }
-      // Loop if the Pingu still needs to be moved
-      while (collided);
+      // Update the Pingu's velocity
+      pingu->set_velocity(velocity);
     }
+  // Loop if the Pingu still needs to be moved
+  while (collided);
+}
 
-    void
-      Faller::draw (SceneContext& gc)
-    {
-      if (is_tumbling()) {
-        gc.color().draw(tumbler[pingu->direction], pingu->get_pos ());
-      } else {
-        gc.color().draw(faller[pingu->direction], pingu->get_pos ());
-      }
-    }
+void
+Faller::draw (SceneContext& gc)
+{
+  if (is_tumbling()) {
+    gc.color().draw(tumbler[pingu->direction], pingu->get_pos ());
+  } else {
+    gc.color().draw(faller[pingu->direction], pingu->get_pos ());
+  }
+}
 
-    bool
-      Faller::is_tumbling () const
-    {
-      // If we are going fast enough to get smashed, start tumbling
-      return (   fabs(pingu->get_velocity().x) > deadly_velocity
-        || fabs(pingu->get_velocity().y) > deadly_velocity);
-    }
+bool
+Faller::is_tumbling () const
+{
+  // If we are going fast enough to get smashed, start tumbling
+  return (   fabs(pingu->get_velocity().x) > deadly_velocity
+             || fabs(pingu->get_velocity().y) > deadly_velocity);
+}
 
-    bool
-      Faller::change_allowed (ActionName new_action)
-    {
-      return new_action == Actions::Floater || new_action == Actions::Climber;
-    }
+bool
+Faller::change_allowed (ActionName new_action)
+{
+  return new_action == Actions::Floater || new_action == Actions::Climber;
+}
 
-  } // namespace Actions
+} // namespace Actions
 
 /* EOF */
