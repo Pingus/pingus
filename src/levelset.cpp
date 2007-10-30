@@ -62,6 +62,7 @@ Levelset::Levelset(const Pathname& pathname)
               else
                 {
                   std::cout << "Levelset: " << pathname.str() << " is missing filename tag" << std::endl;
+                  delete level;
                 }
             }
         }
@@ -72,7 +73,10 @@ Levelset::Levelset(const Pathname& pathname)
 
 Levelset::~Levelset()
 {
-  
+  for(std::vector<Level*>::iterator i = levels.begin(); i != levels.end(); ++i)
+    {
+      delete *i;
+    }
 }
 
 std::string

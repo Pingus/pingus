@@ -114,7 +114,7 @@ struct Hotspot : public ObjectSelectorList::Object
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
     LevelObj* obj = new LevelObj("hotspot", impl);
     obj->set_pos(pos);
-    obj->set_pos_z(z_pos);
+    obj->set_pos_z(static_cast<float>(z_pos));
     obj->set_res_desc(desc);
     // obj->set_para();
     return obj;
