@@ -32,7 +32,7 @@
 #include "playfield.hpp"
 
 Playfield::Playfield (Client* client_, const Rect& rect_)
-  : rect(rect_),
+  : RectComponent(rect_),
     client(client_),
     buttons(client->get_button_panel()),
     current_pingu(0),

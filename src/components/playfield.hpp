@@ -22,7 +22,7 @@
 
 #include "../client.hpp"
 #include "../graphic_context_state.hpp"
-#include "../gui/component.hpp"
+#include "../gui/rect_component.hpp"
 #include "../capture_rectangle.hpp"
 
 class Pingu;
@@ -33,12 +33,10 @@ class Controller;
 class View;
 
 /** This class encapsulates all the different Views */
-class Playfield : public GUI::Component
+class Playfield : public GUI::RectComponent
 {
 private:
   friend class Client;
-
-  Rect rect;
 
   ////CL_Surface buffer;
   Server* server;
@@ -93,6 +91,7 @@ public:
 
   bool is_at (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); return true; }
   Rect get_rect() const { return rect; }
+  void update_layout() {}
 private:
   Playfield (const Playfield&);
   Playfield& operator= (const Playfield&);
