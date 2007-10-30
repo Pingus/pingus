@@ -1,9 +1,6 @@
 Release Checklist:
 ~~~~~~~~~~~~~~~~~~
 
-- turn on fullscreen at default (do we really want this with
-  fullscreen key documented? -> Nope)
-
 - make sure all important strings are translatable
 
 - run ./extract-po.sh && ./update-po.sh

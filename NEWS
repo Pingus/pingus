@@ -2,8 +2,10 @@
 ===================
 * added window resize support to the editor (use --allow-resize)
 * added minimap to the editor  
+* added support for levelsets
 * added 8 new levels in the form of a halloween levelset
-* support for non-story levelsets
+* 'jumper dieing on landing' bug fixed
+* numerous other small bug fixes
 
 
 0.7.1 (23/Sep/2007)
