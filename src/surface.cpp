@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "SDL_image.h"
+#include <boost/format.hpp>
 #include <sstream>
 #include <iostream>
 #include "math/rect.hpp"
@@ -288,7 +289,7 @@ Surface::clone() const
 {
   SDL_Surface* new_surface = Blitter::create_surface_from_format(impl->surface, 
                                                                  impl->surface->w, impl->surface->h);
-  SDL_BlitSurface(impl->surface, NULL, new_surface, NULL);
+  std::cout << "Blit: " << SDL_BlitSurface(impl->surface, NULL, new_surface, NULL) << std::endl;
  
   return Surface(boost::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface, true)));
 }
@@ -337,6 +338,38 @@ bool
 Surface::is_shared() const
 {
   return impl.use_count() != 1;
+}
+
+void
+Surface::print(std::ostream& out)
+{
+  out << boost::format("Pointer: 0x%p\n"
+                       "Rmask:   0x%08x\n"
+                       "Gmask:   0x%08x\n"
+                       "Bmask:   0x%08x\n"
+                       "Amask:   0x%08x\n"
+                       "Flags:   0x%08x -> %s%s%s%s\n"
+                       "Palette: 0x%08x\n"
+                       "BitsPerPixel: %d\n"
+                       )
+    % impl->surface
+    % impl->surface->format->Rmask
+    % impl->surface->format->Gmask
+    % impl->surface->format->Bmask
+    % impl->surface->format->Amask
+    % impl->surface->flags
+    % ((impl->surface->flags & SDL_HWSURFACE) ? "HWSURFACE " : "")
+    % ((impl->surface->flags & SDL_SWSURFACE) ? "SWSURFACE " : "")
+    % ((impl->surface->flags & SDL_SRCCOLORKEY) ? "SRCCOLORKEY " : "")
+    % ((impl->surface->flags & SDL_SRCALPHA) ? "SRCALPHA " : "")
+    % impl->surface->format->palette
+    % impl->surface->format->BitsPerPixel;
+
+  if (impl->surface->flags & SDL_SRCCOLORKEY)
+    out << "Colorkey: " << (int)impl->surface->format->colorkey << std::endl;
+
+  if (impl->surface->flags & SDL_SRCALPHA)
+    out << "Alpha: " << (int)impl->surface->format->alpha << std::endl;
 }
 
 /* EOF */

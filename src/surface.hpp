@@ -80,6 +80,8 @@ public:
 
   bool is_shared() const;
 
+  void print(std::ostream& out);
+
 protected:
   boost::shared_ptr<SurfaceImpl> impl;
 };

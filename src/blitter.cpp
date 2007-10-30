@@ -247,6 +247,9 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
                                                   surface->format->Bmask,
                                                   surface->format->Amask);
 
+  if (surface->flags & SDL_SRCALPHA)
+    SDL_SetAlpha(new_surface, SDL_SRCALPHA, surface->format->alpha);
+
   if (surface->format->palette)
     SDL_SetPalette(new_surface, SDL_LOGPAL, surface->format->palette->colors, 
                    0, surface->format->palette->ncolors);

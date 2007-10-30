@@ -17,11 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "world.hpp"
 #include "smallmap_image.hpp"
 #include "col_map.hpp"
 #include "server.hpp"
-
 
 SmallMapImage::SmallMapImage(Server* s, int width, int height)
   : server(s),
@@ -149,9 +149,17 @@ SmallMapImage::update_surface()
     }
 
   canvas.unlock();
+
+  Surface s = canvas.clone();
+  std::cout << "========================================" << std::endl;
+  canvas.print(std::cout);
+  std::cout << "----------------------------------------" << std::endl;
+  s.print(std::cout);
+  std::cout << "========================================\n" << std::endl;
+
   // FIXME: Should do: sur = Sprite(canvas.clone());
   // but doesn't work, gives transparent surface as result
-  sur = Sprite(canvas);
+  sur = Sprite(s);
 }
 
 /* EOF */
