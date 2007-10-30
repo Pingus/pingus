@@ -1,3 +1,994 @@
+2007-10-30 08:21  grumbel
+
+	* TODO:
+	  - fixed Surface::clone()
+
+2007-10-30 08:20  grumbel
+
+	* src/smallmap_image.cpp, src/surface.cpp:
+	  - fixed Surface::clone()
+
+2007-10-30 07:44  grumbel
+
+	* src/smallmap_image.cpp, src/surface.cpp,
+	  src/worldobjs/entrance.hpp:
+	  - added workaround for Surface::clone() bug
+
+2007-10-30 07:29  grumbel
+
+	* src/worldobjs/entrance.cpp:
+	  - added default values in case the level file lacks them
+
+2007-10-30 07:28  grumbel
+
+	* src/worldobjs/entrance.cpp:
+	  - added default values in case the level file lacks them
+
+2007-10-30 06:59  grumbel
+
+	* src/blitter.cpp, src/smallmap_image.cpp, src/surface.cpp,
+	  src/surface.hpp:
+	  - some debugging code to track down a bug in Surface::clone()
+
+2007-10-30 06:39  jsalmon3
+
+	* src/editor/minimap.cpp:
+	  Fixed memory leak
+
+2007-10-30 06:25  grumbel
+
+	* TODO, src/editor/editor_level.cpp:
+	  - fixed background position being wrong in editor
+
+2007-10-30 06:24  jsalmon3
+
+	* src/editor/object_selector.cpp, src/levelset.cpp:
+	  Fixed memory leak and warning
+
+2007-10-30 06:18  grumbel
+
+	* TODO, src/editor/object_selector.cpp:
+	  - make entrance hotspot default to 100 and generic one to 110
+
+2007-10-30 06:13  grumbel
+
+	* TODO, src/editor/editor_screen.cpp:
+	  - fixed drag&drop behind minimap
+
+2007-10-30 06:05  grumbel
+
+	* TODO, src/editor/level_objs.cpp, src/editor/object_selector.cpp:
+	  - fixed solidcolor-background getting 0,0 size
+
+2007-10-30 05:58  grumbel
+
+	* TODO, src/editor/editor_viewport.cpp,
+	  src/editor/level_properties.cpp:
+	  - fixed viewport scroll limit not being adjusted along with
+	  levelsize
+
+2007-10-30 05:51  grumbel
+
+	* TODO:
+	  - removed some solved items
+
+2007-10-30 05:50  grumbel
+
+	* data/levels/halloween/halloween4-grumbel.pingus:
+	  - fixed entrance
+
+2007-10-30 04:41  grumbel
+
+	* data/images/fonts/verdana11-iso-8859-2.font, data/po/cs.po:
+	  - updates to font and cs.po from Tomas Blaha
+
+2007-10-30 04:39  grumbel
+
+	* src/components/playfield.cpp, src/components/playfield.hpp:
+	  - turned Playfield into a rect component
+
+2007-10-29 05:50  jsalmon3
+
+	* src/win32/config.h:
+	  Prepare for 0.7.2
+
+2007-10-29 05:28  jsalmon3
+
+	* src/level_menu.cpp:
+	  Fixed off by 1 crash
+
+2007-10-29 04:53  grumbel
+
+	* src/level_menu.cpp:
+	  - added delay, changed Levelname to Title
+
+2007-10-29 04:46  grumbel
+
+	* src/levelset.cpp:
+	  - fixed all levels being inaccessible on start
+
+2007-10-29 04:28  grumbel
+
+	* src/actions/faller.cpp:
+	  - reduce velocity on head bounce to simulate some friction
+
+2007-10-29 04:23  grumbel
+
+	* src/actions/faller.cpp:
+	  - removed while loop fixed head bounce a bit
+
+2007-10-29 03:37  grumbel
+
+	* src/colliders/pingu_collider.cpp:
+	  - fixed jumper vs bridge issue (maybe), needs testing
+
+2007-10-29 03:31  grumbel
+
+	* src/actions/faller.cpp:
+	  - fixed endless loop when jumper hits a bridge, still causes
+	  weirdness
+
+2007-10-29 03:09  grumbel
+
+	* src/actions/faller.cpp:
+	  - fixed faller/jumper bug, needs testing
+
+2007-10-29 03:08  grumbel
+
+	* data/levels/test/jumper2.pingus:
+	  - another jumper test level
+
+2007-10-29 01:45  grumbel
+
+	* src/actions/faller.cpp:
+	  - fixed halloween1 faller-not-dieing bug
+
+2007-10-29 01:15  grumbel
+
+	* TODO:
+	  - added note on colmap bug
+
+2007-10-29 01:14  grumbel
+
+	* src/actions/faller.cpp, src/smallmap_image.cpp:
+	  - added note on colmap bug
+
+2007-10-29 00:59  grumbel
+
+	* src/actions/faller.cpp:
+	  - fixed indention
+
+2007-10-29 00:59  grumbel
+
+	* src/components/playfield.cpp, src/level_menu.cpp, src/world.cpp,
+	  src/world.hpp, src/worldobjs/entrance.hpp:
+	  - fine tuned the start-pos workaround a bit more, now almost good
+	  enough to not need startpos any more, except for very special
+	  cases
+
+2007-10-29 00:38  grumbel
+
+	* src/components/playfield.cpp:
+	  - added temporary workaround for lack of start-pos
+
+2007-10-28 17:21  jsalmon3
+
+	* src/level_menu.cpp:
+	  Fixed warning
+
+2007-10-28 15:47  grumbel
+
+	* data/po/extract-po.sh:
+	  - added levelsets
+
+2007-10-28 15:47  grumbel
+
+	* data/levelsets/halloween.levelset:
+	  - reordered levels a bit
+
+2007-10-28 15:46  grumbel
+
+	* TODO:
+	  - moved stuff around
+
+2007-10-28 15:46  grumbel
+
+	* data/data/hotspots.res, data/images/hotspots/halloween/moon.png:
+	  - added moon
+
+2007-10-28 15:40  grumbel
+
+	* src/level_menu.cpp, src/start_screen.cpp:
+	  - some cosmetic changes
+
+2007-10-28 15:31  grumbel
+
+	* data/levels/halloween/halloween1-grumbel.pingus,
+	  data/levels/halloween/halloween2-grumbel.pingus,
+	  data/levels/halloween/halloween3-grumbel.pingus,
+	  data/levels/halloween/halloween4-grumbel.pingus,
+	  data/levels/halloween/halloween5-grumbel.pingus,
+	  data/levels/halloween/halloween6-grumbel.pingus,
+	  data/levels/halloween/halloween7-grumbel.pingus,
+	  data/levels/halloween/halloween8-plouj.pingus:
+	  - added levelnames
+
+2007-10-28 11:05  grumbel
+
+	* TODO:
+	  - some more talk on resolutions
+
+2007-10-28 11:04  grumbel
+
+	* src/level_menu.cpp:
+	  - fixed issue with larger resolutions
+
+2007-10-28 10:37  grumbel
+
+	* data/levels/halloween/halloween1-grumbel.pingus,
+	  data/levels/halloween/halloween2-grumbel.pingus,
+	  data/levels/halloween/halloween3-grumbel.pingus,
+	  data/levels/halloween/halloween4-grumbel.pingus,
+	  data/levels/halloween/halloween5-grumbel.pingus,
+	  data/levels/halloween/halloween6-grumbel.pingus,
+	  data/levels/halloween/halloween7-grumbel.pingus,
+	  data/levels/halloween/halloween8-plouj.pingus:
+	  - added music
+
+2007-10-28 10:29  grumbel
+
+	* data/music/sorcerer.it:
+	  - added new music file
+
+2007-10-28 08:11  grumbel
+
+	* TODO:
+	  - some notes on resolution
+
+2007-10-28 08:05  grumbel
+
+	* src/tinygettext/dictionary_manager.cpp:
+	  - fixed warning
+
+2007-10-28 07:52  grumbel
+
+	* TODO, data/images/core/menu/menuitem_highlight.png:
+	  - added abort button and completion percentage
+
+2007-10-28 07:51  grumbel
+
+	* src/level_menu.cpp, src/levelset.cpp, src/levelset.hpp,
+	  src/savegame_manager.cpp, src/start_screen.cpp:
+	  - added abort button and completion percentage
+
+2007-10-28 07:43  grumbel
+
+	* data/levels/halloween/halloween3-grumbel.pingus:
+	  - made the non-intended solution harder by placing some more
+	  solids
+
+2007-10-28 05:17  jsalmon3
+
+	* src/level_menu.cpp:
+	  Fixed crash
+
+2007-10-28 03:49  plouj
+
+	* TODO:
+	  work that I think is way overdue
+
+2007-10-27 17:34  grumbel
+
+	* data/levelsets, data/levelsets/halloween.levelset:
+	  - added missing levelset directory
+
+2007-10-27 16:06  jsalmon3
+
+	* pingus.vcproj, src/level_menu.cpp:
+	  Fixed warnings, removed file_dialog from vcproj
+
+2007-10-27 16:02  grumbel
+
+	* data/data/core.res, data/images/levelsets,
+	  data/images/levelsets/halloween.png,
+	  src/components/menu_button.cpp, src/components/menu_button.hpp,
+	  src/level_menu.cpp, src/levelset.cpp, src/levelset.hpp:
+	  - added halloween icon
+
+2007-10-27 11:51  grumbel
+
+	* src/level_menu.cpp, src/levelset.cpp, src/levelset.hpp:
+	  - added savegame stuff to levelset
+
+2007-10-27 10:00  grumbel
+
+	* TODO, data/images/core/menu/marker.png,
+	  data/images/core/menu/marker2.png,
+	  data/images/core/menu/marker_locked.png,
+	  data/levels/halloween/halloween7-grumbel.pingus,
+	  src/level_menu.cpp:
+	  - more levelselector stuff, now somewhat usable
+
+2007-10-27 09:31  grumbel
+
+	* src/level_menu.cpp, src/level_menu.hpp:
+	  - more level menu stuff
+
+2007-10-27 07:26  grumbel
+
+	* data/data/core.res, data/images/core/menu/marker_locked.png,
+	  src/level_menu.cpp, src/level_menu.hpp:
+	  - some more levelset stuff (press pause to toggle between modes)
+
+2007-10-27 07:08  grumbel
+
+	* SConstruct, TODO, data/data/core.res,
+	  data/images/core/menu/marker.png,
+	  data/images/core/menu/marker2.png, src/actions/bridger.cpp,
+	  src/editor/editor_screen.cpp, src/file_dialog.cpp,
+	  src/file_dialog.hpp, src/file_dialog_item.cpp,
+	  src/file_dialog_item.hpp, src/file_dialog_listener.hpp,
+	  src/level_menu.cpp, src/level_menu.hpp, src/pingus_menu.cpp,
+	  src/pingus_menu_manager.hpp, src/system.hpp:
+	  - removed filedialog
+	  - some more levelset menu stuff
+
+2007-10-27 06:15  grumbel
+
+	* data/po/extract-levels.guile:
+	  - added levelset support
+
+2007-10-27 05:27  grumbel
+
+	* data/levels/halloween/halloween1-grumbel.pingus:
+	  - replaced metal with normal ground, this demonstrates a bug in
+	  the faller, i.e. the Pingus survive even from that height
+
+2007-10-27 05:22  grumbel
+
+	* src/tinygettext/language_def.cpp:
+	  - added Serbian language spec
+
+2007-10-27 05:21  plouj
+
+	* TODO:
+	  more problems and problem details
+
+2007-10-27 04:54  grumbel
+
+	* NEWS, data/po/de.po:
+	  - updates and text fix
+
+2007-10-27 04:53  grumbel
+
+	* src/level_menu.cpp, src/level_menu.hpp, src/levelset.cpp,
+	  src/levelset.hpp, src/pingus_menu.cpp:
+	  - some levelset stuff
+
+2007-10-27 04:52  grumbel
+
+	* TODO, src/pingus_main.cpp, src/tinygettext/dictionary.cpp,
+	  src/tinygettext/dictionary.hpp,
+	  src/tinygettext/dictionary_manager.cpp,
+	  src/tinygettext/dictionary_manager.hpp,
+	  src/tinygettext/language_def.cpp,
+	  src/tinygettext/language_def.hpp:
+	  - cleaned up language handling a bit, pt_BR now works
+
+2007-10-27 03:55  plouj
+
+	* src/delta_manager.hpp:
+	  added some documentation
+
+2007-10-27 03:34  jsalmon3
+
+	* src/delta_manager.hpp:
+	  Fixed bug calculating absolute_time
+
+2007-10-26 05:59  jsalmon3
+
+	* pingus.vcproj, src/levelset.cpp:
+	  Added levelset, fixed warning
+
+2007-10-26 05:57  grumbel
+
+	* SConstruct, src/levelset.cpp, src/levelset.hpp:
+	  - simple class to handle a levelset
+
+2007-10-26 04:19  grumbel
+
+	* src/file_dialog_item.cpp, src/game_session.cpp,
+	  src/plf_res_mgr.cpp, src/savegame.cpp, src/savegame.hpp,
+	  src/savegame_manager.cpp, src/savegame_manager.hpp,
+	  src/worldmap/level_dot.cpp, src/worldmap/level_dot.hpp:
+	  - fixed bug in the savegame system (levelname instead of filename
+	  was used
+
+2007-10-25 04:58  grumbel
+
+	* TODO, data/levels/halloween/halloween1-grumbel.pingus:
+	  - made level playable, added TODO issue
+
+2007-10-25 04:03  grumbel
+
+	* data/levels/halloween/halloween5-grumbel.pingus:
+	  - added decor
+
+2007-10-25 03:32  grumbel
+
+	* data/levels/halloween/halloween5-grumbel.pingus:
+	  - some adjustments
+
+2007-10-25 03:19  jsalmon3
+
+	* pingus.vcproj, src/addon_menu.cpp,
+	  src/components/menu_button.cpp, src/level_menu.cpp,
+	  src/option_menu.cpp, src/win32/pingus.rc, src/win32/resource.h:
+	  Fixed warnings
+
+2007-10-25 03:14  grumbel
+
+	* data/levels/halloween/halloween5-grumbel.pingus:
+	  - fixed unintented easy solution (maybe)
+
+2007-10-25 03:01  grumbel
+
+	* data/levels/halloween/halloween5-grumbel.pingus:
+	  - made level playable
+
+2007-10-25 03:00  grumbel
+
+	* INSTALL.unix:
+	  - added info about how to install all packages under Ubuntu
+
+2007-10-25 00:43  grumbel
+
+	* data/images/groundpieces/transparent/halloween/pot1.png:
+	  - fixed pot
+
+2007-10-25 00:39  grumbel
+
+	* data/levels/halloween/halloween8-plouj.pingus:
+	  - fixed up a unintended solution
+
+2007-10-25 00:33  grumbel
+
+	* data/levels/halloween/halloween8-plouj.pingus:
+	  - some more polish and cleanup
+
+2007-10-24 23:46  plouj
+
+	* data/levels/halloween/halloween8-plouj.pingus:
+	  made the level completable, but it still needs more work
+
+2007-10-24 22:54  grumbel
+
+	* TODO:
+	  - added bug
+
+2007-10-24 22:53  grumbel
+
+	* data/levels/halloween/halloween2-grumbel.pingus:
+	  - fixed a possible easy alternative solution
+
+2007-10-24 21:29  grumbel
+
+	* TODO:
+	  - little resorting of items
+
+2007-10-24 04:12  plouj
+
+	* data/levels/halloween/halloween8-plouj.pingus:
+	  limited pingus actions to almost the bare minimum
+
+2007-10-24 04:07  plouj
+
+	* data/levels/halloween/halloween8-plouj.pingus:
+	  added a buch of decorations
+
+2007-10-24 03:13  grumbel
+
+	* data/levels/halloween/halloween7-grumbel.pingus:
+	  - added some more solids to block a sha shortcut
+
+2007-10-23 22:33  plouj
+
+	* data/levels/halloween/halloween8-plouj.pingus:
+	  another halloween level - working but ugly and needs more testing
+
+2007-10-23 05:22  grumbel
+
+	* data/data/core.res, data/images/core/menu/menuitem.png,
+	  src/components/menu_button.cpp, src/components/menu_button.hpp,
+	  src/pingus_menu.cpp, src/pingus_menu.hpp:
+	  - added new main menu
+
+2007-10-23 04:35  grumbel
+
+	* TODO:
+	  not a bug, its a waiter not a blocker (animation needs
+	  improvement)
+
+2007-10-23 04:32  grumbel
+
+	* data/levels/README:
+	  - doesn't contain any useful info, outdated
+
+2007-10-23 04:21  plouj
+
+	* TODO:
+	  more bugs to fix - grumbel: please sort these for appropriate
+	  releases
+
+2007-10-23 03:08  plouj
+
+	* data/images/groundpieces/ground/halloween/tree1.png:
+	  removed some extra pixels from the left side of trunk that were
+	  causing pingus to get stuck on the tree
+
+2007-10-22 20:39  grumbel
+
+	* TODO, data/levels/halloween/halloween7-grumbel.pingus:
+	  - added decore
+
+2007-10-22 20:21  grumbel
+
+	* TODO, data/levels/halloween/halloween6-grumbel.pingus:
+	  - added decore
+
+2007-10-22 20:06  grumbel
+
+	* TODO, data/levels/halloween/halloween4-grumbel.pingus:
+	  - added decore
+
+2007-10-22 19:50  grumbel
+
+	* TODO, data/levels/halloween/halloween2-grumbel.pingus:
+	  - added decore to level
+
+2007-10-22 07:22  grumbel
+
+	* TODO:
+	  - added level notes
+
+2007-10-22 06:49  grumbel
+
+	* NEWS, TODO:
+	  - updated TODO and NEWS a bit
+
+2007-10-22 06:48  grumbel
+
+	* data/levels/halloween/halloween5-grumbel.pingus,
+	  data/levels/halloween/halloween7-grumbel.pingus:
+	  - more halloween level
+
+2007-10-22 05:44  grumbel
+
+	* data/levels/halloween/halloween6-grumbel.pingus:
+	  - another halloween level
+
+2007-10-22 05:01  grumbel
+
+	* data/controller/default.scm, src/input/manager.cpp:
+	  - fixed action up/down bindings
+
+2007-10-22 02:45  grumbel
+
+	* data/levels/halloween/halloween4-grumbel.pingus:
+	  - changed level layout a bit
+
+2007-10-22 02:38  grumbel
+
+	* data/levels/halloween/halloween4-grumbel.pingus:
+	  - another halloween level
+
+2007-10-22 01:33  grumbel
+
+	* data/levels/halloween/halloween3-grumbel.pingus:
+	  - another halloween level
+
+2007-10-22 01:32  grumbel
+
+	* src/editor/editor_screen.cpp:
+	  - fixed action properties not showing
+
+2007-10-21 22:00  grumbel
+
+	* data/images/groundpieces/ground/halloween/ground2.png,
+	  data/levels/halloween/halloween2-grumbel.pingus:
+	  - added first playable halloween level
+
+2007-10-21 21:36  grumbel
+
+	* src/editor/editor_level.cpp:
+	  - fixed crash when invalid height is supplied
+
+2007-10-18 23:17  grumbel
+
+	* data/data/hotspots.res, data/images/hotspots/halloween,
+	  data/images/hotspots/halloween/sign-down.png,
+	  data/images/hotspots/halloween/sign-left.png,
+	  data/images/hotspots/halloween/sign-right.png,
+	  data/images/hotspots/halloween/sign-up.png:
+	  - added signs
+
+2007-10-18 23:01  grumbel
+
+	* data/data/groundpieces-transparent.res,
+	  data/images/groundpieces/transparent/halloween/fence1.png,
+	  data/levels/halloween/halloween1-grumbel.pingus:
+	  - added fence
+
+2007-10-18 22:42  grumbel
+
+	* data/data/groundpieces-ground.res,
+	  data/images/groundpieces/ground/halloween/tree1.png,
+	  data/images/groundpieces/ground/halloween/tree2.png,
+	  data/images/groundpieces/ground/halloween/tree3.png,
+	  data/levels/halloween/halloween1-grumbel.pingus:
+	  - added some trees
+
+2007-10-18 18:39  grumbel
+
+	* SConstruct:
+	  rest of Dave Vasilevsky <djvasi@gmail.com> MacOSX patch
+
+2007-10-18 18:01  grumbel
+
+	* src/pingus_main.cpp:
+	  - part of Dave Vasilevsky's <djvasi@gmail.com> MacOSX patch
+
+2007-10-18 17:54  grumbel
+
+	* src/input/usbmouse_driver.cpp, src/lisp/lexer.cpp,
+	  src/lisp/lisp.cpp, src/lisp/parser.cpp,
+	  src/tinygettext/dictionary_manager.cpp,
+	  src/tinygettext/iconv.cpp, src/tinygettext/po_file_reader.cpp:
+	  applied Pavol Rusnak <prusnak@suse.cz> include patch
+
+2007-10-18 17:51  grumbel
+
+	* src/surface.cpp, src/surface.hpp:
+	  - added is_shared()
+
+2007-10-18 17:50  grumbel
+
+	* SConstruct:
+	  - upped version
+
+2007-10-18 08:02  grumbel
+
+	* TODO, data/data/entrances.res, data/data/exits.res,
+	  data/images/entrances/halloween.png,
+	  data/images/exits/halloween.png,
+	  data/images/groundpieces/transparent/halloween/candle1.png,
+	  data/levels/halloween/halloween1-grumbel.pingus:
+	  - added entrance and exits for halloween
+
+2007-10-18 06:58  grumbel
+
+	* data/data/groundpieces-ground.res,
+	  data/data/groundpieces-transparent.res, data/levels/halloween,
+	  data/levels/halloween/halloween1-grumbel.pingus:
+	  - hooked up images and added test level
+
+2007-10-18 06:36  grumbel
+
+	* data/images/groundpieces/ground/halloween,
+	  data/images/groundpieces/ground/halloween/ground1.png,
+	  data/images/groundpieces/ground/halloween/ground2.png,
+	  data/images/groundpieces/ground/halloween/ground3.png,
+	  data/images/groundpieces/ground/halloween/ground4.png,
+	  data/images/groundpieces/ground/halloween/ground5.png,
+	  data/images/groundpieces/ground/halloween/ground6.png,
+	  data/images/groundpieces/ground/halloween/stairs.png,
+	  data/images/groundpieces/ground/halloween/stairs_top.png,
+	  data/images/groundpieces/transparent/halloween,
+	  data/images/groundpieces/transparent/halloween/candle1.png,
+	  data/images/groundpieces/transparent/halloween/gravestone1.png,
+	  data/images/groundpieces/transparent/halloween/gravestone2.png,
+	  data/images/groundpieces/transparent/halloween/gravestone3.png,
+	  data/images/groundpieces/transparent/halloween/gravestone4.png,
+	  data/images/groundpieces/transparent/halloween/gravestone5.png,
+	  data/images/groundpieces/transparent/halloween/hat1.png,
+	  data/images/groundpieces/transparent/halloween/hat2.png,
+	  data/images/groundpieces/transparent/halloween/kirby1.png,
+	  data/images/groundpieces/transparent/halloween/kirby2.png,
+	  data/images/groundpieces/transparent/halloween/kirby3.png,
+	  data/images/groundpieces/transparent/halloween/kirby4.png,
+	  data/images/groundpieces/transparent/halloween/pot1.png,
+	  data/images/groundpieces/transparent/halloween/spiderweb1.png,
+	  data/images/groundpieces/transparent/misc/moos4.png,
+	  data/images/groundpieces/transparent/misc/moos5.png,
+	  data/images/groundpieces/transparent/misc/moos6.png,
+	  data/images/groundpieces/transparent/misc/moos7.png,
+	  data/images/groundpieces/transparent/misc/moos8.png:
+	  - added new halloween graphics
+
+2007-10-11 01:28  plouj
+
+	* src/particles/smoke_particle_holder.cpp:
+	  fixed savannah bug #21277
+
+2007-10-09 03:57  grumbel
+
+	* data/po/pt_BR.po:
+	  - added brazil translation from Fred Maranhão
+	  <fred.maranhao@gmail.com>
+
+2007-10-09 03:56  grumbel
+
+	* data/po/update-po.sh:
+	  - added arguments
+
+2007-10-05 04:09  grumbel
+
+	* data/levels/playable/stone15-grumbel.pingus:
+	  - new level
+
+2007-10-05 04:08  grumbel
+
+	* SConstruct, data/data/core.res,
+	  data/images/core/editor/minimap.png,
+	  data/images/core/menu/marker.png, src/addon_menu.cpp,
+	  src/addon_menu.hpp, src/global_event.cpp, src/level_menu.cpp,
+	  src/level_menu.hpp, src/option_menu.cpp:
+	  - added dummy Add-on and level menu
+
+2007-10-02 15:44  plouj
+
+	* SConstruct:
+	  - copy HOME var. from the calling environment to work around
+	  ccache compilation problems (eg:
+	  https://bugzilla.redhat.com/show_bug.cgi?id=315441)
+
+2007-10-01 17:24  grumbel
+
+	* src/input/evdev_device.cpp, src/input/evdev_driver.cpp:
+	  - catch exception properly when EvdevDevice creation fails
+
+2007-10-01 17:24  grumbel
+
+	* data/controller/default.scm:
+	  - fixed default.scm, evdev was added by accident
+
+2007-10-01 04:24  grumbel
+
+	* data/data/core.res, data/images/core/menu/optionmenu.png,
+	  src/global_event.cpp, src/option_menu.cpp,
+	  src/screen/screen_manager.cpp, src/screen/screen_manager.hpp:
+	  - some more look&feel testing of option menu
+
+2007-10-01 00:55  grumbel
+
+	* src/option_menu.cpp, src/option_menu.hpp:
+	  - some more look&feel testing
+
+2007-10-01 00:19  grumbel
+
+	* SConstruct, TODO, src/global_event.cpp, src/option_menu.cpp,
+	  src/option_menu.hpp:
+	  - some OptionMenu look&feel testing
+
+2007-09-30 16:26  grumbel
+
+	* src/option_menu.cpp, src/option_menu.hpp:
+	  - option menu stuff
+
+2007-09-30 16:07  grumbel
+
+	* src/client.cpp, src/client.hpp, src/components/action_button.cpp,
+	  src/components/hurry_up.cpp, src/components/pingus_counter.cpp,
+	  src/components/playfield.cpp, src/components/smallmap.cpp,
+	  src/components/time_display.cpp, src/console.hpp,
+	  src/credits.cpp, src/credits.hpp, src/demo_session.hpp,
+	  src/display/cursor.cpp, src/display/cursor.hpp,
+	  src/display/display.cpp, src/display/display.hpp,
+	  src/display/drawing_context.cpp, src/display/scene_context.cpp,
+	  src/dummy_screen.hpp, src/editor/editor_panel.cpp,
+	  src/editor/editor_screen.cpp, src/editor/editor_screen.hpp,
+	  src/editor/editor_viewport.cpp, src/editor/level_head.cpp,
+	  src/editor/level_objs.cpp, src/editor/object_selector.cpp,
+	  src/editor/panel.cpp, src/font.cpp, src/font_test_screen.cpp,
+	  src/font_test_screen.hpp, src/fps_counter.hpp,
+	  src/game_session.cpp, src/game_session.hpp, src/global_event.cpp,
+	  src/graphic_context_state.cpp, src/gui/cursor.cpp,
+	  src/gui/cursor.hpp, src/gui/display.cpp, src/gui/display.hpp,
+	  src/gui/game_delta.hpp, src/gui/gui_manager.cpp,
+	  src/gui/gui_screen.cpp, src/gui/gui_screen.hpp,
+	  src/gui/input_debug_screen.cpp, src/gui/input_debug_screen.hpp,
+	  src/gui/root_gui_manager.cpp, src/gui/root_gui_manager.hpp,
+	  src/gui/screen.cpp, src/gui/screen.hpp,
+	  src/gui/screen_manager.cpp, src/gui/screen_manager.hpp,
+	  src/gui/screen_manager_impl.hpp, src/gui/screen_ptr.cpp,
+	  src/gui/screen_ptr.hpp, src/input/sdl_driver.cpp,
+	  src/input_old/controller.cpp, src/layer_manager.hpp,
+	  src/pingus_main.cpp, src/pingus_menu.cpp,
+	  src/pingus_menu_manager.cpp, src/pingus_sub_menu.hpp,
+	  src/result_screen.cpp, src/result_screen.hpp, src/screen,
+	  src/screen/game_delta.hpp, src/screen/gui_screen.cpp,
+	  src/screen/gui_screen.hpp, src/screen/input_debug_screen.cpp,
+	  src/screen/input_debug_screen.hpp, src/screen/screen.cpp,
+	  src/screen/screen.hpp, src/screen/screen_manager.cpp,
+	  src/screen/screen_manager.hpp,
+	  src/screen/screen_manager_impl.hpp, src/screen/screen_ptr.cpp,
+	  src/screen/screen_ptr.hpp, src/screenshot.cpp,
+	  src/start_screen.cpp, src/start_screen.hpp, src/story_screen.cpp,
+	  src/story_screen.hpp, src/world.cpp, src/worldmap/level_dot.cpp,
+	  src/worldmap/manager.cpp, src/worldmap/manager.hpp,
+	  src/worldmap/worldmap.cpp,
+	  src/worldobjs/solid_color_background.cpp,
+	  src/worldobjs/surface_background.cpp:
+	  - some directory reorganisation/cleanup, moved screen classes to
+	  screen/ subdir and display classes to display/
+
+2007-09-30 15:43  grumbel
+
+	* src/global_event.cpp, src/gui/screen_manager.hpp:
+	  - option menu stuff
+
+2007-09-29 18:59  jsalmon3
+
+	* pingus.vcproj:
+	  Added minimap
+
+2007-09-29 18:59  grumbel
+
+	* SConstruct, TODO:
+	  - added OptionMenu (just empty file for now)
+
+2007-09-29 16:28  grumbel
+
+	* TODO:
+	  - fixed issue
+
+2007-09-29 16:17  grumbel
+
+	* TODO, src/editor/object_properties.cpp,
+	  src/editor/object_properties.hpp, src/editor/panel.cpp:
+	  - moved flip/rotate to ObjectProperties
+
+2007-09-29 14:56  grumbel
+
+	* TODO, data/data/core.res, src/editor/editor_screen.cpp,
+	  src/editor/editor_screen.hpp, src/editor/file_dialog.cpp,
+	  src/editor/panel.cpp, src/input/evdev_device.cpp:
+	  - added minimap toggle button and fixed a few more resize bugs
+
+2007-09-29 14:26  grumbel
+
+	* src/editor/editor_screen.cpp, src/editor/editor_screen.hpp,
+	  src/editor/editor_viewport.cpp, src/editor/editor_viewport.hpp,
+	  src/editor/minimap.cpp, src/input/evdev_device.cpp:
+	  - added scroller support to the editor
+
+2007-09-29 13:29  grumbel
+
+	* src/editor/editor_viewport.cpp, src/editor/editor_viewport.hpp,
+	  src/editor/minimap.cpp, src/editor/minimap.hpp:
+	  - added drag&drop of scroll pos to minimap
+	  - changed colors a bit
+
+2007-09-29 13:02  grumbel
+
+	* NEWS, SConstruct, TODO, data/controller/default.scm,
+	  src/editor/editor_screen.cpp, src/editor/editor_screen.hpp,
+	  src/editor/minimap.cpp, src/editor/minimap.hpp:
+	  - added simple minimap to the editor
+
+2007-09-28 21:52  grumbel
+
+	* TODO, src/editor/editor_screen.cpp,
+	  src/editor/editor_viewport.cpp, src/editor/level_properties.cpp,
+	  src/editor/level_properties.hpp,
+	  src/editor/object_properties.cpp,
+	  src/editor/object_properties.hpp, src/editor/object_selector.cpp,
+	  src/editor/object_selector.hpp,
+	  src/editor/object_selector_list.cpp,
+	  src/editor/object_selector_list.hpp, src/gui/screen_manager.cpp:
+	  - added dynamic window resize to the editor
+
+2007-09-28 21:29  grumbel
+
+	* src/math/rect.cpp, src/math/rect.hpp:
+	  - added ostream support
+
+2007-09-28 13:43  grumbel
+
+	* src/SConscript, src/input, src/input/evdev_device.cpp,
+	  src/input/evdev_device.hpp, src/input/evdev_driver.cpp,
+	  src/input/evdev_driver.hpp, src/input/manager.cpp:
+	  - implemented buttons and scroller for evdev
+
+2007-09-28 01:35  grumbel
+
+	* SConstruct, src/input/evdev_device.cpp,
+	  src/input/evdev_device.hpp, src/input/evdev_driver.cpp,
+	  src/input/manager.cpp:
+	  - added some more evdev code (linux only again)
+
+2007-09-28 00:48  grumbel
+
+	* SConstruct, src/input/evdev_driver.cpp,
+	  src/input/evdev_driver.hpp:
+	  - added empty evdev input class (linux only)
+
+2007-09-27 03:12  grumbel
+
+	* src/display/drawing_request.hpp, src/editor/editor_screen.cpp,
+	  src/editor/editor_screen.hpp, src/editor/editor_viewport.cpp,
+	  src/gui/gui_manager.cpp, src/gui/screen.hpp,
+	  src/gui/screen_manager.cpp:
+	  - implemented editor window resize a bit more
+
+2007-09-26 23:00  grumbel
+
+	* data/po/da.po:
+	  Danish language update from Ysangkok <ysangkok@gmail.com>
+
+2007-09-26 02:50  jsalmon3
+
+	* src/sexpr_file_writer.hpp:
+	  Fixed layout in write_enum
+
+2007-09-26 02:25  jsalmon3
+
+	* TODO, src/gui/screen_manager.cpp:
+	  Disable fade-over when fast-mode is active
+
+2007-09-25 21:20  grumbel
+
+	* data/po/da.po:
+	  - ran update-po.sh
+
+2007-09-25 21:18  grumbel
+
+	* data/po/da.po:
+	  - danish translation updates from Ysangkok <ysangkok@gmail.com>
+
+2007-09-23 13:52  grumbel
+
+	* ChangeLog, data/po/cs.po, data/po/da.po, data/po/de.po,
+	  data/po/es.po, data/po/fi.po, data/po/fr.po, data/po/it.po,
+	  data/po/nb.po, data/po/nl.po, data/po/nn.po, data/po/pingus.pot,
+	  data/po/pt.po, data/po/sr.po, data/po/sv.po, data/po/tr.po:
+	  - updated ChangeLog and .po files, ready for release
+
+2007-09-23 13:03  grumbel
+
+	* TODO, data/po/de.po, src/pingus_menu_manager.cpp,
+	  src/result_screen.cpp, src/start_screen.cpp,
+	  src/worldmap/manager.cpp:
+	  - inserted some SDL_Delay() to stop menu screen from using to
+	  much CPU
+	  - spelling fix in de.po
+
+2007-09-23 12:20  grumbel
+
+	* NEWS, src/win32/uce_dirent.h:
+	  - patch to fix alpha define (from Marco Rodrigues
+	  <gothicx@sapo.pt>)
+
+2007-09-23 02:27  jsalmon3
+
+	* src/gui/gui_manager.cpp:
+	  Handle SCROLLER_EVENT_TYPE to suppress a warning
+
+2007-09-23 00:33  grumbel
+
+	* data/po/cs.po, data/po/da.po, data/po/de.po, data/po/es.po,
+	  data/po/fi.po, data/po/fr.po, data/po/it.po, data/po/nb.po,
+	  data/po/nl.po, data/po/nn.po, data/po/pingus.pot, data/po/pt.po,
+	  data/po/sr.po, data/po/sv.po, data/po/tr.po:
+	  - updated language files
+
+2007-09-23 00:32  grumbel
+
+	* src/editor/editor_level.cpp, src/editor/editor_screen.cpp,
+	  src/editor/panel.cpp:
+	  - added docu of keyboard shortcuts
+	  - insert reference to GPL into the levelfile
+
 2007-09-22 17:21  jsalmon3
 
 	* TODO, src/editor/editor_level.cpp, src/editor/editor_screen.cpp:
