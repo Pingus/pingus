@@ -175,8 +175,6 @@ data/levels/tutorial/solid-tutorial-grumbel.pingus:    (levelsize 1000  700)
 
 - implement option menu
 
-- make auto-scroll disableable in fullscreen
-
 - Regenerate Courier fonts for latin-1/2/9
 
 ### Loading font file: system://data/images/fonts/courier_small-iso-8859-9.font
@@ -198,7 +196,8 @@ Font: datadir://images/fonts/courier_small-iso-8859-9.png
 - Loading data/levels/playable/chouser02.pingus in Editor and saving
   it again causes the background to be at the wrong position (caused
   by level lacking position and editor setting a different fallback
-  then in-game)
+  then in-game) [Currently worked around in editor code, should be
+  fixed in the converter]
 
 - frameskip seems broken
 

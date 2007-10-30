@@ -220,7 +220,12 @@ void EditorLevel::load_level(const Pathname& pathname)
       attribs = obj->get_attribs();
 
       // All objects have a position - get that.
-      i->read_vector("position", p);
+      if (!i->read_vector("position", p))
+        { // Workaround for lack of position for background
+          if (i->get_name() == "surface-background")
+            p = Vector3f(0.f, 0.f, -150.f);
+        }
+
       obj->set_orig_pos(p);
       obj->set_pos(p);
 
