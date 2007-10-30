@@ -15,8 +15,7 @@
     (pingus-worldmap (intro_story end_story) pages page text)))
 
 (define levelset-pattern-list
-  '((pingus-levelset title)
-    (pingus-worldmap description)))
+  '((pingus-levelset (title description))))
 
 (define (escape-string str)
   (regexp-substitute/global #f "\"" str 'pre "\\\"" 'post))
