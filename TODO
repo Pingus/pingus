@@ -306,8 +306,6 @@ Important:
 Medium Important:
 =================
 
-- default entrance hotspots to 100
-
 - shrinking the editor window to much causes a crash (limit size as temporary fix)
 
 - implement proper tmpfile Support (save tmp levels to ~/.pingus/tmp/

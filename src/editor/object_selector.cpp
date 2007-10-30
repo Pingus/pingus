@@ -72,6 +72,7 @@ struct Entrance : public ObjectSelectorList::Object
     LevelObj* obj = new LevelObj("entrance", impl);
     obj->set_type("generic");
     obj->set_pos(pos);
+    obj->set_pos_z(110);
     obj->set_direction("misc");
     obj->set_release_rate(150);
     obj->set_owner(0);
@@ -101,16 +102,19 @@ struct Exit : public ObjectSelectorList::Object
 struct Hotspot : public ObjectSelectorList::Object 
 {
   ResDescriptor desc;
+  int z_pos;
   
-  Hotspot(const std::string& name)
+  Hotspot(const std::string& name, int z_pos = 0)
     : Object(Resource::load_sprite(name),
              Resource::load_thumb_sprite(name)),
-      desc(name)
+      desc(name),
+      z_pos(z_pos)
   {}
 
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
     LevelObj* obj = new LevelObj("hotspot", impl);
     obj->set_pos(pos);
+    obj->set_pos_z(z_pos);
     obj->set_res_desc(desc);
     // obj->set_para();
     return obj;
@@ -461,7 +465,7 @@ ObjectSelector::create_entrance()
     {
       //sprite.scale(48, 48);
       if (*i != "entrances/generic")
-        set->add(new Hotspot(*i));
+        set->add(new Hotspot(*i, 100));
     }
 
   return set;
