@@ -97,11 +97,6 @@ Important:
 
 - Levels: All levels lack description
 
-- Water Glitch: the water on the minimap changes color after the
-  colmap is altered for the first time, caused by Sprite() 'stealing'
-  the Canvas and converting it to display format, thus SmallmapImages
-  assumptions about colorformat are wrong
-
 halloween1-grumbel.pingus - circle save - finished - needs testing (easy) - demonstrates a Faller bug
 halloween2-grumbel.pingus - rescue by jump - finished - needs testing (easy)
 halloween3-grumbel.pingus - digg tunnel - finished - needs testing (medium)
@@ -113,6 +108,7 @@ halloween8-plouj.pingus - bridge broken - (hard+)
 
 Meduim Important:
 =================
+
 - The goal should be to provide fullscreen support for most common
   monitors:
 
