@@ -36,6 +36,7 @@ Minimap::Minimap(EditorScreen* editor_, const Rect& rect)
 
 Minimap::~Minimap()
 {
+  delete drawing_context;
 }
 
 void
