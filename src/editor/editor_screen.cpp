@@ -68,14 +68,24 @@ EditorScreen::EditorScreen()
   //rect(Vector2i(Display::get_width() - 244 + 2,  38 + 3 + 62),
   //      Size(240, Display::get_height() - (600 - 495))),
 
-  object_selector = new ObjectSelector(this, Rect());
-  gui_manager->add(object_selector, true);
-
   minimap = new Minimap(this, Rect());
   gui_manager->add(minimap, true);
 
   object_properties = new ObjectProperties(this, Rect(Vector2i(), Size(200, 150)));
   gui_manager->add(object_properties, true);
+
+  action_properties = new ActionProperties(this, Rect());
+  action_properties->hide();
+  gui_manager->add(action_properties, true);
+
+  level_properties = new LevelProperties(this, Rect());
+  level_properties->hide();
+  level_properties->set_level(plf);
+  action_properties->set_level(plf);
+  gui_manager->add(level_properties, true);
+
+  object_selector = new ObjectSelector(this, Rect());
+  gui_manager->add(object_selector, true);
 
   file_load_dialog = new FileDialog(this, Rect(Vector2i(50, 50), 
                                                Size(Display::get_width() - 100, 
@@ -94,18 +104,8 @@ EditorScreen::EditorScreen()
   gui_manager->add(file_save_dialog, true);
 
   viewport->selection_changed.connect(boost::bind(&ObjectProperties::set_objects, object_properties, _1));
-
-  action_properties = new ActionProperties(this, Rect());
-  action_properties->hide();
-  gui_manager->add(action_properties, true);
-
-  level_properties = new LevelProperties(this, Rect());
-  level_properties->hide();
-  level_properties->set_level(plf);
-  action_properties->set_level(plf);
-  gui_manager->add(level_properties, true);
-
   viewport->refresh();
+
   update_layout();
 }
 
