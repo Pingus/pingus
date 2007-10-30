@@ -31,7 +31,10 @@
 namespace WorldObjs {
 
 Entrance::Entrance(const FileReader& reader)
-  : smallmap_symbol(Resource::load_sprite("core/misc/smallmap_entrance"))
+  : type("generic"),
+    release_rate(150),
+    owner_id(0),
+    smallmap_symbol(Resource::load_sprite("core/misc/smallmap_entrance")),
 {
   reader.read_string("type",         type);
   reader.read_int   ("owner-id",     owner_id);
