@@ -6,7 +6,7 @@
  (characters
   "!\"\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`"
   "abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨¨©×«¬­®¯°±²³´µ¶·¸¹÷»¼½¾¿"
-  "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞ‗אבגדהוזחטיךכלםמןנסעףפץצקרשתûü‎‏ÿ")
+  "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞ‗אבגדהוזחטיךכלםמןןנסעףפץצקרשתûü‎‏ÿ")
  (image "images/fonts/verdana11-iso-8859-2.png"))
 
 ;; EOF ;;
