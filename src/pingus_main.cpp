@@ -279,7 +279,7 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Disable music"));
 
   argp.add_group("Language Options:");
-  argp.add_option(364, "language", "LANG",
+  argp.add_option('L', "language", "LANG",
                   _("Select language to use with Pingus"));
   argp.add_option(365, "list-languages", "",
                   _("List all available languages"));
@@ -525,7 +525,7 @@ PingusMain::parse_args(int argc, char** argv)
             cmd_options.font.set(true);
             break;
 
-          case 364: // language
+          case 'L': // language
             cmd_options.language.set(argp.get_argument());
             break;
 
