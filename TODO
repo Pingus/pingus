@@ -95,19 +95,12 @@ Roadmap for Pingus 0.7.2
 Important:
 ==========
 
-- jumper dies sometimes in data/levels/tutorial/snow11-grumbel.scm when hitting the ground (src/actions/faller.cpp:107 is reached)
-
-- halloween1-grumbel.pingus - faller doesn't die even if it should
-  (workaround by moving the groundpiece a bit, fixing falling code is
-  however preferd)
-
-- start_pos is missing in editor
-
 - Levels: All levels lack description
-- check all entrances are properly done
 
-- The goal should be to provide fullscreen support for most common
-  monitors:
+- Water Glitch: the water on the minimap changes color after the
+  colmap is altered for the first time, caused by Sprite() 'stealing'
+  the Canvas and converting it to display format, thus SmallmapImages
+  assumptions about colorformat are wrong
 
 halloween1-grumbel.pingus - circle save - finished - needs testing (easy) - demonstrates a Faller bug
 halloween2-grumbel.pingus - rescue by jump - finished - needs testing (easy)
@@ -118,12 +111,20 @@ halloween6-grumbel.pingus - jump high - finished - needs testing  (easy)
 halloween7-grumbel.pingus - rescue - finished - needs testing - number of pingus wrong (hard--)
 halloween8-plouj.pingus - bridge broken - (hard+)
 
+Meduim Important:
+=================
+- The goal should be to provide fullscreen support for most common
+  monitors:
+
 Monitor Resolutions:
 --------------------
+  1920×1200 (WUXGA)
+  1920x1080 (HD-TV)
+  1680x1050
   1600x1200
-  1920x1080
-  1400x1050
-  1280x1024
+  1400x1050 (Widescreen LCD)
+  1440x900
+  1280x1024 (19" LCD)
   1152x864
   1024x768
 
@@ -169,13 +170,8 @@ data/levels/tutorial/snow8-grumbel.pingus:             (levelsize 1216 1000)
 data/levels/tutorial/snow9-grumbel.pingus:             (levelsize 1500  600)
 data/levels/tutorial/solid-tutorial-grumbel.pingus:    (levelsize 1000  700)
 
-Meduim Important:
-=================
-
-- Water Glitch: the water on the minimap changes color after the
-  colmap is altered for the first time, caused by Sprite() 'stealing'
-  the Canvas and converting it to display format, thus SmallmapImages
-  assumptions about colorformat are wrong
+- start_pos is missing in editor (worked around by centering the view
+  on the entrances)
 
 - implement option menu
 
