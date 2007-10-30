@@ -4,7 +4,7 @@
 (pingus-level 
   (version 2)
   (head 
-    (levelname "Broken Bridge")
+    (levelname "Staircase Maintenance")
     (description "You are so close, yet so far.")
     (author "Michael Ploujnikov	")
     (number-of-pingus 35)
