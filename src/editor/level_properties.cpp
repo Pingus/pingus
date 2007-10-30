@@ -24,6 +24,7 @@
 #include "inputbox.hpp"
 #include "gui_style.hpp"
 #include "editor_level.hpp"
+#include "editor_viewport.hpp"
 #include "level_properties.hpp"
 
 /*
@@ -38,8 +39,9 @@ Playable (unneeded)
 
 namespace Editor {
 
-LevelProperties::LevelProperties(EditorScreen* editor, const Rect& rect)
+LevelProperties::LevelProperties(EditorScreen* editor_, const Rect& rect)
   : GroupComponent(rect),
+    editor(editor_),
     level(0)
 {
   int w = rect.get_width() - 120;
@@ -141,7 +143,8 @@ void
 LevelProperties::on_width_change(const std::string& str)
 {
   Size s = level->get_size();
-  level->set_size(Size(StringUtil::to<int>(str), s.height));  
+  level->set_size(Size(StringUtil::to<int>(str), s.height));
+  editor->get_viewport()->refresh();
 }
 
 void
