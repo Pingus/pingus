@@ -150,12 +150,9 @@ SmallMapImage::update_surface()
 
   canvas.unlock();
 
-  // Manually clone the Surface due to the way SDL handle RGBA->RGBA blits
-  Surface s(canvas.get_width(), canvas.get_height());
-  SDL_SetAlpha(canvas.get_surface(), 0, 0);
-  s.blit(canvas, 0, 0);
-
-  sur = Sprite(s);
+  // FIXME: surface -> clone -> displayFormat leaves room for
+  // optimizations, clone isn't really needed
+  sur = Sprite(canvas.clone());
 }
 
 /* EOF */

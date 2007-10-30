@@ -289,7 +289,17 @@ Surface::clone() const
 {
   SDL_Surface* new_surface = Blitter::create_surface_from_format(impl->surface, 
                                                                  impl->surface->w, impl->surface->h);
-  std::cout << "Blit: " << SDL_BlitSurface(impl->surface, NULL, new_surface, NULL) << std::endl;
+  if (impl->surface->flags & SDL_SRCALPHA)
+    {
+      Uint8 alpha = impl->surface->format->alpha;
+      SDL_SetAlpha(impl->surface, 0, 0);
+      SDL_BlitSurface(impl->surface, NULL, new_surface, NULL);
+      SDL_SetAlpha(impl->surface, SDL_SRCALPHA, alpha);
+    }
+  else
+    {
+      SDL_BlitSurface(impl->surface, NULL, new_surface, NULL);
+    }
  
   return Surface(boost::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface, true)));
 }
