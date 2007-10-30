@@ -150,15 +150,11 @@ SmallMapImage::update_surface()
 
   canvas.unlock();
 
-  Surface s = canvas.clone();
-  std::cout << "========================================" << std::endl;
-  canvas.print(std::cout);
-  std::cout << "----------------------------------------" << std::endl;
-  s.print(std::cout);
-  std::cout << "========================================\n" << std::endl;
+  // Manually clone the Surface due to the way SDL handle RGBA->RGBA blits
+  Surface s(canvas.get_width(), canvas.get_height());
+  SDL_SetAlpha(canvas.get_surface(), 0, 0);
+  s.blit(canvas, 0, 0);
 
-  // FIXME: Should do: sur = Sprite(canvas.clone());
-  // but doesn't work, gives transparent surface as result
   sur = Sprite(s);
 }
 

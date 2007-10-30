@@ -91,7 +91,7 @@ Surface::Surface(int width, int height, SDL_Palette* palette, int colorkey)
 Surface::Surface(int width, int height)
   : impl(new SurfaceImpl())
 {
-  impl->surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 32,
+  impl->surface = SDL_CreateRGBSurface(SDL_SWSURFACE | SDL_SRCALPHA, width, height, 32,
                                        0x000000ff,
                                        0x0000ff00,
                                        0x00ff0000,
@@ -363,13 +363,27 @@ Surface::print(std::ostream& out)
     % ((impl->surface->flags & SDL_SRCCOLORKEY) ? "SRCCOLORKEY " : "")
     % ((impl->surface->flags & SDL_SRCALPHA) ? "SRCALPHA " : "")
     % impl->surface->format->palette
-    % impl->surface->format->BitsPerPixel;
+    % static_cast<int>(impl->surface->format->BitsPerPixel);
 
   if (impl->surface->flags & SDL_SRCCOLORKEY)
     out << "Colorkey: " << (int)impl->surface->format->colorkey << std::endl;
 
   if (impl->surface->flags & SDL_SRCALPHA)
     out << "Alpha: " << (int)impl->surface->format->alpha << std::endl;
+
+  if (0)
+    {
+      SDL_LockSurface(impl->surface);
+      Uint8* pixels = static_cast<Uint8*>(impl->surface->pixels);
+      for(int i = 0; i < impl->surface->pitch * impl->surface->h; i += 4)
+        out << boost::format("(%3d %3d %3d %3d) ")
+          % (int)pixels[i+0]
+          % (int)pixels[i+1]
+          % (int)pixels[i+2]
+          % (int)pixels[i+3];
+      out << std::endl;
+      SDL_UnlockSurface(impl->surface);
+    }
 }
 
 /* EOF */

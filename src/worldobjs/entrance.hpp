@@ -41,7 +41,7 @@ public:
   enum EntranceDirection { LEFT, RIGHT, MISC };
 protected:
   EntranceDirection direction;
-  Vector3f            pos;
+  Vector3f          pos;
   int               release_rate;
   int               owner_id;
 
