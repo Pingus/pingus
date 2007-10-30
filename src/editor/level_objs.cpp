@@ -112,7 +112,7 @@ LevelObj::draw(DrawingContext &gc)
 #endif
       else if (attribs & HAS_COLOR && section_name == "solidcolor-background")
         { // FIXME: Should we have the object type in non-string form?
-          gc.draw_fillrect(Rect(Vector2i((int)pos.x, (int)pos.y), Size(256, 256)), color, pos.z);
+          gc.draw_fillrect(get_rect(), color, pos.z);
           gc.draw(sprite, pos);
         }
       else
@@ -278,6 +278,18 @@ LevelObj::load_generic_surface()
   if (section_name == "entrance")
     {
       desc.res_name = "entrances/generic";
+      desc.modifier = ResourceModifierNS::ROT0;
+      sprite = Resource::load_sprite(desc);
+    }
+  else if (section_name == "solidcolor-background")
+    {
+      desc.res_name = "core/editor/solidcolorbackground";
+      desc.modifier = ResourceModifierNS::ROT0;
+      sprite = Resource::load_sprite(desc);
+    }
+  else if (section_name == "starfield-background")
+    {
+      desc.res_name = "core/editor/starfield";
       desc.modifier = ResourceModifierNS::ROT0;
       sprite = Resource::load_sprite(desc);
     }
