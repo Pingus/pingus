@@ -37,7 +37,8 @@ else
         -name "*.po" -o \
         -name "*.worldmap" -o \
         -name "*.res" -o \
-        -name "*.pingus" \
+        -name "*.pingus" -o \
+        -name "*.levelset" \
         \) -exec cp --parents -v {} "$DATADIR" \;
         
    echo ""

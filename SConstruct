@@ -434,6 +434,11 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
     fatal_error = ""
     reports = ""
 
+    # FIXME: Seems to require a rather new version of SCons
+    # ret = config.CheckBuilder(context, None, "C++")
+    # if ret != "":
+    #   reports += "  * C++ Compiler missing: " + ret
+
     if not env['with_linuxusbmouse']:
         reports += "  * Linux USB mouse support: disabled\n"
     else:
