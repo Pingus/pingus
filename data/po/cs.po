@@ -3,7 +3,7 @@
 # translation of pingus.po to czech
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR Ingo Ruhnke
-# Tomá¹ Bláha, 2003, 2004
+# Tomá¹ Bláha, 2003, 2004, 2007
 #
 # #-#-#-#-#  cs.po (PACKAGE VERSION)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
@@ -22,8 +22,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  cs.po (cs)  #-#-#-#-#\n"
-"X-Generator: KBabel 1.0\n"
 
 #: src/game_time.cpp:66
 msgid "unlimited"
@@ -31,7 +29,7 @@ msgstr "neomezený"
 
 #: src/story_screen.cpp:40
 msgid "skip"
-msgstr ""
+msgstr "pøeskoèit"
 
 #: src/pingu_enums.cpp:34
 msgid "Angel"
@@ -39,7 +37,7 @@ msgstr "Andìl"
 
 #: src/pingu_enums.cpp:35
 msgid "Basher"
-msgstr "Prohrabávaè"
+msgstr "Prorá¾eè"
 
 #: src/pingu_enums.cpp:36
 msgid "Blocker"
@@ -100,7 +98,7 @@ msgstr "Rake»ák"
 
 #: src/pingu_enums.cpp:50
 msgid "Slider"
-msgstr "Klouzaè"
+msgstr "Kluzák"
 
 #: src/pingu_enums.cpp:51
 msgid "Smashed"
@@ -163,33 +161,32 @@ msgid "Displays this help"
 msgstr "Zobrazí tuto nápovìdu"
 
 #: src/pingus_main.cpp:246
-#, fuzzy
 msgid "Print version number and exit"
-msgstr "Vypsat èíslo verze a ukonèit"
+msgstr "Vypí¹e èíslo verze a ukonèí."
 
 #: src/pingus_main.cpp:248
 msgid "Display:"
-msgstr ""
+msgstr "Zobrazení:"
 
 #: src/pingus_main.cpp:250
 msgid "Start in Window Mode"
-msgstr "Spustit v oknì"
+msgstr "Spustí v oknì."
 
 #: src/pingus_main.cpp:252
 msgid "Start in Fullscreen"
-msgstr "Spustit pøes celou obrazovku"
+msgstr "Spustí pøes celou obrazovku."
 
 #: src/pingus_main.cpp:254
 msgid "Allow Window resize (buggy)"
-msgstr ""
+msgstr "Umo¾ní zmìnu velikosti okna (s chybami)."
 
 #: src/pingus_main.cpp:256
 msgid "Enable software cursor"
-msgstr "Zapnout softwarový kursor"
+msgstr "Zapne softwarový kursor."
 
 #: src/pingus_main.cpp:258
 msgid "Set the resolution for pingus (default: 800x600)"
-msgstr "Nastavit rozli¹ení (výchozí: 800x600)"
+msgstr "Nastaví rozli¹ení. (výchozí: 800x600)"
 
 #: src/pingus_main.cpp:260
 msgid "Sound:"
@@ -197,131 +194,127 @@ msgstr "Zvuk:"
 
 #: src/pingus_main.cpp:262
 msgid "Disable sound"
-msgstr "Vypnout zvuk"
+msgstr "Vypne zvuk."
 
 #: src/pingus_main.cpp:264
 msgid "Disable music"
-msgstr "Vypnout hudbu"
+msgstr "Vypne hudbu."
 
 #: src/pingus_main.cpp:268
 msgid "Select language to use with Pingus"
-msgstr ""
+msgstr "Vybere jazyk pro hru."
 
 #: src/pingus_main.cpp:270
 msgid "List all available languages"
-msgstr ""
+msgstr "Vypí¹e v¹echny dostupné jazyky."
 
 #: src/pingus_main.cpp:274
-#, fuzzy
 msgid "Loads the level editor"
-msgstr "..:: Spustit editor úrovní ::.."
+msgstr "Spustí editor úrovní."
 
 #: src/pingus_main.cpp:276
 msgid "Test a font"
-msgstr ""
+msgstr "Otestuje font."
 
 #: src/pingus_main.cpp:278
 msgid "Shows the credits"
-msgstr ""
+msgstr "Spustí závìreèné titulky."
 
 #: src/pingus_main.cpp:280
-#, fuzzy
 msgid "Misc Options:"
-msgstr "Volby:"
+msgstr "Rùzná nastavení:"
 
 #: src/pingus_main.cpp:281
 msgid "PATH"
-msgstr ""
+msgstr "CESTA"
 
 #: src/pingus_main.cpp:282
 msgid "Set the path to load the data files to 'path'"
-msgstr ""
+msgstr "Nastaví cestu k datovým souborùm."
 
 #: src/pingus_main.cpp:285
 msgid "Disable automatic scrolling"
-msgstr "Vypnout automatický posuv"
+msgstr "Vypne automatický posuv."
 
 #: src/pingus_main.cpp:287
 msgid "Don't read ~/.pingus/config"
-msgstr "Zakázat naètení ~/.pingus/config"
+msgstr "Zaká¾e naètení ~/.pingus/config."
 
 #: src/pingus_main.cpp:288
-#, fuzzy
 msgid "FILE"
-msgstr "SOUBOR     "
+msgstr "SOUBOR"
 
 #: src/pingus_main.cpp:289
-#, fuzzy
 msgid ""
 "Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
 "speed up the game on slower machines"
-msgstr "Sní¾it zátì¾ CPU, co¾ mù¾e zrychlit hru na pomalých strojích"
+msgstr ""
+"Naète konfiguraci ze souboru (výchozí: ~/.pingus/config) redukuje"
+"zatí¾ení CPU, co¾ mù¾e urychlit hru na pomalej¹ích strojích."
 
 #: src/pingus_main.cpp:292
 msgid "Uses the controller given in FILE"
-msgstr "Pou¾ít ovladaè ze zadaného souboru"
+msgstr "Pou¾ije ovladaè ze zadaného souboru."
 
 #: src/pingus_main.cpp:294
 msgid "Debugging and experimental stuff:"
 msgstr "Ladicí a experimentální volby:"
 
 #: src/pingus_main.cpp:296
-#, fuzzy
 msgid "Enables some features, only interesting to programmers"
-msgstr "Zapnout nìkteré vlastnosti potøebné jen pro programátory"
+msgstr "Zapne nìkteré vlastnosti potøebné jen pro programátory."
 
 #: src/pingus_main.cpp:299
-#, fuzzy
 msgid "Load a custom worldmap"
-msgstr "Nahrát mapu svìta ze souboru"
+msgstr "Nahraje mapu svìta ze souboru."
 
 #: src/pingus_main.cpp:301
-#, fuzzy
 msgid ""
 "Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
 "actions, sound, resources, gui, input, pathmgr"
-msgstr "nastavení jsou: tiles, gametime, actions, sound, resources, gui,"
+msgstr ""
+"Zapne výstup ladicích hlá¹ek, mo¾ná nastavení jsou: tiles, gametime, "
+"actions, sound, resources, gui, input, pathmgr"
 
 #: src/pingus_main.cpp:305
 msgid "Skip at least N frames, larger values speed the game up"
-msgstr "Pøeskoèit alespoò N snímkù, vy¹¹í hodnota zrychluje hru"
+msgstr "Bude pøeskakovat alespoò N snímkù, vy¹¹í hodnota zrychluje hru."
 
 #: src/pingus_main.cpp:307
 msgid "Skip at most N frames"
-msgstr "Pøeskoèit maximálnì N snímkù"
+msgstr "Bude pøeskakovat maximálnì N snímkù."
 
 #: src/pingus_main.cpp:309
 msgid "Set both min and max frameskip to N"
-msgstr "Nastavit maximální i minimální poèet snímkù k pøeskoèení na N"
+msgstr "Nastaví maximální i minimální poèet snímkù k pøeskoèení na N."
 
 #: src/pingus_main.cpp:311
 msgid "Set the game speed (0=fastest, >0=slower)"
-msgstr "Nastavit rychlost hry (0=nejrychlej¹í, >0=pomalej¹í)"
+msgstr "Nastaví rychlost hry. (0 = nejrychlej¹í, >0 = pomalej¹í)"
 
 #: src/pingus_main.cpp:313
 msgid "Set the size of the map tiles (default: 32)"
-msgstr "Nastavit velikost dílku mapy (výchozí: 32)"
+msgstr "Nastaví velikost dílku mapy. (výchozí: 32)"
 
 #: src/pingus_main.cpp:315
 msgid "Disable some cpu intensive features"
-msgstr "Vypnout nìkteré operace nároèné na CPU"
+msgstr "Vypne nìkteré operace nároèné na CPU."
 
 #: src/pingus_main.cpp:319
 msgid "Demo playing and recording:"
 msgstr "Nahrávání a pøehrávání dem:"
 
 #: src/pingus_main.cpp:321
-#, fuzzy
 msgid "Plays a demo session"
-msgstr "Pøehrát demo ze souboru"
+msgstr "Pøehraje demo."
 
 #: src/pingus_main.cpp:323
 msgid "Record demos for each played level"
-msgstr "Zaznamenat demo ka¾dé odehrané úrovnì"
+msgstr "Zaznamená demo ka¾dé odehrané úrovnì"
 
 #: src/pingus_main.cpp:715
 msgid "Error caught from Pingus: "
-msgstr "Odchycena chyba v Pingus: "
+msgstr "Byla zachycena chyba v Pingus: "
 
 #: src/pingus_main.cpp:719
 msgid "Pingus: Out of memory!"
@@ -352,9 +345,8 @@ msgid "-Porting (Win32)"
 msgstr "-Pøenos na Win32"
 
 #: src/credits.cpp:109
-#, fuzzy
 msgid "-Porting (MacOSX)"
-msgstr "-Pøenos na Win32"
+msgstr "-Pøenos na MacOSX"
 
 #: src/credits.cpp:114
 msgid "-Gfx"
@@ -419,11 +411,11 @@ msgstr "Znovu"
 
 #: src/result_screen.cpp:181
 msgid "Success!"
-msgstr "Úspìch!"
+msgstr "Úspìl jsi!"
 
 #: src/result_screen.cpp:188
 msgid "Failure!"
-msgstr "©patnì!"
+msgstr "Neuspìl jsi!"
 
 #: src/result_screen.cpp:197
 msgid "Perfect! You saved everyone possible - great!"
@@ -490,30 +482,29 @@ msgid "Time left: "
 msgstr "Zbývající èas: "
 
 #: src/components/pingus_counter.cpp:49
-#, fuzzy, c-format, boost-format
+#, c-format, boost-format
 msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
-msgstr "Vypu¹tìno:%3d/%-3d   Venku:%3d   Doma:%3d/%-3d"
+msgstr "Vypu¹tìno:%3d/%d   Venku:%3d   Doma:%3d/%d"
 
 #: src/file_dialog_item.cpp:83
-#, fuzzy
 msgid "Difficulty: "
 msgstr "Obtí¾nost: "
 
 #: src/file_dialog_item.cpp:87 src/file_dialog_item.cpp:117
 msgid "Finished!"
-msgstr ""
+msgstr "Dokonèeno!"
 
 #: src/file_dialog_item.cpp:91
 msgid "Not finished!"
-msgstr ""
+msgstr "Nedokonèeno!"
 
 #: src/file_dialog_item.cpp:106
 msgid "Not Finished"
-msgstr ""
+msgstr "Nedokonèeno"
 
 #: src/file_dialog_item.cpp:111
 msgid "Not Accessible"
-msgstr ""
+msgstr "Není pøístupný"
 
 #: src/config.cpp:72
 msgid "Couldn't open: "
@@ -546,6 +537,14 @@ msgid ""
 "Rotate 90 degree\n"
 "Rotate 270 degree\n"
 msgstr ""
+"Vybrat v¹e\n"
+"Zru¹it výbìr\n"
+"Vyzdvihnout objekty\n"
+"Zatlaèit objekty\n"
+"Zatlaèit objekty dospod\n"
+"Vyzdvihnout objekty na povrch\n"
+"Otoèit o 90 stupòù\n"
+"Otoèit o 270 stupòù\n"
 
 #: src/editor/editor_screen.cpp:214
 msgid ""
@@ -557,6 +556,13 @@ msgid ""
 "Move objects left\n"
 "Move objects right\n"
 msgstr ""
+"Pøevrátit objekt horizontálnì\n"
+"Pøevrátit object vertically\n"
+"Smazat v¹echny vyznaèené objekty\n"
+"Posunout objekty nahoru\n"
+"Posunout objekty dolu\n"
+"Posunout objekty vlevo\n"
+"Posunout objekty vpravo\n"
 
 #: src/editor/editor_screen.cpp:226
 msgid ""
@@ -578,313 +584,298 @@ msgid ""
 "to the GPL, if you want to have your level under a different license, you "
 "have to change that reference.\n"
 msgstr ""
+"Mìl byste pojmenovávat soubory úrovní systematicky, tedy podle jejich tématu, "
+"èísla a své pøezdívky:\n"
+"\n"
+"     <název úrovnì><èíslo>-<tvùrce>.pingus\n"
+"\n"
+"Tak¾e a¾ vytvoøíte druhou úroveò s kamenným tématem, nazvìte ji: stone2-"
+"jméno.pingus\n"
+"\n"
+"Pokud vytvoøíte úroveò a chtìl byste ji mít zaøazenou do hry, po¹lete ji "
+"mailem na:\n"
+"\n"
+"     pingus-devel@nongnu.org\n"
+"\n"
+"Pouze úrovnì publikované pod GPL jsou pøijímány k zaøazení. Editor automaticky "
+"vkládá odkaz na GPL, \n"
+"tak¾e pokud chcete mít úroveò pod jinou licencí, mìl byste tento odkaz zmìnit.\n"
 
 #: src/editor/panel.cpp:153
-#, fuzzy
 msgid "    New level"
-msgstr "F5 - nahrát úroveò"
+msgstr "    Nová úroveò"
 
 #: src/editor/panel.cpp:155
 msgid "Open level..."
-msgstr ""
+msgstr "Otevøít úroveò..."
 
 #: src/editor/panel.cpp:157
-#, fuzzy
 msgid "Save level..."
-msgstr "Ulo¾it úroveò (F6)"
+msgstr "Ulo¾it úroveò..."
 
 #: src/editor/panel.cpp:159
-#, fuzzy
 msgid "Save level as..."
-msgstr "Ulo¾it úroveò (F6)"
+msgstr "Ulo¾it úroveò jako..."
 
 #: src/editor/panel.cpp:162
 msgid "Play level..."
-msgstr ""
+msgstr "Hrát úroveò..."
 
 #: src/editor/panel.cpp:165
 msgid "Configure actions"
-msgstr ""
+msgstr "Nastavit akce"
 
 #: src/editor/panel.cpp:167
-#, fuzzy
 msgid "Configure level"
-msgstr "Ulo¾it úroveò (F6)"
+msgstr "Nastavit úroveò"
 
 #: src/editor/panel.cpp:169
-#, fuzzy
 msgid "Display object properties"
-msgstr "Upravit vlastnosti objektu"
+msgstr "Zobrazit vlastnosti objektu"
 
 #: src/editor/panel.cpp:171
 msgid "Show object insertion window"
-msgstr ""
+msgstr "Zobrazit okno pro vkládání objektù"
 
 #: src/editor/panel.cpp:174
-#, fuzzy
 msgid "Duplicate the selected objects"
-msgstr "Duplikovat vybraný objekt (d)"
+msgstr "Duplikovat vybrané objekty"
 
 #: src/editor/panel.cpp:176
-#, fuzzy
 msgid "Delete the selected objects"
-msgstr "Delete - odstranit vybraný objekt"
+msgstr "Vymazat vybrané objekty"
 
 #: src/editor/panel.cpp:179
 msgid "Raise object to top"
-msgstr ""
+msgstr "Zdvihnout objekt navrch"
 
 #: src/editor/panel.cpp:181
 msgid "Raise object"
-msgstr ""
+msgstr "Zdvihnout objekt"
 
 #: src/editor/panel.cpp:183
 msgid "Lower object"
-msgstr ""
+msgstr "Zatlaèit objekt"
 
 #: src/editor/panel.cpp:185
 msgid "Lower object to bottom"
-msgstr ""
+msgstr "Zatlaèit objekt dospod"
 
 #: src/editor/panel.cpp:188
 msgid "Flip object horizontally"
-msgstr ""
+msgstr "Pøeklopit objekt horizontálnì"
 
 #: src/editor/panel.cpp:190
 msgid "Flip object vertically"
-msgstr ""
+msgstr "Pøeklopit objet vertikálnì"
 
 #: src/editor/panel.cpp:193
 msgid "Rotate object -90 degree"
-msgstr ""
+msgstr "Otoèit objekt o -90 stupòù"
 
 #: src/editor/panel.cpp:195
 msgid "Rotate object 90 degree"
-msgstr ""
+msgstr "Otoèit objekt o 90 stupòù"
 
 #: src/editor/panel.cpp:202
-#, fuzzy
 msgid "Display help"
-msgstr "Zobrazí tuto nápovìdu"
+msgstr "Zobrazit nápovìdu"
 
 #: src/editor/object_properties.cpp:41 src/editor/object_properties.cpp:387
 msgid "Object:"
-msgstr ""
+msgstr "Objekt:"
 
 #: src/editor/object_properties.cpp:42 src/editor/object_properties.cpp:388
 msgid "Nothing selected"
-msgstr ""
+msgstr "Prázdný výbìr"
 
 #: src/editor/object_properties.cpp:51
-#, fuzzy
 msgid "Transparent"
-msgstr "-Pøeklad"
+msgstr "Prùhledné"
 
 #: src/editor/object_properties.cpp:52
-#, fuzzy
 msgid "Solid"
-msgstr "Klouzaè"
+msgstr "Pevné podlo¾í"
 
 #: src/editor/object_properties.cpp:53
-#, fuzzy
 msgid "Ground"
-msgstr "Zvuk:"
+msgstr "Zemina"
 
 #: src/editor/object_properties.cpp:54
-#, fuzzy
 msgid "Bridge"
-msgstr "Mostaø"
+msgstr "Most"
 
 #: src/editor/object_properties.cpp:55
-#, fuzzy
 msgid "Water"
-msgstr "Èekající"
+msgstr "Voda"
 
 #: src/editor/object_properties.cpp:56
-#, fuzzy
 msgid "Lava"
-msgstr "Opustit?"
+msgstr "Láva"
 
 #: src/editor/object_properties.cpp:57
 msgid "Remove"
-msgstr ""
+msgstr "Odstranit"
 
 #: src/editor/object_properties.cpp:62
-#, fuzzy
 msgid "Direction:"
-msgstr "Volby:"
+msgstr "Smìr:"
 
 #: src/editor/object_properties.cpp:64
 msgid "Left"
-msgstr ""
+msgstr "Vlevo"
 
 #: src/editor/object_properties.cpp:65
-#, fuzzy
 msgid "Misc"
-msgstr "-Hudba"
+msgstr "Ostatní"
 
 #: src/editor/object_properties.cpp:66
 msgid "Right"
-msgstr ""
+msgstr "Vpravo"
 
 #: src/editor/object_properties.cpp:71
 msgid "ReleaseRate:"
-msgstr ""
+msgstr "Rychlost vypou¹tìní:"
 
 #: src/editor/object_properties.cpp:88
 msgid "Para-X:"
-msgstr ""
+msgstr "Para-X:"
 
 #: src/editor/object_properties.cpp:89
 msgid "Para-Y:"
-msgstr ""
+msgstr "Para-Y:"
 
 #: src/editor/object_properties.cpp:97
 msgid "Scroll-X:"
-msgstr ""
+msgstr "Posun-X:"
 
 #: src/editor/object_properties.cpp:98
 msgid "Scroll-Y:"
-msgstr ""
+msgstr "Posun-Y:"
 
 #: src/editor/object_properties.cpp:106
 msgid "Owner Id:"
-msgstr ""
+msgstr "Id vlastníka:"
 
 #: src/editor/object_properties.cpp:110
 msgid "Z-Pos:"
-msgstr ""
+msgstr "Z-Poz:"
 
 #: src/editor/object_properties.cpp:117
 msgid "Color:"
-msgstr ""
+msgstr "Barva:"
 
 #: src/editor/object_properties.cpp:129
 msgid "Small Stars:"
-msgstr ""
+msgstr "Malé hvìzdy:"
 
 #: src/editor/object_properties.cpp:132
 msgid "Middle Stars:"
-msgstr ""
+msgstr "Støední hvìzdy:"
 
 #: src/editor/object_properties.cpp:135
 msgid "Large Stars:"
-msgstr ""
+msgstr "Velké hvìzdy:"
 
 #: src/editor/object_properties.cpp:143
 msgid "Repeat:"
-msgstr ""
+msgstr "Opakování:"
 
 #: src/editor/object_properties.cpp:393
 msgid "Object: [Group]"
-msgstr ""
+msgstr "Objekt: [Skupina]"
 
 #: src/editor/object_properties.cpp:394
 msgid "Group not supported"
-msgstr ""
+msgstr "Skupina není podporována"
 
 #: src/editor/object_properties.cpp:399
 msgid "Object: "
-msgstr ""
+msgstr "Objekt: "
 
 #: src/editor/file_dialog.cpp:56
 msgid "Datadir"
-msgstr ""
+msgstr "Datový adresáø"
 
 #: src/editor/file_dialog.cpp:58
 msgid "Userdir"
-msgstr ""
+msgstr "U¾ivatelský adresáø"
 
 #: src/editor/file_dialog.cpp:61
 msgid "Open"
-msgstr ""
+msgstr "Otevøít"
 
 #: src/editor/file_dialog.cpp:61 src/file_dialog.cpp:262
-#, fuzzy
 msgid "Save"
-msgstr "Zachránìno: "
+msgstr "Ulo¾it"
 
 #: src/editor/file_dialog.cpp:64 src/file_dialog.cpp:34
 msgid "Cancel"
-msgstr ""
+msgstr "Zru¹it"
 
 #: src/editor/file_dialog.cpp:75
-#, fuzzy
 msgid "Filename:"
-msgstr "Jméno souboru: "
+msgstr "Jméno souboru:"
 
 #: src/editor/file_dialog.cpp:76
 msgid "Pathname:"
-msgstr ""
+msgstr "Cesta:"
 
 #: src/editor/file_dialog.cpp:102
 msgid "Open a level"
-msgstr ""
+msgstr "Otevøít úroveò"
 
 #: src/editor/file_dialog.cpp:102
-#, fuzzy
 msgid "Save your level"
-msgstr "Ulo¾it úroveò (F6)"
+msgstr "Ulo¾it úroveò"
 
 #: src/editor/object_selector.cpp:307
-#, fuzzy
 msgid "Entrance"
-msgstr "e - Vchod"
+msgstr "Vchod"
 
 #: src/editor/object_selector.cpp:308
-#, fuzzy
 msgid "Groundpiece (ground)"
-msgstr "g - Zemì (prohrabatelná)"
+msgstr "Povrch (zemina)"
 
 #: src/editor/object_selector.cpp:309
-#, fuzzy
 msgid "Groundpiece (solid)"
-msgstr "s - Zemì (pevná)"
+msgstr "Povrch (pevné podlo¾í)"
 
 #: src/editor/object_selector.cpp:310
-#, fuzzy
 msgid "Groundpiece (bridge)"
-msgstr "b - Zemì (most)"
+msgstr "Povrch (most)"
 
 #: src/editor/object_selector.cpp:311
-#, fuzzy
 msgid "Groundpiece (transparent)"
-msgstr "n - Zemì (prùhledná)"
+msgstr "Povrch (prùhledný)"
 
 #: src/editor/object_selector.cpp:312
-#, fuzzy
 msgid "Groundpiece (remove)"
-msgstr "r - Zemì (odstraòovaè)"
+msgstr "Povrch (odstraòovaè)"
 
 #: src/editor/object_selector.cpp:313
-#, fuzzy
 msgid "Hotspot"
-msgstr "h - Hotspot"
+msgstr "Hotspot"
 
 #: src/editor/object_selector.cpp:314
-#, fuzzy
 msgid "Background"
-msgstr "z - Pozadí"
+msgstr "Pozadí"
 
 #: src/editor/object_selector.cpp:317
-#, fuzzy
 msgid "Liquid"
-msgstr "l - Tekutina"
+msgstr "Tekutina"
 
 #: src/editor/object_selector.cpp:318
-#, fuzzy
 msgid "Trap"
-msgstr "t - Pasti"
+msgstr "Past"
 
 #: src/editor/object_selector.cpp:319
-#, fuzzy
 msgid "Weather"
-msgstr "w - Poèasí"
+msgstr "Poèasí"
 
 #: src/editor/object_selector.cpp:320
-#, fuzzy
 msgid "Special Object"
-msgstr "-Zvlá¹tní podìkování"
+msgstr "Zvlá¹tní objekt"
 
 #: src/worldmap/worldmap.cpp:425
 msgid "...walking..."
@@ -903,7 +894,6 @@ msgid "Leave?"
 msgstr "Opustit?"
 
 #: src/worldmap/manager.cpp:207
-#, fuzzy
 msgid "Enter?"
 msgstr "Vstoupit?"
 
@@ -913,7 +903,7 @@ msgstr "zamknuto"
 
 #: src/file_dialog.cpp:262
 msgid "Load"
-msgstr ""
+msgstr "Nahrát"
 
 #: src/exit_menu.cpp:46 src/exit_menu.cpp:50
 msgid "Yes"
@@ -941,50 +931,47 @@ msgstr "..:: Na shledanou ::.."
 
 #: src/pingus_menu.cpp:63
 msgid "Level Editor"
-msgstr ""
+msgstr "Editor úrovní"
 
 #: src/pingus_menu.cpp:64
-#, fuzzy
 msgid "..:: Create your own levels ::.."
-msgstr "..:: Spustit pøispìnou úroveò ::.."
+msgstr "..:: Vytvoøit vlastní úroveò ::.."
 
 #: src/pingus_menu.cpp:69
-#, fuzzy
 msgid ""
 "Contrib\n"
 "Levels"
-msgstr "Pøíspìvky"
+msgstr ""
+"Dal¹í"
+"úrovnì"
 
 #: src/pingus_menu.cpp:70
-#, fuzzy
 msgid "..:: Play User Built levels ::.."
-msgstr "..:: Spustit pøispìnou úroveò ::.."
+msgstr "..:: Spustit úroveò od u¾ivatelù ::.."
 
 #: src/pingus_menu.cpp:75
-#, fuzzy
 msgid "Story"
-msgstr "-Pøíbìh"
+msgstr "Pøíbìh"
 
 #: src/pingus_menu.cpp:76
-#, fuzzy
 msgid "..:: Start the story ::.."
-msgstr "..:: Spustit hru ::.."
+msgstr "..:: Spustit hru s pøíbìhem ::.."
 
 #: src/pingus_menu.cpp:81
-#, fuzzy
 msgid "Multiplayer"
 msgstr "Více hráèù"
 
 #: src/pingus_menu.cpp:82
-#, fuzzy
 msgid "..:: Multiplayer Match ::.."
-msgstr "..:: Více hráèù... experimentální zále¾itost ::.."
+msgstr "..:: Hra pro více hráèù ::.."
 
 #: src/pingus_menu.cpp:85
 msgid ""
 "..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
 "fullscreen   ::   F12: screenshot ::.."
 msgstr ""
+"..:: Ctrl-g: uchopit my¹ :: F10: poèítadlo fps :: F11: "
+"pøes celou obrazovku :: F12: sejmout obrazovku ::.."
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
 msgid "If the way is blocked, bash away"
@@ -1077,11 +1064,11 @@ msgstr ""
 
 #: data/levels/tutorial/placeholder.pingus:5
 msgid "--- Empty Placeholder Level ---"
-msgstr ""
+msgstr "--- Prázdný zástupce úrovnì ---"
 
 #: data/levels/tutorial/placeholder.pingus:6
 msgid "This Level is not playable and EMPTY!"
-msgstr ""
+msgstr "Tato úroveò není hratelná a je PRÁZDNÁ!"
 
 #: data/levels/tutorial/snow10-grumbel.pingus:5
 msgid "Panic Island (float/bash)"
@@ -1307,11 +1294,11 @@ msgstr ""
 
 #: data/worldmaps/tutorial.worldmap:4
 msgid "Tutorial Island"
-msgstr ""
+msgstr "Výukový ostrov"
 
 #: data/worldmaps/tutorial.worldmap:6
 msgid "Learn the basics"
-msgstr ""
+msgstr "Nauè se základy"
 
 #: data/worldmaps/tutorial.worldmap:15
 msgid "The Journey Begins"
@@ -1322,7 +1309,6 @@ msgid "The Journey Continues"
 msgstr "Výprava pokraèuje"
 
 #: data/worldmaps/tutorial.worldmap:22
-#, fuzzy
 msgid ""
 "For a long time, the Pingus have lived happily in peace on the South Pole "
 "along with all the other animals. Everything was in balance and it seemed "
@@ -1335,7 +1321,6 @@ msgstr ""
 "Pingové byli ¹tastní a zdálo se, ¾e tomu u¾ bude nav¾dy.\n"
 
 #: data/worldmaps/tutorial.worldmap:30
-#, fuzzy
 msgid ""
 "But then one day, things began to change slowly: the sky got darker and the "
 "earth got warmer. Firstly, they thought this was just a normal fluctuation "
@@ -1348,7 +1333,6 @@ msgstr ""
 "zhor¹ovala."
 
 #: data/worldmaps/tutorial.worldmap:38
-#, fuzzy
 msgid ""
 "The snow began to melt away in a few areas and food became an issue. Other "
 "animals tried to leave the region to search for colder areas, but the Pingus "
@@ -1361,7 +1345,6 @@ msgstr ""
 "podniknout, aby zkáze zabránili."
 
 #: data/worldmaps/tutorial.worldmap:46
-#, fuzzy
 msgid ""
 "So the circle of the eldest came together to decide what to do about it. "
 "They decided to send out an expedition around the world to find the cause of "
@@ -1374,7 +1357,6 @@ msgstr ""
 "severního pólu."
 
 #: data/worldmaps/tutorial.worldmap:54
-#, fuzzy
 msgid ""
 "And they picked you to lead them on their journey around the world. Since "
 "the journey will be dangerous and difficult, your first goal is the Island "
@@ -1389,7 +1371,6 @@ msgstr ""
 "smìøovaly."
 
 #: data/worldmaps/tutorial.worldmap:63
-#, fuzzy
 msgid ""
 "The island consists of many areas that are ideal to teach the Pingus their "
 "abilities. The Pingus can learn to build bridges, climb, bash and use many "
@@ -1401,7 +1382,6 @@ msgstr ""
 "které urèitì budou cestou potøebovat."
 
 #: data/worldmaps/tutorial.worldmap:70
-#, fuzzy
 msgid ""
 "While there, you can practice your abilities in commanding and guiding the "
 "Pingus. You can also get familiar with all the abilities the Pingus provide "
@@ -1414,7 +1394,6 @@ msgstr ""
 "potøebovat."
 
 #: data/worldmaps/tutorial.worldmap:78
-#, fuzzy
 msgid ""
 "Now that you and the Pingus have arrived at Tutorial Island it is time to "
 "take command and begin your mission. Good Luck!"
@@ -1425,7 +1404,6 @@ msgstr ""
 "                                                   Hodnì ¹tìstí!"
 
 #: data/worldmaps/tutorial.worldmap:88
-#, fuzzy
 msgid ""
 "Now after you and the Pingus have learned the basics and practiced a bit it "
 "is time to move on and begin the journey into the world. Since the ice floe "
@@ -1439,7 +1417,6 @@ msgstr ""
 "do teplej¹ích krajin, pingové musí najít jiný dopravní prostøedek.\n"
 
 #: data/worldmaps/tutorial.worldmap:97
-#, fuzzy
 msgid ""
 "But as the eldest have said, the Tutorial Island provides not only a good "
 "way to practice, but it is also the starting point into the world. After "
@@ -1453,7 +1430,6 @@ msgstr ""
 "strom na konci ostrova dá kvalitní døevo pro konstrukci vorù.\n"
 
 #: data/worldmaps/tutorial.worldmap:106
-#, fuzzy
 msgid ""
 "So the Pingus set out and constructed some large rafts, enough to carry them "
 "all. After also packing a bunch of provisions they were prepared to start "
@@ -1466,7 +1442,6 @@ msgstr ""
 "pou» do neznámých oblatí svìta.\n"
 
 #: data/worldmaps/tutorial.worldmap:114
-#, fuzzy
 msgid ""
 "So the Pingus sit on their raft, worrying about what's to come and where to "
 "go, while floating into the sunset.  To be continued..."
