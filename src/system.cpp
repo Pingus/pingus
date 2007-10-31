@@ -302,18 +302,18 @@ System::get_statdir()
 {
 #ifdef WIN32
   std::string tmpstr;
-  char* homedir = getenv("HOMEDRIVE");
-  if (homedir)
+  char* appdata  = getenv("APPDATA");
+  if (appdata)
     {
-      tmpstr = std::string(homedir);
-      homedir = 0;
-      homedir = getenv("HOMEPATH");
-      tmpstr = tmpstr + std::string(homedir) + "/.pingus/";
+      tmpstr = std::string(appdata) + "/Pingus/";
       for (size_t pos = tmpstr.find('\\', 0); pos != std::string::npos; pos = tmpstr.find('\\', 0))
         tmpstr[pos] = '/';
     }
   else
-    tmpstr = "user/";
+    {
+      tmpstr = "user/";
+    }
+
   return tmpstr;
 
 #else /* !WIN32 */
