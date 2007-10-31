@@ -10,6 +10,12 @@ Release Checklist:
 - make sure that the game still runs after install.sh
 
 - check NEWS, README, INSTALL.*
+
+Make a release:
+
+svn export ~/projects/pingus/svn/trunk/pingus/ pingus-0.7.2
+tar cvjf pingus-0.7.2.tar.bz2 pingus-0.7.2
+
 
 Stuff to do at all times:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -40,15 +46,11 @@ Roadmap for Pingus 0.8.0:
 
 - allow sprites as background
 
-- add a proper option menu
-
 - redesign main menu
 
 - animate the exit flag
 
 - a new worlds 
-
-- UTF8 support with MES-1 characters (http://www.eki.ee/letter/chardata.cgi?comp1=MES-1&comp2=)
 
 - split screen multiplayer
 
@@ -65,7 +67,7 @@ Roadmap for Pingus 0.8.0:
 
 - keep highscores for levels (number saved and stuff like that)
 
-- digger follows down slopes
+- digger (mean basher?) follows down slopes
 
 - trap in one tutorial level with two exits is in background, should be foreground
 
@@ -83,107 +85,86 @@ Roadmap for Pingus 0.8.0:
 - do we need z-pos for anything or does implicit object position serve
   the same purpose? Problem: Groundpieces all have the same z-level,
   the editor doesn't handle that and allows insertions inbetween
-
-- StringFormat does line breaking TeX-style, but that isn't useful
-  with the current s-expr format, which can handle explicit line
-  breaks just fine
 
 Roadmap for Pingus 0.7.3
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Important:
-==========
+New Features:
+=============
 
-- Levels: All levels lack description
+* add cheats: all actions, unlimited actions, skip level, these must
+  be triggerable via maintainer-mode, not via commandline switch
 
-halloween1-grumbel.pingus - circle save - finished - needs testing (easy) - demonstrates a Faller bug
-halloween2-grumbel.pingus - rescue by jump - finished - needs testing (easy)
-halloween3-grumbel.pingus - digg tunnel - finished - needs testing (medium)
-halloween4-grumbel.pingus - wall bomb - finished - needs testing (easy/medium)
-halloween5-grumbel.pingus - join-jump - finished - needs testing (hard++)
-halloween6-grumbel.pingus - jump high - finished - needs testing  (easy)
-halloween7-grumbel.pingus - rescue - finished - needs testing - number of pingus wrong (hard--)
-halloween8-plouj.pingus - bridge broken - (hard+)
+* implement option menu
 
-Meduim Important:
-=================
+* rewrite Config file support, make game automatically write a default
+  config file, use s-expr, goes hand in hand with the new option menu
 
-- resource system needs a review/rewrite
+* generate MES-1 fonts and add UTF-8 support to the Font system
+  (http://www.eki.ee/letter/chardata.cgi?comp1=MES-1&comp2=)
 
-- "core/misc/404sprite" should be returned for missing graphics
+* CollisionMask can't handle RGBA images and likely shouldn't (due to
+  them being animated and stuff like that), we however don't have
+  seperate colmask for those images
 
-- The goal should be to provide fullscreen support for most common
-  monitors:
+Bugs:
+=====
 
-Monitor Resolutions:
---------------------
-  1920×1200 (WUXGA)
-  1920x1080 (HD-TV)
-  1680x1050
-  1600x1200
-  1400x1050 (Widescreen LCD)
-  1440x900
-  1280x1024 (19" LCD)
-  1152x864
-  1024x768
+* resource system needs a rewrite/implementation
 
--> 1920x1200 means fullscreen for almost anything today and would work
-   for all halloween levels, not so much for tutorial levels
+* "core/misc/404sprite" should be returned for missing graphics
 
-Level Resolutions:
-------------------
-Minimal-Horizantal: 1000
-Maximal-Horizantal: 2500
+* Level Converter needs to be finalized:
 
-Minimal-Veritcal:  600
-Maximal-Veritcal: 1200
+  - level converter has a bug that causes some object types to be
+    ignored (startpos and likely the other more excotic worldobj
+    things)
 
-data/levels/halloween/halloween1-grumbel.pingus:       (levelsize 1400  950)
-data/levels/halloween/halloween2-grumbel.pingus:       (levelsize 1700 1000)
-data/levels/halloween/halloween3-grumbel.pingus:       (levelsize 1600  800)
-data/levels/halloween/halloween4-grumbel.pingus:       (levelsize 1900 1000)
-data/levels/halloween/halloween5-grumbel.pingus:       (levelsize 1700 1000)
-data/levels/halloween/halloween6-grumbel.pingus:       (levelsize 2000 1000)
-data/levels/halloween/halloween7-grumbel.pingus:       (levelsize 2500 1000)
-data/levels/halloween/halloween8-plouj.pingus:         (levelsize 1500  900)
+  - level converter writes 0/1 instead of #t/#f
 
-data/levels/tutorial/basher-tutorial-grumbel.pingus:   (levelsize 1900  700)
-data/levels/tutorial/bomber-tutorial2-grumbel.pingus:  (levelsize 1200 1000)
-data/levels/tutorial/digger-tutorial2-grumbel.pingus:  (levelsize 1400  700)
-data/levels/tutorial/floater-tutorial-grumbel.pingus:  (levelsize 1230  900)
-data/levels/tutorial/jumper-tutorial-grumbel.pingus:   (levelsize 1200  600)
-data/levels/tutorial/miner-tutorial2-grumbel.pingus:   (levelsize 1000 1100)
-data/levels/tutorial/snow10-grumbel.pingus:            (levelsize 1400 1200)
-data/levels/tutorial/snow11-grumbel.pingus:            (levelsize 1200  600)
-data/levels/tutorial/snow12-grumbel.pingus:            (levelsize 1300  800)
-data/levels/tutorial/snow14-grumbel.pingus:            (levelsize 1200 1000)
-data/levels/tutorial/snow15-grumbel.pingus:            (levelsize 1400  600)
-data/levels/tutorial/snow16-grumbel.pingus:            (levelsize 1270  600)
-data/levels/tutorial/snow17-grumbel.pingus:            (levelsize 1700  600)
-data/levels/tutorial/snow19-grumbel.pingus:            (levelsize 2100 1000)
-data/levels/tutorial/snow20-grumbel.pingus:            (levelsize 2000  600)
-data/levels/tutorial/snow21-grumbel.pingus:            (levelsize 1400  600)
-data/levels/tutorial/snow22-grumbel.pingus:            (levelsize 1400 1200)
-data/levels/tutorial/snow7-grumbel.pingus:             (levelsize 1824  600)
-data/levels/tutorial/snow8-grumbel.pingus:             (levelsize 1216 1000)
-data/levels/tutorial/snow9-grumbel.pingus:             (levelsize 1500  600)
-data/levels/tutorial/solid-tutorial-grumbel.pingus:    (levelsize 1000  700)
+  - fix the level convert script and write test cases for it
 
-- start_pos is missing in editor (worked around by centering the view
-  on the entrances)
+  - Loading data/levels/playable/chouser02.pingus in Editor and saving
+    it again causes the background to be at the wrong position (caused
+    by level lacking position and editor setting a different fallback
+    then in-game) [Currently worked around in editor code, should be
+    fixed in the converter]
 
-- implement option menu
+  - convert all levels and check all classic levels for issues (run
+    branches/pingus_sdl/contribl/levelconvert.sh from SVN toplevel
+    dir)
 
-- Regenerate Courier fonts for latin-1/2/9
+* GUI doesn't behave well if the user for example clicks a menu item
+  twice in a single frame, leads to duplicate Screens on the stack ond
+  other weird issues
 
-### Loading font file: system://data/images/fonts/courier_small-iso-8859-9.font
-Font: datadir://images/fonts/courier_small-iso-8859-9.png
-  Error: glyphs found: 188, expected 189
-  Format: bpp: 32
+* frameskip seems broken
 
-- integrate install command into scons (maybe), use 'install' instead of 'cp'
+* bridging gets more complicated has graphical error (background?!)
+  surface background doesn't handle larger res due to the Playfield
+  being offsetted (might be solvable with new DrawingContext that
+  features Rect)
 
-- FPS: issues: 
+* parallax scrolling is funky where background tiles are small. When
+  scrolling right, the leftmost column of tiles gets overlapped by the
+  next column a little bit. See the last tutorial level for an
+  example. (likely rounding error float/int)
+
+* hurry-up should be removed and replaced by something less heavy
+  (isn't used in tutorial island, since those levels don't have time)
+  (have a blinking clock and tick sound or so)
+
+* StringFormat does line breaking TeX-style, but that isn't useful
+  with the current s-expr format, which can handle explicit line
+  breaks just fine
+
+Wishlist Stuff:
+===============
+
+* The goal should be to provide fullscreen support for most common
+  monitors -> levels should have a minimum size of 1920x1200
+
+* FPS: issues, SDL_Delay() calls should be limited to ScreenManager: 
 
   - Editor:     27fps - 20%
   - Main Menu:  30fps - 50%
@@ -192,72 +173,29 @@ Font: datadir://images/fonts/courier_small-iso-8859-9.png
   - Game:       32fps - 14%
   - EndScreen:  50fps - 19%
 
-- Loading data/levels/playable/chouser02.pingus in Editor and saving
-  it again causes the background to be at the wrong position (caused
-  by level lacking position and editor setting a different fallback
-  then in-game) [Currently worked around in editor code, should be
-  fixed in the converter]
+* integrate install command into scons (maybe), use 'install' instead of 'cp'
 
-- frameskip seems broken
+* remove --verbose or make it an alias for --debug all
 
-- remove verbose
+* add dynamic resize for the game, problematic due to scaled
+  backgrounds, might be easier to do if backgrounds would be handled
+  more flexible (seperate background gradient from cloud objects and
+  stuff like that)
 
-- add dynamic resize for the game
+* Liquids/water is 32, others are 64, this is causing trouble with the
+  collision map
 
-- main menu crashes when you click a little wildely:
+Undecided stuff:
+================
 
-  decide whether to ignore cached_action != CA_NONE in
-  ScreenManager::pop_screen. This causes the game to crash if [ESC] is
-  quickly pressed repeatedly
+- start_pos is missing in editor (worked around by centering the view
+  on the entrances)
 
-  currently worked around by:
-  assert (cached_action == CA_NONE || cached_action == CA_POP);
-
-  but the menu still acts funky if one clicks heavily (i.e. two
-  screens get added instead of one or stuff like that)
-
-- rewrite Config file support, make game automatically write a default
-  config file, use s-expr
-
-- level converter has a bug that causes some object types to be
-  ignored (startpos and likely the other more excotic worldobj things)
-
-- level converter writes 0/1 instead of #t/#f
-
-- bridging gets more complicated has graphical error (background?!)
-  surface background doesn't handle larger res due to the Playfield
-  being offsetted (might be solvable with new DrawingContext that
-  features Rect)
-
-- rework command line parsing so that it actually works properly and
-  doesn't depend so much on the order (setting datadir causes trouble
-  with translation, since translation need datadir to work)
-
-- parallax scrolling is funky where background tiles are small. When
-  scrolling right, the leftmost column of tiles gets overlapped by the
-  next column a little bit. See the last tutorial level for an
-  example. (likely rounding error float/int)
-
-- CollisionMask can't handle RGBA images and likely shouldn't (due to
-  them being animated and stuff like that), we however don't have
-  seperate colmask for those images
-
-- convert all levels and check all classic levels for issues (run
-  branches/pingus_sdl/contribl/levelconvert.sh from SVN toplevel dir)
-
-Less Important:
-===============
-
-- implemented ComboButton for Shift+Tab combinations
+- implemented input/ComboButton for Shift+Tab combinations
 
 - add something like FileReader::must_read_int() for cases where a
   value isn't optional, something that can figure out values that
   havn't be used would be nice as well
-
-- fix verdana11 for latin2 and latin9 or go UTF-8
-
-- Liquids/water is 32, others are 64, this is causing trouble with the
-  collision map
 
 - some people like auto-scrolling in window mode, in 0.6.0 it worked
   even when completly out of the window, in SDL the mouse coords don't
@@ -278,10 +216,6 @@ Less Important:
 
 - walker speed looks wrong, other actions might need fine tuning as well
 
-- hurry-up should be removed and replaced by something less heavy
-  (isn't used in tutorial island, since those levels don't have time)
-  (have a blinking clock and tick sound or so)
-
 - write a README.input
 
 - LANG=sr ./pingus|grep language shows "English" but ingame text is not English
@@ -292,10 +226,6 @@ Less Important:
 
 Roadmap for Pingus Editor 0.7.3:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Important:
-==========
-
 
 Medium Important:
 =================
