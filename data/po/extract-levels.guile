@@ -18,7 +18,9 @@
   '((pingus-levelset (title description))))
 
 (define (escape-string str)
-  (regexp-substitute/global #f "\"" str 'pre "\\\"" 'post))
+  (regexp-substitute/global #f "\n" 
+                            (regexp-substitute/global #f "\"" str 'pre "\\\"" 'post)
+                            'pre "\\n" 'post))
 
 (define (print-msg sexpr props)
   (let ((str  (escape-string (apply string-append sexpr))) )
