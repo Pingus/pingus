@@ -1,9 +1,11 @@
 0.7.2 (31/Oct/2007)
 ===================
-* added window resize support to the editor (use --allow-resize)
-* added minimap to the editor  
 * added support for levelsets
 * added 8 new levels in the form of a halloween levelset
+* added window resize support to the editor (use --allow-resize)
+* added minimap to the editor  
+* scroll wheel support to change the actions
+* right and middle button now both scroll
 * 'jumper dieing on landing' bug fixed
 * numerous other small bug fixes
 

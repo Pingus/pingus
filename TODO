@@ -9,8 +9,6 @@ Release Checklist:
 
 - make sure that the game still runs after install.sh
 
-- remove test levelset before release
-
 - check NEWS, README, INSTALL.*
 
 Stuff to do at all times:
