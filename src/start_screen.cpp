@@ -154,10 +154,11 @@ StartScreenComponent::draw(DrawingContext& gc)
 
   gc.print_left(Fonts::chalk_normal,
                 Display::get_width()/2 - 290,
-                Display::get_height()/2 - 140,
+                Display::get_height()/2 - 150,
                 format_description(800 - 230));
 
   y += 32;
+  y += 30;
 
   gc.print_left (Fonts::chalk_normal, left_x,  y, _("Number of Pingus: "));
   gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(plf.get_number_of_pingus()));
