@@ -1,3 +1,202 @@
+2007-10-31 05:39  grumbel
+
+	* data/levels/halloween/halloween2-grumbel.pingus,
+	  data/levels/halloween/halloween3-grumbel.pingus,
+	  data/levels/halloween/halloween4-grumbel.pingus,
+	  data/levels/halloween/halloween5-grumbel.pingus,
+	  data/levels/halloween/halloween6-grumbel.pingus,
+	  data/levels/halloween/halloween7-grumbel.pingus:
+	  - corrected author
+
+2007-10-31 05:38  plouj
+
+	* data/levels/halloween/halloween8-plouj.pingus:
+	  replaced an ugly tab
+
+2007-10-31 05:35  plouj
+
+	* data/levels/halloween/halloween2-grumbel.pingus,
+	  data/levels/halloween/halloween3-grumbel.pingus,
+	  data/levels/halloween/halloween5-grumbel.pingus,
+	  data/levels/halloween/halloween6-grumbel.pingus,
+	  data/levels/halloween/halloween8-plouj.pingus:
+	  made descriptions sound better and added my e-mail
+
+2007-10-31 05:27  grumbel
+
+	* data/levels/halloween/halloween7-grumbel.pingus:
+	  - fixed wording a bit, again
+
+2007-10-31 05:26  grumbel
+
+	* data/levels/halloween/halloween7-grumbel.pingus:
+	  - fixed wording a bit
+
+2007-10-31 05:09  jsalmon3
+
+	* data/levels/halloween/halloween1-grumbel.pingus,
+	  data/levels/halloween/halloween3-grumbel.pingus,
+	  data/levels/halloween/halloween5-grumbel.pingus,
+	  data/levels/halloween/halloween6-grumbel.pingus,
+	  data/levels/halloween/halloween7-grumbel.pingus,
+	  data/levels/halloween/halloween8-plouj.pingus:
+	  Fixed descriptions
+
+2007-10-31 05:08  grumbel
+
+	* TODO:
+	  - some stuff for the next version
+
+2007-10-31 05:02  grumbel
+
+	* src/start_screen.cpp:
+	  - adjusted spacing a bit to make more room for text
+
+2007-10-31 04:57  grumbel
+
+	* data/levels/halloween/halloween1-grumbel.pingus,
+	  data/levels/halloween/halloween2-grumbel.pingus,
+	  data/levels/halloween/halloween3-grumbel.pingus,
+	  data/levels/halloween/halloween4-grumbel.pingus,
+	  data/levels/halloween/halloween5-grumbel.pingus,
+	  data/levels/halloween/halloween6-grumbel.pingus,
+	  data/levels/halloween/halloween7-grumbel.pingus,
+	  data/levels/halloween/halloween8-plouj.pingus,
+	  data/levelsets/halloween.levelset:
+	  - correct descriptions
+
+2007-10-31 04:12  grumbel
+
+	* data/levels/halloween/halloween1-grumbel.pingus,
+	  data/levels/halloween/halloween2-grumbel.pingus,
+	  data/levels/halloween/halloween3-grumbel.pingus,
+	  data/levels/halloween/halloween4-grumbel.pingus,
+	  data/levels/halloween/halloween5-grumbel.pingus,
+	  data/levels/halloween/halloween6-grumbel.pingus,
+	  data/levels/halloween/halloween7-grumbel.pingus,
+	  data/levels/halloween/halloween8-plouj.pingus:
+	  - added level descriptions (don't touch them yet, spellchecking
+	  will follow in a few mintues)
+
+2007-10-31 03:16  grumbel
+
+	* src/system.cpp:
+	  - changed location of savegame files on Win32
+
+2007-10-31 03:11  grumbel
+
+	* data/levelsets/halloween.levelset:
+	  - renamed make level filename corespond to levelset order
+
+2007-10-31 03:11  grumbel
+
+	* data/levels/halloween/halloween1-grumbel.pingus,
+	  data/levels/halloween/halloween1-grumbel.pingus.tmp,
+	  data/levels/halloween/halloween2-grumbel.pingus,
+	  data/levels/halloween/halloween2-grumbel.pingus.tmp,
+	  data/levels/halloween/halloween3-grumbel.pingus,
+	  data/levels/halloween/halloween3-grumbel.pingus.tmp,
+	  data/levels/halloween/halloween4-grumbel.pingus,
+	  data/levels/halloween/halloween4-grumbel.pingus.tmp,
+	  data/levels/halloween/halloween5-grumbel.pingus,
+	  data/levels/halloween/halloween5-grumbel.pingus.tmp,
+	  data/levels/halloween/halloween6-grumbel.pingus,
+	  data/levels/halloween/halloween6-grumbel.pingus.tmp,
+	  data/levels/halloween/halloween7-grumbel.pingus,
+	  data/levels/halloween/halloween7-grumbel.pingus.tmp:
+	  - renamed make level filename corespond to levelset order
+
+2007-10-31 03:10  grumbel
+
+	* data/levels/halloween/halloween1-grumbel.pingus,
+	  data/levels/halloween/halloween1-grumbel.pingus.tmp,
+	  data/levels/halloween/halloween2-grumbel.pingus,
+	  data/levels/halloween/halloween2-grumbel.pingus.tmp,
+	  data/levels/halloween/halloween3-grumbel.pingus,
+	  data/levels/halloween/halloween3-grumbel.pingus.tmp,
+	  data/levels/halloween/halloween4-grumbel.pingus,
+	  data/levels/halloween/halloween4-grumbel.pingus.tmp,
+	  data/levels/halloween/halloween5-grumbel.pingus,
+	  data/levels/halloween/halloween5-grumbel.pingus.tmp,
+	  data/levels/halloween/halloween6-grumbel.pingus,
+	  data/levels/halloween/halloween6-grumbel.pingus.tmp,
+	  data/levels/halloween/halloween7-grumbel.pingus,
+	  data/levels/halloween/halloween7-grumbel.pingus.tmp:
+	  - renamed make level filename corespond to levelset order
+
+2007-10-31 02:49  grumbel
+
+	* data/levels/halloween/halloween6-grumbel.pingus:
+	  - added solids to make jump-bounce work
+
+2007-10-30 16:19  grumbel
+
+	* data/levels/halloween/halloween8-plouj.pingus:
+	  - undid level size change
+
+2007-10-30 16:19  grumbel
+
+	* data/po/hu.po:
+	  added hungarian translation from DirtY.iCE.hu@gmail.com
+
+2007-10-30 16:02  plouj
+
+	* data/levels/halloween/halloween8-plouj.pingus:
+	  changed level size to 1920x1200
+
+2007-10-30 09:51  grumbel
+
+	* data/images/fonts/verdana11-iso-8859-2.font:
+	  - fixed ď bug
+
+2007-10-30 09:43  grumbel
+
+	* data/images/fonts/verdana11-iso-8859-2.font:
+	  - fixed ¨ bug
+
+2007-10-30 09:41  grumbel
+
+	* data/images/fonts/verdana11-iso-8859-2.font:
+	  - fixed " bug
+
+2007-10-30 09:23  grumbel
+
+	* SConstruct, install.sh:
+	  - fixed install script to include levelsets
+
+2007-10-30 08:50  grumbel
+
+	* ChangeLog:
+	  - updated ChangeLog
+
+2007-10-30 08:41  grumbel
+
+	* NEWS, TODO:
+	  - updates
+
+2007-10-30 08:41  grumbel
+
+	* data/levels/halloween/halloween8-plouj.pingus:
+	  - changed levelname
+
+2007-10-30 08:39  grumbel
+
+	* src/pingus_main.cpp:
+	  - added -L option for --language
+
+2007-10-30 08:36  grumbel
+
+	* data/po/cs.po, data/po/da.po, data/po/de.po, data/po/es.po,
+	  data/po/fi.po, data/po/fr.po, data/po/it.po, data/po/nb.po,
+	  data/po/nl.po, data/po/nn.po, data/po/pingus.pot, data/po/pt.po,
+	  data/po/pt_BR.po, data/po/sr.po, data/po/sv.po, data/po/tr.po:
+	  - updated all language files
+
+2007-10-30 08:36  grumbel
+
+	* data/po/extract-levels.guile:
+	  - fixed levelset description not getting exported
+
 2007-10-30 08:21  grumbel
 
 	* TODO:

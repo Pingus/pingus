@@ -88,7 +88,7 @@ Roadmap for Pingus 0.8.0:
   with the current s-expr format, which can handle explicit line
   breaks just fine
 
-Roadmap for Pingus 0.7.2
+Roadmap for Pingus 0.7.3
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Important:
@@ -290,7 +290,7 @@ Less Important:
 
 - replace "magic" numbers such as default screen size (800 and 600) with macros/globals or whatever is good programming practice
 
-Roadmap for Pingus Editor 0.7.2:
+Roadmap for Pingus Editor 0.7.3:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Important:
