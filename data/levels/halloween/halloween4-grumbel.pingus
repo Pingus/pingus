@@ -5,9 +5,7 @@
   (version 2)
   (head 
     (levelname "Full Circle")
-    (description "The exit is so close, yet out of reach. Walking into the wrong direction "
-                 "the Pingus will ultimativly fail and perish unless you do something, but "
-                 "is there enough time? You have to hurry and can't allow yourself any mistakes. The Pingus are counting on you!")
+    (description "The exit is so close, yet out of reach. A step in the wrong direction and the Pingus will fall to a terrible fate. You must do something to help them, but is there enough time? You have to hurry and can't allow yourself any mistakes. The Pingus are counting on you!")
     (author "none")
     (number-of-pingus 20)
     (number-to-save 5)

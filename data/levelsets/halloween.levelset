@@ -1,7 +1,7 @@
 ;; -*- scheme -*-
 (pingus-levelset
  (title "Halloween 2007")
- (description "Lets celebrate Halloween 2007!")
+ (description "Trapped at All Hallows Eve")
  (image  "levelsets/halloween")
  (levels 
   (level (filename "halloween/halloween1-grumbel"))
