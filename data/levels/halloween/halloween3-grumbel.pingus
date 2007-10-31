@@ -5,7 +5,7 @@
   (version 2)
   (head 
     (levelname "Boom Boom")
-    (description "You've mastered the last challenge and now face the next. Their path to salvation seems to be cursed, but by whom? There is no time think about it, since the next deadly challange already awaits the Pingus. Two mighty roots block the way, but without a basher at hand to bash them away, it might be that sacrifice is the only option...")
+    (description "You've mastered the last challenge and now face the next. Their path to salvation seems to be cursed, but by whom? There is no time to think about it, since the next deadly challange already awaits the Pingus. Two mighty roots block the way, but without a basher at hand to bash them away, it might be that sacrifice is the only option...")
     (author "none")
     (number-of-pingus 40)
     (number-to-save 30)
