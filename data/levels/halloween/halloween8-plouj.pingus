@@ -5,8 +5,8 @@
   (version 2)
   (head 
     (levelname "Staircase Maintenance")
-    (description "It seems we are up again against a mighty wall, and it is blocking the exit! But wait, some good soul seems to have built a staircase around it. It seems the poor fool's efforts didn't last long, as the staircase is destroyed and full of holes. Can you fix it and make it over the wall? Yet of course you know that the right solution might not be the obvious one. But your Pingus are almost free, and they trust in your skill to guide them to safety once more. Succeed and you will have freed them once and for all from whatever evildoer placed them in this nightmare... at least for this year.")
-    (author "Michael Ploujnikov	")
+    (description "It seems we are up again against a mighty wall, and it is blocking the exit! But wait, some good soul has built a staircase around it. It seems, however, that the poor fool's efforts didn't last long, as the staircase is destroyed and full of holes. Can you fix it and make it over the wall? Yet of course you know that the right solution might not be the obvious one. But your Pingus are almost free, and they trust in your skill to guide them to safety once more. Succeed and you will have freed them once and for all from whatever evildoer that placed them in this nightmare... at least for this year.")
+    (author "Michael Ploujnikov	<ploujj@gmail.com>")
     (number-of-pingus 35)
     (number-to-save 30)
     (time -1)
