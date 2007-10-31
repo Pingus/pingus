@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-30 09:34+0100\n"
+"POT-Creation-Date: 2007-10-31 06:55+0100\n"
 "PO-Revision-Date: 2007-07-17 18:53+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
@@ -127,23 +127,23 @@ msgstr "OK"
 msgid "Abort"
 msgstr "Avbryt"
 
-#: src/start_screen.cpp:162
+#: src/start_screen.cpp:163
 msgid "Number of Pingus: "
 msgstr "Pingusar: "
 
-#: src/start_screen.cpp:165
+#: src/start_screen.cpp:166
 msgid "Number to Save: "
 msgstr "Å redda: "
 
-#: src/start_screen.cpp:168
+#: src/start_screen.cpp:169
 msgid "Time: "
 msgstr "Tid: "
 
-#: src/start_screen.cpp:175
+#: src/start_screen.cpp:176
 msgid "Author: "
 msgstr "Forfattar: "
 
-#: src/start_screen.cpp:178
+#: src/start_screen.cpp:179
 msgid "Filename: "
 msgstr "Filnamn: "
 
@@ -1239,41 +1239,98 @@ msgstr ""
 "nok gå utanom."
 
 #: data/levels/halloween/halloween1-grumbel.pingus:7
-msgid "Full Circle"
-msgstr ""
-
-#: data/levels/halloween/halloween1-grumbel.pingus:8
-#: data/levels/halloween/halloween2-grumbel.pingus:8
-#: data/levels/halloween/halloween3-grumbel.pingus:8
-#: data/levels/halloween/halloween4-grumbel.pingus:8
-#: data/levels/halloween/halloween5-grumbel.pingus:8
-#: data/levels/halloween/halloween6-grumbel.pingus:8
-#: data/levels/halloween/halloween7-grumbel.pingus:8
-msgid "none"
-msgstr ""
-
-#: data/levels/halloween/halloween2-grumbel.pingus:7
 msgid "One jump to catch them all"
 msgstr ""
 
-#: data/levels/halloween/halloween3-grumbel.pingus:7
-msgid "Bridgers Nightmare"
+#: data/levels/halloween/halloween1-grumbel.pingus:8
+msgid ""
+"The pingus have found themselves lost on their journey.  What is this "
+"mysterious place?  Smiling pumpkins, giant candlesticks, and some boiling "
+"soup below... what wizardry is this? Now, facing a deadly abyss right in "
+"front of them it's your job to save them. Can you save them from a terrible "
+"fate?"
 msgstr ""
 
-#: data/levels/halloween/halloween4-grumbel.pingus:7
-msgid "Boom Boom"
-msgstr ""
-
-#: data/levels/halloween/halloween5-grumbel.pingus:7
-msgid "Splatterfest"
-msgstr ""
-
-#: data/levels/halloween/halloween6-grumbel.pingus:7
+#: data/levels/halloween/halloween2-grumbel.pingus:7
 msgid "One Thousand and One Jumps"
 msgstr ""
 
-#: data/levels/halloween/halloween7-grumbel.pingus:7
+#: data/levels/halloween/halloween2-grumbel.pingus:8
+msgid ""
+"With the exit so high above and far out of reach for a normal Pingu, what "
+"options are there? Perhaps a jumper can rescue them?  Or will he simply slow "
+"their inevitable demise? It's your job to find out, but are you good enough "
+"to save them all?"
+msgstr ""
+
+#: data/levels/halloween/halloween3-grumbel.pingus:7
+msgid "Boom Boom"
+msgstr ""
+
+#: data/levels/halloween/halloween3-grumbel.pingus:8
+msgid ""
+"You've mastered the last challenge and now face the next. Their path to "
+"salvation seems to be cursed, but by whom? There is no time to think about "
+"it, since the next deadly challange already awaits the Pingus. Two mighty "
+"roots block the way, but without a basher at hand to bash them away, "
+"sacrifice might be the only option..."
+msgstr ""
+
+#: data/levels/halloween/halloween4-grumbel.pingus:7
+msgid "Full Circle"
+msgstr ""
+
+#: data/levels/halloween/halloween4-grumbel.pingus:8
+msgid ""
+"The exit is so close, yet out of reach. A step in the wrong direction and "
+"the Pingus will fall to a terrible fate. You must do something to help them, "
+"but is there enough time? You have to hurry and can't allow yourself any "
+"mistakes. The Pingus are counting on you!"
+msgstr ""
+
+#: data/levels/halloween/halloween5-grumbel.pingus:7
+msgid "Bridgers Nightmare"
+msgstr ""
+
+#: data/levels/halloween/halloween5-grumbel.pingus:8
+msgid ""
+"Who placed this monstrous wall here?  This terrible blockade separates your "
+"Pingus from the exit. Destruction of its awful construction seems an "
+"impossibility, but perhaps the bridger can come to the rescue?  Can they "
+"build their bridges high enough to guide the group yet again safely to the "
+"exit? Or is somebody playing evil mind tricks with you?\n"
+"\n"
+"Yet again the solution is your call... your gray matter is the key to the "
+"Pingus' success, so don't let yourself get confused and misguided from the "
+"true path."
+msgstr ""
+
+#: data/levels/halloween/halloween6-grumbel.pingus:7
 msgid "Locked up by the witch"
+msgstr ""
+
+#: data/levels/halloween/halloween6-grumbel.pingus:8
+msgid ""
+"Is this a prison? Blocked by solid walls all around, there doesn't seem to "
+"be a way to escape. Salvation seems impossible. But wait... the wall to the "
+"right seems weak... perhaps this is a way to escape? Or is it a false path "
+"that will lead to the Pingus' doom?\n"
+"\n"
+"This is a risky trip, but you must take it to find out how to bring them all "
+"to freedom once again."
+msgstr ""
+
+#: data/levels/halloween/halloween7-grumbel.pingus:7
+msgid "Splatterfest"
+msgstr ""
+
+#: data/levels/halloween/halloween7-grumbel.pingus:8
+msgid ""
+"This is by far the deepest pit the Pingus have yet encountered. Building a "
+"bridge across it seems obvious, but can't work. The exit is deep down in the "
+"pit itself, but Pingus who go down will just end up splattered upon the "
+"ground. But you have two groups of Pingus at your disposal... can you make "
+"them work together to reach even an exit this well hidden?"
 msgstr ""
 
 #: data/levels/halloween/halloween8-plouj.pingus:7
@@ -1281,7 +1338,16 @@ msgid "Staircase Maintenance"
 msgstr ""
 
 #: data/levels/halloween/halloween8-plouj.pingus:8
-msgid "You are so close, yet so far."
+msgid ""
+"It seems we are up again against a mighty wall, and it is blocking the exit! "
+"But wait, some good soul has built a staircase around it. It seems, however, "
+"that the poor fool's efforts didn't last long, as the staircase is destroyed "
+"and full of holes. Can you fix it and make it over the wall? Yet of course "
+"you know that the right solution might not be the obvious one. But your "
+"Pingus are almost free, and they trust in your skill to guide them to safety "
+"once more. Succeed and you will have freed them once and for all from "
+"whatever evildoer that placed them in this nightmare... at least for this "
+"year."
 msgstr ""
 
 #: data/worldmaps/tutorial.worldmap:4
@@ -1440,7 +1506,7 @@ msgid "Halloween 2007"
 msgstr ""
 
 #: data/levelsets/halloween.levelset:4
-msgid "Lets celebrate Halloween 2007!"
+msgid "Trapped at All Hallows Eve"
 msgstr ""
 
 #~ msgid "Difficulty:"
