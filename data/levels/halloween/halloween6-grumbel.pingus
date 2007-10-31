@@ -5,7 +5,11 @@
   (version 2)
   (head 
     (levelname "Locked up by the witch")
-    (description "none")
+    (description "Is this a prision? Blocked by solid walls all around there doesn't seem to be a way "
+                 "to escape. Salvation seems impossible. But wait, the wall to the right seems weak, "
+                 "a way to escape? A misguided path that will doom them all?\n\n"
+                 "It is a risky trip, but you have to take it to find out how to bring them all "
+                 "to freedom once again.")
     (author "none")
     (number-of-pingus 40)
     (number-to-save 35)

@@ -5,7 +5,13 @@
   (version 2)
   (head 
     (levelname "Staircase Maintenance")
-    (description "You are so close, yet so far.")
+    (description
+                 "A big solid wall blocks the exit yet again, but wait, some good soul seems to have build a "
+                 "staircase around it. His efforts however didn't last long, the staircase is destroyed and "
+                 "full of holes. Can you fix it and make it over the wall? Yet as always you shall know that "
+                 "the right solution might not be the obvious one. "
+                 "They trust in your guide them to safety once more and you will have freed them once and for all "
+                 "from the evil doer that placed them in this mess, at lest for this year.")
     (author "Michael Ploujnikov	")
     (number-of-pingus 35)
     (number-to-save 30)

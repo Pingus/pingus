@@ -5,7 +5,10 @@
   (version 2)
   (head 
     (levelname "One Thousand and One Jumps")
-    (description "none")
+    (description "With the exit so high above, out of reach for a normal Pingu, "
+                 "what are the options? Can a jumper be the rescue? Or "
+                 "will it just slow down their ultimate demise? "
+                 "It's your job to find it out, but are you good enough to save save all of them?")
     (author "none")
     (number-of-pingus 15)
     (number-to-save 1)

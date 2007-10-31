@@ -5,7 +5,12 @@
   (version 2)
   (head 
     (levelname "Boom Boom")
-    (description "none")
+    (description 
+     "The last challenge is mastered and soon follows the next. Their path "
+     "to salvation seems to be cursed, but by whom? "
+     "There is no time think about it, since the next deadly challange already awaits them. "
+     "Two mighty roots block the way, but without a basher at hand to bash them away, it might "
+     "be time for sacrifice, there is no other way.")
     (author "none")
     (number-of-pingus 40)
     (number-to-save 30)

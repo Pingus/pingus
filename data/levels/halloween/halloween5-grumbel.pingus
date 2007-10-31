@@ -5,7 +5,12 @@
   (version 2)
   (head 
     (levelname "Bridgers Nightmare")
-    (description "none")
+    (description "A big wall seperates your Pingus from the exit, who placed it? It is impenetrable "
+                 "and impossible to overcome, but can the bridger come to rescue, build their "
+                 "bridges heigh enough to guide the group yet again savely to the exit? "
+                 "Or is somebody up against you and playing evil mind tricks?\n\n"
+                 "Yet again it is your calling to find the solution, use your gray cells for their success, "
+                 "don't let yourself get confused and misguided from the true path.")
     (author "none")
     (number-of-pingus 40)
     (number-to-save 30)

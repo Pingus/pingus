@@ -5,7 +5,11 @@
   (version 2)
   (head 
     (levelname "Splatterfest")
-    (description "none")
+    (description "The deepest pit the Pingus have yet encoutered, a bridge above it seems impossible, "
+                 "blocked by a wall and yet it wouldn't help them anyway. The exit is deep down the in the "
+                 "pit itself, out of reach, Pingus who go down their will just end as splatter on the ground. "
+                 "But you have two groups of Pingus at your disposal, can you make them work together "
+                 "to reach even an exit this well hidden?")
     (author "none")
     (number-of-pingus 40)
     (number-to-save 30)
