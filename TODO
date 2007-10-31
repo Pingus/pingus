@@ -85,6 +85,10 @@ Roadmap for Pingus 0.8.0:
 - do we need z-pos for anything or does implicit object position serve
   the same purpose? Problem: Groundpieces all have the same z-level,
   the editor doesn't handle that and allows insertions inbetween
+
+- StringFormat does line breaking TeX-style, but that isn't useful
+  with the current s-expr format, which can handle explicit line
+  breaks just fine
 
 Roadmap for Pingus 0.7.2
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -105,6 +109,10 @@ halloween8-plouj.pingus - bridge broken - (hard+)
 
 Meduim Important:
 =================
+
+- resource system needs a review/rewrite
+
+- "core/misc/404sprite" should be returned for missing graphics
 
 - The goal should be to provide fullscreen support for most common
   monitors:
@@ -197,10 +205,6 @@ Font: datadir://images/fonts/courier_small-iso-8859-9.png
 - remove verbose
 
 - add dynamic resize for the game
-
-- resource system needs a review/rewrite
-
-- "core/misc/404sprite" should be returned for missing graphics
 
 - main menu crashes when you click a little wildely:
 
