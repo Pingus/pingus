@@ -64,7 +64,7 @@ enum EventName {
   STANDARD_KEYBOARD,
 
   // Axis
-  ACTION_AXIS,
+  ACTION_AXIS
 };
 
 
