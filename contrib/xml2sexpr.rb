@@ -76,11 +76,11 @@ $typespec_level =
    [/^\/pingus-level\/objects\/surface-background\/blue$/,  :integer],
    [/^\/pingus-level\/objects\/surface-background\/scroll-x$/,  :float],
    [/^\/pingus-level\/objects\/surface-background\/scroll-y$/,  :float],
-   [/^\/pingus-level\/objects\/surface-background\/para-x$/,  :float],
-   [/^\/pingus-level\/objects\/surface-background\/para-y$/,  :float],
-   [/^\/pingus-level\/objects\/surface-background\/stretch-x$/,  :integer],
-   [/^\/pingus-level\/objects\/surface-background\/stretch-y$/,  :integer],
-   [/^\/pingus-level\/objects\/surface-background\/keep-aspect$/,  :integer],
+   [/^\/pingus-level\/objects\/surface-background\/para-x$/,    :float],
+   [/^\/pingus-level\/objects\/surface-background\/para-y$/,    :float],
+   [/^\/pingus-level\/objects\/surface-background\/stretch-x$/,   :bool],
+   [/^\/pingus-level\/objects\/surface-background\/stretch-y$/,   :bool],
+   [/^\/pingus-level\/objects\/surface-background\/keep-aspect$/, :bool],
 
    [/^\/pingus-level\/objects\/conveyorbelt$/, :section],
    [/^\/pingus-level\/objects\/conveyorbelt\/width$/, :integer],
@@ -236,6 +236,16 @@ def xml2array(section, indent, el)
             print "\n#{indent}  #{" " * el.name.length}\"#{line}\""
           end
         }
+      }
+      print ")"
+    when :bool
+      print "#{indent}(#{el.name} "
+      el.children.each{|child|
+        if child.value.to_i == 0 then
+          print "#f"
+        else
+          print "#t"
+        end
       }
       print ")"
     when :integer

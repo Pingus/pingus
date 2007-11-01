@@ -133,11 +133,11 @@ Bugs:
 
 * Level Converter needs to be finalized:
 
+  - convert all levels and check all classic levels for issues
+
   - level converter has a bug that causes some object types to be
     ignored (startpos and likely the other more excotic worldobj
     things)
-
-  - level converter writes 0/1 instead of #t/#f
 
   - fix the level convert script and write test cases for it
 
@@ -146,10 +146,6 @@ Bugs:
     by level lacking position and editor setting a different fallback
     then in-game) [Currently worked around in editor code, should be
     fixed in the converter]
-
-  - convert all levels and check all classic levels for issues (run
-    branches/pingus_sdl/contribl/levelconvert.sh from SVN toplevel
-    dir)
 
 * GUI doesn't behave well if the user for example clicks a menu item
   twice in a single frame, leads to duplicate Screens on the stack ond
