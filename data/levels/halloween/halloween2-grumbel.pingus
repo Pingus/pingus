@@ -20,24 +20,6 @@
       (jumper 80))
     (levelsize 2000 1000))
   (objects 
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/misc/metalplate_vert")
-        (modifier "ROT0"))
-      (position 512 299 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/misc/metalplate_vert")
-        (modifier "ROT0"))
-      (position 512 244 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground5")
-        (modifier "ROT0"))
-      (position 449 240 0))
     (surface-background 
       (surface 
         (image "textures/cyanspace")
@@ -58,6 +40,24 @@
       (position -36 926 -100)
       (speed 0)
       (repeat 32))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 512 299 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 512 244 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground5")
+        (modifier "ROT0"))
+      (position 449 240 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -1174,6 +1174,24 @@
         (image "groundpieces/transparent/halloween/kirby3")
         (modifier "ROT0"))
       (position 582 758 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 512 243 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 512 330 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 512 285 0))
     (hotspot 
       (surface 
         (image "entrances/halloween")
@@ -1193,24 +1211,6 @@
         (modifier "ROT0"))
       (position -13 940 100)
       (speed 0)
-      (repeat 32))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/misc/metalplate_small")
-        (modifier "ROT0"))
-      (position 512 243 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/misc/metalplate_small")
-        (modifier "ROT0"))
-      (position 512 330 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/misc/metalplate_small")
-        (modifier "ROT0"))
-      (position 512 285 0))))
+      (repeat 32))))
 
 ;; EOF ;;

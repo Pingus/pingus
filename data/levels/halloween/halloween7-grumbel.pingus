@@ -23,24 +23,6 @@
       (miner 3))
     (levelsize 1700 1000))
   (objects 
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground4")
-        (modifier "ROT180FLIP"))
-      (position 282 813 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground4")
-        (modifier "ROT180"))
-      (position 362 691 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground3")
-        (modifier "ROT180FLIP"))
-      (position 358 631 0))
     (surface-background 
       (surface 
         (image "textures/cyanspace")
@@ -75,6 +57,24 @@
       (position -43 920 -100)
       (speed 0)
       (repeat 28))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground4")
+        (modifier "ROT180FLIP"))
+      (position 282 813 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground4")
+        (modifier "ROT180"))
+      (position 362 691 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground3")
+        (modifier "ROT180FLIP"))
+      (position 358 631 0))
     (groundpiece 
       (type "transparent")
       (surface 

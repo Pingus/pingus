@@ -1721,26 +1721,6 @@ This is a risky trip, but you must take it to find out how to bring them all to 
         (image "groundpieces/transparent/halloween/candle1")
         (modifier "ROT0"))
       (position 497 147 0))
-    (hotspot 
-      (surface 
-        (image "entrances/halloween")
-        (modifier "ROT0"))
-      (position 1286 279 100)
-      (speed 0)
-      (parallax 0))
-    (liquid 
-      (surface 
-        (image "liquids/slime")
-        (modifier "ROT0"))
-      (position -4 939 100)
-      (speed 0)
-      (repeat 40))
-    (entrance 
-      (type "generic")
-      (position 1331 337 105)
-      (owner-id 0)
-      (direction "right")
-      (release-rate 150))
     (groundpiece 
       (type "solid")
       (surface 
@@ -1782,6 +1762,26 @@ This is a risky trip, but you must take it to find out how to bring them all to 
       (surface 
         (image "groundpieces/solid/misc/metalplate_small")
         (modifier "ROT0"))
-      (position 1137 222 0))))
+      (position 1137 222 0))
+    (hotspot 
+      (surface 
+        (image "entrances/halloween")
+        (modifier "ROT0"))
+      (position 1286 279 100)
+      (speed 0)
+      (parallax 0))
+    (liquid 
+      (surface 
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position -4 939 100)
+      (speed 0)
+      (repeat 40))
+    (entrance 
+      (type "generic")
+      (position 1331 337 105)
+      (owner-id 0)
+      (direction "right")
+      (release-rate 150))))
 
 ;; EOF ;;
