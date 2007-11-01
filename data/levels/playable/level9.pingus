@@ -42,8 +42,8 @@
       (scroll-y 0.0)
       (para-x 0.5)
       (para-y 0.5)
-      (stretch-x 0)
-      (stretch-y 0)
+      (stretch-x #f)
+      (stretch-y #f)
       (position 0 0 -100))
     (liquid 
       (surface 
@@ -622,10 +622,10 @@
       (release-rate 25)
       (owner-id 0))
     (teleporter 
-      (target-id "id2252587")
+      (target-id "id2252586")
       (position 937 209 100))
     (teleporter-target 
-      (id "id2252587")
+      (id "id2252586")
       (position 701 317 100))
     (hotspot 
       (surface 

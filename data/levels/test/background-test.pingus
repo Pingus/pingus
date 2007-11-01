@@ -29,8 +29,8 @@
       (scroll-y 0.0)
       (para-x 0.5)
       (para-y 0.5)
-      (stretch-x 0)
-      (stretch-y 0)
+      (stretch-x #f)
+      (stretch-y #f)
       (position 0 0 -100))
     (laser_exit 
       (position 896 122 -100))
@@ -123,8 +123,8 @@
       (scroll-y 0.0)
       (para-x 1.5)
       (para-y 1.5)
-      (stretch-x 0)
-      (stretch-y 0)
+      (stretch-x #f)
+      (stretch-y #f)
       (position 16 16 140))
     (surface-background 
       (surface 
@@ -135,8 +135,8 @@
       (scroll-y 0.0)
       (para-x 2.5)
       (para-y 2.5)
-      (stretch-x 0)
-      (stretch-y 0)
+      (stretch-x #f)
+      (stretch-y #f)
       (position 8 8 180))
     (surface-background 
       (surface 
@@ -147,7 +147,7 @@
       (scroll-y 0.0)
       (para-x 3.5)
       (para-y 3.5)
-      (stretch-x 0)
-      (stretch-y 0)
+      (stretch-x #f)
+      (stretch-y #f)
       (position 0 0 200))))
 ;; EOF ;;

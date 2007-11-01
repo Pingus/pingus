@@ -26,8 +26,8 @@
       (scroll-y 0.0)
       (para-x 0.5)
       (para-y 0.5)
-      (stretch-x 0)
-      (stretch-y 0))
+      (stretch-x #f)
+      (stretch-y #f))
     (groundpiece 
       (type "ground")
       (surface 
@@ -3225,15 +3225,15 @@
         (image "exits/sortie_anim")
         (modifier "ROT0")))
     (teleporter 
-      (target-id "id2265825")
+      (target-id "id2265824")
       (position 92 466 100))
     (teleporter-target 
-      (id "id2265825")
+      (id "id2265824")
       (position 260 70 100))
     (teleporter 
-      (target-id "id2265857")
+      (target-id "id2265856")
       (position 1053 465 100))
     (teleporter-target 
-      (id "id2265857")
+      (id "id2265856")
       (position 260 70 100))))
 ;; EOF ;;

@@ -28,9 +28,9 @@
       (scroll-y 0.0)
       (para-x 0.15)
       (para-y 0.3)
-      (stretch-x 0)
-      (stretch-y 0)
-      (keep-aspect 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
       (position 893.662 58.6472 -150))
     (entrance 
       (position 403.747 252 0)

@@ -35,8 +35,8 @@
       (scroll-y 0.0)
       (para-x 0.2)
       (para-y 0.2)
-      (stretch-x 0)
-      (stretch-y 0)
+      (stretch-x #f)
+      (stretch-y #f)
       (position 243 21 -400))
     (liquid 
       (surface 
@@ -66,8 +66,8 @@
       (scroll-y 0.0)
       (para-x 0.1)
       (para-y 0.1)
-      (stretch-x 0)
-      (stretch-y 0)
+      (stretch-x #f)
+      (stretch-y #f)
       (position 0 0 0))
     (surface-background 
       (surface 
@@ -78,8 +78,8 @@
       (scroll-y 0.0)
       (para-x 0.2)
       (para-y 0.2)
-      (stretch-x 0)
-      (stretch-y 0)
+      (stretch-x #f)
+      (stretch-y #f)
       (position 0 0 0))
     (entrance 
       (position 1421 464 0)
@@ -599,8 +599,8 @@
       (scroll-y 0.0)
       (para-x 0.2)
       (para-y 0.2)
-      (stretch-x 0)
-      (stretch-y 0)
+      (stretch-x #f)
+      (stretch-y #f)
       (position 75 77 450))
     (groundpiece 
       (type "remove")
@@ -617,7 +617,7 @@
       (scroll-y 0.0)
       (para-x 0.2)
       (para-y 0.2)
-      (stretch-x 0)
-      (stretch-y 0)
+      (stretch-x #f)
+      (stretch-y #f)
       (position 243 21 -400))))
 ;; EOF ;;

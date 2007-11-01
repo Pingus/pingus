@@ -26,8 +26,8 @@
       (scroll-y 0.0)
       (para-x 0.5)
       (para-y 0.5)
-      (stretch-x 0)
-      (stretch-y 0)
+      (stretch-x #f)
+      (stretch-y #f)
       (position 78 83 -150))
     (laser_exit 
       (position 578 504 -100))

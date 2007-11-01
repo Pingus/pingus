@@ -28,9 +28,9 @@
       (scroll-y 0.0)
       (para-x 0.5)
       (para-y 0.5)
-      (stretch-x 0)
-      (stretch-y 0)
-      (keep-aspect 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
       (position 0 0 -150))
     (guillotine 
       (position 300.571 290.714 -100))

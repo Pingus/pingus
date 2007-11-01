@@ -24,8 +24,8 @@
       (scroll-y 0.0)
       (para-x 0.0)
       (para-y 0.0)
-      (stretch-x 0)
-      (stretch-y 1))
+      (stretch-x #f)
+      (stretch-y #t))
     (entrance 
       (position 870 319 0)
       (type "generic")

@@ -264,8 +264,8 @@
       (scroll-y 0.0)
       (para-x 0.2)
       (para-y 0.2)
-      (stretch-x 0)
-      (stretch-y 0)
+      (stretch-x #f)
+      (stretch-y #f)
       (position 0 0 -150))
     (surface-background 
       (surface 
@@ -276,7 +276,7 @@
       (scroll-y 0.0)
       (para-x 0.5)
       (para-y 0.5)
-      (stretch-x 0)
-      (stretch-y 1)
+      (stretch-x #f)
+      (stretch-y #t)
       (position 0 0 -145))))
 ;; EOF ;;

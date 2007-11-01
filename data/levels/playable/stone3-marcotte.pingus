@@ -28,9 +28,9 @@
       (scroll-y 0.0)
       (para-x 0.1)
       (para-y 0.0)
-      (stretch-x 0)
-      (stretch-y 0)
-      (keep-aspect 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
       (position 0 0 -300))
     (surface-background 
       (surface 
@@ -41,9 +41,9 @@
       (scroll-y 0.0)
       (para-x 0.3)
       (para-y 0.0)
-      (stretch-x 1)
-      (stretch-y 1)
-      (keep-aspect 0)
+      (stretch-x #t)
+      (stretch-y #t)
+      (keep-aspect #f)
       (position 0 0 -250))
     (exit 
       (owner-id 0)

@@ -30,9 +30,9 @@
       (scroll-y 0.0)
       (para-x 0.25)
       (para-y 0.25)
-      (stretch-x 1)
-      (stretch-y 1)
-      (keep-aspect 1)
+      (stretch-x #t)
+      (stretch-y #t)
+      (keep-aspect #t)
       (position -257 2 -150))
     (exit 
       (owner-id 0)

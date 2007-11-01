@@ -32,8 +32,8 @@
       (scroll-y 50.0)
       (para-x 0.2)
       (para-y 0.2)
-      (stretch-x 0)
-      (stretch-y 1)
+      (stretch-x #f)
+      (stretch-y #t)
       (position 26 224 -100))
     (liquid 
       (surface 

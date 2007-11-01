@@ -30,10 +30,10 @@
       (scroll-y 0.0)
       (para-x 0.5)
       (para-y 0.5)
-      (stretch-x 0)
-      (stretch-y 1)
+      (stretch-x #f)
+      (stretch-y #t)
       (position 0 0 -200)
-      (keep-aspect 1))
+      (keep-aspect #t))
     (liquid 
       (surface 
         (image "liquids/slime")
