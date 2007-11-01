@@ -35,7 +35,7 @@ namespace Editor {
 class EditorLevel;
 class LevelObj;
 class Panel;
-class EditorViewport;
+class Viewport;
 class ObjectSelector;
 class ObjectProperties;
 class ActionProperties;
@@ -51,7 +51,7 @@ private:
   Pathname level_pathname;
   
   Panel* panel;
-  EditorViewport*   viewport;
+  Viewport*   viewport;
   ObjectSelector*   object_selector;
   Minimap*          minimap;
   ObjectProperties* object_properties;
@@ -86,12 +86,12 @@ public:
   GUI::GUIManager* get_gui_manager() const { return gui_manager; }
 	
   /** Return the viewport */
-  EditorViewport* get_viewport() const { return viewport; }
+  Viewport* get_viewport() const { return viewport; }
 
   /** Return a pointer to the current level */
   EditorLevel* get_level() const { return plf; }
 
-  /** Add an object to both the EditorLevel and the EditorViewport */
+  /** Add an object to both the EditorLevel and the Viewport */
   void add_object(LevelObj* obj);
   void add_objects(std::vector<LevelObj*> objs);
 

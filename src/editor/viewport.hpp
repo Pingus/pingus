@@ -39,8 +39,8 @@ class ContextMenu;
 
 /** This class is where the actual level graphics will display in the
     level editor.  Objects can be added, deleted, moved, modified, etc. 
-    inside of the EditorViewport */
-class EditorViewport : public GUI::RectComponent 
+    inside of the Viewport */
+class Viewport : public GUI::RectComponent 
 {
 private:	
   GraphicContextState state;
@@ -79,10 +79,10 @@ private:
 public:
   /** Constructor
       @param e The EditorScreen to which this viewport belongs */
-  EditorViewport(EditorScreen* e, const Rect& rect);
+  Viewport(EditorScreen* e, const Rect& rect);
 
   /** Destructor */
-  ~EditorViewport ();
+  ~Viewport ();
 
   /** Draws all of the objects in the viewport */
   void draw(DrawingContext &gc);
@@ -148,9 +148,9 @@ public:
 
   boost::signal<void (const std::vector<LevelObj*>&)> selection_changed;
 private:
-  EditorViewport();
-  EditorViewport (const EditorViewport&);
-  EditorViewport& operator= (const EditorViewport&);
+  Viewport();
+  Viewport (const Viewport&);
+  Viewport& operator= (const Viewport&);
 };
 
 } // Editor namespace

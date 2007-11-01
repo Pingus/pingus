@@ -34,7 +34,7 @@
 namespace Editor {
 
 // Constructor
-EditorViewport::EditorViewport(EditorScreen* e, const Rect& rect_) 
+Viewport::Viewport(EditorScreen* e, const Rect& rect_) 
   : RectComponent(rect_),
     state(rect.get_width(), rect.get_height()),
     drawing_context(new DrawingContext(rect)),
@@ -47,13 +47,13 @@ EditorViewport::EditorViewport(EditorScreen* e, const Rect& rect_)
 }
 
 // Destructor
-EditorViewport::~EditorViewport ()
+Viewport::~Viewport ()
 {
   delete drawing_context;
 }
 
 void
-EditorViewport::on_secondary_button_press(int x_, int y_)
+Viewport::on_secondary_button_press(int x_, int y_)
 {
   mouse_world_pos = screen2world(x_, y_);
   mouse_screen_pos = Vector2i(x_, y_);
@@ -66,7 +66,7 @@ EditorViewport::on_secondary_button_press(int x_, int y_)
 }
 
 void
-EditorViewport::on_secondary_button_release(int x_, int y_)
+Viewport::on_secondary_button_release(int x_, int y_)
 {
   mouse_world_pos = screen2world(x_, y_);
   mouse_screen_pos = Vector2i(x_, y_);
@@ -77,7 +77,7 @@ EditorViewport::on_secondary_button_release(int x_, int y_)
 
 // When someone right-clicks inside the viewport
 void
-EditorViewport::on_secondary_button_click(int x_, int y_)
+Viewport::on_secondary_button_click(int x_, int y_)
 {
   mouse_world_pos = screen2world(x_, y_);
   mouse_screen_pos = Vector2i(x_, y_);
@@ -85,7 +85,7 @@ EditorViewport::on_secondary_button_click(int x_, int y_)
 
 // Select 1 or more LevelObjs, or drag them.
 void 
-EditorViewport::on_primary_button_press(int x_, int y_)
+Viewport::on_primary_button_press(int x_, int y_)
 {
   mouse_world_pos  = screen2world(x_, y_);
   mouse_screen_pos = Vector2i(x_, y_);
@@ -127,7 +127,7 @@ EditorViewport::on_primary_button_press(int x_, int y_)
 }
 
 void 
-EditorViewport::on_primary_button_release(int x_, int y_)
+Viewport::on_primary_button_release(int x_, int y_)
 {
   mouse_world_pos = screen2world(x_, y_);
   mouse_screen_pos = Vector2i(x_, y_);
@@ -159,7 +159,7 @@ EditorViewport::on_primary_button_release(int x_, int y_)
 }
 
 void
-EditorViewport::on_pointer_move(int x_, int y_)
+Viewport::on_pointer_move(int x_, int y_)
 {
   mouse_world_pos = screen2world(x_, y_);
   mouse_screen_pos = Vector2i(x_, y_);
@@ -206,7 +206,7 @@ EditorViewport::on_pointer_move(int x_, int y_)
 }
 
 void
-EditorViewport::on_key_pressed(const unsigned short c)
+Viewport::on_key_pressed(const unsigned short c)
 {
   if (c < 256)
     {
@@ -300,7 +300,7 @@ EditorViewport::on_key_pressed(const unsigned short c)
             break;
 
           default:
-            std::cout << "EditorViewport::on_key_pressed: " << int(c) << " " << (char)c << std::endl;
+            std::cout << "Viewport::on_key_pressed: " << int(c) << " " << (char)c << std::endl;
             break;
         }
     }
@@ -308,7 +308,7 @@ EditorViewport::on_key_pressed(const unsigned short c)
 
 // Draws all of the objects in the viewport and the background (if any)
 void
-EditorViewport::draw(DrawingContext &gc)
+Viewport::draw(DrawingContext &gc)
 {
   drawing_context->clear();
   drawing_context->fill_screen(Color(155,0,155));
@@ -337,13 +337,13 @@ EditorViewport::draw(DrawingContext &gc)
 
 // Returns true if the viewport is at the x,y coordinate
 bool
-EditorViewport::is_at(int x, int y)
+Viewport::is_at(int x, int y)
 {
   return drawing_context->get_rect().is_inside(Vector2i(x,y));
 }
 
 void
-EditorViewport::update(float delta)
+Viewport::update(float delta)
 {
   UNUSED_ARG(delta);
 
@@ -369,7 +369,7 @@ EditorViewport::update(float delta)
 }
 
 void
-EditorViewport::refresh()
+Viewport::refresh()
 {
   state.set_limit(Rect(Vector2i(0,0), editor->get_level()->get_size()).grow(256));
   //std::cout << editor->get_level()->get_size().width << ", "
@@ -378,7 +378,7 @@ EditorViewport::refresh()
 }
 
 void
-EditorViewport::duplicate_selected_objects()
+Viewport::duplicate_selected_objects()
 {
   std::vector<LevelObj*> new_objs;
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
@@ -398,7 +398,7 @@ EditorViewport::duplicate_selected_objects()
 }
 
 void
-EditorViewport::delete_selected_objects()
+Viewport::delete_selected_objects()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
     (*i)->remove();
@@ -414,7 +414,7 @@ EditorViewport::delete_selected_objects()
 }
 
 void
-EditorViewport::hflip_selected_objects()
+Viewport::hflip_selected_objects()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
     {
@@ -423,7 +423,7 @@ EditorViewport::hflip_selected_objects()
 }
 
 void
-EditorViewport::vflip_selected_objects()
+Viewport::vflip_selected_objects()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
     {
@@ -432,7 +432,7 @@ EditorViewport::vflip_selected_objects()
 }
 
 void
-EditorViewport::rotate_90_selected_objects()
+Viewport::rotate_90_selected_objects()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
     {
@@ -441,7 +441,7 @@ EditorViewport::rotate_90_selected_objects()
 }
 
 void
-EditorViewport::rotate_270_selected_objects()
+Viewport::rotate_270_selected_objects()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
     {
@@ -450,13 +450,13 @@ EditorViewport::rotate_270_selected_objects()
 }
 
 Vector2i
-EditorViewport::screen2world(int x, int y) const
+Viewport::screen2world(int x, int y) const
 {
   return Vector2i(state.screen2world(drawing_context->screen_to_world(Vector2i(x, y))));
 }
 
 void
-EditorViewport::raise_objects()
+Viewport::raise_objects()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
     {
@@ -465,7 +465,7 @@ EditorViewport::raise_objects()
 }
 
 void
-EditorViewport::lower_objects()
+Viewport::lower_objects()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
     {
@@ -474,28 +474,28 @@ EditorViewport::lower_objects()
 }
 
 void
-EditorViewport::raise_objects_to_top()
+Viewport::raise_objects_to_top()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
     editor->get_level()->raise_object_to_top(*i);
 }
 
 void
-EditorViewport::lower_objects_to_bottom()
+Viewport::lower_objects_to_bottom()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
     editor->get_level()->lower_object_to_bottom(*i); 
 }
 
 void
-EditorViewport::update_layout()
+Viewport::update_layout()
 {
   state.set_size(rect.get_width(), rect.get_height());
   drawing_context->set_rect(rect);
 }
 
 void
-EditorViewport::clear_selection()
+Viewport::clear_selection()
 {
   for (unsigned i = 0; i < selected_objs.size(); i++)
     selected_objs[i]->unselect();
@@ -504,7 +504,7 @@ EditorViewport::clear_selection()
 }
 
 void
-EditorViewport::move_objects(const Vector2i& offset)
+Viewport::move_objects(const Vector2i& offset)
 {
   for (unsigned i = 0; i < selected_objs.size(); i++)
     {
@@ -514,7 +514,7 @@ EditorViewport::move_objects(const Vector2i& offset)
 }
 
 void
-EditorViewport::clear()
+Viewport::clear()
 {
   selected_objs.clear();
   for(std::vector<LevelObj*>::iterator i = (*get_objects()).begin(); i != (*get_objects()).end(); ++i)
@@ -524,19 +524,19 @@ EditorViewport::clear()
 }
 
 Vector2f
-EditorViewport::get_scroll_pos() const
+Viewport::get_scroll_pos() const
 {
   return state.get_pos();
 }
 
 void
-EditorViewport::set_scroll_pos(const Vector2f& pos)
+Viewport::set_scroll_pos(const Vector2f& pos)
 {
   state.set_pos(pos);
 }
 
 std::vector<LevelObj*>*
-EditorViewport::get_objects()
+Viewport::get_objects()
 {
   return editor->get_level()->get_objects();
 }
