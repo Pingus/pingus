@@ -20,6 +20,7 @@
 #include "math.hpp"
 #include "manager.hpp"
 #include "core_driver.hpp"
+#include "globals.hpp"
 
 namespace Input {
 
@@ -74,8 +75,8 @@ public:
 
     // FIXME: Shouldn't be hardcored, but shouldn't depend on Display
     // either
-    new_pos.x = Math::clamp(0.0f, new_pos.x, 800.0f);
-    new_pos.y = Math::clamp(0.0f, new_pos.y, 600.0f);
+    new_pos.x = Math::clamp(0.0f, new_pos.x, static_cast<float>(screen_width));
+    new_pos.y = Math::clamp(0.0f, new_pos.y, static_cast<float>(screen_height));
 
     if (new_pos != pos)
       {
