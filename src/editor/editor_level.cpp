@@ -308,7 +308,7 @@ void EditorLevel::load_level(const Pathname& pathname)
           obj->set_release_rate(tmp_int);
         }
 
-      editor->get_viewport()->add_object(obj);
+      add_object(obj);
     }
 
   sort();
@@ -517,6 +517,26 @@ std::vector<LevelObj*>*
 EditorLevel::get_objects()
 {
   return &(impl->objects);
+}
+
+void 
+EditorLevel::add_object(LevelObj* obj)
+{
+  impl->objects.push_back(obj);
+}
+
+LevelObj*
+EditorLevel::object_at (int x, int y)
+{
+  // we travel reversly through the object list, so that we get the
+  // top-most object
+  for (std::vector<LevelObj*>::reverse_iterator i = (*get_objects()).rbegin ();
+       i != (*get_objects()).rend (); ++i)
+    {
+      if ((*i)->is_at(x, y))
+        return *i;
+    }
+  return 0;
 }
 
 } // namespace Editor

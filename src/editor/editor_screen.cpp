@@ -275,7 +275,7 @@ EditorScreen::update(const GameDelta &delta)
 void
 EditorScreen::add_object(LevelObj* obj)
 {
-  viewport->add_object(obj);
+  plf->add_object(obj);
 }
 
 void

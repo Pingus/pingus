@@ -92,7 +92,7 @@ EditorViewport::on_primary_button_press(int x_, int y_)
   
   if (current_action == NOTHING)
     {
-      LevelObj* obj = object_at(mouse_world_pos.x, mouse_world_pos.y);
+      LevelObj* obj = editor->get_level()->object_at(mouse_world_pos.x, mouse_world_pos.y);
 
       if (obj)
         {
@@ -368,20 +368,6 @@ EditorViewport::update(float delta)
     }
 }
 
-LevelObj*
-EditorViewport::object_at (int x, int y)
-{
-  // we travel reversly through the object list, so that we get the
-  // top-most object
-  for (std::vector<LevelObj*>::reverse_iterator i = (*get_objects()).rbegin ();
-       i != (*get_objects()).rend (); ++i)
-    {
-      if ((*i)->is_at(x, y))
-        return *i;
-    }
-  return 0;
-}
-
 void
 EditorViewport::refresh()
 {
@@ -389,12 +375,6 @@ EditorViewport::refresh()
   //std::cout << editor->get_level()->get_size().width << ", "
   //<< editor->get_level()->get_size().height 
   //            << std::endl;
-}
-
-void 
-EditorViewport::add_object(LevelObj* obj)
-{
-  (*get_objects()).push_back(obj);
 }
 
 void

@@ -99,6 +99,9 @@ public:
 
   std::vector<LevelObj*>* get_objects();
 
+  void add_object(LevelObj* obj);
+  LevelObj* object_at (int x, int y);
+
 private:
   LevelImpl* impl;
 
