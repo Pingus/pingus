@@ -26,63 +26,80 @@ Stuff to do at all times:
 Roadmap for Pingus 0.8.0:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- pingu explosions are rects, should be circles (Vel(rand()%10, rand()%10) vs Vel(angle, length))
+New Features
+============
 
-- add VCR like effect for fast forward
+* split screen multiplayer
 
-- add slow motion button (dead, turtle, pingu, rabbit)
+* keep highscores for levels (number saved and stuff like that)
 
-- move time into pingus counter
+Wishlist:
+=========
 
-- make option menu accessible from in-game (top/left corner)
+* particle pingu explosions are rects, should be circles
+  (Vel(rand()%10, rand()%10) vs Vel(angle, length))
 
-- proper waiter animation
+* Change current pause/forward behaviour:
 
-- repaint pause and fast-forward button
+  - add VCR like effect for fast forward
 
-- use transparent action buttons unless fast-mode is used
+  - add slow motion button (dead, turtle, pingu, rabbit)
 
-- add round corners to the minimap
+* move time into pingus counter
 
-- allow sprites as background
+* make option menu accessible from in-game (top/left corner)
 
-- redesign main menu
+Animation and graphic issues:
+=============================
 
-- animate the exit flag
+* proper waiter animation
 
-- a new worlds 
+* repaint pause and fast-forward button
 
-- split screen multiplayer
+* use transparent action buttons unless fast-mode is used
 
-- rework the UI, either go glas-like or use the blackbord style 
+* add round corners to the minimap
 
-- Font::draw() origin only works properly for left, right and center, breaks with multiline text
+* allow sprites as background
 
-- file parsing easily crashes or asserts on incorrect files
+* redesign main menu
 
-- GroundMap tiles are currently RGBA, while in reality they are just
+* animate the exit flag
+
+* rework the UI, either go glas-like or use the blackbord style 
+
+Bugs:
+=====
+
+* GroundMap tiles are currently RGBA, while in reality they are just
   RGB with a colorkey, room for optimization
 
-- implement xschema-like language to check for syntax errors in the level files
+* file parsing easily crashes or asserts on incorrect files
 
-- keep highscores for levels (number saved and stuff like that)
+* Translation issues:
 
-- digger (mean basher?) follows down slopes
-
-- trap in one tutorial level with two exits is in background, should be foreground
-
-- worldmap pingu walks right over locked levels
-
-- Wiimote support (libcwiid)
-
-- Translation issues:
-
- * The suffix showing which extra skill a Pingus has (e.g. [f] for Floater or
+ - The suffix showing which extra skill a Pingus has (e.g. [f] for Floater or
    [c] for Climber).
 
- * b) The big sign on the 'Tutorial Island' image
+ - b) The big sign on the 'Tutorial Island' image
 
-- do we need z-pos for anything or does implicit object position serve
+* digger (mean basher?) follows down slopes
+
+* worldmap pingu walks right over locked levels
+
+Unsorted:
+=========
+
+* Font::draw() origin only works properly for left, right and center, breaks with multiline text
+
+* implement xschema-like language to check for syntax errors in the level files
+
+* trap in one tutorial level with two exits is in background, should
+  be foreground (???)
+
+* Wiimote support (libcwiid)
+
+* do we need z-pos for anything or does implicit object position serve
   the same purpose? Problem: Groundpieces all have the same z-level,
   the editor doesn't handle that and allows insertions inbetween
 
@@ -92,13 +109,13 @@ Roadmap for Pingus 0.7.3
 New Features:
 =============
 
-* add cheats: all actions, unlimited actions, skip level, these must
-  be triggerable via maintainer-mode, not via commandline switch
-
 * implement option menu
 
 * rewrite Config file support, make game automatically write a default
   config file, use s-expr, goes hand in hand with the new option menu
+
+* add cheats: all actions, unlimited actions, skip level, these must
+  be triggerable via maintainer-mode, not via commandline switch
 
 * generate MES-1 fonts and add UTF-8 support to the Font system
   (http://www.eki.ee/letter/chardata.cgi?comp1=MES-1&comp2=)
@@ -185,44 +202,43 @@ Wishlist Stuff:
 * Liquids/water is 32, others are 64, this is causing trouble with the
   collision map
 
-Undecided stuff:
-================
+Undecided stuff: ================
 
-- start_pos is missing in editor (worked around by centering the view
+* start_pos is missing in editor (worked around by centering the view
   on the entrances)
 
-- implemented input/ComboButton for Shift+Tab combinations
+* implemented input/ComboButton for Shift+Tab combinations
 
-- add something like FileReader::must_read_int() for cases where a
+* add something like FileReader::must_read_int() for cases where a
   value isn't optional, something that can figure out values that
   havn't be used would be nice as well
 
-- some people like auto-scrolling in window mode, in 0.6.0 it worked
+* some people like auto-scrolling in window mode, in 0.6.0 it worked
   even when completly out of the window, in SDL the mouse coords don't
   get updated when the mouse isn't in the window (need to switch from
   event to polling?!)
 
-- action-axis doesn't handle analog (do we even need this or could we do with axis-button?)
+* action-axis doesn't handle analog (do we even need this or could we do with axis-button?)
 
-- remove SceneContext from Credits, replace with DrawingContext
+* remove SceneContext from Credits, replace with DrawingContext
 
-- sv.po, Swedish is incomplete, lacks level and story text
+* sv.po, Swedish is incomplete, lacks level and story text
 
-- story graphics have a missing vertical line (due to age old gimp scaling bug)
+* story graphics have a missing vertical line (due to age old gimp scaling bug)
  
-- add drag&drop scrolling
+* add drag&drop scrolling
 
-- nuke button is unclean, other buttons not so great either -> repaint
+* nuke button is unclean, other buttons not so great either -> repaint
 
-- walker speed looks wrong, other actions might need fine tuning as well
+* walker speed looks wrong, other actions might need fine tuning as well
 
-- write a README.input
+* write a README.input
 
-- LANG=sr ./pingus|grep language shows "English" but ingame text is not English
+* LANG=sr ./pingus|grep language shows "English" but ingame text is not English
 
-- using some languages (sr, cs, tr) causes some kind of font mapping errors
+* using some languages (sr, cs, tr) causes some kind of font mapping errors
 
-- replace "magic" numbers such as default screen size (800 and 600) with macros/globals or whatever is good programming practice
+* replace "magic" numbers such as default screen size (800 and 600) with macros/globals or whatever is good programming practice
 
 Roadmap for Pingus Editor 0.7.3:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -230,123 +246,123 @@ Roadmap for Pingus Editor 0.7.3:
 Medium Important:
 =================
 
-- shrinking the editor window to much causes a crash (limit size as temporary fix)
+* shrinking the editor window to much causes a crash (limit size as temporary fix)
 
-- implement proper tmpfile Support (save tmp levels to ~/.pingus/tmp/
+* implement proper tmpfile Support (save tmp levels to ~/.pingus/tmp/
   for backup purpose in case of editor crash or so)
 
-- add yes/no question when creating a new level
+* add yes/no question when creating a new level
 
-- add overwrite warning to file dialog
+* add overwrite warning to file dialog
 
-- add pixel perfect object selection
+* add pixel perfect object selection
 
-- add icons to filedialog
+* add icons to filedialog
 
-- Dialogs: Editor Properties: user name and email
+* Dialogs: Editor Properties: user name and email
 
-- show an error message if save fails
+* show an error message if save fails
 
 Less Important:
 ===============
 
-- make inputbox handle text longer then the rect size as well as
+* make inputbox handle text longer then the rect size as well as
   multiline text
 
-- keyboard shortcuts need to be implemented with input framework, but
+* keyboard shortcuts need to be implemented with input framework, but
   how without support for keymaps?
 
-- ObjectSelector need to support more object types, missing types:
+* ObjectSelector need to support more object types, missing types:
   all kinds of traps, weather, special objects
 
-- add type conversion (important to convert groundpieces in hotspots and visa verse)
+* add type conversion (important to convert groundpieces in hotspots and visa verse)
 
-- add options to show/hide hidden files and filter stuff
+* add options to show/hide hidden files and filter stuff
 
-- could/should rotate around object center
+* could/should rotate around object center
 
-- write a color select widget (Hue, Saturation.Value)
+* write a color select widget (Hue, Saturation.Value)
 
-- object raising doesn't work for group
+* object raising doesn't work for group
 
 
 Older Stuff:
 ~~~~~~~~~~~~
 
-- hint system via herring or flower (it should show the path to walk)
+* hint system via herring or flower (it should show the path to walk)
 
-- smasher doesn't correctly check the y-coordinate
+* smasher doesn't correctly check the y-coordinate
 
-- all working actions in default level
+* all working actions in default level
 
-- seperate colmap and gfx remover surfaces for digger, miner, etc. would be nice
+* seperate colmap and gfx remover surfaces for digger, miner, etc. would be nice
   the current ones don't work very good since the remove path is too smooth
   - keep_trans,alpha blitters would also be very nice (darken the border of a digging path or something like that)
 
-- diggers leave a small pixel barier when finished with there digging,
+* diggers leave a small pixel barier when finished with there digging,
   which can be abused as a step
 
-- replace all '9000' time levels with '-1' time or correct time
+* replace all '9000' time levels with '-1' time or correct time
 
-- fix author in all levels
+* fix author in all levels
 
-- update email addrs and missing author fields in level files
+* update email addrs and missing author fields in level files
 
-- floater and jumper don't work together
+* floater and jumper don't work together
 
-- hint system via herring or flower (it should show the path to walk)
+* hint system via herring or flower (it should show the path to walk)
 
-- smasher doesn't correctly check the y-coordinate
+* smasher doesn't correctly check the y-coordinate
 
-- console is bound to the wrong keys and keys for it are not documented
+* console is bound to the wrong keys and keys for it are not documented
 
-- music and sound should be up and running and included in the game [important - release critical]
+* music and sound should be up and running and included in the game [important - release critical]
 
-- playable and non-playable levels should be sorted
+* playable and non-playable levels should be sorted
 
-- add better load-from-file support for hotspots, backgrounds, etc.
+* add better load-from-file support for hotspots, backgrounds, etc.
 
-- pingus doesn't die when out-of-screen
+* pingus doesn't die when out-of-screen
 
-- result screens
+* result screens
 
-- html like behaviour for level descriptions
+* html like behaviour for level descriptions
 
-- description screen and result screen must be reworked
+* description screen and result screen must be reworked
 
-- thumbnail handling should be reviewed
+* thumbnail handling should be reviewed
 
-- Floaters shouldn't float until they've fallen the minimum distance
+* Floaters shouldn't float until they've fallen the minimum distance
   it'd take for a regular Pingu to splat. That way, you wouldn't have to
   worry about floaters moving so slowly a lot of the time, when
   unnecessary
 
-- Bashers cut in circles, so their last two or three swipes should be
+* Bashers cut in circles, so their last two or three swipes should be
   square when breaking through to an open space, since they currently
   can trap Pingu in, requiring another one or two bashes. This is
   especially obvious when bashing through wells. They can also bash
   through metal, which they shouldn't be able to.
 
-- All entrances should have graphics and be animated
+* All entrances should have graphics and be animated
 
-- Bridgers seem to move backwards when they first start stacking (I
+* Bridgers seem to move backwards when they first start stacking (I
   think that their graphic may be more to the left in its square than
   the walker graphic, and also a little smaller than the walker
   graphic - probably because it's confined to a square of the same
   size - maybe give special workers slightly larger graphic sizes, so
   they can appear to be the same size as walkers)
 
-- Sometimes diggers can't be changed into miners.
+* Sometimes diggers can't be changed into miners.
 
-- If enough Pingu are saved and all that are left are blockers, end
+* If enough Pingu are saved and all that are left are blockers, end
   level before time runs out, with a win
 
-- "Hurry up!" wayyy too late. Maybe at 1 minute left, or so.
+* "Hurry up!" wayyy too late. Maybe at 1 minute left, or so.
 
-- At least one kind of water (the kind in Evil in the Dark) doesn't
+* At least one kind of water (the kind in Evil in the Dark) doesn't
   kill Pingu
 
-- In space levels, Pingu that fall off of a cliff into space don't
+* In space levels, Pingu that fall off of a cliff into space don't
   die, though they should just like in water or lava.
 
 Missing Groundpieces
@@ -362,8 +378,8 @@ Sortie Theme:
    throught and things like that, it currently only has horizontal and
    vertical bars, which make building levels quite difficult
 
-Wishlist
-========
+Really Old Stuff:
+=================
 
 0.3.0
 ~~~~~
@@ -395,9 +411,9 @@ Wishlist
 
 Other Wishes:
 ~~~~~~~~~~~~~
-- Water, Lava, Snake, Spike, Electric pits
-- Cursor follow mode
-- Pingus able to swim
+* Water, Lava, Snake, Spike, Electric pits
+* Cursor follow mode
+* Pingus able to swim
 
 > Man koennte Tueren, Treppen, Bruecken, Lifte, Teleporter...
 > einbauen ("Extra pingu actions"), die sich auf konventionelle
