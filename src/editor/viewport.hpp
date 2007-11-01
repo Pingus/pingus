@@ -144,7 +144,6 @@ public:
   std::vector<LevelObj*>* get_objects();
 
   void clear_selection();
-  void clear();
 
   boost::signal<void (const std::vector<LevelObj*>&)> selection_changed;
 private:

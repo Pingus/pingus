@@ -29,7 +29,7 @@
 #include "../fonts.hpp"
 #include "editor_panel.hpp"
 #include "editor_screen.hpp"
-#include "editor_viewport.hpp"
+#include "viewport.hpp"
 #include "panel_buttons.hpp"
 
 

@@ -32,6 +32,7 @@
 //#include <physfs.h>
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
+#include "editor/editor_level.hpp"
 #include "string_util.hpp"
 #include "sexpr_file_reader.hpp"
 
@@ -287,6 +288,8 @@ PingusMain::parse_args(int argc, char** argv)
   argp.add_group("Modes:");
   argp.add_option('e', "editor", "",
                   _("Loads the level editor"));
+  argp.add_option('S', "save", "FILENAME",
+                  _("Save the level given level to FILENAME and quit"));
   argp.add_option(363, "font", "",
                   _("Test a font"));
   argp.add_option(359, "credits", "",
@@ -359,6 +362,10 @@ PingusMain::parse_args(int argc, char** argv)
 
           case 's': // -s, --disable-sound
             cmd_options.disable_sound.set(true);
+            break;
+
+          case 'S':
+            cmd_options.save.set(argp.get_argument());
             break;
 
           case 'm': // -m, --disable-music
@@ -658,7 +665,23 @@ PingusMain::print_greeting_message()
 void
 PingusMain::start_game ()
 {
-  if (cmd_options.credits.is_set() && cmd_options.credits.get())
+  if (cmd_options.save.is_set())
+    { // Load a level and save it again, useful to convert it in a new format
+      if (!cmd_options.rest.is_set())
+        {
+          std::cout << "Error: level argument required" << std::endl;
+        }
+      else
+        {
+          Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
+          Editor::EditorLevel level;
+          std::cout << "Loading: " << filename.str() << std::endl;
+          level.load_level(filename);
+          std::cout << "Saving:  " << cmd_options.save.get() << std::endl;
+          level.save_level(cmd_options.save.get());
+        }
+    }
+  else if (cmd_options.credits.is_set() && cmd_options.credits.get())
     {
       ScreenManager::instance()->push_screen(Credits::instance(), false);
     }
@@ -687,7 +710,7 @@ PingusMain::start_game ()
       ScreenManager::instance()->push_screen
         (new StartScreen(PLFResMgr::load_plf_from_filename(Pathname(cmd_options.rest.get(),
                                                                     Pathname::SYSTEM_PATH))),
-                         true);
+         true);
     }
   else // start a normal game
     {

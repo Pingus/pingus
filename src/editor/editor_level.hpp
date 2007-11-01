@@ -33,12 +33,9 @@ class EditorScreen;
 
 class EditorLevel
 {
-private:
-  EditorScreen* editor;
-  
 public:
   /** Construct new blank level */
-  EditorLevel(EditorScreen* editor);
+  EditorLevel();
 
   /** Destructor */
   ~EditorLevel();

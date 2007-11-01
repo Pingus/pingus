@@ -28,7 +28,7 @@
 #include "../graphic_context_state.hpp"
 #include "editor_level.hpp"
 #include "editor_screen.hpp"
-#include "editor_viewport.hpp"
+#include "viewport.hpp"
 #include "level_objs.hpp"
 
 namespace Editor {
@@ -511,16 +511,6 @@ Viewport::move_objects(const Vector2i& offset)
       Vector3f p = selected_objs[i]->get_pos(); 
       selected_objs[i]->set_pos(Vector3f(p.x + offset.x, p.y + offset.y, p.z));
     }
-}
-
-void
-Viewport::clear()
-{
-  selected_objs.clear();
-  for(std::vector<LevelObj*>::iterator i = (*get_objects()).begin(); i != (*get_objects()).end(); ++i)
-    delete *i;
-  (*get_objects()).clear();
-  selection_changed(selected_objs);
 }
 
 Vector2f

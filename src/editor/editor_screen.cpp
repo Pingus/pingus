@@ -39,7 +39,7 @@
 #include "panel.hpp"
 #include "minimap.hpp"
 #include "editor_screen.hpp"
-#include "editor_viewport.hpp"
+#include "viewport.hpp"
 #include "level_objs.hpp"
 #include "object_selector.hpp"
 #include "object_properties.hpp"
@@ -50,7 +50,7 @@ namespace Editor {
 
 // Default constructor
 EditorScreen::EditorScreen()
-  : plf(new EditorLevel(this)), 
+  : plf(new EditorLevel()),
     panel(0),
     viewport(0),
     object_selector(0),
@@ -146,6 +146,7 @@ void
 EditorScreen::load(const Pathname& file)
 {
   level_pathname = file;
+  viewport->clear_selection();
   plf->load_level(level_pathname);
   level_properties->set_level(plf);
   action_properties->set_level(plf);
@@ -290,7 +291,7 @@ EditorScreen::level_new()
 {
   // FIXME: dialogs don't update
   level_pathname = Pathname();
-  viewport->clear();
+  viewport->clear_selection();
   plf->clear();
   level_properties->set_level(plf);
   action_properties->set_level(plf);

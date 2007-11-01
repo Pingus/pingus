@@ -20,7 +20,7 @@
 
 #include "context_menu.hpp"
 #include "level_objs.hpp"
-#include "editor_viewport.hpp"
+#include "viewport.hpp"
 #include "editor_screen.hpp"
 #include "../gui/gui_manager.hpp"
 #include "../string_util.hpp"

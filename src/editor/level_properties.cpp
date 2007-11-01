@@ -24,7 +24,7 @@
 #include "inputbox.hpp"
 #include "gui_style.hpp"
 #include "editor_level.hpp"
-#include "editor_viewport.hpp"
+#include "viewport.hpp"
 #include "level_properties.hpp"
 
 /*
