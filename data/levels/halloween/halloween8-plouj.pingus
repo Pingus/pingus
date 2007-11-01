@@ -25,12 +25,6 @@
       (miner 3))
     (levelsize 1500 900))
   (objects 
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground6")
-        (modifier "ROT0"))
-      (position 777 727 0))
     (surface-background 
       (surface 
         (image "textures/cyanspace")
@@ -58,6 +52,12 @@
       (position -44 818 -100)
       (speed 0)
       (repeat 100))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground6")
+        (modifier "ROT0"))
+      (position 777 727 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -1432,32 +1432,12 @@
         (image "groundpieces/transparent/misc/moos8")
         (modifier "ROT0"))
       (position 775 563 0))
-    (hotspot 
-      (surface 
-        (image "entrances/halloween")
-        (modifier "ROT0"))
-      (position 650 516 100)
-      (speed 0)
-      (parallax 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
       (position 771 732 0))
-    (liquid 
-      (surface 
-        (image "liquids/slime")
-        (modifier "ROT0"))
-      (position -11 841 100)
-      (speed 0)
-      (repeat 100))
-    (entrance 
-      (type "generic")
-      (position 693 570 101)
-      (owner-id 0)
-      (direction "left")
-      (release-rate 200))
     (groundpiece 
       (type "solid")
       (surface 
@@ -1475,6 +1455,26 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_small")
         (modifier "ROT0"))
-      (position 791 760 0))))
+      (position 791 760 0))
+    (hotspot 
+      (surface 
+        (image "entrances/halloween")
+        (modifier "ROT0"))
+      (position 650 516 100)
+      (speed 0)
+      (parallax 0))
+    (liquid 
+      (surface 
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position -11 841 100)
+      (speed 0)
+      (repeat 100))
+    (entrance 
+      (type "generic")
+      (position 693 570 101)
+      (owner-id 0)
+      (direction "left")
+      (release-rate 200))))
 
 ;; EOF ;;
