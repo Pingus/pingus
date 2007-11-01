@@ -476,35 +476,11 @@ EditorViewport::screen2world(int x, int y) const
 }
 
 void
-EditorViewport::raise_object(LevelObj* obj)
-{
-  editor->get_level()->raise_object(obj);
-}
-
-void
-EditorViewport::lower_object(LevelObj* obj)
-{
-  editor->get_level()->lower_object(obj);
-}
-
-void
-EditorViewport::raise_object_to_top(LevelObj* obj)
-{
-  editor->get_level()->raise_object_to_top(obj);
-}
-
-void
-EditorViewport::lower_object_to_bottom(LevelObj* obj)
-{
-  editor->get_level()->lower_object_to_bottom(obj);
-}
-
-void
 EditorViewport::raise_objects()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
     {
-      raise_object(*i);
+      editor->get_level()->raise_object(*i);
     }
 }
 
@@ -513,7 +489,7 @@ EditorViewport::lower_objects()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
     {
-      lower_object(*i);
+      editor->get_level()->lower_object(*i);
     }
 }
 
@@ -521,14 +497,14 @@ void
 EditorViewport::raise_objects_to_top()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
-    raise_object_to_top(*i);
+    editor->get_level()->raise_object_to_top(*i);
 }
 
 void
 EditorViewport::lower_objects_to_bottom()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
-    lower_object_to_bottom(*i); 
+    editor->get_level()->lower_object_to_bottom(*i); 
 }
 
 void
