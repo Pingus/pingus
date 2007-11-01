@@ -45,35 +45,35 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
 {
   is_init = false;
     
-  start_button = new MenuButton(this, Vector2i(Display::get_width()  * 250 / 800,
-                                               Display::get_height() * 330 / 600),
+  start_button = new MenuButton(this, Vector2i(Display::get_width()  * 250 / screen_width,
+                                               Display::get_height() * 330 / screen_height),
                                 _("Story"),
                                 _("..:: Start the game ::.."));
 
 
-  editor_button = new MenuButton(this, Vector2i(Display::get_width()  * 550 / 800,
-                                                Display::get_height() * 330 / 600),
+  editor_button = new MenuButton(this, Vector2i(Display::get_width()  * 550 / screen_width,
+                                                Display::get_height() * 330 / screen_height),
                                  _("Editor"),
                                  _("..:: Create your own levels ::.."));
 
-  quit_button = new MenuButton(this, Vector2i(Display::get_width()  * 550 / 800,
-                                              Display::get_height() * 410 / 600),
+  quit_button = new MenuButton(this, Vector2i(Display::get_width()  * 550 / screen_width,
+                                              Display::get_height() * 410 / screen_height),
                                _("Exit"),
                                _("..:: Bye, bye ::.."));
 
-  contrib_button = new MenuButton(this, Vector2i(Display::get_width()  * 250 / 800,
-                                                 Display::get_height() * 410 / 600),
+  contrib_button = new MenuButton(this, Vector2i(Display::get_width()  * 250 / screen_width,
+                                                 Display::get_height() * 410 / screen_height),
                                   _("Levelsets"),
                                   _("..:: Play User Built levels ::.."));
 
 #ifdef NEW_MENU
-  story_button  = new MenuButton(this, Vector2i(Display::get_width() * 400 / 800,
-                                                Display::get_height() * 340 / 600),
+  story_button  = new MenuButton(this, Vector2i(Display::get_width() * 400 / screen_width,
+                                                Display::get_height() * 340 / screen_height),
                                  _("Story"),
                                  _("..:: Start the story ::.."));
   
-  multiplayer_button = new MenuButton(this, Vector2i(Display::get_width() * 150 / 800,
-                                                     Display::get_height() * 340 / 600),
+  multiplayer_button = new MenuButton(this, Vector2i(Display::get_width() * 150 / screen_width,
+                                                     Display::get_height() * 340 / screen_height),
                                       Resource::load_sprite("core/menu/multi_on"),
                                       _("Multiplayer"),
                                       _("..:: Multiplayer Match ::.."));

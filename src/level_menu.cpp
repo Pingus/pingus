@@ -251,8 +251,8 @@ public:
 };
 
 LevelMenu::LevelMenu()
-  : x_pos((Display::get_width()  - 800)/2),
-    y_pos((Display::get_height() - 600)/2)
+  : x_pos((Display::get_width()  - screen_width)/2),
+    y_pos((Display::get_height() - screen_height)/2)
 {
   //background = Resource::load_sprite("core/menu/filedialog");
   background = Resource::load_sprite("core/menu/startscreenbg");

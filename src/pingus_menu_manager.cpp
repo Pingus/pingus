@@ -23,6 +23,7 @@
 #include "resource.hpp"
 #include "blitter.hpp"
 #include "pingus_menu_manager.hpp"
+#include "globals.hpp"
 
 
 PingusMenuManager* PingusMenuManager::instance_ = 0;
@@ -35,18 +36,18 @@ PingusMenuManager::PingusMenuManager ()
 	int h = Display::get_height();
 	// We only need to scale the background main menu images if the screen 
 	// resolution is not default
-	if (w != 800 && h != 600)
+	if (w != screen_width && h != screen_height)
 	{
 		background.add_layer (Blitter::scale_surface_to_canvas(
-			Resource::load_surface("core/menu/layer1"), w, 185 * h / 600), 0, 0, 12, 0);
+			Resource::load_surface("core/menu/layer1"), w, 185 * h / screen_height), 0, 0, 12, 0);
 		background.add_layer (Blitter::scale_surface_to_canvas(
-			Resource::load_surface("core/menu/layer2"), w, 362 * h / 600), 0, 150 * (float)h / 600, 25, 0);
+			Resource::load_surface("core/menu/layer2"), w, 362 * h / screen_height), 0, 150 * (float)h / screen_height, 25, 0);
 		background.add_layer (Blitter::scale_surface_to_canvas(
-			Resource::load_surface("core/menu/layer3"), w, 306 * h / 600), 0, 200 * (float)h / 600, 50, 0);
+			Resource::load_surface("core/menu/layer3"), w, 306 * h / screen_height), 0, 200 * (float)h / screen_height, 50, 0);
 		background.add_layer (Blitter::scale_surface_to_canvas(
-			Resource::load_surface("core/menu/layer4"), w, 171 * h / 600), 0, 429 * (float)h / 600, 100, 0);
+			Resource::load_surface("core/menu/layer4"), w, 171 * h / screen_height), 0, 429 * (float)h / screen_height, 100, 0);
 		background.add_layer (Blitter::scale_surface_to_canvas(
-			Resource::load_surface("core/menu/layer5"), 302 * w / 800, 104 * h / 600), 0, 500 * (float)h / 600, 200, 0);
+			Resource::load_surface("core/menu/layer5"), 302 * w / screen_width, 104 * h / screen_height), 0, 500 * (float)h / screen_height, 200, 0);
 	}
 	else
 	{
