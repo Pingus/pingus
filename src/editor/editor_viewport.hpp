@@ -49,6 +49,7 @@ private:
   /** The EditorScreen to which this viewport belongs */
   EditorScreen* editor;
 
+
   /** Whether or not Autoscrolling is turned on */
   bool autoscroll;
 
@@ -59,10 +60,7 @@ private:
   /** Where the mouse started dragging from */
   Vector2i drag_world_pos;
   Vector2i drag_screen_pos;
-
-  /** All objects in the level */
-  std::vector<LevelObj*> objs;
-
+  
   /** The currently selected LevelObjs */
   std::vector<LevelObj*> selected_objs;
 
@@ -155,7 +153,7 @@ public:
 
   void update_layout();
 
-  std::vector<LevelObj*>* get_objects() { return &objs; }
+  std::vector<LevelObj*>* get_objects();
 
   void clear_selection();
   void clear();

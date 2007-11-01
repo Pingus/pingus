@@ -85,8 +85,19 @@ public:
   void set_comment(const std::string&);
   void set_music(const std::string&);
 
+  /** Sorts the level according to the objects z-pos */
+  void sort();
+
   void set_action(const std::string& actionname, int count); 
   std::map<std::string, int> get_actions() const;
+
+  void raise_object(LevelObj* obj);
+  void lower_object(LevelObj* obj);
+
+  void raise_object_to_top(LevelObj* obj);
+  void lower_object_to_bottom(LevelObj* obj);
+
+  std::vector<LevelObj*>* get_objects();
 
 private:
   LevelImpl* impl;

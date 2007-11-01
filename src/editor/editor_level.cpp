@@ -103,7 +103,7 @@ EditorLevel::get_size() const
 */
 bool EditorLevel::is_valid()
 {
-  std::cout << "EditorLevel::is_valid() - Not yet implemented" << std::endl;
+  //std::cout << "EditorLevel::is_valid() - Not yet implemented" << std::endl;
   if (impl)
     return true;
   else
@@ -113,6 +113,10 @@ bool EditorLevel::is_valid()
 // Save the level to a file.  Returns true if successful
 bool EditorLevel::save_level(const std::string& filename)
 {
+  // Sort the level before saving, so that object order doesn't change
+  // after a save/load cycle (load sort() too)
+  sort();
+
   // Make sure level is valid
   if (!is_valid())
     return false;
@@ -307,6 +311,12 @@ void EditorLevel::load_level(const Pathname& pathname)
       editor->get_viewport()->add_object(obj);
     }
 
+  sort();
+}
+
+void
+EditorLevel::sort()
+{
   // Sort by Z coordinate
   std::stable_sort(editor->get_viewport()->get_objects()->begin(),
                    editor->get_viewport()->get_objects()->end(),
@@ -443,6 +453,70 @@ EditorLevel::set_size(const Size& s)
 
   if (impl->size.height <= 0)
     impl->size.height = 1;
+}
+
+void
+EditorLevel::raise_object_to_top(LevelObj* obj)
+{
+  for(std::vector<LevelObj*>::size_type i = 0; i < impl->objects.size(); ++i)
+    {
+      if (impl->objects[i] == obj)
+        {
+          for(int j = i; j < int(impl->objects.size()-1); ++j)
+            std::swap(impl->objects[j], impl->objects[j+1]);
+
+          break;
+        }      
+    } 
+}
+
+void
+EditorLevel::lower_object_to_bottom(LevelObj* obj)
+{
+  for(std::vector<LevelObj*>::size_type i = 0; i < impl->objects.size(); ++i)
+    {
+      if (impl->objects[i] == obj)
+        {
+          for(int j = i; j >= 1; --j)
+            std::swap(impl->objects[j], impl->objects[j-1]);
+          
+          break;
+        }      
+    }
+}
+
+void
+EditorLevel::raise_object(LevelObj* obj)
+{
+  for(std::vector<LevelObj*>::size_type i = 0; i < impl->objects.size(); ++i)
+    {
+      if (impl->objects[i] == obj)
+        {
+          if (i != impl->objects.size()-1)
+            std::swap(impl->objects[i], impl->objects[i+1]);
+          break;
+        }
+    }
+}
+
+void
+EditorLevel::lower_object(LevelObj* obj)
+{
+  for(std::vector<LevelObj*>::size_type i = 0; i < impl->objects.size(); ++i)
+    {
+      if (impl->objects[i] == obj)
+        {
+          if (i != 0)
+            std::swap(impl->objects[i], impl->objects[i-1]);
+          break;
+        }
+    }
+}  
+
+std::vector<LevelObj*>*
+EditorLevel::get_objects()
+{
+  return &(impl->objects);
 }
 
 } // namespace Editor
