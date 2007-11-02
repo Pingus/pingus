@@ -64,7 +64,12 @@ module SExpr
           if sublists.empty? then
             raise "Unexpected List end"
           else
-            elements << sublists.pop
+            lst = sublists.pop()
+            if not sublists.empty? then
+              sublists.last().append(lst)
+            else
+              elements << lst
+            end
           end
         elsif token.is_a?(SExpr) then
           if not sublists.empty? then
@@ -341,7 +346,7 @@ module SExpr
 end
 
 if ARGV.empty?() then
-  lexer = SExpr::Lexer.new("a (b 1.5)")
+  lexer = SExpr::Lexer.new("(pingus-level a (b 1.5) 5)")
   puts lexer.parse()
 else
   ARGV.each{|filename|
