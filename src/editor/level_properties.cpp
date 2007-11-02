@@ -152,6 +152,7 @@ LevelProperties::on_height_change(const std::string& str)
 {
   Size s = level->get_size();
   level->set_size(Size(s.width, StringUtil::to<int>(str)));
+  editor->get_viewport()->refresh();
 }
 
 void

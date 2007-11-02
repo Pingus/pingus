@@ -372,9 +372,6 @@ void
 Viewport::refresh()
 {
   state.set_limit(Rect(Vector2i(0,0), editor->get_level()->get_size()).grow(256));
-  //std::cout << editor->get_level()->get_size().width << ", "
-  //<< editor->get_level()->get_size().height 
-  //            << std::endl;
 }
 
 void
