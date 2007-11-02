@@ -46,8 +46,10 @@ extern bool        drag_drop_scrolling;
 extern int         tile_size;                       ///< --tile-size
 extern bool        fullscreen_enabled;              ///< --enable-fullscreen
 extern bool        resize_enabled;                  ///< --resize-fullscreen
-extern int         screen_width;                    ///< default screen width
-extern int         screen_height;                   ///< default screen height
+extern int         default_screen_width;            ///< default screen width
+extern int         default_screen_height;           ///< default screen height
+extern int         screen_width;                    ///< user configured screen width
+extern int         screen_height;                   ///< user configured screen height
 extern bool        draw_collision_map;              ///<
 extern bool        swcursor_enabled;                ///< --enable-swcursor
 

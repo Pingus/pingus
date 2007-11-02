@@ -113,13 +113,13 @@ public:
 
             if (mouse_pos.x < 0) 
               mouse_pos.x = 0;
-            else if (mouse_pos.x > screen_width)
-              mouse_pos.x = screen_width - 1;
+            else if (mouse_pos.x > default_screen_width)
+              mouse_pos.x = default_screen_width - 1;
 
             if (mouse_pos.y < 0) 
               mouse_pos.y = 0;
-            else if (mouse_pos.y > screen_height)
-              mouse_pos.y = screen_height - 1;
+            else if (mouse_pos.y > default_screen_height)
+              mouse_pos.y = default_screen_height - 1;
 
             for(std::vector<Pointer*>::iterator i = pointer_bindings.begin(); i != pointer_bindings.end(); ++i)
               (*i)->set_pos(mouse_pos);

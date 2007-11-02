@@ -34,8 +34,10 @@ bool        auto_scrolling                  = true;
 bool        drag_drop_scrolling             = false;
 int         tile_size                       = 32;
 
-int         screen_width                    = 800;
-int         screen_height                   = 600;
+int         default_screen_width            = 800;
+int         default_screen_height           = 600;
+int         screen_width                    = default_screen_width;
+int         screen_height                   = default_screen_height;
 bool        draw_collision_map              = false;
 bool        swcursor_enabled                = false;
 bool        action_help                     = true;

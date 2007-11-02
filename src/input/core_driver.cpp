@@ -73,10 +73,9 @@ public:
     new_pos.x += x_axis->get_pos() * c_speed * delta;
     new_pos.y += y_axis->get_pos() * c_speed * delta;
 
-    // FIXME: Shouldn't be hardcored, but shouldn't depend on Display
-    // either
-    new_pos.x = Math::clamp(0.0f, new_pos.x, static_cast<float>(screen_width));
-    new_pos.y = Math::clamp(0.0f, new_pos.y, static_cast<float>(screen_height));
+    // FIXME: shouldn't depend on Display
+    new_pos.x = Math::clamp(0.0f, new_pos.x, static_cast<float>(default_screen_width));
+    new_pos.y = Math::clamp(0.0f, new_pos.y, static_cast<float>(default_screen_height));
 
     if (new_pos != pos)
       {

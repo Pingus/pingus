@@ -23,6 +23,7 @@
 #include "../world.hpp"
 #include "../particles/snow_particle_holder.hpp"
 #include "snow_generator.hpp"
+#include "globals.hpp"
 
 namespace WorldObjs {
 

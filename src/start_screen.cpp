@@ -155,7 +155,7 @@ StartScreenComponent::draw(DrawingContext& gc)
   gc.print_left(Fonts::chalk_normal,
                 Display::get_width()/2 - 290,
                 Display::get_height()/2 - 150,
-                format_description(screen_width - 230));
+                format_description(800 - 230));
 
   y += 32;
   y += 30;

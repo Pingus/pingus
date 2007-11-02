@@ -21,6 +21,7 @@
 #include "../world.hpp"
 #include "../resource.hpp"
 #include "starfield_background_stars.hpp"
+#include "globals.hpp"
 
 namespace WorldObjs {
 
