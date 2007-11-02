@@ -1,7 +1,6 @@
 #!/usr/bin/ruby -w
 
 module SExpr
-
   class Lexer
     attr_reader :tokens
 
@@ -58,24 +57,26 @@ module SExpr
       sublists = []
 
       @tokens.each{ |token|
-        if token == :list_start then
-          sublists.push(List.new([], nil))
-        elsif token == :list_end then
-          if sublists.empty? then
-            raise "Unexpected List end"
-          else
-            lst = sublists.pop()
-            if not sublists.empty? then
-              sublists.last().append(lst)
-            else
-              elements << lst
-            end
-          end
-        elsif token.is_a?(SExpr) then
+        if token.is_a?(SExpr) then
           if not sublists.empty? then
             sublists.last().append(token)
           else
             elements << token
+          end
+        elsif token.is_a?(Array) then
+          if token[0] == :list_start then
+            sublists.push(List.new([], token[1]))
+          elsif token[0] == :list_end then
+            if sublists.empty? then
+              raise "Unexpected List end"
+            else
+              lst = sublists.pop()
+              if not sublists.empty? then
+                sublists.last().append(lst)
+              else
+                elements << lst
+              end
+            end
           end
         else
           raise "Parser bug: parse: #{token}"
@@ -152,7 +153,11 @@ module SExpr
           elsif c == ?. then
             @state = :parse_real
           else
-            submit(:integer, false)
+            if @token_start == @pos - 1 and not is_digit(@str[@token_start]) then
+              raise "#{@line}:#{@column}: '#{@str[@token_start].chr}' must be followed by digit"
+            else
+              submit(:integer, false)
+            end
           end
 
       when :parse_boolean:
@@ -223,7 +228,7 @@ module SExpr
         @tokens << Real.new(current_token.to_f, get_pos())
 
       when :string
-        @tokens << String.new(current_token.
+        @tokens << String.new(current_token[1..-2].
                               gsub("\\n", "\n").
                               gsub("\\\"", "\"").
                               gsub("\\t", "\t"),
@@ -233,10 +238,10 @@ module SExpr
         @tokens << Symbol.new(current_token, get_pos())
         
       when :list_start
-        @tokens << :list_start
+        @tokens << [:list_start, get_pos()]
 
       when :list_end
-        @tokens << :list_end
+        @tokens << [:list_end, get_pos()]
 
       when :comment
         # ignore
@@ -266,7 +271,11 @@ module SExpr
     end
 
     def to_s()
-      return @value.to_s
+      if @value then
+        return "#t"
+      else
+        return "#f"
+      end
     end
   end
 
@@ -308,7 +317,7 @@ module SExpr
     end
 
     def to_s()
-      return @value.to_s
+      return @value.to_s # inspect
     end
   end
 
@@ -345,8 +354,9 @@ module SExpr
   end
 end
 
+
 if ARGV.empty?() then
-  lexer = SExpr::Lexer.new("(pingus-level a (b 1.5) 5)")
+  lexer = SExpr::Lexer.new("(-pi8ngulevel -.51 a (b +1.5) -5)")
   puts lexer.parse()
 else
   ARGV.each{|filename|
