@@ -427,7 +427,7 @@ PingusMain::parse_args(int argc, char** argv)
             cmd_options.fast_mode.set(true);
             break;
 
-          case 334: // --maintainer_mode
+          case 334: // --maintainer-mode
             cmd_options.maintainer_mode.set(true);
             maintainer_mode = true;
             break;
@@ -682,11 +682,11 @@ PingusMain::start_game ()
         }
     }
   else if (cmd_options.credits.is_set() && cmd_options.credits.get())
-    {
+       { // just show the credits screen
       ScreenManager::instance()->push_screen(Credits::instance(), false);
     }
   else if (cmd_options.font.is_set() && cmd_options.font.get())
-    { // Font Test
+    { // run the Font Test
       if (!cmd_options.rest.is_set())
         {
           std::cout << "Error: FILE argument required" << std::endl;
@@ -700,13 +700,14 @@ PingusMain::start_game ()
   else if (cmd_options.editor.is_set() && cmd_options.editor.get())
     { // Editor
       Editor::EditorScreen* editor = new Editor::EditorScreen();
+      // optionally load a map in the editor if it was given
       if (cmd_options.rest.is_set())
         editor->load(Pathname(cmd_options.rest.get(), Pathname::SYSTEM_PATH));
 
       ScreenManager::instance()->push_screen (editor, true);
     }
   else if (cmd_options.rest.is_set())
-    {
+       { // just start the map that was passed on the command line
       ScreenManager::instance()->push_screen
         (new StartScreen(PLFResMgr::load_plf_from_filename(Pathname(cmd_options.rest.get(),
                                                                     Pathname::SYSTEM_PATH))),
@@ -751,6 +752,7 @@ PingusMain::main(int argc, char** argv)
       init_sdl();
       init_pingus();
 
+      // start and run the actual game
       start_game();
     }
 
