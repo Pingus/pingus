@@ -1,16 +1,6 @@
-#!/usr/bin/ruby -w
-
 module SExpr
-  class Lexer
-    attr_reader :tokens
-
-    def initialize(str)
-      @state = :look_for_token
-      # puts str.inspect
-      # puts
-      lex(str)
-    end
-
+  class Parser
+
     def is_digit(c)
       return (?0..?9).member?(c)
     end
@@ -51,8 +41,15 @@ module SExpr
       return(c == ?+ or
              c == ?-)
     end
+
+    def initialize(str)
+      @str = str
+    end
 
     def parse()
+      @state = :look_for_token
+      tokenize()
+
       elements = []
       sublists = []
 
@@ -86,10 +83,10 @@ module SExpr
       return elements
     end
 
-    def lex(str)
+    def tokenize()
       @line   = 1
       @column = 1
-      @str = str
+
       @last_c = nil
       @tokens = []
 
@@ -97,8 +94,8 @@ module SExpr
       @token_start = @pos
       
       @advance = true
-      while(@pos < str.length) do
-        @c = str[@pos]
+      while(@pos < @str.length) do
+        @c = @str[@pos]
 
         scan(@c)
         
@@ -255,12 +252,21 @@ module SExpr
       # puts "#{current_token.inspect} => #{type} : #{@line}:#{@column}"
     end
   end
-
+
   class SExpr
     def initialize(pos = nil)
     end
-  end
 
+    def self.parse(str)
+      parser = Parser.new(str)
+      return parser.parse()
+    end
+
+    def write(out)
+      out << to_s()
+    end
+  end
+
   # Boolean
   class Boolean < SExpr
     attr_reader :value
@@ -278,7 +284,7 @@ module SExpr
       end
     end
   end
-
+
   # 1025
   class Integer < SExpr
     attr_reader :value
@@ -292,7 +298,7 @@ module SExpr
       return @value.to_s
     end
   end
-
+
   # 5.1
   class Real < SExpr
     attr_reader :value
@@ -306,7 +312,7 @@ module SExpr
       return @value.to_s
     end
   end
-
+
   # "foo"
   class String < SExpr
     attr_reader :value
@@ -319,8 +325,12 @@ module SExpr
     def to_s()
       return @value.to_s # inspect
     end
+    
+    def write(out)
+      out << @value.inspect
+    end
   end
-
+
   # foo
   class Symbol < SExpr
     attr_reader :value
@@ -334,7 +344,7 @@ module SExpr
       return @value.to_s
     end
   end
-
+
   # (foo bar baz)
   class List < SExpr
     attr_reader :children  
@@ -351,18 +361,18 @@ module SExpr
     def to_s()
       return "(" + @value.map{|i| i.to_s}.join(" ") + ")"
     end
+
+    def write(out)
+      out << "("
+      @value.each_with_index{|i, idx|
+        i.write(out)
+        if (idx != @value.length()-1) then
+          out << " "
+        end
+      }
+      out << ")"
+    end
   end
 end
-
-
-if ARGV.empty?() then
-  lexer = SExpr::Lexer.new("(-pi8ngulevel -.51 a (b +1.5) -5)")
-  puts lexer.parse()
-else
-  ARGV.each{|filename|
-    lexer = SExpr::Lexer.new(File.new(filename).read())
-    puts lexer.parse()
-  }
-end
-
+
 # EOF #
