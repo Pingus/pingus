@@ -1138,14 +1138,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\components\hurry_up.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\components\hurry_up.hpp"
-					>
-				</File>
-				<File
 					RelativePath=".\src\components\menu_button.cpp"
 					>
 				</File>
@@ -1378,14 +1370,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\editor\editor_viewport.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\editor\editor_viewport.hpp"
-					>
-				</File>
-				<File
 					RelativePath=".\src\editor\file_dialog.cpp"
 					>
 					<FileConfiguration
@@ -1509,6 +1493,14 @@
 				</File>
 				<File
 					RelativePath=".\src\editor\panel.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\viewport.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\editor\viewport.hpp"
 					>
 				</File>
 			</Filter>
