@@ -38,7 +38,6 @@ class Playfield : public GUI::RectComponent
 private:
   friend class Client;
 
-  ////CL_Surface buffer;
   Server* server;
   Client* client;
 

@@ -26,7 +26,6 @@
 #include "components/time_display.hpp"
 #include "components/pingus_counter.hpp"
 #include "components/smallmap.hpp"
-#include "components/hurry_up.hpp"
 #include "display/cursor.hpp"
 #include "display/display.hpp"
 #include "true_server.hpp"
@@ -60,14 +59,12 @@ Client::Client (TrueServer * s)
                                           Size(Math::min(Display::get_width(),  world_width),
                                                Math::min(Display::get_height(), world_height))));
 
-  hurry_up     = new HurryUp(this);
   pcounter     = new PingusCounter(get_server());
   small_map    = new SmallMap(this);
   time_display = new TimeDisplay(this);
 
   gui_manager->add(playfield,    true);
   gui_manager->add(button_panel, true);
-  gui_manager->add(hurry_up,     true);
   gui_manager->add(pcounter,     true);
   gui_manager->add(small_map,    true);
   gui_manager->add(time_display, true);
@@ -110,7 +107,7 @@ Client::draw_background (DrawingContext& gc)
 void
 Client::update (const GameDelta& delta)
 {
-  GUIScreen::update (delta);
+  GUIScreen::update(delta);
   process_events(delta);
 }
 

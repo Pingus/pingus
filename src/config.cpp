@@ -404,6 +404,5 @@ Config::str_to_int(const std::string& str)
   return ret_val;
 }
 
-
 /* EOF */
 
