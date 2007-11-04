@@ -72,16 +72,19 @@ ScreenManager::display()
   // Main loop for the menu
   while (!screens.empty())
     {
+      // how long the previous frame (iteration) took (if any)
       float time_delta = delta_manager.getset();
 
+      // previous frame took more than one second
       if (time_delta > 1.0)
 	{
           if (maintainer_mode)
             std::cout << "ScreenManager: detected large delta (" << time_delta
                       << "), ignoring and doing frameskip" << std::endl;
-	  continue;
+	  continue; // skip this frame
 	}
 
+      // update the input
       input_manager.update(time_delta);
 
       // Fill the delta with values
@@ -90,13 +93,13 @@ ScreenManager::display()
 
       last_screen = get_current_screen();
 
-      // Most likly the screen will get changed in this update call
+      // Most likely the screen will get changed in this update call
       get_current_screen()->update (delta);
 
       if (cursor)
         cursor->update(time_delta);
 
-      // Last screen has poped, so we are going to end here
+      // Last screen has popped, so we are going to end here
       if (screens.empty())
 	continue;
 
