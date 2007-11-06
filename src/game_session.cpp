@@ -130,11 +130,15 @@ PingusGameSession::update (const GameDelta& delta)
       return;
     }
 
+  // how long did the previous frame processing take (ignoring idle delay)
   int time_passed = int(delta.get_time() * 1000) + left_over_time;
+  // how long we want each world update to take
   int update_time = game_speed;
 
   left_over_time = 0;
 
+  // update the world (and the objects in it) in constant steps to account
+  // for the time the previous frame took
   {
     int i;
     for (i = 0;
