@@ -24,6 +24,8 @@
 #include "display/drawing_context.hpp"
 #include "components/label.hpp"
 #include "components/check_box.hpp"
+#include "components/slider_box.hpp"
+#include "components/choice_box.hpp"
 #include "gui/gui_manager.hpp"
 #include "option_menu.hpp"
 
@@ -56,10 +58,25 @@ OptionMenu::add_item(const std::string& label)
   gui_manager->add(new Label(label, Rect(Vector2i(120 + x_pos * 312,
                                                   177 + y_pos*32), Size(160, 32))), true);
 
-  gui_manager->add(new CheckBox(Rect(Vector2i(120 + x_pos * 312 + 156 + 32+28,
-                                              177 + y_pos*32), 
-                                     Size(32, 32))), true);
-    
+  if (0)
+    {
+      gui_manager->add(new ChoiceBox(Rect(Vector2i(120 + x_pos * 312 + 156 + 32+28,
+                                                   177 + y_pos*32), 
+                                          Size(32, 32))), true);
+    }
+  else if (1)
+    {
+      gui_manager->add(new SliderBox(Rect(Vector2i(120 + x_pos * 312 + 156 + 32+28,
+                                                   177 + y_pos*32), 
+                                          Size(32, 32))), true);
+    }
+  else
+    {
+      gui_manager->add(new CheckBox(Rect(Vector2i(120 + x_pos * 312 + 156 + 32+28,
+                                                  177 + y_pos*32), 
+                                         Size(32, 32))), true);
+    }
+
   y_pos += 1;  
   if (y_pos > 5)
     {

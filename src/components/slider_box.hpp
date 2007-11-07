@@ -20,11 +20,22 @@
 #ifndef HEADER_SLIDER_BOX_HPP
 #define HEADER_SLIDER_BOX_HPP
 
+#include <string>
+#include "gui/rect_component.hpp"
+
 /** */
-class SliderBox
+class SliderBox : public GUI::RectComponent
 {
 private:
+  int value;
+
 public:
+  SliderBox(const Rect& rect);
+
+  void draw(DrawingContext& gc);
+  void on_primary_button_press(int x, int y);
+  void on_secondary_button_press(int x, int y);
+  void update_layout() {}
 
 private:
   SliderBox (const SliderBox&);

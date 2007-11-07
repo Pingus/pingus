@@ -35,6 +35,7 @@ public:
   void draw(DrawingContext& gc);
   void on_primary_button_press(int x, int y);
   void update_layout() {}
+
 private:
   CheckBox (const CheckBox&);
   CheckBox& operator= (const CheckBox&);

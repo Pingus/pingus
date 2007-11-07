@@ -17,8 +17,43 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "fonts.hpp"
+#include "display/drawing_context.hpp"
 #include "choice_box.hpp"
 
+ChoiceBox::ChoiceBox(const Rect& rect)
+  : RectComponent(rect)
+{
+  current_choice = 0;
+  choices.push_back("Choice 1");
+  choices.push_back("Choice 2");
+  choices.push_back("Choice 3");
+}
 
+void
+ChoiceBox::draw(DrawingContext& gc)
+{
+  if (current_choice >= 0 && current_choice < int(choices.size()))
+    {
+      gc.print_center(Fonts::chalk_normal, rect.left+rect.get_width()/2, rect.top, 
+                      "< " + choices[current_choice] + " >");
+    }
+}
+
+void
+ChoiceBox::on_primary_button_press(int x, int y)
+{
+  current_choice += 1;
+  if (current_choice >= int(choices.size()))
+    current_choice = choices.size() - 1;
+}
+
+void
+ChoiceBox::on_secondary_button_press(int x, int y)
+{
+  current_choice -= 1;
+  if (current_choice < 0)
+    current_choice = 0;
+}
 
 /* EOF */

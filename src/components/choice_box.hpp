@@ -20,12 +20,25 @@
 #ifndef HEADER_CHOICE_BOX_HPP
 #define HEADER_CHOICE_BOX_HPP
 
+#include <string>
+#include <vector>
+#include "gui/rect_component.hpp"
+
 /** */
-class ChoiceBox
+class ChoiceBox : public GUI::RectComponent
 {
 private:
-public:
+  int current_choice;
+  std::vector<std::string> choices;
   
+public:
+  ChoiceBox(const Rect& rect);
+
+  void draw(DrawingContext& gc);
+  void on_primary_button_press(int x, int y);
+  void on_secondary_button_press(int x, int y);
+  void update_layout() {}
+
 private:
   ChoiceBox (const ChoiceBox&);
   ChoiceBox& operator= (const ChoiceBox&);

@@ -17,8 +17,35 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "fonts.hpp"
+#include "display/drawing_context.hpp"
 #include "slider_box.hpp"
 
+SliderBox::SliderBox(const Rect& rect)
+  : RectComponent(rect),
+    value(10)
+{
+}
 
+void
+SliderBox::draw(DrawingContext& gc)
+{
+  gc.print_right(Fonts::chalk_normal, rect.left+rect.get_width()/2, rect.top, 
+                 std::string(value, '|'));
+}
+
+void
+SliderBox::on_primary_button_press(int x, int y)
+{
+  value += 1;
+}
+
+void
+SliderBox::on_secondary_button_press(int x, int y)
+{
+  value -= 1;
+  if (value < 0)
+    value = 0;
+}
 
 /* EOF */
