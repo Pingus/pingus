@@ -163,10 +163,6 @@ Bugs:
   next column a little bit. See the last tutorial level for an
   example. (likely rounding error float/int)
 
-* hurry-up should be removed and replaced by something less heavy
-  (isn't used in tutorial island, since those levels don't have time)
-  (have a blinking clock and tick sound or so)
-
 * StringFormat does line breaking TeX-style, but that isn't useful
   with the current s-expr format, which can handle explicit line
   breaks just fine
@@ -238,6 +234,19 @@ Undecided stuff: ================
 
 Roadmap for Pingus Editor 0.7.3:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Important:
+==========
+
+* remove support for obsolete tags: 
+
+  - liquid/speed
+  - hotpost/speed
+  - hotpost/parallax (replace with para-x, para-y)
+
+* Pack some new levels: indiana
+
+* keep-aspect is missing in the editor
 
 Medium Important:
 =================

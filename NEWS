@@ -1,7 +1,9 @@
 0.7.3 (??/Nov/2007)
 ===================
 * fixed game not starting when no soundcard is present
-
+* all halloween levels have been converted to a size of 1920x1200 or
+  larger (i.e. they can be played in fullscreen on all common monitors
+  without letterboxing)
 
 0.7.2 (31/Oct/2007)
 ===================
