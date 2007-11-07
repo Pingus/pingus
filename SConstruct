@@ -63,6 +63,7 @@ pingus_sources = [
 'src/colliders/pingu_collider.cpp', 
 'src/components/choice_box.cpp', 
 'src/components/slider_box.cpp', 
+'src/components/label.cpp', 
 'src/components/check_box.cpp', 
 'src/components/action_button.cpp', 
 'src/components/button_panel.cpp', 

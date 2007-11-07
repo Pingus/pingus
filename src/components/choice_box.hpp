@@ -25,7 +25,7 @@ class ChoiceBox
 {
 private:
 public:
-
+  
 private:
   ChoiceBox (const ChoiceBox&);
   ChoiceBox& operator= (const ChoiceBox&);

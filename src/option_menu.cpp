@@ -22,12 +22,50 @@
 #include "screen/screen_manager.hpp"
 #include "fonts.hpp"
 #include "display/drawing_context.hpp"
+#include "components/label.hpp"
+#include "components/check_box.hpp"
+#include "gui/gui_manager.hpp"
 #include "option_menu.hpp"
 
 OptionMenu::OptionMenu()
 {
   background = Resource::load_sprite("core/menu/optionmenu");
   ok_button  = Resource::load_sprite("core/start/ok");
+
+  x_pos = 0;
+  y_pos = 0;
+
+  add_item("Resolution:");
+  add_item("Fullscreen:");
+  add_item("Allow Resize:");
+  add_item("Fast Mode:");
+  add_item("Frame Skip:");
+  add_item("Software Cursor:");
+
+  add_item("Language:");
+  add_item("Master Volume:");
+  add_item("Sound Volume:");
+  add_item("Music Volume:");
+  add_item("Scroll Mode:");
+  add_item("Mouse Grab:");
+}
+
+void
+OptionMenu::add_item(const std::string& label)
+{
+  gui_manager->add(new Label(label, Rect(Vector2i(120 + x_pos * 312,
+                                                  177 + y_pos*32), Size(160, 32))), true);
+
+  gui_manager->add(new CheckBox(Rect(Vector2i(120 + x_pos * 312 + 156 + 32+28,
+                                              177 + y_pos*32), 
+                                     Size(32, 32))), true);
+    
+  y_pos += 1;  
+  if (y_pos > 5)
+    {
+      y_pos = 0; 
+      x_pos += 1;
+    }
 }
 
 OptionMenu::~OptionMenu()
@@ -43,7 +81,7 @@ OptionMenu::update(const GameDelta& delta)
   
 struct OptionEntry {
   OptionEntry(const std::string& left_,
-        const std::string& right_)
+              const std::string& right_)
     : left(left_), right(right_)
   {}
   
@@ -70,7 +108,9 @@ OptionMenu::draw_background(DrawingContext& gc)
   int y = 145;
   for(std::vector<OptionEntry>::iterator i = strs.begin(); i != strs.end(); ++i)
     {
-      gc.print_left(Fonts::chalk_normal,  120, y += 32, i->left);
+      //gc.print_left(Fonts::chalk_normal,  120, y += 32, i->left);
+      y += 32;
+      if (i->right != "[X]")
       gc.print_right(Fonts::chalk_normal, gc.get_width()/2 - 32, y, i->right);
     }
 
@@ -86,8 +126,10 @@ OptionMenu::draw_background(DrawingContext& gc)
   y = 145;
   for(std::vector<OptionEntry>::iterator i = strs2.begin(); i != strs2.end(); ++i)
     {
-      gc.print_left(Fonts::chalk_normal,  gc.get_width()/2 + 32, y += 32, i->left);
-      gc.print_right(Fonts::chalk_normal, gc.get_width()/2 + 280, y, i->right);
+      //gc.print_left(Fonts::chalk_normal,  gc.get_width()/2 + 32, y += 32, i->left);
+      y += 32;
+      if (i->right != "[X]")
+        gc.print_right(Fonts::chalk_normal, gc.get_width()/2 + 280, y, i->right);
     }
 
 

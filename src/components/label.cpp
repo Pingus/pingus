@@ -17,30 +17,21 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_LABEL_HPP
-#define HEADER_LABEL_HPP
+#include "fonts.hpp"
+#include "display/drawing_context.hpp"
+#include "label.hpp"
 
-#include <string>
-#include "font.hpp"
-#include "gui/rect_component.hpp"
-
-/** */
-class Label : public GUI::RectComponent
+Label::Label(const std::string& label, const Rect& rect)
+  : RectComponent(rect),
+    label(label)
 {
-private:
-  std::string label;
+}
 
-public:
-  Label(const std::string& label, const Rect& rect);
-
-  void draw(DrawingContext& gc);
-  void update_layout() {}
-
-private:
-  Label (const Label&);
-  Label& operator= (const Label&);
-};
-
-#endif
+void
+Label::draw(DrawingContext& gc)
+{
+  //gc.draw_rect(rect, Color(255, 255, 255));
+  gc.print_left(Fonts::chalk_normal, rect.left, rect.top, label);
+}
 
 /* EOF */

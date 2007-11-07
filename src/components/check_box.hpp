@@ -20,13 +20,21 @@
 #ifndef HEADER_CHECK_BOX_HPP
 #define HEADER_CHECK_BOX_HPP
 
+#include <string>
+#include "gui/rect_component.hpp"
+
 /** */
-class CheckBox
+class CheckBox : public GUI::RectComponent
 {
 private:
+  bool state;
+
 public:
-  CheckBox();
-    
+  CheckBox(const Rect& rect);
+
+  void draw(DrawingContext& gc);
+  void on_primary_button_press(int x, int y);
+  void update_layout() {}
 private:
   CheckBox (const CheckBox&);
   CheckBox& operator= (const CheckBox&);

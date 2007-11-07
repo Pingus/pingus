@@ -29,7 +29,9 @@ class OptionMenu : public GUIScreen
 private:
   Sprite background;
   Sprite ok_button;
-
+  int x_pos;
+  int y_pos;
+  
 public:
   OptionMenu();
   ~OptionMenu();
@@ -38,6 +40,7 @@ public:
   void update (const GameDelta& delta);
   void on_escape_press ();
 
+  void add_item(const std::string& label);
 private:
   OptionMenu (const OptionMenu&);
   OptionMenu& operator= (const OptionMenu&);
