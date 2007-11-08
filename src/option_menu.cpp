@@ -17,6 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <set>
+#include <boost/bind.hpp>
+#include "globals.hpp"
 #include "gettext.h"
 #include "resource.hpp"
 #include "screen/screen_manager.hpp"
@@ -27,7 +30,10 @@
 #include "components/slider_box.hpp"
 #include "components/choice_box.hpp"
 #include "gui/gui_manager.hpp"
+#include "tinygettext/dictionary_manager.hpp"
 #include "option_menu.hpp"
+
+extern TinyGetText::DictionaryManager dictionary_manager;
 
 OptionMenu::OptionMenu()
 {
@@ -37,19 +43,46 @@ OptionMenu::OptionMenu()
   x_pos = 0;
   y_pos = 0;
 
-  add_item("Resolution:",      new ChoiceBox(Rect()));
-  add_item("Fullscreen:",      new CheckBox(Rect()));
-  add_item("Allow Resize:",    new CheckBox(Rect()));
-  add_item("Fast Mode:",       new CheckBox(Rect()));
-  add_item("Frame Skip:",      new CheckBox(Rect()));
-  add_item("Software Cursor:", new CheckBox(Rect()));
+  ChoiceBox* resolution_box = new ChoiceBox(Rect());
+  resolution_box->add_choice("640x480");
+  resolution_box->add_choice("800x480");
+  resolution_box->add_choice("800x600");
+  resolution_box->add_choice("1024x768");
+  resolution_box->add_choice("1152x864");
+  resolution_box->add_choice("1280x960");
+  resolution_box->add_choice("1280x1024");
+  resolution_box->add_choice("1600x1200");
+  resolution_box->add_choice("1920x1080");
 
-  add_item("Language:",        new ChoiceBox(Rect()));
-  add_item("Master Volume:",   new SliderBox(Rect()));
-  add_item("Sound Volume:",    new SliderBox(Rect()));
-  add_item("Music Volume:",    new SliderBox(Rect()));
-  add_item("Scroll Mode:",     new ChoiceBox(Rect()));
-  add_item("Mouse Grab:",      new CheckBox(Rect()));
+  ChoiceBox* language_box = new ChoiceBox(Rect());
+  std::set<std::string> lst = dictionary_manager.get_languages();
+  for (std::set<std::string>::iterator i = lst.begin(); i != lst.end(); ++i)
+    language_box->add_choice(TinyGetText::get_language_def(*i)->name);
+
+  ChoiceBox* scroll_box = new ChoiceBox(Rect());
+  scroll_box->add_choice("Auto-Scroll");
+  scroll_box->add_choice("Drag&Drop");
+  scroll_box->add_choice("Rubberband");
+  
+  swcursor_box   = new CheckBox(Rect());
+  fullscreen_box = new CheckBox(Rect());
+
+  swcursor_box->on_change.connect(boost::bind(&OptionMenu::on_swcursor_change, this, _1));
+  fullscreen_box->on_change.connect(boost::bind(&OptionMenu::on_fullscreen_change, this, _1));
+
+  add_item(_("Resolution:"),      resolution_box);
+  add_item(_("Fullscreen:"),      fullscreen_box);
+  add_item(_("Allow Resize:"),    new CheckBox(Rect()));
+  add_item(_("Fast Mode:"),       new CheckBox(Rect()));
+  add_item(_("Frame Skip:"),      new CheckBox(Rect()));
+  add_item(_("Software Cursor:"), swcursor_box);
+
+  add_item(_("Language:"),        language_box);
+  add_item(_("Master Volume:"),   new SliderBox(Rect()));
+  add_item(_("Sound Volume:"),    new SliderBox(Rect()));
+  add_item(_("Music Volume:"),    new SliderBox(Rect()));
+  add_item(_("Scroll Mode:"),     scroll_box);
+  add_item(_("Mouse Grab:"),      new CheckBox(Rect()));
 }
 
 void
@@ -172,7 +205,19 @@ OptionMenu::on_escape_press()
 void
 OptionMenu::resize(const Size&)
 {
-  
+}
+
+void
+OptionMenu::on_swcursor_change(bool v)
+{
+  std::cout << "v: " << v << std::endl;
+  swcursor_enabled = v;
+}
+
+void
+OptionMenu::on_fullscreen_change(bool v)
+{
+  fullscreen_enabled = true;
 }
 
 /* EOF */

@@ -25,6 +25,8 @@
 #include "components/label.hpp"
 #include "gui/rect_component.hpp"
 
+class CheckBox;
+
 /** */
 class OptionMenu : public GUIScreen
 {
@@ -45,6 +47,9 @@ private:
 
   typedef std::vector<Option> Options;
   Options options;
+
+  CheckBox* fullscreen_box;
+  CheckBox* swcursor_box;
   
 public:
   OptionMenu();
@@ -57,6 +62,9 @@ public:
   void add_item(const std::string& label, GUI::RectComponent* control);
 
   void resize(const Size&);
+
+  void on_swcursor_change(bool v);
+  void on_fullscreen_change(bool v);
 private:
   OptionMenu (const OptionMenu&);
   OptionMenu& operator= (const OptionMenu&);

@@ -76,7 +76,7 @@ SliderBox::on_pointer_move(int x, int y)
     {
       x -= rect.left;
   
-      value = 20 * x / rect.get_width();
+      value = 20 * x / (rect.get_width() - 12);
   
       if (value > 20)
         value = 20;

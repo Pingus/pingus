@@ -20,6 +20,7 @@
 #ifndef HEADER_CHECK_BOX_HPP
 #define HEADER_CHECK_BOX_HPP
 
+#include <boost/signal.hpp>
 #include <string>
 #include "gui/rect_component.hpp"
 
@@ -35,6 +36,8 @@ public:
   void draw(DrawingContext& gc);
   void on_primary_button_press(int x, int y);
   void update_layout() {}
+
+  boost::signal<void (bool)> on_change;
 
 private:
   CheckBox (const CheckBox&);

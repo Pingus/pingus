@@ -32,6 +32,7 @@ void
 CheckBox::on_primary_button_press (int x, int y) 
 {
   state = !state;
+  on_change(state);
 }
 
 void

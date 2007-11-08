@@ -37,7 +37,8 @@ public:
   void draw(DrawingContext& gc);
   void on_primary_button_press(int x, int y);
   void update_layout() {}
-
+  void add_choice(const std::string& str);
+  
 private:
   ChoiceBox (const ChoiceBox&);
   ChoiceBox& operator= (const ChoiceBox&);
