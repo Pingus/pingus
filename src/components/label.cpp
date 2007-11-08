@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "globals.hpp"
 #include "fonts.hpp"
 #include "display/drawing_context.hpp"
 #include "label.hpp"
@@ -30,7 +31,9 @@ Label::Label(const std::string& label, const Rect& rect)
 void
 Label::draw(DrawingContext& gc)
 {
-  //gc.draw_rect(rect, Color(255, 255, 255));
+  if (maintainer_mode)
+    gc.draw_rect(rect, Color(0, 255, 255));
+
   gc.print_left(Fonts::chalk_normal, rect.left, rect.top, label);
 }
 

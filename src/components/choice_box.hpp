@@ -36,7 +36,6 @@ public:
 
   void draw(DrawingContext& gc);
   void on_primary_button_press(int x, int y);
-  void on_secondary_button_press(int x, int y);
   void update_layout() {}
 
 private:

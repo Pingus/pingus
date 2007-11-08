@@ -37,44 +37,47 @@ OptionMenu::OptionMenu()
   x_pos = 0;
   y_pos = 0;
 
-  add_item("Resolution:");
-  add_item("Fullscreen:");
-  add_item("Allow Resize:");
-  add_item("Fast Mode:");
-  add_item("Frame Skip:");
-  add_item("Software Cursor:");
+  add_item("Resolution:",      new ChoiceBox(Rect()));
+  add_item("Fullscreen:",      new CheckBox(Rect()));
+  add_item("Allow Resize:",    new CheckBox(Rect()));
+  add_item("Fast Mode:",       new CheckBox(Rect()));
+  add_item("Frame Skip:",      new CheckBox(Rect()));
+  add_item("Software Cursor:", new CheckBox(Rect()));
 
-  add_item("Language:");
-  add_item("Master Volume:");
-  add_item("Sound Volume:");
-  add_item("Music Volume:");
-  add_item("Scroll Mode:");
-  add_item("Mouse Grab:");
+  add_item("Language:",        new ChoiceBox(Rect()));
+  add_item("Master Volume:",   new SliderBox(Rect()));
+  add_item("Sound Volume:",    new SliderBox(Rect()));
+  add_item("Music Volume:",    new SliderBox(Rect()));
+  add_item("Scroll Mode:",     new ChoiceBox(Rect()));
+  add_item("Mouse Grab:",      new CheckBox(Rect()));
 }
 
 void
-OptionMenu::add_item(const std::string& label)
+OptionMenu::add_item(const std::string& label, GUI::RectComponent* control)
 {
-  gui_manager->add(new Label(label, Rect(Vector2i(120 + x_pos * 312,
-                                                  177 + y_pos*32), Size(160, 32))), true);
+  gui_manager->add(new Label(label, Rect(Vector2i(120 + x_pos * 312, 177 + y_pos*32), 
+                                         Size(140, 32))),
+                             true);
+  gui_manager->add(control, true);
 
-  if (0)
+  if (dynamic_cast<ChoiceBox*>(control))
     {
-      gui_manager->add(new ChoiceBox(Rect(Vector2i(120 + x_pos * 312 + 156 + 32+28,
-                                                   177 + y_pos*32), 
-                                          Size(32, 32))), true);
+      control->set_rect(Rect(120 + x_pos * 312 + 140, 177 + y_pos*32,
+                             120 + x_pos * 312 + 256, 177 + y_pos*32 + 32));                             
     }
-  else if (1)
+  else if (dynamic_cast<SliderBox*>(control))
     {
-      gui_manager->add(new SliderBox(Rect(Vector2i(120 + x_pos * 312 + 156 + 32+28,
-                                                   177 + y_pos*32), 
-                                          Size(32, 32))), true);
+      control->set_rect(Rect(120 + x_pos * 312 + 140, 177 + y_pos*32,
+                             120 + x_pos * 312 + 256, 177 + y_pos*32 + 32));
+    }
+  else if (dynamic_cast<CheckBox*>(control))
+    {
+      control->set_rect(Rect(Vector2i(120 + x_pos * 312 + 156 + 32+28+8, 177 + y_pos*32), 
+                             Size(32, 32)));
     }
   else
     {
-      gui_manager->add(new CheckBox(Rect(Vector2i(120 + x_pos * 312 + 156 + 32+28,
-                                                  177 + y_pos*32), 
-                                         Size(32, 32))), true);
+      assert(!"Unhandled control type");
     }
 
   y_pos += 1;  
@@ -113,42 +116,44 @@ OptionMenu::draw_background(DrawingContext& gc)
   gc.draw(background, Vector2i(gc.get_width()/2 - background.get_width()/2, gc.get_height()/2 - background.get_height()/2));
 
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, 90, "Option Menu");
-  
-  std::vector<OptionEntry> strs;
-  strs.push_back(OptionEntry("Resolution:",    "<800x600>"));
-  strs.push_back(OptionEntry("Fullscreen:",    "[X]"));
-  strs.push_back(OptionEntry("Allow Resize:",  "[X]"));
-  strs.push_back(OptionEntry("Fast Mode:",     "[X]"));
-  strs.push_back(OptionEntry("Frame Skip:",      "<5>"));
-  strs.push_back(OptionEntry("Software Cursor:", "[X]"));
 
-  int y = 145;
-  for(std::vector<OptionEntry>::iterator i = strs.begin(); i != strs.end(); ++i)
+  if (0)  
     {
-      //gc.print_left(Fonts::chalk_normal,  120, y += 32, i->left);
-      y += 32;
-      if (i->right != "[X]")
-      gc.print_right(Fonts::chalk_normal, gc.get_width()/2 - 32, y, i->right);
+      std::vector<OptionEntry> strs;
+      strs.push_back(OptionEntry("Resolution:",    "<800x600>"));
+      strs.push_back(OptionEntry("Fullscreen:",    "[X]"));
+      strs.push_back(OptionEntry("Allow Resize:",  "[X]"));
+      strs.push_back(OptionEntry("Fast Mode:",     "[X]"));
+      strs.push_back(OptionEntry("Frame Skip:",      "<5>"));
+      strs.push_back(OptionEntry("Software Cursor:", "[X]"));
+
+      int y = 145;
+      for(std::vector<OptionEntry>::iterator i = strs.begin(); i != strs.end(); ++i)
+        {
+          //gc.print_left(Fonts::chalk_normal,  120, y += 32, i->left);
+          y += 32;
+          if (i->right != "[X]")
+            gc.print_right(Fonts::chalk_normal, gc.get_width()/2 - 32, y, i->right);
+        }
+
+      std::vector<OptionEntry> strs2;
+      strs2.push_back(OptionEntry("Language:",        "<German>"));
+      strs2.push_back(OptionEntry("Master Volume:", "[||||||||||||||||||||||||||||||]"));
+      strs2.push_back(OptionEntry("Sound Volume:",  "[||||||||||||||||||||||||||||||]"));
+      strs2.push_back(OptionEntry("Music Volume:",  "[||||||||||||||||||||||||||||||]"));
+      strs2.push_back(OptionEntry("Scroll Mode:",     "<drag&drop>"));
+      strs2.push_back(OptionEntry("Mouse Grab:",     "[X]"));
+      //strs2.push_back(OptionEntry("Auto Online Updates:", "[X]"));
+
+      y = 145;
+      for(std::vector<OptionEntry>::iterator i = strs2.begin(); i != strs2.end(); ++i)
+        {
+          //gc.print_left(Fonts::chalk_normal,  gc.get_width()/2 + 32, y += 32, i->left);
+          y += 32;
+          if (i->right != "[X]")
+            gc.print_right(Fonts::chalk_normal, gc.get_width()/2 + 280, y, i->right);
+        }
     }
-
-  std::vector<OptionEntry> strs2;
-  strs2.push_back(OptionEntry("Language:",        "<German>"));
-  strs2.push_back(OptionEntry("Master Volume:", "[||||||||||||||||||||||||||||||]"));
-  strs2.push_back(OptionEntry("Sound Volume:",  "[||||||||||||||||||||||||||||||]"));
-  strs2.push_back(OptionEntry("Music Volume:",  "[||||||||||||||||||||||||||||||]"));
-  strs2.push_back(OptionEntry("Scroll Mode:",     "<drag&drop>"));
-  strs2.push_back(OptionEntry("Mouse Grab:",     "[X]"));
-  //strs2.push_back(OptionEntry("Auto Online Updates:", "[X]"));
-
-  y = 145;
-  for(std::vector<OptionEntry>::iterator i = strs2.begin(); i != strs2.end(); ++i)
-    {
-      //gc.print_left(Fonts::chalk_normal,  gc.get_width()/2 + 32, y += 32, i->left);
-      y += 32;
-      if (i->right != "[X]")
-        gc.print_right(Fonts::chalk_normal, gc.get_width()/2 + 280, y, i->right);
-    }
-
 
   gc.print_center(Fonts::chalk_normal, gc.get_width()/2 + 225 + 30, gc.get_height()/2 + 125 - 20, _("Close"));
   gc.draw(ok_button, Vector2i(gc.get_width()/2 + 225, gc.get_height()/2 + 125));
@@ -162,6 +167,12 @@ OptionMenu::on_escape_press()
 {
   std::cout << "OptionMenu: poping screen" << std::endl;
   ScreenManager::instance()->pop_screen();
+}
+
+void
+OptionMenu::resize(const Size&)
+{
+  
 }
 
 /* EOF */

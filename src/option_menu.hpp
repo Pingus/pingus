@@ -22,6 +22,8 @@
 
 #include "sprite.hpp"
 #include "screen/gui_screen.hpp"
+#include "components/label.hpp"
+#include "gui/rect_component.hpp"
 
 /** */
 class OptionMenu : public GUIScreen
@@ -31,6 +33,18 @@ private:
   Sprite ok_button;
   int x_pos;
   int y_pos;
+
+  struct Option {
+    Label*         label;
+    GUI::RectComponent* control;
+
+    Option(Label* label, GUI::RectComponent* control)
+      : label(label), control(control)
+    {}
+  };
+
+  typedef std::vector<Option> Options;
+  Options options;
   
 public:
   OptionMenu();
@@ -40,7 +54,9 @@ public:
   void update (const GameDelta& delta);
   void on_escape_press ();
 
-  void add_item(const std::string& label);
+  void add_item(const std::string& label, GUI::RectComponent* control);
+
+  void resize(const Size&);
 private:
   OptionMenu (const OptionMenu&);
   OptionMenu& operator= (const OptionMenu&);

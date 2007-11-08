@@ -28,13 +28,15 @@ class SliderBox : public GUI::RectComponent
 {
 private:
   int value;
+  bool drag_drop;
 
 public:
   SliderBox(const Rect& rect);
 
   void draw(DrawingContext& gc);
   void on_primary_button_press(int x, int y);
-  void on_secondary_button_press(int x, int y);
+  void on_primary_button_release(int x, int y);
+  void on_pointer_move(int x, int y);
   void update_layout() {}
 
 private:
