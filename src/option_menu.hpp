@@ -26,6 +26,7 @@
 #include "gui/rect_component.hpp"
 
 class CheckBox;
+class SliderBox;
 
 /** */
 class OptionMenu : public GUIScreen
@@ -50,6 +51,14 @@ private:
 
   CheckBox* fullscreen_box;
   CheckBox* swcursor_box;
+  CheckBox* autoscrolling_box;
+  CheckBox* fastmode_box;
+  CheckBox* mousegrab_box;
+  CheckBox* printfps_box;
+
+  SliderBox* master_volume_box;
+  SliderBox* sound_volume_box;
+  SliderBox* music_volume_box;
   
 public:
   OptionMenu();
@@ -65,6 +74,14 @@ public:
 
   void on_swcursor_change(bool v);
   void on_fullscreen_change(bool v);
+  void on_autoscrolling_change(bool v);
+  void on_fastmode_change(bool v);
+  void on_mousegrab_change(bool v);
+  void on_printfps_change(bool v);
+
+  void on_master_volume_change(int v);
+  void on_sound_volume_change(int v);
+  void on_music_volume_change(int v);
 private:
   OptionMenu (const OptionMenu&);
   OptionMenu& operator= (const OptionMenu&);

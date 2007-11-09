@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "math.hpp"
 #include "globals.hpp"
 #include "fonts.hpp"
 #include "display/drawing_context.hpp"
@@ -74,14 +75,16 @@ SliderBox::on_pointer_move(int x, int y)
 {
   if (drag_drop)
     {
+      int old_value = value;
+
       x -= rect.left;
   
       value = 20 * x / (rect.get_width() - 12);
   
-      if (value > 20)
-        value = 20;
-      else if (value < 0)
-        value = 0; 
+      value = Math::clamp(0, value, 20);
+
+      if (value != old_value)
+        on_change(value*5); // scale to [0,100]
     }
 }
 

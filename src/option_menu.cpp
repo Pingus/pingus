@@ -60,29 +60,44 @@ OptionMenu::OptionMenu()
     language_box->add_choice(TinyGetText::get_language_def(*i)->name);
 
   ChoiceBox* scroll_box = new ChoiceBox(Rect());
-  scroll_box->add_choice("Auto-Scroll");
   scroll_box->add_choice("Drag&Drop");
   scroll_box->add_choice("Rubberband");
   
-  swcursor_box   = new CheckBox(Rect());
-  fullscreen_box = new CheckBox(Rect());
+  swcursor_box      = new CheckBox(Rect());
+  fullscreen_box    = new CheckBox(Rect());
+  autoscrolling_box = new CheckBox(Rect());
+  fastmode_box      = new CheckBox(Rect());
+  mousegrab_box     = new CheckBox(Rect());
+  printfps_box      = new CheckBox(Rect());
+
+  master_volume_box = new SliderBox(Rect());
+  sound_volume_box  = new SliderBox(Rect());
+  music_volume_box  = new SliderBox(Rect());
 
   swcursor_box->on_change.connect(boost::bind(&OptionMenu::on_swcursor_change, this, _1));
   fullscreen_box->on_change.connect(boost::bind(&OptionMenu::on_fullscreen_change, this, _1));
+  autoscrolling_box->on_change.connect(boost::bind(&OptionMenu::on_autoscrolling_change, this, _1));
+  fastmode_box->on_change.connect(boost::bind(&OptionMenu::on_fastmode_change, this, _1));
+  mousegrab_box->on_change.connect(boost::bind(&OptionMenu::on_mousegrab_change, this, _1));
+  printfps_box->on_change.connect(boost::bind(&OptionMenu::on_printfps_change, this, _1));
 
-  add_item(_("Resolution:"),      resolution_box);
-  add_item(_("Fullscreen:"),      fullscreen_box);
-  add_item(_("Allow Resize:"),    new CheckBox(Rect()));
-  add_item(_("Fast Mode:"),       new CheckBox(Rect()));
-  add_item(_("Frame Skip:"),      new CheckBox(Rect()));
-  add_item(_("Software Cursor:"), swcursor_box);
+  master_volume_box->on_change.connect(boost::bind(&OptionMenu::on_master_volume_change, this, _1));
+  sound_volume_box->on_change.connect(boost::bind(&OptionMenu::on_sound_volume_change, this, _1));
+  music_volume_box->on_change.connect(boost::bind(&OptionMenu::on_music_volume_change, this, _1));
 
   add_item(_("Language:"),        language_box);
-  add_item(_("Master Volume:"),   new SliderBox(Rect()));
-  add_item(_("Sound Volume:"),    new SliderBox(Rect()));
-  add_item(_("Music Volume:"),    new SliderBox(Rect()));
   add_item(_("Scroll Mode:"),     scroll_box);
-  add_item(_("Mouse Grab:"),      new CheckBox(Rect()));
+  add_item(_("Resolution:"),      resolution_box);
+  add_item(_("Fullscreen:"),      fullscreen_box);
+  add_item(_("Autoscrolling:"),   autoscrolling_box);
+  add_item(_("Low Detail:"),      fastmode_box);
+
+  add_item(_("Master Volume:"),   master_volume_box);
+  add_item(_("Sound Volume:"),    sound_volume_box);
+  add_item(_("Music Volume:"),    music_volume_box);
+  add_item(_("Print FPS:"),       printfps_box);
+  add_item(_("Mouse Grab:"),      mousegrab_box);
+  add_item(_("Software Cursor:"), swcursor_box);
 }
 
 void
@@ -90,7 +105,7 @@ OptionMenu::add_item(const std::string& label, GUI::RectComponent* control)
 {
   gui_manager->add(new Label(label, Rect(Vector2i(120 + x_pos * 312, 177 + y_pos*32), 
                                          Size(140, 32))),
-                             true);
+                   true);
   gui_manager->add(control, true);
 
   if (dynamic_cast<ChoiceBox*>(control))
@@ -145,48 +160,12 @@ struct OptionEntry {
 void
 OptionMenu::draw_background(DrawingContext& gc)
 {
+  gc.fill_screen(Color(0, 0, 0));
+
   // gc.draw_fillrect(Rect(100, 100, 400, 400), Color(255, 0, 0));
   gc.draw(background, Vector2i(gc.get_width()/2 - background.get_width()/2, gc.get_height()/2 - background.get_height()/2));
 
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, 90, "Option Menu");
-
-  if (0)  
-    {
-      std::vector<OptionEntry> strs;
-      strs.push_back(OptionEntry("Resolution:",    "<800x600>"));
-      strs.push_back(OptionEntry("Fullscreen:",    "[X]"));
-      strs.push_back(OptionEntry("Allow Resize:",  "[X]"));
-      strs.push_back(OptionEntry("Fast Mode:",     "[X]"));
-      strs.push_back(OptionEntry("Frame Skip:",      "<5>"));
-      strs.push_back(OptionEntry("Software Cursor:", "[X]"));
-
-      int y = 145;
-      for(std::vector<OptionEntry>::iterator i = strs.begin(); i != strs.end(); ++i)
-        {
-          //gc.print_left(Fonts::chalk_normal,  120, y += 32, i->left);
-          y += 32;
-          if (i->right != "[X]")
-            gc.print_right(Fonts::chalk_normal, gc.get_width()/2 - 32, y, i->right);
-        }
-
-      std::vector<OptionEntry> strs2;
-      strs2.push_back(OptionEntry("Language:",        "<German>"));
-      strs2.push_back(OptionEntry("Master Volume:", "[||||||||||||||||||||||||||||||]"));
-      strs2.push_back(OptionEntry("Sound Volume:",  "[||||||||||||||||||||||||||||||]"));
-      strs2.push_back(OptionEntry("Music Volume:",  "[||||||||||||||||||||||||||||||]"));
-      strs2.push_back(OptionEntry("Scroll Mode:",     "<drag&drop>"));
-      strs2.push_back(OptionEntry("Mouse Grab:",     "[X]"));
-      //strs2.push_back(OptionEntry("Auto Online Updates:", "[X]"));
-
-      y = 145;
-      for(std::vector<OptionEntry>::iterator i = strs2.begin(); i != strs2.end(); ++i)
-        {
-          //gc.print_left(Fonts::chalk_normal,  gc.get_width()/2 + 32, y += 32, i->left);
-          y += 32;
-          if (i->right != "[X]")
-            gc.print_right(Fonts::chalk_normal, gc.get_width()/2 + 280, y, i->right);
-        }
-    }
 
   gc.print_center(Fonts::chalk_normal, gc.get_width()/2 + 225 + 30, gc.get_height()/2 + 125 - 20, _("Close"));
   gc.draw(ok_button, Vector2i(gc.get_width()/2 + 225, gc.get_height()/2 + 125));
@@ -210,14 +189,58 @@ OptionMenu::resize(const Size&)
 void
 OptionMenu::on_swcursor_change(bool v)
 {
-  std::cout << "v: " << v << std::endl;
   swcursor_enabled = v;
 }
 
 void
 OptionMenu::on_fullscreen_change(bool v)
 {
-  fullscreen_enabled = true;
+  fullscreen_enabled = v;
+}
+
+void
+OptionMenu::on_autoscrolling_change(bool v)
+{
+  auto_scrolling = v;
+}
+
+void
+OptionMenu::on_fastmode_change(bool v)
+{
+}
+
+void
+OptionMenu::on_mousegrab_change(bool v)
+{
+  // do stuff
+}
+
+void
+OptionMenu::on_printfps_change(bool v)
+{
+  //fps_counter.toggle_display();
+  std::cout << "PrintFPS: " << print_fps << std::endl;
+}
+
+void
+OptionMenu::on_master_volume_change(int v)
+{
+  if (maintainer_mode)
+    std::cout << "Master volume change: " << v << std::endl;
+}
+
+void
+OptionMenu::on_sound_volume_change(int v)
+{
+  if (maintainer_mode)
+    std::cout << "Sound volume change: " << v << std::endl;
+}
+
+void
+OptionMenu::on_music_volume_change(int v)
+{
+  if (maintainer_mode)
+    std::cout << "Music volume change: " << v << std::endl;
 }
 
 /* EOF */

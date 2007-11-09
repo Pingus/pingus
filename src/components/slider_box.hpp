@@ -21,6 +21,7 @@
 #define HEADER_SLIDER_BOX_HPP
 
 #include <string>
+#include <boost/signal.hpp>
 #include "gui/rect_component.hpp"
 
 /** */
@@ -38,6 +39,8 @@ public:
   void on_primary_button_release(int x, int y);
   void on_pointer_move(int x, int y);
   void update_layout() {}
+
+  boost::signal<void (int)> on_change;
 
 private:
   SliderBox (const SliderBox&);

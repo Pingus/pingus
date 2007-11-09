@@ -60,6 +60,7 @@ pingus_sources = [
 'src/client.cpp', 
 'src/col_map.cpp', 
 'src/collider.cpp', 
+'src/config_manager.cpp', 
 'src/colliders/pingu_collider.cpp', 
 'src/components/choice_box.cpp', 
 'src/components/slider_box.cpp', 
