@@ -88,6 +88,8 @@ private:
   ConfigManager& operator= (const ConfigManager&);
 };
 
+extern ConfigManager config_manager;
+
 #endif
 
 /* EOF */

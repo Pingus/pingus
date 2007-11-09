@@ -23,11 +23,25 @@
 **  02111-1307, USA.
 */
 
+#include <iostream>
+#include "globals.hpp"
 #include "config_manager.hpp"
+
+ConfigManager config_manager;
+
+ConfigManager::ConfigManager()
+{
+}
+
+ConfigManager::~ConfigManager()
+{
+}
 
 void
 ConfigManager::set_master_volume(int v)
 {
+  if (maintainer_mode)
+    std::cout << "ConfigManager::set_master_volume: " << v << std::endl;
 }
 
 int
@@ -39,6 +53,8 @@ ConfigManager::get_master_volume()
 void
 ConfigManager::set_sound_volume(int v)
 {
+  if (maintainer_mode)
+    std::cout << "ConfigManager::set_sound_volume: " << v << std::endl;
 }
 
 int
@@ -50,6 +66,8 @@ ConfigManager::get_sound_volume()
 void
 ConfigManager::set_music_volume(int v)
 {
+  if (maintainer_mode)
+    std::cout << "ConfigManager::set_music_volume: " << v << std::endl;
 }
 
 int
@@ -61,6 +79,8 @@ ConfigManager::get_music_volume()
 void
 ConfigManager::set_resolution(const Size& size)
 {
+  if (maintainer_mode)
+    std::cout << "ConfigManager::set_resolution: " << size.width << "x" << size.height << std::endl;
 }
 
 Size
@@ -70,8 +90,10 @@ ConfigManager::get_resolution()
 }
 
 void
-ConfigManager::set_fullscreen(bool)
+ConfigManager::set_fullscreen(bool v)
 {
+  if (maintainer_mode)
+    std::cout << "ConfigManager::set_fullscreen: " << v << std::endl;
 }
 
 bool
@@ -81,8 +103,10 @@ ConfigManager::get_fullscreen()
 }
 
 void
-ConfigManager::set_allow_resize(bool)
+ConfigManager::set_allow_resize(bool v)
 {
+  if (maintainer_mode)
+    std::cout << "ConfigManager::set_allow_resize: " << v << std::endl;
 }
 
 bool
@@ -92,8 +116,10 @@ ConfigManager::get_allow_resize()
 }
 
 void
-ConfigManager::set_fast_mode(bool)
+ConfigManager::set_fast_mode(bool v)
 {
+  if (maintainer_mode)
+    std::cout << "ConfigManager::set_fast_mode: " << v << std::endl;
 }
 
 bool
@@ -103,8 +129,10 @@ ConfigManager::get_fast_mode()
 }
 
 void
-ConfigManager::set_mouse_grab(bool)
+ConfigManager::set_mouse_grab(bool v)
 {
+  if (maintainer_mode)
+    std::cout << "ConfigManager::set_mouse_grab: " << v << std::endl;
 }
 
 bool
@@ -114,8 +142,10 @@ ConfigManager::get_mouse_grab()
 }
 
 void
-ConfigManager::set_print_fps(bool)
+ConfigManager::set_print_fps(bool v)
 {
+  if (maintainer_mode)
+    std::cout << "ConfigManager::set_print_fps: " << v << std::endl;
 }
 
 bool
@@ -125,8 +155,10 @@ ConfigManager::get_print_fps()
 }
 
 void
-ConfigManager::set_language(const std::string&)
+ConfigManager::set_language(const std::string& v)
 {
+  if (maintainer_mode)
+    std::cout << "ConfigManager::set_language: '" << v << "'" << std::endl;
 }
 
 std::string
@@ -136,8 +168,10 @@ ConfigManager::get_language()
 }
 
 void
-ConfigManager::set_swcursor(bool)
+ConfigManager::set_swcursor(bool v)
 {
+  if (maintainer_mode)
+    std::cout << "ConfigManager::set_swcursor: " << v << std::endl;
 }
 
 bool
@@ -147,8 +181,10 @@ ConfigManager::get_swcursor()
 }
 
 void
-ConfigManager::set_autoscroll(bool)
+ConfigManager::set_autoscroll(bool v)
 {
+  if (maintainer_mode)
+    std::cout << "ConfigManager::set_autoscroll: " << v << std::endl;
 }
 
 bool

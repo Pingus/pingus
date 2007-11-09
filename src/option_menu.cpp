@@ -19,6 +19,7 @@
 
 #include <set>
 #include <boost/bind.hpp>
+#include "config_manager.hpp"
 #include "globals.hpp"
 #include "gettext.h"
 #include "resource.hpp"
@@ -189,58 +190,55 @@ OptionMenu::resize(const Size&)
 void
 OptionMenu::on_swcursor_change(bool v)
 {
-  swcursor_enabled = v;
+  config_manager.set_swcursor(v);
 }
 
 void
 OptionMenu::on_fullscreen_change(bool v)
 {
-  fullscreen_enabled = v;
+  config_manager.set_fullscreen(v);
 }
 
 void
 OptionMenu::on_autoscrolling_change(bool v)
 {
-  auto_scrolling = v;
+  config_manager.set_autoscroll(v);
 }
 
 void
 OptionMenu::on_fastmode_change(bool v)
 {
+  config_manager.set_fast_mode(v);
 }
 
 void
 OptionMenu::on_mousegrab_change(bool v)
 {
-  // do stuff
+  config_manager.set_mouse_grab(v);
 }
 
 void
 OptionMenu::on_printfps_change(bool v)
 {
-  //fps_counter.toggle_display();
-  std::cout << "PrintFPS: " << print_fps << std::endl;
+  config_manager.set_print_fps(v);
 }
 
 void
 OptionMenu::on_master_volume_change(int v)
 {
-  if (maintainer_mode)
-    std::cout << "Master volume change: " << v << std::endl;
+  config_manager.set_master_volume(v);
 }
 
 void
 OptionMenu::on_sound_volume_change(int v)
 {
-  if (maintainer_mode)
-    std::cout << "Sound volume change: " << v << std::endl;
+  config_manager.set_sound_volume(v);
 }
 
 void
 OptionMenu::on_music_volume_change(int v)
 {
-  if (maintainer_mode)
-    std::cout << "Music volume change: " << v << std::endl;
+  config_manager.set_music_volume(v);
 }
 
 /* EOF */
