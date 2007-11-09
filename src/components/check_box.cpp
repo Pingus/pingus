@@ -46,5 +46,14 @@ CheckBox::draw(DrawingContext& gc)
   gc.print_center(Fonts::chalk_normal, rect.left+rect.get_width()/2, rect.top, "[ ]");
 }
 
+void
+CheckBox::set_state(bool v, bool send_signal)
+{
+  state = v;
+
+  if (send_signal)
+    on_change(state);
+}
+
 /* EOF */
 

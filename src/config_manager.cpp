@@ -24,7 +24,10 @@
 */
 
 #include <iostream>
+#include "SDL.h"
 #include "globals.hpp"
+#include "fps_counter.hpp"
+#include "screen/screen_manager.hpp"
 #include "config_manager.hpp"
 
 ConfigManager config_manager;
@@ -81,12 +84,21 @@ ConfigManager::set_resolution(const Size& size)
 {
   if (maintainer_mode)
     std::cout << "ConfigManager::set_resolution: " << size.width << "x" << size.height << std::endl;
+
+  if (size != get_resolution())
+    {
+      screen_width  = size.width;
+      screen_height = size.height;
+      Display::set_video_mode(screen_width, screen_height);  
+      on_resolution_change(size);
+    }
 }
 
 Size
 ConfigManager::get_resolution()
 {
-  return Size();
+  return Size(Display::get_width(),
+              Display::get_height());
 }
 
 void
@@ -94,12 +106,19 @@ ConfigManager::set_fullscreen(bool v)
 {
   if (maintainer_mode)
     std::cout << "ConfigManager::set_fullscreen: " << v << std::endl;
+
+  if (v != get_fullscreen())
+    {
+      fullscreen_enabled = v;
+      Display::set_video_mode(screen_width, screen_height);
+      on_fullscreen_change(v);
+    }
 }
 
 bool
 ConfigManager::get_fullscreen()
 {
-  return false;
+  return fullscreen_enabled;
 }
 
 void
@@ -133,12 +152,22 @@ ConfigManager::set_mouse_grab(bool v)
 {
   if (maintainer_mode)
     std::cout << "ConfigManager::set_mouse_grab: " << v << std::endl;
+
+  if (v != get_mouse_grab())
+    {
+      if (v)
+        SDL_WM_GrabInput(SDL_GRAB_ON);
+      else
+        SDL_WM_GrabInput(SDL_GRAB_OFF);
+
+      on_mouse_grab_change(v);
+    }
 }
 
 bool
 ConfigManager::get_mouse_grab()
 {
-  return false;
+  return (SDL_WM_GrabInput(SDL_GRAB_QUERY) == SDL_GRAB_ON);
 }
 
 void
@@ -146,12 +175,22 @@ ConfigManager::set_print_fps(bool v)
 {
   if (maintainer_mode)
     std::cout << "ConfigManager::set_print_fps: " << v << std::endl;
+  
+  if (v != get_print_fps())
+    {
+      if (v)
+        fps_counter.show();
+      else
+        fps_counter.hide();
+
+      on_print_fps_change(v);
+    }
 }
 
 bool
 ConfigManager::get_print_fps()
 {
-  return false;
+  return fps_counter.is_visible();
 }
 
 void
@@ -172,12 +211,17 @@ ConfigManager::set_swcursor(bool v)
 {
   if (maintainer_mode)
     std::cout << "ConfigManager::set_swcursor: " << v << std::endl;
+
+  if (v != get_swcursor())
+    {
+      ScreenManager::instance()->show_swcursor(v);
+    }
 }
 
 bool
 ConfigManager::get_swcursor()
 {
-  return false;
+  return ScreenManager::instance()->swcursor_visible();
 }
 
 void

@@ -20,6 +20,8 @@
 #ifndef HEADER_OPTION_MENU_HPP
 #define HEADER_OPTION_MENU_HPP
 
+#include <vector>
+#include <boost/signals.hpp>
 #include "sprite.hpp"
 #include "screen/gui_screen.hpp"
 #include "components/label.hpp"
@@ -51,21 +53,23 @@ private:
 
   CheckBox* fullscreen_box;
   CheckBox* swcursor_box;
-  CheckBox* autoscrolling_box;
-  CheckBox* fastmode_box;
+  CheckBox* autoscroll_box;
+  CheckBox* fast_mode_box;
   CheckBox* mousegrab_box;
   CheckBox* printfps_box;
 
   SliderBox* master_volume_box;
   SliderBox* sound_volume_box;
   SliderBox* music_volume_box;
-  
+
+  typedef std::vector<boost::signals::connection> Connections;
+  Connections connections;
+
 public:
   OptionMenu();
   ~OptionMenu();
   
   void draw_background (DrawingContext& gc);
-  void update (const GameDelta& delta);
   void on_escape_press ();
 
   void add_item(const std::string& label, GUI::RectComponent* control);
@@ -74,7 +78,7 @@ public:
 
   void on_swcursor_change(bool v);
   void on_fullscreen_change(bool v);
-  void on_autoscrolling_change(bool v);
+  void on_autoscroll_change(bool v);
   void on_fastmode_change(bool v);
   void on_mousegrab_change(bool v);
   void on_printfps_change(bool v);
@@ -82,6 +86,8 @@ public:
   void on_master_volume_change(int v);
   void on_sound_volume_change(int v);
   void on_music_volume_change(int v);
+
+  void on_resolution_change(const std::string& str);
 private:
   OptionMenu (const OptionMenu&);
   OptionMenu& operator= (const OptionMenu&);

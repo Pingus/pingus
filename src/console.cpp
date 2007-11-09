@@ -116,7 +116,7 @@ ConsoleBuffer::get_buffer () {
 Console::Console() : ostream (&streambuf) // std:: is missing here since Win32 doesn't like it
 {
   is_init = false;
-  is_visible = false;
+  visible = false;
   current_pos = 0;
   number_of_lines = 12;
 

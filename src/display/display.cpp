@@ -45,19 +45,39 @@ SDL_Rect Intersection(SDL_Rect* r1, SDL_Rect* r2)
 }
 } // namespace
 
-DisplayHook::DisplayHook() : is_visible(false)
+DisplayHook::DisplayHook() : visible(false)
 {
 }
 
-void
-DisplayHook::toggle_display()
+DisplayHook::~DisplayHook() 
 {
-  if (is_visible)
-    Display::remove_flip_screen_hook(this);
-  else
-    Display::add_flip_screen_hook(this);
+  hide();
+}
 
-  is_visible = !is_visible;
+bool
+DisplayHook::is_visible()
+{
+  return visible;
+}
+
+void
+DisplayHook::show()
+{
+  if (!visible)
+    {
+      Display::add_flip_screen_hook(this);
+      visible = true;
+    }
+}
+
+void
+DisplayHook::hide()
+{
+  if (visible)
+    {
+      Display::remove_flip_screen_hook(this);
+      visible = false;
+    }
 }
 
 void

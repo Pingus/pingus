@@ -34,6 +34,8 @@
 #include "tinygettext/dictionary_manager.hpp"
 #include "option_menu.hpp"
 
+#define C(x) x
+
 extern TinyGetText::DictionaryManager dictionary_manager;
 
 OptionMenu::OptionMenu()
@@ -45,15 +47,23 @@ OptionMenu::OptionMenu()
   y_pos = 0;
 
   ChoiceBox* resolution_box = new ChoiceBox(Rect());
-  resolution_box->add_choice("640x480");
-  resolution_box->add_choice("800x480");
-  resolution_box->add_choice("800x600");
-  resolution_box->add_choice("1024x768");
-  resolution_box->add_choice("1152x864");
-  resolution_box->add_choice("1280x960");
-  resolution_box->add_choice("1280x1024");
-  resolution_box->add_choice("1600x1200");
-  resolution_box->add_choice("1920x1080");
+  resolution_box->add_choice("640x480");   // 4:3, VGA
+  resolution_box->add_choice("768x576");   // 4:3, PAL
+  resolution_box->add_choice("800x480");   // Nokia N770, N800
+  resolution_box->add_choice("800x600");   // 4:3, SVGA
+  resolution_box->add_choice("1024x768");  // 4:3, XGA
+  resolution_box->add_choice("1152x864");  // 4:3
+  resolution_box->add_choice("1280x720");  // 16:9, HD-TV, 720p
+  resolution_box->add_choice("1280x960");  // 4:3
+  resolution_box->add_choice("1280x1024"); // 5:4
+  resolution_box->add_choice("1366x768");  // ~16:9, Wide XGA
+  resolution_box->add_choice("1440x900");  // 16:10
+  resolution_box->add_choice("1600x1200"); // 4:3, UXGA
+  resolution_box->add_choice("1680x1050"); // 16:10, WSXGA
+  resolution_box->add_choice("1920x1080"); // 16:9, HD-TV, 1080p
+  resolution_box->add_choice("1920x1200"); // 16:10
+  
+  resolution_box->add_choice("Custom");
 
   ChoiceBox* language_box = new ChoiceBox(Rect());
   std::set<std::string> lst = dictionary_manager.get_languages();
@@ -66,8 +76,8 @@ OptionMenu::OptionMenu()
   
   swcursor_box      = new CheckBox(Rect());
   fullscreen_box    = new CheckBox(Rect());
-  autoscrolling_box = new CheckBox(Rect());
-  fastmode_box      = new CheckBox(Rect());
+  autoscroll_box    = new CheckBox(Rect());
+  fast_mode_box     = new CheckBox(Rect());
   mousegrab_box     = new CheckBox(Rect());
   printfps_box      = new CheckBox(Rect());
 
@@ -77,8 +87,8 @@ OptionMenu::OptionMenu()
 
   swcursor_box->on_change.connect(boost::bind(&OptionMenu::on_swcursor_change, this, _1));
   fullscreen_box->on_change.connect(boost::bind(&OptionMenu::on_fullscreen_change, this, _1));
-  autoscrolling_box->on_change.connect(boost::bind(&OptionMenu::on_autoscrolling_change, this, _1));
-  fastmode_box->on_change.connect(boost::bind(&OptionMenu::on_fastmode_change, this, _1));
+  autoscroll_box->on_change.connect(boost::bind(&OptionMenu::on_autoscroll_change, this, _1));
+  fast_mode_box->on_change.connect(boost::bind(&OptionMenu::on_fastmode_change, this, _1));
   mousegrab_box->on_change.connect(boost::bind(&OptionMenu::on_mousegrab_change, this, _1));
   printfps_box->on_change.connect(boost::bind(&OptionMenu::on_printfps_change, this, _1));
 
@@ -86,12 +96,14 @@ OptionMenu::OptionMenu()
   sound_volume_box->on_change.connect(boost::bind(&OptionMenu::on_sound_volume_change, this, _1));
   music_volume_box->on_change.connect(boost::bind(&OptionMenu::on_music_volume_change, this, _1));
 
+  resolution_box->on_change.connect(boost::bind(&OptionMenu::on_resolution_change, this, _1));
+
   add_item(_("Language:"),        language_box);
   add_item(_("Scroll Mode:"),     scroll_box);
   add_item(_("Resolution:"),      resolution_box);
   add_item(_("Fullscreen:"),      fullscreen_box);
-  add_item(_("Autoscrolling:"),   autoscrolling_box);
-  add_item(_("Low Detail:"),      fastmode_box);
+  add_item(_("Autoscrolling:"),   autoscroll_box);
+  add_item(_("Low Detail:"),      fast_mode_box);
 
   add_item(_("Master Volume:"),   master_volume_box);
   add_item(_("Sound Volume:"),    sound_volume_box);
@@ -99,6 +111,25 @@ OptionMenu::OptionMenu()
   add_item(_("Print FPS:"),       printfps_box);
   add_item(_("Mouse Grab:"),      mousegrab_box);
   add_item(_("Software Cursor:"), swcursor_box);
+
+  // Connect with ConfigManager
+  mousegrab_box->set_state(config_manager.get_mouse_grab(), false);
+  C(config_manager.on_mouse_grab_change.connect(boost::bind(&CheckBox::set_state, mousegrab_box, _1, false)));
+
+  printfps_box->set_state(config_manager.get_print_fps(), false);
+  C(config_manager.on_print_fps_change.connect(boost::bind(&CheckBox::set_state, printfps_box, _1, false)));
+
+  fullscreen_box->set_state(config_manager.get_fullscreen(), false);
+  C(config_manager.on_fullscreen_change.connect(boost::bind(&CheckBox::set_state, fullscreen_box, _1, false)));
+
+  swcursor_box->set_state(config_manager.get_swcursor(), false);
+  C(config_manager.on_swcursor_change.connect(boost::bind(&CheckBox::set_state, swcursor_box, _1, false)));
+
+  autoscroll_box->set_state(config_manager.get_autoscroll(), false);
+  C(config_manager.on_autoscroll_change.connect(boost::bind(&CheckBox::set_state, autoscroll_box, _1, false)));
+
+  fast_mode_box->set_state(config_manager.get_fast_mode(), false);
+  C(config_manager.on_fast_mode_change.connect(boost::bind(&CheckBox::set_state, fast_mode_box, _1, false)));
 }
 
 void
@@ -139,13 +170,10 @@ OptionMenu::add_item(const std::string& label, GUI::RectComponent* control)
 
 OptionMenu::~OptionMenu()
 {
-}
-
-void
-OptionMenu::update(const GameDelta& delta)
-{
-  GUIScreen::update(delta);
-  SDL_Delay(50);
+  for(Connections::iterator i = connections.begin(); i != connections.end(); ++i)
+    {
+      (*i).disconnect();
+    }
 }
   
 struct OptionEntry {
@@ -183,8 +211,9 @@ OptionMenu::on_escape_press()
 }
 
 void
-OptionMenu::resize(const Size&)
+OptionMenu::resize(const Size& size)
 {
+  
 }
 
 void
@@ -200,7 +229,7 @@ OptionMenu::on_fullscreen_change(bool v)
 }
 
 void
-OptionMenu::on_autoscrolling_change(bool v)
+OptionMenu::on_autoscroll_change(bool v)
 {
   config_manager.set_autoscroll(v);
 }
@@ -239,6 +268,19 @@ void
 OptionMenu::on_music_volume_change(int v)
 {
   config_manager.set_music_volume(v);
+}
+
+void
+OptionMenu::on_resolution_change(const std::string& str)
+{
+  if (str != "Custom")
+    {
+      Size size;
+      if (sscanf(str.c_str(), "%dx%d", &size.width, &size.height) == 2)
+        {
+          config_manager.set_resolution(size); 
+        }
+    }
 }
 
 /* EOF */

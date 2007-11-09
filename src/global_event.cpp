@@ -28,6 +28,7 @@
 #include "level_menu.hpp"
 #include "addon_menu.hpp"
 #include "global_event.hpp"
+#include "config_manager.hpp"
 #include "globals.hpp"
 
 GlobalEvent global_event;
@@ -44,12 +45,14 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
   switch (event.keysym.sym)
     {
       case SDLK_F1:
-        console.toggle_display();
+        if (console.is_visible())
+          console.hide();
+        else
+          console.show();
         break;
 
       case SDLK_F10:
-        fps_counter.toggle_display();
-        console << "Toggling fps counter display" << std::endl;
+        config_manager.set_print_fps(!config_manager.get_print_fps());
         break;
 
       case SDLK_RETURN:
@@ -57,11 +60,8 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
           break;
         // FALL THROUGH
       case SDLK_F11:
-        fullscreen_enabled = !fullscreen_enabled;
-        // re-initialize the screen
-        Display::set_video_mode(screen_width, screen_height);
+        config_manager.set_fullscreen(!config_manager.get_fullscreen());
         break;
-
 
       case SDLK_F5:
         if (!dynamic_cast<OptionMenu*>(ScreenManager::instance()->get_screen()))
@@ -105,16 +105,7 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
       case SDLK_g:
         if (keystate[SDLK_LCTRL] || keystate[SDLK_RCTRL])
           {
-            if (SDL_WM_GrabInput(SDL_GRAB_QUERY) == SDL_GRAB_ON)
-              {
-                SDL_WM_GrabInput(SDL_GRAB_OFF);
-                console << "Grab input off" << std::endl;
-              }
-            else
-              {
-                SDL_WM_GrabInput(SDL_GRAB_ON);
-                console << "Grab input on" << std::endl;
-              }
+            config_manager.set_mouse_grab(!config_manager.get_mouse_grab());
           }
         break;
 

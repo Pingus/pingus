@@ -37,6 +37,8 @@ public:
   void on_primary_button_press(int x, int y);
   void update_layout() {}
 
+  void set_state(bool v, bool send_signal);
+
   boost::signal<void (bool)> on_change;
 
 private:

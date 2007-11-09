@@ -22,6 +22,7 @@
 
 #include <string>
 #include <vector>
+#include <boost/signal.hpp>
 #include "gui/rect_component.hpp"
 
 /** */
@@ -38,6 +39,8 @@ public:
   void on_primary_button_press(int x, int y);
   void update_layout() {}
   void add_choice(const std::string& str);
+  
+  boost::signal<void (std::string)> on_change;
   
 private:
   ChoiceBox (const ChoiceBox&);

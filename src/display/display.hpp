@@ -36,13 +36,17 @@ class DisplayHook;
 class DisplayHook
 {
 protected:
-  bool is_visible;
+  bool visible;
+  
 public:
   DisplayHook();
-  virtual ~DisplayHook() {}
+  virtual ~DisplayHook();
   /** Called sortly before a flip_display () */
   virtual void on_event() = 0;
-  virtual void toggle_display();
+
+  virtual bool is_visible();
+  virtual void show();
+  virtual void hide();
 
 private:
   DisplayHook (const DisplayHook&);

@@ -56,6 +56,7 @@ ChoiceBox::on_primary_button_press(int x, int y)
 {
   if (!choices.empty())
     {
+      int last_current_choice = current_choice;
       x -= rect.left;
   
       if (x > rect.get_width()/2)
@@ -72,6 +73,9 @@ ChoiceBox::on_primary_button_press(int x, int y)
             current_choice = choices.size()-1;
             //current_choice = 0;
         }
+      
+      if (last_current_choice != current_choice)
+        on_change(choices[current_choice]);
     }
 }
 

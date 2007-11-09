@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_FPS_COUNTER_HXX
 #define HEADER_PINGUS_FPS_COUNTER_HXX
 
+#include "font.hpp"
 #include "display/display.hpp"
-
 
 ///
 class FPSCounter : public DisplayHook

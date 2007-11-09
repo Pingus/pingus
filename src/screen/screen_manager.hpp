@@ -25,6 +25,7 @@
 
 #include "screen_ptr.hpp"
 
+class Cursor;
 class Size;
 class DrawingContext;
 class Screen;
@@ -48,6 +49,7 @@ private:
   enum { CA_NONE, CA_POP, CA_POP_ALL, CA_REPLACE, CA_CLEAR } cached_action;
   ScreenPtr replace_screen_arg;
 
+  Cursor* cursor;
 protected:
   ScreenManager ();
 public:
@@ -80,6 +82,9 @@ public:
   /** @return a pointer to the current Screen */
   Screen* get_screen();
 
+  void show_swcursor(bool v);
+  bool swcursor_visible();
+  
 private:
   void real_clear();
 

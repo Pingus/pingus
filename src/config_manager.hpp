@@ -37,51 +37,51 @@ public:
 
   void set_master_volume(int);
   int  get_master_volume();
-  boost::signal<void(int)> on_master_volume_change();
+  boost::signal<void(int)> on_master_volume_change;
 
   void set_sound_volume(int);
   int  get_sound_volume();
-  boost::signal<void(int)> on_sound_volume_change();
+  boost::signal<void(int)> on_sound_volume_change;
 
   void set_music_volume(int);
   int  get_music_volume();
-  boost::signal<void(int)> on_music_volume_change();
+  boost::signal<void(int)> on_music_volume_change;
 
   void set_resolution(const Size& size);
   Size get_resolution();
-  boost::signal<void(Size)> on_resolution_change();
+  boost::signal<void(Size)> on_resolution_change;
 
   void set_fullscreen(bool);
   bool get_fullscreen();
-  boost::signal<void(bool)> on_fullscreen_change();
+  boost::signal<void(bool)> on_fullscreen_change;
 
   void set_allow_resize(bool);
   bool get_allow_resize();
-  boost::signal<void(bool)> on_allow_reszie_change();
+  boost::signal<void(bool)> on_allow_reszie_change;
 
   void set_fast_mode(bool);
   bool get_fast_mode();
-  boost::signal<void(bool)> on_fast_mode_change();
+  boost::signal<void(bool)> on_fast_mode_change;
 
   void set_mouse_grab(bool);
   bool get_mouse_grab();
-  boost::signal<void(bool)> on_mouse_grab_change();
+  boost::signal<void(bool)> on_mouse_grab_change;
 
   void set_print_fps(bool);
   bool get_print_fps();
-  boost::signal<void(bool)> on_print_fps_change();
+  boost::signal<void(bool)> on_print_fps_change;
 
   void set_language(const std::string&);
   std::string get_language();
-  boost::signal<void(const std::string&)> on_language_change();
+  boost::signal<void(const std::string&)> on_language_change;
 
   void set_swcursor(bool);
   bool get_swcursor();
-  boost::signal<void(bool)> on_swcursor_change();
+  boost::signal<void(bool)> on_swcursor_change;
 
   void set_autoscroll(bool);
   bool get_autoscroll();
-  boost::signal<void(bool)> on_autoscroll_change();
+  boost::signal<void(bool)> on_autoscroll_change;
 
 private:
   ConfigManager (const ConfigManager&);

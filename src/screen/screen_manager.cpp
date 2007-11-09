@@ -34,6 +34,7 @@
 ScreenManager* ScreenManager::instance_ = 0;
 
 ScreenManager::ScreenManager()
+  : cursor(0)
 {
   display_gc = new DrawingContext();
 
@@ -43,6 +44,7 @@ ScreenManager::ScreenManager()
 ScreenManager::~ScreenManager ()
 {
   delete display_gc;
+  delete cursor;
 }
 
 void
@@ -59,14 +61,8 @@ ScreenManager::display()
     input_controller = input_manager.create_controller(Pathname(controller_file,
                                                                 Pathname::SYSTEM_PATH));
 
-  Cursor* cursor = 0;
-  if (swcursor_enabled)
-    {
-      cursor = new Cursor("core/cursors/animcross");
-      Display::add_flip_screen_hook(cursor);
-      SDL_ShowCursor(SDL_DISABLE);
-    }
 
+  show_swcursor(swcursor_enabled);
   DeltaManager delta_manager;
 
   // Main loop for the menu
@@ -136,7 +132,7 @@ ScreenManager::display()
             {
               display_gc->render(Display::get_screen(), Rect(Vector2i(0,0), Size(Display::get_width(),
                                                                                      Display::get_height())));
-              Display::flip_display ();
+              Display::flip_display();
               display_gc->clear();
             }
         }
@@ -150,8 +146,6 @@ ScreenManager::display()
       SDL_Delay(1);
     }
 
-  Display::remove_flip_screen_hook(cursor);
-  delete cursor;
   delete input_controller;
 }
 
@@ -309,6 +303,35 @@ Screen*
 ScreenManager::get_screen()
 {
   return get_current_screen().get();
+}
+
+void
+ScreenManager::show_swcursor(bool v)
+{
+  if (v)
+    {
+      if (!cursor)
+        {
+          cursor = new Cursor("core/cursors/animcross");
+          cursor->show();
+          SDL_ShowCursor(SDL_DISABLE);
+        }
+    }
+  else
+    {
+      if (cursor)
+        {
+          delete cursor;
+          cursor = 0;
+          SDL_ShowCursor(SDL_ENABLE);
+        }
+    }
+}
+
+bool
+ScreenManager::swcursor_visible()
+{
+  return cursor;
 }
 
 void
