@@ -92,6 +92,7 @@ struct PingusOptions
   Value<int>  min_frame_skip;
   Value<int>  max_frame_skip;
   Value<int>  speed;
+  Value<float> desiredfps;
   Value<int>  tile_size;
   Value<bool> fast_mode;
 };

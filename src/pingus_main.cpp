@@ -242,6 +242,9 @@ PingusMain::apply_args()
   if (options.speed.is_set())
     game_speed = options.speed.get();
 
+  if (options.desiredfps.is_set())
+    desired_fps = options.desiredfps.get();
+
   if (options.tile_size.is_set())
     tile_size = options.tile_size.get();
 
@@ -327,6 +330,8 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Set both min and max frameskip to N"));
   argp.add_option('t', "speed", "SPEED",
                   _("Set the game speed (0=fastest, >0=slower)"));
+  argp.add_option('k', "fps", "FPS",
+		  _("Set the desired game framerate (frames per second)"));
   argp.add_option(344, "tile-size", "INT",
                   _("Set the size of the map tiles (default: 32)"));
   argp.add_option(332, "fast-mode", "",
@@ -359,6 +364,10 @@ PingusMain::parse_args(int argc, char** argv)
           case 't': // -t, --set-speed
             cmd_options.speed.set(StringUtil::to<int>(argp.get_argument()));  
             break;
+
+          case 'k': // -k, --set-fps
+	    cmd_options.desiredfps.set(StringUtil::to<float>(argp.get_argument()));
+	    break;
 
           case 's': // -s, --disable-sound
             cmd_options.disable_sound.set(true);

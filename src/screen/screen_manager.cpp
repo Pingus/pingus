@@ -64,12 +64,15 @@ ScreenManager::display()
 
   show_swcursor(swcursor_enabled);
   DeltaManager delta_manager;
+  DeltaManager frame_timer;
 
   // Main loop for the menu
   while (!screens.empty())
     {
       // how long the previous frame (iteration) took (if any)
       float time_delta = delta_manager.getset();
+      // start the frame timer
+      frame_timer.set();
 
       // previous frame took more than one second
       if (time_delta > 1.0)
@@ -139,11 +142,15 @@ ScreenManager::display()
       else
 	{
 	  //std::cout << "ScreenManager: fading screens" << std::endl;
+	  //FIXME: this shouldn't be done in one iteration of this loop (one frame)
 	  fade_over(last_screen, get_current_screen());
 	}
 
-      // Stupid hack to make this thing take less CPU
-      SDL_Delay(1);
+      // cap the framerate at the desired value
+      if (frame_timer.get() < 1 / desired_fps) {
+	// idle delay to make the frame take as long as we want it to
+	SDL_Delay(static_cast<Uint32>(1000 *((1 / desired_fps) - frame_timer.get())));
+      }
     }
 
   delete input_controller;

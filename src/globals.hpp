@@ -28,6 +28,7 @@
 
 
 extern int         game_speed;                      ///< -t, --set-speed
+extern float       desired_fps;                     ///< -k, --set-fps
 extern bool        print_fps;                       ///< --print-fps
 extern int         verbose;                         ///< -v, --verbose
 

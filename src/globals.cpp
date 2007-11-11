@@ -21,6 +21,7 @@
 
 
 int         game_speed                      = 20;
+float         desired_fps                     = 40;
 bool        print_fps                       = false;
 int         verbose                         = 0;
 bool        music_enabled                   = true;
