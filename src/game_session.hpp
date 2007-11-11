@@ -50,6 +50,8 @@ private:
       update() */
   int left_over_time;
 
+  int world_delay; ///< how many milliseconds is the world behind the actual time
+
   /** Number of updates */
   unsigned int number_of_updates;
 

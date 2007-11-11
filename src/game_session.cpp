@@ -51,6 +51,9 @@ PingusGameSession::PingusGameSession (const PingusLevel& arg_plf, bool arg_show_
   number_of_redraws = 0;
   number_of_updates = 0;
 
+  // the world is initially on time
+  world_delay = 0;
+
   left_over_time = 0;
   pout(PINGUS_DEBUG_LOADING) << "PingusGameSession" << std::endl;
 }
@@ -131,15 +134,12 @@ PingusGameSession::update (const GameDelta& delta)
     }
 
   // how long did the previous frame processing take (ignoring idle delay)
-  int time_passed = int(delta.get_time() * 1000) + left_over_time;
-  // how long we want each world update to take
+  int time_passed = int(delta.get_time() * 1000) + world_delay;
+  // how much time each world update represents
   int update_time = game_speed;
 
-  left_over_time = 0;
-
-  // update the world (and the objects in it) in constant steps to account
-  // for the time the previous frame took
-  {
+  //left_over_time = 0;
+  if (0){
     int i;
     for (i = 0;
          ((i * update_time < time_passed)
@@ -151,16 +151,26 @@ PingusGameSession::update (const GameDelta& delta)
         server->update ();
         ++number_of_updates;
       }
-
-    // Time that got not used for updates
-    left_over_time = time_passed - (i * update_time);
   }
 
-  if (left_over_time < 0 && time_passed < update_time)
-    {
-      // FIXME: This doesn't really belong here
-      SDL_Delay(-left_over_time);
-    }
+  // update the world (and the objects in it) in constant steps to account
+  // for the time the previous frame took
+
+  // invariant: world_updates - the number of times the world
+  // has been updated during this frame
+  int world_updates = 0;
+
+  while ((world_updates+1)*update_time <= time_passed) {
+    server->update ();
+    ++number_of_updates;
+    world_updates++;
+  }
+  // save how far behind is the world compared to the actual time
+  // so that we can account for that while updating in the next frame
+  world_delay = time_passed - (world_updates*update_time);
+
+  // Time that got not used for updates
+  //left_over_time = time_passed - (i * update_time);
 
   // Client is independend of the update limit, well, not completly...
   client->update(delta);
