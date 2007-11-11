@@ -346,7 +346,6 @@ WorldMapComponent::draw (DrawingContext& gc)
     gc.draw_fillrect(cliprect.right, cliprect.top, Display::get_width(), cliprect.bottom,
                  border_color);
   }
-  SDL_Delay(10);
 }
 
 void

@@ -177,8 +177,6 @@ StartScreenComponent::draw(DrawingContext& gc)
 
   if (maintainer_mode)
     gc.print_left(Fonts::chalk_small, 110, 430, _("Filename: ") + plf.get_resname());
-
-  SDL_Delay(10);
 }
 
 const std::string&

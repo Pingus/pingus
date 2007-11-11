@@ -25,7 +25,6 @@ int main()
 
       manager.update(0.033);
       
-      SDL_Delay(33);
       SDL_Flip(screen);
     }
   } catch (std::exception& err) {

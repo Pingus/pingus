@@ -39,7 +39,6 @@ void
 AddOnMenu::update(const GameDelta& delta)
 {
   GUIScreen::update(delta);
-  SDL_Delay(50);
 }
 
 void

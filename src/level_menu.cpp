@@ -278,7 +278,6 @@ void
 LevelMenu::draw_background(DrawingContext& gc)
 {
   gc.draw(background, Vector2i(gc.get_width()/2, gc.get_height()/2));
-  SDL_Delay(10);
 }
 
 void

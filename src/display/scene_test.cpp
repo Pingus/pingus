@@ -57,7 +57,6 @@ int main()
       SDL_Flip(global_screen);
 
       std::cout << "." << std::endl;
-      SDL_Delay(100);
     }
 }
 
