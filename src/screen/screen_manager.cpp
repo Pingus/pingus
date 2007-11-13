@@ -67,6 +67,7 @@ ScreenManager::display()
   DeltaManager frame_timer;
 
   // Main loop for the menu
+  // and incidentally this is also the main loop for the whole game
   while (!screens.empty())
     {
       // how long the previous frame (iteration) took (if any)
