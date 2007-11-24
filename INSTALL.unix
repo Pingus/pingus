@@ -29,6 +29,17 @@ On Ubuntu you can install them by typing:
      libboost-signals-dev \
      libboost-dev
 
+On Fedora 7 (and most likely later versions) you can install them by typing:
+ % su -c 'yum install \
+      scons \
+      libpng-devel \
+      boost-devel \
+      SDL-devel \
+      SDL_image-devel \
+      SDL_mixer-devel \
+      gcc-c++ \
+      glibc-common'
+
 
 Compilation:
 ------------
