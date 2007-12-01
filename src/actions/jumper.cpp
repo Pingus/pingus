@@ -43,11 +43,12 @@ Jumper::draw (SceneContext& gc)
 void
 Jumper::update ()
 {
-  if (pingu->direction.is_right()) {
+  // if climber, do a wall-jump, else just jump forward
+  if ((pingu->get_previous_action() == Actions::Climber) 
+      ? pingu->direction.is_left() : pingu->direction.is_right())
     pingu->set_velocity(pingu->get_velocity() + Vector3f(5.0, -5.0));
-  } else {
+  else 
     pingu->set_velocity(pingu->get_velocity() + Vector3f(-5.0, -5.0));
-  }
 
   // Move the pingu in the air, so that it can start 'falling'
   pingu->set_y(pingu->get_y() - 1);

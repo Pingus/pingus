@@ -88,7 +88,9 @@ Climber::draw (SceneContext& gc)
 bool
 Climber::change_allowed(ActionName new_action)
 {
-  return (new_action == Actions::Floater);
+  return
+    (new_action == Actions::Floater) ||
+    (new_action == Actions::Jumper);
 }
 
 } // namespace Actions
