@@ -299,6 +299,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\config_manager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\config_manager.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\console.cpp"
 				>
 			</File>
@@ -1138,6 +1146,48 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\components\check_box.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\components\check_box.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\components\choice_box.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\components\choice_box.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\components\label.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\src\components\label.hpp"
+					>
+				</File>
+				<File
 					RelativePath=".\src\components\menu_button.cpp"
 					>
 				</File>
@@ -1159,6 +1209,14 @@
 				</File>
 				<File
 					RelativePath=".\src\components\playfield.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\components\slider_box.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\components\slider_box.hpp"
 					>
 				</File>
 				<File
