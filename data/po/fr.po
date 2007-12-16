@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-31 06:55+0100\n"
+"POT-Creation-Date: 2007-12-16 20:52+0100\n"
 "PO-Revision-Date: 2004-04-08 01:50+0200\n"
 "Last-Translator: Philippe Saint-Pierre <stpere@linuxmail.org>\n"
 "Language-Team: Philippe Saint-Pierre <stpere@linuxmail.org>de>, Giray Devlet "
@@ -146,99 +146,103 @@ msgstr "Auteur: "
 msgid "Filename: "
 msgstr "Nom du fichier: "
 
-#: src/pingus_main.cpp:259
+#: src/pingus_main.cpp:263
 msgid "Displays this help"
 msgstr "Affiche cette aide"
 
-#: src/pingus_main.cpp:261
+#: src/pingus_main.cpp:265
 #, fuzzy
 msgid "Print version number and exit"
 msgstr "Affiche le numéro de version et se ferme."
 
-#: src/pingus_main.cpp:263
+#: src/pingus_main.cpp:267
 msgid "Display:"
 msgstr ""
 
-#: src/pingus_main.cpp:265
+#: src/pingus_main.cpp:269
 msgid "Start in Window Mode"
 msgstr "Démarre en mode fenêtre"
 
-#: src/pingus_main.cpp:267
+#: src/pingus_main.cpp:271
 msgid "Start in Fullscreen"
 msgstr "Démarre en mode plein-écran"
 
-#: src/pingus_main.cpp:269
+#: src/pingus_main.cpp:273
 msgid "Allow Window resize (buggy)"
 msgstr ""
 
-#: src/pingus_main.cpp:271
+#: src/pingus_main.cpp:275
 msgid "Enable software cursor"
 msgstr "Activer le curseur logiciel"
 
-#: src/pingus_main.cpp:273
+#: src/pingus_main.cpp:277
 msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "Ajuste la résolution de Pingus (standard: 800x600)"
 
-#: src/pingus_main.cpp:275
+#: src/pingus_main.cpp:279
 msgid "Sound:"
 msgstr "Son:"
 
-#: src/pingus_main.cpp:277
+#: src/pingus_main.cpp:281
 msgid "Disable sound"
 msgstr "Désactive le son"
 
-#: src/pingus_main.cpp:279
+#: src/pingus_main.cpp:283
 msgid "Disable music"
 msgstr "Désactive la musique"
 
-#: src/pingus_main.cpp:283
+#: src/pingus_main.cpp:287
 msgid "Select language to use with Pingus"
 msgstr ""
 
-#: src/pingus_main.cpp:285
+#: src/pingus_main.cpp:289
 msgid "List all available languages"
 msgstr ""
 
-#: src/pingus_main.cpp:289
+#: src/pingus_main.cpp:293
 #, fuzzy
 msgid "Loads the level editor"
 msgstr "..:: Lance l'éditeur de niveau ::.."
 
-#: src/pingus_main.cpp:291
+#: src/pingus_main.cpp:295
+msgid "Save the level given level to FILENAME and quit"
+msgstr ""
+
+#: src/pingus_main.cpp:297
 msgid "Test a font"
 msgstr ""
 
-#: src/pingus_main.cpp:293
+#: src/pingus_main.cpp:299
 msgid "Shows the credits"
 msgstr ""
 
-#: src/pingus_main.cpp:295
+#: src/pingus_main.cpp:301
 #, fuzzy
 msgid "Misc Options:"
 msgstr "Options:"
 
-#: src/pingus_main.cpp:296
+#: src/pingus_main.cpp:302
 msgid "PATH"
 msgstr ""
 
-#: src/pingus_main.cpp:297
+#: src/pingus_main.cpp:303
 msgid "Set the path to load the data files to 'path'"
 msgstr ""
 
-#: src/pingus_main.cpp:300
+#: src/pingus_main.cpp:306
 msgid "Disable automatic scrolling"
 msgstr "Désactive le défilement automatique"
 
-#: src/pingus_main.cpp:302
+#: src/pingus_main.cpp:308
 msgid "Don't read ~/.pingus/config"
 msgstr "Ignore ~/.pingus/config"
 
-#: src/pingus_main.cpp:303
+#: src/pingus_main.cpp:309
 #, fuzzy
 msgid "FILE"
 msgstr "FICHIER    "
 
-#: src/pingus_main.cpp:304
+#: src/pingus_main.cpp:310
 #, fuzzy
 msgid ""
 "Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
@@ -247,82 +251,86 @@ msgstr ""
 "réduit la consommation de CPU, peut accélérer le jeu sur des machines plus "
 "lentes"
 
-#: src/pingus_main.cpp:307
+#: src/pingus_main.cpp:313
 msgid "Uses the controller given in FILE"
 msgstr "Utiliser le controller spécifié dans FICHIER"
 
-#: src/pingus_main.cpp:309
+#: src/pingus_main.cpp:315
 msgid "Debugging and experimental stuff:"
 msgstr "Options de dévermminage et expérimentales"
 
-#: src/pingus_main.cpp:311
+#: src/pingus_main.cpp:317
 #, fuzzy
 msgid "Enables some features, only interesting to programmers"
 msgstr ""
 "Active quelques fonctionnalitées, intéressant seulement les développeurs"
 
-#: src/pingus_main.cpp:314
+#: src/pingus_main.cpp:320
 #, fuzzy
 msgid "Load a custom worldmap"
 msgstr "Charger une carte de monde personnalisé à partir de FICHIER"
 
-#: src/pingus_main.cpp:316
+#: src/pingus_main.cpp:322
 #, fuzzy
 msgid ""
 "Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
 "actions, sound, resources, gui, input, pathmgr"
 msgstr "disponible sont tiles, gametime, actions, sound, resources, gui,"
 
-#: src/pingus_main.cpp:320
+#: src/pingus_main.cpp:326
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "Saute au moins N images, des valeurs plus grandes accélèrent le jeu"
 
-#: src/pingus_main.cpp:322
+#: src/pingus_main.cpp:328
 msgid "Skip at most N frames"
 msgstr "Saute au plus N images"
 
-#: src/pingus_main.cpp:324
+#: src/pingus_main.cpp:330
 msgid "Set both min and max frameskip to N"
 msgstr "Détermine le min et le max d'images sautées à N"
 
-#: src/pingus_main.cpp:326
+#: src/pingus_main.cpp:332
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Détermine la vitesse du jeu (0=le plus vite, >0=plus lent)"
 
-#: src/pingus_main.cpp:328
+#: src/pingus_main.cpp:334
+msgid "Set the desired game framerate (frames per second)"
+msgstr ""
+
+#: src/pingus_main.cpp:336
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Détermine la taille des section (tiles) de la mappe (default: 32)"
 
-#: src/pingus_main.cpp:330
+#: src/pingus_main.cpp:338
 msgid "Disable some cpu intensive features"
 msgstr "Désactive quelques fonctionnalités coûteuses en CPU"
 
-#: src/pingus_main.cpp:334
+#: src/pingus_main.cpp:342
 msgid "Demo playing and recording:"
 msgstr "Démonstration, enregistrement et lecture:"
 
-#: src/pingus_main.cpp:336
+#: src/pingus_main.cpp:344
 #, fuzzy
 msgid "Plays a demo session"
 msgstr "Joue une démonstration à partir de FICHIER"
 
-#: src/pingus_main.cpp:338
+#: src/pingus_main.cpp:346
 msgid "Record demos for each played level"
 msgstr "Enregistre une démonstration pour chaque niveau joué"
 
-#: src/pingus_main.cpp:735
+#: src/pingus_main.cpp:769
 msgid "Error caught from Pingus: "
 msgstr "Erreur provenant de Pingus: "
 
-#: src/pingus_main.cpp:739
+#: src/pingus_main.cpp:773
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: mémoire insuffisante"
 
-#: src/pingus_main.cpp:743
+#: src/pingus_main.cpp:777
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Exception standard interceptée!:\n"
 
-#: src/pingus_main.cpp:747
+#: src/pingus_main.cpp:781
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Sortie (throw) inconnue interceptée!"
 
@@ -404,7 +412,7 @@ msgstr "_d'avoir joué!"
 msgid "Exit"
 msgstr "Quitter"
 
-#: src/addon_menu.cpp:59 src/option_menu.cpp:94
+#: src/addon_menu.cpp:58 src/option_menu.cpp:199
 msgid "Close"
 msgstr ""
 
@@ -500,6 +508,30 @@ msgstr "-Conception des niveaux"
 msgid "Solved:"
 msgstr "Sauvés: "
 
+#: src/level_menu.cpp:125
+#, fuzzy
+msgid "levels"
+msgstr "-Conception des niveaux"
+
+#: src/level_menu.cpp:195
+msgid "Title"
+msgstr ""
+
+#: src/level_menu.cpp:196
+#, fuzzy
+msgid "Status"
+msgstr "Commencer"
+
+#: src/level_menu.cpp:212
+#, fuzzy
+msgid "solved"
+msgstr "Sauvés: "
+
+#: src/level_menu.cpp:214
+#, fuzzy
+msgid "unsolved"
+msgstr "Sauvés: "
+
 #: src/config.cpp:72
 msgid "Couldn't open: "
 msgstr "Impossible d'ouvrir: "
@@ -520,7 +552,7 @@ msgstr "Capture d'écran: La capture est terminée."
 msgid "Screenshot: Couldn't write file: "
 msgstr "Capture d'écran: Impossible d'écrire le fichier: "
 
-#: src/editor/editor_screen.cpp:196
+#: src/editor/editor_screen.cpp:197
 msgid ""
 "Select all\n"
 "Clear Selection\n"
@@ -532,7 +564,7 @@ msgid ""
 "Rotate 270 degree\n"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:218
+#: src/editor/editor_screen.cpp:219
 msgid ""
 "Flip object horizontaly\n"
 "Flip object vertically\n"
@@ -543,7 +575,7 @@ msgid ""
 "Move objects right\n"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:230
+#: src/editor/editor_screen.cpp:231
 msgid ""
 "You should name your level files systematically, i.e. by their theme, their "
 "number and your nickname:\n"
@@ -961,6 +993,58 @@ msgid ""
 "fullscreen   ::   F12: screenshot ::.."
 msgstr ""
 
+#: src/option_menu.cpp:101
+msgid "Language:"
+msgstr ""
+
+#: src/option_menu.cpp:102
+msgid "Scroll Mode:"
+msgstr ""
+
+#: src/option_menu.cpp:103
+#, fuzzy
+msgid "Resolution:"
+msgstr "Résultats:"
+
+#: src/option_menu.cpp:104
+#, fuzzy
+msgid "Fullscreen:"
+msgstr "Démarre en mode plein-écran"
+
+#: src/option_menu.cpp:105
+msgid "Autoscrolling:"
+msgstr ""
+
+#: src/option_menu.cpp:106
+msgid "Low Detail:"
+msgstr ""
+
+#: src/option_menu.cpp:108
+msgid "Master Volume:"
+msgstr ""
+
+#: src/option_menu.cpp:109
+#, fuzzy
+msgid "Sound Volume:"
+msgstr "Son:"
+
+#: src/option_menu.cpp:110
+msgid "Music Volume:"
+msgstr ""
+
+#: src/option_menu.cpp:111
+msgid "Print FPS:"
+msgstr ""
+
+#: src/option_menu.cpp:112
+msgid "Mouse Grab:"
+msgstr ""
+
+#: src/option_menu.cpp:113
+#, fuzzy
+msgid "Software Cursor:"
+msgstr "Activer le curseur logiciel"
+
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
 msgid "If the way is blocked, bash away"
 msgstr "Si la route est bloquée, défonce le mur!"
@@ -1202,11 +1286,11 @@ msgstr ""
 "(Grimpeur) permet à un Pingu d'escalader un mur droit et ainsi d'atteindre "
 "des endroits impossible d'accès autrement. "
 
-#: data/levels/tutorial/snow22-grumbel.pingus:5
+#: data/levels/tutorial/snow22-grumbel.pingus:7
 msgid "Entrance high, Exit low"
 msgstr "Entrée haute, Sortie basse"
 
-#: data/levels/tutorial/snow22-grumbel.pingus:6
+#: data/levels/tutorial/snow22-grumbel.pingus:8
 msgid ""
 "If you don't have enough floaters to bring all the Pingus down to the exit - "
 "you have to find other ways to guide them down. You should have learned all "
@@ -1218,11 +1302,11 @@ msgstr ""
 "ce qui est nécessaire ici devrais avoir été appris dans les niveaux "
 "précédants. Donc ce ne devrait pas causer de problèmes. "
 
-#: data/levels/tutorial/snow7-grumbel.pingus:5
+#: data/levels/tutorial/snow7-grumbel.pingus:7
 msgid "One must prepare, the rest must follow"
 msgstr "Un fais le travail, les autres suivent"
 
-#: data/levels/tutorial/snow7-grumbel.pingus:6
+#: data/levels/tutorial/snow7-grumbel.pingus:8
 msgid ""
 "Sometimes there are situations where you don't have a Blocker at hand to "
 "coordinate your Pingus. You'll have to find other ways to keep them under "
@@ -1316,7 +1400,7 @@ msgstr ""
 msgid ""
 "You've mastered the last challenge and now face the next. Their path to "
 "salvation seems to be cursed, but by whom? There is no time to think about "
-"it, since the next deadly challange already awaits the Pingus. Two mighty "
+"it, since the next deadly challenge already awaits the Pingus. Two mighty "
 "roots block the way, but without a basher at hand to bash them away, "
 "sacrifice might be the only option..."
 msgstr ""
@@ -1372,10 +1456,11 @@ msgstr ""
 #: data/levels/halloween/halloween7-grumbel.pingus:8
 msgid ""
 "This is by far the deepest pit the Pingus have yet encountered. Building a "
-"bridge across it seems obvious, but can't work. The exit is deep down in the "
-"pit itself, but Pingus who go down will just end up splattered upon the "
-"ground. But you have two groups of Pingus at your disposal... can you make "
-"them work together to reach even an exit this well hidden?"
+"bridge across it seems obvious but that won't help since the exit is deep "
+"down in the pit itself. Pingus who try to go down the pit will just end up "
+"splattered all over the ground. You have two groups of Pingus at your "
+"disposal, can you make them work together to reach even an exit this well "
+"hidden?"
 msgstr ""
 
 #: data/levels/halloween/halloween8-plouj.pingus:7
@@ -1585,9 +1670,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Difficulty: "
 #~ msgstr "Difficultée:"
-
-#~ msgid "Start"
-#~ msgstr "Commencer"
 
 #, fuzzy
 #~ msgid ""
@@ -2048,9 +2130,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Chargement terminé. Appuyez sur un bouton de la souris pour débuter le "
 #~ "niveau"
-
-#~ msgid "Results:"
-#~ msgstr "Résultats:"
 
 #~ msgid "Pingus saved:   %3d/%3d"
 #~ msgstr "Pingus sauvés: %3d/%3d"
