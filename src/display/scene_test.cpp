@@ -15,7 +15,6 @@ int main()
   }
   atexit(SDL_Quit);
 
-
   global_screen = SDL_SetVideoMode(640, 480, 32, SDL_HWSURFACE);
 
   SDL_Event event;

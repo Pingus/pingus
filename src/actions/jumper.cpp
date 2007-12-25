@@ -29,9 +29,9 @@ Jumper::Jumper (Pingu* p)
   : PinguAction(p)
 {
   sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/player" + 
-    pingu->get_owner_str() + "/jumper/left"));
+                                                      pingu->get_owner_str() + "/jumper/left"));
   sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
-    pingu->get_owner_str() + "/jumper/right"));
+                                                      pingu->get_owner_str() + "/jumper/right"));
 }
 
 void
@@ -44,11 +44,17 @@ void
 Jumper::update ()
 {
   // if climber, do a wall-jump, else just jump forward
-  if ((pingu->get_previous_action() == Actions::Climber) 
-      ? pingu->direction.is_left() : pingu->direction.is_right())
-    pingu->set_velocity(pingu->get_velocity() + Vector3f(5.0, -5.0));
-  else 
-    pingu->set_velocity(pingu->get_velocity() + Vector3f(-5.0, -5.0));
+  if ((pingu->get_previous_action() == Actions::Climber))
+    pingu->direction.change();
+  
+  if (pingu->direction.is_left())
+    {
+      pingu->set_velocity(pingu->get_velocity() + Vector3f(-5.0, -5.0));
+    }
+  else // if (pingu->direction.is_right())
+    {
+      pingu->set_velocity(pingu->get_velocity() + Vector3f(5.0, -5.0));
+    }
 
   // Move the pingu in the air, so that it can start 'falling'
   pingu->set_y(pingu->get_y() - 1);
