@@ -126,7 +126,7 @@ public:
 
         //gc.draw(ok_button, 620, y);
 
-        y += 75;
+        y += 95;
       }
     gc.pop_modelview();
   }
@@ -138,7 +138,7 @@ public:
 
     if (!levelsets.empty())
       {
-        int i = y / 75;
+        int i = y / 95;
 
         if (i >= 0 && i < static_cast<int>(levelsets.size()))
           current_levelset = levelsets[i];
