@@ -63,6 +63,26 @@
       (position 1644 534 -100)
       (speed 0)
       (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/halloween/sign-up")
+        (modifier "ROT0"))
+      (position 588 344 -100)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/halloween/sign-right")
+        (modifier "ROT0"))
+      (position 641 258 -100)
+      (speed 0)
+      (parallax 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snow2")
+        (modifier "ROT0"))
+      (position 601 311 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -416,7 +436,7 @@
       (surface 
         (image "groundpieces/ground/xmas/snow2")
         (modifier "ROT0"))
-      (position 708 297 0))
+      (position 708 294 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -1216,17 +1236,17 @@
         (modifier "ROT0"))
       (position 646 675 0))
     (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snow2")
+        (modifier "ROT0"))
+      (position 635 294 0))
+    (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_vert")
         (modifier "ROT0"))
       (position 623 355 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/xmas/snow2")
-        (modifier "ROT0"))
-      (position 607 296 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -1341,6 +1361,18 @@
         (image "groundpieces/ground/xmas/snow2")
         (modifier "ROT0"))
       (position 1239 357 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_large")
+        (modifier "ROT0"))
+      (position 583 397 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 623 393 0))
     (liquid 
       (surface 
         (image "liquids/water2")
