@@ -63,6 +63,7 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
         config_manager.set_fullscreen(!config_manager.get_fullscreen());
         break;
 
+#if 0
       case SDLK_F5:
         if (!dynamic_cast<OptionMenu*>(ScreenManager::instance()->get_screen()))
           ScreenManager::instance()->push_screen(new OptionMenu(), true);
@@ -77,6 +78,7 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
         if (!dynamic_cast<LevelMenu*>(ScreenManager::instance()->get_screen()))
           ScreenManager::instance()->push_screen(new LevelMenu(), true);
         break;
+#endif 
 
       case SDLK_F12:
         {
