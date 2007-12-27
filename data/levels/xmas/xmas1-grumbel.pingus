@@ -80,9 +80,9 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/xmas/snow2")
-        (modifier "ROT0"))
-      (position 601 311 0))
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 572 314 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -1373,6 +1373,18 @@
         (image "groundpieces/solid/misc/metalplate_small")
         (modifier "ROT0"))
       (position 623 393 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/ground1")
+        (modifier "ROT0"))
+      (position 456 283 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snow2")
+        (modifier "ROT0"))
+      (position 458 282 0))
     (liquid 
       (surface 
         (image "liquids/water2")
