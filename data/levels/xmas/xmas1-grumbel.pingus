@@ -7,8 +7,8 @@
     (levelname "none")
     (description "none")
     (author "none")
-    (number-of-pingus 20)
-    (number-to-save 15)
+    (number-of-pingus 15)
+    (number-to-save 12)
     (time -1)
     (difficulty 0)
     (playable 1)
@@ -17,8 +17,8 @@
     (actions 
       (blocker 5)
       (bomber 5)
-      (bridger 3)
-      (climber 20)
+      (bridger 4)
+      (climber 15)
       (jumper 2))
     (levelsize 2200 1000))
   (objects 
@@ -53,7 +53,7 @@
       (surface 
         (image "hotspots/signposts/danger")
         (modifier "ROT0"))
-      (position 1379 244 -100)
+      (position 1374 321 -100)
       (speed 0)
       (parallax 0))
     (hotspot 
@@ -66,9 +66,39 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/xmas/iceblock")
+        (image "groundpieces/ground/xmas/ground1")
         (modifier "ROT0"))
-      (position 1234 285 0))
+      (position 1752 808 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/ground1")
+        (modifier "ROT0"))
+      (position 1720 758 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snowball1")
+        (modifier "ROT0"))
+      (position 1227 362 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snowball1")
+        (modifier "ROT0"))
+      (position 1216 375 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snowball1")
+        (modifier "ROT0"))
+      (position 1202 385 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snowball1")
+        (modifier "ROT0"))
+      (position 1226 377 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -122,7 +152,7 @@
       (surface 
         (image "groundpieces/ground/xmas/ground3")
         (modifier "ROT0"))
-      (position 1764 825 0))
+      (position 1783 747 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -134,7 +164,7 @@
       (surface 
         (image "groundpieces/transparent/xmas/candystick1")
         (modifier "ROT0"))
-      (position 1306 231 0))
+      (position 1302 286 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -224,7 +254,7 @@
       (surface 
         (image "groundpieces/transparent/xmas/candystick3")
         (modifier "ROT90"))
-      (position 1401 299 0))
+      (position 1393 369 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -248,13 +278,13 @@
       (surface 
         (image "groundpieces/transparent/xmas/candystick3")
         (modifier "ROT90"))
-      (position 1490 300 0))
+      (position 1483 369 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/xmas/ground3")
         (modifier "ROT0"))
-      (position 1245 283 0))
+      (position 1240 360 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -522,12 +552,6 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/xmas/ground2")
-        (modifier "ROT0"))
-      (position 1295 295 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
         (image "groundpieces/ground/xmas/ground3")
         (modifier "ROT0"))
       (position 1217 404 0))
@@ -536,7 +560,7 @@
       (surface 
         (image "groundpieces/ground/xmas/snow2")
         (modifier "ROT0"))
-      (position 1296 283 0))
+      (position 1291 360 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -548,7 +572,7 @@
       (surface 
         (image "groundpieces/ground/xmas/ground3")
         (modifier "ROT0"))
-      (position 1523 283 0))
+      (position 1501 271 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -696,27 +720,21 @@
     (groundpiece 
       (type "transparent")
       (surface 
-        (image "groundpieces/transparent/xmas/icicle1")
-        (modifier "ROT0"))
-      (position 1347 292 0))
-    (groundpiece 
-      (type "transparent")
-      (surface 
         (image "groundpieces/transparent/xmas/icicle4")
         (modifier "ROT0"))
-      (position 1508 300 0))
+      (position 1537 373 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/xmas/icicle3")
         (modifier "ROT0"))
-      (position 1430 301 0))
+      (position 1422 371 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/xmas/icicle4")
         (modifier "ROT0"))
-      (position 1332 371 0))
+      (position 1332 388 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -764,13 +782,13 @@
       (surface 
         (image "groundpieces/ground/xmas/ground3")
         (modifier "ROT0"))
-      (position 1701 821 0))
+      (position 1723 741 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/xmas/snow1")
         (modifier "ROT0"))
-      (position 1703 816 0))
+      (position 1722 738 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -800,7 +818,7 @@
       (surface 
         (image "groundpieces/transparent/xmas/icicle1")
         (modifier "ROT0"))
-      (position 1795 851 0))
+      (position 1804 774 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -836,7 +854,7 @@
       (surface 
         (image "groundpieces/ground/xmas/snow2")
         (modifier "ROT0"))
-      (position 1601 817 0))
+      (position 1619 816 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -1016,7 +1034,7 @@
       (surface 
         (image "groundpieces/ground/xmas/ground2")
         (modifier "ROT0"))
-      (position 1491 143 0))
+      (position 1487 134 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -1226,7 +1244,7 @@
       (surface 
         (image "groundpieces/ground/xmas/snow2")
         (modifier "ROT0"))
-      (position 1751 815 0))
+      (position 1770 737 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -1305,6 +1323,24 @@
         (image "groundpieces/ground/xmas/snow2")
         (modifier "ROT0"))
       (position 1979 501 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/ground1")
+        (modifier "ROT0"))
+      (position 1276 379 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/icicle1")
+        (modifier "ROT0"))
+      (position 1343 369 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snow2")
+        (modifier "ROT0"))
+      (position 1239 357 0))
     (liquid 
       (surface 
         (image "liquids/water2")
@@ -1321,9 +1357,9 @@
       (parallax 0))
     (entrance 
       (type "generic")
-      (position 375 228 110)
+      (position 375 227 110)
       (owner-id 0)
       (direction "right")
-      (release-rate 150))))
+      (release-rate 250))))
 
 ;; EOF ;;
