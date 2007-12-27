@@ -4,6 +4,8 @@
  (section (name "exits")
           (sprite
            (name "xmas")
+           (origin "bottom_center")
+           (offset 0 0)
            (image-file "../images/exits/xmas.png"))
 
           (sprite

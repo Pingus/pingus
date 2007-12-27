@@ -5,6 +5,9 @@
                    (sprite
                     (name "halloween")
                     (image-file "../images/levelsets/halloween.png"))
+                   (sprite
+                    (name "xmas")
+                    (image-file "../images/levelsets/xmas.png"))
            )
 
  (section (name "core")
