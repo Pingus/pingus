@@ -17,7 +17,7 @@
     (actions 
       (blocker 2)
       (bomber 4)
-      (bridger 5)
+      (bridger 6)
       (floater 2)
       (jumper 16)
       (miner 2))
@@ -1025,21 +1025,9 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/sweets/canestalk")
-        (modifier "ROT90"))
-      (position 855 748 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
         (image "groundpieces/ground/sweets/canestub")
-        (modifier "ROT90"))
-      (position 848 748 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/sweets/canestub")
-        (modifier "ROT90FLIP"))
-      (position 916 748 0))
+        (modifier "ROT180FLIP"))
+      (position 882 690 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -2060,6 +2048,12 @@
         (image "groundpieces/transparent/xmas/icicle1")
         (modifier "ROT0"))
       (position 370 464 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 882 696 0))
     (liquid 
       (surface 
         (image "liquids/water2")
