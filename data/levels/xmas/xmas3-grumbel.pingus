@@ -19,7 +19,7 @@
       (bomber 4)
       (bridger 7)
       (floater 2)
-      (jumper 16)
+      (jumper 10)
       (miner 2))
     (levelsize 2000 1000))
   (objects 
