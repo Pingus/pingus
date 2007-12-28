@@ -1391,12 +1391,6 @@
     (groundpiece 
       (type "transparent")
       (surface 
-        (image "groundpieces/transparent/xmas/hat1")
-        (modifier "ROT0"))
-      (position 286 628 0))
-    (groundpiece 
-      (type "transparent")
-      (surface 
         (image "groundpieces/transparent/xmas/boot1")
         (modifier "ROT0"))
       (position 349 540 0))
@@ -1589,12 +1583,6 @@
     (groundpiece 
       (type "transparent")
       (surface 
-        (image "groundpieces/transparent/xmas/icicle1")
-        (modifier "ROT0"))
-      (position 310 465 0))
-    (groundpiece 
-      (type "transparent")
-      (surface 
         (image "groundpieces/transparent/xmas/icicle2")
         (modifier "ROT0"))
       (position 721 410 0))
@@ -1622,12 +1610,6 @@
         (image "groundpieces/transparent/xmas/icicle2")
         (modifier "ROT0"))
       (position 228 321 0))
-    (groundpiece 
-      (type "transparent")
-      (surface 
-        (image "groundpieces/transparent/xmas/icicle2")
-        (modifier "ROT0"))
-      (position 470 564 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -2024,6 +2006,72 @@
         (image "groundpieces/transparent/xmas/green2")
         (modifier "ROT0"))
       (position 1374 308 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 426 546 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/hat1")
+        (modifier "ROT0"))
+      (position 290 630 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 333 453 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 395 523 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 380 472 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 311 408 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/icicle1")
+        (modifier "ROT0"))
+      (position 310 465 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/icicle2")
+        (modifier "ROT0"))
+      (position 470 564 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/icicle3")
+        (modifier "ROT0"))
+      (position 383 454 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/icicle1")
+        (modifier "ROT0"))
+      (position 329 440 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/icicle3")
+        (modifier "ROT0"))
+      (position 422 522 0))
     (liquid 
       (surface 
         (image "liquids/water2")
