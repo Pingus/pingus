@@ -147,10 +147,12 @@ ScreenManager::display()
 	  fade_over(last_screen, get_current_screen());
 	}
 
+      // save this value because it might change drastically within the if statement
+      float current_frame_time = frame_timer.get();
       // cap the framerate at the desired value
-      if (frame_timer.get() < 1 / desired_fps) {
+      if (current_frame_time < 1 / desired_fps) {
 	// idle delay to make the frame take as long as we want it to
-	SDL_Delay(static_cast<Uint32>(1000 *((1 / desired_fps) - frame_timer.get())));
+	SDL_Delay(static_cast<Uint32>(1000 *((1 / desired_fps) - current_frame_time)));
       }
     }
 
