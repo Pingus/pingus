@@ -17,7 +17,7 @@
     (actions 
       (blocker 2)
       (bomber 4)
-      (bridger 6)
+      (bridger 7)
       (floater 2)
       (jumper 16)
       (miner 2))
