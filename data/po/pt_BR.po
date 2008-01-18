@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-10-31 06:55+0100\n"
-"PO-Revision-Date: 2008-01-09 08:53-0300\n"
+"PO-Revision-Date: 2008-01-16 21:11-0300\n"
 "Last-Translator: Fred Ulisses Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: Brazilian Portuguese\n"
 "MIME-Version: 1.0\n"
@@ -115,7 +115,7 @@ msgstr "Esperando"
 
 #: src/pingu_enums.cpp:56
 msgid "Walker"
-msgstr "Andador"
+msgstr "Andando"
 
 #: src/start_screen.cpp:74 src/editor/level_head.cpp:53
 msgid "Ok"
@@ -872,7 +872,7 @@ msgstr "Mostrar Final?"
 
 #: src/worldmap/manager.cpp:138
 msgid "Show Story?"
-msgstr "Mostrar História?"
+msgstr "Ver História?"
 
 #: src/worldmap/manager.cpp:167
 msgid "Leave?"
@@ -997,10 +997,9 @@ msgid ""
 "need to equip your Pingus with a little propeller, so that they can float to "
 "the ground smoothly. If Pingus fall too far, they will not be able to "
 "survive the fall, so keep your eyes open! "
-msgstr ""
-"Parabéns pela sua primeira missão! Agora partiremos para a próxima. Desta "
-"vez, vais ter que equipar os teus Pingus com uma hélice, para que estes "
-"possam flutuar suavemente até ao chão. Se os Pingus caírem de muito alto, "
+msgstr "Parabéns pela sua primeira missão! Agora partiremos para a próxima. Desta "
+"vez, vais ter que equipar os teus Pingus com uma hélice, para que eles "
+"possam flutuar suavemente até o chão. Se os Pingus caírem de muito alto, "
 "não irão sobreviver à queda, portanto mantenha os olhos bem abertos!"
 
 #: data/levels/tutorial/jumper-tutorial-grumbel.pingus:5
