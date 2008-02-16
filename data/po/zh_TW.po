@@ -1,0 +1,66 @@
+# Traditional Chinese Messages for pingus.
+# Copyright (C) 2008 Free Software Foundation, Inc.
+# This file is distributed under the same license as the pingus package.
+# Wei-Lun Chao <chaoweilun@gmail.com>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pingus 0.7.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-10-31 06:55+0100\n"
+"PO-Revision-Date: 2008-01-15 15:16+0800\n"
+"Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>\n"
+"Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/credits.cpp:276 src/editor/panel.cpp:211
+#: src/editor/object_selector.cpp:318 src/pingus_menu.cpp:61
+msgid "Exit"
+msgstr "離開"
+
+#: src/pingus_menu.cpp:50 src/pingus_menu.cpp:72
+msgid "Story"
+msgstr "故事"
+
+#: src/pingus_menu.cpp:51
+msgid "..:: Start the game ::.."
+msgstr "..:: 遊戲開始 ::.."
+
+#: src/pingus_menu.cpp:56
+msgid "Editor"
+msgstr "編輯"
+
+#: src/pingus_menu.cpp:57
+msgid "..:: Create your own levels ::.."
+msgstr "..:: 建立自己的關卡 ::.."
+
+#: src/pingus_menu.cpp:62
+msgid "..:: Bye, bye ::.."
+msgstr "..:: 再見 ::.."
+
+#: src/pingus_menu.cpp:67
+msgid "..:: Play User Built levels ::.."
+msgstr "..:: 玩家自製關卡 ::.."
+
+#: src/pingus_menu.cpp:73
+msgid "..:: Start the story ::.."
+msgstr "..:: 故事開始 ::.."
+
+#: src/pingus_menu.cpp:78
+msgid "Multiplayer"
+msgstr "多位玩家"
+
+#: src/pingus_menu.cpp:79
+msgid "..:: Multiplayer Match ::.."
+msgstr "..:: 多位玩家配對 ::.."
+
+#: src/pingus_menu.cpp:82
+msgid "..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: fullscreen   ::   F12: screenshot ::.."
+msgstr "..:: Ctrl-g: 滑鼠抓取  ::  F10: 每秒畫面數量  ::  F11: 全螢幕  ::  F12: 螢幕快照 ::.."
+
+#: src/level_menu.cpp:108 src/pingus_menu.cpp:66
+msgid "Levelsets"
+msgstr "關卡組合"
