@@ -3,6 +3,27 @@
 (pingus-resources
  (section (name "groundpieces")
           (section (name "ground")
+                   (section (name "easter")
+                            (sprite
+                             (name "egg1")
+                             (image-file "../images/groundpieces/ground/easter/egg1.png"))
+                            (sprite
+                             (name "ground1")
+                             (image-file "../images/groundpieces/ground/easter/ground1.png"))
+                            (sprite
+                             (name "ground2")
+                             (image-file "../images/groundpieces/ground/easter/ground2.png"))
+                            (sprite
+                             (name "ground3")
+                             (image-file "../images/groundpieces/ground/easter/ground3.png"))
+                            (sprite
+                             (name "hiddenexit")
+                             (image-file "../images/groundpieces/ground/easter/hiddenexit.png"))
+                            (sprite
+                             (name "tree1")
+                             (image-file "../images/groundpieces/ground/easter/tree1.png"))
+                            )
+
                    (section (name "xmas")
                             (sprite
                              (name "ground1")

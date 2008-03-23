@@ -1,6 +1,13 @@
+;; -*- scheme -*-
 ;; textures.xml
 (pingus-resources
   (section (name "textures")
+           (sprite
+            (name "easter_grass")
+            (image-file "../images/textures/easter_grass.png"))
+           (sprite
+            (name "easter_sky")
+            (image-file "../images/textures/easter_sky.jpg"))
     (sprite
       (name "fruitcaketile")
       (image-file "../images/textures/fruitcaketile.jpg"))
