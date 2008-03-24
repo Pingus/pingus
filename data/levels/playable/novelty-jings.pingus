@@ -690,7 +690,7 @@
       (position 1892 600 101))
     (entrance 
       (type "generic")
-      (position 1941 600 110)
+      (position 312 342 110)
       (owner-id 0)
       (direction "right")
       (release-rate 250))))
