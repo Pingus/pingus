@@ -68,6 +68,8 @@ public:
   }
 };
 
+
+
 class LevelsetSelector : public GUI::RectComponent
 {
 private:
@@ -77,12 +79,20 @@ private:
   Levelset* current_levelset;
   Sprite marker;
 
+  Sprite arrow_left;
+  Sprite arrow_right;
+  int page;
+
 public:
   LevelsetSelector(LevelMenu* level_menu_, const Rect& rect_) 
     : RectComponent(rect_),
-      level_menu(level_menu_), current_levelset(NULL)
+      level_menu(level_menu_), current_levelset(NULL),
+      page(0)
   {
     marker        = Resource::load_sprite("core/menu/marker");
+
+    arrow_left  = Resource::load_sprite("core/menu/arrow_left");
+    arrow_right = Resource::load_sprite("core/menu/arrow_right");
 
     std::string path = Pathname("levelsets", Pathname::DATA_PATH).get_sys_path();
     System::Directory directory = System::opendir(path, "*.levelset");
@@ -111,23 +121,34 @@ public:
     //                 Color(255, 255, 0, 100));
 
     int y = 0;
-    for(Levelsets::iterator i = levelsets.begin(); i != levelsets.end(); ++i)
+    for(int i = 3*page; (i < 3*(page+1)) && (i < int(levelsets.size())); ++i)
       {
-        if (*i == current_levelset)
+        Levelset* levelset = levelsets[i];
+
+        if (levelset == current_levelset)
           gc.draw(marker, Vector2i(0, y - 5));
 
-        gc.draw((*i)->get_image(), Vector2i(30, y));
+        gc.draw(levelset->get_image(), Vector2i(30, y));
 
-        gc.print_left(Fonts::chalk_normal, 85+30, 15 + y, _((*i)->get_title()));
-        gc.print_left(Fonts::chalk_small,  85+50, 40 + y, _((*i)->get_description()));
+        gc.print_left(Fonts::chalk_normal, 85+30, 15 + y, _(levelset->get_title()));
+        gc.print_left(Fonts::chalk_small,  85+50, 40 + y, _(levelset->get_description()));
 
-        gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, 15 + y, (boost::format("%1% %2%%%") % _("Solved:") % (*i)->get_completion()).str());
-        gc.print_right(Fonts::chalk_small,  rect.get_width() - 30, 60 + y, (boost::format("%1% %2%") % (*i)->get_level_count() % _("levels")).str());
+        gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, 15 + y, (boost::format("%1% %2%%%") % _("Solved:") % levelset->get_completion()).str());
+        gc.print_right(Fonts::chalk_small,  rect.get_width() - 30, 60 + y, (boost::format("%1% %2%") % levelset->get_level_count() % _("levels")).str());
 
         //gc.draw(ok_button, 620, y);
 
         y += 95;
       }
+    
+    int total_pages = levelsets.size()/3 + ((levelsets.size()%3) != 0 ? 1 : 0);
+  
+    gc.print_center(Fonts::chalk_normal, rect.get_width()/2, 453 - rect.top,
+                    (boost::format("%1% %2%/%3%") % _("Page") % (page+1) % total_pages).str());
+
+    gc.draw(arrow_left,  Vector2i(570 - rect.left, 445 - rect.top));
+    gc.draw(arrow_right, Vector2i(630 - rect.left, 445 - rect.top));
+
     gc.pop_modelview();
   }
 
@@ -166,6 +187,8 @@ private:
   Sprite marker_locked;
   Levelset* levelset;
   int current_level;
+  Sprite arrow_up;
+  Sprite arrow_down;
   
 public:
   LevelSelector(LevelMenu* level_menu_, const Rect& rect_) 
@@ -176,6 +199,9 @@ public:
   {
     marker        = Resource::load_sprite("core/menu/marker2");
     marker_locked = Resource::load_sprite("core/menu/marker_locked");
+
+    arrow_up   = Resource::load_sprite("core/menu/arrow_up");
+    arrow_down = Resource::load_sprite("core/menu/arrow_down");
   }
 
   void draw(DrawingContext& gc) 
@@ -193,7 +219,7 @@ public:
         //                 Color(255, 255, 0, 100));
 
         gc.print_left(Fonts::chalk_normal,  30, -32, _("Title"));
-        gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, - 32, _("Status"));
+        gc.print_right(Fonts::chalk_normal, rect.get_width() - 30 - 40, - 32, _("Status"));
 
         int y = 0;
         for(int i = 0; i < levelset->get_level_count(); ++i)
@@ -209,13 +235,16 @@ public:
               gc.print_left(Fonts::chalk_small, 30, y+4, _(levelset->get_level(i)->plf.get_levelname()));
 
             if (levelset->get_level(i)->finished)
-              gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, _("solved"));
+              gc.print_right(Fonts::chalk_small, rect.get_width() -30 - 40, y+4, _("solved"));
             else
-              gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, _("unsolved"));
+              gc.print_right(Fonts::chalk_small, rect.get_width() -30 - 40, y+4, _("unsolved"));
 
             y += 32;
           }
       }
+
+    gc.draw(arrow_up,   Vector2i(rect.get_width() - 26 - 20, 0));
+    gc.draw(arrow_down, Vector2i(rect.get_width() - 26 - 20, 32 * 8 - 48 - 4));
     
     gc.pop_modelview();
   }

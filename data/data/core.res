@@ -358,6 +358,22 @@
 
           (section (name "menu")
                    (sprite
+                    (name "arrow_up")
+                    (image-file "../images/core/menu/arrow_up.png"))
+
+                   (sprite
+                    (name "arrow_down")
+                    (image-file "../images/core/menu/arrow_down.png"))
+
+                   (sprite
+                    (name "arrow_left")
+                    (image-file "../images/core/menu/arrow_left.png"))
+
+                   (sprite
+                    (name "arrow_right")
+                    (image-file "../images/core/menu/arrow_right.png"))
+
+                   (sprite
                     (name "menuitem")
                     (origin "center")
                     (image-file "../images/core/menu/menuitem.png"))

@@ -75,12 +75,6 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
             ScreenManager::instance()->push_screen(new AddOnMenu(), true);
         break;
 
-      case SDLK_F7:
-        if (maintainer_mode)
-          if (!dynamic_cast<LevelMenu*>(ScreenManager::instance()->get_screen()))
-            ScreenManager::instance()->push_screen(new LevelMenu(), true);
-        break;
-
       case SDLK_F12:
         {
           std::string filename;

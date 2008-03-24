@@ -37,7 +37,7 @@ private:
   Sprite background;
   Sprite ok_button;
 
-  LevelSelector* level_selector;
+  LevelSelector*    level_selector;
   LevelsetSelector* levelset_selector;
 
 public:
