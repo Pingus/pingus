@@ -86,7 +86,7 @@ GUIManager::process_input(const GameDelta& delta)
 
           case Input::AXIS_EVENT_TYPE:
             // AxisEvents can be ignored in the GUI, they are handled elsewhere
-            pout (PINGUS_DEBUG_GUI) << "GUIManager: AxisEvent: " << i->axis.dir << std::endl;
+            pout(PINGUS_DEBUG_GUI) << "GUIManager: AxisEvent: " << i->axis.dir << std::endl;
             break;
 	
           case Input::KEYBOARD_EVENT_TYPE:

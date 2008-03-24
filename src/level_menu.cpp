@@ -18,6 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <boost/format.hpp>
+#include <boost/function.hpp>
+#include <boost/bind.hpp>
 #include "gettext.h"
 #include "resource.hpp"
 #include "screen/screen_manager.hpp"
@@ -68,7 +70,32 @@ public:
   }
 };
 
+class LevelScrollButton
+  : public GUI::SurfaceButton
+{
+private:
+  boost::function<void(void)> callback;
 
+public:
+  LevelScrollButton(int x, int y, const std::string& str, boost::function<void (void)> callback_)
+    : GUI::SurfaceButton(x, y,
+                         ResDescriptor(str),
+                         ResDescriptor(str),
+                         ResDescriptor(str)),
+      callback(callback_)
+  {
+  }
+
+  void on_click() {
+    callback();
+  }
+
+  void on_pointer_enter()
+  {
+    SurfaceButton::on_pointer_enter();
+    Sound::PingusSound::play_sound("tick");
+  }
+};
 
 class LevelsetSelector : public GUI::RectComponent
 {
@@ -78,9 +105,6 @@ private:
   Levelsets levelsets;
   Levelset* current_levelset;
   Sprite marker;
-
-  Sprite arrow_left;
-  Sprite arrow_right;
   int page;
 
 public:
@@ -89,11 +113,8 @@ public:
       level_menu(level_menu_), current_levelset(NULL),
       page(0)
   {
-    marker        = Resource::load_sprite("core/menu/marker");
-
-    arrow_left  = Resource::load_sprite("core/menu/arrow_left");
-    arrow_right = Resource::load_sprite("core/menu/arrow_right");
-
+    marker      = Resource::load_sprite("core/menu/marker");
+   
     std::string path = Pathname("levelsets", Pathname::DATA_PATH).get_sys_path();
     System::Directory directory = System::opendir(path, "*.levelset");
     for(System::Directory::iterator i = directory.begin(); i != directory.end(); ++i)
@@ -141,15 +162,26 @@ public:
         y += 95;
       }
     
-    int total_pages = levelsets.size()/3 + ((levelsets.size()%3) != 0 ? 1 : 0);
+    int total_pages = (int(levelsets.size())+2)/3;
   
     gc.print_center(Fonts::chalk_normal, rect.get_width()/2, 453 - rect.top,
                     (boost::format("%1% %2%/%3%") % _("Page") % (page+1) % total_pages).str());
 
-    gc.draw(arrow_left,  Vector2i(570 - rect.left, 445 - rect.top));
-    gc.draw(arrow_right, Vector2i(630 - rect.left, 445 - rect.top));
-
     gc.pop_modelview();
+  }
+
+  void next_page()
+  {
+    page += 1;
+    if (page >= ((int)levelsets.size()+2)/3)
+      page = ((int)levelsets.size()+2)/3 - 1;
+  }
+
+  void prev_page()
+  {
+    page -= 1;
+    if (page < 0)
+      page = 0;
   }
 
   void on_pointer_move(int x, int y)
@@ -187,21 +219,17 @@ private:
   Sprite marker_locked;
   Levelset* levelset;
   int current_level;
-  Sprite arrow_up;
-  Sprite arrow_down;
-  
+  int page;
 public:
   LevelSelector(LevelMenu* level_menu_, const Rect& rect_) 
     : RectComponent(rect_),
       level_menu(level_menu_),
       levelset(0),
-      current_level(-1)
+      current_level(-1),
+      page(0)
   {
     marker        = Resource::load_sprite("core/menu/marker2");
     marker_locked = Resource::load_sprite("core/menu/marker_locked");
-
-    arrow_up   = Resource::load_sprite("core/menu/arrow_up");
-    arrow_down = Resource::load_sprite("core/menu/arrow_down");
   }
 
   void draw(DrawingContext& gc) 
@@ -219,10 +247,10 @@ public:
         //                 Color(255, 255, 0, 100));
 
         gc.print_left(Fonts::chalk_normal,  30, -32, _("Title"));
-        gc.print_right(Fonts::chalk_normal, rect.get_width() - 30 - 40, - 32, _("Status"));
+        gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, -32, _("Status"));
 
         int y = 0;
-        for(int i = 0; i < levelset->get_level_count(); ++i)
+        for(int i = page*8; i < (page+1)*8 && i < levelset->get_level_count(); ++i)
           {
             if (!levelset->get_level(i)->accessible)
               gc.draw(marker_locked, Vector2i(0, y));
@@ -235,18 +263,32 @@ public:
               gc.print_left(Fonts::chalk_small, 30, y+4, _(levelset->get_level(i)->plf.get_levelname()));
 
             if (levelset->get_level(i)->finished)
-              gc.print_right(Fonts::chalk_small, rect.get_width() -30 - 40, y+4, _("solved"));
+              gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, _("solved"));
             else
-              gc.print_right(Fonts::chalk_small, rect.get_width() -30 - 40, y+4, _("unsolved"));
+              gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, _("unsolved"));
 
             y += 32;
           }
       }
 
-    gc.draw(arrow_up,   Vector2i(rect.get_width() - 26 - 20, 0));
-    gc.draw(arrow_down, Vector2i(rect.get_width() - 26 - 20, 32 * 8 - 48 - 4));
-    
+    gc.print_center(Fonts::chalk_normal, rect.get_width()/2, 453 - rect.top,
+                    (boost::format("%1% %2%/%3%") % _("Page") % (page+1) % ((levelset->get_level_count()+7)/8)).str());
+
     gc.pop_modelview();
+  }
+
+  void prev_page()
+  {
+    page -= 1;
+    if (page < 0)
+      page = 0;
+  }
+
+  void next_page()
+  {
+    page += 1;
+    if (page >= (levelset->get_level_count()+7)/8)
+      page = (levelset->get_level_count()+7)/8 - 1;
   }
 
   void set_levelset(Levelset* levelset_)
@@ -278,7 +320,7 @@ public:
 
   void update_layout() {}
 };
-
+
 LevelMenu::LevelMenu()
   : x_pos((Display::get_width()  - default_screen_width)/2),
     y_pos((Display::get_height() - default_screen_height)/2)
@@ -289,8 +331,20 @@ LevelMenu::LevelMenu()
 
   ok_button  = Resource::load_sprite("core/start/ok");
 
-  levelset_selector = new LevelsetSelector(this, Rect(Vector2i(x_pos + 100, y_pos + 140), Size(600, 300)));
-  level_selector    = new LevelSelector(this, Rect(Vector2i(x_pos + 100, y_pos + 160), Size(600, 300)));
+  levelset_selector = new LevelsetSelector(this, Rect(Vector2i(x_pos + 100, y_pos + 140), Size(600, 285)));
+  level_selector    = new LevelSelector(this, Rect(Vector2i(x_pos + 100, y_pos + 160), Size(600, 256)));
+
+  gui_manager->add(new LevelScrollButton(Display::get_width()/2  + 160,
+                                         Display::get_height()/2 + 145,
+                                         "core/menu/arrow_left",
+                                         boost::bind(&LevelMenu::prev_page, this)),
+                   true);
+
+  gui_manager->add(new LevelScrollButton(Display::get_width()/2  + 230,
+                                         Display::get_height()/2 + 145,
+                                         "core/menu/arrow_right",
+                                         boost::bind(&LevelMenu::next_page, this)),
+                   true);
 
   gui_manager->add(levelset_selector, true);
   gui_manager->add(level_selector,    true);
@@ -325,6 +379,24 @@ LevelMenu::on_escape_press()
 }
 
 void
+LevelMenu::next_page()
+{
+  if (level_selector->is_visible())
+    level_selector->next_page();
+  else
+    levelset_selector->next_page();  
+}
+
+void
+LevelMenu::prev_page()
+{
+  if (level_selector->is_visible())
+    level_selector->prev_page();
+  else
+    levelset_selector->prev_page();
+}
+
+void
 LevelMenu::set_levelset(Levelset* levelset)
 {
   if (levelset)
@@ -339,5 +411,5 @@ LevelMenu::set_levelset(Levelset* levelset)
       level_selector->hide();      
     }
 }
-
+
 /* EOF */

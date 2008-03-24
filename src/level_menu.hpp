@@ -49,6 +49,9 @@ public:
   
   void set_levelset(Levelset* levelset);
 
+  void next_page();
+  void prev_page();
+
 private:
   LevelMenu (const LevelMenu&);
   LevelMenu& operator= (const LevelMenu&);
