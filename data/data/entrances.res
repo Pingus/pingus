@@ -3,6 +3,10 @@
 (pingus-resources
  (section (name "entrances")
           (sprite
+           (name "easter")
+           (image-file "../images/entrances/easter.png"))
+
+          (sprite
            (name "xmas_back")
            (image-file "../images/entrances/xmas_back.png"))
 

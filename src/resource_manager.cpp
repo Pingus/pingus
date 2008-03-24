@@ -105,9 +105,12 @@ ResourceManager::parse(const std::string& section, FileReader& reader)
     {
       std::string name;
       std::string link;
-      reader.read_string("name", name);
-      reader.read_string("link", link);
-      //std::cout << "alias: " << name << " -> " << link << std::endl;
+      if (reader.read_string("name", name) &&
+          reader.read_string("link", link))
+        {
+          //std::cout << "alias: " << name << " -> " << link << std::endl;
+          aliases[name] = link;
+        }
     }
   else if (reader.get_name() == "name")
     {
@@ -145,7 +148,15 @@ ResourceManager::get_sprite_description(const std::string& name) const
     }
   else
     {
-      return 0;
+      Aliases::const_iterator i = aliases.find(name);
+      if (i != aliases.end())
+        {
+          return get_sprite_description(i->second);
+        }
+      else
+        {
+          return 0;
+        }
     }  
 }
 

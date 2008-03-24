@@ -48,6 +48,7 @@ Resource::init()
   resmgr.add_resources(path_manager.complete("data/exits.res"));
   ////  resmgr.add_resources(path_manager.complete("data/fonts.res"));
   resmgr.add_resources(path_manager.complete("data/game.res"));
+  resmgr.add_resources(path_manager.complete("data/special.res"));
   resmgr.add_resources(path_manager.complete("data/groundpieces-bridge.res"));
   resmgr.add_resources(path_manager.complete("data/groundpieces-ground.res"));
   resmgr.add_resources(path_manager.complete("data/groundpieces-remove.res"));

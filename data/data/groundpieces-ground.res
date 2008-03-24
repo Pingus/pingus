@@ -8,6 +8,15 @@
                              (name "egg1")
                              (image-file "../images/groundpieces/ground/easter/egg1.png"))
                             (sprite
+                             (name "egg2")
+                             (image-file "../images/groundpieces/ground/easter/egg2.png"))
+                            (sprite
+                             (name "egg3")
+                             (image-file "../images/groundpieces/ground/easter/egg3.png"))
+                            (sprite
+                             (name "egg4")
+                             (image-file "../images/groundpieces/ground/easter/egg4.png"))
+                            (sprite
                              (name "ground1")
                              (image-file "../images/groundpieces/ground/easter/ground1.png"))
                             (sprite

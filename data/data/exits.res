@@ -3,6 +3,12 @@
 (pingus-resources
  (section (name "exits")
           (sprite
+           (name "easter")
+           (origin "bottom_center")
+           (offset 0 0)
+           (image-file "../images/exits/easter.png"))
+
+          (sprite
            (name "xmas")
            (origin "bottom_center")
            (offset 0 0)

@@ -3,6 +3,21 @@
 (pingus-resources
  (section (name "groundpieces")
           (section (name "transparent")
+                   (section (name "easter")
+                            (sprite
+                             (name "flower1")
+                             (image-file "../images/groundpieces/transparent/easter/flower1.png"))
+                            (sprite
+                             (name "flower2")
+                             (image-file "../images/groundpieces/transparent/easter/flower2.png"))
+                            (sprite
+                             (name "flower3")
+                             (image-file "../images/groundpieces/transparent/easter/flower3.png"))
+                            (sprite
+                             (name "grass")
+                             (image-file "../images/groundpieces/transparent/easter/grass.png"))
+                            )
+
                    (section (name "xmas")
                             (sprite
                              (name "ball1")

@@ -33,6 +33,9 @@ private:
   typedef std::map<std::string, SpriteDescription*> Resources;
   Resources resources;
   
+  typedef std::map<std::string, std::string> Aliases;
+  Aliases aliases;
+
 public:
   ResourceManager();
   ~ResourceManager();
