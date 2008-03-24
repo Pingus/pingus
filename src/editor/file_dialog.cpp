@@ -203,7 +203,7 @@ FileDialog::update_layout()
 void
 FileDialog::on_userdir()
 { 
-  set_directory(System::get_statdir() + "levels/");
+  set_directory(System::get_userdir() + "levels/");
 }
 
 void

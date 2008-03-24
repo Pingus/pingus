@@ -164,7 +164,7 @@ PingusMain::read_rc_file (void)
       std::string rcfile;
 
       if (!cmd_options.config_file.is_set())
-	rcfile = System::get_statdir() + "config";
+	rcfile = System::get_userdir() + "config";
       else
 	rcfile = cmd_options.config_file.get();
 
@@ -301,6 +301,8 @@ PingusMain::parse_args(int argc, char** argv)
   argp.add_group(_("Misc Options:"));
   argp.add_option('d', "datadir", _("PATH"),
                   _("Set the path to load the data files to 'path'"));
+  argp.add_option('u', "userdir", _("PATH"),
+                  _("Set the path to load and save user files (savegames, etc.) to PATH"));
 
   argp.add_option(337, "disable-auto-scrolling", "",
                   _("Disable automatic scrolling"));
@@ -396,6 +398,10 @@ PingusMain::parse_args(int argc, char** argv)
 
           case 'd': // -d, --datadir
             cmd_options.datadir.set(argp.get_argument());
+            break;
+
+          case 'u': // -u, --userdir
+            cmd_options.userdir.set(argp.get_argument());
             break;
 
           case 'v':
@@ -582,6 +588,9 @@ PingusMain::parse_args(int argc, char** argv)
 void
 PingusMain::init_path_finder()
 {
+  if (cmd_options.userdir.is_set())
+    System::set_userdir(cmd_options.userdir.get());
+
   System::init_directories();
 
   if (cmd_options.datadir.is_set())

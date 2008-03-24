@@ -175,8 +175,7 @@ Playfield::update(float delta)
 void
 Playfield::on_primary_button_press(int x, int y)
 {
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
+  current_pingu = current_pingu_find(state.screen2world( Vector2i(x,y) ));
 
   if (current_pingu)
     {

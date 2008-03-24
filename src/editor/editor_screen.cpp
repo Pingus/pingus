@@ -329,7 +329,7 @@ EditorScreen::level_save_as()
 void
 EditorScreen::level_play()
 {
-  Pathname tmp(System::get_statdir() + "backup/editortmpfile.pingus", Pathname::SYSTEM_PATH);
+  Pathname tmp(System::get_userdir() + "backup/editortmpfile.pingus", Pathname::SYSTEM_PATH);
   if (!plf->save_level(tmp.get_sys_path()))
     {
       // FIXME: save failed, prompt user

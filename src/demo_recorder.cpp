@@ -39,7 +39,7 @@ DemoRecorder::DemoRecorder (Server* server)
 
   if (!levelname.empty())
     {
-      std::string filename = System::get_statdir() + "demos/" + flat_levelname + "-" + get_date() + ".xml";
+      std::string filename = System::get_userdir() + "demos/" + flat_levelname + "-" + get_date() + ".xml";
       out.open(filename.c_str());
 
       if (!out)

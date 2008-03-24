@@ -81,9 +81,6 @@ public:
 
   ButtonPanel* get_button_panel () { return button_panel; }
 
-  void on_primary_button_press(int x, int y);
-  void on_primary_button_release(int x, int y);
-
   // Overloaded GUIScreen stuff
   void on_startup ();
   void on_shutdown ();

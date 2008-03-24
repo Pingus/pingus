@@ -198,7 +198,7 @@ Screenshot::get_filename()
 
   do {
     snprintf(str, 16, "%d.png", i);
-    tmp_filename = System::get_statdir() + "screenshots/"
+    tmp_filename = System::get_userdir() + "screenshots/"
       + "pingus-" + get_date() + "-" + std::string(str);
     ++i;
   } while (System::exist(tmp_filename));

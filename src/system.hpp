@@ -37,6 +37,8 @@ private:
   static std::string default_email;
   static std::string default_username;
 
+  static std::string userdir;
+
 public:
   enum FileType { DE_DIRECTORY, DE_FILE };
 
@@ -88,22 +90,18 @@ public:
   static std::string extension (std::string filename);
   static std::string cut_ext (std::string filename);
 
+  static std::string find_userdir();
+
+  /** Sets the directory to save users data to */
+  static void set_userdir(const std::string&);
+
   /** Returns the directory where Pingus can store its user specific
       state and config data (savegames, config files, demos, etc.) */
-  static std::string get_statdir();
+  static std::string get_userdir();
 
   /** Returns the directory where Pingus can store things that needs
       to be cached, for example thumbnails */
   static std::string get_cachedir();
-
-  /** Returns the directory were Pingus can store its system wide
-      variable game data (highscores, cache images, ...) */
-  static std::string get_vardir();
-
-  /** Asks different variables to check were the directory for
-      temporary files is located
-      @return The location of the tmp directory */
-  static std::string get_tmpdir();
 
   /** Returns the Username how the current user or an empty string */
   static std::string get_username();

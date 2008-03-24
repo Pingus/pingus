@@ -80,6 +80,7 @@ struct PingusOptions
   // Misc
   Value<std::string> language;
   Value<std::string> datadir;
+  Value<std::string> userdir;
 
   Value<bool> auto_scrolling;
   Value<bool> no_config_file;

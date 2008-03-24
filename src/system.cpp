@@ -52,7 +52,8 @@
 #include "gettext.h"
 
 
-int System::verbose;
+int         System::verbose;
+std::string System::userdir;
 std::string System::default_email;
 std::string System::default_username;
 
@@ -263,42 +264,8 @@ System::change_dir (std::string dir)
   chdir(dir.c_str());
 }
 
-void
-System::init_directories()
-{
-  std::string statdir  = get_statdir();
-  std::string vardir   = get_vardir();
-
-  create_dir(statdir);
-
-  // FIXME: We need a better seperation between user created levels,
-  // FIXME: third party levels and levels from the base distri
-  create_dir(statdir + "levels/");
-  create_dir(statdir + "levels/dist");
-  create_dir(statdir + "themes/");
-
-  // Savegames (FIXME: rename to savegames/?)
-  create_dir(statdir + "savegames/");
-
-  // User created images
-  create_dir(statdir + "images/");
-
-  // Thumbnail cache
-  create_dir(statdir + "cache/");
-
-  // Recorded demos will per default be writen in this directory
-  create_dir(statdir + "demos/");
-
-  // User created images
-  create_dir(statdir + "backup/");
-
-  // Screenshots will be dumped to that directory:
-  create_dir(statdir + "screenshots/");
-  // create_dir(vardir);
-}
-
 std::string
-System::get_statdir()
+System::find_userdir()
 {
 #ifdef WIN32
   std::string tmpstr;
@@ -330,33 +297,57 @@ System::get_statdir()
 #endif
 }
 
+void
+System::init_directories()
+{
+  if (userdir.empty())
+    userdir = find_userdir();
+
+  std::string statdir  = get_userdir();
+
+  create_dir(statdir);
+
+  // FIXME: We need a better seperation between user created levels,
+  // FIXME: third party levels and levels from the base distri
+  create_dir(statdir + "levels/");
+  create_dir(statdir + "levels/dist");
+  create_dir(statdir + "themes/");
+
+  // Savegames (FIXME: rename to savegames/?)
+  create_dir(statdir + "savegames/");
+
+  // User created images
+  create_dir(statdir + "images/");
+
+  // Thumbnail cache
+  create_dir(statdir + "cache/");
+
+  // Recorded demos will per default be writen in this directory
+  create_dir(statdir + "demos/");
+
+  // User created images
+  create_dir(statdir + "backup/");
+
+  // Screenshots will be dumped to that directory:
+  create_dir(statdir + "screenshots/");
+}
+
+void
+System::set_userdir(const std::string& u)
+{
+  userdir = u + "/";
+}
+
+std::string
+System::get_userdir()
+{
+  return userdir;
+}
+
 std::string
 System::get_cachedir()
 {
-  return get_statdir() + "cache/";
-}
-
-std::string
-System::get_vardir()
-{
-#ifdef WIN32
-  return "var/";
-#else
-  return "/var/games/pingus/";
-#endif
-}
-
-std::string
-System::get_tmpdir()
-{
-#ifdef WIN32
-  char* tmpdir = getenv("TEMP");
-  if (!tmpdir) tmpdir = getenv("TMP");
-  if (!tmpdir) return get_statdir() + "tmp/";
-  else return std::string(tmpdir);
-#else
-  return "/tmp/";
-#endif
+  return get_userdir() + "cache/";
 }
 
 /** Returns the username of the current user or an empty string */

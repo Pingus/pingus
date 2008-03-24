@@ -45,7 +45,7 @@ void SavegameManager::deinit()
 }
 
 SavegameManager::SavegameManager(const std::string& arg_filename)
-  : filename(System::get_statdir() + arg_filename)
+  : filename(System::get_userdir() + arg_filename)
 {
   boost::shared_ptr<lisp::Lisp> sexpr;
 
