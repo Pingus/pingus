@@ -11,6 +11,9 @@
                    (sprite
                     (name "pacman")
                     (image-file "../images/levelsets/pacman.png"))
+                   (sprite
+                    (name "desert")
+                    (image-file "../images/levelsets/desert.png"))
            )
 
  (section (name "core")
