@@ -8,6 +8,9 @@
                    (sprite
                     (name "xmas")
                     (image-file "../images/levelsets/xmas.png"))
+                   (sprite
+                    (name "pacman")
+                    (image-file "../images/levelsets/pacman.png"))
            )
 
  (section (name "core")

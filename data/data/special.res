@@ -22,6 +22,8 @@
                     (image-file "../images/special/pacman/pacman-maze.png"))
                    (sprite
                     (name "pacman")
+                    (origin "bottom_center")
+                    (offset 0 0)
                     (image-file "../images/special/pacman/pacman.png"))
                    (sprite
                     (name "pinky")
