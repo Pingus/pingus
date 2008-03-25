@@ -184,6 +184,11 @@ public:
       page = 0;
   }
 
+  void on_pointer_leave()
+  {
+    current_levelset = 0;
+  }
+
   void on_pointer_move(int x, int y)
   {
     x -= rect.left;
@@ -296,6 +301,11 @@ public:
   void set_levelset(Levelset* levelset_)
   {
     levelset = levelset_;
+  }
+
+  void on_pointer_leave()
+  {
+    current_level = -1;
   }
 
   int get_current_level(int x, int y)
