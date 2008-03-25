@@ -374,6 +374,22 @@
                     (image-file "../images/core/menu/arrow_right.png"))
 
                    (sprite
+                    (name "arrow_left_hover")
+                    (image-file "../images/core/menu/arrow_left_hover.png"))
+
+                   (sprite
+                    (name "arrow_right_hover")
+                    (image-file "../images/core/menu/arrow_right_hover.png"))
+
+                   (sprite
+                    (name "arrow_left_pressed")
+                    (image-file "../images/core/menu/arrow_left_pressed.png"))
+
+                   (sprite
+                    (name "arrow_right_pressed")
+                    (image-file "../images/core/menu/arrow_right_pressed.png"))
+
+                   (sprite
                     (name "menuitem")
                     (origin "center")
                     (image-file "../images/core/menu/menuitem.png"))

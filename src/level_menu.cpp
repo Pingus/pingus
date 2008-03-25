@@ -80,8 +80,8 @@ public:
   LevelScrollButton(int x, int y, const std::string& str, boost::function<void (void)> callback_)
     : GUI::SurfaceButton(x, y,
                          ResDescriptor(str),
-                         ResDescriptor(str),
-                         ResDescriptor(str)),
+                         ResDescriptor(str + "_pressed"),
+                         ResDescriptor(str + "_hover")),
       callback(callback_)
   {
   }
