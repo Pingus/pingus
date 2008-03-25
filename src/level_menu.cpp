@@ -191,7 +191,7 @@ public:
 
     if (!levelsets.empty())
       {
-        int i = y / 95;
+        int i = y / 95 + page*3;
 
         if (i >= 0 && i < static_cast<int>(levelsets.size()))
           current_levelset = levelsets[i];
@@ -202,6 +202,8 @@ public:
 
   void on_primary_button_press (int x, int y)
   {
+    on_pointer_move(x, y);
+
     if (current_levelset)
       {
         level_menu->set_levelset(current_levelset);
@@ -296,19 +298,27 @@ public:
     levelset = levelset_;
   }
 
+  int get_current_level(int x, int y)
+  {
+    int cl = current_level = y / 32 + page*8;
+    if (cl < 0 || cl >= levelset->get_level_count())
+      cl = -1;
+    return cl;
+  }
+
   void on_pointer_move(int x, int y)
   {
     x -= rect.left;
     y -= rect.top;
 
-    current_level = y / 32;
-    
+    current_level = y / 32 + page*8;
     if (current_level < 0 || current_level >= levelset->get_level_count())
       current_level = -1;
   }
 
   void on_primary_button_press (int x, int y)
   {
+    on_pointer_move(x, y);
     if (current_level != -1)
       {
         if (levelset->get_level(current_level)->accessible)

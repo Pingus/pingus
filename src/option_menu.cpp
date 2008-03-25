@@ -69,7 +69,7 @@ OptionMenu::OptionMenu()
   std::set<std::string> lst = dictionary_manager.get_languages();
   for (std::set<std::string>::iterator i = lst.begin(); i != lst.end(); ++i)
     {
-      LanguageDef* lang = TinyGetText::get_language_def(*i);
+      TinyGetText::LanguageDef* lang = TinyGetText::get_language_def(*i);
       if (lang)
         language_box->add_choice(lang->name);
     }
