@@ -14,31 +14,34 @@ To compile Pingus you need:
  libpng        - http://libpng.org/
  scons         - http://scons.org/
 
-In most cases you will find those in your distribution and there
-shouln't be a need to compile them manually.
+In most cases you will find all of these in your distribution and
+there shouln't be a need to compile anything manually.
 
-On Ubuntu you can install them by typing: 
+In Ubuntu you can install everything by typing: 
 
  % sudo apt-get install \
-     scons \
      g++ \
-     libpng12-dev \
-     libsdl-image1.2-dev \
-     libsdl-mixer1.2-dev \
      libsdl1.2-dev \
+     libsdl-mixer1.2-dev \
+     libsdl-image1.2-dev \
+     libboost-dev \
      libboost-signals-dev \
-     libboost-dev
+     libpng12-dev \
+     scons
 
-On Fedora 7 (and most likely later versions) you can install them by typing:
+
+In Fedora 7, 8 and 9 (and most likely later versions) you can install
+everything by typing:
+
  % su -c 'yum install \
-      scons \
-      libpng-devel \
-      boost-devel \
+      gcc-c++ \
       SDL-devel \
       SDL_image-devel \
       SDL_mixer-devel \
-      gcc-c++ \
-      glibc-common'
+      boost-devel \
+      libpng-devel \
+      glibc-common \
+      scons'
 
 
 Compilation:
