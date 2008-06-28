@@ -21,7 +21,7 @@
 #define HEADER_EVDEV_DEVICE_HPP
 
 #include <vector>
-#include <string>
+#include <string.h>
 #include "control.hpp"
 
 namespace Input {
