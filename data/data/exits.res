@@ -9,6 +9,12 @@
            (image-file "../images/exits/easter.png"))
 
           (sprite
+           (name "forest")
+           (origin "bottom_center")
+           (offset 0 0)
+           (image-file "../images/exits/forest.png"))
+
+          (sprite
            (name "xmas")
            (origin "bottom_center")
            (offset 0 0)

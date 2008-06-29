@@ -3,6 +3,32 @@
 (pingus-resources
  (section (name "groundpieces")
           (section (name "ground")
+                   (section (name "forest")
+                            (sprite
+                             (name "treetrunk1")
+                             (image-file "../images/groundpieces/ground/forest/treetrunk1.png"))
+                            (sprite
+                             (name "treebranch1")
+                             (image-file "../images/groundpieces/ground/forest/treebranch1.png"))
+                            (sprite
+                             (name "treebranch2")
+                             (image-file "../images/groundpieces/ground/forest/treebranch2.png"))
+                            (sprite
+                             (name "ground1")
+                             (image-file "../images/groundpieces/ground/forest/ground1.png"))
+                            (sprite
+                             (name "ground2")
+                             (image-file "../images/groundpieces/ground/forest/ground2.png"))
+                            (sprite
+                             (name "ground3")
+                             (image-file "../images/groundpieces/ground/forest/ground3.png"))
+                            (sprite
+                             (name "green1")
+                             (image-file "../images/groundpieces/ground/forest/green1.png"))
+                            (sprite
+                             (name "green2")
+                             (image-file "../images/groundpieces/ground/forest/green2.png")))
+                            
                    (section (name "easter")
                             (sprite
                              (name "egg1")
