@@ -24,7 +24,7 @@
 #include "../globals.hpp"
 #include "../resource.hpp"
 #include "../world.hpp"
-#include "../true_server.hpp"
+#include "../server.hpp"
 #include "../client.hpp"
 #include "../game_time.hpp"
 #include "../string_util.hpp"

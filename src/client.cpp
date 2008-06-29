@@ -21,6 +21,7 @@
 #include "globals.hpp"
 #include "components/playfield.hpp"
 #include "timer.hpp"
+#include "server.hpp"
 #include "resource.hpp"
 #include "sound/sound.hpp"
 #include "components/time_display.hpp"
@@ -28,13 +29,12 @@
 #include "components/smallmap.hpp"
 #include "display/cursor.hpp"
 #include "display/display.hpp"
-#include "true_server.hpp"
 #include "components/button_panel.hpp"
 #include "world.hpp"
 #include "math.hpp"
 #include "gui/gui_manager.hpp"
 
-Client::Client (TrueServer * s)
+Client::Client(Server * s)
   : server       (s),
     skip_frame   (0),
     do_replay    (false),

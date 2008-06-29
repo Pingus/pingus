@@ -21,7 +21,7 @@
 #include "../cheat.hpp"
 #include "../resource.hpp"
 #include "action_button.hpp"
-#include "../true_server.hpp"
+#include "../server.hpp"
 #include "../world.hpp"
 #include "../display/drawing_context.hpp"
 #include "../display/display.hpp"
@@ -150,7 +150,7 @@ VerticalActionButton::draw (DrawingContext& gc)
     }
 }
 
-ArmageddonButton::ArmageddonButton (TrueServer* s, int x, int y)
+ArmageddonButton::ArmageddonButton(Server* s, int x, int y)
   : server (s),
     x_pos (x),
     y_pos (y),
@@ -230,7 +230,7 @@ ArmageddonButton::on_primary_button_click (int x, int y)
   UNUSED_ARG(y);
 }
 
-ForwardButton::ForwardButton (TrueServer* s, int x, int y)
+ForwardButton::ForwardButton(Server* s, int x, int y)
   : server (s),
     x_pos (x), y_pos (y),
     background  (Resource::load_sprite("core/buttons/hbuttonbgb")),
@@ -278,7 +278,7 @@ ForwardButton::on_primary_button_click (int x, int y)
   UNUSED_ARG(y);
 }
 
-PauseButton::PauseButton (TrueServer* s, int x, int y)
+PauseButton::PauseButton(Server* s, int x, int y)
   : server (s),
     x_pos(x), y_pos(y),
     background  (Resource::load_sprite("core/buttons/hbuttonbgb")),

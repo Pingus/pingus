@@ -20,7 +20,7 @@
 #include <iostream>
 #include <algorithm>
 #include "../globals.hpp"
-#include "../true_server.hpp"
+#include "../server.hpp"
 #include "../client.hpp"
 #include "button_panel.hpp"
 

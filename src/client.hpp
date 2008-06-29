@@ -40,7 +40,7 @@ class Cursor;
 class HurryUp;
 class PingusCounter;
 class Playfield;
-class TrueServer;
+class Server;
 class SmallMap;
 class TimeDisplay;
 
@@ -48,7 +48,7 @@ class TimeDisplay;
 class Client : public GUIScreen
 {
 private:
-  TrueServer* server;
+  Server* server;
 
   int  skip_frame;
   bool do_replay;
@@ -63,10 +63,10 @@ private:
   bool enabled;
 
 public:
-  Client(TrueServer* s);
+  Client(Server* s);
   virtual ~Client();
 
-  TrueServer* get_server() { return server; }
+  Server* get_server() { return server; }
   Playfield* get_playfield() { return playfield; }
 
   bool replay();

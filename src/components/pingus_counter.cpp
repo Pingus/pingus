@@ -23,7 +23,7 @@
 #include "../resource.hpp"
 #include "../world.hpp"
 #include "../pingu_holder.hpp"
-#include "../true_server.hpp"
+#include "../server.hpp"
 #include "../globals.hpp"
 #include "../fonts.hpp"
 #include "pingus_counter.hpp"

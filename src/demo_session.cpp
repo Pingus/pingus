@@ -21,7 +21,7 @@
 #include <ClanLib/Display/keys.h>
 #include "math.hpp"
 #include "xml_pdf.hpp"
-#include "true_server.hpp"
+#include "server.hpp"
 #include "world.hpp"
 #include "demo_player.hpp"
 #include "components/pingus_counter.hpp"
@@ -36,7 +36,7 @@ DemoSession::DemoSession(const std::string& filename)
   pdf    = new XMLPDF(filename);
 
   // Create server
-  server      = new TrueServer(pdf->get_plf());
+  server      = new Server(pdf->get_plf());
   demo_player = new DemoPlayer(server, pdf);
 
   // Create GUI

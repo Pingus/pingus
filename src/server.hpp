@@ -44,11 +44,14 @@ protected:
 
   DemoRecorder* demo_recorder;
 
+  bool fast_forward;
+  bool pause;
+
 public:
   Server(const PingusLevel& arg_plf);
-  virtual ~Server();
+  ~Server();
 
-  virtual void update();
+  void update();
 
   PingusLevel get_plf () { return plf; }
 
@@ -63,11 +66,17 @@ public:
 
   /** set the server into the finshed state, this is used when you
       press ESCAPE inside a game */
-  virtual void set_finished() =0;
+  void set_finished();
 
   /* Event handling stuff */
   void send_armageddon_event();
   void send_pingu_action_event(Pingu* pingu, Actions::ActionName action);
+
+  void set_fast_forward(bool value);
+  bool get_fast_forward();
+
+  void set_pause(bool);
+  bool get_pause();
 
 private:
   Server (const Server&);

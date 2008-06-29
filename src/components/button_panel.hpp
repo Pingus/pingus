@@ -33,7 +33,7 @@ private:
   friend class ClientEvent;
 
   Client* client;
-  TrueServer* server;
+  Server* server;
 
   std::vector<ActionButton*> a_buttons;
   typedef std::vector<ActionButton*>::iterator AButtonIter;

@@ -33,7 +33,9 @@ Server::Server(const PingusLevel& arg_plf)
     world(new World (plf)),
     action_holder (plf),
     goal_manager(new GoalManager(this)),
-    demo_recorder(0)
+    demo_recorder(0),
+    fast_forward(false),
+    pause(false)
 {
   if (enable_demo_recording)
     demo_recorder = new DemoRecorder(this);
@@ -56,8 +58,24 @@ Server::get_world()
 void
 Server::update()
 {
-  world->update();
-  goal_manager->update();
+  if (fast_forward && !pause)
+    {
+      // To let the game run faster we just update it multiple
+      // times
+      for (int i = 0; i < 4; ++i)
+	{
+          world->update();
+          goal_manager->update();
+	}
+    }
+  else
+    {
+      if (!pause)
+        {
+          world->update();
+          goal_manager->update();
+        }
+    }
 }
 
 void
@@ -104,5 +122,35 @@ Server::get_time ()
   return get_world()->get_game_time()->get_ticks();
 }
 
+void
+Server::set_fast_forward(bool value)
+{
+  fast_forward = value;
+}
+
+bool
+Server::get_fast_forward()
+{
+  return fast_forward;
+}
+
+void
+Server::set_pause(bool value)
+{
+  pause = value;
+}
+
+bool
+Server::get_pause()
+{
+  return pause;
+}
+
+void
+Server::set_finished ()
+{
+  goal_manager->set_abort_goal();
+  set_pause(false);
+}
 
 /* EOF */

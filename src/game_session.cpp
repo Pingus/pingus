@@ -20,7 +20,7 @@
 #include <iostream>
 #include "screen/screen_manager.hpp"
 #include "client.hpp"
-#include "true_server.hpp"
+#include "server.hpp"
 #include "game_session.hpp"
 #include "game_session_result.hpp"
 #include "timer.hpp"
@@ -41,7 +41,7 @@ PingusGameSession::PingusGameSession (const PingusLevel& arg_plf, bool arg_show_
   plf_timer.stop();
 
   Timer server_timer("GameSession server creation");
-  server = new TrueServer(plf);
+  server = new Server(plf);
   server_timer.stop();
 
   Timer client_timer("GameSession client creation");

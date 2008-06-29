@@ -26,7 +26,7 @@
 
 
 class Client;
-class TrueServer;
+class Server;
 class PingusGameSessionResult;
 class DemoPlayer;
 
@@ -41,7 +41,7 @@ private:
   bool show_result_screen;
 
   /// The server
-  TrueServer* server;
+  Server* server;
 
   /// The client
   Client* client;

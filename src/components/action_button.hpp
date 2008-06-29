@@ -26,8 +26,7 @@
 #include "../state_sprite.hpp"
 #include "../gui/component.hpp"
 
-
-class TrueServer;
+class Server;
 class ActionHolder;
 class Vector;
 
@@ -38,7 +37,7 @@ class Vector;
 class ArmageddonButton : public GUI::Component
 {
 private:
-  TrueServer* server;
+  Server* server;
   int   x_pos;
   int   y_pos;
   bool  pressed;
@@ -49,7 +48,7 @@ private:
 
   friend class ButtonPanel;
 public:
-  ArmageddonButton(TrueServer*, int x, int y);
+  ArmageddonButton(Server*, int x, int y);
   virtual ~ArmageddonButton();
 
   void draw(DrawingContext& gc);
@@ -71,7 +70,7 @@ private:
 class ForwardButton : public GUI::Component
 {
 private:
-  TrueServer* server;
+  Server* server;
   int x_pos;
   int y_pos;
   Sprite surface;
@@ -79,7 +78,7 @@ private:
   Sprite backgroundhl;
   friend class ButtonPanel;
 public:
-  ForwardButton(TrueServer*, int x, int y);
+  ForwardButton(Server*, int x, int y);
   virtual ~ForwardButton();
 
   void draw(DrawingContext& gc);
@@ -100,7 +99,7 @@ private:
 class PauseButton : public GUI::Component
 {
 private:
-  TrueServer* server;
+  Server* server;
   int x_pos;
   int y_pos;
   Sprite surface;
@@ -108,7 +107,7 @@ private:
   Sprite backgroundhl;
   friend class ButtonPanel;
 public:
-  PauseButton(TrueServer*, int x, int y);
+  PauseButton(Server*, int x, int y);
   virtual ~PauseButton();
 
   void draw(DrawingContext& gc);
