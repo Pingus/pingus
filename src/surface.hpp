@@ -78,8 +78,6 @@ public:
 
   operator bool() const;
 
-  bool is_shared() const;
-
   void print(std::ostream& out);
 
 protected:

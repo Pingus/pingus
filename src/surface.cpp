@@ -340,12 +340,6 @@ Surface::fill(const Color& color)
   SDL_FreeSurface(tmp);
 }
 
-bool
-Surface::is_shared() const
-{
-  return impl.use_count() != 1;
-}
-
 void
 Surface::print(std::ostream& out)
 {
