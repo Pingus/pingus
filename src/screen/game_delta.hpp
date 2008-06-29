@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_GAME_DELTA_HXX
-#define HEADER_PINGUS_GAME_DELTA_HXX
+#ifndef HEADER_PINGUS_GAME_DELTA_HPP
+#define HEADER_PINGUS_GAME_DELTA_HPP
 
 #include <list>
 #include "../delta_manager.hpp"

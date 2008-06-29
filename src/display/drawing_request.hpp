@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_DRAWING_REQUEST_HXX
-#define HEADER_DRAWING_REQUEST_HXX
+#ifndef HEADER_DRAWING_REQUEST_HPP
+#define HEADER_DRAWING_REQUEST_HPP
 
 #include "SDL.h"
 #include "math/vector3f.hpp"

@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_LEVEL_IMPL_HXX
-#define HEADER_PINGUS_LEVEL_IMPL_HXX
+#ifndef HEADER_PINGUS_LEVEL_IMPL_HPP
+#define HEADER_PINGUS_LEVEL_IMPL_HPP
 
 #include "math/size.hpp"
 #include "math/color.hpp"

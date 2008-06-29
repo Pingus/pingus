@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_STATE_SPRITE_HXX
-#define HEADER_STATE_SPRITE_HXX
+#ifndef HEADER_STATE_SPRITE_HPP
+#define HEADER_STATE_SPRITE_HPP
 
 #include <map>
 #include "sprite.hpp"

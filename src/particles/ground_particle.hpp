@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #if 0
-#ifndef HEADER_PINGUS_PARTICLES_GROUND_PARTICLE_HXX
-#define HEADER_PINGUS_PARTICLES_GROUND_PARTICLE_HXX
+#ifndef HEADER_PINGUS_PARTICLES_GROUND_PARTICLE_HPP
+#define HEADER_PINGUS_PARTICLES_GROUND_PARTICLE_HPP
 
 #include "particle.hpp"
 

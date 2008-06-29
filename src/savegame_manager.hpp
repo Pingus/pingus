@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_SAVEGAME_MANAGER_HXX
-#define HEADER_SAVEGAME_MANAGER_HXX
+#ifndef HEADER_SAVEGAME_MANAGER_HPP
+#define HEADER_SAVEGAME_MANAGER_HPP
 
 #include <map>
 #include "savegame.hpp"

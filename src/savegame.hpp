@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_SAVEGAME_HXX
-#define HEADER_PINGUS_SAVEGAME_HXX
+#ifndef HEADER_PINGUS_SAVEGAME_HPP
+#define HEADER_PINGUS_SAVEGAME_HPP
 
 #include <string>
 #include "file_reader.hpp"

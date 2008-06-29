@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_ENTRANCE_HXX
-#define HEADER_PINGUS_ENTRANCE_HXX
+#ifndef HEADER_PINGUS_ENTRANCE_HPP
+#define HEADER_PINGUS_ENTRANCE_HPP
 
 #include "../math/vector3f.hpp"
 #include "../res_descriptor.hpp"
