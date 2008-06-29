@@ -30,24 +30,21 @@ class SurfaceImpl
 {
 public:
   SDL_Surface* surface;
-  bool  delete_surface;
   bool       optimized;
 
   SurfaceImpl()
     : surface(0),
-      delete_surface(false),
       optimized(false)
   {}
 
-  SurfaceImpl(SDL_Surface* surface, bool delete_surface_ = true) 
+  SurfaceImpl(SDL_Surface* surface)
     : surface(surface),
-      delete_surface(delete_surface_),
       optimized(false)
   {}
   
   ~SurfaceImpl() 
   {
-    if (delete_surface)
+    if (surface)
       SDL_FreeSurface(surface);
   }
 };
@@ -66,7 +63,7 @@ Surface::Surface(const Pathname& pathname)
   SDL_Surface* surface = IMG_Load(pathname.get_sys_path().c_str());
   if (surface)
     {
-      impl = boost::shared_ptr<SurfaceImpl>(new SurfaceImpl(surface, true));
+      impl = boost::shared_ptr<SurfaceImpl>(new SurfaceImpl(surface));
     }
 }
 
@@ -99,8 +96,8 @@ Surface::Surface(int width, int height)
   //SDL_FillRect(surface, NULL, SDL_MapRGBA(surface->format, 0, 0, 0, 0));
 }
 
-Surface::Surface(SDL_Surface* surface, bool delete_surface)
-  : impl(new SurfaceImpl(surface, delete_surface))
+Surface::Surface(SDL_Surface* surface)
+  : impl(new SurfaceImpl(surface))
 {
 }
 
@@ -281,7 +278,7 @@ Surface
 Surface::scale(int w, int h)
 {
   return Surface(boost::shared_ptr<SurfaceImpl>
-                 (new SurfaceImpl(Blitter::scale_surface(impl->surface, w, h), true)));
+                 (new SurfaceImpl(Blitter::scale_surface(impl->surface, w, h))));
 }
 
 Surface
@@ -301,7 +298,7 @@ Surface::clone() const
       SDL_BlitSurface(impl->surface, NULL, new_surface, NULL);
     }
  
-  return Surface(boost::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface, true)));
+  return Surface(boost::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface)));
 }
 
 Surface
@@ -323,8 +320,7 @@ Surface::subsection(const Rect& rect) const
 
   SDL_BlitSurface(impl->surface, NULL, new_surface, &dst_rect);
 
-
-  return Surface(boost::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface, true)));
+  return Surface(boost::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface)));
 }
 
 void

@@ -49,7 +49,7 @@ public:
   Surface(int width, int height, SDL_Palette* palette, int colorkey = -1);
 
   /** Create a Surface from a SDL_Surface */
-  Surface(SDL_Surface* surface, bool delete_surface = true);
+  Surface(SDL_Surface* surface);
 
   ~Surface();
 
