@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_CLIENT_HPP
 #define HEADER_PINGUS_CLIENT_HPP
 
+#include "pingu_enums.hpp"
 #include "screen/gui_screen.hpp"
 
 namespace Input {
@@ -89,6 +90,7 @@ public:
   void on_escape_press ();
   void on_action_axis_move (float);
 
+  Actions::ActionName get_action_name() const;
 private:
   void process_events (const GameDelta& events);
   void process_scroll_event (const Input::ScrollEvent&);

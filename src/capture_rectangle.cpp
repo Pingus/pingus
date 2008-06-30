@@ -23,24 +23,25 @@
 #include "resource.hpp"
 #include "capture_rectangle.hpp"
 #include "pingu_action.hpp"
-#include "components/button_panel.hpp"
+#include "client.hpp"
 #include "globals.hpp"
+#include "server.hpp"
 #include "display/scene_context.hpp"
 #include "fonts.hpp"
-
-CaptureRectangle::CaptureRectangle (ButtonPanel* arg_button_panel)
-  : pingu(0),
+
+CaptureRectangle::CaptureRectangle(Client* client_)
+  : client(client_),
+    pingu(0),
     owner_id(0),
     good(Resource::load_sprite("game/cursors/capgood")),
     bad(Resource::load_sprite("game/cursors/capbad")),
     arrow_left(Resource::load_sprite("game/cursors/arrow_left")),
     arrow_right(Resource::load_sprite("game/cursors/arrow_right")),
-    button_panel(arg_button_panel),
     font(Fonts::courier_small)
 {
 }
 
-CaptureRectangle::~CaptureRectangle ()
+CaptureRectangle::~CaptureRectangle()
 {
 }
 
@@ -50,7 +51,7 @@ CaptureRectangle::draw(SceneContext& sc)
   if (pingu && pingu->catchable())
     {
       // Draw the capture rectangle
-      if (pingu->change_allowed(button_panel->get_action_name()))
+      if (pingu->change_allowed(client->get_action_name()))
         {
           sc.color().draw(good, pingu->get_center_pos() + Vector3f(0, 0, 1000));
         }
@@ -106,5 +107,5 @@ CaptureRectangle::set_pingu (Pingu* p)
         }
     }
 }
-
+
 /* EOF */

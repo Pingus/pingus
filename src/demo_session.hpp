@@ -20,30 +20,31 @@
 #ifndef HEADER_PINGUS_DEMO_SESSION_HPP
 #define HEADER_PINGUS_DEMO_SESSION_HPP
 
+#include <memory>
 #include "screen/gui_screen.hpp"
-
 
 class Server;
 class XMLPDF;
 class DemoPlayer;
 class PingusCounter;
-
+class PingusDemo;
+class Playfield;
+
 /** A DemoSession is analog to a GameSession, but instead of loading a
     level and letting the player play a game, a demo file will be
     loaded and the level will be played automatically. */
 class DemoSession : public GUIScreen
 {
 private:
-  XMLPDF*     pdf;
-  Server*     server;
-  DemoPlayer* demo_player;
+  std::auto_ptr<Server>   server;
+  std::auto_ptr<PingusDemo> demo;
 
-  // GUI stuff
   PingusCounter* pcounter;
+  Playfield*     playfield;
 
 public:
   /** @param filename the complete filename of the demo file */
-  DemoSession(const std::string& filename);
+  DemoSession(const Pathname& pathname);
   ~DemoSession();
 
   /** Draw this screen */
@@ -51,13 +52,13 @@ public:
 
   /** Pass a delta to the screen */
   void update(float delta);
+  void update_demo();
 
 private:
   DemoSession (const DemoSession&);
   DemoSession& operator= (const DemoSession&);
 };
-
-
+
 #endif
 
 /* EOF */

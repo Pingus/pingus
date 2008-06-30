@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_PLAYFIELD_HPP
 #define HEADER_PINGUS_PLAYFIELD_HPP
 
-#include "../client.hpp"
 #include "../graphic_context_state.hpp"
 #include "../gui/rect_component.hpp"
 #include "../capture_rectangle.hpp"
@@ -28,6 +27,7 @@
 class Pingu;
 class World;
 class Server;
+class Client;
 class ButtonPanel;
 class Controller;
 class View;
@@ -36,24 +36,18 @@ class View;
 class Playfield : public GUI::RectComponent
 {
 private:
-  friend class Client;
-
   Server* server;
   Client* client;
 
-  ButtonPanel* buttons;
-  World*       world;
-  View*        view;
-
   Pingu* current_pingu;
   bool mouse_scrolling;
-  int scroll_speed;
+  int  scroll_speed;
 
   Vector2i scroll_center;
 
   SceneContext* scene_context;
   GraphicContextState state;
-  CaptureRectangle cap;
+  CaptureRectangle capture_rectangle;
 
   std::vector<Rect> clipping_rectangles;
   
@@ -61,7 +55,7 @@ private:
   Vector2f old_state_pos;
 
 public:
-  Playfield (Client*, const Rect& rect);
+  Playfield(Server*, Client*, const Rect& rect);
   virtual ~Playfield();
 
   /** Returns the point onto which the Playfield is currently focused
@@ -84,9 +78,6 @@ public:
   void enable_scroll_mode();
   void do_scrolling();
   void disable_scroll_mode();
-
-  /// Members used to communicate between different screen objs
-  void set_server(Server*);
 
   bool is_at (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); return true; }
   Rect get_rect() const { return rect; }

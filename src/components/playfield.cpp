@@ -25,30 +25,28 @@
 #include "../display/scene_context.hpp"
 #include "../world.hpp"
 #include "../server.hpp"
-#include "../server.hpp"
 #include "../pingu.hpp"
 #include "../display/display.hpp"
-#include "button_panel.hpp"
+#include "client.hpp"
 #include "playfield.hpp"
 
-Playfield::Playfield (Client* client_, const Rect& rect_)
+Playfield::Playfield(Server* server_, Client* client_, const Rect& rect_)
   : RectComponent(rect_),
+    server(server_),
     client(client_),
-    buttons(client->get_button_panel()),
     current_pingu(0),
     // We keep the SceneContext has member variable so that we don't
     // have to reallocate it every frame, which is quite a costly operation
     scene_context(new SceneContext()),
     state(rect),
-    cap(client->get_button_panel())
+    capture_rectangle(client)
 {
-  world              = client->get_server()->get_world();
   mouse_scrolling    = false;
 
-  state.set_limit(Rect(Vector2i(0, 0), Size(world->get_width(), world->get_height())));
+  state.set_limit(Rect(Vector2i(0, 0), Size(server->get_world()->get_width(), server->get_world()->get_height())));
 
   // FIXME: Temporary workaround till start-pos is integrated a bit more properly
-  state.set_pos(world->get_start_pos(0));
+  state.set_pos(server->get_world()->get_start_pos(0));
 }
 
 Playfield::~Playfield()
@@ -66,10 +64,10 @@ Playfield::draw(DrawingContext& gc)
  
   state.push(*scene_context);
 
-  cap.set_pingu(current_pingu);
-  cap.draw(*scene_context);
+  capture_rectangle.set_pingu(current_pingu);
+  capture_rectangle.draw(*scene_context);
 
-  world->draw(*scene_context);
+  server->get_world()->draw(*scene_context);
  
   // Draw the scrolling band
   if (mouse_scrolling && !drag_drop_scrolling)
@@ -100,14 +98,14 @@ Playfield::draw(DrawingContext& gc)
 }
 
 Pingu*
-Playfield::current_pingu_find (const Vector2f& pos)
+Playfield::current_pingu_find(const Vector2f& pos)
 {
   double min_dist = 500.0;
   double dist;
   Pingu* c_pingu = 0;
 
-  for (PinguIter pingu = world->get_pingus()->begin();
-       pingu != world->get_pingus()->end();
+  for (PinguIter pingu = server->get_world()->get_pingus()->begin();
+       pingu != server->get_world()->get_pingus()->end();
        ++pingu)
     {
       if ((*pingu)->is_over(static_cast<int>(pos.x), static_cast<int>(pos.y)))
@@ -131,7 +129,7 @@ Playfield::update(float delta)
   if (!mouse_scrolling)
     {
       current_pingu = current_pingu_find(state.screen2world(mouse_pos));
-      cap.set_pingu(current_pingu);
+      capture_rectangle.set_pingu(current_pingu);
     }
   else
     {
@@ -179,7 +177,7 @@ Playfield::on_primary_button_press(int x, int y)
 
   if (current_pingu)
     {
-      server->send_pingu_action_event(current_pingu, buttons->get_action_name());
+      server->send_pingu_action_event(current_pingu, client->get_action_name());
     }
 }
 
@@ -239,12 +237,6 @@ Playfield::on_pointer_move (int x, int y)
                                    Groundtype::GP_BRIDGE);
         }
     }
-}
-
-void
-Playfield::set_server(Server* s)
-{
-  server = s;
 }
 
 Vector2i

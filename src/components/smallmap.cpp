@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../client.hpp"
 #include "../pingu_holder.hpp"
 #include "../display/display.hpp"
 #include "../display/drawing_context.hpp"
@@ -31,8 +32,7 @@
 #include "../globals.hpp"
 #include "playfield.hpp"
 #include "smallmap.hpp"
-
-
+
 SmallMap::SmallMap(Client* c)
   : client(c),
     gc_ptr(0)
@@ -201,6 +201,5 @@ SmallMap::on_pointer_leave ()
 {
   has_focus = false;
 }
-
-
+
 /* EOF */

@@ -24,12 +24,12 @@ class Font;
 class Pingu;
 class PinguAction;
 class Pingu;
-class ButtonPanel;
+class Client;
 class DrawingContext;
 
 #include "font.hpp"
 #include "sprite.hpp"
-
+
 /** The rectangle that is shown when the mouse cursor is above a
     pingu. The rectangle shows the current pingu direction along with
     the current active action.
@@ -37,6 +37,7 @@ class DrawingContext;
 class CaptureRectangle
 {
 private:
+  Client*     client;
   Pingu*      pingu;
   std::string action_str;
 
@@ -48,11 +49,10 @@ private:
   Sprite arrow_left;
   Sprite arrow_right;
 
-  ButtonPanel* button_panel;
   Font font;
 
 public:
-  CaptureRectangle(ButtonPanel*);
+  CaptureRectangle(Client*);
   ~CaptureRectangle();
 
   void set_pingu(Pingu* pingu);
@@ -63,8 +63,7 @@ private:
   CaptureRectangle (const CaptureRectangle&);
   CaptureRectangle& operator= (const CaptureRectangle&);
 };
-
-
+
 #endif
 
 /* EOF */

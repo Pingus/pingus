@@ -33,7 +33,8 @@
 #include "world.hpp"
 #include "math.hpp"
 #include "gui/gui_manager.hpp"
-
+#include "client.hpp"
+
 Client::Client(Server * s)
   : server       (s),
     skip_frame   (0),
@@ -53,10 +54,11 @@ Client::Client(Server * s)
   int world_width  = server->get_world()->get_width();
   int world_height = server->get_world()->get_height();
 
-  playfield    = new Playfield(this, Rect(Vector2i(Math::max((Display::get_width()  - world_width)/2,  0),
-                                                   Math::max((Display::get_height() - world_height)/2, 0)), 
-                                          Size(Math::min(Display::get_width(),  world_width),
-                                               Math::min(Display::get_height(), world_height))));
+  playfield    = new Playfield(server, this,
+                               Rect(Vector2i(Math::max((Display::get_width()  - world_width)/2,  0),
+                                             Math::max((Display::get_height() - world_height)/2, 0)), 
+                                    Size(Math::min(Display::get_width(),  world_width),
+                                         Math::min(Display::get_height(), world_height))));
 
   pcounter     = new PingusCounter(get_server());
   small_map    = new SmallMap(this);
@@ -71,8 +73,6 @@ Client::Client(Server * s)
   gui_manager->add(new ArmageddonButton(server, Display::get_width() - 40,     Display::get_height() - 62), true);
   gui_manager->add(new ForwardButton   (server, Display::get_width() - 40 * 2, Display::get_height() - 62), true);
   gui_manager->add(new PauseButton     (server, Display::get_width() - 40 * 3, Display::get_height() - 62), true);
-  // Connect the button_panel with the playfield
-  playfield->set_server(server);
 
   timer.stop();
 }
@@ -272,5 +272,10 @@ Client::on_shutdown ()
 {
 }
 
-
+Actions::ActionName
+Client::get_action_name() const
+{
+  return button_panel->get_action_name();
+}
+
 /* EOF */

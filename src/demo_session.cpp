@@ -18,42 +18,42 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "math.hpp"
-#include "xml_pdf.hpp"
 #include "server.hpp"
+#include "pathname.hpp"
 #include "world.hpp"
 #include "demo_player.hpp"
 #include "components/pingus_counter.hpp"
 #include "gui/gui_manager.hpp"
 #include "display/scene_context.hpp"
+#include "pingus_demo.hpp"
 #include "demo_session.hpp"
 
-DemoSession::DemoSession(const std::string& filename)
+DemoSession::DemoSession(const Pathname& pathname)
 {
   // Load Demo file
-  pdf    = new XMLPDF(filename);
+  demo = std::auto_ptr<PingusDemo>(new PingusDemo(pathname));
 
   // Create server
-  server      = new Server(pdf->get_plf());
-  demo_player = new DemoPlayer(server, pdf);
+  server   = std::auto_ptr<Server>(new Server(PingusLevel(Pathname(demo->get_levelname(), Pathname::DATA_PATH))));
 
   // Create GUI
-  pcounter = new PingusCounter(server);
-  gui_manager->add (pcounter, true);
+  pcounter = new PingusCounter(server.get());
+  gui_manager->add(pcounter, true);
 }
 
 DemoSession::~DemoSession()
 {
-  delete server;
-  delete pdf;
 }
 
 /** Draw this screen */
 void
 DemoSession::draw_background(DrawingContext& gc)
 {
+#if 0
   World* world = server->get_world();
   
   SceneContext* sc = new SceneContext();
+
 
   if (CL_Keyboard::get_keycode(CL_KEY_LEFT))
     sc->translate(10.0, 0.0);
@@ -66,6 +66,7 @@ DemoSession::draw_background(DrawingContext& gc)
 
   if(CL_Keyboard::get_keycode(CL_KEY_DOWN))
     sc->translate(0.0, -10.0);
+#endif 
 
 #if 0 // FIXME
   float x_of = -sc->get_x_offset();
@@ -80,7 +81,7 @@ DemoSession::draw_background(DrawingContext& gc)
                    world->get_height() - 1 - sc->get_height()/2.0f);
 
   sc->set_offset(-x_of, -y_of);
-#endif
+
 
   world->draw(*sc);
   while (CL_Keyboard::get_keycode(CL_KEY_D))
@@ -88,6 +89,7 @@ DemoSession::draw_background(DrawingContext& gc)
       world->draw(*sc);
       CL_System::keep_alive();
     }
+#endif
 }
 
 /** Pass a delta to the screen */
@@ -98,15 +100,38 @@ DemoSession::update(float delta)
 
   // FIXME: Duplicate all timing code here?!
   server->update();
-  demo_player->update();
+  update_demo();
 
   int skip_count = 0;
-  while (CL_Keyboard::get_keycode(CL_KEY_SPACE) && skip_count < 10)
+  while (1) //CL_Keyboard::get_keycode(CL_KEY_SPACE) && skip_count < 10)
     {
       ++skip_count;
       server->update();
-      demo_player->update();
+      update_demo();
     }
+}
+
+void
+DemoSession::update_demo()
+{
+#if 0
+  while(!events.empty() && events.back().time_stamp == server->get_time())
+    {
+      ServerEvent& event = events.back();
+
+      std::cout << "Sending: ";
+      event.write(std::cout);
+
+      event.send(server);
+      events.pop_back();
+    }
+
+  // Check for unexpected things (might happen if the demo file is broken)
+  if (!events.empty() && events.back().time_stamp < server->get_time())
+    {
+      std::cout << "DemoPlayer Bug: We missed a timestamp: " << events.back().time_stamp << std::endl;
+    }
+#endif 
 }
 
 /* EOF */
