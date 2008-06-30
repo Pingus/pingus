@@ -38,7 +38,6 @@ class RootGUIManager;
 class Vector;
 class ButtonPanel;
 class Cursor;
-class HurryUp;
 class PingusCounter;
 class Playfield;
 class Server;
@@ -51,8 +50,6 @@ class Client : public GUIScreen
 private:
   Server* server;
 
-  int  skip_frame;
-  bool do_replay;
   bool is_finished;
 
   ButtonPanel*   button_panel;
@@ -69,7 +66,6 @@ public:
   Server* get_server() { return server; }
   Playfield* get_playfield() { return playfield; }
 
-  bool replay();
   void do_restart();
   bool finished();
   void set_finished();
@@ -91,6 +87,7 @@ public:
   void on_action_axis_move (float);
 
   Actions::ActionName get_action_name() const;
+
 private:
   void process_events (const GameDelta& events);
   void process_scroll_event (const Input::ScrollEvent&);

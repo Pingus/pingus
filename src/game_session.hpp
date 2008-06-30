@@ -52,12 +52,6 @@ private:
 
   int world_delay; ///< how many milliseconds is the world behind the actual time
 
-  /** Number of updates */
-  unsigned int number_of_updates;
-
-  /** Number of redraws (frameskip == number_of_updates - number_of_redraws) */
-  unsigned int number_of_redraws;
-
 public:
   GameSession(const PingusLevel& arg_plf, bool arg_show_result_screen);
 

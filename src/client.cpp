@@ -35,10 +35,8 @@
 #include "gui/gui_manager.hpp"
 #include "client.hpp"
 
-Client::Client(Server * s)
+Client::Client(Server* s)
   : server       (s),
-    skip_frame   (0),
-    do_replay    (false),
     is_finished  (false),
     button_panel (0),
     pcounter     (0),
@@ -184,16 +182,9 @@ Client::process_axis_event (const Input::AxisEvent& event)
   UNUSED_ARG(event);
 }
 
-bool
-Client::replay()
-{
-  return do_replay;
-}
-
 void
 Client::do_restart()
 {
-  do_replay = true;
   server->send_finish_event();
 }
 
@@ -246,9 +237,7 @@ Client::on_action_axis_move (float move)
 void
 Client::on_startup ()
 {
-  do_replay = false;
   is_finished = false;
-  skip_frame = 0;
 
   if (maintainer_mode)
     std::cout << "Starting Music: " << server->get_plf().get_music() << std::endl;

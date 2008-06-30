@@ -23,7 +23,6 @@
 #include "server.hpp"
 #include "game_session.hpp"
 #include "game_session_result.hpp"
-#include "timer.hpp"
 #include "resource.hpp"
 #include "pingu_holder.hpp"
 #include "world.hpp"
@@ -36,20 +35,8 @@ GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_scree
   : plf(arg_plf),
     show_result_screen(arg_show_result_screen)
 {
-  Timer plf_timer("GameSession plf creation");
-
-  plf_timer.stop();
-
-  Timer server_timer("GameSession server creation");
   server = std::auto_ptr<Server>(new Server(plf));
-  server_timer.stop();
-
-  Timer client_timer("GameSession client creation");
   client = std::auto_ptr<Client>(new Client(server.get()));
-  client_timer.stop();
-
-  number_of_redraws = 0;
-  number_of_updates = 0;
 
   // the world is initially on time
   world_delay = 0;
@@ -60,12 +47,6 @@ GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_scree
 
 GameSession::~GameSession ()
 {
-  if (maintainer_mode)
-    std::cout << "XXXXXXXX"
-              << " Redraws: " << number_of_redraws
-              << " Updates: " << number_of_updates
-              << " FrameSkip: " << number_of_updates - number_of_redraws
-              << std::endl;
 }
 
 void
@@ -89,7 +70,6 @@ GameSession::get_result()
 bool
 GameSession::draw(DrawingContext& gc)
 {
-  ++number_of_redraws;
   client->draw (gc);
   return true;
 }
@@ -146,7 +126,6 @@ GameSession::update (const GameDelta& delta)
       {
         // This updates the world and all objects
         server->update ();
-        ++number_of_updates;
       }
   }
 
@@ -159,7 +138,6 @@ GameSession::update (const GameDelta& delta)
 
   while ((world_updates+1)*update_time <= time_passed) {
     server->update ();
-    ++number_of_updates;
     world_updates++;
   }
   // save how far behind is the world compared to the actual time
