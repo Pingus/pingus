@@ -44,10 +44,6 @@ private:
   /// The client
   std::auto_ptr<Client> client;
 
-  /** Time in 1/1000 second's that was not used in the last
-      update() */
-  int left_over_time;
-
   int world_delay; ///< how many milliseconds is the world behind the actual time
 
 public:

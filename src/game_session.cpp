@@ -40,7 +40,6 @@ GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_scree
   // the world is initially on time
   world_delay = 0;
 
-  left_over_time = 0;
   pout(PINGUS_DEBUG_LOADING) << "GameSession" << std::endl;
 }
 
@@ -109,7 +108,6 @@ GameSession::update (const GameDelta& delta)
       // how much time each world update represents
       int update_time = game_speed;
 
-      //left_over_time = 0;
       if (0){
         int i;
         for (i = 0;
@@ -137,9 +135,6 @@ GameSession::update (const GameDelta& delta)
       // save how far behind is the world compared to the actual time
       // so that we can account for that while updating in the next frame
       world_delay = time_passed - (world_updates*update_time);
-
-      // Time that got not used for updates
-      //left_over_time = time_passed - (i * update_time);
 
       // Client is independend of the update limit, well, not completly...
       client->update(delta);
