@@ -27,19 +27,19 @@
 #include "../server.hpp"
 #include "../pingu.hpp"
 #include "../display/display.hpp"
-#include "client.hpp"
+#include "../game_session.hpp"
 #include "playfield.hpp"
 
-Playfield::Playfield(Server* server_, Client* client_, const Rect& rect_)
+Playfield::Playfield(Server* server_, GameSession* session_, const Rect& rect_)
   : RectComponent(rect_),
     server(server_),
-    client(client_),
+    session(session_),
     current_pingu(0),
     // We keep the SceneContext has member variable so that we don't
     // have to reallocate it every frame, which is quite a costly operation
     scene_context(new SceneContext()),
     state(rect),
-    capture_rectangle(client)
+    capture_rectangle(session)
 {
   mouse_scrolling    = false;
 
@@ -173,13 +173,13 @@ Playfield::update(float delta)
 void
 Playfield::on_primary_button_press(int x, int y)
 {
-  if (client)
+  if (session)
     {
       current_pingu = current_pingu_find(state.screen2world( Vector2i(x,y) ));
 
       if (current_pingu) 
         {
-          server->send_pingu_action_event(current_pingu, client->get_action_name());
+          server->send_pingu_action_event(current_pingu, session->get_action_name());
         }
     }
 }

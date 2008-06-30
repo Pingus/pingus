@@ -57,7 +57,6 @@ pingus_sources = [
 # 'blitter_test.cpp', 
 'src/capture_rectangle.cpp', 
 'src/cheat.cpp', 
-'src/client.cpp', 
 'src/col_map.cpp', 
 'src/collider.cpp', 
 'src/config_manager.cpp', 

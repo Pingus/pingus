@@ -21,17 +21,14 @@
 #define HEADER_PINGUS_BUTTON_PANEL_HPP
 
 #include <vector>
-
 #include "action_button.hpp"
 
-
-class Client;
-
+class GameSession;
+
 class ButtonPanel : public GUI::Component
 {
 private:
-  Client* client;
-  Server* server;
+  GameSession* session;
 
   std::vector<ActionButton*> a_buttons;
   typedef std::vector<ActionButton*>::iterator AButtonIter;
@@ -43,7 +40,7 @@ private:
   int x_pos, y_pos;
 
 public:
-  ButtonPanel(Client* c, int arg_x_pos, int arg_y_pos);
+  ButtonPanel(GameSession* s, int arg_x_pos, int arg_y_pos);
   virtual ~ButtonPanel();
 
   void on_primary_button_press(int x, int y);
@@ -68,8 +65,7 @@ private:
   ButtonPanel (const ButtonPanel&);
   ButtonPanel& operator= (const ButtonPanel&);
 };
-
-
+
 #endif
 
 /* EOF */

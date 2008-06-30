@@ -27,7 +27,7 @@
 class Pingu;
 class World;
 class Server;
-class Client;
+class GameSession;
 class ButtonPanel;
 class Controller;
 class View;
@@ -37,7 +37,7 @@ class Playfield : public GUI::RectComponent
 {
 private:
   Server* server;
-  Client* client;
+  GameSession* session;
 
   Pingu* current_pingu;
   bool mouse_scrolling;
@@ -55,7 +55,7 @@ private:
   Vector2f old_state_pos;
 
 public:
-  Playfield(Server*, Client*, const Rect& rect);
+  Playfield(Server*, GameSession*, const Rect& rect);
   virtual ~Playfield();
 
   /** Returns the point onto which the Playfield is currently focused

@@ -24,7 +24,7 @@
 
 class Font;
 class Server;
-class Client;
+class GameSession;
 class DrawingContext;
 
 class TimeDisplay : public GUI::Component
@@ -35,7 +35,7 @@ private:
   Sprite infinity_symbol;
 
 public:
-  TimeDisplay(Client* c);
+  TimeDisplay(GameSession* c);
   virtual ~TimeDisplay() {}
 
   void draw(DrawingContext& gc);

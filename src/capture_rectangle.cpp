@@ -23,14 +23,14 @@
 #include "resource.hpp"
 #include "capture_rectangle.hpp"
 #include "pingu_action.hpp"
-#include "client.hpp"
+#include "game_session.hpp"
 #include "globals.hpp"
 #include "server.hpp"
 #include "display/scene_context.hpp"
 #include "fonts.hpp"
 
-CaptureRectangle::CaptureRectangle(Client* client_)
-  : client(client_),
+CaptureRectangle::CaptureRectangle(GameSession* session_)
+  : session(session_),
     pingu(0),
     owner_id(0),
     good(Resource::load_sprite("game/cursors/capgood")),
@@ -51,7 +51,7 @@ CaptureRectangle::draw(SceneContext& sc)
   if (pingu && pingu->catchable())
     {
       // Draw the capture rectangle
-      if (client && pingu->change_allowed(client->get_action_name()))
+      if (session && pingu->change_allowed(session->get_action_name()))
         {
           sc.color().draw(good, pingu->get_center_pos() + Vector3f(0, 0, 1000));
         }

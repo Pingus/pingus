@@ -21,7 +21,7 @@
 #include <algorithm>
 #include "../globals.hpp"
 #include "../server.hpp"
-#include "../client.hpp"
+#include "../game_session.hpp"
 #include "button_panel.hpp"
 
 
@@ -33,15 +33,14 @@ struct action_sorter {
   }
 };
 
-ButtonPanel::ButtonPanel(Client* c, int arg_x_pos, int arg_y_pos)
-  : client(c),
-    server(client->get_server()),
+ButtonPanel::ButtonPanel(GameSession* s, int arg_x_pos, int arg_y_pos)
+  : session(s),
     left_pressed(0),
     last_press(0),
     x_pos (arg_x_pos),
     y_pos (arg_y_pos)
 {
-  ActionHolder* aholder = server->get_action_holder();
+  ActionHolder* aholder = session->get_server()->get_action_holder();
 
   std::vector<ActionName> actions = aholder->get_available_actions();
 

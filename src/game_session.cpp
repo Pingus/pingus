@@ -19,8 +19,18 @@
 
 #include <iostream>
 #include "screen/screen_manager.hpp"
-#include "client.hpp"
 #include "server.hpp"
+#include "gui/gui_manager.hpp"
+#include "display/display.hpp"
+
+#include "components/button_panel.hpp"
+#include "components/pingus_counter.hpp"
+#include "components/time_display.hpp"
+#include "components/smallmap.hpp"
+#include "components/playfield.hpp"
+
+#include "sound/sound.hpp"
+#include "math.hpp"
 #include "game_session.hpp"
 #include "resource.hpp"
 #include "pingu_holder.hpp"
@@ -32,15 +42,48 @@
 
 GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_screen)
   : plf(arg_plf),
-    show_result_screen(arg_show_result_screen)
+    show_result_screen(arg_show_result_screen),
+    is_finished  (false),
+    button_panel (0),
+    pcounter     (0),
+    playfield    (0),
+    time_display (0),
+    small_map    (0)
 {
   server = std::auto_ptr<Server>(new Server(plf));
-  client = std::auto_ptr<Client>(new Client(server.get()));
 
   // the world is initially on time
   world_delay = 0;
 
   pout(PINGUS_DEBUG_LOADING) << "GameSession" << std::endl;
+
+  // -- Client stuff
+  
+  // These object will get deleted by the gui_manager
+  button_panel = new ButtonPanel(this, 2, Display::get_height()/2);
+
+  int world_width  = server->get_world()->get_width();
+  int world_height = server->get_world()->get_height();
+
+  playfield    = new Playfield(get_server(), this,
+                               Rect(Vector2i(Math::max((Display::get_width()  - world_width)/2,  0),
+                                             Math::max((Display::get_height() - world_height)/2, 0)), 
+                                    Size(Math::min(Display::get_width(),  world_width),
+                                         Math::min(Display::get_height(), world_height))));
+
+  pcounter     = new PingusCounter(get_server());
+  small_map    = new SmallMap(this);
+  time_display = new TimeDisplay(this);
+
+  gui_manager->add(playfield,    true);
+  gui_manager->add(button_panel, true);
+  gui_manager->add(pcounter,     true);
+  gui_manager->add(small_map,    true);
+  gui_manager->add(time_display, true);
+
+  gui_manager->add(new ArmageddonButton(get_server(), Display::get_width() - 40,     Display::get_height() - 62), true);
+  gui_manager->add(new ForwardButton   (get_server(), Display::get_width() - 40 * 2, Display::get_height() - 62), true);
+  gui_manager->add(new PauseButton     (get_server(), Display::get_width() - 40 * 3, Display::get_height() - 62), true);
 }
 
 GameSession::~GameSession ()
@@ -48,26 +91,7 @@ GameSession::~GameSession ()
 }
 
 void
-GameSession::on_startup()
-{
-  client->on_startup();
-}
-
-void
-GameSession::on_shutdown()
-{
-  client->on_shutdown();
-}
-
-bool
-GameSession::draw(DrawingContext& gc)
-{
-  client->draw (gc);
-  return true;
-}
-
-void
-GameSession::update (const GameDelta& delta)
+GameSession::update_server(const GameDelta& delta)
 {
   // FIXME: Timing code could need another rewrite...
   if (server->is_finished())
@@ -137,33 +161,198 @@ GameSession::update (const GameDelta& delta)
       world_delay = time_passed - (world_updates*update_time);
 
       // Client is independend of the update limit, well, not completly...
-      client->update(delta);
+      //client->update(delta);
     }
 }
 
 void
-GameSession::on_pause_press ()
+GameSession::draw_background (DrawingContext& gc)
 {
-  client->on_pause_press ();
+  Rect rect = playfield->get_rect();
+  
+  if (rect != Rect(Vector2i(0,0), Size(Display::get_width(), Display::get_height())))
+    { // Draw a black border around the playfield when the playfield is smaller then the screen
+      Color border_color(0, 0, 0);
+      // top
+      gc.draw_fillrect(0, 0, Display::get_width(), rect.top,
+                       border_color);
+      // bottom
+      gc.draw_fillrect(0, rect.bottom, Display::get_width(), Display::get_height(),
+                       border_color);
+      // left
+      gc.draw_fillrect(0, rect.top, rect.left, rect.bottom,
+                       border_color);
+      // right
+      gc.draw_fillrect(rect.right, rect.top, Display::get_width(), rect.bottom,
+                       border_color);
+    }
+}
+
+void
+GameSession::update (const GameDelta& delta)
+{
+  update_server(delta);
+
+  GUIScreen::update(delta);
+  process_events(delta);
+}
+
+void
+GameSession::process_events (const GameDelta& delta)
+{
+  const Input::EventLst& events = delta.get_events();
+
+  for (Input::EventLst::const_iterator i = events.begin();
+       i != events.end();
+       ++i)
+    {
+      //std::cout << "Events: " << (*i)->get_type () << std::endl;
+
+      switch (i->type)
+	{
+          case Input::BUTTON_EVENT_TYPE:
+          {
+            const Input::ButtonEvent& ev = i->button;
+
+            if (ev.state == Input::BUTTON_PRESSED)
+              {
+                if (ev.name >= Input::ACTION_1_BUTTON && ev.name <= Input::ACTION_10_BUTTON)
+                  {
+                    button_panel->set_button(ev.name - Input::ACTION_1_BUTTON);
+                  }
+                else if (ev.name == Input::ACTION_DOWN_BUTTON)
+                  {
+                    button_panel->next_action();
+                  }
+                else if (ev.name == Input::ACTION_UP_BUTTON)
+                  {
+                    button_panel->previous_action();
+                  }
+              }
+          }
+	  break;
+
+	case Input::POINTER_EVENT_TYPE:
+					// Ignore, is handled in GUIScreen
+	  break;
+
+	case Input::AXIS_EVENT_TYPE:
+          // ???
+	  process_axis_event (i->axis);
+	  break;
+
+        case Input::SCROLLER_EVENT_TYPE:
+          process_scroll_event(i->scroll);
+          break;
+
+        case Input::KEYBOARD_EVENT_TYPE:
+          break;
+
+	default:
+	  // unhandled event
+	  std::cout << "GameSession::process_events (): unhandled event: " << i->type << std::endl;
+	  break;
+	}
+    }
+}
+
+void
+GameSession::process_scroll_event (const Input::ScrollEvent& ev)
+{
+  playfield->scroll(static_cast<int>(-ev.x_delta),
+                    static_cast<int>(-ev.y_delta));
+}
+
+void
+GameSession::process_axis_event (const Input::AxisEvent& event)
+{
+  // std::cout << "GameSession::process_axis_event ()" << std::endl;
+  UNUSED_ARG(event);
+}
+
+void
+GameSession::do_restart()
+{
+  server->send_finish_event();
+}
+
+bool
+GameSession::finished()
+{
+  return is_finished;
+}
+
+void
+GameSession::set_finished()
+{
+  is_finished = true;
+  server->send_finish_event();
+}
+
+void
+GameSession:: on_escape_press ()
+{
+  server->send_finish_event();
+}
+
+void
+GameSession:: on_pause_press ()
+{
+  server->set_pause (!server->get_pause ());
 }
 
 void
 GameSession::on_fast_forward_press ()
 {
-  client->on_fast_forward_press ();
+  server->set_fast_forward(!server->get_fast_forward());
 }
 
 void
 GameSession::on_armageddon_press ()
 {
-  client->on_armageddon_press ();
+  server->send_armageddon_event();
 }
 
 void
-GameSession::on_escape_press ()
+GameSession::on_action_axis_move (float move)
 {
-  client->on_escape_press ();
+  if (move > 0)
+    button_panel->next_action ();
+  else if (move < 0)
+    button_panel->previous_action ();
 }
 
+void
+GameSession::on_startup ()
+{
+  is_finished = false;
 
+  if (maintainer_mode)
+    std::cout << "Starting Music: " << server->get_plf().get_music() << std::endl;
+
+  if (server->get_plf().get_music() == "none")
+    {
+      Sound::PingusSound::stop_music();
+    }
+  else
+    {
+      Sound::PingusSound::play_music(server->get_plf().get_music());
+    }
+
+  if (verbose)
+    std::cout << "GameSession: Entering main_loop. Startup time: "
+	      << SDL_GetTicks() << " msec." << std::endl;
+}
+
+void
+GameSession::on_shutdown ()
+{
+}
+
+Actions::ActionName
+GameSession::get_action_name() const
+{
+  return button_panel->get_action_name();
+}
+
 /* EOF */

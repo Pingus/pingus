@@ -25,15 +25,14 @@
 #include "../resource.hpp"
 #include "../world.hpp"
 #include "../server.hpp"
-#include "../client.hpp"
+#include "../game_session.hpp"
 #include "../game_time.hpp"
 #include "../string_util.hpp"
 #include "../fonts.hpp"
 
 #include "time_display.hpp"
-
-
-TimeDisplay::TimeDisplay (Client* c)
+
+TimeDisplay::TimeDisplay (GameSession* c)
   : server(c->get_server()),
     infinity_symbol(Resource::load_sprite("core/misc/infinity"))
 {
@@ -65,6 +64,5 @@ TimeDisplay::draw (DrawingContext& gc)
       gc.print_right(font, Display::get_width() - 30, 3, time_string, 150);
     }
 }
-
-
+
 /* EOF */

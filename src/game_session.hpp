@@ -22,15 +22,20 @@
 
 #include <string>
 #include <memory>
-#include "screen/screen.hpp"
+#include "screen/gui_screen.hpp"
 #include "pingus_level.hpp"
+#include "pingu_enums.hpp"
 
-class Client;
+class ButtonPanel;
+class PingusCounter;
+class Playfield;
+class TimeDisplay;
+class SmallMap;
 class Server;
 
 /** You can use this class to start up a game session, which consist
     of a single level. */
-class GameSession : public Screen
+class GameSession : public GUIScreen
 {
 private:
   /// The level data
@@ -41,33 +46,57 @@ private:
   /// The server
   std::auto_ptr<Server> server;
 
-  /// The client
-  std::auto_ptr<Client> client;
-
   int world_delay; ///< how many milliseconds is the world behind the actual time
+
+  // -- Client stuff
+  bool is_finished;
+
+  ButtonPanel*   button_panel;
+  PingusCounter* pcounter;
+  Playfield*     playfield;
+  TimeDisplay*   time_display;
+  SmallMap*      small_map;
+  bool enabled;
 
 public:
   GameSession(const PingusLevel& arg_plf, bool arg_show_result_screen);
-
-  /** Clean up */
   ~GameSession ();
 
-  // Overloaded Screen functions
-  /** Draw this screen */
-  bool draw(DrawingContext& gc);
-
   /** Pass a delta to the screen */
-  void update (const GameDelta& delta);
+  void update_server(const GameDelta& delta);
 
-  void on_startup();
-  void on_shutdown();
+  // -- Client stuff
+
+  Server*    get_server() { return server.get(); }
+  Playfield* get_playfield() { return playfield; }
+
+  void do_restart();
+  bool finished();
+  void set_finished();
+
+  /** Update all parts of the world */
+  void update (const GameDelta&);
+  void draw_background (DrawingContext& gc);
+
+  ButtonPanel* get_button_panel () { return button_panel; }
+
+  // Overloaded GUIScreen stuff
+  void on_startup ();
+  void on_shutdown ();
 
   void on_pause_press ();
   void on_fast_forward_press ();
   void on_armageddon_press ();
   void on_escape_press ();
+  void on_action_axis_move (float);
+
+  Actions::ActionName get_action_name() const;
 
 private:
+  void process_events (const GameDelta& events);
+  void process_scroll_event (const Input::ScrollEvent&);
+  void process_axis_event (const Input::AxisEvent&);
+
   GameSession (const GameSession&);
   GameSession& operator= (const GameSession&);
 };

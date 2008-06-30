@@ -20,15 +20,15 @@
 #ifndef HEADER_PINGUS_CAPTURE_RECTANGLE_HPP
 #define HEADER_PINGUS_CAPTURE_RECTANGLE_HPP
 
+#include "font.hpp"
+#include "sprite.hpp"
+
 class Font;
 class Pingu;
 class PinguAction;
 class Pingu;
-class Client;
+class GameSession;
 class DrawingContext;
-
-#include "font.hpp"
-#include "sprite.hpp"
 
 /** The rectangle that is shown when the mouse cursor is above a
     pingu. The rectangle shows the current pingu direction along with
@@ -37,7 +37,7 @@ class DrawingContext;
 class CaptureRectangle
 {
 private:
-  Client*     client;
+  GameSession*  session;
   Pingu*      pingu;
   std::string action_str;
 
@@ -52,7 +52,7 @@ private:
   Font font;
 
 public:
-  CaptureRectangle(Client*);
+  CaptureRectangle(GameSession*);
   ~CaptureRectangle();
 
   void set_pingu(Pingu* pingu);
