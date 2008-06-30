@@ -26,6 +26,9 @@ class Pathname;
 class PingusDemo
 {
 private:
+  std::string levelname;
+  std::vector<ServerEvent> events;
+
 public:
   PingusDemo(const Pathname& pathname);
 

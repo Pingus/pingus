@@ -26,7 +26,7 @@
 #include "math/vector2i.hpp"
 #include "file_reader_impl.hpp"
 #include "sexpr_file_reader.hpp"
-
+
 class SExprFileReaderImpl: public FileReaderImpl
 {
 public:
@@ -253,5 +253,5 @@ SExprFileReader::SExprFileReader(boost::shared_ptr<lisp::Lisp> lisp)
   : FileReader(boost::shared_ptr<FileReaderImpl>(new SExprFileReaderImpl(lisp)))
 {
 }
-
+
 /* EOF */

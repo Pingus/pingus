@@ -20,36 +20,33 @@
 #include <stdexcept>
 #include <fstream>
 #include "pathname.hpp"
+#include "file_reader.hpp"
 #include "server_event.hpp"
+#include "pingus_error.hpp"
 #include "pingu_enums.hpp"
 #include "pingus_demo.hpp"
 
 PingusDemo::PingusDemo(const Pathname& pathname)
 {
-  std::ifstream in(pathname.get_sys_path().c_str());
-  std::string line;
-  
-  while(std::getline(in, line))
-    {
-      char action[256];
-      int  time;
-      int  id;
+  std::vector<FileReader> lines = FileReader::parse_many(pathname);
 
-      if (sscanf(line.c_str(), "(pingu-action (time %d) (id %d) (action \"%s\"))", &time, &id, action) == 3)
+  if (!lines.empty())
+    {
+      PingusError::raise("'" + pathname.str() + "', demo file is empty");
+    }
+  else
+    {
+      if (lines.front().get_name() == "level")
         {
-          ServerEvent::make_pingu_action_event(time, id, Actions::action_from_string(action));
+          if (!lines.front().read_string("name", levelname))
+            {
+              PingusError::raise("(level (name ...)) entry missing in demo file '" + pathname.str() + "'");
+            }
         }
-      else if (sscanf(line.c_str(), "(armageddon (time %d))", &time) == 1)
+            
+      for(std::vector<FileReader>::iterator i = lines.begin()+1; i != lines.end(); ++i)
         {
-          ServerEvent::make_armageddon_event(time);
-        }
-      else if (sscanf(line.c_str(), "(finish (time %d))", &time) == 1)
-        {
-          ServerEvent::make_finish_event(time);
-        }
-      else
-        {
-          throw std::runtime_error("Couldn't open " + pathname.str());
+          events.push_back(ServerEvent(*i));
         }
     }
 }

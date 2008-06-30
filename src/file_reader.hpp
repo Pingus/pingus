@@ -77,6 +77,7 @@ public:
 
   static FileReader parse(const std::string& filename);
   static FileReader parse(const Pathname& pathname);
+  static std::vector<FileReader> parse_many(const Pathname& pathname);
 private:
   boost::shared_ptr<FileReaderImpl> impl;
 };

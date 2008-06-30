@@ -40,6 +40,11 @@ ServerEvent::ServerEvent(FileReader reader)
       type = ARMAGEDDON_EVENT;
       reader.read_int("time", time_stamp);
     }
+  else if (reader.get_name() == "finish")
+    {
+      type = FINISH_EVENT;
+      reader.read_int("time", time_stamp);
+    }
   else if (reader.get_name() == "pingu-action")
     {
       type = PINGU_ACTION_EVENT;
