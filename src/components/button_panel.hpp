@@ -30,8 +30,6 @@ class Client;
 class ButtonPanel : public GUI::Component
 {
 private:
-  friend class ClientEvent;
-
   Client* client;
   Server* server;
 

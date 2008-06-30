@@ -46,7 +46,6 @@ private:
   Sprite background;
   Sprite backgroundhl;
 
-  friend class ButtonPanel;
 public:
   ArmageddonButton(Server*, int x, int y);
   virtual ~ArmageddonButton();
@@ -76,7 +75,7 @@ private:
   Sprite surface;
   Sprite background;
   Sprite backgroundhl;
-  friend class ButtonPanel;
+
 public:
   ForwardButton(Server*, int x, int y);
   virtual ~ForwardButton();
@@ -105,7 +104,7 @@ private:
   Sprite surface;
   Sprite background;
   Sprite backgroundhl;
-  friend class ButtonPanel;
+
 public:
   PauseButton(Server*, int x, int y);
   virtual ~PauseButton();
