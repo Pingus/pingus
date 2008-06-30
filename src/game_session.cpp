@@ -132,6 +132,7 @@ GameSession::update_server(const GameDelta& delta)
       // how much time each world update represents
       int update_time = game_speed;
 
+      // this is old frameskip code that needs re-design or complete removal
       if (0){
         int i;
         for (i = 0;
@@ -159,9 +160,6 @@ GameSession::update_server(const GameDelta& delta)
       // save how far behind is the world compared to the actual time
       // so that we can account for that while updating in the next frame
       world_delay = time_passed - (world_updates*update_time);
-
-      // Client is independend of the update limit, well, not completly...
-      //client->update(delta);
     }
 }
 
