@@ -336,7 +336,7 @@ EditorScreen::level_play()
       return;
     }
   PingusLevel level(tmp);
-  ScreenManager::instance()->push_screen(new PingusGameSession(level, false), true);
+  ScreenManager::instance()->push_screen(new GameSession(level, false), true);
 }
 
 void

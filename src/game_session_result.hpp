@@ -26,13 +26,13 @@
 /** With this class you can obtain information about the success or
     failure of a level, in addition you can get details like how many
     penguins where saved or killed, etc. */
-class PingusGameSessionResult
+class GameSessionResult
 {
 public:
-  PingusGameSessionResult ();
+  GameSessionResult ();
 
-  PingusGameSessionResult (const PingusGameSessionResult&) { }
-  PingusGameSessionResult& operator= (const PingusGameSessionResult&) { return *this; }
+  GameSessionResult (const GameSessionResult&) { }
+  GameSessionResult& operator= (const GameSessionResult&) { return *this; }
 
   /** Gives information if the level was succeeded or not
       @return true if the level was succeeded, otherwise false */

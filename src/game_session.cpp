@@ -32,7 +32,7 @@
 #include "globals.hpp"
 #include "debug.hpp"
 
-PingusGameSession::PingusGameSession (const PingusLevel& arg_plf, bool arg_show_result_screen)
+GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_screen)
   : plf(arg_plf),
     show_result_screen(arg_show_result_screen)
 {
@@ -55,10 +55,10 @@ PingusGameSession::PingusGameSession (const PingusLevel& arg_plf, bool arg_show_
   world_delay = 0;
 
   left_over_time = 0;
-  pout(PINGUS_DEBUG_LOADING) << "PingusGameSession" << std::endl;
+  pout(PINGUS_DEBUG_LOADING) << "GameSession" << std::endl;
 }
 
-PingusGameSession::~PingusGameSession ()
+GameSession::~GameSession ()
 {
   if (maintainer_mode)
     std::cout << "XXXXXXXX"
@@ -69,25 +69,25 @@ PingusGameSession::~PingusGameSession ()
 }
 
 void
-PingusGameSession::on_startup()
+GameSession::on_startup()
 {
   client->on_startup();
 }
 
 void
-PingusGameSession::on_shutdown()
+GameSession::on_shutdown()
 {
   client->on_shutdown();
 }
 
-PingusGameSessionResult
-PingusGameSession::get_result ()
+GameSessionResult
+GameSession::get_result()
 {
-  return PingusGameSessionResult ();
+  return GameSessionResult();
 }
 
 bool
-PingusGameSession::draw(DrawingContext& gc)
+GameSession::draw(DrawingContext& gc)
 {
   ++number_of_redraws;
   client->draw (gc);
@@ -95,7 +95,7 @@ PingusGameSession::draw(DrawingContext& gc)
 }
 
 void
-PingusGameSession::update (const GameDelta& delta)
+GameSession::update (const GameDelta& delta)
 {
   // FIXME: Timing code could need another rewrite...
   if (server->is_finished())
@@ -174,25 +174,25 @@ PingusGameSession::update (const GameDelta& delta)
 }
 
 void
-PingusGameSession::on_pause_press ()
+GameSession::on_pause_press ()
 {
   client->on_pause_press ();
 }
 
 void
-PingusGameSession::on_fast_forward_press ()
+GameSession::on_fast_forward_press ()
 {
   client->on_fast_forward_press ();
 }
 
 void
-PingusGameSession::on_armageddon_press ()
+GameSession::on_armageddon_press ()
 {
   client->on_armageddon_press ();
 }
 
 void
-PingusGameSession::on_escape_press ()
+GameSession::on_escape_press ()
 {
   client->on_escape_press ();
 }

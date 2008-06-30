@@ -20,25 +20,25 @@
 #include "game_session_result.hpp"
 
 
-PingusGameSessionResult::PingusGameSessionResult ()
+GameSessionResult::GameSessionResult ()
 {
 }
 
 bool
-PingusGameSessionResult::finished ()
+GameSessionResult::finished ()
 {
   // FIXME: Always success
   return true;
 }
 
 float
-PingusGameSessionResult::percentage_saved ()
+GameSessionResult::percentage_saved ()
 {
   return 100.0;
 }
 
 float
-PingusGameSessionResult::percentage_time ()
+GameSessionResult::percentage_time ()
 {
   return 100.0;
 }

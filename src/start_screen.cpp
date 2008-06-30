@@ -226,7 +226,7 @@ StartScreen::on_escape_press()
 void
 StartScreen::start_game()
 {
-  PingusGameSession* game_session = new PingusGameSession(plf, true);
+  GameSession* game_session = new GameSession(plf, true);
   ScreenManager::instance()->replace_screen(game_session, true);
 }
 

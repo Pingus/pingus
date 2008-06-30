@@ -27,12 +27,12 @@
 
 class Client;
 class Server;
-class PingusGameSessionResult;
+class GameSessionResult;
 class DemoPlayer;
 
 /** You can use this class to start up a game session, which consist
     of a single level. */
-class PingusGameSession : public Screen
+class GameSession : public Screen
 {
 private:
   /// The level data
@@ -59,13 +59,13 @@ private:
   unsigned int number_of_redraws;
 
 public:
-  PingusGameSession(const PingusLevel& arg_plf, bool arg_show_result_screen);
+  GameSession(const PingusLevel& arg_plf, bool arg_show_result_screen);
 
   /** Clean up */
-  ~PingusGameSession ();
+  ~GameSession ();
 
   /** Get the results of the last gaming session */
-  PingusGameSessionResult get_result ();
+  GameSessionResult get_result ();
 
   // Overloaded Screen functions
   /** Draw this screen */
@@ -83,8 +83,8 @@ public:
   void on_escape_press ();
 
 private:
-  PingusGameSession (const PingusGameSession&);
-  PingusGameSession& operator= (const PingusGameSession&);
+  GameSession (const GameSession&);
+  GameSession& operator= (const GameSession&);
 };
 
 
