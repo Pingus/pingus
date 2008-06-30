@@ -21,15 +21,15 @@
 #define HEADER_PINGUS_GAME_SESSION_HPP
 
 #include <string>
+#include <memory>
 #include "screen/screen.hpp"
 #include "pingus_level.hpp"
-
 
 class Client;
 class Server;
 class PingusGameSessionResult;
 class DemoPlayer;
-
+
 /** You can use this class to start up a game session, which consist
     of a single level. */
 class PingusGameSession : public Screen
@@ -41,10 +41,10 @@ private:
   bool show_result_screen;
 
   /// The server
-  Server* server;
+  std::auto_ptr<Server> server;
 
   /// The client
-  Client* client;
+  std::auto_ptr<Client> client;
 
   /** Time in 1/1000 second's that was not used in the last
       update() */
@@ -87,7 +87,7 @@ private:
   PingusGameSession& operator= (const PingusGameSession&);
 };
 
-
+
 #endif
 
 /* EOF */

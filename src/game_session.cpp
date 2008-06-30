@@ -41,11 +41,11 @@ PingusGameSession::PingusGameSession (const PingusLevel& arg_plf, bool arg_show_
   plf_timer.stop();
 
   Timer server_timer("GameSession server creation");
-  server = new Server(plf);
+  server = std::auto_ptr<Server>(new Server(plf));
   server_timer.stop();
 
   Timer client_timer("GameSession client creation");
-  client = new Client(server);
+  client = std::auto_ptr<Client>(new Client(server.get()));
   client_timer.stop();
 
   number_of_redraws = 0;
@@ -66,9 +66,6 @@ PingusGameSession::~PingusGameSession ()
               << " Updates: " << number_of_updates
               << " FrameSkip: " << number_of_updates - number_of_redraws
               << std::endl;
-
-  delete client;
-  delete server;
 }
 
 void
