@@ -24,7 +24,7 @@
 #include "world.hpp"
 #include "pingu_holder.hpp"
 #include "string_util.hpp"
-
+
 ServerEvent::ServerEvent() :
 	type(PINGU_ACTION_EVENT),
 	time_stamp(0),
@@ -62,6 +62,11 @@ ServerEvent::write(std::ostream& out) const
     case ARMAGEDDON_EVENT:
       out << "  (armageddon (time " << time_stamp << "))" << std::endl;
       break;
+
+    case FINISH_EVENT:
+      out << "  (finish (time " << time_stamp << "))" << std::endl;
+      break;
+
     case PINGU_ACTION_EVENT:
       out << "  (pingu-action "
           << "(time " << time_stamp << ") "
@@ -69,9 +74,19 @@ ServerEvent::write(std::ostream& out) const
           << "(action \"" << Actions::action_to_string(pingu_action) << "\"))"
           << std::endl;
       break;
-    default:
+
+      default:
       assert(!"Unknown type");
     }
+}
+
+ServerEvent
+ServerEvent::make_finish_event(int t)
+{
+  ServerEvent event;
+  event.type       = FINISH_EVENT;
+  event.time_stamp = t;
+  return event; 
 }
 
 ServerEvent
@@ -102,6 +117,11 @@ ServerEvent::send(Server* server)
     case ARMAGEDDON_EVENT:
       server->send_armageddon_event();
       break;
+
+    case FINISH_EVENT:
+      server->send_finish_event();      
+      break;
+
     case PINGU_ACTION_EVENT:
       {
 	Pingu* pingu = server->get_world()->get_pingus()->get_pingu(pingu_id);
@@ -116,10 +136,10 @@ ServerEvent::send(Server* server)
 	  }
       }
       break;
+
     default:
       assert(!"Unknown type");
     }
 }
-
-
+
 /* EOF */

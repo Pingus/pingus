@@ -193,7 +193,7 @@ void
 Client::do_restart()
 {
   do_replay = true;
-  server->set_finished();
+  server->send_finish_event();
 }
 
 bool
@@ -206,13 +206,13 @@ void
 Client::set_finished()
 {
   is_finished = true;
-  server->set_finished();
+  server->send_finish_event();
 }
 
 void
 Client:: on_escape_press ()
 {
-  server->set_finished();
+  server->send_finish_event();
 }
 
 void

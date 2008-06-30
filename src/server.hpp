@@ -23,7 +23,7 @@
 #include "server_event.hpp"
 #include "action_holder.hpp"
 #include "pingus_level.hpp"
-
+#include <memory>
 
 class Pingu;
 class World;
@@ -35,17 +35,15 @@ class Server
 {
 protected:
   PingusLevel plf;
-  World* world;
+  std::auto_ptr<World> world;
 
   /** Manager class for the number of available actions */
   ActionHolder action_holder;
 
-  GoalManager* goal_manager;
-
-  DemoRecorder* demo_recorder;
+  std::auto_ptr<GoalManager>  goal_manager;
 
   bool fast_forward;
-  bool pause;
+  bool pause; 
 
 public:
   Server(const PingusLevel& arg_plf);
@@ -66,9 +64,7 @@ public:
 
   /** set the server into the finshed state, this is used when you
       press ESCAPE inside a game */
-  void set_finished();
-
-  /* Event handling stuff */
+  void send_finish_event();
   void send_armageddon_event();
   void send_pingu_action_event(Pingu* pingu, Actions::ActionName action);
 
@@ -79,6 +75,8 @@ public:
   bool get_pause();
 
 private:
+  void record(const ServerEvent& event);
+
   Server (const Server&);
   Server& operator= (const Server&);
 };

@@ -26,7 +26,7 @@
 #include <string>
 #include "SDL.h"
 
-/** Simple class to allow a distinction of paths that rever to the
+/** Simple class to allow a distinction of paths that refer to the
  *  filesystem and paths that refer to the datadir, it also hides
  *  path_manager from the rest of the code. */
 class Pathname

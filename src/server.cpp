@@ -17,42 +17,48 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "pingu.hpp"
 #include "globals.hpp"
 #include "server.hpp"
 #include "game_time.hpp"
 #include "world.hpp"
-#include "demo_recorder.hpp"
 #include "goal_manager.hpp"
 
-
 using Actions::action_from_string;
+
+#if 0
+static std::string get_date_string ()
+{
+  char buffer[32];
+  time_t curtime;
+  struct tm *loctime;
+  curtime = time (NULL);
+  loctime = localtime(&curtime);
+  strftime(buffer, 32, "%Y%m%d-%H%M%S", loctime);
+
+  return std::string(buffer);
+}
+#endif
 
 Server::Server(const PingusLevel& arg_plf)
   : plf(arg_plf),
     world(new World (plf)),
     action_holder (plf),
     goal_manager(new GoalManager(this)),
-    demo_recorder(0),
     fast_forward(false),
     pause(false)
 {
-  if (enable_demo_recording)
-    demo_recorder = new DemoRecorder(this);
 }
 
 Server::~Server ()
 {
-  // Demo Server is exited and writes down its log
-  delete goal_manager;
-  delete demo_recorder;
-  delete world;
 }
 
 World*
 Server::get_world()
 {
-  return world;
+  return world.get();
 }
 
 void
@@ -81,15 +87,16 @@ Server::update()
 void
 Server::send_armageddon_event ()
 {
-  world->armageddon();
+  record(ServerEvent::make_armageddon_event(get_time()));
 
-  if (demo_recorder)
-    demo_recorder->record_event(ServerEvent::make_armageddon_event(get_time()));
+  world->armageddon();
 }
 
 void
 Server::send_pingu_action_event (Pingu* pingu, Actions::ActionName action)
 {
+  record(ServerEvent::make_pingu_action_event(get_time(), pingu->get_id(), action));
+
   if (action_holder.pop_action(action))
     {
       if (!(pingu->request_set_action(action)))
@@ -97,11 +104,12 @@ Server::send_pingu_action_event (Pingu* pingu, Actions::ActionName action)
 	  action_holder.push_action(action);
 	}
     }
+}
 
-  if (demo_recorder)
-    demo_recorder->record_event(ServerEvent::make_pingu_action_event(get_time(),
-                                                                     pingu->get_id(),
-                                                                     action));
+void
+Server::record(const ServerEvent& event)
+{
+  event.write(std::cout);  
 }
 
 bool
@@ -147,10 +155,60 @@ Server::get_pause()
 }
 
 void
-Server::set_finished ()
+Server::send_finish_event()
 {
+  record(ServerEvent::make_finish_event(get_time()));
+
   goal_manager->set_abort_goal();
   set_pause(false);
 }
+
+#if 0
+
+DemoRecorder::DemoRecorder (Server* server)
+  : record_demo (true)
+{
+  std::string levelname = server->get_plf().get_resname();
+  std::string flat_levelname = levelname;
+
+  // 'Flatten' the levelname so that we don't need directories
+  for (std::string::iterator i = flat_levelname.begin(); i != flat_levelname.end(); ++i)
+    if (*i == '/')
+      *i = '_';
+
+  if (!levelname.empty())
+    {
+      std::string filename = System::get_userdir() + "demos/" + flat_levelname + "-" + get_date() + ".xml";
+      out.open(filename.c_str());
+
+      if (!out)
+	{
+          record_demo = false;
+	  std::cout << "DemoRecorder: Error: Couldn't write DemoFile '" << filename
+                    << "', demo recording will be disabled" << std::endl;
+	}
+      else
+        {
+          std::cout << "DemoRecorder: Writing demo to: " << filename << std::endl;
+          record_demo = true;
+
+          // Write file header
+          out << "(pingus-demo\n"
+              << "  (level " << levelname << ")\n"
+              << "  (events " << std::endl;
+        }
+    }
+  else
+    {
+      record_demo = false;
+      // This point should only be reachable if we have a bug
+      // somewhere or provide a way to get a PLF without using XMLPLF,
+      // since we don't do that, a bug must be somewhere when we reach
+      // this.
+      assert(!"ERROR: DemoRecorder: Couldn't get levelname, please report this as a bug!");
+    }
+}
+
+#endif
 
 /* EOF */
