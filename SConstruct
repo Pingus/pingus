@@ -120,7 +120,6 @@ pingus_sources = [
 'src/sprite.cpp',
 'src/fps_counter.cpp', 
 'src/game_session.cpp', 
-'src/game_session_result.cpp', 
 'src/game_time.cpp', 
 'src/gettext.cpp', 
 'src/global_event.cpp', 

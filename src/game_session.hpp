@@ -27,8 +27,6 @@
 
 class Client;
 class Server;
-class GameSessionResult;
-class DemoPlayer;
 
 /** You can use this class to start up a game session, which consist
     of a single level. */
@@ -57,9 +55,6 @@ public:
 
   /** Clean up */
   ~GameSession ();
-
-  /** Get the results of the last gaming session */
-  GameSessionResult get_result ();
 
   // Overloaded Screen functions
   /** Draw this screen */
