@@ -27,6 +27,7 @@
 #include <map>
 #include "SDL.h"
 
+class Pathname;
 
 /** A wrapper class around some system dependend functions (mostly
     POSIX stuff) */
@@ -131,7 +132,7 @@ public:
    generation is very primitiv and should probably be replaced by CRC
    or md5. */
   static std::string checksum (std::string filename);
-
+  static std::string checksum (const Pathname& pathname);
 private:
   System (const System&);
   System& operator= (const System&);

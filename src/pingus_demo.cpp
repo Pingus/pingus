@@ -42,6 +42,8 @@ PingusDemo::PingusDemo(const Pathname& pathname)
             {
               PingusError::raise("(level (name ...)) entry missing in demo file '" + pathname.str() + "'");
             }
+
+          lines.front().read_string("checksum", checksum);
         }
             
       for(std::vector<FileReader>::iterator i = lines.begin()+1; i != lines.end(); ++i)

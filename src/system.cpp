@@ -45,6 +45,7 @@
 #include <iostream>
 #include <sstream>
 
+#include "pathname.hpp"
 #include "pingus_error.hpp"
 #include "globals.hpp"
 #include "system.hpp"
@@ -459,10 +460,16 @@ System::translate_default(const std::map<std::string, std::string>& strs)
     }
 }
 
+std::string
+System::checksum(const Pathname& pathname)
+{
+  return checksum(pathname.get_sys_path());
+}
+
 /** Read file and create a checksum and return it */
 std::string
 System::checksum(std::string filename)
-{
+{ // FIXME: Replace sys with SHA1 or MD5 or so 
   FILE* in;
   size_t bytes_read;
   char buffer[4096];
