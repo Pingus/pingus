@@ -43,8 +43,7 @@ Client::Client(Server * s)
     pcounter     (0),
     playfield    (0),
     time_display (0),
-    small_map    (0),
-    hurry_up     (0)
+    small_map    (0)
 {
   Timer timer("Client UI generation");
 

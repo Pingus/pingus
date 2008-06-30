@@ -59,7 +59,6 @@ private:
   Playfield*     playfield;
   TimeDisplay*   time_display;
   SmallMap*      small_map;
-  HurryUp*       hurry_up;
   bool enabled;
 
 public:
