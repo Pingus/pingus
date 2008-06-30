@@ -34,6 +34,7 @@
 #include "lisp/parser.hpp"
 #include "editor/editor_level.hpp"
 #include "string_util.hpp"
+#include "demo_session.hpp"
 #include "sexpr_file_reader.hpp"
 
 #if defined(__APPLE__)
@@ -700,7 +701,7 @@ PingusMain::start_game ()
         }
     }
   else if (cmd_options.credits.is_set() && cmd_options.credits.get())
-       { // just show the credits screen
+    { // just show the credits screen
       ScreenManager::instance()->push_screen(Credits::instance(), false);
     }
   else if (cmd_options.font.is_set() && cmd_options.font.get())
@@ -725,11 +726,19 @@ PingusMain::start_game ()
       ScreenManager::instance()->push_screen (editor, true);
     }
   else if (cmd_options.rest.is_set())
-       { // just start the map that was passed on the command line
-      ScreenManager::instance()->push_screen
-        (new StartScreen(PLFResMgr::load_plf_from_filename(Pathname(cmd_options.rest.get(),
-                                                                    Pathname::SYSTEM_PATH))),
-         true);
+    { // just start the map that was passed on the command line
+      if (StringUtil::has_suffix(cmd_options.rest.get(), ".pingus-demo"))
+        { // Demo file
+          ScreenManager::instance()->push_screen
+            (new DemoSession(Pathname(cmd_options.rest.get(), Pathname::SYSTEM_PATH)), true);
+        }
+      else
+        { // Level file
+          ScreenManager::instance()->push_screen
+            (new StartScreen(PLFResMgr::load_plf_from_filename(Pathname(cmd_options.rest.get(),
+                                                                        Pathname::SYSTEM_PATH))),
+             true);
+        }
     }
   else // start a normal game
     {

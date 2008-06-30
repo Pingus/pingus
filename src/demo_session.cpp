@@ -26,6 +26,9 @@
 #include "gui/gui_manager.hpp"
 #include "display/scene_context.hpp"
 #include "pingus_demo.hpp"
+#include "components/playfield.hpp"
+#include "screen/screen_manager.hpp"
+#include "display/display.hpp"
 #include "demo_session.hpp"
 
 DemoSession::DemoSession(const Pathname& pathname)
@@ -33,12 +36,27 @@ DemoSession::DemoSession(const Pathname& pathname)
   // Load Demo file
   demo = std::auto_ptr<PingusDemo>(new PingusDemo(pathname));
 
+  events = demo->get_events();
+  // Reverse the vector so that we can use pop_back()  
+  std::reverse(events.begin(), events.end());
+
   // Create server
   server   = std::auto_ptr<Server>(new Server(PingusLevel(Pathname(demo->get_levelname(), Pathname::DATA_PATH))));
 
   // Create GUI
   pcounter = new PingusCounter(server.get());
   gui_manager->add(pcounter, true);
+
+  int world_width  = server->get_world()->get_width();
+  int world_height = server->get_world()->get_height();
+
+  playfield = new Playfield(server.get(), 0,
+                            Rect(Vector2i(Math::max((Display::get_width()  - world_width)/2,  0),
+                                          Math::max((Display::get_height() - world_height)/2, 0)), 
+                                 Size(Math::min(Display::get_width(),  world_width),
+                                      Math::min(Display::get_height(), world_height))));
+
+  gui_manager->add(playfield, true);
 }
 
 DemoSession::~DemoSession()
@@ -101,28 +119,22 @@ DemoSession::update(float delta)
   // FIXME: Duplicate all timing code here?!
   server->update();
   update_demo();
-
-  int skip_count = 0;
-  while (1) //CL_Keyboard::get_keycode(CL_KEY_SPACE) && skip_count < 10)
-    {
-      ++skip_count;
-      server->update();
-      update_demo();
-    }
 }
 
 void
 DemoSession::update_demo()
 {
-#if 0
   while(!events.empty() && events.back().time_stamp == server->get_time())
     {
       ServerEvent& event = events.back();
 
-      std::cout << "Sending: ";
-      event.write(std::cout);
+      if (0)
+        {
+          std::cout << "Sending: ";
+          event.write(std::cout);
+        }
 
-      event.send(server);
+      event.send(server.get());
       events.pop_back();
     }
 
@@ -131,7 +143,40 @@ DemoSession::update_demo()
     {
       std::cout << "DemoPlayer Bug: We missed a timestamp: " << events.back().time_stamp << std::endl;
     }
-#endif 
+}
+
+void
+DemoSession::on_pause_press()
+{
+  std::cout << "Pause Pressed" << std::endl;
+  for(std::vector<ServerEvent>::iterator i = events.begin(); i != events.end(); ++i)
+    {
+      std::cout << "Event: ";
+      i->write(std::cout);      
+    }
+}
+
+void
+DemoSession::on_fast_forward_press()
+{
+  std::cout << "Fast Forward Pressed: " << events.size() << " " << server->get_time() << std::endl;
+  server->set_fast_forward(!server->get_fast_forward());
+}
+
+void
+DemoSession::on_escape_press()
+{
+  std::cout << "Escape Pressed" << std::endl;
+  server->send_finish_event();
+  ScreenManager::instance()->pop_screen();
+}
+
+void
+DemoSession::process_scroll_event(const Input::ScrollEvent& ev)
+{
+  // FIXME: Rounding considered evil?
+  playfield->scroll(static_cast<int>(-ev.x_delta),
+                    static_cast<int>(-ev.y_delta));
 }
 
 /* EOF */

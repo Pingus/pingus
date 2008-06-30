@@ -173,11 +173,14 @@ Playfield::update(float delta)
 void
 Playfield::on_primary_button_press(int x, int y)
 {
-  current_pingu = current_pingu_find(state.screen2world( Vector2i(x,y) ));
-
-  if (current_pingu)
+  if (client)
     {
-      server->send_pingu_action_event(current_pingu, client->get_action_name());
+      current_pingu = current_pingu_find(state.screen2world( Vector2i(x,y) ));
+
+      if (current_pingu) 
+        {
+          server->send_pingu_action_event(current_pingu, client->get_action_name());
+        }
     }
 }
 

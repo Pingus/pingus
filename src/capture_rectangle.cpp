@@ -51,7 +51,7 @@ CaptureRectangle::draw(SceneContext& sc)
   if (pingu && pingu->catchable())
     {
       // Draw the capture rectangle
-      if (pingu->change_allowed(client->get_action_name()))
+      if (client && pingu->change_allowed(client->get_action_name()))
         {
           sc.color().draw(good, pingu->get_center_pos() + Vector3f(0, 0, 1000));
         }

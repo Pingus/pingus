@@ -22,6 +22,8 @@
 
 #include <memory>
 #include "screen/gui_screen.hpp"
+#include <vector>
+#include "server_event.hpp"
 
 class Server;
 class XMLPDF;
@@ -36,8 +38,9 @@ class Playfield;
 class DemoSession : public GUIScreen
 {
 private:
-  std::auto_ptr<Server>   server;
+  std::auto_ptr<Server>     server;
   std::auto_ptr<PingusDemo> demo;
+  std::vector<ServerEvent>  events;
 
   PingusCounter* pcounter;
   Playfield*     playfield;
@@ -54,6 +57,11 @@ public:
   void update(float delta);
   void update_demo();
 
+  void on_pause_press ();
+  void on_fast_forward_press ();
+  void on_escape_press ();
+
+  void process_scroll_event(const Input::ScrollEvent& ev);
 private:
   DemoSession (const DemoSession&);
   DemoSession& operator= (const DemoSession&);

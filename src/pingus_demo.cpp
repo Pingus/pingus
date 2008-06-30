@@ -30,7 +30,7 @@ PingusDemo::PingusDemo(const Pathname& pathname)
 {
   std::vector<FileReader> lines = FileReader::parse_many(pathname);
 
-  if (!lines.empty())
+  if (lines.empty())
     {
       PingusError::raise("'" + pathname.str() + "', demo file is empty");
     }
