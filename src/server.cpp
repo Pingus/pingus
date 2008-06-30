@@ -164,10 +164,6 @@ Server::send_finish_event()
 }
 
 #if 0
-
-DemoRecorder::DemoRecorder (Server* server)
-  : record_demo (true)
-{
   std::string levelname = server->get_plf().get_resname();
   std::string flat_levelname = levelname;
 
@@ -178,7 +174,7 @@ DemoRecorder::DemoRecorder (Server* server)
 
   if (!levelname.empty())
     {
-      std::string filename = System::get_userdir() + "demos/" + flat_levelname + "-" + get_date() + ".xml";
+      std::string filename = System::get_userdir() + "demos/" + flat_levelname + "-" + get_date_string() + ".pingus-demo";
       out.open(filename.c_str());
 
       if (!out)
@@ -201,14 +197,9 @@ DemoRecorder::DemoRecorder (Server* server)
   else
     {
       record_demo = false;
-      // This point should only be reachable if we have a bug
-      // somewhere or provide a way to get a PLF without using XMLPLF,
-      // since we don't do that, a bug must be somewhere when we reach
-      // this.
-      assert(!"ERROR: DemoRecorder: Couldn't get levelname, please report this as a bug!");
+
     }
-}
-
 #endif
+
 
 /* EOF */

@@ -76,7 +76,6 @@ public:
   /** Update all parts of the world */
   void update (const GameDelta&);
   void draw_background (DrawingContext& gc);
-  //void process_events ();
 
   ButtonPanel* get_button_panel () { return button_panel; }
 

@@ -28,8 +28,7 @@
 #include "gui/gui_manager.hpp"
 #include "display/scene_context.hpp"
 #include "demo_session.hpp"
-
-
+
 DemoSession::DemoSession(const std::string& filename)
 {
   // Load Demo file
@@ -111,6 +110,5 @@ DemoSession::update(float delta)
       demo_player->update();
     }
 }
-
-
+
 /* EOF */

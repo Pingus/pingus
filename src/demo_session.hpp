@@ -40,6 +40,7 @@ private:
 
   // GUI stuff
   PingusCounter* pcounter;
+
 public:
   /** @param filename the complete filename of the demo file */
   DemoSession(const std::string& filename);

@@ -85,22 +85,23 @@ void
 Client::draw_background (DrawingContext& gc)
 {
   Rect rect = playfield->get_rect();
+  
   if (rect != Rect(Vector2i(0,0), Size(Display::get_width(), Display::get_height())))
-  {
-    Color border_color(50, 65, 75);
-    // top
-    gc.draw_fillrect(0, 0, Display::get_width(), rect.top,
-                     border_color);
-    // bottom
-    gc.draw_fillrect(0, rect.bottom, Display::get_width(), Display::get_height(),
-                 border_color);
-    // left
-    gc.draw_fillrect(0, rect.top, rect.left, rect.bottom,
-                 border_color);
-    // right
-    gc.draw_fillrect(rect.right, rect.top, Display::get_width(), rect.bottom,
-                 border_color);
-  }
+    { // Draw a black border around the playfield when the playfield is smaller then the screen
+      Color border_color(0, 0, 0);
+      // top
+      gc.draw_fillrect(0, 0, Display::get_width(), rect.top,
+                       border_color);
+      // bottom
+      gc.draw_fillrect(0, rect.bottom, Display::get_width(), Display::get_height(),
+                       border_color);
+      // left
+      gc.draw_fillrect(0, rect.top, rect.left, rect.bottom,
+                       border_color);
+      // right
+      gc.draw_fillrect(rect.right, rect.top, Display::get_width(), rect.bottom,
+                       border_color);
+    }
 }
 
 void
@@ -113,10 +114,10 @@ Client::update (const GameDelta& delta)
 void
 Client::process_events (const GameDelta& delta)
 {
-  const Input::EventLst& events = delta.get_events ();
+  const Input::EventLst& events = delta.get_events();
 
-  for (Input::EventLst::const_iterator i = events.begin ();
-       i != events.end ();
+  for (Input::EventLst::const_iterator i = events.begin();
+       i != events.end();
        ++i)
     {
       //std::cout << "Events: " << (*i)->get_type () << std::endl;

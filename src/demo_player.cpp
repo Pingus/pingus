@@ -21,8 +21,7 @@
 #include "server.hpp"
 #include "demo_player.hpp"
 #include "xml_pdf.hpp"
-
-
+
 DemoPlayer::DemoPlayer(Server* s, XMLPDF* pdf)
   : server(s),
     events(pdf->get_events())
@@ -53,6 +52,5 @@ DemoPlayer::update()
       std::cout << "DemoPlayer Bug: We missed a timestamp: " << events.back().time_stamp << std::endl;
     }
 }
-
-
+
 /* EOF */

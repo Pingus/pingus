@@ -60,15 +60,15 @@ ServerEvent::write(std::ostream& out) const
   switch(type)
     {
     case ARMAGEDDON_EVENT:
-      out << "  (armageddon (time " << time_stamp << "))" << std::endl;
+      out << "(armageddon (time " << time_stamp << "))" << std::endl;
       break;
 
     case FINISH_EVENT:
-      out << "  (finish (time " << time_stamp << "))" << std::endl;
+      out << "(finish (time " << time_stamp << "))" << std::endl;
       break;
 
     case PINGU_ACTION_EVENT:
-      out << "  (pingu-action "
+      out << "(pingu-action "
           << "(time " << time_stamp << ") "
           << "(id " << pingu_id << ") "
           << "(action \"" << Actions::action_to_string(pingu_action) << "\"))"

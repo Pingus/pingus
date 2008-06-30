@@ -78,7 +78,6 @@ pingus_sources = [
 'src/debug.cpp', 
 'src/debug_stream.cpp', 
 # 'demo_player.cpp', 
-'src/demo_recorder.cpp', 
 # 'demo_session.cpp', 
 'src/direction.cpp', 
 'src/display/drawing_context.cpp', 
@@ -204,6 +203,7 @@ pingus_sources = [
 'src/pingu_holder.cpp', 
 'src/pingus_error.cpp', 
 'src/pingus_level.cpp', 
+'src/pingus_demo.cpp', 
 'src/pingus_main.cpp', 
 'src/pingus_menu.cpp', 
 'src/pingus_menu_manager.cpp', 
@@ -242,7 +242,6 @@ pingus_sources = [
 'src/tinygettext/dictionary_manager.cpp',
 'src/tinygettext/dictionary.cpp',
 'src/tinygettext/language_def.cpp',
-'src/true_server.cpp', 
 'src/math/vector2f.cpp',
 'src/math/vector2i.cpp',
 'src/math/vector3f.cpp',
@@ -512,7 +511,7 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
            print "\nError are being ignored, the build continues"
 
     config_h = open('config.h', 'w')
-    config_h.write('#define VERSION "0.7.2"\n')
+    config_h.write('#define VERSION "0.7.3"\n')
     config_h.write('#define ENABLE_BINRELOC 1\n')
     config_h.write('#define ICONV_CONST %s\n' % iconv_const)
     for (v,k) in config_h_defines:

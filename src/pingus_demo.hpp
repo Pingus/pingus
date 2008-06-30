@@ -1,7 +1,7 @@
 //  $Id$
-//
+// 
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2008 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -12,35 +12,27 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_DEMO_PLAYER_HPP
-#define HEADER_PINGUS_DEMO_PLAYER_HPP
+#ifndef HEADER_PINGUS_DEMO_HPP
+#define HEADER_PINGUS_DEMO_HPP
 
-#include <vector>
-#include "server_event.hpp"
-
-class Server;
-class XMLPDF;
+class Pathname;
 
-class DemoPlayer
+/** */
+class PingusDemo
 {
 private:
-  Server* server;
-  std::vector<ServerEvent> events;
-
 public:
-  DemoPlayer(Server* s, XMLPDF* pdf);
-  ~DemoPlayer();
+  PingusDemo(const Pathname& pathname);
 
-  void update();
 
 private:
-  DemoPlayer (const DemoPlayer&);
-  DemoPlayer& operator= (const DemoPlayer&);
+  PingusDemo (const PingusDemo&);
+  PingusDemo& operator= (const PingusDemo&);
 };
 
 #endif
