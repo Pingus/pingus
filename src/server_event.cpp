@@ -137,7 +137,7 @@ ServerEvent::send(Server* server)
 	  }
 	else
 	  {
-	    std::cout << "ServerEvent: DemoFile inconsistent with world" << std::endl;
+	    std::cout << "ServerEvent: DemoFile inconsistent with world, pingu " << pingu_id << " missing" << std::endl;
 	  }
       }
       break;

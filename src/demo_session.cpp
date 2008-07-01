@@ -81,24 +81,24 @@ DemoSession::update(float delta)
     }
   else
     {
-  // FIXME: Duplicate all timing code here?!
+      // FIXME: Duplicate all timing code here?!
 
       if (!pause)
-    {
-      if (fast_forward)
         {
-          for (int i = 0; i < 4; ++i)
+          if (fast_forward)
+            {
+              for (int i = 0; i < 4; ++i)
+                {
+                  server->update();
+                  update_demo();
+                }
+            }
+          else
             {
               server->update();
               update_demo();
             }
         }
-      else
-        {
-          server->update();
-          update_demo();
-        }
-    }
     }
 }
 
