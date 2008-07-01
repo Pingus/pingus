@@ -66,9 +66,6 @@ extern std::string global_email;                    ///< The email address of th
 extern std::string default_language;                ///< The default language, which is used when the env var LANG is not set
 extern unsigned int pingus_debug_flags;              ///< Set some bits in this thing to get debug infos
 
-extern int         min_frame_skip;
-extern int         max_frame_skip;
-
 enum { PINGUS_DEBUG_ACTIONS     = (1 << 0),
        PINGUS_DEBUG_SOUND       = (1 << 1),
        PINGUS_DEBUG_GAMETIME    = (1 << 2),

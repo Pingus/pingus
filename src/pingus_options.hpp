@@ -90,8 +90,6 @@ struct PingusOptions
   Value<bool> maintainer_mode;
   Value<unsigned int> debug;
 
-  Value<int>  min_frame_skip;
-  Value<int>  max_frame_skip;
   Value<int>  speed;
   Value<float> desiredfps;
   Value<int>  tile_size;

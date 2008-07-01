@@ -45,9 +45,6 @@ bool        action_help                     = true;
 bool        show_input_debug_screen         = false;
 bool        render_preview                  = false;
 
-int         min_frame_skip                  = 1;
-int         max_frame_skip                  = 5;
-
 std::string controller_file;
 
 std::string global_username;

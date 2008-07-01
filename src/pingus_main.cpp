@@ -234,12 +234,6 @@ PingusMain::apply_args()
   if (options.debug.is_set())
     pingus_debug_flags = options.debug.get();
 
-  if (options.min_frame_skip.is_set())
-    min_frame_skip = options.min_frame_skip.get();
-
-  if (options.max_frame_skip.is_set())
-    max_frame_skip = options.max_frame_skip.get();
-
   if (options.speed.is_set())
     game_speed = options.speed.get();
 
@@ -325,12 +319,6 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Enable the output of debugging info, possible "
                     "OPTIONs are tiles, gametime, actions, sound, resources, gui, "
                     "input, pathmgr"));
-  argp.add_option(354, "min-frame-skip", "N",
-                  _("Skip at least N frames, larger values speed the game up"));
-  argp.add_option(355, "max-frame-skip", "N",
-                  _("Skip at most N frames"));
-  argp.add_option(357, "frame-skip",  "N",
-                  _("Set both min and max frameskip to N"));
   argp.add_option('t', "speed", "SPEED",
                   _("Set the game speed (0=fastest, >0=slower)"));
   argp.add_option('k', "fps", "FPS",
@@ -525,19 +513,6 @@ PingusMain::parse_args(int argc, char** argv)
 
             // Update Pingus debug flags
             pingus_debug_flags = cmd_options.debug.get();
-            break;
-
-          case 354:
-            cmd_options.min_frame_skip.set(StringUtil::to<int>(argp.get_argument()));
-            break;
-
-          case 355: // max_frame_skip
-            cmd_options.max_frame_skip.set(StringUtil::to<int>(argp.get_argument()));
-            break;
-
-          case 357: // frame_skip
-            cmd_options.max_frame_skip.set(StringUtil::to<int>(argp.get_argument()));
-            cmd_options.min_frame_skip.set(StringUtil::to<int>(argp.get_argument()));
             break;
 
           case 360:

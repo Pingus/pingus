@@ -134,20 +134,6 @@ GameSession::update_server(float delta)
       // how much time each world update represents
       int update_time = game_speed;
 
-      // this is old frameskip code that needs re-design or complete removal
-      if (0){
-        int i;
-        for (i = 0;
-             ((i * update_time < time_passed)
-              || i < min_frame_skip)
-               && !(i > max_frame_skip);
-             ++i)
-          {
-            // This updates the world and all objects
-            update_server();
-          }
-      }
-
       // update the world (and the objects in it) in constant steps to account
       // for the time the previous frame took
 
