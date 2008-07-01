@@ -52,7 +52,7 @@ GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_scree
     pause(false),
     fast_forward(false)
 {
-  server = std::auto_ptr<Server>(new Server(plf));
+  server = std::auto_ptr<Server>(new Server(plf, true));
 
   // the world is initially on time
   world_delay = 0;

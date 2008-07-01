@@ -18,6 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <fstream>
+#include "system.hpp"
 #include "pingu.hpp"
 #include "globals.hpp"
 #include "server.hpp"
@@ -27,7 +29,6 @@
 
 using Actions::action_from_string;
 
-#if 0
 static std::string get_date_string ()
 {
   char buffer[32];
@@ -39,14 +40,47 @@ static std::string get_date_string ()
 
   return std::string(buffer);
 }
-#endif
 
-Server::Server(const PingusLevel& arg_plf)
+static std::auto_ptr<std::ostream> get_demostream(const std::string& levelname)
+{
+  std::string flat_levelname = levelname;
+
+  // 'Flatten' the levelname so that we don't need directories
+  for (std::string::iterator i = flat_levelname.begin(); i != flat_levelname.end(); ++i)
+    if (*i == '/')
+      *i = '_';
+
+  std::string filename = System::get_userdir() + "demos/" + get_date_string() + "-" + flat_levelname + ".pingus-demo";
+
+  std::auto_ptr<std::ofstream> out(new std::ofstream(filename.c_str()));
+  
+  if (!(*out.get()))
+    {
+      std::cout << "DemoRecorder: Error: Couldn't write DemoFile '" << filename
+                << "', demo recording will be disabled" << std::endl;
+      return std::auto_ptr<std::ostream>();
+    }
+  else
+    {
+      std::cout << "DemoRecorder: Writing demo to: " << filename << std::endl;
+
+      // Write file header
+      *out << "(level (name \"" << levelname << "\"))\n";
+      return std::auto_ptr<std::ostream>(out.release());
+    }
+}
+
+Server::Server(const PingusLevel& arg_plf,
+               bool record_demo)
   : plf(arg_plf),
     world(new World (plf)),
     action_holder (plf),
     goal_manager(new GoalManager(this))
 {
+  if (record_demo)
+    {
+      demostream = get_demostream(plf.get_resname());
+    }
 }
 
 Server::~Server ()
@@ -91,7 +125,8 @@ Server::send_pingu_action_event (Pingu* pingu, Actions::ActionName action)
 void
 Server::record(const ServerEvent& event)
 {
-  event.write(std::cout);  
+  if (demostream.get())
+  event.write(*demostream);
 }
 
 bool
@@ -118,44 +153,5 @@ Server::send_finish_event()
   record(ServerEvent::make_finish_event(get_time()));
   goal_manager->set_abort_goal();
 }
-
-#if 0
-  std::string levelname = server->get_plf().get_resname();
-  std::string flat_levelname = levelname;
-
-  // 'Flatten' the levelname so that we don't need directories
-  for (std::string::iterator i = flat_levelname.begin(); i != flat_levelname.end(); ++i)
-    if (*i == '/')
-      *i = '_';
-
-  if (!levelname.empty())
-    {
-      std::string filename = System::get_userdir() + "demos/" + flat_levelname + "-" + get_date_string() + ".pingus-demo";
-      out.open(filename.c_str());
-
-      if (!out)
-	{
-          record_demo = false;
-	  std::cout << "DemoRecorder: Error: Couldn't write DemoFile '" << filename
-                    << "', demo recording will be disabled" << std::endl;
-	}
-      else
-        {
-          std::cout << "DemoRecorder: Writing demo to: " << filename << std::endl;
-          record_demo = true;
-
-          // Write file header
-          out << "(pingus-demo\n"
-              << "  (level " << levelname << ")\n"
-              << "  (events " << std::endl;
-        }
-    }
-  else
-    {
-      record_demo = false;
-
-    }
-#endif
 
-
 /* EOF */

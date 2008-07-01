@@ -41,9 +41,10 @@ protected:
   ActionHolder action_holder;
 
   std::auto_ptr<GoalManager>  goal_manager;
+  std::auto_ptr<std::ostream> demostream;
 
 public:
-  Server(const PingusLevel& arg_plf);
+  Server(const PingusLevel& arg_plf, bool record_demo);
   ~Server();
 
   void update();
