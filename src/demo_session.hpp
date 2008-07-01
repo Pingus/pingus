@@ -31,6 +31,7 @@ class DemoPlayer;
 class PingusCounter;
 class PingusDemo;
 class Playfield;
+class SmallMap;
 
 /** A DemoSession is analog to a GameSession, but instead of loading a
     level and letting the player play a game, a demo file will be
@@ -44,14 +45,15 @@ private:
 
   PingusCounter* pcounter;
   Playfield*     playfield;
+  SmallMap*      small_map;
+  
+  bool pause;
+  bool fast_forward;
 
 public:
   /** @param filename the complete filename of the demo file */
   DemoSession(const Pathname& pathname);
   ~DemoSession();
-
-  /** Draw this screen */
-  void draw_background(DrawingContext& gc);
 
   /** Pass a delta to the screen */
   void update(float delta);

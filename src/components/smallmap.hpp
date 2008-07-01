@@ -23,7 +23,8 @@
 #include "../sprite.hpp"
 #include "../gui/component.hpp"
 
-class GameSession;
+class Playfield;
+class Server;
 class Vector3f;
 class SmallMapImage;
 
@@ -31,7 +32,8 @@ class SmallMapImage;
 class SmallMap : public GUI::Component
 {
 private:
-  GameSession* session;
+  Server*    server;
+  Playfield* playfield;
 
   /** Graphic surface of the exit */
   Sprite exit_sur;
@@ -63,7 +65,7 @@ private:
   DrawingContext* gc_ptr;
 
 public:
-  SmallMap(GameSession* c);
+  SmallMap(Server*, Playfield*);
   virtual ~SmallMap();
 
   /*{ @name Stuff called from the GUIManager */
@@ -74,8 +76,6 @@ public:
   // Events
   void on_pointer_enter ();
   void on_pointer_leave ();
-
-  void set_session(GameSession* c);
 
   bool is_at (int x, int y);
   bool mouse_over();

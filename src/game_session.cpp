@@ -74,7 +74,7 @@ GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_scree
                                          Math::min(Display::get_height(), world_height))));
 
   pcounter     = new PingusCounter(get_server());
-  small_map    = new SmallMap(this);
+  small_map    = new SmallMap(get_server(), playfield);
   time_display = new TimeDisplay(this);
 
   gui_manager->add(playfield,    true);

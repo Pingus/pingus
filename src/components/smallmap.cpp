@@ -33,8 +33,9 @@
 #include "playfield.hpp"
 #include "smallmap.hpp"
 
-SmallMap::SmallMap(GameSession* session_)
-  : session(session_),
+SmallMap::SmallMap(Server* server_, Playfield* playfield_)
+  : server(server_),
+    playfield(playfield_),
     gc_ptr(0)
 {
   int max_width = 175;
@@ -43,7 +44,7 @@ SmallMap::SmallMap(GameSession* session_)
   int min_height = 70;
   int min_width = 100;
 
-  World* world = session->get_server()->get_world();
+  World* world = server->get_world();
 
   // Scaling values used in order to keep the aspect ratio
   int x_scaling = world->get_width()  / max_width;
@@ -65,7 +66,7 @@ SmallMap::SmallMap(GameSession* session_)
   x_pos   = 5;
   y_pos   = Display::get_height() - height - 5;
 
-  image = new SmallMapImage(session->get_server(), width, height);
+  image = new SmallMapImage(server, width, height);
 
   scroll_mode = false;
 }
@@ -82,8 +83,7 @@ SmallMap::draw (DrawingContext& gc)
   // long 'gc' will be alive. Should use a DrawingContext for caching.
   gc_ptr = &gc;
 
-  World* const& world  = session->get_server()->get_world();
-  Playfield* playfield = session->get_playfield();
+  World* const& world  = server->get_world();
   
   Vector2i of = playfield->get_pos();
   Rect rect;
@@ -116,7 +116,7 @@ SmallMap::draw (DrawingContext& gc)
   gc.draw_rect(rect.left, rect.top, rect.right, rect.bottom,
                Color(0, 255, 0));
 
-  session->get_server()->get_world()->draw_smallmap(this);
+  server->get_world()->draw_smallmap(this);
 
   // Draw Pingus
   PinguHolder* pingus = world->get_pingus();
@@ -140,7 +140,7 @@ SmallMap::update (float delta)
 void
 SmallMap::draw_sprite(Sprite sprite, Vector3f pos)
 {
-  World* world = session->get_server()->get_world();
+  World* world = server->get_world();
   float x = x_pos + (pos.x * width  / world->get_width());
   float y = y_pos + (pos.y * height / world->get_height());
 
@@ -158,14 +158,14 @@ void
 SmallMap::on_pointer_move (int x, int y)
 {
   int cx, cy;
-  World* world = session->get_server()->get_world();
+  World* world = server->get_world();
 
   if (scroll_mode)
     {
       cx = (x - x_pos) * static_cast<int>(world->get_width()  / width);
       cy = (y - y_pos) * static_cast<int>(world->get_height() / height);
 
-      session->get_playfield()->set_viewpoint(cx, cy);
+      playfield->set_viewpoint(cx, cy);
     }
 }
 
@@ -176,10 +176,10 @@ SmallMap::on_primary_button_press (int x, int y)
 
   // set view to the given COs
   int cx, cy;
-  World* world = session->get_server()->get_world();
+  World* world = server->get_world();
   cx = (x - x_pos) * int(world->get_width()) / width;
   cy = (y - y_pos) * int(world->get_height()) / height ;
-  session->get_playfield()->set_viewpoint(cx, cy);
+  playfield->set_viewpoint(cx, cy);
 }
 
 void

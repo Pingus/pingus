@@ -27,11 +27,14 @@
 #include "display/scene_context.hpp"
 #include "pingus_demo.hpp"
 #include "components/playfield.hpp"
+#include "components/smallmap.hpp"
 #include "screen/screen_manager.hpp"
 #include "display/display.hpp"
 #include "demo_session.hpp"
 
 DemoSession::DemoSession(const Pathname& pathname)
+  : pause(false),
+    fast_forward(false)
 {
   // Load Demo file
   demo = std::auto_ptr<PingusDemo>(new PingusDemo(pathname));
@@ -57,57 +60,13 @@ DemoSession::DemoSession(const Pathname& pathname)
                                       Math::min(Display::get_height(), world_height))));
 
   gui_manager->add(playfield, true);
+
+  small_map    = new SmallMap(server.get(), playfield);
+  gui_manager->add(small_map, true);
 }
 
 DemoSession::~DemoSession()
 {
-}
-
-/** Draw this screen */
-void
-DemoSession::draw_background(DrawingContext& gc)
-{
-#if 0
-  World* world = server->get_world();
-  
-  SceneContext* sc = new SceneContext();
-
-
-  if (CL_Keyboard::get_keycode(CL_KEY_LEFT))
-    sc->translate(10.0, 0.0);
-
-  if(CL_Keyboard::get_keycode(CL_KEY_RIGHT))
-    sc->translate(-10.0, 0.0);
-
-  if(CL_Keyboard::get_keycode(CL_KEY_UP))
-    sc->translate(0.0, 10.0);
-
-  if(CL_Keyboard::get_keycode(CL_KEY_DOWN))
-    sc->translate(0.0, -10.0);
-#endif 
-
-#if 0 // FIXME
-  float x_of = -sc->get_x_offset();
-  float y_of = -sc->get_y_offset();
-
-  x_of = Math::mid(sc->get_width()/2.0f,
-                   x_of,
-                   world->get_width() - 1 - sc->get_width()/2.0f);
-
-  y_of = Math::mid(sc->get_height()/2.0f,
-                   y_of,
-                   world->get_height() - 1 - sc->get_height()/2.0f);
-
-  sc->set_offset(-x_of, -y_of);
-
-
-  world->draw(*sc);
-  while (CL_Keyboard::get_keycode(CL_KEY_D))
-    {
-      world->draw(*sc);
-      CL_System::keep_alive();
-    }
-#endif
 }
 
 /** Pass a delta to the screen */
@@ -117,8 +76,23 @@ DemoSession::update(float delta)
   UNUSED_ARG(delta);
 
   // FIXME: Duplicate all timing code here?!
-  server->update();
-  update_demo();
+
+  if (!pause)
+    {
+      if (fast_forward)
+        {
+          for (int i = 0; i < 4; ++i)
+            {
+              server->update();
+              update_demo();
+            }
+        }
+      else
+        {
+          server->update();
+          update_demo();
+        }
+    }
 }
 
 void
@@ -148,19 +122,26 @@ DemoSession::update_demo()
 void
 DemoSession::on_pause_press()
 {
-  std::cout << "Pause Pressed" << std::endl;
-  for(std::vector<ServerEvent>::iterator i = events.begin(); i != events.end(); ++i)
+  if (0)
     {
-      std::cout << "Event: ";
-      i->write(std::cout);      
+      for(std::vector<ServerEvent>::iterator i = events.begin(); i != events.end(); ++i)
+        {
+          std::cout << "Event: ";
+          i->write(std::cout);      
+        }
     }
+
+  pause = !pause;
+
 }
 
 void
 DemoSession::on_fast_forward_press()
 {
-  std::cout << "Fast Forward Pressed: " << events.size() << " " << server->get_time() << std::endl;
-  //server->set_fast_forward(!server->get_fast_forward());
+  if (0)
+    std::cout << "Fast Forward Pressed: " << events.size() << " " << server->get_time() << std::endl;
+
+  fast_forward = !fast_forward;
 }
 
 void
