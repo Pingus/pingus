@@ -21,7 +21,6 @@
 #include "server.hpp"
 #include "pathname.hpp"
 #include "world.hpp"
-#include "demo_player.hpp"
 #include "components/pingus_counter.hpp"
 #include "gui/gui_manager.hpp"
 #include "display/scene_context.hpp"
