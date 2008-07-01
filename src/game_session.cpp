@@ -48,7 +48,9 @@ GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_scree
     pcounter     (0),
     playfield    (0),
     time_display (0),
-    small_map    (0)
+    small_map    (0),
+    pause(false),
+    fast_forward(false)
 {
   server = std::auto_ptr<Server>(new Server(plf));
 
@@ -82,8 +84,8 @@ GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_scree
   gui_manager->add(time_display, true);
 
   gui_manager->add(new ArmageddonButton(get_server(), Display::get_width() - 40,     Display::get_height() - 62), true);
-  gui_manager->add(new ForwardButton   (get_server(), Display::get_width() - 40 * 2, Display::get_height() - 62), true);
-  gui_manager->add(new PauseButton     (get_server(), Display::get_width() - 40 * 3, Display::get_height() - 62), true);
+  gui_manager->add(new ForwardButton   (this, Display::get_width() - 40 * 2, Display::get_height() - 62), true);
+  gui_manager->add(new PauseButton     (this, Display::get_width() - 40 * 3, Display::get_height() - 62), true);
 }
 
 GameSession::~GameSession ()
@@ -91,7 +93,7 @@ GameSession::~GameSession ()
 }
 
 void
-GameSession::update_server(const GameDelta& delta)
+GameSession::update_server(float delta)
 {
   // FIXME: Timing code could need another rewrite...
   if (server->is_finished())
@@ -128,7 +130,7 @@ GameSession::update_server(const GameDelta& delta)
   else
     {
       // how much time we have to account for while doing world updates
-      int time_passed = int(delta.get_time() * 1000) + world_delay;
+      int time_passed = int(delta * 1000) + world_delay;
       // how much time each world update represents
       int update_time = game_speed;
 
@@ -142,7 +144,7 @@ GameSession::update_server(const GameDelta& delta)
              ++i)
           {
             // This updates the world and all objects
-            server->update ();
+            update_server();
           }
       }
 
@@ -154,12 +156,29 @@ GameSession::update_server(const GameDelta& delta)
       int world_updates = 0;
 
       while ((world_updates+1)*update_time <= time_passed) {
-        server->update ();
+        update_server();
         world_updates++;
       }
       // save how far behind is the world compared to the actual time
       // so that we can account for that while updating in the next frame
       world_delay = time_passed - (world_updates*update_time);
+    }
+}
+
+void
+GameSession::update_server()
+{
+  if (!pause)
+    {
+      if (fast_forward)
+        {
+          for (int i = 0; i < 4; ++i)
+            server->update();
+        }
+      else
+        {
+            server->update();
+        }
     }
 }
 
@@ -189,8 +208,7 @@ GameSession::draw_background (DrawingContext& gc)
 void
 GameSession::update (const GameDelta& delta)
 {
-  update_server(delta);
-
+  update_server(delta.get_time());
   GUIScreen::update(delta);
   process_events(delta);
 }
@@ -296,13 +314,13 @@ GameSession:: on_escape_press ()
 void
 GameSession:: on_pause_press ()
 {
-  server->set_pause (!server->get_pause ());
+  pause = !pause;
 }
 
 void
 GameSession::on_fast_forward_press ()
 {
-  server->set_fast_forward(!server->get_fast_forward());
+  fast_forward = !fast_forward;
 }
 
 void
@@ -351,6 +369,30 @@ Actions::ActionName
 GameSession::get_action_name() const
 {
   return button_panel->get_action_name();
+}
+
+void
+GameSession::set_fast_forward(bool value)
+{
+  fast_forward = value;
+}
+
+bool
+GameSession::get_fast_forward() const
+{
+  return fast_forward;
+}
+
+void
+GameSession::set_pause(bool value)
+{
+  pause = value;
+}
+
+bool
+GameSession::get_pause() const
+{
+  return pause;
 }
 
 /* EOF */

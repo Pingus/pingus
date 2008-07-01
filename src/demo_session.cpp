@@ -137,7 +137,7 @@ DemoSession::update_demo()
       event.send(server.get());
       events.pop_back();
     }
-
+  
   // Check for unexpected things (might happen if the demo file is broken)
   if (!events.empty() && events.back().time_stamp < server->get_time())
     {
@@ -160,7 +160,7 @@ void
 DemoSession::on_fast_forward_press()
 {
   std::cout << "Fast Forward Pressed: " << events.size() << " " << server->get_time() << std::endl;
-  server->set_fast_forward(!server->get_fast_forward());
+  //server->set_fast_forward(!server->get_fast_forward());
 }
 
 void

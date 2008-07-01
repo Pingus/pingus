@@ -22,6 +22,7 @@
 #include "../resource.hpp"
 #include "action_button.hpp"
 #include "../server.hpp"
+#include "../game_session.hpp"
 #include "../world.hpp"
 #include "../display/drawing_context.hpp"
 #include "../display/display.hpp"
@@ -229,9 +230,9 @@ ArmageddonButton::on_primary_button_click (int x, int y)
   UNUSED_ARG(x);
   UNUSED_ARG(y);
 }
-
-ForwardButton::ForwardButton(Server* s, int x, int y)
-  : server (s),
+
+ForwardButton::ForwardButton(GameSession* s, int x, int y)
+  : session(s),
     x_pos (x), y_pos (y),
     background  (Resource::load_sprite("core/buttons/hbuttonbgb")),
     backgroundhl(Resource::load_sprite("core/buttons/hbuttonbg"))
@@ -244,7 +245,7 @@ ForwardButton::~ForwardButton () {}
 void
 ForwardButton::draw (DrawingContext& gc)
 {
-  if (server->get_fast_forward())
+  if (session->get_fast_forward())
     {
       gc.draw(backgroundhl, Vector2i(x_pos, y_pos));
     }
@@ -272,14 +273,14 @@ ForwardButton::is_at (int x, int y)
 void
 ForwardButton::on_primary_button_click (int x, int y)
 {
-  server->set_fast_forward(!server->get_fast_forward());
+  session->set_fast_forward(!session->get_fast_forward());
 
   UNUSED_ARG(x);
   UNUSED_ARG(y);
 }
-
-PauseButton::PauseButton(Server* s, int x, int y)
-  : server (s),
+
+PauseButton::PauseButton(GameSession* s, int x, int y)
+  : session(s),
     x_pos(x), y_pos(y),
     background  (Resource::load_sprite("core/buttons/hbuttonbgb")),
     backgroundhl(Resource::load_sprite("core/buttons/hbuttonbg"))
@@ -292,7 +293,7 @@ PauseButton::~PauseButton () {}
 void
 PauseButton::draw (DrawingContext& gc)
 {
-  if (server->get_pause())
+  if (session->get_pause())
     {
       gc.draw(backgroundhl, Vector2i(x_pos, y_pos));
     }
@@ -320,7 +321,7 @@ PauseButton::is_at (int x, int y)
 void
 PauseButton::on_primary_button_click (int x, int y)
 {
-  server->set_pause(!server->get_pause());
+  session->set_pause(!session->get_pause());
 
   UNUSED_ARG(x);
   UNUSED_ARG(y);

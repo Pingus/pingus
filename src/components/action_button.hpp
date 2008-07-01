@@ -27,6 +27,7 @@
 #include "../gui/component.hpp"
 
 class Server;
+class GameSession;
 class ActionHolder;
 class Vector;
 
@@ -38,10 +39,10 @@ class ArmageddonButton : public GUI::Component
 {
 private:
   Server* server;
-  int   x_pos;
-  int   y_pos;
-  bool  pressed;
-  float press_time;
+  int    x_pos;
+  int    y_pos;
+  bool   pressed;
+  float  press_time;
   Sprite sprite;
   Sprite background;
   Sprite backgroundhl;
@@ -69,7 +70,7 @@ private:
 class ForwardButton : public GUI::Component
 {
 private:
-  Server* server;
+  GameSession* session;
   int x_pos;
   int y_pos;
   Sprite surface;
@@ -77,7 +78,7 @@ private:
   Sprite backgroundhl;
 
 public:
-  ForwardButton(Server*, int x, int y);
+  ForwardButton(GameSession*, int x, int y);
   virtual ~ForwardButton();
 
   void draw(DrawingContext& gc);
@@ -98,7 +99,7 @@ private:
 class PauseButton : public GUI::Component
 {
 private:
-  Server* server;
+  GameSession* session;
   int x_pos;
   int y_pos;
   Sprite surface;
@@ -106,7 +107,7 @@ private:
   Sprite backgroundhl;
 
 public:
-  PauseButton(Server*, int x, int y);
+  PauseButton(GameSession*, int x, int y);
   virtual ~PauseButton();
 
   void draw(DrawingContext& gc);

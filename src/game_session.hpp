@@ -56,14 +56,17 @@ private:
   Playfield*     playfield;
   TimeDisplay*   time_display;
   SmallMap*      small_map;
-  bool enabled;
+
+  bool pause;
+  bool fast_forward;
 
 public:
   GameSession(const PingusLevel& arg_plf, bool arg_show_result_screen);
   ~GameSession ();
 
   /** Pass a delta to the screen */
-  void update_server(const GameDelta& delta);
+  void update_server(float delta);
+  void update_server();
 
   // -- Client stuff
 
@@ -91,6 +94,12 @@ public:
   void on_action_axis_move (float);
 
   Actions::ActionName get_action_name() const;
+
+  void set_fast_forward(bool value);
+  bool get_fast_forward() const;
+
+  void set_pause(bool value);
+  bool get_pause() const;
 
 private:
   void process_events (const GameDelta& events);

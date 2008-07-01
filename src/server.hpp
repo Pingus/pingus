@@ -42,9 +42,6 @@ protected:
 
   std::auto_ptr<GoalManager>  goal_manager;
 
-  bool fast_forward;
-  bool pause; 
-
 public:
   Server(const PingusLevel& arg_plf);
   ~Server();
@@ -67,12 +64,6 @@ public:
   void send_finish_event();
   void send_armageddon_event();
   void send_pingu_action_event(Pingu* pingu, Actions::ActionName action);
-
-  void set_fast_forward(bool value);
-  bool get_fast_forward();
-
-  void set_pause(bool);
-  bool get_pause();
 
 private:
   void record(const ServerEvent& event);

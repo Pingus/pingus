@@ -45,9 +45,7 @@ Server::Server(const PingusLevel& arg_plf)
   : plf(arg_plf),
     world(new World (plf)),
     action_holder (plf),
-    goal_manager(new GoalManager(this)),
-    fast_forward(false),
-    pause(false)
+    goal_manager(new GoalManager(this))
 {
 }
 
@@ -64,24 +62,8 @@ Server::get_world()
 void
 Server::update()
 {
-  if (fast_forward && !pause)
-    {
-      // To let the game run faster we just update it multiple
-      // times
-      for (int i = 0; i < 4; ++i)
-	{
-          world->update();
-          goal_manager->update();
-	}
-    }
-  else
-    {
-      if (!pause)
-        {
-          world->update();
-          goal_manager->update();
-        }
-    }
+  world->update();
+  goal_manager->update();
 }
 
 void
@@ -131,36 +113,10 @@ Server::get_time ()
 }
 
 void
-Server::set_fast_forward(bool value)
-{
-  fast_forward = value;
-}
-
-bool
-Server::get_fast_forward()
-{
-  return fast_forward;
-}
-
-void
-Server::set_pause(bool value)
-{
-  pause = value;
-}
-
-bool
-Server::get_pause()
-{
-  return pause;
-}
-
-void
 Server::send_finish_event()
 {
   record(ServerEvent::make_finish_event(get_time()));
-
   goal_manager->set_abort_goal();
-  set_pause(false);
 }
 
 #if 0
