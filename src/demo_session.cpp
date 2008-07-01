@@ -75,9 +75,15 @@ DemoSession::update(float delta)
 {
   UNUSED_ARG(delta);
 
+  if (server->is_finished())
+    {
+      ScreenManager::instance()->pop_screen();
+    }
+  else
+    {
   // FIXME: Duplicate all timing code here?!
 
-  if (!pause)
+      if (!pause)
     {
       if (fast_forward)
         {
@@ -92,6 +98,7 @@ DemoSession::update(float delta)
           server->update();
           update_demo();
         }
+    }
     }
 }
 
