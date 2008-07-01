@@ -32,9 +32,15 @@
 
 
 using namespace Actions;
-
-ActionButton::ActionButton(ActionHolder* h)
-: action_holder(h){}
+
+ActionButton::ActionButton(ActionHolder* h,
+                           int x, int y, ActionName name_, int owner_id)
+  : action_holder(h),
+    background (Resource::load_sprite("core/buttons/buttonbackground")),
+    backgroundhl (Resource::load_sprite("core/buttons/buttonbackgroundhl"))
+{
+  init(x, y, name_, owner_id);
+}
 
 ActionButton::~ActionButton() {}
 
@@ -65,19 +71,8 @@ ActionButton::get_action_name()
   return name;
 }
 
-VerticalActionButton::VerticalActionButton(ActionHolder* h,
-                                           int x, int y, ActionName name_, int owner_id)
-  : ActionButton(h),
-    background (Resource::load_sprite("core/buttons/buttonbackground")),
-    backgroundhl (Resource::load_sprite("core/buttons/buttonbackgroundhl"))
-{
-  init(x, y, name_, owner_id);
-}
-
-VerticalActionButton::~VerticalActionButton () {}
-
 bool
-VerticalActionButton::is_at (int x, int y)
+ActionButton::is_at (int x, int y)
 {
   if (x > x_pos && x < x_pos + 60
       && y > y_pos && y <= y_pos + 35)
@@ -91,7 +86,7 @@ VerticalActionButton::is_at (int x, int y)
 }
 
 void
-VerticalActionButton::draw (DrawingContext& gc)
+ActionButton::draw (DrawingContext& gc)
 {
   if (pressed)
     {
@@ -150,7 +145,7 @@ VerticalActionButton::draw (DrawingContext& gc)
       gc.print_center(myfont, x_pos + 46, y_pos + 5, str);
     }
 }
-
+
 ArmageddonButton::ArmageddonButton(Server* s, int x, int y)
   : server (s),
     x_pos (x),
@@ -326,6 +321,5 @@ PauseButton::on_primary_button_click (int x, int y)
   UNUSED_ARG(x);
   UNUSED_ARG(y);
 }
-
-
+
 /* EOF */

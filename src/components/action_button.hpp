@@ -60,9 +60,7 @@ private:
   ArmageddonButton (const ArmageddonButton&);
   ArmageddonButton& operator= (const ArmageddonButton&);
 };
-
-// ----------------- snip --------------------
-
+
 /** Fast Forward button, press it to let the game run faster, press it
     again to return to normal speed
 
@@ -89,9 +87,7 @@ private:
   ForwardButton (const ForwardButton&);
   ForwardButton& operator= (const ForwardButton&);
 };
-
-// ----------------- snip --------------------
-
+
 /** Pause button, press it to pause the game, press it again to
     continue
 
@@ -118,15 +114,17 @@ private:
   PauseButton (const PauseButton&);
   PauseButton& operator= (const PauseButton&);
 };
-
-// ----------------- snip --------------------
-
+
 /** The button class manage a simple button for the button_panel. It
     keeps his position, his surfaces and his font. */
 class ActionButton : public GUI::Component
 {
 protected:
+  ActionHolder* action_holder;
   Sprite sprite;
+  Sprite background;
+  Sprite backgroundhl;
+
   int x_pos;
   int y_pos;
   Font    font;
@@ -136,53 +134,26 @@ protected:
   Actions::ActionName name;
   bool is_multi_direct;
 
-  ActionHolder* action_holder;
-
 public:
   bool pressed;
 
-  ActionButton(ActionHolder*);
+  ActionButton(ActionHolder* h, int x, int y, Actions::ActionName name_, int owner_id);
   virtual ~ActionButton();
 
   void init(int x, int y, Actions::ActionName name_, int owner_id);
 
-  /// Not used.
+  void draw(DrawingContext& gc);
   void update(float delta);
 
   /// Returns the name of the action the button represents.
   Actions::ActionName get_action_name();
 
-  virtual bool   is_at(int x, int y) = 0;
+  bool is_at(int x, int y);
 
 private:
   ActionButton (const ActionButton&);
   ActionButton& operator= (const ActionButton&);
 };
-
-// ----------------- snip --------------------
-
-/** Button which represents an action, one you click it the current
-    action will be set to the action represented by the button.
-
-    \sa Client */
-class VerticalActionButton : public ActionButton
-{
-private:
-  Sprite background;
-  Sprite backgroundhl;
-
-public:
-  VerticalActionButton(ActionHolder* h, int x, int y, Actions::ActionName name, int owner_id);
-  virtual ~VerticalActionButton();
-
-  void draw(DrawingContext& gc);
-  bool is_at (int x, int y);
-
-private:
-  VerticalActionButton (const VerticalActionButton&);
-  VerticalActionButton& operator= (const VerticalActionButton&);
-};
-
 
 #endif /* ACTIONBUTTON */
 

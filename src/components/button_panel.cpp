@@ -53,10 +53,10 @@ ButtonPanel::ButtonPanel(GameSession* s, int arg_x_pos, int arg_y_pos)
   for(std::vector<ActionName>::iterator i = actions.begin();
       i != actions.end(); ++i)
     {
-      a_buttons.push_back(new VerticalActionButton (aholder,
-                                                    x_pos, int(i - actions.begin()) * 38 + y_pos,
-						    *i,
-						    0)); //FIXMEcontroller->get_owner ()));
+      a_buttons.push_back(new ActionButton (aholder,
+                                            x_pos, int(i - actions.begin()) * 38 + y_pos,
+                                            *i,
+                                            0)); //FIXMEcontroller->get_owner ()));
     }
 
   if (a_buttons.empty())
