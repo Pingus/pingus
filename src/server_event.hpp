@@ -23,7 +23,7 @@
 #include <iosfwd>
 #include "file_reader.hpp"
 #include "pingu_enums.hpp"
-
+#include "math/vector3f.hpp"
 
 class Server;
 
@@ -49,6 +49,8 @@ public:
   /** Id of the pingu which should get the actions */
   int pingu_id;
 
+  Vector3f pos;
+
   /** action name */
   Actions::ActionName pingu_action;
 
@@ -65,7 +67,7 @@ public:
   // Pseudo constructors
   static ServerEvent make_finish_event(int time);
   static ServerEvent make_armageddon_event(int time);
-  static ServerEvent make_pingu_action_event(int t, int id, Actions::ActionName action);
+  static ServerEvent make_pingu_action_event(int t, int id, const Vector3f& pos, Actions::ActionName action);
 };
 
 

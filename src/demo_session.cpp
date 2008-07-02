@@ -62,7 +62,8 @@ DemoSession::DemoSession(const Pathname& pathname)
 
   // Create server
   server   = std::auto_ptr<Server>(new Server(PingusLevel(Pathname("levels/" + demo->get_levelname()  + ".pingus", 
-                                                                   Pathname::DATA_PATH)), false));
+                                                                   Pathname::DATA_PATH)), 
+                                              false));
 
   // Create GUI
   pcounter = new PingusCounter(server.get());

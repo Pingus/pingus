@@ -111,7 +111,7 @@ Server::send_armageddon_event ()
 void
 Server::send_pingu_action_event (Pingu* pingu, Actions::ActionName action)
 {
-  record(ServerEvent::make_pingu_action_event(get_time(), pingu->get_id(), action));
+  record(ServerEvent::make_pingu_action_event(get_time(), pingu->get_id(), pingu->get_pos(), action));
 
   if (action_holder.pop_action(action))
     {

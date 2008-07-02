@@ -23,6 +23,7 @@
 #include "server.hpp"
 #include "world.hpp"
 #include "pingu_holder.hpp"
+#include "pingu.hpp"
 #include "string_util.hpp"
 
 ServerEvent::ServerEvent() :
@@ -50,6 +51,7 @@ ServerEvent::ServerEvent(FileReader reader)
       type = PINGU_ACTION_EVENT;
       reader.read_int ("time",   time_stamp);
       reader.read_int ("id",     pingu_id);
+      reader.read_vector("pos",    pos);
       reader.read_enum("action", pingu_action, Actions::action_from_string);
     }
   else
@@ -76,6 +78,7 @@ ServerEvent::write(std::ostream& out) const
       out << "(pingu-action "
           << "(time " << time_stamp << ") "
           << "(id " << pingu_id << ") "
+          << "(pos " << pos.x << " " << pos.y << " " << pos.z << ") "
           << "(action \"" << Actions::action_to_string(pingu_action) << "\"))"
           << std::endl;
       break;
@@ -104,12 +107,13 @@ ServerEvent::make_armageddon_event(int t)
 }
 
 ServerEvent
-ServerEvent::make_pingu_action_event(int t, int id, Actions::ActionName action)
+ServerEvent::make_pingu_action_event(int t, int id, const Vector3f& pos, Actions::ActionName action)
 {
   ServerEvent event;
   event.type         = PINGU_ACTION_EVENT;
   event.time_stamp   = t;
   event.pingu_id     = id;
+  event.pos          = pos;
   event.pingu_action = action;
   return event;
 }
@@ -130,6 +134,7 @@ ServerEvent::send(Server* server)
     case PINGU_ACTION_EVENT:
       {
 	Pingu* pingu = server->get_world()->get_pingus()->get_pingu(pingu_id);
+        std::cout << "Apply: " << pos << " == " << pingu->get_pos() << std::endl;
 	if (pingu)
 	  {
 	    server->send_pingu_action_event(pingu,
