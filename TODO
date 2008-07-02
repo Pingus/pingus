@@ -56,6 +56,8 @@ Roadmap for Pingus 0.8.0:
 
 * shadow in levelset background is wrong
 
+* split blackboard graphic into foreground and background, draw seperatly to get cleaner resize
+
 New Features
 ============
 
@@ -186,7 +188,7 @@ Bugs:
 
 * Level Converter needs to be finalized:
 
-  - convert all levels and check all classic levels for issues
+  - convert all levels and check all classic levels for issues, also compare with xskat
 
   - level converter has a bug that causes some object types to be
     ignored (startpos and likely the other more excotic worldobj

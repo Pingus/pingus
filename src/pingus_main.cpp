@@ -386,7 +386,7 @@ PingusMain::parse_args(int argc, char** argv)
           case 'v':
             std::cout << "Pingus " << VERSION << std::endl;
               std::cout << "\n"
-              "Copyright (C) 1998-2007 Ingo Ruhnke <grumbel@gmx.de>\n"
+              "Copyright (C) 1998-2008 Ingo Ruhnke <grumbel@gmx.de>\n"
               "See the file AUTHORS for a complete list of contributors.\n\n"
               "There is NO warranty.  You may redistribute this software\n"
               "under the terms of the GNU General Public License.\n"
