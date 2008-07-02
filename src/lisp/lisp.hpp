@@ -1,4 +1,4 @@
-//  $Id$
+//  $Id: lisp.hpp 2986 2007-08-17 16:20:09Z grumbel $
 //
 //  Copyright (C) 2004 Matthias Braun <matze@braunis.de>
 //  code in this file based on lispreader from Mark Probst

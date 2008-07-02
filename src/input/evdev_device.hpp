@@ -1,21 +1,20 @@
-//  $Id$
+//  $Id: evdev_device.hpp 3579 2008-06-28 16:04:03Z plouj $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 //
-//  This program is free software; you can redistribute it and/or
-//  modify it under the terms of the GNU General Public License
-//  as published by the Free Software Foundation; either version 2
-//  of the License, or (at your option) any later version.
-//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//  
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU General Public License
-//  along with this program; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef HEADER_EVDEV_DEVICE_HPP
 #define HEADER_EVDEV_DEVICE_HPP

@@ -1,4 +1,4 @@
-//  $Id$
+//  $Id: lexer.cpp 3284 2007-10-18 17:54:01Z grumbel $
 //
 //  Copyright (C) 2004 Matthias Braun <matze@braunis.de>
 //  code in this file based on lispreader from Mark Probst
