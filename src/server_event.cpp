@@ -150,9 +150,9 @@ ServerEvent::send(Server* server)
     case PINGU_ACTION_EVENT:
       {
 	Pingu* pingu = server->get_world()->get_pingus()->get_pingu(pingu_id);
-        std::cout << "Apply: " << pos << " == " << pingu->get_pos() << std::endl;
 	if (pingu)
 	  {
+            std::cout << "Apply: " << pos << " == " << pingu->get_pos() << std::endl;
 	    server->send_pingu_action_event(pingu,
 					    pingu_action);
 	  }
