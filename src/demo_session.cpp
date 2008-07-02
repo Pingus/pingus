@@ -98,7 +98,7 @@ DemoSession::~DemoSession()
 void
 DemoSession::update(float delta)
 {
-  UNUSED_ARG(delta);
+  GUIScreen::update(delta);
 
   if (server->is_finished())
     {
