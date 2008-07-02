@@ -44,8 +44,6 @@ public:
   /** Pass a delta to the screen */
   virtual void update (const GameDelta& delta) =0;
 
-  virtual unsigned int time_till_next_update() { return 0; }
-
   /** Called once the screen gets activated and becomes the current
       screen */
   virtual void on_startup () {}
