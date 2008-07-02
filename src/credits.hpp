@@ -26,12 +26,10 @@
 #include "font.hpp"
 #include "display/scene_context.hpp"
 #include "sprite.hpp"
-
+
 class Credits : public GUIScreen
 {
 private:
-  static Credits* instance_;
-
   SceneContext* scene_context;
 
   bool fast_scrolling;
@@ -59,28 +57,21 @@ public:
   Credits ();
   virtual ~Credits ();
 
-  static void init();
-  static void deinit();
-
   void update (float);
   void draw_background (DrawingContext& gc);
 
   void on_startup ();
 
-  static Credits* instance ();
-
   void on_pause_press ();
   void on_fast_forward_press ();
   void on_escape_press ();
-
 
 private:
   Credits (const Credits&);
   Credits& operator= (const Credits&);
 
 };
-
-
+
 #endif
 
 /* EOF */

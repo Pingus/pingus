@@ -117,7 +117,7 @@ PingusMenu::setup_game_menu()
 void
 PingusMenu::show_credits()
 {
-      ScreenManager::instance()->push_screen(Credits::instance(), false);
+  ScreenManager::instance()->push_screen(new Credits(), true);
 }
 
 void

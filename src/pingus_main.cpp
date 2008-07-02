@@ -676,7 +676,7 @@ PingusMain::start_game ()
     }
   else if (cmd_options.credits.is_set() && cmd_options.credits.get())
     { // just show the credits screen
-      ScreenManager::instance()->push_screen(Credits::instance(), false);
+      ScreenManager::instance()->push_screen(new Credits(), true);
     }
   else if (cmd_options.font.is_set() && cmd_options.font.get())
     { // run the Font Test
@@ -816,7 +816,6 @@ PingusMain::init_pingus()
   PingusMenuManager::init();
   Sound::PingusSound::init();
   PinguActionFactory::init();
-  Credits::init();
   WorldMapNS::WorldMapManager::instance();
 
   fps_counter.init();
@@ -830,7 +829,6 @@ PingusMain::deinit_pingus()
   console.deinit();
 
   Fonts::deinit();
-  Credits::deinit();
   PinguActionFactory::deinit();
   Sound::PingusSound::deinit();
   PingusMenuManager::deinit();

@@ -59,8 +59,6 @@ public:
   }
 };
 
-Credits* Credits::instance_ = 0;
-
 Credits::Credits()
 {
   scene_context = new SceneContext();
@@ -310,28 +308,6 @@ Credits::on_startup ()
 {
   offset = (float)Display::get_height() - 50;
   //PingusSound::play_music("pingus-5.it");
-}
-
-Credits*
-Credits::instance ()
-{
-  if (instance_)
-    return instance_;
-  else
-    return instance_ = new Credits ();
-}
-
-void
-Credits::init()
-{
-  instance_ = 0;
-}
-
-void
-Credits::deinit()
-{
-  delete instance_;
-  instance_ = 0;
 }
 
 void

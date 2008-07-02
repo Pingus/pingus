@@ -250,7 +250,7 @@ StoryScreenComponent::next_text()
               // Check if final credits have been seen
               StatManager::instance()->get_bool("credits-seen", credits_seen);
               if (!credits_seen)
-                ScreenManager::instance()->replace_screen(Credits::instance(), false);
+                ScreenManager::instance()->replace_screen(new Credits(), true);
               else
                 ScreenManager::instance()->replace_screen(WorldMapNS::WorldMapManager::instance());
             }
