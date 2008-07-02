@@ -41,6 +41,11 @@ ServerEvent::ServerEvent(FileReader reader)
       type = ARMAGEDDON_EVENT;
       reader.read_int("time", time_stamp);
     }
+  else if (reader.get_name() == "end")
+    {
+      type = END_EVENT;
+      reader.read_int("time", time_stamp);
+    }
   else if (reader.get_name() == "finish")
     {
       type = FINISH_EVENT;
@@ -98,6 +103,15 @@ ServerEvent::make_finish_event(int t)
 }
 
 ServerEvent
+ServerEvent::make_end_event(int t)
+{
+  ServerEvent event;
+  event.type       = END_EVENT;
+  event.time_stamp = t;
+  return event; 
+}
+
+ServerEvent
 ServerEvent::make_armageddon_event(int t)
 {
   ServerEvent event;
@@ -129,6 +143,10 @@ ServerEvent::send(Server* server)
 
     case FINISH_EVENT:
       server->send_finish_event();      
+      break;
+
+    case END_EVENT:
+      // do nothing
       break;
 
     case PINGU_ACTION_EVENT:

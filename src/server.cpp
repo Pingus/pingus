@@ -85,6 +85,8 @@ Server::Server(const PingusLevel& arg_plf,
 
 Server::~Server ()
 {
+  if (demostream.get()) // FIXME: Any better place to put this? 
+    (*demostream) << "(end (time " << get_time() << "))" << std::endl;
 }
 
 World*
@@ -126,7 +128,7 @@ void
 Server::record(const ServerEvent& event)
 {
   if (demostream.get())
-  event.write(*demostream);
+    event.write(*demostream);
 }
 
 bool

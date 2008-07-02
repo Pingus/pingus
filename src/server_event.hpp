@@ -36,6 +36,7 @@ class ServerEvent
 public:
   enum Type { ARMAGEDDON_EVENT,
               FINISH_EVENT,
+              END_EVENT,
 	      PINGU_ACTION_EVENT };
 
   /** The type of event */
@@ -65,6 +66,7 @@ public:
   void send(Server*);
 
   // Pseudo constructors
+  static ServerEvent make_end_event(int time);
   static ServerEvent make_finish_event(int time);
   static ServerEvent make_armageddon_event(int time);
   static ServerEvent make_pingu_action_event(int t, int id, const Vector3f& pos, Actions::ActionName action);

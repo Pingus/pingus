@@ -262,9 +262,4 @@ StoryScreenComponent::next_text()
     }
 }
 
-
-// Local Variables: ***
-// coding:iso-latin-1
-// End: ***
-
 /* EOF */
