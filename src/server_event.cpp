@@ -17,6 +17,8 @@
 
 #include <assert.h>
 #include <iostream>
+#include <boost/format.hpp>
+
 #include "pingus_error.hpp"
 #include "server.hpp"
 #include "world.hpp"
@@ -24,6 +26,16 @@
 #include "pingu.hpp"
 #include "string_util.hpp"
 
+std::string float2string(float value)
+{
+  std::string str = "0x";
+  for(size_t i = 0; i < sizeof(value); ++i)
+    {
+      str += (boost::format("%02x") % int(reinterpret_cast<uint8_t*>(&value)[i])).str();
+    }
+  return str;
+}
+
 ServerEvent::ServerEvent() :
 	type(PINGU_ACTION_EVENT),
 	time_stamp(0),
@@ -152,7 +164,12 @@ ServerEvent::send(Server* server)
 	Pingu* pingu = server->get_world()->get_pingus()->get_pingu(pingu_id);
 	if (pingu)
 	  {
-            std::cout << "Apply: " << pos << " == " << pingu->get_pos() << std::endl;
+            std::cout << "Apply: "
+              //<< float2string(pos.x) << "," << float2string(pos.y) << " == "
+                      << float2string(pingu->get_pos().x) << "," << float2string(pingu->get_pos().y) << " "
+              //<< "(" << pos.x << ", " << pos.y << ") == "
+              //        << "(" << pingu->get_pos().x << ", " << pingu->get_pos().y << ")"
+                      << std::endl;
 	    server->send_pingu_action_event(pingu,
 					    pingu_action);
 	  }
