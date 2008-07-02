@@ -25,6 +25,11 @@
 #include <vector>
 #include "server_event.hpp"
 
+namespace Input {
+class Event;
+class ScrollEvent;
+}
+
 class Server;
 class XMLPDF;
 class DemoPlayer;

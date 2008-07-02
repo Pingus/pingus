@@ -18,6 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <boost/bind.hpp>
+#include <iostream>
+
 #include "string_util.hpp"
 #include "button.hpp"
 #include "editor_screen.hpp"

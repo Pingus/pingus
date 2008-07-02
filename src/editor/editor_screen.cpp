@@ -247,27 +247,21 @@ EditorScreen::draw(DrawingContext& gc)
 }
 
 void
-EditorScreen::update(const GameDelta &delta)
+EditorScreen::update(const Input::Event& event)
 {
-  GUIScreen::update(delta);
+  GUIScreen::update(event);
 
-  const Input::EventLst& events = delta.get_events ();
-  for (Input::EventLst::const_iterator i = events.begin ();
-       i != events.end ();
-       ++i)
+  switch (event.type)
     {
-      switch (i->type)
-	{
-          case Input::SCROLLER_EVENT_TYPE:
-            viewport->set_scroll_pos(viewport->get_scroll_pos() -
-                                     Vector2f(i->scroll.x_delta,
-                                              i->scroll.y_delta));
-            break;
+      case Input::SCROLLER_EVENT_TYPE:
+        viewport->set_scroll_pos(viewport->get_scroll_pos() -
+                                 Vector2f(event.scroll.x_delta,
+                                          event.scroll.y_delta));
+        break;
 
-          default:
-            // other events are for most part handled by the GUIScreen/GUIManager
-            break;
-	}
+      default:
+        // other events are for most part handled by the GUIScreen/GUIManager
+        break;
     }
 }
 

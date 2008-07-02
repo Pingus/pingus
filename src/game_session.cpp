@@ -28,7 +28,7 @@
 #include "components/time_display.hpp"
 #include "components/smallmap.hpp"
 #include "components/playfield.hpp"
-
+#include "input/event.hpp"
 #include "sound/sound.hpp"
 #include "math.hpp"
 #include "game_session.hpp"
@@ -192,69 +192,63 @@ GameSession::draw_background (DrawingContext& gc)
 }
 
 void
-GameSession::update (const GameDelta& delta)
+GameSession::update(float delta)
 {
-  update_server(delta.get_time());
+  update_server(delta);
   GUIScreen::update(delta);
-  process_events(delta);
 }
 
 void
-GameSession::process_events (const GameDelta& delta)
+GameSession::update(const Input::Event& event)
 {
-  const Input::EventLst& events = delta.get_events();
+  GUIScreen::update(event);
 
-  for (Input::EventLst::const_iterator i = events.begin();
-       i != events.end();
-       ++i)
+  //std::cout << "Events: " << event.get_type () << std::endl;
+
+  switch (event.type)
     {
-      //std::cout << "Events: " << (*i)->get_type () << std::endl;
+      case Input::BUTTON_EVENT_TYPE:
+        {
+          const Input::ButtonEvent& ev = event.button;
 
-      switch (i->type)
-	{
-          case Input::BUTTON_EVENT_TYPE:
-          {
-            const Input::ButtonEvent& ev = i->button;
+          if (ev.state == Input::BUTTON_PRESSED)
+            {
+              if (ev.name >= Input::ACTION_1_BUTTON && ev.name <= Input::ACTION_10_BUTTON)
+                {
+                  button_panel->set_button(ev.name - Input::ACTION_1_BUTTON);
+                }
+              else if (ev.name == Input::ACTION_DOWN_BUTTON)
+                {
+                  button_panel->next_action();
+                }
+              else if (ev.name == Input::ACTION_UP_BUTTON)
+                {
+                  button_panel->previous_action();
+                }
+            }
+        }
+        break;
 
-            if (ev.state == Input::BUTTON_PRESSED)
-              {
-                if (ev.name >= Input::ACTION_1_BUTTON && ev.name <= Input::ACTION_10_BUTTON)
-                  {
-                    button_panel->set_button(ev.name - Input::ACTION_1_BUTTON);
-                  }
-                else if (ev.name == Input::ACTION_DOWN_BUTTON)
-                  {
-                    button_panel->next_action();
-                  }
-                else if (ev.name == Input::ACTION_UP_BUTTON)
-                  {
-                    button_panel->previous_action();
-                  }
-              }
-          }
-	  break;
+      case Input::POINTER_EVENT_TYPE:
+        // Ignore, is handled in GUIScreen
+        break;
 
-	case Input::POINTER_EVENT_TYPE:
-					// Ignore, is handled in GUIScreen
-	  break;
+      case Input::AXIS_EVENT_TYPE:
+        // ???
+        process_axis_event (event.axis);
+        break;
 
-	case Input::AXIS_EVENT_TYPE:
-          // ???
-	  process_axis_event (i->axis);
-	  break;
+      case Input::SCROLLER_EVENT_TYPE:
+        process_scroll_event(event.scroll);
+        break;
 
-        case Input::SCROLLER_EVENT_TYPE:
-          process_scroll_event(i->scroll);
-          break;
+      case Input::KEYBOARD_EVENT_TYPE:
+        break;
 
-        case Input::KEYBOARD_EVENT_TYPE:
-          break;
-
-	default:
-	  // unhandled event
-	  std::cout << "GameSession::process_events (): unhandled event: " << i->type << std::endl;
-	  break;
-	}
+      default:
+        // unhandled event
+        std::cout << "GameSession::process_events (): unhandled event: " << event.type << std::endl;
+        break;
     }
 }
 

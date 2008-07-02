@@ -82,10 +82,16 @@ PingusMenuManager::draw (DrawingContext& gc)
 }
 
 void
-PingusMenuManager::update (const GameDelta& delta)
+PingusMenuManager::update(float delta)
 {
-  background.update (delta.get_time ());
-  menu_stack.back()->update (delta);
+  background.update(delta);
+  menu_stack.back()->update(delta);
+}
+
+void
+PingusMenuManager::update(const Input::Event& event)
+{
+  menu_stack.back()->update(event);
 }
 
 void

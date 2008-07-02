@@ -19,6 +19,8 @@
 
 #include <set>
 #include <boost/bind.hpp>
+#include <iostream>
+
 #include "config_manager.hpp"
 #include "globals.hpp"
 #include "gettext.h"

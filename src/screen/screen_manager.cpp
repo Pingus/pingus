@@ -19,6 +19,7 @@
 
 #include "SDL.h"
 #include <iostream>
+#include "../delta_manager.hpp"
 #include "../globals.hpp"
 #include "math/size.hpp"
 #include "pathname.hpp"
@@ -84,17 +85,18 @@ ScreenManager::display()
 	  continue; // skip this frame
 	}
 
+      last_screen = get_current_screen();
+            
       // update the input
       input_manager.update(time_delta);
-
-      // Fill the delta with values
-      GameDelta delta(time_delta, delta_manager.get_absolute(),  
-                      input_controller->poll_events());
-
-      last_screen = get_current_screen();
-
-      // Most likely the screen will get changed in this update call
-      get_current_screen()->update (delta);
+      std::vector<Input::Event> events = input_controller->poll_events();
+      for(std::vector<Input::Event>::iterator i = events.begin(); 
+          i != events.end() && last_screen == get_current_screen(); 
+          ++i)
+        {
+          get_current_screen()->update(*i);
+        }
+      get_current_screen()->update(time_delta);
 
       if (cursor)
         cursor->update(time_delta);
@@ -257,7 +259,7 @@ ScreenManager::real_clear()
 }
 
 void
-ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
+ScreenManager::fade_over(ScreenPtr& old_screen, ScreenPtr& new_screen)
 {
   DeltaManager delta_manager;
   float passed_time = 0;

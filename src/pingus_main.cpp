@@ -63,7 +63,6 @@ extern "C" {
 #include "command_line.hpp"
 
 #include "screen/screen_manager.hpp"
-#include "dummy_screen.hpp"
 // #include "gui/input_debug_screen.hpp"
 #include "path_manager.hpp"
 #include "pingus_main.hpp"

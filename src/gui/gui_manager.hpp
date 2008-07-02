@@ -43,17 +43,13 @@ class GUIManager : public GroupComponent
 private:
   Vector2i mouse_pos;
 
-  void process_input (const GameDelta& delta);
-  void process_pointer_event (const Input::PointerEvent& event);
-  void process_button_event (unsigned int time_stamp, const Input::ButtonEvent& event);
-  void process_keyboard_event (const Input::KeyboardEvent& event);
-
 public:
   GUIManager();
   GUIManager(const Rect&);
   virtual ~GUIManager ();
 
-  void update(const GameDelta& delta);
+  virtual void update(float delta);
+  virtual void update(const Input::Event& event);
 
 private:
   GUIManager (const GUIManager&);

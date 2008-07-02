@@ -40,15 +40,12 @@ public:
   virtual ~GUIScreen ();
 
   /** Draw this screen */
-  virtual void draw_foreground (DrawingContext& gc) { UNUSED_ARG(gc); }
-  virtual void draw_background (DrawingContext& gc) { UNUSED_ARG(gc); }
+  virtual void draw_foreground (DrawingContext&) {}
+  virtual void draw_background (DrawingContext&) {}
   virtual bool draw(DrawingContext& gc);
 
-  /** Pass a game delta to the screen */
-  virtual void update (const GameDelta& delta);
-
-  /** */
-  virtual void update (float) {}
+  virtual void update (const Input::Event& event);
+  virtual void update (float);
 
   virtual void on_pause_press () {}
   virtual void on_fast_forward_press () {}

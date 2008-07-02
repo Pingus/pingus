@@ -50,7 +50,6 @@ public:
   ~AddOnMenu();
   
   void draw_background (DrawingContext& gc);
-  void update (const GameDelta& delta);
   void on_escape_press ();
 
 private:

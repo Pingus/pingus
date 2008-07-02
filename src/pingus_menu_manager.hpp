@@ -50,7 +50,8 @@ public:
   virtual ~PingusMenuManager();
 
   bool draw(DrawingContext& gc);
-  void update(const GameDelta&);
+  void update(float delta);
+  void update(const Input::Event& event);
 
   /// Exit the menu manager (which means to exit the while() loop in display ())
   void show_exit_menu ();

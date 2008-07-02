@@ -26,6 +26,12 @@
 #include "pingus_level.hpp"
 #include "pingu_enums.hpp"
 
+namespace Input {
+class ScrollEvent;
+class AxisEvent;
+class Event;
+}
+
 class ButtonPanel;
 class PingusCounter;
 class Playfield;
@@ -78,7 +84,8 @@ public:
   void set_finished();
 
   /** Update all parts of the world */
-  void update (const GameDelta&);
+  void update (float delta);
+  void update (const Input::Event& event);
   void draw_background (DrawingContext& gc);
 
   ButtonPanel* get_button_panel () { return button_panel; }
@@ -102,7 +109,6 @@ public:
   bool get_pause() const;
 
 private:
-  void process_events (const GameDelta& events);
   void process_scroll_event (const Input::ScrollEvent&);
   void process_axis_event (const Input::AxisEvent&);
 

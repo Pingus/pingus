@@ -19,6 +19,8 @@
 
 #include <boost/function.hpp>
 #include <boost/bind.hpp>
+#include <iostream>
+
 #include "math.hpp"
 #include "server.hpp"
 #include "pathname.hpp"

@@ -22,7 +22,6 @@
 #include "../globals.hpp"
 #include "../input/event.hpp"
 #include "display/display.hpp"
-#include "screen/game_delta.hpp"
 #include "gui_manager.hpp"
 
 using namespace Input;
@@ -44,62 +43,57 @@ GUIManager::GUIManager(const Rect& rect)
 GUIManager::~GUIManager ()
 {
 }
+
 
 void
-GUIManager::update(const GameDelta& delta)
+GUIManager::update(float delta)
 {
-  process_input (delta);
-  GroupComponent::update(delta.get_time());
+  GroupComponent::update(delta);
 }
 
 void
-GUIManager::process_input(const GameDelta& delta)
+GUIManager::update(const Input::Event& event)
 {
-  const std::vector<Input::Event>& events = delta.get_events();
-
-  for (std::vector<Input::Event>::const_iterator i = events.begin (); i != events.end (); ++i)
+  switch (event.type)
     {
-      switch (i->type)
-	{
-          case Input::POINTER_EVENT_TYPE:
-            mouse_pos.x = int(i->pointer.x);
-            mouse_pos.y = int(i->pointer.y);
-            on_pointer_move(mouse_pos.x, mouse_pos.y);
-            break;
+      case Input::POINTER_EVENT_TYPE:
+        mouse_pos.x = int(event.pointer.x);
+        mouse_pos.y = int(event.pointer.y);
+        on_pointer_move(mouse_pos.x, mouse_pos.y);
+        break;
 
-          case Input::BUTTON_EVENT_TYPE:
-            if (i->button.name == PRIMARY_BUTTON)
-              {
-                if (i->button.state == Input::BUTTON_PRESSED)
-                  on_primary_button_press(mouse_pos.x, mouse_pos.y);
-                else if (i->button.state == Input::BUTTON_RELEASED)
-                  on_primary_button_release(mouse_pos.x, mouse_pos.y);
-              }
-            else if (i->button.name == SECONDARY_BUTTON)
-              {
-                if (i->button.state == Input::BUTTON_PRESSED)
-                  on_secondary_button_press(mouse_pos.x, mouse_pos.y);
-                else if (i->button.state == Input::BUTTON_RELEASED)
-                  on_secondary_button_release(mouse_pos.x, mouse_pos.y);
-              }
-            break;
+      case Input::BUTTON_EVENT_TYPE:
+        if (event.button.name == PRIMARY_BUTTON)
+          {
+            if (event.button.state == Input::BUTTON_PRESSED)
+              on_primary_button_press(mouse_pos.x, mouse_pos.y);
+            else if (event.button.state == Input::BUTTON_RELEASED)
+              on_primary_button_release(mouse_pos.x, mouse_pos.y);
+          }
+        else if (event.button.name == SECONDARY_BUTTON)
+          {
+            if (event.button.state == Input::BUTTON_PRESSED)
+              on_secondary_button_press(mouse_pos.x, mouse_pos.y);
+            else if (event.button.state == Input::BUTTON_RELEASED)
+              on_secondary_button_release(mouse_pos.x, mouse_pos.y);
+          }
+        break;
 
-          case Input::AXIS_EVENT_TYPE:
-            // AxisEvents can be ignored in the GUI, they are handled elsewhere
-            pout(PINGUS_DEBUG_GUI) << "GUIManager: AxisEvent: " << i->axis.dir << std::endl;
-            break;
+      case Input::AXIS_EVENT_TYPE:
+        // AxisEvents can be ignored in the GUI, they are handled elsewhere
+        pout(PINGUS_DEBUG_GUI) << "GUIManager: AxisEvent: " << event.axis.dir << std::endl;
+        break;
 	
-          case Input::KEYBOARD_EVENT_TYPE:
-            on_key_pressed(i->keyboard.key);
-            break;
+      case Input::KEYBOARD_EVENT_TYPE:
+        on_key_pressed(event.keyboard.key);
+        break;
 
-          case Input::SCROLLER_EVENT_TYPE:
-            break;
+      case Input::SCROLLER_EVENT_TYPE:
+        break;
 
-          default:
-            pwarn (PINGUS_DEBUG_GUI) << "GUIManager: unhandled event type " << i->type << std::endl;
-            break;
-	}
+      default:
+        pwarn (PINGUS_DEBUG_GUI) << "GUIManager: unhandled event type " << event.type << std::endl;
+        break;
     }
 }
 

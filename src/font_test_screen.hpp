@@ -36,7 +36,8 @@ public:
   FontTestScreen(const Pathname& fontfile);
 
   bool draw(DrawingContext& gc);
-  void update (const GameDelta& delta);
+  void update(const Input::Event& event);
+  void update(float delta) {}
 
 private:
   FontTestScreen (const FontTestScreen&);

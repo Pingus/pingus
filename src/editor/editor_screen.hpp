@@ -80,7 +80,7 @@ public:
   bool draw (DrawingContext& gc);
 
   /** Update the GUI objects */
-  void update (const GameDelta& delta);
+  void update(const Input::Event& delta);
 
   /** Return the gui_manager */
   GUI::GUIManager* get_gui_manager() const { return gui_manager; }

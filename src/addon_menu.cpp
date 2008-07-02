@@ -36,12 +36,6 @@ AddOnMenu::~AddOnMenu()
 }
 
 void
-AddOnMenu::update(const GameDelta& delta)
-{
-  GUIScreen::update(delta);
-}
-
-void
 AddOnMenu::draw_background(DrawingContext& gc)
 {
   // gc.draw_fillrect(Rect(100, 100, 400, 400), Color(255, 0, 0));
@@ -64,7 +58,7 @@ AddOnMenu::draw_background(DrawingContext& gc)
 void
 AddOnMenu::on_escape_press()
 {
-  std::cout << "OptionMenu: poping screen" << std::endl;
+  //std::cout << "OptionMenu: poping screen" << std::endl;
   ScreenManager::instance()->pop_screen();
 }
 

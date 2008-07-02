@@ -43,57 +43,56 @@ GUIScreen::draw(DrawingContext& gc)
   return true;
 }
 
-  /** Pass a delta to the screen */
 void
-GUIScreen::update (const GameDelta& delta)
+GUIScreen::update(float delta)
+{
+  gui_manager->update(delta);  
+}
+
+void
+GUIScreen::update (const Input::Event& event)
 {
   // Dispatch the recieved input events
-  gui_manager->update (delta);
+  gui_manager->update(event);
 
-  update(delta.get_time ());
-
-  for (Input::EventLst::const_iterator i = delta.get_events ().begin ();
-       i != delta.get_events ().end (); ++i)
+  switch (event.type)
     {
-      switch (i->type)
-	{
-          case Input::POINTER_EVENT_TYPE:
-            {
-              // ignored cause this is handled in the gui_manager
-            }
-            break;
+      case Input::POINTER_EVENT_TYPE:
+        {
+          // ignored cause this is handled in the gui_manager
+        }
+        break;
 
-          case Input::BUTTON_EVENT_TYPE:
-            {
-              process_button_event (i->button);
-            }
-            break;
+      case Input::BUTTON_EVENT_TYPE:
+        {
+          process_button_event (event.button);
+        }
+        break;
 
-          case Input::AXIS_EVENT_TYPE:
+      case Input::AXIS_EVENT_TYPE:
+        {
+          if (event.axis.name == Input::ACTION_AXIS)
             {
-              if (i->axis.name == Input::ACTION_AXIS)
-                {
-                  on_action_axis_move(i->axis.dir);
-                }
+              on_action_axis_move(event.axis.dir);
             }
-            break;
+        }
+        break;
 
-          case Input::SCROLLER_EVENT_TYPE:
-            {
+      case Input::SCROLLER_EVENT_TYPE:
+        {
 
-            }
-            break;
+        }
+        break;
 		
-          case Input::KEYBOARD_EVENT_TYPE:
-            {
+      case Input::KEYBOARD_EVENT_TYPE:
+        {
 		
-            }
-            break;
+        }
+        break;
 
-          default:
-            std::cout << "GUIScreen::update (): unhandled event type: " << i->type << std::endl;
-            break;
-	}
+      default:
+        std::cout << "GUIScreen::update (): unhandled event type: " << event.type << std::endl;
+        break;
     }
 }
 

@@ -17,6 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
+
+#include "input/event.hpp"
 #include "fonts.hpp"
 #include "string_util.hpp"
 #include "display/drawing_context.hpp"
@@ -99,31 +102,24 @@ FontTestScreen::draw(DrawingContext& gc)
 }
 
 void
-FontTestScreen::update(const GameDelta& delta)
+FontTestScreen::update(const Input::Event& event)
 {
-  const Input::EventLst& events = delta.get_events ();
-
-  for (Input::EventLst::const_iterator i = events.begin ();
-       i != events.end ();
-       ++i)
+  switch (event.type)
     {
-      switch (i->type)
-	{
-          case Input::BUTTON_EVENT_TYPE:
-            if (i->button.state == Input::BUTTON_PRESSED &&
-                i->button.name == Input::PRIMARY_BUTTON)
-              dark = !dark;
-            break;
+      case Input::BUTTON_EVENT_TYPE:
+        if (event.button.state == Input::BUTTON_PRESSED &&
+            event.button.name == Input::PRIMARY_BUTTON)
+          dark = !dark;
+        break;
             
-          case Input::SCROLLER_EVENT_TYPE:
-            scrollx += i->scroll.x_delta;
-            scrolly += i->scroll.y_delta;
-            break;
+      case Input::SCROLLER_EVENT_TYPE:
+        scrollx += event.scroll.x_delta;
+        scrolly += event.scroll.y_delta;
+        break;
           
-          default:
-            break;
-        }
-    } 
-}
+      default:
+        break;
+    }
+} 
 
 /* EOF */

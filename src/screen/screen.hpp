@@ -21,11 +21,14 @@
 #define HEADER_PINGUS_SCREEN_HPP
 
 #include "SDL.h"
-#include "game_delta.hpp"
+
+namespace Input {
+class Event;
+}
 
 class Size;
 class DrawingContext;
-
+
 /** A interface for screens. A screen is a Pingus 'thing' which gets
     complete controll over the display and input. Examples of
     screens are the PingusMenu or a PingusGameSession */
@@ -42,7 +45,8 @@ public:
   virtual bool draw(DrawingContext& gc) =0;
 
   /** Pass a delta to the screen */
-  virtual void update (const GameDelta& delta) =0;
+  virtual void update (const Input::Event& event) =0;
+  virtual void update (float delta) =0;
 
   /** Called once the screen gets activated and becomes the current
       screen */
@@ -58,8 +62,7 @@ private:
   Screen (const Screen&);
   Screen& operator= (const Screen&);
 };
-
-
+
 #endif
 
 /* EOF */
