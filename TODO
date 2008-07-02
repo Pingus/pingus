@@ -13,6 +13,7 @@ Release Checklist:
 
 Make a release:
 
+(export can also work with a already checked out version)
 svn export ~/projects/pingus/svn/trunk/pingus/ pingus-0.7.2
 tar cvjf pingus-0.7.2.tar.bz2 pingus-0.7.2
 
@@ -25,6 +26,35 @@ Stuff to do at all times:
 
 Roadmap for Pingus 0.8.0:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+"Important" Stuff and Random Notes:
+===================================
+
+* CollisionMask cleanup
+
+* static in Entrance direction=misc is ugly
+
+* small levels in large windows cause parallax scrolling to break
+
+* add "Save Demo" to the result screen
+
+* add "Replay" to the result screen
+
+* incooperate xskat levels
+
+* animate the flag or remove it for single-player
+
+* add a end-event to the demo recording so that the length of the demo is known
+
+* switch to GPLv3
+
+* make GUI resizable
+
+* save pingu position in the demo
+
+* white right arrow in levelset dialog is wrong
+
+* shadow in levelset background is wrong
 
 New Features
 ============
@@ -52,7 +82,10 @@ Wishlist:
 Animation and graphic issues:
 =============================
 
-* proper waiter animation
+* convert all Pingu animations to a proper indexed format so that
+  palette swap can be used in multiplayer
+
+* proper waiter animation (use the one from SuperTux? draw new one)
 
 * repaint pause and fast-forward button
 
@@ -60,7 +93,7 @@ Animation and graphic issues:
 
 * add round corners to the minimap
 
-* allow sprites as background
+* allow sprites as background (para parameter from hotspots?)
 
 * redesign main menu
 
@@ -68,8 +101,18 @@ Animation and graphic issues:
 
 * rework the UI, either go glas-like or use the blackbord style 
 
+* X-Mas theme needs some more polish, to be done before X-Mas '08
+
+* create jumper animation
+
 Bugs:
 =====
+
+* Also, is this a already solved bug? I can play
+> playable/panic-cbrucher.pingus but when I am playing I get this error in
+> terminal and then the window closes.
+> " PingusError: e has wrong color depth: "
+
 
 * GroundMap tiles are currently RGBA, while in reality they are just
   RGB with a colorkey, room for optimization
@@ -79,7 +122,7 @@ Bugs:
 * Translation issues:
 
  - The suffix showing which extra skill a Pingus has (e.g. [f] for Floater or
-   [c] for Climber).
+   [c] for Climber). (will be fixed by climber gfx)
 
  - b) The big sign on the 'Tutorial Island' image
 
@@ -102,8 +145,11 @@ Unsorted:
 * do we need z-pos for anything or does implicit object position serve
   the same purpose? Problem: Groundpieces all have the same z-level,
   the editor doesn't handle that and allows insertions inbetween
+
+* pregenerate thumbnails for the editor, generating them takes to long
+
 
-Roadmap for Pingus 0.7.3
+Roadmap for Pingus 0.7.4
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 New Features:
@@ -123,6 +169,13 @@ New Features:
 * CollisionMask can't handle RGBA images and likely shouldn't (due to
   them being animated and stuff like that), we however don't have
   seperate colmask for those images
+
+* remove flip_screen_hook
+
+* test wall-jump: maybe make it smaller then a normal jump
+
+* make climber attach to wall after jumper 
+
 
 Bugs:
 =====
@@ -147,10 +200,6 @@ Bugs:
     then in-game) [Currently worked around in editor code, should be
     fixed in the converter]
 
-* GUI doesn't behave well if the user for example clicks a menu item
-  twice in a single frame, leads to duplicate Screens on the stack ond
-  other weird issues
-
 * frameskip seems broken
 
 * bridging gets more complicated has graphical error (background?!)
@@ -166,6 +215,12 @@ Bugs:
 * StringFormat does line breaking TeX-style, but that isn't useful
   with the current s-expr format, which can handle explicit line
   breaks just fine
+
+* http://savannah.nongnu.org/bugs/?21176
+To replicate:
+1. Order a pingu to build a bridge.
+2. When he "waits" after the bridge has been complete, order him to block.
+3. He'll fall off the end of the bridge and continue walking as normal.
 
 Wishlist Stuff:
 ===============
@@ -232,7 +287,7 @@ Undecided stuff: ================
 
 * replace "magic" numbers such as default screen size (800 and 600) with macros/globals or whatever is good programming practice
 
-Roadmap for Pingus Editor 0.7.3:
+Roadmap for Pingus Editor 0.7.4:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Important:
@@ -361,8 +416,6 @@ Older Stuff:
 
 * If enough Pingu are saved and all that are left are blockers, end
   level before time runs out, with a win
-
-* "Hurry up!" wayyy too late. Maybe at 1 minute left, or so.
 
 * At least one kind of water (the kind in Evil in the Dark) doesn't
   kill Pingu
