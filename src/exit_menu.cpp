@@ -108,6 +108,8 @@ ExitMenu::ExitMenu(PingusMenuManager* manager_)
 {
   gui_manager->add(new ExitMenuYesButton(manager), true);
   gui_manager->add(new ExitMenuNoButton(manager), true);
+
+  sur = Resource::load_sprite("core/menu/exit_menu");
 }
 
 ExitMenu::~ExitMenu()
@@ -125,12 +127,5 @@ ExitMenu::draw(DrawingContext& gc)
   PingusSubMenu::draw(gc);
   return true;
 }
-
-void
-ExitMenu::preload()
-{
-  sur = Resource::load_sprite("core/menu/exit_menu");
-}
-
 
 /* EOF */

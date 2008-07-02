@@ -34,9 +34,6 @@ public:
   PingusSubMenu (PingusMenuManager* m);
   virtual ~PingusSubMenu ();
 
-  /// load all the data which is needed for the menu
-  virtual void preload () =0;
-
   /// Return a handle to the parent menu manager
   PingusMenuManager* get_manager () { return manager; }
 

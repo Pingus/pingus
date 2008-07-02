@@ -35,7 +35,6 @@ public:
   ~ExitMenu ();
 
   bool draw (DrawingContext& gc);
-  void preload ();
 
 private:
   ExitMenu (const ExitMenu&);

@@ -66,94 +66,20 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
                                   _("Levelsets"),
                                   _("..:: Play User Built levels ::.."));
 
-#ifdef NEW_MENU
-  story_button  = new MenuButton(this, Vector2i(Display::get_width() * 400 / default_screen_width,
-                                                Display::get_height() * 340 / default_screen_height),
-                                 _("Story"),
-                                 _("..:: Start the story ::.."));
-  
-  multiplayer_button = new MenuButton(this, Vector2i(Display::get_width() * 150 / default_screen_width,
-                                                     Display::get_height() * 340 / default_screen_height),
-                                      Resource::load_sprite("core/menu/multi_on"),
-                                      _("Multiplayer"),
-                                      _("..:: Multiplayer Match ::.."));
-#endif
+  gui_manager->add(quit_button,    false);
+  gui_manager->add(contrib_button, false);
+  gui_manager->add(start_button,   false);
+  gui_manager->add(editor_button,  false);
+
+  logo = Resource::load_sprite("core/misc/logo");
 
   help = _("..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: fullscreen   ::   F12: screenshot ::..");
 }
 
 void
-PingusMenu::setup_main_menu()
-{
-#ifdef NEW_MENU
-  gui_manager->remove(contrib_button);
-  gui_manager->remove(story_button);
-  gui_manager->remove(multiplayer_button);
-  gui_manager->remove(editor_button);
-#endif
-
-  gui_manager->add(quit_button, false);
-  gui_manager->add(contrib_button, false);
-  gui_manager->add(start_button, false);
-  gui_manager->add(editor_button, false);
-}
-
-#ifdef NEW_MENU
-void
-PingusMenu::setup_game_menu()
-{
-  gui_manager->remove(start_button);
-
-  gui_manager->add(contrib_button, false);
-  gui_manager->add(story_button, false);
-  gui_manager->add(editor_button, false);
-  // FIXME: Re-enable this next line once multiplayer functionality
-  // is actually available.
-
-  //gui_manager->add(multiplayer_button, false);
-}
-#endif
-
-void
 PingusMenu::show_credits()
 {
   ScreenManager::instance()->push_screen(new Credits(), true);
-}
-
-void
-PingusMenu::setup_contrib_menu()
-{
-#if 0
-  if (filedialog)
-    delete filedialog;
-  filedialog = new FileDialog(this, ".pingus", 
-                              path_manager.complete("levels/"), true);
-  manager->push_menu (filedialog);
-#endif
-}
-
-void
-PingusMenu::setup_worldmap_menu()
-{
-#if 0
-  if (filedialog)
-    delete filedialog;
-  filedialog = new FileDialog(this, ".worldmap", 
-                              path_manager.complete("worldmaps/"), true);
-  manager->push_menu (filedialog);
-#endif 
-}
-
-void
-PingusMenu::preload ()
-{
-  if (!is_init)
-    {
-      is_init = true;
-
-      background = Resource::load_sprite("core/misc/logo");
-      setup_main_menu();
-    }
 }
 
 PingusMenu::~PingusMenu()
@@ -162,10 +88,6 @@ PingusMenu::~PingusMenu()
   delete quit_button;
   delete editor_button;
   delete contrib_button;
-#ifdef NEW_MENU
-  delete story_button;
-  delete multiplayer_button;
-#endif
 }
 
 void
@@ -213,7 +135,7 @@ PingusMenu::on_resize(int w, int h)
 void
 PingusMenu::on_escape_press ()
 {
-  get_manager ()->show_exit_menu ();
+  get_manager()->show_exit_menu ();
 }
 
 void
@@ -221,14 +143,14 @@ PingusMenu::draw_foreground(DrawingContext& gc)
 {
   if (gc.get_height() == 480)
     {
-      gc.draw(background,
-              Vector2i((gc.get_width()/2) - (background.get_width()/2),
+      gc.draw(logo,
+              Vector2i((gc.get_width()/2) - (logo.get_width()/2),
                        20));
     }
   else
     {
-      gc.draw(background, 
-              Vector2i((gc.get_width()/2) - (background.get_width()/2),
+      gc.draw(logo, 
+              Vector2i((gc.get_width()/2) - (logo.get_width()/2),
                        Display::get_height()/10));
     }
 
@@ -245,7 +167,7 @@ PingusMenu::draw_foreground(DrawingContext& gc)
                   Display::get_height() - Fonts::pingus_small.get_height(),
                   help);
 
-  if (0)
+  if (0) // display hint
     {
       gc.print_center(Fonts::pingus_small, Display::get_width() / 2,
                       Display::get_height() - Fonts::pingus_small.get_height(),
@@ -276,11 +198,7 @@ PingusMenu::on_click(MenuButton* button)
 {
   if (button == start_button)
     {
-#ifdef NEW_MENU
-      setup_game_menu();
-#else
       do_start("worldmaps/tutorial.worldmap");
-#endif
     }
   else if (button == quit_button)
     {
@@ -294,16 +212,6 @@ PingusMenu::on_click(MenuButton* button)
     {
       ScreenManager::instance()->push_screen(new LevelMenu(), true);
     }
-#ifdef NEW_MENU
-  else if (button == story_button)
-    {
-      setup_worldmap_menu();
-    }
-  else if (button == multiplayer_button)
-    {
-      setup_main_menu();
-    }
-#endif
 }
 
 void

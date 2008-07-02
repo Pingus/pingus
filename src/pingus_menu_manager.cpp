@@ -104,7 +104,6 @@ PingusMenuManager::set_menu (PingusSubMenu * menu)
 void
 PingusMenuManager::push_menu (PingusSubMenu * menu)
 {
-  menu->preload ();
   menu_stack.push_back (menu);
 }
 

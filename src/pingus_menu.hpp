@@ -41,38 +41,22 @@ public:
   std::string hint;
   std::string help;
   float text_scroll_offset;
+
 private:
-  Sprite background;
+  Sprite logo;
   LayerManager layer_manager;
 
   MenuButton* start_button;
   MenuButton* quit_button;
   MenuButton* editor_button;
   MenuButton* contrib_button;
-
-#ifdef NEW_MENU
-  MenuButton* story_button;
-  MenuButton* multiplayer_button;
-#endif
   
   void on_resize (int w, int h);
 
-  // These functions setup the different menus
-  void setup_main_menu();
-#ifdef NEW_MENU
-  void setup_game_menu();
-#endif
   void show_credits();
-  /** Show the levels folder */
-  void setup_contrib_menu();
-  /** Show the worldmap folder */
-  void setup_worldmap_menu();
 
-  /** Quit the game */
   void do_quit();
-  /** Start the story/worldmap mode */
   void do_start(const std::string &filename);
-  /** Start the level editor */
   void do_edit();
 
   /** Use this to load the level or worldmap */
@@ -89,7 +73,6 @@ public:
   void set_hint(const std::string& str);
 
   /// Load all images and other stuff for the menu
-  void preload ();
   void do_contrib(const std::string&);
 
   void on_escape_press ();
