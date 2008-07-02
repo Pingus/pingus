@@ -41,6 +41,7 @@ protected:
 
   bool pressed;
   bool mouse_over;
+
 public:
   SurfaceButton (int x_pos, int y_pos,
                  const ResDescriptor& button_surface,

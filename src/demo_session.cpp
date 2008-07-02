@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <boost/function.hpp>
+#include <boost/bind.hpp>
 #include "math.hpp"
 #include "server.hpp"
 #include "pathname.hpp"
@@ -25,11 +27,27 @@
 #include "gui/gui_manager.hpp"
 #include "display/scene_context.hpp"
 #include "pingus_demo.hpp"
+#include "gui/surface_button.hpp"
 #include "components/playfield.hpp"
 #include "components/smallmap.hpp"
 #include "screen/screen_manager.hpp"
 #include "display/display.hpp"
 #include "demo_session.hpp"
+
+class BButton : public GUI::SurfaceButton
+{
+private:
+  boost::function<void(void)> callback;
+public:
+  BButton(int x, int y, const std::string& name, boost::function<void (void)> callback_)
+    : SurfaceButton(x, y, name, name + "-pressed", name + "-hover"),
+      callback(callback_)
+  {}
+
+  void on_click() {
+    callback();
+  }
+};
 
 DemoSession::DemoSession(const Pathname& pathname)
   : pause(false),
@@ -63,6 +81,13 @@ DemoSession::DemoSession(const Pathname& pathname)
 
   small_map    = new SmallMap(server.get(), playfield);
   gui_manager->add(small_map, true);
+
+  gui_manager->add(new BButton(32+50, 32, "core/demo/fastforward",
+                               boost::bind(&DemoSession::on_fast_forward_press, this)), true);
+  gui_manager->add(new BButton(32,  32, "core/demo/pause",
+                               boost::bind(&DemoSession::on_pause_press, this)), true);
+  gui_manager->add(new BButton(Display::get_width() - 32 - 48, 32, "core/demo/reload",
+                               boost::bind(&DemoSession::restart, this)), true);
 }
 
 DemoSession::~DemoSession()
@@ -165,6 +190,12 @@ DemoSession::process_scroll_event(const Input::ScrollEvent& ev)
   // FIXME: Rounding considered evil?
   playfield->scroll(static_cast<int>(-ev.x_delta),
                     static_cast<int>(-ev.y_delta));
+}
+
+void
+DemoSession::restart()
+{
+  std::cout << "DemoSession::restart(): unimplemented" << std::endl;
 }
 
 /* EOF */

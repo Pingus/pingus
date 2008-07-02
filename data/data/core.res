@@ -17,6 +17,39 @@
            )
 
  (section (name "core")
+          (section (name "demo") 
+                   (sprite
+                    (name "fastforward")
+                    (image-file "../images/core/demo/fastforward.png"))
+                   (sprite
+                    (name "fastforward-pressed")
+                    (image-file "../images/core/demo/fastforward-pressed.png"))
+                   (sprite
+                    (name "fastforward-hover")
+                    (image-file "../images/core/demo/fastforward-hover.png"))
+
+                   (sprite
+                    (name "pause")
+                    (image-file "../images/core/demo/pause.png"))
+                   (sprite
+                    (name "pause-pressed")
+                    (image-file "../images/core/demo/pause-pressed.png"))
+                   (sprite
+                    (name "pause-hover")
+                    (image-file "../images/core/demo/pause-hover.png"))
+
+                   (sprite
+                    (name "reload")
+                    (image-file "../images/core/demo/reload.png"))
+                   (sprite
+                    (name "reload-pressed")
+                    (image-file "../images/core/demo/reload-pressed.png"))
+                   (sprite
+                    (name "reload-hover")
+                    (image-file "../images/core/demo/reload-hover.png"))
+
+                   )
+
           (section (name "cursors")
                    (sprite
                     (name "editor")

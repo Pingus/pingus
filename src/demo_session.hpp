@@ -63,6 +63,8 @@ public:
   void on_fast_forward_press ();
   void on_escape_press ();
 
+  void restart();
+  
   void process_scroll_event(const Input::ScrollEvent& ev);
 private:
   DemoSession (const DemoSession&);
