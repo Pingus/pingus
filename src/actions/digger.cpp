@@ -1,5 +1,4 @@
-//  $Id: digger.cpp 3216 2007-09-22 01:47:03Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //

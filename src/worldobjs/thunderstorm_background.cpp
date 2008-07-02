@@ -1,5 +1,4 @@
-//  $Id: thunderstorm_background.cpp 3138 2007-09-13 05:27:19Z jsalmon3 $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //

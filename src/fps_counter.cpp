@@ -1,5 +1,4 @@
-//  $Id: fps_counter.cpp 3211 2007-09-21 20:42:30Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //

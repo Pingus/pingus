@@ -1,5 +1,3 @@
-//  $Id: collision_mask.cpp 3216 2007-09-22 01:47:03Z grumbel $
-//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>
 //

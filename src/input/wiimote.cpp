@@ -1,5 +1,4 @@
-//  $Id: wiimote.cpp 3192 2007-09-20 03:06:10Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 //

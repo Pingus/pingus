@@ -1,5 +1,4 @@
-//  $Id: manager.cpp 3508 2007-11-11 04:36:07Z plouj $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //

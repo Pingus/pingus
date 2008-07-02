@@ -1,5 +1,4 @@
-//  $Id: savegame.hpp 3582 2008-06-29 16:56:56Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //

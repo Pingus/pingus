@@ -1,5 +1,4 @@
-//  $Id: levelset.hpp 3351 2007-10-28 07:51:14Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 //

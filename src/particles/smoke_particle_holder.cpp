@@ -1,5 +1,4 @@
-//  $Id: smoke_particle_holder.cpp 3277 2007-10-11 01:28:16Z plouj $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //

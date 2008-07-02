@@ -1,5 +1,4 @@
-//  $Id: editor_screen.cpp 3623 2008-07-02 17:59:58Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Jason Green <jave27@gmail.com>,
 //                     Ingo Ruhnke <grumbel@gmx.de>

@@ -1,5 +1,4 @@
-//  $Id: level_objs.cpp 3390 2007-10-30 06:05:56Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Jason Green <jave27@gmail.com>,
 //                     Ingo Ruhnke <grumbel@gmx.de>

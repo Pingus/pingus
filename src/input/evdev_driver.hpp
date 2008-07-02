@@ -1,5 +1,4 @@
-//  $Id: evdev_driver.hpp 3253 2007-09-28 13:43:40Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 //

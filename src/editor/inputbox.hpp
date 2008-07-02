@@ -1,5 +1,4 @@
-//  $Id: inputbox.hpp 3169 2007-09-17 16:05:41Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 //

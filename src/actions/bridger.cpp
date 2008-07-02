@@ -1,5 +1,4 @@
-//  $Id: bridger.cpp 3340 2007-10-27 07:08:51Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //

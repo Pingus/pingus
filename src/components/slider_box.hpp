@@ -1,5 +1,4 @@
-//  $Id: slider_box.hpp 3503 2007-11-09 08:38:26Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 //

@@ -1,5 +1,4 @@
-//  $Id: group_component.hpp 3217 2007-09-22 01:52:14Z jsalmon3 $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 //

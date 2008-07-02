@@ -1,5 +1,3 @@
-//  $Id: blitter.cpp 3396 2007-10-30 06:59:28Z grumbel $
-//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //

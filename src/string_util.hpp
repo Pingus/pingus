@@ -1,5 +1,4 @@
-//  $Id: string_util.hpp 3202 2007-09-21 15:54:56Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>
 //

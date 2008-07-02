@@ -1,5 +1,4 @@
-//  $Id: sound_real.cpp 3440 2007-11-01 03:15:42Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //

@@ -1,5 +1,4 @@
-//  $Id: worldmap_story.cpp 2999 2007-08-17 20:48:53Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>
 //

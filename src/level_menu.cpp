@@ -1,5 +1,4 @@
-//  $Id: level_menu.cpp 3574 2008-03-25 07:21:42Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 //

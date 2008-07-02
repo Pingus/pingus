@@ -1,5 +1,4 @@
-//  $Id: groundtype.cpp 3173 2007-09-17 21:45:01Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //

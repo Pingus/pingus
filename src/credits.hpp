@@ -1,5 +1,3 @@
-//  $Id: credits.hpp 3625 2008-07-02 19:35:47Z grumbel $
-//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //

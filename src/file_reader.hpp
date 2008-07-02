@@ -1,5 +1,3 @@
-//  $Id: file_reader.hpp 3594 2008-06-30 16:37:49Z grumbel $
-//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //

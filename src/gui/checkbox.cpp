@@ -1,5 +1,4 @@
-//  $Id: checkbox.cpp 3138 2007-09-13 05:27:19Z jsalmon3 $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2006 Ingo Ruhnke <grumbel@gmx.de>
 //

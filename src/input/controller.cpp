@@ -1,5 +1,4 @@
-//  $Id: controller.cpp 3219 2007-09-22 02:03:10Z jsalmon3 $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 //

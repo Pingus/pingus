@@ -1,5 +1,4 @@
-//  $Id: surface.cpp 2987 2007-08-17 16:25:49Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>
 //

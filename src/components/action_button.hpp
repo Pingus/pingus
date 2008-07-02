@@ -1,5 +1,4 @@
-//  $Id: action_button.hpp 3614 2008-07-01 14:12:46Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //

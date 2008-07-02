@@ -1,5 +1,4 @@
-//  $Id: graphic_context_state.hpp 3582 2008-06-29 16:56:56Z grumbel $
-// 
+ 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2004 Ingo Ruhnke <grumbel@gmx.de>
 //

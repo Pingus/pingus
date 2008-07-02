@@ -1,5 +1,4 @@
-//  $Id: path_manager.cpp 3231 2007-09-22 15:46:31Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //

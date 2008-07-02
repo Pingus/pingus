@@ -1,5 +1,4 @@
-//  $Id: evdev_device.hpp 3579 2008-06-28 16:04:03Z plouj $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 //

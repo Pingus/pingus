@@ -1,5 +1,3 @@
-//  $Id: font_description.cpp 3090 2007-09-05 19:08:47Z grumbel $
-//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>
 //

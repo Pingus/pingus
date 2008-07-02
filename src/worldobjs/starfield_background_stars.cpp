@@ -1,5 +1,4 @@
-//  $Id: starfield_background_stars.cpp 3494 2007-11-04 22:54:31Z jsalmon3 $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //

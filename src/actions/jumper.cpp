@@ -1,5 +1,4 @@
-//  $Id: jumper.cpp 3523 2007-12-25 18:56:18Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //

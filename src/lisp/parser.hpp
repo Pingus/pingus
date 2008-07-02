@@ -1,5 +1,4 @@
-//  $Id: parser.hpp 2986 2007-08-17 16:20:09Z grumbel $
-//
+
 //  TuxKart - a fun racing game with go-kart
 //  Copyright (C) 2004 Matthias Braun <matze@braunis.de>
 //

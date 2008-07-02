@@ -1,5 +1,4 @@
-//  $Id: sprite_description.hpp 3194 2007-09-20 21:04:35Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>
 //

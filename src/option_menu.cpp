@@ -1,5 +1,4 @@
-//  $Id: option_menu.cpp 3623 2008-07-02 17:59:58Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 //

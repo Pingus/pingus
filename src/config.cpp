@@ -1,5 +1,3 @@
-//  $Id: config.cpp 3481 2007-11-04 04:17:31Z grumbel $
-//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //

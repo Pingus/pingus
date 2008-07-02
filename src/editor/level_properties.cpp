@@ -1,5 +1,4 @@
-//  $Id: level_properties.cpp 3465 2007-11-02 09:23:02Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 //

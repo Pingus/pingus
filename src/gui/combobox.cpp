@@ -1,5 +1,4 @@
-//  $Id: combobox.cpp 3138 2007-09-13 05:27:19Z jsalmon3 $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Jason Green <jave27@gmail.com>
 //

@@ -1,5 +1,4 @@
-//  $Id: menu_button.cpp 3345 2007-10-27 16:02:10Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //

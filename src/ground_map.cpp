@@ -1,5 +1,4 @@
-//  $Id: ground_map.cpp 3150 2007-09-15 01:30:41Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //

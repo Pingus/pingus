@@ -1,5 +1,4 @@
-//  $Id: joystick_scroller.hpp 3059 2007-09-02 03:48:52Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //

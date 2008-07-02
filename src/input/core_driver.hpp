@@ -1,5 +1,4 @@
-//  $Id: core_driver.hpp 3166 2007-09-16 15:29:14Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 //

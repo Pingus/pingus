@@ -1,5 +1,4 @@
-//  $Id: resource.cpp 3558 2008-03-24 09:11:05Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //

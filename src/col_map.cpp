@@ -1,5 +1,3 @@
-//  $Id: col_map.cpp 3147 2007-09-14 19:13:17Z grumbel $
-//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //

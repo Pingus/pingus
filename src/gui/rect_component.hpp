@@ -1,5 +1,4 @@
-//  $Id: rect_component.hpp 3110 2007-09-08 14:51:50Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 //

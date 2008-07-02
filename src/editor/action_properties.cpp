@@ -1,5 +1,4 @@
-//  $Id: action_properties.cpp 3196 2007-09-21 13:09:07Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 //

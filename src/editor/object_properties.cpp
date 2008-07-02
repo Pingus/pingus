@@ -1,5 +1,4 @@
-//  $Id: object_properties.cpp 3623 2008-07-02 17:59:58Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2006 Ingo Ruhnke <grumbel@gmx.de>
 //

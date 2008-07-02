@@ -1,5 +1,4 @@
-//  $Id: vector2i.cpp 3148 2007-09-15 00:59:40Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>
 //

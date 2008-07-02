@@ -1,5 +1,4 @@
-//  $Id: floater.cpp 2986 2007-08-17 16:20:09Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //

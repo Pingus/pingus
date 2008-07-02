@@ -1,5 +1,4 @@
-//  $Id: server.hpp 3615 2008-07-01 17:14:39Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //

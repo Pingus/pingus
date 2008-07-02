@@ -1,5 +1,4 @@
-//  $Id: object_selector_set.hpp 3172 2007-09-17 20:36:14Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 //

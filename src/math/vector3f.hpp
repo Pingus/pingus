@@ -1,5 +1,4 @@
-//  $Id: vector3f.hpp 3078 2007-09-05 00:17:37Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //

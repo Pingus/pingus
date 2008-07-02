@@ -1,5 +1,4 @@
-//  $Id: panel_buttons.cpp 3078 2007-09-05 00:17:37Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Jason Green <jave27@gmail.com>,
 //                     Ingo Ruhnke <grumbel@gmx.de>

@@ -1,5 +1,4 @@
-//  $Id: smallmap_image.cpp 3400 2007-10-30 08:20:36Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //

@@ -1,5 +1,4 @@
-//  $Id: viewport.cpp 3465 2007-11-02 09:23:02Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Jason Green <jave27@gmail.com>,
 //                     Ingo Ruhnke <grumbel@gmx.de>

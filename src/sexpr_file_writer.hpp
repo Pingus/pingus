@@ -1,5 +1,4 @@
-//  $Id: sexpr_file_writer.hpp 3248 2007-09-26 02:50:13Z jsalmon3 $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Jimmy Salmon
 //

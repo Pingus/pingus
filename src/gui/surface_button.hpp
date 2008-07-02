@@ -1,5 +1,4 @@
-//  $Id: surface_button.hpp 3616 2008-07-02 00:44:08Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //

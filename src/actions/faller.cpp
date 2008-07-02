@@ -1,5 +1,4 @@
-//  $Id: faller.cpp 3377 2007-10-29 04:28:09Z grumbel $
-//
+
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
