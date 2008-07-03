@@ -49,6 +49,11 @@ float floor(float x)
   return ::floorf(x);
 }
 
+float atan2(float x, float y)
+{
+  return ::atan2(x, y);
+}
+
 } // namespace Math
 
 /* EOF */

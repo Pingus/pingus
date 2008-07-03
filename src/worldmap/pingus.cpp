@@ -16,7 +16,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include <math.h>
+#include "../math.hpp"
 #include "../math/vector3f.hpp"
 #include "../display/drawing_context.hpp"
 #include "dot.hpp"
@@ -114,8 +114,8 @@ Pingus::update_walk (float delta)
 float
 Pingus::get_direction() const
 {
-  return (atan2(last_pos.x - pos.x,
-                -(last_pos.y - pos.y)) / (float)Math::pi * 180.0f) + 180.0f;
+  return (Math::atan2(last_pos.x - pos.x,
+                      -(last_pos.y - pos.y)) / (float)Math::pi * 180.0f) + 180.0f;
 }
 
 bool
