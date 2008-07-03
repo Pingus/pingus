@@ -100,12 +100,16 @@ ServerEvent::ServerEvent(FileReader reader)
       type = PINGU_ACTION_EVENT;
       reader.read_int ("time",   time_stamp);
       reader.read_int ("id",     pingu_id);
-      reader.read_string("raw-x", raw_x);
-      reader.read_string("raw-y", raw_y);
+
+      if (reader.read_string("raw-x", raw_x))
+        pos.x = string2float(raw_x);
+
+      if (reader.read_string("raw-y", raw_y))
+        pos.y = string2float(raw_y);
+
       reader.read_enum("action", pingu_action, Actions::action_from_string);
 
-      pos.x = string2float(raw_x);
-      pos.y = string2float(raw_y);
+      
     }
   else
     {
