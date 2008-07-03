@@ -239,6 +239,7 @@ pingus_sources = [
 'src/tinygettext/dictionary_manager.cpp',
 'src/tinygettext/dictionary.cpp',
 'src/tinygettext/language_def.cpp',
+'src/utf8_iterator.cpp',
 'src/math/vector2f.cpp',
 'src/math/vector2i.cpp',
 'src/math/vector3f.cpp',
