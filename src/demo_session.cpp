@@ -72,8 +72,9 @@ public:
   }
 };
 
-DemoSession::DemoSession(const Pathname& pathname)
-  : pause(false),
+DemoSession::DemoSession(const Pathname& pathname_)
+  : pathname(pathname_),
+    pause(false),
     fast_forward(false)
 {
   // Load Demo file
@@ -221,7 +222,7 @@ DemoSession::on_scroller_move(float x, float y)
 void
 DemoSession::restart()
 {
-  std::cout << "DemoSession::restart(): unimplemented" << std::endl;
+  ScreenManager::instance()->replace_screen(new DemoSession(pathname), true);
 }
 
 /* EOF */

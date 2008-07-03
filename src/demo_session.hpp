@@ -41,6 +41,8 @@ class SmallMap;
 class DemoSession : public GUIScreen
 {
 private:
+  Pathname pathname;
+
   std::auto_ptr<Server>     server;
   std::auto_ptr<PingusDemo> demo;
   std::vector<ServerEvent>  events;
