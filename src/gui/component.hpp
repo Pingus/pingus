@@ -82,6 +82,8 @@ public:
       coordinates */
   virtual void on_pointer_move (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
 	
+  virtual void on_scroller_move (float x, float y) { UNUSED_ARG(x); UNUSED_ARG(y); }
+
   /** Emitted whenever a keyboard character is pressed.  Only certain 
       components should implement this */
   virtual void on_key_pressed(const unsigned short c) { UNUSED_ARG(c); }

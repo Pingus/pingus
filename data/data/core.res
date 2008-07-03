@@ -19,6 +19,10 @@
  (section (name "core")
           (section (name "demo") 
                    (sprite
+                    (name "highlight")
+                    (image-file "../images/core/demo/highlight.png"))
+
+                   (sprite
                     (name "fastforward")
                     (image-file "../images/core/demo/fastforward.png"))
                    (sprite

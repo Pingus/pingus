@@ -87,6 +87,7 @@ GUIManager::update(const Input::Event& event)
         break;
 
       case Input::SCROLLER_EVENT_TYPE:
+        on_scroller_move(event.scroll.x_delta, event.scroll.y_delta);
         break;
 
       default:

@@ -31,17 +31,41 @@
 #include "components/smallmap.hpp"
 #include "screen/screen_manager.hpp"
 #include "display/display.hpp"
+#include "resource.hpp"
 #include "demo_session.hpp"
 
+static bool false_func() { return false; }
+
 class BButton : public GUI::SurfaceButton
 {
 private:
+  Sprite highlight;
   boost::function<void(void)> callback;
+  boost::function<bool(void)> highlight_func;
+  
 public:
-  BButton(int x, int y, const std::string& name, boost::function<void (void)> callback_)
+  BButton(int x, int y, const std::string& name, 
+          boost::function<void (void)> callback_,
+          boost::function<bool(void)> highlight_func_ = &false_func)
     : SurfaceButton(x, y, name, name + "-pressed", name + "-hover"),
-      callback(callback_)
+      highlight(Resource::load_sprite("core/demo/highlight")),
+      callback(callback_),
+      highlight_func(highlight_func_)
   {}
+
+  virtual void draw (DrawingContext& gc) 
+  {
+
+    if (highlight_func())
+      {
+        gc.draw(button_pressed_surface, Vector2i(x_pos, y_pos));
+        gc.draw(highlight, Vector2i(x_pos, y_pos));
+      }
+    else
+      {
+        SurfaceButton::draw(gc);
+      }
+  }
 
   void on_click() {
     callback();
@@ -83,9 +107,11 @@ DemoSession::DemoSession(const Pathname& pathname)
   gui_manager->add(small_map, true);
 
   gui_manager->add(new BButton(32+50, 32, "core/demo/fastforward",
-                               boost::bind(&DemoSession::on_fast_forward_press, this)), true);
+                               boost::bind(&DemoSession::on_fast_forward_press, this),
+                               boost::bind(&DemoSession::is_fast_forward, this)), true);
   gui_manager->add(new BButton(32,  32, "core/demo/pause",
-                               boost::bind(&DemoSession::on_pause_press, this)), true);
+                               boost::bind(&DemoSession::on_pause_press, this),
+                               boost::bind(&DemoSession::is_pause, this)), true);
   gui_manager->add(new BButton(Display::get_width() - 32 - 48, 32, "core/demo/reload",
                                boost::bind(&DemoSession::restart, this)), true);
 }
@@ -185,11 +211,11 @@ DemoSession::on_escape_press()
 }
 
 void
-DemoSession::process_scroll_event(const Input::ScrollEvent& ev)
+DemoSession::on_scroller_move(float x, float y)
 {
   // FIXME: Rounding considered evil?
-  playfield->scroll(static_cast<int>(-ev.x_delta),
-                    static_cast<int>(-ev.y_delta));
+  playfield->scroll(static_cast<int>(-x),
+                    static_cast<int>(-y));
 }
 
 void

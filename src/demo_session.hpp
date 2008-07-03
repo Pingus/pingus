@@ -67,7 +67,10 @@ public:
 
   void restart();
   
-  void process_scroll_event(const Input::ScrollEvent& ev);
+  void on_scroller_move(float x, float y);
+
+  bool is_pause() { return pause; }
+  bool is_fast_forward() { return fast_forward; }
 private:
   DemoSession (const DemoSession&);
   DemoSession& operator= (const DemoSession&);
