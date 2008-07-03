@@ -282,7 +282,7 @@ WorldMapManager::on_escape_press ()
 void
 WorldMapManager::update (float delta)
 {
-  UNUSED_ARG(delta);
+  GUIScreen::update(delta);
 
   // Exit the word
   if (exit_worldmap)
@@ -350,7 +350,6 @@ void
 WorldMapComponent::update (float delta)
 {
   WorldMapManager::instance()->worldmap->update(delta);
-  UNUSED_ARG(delta);
 }
 
 void
