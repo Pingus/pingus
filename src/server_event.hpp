@@ -64,9 +64,21 @@ public:
   void send(Server*);
 
   // Pseudo constructors
+
+  /** The end event marks the very end of the demo, i.e. the time the
+      server did run its last update() */
   static ServerEvent make_end_event(int time);
+
+  /** The finish event is triggered when the user leave the level by
+      pressing escape */
   static ServerEvent make_finish_event(int time);
+
+  /** The armageddon event is triggered when the user presses the
+      armageddon button */
   static ServerEvent make_armageddon_event(int time);
+
+  /** The pingu action event is triggered whenever the user applies an
+      action to a Pingu */
   static ServerEvent make_pingu_action_event(int t, int id, const Vector3f& pos, Actions::ActionName action);
 };
 
