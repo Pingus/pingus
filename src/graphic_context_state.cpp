@@ -15,7 +15,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <math.h>
 #include "math.hpp"
 #include "display/display.hpp"
 #include "graphic_context_state.hpp"
@@ -226,8 +225,8 @@ GraphicContextState::screen2world(const Vector2i& pos_) const
   Vector2f pos(float(pos_.x - impl->rect.left),
                float(pos_.y - impl->rect.top));
 
-  float sa = (float)sin(-impl->rotation/180.0f*Math::pi);
-  float ca = (float)cos(-impl->rotation/180.0f*Math::pi);
+  float sa = Math::sin(-impl->rotation/180.0f*Math::pi);
+  float ca = Math::cos(-impl->rotation/180.0f*Math::pi);
 
   float dx = pos.x - (float)get_width()/2;
   float dy = pos.y - (float)get_height()/2;

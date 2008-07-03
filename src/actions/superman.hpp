@@ -25,8 +25,8 @@ namespace Actions {
 class Superman : public PinguAction
 {
 private:
-  double counter;
-  double x_pos;
+  float counter;
+  float x_pos;
   Sprite sprite;
 
 public:

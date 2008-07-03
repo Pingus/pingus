@@ -232,6 +232,7 @@ pingus_sources = [
 'src/string_util.cpp',
 'src/math/origin.cpp',
 'src/math/rect.cpp',
+'src/math.cpp',
 'src/system.cpp', 
 'src/timer.cpp',
 'src/tinygettext/iconv.cpp',

@@ -15,9 +15,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <math.h>
 #include "../display/scene_context.hpp"
 #include "../pingu.hpp"
+#include "../math.hpp"
 #include "../resource.hpp"
 #include "../globals.hpp"
 #include "angel.hpp"
@@ -38,7 +38,7 @@ Angel::update ()
   sprite.update ();
 
   counter += game_speed;
-  pingu->set_pos((float)x_pos + 20 * (float)sin (counter * 3.0f), pingu->get_y() - 50.0f * 0.025f);
+  pingu->set_pos((float)x_pos + 20 * (float)Math::sin(counter * 3.0f), pingu->get_y() - 50.0f * 0.025f);
 
   // Out of screen, let the pingu die
   if (pingu->get_y() < -32)

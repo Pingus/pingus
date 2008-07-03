@@ -15,8 +15,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <math.h>
 #include <iostream>
+#include "math.hpp"
 #include "vector3f.hpp"
 #include "vector2f.hpp"
 
@@ -103,7 +103,7 @@ Vector3f::operator*= (float mul)
 void
 Vector3f::normalize ()
 {
-  float f = sqrt(x * x + y * y + z * z);
+  float f = Math::sqrt(x * x + y * y + z * z);
 
   if (f)
     {
@@ -116,14 +116,14 @@ Vector3f::normalize ()
 float
 Vector3f::length() const
 {
-  return sqrt(x * x + y * y + z * z);
+  return Math::sqrt(x * x + y * y + z * z);
 }
 
 Vector3f
 Vector3f::rotate (float angle, const Vector3f& pos) const
 {
-  const float s = sin(angle);
-  const float c = cos(angle);
+  const float s = Math::sin(angle);
+  const float c = Math::cos(angle);
 
   return Vector3f(  x * (pos.x * pos.x * (1-c) + c)
                 + y * (pos.x * pos.y * (1-c) - pos.z *s)
@@ -146,7 +146,7 @@ Vector3f::distance(const Vector3f& a, const Vector3f& b)
   float y = b.y - a.y;
   float z = b.z - a.z;
 
-  return fabsf(sqrt((x * x) + (y * y) + (z * z)));
+  return Math::abs(Math::sqrt((x * x) + (y * y) + (z * z)));
 }
 
 float
@@ -155,7 +155,7 @@ Vector3f::distance2d(const Vector3f& a, const Vector3f& b)
   float x = b.x - a.x;
   float y = b.y - a.y;
 
-  return fabsf(sqrt((x * x) + (y * y)));
+  return Math::abs(Math::sqrt((x * x) + (y * y)));
 }
 
 Vector3f

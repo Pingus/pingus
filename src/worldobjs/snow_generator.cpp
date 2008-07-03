@@ -15,7 +15,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <math.h>
 #include <iostream>
 #include "../math.hpp"
 #include "../world.hpp"
@@ -38,7 +37,7 @@ SnowGenerator::~SnowGenerator()
 void
 SnowGenerator::update()
 {
-  for(int i = 0; i < floor(intensity); ++i)
+  for(int i = 0; i < Math::floor(intensity); ++i)
     {
       if (rand() % 3 != 0)
         world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -tile_size, false);

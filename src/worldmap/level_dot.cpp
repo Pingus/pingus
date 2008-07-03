@@ -16,7 +16,6 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include <math.h>
 #include "../font.hpp"
 #include "../gettext.h"
 #include "../globals.hpp"
@@ -61,7 +60,7 @@ LevelDot::draw(DrawingContext& gc)
 
   bool highlight = false;
 
-  if (sqrt(x*x + y*y) < 30.0f)
+  if (Math::sqrt(x*x + y*y) < 30.0f)
     highlight = true;
 
   Savegame* savegame = SavegameManager::instance()->get(plf.get_resname());

@@ -27,8 +27,6 @@
 **    (if your name is missing here, please add it)
 */
 
-
-#include <cmath>
 #include <iostream>
 #include "rect.hpp"
 

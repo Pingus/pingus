@@ -1,4 +1,3 @@
-
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -15,35 +14,41 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_ACTIONS_ANGEL_HPP
-#define HEADER_PINGUS_ACTIONS_ANGEL_HPP
+#include <math.h>
+#include "math.hpp"
 
-#include "../pingu_action.hpp"
+namespace Math {
 
-namespace Actions {
-
-class Angel : public PinguAction
+float abs(float v)
 {
-private:
-  float counter;
-  float x_pos;
-  Sprite sprite;
+  return ::fabs(v);
+}
 
-public:
-  Angel (Pingu* p);
+float sin(float a)
+{
+  return ::sinf(a);
+}
 
-  ActionName get_type () const { return Actions::Angel; }
+float cos(float a)
+{
+  return ::cosf(a);
+}
 
-  void  update ();
-  void  draw (SceneContext& gc);
+float sqrt(float a)
+{
+  return ::sqrt(a);
+}
 
-private:
-  Angel (const Angel&);
-  Angel& operator= (const Angel&);
-};
+float mod(float x, float y)
+{
+  return ::fmodf(x, y);
+}
 
-} // namespace Actions
+float floor(float x)
+{
+  return ::floorf(x);
+}
 
-#endif
+} // namespace Math
 
 /* EOF */

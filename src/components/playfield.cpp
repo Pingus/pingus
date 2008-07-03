@@ -98,8 +98,8 @@ Playfield::draw(DrawingContext& gc)
 Pingu*
 Playfield::current_pingu_find(const Vector2f& pos)
 {
-  double min_dist = 500.0;
-  double dist;
+  float min_dist = 500.0;
+  float dist;
   Pingu* c_pingu = 0;
 
   for (PinguIter pingu = server->get_world()->get_pingus()->begin();

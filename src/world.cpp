@@ -248,7 +248,7 @@ Pingu*
 World::get_pingu (const Vector3f& pos)
 {
   Pingu* current_pingu = 0;
-  double distance = -1.0;
+  float distance = -1.0;
 
   for (PinguIter i = pingus->begin (); i != pingus->end (); ++i) {
     if ((*i)->is_over(int(pos.x), int(pos.y)))

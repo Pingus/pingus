@@ -18,7 +18,6 @@
 #ifndef HEADER_PINGUS_WORLDMAP_PINGUS_HPP
 #define HEADER_PINGUS_WORLDMAP_PINGUS_HPP
 
-#include <math.h>
 #include "../state_sprite.hpp"
 #include "drawable.hpp"
 #include "path_graph.hpp"

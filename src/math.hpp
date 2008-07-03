@@ -1,4 +1,3 @@
-
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -29,8 +28,8 @@
     @brief A collection of mathematical helper functions */
 namespace Math {
 
-const double pi   = 3.14159265358979323846;	/* pi */
-const double pi_2 = 1.57079632679489661923;	/* pi/2 */
+const float pi   = 3.14159265358979323846;	/* pi */
+const float pi_2 = 1.57079632679489661923;	/* pi/2 */
 
 // Win32 defines these are defines already, so we have to undef them
 #ifdef min
@@ -77,14 +76,20 @@ bool rand_bool()
   return rand()%2 == 0;
 }
 
-inline
-int round (float f)
+inline int round (float f)
 {
   if (f >= 0.0f)
     return int(f + 0.5f);
   else
     return int(f - 0.5f);
 }
+
+float abs(float v);
+float sin(float a);
+float cos(float a);
+float sqrt(float a);
+float mod(float x, float y);
+float floor(float x);
 
 } // namespace Math
 

@@ -15,7 +15,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <math.h>
+#include "../math.hpp"
 #include "../col_map.hpp"
 #include "../colliders/pingu_collider.hpp"
 #include "../debug.hpp"
@@ -108,7 +108,7 @@ Faller::update ()
               pingu->set_action(Actions::Drown);
             }
           // Did we stop too fast?
-          else if (fabs(pingu->get_velocity().y) > deadly_velocity)
+          else if (Math::abs(pingu->get_velocity().y) > deadly_velocity)
             {
               //std::cout << "Pingus splashed: " << pingu->get_velocity().y << " " << deadly_velocity << std::endl;
               pingu->set_action(Actions::Splashed);
@@ -146,8 +146,8 @@ bool
 Faller::is_tumbling () const
 {
   // If we are going fast enough to get smashed, start tumbling
-  return (   fabs(pingu->get_velocity().x) > deadly_velocity
-             || fabs(pingu->get_velocity().y) > deadly_velocity);
+  return (Math::abs(pingu->get_velocity().x) > deadly_velocity
+             || Math::abs(pingu->get_velocity().y) > deadly_velocity);
 }
 
 bool

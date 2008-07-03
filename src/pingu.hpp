@@ -194,7 +194,7 @@ public:
 
   bool   is_inside (int x1, int y1, int x2, int y2);
 
-  double dist (int x, int y);
+  float dist (int x, int y);
 
   /** Return true if the pingu can be caught with the mouse and
       another action can be applied, false otherwise (exiter,

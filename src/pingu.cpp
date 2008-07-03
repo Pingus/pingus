@@ -17,8 +17,8 @@
 
 #include <sstream>
 #include <assert.h>
-#include <math.h>
 #include <stdio.h>
+#include "math.hpp"
 #include "globals.hpp"
 #include "world.hpp"
 #include "sound/sound.hpp"
@@ -295,12 +295,12 @@ Pingu::is_inside (int x1, int y1, int x2, int y2)
 }
 
 // Returns the distance between the Pingu and a given coordinate
-double
+float
 Pingu::dist (int x, int y)
 {
   Vector3f p = get_center_pos ();
 
-  return sqrt(((p.x - x) * (p.x - x) + (p.y - y) * (p.y - y)));
+  return Math::sqrt(((p.x - x) * (p.x - x) + (p.y - y) * (p.y - y)));
 }
 
 // Let the pingu do his job (i.e. walk his way)

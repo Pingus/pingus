@@ -20,7 +20,6 @@
 
 #include <iostream>
 #include <vector>
-#include <math.h>
 
 #include "math.hpp"
 #include "math/vector2f.hpp"
@@ -167,7 +166,7 @@ public:
     if (invert)
       new_pos = -new_pos;
 
-    if (fabsf(new_pos) < dead_zone)
+    if (Math::abs(new_pos) < dead_zone)
       new_pos = 0.0f;
 
     if (new_pos != pos)

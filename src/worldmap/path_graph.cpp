@@ -16,7 +16,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include <math.h>
+#include "../math.hpp"
 #include "../file_reader.hpp"
 #include "../pingus_error.hpp"
 #include "dot.hpp"
@@ -258,7 +258,7 @@ PathGraph::get_dot(float x_pos, float y_pos)
       float x = x_pos - (*i)->get_pos().x;
       float y = y_pos - (*i)->get_pos().y;
 
-      if (sqrt(x*x + y*y) < 30.0f)
+      if (Math::sqrt(x*x + y*y) < 30.0f)
         return *i;
     }
   return 0;

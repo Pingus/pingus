@@ -16,7 +16,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <math.h>
 #include <assert.h>
 #include "../../debug.hpp"
 #include "../../math.hpp"
@@ -71,8 +70,8 @@ AxisScroller::update(float delta)
     {
       (*it)->update(delta);
 
-      x_delta += (float)cos((*it)->get_angle() * Math::pi / 180) * speed * delta * (*it)->get_pos();
-      y_delta += (float)sin((*it)->get_angle() * Math::pi / 180) * speed * delta * (*it)->get_pos();
+      x_delta += (float)Math::cos((*it)->get_angle() * Math::pi / 180) * speed * delta * (*it)->get_pos();
+      y_delta += (float)Math::sin((*it)->get_angle() * Math::pi / 180) * speed * delta * (*it)->get_pos();
     }
 
 }

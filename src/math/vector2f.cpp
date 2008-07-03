@@ -16,8 +16,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <config.h>
-#include <cmath>
 #include <iostream>
+#include "math.hpp"
 #include "math/vector2f.hpp"
 
 void
@@ -36,7 +36,7 @@ Vector2f Vector2f::unit() const
 float
 Vector2f::magnitude() const
 {
-  return sqrt(x*x + y*y);
+  return Math::sqrt(x*x + y*y);
 }
 
 std::ostream& operator<<(std::ostream& s, const Vector2f& v)
@@ -49,7 +49,7 @@ Vector2f
 Vector2f::rotate(float angle) const
 {
   float len = magnitude();
-  return Vector2f(len * cos(angle), len * sin(angle));
+  return Vector2f(len * Math::cos(angle), len * Math::sin(angle));
 }
 
 /* EOF */

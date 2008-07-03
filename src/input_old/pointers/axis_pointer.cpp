@@ -16,7 +16,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <math.h>
 #include <assert.h>
 #include "../axis.hpp"
 #include "axis_pointer.hpp"
@@ -62,8 +61,8 @@ AxisPointer::update(float delta)
     {
       (*it)->update(delta);
 
-      x_pos += (float)cos((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
-      y_pos += (float)sin((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
+      x_pos += (float)Math::cos((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
+      y_pos += (float)Math::sin((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
     }
 }
 

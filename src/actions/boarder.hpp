@@ -28,7 +28,6 @@ namespace Actions {
 class Boarder : public PinguAction
 {
 private:
-  //double counter;
   float x_pos;
   float speed;
   StateSprite sprite;
