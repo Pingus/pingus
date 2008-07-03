@@ -40,6 +40,30 @@
       (scroll-y 0)
       (para-x 0.5)
       (para-y 0.5))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/forest/treetrunk3")
+        (modifier "ROT0"))
+      (position 933 559 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/forest/green1")
+        (modifier "ROT180FLIP"))
+      (position 902 555 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/forest/green1")
+        (modifier "ROT180FLIP"))
+      (position 939 555 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/forest/green1")
+        (modifier "ROT0"))
+      (position 849 656 0))
     (exit 
       (surface 
         (image "exits/forest")
@@ -57,7 +81,7 @@
       (surface 
         (image "groundpieces/ground/forest/ground3")
         (modifier "ROT0"))
-      (position 505 579 0))
+      (position 506 579 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -201,7 +225,7 @@
       (surface 
         (image "groundpieces/ground/forest/treetrunk1")
         (modifier "ROT0"))
-      (position 1090 444 0))
+      (position 1090 443 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -565,12 +589,6 @@
     (groundpiece 
       (type "transparent")
       (surface 
-        (image "groundpieces/transparent/misc/moos8")
-        (modifier "ROT0"))
-      (position 1042 687 0))
-    (groundpiece 
-      (type "transparent")
-      (surface 
         (image "groundpieces/transparent/misc/moos6")
         (modifier "ROT0"))
       (position 1483 680 0))
@@ -682,6 +700,60 @@
         (image "groundpieces/transparent/misc/moos6")
         (modifier "ROT0"))
       (position 1520 685 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/forest/treetrunk2")
+        (modifier "ROT0"))
+      (position 211 392 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/forest/ground3")
+        (modifier "ROT0"))
+      (position 335 637 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/forest/ground3")
+        (modifier "ROT0"))
+      (position 158 639 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/forest/treetrunk2")
+        (modifier "ROT180FLIP"))
+      (position 211 137 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/forest/green1")
+        (modifier "ROT0"))
+      (position 907 498 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/forest/green1")
+        (modifier "ROT0"))
+      (position 934 492 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/forest/green1")
+        (modifier "ROT0"))
+      (position 938 518 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/forest/green1")
+        (modifier "ROT0"))
+      (position 899 524 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos8")
+        (modifier "ROT0"))
+      (position 951 550 0))
     (entrance 
       (type "generic")
       (position 673 421 110)

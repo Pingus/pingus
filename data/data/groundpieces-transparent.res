@@ -3,6 +3,11 @@
 (pingus-resources
  (section (name "groundpieces")
           (section (name "transparent")
+                   (section (name "forest")
+                            (sprite
+                             (name "green1")
+                             (image-file "../images/groundpieces/transparent/forest/green1.png")))
+
                    (section (name "easter")
                             (sprite
                              (name "flower1")

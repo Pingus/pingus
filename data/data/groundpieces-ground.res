@@ -5,8 +5,14 @@
           (section (name "ground")
                    (section (name "forest")
                             (sprite
+                             (name "treetrunk2")
+                             (image-file "../images/groundpieces/ground/forest/treetrunk2.png"))
+                            (sprite
                              (name "treetrunk1")
                              (image-file "../images/groundpieces/ground/forest/treetrunk1.png"))
+                            (sprite
+                             (name "treetrunk3")
+                             (image-file "../images/groundpieces/ground/forest/treetrunk3.png"))
                             (sprite
                              (name "treebranch1")
                              (image-file "../images/groundpieces/ground/forest/treebranch1.png"))
