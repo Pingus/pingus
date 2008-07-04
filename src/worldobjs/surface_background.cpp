@@ -17,7 +17,6 @@
 #include <iostream>
 #include "../display/scene_context.hpp"
 #include "../world.hpp"
-#include "../timer.hpp"
 #include "../resource.hpp"
 #include "../globals.hpp"
 #include "../blitter.hpp"
@@ -57,8 +56,6 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
 
   reader.read_bool("keep-aspect", keep_aspect);
 
-  Timer timer("Background creation");
-
   bg_surface = Sprite(desc);
   bg_surface.fill(color);
 
@@ -91,8 +88,6 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
           bg_surface.scale(bg_surface.get_width(), world->get_height());
         }
     }
-
-  timer.stop();
 }
 
 float
