@@ -206,7 +206,6 @@ pingus_sources = [
 'src/pingus_sub_menu.cpp', 
 'src/plf_res_mgr.cpp', 
 'src/option_menu.cpp',
-# 'preview_renderer.cpp', 
 'src/res_descriptor.cpp', 
 'src/resource.cpp',
 'src/resource_manager.cpp', 
