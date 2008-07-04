@@ -24,9 +24,7 @@
 #include "../string_format.hpp"
 #include "../fonts.hpp"
 #include "../gettext.h"
-
-namespace WorldMapNS {
-
+
 WorldMapStory::WorldMapStory(const FileReader &reader)
 {
   reader.read_string("title", title);
@@ -56,7 +54,5 @@ WorldMapStory::WorldMapStory(const FileReader &reader)
   if (pages.empty())
     PingusError::raise("WorldMapStory: WorldMap does not include a valid story");
 }
-
-}	// namespace WorldMapNS
-
+
 /* EOF */

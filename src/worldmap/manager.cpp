@@ -27,170 +27,175 @@
 #include "../display/scene_context.hpp"
 #include "../math.hpp"
 #include "worldmap.hpp"
+#include "worldmap_component.hpp"
 #include "resource.hpp"
 #include "worldmap_story.hpp"
 #include "pingus.hpp"
 #include "manager.hpp"
 #include "../story_screen.hpp"
 
-namespace WorldMapNS {
-
-WorldMapManager* WorldMapManager::instance_ = 0;
-
-class WorldMapManagerCloseButton
+WorldMapScreen* WorldMapScreen::instance_ = 0;
+
+class WorldMapScreenCloseButton
   : public GUI::SurfaceButton
 {
+private: 
+  WorldMapScreen* worldmap_screen;
 public:
-  WorldMapManagerCloseButton();
+  WorldMapScreenCloseButton(WorldMapScreen* worldmap_screen);
   void on_click();
   void draw (DrawingContext& gc);
   void on_pointer_enter();
 };
-
-class WorldMapManagerStoryButton
+
+class WorldMapScreenStoryButton
   : public GUI::SurfaceButton
 {
+private:
+  WorldMapScreen* worldmap_screen;
 public:
-  WorldMapManagerStoryButton();
+  WorldMapScreenStoryButton(WorldMapScreen* worldmap_screen);
   void on_click();
   void draw (DrawingContext& gc);
   void on_pointer_enter();
 };
-
-
-class WorldMapManagerCreditsButton
+
+class WorldMapScreenCreditsButton
   : public GUI::SurfaceButton
 {
+private:
+  WorldMapScreen* worldmap_screen;
 public:
-  WorldMapManagerCreditsButton();
+  WorldMapScreenCreditsButton(WorldMapScreen* worldmap_screen);
   void on_click();
   void draw (DrawingContext& gc);
   void on_pointer_enter();
 };
-
-class WorldMapManagerEnterButton
+
+class WorldMapScreenEnterButton
   : public GUI::SurfaceButton
 {
+private:
+  WorldMapScreen* worldmap_screen;
 public:
-  WorldMapManagerEnterButton();
+  WorldMapScreenEnterButton(WorldMapScreen* worldmap_screen);
   void on_click();
   void draw (DrawingContext& gc);
   void on_pointer_enter();
 };
-
-
-WorldMapManagerCreditsButton::WorldMapManagerCreditsButton()
+
+WorldMapScreenCreditsButton::WorldMapScreenCreditsButton(WorldMapScreen* worldmap_screen)
   : GUI::SurfaceButton(Display::get_width() - 150, 0,
                        ResDescriptor("core/worldmap/credits_button_normal"),
                        ResDescriptor("core/worldmap/credits_button_pressed"),
-                       ResDescriptor("core/worldmap/credits_button_hover"))
+                       ResDescriptor("core/worldmap/credits_button_hover")),
+    worldmap_screen(worldmap_screen)
 {
 }
 
 void
-WorldMapManagerCreditsButton::on_pointer_enter()
+WorldMapScreenCreditsButton::on_pointer_enter()
 {
   SurfaceButton::on_pointer_enter();
   Sound::PingusSound::play_sound ("tick");
 }
 
-
-
 void
-WorldMapManagerCreditsButton::draw (DrawingContext& gc)
+WorldMapScreenCreditsButton::draw (DrawingContext& gc)
 {
   SurfaceButton::draw(gc);
   gc.print_center(Fonts::chalk_small, Display::get_width() - 59 - 24, 2, _("Show Ending?"));
 }
 
 void
-WorldMapManagerCreditsButton::on_click()
+WorldMapScreenCreditsButton::on_click()
 {
   ScreenManager::instance()->replace_screen
-    (new StoryScreen(WorldMapManager::instance()->get_worldmap()->get_end_story()), true);
+    (new StoryScreen(worldmap_screen->get_worldmap()->get_end_story()), true);
 }
 
-WorldMapManagerStoryButton::WorldMapManagerStoryButton()
+WorldMapScreenStoryButton::WorldMapScreenStoryButton(WorldMapScreen* worldmap_screen)
   : GUI::SurfaceButton(0, 0,
                        ResDescriptor("core/worldmap/story_button_normal"),
                        ResDescriptor("core/worldmap/story_button_pressed"),
-                       ResDescriptor("core/worldmap/story_button_hover"))
+                       ResDescriptor("core/worldmap/story_button_hover")),
+    worldmap_screen(worldmap_screen)
 {
 }
 
 void
-WorldMapManagerStoryButton::on_pointer_enter()
+WorldMapScreenStoryButton::on_pointer_enter()
 {
   SurfaceButton::on_pointer_enter();
   Sound::PingusSound::play_sound ("tick");
 }
 
-
-
 void
-WorldMapManagerStoryButton::draw (DrawingContext& gc)
+WorldMapScreenStoryButton::draw (DrawingContext& gc)
 {
   SurfaceButton::draw(gc);
   gc.print_center(Fonts::chalk_small, 59, 2, _("Show Story?"));
 }
 
 void
-WorldMapManagerStoryButton::on_click()
+WorldMapScreenStoryButton::on_click()
 {
   ScreenManager::instance()->replace_screen
-    (new StoryScreen(WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_intro_story()), true);
+    (new StoryScreen(worldmap_screen->get_worldmap()->get_intro_story()), true);
 }
-
-WorldMapManagerCloseButton::WorldMapManagerCloseButton()
+
+WorldMapScreenCloseButton::WorldMapScreenCloseButton(WorldMapScreen* worldmap_screen)
   : GUI::SurfaceButton(0, Display::get_height() - 37,
                        ResDescriptor("core/worldmap/leave_button_normal"),
                        ResDescriptor("core/worldmap/leave_button_pressed"),
-                       ResDescriptor("core/worldmap/leave_button_hover"))
+                       ResDescriptor("core/worldmap/leave_button_hover")),
+    worldmap_screen(worldmap_screen)
 {
 }
 
 void
-WorldMapManagerCloseButton::on_pointer_enter()
+WorldMapScreenCloseButton::on_pointer_enter()
 {
   SurfaceButton::on_pointer_enter();
   Sound::PingusSound::play_sound ("tick");
 }
 
 void
-WorldMapManagerCloseButton::draw (DrawingContext& gc)
+WorldMapScreenCloseButton::draw (DrawingContext& gc)
 {
   SurfaceButton::draw(gc);
   gc.print_center(Fonts::chalk_small, 44, Display::get_height() - 25, _("Leave?"));
 }
 
 void
-WorldMapManagerCloseButton::on_click()
+WorldMapScreenCloseButton::on_click()
 {
   ScreenManager::instance ()->pop_screen ();
 }
 
-WorldMapManagerEnterButton::WorldMapManagerEnterButton()
+WorldMapScreenEnterButton::WorldMapScreenEnterButton(WorldMapScreen* worldmap_screen)
   : GUI::SurfaceButton(Display::get_width() - 119, Display::get_height() - 37,
                        ResDescriptor("core/worldmap/enter_button_normal"),
                        ResDescriptor("core/worldmap/enter_button_pressed"),
-                       ResDescriptor("core/worldmap/enter_button_hover"))
+                       ResDescriptor("core/worldmap/enter_button_hover")),
+    worldmap_screen(worldmap_screen)
 {
 }
 
 void
-WorldMapManagerEnterButton::on_pointer_enter()
+WorldMapScreenEnterButton::on_pointer_enter()
 {
   SurfaceButton::on_pointer_enter();
-  if (!WorldMapManager::instance()->get_worldmap()->get_pingus()->is_walking())
+  if (!worldmap_screen->get_worldmap()->get_pingus()->is_walking())
     {
       Sound::PingusSound::play_sound ("tick");
     }
 }
 
 void
-WorldMapManagerEnterButton::draw (DrawingContext& gc)
+WorldMapScreenEnterButton::draw (DrawingContext& gc)
 {
-  if (WorldMapManager::instance()->get_worldmap()->get_pingus()->is_walking())
+  if (worldmap_screen->get_worldmap()->get_pingus()->is_walking())
     {
       gc.draw(button_surface, Vector2i(x_pos, y_pos));
     }
@@ -205,12 +210,12 @@ WorldMapManagerEnterButton::draw (DrawingContext& gc)
 }
 
 void
-WorldMapManagerEnterButton::on_click()
+WorldMapScreenEnterButton::on_click()
 {
-  WorldMapManager::instance()->get_worldmap()->enter_level();
+  worldmap_screen->get_worldmap()->enter_level();
 }
 
-WorldMapManager::WorldMapManager ()
+WorldMapScreen::WorldMapScreen ()
   : levelname_bg(Sprite("core/worldmap/levelname_bg")),
     is_init(false),
     exit_worldmap(false),
@@ -220,16 +225,15 @@ WorldMapManager::WorldMapManager ()
   // FIXME: a bit ugly because of the proteced member, but should work
   // FIXME: well enough. GUIScreen could also use multi-inheritage,
   // FIXME: but that could lead to member function name conflicts
-  worldmap_component = new WorldMapComponent();
+  worldmap_component = new WorldMapComponent(this);
   gui_manager->add (worldmap_component, true);
-  gui_manager->add(new WorldMapManagerCloseButton(), true);
-  gui_manager->add(new WorldMapManagerEnterButton(), true);
-
-  gui_manager->add(new WorldMapManagerStoryButton(), true);
+  gui_manager->add(new WorldMapScreenCloseButton(this), true);
+  gui_manager->add(new WorldMapScreenEnterButton(this), true);
+  gui_manager->add(new WorldMapScreenStoryButton(this), true);
 }
 
 void
-WorldMapManager::load (const std::string& filename)
+WorldMapScreen::load (const std::string& filename)
 {
   if (worldmap)
     delete worldmap;
@@ -241,12 +245,12 @@ WorldMapManager::load (const std::string& filename)
                                     credits_unlocked);
   if (credits_unlocked)
     {
-      gui_manager->add(new WorldMapManagerCreditsButton(), true);
+      gui_manager->add(new WorldMapScreenCreditsButton(this), true);
     }
 }
 
 void
-WorldMapManager::on_startup ()
+WorldMapScreen::on_startup ()
 {
   exit_worldmap = false;
   Sound::PingusSound::stop_music();
@@ -255,21 +259,21 @@ WorldMapManager::on_startup ()
     worldmap->on_startup ();
 }
 
-WorldMapManager::~WorldMapManager ()
+WorldMapScreen::~WorldMapScreen ()
 {
   delete worldmap;
   delete new_worldmap;
 }
 
 void
-WorldMapManager::on_escape_press ()
+WorldMapScreen::on_escape_press ()
 {
-  //std::cout << "WorldMapManager::on_escape_press ()..." << std::endl;
+  //std::cout << "WorldMapScreen::on_escape_press ()..." << std::endl;
   exit_worldmap = true;
 }
 
 void
-WorldMapManager::update (float delta)
+WorldMapScreen::update (float delta)
 {
   GUIScreen::update(delta);
 
@@ -286,63 +290,8 @@ WorldMapManager::update (float delta)
     }
 }
 
-WorldMapComponent::WorldMapComponent()
-{
-  scene_context = new SceneContext();
-}
-
-WorldMapComponent::~WorldMapComponent()
-{
-  delete scene_context;
-}
-
 void
-WorldMapComponent::draw (DrawingContext& gc)
-{
-  WorldMap* worldmap = WorldMapManager::instance()->worldmap;
-
-  Rect cliprect = WorldMapManager::instance()->get_trans_rect();
-
-  scene_context->clear();
-  scene_context->push_modelview();
-  scene_context->translate((float)cliprect.left, (float)cliprect.top);
-
-  scene_context->set_cliprect(cliprect);
-
-  //scene_context->color().draw_fillrect(-100, -100, 2000, 2000, Color(255,0,0,0), -10000);
-  worldmap->draw(scene_context->color());
-
-  gc.draw(new SceneContextDrawingRequest(scene_context, Vector3f(0,0,-1000)));
-
-  scene_context->pop_modelview();
-
-  // Draw border
-  if (cliprect != Rect(Vector2i(0,0), Size(Display::get_width(), Display::get_height())))
-    {
-      Color border_color(50, 65, 75);
-      // top
-      gc.draw_fillrect(0, 0, Display::get_width(), cliprect.top,
-                       border_color);
-      // bottom
-      gc.draw_fillrect(0, cliprect.bottom, Display::get_width(), Display::get_height(),
-                       border_color);
-      // left
-      gc.draw_fillrect(0, cliprect.top, cliprect.left, cliprect.bottom,
-                       border_color);
-      // right
-      gc.draw_fillrect(cliprect.right, cliprect.top, Display::get_width(), cliprect.bottom,
-                       border_color);
-    }
-}
-
-void
-WorldMapComponent::update (float delta)
-{
-  WorldMapManager::instance()->worldmap->update(delta);
-}
-
-void
-WorldMapManager::draw_foreground(DrawingContext& gc)
+WorldMapScreen::draw_foreground(DrawingContext& gc)
 {
   // Draw the levelname
   gc.draw(levelname_bg,
@@ -354,62 +303,20 @@ WorldMapManager::draw_foreground(DrawingContext& gc)
 }
 
 void
-WorldMapComponent::on_primary_button_press (int x, int y)
-{
-  Rect cliprect = WorldMapManager::instance()->get_trans_rect();
-  WorldMapManager::instance ()->worldmap->on_primary_button_press(x - cliprect.left,
-                                                                  y - cliprect.top);
-}
-
-
-void
-WorldMapComponent::on_pointer_move (int x, int y)
-{
-  Rect cliprect = WorldMapManager::instance()->get_trans_rect();
-  WorldMapManager::instance ()->worldmap->on_pointer_move(x - cliprect.left,
-                                                          y - cliprect.top);
-}
-
-void
-WorldMapComponent::on_secondary_button_press (int x, int y)
-{
-  Rect cliprect = WorldMapManager::instance()->get_trans_rect();
-  WorldMapManager::instance ()->worldmap->on_secondary_button_press(x - cliprect.left,
-                                                                    y - cliprect.top);
-}
-
-void
-WorldMapManager::change_map (const std::string& filename, NodeId node)
+WorldMapScreen::change_map (const std::string& filename, NodeId node)
 {
   // Create the new worldmap and make it the current one
   new_worldmap = new WorldMap (path_manager.complete("worldmaps/" + filename));
   new_worldmap->set_pingus (node);
 }
 
-WorldMapManager*
-WorldMapManager::instance ()
-{
-  if (instance_)
-    return instance_;
-  else
-    return instance_ = new WorldMapManager ();
-}
-
-void WorldMapManager::deinit()
-{
-  delete instance_;
-  instance_ = 0;
-}
-
 Rect
-WorldMapManager::get_trans_rect() const
+WorldMapScreen::get_trans_rect() const
 {
   return Rect(Vector2i(Math::max((Display::get_width()  - worldmap->get_width())/2,  0),
                        Math::max((Display::get_height() - worldmap->get_height())/2, 0)), 
               Size(Math::min(Display::get_width(),  worldmap->get_width()),
                    Math::min(Display::get_height(), worldmap->get_height())));
 }
-
-} // namespace WorldMapNS
-
+
 /* EOF */

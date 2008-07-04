@@ -807,8 +807,7 @@ PingusMain::init_pingus()
   PingusMenuManager::init();
   Sound::PingusSound::init();
   PinguActionFactory::init();
-  WorldMapNS::WorldMapManager::instance();
-
+  
   fps_counter.init();
   console.init();
 }
@@ -824,7 +823,6 @@ PingusMain::deinit_pingus()
   Sound::PingusSound::deinit();
   PingusMenuManager::deinit();
   WorldObjFactory::deinit();
-  WorldMapNS::WorldMapManager::deinit();
   ScreenManager::deinit();
   StatManager::deinit();
   SavegameManager::deinit();

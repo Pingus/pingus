@@ -259,6 +259,7 @@ pingus_sources = [
 'src/worldmap/surface_drawable.cpp', 
 'src/worldmap/worldmap.cpp', 
 'src/worldmap/worldmap_story.cpp', 
+'src/worldmap/worldmap_component.cpp', 
 'src/worldobj.cpp', 
 'src/worldobj_factory.cpp', 
 'src/worldobjs/conveyor_belt.cpp', 

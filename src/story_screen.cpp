@@ -189,7 +189,7 @@ StoryScreen::on_fast_forward_press ()
 void
 StoryScreen::on_escape_press ()
 {
-  ScreenManager::instance()->replace_screen(WorldMapNS::WorldMapManager::instance ());
+  ScreenManager::instance()->replace_screen(new WorldMapScreen(), true);
 }
 
 void
@@ -228,33 +228,36 @@ StoryScreenComponent::next_text()
         }
       else
         {
+          std::string which_story = "start";
+          
+#if 0 // FIXME: Fri Jul  4 10:34:19 2008
           //Out of story pages - figure out which one this was (start or end)
-          std::string which_story;
-          if (story == WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_intro_story())
+          if (story == WorldMapNS::WorldMapScreen::instance()->get_worldmap()->get_intro_story())
             which_story = "start";
           else
             which_story = "end";
 
           // Record that player has seen this story.
-          StatManager::instance()->set_bool(WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_shortname()
+          StatManager::instance()->set_bool(WorldMapNS::WorldMapScreen::instance()->get_worldmap()->get_shortname()
                                             + "-" + which_story + "story-seen", true);
 
           bool credits_seen = false;
           //Check if this is the last worldmap
           if (which_story == "end" &&
-              WorldMapNS::WorldMapManager::instance()->get_worldmap()->is_final_map())
+              WorldMapNS::WorldMapScreen::instance()->get_worldmap()->is_final_map())
             {
               // Check if final credits have been seen
               StatManager::instance()->get_bool("credits-seen", credits_seen);
               if (!credits_seen)
                 ScreenManager::instance()->replace_screen(new Credits(), true);
               else
-                ScreenManager::instance()->replace_screen(WorldMapNS::WorldMapManager::instance());
+                ScreenManager::instance()->replace_screen(new WorldMapNS::WorldMapScreen(), true);
             }
           else
             {
-              ScreenManager::instance()->replace_screen(WorldMapNS::WorldMapManager::instance());
+              ScreenManager::instance()->replace_screen(new WorldMapNS::WorldMapScreen()), true);
             }
+#endif
         }
     }
 }

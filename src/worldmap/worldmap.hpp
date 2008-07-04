@@ -35,7 +35,7 @@ class WorldMapStory;
 class PathGraph;
 class Drawable;
 class Pingus;
-
+
 /** A class for loading, displaying and managing the worldmap. The
     worldmap is basically a multi-layered image and a path
     (bidirectional graph) where a pingu can walk on. Parts of the
@@ -151,7 +151,7 @@ private:
       or use the "default-node" option from the XML file */
   void set_starting_node();
 };
-
+
 } // namespace WorldMapNS
 
 #endif
