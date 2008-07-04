@@ -34,7 +34,7 @@
 #include "../lisp/lisp.hpp"
 #include "worldmap.hpp"
 #include "worldmap_story.hpp"
-#include "manager.hpp"
+#include "worldmap_screen.hpp"
 #include "pingus.hpp"
 #include "drawable_factory.hpp"
 #include "drawable.hpp"

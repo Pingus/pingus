@@ -16,7 +16,7 @@
 
 #include "../display/display.hpp"
 #include "../display/scene_context.hpp"
-#include "manager.hpp"
+#include "worldmap_screen.hpp"
 #include "worldmap.hpp"
 #include "worldmap_component.hpp"
 

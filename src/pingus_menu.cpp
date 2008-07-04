@@ -26,7 +26,7 @@
 #include "start_screen.hpp"
 #include "story_screen.hpp"
 #include "worldmap/worldmap.hpp"
-#include "worldmap/manager.hpp"
+#include "worldmap/worldmap_screen.hpp"
 #include "screen/screen_manager.hpp"
 #include "pingus_menu_manager.hpp"
 #include "gui/gui_manager.hpp"

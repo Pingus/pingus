@@ -28,7 +28,7 @@
 #include "story_screen.hpp"
 #include "res_descriptor.hpp"
 #include "worldmap/worldmap.hpp"
-#include "worldmap/manager.hpp"
+#include "worldmap/worldmap_screen.hpp"
 #include "worldmap/worldmap_story.hpp"
 #include "stat_manager.hpp"
 #include "credits.hpp"

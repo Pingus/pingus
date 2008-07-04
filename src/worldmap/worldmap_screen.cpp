@@ -31,8 +31,8 @@
 #include "resource.hpp"
 #include "worldmap_story.hpp"
 #include "pingus.hpp"
-#include "manager.hpp"
 #include "../story_screen.hpp"
+#include "worldmap_screen.hpp"
 
 WorldMapScreen* WorldMapScreen::instance_ = 0;
 

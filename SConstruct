@@ -250,7 +250,7 @@ pingus_sources = [
 'src/worldmap/drawable_factory.cpp', 
 'src/worldmap/graph.cpp', 
 'src/worldmap/level_dot.cpp', 
-'src/worldmap/manager.cpp', 
+'src/worldmap/worldmap_screen.cpp', 
 'src/worldmap/path.cpp', 
 'src/worldmap/path_drawable.cpp', 
 'src/worldmap/path_graph.cpp', 

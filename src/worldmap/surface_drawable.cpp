@@ -18,7 +18,7 @@
 
 #include "../resource.hpp"
 #include "../display/drawing_context.hpp"
-#include "manager.hpp"
+#include "worldmap_screen.hpp"
 #include "worldmap.hpp"
 #include "pingus.hpp"
 #include "surface_drawable.hpp"
