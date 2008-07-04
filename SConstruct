@@ -116,6 +116,7 @@ pingus_sources = [
 'src/font_test_screen.cpp',
 'src/font_description.cpp',
 'src/sprite.cpp',
+'src/sprite_impl.cpp',
 'src/fps_counter.cpp', 
 'src/game_session.cpp', 
 'src/game_time.cpp', 
