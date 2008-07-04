@@ -21,7 +21,6 @@
 #include "../pingu_holder.hpp"
 #include "../globals.hpp"
 #include "../pingu.hpp"
-#include "../game_time.hpp"
 #include "../resource.hpp"
 #include "../components/smallmap.hpp"
 #include "entrance.hpp"
@@ -74,8 +73,8 @@ Entrance::get_z_pos () const
 bool
 Entrance::pingu_ready ()
 {
-  if (last_release + release_rate < (world->get_game_time()->get_ticks())) {
-    last_release = world->get_game_time()->get_ticks();
+  if (last_release + release_rate < (world->get_time())) {
+    last_release = world->get_time();
     return true;
   } else {
     return false;

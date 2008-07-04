@@ -31,27 +31,15 @@ private:
   /** Tick counter */
   int count;
 
-  /** How long does a tick take in msec */
-  int tick_time;
-
 public:
-  GameTime (int arg_tick_time);
+  GameTime();
 
   /** Number of ticks since the time starts, a tick is one basically
       update call to the world */
   int  get_ticks(void);
 
-  /** Return the passed time in miliseconds (1000msec = 1sec) */
-  int get_time ();
-
-  /** Return in realtime (milisecondons ) how long a tick normally takes */
-  int get_tick_time ();
-
   /** Increase the tick count */
   void update(void);
-
-  /** Start from zero */
-  void reset(void);
 
   /** Convert time given in ticks, into a string of Minutes:Seconds */
   static std::string ticks_to_realtime_string(int ticks);

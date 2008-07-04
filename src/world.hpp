@@ -120,7 +120,7 @@ public:
   int     get_width();
 
   /** Returns the time passed since the level was started */
-  int get_time_passed();
+  int get_time();
 
   /** @return A pointer to the collision map used in this world */
   ColMap* get_colmap();
@@ -165,9 +165,6 @@ public:
 
   /** @return the pingu at the given word coordinates, 0 if none is there */
   Pingu* get_pingu (const Vector3f& pos);
-
-  /** Return a pointer to the GameTime object of this World */
-  GameTime* get_game_time ();
 
   /** Get the acceleration due to gravity in the world */
   float get_gravity();

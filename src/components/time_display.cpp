@@ -40,7 +40,7 @@ TimeDisplay::TimeDisplay (GameSession* c)
 void
 TimeDisplay::draw (DrawingContext& gc)
 {
-  int  time_value = server->get_plf().get_time() - server->get_world()->get_time_passed();
+  int  time_value = server->get_plf().get_time() - server->get_world()->get_time();
   std::string time_string;
 
   if (server->get_plf().get_time() == -1 && !(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
@@ -55,7 +55,7 @@ TimeDisplay::draw (DrawingContext& gc)
         time_string = GameTime::ticks_to_realtime_string(time_value);
       else
         {
-          time_value = server->get_world()->get_time_passed();
+          time_value = server->get_world()->get_time();
           time_string = StringUtil::to_string(time_value);
         }
 

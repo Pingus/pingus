@@ -48,7 +48,7 @@ bool WorldObj_less (WorldObj* a, WorldObj* b)
 World::World(const PingusLevel& plf)
   : ambient_light(Color(plf.get_ambient_light())),
     gfx_map(new GroundMap(plf)),
-    game_time(new GameTime (game_speed)),
+    game_time(new GameTime()),
     do_armageddon(false),
     pingus(new PinguHolder(plf)),
     colmap(gfx_map->get_colmap()),
@@ -199,7 +199,7 @@ World::get_height()
 }
 
 int
-World::get_time_passed()
+World::get_time()
 {
   return game_time->get_ticks();
 }
@@ -262,12 +262,6 @@ World::get_pingu (const Vector3f& pos)
   }
 
   return current_pingu;
-}
-
-GameTime*
-World::get_game_time ()
-{
-  return game_time;
 }
 
 float World::get_gravity()

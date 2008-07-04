@@ -16,7 +16,6 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "../col_map.hpp"
-#include "../game_time.hpp"
 #include "../display/scene_context.hpp"
 #include "../pingu.hpp"
 #include "../pingu_holder.hpp"
@@ -71,11 +70,11 @@ IceBlock::update()
       if (   (*pingu)->get_x() > pos.x     && (*pingu)->get_x() < pos.x + block_sur.get_width()
 	  && (*pingu)->get_y() > pos.y - 4 && (*pingu)->get_y() < pos.y + block_sur.get_height())
 	{
-	  last_contact = world->get_game_time()->get_ticks();
+	  last_contact = world->get_time();
 	}
     }
 
-  if (last_contact && last_contact + 1000 > world->get_game_time()->get_ticks())
+  if (last_contact && last_contact + 1000 > world->get_time())
     {
       //std::cout << "IceBlock: Catched Pingu: " << thickness  << std::endl;
       thickness -= 0.01f;

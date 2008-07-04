@@ -144,7 +144,7 @@ Server::get_action_holder ()
 int
 Server::get_time ()
 {
-  return get_world()->get_game_time()->get_ticks();
+  return get_world()->get_time();
 }
 
 void

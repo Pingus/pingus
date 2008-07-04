@@ -21,15 +21,9 @@
 #include "game_time.hpp"
 
 
-GameTime::GameTime (int arg_tick_time)
-  : count (0), tick_time (arg_tick_time)
+GameTime::GameTime()
+  : count (0)
 {
-}
-
-int
-GameTime::get_time ()
-{
-  return count * game_speed;
 }
 
 int
@@ -38,22 +32,10 @@ GameTime::get_ticks(void)
   return count;
 }
 
-int
-GameTime::get_tick_time ()
-{
-  return game_speed;
-}
-
 void
 GameTime::update(void)
 {
   count += 1;
-}
-
-void
-GameTime::reset(void)
-{
-  count = 0;
 }
 
 std::string
