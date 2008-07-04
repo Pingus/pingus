@@ -20,45 +20,44 @@
 #include <vector>
 #include <string>
 #include "../res_descriptor.hpp"
+	
+class FileReader;
 
-	
-	class FileReader;
+class StoryPage
+{
+public:
+  StoryPage() {}
 
-	class StoryPage
-	{
-	public:
-		StoryPage() {}
-
-		StoryPage(ResDescriptor arg_image, std::string arg_text, std::string arg_name = "")
-			: image(arg_image), text(arg_text), page_name(arg_name)
-		{
+  StoryPage(ResDescriptor arg_image, std::string arg_text, std::string arg_name = "")
+    : image(arg_image), text(arg_text), page_name(arg_name)
+  {
 		
-		}
+  }
 
-		ResDescriptor image;
-		std::string   text;
-		std::string		page_name;
-	};
+  ResDescriptor image;
+  std::string   text;
+  std::string	page_name;
+};
 
 namespace WorldmapNS {
+
+class WorldmapStory
+{
+public:
+  WorldmapStory(const FileReader &reader);
+  ~WorldmapStory() { }
 
-	class WorldmapStory
-	{
-	public:
-		WorldmapStory(const FileReader &reader);
-		~WorldmapStory() { }
+  std::string get_title() const { return title; }
+  std::string get_music() const { return music; }
+  std::vector<StoryPage> get_pages() const { return pages; }
 
-		std::string get_title() const { return title; }
-		std::string get_music() const { return music; }
-		std::vector<StoryPage> get_pages() const { return pages; }
+private:
+  std::string title;
+  std::string music;
+  std::vector<StoryPage> pages;
 
-	private:
-		std::string title;
-		std::string music;
-		std::vector<StoryPage> pages;
-
-	};	// class WorldmapStory
-
+};
+
 }	// namespace WorldmapNS
 
 #endif

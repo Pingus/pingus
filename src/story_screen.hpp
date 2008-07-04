@@ -26,14 +26,14 @@
 class StoryScreenComponent;
 
 using namespace WorldmapNS;
-
+
 /** */
 class StoryScreen : public GUIScreen
 {
 private:
   StoryScreenComponent* story_comp;
 public:
-	StoryScreen(WorldmapStory *pages);
+  StoryScreen(WorldmapStory *pages);
   ~StoryScreen();
 
   void on_startup();
@@ -43,8 +43,7 @@ private:
   StoryScreen (const StoryScreen&);
   StoryScreen& operator= (const StoryScreen&);
 };
-
-
+
 #endif
 
 /* EOF */
