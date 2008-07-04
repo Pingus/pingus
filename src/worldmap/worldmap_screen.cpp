@@ -40,7 +40,7 @@ class WorldmapScreenCloseButton
 private: 
   WorldmapScreen* worldmap_screen;
 public:
-  WorldmapScreenCloseButton(WorldMapScreen* worldmap_screen);
+  WorldmapScreenCloseButton(WorldmapScreen* worldmap_screen);
   void on_click();
   void draw (DrawingContext& gc);
   void on_pointer_enter();
@@ -52,7 +52,7 @@ class WorldmapScreenStoryButton
 private:
   WorldmapScreen* worldmap_screen;
 public:
-  WorldmapScreenStoryButton(WorldMapScreen* worldmap_screen);
+  WorldmapScreenStoryButton(WorldmapScreen* worldmap_screen);
   void on_click();
   void draw (DrawingContext& gc);
   void on_pointer_enter();
@@ -64,7 +64,7 @@ class WorldmapScreenCreditsButton
 private:
   WorldmapScreen* worldmap_screen;
 public:
-  WorldmapScreenCreditsButton(WorldMapScreen* worldmap_screen);
+  WorldmapScreenCreditsButton(WorldmapScreen* worldmap_screen);
   void on_click();
   void draw (DrawingContext& gc);
   void on_pointer_enter();
@@ -76,13 +76,13 @@ class WorldmapScreenEnterButton
 private:
   WorldmapScreen* worldmap_screen;
 public:
-  WorldmapScreenEnterButton(WorldMapScreen* worldmap_screen);
+  WorldmapScreenEnterButton(WorldmapScreen* worldmap_screen);
   void on_click();
   void draw (DrawingContext& gc);
   void on_pointer_enter();
 };
 
-WorldmapScreenCreditsButton::WorldMapScreenCreditsButton(WorldMapScreen* worldmap_screen)
+WorldmapScreenCreditsButton::WorldmapScreenCreditsButton(WorldmapScreen* worldmap_screen)
   : GUI::SurfaceButton(Display::get_width() - 150, 0,
                        ResDescriptor("core/worldmap/credits_button_normal"),
                        ResDescriptor("core/worldmap/credits_button_pressed"),
@@ -112,7 +112,7 @@ WorldmapScreenCreditsButton::on_click()
     (new StoryScreen(worldmap_screen->get_worldmap()->get_end_story()), true);
 }
 
-WorldmapScreenStoryButton::WorldMapScreenStoryButton(WorldMapScreen* worldmap_screen)
+WorldmapScreenStoryButton::WorldmapScreenStoryButton(WorldmapScreen* worldmap_screen)
   : GUI::SurfaceButton(0, 0,
                        ResDescriptor("core/worldmap/story_button_normal"),
                        ResDescriptor("core/worldmap/story_button_pressed"),
@@ -142,7 +142,7 @@ WorldmapScreenStoryButton::on_click()
     (new StoryScreen(worldmap_screen->get_worldmap()->get_intro_story()), true);
 }
 
-WorldmapScreenCloseButton::WorldMapScreenCloseButton(WorldMapScreen* worldmap_screen)
+WorldmapScreenCloseButton::WorldmapScreenCloseButton(WorldmapScreen* worldmap_screen)
   : GUI::SurfaceButton(0, Display::get_height() - 37,
                        ResDescriptor("core/worldmap/leave_button_normal"),
                        ResDescriptor("core/worldmap/leave_button_pressed"),
@@ -171,7 +171,7 @@ WorldmapScreenCloseButton::on_click()
   ScreenManager::instance ()->pop_screen ();
 }
 
-WorldmapScreenEnterButton::WorldMapScreenEnterButton(WorldMapScreen* worldmap_screen)
+WorldmapScreenEnterButton::WorldmapScreenEnterButton(WorldmapScreen* worldmap_screen)
   : GUI::SurfaceButton(Display::get_width() - 119, Display::get_height() - 37,
                        ResDescriptor("core/worldmap/enter_button_normal"),
                        ResDescriptor("core/worldmap/enter_button_pressed"),
@@ -213,7 +213,7 @@ WorldmapScreenEnterButton::on_click()
   worldmap_screen->get_worldmap()->enter_level();
 }
 
-WorldmapScreen::WorldMapScreen ()
+WorldmapScreen::WorldmapScreen ()
   : levelname_bg(Sprite("core/worldmap/levelname_bg")),
     is_init(false),
     exit_worldmap(false),
@@ -256,7 +256,7 @@ WorldmapScreen::on_startup ()
     worldmap->on_startup ();
 }
 
-WorldmapScreen::~WorldMapScreen ()
+WorldmapScreen::~WorldmapScreen ()
 {
   delete worldmap;
   delete new_worldmap;

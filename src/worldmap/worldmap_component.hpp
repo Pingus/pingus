@@ -35,7 +35,7 @@ private:
   WorldmapScreen* worldmap_screen;
   
 public:
-  WorldmapComponent(WorldMapScreen* worldmap_screen);
+  WorldmapComponent(WorldmapScreen* worldmap_screen);
   ~WorldmapComponent();
 
   void on_primary_button_press (int x, int y);
@@ -48,8 +48,8 @@ public:
   bool is_at (int, int) { return true; }
 
 private:
-  WorldmapComponent (const WorldMapComponent&);
-  WorldmapComponent& operator= (const WorldMapComponent&);
+  WorldmapComponent (const WorldmapComponent&);
+  WorldmapComponent& operator= (const WorldmapComponent&);
 };
 
 } // namespace WorldmapNS

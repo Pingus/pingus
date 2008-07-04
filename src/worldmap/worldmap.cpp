@@ -49,9 +49,9 @@
 
 namespace WorldmapNS {
 
-Worldmap* WorldMap::current_ = 0; 
+Worldmap* Worldmap::current_ = 0; 
 
-Worldmap::WorldMap(const std::string& arg_filename)
+Worldmap::Worldmap(const std::string& arg_filename)
   : filename(arg_filename),
     mouse_x(0),
     mouse_y(0)
@@ -67,7 +67,7 @@ Worldmap::WorldMap(const std::string& arg_filename)
   gc_state.set_limit(Rect(Vector2i(0, 0), Size(width, height)));
 }
 
-Worldmap::~WorldMap()
+Worldmap::~Worldmap()
 {
   for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
     {

@@ -55,7 +55,7 @@ public:
   void update (float);
   void draw_foreground(DrawingContext& gc);
 
-  /** @defgroup WorldmapScreenBindings Controller bindings of the WorldMapScreen
+  /** @defgroup WorldmapScreenBindings Controller bindings of the WorldmapScreen
       @{*/
   /** Calculate the node that was clicked and set the pingu to walk
       to that node. If a node is double-cliked, the pingu should go
@@ -81,8 +81,8 @@ private:
   /** Startup Hook of the Screen */
   void on_startup ();
 
-  WorldmapScreen (const WorldMapScreen&);
-  WorldmapScreen& operator= (const WorldMapScreen&);
+  WorldmapScreen (const WorldmapScreen&);
+  WorldmapScreen& operator= (const WorldmapScreen&);
 };
 
 } // namespace WorldmapNS

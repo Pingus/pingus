@@ -22,14 +22,14 @@
 
 namespace WorldmapNS {
 
-WorldmapComponent::WorldMapComponent(WorldMapScreen* worldmap_screen)
+WorldmapComponent::WorldmapComponent(WorldmapScreen* worldmap_screen)
   : scene_context(new SceneContext()),
     worldmap_screen(worldmap_screen)
     
 {
 }
 
-WorldmapComponent::~WorldMapComponent()
+WorldmapComponent::~WorldmapComponent()
 {
 }
 
