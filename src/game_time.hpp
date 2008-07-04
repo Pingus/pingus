@@ -19,35 +19,16 @@
 
 #include "pingus.hpp"
 
-
 /** The GameTime represents the time which passes in the Pingus World.
     Its behaviour is analogue to CL_System::get_time (), but with the
     difference that it only increases if the game runs, if the game is
     in pause mode, the time will not continue. */
 class GameTime
 {
-private:
-  /** Tick counter */
-  int count;
-
 public:
-  GameTime();
-
-  /** Number of ticks since the time starts, a tick is one basically
-      update call to the world */
-  int  get_ticks(void);
-
-  /** Increase the tick count */
-  void update(void);
-
   /** Convert time given in ticks, into a string of Minutes:Seconds */
   static std::string ticks_to_realtime_string(int ticks);
-
-private:
-  GameTime (const GameTime&);
-  GameTime& operator= (const GameTime&);
 };
-
 
 #endif
 

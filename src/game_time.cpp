@@ -19,24 +19,6 @@
 #include "globals.hpp"
 #include "game_time.hpp"
 
-
-GameTime::GameTime()
-  : count (0)
-{
-}
-
-int
-GameTime::get_ticks(void)
-{
-  return count;
-}
-
-void
-GameTime::update(void)
-{
-  count += 1;
-}
-
 std::string
 GameTime::ticks_to_realtime_string(int ticks)
 {

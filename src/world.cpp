@@ -33,7 +33,6 @@
 #include "pingus_level.hpp"
 #include "worldobj_factory.hpp"
 #include "col_map.hpp"
-#include "game_time.hpp"
 #include "debug.hpp"
 
 using Actions::Bomber;
@@ -47,7 +46,7 @@ bool WorldObj_less (WorldObj* a, WorldObj* b)
 World::World(const PingusLevel& plf)
   : ambient_light(Color(plf.get_ambient_light())),
     gfx_map(new GroundMap(plf)),
-    game_time(new GameTime()),
+    game_time(0),
     do_armageddon(false),
     pingus(new PinguHolder(plf)),
     colmap(gfx_map->get_colmap()),
@@ -108,7 +107,6 @@ World::~World()
   for (WorldObjIter it = world_obj.begin(); it != world_obj.end(); ++it) {
     delete *it;
   }
-  delete game_time;
 }
 
 void
@@ -140,11 +138,11 @@ World::update()
 {
   WorldObj::set_world(this);
 
-  game_time->update ();
+  game_time += 1;
 
   if (do_armageddon)
     {
-      if (game_time->get_ticks() % 4 == 0)
+      if (game_time % 4 == 0)
         {
           while (armageddon_count < pingus->get_end_id())
             {
@@ -200,7 +198,7 @@ World::get_height()
 int
 World::get_time()
 {
-  return game_time->get_ticks();
+  return game_time;
 }
 
 void

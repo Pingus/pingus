@@ -20,6 +20,7 @@
 #include "pingus.hpp"
 #include <vector>
 #include <string>
+#include <memory>
 #include "math/vector2i.hpp"
 #include "math/color.hpp"
 #include "groundtype.hpp"
@@ -65,7 +66,7 @@ private:
   GroundMap* gfx_map;
 
   /** manager class for the time in the pingus world */
-  GameTime* game_time;
+  int game_time;
 
   /** set to true once an armageddon got started */
   bool do_armageddon;
@@ -77,7 +78,6 @@ private:
   std::vector<WorldObj*> world_obj;
   typedef std::vector<WorldObj*>::iterator WorldObjIter;
 
-  // These pointers hold objects and must be deleted
   Particles::PinguParticleHolder* pingu_particle_holder;
   Particles::RainParticleHolder*  rain_particle_holder;
   Particles::SmokeParticleHolder* smoke_particle_holder;
@@ -85,7 +85,6 @@ private:
   PinguHolder*                    pingus;
 
   // Pointers which are references to objects from other classes
-  //ActionHolder*   action_holder;
   ColMap*         colmap;
 
   void    init_worldobjs (const PingusLevel& plf);
