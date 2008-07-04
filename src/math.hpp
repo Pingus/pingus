@@ -19,6 +19,7 @@
 
 #include <assert.h>
 #include <stdlib.h>
+#include <string>
 #include "pingus.hpp"
 
 /** A collection of small math helper functions, some of them might be
@@ -91,6 +92,12 @@ float sqrt(float a);
 float mod(float x, float y);
 float floor(float x);
 float atan2(float x, float y);
+
+/** Write out the raw bits of a float as hex */
+std::string float2string(float value);
+
+/** Restore the raw bits of a float from a string */
+float string2float(const std::string& str);
 
 } // namespace Math
 

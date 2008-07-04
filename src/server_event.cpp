@@ -19,6 +19,7 @@
 #include <iostream>
 #include <boost/format.hpp>
 
+#include "math.hpp"
 #include "pingus_error.hpp"
 #include "server.hpp"
 #include "world.hpp"
@@ -26,47 +27,6 @@
 #include "pingu.hpp"
 #include "string_util.hpp"
 
-static char num2hex[] = "0123456789abcdef";
-
-/** Write out the raw bits of a float as hex */
-static std::string float2string(float value)
-{
-  std::string str(2*sizeof(float), '0');
-
-  for(size_t i = 0; i < sizeof(float); ++i)
-    {
-      char v = reinterpret_cast<char*>(&value)[i];
-      str[2*i + 0] = num2hex[(v & 0xf0) >> 4];
-      str[2*i + 1] = num2hex[v & 0x0f];
-    }
-  return str;
-}
-
-static char hex2int(char c)
-{
-  if (c >= '0' && c <= '9')
-    return c - '0';
-  else if (c >= 'a' && c <= 'f')
-    return c - 'a' + 0xa;
-  else
-    return 0;    
-}
-
-/** Restore the raw bits of a float from a string */
-static float string2float(const std::string& str)
-{
-  assert(str.size() == 2*sizeof(float));
-
-  float value;
-  for(size_t i = 0; i < sizeof(float); ++i)
-    {
-      char& v = reinterpret_cast<char*>(&value)[i];
-      v = (hex2int(str[2*i+0]) << 4) | hex2int(str[2*i+1]);
-    }
-
-  return value;
-}
-
 ServerEvent::ServerEvent() 
   : type(PINGU_ACTION_EVENT),
     time_stamp(0),
@@ -102,10 +62,10 @@ ServerEvent::ServerEvent(FileReader reader)
       reader.read_int ("id",     pingu_id);
 
       if (reader.read_string("raw-x", raw_x))
-        pos.x = string2float(raw_x);
+        pos.x = Math::string2float(raw_x);
 
       if (reader.read_string("raw-y", raw_y))
-        pos.y = string2float(raw_y);
+        pos.y = Math::string2float(raw_y);
 
       reader.read_enum("action", pingu_action, Actions::action_from_string);
 
@@ -135,8 +95,8 @@ ServerEvent::write(std::ostream& out) const
         out << "(pingu-action "
             << "(time " << time_stamp << ") "
             << "(id " << pingu_id << ") "
-            << "(raw-x \"" << float2string(pos.x) << "\") "
-            << "(raw-y \"" << float2string(pos.y) << "\") "
+            << "(raw-x \"" << Math::float2string(pos.x) << "\") "
+            << "(raw-y \"" << Math::float2string(pos.y) << "\") "
             << "(action \"" << Actions::action_to_string(pingu_action) << "\"))"
             << std::endl;
         break;

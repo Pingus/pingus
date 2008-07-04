@@ -54,6 +54,45 @@ float atan2(float x, float y)
   return ::atan2(x, y);
 }
 
+static char num2hex[] = "0123456789abcdef";
+
+std::string float2string(float value)
+{
+  std::string str(2*sizeof(float), '0');
+
+  for(size_t i = 0; i < sizeof(float); ++i)
+    {
+      char v = reinterpret_cast<char*>(&value)[i];
+      str[2*i + 0] = num2hex[(v & 0xf0) >> 4];
+      str[2*i + 1] = num2hex[v & 0x0f];
+    }
+  return str;
+}
+
+static char hex2int(char c)
+{
+  if (c >= '0' && c <= '9')
+    return c - '0';
+  else if (c >= 'a' && c <= 'f')
+    return c - 'a' + 0xa;
+  else
+    return 0;    
+}
+
+float string2float(const std::string& str)
+{
+  assert(str.size() == 2*sizeof(float));
+
+  float value;
+  for(size_t i = 0; i < sizeof(float); ++i)
+    {
+      char& v = reinterpret_cast<char*>(&value)[i];
+      v = (hex2int(str[2*i+0]) << 4) | hex2int(str[2*i+1]);
+    }
+
+  return value;
+}
+
 } // namespace Math
 
 /* EOF */
