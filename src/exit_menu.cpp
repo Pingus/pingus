@@ -106,7 +106,7 @@ ExitMenu::ExitMenu(PingusMenuManager* manager_)
   gui_manager->add(new ExitMenuYesButton(manager), true);
   gui_manager->add(new ExitMenuNoButton(manager), true);
 
-  sur = Resource::load_sprite("core/menu/exit_menu");
+  sur = Sprite("core/menu/exit_menu");
 }
 
 ExitMenu::~ExitMenu()

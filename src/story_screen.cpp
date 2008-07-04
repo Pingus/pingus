@@ -142,8 +142,8 @@ StoryScreenComponent::StoryScreenComponent (WorldMapNS::WorldMapStory *arg_story
   pages = story->get_pages();
 
   current_page = pages.back();
-  page_surface = Resource::load_sprite(current_page.image);
-  background   = Resource::load_sprite("core/menu/startscreenbg");
+  page_surface = Sprite(current_page.image);
+  background   = Sprite("core/menu/startscreenbg");
   
   background.scale(Display::get_width(), Display::get_height());
 }
@@ -221,7 +221,7 @@ StoryScreenComponent::next_text()
       if (!pages.empty())
         {
           current_page = pages.back();
-          page_surface = Resource::load_sprite(current_page.image);
+          page_surface = Sprite(current_page.image);
           display_text = "";
           time_passed = 0;
           page_displayed_completly = false;

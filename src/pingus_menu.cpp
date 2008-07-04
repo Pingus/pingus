@@ -68,7 +68,7 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
   gui_manager->add(start_button,   false);
   gui_manager->add(editor_button,  false);
 
-  logo = Resource::load_sprite("core/misc/logo");
+  logo = Sprite("core/misc/logo");
 
   help = _("..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: fullscreen   ::   F12: screenshot ::..");
 }

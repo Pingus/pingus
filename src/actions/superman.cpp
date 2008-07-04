@@ -16,7 +16,7 @@
 
 #include "../display/scene_context.hpp"
 #include "../pingu.hpp"
-#include "../resource.hpp"
+#include "../sprite.hpp"
 #include "superman.hpp"
 
 namespace Actions {
@@ -25,7 +25,7 @@ Superman::Superman (Pingu* p)
   : PinguAction(p),
     counter(0.0f),
     x_pos(pingu->get_x()),
-    sprite(Resource::load_sprite("pingus/player" + pingu->get_owner_str() + "/superman"))
+    sprite(Sprite("pingus/player" + pingu->get_owner_str() + "/superman"))
 {
 }
 

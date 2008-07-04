@@ -30,7 +30,7 @@ Hotspot::Hotspot(const FileReader& reader)
   reader.read_desc  ("surface",  desc);
   reader.read_float ("parallax", para);
 
-  sprite = Resource::load_sprite(desc);
+  sprite = Sprite(desc);
 }
 
 Hotspot::~Hotspot ()

@@ -30,10 +30,10 @@ CaptureRectangle::CaptureRectangle(GameSession* session_)
   : session(session_),
     pingu(0),
     owner_id(0),
-    good(Resource::load_sprite("game/cursors/capgood")),
-    bad(Resource::load_sprite("game/cursors/capbad")),
-    arrow_left(Resource::load_sprite("game/cursors/arrow_left")),
-    arrow_right(Resource::load_sprite("game/cursors/arrow_right")),
+    good(Sprite("game/cursors/capgood")),
+    bad(Sprite("game/cursors/capbad")),
+    arrow_left(Sprite("game/cursors/arrow_left")),
+    arrow_right(Sprite("game/cursors/arrow_right")),
     font(Fonts::courier_small)
 {
 }

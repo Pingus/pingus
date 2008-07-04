@@ -48,11 +48,11 @@ PingusMenuManager::PingusMenuManager ()
 	}
 	else
 	{
-		background.add_layer(Resource::load_sprite("core/menu/layer1"), 0, 0, 12, 0);
-		background.add_layer(Resource::load_sprite("core/menu/layer2"), 0, 150, 25, 0);
-		background.add_layer(Resource::load_sprite("core/menu/layer3"), 0, 200, 50, 0);
-		background.add_layer(Resource::load_sprite("core/menu/layer4"), 0, 429, 100, 0);
-		background.add_layer(Resource::load_sprite("core/menu/layer5"), 0, 500, 200, 0);
+		background.add_layer(Sprite("core/menu/layer1"), 0, 0, 12, 0);
+		background.add_layer(Sprite("core/menu/layer2"), 0, 150, 25, 0);
+		background.add_layer(Sprite("core/menu/layer3"), 0, 200, 50, 0);
+		background.add_layer(Sprite("core/menu/layer4"), 0, 429, 100, 0);
+		background.add_layer(Sprite("core/menu/layer5"), 0, 500, 200, 0);
 	}
 	push_menu (&mainmenu);
 }

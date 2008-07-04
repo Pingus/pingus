@@ -35,7 +35,7 @@ private:
 
 public:
   PanelSeparator(const Vector2i& pos_)
-    : sprite(Resource::load_sprite("core/editor/separator")),
+    : sprite(Sprite("core/editor/separator")),
       pos(pos_)
   {
   }
@@ -69,9 +69,9 @@ public:
               const Vector2i& pos_, const std::string& name, const std::string& tooltip_, 
               Callback callback_ = 0)
     : editor(editor_),
-      button_raised(Resource::load_sprite("core/editor/button-raised")),
-      button_pressed(Resource::load_sprite("core/editor/button-pressed")),
-      sprite(Resource::load_sprite(name)),
+      button_raised(Sprite("core/editor/button-raised")),
+      button_pressed(Sprite("core/editor/button-pressed")),
+      sprite(Sprite(name)),
       mouse_over(false),
       mouse_down(false),
       pos(pos_),
@@ -142,7 +142,7 @@ public:
 
 Panel::Panel(EditorScreen* editor_)
   : editor(editor_),
-    logo(Resource::load_sprite("core/editor/logo")),
+    logo(Sprite("core/editor/logo")),
     pos(2,2)
 {  
   editor->get_gui_manager()->add(this, true);

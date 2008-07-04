@@ -20,7 +20,6 @@
 #include "../ground_map.hpp"
 #include "../world.hpp"
 #include "../worldobj.hpp"
-#include "../resource.hpp"
 #include "../sound/sound.hpp"
 #include "../pingu.hpp"
 #include "digger.hpp"
@@ -32,7 +31,7 @@ Digger::Digger (Pingu* p)
     digger_radius("other/digger_radius_gfx", "other/digger_radius"),
     digger_c(0)
 {
-  sprite = Resource::load_sprite("pingus/player" + pingu->get_owner_str() + "/digger/left");
+  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/digger/left");
 }
 
 void

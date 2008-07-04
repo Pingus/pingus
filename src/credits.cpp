@@ -60,9 +60,9 @@ Credits::Credits()
 {
   scene_context = new SceneContext();
   fast_scrolling = false;
-  background = Resource::load_sprite("core/menu/startscreenbg");
+  background = Sprite("core/menu/startscreenbg");
   background.scale(Display::get_width(), Display::get_height());
-  pingu = Resource::load_sprite("core/misc/creditpingu");
+  pingu = Sprite("core/misc/creditpingu");
 
   gui_manager->add(new CreditsOkButton(this), true);
 

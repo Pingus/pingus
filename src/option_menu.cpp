@@ -39,8 +39,8 @@ extern TinyGetText::DictionaryManager dictionary_manager;
 
 OptionMenu::OptionMenu()
 {
-  background = Resource::load_sprite("core/menu/optionmenu");
-  ok_button  = Resource::load_sprite("core/start/ok");
+  background = Sprite("core/menu/optionmenu");
+  ok_button  = Sprite("core/start/ok");
 
   x_pos = 0;
   y_pos = 0;

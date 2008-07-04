@@ -110,7 +110,7 @@ public:
       level_menu(level_menu_), current_levelset(NULL),
       page(0)
   {
-    marker      = Resource::load_sprite("core/menu/marker");
+    marker      = Sprite("core/menu/marker");
    
     std::string path = Pathname("levelsets", Pathname::DATA_PATH).get_sys_path();
     System::Directory directory = System::opendir(path, "*.levelset");
@@ -232,8 +232,8 @@ public:
       current_level(-1),
       page(0)
   {
-    marker        = Resource::load_sprite("core/menu/marker2");
-    marker_locked = Resource::load_sprite("core/menu/marker_locked");
+    marker        = Sprite("core/menu/marker2");
+    marker_locked = Sprite("core/menu/marker_locked");
   }
 
   void draw(DrawingContext& gc) 
@@ -342,11 +342,11 @@ LevelMenu::LevelMenu()
   : x_pos((Display::get_width()  - default_screen_width)/2),
     y_pos((Display::get_height() - default_screen_height)/2)
 {
-  //background = Resource::load_sprite("core/menu/filedialog");
-  background = Resource::load_sprite("core/menu/startscreenbg");
+  //background = Sprite("core/menu/filedialog");
+  background = Sprite("core/menu/startscreenbg");
   background.scale(Display::get_width(), Display::get_height());
 
-  ok_button  = Resource::load_sprite("core/start/ok");
+  ok_button  = Sprite("core/start/ok");
 
   levelset_selector = new LevelsetSelector(this, Rect(Vector2i(x_pos + 100, y_pos + 140), Size(600, 285)));
   level_selector    = new LevelSelector(this, Rect(Vector2i(x_pos + 100, y_pos + 160), Size(600, 256)));

@@ -212,7 +212,7 @@ WorldMapManagerEnterButton::on_click()
 }
 
 WorldMapManager::WorldMapManager ()
-  : levelname_bg(Resource::load_sprite("core/worldmap/levelname_bg")),
+  : levelname_bg(Sprite("core/worldmap/levelname_bg")),
     is_init(false),
     exit_worldmap(false),
     worldmap(0),

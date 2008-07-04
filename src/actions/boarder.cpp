@@ -17,7 +17,6 @@
 #include "../math/vector3f.hpp"
 #include "../display/scene_context.hpp"
 #include "../pingu.hpp"
-#include "../resource.hpp"
 #include "boarder.hpp"
 
 namespace Actions {
@@ -27,9 +26,9 @@ Boarder::Boarder (Pingu* p)
     x_pos(pingu->get_x()),
     speed(0.0)
 {
-  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/player" + 
+  sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
     pingu->get_owner_str() + "/boarder/left"));
-  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+  sprite.load(Direction::RIGHT, Sprite("pingus/player" + 
     pingu->get_owner_str() + "/boarder/right"));
 }
 

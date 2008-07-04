@@ -25,9 +25,9 @@
 namespace WorldObjs {
 
 ConveyorBelt::ConveyorBelt(const FileReader& reader)
-  : left_sur  (Resource::load_sprite ("worldobjs/conveyorbelt_left")),
-    right_sur (Resource::load_sprite ("worldobjs/conveyorbelt_right")),
-    middle_sur(Resource::load_sprite ("worldobjs/conveyorbelt_middle"))
+  : left_sur  (Sprite ("worldobjs/conveyorbelt_left")),
+    right_sur (Sprite ("worldobjs/conveyorbelt_right")),
+    middle_sur(Sprite ("worldobjs/conveyorbelt_middle"))
 {
   reader.read_vector("position", pos);
   reader.read_int   ("width",    width);

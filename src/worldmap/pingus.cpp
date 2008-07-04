@@ -29,11 +29,11 @@ namespace WorldMapNS {
 Pingus::Pingus (PathGraph* arg_path)
   : Drawable("pingus"),
     path(arg_path),
-    sprite_standing (Resource::load_sprite("core/worldmap/pingus_standing")),
-    arrow (Resource::load_sprite("core/worldmap/arrow"))
+    sprite_standing (Sprite("core/worldmap/pingus_standing")),
+    arrow (Sprite("core/worldmap/arrow"))
 {
-  sprite.load(Direction::LEFT,  Resource::load_sprite("core/worldmap/pingus/left"));
-  sprite.load(Direction::RIGHT, Resource::load_sprite("core/worldmap/pingus/right"));
+  sprite.load(Direction::LEFT,  Sprite("core/worldmap/pingus/left"));
+  sprite.load(Direction::RIGHT, Sprite("core/worldmap/pingus/right"));
 
   final_target_node = NoNode;
   current_node = NoNode;

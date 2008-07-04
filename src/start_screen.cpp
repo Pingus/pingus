@@ -130,7 +130,7 @@ StartScreen::~StartScreen()
 StartScreenComponent::StartScreenComponent(const PingusLevel& p)
   : plf(p)
 {
-  background = Resource::load_sprite("core/menu/startscreenbg");
+  background = Sprite("core/menu/startscreenbg");
   background.scale(Display::get_width(), Display::get_height());
   time_str = GameTime::ticks_to_realtime_string(plf.get_time());
 }

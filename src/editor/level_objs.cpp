@@ -170,7 +170,7 @@ LevelObj::refresh_sprite()
 {
   if (attribs & HAS_SURFACE || attribs & HAS_SURFACE_FAKE)
     {
-      sprite = Resource::load_sprite(desc);
+      sprite = Sprite(desc);
     }
 }
 
@@ -276,19 +276,19 @@ LevelObj::load_generic_surface()
     {
       desc.res_name = "entrances/generic";
       desc.modifier = ResourceModifierNS::ROT0;
-      sprite = Resource::load_sprite(desc);
+      sprite = Sprite(desc);
     }
   else if (section_name == "solidcolor-background")
     {
       desc.res_name = "core/editor/solidcolorbackground";
       desc.modifier = ResourceModifierNS::ROT0;
-      sprite = Resource::load_sprite(desc);
+      sprite = Sprite(desc);
     }
   else if (section_name == "starfield-background")
     {
       desc.res_name = "core/editor/starfield";
       desc.modifier = ResourceModifierNS::ROT0;
-      sprite = Resource::load_sprite(desc);
+      sprite = Sprite(desc);
     }
 }
 

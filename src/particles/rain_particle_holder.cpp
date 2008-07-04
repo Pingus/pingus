@@ -33,9 +33,9 @@ RainParticleHolder::RainParticle::RainParticle(int x, int y)
 
 
 RainParticleHolder::RainParticleHolder ()
-  : rain1_surf (Resource::load_sprite("particles/rain1")),
-    rain2_surf (Resource::load_sprite("particles/rain2")),
-    rain_splash(Resource::load_sprite("particles/rain_splash"))
+  : rain1_surf (Sprite("particles/rain1")),
+    rain2_surf (Sprite("particles/rain2")),
+    rain_splash(Sprite("particles/rain_splash"))
 {
 }
 

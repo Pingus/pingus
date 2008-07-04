@@ -24,8 +24,8 @@
 
 AddOnMenu::AddOnMenu()
 {
-  background = Resource::load_sprite("core/menu/filedialog");
-  ok_button  = Resource::load_sprite("core/start/ok");
+  background = Sprite("core/menu/filedialog");
+  ok_button  = Sprite("core/start/ok");
 }
 
 AddOnMenu::~AddOnMenu()

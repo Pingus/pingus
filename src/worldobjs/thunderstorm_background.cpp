@@ -21,7 +21,7 @@
 namespace WorldObjs {
 
 ThunderstormBackground:: ThunderstormBackground(const FileReader& reader)
-  : clouds_sur(Resource::load_sprite("textures/thunderstorm")),
+  : clouds_sur(Sprite("textures/thunderstorm")),
     x_pos(0)
 {
   reader.read_vector("position", pos);

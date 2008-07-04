@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_ACTIONS_SUPERMAN_HPP
 #define HEADER_PINGUS_ACTIONS_SUPERMAN_HPP
 
+#include "../sprite.hpp"
 #include "../pingu_action.hpp"
 
 namespace Actions {

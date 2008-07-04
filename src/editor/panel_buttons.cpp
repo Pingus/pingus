@@ -39,8 +39,8 @@ PanelButton::PanelButton(EditorPanel* p)
    panel(p),
    is_selected(false)
 {
-  button = Resource::load_sprite("core/editor/button");
-  button_pressed = Resource::load_sprite("core/editor/button_pressed");
+  button = Sprite("core/editor/button");
+  button_pressed = Sprite("core/editor/button_pressed");
 }
 
 // Draw the button
@@ -90,7 +90,7 @@ PanelButtonExit::PanelButtonExit(EditorPanel *p) :
   PanelButton(p)
 {
   tooltip = "Exit the editor";
-  sur = Resource::load_sprite("core/editor/exit");
+  sur = Sprite("core/editor/exit");
 }
 
 // When clicked, close the EditorScreen
@@ -106,7 +106,7 @@ PanelButtonLoad::PanelButtonLoad(EditorPanel *p) :
   PanelButton(p)
 {
   tooltip = "Load existing level";
-  sur = Resource::load_sprite("core/editor/open");
+  sur = Sprite("core/editor/open");
 }
 
 // When clicked, close the EditorScreen
@@ -122,7 +122,7 @@ PanelButtonSave::PanelButtonSave(EditorPanel *p) :
   PanelButton(p)
 {
   tooltip = "Save current level";
-  sur = Resource::load_sprite("core/editor/save");
+  sur = Sprite("core/editor/save");
 }
 
 // When clicked, close the EditorScreen
@@ -138,7 +138,7 @@ PanelButtonSave::on_primary_button_click(int x, int y)
 PanelButtonGroundpiece::PanelButtonGroundpiece(EditorPanel *p) :
   PanelButton(p)
 {
-  sur = Resource::load_sprite("core/editor/save"); // FIXME: Update this sprite 
+  sur = Sprite("core/editor/save"); // FIXME: Update this sprite 
   tooltip = "Load a groundpiece";
 }
 
@@ -216,7 +216,7 @@ PanelButtonHead::PanelButtonHead(EditorPanel *p)
     head(0)
 {  
   // FIXME: Update this sprite  
-  sur = Resource::load_sprite("core/editor/save"); 
+  sur = Sprite("core/editor/save"); 
   tooltip = "Set specific level information"; 
 }
 

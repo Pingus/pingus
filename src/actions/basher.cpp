@@ -20,7 +20,6 @@
 #include "../globals.hpp"
 #include "../display/scene_context.hpp"
 #include "../ground_map.hpp"
-#include "../resource.hpp"
 #include "../pingu.hpp"
 #include "../world.hpp"
 #include "../worldobj.hpp"
@@ -34,9 +33,9 @@ Basher::Basher (Pingu* p)
     basher_c(0),
     first_bash(true)
 {
-  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/player" + 
+  sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
     pingu->get_owner_str() + "/basher/left"));
-  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+  sprite.load(Direction::RIGHT, Sprite("pingus/player" + 
     pingu->get_owner_str() + "/basher/right"));
 
   bash_radius_width = bash_radius.get_width();

@@ -48,7 +48,7 @@ public:
           boost::function<void (void)> callback_,
           boost::function<bool(void)> highlight_func_ = &false_func)
     : SurfaceButton(x, y, name, name + "-pressed", name + "-hover"),
-      highlight(Resource::load_sprite("core/demo/highlight")),
+      highlight(Sprite("core/demo/highlight")),
       callback(callback_),
       highlight_func(highlight_func_)
   {}

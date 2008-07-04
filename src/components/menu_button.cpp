@@ -29,8 +29,8 @@ MenuButton::MenuButton(PingusMenu* menu_,
                        const std::string& text_, const std::string& desc_)
   : menu(menu_)
 {
-  surface_p = Resource::load_sprite("core/menu/menuitem");
-  highlight = Resource::load_sprite("core/menu/menuitem_highlight");
+  surface_p = Sprite("core/menu/menuitem");
+  highlight = Sprite("core/menu/menuitem_highlight");
 
   text = text_;
   desc  = desc_;

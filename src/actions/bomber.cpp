@@ -22,7 +22,6 @@
 #include "../pingu_enums.hpp"
 #include "../ground_map.hpp"
 #include "../world.hpp"
-#include "../resource.hpp"
 #include "../particles/pingu_particle_holder.hpp"
 #include "../colliders/pingu_collider.hpp"
 #include "../movers/linear_mover.hpp"
@@ -37,7 +36,7 @@ Bomber::Bomber (Pingu* p)
     gfx_exploded(false),
     colmap_exploded(false),
     bomber_radius("other/bomber_radius_gfx", "other/bomber_radius"),
-    explo_surf(Resource::load_sprite("pingus/player" + pingu->get_owner_str() + "/explo"))
+    explo_surf(Sprite("pingus/player" + pingu->get_owner_str() + "/explo"))
 {
   sprite.load(Direction::LEFT,  "pingus/player" + pingu->get_owner_str() + "/bomber/left");
   sprite.load(Direction::RIGHT, "pingus/player" + pingu->get_owner_str() + "/bomber/right");

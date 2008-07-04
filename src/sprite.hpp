@@ -28,12 +28,15 @@ class Surface;
 class Pathname;
 class SpriteImpl;
 class SpriteDescription;
+class ResDescriptor;
 
 /** */
 class Sprite
 {
 public:
   Sprite();
+  Sprite(const std::string&   name);
+  Sprite(const ResDescriptor& desc);
   Sprite(const Pathname& name);
   Sprite(const SpriteDescription& desc, ResourceModifierNS::ResourceModifier mod = ResourceModifierNS::ROT0);
   Sprite(const Surface& surface);

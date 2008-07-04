@@ -26,7 +26,7 @@
 namespace WorldObjs {
 
 Teleporter::Teleporter(const FileReader& reader)
-  : sprite(Resource::load_sprite("worldobjs/teleporter"))
+  : sprite(Sprite("worldobjs/teleporter"))
 {
   reader.read_vector("position", pos);
   reader.read_string("target-id", target_id);

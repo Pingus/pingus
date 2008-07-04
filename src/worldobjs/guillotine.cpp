@@ -24,9 +24,9 @@
 namespace WorldObjs {
 
 Guillotine::Guillotine(const FileReader& reader)
-  : sprite_kill_right (Resource::load_sprite("traps/guillotinekill/right")),
-    sprite_kill_left (Resource::load_sprite("traps/guillotinekill/left")),
-    sprite_idle (Resource::load_sprite("traps/guillotineidle")),
+  : sprite_kill_right (Sprite("traps/guillotinekill/right")),
+    sprite_kill_left (Sprite("traps/guillotinekill/left")),
+    sprite_idle (Sprite("traps/guillotineidle")),
     killing(false)
 {
   reader.read_vector("position", pos);

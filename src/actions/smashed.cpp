@@ -14,10 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "../resource.hpp"
 #include "../math/vector3f.hpp"
 #include "../display/scene_context.hpp"
 #include "../pingu.hpp"
+#include "../sprite.hpp"
 #include "smashed.hpp"
 
 namespace Actions {
@@ -26,7 +26,7 @@ Smashed::Smashed (Pingu* p)
   : PinguAction(p),
     sound_played(false)
 {
-  sprite = Resource::load_sprite("pingus/player" + pingu->get_owner_str() + "/bomber");
+  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/bomber");
 }
 
 void

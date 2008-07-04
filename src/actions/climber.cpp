@@ -16,7 +16,6 @@
 
 #include "../col_map.hpp"
 #include "../display/scene_context.hpp"
-#include "../resource.hpp"
 #include "../pingu.hpp"
 #include "climber.hpp"
 
@@ -25,9 +24,9 @@ namespace Actions {
 Climber::Climber (Pingu* p)
   : PinguAction(p)
 {
-  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/player" + 
+  sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
     pingu->get_owner_str() + "/climber/left"));
-  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+  sprite.load(Direction::RIGHT, Sprite("pingus/player" + 
     pingu->get_owner_str() + "/climber/right"));
 }
 

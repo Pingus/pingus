@@ -19,7 +19,6 @@
 #include "../display/scene_context.hpp"
 #include "../pingu.hpp"
 #include "../ground_map.hpp"
-#include "../resource.hpp"
 #include "../sound/sound.hpp"
 #include "../world.hpp"
 #include "../worldobj.hpp"
@@ -38,15 +37,15 @@ Bridger::Bridger (Pingu* p)
     block_build(false),
     name(_("Bridger") + std::string(" (" + StringUtil::to_string(bricks) + ")"))
 {
-  walk_sprite.load (Direction::LEFT,  Resource::load_sprite("pingus/player" + 
-                                                            pingu->get_owner_str() + "/bridger_walk/left"));
-  walk_sprite.load (Direction::RIGHT, Resource::load_sprite("pingus/player" + 
-                                                            pingu->get_owner_str() + "/bridger_walk/right"));
+  walk_sprite.load (Direction::LEFT,  Sprite("pingus/player" + 
+                                             pingu->get_owner_str() + "/bridger_walk/left"));
+  walk_sprite.load (Direction::RIGHT, Sprite("pingus/player" + 
+                                             pingu->get_owner_str() + "/bridger_walk/right"));
 
-  build_sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/player" + 
-                                                             pingu->get_owner_str() + "/bridger/left"));
-  build_sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
-                                                             pingu->get_owner_str() + "/bridger/right"));
+  build_sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
+                                             pingu->get_owner_str() + "/bridger/left"));
+  build_sprite.load(Direction::RIGHT, Sprite("pingus/player" + 
+                                             pingu->get_owner_str() + "/bridger/right"));
 }
 
 void
@@ -69,15 +68,15 @@ Bridger::draw(SceneContext& gc)
 
   switch (mode)
     {
-    case B_BUILDING:
-      gc.color().draw(build_sprite[pingu->direction], Vector3f(pingu->get_pos().x - (x_offset * pingu->direction),
-                                                             pingu->get_pos().y + y_offset));
-      break;
+      case B_BUILDING:
+        gc.color().draw(build_sprite[pingu->direction], Vector3f(pingu->get_pos().x - (x_offset * pingu->direction),
+                                                                 pingu->get_pos().y + y_offset));
+        break;
 
-    case B_WALKING:
-      gc.color().draw(walk_sprite[pingu->direction], Vector3f(pingu->get_pos().x - (x_offset * pingu->direction),
-                                                            pingu->get_pos().y + y_offset));
-      break;
+      case B_WALKING:
+        gc.color().draw(walk_sprite[pingu->direction], Vector3f(pingu->get_pos().x - (x_offset * pingu->direction),
+                                                                pingu->get_pos().y + y_offset));
+        break;
     }
 }
 
@@ -86,13 +85,13 @@ Bridger::update()
 {
   switch (mode)
     {
-    case B_BUILDING:
-      update_build ();
-      break;
+      case B_BUILDING:
+        update_build ();
+        break;
 
-    case B_WALKING:
-      update_walk ();
-      break;
+      case B_WALKING:
+        update_walk ();
+        break;
     }
 }
 

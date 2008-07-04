@@ -30,8 +30,8 @@ SmokeParticleHolder::SmokeParticle::SmokeParticle (float x, float y, float vel_x
 
 
 SmokeParticleHolder::SmokeParticleHolder ()
-  : surf1(Resource::load_sprite("particles/smoke")),
-    surf2(Resource::load_sprite("particles/smoke2"))
+  : surf1(Sprite("particles/smoke")),
+    surf2(Sprite("particles/smoke2"))
 {
 }
 

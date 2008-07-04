@@ -179,7 +179,36 @@ public:
 
 Sprite::Sprite()
 {
-  
+}
+
+Sprite::Sprite(const std::string& name)
+{
+  SpriteDescription* desc = Resource::load_sprite_desc(name);
+  if (desc)
+    {
+      impl = boost::shared_ptr<SpriteImpl>(new SpriteImpl(*desc));
+    }
+  else
+    {
+      SpriteDescription desc;
+      desc.filename = Pathname("images/core/misc/404.png", Pathname::DATA_PATH);
+      impl = boost::shared_ptr<SpriteImpl>(new SpriteImpl(desc));
+    }
+}
+
+Sprite::Sprite(const ResDescriptor& res_desc)
+{
+  SpriteDescription* desc = Resource::load_sprite_desc(res_desc.res_name);
+  if (desc)
+    {
+      impl = boost::shared_ptr<SpriteImpl>(new SpriteImpl(*desc, res_desc.modifier));
+    }
+  else
+    {
+      SpriteDescription desc;
+      desc.filename = Pathname("images/core/misc/404.png", Pathname::DATA_PATH);
+      impl = boost::shared_ptr<SpriteImpl>(new SpriteImpl(desc));
+    } 
 }
 
 Sprite::Sprite(const Pathname& name)

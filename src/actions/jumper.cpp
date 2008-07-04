@@ -17,7 +17,6 @@
 #include "../math/vector3f.hpp"
 #include "../display/scene_context.hpp"
 #include "../pingu.hpp"
-#include "../resource.hpp"
 #include "jumper.hpp"
 
 namespace Actions {
@@ -25,9 +24,9 @@ namespace Actions {
 Jumper::Jumper (Pingu* p)
   : PinguAction(p)
 {
-  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/player" + 
+  sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
                                                       pingu->get_owner_str() + "/jumper/left"));
-  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+  sprite.load(Direction::RIGHT, Sprite("pingus/player" + 
                                                       pingu->get_owner_str() + "/jumper/right"));
 }
 

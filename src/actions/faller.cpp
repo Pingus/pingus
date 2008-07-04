@@ -22,7 +22,6 @@
 #include "../display/scene_context.hpp"
 #include "../movers/linear_mover.hpp"
 #include "../pingu.hpp"
-#include "../resource.hpp"
 #include "../world.hpp"
 #include "../worldobj.hpp"
 #include "faller.hpp"
@@ -32,14 +31,14 @@ namespace Actions {
 Faller::Faller (Pingu* p)
   : PinguAction(p)
 {
-  faller.load(Direction::LEFT,  Resource::load_sprite("pingus/player" + 
+  faller.load(Direction::LEFT,  Sprite("pingus/player" + 
                                                       pingu->get_owner_str() + "/faller/left"));
-  faller.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+  faller.load(Direction::RIGHT, Sprite("pingus/player" + 
                                                       pingu->get_owner_str() + "/faller/right"));
 
-  tumbler.load(Direction::LEFT,  Resource::load_sprite("pingus/player" +
+  tumbler.load(Direction::LEFT,  Sprite("pingus/player" +
                                                        pingu->get_owner_str() + "/tumbler/left"));
-  tumbler.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+  tumbler.load(Direction::RIGHT, Sprite("pingus/player" + 
                                                        pingu->get_owner_str() + "/tumbler/right"));
 
   // FIXME: add sprites for jumping here: if x_vel > y_vel, use them

@@ -17,7 +17,6 @@
 #include "../math/vector3f.hpp"
 #include "../display/scene_context.hpp"
 #include "../pingu.hpp"
-#include "../resource.hpp"
 #include "waiter.hpp"
 
 namespace Actions {
@@ -26,7 +25,7 @@ Waiter::Waiter (Pingu* p)
   : PinguAction(p),
     countdown(2.0f)
 {
-  sprite = Resource::load_sprite("pingus/player" + pingu->get_owner_str() + "/waiter/left");
+  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/waiter/left");
 }
 
 void

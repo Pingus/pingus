@@ -16,7 +16,6 @@
 
 #include "../math/vector3f.hpp"
 #include "../display/scene_context.hpp"
-#include "../resource.hpp"
 #include "../pingu.hpp"
 #include "../sound/sound.hpp"
 #include "exiter.hpp"
@@ -27,9 +26,9 @@ Exiter::Exiter (Pingu* p)
   : PinguAction(p),
     sound_played(false)
 {
-  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/player" + 
+  sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
     pingu->get_owner_str() + "/exit/left"));
-  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+  sprite.load(Direction::RIGHT, Sprite("pingus/player" + 
     pingu->get_owner_str() + "/exit/right"));
 }
 

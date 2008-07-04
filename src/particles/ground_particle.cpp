@@ -21,7 +21,7 @@
 GroundParticle::GroundParticle (int x, int y, float x_a, float y_a)
   : Particle (x,y, x_a, y_a)
 {
-  surface = Resource::load_sprite("particles/ground");
+  surface = Sprite("particles/ground");
   livetime = 25 + (rand() % 10);
   time = livetime;
 }

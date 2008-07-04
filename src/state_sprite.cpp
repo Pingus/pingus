@@ -26,7 +26,7 @@ StateSprite::StateSprite()
 void
 StateSprite::load(int state, const std::string& name)
 {
-  load(state, Resource::load_sprite(name));
+  load(state, Sprite(name));
 }
 
 void

@@ -45,7 +45,7 @@ struct Groundpiece : public ObjectSelectorList::Object
   std::string   type;
   
   Groundpiece(const std::string& name, const std::string& type)
-    : Object(Resource::load_sprite(name),
+    : Object(Sprite(name),
              Resource::load_thumb_sprite(name)),
       desc(name),
       type(type)
@@ -63,7 +63,7 @@ struct Groundpiece : public ObjectSelectorList::Object
 struct Entrance : public ObjectSelectorList::Object 
 {
   Entrance()
-    : Object(Resource::load_sprite("entrances/generic"),
+    : Object(Sprite("entrances/generic"),
              Resource::load_thumb_sprite("entrances/generic"))
   {}
 
@@ -84,7 +84,7 @@ struct Exit : public ObjectSelectorList::Object
   ResDescriptor desc;
   
   Exit(const std::string& name)
-    : Object(Resource::load_sprite(name), 
+    : Object(Sprite(name), 
              Resource::load_thumb_sprite(name)),
       desc(name)
   {}
@@ -104,7 +104,7 @@ struct Hotspot : public ObjectSelectorList::Object
   int z_pos;
   
   Hotspot(const std::string& name, int z_pos = 0)
-    : Object(Resource::load_sprite(name),
+    : Object(Sprite(name),
              Resource::load_thumb_sprite(name)),
       desc(name),
       z_pos(z_pos)
@@ -125,7 +125,7 @@ struct SurfaceBackground : public ObjectSelectorList::Object
   ResDescriptor desc;
   
   SurfaceBackground(const std::string& name)
-    : Object(Resource::load_sprite(name),
+    : Object(Sprite(name),
              Resource::load_thumb_sprite(name)),
       desc(name)
   {}
@@ -147,7 +147,7 @@ struct SurfaceBackground : public ObjectSelectorList::Object
 struct SolidColorBackground : public ObjectSelectorList::Object
 {
   SolidColorBackground() 
-    : Object(Resource::load_sprite("core/editor/solidcolorbackground"),
+    : Object(Sprite("core/editor/solidcolorbackground"),
              Resource::load_thumb_sprite("core/editor/solidcolorbackground_thumb"))
   {}
   
@@ -162,7 +162,7 @@ struct SolidColorBackground : public ObjectSelectorList::Object
 struct StarfieldBackground : public ObjectSelectorList::Object
 {
   StarfieldBackground() 
-    : Object(Resource::load_sprite("core/editor/starfield"),
+    : Object(Sprite("core/editor/starfield"),
              Resource::load_thumb_sprite("core/editor/starfield_thumb"))
   {}
   
@@ -181,7 +181,7 @@ struct Liquid : public ObjectSelectorList::Object
   ResDescriptor desc;
 
   Liquid(const std::string& name) 
-    : Object(Resource::load_sprite(name),
+    : Object(Sprite(name),
              Resource::load_thumb_sprite(name)),
       desc(name)
   {}
@@ -215,9 +215,9 @@ public:
                        const Vector2i& pos, const std::string& sprite, const std::string& tooltip_)
     : RectComponent(Rect(pos, Size(30, 30))),
       object_list(object_list_),
-      button_raised(Resource::load_sprite("core/editor/obj_button-raised")),
-      button_pressed(Resource::load_sprite("core/editor/obj_button-pressed")),
-      sprite(Resource::load_sprite(sprite)),
+      button_raised(Sprite("core/editor/obj_button-raised")),
+      button_pressed(Sprite("core/editor/obj_button-pressed")),
+      sprite(Sprite(sprite)),
       mouse_over(false),
       mouse_down(false),
       tooltip(tooltip_)
@@ -373,7 +373,7 @@ ObjectSelector::create_objects(const std::string& prefix)
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
     {
       // need to reset the align to top/left
-      set->add(new ObjectSelectorList::Object(Resource::load_sprite(*i),
+      set->add(new ObjectSelectorList::Object(Sprite(*i),
                                               Resource::load_thumb_sprite(*i)));
     }
   

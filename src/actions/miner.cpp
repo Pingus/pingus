@@ -19,7 +19,6 @@
 #include "../col_map.hpp"
 #include "../display/scene_context.hpp"
 #include "../world.hpp"
-#include "../resource.hpp"
 #include "../sound/sound.hpp"
 #include "../pingu.hpp"
 #include "../worldobj.hpp"
@@ -32,9 +31,9 @@ Miner::Miner (Pingu* p)
     miner_radius("other/bash_radius_gfx", "other/bash_radius"),
     slow_count(0)
 {
-  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/player" + 
+  sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
     pingu->get_owner_str() + "/miner/left"));
-  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+  sprite.load(Direction::RIGHT, Sprite("pingus/player" + 
     pingu->get_owner_str() + "/miner/right"));
 }
 

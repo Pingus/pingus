@@ -98,34 +98,10 @@ Resource::deinit()
 #endif
 }
 
-Sprite
-Resource::load_sprite(const ResDescriptor& res)
+SpriteDescription*
+Resource::load_sprite_desc(const std::string& res_name)
 {
- SpriteDescription* desc = resmgr.get_sprite_description(res.res_name);
-  if (desc)
-    {
-      return Sprite(*desc, res.modifier);
-    }
-  else
-    {
-      std::cout << "Resource: Couldn't load sprite: '" << res.res_name << "'" << std::endl;
-      return Sprite(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
-    }
-}
-
-Sprite
-Resource::load_sprite(const std::string& res_name)
-{
-  SpriteDescription* desc = resmgr.get_sprite_description(res_name);
-  if (desc)
-    {
-      return Sprite(*desc);
-    }
-  else
-    {
-      std::cout << "Error: Resource: Couldn't load sprite: '" << res_name << "'" << std::endl;
-      return Sprite(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
-    }
+  return resmgr.get_sprite_description(res_name);
 }
 
 CollisionMask
@@ -189,7 +165,7 @@ Resource::cleanup ()
 Sprite
 Resource::load_thumb_sprite(const std::string& name)
 {
-  Sprite sprite = Resource::load_sprite(name);
+  Sprite sprite = Sprite(name);
 
   Size thumb_size;
   if (sprite.get_width() <= 48)

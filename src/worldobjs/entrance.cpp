@@ -31,7 +31,7 @@ Entrance::Entrance(const FileReader& reader)
     release_rate(150),
     owner_id(0),
     type("generic"),
-    smallmap_symbol(Resource::load_sprite("core/misc/smallmap_entrance"))
+    smallmap_symbol(Sprite("core/misc/smallmap_entrance"))
 {
   reader.read_string("type",         type);
   reader.read_int   ("owner-id",     owner_id);

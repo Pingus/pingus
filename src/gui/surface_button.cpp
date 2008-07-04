@@ -28,9 +28,9 @@ SurfaceButton::SurfaceButton (int arg_x_pos, int arg_y_pos,
 			      const ResDescriptor& arg_button_mouse_over_surface)
   : x_pos (arg_x_pos), y_pos (arg_y_pos), pressed (false), mouse_over (false)
 {
-  button_surface            = Resource::load_sprite(arg_button_surface);
-  button_pressed_surface    = Resource::load_sprite(arg_button_pressed_surface);
-  button_mouse_over_surface = Resource::load_sprite(arg_button_mouse_over_surface);
+  button_surface            = Sprite(arg_button_surface);
+  button_pressed_surface    = Sprite(arg_button_pressed_surface);
+  button_mouse_over_surface = Sprite(arg_button_mouse_over_surface);
 }
 
 SurfaceButton::~SurfaceButton ()

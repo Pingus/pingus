@@ -14,7 +14,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "../resource.hpp"
 #include "../pingu.hpp"
 #include "../display/scene_context.hpp"
 #include "../groundtype.hpp"
@@ -27,7 +26,7 @@ Floater::Floater(Pingu* p)
     falling_depth(0),
     step(0)
 {
-  sprite = Resource::load_sprite("pingus/player" + pingu->get_owner_str() + "/floater/left");
+  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/floater/left");
 }
 
 void

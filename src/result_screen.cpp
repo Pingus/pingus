@@ -149,13 +149,13 @@ public:
 ResultScreenComponent::ResultScreenComponent(Result arg_result)
   : result(arg_result)
 {
-  background = Resource::load_sprite("core/menu/startscreenbg");
+  background = Sprite("core/menu/startscreenbg");
   background.scale(Display::get_width(), Display::get_height());
   
-  chalk_pingus.push_back(Resource::load_sprite("core/misc/chalk_pingu1"));
-  chalk_pingus.push_back(Resource::load_sprite("core/misc/chalk_pingu2"));
-  chalk_pingus.push_back(Resource::load_sprite("core/misc/chalk_pingu3"));
-  chalk_pingus.push_back(Resource::load_sprite("core/misc/chalk_pingu4"));
+  chalk_pingus.push_back(Sprite("core/misc/chalk_pingu1"));
+  chalk_pingus.push_back(Sprite("core/misc/chalk_pingu2"));
+  chalk_pingus.push_back(Sprite("core/misc/chalk_pingu3"));
+  chalk_pingus.push_back(Sprite("core/misc/chalk_pingu4"));
 
   if (result.max_time == -1)
     time_str = "-";

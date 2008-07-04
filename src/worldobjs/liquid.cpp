@@ -40,7 +40,7 @@ Liquid::Liquid(const FileReader& reader)
   reader.read_desc  ("surface",  desc);
   reader.read_int   ("repeat",   width);
 
-  sur = Resource::load_sprite(desc);
+  sur = Sprite(desc);
 
   if (!old_width_handling)
     width = width * sur.get_width();

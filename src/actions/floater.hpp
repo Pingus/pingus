@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_ACTIONS_FLOATER_HPP
 
 #include "../pingu_action.hpp"
+#include "../sprite.hpp"
 
 namespace Actions {
 

@@ -18,7 +18,6 @@
 //#include "../particles/particle_holder.hpp"
 //#include "../particles/explosive_particle.hpp"
 #include "../world.hpp"
-#include "../resource.hpp"
 #include "../pingu.hpp"
 #include "../worldobj.hpp"
 #include "rocket_launcher.hpp"

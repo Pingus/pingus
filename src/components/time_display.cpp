@@ -31,7 +31,7 @@
 
 TimeDisplay::TimeDisplay (GameSession* c)
   : server(c->get_server()),
-    infinity_symbol(Resource::load_sprite("core/misc/infinity"))
+    infinity_symbol(Sprite("core/misc/infinity"))
 {
   font = Fonts::pingus_small_fixnum;
 }

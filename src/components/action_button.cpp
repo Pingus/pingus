@@ -16,7 +16,6 @@
 
 #include "../globals.hpp"
 #include "../cheat.hpp"
-#include "../resource.hpp"
 #include "action_button.hpp"
 #include "../server.hpp"
 #include "../game_session.hpp"
@@ -33,8 +32,8 @@ using namespace Actions;
 ActionButton::ActionButton(ActionHolder* h,
                            int x, int y, ActionName name_, int owner_id)
   : action_holder(h),
-    background (Resource::load_sprite("core/buttons/buttonbackground")),
-    backgroundhl (Resource::load_sprite("core/buttons/buttonbackgroundhl"))
+    background (Sprite("core/buttons/buttonbackground")),
+    backgroundhl (Sprite("core/buttons/buttonbackgroundhl"))
 {
   init(x, y, name_, owner_id);
 }
@@ -52,7 +51,7 @@ ActionButton::init(int x, int y, ActionName name_, int owner_id)
   font   = Fonts::pingus_small;
   font_b = Fonts::pingus_large;
 
-  sprite = Resource::load_sprite("pingus/player0/" + action_to_string(name) + "/right");
+  sprite = Sprite("pingus/player0/" + action_to_string(name) + "/right");
   sprite.set_play_loop(true);
 }
 
@@ -147,11 +146,11 @@ ArmageddonButton::ArmageddonButton(Server* s, int x, int y)
   : server (s),
     x_pos (x),
     y_pos (y),
-    background  (Resource::load_sprite("core/buttons/hbuttonbgb")),
-    backgroundhl(Resource::load_sprite("core/buttons/hbuttonbg"))
+    background  (Sprite("core/buttons/hbuttonbgb")),
+    backgroundhl(Sprite("core/buttons/hbuttonbg"))
 {
   pressed      = false;
-  sprite       = Resource::load_sprite("core/buttons/armageddon_anim");
+  sprite       = Sprite("core/buttons/armageddon_anim");
 }
 
 ArmageddonButton::~ArmageddonButton () { }
@@ -226,10 +225,10 @@ ArmageddonButton::on_primary_button_click (int x, int y)
 ForwardButton::ForwardButton(GameSession* s, int x, int y)
   : session(s),
     x_pos (x), y_pos (y),
-    background  (Resource::load_sprite("core/buttons/hbuttonbgb")),
-    backgroundhl(Resource::load_sprite("core/buttons/hbuttonbg"))
+    background  (Sprite("core/buttons/hbuttonbgb")),
+    backgroundhl(Sprite("core/buttons/hbuttonbg"))
 {
-  surface = Resource::load_sprite("core/buttons/fast_forward");
+  surface = Sprite("core/buttons/fast_forward");
 }
 
 ForwardButton::~ForwardButton () {}
@@ -274,10 +273,10 @@ ForwardButton::on_primary_button_click (int x, int y)
 PauseButton::PauseButton(GameSession* s, int x, int y)
   : session(s),
     x_pos(x), y_pos(y),
-    background  (Resource::load_sprite("core/buttons/hbuttonbgb")),
-    backgroundhl(Resource::load_sprite("core/buttons/hbuttonbg"))
+    background  (Sprite("core/buttons/hbuttonbgb")),
+    backgroundhl(Sprite("core/buttons/hbuttonbg"))
 {
-  surface = Resource::load_sprite("core/buttons/pause");
+  surface = Sprite("core/buttons/pause");
 }
 
 PauseButton::~PauseButton () {}

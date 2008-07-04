@@ -36,7 +36,7 @@ PinguParticleHolder::PinguParticle::PinguParticle (int x, int y)
 
 
 PinguParticleHolder::PinguParticleHolder ()
-  : surface(Resource::load_sprite("particles/pingu_explo"))
+  : surface(Sprite("particles/pingu_explo"))
 {
 }
 

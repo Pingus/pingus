@@ -36,11 +36,11 @@ namespace WorldMapNS {
 
 LevelDot::LevelDot(FileReader reader)
   : Dot(reader.read_section("dot")),
-    green_dot_sur(Resource::load_sprite("core/worldmap/dot_green")),
-    red_dot_sur(Resource::load_sprite("core/worldmap/dot_red")),
-    inaccessible_dot_sur(Resource::load_sprite("core/worldmap/dot_invalid")),
-    highlight_green_dot_sur(Resource::load_sprite("core/worldmap/dot_green_hl")),
-    highlight_red_dot_sur(Resource::load_sprite("core/worldmap/dot_red_hl"))
+    green_dot_sur(Sprite("core/worldmap/dot_green")),
+    red_dot_sur(Sprite("core/worldmap/dot_red")),
+    inaccessible_dot_sur(Sprite("core/worldmap/dot_invalid")),
+    highlight_green_dot_sur(Sprite("core/worldmap/dot_green_hl")),
+    highlight_red_dot_sur(Sprite("core/worldmap/dot_red_hl"))
 {
   std::string resname;
   reader.read_string("levelname", resname); 

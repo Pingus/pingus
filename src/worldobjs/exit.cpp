@@ -29,7 +29,7 @@
 namespace WorldObjs {
 
 Exit::Exit(const FileReader& reader)
-  : smallmap_symbol(Resource::load_sprite("core/misc/smallmap_exit"))
+  : smallmap_symbol(Sprite("core/misc/smallmap_exit"))
 {
   reader.read_vector("position", pos);
   reader.read_desc  ("surface",  desc);
@@ -38,12 +38,9 @@ Exit::Exit(const FileReader& reader)
   // Set default owner ID to 0
   if (owner_id < 0 || owner_id > 3) owner_id = 0;
 
-  flag = Resource::load_sprite("core/misc/flag" + StringUtil::to_string(owner_id));
+  flag = Sprite("core/misc/flag" + StringUtil::to_string(owner_id));
 
-  sprite = Resource::load_sprite(desc);
-
-  if (verbose > 2)
-    std::cout << "Creating Exit" << std::endl;
+  sprite = Sprite(desc);
 }
 
 Exit::~Exit ()

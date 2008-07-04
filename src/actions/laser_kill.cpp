@@ -15,7 +15,6 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "../math/vector3f.hpp"
-#include "../resource.hpp"
 #include "../display/scene_context.hpp"
 #include "../pingu.hpp"
 #include "laser_kill.hpp"
@@ -25,8 +24,8 @@ namespace Actions {
 LaserKill::LaserKill(Pingu* p)
   : PinguAction(p)
 {
-  sprite.load(Direction::LEFT,  Resource::load_sprite("other/laser_kill/left"));
-  sprite.load(Direction::RIGHT, Resource::load_sprite("other/laser_kill/right"));
+  sprite.load(Direction::LEFT,  Sprite("other/laser_kill/left"));
+  sprite.load(Direction::RIGHT, Sprite("other/laser_kill/right"));
 }
 
 void

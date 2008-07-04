@@ -59,7 +59,7 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
 
   Timer timer("Background creation");
 
-  bg_surface = Resource::load_sprite(desc);
+  bg_surface = Sprite(desc);
   bg_surface.fill(color);
 
   // Scaling Code

@@ -28,8 +28,8 @@ namespace WorldObjs {
 WoodThing::WoodThing(const FileReader& reader)
   : Entrance(reader)
 {
-  surface  = Resource::load_sprite("entrances/woodthing_mov");
-  surface2 = Resource::load_sprite("entrances/woodthing_nmov");
+  surface  = Sprite("entrances/woodthing_mov");
+  surface2 = Sprite("entrances/woodthing_nmov");
 }
 
 void
