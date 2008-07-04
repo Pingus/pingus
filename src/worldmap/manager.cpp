@@ -198,9 +198,9 @@ WorldMapManagerEnterButton::draw (DrawingContext& gc)
     {
       SurfaceButton::draw(gc);
       gc.print_center(Fonts::chalk_small,
-                    Display::get_width() - 43 - 22,
-                    Display::get_height() - 25,
-                    _("Enter?"));
+                      Display::get_width() - 43 - 22,
+                      Display::get_height() - 25,
+                      _("Enter?"));
     }
 }
 
@@ -214,7 +214,8 @@ WorldMapManager::WorldMapManager ()
   : levelname_bg(Sprite("core/worldmap/levelname_bg")),
     is_init(false),
     exit_worldmap(false),
-    worldmap(0)
+    worldmap(0),
+    new_worldmap(0)
 {
   // FIXME: a bit ugly because of the proteced member, but should work
   // FIXME: well enough. GUIScreen could also use multi-inheritage,
@@ -237,11 +238,11 @@ WorldMapManager::load (const std::string& filename)
 	
   bool credits_unlocked = false;
   StatManager::instance()->get_bool(worldmap->get_shortname() + "-endstory-seen", 
-		credits_unlocked);
+                                    credits_unlocked);
   if (credits_unlocked)
-	{
-		gui_manager->add(new WorldMapManagerCreditsButton(), true);
-	}
+    {
+      gui_manager->add(new WorldMapManagerCreditsButton(), true);
+    }
 }
 
 void
@@ -317,21 +318,21 @@ WorldMapComponent::draw (DrawingContext& gc)
 
   // Draw border
   if (cliprect != Rect(Vector2i(0,0), Size(Display::get_width(), Display::get_height())))
-  {
-    Color border_color(50, 65, 75);
-    // top
-    gc.draw_fillrect(0, 0, Display::get_width(), cliprect.top,
-                     border_color);
-    // bottom
-    gc.draw_fillrect(0, cliprect.bottom, Display::get_width(), Display::get_height(),
-                 border_color);
-    // left
-    gc.draw_fillrect(0, cliprect.top, cliprect.left, cliprect.bottom,
-                 border_color);
-    // right
-    gc.draw_fillrect(cliprect.right, cliprect.top, Display::get_width(), cliprect.bottom,
-                 border_color);
-  }
+    {
+      Color border_color(50, 65, 75);
+      // top
+      gc.draw_fillrect(0, 0, Display::get_width(), cliprect.top,
+                       border_color);
+      // bottom
+      gc.draw_fillrect(0, cliprect.bottom, Display::get_width(), Display::get_height(),
+                       border_color);
+      // left
+      gc.draw_fillrect(0, cliprect.top, cliprect.left, cliprect.bottom,
+                       border_color);
+      // right
+      gc.draw_fillrect(cliprect.right, cliprect.top, Display::get_width(), cliprect.bottom,
+                       border_color);
+    }
 }
 
 void
@@ -396,8 +397,8 @@ WorldMapManager::instance ()
 
 void WorldMapManager::deinit()
 {
-	delete instance_;
-	instance_ = 0;
+  delete instance_;
+  instance_ = 0;
 }
 
 Rect
