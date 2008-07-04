@@ -51,9 +51,10 @@ Bridger::Bridger (Pingu* p)
 }
 
 void
-Bridger::draw (SceneContext& gc)
+Bridger::draw(SceneContext& gc)
 {
-  int x_offset(6), y_offset(4);
+  int x_offset = 6;
+  int y_offset = 4;
 
   if (bricks == MAX_BRICKS) {
     x_offset = -4;
@@ -124,7 +125,7 @@ Bridger::update_walk ()
 void
 Bridger::update_build ()
 {
-  build_sprite[pingu->direction].update (0.033f);
+  build_sprite[pingu->direction].update();
 
   if (build_sprite[pingu->direction].get_current_frame () >= 7 && !block_build)
     {
@@ -235,7 +236,7 @@ Bridger::place_a_brick()
 void
 Bridger::walk_one_step_up()
 {
-  pingu->set_pos(pingu->get_pos().x + (float)(4 * pingu->direction), 
+  pingu->set_pos(pingu->get_pos().x + (4 * pingu->direction),
                  pingu->get_pos().y - 2);
 }
 
