@@ -49,7 +49,6 @@ pingus_sources = [
 'src/actions/smashed.cpp', 
 'src/actions/splashed.cpp', 
 'src/actions/superman.cpp', 
-'src/actions/teleported.cpp', 
 'src/actions/waiter.cpp', 
 'src/actions/walker.cpp', 
 'src/addon_menu.cpp', 

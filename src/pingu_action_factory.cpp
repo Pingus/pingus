@@ -31,7 +31,6 @@
 #include "actions/miner.hpp"
 #include "actions/jumper.hpp"
 #include "actions/slider.hpp"
-#include "actions/teleported.hpp"
 #include "actions/exiter.hpp"
 #include "actions/smashed.hpp"
 #include "actions/laser_kill.hpp"
@@ -146,7 +145,6 @@ PinguActionFactory::register_core_actions ()
   new PinguActionFactoryImpl<class Smashed>        (Smashed);
   new PinguActionFactoryImpl<class Splashed>       (Splashed);
   new PinguActionFactoryImpl<class Superman>       (Superman);
-  new PinguActionFactoryImpl<class Teleported>     (Teleported);
   new PinguActionFactoryImpl<class Waiter>         (Waiter);
   new PinguActionFactoryImpl<class Walker>         (Walker);
 }
