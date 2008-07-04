@@ -279,11 +279,6 @@ World::put(const CollisionMask& mask, int x, int y, Groundtype::GPType type)
 }
 
 void
-World::remove(int x, int y)
-{
-}
-
-void
 World::remove(const CollisionMask& mask, int x, int y)
 {
   gfx_map->remove(mask.get_surface(), x, y);

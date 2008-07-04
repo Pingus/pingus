@@ -129,7 +129,6 @@ public:
   void put(int x, int y, Groundtype::GPType p = Groundtype::GP_GROUND);
   void put(const CollisionMask&, int x, int y, Groundtype::GPType);
 
-  void remove(int x, int y);
   void remove(const CollisionMask&, int x, int y);
 
   WorldObj* get_worldobj(const std::string& id);
