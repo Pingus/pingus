@@ -1,4 +1,3 @@
-
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2007 Jason Green <jave27@gmail.com>
 //
