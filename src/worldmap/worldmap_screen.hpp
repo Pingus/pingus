@@ -35,12 +35,7 @@ class WorldMapComponent;
     accessible in the WorldMap Screen */
 class WorldMapScreen : public GUIScreen
 {
-  WorldMapComponent* worldmap_component;
-
-  friend class WorldMapComponent;
 private:
-  static WorldMapScreen* instance_;
-
   Sprite levelname_bg;
 
   bool is_init;

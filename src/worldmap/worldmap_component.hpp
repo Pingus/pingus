@@ -18,6 +18,7 @@
 #define HEADER_WORLDMAP_COMPONENT_HPP
 
 #include <string>
+#include <memory>
 #include "../gui/gui_manager.hpp"
 
 class SceneContext;
@@ -30,7 +31,7 @@ class WorldMap;
 class WorldMapComponent : public GUI::Component
 {
 private:
-  SceneContext*   scene_context;
+  std::auto_ptr<SceneContext> scene_context;
   WorldMapScreen* worldmap_screen;
   
 public:

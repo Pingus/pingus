@@ -33,8 +33,6 @@
 #include "pingus.hpp"
 #include "../story_screen.hpp"
 #include "worldmap_screen.hpp"
-
-WorldMapScreen* WorldMapScreen::instance_ = 0;
 
 class WorldMapScreenCloseButton
   : public GUI::SurfaceButton
@@ -225,8 +223,7 @@ WorldMapScreen::WorldMapScreen ()
   // FIXME: a bit ugly because of the proteced member, but should work
   // FIXME: well enough. GUIScreen could also use multi-inheritage,
   // FIXME: but that could lead to member function name conflicts
-  worldmap_component = new WorldMapComponent(this);
-  gui_manager->add (worldmap_component, true);
+  gui_manager->add(new WorldMapComponent(this), true);
   gui_manager->add(new WorldMapScreenCloseButton(this), true);
   gui_manager->add(new WorldMapScreenEnterButton(this), true);
   gui_manager->add(new WorldMapScreenStoryButton(this), true);
