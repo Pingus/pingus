@@ -35,8 +35,7 @@
 #include "pathname.hpp"
 #include "editor/editor_screen.hpp"
 #include "credits.hpp"
-
-
+
 PingusMenu::PingusMenu (PingusMenuManager* m)
   : PingusSubMenu (m)
 {
@@ -228,5 +227,5 @@ PingusMenu::update(float delta)
 {
   //text_scroll_offset += 100.0f * delta;
 }
-
+
 /* EOF */

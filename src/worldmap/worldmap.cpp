@@ -49,11 +49,15 @@
 
 namespace WorldMapNS {
 
+WorldMap* WorldMap::current_ = 0; 
+
 WorldMap::WorldMap(const std::string& arg_filename)
   : filename(arg_filename),
     mouse_x(0),
     mouse_y(0)
 {
+  current_ = this;
+
   parse_file(FileReader::parse(path_manager.complete(filename)));
 
   pingus = new Pingus(path_graph);

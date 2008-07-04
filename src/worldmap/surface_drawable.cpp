@@ -52,8 +52,7 @@ SurfaceDrawable::draw(DrawingContext& gc)
     {
       if (auto_uncover)
         {
-#if 0 // FIXME: Fri Jul  4 10:42:06 2008
-          Vector3f pingus_pos = WorldMapScreen::instance()->get_worldmap()->get_pingus()->get_pos();
+          Vector3f pingus_pos = WorldMap::current()->get_pingus()->get_pos();
           // Pingu is not over the surface
           if (!(pingus_pos.x > pos.x && pingus_pos.x < pos.x + surface.get_width()
                 &&
@@ -65,7 +64,6 @@ SurfaceDrawable::draw(DrawingContext& gc)
             { // FIXME: Hack for the 0.6.0 release/tutorial world remove later
               gc.draw(surface, pos);
             }
-#endif
         }
       else
         {

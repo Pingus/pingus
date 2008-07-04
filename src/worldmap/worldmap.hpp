@@ -85,7 +85,11 @@ private:
   int mouse_x;
   int mouse_y;
 
+private:
+  static WorldMap* current_; 
 public:
+  static WorldMap* current() { return current_; }
+
   /** Load the given*/
   WorldMap(const std::string& filename);
   ~WorldMap();
