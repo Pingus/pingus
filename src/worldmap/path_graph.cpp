@@ -30,7 +30,6 @@ namespace WorldMapNS {
 
 PathGraph::PathGraph(WorldMap* arg_worldmap, FileReader &reader)
   : worldmap(arg_worldmap)
-                    ////metamap(0)
 {
   parse_nodes(reader.read_section("nodes"));
   parse_edges(reader.read_section("edges"));

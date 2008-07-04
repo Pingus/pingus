@@ -214,8 +214,7 @@ WorldMapManager::WorldMapManager ()
   : levelname_bg(Sprite("core/worldmap/levelname_bg")),
     is_init(false),
     exit_worldmap(false),
-    worldmap(0),
-    new_worldmap(0)
+    worldmap(0)
 {
   // FIXME: a bit ugly because of the proteced member, but should work
   // FIXME: well enough. GUIScreen could also use multi-inheritage,
@@ -259,7 +258,6 @@ WorldMapManager::~WorldMapManager ()
 {
   delete worldmap;
   delete new_worldmap;
-  ////delete metamap;
 }
 
 void

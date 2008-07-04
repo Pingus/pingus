@@ -71,8 +71,6 @@ private:
   WorldMap* worldmap;
   WorldMap* new_worldmap;
 
-  //MetaMap* metamap;
-
   WorldMapManager ();
 public:
   ~WorldMapManager ();
@@ -96,7 +94,6 @@ public:
   /** @}*/
 
   WorldMap* get_worldmap() { return worldmap; }
-  ////	MetaMap* get_metamap() { return metamap; }
 
   /** Change the current map to the given map
 

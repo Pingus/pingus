@@ -16,7 +16,6 @@
 
 #include "../pingus_error.hpp"
 #include "level_dot.hpp"
-#include "world_dot.hpp"
 #include "dot_factory.hpp"
 
 namespace WorldMapNS {
@@ -24,20 +23,15 @@ namespace WorldMapNS {
 Dot*
 DotFactory::create(FileReader reader)
 {
-	if (reader.get_name() == "leveldot")
-	{
-		return new LevelDot(reader);
-	}
-	else if (reader.get_name() == "worlddot")
-	{
-		return new WorldDot(reader);
-	}
-	//else if (reader.get_name() == "tubedot")
-	else
-	{
-		PingusError::raise("DotFactory: unknown tag: ");
-	}
-	return 0;
+  if (reader.get_name() == "leveldot")
+    {
+      return new LevelDot(reader);
+    }
+  else if (reader.get_name() == "tubedot")
+    {
+      PingusError::raise("DotFactory: unknown tag: ");
+    }
+  return 0;
 }
 
 } // namespace WorldMapNS

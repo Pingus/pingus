@@ -257,7 +257,6 @@ pingus_sources = [
 'src/worldmap/pingus.cpp', 
 'src/worldmap/sprite_drawable.cpp', 
 'src/worldmap/surface_drawable.cpp', 
-'src/worldmap/world_dot.cpp', 
 'src/worldmap/worldmap.cpp', 
 'src/worldmap/worldmap_story.cpp', 
 'src/worldobj.cpp', 

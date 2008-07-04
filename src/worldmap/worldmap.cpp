@@ -362,7 +362,6 @@ WorldMap::update_locked_nodes()
         {
           if (dot->finished())
             {
-              ////WorldMapManager::instance()->get_metamap()->finish_node(short_name);
               ScreenManager::instance()->replace_screen(new StoryScreen(get_end_story()), true);
             }
         }
@@ -402,7 +401,6 @@ bool
 WorldMap::is_final_map()
 {
   return pingus->get_node() == final_node;
-////  return (WorldMapManager::instance()->get_metamap()->get_final_worldmap() == short_name);
 }
 
 std::string
