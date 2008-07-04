@@ -19,7 +19,7 @@
 
 #include "drawable.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 /** */
 class DrawableFactory
@@ -33,7 +33,7 @@ private:
   DrawableFactory& operator= (const DrawableFactory&);
 };
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 #endif
 

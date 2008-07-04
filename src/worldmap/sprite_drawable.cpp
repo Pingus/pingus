@@ -17,7 +17,7 @@
 #include "../display/drawing_context.hpp"
 #include "sprite_drawable.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 SpriteDrawable::SpriteDrawable(FileReader reader)
   : Drawable(reader)
@@ -36,6 +36,6 @@ SpriteDrawable::draw(DrawingContext& gc)
   gc.draw(sprite, pos);
 }
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 /* EOF */

@@ -20,23 +20,23 @@
 #include "worldmap.hpp"
 #include "worldmap_component.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
-WorldMapComponent::WorldMapComponent(WorldMapScreen* worldmap_screen)
+WorldmapComponent::WorldMapComponent(WorldMapScreen* worldmap_screen)
   : scene_context(new SceneContext()),
     worldmap_screen(worldmap_screen)
     
 {
 }
 
-WorldMapComponent::~WorldMapComponent()
+WorldmapComponent::~WorldMapComponent()
 {
 }
 
 void
-WorldMapComponent::draw (DrawingContext& gc)
+WorldmapComponent::draw (DrawingContext& gc)
 {
-  WorldMap* worldmap = worldmap_screen->get_worldmap();
+  Worldmap* worldmap = worldmap_screen->get_worldmap();
 
   Rect cliprect = worldmap_screen->get_trans_rect();
 
@@ -73,14 +73,14 @@ WorldMapComponent::draw (DrawingContext& gc)
 }
 
 void
-WorldMapComponent::update (float delta)
+WorldmapComponent::update (float delta)
 {
   worldmap_screen->get_worldmap()->update(delta);
 }
 
 
 void
-WorldMapComponent::on_primary_button_press (int x, int y)
+WorldmapComponent::on_primary_button_press (int x, int y)
 {
   Rect cliprect = worldmap_screen->get_trans_rect();
   worldmap_screen->get_worldmap()->on_primary_button_press(x - cliprect.left,
@@ -89,7 +89,7 @@ WorldMapComponent::on_primary_button_press (int x, int y)
 
 
 void
-WorldMapComponent::on_pointer_move (int x, int y)
+WorldmapComponent::on_pointer_move (int x, int y)
 {
   Rect cliprect = worldmap_screen->get_trans_rect();
   worldmap_screen->get_worldmap()->on_pointer_move(x - cliprect.left,
@@ -97,13 +97,13 @@ WorldMapComponent::on_pointer_move (int x, int y)
 }
 
 void
-WorldMapComponent::on_secondary_button_press (int x, int y)
+WorldmapComponent::on_secondary_button_press (int x, int y)
 {
   Rect cliprect = worldmap_screen->get_trans_rect();
   worldmap_screen->get_worldmap()->on_secondary_button_press(x - cliprect.left,
                                                        y - cliprect.top);
 }
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 /* EOF */

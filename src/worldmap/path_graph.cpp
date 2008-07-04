@@ -26,9 +26,9 @@
 #include "path_drawable.hpp"
 #include "../globals.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
-PathGraph::PathGraph(WorldMap* arg_worldmap, FileReader &reader)
+PathGraph::PathGraph(Worldmap* arg_worldmap, FileReader &reader)
   : worldmap(arg_worldmap)
 {
   parse_nodes(reader.read_section("nodes"));
@@ -267,6 +267,6 @@ PathGraph::init_cache()
     *i = 0;
 }
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 /* EOF */

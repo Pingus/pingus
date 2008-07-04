@@ -16,11 +16,11 @@
 
 #include "graph.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 const NodeId NoNode = -1;
 const EdgeId NoEdge = -1;
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 /* EOF */

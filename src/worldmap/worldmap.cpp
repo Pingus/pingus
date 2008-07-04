@@ -47,11 +47,11 @@
 #include "../story_screen.hpp"
 #include "../screen/screen_manager.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
-WorldMap* WorldMap::current_ = 0; 
+Worldmap* WorldMap::current_ = 0; 
 
-WorldMap::WorldMap(const std::string& arg_filename)
+Worldmap::WorldMap(const std::string& arg_filename)
   : filename(arg_filename),
     mouse_x(0),
     mouse_y(0)
@@ -67,7 +67,7 @@ WorldMap::WorldMap(const std::string& arg_filename)
   gc_state.set_limit(Rect(Vector2i(0, 0), Size(width, height)));
 }
 
-WorldMap::~WorldMap()
+Worldmap::~WorldMap()
 {
   for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
     {
@@ -79,29 +79,29 @@ WorldMap::~WorldMap()
 }
 
 void
-WorldMap::parse_file(FileReader reader)
+Worldmap::parse_file(FileReader reader)
 {
   if (reader.get_name() == "pingus-worldmap")
     {
       parse_graph(reader.read_section("graph"));
       parse_objects(reader.read_section("objects"));
       parse_properties(reader.read_section("head"));
-      intro_story = new WorldMapStory(reader.read_section("intro_story"));
-      end_story   = new WorldMapStory(reader.read_section("end_story"));
+      intro_story = new WorldmapStory(reader.read_section("intro_story"));
+      end_story   = new WorldmapStory(reader.read_section("end_story"));
     }
   else
     {
-      PingusError::raise("WorldMap:" + filename + ": not a Worldmap file");
+      PingusError::raise("Worldmap:" + filename + ": not a Worldmap file");
     }
 
   if (!path_graph)
     {
-      PingusError::raise("WorldMap: " + filename + " missed Graph");
+      PingusError::raise("Worldmap: " + filename + " missed Graph");
     }
 }
 
 void
-WorldMap::parse_objects(FileReader reader)
+Worldmap::parse_objects(FileReader reader)
 {
   const std::vector<FileReader>& childs = reader.get_sections();
   
@@ -117,19 +117,19 @@ WorldMap::parse_objects(FileReader reader)
         }
       else
         {
-          std::cout << "WorldMap::parse_objects: Parse Error" << std::endl;
+          std::cout << "Worldmap::parse_objects: Parse Error" << std::endl;
         }
     }
 }
 
 void
-WorldMap::parse_graph(FileReader reader)
+Worldmap::parse_graph(FileReader reader)
 {
   path_graph = new PathGraph(this, reader);
 }
 
 void
-WorldMap::parse_properties(FileReader reader)
+Worldmap::parse_properties(FileReader reader)
 {
   reader.read_string("music", music);
   reader.read_string("author", author);
@@ -148,7 +148,7 @@ WorldMap::parse_properties(FileReader reader)
 }
 
 void
-WorldMap::draw(DrawingContext& gc)
+Worldmap::draw(DrawingContext& gc)
 {
   Vector3f pingu_pos = pingus->get_pos();
   float min, max;
@@ -194,7 +194,7 @@ WorldMap::draw(DrawingContext& gc)
 }
 
 void
-WorldMap::update (float delta)
+Worldmap::update (float delta)
 {
   for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
     {
@@ -203,39 +203,39 @@ WorldMap::update (float delta)
 }
 
 void
-WorldMap::on_startup()
+Worldmap::on_startup()
 {
   Sound::PingusSound::play_music(music);
   update_locked_nodes();
 }
 
 void
-WorldMap::add_drawable(Drawable* drawable)
+Worldmap::add_drawable(Drawable* drawable)
 {
   drawables.push_back(drawable);
 }
 
 void
-WorldMap::remove_drawable(Drawable* drawable)
+Worldmap::remove_drawable(Drawable* drawable)
 {
   UNUSED_ARG(drawable);
 }
 
 void
-WorldMap::set_pingus(NodeId id)
+Worldmap::set_pingus(NodeId id)
 {
   UNUSED_ARG(id);
 }
 
 void
-WorldMap::on_pointer_move(int x, int y)
+Worldmap::on_pointer_move(int x, int y)
 {
   mouse_x = x;
   mouse_y = y;
 }
 
 void
-WorldMap::on_primary_button_press(int x, int y)
+Worldmap::on_primary_button_press(int x, int y)
 {
   Vector2f click_pos = gc_state.screen2world(Vector2i(x, y));
 
@@ -259,12 +259,12 @@ WorldMap::on_primary_button_press(int x, int y)
   if (dot)
     {
       if (maintainer_mode)
-        std::cout << "WorldMap: Clicked on: " << dot->get_name() << std::endl;
+        std::cout << "Worldmap: Clicked on: " << dot->get_name() << std::endl;
 
       if (path_graph->lookup_node(dot->get_name()) == pingus->get_node())
         {
           if (maintainer_mode)
-            std::cout << "WorldMap: Pingu is on node, issue on_click()" << std::endl;
+            std::cout << "Worldmap: Pingu is on node, issue on_click()" << std::endl;
           dot->on_click();
         }
       else
@@ -274,7 +274,7 @@ WorldMap::on_primary_button_press(int x, int y)
               if (!pingus->walk_to_node(path_graph->lookup_node(dot->get_name())))
                 {
                   if (maintainer_mode)
-                    std::cout << "WorldMap: NO PATH TO NODE FOUND!" << std::endl;
+                    std::cout << "Worldmap: NO PATH TO NODE FOUND!" << std::endl;
                 }
               else
                 {
@@ -290,7 +290,7 @@ WorldMap::on_primary_button_press(int x, int y)
 }
 
 void
-WorldMap::on_secondary_button_press(int x, int y)
+Worldmap::on_secondary_button_press(int x, int y)
 {
   if (maintainer_mode)
     {
@@ -306,7 +306,7 @@ WorldMap::on_secondary_button_press(int x, int y)
 }
 
 void
-WorldMap::enter_level()
+Worldmap::enter_level()
 {
   NodeId node = get_pingus()->get_node();
 
@@ -321,7 +321,7 @@ WorldMap::enter_level()
   else
     {
       if (maintainer_mode)
-        std::cout << "WorldMap: Pingus not on level" << std::endl;
+        std::cout << "Worldmap: Pingus not on level" << std::endl;
     }
 }
 
@@ -351,7 +351,7 @@ struct unlock_nodes
 };
 
 void
-WorldMap::update_locked_nodes()
+Worldmap::update_locked_nodes()
 { // FIXME: This shouldn't be a polling function
   path_graph->graph.for_each_node(unlock_nodes(path_graph));
 
@@ -371,14 +371,14 @@ WorldMap::update_locked_nodes()
         }
       else
         {
-          std::cout << "Error: WorldMap: Last level missing" << std::endl;
+          std::cout << "Error: Worldmap: Last level missing" << std::endl;
         }
     }
 }
 
 // Determine starting node
 void
-WorldMap::set_starting_node()
+Worldmap::set_starting_node()
 {
   // See if the user has played this map before.  If not, use the <default-node>
   // tag from the XML file.
@@ -402,13 +402,13 @@ WorldMap::set_starting_node()
 }
 
 bool
-WorldMap::is_final_map()
+Worldmap::is_final_map()
 {
   return pingus->get_node() == final_node;
 }
 
 std::string
-WorldMap::get_levelname()
+Worldmap::get_levelname()
 {
   if (pingus->get_node() != NoNode)
     {
@@ -424,6 +424,6 @@ WorldMap::get_levelname()
     }
 }
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 /* EOF */

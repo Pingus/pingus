@@ -24,7 +24,7 @@
 #include "../resource.hpp"
 #include "pingus.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 Pingus::Pingus (PathGraph* arg_path)
   : Drawable("pingus"),
@@ -253,6 +253,6 @@ Pingus::is_walking()
   return current_node == NoNode;
 }
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 /* EOF */

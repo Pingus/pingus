@@ -18,7 +18,7 @@
 #include "level_dot.hpp"
 #include "dot_factory.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 Dot*
 DotFactory::create(FileReader reader)
@@ -34,6 +34,6 @@ DotFactory::create(FileReader reader)
   return 0;
 }
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 /* EOF */

@@ -104,12 +104,12 @@ PingusMenu::do_start(const std::string &filename)
   if (!story_seen)
     {
       ScreenManager::instance()->push_screen
-        (new StoryScreen(WorldMapNS::WorldMapScreen::instance()->get_worldmap()->get_intro_story()), true);
+        (new StoryScreen(WorldmapNS::WorldMapScreen::instance()->get_worldmap()->get_intro_story()), true);
     }
   else
 #endif
     {
-      std::auto_ptr<WorldMapScreen> worldmap_screen(new WorldMapScreen());
+      std::auto_ptr<WorldmapScreen> worldmap_screen(new WorldMapScreen());
       worldmap_screen->load(filename);
       ScreenManager::instance()->push_screen(worldmap_screen.release(), true);
     }

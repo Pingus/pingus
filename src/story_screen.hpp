@@ -25,7 +25,7 @@
 
 class StoryScreenComponent;
 
-using namespace WorldMapNS;
+using namespace WorldmapNS;
 
 /** */
 class StoryScreen : public GUIScreen
@@ -33,7 +33,7 @@ class StoryScreen : public GUIScreen
 private:
   StoryScreenComponent* story_comp;
 public:
-	StoryScreen(WorldMapStory *pages);
+	StoryScreen(WorldmapStory *pages);
   ~StoryScreen();
 
   void on_startup();

@@ -45,12 +45,12 @@ private:
 
   bool page_displayed_completly;
 
-  WorldMapNS::WorldMapStory *story;
+  WorldmapNS::WorldMapStory *story;
   std::vector<StoryPage> pages;
   Sprite page_surface;
   StoryPage  current_page;
 public:
-  StoryScreenComponent (WorldMapNS::WorldMapStory *arg_pages);
+  StoryScreenComponent (WorldmapNS::WorldMapStory *arg_pages);
   virtual ~StoryScreenComponent () {}
 
   void draw (DrawingContext& gc);
@@ -59,7 +59,7 @@ public:
   void skip_story();
   /** starts to display the next text page */
   void next_text();
-  WorldMapNS::WorldMapStory* get_story() const { return story; }
+  WorldmapNS::WorldMapStory* get_story() const { return story; }
 };
 
 class StoryScreenContinueButton : public GUI::SurfaceButton
@@ -122,7 +122,7 @@ public:
   }
 };
 
-StoryScreen::StoryScreen(WorldMapNS::WorldMapStory *arg_pages)
+StoryScreen::StoryScreen(WorldmapNS::WorldMapStory *arg_pages)
 {
   story_comp = new StoryScreenComponent(arg_pages);
   gui_manager->add (story_comp, true);
@@ -134,7 +134,7 @@ StoryScreen::~StoryScreen()
 {
 }
 
-StoryScreenComponent::StoryScreenComponent (WorldMapNS::WorldMapStory *arg_story)
+StoryScreenComponent::StoryScreenComponent (WorldmapNS::WorldMapStory *arg_story)
   : story(arg_story)
 {
   page_displayed_completly = false;
@@ -189,13 +189,13 @@ StoryScreen::on_fast_forward_press ()
 void
 StoryScreen::on_escape_press ()
 {
-  ScreenManager::instance()->replace_screen(new WorldMapScreen(), true);
+  ScreenManager::instance()->replace_screen(new WorldmapScreen(), true);
 }
 
 void
 StoryScreen::on_startup()
 {
-  // FIXME: Load the song from the WorldMapStory
+  // FIXME: Load the song from the WorldmapStory
   Sound::PingusSound::play_music(story_comp->get_story()->get_music(), .7f);
 }
 
@@ -232,30 +232,30 @@ StoryScreenComponent::next_text()
           
 #if 0 // FIXME: Fri Jul  4 10:34:19 2008
           //Out of story pages - figure out which one this was (start or end)
-          if (story == WorldMapNS::WorldMapScreen::instance()->get_worldmap()->get_intro_story())
+          if (story == WorldmapNS::WorldMapScreen::instance()->get_worldmap()->get_intro_story())
             which_story = "start";
           else
             which_story = "end";
 
           // Record that player has seen this story.
-          StatManager::instance()->set_bool(WorldMapNS::WorldMapScreen::instance()->get_worldmap()->get_shortname()
+          StatManager::instance()->set_bool(WorldmapNS::WorldMapScreen::instance()->get_worldmap()->get_shortname()
                                             + "-" + which_story + "story-seen", true);
 
           bool credits_seen = false;
           //Check if this is the last worldmap
           if (which_story == "end" &&
-              WorldMapNS::WorldMapScreen::instance()->get_worldmap()->is_final_map())
+              WorldmapNS::WorldMapScreen::instance()->get_worldmap()->is_final_map())
             {
               // Check if final credits have been seen
               StatManager::instance()->get_bool("credits-seen", credits_seen);
               if (!credits_seen)
                 ScreenManager::instance()->replace_screen(new Credits(), true);
               else
-                ScreenManager::instance()->replace_screen(new WorldMapNS::WorldMapScreen(), true);
+                ScreenManager::instance()->replace_screen(new WorldmapNS::WorldMapScreen(), true);
             }
           else
             {
-              ScreenManager::instance()->replace_screen(new WorldMapNS::WorldMapScreen()), true);
+              ScreenManager::instance()->replace_screen(new WorldmapNS::WorldMapScreen()), true);
             }
 #endif
         }

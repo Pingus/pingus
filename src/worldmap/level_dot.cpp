@@ -32,7 +32,7 @@
 #include "input/control.hpp"
 #include "level_dot.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 LevelDot::LevelDot(FileReader reader)
   : Dot(reader.read_section("dot")),
@@ -185,6 +185,6 @@ LevelDot::unlock()
     }
 }
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 /* EOF */

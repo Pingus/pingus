@@ -19,7 +19,7 @@
 #include <assert.h>
 #include "path.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 Path::Path()
   : path_length_valid (false)
@@ -103,6 +103,6 @@ Path::reverse()
   std::reverse(vec.begin (), vec.end ());
 }
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 /* EOF */

@@ -19,7 +19,7 @@
 #include "../display/drawing_context.hpp"
 #include "path_drawable.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 PathDrawable::PathDrawable (const Path& arg_path)
   : path(arg_path)
@@ -46,6 +46,6 @@ PathDrawable::update (float delta)
   UNUSED_ARG(delta);
 }
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 /* EOF */

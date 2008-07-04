@@ -26,12 +26,12 @@
 class Font;
 class DrawingContext;
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 typedef int EdgeId;
 typedef int NodeId;
 
-class WorldMapStory;
+class WorldmapStory;
 class PathGraph;
 class Drawable;
 class Pingus;
@@ -41,14 +41,14 @@ class Pingus;
     (bidirectional graph) where a pingu can walk on. Parts of the
     worldmap are hidable and will only get displayed at specific
     events (successfull level completions, etc.). */
-class WorldMap
+class Worldmap
 {
 private:
   /** name of the file to parse */
   std::string filename;
 
-  WorldMapStory *intro_story;
-  WorldMapStory *end_story;
+  WorldmapStory *intro_story;
+  WorldmapStory *end_story;
 
   typedef std::vector<Drawable*>   ObjectLst;
   typedef std::vector<Drawable*> DrawableLst;
@@ -86,17 +86,17 @@ private:
   int mouse_y;
 
 private:
-  static WorldMap* current_; 
+  static Worldmap* current_; 
 public:
-  static WorldMap* current() { return current_; }
+  static Worldmap* current() { return current_; }
 
   /** Load the given*/
-  WorldMap(const std::string& filename);
-  ~WorldMap();
+  Worldmap(const std::string& filename);
+  ~Worldmap();
 
   Pingus* get_pingus() { return pingus; }
-  WorldMapStory* get_intro_story() const { return intro_story; }
-  WorldMapStory* get_end_story() const { return end_story; }
+  WorldmapStory* get_intro_story() const { return intro_story; }
+  WorldmapStory* get_end_story() const { return end_story; }
 
   void on_startup();
 
@@ -124,7 +124,7 @@ public:
   /** @return the shortest path between node1 and node2  */
   std::vector<EdgeId> find_path (NodeId node1, NodeId node2);
 
-  /** x,y are in WorldMap CO, not ScreenCO */
+  /** x,y are in Worldmap CO, not ScreenCO */
   void on_primary_button_press(int x, int y);
   void on_secondary_button_press(int x, int y);
   void on_pointer_move(int x, int y);
@@ -133,18 +133,18 @@ public:
   int get_height() const { return height; }
 
 private:
-  /** Parses a WorldMap XML file */
+  /** Parses a Worldmap XML file */
   void parse_file(FileReader reader);
 
   /** Parse the object section of the Worldmap XML file, it contains
       Sprites, Backgrounds and other things */
   void parse_objects(FileReader reader);
 
-  /** Parse the graph section of the WorldMap XML file, it contains
+  /** Parse the graph section of the Worldmap XML file, it contains
       the path where the Pingu can walk on. */
   void parse_graph(FileReader reader);
 
-  /** Parse the propertie section of a WorldMap XML file, it contains
+  /** Parse the propertie section of a Worldmap XML file, it contains
       meta data such as the author or the name of the Worldmap */
   void parse_properties(FileReader reader);
 
@@ -156,7 +156,7 @@ private:
   void set_starting_node();
 };
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 #endif
 

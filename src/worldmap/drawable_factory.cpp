@@ -19,7 +19,7 @@
 #include "sprite_drawable.hpp"
 #include "drawable_factory.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 Drawable*
 DrawableFactory::create(FileReader reader)
@@ -35,6 +35,6 @@ DrawableFactory::create(FileReader reader)
     }
 }
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 /* EOF */

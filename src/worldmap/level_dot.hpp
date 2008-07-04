@@ -21,7 +21,7 @@
 #include "../pingus_level.hpp"
 #include "dot.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 /** */
 class LevelDot : public Dot
@@ -54,7 +54,7 @@ private:
   LevelDot& operator= (const LevelDot&);
 };
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 #endif
 

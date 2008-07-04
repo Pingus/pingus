@@ -19,7 +19,7 @@
 #include "../file_reader.hpp"
 #include "dot.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 Dot::Dot(FileReader reader)
   : Drawable()
@@ -30,6 +30,6 @@ Dot::Dot(FileReader reader)
   assert(!name.empty());
 }
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 /* EOF */

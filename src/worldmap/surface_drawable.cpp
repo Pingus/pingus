@@ -23,7 +23,7 @@
 #include "pingus.hpp"
 #include "surface_drawable.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 SurfaceDrawable::SurfaceDrawable(FileReader reader)
   : Drawable(reader)
@@ -52,7 +52,7 @@ SurfaceDrawable::draw(DrawingContext& gc)
     {
       if (auto_uncover)
         {
-          Vector3f pingus_pos = WorldMap::current()->get_pingus()->get_pos();
+          Vector3f pingus_pos = Worldmap::current()->get_pingus()->get_pos();
           // Pingu is not over the surface
           if (!(pingus_pos.x > pos.x && pingus_pos.x < pos.x + surface.get_width()
                 &&
@@ -72,6 +72,6 @@ SurfaceDrawable::draw(DrawingContext& gc)
     }
 }
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 /* EOF */

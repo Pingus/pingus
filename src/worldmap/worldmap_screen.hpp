@@ -24,16 +24,16 @@
 
 class SceneContext;
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 typedef int NodeId;
-class WorldMap;
-class WorldMapComponent;
+class Worldmap;
+class WorldmapComponent;
 
-/** The WorldMapScreen manages the worldmaps and the translation
+/** The WorldmapScreen manages the worldmaps and the translation
     between two worldmaps, it also holds the GUI elements that are
-    accessible in the WorldMap Screen */
-class WorldMapScreen : public GUIScreen
+    accessible in the Worldmap Screen */
+class WorldmapScreen : public GUIScreen
 {
 private:
   Sprite levelname_bg;
@@ -41,32 +41,32 @@ private:
   bool is_init;
   bool exit_worldmap;
 
-  WorldMap* worldmap;
-  WorldMap* new_worldmap;
+  Worldmap* worldmap;
+  Worldmap* new_worldmap;
 
 public:
-  WorldMapScreen ();
-  ~WorldMapScreen ();
+  WorldmapScreen ();
+  ~WorldmapScreen ();
 
   void load (const std::string& filename);
 
-  /** Check if WorldMap manager still needs to run and exit if if
+  /** Check if Worldmap manager still needs to run and exit if if
       not */
   void update (float);
   void draw_foreground(DrawingContext& gc);
 
-  /** @defgroup WorldMapScreenBindings Controller bindings of the WorldMapScreen
+  /** @defgroup WorldmapScreenBindings Controller bindings of the WorldMapScreen
       @{*/
   /** Calculate the node that was clicked and set the pingu to walk
       to that node. If a node is double-cliked, the pingu should go
       faster. */
   void on_primary_button_press (int x, int y);
 
-  /** Exit the WorldMapScreen and return to the previous screen */
+  /** Exit the WorldmapScreen and return to the previous screen */
   void on_escape_press ();
   /** @}*/
 
-  WorldMap* get_worldmap() { return worldmap; }
+  Worldmap* get_worldmap() { return worldmap; }
 
   /** Change the current map to the given map
 
@@ -81,11 +81,11 @@ private:
   /** Startup Hook of the Screen */
   void on_startup ();
 
-  WorldMapScreen (const WorldMapScreen&);
-  WorldMapScreen& operator= (const WorldMapScreen&);
+  WorldmapScreen (const WorldMapScreen&);
+  WorldmapScreen& operator= (const WorldMapScreen&);
 };
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 #endif
 

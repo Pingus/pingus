@@ -20,7 +20,7 @@
 #include <queue>
 #include "graph.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 struct PathfinderResult
 {
@@ -175,7 +175,7 @@ private:
   Pathfinder operator= (const Pathfinder&);
 };
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 #endif
 

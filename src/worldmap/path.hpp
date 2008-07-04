@@ -21,7 +21,7 @@
 #include <vector>
 #include "../math/vector3f.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 /** a wrapper class around std::vector<Vector>, which can calculate
     the length of the path and a few other things */
@@ -82,7 +82,7 @@ public:
   void reverse();
 };
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 #endif
 

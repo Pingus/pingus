@@ -21,7 +21,7 @@
 #include "../math/vector3f.hpp"
 #include "drawable.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 /** A Dot is a node between all the pathes on the worldmap, there are
     LevelDots TubeDots and other availabe. */
@@ -49,7 +49,7 @@ private:
   Dot& operator= (const Dot&);
 };
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 #endif
 

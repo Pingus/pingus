@@ -20,7 +20,7 @@
 #include "drawable.hpp"
 #include "path_graph.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 /** Drawable to show the path between two nodes, only used for
     debugging */
@@ -39,7 +39,7 @@ private:
   PathDrawable& operator= (const PathDrawable&);
 };
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 #endif
 

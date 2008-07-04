@@ -21,7 +21,7 @@
 #include "../math/vector3f.hpp"
 #include "drawable.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 /** */
 class SpriteDrawable : public Drawable
@@ -46,7 +46,7 @@ private:
   SpriteDrawable operator= (const SpriteDrawable&);
 };
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 #endif
 

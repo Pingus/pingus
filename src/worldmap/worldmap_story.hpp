@@ -40,13 +40,13 @@
 		std::string		page_name;
 	};
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
-	class WorldMapStory
+	class WorldmapStory
 	{
 	public:
-		WorldMapStory(const FileReader &reader);
-		~WorldMapStory() { }
+		WorldmapStory(const FileReader &reader);
+		~WorldmapStory() { }
 
 		std::string get_title() const { return title; }
 		std::string get_music() const { return music; }
@@ -57,7 +57,7 @@ namespace WorldMapNS {
 		std::string music;
 		std::vector<StoryPage> pages;
 
-	};	// class WorldMapStory
+	};	// class WorldmapStory
 
 }	// namespace WorldmapNS
 

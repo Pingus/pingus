@@ -23,20 +23,20 @@
 
 class SceneContext;
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
-class WorldMapScreen;
-class WorldMap;
+class WorldmapScreen;
+class Worldmap;
 
-class WorldMapComponent : public GUI::Component
+class WorldmapComponent : public GUI::Component
 {
 private:
   std::auto_ptr<SceneContext> scene_context;
-  WorldMapScreen* worldmap_screen;
+  WorldmapScreen* worldmap_screen;
   
 public:
-  WorldMapComponent(WorldMapScreen* worldmap_screen);
-  ~WorldMapComponent();
+  WorldmapComponent(WorldMapScreen* worldmap_screen);
+  ~WorldmapComponent();
 
   void on_primary_button_press (int x, int y);
   void on_secondary_button_press (int x, int y);
@@ -48,11 +48,11 @@ public:
   bool is_at (int, int) { return true; }
 
 private:
-  WorldMapComponent (const WorldMapComponent&);
-  WorldMapComponent& operator= (const WorldMapComponent&);
+  WorldmapComponent (const WorldMapComponent&);
+  WorldmapComponent& operator= (const WorldMapComponent&);
 };
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 #endif
 

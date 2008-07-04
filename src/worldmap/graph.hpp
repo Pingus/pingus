@@ -22,7 +22,7 @@
 #include <iostream>
 #include <vector>
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 typedef int NodeId;
 typedef int EdgeId;
@@ -175,7 +175,7 @@ public:
   }
 };
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 #endif
 

@@ -24,16 +24,16 @@
 #include "pathfinder.hpp"
 #include "graph.hpp"
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 class Dot;
-class WorldMap;
+class Worldmap;
 
 /** This class represents the walkable path on the Worldmap */
 class PathGraph
 {
 private:
-  WorldMap* worldmap;
+  Worldmap* worldmap;
 
 public:
   // FIXME: Memory leak? Where do we free stuff data inside the graph?
@@ -56,7 +56,7 @@ public:
   /** @param worldmap is a pointer to the worldmap that holds this
       PathGraph, it is used so that the PathGraph can insert its
       drawables into the world */
-  PathGraph(WorldMap* worldmap, FileReader &reader);
+  PathGraph(Worldmap* worldmap, FileReader &reader);
 
   ~PathGraph();
 
@@ -87,7 +87,7 @@ private:
   PathGraph& operator= (const PathGraph&);
 };
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 #endif
 

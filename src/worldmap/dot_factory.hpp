@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_DOT_FACTORY_HPP
 #define HEADER_PINGUS_DOT_FACTORY_HPP
 
-namespace WorldMapNS {
+namespace WorldmapNS {
 
 class Dot;
 
@@ -33,7 +33,7 @@ private:
   DotFactory& operator= (const DotFactory&);
 };
 
-} // namespace WorldMapNS
+} // namespace WorldmapNS
 
 #endif
 

@@ -25,7 +25,7 @@
 #include "../fonts.hpp"
 #include "../gettext.h"
 
-WorldMapStory::WorldMapStory(const FileReader &reader)
+WorldmapStory::WorldMapStory(const FileReader &reader)
 {
   reader.read_string("title", title);
   title = _(title);
@@ -52,7 +52,7 @@ WorldMapStory::WorldMapStory(const FileReader &reader)
   std::reverse(pages.begin(), pages.end());
 
   if (pages.empty())
-    PingusError::raise("WorldMapStory: WorldMap does not include a valid story");
+    PingusError::raise("WorldmapStory: WorldMap does not include a valid story");
 }
 
 /* EOF */
