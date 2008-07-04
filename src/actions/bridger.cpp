@@ -187,25 +187,7 @@ Bridger::way_is_free()
 bool
 Bridger::brick_placement_allowed(void)
 {
-#ifdef BRIDGER_HEAD_COLLISION_CHECK
-  bool brick_allowed = true;
-
-  // Don't allow a brick to be placed if a Pingu would have a head collision
-  // if it walked along the whole of the brick.  Otherwise the Pingu,
-  // especially a walker, could get stuck between the brick and the ceiling.
-  for (int x_inc = 1; x_inc <= brick_length; ++x_inc)
-    {
-      if (head_collision_on_walk(x_inc, 2))
-	{
-	  brick_allowed = false;
-	  break;
-	}
-    }
-
-  return brick_allowed;
-#else
   return !head_collision_on_walk(0, 2);
-#endif
 }
 
 void
