@@ -28,15 +28,12 @@ namespace WorldMapNS {
 
 class Dot;
 class WorldMap;
-class MetaMap;
 
 /** This class represents the walkable path on the Worldmap */
 class PathGraph
 {
 private:
-	// The pathgraph will have one of these, not both.
   WorldMap* worldmap;
-	MetaMap* metamap;
 
 public:
   // FIXME: Memory leak? Where do we free stuff data inside the graph?
@@ -60,7 +57,6 @@ public:
       PathGraph, it is used so that the PathGraph can insert its
       drawables into the world */
   PathGraph(WorldMap* worldmap, FileReader &reader);
-	PathGraph(MetaMap* metamap, FileReader &reader);
 
   ~PathGraph();
 
@@ -85,7 +81,7 @@ public:
 private:
   void parse_nodes(FileReader reader);
   void parse_edges(FileReader reader);
-	void init_cache();
+  void init_cache();
 
   PathGraph (const PathGraph&);
   PathGraph& operator= (const PathGraph&);

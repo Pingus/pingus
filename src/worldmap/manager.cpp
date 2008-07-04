@@ -30,7 +30,6 @@
 #include "resource.hpp"
 #include "worldmap_story.hpp"
 #include "pingus.hpp"
-#include "metamap.hpp"
 #include "manager.hpp"
 #include "../story_screen.hpp"
 
@@ -217,7 +216,6 @@ WorldMapManager::WorldMapManager ()
     exit_worldmap(false),
     worldmap(0),
     new_worldmap(0)
-    ////metamap(new MetaMap(path_manager.complete("metamap/metamap.xml")))
 {
   // FIXME: a bit ugly because of the proteced member, but should work
   // FIXME: well enough. GUIScreen could also use multi-inheritage,
@@ -252,13 +250,6 @@ WorldMapManager::on_startup ()
 {
   exit_worldmap = false;
   Sound::PingusSound::stop_music();
-
-#if 0
-  if (!worldmap)
-    {
-      load(path_manager.complete("worldmaps/" + metamap->get_default_worldmap()));
-    }
-#endif
 
   if (worldmap)
     worldmap->on_startup ();

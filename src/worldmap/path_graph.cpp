@@ -21,7 +21,6 @@
 #include "dot.hpp"
 #include "dot_factory.hpp"
 #include "worldmap.hpp"
-#include "metamap.hpp"
 #include "pathfinder.hpp"
 #include "path_graph.hpp"
 #include "path_drawable.hpp"
@@ -32,17 +31,6 @@ namespace WorldMapNS {
 PathGraph::PathGraph(WorldMap* arg_worldmap, FileReader &reader)
   : worldmap(arg_worldmap)
                     ////metamap(0)
-{
-  parse_nodes(reader.read_section("nodes"));
-  parse_edges(reader.read_section("edges"));
-  
-  init_cache();
-}
-
-PathGraph::PathGraph(MetaMap* arg_metamap, FileReader &reader)
-  : worldmap(0),
-    metamap(arg_metamap) 
-	
 {
   parse_nodes(reader.read_section("nodes"));
   parse_edges(reader.read_section("edges"));
@@ -83,8 +71,6 @@ PathGraph::parse_nodes(FileReader reader)
           // add the dot to the list of drawables
           if (worldmap)
             worldmap->add_drawable(dot);
-          else
-            metamap->add_drawable(dot);
 
           // FIXME: should be use this for freeing the stuff?
           dots.push_back(dot);

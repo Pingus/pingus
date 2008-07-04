@@ -28,7 +28,6 @@ SolidColorBackground::SolidColorBackground(const FileReader& reader)
 void
 SolidColorBackground::draw (SceneContext& gc)
 {
-  // FIXME: should use SceneContext, not CL_Display
   gc.color().fill_screen(color);
 }
 
