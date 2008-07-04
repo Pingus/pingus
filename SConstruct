@@ -25,7 +25,6 @@ import SCons.Util
 pingus_sources = [
 # # 'gui/buffer_graphic_context.cpp', 
 # # 'pingus_level_test.cpp', 
-# # 'sound/slot_manager.cpp', 
 # # 'xml_eval.cpp',
 
 'src/action_holder.cpp', 
