@@ -34,6 +34,10 @@ GoalManager::is_finished()
     {
       return false;
     }
+  else if (goal == GT_GAME_ABORTED)
+    {
+      return true;
+    }
   else if (exit_time == 0)
     {
       // we are finished, now wait a few second so that everybody can
