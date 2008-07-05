@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_SCREEN_MANAGER_HPP
 
 #include "../pingus.hpp"
+#include <memory>
 #include "SDL.h"
 #include <boost/smart_ptr.hpp>
 #include <vector>
@@ -35,7 +36,8 @@ private:
   static ScreenManager* instance_;
 
   SDL_Surface* screen;
-  DrawingContext* display_gc;
+  std::auto_ptr<DrawingContext> display_gc;
+  Cursor* cursor;
 
   /** Screen stack (first is the screen, second is delete_screen,
       which tells if the screen should be deleted onces it got poped
@@ -48,10 +50,8 @@ private:
   enum { CA_NONE, CA_POP, CA_POP_ALL, CA_REPLACE, CA_CLEAR } cached_action;
   ScreenPtr replace_screen_arg;
 
-  Cursor* cursor;
-protected:
-  ScreenManager ();
 public:
+  ScreenManager ();
   ~ScreenManager();
 
   void resize(const Size& size);
@@ -98,8 +98,7 @@ private:
 
 public:
   static ScreenManager* instance ();
-  static void init();
-  static void deinit();
+
 private:
   ScreenManager (const ScreenManager&);
   ScreenManager& operator= (const ScreenManager&);

@@ -30,19 +30,21 @@
 #include "../input/manager.hpp"
 
 ScreenManager* ScreenManager::instance_ = 0;
-
+
 ScreenManager::ScreenManager()
-  : cursor(0)
-{
-  display_gc = new DrawingContext();
-
+  : display_gc(new DrawingContext()),
+    cursor(0)
+    
+{  
+  assert(instance_ == 0);
+  instance_ = this;
   cached_action = CA_NONE;
 }
 
 ScreenManager::~ScreenManager ()
 {
-  delete display_gc;
   delete cursor;
+  instance_ = 0;
 }
 
 void
@@ -134,7 +136,7 @@ ScreenManager::display()
 	  if (get_current_screen()->draw(*display_gc))
             {
               display_gc->render(Display::get_screen(), Rect(Vector2i(0,0), Size(Display::get_width(),
-                                                                                     Display::get_height())));
+                                                                                 Display::get_height())));
               Display::flip_display();
               display_gc->clear();
             }
@@ -302,9 +304,11 @@ ScreenManager::resize(const Size& size)
 {
   display_gc->set_rect(Rect(Vector2i(0, 0), size));
 
-  // FIXME: Calling this causes horrible flicker, any better way to resize the screen?
+  // FIXME: Calling this causes horrible flicker, since the screen
+  // goes black on a size change. Seems to be an SDL issue.
   Display::set_video_mode(size.width, size.height);
 
+  // FIXME: We need to resize the other screens too
   get_current_screen()->resize(size);
 }
 
@@ -336,18 +340,5 @@ ScreenManager::swcursor_visible()
 {
   return cursor;
 }
-
-void
-ScreenManager::init()
-{
-  instance_ = 0;
-}
-
-void
-ScreenManager::deinit()
-{
-  delete instance_;
-  instance_ = 0;
-}
-
+
 /* EOF */
