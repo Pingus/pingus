@@ -62,8 +62,6 @@ Roadmap for Pingus 0.8.0:
 
 * rename WorldMapManager to WorldMapScreen, split WorldMapComponent into seperate file
 
-* <Plouj> and the "new level" button doesn't do anything in the level editor after opening a level
-
 * intro/end credits are not properly displayed currently
 
 * do SurfaceButton with signals

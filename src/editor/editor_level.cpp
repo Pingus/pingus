@@ -38,11 +38,22 @@ static bool LevelObjSort(LevelObj *a, LevelObj *b)
 EditorLevel::EditorLevel()
   : impl(new LevelImpl())
 {
-  clear();
+  set_impl_defaults();
 }
 
+/** simply replace the current level implementation with a new blank
+    one */
 void
-EditorLevel::clear()
+EditorLevel::clear_impl()
+{
+  if (impl)
+    delete impl;
+  impl = new LevelImpl();
+}
+
+/** assuming we have a valid implementation, set default values */
+void
+EditorLevel::set_impl_defaults()
 {
   impl->levelname   = "none";
   impl->description = "none";
@@ -71,6 +82,13 @@ EditorLevel::clear()
   impl->time = -1;
   impl->difficulty = 0;
 }
+
+void
+EditorLevel::clear() {
+  clear_impl();
+  set_impl_defaults();
+}
+
 
 // Default Destructor
 EditorLevel::~EditorLevel()
@@ -178,9 +196,10 @@ void EditorLevel::load_level(const Pathname& pathname)
 {
   std::cout << "EditorLevel::load_level: " << pathname.str() << std::endl;
 
-  if (impl)
-    delete impl;
-  impl = new LevelImpl();
+  // Get a new level implementation with default settings. It is a
+  // good idea to set the level defaults first, in case the level file
+  // doesn't set everything.
+  clear();
 
   // Load the level from the file - we don't care what it's res_name is.
   PingusLevel level(pathname);
