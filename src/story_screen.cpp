@@ -189,7 +189,7 @@ StoryScreen::on_fast_forward_press ()
 void
 StoryScreen::on_escape_press ()
 {
-  ScreenManager::instance()->replace_screen(new WorldmapNS::WorldmapScreen(), true);
+  ScreenManager::instance()->pop_screen();
 }
 
 void
@@ -228,9 +228,10 @@ StoryScreenComponent::next_text()
         }
       else
         {
+#if 0 // FIXME: Sat Jul  5 04:17:01 2008    
+          //Out of story pages - figure out which one this was (start or end)
           std::string which_story = "start";
-          
-#if 0 // FIXME: Fri Jul  4 10:34:19 2008
+
           //Out of story pages - figure out which one this was (start or end)
           if (story == WorldmapNS::WorldmapScreen::instance()->get_worldmap()->get_intro_story())
             which_story = "start";
@@ -240,7 +241,6 @@ StoryScreenComponent::next_text()
           // Record that player has seen this story.
           StatManager::instance()->set_bool(WorldmapNS::WorldmapScreen::instance()->get_worldmap()->get_shortname()
                                             + "-" + which_story + "story-seen", true);
-
           bool credits_seen = false;
           //Check if this is the last worldmap
           if (which_story == "end" &&
@@ -255,9 +255,10 @@ StoryScreenComponent::next_text()
             }
           else
             {
-              ScreenManager::instance()->replace_screen(new WorldmapNS::WorldmapScreen()), true);
+              ScreenManager::instance()->replace_screen(new WorldmapNS::WorldmapScreen(), true);
             }
-#endif
+#endif 
+          ScreenManager::instance()->pop_screen();
         }
     }
 }
