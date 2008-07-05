@@ -138,30 +138,26 @@ GameSession::update_server(float delta)
       // has been updated during this frame
       int world_updates = 0;
 
-      while ((world_updates+1)*update_time <= time_passed) {
-        update_server();
-        world_updates++;
-      }
+      while ((world_updates+1)*update_time <= time_passed)
+        {
+          if (!pause)
+            {
+              if (fast_forward)
+                {
+                  for (int i = 0; i < 4; ++i)
+                    server->update();
+                }
+              else
+                {
+                  server->update();
+                }
+            }
+
+          world_updates++;
+        }
       // save how far behind is the world compared to the actual time
       // so that we can account for that while updating in the next frame
       world_delay = time_passed - (world_updates*update_time);
-    }
-}
-
-void
-GameSession::update_server()
-{
-  if (!pause)
-    {
-      if (fast_forward)
-        {
-          for (int i = 0; i < 4; ++i)
-            server->update();
-        }
-      else
-        {
-            server->update();
-        }
     }
 }
 

@@ -69,9 +69,6 @@ public:
 
   /** Pass a delta to the screen */
   void update_server(float delta);
-  void update_server();
-
-  // -- Client stuff
 
   Server*    get_server() { return server.get(); }
   Playfield* get_playfield() { return playfield; }
