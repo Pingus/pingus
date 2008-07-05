@@ -30,26 +30,31 @@ GoalManager::GoalManager(Server* s)
 bool
 GoalManager::is_finished()
 {
-  if (goal == GT_NONE)
+  switch (goal)
     {
-      return false;
-    }
-  else if (goal == GT_GAME_ABORTED)
-    {
-      return true;
-    }
-  else if (exit_time == 0)
-    {
-      // we are finished, now wait a few second so that everybody can
-      // see the particles, etc.
-      if (maintainer_mode)
-        std::cout << "XXXX goal reached: " << goal << std::endl;
-      exit_time = server->get_time() + 125;
-      return false;
-    }
-  else
-    {
-      return (exit_time < server->get_time());
+      case GT_NONE:
+        return false;
+    
+      case GT_GAME_ABORTED:
+        return true;
+
+      case GT_OUT_OF_TIME:
+      case GT_NO_PINGUS_IN_WORLD:
+      case GT_ARMAGEDDON:
+        if (exit_time == 0)
+          {
+            // we are finished, now wait a few second so that everybody can
+            // see the particles, etc.
+            exit_time = server->get_time() + 125;
+            return false;
+          }
+        else
+          {
+            return (exit_time < server->get_time());
+          }
+
+      default:
+        assert(!"GoalManager: unknown goal state");
     }
 }
 
@@ -82,11 +87,7 @@ GoalManager::update()
 void
 GoalManager::set_abort_goal()
 {
-  if (exit_time == 0)
-    {
-      goal = GT_GAME_ABORTED;
-      exit_time = server->get_time();
-    }
+  goal = GT_GAME_ABORTED;
 }
 
 
