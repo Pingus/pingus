@@ -66,6 +66,7 @@ public:
   void pop_modelview();
   void reset_modelview();
 
+  void set_rect(const Rect& rect);
   void set_cliprect(const Rect& rect);
   void reset_cliprect();
 

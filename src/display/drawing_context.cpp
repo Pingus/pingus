@@ -391,8 +391,8 @@ Rect
 DrawingContext::get_world_clip_rect() const
 {
   return Rect(Vector2i(static_cast<int>(-translate_stack.back().x),
-                          static_cast<int>(-translate_stack.back().y)),
-                 Size((int)get_width(), (int)get_height()));
+                       static_cast<int>(-translate_stack.back().y)),
+              Size((int)get_width(), (int)get_height()));
 }
 
 void
@@ -479,5 +479,5 @@ DrawingContext::world_to_screen(const Vector2i pos)
   return pos + Vector2i(int(translate_stack.back().x + rect.left), 
                         int(translate_stack.back().y + rect.top));
 }
-
+
 /* EOF */

@@ -130,6 +130,14 @@ SceneContext::reset_modelview()
 }
 
 void
+SceneContext::set_rect(const Rect& rect)
+{
+  impl->color.set_rect(rect);
+  impl->light.set_rect(rect);
+  impl->highlight.set_rect(rect);
+}
+
+void
 SceneContext::set_cliprect(const Rect& rect)
 {
   impl->cliprect = rect;

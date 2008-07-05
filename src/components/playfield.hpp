@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_PLAYFIELD_HPP
 #define HEADER_PINGUS_PLAYFIELD_HPP
 
+#include <memory>
 #include "../graphic_context_state.hpp"
 #include "../gui/rect_component.hpp"
 #include "../capture_rectangle.hpp"
@@ -28,7 +29,7 @@ class GameSession;
 class ButtonPanel;
 class Controller;
 class View;
-
+
 /** This class encapsulates all the different Views */
 class Playfield : public GUI::RectComponent
 {
@@ -42,7 +43,7 @@ private:
 
   Vector2i scroll_center;
 
-  SceneContext* scene_context;
+  std::auto_ptr<SceneContext> scene_context;
   GraphicContextState state;
   CaptureRectangle capture_rectangle;
 
@@ -78,13 +79,12 @@ public:
 
   bool is_at (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); return true; }
   Rect get_rect() const { return rect; }
-  void update_layout() {}
+  void update_layout();
 private:
   Playfield (const Playfield&);
   Playfield& operator= (const Playfield&);
 };
-
-
+
 #endif
 
 /* EOF */

@@ -367,5 +367,19 @@ GameSession::get_pause() const
 {
   return pause;
 }
+
+void
+GameSession::resize(const Size& size)
+{
+  std::cout << "ReSize: " << size.width << ", " << size.height << std::endl;
+
+  int world_width  = server->get_world()->get_width();
+  int world_height = server->get_world()->get_height();
+  
+  playfield->set_rect(Rect(Vector2i(Math::max((Display::get_width()  - world_width)/2,  0),
+                                    Math::max((Display::get_height() - world_height)/2, 0)), 
+                           Size(Math::min(Display::get_width(),  world_width),
+                                Math::min(Display::get_height(), world_height))));
+}
 
 /* EOF */

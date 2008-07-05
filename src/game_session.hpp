@@ -102,6 +102,7 @@ public:
   void set_pause(bool value);
   bool get_pause() const;
 
+  void resize(const Size&);
 private:
   void process_scroll_event (const Input::ScrollEvent&);
   void process_axis_event (const Input::AxisEvent&);

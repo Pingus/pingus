@@ -26,7 +26,7 @@
 #include "../display/display.hpp"
 #include "../game_session.hpp"
 #include "playfield.hpp"
-
+
 Playfield::Playfield(Server* server_, GameSession* session_, const Rect& rect_)
   : RectComponent(rect_),
     server(server_),
@@ -48,7 +48,6 @@ Playfield::Playfield(Server* server_, GameSession* session_, const Rect& rect_)
 
 Playfield::~Playfield()
 {
-  delete scene_context;
 }
 
 void
@@ -91,7 +90,7 @@ Playfield::draw(DrawingContext& gc)
     }
 
   state.pop(*scene_context);
-  gc.draw(new SceneContextDrawingRequest(scene_context, Vector3f(0,0,-10000)));
+  gc.draw(new SceneContextDrawingRequest(scene_context.get(), Vector3f(0,0,-10000)));
 }
 
 Pingu*
@@ -258,5 +257,12 @@ Playfield::scroll (int x, int y)
   state.set_pos(state.get_pos() + Vector2f((float)x, (float)y));
 }
 
-
+void
+Playfield::update_layout() 
+{
+  std::cout << rect.get_width() << ", " << rect.get_height() << std::endl;
+  state.set_size(rect.get_width(), rect.get_height());
+  scene_context->set_rect(rect);
+}
+
 /* EOF */
