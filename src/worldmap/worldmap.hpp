@@ -50,9 +50,6 @@ private:
   /** name of the file to parse */
   std::string filename;
 
-  WorldmapStory *intro_story;
-  WorldmapStory *end_story;
-
   typedef std::vector<Drawable*>   ObjectLst;
   typedef std::vector<Drawable*> DrawableLst;
 
@@ -113,6 +110,7 @@ public:
   int get_width()  const;
   int get_height() const;
 
+  PingusWorldmap get_worldmap() const { return worldmap; }
 private:
   /** Unlock nodes according to the finished ones */
   void update_locked_nodes();

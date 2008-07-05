@@ -165,5 +165,17 @@ PingusWorldmap::get_objects() const
 {
   return impl->objects;
 }
+
+FileReader
+PingusWorldmap::get_intro_story() const
+{
+  return impl->intro_story;
+}
+
+FileReader
+PingusWorldmap::get_end_story() const
+{
+  return impl->end_story;
+}  
 
 /* EOF */

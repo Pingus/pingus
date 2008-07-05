@@ -22,23 +22,27 @@
 #include "screen/gui_screen.hpp"
 #include "worldmap/worldmap_story.hpp"
 
-
 class StoryScreenComponent;
 
-using namespace WorldmapNS;
+namespace WorldmapNS {
+class WorldmapStory;
+} // namespace WorldmapNS
 
 /** */
 class StoryScreen : public GUIScreen
 {
 private:
+  std::auto_ptr<WorldmapNS::WorldmapStory> story;
   StoryScreenComponent* story_comp;
+
 public:
-  StoryScreen(WorldmapStory *pages);
+  StoryScreen(FileReader reader);
   ~StoryScreen();
 
   void on_startup();
   void on_fast_forward_press ();
   void on_escape_press ();
+
 private:
   StoryScreen (const StoryScreen&);
   StoryScreen& operator= (const StoryScreen&);

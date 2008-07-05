@@ -33,9 +33,7 @@
 #include "stat_manager.hpp"
 #include "credits.hpp"
 #include "sound/sound.hpp"
-
-#define SKIP_TEXT _("skip")
-
+
 class StoryScreenComponent : public GUI::Component
 {
 private:
@@ -49,6 +47,7 @@ private:
   std::vector<StoryPage> pages;
   Sprite page_surface;
   StoryPage  current_page;
+
 public:
   StoryScreenComponent (WorldmapNS::WorldmapStory *arg_pages);
   virtual ~StoryScreenComponent () {}
@@ -61,7 +60,7 @@ public:
   void next_text();
   WorldmapNS::WorldmapStory* get_story() const { return story; }
 };
-
+
 class StoryScreenContinueButton : public GUI::SurfaceButton
 {
 private:
@@ -87,7 +86,7 @@ public:
     story_comp->next_text();
   }
 };
-
+
 class StoryScreenSkipButton : public GUI::SurfaceButton
 {
 private:
@@ -102,11 +101,11 @@ public:
 
   void draw (DrawingContext& gc)
   {
-    gc.print_right(Fonts::chalk_small, x_pos, y_pos, SKIP_TEXT);
+    gc.print_right(Fonts::chalk_small, x_pos, y_pos, _("skip"));
   }
 
   bool is_at(int x, int y) {
-	  return x > x_pos - Fonts::chalk_small.get_width(SKIP_TEXT) && x < x_pos
+	  return x > x_pos - Fonts::chalk_small.get_width(_("skip")) && x < x_pos
 		&& y > y_pos && y < y_pos + Fonts::chalk_small.get_height();
   }
 
@@ -121,13 +120,14 @@ public:
 	story_comp->skip_story();
   }
 };
-
-StoryScreen::StoryScreen(WorldmapNS::WorldmapStory *arg_pages)
+
+StoryScreen::StoryScreen(FileReader reader)
+  : story(new WorldmapNS::WorldmapStory(reader))
 {
-  story_comp = new StoryScreenComponent(arg_pages);
-  gui_manager->add (story_comp, true);
-  gui_manager->add (new StoryScreenContinueButton(story_comp), true);
-  gui_manager->add (new StoryScreenSkipButton(story_comp), true);
+  story_comp = new StoryScreenComponent(story.get());
+  gui_manager->add(story_comp, true);
+  gui_manager->add(new StoryScreenContinueButton(story_comp), true);
+  gui_manager->add(new StoryScreenSkipButton(story_comp), true);
 }
 
 StoryScreen::~StoryScreen()
@@ -189,7 +189,7 @@ StoryScreen::on_fast_forward_press ()
 void
 StoryScreen::on_escape_press ()
 {
-  ScreenManager::instance()->replace_screen(new WorldmapScreen(), true);
+  ScreenManager::instance()->replace_screen(new WorldmapNS::WorldmapScreen(), true);
 }
 
 void
@@ -261,5 +261,5 @@ StoryScreenComponent::next_text()
         }
     }
 }
-
+
 /* EOF */

@@ -306,7 +306,7 @@ Worldmap::update_locked_nodes()
         {
           if (dot->finished())
             {
-              ScreenManager::instance()->replace_screen(new StoryScreen(end_story), true);
+              ScreenManager::instance()->replace_screen(new StoryScreen(worldmap.get_end_story()), true);
             }
         }
       else

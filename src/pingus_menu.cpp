@@ -109,7 +109,7 @@ PingusMenu::do_start(const std::string &filename)
   else
 #endif
     {
-      std::auto_ptr<WorldmapScreen> worldmap_screen(new WorldmapScreen());
+      std::auto_ptr<WorldmapNS::WorldmapScreen> worldmap_screen(new WorldmapNS::WorldmapScreen());
       worldmap_screen->load(filename);
       ScreenManager::instance()->push_screen(worldmap_screen.release(), true);
     }

@@ -33,6 +33,8 @@
 #include "pingus.hpp"
 #include "../story_screen.hpp"
 #include "worldmap_screen.hpp"
+
+namespace WorldmapNS {
 
 class WorldmapScreenCloseButton
   : public GUI::SurfaceButton
@@ -108,10 +110,7 @@ WorldmapScreenCreditsButton::draw (DrawingContext& gc)
 void
 WorldmapScreenCreditsButton::on_click()
 {
-#if 0
-  ScreenManager::instance()->replace_screen
-    (new StoryScreen(worldmap_screen->get_worldmap()->get_end_story()), true);
-#endif
+  worldmap_screen->show_end_story();
 }
 
 WorldmapScreenStoryButton::WorldmapScreenStoryButton(WorldmapScreen* worldmap_screen)
@@ -140,10 +139,7 @@ WorldmapScreenStoryButton::draw (DrawingContext& gc)
 void
 WorldmapScreenStoryButton::on_click()
 {
-#if 0
-  ScreenManager::instance()->replace_screen
-    (new StoryScreen(worldmap_screen->get_worldmap()->get_intro_story()), true);
-#endif
+  worldmap_screen->show_intro_story();
 }
 
 WorldmapScreenCloseButton::WorldmapScreenCloseButton(WorldmapScreen* worldmap_screen)
@@ -217,9 +213,7 @@ WorldmapScreenEnterButton::on_click()
 WorldmapScreen::WorldmapScreen ()
   : levelname_bg(Sprite("core/worldmap/levelname_bg")),
     is_init(false),
-    exit_worldmap(false),
-    worldmap(0),
-    new_worldmap(0)
+    exit_worldmap(false)
 {
   // FIXME: a bit ugly because of the proteced member, but should work
   // FIXME: well enough. GUIScreen could also use multi-inheritage,
@@ -233,10 +227,7 @@ WorldmapScreen::WorldmapScreen ()
 void
 WorldmapScreen::load (const std::string& filename)
 {
-  if (worldmap)
-    delete worldmap;
-
-  worldmap = new Worldmap(filename);
+  worldmap = std::auto_ptr<Worldmap>(new Worldmap(filename));
 	
   bool credits_unlocked = false;
   //StatManager::instance()->get_bool(worldmap->get_short_name() + "-endstory-seen", credits_unlocked);
@@ -252,14 +243,12 @@ WorldmapScreen::on_startup ()
   exit_worldmap = false;
   Sound::PingusSound::stop_music();
 
-  if (worldmap)
+  if (worldmap.get())
     worldmap->on_startup ();
 }
 
 WorldmapScreen::~WorldmapScreen ()
 {
-  delete worldmap;
-  delete new_worldmap;
 }
 
 void
@@ -279,11 +268,9 @@ WorldmapScreen::update (float delta)
     ScreenManager::instance ()->pop_screen ();
 
   // Check if new worldmap is set and if so, change it
-  if (new_worldmap)
+  if (new_worldmap.get())
     {
-      delete worldmap;
-      worldmap     = new_worldmap;
-      new_worldmap = 0;
+      worldmap = new_worldmap;
     }
 }
 
@@ -307,5 +294,19 @@ WorldmapScreen::get_trans_rect() const
               Size(Math::min(Display::get_width(),  worldmap->get_width()),
                    Math::min(Display::get_height(), worldmap->get_height())));
 }
+
+void
+WorldmapScreen::show_intro_story()
+{
+  ScreenManager::instance()->replace_screen (new StoryScreen(worldmap->get_worldmap().get_intro_story()), true);
+}
+
+void
+WorldmapScreen::show_end_story()
+{
+  ScreenManager::instance()->replace_screen (new StoryScreen(worldmap->get_worldmap().get_end_story()), true);
+}
 
+} // namespace WorldmapNS
+
 /* EOF */

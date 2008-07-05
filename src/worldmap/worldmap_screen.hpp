@@ -18,12 +18,12 @@
 #define HEADER_PINGUS_WORLDMAP_MANAGER_HPP
 
 #include <string>
+#include <memory>
 #include "../sprite.hpp"
 #include "../gui/gui_manager.hpp"
 #include "../screen/gui_screen.hpp"
 
 class SceneContext;
-
 namespace WorldmapNS {
 
 typedef int NodeId;
@@ -41,8 +41,8 @@ private:
   bool is_init;
   bool exit_worldmap;
 
-  Worldmap* worldmap;
-  Worldmap* new_worldmap;
+  std::auto_ptr<Worldmap> worldmap;
+  std::auto_ptr<Worldmap> new_worldmap;
 
 public:
   WorldmapScreen ();
@@ -66,10 +66,12 @@ public:
   void on_escape_press ();
   /** @}*/
 
-  Worldmap* get_worldmap() { return worldmap; }
+  Worldmap* get_worldmap() { return worldmap.get(); }
 
   Rect get_trans_rect() const;
 
+  void show_intro_story();
+  void show_end_story();
 private:
   /** Startup Hook of the Screen */
   void on_startup ();
