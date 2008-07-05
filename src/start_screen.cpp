@@ -33,7 +33,7 @@
 #include "string_format.hpp"
 #include "display/display.hpp"
 #include "string_util.hpp"
-
+
 class StartScreenComponent : public GUI::Component
 {
 private:
@@ -50,7 +50,7 @@ public:
 private:
   const std::string& format_description(int length);
 };
-
+
 class StartScreenOkButton : public GUI::SurfaceButton
 {
 private:
@@ -89,7 +89,7 @@ public:
     Sound::PingusSound::play_sound ("tick");
   }
 };
-
+
 class StartScreenAbortButton
   : public GUI::SurfaceButton
 {
@@ -121,12 +121,7 @@ public:
     Sound::PingusSound::play_sound ("tick");
   }
 };
-
-StartScreen::~StartScreen()
-{
-
-}
-
+
 StartScreenComponent::StartScreenComponent(const PingusLevel& p)
   : plf(p)
 {
@@ -191,8 +186,7 @@ StartScreenComponent::format_description(int length)
 
   return description;
 }
-
-
+
 StartScreen::StartScreen(const PingusLevel& arg_plf)
   : plf(arg_plf)
 {
@@ -200,6 +194,11 @@ StartScreen::StartScreen(const PingusLevel& arg_plf)
   gui_manager->add(comp, true);
   gui_manager->add(new StartScreenOkButton(this), true);
   gui_manager->add(new StartScreenAbortButton(this), true);
+}
+
+StartScreen::~StartScreen()
+{
+
 }
 
 void
@@ -232,6 +231,5 @@ StartScreen::cancel_game()
 {
   ScreenManager::instance()->pop_screen();
 }
-
-
+
 /* EOF */
