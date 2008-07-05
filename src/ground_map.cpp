@@ -25,7 +25,24 @@
 #include "collision_map.hpp"
 #include "math.hpp"
 #include "SDL.h"
+
+class MapTile
+{
+private:
+  Sprite   sprite;
+  Surface  surface;
 
+  void prepare();
+public:
+  MapTile();
+  ~MapTile();
+
+  void remove(Surface, int x, int y, int real_x, int real_y, GroundMap*);  
+  void put(Surface, int x, int y);  
+
+  Sprite get_sprite() const { return sprite; }
+};
+
 MapTile::MapTile () 
 {
 }
@@ -62,7 +79,7 @@ MapTile::put(Surface obj, int x, int y)
   surface.blit(obj, x, y);
   sprite = Sprite(surface);
 }
-
+
 GroundMap::GroundMap(const PingusLevel& plf)
 {
   width  = plf.get_size().width;
@@ -87,9 +104,9 @@ GroundMap::GroundMap(const PingusLevel& plf)
   tile_height = height/tile_size;
 
   // Allocating tile map
-  tile.resize(tile_width);
-  for(unsigned int i=0; i < tile.size(); ++i)
-    tile[i].resize(tile_height);
+  tiles.resize(tile_width * tile_height);
+  for(std::vector<MapTile*>::iterator i = tiles.begin(); i != tiles.end(); ++i)
+    *i = new MapTile();
 
   // fix the height back to the correct values
   width  = plf.get_size().width;
@@ -99,6 +116,8 @@ GroundMap::GroundMap(const PingusLevel& plf)
 GroundMap::~GroundMap(void)
 {
   delete colmap;
+  for(std::vector<MapTile*>::iterator i = tiles.begin(); i != tiles.end(); ++i)
+    delete *i;
 }
 
 void
@@ -113,7 +132,6 @@ GroundMap::draw(SceneContext& gc)
 {
   const Rect& display = gc.color().get_world_clip_rect();
 
-  // FIXME: delete the next four lines and replace them with gc.get_clip_rect()
   if (draw_collision_map)
     draw_colmap(gc);
 
@@ -124,13 +142,13 @@ GroundMap::draw(SceneContext& gc)
   int tilemap_height = display.get_height() / tile_size + 1;
 
   // drawing the stuff
-  for (int x = start_x; x <= (start_x + tilemap_width) && x < int(tile.size()); ++x)
-    for (int y = start_y; y <= start_y + tilemap_height && y < int(tile[x].size()); ++y)
+  for (int x = start_x; x <= (start_x + tilemap_width) && x < tile_width; ++x)
+    for (int y = start_y; y <= start_y + tilemap_height && y < tile_height; ++y)
       {
-        if (tile[x][y].get_sprite())
+        if (get_tile(x, y)->get_sprite())
           {
             //std::cout << "Drawing GroundMap Tile " << std::endl;
-            gc.color().draw(tile[x][y].get_sprite(),
+            gc.color().draw(get_tile(x, y)->get_sprite(),
                             Vector2i(x * tile_size, y * tile_size));
           }
         else
@@ -173,7 +191,7 @@ GroundMap::remove(Surface sprovider, int x, int y)
   for(int ix = start_x; ix <= end_x; ++ix)
     for(int iy = start_y; iy <= end_y; ++iy)
       {
-        tile[ix][iy].remove(sprovider, x - (ix * tile_size),
+        get_tile(ix, iy)->remove(sprovider, x - (ix * tile_size),
                             y - (iy * tile_size), x, y, this);
       }
 }
@@ -276,8 +294,8 @@ GroundMap::put(Surface source, int x, int y)
   for(int ix = start_x; ix < end_x; ++ix)
     for(int iy = start_y; iy < end_y; ++iy)
       {
-        tile[ix][iy].put(source,
-                         x - (ix * tile_size), y - (iy * tile_size));
+        get_tile(ix, iy)->put(source,
+                              x - (ix * tile_size), y - (iy * tile_size));
       }
 }
 
@@ -287,5 +305,10 @@ GroundMap::get_colmap(void)
   return colmap;
 }
 
-
+MapTile*
+GroundMap::get_tile(int x, int y)
+{
+  return tiles[y*tile_width + x];
+}
+
 /* EOF */

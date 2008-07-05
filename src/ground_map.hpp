@@ -27,24 +27,8 @@ class SceneContext;
 class PingusLevel;
 class CollisionMap;
 class GroundMap;
-
-class MapTile
-{
-private:
-  Sprite       sprite;
-  Surface  surface;
-
-  void prepare();
-public:
-  MapTile();
-  ~MapTile();
-
-  void remove(Surface, int x, int y, int real_x, int real_y, GroundMap*);  
-  void put(Surface, int x, int y);  
-
-  Sprite get_sprite() const { return sprite; }
-};
-
+class MapTile;
+
 /** This map type is the defaulh maptype, it is should be used for the
     most levels. It allows to construct a map, from a set of simple
     small images, this allows the generation of large map without
@@ -55,7 +39,7 @@ private:
   CollisionMap* colmap;
 
   /** The tiles out of which the map is constructed */
-  std::vector<std::vector<MapTile> > tile;
+  std::vector<MapTile*> tiles;
 
   /** Width of the map */
   int width;
@@ -86,11 +70,12 @@ public:
 
   float get_z_pos () const { return 0; }
 
-	/** Low level version of the remove() call, acts on a single tile
+  /** Low level version of the remove() call, acts on a single tile
       instead of the complete map-tiles */
   void put_alpha_surface(Surface provider, Surface sprovider,
 			 int x, int y, int real_x, int real_y);
 
+  MapTile* get_tile(int x, int y);
 private:
   /** Draw the collision map onto the screen */
   void draw_colmap(SceneContext& gc);
@@ -98,8 +83,7 @@ private:
   GroundMap (const GroundMap&);
   GroundMap& operator= (const GroundMap&);
 };
-
-
+
 #endif
 
 /* EOF */
