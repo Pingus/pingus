@@ -89,7 +89,7 @@ PinguAction::collision_on_walk (int x, int y)
 	{
 	  collision = true;
 	  break;
-	}
+        }
     }
 
   return collision;

@@ -24,13 +24,14 @@
 
 class PingusWorldmapImpl;
 
-/** */
+/** PingusWorldmap is responisble for loading .worldmap files, its
+    analog to PingusLevel */
 class PingusWorldmap
 {
-private:
 public:
   PingusWorldmap();
   PingusWorldmap(const Pathname& pathname);
+  PingusWorldmap(FileReader reader);
 
   std::string get_name() const;
   std::string get_short_name() const;
@@ -43,11 +44,16 @@ public:
 
   std::string get_default_node() const;
   std::string get_final_node() const;
+  
+  FileReader get_intro_story() const;
+  FileReader get_end_story() const;
 
-  WorldmapNS::WorldmapStory get_intro_story() const;
-  WorldmapNS::WorldmapStory get_end_story() const;
+  FileReader get_graph() const;
+  const std::vector<FileReader>& get_objects() const;
 
-  WorldmapNS::PathGraph get_graph() const;
+private:
+  void parse_file(FileReader reader);
+  void parse_properties(FileReader reader);
 
 protected:
   boost::shared_ptr<PingusWorldmapImpl> impl;

@@ -58,58 +58,13 @@ Worldmap::Worldmap(const std::string& arg_filename)
 {
   current_ = this;
 
-  parse_file(FileReader::parse(path_manager.complete(filename)));
+  worldmap = PingusWorldmap(Pathname(filename, Pathname::DATA_PATH));
 
-  pingus = new Pingus(path_graph);
-  set_starting_node();
-  add_drawable(pingus);
-
-  gc_state.set_limit(Rect(Vector2i(0, 0), Size(width, height)));
-}
-
-Worldmap::~Worldmap()
-{
-  for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
-    {
-      delete (*i);
-    }
-  delete intro_story;
-  delete end_story;
-  delete path_graph;
-}
-
-void
-Worldmap::parse_file(FileReader reader)
-{
-  if (reader.get_name() == "pingus-worldmap")
-    {
-      parse_graph(reader.read_section("graph"));
-      parse_objects(reader.read_section("objects"));
-      parse_properties(reader.read_section("head"));
-      intro_story = new WorldmapStory(reader.read_section("intro_story"));
-      end_story   = new WorldmapStory(reader.read_section("end_story"));
-    }
-  else
-    {
-      PingusError::raise("Worldmap:" + filename + ": not a Worldmap file");
-    }
-
-  if (!path_graph)
-    {
-      PingusError::raise("Worldmap: " + filename + " missed Graph");
-    }
-}
-
-void
-Worldmap::parse_objects(FileReader reader)
-{
-  const std::vector<FileReader>& childs = reader.get_sections();
-  
-  for(std::vector<FileReader>::const_iterator i = childs.begin(); 
-      i != childs.end(); ++i)
+  // Create all objects
+  const std::vector<FileReader>& object_reader = worldmap.get_objects();
+  for(std::vector<FileReader>::const_iterator i = object_reader.begin(); i != object_reader.end(); ++i)
     {
       Drawable* drawable = DrawableFactory::create(*i);
-
       if (drawable)
         {
           objects.push_back(drawable);
@@ -120,31 +75,26 @@ Worldmap::parse_objects(FileReader reader)
           std::cout << "Worldmap::parse_objects: Parse Error" << std::endl;
         }
     }
+
+  FileReader path_graph_reader = worldmap.get_graph();
+  path_graph = new PathGraph(this, path_graph_reader);
+
+  default_node = path_graph->lookup_node(worldmap.get_default_node());
+  final_node   = path_graph->lookup_node(worldmap.get_final_node());
+
+  pingus = new Pingus(path_graph);
+  set_starting_node();
+  add_drawable(pingus);
+
+  gc_state.set_limit(Rect(Vector2i(0, 0), Size(worldmap.get_width(), worldmap.get_height())));
 }
 
-void
-Worldmap::parse_graph(FileReader reader)
+Worldmap::~Worldmap()
 {
-  path_graph = new PathGraph(this, reader);
-}
-
-void
-Worldmap::parse_properties(FileReader reader)
-{
-  reader.read_string("music", music);
-  reader.read_string("author", author);
-  reader.read_string("name", name);
-  reader.read_string("short-name", short_name);
-  reader.read_string("email", email);
-  reader.read_int("width", width);
-  reader.read_int("height", height);
-
-  // Get beginning and ending nodes.
-  std::string node_name;
-  reader.read_string("default-node", node_name);
-  default_node = path_graph->lookup_node(node_name);
-  reader.read_string("final-node", node_name);
-  final_node = path_graph->lookup_node(node_name);
+  for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
+      delete (*i);
+  
+  delete path_graph;
 }
 
 void
@@ -152,6 +102,8 @@ Worldmap::draw(DrawingContext& gc)
 {
   Vector3f pingu_pos = pingus->get_pos();
   float min, max;
+  int width  = worldmap.get_width();
+  int height = worldmap.get_height();
 
   if (width >= gc.get_width())
     {
@@ -205,7 +157,7 @@ Worldmap::update (float delta)
 void
 Worldmap::on_startup()
 {
-  Sound::PingusSound::play_music(music);
+  Sound::PingusSound::play_music(worldmap.get_music());
   update_locked_nodes();
 }
 
@@ -213,18 +165,6 @@ void
 Worldmap::add_drawable(Drawable* drawable)
 {
   drawables.push_back(drawable);
-}
-
-void
-Worldmap::remove_drawable(Drawable* drawable)
-{
-  UNUSED_ARG(drawable);
-}
-
-void
-Worldmap::set_pingus(NodeId id)
-{
-  UNUSED_ARG(id);
 }
 
 void
@@ -278,7 +218,7 @@ Worldmap::on_primary_button_press(int x, int y)
                 }
               else
                 {
-                  StatManager::instance()->set_string(short_name + "-current-node", dot->get_name());
+                  StatManager::instance()->set_string(worldmap.get_short_name() + "-current-node", dot->get_name());
                 }
             }
           else
@@ -356,7 +296,7 @@ Worldmap::update_locked_nodes()
   path_graph->graph.for_each_node(unlock_nodes(path_graph));
 
   bool credits_unlocked = false;
-  StatManager::instance()->get_bool(short_name + "-endstory-seen", credits_unlocked);
+  StatManager::instance()->get_bool(worldmap.get_short_name() + "-endstory-seen", credits_unlocked);
 
   if (!credits_unlocked)
     {
@@ -366,7 +306,7 @@ Worldmap::update_locked_nodes()
         {
           if (dot->finished())
             {
-              ScreenManager::instance()->replace_screen(new StoryScreen(get_end_story()), true);
+              ScreenManager::instance()->replace_screen(new StoryScreen(end_story), true);
             }
         }
       else
@@ -385,7 +325,7 @@ Worldmap::set_starting_node()
   NodeId id;
   std::string node_name;
 
-  if (StatManager::instance()->get_string(short_name + "-current-node", node_name))
+  if (StatManager::instance()->get_string(worldmap.get_short_name() + "-current-node", node_name))
     {
       // Just in case that level doesn't exist, look it up.
       id = path_graph->lookup_node(node_name);
@@ -422,6 +362,18 @@ Worldmap::get_levelname()
     {
       return _("...walking...");
     }
+}
+
+int
+Worldmap::get_width()  const
+{
+  return worldmap.get_width();
+}
+
+int
+Worldmap::get_height() const
+{
+  return worldmap.get_height();
 }
 
 } // namespace WorldmapNS

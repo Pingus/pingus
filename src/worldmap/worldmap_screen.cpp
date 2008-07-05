@@ -108,8 +108,10 @@ WorldmapScreenCreditsButton::draw (DrawingContext& gc)
 void
 WorldmapScreenCreditsButton::on_click()
 {
+#if 0
   ScreenManager::instance()->replace_screen
     (new StoryScreen(worldmap_screen->get_worldmap()->get_end_story()), true);
+#endif
 }
 
 WorldmapScreenStoryButton::WorldmapScreenStoryButton(WorldmapScreen* worldmap_screen)
@@ -138,8 +140,10 @@ WorldmapScreenStoryButton::draw (DrawingContext& gc)
 void
 WorldmapScreenStoryButton::on_click()
 {
+#if 0
   ScreenManager::instance()->replace_screen
     (new StoryScreen(worldmap_screen->get_worldmap()->get_intro_story()), true);
+#endif
 }
 
 WorldmapScreenCloseButton::WorldmapScreenCloseButton(WorldmapScreen* worldmap_screen)
@@ -184,10 +188,7 @@ void
 WorldmapScreenEnterButton::on_pointer_enter()
 {
   SurfaceButton::on_pointer_enter();
-  if (!worldmap_screen->get_worldmap()->get_pingus()->is_walking())
-    {
-      Sound::PingusSound::play_sound ("tick");
-    }
+  Sound::PingusSound::play_sound ("tick");
 }
 
 void
@@ -238,8 +239,7 @@ WorldmapScreen::load (const std::string& filename)
   worldmap = new Worldmap(filename);
 	
   bool credits_unlocked = false;
-  StatManager::instance()->get_bool(worldmap->get_shortname() + "-endstory-seen", 
-                                    credits_unlocked);
+  //StatManager::instance()->get_bool(worldmap->get_short_name() + "-endstory-seen", credits_unlocked);
   if (credits_unlocked)
     {
       gui_manager->add(new WorldmapScreenCreditsButton(this), true);
@@ -297,14 +297,6 @@ WorldmapScreen::draw_foreground(DrawingContext& gc)
 
   gc.print_center(Fonts::chalk_small, gc.get_width()/2, gc.get_height() - 25,
                   worldmap->get_levelname());
-}
-
-void
-WorldmapScreen::change_map (const std::string& filename, NodeId node)
-{
-  // Create the new worldmap and make it the current one
-  new_worldmap = new Worldmap (path_manager.complete("worldmaps/" + filename));
-  new_worldmap->set_pingus (node);
 }
 
 Rect

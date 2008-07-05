@@ -30,9 +30,7 @@ public:
 
   StoryPage(ResDescriptor arg_image, std::string arg_text, std::string arg_name = "")
     : image(arg_image), text(arg_text), page_name(arg_name)
-  {
-		
-  }
+  {}
 
   ResDescriptor image;
   std::string   text;
@@ -58,7 +56,7 @@ private:
 
 };
 
-}	// namespace WorldmapNS
+} // namespace WorldmapNS
 
 #endif
 

@@ -155,7 +155,7 @@ LevelProperties::on_height_change(const std::string& str)
 void
 LevelProperties::on_number_to_save_change(const std::string& str)
 {
-  int num;
+  int num = 0;
   if (StringUtil::from_string(str, num))
     {
       level->set_number_to_save(num);
@@ -170,7 +170,7 @@ LevelProperties::on_number_to_save_change(const std::string& str)
 void
 LevelProperties::on_number_of_pingus_change(const std::string& str)
 {
-  int num;
+  int num = 0;
   if (StringUtil::from_string(str, num))
     {
       level->set_number_of_pingus(num);

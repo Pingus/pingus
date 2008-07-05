@@ -68,13 +68,6 @@ public:
 
   Worldmap* get_worldmap() { return worldmap; }
 
-  /** Change the current map to the given map
-
-      @param filename the filename of the new map, filename must be
-      @param filename relative to the worldmap directory
-      @param filename Example: "volcano.pingus" */
-  void change_map (const std::string& filename, NodeId node);
-
   Rect get_trans_rect() const;
 
 private:
