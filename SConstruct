@@ -69,7 +69,6 @@ pingus_sources = [
 'src/components/smallmap.cpp', 
 'src/components/time_display.cpp', 
 'src/config.cpp', 
-'src/console.cpp', 
 'src/credits.cpp', 
 'src/debug.cpp', 
 'src/debug_stream.cpp', 
