@@ -308,12 +308,6 @@ ScreenManager::resize(const Size& size)
   get_current_screen()->resize(size);
 }
 
-Screen*
-ScreenManager::get_screen()
-{
-  return get_current_screen().get();
-}
-
 void
 ScreenManager::show_swcursor(bool v)
 {

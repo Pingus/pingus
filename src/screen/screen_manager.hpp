@@ -78,9 +78,6 @@ public:
   /** @return a pointer to the current Screen */
   ScreenPtr get_current_screen();
 
-  /** @return a pointer to the current Screen */
-  Screen* get_screen();
-
   void show_swcursor(bool v);
   bool swcursor_visible();
   
