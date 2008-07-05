@@ -144,7 +144,7 @@ GameSession::update_server(float delta)
             {
               if (fast_forward)
                 {
-                  for (int i = 0; i < 4; ++i)
+                  for (int i = 0; i < fast_forward_time_scale; ++i)
                     server->update();
                 }
               else

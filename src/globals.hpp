@@ -37,6 +37,7 @@ extern bool        play_demo;                       ///< --play-demo
 
 extern bool        debug_actions;                   ///< --debug-actions
 extern bool        fast_mode;                       ///< --fast
+extern int         fast_forward_time_scale;         ///< how much faster the game runs in FF mode
 extern bool        maintainer_mode;                 ///< --maintainer-mode
 extern std::string demo_file;                       ///<
 extern bool        auto_scrolling;                  ///< --enable-auto-scrolling
