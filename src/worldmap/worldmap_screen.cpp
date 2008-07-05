@@ -170,7 +170,7 @@ WorldmapScreenCloseButton::on_click()
 {
   ScreenManager::instance ()->pop_screen ();
 }
-
+
 WorldmapScreenEnterButton::WorldmapScreenEnterButton(WorldmapScreen* worldmap_screen)
   : GUI::SurfaceButton(Display::get_width() - 119, Display::get_height() - 37,
                        ResDescriptor("core/worldmap/enter_button_normal"),
@@ -209,8 +209,8 @@ WorldmapScreenEnterButton::on_click()
 {
   worldmap_screen->get_worldmap()->enter_level();
 }
-
-WorldmapScreen::WorldmapScreen ()
+
+WorldmapScreen::WorldmapScreen()
   : levelname_bg(Sprite("core/worldmap/levelname_bg")),
     is_init(false),
     exit_worldmap(false)
@@ -222,6 +222,10 @@ WorldmapScreen::WorldmapScreen ()
   gui_manager->add(new WorldmapScreenCloseButton(this), true);
   gui_manager->add(new WorldmapScreenEnterButton(this), true);
   gui_manager->add(new WorldmapScreenStoryButton(this), true);
+}
+
+WorldmapScreen::~WorldmapScreen ()
+{
 }
 
 void
@@ -245,10 +249,6 @@ WorldmapScreen::on_startup ()
 
   if (worldmap.get())
     worldmap->on_startup ();
-}
-
-WorldmapScreen::~WorldmapScreen ()
-{
 }
 
 void

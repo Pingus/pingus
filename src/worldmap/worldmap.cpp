@@ -158,7 +158,6 @@ void
 Worldmap::on_startup()
 {
   Sound::PingusSound::play_music(worldmap.get_music());
-  update_locked_nodes();
 }
 
 void
@@ -292,9 +291,11 @@ struct unlock_nodes
 
 void
 Worldmap::update_locked_nodes()
-{ // FIXME: This shouldn't be a polling function
+{
+  // FIXME: This shouldn't be a polling function
   path_graph->graph.for_each_node(unlock_nodes(path_graph));
 
+#if 0
   bool credits_unlocked = false;
   StatManager::instance()->get_bool(worldmap.get_short_name() + "-endstory-seen", credits_unlocked);
 
@@ -306,7 +307,7 @@ Worldmap::update_locked_nodes()
         {
           if (dot->finished())
             {
-              ScreenManager::instance()->replace_screen(new StoryScreen(worldmap.get_end_story()));
+              ScreenManager::instance()->push_screen(new StoryScreen(worldmap.get_end_story()));
             }
         }
       else
@@ -314,6 +315,7 @@ Worldmap::update_locked_nodes()
           std::cout << "Error: Worldmap: Last level missing" << std::endl;
         }
     }
+#endif
 }
 
 // Determine starting node
