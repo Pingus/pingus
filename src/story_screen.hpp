@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_STORY_SCREEN_HPP
 
 #include <string>
+#include <memory>
 #include "res_descriptor.hpp"
 #include "screen/gui_screen.hpp"
 #include "worldmap/worldmap_story.hpp"
