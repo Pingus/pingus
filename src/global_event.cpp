@@ -16,9 +16,9 @@
 
 #include <config.h>
 #include <stdio.h>
+#include <iostream>
 #include <algorithm>
 #include "screenshot.hpp"
-#include "console.hpp"
 #include "fps_counter.hpp"
 #include "screen/screen_manager.hpp"
 #include "option_menu.hpp"
@@ -41,13 +41,6 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
 
   switch (event.keysym.sym)
     {
-      case SDLK_F1:
-        if (console.is_visible())
-          console.hide();
-        else
-          console.show();
-        break;
-
       case SDLK_F10:
         config_manager.set_print_fps(!config_manager.get_print_fps());
         break;
@@ -75,11 +68,8 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
       case SDLK_F12:
         {
           std::string filename;
-          std::cout << "GlobalEvent::Making screenshot..." << std::endl;
           filename = Screenshot::make_screenshot();
-          console << "GlobalEvent: Saved screenshot to \"" << filename << "\"" << std::endl;
-          //console << "!\"#$%&'()*+,-./0123456789:;<=>?@";
-          console.newline();
+          std::cout << "GlobalEvent: Saved screenshot to \"" << filename << "\"" << std::endl;
         }
         break;
 

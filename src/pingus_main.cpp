@@ -61,7 +61,6 @@ extern "C" {
 #include "system.hpp"
 #include "pingus_error.hpp"
 #include "config.hpp"
-#include "console.hpp"
 #include "fps_counter.hpp"
 #include "plf_res_mgr.hpp"
 #include "game_session.hpp"
@@ -727,11 +726,8 @@ PingusMain::main(int argc, char** argv)
 
   // Init error/warning/notice streams
   pout.add(std::cout);
-  pout.add(console);
   pwarn.add(std::cout);
-  pout.add(console);
   perr.add(std::cout);
-  perr.add(console);
 
   try
     {
@@ -808,14 +804,12 @@ PingusMain::init_pingus()
   PinguActionFactory::init();
   
   fps_counter.init();
-  console.init();
 }
 
 void
 PingusMain::deinit_pingus()
 {
   fps_counter.deinit();
-  console.deinit();
 
   Fonts::deinit();
   PinguActionFactory::deinit();
