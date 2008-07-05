@@ -44,19 +44,29 @@ Roadmap for Pingus 0.8.0:
 
 * animate the flag or remove it for single-player
 
-* add a end-event to the demo recording so that the length of the demo is known
-
-* switch to GPLv3
-
 * make GUI resizable
-
-* save pingu position in the demo
-
-* white right arrow in levelset dialog is wrong
 
 * shadow in levelset background is wrong
 
 * split blackboard graphic into foreground and background, draw seperatly to get cleaner resize
+
+* playfield scrolling should be float
+
+* generate thumbnails for the editor, loading times are inacceptable
+
+* Repaint Exit pannel
+
+* write level 'screenshot' tool
+
+* split Pingus into base and extra user contributed content
+
+* rename WorldMapManager to WorldMapScreen, split WorldMapComponent into seperate file
+
+* <Plouj> and the "new level" button doesn't do anything in the level editor after opening a level
+
+* intro/end credits are not properly displayed currently
+
+* do SurfaceButton with signals
 
 New Features
 ============
@@ -131,6 +141,8 @@ Bugs:
 * digger (mean basher?) follows down slopes
 
 * worldmap pingu walks right over locked levels
+
+* paint climber
 
 Unsorted:
 =========
