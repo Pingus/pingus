@@ -17,7 +17,7 @@
 #include <iostream>
 #include "world.hpp"
 #include "smallmap_image.hpp"
-#include "col_map.hpp"
+#include "collision_map.hpp"
 #include "server.hpp"
 
 SmallMapImage::SmallMapImage(Server* s, int width, int height)

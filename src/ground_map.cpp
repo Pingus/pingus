@@ -22,7 +22,7 @@
 #include "ground_map.hpp"
 #include "pingus_level.hpp"
 #include "gettext.h"
-#include "col_map.hpp"
+#include "collision_map.hpp"
 #include "math.hpp"
 #include "SDL.h"
 

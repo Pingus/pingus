@@ -16,7 +16,6 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "../ground_map.hpp"
-#include "../col_map.hpp"
 #include "../display/scene_context.hpp"
 #include "../world.hpp"
 #include "../sound/sound.hpp"

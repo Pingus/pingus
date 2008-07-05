@@ -18,7 +18,7 @@
 #include "SDL.h"
 #include "display/drawing_context.hpp"
 #include "globals.hpp"
-#include "col_map.hpp"
+#include "collision_map.hpp"
 #include "collision_mask.hpp"
 #include "pingus_error.hpp"
 #include "math.hpp"

@@ -15,7 +15,6 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "../math.hpp"
-#include "../col_map.hpp"
 #include "../colliders/pingu_collider.hpp"
 #include "../debug.hpp"
 #include "../globals.hpp"

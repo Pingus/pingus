@@ -17,7 +17,7 @@
 #include <iostream>
 #include "../world.hpp"
 #include "../ground_map.hpp"
-#include "../col_map.hpp"
+#include "../collision_map.hpp"
 #include "../resource.hpp"
 #include "groundpiece.hpp"
 

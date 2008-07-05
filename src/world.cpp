@@ -32,7 +32,7 @@
 #include "display/scene_context.hpp"
 #include "pingus_level.hpp"
 #include "worldobj_factory.hpp"
-#include "col_map.hpp"
+#include "collision_map.hpp"
 #include "debug.hpp"
 
 using Actions::Bomber;

@@ -15,7 +15,6 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <cassert>
-#include "../col_map.hpp"
 #include "../display/scene_context.hpp"
 #include "../pingu.hpp"
 #include "../ground_map.hpp"

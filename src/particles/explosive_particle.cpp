@@ -14,7 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #if 0
-#include "../col_map.hpp"
+#include "../collision_map.hpp"
 #include "../pingu_map.hpp"
 #include "../world.hpp"
 #include "../particles/particle_holder.hpp"

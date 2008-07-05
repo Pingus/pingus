@@ -21,7 +21,7 @@
 #include "globals.hpp"
 #include "world.hpp"
 #include "sound/sound.hpp"
-#include "col_map.hpp"
+#include "collision_map.hpp"
 #include "pingu_action.hpp"
 #include "pingu_action_factory.hpp"
 #include "gettext.h"

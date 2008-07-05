@@ -15,7 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "collider.hpp"
-#include "col_map.hpp"
+#include "collision_map.hpp"
 #include "math/vector3f.hpp"
 #include "world.hpp"
 

@@ -16,7 +16,6 @@
 
 #include "../debug.hpp"
 #include "../globals.hpp"
-#include "../col_map.hpp"
 #include "../display/scene_context.hpp"
 #include "../pingu.hpp"
 #include "../pingu_enums.hpp"

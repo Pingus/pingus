@@ -16,7 +16,7 @@
 
 #include <iostream>
 #include "../display/scene_context.hpp"
-#include "../col_map.hpp"
+#include "../collision_map.hpp"
 #include "../world.hpp"
 #include "../globals.hpp"
 #include "../pingu_holder.hpp"

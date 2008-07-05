@@ -17,7 +17,7 @@
 #include <assert.h>
 #include "math.hpp"
 #include "math/vector3f.hpp"
-#include "col_map.hpp"
+#include "collision_map.hpp"
 #include "world.hpp"
 #include "pingu.hpp"
 #include "pingu_action.hpp"

@@ -20,7 +20,6 @@
 #include "../display/drawing_context.hpp"
 #include "../world.hpp"
 #include "../resource.hpp"
-#include "../col_map.hpp"
 #include "../server.hpp"
 #include "../smallmap_image.hpp"
 #include "../pingu.hpp"

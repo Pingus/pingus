@@ -15,7 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "../sound/sound.hpp"
-#include "../col_map.hpp"
+#include "../collision_map.hpp"
 #include "../debug.hpp"
 #include "../globals.hpp"
 #include "../display/scene_context.hpp"

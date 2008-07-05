@@ -16,7 +16,7 @@
 
 #include <assert.h>
 #include "../math.hpp"
-#include "../col_map.hpp"
+#include "../collision_map.hpp"
 #include "../display/scene_context.hpp"
 #include "../ground_map.hpp"
 #include "../resource.hpp"

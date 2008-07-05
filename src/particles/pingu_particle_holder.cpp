@@ -16,7 +16,7 @@
 
 #include "../display/scene_context.hpp"
 #include "../math.hpp"
-#include "../col_map.hpp"
+#include "../collision_map.hpp"
 #include "../resource.hpp"
 #include "../world.hpp"
 #include "pingu_particle_holder.hpp"

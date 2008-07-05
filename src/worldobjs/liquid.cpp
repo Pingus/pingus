@@ -15,7 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "../col_map.hpp"
+#include "../collision_map.hpp"
 #include "../display/scene_context.hpp"
 #include "../resource.hpp"
 #include "../world.hpp"

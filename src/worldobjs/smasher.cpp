@@ -16,7 +16,7 @@
 
 #include <iostream>
 #include "../math.hpp"
-#include "../col_map.hpp"
+#include "../collision_map.hpp"
 #include "../display/scene_context.hpp"
 #include "../particles/smoke_particle_holder.hpp"
 #include "../pingu.hpp"

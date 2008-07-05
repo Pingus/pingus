@@ -15,7 +15,6 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <cstdio>
-#include "../col_map.hpp"
 #include "../display/scene_context.hpp"
 #include "../ground_map.hpp"
 #include "../world.hpp"
