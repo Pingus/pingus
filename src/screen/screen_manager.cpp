@@ -24,7 +24,7 @@
 #include "display/display.hpp"
 #include "screen_manager.hpp"
 #include "../path_manager.hpp"
-#include "screenshot.hpp"
+#include "screen.hpp"
 #include "../display/drawing_context.hpp"
 #include "../input/controller.hpp"
 #include "../input/manager.hpp"
@@ -158,7 +158,7 @@ ScreenManager::display()
   delete input_controller;
 }
 
-ScreenPtr&
+ScreenPtr
 ScreenManager::get_current_screen()
 {
   assert(!screens.empty());
@@ -175,14 +175,14 @@ ScreenManager::instance ()
 }
 
 void
-ScreenManager::push_screen (Screen* screen, bool delete_screen)
+ScreenManager::push_screen (Screen* screen)
 {
   if (!screens.empty())
     {
       screens.back ()->on_shutdown ();
     }
 
-  screens.push_back (ScreenPtr(screen, delete_screen));
+  screens.push_back (ScreenPtr(screen));
   screen->on_startup ();
 }
 
@@ -201,15 +201,15 @@ ScreenManager::pop_all_screens()
 }
 
 void
-ScreenManager::replace_screen (Screen* screen, bool delete_screen)
+ScreenManager::replace_screen (Screen* screen)
 {
   assert (cached_action == CA_NONE);
   cached_action = CA_REPLACE;
-  replace_screen_arg = ScreenPtr(screen, delete_screen);
+  replace_screen_arg = ScreenPtr(screen);
 }
 
 void
-ScreenManager::real_replace_screen (const ScreenPtr& ptr)
+ScreenManager::real_replace_screen (ScreenPtr ptr)
 {
   cached_action = CA_NONE;
   screens.back ()->on_shutdown ();
@@ -256,7 +256,7 @@ ScreenManager::real_clear()
 }
 
 void
-ScreenManager::fade_over(ScreenPtr& old_screen, ScreenPtr& new_screen)
+ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
 {
   DeltaManager delta_manager;
   float passed_time = 0;

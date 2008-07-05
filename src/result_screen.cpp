@@ -283,7 +283,7 @@ ResultScreen::on_startup()
 void
 ResultScreen::retry_level()
 {
-  ScreenManager::instance()->replace_screen(new GameSession (result.plf, true), true);
+  ScreenManager::instance()->replace_screen(new GameSession (result.plf, true));
 }
 
 void

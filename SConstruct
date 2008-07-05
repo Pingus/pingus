@@ -137,7 +137,6 @@ pingus_sources = [
 'src/screen/gui_screen.cpp', 
 'src/screen/screen.cpp', 
 'src/screen/screen_manager.cpp', 
-'src/screen/screen_ptr.cpp', 
 
 'src/line_iterator.cpp',
 'src/level_menu.cpp',

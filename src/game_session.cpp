@@ -119,7 +119,7 @@ GameSession::update_server(float delta)
       }
 
       if (show_result_screen)
-        ScreenManager::instance()->replace_screen(new ResultScreen(result), true);
+        ScreenManager::instance()->replace_screen(new ResultScreen(result));
       else
         ScreenManager::instance()->pop_screen();
 

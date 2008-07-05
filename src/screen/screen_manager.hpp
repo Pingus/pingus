@@ -18,14 +18,16 @@
 #define HEADER_PINGUS_SCREEN_MANAGER_HPP
 
 #include "../pingus.hpp"
+#include "SDL.h"
+#include <boost/smart_ptr.hpp>
 #include <vector>
-
-#include "screen_ptr.hpp"
 
 class Cursor;
 class Size;
 class DrawingContext;
 class Screen;
+
+typedef boost::shared_ptr<Screen> ScreenPtr;
 
 class ScreenManager
 {
@@ -59,10 +61,10 @@ public:
   void display ();
 
   /** Replace the current screen */
-  void replace_screen (Screen*, bool delete_screen = false);
+  void replace_screen (Screen*);
 
   /** Add a screen on top of another screen */
-  void push_screen (Screen*, bool delete_screen = false);
+  void push_screen (Screen*);
 
   /** Remove the current screen and fall back to the last one */
   void pop_screen ();
@@ -74,7 +76,7 @@ public:
   void clear();
 
   /** @return a pointer to the current Screen */
-  ScreenPtr& get_current_screen();
+  ScreenPtr get_current_screen();
 
   /** @return a pointer to the current Screen */
   Screen* get_screen();
@@ -86,7 +88,7 @@ private:
   void real_clear();
 
   /** Replace the current screen */
-  void real_replace_screen (const ScreenPtr&);
+  void real_replace_screen (ScreenPtr);
 
   /** Remove the current screen and fall back to the last one */
   void real_pop_screen ();
@@ -95,7 +97,7 @@ private:
   void real_pop_all_screens();
 
   /** FadeOver test*/
-  void fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen);
+  void fade_over (ScreenPtr old_screen, ScreenPtr new_screen);
 
 public:
   static ScreenManager* instance ();
@@ -105,7 +107,7 @@ private:
   ScreenManager (const ScreenManager&);
   ScreenManager& operator= (const ScreenManager&);
 };
-
+
 #endif
 
 /* EOF */

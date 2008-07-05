@@ -330,7 +330,7 @@ public:
       {
         if (levelset->get_level(current_level)->accessible)
           {
-            ScreenManager::instance()->push_screen(new StartScreen(levelset->get_level(current_level)->plf), true);
+            ScreenManager::instance()->push_screen(new StartScreen(levelset->get_level(current_level)->plf));
           }
       }
   }

@@ -98,8 +98,7 @@ void
 LevelDot::on_click()
 {
   //std::cout << "Starting level: " << levelname << std::endl;
-  ScreenManager::instance()->push_screen(new StartScreen(plf),
-                                         true);
+  ScreenManager::instance()->push_screen(new StartScreen(plf));
 }
 
 bool

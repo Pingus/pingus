@@ -667,7 +667,7 @@ PingusMain::start_game ()
     }
   else if (cmd_options.credits.is_set() && cmd_options.credits.get())
     { // just show the credits screen
-      ScreenManager::instance()->push_screen(new Credits(), true);
+      ScreenManager::instance()->push_screen(new Credits());
     }
   else if (cmd_options.font.is_set() && cmd_options.font.get())
     { // run the Font Test
@@ -678,7 +678,7 @@ PingusMain::start_game ()
       else
         {
           Pathname file(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
-          ScreenManager::instance()->push_screen(new FontTestScreen(file), true); 
+          ScreenManager::instance()->push_screen(new FontTestScreen(file)); 
         }
     }
   else if (cmd_options.editor.is_set() && cmd_options.editor.get())
@@ -688,27 +688,26 @@ PingusMain::start_game ()
       if (cmd_options.rest.is_set())
         editor->load(Pathname(cmd_options.rest.get(), Pathname::SYSTEM_PATH));
 
-      ScreenManager::instance()->push_screen (editor, true);
+      ScreenManager::instance()->push_screen(editor);
     }
   else if (cmd_options.rest.is_set())
     { // just start the map that was passed on the command line
       if (StringUtil::has_suffix(cmd_options.rest.get(), ".pingus-demo"))
         { // Demo file
           ScreenManager::instance()->push_screen
-            (new DemoSession(Pathname(cmd_options.rest.get(), Pathname::SYSTEM_PATH)), true);
+            (new DemoSession(Pathname(cmd_options.rest.get(), Pathname::SYSTEM_PATH)));
         }
       else
         { // Level file
           ScreenManager::instance()->push_screen
             (new StartScreen(PLFResMgr::load_plf_from_filename(Pathname(cmd_options.rest.get(),
-                                                                        Pathname::SYSTEM_PATH))),
-             true);
+                                                                        Pathname::SYSTEM_PATH))));
         }
     }
   else // start a normal game
     {
       pout(PINGUS_DEBUG_LOADING) << "starting normal game" << std::endl;
-      ScreenManager::instance()->push_screen(new PingusMenuManager(), true);
+      ScreenManager::instance()->push_screen(new PingusMenuManager());
       pout(PINGUS_DEBUG_LOADING) << "done: starting normal game" << std::endl;
     }
 

@@ -224,7 +224,7 @@ void
 StartScreen::start_game()
 {
   GameSession* game_session = new GameSession(plf, true);
-  ScreenManager::instance()->replace_screen(game_session, true);
+  ScreenManager::instance()->replace_screen(game_session);
 }
 
 void

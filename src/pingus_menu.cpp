@@ -75,7 +75,7 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
 void
 PingusMenu::show_credits()
 {
-  ScreenManager::instance()->push_screen(new Credits(), true);
+  ScreenManager::instance()->push_screen(new Credits());
 }
 
 PingusMenu::~PingusMenu()
@@ -111,7 +111,7 @@ PingusMenu::do_start(const std::string &filename)
     {
       std::auto_ptr<WorldmapNS::WorldmapScreen> worldmap_screen(new WorldmapNS::WorldmapScreen());
       worldmap_screen->load(filename);
-      ScreenManager::instance()->push_screen(worldmap_screen.release(), true);
+      ScreenManager::instance()->push_screen(worldmap_screen.release());
     }
 }
 
@@ -119,13 +119,13 @@ void PingusMenu::do_contrib(const std::string &levelfile)
 { // Launch the specified level - don't bother checking for it, it has to exist
   Sound::PingusSound::play_sound ("letsgo");
   ScreenManager::instance()->push_screen
-    (new StartScreen(PLFResMgr::load_plf_from_filename(Pathname(levelfile, Pathname::SYSTEM_PATH))), true);
+    (new StartScreen(PLFResMgr::load_plf_from_filename(Pathname(levelfile, Pathname::SYSTEM_PATH))));
 }
 
 void PingusMenu::do_edit()
 {	// Launch the level editor
   Sound::PingusSound::stop_music();
-  ScreenManager::instance()->push_screen (new Editor::EditorScreen(), true);
+  ScreenManager::instance()->push_screen (new Editor::EditorScreen());
 }
 
 void
@@ -212,7 +212,7 @@ PingusMenu::on_click(MenuButton* button)
     }
   else if (button == contrib_button)
     {
-      ScreenManager::instance()->push_screen(new LevelMenu(), true);
+      ScreenManager::instance()->push_screen(new LevelMenu());
     }
 }
 

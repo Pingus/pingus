@@ -222,7 +222,7 @@ DemoSession::on_scroller_move(float x, float y)
 void
 DemoSession::restart()
 {
-  ScreenManager::instance()->replace_screen(new DemoSession(pathname), true);
+  ScreenManager::instance()->replace_screen(new DemoSession(pathname));
 }
 
 /* EOF */
