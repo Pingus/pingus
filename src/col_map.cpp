@@ -24,9 +24,8 @@
 #include "math.hpp"
 #include "gettext.h"
 #include "sprite.hpp"
-
-// Obtain the colmap from a memory area
-ColMap::ColMap(int w, int h)
+
+CollisionMap::CollisionMap(int w, int h)
   : serial(0),
     width(w),
     height(h),
@@ -36,14 +35,13 @@ ColMap::ColMap(int w, int h)
   memset(colmap, Groundtype::GP_NOTHING, sizeof(unsigned char) * width * height);
 }
 
-ColMap::~ColMap()
+CollisionMap::~CollisionMap()
 {
-  //std::cout << "ColMap:~ColMap" << std::endl;
   delete[] colmap;
 }
 
 int
-ColMap::getpixel(int x, int y)
+CollisionMap::getpixel(int x, int y)
 {
   if (x >= 0 && x < width && y >= 0 && y < height) {
     return colmap[x+y*width];
@@ -53,31 +51,31 @@ ColMap::getpixel(int x, int y)
 }
 
 int
-ColMap::getpixel_fast(int x, int y)
+CollisionMap::getpixel_fast(int x, int y)
 {
   return colmap[x+y*width];  
 }
 
 unsigned char*
-ColMap::get_data()
+CollisionMap::get_data()
 {
   return colmap;
 }
 
 int
-ColMap::get_height()
+CollisionMap::get_height()
 {
   return height;
 }
 
 int
-ColMap::get_width()
+CollisionMap::get_width()
 {
   return width;
 }
 
 void
-ColMap::remove(const CollisionMask& mask, int x_pos, int y_pos)
+CollisionMap::remove(const CollisionMask& mask, int x_pos, int y_pos)
 {
   ++serial;
 
@@ -105,7 +103,7 @@ ColMap::remove(const CollisionMask& mask, int x_pos, int y_pos)
 }
 
 void
-ColMap::put(int x, int y, Groundtype::GPType p)
+CollisionMap::put(int x, int y, Groundtype::GPType p)
 {
   ++serial; // FIXME: Shouldn't be here but at a more heigher level function
 
@@ -117,12 +115,12 @@ ColMap::put(int x, int y, Groundtype::GPType p)
   else
     {
       if (verbose > 2)
-        std::cout << "ColMap: remove: Out of map" << std::endl;
+        std::cout << "CollisionMap: remove: Out of map" << std::endl;
     }
 }
 
 bool
-ColMap::blit_allowed (int x, int y,  Groundtype::GPType gtype)
+CollisionMap::blit_allowed (int x, int y,  Groundtype::GPType gtype)
 {
   // FIXME: Inline me
   if (gtype == Groundtype::GP_BRIDGE)
@@ -138,7 +136,7 @@ ColMap::blit_allowed (int x, int y,  Groundtype::GPType gtype)
 
 // Puts a surface on the colmap
 void
-ColMap::put(const CollisionMask& mask, int sur_x, int sur_y, Groundtype::GPType pixel)
+CollisionMap::put(const CollisionMask& mask, int sur_x, int sur_y, Groundtype::GPType pixel)
 {
   // transparent groundpieces are only drawn on the gfx map, not on the colmap
   if (pixel == Groundtype::GP_TRANSPARENT)
@@ -148,7 +146,7 @@ ColMap::put(const CollisionMask& mask, int sur_x, int sur_y, Groundtype::GPType 
     {
       if (verbose > 3)
 	{
-	  std::cout << "Warning: ColMap: Spot out of screen" << std::endl;
+	  std::cout << "Warning: CollisionMap: Spot out of screen" << std::endl;
 	  std::cout << "sur_x: " << sur_x << " sur_y: " << sur_y << std::endl;
 	}
       return;
@@ -166,7 +164,7 @@ ColMap::put(const CollisionMask& mask, int sur_x, int sur_y, Groundtype::GPType 
 }
 
 void
-ColMap::draw(DrawingContext& gc)
+CollisionMap::draw(DrawingContext& gc)
 {
   Surface canvas(width, height);
   unsigned char* buffer;
@@ -229,9 +227,9 @@ ColMap::draw(DrawingContext& gc)
 }
 
 unsigned
-ColMap::get_serial()
+CollisionMap::get_serial()
 {
   return serial;
 }
-
+
 /* EOF */

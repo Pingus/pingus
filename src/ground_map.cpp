@@ -68,7 +68,7 @@ GroundMap::GroundMap(const PingusLevel& plf)
   width  = plf.get_size().width;
   height = plf.get_size().height;
 
-  colmap = new ColMap(width, height);
+  colmap = new CollisionMap(width, height);
 
   // Checking that the map has the correct size, only multiples of
   // tile_size are allowed, anything else wouldn't fit very well on
@@ -281,7 +281,7 @@ GroundMap::put(Surface source, int x, int y)
       }
 }
 
-ColMap*
+CollisionMap*
 GroundMap::get_colmap(void)
 {
   return colmap;

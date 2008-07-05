@@ -209,7 +209,7 @@ World::armageddon(void)
   armageddon_count = 0;
 }
 
-ColMap*
+CollisionMap*
 World::get_colmap()
 {
   return colmap;

@@ -25,12 +25,11 @@ class CollisionMask;
 class DrawingContext;
 class ResDescriptor;
 class PixelStatus;
-
-// Collsion Map
-/** The collision map is used to represent the enviroment where the
+
+/** The CollisionMap is used to represent the enviroment where the
     Pingus walk around. The ground can have different properties, it
     can contain lava or water, it can be solid and many more. */
-class ColMap
+class CollisionMap
 {
 private:
   /** The serial number indicates the state of the colmap, on every
@@ -49,10 +48,10 @@ private:
 public:
   /** Init the colmap from a given area of memory.
       The memory will be deleted in the destructor. */
-  ColMap(int w, int h);
+  CollisionMap(int w, int h);
 
   /** delete[] the uchar array used for the colmap */
-  ~ColMap();
+  ~CollisionMap();
 
   /** Returns the raw uchar array used for the inner representation of
       the colmap. This is used by the smallmap to create the radar  */
@@ -85,11 +84,10 @@ public:
   void draw(DrawingContext& gc);
 
 private:
-  ColMap (const ColMap&);
-  ColMap& operator= (const ColMap&);
+  CollisionMap (const CollisionMap&);
+  CollisionMap& operator= (const CollisionMap&);
 };
-
-
-#endif /* COLMAP_HH */
+
+#endif
 
 /* EOF */

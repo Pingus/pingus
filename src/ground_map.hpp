@@ -25,7 +25,7 @@
 
 class SceneContext;
 class PingusLevel;
-class ColMap;
+class CollisionMap;
 class GroundMap;
 
 class MapTile
@@ -52,7 +52,7 @@ public:
 class GroundMap : public WorldObj
 {
 private:
-  ColMap* colmap;
+  CollisionMap* colmap;
 
   /** The tiles out of which the map is constructed */
   std::vector<std::vector<MapTile> > tile;
@@ -71,7 +71,7 @@ public:
 
   void draw(SceneContext& gc);
 
-  ColMap* get_colmap();
+  CollisionMap* get_colmap();
 
   int  get_height();
   int  get_width();

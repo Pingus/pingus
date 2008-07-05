@@ -39,7 +39,7 @@ class PingusLevel;
 class Pingu;
 class Trap;
 class View;
-class ColMap;
+class CollisionMap;
 class WorldObj;
 class GameTime;
 class SmallMap;
@@ -85,7 +85,7 @@ private:
   PinguHolder*                    pingus;
 
   // Pointers which are references to objects from other classes
-  ColMap*         colmap;
+  CollisionMap*         colmap;
 
   void    init_worldobjs (const PingusLevel& plf);
 
@@ -121,7 +121,7 @@ public:
   int get_time();
 
   /** @return A pointer to the collision map used in this world */
-  ColMap* get_colmap();
+  CollisionMap* get_colmap();
 
   /** @return A pointer to the gfx map used in this world */
   GroundMap* get_gfx_map();
