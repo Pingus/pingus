@@ -708,7 +708,7 @@ PingusMain::start_game ()
   else // start a normal game
     {
       pout(PINGUS_DEBUG_LOADING) << "starting normal game" << std::endl;
-      ScreenManager::instance()->push_screen(PingusMenuManager::instance (), false);
+      ScreenManager::instance()->push_screen(new PingusMenuManager(), true);
       pout(PINGUS_DEBUG_LOADING) << "done: starting normal game" << std::endl;
     }
 
@@ -804,7 +804,6 @@ PingusMain::init_pingus()
   Resource::init();
   Fonts::init();
   ScreenManager::init();
-  PingusMenuManager::init();
   Sound::PingusSound::init();
   PinguActionFactory::init();
   
@@ -821,7 +820,6 @@ PingusMain::deinit_pingus()
   Fonts::deinit();
   PinguActionFactory::deinit();
   Sound::PingusSound::deinit();
-  PingusMenuManager::deinit();
   WorldObjFactory::deinit();
   ScreenManager::deinit();
   StatManager::deinit();

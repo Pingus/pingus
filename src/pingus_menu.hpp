@@ -41,7 +41,6 @@ public:
 
 private:
   Sprite logo;
-  LayerManager layer_manager;
 
   MenuButton* start_button;
   MenuButton* quit_button;

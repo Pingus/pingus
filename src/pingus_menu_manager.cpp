@@ -147,26 +147,4 @@ PingusMenuManager::on_startup()
   Sound::PingusSound::play_music("pingus-1.it");
 }
 
-PingusMenuManager*
-PingusMenuManager::instance ()
-{
-  if (instance_)
-    return instance_;
-  else
-    return instance_ = new PingusMenuManager ();
-}
-
-void
-PingusMenuManager::init()
-{
-  instance_ = 0;
-}
-
-void
-PingusMenuManager::deinit()
-{
-  delete instance_;
-}
-
-
 /* EOF */

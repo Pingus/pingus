@@ -29,14 +29,9 @@ private:
   static PingusMenuManager* instance_;
   /** Menu stack. the menu on top is .end (), the bottom menu .begin () */
   std::vector<PingusSubMenu *> menu_stack;
-  typedef std::vector<PingusSubMenu *>::iterator MenuStackIter;
+  typedef std::vector<PingusSubMenu *>::iterator         MenuStackIter;
   typedef std::vector<PingusSubMenu *>::reverse_iterator MenuStackRIter;
 
-  /// Register all event-handling stuff
-  void register_events ();
-
-  /// Unregister all event-handling stuff
-  void unregister_events ();
 public:
   /* Menu's FIXME: These shouldn't get exported to the outsite,
      instead only handles (enum's) should be visible */
@@ -44,6 +39,7 @@ public:
   LayerManager background;
   ExitMenu       exitmenu;
 
+  PingusMenuManager();
   virtual ~PingusMenuManager();
 
   bool draw(DrawingContext& gc);
@@ -69,13 +65,6 @@ public:
   void push_menu (PingusSubMenu * menu);
 
   void on_startup();
-
-  static PingusMenuManager* instance ();
-  static void init();
-  static void deinit();
-
-protected:
-  PingusMenuManager ();
 
 private:
   PingusMenuManager (const PingusMenuManager&);
