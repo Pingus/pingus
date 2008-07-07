@@ -139,9 +139,8 @@ void
 OptionMenu::add_item(const std::string& label, GUI::RectComponent* control)
 {
   gui_manager->add(new Label(label, Rect(Vector2i(120 + x_pos * 312, 177 + y_pos*32), 
-                                         Size(140, 32))),
-                   true);
-  gui_manager->add(control, true);
+                                         Size(140, 32))));
+  gui_manager->add(control);
 
   if (dynamic_cast<ChoiceBox*>(control))
     {

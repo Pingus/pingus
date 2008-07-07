@@ -354,18 +354,16 @@ LevelMenu::LevelMenu()
   gui_manager->add(new LevelScrollButton(Display::get_width()/2  + 160,
                                          Display::get_height()/2 + 145,
                                          "core/menu/arrow_left",
-                                         boost::bind(&LevelMenu::prev_page, this)),
-                   true);
+                                         boost::bind(&LevelMenu::prev_page, this)));
 
   gui_manager->add(new LevelScrollButton(Display::get_width()/2  + 230,
                                          Display::get_height()/2 + 145,
                                          "core/menu/arrow_right",
-                                         boost::bind(&LevelMenu::next_page, this)),
-                   true);
+                                         boost::bind(&LevelMenu::next_page, this)));
 
-  gui_manager->add(levelset_selector, true);
-  gui_manager->add(level_selector,    true);
-  gui_manager->add(new LevelMenuAbortButton(this), true);
+  gui_manager->add(levelset_selector);
+  gui_manager->add(level_selector);
+  gui_manager->add(new LevelMenuAbortButton(this));
 
   level_selector->hide();
 }

@@ -125,9 +125,9 @@ StoryScreen::StoryScreen(FileReader reader)
   : story(new WorldmapNS::WorldmapStory(reader))
 {
   story_comp = new StoryScreenComponent(story.get());
-  gui_manager->add(story_comp, true);
-  gui_manager->add(new StoryScreenContinueButton(story_comp), true);
-  gui_manager->add(new StoryScreenSkipButton(story_comp), true);
+  gui_manager->add(story_comp);
+  gui_manager->add(new StoryScreenContinueButton(story_comp));
+  gui_manager->add(new StoryScreenSkipButton(story_comp));
 }
 
 StoryScreen::~StoryScreen()

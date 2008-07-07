@@ -38,7 +38,7 @@ FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect, Mode mode_)
 {
   file_list = new FileList(Rect(4, 30 + 30 + 30,
                                 rect.get_width()-4 - 30, rect.get_height() - 4 - 35));
-  add(file_list, true);
+  add(file_list);
 
   file_list->on_click.connect(boost::bind(&FileDialog::load_file, this, _1));
 
@@ -70,20 +70,20 @@ FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect, Mode mode_)
   open_button->on_click.connect(boost::bind(&FileDialog::on_open, this));
   cancel_button->on_click.connect(boost::bind(&FileDialog::on_cancel, this));
 
-  add(filename_label = new Label(Rect(6, 4+30, 4 + 60, 26+30), _("Filename:")), true);
-  add(pathname_label = new Label(Rect(6, 4+60, 4 + 60, 26+60), _("Pathname:")), true);
+  add(filename_label = new Label(Rect(6, 4+30, 4 + 60, 26+30), _("Filename:")));
+  add(pathname_label = new Label(Rect(6, 4+60, 4 + 60, 26+60), _("Pathname:")));
   
-  add(filename_inputbox = new Inputbox(Rect(4 + 60, 4+30, rect.get_width()-4, 26+30)), true);
-  add(pathname_inputbox = new Inputbox(Rect(4 + 60, 4+60, rect.get_width()-4, 26+60)), true);
+  add(filename_inputbox = new Inputbox(Rect(4 + 60, 4+30, rect.get_width()-4, 26+30)));
+  add(pathname_inputbox = new Inputbox(Rect(4 + 60, 4+60, rect.get_width()-4, 26+60)));
 
-  add(up_button, true);
-  add(down_button, true);
+  add(up_button);
+  add(down_button);
 
-  add(datadir_button, true);
-  add(userdir_button, true);
+  add(datadir_button);
+  add(userdir_button);
 
-  add(open_button, true);
-  add(cancel_button, true);
+  add(open_button);
+  add(cancel_button);
 }
 
 FileDialog::~FileDialog()

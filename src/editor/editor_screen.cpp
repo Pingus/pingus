@@ -57,7 +57,7 @@ EditorScreen::EditorScreen()
   viewport = new Viewport(this, Rect(0, 38,
                                            Display::get_width() - 244, 
                                            Display::get_height()));
-  gui_manager->add(viewport, true);	
+  gui_manager->add(viewport);
 	
   // Create the panel for the buttons
   panel = new Panel(this);
@@ -66,23 +66,23 @@ EditorScreen::EditorScreen()
   //      Size(240, Display::get_height() - (600 - 495))),
 
   minimap = new Minimap(this, Rect());
-  gui_manager->add(minimap, true);
+  gui_manager->add(minimap);
 
   object_properties = new ObjectProperties(this, Rect(Vector2i(), Size(200, 150)));
-  gui_manager->add(object_properties, true);
+  gui_manager->add(object_properties);
 
   action_properties = new ActionProperties(this, Rect());
   action_properties->hide();
-  gui_manager->add(action_properties, true);
+  gui_manager->add(action_properties);
 
   level_properties = new LevelProperties(this, Rect());
   level_properties->hide();
   level_properties->set_level(plf);
   action_properties->set_level(plf);
-  gui_manager->add(level_properties, true);
+  gui_manager->add(level_properties);
 
   object_selector = new ObjectSelector(this, Rect());
-  gui_manager->add(object_selector, true);
+  gui_manager->add(object_selector);
 
   file_load_dialog = new FileDialog(this, Rect(Vector2i(50, 50), 
                                                Size(Display::get_width() - 100, 
@@ -90,7 +90,7 @@ EditorScreen::EditorScreen()
                                     FileDialog::LOAD);
   file_load_dialog->set_directory(".");
   file_load_dialog->hide();
-  gui_manager->add(file_load_dialog, true);
+  gui_manager->add(file_load_dialog);
 
   file_save_dialog = new FileDialog(this, Rect(Vector2i(50, 50), 
                                                Size(Display::get_width() - 100, 
@@ -98,7 +98,7 @@ EditorScreen::EditorScreen()
                                     FileDialog::SAVE);
   file_save_dialog->set_directory(".");
   file_save_dialog->hide();
-  gui_manager->add(file_save_dialog, true);
+  gui_manager->add(file_save_dialog);
 
   viewport->selection_changed.connect(boost::bind(&ObjectProperties::set_objects, object_properties, _1));
   viewport->refresh();

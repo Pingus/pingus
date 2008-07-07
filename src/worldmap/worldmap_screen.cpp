@@ -218,10 +218,10 @@ WorldmapScreen::WorldmapScreen()
   // FIXME: a bit ugly because of the proteced member, but should work
   // FIXME: well enough. GUIScreen could also use multi-inheritage,
   // FIXME: but that could lead to member function name conflicts
-  gui_manager->add(new WorldmapComponent(this), true);
-  gui_manager->add(new WorldmapScreenCloseButton(this), true);
-  gui_manager->add(new WorldmapScreenEnterButton(this), true);
-  gui_manager->add(new WorldmapScreenStoryButton(this), true);
+  gui_manager->add(new WorldmapComponent(this));
+  gui_manager->add(new WorldmapScreenCloseButton(this));
+  gui_manager->add(new WorldmapScreenEnterButton(this));
+  gui_manager->add(new WorldmapScreenStoryButton(this));
 }
 
 WorldmapScreen::~WorldmapScreen ()
@@ -237,7 +237,7 @@ WorldmapScreen::load (const std::string& filename)
   //StatManager::instance()->get_bool(worldmap->get_short_name() + "-endstory-seen", credits_unlocked);
   if (credits_unlocked)
     {
-      gui_manager->add(new WorldmapScreenCreditsButton(this), true);
+      gui_manager->add(new WorldmapScreenCreditsButton(this));
     }
 }
 

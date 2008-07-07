@@ -91,7 +91,7 @@ DemoSession::DemoSession(const Pathname& pathname_)
 
   // Create GUI
   pcounter = new PingusCounter(server.get());
-  gui_manager->add(pcounter, true);
+  gui_manager->add(pcounter);
 
   int world_width  = server->get_world()->get_width();
   int world_height = server->get_world()->get_height();
@@ -102,19 +102,19 @@ DemoSession::DemoSession(const Pathname& pathname_)
                                  Size(Math::min(Display::get_width(),  world_width),
                                       Math::min(Display::get_height(), world_height))));
 
-  gui_manager->add(playfield, true);
+  gui_manager->add(playfield);
 
   small_map    = new SmallMap(server.get(), playfield);
-  gui_manager->add(small_map, true);
+  gui_manager->add(small_map);
 
   gui_manager->add(new BButton(32+50, 32, "core/demo/fastforward",
                                boost::bind(&DemoSession::on_fast_forward_press, this),
-                               boost::bind(&DemoSession::is_fast_forward, this)), true);
+                               boost::bind(&DemoSession::is_fast_forward, this)));
   gui_manager->add(new BButton(32,  32, "core/demo/pause",
                                boost::bind(&DemoSession::on_pause_press, this),
-                               boost::bind(&DemoSession::is_pause, this)), true);
+                               boost::bind(&DemoSession::is_pause, this)));
   gui_manager->add(new BButton(Display::get_width() - 32 - 48, 32, "core/demo/reload",
-                               boost::bind(&DemoSession::restart, this)), true);
+                               boost::bind(&DemoSession::restart, this)));
 }
 
 DemoSession::~DemoSession()

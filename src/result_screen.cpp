@@ -252,16 +252,16 @@ ResultScreen::ResultScreen(Result arg_result)
   ResDescriptor cancel_desc("core/result/retry");
 
   ResultScreenComponent* comp = new ResultScreenComponent(result);
-  gui_manager->add(comp, true);
+  gui_manager->add(comp);
 
   if (result.success())
     {
-      gui_manager->add(new ResultScreenOkButton(this), true);
+      gui_manager->add(new ResultScreenOkButton(this));
     }
   else
     {
-      gui_manager->add(new ResultScreenAbortButton(this), true);
-      gui_manager->add(new ResultScreenRetryButton(this), true);
+      gui_manager->add(new ResultScreenAbortButton(this));
+      gui_manager->add(new ResultScreenRetryButton(this));
     }
 
   //gui_manager->add(new GUI::SurfaceButton(500, 500, cancel_desc, cancel_desc, cancel_desc), true);

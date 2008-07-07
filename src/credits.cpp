@@ -64,7 +64,7 @@ Credits::Credits()
   background.scale(Display::get_width(), Display::get_height());
   pingu = Sprite("core/misc/creditpingu");
 
-  gui_manager->add(new CreditsOkButton(this), true);
+  gui_manager->add(new CreditsOkButton(this));
 
   font       = Fonts::chalk_normal;
   font_small = Fonts::chalk_large;

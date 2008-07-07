@@ -28,7 +28,6 @@ class GroupComponent : public RectComponent
 private:
   typedef std::vector<Component*> Components;
   Components     children;
-  Components     delete_children;
   DrawingContext drawing_context;
 
   /** Used to detect enter/leave events */
@@ -69,7 +68,8 @@ public:
 
   void on_pointer_move(int x, int y);
 
-  void add(Component*, bool delete_comp);
+  /** \a comp will be deleted by GroupComponent */
+  void add(Component* comp);
 
   void update_layout();
 

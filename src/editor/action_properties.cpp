@@ -74,8 +74,8 @@ ActionProperties::add_action(Actions::ActionName id)
   comp.checkbox->set_checked(true);
   comp.inputbox->set_text("20");
  
-  add(comp.checkbox, true);
-  add(comp.inputbox, true);
+  add(comp.checkbox);
+  add(comp.inputbox);
   
   action_comps[id] = comp;
 

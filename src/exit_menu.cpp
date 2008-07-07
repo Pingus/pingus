@@ -103,8 +103,8 @@ public:
 ExitMenu::ExitMenu(PingusMenuManager* manager_)
   : PingusSubMenu(manager_)
 {
-  gui_manager->add(new ExitMenuYesButton(manager), true);
-  gui_manager->add(new ExitMenuNoButton(manager), true);
+  gui_manager->add(new ExitMenuYesButton(manager));
+  gui_manager->add(new ExitMenuNoButton(manager));
 
   sur = Sprite("core/menu/exit_menu");
 }

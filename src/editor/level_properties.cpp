@@ -42,32 +42,32 @@ LevelProperties::LevelProperties(EditorScreen* editor_, const Rect& rect)
     level(0)
 {
   int w = rect.get_width() - 120;
-  add(new Label   (Rect(Vector2i( 10,  10), Size( 80, 20)), "Author:"), true);
-  add(author = new Inputbox(Rect(Vector2i(110,  10), Size(  w, 20))), true);
-  add(new Label   (Rect(Vector2i( 10,  32), Size( 80, 20)), "Levelname:"), true);
-  add(levelname = new Inputbox(Rect(Vector2i(110,  32), Size(  w, 20))), true);
-  add(new Label   (Rect(Vector2i( 10,  54), Size( 80, 20)), "Description:"), true);
-  add(description = new Inputbox(Rect(Vector2i(110,  54), Size(  w, 20*3))), true);
+  add(new Label   (Rect(Vector2i( 10,  10), Size( 80, 20)), "Author:"));
+  add(author = new Inputbox(Rect(Vector2i(110,  10), Size(  w, 20))));
+  add(new Label   (Rect(Vector2i( 10,  32), Size( 80, 20)), "Levelname:"));
+  add(levelname = new Inputbox(Rect(Vector2i(110,  32), Size(  w, 20))));
+  add(new Label   (Rect(Vector2i( 10,  54), Size( 80, 20)), "Description:"));
+  add(description = new Inputbox(Rect(Vector2i(110,  54), Size(  w, 20*3))));
 
   int y = 116;
-  add(new Label   (Rect(Vector2i( 10,  y), Size( 80, 20)), "Pingus Count:"), true);
-  add(number_of_pingus = new Inputbox(Rect(Vector2i(110,  y), Size(  w, 20))), true);
-  add(new Label   (Rect(Vector2i( 10,  y+22), Size( 80, 20)), "Pingus to Save:"), true);
-  add(number_to_save = new Inputbox(Rect(Vector2i(110,  y+22), Size(  w, 20))), true);
+  add(new Label   (Rect(Vector2i( 10,  y), Size( 80, 20)), "Pingus Count:"));
+  add(number_of_pingus = new Inputbox(Rect(Vector2i(110,  y), Size(  w, 20))));
+  add(new Label   (Rect(Vector2i( 10,  y+22), Size( 80, 20)), "Pingus to Save:"));
+  add(number_to_save = new Inputbox(Rect(Vector2i(110,  y+22), Size(  w, 20))));
 
-  add(new Label   (Rect(Vector2i( 10,  y+44), Size( 80, 20)), "Time:"), true);
-  add(time = new Inputbox(Rect(Vector2i(110,  y+44), Size(  w, 20))), true);
-  add(new Label   (Rect(Vector2i( 10,  y+66), Size( 80, 20)), "Width:"), true);
-  add(width = new Inputbox(Rect(Vector2i(110,  y+66), Size(  w, 20))), true);
-  add(new Label   (Rect(Vector2i( 10,  y+88), Size( 80, 20)), "Height:"), true);
-  add(height = new Inputbox(Rect(Vector2i(110,  y+88), Size(  w, 20))), true);
+  add(new Label   (Rect(Vector2i( 10,  y+44), Size( 80, 20)), "Time:"));
+  add(time = new Inputbox(Rect(Vector2i(110,  y+44), Size(  w, 20))));
+  add(new Label   (Rect(Vector2i( 10,  y+66), Size( 80, 20)), "Width:"));
+  add(width = new Inputbox(Rect(Vector2i(110,  y+66), Size(  w, 20))));
+  add(new Label   (Rect(Vector2i( 10,  y+88), Size( 80, 20)), "Height:"));
+  add(height = new Inputbox(Rect(Vector2i(110,  y+88), Size(  w, 20))));
 
-  add(new Label   (Rect(Vector2i( 10, y+110), Size( 80, 20)), "Difficulty:"), true);
-  add(difficulty = new Inputbox(Rect(Vector2i(110, y+110), Size(  w, 20))), true);
-  add(new Label   (Rect(Vector2i( 10, y+132), Size( 80, 20)), "Comment:"), true);
-  add(comment = new Inputbox(Rect(Vector2i(110, y+132), Size(  w, 20))), true);
-  add(new Label   (Rect(Vector2i( 10, y+154), Size( 80, 20)), "Music:"), true);
-  add(music = new Inputbox(Rect(Vector2i(110, y+154), Size(  w, 20))), true);
+  add(new Label   (Rect(Vector2i( 10, y+110), Size( 80, 20)), "Difficulty:"));
+  add(difficulty = new Inputbox(Rect(Vector2i(110, y+110), Size(  w, 20))));
+  add(new Label   (Rect(Vector2i( 10, y+132), Size( 80, 20)), "Comment:"));
+  add(comment = new Inputbox(Rect(Vector2i(110, y+132), Size(  w, 20))));
+  add(new Label   (Rect(Vector2i( 10, y+154), Size( 80, 20)), "Music:"));
+  add(music = new Inputbox(Rect(Vector2i(110, y+154), Size(  w, 20))));
 
   author->on_change.connect(boost::bind(&LevelProperties::on_author_change, this, _1));
   levelname->on_change.connect(boost::bind(&LevelProperties::on_levelname_change, this, _1));

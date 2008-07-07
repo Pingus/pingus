@@ -145,7 +145,7 @@ Panel::Panel(EditorScreen* editor_)
     logo("core/editor/logo"),
     pos(2,2)
 {  
-  editor->get_gui_manager()->add(this, true);
+  editor->get_gui_manager()->add(this);
 
   add_button("core/editor/document-new",  _("    New level"),
              &EditorScreen::level_new);
@@ -233,7 +233,7 @@ Panel::add_button(const std::string& image, const std::string& tooltip, Callback
 {
   PanelButton* comp = new PanelButton(editor, pos, image, tooltip, callback);
   pos.x += comp->get_width();
-  editor->get_gui_manager()->add(comp, true);
+  editor->get_gui_manager()->add(comp);
 }
 
 void
@@ -241,7 +241,7 @@ Panel::add_toggle_button(const std::string& image)
 {
   PanelButton* comp = new PanelButton(editor, pos, image, "");
   pos.x += comp->get_width();
-  editor->get_gui_manager()->add(comp, true);
+  editor->get_gui_manager()->add(comp);
 }
 
 void
@@ -249,7 +249,7 @@ Panel::add_separator()
 {
   PanelSeparator* comp = new PanelSeparator(pos);
   pos.x += comp->get_width();
-  editor->get_gui_manager()->add(comp, true);
+  editor->get_gui_manager()->add(comp);
 }
 
 } // namespace Editor
