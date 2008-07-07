@@ -56,7 +56,7 @@ WorldmapComponent::draw (DrawingContext& gc)
   // Draw border
   if (cliprect != Rect(Vector2i(0,0), Size(Display::get_width(), Display::get_height())))
     {
-      Color border_color(50, 65, 75);
+      Color border_color(0, 0, 0);
       // top
       gc.draw_fillrect(0, 0, Display::get_width(), cliprect.top,
                        border_color);
