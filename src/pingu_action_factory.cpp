@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
+#include <assert.h>
 #include "pingus_error.hpp"
 
 #include "actions/rocket_launcher.hpp"
@@ -164,7 +165,8 @@ PinguActionFactory::create (Pingu* pingu, ActionName id)
       return action;
     }
 
-  return 0; // never reached
+  assert(!"PinguActionFactory::create: Unknown ActionName supplied");
+  return 0;
 }
 
 void
