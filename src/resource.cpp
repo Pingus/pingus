@@ -14,12 +14,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef WIN32
-#  include <unistd.h>
-#  include <sys/types.h>
-#  include <sys/stat.h>
-#endif
-
 #include <assert.h>
 
 #include "system.hpp"
@@ -33,9 +27,6 @@
 #include "debug.hpp"
 
 ResourceManager Resource::resmgr;
-#if 0
-std::map<ResDescriptor, CL_Surface>       Resource::surface_map;
-#endif
 
 void
 Resource::init()
@@ -68,34 +59,10 @@ Resource::init()
 }
 
 // Returns all resources in the given section
-#if 0
-std::vector<std::string>
-Resource::get_resources(const std::string& type, const std::string& section)
-{
-  if (section == "")
-    return resmgr.get_resources_of_type(type);
-  else
-    return resmgr.get_resources_of_type(type, section);
-}
-
-// Returns a list of sections.  Returns all sections if left blank.
-std::vector<std::string>
-Resource::get_sections(const std::string& section)
-{
-  if (section == std::string())
-    return resmgr.get_all_sections();
-  else
-    return resmgr.get_sections(section);
-}
-#endif
 
 void
 Resource::deinit()
 {
-  cleanup();
-#if 0
-  surface_map.clear();
-#endif
 }
 
 SpriteDescription*
@@ -147,25 +114,10 @@ Resource::load_font(const std::string& res_name)
   return Font(desc);
 }
 
-void
-Resource::cleanup ()
-{
-#if 0
-  CL_Resource res;
-  std::vector<std::string> resources = resmgr.get_all_resources();
-  for (std::vector<std::string>::iterator i = resources.begin(); i != resources.end(); i++)
-    {
-      res = resmgr.get_resource(*i);
-      while (res.get_reference_count() > 0)
-        res.unload();
-    }
-#endif
-}
-
 Sprite
 Resource::load_thumb_sprite(const std::string& name)
 {
-  Sprite sprite = Sprite(name);
+  Sprite sprite(name);
 
   Size thumb_size;
   if (sprite.get_width() <= 48)

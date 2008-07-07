@@ -25,12 +25,7 @@
 #include "resource_manager.hpp"
 #include "collision_mask.hpp"
 #include "font.hpp"
-
-class CL_ResourceManager;
-
-/** General Resource Managing class, it provides wrappers around
-    CL_Surface::load(), CL_Font::load() and friends.  This class is
-    needed to do a better handling of the resources. */
+
 class Resource
 {
 public:
@@ -54,15 +49,11 @@ public:
   /** Load a font with res_name from datafile */
   static Font          load_font(const std::string& res_name);
 
-  /** Cleanup all currently unused surfaces */
-  static void cleanup ();
-
 private:
   Resource (const Resource&);
   Resource& operator= (const Resource&);
 };
-
-
+
 #endif
 
 /* EOF */
