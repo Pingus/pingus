@@ -80,9 +80,13 @@ GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_scree
   gui_manager->add(small_map,    true);
   gui_manager->add(time_display, true);
 
-  gui_manager->add(new ArmageddonButton(get_server(), Display::get_width() - 40,     Display::get_height() - 62), true);
-  gui_manager->add(new ForwardButton   (this, Display::get_width() - 40 * 2, Display::get_height() - 62), true);
-  gui_manager->add(new PauseButton     (this, Display::get_width() - 40 * 3, Display::get_height() - 62), true);
+  armageddon_button = new ArmageddonButton(get_server(), Display::get_width() - 40,     Display::get_height() - 62);
+  forward_button    = new ForwardButton(this, Display::get_width() - 40 * 2, Display::get_height() - 62);
+  pause_button      = new PauseButton(this, Display::get_width() - 40 * 3, Display::get_height() - 62);
+
+  gui_manager->add(armageddon_button, true);
+  gui_manager->add(forward_button, true);
+  gui_manager->add(pause_button, true);
 }
 
 GameSession::~GameSession ()

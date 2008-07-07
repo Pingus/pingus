@@ -34,6 +34,9 @@ class PingusCounter;
 class Playfield;
 class TimeDisplay;
 class SmallMap;
+class ArmageddonButton;
+class ForwardButton;
+class PauseButton;
 class Server;
 
 /** You can use this class to start up a game session, which consist
@@ -59,6 +62,10 @@ private:
   Playfield*     playfield;
   TimeDisplay*   time_display;
   SmallMap*      small_map;
+
+  ArmageddonButton* armageddon_button;
+  ForwardButton*    forward_button;
+  PauseButton*      pause_button;
 
   bool pause;
   bool fast_forward;
