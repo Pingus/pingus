@@ -23,10 +23,6 @@ import sys, os
 import SCons.Util
 
 pingus_sources = [
-# # 'gui/buffer_graphic_context.cpp', 
-# # 'pingus_level_test.cpp', 
-# # 'xml_eval.cpp',
-
 'src/action_holder.cpp', 
 'src/actions/angel.cpp', 
 'src/actions/basher.cpp', 
@@ -126,7 +122,6 @@ pingus_sources = [
 'src/gui/component.cpp',
 'src/gui/checkbox.cpp',
 'src/gui/combobox.cpp', 
-# 'gui/input_debug_screen.cpp', 
 'src/display/cursor.cpp',
 'src/display/display.cpp', 
 'src/gui/group_component.cpp', 
@@ -151,31 +146,6 @@ pingus_sources = [
 'src/input/core_driver.cpp',
 'src/input/sdl_driver.cpp',
 'src/input/manager.cpp',
-
-# 'input/axes/button_axis.cpp', 
-# 'input/axes/inverted_axis.cpp', 
-# 'input/axes/joystick_axis.cpp', 
-# 'input/axes/multiple_axis.cpp', 
-# 'input/axis_factory.cpp', 
-# 'input/button_factory.cpp', 
-# 'input/buttons/double_button.cpp', 
-# 'input/buttons/joystick_button.cpp', 
-# 'input/buttons/key_button.cpp', 
-# 'input/buttons/mouse_button.cpp', 
-# 'input/buttons/multiple_button.cpp', 
-# 'input/buttons/triple_button.cpp', 
-# 'input/controller.cpp', 
-# 'input/pointer_factory.cpp', 
-# 'input/pointers/axis_pointer.cpp', 
-# 'input/pointers/mouse_pointer.cpp', 
-# 'input/pointers/multiple_pointer.cpp', 
-# 'input/scroller_factory.cpp', 
-# 'input/scrollers/axis_scroller.cpp', 
-# 'input/scrollers/inverted_scroller.cpp', 
-# 'input/scrollers/joystick_scroller.cpp', 
-# 'input/scrollers/mouse_scroller.cpp', 
-# 'input/scrollers/multiple_scroller.cpp', 
-# 'input/scrollers/pointer_scroller.cpp', 
 
 'src/layer_manager.cpp', 
 'src/components/menu_button.cpp', 
@@ -238,8 +208,6 @@ pingus_sources = [
 'src/math/vector2f.cpp',
 'src/math/vector2i.cpp',
 'src/math/vector3f.cpp',
-# 'physfs/physfs_sdl.cpp',
-# 'physfs/physfs_stream.cpp',
 'src/world.cpp', 
 
 'src/worldmap/dot.cpp', 
