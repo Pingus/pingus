@@ -80,37 +80,27 @@ MapTile::put(Surface obj, int x, int y)
   sprite = Sprite(surface);
 }
 
-GroundMap::GroundMap(const PingusLevel& plf)
+GroundMap::GroundMap(int width_, int height_)
+  : width(width_), height(height_)
 {
-  width  = plf.get_size().width;
-  height = plf.get_size().height;
-
   colmap = new CollisionMap(width, height);
+
+  tile_width  = width /tile_size;
+  tile_height = height/tile_size;
 
   // Checking that the map has the correct size, only multiples of
   // tile_size are allowed, anything else wouldn't fit very well on
   // the colmap
   if ((width % tile_size) != 0)
-    {
-      width += (tile_size - (width % tile_size));
-    }
+    tile_width += 1;
 
   if ((height % tile_size) != 0)
-    {
-      height += (tile_size - (height % tile_size));
-    }
-
-  tile_width  = width/tile_size;
-  tile_height = height/tile_size;
+    tile_height += 1; 
 
   // Allocating tile map
   tiles.resize(tile_width * tile_height);
   for(std::vector<MapTile*>::iterator i = tiles.begin(); i != tiles.end(); ++i)
     *i = new MapTile();
-
-  // fix the height back to the correct values
-  width  = plf.get_size().width;
-  height = plf.get_size().height;
 }
 
 GroundMap::~GroundMap(void)

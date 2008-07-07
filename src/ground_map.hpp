@@ -24,7 +24,6 @@
 #include "surface.hpp"
 
 class SceneContext;
-class PingusLevel;
 class CollisionMap;
 class GroundMap;
 class MapTile;
@@ -50,7 +49,7 @@ private:
   int tile_height;
 
 public:
-  GroundMap(const PingusLevel& arg_plf);
+  GroundMap(int width, int height);
   virtual ~GroundMap();
 
   void draw(SceneContext& gc);

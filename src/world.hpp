@@ -51,7 +51,7 @@ namespace Particles {
   class SmokeParticleHolder;
   class SnowParticleHolder;
 }
-
+
 /** The World holds all objects of the pingu enviroment.
 
     It holds the pingus, traps, exits, entrances, etc.. It keeps
@@ -173,8 +173,7 @@ private:
   World (const World&);
   World& operator= (const World&);
 };
-
-
+
 #endif
 
 /* EOF */

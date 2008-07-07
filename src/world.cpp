@@ -36,7 +36,7 @@
 #include "debug.hpp"
 
 using Actions::Bomber;
-
+
 static
 bool WorldObj_less (WorldObj* a, WorldObj* b)
 {
@@ -45,7 +45,7 @@ bool WorldObj_less (WorldObj* a, WorldObj* b)
 
 World::World(const PingusLevel& plf)
   : ambient_light(Color(plf.get_ambient_light())),
-    gfx_map(new GroundMap(plf)),
+    gfx_map(new GroundMap(plf.get_size().width, plf.get_size().height)),
     game_time(0),
     do_armageddon(false),
     pingus(new PinguHolder(plf)),
@@ -322,5 +322,5 @@ World::get_start_pos(int player_id)
 
   return pos;
 }
-
+
 /* EOF */
