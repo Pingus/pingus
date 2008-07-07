@@ -69,7 +69,6 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
         {
           std::string filename;
           filename = Screenshot::make_screenshot();
-          std::cout << "GlobalEvent: Saved screenshot to \"" << filename << "\"" << std::endl;
         }
         break;
 
