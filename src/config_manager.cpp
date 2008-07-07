@@ -18,6 +18,7 @@
 #include "SDL.h"
 #include "globals.hpp"
 #include "fps_counter.hpp"
+#include "display/display.hpp"
 #include "screen/screen_manager.hpp"
 #include "config_manager.hpp"
 
@@ -166,22 +167,15 @@ ConfigManager::set_print_fps(bool v)
 {
   if (maintainer_mode)
     std::cout << "ConfigManager::set_print_fps: " << v << std::endl;
-  
-  if (v != get_print_fps())
-    {
-      if (v)
-        fps_counter.show();
-      else
-        fps_counter.hide();
 
-      on_print_fps_change(v);
-    }
+  print_fps = v;
+  on_print_fps_change(v);
 }
 
 bool
 ConfigManager::get_print_fps()
 {
-  return fps_counter.is_visible();
+  return print_fps;
 }
 
 void
@@ -212,7 +206,7 @@ ConfigManager::set_swcursor(bool v)
 bool
 ConfigManager::get_swcursor()
 {
-  return ScreenManager::instance()->swcursor_visible();
+  return swcursor_enabled;
 }
 
 void

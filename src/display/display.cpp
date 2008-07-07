@@ -24,7 +24,6 @@
 #include "../math.hpp"
 #include "display.hpp"
 
-std::list<DisplayHook*> Display::display_hooks;
 std::vector<SDL_Rect>   Display::cliprect_stack;
 SDL_Surface* Display::screen;
 
@@ -42,67 +41,10 @@ SDL_Rect Intersection(SDL_Rect* r1, SDL_Rect* r2)
 }
 } // namespace
 
-DisplayHook::DisplayHook() : visible(false)
-{
-}
-
-DisplayHook::~DisplayHook() 
-{
-  hide();
-}
-
-bool
-DisplayHook::is_visible()
-{
-  return visible;
-}
-
-void
-DisplayHook::show()
-{
-  if (!visible)
-    {
-      Display::add_flip_screen_hook(this);
-      visible = true;
-    }
-}
-
-void
-DisplayHook::hide()
-{
-  if (visible)
-    {
-      Display::remove_flip_screen_hook(this);
-      visible = false;
-    }
-}
-
 void
 Display::flip_display(bool sync)
 {
-  for(std::list<DisplayHook*>::iterator i = display_hooks.begin();
-      i != display_hooks.end();
-      i++)
-    {
-      (*i)->on_event();
-    }
-
   SDL_Flip(screen);
-}
-
-void
-Display::add_flip_screen_hook(DisplayHook* hook)
-{
-  if (std::find(display_hooks.begin(), display_hooks.end(), hook) == display_hooks.end())
-    display_hooks.push_back(hook);
-  else
-    std::cout << "Display: Trying to insert a display hook multiple times..." << std::endl;
-}
-
-void
-Display::remove_flip_screen_hook(DisplayHook* hook)
-{
-  display_hooks.remove(hook);
 }
 
 void

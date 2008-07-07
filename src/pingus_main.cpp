@@ -802,15 +802,11 @@ PingusMain::init_pingus()
   Fonts::init();
   Sound::PingusSound::init();
   PinguActionFactory::init();
-  
-  fps_counter.init();
 }
 
 void
 PingusMain::deinit_pingus()
 {
-  fps_counter.deinit();
-
   Fonts::deinit();
   PinguActionFactory::deinit();
   Sound::PingusSound::deinit();

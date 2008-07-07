@@ -27,35 +27,11 @@ class Rect;
 class Color;
 class DisplayHook;
 
-/** A flip display hook can be used to attach an event to a
-    flip_screen(). An example usage for this is a software mouse
-    cursor or a frame counter */
-class DisplayHook
-{
-protected:
-  bool visible;
-  
-public:
-  DisplayHook();
-  virtual ~DisplayHook();
-  /** Called sortly before a flip_display () */
-  virtual void on_event() = 0;
-
-  virtual bool is_visible();
-  virtual void show();
-  virtual void hide();
-
-private:
-  DisplayHook (const DisplayHook&);
-  DisplayHook& operator= (const DisplayHook&);
-};
-
 /** This is a kind of wrapper class around CL_Display, it provides
     ways to set the cursor and hooks for flip_display() */
 class Display
 {
 private:
-  static std::list<DisplayHook*> display_hooks;
   static std::vector<SDL_Rect>   cliprect_stack;
   static SDL_Surface* screen;
 public:
@@ -67,9 +43,6 @@ public:
   static void fill_rect(const Rect& rect, const Color& color);
 
   static void flip_display(bool sync=false);
-
-  static void add_flip_screen_hook(DisplayHook*);
-  static void remove_flip_screen_hook(DisplayHook*);
 
   static int get_width();
   static int get_height();

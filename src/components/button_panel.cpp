@@ -21,7 +21,6 @@
 #include "../game_session.hpp"
 #include "button_panel.hpp"
 
-
 using namespace Actions;
 
 struct action_sorter {

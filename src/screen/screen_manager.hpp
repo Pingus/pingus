@@ -21,13 +21,14 @@
 #include <memory>
 #include <boost/smart_ptr.hpp>
 #include <vector>
+#include "sprite.hpp"
 
 namespace Input {
 class Manager;
 class Controller;
 }
 
-class Cursor;
+class FPSCounter;
 class Size;
 class DrawingContext;
 class Screen;
@@ -43,7 +44,9 @@ private:
   std::auto_ptr<Input::Controller> input_controller;
 
   std::auto_ptr<DrawingContext> display_gc;
-  std::auto_ptr<Cursor> cursor;
+  
+  std::auto_ptr<FPSCounter> fps_counter;
+  Sprite cursor;
 
   /** Screen stack (first is the screen, second is delete_screen,
       which tells if the screen should be deleted onces it got poped
@@ -85,7 +88,6 @@ public:
   ScreenPtr get_current_screen();
 
   void show_swcursor(bool v);
-  bool swcursor_visible();
   
 private:
   void real_clear();

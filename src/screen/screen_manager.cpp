@@ -25,6 +25,7 @@
 #include "screen_manager.hpp"
 #include "../path_manager.hpp"
 #include "screen.hpp"
+#include "fps_counter.hpp"
 #include "../display/drawing_context.hpp"
 #include "../input/controller.hpp"
 #include "../input/manager.hpp"
@@ -46,6 +47,9 @@ ScreenManager::ScreenManager()
   else
     input_controller = std::auto_ptr<Input::Controller>(input_manager->create_controller(Pathname(controller_file,
                                                                                                   Pathname::SYSTEM_PATH)));
+
+  cursor = Sprite("core/cursors/animcross");
+  fps_counter = std::auto_ptr<FPSCounter>(new FPSCounter());
 }
 
 ScreenManager::~ScreenManager ()
@@ -91,8 +95,8 @@ ScreenManager::display()
         }
       get_current_screen()->update(time_delta);
 
-      if (cursor.get())
-        cursor->update(time_delta);
+      if (swcursor_enabled)
+        cursor.update(time_delta);
 
       // Last screen has popped, so we are going to end here
       if (screens.empty())
@@ -125,12 +129,22 @@ ScreenManager::display()
 	continue;
 
       // skip draw if the screen changed to avoid glitches
-      if (last_screen == get_current_screen() || fast_mode)
+      if (last_screen == get_current_screen())
       	{
 	  if (get_current_screen()->draw(*display_gc))
             {
               display_gc->render(Display::get_screen(), Rect(Vector2i(0,0), Size(Display::get_width(),
                                                                                  Display::get_height())));
+
+              if (swcursor_enabled)
+                {
+                  Vector2f mouse_pos = Input::Controller::current()->get_pointer(Input::STANDARD_POINTER)->get_pos();
+                  cursor.draw(mouse_pos.x, mouse_pos.y, Display::get_screen());
+                }
+
+              if (print_fps)
+                fps_counter->draw();
+
               Display::flip_display();
               display_gc->clear();
             }
@@ -302,31 +316,17 @@ ScreenManager::resize(const Size& size)
 }
 
 void
-ScreenManager::show_swcursor(bool v)
+ScreenManager::show_swcursor(bool visible)
 {
-  if (v)
+  swcursor_enabled = visible;
+  if (swcursor_enabled)
     {
-      if (!cursor.get())
-        {
-          cursor = std::auto_ptr<Cursor>(new Cursor("core/cursors/animcross"));
-          cursor->show();
-          SDL_ShowCursor(SDL_DISABLE);
-        }
+      SDL_ShowCursor(SDL_DISABLE);
     }
   else
     {
-      if (cursor.get())
-        {
-          cursor = std::auto_ptr<Cursor>();
-          SDL_ShowCursor(SDL_ENABLE);
-        }
+      SDL_ShowCursor(SDL_ENABLE);
     }
-}
-
-bool
-ScreenManager::swcursor_visible()
-{
-  return cursor.get();
 }
 
 /* EOF */

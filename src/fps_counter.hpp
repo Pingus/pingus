@@ -16,17 +16,10 @@
 
 #ifndef HEADER_PINGUS_FPS_COUNTER_HPP
 #define HEADER_PINGUS_FPS_COUNTER_HPP
-
-#include "font.hpp"
-#include "display/display.hpp"
-
-///
-class FPSCounter : public DisplayHook
+
+class FPSCounter
 {
 private:
-  /** The font... */
-  Font font;
-
   /** Used to know when the frame has changed */
   bool odd_frame;
 
@@ -42,34 +35,19 @@ private:
 
   /** Check if one second is passed and if that is the case, update
       everything then. */
-  virtual void update_fps_counter();
+  void update_fps_counter();
 
 public:
-  ///
   FPSCounter();
-  ///
-  virtual ~FPSCounter();
+  ~FPSCounter();
 
-  /** When we got a Display::flip_display() this function is
-      called... */
-  virtual void on_event();
-
-  /** Load all the gfx and fonts... */
-  void init();
-
-	/** Unload gfx and fonts... */
-	void deinit();
+  void draw();
 
 private:
   FPSCounter (const FPSCounter&);
   FPSCounter& operator= (const FPSCounter&);
 };
-
-/** The fps_counter is a global object, so we don't need to construct
-    it over and over again */
-extern FPSCounter fps_counter;
-
-
+
 #endif
 
 /* EOF */

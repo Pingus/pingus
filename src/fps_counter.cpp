@@ -18,50 +18,34 @@
 #include "fonts.hpp"
 #include "fps_counter.hpp"
 #include "gettext.h"
-
+#include "display/display.hpp"
 
 FPSCounter fps_counter;
 
 FPSCounter::FPSCounter()
 {
-}
-
-FPSCounter::~FPSCounter()
-{
-	font = Font();
-}
-
-// We are not initialising the fpscounter in the constructor, 'cause
-// that doesn't work (ClanLib hasn't init the display at that point)
-void
-FPSCounter::init()
-{
-  font = Fonts::pingus_small;
   start_time = SDL_GetTicks();
   strcat(fps_string, "");
   fps_count = 0;
 }
 
-// Get rid of any ClanLib objects that might want to linger after
-// we unload all of our resources.
-void FPSCounter::deinit()
+FPSCounter::~FPSCounter()
 {
-  font = Font();
 }
 
 void
-FPSCounter::on_event()
+FPSCounter::draw()
 {
   update_fps_counter();
 
   if (odd_frame)
     {
-      font.draw(origin_center, Display::get_width()/2, 34, fps_string);
+      Fonts::pingus_small.draw(origin_center, Display::get_width()/2, 34, fps_string);
       odd_frame = false;
     }
   else
     {
-      font.draw(origin_center, Display::get_width()/2, 34, "+ " + std::string(fps_string) + " +");
+      Fonts::pingus_small.draw(origin_center, Display::get_width()/2, 34, "+ " + std::string(fps_string) + " +");
       odd_frame = true;
     }
 }

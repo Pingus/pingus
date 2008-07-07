@@ -181,6 +181,13 @@ Unsorted:
 Roadmap for Pingus 0.7.3
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
+Must Have:
+==========
+
+* internal UTF8 Support with the current fonts (MES-1 later or more later)
+
+* resizable GUI for all screens
+
 New Features:
 =============
 
@@ -198,8 +205,6 @@ New Features:
 * CollisionMask can't handle RGBA images and likely shouldn't (due to
   them being animated and stuff like that), we however don't have
   seperate colmask for those images
-
-* remove flip_screen_hook
 
 * test wall-jump: maybe make it smaller then a normal jump
 

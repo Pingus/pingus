@@ -24,7 +24,7 @@
 /** A simple mouse cursor class and stupid. We can't use the X11/win32
     nativ mouse cursor because we want also to support non-mouse input
     devices and because we want to support multiple cursors */
-class Cursor : public DisplayHook
+class Cursor
 {
 private:
   Sprite sprite;
