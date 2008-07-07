@@ -33,12 +33,21 @@ ScreenManager* ScreenManager::instance_ = 0;
 
 ScreenManager::ScreenManager()
   : display_gc(new DrawingContext()),
-    cursor(0)
-    
+    cursor(0)   
 {  
   assert(instance_ == 0);
   instance_ = this;
   cached_action = CA_NONE;
+  
+  input_manager = std::auto_ptr<Input::Manager>(new Input::Manager());
+
+  if (controller_file.empty())
+    input_controller = std::auto_ptr<Input::Controller>(input_manager->create_controller(Pathname("controller/default.scm", 
+                                                                                                  Pathname::DATA_PATH)));
+  else
+    input_controller = std::auto_ptr<Input::Controller>(input_manager->create_controller(Pathname(controller_file,
+                                                                                                  Pathname::SYSTEM_PATH)));
+
 }
 
 ScreenManager::~ScreenManager ()
@@ -50,18 +59,6 @@ ScreenManager::~ScreenManager ()
 void
 ScreenManager::display()
 {
-  Input::Manager input_manager;
-
-  Input::Controller* input_controller = 0;
-
-  if (controller_file.empty())
-    input_controller = input_manager.create_controller(Pathname("controller/default.scm", 
-                                                                Pathname::DATA_PATH));
-  else
-    input_controller = input_manager.create_controller(Pathname(controller_file,
-                                                                Pathname::SYSTEM_PATH));
-
-
   show_swcursor(swcursor_enabled);
   DeltaManager delta_manager;
   DeltaManager frame_timer;
@@ -87,7 +84,7 @@ ScreenManager::display()
       last_screen = get_current_screen();
             
       // update the input
-      input_manager.update(time_delta);
+      input_manager->update(time_delta);
       std::vector<Input::Event> events = input_controller->poll_events();
       for(std::vector<Input::Event>::iterator i = events.begin(); 
           i != events.end() && last_screen == get_current_screen(); 
@@ -156,8 +153,6 @@ ScreenManager::display()
 	SDL_Delay(static_cast<Uint32>(1000 *((1 / desired_fps) - current_frame_time)));
       }
     }
-
-  delete input_controller;
 }
 
 ScreenPtr

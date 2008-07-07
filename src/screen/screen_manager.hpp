@@ -19,9 +19,13 @@
 
 #include "../pingus.hpp"
 #include <memory>
-#include "SDL.h"
 #include <boost/smart_ptr.hpp>
 #include <vector>
+
+namespace Input {
+class Manager;
+class Controller;
+}
 
 class Cursor;
 class Size;
@@ -35,7 +39,9 @@ class ScreenManager
 private:
   static ScreenManager* instance_;
 
-  SDL_Surface* screen;
+  std::auto_ptr<Input::Manager>    input_manager;
+  std::auto_ptr<Input::Controller> input_controller;
+
   std::auto_ptr<DrawingContext> display_gc;
   Cursor* cursor;
 
