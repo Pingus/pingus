@@ -127,19 +127,6 @@ ConfigManager::get_allow_resize()
 }
 
 void
-ConfigManager::set_fast_mode(bool v)
-{
-  if (maintainer_mode)
-    std::cout << "ConfigManager::set_fast_mode: " << v << std::endl;
-}
-
-bool
-ConfigManager::get_fast_mode()
-{
-  return false;
-}
-
-void
 ConfigManager::set_mouse_grab(bool v)
 {
   if (maintainer_mode)

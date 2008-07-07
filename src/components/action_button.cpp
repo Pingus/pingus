@@ -101,8 +101,7 @@ ArmageddonButton::draw (DrawingContext& gc)
     }
   else
     {
-      if (!fast_mode)
-        gc.draw(background, pos);
+      gc.draw(background, pos);
 
       sprite.set_frame(7);
       gc.draw(sprite, pos);
@@ -168,8 +167,7 @@ ForwardButton::draw (DrawingContext& gc)
     }
   else
     {
-      if (!fast_mode)
-        gc.draw(background, pos);
+      gc.draw(background, pos);
     }
 
   gc.draw(surface, pos);
@@ -208,7 +206,6 @@ PauseButton::draw (DrawingContext& gc)
     }
   else
     {
-    if (!fast_mode)
       gc.draw(background, pos);
     }
 

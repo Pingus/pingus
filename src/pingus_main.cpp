@@ -231,9 +231,6 @@ PingusMain::apply_args()
 
   if (options.tile_size.is_set())
     tile_size = options.tile_size.get();
-
-  if (options.fast_mode.is_set())
-    fast_mode = options.fast_mode.get();
 }
 
 void
@@ -314,17 +311,6 @@ PingusMain::parse_args(int argc, char** argv)
 		  _("Set the desired game framerate (frames per second)"));
   argp.add_option(344, "tile-size", "INT",
                   _("Set the size of the map tiles (default: 32)"));
-  argp.add_option(332, "fast-mode", "",
-                  _("Disable some cpu intensive features"));
-
-  if (0)
-    {
-      argp.add_group(_("Demo playing and recording:"));
-      argp.add_option('p', "play-demo", "",
-                      _("Plays a demo session"));
-      argp.add_option('r', "disable-demo-recording", "",
-                      _("Record demos for each played level"));
-    }
 
   argp.parse_args(argc, argv);
   argp.set_help_indent(20);
@@ -413,11 +399,6 @@ PingusMain::parse_args(int argc, char** argv)
           
           case 'w': // --window
             cmd_options.fullscreen.set(false);
-            break;
-
-            // Starting weird number cmd_options... no idea if this is correct.
-          case 332:
-            cmd_options.fast_mode.set(true);
             break;
 
           case 334: // --maintainer-mode

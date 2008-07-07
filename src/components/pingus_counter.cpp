@@ -38,8 +38,7 @@ PingusCounter::draw(DrawingContext& gc)
 {
   char str[128];
 
-  if (!fast_mode)
-    gc.draw(background, Vector2i(gc.get_width()/2, 0));
+  gc.draw(background, Vector2i(gc.get_width()/2, 0));
 
   World* world = server->get_world();
 

@@ -90,7 +90,6 @@ struct PingusOptions
   Value<int>  speed;
   Value<float> desiredfps;
   Value<int>  tile_size;
-  Value<bool> fast_mode;
 };
 
 #endif

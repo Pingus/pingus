@@ -315,10 +315,6 @@ Config::set_value(const std::string& valueid, const std::string& value)
     {
       print_fps = str_to_bool(value);
     }
-  else if (valueid == "fast-mode")
-    {
-      fast_mode = str_to_bool(value);
-    }
   else if (valueid == "maintainer-mode")
     {
       maintainer_mode = str_to_bool(value);

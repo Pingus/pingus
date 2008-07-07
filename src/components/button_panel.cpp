@@ -90,13 +90,6 @@ ButtonPanel::get_action_name()
 void
 ButtonPanel::draw(DrawingContext& gc)
 {
-  float alpha;
-
-  if (fast_mode)
-    alpha = 1.0;
-  else
-    alpha = 0.5;
-
   for(int i = 0; i < static_cast<int>(a_buttons.size()); ++i)
     {
       if (i == pressed_button)

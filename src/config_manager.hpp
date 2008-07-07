@@ -56,10 +56,6 @@ public:
   bool get_allow_resize();
   boost::signal<void(bool)> on_allow_reszie_change;
 
-  void set_fast_mode(bool);
-  bool get_fast_mode();
-  boost::signal<void(bool)> on_fast_mode_change;
-
   void set_mouse_grab(bool);
   bool get_mouse_grab();
   boost::signal<void(bool)> on_mouse_grab_change;

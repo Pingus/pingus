@@ -25,7 +25,6 @@ bool        music_enabled                   = true;
 bool        sound_enabled                   = true;
 bool        enable_demo_recording           = false;
 bool        play_demo                       = false;
-bool        fast_mode                       = false;
 int         fast_forward_time_scale         = 4;
 bool        maintainer_mode                 = false;
 std::string demo_file;

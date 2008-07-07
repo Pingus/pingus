@@ -80,7 +80,6 @@ OptionMenu::OptionMenu()
   swcursor_box      = new CheckBox(Rect());
   fullscreen_box    = new CheckBox(Rect());
   autoscroll_box    = new CheckBox(Rect());
-  fast_mode_box     = new CheckBox(Rect());
   mousegrab_box     = new CheckBox(Rect());
   printfps_box      = new CheckBox(Rect());
 
@@ -91,7 +90,6 @@ OptionMenu::OptionMenu()
   swcursor_box->on_change.connect(boost::bind(&OptionMenu::on_swcursor_change, this, _1));
   fullscreen_box->on_change.connect(boost::bind(&OptionMenu::on_fullscreen_change, this, _1));
   autoscroll_box->on_change.connect(boost::bind(&OptionMenu::on_autoscroll_change, this, _1));
-  fast_mode_box->on_change.connect(boost::bind(&OptionMenu::on_fastmode_change, this, _1));
   mousegrab_box->on_change.connect(boost::bind(&OptionMenu::on_mousegrab_change, this, _1));
   printfps_box->on_change.connect(boost::bind(&OptionMenu::on_printfps_change, this, _1));
 
@@ -106,8 +104,6 @@ OptionMenu::OptionMenu()
   add_item(_("Resolution:"),      resolution_box);
   add_item(_("Fullscreen:"),      fullscreen_box);
   add_item(_("Autoscrolling:"),   autoscroll_box);
-  add_item(_("Low Detail:"),      fast_mode_box);
-
   add_item(_("Master Volume:"),   master_volume_box);
   add_item(_("Sound Volume:"),    sound_volume_box);
   add_item(_("Music Volume:"),    music_volume_box);
@@ -130,9 +126,6 @@ OptionMenu::OptionMenu()
 
   autoscroll_box->set_state(config_manager.get_autoscroll(), false);
   C(config_manager.on_autoscroll_change.connect(boost::bind(&CheckBox::set_state, autoscroll_box, _1, false)));
-
-  fast_mode_box->set_state(config_manager.get_fast_mode(), false);
-  C(config_manager.on_fast_mode_change.connect(boost::bind(&CheckBox::set_state, fast_mode_box, _1, false)));
 }
 
 void
@@ -234,12 +227,6 @@ void
 OptionMenu::on_autoscroll_change(bool v)
 {
   config_manager.set_autoscroll(v);
-}
-
-void
-OptionMenu::on_fastmode_change(bool v)
-{
-  config_manager.set_fast_mode(v);
 }
 
 void

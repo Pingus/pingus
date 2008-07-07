@@ -129,44 +129,37 @@ SurfaceBackground::draw (SceneContext& gc)
   if (!bg_surface)
     return;
 
-  if (fast_mode)
+  if (render_preview)
     {
-      Display::clear();
+#if 0 // FIXME:
+      for(int y = 0; y < gc.get_height();  y += bg_surface.get_height())
+        for(int x = 0; x < gc.get_width(); x += bg_surface.get_width())
+          gc.color().draw(bg_surface, Vector3f(x, y));
+#endif
     }
   else
     {
-      if (render_preview)
+      Vector3f offset = gc.color().world_to_screen(Vector3f(0,0));
+
+      int start_x = static_cast<int>((offset.x * para_x) + scroll_ox);
+      int start_y = static_cast<int>((offset.y * para_y) + scroll_oy);
+
+      if (start_x > 0)
+        start_x = (start_x % bg_surface.get_width()) - bg_surface.get_width();
+
+      if (start_y > 0)
+        start_y = (start_y % bg_surface.get_height()) - bg_surface.get_height();
+
+      for(int y = start_y;
+          y < world->get_height();
+          y += bg_surface.get_height())
         {
-#if 0 // FIXME:
-          for(int y = 0; y < gc.get_height();  y += bg_surface.get_height())
-            for(int x = 0; x < gc.get_width(); x += bg_surface.get_width())
-              gc.color().draw(bg_surface, Vector3f(x, y));
-#endif
-        }
-      else
-        {
-          Vector3f offset = gc.color().world_to_screen(Vector3f(0,0));
-
-          int start_x = static_cast<int>((offset.x * para_x) + scroll_ox);
-          int start_y = static_cast<int>((offset.y * para_y) + scroll_oy);
-
-          if (start_x > 0)
-            start_x = (start_x % bg_surface.get_width()) - bg_surface.get_width();
-
-          if (start_y > 0)
-            start_y = (start_y % bg_surface.get_height()) - bg_surface.get_height();
-
-          for(int y = start_y;
-              y < world->get_height();
-              y += bg_surface.get_height())
+          for(int x = start_x;
+              x < world->get_width();
+              x += bg_surface.get_width())
             {
-              for(int x = start_x;
-                  x < world->get_width();
-                  x += bg_surface.get_width())
-                {
-                  gc.color().draw(bg_surface, Vector3f(x - offset.x, 
-                                                       y - offset.y, pos.z));
-                }
+              gc.color().draw(bg_surface, Vector3f(x - offset.x, 
+                                                   y - offset.y, pos.z));
             }
         }
     }

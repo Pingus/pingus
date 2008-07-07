@@ -51,7 +51,6 @@ private:
   CheckBox* fullscreen_box;
   CheckBox* swcursor_box;
   CheckBox* autoscroll_box;
-  CheckBox* fast_mode_box;
   CheckBox* mousegrab_box;
   CheckBox* printfps_box;
 
