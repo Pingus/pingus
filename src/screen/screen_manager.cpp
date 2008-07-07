@@ -32,8 +32,7 @@
 ScreenManager* ScreenManager::instance_ = 0;
 
 ScreenManager::ScreenManager()
-  : display_gc(new DrawingContext()),
-    cursor(0)   
+  : display_gc(new DrawingContext())
 {  
   assert(instance_ == 0);
   instance_ = this;
@@ -47,12 +46,10 @@ ScreenManager::ScreenManager()
   else
     input_controller = std::auto_ptr<Input::Controller>(input_manager->create_controller(Pathname(controller_file,
                                                                                                   Pathname::SYSTEM_PATH)));
-
 }
 
 ScreenManager::~ScreenManager ()
 {
-  delete cursor;
   instance_ = 0;
 }
 
@@ -94,7 +91,7 @@ ScreenManager::display()
         }
       get_current_screen()->update(time_delta);
 
-      if (cursor)
+      if (cursor.get())
         cursor->update(time_delta);
 
       // Last screen has popped, so we are going to end here
@@ -165,12 +162,9 @@ ScreenManager::get_current_screen()
 ScreenManager*
 ScreenManager::instance ()
 {
-  if (instance_)
-    return instance_;
-  else
-    return instance_ = new ScreenManager ();
+  return instance_;
 }
-
+
 void
 ScreenManager::push_screen (Screen* screen)
 {
@@ -186,7 +180,7 @@ ScreenManager::push_screen (Screen* screen)
 void
 ScreenManager::pop_screen ()
 {
-  assert (cached_action == CA_NONE || cached_action == CA_POP);
+  assert(cached_action == CA_NONE);
   cached_action = CA_POP;
 }
 
@@ -200,7 +194,7 @@ ScreenManager::pop_all_screens()
 void
 ScreenManager::replace_screen (Screen* screen)
 {
-  assert (cached_action == CA_NONE);
+  assert(cached_action == CA_NONE);
   cached_action = CA_REPLACE;
   replace_screen_arg = ScreenPtr(screen);
 }
@@ -312,19 +306,18 @@ ScreenManager::show_swcursor(bool v)
 {
   if (v)
     {
-      if (!cursor)
+      if (!cursor.get())
         {
-          cursor = new Cursor("core/cursors/animcross");
+          cursor = std::auto_ptr<Cursor>(new Cursor("core/cursors/animcross"));
           cursor->show();
           SDL_ShowCursor(SDL_DISABLE);
         }
     }
   else
     {
-      if (cursor)
+      if (cursor.get())
         {
-          delete cursor;
-          cursor = 0;
+          cursor = std::auto_ptr<Cursor>();
           SDL_ShowCursor(SDL_ENABLE);
         }
     }
@@ -333,7 +326,7 @@ ScreenManager::show_swcursor(bool v)
 bool
 ScreenManager::swcursor_visible()
 {
-  return cursor;
+  return cursor.get();
 }
 
 /* EOF */

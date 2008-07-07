@@ -43,7 +43,7 @@ private:
   std::auto_ptr<Input::Controller> input_controller;
 
   std::auto_ptr<DrawingContext> display_gc;
-  Cursor* cursor;
+  std::auto_ptr<Cursor> cursor;
 
   /** Screen stack (first is the screen, second is delete_screen,
       which tells if the screen should be deleted onces it got poped
