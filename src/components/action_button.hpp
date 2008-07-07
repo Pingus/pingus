@@ -22,22 +22,21 @@
 #include "../pingu_enums.hpp"
 #include "../state_sprite.hpp"
 #include "../gui/component.hpp"
+#include "../gui/rect_component.hpp"
 
 class Server;
 class GameSession;
 class ActionHolder;
 class Vector;
-
+
 /** ArmageddonButton, press it to start the armageddon and to turn all
     pingus into bomber
 
     \sa Client */
-class ArmageddonButton : public GUI::Component
+class ArmageddonButton : public GUI::RectComponent
 {
 private:
   Server* server;
-  int    x_pos;
-  int    y_pos;
   bool   pressed;
   float  press_time;
   Sprite sprite;
@@ -50,7 +49,6 @@ public:
 
   void draw(DrawingContext& gc);
   void update(float);
-  bool is_at(int x, int y);
   void on_primary_button_click (int x, int y);
 
 private:
@@ -62,12 +60,10 @@ private:
     again to return to normal speed
 
     \sa Client */
-class ForwardButton : public GUI::Component
+class ForwardButton : public GUI::RectComponent
 {
 private:
   GameSession* session;
-  int x_pos;
-  int y_pos;
   Sprite surface;
   Sprite background;
   Sprite backgroundhl;
@@ -77,7 +73,6 @@ public:
   virtual ~ForwardButton();
 
   void draw(DrawingContext& gc);
-  bool is_at (int x, int y);
   void on_primary_button_click (int x, int y);
 
 private:
@@ -89,12 +84,11 @@ private:
     continue
 
     \sa Client */
-class PauseButton : public GUI::Component
+class PauseButton : public GUI::RectComponent
 {
 private:
   GameSession* session;
-  int x_pos;
-  int y_pos;
+
   Sprite surface;
   Sprite background;
   Sprite backgroundhl;
@@ -104,7 +98,7 @@ public:
   virtual ~PauseButton();
 
   void draw(DrawingContext& gc);
-  bool is_at (int x, int y);
+  
   void on_primary_button_click (int x, int y);
 
 private:
@@ -114,7 +108,7 @@ private:
 
 /** The button class manage a simple button for the button_panel. It
     keeps his position, his surfaces and his font. */
-class ActionButton : public GUI::Component
+class ActionButton : public GUI::RectComponent
 {
 protected:
   ActionHolder* action_holder;
@@ -122,30 +116,19 @@ protected:
   Sprite background;
   Sprite backgroundhl;
 
-  int x_pos;
-  int y_pos;
-  Font    font;
-  // Added for printing action names next to the button.
-  Font    font_b;
-
   Actions::ActionName name;
-  bool is_multi_direct;
 
 public:
-  bool pressed;
+  bool pressed; // used in ButtonPanel
 
   ActionButton(ActionHolder* h, int x, int y, Actions::ActionName name_, int owner_id);
   virtual ~ActionButton();
-
-  void init(int x, int y, Actions::ActionName name_, int owner_id);
 
   void draw(DrawingContext& gc);
   void update(float delta);
 
   /// Returns the name of the action the button represents.
   Actions::ActionName get_action_name();
-
-  bool is_at(int x, int y);
 
 private:
   ActionButton (const ActionButton&);

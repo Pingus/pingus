@@ -26,34 +26,21 @@
 #include "../string_util.hpp"
 #include "../math/vector3f.hpp"
 
-
 using namespace Actions;
 
 ActionButton::ActionButton(ActionHolder* h,
                            int x, int y, ActionName name_, int owner_id)
-  : action_holder(h),
+  : RectComponent(Rect(Vector2i(x, y), Size(60, 38))),
+    action_holder(h),
     background (Sprite("core/buttons/buttonbackground")),
-    backgroundhl (Sprite("core/buttons/buttonbackgroundhl"))
+    backgroundhl (Sprite("core/buttons/buttonbackgroundhl")),
+    name(name_)
 {
-  init(x, y, name_, owner_id);
-}
-
-ActionButton::~ActionButton() {}
-
-void
-ActionButton::init(int x, int y, ActionName name_, int owner_id)
-{
-  //  make_action = func;
-  x_pos = x;
-  y_pos = y;
-  name = name_;
-
-  font   = Fonts::pingus_small;
-  font_b = Fonts::pingus_large;
-
   sprite = Sprite("pingus/player0/" + action_to_string(name) + "/right");
   sprite.set_play_loop(true);
 }
+
+ActionButton::~ActionButton() {}
 
 void
 ActionButton::update(float delta)
@@ -67,109 +54,58 @@ ActionButton::get_action_name()
   return name;
 }
 
-bool
-ActionButton::is_at (int x, int y)
-{
-  if (x > x_pos && x < x_pos + 60
-      && y > y_pos && y <= y_pos + 35)
-    {
-      return true;
-    }
-  else
-    {
-      return false;
-    }
-}
-
 void
 ActionButton::draw (DrawingContext& gc)
 {
+  Vector2i pos(rect.left, rect.top);
+
   if (pressed)
     {
-      if (fast_mode) 
-        {
-          gc.draw_fillrect(x_pos, y_pos, x_pos + 60, y_pos + 35,
-                           Color(255, 255, 255));
-        } 
-      else 
-        {
-          //CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35 ,
-          //1.0, 1.0, 1.0, 0.5);
-          gc.draw(backgroundhl, Vector2i(x_pos, y_pos));
-        }
+      gc.draw(backgroundhl, pos);
     }
   else
     {
       sprite.set_frame(0);
-
-      if (fast_mode) {
-        // do nothing
-      } else {
-        gc.draw(background, Vector2i(x_pos, y_pos));
-      }
+      gc.draw(background, pos);
     }
-
-  if (this->get_action_name() == Climber) {
-	  gc.draw(sprite, Vector2i(x_pos + 32, y_pos + 32));
-  } else {
-	  gc.draw(sprite, Vector2i(x_pos + 20, y_pos + 32));
-  }
-
-  Font myfont  = font;
-  Font myfontb = font_b;
-
-  // print the action name next to the button, when mouse pointer is on
-  // the button.
-  // FIXME: this should use the GUI events, not SDL_GetMouseState
-  int x, y;
-  SDL_GetMouseState(&x, &y);
-  if (action_help
-      && x > x_pos      && x < x_pos + 60
-      && y < y_pos + 35 && y > y_pos)
-    {
-      gc.print_left(myfontb, x_pos + 65, y_pos-10, action_to_screenname(name));
-    }
-
-  if (Cheat::unlimited_actions)
-    {
-      // FIXME: insert unlimited surface here
-      gc.print_center(myfont, x_pos + 46, y_pos + 5, "oo");
-    }
-  else
-    {
-      std::string str = StringUtil::to_string(action_holder->get_available(name));
-      gc.print_center(myfont, x_pos + 46, y_pos + 5, str);
-    }
+  
+  gc.draw(sprite, Vector2i(pos.x + 20, pos.y + 32));
+  
+  std::string str = StringUtil::to_string(action_holder->get_available(name));
+  gc.print_center(Fonts::pingus_small, pos.x + 46, pos.y + 5, str);
 }
 
 ArmageddonButton::ArmageddonButton(Server* s, int x, int y)
-  : server (s),
-    x_pos (x),
-    y_pos (y),
-    background  (Sprite("core/buttons/hbuttonbgb")),
-    backgroundhl(Sprite("core/buttons/hbuttonbg"))
+  : RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
+    server(s),
+    background  ("core/buttons/hbuttonbgb"),
+    backgroundhl("core/buttons/hbuttonbg")
 {
   pressed      = false;
   sprite       = Sprite("core/buttons/armageddon_anim");
 }
 
-ArmageddonButton::~ArmageddonButton () { }
+ArmageddonButton::~ArmageddonButton () 
+{
+}
 
 void
 ArmageddonButton::draw (DrawingContext& gc)
 {
+  Vector2i pos(rect.left, rect.top);
+
   if (server->get_world()->check_armageddon ())
     {
-      gc.draw(backgroundhl, Vector2i(x_pos, y_pos));
-      gc.draw(sprite, Vector2i(x_pos, y_pos));
+      gc.draw(backgroundhl, pos);
+      gc.draw(sprite, pos);
     }
   else
     {
       if (!fast_mode)
-        gc.draw(background, Vector2i(x_pos, y_pos));
+        gc.draw(background, pos);
 
       sprite.set_frame(7);
-      gc.draw(sprite, Vector2i(x_pos, y_pos));
+      gc.draw(sprite, pos);
     }
 }
 
@@ -194,18 +130,6 @@ ArmageddonButton::update (float delta)
     }
 }
 
-bool
-ArmageddonButton::is_at(int x, int y)
-{
-  if (x > x_pos && x < x_pos + sprite.get_width()
-      && y > y_pos && y < y_pos + sprite.get_height())
-    {
-      return true;
-    } else  {
-      return false;
-    }
-}
-
 void
 ArmageddonButton::on_primary_button_click (int x, int y)
 {
@@ -223,8 +147,8 @@ ArmageddonButton::on_primary_button_click (int x, int y)
 }
 
 ForwardButton::ForwardButton(GameSession* s, int x, int y)
-  : session(s),
-    x_pos (x), y_pos (y),
+  : RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
+    session(s),
     background  (Sprite("core/buttons/hbuttonbgb")),
     backgroundhl(Sprite("core/buttons/hbuttonbg"))
 {
@@ -236,29 +160,19 @@ ForwardButton::~ForwardButton () {}
 void
 ForwardButton::draw (DrawingContext& gc)
 {
+  Vector2i pos(rect.left, rect.top);
+
   if (session->get_fast_forward())
     {
-      gc.draw(backgroundhl, Vector2i(x_pos, y_pos));
+      gc.draw(backgroundhl, pos);
     }
   else
     {
       if (!fast_mode)
-        gc.draw(background, Vector2i(x_pos, y_pos));
+        gc.draw(background, pos);
     }
 
-  gc.draw(surface, Vector2i(x_pos, y_pos));
-}
-
-bool
-ForwardButton::is_at (int x, int y)
-{
-  if (   x > x_pos && x < x_pos + int(surface.get_width())
-      && y > y_pos && y < y_pos + int(surface.get_height()))
-    {
-      return true;
-    } else  {
-      return false;
-    }
+  gc.draw(surface, pos);
 }
 
 void
@@ -271,42 +185,34 @@ ForwardButton::on_primary_button_click (int x, int y)
 }
 
 PauseButton::PauseButton(GameSession* s, int x, int y)
-  : session(s),
-    x_pos(x), y_pos(y),
+  : RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
+    session(s),
     background  (Sprite("core/buttons/hbuttonbgb")),
     backgroundhl(Sprite("core/buttons/hbuttonbg"))
 {
   surface = Sprite("core/buttons/pause");
 }
 
-PauseButton::~PauseButton () {}
+PauseButton::~PauseButton () 
+{
+}
 
 void
 PauseButton::draw (DrawingContext& gc)
 {
+  Vector2i pos(rect.left, rect.top);
+
   if (session->get_pause())
     {
-      gc.draw(backgroundhl, Vector2i(x_pos, y_pos));
+      gc.draw(backgroundhl, pos);
     }
   else
     {
     if (!fast_mode)
-      gc.draw(background, Vector2i(x_pos, y_pos));
+      gc.draw(background, pos);
     }
 
-  gc.draw(surface, Vector2i(x_pos, y_pos));
-}
-
-bool
-PauseButton::is_at (int x, int y)
-{
-  if (x > x_pos && x < x_pos + int(surface.get_width())
-      && y > y_pos && y < y_pos + int(surface.get_height()))
-    {
-      return true;
-    } else  {
-      return false;
-    }
+  gc.draw(surface, pos);
 }
 
 void
