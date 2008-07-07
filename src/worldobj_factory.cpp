@@ -27,7 +27,6 @@
 #include "worldobjs/hammer.hpp"
 #include "worldobjs/hotspot.hpp"
 #include "worldobjs/ice_block.hpp"
-#include "worldobjs/info_box.hpp"
 #include "worldobjs/laser_exit.hpp"
 #include "worldobjs/liquid.hpp"
 #include "worldobjs/rain_generator.hpp"
@@ -46,7 +45,7 @@
 using namespace WorldObjs;
 
 WorldObjFactory* WorldObjFactory::instance_ = 0;
-
+
 /** WorldObjAbstractFactory, interface for creating factories */
 class WorldObjAbstractFactory
 {
@@ -63,7 +62,7 @@ private:
   WorldObjAbstractFactory (const WorldObjAbstractFactory&);
   WorldObjAbstractFactory& operator= (const WorldObjAbstractFactory&);
 };
-
+
 /** Template to create factories, usage:
     new WorldObjFactoryImpl<"liquid", Liquid>; */
 template<class T>
@@ -81,7 +80,7 @@ private:
   WorldObjFactoryImpl (const WorldObjFactoryImpl&);
   WorldObjFactoryImpl& operator= (const WorldObjFactoryImpl&);
 };
-
+
 WorldObjFactory::WorldObjFactory ()
 {
   // Register all WorldObj's
@@ -111,7 +110,6 @@ WorldObjFactory::instance ()
 
       // Special Objects
       new WorldObjFactoryImpl<SwitchDoor>("switchdoor");
-      new WorldObjFactoryImpl<InfoBox>("infobox");
       new WorldObjFactoryImpl<IceBlock>("iceblock");
       new WorldObjFactoryImpl<ConveyorBelt>("conveyorbelt");
       new WorldObjFactoryImpl<Teleporter>("teleporter");
@@ -175,6 +173,5 @@ WorldObjFactory::free_factories()
 	  delete i->second;
   }
 }
-
-
+
 /* EOF */

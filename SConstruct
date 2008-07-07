@@ -236,7 +236,6 @@ pingus_sources = [
 'src/worldobjs/hammer.cpp', 
 'src/worldobjs/hotspot.cpp', 
 'src/worldobjs/ice_block.cpp', 
-'src/worldobjs/info_box.cpp', 
 'src/worldobjs/laser_exit.cpp', 
 'src/worldobjs/liquid.cpp', 
 'src/worldobjs/rain_generator.cpp', 
