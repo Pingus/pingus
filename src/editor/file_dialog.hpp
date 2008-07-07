@@ -36,7 +36,7 @@ private:
   EditorScreen* editor;
   Mode mode;
 
-  FileList file_list;
+  FileList* file_list;
   Button* up_button;
   Button* down_button;
   Button* open_button;

@@ -62,10 +62,10 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
                                   _("Levelsets"),
                                   _("..:: Play User Built levels ::.."));
 
-  gui_manager->add(quit_button,    false);
-  gui_manager->add(contrib_button, false);
-  gui_manager->add(start_button,   false);
-  gui_manager->add(editor_button,  false);
+  gui_manager->add(quit_button,    true);
+  gui_manager->add(contrib_button, true);
+  gui_manager->add(start_button,   true);
+  gui_manager->add(editor_button,  true);
 
   logo = Sprite("core/misc/logo");
 
@@ -80,10 +80,6 @@ PingusMenu::show_credits()
 
 PingusMenu::~PingusMenu()
 {
-  delete start_button;
-  delete quit_button;
-  delete editor_button;
-  delete contrib_button;
 }
 
 void

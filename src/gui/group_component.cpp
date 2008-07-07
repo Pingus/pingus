@@ -14,6 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include <assert.h>
 #include <iostream>
 #include "group_component.hpp"
 
@@ -245,6 +246,8 @@ GroupComponent::component_at (const Vector2i& pos)
 void
 GroupComponent::add(Component* comp, bool delete_comp)
 {
+  assert(delete_comp == true);
+
   comp->set_parent(this);
   children.push_back(comp);
   if (delete_comp)

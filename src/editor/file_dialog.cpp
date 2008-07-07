@@ -34,14 +34,15 @@ namespace Editor {
 FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect, Mode mode_)
   : GroupComponent(rect),
     editor(editor_),
-    mode(mode_),
-    file_list(Rect(4, 30 + 30 + 30,
-                   rect.get_width()-4 - 30, rect.get_height() - 4 - 35))
+    mode(mode_)
 {
-  add(&file_list, false);
-  file_list.on_click.connect(boost::bind(&FileDialog::load_file, this, _1));
+  file_list = new FileList(Rect(4, 30 + 30 + 30,
+                                rect.get_width()-4 - 30, rect.get_height() - 4 - 35));
+  add(file_list, true);
 
-  Rect file_rect = file_list.get_rect();
+  file_list->on_click.connect(boost::bind(&FileDialog::load_file, this, _1));
+
+  Rect file_rect = file_list->get_rect();
   up_button = new Button(Rect(file_rect.right + 2, file_rect.top,
                               rect.get_width()-4, file_rect.top + file_rect.get_height()/2 - 1),
                          "/\\\n|");
@@ -118,7 +119,7 @@ void
 FileDialog::set_directory(const std::string& pathname_)
 {
   std::string pathname = System::realpath(pathname_);
-  file_list.set_directory(pathname);
+  file_list->set_directory(pathname);
   update_button_state();
 
   filename_inputbox->set_text("");
@@ -157,14 +158,14 @@ FileDialog::on_open()
 void
 FileDialog::on_up()
 {
-  file_list.prev_page();
+  file_list->prev_page();
   update_button_state();
 }
 
 void
 FileDialog::on_down()
 {
-  file_list.next_page();
+  file_list->next_page();
   update_button_state();
 }
 
@@ -173,10 +174,10 @@ FileDialog::update_layout()
 {
   GUI::GroupComponent::update_layout();
 
-  file_list.set_rect(Rect(4, 30 + 30 + 30,
+  file_list->set_rect(Rect(4, 30 + 30 + 30,
                           rect.get_width()-4 - 30, rect.get_height() - 4 - 35));
   
-  Rect file_rect = file_list.get_rect();
+  Rect file_rect = file_list->get_rect();
 
   up_button->set_rect(Rect(file_rect.right + 2, file_rect.top,
                            rect.get_width()-4, file_rect.top + file_rect.get_height()/2 - 1));
@@ -212,12 +213,12 @@ FileDialog::on_datadir()
 void
 FileDialog::update_button_state()
 {
-  if (file_list.has_more_prev_pages())
+  if (file_list->has_more_prev_pages())
     up_button->enable();
   else
     up_button->disable();
 
-  if (file_list.has_more_next_pages())
+  if (file_list->has_more_next_pages())
     down_button->enable();
   else
     down_button->disable();
