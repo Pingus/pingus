@@ -66,6 +66,23 @@ Roadmap for Pingus 0.8.0:
 
 * do SurfaceButton with signals
 
+* toggle buttons for the editor toolbar would be good
+                             _________
+* replace eraser-abort with ( <- Back ) button
+
+* drawing context defaults to display::get_width/height, need to adjust that
+
+* add a way to confirm with y/n key pressed on the exit screen
+
+* clicking while the screen changes is weird
+
+* this is back: 
+  pingus: src/screen/screen_manager.cpp:203: void ScreenManager::replace_screen(Screen*): Assertion `cached_action == CA_NONE' failed.
+
+* tooltip missing for actions (got removed in refactoring)
+
+* DrawingContext width/height doesn't get properly updated (see PingusCounter)
+
 New Features
 ============
 
@@ -161,7 +178,7 @@ Unsorted:
 * pregenerate thumbnails for the editor, generating them takes to long
 
 
-Roadmap for Pingus 0.7.4
+Roadmap for Pingus 0.7.3
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 New Features:
@@ -211,8 +228,6 @@ Bugs:
     by level lacking position and editor setting a different fallback
     then in-game) [Currently worked around in editor code, should be
     fixed in the converter]
-
-* frameskip seems broken
 
 * bridging gets more complicated has graphical error (background?!)
   surface background doesn't handle larger res due to the Playfield
@@ -299,7 +314,7 @@ Undecided stuff: ================
 
 * replace "magic" numbers such as default screen size (800 and 600) with macros/globals or whatever is good programming practice
 
-Roadmap for Pingus Editor 0.7.4:
+Roadmap for Pingus Editor 0.7.3:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Important:
