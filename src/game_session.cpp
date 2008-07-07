@@ -36,7 +36,7 @@
 #include "savegame_manager.hpp"
 #include "globals.hpp"
 #include "debug.hpp"
-
+
 GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_screen)
   : plf(arg_plf),
     show_result_screen(arg_show_result_screen),
@@ -80,7 +80,7 @@ GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_scree
   gui_manager->add(small_map);
   gui_manager->add(time_display);
 
-  armageddon_button = new ArmageddonButton(get_server(), Display::get_width() - 40,     Display::get_height() - 62);
+  armageddon_button = new ArmageddonButton(get_server(), Display::get_width() - 40, Display::get_height() - 62);
   forward_button    = new ForwardButton(this, Display::get_width() - 40 * 2, Display::get_height() - 62);
   pause_button      = new PauseButton(this, Display::get_width() - 40 * 3, Display::get_height() - 62);
 
@@ -384,6 +384,13 @@ GameSession::resize(const Size& size)
                                     Math::max((Display::get_height() - world_height)/2, 0)), 
                            Size(Math::min(Display::get_width(),  world_width),
                                 Math::min(Display::get_height(), world_height))));
+
+  armageddon_button->set_rect(Rect(Vector2i(Display::get_width() - 40, Display::get_height() - 62),
+                                   Size(38, 60)));
+  forward_button->set_rect(Rect(Vector2i(Display::get_width() - 40*2, Display::get_height() - 62),
+                                Size(38, 60)));
+  pause_button->set_rect(Rect(Vector2i(Display::get_width() - 40*3, Display::get_height() - 62),
+                                Size(38, 60)));
 }
 
 /* EOF */
