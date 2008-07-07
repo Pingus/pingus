@@ -151,7 +151,6 @@ pingus_sources = [
 'src/mover.cpp', 
 'src/movers/linear_mover.cpp', 
 'src/particles/explosive_particle.cpp', 
-'src/particles/ground_particle.cpp', 
 'src/particles/pingu_particle_holder.cpp', 
 'src/particles/rain_particle_holder.cpp', 
 'src/particles/smoke_particle_holder.cpp', 
