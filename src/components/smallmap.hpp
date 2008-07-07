@@ -24,7 +24,7 @@ class Playfield;
 class Server;
 class Vector3f;
 class SmallMapImage;
-
+
 /** This is the map that appears in the corner of the screen */
 class SmallMap : public GUI::Component
 {
@@ -38,7 +38,7 @@ private:
   /** Graphic surface of the entrance */
   Sprite entrance_sur;
 
-  SmallMapImage* image;
+  std::auto_ptr<SmallMapImage> image;
 
   /** Horizontal position of the small map */
   int x_pos;
@@ -91,8 +91,7 @@ private:
   SmallMap (const SmallMap&);
   SmallMap& operator= (const SmallMap&);
 };
-
-
+
 #endif
 
 /* EOF */

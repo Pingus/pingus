@@ -62,14 +62,13 @@ SmallMap::SmallMap(Server* server_, Playfield* playfield_)
   x_pos   = 5;
   y_pos   = Display::get_height() - height - 5;
 
-  image = new SmallMapImage(server, width, height);
+  image = std::auto_ptr<SmallMapImage>(new SmallMapImage(server, width, height));
 
   scroll_mode = false;
 }
 
 SmallMap::~SmallMap()
 {
-  delete image;
 }
 
 void
