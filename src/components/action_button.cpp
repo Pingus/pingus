@@ -32,8 +32,8 @@ ActionButton::ActionButton(ActionHolder* h,
                            int x, int y, ActionName name_, int owner_id)
   : RectComponent(Rect(Vector2i(x, y), Size(60, 38))),
     action_holder(h),
-    background (Sprite("core/buttons/buttonbackground")),
-    backgroundhl (Sprite("core/buttons/buttonbackgroundhl")),
+    background("core/buttons/buttonbackground"),
+    backgroundhl("core/buttons/buttonbackgroundhl"),
     name(name_)
 {
   sprite = Sprite("pingus/player0/" + action_to_string(name) + "/right");
@@ -149,8 +149,8 @@ ArmageddonButton::on_primary_button_click (int x, int y)
 ForwardButton::ForwardButton(GameSession* s, int x, int y)
   : RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
     session(s),
-    background  (Sprite("core/buttons/hbuttonbgb")),
-    backgroundhl(Sprite("core/buttons/hbuttonbg"))
+    background ("core/buttons/hbuttonbgb"),
+    backgroundhl("core/buttons/hbuttonbg")
 {
   surface = Sprite("core/buttons/fast_forward");
 }
@@ -187,8 +187,8 @@ ForwardButton::on_primary_button_click (int x, int y)
 PauseButton::PauseButton(GameSession* s, int x, int y)
   : RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
     session(s),
-    background  (Sprite("core/buttons/hbuttonbgb")),
-    backgroundhl(Sprite("core/buttons/hbuttonbg"))
+    background ("core/buttons/hbuttonbgb"),
+    backgroundhl("core/buttons/hbuttonbg")
 {
   surface = Sprite("core/buttons/pause");
 }

@@ -20,7 +20,7 @@
 #include "cursor.hpp"
 
 Cursor::Cursor(const std::string& ident)
-  : sprite(Sprite(ident))
+  : sprite(ident)
 {
 }
 

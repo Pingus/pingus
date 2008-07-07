@@ -24,7 +24,7 @@
 namespace WorldObjs {
 
 Spike::Spike (const FileReader& reader)
-  : surface(Sprite("traps/spike")),
+  : surface("traps/spike"),
     killing(false)
 {
   reader.read_vector("position", pos);

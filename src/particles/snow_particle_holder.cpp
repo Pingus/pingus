@@ -54,11 +54,11 @@ SnowParticleHolder::SnowParticle::SnowParticle (int x, int y, bool colliding_)
 
 
 SnowParticleHolder::SnowParticleHolder ()
-  : snow1 (Sprite("particles/snow1")),
-    snow2 (Sprite("particles/snow2")),
-    snow3 (Sprite("particles/snow3")),
-    snow4 (Sprite("particles/snow4")),
-    snow5 (Sprite("particles/snow5")),
+  : snow1("particles/snow1"),
+    snow2("particles/snow2"),
+    snow3("particles/snow3"),
+    snow4("particles/snow4"),
+    snow5("particles/snow5"),
     ground(Resource::load_collision_mask("particles/ground_snow"))
 {
 }

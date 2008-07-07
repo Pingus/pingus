@@ -28,7 +28,7 @@
 
 PingusCounter::PingusCounter(Server* s)
   : server(s),
-    background(Sprite("core/buttons/info"))
+    background("core/buttons/info")
 {
   font = Fonts::pingus_small_fixnum;
 }

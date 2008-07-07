@@ -25,7 +25,7 @@
 namespace GUI {
 	
 Checkbox::Checkbox(Vector2i p, std::string label_, CheckboxListener* l) :
-	checkmark(Sprite("core/misc/checkbox_clicked")),
+	checkmark("core/misc/checkbox_clicked"),
 	is_checked(false),
 	pos(p),
 	width(20),

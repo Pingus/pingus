@@ -25,7 +25,7 @@
 namespace WorldObjs {
 
 InfoBox::InfoBox(const FileReader& reader)
-  : sprite(Sprite("worldobjs/infobox")),
+  : sprite("worldobjs/infobox"),
     is_open (false)
 {
   reader.read_vector("position", pos);

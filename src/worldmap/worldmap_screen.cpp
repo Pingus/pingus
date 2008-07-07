@@ -211,7 +211,7 @@ WorldmapScreenEnterButton::on_click()
 }
 
 WorldmapScreen::WorldmapScreen()
-  : levelname_bg(Sprite("core/worldmap/levelname_bg")),
+  : levelname_bg("core/worldmap/levelname_bg"),
     is_init(false),
     exit_worldmap(false)
 {

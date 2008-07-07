@@ -29,7 +29,7 @@
 namespace WorldObjs {
 
 Exit::Exit(const FileReader& reader)
-  : smallmap_symbol(Sprite("core/misc/smallmap_exit"))
+  : smallmap_symbol("core/misc/smallmap_exit")
 {
   reader.read_vector("position", pos);
   reader.read_desc  ("surface",  desc);

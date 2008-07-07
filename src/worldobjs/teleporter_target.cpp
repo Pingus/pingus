@@ -26,7 +26,7 @@ namespace WorldObjs {
 
 TeleporterTarget::TeleporterTarget(const FileReader& reader)
   : WorldObj(reader),
-    sprite(Sprite("worldobjs/teleportertarget"))
+    sprite("worldobjs/teleportertarget")
 {
   reader.read_vector("position", pos);
 }

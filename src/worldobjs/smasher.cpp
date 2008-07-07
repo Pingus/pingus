@@ -29,7 +29,7 @@
 namespace WorldObjs {
 
 Smasher::Smasher(const FileReader& reader)
-  : surface(Sprite("traps/smasher")),
+  : surface("traps/smasher"),
     smashing(false),
     downwards(false),
     count(0)

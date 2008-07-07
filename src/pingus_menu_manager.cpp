@@ -29,32 +29,32 @@ PingusMenuManager::PingusMenuManager ()
   : mainmenu (this),
     exitmenu (this)
 {
-	int w = Display::get_width();
-	int h = Display::get_height();
-	// We only need to scale the background main menu images if the screen 
-	// resolution is not default
-	if (w != default_screen_width && h != default_screen_height)
-	{
-		background.add_layer (Blitter::scale_surface_to_canvas(
-			Resource::load_surface("core/menu/layer1"), w, 185 * h / default_screen_height), 0, 0, 12, 0);
-		background.add_layer (Blitter::scale_surface_to_canvas(
-			Resource::load_surface("core/menu/layer2"), w, 362 * h / default_screen_height), 0, 150 * (float)h / default_screen_height, 25, 0);
-		background.add_layer (Blitter::scale_surface_to_canvas(
-			Resource::load_surface("core/menu/layer3"), w, 306 * h / default_screen_height), 0, 200 * (float)h / default_screen_height, 50, 0);
-		background.add_layer (Blitter::scale_surface_to_canvas(
-			Resource::load_surface("core/menu/layer4"), w, 171 * h / default_screen_height), 0, 429 * (float)h / default_screen_height, 100, 0);
-		background.add_layer (Blitter::scale_surface_to_canvas(
-			Resource::load_surface("core/menu/layer5"), 302 * w / default_screen_width, 104 * h / default_screen_height), 0, 500 * (float)h / default_screen_height, 200, 0);
-	}
-	else
-	{
-		background.add_layer(Sprite("core/menu/layer1"), 0, 0, 12, 0);
-		background.add_layer(Sprite("core/menu/layer2"), 0, 150, 25, 0);
-		background.add_layer(Sprite("core/menu/layer3"), 0, 200, 50, 0);
-		background.add_layer(Sprite("core/menu/layer4"), 0, 429, 100, 0);
-		background.add_layer(Sprite("core/menu/layer5"), 0, 500, 200, 0);
-	}
-	push_menu (&mainmenu);
+  int w = Display::get_width();
+  int h = Display::get_height();
+  // We only need to scale the background main menu images if the screen 
+  // resolution is not default
+  if (w != default_screen_width && h != default_screen_height)
+    {
+      background.add_layer (Blitter::scale_surface_to_canvas(
+                                                             Resource::load_surface("core/menu/layer1"), w, 185 * h / default_screen_height), 0, 0, 12, 0);
+      background.add_layer (Blitter::scale_surface_to_canvas(
+                                                             Resource::load_surface("core/menu/layer2"), w, 362 * h / default_screen_height), 0, 150 * (float)h / default_screen_height, 25, 0);
+      background.add_layer (Blitter::scale_surface_to_canvas(
+                                                             Resource::load_surface("core/menu/layer3"), w, 306 * h / default_screen_height), 0, 200 * (float)h / default_screen_height, 50, 0);
+      background.add_layer (Blitter::scale_surface_to_canvas(
+                                                             Resource::load_surface("core/menu/layer4"), w, 171 * h / default_screen_height), 0, 429 * (float)h / default_screen_height, 100, 0);
+      background.add_layer (Blitter::scale_surface_to_canvas(
+                                                             Resource::load_surface("core/menu/layer5"), 302 * w / default_screen_width, 104 * h / default_screen_height), 0, 500 * (float)h / default_screen_height, 200, 0);
+    }
+  else
+    {
+      background.add_layer(Sprite("core/menu/layer1"), 0, 0, 12, 0);
+      background.add_layer(Sprite("core/menu/layer2"), 0, 150, 25, 0);
+      background.add_layer(Sprite("core/menu/layer3"), 0, 200, 50, 0);
+      background.add_layer(Sprite("core/menu/layer4"), 0, 429, 100, 0);
+      background.add_layer(Sprite("core/menu/layer5"), 0, 500, 200, 0);
+    }
+  push_menu (&mainmenu);
 }
 
 PingusMenuManager::~PingusMenuManager ()
