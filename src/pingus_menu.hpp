@@ -21,6 +21,7 @@
 #include "fonts.hpp"
 #include "pingus_sub_menu.hpp"
 #include "layer_manager.hpp"
+#include "screen/gui_screen.hpp"
 
 class SurfaceButton;
 class GameDelta;
@@ -30,8 +31,8 @@ class GUIManager;
 } // namespace GUI
 
 class MenuButton;
-
-class PingusMenu : public PingusSubMenu
+
+class PingusMenu : public GUIScreen
 {
 public:
   bool is_init;
@@ -40,6 +41,7 @@ public:
   float text_scroll_offset;
 
 private:
+  LayerManager background;
   Sprite logo;
 
   MenuButton* start_button;
@@ -55,14 +57,8 @@ private:
   void do_start(const std::string &filename);
   void do_edit();
 
-  /** Use this to load the level or worldmap */
-  virtual void load(const std::string &file, const std::string &filemask);
-
-  /** Cancels the file dialog box */
-  virtual void cancel();
-
 public:
-  PingusMenu (PingusMenuManager* m);
+  PingusMenu();
   ~PingusMenu();
 
   void on_click(MenuButton* button);
@@ -72,15 +68,14 @@ public:
   void do_contrib(const std::string&);
 
   void on_escape_press ();
-  void draw_foreground(DrawingContext& gc);
+  void draw_background(DrawingContext& gc);
 
   void update(float delta);
 private:
   PingusMenu (const PingusMenu&);
   PingusMenu& operator= (const PingusMenu&);
 };
-
-
+
 #endif
 
 /* EOF */

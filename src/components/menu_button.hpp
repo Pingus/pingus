@@ -23,9 +23,8 @@
 #include "math/vector2i.hpp"
 #include "../gui/component.hpp"
 
-
 class PingusMenu;
-
+
 /** Framework for menu buttons */
 class MenuButton : public GUI::Component
 {
@@ -65,12 +64,13 @@ public:
 
   virtual void on_click ();
 
+  void set_pos(int x, int y);
+
 private:
   MenuButton (const MenuButton&);
   MenuButton& operator= (const MenuButton&);
 };
-
-
+
 #endif
 
 /* EOF */

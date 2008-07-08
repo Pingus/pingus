@@ -36,8 +36,7 @@
 #include "editor/editor_screen.hpp"
 #include "credits.hpp"
 
-PingusMenu::PingusMenu (PingusMenuManager* m)
-  : PingusSubMenu (m)
+PingusMenu::PingusMenu()
 {
   is_init = false;
     
@@ -69,7 +68,45 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
 
   logo = Sprite("core/misc/logo");
 
+  int w = Display::get_width();
+  int h = Display::get_height();
+
+  Sprite layer1("core/menu/layer1");
+  Sprite layer2("core/menu/layer2");
+  Sprite layer3("core/menu/layer3");
+  Sprite layer4("core/menu/layer4");
+  Sprite layer5("core/menu/layer5");
+
+  // We only need to scale the background main menu images if the screen 
+  // resolution is not default
+  if (w != default_screen_width && h != default_screen_height)
+    {
+      layer1.scale(w, 185 * h / default_screen_height);
+      layer2.scale(w, 362 * h / default_screen_height);
+      layer3.scale(w, 306 * h / default_screen_height);
+      layer4.scale(w, 171 * h / default_screen_height);
+      layer5.scale(302 * w / default_screen_width, 104 * h / default_screen_height);
+      
+      background.add_layer(layer1, 0, 0, 12, 0);
+      background.add_layer(layer2, 0, 150 * (float)h / default_screen_height, 25, 0);
+      background.add_layer(layer3, 0, 200 * (float)h / default_screen_height, 50, 0);
+      background.add_layer(layer4, 0, 429 * (float)h / default_screen_height, 100, 0);
+      background.add_layer(layer5, 0, 500 * (float)h / default_screen_height, 200, 0);
+    }
+  else
+    {
+      background.add_layer(layer1, 0, 0, 12, 0);
+      background.add_layer(layer2, 0, 150, 25, 0);
+      background.add_layer(layer3, 0, 200, 50, 0);
+      background.add_layer(layer4, 0, 429, 100, 0);
+      background.add_layer(layer5, 0, 500, 200, 0);
+    }
+
   help = _("..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: fullscreen   ::   F12: screenshot ::..");
+}
+
+PingusMenu::~PingusMenu()
+{
 }
 
 void
@@ -78,14 +115,10 @@ PingusMenu::show_credits()
   ScreenManager::instance()->push_screen(new Credits());
 }
 
-PingusMenu::~PingusMenu()
-{
-}
-
 void
 PingusMenu::do_quit()
 {
-  get_manager()->show_exit_menu ();
+  ScreenManager::instance ()->pop_screen ();
 }
 
 void
@@ -133,12 +166,20 @@ PingusMenu::on_resize(int w, int h)
 void
 PingusMenu::on_escape_press ()
 {
-  get_manager()->show_exit_menu ();
+  //FIXME: get_manager()->show_exit_menu ();
 }
 
 void
-PingusMenu::draw_foreground(DrawingContext& gc)
+PingusMenu::draw_background(DrawingContext& gc)
 {
+  background.draw(gc);
+
+  gc.draw_fillrect(0,
+                   Display::get_height () - 26,
+                   Display::get_width (),
+                   Display::get_height (),
+                   Color(0, 0, 0, 255));
+
   if (gc.get_height() == 480)
     {
       gc.draw(logo,
@@ -174,24 +215,6 @@ PingusMenu::draw_foreground(DrawingContext& gc)
 }
 
 void
-PingusMenu::load(const std::string &file, const std::string &filemask)
-{
-  // Level
-  if (filemask == ".pingus")
-    do_contrib(file);
-  // Worldmap
-  else if (filemask == ".worldmap")
-    do_start(file);
-  manager->pop_menu();
-}
-		
-void
-PingusMenu::cancel()
-{
-  manager->pop_menu();
-}
-
-void
 PingusMenu::on_click(MenuButton* button)
 {
   if (button == start_button)
@@ -221,7 +244,7 @@ PingusMenu::set_hint(const std::string& str)
 void
 PingusMenu::update(float delta)
 {
-  //text_scroll_offset += 100.0f * delta;
+  background.update(delta);
 }
 
 /* EOF */

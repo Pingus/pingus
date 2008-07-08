@@ -657,7 +657,7 @@ PingusMain::start_game ()
   else // start a normal game
     {
       pout(PINGUS_DEBUG_LOADING) << "starting normal game" << std::endl;
-      screen_manager.push_screen(new PingusMenuManager());
+      screen_manager.push_screen(new PingusMenu());
       pout(PINGUS_DEBUG_LOADING) << "done: starting normal game" << std::endl;
     }
 

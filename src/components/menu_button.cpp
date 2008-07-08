@@ -22,8 +22,7 @@
 #include "../gettext.h"
 
 #include "menu_button.hpp"
-
-
+
 MenuButton::MenuButton(PingusMenu* menu_,
                        const Vector2i& pos_,
                        const std::string& text_, const std::string& desc_)
@@ -132,5 +131,11 @@ MenuButton::is_at(int x, int y)
 	  && y < y_pos + int(surface_p.get_height()) / 2);
 }
 
-
+void
+MenuButton::set_pos(int x, int y)
+{
+  x_pos = x;
+  y_pos = y;
+}
+
 /* EOF */

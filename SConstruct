@@ -99,7 +99,6 @@ pingus_sources = [
 'src/surface.cpp',
 'src/collision_mask.cpp',
 
-'src/exit_menu.cpp', 
 'src/file_reader.cpp',
 'src/sexpr_file_reader.cpp', 
 'src/sexpr_file_writer.cpp', 
@@ -166,8 +165,6 @@ pingus_sources = [
 'src/pingus_demo.cpp', 
 'src/pingus_main.cpp', 
 'src/pingus_menu.cpp', 
-'src/pingus_menu_manager.cpp', 
-'src/pingus_sub_menu.cpp', 
 'src/plf_res_mgr.cpp', 
 'src/option_menu.cpp',
 'src/res_descriptor.cpp', 
