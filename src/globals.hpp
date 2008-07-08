@@ -22,8 +22,7 @@
 
 #include "pingus.hpp"
 #include <string>
-
-
+
 extern int         game_speed;                      ///< -t, --set-speed
 extern float       desired_fps;                     ///< -k, --set-fps
 extern bool        print_fps;                       ///< --print-fps
@@ -31,9 +30,6 @@ extern int         verbose;                         ///< -v, --verbose
 
 extern bool        music_enabled;                   ///< -m, --enable-music
 extern bool        sound_enabled;                   ///< -s, --enable-sound
-
-extern bool        enable_demo_recording;
-extern bool        play_demo;                       ///< --play-demo
 
 extern bool        debug_actions;                   ///< --debug-actions
 extern int         fast_forward_time_scale;         ///< how much faster the game runs in FF mode
@@ -52,16 +48,11 @@ extern bool        swcursor_enabled;                ///< --enable-swcursor
 
 extern std::string controller_file;                 ///< --controller
 
-extern bool        use_opengl;                      ///< --use-opengl
-extern bool        action_help;                     ///< --action-help
-extern bool        show_input_debug_screen;         ///<
-extern bool        render_preview;                  ///<
-
-extern std::string global_username;                 ///< The name of the currently logged in user
-extern std::string global_email;                    ///< The email address of the currently logged in user
-extern std::string default_language;                ///< The default language, which is used when the env var LANG is not set
+extern std::string  global_username;                 ///< The name of the currently logged in user
+extern std::string  global_email;                    ///< The email address of the currently logged in user
+extern std::string  default_language;                ///< The default language, which is used when the env var LANG is not set
 extern unsigned int pingus_debug_flags;              ///< Set some bits in this thing to get debug infos
-
+
 enum { PINGUS_DEBUG_ACTIONS     = (1 << 0),
        PINGUS_DEBUG_SOUND       = (1 << 1),
        PINGUS_DEBUG_GAMETIME    = (1 << 2),
@@ -78,8 +69,7 @@ enum { PINGUS_DEBUG_ACTIONS     = (1 << 0),
        PINGUS_DEBUG_DIRECTORIES = (1 << 13),
        PINGUS_DEBUG_ALL         = (~0)
      };
-
-
+
 #endif
 
 /* EOF */

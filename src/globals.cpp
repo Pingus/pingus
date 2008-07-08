@@ -23,8 +23,6 @@ bool        print_fps                       = false;
 int         verbose                         = 0;
 bool        music_enabled                   = true;
 bool        sound_enabled                   = true;
-bool        enable_demo_recording           = false;
-bool        play_demo                       = false;
 int         fast_forward_time_scale         = 4;
 bool        maintainer_mode                 = false;
 std::string demo_file;
@@ -38,9 +36,6 @@ int         screen_width                    = default_screen_width;
 int         screen_height                   = default_screen_height;
 bool        draw_collision_map              = false;
 bool        swcursor_enabled                = false;
-bool        action_help                     = true;
-bool        show_input_debug_screen         = false;
-bool        render_preview                  = false;
 
 std::string controller_file;
 
@@ -51,13 +46,5 @@ std::string default_language                = "en";
 unsigned int pingus_debug_flags              = 0;
 
 bool        fullscreen_enabled              = false;
-
-#if defined(WIN32) || defined(__APPLE__)
-// The clanSDL target is a little buggy on Windows and OSX - Use OpenGL by default
-bool        use_opengl                      = true;
-#else
-// Use the clanSDL target by default for systems other than Windows and OSX (aka Linux).
-bool        use_opengl                      = false;
-#endif
 
 /* EOF */

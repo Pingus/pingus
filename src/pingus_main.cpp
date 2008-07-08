@@ -286,9 +286,7 @@ PingusMain::parse_args(int argc, char** argv)
   argp.add_group(_("Debugging and experimental stuff:"));
   argp.add_option(334, "maintainer-mode",  "",  
                   _("Enables some features, only interesting to programmers"));
-  if (0)
-    argp.add_option(358, "worldmap", "",
-                    _("Load a custom worldmap"));
+
   argp.add_option('D', "debug",  "OPTION", 
                   _("Enable the output of debugging info, possible "
                     "OPTIONs are tiles, gametime, actions, sound, resources, gui, "
@@ -365,16 +363,6 @@ PingusMain::parse_args(int argc, char** argv)
               "under the terms of the GNU General Public License.\n"
               "For more information about these matters, see the files named COPYING." << std::endl;
             exit(EXIT_SUCCESS);
-            break;
-
-          case 'r': // -r, --enabled-demo-recording
-            enable_demo_recording = false;
-            break;
-          case 'p': // -p, --play-demo
-            play_demo = true;
-            demo_file = argp.get_argument();
-            if (verbose)
-              std::cout << "Using demofile: " << demo_file << std::endl;
             break;
           
           case 'f': // --fullscreen
@@ -508,10 +496,6 @@ PingusMain::parse_args(int argc, char** argv)
             break;
         }
     }
-
-  // make sure that we're not recording a demo while already playing one
-  if (play_demo)
-    enable_demo_recording = false;
 }
 
 // Get all filenames and directories
