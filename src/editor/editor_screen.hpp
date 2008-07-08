@@ -138,8 +138,9 @@ public:
 
   void exit();
 
-  void update_layout();
+  void resize(const Size&);
 
+  void update_layout();
 private:
   EditorScreen (const EditorScreen&);
   EditorScreen& operator= (const EditorScreen&);

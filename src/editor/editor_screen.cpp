@@ -503,6 +503,13 @@ EditorScreen::update_layout()
   file_save_dialog->set_rect(Rect(Vector2i(50, 50), Size(size.width  - 100, 
                                                          size.height - 100)));
 }
+
+void
+EditorScreen::resize(const Size& size)
+{
+  gui_manager->set_rect(Rect(Vector2i(0, 0), size));
+  update_layout();
+}
 
 } // namespace Editor 
 
