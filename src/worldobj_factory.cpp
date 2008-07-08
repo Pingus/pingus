@@ -97,7 +97,7 @@ WorldObjFactory::instance ()
       new WorldObjFactoryImpl<Liquid>("liquid");
       new WorldObjFactoryImpl<Hotspot>("hotspot");
       new WorldObjFactoryImpl<Entrance>("entrance");
-			new WorldObjFactoryImpl<WoodThing>("woodthing");
+      new WorldObjFactoryImpl<WoodThing>("woodthing");
       new WorldObjFactoryImpl<Exit>("exit");
 
       // traps
