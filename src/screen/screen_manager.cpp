@@ -20,7 +20,6 @@
 #include "../globals.hpp"
 #include "math/size.hpp"
 #include "pathname.hpp"
-#include "display/cursor.hpp"
 #include "display/display.hpp"
 #include "screen_manager.hpp"
 #include "../path_manager.hpp"
