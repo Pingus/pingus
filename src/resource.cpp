@@ -117,24 +117,33 @@ Resource::load_font(const std::string& res_name)
 Sprite
 Resource::load_thumb_sprite(const std::string& name)
 {
-  Sprite sprite(name);
-
-  Size thumb_size;
-  if (sprite.get_width() <= 48)
-    thumb_size.width = sprite.get_width();
+  Pathname thumb_path("thumbnails/" + name + ".png", Pathname::DATA_PATH);
+  if (thumb_path.exist())
+    {
+      std::cout << "Loading thumb from: " << thumb_path.str() << std::endl;
+      return Sprite(thumb_path);
+    }
   else
-    thumb_size.width = 48;
+    {
+      Sprite sprite(name);
 
-  if (sprite.get_height() <= 48)
-    thumb_size.height = sprite.get_height();
-  else
-    thumb_size.height = 48;
+      Size thumb_size;
+      if (sprite.get_width() <= 48)
+        thumb_size.width = sprite.get_width();
+      else
+        thumb_size.width = 48;
 
-  sprite.scale(thumb_size.width, thumb_size.height);
+      if (sprite.get_height() <= 48)
+        thumb_size.height = sprite.get_height();
+      else
+        thumb_size.height = 48;
 
-  sprite.set_hotspot(origin_top_left, (48 - sprite.get_width())/2, (48 - sprite.get_height())/2);
+      sprite.scale(thumb_size.width, thumb_size.height);
 
-  return sprite;
+      sprite.set_hotspot(origin_top_left, (48 - sprite.get_width())/2, (48 - sprite.get_height())/2);
+
+      return sprite;
+    }
 }
 
 /* EOF */
