@@ -21,7 +21,6 @@
 #include "pingus_error.hpp"
 #include "config.hpp"
 #include "system.hpp"
-#include "cheat.hpp"
 #include "gettext.h"
 
 
@@ -318,10 +317,6 @@ Config::set_value(const std::string& valueid, const std::string& value)
   else if (valueid == "maintainer-mode")
     {
       maintainer_mode = str_to_bool(value);
-    }
-  else if (valueid == "unlimited-actions")
-    {
-      Cheat::unlimited_actions = str_to_bool(value);
     }
   else if (valueid == "auto-scrolling")
     {

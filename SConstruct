@@ -49,7 +49,6 @@ pingus_sources = [
 'src/addon_menu.cpp', 
 'src/blitter.cpp',
 'src/capture_rectangle.cpp', 
-'src/cheat.cpp', 
 'src/collision_map.cpp', 
 'src/collider.cpp', 
 'src/config_manager.cpp', 

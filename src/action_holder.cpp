@@ -18,7 +18,6 @@
 #include "pingus_level.hpp"
 #include "pingu_action_factory.hpp"
 #include "action_holder.hpp"
-#include "cheat.hpp"
 
 using namespace Actions;
 
@@ -57,30 +56,22 @@ ActionHolder::set_actions (ActionName name, int available)
 void
 ActionHolder::push_action (ActionName name)
 {
-  if (!Cheat::unlimited_actions)
-    available_actions[name]++;
+  available_actions[name]++;
 }
 
 bool
 ActionHolder::pop_action (ActionName name)
 {
-  if (Cheat::unlimited_actions)
+  int& avail = available_actions[name];
+
+  if (avail > 0)
     {
+      --avail;
       return true;
     }
   else
     {
-      int& avail = available_actions[name];
-
-      if (avail > 0)
-        {
-          --avail;
-          return true;
-        }
-      else
-        {
-          return false;
-        }
+      return false;
     }
 }
 

@@ -15,7 +15,6 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "../globals.hpp"
-#include "../cheat.hpp"
 #include "action_button.hpp"
 #include "../server.hpp"
 #include "../game_session.hpp"
