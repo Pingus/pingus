@@ -213,15 +213,19 @@ WorldmapScreenEnterButton::on_click()
 WorldmapScreen::WorldmapScreen()
   : levelname_bg("core/worldmap/levelname_bg"),
     is_init(false),
-    exit_worldmap(false)
+    exit_worldmap(false),
+    close_button(0),
+    story_button(0),
+    credits_button(0),
+    enter_button(0)
 {
   // FIXME: a bit ugly because of the proteced member, but should work
   // FIXME: well enough. GUIScreen could also use multi-inheritage,
   // FIXME: but that could lead to member function name conflicts
   gui_manager->add(new WorldmapComponent(this));
-  gui_manager->add(new WorldmapScreenCloseButton(this));
-  gui_manager->add(new WorldmapScreenEnterButton(this));
-  gui_manager->add(new WorldmapScreenStoryButton(this));
+  gui_manager->add(close_button = new WorldmapScreenCloseButton(this));
+  gui_manager->add(enter_button = new WorldmapScreenEnterButton(this));
+  gui_manager->add(story_button = new WorldmapScreenStoryButton(this));
 }
 
 WorldmapScreen::~WorldmapScreen ()
@@ -305,6 +309,14 @@ void
 WorldmapScreen::show_end_story()
 {
   ScreenManager::instance()->push_screen(new StoryScreen(worldmap->get_worldmap().get_end_story()));
+}
+
+void
+WorldmapScreen::resize(const Size& size)
+{
+  close_button->set_pos(0, size.height - 37);
+  story_button->set_pos(0, 0);
+  enter_button->set_pos(size.width - 119, size.height - 37);
 }
 
 } // namespace WorldmapNS

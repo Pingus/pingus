@@ -23,6 +23,10 @@
 #include "../gui/gui_manager.hpp"
 #include "../screen/gui_screen.hpp"
 
+namespace GUI {
+class SurfaceButton;
+}
+
 class SceneContext;
 namespace WorldmapNS {
 
@@ -43,6 +47,11 @@ private:
 
   std::auto_ptr<Worldmap> worldmap;
   std::auto_ptr<Worldmap> new_worldmap;
+
+  GUI::SurfaceButton* close_button;
+  GUI::SurfaceButton* story_button;
+  GUI::SurfaceButton* credits_button;
+  GUI::SurfaceButton* enter_button;
 
 public:
   WorldmapScreen ();
@@ -72,6 +81,8 @@ public:
 
   void show_intro_story();
   void show_end_story();
+
+  void resize(const Size& size);
 private:
   /** Startup Hook of the Screen */
   void on_startup ();

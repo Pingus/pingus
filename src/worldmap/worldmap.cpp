@@ -50,7 +50,7 @@
 namespace WorldmapNS {
 
 Worldmap* Worldmap::current_ = 0; 
-
+
 Worldmap::Worldmap(const std::string& arg_filename)
   : filename(arg_filename),
     mouse_x(0),
@@ -377,7 +377,7 @@ Worldmap::get_height() const
 {
   return worldmap.get_height();
 }
-
+
 } // namespace WorldmapNS
 
 /* EOF */
