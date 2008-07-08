@@ -16,12 +16,13 @@
 
 #include "../globals.hpp"
 #include "../debug.hpp"
+#include "../display/display.hpp"
 #include "gui/gui_manager.hpp"
 #include "gui_screen.hpp"
-
-
+
 GUIScreen::GUIScreen()
-  : gui_manager (new GUI::GUIManager())
+  : Screen(Display::get_size()),
+    gui_manager(new GUI::GUIManager())
 {
 }
 
@@ -162,7 +163,8 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
 void
 GUIScreen::resize(const Size& size) 
 {
+  Screen::resize(size);
   gui_manager->set_rect(Rect(Vector2i(0, 0), size));
 }
-
+
 /* EOF */

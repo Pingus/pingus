@@ -20,11 +20,13 @@
 #include "fonts.hpp"
 #include "string_util.hpp"
 #include "display/drawing_context.hpp"
+#include "display/display.hpp"
 #include "font_description.hpp"
 #include "font_test_screen.hpp"
 
 FontTestScreen::FontTestScreen(const Pathname& fontfile)
-  : scrollx(0),
+  : Screen(Display::get_size()),
+    scrollx(0),
     scrolly(0),
     dark(true)
 {

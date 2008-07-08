@@ -183,11 +183,11 @@ ScreenManager::push_screen (Screen* screen)
 {
   if (!screens.empty())
     {
-      screens.back ()->on_shutdown ();
+      screens.back()->on_shutdown();
     }
 
-  screens.push_back (ScreenPtr(screen));
-  screen->on_startup ();
+  screens.push_back(ScreenPtr(screen));
+  screen->on_startup();
 }
 
 void
@@ -216,9 +216,12 @@ void
 ScreenManager::real_replace_screen (ScreenPtr ptr)
 {
   cached_action = CA_NONE;
-  screens.back ()->on_shutdown ();
-  screens.back () = ptr;
-  screens.back ()->on_startup ();
+  screens.back()->on_shutdown ();
+  screens.back() = ptr;
+
+  if (screens.back()->get_size() != Display::get_size())
+    screens.back()->resize(Display::get_size());
+  screens.back()->on_startup();
 }
 
 void
@@ -231,7 +234,9 @@ ScreenManager::real_pop_screen ()
 
   if (!screens.empty ())
     {
-      screens.back()->on_startup ();
+      if (screens.back()->get_size() != Display::get_size())
+        screens.back()->resize(Display::get_size());
+      screens.back()->on_startup();
     }
 }
 

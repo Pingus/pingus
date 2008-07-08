@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_SCREEN_HPP
 
 #include "SDL.h"
+#include "../math/size.hpp"
 
 namespace Input {
 class Event;
@@ -31,10 +32,11 @@ class DrawingContext;
     screens are the PingusMenu or a PingusGameSession */
 class Screen
 {
-private:
+protected:
+  Size size;
 
 public:
-  Screen () { }
+  Screen (const Size& size_) : size(size_) { }
   virtual ~Screen () {}
 
   /** Draw this screen @return true if draw was successfull, false if
@@ -53,7 +55,9 @@ public:
       newly pushed screen */
   virtual void on_shutdown () {}
 
-  virtual void resize(const Size&) {}
+  virtual void resize(const Size& s) { size = s; }
+
+  virtual Size get_size() const { return size; }
 
 private:
   Screen (const Screen&);

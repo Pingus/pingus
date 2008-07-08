@@ -76,6 +76,12 @@ Display::get_height()
   return screen->h;
 }
 
+Size
+Display::get_size()
+{
+  return Size(screen->w, screen->h);
+}
+
 void
 Display::clear()
 {

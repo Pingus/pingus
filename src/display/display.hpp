@@ -21,6 +21,7 @@
 #include "SDL.h"
 #include <list>
 #include <vector>
+#include "../math/size.hpp"
 
 class Vector2i;
 class Rect;
@@ -46,6 +47,7 @@ public:
 
   static int get_width();
   static int get_height();
+  static Size get_size();
 
   static void set_video_mode(int width, int height);
   
