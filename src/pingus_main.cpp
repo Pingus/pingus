@@ -26,6 +26,8 @@
 #include "string_util.hpp"
 #include "demo_session.hpp"
 #include "sexpr_file_reader.hpp"
+#include "fonts.hpp"
+#include "pingus_menu.hpp"
 
 #if defined(__APPLE__)
 /* Can't use the include, some type names conflict.
@@ -68,7 +70,6 @@ extern "C" {
 #include "savegame_manager.hpp"
 #include "stat_manager.hpp"
 #include "debug.hpp"
-#include "pingus_menu_manager.hpp"
 #include "resource.hpp"
 #include "pingu_action_factory.hpp"
 #include "credits.hpp"

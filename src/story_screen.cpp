@@ -23,7 +23,6 @@
 #include "screen/screen_manager.hpp"
 #include "gui/component.hpp"
 #include "math.hpp"
-#include "pingus_menu_manager.hpp"
 #include "fonts.hpp"
 #include "story_screen.hpp"
 #include "res_descriptor.hpp"
@@ -32,6 +31,7 @@
 #include "worldmap/worldmap_story.hpp"
 #include "stat_manager.hpp"
 #include "credits.hpp"
+#include "display/display.hpp"
 #include "sound/sound.hpp"
 
 class StoryScreenComponent : public GUI::Component

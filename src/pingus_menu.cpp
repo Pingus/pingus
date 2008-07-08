@@ -28,13 +28,13 @@
 #include "worldmap/worldmap.hpp"
 #include "worldmap/worldmap_screen.hpp"
 #include "screen/screen_manager.hpp"
-#include "pingus_menu_manager.hpp"
 #include "gui/gui_manager.hpp"
 #include "plf_res_mgr.hpp"
 #include "path_manager.hpp"
 #include "pathname.hpp"
 #include "editor/editor_screen.hpp"
 #include "credits.hpp"
+#include "pingus_menu.hpp"
 
 PingusMenu::PingusMenu()
 {

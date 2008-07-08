@@ -16,10 +16,11 @@
 
 #include "../globals.hpp"
 #include "../debug.hpp"
+#include "../fonts.hpp"
 #include "../sound/sound.hpp"
 #include "../resource.hpp"
-#include "../pingus_menu_manager.hpp"
 #include "../gettext.h"
+#include "../pingus_menu.hpp"
 
 #include "menu_button.hpp"
 
