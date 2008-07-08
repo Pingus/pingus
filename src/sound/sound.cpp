@@ -23,7 +23,7 @@
 #include "sound.hpp"
 
 namespace Sound {
-
+
 PingusSoundImpl * PingusSound::sound;
 
 void
@@ -75,32 +75,6 @@ PingusSound::play_sound(const std::string& name, float volume, float panning)
   sound->real_play_sound(name, volume, panning);
 }
 
-void
-PingusSound::play_sound(Sound::Name name, float volume, float panning)
-{
-  // FIXME: We need to return a handle to the sound
-
-  // This should be configurable via a .xml file
-  switch (name)
-    {
-    case Sound::DIGGER:
-      play_sound ("digger", volume, panning);
-      break;
-    case Sound::PLOP:
-      play_sound ("plop", volume, panning);
-      break;
-    case Sound::GOODIDEA:
-      play_sound ("goodidea", volume, panning);
-      break;
-    case Sound::OHNO:
-      play_sound ("ohno", volume, panning);
-      break;
-    case Sound::TICK:
-      play_sound ("tick", volume, panning);
-      break;
-    }
-}
-
 /** Load a sound file and play it immediately.
 
 @param name
@@ -118,7 +92,7 @@ PingusSound::stop_music()
   assert(sound);
   sound->real_stop_music();
 }
-
+
 } // namespace Sound
 
 /* EOF */

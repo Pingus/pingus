@@ -18,13 +18,12 @@
 #define HEADER_PINGUS_SOUND_HPP
 
 #include <string>
-#include "sounds.hpp"
 #include "sound_impl.hpp"
 
 namespace Sound {
 
 class PingusSoundImpl;
-
+
 class PingusSound
 {
 private:
@@ -47,13 +46,11 @@ public:
   static void play_music(const std::string & name, float volume = 1.0f, bool loop = true);
   static void stop_music();
 
-  static void play_sound(Sound::Name name, float volume = 1.0f, float panning = 0.0f);
-
 private:
   PingusSound (const PingusSound&);
   PingusSound& operator= (const PingusSound&);
 };
-
+
 } // namespace Sound
 
 #endif
