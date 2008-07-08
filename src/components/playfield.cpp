@@ -260,7 +260,6 @@ Playfield::scroll (int x, int y)
 void
 Playfield::update_layout() 
 {
-  std::cout << rect.get_width() << ", " << rect.get_height() << std::endl;
   state.set_size(rect.get_width(), rect.get_height());
   scene_context->set_rect(rect);
 }
