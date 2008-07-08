@@ -375,6 +375,8 @@ GameSession::get_pause() const
 void
 GameSession::resize(const Size& size)
 {
+  GUIScreen::resize(size);
+
   std::cout << "ReSize: " << size.width << ", " << size.height << std::endl;
 
   int world_width  = server->get_world()->get_width();

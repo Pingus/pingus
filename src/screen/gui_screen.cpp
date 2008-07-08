@@ -159,5 +159,10 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
     }
 }
 
+void
+GUIScreen::resize(const Size& size) 
+{
+  gui_manager->set_rect(Rect(Vector2i(0, 0), size));
+}
 
 /* EOF */

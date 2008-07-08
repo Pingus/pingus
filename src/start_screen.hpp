@@ -19,8 +19,7 @@
 
 #include "pingus_level.hpp"
 #include "screen/gui_screen.hpp"
-
-
+
 /** */
 class StartScreen : public GUIScreen
 {
@@ -38,13 +37,13 @@ public:
   void on_fast_forward_press();
   void on_escape_press();
 
-private:
+  void update_layout();
 
+private:
   StartScreen (const StartScreen&);
   StartScreen& operator= (const StartScreen&);
 };
-
-
+
 #endif
 
 /* EOF */

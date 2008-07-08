@@ -46,6 +46,8 @@ public:
                  const ResDescriptor& button_mouse_over_surface);
   virtual ~SurfaceButton ();
 
+  virtual void set_pos(int x, int y);
+
   virtual void draw (DrawingContext& gc);
   virtual bool is_at (int x, int y);
 

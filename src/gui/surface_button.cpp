@@ -97,6 +97,13 @@ SurfaceButton::on_primary_button_click (int x, int y)
   UNUSED_ARG(y);
 }
 
+void
+SurfaceButton::set_pos(int x, int y)
+{
+  x_pos = x;
+  y_pos = y;
+}
+
 } // namespace GUI
 
 /* EOF */

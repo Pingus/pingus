@@ -39,6 +39,7 @@ class StartScreenComponent : public GUI::Component
 private:
   PingusLevel plf;
   Sprite background;
+  Sprite blackboard;
   std::string time_str;
   std::string description;
 
@@ -95,6 +96,7 @@ class StartScreenAbortButton
 {
 private:
   StartScreen* parent;
+
 public:
   StartScreenAbortButton(StartScreen* p)
     : GUI::SurfaceButton(Display::get_width()/2 - 300,
@@ -123,31 +125,36 @@ public:
 };
 
 StartScreenComponent::StartScreenComponent(const PingusLevel& p)
-  : plf(p)
+  : plf(p),
+    background("core/menu/wood"),
+    blackboard("core/menu/blackboard")
 {
-  background = Sprite("core/menu/startscreenbg");
-  background.scale(Display::get_width(), Display::get_height());
   time_str = GameTime::ticks_to_realtime_string(plf.get_time());
 }
 
 void
 StartScreenComponent::draw(DrawingContext& gc)
 {
-  gc.draw(background, Display::get_width()/2.f, Display::get_height()/2.f);
+  // Paint the background wood panel
+  for(int y = 0; y < gc.get_height(); y += background.get_height())
+    for(int x = 0; x < gc.get_width(); x += background.get_width())
+      gc.draw(background, x, y);
 
-  int left_x  = Display::get_width()/2 - 150;
-  int right_x = Display::get_width()/2 + 150;
-  int y = Display::get_height()/2 + 40;
+  gc.draw(blackboard, gc.get_width()/2, gc.get_height()/2);
+
+  int left_x  = gc.get_width()/2 - 150;
+  int right_x = gc.get_width()/2 + 150;
+  int y = gc.get_height()/2 + 40;
 
   gc.print_center(Fonts::chalk_large,
-                  gc.get_width()/2,
-                  Display::get_height()/2 - 200,
+                  gc.get_width() /2,
+                  gc.get_height()/2 - 230,
                   _(plf.get_levelname()));
 
   gc.print_left(Fonts::chalk_normal,
-                Display::get_width()/2 - 290,
-                Display::get_height()/2 - 150,
-                format_description(800 - 230));
+                gc.get_width() /2 - 290,
+                gc.get_height()/2 - 170,
+                format_description(800 - 200));
 
   y += 32;
   y += 30;
@@ -164,8 +171,10 @@ StartScreenComponent::draw(DrawingContext& gc)
   //gc.print_left (Fonts::chalk_normal, left_x,  (y += 30), _("Difficulty:"));
   //gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(plf.get_difficulty()) + "/100");
 
-  gc.print_center(Fonts::chalk_small, Display::get_width()/2,
-                  Display::get_height()/2 + 270, _("Author: ") + plf.get_author());
+  gc.print_center(Fonts::chalk_small, 
+                  gc.get_width()/2,
+                  gc.get_height()/2 + 215,
+                  _("Author: ") + plf.get_author());
 
   if (maintainer_mode)
     gc.print_left(Fonts::chalk_small, 110, 430, _("Filename: ") + plf.get_resname());
@@ -230,6 +239,18 @@ void
 StartScreen::cancel_game()
 {
   ScreenManager::instance()->pop_screen();
+}
+
+void
+StartScreen::update_layout()
+{
+  std::cout << gui_manager->get_rect() << std::endl;
+  //: GUI::SurfaceButton(Display::get_width()/2 - 300,
+  //Display::get_height()/2 + 144,
+
+
+  //: GUI::SurfaceButton(Display::get_width()/2 + 225,
+  //Display::get_height()/2 + 125,
 }
 
 /* EOF */

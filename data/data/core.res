@@ -477,6 +477,16 @@
                     (image-file "../images/core/menu/down_arrow.png"))
 
                    (sprite
+                    (name "wood")
+                    (image-file "../images/core/menu/wood.png"))
+
+                   (sprite
+                    (name "blackboard")
+                    (origin "center")
+                    (offset 0 0)
+                    (image-file "../images/core/menu/blackboard.png"))
+
+                   (sprite
                     (name "startscreenbg")
                     (origin "center")
                     (offset 0 0)

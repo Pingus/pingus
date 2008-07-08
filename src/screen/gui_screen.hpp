@@ -56,6 +56,8 @@ public:
 
   virtual void on_action_axis_move (float) {}
 
+  virtual void resize(const Size& size);
+
 private:
   void process_button_event (const Input::ButtonEvent& event);
 
