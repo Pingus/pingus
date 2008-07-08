@@ -66,6 +66,7 @@ public:
 
   void on_startup();
 
+  void resize(const Size& size);
 private:
   PingusMenuManager (const PingusMenuManager&);
   PingusMenuManager& operator= (const PingusMenuManager&);

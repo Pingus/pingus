@@ -18,7 +18,6 @@
 #include "screen/screen_manager.hpp"
 #include "sound/sound.hpp"
 #include "resource.hpp"
-#include "blitter.hpp"
 #include "pingus_menu_manager.hpp"
 #include "globals.hpp"
 
@@ -31,29 +30,38 @@ PingusMenuManager::PingusMenuManager ()
 {
   int w = Display::get_width();
   int h = Display::get_height();
+
+  Sprite layer1("core/menu/layer1");
+  Sprite layer2("core/menu/layer2");
+  Sprite layer3("core/menu/layer3");
+  Sprite layer4("core/menu/layer4");
+  Sprite layer5("core/menu/layer5");
+
   // We only need to scale the background main menu images if the screen 
   // resolution is not default
   if (w != default_screen_width && h != default_screen_height)
     {
-      background.add_layer (Blitter::scale_surface_to_canvas(
-                                                             Resource::load_surface("core/menu/layer1"), w, 185 * h / default_screen_height), 0, 0, 12, 0);
-      background.add_layer (Blitter::scale_surface_to_canvas(
-                                                             Resource::load_surface("core/menu/layer2"), w, 362 * h / default_screen_height), 0, 150 * (float)h / default_screen_height, 25, 0);
-      background.add_layer (Blitter::scale_surface_to_canvas(
-                                                             Resource::load_surface("core/menu/layer3"), w, 306 * h / default_screen_height), 0, 200 * (float)h / default_screen_height, 50, 0);
-      background.add_layer (Blitter::scale_surface_to_canvas(
-                                                             Resource::load_surface("core/menu/layer4"), w, 171 * h / default_screen_height), 0, 429 * (float)h / default_screen_height, 100, 0);
-      background.add_layer (Blitter::scale_surface_to_canvas(
-                                                             Resource::load_surface("core/menu/layer5"), 302 * w / default_screen_width, 104 * h / default_screen_height), 0, 500 * (float)h / default_screen_height, 200, 0);
+      layer1.scale(w, 185 * h / default_screen_height);
+      layer2.scale(w, 362 * h / default_screen_height);
+      layer3.scale(w, 306 * h / default_screen_height);
+      layer4.scale(w, 171 * h / default_screen_height);
+      layer5.scale(302 * w / default_screen_width, 104 * h / default_screen_height);
+      
+      background.add_layer(layer1, 0, 0, 12, 0);
+      background.add_layer(layer2, 0, 150 * (float)h / default_screen_height, 25, 0);
+      background.add_layer(layer3, 0, 200 * (float)h / default_screen_height, 50, 0);
+      background.add_layer(layer4, 0, 429 * (float)h / default_screen_height, 100, 0);
+      background.add_layer(layer5, 0, 500 * (float)h / default_screen_height, 200, 0);
     }
   else
     {
-      background.add_layer(Sprite("core/menu/layer1"), 0, 0, 12, 0);
-      background.add_layer(Sprite("core/menu/layer2"), 0, 150, 25, 0);
-      background.add_layer(Sprite("core/menu/layer3"), 0, 200, 50, 0);
-      background.add_layer(Sprite("core/menu/layer4"), 0, 429, 100, 0);
-      background.add_layer(Sprite("core/menu/layer5"), 0, 500, 200, 0);
+      background.add_layer(layer1, 0, 0, 12, 0);
+      background.add_layer(layer2, 0, 150, 25, 0);
+      background.add_layer(layer3, 0, 200, 50, 0);
+      background.add_layer(layer4, 0, 429, 100, 0);
+      background.add_layer(layer5, 0, 500, 200, 0);
     }
+
   push_menu (&mainmenu);
 }
 
@@ -131,7 +139,7 @@ PingusMenuManager::current_menu ()
 void
 PingusMenuManager::show_exit_menu ()
 {
-  push_menu (&exitmenu);
+  push_menu(&exitmenu);
 }
 
 void
@@ -145,6 +153,12 @@ void
 PingusMenuManager::on_startup()
 {
   Sound::PingusSound::play_music("pingus-1.it");
+}
+
+void
+PingusMenuManager::resize(const Size& size)
+{
+  
 }
 
 /* EOF */
