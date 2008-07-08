@@ -20,7 +20,6 @@
 #include <signal.h>
 #include <locale.h>
 #include <iostream>
-//#include <physfs.h>
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
 #include "editor/editor_level.hpp"
@@ -182,9 +181,6 @@ PingusMain::apply_args()
   if (options.fullscreen.is_set())
     fullscreen_enabled = options.fullscreen.get();
 
-  if (options.resize.is_set())
-    resize_enabled = options.resize.get();
-
   if (options.swcursor.is_set())
     swcursor_enabled = options.swcursor.get();
 
@@ -244,8 +240,6 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Start in Window Mode"));
   argp.add_option('f', "fullscreen", "",
                   _("Start in Fullscreen"));
-  argp.add_option('R', "allow-resize", "",
-                  _("Allow Window resize (buggy)"));
   argp.add_option(346, "enable-swcursor", "",
                   _("Enable software cursor"));
   argp.add_option('g', "geometry", "{width}x{height}",  
@@ -385,10 +379,6 @@ PingusMain::parse_args(int argc, char** argv)
           
           case 'f': // --fullscreen
             cmd_options.fullscreen.set(true);
-            break;
-
-          case 'R': // --allow-resize
-            cmd_options.resize.set(true);
             break;
           
           case 'w': // --window

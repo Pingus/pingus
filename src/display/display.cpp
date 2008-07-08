@@ -50,10 +50,7 @@ Display::flip_display(bool sync)
 void
 Display::set_video_mode(int width, int height)
 {
-  Uint32 flags = 0;
-  
-  if (resize_enabled)
-    flags |= SDL_RESIZABLE;
+  Uint32 flags = SDL_RESIZABLE;
 
   if (fullscreen_enabled)
     flags |= SDL_FULLSCREEN;
