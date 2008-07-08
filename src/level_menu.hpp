@@ -21,9 +21,13 @@
 #include "sprite.hpp"
 #include "screen/gui_screen.hpp"
 
+namespace GUI {
+class SurfaceButton;
+} // namespace GUI
+
 class LevelSelector;
 class LevelsetSelector;
-
+
 /** */
 class LevelMenu : public GUIScreen
 {
@@ -32,10 +36,15 @@ private:
   int y_pos;
 
   Sprite background;
+  Sprite blackboard;
   Sprite ok_button;
 
   LevelSelector*    level_selector;
   LevelsetSelector* levelset_selector;
+
+  GUI::SurfaceButton* abort_button;
+  GUI::SurfaceButton* next_button;
+  GUI::SurfaceButton* prev_button;
 
 public:
   LevelMenu();
@@ -49,11 +58,13 @@ public:
   void next_page();
   void prev_page();
 
+  void resize(const Size& size);
+
 private:
   LevelMenu (const LevelMenu&);
   LevelMenu& operator= (const LevelMenu&);
 };
-
+
 #endif
 
 /* EOF */

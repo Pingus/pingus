@@ -33,7 +33,7 @@
 #include "globals.hpp"
 #include "gui/surface_button.hpp"
 #include "sound/sound.hpp"
-
+
 class LevelMenuAbortButton
   : public GUI::SurfaceButton
 {
@@ -41,9 +41,8 @@ private:
   LevelMenu* parent;
 
 public:
-  LevelMenuAbortButton(LevelMenu* p)
-    : GUI::SurfaceButton(Display::get_width()/2 - 300,
-                         Display::get_height()/2 + 144,
+  LevelMenuAbortButton(LevelMenu* p, int x, int y)
+    : GUI::SurfaceButton(x, y,
                          ResDescriptor("core/start/back"),
                          ResDescriptor("core/start/back_clicked"),
                          ResDescriptor("core/start/back_hover")),
@@ -340,34 +339,34 @@ public:
 
 LevelMenu::LevelMenu()
   : x_pos((Display::get_width()  - default_screen_width)/2),
-    y_pos((Display::get_height() - default_screen_height)/2)
+    y_pos((Display::get_height() - default_screen_height)/2),
+    background("core/menu/wood"),
+    blackboard("core/menu/blackboard")
 {
-  //background = Sprite("core/menu/filedialog");
-  background = Sprite("core/menu/startscreenbg");
-  background.scale(Display::get_width(), Display::get_height());
-
   ok_button  = Sprite("core/start/ok");
 
   levelset_selector = new LevelsetSelector(this, Rect(Vector2i(x_pos + 100, y_pos + 140), Size(600, 285)));
   level_selector    = new LevelSelector(this, Rect(Vector2i(x_pos + 100, y_pos + 160), Size(600, 256)));
 
-  gui_manager->add(new LevelScrollButton(Display::get_width()/2  + 160,
-                                         Display::get_height()/2 + 145,
-                                         "core/menu/arrow_left",
-                                         boost::bind(&LevelMenu::prev_page, this)));
+  gui_manager->add(prev_button = new LevelScrollButton(Display::get_width()/2  + 160,
+                                                       Display::get_height()/2 + 145,
+                                                       "core/menu/arrow_left",
+                                                       boost::bind(&LevelMenu::prev_page, this)));
 
-  gui_manager->add(new LevelScrollButton(Display::get_width()/2  + 230,
-                                         Display::get_height()/2 + 145,
-                                         "core/menu/arrow_right",
-                                         boost::bind(&LevelMenu::next_page, this)));
+  gui_manager->add(next_button = new LevelScrollButton(Display::get_width()/2  + 230,
+                                                       Display::get_height()/2 + 145,
+                                                       "core/menu/arrow_right",
+                                                       boost::bind(&LevelMenu::next_page, this)));
 
   gui_manager->add(levelset_selector);
   gui_manager->add(level_selector);
-  gui_manager->add(new LevelMenuAbortButton(this));
+  gui_manager->add(abort_button = new LevelMenuAbortButton(this, 
+                                                           Display::get_width()/2 - 300,
+                                                           Display::get_height()/2 + 144));
 
   level_selector->hide();
 }
-
+
 LevelMenu::~LevelMenu()
 {
 }
@@ -375,7 +374,12 @@ LevelMenu::~LevelMenu()
 void
 LevelMenu::draw_background(DrawingContext& gc)
 {
-  gc.draw(background, Vector2i(gc.get_width()/2, gc.get_height()/2));
+  // Paint the background wood panel
+  for(int y = 0; y < gc.get_height(); y += background.get_height())
+    for(int x = 0; x < gc.get_width(); x += background.get_width())
+      gc.draw(background, x, y);
+
+  gc.draw(blackboard, gc.get_width()/2, gc.get_height()/2);
 }
 
 void
@@ -425,6 +429,25 @@ LevelMenu::set_levelset(Levelset* levelset)
       levelset_selector->show();
       level_selector->hide();      
     }
+}
+
+void
+LevelMenu::resize(const Size& size)
+{
+  x_pos = (size.width  - default_screen_width)/2;
+  y_pos = (size.height - default_screen_height)/2;
+
+  levelset_selector->set_rect(Rect(Vector2i(x_pos + 100, y_pos + 140), Size(600, 285)));
+  level_selector   ->set_rect(Rect(Vector2i(x_pos + 100, y_pos + 160), Size(600, 256)));
+
+  prev_button->set_pos(size.width /2  + 160,
+                       size.height/2 + 145);
+
+  next_button->set_pos(size.width /2  + 230,
+                       size.height/2 + 145);
+
+  abort_button->set_pos(size.width /2 - 300,
+                        size.height/2 + 144);
 }
 
 /* EOF */
