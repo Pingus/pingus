@@ -20,7 +20,6 @@
 #include "direction.hpp"
 #include "pingu_enums.hpp"
 
-// Forward declarations
 class Vector3f;
 class ActionHolder;
 class PinguAction;
