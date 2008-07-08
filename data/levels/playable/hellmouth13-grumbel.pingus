@@ -566,15 +566,6 @@
         (image "groundpieces/remove/misc/rect1")
         (modifier "ROT0"))
       (position 491 486 550))
-    (infobox 
-      (position 485 518 4050)
-      (info-text "Infobox Test"))
-    (infobox 
-      (position 536 519 4050)
-      (info-text "Infobox Test"))
-    (infobox 
-      (position 200 615 0)
-      (info-text ))
     (groundpiece 
       (type "solid")
       (surface 
