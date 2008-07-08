@@ -201,8 +201,8 @@ StartScreen::StartScreen(const PingusLevel& arg_plf)
 {
   StartScreenComponent* comp = new StartScreenComponent(plf);
   gui_manager->add(comp);
-  gui_manager->add(new StartScreenOkButton(this));
-  gui_manager->add(new StartScreenAbortButton(this));
+  gui_manager->add(ok_button = new StartScreenOkButton(this));
+  gui_manager->add(abort_button = new StartScreenAbortButton(this));
 }
 
 StartScreen::~StartScreen()
@@ -242,15 +242,12 @@ StartScreen::cancel_game()
 }
 
 void
-StartScreen::update_layout()
+StartScreen::resize(const Size& size)
 {
-  std::cout << gui_manager->get_rect() << std::endl;
-  //: GUI::SurfaceButton(Display::get_width()/2 - 300,
-  //Display::get_height()/2 + 144,
+  GUIScreen::resize(size);
 
-
-  //: GUI::SurfaceButton(Display::get_width()/2 + 225,
-  //Display::get_height()/2 + 125,
+  abort_button->set_pos(size.width/2 - 300, size.height/2 + 144);
+  ok_button   ->set_pos(size.width/2 + 225, size.height/2 + 125);
 }
 
 /* EOF */

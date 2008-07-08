@@ -19,12 +19,19 @@
 
 #include "pingus_level.hpp"
 #include "screen/gui_screen.hpp"
+
+namespace GUI {
+class SurfaceButton;
+} // namespace GUI
+
 
 /** */
 class StartScreen : public GUIScreen
 {
 private:
   PingusLevel plf;
+  GUI::SurfaceButton* abort_button;
+  GUI::SurfaceButton* ok_button;
 
 public:
   StartScreen(const PingusLevel& plf);
@@ -37,7 +44,7 @@ public:
   void on_fast_forward_press();
   void on_escape_press();
 
-  void update_layout();
+  void resize(const Size&);
 
 private:
   StartScreen (const StartScreen&);
