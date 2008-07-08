@@ -38,6 +38,8 @@ class StoryScreenComponent : public GUI::Component
 {
 private:
   Sprite background;
+  Sprite blackboard;
+
   std::string display_text;
   float time_passed;
 
@@ -66,8 +68,8 @@ class StoryScreenContinueButton : public GUI::SurfaceButton
 private:
   StoryScreenComponent* story_comp;
 public:
-  StoryScreenContinueButton(StoryScreenComponent* arg_story_comp)
-    : GUI::SurfaceButton(Display::get_width()/2 + 220, Display::get_height()/2 + 160,
+  StoryScreenContinueButton(StoryScreenComponent* arg_story_comp, int x, int y)
+    : GUI::SurfaceButton(x, y,
                          ResDescriptor("core/misc/next"),
                          ResDescriptor("core/misc/next"),
                          ResDescriptor("core/misc/next_hover")),
@@ -92,8 +94,8 @@ class StoryScreenSkipButton : public GUI::SurfaceButton
 private:
   StoryScreenComponent* story_comp;
 public:
-  StoryScreenSkipButton(StoryScreenComponent* arg_story_comp)
-    : GUI::SurfaceButton(Display::get_width() - 4, Display::get_height() - 26,
+  StoryScreenSkipButton(StoryScreenComponent* arg_story_comp, int x, int y)
+    : GUI::SurfaceButton(x, y,
                          ResDescriptor(), ResDescriptor(), ResDescriptor()),
       story_comp(arg_story_comp)
   {
@@ -117,7 +119,7 @@ public:
 
   void on_click()
   {
-	story_comp->skip_story();
+    story_comp->skip_story();
   }
 };
 
@@ -126,8 +128,12 @@ StoryScreen::StoryScreen(FileReader reader)
 {
   story_comp = new StoryScreenComponent(story.get());
   gui_manager->add(story_comp);
-  gui_manager->add(new StoryScreenContinueButton(story_comp));
-  gui_manager->add(new StoryScreenSkipButton(story_comp));
+  gui_manager->add(continue_button = new StoryScreenContinueButton(story_comp, 
+                                                                   Display::get_width()/2 + 220, 
+                                                                   Display::get_height()/2 + 180));
+  gui_manager->add(skip_button     = new StoryScreenSkipButton(story_comp, 
+                                                               Display::get_width() - 4, 
+                                                               Display::get_height() - 26));
 }
 
 StoryScreen::~StoryScreen()
@@ -143,23 +149,28 @@ StoryScreenComponent::StoryScreenComponent (WorldmapNS::WorldmapStory *arg_story
 
   current_page = pages.back();
   page_surface = Sprite(current_page.image);
-  background   = Sprite("core/menu/startscreenbg");
-  
-  background.scale(Display::get_width(), Display::get_height());
+
+  background = Sprite("core/menu/wood");
+  blackboard = Sprite("core/menu/blackboard");
 }
 
 void
 StoryScreenComponent::draw (DrawingContext& gc)
 {
-  gc.draw(background, Vector2i(gc.get_width()/2, gc.get_height()/2));
+  // Paint the background wood panel
+  for(int y = 0; y < gc.get_height(); y += background.get_height())
+    for(int x = 0; x < gc.get_width(); x += background.get_width())
+      gc.draw(background, x, y);
 
-  gc.print_center(Fonts::chalk_large, Display::get_width()/2,
-                  Display::get_height()/2 - 200, story->get_title());
+  gc.draw(blackboard, gc.get_width()/2, gc.get_height()/2);
+
+  gc.print_center(Fonts::chalk_large, gc.get_width()/2,
+                  gc.get_height()/2 - 200, story->get_title());
   gc.draw(page_surface, Vector2i(gc.get_width()/2, gc.get_height()/2 - 65));
 
   gc.print_left(Fonts::chalk_normal,
-                Display::get_width()/2  - 280,
-                Display::get_height()/2 + 35,
+                gc.get_width()/2  - 280,
+                gc.get_height()/2 + 35,
                 display_text);
 }
 
@@ -261,6 +272,17 @@ StoryScreenComponent::next_text()
           ScreenManager::instance()->pop_screen();
         }
     }
+}
+
+void
+StoryScreen::resize(const Size& size)
+{
+  GUIScreen::resize(size);
+
+  continue_button->set_pos(size.width/2 + 220, 
+                           size.height/2 + 180);
+  skip_button->set_pos(size.width  - 4, 
+                       size.height - 26);
 }
 
 /* EOF */

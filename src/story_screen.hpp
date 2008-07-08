@@ -28,6 +28,10 @@ class StoryScreenComponent;
 namespace WorldmapNS {
 class WorldmapStory;
 } // namespace WorldmapNS
+
+namespace GUI {
+class SurfaceButton;
+}
 
 /** */
 class StoryScreen : public GUIScreen
@@ -35,6 +39,8 @@ class StoryScreen : public GUIScreen
 private:
   std::auto_ptr<WorldmapNS::WorldmapStory> story;
   StoryScreenComponent* story_comp;
+  GUI::SurfaceButton* continue_button;
+  GUI::SurfaceButton* skip_button;
 
 public:
   StoryScreen(FileReader reader);
@@ -43,6 +49,8 @@ public:
   void on_startup();
   void on_fast_forward_press ();
   void on_escape_press ();
+
+  void resize(const Size& size);
 
 private:
   StoryScreen (const StoryScreen&);
