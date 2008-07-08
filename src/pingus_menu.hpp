@@ -18,18 +18,18 @@
 #define HEADER_PINGUS_PINGUS_MENU_HPP
 
 #include <vector>
+#include <memory>
 #include "fonts.hpp"
 #include "pingus_sub_menu.hpp"
-#include "layer_manager.hpp"
 #include "screen/gui_screen.hpp"
-
-class SurfaceButton;
-class GameDelta;
 
 namespace GUI {
 class GUIManager;
 } // namespace GUI
 
+class SurfaceButton;
+class GameDelta;
+class LayerManager;
 class MenuButton;
 
 class PingusMenu : public GUIScreen
@@ -41,21 +41,21 @@ public:
   float text_scroll_offset;
 
 private:
-  LayerManager background;
+  std::auto_ptr<LayerManager> background;
   Sprite logo;
 
   MenuButton* start_button;
   MenuButton* quit_button;
   MenuButton* editor_button;
   MenuButton* contrib_button;
-  
-  void on_resize (int w, int h);
 
   void show_credits();
 
   void do_quit();
   void do_start(const std::string &filename);
   void do_edit();
+  
+  void create_background(const Size& size);
 
 public:
   PingusMenu();
@@ -71,6 +71,9 @@ public:
   void draw_background(DrawingContext& gc);
 
   void update(float delta);
+
+  void resize(const Size& size);
+
 private:
   PingusMenu (const PingusMenu&);
   PingusMenu& operator= (const PingusMenu&);

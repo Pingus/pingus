@@ -27,6 +27,7 @@
 #include "demo_session.hpp"
 #include "sexpr_file_reader.hpp"
 #include "fonts.hpp"
+#include "display/display.hpp"
 #include "pingus_menu.hpp"
 
 #if defined(__APPLE__)

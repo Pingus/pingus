@@ -34,30 +34,32 @@
 #include "pathname.hpp"
 #include "editor/editor_screen.hpp"
 #include "credits.hpp"
+#include "layer_manager.hpp"
 #include "pingus_menu.hpp"
 
 PingusMenu::PingusMenu()
 {
   is_init = false;
-    
-  start_button = new MenuButton(this, Vector2i(Display::get_width()  * 250 / default_screen_width,
-                                               Display::get_height() * 330 / default_screen_height),
+
+  Size size(Display::get_width(), Display::get_height());
+     
+  start_button = new MenuButton(this, Vector2i(size.width/2 - 150,
+                                               size.height/2 + 20),
                                 _("Story"),
                                 _("..:: Start the game ::.."));
 
-
-  editor_button = new MenuButton(this, Vector2i(Display::get_width()  * 550 / default_screen_width,
-                                                Display::get_height() * 330 / default_screen_height),
+  editor_button = new MenuButton(this, Vector2i(size.width/2 + 150,
+                                                size.height/2 + 20),
                                  _("Editor"),
                                  _("..:: Create your own levels ::.."));
 
-  quit_button = new MenuButton(this, Vector2i(Display::get_width()  * 550 / default_screen_width,
-                                              Display::get_height() * 410 / default_screen_height),
+  quit_button = new MenuButton(this, Vector2i(size.width/2 + 150, 
+                                              size.height/2 + 100),
                                _("Exit"),
                                _("..:: Bye, bye ::.."));
 
-  contrib_button = new MenuButton(this, Vector2i(Display::get_width()  * 250 / default_screen_width,
-                                                 Display::get_height() * 410 / default_screen_height),
+  contrib_button = new MenuButton(this, Vector2i(size.width/2 - 150,
+                                                 size.height/2 + 100),
                                   _("Levelsets"),
                                   _("..:: Play User Built levels ::.."));
 
@@ -68,39 +70,7 @@ PingusMenu::PingusMenu()
 
   logo = Sprite("core/misc/logo");
 
-  int w = Display::get_width();
-  int h = Display::get_height();
-
-  Sprite layer1("core/menu/layer1");
-  Sprite layer2("core/menu/layer2");
-  Sprite layer3("core/menu/layer3");
-  Sprite layer4("core/menu/layer4");
-  Sprite layer5("core/menu/layer5");
-
-  // We only need to scale the background main menu images if the screen 
-  // resolution is not default
-  if (w != default_screen_width && h != default_screen_height)
-    {
-      layer1.scale(w, 185 * h / default_screen_height);
-      layer2.scale(w, 362 * h / default_screen_height);
-      layer3.scale(w, 306 * h / default_screen_height);
-      layer4.scale(w, 171 * h / default_screen_height);
-      layer5.scale(302 * w / default_screen_width, 104 * h / default_screen_height);
-      
-      background.add_layer(layer1, 0, 0, 12, 0);
-      background.add_layer(layer2, 0, 150 * (float)h / default_screen_height, 25, 0);
-      background.add_layer(layer3, 0, 200 * (float)h / default_screen_height, 50, 0);
-      background.add_layer(layer4, 0, 429 * (float)h / default_screen_height, 100, 0);
-      background.add_layer(layer5, 0, 500 * (float)h / default_screen_height, 200, 0);
-    }
-  else
-    {
-      background.add_layer(layer1, 0, 0, 12, 0);
-      background.add_layer(layer2, 0, 150, 25, 0);
-      background.add_layer(layer3, 0, 200, 50, 0);
-      background.add_layer(layer4, 0, 429, 100, 0);
-      background.add_layer(layer5, 0, 500, 200, 0);
-    }
+  create_background(Size(Display::get_width(), Display::get_height()));
 
   help = _("..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: fullscreen   ::   F12: screenshot ::..");
 }
@@ -158,12 +128,6 @@ void PingusMenu::do_edit()
 }
 
 void
-PingusMenu::on_resize(int w, int h)
-{
-  pout << "Width: " << w << " Height: " << h << std::endl;
-}
-
-void
 PingusMenu::on_escape_press ()
 {
   //FIXME: get_manager()->show_exit_menu ();
@@ -172,7 +136,7 @@ PingusMenu::on_escape_press ()
 void
 PingusMenu::draw_background(DrawingContext& gc)
 {
-  background.draw(gc);
+  background->draw(gc);
 
   gc.draw_fillrect(0,
                    Display::get_height () - 26,
@@ -180,36 +144,26 @@ PingusMenu::draw_background(DrawingContext& gc)
                    Display::get_height (),
                    Color(0, 0, 0, 255));
 
-  if (gc.get_height() == 480)
-    {
-      gc.draw(logo,
-              Vector2i((gc.get_width()/2) - (logo.get_width()/2),
-                       20));
-    }
-  else
-    {
-      gc.draw(logo, 
-              Vector2i((gc.get_width()/2) - (logo.get_width()/2),
-                       Display::get_height()/10));
-    }
+  gc.draw(logo, Vector2i((gc.get_width()/2) - (logo.get_width()/2),
+                         gc.get_height()/2 - 250));
 
   gc.print_left(Fonts::pingus_small, 25, 
-                Display::get_height()-130,
+                gc.get_height()-130,
                 "Pingus "VERSION", Copyright (C) 1998-2007 Ingo Ruhnke <grumbel@gmx.de>\n"
                 "See the file AUTHORS for a complete list of contributors.\n");
   gc.print_left(Fonts::pingus_small, 25, 
-                Display::get_height()-80,
+                gc.get_height()-80,
                 "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are\n"
                 "welcome to redistribute it under certain conditions; see the file COPYING for details.\n");
 
-  gc.print_center(Fonts::pingus_small, Display::get_width() / 2,
-                  Display::get_height() - Fonts::pingus_small.get_height(),
+  gc.print_center(Fonts::pingus_small, gc.get_width() / 2,
+                  gc.get_height() - Fonts::pingus_small.get_height(),
                   help);
 
   if (0) // display hint
     {
-      gc.print_center(Fonts::pingus_small, Display::get_width() / 2,
-                      Display::get_height() - Fonts::pingus_small.get_height(),
+      gc.print_center(Fonts::pingus_small, gc.get_width() / 2,
+                      gc.get_height() - Fonts::pingus_small.get_height(),
                       hint);
     }
 }
@@ -244,7 +198,67 @@ PingusMenu::set_hint(const std::string& str)
 void
 PingusMenu::update(float delta)
 {
-  background.update(delta);
+  background->update(delta);
+}
+
+void
+PingusMenu::create_background(const Size& size)
+{
+  // Recreate the layer manager in the new size
+  background = std::auto_ptr<LayerManager>(new LayerManager());
+
+  Sprite layer1("core/menu/layer1");
+  Sprite layer2("core/menu/layer2");
+  Sprite layer3("core/menu/layer3");
+  Sprite layer4("core/menu/layer4");
+  Sprite layer5("core/menu/layer5");
+
+  int w = size.width;
+  int h = size.height;
+
+// We only need to scale the background main menu images if the screen 
+  // resolution is not default
+  if (w != default_screen_width && h != default_screen_height)
+    {
+      layer1.scale(w, 185 * h / default_screen_height);
+      layer2.scale(w, 362 * h / default_screen_height);
+      layer3.scale(w, 306 * h / default_screen_height);
+      layer4.scale(w, 171 * h / default_screen_height);
+      layer5.scale(302 * w / default_screen_width, 104 * h / default_screen_height);
+      
+      background->add_layer(layer1, 0, 0, 12, 0);
+      background->add_layer(layer2, 0, 150 * (float)h / default_screen_height, 25, 0);
+      background->add_layer(layer3, 0, 200 * (float)h / default_screen_height, 50, 0);
+      background->add_layer(layer4, 0, 429 * (float)h / default_screen_height, 100, 0);
+      background->add_layer(layer5, 0, 500 * (float)h / default_screen_height, 200, 0);
+    }
+  else
+    {
+      background->add_layer(layer1, 0, 0, 12, 0);
+      background->add_layer(layer2, 0, 150, 25, 0);
+      background->add_layer(layer3, 0, 200, 50, 0);
+      background->add_layer(layer4, 0, 429, 100, 0);
+      background->add_layer(layer5, 0, 500, 200, 0);
+    }  
+}
+
+void
+PingusMenu::resize(const Size& size)
+{
+  GUIScreen::resize(size);
+  create_background(size);
+
+  start_button->set_pos(size.width/2 - 150,
+                        size.height/2 + 20);
+    
+  editor_button->set_pos(size.width/2 + 150,
+                         size.height/2 + 20);
+
+  contrib_button->set_pos(size.width/2 - 150,
+                          size.height/2 + 100);
+    
+  quit_button->set_pos(size.width/2 + 150, 
+                       size.height/2 + 100);
 }
 
 /* EOF */
