@@ -23,7 +23,6 @@
 namespace GUI {
 class SurfaceButton;
 } // namespace GUI
-
 
 /** */
 class StartScreen : public GUIScreen

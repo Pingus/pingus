@@ -30,31 +30,28 @@
 #include "sound/sound.hpp"
 #include "game_time.hpp"
 #include "result_screen.hpp"
-
-
+
 class ResultScreenComponent : public GUI::Component
 {
 public:
   Result result;
   Sprite background;
+  Sprite blackboard;
   std::string time_str;
-
-  std::vector<Sprite> chalk_pingus;
 
   ResultScreenComponent(Result arg_result);
   virtual ~ResultScreenComponent() {}
   void draw(DrawingContext& gc) ;
 };
-
+
 class ResultScreenOkButton
   : public GUI::SurfaceButton
 {
 private:
   ResultScreen* parent;
 public:
-  ResultScreenOkButton(ResultScreen* p)
-    : GUI::SurfaceButton(Display::get_width()/2 + 225,
-                         Display::get_height()/2 + 125,
+  ResultScreenOkButton(ResultScreen* p, int x, int y)
+    : GUI::SurfaceButton(x, y,
                          ResDescriptor("core/start/ok"),
                          ResDescriptor("core/start/ok_clicked"),
                          ResDescriptor("core/start/ok_hover")),
@@ -73,16 +70,15 @@ public:
     Sound::PingusSound::play_sound("yipee");
   }
 };
-
+
 class ResultScreenAbortButton
   : public GUI::SurfaceButton
 {
 private:
   ResultScreen* parent;
 public:
-  ResultScreenAbortButton(ResultScreen* p)
-    : GUI::SurfaceButton(Display::get_width()/2 - 278,
-                         Display::get_height()/2 + 144,
+  ResultScreenAbortButton(ResultScreen* p, int x, int y)
+    : GUI::SurfaceButton(x, y,
                          ResDescriptor("core/start/back"),
                          ResDescriptor("core/start/back_clicked"),
                          ResDescriptor("core/start/back_hover")),
@@ -106,16 +102,14 @@ public:
     Sound::PingusSound::play_sound ("tick");
   }
 };
-
-class ResultScreenRetryButton
-  : public GUI::SurfaceButton
+
+class ResultScreenRetryButton : public GUI::SurfaceButton
 {
 private:
   ResultScreen* parent;
 public:
-  ResultScreenRetryButton(ResultScreen* p)
-    : GUI::SurfaceButton(Display::get_width()/2 + 225,
-                         Display::get_height()/2 + 125,
+  ResultScreenRetryButton(ResultScreen* p, int x, int y)
+    : GUI::SurfaceButton(x, y,
                          ResDescriptor("core/start/ok"),
                          ResDescriptor("core/start/ok_clicked"),
                          ResDescriptor("core/start/ok_hover")),
@@ -145,18 +139,12 @@ public:
     Sound::PingusSound::play_sound ("tick");
   }
 };
-
+
 ResultScreenComponent::ResultScreenComponent(Result arg_result)
-  : result(arg_result)
-{
-  background = Sprite("core/menu/startscreenbg");
-  background.scale(Display::get_width(), Display::get_height());
-  
-  chalk_pingus.push_back(Sprite("core/misc/chalk_pingu1"));
-  chalk_pingus.push_back(Sprite("core/misc/chalk_pingu2"));
-  chalk_pingus.push_back(Sprite("core/misc/chalk_pingu3"));
-  chalk_pingus.push_back(Sprite("core/misc/chalk_pingu4"));
-
+  : result(arg_result),
+    background("core/menu/wood"),
+    blackboard("core/menu/blackboard")
+{   
   if (result.max_time == -1)
     time_str = "-";
   else
@@ -166,7 +154,12 @@ ResultScreenComponent::ResultScreenComponent(Result arg_result)
 void
 ResultScreenComponent::draw(DrawingContext& gc)
 {
-  gc.draw(background, Vector2i(gc.get_width()/2, gc.get_height()/2));
+  // Paint the background wood panel
+  for(int y = 0; y < gc.get_height(); y += background.get_height())
+    for(int x = 0; x < gc.get_width(); x += background.get_width())
+      gc.draw(background, x, y);
+
+  gc.draw(blackboard, gc.get_width()/2, gc.get_height()/2);
 
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, 
                   Display::get_height()/2 - 200,
@@ -221,14 +214,6 @@ ResultScreenComponent::draw(DrawingContext& gc)
   gc.print_center(Fonts::chalk_normal, gc.get_width()/2,
                   Display::get_height()/2 - 70, message);
 
-
-#if 0
-  for (int i = 0; i < result.saved; ++i)
-    {
-      gc.draw(chalk_pingus[rand() % chalk_pingus.size()], 230 + i * 15, 210);
-    }
-#endif
-
   int left_x  = Display::get_width()/2 - 100;
   int right_x = Display::get_width()/2 + 100;
   int y = Display::get_height()/2 + 10;
@@ -254,14 +239,22 @@ ResultScreen::ResultScreen(Result arg_result)
   ResultScreenComponent* comp = new ResultScreenComponent(result);
   gui_manager->add(comp);
 
+  ok_button = abort_button = retry_button = 0;
+
   if (result.success())
     {
-      gui_manager->add(new ResultScreenOkButton(this));
+      gui_manager->add(ok_button = new ResultScreenOkButton(this, 
+                                                            Display::get_width()/2 + 225,
+                                                            Display::get_height()/2 + 125));
     }
   else
     {
-      gui_manager->add(new ResultScreenAbortButton(this));
-      gui_manager->add(new ResultScreenRetryButton(this));
+      gui_manager->add(abort_button = new ResultScreenAbortButton(this,
+                                                                  Display::get_width()/2 - 278,
+                                                                  Display::get_height()/2 + 144));
+      gui_manager->add(retry_button = new ResultScreenRetryButton(this,
+                                                                  Display::get_width()/2 + 225,
+                                                                  Display::get_height()/2 + 125));
     }
 
   //gui_manager->add(new GUI::SurfaceButton(500, 500, cancel_desc, cancel_desc, cancel_desc), true);
@@ -313,5 +306,19 @@ ResultScreen::on_escape_press()
   close_screen();
 }
 
+void
+ResultScreen::resize(const Size& size)
+{
+  GUIScreen::resize(size);
 
+  if (ok_button)
+    ok_button->set_pos(size.width/2 + 225, size.height/2 + 125);
+
+  if (abort_button)
+      abort_button->set_pos(size.width/2 - 278, size.height/2 + 144);
+
+  if (retry_button)  
+    retry_button->set_pos(size.width/2 + 225, size.height/2 + 125);
+}
+
 /* EOF */

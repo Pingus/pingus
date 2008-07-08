@@ -20,12 +20,19 @@
 #include "result.hpp"
 #include "screen/gui_screen.hpp"
 
-
+namespace GUI {
+class SurfaceButton;
+} // namespace GUI
+
 /** */
 class ResultScreen : public GUIScreen
 {
 private:
   Result result;
+  GUI::SurfaceButton*   ok_button;
+    GUI::SurfaceButton* abort_button;
+    GUI::SurfaceButton* retry_button;
+
 public:
   ResultScreen(Result result);
   void on_startup();
@@ -36,12 +43,13 @@ public:
 
   void retry_level();
   void close_screen();
+
+  void resize(const Size&);
 private:
   ResultScreen (const ResultScreen&);
   ResultScreen& operator= (const ResultScreen&);
 };
-
-
+
 #endif
 
 /* EOF */
