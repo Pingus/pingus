@@ -141,8 +141,10 @@ ScreenManager::update(float delta)
 ScreenPtr
 ScreenManager::get_current_screen()
 {
-  assert(!screens.empty());
-  return screens.back();
+  if (screens.empty())
+    return ScreenPtr();
+  else
+    return screens.back();
 }
 
 ScreenManager*
@@ -201,6 +203,9 @@ ScreenManager::replace_screen (Screen* screen)
 void
 ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
 {
+  if (!old_screen.get() || !new_screen.get())
+    return;
+  
   Uint32 last_ticks = SDL_GetTicks();
   float progress = 0.0f;
   while (progress <= 1.0f)
