@@ -741,7 +741,7 @@ void
 PingusMain::on_exit_press()
 {
   std::cout << "Exit pressed" << std::endl;
-  ScreenManager::instance()->clear();
+  ScreenManager::instance()->pop_all_screens();
 }
 
 void

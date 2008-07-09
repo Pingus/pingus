@@ -53,12 +53,6 @@ private:
       or replaced) */
   std::vector<ScreenPtr> screens;
 
-  /** the screen that was used in the last update() */
-  ScreenPtr last_screen;
-
-  enum { CA_NONE, CA_POP, CA_POP_ALL, CA_REPLACE, CA_CLEAR } cached_action;
-  ScreenPtr replace_screen_arg;
-
 public:
   ScreenManager ();
   ~ScreenManager();
@@ -67,22 +61,21 @@ public:
 
   /** Start the screen manager and let it take control, this will
       not return until the somebody signals a quit() */
-  void display ();
+  void display();
+
+  void update(float delta);
 
   /** Replace the current screen */
-  void replace_screen (Screen*);
+  void replace_screen(Screen*);
 
   /** Add a screen on top of another screen */
-  void push_screen (Screen*);
+  void push_screen(Screen*);
 
   /** Remove the current screen and fall back to the last one */
-  void pop_screen ();
+  void pop_screen();
 
   /** Remove all screens */
   void pop_all_screens();
-
-  /** Remove all screens from the stack */
-  void clear();
 
   /** @return a pointer to the current Screen */
   ScreenPtr get_current_screen();
@@ -90,22 +83,11 @@ public:
   void show_swcursor(bool v);
   
 private:
-  void real_clear();
-
-  /** Replace the current screen */
-  void real_replace_screen (ScreenPtr);
-
-  /** Remove the current screen and fall back to the last one */
-  void real_pop_screen ();
-
-  /** Remove all screens */
-  void real_pop_all_screens();
-
   /** FadeOver test*/
-  void fade_over (ScreenPtr old_screen, ScreenPtr new_screen);
+  void fade_over(ScreenPtr old_screen, ScreenPtr new_screen);
 
 public:
-  static ScreenManager* instance ();
+  static ScreenManager* instance();
 
 private:
   ScreenManager (const ScreenManager&);

@@ -15,10 +15,9 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "globals.hpp"
-
-
+
 int         game_speed                      = 20;
-float         desired_fps                     = 40;
+float       desired_fps                     = 40;
 bool        print_fps                       = false;
 int         verbose                         = 0;
 bool        music_enabled                   = true;
@@ -46,5 +45,5 @@ std::string default_language                = "en";
 unsigned int pingus_debug_flags              = 0;
 
 bool        fullscreen_enabled              = false;
-
+
 /* EOF */
