@@ -16,6 +16,7 @@
 
 #include "SDL.h"
 #include <iostream>
+#include <fstream>
 #include "../globals.hpp"
 #include "math/size.hpp"
 #include "pathname.hpp"
@@ -27,7 +28,114 @@
 #include "../display/drawing_context.hpp"
 #include "../input/controller.hpp"
 #include "../input/manager.hpp"
+
+template<class C>
+void write(std::ostream& out, C value)
+{
+  out.write(reinterpret_cast<char*>(&value), sizeof(value));
+}
 
+template<class C>
+void read(std::istream& out, C& value)
+{
+  out.read(reinterpret_cast<char*>(&value), sizeof(value));
+}
+
+void write_events(std::ostream& out, const std::vector<Input::Event>& events)
+{
+  write(out, events.size());
+  for(std::vector<Input::Event>::const_iterator i = events.begin(); 
+      i != events.end();
+      ++i)
+    {
+      write(out, *i);
+    }
+}
+
+void read_events(std::istream& out, std::vector<Input::Event>& events)
+{
+  std::vector<Input::Event>::size_type len;
+  read(out, len);
+  for(std::vector<Input::Event>::size_type i = 0; i < len; ++i)
+    {
+      Input::Event event;
+      read(out, event);
+      events.push_back(event);
+    }
+}
+
+void read_event(std::istream& out, Input::Event& event)
+{
+  read(out, event.type);
+  switch(event.type)
+    {
+      case Input::BUTTON_EVENT_TYPE:
+        read(out, event.button.name);
+        read(out, event.button.state);
+        break;
+
+      case Input::POINTER_EVENT_TYPE:
+        read(out, event.pointer.name);
+        read(out, event.pointer.x);
+        read(out, event.pointer.y);
+        break;
+
+      case Input::AXIS_EVENT_TYPE:
+        read(out, event.axis.name);
+        read(out, event.axis.dir);
+        break;
+
+      case Input::SCROLLER_EVENT_TYPE:
+        read(out, event.scroll.name);
+        read(out, event.scroll.x_delta);
+        read(out, event.scroll.y_delta);
+        break;
+        
+      case Input::KEYBOARD_EVENT_TYPE:
+        read(out, event.keyboard.key);
+        break;
+
+      default:
+        assert(!"Unknown Event type");
+    }
+}
+
+void write_event(std::ostream& out, const Input::Event& event)
+{
+  write(out, event.type);
+  switch(event.type)
+    {
+      case Input::BUTTON_EVENT_TYPE:
+        write(out, event.button.name);
+        write(out, event.button.state);
+        break;
+
+      case Input::POINTER_EVENT_TYPE:
+        write(out, event.pointer.name);
+        write(out, event.pointer.x);
+        write(out, event.pointer.y);
+        break;
+
+      case Input::AXIS_EVENT_TYPE:
+        write(out, event.axis.name);
+        write(out, event.axis.dir);
+        break;
+
+      case Input::SCROLLER_EVENT_TYPE:
+        write(out, event.scroll.name);
+        write(out, event.scroll.x_delta);
+        write(out, event.scroll.y_delta);
+        break;
+        
+      case Input::KEYBOARD_EVENT_TYPE:
+        write(out, event.keyboard.key);
+        break;
+
+      default:
+        assert(!"Unknown Event type");
+    }
+}
+
 ScreenManager* ScreenManager::instance_ = 0;
 
 ScreenManager::ScreenManager()
@@ -65,6 +173,12 @@ ScreenManager::display()
     {
       Uint32 ticks = SDL_GetTicks();
       float delta  = float(ticks - last_ticks)/1000.0f;
+      
+      if (0)
+        if (0)
+          write(std::cerr, delta);
+        else
+          read(std::cin, delta);
 
       // previous frame took more than one second
       if (delta > 1.0)
@@ -98,11 +212,25 @@ ScreenManager::update(float delta)
             
   // update the input, break away as soon as the current screen changed
   input_manager->update(delta);
-  std::vector<Input::Event> events = input_controller->poll_events();
+  std::vector<Input::Event> events;
+
+  if (1)
+    {
+      events = input_controller->poll_events(); 
+      //write_events(std::cerr, events);
+    }
+  else
+    {
+      read_events(std::cin, events);
+    }
+
   for(std::vector<Input::Event>::iterator i = events.begin(); 
       i != events.end();
       ++i)
     {
+      if (i->type == Input::POINTER_EVENT_TYPE && i->pointer.name == Input::STANDARD_POINTER)
+        mouse_pos = Vector2f(i->pointer.x, i->pointer.y);                 
+
       last_screen->update(*i);
       if (last_screen != get_current_screen())
         {
@@ -126,7 +254,6 @@ ScreenManager::update(float delta)
 
       if (swcursor_enabled)
         {
-          Vector2f mouse_pos = Input::Controller::current()->get_pointer(Input::STANDARD_POINTER)->get_pos();
           cursor.draw(mouse_pos.x, mouse_pos.y, Display::get_screen());
         }
 
@@ -162,7 +289,6 @@ ScreenManager::push_screen (Screen* screen)
   screens.push_back(ScreenPtr(screen));
   screen->on_startup();
 }
-
 void
 ScreenManager::pop_screen()
 {

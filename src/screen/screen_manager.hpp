@@ -21,6 +21,7 @@
 #include <memory>
 #include <boost/smart_ptr.hpp>
 #include <vector>
+#include "math/vector2f.hpp"
 #include "sprite.hpp"
 
 namespace Input {
@@ -52,6 +53,8 @@ private:
       which tells if the screen should be deleted onces it got poped
       or replaced) */
   std::vector<ScreenPtr> screens;
+
+  Vector2f mouse_pos;
 
 public:
   ScreenManager ();
