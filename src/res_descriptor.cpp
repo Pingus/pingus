@@ -28,16 +28,21 @@
 */
 
 ResDescriptor::ResDescriptor()
+  : modifier(ResourceModifierNS::ROT0)
 {
-  res_name = "";
-  modifier = ResourceModifierNS::ROT0;
+}
+
+ResDescriptor::ResDescriptor(const std::string& res_name_)
+  : res_name(res_name_),
+    modifier(ResourceModifierNS::ROT0)
+{
 }
 
 ResDescriptor::ResDescriptor(const std::string& arg_res_name,
 			     ResourceModifierNS::ResourceModifier arg_modifier)
+  : res_name(arg_res_name),
+    modifier(arg_modifier)
 {
-  res_name = arg_res_name;
-  modifier = arg_modifier;
 }
 
 bool

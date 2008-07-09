@@ -60,9 +60,9 @@ public:
   StartScreenOkButton(StartScreen* p)
     : GUI::SurfaceButton(Display::get_width()/2 + 225,
                          Display::get_height()/2 + 125,
-                         ResDescriptor("core/start/ok"),
-                         ResDescriptor("core/start/ok_clicked"),
-                         ResDescriptor("core/start/ok_hover")),
+                         "core/start/ok",
+                         "core/start/ok_clicked",
+                         "core/start/ok_hover"),
       parent(p)
   {
   }
@@ -101,9 +101,9 @@ public:
   StartScreenAbortButton(StartScreen* p)
     : GUI::SurfaceButton(Display::get_width()/2 - 300,
                          Display::get_height()/2 + 144,
-                         ResDescriptor("core/start/back"),
-                         ResDescriptor("core/start/back_clicked"),
-                         ResDescriptor("core/start/back_hover")),
+                         "core/start/back",
+                         "core/start/back_clicked",
+                         "core/start/back_hover"),
       parent(p)
   {
   }

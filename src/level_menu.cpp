@@ -43,9 +43,9 @@ private:
 public:
   LevelMenuAbortButton(LevelMenu* p, int x, int y)
     : GUI::SurfaceButton(x, y,
-                         ResDescriptor("core/start/back"),
-                         ResDescriptor("core/start/back_clicked"),
-                         ResDescriptor("core/start/back_hover")),
+                         "core/start/back",
+                         "core/start/back_clicked",
+                         "core/start/back_hover"),
       parent(p)
   {
   }
@@ -75,9 +75,9 @@ private:
 public:
   LevelScrollButton(int x, int y, const std::string& str, boost::function<void (void)> callback_)
     : GUI::SurfaceButton(x, y,
-                         ResDescriptor(str),
-                         ResDescriptor(str + "_pressed"),
-                         ResDescriptor(str + "_hover")),
+                         str,
+                         str + "_pressed",
+                         str + "_hover"),
       callback(callback_)
   {
   }

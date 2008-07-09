@@ -19,13 +19,12 @@
 #include "../display/drawing_context.hpp"
 #include "surface_button.hpp"
 
-
 namespace GUI {
-
+
 SurfaceButton::SurfaceButton (int arg_x_pos, int arg_y_pos,
-			      const ResDescriptor& arg_button_surface,
-			      const ResDescriptor& arg_button_pressed_surface,
-			      const ResDescriptor& arg_button_mouse_over_surface)
+			      const std::string& arg_button_surface,
+			      const std::string& arg_button_pressed_surface,
+			      const std::string& arg_button_mouse_over_surface)
   : x_pos (arg_x_pos), y_pos (arg_y_pos), pressed (false), mouse_over (false)
 {
   button_surface            = Sprite(arg_button_surface);
@@ -103,7 +102,7 @@ SurfaceButton::set_pos(int x, int y)
   x_pos = x;
   y_pos = y;
 }
-
+
 } // namespace GUI
 
 /* EOF */

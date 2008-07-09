@@ -70,9 +70,9 @@ private:
 public:
   StoryScreenContinueButton(StoryScreenComponent* arg_story_comp, int x, int y)
     : GUI::SurfaceButton(x, y,
-                         ResDescriptor("core/misc/next"),
-                         ResDescriptor("core/misc/next"),
-                         ResDescriptor("core/misc/next_hover")),
+                         "core/misc/next",
+                         "core/misc/next",
+                         "core/misc/next_hover"),
       story_comp(arg_story_comp)
   {
   }
@@ -91,12 +91,11 @@ public:
 
 class StoryScreenSkipButton : public GUI::SurfaceButton
 {
-private:
+private: 
   StoryScreenComponent* story_comp;
 public:
   StoryScreenSkipButton(StoryScreenComponent* arg_story_comp, int x, int y)
-    : GUI::SurfaceButton(x, y,
-                         ResDescriptor(), ResDescriptor(), ResDescriptor()),
+    : GUI::SurfaceButton(x, y, "", "", ""), // FIXME: Little fugly way to do a text button
       story_comp(arg_story_comp)
   {
   }

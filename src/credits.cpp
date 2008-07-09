@@ -37,9 +37,9 @@ public:
   CreditsOkButton(Credits* p)
     : GUI::SurfaceButton(Display::get_width()/2 + 225,
                          Display::get_height()/2 + 125,
-                         ResDescriptor("core/start/ok"),
-                         ResDescriptor("core/start/ok_clicked"),
-                         ResDescriptor("core/start/ok_hover")),
+                         "core/start/ok",
+                         "core/start/ok_clicked",
+                         "core/start/ok_hover"),
       parent(p)
   {
   }

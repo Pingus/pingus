@@ -29,8 +29,9 @@ public:
   ResourceModifierNS::ResourceModifier modifier;
 
   ResDescriptor ();
+  ResDescriptor (const std::string& res_name);
   ResDescriptor (const std::string& res_name, 
-		 ResourceModifierNS::ResourceModifier modifier = ResourceModifierNS::ROT0);
+		 ResourceModifierNS::ResourceModifier modifier);
 
   bool operator< (const ResDescriptor&) const;
 };

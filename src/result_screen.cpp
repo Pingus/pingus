@@ -52,9 +52,9 @@ private:
 public:
   ResultScreenOkButton(ResultScreen* p, int x, int y)
     : GUI::SurfaceButton(x, y,
-                         ResDescriptor("core/start/ok"),
-                         ResDescriptor("core/start/ok_clicked"),
-                         ResDescriptor("core/start/ok_hover")),
+                         "core/start/ok",
+                         "core/start/ok_clicked",
+                         "core/start/ok_hover"),
       parent(p)
   {
   }
@@ -79,9 +79,9 @@ private:
 public:
   ResultScreenAbortButton(ResultScreen* p, int x, int y)
     : GUI::SurfaceButton(x, y,
-                         ResDescriptor("core/start/back"),
-                         ResDescriptor("core/start/back_clicked"),
-                         ResDescriptor("core/start/back_hover")),
+                         "core/start/back",
+                         "core/start/back_clicked",
+                         "core/start/back_hover"),
       parent(p)
   {
   }
@@ -110,9 +110,9 @@ private:
 public:
   ResultScreenRetryButton(ResultScreen* p, int x, int y)
     : GUI::SurfaceButton(x, y,
-                         ResDescriptor("core/start/ok"),
-                         ResDescriptor("core/start/ok_clicked"),
-                         ResDescriptor("core/start/ok_hover")),
+                         "core/start/ok",
+                         "core/start/ok_clicked",
+                         "core/start/ok_hover"),
       parent(p)
   {
   }
@@ -233,9 +233,6 @@ ResultScreenComponent::draw(DrawingContext& gc)
 ResultScreen::ResultScreen(Result arg_result)
   : result(arg_result)
 {
-  ResDescriptor ok_desc("core/result/ok");
-  ResDescriptor cancel_desc("core/result/retry");
-
   ResultScreenComponent* comp = new ResultScreenComponent(result);
   gui_manager->add(comp);
 

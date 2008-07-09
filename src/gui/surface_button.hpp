@@ -20,10 +20,8 @@
 #include "../sprite.hpp"
 #include "component.hpp"
 
-class ResDescriptor;
-
 namespace GUI {
-
+
 /** A simple surface button, which different surfaces for pressed,
     released and mouse over */
 class SurfaceButton : public Component
@@ -41,9 +39,9 @@ protected:
 
 public:
   SurfaceButton (int x_pos, int y_pos,
-                 const ResDescriptor& button_surface,
-                 const ResDescriptor& button_pressed_surface,
-                 const ResDescriptor& button_mouse_over_surface);
+                 const std::string& button_surface,
+                 const std::string& button_pressed_surface,
+                 const std::string& button_mouse_over_surface);
   virtual ~SurfaceButton ();
 
   virtual void set_pos(int x, int y);
@@ -59,11 +57,12 @@ public:
   virtual void on_pointer_leave ();
 
   virtual void on_click() {}
+
 private:
   SurfaceButton (const SurfaceButton&);
   SurfaceButton& operator= (const SurfaceButton&);
 };
-
+
 } // namespace GUI
 
 #endif
