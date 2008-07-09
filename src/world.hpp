@@ -26,22 +26,13 @@
 #include "groundtype.hpp"
 #include "collision_mask.hpp"
 
-// Forward declarations
 class Vector3f;
-//class ActionHolder;
-class Entrance;
-class Exit;
-class Hotspot;
-class Liquid;
-class PinguHolder;
 class GroundMap;
+class PinguHolder;
 class PingusLevel;
-class Pingu;
-class Trap;
-class View;
 class CollisionMap;
+class Pingu;
 class WorldObj;
-class GameTime;
 class SmallMap;
 class SceneContext;
 
