@@ -160,7 +160,7 @@ public:
     
     int total_pages = (int(levelsets.size())+2)/3;
   
-    gc.print_center(Fonts::chalk_normal, rect.get_width()/2, 453 - rect.top,
+    gc.print_center(Fonts::chalk_normal, rect.get_width()/2, 360,
                     (boost::format("%1% %2%/%3%") % _("Page") % (page+1) % total_pages).str());
 
     gc.pop_modelview();
@@ -223,6 +223,7 @@ private:
   Levelset* levelset;
   int current_level;
   int page;
+
 public:
   LevelSelector(LevelMenu* level_menu_, const Rect& rect_) 
     : RectComponent(rect_),
@@ -274,7 +275,7 @@ public:
           }
       }
 
-    gc.print_center(Fonts::chalk_normal, rect.get_width()/2, 453 - rect.top,
+    gc.print_center(Fonts::chalk_normal, rect.get_width()/2, 360,
                     (boost::format("%1% %2%/%3%") % _("Page") % (page+1) % ((levelset->get_level_count()+7)/8)).str());
 
     gc.pop_modelview();
