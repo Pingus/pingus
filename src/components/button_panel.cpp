@@ -96,7 +96,7 @@ ButtonPanel::get_action_name()
 void
 ButtonPanel::set_button(int n)
 {
-  if (n >= 0 || n < static_cast<int>(buttons.size()))
+  if (n >= 0 || n < static_cast<int>(buttons.size()-1))
     {
       current_button = n;
     }
