@@ -96,10 +96,8 @@ GameSession::~GameSession ()
 void
 GameSession::update_server(float delta)
 {
-  // FIXME: Timing code could need another rewrite...
   if (server->is_finished())
     {
-      //ScreenManager::instance()->pop_screen();
       PinguHolder* pingu_holder = server->get_world()->get_pingus();
       Result result;
 
