@@ -26,6 +26,7 @@
 
 namespace Input {
 class Manager;
+class Event;
 class Controller;
 }
 
@@ -56,6 +57,9 @@ private:
 
   Vector2f mouse_pos;
 
+  bool record_input;
+  bool playback_input;
+
 public:
   ScreenManager ();
   ~ScreenManager();
@@ -66,7 +70,7 @@ public:
       not return until the somebody signals a quit() */
   void display();
 
-  void update(float delta);
+  void update(float delta, const std::vector<Input::Event>& events);
 
   /** Replace the current screen */
   void replace_screen(Screen*);
@@ -80,11 +84,11 @@ public:
   /** Remove all screens */
   void pop_all_screens();
 
+  void show_swcursor(bool v);
+  
   /** @return a pointer to the current Screen */
   ScreenPtr get_current_screen();
 
-  void show_swcursor(bool v);
-  
 private:
   /** FadeOver test*/
   void fade_over(ScreenPtr old_screen, ScreenPtr new_screen);

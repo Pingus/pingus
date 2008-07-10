@@ -19,7 +19,7 @@
 #include "controller.hpp"
 
 namespace Input {
-
+
 Controller* Controller::current_ = 0;
 
 Controller* 
@@ -232,14 +232,21 @@ Controller::add_keyboard_event(unsigned short key)
   events.push_back(makeKeyboardEvent(key));
 }
 
-std::vector<Event>
-Controller::poll_events()
+void
+Controller::clear_events()
 {
-  std::vector<Event> old_events = events;  
   events.clear();
-  return old_events;
 }
 
+void
+Controller::poll_events(std::vector<Event>& out_events)
+{
+  for(std::vector<Event>::iterator i = events.begin(); i != events.end(); ++i)  
+    out_events.push_back(*i);
+
+  events.clear();
+}
+
 } // namespace Input
 
 /* EOF */

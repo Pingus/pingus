@@ -139,8 +139,10 @@ void write_event(std::ostream& out, const Input::Event& event)
 ScreenManager* ScreenManager::instance_ = 0;
 
 ScreenManager::ScreenManager()
-  : display_gc(new DrawingContext())
-{  
+  : display_gc(new DrawingContext()),
+    record_input(false),
+    playback_input(false)
+{
   assert(instance_ == 0);
   instance_ = this;
     
@@ -168,17 +170,44 @@ ScreenManager::display()
   show_swcursor(swcursor_enabled);
   
   Uint32 last_ticks = SDL_GetTicks();
+  float delta;
+  std::vector<Input::Event> events;
 
   while (!screens.empty())
     {
-      Uint32 ticks = SDL_GetTicks();
-      float delta  = float(ticks - last_ticks)/1000.0f;
+      events.clear();
       
-      if (0)
-        if (0)
-          write(std::cerr, delta);
-        else
+      // Get time and update Input::Events
+      if (playback_input)
+        {
+          // Get Time
           read(std::cin, delta);
+
+          // Update InputManager so that SDL_QUIT and stuff can be handled, even if the basic events are taken from record
+          input_manager->update(delta);
+          input_controller->clear_events();
+          read_events(std::cin, events);
+        }
+      else
+        {
+          // Get Time
+          Uint32 ticks = SDL_GetTicks();
+          delta  = float(ticks - last_ticks)/1000.0f;
+          last_ticks = ticks;
+
+          // Update InputManager and get Events
+          input_manager->update(delta);
+          input_controller->poll_events(events);
+        }
+      
+      if (record_input)
+        {
+          write(std::cerr, delta);
+          write_events(std::cerr, events);
+        }
+
+      if (swcursor_enabled)
+        cursor.update(delta);
 
       // previous frame took more than one second
       if (delta > 1.0)
@@ -188,11 +217,8 @@ ScreenManager::display()
                       << "), ignoring and doing frameskip" << std::endl;
         }
       else
-        {
-          if (swcursor_enabled)
-            cursor.update(delta);
-  
-          update(delta);
+        {  
+          update(delta, events);
       
           // cap the framerate at the desired value
           if (delta < 1.0f / desired_fps) {
@@ -200,33 +226,15 @@ ScreenManager::display()
             SDL_Delay(static_cast<Uint32>(1000 *((1.0f / desired_fps) - delta)));
           }
         }
-
-      last_ticks   = ticks;
     }
 }
  
 void
-ScreenManager::update(float delta)
+ScreenManager::update(float delta, const std::vector<Input::Event>& events)
 {
   ScreenPtr last_screen = get_current_screen();
-            
-  // update the input, break away as soon as the current screen changed
-  input_manager->update(delta);
-  std::vector<Input::Event> events;
-
-  if (1)
-    {
-      events = input_controller->poll_events(); 
-      //write_events(std::cerr, events);
-    }
-  else
-    {
-      read_events(std::cin, events);
-    }
-
-  for(std::vector<Input::Event>::iterator i = events.begin(); 
-      i != events.end();
-      ++i)
+  
+  for(std::vector<Input::Event>::const_iterator i = events.begin(); i != events.end(); ++i)
     {
       if (i->type == Input::POINTER_EVENT_TYPE && i->pointer.name == Input::STANDARD_POINTER)
         mouse_pos = Vector2f(i->pointer.x, i->pointer.y);                 
@@ -246,23 +254,23 @@ ScreenManager::update(float delta)
       return;
     }
 
-  // Draw screen
-  if (get_current_screen()->draw(*display_gc))
-    {
-      display_gc->render(Display::get_screen(), Rect(Vector2i(0,0), Size(Display::get_width(),
-                                                                         Display::get_height())));
-
-      if (swcursor_enabled)
-        {
-          cursor.draw(mouse_pos.x, mouse_pos.y, Display::get_screen());
-        }
-
-      if (print_fps)
-        fps_counter->draw();
-
-      Display::flip_display();
-      display_gc->clear();
-    }
+  // Draw screen to DrawingContext
+  get_current_screen()->draw(*display_gc);
+  
+  // Render the DrawingContext to the screen
+  display_gc->render(Display::get_screen(), Rect(Vector2i(0,0), Size(Display::get_width(),
+                                                                     Display::get_height())));
+  display_gc->clear();
+  
+  // Draw the mouse pointer
+  if (swcursor_enabled)
+    cursor.draw(mouse_pos.x, mouse_pos.y, Display::get_screen());
+  
+  // Draw FPS Counter
+  if (print_fps)
+    fps_counter->draw();
+  
+  Display::flip_display();
 }
 
 ScreenPtr

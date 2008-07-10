@@ -29,7 +29,7 @@ class ControllerAxis;
 class ControllerPointer;
 class ControllerScroller;
 class ControllerKeyboard;
-
+
 class Controller
 {
 
@@ -48,7 +48,8 @@ private:
   
   std::vector<Event> events;
 public:
-  std::vector<Event> poll_events();
+  void clear_events();
+  void poll_events(std::vector<Event>& events);
 
   Controller(const ControllerDescription& desc);
   ~Controller();
@@ -76,7 +77,7 @@ private:
   Controller(const Controller&);
   Controller& operator= (const Controller&);
 };
-
+
 } // namespace Input
 
 #endif 
