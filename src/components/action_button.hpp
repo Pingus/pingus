@@ -106,35 +106,6 @@ private:
   PauseButton& operator= (const PauseButton&);
 };
 
-/** The button class manage a simple button for the button_panel. It
-    keeps his position, his surfaces and his font. */
-class ActionButton : public GUI::RectComponent
-{
-protected:
-  ActionHolder* action_holder;
-  Sprite sprite;
-  Sprite background;
-  Sprite backgroundhl;
-
-  Actions::ActionName name;
-
-public:
-  bool pressed; // used in ButtonPanel
-
-  ActionButton(ActionHolder* h, int x, int y, Actions::ActionName name_, int owner_id);
-  virtual ~ActionButton();
-
-  void draw(DrawingContext& gc);
-  void update(float delta);
-
-  /// Returns the name of the action the button represents.
-  Actions::ActionName get_action_name();
-
-private:
-  ActionButton (const ActionButton&);
-  ActionButton& operator= (const ActionButton&);
-};
-
 #endif /* ACTIONBUTTON */
 
 /* EOF */

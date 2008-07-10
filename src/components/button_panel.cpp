@@ -16,145 +16,125 @@
 
 #include <iostream>
 #include <algorithm>
+#include "../math.hpp"
+#include "../fonts.hpp"
+#include "../string_util.hpp"
 #include "../globals.hpp"
 #include "../server.hpp"
 #include "../game_session.hpp"
+#include "../display/drawing_context.hpp"
 #include "button_panel.hpp"
 
 using namespace Actions;
-
-struct action_sorter {
-  bool operator() (const ActionName& a, const ActionName& b) {
-    return a < b;
-  }
-};
-
-ButtonPanel::ButtonPanel(GameSession* s, int arg_x_pos, int arg_y_pos)
-  : session(s),
-    left_pressed(0),
-    last_press(0),
-    x_pos (arg_x_pos),
-    y_pos (arg_y_pos)
+
+ButtonPanel::ButtonPanel(GameSession* s, const Vector2i& pos)
+  : RectComponent(Rect()),
+    session(s),
+    background("core/buttons/buttonbackground"),
+    highlight("core/buttons/buttonbackgroundhl"),
+    current_button(0)
 {
   ActionHolder* aholder = session->get_server()->get_action_holder();
 
   std::vector<ActionName> actions = aholder->get_available_actions();
 
-  // Sort the action so that they always have the same order in the
-  // panel
-  std::sort(actions.begin(), actions.end(), action_sorter());
+  set_rect(Rect(Vector2i(pos.x, pos.y - (actions.size() * 38)/2),
+                Size(60, actions.size() * 38)));
 
-  y_pos -= ((int)actions.size() * 38)/2 + 70;
+  // Sort the action so that they always have the same order in the panel
+  std::sort(actions.begin(), actions.end());
 
-  for(std::vector<ActionName>::iterator i = actions.begin();
-      i != actions.end(); ++i)
+  for(std::vector<ActionName>::size_type i = 0; i < actions.size(); ++i)
     {
-      a_buttons.push_back(new ActionButton (aholder,
-                                            x_pos, int(i - actions.begin()) * 38 + y_pos,
-                                            *i,
-                                            0)); //FIXMEcontroller->get_owner ()));
+      ActionButton button;
+      button.name   = actions[i];
+      button.sprite = Sprite("pingus/player0/" + action_to_string(button.name) + "/right");
+      button.sprite.set_play_loop(true);
+      buttons.push_back(button);
     }
-
-  if (a_buttons.empty())
-    {
-      std::cout << "Error: ButtonPanel: No a_buttons! " << std::endl;
-    }
-
-  pressed_button = 0;
 }
 
 ButtonPanel::~ButtonPanel()
 {
-  for (AButtonIter it = a_buttons.begin(); it != a_buttons.end(); ++it)
-  {
-    delete *it;
-  }
-}
-
-void
-ButtonPanel::update(float delta)
-{
-  if (!a_buttons.empty())
-    a_buttons[pressed_button]->update(delta);
-}
-
-ActionName
-ButtonPanel::get_action_name()
-{
-  if (!a_buttons.empty())
-    return a_buttons[pressed_button]->get_action_name();
-  else
-    return Actions::Bridger;
 }
 
 void
 ButtonPanel::draw(DrawingContext& gc)
 {
-  for(int i = 0; i < static_cast<int>(a_buttons.size()); ++i)
-    {
-      if (i == pressed_button)
-	a_buttons[i]->pressed = true;
-      else
-        a_buttons[i]->pressed = false;
+  ActionHolder* aholder = session->get_server()->get_action_holder();
 
-      a_buttons[i]->draw(gc);
+  for(std::vector<ActionButton>::size_type i = 0; i < buttons.size(); ++i)
+    {
+      if (current_button == i)
+        gc.draw(highlight, rect.left, rect.top + 38*i);
+      else
+        gc.draw(background, rect.left, rect.top + 38*i);
+
+      gc.draw(buttons[i].sprite, rect.left + 20, rect.top + 38*i + 32);
+
+      std::string str = StringUtil::to_string(aholder->get_available(buttons[i].name));
+      gc.print_center(Fonts::pingus_small, rect.left + 46, rect.top + 5 + 38*i, str);
     }
+}
+
+void
+ButtonPanel::update (float delta)
+{
+  for(std::vector<ActionButton>::size_type i = 0; i < buttons.size(); ++i)
+    if (i == current_button)
+      buttons[i].sprite.update(delta);
+    else
+      buttons[i].sprite.set_frame(0);
+}
+
+ActionName
+ButtonPanel::get_action_name()
+{
+  return buttons[current_button].name;
 }
 
 void
 ButtonPanel::set_button(int n)
 {
-  if (n < 0 || n >= static_cast<int>(a_buttons.size()))
+  if (n >= 0 || n < static_cast<int>(buttons.size()))
     {
-      // FIXME: Play 'boing' sound here
+      current_button = n;
     }
   else
     {
-      pressed_button = n;
+      // FIXME: Play 'boing' sound here
     }
+}
+
+void
+ButtonPanel::next_action()
+{
+  current_button = (current_button + 1) + int(buttons.size()) % int(buttons.size());
+}
+
+void
+ButtonPanel::previous_action()
+{
+  current_button = (current_button - 1) + int(buttons.size()) % int(buttons.size());
 }
 
 void
 ButtonPanel::on_primary_button_press(int x, int y)
 {
-  for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
-    {
-      if ((*button)->is_at(x, y))
-	pressed_button = int(button - a_buttons.begin());
-    }
-}
-
-bool
-ButtonPanel::is_at (int x, int y)
-{
-  for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
-    {
-      if ((*button)->is_at(x, y))
-	return true;
-    }
-  return false;
+  int action = (y - rect.top) / 38;
+  current_button = Math::clamp(0, action, int(buttons.size()-1));
 }
 
 void
 ButtonPanel::on_primary_button_release(int x, int y)
 {
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
 }
 
-/// Select the next action
 void
-ButtonPanel::next_action ()
+ButtonPanel::set_pos(const Vector2i& pos)
 {
-  pressed_button = (pressed_button + 1) % (int)a_buttons.size();
+  set_rect(Rect(Vector2i(pos.x, pos.y - (buttons.size() * 38)/2),
+                Size(60, buttons.size() * 38)));
 }
-
-/// Select the previous action
-void
-ButtonPanel::previous_action ()
-{
-  pressed_button = (pressed_button - 1 + (int)a_buttons.size()) % (int)a_buttons.size();
-}
-
-
+
 /* EOF */

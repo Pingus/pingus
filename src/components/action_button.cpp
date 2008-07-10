@@ -27,53 +27,6 @@
 
 using namespace Actions;
 
-ActionButton::ActionButton(ActionHolder* h,
-                           int x, int y, ActionName name_, int owner_id)
-  : RectComponent(Rect(Vector2i(x, y), Size(60, 38))),
-    action_holder(h),
-    background("core/buttons/buttonbackground"),
-    backgroundhl("core/buttons/buttonbackgroundhl"),
-    name(name_)
-{
-  sprite = Sprite("pingus/player0/" + action_to_string(name) + "/right");
-  sprite.set_play_loop(true);
-}
-
-ActionButton::~ActionButton() {}
-
-void
-ActionButton::update(float delta)
-{
-  sprite.update(delta);
-}
-
-ActionName
-ActionButton::get_action_name()
-{
-  return name;
-}
-
-void
-ActionButton::draw (DrawingContext& gc)
-{
-  Vector2i pos(rect.left, rect.top);
-
-  if (pressed)
-    {
-      gc.draw(backgroundhl, pos);
-    }
-  else
-    {
-      sprite.set_frame(0);
-      gc.draw(background, pos);
-    }
-  
-  gc.draw(sprite, Vector2i(pos.x + 20, pos.y + 32));
-  
-  std::string str = StringUtil::to_string(action_holder->get_available(name));
-  gc.print_center(Fonts::pingus_small, pos.x + 46, pos.y + 5, str);
-}
-
 ArmageddonButton::ArmageddonButton(Server* s, int x, int y)
   : RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
     server(s),

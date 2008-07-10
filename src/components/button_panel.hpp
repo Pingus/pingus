@@ -18,46 +18,47 @@
 #define HEADER_PINGUS_BUTTON_PANEL_HPP
 
 #include <vector>
+#include "../sprite.hpp"
+#include "gui/rect_component.hpp"
 #include "action_button.hpp"
 
 class GameSession;
 
-class ButtonPanel : public GUI::Component
+class ButtonPanel : public GUI::RectComponent
 {
 private:
+  struct ActionButton {
+    Actions::ActionName name;
+    Sprite     sprite;
+  };
+
   GameSession* session;
+  Sprite background;
+  Sprite highlight;
 
-  std::vector<ActionButton*> a_buttons;
-  typedef std::vector<ActionButton*>::iterator AButtonIter;
-  int pressed_button;
-
-  bool left_pressed;
-  unsigned int  last_press;
-
-  int x_pos, y_pos;
+  std::vector<ActionButton> buttons;
+  std::vector<ActionButton>::size_type current_button;
 
 public:
-  ButtonPanel(GameSession* s, int arg_x_pos, int arg_y_pos);
+  ButtonPanel(GameSession* s, const Vector2i& pos);
   virtual ~ButtonPanel();
+
+  void draw(DrawingContext& gc);
+  void update (float delta);
+
+  Actions::ActionName get_action_name();
+
+  // Set the n'th button active
+  void set_button(int n);
+
+  void next_action();
+  void previous_action();
 
   void on_primary_button_press(int x, int y);
   void on_primary_button_release(int x, int y);
 
-  bool is_at (int x, int y);
-
-  Actions::ActionName get_action_name();
-  void   update(float delta);
-  void   draw(DrawingContext& gc);
-
-  /// Set n'th action
-  void   set_button(int);
-
-  /// Select the next action
-  void next_action ();
-
-  /// Select the previous action
-  void previous_action ();
-
+  void set_pos(const Vector2i& pos);
+  
 private:
   ButtonPanel (const ButtonPanel&);
   ButtonPanel& operator= (const ButtonPanel&);
