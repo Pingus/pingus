@@ -32,15 +32,15 @@ Playfield::Playfield(Server* server_, GameSession* session_, const Rect& rect_)
     server(server_),
     session(session_),
     current_pingu(0),
-    // We keep the SceneContext has member variable so that we don't
-    // have to reallocate it every frame, which is quite a costly operation
-    scene_context(new SceneContext()),
-    state(rect),
+    scene_context(new SceneContext(rect_)),
+    state(rect_.get_width(), rect_.get_height()),
     capture_rectangle(session)
 {
   mouse_scrolling    = false;
 
-  state.set_limit(Rect(Vector2i(0, 0), Size(server->get_world()->get_width(), server->get_world()->get_height())));
+  state.set_limit(Rect(Vector2i(0, 0), 
+                       Size(server->get_world()->get_width(), 
+                            server->get_world()->get_height())));
 
   // FIXME: Temporary workaround till start-pos is integrated a bit more properly
   state.set_pos(server->get_world()->get_start_pos(0));
@@ -54,17 +54,20 @@ void
 Playfield::draw(DrawingContext& gc)
 {
   scene_context->clear();
-  scene_context->set_cliprect(rect);
 
-  //scene_context->light().fill_screen(Color(50, 50, 50));
- 
   state.push(*scene_context);
 
   capture_rectangle.set_pingu(current_pingu);
   capture_rectangle.draw(*scene_context);
 
   server->get_world()->draw(*scene_context);
- 
+
+  state.pop(*scene_context);
+
+  gc.draw(new SceneContextDrawingRequest(scene_context.get(), Vector3f(0,0,-10000)));
+
+  gc.push_modelview();
+  gc.translate(rect.left, rect.top);
   // Draw the scrolling band
   if (mouse_scrolling && !drag_drop_scrolling)
     {
@@ -88,9 +91,7 @@ Playfield::draw(DrawingContext& gc)
                    scroll_center.x - 15, scroll_center.y,
                    Color(255, 255, 0));
     }
-
-  state.pop(*scene_context);
-  gc.draw(new SceneContextDrawingRequest(scene_context.get(), Vector3f(0,0,-10000)));
+  gc.pop_modelview();
 }
 
 Pingu*
@@ -169,9 +170,12 @@ Playfield::update(float delta)
 void
 Playfield::on_primary_button_press(int x, int y)
 {
+  x -= rect.left;
+  y -= rect.top;
+
   if (session)
     {
-      current_pingu = current_pingu_find(state.screen2world( Vector2i(x,y) ));
+      current_pingu = current_pingu_find(state.screen2world(Vector2i(x,y)));
 
       if (current_pingu) 
         {
@@ -183,6 +187,9 @@ Playfield::on_primary_button_press(int x, int y)
 void
 Playfield::on_secondary_button_press(int x, int y)
 {
+  x -= rect.left;
+  y -= rect.top;
+
   mouse_scrolling = true;
   scroll_center.x = x;
   scroll_center.y = y;
@@ -193,8 +200,8 @@ Playfield::on_secondary_button_press(int x, int y)
 void
 Playfield::on_secondary_button_release (int x, int y)
 {
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
+  x -= rect.left;
+  y -= rect.top;
 
   mouse_scrolling = false;
 }
@@ -202,6 +209,9 @@ Playfield::on_secondary_button_release (int x, int y)
 void
 Playfield::on_pointer_move (int x, int y)
 {
+  x -= rect.left;
+  y -= rect.top;
+
   // FIXME: useless stuff, but currently the controller doesn't have a state
   mouse_pos.x = x;
   mouse_pos.y = y;
@@ -248,7 +258,7 @@ Playfield::get_pos() const
 void
 Playfield::set_viewpoint(int x, int y)
 {
-  state.set_pos(Vector2f((float)x, (float)y));
+  state.set_pos(Vector2f(x, y));
 }
 
 void
