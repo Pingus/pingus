@@ -74,7 +74,7 @@ public:
   void on_escape_press();
 
   /** Draw the items in the screen */
-  bool draw (DrawingContext& gc);
+  void draw (DrawingContext& gc);
 
   /** Update the GUI objects */
   void update(const Input::Event& delta);

@@ -35,7 +35,7 @@ FontTestScreen::FontTestScreen(const Pathname& fontfile)
   reference = Font(FontDescription(Pathname("images/fonts/reference-iso-8859-1.font", Pathname::DATA_PATH)));
 }
 
-bool
+void
 FontTestScreen::draw(DrawingContext& gc)
 {
   int checker = 40;
@@ -96,8 +96,6 @@ FontTestScreen::draw(DrawingContext& gc)
         }
     }
   gc.pop_modelview();
-
-  return true;
 }
 
 void

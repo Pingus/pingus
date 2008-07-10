@@ -151,7 +151,7 @@ EditorScreen::load(const Pathname& file)
 }
 
 // Draw the background and components
-bool
+void
 EditorScreen::draw(DrawingContext& gc)
 {
   // Black out screen
@@ -239,8 +239,6 @@ EditorScreen::draw(DrawingContext& gc)
                       "have to change that reference.\n"
                       ));
     }
-  
-  return true;
 }
 
 void

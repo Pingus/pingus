@@ -39,7 +39,7 @@ public:
   /** Draw this screen */
   virtual void draw_foreground (DrawingContext&) {}
   virtual void draw_background (DrawingContext&) {}
-  virtual bool draw(DrawingContext& gc);
+  virtual void draw(DrawingContext& gc);
 
   virtual void update (const Input::Event& event);
   virtual void update (float);

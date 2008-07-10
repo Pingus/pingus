@@ -32,13 +32,12 @@ GUIScreen::~GUIScreen ()
 }
 
 /** Draw this screen */
-bool
+void
 GUIScreen::draw(DrawingContext& gc)
 {
   draw_background(gc);
   gui_manager->draw(gc);
   draw_foreground(gc);
-  return true;
 }
 
 void

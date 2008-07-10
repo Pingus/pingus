@@ -39,9 +39,8 @@ public:
   Screen (const Size& size_) : size(size_) { }
   virtual ~Screen () {}
 
-  /** Draw this screen @return true if draw was successfull, false if
-      frameskip has taken place ('causes a skip of flip_display) */
-  virtual bool draw(DrawingContext& gc) =0;
+  /** Draw this screen */
+  virtual void draw(DrawingContext& gc) =0;
 
   /** Pass a delta to the screen */
   virtual void update (const Input::Event& event) =0;

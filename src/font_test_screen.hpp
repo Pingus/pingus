@@ -32,7 +32,7 @@ private:
 public:
   FontTestScreen(const Pathname& fontfile);
 
-  bool draw(DrawingContext& gc);
+  void draw(DrawingContext& gc);
   void update(const Input::Event& event);
   void update(float delta) {}
 
