@@ -104,7 +104,7 @@ DemoSession::DemoSession(const Pathname& pathname_)
 
   gui_manager->add(playfield);
 
-  small_map    = new SmallMap(server.get(), playfield);
+  small_map    = new SmallMap(server.get(), playfield, Rect(Vector2i(5, size.height - 105), Size(175, 100)));
   gui_manager->add(small_map);
 
   gui_manager->add(new BButton(32+50, 32, "core/demo/fastforward",

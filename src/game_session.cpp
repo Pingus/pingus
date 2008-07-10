@@ -71,7 +71,7 @@ GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_scree
                                          Math::min(Display::get_height(), world_height))));
 
   pcounter     = new PingusCounter(get_server());
-  small_map    = new SmallMap(get_server(), playfield);
+  small_map    = new SmallMap(get_server(), playfield, Rect(Vector2i(5, size.height - 105), Size(175, 100)));
   time_display = new TimeDisplay(this);
 
   gui_manager->add(playfield);
@@ -380,17 +380,19 @@ GameSession::resize(const Size& size)
   int world_width  = server->get_world()->get_width();
   int world_height = server->get_world()->get_height();
   
-  playfield->set_rect(Rect(Vector2i(Math::max((Display::get_width()  - world_width)/2,  0),
-                                    Math::max((Display::get_height() - world_height)/2, 0)), 
-                           Size(Math::min(Display::get_width(),  world_width),
-                                Math::min(Display::get_height(), world_height))));
+  playfield->set_rect(Rect(Vector2i(Math::max((size.width  - world_width)/2,  0),
+                                    Math::max((size.height - world_height)/2, 0)), 
+                           Size(Math::min(size.width,  world_width),
+                                Math::min(size.height, world_height))));
 
-  armageddon_button->set_rect(Rect(Vector2i(Display::get_width() - 40, Display::get_height() - 62),
+  armageddon_button->set_rect(Rect(Vector2i(size.width - 40, size.height - 62),
                                    Size(38, 60)));
-  forward_button->set_rect(Rect(Vector2i(Display::get_width() - 40*2, Display::get_height() - 62),
+  forward_button->set_rect(Rect(Vector2i(size.width - 40*2, size.height - 62),
                                 Size(38, 60)));
-  pause_button->set_rect(Rect(Vector2i(Display::get_width() - 40*3, Display::get_height() - 62),
+  pause_button->set_rect(Rect(Vector2i(size.width - 40*3, size.height - 62),
                                 Size(38, 60)));
+
+  small_map->set_rect(Rect(Vector2i(5, size.height - 105), Size(175, 100)));
 }
 
 /* EOF */

@@ -29,40 +29,13 @@
 #include "playfield.hpp"
 #include "smallmap.hpp"
 
-SmallMap::SmallMap(Server* server_, Playfield* playfield_)
-  : server(server_),
+SmallMap::SmallMap(Server* server_, Playfield* playfield_, const Rect& rect)
+  : RectComponent(rect), 
+    server(server_),
     playfield(playfield_),
     gc_ptr(0)
-{
-  int max_width = 175;
-  int max_height = 100;
-
-  int min_height = 70;
-  int min_width = 100;
-
-  World* world = server->get_world();
-
-  // Scaling values used in order to keep the aspect ratio
-  int x_scaling = world->get_width()  / max_width;
-  int y_scaling = world->get_height() / max_height;
-
-  // If at best one horizontal pixel in the smallmap represents more colmap
-  // pixels than one vertical pixel
-  if (x_scaling > y_scaling)
-    {
-      width  = max_width;
-      height = Math::max(min_height, world->get_height() / x_scaling);
-    }
-  else
-    {
-      width  = Math::max(min_width, world->get_width() / y_scaling);
-      height = max_height;
-    }
-  
-  x_pos   = 5;
-  y_pos   = Display::get_height() - height - 5;
-
-  image = std::auto_ptr<SmallMapImage>(new SmallMapImage(server, width, height));
+{ 
+  image = std::auto_ptr<SmallMapImage>(new SmallMapImage(server, rect.get_width(), rect.get_height()));
 
   scroll_mode = false;
 }
@@ -72,7 +45,7 @@ SmallMap::~SmallMap()
 }
 
 void
-SmallMap::draw (DrawingContext& gc)
+SmallMap::draw(DrawingContext& gc)
 {
   // FIXME: This is potentially dangerous, since we don't know how
   // long 'gc' will be alive. Should use a DrawingContext for caching.
@@ -81,34 +54,34 @@ SmallMap::draw (DrawingContext& gc)
   World* const& world  = server->get_world();
   
   Vector2i of = playfield->get_pos();
-  Rect rect;
+  Rect view_rect;
 
   if (world->get_width() > gc.get_width())
     {
-      int rwidth = int(gc.get_width()  * width  / world->get_width());
-      rect.left  = x_pos + (of.x * width  / world->get_width()) - rwidth/2;
-      rect.right = rect.left + rwidth;
+      int rwidth = int(gc.get_width()  * rect.get_width()  / world->get_width());
+      view_rect.left  = rect.left + (of.x * rect.get_width()  / world->get_width()) - rwidth/2;
+      view_rect.right = view_rect.left + rwidth;
     }
   else
     {
-      rect.left  = x_pos;
-      rect.right = x_pos + width;
+      view_rect.left  = rect.left;
+      view_rect.right = rect.left + rect.get_width();
     }
 
   if (world->get_height() > gc.get_height())
     {
-      int rheight = int(gc.get_height() * height / world->get_height());
-      rect.top    = y_pos + (of.y * height / world->get_height()) - rheight/2;
-      rect.bottom = rect.top + rheight;
+      int rheight = int(gc.get_height() * rect.get_height() / world->get_height());
+      view_rect.top    = rect.top + (of.y * rect.get_height() / world->get_height()) - rheight/2;
+      view_rect.bottom = view_rect.top + rheight;
     }
   else
     {
-      rect.top    = y_pos;
-      rect.bottom = y_pos + height;
+      view_rect.top    = rect.top;
+      view_rect.bottom = rect.top + rect.get_height();
     }
   
-  gc.draw(image->get_surface(), Vector2i(x_pos, y_pos));
-  gc.draw_rect(rect.left, rect.top, rect.right, rect.bottom,
+  gc.draw(image->get_surface(), Vector2i(rect.left, rect.top));
+  gc.draw_rect(view_rect.left, view_rect.top, view_rect.right, view_rect.bottom,
                Color(0, 255, 0));
 
   server->get_world()->draw_smallmap(this);
@@ -117,8 +90,8 @@ SmallMap::draw (DrawingContext& gc)
   PinguHolder* pingus = world->get_pingus();
   for(PinguIter i = pingus->begin(); i != pingus->end(); ++i)
     {
-      int x = static_cast<int>(x_pos + ((*i)->get_x() * width  / world->get_width()));
-      int y = static_cast<int>(y_pos + ((*i)->get_y() * height / world->get_height()));
+      int x = static_cast<int>(rect.left + ((*i)->get_x() * rect.get_width()  / world->get_width()));
+      int y = static_cast<int>(rect.top + ((*i)->get_y() * rect.get_height() / world->get_height()));
 
       gc.draw_line(x, y, x, y-2, Color(255, 255, 0));
     }
@@ -136,8 +109,8 @@ void
 SmallMap::draw_sprite(Sprite sprite, Vector3f pos)
 {
   World* world = server->get_world();
-  float x = x_pos + (pos.x * width  / world->get_width());
-  float y = y_pos + (pos.y * height / world->get_height());
+  float x = rect.left + (pos.x * rect.get_width()  / world->get_width());
+  float y = rect.top + (pos.y * rect.get_height() / world->get_height());
 
   gc_ptr->draw(sprite, Vector3f(x, y));
 }
@@ -145,8 +118,8 @@ SmallMap::draw_sprite(Sprite sprite, Vector3f pos)
 bool
 SmallMap::is_at (int x, int y)
 {
-  return (x > x_pos && x < x_pos + (int)width
-	  && y > y_pos && y < y_pos + (int)height);
+  return (x > rect.left && x < rect.left + (int)rect.get_width()
+	  && y > rect.top && y < rect.top + (int)rect.get_height());
 }
 
 void
@@ -157,8 +130,8 @@ SmallMap::on_pointer_move (int x, int y)
 
   if (scroll_mode)
     {
-      cx = (x - x_pos) * static_cast<int>(world->get_width()  / width);
-      cy = (y - y_pos) * static_cast<int>(world->get_height() / height);
+      cx = (x - rect.left) * static_cast<int>(world->get_width()  / rect.get_width());
+      cy = (y - rect.top) * static_cast<int>(world->get_height() / rect.get_height());
 
       playfield->set_viewpoint(cx, cy);
     }
@@ -172,8 +145,8 @@ SmallMap::on_primary_button_press (int x, int y)
   // set view to the given COs
   int cx, cy;
   World* world = server->get_world();
-  cx = (x - x_pos) * int(world->get_width()) / width;
-  cy = (y - y_pos) * int(world->get_height()) / height ;
+  cx = (x - rect.left) * int(world->get_width()) / rect.get_width();
+  cy = (y - rect.top) * int(world->get_height()) / rect.get_height();
   playfield->set_viewpoint(cx, cy);
 }
 

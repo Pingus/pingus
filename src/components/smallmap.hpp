@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_SMALLMAP_HPP
 
 #include "../sprite.hpp"
-#include "../gui/component.hpp"
+#include "../gui/rect_component.hpp"
 
 class Playfield;
 class Server;
@@ -26,7 +26,7 @@ class Vector3f;
 class SmallMapImage;
 
 /** This is the map that appears in the corner of the screen */
-class SmallMap : public GUI::Component
+class SmallMap : public GUI::RectComponent
 {
 private:
   Server*    server;
@@ -40,18 +40,6 @@ private:
 
   std::auto_ptr<SmallMapImage> image;
 
-  /** Horizontal position of the small map */
-  int x_pos;
-
-  /** Vertical position of the small map */
-  int y_pos;
-
-  /** Width of the small map */
-  int width;
-
-  /** Height of the small map */
-  int height;
-
   /** Indicates whether the playfield should can be scrolled around depending
       on the position of the cursor in the small map */
   bool scroll_mode;
@@ -62,7 +50,7 @@ private:
   DrawingContext* gc_ptr;
 
 public:
-  SmallMap(Server*, Playfield*);
+  SmallMap(Server*, Playfield*, const Rect& rect);
   virtual ~SmallMap();
 
   /*{ @name Stuff called from the GUIManager */
