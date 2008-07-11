@@ -26,7 +26,7 @@ DrawableFactory::create(FileReader reader)
 {
   if (reader.get_name() == "surface")
     {
-      return new SurfaceDrawable(reader);
+      return new SpriteDrawable(reader);
     }
   else
     {
