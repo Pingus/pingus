@@ -122,6 +122,7 @@ pingus_sources = [
 'src/gui/combobox.cpp', 
 'src/display/display.cpp', 
 'src/display/sdl_framebuffer.cpp', 
+'src/display/delta_framebuffer.cpp', 
 'src/gui/group_component.cpp', 
 'src/gui/gui_manager.cpp', 
 'src/gui/input_box.cpp', 

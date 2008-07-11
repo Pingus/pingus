@@ -23,6 +23,7 @@
 #include "../math/color.hpp"
 #include "../math.hpp"
 #include "sdl_framebuffer.hpp"
+#include "delta_framebuffer.hpp"
 #include "display.hpp"
 
 std::auto_ptr<Framebuffer> Display::framebuffer;
@@ -55,7 +56,7 @@ void
 Display::set_video_mode(int width, int height, bool fullscreen)
 {
   if (!framebuffer.get())
-    framebuffer = std::auto_ptr<Framebuffer>(new SDLFramebuffer());
+    framebuffer = std::auto_ptr<Framebuffer>(new DeltaFramebuffer(new SDLFramebuffer()));
 
   framebuffer->set_video_mode(width, height, fullscreen);
 }
