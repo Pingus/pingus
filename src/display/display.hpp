@@ -27,7 +27,7 @@ class Vector2i;
 class Rect;
 class Color;
 class DisplayHook;
-
+
 class Display
 {
 private:
@@ -63,8 +63,7 @@ private:
   Display (const Display&);
   Display& operator= (const Display&);
 };
-
-
+
 #endif
 
 /* EOF */
