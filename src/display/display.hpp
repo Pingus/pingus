@@ -28,25 +28,25 @@ class Rect;
 class Color;
 class DisplayHook;
 
-/** This is a kind of wrapper class around CL_Display, it provides
-    ways to set the cursor and hooks for flip_display() */
 class Display
 {
 private:
-  static std::vector<SDL_Rect>   cliprect_stack;
+  static std::vector<SDL_Rect> cliprect_stack;
   static SDL_Surface* screen;
+
 public:
-  static void draw_line(int x1, int y1, int x2, int y2, const Color& color);
+  static void draw_surface(SDL_Surface* sur, const Vector2i& pos);
+  static void draw_surface(SDL_Surface* sur, const Vector2i& pos, const Rect& rect);
+
   static void draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color);
 
-  static void draw_rect(int x1, int y1, int x2, int y2, const Color& color);
   static void draw_rect(const Rect& rect, const Color& color);
   static void fill_rect(const Rect& rect, const Color& color);
 
   static void flip_display(bool sync=false);
 
-  static int get_width();
-  static int get_height();
+  static int  get_width();
+  static int  get_height();
   static Size get_size();
 
   static void set_video_mode(int width, int height);
@@ -57,6 +57,7 @@ public:
 
   static void push_cliprect(const Rect&);
   static void pop_cliprect();
+
 private:
   Display ();
   Display (const Display&);

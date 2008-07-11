@@ -53,8 +53,8 @@ public:
   DrawingContext(const Rect& rect, bool clip = true);
   virtual ~DrawingContext();
 
-  /** Draws everything in the drawing context to the screen */
-  void render(SDL_Surface* screen, const Rect& rect);
+  /** Draws everything in the drawing context to the target */
+  void render(SDL_Surface* target, const Rect& rect);
 
   /** Empties the drawing context */
   void clear();

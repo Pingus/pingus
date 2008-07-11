@@ -72,7 +72,7 @@ public:
   virtual ~SpriteDrawingRequest() {}
 
   void render(SDL_Surface* target, const Rect& rect) {
-    sprite.draw(pos.x + rect.left, pos.y + rect.top, target);
+    sprite.render(pos.x + rect.left, pos.y + rect.top, target);
   }
 };
 
@@ -196,7 +196,7 @@ DrawingContext::~DrawingContext()
 }
 
 void
-DrawingContext::render(SDL_Surface* screen, const Rect& parent_rect)
+DrawingContext::render(SDL_Surface* target, const Rect& parent_rect)
 {
   Rect this_rect(Math::max(rect.left   + parent_rect.left, parent_rect.left),
                  Math::max(rect.top    + parent_rect.top,  parent_rect.top),
@@ -218,7 +218,7 @@ DrawingContext::render(SDL_Surface* screen, const Rect& parent_rect)
   for(DrawingRequests::iterator i = drawingrequests.begin(); i != drawingrequests.end(); ++i)
     {
       //std::cout << this << ": " << (*i)->get_z_pos() << std::endl;
-      (*i)->render(screen, this_rect); // FIXME: Should we clip size against parent rect?
+      (*i)->render(target, this_rect); // FIXME: Should we clip size against parent rect?
     }
 
   if (do_clipping) 

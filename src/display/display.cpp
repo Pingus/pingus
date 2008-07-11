@@ -179,12 +179,6 @@ static void draw_hline(int x, int y, int length, const Color& color)
   SDL_UnlockSurface(Display::get_screen());
 }
 
-void
-Display::draw_line(int x1, int y1, int x2, int y2, const Color& color)
-{
-  Display::draw_line(Vector2i(x1, y1), Vector2i(x2, y2), color);
-}
-
 static
 void clip(int& i, int min, int max)
 {
@@ -329,18 +323,12 @@ Display::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& colo
 }
 
 void
-Display::draw_rect(int x1, int y1, int x2, int y2, const Color& color)
-{
-  Display::draw_line(Vector2i(x1, y1),   Vector2i(x2-1, y1), color);
-  Display::draw_line(Vector2i(x1, y2-1), Vector2i(x2-1, y2-1), color);
-  Display::draw_line(Vector2i(x1, y1),   Vector2i(x1, y2-1), color);
-  Display::draw_line(Vector2i(x2-1, y1), Vector2i(x2-1, y2-1), color);
-}
-
-void
 Display::draw_rect(const Rect& rect, const Color& color)
 {
-  Display::draw_rect(rect.left, rect.top, rect.right, rect.bottom, color);
+  draw_line(Vector2i(rect.left,    rect.top),      Vector2i(rect.right-1, rect.top),      color);
+  draw_line(Vector2i(rect.left,    rect.bottom-1), Vector2i(rect.right-1, rect.bottom-1), color);
+  draw_line(Vector2i(rect.left,    rect.top),      Vector2i(rect.left,    rect.bottom-1), color);
+  draw_line(Vector2i(rect.right-1, rect.top),      Vector2i(rect.right-1, rect.bottom-1), color);
 }
 
 void
@@ -418,6 +406,18 @@ Display::pop_cliprect()
     SDL_SetClipRect(screen, NULL);
   else
     SDL_SetClipRect(screen, &cliprect_stack.back());
+}
+
+void
+Display::draw_surface(SDL_Surface* sur, const Vector2i& pos)
+{
+  
+}
+
+void
+Display::draw_surface(SDL_Surface* sur, const Vector2i& pos, const Rect& rect)
+{
+  
 }
 
 /* EOF */

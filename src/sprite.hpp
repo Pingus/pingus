@@ -29,8 +29,7 @@ class Pathname;
 class SpriteImpl;
 class SpriteDescription;
 class ResDescriptor;
-
-/** */
+
 class Sprite
 {
 public:
@@ -47,7 +46,7 @@ public:
 
   void update(float delta = 0.033f);
 
-  void draw(float x, float y, SDL_Surface* target);
+  void render(float x, float y, SDL_Surface* target);
   void set_hotspot(Origin origin, int x, int y);
   Vector2i get_offset() const;
   void set_frame(int i);
@@ -80,7 +79,7 @@ public:
 private:
   boost::shared_ptr<SpriteImpl> impl;
 };
-
+
 #endif
 
 /* EOF */

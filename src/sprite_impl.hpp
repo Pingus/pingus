@@ -54,7 +54,7 @@ public:
   void optimize();
   void update(float delta);
 
-  void draw(float x, float y, SDL_Surface* dst);
+  void render(float x, float y, SDL_Surface* dst);
 
   void restart();
   void finish();

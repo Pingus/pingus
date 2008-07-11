@@ -59,12 +59,12 @@ public:
   int  get_height() const;
   int  get_pitch()  const;
 
-  void blit(const Surface& source, int x, int y);
+  void blit(const Surface& src, int x, int y);
 
   Color get_pixel(int x, int y) const;
 
   void fill(const Color& color);
-  void optimize();
+  Surface optimize();
 
   Surface scale(int w, int h);
   Surface mod(ResourceModifierNS::ResourceModifier mod);

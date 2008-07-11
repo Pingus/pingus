@@ -77,7 +77,7 @@ SpriteImpl::~SpriteImpl()
 void
 SpriteImpl::optimize()
 {
-  surface.optimize();
+  surface = surface.optimize();
   optimized = true;
 }
 
@@ -110,7 +110,7 @@ SpriteImpl::update(float delta)
 }
 
 void 
-SpriteImpl::draw(float x, float y, SDL_Surface* dst)
+SpriteImpl::render(float x, float y, SDL_Surface* dst)
 {
   if (!optimized)
     optimize();

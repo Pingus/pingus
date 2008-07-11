@@ -32,7 +32,6 @@ private:
   Sprite   sprite;
   Surface  surface;
 
-  void prepare();
 public:
   MapTile();
   ~MapTile();
@@ -52,31 +51,23 @@ MapTile::~MapTile()
 }
 
 void
-MapTile::prepare()
-{
-  if (!surface)
-    {
-      surface = Surface(tile_size, tile_size);
-      //Blitter::clear_canvas(surface);
-    }
-}
-
-void
-MapTile::remove(Surface obj, int x, int y, 
+MapTile::remove(Surface src, int x, int y, 
                 int real_x, int real_y, GroundMap* parent)
 {
   if (sprite)
     {
-      parent->put_alpha_surface(surface, obj, x, y, real_x, real_y);
+      parent->put_alpha_surface(surface, src, x, y, real_x, real_y);
       sprite = Sprite(surface);
     }
 }
 
 void
-MapTile::put(Surface obj, int x, int y)
+MapTile::put(Surface src, int x, int y)
 {
-  prepare();
-  surface.blit(obj, x, y);
+  if (!surface)
+    surface = Surface(tile_size, tile_size);
+
+  surface.blit(src, x, y);
   sprite = Sprite(surface);
 }
 

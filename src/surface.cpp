@@ -27,16 +27,13 @@ class SurfaceImpl
 {
 public:
   SDL_Surface* surface;
-  bool       optimized;
 
   SurfaceImpl()
-    : surface(0),
-      optimized(false)
+    : surface(0)
   {}
 
   SurfaceImpl(SDL_Surface* surface)
-    : surface(surface),
-      optimized(false)
+    : surface(surface)
   {}
   
   ~SurfaceImpl() 
@@ -252,22 +249,23 @@ Surface::mod(ResourceModifierNS::ResourceModifier modifier)
     }
 }
 
-void
+Surface
 Surface::optimize()
 {
-  if (impl.get() && !impl->optimized)
+  if (impl.get())
     {
-      // FIXME: Could add a check to check if the surface is already optimized
-      SDL_Surface* old_surface = impl->surface;
+      SDL_Surface* new_surface;
 
       if (impl->surface->format->Amask != 0 || (impl->surface->flags & SDL_SRCCOLORKEY))
-        impl->surface = SDL_DisplayFormatAlpha(old_surface);
+        new_surface = SDL_DisplayFormatAlpha(impl->surface);
       else
-        impl->surface = SDL_DisplayFormat(old_surface);
+        new_surface = SDL_DisplayFormat(impl->surface);
   
-      SDL_FreeSurface(old_surface);
-
-      impl->optimized = true;
+      return Surface(new_surface);
+    }
+  else
+    {
+      return Surface();
     }
 }
 
