@@ -31,10 +31,10 @@ private:
   std::vector<SDL_Rect> cliprect_stack;
 
 public:
-  Framebuffer(SDL_Surface* screen_);
+  Framebuffer();
   ~Framebuffer();
 
-  void set_video_mode(int width, int height);
+  void set_video_mode(int width, int height, bool fullscreen);
   void flip();
   void clear();
 
@@ -50,7 +50,8 @@ public:
   void fill_rect(const Rect& rect, const Color& color);
 
   Size get_size();
- 
+
+  SDL_Surface* get_screen() { return screen; }
 private:
   Framebuffer (const Framebuffer&);
   Framebuffer& operator= (const Framebuffer&);

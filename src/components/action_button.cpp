@@ -20,7 +20,6 @@
 #include "../game_session.hpp"
 #include "../world.hpp"
 #include "../display/drawing_context.hpp"
-#include "../display/display.hpp"
 #include "../fonts.hpp"
 #include "../string_util.hpp"
 #include "../math/vector3f.hpp"

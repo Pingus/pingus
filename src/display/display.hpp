@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_DISPLAY_HPP
 #define HEADER_PINGUS_DISPLAY_HPP
 
-#include "../pingus.hpp"
+#include <memory>
 #include "SDL.h"
 #include <list>
 #include <vector>
@@ -26,34 +26,30 @@
 class Vector2i;
 class Rect;
 class Color;
-class DisplayHook;
+class Framebuffer;
 
 class Display
 {
 private:
-  static std::vector<SDL_Rect> cliprect_stack;
-  static SDL_Surface* screen;
+  static std::auto_ptr<Framebuffer> framebuffer;
 
 public:
-  static void draw_surface(SDL_Surface* sur, const Vector2i& pos);
-  static void draw_surface(SDL_Surface* sur, const Vector2i& pos, const Rect& rect);
-
   static void draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color);
 
   static void draw_rect(const Rect& rect, const Color& color);
   static void fill_rect(const Rect& rect, const Color& color);
 
-  static void flip_display(bool sync=false);
+  static void flip_display();
 
   static int  get_width();
   static int  get_height();
   static Size get_size();
 
-  static void set_video_mode(int width, int height);
+  static void set_video_mode(int width, int height, bool fullscreen);
   
   static void clear();
 
-  static SDL_Surface* get_screen() { return screen; }
+  static SDL_Surface* get_screen();
 
   static void push_cliprect(const Rect&);
   static void pop_cliprect();

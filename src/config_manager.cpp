@@ -81,7 +81,7 @@ ConfigManager::set_resolution(const Size& size)
     {
       screen_width  = size.width;
       screen_height = size.height;
-      Display::set_video_mode(screen_width, screen_height);  
+      Display::set_video_mode(screen_width, screen_height, fullscreen_enabled);
       on_resolution_change(size);
     }
 }
@@ -102,7 +102,7 @@ ConfigManager::set_fullscreen(bool v)
   if (v != get_fullscreen())
     {
       fullscreen_enabled = v;
-      Display::set_video_mode(screen_width, screen_height);
+      Display::set_video_mode(screen_width, screen_height, fullscreen_enabled);
       on_fullscreen_change(v);
     }
 }

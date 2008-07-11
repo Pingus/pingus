@@ -15,7 +15,6 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <stdio.h>
-#include "../display/display.hpp"
 #include "../gettext.h"
 #include "../resource.hpp"
 #include "../world.hpp"

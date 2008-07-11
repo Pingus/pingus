@@ -14,6 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include <iostream>
 #include "../math.hpp"
 #include "display.hpp"
 #include "framebuffer.hpp"
@@ -134,8 +135,8 @@ void clip(int& i, int min, int max)
 
 } // namespace
 
-Framebuffer::Framebuffer(SDL_Surface* screen_)
-  : screen(screen_)
+Framebuffer::Framebuffer()
+  : screen(0)
 {
 }
 
@@ -360,8 +361,20 @@ Framebuffer::get_size()
 }
 
 void
-Framebuffer::set_video_mode(int width, int height)
+Framebuffer::set_video_mode(int width, int height, bool fullscreen)
 {
+  Uint32 flags = SDL_RESIZABLE;
+
+  if (fullscreen)
+    flags |= SDL_FULLSCREEN;
+
+  screen = SDL_SetVideoMode(width, height, 0, flags);
+
+  if (screen == NULL) 
+    {
+      std::cout << "Unable to set video mode: " << SDL_GetError() << std::endl;
+      exit(1);
+    }
 }
   
 void
