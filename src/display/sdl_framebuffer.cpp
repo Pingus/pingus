@@ -350,19 +350,19 @@ SDLFramebuffer::fill_rect(const Rect& rect_, const Color& color)
       if (rect.right < clipx1 || rect.left > clipx2 || rect.bottom < clipy1 || rect.top > clipy2)
         return;
 
-      top = rect.top < clipy1 ? clipy1 : rect.top;
-      bottom = rect.bottom > clipy2 ? clipy2 : rect.bottom;
-      left = rect.left < clipx1 ? clipx1 : rect.left;
-      right = rect.right > clipx2 ? clipx2 : rect.right;
+      top    = rect.top    < clipy1 ? clipy1 : rect.top;
+      bottom = rect.bottom > clipy2 ? clipy2 : rect.bottom-1;
+      left   = rect.left   < clipx1 ? clipx1 : rect.left;
+      right  = rect.right  > clipx2 ? clipx2 : rect.right-1;
 
       draw_pixel_func draw_pixel = get_draw_pixel(screen);
       if (!draw_pixel)
         return;
 
       SDL_LockSurface(screen);
-      for (int j = top; j <= bottom; ++j) {
-        for (int i = left; i <= right; ++i) {
-          draw_pixel(screen, i, j, color);
+      for (int y = top; y <= bottom; ++y) {
+        for (int x = left; x <= right; ++x) {
+          draw_pixel(screen, x, y, color);
         }
       }
       SDL_UnlockSurface(screen);
@@ -373,6 +373,12 @@ void
 SDLFramebuffer::flip()
 {
   SDL_Flip(screen);
+}
+
+void
+SDLFramebuffer::update_rect(const Rect& rect)
+{
+  SDL_UpdateRect(screen, rect.left, rect.top, rect.get_width(), rect.get_height());
 }
 
 Size

@@ -36,6 +36,7 @@ public:
 
   void set_video_mode(int width, int height, bool fullscreen);
   void flip();
+  void update_rect(const Rect& rect);
 
   void push_cliprect(const Rect&);
   void pop_cliprect();
