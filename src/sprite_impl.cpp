@@ -117,10 +117,10 @@ SpriteImpl::render(float x, float y, Framebuffer& fb)
     optimize();
   
   fb.draw_surface(surface.get_surface(), 
-                  Vector2i(static_cast<int>(x - offset.x), static_cast<int>(y - offset.y)),
                   Rect(frame_pos + Vector2i(frame_size.width  * (frame%array.width),
                                             frame_size.height * (frame/array.width)),
-                       frame_size));
+                       frame_size),
+                  Vector2i(static_cast<int>(x - offset.x), static_cast<int>(y - offset.y)));
 }
 
 void

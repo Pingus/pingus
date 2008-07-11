@@ -21,9 +21,11 @@
 
 namespace {
 
-void draw_pixel16(int x, int y, const Color& c)
+typedef void (*draw_pixel_func)(SDL_Surface* screen, int, int, const Color&);
+
+inline void draw_pixel16(SDL_Surface* screen, int x, int y, const Color& c)
 {
-  Uint32 color = SDL_MapRGBA(Display::get_screen()->format, c.r, c.g, c.b, c.a);
+  Uint32 color = SDL_MapRGBA(screen->format, c.r, c.g, c.b, c.a);
 
   if (c.a < 255) {
     Uint16 *p;
@@ -33,20 +35,20 @@ void draw_pixel16(int x, int y, const Color& c)
     // Loses precision for speed
     alpha = (255 - c.a) >> 3;
 
-    p = &((Uint16 *)Display::get_screen()->pixels)[x + y * Display::get_screen()->w];
+    p = &((Uint16 *)screen->pixels)[x + y * screen->w];
     color = (((color << 16) | color) & 0x07E0F81F);
     dp = *p;
     dp = ((dp << 16) | dp) & 0x07E0F81F;
     dp = ((((dp - color) * alpha) >> 5) + color) & 0x07E0F81F;
     *p = (Uint16)((dp >> 16) | dp);
   } else {
-    ((Uint16 *)Display::get_screen()->pixels)[x + y * Display::get_screen()->w] = color;
+    ((Uint16 *)screen->pixels)[x + y * screen->w] = color;
   }
 }
 
-void draw_pixel32(int x, int y, const Color& c)
+inline void draw_pixel32(SDL_Surface* screen, int x, int y, const Color& c)
 {
-  Uint32 color = SDL_MapRGBA(Display::get_screen()->format, c.r, c.g, c.b, c.a);
+  Uint32 color = SDL_MapRGBA(screen->format, c.r, c.g, c.b, c.a);
 
   if (c.a < 255) {
     Uint32 *p;
@@ -57,7 +59,7 @@ void draw_pixel32(int x, int y, const Color& c)
 
     alpha = 255 - c.a;
 
-    p = &((Uint32*)Display::get_screen()->pixels)[x + y * Display::get_screen()->w];
+    p = &((Uint32*)screen->pixels)[x + y * screen->w];
 
     sp2 = (color & 0xFF00FF00) >> 8;
     color &= 0x00FF00FF;
@@ -70,14 +72,13 @@ void draw_pixel32(int x, int y, const Color& c)
     dp2 = ((((dp2 - sp2) * alpha) >> 8) + sp2) & 0x00FF00FF;
     *p = (dp1 | (dp2 << 8));
   } else {
-    ((Uint32 *)Display::get_screen()->pixels)[x + y * Display::get_screen()->w] = color;
+    ((Uint32 *)screen->pixels)[x + y * screen->w] = color;
   }
 }
 
-typedef void (*draw_pixel_func)(int, int, const Color&);
-draw_pixel_func get_draw_pixel()
+draw_pixel_func get_draw_pixel(SDL_Surface* screen)
 {
-  switch (Display::get_screen()->format->BitsPerPixel)
+  switch (screen->format->BitsPerPixel)
     {
       case 16:
         return draw_pixel16;
@@ -87,30 +88,30 @@ draw_pixel_func get_draw_pixel()
   return NULL;
 }
 
-void draw_vline(int x, int y, int length, const Color& color)
+void draw_vline(SDL_Surface* screen, int x, int y, int length, const Color& color)
 {
-  draw_pixel_func draw_pixel = get_draw_pixel();
+  draw_pixel_func draw_pixel = get_draw_pixel(screen);
   if (!draw_pixel)
     return;
 
-  SDL_LockSurface(Display::get_screen());
+  SDL_LockSurface(screen);
   for (int i = 0; i < length; ++i) {
-    draw_pixel(x, y + i, color);
+    draw_pixel(screen, x, y + i, color);
   }
-  SDL_UnlockSurface(Display::get_screen());
+  SDL_UnlockSurface(screen);
 }
 
-void draw_hline(int x, int y, int length, const Color& color)
+void draw_hline(SDL_Surface* screen, int x, int y, int length, const Color& color)
 {
-  draw_pixel_func draw_pixel = get_draw_pixel();
+  draw_pixel_func draw_pixel = get_draw_pixel(screen);
   if (!draw_pixel)
     return;
 
-  SDL_LockSurface(Display::get_screen());
+  SDL_LockSurface(screen);
   for (int i = 0; i < length; ++i) {
-    draw_pixel(x + i, y, color);
+    draw_pixel(screen, x + i, y, color);
   }
-  SDL_UnlockSurface(Display::get_screen());
+  SDL_UnlockSurface(screen);
 }
 
 SDL_Rect Intersection(SDL_Rect* r1, SDL_Rect* r2)
@@ -157,7 +158,7 @@ Framebuffer::draw_surface(SDL_Surface* src, const Vector2i& pos)
 }
 
 void
-Framebuffer::draw_surface(SDL_Surface* src, const Vector2i& pos, const Rect& rect)
+Framebuffer::draw_surface(SDL_Surface* src, const Rect& srcrect, const Vector2i& pos)
 {
   SDL_Rect dstrect;
   dstrect.x = (Sint16)pos.x;
@@ -165,13 +166,13 @@ Framebuffer::draw_surface(SDL_Surface* src, const Vector2i& pos, const Rect& rec
   dstrect.w = 0;
   dstrect.h = 0;  
 
-  SDL_Rect srcrect;
-  srcrect.x = rect.left;
-  srcrect.y = rect.top;
-  srcrect.w = rect.get_width();
-  srcrect.h = rect.get_height();
+  SDL_Rect sdlsrcrect;
+  sdlsrcrect.x = srcrect.left;
+  sdlsrcrect.y = srcrect.top;
+  sdlsrcrect.w = srcrect.get_width();
+  sdlsrcrect.h = srcrect.get_height();
 
-  SDL_BlitSurface(src, &srcrect, screen, &dstrect);
+  SDL_BlitSurface(src, &sdlsrcrect, screen, &dstrect);
 }
 
 void
@@ -182,11 +183,11 @@ Framebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& 
   int sy = pos1.y;
   int dx = pos2.x;
   int dy = pos2.y;
-  void (*draw_pixel)(int x, int y, const Color& color);
+  draw_pixel_func draw_pixel;
   int clipx1, clipx2, clipy1, clipy2;
   SDL_Rect rect;
 
-  SDL_GetClipRect(Display::get_screen(), &rect);
+  SDL_GetClipRect(screen, &rect);
   clipx1 = rect.x;
   clipx2 = rect.x + rect.w - 1;
   clipy1 = rect.y;
@@ -200,9 +201,9 @@ Framebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& 
     clip(sy, clipy1, clipy2);
     clip(dy, clipy1, clipy2);
     if (sy < dy) {
-      draw_vline(sx, sy, dy - sy + 1, color);
+      draw_vline(screen, sx, sy, dy - sy + 1, color);
     } else {
-      draw_vline(dx, dy, sy - dy + 1, color);
+      draw_vline(screen, dx, dy, sy - dy + 1, color);
     }
     return;
   }
@@ -215,14 +216,14 @@ Framebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& 
     clip(sx, clipx1, clipx2);
     clip(dx, clipx1, clipx2);
     if (sx < dx) {
-      draw_hline(sx, sy, dx - sx + 1, color);
+      draw_hline(screen, sx, sy, dx - sx + 1, color);
     } else {
-      draw_hline(dx, dy, sx - dx + 1, color);
+      draw_hline(screen, dx, dy, sx - dx + 1, color);
     }
     return;
   }
 
-  draw_pixel = get_draw_pixel();
+  draw_pixel = get_draw_pixel(screen);
   if (!draw_pixel) {
     return;
   }
@@ -262,7 +263,7 @@ Framebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& 
     SDL_LockSurface(screen);
     for (x = sx; x < dx; ++x) {
       if (x >= clipx1 && x <= clipx2 && y >= clipy1 && y <= clipy2) {
-        draw_pixel(x, y, color);
+        draw_pixel(screen, x, y, color);
       }
       if (p >= 0) {
 	y += incr;
@@ -281,7 +282,7 @@ Framebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& 
     SDL_LockSurface(screen);
     for (y = sy; y < dy; ++y) {
       if (x >= clipx1 && x <= clipx2 && y >= clipy1 && y <= clipy2) {
-        draw_pixel(x, y, color);
+        draw_pixel(screen, x, y, color);
       }
       if (p >= 0) {
 	x += incr;
@@ -299,7 +300,7 @@ Framebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& 
     SDL_LockSurface(screen);
     while (y != dy) {
       if (x >= clipx1 && x <= clipx2 && y >= clipy1 && y <= clipy2) {
-        draw_pixel(x, y, color);
+        draw_pixel(screen, x, y, color);
       }
       x += incr;
       ++y;
@@ -354,14 +355,14 @@ Framebuffer::fill_rect(const Rect& rect_, const Color& color)
       left = rect.left < clipx1 ? clipx1 : rect.left;
       right = rect.right > clipx2 ? clipx2 : rect.right;
 
-      draw_pixel_func draw_pixel = get_draw_pixel();
+      draw_pixel_func draw_pixel = get_draw_pixel(screen);
       if (!draw_pixel)
         return;
 
       SDL_LockSurface(screen);
       for (int j = top; j <= bottom; ++j) {
         for (int i = left; i <= right; ++i) {
-          draw_pixel(i, j, color);
+          draw_pixel(screen, i, j, color);
         }
       }
       SDL_UnlockSurface(screen);
@@ -400,7 +401,7 @@ Framebuffer::set_video_mode(int width, int height, bool fullscreen)
 void
 Framebuffer::clear()
 {
-  SDL_FillRect(screen, NULL, SDL_MapRGB(Display::get_screen()->format, 0, 0, 0));
+  SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
 }
 
 void

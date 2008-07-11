@@ -28,24 +28,6 @@
 std::auto_ptr<Framebuffer> Display::framebuffer;
 
 void
-Display::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color)
-{
-  framebuffer->draw_line(pos1, pos2, color);
-}
-
-void
-Display::draw_rect(const Rect& rect, const Color& color)
-{
-  framebuffer->draw_rect(rect, color);
-}
-
-void
-Display::fill_rect(const Rect& rect, const Color& color)
-{
-  framebuffer->fill_rect(rect, color);
-}
-
-void
 Display::flip_display()
 {
   return framebuffer->flip();
@@ -77,35 +59,11 @@ Display::set_video_mode(int width, int height, bool fullscreen)
 
   framebuffer->set_video_mode(width, height, fullscreen);
 }
-  
-void
-Display::clear()
-{
-  framebuffer->clear();
-}
-
-SDL_Surface*
-Display::get_screen() 
-{
-  return framebuffer->get_screen(); 
-}
 
 Framebuffer&
 Display::get_framebuffer()
 {
   return *framebuffer.get(); 
-}
-
-void
-Display::push_cliprect(const Rect& rect)
-{
-  framebuffer->push_cliprect(rect);
-}
-
-void
-Display::pop_cliprect()
-{
-  framebuffer->pop_cliprect();
 }
 
 /* EOF */

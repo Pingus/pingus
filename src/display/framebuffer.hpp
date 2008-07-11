@@ -40,8 +40,8 @@ public:
   void push_cliprect(const Rect&);
   void pop_cliprect();
 
-  void draw_surface(SDL_Surface* sur, const Vector2i& pos);
-  void draw_surface(SDL_Surface* sur, const Vector2i& pos, const Rect& rect);
+  void draw_surface(SDL_Surface* src, const Vector2i& pos);
+  void draw_surface(SDL_Surface* src, const Rect& srcrect, const Vector2i& pos);
 
   void draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color);
 

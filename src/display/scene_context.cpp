@@ -14,7 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "display/display.hpp"
+#include "display/framebuffer.hpp"
 #include "scene_context.hpp"
 
 #define SCALE_FACTOR 8.0f
@@ -156,9 +156,9 @@ SceneContext::render(Framebuffer& fb, const Rect& rect)
   // FIXME: Render all to pbuffer for later combining of them
   if (impl->use_cliprect)
     {
-      Display::push_cliprect(impl->cliprect);
+      fb.push_cliprect(impl->cliprect);
       impl->color.render(fb, rect);
-      Display::pop_cliprect();
+      fb.pop_cliprect();
     }
   else
     {

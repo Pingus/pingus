@@ -21,6 +21,7 @@
 #include "math/size.hpp"
 #include "pathname.hpp"
 #include "display/display.hpp"
+#include "display/framebuffer.hpp"
 #include "screen_manager.hpp"
 #include "../path_manager.hpp"
 #include "screen.hpp"
@@ -342,17 +343,18 @@ ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
   
   Uint32 last_ticks = SDL_GetTicks();
   float progress = 0.0f;
+  Framebuffer& fb = Display::get_framebuffer();
   while (progress <= 1.0f)
     {
       int border_x = int((Display::get_width()/2)  * (1.0f - progress));
       int border_y = int((Display::get_height()/2) * (1.0f - progress));
 
       old_screen->draw(*display_gc);
-      display_gc->render(Display::get_framebuffer(), Rect(Vector2i(0,0), Size(Display::get_width(),
+      display_gc->render(fb, Rect(Vector2i(0,0), Size(Display::get_width(),
                                                                               Display::get_height())));
       display_gc->clear();
       
-      Display::push_cliprect(Rect(Vector2i(0 + border_x, 0 + border_y),
+      fb.push_cliprect(Rect(Vector2i(0 + border_x, 0 + border_y),
                                   Size(Display::get_width()  - 2*border_x, 
                                        Display::get_height() - 2*border_y)));
 
@@ -361,8 +363,8 @@ ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
                                                                               Display::get_height())));
       display_gc->clear();
       
-      Display::pop_cliprect();
-      Display::flip_display();
+      fb.pop_cliprect();
+      fb.flip();
       display_gc->clear();
       
       progress = (SDL_GetTicks() - last_ticks)/1000.0f;

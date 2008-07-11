@@ -21,6 +21,7 @@
 #include <fstream>
 #include <iostream>
 #include "display/display.hpp"
+#include "display/framebuffer.hpp"
 #include "system.hpp"
 #include "screenshot.hpp"
 #include "gettext.h"
@@ -33,7 +34,7 @@ Screenshot::make_screenshot()
 {
   std::string filename = get_filename();
   std::cout << _("Screenshot: Saving screenshot to: ") << filename << std::endl;
-  save(Display::get_screen(), filename);
+  save(Display::get_framebuffer().get_screen(), filename);
   std::cout << _("Screenshot: Screenshot is done.") << std::endl;
   
   return filename;

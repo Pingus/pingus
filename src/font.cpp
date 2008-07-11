@@ -45,7 +45,7 @@ class FontImpl
 {
 public:
   SDL_Surface* surface;
-  SDL_Rect chrs[256];
+  Rect chrs[256];
   int space_length;
   float char_spacing;
   float vertical_spacing;
@@ -58,9 +58,6 @@ public:
     //std::cout << "desc.image: " << desc.image << std::endl;
     //std::cout << "desc.space: " << desc.space_length << std::endl;
     //std::cout << "Characters: " << desc.characters << std::endl;
-
-    for(int i = 0; i < 256; ++i)
-      chrs[i].x = chrs[i].y = chrs[i].w = chrs[i].h = 0;
 
     surface = IMG_Load(desc.image.get_sys_path().c_str());
     if (!surface)
@@ -109,11 +106,9 @@ public:
                         //std::cout << idx << " '" << desc.characters[idx] << "' " 
                         //          <<  " glyph: " << first << " - " << x << std::endl;
 
-                        SDL_Rect& rect = chrs[static_cast<unsigned char>(desc.characters[idx])];
-                        rect.x = first;
-                        rect.y = 0;
-                        rect.w = x - first;
-                        rect.h = surface->h;
+                        chrs[static_cast<unsigned char>(desc.characters[idx])]
+                          = Rect(Vector2i(first, 0), 
+                                 Size(x - first, surface->h));
                       }
                     else
                       {
@@ -147,12 +142,9 @@ public:
         
         for(int i = 0; i < int(desc.characters.size()); ++i)
           {
-            SDL_Rect& rect = chrs[static_cast<unsigned char>(desc.characters[i])];
-            
-            rect.x = i * space_length;
-            rect.y = 0;
-            rect.w = space_length;
-            rect.h = surface->h;
+            chrs[static_cast<unsigned char>(desc.characters[i])]
+              = Rect(Vector2i(i * space_length, 0),
+                     Size(space_length, surface->h));
           }
       }
 
@@ -190,12 +182,11 @@ public:
           }
         else
           {
-            SDL_Rect& srcrect = chrs[static_cast<unsigned char>(text[i])];
-            if (srcrect.w != 0 && srcrect.h != 0)
+            Rect& srcrect = chrs[static_cast<unsigned char>(text[i])];
+            if (srcrect.get_width() != 0 && srcrect.get_height() != 0)
               {
-		SDL_Rect dstrect = { int(dstx), int(dsty), 0, 0 };
-                SDL_BlitSurface(surface, &srcrect, fb.get_screen(), &dstrect);
-                dstx += srcrect.w + char_spacing;
+                fb.draw_surface(surface, srcrect, Vector2i(dstx, dsty));
+                dstx += srcrect.get_width() + char_spacing;
               }
             else
               {
@@ -212,7 +203,7 @@ public:
 
   int get_width(char idx) const
   {
-    return chrs[static_cast<unsigned char>(idx)].w;
+    return chrs[static_cast<unsigned char>(idx)].get_width();
   }
 
   int  get_width(const std::string& text) const
@@ -232,7 +223,7 @@ public:
           }
         else
           {
-            width += chrs[static_cast<unsigned char>(text[i])].w + char_spacing;
+            width += chrs[static_cast<unsigned char>(text[i])].get_width() + char_spacing;
           }
       }
     return int(std::max(width, last_width));

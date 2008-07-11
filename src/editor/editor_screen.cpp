@@ -55,8 +55,8 @@ EditorScreen::EditorScreen()
 {
   // Create the viewport for the images and data
   viewport = new Viewport(this, Rect(0, 38,
-                                           Display::get_width() - 244, 
-                                           Display::get_height()));
+                                     size.width - 244, 
+                                     size.height));
   gui_manager->add(viewport);
 	
   // Create the panel for the buttons
@@ -85,8 +85,8 @@ EditorScreen::EditorScreen()
   gui_manager->add(object_selector);
 
   file_load_dialog = new FileDialog(this, Rect(Vector2i(50, 50), 
-                                               Size(Display::get_width() - 100, 
-                                                    Display::get_height() - 100)), 
+                                               Size(size.width  - 100, 
+                                                    size.height - 100)), 
                                     FileDialog::LOAD);
   file_load_dialog->set_directory(".");
   file_load_dialog->hide();
