@@ -86,10 +86,10 @@ Sprite::~Sprite()
 }
 
 void
-Sprite::render(float x, float y, SDL_Surface* target)
+Sprite::render(float x, float y, Framebuffer& fb)
 {
   if (impl.get())
-    impl->render(x, y, target);
+    impl->render(x, y, fb);
 }
 
 int

@@ -72,7 +72,7 @@ public:
   virtual ~SpriteDrawingRequest() {}
 
   void render(Framebuffer& fb, const Rect& rect) {
-    sprite.render(pos.x + rect.left, pos.y + rect.top, fb.get_screen());
+    sprite.render(pos.x + rect.left, pos.y + rect.top, fb);
   }
 };
 
@@ -80,6 +80,7 @@ class FillScreenDrawingRequest : public DrawingRequest
 {
 private:
   Color color;
+
 public:
   FillScreenDrawingRequest(const Color& color_) 
     : DrawingRequest(Vector3f(0, 0, -1000.0f)), color(color_)
@@ -88,12 +89,7 @@ public:
   virtual ~FillScreenDrawingRequest() {}
 
   void render(Framebuffer& fb, const Rect& rect) {
-    SDL_Rect r;
-    r.x = rect.left;
-    r.y = rect.top;
-    r.w = rect.get_width();
-    r.h = rect.get_height();
-    SDL_FillRect(fb.get_screen(), &r, SDL_MapRGB(fb.get_screen()->format, color.r, color.g, color.b));
+    fb.fill_rect(rect, color);
   }
 };
 
@@ -118,8 +114,8 @@ public:
 
   void render(Framebuffer& fb, const Rect& rect)
   {
-    Display::draw_line(pos1 + Vector2i(rect.left, rect.top),
-                       pos2 + Vector2i(rect.left, rect.top), color);
+    fb.draw_line(pos1 + Vector2i(rect.left, rect.top),
+                 pos2 + Vector2i(rect.left, rect.top), color);
   }
 };
 
@@ -140,17 +136,17 @@ public:
   {
     if (filled)
       {
-        Display::fill_rect(Rect(Vector2i(d_rect.left + rect.left, 
-                                         d_rect.top  + rect.top),
-                                d_rect.get_size()), 
-                           color);
+        fb.fill_rect(Rect(Vector2i(d_rect.left + rect.left, 
+                                   d_rect.top  + rect.top),
+                          d_rect.get_size()), 
+                     color);
       }
     else
       {
-        Display::draw_rect(Rect(Vector2i(d_rect.left + rect.left, 
-                                         d_rect.top  + rect.top),
-                                d_rect.get_size()), 
-                           color);
+        fb.draw_rect(Rect(Vector2i(d_rect.left + rect.left, 
+                                   d_rect.top  + rect.top),
+                          d_rect.get_size()), 
+                     color);
       }
   }
 };
@@ -204,7 +200,7 @@ DrawingContext::render(Framebuffer& fb, const Rect& parent_rect)
                  Math::min(rect.bottom + parent_rect.top,  parent_rect.bottom));
 
   if (do_clipping) 
-    Display::push_cliprect(this_rect);
+    fb.push_cliprect(this_rect);
 
   std::stable_sort(drawingrequests.begin(), drawingrequests.end(), DrawingRequestsSorter());
   
@@ -222,7 +218,7 @@ DrawingContext::render(Framebuffer& fb, const Rect& parent_rect)
     }
 
   if (do_clipping) 
-    Display::pop_cliprect();
+    fb.pop_cliprect();
 }
 
 void

@@ -264,7 +264,7 @@ ScreenManager::update(float delta, const std::vector<Input::Event>& events)
   
   // Draw the mouse pointer
   if (swcursor_enabled)
-    cursor.render(mouse_pos.x, mouse_pos.y, Display::get_screen());
+    cursor.render(mouse_pos.x, mouse_pos.y, Display::get_framebuffer());
   
   // Draw FPS Counter
   if (print_fps)

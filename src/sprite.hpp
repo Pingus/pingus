@@ -29,6 +29,7 @@ class Pathname;
 class SpriteImpl;
 class SpriteDescription;
 class ResDescriptor;
+class Framebuffer;
 
 class Sprite
 {
@@ -46,7 +47,7 @@ public:
 
   void update(float delta = 0.033f);
 
-  void render(float x, float y, SDL_Surface* target);
+  void render(float x, float y, Framebuffer& target);
   void set_hotspot(Origin origin, int x, int y);
   Vector2i get_offset() const;
   void set_frame(int i);

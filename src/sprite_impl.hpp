@@ -20,6 +20,7 @@
 #include "surface.hpp"
 #include "math/vector2i.hpp"
 
+class Framebuffer;
 class SpriteDescription;
 
 class SpriteImpl
@@ -54,7 +55,7 @@ public:
   void optimize();
   void update(float delta);
 
-  void render(float x, float y, SDL_Surface* dst);
+  void render(float x, float y, Framebuffer& fb);
 
   void restart();
   void finish();

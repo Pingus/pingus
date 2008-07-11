@@ -14,6 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "display/framebuffer.hpp"
 #include "sprite_description.hpp"
 #include "sprite_impl.hpp"
 
@@ -110,7 +111,7 @@ SpriteImpl::update(float delta)
 }
 
 void 
-SpriteImpl::render(float x, float y, SDL_Surface* dst)
+SpriteImpl::render(float x, float y, Framebuffer& fb)
 {
   if (!optimized)
     optimize();
@@ -128,7 +129,7 @@ SpriteImpl::render(float x, float y, SDL_Surface* dst)
   srcrect.x = frame_pos.x + (srcrect.w * (frame%array.width));
   srcrect.y = frame_pos.y + (srcrect.h * (frame/array.width));
 
-  SDL_BlitSurface(surface.get_surface(), &srcrect, dst, &dstrect);
+  SDL_BlitSurface(surface.get_surface(), &srcrect, fb.get_screen(), &dstrect);
 }
 
 void

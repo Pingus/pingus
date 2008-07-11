@@ -23,7 +23,6 @@
 #include "math/vector2i.hpp"
 #include "math/rect.hpp"
 
-/** */
 class Framebuffer
 {
 private:
