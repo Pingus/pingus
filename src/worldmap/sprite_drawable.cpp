@@ -21,11 +21,11 @@
 #include "worldmap_screen.hpp"
 #include "worldmap.hpp"
 #include "pingus.hpp"
-#include "surface_drawable.hpp"
+#include "sprite_drawable.hpp"
 
 namespace WorldmapNS {
-
-SurfaceDrawable::SurfaceDrawable(FileReader reader)
+
+SpriteDrawable::SpriteDrawable(FileReader reader)
   : Drawable(reader)
 {
   auto_uncover = false;
@@ -40,13 +40,13 @@ SurfaceDrawable::SurfaceDrawable(FileReader reader)
 }
 
 void
-SurfaceDrawable::update(float delta)
+SpriteDrawable::update(float delta)
 {
   UNUSED_ARG(delta);
 }
 
 void
-SurfaceDrawable::draw(DrawingContext& gc)
+SpriteDrawable::draw(DrawingContext& gc)
 {
   if (surface)
     {
@@ -71,7 +71,7 @@ SurfaceDrawable::draw(DrawingContext& gc)
         }
     }
 }
-
+
 } // namespace WorldmapNS
 
 /* EOF */

@@ -22,9 +22,8 @@
 #include "drawable.hpp"
 
 namespace WorldmapNS {
-
-/** */
-class SurfaceDrawable : public Drawable
+
+class SpriteDrawable : public Drawable
 {
 private:
   Sprite surface;
@@ -34,16 +33,16 @@ private:
       things, while the roof will disapear */
   bool       auto_uncover;
 public:
-  SurfaceDrawable(FileReader reader);
+  SpriteDrawable(FileReader reader);
 
   void update(float delta);
   void draw(DrawingContext&);
 
 private:
-  SurfaceDrawable (const SurfaceDrawable&);
-  SurfaceDrawable& operator= (const SurfaceDrawable&);
+  SpriteDrawable (const SpriteDrawable&);
+  SpriteDrawable& operator= (const SpriteDrawable&);
 };
-
+
 } // namespace WorldmapNS
 
 #endif

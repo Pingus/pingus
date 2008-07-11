@@ -15,7 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "surface_drawable.hpp"
+#include "sprite_drawable.hpp"
 #include "sprite_drawable.hpp"
 #include "drawable_factory.hpp"
 
