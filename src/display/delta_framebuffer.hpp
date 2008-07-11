@@ -18,12 +18,26 @@
 #define HEADER_DELTA_FRAMEBUFFER_HPP
 
 #include <memory>
+#include <map>
+#include "../math/vector2i.hpp"
 #include "framebuffer.hpp"
 
 class DeltaFramebuffer : public Framebuffer
 {
 private:
+  struct SurfaceDrawOp {
+    Vector2i     pos;
+    SDL_Surface* surface;
+    Rect         rect;
+  };
+
   std::auto_ptr<Framebuffer> framebuffer;
+  typedef std::vector<SurfaceDrawOp> DrawingOps;
+  DrawingOps drawing_ops;
+  DrawingOps last_drawing_ops;
+
+  DrawingOps::iterator find_op(const SurfaceDrawOp& pos);
+  void add_op(const SurfaceDrawOp& op);
 
 public:
   DeltaFramebuffer(Framebuffer* framebuffer);

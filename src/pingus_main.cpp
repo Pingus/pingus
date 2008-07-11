@@ -242,6 +242,8 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Start in Window Mode"));
   argp.add_option('f', "fullscreen", "",
                   _("Start in Fullscreen"));
+  argp.add_option(336, "delta-drawing", "",
+                  _("Enable experimental delta drawing"));
   argp.add_option(346, "enable-swcursor", "",
                   _("Enable software cursor"));
   argp.add_option('g', "geometry", "{width}x{height}",  
@@ -307,6 +309,10 @@ PingusMain::parse_args(int argc, char** argv)
     {
       switch (argp.get_key()) 
         {          
+          case 336: // --delta-drawing
+            delta_drawing = true;
+            break;
+
           case 359: // --credits
             cmd_options.credits.set(true);
             break;

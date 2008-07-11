@@ -30,6 +30,8 @@ DeltaFramebuffer::set_video_mode(int width, int height, bool fullscreen)
 void
 DeltaFramebuffer::flip()
 {
+  last_drawing_ops = drawing_ops;
+  drawing_ops.clear();
   framebuffer->flip();
 }
 
@@ -48,13 +50,34 @@ DeltaFramebuffer::pop_cliprect()
 void
 DeltaFramebuffer::draw_surface(SDL_Surface* src, const Vector2i& pos)
 {
-  framebuffer->draw_surface(src, pos);
+  SurfaceDrawOp op;
+  op.pos     = pos;
+  op.surface = src;
+  op.rect    = Rect(Vector2i(0, 0), Size(src->w, src->h));
+  add_op(op);
+
+  DrawingOps::iterator i = find_op(op);
+  if (i != last_drawing_ops.end())
+    ; //framebuffer->fill_rect(Rect(pos, Size(src->w, src->h)), Color(255, 0, 0, 100));
+  else
+    framebuffer->draw_surface(src, pos);
 }
 
 void
 DeltaFramebuffer::draw_surface(SDL_Surface* src, const Rect& srcrect, const Vector2i& pos)
 {
-  framebuffer->draw_surface(src, srcrect, pos);
+  SurfaceDrawOp op;
+  op.pos     = pos;
+  op.surface = src;
+  op.rect    = srcrect;
+  add_op(op);
+
+  DrawingOps::iterator i = find_op(op);
+  if (i != last_drawing_ops.end())
+    ; //framebuffer->fill_rect(Rect(pos, srcrect.get_size()), Color(255, 0, 0, 100));
+  else
+    framebuffer->draw_surface(src, srcrect, pos);
+
 }
 
 void
@@ -79,6 +102,25 @@ Size
 DeltaFramebuffer::get_size()
 {
   return framebuffer->get_size();
+}
+
+DeltaFramebuffer::DrawingOps::iterator
+DeltaFramebuffer::find_op(const DeltaFramebuffer::SurfaceDrawOp& op)
+{
+  for(DrawingOps::iterator i = last_drawing_ops.begin(); i != last_drawing_ops.end(); ++i)
+    {
+      if (i->pos     == op.pos &&
+          i->surface == op.surface &&
+          i->rect    == op.rect)
+        return i;
+    }
+  return last_drawing_ops.end();
+}
+
+void
+DeltaFramebuffer::add_op(const DeltaFramebuffer::SurfaceDrawOp& op)
+{
+  drawing_ops.push_back(op);
 }
 
 /* EOF */

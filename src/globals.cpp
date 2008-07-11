@@ -45,5 +45,6 @@ std::string default_language                = "en";
 unsigned int pingus_debug_flags              = 0;
 
 bool        fullscreen_enabled              = false;
+bool        delta_drawing                   = false;
 
 /* EOF */
