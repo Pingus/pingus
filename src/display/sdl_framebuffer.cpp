@@ -17,7 +17,7 @@
 #include <iostream>
 #include "../math.hpp"
 #include "display.hpp"
-#include "framebuffer.hpp"
+#include "sdl_framebuffer.hpp"
 
 namespace {
 
@@ -136,17 +136,17 @@ void clip(int& i, int min, int max)
 
 } // namespace
 
-Framebuffer::Framebuffer()
+SDLFramebuffer::SDLFramebuffer()
   : screen(0)
 {
 }
 
-Framebuffer::~Framebuffer()
+SDLFramebuffer::~SDLFramebuffer()
 {
 }
 
 void
-Framebuffer::draw_surface(SDL_Surface* src, const Vector2i& pos)
+SDLFramebuffer::draw_surface(SDL_Surface* src, const Vector2i& pos)
 {
   SDL_Rect dstrect;
   dstrect.x = (Sint16)pos.x;
@@ -158,7 +158,7 @@ Framebuffer::draw_surface(SDL_Surface* src, const Vector2i& pos)
 }
 
 void
-Framebuffer::draw_surface(SDL_Surface* src, const Rect& srcrect, const Vector2i& pos)
+SDLFramebuffer::draw_surface(SDL_Surface* src, const Rect& srcrect, const Vector2i& pos)
 {
   SDL_Rect dstrect;
   dstrect.x = (Sint16)pos.x;
@@ -176,7 +176,7 @@ Framebuffer::draw_surface(SDL_Surface* src, const Rect& srcrect, const Vector2i&
 }
 
 void
-Framebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color)
+SDLFramebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color)
 {
   int x, y, xlen, ylen, incr;
   int sx = pos1.x;
@@ -310,7 +310,7 @@ Framebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& 
 }
 
 void
-Framebuffer::draw_rect(const Rect& rect, const Color& color)
+SDLFramebuffer::draw_rect(const Rect& rect, const Color& color)
 {
   draw_line(Vector2i(rect.left,    rect.top),      Vector2i(rect.right-1, rect.top),      color);
   draw_line(Vector2i(rect.left,    rect.bottom-1), Vector2i(rect.right-1, rect.bottom-1), color);
@@ -319,7 +319,7 @@ Framebuffer::draw_rect(const Rect& rect, const Color& color)
 }
 
 void
-Framebuffer::fill_rect(const Rect& rect_, const Color& color)
+SDLFramebuffer::fill_rect(const Rect& rect_, const Color& color)
 {
   Rect rect = rect_;
   rect.normalize();
@@ -370,19 +370,19 @@ Framebuffer::fill_rect(const Rect& rect_, const Color& color)
 }
 
 void
-Framebuffer::flip()
+SDLFramebuffer::flip()
 {
   SDL_Flip(screen);
 }
 
 Size
-Framebuffer::get_size()
+SDLFramebuffer::get_size()
 {
   return Size(screen->w, screen->h);
 }
 
 void
-Framebuffer::set_video_mode(int width, int height, bool fullscreen)
+SDLFramebuffer::set_video_mode(int width, int height, bool fullscreen)
 {
   Uint32 flags = SDL_RESIZABLE;
 
@@ -399,7 +399,7 @@ Framebuffer::set_video_mode(int width, int height, bool fullscreen)
 }
 
 void
-Framebuffer::push_cliprect(const Rect& rect)
+SDLFramebuffer::push_cliprect(const Rect& rect)
 {
   SDL_Rect sdl_rect;
   sdl_rect.x = rect.left;
@@ -417,7 +417,7 @@ Framebuffer::push_cliprect(const Rect& rect)
 }
 
 void
-Framebuffer::pop_cliprect()
+SDLFramebuffer::pop_cliprect()
 {
   cliprect_stack.pop_back();
   if (cliprect_stack.empty())

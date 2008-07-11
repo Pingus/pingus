@@ -14,45 +14,33 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_SDL_FRAMEBUFFER_HPP
-#define HEADER_SDL_FRAMEBUFFER_HPP
+#ifndef HEADER_FRAMEBUFFER_HPP
+#define HEADER_FRAMEBUFFER_HPP
 
 #include <vector>
 #include "SDL.h"
 #include "math/color.hpp"
 #include "math/vector2i.hpp"
 #include "math/rect.hpp"
-#include "framebuffer.hpp"
 
-class SDLFramebuffer : public Framebuffer
+class Framebuffer
 {
-private:
-  SDL_Surface* screen;
-  std::vector<SDL_Rect> cliprect_stack;
-
 public:
-  SDLFramebuffer();
-  ~SDLFramebuffer();
+  virtual void set_video_mode(int width, int height, bool fullscreen) =0;
+  virtual void flip() =0;
 
-  void set_video_mode(int width, int height, bool fullscreen);
-  void flip();
+  virtual void push_cliprect(const Rect&) =0;
+  virtual void pop_cliprect() =0;
 
-  void push_cliprect(const Rect&);
-  void pop_cliprect();
+  virtual void draw_surface(SDL_Surface* src, const Vector2i& pos) =0;
+  virtual void draw_surface(SDL_Surface* src, const Rect& srcrect, const Vector2i& pos) =0;
 
-  void draw_surface(SDL_Surface* src, const Vector2i& pos);
-  void draw_surface(SDL_Surface* src, const Rect& srcrect, const Vector2i& pos);
+  virtual void draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color) =0;
 
-  void draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color);
+  virtual void draw_rect(const Rect& rect, const Color& color) =0;
+  virtual void fill_rect(const Rect& rect, const Color& color) =0;
 
-  void draw_rect(const Rect& rect, const Color& color);
-  void fill_rect(const Rect& rect, const Color& color);
-
-  Size get_size();
-
-private:
-  SDLFramebuffer (const SDLFramebuffer&);
-  SDLFramebuffer& operator= (const SDLFramebuffer&);
+  virtual Size get_size() =0;
 };
 
 #endif
