@@ -100,9 +100,6 @@ public:
   /** Turns the "snap-to-grid" option on or off */
   void set_snap_to(bool s) { snap_to = s; }
 
-  /** Return a pointer to the EditorScreen object */
-  EditorScreen* get_screen() { return editor; }
-
   Vector2f get_scroll_pos() const;
   void     set_scroll_pos(const Vector2f& pos);
 
