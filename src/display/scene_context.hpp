@@ -21,7 +21,7 @@
 #include "drawing_context.hpp"
 
 class SceneContextImpl;
-
+
 /** The SceneContext maintains all the different drawing layers to
     which a game object can draw. Each drawing layer serves a
     different purporse and all are combined in the end to form the
@@ -72,7 +72,7 @@ public:
 
   /** Takes all the buffers and combines them to form the final image
       that will be shown on the screen */
-  void render(SDL_Surface* gc, const Rect& rect);
+  void render(Framebuffer& fb, const Rect& rect);
 
   void clear();
 private:
@@ -90,10 +90,9 @@ private:
 public:
   SceneContextDrawingRequest(SceneContext* sc, const Vector3f& pos_ = Vector3f(0,0,0));
   virtual ~SceneContextDrawingRequest();
-  void render(SDL_Surface* gc, const Rect& render);
+  void render(Framebuffer& fb, const Rect& render);
 };
-
-
+
 #endif
 
 /* EOF */

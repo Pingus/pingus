@@ -18,8 +18,7 @@
 #include "scene_context.hpp"
 
 #define SCALE_FACTOR 8.0f
-
-
+
 class SceneContextImpl
 {
 public:
@@ -43,7 +42,7 @@ public:
   {
   }
 };
-
+
 SceneContext::SceneContext()
 {
   impl = new SceneContextImpl();
@@ -151,19 +150,19 @@ SceneContext::reset_cliprect()
 }
 
 void
-SceneContext::render(SDL_Surface* target, const Rect& rect)
+SceneContext::render(Framebuffer& fb, const Rect& rect)
 {
   // Render all buffers
   // FIXME: Render all to pbuffer for later combining of them
   if (impl->use_cliprect)
     {
       Display::push_cliprect(impl->cliprect);
-      impl->color.render(target, rect);
+      impl->color.render(fb, rect);
       Display::pop_cliprect();
     }
   else
     {
-      impl->color.render(target, rect);
+      impl->color.render(fb, rect);
     }
   
 #if 0
@@ -180,7 +179,7 @@ SceneContext::render(SDL_Surface* target, const Rect& rect)
     }
 #endif
 
-    impl->highlight.render(target, rect);
+    impl->highlight.render(fb, rect);
 }
 
 void
@@ -203,10 +202,9 @@ SceneContextDrawingRequest::~SceneContextDrawingRequest()
 }
 
 void
-SceneContextDrawingRequest::render(SDL_Surface* gc, const Rect& rect) 
+SceneContextDrawingRequest::render(Framebuffer& fb, const Rect& rect) 
 {
-  sc->render(gc, rect);
+  sc->render(fb, rect);
 }
-
-
+
 /* EOF */

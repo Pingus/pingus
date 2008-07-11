@@ -258,8 +258,8 @@ ScreenManager::update(float delta, const std::vector<Input::Event>& events)
   get_current_screen()->draw(*display_gc);
   
   // Render the DrawingContext to the screen
-  display_gc->render(Display::get_screen(), Rect(Vector2i(0,0), Size(Display::get_width(),
-                                                                     Display::get_height())));
+  display_gc->render(Display::get_framebuffer(), Rect(Vector2i(0,0), Size(Display::get_width(),
+                                                                          Display::get_height())));
   display_gc->clear();
   
   // Draw the mouse pointer
@@ -348,8 +348,8 @@ ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
       int border_y = int((Display::get_height()/2) * (1.0f - progress));
 
       old_screen->draw(*display_gc);
-      display_gc->render(Display::get_screen(), Rect(Vector2i(0,0), Size(Display::get_width(),
-                                                                         Display::get_height())));
+      display_gc->render(Display::get_framebuffer(), Rect(Vector2i(0,0), Size(Display::get_width(),
+                                                                              Display::get_height())));
       display_gc->clear();
       
       Display::push_cliprect(Rect(Vector2i(0 + border_x, 0 + border_y),
@@ -357,8 +357,8 @@ ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
                                        Display::get_height() - 2*border_y)));
 
       new_screen->draw(*display_gc);
-      display_gc->render(Display::get_screen(), Rect(Vector2i(0,0), Size(Display::get_width(),
-                                                                         Display::get_height())));
+      display_gc->render(Display::get_framebuffer(), Rect(Vector2i(0,0), Size(Display::get_width(),
+                                                                              Display::get_height())));
       display_gc->clear();
       
       Display::pop_cliprect();

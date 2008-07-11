@@ -26,9 +26,10 @@
 #include "../math/rect.hpp"
 #include "../math/color.hpp"
 
+class Framebuffer;
 class Font;
 class Sprite;
-
+
 /** The DrawingContext collects all DrawingRequests and allows you to
     flush them all down to the graphics card in one run, this has the
     advantage that it is possible to z-sort, texture-id sort or
@@ -54,7 +55,7 @@ public:
   virtual ~DrawingContext();
 
   /** Draws everything in the drawing context to the target */
-  void render(SDL_Surface* target, const Rect& rect);
+  void render(Framebuffer& fb, const Rect& rect);
 
   /** Empties the drawing context */
   void clear();
@@ -138,11 +139,12 @@ public:
   Vector2i world_to_screen(const Vector2i pos);
 
   void update_layout() {}
+
 private:
   DrawingContext (const DrawingContext&);
   DrawingContext& operator= (const DrawingContext&);
 };
-
+
 #endif
 
 /* EOF */

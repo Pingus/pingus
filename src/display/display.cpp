@@ -90,6 +90,12 @@ Display::get_screen()
   return framebuffer->get_screen(); 
 }
 
+Framebuffer&
+Display::get_framebuffer()
+{
+  return *framebuffer.get(); 
+}
+
 void
 Display::push_cliprect(const Rect& rect)
 {

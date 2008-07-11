@@ -21,8 +21,8 @@
 #include "math/vector3f.hpp"
 #include "math/rect.hpp"
 
-/** 
- */
+class Framebuffer;
+
 class DrawingRequest
 {
 protected:
@@ -35,7 +35,10 @@ public:
   DrawingRequest(const Vector3f& pos_) : pos(pos_), valid(true) {}
   virtual ~DrawingRequest() {};
   
-  virtual void render(SDL_Surface* gc, const Rect& rect) = 0;
+  /** \a rect is the rectangle that is managed by the parent
+      DrawingContext, all calls to fb have to be offset with
+      (rect.left,rect.top)  */
+  virtual void render(Framebuffer& fb, const Rect& rect) = 0;
 
   virtual void mark(const Rect& r) { dirty_rects.push_back(r); }
   
@@ -52,7 +55,7 @@ private:
   DrawingRequest (const DrawingRequest&);
   DrawingRequest& operator= (const DrawingRequest&);
 };
-
+
 #endif
 
 /* EOF */

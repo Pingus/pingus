@@ -19,11 +19,11 @@
 #include <algorithm>
 #include "drawing_context.hpp"
 #include "math.hpp"
+#include "framebuffer.hpp"
 #include "display/display.hpp"
 #include "../sprite.hpp"
 #include "../font.hpp"
 #include "../math/origin.hpp"
-
 
 struct DrawingRequestsSorter
 {
@@ -52,8 +52,8 @@ public:
 
   virtual ~FontDrawingRequest() {}
 
-  void render(SDL_Surface* target, const Rect& rect) {
-    font.draw(origin, static_cast<int>(pos.x + rect.left), static_cast<int>(pos.y + rect.top), text, target);
+  void render(Framebuffer& fb, const Rect& rect) {
+    font.draw(origin, static_cast<int>(pos.x + rect.left), static_cast<int>(pos.y + rect.top), text, fb.get_screen());
   }
 };
 
@@ -71,8 +71,8 @@ public:
 
   virtual ~SpriteDrawingRequest() {}
 
-  void render(SDL_Surface* target, const Rect& rect) {
-    sprite.render(pos.x + rect.left, pos.y + rect.top, target);
+  void render(Framebuffer& fb, const Rect& rect) {
+    sprite.render(pos.x + rect.left, pos.y + rect.top, fb.get_screen());
   }
 };
 
@@ -87,13 +87,13 @@ public:
   }
   virtual ~FillScreenDrawingRequest() {}
 
-  void render(SDL_Surface* target, const Rect& rect) {
+  void render(Framebuffer& fb, const Rect& rect) {
     SDL_Rect r;
     r.x = rect.left;
     r.y = rect.top;
     r.w = rect.get_width();
     r.h = rect.get_height();
-    SDL_FillRect(target, &r, SDL_MapRGB(target->format, color.r, color.g, color.b));
+    SDL_FillRect(fb.get_screen(), &r, SDL_MapRGB(fb.get_screen()->format, color.r, color.g, color.b));
   }
 };
 
@@ -116,7 +116,7 @@ public:
   {
   }
 
-  void render(SDL_Surface* target, const Rect& rect)
+  void render(Framebuffer& fb, const Rect& rect)
   {
     Display::draw_line(pos1 + Vector2i(rect.left, rect.top),
                        pos2 + Vector2i(rect.left, rect.top), color);
@@ -136,7 +136,7 @@ public:
       d_rect(rect_), color(color_), filled(filled_)
   {}
   
-  void render(SDL_Surface* target, const Rect& rect)
+  void render(Framebuffer& fb, const Rect& rect)
   {
     if (filled)
       {
@@ -170,8 +170,8 @@ public:
   {
   }
 
-  void render(SDL_Surface* target, const Rect& rect) {
-    dc.render(target, rect);
+  void render(Framebuffer& fb, const Rect& rect) {
+    dc.render(fb, rect);
   }
 };
 
@@ -196,7 +196,7 @@ DrawingContext::~DrawingContext()
 }
 
 void
-DrawingContext::render(SDL_Surface* target, const Rect& parent_rect)
+DrawingContext::render(Framebuffer& fb, const Rect& parent_rect)
 {
   Rect this_rect(Math::max(rect.left   + parent_rect.left, parent_rect.left),
                  Math::max(rect.top    + parent_rect.top,  parent_rect.top),
@@ -218,7 +218,7 @@ DrawingContext::render(SDL_Surface* target, const Rect& parent_rect)
   for(DrawingRequests::iterator i = drawingrequests.begin(); i != drawingrequests.end(); ++i)
     {
       //std::cout << this << ": " << (*i)->get_z_pos() << std::endl;
-      (*i)->render(target, this_rect); // FIXME: Should we clip size against parent rect?
+      (*i)->render(fb, this_rect); // FIXME: Should we clip size against parent rect?
     }
 
   if (do_clipping) 

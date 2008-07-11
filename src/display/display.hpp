@@ -50,6 +50,7 @@ public:
   static void clear();
 
   static SDL_Surface* get_screen();
+  static Framebuffer& get_framebuffer();
 
   static void push_cliprect(const Rect&);
   static void pop_cliprect();
