@@ -21,7 +21,7 @@
 #include "display/display.hpp"
 
 FPSCounter fps_counter;
-
+
 FPSCounter::FPSCounter()
 {
   start_time = SDL_GetTicks();
@@ -40,12 +40,12 @@ FPSCounter::draw()
 
   if (odd_frame)
     {
-      Fonts::pingus_small.draw(origin_center, Display::get_width()/2, 34, fps_string);
+      Fonts::pingus_small.render(origin_center, Display::get_width()/2, 34, fps_string, Display::get_framebuffer());
       odd_frame = false;
     }
   else
     {
-      Fonts::pingus_small.draw(origin_center, Display::get_width()/2, 34, "+ " + std::string(fps_string) + " +");
+      Fonts::pingus_small.render(origin_center, Display::get_width()/2, 34, "+ " + std::string(fps_string) + " +", Display::get_framebuffer());
       odd_frame = true;
     }
 }
@@ -66,6 +66,5 @@ FPSCounter::update_fps_counter()
       start_time = SDL_GetTicks();
     }
 }
-
-
+
 /* EOF */

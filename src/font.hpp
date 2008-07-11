@@ -26,16 +26,16 @@
 
 class FontImpl;
 class FontDescription;
-
-/** */
+class Framebuffer;
+
 class Font
 {
 public:
   Font();
   Font(const FontDescription& desc);
 
-  void draw(int x, int y, const std::string& text, SDL_Surface* target = 0);
-  void draw(Origin origin, int x, int y, const std::string& text, SDL_Surface* target = 0);
+  void render(int x, int y, const std::string& text, Framebuffer& fb);
+  void render(Origin origin, int x, int y, const std::string& text, Framebuffer& fb);
 
   int  get_height() const;
   int  get_width(char) const;
@@ -46,7 +46,7 @@ public:
 private:
   boost::shared_ptr<FontImpl> impl;
 };
-
+
 #endif
 
 /* EOF */

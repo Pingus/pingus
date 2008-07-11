@@ -53,7 +53,7 @@ public:
   virtual ~FontDrawingRequest() {}
 
   void render(Framebuffer& fb, const Rect& rect) {
-    font.draw(origin, static_cast<int>(pos.x + rect.left), static_cast<int>(pos.y + rect.top), text, fb.get_screen());
+    font.render(origin, static_cast<int>(pos.x + rect.left), static_cast<int>(pos.y + rect.top), text, fb);
   }
 };
 

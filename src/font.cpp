@@ -21,8 +21,8 @@
 #include "font.hpp"
 #include "line_iterator.hpp"
 #include "font_description.hpp"
-#include "display/display.hpp"
-
+#include "display/framebuffer.hpp"
+
 static bool vline_empty(SDL_Surface* surface, int x, Uint8 threshold)
 {
   if (x >= surface->w)
@@ -40,7 +40,7 @@ static bool vline_empty(SDL_Surface* surface, int x, Uint8 threshold)
     }
   return true;
 }
-
+
 class FontImpl
 {
 public:
@@ -164,26 +164,24 @@ public:
     SDL_FreeSurface(surface);
   }
 
-  void draw(Origin origin, int x, int y_, const std::string& text, SDL_Surface* target)
+  void render(Origin origin, int x, int y_, const std::string& text, Framebuffer& fb)
   {
     float y = float(y_);
     // FIXME: only origins top_left, top_right and top_center to work right now
     LineIterator it(text);
     while(it.next()) {
-      draw_line(origin, x, int(y), it.get(), target);
+      render_line(origin, x, int(y), it.get(), fb);
       y += vertical_spacing;
     }
   }
 
-  void draw_line(Origin origin, int x, int y, const std::string& text, SDL_Surface* target)
+  void render_line(Origin origin, int x, int y, const std::string& text, Framebuffer& fb)
   {
     Vector2i offset = calc_origin(origin, get_size(text));
 
     float dstx = float(x - offset.x);
     float dsty = float(y - offset.y);
-
-    if (!target) target = Display::get_screen();
-
+    
     for(std::string::size_type i = 0; i < text.size(); ++i)
       {
         if (text[i] == ' ')
@@ -196,7 +194,7 @@ public:
             if (srcrect.w != 0 && srcrect.h != 0)
               {
 		SDL_Rect dstrect = { int(dstx), int(dsty), 0, 0 };
-                SDL_BlitSurface(surface, &srcrect, target, &dstrect);
+                SDL_BlitSurface(surface, &srcrect, fb.get_screen(), &dstrect);
                 dstx += srcrect.w + char_spacing;
               }
             else
@@ -250,7 +248,7 @@ public:
     return Rect(Vector2i(x, y), get_size(str));
   }
 };
-
+
 Font::Font()
 {
 }
@@ -261,17 +259,17 @@ Font::Font(const FontDescription& desc)
 }
 
 void
-Font::draw(int x, int y, const std::string& text, SDL_Surface* target)
+Font::render(int x, int y, const std::string& text, Framebuffer& fb)
 {
   if (impl)
-    impl->draw(origin_top_left, x,y,text, target);
+    impl->render(origin_top_left, x,y,text, fb);
 }
 
 void
-Font::draw(Origin origin, int x, int y, const std::string& text, SDL_Surface* target)
+Font::render(Origin origin, int x, int y, const std::string& text, Framebuffer& fb)
 {
   if (impl)
-    impl->draw(origin, x,y,text, target); 
+    impl->render(origin, x,y,text, fb); 
 }
 
 int
@@ -318,5 +316,5 @@ Font::bounding_rect(int x, int y, const std::string& str) const
   else
     return Rect();
 }
-
+
 /* EOF */

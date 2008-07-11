@@ -145,13 +145,33 @@ Framebuffer::~Framebuffer()
 }
 
 void
-Framebuffer::draw_surface(SDL_Surface* sur, const Vector2i& pos)
+Framebuffer::draw_surface(SDL_Surface* src, const Vector2i& pos)
 {
+  SDL_Rect dstrect;
+  dstrect.x = (Sint16)pos.x;
+  dstrect.y = (Sint16)pos.y;
+  dstrect.w = 0;
+  dstrect.h = 0;  
+
+  SDL_BlitSurface(src, NULL, screen, &dstrect);
 }
 
 void
-Framebuffer::draw_surface(SDL_Surface* sur, const Vector2i& pos, const Rect& rect)
+Framebuffer::draw_surface(SDL_Surface* src, const Vector2i& pos, const Rect& rect)
 {
+  SDL_Rect dstrect;
+  dstrect.x = (Sint16)pos.x;
+  dstrect.y = (Sint16)pos.y;
+  dstrect.w = 0;
+  dstrect.h = 0;  
+
+  SDL_Rect srcrect;
+  srcrect.x = rect.left;
+  srcrect.y = rect.top;
+  srcrect.w = rect.get_width();
+  srcrect.h = rect.get_height();
+
+  SDL_BlitSurface(src, &srcrect, screen, &dstrect);
 }
 
 void

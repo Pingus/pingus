@@ -115,21 +115,12 @@ SpriteImpl::render(float x, float y, Framebuffer& fb)
 {
   if (!optimized)
     optimize();
-
-  SDL_Rect dstrect;
-  dstrect.x = (Sint16)(x - offset.x);
-  dstrect.y = (Sint16)(y - offset.y);
-  dstrect.w = 0;
-  dstrect.h = 0;  
-
-  SDL_Rect srcrect;
-  srcrect.w = frame_size.width;
-  srcrect.h = frame_size.height;
-
-  srcrect.x = frame_pos.x + (srcrect.w * (frame%array.width));
-  srcrect.y = frame_pos.y + (srcrect.h * (frame/array.width));
-
-  SDL_BlitSurface(surface.get_surface(), &srcrect, fb.get_screen(), &dstrect);
+  
+  fb.draw_surface(surface.get_surface(), 
+                  Vector2i(static_cast<int>(x - offset.x), static_cast<int>(y - offset.y)),
+                  Rect(frame_pos + Vector2i(frame_size.width  * (frame%array.width),
+                                            frame_size.height * (frame/array.width)),
+                       frame_size));
 }
 
 void
