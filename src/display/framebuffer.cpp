@@ -397,12 +397,6 @@ Framebuffer::set_video_mode(int width, int height, bool fullscreen)
       exit(1);
     }
 }
-  
-void
-Framebuffer::clear()
-{
-  SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
-}
 
 void
 Framebuffer::push_cliprect(const Rect& rect)
