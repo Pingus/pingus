@@ -24,9 +24,7 @@
 
 class Surface;
 
-/** A bunch of blitting and creation functions to operate on
-    Surface.  Some of them a similar to the ones in ClanLib, but
-    this are slower and work. */
+/** A bunch of blitting and creation functions to operate on Surface.  */
 class Blitter
 {
 public:

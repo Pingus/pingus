@@ -17,8 +17,6 @@
 #ifndef HEADER_DRAWING_CONTEXT_HPP
 #define HEADER_DRAWING_CONTEXT_HPP
 
-//#include <ClanLib/Core/Math/rect.h>
-//#include <ClanLib/Display/color.h>
 #include "SDL.h"
 #include <vector>
 #include "drawing_request.hpp"
