@@ -171,7 +171,7 @@ ScreenManager::display()
   show_swcursor(swcursor_enabled);
   
   Uint32 last_ticks = SDL_GetTicks();
-  float delta;
+  float previous_frame_time;
   std::vector<Input::Event> events;
 
   while (!screens.empty())
@@ -182,11 +182,11 @@ ScreenManager::display()
       if (playback_input)
         {
           // Get Time
-          read(std::cin, delta);
+          read(std::cin, previous_frame_time);
 
           // Update InputManager so that SDL_QUIT and stuff can be
           // handled, even if the basic events are taken from record
-          input_manager->update(delta);
+          input_manager->update(previous_frame_time);
           input_controller->clear_events();
           read_events(std::cin, events);
         }
@@ -194,37 +194,37 @@ ScreenManager::display()
         {
           // Get Time
           Uint32 ticks = SDL_GetTicks();
-          delta  = float(ticks - last_ticks)/1000.0f;
+          previous_frame_time  = float(ticks - last_ticks)/1000.0f;
           last_ticks = ticks;
 
           // Update InputManager and get Events
-          input_manager->update(delta);
+          input_manager->update(previous_frame_time);
           input_controller->poll_events(events);
         }
       
       if (record_input)
         {
-          write(std::cerr, delta);
+          write(std::cerr, previous_frame_time);
           write_events(std::cerr, events);
         }
 
       if (swcursor_enabled)
-        cursor.update(delta);
+        cursor.update(previous_frame_time);
 
       // previous frame took more than one second
-      if (delta > 1.0)
+      if (previous_frame_time > 1.0)
         {
           if (maintainer_mode)
-            std::cout << "ScreenManager: detected large delta (" << delta
-                      << "), ignoring and doing frameskip" << std::endl;
+            std::cout << "ScreenManager: previous frame took longer than 1 second (" << previous_frame_time
+                      << " sec.), ignoring and doing frameskip" << std::endl;
         }
       else
         {  
-          update(delta, events);
+          update(previous_frame_time, events);
       
           // cap the framerate at the desired value
-          if (delta < 1.0f / desired_fps) {
-            Uint32 sleep_time = static_cast<Uint32>(1000 *((1.0f / desired_fps) - delta));
+          if (previous_frame_time < 1.0f / desired_fps) {
+            Uint32 sleep_time = static_cast<Uint32>(1000 *((1.0f / desired_fps) - previous_frame_time));
             // std::cout << "Sleep: " << sleep_time << std::endl;
             // idle delay to make the frame take as long as we want it to
             SDL_Delay(sleep_time);
