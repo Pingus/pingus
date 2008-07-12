@@ -223,10 +223,13 @@ ScreenManager::display()
           update(previous_frame_time, events);
       
           // cap the framerate at the desired value
-          if (previous_frame_time < 1.0f / desired_fps) {
-            Uint32 sleep_time = static_cast<Uint32>(1000 *((1.0f / desired_fps) - previous_frame_time));
+	  // figure out how long this frame took
+	  float current_frame_time = float(SDL_GetTicks() - last_ticks) / 1000.0f;
+	  // idly delay if this frame didn't last long enough to
+	  // achieve <desired_fps> frames per second
+          if (current_frame_time < 1.0f / desired_fps) {
+            Uint32 sleep_time = static_cast<Uint32>(1000 *((1.0f / desired_fps) - current_frame_time));
             // std::cout << "Sleep: " << sleep_time << std::endl;
-            // idle delay to make the frame take as long as we want it to
             SDL_Delay(sleep_time);
           }
         }
