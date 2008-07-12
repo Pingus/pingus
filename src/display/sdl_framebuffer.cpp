@@ -376,14 +376,9 @@ SDLFramebuffer::flip()
 }
 
 void
-SDLFramebuffer::update_rect(const Rect& rect_)
+SDLFramebuffer::update_rects(const std::vector<SDL_Rect>& rects)
 {
-  Rect rect(Math::clamp(0, rect_.left,   screen->w),
-            Math::clamp(0, rect_.top,    screen->h),
-            Math::clamp(0, rect_.right,  screen->w),
-            Math::clamp(0, rect_.bottom, screen->h));
-
-  SDL_UpdateRect(screen, rect.left, rect.top, rect.get_width(), rect.get_height());
+  SDL_UpdateRects(screen, rects.size(), const_cast<SDL_Rect*>(&*rects.begin()));
 }
 
 Size

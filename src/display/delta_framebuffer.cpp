@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
+#include "../math.hpp"
 #include "sdl_framebuffer.hpp"
 #include "delta_framebuffer.hpp"
 
@@ -27,8 +28,13 @@ struct SurfaceDrawOp {
     fb.draw_surface(surface, rect, pos);
   }
   
-  Rect get_region() const {
-    return Rect(pos, rect.get_size());
+  SDL_Rect get_region() const {
+    SDL_Rect sdl_rect;
+    sdl_rect.x = pos.x;
+    sdl_rect.y = pos.y;
+    sdl_rect.w = rect.get_width();
+    sdl_rect.h = rect.get_height();
+    return sdl_rect;
   }
 };
 
@@ -58,7 +64,7 @@ public:
  
   void render(SDLFramebuffer& fb, DrawOpBuffer& frontbuffer) 
   {
-    std::vector<Rect> update_rects;
+    std::vector<SDL_Rect> update_rects;
 
     // Find all regions that need updating
     for(DrawOps::iterator i = draw_obs.begin(); i != draw_obs.end(); ++i)
@@ -69,18 +75,29 @@ public:
       if (!has_op(*i))
         update_rects.push_back(i->get_region());
 
+    // Clip things to the screen
+    Size screen_size = fb.get_size();
+    for(std::vector<SDL_Rect>::iterator i = update_rects.begin(); i != update_rects.end(); ++i)
+      {
+        i->w = Math::clamp(0, int(i->w), Math::max(0, screen_size.width  - i->x));
+        i->h = Math::clamp(0, int(i->h), Math::max(0, screen_size.height - i->y));
+
+        i->x = Math::clamp(0, int(i->x), screen_size.width);
+        i->y = Math::clamp(0, int(i->y), screen_size.height);
+      }
+
     // Merge rectangles
 
     // Update all regions that need update
-    for(std::vector<Rect>::iterator i = update_rects.begin(); i != update_rects.end(); ++i)
+    for(std::vector<SDL_Rect>::iterator i = update_rects.begin(); i != update_rects.end(); ++i)
       {
-        fb.push_cliprect(*i);
+        fb.push_cliprect(Rect(Vector2i(i->x, i->y), Size(i->w, i->h)));
         for(DrawOps::iterator j = draw_obs.begin(); j != draw_obs.end(); ++j)
           j->render(fb);
         fb.pop_cliprect();
-
-        fb.update_rect(*i);
       }
+    
+    fb.update_rects(update_rects);
   }
  
   void add(const SurfaceDrawOp& op) {
