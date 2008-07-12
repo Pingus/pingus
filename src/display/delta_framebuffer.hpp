@@ -21,26 +21,19 @@
 #include <map>
 #include "../math/vector2i.hpp"
 #include "framebuffer.hpp"
+
+class SDLFramebuffer;
+class DrawOpBuffer;
 
 class DeltaFramebuffer : public Framebuffer
 {
 private:
-  struct SurfaceDrawOp {
-    Vector2i     pos;
-    SDL_Surface* surface;
-    Rect         rect;
-  };
-
-  std::auto_ptr<Framebuffer> framebuffer;
-  typedef std::vector<SurfaceDrawOp> DrawingOps;
-  DrawingOps drawing_ops;
-  DrawingOps last_drawing_ops;
-
-  DrawingOps::iterator find_op(const SurfaceDrawOp& pos);
-  void add_op(const SurfaceDrawOp& op);
-
+  std::auto_ptr<SDLFramebuffer> framebuffer;
+  std::auto_ptr<DrawOpBuffer> frontbuffer;
+  std::auto_ptr<DrawOpBuffer> backbuffer;
+ 
 public:
-  DeltaFramebuffer(Framebuffer* framebuffer);
+  DeltaFramebuffer();
 
   void set_video_mode(int width, int height, bool fullscreen);
   void flip();

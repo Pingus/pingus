@@ -184,7 +184,8 @@ ScreenManager::display()
           // Get Time
           read(std::cin, delta);
 
-          // Update InputManager so that SDL_QUIT and stuff can be handled, even if the basic events are taken from record
+          // Update InputManager so that SDL_QUIT and stuff can be
+          // handled, even if the basic events are taken from record
           input_manager->update(delta);
           input_controller->clear_events();
           read_events(std::cin, events);
@@ -223,8 +224,10 @@ ScreenManager::display()
       
           // cap the framerate at the desired value
           if (delta < 1.0f / desired_fps) {
+            Uint32 sleep_time = static_cast<Uint32>(1000 *((1.0f / desired_fps) - delta));
+            // std::cout << "Sleep: " << sleep_time << std::endl;
             // idle delay to make the frame take as long as we want it to
-            SDL_Delay(static_cast<Uint32>(1000 *((1.0f / desired_fps) - delta)));
+            SDL_Delay(sleep_time);
           }
         }
     }

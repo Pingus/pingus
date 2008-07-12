@@ -58,7 +58,7 @@ Display::set_video_mode(int width, int height, bool fullscreen)
   if (!framebuffer.get())
     {
       if (delta_drawing)
-        framebuffer = std::auto_ptr<Framebuffer>(new DeltaFramebuffer(new SDLFramebuffer()));
+        framebuffer = std::auto_ptr<Framebuffer>(new DeltaFramebuffer());
       else
         framebuffer = std::auto_ptr<Framebuffer>(new SDLFramebuffer());
     }
