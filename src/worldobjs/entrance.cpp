@@ -31,7 +31,8 @@ Entrance::Entrance(const FileReader& reader)
     release_rate(150),
     owner_id(0),
     type("generic"),
-    smallmap_symbol("core/misc/smallmap_entrance")
+    smallmap_symbol("core/misc/smallmap_entrance"),
+    last_direction(0)
 {
   reader.read_string("type",         type);
   reader.read_int   ("owner-id",     owner_id);
@@ -83,7 +84,6 @@ Entrance::pingu_ready ()
 void
 Entrance::create_pingu ()
 {
-  static int last_direction;
   Direction d;
 
   Pingu* pingu = world->get_pingus()->create_pingu(pos, owner_id);
