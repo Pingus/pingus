@@ -18,10 +18,10 @@
 #define HEADER_PINGUS_MATH_VECTOR3F_HPP
 
 #include <iosfwd>
-#include "../pingus.hpp"
 
 class Vector2f;
 class Vector2i;
+
 class Vector3f
 {
 public:
@@ -59,12 +59,10 @@ public:
   /** Calculate a position between a and b, relative to the value of
       \a perc (perc == 0 -> a, perc == 1.0 -> b) */
   static Vector3f interpolate(const Vector3f& a, const Vector3f& b, float perc);
-
-  friend std::ostream& operator<< (std::ostream& os, const Vector3f& v);
 };
-
+
 std::ostream& operator<< (std::ostream& os, const Vector3f& v);
-
+
 #endif
 
 /* EOF */

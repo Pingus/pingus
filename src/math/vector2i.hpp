@@ -17,8 +17,10 @@
 #ifndef HEADER_VECTOR2_HPP
 #define HEADER_VECTOR2_HPP
 
-class Vector2f;
+#include <iosfwd>
 
+class Vector2f;
+
 /** */
 class Vector2i
 {
@@ -34,19 +36,51 @@ public:
   Vector2i(int x_, int y_) 
     : x(x_), y(y_) {}
 
-  Vector2i operator- () const;
 
-  Vector2i operator+ (const Vector2i& add) const;
-  Vector2i operator- (const Vector2i& sub) const;
-  Vector2i operator* (int  mul) const;
+  Vector2i operator+ (const Vector2i& add) const
+  {
+    return Vector2i(x + add.x, y + add.y);
+  }
 
-  Vector2i& operator+= (const Vector2i& add);
-  Vector2i& operator-= (const Vector2i& sub);
-  Vector2i& operator*= (int mul);
+  Vector2i operator- (const Vector2i& sub) const
+  {
+    return Vector2i(x - sub.x, y - sub.y);
+  }
 
-  bool operator== (const Vector2i& other);
+  Vector2i operator* (int  mul) const
+  {
+    return Vector2i(x * mul, y * mul);
+  }
+
+  Vector2i& operator+= (const Vector2i& add)
+  {
+    x += add.x;
+    y += add.y;
+    return *this;
+  }
+
+  Vector2i& operator-= (const Vector2i& sub)
+  {
+    x -= sub.x;
+    y -= sub.y;
+    return *this;
+  }
+
+  Vector2i& operator*= (int mul)
+  {
+    x *= mul;
+    y *= mul;
+    return *this;
+  }
+
+  bool operator== (const Vector2i& other)
+  {
+    return (other.x == x && other.y == y);
+  }
 };
-
+
+std::ostream& operator<<(std::ostream& s, const Vector2i& v);
+
 #endif
 
 /* EOF */

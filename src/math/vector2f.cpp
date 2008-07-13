@@ -19,7 +19,7 @@
 #include <iostream>
 #include "math.hpp"
 #include "math/vector2f.hpp"
-
+
 void
 Vector2f::normalize()
 {
@@ -39,17 +39,17 @@ Vector2f::magnitude() const
   return Math::sqrt(x*x + y*y);
 }
 
-std::ostream& operator<<(std::ostream& s, const Vector2f& v)
-{
-  s << "(" << v.x << ", " << v.y << ")";
-  return s;
-}
-
 Vector2f
 Vector2f::rotate(float angle) const
 {
   float len = magnitude();
   return Vector2f(len * Math::cos(angle), len * Math::sin(angle));
 }
-
+
+std::ostream& operator<<(std::ostream& s, const Vector2f& v)
+{
+  s << "vector2f(" << v.x << ", " << v.y << ")";
+  return s;
+}
+
 /* EOF */

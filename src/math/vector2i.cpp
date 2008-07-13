@@ -14,59 +14,18 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include <iostream>
 #include "vector2f.hpp"
 #include "vector2i.hpp"
-
+
 Vector2i::Vector2i(const Vector2f& v)
   : x(int(v.x)), y(int(v.y))
 {}
-
-Vector2i
-Vector2i::operator+ (const Vector2i& add) const
+
+std::ostream& operator<<(std::ostream& s, const Vector2i& v)
 {
-  return Vector2i(x + add.x, y + add.y);
+  s << "vector2i(" << v.x << ", " << v.y << ")";
+  return s;
 }
-
-Vector2i
-Vector2i::operator- (const Vector2i& sub) const
-{
-  return Vector2i(x - sub.x, y - sub.y);
-}
-
-Vector2i
-Vector2i::operator* (int  mul) const
-{
-  return Vector2i(x * mul, y * mul);
-}
-
-Vector2i&
-Vector2i::operator+= (const Vector2i& add)
-{
-  x += add.x;
-  y += add.y;
-  return *this;
-}
-
-Vector2i&
-Vector2i::operator-= (const Vector2i& sub)
-{
-  x -= sub.x;
-  y -= sub.y;
-  return *this;
-}
-
-Vector2i&
-Vector2i::operator*= (int mul)
-{
-  x *= mul;
-  y *= mul;
-  return *this;
-}
-
-bool
-Vector2i::operator== (const Vector2i& other)
-{
-  return (other.x == x && other.y == y);
-}
-
+
 /* EOF */

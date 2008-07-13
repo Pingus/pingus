@@ -37,8 +37,10 @@
 #pragma once
 #endif
 
-class Sizef;
+#include <iosfwd>
 
+class Sizef;
+
 //: 2D (width,height) size structure.
 //- !group=Core/Math!
 //- !header=core.h!
@@ -94,7 +96,7 @@ public:
 	bool operator!=(const Size &s) const
 	{ return (width != s.width) || (height != s.height); }
 };
-
+
 //: 2D (width,height) floating point size structure.
 class Sizef
 {
@@ -151,10 +153,12 @@ public:
 	bool operator!=(const Size &s) const
 	{ return (width != s.width) || (height != s.height); }
 };
-
+
 inline Size::Size(const Sizef& s)
 	: width(static_cast<int>(s.width)),
 	  height(static_cast<int>(s.height))
 {}
-
+
+std::ostream& operator<<(std::ostream& os, const Size& size);
+
 #endif
