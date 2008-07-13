@@ -95,6 +95,8 @@ public:
 	//: Size != Size operator (deep compare).
 	bool operator!=(const Size &s) const
 	{ return (width != s.width) || (height != s.height); }
+  
+	int get_area() const { return width * height; }
 };
 
 //: 2D (width,height) floating point size structure.
