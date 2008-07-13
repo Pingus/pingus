@@ -45,6 +45,16 @@ void merge_rectangles(const std::vector<SDL_Rect>& rects_in, std::vector<SDL_Rec
       rects_out.push_back(*i);
     }
 }
+
+int calculate_region(const std::vector<SDL_Rect>& rects)
+{
+  int area = 0;
+  for(std::vector<SDL_Rect>::const_iterator i = rects.begin(); i != rects.end(); ++i)
+    {
+      area += i->w * i->h;
+    }
+  return area;
+}
 
 class DrawOpBuffer
 {
@@ -98,10 +108,12 @@ public:
     std::vector<SDL_Rect> update_rects;
     merge_rectangles(changed_regions, update_rects);
 
-    if (update_rects.size() == 0)
+    int area = calculate_region(update_rects);
+
+    if (area == 0)
       { // No screen update needed
       }
-    else if (update_rects.size() < 250) // FIXME: Random Magic Number, need benchmarking to find proper value
+    else if (area < fb.get_size().get_area()*75/100) // FIXME: Random Magic ratio, need benchmarking to find proper value
       { // Update all regions that need update
         for(std::vector<SDL_Rect>::iterator i = update_rects.begin(); i != update_rects.end(); ++i)
           {
