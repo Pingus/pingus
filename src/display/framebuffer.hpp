@@ -21,12 +21,13 @@
 #include "SDL.h"
 #include "math/color.hpp"
 #include "math/vector2i.hpp"
+#include "math/size.hpp"
 #include "math/rect.hpp"
 
 class Framebuffer
 {
 public:
-  virtual void set_video_mode(int width, int height, bool fullscreen) =0;
+  virtual void set_video_mode(const Size& size, bool fullscreen) =0;
   virtual void flip() =0;
 
   virtual void push_cliprect(const Rect&) =0;

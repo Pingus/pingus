@@ -18,6 +18,7 @@
 #include "screen/screen_manager.hpp"
 #include "math/size.hpp"
 #include "file_reader.hpp"
+#include "display/display.hpp"
 #include "sdl_driver.hpp"
 
 namespace Input {
@@ -245,7 +246,7 @@ SDLDriver::update(float delta)
             break;
 
           case SDL_VIDEORESIZE:
-            ScreenManager::instance()->resize(Size(event.resize.w, event.resize.h));
+            Display::resize(Size(event.resize.w, event.resize.h));
             break;
 
           case SDL_KEYDOWN:

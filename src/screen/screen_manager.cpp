@@ -378,22 +378,11 @@ ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
 }
 
 void
-ScreenManager::resize(const Size& size_)
+ScreenManager::resize(const Size& size)
 {
-  Size size(size_);
-
-  // Limit Window size so some reasonable minimum
-  if (size.width  < 640) size.width  = 640;
-  if (size.height < 480) size.height = 480;
-
   display_gc->set_rect(Rect(Vector2i(0, 0), size));
 
-  // FIXME: Calling this causes horrible flicker, since the screen
-  // goes black on a size change. Seems to be an SDL issue.
-  // This call  also shouldn't be part of ScreenManager, but Framebuffer/Display internal
-  Display::set_video_mode(size.width, size.height, fullscreen_enabled);
-
-  // FIXME: We need to resize the other screens too
+  // The other screens will get resized when they become the current screen
   get_current_screen()->resize(size);
 }
 

@@ -39,7 +39,8 @@ public:
   static int  get_height();
   static Size get_size();
 
-  static void set_video_mode(int width, int height, bool fullscreen);
+  static void set_video_mode(const Size& size, bool fullscreen);
+  static void resize(const Size& size);
   
   static Framebuffer& get_framebuffer();
 

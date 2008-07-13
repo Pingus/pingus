@@ -34,7 +34,7 @@ public:
   SDLFramebuffer();
   ~SDLFramebuffer();
 
-  void set_video_mode(int width, int height, bool fullscreen);
+  void set_video_mode(const Size& size, bool fullscreen);
   void flip();
   void update_rects(const std::vector<SDL_Rect>& rects);
 

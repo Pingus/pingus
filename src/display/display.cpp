@@ -22,6 +22,7 @@
 #include "../math/rect.hpp"
 #include "../math/color.hpp"
 #include "../math.hpp"
+#include "../screen/screen_manager.hpp"
 #include "sdl_framebuffer.hpp"
 #include "delta_framebuffer.hpp"
 #include "display.hpp"
@@ -53,7 +54,25 @@ Display::get_size()
 }
 
 void
-Display::set_video_mode(int width, int height, bool fullscreen)
+Display::resize(const Size& size_)
+{
+  Size size(size_);
+
+  // Limit Window size so some reasonable minimum
+  if (size.width  < 640) size.width  = 640;
+  if (size.height < 480) size.height = 480;
+
+  // FIXME: Calling this causes horrible flicker, since the screen
+  // goes black on a size change. Seems to be an SDL issue.
+  // This call  also shouldn't be part of ScreenManager, but Framebuffer/Display internal
+  Display::set_video_mode(size, fullscreen_enabled);
+
+  if (ScreenManager::instance())
+    ScreenManager::instance()->resize(size);
+}
+
+void
+Display::set_video_mode(const Size& size, bool fullscreen)
 {
   if (!framebuffer.get())
     {
@@ -65,13 +84,16 @@ Display::set_video_mode(int width, int height, bool fullscreen)
 
   if (fullscreen)
     {
-      Size size = find_closest_fullscreen_video_mode(Size(width, height));
-      framebuffer->set_video_mode(size.width, size.height, fullscreen);
+      Size new_size = find_closest_fullscreen_video_mode(size);
+      framebuffer->set_video_mode(new_size, fullscreen);
     }
   else
     {
-      framebuffer->set_video_mode(width, height, fullscreen);
+      framebuffer->set_video_mode(size, fullscreen);
     }
+  
+  if (ScreenManager::instance())
+    ScreenManager::instance()->resize(framebuffer->get_size());
 }
 
 Framebuffer&

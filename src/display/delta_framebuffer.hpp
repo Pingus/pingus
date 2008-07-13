@@ -29,13 +29,13 @@ class DeltaFramebuffer : public Framebuffer
 {
 private:
   std::auto_ptr<SDLFramebuffer> framebuffer;
-  std::auto_ptr<DrawOpBuffer> frontbuffer;
-  std::auto_ptr<DrawOpBuffer> backbuffer;
+  std::auto_ptr<DrawOpBuffer>   frontbuffer;
+  std::auto_ptr<DrawOpBuffer>   backbuffer;
  
 public:
   DeltaFramebuffer();
 
-  void set_video_mode(int width, int height, bool fullscreen);
+  void set_video_mode(const Size& size, bool fullscreen);
   void flip();
 
   void push_cliprect(const Rect&);

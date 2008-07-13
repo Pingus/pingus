@@ -38,6 +38,14 @@ struct SurfaceDrawOp {
   }
 };
 
+void merge_rectangles(const std::vector<SDL_Rect>& rects_in, std::vector<SDL_Rect>& rects_out)
+{
+  for(std::vector<SDL_Rect>::const_iterator i = rects_in.begin(); i != rects_in.end(); ++i)
+    {
+      rects_out.push_back(*i);
+    }
+}
+
 class DrawOpBuffer
 {
 private:
@@ -64,20 +72,20 @@ public:
  
   void render(SDLFramebuffer& fb, DrawOpBuffer& frontbuffer) 
   {
-    std::vector<SDL_Rect> update_rects;
+    std::vector<SDL_Rect> changed_regions;
 
     // Find all regions that need updating
     for(DrawOps::iterator i = draw_obs.begin(); i != draw_obs.end(); ++i)
       if (!frontbuffer.has_op(*i))
-        update_rects.push_back(i->get_region());
+        changed_regions.push_back(i->get_region());
 
     for(DrawOps::iterator i = frontbuffer.draw_obs.begin(); i != frontbuffer.draw_obs.end(); ++i)
       if (!has_op(*i))
-        update_rects.push_back(i->get_region());
+        changed_regions.push_back(i->get_region());
 
     // Clip things to the screen
     Size screen_size = fb.get_size();
-    for(std::vector<SDL_Rect>::iterator i = update_rects.begin(); i != update_rects.end(); ++i)
+    for(std::vector<SDL_Rect>::iterator i = changed_regions.begin(); i != changed_regions.end(); ++i)
       {
         i->w = Math::clamp(0, int(i->w), Math::max(0, screen_size.width  - i->x));
         i->h = Math::clamp(0, int(i->h), Math::max(0, screen_size.height - i->y));
@@ -87,6 +95,8 @@ public:
       }
 
     // Merge rectangles
+    std::vector<SDL_Rect> update_rects;
+    merge_rectangles(changed_regions, update_rects);
 
     if (update_rects.size() == 0)
       { // No screen update needed
@@ -124,9 +134,10 @@ DeltaFramebuffer::DeltaFramebuffer()
 }
 
 void
-DeltaFramebuffer::set_video_mode(int width, int height, bool fullscreen)
+DeltaFramebuffer::set_video_mode(const Size& size, bool fullscreen)
 {
-  framebuffer->set_video_mode(width, height, fullscreen);
+  frontbuffer->clear();
+  framebuffer->set_video_mode(size, fullscreen);
 }
 
 void
