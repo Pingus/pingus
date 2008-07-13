@@ -88,16 +88,27 @@ public:
 
     // Merge rectangles
 
-    // Update all regions that need update
-    for(std::vector<SDL_Rect>::iterator i = update_rects.begin(); i != update_rects.end(); ++i)
-      {
-        fb.push_cliprect(Rect(Vector2i(i->x, i->y), Size(i->w, i->h)));
+    if (update_rects.size() == 0)
+      { // No screen update needed
+      }
+    else if (update_rects.size() < 250) // FIXME: Random Magic Number, need benchmarking to find proper value
+      { // Update all regions that need update
+        for(std::vector<SDL_Rect>::iterator i = update_rects.begin(); i != update_rects.end(); ++i)
+          {
+            fb.push_cliprect(Rect(Vector2i(i->x, i->y), Size(i->w, i->h)));
+            for(DrawOps::iterator j = draw_obs.begin(); j != draw_obs.end(); ++j)
+              j->render(fb);
+            fb.pop_cliprect();
+          }
+    
+        fb.update_rects(update_rects);
+      }
+    else
+      { // Update the whole screen at once, since we have to many rects
         for(DrawOps::iterator j = draw_obs.begin(); j != draw_obs.end(); ++j)
           j->render(fb);
-        fb.pop_cliprect();
+        fb.flip();
       }
-    
-    fb.update_rects(update_rects);
   }
  
   void add(const SurfaceDrawOp& op) {
