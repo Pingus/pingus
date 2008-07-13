@@ -38,7 +38,7 @@
         (modifier "ROT0"))
       (position -20 1124 -50)
       (speed 55)
-      (repeat 25))
+      (repeat 31))
     (hotspot 
       (surface 
         (image "entrances/snow_back")
@@ -430,7 +430,7 @@
         (modifier "ROT0"))
       (position -56 1137 100)
       (speed 60)
-      (repeat 25))
+      (repeat 31))
     (hotspot 
       (surface 
         (image "entrances/snow_front")
