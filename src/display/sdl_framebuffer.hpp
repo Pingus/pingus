@@ -36,7 +36,7 @@ public:
 
   void set_video_mode(const Size& size, bool fullscreen);
   void flip();
-  void update_rects(const std::vector<SDL_Rect>& rects);
+  void update_rects(const std::vector<Rect>& rects);
 
   void push_cliprect(const Rect&);
   void pop_cliprect();

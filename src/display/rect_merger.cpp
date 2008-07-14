@@ -146,12 +146,13 @@ void split_rectangles(const std::vector<Rect>& rects, std::vector<Row>& rows)
   std::vector<Rect>::const_iterator rect = rects.begin();
   for(std::vector<Row>::iterator row = rows.begin(); row != rows.end() && rect != rects.end(); ++row)
     {
+      // FIXME: Crash Bug here, maybe
       for(; rect->top == row->top; ++rect)
         {
           Mark start(Mark::START_MARK, rect->left);
           Mark end  (Mark::END_MARK,   rect->right);
 
-          // Add the gives rectangle to all rows it overlaps
+          // Add the given rectangle to all rows it overlaps
           std::vector<Row>::iterator this_row = row; 
           do 
             {

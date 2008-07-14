@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include "../math.hpp"
+#include "rect_merger.hpp"
 #include "sdl_framebuffer.hpp"
 #include "delta_framebuffer.hpp"
 
@@ -28,30 +29,17 @@ struct SurfaceDrawOp {
     fb.draw_surface(surface, rect, pos);
   }
   
-  SDL_Rect get_region() const {
-    SDL_Rect sdl_rect;
-    sdl_rect.x = pos.x;
-    sdl_rect.y = pos.y;
-    sdl_rect.w = rect.get_width();
-    sdl_rect.h = rect.get_height();
-    return sdl_rect;
+  Rect get_region() const {
+    return Rect(pos, rect.get_size());
   }
 };
 
-void merge_rectangles(const std::vector<SDL_Rect>& rects_in, std::vector<SDL_Rect>& rects_out)
-{
-  for(std::vector<SDL_Rect>::const_iterator i = rects_in.begin(); i != rects_in.end(); ++i)
-    {
-      rects_out.push_back(*i);
-    }
-}
-
-int calculate_region(const std::vector<SDL_Rect>& rects)
+int calculate_region(const std::vector<Rect>& rects)
 {
   int area = 0;
-  for(std::vector<SDL_Rect>::const_iterator i = rects.begin(); i != rects.end(); ++i)
+  for(std::vector<Rect>::const_iterator i = rects.begin(); i != rects.end(); ++i)
     {
-      area += i->w * i->h;
+      area += i->get_width() * i->get_height();
     }
   return area;
 }
@@ -75,14 +63,14 @@ public:
     for(DrawOps::iterator i = draw_obs.begin(); i != draw_obs.end(); ++i)
       if (op.surface == i->surface &&
           op.pos     == i->pos &&
-          op.rect    == op.rect)
+          op.rect    == i->rect)
         return true;
     return false;
   }
  
   void render(SDLFramebuffer& fb, DrawOpBuffer& frontbuffer) 
   {
-    std::vector<SDL_Rect> changed_regions;
+    std::vector<Rect> changed_regions;
 
     // Find all regions that need updating
     for(DrawOps::iterator i = draw_obs.begin(); i != draw_obs.end(); ++i)
@@ -95,41 +83,43 @@ public:
 
     // Clip things to the screen
     Size screen_size = fb.get_size();
-    for(std::vector<SDL_Rect>::iterator i = changed_regions.begin(); i != changed_regions.end(); ++i)
+    for(std::vector<Rect>::iterator i = changed_regions.begin(); i != changed_regions.end(); ++i)
+      { 
+        // FIXME: It might be a good idea to remove empty rectangles here, so that merge_rectangles() can work smoother
+        i->left = Math::clamp(0, int(i->left), screen_size.width);
+        i->top  = Math::clamp(0, int(i->top),  screen_size.height);
+
+        i->right  = Math::clamp(0, int(i->right),  screen_size.width);
+        i->bottom = Math::clamp(0, int(i->bottom), screen_size.height);
+      }
+
+    if (!changed_regions.empty())
       {
-        i->w = Math::clamp(0, int(i->w), Math::max(0, screen_size.width  - i->x));
-        i->h = Math::clamp(0, int(i->h), Math::max(0, screen_size.height - i->y));
+        // Merge rectangles
+        std::vector<Rect> update_rects;
+        merge_rectangles(changed_regions, update_rects);
+        //update_rects = changed_regions;
 
-        i->x = Math::clamp(0, int(i->x), screen_size.width);
-        i->y = Math::clamp(0, int(i->y), screen_size.height);
-      }
+        int area = calculate_region(update_rects);
 
-    // Merge rectangles
-    std::vector<SDL_Rect> update_rects;
-    merge_rectangles(changed_regions, update_rects);
-
-    int area = calculate_region(update_rects);
-
-    if (area == 0)
-      { // No screen update needed
-      }
-    else if (area < fb.get_size().get_area()*75/100) // FIXME: Random Magic ratio, need benchmarking to find proper value
-      { // Update all regions that need update
-        for(std::vector<SDL_Rect>::iterator i = update_rects.begin(); i != update_rects.end(); ++i)
-          {
-            fb.push_cliprect(Rect(Vector2i(i->x, i->y), Size(i->w, i->h)));
+        if (area < fb.get_size().get_area()*75/100) // FIXME: Random Magic ratio, need benchmarking to find proper value
+          { // Update all regions that need update
+            for(std::vector<Rect>::iterator i = update_rects.begin(); i != update_rects.end(); ++i)
+              {
+                fb.push_cliprect(*i);
+                for(DrawOps::iterator j = draw_obs.begin(); j != draw_obs.end(); ++j)
+                  j->render(fb);
+                fb.pop_cliprect();
+              }
+    
+            fb.update_rects(update_rects);
+          }
+        else
+          { // Update the whole screen at once, since we have to many rects
             for(DrawOps::iterator j = draw_obs.begin(); j != draw_obs.end(); ++j)
               j->render(fb);
-            fb.pop_cliprect();
+            fb.flip();
           }
-    
-        fb.update_rects(update_rects);
-      }
-    else
-      { // Update the whole screen at once, since we have to many rects
-        for(DrawOps::iterator j = draw_obs.begin(); j != draw_obs.end(); ++j)
-          j->render(fb);
-        fb.flip();
       }
   }
  
