@@ -38,8 +38,8 @@
 #endif
 
 #include <string>
-#include "math/vector2i.hpp"
-#include "math/size.hpp"
+#include "vector2i.hpp"
+#include "size.hpp"
 
 //: Alignment origins.
 //- !group=Core/Math!
