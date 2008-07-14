@@ -14,6 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include <ext/algorithm>
 #include <assert.h>
 #include <iostream>
 #include "../math/vector2i.hpp"
@@ -27,6 +28,7 @@ struct Mark {
   Mark(Type type_, int pos_) : type(type_), pos(pos_) {}
 };
 
+// [top, bottom[
 struct Row {
   int top;
   int bottom;
@@ -37,7 +39,7 @@ bool rect_y_sorter(const Rect& lhs, const Rect& rhs)
 {
   return lhs.top < rhs.top;
 }
-
+
 bool rect_xy_sorter(const Rect& lhs, const Rect& rhs)
 {
   if (lhs.left == rhs.left)
@@ -49,7 +51,7 @@ bool rect_xy_sorter(const Rect& lhs, const Rect& rhs)
       return lhs.left < rhs.left;
     }
 }
-
+
 bool mark_sorter(const Mark& lhs, const Mark& rhs)
 {
   if (lhs.pos == rhs.pos)
@@ -61,54 +63,98 @@ bool mark_sorter(const Mark& lhs, const Mark& rhs)
       return (lhs.pos < rhs.pos);
     }
 }
-
-void generate_rows(const std::vector<Rect> rects, std::vector<Row>& rows)
+
+void print_rows(std::ostream& out, const std::vector<Row>& rows)
 {
-  // Figure out where we need to split the rectangles
-  std::vector<int> row_lines;
-  for(std::vector<Rect>::const_iterator i = rects.begin(); i != rects.end(); ++i)
+  for(std::vector<Row>::const_iterator i = rows.begin(); i != rows.end(); ++i)
     {
-      row_lines.push_back(i->top);
-      row_lines.push_back(i->bottom);
-    }
-  std::sort(row_lines.begin(), row_lines.end());
-
-  // Create rows
-  int start = row_lines.front();
-  for(std::vector<int>::const_iterator i = row_lines.begin()+1; i != row_lines.end(); ++i)
-    {
-      if (*i != start)
+      out << "  row: " << i->top << " -> " << i->bottom << " - ";
+      for(std::vector<Mark>::const_iterator mark_it = i->marks.begin(); mark_it != i->marks.end(); ++mark_it)
         {
-          Row row;
-          row.top    = start;
-          row.bottom = *i;
-
-          rows.push_back(row);
-
-          start = *i;
+          out << ((mark_it->type == Mark::START_MARK) ? "'(" : "')")
+                    << mark_it->pos 
+                    << ((mark_it->type == Mark::START_MARK) ? "(' " : ")' ");
         }
+      out << std::endl;
     }
 }
-
-void split_rectangles(const std::vector<Rect>& rects, std::vector<Row>& rows)
-{ // For this to work rects must be sorted by rects[i].top
-  std::vector<Rect>::const_iterator rect_it = rects.begin();
-  for(std::vector<Row>::iterator row_it = rows.begin(); row_it != rows.end() && rect_it != rects.end(); ++row_it)
+
+void print_rects(std::ostream& out, const std::vector<Rect>& rects)
+{
+  for(std::vector<Rect>::const_iterator i = rects.begin(); i != rects.end(); ++i)
     {
-      for(; rect_it->top == row_it->top; ++rect_it)
+      out << *i << std::endl;
+    }
+}
+
+/** Take a list of rectangles and generate a list of rows written to
+    \a rows_out. The rows are returned empty and have to be filled via
+    split_rectangles()
+
+    @param[in]  rects     List of rectangles used to generate rows_out
+    @param[out] rows_out  Empty vector that get filled with rows
+ */
+void generate_rows(const std::vector<Rect>& rects, std::vector<Row>& rows_out)
+{
+  // Figure out the horizontal split lines
+  std::vector<Mark> marks;
+  for(std::vector<Rect>::const_iterator i = rects.begin(); i != rects.end(); ++i)
+    {
+      marks.push_back(Mark(Mark::START_MARK, i->top));
+      marks.push_back(Mark(Mark::END_MARK,   i->bottom));
+    }
+  std::sort(marks.begin(), marks.end(), mark_sorter);
+  
+  assert(!marks.empty());
+  assert(marks.front().type == Mark::START_MARK);
+  assert(marks.back().type  == Mark::END_MARK);
+
+  // Generate rows from the splitlines
+  std::vector<Mark>::const_iterator start = marks.begin();
+  for(std::vector<Mark>::const_iterator i = marks.begin()+1; i != marks.end(); ++i)
+    { // FIXME: This will generate empty rows (harmless, but not pretty)
+      
+      if (i->pos != start->pos)
         {
-          Mark start(Mark::START_MARK, rect_it->left);
-          Mark end  (Mark::END_MARK,   rect_it->right);
+          Row row;
+          row.top    = start->pos;
+          row.bottom = i->pos;
+            
+          rows_out.push_back(row);
+            
+          start = i;
+        }
+    }
+
+  assert(!rows_out.empty());
+}
+
+/** Takes a list of rectangles and adds their left and right borders to rows
+
+    @param[in]     rects List of rectangles that get split up and filled into rows, must be sorted by rect_y_sorter
+    @param[in,out] rows  List of rows where the markers are filled in
+ */
+void split_rectangles(const std::vector<Rect>& rects, std::vector<Row>& rows)
+{
+  assert(__gnu_cxx::is_sorted(rects.begin(), rects.end(), rect_y_sorter));
+
+  std::vector<Rect>::const_iterator rect = rects.begin();
+  for(std::vector<Row>::iterator row = rows.begin(); row != rows.end() && rect != rects.end(); ++row)
+    {
+      for(; rect->top == row->top; ++rect)
+        {
+          Mark start(Mark::START_MARK, rect->left);
+          Mark end  (Mark::END_MARK,   rect->right);
 
           // Add the gives rectangle to all rows it overlaps
-          std::vector<Row>::iterator this_row_it = row_it; 
+          std::vector<Row>::iterator this_row = row; 
           do 
             {
-              this_row_it->marks.push_back(start);
-              this_row_it->marks.push_back(end);
+              this_row->marks.push_back(start);
+              this_row->marks.push_back(end);
 
-              if (this_row_it->bottom < (rect_it->bottom))
-                ++this_row_it;
+              if (this_row->bottom < (rect->bottom))
+                ++this_row;
               else
                 break;
             }
@@ -120,96 +166,211 @@ void split_rectangles(const std::vector<Rect>& rects, std::vector<Row>& rows)
   for(std::vector<Row>::iterator i = rows.begin(); i != rows.end(); ++i)
     std::sort(i->marks.begin(), i->marks.end(), mark_sorter);
 }
+
+/** Takes a list of rows along with markers in them to then generate a
+    list of rectangles which are written to \a rects_out
 
+    @param[in]  rows       List of rows used to generate rects_out
+    @param[out] rects_out  Empty vector into which the newly generated rects are added 
+*/
 void generate_rectangles(const std::vector<Row>& rows, std::vector<Rect>& rects_out)
 {
   for(std::vector<Row>::const_iterator i = rows.begin(); i != rows.end(); ++i)
     {
       const std::vector<Mark>& marks = i->marks;
 
-      assert(marks.front().type == Mark::START_MARK);
-
-      int start = marks.front().pos;
-      int parenthesis_count = 1;
-      for(std::vector<Mark>::const_iterator mark_it = marks.begin()+1; mark_it != marks.end(); )
+      if (!marks.empty())
         {
-          if (mark_it->type == Mark::END_MARK)
-            parenthesis_count -= 1;
-          else // if (mark_it->type == START_MARK)
-            parenthesis_count += 1;
-
-          if (parenthesis_count == 0)
+          assert(marks.front().type == Mark::START_MARK);
+          if (0)
             {
-              if (mark_it+1 != marks.end() && 
-                  (mark_it+1)->type == Mark::START_MARK &&
-                  (mark_it+1)->pos  == mark_it->pos)
-                { 
-                  parenthesis_count += 1;
+              std::cerr << "Size: " << i->marks.size() << std::endl;
+              if (marks.front().type != Mark::START_MARK)
+                {
+                  for(std::vector<Mark>::const_iterator mark_it = marks.begin(); mark_it != marks.end(); )
+                    std::cerr << ((mark_it->type == Mark::START_MARK) ? "'(" : "')")
+                              << mark_it->pos 
+                              << "' ";            
+                  assert(!"False");
+                }
+            }
+
+          int start = marks.front().pos;
+          int parenthesis_count = 1;
+          for(std::vector<Mark>::const_iterator mark_it = marks.begin()+1; mark_it != marks.end(); )
+            {
+              if (mark_it->type == Mark::END_MARK)
+                parenthesis_count -= 1;
+              else // if (mark_it->type == START_MARK)
+                parenthesis_count += 1;
+
+              if (parenthesis_count == 0)
+                {
+                  if ((mark_it+1) != marks.end() && 
+                      (mark_it+1)->type == Mark::START_MARK &&
+                      (mark_it+1)->pos  == mark_it->pos)
+                    { 
+                      parenthesis_count += 1;
+                    }
+                  else
+                    {
+                      rects_out.push_back(Rect(start,        i->top, 
+                                               mark_it->pos, i->bottom));
+                      ++mark_it;
+                      if (mark_it != marks.end())
+                        start = mark_it->pos;
+                    }
                 }
               else
                 {
-                  rects_out.push_back(Rect(start,        i->top, 
-                                           mark_it->pos, i->bottom));
                   ++mark_it;
-                  if (mark_it != marks.end())
-                    start = mark_it->pos;
                 }
             }
-          else
-            {
-              ++mark_it;
-            }
         }
     }
 }
+
+/** Takes a list of rectangles and merges non overlapping vertically
+    adjacent rectangles that have the same left and right borders 
 
-void merge_vertical_rectangles(std::vector<Rect>& rects_in, std::vector<Rect>& rects_out)
-{
-  std::sort(rects_in.begin(), rects_in.end(), rect_xy_sorter);
-
-  assert(!rects_in.empty());
-  Rect rect = rects_in.front();
-  for(std::vector<Rect>::const_iterator i = rects_in.begin()+1; i != rects_in.end();)
+    @param[in]  rects     List of rectangles to be merged, must be sorted with rect_xy_sorter
+    @param[out] rects_out Empty vector into which the newly merged rects are added
+*/
+void merge_vertical_rectangles(const std::vector<Rect>& rects, std::vector<Rect>& rects_out)
+{  
+  assert(__gnu_cxx::is_sorted(rects.begin(), rects.end(), rect_xy_sorter));
+  assert(!rects.empty());
+  
+  Rect rect = rects.front();
+  for(std::vector<Rect>::const_iterator i = rects.begin()+1; i != rects.end(); ++i)
     {
-      //std::cout << "pos: " << i - rects_in.begin() << "/" << rects_in.size() << std::endl;
-      // Expand the rectangle vertically as much as possible
-      while(rect.left   == i->left &&
-            rect.right  == i->right &&
-            rect.bottom == i->top)
+      // Merge rect with i
+      if (rect.left   == i->left &&
+          rect.right  == i->right &&
+          rect.bottom == i->top)
         {
           rect.bottom = i->bottom;
-          ++i;
-          if (i == rects_in.end())
-            break;
         }
-      rects_out.push_back(rect);
-
-      if (i != rects_in.end())
+      else
         {
+          rects_out.push_back(rect);
           rect = *i;
-          ++i;
         }
     }
-}
+  rects_out.push_back(rect);
 
-void merge_rectangles(std::vector<Rect> rects_in, std::vector<Rect>& rects_out)
+  assert(rects.size() >= rects_out.size());
+}
+
+/** Takes a list of overlapping rectangles and generates a list of
+    non-overlapping rectangles covering the same area. Rectangles have to be normalized.
+ */
+void merge_rectangles(const std::vector<Rect>& rects_, std::vector<Rect>& rects_out)
 {
-  if (rects_in.empty())
+  if (rects_.empty())
     return;
 
-  //std::cout << "--- Merge rectangles: " << rects_in.size() << std::endl;
-
-  if (0)
-    for(std::vector<Rect>::const_iterator i = rects_in.begin(); i != rects_in.end(); ++i)
-      std::cout << "  rectin: " << *i << std::endl;
+  std::vector<Rect> rects = rects_;
 
   // Prepare rectangles
-  std::sort(rects_in.begin(), rects_in.end(), rect_y_sorter);
+  std::sort(rects.begin(), rects.end(), rect_y_sorter);
 
   // Generate rows
   std::vector<Row> rows;
-  generate_rows(rects_in, rows);
-  split_rectangles(rects_in, rows);
+  generate_rows(rects, rows);
+  split_rectangles(rects, rows);
+
+  //print_rows(std::cout, rows);
+
+  std::vector<Rect> rects_out_step1;
+  generate_rectangles(rows, rects_out_step1);
+
+  //print_rects(std::cout, rects_out_step1);
+
+  std::sort(rects_out_step1.begin(), rects_out_step1.end(), rect_xy_sorter);
+  merge_vertical_rectangles(rects_out_step1, rects_out);
+  //print_rects(std::cerr, rects_out);
+}
+
+#ifdef __TEST__
+
+// g++ -Wall -O2  -D__TEST__ rect_merger.cpp ../math/rect.cpp ../math/origin.cpp -o rect_merger
+
+#include <stdlib.h>
+
+int main(int argc, char** argv)
+{
+  int t = 1216020230; // 20
+  //1216032809 // 20
+  //int t = time(NULL);
+  //int t = 1216035347; 
+
+  srand(t);
+
+  std::cerr << t << std::endl;
+
+  std::vector<Rect> rects_in;
+  std::vector<Rect> rects_out;
+
+  // Generate random rectangles
+  for(int i = 0; i < 400; ++i)
+    {
+      rects_in.push_back(Rect(Vector2i(rand() % 800,
+                                       rand() % 800),
+                              Size(rand() % 60 + 10,
+                                   rand() % 60 + 10)));
+    }
+
+  merge_rectangles(rects_in, rects_out);
+  
+  if (1) // print results as SVG 
+    {
+      std::cout << "<?xml version='1.0' standalone='no'?>\n"
+                << "<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' "
+                << "'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>\n"
+                << "<svg width='800' height='800' "
+                << "xmlns='http://www.w3.org/2000/svg' version='1.1'>" << std::endl;
+
+      std::cout << "<g>" << std::endl;
+      for(std::vector<Rect>::iterator i = rects_in.begin(); i != rects_in.end(); ++i)
+        std::cout << "  <rect fill='blue' style='fill-opacity:0.5' x='" << i->left << "' y='" << i->top 
+                  << "' width='" << i->get_width() << "' height='" << i->get_height() << "' />" << std::endl;
+      std::cout << "</g>" << std::endl;
+      std::cout << std::endl;
+
+      std::cout << "<g>" << std::endl;  
+      for(std::vector<Rect>::iterator i = rects_out.begin(); i != rects_out.end(); ++i)
+        std::cout << "  <rect fill='yellow' stroke='black' style='fill-opacity:0.5;stroke-width:1px' x='" << i->left << "' y='" << i->top 
+                  << "' width='" << i->get_width() << "' height='" << i->get_height() << "' />" << std::endl;
+      std::cout << "</g>" << std::endl;
+      std::cout << "</svg>" << std::endl;
+    }
+
+  return 0;
+}
+
+/*
+
+  if (1)
+    {
+      std::cout << "--- Merge rectangles: " << rects_in.size() << std::endl;
+      for(std::vector<Rect>::const_iterator i = rects_in.begin(); i != rects_in.end(); ++i)
+        {
+          std::cout << "  rectin: " << *i << std::endl;
+        }
+    }
+
+  for(std::vector<Row>::const_iterator i = rows.begin(); i != rows.end(); ++i)
+    {
+      std::cout << "Row: " << i->marks.size() << " ";
+      for(std::vector<Mark>::const_iterator j = i->marks.begin(); j != i->marks.end(); ++j)
+        {
+          std::cout << ((j->type == Mark::START_MARK) ? "'(" : "')")
+                      << j->pos 
+                      << "' ";          
+        }
+      std::cout << std::endl;
+    }
 
   // Print rows
   if (0)
@@ -225,58 +386,8 @@ void merge_rectangles(std::vector<Rect> rects_in, std::vector<Rect>& rects_out)
         std::cout << std::endl;
       }
 
-  std::vector<Rect> rects_out_step1;
-  generate_rectangles(rows, rects_out_step1);
-  merge_vertical_rectangles(rects_out_step1, rects_out);
-}
+ */
 
-#ifdef __TEST__
-
-// g++ -Wall -O2  -D__TEST__ rect_merger.cpp ../math/rect.cpp ../math/origin.cpp -o rect_merger
-
-#include <stdlib.h>
-
-int main()
-{
-  srand(time(NULL));
-
-  std::vector<Rect> rects_in;
-  std::vector<Rect> rects_out;
-
-  // Generate random rectangles
-  for(int i = 0; i < 20; ++i)
-    {
-      rects_in.push_back(Rect(Vector2i(rand() % 800 - 200,
-                                       rand() % 800 - 200),
-                              Size(rand() % 400 + 10,
-                                   rand() % 400 + 10)));
-    }
-
-  merge_rectangles(rects_in, rects_out);
-
-  std::cout << "<?xml version='1.0' standalone='no'?>\n"
-            << "<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' "
-            << "'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>\n"
-            << "<svg width='800' height='800' "
-            << "xmlns='http://www.w3.org/2000/svg' version='1.1'>" << std::endl;
-
-  std::cout << "<g>" << std::endl;
-  for(std::vector<Rect>::iterator i = rects_in.begin(); i != rects_in.end(); ++i)
-    std::cout << "  <rect fill='blue' style='fill-opacity:0.5' x='" << i->left << "' y='" << i->top 
-              << "' width='" << i->get_width() << "' height='" << i->get_height() << "' />" << std::endl;
-  std::cout << "</g>" << std::endl;
-  std::cout << std::endl;
-
-  std::cout << "<g>" << std::endl;  
-  for(std::vector<Rect>::iterator i = rects_out.begin(); i != rects_out.end(); ++i)
-    std::cout << "  <rect fill='yellow' stroke='black' style='fill-opacity:0.5' x='" << i->left << "' y='" << i->top 
-              << "' width='" << i->get_width() << "' height='" << i->get_height() << "' />" << std::endl;
-  std::cout << "</g>" << std::endl;
-  std::cout << "</svg>" << std::endl;
-
-  return 0;
-}
-
 #endif
 
 /* EOF */

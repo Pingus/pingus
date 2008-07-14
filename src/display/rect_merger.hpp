@@ -20,7 +20,7 @@
 #include <vector>
 #include "../math/rect.hpp"
 
-void merge_rectangles(std::vector<Rect> rects_in, std::vector<Rect>& rects_out);
+void merge_rectangles(const std::vector<Rect>& rects_in, std::vector<Rect>& rects_out);
 
 #endif 
 
