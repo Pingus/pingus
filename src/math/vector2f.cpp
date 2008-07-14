@@ -48,7 +48,7 @@ Vector2f::rotate(float angle) const
 
 std::ostream& operator<<(std::ostream& s, const Vector2f& v)
 {
-  s << "vector2f(" << v.x << ", " << v.y << ")";
+  s << "Vector2f(" << v.x << ", " << v.y << ")";
   return s;
 }
 

@@ -24,7 +24,7 @@ Vector2i::Vector2i(const Vector2f& v)
 
 std::ostream& operator<<(std::ostream& s, const Vector2i& v)
 {
-  s << "vector2i(" << v.x << ", " << v.y << ")";
+  s << "Vector2i(" << v.x << ", " << v.y << ")";
   return s;
 }
 

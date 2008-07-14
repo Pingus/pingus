@@ -166,7 +166,7 @@ Vector3f::interpolate(const Vector3f& a, const Vector3f& b, float perc)
 
 std::ostream& operator<<(std::ostream& os, const Vector3f& v)
 {
-  return os << "vector3f(" << v.x << ", " << v.y << ", " << v.z << ")";
+  return os << "Vector3f(" << v.x << ", " << v.y << ", " << v.z << ")";
 }
 
 /* EOF */

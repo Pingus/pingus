@@ -62,7 +62,7 @@ Rect Rect::get_rot_bounds(Origin origin, int x, int y, float angle) const
 
 std::ostream& operator<<(std::ostream& s, const Rect& rect)
 {
-  return s << "rect(" << rect.left << ", " << rect.top << ", "
+  return s << "Rect(" << rect.left << ", " << rect.top << ", "
            << rect.right << ", " << rect.bottom << ")";
 }
 

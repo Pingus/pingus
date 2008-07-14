@@ -27,7 +27,7 @@
 
 std::ostream& operator<<(std::ostream& os, const Size& size)
 {
-  return os << "size[" << size.width << ", " << size.height << "]";
+  return os << "Size(" << size.width << ", " << size.height << ")";
 }
 
 /* EOF */
