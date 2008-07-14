@@ -123,6 +123,7 @@ pingus_sources = [
 'src/display/display.cpp', 
 'src/display/sdl_framebuffer.cpp', 
 'src/display/delta_framebuffer.cpp', 
+'src/display/rect_merger.cpp',
 'src/gui/group_component.cpp', 
 'src/gui/gui_manager.cpp', 
 'src/gui/input_box.cpp', 
