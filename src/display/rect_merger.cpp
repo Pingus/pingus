@@ -81,10 +81,12 @@ void print_rows(std::ostream& out, const std::vector<Row>& rows)
 
 void print_rects(std::ostream& out, const std::vector<Rect>& rects)
 {
+  out << "(rects " << std::endl;
   for(std::vector<Rect>::const_iterator i = rects.begin(); i != rects.end(); ++i)
     {
       out << *i << std::endl;
     }
+  out << ") ;; rects " << std::endl;
 }
 
 /** Take a list of rectangles and generate a list of rows written to
@@ -96,6 +98,8 @@ void print_rects(std::ostream& out, const std::vector<Rect>& rects)
  */
 void generate_rows(const std::vector<Rect>& rects, std::vector<Row>& rows_out)
 {
+  assert(!rects.empty());
+
   // Figure out the horizontal split lines
   std::vector<Mark> marks;
   for(std::vector<Rect>::const_iterator i = rects.begin(); i != rects.end(); ++i)
@@ -126,6 +130,7 @@ void generate_rows(const std::vector<Rect>& rects, std::vector<Row>& rows_out)
         }
     }
 
+  //print_rects(std::cout, rects);
   assert(!rows_out.empty());
 }
 
@@ -263,14 +268,22 @@ void merge_vertical_rectangles(const std::vector<Rect>& rects, std::vector<Rect>
 }
 
 /** Takes a list of overlapping rectangles and generates a list of
-    non-overlapping rectangles covering the same area. Rectangles have to be normalized.
+    non-overlapping rectangles covering the same area.
  */
 void merge_rectangles(const std::vector<Rect>& rects_, std::vector<Rect>& rects_out)
 {
-  if (rects_.empty())
-    return;
+  //print_rects(std::cerr, rects_);
+  std::vector<Rect> rects;
 
-  std::vector<Rect> rects = rects_;
+  for(std::vector<Rect>::const_iterator i = rects_.begin(); i != rects_.end(); ++i)
+    { // Only add non-empty rectangles
+      if (i->left < i->right &&
+          i->top  < i->bottom)
+        rects.push_back(*i);
+    }
+
+  if (rects.empty())
+    return;
 
   // Prepare rectangles
   std::sort(rects.begin(), rects.end(), rect_y_sorter);
@@ -313,14 +326,34 @@ int main(int argc, char** argv)
   std::vector<Rect> rects_out;
 
   // Generate random rectangles
-  for(int i = 0; i < 400; ++i)
-    {
-      rects_in.push_back(Rect(Vector2i(rand() % 800,
-                                       rand() % 800),
-                              Size(rand() % 60 + 10,
-                                   rand() % 60 + 10)));
-    }
+  if (0)
+    for(int i = 0; i < 400; ++i)
+      {
+        rects_in.push_back(Rect(Vector2i(rand() % 800,
+                                         rand() % 800),
+                                Size(rand() % 60 + 10,
+                                     rand() % 60 + 10)));
+      }
 
+  rects_in.push_back(Rect(380, 279, 412, 311));
+  rects_in.push_back(Rect(307, 280, 339, 312));
+  rects_in.push_back(Rect(397, 279, 429, 311));
+  rects_in.push_back(Rect(354, 280, 386, 312));
+  rects_in.push_back(Rect(282, 277, 314, 309));
+  rects_in.push_back(Rect(441, 282, 473, 314));
+  rects_in.push_back(Rect(531, 281, 563, 313));
+  rects_in.push_back(Rect(249, 280, 281, 312));
+  rects_in.push_back(Rect(4, 112, 36, 144));
+  rects_in.push_back(Rect(381, 279, 413, 311));
+  rects_in.push_back(Rect(306, 280, 338, 312));
+  rects_in.push_back(Rect(396, 279, 428, 311));
+  rects_in.push_back(Rect(355, 280, 387, 312));
+  rects_in.push_back(Rect(283, 277, 315, 309));
+  rects_in.push_back(Rect(440, 282, 472, 314));
+  rects_in.push_back(Rect(530, 281, 562, 313));
+  rects_in.push_back(Rect(249, 280, 281, 312));
+  rects_in.push_back(Rect(4, 112, 36, 144));
+                                        
   merge_rectangles(rects_in, rects_out);
   
   if (1) // print results as SVG 
