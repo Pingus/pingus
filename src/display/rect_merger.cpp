@@ -144,27 +144,20 @@ void split_rectangles(const std::vector<Rect>& rects, std::vector<Row>& rows)
   assert(__gnu_cxx::is_sorted(rects.begin(), rects.end(), rect_y_sorter));
 
   std::vector<Rect>::const_iterator rect = rects.begin();
-  for(std::vector<Row>::iterator row = rows.begin(); row != rows.end() && rect != rects.end(); ++row)
-    {
-      // FIXME: Crash Bug here, maybe
-      for(; rect->top == row->top; ++rect)
-        {
+  for(std::vector<Row>::iterator row = rows.begin(); row != rows.end(); ++row)
+    { // go over all rows
+      for(; rect != rects.end() && rect->top == row->top; ++rect)
+        { // go over all rectangles that start on this row
           Mark start(Mark::START_MARK, rect->left);
           Mark end  (Mark::END_MARK,   rect->right);
 
-          // Add the given rectangle to all rows it overlaps
-          std::vector<Row>::iterator this_row = row; 
-          do 
-            {
+          for(std::vector<Row>::iterator this_row = row; 
+              this_row != rows.end() && (this_row->bottom <= (rect->bottom));
+              ++this_row)       
+            { // go over all rows that this rect overlaps with
               this_row->marks.push_back(start);
               this_row->marks.push_back(end);
-
-              if (this_row->bottom < (rect->bottom))
-                ++this_row;
-              else
-                break;
             }
-          while (1);
         }
     }
 
