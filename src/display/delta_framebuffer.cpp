@@ -34,7 +34,7 @@ struct SurfaceDrawOp {
   }
 };
 
-int calculate_region(const std::vector<Rect>& rects)
+int calculate_area(const std::vector<Rect>& rects)
 {
   int area = 0;
   for(std::vector<Rect>::const_iterator i = rects.begin(); i != rects.end(); ++i)
@@ -59,27 +59,38 @@ public:
     draw_obs.clear();
   }
 
-  bool has_op(SurfaceDrawOp& op) {
-    for(DrawOps::iterator i = draw_obs.begin(); i != draw_obs.end(); ++i)
+  bool has_op(const SurfaceDrawOp& op) const
+  {
+    // FIXME: This is a slow brute-force approach, a hashmap or
+    // something like that could speed things up quite a bit
+    for(DrawOps::const_iterator i = draw_obs.begin(); i != draw_obs.end(); ++i)
       if (op.surface == i->surface &&
           op.pos     == i->pos &&
           op.rect    == i->rect)
         return true;
     return false;
   }
+
+  /** Calculate the regions that are different between \a frontbuffer
+      and \a backbuffer, results are written to \a changed_regions  */
+  void buffer_difference(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer, 
+                        std::vector<Rect>& changed_regions)
+  {
+    // FIXME: This is kind of a slow brute force approach
+    for(DrawOps::const_iterator i = backbuffer.draw_obs.begin(); i != backbuffer.draw_obs.end(); ++i)
+      if (!frontbuffer.has_op(*i))
+        changed_regions.push_back(i->get_region());
+
+    for(DrawOps::const_iterator i = frontbuffer.draw_obs.begin(); i != frontbuffer.draw_obs.end(); ++i)
+      if (!backbuffer.has_op(*i))
+        changed_regions.push_back(i->get_region());
+  }
  
   void render(SDLFramebuffer& fb, DrawOpBuffer& frontbuffer) 
   {
     std::vector<Rect> changed_regions;
 
-    // Find all regions that need updating
-    for(DrawOps::iterator i = draw_obs.begin(); i != draw_obs.end(); ++i)
-      if (!frontbuffer.has_op(*i))
-        changed_regions.push_back(i->get_region());
-
-    for(DrawOps::iterator i = frontbuffer.draw_obs.begin(); i != frontbuffer.draw_obs.end(); ++i)
-      if (!has_op(*i))
-        changed_regions.push_back(i->get_region());
+    buffer_difference(frontbuffer, *this, changed_regions);
 
     // Clip things to the screen
     Size screen_size = fb.get_size();
@@ -100,12 +111,16 @@ public:
         merge_rectangles(changed_regions, update_rects);
         //update_rects = changed_regions;
 
-        int area = calculate_region(update_rects);
+        int area = calculate_area(update_rects);
 
         if (area < fb.get_size().get_area()*75/100) // FIXME: Random Magic ratio, need benchmarking to find proper value
           { // Update all regions that need update
+
             for(std::vector<Rect>::iterator i = update_rects.begin(); i != update_rects.end(); ++i)
-              {
+              { 
+                // FIXME: This is a pretty drastic brute force
+                // approach and slows things down when you have many
+                // tiny rectangles (i.e. particle effects)
                 fb.push_cliprect(*i);
                 for(DrawOps::iterator j = draw_obs.begin(); j != draw_obs.end(); ++j)
                   j->render(fb);
