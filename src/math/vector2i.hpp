@@ -73,7 +73,7 @@ public:
     return *this;
   }
 
-  bool operator== (const Vector2i& other)
+  bool operator== (const Vector2i& other) const
   {
     return (other.x == x && other.y == y);
   }
