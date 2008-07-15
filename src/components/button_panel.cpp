@@ -49,6 +49,7 @@ ButtonPanel::ButtonPanel(GameSession* s, const Vector2i& pos)
       ActionButton button;
       button.name   = actions[i];
       button.sprite = Sprite("pingus/player0/" + action_to_string(button.name) + "/right");
+      button.sprite.set_hotspot(origin_center, 0, 0);
       button.sprite.set_play_loop(true);
       buttons.push_back(button);
     }
@@ -70,7 +71,7 @@ ButtonPanel::draw(DrawingContext& gc)
       else
         gc.draw(background, rect.left, rect.top + 38*i);
 
-      gc.draw(buttons[i].sprite, rect.left + 20, rect.top + 38*i + 32);
+      gc.draw(buttons[i].sprite, rect.left + 20, rect.top + 38*i + 16);
 
       std::string str = StringUtil::to_string(aholder->get_available(buttons[i].name));
       gc.print_center(Fonts::pingus_small, rect.left + 46, rect.top + 5 + 38*i, str);
