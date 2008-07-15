@@ -186,15 +186,6 @@ Sprite::finish()
     impl->finish();
 }
 
-SDL_Surface*
-Sprite::get_surface() const
-{
-  if (impl.get())
-    return impl->surface.get_surface();
-  else
-    return NULL;
-}
-
 void
 Sprite::scale(int w, int h)
 {

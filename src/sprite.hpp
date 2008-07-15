@@ -59,8 +59,6 @@ public:
   void restart();
   void finish();
   operator bool();
-  SDL_Surface* get_surface() const;
-  void set_surface(SDL_Surface* surface);
 
   /** Resizes the Sprite to the given size. This is a destructive
       operation. The original Surface will be lost. */
