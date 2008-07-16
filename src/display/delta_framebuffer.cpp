@@ -16,7 +16,6 @@
 
 #include <assert.h>
 #include <iostream>
-#include <boost/smart_ptr.hpp>
 #include "../math.hpp"
 #include "rect_merger.hpp"
 #include "sdl_framebuffer.hpp"
@@ -139,15 +138,23 @@ DrawOp::equal(DrawOp* op) const
 class DrawOpBuffer
 {
 private:
-  typedef std::vector<boost::shared_ptr<DrawOp> > DrawOps;
+  typedef std::vector<DrawOp*> DrawOps;
   DrawOps draw_ops;
 
 public:
   DrawOpBuffer()
   {
   }
+
+  ~DrawOpBuffer()
+  {
+    for(DrawOps::const_iterator i = draw_ops.begin(); i != draw_ops.end(); ++i)
+      delete *i;
+  }
   
   void clear() {
+    for(DrawOps::const_iterator i = draw_ops.begin(); i != draw_ops.end(); ++i)
+      delete *i;
     draw_ops.clear();
   }
 
@@ -170,11 +177,11 @@ public:
   {
     // FIXME: This is kind of a slow brute force approach
     for(DrawOps::const_iterator i = backbuffer.draw_ops.begin(); i != backbuffer.draw_ops.end(); ++i)
-      if (!frontbuffer.has_op(i->get()))
+      if (!frontbuffer.has_op(*i))
         changed_regions.push_back((*i)->get_region());
 
     for(DrawOps::const_iterator i = frontbuffer.draw_ops.begin(); i != frontbuffer.draw_ops.end(); ++i)
-      if (!backbuffer.has_op(i->get()))
+      if (!backbuffer.has_op(*i))
         changed_regions.push_back((*i)->get_region());
   }
  
@@ -231,8 +238,7 @@ public:
   }
  
   void add(DrawOp* op) {
-    boost::shared_ptr<DrawOp> ptr(op);
-    draw_ops.push_back(ptr);
+    draw_ops.push_back(op);
   }
 };
 
