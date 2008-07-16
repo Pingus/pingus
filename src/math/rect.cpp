@@ -33,33 +33,6 @@
 #define cl_min(a,b) ((a < b) ? a : b)
 #define cl_max(a,b) ((a > b) ? a : b)
 
-Rect Rect::get_rot_bounds(const Vector2i &hotspot, float angle) const
-{
-#if 0
-	//Find the rotated positions of each corner
-	Rect retVal(*this);
-	Vector2i ul = Vector2i(retVal.left, retVal.top).rotate(hotspot, angle);
-	Vector2i ur = Vector2i(retVal.right, retVal.top).rotate(hotspot, angle);
-	Vector2i ll = Vector2i(retVal.left, retVal.bottom).rotate(hotspot, angle);
-	Vector2i lr = Vector2i(retVal.right, retVal.bottom).rotate(hotspot, angle);
-	
-	//Use the sidemost corners as the bounds of the new rectangle
-	retVal.left = cl_min(cl_min(ul.x, ur.x), cl_min(ll.x, lr.x));
-	retVal.right = cl_max(cl_max(ul.x, ur.x), cl_max(ll.x, lr.x));
-	retVal.top = cl_min(cl_min(ul.y, ur.y), cl_min(ll.y, lr.y));
-	retVal.bottom = cl_max(cl_max(ul.y, ur.y), cl_max(ll.y, lr.y));
-	return retVal;
-#endif	
-        return Rect();
-}
-
-Rect Rect::get_rot_bounds(Origin origin, int x, int y, float angle) const
-{
-	return get_rot_bounds(
-		Vector2i(left, top) + calc_origin(origin, get_size()) + Vector2i(x, y),
-		angle);
-}
-
 std::ostream& operator<<(std::ostream& s, const Rect& rect)
 {
   return s << "Rect(" << rect.left << ", " << rect.top << ", "

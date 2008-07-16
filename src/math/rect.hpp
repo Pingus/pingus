@@ -144,15 +144,7 @@ public:
   {
     return (r.left < right && r.right > left && r.top < bottom && r.bottom > top);
   }
-	
-  //: Returns another Rect containing a rotated version of this one.
-  //param hotspot: Vector2i to rotate around.
-  //param origin: Determines the hotspot point within the rectangle
-  //param x, y: Offsets applied negatively to the hotspot point
-  //param angle: Angle to rotate in degrees.
-  Rect get_rot_bounds(const Vector2i &hotspot, float angle) const;
-  Rect get_rot_bounds(Origin origin, int x, int y, float angle) const;
-	
+
   //! Operations:
 public:
   //: Sets the size of the rectangle, maintaining top/left position.
@@ -347,22 +339,7 @@ public:
         top = temp;
       }
   }
-#if 0	
-  //: Applies an origin and offset pair to this rectangle
-  //param origin: The new origin to adjust to from default upper-left position
-  //param x, y: Offsets applied negatively to each corner of the rectangle
-  void apply_alignment(Origin origin, float x, float y)
-  {
-    Vector3f offset = calc_origin(origin, get_size());
-    offset.x -= x;
-    offset.y -= y;
-		
-    left += offset.x;
-    top += offset.y;
-    right += offset.x;
-    bottom += offset.y;
-  }
-#endif
+
   // Moves each edge f away from the center, thus width = old_width + 2*f
   Rectf grow(float f) const {
     return Rectf(left   - f, 
