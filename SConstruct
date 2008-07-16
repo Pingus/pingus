@@ -126,7 +126,6 @@ pingus_sources = [
 'src/display/rect_merger.cpp',
 'src/gui/group_component.cpp', 
 'src/gui/gui_manager.cpp', 
-'src/gui/input_box.cpp', 
 'src/gui/surface_button.cpp',
 'src/screen/gui_screen.cpp', 
 'src/screen/screen.cpp', 
