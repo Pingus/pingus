@@ -35,6 +35,8 @@ private:
 public:
   DeltaFramebuffer();
 
+  FramebufferSurface create_surface(SDL_Surface* surface);
+
   void set_video_mode(const Size& size, bool fullscreen);
   void flip();
 

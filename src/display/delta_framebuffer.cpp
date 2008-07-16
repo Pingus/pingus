@@ -150,6 +150,12 @@ DeltaFramebuffer::DeltaFramebuffer()
 {
 }
 
+FramebufferSurface
+DeltaFramebuffer::create_surface(SDL_Surface* surface)
+{
+  return framebuffer->create_surface(surface);
+}
+
 void
 DeltaFramebuffer::set_video_mode(const Size& size, bool fullscreen)
 {

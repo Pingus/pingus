@@ -23,10 +23,13 @@
 #include "math/vector2i.hpp"
 #include "math/size.hpp"
 #include "math/rect.hpp"
+#include "framebuffer_surface.hpp"
 
 class Framebuffer
 {
 public:
+  virtual FramebufferSurface create_surface(SDL_Surface* surface) =0;
+
   virtual void set_video_mode(const Size& size, bool fullscreen) =0;
   virtual void flip() =0;
 

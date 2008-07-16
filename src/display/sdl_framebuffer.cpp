@@ -18,6 +18,7 @@
 #include "../math.hpp"
 #include "display.hpp"
 #include "sdl_framebuffer.hpp"
+#include "sdl_framebuffer_surface_impl.hpp"
 
 namespace {
 
@@ -143,6 +144,12 @@ SDLFramebuffer::SDLFramebuffer()
 
 SDLFramebuffer::~SDLFramebuffer()
 {
+}
+
+FramebufferSurface
+SDLFramebuffer::create_surface(SDL_Surface* surface)
+{
+  return FramebufferSurface(new SDLFramebufferSurfaceImpl(surface));
 }
 
 void
