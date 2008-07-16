@@ -14,7 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <stdio.h>
+#include <sstream>
 #include "fonts.hpp"
 #include "fps_counter.hpp"
 #include "gettext.h"
@@ -25,7 +25,6 @@ FPSCounter fps_counter;
 FPSCounter::FPSCounter()
 {
   start_time = SDL_GetTicks();
-  strcpy(fps_string, "");
   fps_count = 0;
 }
 
@@ -45,7 +44,7 @@ FPSCounter::draw()
     }
   else
     {
-      Fonts::pingus_small.render(origin_center, Display::get_width()/2, 34, "+ " + std::string(fps_string) + " +", Display::get_framebuffer());
+      Fonts::pingus_small.render(origin_center, Display::get_width()/2, 34, "+ " + fps_string + " +", Display::get_framebuffer());
       odd_frame = true;
     }
 }
@@ -61,9 +60,13 @@ FPSCounter::update_fps_counter()
   if (start_time + 1000 < current_time)
     {
       current_fps = fps_count * 1000 / (current_time - start_time);
-      snprintf(fps_string, 16, "%d fps", current_fps);
+      
       fps_count = 0;
       start_time = SDL_GetTicks();
+
+      std::ostringstream str; 
+      str << current_fps << " fps";
+      fps_string = str.str();
     }
 }
 

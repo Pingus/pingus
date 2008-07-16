@@ -16,6 +16,8 @@
 
 #ifndef HEADER_PINGUS_FPS_COUNTER_HPP
 #define HEADER_PINGUS_FPS_COUNTER_HPP
+
+#include <string>
 
 class FPSCounter
 {
@@ -25,7 +27,7 @@ private:
 
   /** A string holding the current value of frames + "fps", its
       updated every second */
-  char fps_string[16];
+  std::string fps_string;
 
   /** Count the fps until one second is passed */
   int fps_count;
