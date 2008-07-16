@@ -35,6 +35,14 @@ public:
   Color(uint8_t r_, uint8_t g_, uint8_t b_, uint8_t a_ = 255)
     : r(r_), g(g_), b(b_), a(a_)
   {}
+
+  bool operator==(const Color& rhs) const {
+    return
+      r == rhs.r &&
+      g == rhs.g &&
+      b == rhs.b &&
+      a == rhs.a;
+  }
 };
 
 #endif
