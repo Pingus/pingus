@@ -1,17 +1,21 @@
-0.7.3 (03/Jul/2008)
+0.7.3 (??/Jul/2008)
 ===================
 * fixed game not starting when no soundcard is present
-* all halloween levels have been converted to a minimum size 1920x1200
-  (i.e. they can be played in fullscreen on all common monitors
-  without letterboxing)
-* a brand new X-Mas theme along with three new X-Mas levels
-* a brand new Easter theme along with four new Easter levels
+* all halloween and tutorial levels have been converted to a minimum
+  size 1920x1200 (i.e. they can be played in fullscreen on all common
+  monitors without letterboxing)
 * new --userdir command line switch to set the directory where savegames
   are saved
-* GUI double-click issue fixed
-* demo recording and playback are back
-* forest set
+* menu issue of getting confused by fast succedding clicks fixed
+* level-demo recording and playback are back (files not compatible between x86 and x86-64)
+* new input-demo recording and playback, that works across all the game 
+* forest graphic set got started
+* window resize support throughout the whole game
+* dirty-rectangles drawing for improved performance
+* new blackboard graphic
 
+(* a brand new X-Mas theme along with three new X-Mas levels)
+(* a brand new Easter theme along with four new Easter levels)
 
 0.7.2 (31/Oct/2007)
 ===================

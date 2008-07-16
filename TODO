@@ -34,8 +34,6 @@ Roadmap for Pingus 0.8.0:
 
 * static in Entrance direction=misc is ugly
 
-* small levels in large windows cause parallax scrolling to break
-
 * add "Save Demo" to the result screen
 
 * add "Replay" to the result screen
@@ -45,10 +43,6 @@ Roadmap for Pingus 0.8.0:
 * animate the flag or remove it for single-player
 
 * make GUI resizable
-
-* shadow in levelset background is wrong
-
-* split blackboard graphic into foreground and background, draw seperatly to get cleaner resize
 
 * playfield scrolling should be float
 
@@ -60,8 +54,6 @@ Roadmap for Pingus 0.8.0:
 
 * split Pingus into base and extra user contributed content
 
-* rename WorldMapManager to WorldMapScreen, split WorldMapComponent into seperate file
-
 * intro/end credits are not properly displayed currently
 
 * do SurfaceButton with signals
@@ -72,16 +64,31 @@ Roadmap for Pingus 0.8.0:
 
 * drawing context defaults to display::get_width/height, need to adjust that
 
-* add a way to confirm with y/n key pressed on the exit screen
-
 * clicking while the screen changes is weird
-
-* this is back: 
-  pingus: src/screen/screen_manager.cpp:203: void ScreenManager::replace_screen(Screen*): Assertion `cached_action == CA_NONE' failed.
 
 * tooltip missing for actions (got removed in refactoring)
 
-* DrawingContext width/height doesn't get properly updated (see PingusCounter)
+* fullscreen must use a different size then the current window size (round to nearest 'normal' resolution or so)
+
+* input recording in the ScreenManager can't work when the underlying
+  savegame or screensize is different, having assert() or so to catch
+  that would be nice
+
+* ScreenManager::fade_over should be integrated into
+  ScreenManager::update, so that the mainloop is never left
+
+* make all Vector classes inline
+
+* add alternative fullscreen, screenshot and print-fps shortcuts for the OLPC, which doesn't have Fxx keys
+  Ctrl-f -> fullscreen, Ctrl-s screenshot, Ctrl->p printfps
+
+* add WorldObjs that provide hind to the solution
+
+* remove default_screen_width/height, doesn't serve any purpose and is abused in a few places, same for screen_width/height
+
+* How to handle clipping? In DeltaFramebuffer? -> 1) do it via srcrect? 2) make it a DrawOp?
+
+* DeltaFramebuffer issues: clipping not yet implemented, particle effects are slow (to many small rectangles)
 
 New Features
 ============
@@ -188,6 +195,8 @@ Must Have:
 
 * resizable GUI for all screens
 
+* resize all tutorial levels to 1920x1200
+
 New Features:
 =============
 
@@ -215,8 +224,6 @@ Bugs:
 =====
 
 * resource system needs a rewrite/implementation
-
-* "core/misc/404sprite" should be returned for missing graphics
 
 * Level Converter needs to be finalized:
 
@@ -357,6 +364,8 @@ Medium Important:
 
 Less Important:
 ===============
+
+* add ability to scale surfaces to the level editor and level format
 
 * make inputbox handle text longer then the rect size as well as
   multiline text
