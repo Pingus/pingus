@@ -31,6 +31,7 @@ private:
 
   bool fast_scrolling;
   Sprite background;
+  Sprite blackboard;
   Sprite pingu;
 
   Font    font;

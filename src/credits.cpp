@@ -57,13 +57,12 @@ public:
 };
 
 Credits::Credits()
+  : background("core/menu/wood"),
+    blackboard("core/menu/blackboard"),
+    pingu("core/misc/creditpingu")
 {
   scene_context = new SceneContext();
   fast_scrolling = false;
-  background = Sprite("core/menu/startscreenbg");
-  background.scale(Display::get_width(), Display::get_height());
-  pingu = Sprite("core/misc/creditpingu");
-
   gui_manager->add(new CreditsOkButton(this));
 
   font       = Fonts::chalk_normal;
@@ -262,7 +261,13 @@ Credits::draw_background (DrawingContext& gc)
   x = Display::get_width()/2;
   y = (int)offset;
 
-  gc.draw(background, Vector2i(gc.get_width()/2, gc.get_height()/2));
+  // Paint the background wood panel
+  for(int y = 0; y < gc.get_height(); y += background.get_height())
+    for(int x = 0; x < gc.get_width(); x += background.get_width())
+      gc.draw(background, x, y);
+
+  gc.draw(blackboard, gc.get_width()/2, gc.get_height()/2);
+
   gc.draw(pingu, Vector2i(gc.get_width()/2, gc.get_height()/2 - 20));
   
   gc.print_right(Fonts::chalk_normal,
