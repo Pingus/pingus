@@ -220,6 +220,7 @@ PingusMenu::create_background(const Size& size)
   // resolution is not default
   if (w != default_screen_width && h != default_screen_height)
     {
+#if 0 // FIXME: Wed Jul 16 11:40:53 2008
       layer1.scale(w, 185 * h / default_screen_height);
       layer2.scale(w, 362 * h / default_screen_height);
       layer3.scale(w, 306 * h / default_screen_height);
@@ -231,6 +232,7 @@ PingusMenu::create_background(const Size& size)
       background->add_layer(layer3, 0, 200 * (float)h / default_screen_height, 50, 0);
       background->add_layer(layer4, 0, 429 * (float)h / default_screen_height, 100, 0);
       background->add_layer(layer5, 0, 500 * (float)h / default_screen_height, 200, 0);
+#endif
     }
   else
     {

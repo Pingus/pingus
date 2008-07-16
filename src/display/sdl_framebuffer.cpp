@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include "../math.hpp"
+#include "../surface.hpp"
 #include "display.hpp"
 #include "sdl_framebuffer.hpp"
 #include "sdl_framebuffer_surface_impl.hpp"
@@ -147,14 +148,17 @@ SDLFramebuffer::~SDLFramebuffer()
 }
 
 FramebufferSurface
-SDLFramebuffer::create_surface(SDL_Surface* surface)
+SDLFramebuffer::create_surface(const Surface& surface)
 {
-  return FramebufferSurface(new SDLFramebufferSurfaceImpl(surface));
+  return FramebufferSurface(new SDLFramebufferSurfaceImpl(surface.get_surface()));
 }
 
 void
-SDLFramebuffer::draw_surface(SDL_Surface* src, const Vector2i& pos)
+SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Vector2i& pos)
 {
+  SDLFramebufferSurfaceImpl* impl = dynamic_cast<SDLFramebufferSurfaceImpl*>(surface.get_impl());
+  SDL_Surface* src = impl->get_surface();
+
   SDL_Rect dstrect;
   dstrect.x = (Sint16)pos.x;
   dstrect.y = (Sint16)pos.y;
@@ -165,8 +169,11 @@ SDLFramebuffer::draw_surface(SDL_Surface* src, const Vector2i& pos)
 }
 
 void
-SDLFramebuffer::draw_surface(SDL_Surface* src, const Rect& srcrect, const Vector2i& pos)
+SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Rect& srcrect, const Vector2i& pos)
 {
+  SDLFramebufferSurfaceImpl* impl = dynamic_cast<SDLFramebufferSurfaceImpl*>(surface.get_impl());
+  SDL_Surface* src = impl->get_surface();
+
   SDL_Rect dstrect;
   dstrect.x = (Sint16)pos.x;
   dstrect.y = (Sint16)pos.y;

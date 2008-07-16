@@ -18,8 +18,10 @@
 
 SDLFramebufferSurfaceImpl::SDLFramebufferSurfaceImpl(SDL_Surface* src)
 {
-  surface = SDL_DisplayFormat(src);
-  //surface = SDL_DisplayFormatAlpha();;
+  if (src->format->Amask != 0 || (src->flags & SDL_SRCCOLORKEY))
+    surface = SDL_DisplayFormatAlpha(src);
+  else
+    surface = SDL_DisplayFormat(src);
 }
 
 SDLFramebufferSurfaceImpl::~SDLFramebufferSurfaceImpl()

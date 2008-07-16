@@ -34,7 +34,7 @@ public:
   SDLFramebuffer();
   ~SDLFramebuffer();
 
-  FramebufferSurface create_surface(SDL_Surface* surface);
+  FramebufferSurface create_surface(const Surface& surface);
 
   void set_video_mode(const Size& size, bool fullscreen);
   void flip();
@@ -43,8 +43,8 @@ public:
   void push_cliprect(const Rect&);
   void pop_cliprect();
 
-  void draw_surface(SDL_Surface* src, const Vector2i& pos);
-  void draw_surface(SDL_Surface* src, const Rect& srcrect, const Vector2i& pos);
+  void draw_surface(const FramebufferSurface& src, const Vector2i& pos);
+  void draw_surface(const FramebufferSurface& src, const Rect& srcrect, const Vector2i& pos);
 
   void draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color);
 

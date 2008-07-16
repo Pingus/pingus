@@ -32,6 +32,8 @@ public:
 
   int get_width()  const { return surface->w; }
   int get_height() const { return surface->h; }
+
+  SDL_Surface* get_surface() const { return surface; }
 };
 
 #endif

@@ -64,7 +64,6 @@ public:
   Color get_pixel(int x, int y) const;
 
   void fill(const Color& color);
-  Surface optimize();
 
   Surface scale(int w, int h);
   Surface mod(ResourceModifierNS::ResourceModifier mod);

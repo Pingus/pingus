@@ -45,9 +45,9 @@ public:
   int get_width()  const;
   int get_height() const;
 
+  void render(float x, float y, Framebuffer& target);
   void update(float delta = 0.033f);
 
-  void render(float x, float y, Framebuffer& target);
   void set_hotspot(Origin origin, int x, int y);
   Vector2i get_offset() const;
   void set_frame(int i);
@@ -59,21 +59,6 @@ public:
   void restart();
   void finish();
   operator bool();
-
-  /** Resizes the Sprite to the given size. This is a destructive
-      operation. The original Surface will be lost. */
-  void scale(int w, int h);
-
-  /** Fills the Sprite with the given color. Transparent areas aren't
-      touched.  This is a destructive operation. The original Surface
-      will be lost. */
-  void fill(const Color& color);
-
-  /** Duplicate the underlying SDL_Surface to allow manipulation
-      without affecting other references to it */
-  void make_single_user();
-
-  void apply_mod(ResourceModifierNS::ResourceModifier mod);
 
 private:
   boost::shared_ptr<SpriteImpl> impl;

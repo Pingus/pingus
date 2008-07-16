@@ -21,9 +21,9 @@
 #include "delta_framebuffer.hpp"
 
 struct SurfaceDrawOp {
-  Vector2i     pos;
-  SDL_Surface* surface;
-  Rect         rect;
+  Vector2i           pos;
+  FramebufferSurface surface;
+  Rect               rect;
   
   void render(Framebuffer& fb) {
     fb.draw_surface(surface, rect, pos);
@@ -151,7 +151,7 @@ DeltaFramebuffer::DeltaFramebuffer()
 }
 
 FramebufferSurface
-DeltaFramebuffer::create_surface(SDL_Surface* surface)
+DeltaFramebuffer::create_surface(const Surface& surface)
 {
   return framebuffer->create_surface(surface);
 }
@@ -184,17 +184,17 @@ DeltaFramebuffer::pop_cliprect()
 }
 
 void
-DeltaFramebuffer::draw_surface(SDL_Surface* src, const Vector2i& pos)
+DeltaFramebuffer::draw_surface(const FramebufferSurface& src, const Vector2i& pos)
 {
   SurfaceDrawOp op;
   op.pos     = pos;
   op.surface = src;
-  op.rect    = Rect(Vector2i(0, 0), Size(src->w, src->h));
+  op.rect    = Rect(Vector2i(0, 0), src.get_size());
   backbuffer->add(op);
 }
 
 void
-DeltaFramebuffer::draw_surface(SDL_Surface* src, const Rect& srcrect, const Vector2i& pos)
+DeltaFramebuffer::draw_surface(const FramebufferSurface& src, const Rect& srcrect, const Vector2i& pos)
 {
   SurfaceDrawOp op;
   op.pos     = pos;

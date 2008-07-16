@@ -186,6 +186,7 @@ Sprite::finish()
     impl->finish();
 }
 
+#if 0 // FIXME: Wed Jul 16 11:40:53 2008
 void
 Sprite::scale(int w, int h)
 {
@@ -195,7 +196,6 @@ Sprite::scale(int w, int h)
       if (impl->frame_size.width != w || impl->frame_size.height != h)
         {
           boost::shared_ptr<SpriteImpl> new_impl(new SpriteImpl());
-
       
           if ((impl->frame_size.width  * impl->array.width)  == impl->surface.get_width() && 
               (impl->frame_size.height * impl->array.height) == impl->surface.get_height())
@@ -262,6 +262,7 @@ Sprite::make_single_user()
       impl = new_impl;  
     }
 }
+#endif
 
 Vector2i
 Sprite::get_offset() const
@@ -282,6 +283,7 @@ Sprite::set_hotspot(Origin origin, int x, int y)
     }
 }
 
+#if 0 // FIXME
 void
 Sprite::apply_mod(ResourceModifierNS::ResourceModifier mod)
 {
@@ -305,5 +307,7 @@ Sprite::apply_mod(ResourceModifierNS::ResourceModifier mod)
         }
     }
 }
+#endif
 
+
 /* EOF */

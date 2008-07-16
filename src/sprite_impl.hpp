@@ -18,9 +18,9 @@
 #define HEADER_PINGUS_SPRITE_IMPL_HPP
 
 #include "surface.hpp"
+#include "display/framebuffer_surface.hpp"
 #include "math/vector2i.hpp"
 
-class Framebuffer;
 class SpriteDescription;
 
 class SpriteImpl
@@ -28,8 +28,7 @@ class SpriteImpl
 private:
   friend class Sprite;
 
-  Surface  surface;
-  bool     optimized;
+  FramebufferSurface framebuffer_surface;
   Vector2i offset;
 
   Vector2i frame_pos;
@@ -52,7 +51,6 @@ public:
   SpriteImpl(const Surface& surface_);
   ~SpriteImpl();
 
-  void optimize();
   void update(float delta);
 
   void render(float x, float y, Framebuffer& fb);

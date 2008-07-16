@@ -250,26 +250,6 @@ Surface::mod(ResourceModifierNS::ResourceModifier modifier)
 }
 
 Surface
-Surface::optimize()
-{
-  if (impl.get())
-    {
-      SDL_Surface* new_surface;
-
-      if (impl->surface->format->Amask != 0 || (impl->surface->flags & SDL_SRCCOLORKEY))
-        new_surface = SDL_DisplayFormatAlpha(impl->surface);
-      else
-        new_surface = SDL_DisplayFormat(impl->surface);
-  
-      return Surface(new_surface);
-    }
-  else
-    {
-      return Surface();
-    }
-}
-
-Surface
 Surface::scale(int w, int h)
 {
   return Surface(boost::shared_ptr<SurfaceImpl>

@@ -24,11 +24,13 @@
 #include "math/size.hpp"
 #include "math/rect.hpp"
 #include "framebuffer_surface.hpp"
+
+class Surface;
 
 class Framebuffer
 {
 public:
-  virtual FramebufferSurface create_surface(SDL_Surface* surface) =0;
+  virtual FramebufferSurface create_surface(const Surface& surface) =0;
 
   virtual void set_video_mode(const Size& size, bool fullscreen) =0;
   virtual void flip() =0;
@@ -36,8 +38,8 @@ public:
   virtual void push_cliprect(const Rect&) =0;
   virtual void pop_cliprect() =0;
 
-  virtual void draw_surface(SDL_Surface* src, const Vector2i& pos) =0;
-  virtual void draw_surface(SDL_Surface* src, const Rect& srcrect, const Vector2i& pos) =0;
+  virtual void draw_surface(const FramebufferSurface& src, const Vector2i& pos) =0;
+  virtual void draw_surface(const FramebufferSurface& src, const Rect& srcrect, const Vector2i& pos) =0;
 
   virtual void draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color) =0;
 

@@ -137,7 +137,9 @@ Resource::load_thumb_sprite(const std::string& name)
       else
         thumb_size.height = 48;
 
+#if 0 // FIXME: Wed Jul 16 11:40:53 2008
       sprite.scale(thumb_size.width, thumb_size.height);
+#endif
 
       sprite.set_hotspot(origin_top_left, (48 - sprite.get_width())/2, (48 - sprite.get_height())/2);
 

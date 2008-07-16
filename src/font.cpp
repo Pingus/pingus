@@ -19,9 +19,11 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include "font.hpp"
+#include "surface.hpp"
 #include "line_iterator.hpp"
 #include "font_description.hpp"
 #include "display/framebuffer.hpp"
+#include "display/display.hpp"
 
 static bool vline_empty(SDL_Surface* surface, int x, Uint8 threshold)
 {
@@ -44,22 +46,23 @@ static bool vline_empty(SDL_Surface* surface, int x, Uint8 threshold)
 class FontImpl
 {
 public:
-  SDL_Surface* surface;
+  FramebufferSurface framebuffer_surface;
   Rect chrs[256];
   int space_length;
   float char_spacing;
   float vertical_spacing;
   
   FontImpl(const FontDescription& desc)
-    : surface(0),
-      space_length(desc.space_length),
+    : space_length(desc.space_length),
       char_spacing(desc.char_spacing)
   {
     //std::cout << "desc.image: " << desc.image << std::endl;
     //std::cout << "desc.space: " << desc.space_length << std::endl;
     //std::cout << "Characters: " << desc.characters << std::endl;
 
-    surface = IMG_Load(desc.image.get_sys_path().c_str());
+    Surface software_surface(desc.image);
+    SDL_Surface* surface = software_surface.get_surface();
+
     if (!surface)
       {
         std::cout << "IMG: " << desc.image.str() << std::endl;
@@ -149,11 +152,12 @@ public:
       }
 
     SDL_UnlockSurface(surface);
+
+    framebuffer_surface = Display::get_framebuffer().create_surface(software_surface);
   }
 
   ~FontImpl()
   {
-    SDL_FreeSurface(surface);
   }
 
   void render(Origin origin, int x, int y_, const std::string& text, Framebuffer& fb)
@@ -185,7 +189,7 @@ public:
             Rect& srcrect = chrs[static_cast<unsigned char>(text[i])];
             if (srcrect.get_width() != 0 && srcrect.get_height() != 0)
               {
-                fb.draw_surface(surface, srcrect, Vector2i(dstx, dsty));
+                fb.draw_surface(framebuffer_surface, srcrect, Vector2i(dstx, dsty));
                 dstx += srcrect.get_width() + char_spacing;
               }
             else
@@ -198,7 +202,7 @@ public:
 
   int get_height() const
   {
-    return surface->h;
+    return framebuffer_surface.get_height();
   }
 
   int get_width(char idx) const
@@ -231,7 +235,7 @@ public:
 
   Size get_size(const std::string& text) const
   {
-    return Size(get_width(text), surface->h);
+    return Size(get_width(text), get_height());
   }
 
   Rect bounding_rect(int x, int y, const std::string& str) const

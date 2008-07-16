@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "display/framebuffer.hpp"
+#include "display/display.hpp"
 #include "sprite_description.hpp"
 #include "sprite_impl.hpp"
 
@@ -23,12 +24,11 @@ SpriteImpl::SpriteImpl()
 }
 
 SpriteImpl::SpriteImpl(const SpriteDescription& desc, ResourceModifierNS::ResourceModifier mod)
-  : optimized(false),
-    finished(false),
+  : finished(false),
     frame(0),
     tick_count(0)
 {
-  surface = Surface(desc.filename);
+  Surface surface(desc.filename);
   if (mod != ResourceModifierNS::ROT0)
     surface = surface.mod(mod);
 
@@ -38,6 +38,8 @@ SpriteImpl::SpriteImpl(const SpriteDescription& desc, ResourceModifierNS::Resour
       surface = Surface(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
       if (!surface) assert(!"Surface Couldn't find 404");
     }
+
+  framebuffer_surface = Display::get_framebuffer().create_surface(surface);
 
   frame_pos = desc.frame_pos;
 
@@ -55,9 +57,8 @@ SpriteImpl::SpriteImpl(const SpriteDescription& desc, ResourceModifierNS::Resour
     
 }
 
-SpriteImpl::SpriteImpl(const Surface& surface_)
-  : surface(surface_),
-    optimized(false),
+SpriteImpl::SpriteImpl(const Surface& surface)
+  : framebuffer_surface(Display::get_framebuffer().create_surface(surface)),
     offset(0,0),
     frame_pos(0,0),
     frame_size(surface.get_width(), surface.get_height()),
@@ -73,13 +74,6 @@ SpriteImpl::SpriteImpl(const Surface& surface_)
 
 SpriteImpl::~SpriteImpl()
 {
-}
-
-void
-SpriteImpl::optimize()
-{
-  surface = surface.optimize();
-  optimized = true;
 }
 
 void
@@ -113,10 +107,7 @@ SpriteImpl::update(float delta)
 void 
 SpriteImpl::render(float x, float y, Framebuffer& fb)
 {
-  if (!optimized)
-    optimize();
-  
-  fb.draw_surface(surface.get_surface(), 
+  fb.draw_surface(framebuffer_surface,
                   Rect(frame_pos + Vector2i(frame_size.width  * (frame%array.width),
                                             frame_size.height * (frame/array.width)),
                        frame_size),

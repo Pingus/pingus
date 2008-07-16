@@ -57,6 +57,7 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
   reader.read_bool("keep-aspect", keep_aspect);
 
   bg_surface = Sprite(desc);
+#if 0 // FIXME: Wed Jul 16 11:40:53 2008
   bg_surface.fill(color);
 
   // Scaling Code
@@ -88,6 +89,7 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
           bg_surface.scale(bg_surface.get_width(), world->get_height());
         }
     }
+#endif
 }
 
 float
