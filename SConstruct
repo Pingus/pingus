@@ -121,6 +121,8 @@ pingus_sources = [
 'src/gui/checkbox.cpp',
 'src/gui/combobox.cpp', 
 'src/display/display.cpp', 
+'src/display/framebuffer_surface.cpp', 
+'src/display/sdl_framebuffer_surface_impl.cpp', 
 'src/display/sdl_framebuffer.cpp', 
 'src/display/delta_framebuffer.cpp', 
 'src/display/rect_merger.cpp',

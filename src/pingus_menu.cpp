@@ -207,11 +207,11 @@ PingusMenu::create_background(const Size& size)
   // Recreate the layer manager in the new size
   background = std::auto_ptr<LayerManager>(new LayerManager());
 
-  Sprite layer1("core/menu/layer1");
-  Sprite layer2("core/menu/layer2");
-  Sprite layer3("core/menu/layer3");
-  Sprite layer4("core/menu/layer4");
-  Sprite layer5("core/menu/layer5");
+  Surface layer1 = Resource::load_surface("core/menu/layer1");
+  Surface layer2 = Resource::load_surface("core/menu/layer2");
+  Surface layer3 = Resource::load_surface("core/menu/layer3");
+  Surface layer4 = Resource::load_surface("core/menu/layer4");
+  Surface layer5 = Resource::load_surface("core/menu/layer5");
 
   int w = size.width;
   int h = size.height;
@@ -220,28 +220,26 @@ PingusMenu::create_background(const Size& size)
   // resolution is not default
   if (w != default_screen_width && h != default_screen_height)
     {
-#if 0 // FIXME: Wed Jul 16 11:40:53 2008
-      layer1.scale(w, 185 * h / default_screen_height);
-      layer2.scale(w, 362 * h / default_screen_height);
-      layer3.scale(w, 306 * h / default_screen_height);
-      layer4.scale(w, 171 * h / default_screen_height);
-      layer5.scale(302 * w / default_screen_width, 104 * h / default_screen_height);
+      layer1 = layer1.scale(w, 185 * h / default_screen_height);
+      layer2 = layer2.scale(w, 362 * h / default_screen_height);
+      layer3 = layer3.scale(w, 306 * h / default_screen_height);
+      layer4 = layer4.scale(w, 171 * h / default_screen_height);
+      layer5 = layer5.scale(302 * w / default_screen_width, 104 * h / default_screen_height);
       
-      background->add_layer(layer1, 0, 0, 12, 0);
-      background->add_layer(layer2, 0, 150 * (float)h / default_screen_height, 25, 0);
-      background->add_layer(layer3, 0, 200 * (float)h / default_screen_height, 50, 0);
-      background->add_layer(layer4, 0, 429 * (float)h / default_screen_height, 100, 0);
-      background->add_layer(layer5, 0, 500 * (float)h / default_screen_height, 200, 0);
-#endif
+      background->add_layer(Sprite(layer1), 0, 0, 12, 0);
+      background->add_layer(Sprite(layer2), 0, 150 * (float)h / default_screen_height, 25, 0);
+      background->add_layer(Sprite(layer3), 0, 200 * (float)h / default_screen_height, 50, 0);
+      background->add_layer(Sprite(layer4), 0, 429 * (float)h / default_screen_height, 100, 0);
+      background->add_layer(Sprite(layer5), 0, 500 * (float)h / default_screen_height, 200, 0);
     }
   else
     {
-      background->add_layer(layer1, 0, 0, 12, 0);
-      background->add_layer(layer2, 0, 150, 25, 0);
-      background->add_layer(layer3, 0, 200, 50, 0);
-      background->add_layer(layer4, 0, 429, 100, 0);
-      background->add_layer(layer5, 0, 500, 200, 0);
-    }  
+      background->add_layer(Sprite(layer1), 0, 0, 12, 0);
+      background->add_layer(Sprite(layer2), 0, 150, 25, 0);
+      background->add_layer(Sprite(layer3), 0, 200, 50, 0);
+      background->add_layer(Sprite(layer4), 0, 429, 100, 0);
+      background->add_layer(Sprite(layer5), 0, 500, 200, 0);
+    }
 }
 
 void

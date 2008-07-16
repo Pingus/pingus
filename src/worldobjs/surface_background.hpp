@@ -57,8 +57,8 @@ private:
   /** If streched in x or y direction keep the aspect ratio */
   bool keep_aspect;
 
-	/** Background image */
-	Sprite bg_surface;
+  /** Background image */
+  Sprite bg_sprite;
 
   /** The horizontal scrolling speed in pixels per tick */
   float scroll_ox;

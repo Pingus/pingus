@@ -124,25 +124,21 @@ Resource::load_thumb_sprite(const std::string& name)
     }
   else
     {
-      Sprite sprite(name);
+      Surface surface = load_surface(name);
 
       Size thumb_size;
-      if (sprite.get_width() <= 48)
-        thumb_size.width = sprite.get_width();
+      if (surface.get_width() <= 48)
+        thumb_size.width = surface.get_width();
       else
         thumb_size.width = 48;
 
-      if (sprite.get_height() <= 48)
-        thumb_size.height = sprite.get_height();
+      if (surface.get_height() <= 48)
+        thumb_size.height = surface.get_height();
       else
         thumb_size.height = 48;
 
-#if 0 // FIXME: Wed Jul 16 11:40:53 2008
-      sprite.scale(thumb_size.width, thumb_size.height);
-#endif
-
+      Sprite sprite(surface.scale(thumb_size.width, thumb_size.height));
       sprite.set_hotspot(origin_top_left, (48 - sprite.get_width())/2, (48 - sprite.get_height())/2);
-
       return sprite;
     }
 }
