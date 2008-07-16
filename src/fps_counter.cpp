@@ -25,7 +25,7 @@ FPSCounter fps_counter;
 FPSCounter::FPSCounter()
 {
   start_time = SDL_GetTicks();
-  strcat(fps_string, "");
+  strcpy(fps_string, "");
   fps_count = 0;
 }
 
