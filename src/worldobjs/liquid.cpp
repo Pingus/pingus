@@ -55,7 +55,7 @@ Liquid::get_z_pos () const
 void
 Liquid::on_startup ()
 {
-  CollisionMask mask = Resource::load_collision_mask("liquids/water_cmap");
+  CollisionMask mask("liquids/water_cmap");
 
   for(int i=0; i < width; ++i)
     world->get_colmap()->put(mask,

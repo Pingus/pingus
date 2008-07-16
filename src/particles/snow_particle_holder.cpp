@@ -59,7 +59,7 @@ SnowParticleHolder::SnowParticleHolder ()
     snow3("particles/snow3"),
     snow4("particles/snow4"),
     snow5("particles/snow5"),
-    ground(Resource::load_collision_mask("particles/ground_snow"))
+    ground("particles/ground_snow")
 {
 }
 

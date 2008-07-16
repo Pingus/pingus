@@ -70,18 +70,6 @@ Resource::load_sprite_desc(const std::string& res_name)
   return resmgr.get_sprite_description(res_name);
 }
 
-CollisionMask
-Resource::load_collision_mask(const std::string& name)
-{
-  return CollisionMask(name);
-}
-
-CollisionMask
-Resource::load_collision_mask(const ResDescriptor& res_desc)
-{
-  return CollisionMask(res_desc);
-}
-
 Surface
 Resource::load_surface(const ResDescriptor& desc_)
 {

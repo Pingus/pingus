@@ -30,7 +30,7 @@ IceBlock::IceBlock(const FileReader& reader)
     is_finished(false),
     last_contact(0),
     block_sur("worldobjs/iceblock"),
-    block_sur_cmap(Resource::load_collision_mask("worldobjs/iceblock"))
+    block_sur_cmap("worldobjs/iceblock")
 {
   reader.read_vector("position", pos);
   reader.read_int   ("width",    width);

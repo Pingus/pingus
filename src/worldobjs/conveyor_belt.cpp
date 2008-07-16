@@ -51,7 +51,7 @@ ConveyorBelt::draw (SceneContext& gc)
 void
 ConveyorBelt::on_startup ()
 {
-  CollisionMask mask = Resource::load_collision_mask("worldobjs/conveyorbelt_cmap");
+  CollisionMask mask("worldobjs/conveyorbelt_cmap");
 
   for (int i=0; i < (width + 2); ++i)
     world->put(mask,

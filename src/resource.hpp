@@ -40,9 +40,6 @@ public:
 
   static SpriteDescription* load_sprite_desc(const std::string& res_name);
 
-  static CollisionMask load_collision_mask(const std::string& res_name);
-  static CollisionMask load_collision_mask(const ResDescriptor&);
-
   static Surface       load_surface(const std::string& res_name);
   static Surface       load_surface(const ResDescriptor&);
 

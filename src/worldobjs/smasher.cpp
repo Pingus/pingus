@@ -103,7 +103,7 @@ void
 Smasher::on_startup ()
 {
   std::cout << "Drawing colmap entry" << std::endl;
-  CollisionMask buf = Resource::load_collision_mask("traps/smasher_cmap");
+  CollisionMask buf("traps/smasher_cmap");
   world->put(buf, 
              static_cast<int>(pos.x),
              static_cast<int>(pos.y),

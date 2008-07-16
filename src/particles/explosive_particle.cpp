@@ -70,7 +70,7 @@ ExplosiveParticle::detonate ()
   alive = false;
   WorldObj::get_world()->get_particle_holder ()->add_pingu_explo((int)pos.x, (int)pos.y);
 
-  CollisionMask mask = Resource::load_collision_mask("Other/bomber_radius", "pingus");
+  CollisionMask mask("Other/bomber_radius", "pingus");
   WorldObj::get_world()->remove(mask,
                                 int(pos.x) - (bomber_radius.get_width()/2),
                                 int(pos.y) - (bomber_radius.get_height()/2));
