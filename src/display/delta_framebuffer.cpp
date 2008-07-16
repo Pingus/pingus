@@ -114,15 +114,15 @@ DrawOp::equal(DrawOp* op) const
         {
           case SURFACE_DRAWOP:              
             {
-              const SurfaceDrawOp* lhs = dynamic_cast<const SurfaceDrawOp*>(this);
-              const SurfaceDrawOp* rhs = dynamic_cast<const SurfaceDrawOp*>(op);
+              const SurfaceDrawOp* lhs = static_cast<const SurfaceDrawOp*>(this);
+              const SurfaceDrawOp* rhs = static_cast<const SurfaceDrawOp*>(op);
               return *lhs == *rhs;
             }
               
           case FILLRECT_DRAWOP:
             {
-              const FillRectDrawOp* lhs = dynamic_cast<const FillRectDrawOp*>(this);
-              const FillRectDrawOp* rhs = dynamic_cast<const FillRectDrawOp*>(op);
+              const FillRectDrawOp* lhs = static_cast<const FillRectDrawOp*>(this);
+              const FillRectDrawOp* rhs = static_cast<const FillRectDrawOp*>(op);
               return *lhs == *rhs;
             }
 
