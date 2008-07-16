@@ -86,12 +86,6 @@ GraphicContextState::push(DrawingContext& gc)
   gc.push_modelview();
 
   gc.translate((float)impl->rect.left, (float)impl->rect.top);
-
-  gc.translate((float)get_width()/2, (float)get_height()/2);
-  gc.rotate(impl->rotation);
-  gc.translate(-(float)get_width()/2, -(float)get_height()/2);
-
-  gc.scale(get_zoom(), get_zoom());
   gc.translate(impl->offset.x, impl->offset.y);
 }
 
@@ -101,12 +95,6 @@ GraphicContextState::push(SceneContext& gc)
   gc.push_modelview();
 
   gc.translate((float)impl->rect.left, (float)impl->rect.top);
-
-  gc.translate((float)get_width()/2, (float)get_height()/2);
-  gc.rotate(impl->rotation);
-  gc.translate(-(float)get_width()/2, -(float)get_height()/2);
-
-  gc.scale(get_zoom(), get_zoom());
   gc.translate(impl->offset.x, impl->offset.y);
 }
 

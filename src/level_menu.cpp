@@ -52,7 +52,7 @@ public:
 
   void draw(DrawingContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_center(Fonts::chalk_normal, x_pos + 55, y_pos, _("Abort"));
+    gc.print_center(Fonts::chalk_normal, Vector2i(x_pos + 55, y_pos), _("Abort"));
   }
 
   void on_click() {
@@ -132,7 +132,7 @@ public:
     gc.push_modelview();
     gc.translate(static_cast<float>(rect.left), static_cast<float>(rect.top));
 
-    gc.print_center(Fonts::chalk_large, rect.get_width()/2, -50, _("Levelsets"));
+    gc.print_center(Fonts::chalk_large, Vector2i(rect.get_width()/2, -50), _("Levelsets"));
 
     //gc.draw_fillrect(Rect(Vector2i(0,0), Size(rect.get_width(), rect.get_height())),
     //                 Color(255, 255, 0, 100));
@@ -147,11 +147,11 @@ public:
 
         gc.draw(levelset->get_image(), Vector2i(30, y));
 
-        gc.print_left(Fonts::chalk_normal, 85+30, 15 + y, _(levelset->get_title()));
-        gc.print_left(Fonts::chalk_small,  85+50, 40 + y, _(levelset->get_description()));
+        gc.print_left(Fonts::chalk_normal, Vector2i(85+30, 15 + y), _(levelset->get_title()));
+        gc.print_left(Fonts::chalk_small,  Vector2i(85+50, 40 + y), _(levelset->get_description()));
 
-        gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, 15 + y, (boost::format("%1% %2%%%") % _("Solved:") % levelset->get_completion()).str());
-        gc.print_right(Fonts::chalk_small,  rect.get_width() - 30, 60 + y, (boost::format("%1% %2%") % levelset->get_level_count() % _("levels")).str());
+        gc.print_right(Fonts::chalk_normal, Vector2i(rect.get_width() - 30, 15 + y), (boost::format("%1% %2%%%") % _("Solved:") % levelset->get_completion()).str());
+        gc.print_right(Fonts::chalk_small,  Vector2i(rect.get_width() - 30, 60 + y), (boost::format("%1% %2%") % levelset->get_level_count() % _("levels")).str());
 
         //gc.draw(ok_button, 620, y);
 
@@ -160,7 +160,7 @@ public:
     
     int total_pages = (int(levelsets.size())+2)/3;
   
-    gc.print_center(Fonts::chalk_normal, rect.get_width()/2, 360,
+    gc.print_center(Fonts::chalk_normal, Vector2i(rect.get_width()/2, 360),
                     (boost::format("%1% %2%/%3%") % _("Page") % (page+1) % total_pages).str());
 
     gc.pop_modelview();
@@ -241,7 +241,7 @@ public:
     gc.push_modelview();
     gc.translate(static_cast<float>(rect.left), static_cast<float>(rect.top));
 
-    gc.print_center(Fonts::chalk_large, rect.get_width()/2, -70, _(levelset->get_title()));
+    gc.print_center(Fonts::chalk_large, Vector2i(rect.get_width()/2, -70), _(levelset->get_title()));
 
     if (levelset)
       {
@@ -250,8 +250,8 @@ public:
         //gc.draw_fillrect(Rect(Vector2i(0,0), Size(rect.get_width(), rect.get_height())),
         //                 Color(255, 255, 0, 100));
 
-        gc.print_left(Fonts::chalk_normal,  30, -32, _("Title"));
-        gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, -32, _("Status"));
+        gc.print_left(Fonts::chalk_normal,  Vector2i(30, -32), _("Title"));
+        gc.print_right(Fonts::chalk_normal, Vector2i(rect.get_width() - 30, -32), _("Status"));
 
         int y = 0;
         for(int i = page*8; i < (page+1)*8 && i < levelset->get_level_count(); ++i)
@@ -262,20 +262,20 @@ public:
               gc.draw(marker, Vector2i(0, y));
                         
             if (maintainer_mode)
-              gc.print_left(Fonts::chalk_small, 30, y+4, levelset->get_level(i)->plf.get_resname());
+              gc.print_left(Fonts::chalk_small, Vector2i(30, y+4), levelset->get_level(i)->plf.get_resname());
             else
-              gc.print_left(Fonts::chalk_small, 30, y+4, _(levelset->get_level(i)->plf.get_levelname()));
+              gc.print_left(Fonts::chalk_small, Vector2i(30, y+4), _(levelset->get_level(i)->plf.get_levelname()));
 
             if (levelset->get_level(i)->finished)
-              gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, _("solved"));
+              gc.print_right(Fonts::chalk_small, Vector2i(rect.get_width() -30, y+4), _("solved"));
             else
-              gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, _("unsolved"));
+              gc.print_right(Fonts::chalk_small, Vector2i(rect.get_width() -30, y+4), _("unsolved"));
 
             y += 32;
           }
       }
 
-    gc.print_center(Fonts::chalk_normal, rect.get_width()/2, 360,
+    gc.print_center(Fonts::chalk_normal, Vector2i(rect.get_width()/2, 360),
                     (boost::format("%1% %2%/%3%") % _("Page") % (page+1) % ((levelset->get_level_count()+7)/8)).str());
 
     gc.pop_modelview();

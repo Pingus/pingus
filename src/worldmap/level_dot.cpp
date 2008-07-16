@@ -137,8 +137,8 @@ LevelDot::draw_hover(DrawingContext& gc)
         pos_correction = realpos + length - static_cast<int>(gc.get_width());
       
       gc.print_center(Fonts::pingus_small,
-                      (int)pos.x - pos_correction,
-                      (int)pos.y - 44,
+                      Vector2i((int)pos.x - pos_correction,
+                               (int)pos.y - 44),
                       _(get_plf().get_levelname()), 
                       10000);
     }
@@ -152,8 +152,8 @@ LevelDot::draw_hover(DrawingContext& gc)
         pos_correction = realpos + length - static_cast<int>(gc.get_width());
         
       gc.print_center(Fonts::pingus_small,
-                      (int)pos.x - pos_correction,
-                      (int)pos.y - 30,
+                      Vector2i((int)pos.x - pos_correction,
+                               (int)pos.y - 30),
                       _("locked"), 
                       10000);
     }
@@ -161,7 +161,7 @@ LevelDot::draw_hover(DrawingContext& gc)
   if (maintainer_mode)
     {
       gc.print_center(Fonts::pingus_small,
-                      (int)pos.x, (int)pos.y - 56,
+                      Vector2i((int)pos.x, (int)pos.y - 56),
                       get_plf().get_resname(), 
                       10000);
     }

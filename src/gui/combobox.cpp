@@ -137,27 +137,27 @@ Combobox::draw(DrawingContext &gc)
     return;
 	
   // Draw the label
-  gc.print_right(Fonts::pingus_small, pos.x, pos.y, label);
+  gc.print_right(Fonts::pingus_small, pos, label);
 
   // Draw the rectangle
-  gc.draw_fillrect(pos.x, pos.y, pos.x + get_width(), pos.y + get_height(),
+  gc.draw_fillrect(Rect(pos.x, pos.y, pos.x + get_width(), pos.y + get_height()),
                    Color(255,255,255));
 
   // Next, draw the rectangle border
-  gc.draw_rect(pos.x, pos.y, pos.x + get_width(), pos.y + get_height(),
+  gc.draw_rect(Rect(pos.x, pos.y, pos.x + get_width(), pos.y + get_height()),
                Color(0,0,0));
 
   if (drop_down && item_list.size() > 0)
     {
       // Draw the highlighted box
       int y_offset = (((mouse_pos.y - pos.y - height)/height)+1) * height;
-      gc.draw_fillrect(pos.x, pos.y + y_offset, pos.x + get_width(), pos.y + y_offset + 
-                       height, Color(128,128,128));
+      gc.draw_fillrect(Rect(pos.x, pos.y + y_offset, pos.x + get_width(), pos.y + y_offset + height),
+                       Color(128,128,128));
 		
       // Draw all of the items
       for (unsigned i = 0; i < item_list.size(); i++)
         {
-          gc.print_left(Fonts::pingus_small, pos.x + 5, pos.y + ((i + 1) * height), 
+          gc.print_left(Fonts::pingus_small, Vector2i(pos.x + 5, pos.y + ((i + 1) * height)), 
                         item_list[i]->get_displayed_string());
         }
     }
@@ -165,7 +165,7 @@ Combobox::draw(DrawingContext &gc)
   if (current_item)
     {
       // Print the currently selected item
-      gc.print_left(Fonts::pingus_small, pos.x + 3, pos.y, current_item->get_displayed_string());
+      gc.print_left(Fonts::pingus_small, Vector2i(pos.x + 3, pos.y), current_item->get_displayed_string());
     }
 }
 

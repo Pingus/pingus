@@ -102,12 +102,12 @@ FileList::draw(DrawingContext& gc)
           (i - directory.begin()) == click_item)
         {
           if (click_item == current_item)
-            gc.draw_fillrect(x, y, x + hspace, y + vspace, Color(0, 0, 255));
+            gc.draw_fillrect(Rect(x, y, x + hspace, y + vspace), Color(0, 0, 255));
           else
-            gc.draw_rect(x, y, x + hspace, y + vspace, Color(0, 0, 255));
+            gc.draw_rect(Rect(x, y, x + hspace, y + vspace), Color(0, 0, 255));
         }
       
-      gc.print_left(Fonts::verdana11, x + 4, y + 3,
+      gc.print_left(Fonts::verdana11, Vector2i(x + 4, y + 3),
                     ((i->type == System::DE_DIRECTORY) ? "[DIR]  " : "[FILE] ") + i->name);
 
       y += 20;

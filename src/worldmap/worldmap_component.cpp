@@ -49,7 +49,7 @@ WorldmapComponent::draw (DrawingContext& gc)
   //scene_context->color().draw_fillrect(-100, -100, 2000, 2000, Color(255,0,0,0), -10000);
   worldmap->draw(scene_context->color());
 
-  gc.draw(new SceneContextDrawingRequest(scene_context.get(), Vector3f(0,0,-1000)));
+  gc.draw(new SceneContextDrawingRequest(scene_context.get(), Vector2i(0,0), -1000));
 
   scene_context->pop_modelview();
 
@@ -58,16 +58,16 @@ WorldmapComponent::draw (DrawingContext& gc)
     {
       Color border_color(0, 0, 0);
       // top
-      gc.draw_fillrect(0, 0, Display::get_width(), cliprect.top,
+      gc.draw_fillrect(Rect(0, 0, Display::get_width(), cliprect.top),
                        border_color);
       // bottom
-      gc.draw_fillrect(0, cliprect.bottom, Display::get_width(), Display::get_height(),
+      gc.draw_fillrect(Rect(0, cliprect.bottom, Display::get_width(), Display::get_height()),
                        border_color);
       // left
-      gc.draw_fillrect(0, cliprect.top, cliprect.left, cliprect.bottom,
+      gc.draw_fillrect(Rect(0, cliprect.top, cliprect.left, cliprect.bottom),
                        border_color);
       // right
-      gc.draw_fillrect(cliprect.right, cliprect.top, Display::get_width(), cliprect.bottom,
+      gc.draw_fillrect(Rect(cliprect.right, cliprect.top, Display::get_width(), cliprect.bottom),
                        border_color);
     }
 }

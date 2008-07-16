@@ -37,21 +37,23 @@ void
 InputBox::draw(DrawingContext &gc)
 {
   // Draw the rectangle and border
-  gc.draw_fillrect(pos.x, pos.y, pos.x + width, pos.y + height, 
+  gc.draw_fillrect(Rect(pos.x, pos.y, pos.x + width, pos.y + height), 
                    Color(0,0,0));
-  gc.draw_rect(pos.x, pos.y, pos.x + width, pos.y + height, Color(255,255,255));	
+  gc.draw_rect(Rect(pos.x, pos.y, pos.x + width, pos.y + height), Color(255,255,255));	
 
   // If there is text, draw it:
   if (str != std::string())
-    gc.print_left(Fonts::pingus_small, pos.x + 10, pos.y, shrink_string(str));
+    gc.print_left(Fonts::pingus_small, Vector2i(pos.x + 10, pos.y), shrink_string(str));
 
   if (label != std::string())
-    gc.print_right(Fonts::pingus_small, pos.x, pos.y, label);
+    gc.print_right(Fonts::pingus_small, pos, label);
      
   if (has_focus())
-    gc.draw_line(pos.x + Fonts::pingus_small.get_size(shrink_string(str)).width + 12,
-                 pos.y, pos.x + Fonts::pingus_small.get_size(shrink_string(str)).width + 12, 
-                 pos.y + height,	Color(0,255,255));
+    gc.draw_line(Vector2i(pos.x + Fonts::pingus_small.get_size(shrink_string(str)).width + 12,
+                          pos.y), 
+                 Vector2i(pos.x + Fonts::pingus_small.get_size(shrink_string(str)).width + 12, 
+                          pos.y + height),
+                 Color(0,255,255));
 }
 
 bool

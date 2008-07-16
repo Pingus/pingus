@@ -172,16 +172,16 @@ GameSession::draw_background (DrawingContext& gc)
     { // Draw a black border around the playfield when the playfield is smaller then the screen
       Color border_color(0, 0, 0);
       // top
-      gc.draw_fillrect(0, 0, Display::get_width(), rect.top,
+      gc.draw_fillrect(Rect(0, 0, Display::get_width(), rect.top),
                        border_color);
       // bottom
-      gc.draw_fillrect(0, rect.bottom, Display::get_width(), Display::get_height(),
+      gc.draw_fillrect(Rect(0, rect.bottom, Display::get_width(), Display::get_height()),
                        border_color);
       // left
-      gc.draw_fillrect(0, rect.top, rect.left, rect.bottom,
+      gc.draw_fillrect(Rect(0, rect.top, rect.left, rect.bottom),
                        border_color);
       // right
-      gc.draw_fillrect(rect.right, rect.top, Display::get_width(), rect.bottom,
+      gc.draw_fillrect(Rect(rect.right, rect.top, Display::get_width(), rect.bottom),
                        border_color);
     }
 }

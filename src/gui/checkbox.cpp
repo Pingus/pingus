@@ -25,39 +25,39 @@
 namespace GUI {
 	
 Checkbox::Checkbox(Vector2i p, std::string label_, CheckboxListener* l) :
-	checkmark("core/misc/checkbox_clicked"),
-	is_checked(false),
-	pos(p),
-	width(20),
-	height(20),
-	listener(l),
-	label(label_)
+  checkmark("core/misc/checkbox_clicked"),
+  is_checked(false),
+  pos(p),
+  width(20),
+  height(20),
+  listener(l),
+  label(label_)
 {
 }
 	
 void 
 Checkbox::draw(DrawingContext& gc)
 {
-	gc.draw_rect(pos.x, pos.y, pos.x + width, pos.y + height, 
-                     Color(0,0,0));
-	if (is_checked)
-		gc.draw(checkmark, pos);
+  gc.draw_rect(Rect(pos.x, pos.y, pos.x + width, pos.y + height), 
+               Color(0,0,0));
+  if (is_checked)
+    gc.draw(checkmark, pos);
 	
-	gc.print_right(Fonts::pingus_small, pos.x, pos.y, label);
+  gc.print_right(Fonts::pingus_small, pos, label);
 }
 
 bool
 Checkbox::is_at(int x, int y)
 {
-	return (x > pos.x && x < pos.x + width &&
-		y > pos.y && y < pos.y + height);
+  return (x > pos.x && x < pos.x + width &&
+          y > pos.y && y < pos.y + height);
 }
 
 void 
 Checkbox::on_primary_button_click(int x, int y)
 {
-	is_checked = !is_checked;
-	listener->checkbox_changed(is_checked, this);
+  is_checked = !is_checked;
+  listener->checkbox_changed(is_checked, this);
 }
 
 }	// GUI namespace

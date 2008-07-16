@@ -96,7 +96,7 @@ public:
                  pos.x + 17 + t_w/2 + 4, pos.y + 38 + Fonts::verdana11.get_height() + 2);
         gc.draw_fillrect(t_r, Color(255, 255, 200), 1000.0f);
         gc.draw_rect(t_r, Color(0,0,0), 1000.0f);
-        gc.print_center(Fonts::verdana11, pos.x + 17, pos.y + 38, tooltip, 1000.0f);
+        gc.print_center(Fonts::verdana11, Vector2i(pos.x + 17, pos.y + 38), tooltip, 1000.0f);
       }
   }
 
@@ -217,9 +217,9 @@ void
 Panel::draw (DrawingContext& gc)
 {
   // FIXME: Could use draw_line
-  gc.draw_fillrect(0, 0, Display::get_width(), 38, Color(255, 255, 255));
-  gc.draw_fillrect(1, 1, Display::get_width(), 38, Color(169, 157, 140));
-  gc.draw_fillrect(1, 1, Display::get_width()-1, 37, Color(237, 233, 227));
+  gc.draw_fillrect(Rect(0, 0, Display::get_width(), 38),   Color(255, 255, 255));
+  gc.draw_fillrect(Rect(1, 1, Display::get_width(), 38),   Color(169, 157, 140));
+  gc.draw_fillrect(Rect(1, 1, Display::get_width()-1, 37), Color(237, 233, 227));
 }
 
 void

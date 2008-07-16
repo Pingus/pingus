@@ -40,7 +40,7 @@ private:
   typedef std::vector<DrawingRequest*> DrawingRequests;
   DrawingRequests drawingrequests;
 
-  std::vector<Vector3f> translate_stack;
+  std::vector<Vector2i> translate_stack;
 
   /** The rectangle that the DrawingContext uses on the screen */
   Rect rect;
@@ -76,37 +76,13 @@ public:
       queue */
   void fill_screen(const Color& color);
 
-  void draw_line (int x1, int y1, int x2, int y2, 
-		  const Color& color, float z = 0);
-  void draw_fillrect (int x1, int y1, int x2, int y2, 
-		      const Color& color, float z = 0);
-  void draw_rect (int x1, int y1, int x2, int y2, 
-		  const Color& color, float z = 0);
-
-  void draw_fillrect (const Rect& rect,
-		      const Color& color, float z = 0);
-  void draw_rect (const Rect& rect,
-		  const Color& color, float z = 0);
-
-  void draw_pixel (float x_pos, float y_pos, 
-		   const Color& color);
-  void draw_circle (float x_pos, float y_pos, float radius,
-                    const Color& color);
-
-  /** Draws an arc, starting from angle_start to angle_end in
-      counterclockwise direction. Angles are taken in radian */
-  void draw_arc (float x_pos, float y_pos, float radius, float angle_start, float angle_end,
-                 const Color& color);
+  void draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color, float z = 0);
+  void draw_fillrect(const Rect& rect, const Color& color, float z = 0);
+  void draw_rect(const Rect& rect, const Color& color, float z = 0);
   /*} */
 
   /** Translate the drawing context */
   void translate(float x, float y);
-
-  /** Set the rotation of the drawing context */
-  void rotate(float angel);
-
-  /** Set the scaling of the drawing context */
-  void scale(float x, float y);
 
   void push_modelview();
   void pop_modelview();
@@ -122,13 +98,13 @@ public:
   int get_height() const;
 
   /** Print a text left aligned */
-  void print_left (const Font& font, int x_pos, int y_pos, const std::string& str, float z = 0.0f);
+  void print_left(const Font& font, const Vector2i& pos, const std::string& str, float z = 0.0f);
 
   /** Print a text centred to the given position */
-  void print_center (const Font& font, int x_pos, int y_pos, const std::string& str, float z = 0.0f);
+  void print_center(const Font& font, const Vector2i& pos, const std::string& str, float z = 0.0f);
 
   /** Print a text right aligned */
-  void print_right (const Font& font, int x_pos, int y_pos, const std::string& str, float z = 0.0f);
+  void print_right(const Font& font, const Vector2i& pos, const std::string& str, float z = 0.0f);
 
   Vector3f screen_to_world (Vector3f pos);
   Vector3f world_to_screen (Vector3f pos);

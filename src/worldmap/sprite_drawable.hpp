@@ -32,6 +32,7 @@ private:
       covered by it, so that the Pingu can travel into caves and other
       things, while the roof will disapear */
   bool       auto_uncover;
+
 public:
   SpriteDrawable(FileReader reader);
 

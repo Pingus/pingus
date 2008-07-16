@@ -32,7 +32,7 @@ struct DrawOp
   {}
 
   virtual void render(Framebuffer& fb) =0;
-  virtual Rect get_region() const =0;
+  virtual void mark_changed_regions(std::vector<Rect>& update_rects) const =0;
 
   bool equal(DrawOp* op) const;
 };
@@ -56,8 +56,8 @@ struct SurfaceDrawOp : public DrawOp
     fb.draw_surface(surface, rect, pos);
   }
   
-  Rect get_region() const {
-    return Rect(pos, rect.get_size());
+  void mark_changed_regions(std::vector<Rect>& update_rects) const {
+    update_rects.push_back(Rect(pos, rect.get_size()));
   }
 
   bool operator==(const SurfaceDrawOp& rhs) const {
@@ -83,11 +83,38 @@ struct FillRectDrawOp : public DrawOp
     fb.fill_rect(rect, color);
   }
   
-  Rect get_region() const {
-    return rect;
+  void mark_changed_regions(std::vector<Rect>& update_rects) const {
+    update_rects.push_back(rect);
   }
 
   bool operator==(const FillRectDrawOp& rhs) const {
+    return 
+      rect  == rhs.rect &&
+      color == rhs.color;
+  }
+};
+
+
+struct DrawRectDrawOp : public DrawOp
+{
+  Rect  rect;
+  Color color;
+  
+  DrawRectDrawOp(const Rect& rect_, const Color& color_)
+    : DrawOp(FILLRECT_DRAWOP),
+      rect(rect_),
+      color(color_)
+  {}
+
+  void render(Framebuffer& fb) {
+    fb.draw_rect(rect, color);
+  }
+  
+  void mark_changed_regions(std::vector<Rect>& update_rects) const {
+    update_rects.push_back(rect);
+  }
+
+  bool operator==(const DrawRectDrawOp& rhs) const {
     return 
       rect  == rhs.rect &&
       color == rhs.color;
@@ -178,11 +205,11 @@ public:
     // FIXME: This is kind of a slow brute force approach
     for(DrawOps::const_iterator i = backbuffer.draw_ops.begin(); i != backbuffer.draw_ops.end(); ++i)
       if (!frontbuffer.has_op(*i))
-        changed_regions.push_back((*i)->get_region());
+        (*i)->mark_changed_regions(changed_regions);
 
     for(DrawOps::const_iterator i = frontbuffer.draw_ops.begin(); i != frontbuffer.draw_ops.end(); ++i)
       if (!backbuffer.has_op(*i))
-        changed_regions.push_back((*i)->get_region());
+        (*i)->mark_changed_regions(changed_regions);
   }
  
   void render(SDLFramebuffer& fb, DrawOpBuffer& frontbuffer) 
@@ -303,7 +330,7 @@ DeltaFramebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Co
 void
 DeltaFramebuffer::draw_rect(const Rect& rect, const Color& color)
 {
-  framebuffer->draw_rect(rect, color);
+  backbuffer->add(new DrawRectDrawOp(rect, color));
 }
 
 void

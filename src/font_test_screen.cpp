@@ -43,16 +43,16 @@ FontTestScreen::draw(DrawingContext& gc)
     for(int x = 0; x < gc.get_width()/checker; x += 1)
       {
         if ((x+y) % 2 != 0)
-          gc.draw_fillrect(x*checker, y*checker,
-                           x*checker + checker, y*checker + checker,
+          gc.draw_fillrect(Rect(x*checker, y*checker,
+                                x*checker + checker, y*checker + checker),
                            dark ? Color(50, 50, 50) : Color(255, 255, 255));
         else
-          gc.draw_fillrect(x*checker, y*checker,
-                           x*checker + checker, y*checker + checker,
+          gc.draw_fillrect(Rect(x*checker, y*checker,
+                                x*checker + checker, y*checker + checker),
                            dark ? Color(0, 0, 0) : Color(200,200,200));
       }
 
-  gc.print_left(Fonts::chalk_large, 10, 10, "Pingus - Font Test");
+  gc.print_left(Fonts::chalk_large, Vector2i(10, 10), "Pingus - Font Test");
 
   gc.push_modelview();
   gc.translate(scrollx, scrolly);
@@ -64,34 +64,33 @@ FontTestScreen::draw(DrawingContext& gc)
 
       // print the actual character
       gc.print_left(reference,
-		    x,
-		    y - reference.get_height(),
+		    Vector2i(x,
+                             y - reference.get_height()),
                     std::string(1, char(i)));
       // print the index number
       gc.print_left(reference,
-		    x, 
-		    y + font.get_height(),
+		    Vector2i(x, 
+                             y + font.get_height()),
 		    StringUtil::to_string(i));
       
       if (font.get_width(char(i)))
         {
-          gc.draw_rect(x, y, 
-                       x+font.get_height(), 
-                       y+font.get_height(), 
+          gc.draw_rect(Rect(x, y, 
+                            x+font.get_height(), 
+                            y+font.get_height()), 
                        Color(0,0,255));
-          gc.draw_rect(x, y, 
-                       x+font.get_width(char(i)), 
-                       y+font.get_height(), 
+          gc.draw_rect(Rect(x, y, 
+                            x+font.get_width(char(i)), 
+                            y+font.get_height()), 
                        Color(255,0,255));
-          gc.print_left(font,
-                        x, y,
+          gc.print_left(font, Vector2i(x, y),
                         std::string(1, char(i)));
         }
       else
         {
-          gc.draw_rect(x, y, 
-                       x+font.get_height(), 
-                       y+font.get_height(), 
+          gc.draw_rect(Rect(x, y, 
+                            x+font.get_height(), 
+                            y+font.get_height()), 
                        Color(255,0,0));
         }
     }

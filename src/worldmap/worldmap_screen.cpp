@@ -104,7 +104,7 @@ void
 WorldmapScreenCreditsButton::draw (DrawingContext& gc)
 {
   SurfaceButton::draw(gc);
-  gc.print_center(Fonts::chalk_small, Display::get_width() - 59 - 24, 2, _("Show Ending?"));
+  gc.print_center(Fonts::chalk_small, Vector2i(Display::get_width() - 59 - 24, 2), _("Show Ending?"));
 }
 
 void
@@ -133,7 +133,7 @@ void
 WorldmapScreenStoryButton::draw (DrawingContext& gc)
 {
   SurfaceButton::draw(gc);
-  gc.print_center(Fonts::chalk_small, 59, 2, _("Show Story?"));
+  gc.print_center(Fonts::chalk_small, Vector2i(59, 2), _("Show Story?"));
 }
 
 void
@@ -162,7 +162,7 @@ void
 WorldmapScreenCloseButton::draw (DrawingContext& gc)
 {
   SurfaceButton::draw(gc);
-  gc.print_center(Fonts::chalk_small, 44, Display::get_height() - 25, _("Leave?"));
+  gc.print_center(Fonts::chalk_small, Vector2i(44, Display::get_height() - 25), _("Leave?"));
 }
 
 void
@@ -198,8 +198,8 @@ WorldmapScreenEnterButton::draw (DrawingContext& gc)
     {
       SurfaceButton::draw(gc);
       gc.print_center(Fonts::chalk_small,
-                      Display::get_width() - 43 - 22,
-                      Display::get_height() - 25,
+                      Vector2i(Display::get_width() - 43 - 22,
+                               Display::get_height() - 25),
                       _("Enter?"));
     }
 }
@@ -286,7 +286,8 @@ WorldmapScreen::draw_foreground(DrawingContext& gc)
           Vector2i(gc.get_width()/2 - levelname_bg.get_width()/2,
                    gc.get_height() - levelname_bg.get_height()));
 
-  gc.print_center(Fonts::chalk_small, gc.get_width()/2, gc.get_height() - 25,
+  gc.print_center(Fonts::chalk_small, 
+                  Vector2i(gc.get_width()/2, gc.get_height() - 25),
                   worldmap->get_levelname());
 }
 

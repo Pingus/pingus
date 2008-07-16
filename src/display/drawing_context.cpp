@@ -38,12 +38,10 @@ private:
   Font font;
   Origin origin;
   std::string text;
-  float x;
-  float y;
 
 public:
-  FontDrawingRequest(Font font_, Origin origin_, const Vector3f& pos, const std::string& text_, float z)
-    : DrawingRequest(Vector3f(pos.x, pos.y, z)),
+  FontDrawingRequest(Font font_, Origin origin_, const Vector2i& pos, const std::string& text_, float z)
+    : DrawingRequest(pos, z),
       font(font_), 
       origin(origin_),
       text(text_)
@@ -63,8 +61,8 @@ private:
   Sprite sprite;
 
 public:
-  SpriteDrawingRequest(const Sprite& sprite_, const Vector3f& pos_)
-    : DrawingRequest(pos_),
+  SpriteDrawingRequest(const Sprite& sprite_, const Vector2i& pos_, float z_)
+    : DrawingRequest(pos_, z_),
       sprite(sprite_)
   {
   }
@@ -83,7 +81,8 @@ private:
 
 public:
   FillScreenDrawingRequest(const Color& color_) 
-    : DrawingRequest(Vector3f(0, 0, -1000.0f)), color(color_)
+    : DrawingRequest(Vector2i(0, 0), -1000.0f),
+      color(color_)
   {
   }
   virtual ~FillScreenDrawingRequest() {}
@@ -98,17 +97,17 @@ class LineDrawingRequest : public DrawingRequest
 private:
   Vector2i pos1;
   Vector2i pos2;
-  Color  color;
+  Color    color;
 
 public:
   LineDrawingRequest(const Vector2i& pos1_, 
                      const Vector2i& pos2_, 
                      const Color&  color_,
                      float z)
-    : DrawingRequest(Vector3f(0, 0, z)),
+    : DrawingRequest(Vector2i(0, 0), z),
       pos1(pos1_),
       pos2(pos2_),
-      color(color_)      
+      color(color_)
   {
   }
 
@@ -128,7 +127,7 @@ private:
   
 public:
   RectDrawingRequest(const Rect& rect_, const Color& color_, bool filled_, float z)
-    : DrawingRequest(Vector3f(0, 0, z)),
+    : DrawingRequest(Vector2i(0, 0), z),
       d_rect(rect_), color(color_), filled(filled_)
   {}
   
@@ -158,7 +157,7 @@ private:
   
 public:
   DrawingContextDrawingRequest(DrawingContext& dc_, float z)
-    : DrawingRequest(Vector3f(0,0,z)),
+    : DrawingRequest(Vector2i(0,0) ,z),
       dc(dc_)
   {}
   
@@ -175,14 +174,14 @@ DrawingContext::DrawingContext(const Rect& rect_, bool clip)
   : rect(rect_),
     do_clipping(clip)
 {
-  translate_stack.push_back(Vector3f(0, 0));
+  translate_stack.push_back(Vector2i(0, 0));
 }
 
 DrawingContext::DrawingContext()
   : rect(0, 0, Display::get_width(), Display::get_height()),
     do_clipping(false)
 {
-  translate_stack.push_back(Vector3f(0, 0));
+  translate_stack.push_back(Vector2i(0, 0));
 }
 
 DrawingContext::~DrawingContext()
@@ -259,21 +258,22 @@ void
 DrawingContext::draw(const Sprite&   sprite,  float x, float y, float z)
 { // FIXME: This should get flattend down to a simple texture draw
   // command for easier sorting after texture-id/alpha
-  draw(new SpriteDrawingRequest(sprite, Vector3f((int)translate_stack.back().x + x,
-                                                 (int)translate_stack.back().y + y,
-                                                  z)));
+  draw(new SpriteDrawingRequest(sprite, Vector2i((int)translate_stack.back().x + x,
+                                                 (int)translate_stack.back().y + y),
+                                z));
 }
 
 void
-DrawingContext::draw_line (int x1, int y1, int x2, int y2, 
-                           const Color& color, float z)
+DrawingContext::draw_line(const Vector2i& pos1, const Vector2i& pos2,
+                          const Color& color, float z)
 {
-  draw(new LineDrawingRequest(Vector2i(int(x1 + translate_stack.back().x), int(y1 + translate_stack.back().y)),
-    Vector2i(int(x2 + translate_stack.back().x), int(y2 + translate_stack.back().y)), color, z));
+  draw(new LineDrawingRequest(pos1 + translate_stack.back(),
+                              pos2 + translate_stack.back(),
+                              color, z));
 }
 
 void
-DrawingContext::draw_fillrect (const Rect& rect, const Color& color, float z)
+DrawingContext::draw_fillrect(const Rect& rect, const Color& color, float z)
 {
   draw(new RectDrawingRequest(Rect(int(rect.left + translate_stack.back().x), 
                                    int(rect.top + translate_stack.back().y), 
@@ -285,7 +285,7 @@ DrawingContext::draw_fillrect (const Rect& rect, const Color& color, float z)
 }
 
 void
-DrawingContext::draw_rect (const Rect& rect, const Color& color, float z)
+DrawingContext::draw_rect(const Rect& rect, const Color& color, float z)
 {
   draw(new RectDrawingRequest(Rect(int(rect.left + translate_stack.back().x),
                                    int(rect.top + translate_stack.back().y), 
@@ -297,63 +297,9 @@ DrawingContext::draw_rect (const Rect& rect, const Color& color, float z)
 }
 
 void
-DrawingContext::draw_fillrect (int x1, int y1, int x2, int y2, 
-                               const Color& color, float z)
-{
-  draw(new RectDrawingRequest(Rect(int(x1 + translate_stack.back().x), int(y1 + translate_stack.back().y), 
-                                   int(x2 + translate_stack.back().x), int(y2 + translate_stack.back().y)),
-                              color,
-                              true,
-                              z));
-}
-
-void
-DrawingContext::draw_rect (int x1, int y1, int x2, int y2, 
-                           const Color& color, float z)
-{
-  draw(new RectDrawingRequest(Rect(int(x1 + translate_stack.back().x), int(y1 + translate_stack.back().y), 
-                                   int(x2 + translate_stack.back().x), int(y2 + translate_stack.back().y)),
-                              color,
-                              false,
-                              z));
-}
-
-void
-DrawingContext::draw_pixel (float x_pos, float y_pos, 
-                            const Color& color)
-{
-}
-
-void
-DrawingContext::draw_circle (float x_pos, float y_pos, float radius,
-                             const Color& color)
-{
-}
-
-/** Draws an arc, starting from angle_start to angle_end in
-      counterclockwise direction. Angles are taken in radian */
-void
-DrawingContext::draw_arc (float x_pos, float y_pos, float radius, float angle_start, float angle_end,
-                          const Color& color)
-{
-}
-
-void
 DrawingContext::fill_screen(const Color& color)
 {
   draw(new FillScreenDrawingRequest(color));
-}
-
-void
-DrawingContext::rotate(float angel)
-{
-  // FIXME: not implemented
-}
-
-void
-DrawingContext::scale(float x, float y)
-{
-  // FIXME: not implemented
 }
 
 void
@@ -380,7 +326,7 @@ void
 DrawingContext::reset_modelview()
 {
   translate_stack.clear();
-  translate_stack.push_back(Vector3f(0, 0));
+  translate_stack.push_back(Vector2i(0, 0));
 }
 
 Rect
@@ -416,47 +362,44 @@ DrawingContext::get_height() const
 }
 
 void
-DrawingContext::print_left (const Font& font_, int x_pos, int y_pos, const std::string& str, float z)
+DrawingContext::print_left(const Font& font_, const Vector2i& pos, const std::string& str, float z)
 {
   draw(new FontDrawingRequest(font_, 
                               origin_top_left,
-                              Vector3f(x_pos + translate_stack.back().x,
-                                        y_pos + translate_stack.back().y),
+                              pos + translate_stack.back(),
                               str,
                               z));
 }
 
 void
-DrawingContext::print_center (const Font& font_, int x_pos, int y_pos, const std::string& str, float z)
+DrawingContext::print_center(const Font& font_, const Vector2i& pos, const std::string& str, float z)
 {
   draw(new FontDrawingRequest(font_, 
                               origin_top_center,
-                              Vector3f(x_pos + translate_stack.back().x,
-                                        y_pos + translate_stack.back().y),
+                              pos + translate_stack.back(),
                               str,
                               z));
 }
 
 void
-DrawingContext::print_right (const Font& font_, int x_pos, int y_pos, const std::string& str, float z)
+DrawingContext::print_right(const Font& font_, const Vector2i& pos, const std::string& str, float z)
 {
   draw(new FontDrawingRequest(font_, 
                               origin_top_right,
-                              Vector3f(x_pos + translate_stack.back().x,
-                                       y_pos + translate_stack.back().y),
+                              pos + translate_stack.back(),
                               str,
                               z));
 }
 
 Vector3f
-DrawingContext::screen_to_world (Vector3f pos)
+DrawingContext::screen_to_world(Vector3f pos)
 {
   return pos - Vector3f(translate_stack.back().x + rect.left,
                         translate_stack.back().y + rect.top);
 }
 
 Vector3f
-DrawingContext::world_to_screen (Vector3f pos)
+DrawingContext::world_to_screen(Vector3f pos)
 {
   return pos + Vector3f(translate_stack.back().x + rect.left, 
                         translate_stack.back().y + rect.top);

@@ -39,8 +39,8 @@ CheckBox::draw(DrawingContext& gc)
     gc.draw_rect(rect, Color(0, 255, 255));
 
   if (state)
-    gc.print_center(Fonts::chalk_normal, rect.left+rect.get_width()/2, rect.top, "X");
-  gc.print_center(Fonts::chalk_normal, rect.left+rect.get_width()/2, rect.top, "[ ]");
+    gc.print_center(Fonts::chalk_normal, Vector2i(rect.left+rect.get_width()/2, rect.top), "X");
+  gc.print_center(Fonts::chalk_normal, Vector2i(rect.left+rect.get_width()/2, rect.top), "[ ]");
 }
 
 void

@@ -58,7 +58,7 @@ TimeDisplay::draw (DrawingContext& gc)
           time_string = StringUtil::to_string(time_value);
         }
 
-      gc.print_right(font, Display::get_width() - 30, 3, time_string, 150);
+      gc.print_right(font, Vector2i(Display::get_width() - 30, 3), time_string, 150);
     }
 }
 

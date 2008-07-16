@@ -81,14 +81,14 @@ private:
   SceneContext (const SceneContext&);
   SceneContext& operator= (const SceneContext&);
 };
-
+
 class SceneContextDrawingRequest : public DrawingRequest
 {
 private:
   SceneContext* sc;
 
 public:
-  SceneContextDrawingRequest(SceneContext* sc, const Vector3f& pos_ = Vector3f(0,0,0));
+  SceneContextDrawingRequest(SceneContext* sc, const Vector2i& pos, float z);
   virtual ~SceneContextDrawingRequest();
   void render(Framebuffer& fb, const Rect& render);
 };

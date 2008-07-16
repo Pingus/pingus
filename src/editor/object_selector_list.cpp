@@ -66,18 +66,18 @@ ObjectSelectorList::draw(DrawingContext& parent_gc)
 
           gc.draw((*i)->thumbnail, Vector2i(x * 48, y * 48));
 
-          gc.draw_rect(x * 48,      y * 48, 
-                       x * 48 + 48, y * 48 + 48, 
+          gc.draw_rect(Rect(x * 48,      y * 48, 
+                            x * 48 + 48, y * 48 + 48), 
                        Color(155,155,155));
 
           if (has_mouse_over() && current_object != -1 && (i - set->get_objects().begin()) == current_object)
             {
-              gc.draw_fillrect(x * 48,      y * 48, 
-                               x * 48 + 48, y * 48 + 48, 
+              gc.draw_fillrect(Rect(x * 48,      y * 48, 
+                                    x * 48 + 48, y * 48 + 48), 
                                Color(255,255,255, 100));
 
-              gc.draw_rect(x * 48,      y * 48, 
-                           x * 48 + 48, y * 48 + 48, 
+              gc.draw_rect(Rect(x * 48,      y * 48, 
+                                x * 48 + 48, y * 48 + 48), 
                            Color(255,255,255));
             }
         }

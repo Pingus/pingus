@@ -138,32 +138,32 @@ PingusMenu::draw_background(DrawingContext& gc)
 {
   background->draw(gc);
 
-  gc.draw_fillrect(0,
-                   Display::get_height () - 26,
-                   Display::get_width (),
-                   Display::get_height (),
+  gc.draw_fillrect(Rect(0,
+                        Display::get_height () - 26,
+                        Display::get_width (),
+                        Display::get_height ()),
                    Color(0, 0, 0, 255));
 
   gc.draw(logo, Vector2i((gc.get_width()/2) - (logo.get_width()/2),
                          gc.get_height()/2 - 250));
 
-  gc.print_left(Fonts::pingus_small, 25, 
-                gc.get_height()-130,
+  gc.print_left(Fonts::pingus_small, Vector2i(25, gc.get_height()-130),
                 "Pingus "VERSION", Copyright (C) 1998-2007 Ingo Ruhnke <grumbel@gmx.de>\n"
                 "See the file AUTHORS for a complete list of contributors.\n");
-  gc.print_left(Fonts::pingus_small, 25, 
-                gc.get_height()-80,
+  gc.print_left(Fonts::pingus_small, Vector2i(25, gc.get_height()-80),
                 "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are\n"
                 "welcome to redistribute it under certain conditions; see the file COPYING for details.\n");
 
-  gc.print_center(Fonts::pingus_small, gc.get_width() / 2,
-                  gc.get_height() - Fonts::pingus_small.get_height(),
+  gc.print_center(Fonts::pingus_small, 
+                  Vector2i(gc.get_width() / 2,
+                           gc.get_height() - Fonts::pingus_small.get_height()),
                   help);
 
   if (0) // display hint
     {
-      gc.print_center(Fonts::pingus_small, gc.get_width() / 2,
-                      gc.get_height() - Fonts::pingus_small.get_height(),
+      gc.print_center(Fonts::pingus_small, 
+                      Vector2i(gc.get_width() / 2,
+                               gc.get_height() - Fonts::pingus_small.get_height()),
                       hint);
     }
 }

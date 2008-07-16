@@ -64,32 +64,27 @@ Playfield::draw(DrawingContext& gc)
 
   state.pop(*scene_context);
 
-  gc.draw(new SceneContextDrawingRequest(scene_context.get(), Vector3f(0,0,-10000)));
+  gc.draw(new SceneContextDrawingRequest(scene_context.get(), Vector2i(0,0), -10000));
 
   gc.push_modelview();
   gc.translate(rect.left, rect.top);
   // Draw the scrolling band
   if (mouse_scrolling && !drag_drop_scrolling)
     {
-      gc.draw_line(mouse_pos.x, mouse_pos.y,
-                   scroll_center.x, scroll_center.y-15,
+      gc.draw_line(mouse_pos, scroll_center - Vector2i(0, 15),
                    Color(0, 255, 0));
 
-      gc.draw_line(mouse_pos.x, mouse_pos.y,
-                   scroll_center.x, scroll_center.y,
-                   Color(255, 0, 0));
-
-      gc.draw_line(mouse_pos.x, mouse_pos.y,
-                   scroll_center.x, scroll_center.y+15,
+      gc.draw_line(mouse_pos, scroll_center + Vector2i(0, 15),
                    Color(0, 0, 255));
 
-      gc.draw_line(mouse_pos.x, mouse_pos.y,
-                   scroll_center.x + 15, scroll_center.y,
+      gc.draw_line(mouse_pos, scroll_center + Vector2i(15, 0),
                    Color(0, 255, 255));
 
-      gc.draw_line(mouse_pos.x, mouse_pos.y,
-                   scroll_center.x - 15, scroll_center.y,
+      gc.draw_line(mouse_pos, scroll_center - Vector2i(15, 0),
                    Color(255, 255, 0));
+
+      gc.draw_line(mouse_pos, scroll_center, 
+                   Color(255, 0, 0));
     }
   gc.pop_modelview();
 }

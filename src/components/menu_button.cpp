@@ -78,12 +78,12 @@ MenuButton::draw (DrawingContext& gc)
     {
       gc.draw(surface_p,Vector2i(x_pos, y_pos));
       gc.draw(highlight, Vector2i(x_pos, y_pos));
-      gc.print_center(font_large, x_pos, y_pos - 28, text);
+      gc.print_center(font_large, Vector2i(x_pos, y_pos - 28), text);
     }
   else
     {
       gc.draw(surface_p, Vector2i(x_pos, y_pos));
-      gc.print_center(font_large, x_pos, y_pos - 28, text);
+      gc.print_center(font_large, Vector2i(x_pos, y_pos - 28), text);
     }
   UNUSED_ARG(gc);
 }

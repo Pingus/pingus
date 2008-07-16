@@ -266,13 +266,13 @@ Credits::draw_background (DrawingContext& gc)
     for(int x = 0; x < gc.get_width(); x += background.get_width())
       gc.draw(background, x, y);
 
-  gc.draw(blackboard, gc.get_width()/2, gc.get_height()/2);
+  gc.draw(blackboard, Vector2i(gc.get_width()/2, gc.get_height()/2));
 
   gc.draw(pingu, Vector2i(gc.get_width()/2, gc.get_height()/2 - 20));
   
   gc.print_right(Fonts::chalk_normal,
-                Display::get_width()/2 + 275,
-                Display::get_height()/2 + 110,
+                 Vector2i(Display::get_width()/2 + 275,
+                          Display::get_height()/2 + 110),
                 _("Exit"));
   
   yof = 0;
@@ -287,11 +287,11 @@ Credits::draw_background (DrawingContext& gc)
       switch ((*i)[0])
 	{
 	case '-':
-	  scene_context->color().print_center(font, x, (y + yof), i->substr(1));
+	  scene_context->color().print_center(font, Vector2i(x, (y + yof)), i->substr(1));
 	  yof += font.get_height() + 5;
 	  break;
 	case '_':
-	  scene_context->color().print_center(font_small, x, (y + yof), i->substr(1));
+	  scene_context->color().print_center(font_small, Vector2i(x, (y + yof)), i->substr(1));
 	  yof += font_small.get_height() + 5;
 	  break;
 	case 'n':
@@ -302,7 +302,7 @@ Credits::draw_background (DrawingContext& gc)
 	  break;
 	}
     }
-  gc.draw(new SceneContextDrawingRequest(scene_context, Vector3f(0,0,100)));
+  gc.draw(new SceneContextDrawingRequest(scene_context, Vector2i(0,0), 100));
 }
 
 void

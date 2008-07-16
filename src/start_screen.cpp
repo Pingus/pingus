@@ -69,7 +69,7 @@ public:
 
   void draw(DrawingContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_center(Fonts::chalk_normal, x_pos + 30, y_pos - 20, _("Ok"));
+    gc.print_center(Fonts::chalk_normal, Vector2i(x_pos + 30, y_pos - 20), _("Ok"));
   }
 
   bool is_at(int x, int y) {
@@ -110,7 +110,7 @@ public:
 
   void draw(DrawingContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_center(Fonts::chalk_normal, x_pos + 55, y_pos, _("Abort"));
+    gc.print_center(Fonts::chalk_normal, Vector2i(x_pos + 55, y_pos), _("Abort"));
   }
 
   void on_click() {
@@ -147,37 +147,37 @@ StartScreenComponent::draw(DrawingContext& gc)
   int y = gc.get_height()/2 + 40;
 
   gc.print_center(Fonts::chalk_large,
-                  gc.get_width() /2,
-                  gc.get_height()/2 - 230,
+                  Vector2i(gc.get_width() /2,
+                           gc.get_height()/2 - 230),
                   _(plf.get_levelname()));
 
   gc.print_left(Fonts::chalk_normal,
-                gc.get_width() /2 - 290,
-                gc.get_height()/2 - 170,
+                Vector2i(gc.get_width() /2 - 290,
+                         gc.get_height()/2 - 170),
                 format_description(800 - 200));
 
   y += 32;
   y += 30;
 
-  gc.print_left (Fonts::chalk_normal, left_x,  y, _("Number of Pingus: "));
-  gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(plf.get_number_of_pingus()));
-
-  gc.print_left (Fonts::chalk_normal, left_x,  (y += 30), _("Number to Save: "));
-  gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(plf.get_number_to_save()));
-
-  gc.print_left (Fonts::chalk_normal, left_x,  (y += 30), _("Time: "));
-  gc.print_right(Fonts::chalk_normal, right_x, y, time_str);
+  gc.print_left (Fonts::chalk_normal, Vector2i(left_x,  y), _("Number of Pingus: "));
+  gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), StringUtil::to_string(plf.get_number_of_pingus()));
+  
+  gc.print_left (Fonts::chalk_normal, Vector2i(left_x,  (y += 30)), _("Number to Save: "));
+  gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), StringUtil::to_string(plf.get_number_to_save()));
+  
+  gc.print_left (Fonts::chalk_normal, Vector2i(left_x,  (y += 30)), _("Time: "));
+  gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), time_str);
 
   //gc.print_left (Fonts::chalk_normal, left_x,  (y += 30), _("Difficulty:"));
   //gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(plf.get_difficulty()) + "/100");
 
   gc.print_center(Fonts::chalk_small, 
-                  gc.get_width()/2,
-                  gc.get_height()/2 + 215,
+                  Vector2i(gc.get_width()/2,
+                           gc.get_height()/2 + 215),
                   _("Author: ") + plf.get_author());
 
   if (maintainer_mode)
-    gc.print_left(Fonts::chalk_small, 110, 430, _("Filename: ") + plf.get_resname());
+    gc.print_left(Fonts::chalk_small, Vector2i(110, 430), _("Filename: ") + plf.get_resname());
 }
 
 const std::string&

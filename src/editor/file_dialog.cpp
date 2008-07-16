@@ -95,8 +95,8 @@ FileDialog::draw_background(DrawingContext& gc)
 {
   // Window border and title 
   GUIStyle::draw_raised_box(gc, Rect(0,0,rect.get_width(), rect.get_height()));
-  gc.draw_fillrect(4,4,rect.get_width()-4, 30, Color(77,130,180));
-  gc.print_center(Fonts::pingus_small, rect.get_width()/2, 2, 
+  gc.draw_fillrect(Rect(4,4,rect.get_width()-4, 30), Color(77,130,180));
+  gc.print_center(Fonts::pingus_small, Vector2i(rect.get_width()/2, 2), 
                   mode == LOAD ? _("Open a level") : _("Save your level"));
 }
   

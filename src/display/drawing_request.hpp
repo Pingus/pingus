@@ -18,7 +18,7 @@
 #define HEADER_DRAWING_REQUEST_HPP
 
 #include "SDL.h"
-#include "math/vector3f.hpp"
+#include "math/vector2i.hpp"
 #include "math/rect.hpp"
 
 class Framebuffer;
@@ -26,13 +26,11 @@ class Framebuffer;
 class DrawingRequest
 {
 protected:
-  Vector3f pos;
-  bool     valid;
-
-  std::vector<Rect> dirty_rects;
+  Vector2i pos;
+  float    z;
 
 public:
-  DrawingRequest(const Vector3f& pos_) : pos(pos_), valid(true) {}
+  DrawingRequest(const Vector2i& pos_, float z_) : pos(pos_), z(z_) {}
   virtual ~DrawingRequest() {};
   
   /** \a rect is the rectangle that is managed by the parent
@@ -40,17 +38,13 @@ public:
       (rect.left,rect.top)  */
   virtual void render(Framebuffer& fb, const Rect& rect) = 0;
 
-  virtual void mark(const Rect& r) { dirty_rects.push_back(r); }
-  
   /** Returns true if the request contains an alpha channel and needs
       to be drawn in order */
   virtual bool has_alpha() { return true; }
 
   /** Returns the position at which the request should be drawn */
-  virtual float get_z_pos() { return pos.z; }
+  virtual float get_z_pos() { return z; }
 
-  virtual void set_valid(bool v) { valid = v; }
-  virtual bool is_valid() const { return valid; }
 private:
   DrawingRequest (const DrawingRequest&);
   DrawingRequest& operator= (const DrawingRequest&);

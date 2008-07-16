@@ -102,7 +102,7 @@ public:
 
   void draw (DrawingContext& gc)
   {
-    gc.print_right(Fonts::chalk_small, x_pos, y_pos, _("skip"));
+    gc.print_right(Fonts::chalk_small, Vector2i(x_pos, y_pos), _("skip"));
   }
 
   bool is_at(int x, int y) {
@@ -163,13 +163,14 @@ StoryScreenComponent::draw (DrawingContext& gc)
 
   gc.draw(blackboard, gc.get_width()/2, gc.get_height()/2);
 
-  gc.print_center(Fonts::chalk_large, gc.get_width()/2,
-                  gc.get_height()/2 - 200, story->get_title());
+  gc.print_center(Fonts::chalk_large, 
+                  Vector2i(gc.get_width()/2, gc.get_height()/2 - 200), 
+                  story->get_title());
   gc.draw(page_surface, Vector2i(gc.get_width()/2, gc.get_height()/2 - 65));
 
   gc.print_left(Fonts::chalk_normal,
-                gc.get_width()/2  - 280,
-                gc.get_height()/2 + 35,
+                Vector2i(gc.get_width()/2  - 280,
+                         gc.get_height()/2 + 35),
                 display_text);
 }
 

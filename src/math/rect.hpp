@@ -145,6 +145,11 @@ public:
     return (r.left < right && r.right > left && r.top < bottom && r.bottom > top);
   }
 
+  bool is_normal() const 
+  {
+    return left <= right && top <= bottom;
+  }
+
   //! Operations:
 public:
   //: Sets the size of the rectangle, maintaining top/left position.
@@ -326,18 +331,10 @@ public:
   void normalize()
   {
     if (left > right)
-      {
-        float temp = right;
-        right = left;
-        left = temp;
-      }
-
+      std::swap(left, right);
+    
     if (top > bottom)
-      {
-        float temp = bottom;
-        bottom = top;
-        top = temp;
-      }
+      std::swap(top, bottom);
   }
 
   // Moves each edge f away from the center, thus width = old_width + 2*f

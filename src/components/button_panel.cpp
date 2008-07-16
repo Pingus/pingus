@@ -74,7 +74,7 @@ ButtonPanel::draw(DrawingContext& gc)
       gc.draw(buttons[i].sprite, rect.left + 20, rect.top + 38*i + 16);
 
       std::string str = StringUtil::to_string(aholder->get_available(buttons[i].name));
-      gc.print_center(Fonts::pingus_small, rect.left + 46, rect.top + 5 + 38*i, str);
+      gc.print_center(Fonts::pingus_small, Vector2i(rect.left + 46, rect.top + 5 + 38*i), str);
     }
 }
 

@@ -86,24 +86,6 @@ SceneContext::translate(float x, float y)
   impl->highlight.translate(x, y);
 }
 
-/** Set the rotation of the drawing context */
-void
-SceneContext::rotate(float angel)
-{
-  impl->color.rotate(angel);
-  impl->light.rotate(angel);
-  impl->highlight.rotate(angel);
-}
-
-/** Set the scaling of the drawing context */
-void
-SceneContext::scale(float x, float y)
-{
-  impl->color.scale(x, y);
-  impl->light.scale(x, y);
-  impl->highlight.scale(x, y);
-}
-
 void
 SceneContext::push_modelview()
 {
@@ -190,9 +172,9 @@ SceneContext::clear()
   impl->highlight.clear();
 }
 
-SceneContextDrawingRequest::SceneContextDrawingRequest(SceneContext* sc_, const Vector3f& pos_) 
-  : DrawingRequest(pos_),
-    sc(sc_)
+SceneContextDrawingRequest::SceneContextDrawingRequest(SceneContext* sc, const Vector2i& pos, float z)
+  : DrawingRequest(pos, z),
+    sc(sc)
 {
 }
 

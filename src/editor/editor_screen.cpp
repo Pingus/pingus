@@ -161,25 +161,25 @@ EditorScreen::draw(DrawingContext& gc)
   if (show_help)
     {
       Size size(600, 400);
-      gc.draw_fillrect(int(gc.get_width()/2)  - size.width/2 - 2,
-                       int(gc.get_height()/2) - size.height/2 - 2,
-                       int(gc.get_width()/2)  + size.width/2 + 2,
-                       int(gc.get_height()/2) + size.height/2 + 2,
+      gc.draw_fillrect(Rect(gc.get_width()/2  - size.width/2 - 2,
+                            gc.get_height()/2 - size.height/2 - 2,
+                            gc.get_width()/2  + size.width/2 + 2,
+                            gc.get_height()/2 + size.height/2 + 2),
                        Color(0,0,0));
-      gc.draw_fillrect(int(gc.get_width()/2)  - size.width/2, 
-                       int(gc.get_height()/2) - size.height/2,
-                       int(gc.get_width()/2)  + size.width/2, 
-                       int(gc.get_height()/2) + size.height/2,
+      gc.draw_fillrect(Rect(gc.get_width()/2  - size.width/2, 
+                            gc.get_height()/2 - size.height/2,
+                            gc.get_width()/2  + size.width/2, 
+                            gc.get_height()/2 + size.height/2),
                        Color(255,255,255));
       
       gc.print_center(Fonts::verdana11,
-                      int(gc.get_width()/2),
-                      int(gc.get_height()/2) - size.height/2 + 12,
+                      Vector2i(gc.get_width()/2,
+                               gc.get_height()/2 - size.height/2 + 12),
                       "Editor Help");
 
-      int x = int(gc.get_width()/2 - size.width/2 + 12);
-      int y = int(gc.get_height()/2) - size.height/2 + 36;
-      gc.print_center(Fonts::verdana11, x + 50, y,
+      int x = gc.get_width()/2 - size.width/2 + 12;
+      int y = gc.get_height()/2 - size.height/2 + 36;
+      gc.print_center(Fonts::verdana11, Vector2i(x + 50, y),
                       "A\n"
                       "Shift+A\n"
                       "], w\n"
@@ -190,7 +190,7 @@ EditorScreen::draw(DrawingContext& gc)
                       "Shift+R\n"
                       );
 
-      gc.print_left(Fonts::verdana11, x+100, y,
+      gc.print_left(Fonts::verdana11, Vector2i(x+100, y),
                     _("Select all\n"
                       "Clear Selection\n"
                       "Raise objects\n"
@@ -202,7 +202,7 @@ EditorScreen::draw(DrawingContext& gc)
 
       x = int(gc.get_width()/2 + 12);
       y = int(gc.get_height()/2) - size.height/2 + 36;
-      gc.print_center(Fonts::verdana11, x + 50, y,
+      gc.print_center(Fonts::verdana11, Vector2i(x + 50, y),
                       "F\n"
                       "Shift+F\n"
                       "Delete\n"
@@ -212,7 +212,7 @@ EditorScreen::draw(DrawingContext& gc)
                       "l\n"
                       );
 
-      gc.print_left(Fonts::verdana11, x + 100, y,
+      gc.print_left(Fonts::verdana11, Vector2i(x + 100, y),
                     _("Flip object horizontaly\n"
                       "Flip object vertically\n"
                       "Delete all marked objects\n"
@@ -223,8 +223,8 @@ EditorScreen::draw(DrawingContext& gc)
                     );
 
       gc.print_left(Fonts::verdana11,
-                    int(gc.get_width()/2 - size.width/2 + 12),
-                    int(gc.get_height()/2) - 10,
+                    Vector2i(gc.get_width()/2 - size.width/2 + 12,
+                             gc.get_height()/2 - 10),
                     _("You should name your level files systematically, i.e. by their theme, "
                       "their number and your nickname:\n\n"
                       "     <levelname><number>-<creator>.pingus\n\n"

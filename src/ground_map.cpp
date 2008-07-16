@@ -135,10 +135,10 @@ GroundMap::draw(SceneContext& gc)
         else
           {
             if (0 /*pingus_debug_flags & PINGUS_DEBUG_TILES*/)
-              gc.color().draw_fillrect(x * tile_size,
-                                       y * tile_size,
-                                       x * tile_size + tile_size,
-                                       y * tile_size + tile_size,
+              gc.color().draw_fillrect(Rect(x * tile_size,
+                                            y * tile_size,
+                                            x * tile_size + tile_size,
+                                            y * tile_size + tile_size),
                                        Color(255, 0, 0, 75));
           }
       }

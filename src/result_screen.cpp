@@ -88,7 +88,7 @@ public:
 
   void draw(DrawingContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_center(Fonts::chalk_normal, x_pos + 55, y_pos - 4, _("Abort"));
+    gc.print_center(Fonts::chalk_normal, Vector2i(x_pos + 55, y_pos - 4), _("Abort"));
   }
 
   void on_click() {
@@ -119,7 +119,7 @@ public:
 
   void draw (DrawingContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_center(Fonts::chalk_normal, x_pos + 30, y_pos - 24, _("Retry"));
+    gc.print_center(Fonts::chalk_normal, Vector2i(x_pos + 30, y_pos - 24), _("Retry"));
   }
 
   bool is_at(int x, int y) {
@@ -161,20 +161,24 @@ ResultScreenComponent::draw(DrawingContext& gc)
 
   gc.draw(blackboard, gc.get_width()/2, gc.get_height()/2);
 
-  gc.print_center(Fonts::chalk_large, gc.get_width()/2, 
-                  Display::get_height()/2 - 200,
+  gc.print_center(Fonts::chalk_large, 
+                  Vector2i(gc.get_width()/2, 
+                           Display::get_height()/2 - 200),
                   _(result.plf.get_levelname()));
 
   if (result.success())
     {
-      gc.print_center(Fonts::chalk_large, gc.get_width()/2,
-                      Display::get_height()/2 - 140, _("Success!"));
+      gc.print_center(Fonts::chalk_large, 
+                      Vector2i(gc.get_width()/2,
+                               Display::get_height()/2 - 140),
+                      _("Success!"));
       /*gc.print_center(Fonts::pingus_small, gc.get_width()/2, gc.get_height()-30,
         "..:: Press Space to continue ::..");*/
     }
   else
     {
-      gc.print_center(Fonts::chalk_large, gc.get_width()/2, Display::get_height()/2 - 140,
+      gc.print_center(Fonts::chalk_large, 
+                      Vector2i(gc.get_width()/2, Display::get_height()/2 - 140),
                       _("Failure!"));
       /*gc.print_center(Fonts::pingus_normal, gc.get_width()/2, gc.get_height()-30,
         "..:: Press Space to retry the level ::..");*/
@@ -211,23 +215,22 @@ ResultScreenComponent::draw(DrawingContext& gc)
       else
         message = _("Better luck next time!");
     }
-  gc.print_center(Fonts::chalk_normal, gc.get_width()/2,
-                  Display::get_height()/2 - 70, message);
+  gc.print_center(Fonts::chalk_normal, Vector2i(gc.get_width()/2, gc.get_height()/2 - 70), message);
 
-  int left_x  = Display::get_width()/2 - 100;
-  int right_x = Display::get_width()/2 + 100;
+  int left_x  = gc.get_width()/2 - 100;
+  int right_x = gc.get_width()/2 + 100;
   int y = Display::get_height()/2 + 10;
 
-  gc.print_left(Fonts::chalk_normal,  left_x,  y, _("Saved: "));
-  gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(result.saved)
+  gc.print_left(Fonts::chalk_normal,  Vector2i(left_x,  y), _("Saved: "));
+  gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), StringUtil::to_string(result.saved)
                  + "/" + StringUtil::to_string(result.needed));;
 
-  gc.print_left(Fonts::chalk_normal,  left_x,  (y+=30), _("Died: "));
-  gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(result.killed));
+  gc.print_left(Fonts::chalk_normal,  Vector2i(left_x,  (y+=30)), _("Died: "));
+  gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), StringUtil::to_string(result.killed));
 
 
-  gc.print_left(Fonts::chalk_normal,  left_x, (y+=30), _("Time left: "));
-  gc.print_right(Fonts::chalk_normal, right_x, y, time_str);
+  gc.print_left(Fonts::chalk_normal,  Vector2i(left_x, (y+=30)), _("Time left: "));
+  gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), time_str);
 }
 
 ResultScreen::ResultScreen(Result arg_result)
