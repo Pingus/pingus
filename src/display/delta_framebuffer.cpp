@@ -14,23 +14,84 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include <assert.h>
 #include <iostream>
+#include <boost/smart_ptr.hpp>
 #include "../math.hpp"
 #include "rect_merger.hpp"
 #include "sdl_framebuffer.hpp"
 #include "delta_framebuffer.hpp"
 
-struct SurfaceDrawOp {
+enum DrawOpType { SURFACE_DRAWOP, FILLRECT_DRAWOP };
+
+struct DrawOp
+{
+  DrawOpType type;
+  
+  DrawOp(DrawOpType type_)
+    : type(type_)
+  {}
+
+  virtual void render(Framebuffer& fb) =0;
+  virtual Rect get_region() const =0;
+
+  bool equal(DrawOp* op) const;
+};
+
+struct SurfaceDrawOp : public DrawOp
+{
   Vector2i           pos;
   FramebufferSurface surface;
   Rect               rect;
   
+  SurfaceDrawOp(const Vector2i& pos_,
+                const FramebufferSurface& surface_,
+                const Rect& rect_)
+    : DrawOp(SURFACE_DRAWOP),
+      pos(pos_),
+      surface(surface_),
+      rect(rect_)
+  {}
+
   void render(Framebuffer& fb) {
     fb.draw_surface(surface, rect, pos);
   }
   
   Rect get_region() const {
     return Rect(pos, rect.get_size());
+  }
+
+  bool operator==(const SurfaceDrawOp& rhs) const {
+    return 
+      pos     == rhs.pos &&
+      surface == rhs.surface &&
+      rect    == rhs.rect;
+  }
+};
+
+struct FillRectDrawOp : public DrawOp
+{
+  Rect  rect;
+  Color color;
+  
+  FillRectDrawOp(const Rect& rect_, const Color& color_)
+    : DrawOp(FILLRECT_DRAWOP),
+      rect(rect_),
+      color(color_)
+  {}
+
+  void render(Framebuffer& fb) {
+    fb.fill_rect(rect, color);
+  }
+  
+  Rect get_region() const {
+    return rect;
+  }
+
+  bool operator==(const FillRectDrawOp& rhs) const {
+    return 
+      rect  == rhs.rect &&
+      color == rhs.color;
   }
 };
 
@@ -44,11 +105,42 @@ int calculate_area(const std::vector<Rect>& rects)
   return area;
 }
 
+bool
+DrawOp::equal(DrawOp* op) const
+{
+  if (type == op->type) 
+    {
+      switch(type)
+        {
+          case SURFACE_DRAWOP:              
+            {
+              const SurfaceDrawOp* lhs = dynamic_cast<const SurfaceDrawOp*>(this);
+              const SurfaceDrawOp* rhs = dynamic_cast<const SurfaceDrawOp*>(op);
+              return *lhs == *rhs;
+            }
+              
+          case FILLRECT_DRAWOP:
+            {
+              const FillRectDrawOp* lhs = dynamic_cast<const FillRectDrawOp*>(this);
+              const FillRectDrawOp* rhs = dynamic_cast<const FillRectDrawOp*>(op);
+              return *lhs == *rhs;
+            }
+
+          default:
+            assert(!"Never reached");
+        }
+    }
+  else
+    {
+      return false;
+    }
+}
+
 class DrawOpBuffer
 {
 private:
-  typedef std::vector<SurfaceDrawOp> DrawOps;
-  DrawOps draw_obs;
+  typedef std::vector<boost::shared_ptr<DrawOp> > DrawOps;
+  DrawOps draw_ops;
 
 public:
   DrawOpBuffer()
@@ -56,34 +148,34 @@ public:
   }
   
   void clear() {
-    draw_obs.clear();
+    draw_ops.clear();
   }
 
-  bool has_op(const SurfaceDrawOp& op) const
+  bool has_op(DrawOp* op) const
   {
     // FIXME: This is a slow brute-force approach, a hashmap or
     // something like that could speed things up quite a bit
-    for(DrawOps::const_iterator i = draw_obs.begin(); i != draw_obs.end(); ++i)
-      if (op.surface == i->surface &&
-          op.pos     == i->pos &&
-          op.rect    == i->rect)
-        return true;
+    for(DrawOps::const_iterator i = draw_ops.begin(); i != draw_ops.end(); ++i)
+      {
+        if ((*i)->equal(op))
+          return true;
+      }
     return false;
   }
 
   /** Calculate the regions that are different between \a frontbuffer
       and \a backbuffer, results are written to \a changed_regions  */
   void buffer_difference(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer, 
-                        std::vector<Rect>& changed_regions)
+                         std::vector<Rect>& changed_regions)
   {
     // FIXME: This is kind of a slow brute force approach
-    for(DrawOps::const_iterator i = backbuffer.draw_obs.begin(); i != backbuffer.draw_obs.end(); ++i)
-      if (!frontbuffer.has_op(*i))
-        changed_regions.push_back(i->get_region());
+    for(DrawOps::const_iterator i = backbuffer.draw_ops.begin(); i != backbuffer.draw_ops.end(); ++i)
+      if (!frontbuffer.has_op(i->get()))
+        changed_regions.push_back((*i)->get_region());
 
-    for(DrawOps::const_iterator i = frontbuffer.draw_obs.begin(); i != frontbuffer.draw_obs.end(); ++i)
-      if (!backbuffer.has_op(*i))
-        changed_regions.push_back(i->get_region());
+    for(DrawOps::const_iterator i = frontbuffer.draw_ops.begin(); i != frontbuffer.draw_ops.end(); ++i)
+      if (!backbuffer.has_op(i->get()))
+        changed_regions.push_back((*i)->get_region());
   }
  
   void render(SDLFramebuffer& fb, DrawOpBuffer& frontbuffer) 
@@ -122,8 +214,8 @@ public:
                 // approach and slows things down when you have many
                 // tiny rectangles (i.e. particle effects)
                 fb.push_cliprect(*i);
-                for(DrawOps::iterator j = draw_obs.begin(); j != draw_obs.end(); ++j)
-                  j->render(fb);
+                for(DrawOps::iterator j = draw_ops.begin(); j != draw_ops.end(); ++j)
+                  (*j)->render(fb);
                 fb.pop_cliprect();
               }
     
@@ -131,15 +223,16 @@ public:
           }
         else
           { // Update the whole screen at once, since we have to many rects
-            for(DrawOps::iterator j = draw_obs.begin(); j != draw_obs.end(); ++j)
-              j->render(fb);
+            for(DrawOps::iterator j = draw_ops.begin(); j != draw_ops.end(); ++j)
+              (*j)->render(fb);
             fb.flip();
           }
       }
   }
  
-  void add(const SurfaceDrawOp& op) {
-    draw_obs.push_back(op);
+  void add(DrawOp* op) {
+    boost::shared_ptr<DrawOp> ptr(op);
+    draw_ops.push_back(ptr);
   }
 };
 
@@ -186,21 +279,13 @@ DeltaFramebuffer::pop_cliprect()
 void
 DeltaFramebuffer::draw_surface(const FramebufferSurface& src, const Vector2i& pos)
 {
-  SurfaceDrawOp op;
-  op.pos     = pos;
-  op.surface = src;
-  op.rect    = Rect(Vector2i(0, 0), src.get_size());
-  backbuffer->add(op);
+  backbuffer->add(new SurfaceDrawOp(pos , src, Rect(Vector2i(0, 0), src.get_size())));
 }
 
 void
 DeltaFramebuffer::draw_surface(const FramebufferSurface& src, const Rect& srcrect, const Vector2i& pos)
 {
-  SurfaceDrawOp op;
-  op.pos     = pos;
-  op.surface = src;
-  op.rect    = srcrect;
-  backbuffer->add(op);
+  backbuffer->add(new SurfaceDrawOp(pos , src, srcrect));
 }
 
 void
@@ -218,7 +303,7 @@ DeltaFramebuffer::draw_rect(const Rect& rect, const Color& color)
 void
 DeltaFramebuffer::fill_rect(const Rect& rect, const Color& color)
 {
-  framebuffer->fill_rect(rect, color);
+  backbuffer->add(new FillRectDrawOp(rect, color));
 }
 
 Size
