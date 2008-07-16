@@ -118,8 +118,6 @@ pingus_sources = [
 'src/graphic_context_state.cpp', 
 'src/groundtype.cpp',
 'src/gui/component.cpp',
-'src/gui/checkbox.cpp',
-'src/gui/combobox.cpp', 
 'src/display/display.cpp', 
 'src/display/framebuffer_surface.cpp', 
 'src/display/sdl_framebuffer_surface_impl.cpp', 
