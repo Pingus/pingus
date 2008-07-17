@@ -15,7 +15,9 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <sstream>
+#include <iostream>
 #include <stdexcept>
+#include "math.hpp"
 #include "surface.hpp"
 #include "opengl_framebuffer_surface_impl.hpp"
 #include "opengl_framebuffer.hpp"
@@ -85,13 +87,42 @@ OpenGLFramebuffer::flip()
 void
 OpenGLFramebuffer::push_cliprect(const Rect& rect)
 {
-  cliprect_stack.push_back(rect);
+  if (cliprect_stack.empty())
+    glEnable(GL_SCISSOR_TEST);
+
+  if (cliprect_stack.empty())
+    {
+      cliprect_stack.push_back(rect);
+    }
+  else
+    {
+      cliprect_stack.push_back(Rect(Math::max(cliprect_stack.back().left,   rect.left), 
+                                    Math::max(cliprect_stack.back().top,    rect.top), 
+                                    Math::min(cliprect_stack.back().right,  rect.right), 
+                                    Math::min(cliprect_stack.back().bottom, rect.bottom)));
+    }
+
+  glScissor(cliprect_stack.back().left,
+            cliprect_stack.back().top, 
+            cliprect_stack.back().get_width(), 
+            cliprect_stack.back().get_height());
 }
 
 void
 OpenGLFramebuffer::pop_cliprect()
 {
   cliprect_stack.pop_back();
+
+  if (cliprect_stack.empty())
+    {
+      glDisable(GL_SCISSOR_TEST);
+    }
+  else
+    {
+      const Rect& rect = cliprect_stack.back();
+      glScissor(rect.left,        rect.top, 
+                rect.get_width(), rect.get_height());
+    }
 }
 
 void
