@@ -47,7 +47,6 @@ protected:
 public:
   MenuButton(PingusMenu* menu, const Vector2i& pos, 
              const std::string& text, const std::string& desc);
-  MenuButton();
   virtual ~MenuButton();
 
   void draw(DrawingContext& gc);

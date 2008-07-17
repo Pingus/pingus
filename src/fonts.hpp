@@ -32,7 +32,6 @@ extern Font courier_small;
 
 extern Font pingus_small;
 extern Font pingus_small_fixnum;
-extern Font pingus_large;
 
 extern Font verdana11;
 

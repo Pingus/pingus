@@ -45,21 +45,6 @@ MenuButton::MenuButton(PingusMenu* menu_,
   pressed    = false;
 }
 
-MenuButton::MenuButton ()
-{
-  font       = Fonts::pingus_small;
-  font_large = Fonts::pingus_large;
-
-  mouse_over = false;
-  pressed = false;
-
-  //std::cout << "Generating font cache: " << std::flush;
-  // We print all available letters, so that they are in the cache
-  //font->print_left (0,0, "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
-  //font_large->print_left (0,0, "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
-  //std::cout << "done" << std::endl;
-}
-
 MenuButton::~MenuButton ()
 {
 }
