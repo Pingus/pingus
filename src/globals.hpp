@@ -38,7 +38,6 @@ extern bool        auto_scrolling;                  ///< --enable-auto-scrolling
 extern bool        drag_drop_scrolling; 
 extern int         tile_size;                       ///< --tile-size
 extern bool        fullscreen_enabled;              ///< --enable-fullscreen
-extern bool        delta_drawing;                   ///< --delta-drawing
 extern int         default_screen_width;            ///< default screen width
 extern int         default_screen_height;           ///< default screen height
 extern bool        draw_collision_map;              ///<
@@ -50,6 +49,9 @@ extern std::string  global_username;                 ///< The name of the curren
 extern std::string  global_email;                    ///< The email address of the currently logged in user
 extern std::string  default_language;                ///< The default language, which is used when the env var LANG is not set
 extern unsigned int pingus_debug_flags;              ///< Set some bits in this thing to get debug infos
+
+enum FramebufferType { DELTA_FRAMEBUFFER, SDL_FRAMEBUFFER, OPENGL_FRAMEBUFFER };
+extern FramebufferType framebuffer_type;
 
 enum { PINGUS_DEBUG_ACTIONS     = (1 << 0),
        PINGUS_DEBUG_SOUND       = (1 << 1),

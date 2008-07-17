@@ -77,12 +77,24 @@ Display::set_video_mode(const Size& size, bool fullscreen)
 {
   if (!framebuffer.get())
     {
-      if (0)
-        framebuffer = std::auto_ptr<Framebuffer>(new OpenGLFramebuffer());
-      else if (delta_drawing)
-        framebuffer = std::auto_ptr<Framebuffer>(new DeltaFramebuffer());
-      else
-        framebuffer = std::auto_ptr<Framebuffer>(new SDLFramebuffer());
+      switch (framebuffer_type)
+        {
+          case OPENGL_FRAMEBUFFER:
+            framebuffer = std::auto_ptr<Framebuffer>(new OpenGLFramebuffer());
+            break;
+
+          case DELTA_FRAMEBUFFER:
+            framebuffer = std::auto_ptr<Framebuffer>(new DeltaFramebuffer());
+            break;
+
+          case SDL_FRAMEBUFFER:
+            framebuffer = std::auto_ptr<Framebuffer>(new SDLFramebuffer());
+            break;
+          
+          default:
+            assert(!"Unknown framebuffer_type");
+            break;
+        }
     }
 
   if (fullscreen)

@@ -239,8 +239,8 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Start in Window Mode"));
   argp.add_option('f', "fullscreen", "",
                   _("Start in Fullscreen"));
-  argp.add_option(336, "delta-drawing", "",
-                  _("Enable experimental delta drawing"));
+  argp.add_option('r', "renderer", "RENDERER",
+                  _("Use the given renderer (default: delta)"));
   argp.add_option(346, "enable-swcursor", "",
                   _("Enable software cursor"));
   argp.add_option('g', "geometry", "{width}x{height}",  
@@ -306,8 +306,33 @@ PingusMain::parse_args(int argc, char** argv)
     {
       switch (argp.get_key()) 
         {          
-          case 336: // --delta-drawing
-            delta_drawing = true;
+          case 'r': // --renderer
+            if (argp.get_argument() == "delta")
+              {
+                framebuffer_type = DELTA_FRAMEBUFFER;
+              }
+            else if (argp.get_argument() == "opengl")
+              {
+                framebuffer_type = OPENGL_FRAMEBUFFER;
+              }
+            else if (argp.get_argument() == "sdl")
+              {
+                framebuffer_type = SDL_FRAMEBUFFER;
+              }
+            else if (argp.get_argument() == "help")
+              {
+                std::cout << "Available renderers: " << std::endl;
+                std::cout << "   delta: Software rendering with dirty-rectangles (default)" << std::endl;
+                std::cout << "     sdl: Software rendering" << std::endl;
+                std::cout << "  opengl: Hardware accelerated graphics" << std::endl;
+                exit(EXIT_SUCCESS);
+              }
+            else
+              {
+                std::cout << "Unknown renderer: " << argp.get_argument()
+                          << " use '--renderer help' to get a list of available rendere" << std::endl;
+                exit(EXIT_FAILURE);
+              }
             break;
 
           case 359: // --credits
@@ -361,7 +386,7 @@ PingusMain::parse_args(int argc, char** argv)
 
           case 'v':
             std::cout << "Pingus " << VERSION << std::endl;
-              std::cout << "\n"
+            std::cout << "\n"
               "Copyright (C) 1998-2008 Ingo Ruhnke <grumbel@gmx.de>\n"
               "See the file AUTHORS for a complete list of contributors.\n\n"
               "There is NO warranty.  You may redistribute this software\n"
