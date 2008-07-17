@@ -34,6 +34,7 @@ class PingusCounter;
 class PingusDemo;
 class Playfield;
 class SmallMap;
+class BButton;
 
 /** A DemoSession is analog to a GameSession, but instead of loading a
     level and letting the player play a game, a demo file will be
@@ -51,6 +52,10 @@ private:
   Playfield*     playfield;
   SmallMap*      small_map;
   
+  BButton* fastforward_button;
+  BButton* pause_button;
+  BButton* restart_button;
+
   bool pause;
   bool fast_forward;
 
@@ -73,6 +78,9 @@ public:
 
   bool is_pause() { return pause; }
   bool is_fast_forward() { return fast_forward; }
+
+  void resize(const Size& size);
+
 private:
   DemoSession (const DemoSession&);
   DemoSession& operator= (const DemoSession&);

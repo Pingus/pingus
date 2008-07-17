@@ -97,24 +97,24 @@ DemoSession::DemoSession(const Pathname& pathname_)
   int world_height = server->get_world()->get_height();
 
   playfield = new Playfield(server.get(), 0,
-                            Rect(Vector2i(Math::max((Display::get_width()  - world_width)/2,  0),
-                                          Math::max((Display::get_height() - world_height)/2, 0)), 
-                                 Size(Math::min(Display::get_width(),  world_width),
-                                      Math::min(Display::get_height(), world_height))));
+                            Rect(Vector2i(Math::max((size.width  - world_width)/2,  0),
+                                          Math::max((size.height - world_height)/2, 0)), 
+                                 Size(Math::min(size.width,  world_width),
+                                      Math::min(size.height, world_height))));
 
   gui_manager->add(playfield);
 
   small_map    = new SmallMap(server.get(), playfield, Rect(Vector2i(5, size.height - 105), Size(175, 100)));
   gui_manager->add(small_map);
 
-  gui_manager->add(new BButton(32+50, 32, "core/demo/fastforward",
-                               boost::bind(&DemoSession::on_fast_forward_press, this),
-                               boost::bind(&DemoSession::is_fast_forward, this)));
-  gui_manager->add(new BButton(32,  32, "core/demo/pause",
-                               boost::bind(&DemoSession::on_pause_press, this),
-                               boost::bind(&DemoSession::is_pause, this)));
-  gui_manager->add(new BButton(Display::get_width() - 32 - 48, 32, "core/demo/reload",
-                               boost::bind(&DemoSession::restart, this)));
+  gui_manager->add(fastforward_button= new BButton(32+50, 32, "core/demo/fastforward",
+                                                   boost::bind(&DemoSession::on_fast_forward_press, this),
+                                                   boost::bind(&DemoSession::is_fast_forward, this)));
+  gui_manager->add(pause_button =new BButton(32,  32, "core/demo/pause",
+                                             boost::bind(&DemoSession::on_pause_press, this),
+                                             boost::bind(&DemoSession::is_pause, this)));
+  gui_manager->add(restart_button = new BButton(size.width - 32 - 48, 32, "core/demo/reload",
+                                                boost::bind(&DemoSession::restart, this)));
 }
 
 DemoSession::~DemoSession()
@@ -223,6 +223,27 @@ void
 DemoSession::restart()
 {
   ScreenManager::instance()->replace_screen(new DemoSession(pathname));
+}
+
+void
+DemoSession::resize(const Size& size)
+{
+  GUIScreen::resize(size);
+
+  int world_width  = server->get_world()->get_width();
+  int world_height = server->get_world()->get_height();
+
+  playfield->set_rect(Rect(Vector2i(Math::max((size.width  - world_width)/2,  0),
+                                    Math::max((size.height - world_height)/2, 0)), 
+                           Size(Math::min(size.width,  world_width),
+                                Math::min(size.height, world_height))));
+
+
+  fastforward_button->set_pos(32+50, 32);
+  pause_button->set_pos(32,  32);
+  restart_button->set_pos(size.width - 32 - 48, 32);
+
+  small_map->set_rect(Rect(Vector2i(5, size.height - 105), Size(175, 100)));
 }
 
 /* EOF */
