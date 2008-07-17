@@ -107,13 +107,13 @@ OpenGLFramebuffer::draw_surface(const FramebufferSurface& src, const Rect& srcre
   
   glBindTexture(GL_TEXTURE_2D, texture->get_handle());
   
-  float vertices[] = {
+  int vertices[] = {
     pos.x,                     pos.y,
     pos.x+srcrect.get_width(), pos.y,
     pos.x+srcrect.get_width(), pos.y+srcrect.get_height(),
     pos.x,                     pos.y+srcrect.get_height(),
   };
-  glVertexPointer(2, GL_FLOAT, 0, vertices);
+  glVertexPointer(2, GL_INT, 0, vertices);
   
   float uvs[] = {
     float(srcrect.left)/texture->get_texture_size().width,  float(srcrect.top)/texture->get_texture_size().height,
@@ -131,27 +131,59 @@ OpenGLFramebuffer::draw_surface(const FramebufferSurface& src, const Rect& srcre
 void
 OpenGLFramebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color)
 {
+  glDisable(GL_TEXTURE_2D);
+  glColor4ub(color.r, color.g, color.b, color.a);
+  glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+  int vertices[] = {
+    pos1.x, pos1.y,
+    pos2.x, pos2.y,
+  };
+  glVertexPointer(2, GL_INT, 0, vertices);
+
+  glDrawArrays(GL_LINES, 0, 2);
+
+  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+  glEnable(GL_TEXTURE_2D);
+  glColor4f(1, 1, 1, 1);
 }
 
 void
 OpenGLFramebuffer::draw_rect(const Rect& rect, const Color& color)
 {
+  glDisable(GL_TEXTURE_2D);
+  glColor4ub(color.r, color.g, color.b, color.a);
+  glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+  int vertices[] = {
+    rect.left,  rect.top,
+    rect.right, rect.top,
+    rect.right, rect.bottom,
+    rect.left,  rect.bottom,
+  };
+  glVertexPointer(2, GL_INT, 0, vertices);
+
+  glDrawArrays(GL_LINE_LOOP, 0, 4);
+
+  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+  glEnable(GL_TEXTURE_2D);
+  glColor4f(1, 1, 1, 1);
 }
 
 void
 OpenGLFramebuffer::fill_rect(const Rect& rect, const Color& color)
 {
   glDisable(GL_TEXTURE_2D);
-  glColor4i(color.r, color.g, color.b, color.a);
+  glColor4ub(color.r, color.g, color.b, color.a);
   glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
-  float vertices[] = {
-    rect.left,                  rect.top,
-    rect.left+rect.get_width(), rect.top,
-    rect.left+rect.get_width(), rect.top+rect.get_height(),
-    rect.left,                  rect.top+rect.get_height()
+  int vertices[] = {
+    rect.left,  rect.top,
+    rect.right, rect.top,
+    rect.right, rect.bottom,
+    rect.left,  rect.bottom,
   };
-  glVertexPointer(2, GL_FLOAT, 0, vertices);
+  glVertexPointer(2, GL_INT, 0, vertices);
 
   glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 
