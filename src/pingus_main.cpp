@@ -330,7 +330,7 @@ PingusMain::parse_args(int argc, char** argv)
             else
               {
                 std::cout << "Unknown renderer: " << argp.get_argument()
-                          << " use '--renderer help' to get a list of available rendere" << std::endl;
+                          << " use '--renderer help' to get a list of available renderer" << std::endl;
                 exit(EXIT_FAILURE);
               }
             break;
