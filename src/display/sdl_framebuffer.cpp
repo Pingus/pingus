@@ -409,7 +409,7 @@ SDLFramebuffer::update_rects(const std::vector<Rect>& rects)
 }
 
 Size
-SDLFramebuffer::get_size()
+SDLFramebuffer::get_size() const
 {
   return Size(screen->w, screen->h);
 }

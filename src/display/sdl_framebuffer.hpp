@@ -51,7 +51,7 @@ public:
   void draw_rect(const Rect& rect, const Color& color);
   void fill_rect(const Rect& rect, const Color& color);
 
-  Size get_size();
+  Size get_size() const;
 
 private:
   SDLFramebuffer (const SDLFramebuffer&);

@@ -46,7 +46,7 @@ public:
   virtual void draw_rect(const Rect& rect, const Color& color) =0;
   virtual void fill_rect(const Rect& rect, const Color& color) =0;
 
-  virtual Size get_size() =0;
+  virtual Size get_size() const =0;
 };
 
 #endif
