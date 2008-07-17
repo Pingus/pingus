@@ -79,9 +79,7 @@ ConfigManager::set_resolution(const Size& size)
 
   if (size != get_resolution())
     {
-      screen_width  = size.width;
-      screen_height = size.height;
-      Display::set_video_mode(Size(screen_width, screen_height), fullscreen_enabled);
+      Display::set_video_mode(size, fullscreen_enabled);
       on_resolution_change(size);
     }
 }

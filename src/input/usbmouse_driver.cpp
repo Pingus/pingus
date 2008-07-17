@@ -26,6 +26,7 @@
 #include "globals.hpp"
 #include "math/vector2i.hpp"
 #include "usbmouse_driver.hpp"
+#include "../display/display.hpp"
 
 namespace Input {
 
@@ -110,13 +111,13 @@ public:
 
             if (mouse_pos.x < 0) 
               mouse_pos.x = 0;
-            else if (mouse_pos.x > default_screen_width)
-              mouse_pos.x = default_screen_width - 1;
+            else if (mouse_pos.x >= Display::get_width())
+              mouse_pos.x = Display::get_width() - 1;
 
             if (mouse_pos.y < 0) 
               mouse_pos.y = 0;
-            else if (mouse_pos.y > default_screen_height)
-              mouse_pos.y = default_screen_height - 1;
+            else if (mouse_pos.y >= Display::get_height())
+              mouse_pos.y = Display::get_height() - 1;
 
             for(std::vector<Pointer*>::iterator i = pointer_bindings.begin(); i != pointer_bindings.end(); ++i)
               (*i)->set_pos(mouse_pos);

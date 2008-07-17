@@ -17,6 +17,7 @@
 #include "math.hpp"
 #include "manager.hpp"
 #include "core_driver.hpp"
+#include "../display/display.hpp"
 #include "globals.hpp"
 
 namespace Input {
@@ -71,8 +72,8 @@ public:
     new_pos.y += y_axis->get_pos() * c_speed * delta;
 
     // FIXME: shouldn't depend on Display
-    new_pos.x = Math::clamp(0.0f, new_pos.x, static_cast<float>(default_screen_width));
-    new_pos.y = Math::clamp(0.0f, new_pos.y, static_cast<float>(default_screen_height));
+    new_pos.x = Math::clamp(0.0f, new_pos.x, static_cast<float>(Display::get_width()));
+    new_pos.y = Math::clamp(0.0f, new_pos.y, static_cast<float>(Display::get_height()));
 
     if (new_pos != pos)
       {

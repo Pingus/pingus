@@ -138,9 +138,7 @@ Playfield::update(float delta)
 
   if (auto_scrolling && (fullscreen_enabled || SDL_WM_GrabInput(SDL_GRAB_QUERY) == SDL_GRAB_ON))
     {
-      // FIXME: May need to modify this function if it's not gradient enough.
-      scroll_speed = static_cast<int>(default_screen_width * delta);
-      //std::cout << "scroll_speed: " << scroll_speed << std::endl;
+      scroll_speed = static_cast<int>(800 * delta);
     
       if (mouse_pos.x < 10)
 	{

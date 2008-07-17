@@ -27,6 +27,7 @@
 #include "demo_session.hpp"
 #include "sexpr_file_reader.hpp"
 #include "fonts.hpp"
+#include "config_manager.hpp"
 #include "display/display.hpp"
 #include "pingus_menu.hpp"
 
@@ -61,7 +62,6 @@ extern "C" {
 #include "globals.hpp"
 #include "system.hpp"
 #include "pingus_error.hpp"
-#include "config.hpp"
 #include "fps_counter.hpp"
 #include "plf_res_mgr.hpp"
 #include "game_session.hpp"
@@ -154,7 +154,7 @@ PingusMain::read_rc_file (void)
 	rcfile = cmd_options.config_file.get();
 
       //constructor of config must be run
-      Config config(rcfile);
+      //FIXME: Config config(rcfile);
     }
 }
 
@@ -187,10 +187,7 @@ PingusMain::apply_args()
     swcursor_enabled = options.swcursor.get();
 
   if (options.geometry.is_set())
-    {
-      screen_width  = options.geometry.get().width;
-      screen_height = options.geometry.get().height;
-    }
+    config_manager.set_resolution(options.geometry.get());
 
   // Sound
   if (options.disable_music.is_set())
@@ -594,7 +591,9 @@ PingusMain::print_greeting_message()
   else
     std::cout << "music support:          disabled" << std::endl;
 
-  std::cout << "resolution:              " << screen_width << "x" << screen_height << std::endl;
+  std::cout << "resolution:              " 
+            << config_manager.get_resolution().width << "x"
+            << config_manager.get_resolution().height << std::endl;
   std::cout << "fullscreen:              "
             << (fullscreen_enabled ? " enabled" : "disabled")
             << std::endl;
@@ -731,7 +730,7 @@ PingusMain::init_sdl()
     exit(1);
   }
   atexit(SDL_Quit); 
-  Display::set_video_mode(Size(screen_width, screen_height), fullscreen_enabled);
+  Display::set_video_mode(config_manager.get_resolution(), fullscreen_enabled);
 
   SDL_WM_SetCaption("Pingus " VERSION " - SDL Edition", 0 /* icon */);
 
