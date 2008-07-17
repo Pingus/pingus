@@ -119,8 +119,13 @@ pingus_sources = [
 'src/gui/component.cpp',
 'src/display/display.cpp', 
 'src/display/framebuffer_surface.cpp', 
+
 'src/display/sdl_framebuffer_surface_impl.cpp', 
 'src/display/sdl_framebuffer.cpp', 
+
+'src/display/opengl_framebuffer_surface_impl.cpp', 
+'src/display/opengl_framebuffer.cpp', 
+
 'src/display/delta_framebuffer.cpp', 
 'src/display/rect_merger.cpp',
 'src/gui/group_component.cpp', 
@@ -300,7 +305,7 @@ def DefineOptions(filename, args):
    opts.Add('LIBPATH',    'Additional library paths',      [])
    opts.Add('CPPFLAGS',   'Additional preprocessor flags', [])
    opts.Add('CPPDEFINES', 'defined constants', [])
-   opts.Add('LIBS',       'Additional libraries', [])
+   opts.Add('LIBS',       'Additional libraries', ['GL'])
    opts.Add('CCFLAGS',    'C Compiler flags', [])
    opts.Add('LINKFLAGS',  'Linker Compiler flags', [])
 

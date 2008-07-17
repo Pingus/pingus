@@ -14,48 +14,37 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_DELTA_FRAMEBUFFER_HPP
-#define HEADER_DELTA_FRAMEBUFFER_HPP
+#ifndef HEADER_OPENGL_FRAMEBUFFER_HPP
+#define HEADER_OPENGL_FRAMEBUFFER_HPP
 
-#include <memory>
-#include <map>
-#include "../math/vector2i.hpp"
 #include "framebuffer.hpp"
-
-class SDLFramebuffer;
-class DrawOpBuffer;
 
-class DeltaFramebuffer : public Framebuffer
+class OpenGLFramebuffer : public Framebuffer
 {
 private:
-  std::auto_ptr<SDLFramebuffer> framebuffer;
-  std::auto_ptr<DrawOpBuffer>   frontbuffer;
-  std::auto_ptr<DrawOpBuffer>   backbuffer;
- 
+  SDL_Surface* screen;
+  std::vector<Rect> cliprect_stack;
+
 public:
-  DeltaFramebuffer();
+  OpenGLFramebuffer();
 
   FramebufferSurface create_surface(const Surface& surface);
 
   void set_video_mode(const Size& size, bool fullscreen);
   void flip();
-
+  
   void push_cliprect(const Rect&);
   void pop_cliprect();
 
-  void draw_surface(const FramebufferSurface& src, const Vector2i& pos);
-  void draw_surface(const FramebufferSurface& src, const Rect& srcrect, const Vector2i& pos);
+   void draw_surface(const FramebufferSurface& src, const Vector2i& pos);
+   void draw_surface(const FramebufferSurface& src, const Rect& srcrect, const Vector2i& pos);
 
   void draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color);
 
-  void draw_rect(const Rect& rect, const Color& color);
-  void fill_rect(const Rect& rect, const Color& color);
+   void draw_rect(const Rect& rect, const Color& color);
+   void fill_rect(const Rect& rect, const Color& color);
 
   Size get_size() const;
-
-private:
-  DeltaFramebuffer (const DeltaFramebuffer&);
-  DeltaFramebuffer& operator= (const DeltaFramebuffer&);
 };
 
 #endif

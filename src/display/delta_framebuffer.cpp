@@ -340,7 +340,7 @@ DeltaFramebuffer::fill_rect(const Rect& rect, const Color& color)
 }
 
 Size
-DeltaFramebuffer::get_size()
+DeltaFramebuffer::get_size() const
 {
   return framebuffer->get_size();
 }

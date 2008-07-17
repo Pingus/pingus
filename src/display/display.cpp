@@ -24,6 +24,7 @@
 #include "../math.hpp"
 #include "../screen/screen_manager.hpp"
 #include "sdl_framebuffer.hpp"
+#include "opengl_framebuffer.hpp"
 #include "delta_framebuffer.hpp"
 #include "display.hpp"
 
@@ -76,7 +77,9 @@ Display::set_video_mode(const Size& size, bool fullscreen)
 {
   if (!framebuffer.get())
     {
-      if (delta_drawing)
+      if (0)
+        framebuffer = std::auto_ptr<Framebuffer>(new OpenGLFramebuffer());
+      else if (delta_drawing)
         framebuffer = std::auto_ptr<Framebuffer>(new DeltaFramebuffer());
       else
         framebuffer = std::auto_ptr<Framebuffer>(new SDLFramebuffer());
