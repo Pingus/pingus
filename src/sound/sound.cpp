@@ -33,9 +33,6 @@ PingusSound::init (PingusSoundImpl* s)
     {
       if (sound_enabled || music_enabled)
         {
-          if (verbose)
-            std::cout << "Init Sound" << std::endl;
-
           try {
             PingusSound::init (new PingusSoundReal ());
           } catch (const std::exception& err) {
@@ -46,8 +43,6 @@ PingusSound::init (PingusSoundImpl* s)
         }
       else
         {
-          if (verbose)
-            std::cout << "Sound disabled" << std::endl;
           PingusSound::init (new PingusSoundDummy ());
         }
     }

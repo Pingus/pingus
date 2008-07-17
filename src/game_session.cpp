@@ -329,10 +329,6 @@ GameSession::on_startup ()
     {
       Sound::PingusSound::play_music(server->get_plf().get_music());
     }
-
-  if (verbose)
-    std::cout << "GameSession: Entering main_loop. Startup time: "
-	      << SDL_GetTicks() << " msec." << std::endl;
 }
 
 void

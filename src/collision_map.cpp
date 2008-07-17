@@ -112,11 +112,6 @@ CollisionMap::put(int x, int y, Groundtype::GPType p)
     {
       colmap[x+y*width] = p;
     }
-  else
-    {
-      if (verbose > 2)
-        std::cout << "CollisionMap: remove: Out of map" << std::endl;
-    }
 }
 
 bool
@@ -144,11 +139,6 @@ CollisionMap::put(const CollisionMask& mask, int sur_x, int sur_y, Groundtype::G
 
   if ((sur_x > width) || (sur_y > height))
     {
-      if (verbose > 3)
-	{
-	  std::cout << "Warning: CollisionMap: Spot out of screen" << std::endl;
-	  std::cout << "sur_x: " << sur_x << " sur_y: " << sur_y << std::endl;
-	}
       return;
     }
 

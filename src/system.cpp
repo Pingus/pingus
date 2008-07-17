@@ -49,8 +49,6 @@
 #include "string_util.hpp"
 #include "gettext.h"
 
-
-int         System::verbose;
 std::string System::userdir;
 std::string System::default_email;
 std::string System::default_username;
@@ -225,17 +223,12 @@ System::create_dir(std::string directory)
 	  std::cout << "Successfully created: " << directory << std::endl;
 	}
     }
-  else
-    {
-      if (verbose) std::cout << "Found: " << directory << std::endl;
-    }
 #else
   if (!CreateDirectory(directory.c_str(), 0))
     {
       DWORD dwError = GetLastError();
       if (dwError == ERROR_ALREADY_EXISTS)
         {
-          if (verbose) std::cout << "Found: " << directory << std::endl;
         }
       else if (dwError == ERROR_PATH_NOT_FOUND)
         {
