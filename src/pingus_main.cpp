@@ -186,8 +186,8 @@ PingusMain::apply_args()
   if (options.swcursor.is_set())
     swcursor_enabled = options.swcursor.get();
 
-  if (options.geometry.is_set())
-    config_manager.set_resolution(options.geometry.get());
+  // FIXME: if (options.geometry.is_set())
+  // FIXME:   config_manager.set_resolution(options.geometry.get());
 
   // Sound
   if (options.disable_music.is_set())
@@ -591,9 +591,9 @@ PingusMain::print_greeting_message()
   else
     std::cout << "music support:          disabled" << std::endl;
 
-  std::cout << "resolution:              " 
-            << config_manager.get_resolution().width << "x"
-            << config_manager.get_resolution().height << std::endl;
+  // FIXME: std::cout << "resolution:              " 
+  // FIXME: << config_manager.get_resolution().width << "x"
+  // FIXME:            << config_manager.get_resolution().height << std::endl;
   std::cout << "fullscreen:              "
             << (fullscreen_enabled ? " enabled" : "disabled")
             << std::endl;
@@ -730,7 +730,7 @@ PingusMain::init_sdl()
     exit(1);
   }
   atexit(SDL_Quit); 
-  Display::set_video_mode(config_manager.get_resolution(), fullscreen_enabled);
+  Display::set_video_mode(Size(800, 600), fullscreen_enabled);
 
   SDL_WM_SetCaption("Pingus " VERSION " - SDL Edition", 0 /* icon */);
 
