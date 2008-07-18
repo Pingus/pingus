@@ -25,6 +25,7 @@ class Size;
 class Color;
 class Vector3f;
 class Vector2i;
+class Rect;
 
 class ResDescriptor;
 class FileReaderImpl;
@@ -49,6 +50,7 @@ public:
   bool read_path  (const char* name, Pathname&)      const;
   bool read_vector(const char* name, Vector3f&)      const;
   bool read_vector2i(const char* name, Vector2i&)    const;
+  bool read_rect(const char* name, Rect&)    const;
   bool read_size  (const char* name, Size&)          const;
   bool read_color (const char* name, Color&)         const;
   bool read_desc  (const char* name, ResDescriptor&) const;

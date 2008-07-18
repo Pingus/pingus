@@ -17,6 +17,7 @@
 #include <assert.h>
 #include "math/vector3f.hpp"
 #include "math/color.hpp"
+#include "math/rect.hpp"
 #include "math/size.hpp"
 #include "res_descriptor.hpp"
 #include "resource_modifier.hpp"
@@ -156,6 +157,20 @@ public:
       {
         v.x = sub->get_list_elem(1)->get_int();
         v.y = sub->get_list_elem(2)->get_int();
+        return true;
+      }    
+    return false;
+  }
+
+  bool read_rect(const char* name, Rect& rect) const
+  {
+    boost::shared_ptr<lisp::Lisp> sub = get_subsection(name);
+    if (sub && sub->get_list_size() == 5)
+      {
+        rect.left   = sub->get_list_elem(1)->get_int();
+        rect.top    = sub->get_list_elem(2)->get_int();
+        rect.right  = sub->get_list_elem(3)->get_int();
+        rect.bottom = sub->get_list_elem(4)->get_int();
         return true;
       }    
     return false;

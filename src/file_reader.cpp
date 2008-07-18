@@ -141,6 +141,15 @@ FileReader::read_vector2i(const char* name, Vector2i& value) const
 }
 
 bool
+FileReader::read_rect(const char* name, Rect& value)    const
+{
+  if (impl.get())
+    return impl->read_rect(name, value);
+  else
+    return false; 
+}
+
+bool
 FileReader::read_section(const char* name, FileReader& reader) const
 {
   if (impl.get())
