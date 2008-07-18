@@ -1,0 +1,11 @@
+chalk-large:  40px: Level Title
+chalk-normal: 21px: Level text, Story
+chalk-small:  16px  Worldmap button, Author, skip
+pingus-small: 18px: ButtonPanel, 
+pingus-small_fixnum: 18px - TimeDisplay, PingusCounter
+lcd:      Used for Bomber 
+verdana:  Used for tooltips and GUI in the editor
+courier:  Used for the caputure rectangle
+
+# EOF #
+

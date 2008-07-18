@@ -39,16 +39,16 @@ init ()
 {
   chalk_large  = Resource::load_font("fonts/chalk-40px");
   chalk_normal = Resource::load_font("fonts/chalk-21px");
-  chalk_small  = Resource::load_font("fonts/chalk_small"  + std::string("-") + encoding);
+  chalk_small  = chalk_normal;
 
-  pingus_small = Resource::load_font("fonts/pingus_small" + std::string("-") + encoding);
-  pingus_small_fixnum = Resource::load_font("fonts/pingus_small_fixnum" + std::string("-") + encoding);
+  pingus_small = Resource::load_font("fonts/pingus-small-18px");
+  pingus_small_fixnum = pingus_small;
 
-  courier_small = Resource::load_font("fonts/courier_small" + std::string("-") + encoding);
+  courier_small = pingus_small;
 
-  verdana11 = Resource::load_font("fonts/verdana11" + std::string("-") + encoding);
-
-  lcd          = Resource::load_font("fonts/lcd");
+  verdana11 = Resource::load_font("fonts/verdana11");
+  
+  lcd          = pingus_small;
 }
 
 void deinit () 
