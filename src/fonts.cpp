@@ -37,8 +37,8 @@ Font lcd;
 void
 init ()
 {
-  chalk_large  = Resource::load_font("fonts/chalk_large"  + std::string("-") + encoding); 
-  chalk_normal = Resource::load_font("fonts/chalk_normal" + std::string("-") + encoding);
+  chalk_large  = Resource::load_font("fonts/chalk-40px");
+  chalk_normal = Resource::load_font("fonts/chalk-21px");
   chalk_small  = Resource::load_font("fonts/chalk_small"  + std::string("-") + encoding);
 
   pingus_small = Resource::load_font("fonts/pingus_small" + std::string("-") + encoding);

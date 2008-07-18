@@ -18,8 +18,24 @@
 #define HEADER_FONT_DESCRIPTION_HPP
 
 #include <string>
+#include "math/vector2i.hpp"
+#include "math/rect.hpp"
 #include "pathname.hpp"
 
+class FileReader;
+
+class GlyphDescription
+{
+public:
+  uint32_t unicode; 
+  Vector2i offset;
+  int      advance; 
+  Rect     rect;
+
+  GlyphDescription();
+  GlyphDescription(FileReader& reader);
+};
+
 /** */
 class FontDescription
 {
@@ -40,15 +56,14 @@ public:
 
   float vertical_spacing;
 
-  /** Minimum amount of alpha that is handled as character seperator */
-  int  alpha_threshold;
+  int size;
 
   /** Characters in the font image */
-  std::string characters;
+  std::vector<GlyphDescription> glyphs;
 
   FontDescription(const Pathname& filename);
 };
-
+
 #endif
 
 /* EOF */

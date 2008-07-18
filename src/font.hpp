@@ -38,9 +38,9 @@ public:
   void render(Origin origin, int x, int y, const std::string& text, Framebuffer& fb);
 
   int  get_height() const;
-  int  get_width(char) const;
-  int  get_width(const std::string& ) const;
-  Size get_size(const std::string& str) const;
+  int  get_width(uint32_t unicode) const;
+  int  get_width(const std::string& text) const;
+  Size get_size(const std::string& text) const;
   Rect bounding_rect(int , int, const std::string& str) const;
 
 private:

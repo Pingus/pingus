@@ -18,13 +18,29 @@
 #include "file_reader.hpp"
 #include "font_description.hpp"
 
+
+GlyphDescription::GlyphDescription()
+  : unicode(0), advance(0)
+{
+  
+}
+
+GlyphDescription::GlyphDescription(FileReader& reader)
+{
+  int lazy = 0; // FIXME: implement read_uint32
+  reader.read_int("unicode", lazy);
+  unicode = lazy;
+  reader.read_vector2i("offset",  offset);
+  reader.read_int("advance", advance);
+  reader.read_rect("rect",   rect);
+}
+
 FontDescription::FontDescription(const Pathname& pathname_)
   : pathname(pathname_)
 {
   name            = "<unknown>";
   monospace       = false;
   space_length    = 20;
-  alpha_threshold = 0;
   char_spacing    = 1.0f;
   vertical_spacing = -1.0f;
 
@@ -36,15 +52,23 @@ FontDescription::FontDescription(const Pathname& pathname_)
     }
   else
     {
-      reader.read_string("name",          name);
-      reader.read_path("image",           image);
-      reader.read_string("characters",    characters);
-      reader.read_bool("monospace",       monospace);
+      reader.read_string("name",            name);
+      reader.read_path("image",             image);
       reader.read_float("char-spacing",     char_spacing);
       reader.read_float("vertical-spacing", vertical_spacing);
-      reader.read_int("space-length",     space_length);
-      reader.read_int("alpha-threshold",  alpha_threshold);
+      reader.read_int("space-length",       space_length);
+      reader.read_int("size",               size);
+      
+      FileReader glyph_section;
+      if (reader.read_section("glyphs", glyph_section))
+        {
+          std::vector<FileReader> glyph_reader = glyph_section.get_sections();
+          for(std::vector<FileReader>::iterator i = glyph_reader.begin(); i != glyph_reader.end(); ++i)
+            {
+              glyphs.push_back(GlyphDescription(*i));
+            }
+        }
     }
 }
-
+
 /* EOF */

@@ -16,144 +16,48 @@
 
 #include <iostream>
 #include <vector>
+#include <map>
 #include "SDL.h"
 #include "SDL_image.h"
 #include "font.hpp"
 #include "surface.hpp"
 #include "line_iterator.hpp"
+#include "utf8_iterator.hpp"
 #include "font_description.hpp"
 #include "display/framebuffer.hpp"
 #include "display/display.hpp"
-
-static bool vline_empty(SDL_Surface* surface, int x, Uint8 threshold)
-{
-  if (x >= surface->w)
-    return true;
-
-  Uint8* pixels = (Uint8*)surface->pixels;
-
-  for(int y = 0; y < surface->h; ++y)
-    {
-      const Uint8& p = pixels[surface->pitch*y + x*surface->format->BytesPerPixel + 3];
-      if (p > threshold)
-        {
-          return false;
-        }
-    }
-  return true;
-}
 
 class FontImpl
 {
 public:
   FramebufferSurface framebuffer_surface;
-  Rect chrs[256];
-  int space_length;
-  float char_spacing;
-  float vertical_spacing;
+  typedef std::map<uint32_t, GlyphDescription> Glyphs;
+  Glyphs glyphs; // FIXME: Use a hashmap or something else faster then a map
+  int    space_length;
+  float  char_spacing;
+  float  vertical_spacing;
+  int    size;
   
   FontImpl(const FontDescription& desc)
     : space_length(desc.space_length),
-      char_spacing(desc.char_spacing)
+      char_spacing(desc.char_spacing),
+      size(desc.size)
   {
-    //std::cout << "desc.image: " << desc.image << std::endl;
-    //std::cout << "desc.space: " << desc.space_length << std::endl;
-    //std::cout << "Characters: " << desc.characters << std::endl;
+    framebuffer_surface = Display::get_framebuffer().create_surface(Surface(desc.image));
 
-    Surface software_surface(desc.image);
-    SDL_Surface* surface = software_surface.get_surface();
-
-    if (!surface)
+    if (!framebuffer_surface)
       {
         std::cout << "IMG: " << desc.image.str() << std::endl;
-        assert(surface);
+        assert(false);
       }
 
-    vertical_spacing = (desc.vertical_spacing == -1) ? surface->h : desc.vertical_spacing;
-
-    if (surface->format->BitsPerPixel != 32)
+    vertical_spacing = (desc.vertical_spacing == -1.0f) ? size : desc.vertical_spacing;
+   
+    // Copyh Unicode -> Glyph mapping 
+    for(std::vector<GlyphDescription>::const_iterator i = desc.glyphs.begin(); i != desc.glyphs.end(); ++i)
       {
-        std::cout << "Error: '" << desc.pathname.str() << "' invalid, fonts need to be RGBA, but is "
-                  << surface->format->BitsPerPixel << "bpp" << std::endl;
-        assert(0);
+        glyphs[i->unicode] = *i;
       }
-        
-    SDL_LockSurface(surface);
-    
-    if (!desc.monospace)
-      {
-        int first = -1; // -1 signals no character start found yet
-        int idx = 0;
-        for(int x = 0; x <= surface->w; ++x) // '<=' so we scan one past
-          // the last line, to catch
-          // the last character
-          {
-            if (!vline_empty(surface, x, desc.alpha_threshold))
-              { // line contains a character
-                if (first == -1) 
-                  { // found the start of a character
-                    first = x;
-                  } 
-                else 
-                  {
-                    // do nothing and continue to search for an end
-                  }
-              }
-            else
-              { // line doesn't contain a character
-                if (first != -1) 
-                  { // we have a start and a end, so lets construct a char
-
-                    if (idx < int(desc.characters.size()))
-                      {
-                        //std::cout << idx << " '" << desc.characters[idx] << "' " 
-                        //          <<  " glyph: " << first << " - " << x << std::endl;
-
-                        chrs[static_cast<unsigned char>(desc.characters[idx])]
-                          = Rect(Vector2i(first, 0), 
-                                 Size(x - first, surface->h));
-                      }
-                    else
-                      {
-                        std::cout << "Error: Found more desc.characters then are mapped" << std::endl;
-                      }
-
-                    idx += 1;
-                    first = -1;
-                  }
-              }
-          }
-
-        if (idx != int(desc.characters.size())) 
-          {
-            std::cout << "Font: " << desc.image << "\n"
-                      << "  Error: glyphs found: " << idx << ", expected "  << desc.characters.size() << "\n"
-                      << "  Format: bpp: " << int(surface->format->BitsPerPixel) << "\n"
-                      << "  Size: " << surface->w << "x" << surface->h
-              //      << "  RMask: " << hex << surface->format->Rmask << "\n"
-              //      << "  GMask: " << hex << surface->format->Gmask << "\n"
-              //      << "  BMask: " << hex << surface->format->Bmask << "\n"
-              //      << "  AMask: " << hex << surface->format->Amask << "\n"
-                      << std::endl;
-          }
-      }
-    else // monospace
-      {
-        assert(surface->w % desc.characters.size() == 0);
-
-        space_length = surface->w / desc.characters.size();
-        
-        for(int i = 0; i < int(desc.characters.size()); ++i)
-          {
-            chrs[static_cast<unsigned char>(desc.characters[i])]
-              = Rect(Vector2i(i * space_length, 0),
-                     Size(space_length, surface->h));
-          }
-      }
-
-    SDL_UnlockSurface(surface);
-
-    framebuffer_surface = Display::get_framebuffer().create_surface(software_surface);
   }
 
   ~FontImpl()
@@ -162,6 +66,8 @@ public:
 
   void render(Origin origin, int x, int y_, const std::string& text, Framebuffer& fb)
   {
+    y_ += get_height();
+
     float y = float(y_);
     // FIXME: only origins top_left, top_right and top_center to work right now
     LineIterator it(text);
@@ -178,56 +84,58 @@ public:
     float dstx = float(x - offset.x);
     float dsty = float(y - offset.y);
     
-    for(std::string::size_type i = 0; i < text.size(); ++i)
+    for(UTF8Iterator i(text); !i.done(); ++i)
       {
-        if (text[i] == ' ')
+        const uint32_t& unicode = *i;
+
+        Glyphs::iterator it = glyphs.find(unicode);
+        if (it != glyphs.end())
           {
-            dstx += space_length + char_spacing;
+            const GlyphDescription& glyph = it->second;
+            fb.draw_surface(framebuffer_surface, glyph.rect, Vector2i(dstx, dsty) + glyph.offset);
+            dstx += glyph.advance + char_spacing;
           }
         else
           {
-            Rect& srcrect = chrs[static_cast<unsigned char>(text[i])];
-            if (srcrect.get_width() != 0 && srcrect.get_height() != 0)
-              {
-                fb.draw_surface(framebuffer_surface, srcrect, Vector2i(dstx, dsty));
-                dstx += srcrect.get_width() + char_spacing;
-              }
-            else
-              {
-                //std::cout << "Font: character " << static_cast<unsigned char>(text[i]) << " missing in font" << std::endl;
-              }
+            // Draw placeholder char and issue a warning
           }
       }
   }
 
   int get_height() const
   {
-    return framebuffer_surface.get_height();
+    return size;
   }
 
-  int get_width(char idx) const
+  int get_width(uint32_t unicode) const
   {
-    return chrs[static_cast<unsigned char>(idx)].get_width();
+    Glyphs::const_iterator it = glyphs.find(unicode);
+    if (it != glyphs.end())
+      return it->second.advance;
+    else
+      return 0;
   }
 
   int  get_width(const std::string& text) const
   {
     float width = 0.0f;
     float last_width = 0;
-    for(std::string::size_type i = 0; i < text.size(); ++i)
+    for(UTF8Iterator i(text); !i.done(); ++i)
       {
-        if (text[i] == ' ')
+        const uint32_t& unicode = *i;
+
+        if (unicode == ' ')
           {
             width += space_length + char_spacing;
           }
-        else if (text[i] == '\n')
+        else if (unicode == '\n')
           {
             last_width = std::max(last_width, width);
             width = 0;
           }
         else
           {
-            width += chrs[static_cast<unsigned char>(text[i])].get_width() + char_spacing;
+            width += get_width(unicode) + char_spacing;
           }
       }
     return int(std::max(width, last_width));
@@ -277,10 +185,10 @@ Font::get_height() const
 }
 
 int
-Font::get_width(char c) const
+Font::get_width(uint32_t unicode) const
 {
   if (impl)
-    return impl->get_width(c);
+    return impl->get_width(unicode);
   else
     return 0; 
 }
