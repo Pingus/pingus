@@ -42,6 +42,8 @@ public:
   FramebufferSurfaceImpl* get_impl() const { return impl.get(); }
 
   bool operator==(const FramebufferSurface& other) const { return impl == other.impl; }
+
+  operator bool() const { return impl.get() != 0; }
 private:
   boost::shared_ptr<FramebufferSurfaceImpl> impl;
 };
