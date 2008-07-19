@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: Giray Devlet <giray@devlet.cc>, Martijn Santen "
 "<martijn@jomarsoft.nl>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plin; charset=ISO-8859-1\n"
+"Content-Type: text/plin; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  nl.po (Pingus 0.5.0)  #-#-#-#-#\n"
 "#-#-#-#-#  nl.po (Pingus 0.5.0)  #-#-#-#-#\n"
@@ -1215,7 +1215,7 @@ msgstr ""
 
 #: data/levels/tutorial/snow7-grumbel.pingus:5
 msgid "One must prepare, the rest must follow"
-msgstr "Eén moet voorbereiden, de rest moet volgen"
+msgstr "EÃ©n moet voorbereiden, de rest moet volgen"
 
 #: data/levels/tutorial/snow7-grumbel.pingus:6
 msgid ""
@@ -1225,7 +1225,7 @@ msgid ""
 msgstr ""
 "Soms zijn er situaties waar je geen blokker bij de hand hebt om je Pingus te "
 "coordineren. Je zult andere manieren moeten zien te vinden om ze onder "
-"controle te krijgen, terwijl één het pad baant voor de rest. "
+"controle te krijgen, terwijl Ã©Ã©n het pad baant voor de rest. "
 
 #: data/levels/tutorial/snow8-grumbel.pingus:5
 msgid "Dig and float, but just don't fall and smash"
@@ -2113,7 +2113,7 @@ msgstr ""
 #~ msgstr "Al eens een cariere overwogen als Pingu vernietiger? "
 
 #~ msgid "You missed one! What's your excuse!?"
-#~ msgstr "Je hebt er één gemist! Wat is je smoes!?"
+#~ msgstr "Je hebt er Ã©Ã©n gemist! Wat is je smoes!?"
 
 #~ msgid "Please reassure me that you hit the Armageddon button."
 #~ msgstr "Beloof me alsjeblieft dat je de Armageddon knop indrukt."

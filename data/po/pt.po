@@ -20,7 +20,7 @@ msgstr ""
 "Last-Translator: Ricardo Cruz <rick2@aeiou.pt>\n"
 "Language-Team: Portuguese\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pt.po (pt)  #-#-#-#-#\n"
 "X-Generator: KBabel 1.0.1\n"
@@ -72,7 +72,7 @@ msgstr "Afogado"
 
 #: src/pingu_enums.cpp:43
 msgid "Exiter"
-msgstr "SaÌndo"
+msgstr "Sa√≠ndo"
 
 #: src/pingu_enums.cpp:44
 msgid "Faller"
@@ -96,7 +96,7 @@ msgstr "Mineiro"
 
 #: src/pingu_enums.cpp:49
 msgid "Rocketlauncher"
-msgstr "LanÁador de rockets"
+msgstr "Lan√ßador de rockets"
 
 #: src/pingu_enums.cpp:50
 msgid "Slider"
@@ -136,11 +136,11 @@ msgstr "Abortar"
 
 #: src/start_screen.cpp:163
 msgid "Number of Pingus: "
-msgstr "N˙mero de Pingus: "
+msgstr "N√∫mero de Pingus: "
 
 #: src/start_screen.cpp:166
 msgid "Number to Save: "
-msgstr "N˙mero a Salvar: "
+msgstr "N√∫mero a Salvar: "
 
 #: src/start_screen.cpp:169
 msgid "Time: "
@@ -161,7 +161,7 @@ msgstr "Mostra esta ajuda"
 #: src/pingus_main.cpp:261
 #, fuzzy
 msgid "Print version number and exit"
-msgstr "Mostra o n˙mero da vers„o e sai"
+msgstr "Mostra o n√∫mero da vers√£o e sai"
 
 #: src/pingus_main.cpp:263
 msgid "Display:"
@@ -173,7 +173,7 @@ msgstr "Arranca no Modo Janela"
 
 #: src/pingus_main.cpp:267
 msgid "Start in Fullscreen"
-msgstr "Arranca em Todo o Ecr„"
+msgstr "Arranca em Todo o Ecr√£"
 
 #: src/pingus_main.cpp:269
 msgid "Allow Window resize (buggy)"
@@ -185,7 +185,7 @@ msgstr "Activa cursor por software"
 
 #: src/pingus_main.cpp:273
 msgid "Set the resolution for pingus (default: 800x600)"
-msgstr "Configuar a resoluÁ„o do Pingus (omiss„o: 800x600)"
+msgstr "Configuar a resolu√ß√£o do Pingus (omiss√£o: 800x600)"
 
 #: src/pingus_main.cpp:275
 msgid "Sound:"
@@ -197,7 +197,7 @@ msgstr "Desactiva o som"
 
 #: src/pingus_main.cpp:279
 msgid "Disable music"
-msgstr "Desactiva a m˙sica"
+msgstr "Desactiva a m√∫sica"
 
 #: src/pingus_main.cpp:283
 msgid "Select language to use with Pingus"
@@ -210,7 +210,7 @@ msgstr ""
 #: src/pingus_main.cpp:289
 #, fuzzy
 msgid "Loads the level editor"
-msgstr "..:: LanÁa o editor de nÌveis ::.."
+msgstr "..:: Lan√ßa o editor de n√≠veis ::.."
 
 #: src/pingus_main.cpp:291
 msgid "Test a font"
@@ -223,7 +223,7 @@ msgstr ""
 #: src/pingus_main.cpp:295
 #, fuzzy
 msgid "Misc Options:"
-msgstr "OpÁıes:"
+msgstr "Op√ß√µes:"
 
 #: src/pingus_main.cpp:296
 msgid "PATH"
@@ -235,11 +235,11 @@ msgstr ""
 
 #: src/pingus_main.cpp:300
 msgid "Disable automatic scrolling"
-msgstr "Desactiva deslcomento autom·tico"
+msgstr "Desactiva deslcomento autom√°tico"
 
 #: src/pingus_main.cpp:302
 msgid "Don't read ~/.pingus/config"
-msgstr "N„o lÍ ~/.pingus/config"
+msgstr "N√£o l√™ ~/.pingus/config"
 
 #: src/pingus_main.cpp:303
 #, fuzzy
@@ -252,7 +252,7 @@ msgid ""
 "Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
 "speed up the game on slower machines"
 msgstr ""
-"reduz uso do CPU, pode aumentar a velocidade do jogo em m·quinas mais lentas"
+"reduz uso do CPU, pode aumentar a velocidade do jogo em m√°quinas mais lentas"
 
 #: src/pingus_main.cpp:307
 msgid "Uses the controller given in FILE"
@@ -260,63 +260,63 @@ msgstr "Usa o controlador especificado em FICHEIRO"
 
 #: src/pingus_main.cpp:309
 msgid "Debugging and experimental stuff:"
-msgstr "DepuraÁ„o e coisas experimentais:"
+msgstr "Depura√ß√£o e coisas experimentais:"
 
 #: src/pingus_main.cpp:311
 #, fuzzy
 msgid "Enables some features, only interesting to programmers"
-msgstr "Activa algumas caracterÌsticas, sÛ interessa a programadores"
+msgstr "Activa algumas caracter√≠sticas, s√≥ interessa a programadores"
 
 #: src/pingus_main.cpp:314
 #, fuzzy
 msgid "Load a custom worldmap"
-msgstr "LÍ um mapa a partir do FICHEIRO"
+msgstr "L√™ um mapa a partir do FICHEIRO"
 
 #: src/pingus_main.cpp:316
 #, fuzzy
 msgid ""
 "Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
 "actions, sound, resources, gui, input, pathmgr"
-msgstr "OP«’ES s„o temporizadores, acÁıes, sons, recursos, gui,"
+msgstr "OP√á√ïES s√£o temporizadores, ac√ß√µes, sons, recursos, gui,"
 
 #: src/pingus_main.cpp:320
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr ""
-"AvanÁa, pelo menos, N frames, valores mais altos aumentam a velocidade do "
+"Avan√ßa, pelo menos, N frames, valores mais altos aumentam a velocidade do "
 "jogo"
 
 #: src/pingus_main.cpp:322
 msgid "Skip at most N frames"
-msgstr "AvanÁa no m·ximo N frames"
+msgstr "Avan√ßa no m√°ximo N frames"
 
 #: src/pingus_main.cpp:324
 msgid "Set both min and max frameskip to N"
-msgstr "Pıe o avanÁo mÌn. e m·x. de frames em N"
+msgstr "P√µe o avan√ßo m√≠n. e m√°x. de frames em N"
 
 #: src/pingus_main.cpp:326
 msgid "Set the game speed (0=fastest, >0=slower)"
-msgstr "Especifica a velocidade do jogo (0=o mais r·pido, >0=mais lento)"
+msgstr "Especifica a velocidade do jogo (0=o mais r√°pido, >0=mais lento)"
 
 #: src/pingus_main.cpp:328
 msgid "Set the size of the map tiles (default: 32)"
-msgstr "Especifica o tamanho dos tiles (omiss„o: 32)"
+msgstr "Especifica o tamanho dos tiles (omiss√£o: 32)"
 
 #: src/pingus_main.cpp:330
 msgid "Disable some cpu intensive features"
-msgstr "Desactiva algumas caracterÌsticas que exigem bastante CPU"
+msgstr "Desactiva algumas caracter√≠sticas que exigem bastante CPU"
 
 #: src/pingus_main.cpp:334
 msgid "Demo playing and recording:"
-msgstr "Jogo em modo de demo e gravaÁ„o:"
+msgstr "Jogo em modo de demo e grava√ß√£o:"
 
 #: src/pingus_main.cpp:336
 #, fuzzy
 msgid "Plays a demo session"
-msgstr "Reproduz uma sess„o de demo a partir do FICHEIRO"
+msgstr "Reproduz uma sess√£o de demo a partir do FICHEIRO"
 
 #: src/pingus_main.cpp:338
 msgid "Record demos for each played level"
-msgstr "Grava demos para todos os nÌveis jogados"
+msgstr "Grava demos para todos os n√≠veis jogados"
 
 #: src/pingus_main.cpp:735
 msgid "Error caught from Pingus: "
@@ -324,7 +324,7 @@ msgstr "Erro apanhado pelo Pingus: "
 
 #: src/pingus_main.cpp:739
 msgid "Pingus: Out of memory!"
-msgstr "Pingus: Falta memÛria!"
+msgstr "Pingus: Falta mem√≥ria!"
 
 #: src/pingus_main.cpp:743
 msgid "Pingus: Standard exception caught!:\n"
@@ -340,11 +340,11 @@ msgstr "-Ideia Inicial"
 
 #: src/credits.cpp:86
 msgid "-Maintaining"
-msgstr "-ManutenÁ„o"
+msgstr "-Manuten√ß√£o"
 
 #: src/credits.cpp:90
 msgid "-Programming"
-msgstr "-ProgramaÁ„o"
+msgstr "-Programa√ß√£o"
 
 #: src/credits.cpp:100
 msgid "-Porting (Win32)"
@@ -357,23 +357,23 @@ msgstr "-Porte para Win32"
 
 #: src/credits.cpp:114
 msgid "-Gfx"
-msgstr "-Efeitos Gr·ficos"
+msgstr "-Efeitos Gr√°ficos"
 
 #: src/credits.cpp:127
 msgid "-Music"
-msgstr "-M˙sica"
+msgstr "-M√∫sica"
 
 #: src/credits.cpp:134
 msgid "-Level Design"
-msgstr "-EdiÁ„o de NÌveis"
+msgstr "-Edi√ß√£o de N√≠veis"
 
 #: src/credits.cpp:140
 msgid "-Story"
-msgstr "-HistÛria"
+msgstr "-Hist√≥ria"
 
 #: src/credits.cpp:144
 msgid "-Translation"
-msgstr "-TraduÁ„o"
+msgstr "-Tradu√ß√£o"
 
 #: src/credits.cpp:159
 msgid "-Special"
@@ -426,11 +426,11 @@ msgstr "Sucesso!"
 
 #: src/result_screen.cpp:188
 msgid "Failure!"
-msgstr "FalhanÁo!"
+msgstr "Falhan√ßo!"
 
 #: src/result_screen.cpp:197
 msgid "Perfect! You saved everyone possible - great!"
-msgstr "Perfeito! Salvaste todos os possÌveis - fant·stico!"
+msgstr "Perfeito! Salvaste todos os poss√≠veis - fant√°stico!"
 
 #: src/result_screen.cpp:199
 msgid "No-one got killed, pretty good work."
@@ -450,11 +450,11 @@ msgstr "Nem todos foram salvos, mas ainda assim, bom trabalho!"
 
 #: src/result_screen.cpp:206
 msgid "What can I say, you made it - congratulations!"
-msgstr "O que posso dizer, conseguiste - parabÈns!"
+msgstr "O que posso dizer, conseguiste - parab√©ns!"
 
 #: src/result_screen.cpp:211
 msgid "You killed everybody, not good."
-msgstr "Mataste todos, n„o foi l· muito bom."
+msgstr "Mataste todos, n√£o foi l√° muito bom."
 
 #: src/result_screen.cpp:213
 msgid "No-one got saved - I know you can do better."
@@ -465,8 +465,8 @@ msgid ""
 "You didn't save enough, but you saved a few.  Next\n"
 "time you might do better."
 msgstr ""
-"N„o salvaste os suficientes, mas ainda salvaste uns poucos.  Para\n"
-"a prÛxima, vais ser melhor."
+"N√£o salvaste os suficientes, mas ainda salvaste uns poucos.  Para\n"
+"a pr√≥xima, vais ser melhor."
 
 #: src/result_screen.cpp:218
 msgid "Only one more and you would have made it - try again!"
@@ -474,11 +474,11 @@ msgstr "Apenas mais um e terias conseguido - tenta novamente!"
 
 #: src/result_screen.cpp:220
 msgid "Only a handful more and you would have made it - try again!"
-msgstr "Apenas mais uma m„o cheia deles e terias conseguido - tenta outra vez!"
+msgstr "Apenas mais uma m√£o cheia deles e terias conseguido - tenta outra vez!"
 
 #: src/result_screen.cpp:222
 msgid "Better luck next time!"
-msgstr "Melhor sorte para a prÛxima!"
+msgstr "Melhor sorte para a pr√≥xima!"
 
 #: src/result_screen.cpp:239
 msgid "Saved: "
@@ -500,7 +500,7 @@ msgstr "Soltos:%3d/%-3d   Fora:%3d   Salvos:%3d/%-3d"
 #: src/level_menu.cpp:108 src/pingus_menu.cpp:66
 #, fuzzy
 msgid "Levelsets"
-msgstr "-EdiÁ„o de NÌveis"
+msgstr "-Edi√ß√£o de N√≠veis"
 
 #: src/level_menu.cpp:124
 #, fuzzy
@@ -509,7 +509,7 @@ msgstr "Salvos: "
 
 #: src/config.cpp:72
 msgid "Couldn't open: "
-msgstr "N„o consegui abrir: "
+msgstr "N√£o consegui abrir: "
 
 #: src/config.cpp:171 src/config.cpp:205
 msgid "Unexpected char: '"
@@ -517,15 +517,15 @@ msgstr "Caracter inexperado: '"
 
 #: src/screenshot.cpp:38
 msgid "Screenshot: Saving screenshot to: "
-msgstr "Inst‚ntaneo: Gravando inst‚ntaneo para: "
+msgstr "Inst√¢ntaneo: Gravando inst√¢ntaneo para: "
 
 #: src/screenshot.cpp:40
 msgid "Screenshot: Screenshot is done."
-msgstr "Inst‚ntaneo: Inst‚ntaneo tirado."
+msgstr "Inst√¢ntaneo: Inst√¢ntaneo tirado."
 
 #: src/screenshot.cpp:115 src/screenshot.cpp:143
 msgid "Screenshot: Couldn't write file: "
-msgstr "Inst‚ntaneo: N„o consegui escrever ficheiro: "
+msgstr "Inst√¢ntaneo: N√£o consegui escrever ficheiro: "
 
 #: src/editor/editor_screen.cpp:196
 msgid ""
@@ -574,7 +574,7 @@ msgstr ""
 #: src/editor/panel.cpp:153
 #, fuzzy
 msgid "    New level"
-msgstr "F5 - ler nÌvel"
+msgstr "F5 - ler n√≠vel"
 
 #: src/editor/panel.cpp:155
 msgid "Open level..."
@@ -583,12 +583,12 @@ msgstr ""
 #: src/editor/panel.cpp:157
 #, fuzzy
 msgid "Save level..."
-msgstr "Gravar este nÌvel (F6)"
+msgstr "Gravar este n√≠vel (F6)"
 
 #: src/editor/panel.cpp:159
 #, fuzzy
 msgid "Save level as..."
-msgstr "Gravar este nÌvel (F6)"
+msgstr "Gravar este n√≠vel (F6)"
 
 #: src/editor/panel.cpp:162
 msgid "Play level..."
@@ -601,7 +601,7 @@ msgstr ""
 #: src/editor/panel.cpp:167
 #, fuzzy
 msgid "Configure level"
-msgstr "Gravar este nÌvel (F6)"
+msgstr "Gravar este n√≠vel (F6)"
 
 #: src/editor/panel.cpp:169
 #, fuzzy
@@ -674,7 +674,7 @@ msgstr ""
 #: src/editor/object_properties.cpp:51
 #, fuzzy
 msgid "Transparent"
-msgstr "-TraduÁ„o"
+msgstr "-Tradu√ß√£o"
 
 #: src/editor/object_properties.cpp:52
 #, fuzzy
@@ -708,7 +708,7 @@ msgstr ""
 #: src/editor/object_properties.cpp:62
 #, fuzzy
 msgid "Direction:"
-msgstr "OpÁıes:"
+msgstr "Op√ß√µes:"
 
 #: src/editor/object_properties.cpp:64
 msgid "Left"
@@ -717,7 +717,7 @@ msgstr ""
 #: src/editor/object_properties.cpp:65
 #, fuzzy
 msgid "Misc"
-msgstr "-M˙sica"
+msgstr "-M√∫sica"
 
 #: src/editor/object_properties.cpp:66
 msgid "Right"
@@ -820,7 +820,7 @@ msgstr ""
 #: src/editor/file_dialog.cpp:102
 #, fuzzy
 msgid "Save your level"
-msgstr "Gravar este nÌvel (F6)"
+msgstr "Gravar este n√≠vel (F6)"
 
 #: src/editor/object_selector.cpp:309
 #, fuzzy
@@ -830,27 +830,27 @@ msgstr "e - Entrada"
 #: src/editor/object_selector.cpp:310
 #, fuzzy
 msgid "Groundpiece (ground)"
-msgstr "g - pedaÁo de ch„o"
+msgstr "g - peda√ßo de ch√£o"
 
 #: src/editor/object_selector.cpp:311
 #, fuzzy
 msgid "Groundpiece (solid)"
-msgstr "s - pedaÁo de ch„o (sÛlido)"
+msgstr "s - peda√ßo de ch√£o (s√≥lido)"
 
 #: src/editor/object_selector.cpp:312
 #, fuzzy
 msgid "Groundpiece (bridge)"
-msgstr "b - pedaÁo de ch„o (ponte)"
+msgstr "b - peda√ßo de ch√£o (ponte)"
 
 #: src/editor/object_selector.cpp:313
 #, fuzzy
 msgid "Groundpiece (transparent)"
-msgstr "n - pedaÁo de ch„o (transparente)"
+msgstr "n - peda√ßo de ch√£o (transparente)"
 
 #: src/editor/object_selector.cpp:314
 #, fuzzy
 msgid "Groundpiece (remove)"
-msgstr "r - pedaÁo de ch„o (remover)"
+msgstr "r - peda√ßo de ch√£o (remover)"
 
 #: src/editor/object_selector.cpp:315
 #, fuzzy
@@ -865,7 +865,7 @@ msgstr "z - Fundo"
 #: src/editor/object_selector.cpp:319
 #, fuzzy
 msgid "Liquid"
-msgstr "l - LÌquido"
+msgstr "l - L√≠quido"
 
 #: src/editor/object_selector.cpp:320
 #, fuzzy
@@ -892,7 +892,7 @@ msgstr "Mostrar Final"
 
 #: src/worldmap/manager.cpp:138
 msgid "Show Story?"
-msgstr "Mostrar HistÛria"
+msgstr "Mostrar Hist√≥ria"
 
 #: src/worldmap/manager.cpp:167
 msgid "Leave?"
@@ -913,7 +913,7 @@ msgstr "Sim"
 
 #: src/exit_menu.cpp:85 src/exit_menu.cpp:89
 msgid "No"
-msgstr "N„o"
+msgstr "N√£o"
 
 #: src/exit_menu.cpp:124
 msgid "Exit Pingus?"
@@ -922,7 +922,7 @@ msgstr "Sair do Pingus?"
 #: src/pingus_menu.cpp:50 src/pingus_menu.cpp:72
 #, fuzzy
 msgid "Story"
-msgstr "-HistÛria"
+msgstr "-Hist√≥ria"
 
 #: src/pingus_menu.cpp:51
 msgid "..:: Start the game ::.."
@@ -931,12 +931,12 @@ msgstr "..:: Inicia o jogo ::.."
 #: src/pingus_menu.cpp:56
 #, fuzzy
 msgid "Editor"
-msgstr "SaÌndo"
+msgstr "Sa√≠ndo"
 
 #: src/pingus_menu.cpp:57
 #, fuzzy
 msgid "..:: Create your own levels ::.."
-msgstr "..:: Inicia um nÌvel contribuÌdo ::.."
+msgstr "..:: Inicia um n√≠vel contribu√≠do ::.."
 
 #: src/pingus_menu.cpp:62
 msgid "..:: Bye, bye ::.."
@@ -945,7 +945,7 @@ msgstr "..:: Adeuzinho ::.."
 #: src/pingus_menu.cpp:67
 #, fuzzy
 msgid "..:: Play User Built levels ::.."
-msgstr "..:: Inicia um nÌvel contribuÌdo ::.."
+msgstr "..:: Inicia um n√≠vel contribu√≠do ::.."
 
 #: src/pingus_menu.cpp:73
 #, fuzzy
@@ -970,7 +970,7 @@ msgstr ""
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
 msgid "If the way is blocked, bash away"
-msgstr "Se o caminho est· bloqueado, perfura-o"
+msgstr "Se o caminho est√° bloqueado, perfura-o"
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:6
 msgid ""
@@ -979,10 +979,10 @@ msgid ""
 "opposed to the vertical dig ability the Digger action provides. This new "
 "action is called Basher. "
 msgstr ""
-"Similar ‡ acÁ„o de Escavar, que j· te È conhecida dos nÌveis anteriores, "
-"tambÈm h· uma acÁ„o que permite aos Pingus escavarem na horizontal, como "
-"oposto ‡ habilidade de EscavaÁ„o na vertical. Esta nova acÁ„o È chamada de "
-"PerfuraÁ„o. "
+"Similar √† ac√ß√£o de Escavar, que j√° te √© conhecida dos n√≠veis anteriores, "
+"tamb√©m h√° uma ac√ß√£o que permite aos Pingus escavarem na horizontal, como "
+"oposto √† habilidade de Escava√ß√£o na vertical. Esta nova ac√ß√£o √© chamada de "
+"Perfura√ß√£o. "
 
 #: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:5
 msgid "Sacrifice a few and save the rest"
@@ -995,9 +995,9 @@ msgid ""
 "This will kill them, but it is sometimes necessary to sacrifice a few to "
 "save the rest. "
 msgstr ""
-"Por vezes mais nenhuma acÁ„o nos È disponÌvel, portanto temos de rebentar "
-"com o nosso caminho, recorrendo a explosıes. pelo solo. Os Pingus podem fazÍ-"
-"lo atravÈs da auto-destruiÁ„o. Isto ir· mat·-los, mas È por vezes necess·rio "
+"Por vezes mais nenhuma ac√ß√£o nos √© dispon√≠vel, portanto temos de rebentar "
+"com o nosso caminho, recorrendo a explos√µes. pelo solo. Os Pingus podem faz√™-"
+"lo atrav√©s da auto-destrui√ß√£o. Isto ir√° mat√°-los, mas √© por vezes necess√°rio "
 "sacrificar alguns, para que os outros sejam salvos. "
 
 #: data/levels/tutorial/digger-tutorial2-grumbel.pingus:5
@@ -1010,9 +1010,9 @@ msgid ""
 "is to give a Pingu the command to dig a hole into the ground so that they "
 "can reach the exit. This can be accomplished simply by clicking on a Pingu. "
 msgstr ""
-"Esta È a tua primeira miss„o. Como vais comprovar, È bastante f·cil. Tudo o "
-"que tens de fazer È dar o comando a um Pingu para fazer um buraco no solo, "
-"para que possam chegar ‡ saÌda. Isto pode ser atingido, atravÈs de um "
+"Esta √© a tua primeira miss√£o. Como vais comprovar, √© bastante f√°cil. Tudo o "
+"que tens de fazer √© dar o comando a um Pingu para fazer um buraco no solo, "
+"para que possam chegar √† sa√≠da. Isto pode ser atingido, atrav√©s de um "
 "simples clique num Pingu. "
 
 #: data/levels/tutorial/floater-tutorial-grumbel.pingus:5
@@ -1026,10 +1026,10 @@ msgid ""
 "the ground smoothly. If Pingus fall too far, they will not be able to "
 "survive the fall, so keep your eyes open! "
 msgstr ""
-"ParabÈns pela tua primeira miss„o! Agora partiremos para a seguinte. Desta "
-"vez, vais ter que equipar os teus Pingus com uma hÈlice, para que estes "
-"possam flutuar suavemente atÈ ao ch„o. Se os Pingus cairem de muito alto, "
-"n„o ir„o conseguir sobreviver ‡ queda, portanto mantÈm os olhos bem abertos! "
+"Parab√©ns pela tua primeira miss√£o! Agora partiremos para a seguinte. Desta "
+"vez, vais ter que equipar os teus Pingus com uma h√©lice, para que estes "
+"possam flutuar suavemente at√© ao ch√£o. Se os Pingus cairem de muito alto, "
+"n√£o ir√£o conseguir sobreviver √† queda, portanto mant√©m os olhos bem abertos! "
 
 #: data/levels/tutorial/jumper-tutorial-grumbel.pingus:5
 msgid "Jump for joy"
@@ -1041,14 +1041,14 @@ msgid ""
 "reachable by walking. That's when the Jumper comes in handy - it allows the "
 "Pingu to make a small jump and so enables him to reach the platform. "
 msgstr ""
-"Por vezes, um Pingu precisa de chegar a uma plataforma que est· um pouco "
-"afastada, n„o podendo ser atingida a pÈ. … aÌ que os Saltadores tornam-se "
-"˙teis - permitem que um Pingu execute um pequeno salto, permitindo assim que "
+"Por vezes, um Pingu precisa de chegar a uma plataforma que est√° um pouco "
+"afastada, n√£o podendo ser atingida a p√©. √â a√≠ que os Saltadores tornam-se "
+"√∫teis - permitem que um Pingu execute um pequeno salto, permitindo assim que "
 "este atinge a plataforma. "
 
 #: data/levels/tutorial/miner-tutorial2-grumbel.pingus:5
 msgid "Miner's heaven"
-msgstr "ParaÌso dos Mineiros"
+msgstr "Para√≠so dos Mineiros"
 
 #: data/levels/tutorial/miner-tutorial2-grumbel.pingus:6
 msgid ""
@@ -1056,14 +1056,14 @@ msgid ""
 "diagonal one. It allows a Pingu to dig diagonally through ground, thus "
 "creating a path for following Pingus. The action is called Miner. "
 msgstr ""
-"Outra acÁ„o chega atÈ nÛs - outra acÁ„o de escavaÁ„o, mas desta vez na "
-"diagonal. Permite a um Pingu escavar na diagonal atravÈs do solo, e, assim, "
-"criar um caminho para que os outros Pingus o sigam. Esta acÁ„o È a do "
+"Outra ac√ß√£o chega at√© n√≥s - outra ac√ß√£o de escava√ß√£o, mas desta vez na "
+"diagonal. Permite a um Pingu escavar na diagonal atrav√©s do solo, e, assim, "
+"criar um caminho para que os outros Pingus o sigam. Esta ac√ß√£o √© a do "
 "Mineiro. "
 
 #: data/levels/tutorial/snow10-grumbel.pingus:5
 msgid "Panic Island (float/bash)"
-msgstr "Ilha de P‚nico (flutuar/perfurar)"
+msgstr "Ilha de P√¢nico (flutuar/perfurar)"
 
 #: data/levels/tutorial/snow10-grumbel.pingus:6
 msgid ""
@@ -1071,9 +1071,9 @@ msgid ""
 "one gets a bit trickier. The Pingus are coming out of two entrances in "
 "parallel and it is your job to coordinate the two groups wisely. "
 msgstr ""
-"Enquanto que os anteriores nÌveis n„o requeriram muita rapidez da tua parte, "
+"Enquanto que os anteriores n√≠veis n√£o requeriram muita rapidez da tua parte, "
 "este torna-se um pouco mais trabalhoso. Os Pingus partem de duas entradas em "
-"paralelo e a tua tarefa È a de cordenar os dois grupos sabiamente. "
+"paralelo e a tua tarefa √© a de cordenar os dois grupos sabiamente. "
 
 #: data/levels/tutorial/snow11-grumbel.pingus:5
 msgid "Jump'n Bump... and Bash..."
@@ -1086,10 +1086,10 @@ msgid ""
 "coordinating them all. Since you only need to save 5 it should be doable, "
 "but if all else fails use the pause-mode ('p') to get an overview again. "
 msgstr ""
-"… tempo de entrar em p‚nico. Os Pingus n„o sairam muito rapidamente, pois "
-"eles v„o andar de um lado para o outro, a bater nas paredes, mas tu ir·s "
-"entrar em apuros num ·pice ao tentar corden·-los a todos. Visto sÛ "
-"precisares de salvar 5, deves aguentar, mas se tudo comeÁar a falhar, usa o "
+"√â tempo de entrar em p√¢nico. Os Pingus n√£o sairam muito rapidamente, pois "
+"eles v√£o andar de um lado para o outro, a bater nas paredes, mas tu ir√°s "
+"entrar em apuros num √°pice ao tentar corden√°-los a todos. Visto s√≥ "
+"precisares de salvar 5, deves aguentar, mas se tudo come√ßar a falhar, usa o "
 "modo de pausa ('p') para obteres uma vista geral de tudo, antes de "
 "prosseguires. "
 
@@ -1103,13 +1103,13 @@ msgid ""
 "level gives you enough time to think your actions through. No more tips this "
 "time, but good luck! "
 msgstr ""
-"Tens dois grupos para cordenares desta vez. N„o h· necessidade de entrares "
-"em p‚nico, visto ser-te dado tempo suficiente para ponderares todas as tuas "
-"decisıes. Desta vez, n„o h· mais pistas, mas boa sorte! "
+"Tens dois grupos para cordenares desta vez. N√£o h√° necessidade de entrares "
+"em p√¢nico, visto ser-te dado tempo suficiente para ponderares todas as tuas "
+"decis√µes. Desta vez, n√£o h√° mais pistas, mas boa sorte! "
 
 #: data/levels/tutorial/snow14-grumbel.pingus:5
 msgid "Block'a Rock"
-msgstr "DestrÛi a Rocha"
+msgstr "Destr√≥i a Rocha"
 
 #: data/levels/tutorial/snow14-grumbel.pingus:6
 msgid ""
@@ -1117,10 +1117,10 @@ msgid ""
 "levels. Blast your way free and make sure you also keep the rest of the "
 "Pingus under control. The Blocker action will be helpful. "
 msgstr ""
-"Mais uma vez, È altura de combinares tudo o que aprendeste nos nÌveis "
-"passados. DestrÛi a passagem e assegura-te que mantÈns, ao mesmo tempo, os "
-"restantes Pingus debaixo de olho. A acÁ„o dos Bloqueadores ser-te-· "
-"certamente ˙til. "
+"Mais uma vez, √© altura de combinares tudo o que aprendeste nos n√≠veis "
+"passados. Destr√≥i a passagem e assegura-te que mant√©ns, ao mesmo tempo, os "
+"restantes Pingus debaixo de olho. A ac√ß√£o dos Bloqueadores ser-te-√° "
+"certamente √∫til. "
 
 #: data/levels/tutorial/snow15-grumbel.pingus:5
 msgid "Climb, Climber,... Boom!"
@@ -1133,14 +1133,14 @@ msgid ""
 "Digger action in this level the Bomber needs to jump in, but how can it "
 "reach the place to bomb? "
 msgstr ""
-"Tal como j· te deves ter apercebido pelos nÌveis anteriores, tens "
-"frequentemente de combinar diferentes acÁıes para acabares o trabalho. "
-"Devido ‡ falta da acÁ„o de Escavador neste nÌvel, o Bombista precisa de "
-"saltar para dentro, mas como chegar· ele ao local a explodir? "
+"Tal como j√° te deves ter apercebido pelos n√≠veis anteriores, tens "
+"frequentemente de combinar diferentes ac√ß√µes para acabares o trabalho. "
+"Devido √† falta da ac√ß√£o de Escavador neste n√≠vel, o Bombista precisa de "
+"saltar para dentro, mas como chegar√° ele ao local a explodir? "
 
 #: data/levels/tutorial/snow16-grumbel.pingus:5
 msgid "Bridging gets more complicated..."
-msgstr "A construÁ„o comeÁa a complicar..."
+msgstr "A constru√ß√£o come√ßa a complicar..."
 
 #: data/levels/tutorial/snow16-grumbel.pingus:6
 msgid ""
@@ -1148,13 +1148,13 @@ msgid ""
 "you could end up in the hole just before the exit, so think about how to "
 "avoid that. "
 msgstr ""
-"Novamente, tens de combinar as acÁıes cuidadosamente e sabiamente. Se n„o "
-"conseguires passar pelo buraco mesmo ‡ porta da saÌda, pensa em como evit·-"
+"Novamente, tens de combinar as ac√ß√µes cuidadosamente e sabiamente. Se n√£o "
+"conseguires passar pelo buraco mesmo √† porta da sa√≠da, pensa em como evit√°-"
 "lo. "
 
 #: data/levels/tutorial/snow17-grumbel.pingus:5
 msgid "If too high, your Pingu will die..."
-msgstr "Se for muito alto, os teus Pingus ir„o morrer..."
+msgstr "Se for muito alto, os teus Pingus ir√£o morrer..."
 
 #: data/levels/tutorial/snow17-grumbel.pingus:6
 msgid ""
@@ -1162,8 +1162,8 @@ msgid ""
 "reach the exit, so just send a few and let them prepare the path for the "
 "rest. "
 msgstr ""
-"Trabalho de equipa È a palavra chave para se chegar ‡ saÌda. N„o tens "
-"Flutuadores em n˙mero suficiente, por isso, envia apenas alguns e deixa-os "
+"Trabalho de equipa √© a palavra chave para se chegar √† sa√≠da. N√£o tens "
+"Flutuadores em n√∫mero suficiente, por isso, envia apenas alguns e deixa-os "
 "preparar o caminho para os restantes. "
 
 #: data/levels/tutorial/snow19-grumbel.pingus:5
@@ -1176,14 +1176,14 @@ msgid ""
 "pretty helpful. It takes some time to build, but unlike the jumper action it "
 "allows following Pingus to reach the other end too. "
 msgstr ""
-"Se nenhum Saltador estiver ‡ m„o e um grande buraco precisa de ser "
-"ultrapassado, uma ponte pode ser bastente ˙til. Leva algum tempo a "
-"construir, mas, ao contr·rio da acÁ„o de saltador, esta permite que outros "
-"Pingus sigam e atinjam tambÈm o fim. "
+"Se nenhum Saltador estiver √† m√£o e um grande buraco precisa de ser "
+"ultrapassado, uma ponte pode ser bastente √∫til. Leva algum tempo a "
+"construir, mas, ao contr√°rio da ac√ß√£o de saltador, esta permite que outros "
+"Pingus sigam e atinjam tamb√©m o fim. "
 
 #: data/levels/tutorial/snow20-grumbel.pingus:5
 msgid "Three solutions, it's up to you"
-msgstr "TrÍs soluÁıes, agora È contigo"
+msgstr "Tr√™s solu√ß√µes, agora √© contigo"
 
 #: data/levels/tutorial/snow20-grumbel.pingus:6
 msgid ""
@@ -1191,13 +1191,13 @@ msgid ""
 "This level presents you with at least three different ways to solve it. It's "
 "up to you which one you pick. "
 msgstr ""
-"Agora que j· sabes todas as acÁıes de cor, È altura de um maior exercÌcio. "
-"Este nÌvel apresenta-te, pelo menos, trÍs diferentes maneiras de o resolver. "
-"SÛ te resta optar por uma delas. "
+"Agora que j√° sabes todas as ac√ß√µes de cor, √© altura de um maior exerc√≠cio. "
+"Este n√≠vel apresenta-te, pelo menos, tr√™s diferentes maneiras de o resolver. "
+"S√≥ te resta optar por uma delas. "
 
 #: data/levels/tutorial/snow21-grumbel.pingus:5
 msgid "Climb, Climber, climb... and build a bridge"
-msgstr "Trepa, Trepador, Trepa... e contrÛi uma ponte"
+msgstr "Trepa, Trepador, Trepa... e contr√≥i uma ponte"
 
 #: data/levels/tutorial/snow21-grumbel.pingus:6
 msgid ""
@@ -1205,13 +1205,13 @@ msgid ""
 "to climb up straight walls, thus allowing him to reach stuff that might be "
 "too high to reach by other means. "
 msgstr ""
-"Uma vez de novo, tens acesso a uma nova acÁ„o. A acÁ„o de Trepador permite a "
+"Uma vez de novo, tens acesso a uma nova ac√ß√£o. A ac√ß√£o de Trepador permite a "
 "um Pingu, trepar paredes lisas, permitindo, assim, chegar a tudo que seria "
 "demasiado elevado de chegar por outros meios. "
 
 #: data/levels/tutorial/snow22-grumbel.pingus:5
 msgid "Entrance high, Exit low"
-msgstr "Entrada elevada, SaÌda baixa"
+msgstr "Entrada elevada, Sa√≠da baixa"
 
 #: data/levels/tutorial/snow22-grumbel.pingus:6
 msgid ""
@@ -1220,10 +1220,10 @@ msgid ""
 "the stuff you need for this level in previous levels, so this shouldn't be "
 "too much of a problem for you. "
 msgstr ""
-"Se n„o tiveres Flutuadores em n˙mero suficiente para trazeres os Pingus para "
-"baixo, ‡ saÌda, - tens que encontrar outras maneiras de os liderares para "
-"baixo. J· deves ter aprendido tudo o que precisas para passares este nÌvel, "
-"portanto n„o deve ser um problema de maior para ti. "
+"Se n√£o tiveres Flutuadores em n√∫mero suficiente para trazeres os Pingus para "
+"baixo, √† sa√≠da, - tens que encontrar outras maneiras de os liderares para "
+"baixo. J√° deves ter aprendido tudo o que precisas para passares este n√≠vel, "
+"portanto n√£o deve ser um problema de maior para ti. "
 
 #: data/levels/tutorial/snow7-grumbel.pingus:5
 msgid "One must prepare, the rest must follow"
@@ -1235,13 +1235,13 @@ msgid ""
 "coordinate your Pingus. You'll have to find other ways to keep them under "
 "control while a single one prepares the path for the rest. "
 msgstr ""
-"Por vezes, h· situaÁıes em que n„o tens um Bloqueador ‡ m„o para cordenar os "
-"Pingus. Vais ter de achar outros meios para mantÍ-los controlados, enquanto "
+"Por vezes, h√° situa√ß√µes em que n√£o tens um Bloqueador √† m√£o para cordenar os "
+"Pingus. Vais ter de achar outros meios para mant√™-los controlados, enquanto "
 "um apenas prepara o caminho para os outros. "
 
 #: data/levels/tutorial/snow8-grumbel.pingus:5
 msgid "Dig and float, but just don't fall and smash"
-msgstr "Escava e flutua, mas n„o caias, nem sejas esmagado"
+msgstr "Escava e flutua, mas n√£o caias, nem sejas esmagado"
 
 #: data/levels/tutorial/snow8-grumbel.pingus:6
 msgid ""
@@ -1250,10 +1250,10 @@ msgid ""
 "apply it to the Pingus so that they will be able to reach the exit. Make "
 "sure that not too many of them die. "
 msgstr ""
-"Ao contr·rio dos dois primeiros nÌveis, tens duas acÁıes disponÌveis neste "
-"nÌvel. A tua tarefa È simple de novo: seleccionar uma acÁ„o do painel ‡ "
-"esquerda e aplic·-la nos Pingus, de forma a que estes cheguem ‡ saÌda. "
-"Certifica-te que n„o morrem muitos. "
+"Ao contr√°rio dos dois primeiros n√≠veis, tens duas ac√ß√µes dispon√≠veis neste "
+"n√≠vel. A tua tarefa √© simple de novo: seleccionar uma ac√ß√£o do painel √† "
+"esquerda e aplic√°-la nos Pingus, de forma a que estes cheguem √† sa√≠da. "
+"Certifica-te que n√£o morrem muitos. "
 
 #: data/levels/tutorial/snow9-grumbel.pingus:5
 msgid "Dig, bash and other problems"
@@ -1267,16 +1267,16 @@ msgid ""
 "think you've reached a situation from which you can no longer solve the "
 "level, double click the armageddon button at the lower right. "
 msgstr ""
-"Quantos mais nÌveis tu avanÁas, mais difÌceis estes ir„o ficar, mas n„o "
-"entres em p‚nico, visto este ser bastante f·cil. Apenas tens que aplicar "
-"tudo o que j· aprendeste nos nÌveis anteriores e n„o deves ter problemas de "
-"maior. Se julgas que chegaste a um ponto em que n„o consegues mais resolver "
-"o nÌvel, faz um duplo clique no bot„o de armaged„o, situado em baixo ‡ "
+"Quantos mais n√≠veis tu avan√ßas, mais dif√≠ceis estes ir√£o ficar, mas n√£o "
+"entres em p√¢nico, visto este ser bastante f√°cil. Apenas tens que aplicar "
+"tudo o que j√° aprendeste nos n√≠veis anteriores e n√£o deves ter problemas de "
+"maior. Se julgas que chegaste a um ponto em que n√£o consegues mais resolver "
+"o n√≠vel, faz um duplo clique no bot√£o de armaged√£o, situado em baixo √† "
 "direita. "
 
 #: data/levels/tutorial/solid-tutorial-grumbel.pingus:5
 msgid "Solid ground can block the path"
-msgstr "Piso sÛlido pode bloquear a passagem"
+msgstr "Piso s√≥lido pode bloquear a passagem"
 
 #: data/levels/tutorial/solid-tutorial-grumbel.pingus:6
 msgid ""
@@ -1285,10 +1285,10 @@ msgid ""
 "These regions are marked dark grey on the level map and cannot be destroyed, "
 "so you must find a way around them. "
 msgstr ""
-"Tal como aprendido nos passados nÌveis, os teus Pingus podem escavar atravÈs "
-"de basicamente qualquer tipo de terreno, mas h· um material o qual n„o s„o "
-"capazes de penetrar: aÁo. Estas regiıes est„o assinaladas a cizento escuro "
-"no mapa do nÌvel e n„o podem ser destruÌdas, por isso, precisas de encontrar "
+"Tal como aprendido nos passados n√≠veis, os teus Pingus podem escavar atrav√©s "
+"de basicamente qualquer tipo de terreno, mas h√° um material o qual n√£o s√£o "
+"capazes de penetrar: a√ßo. Estas regi√µes est√£o assinaladas a cizento escuro "
+"no mapa do n√≠vel e n√£o podem ser destru√≠das, por isso, precisas de encontrar "
 "um caminho entre estas. "
 
 #: data/levels/halloween/halloween1-grumbel.pingus:7
@@ -1413,7 +1413,7 @@ msgstr ""
 
 #: data/worldmaps/tutorial.worldmap:15
 msgid "The Journey Begins"
-msgstr "A Aventura ComeÁa"
+msgstr "A Aventura Come√ßa"
 
 #: data/worldmaps/tutorial.worldmap:81
 msgid "The Journey Continues"
@@ -1428,9 +1428,9 @@ msgid ""
 "like this could never end."
 msgstr ""
 "Durante um longo tempo, os Pingus viveram felizes e em paz no\n"
-"PÛlo Sul, juntamente com outros animais. Tudo estava bem\n"
+"P√≥lo Sul, juntamente com outros animais. Tudo estava bem\n"
 "e tudo levava a crer que nada romperia com a sua paz.  Os\n"
-"Pingus eram felizes, felicidade essa que n„o parecia ter fim.\n"
+"Pingus eram felizes, felicidade essa que n√£o parecia ter fim.\n"
 
 #: data/worldmaps/tutorial.worldmap:30
 #, fuzzy
@@ -1440,11 +1440,11 @@ msgid ""
 "in the world's climate, but things seemed to get worse and worse with every "
 "year."
 msgstr ""
-"PorÈm, um dia, as coisas comeÁavam a mudar lentamente, o cÈu ficou\n"
+"Por√©m, um dia, as coisas come√ßavam a mudar lentamente, o c√©u ficou\n"
 "mais escuro e a terra ficava mais quente, os seus primeiros pensamentos "
 "foram\n"
-"que isto n„o passava de uma pequena flutuaÁ„o do clima, mas as coisas "
-"comeÁaram\n"
+"que isto n√£o passava de uma pequena flutua√ß√£o do clima, mas as coisas "
+"come√ßaram\n"
 "a ficar piores e piores todos os anos."
 
 #: data/worldmaps/tutorial.worldmap:38
@@ -1455,10 +1455,10 @@ msgid ""
 "knew that this wouldn't help: they knew that they had to do something about "
 "it."
 msgstr ""
-"A neve comeÁara a derreter nalgumas regiıes e a comida a\n"
-"escacear. Outros animais j· tinham abandonado a regi„o ‡ procura\n"
-"de ·reas mais frias. Os Pingus sabiam que n„o adiantaria ficarem parados,\n"
-"foi ent„o que se aperceberam que tinham que fazer algo acerca deste problema."
+"A neve come√ßara a derreter nalgumas regi√µes e a comida a\n"
+"escacear. Outros animais j√° tinham abandonado a regi√£o √† procura\n"
+"de √°reas mais frias. Os Pingus sabiam que n√£o adiantaria ficarem parados,\n"
+"foi ent√£o que se aperceberam que tinham que fazer algo acerca deste problema."
 
 #: data/worldmaps/tutorial.worldmap:46
 #, fuzzy
@@ -1468,10 +1468,10 @@ msgid ""
 "this warming. The expedition consisted of hundreds of the bravest Pingus on "
 "the South Pole."
 msgstr ""
-"Ent„o o cÌrculo de anciıes juntou-se para tomar uma decis„o.\n"
-"Foi ent„o que eles decidiram enviar uma expediÁ„o ‡ volta do mundo\n"
-"para encontrar a causa deste aquecimento. A expediÁ„o consistia em\n"
-"centenas dos mais bravos Pingus do PÛlo Sul."
+"Ent√£o o c√≠rculo de anci√µes juntou-se para tomar uma decis√£o.\n"
+"Foi ent√£o que eles decidiram enviar uma expedi√ß√£o √† volta do mundo\n"
+"para encontrar a causa deste aquecimento. A expedi√ß√£o consistia em\n"
+"centenas dos mais bravos Pingus do P√≥lo Sul."
 
 #: data/worldmaps/tutorial.worldmap:54
 #, fuzzy
@@ -1482,11 +1482,11 @@ msgid ""
 "island has always been the first stop of Pingus that were sent out into the "
 "world."
 msgstr ""
-"E eles nomearam-te a ti como seu lÌder para a viagem ‡ volta do\n"
-"mundo. Visto a viagem ser perigosa e difÌcil, o teu primeiro\n"
-"objectivo È a Ilha de Mogorok, tambÈm conhecida como a Ilha\n"
-"Tutorial. De acordo com os anciıes, esta ilha sempre fora uma\n"
-"primeira paragem para os Pingus que eram mandados em excursıes."
+"E eles nomearam-te a ti como seu l√≠der para a viagem √† volta do\n"
+"mundo. Visto a viagem ser perigosa e dif√≠cil, o teu primeiro\n"
+"objectivo √© a Ilha de Mogorok, tamb√©m conhecida como a Ilha\n"
+"Tutorial. De acordo com os anci√µes, esta ilha sempre fora uma\n"
+"primeira paragem para os Pingus que eram mandados em excurs√µes."
 
 #: data/worldmaps/tutorial.worldmap:63
 #, fuzzy
@@ -1495,10 +1495,10 @@ msgid ""
 "abilities. The Pingus can learn to build bridges, climb, bash and use many "
 "other talents which they will need on their long and dangerous journey."
 msgstr ""
-"A ilha consiste em vastas regiıes que s„o ideais para treinar as\n"
+"A ilha consiste em vastas regi√µes que s√£o ideais para treinar as\n"
 "habilidades dos Pingus. Os Pingus podem treinar as suas habilidades\n"
 "para construir pontes, trepar, perfurar e todos os seus outros talentos\n"
-"que certamente ir„o necessitar durante a longa e perigosa viagem."
+"que certamente ir√£o necessitar durante a longa e perigosa viagem."
 
 #: data/worldmaps/tutorial.worldmap:70
 #, fuzzy
@@ -1509,9 +1509,9 @@ msgid ""
 "around the world."
 msgstr ""
 "Enquanto tu, por outro lado, vais praticar as tuas habilidades para\n"
-"comandar e guiar os Pingus. Podes tambÈm familiarizar-te com\n"
-"todas as suas habilidades, que eles ir„o aprender e melhorar,\n"
-"visto tu precisares delas para os guiares por essa viagem ‡ volta do\n"
+"comandar e guiar os Pingus. Podes tamb√©m familiarizar-te com\n"
+"todas as suas habilidades, que eles ir√£o aprender e melhorar,\n"
+"visto tu precisares delas para os guiares por essa viagem √† volta do\n"
 "mundo."
 
 #: data/worldmaps/tutorial.worldmap:78
@@ -1520,8 +1520,8 @@ msgid ""
 "Now that you and the Pingus have arrived at Tutorial Island it is time to "
 "take command and begin your mission. Good Luck!"
 msgstr ""
-"Agora que tu e os Pingus chegaram ‡ Ilha Tutorial È\n"
-"altura de tomares o comando e dares inÌcio ‡ tua miss„o.\n"
+"Agora que tu e os Pingus chegaram √† Ilha Tutorial √©\n"
+"altura de tomares o comando e dares in√≠cio √† tua miss√£o.\n"
 "\n"
 "Boa Sorte!"
 
@@ -1534,11 +1534,11 @@ msgid ""
 "the whole way into the warmer climates the Pingus have to find something "
 "else to guide them on their journey."
 msgstr ""
-"Agora apÛs tu e os Pingus terem aprendido as b·sicas e\n"
-"praticado um pouco, È tempo de continuar e iniciar a aventura pelo\n"
+"Agora ap√≥s tu e os Pingus terem aprendido as b√°sicas e\n"
+"praticado um pouco, √© tempo de continuar e iniciar a aventura pelo\n"
 "mundo fora. Visto o iceberg em que os Pingus viajavam, pela\n"
-"Ilha Tutorial, n„o se ir· aguentar nas regiıes com um clima mais\n"
-"quente, os Pingus v„o ter que encontrar outra coisa para os guiar\n"
+"Ilha Tutorial, n√£o se ir√° aguentar nas regi√µes com um clima mais\n"
+"quente, os Pingus v√£o ter que encontrar outra coisa para os guiar\n"
 "na sua aventura.\n"
 
 #: data/worldmaps/tutorial.worldmap:97
@@ -1550,10 +1550,10 @@ msgid ""
 "large tree at the end of the island which gave them wood to construct a "
 "float."
 msgstr ""
-"Mas como os anciıes disseram, a Ilha Tutorial n„o fornece\n"
-"apenas uma via de treino, mas È tambÈm o ponto de arranque\n"
-"pelo mundo fora. ApÛs algumas pesquisas, os Pingus descobriram\n"
-"o que isto significa, a ·rvore larga ao fim da ilha fornece boa\n"
+"Mas como os anci√µes disseram, a Ilha Tutorial n√£o fornece\n"
+"apenas uma via de treino, mas √© tamb√©m o ponto de arranque\n"
+"pelo mundo fora. Ap√≥s algumas pesquisas, os Pingus descobriram\n"
+"o que isto significa, a √°rvore larga ao fim da ilha fornece boa\n"
 "madeira para contruir uma jangada.\n"
 
 #: data/worldmaps/tutorial.worldmap:106
@@ -1564,9 +1564,9 @@ msgid ""
 "their journey and leave their familiar ground and enter the unknown parts of "
 "the world."
 msgstr ""
-"Ent„o os Pingus puseram m„os ‡ obra e construiram largas jangadas, o\n"
-"suficiente para os transportar a todos. Depois tambÈm de empacotarem uma "
-"sÈrie\n"
+"Ent√£o os Pingus puseram m√£os √† obra e construiram largas jangadas, o\n"
+"suficiente para os transportar a todos. Depois tamb√©m de empacotarem uma "
+"s√©rie\n"
 "de abastecimentos, eles estavam finalmente preparados para iniciar a sua "
 "jornada,\n"
 "abandonar o seu lar e entrar nas zonas virgens do mundo.\n"
@@ -1577,8 +1577,8 @@ msgid ""
 "So the Pingus sit on their raft, worrying about what's to come and where to "
 "go, while floating into the sunset.  To be continued..."
 msgstr ""
-"Ent„o os Pingus fizeram-se ao mar, preocupando-se com o que\n"
-"viria e para onde iriam, enquanto navegavam ao sabor do pÙr-do-sol.\n"
+"Ent√£o os Pingus fizeram-se ao mar, preocupando-se com o que\n"
+"viria e para onde iriam, enquanto navegavam ao sabor do p√¥r-do-sol.\n"
 "\n"
 "Continua..."
 
@@ -1598,13 +1598,13 @@ msgstr ""
 #~ msgstr "Dificuldade: "
 
 #~ msgid "Start"
-#~ msgstr "ComeÁar"
+#~ msgstr "Come√ßar"
 
 #, fuzzy
 #~ msgid ""
 #~ "Contrib\n"
 #~ "Levels"
-#~ msgstr "ContribuiÁıes"
+#~ msgstr "Contribui√ß√µes"
 
 #, fuzzy
 #~ msgid ""
@@ -1623,7 +1623,7 @@ msgstr ""
 
 #~ msgid ""
 #~ "Warning: Larger resolution than 800x600 will result in visual problems"
-#~ msgstr "Aviso: ResoluÁıes superiores a 800x600 levar„o a problemas gr·ficos"
+#~ msgstr "Aviso: Resolu√ß√µes superiores a 800x600 levar√£o a problemas gr√°ficos"
 
 #~ msgid "PingusMain: Starting Main: "
 #~ msgstr "PingusMain: Iniciando Main: "
@@ -1632,39 +1632,39 @@ msgstr ""
 #~ msgstr "| controlador_de_segfaults: SIGSEGV captado."
 
 #~ msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
-#~ msgstr "| Oups, o Pingus acabou de encravou, parabÈns, encontraste um bug."
+#~ msgstr "| Oups, o Pingus acabou de encravou, parab√©ns, encontraste um bug."
 
 #~ msgid ""
 #~ "| Please write a little bug report to <grumbel@gmx.de>, include "
 #~ "informations"
 #~ msgstr ""
-#~ "| Por favor, inclui um pequeno relatÛrio para <grumbel@gmx.de>, incluÌndo "
-#~ "pormenores (em InglÍs)"
+#~ "| Por favor, inclui um pequeno relat√≥rio para <grumbel@gmx.de>, inclu√≠ndo "
+#~ "pormenores (em Ingl√™s)"
 
 #~ msgid "| where exacly the SIGSEGV occured and how to reproduce it."
-#~ msgstr "| onde exactamente o SIGSEGV ocorreu e como reproduzÌ-lo."
+#~ msgstr "| onde exactamente o SIGSEGV ocorreu e como reproduz√≠-lo."
 
 #~ msgid "| Also try include a backtrace, you can get it like this:"
-#~ msgstr "| Tenta incluir tambÈm um backtrace, podes obter um assim:"
+#~ msgstr "| Tenta incluir tamb√©m um backtrace, podes obter um assim:"
 
 #~ msgid "| If that doesn't work, try this:"
-#~ msgstr "| Se n„o funcionar, tenta isto:"
+#~ msgstr "| Se n√£o funcionar, tenta isto:"
 
 #~ msgid "| [play until it crashes again]"
-#~ msgstr "| [joga atÈ ele encravar outra vez]"
+#~ msgstr "| [joga at√© ele encravar outra vez]"
 
 #~ msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 #~ msgstr "| Aviso: o Pingus recebeu um SIGINT, terminando."
 
 #~ msgid "Disable intro"
-#~ msgstr "Desactiva introduÁ„o"
+#~ msgstr "Desactiva introdu√ß√£o"
 
 #, fuzzy
 #~ msgid "Set the refresh rate in fullscreen (default: 60)"
-#~ msgstr "Configuar a resoluÁ„o do Pingus (omiss„o: 800x600)"
+#~ msgstr "Configuar a resolu√ß√£o do Pingus (omiss√£o: 800x600)"
 
 #~ msgid "Load a custom level from FILE"
-#~ msgstr "LÍ um ficheiro a partir de FICHEIRO"
+#~ msgstr "L√™ um ficheiro a partir de FICHEIRO"
 
 #, fuzzy
 #~ msgid "language:                "
@@ -1677,14 +1677,14 @@ msgstr ""
 #~ msgstr "suporte a som:       desactivado"
 
 #~ msgid "music support:           enabled"
-#~ msgstr "suporte a m˙sica:       activado"
+#~ msgstr "suporte a m√∫sica:       activado"
 
 #~ msgid "music support:          disabled"
-#~ msgstr "suporte a m˙sica:   desactivado"
+#~ msgstr "suporte a m√∫sica:   desactivado"
 
 #, fuzzy
 #~ msgid "resolution:              "
-#~ msgstr "resoluÁ„o:               "
+#~ msgstr "resolu√ß√£o:               "
 
 #~ msgid "fullscreen:              "
 #~ msgstr "fullscreen:            "
@@ -1700,11 +1700,11 @@ msgstr ""
 #~ msgstr "fullscreen:            "
 
 #~ msgid "PingusMain: Levelfile not found, ignoring: "
-#~ msgstr "PingusMain: Ficheiro de nÌvel n„o encontrado, ignorando: "
+#~ msgstr "PingusMain: Ficheiro de n√≠vel n√£o encontrado, ignorando: "
 
 #~ msgid "Environment variable $HOME not set, fix that and start again."
 #~ msgstr ""
-#~ "A vari·vel de ambiente $HOME n„o est· configurada, arranja isso e arranca "
+#~ "A vari√°vel de ambiente $HOME n√£o est√° configurada, arranja isso e arranca "
 #~ "novamente."
 
 #~ msgid "Unexpected char '"
@@ -1714,7 +1714,7 @@ msgstr ""
 #~ msgstr "desconocido"
 
 #~ msgid "Credits"
-#~ msgstr "MÈritos"
+#~ msgstr "M√©ritos"
 
 #, fuzzy
 #~ msgid "..:: See the credits ::.."
@@ -1726,7 +1726,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "PLE Level"
-#~ msgstr "NÌvel"
+#~ msgstr "N√≠vel"
 
 #, fuzzy
 #~ msgid "Smashing Zone"
@@ -1746,7 +1746,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Level 0"
-#~ msgstr "NÌvel"
+#~ msgstr "N√≠vel"
 
 #, fuzzy
 #~ msgid "Blocked Exit"
@@ -1759,7 +1759,7 @@ msgstr ""
 #~ msgstr "Uso: "
 
 #~ msgid " [OPTIONS]... [LEVELFILE]"
-#~ msgstr " [OP«’ES]... [FICHEIRO_DE_NÕVEL]"
+#~ msgstr " [OP√á√ïES]... [FICHEIRO_DE_N√çVEL]"
 
 #~ msgid "FILE      "
 #~ msgstr "FICHEIRO      "
@@ -1768,23 +1768,23 @@ msgstr ""
 #~ msgstr "FICHEIRO        "
 
 #~ msgid "multiple times to increase verbosity"
-#~ msgstr "m˙ltiplos tempos para aumentar a verbosidade"
+#~ msgstr "m√∫ltiplos tempos para aumentar a verbosidade"
 
 #~ msgid "FILE       "
 #~ msgstr "FICHEIRO       "
 
 #~ msgid "Read config from FILE (default: ~/.pingus/config)"
-#~ msgstr "LÍ configuraÁ„o a partir do FICHEIRO (omiss„o: ~/.pingus/config)"
+#~ msgstr "L√™ configura√ß√£o a partir do FICHEIRO (omiss√£o: ~/.pingus/config)"
 
 #~ msgid "Enable the output of debugging infos, possible"
-#~ msgstr "Activa informaÁıes para depuraÁ„o, possÌvel"
+#~ msgstr "Activa informa√ß√µes para depura√ß√£o, poss√≠vel"
 
 #~ msgid "clanVorbis support:           ok"
 #~ msgstr "suporte a clanVorbis:         ok"
 
 #~ msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 #~ msgstr ""
-#~ "suporte a clanVoribs:  em falta (ficheiros de m˙sica .ogg n„o ser„o "
+#~ "suporte a clanVoribs:  em falta (ficheiros de m√∫sica .ogg n√£o ser√£o "
 #~ "reproduzidos)"
 
 #~ msgid "clanMikMod support:           ok"
@@ -1792,14 +1792,14 @@ msgstr ""
 
 #~ msgid "clanMikMod support:  missing (music files will not be playable)"
 #~ msgstr ""
-#~ "suporte a clanMikMod:  em falta (ficheiros de m˙sica n„o ser„o "
+#~ "suporte a clanMikMod:  em falta (ficheiros de m√∫sica n√£o ser√£o "
 #~ "reproduzidos)"
 
 #~ msgid "getext support:               ok"
 #~ msgstr "suporte a getext:             ok"
 
 #~ msgid "gettext language:        english"
-#~ msgstr "lÌngua:      portuguÍs (europeu)"
+#~ msgstr "l√≠ngua:      portugu√™s (europeu)"
 
 #~ msgid "Error caught from ClanLib: "
 #~ msgstr "Erro apanhado pelo ClanLib: "
@@ -1811,37 +1811,37 @@ msgstr ""
 #~ msgstr "Ajuda do Editor (esconder com F1)"
 
 #~ msgid "F1 - show/hide this help screen"
-#~ msgstr "F1 - ecr„ de ajuda"
+#~ msgstr "F1 - ecr√£ de ajuda"
 
 #~ msgid "F2 - launch level building tutorial"
-#~ msgstr "F2 - tutorial de ediÁ„o de nÌveis"
+#~ msgstr "F2 - tutorial de edi√ß√£o de n√≠veis"
 
 #~ msgid "F3 - toggle background color"
 #~ msgstr "F3 - muda a cor de fundo"
 
 #~ msgid "F4 - play/test the level"
-#~ msgstr "F4 - jogar/testar o nÌvel"
+#~ msgstr "F4 - jogar/testar o n√≠vel"
 
 #~ msgid "F6 - save this level"
-#~ msgstr "F6 - gravar este nÌvel"
+#~ msgstr "F6 - gravar este n√≠vel"
 
 #~ msgid "F7 - [unset]"
-#~ msgstr "F7 - [n„o configurado]"
+#~ msgstr "F7 - [n√£o configurado]"
 
 #~ msgid "F8 - quick save/backup save?!"
-#~ msgstr "F8 - gravaÁ„o r·pida"
+#~ msgstr "F8 - grava√ß√£o r√°pida"
 
 #~ msgid "F9 - change level width and height"
-#~ msgstr "F9 - mudar as dimensıes do nÌvel"
+#~ msgstr "F9 - mudar as dimens√µes do n√≠vel"
 
 #~ msgid "F10 - [unset]"
-#~ msgstr "F10 - [n„o configurado]"
+#~ msgstr "F10 - [n√£o configurado]"
 
 #~ msgid "F11 - toggle fps counter"
 #~ msgstr "F11 - mostrar/esconder fps"
 
 #~ msgid "F12 - make screenshot"
-#~ msgstr "F12 - tirar um inst‚ntaneo"
+#~ msgstr "F12 - tirar um inst√¢ntaneo"
 
 #~ msgid "Home - increase object size"
 #~ msgstr "Casa - aumenta o tamanho do objecto"
@@ -1853,22 +1853,22 @@ msgstr ""
 #~ msgstr "Teclas de Cursor - Movem o objecto"
 
 #~ msgid "Shift 'Cursor Keys' - Move objects fast "
-#~ msgstr "Shift 'Cursor' - Move os objectos mais r·pido"
+#~ msgstr "Shift 'Cursor' - Move os objectos mais r√°pido"
 
 #~ msgid "PageUp   - level object up"
-#~ msgstr "PageUp   - aumenta o nÌvel do objecto"
+#~ msgstr "PageUp   - aumenta o n√≠vel do objecto"
 
 #~ msgid "PageDown - level object down"
-#~ msgstr "PageDown - diminui o nÌvel do objecto"
+#~ msgstr "PageDown - diminui o n√≠vel do objecto"
 
 #~ msgid "Shift PageUp   - increase objects z-pos by 50"
-#~ msgstr "Sift PageUp - aumenta posiÁ„o Z do objecto em 50"
+#~ msgstr "Sift PageUp - aumenta posi√ß√£o Z do objecto em 50"
 
 #~ msgid "Shift PageDown - decrease objects z-pos by 50"
-#~ msgstr "Sift PageUp - diminui a posiÁ„o Z do objecto em 50"
+#~ msgstr "Sift PageUp - diminui a posi√ß√£o Z do objecto em 50"
 
 #~ msgid "Enter - Set default zoom (1:1)"
-#~ msgstr "Enter - Pıe a ampliaÁ„o por omiss„o (1:1)"
+#~ msgstr "Enter - P√µe a amplia√ß√£o por omiss√£o (1:1)"
 
 #~ msgid "d - duplicate object"
 #~ msgstr "d - duplica objecto"
@@ -1877,22 +1877,22 @@ msgstr ""
 #~ msgstr "a - marca todos os objectos"
 
 #~ msgid "shift leftmouseclick - add object to selection"
-#~ msgstr "shift bot„o-esquerdo - adiciona o objecto ‡ selecÁ„o"
+#~ msgstr "shift bot√£o-esquerdo - adiciona o objecto √† selec√ß√£o"
 
 #~ msgid "leftmouseclick - select object"
-#~ msgstr "bot„o-do-rato-esquerdo - selecciona o objecto"
+#~ msgstr "bot√£o-do-rato-esquerdo - selecciona o objecto"
 
 #~ msgid "Insert - insert new object"
 #~ msgstr "Insert - insere novo objecto"
 
 #~ msgid "g - ungroup/group current selection"
-#~ msgstr "g - desagrupa/agrupa a selecÁ„o actual"
+#~ msgstr "g - desagrupa/agrupa a selec√ß√£o actual"
 
 #~ msgid "Ctrl PageUp   - increase objects z-pos by 1"
-#~ msgstr "Ctrl PageUp - aumenta a posiÁ„o Z do objecto em 1"
+#~ msgstr "Ctrl PageUp - aumenta a posi√ß√£o Z do objecto em 1"
 
 #~ msgid "Ctrl PageDown - decrease objects z-pos by 1"
-#~ msgstr "Ctrl PageUp - diminui a posiÁ„o Z do objecto em 1"
+#~ msgstr "Ctrl PageUp - diminui a posi√ß√£o Z do objecto em 1"
 
 #, fuzzy
 #~ msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.pingus"
@@ -1903,7 +1903,7 @@ msgstr ""
 #~ "release,\n"
 #~ "please mail it to pingus-devel@nongnu.org."
 #~ msgstr ""
-#~ "Quando criares um nÌvel e desejares que seja incluÌdo na prÛxima vers„o "
+#~ "Quando criares um n√≠vel e desejares que seja inclu√≠do na pr√≥xima vers√£o "
 #~ "do Pingus,\n"
 #~ "por favor, envia um email para pingus-devel@nongnu.org."
 
@@ -1914,16 +1914,16 @@ msgstr ""
 #~ msgstr "2 - martelar"
 
 #~ msgid "3 - spike"
-#~ msgstr "3 - espig„o"
+#~ msgstr "3 - espig√£o"
 
 #~ msgid "4 - laser_exit"
-#~ msgstr "4 - saÌda_laser"
+#~ msgstr "4 - sa√≠da_laser"
 
 #~ msgid "5 - fake_exit"
-#~ msgstr "5 - saÌda_fingida"
+#~ msgstr "5 - sa√≠da_fingida"
 
 #~ msgid "6 - smasher"
-#~ msgstr "6 - despadaÁar"
+#~ msgstr "6 - despada√ßar"
 
 #~ msgid "7 - bumper"
 #~ msgstr "7 - saltar"
@@ -1944,7 +1944,7 @@ msgstr ""
 #~ msgstr "4 - Bloco de Gelo"
 
 #~ msgid "5 - InfoBox"
-#~ msgstr "5 - Caixa de InformaÁ„o"
+#~ msgstr "5 - Caixa de Informa√ß√£o"
 
 #~ msgid "1 - snow"
 #~ msgstr "1 - neve"
@@ -1956,7 +1956,7 @@ msgstr ""
 #~ msgstr "Escolhe uma entrada"
 
 #~ msgid "1 - generic"
-#~ msgstr "1 - genÈrica"
+#~ msgstr "1 - gen√©rica"
 
 #~ msgid "2 - woodthing"
 #~ msgstr "2 - madeira"
@@ -1971,13 +1971,13 @@ msgstr ""
 #~ msgstr "Que tipo de objecto queres?"
 
 #~ msgid "g - Groundpiece (ground) [not implemented]"
-#~ msgstr "g - pedaÁo de ch„o [ainda n„o implementado]"
+#~ msgstr "g - peda√ßo de ch√£o [ainda n√£o implementado]"
 
 #~ msgid "Which object do you want?"
 #~ msgstr "Que objecto queres?"
 
 #~ msgid "x - Exit"
-#~ msgstr "x - SaÌda"
+#~ msgstr "x - Sa√≠da"
 
 #~ msgid "o - WorldObject"
 #~ msgstr "o - Objecto"
@@ -1992,10 +1992,10 @@ msgstr ""
 #~ msgstr "Que prefab desejas?"
 
 #~ msgid "1 - Surface Background"
-#~ msgstr "1 - SuperfÌcie de Fundo"
+#~ msgstr "1 - Superf√≠cie de Fundo"
 
 #~ msgid "2 - Solid Color Background"
-#~ msgstr "2 - Fundo de Cor SÛlida"
+#~ msgstr "2 - Fundo de Cor S√≥lida"
 
 #~ msgid "3 - Starfield Background"
 #~ msgstr "3 - Fundo Estrelado"
@@ -2004,7 +2004,7 @@ msgstr ""
 #~ msgstr "4 - Fundo de Tempestade"
 
 #~ msgid "Load a level (F5)"
-#~ msgstr "Ler um nÌvel (F5)"
+#~ msgstr "Ler um n√≠vel (F5)"
 
 #~ msgid "Exit the editor (Escape)"
 #~ msgstr "Sair do editor (esc)"
@@ -2013,19 +2013,19 @@ msgstr ""
 #~ msgstr "Apagar objectos marcados (Delete)"
 
 #~ msgid "Edit Level Properties"
-#~ msgstr "Editar Propriedades do NÌvel"
+#~ msgstr "Editar Propriedades do N√≠vel"
 
 #~ msgid "Start the level and test it (F4)"
-#~ msgstr "ComeÁar o nÌvel para teste (F4)"
+#~ msgstr "Come√ßar o n√≠vel para teste (F4)"
 
 #~ msgid "Create a new level from scratch"
-#~ msgstr "Criar um novo nÌvel do nada"
+#~ msgstr "Criar um novo n√≠vel do nada"
 
 #~ msgid "Insert an object (Insert)"
 #~ msgstr "Inserir um objecto (Insert)"
 
 #~ msgid "Zoom into a region"
-#~ msgstr "Amplicar esta regi„o"
+#~ msgstr "Amplicar esta regi√£o"
 
 #~ msgid "Zoom in"
 #~ msgstr "Ampliar"
@@ -2034,19 +2034,19 @@ msgstr ""
 #~ msgstr "Reduzir"
 
 #~ msgid "Setup Number of Actions"
-#~ msgstr "Configurar N˙mero de AcÁıes"
+#~ msgstr "Configurar N√∫mero de Ac√ß√µes"
 
 #~ msgid "Display Help Screen (F1)"
-#~ msgstr "Mostrar Ecr„ de Ajuda (F1)"
+#~ msgstr "Mostrar Ecr√£ de Ajuda (F1)"
 
 #~ msgid "Designed by "
 #~ msgstr "Design por "
 
 #~ msgid "Number of Pingus: %d"
-#~ msgstr "N˙mero de Pingus: %d"
+#~ msgstr "N√∫mero de Pingus: %d"
 
 #~ msgid "Loading finished. Press a mouse button to start the level"
-#~ msgstr "Carregado. Pressione um bot„o do rato para dar inÌcio ao nÌvel"
+#~ msgstr "Carregado. Pressione um bot√£o do rato para dar in√≠cio ao n√≠vel"
 
 #~ msgid "Results:"
 #~ msgstr "Resultados:"
@@ -2058,14 +2058,14 @@ msgstr ""
 #~ msgstr "Pingus mortos:  %3d/%3d"
 
 #~ msgid "Press button to continue..."
-#~ msgstr "Pressione um bot„o para continuar..."
+#~ msgstr "Pressione um bot√£o para continuar..."
 
 #~ msgid ""
 #~ "As many Pingus escaped as entered the level. That's going to be hard to "
 #~ "beat.... unless this game becomes pornographic."
 #~ msgstr ""
-#~ "Visto muitos Pingus terem escapado no princÌpio do nÌvel. Vai ser difÌcil "
-#~ "paraganhar.... a menos que o jogo se torne pornogr·fico."
+#~ "Visto muitos Pingus terem escapado no princ√≠pio do n√≠vel. Vai ser dif√≠cil "
+#~ "paraganhar.... a menos que o jogo se torne pornogr√°fico."
 
 #~ msgid "Very impressive indeed."
 #~ msgstr "Muito impressionante mesmo."
@@ -2074,47 +2074,47 @@ msgstr ""
 #~ msgstr "Bom trabalho. Mas ainda podes melhorar um pouco."
 
 #~ msgid "Not too shabby, not too shabby at all."
-#~ msgstr "N„o muito trapalh„o, mesmo nada trapalh„o."
+#~ msgstr "N√£o muito trapalh√£o, mesmo nada trapalh√£o."
 
 #~ msgid ""
 #~ "That was OK, but Pingu life insurance premiums have just gotten more "
 #~ "expensive."
 #~ msgstr ""
-#~ "Foi bom, mas as indeminisaÁıes de vida dos Pingus v„o ficar mais caras."
+#~ "Foi bom, mas as indeminisa√ß√µes de vida dos Pingus v√£o ficar mais caras."
 
 #~ msgid "Maybe this level calls for a different strategy."
-#~ msgstr "Talvez este nÌvel peÁa uma estratÈgia diferente."
+#~ msgstr "Talvez este n√≠vel pe√ßa uma estrat√©gia diferente."
 
 #~ msgid "Exactly half. Are you saving only the female ones?"
-#~ msgstr "Exactamente metade. Est·s a salvar apenas as fÍmeas?"
+#~ msgstr "Exactamente metade. Est√°s a salvar apenas as f√™meas?"
 
 #~ msgid "If I were a Pingu, I never would have left that entrance."
 #~ msgstr "Se eu fosse um Pingus, eu nunca teria abandonado a entrada."
 
 #~ msgid "Maybe you would feel more at home playing Quake."
-#~ msgstr "Talvez te sintas mais ‡ vontade a jogar Quake."
+#~ msgstr "Talvez te sintas mais √† vontade a jogar Quake."
 
 #~ msgid ""
 #~ "Maybe this level calls for a different strategy. Like attempting to save "
 #~ "them, for example."
 #~ msgstr ""
-#~ "Talvez seja preciso aplicar uma estratÈgia diferente neste nÌvel. Como "
-#~ "tentar salv·-los, por exemplo."
+#~ "Talvez seja preciso aplicar uma estrat√©gia diferente neste n√≠vel. Como "
+#~ "tentar salv√°-los, por exemplo."
 
 #~ msgid "Ever considered a career as a Pingu exterminator?"
 #~ msgstr "Alguma vez consideraste uma carreira de exterminador de Pingus?"
 
 #~ msgid "You missed one! What's your excuse!?"
-#~ msgstr "Perdeste um! Qual È a tua desculpa!?"
+#~ msgstr "Perdeste um! Qual √© a tua desculpa!?"
 
 #~ msgid "Please reassure me that you hit the Armageddon button."
-#~ msgstr "Por favor, diz-me que carregaste no bot„o de Armaged„o."
+#~ msgstr "Por favor, diz-me que carregaste no bot√£o de Armaged√£o."
 
 #~ msgid "You've got a negative save/total value, something is buggy."
-#~ msgstr "Tiveste um valor negativo de salvaÁıes, h· algum bug por aqui."
+#~ msgstr "Tiveste um valor negativo de salva√ß√µes, h√° algum bug por aqui."
 
 #~ msgid "Launch the Level editor (experimental)"
-#~ msgstr "LanÁa o Editor de NÌvel (experimental)"
+#~ msgstr "Lan√ßa o Editor de N√≠vel (experimental)"
 
 #, fuzzy
 #~ msgid ""
@@ -2123,16 +2123,16 @@ msgstr ""
 #~ msgstr "Criar um"
 
 #~ msgid "Screenshot: Couldn't save screenshot"
-#~ msgstr "Inst‚ntaneo: N„o foi possÌvel gravar inst‚ntaneo"
+#~ msgstr "Inst√¢ntaneo: N√£o foi poss√≠vel gravar inst√¢ntaneo"
 
 #~ msgid "WorldMap: File not found: "
-#~ msgstr "WorldMap: Ficheiro n„o encontrado: "
+#~ msgstr "WorldMap: Ficheiro n√£o encontrado: "
 
 #~ msgid "..:: The people who brought this game to you ::.."
-#~ msgstr "..:: As pessoas que levaram este jogo atÈ ti ::.."
+#~ msgstr "..:: As pessoas que levaram este jogo at√© ti ::.."
 
 #~ msgid "..:: Takes you to the options menu ::.."
-#~ msgstr "..:: Leva-te ao menu de opÁıes ::.."
+#~ msgstr "..:: Leva-te ao menu de op√ß√µes ::.."
 
 #~ msgid "Options"
-#~ msgstr "OpÁıes"
+#~ msgstr "Op√ß√µes"

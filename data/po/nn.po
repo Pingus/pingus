@@ -12,7 +12,7 @@ msgstr ""
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
@@ -65,7 +65,7 @@ msgstr "Drukna"
 
 #: src/pingu_enums.cpp:43
 msgid "Exiter"
-msgstr "Går ut"
+msgstr "GÃ¥r ut"
 
 #: src/pingu_enums.cpp:44
 msgid "Faller"
@@ -133,7 +133,7 @@ msgstr "Pingusar: "
 
 #: src/start_screen.cpp:166
 msgid "Number to Save: "
-msgstr "Å redda: "
+msgstr "Ã… redda: "
 
 #: src/start_screen.cpp:169
 msgid "Time: "
@@ -177,7 +177,7 @@ msgstr "Bruk programvarebasert muspeikar."
 
 #: src/pingus_main.cpp:273
 msgid "Set the resolution for pingus (default: 800x600)"
-msgstr "Vel oppløysing for pingus (standard: 800x600)."
+msgstr "Vel opplÃ¸ysing for pingus (standard: 800x600)."
 
 #: src/pingus_main.cpp:275
 msgid "Sound:"
@@ -185,19 +185,19 @@ msgstr "Lyd:"
 
 #: src/pingus_main.cpp:277
 msgid "Disable sound"
-msgstr "Slå av lyd."
+msgstr "SlÃ¥ av lyd."
 
 #: src/pingus_main.cpp:279
 msgid "Disable music"
-msgstr "Slå av musikk."
+msgstr "SlÃ¥ av musikk."
 
 #: src/pingus_main.cpp:283
 msgid "Select language to use with Pingus"
-msgstr "Vel språket som Pingus skal køyra i."
+msgstr "Vel sprÃ¥ket som Pingus skal kÃ¸yra i."
 
 #: src/pingus_main.cpp:285
 msgid "List all available languages"
-msgstr "Vis alle tilgjengelege språk."
+msgstr "Vis alle tilgjengelege sprÃ¥k."
 
 #: src/pingus_main.cpp:289
 msgid "Loads the level editor"
@@ -222,15 +222,15 @@ msgstr "STIG"
 
 #: src/pingus_main.cpp:297
 msgid "Set the path to load the data files to 'path'"
-msgstr "Vel stigen for henting av datafiler til «STIG»."
+msgstr "Vel stigen for henting av datafiler til Â«STIGÂ»."
 
 #: src/pingus_main.cpp:300
 msgid "Disable automatic scrolling"
-msgstr "Slå av automatisk rulling."
+msgstr "SlÃ¥ av automatisk rulling."
 
 #: src/pingus_main.cpp:302
 msgid "Don't read ~/.pingus/config"
-msgstr "Ikkje les «~/.pingus/config»."
+msgstr "Ikkje les Â«~/.pingus/configÂ»."
 
 #: src/pingus_main.cpp:303
 msgid "FILE"
@@ -241,25 +241,25 @@ msgid ""
 "Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
 "speed up the game on slower machines"
 msgstr ""
-"Les oppsett frå «FIL» (standard: ~/.pingus/config). Reduserer prosessorbruk, "
-"og kan gjera spelet raskare på gamle maskiner."
+"Les oppsett frÃ¥ Â«FILÂ» (standard: ~/.pingus/config). Reduserer prosessorbruk, "
+"og kan gjera spelet raskare pÃ¥ gamle maskiner."
 
 #: src/pingus_main.cpp:307
 msgid "Uses the controller given in FILE"
-msgstr "Bruk kontrollaren henta frå «FIL»."
+msgstr "Bruk kontrollaren henta frÃ¥ Â«FILÂ»."
 
 #: src/pingus_main.cpp:309
 msgid "Debugging and experimental stuff:"
-msgstr "Feilsøking og eksperimentelle ting:"
+msgstr "FeilsÃ¸king og eksperimentelle ting:"
 
 #: src/pingus_main.cpp:311
 msgid "Enables some features, only interesting to programmers"
-msgstr "Slå på nokre funksjonar som berre er interessante for programmerarar."
+msgstr "SlÃ¥ pÃ¥ nokre funksjonar som berre er interessante for programmerarar."
 
 #: src/pingus_main.cpp:314
 #, fuzzy
 msgid "Load a custom worldmap"
-msgstr "Last eit sjølvlaga verdskart frå «FIL»."
+msgstr "Last eit sjÃ¸lvlaga verdskart frÃ¥ Â«FILÂ»."
 
 #: src/pingus_main.cpp:316
 #, fuzzy
@@ -267,8 +267,8 @@ msgid ""
 "Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
 "actions, sound, resources, gui, input, pathmgr"
 msgstr ""
-"Slå på vising av feilsøkingsinfo. Moglege «VAL» er «tiles», «gametime», "
-"«action», «sound», «resources», «gui», «input» og «pathmgr»."
+"SlÃ¥ pÃ¥ vising av feilsÃ¸kingsinfo. Moglege Â«VALÂ» er Â«tilesÂ», Â«gametimeÂ», "
+"Â«actionÂ», Â«soundÂ», Â«resourcesÂ», Â«guiÂ», Â«inputÂ» og Â«pathmgrÂ»."
 
 #: src/pingus_main.cpp:320
 msgid "Skip at least N frames, larger values speed the game up"
@@ -280,7 +280,7 @@ msgstr "Hopp over maks kvart N-te bilete."
 
 #: src/pingus_main.cpp:324
 msgid "Set both min and max frameskip to N"
-msgstr "Set både minste og største bilethopp til N."
+msgstr "Set bÃ¥de minste og stÃ¸rste bilethopp til N."
 
 #: src/pingus_main.cpp:326
 msgid "Set the game speed (0=fastest, >0=slower)"
@@ -288,11 +288,11 @@ msgstr "Set spelfarten (0 = raskest og >0 = treigare)."
 
 #: src/pingus_main.cpp:328
 msgid "Set the size of the map tiles (default: 32)"
-msgstr "Set storleiken på kartflisene (standard: 32)."
+msgstr "Set storleiken pÃ¥ kartflisene (standard: 32)."
 
 #: src/pingus_main.cpp:330
 msgid "Disable some cpu intensive features"
-msgstr "Slår av nokre funksjonar som krev mykje prosessorkraft."
+msgstr "SlÃ¥r av nokre funksjonar som krev mykje prosessorkraft."
 
 #: src/pingus_main.cpp:334
 msgid "Demo playing and recording:"
@@ -301,15 +301,15 @@ msgstr "Avspeling og opptak av demoar:"
 #: src/pingus_main.cpp:336
 #, fuzzy
 msgid "Plays a demo session"
-msgstr "Spel ei demoøkt frå «FIL»."
+msgstr "Spel ei demoÃ¸kt frÃ¥ Â«FILÂ»."
 
 #: src/pingus_main.cpp:338
 msgid "Record demos for each played level"
-msgstr "Ta opp ei demoøkt for kvart spelte brett."
+msgstr "Ta opp ei demoÃ¸kt for kvart spelte brett."
 
 #: src/pingus_main.cpp:735
 msgid "Error caught from Pingus: "
-msgstr "Fekk feil frå Pingus: "
+msgstr "Fekk feil frÃ¥ Pingus: "
 
 #: src/pingus_main.cpp:739
 msgid "Pingus: Out of memory!"
@@ -325,7 +325,7 @@ msgstr "Pingus: Fekk ukjent kast:"
 
 #: src/credits.cpp:82
 msgid "-Idea"
-msgstr "-Idé"
+msgstr "-IdÃ©"
 
 #: src/credits.cpp:86
 msgid "-Maintaining"
@@ -406,7 +406,7 @@ msgstr ""
 
 #: src/result_screen.cpp:131
 msgid "Retry"
-msgstr "Prøv igjen"
+msgstr "PrÃ¸v igjen"
 
 #: src/result_screen.cpp:181
 msgid "Success!"
@@ -429,7 +429,7 @@ msgid ""
 "You saved exactly what you needed - you made it, but\n"
 "maybe you can do better?"
 msgstr ""
-"Du redda akkurat så mange som du trengte. Du\n"
+"Du redda akkurat sÃ¥ mange som du trengte. Du\n"
 "klarte brettet, men kunne kanskje gjort det betre?"
 
 #: src/result_screen.cpp:204
@@ -453,16 +453,16 @@ msgid ""
 "You didn't save enough, but you saved a few.  Next\n"
 "time you might do better."
 msgstr ""
-"Du redda ikkje nok, men du redda då nokon.\n"
+"Du redda ikkje nok, men du redda dÃ¥ nokon.\n"
 "Neste gong gjer du det betre."
 
 #: src/result_screen.cpp:218
 msgid "Only one more and you would have made it - try again!"
-msgstr "Berre éin til, og du hadde klart det. Prøv på nytt!"
+msgstr "Berre Ã©in til, og du hadde klart det. PrÃ¸v pÃ¥ nytt!"
 
 #: src/result_screen.cpp:220
 msgid "Only a handful more and you would have made it - try again!"
-msgstr "Berre nokre få til, og du hadde klart det. Prøv på nytt!"
+msgstr "Berre nokre fÃ¥ til, og du hadde klart det. PrÃ¸v pÃ¥ nytt!"
 
 #: src/result_screen.cpp:222
 msgid "Better luck next time!"
@@ -474,7 +474,7 @@ msgstr "Redda: "
 
 #: src/result_screen.cpp:243
 msgid "Died: "
-msgstr "Døde: "
+msgstr "DÃ¸de: "
 
 #: src/result_screen.cpp:247
 msgid "Time left: "
@@ -680,7 +680,7 @@ msgstr "Ventar"
 #: src/editor/object_properties.cpp:56
 #, fuzzy
 msgid "Lava"
-msgstr "Gå ut?"
+msgstr "GÃ¥ ut?"
 
 #: src/editor/object_properties.cpp:57
 msgid "Remove"
@@ -865,15 +865,15 @@ msgstr "Vis historien?"
 
 #: src/worldmap/manager.cpp:167
 msgid "Leave?"
-msgstr "Gå ut?"
+msgstr "GÃ¥ ut?"
 
 #: src/worldmap/manager.cpp:207
 msgid "Enter?"
-msgstr "Gå inn?"
+msgstr "GÃ¥ inn?"
 
 #: src/worldmap/level_dot.cpp:152 src/worldmap/level_dot.cpp:162
 msgid "locked"
-msgstr "Låst"
+msgstr "LÃ¥st"
 
 #: src/exit_menu.cpp:46 src/exit_menu.cpp:50
 msgid "Yes"
@@ -898,7 +898,7 @@ msgstr "..:: Start spelet ::.."
 #: src/pingus_menu.cpp:56
 #, fuzzy
 msgid "Editor"
-msgstr "Går ut"
+msgstr "GÃ¥r ut"
 
 #: src/pingus_menu.cpp:57
 msgid "..:: Create your own levels ::.."
@@ -932,7 +932,7 @@ msgstr ""
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
 msgid "If the way is blocked, bash away"
-msgstr "Er vegen stengt, så knus i veg"
+msgstr "Er vegen stengt, sÃ¥ knus i veg"
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:6
 msgid ""
@@ -941,12 +941,12 @@ msgid ""
 "opposed to the vertical dig ability the Digger action provides. This new "
 "action is called Basher. "
 msgstr ""
-"Du kjenner alt Gravaren frå tidlegare brett, men det finst òg ein variant "
+"Du kjenner alt Gravaren frÃ¥ tidlegare brett, men det finst Ã²g ein variant "
 "som kan grava bortover i staden for nedover. Han heiter Knusaren."
 
 #: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:5
 msgid "Sacrifice a few and save the rest"
-msgstr "Ofra nokre få for å redda resten"
+msgstr "Ofra nokre fÃ¥ for Ã¥ redda resten"
 
 #: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:6
 msgid ""
@@ -955,14 +955,14 @@ msgid ""
 "This will kill them, but it is sometimes necessary to sacrifice a few to "
 "save the rest. "
 msgstr ""
-"Av og til finst det ikkje nok ferdigheiter for å komma velberga gjennom "
-"brettet, og du må bomba deg gjennom bakken. Pingusane kan gjera dette ved å "
-"sprenga seg sjølve. Dette tek naturleg nok livet av dei, men av og til er "
-"det nødvendige å ofra nokon for å redda resten."
+"Av og til finst det ikkje nok ferdigheiter for Ã¥ komma velberga gjennom "
+"brettet, og du mÃ¥ bomba deg gjennom bakken. Pingusane kan gjera dette ved Ã¥ "
+"sprenga seg sjÃ¸lve. Dette tek naturleg nok livet av dei, men av og til er "
+"det nÃ¸dvendige Ã¥ ofra nokon for Ã¥ redda resten."
 
 #: data/levels/tutorial/digger-tutorial2-grumbel.pingus:5
 msgid "Learning to dig"
-msgstr "Lær å grava"
+msgstr "LÃ¦r Ã¥ grava"
 
 #: data/levels/tutorial/digger-tutorial2-grumbel.pingus:6
 msgid ""
@@ -970,13 +970,13 @@ msgid ""
 "is to give a Pingu the command to dig a hole into the ground so that they "
 "can reach the exit. This can be accomplished simply by clicking on a Pingu. "
 msgstr ""
-"Dette er det første oppdraget, og er heldigvis ganske lett. Du treng berre "
-"gje éin pingu beskjed om å grava eit hol i bakken, slik at alle pinguane kan "
-"nå utgangen. Dette kan du gjera ved å trykkja på pinguen."
+"Dette er det fÃ¸rste oppdraget, og er heldigvis ganske lett. Du treng berre "
+"gje Ã©in pingu beskjed om Ã¥ grava eit hol i bakken, slik at alle pinguane kan "
+"nÃ¥ utgangen. Dette kan du gjera ved Ã¥ trykkja pÃ¥ pinguen."
 
 #: data/levels/tutorial/floater-tutorial-grumbel.pingus:5
 msgid "Float or Die"
-msgstr "Svev eller døy"
+msgstr "Svev eller dÃ¸y"
 
 #: data/levels/tutorial/floater-tutorial-grumbel.pingus:6
 msgid ""
@@ -985,10 +985,10 @@ msgid ""
 "the ground smoothly. If Pingus fall too far, they will not be able to "
 "survive the fall, so keep your eyes open! "
 msgstr ""
-"Flott utført oppdrag! No vert det litt vanskelegare. Denne gongen må du "
+"Flott utfÃ¸rt oppdrag! No vert det litt vanskelegare. Denne gongen mÃ¥ du "
 "utstyra pingusane med ein liten propell, slik at dei kan sveva ned til "
 "bakken sakte og roleg. Hugs at om ein pingus fell for langt, vil han ikkje "
-"overleva fallet, så hald augo opne."
+"overleva fallet, sÃ¥ hald augo opne."
 
 #: data/levels/tutorial/jumper-tutorial-grumbel.pingus:5
 msgid "Jump for joy"
@@ -1000,9 +1000,9 @@ msgid ""
 "reachable by walking. That's when the Jumper comes in handy - it allows the "
 "Pingu to make a small jump and so enables him to reach the platform. "
 msgstr ""
-"Av og til må ein pingu nå ei plattform som er langt vekke, men som han ikkje "
-"kan nå ved å gå. Her er Hopparen nyttig. Han gjer det mogleg å hoppa eit "
-"lite stykke for å nå plattforma."
+"Av og til mÃ¥ ein pingu nÃ¥ ei plattform som er langt vekke, men som han ikkje "
+"kan nÃ¥ ved Ã¥ gÃ¥. Her er Hopparen nyttig. Han gjer det mogleg Ã¥ hoppa eit "
+"lite stykke for Ã¥ nÃ¥ plattforma."
 
 #: data/levels/tutorial/miner-tutorial2-grumbel.pingus:5
 msgid "Miner's heaven"
@@ -1014,13 +1014,13 @@ msgid ""
 "diagonal one. It allows a Pingu to dig diagonally through ground, thus "
 "creating a path for following Pingus. The action is called Miner. "
 msgstr ""
-"Nok ei ny graveferdigheit ser dagens lys. Denne gongen lærer du å grava på "
-"skrå gjennom bakken, og dermed laga ein tunell som pingusane kan vandra "
+"Nok ei ny graveferdigheit ser dagens lys. Denne gongen lÃ¦rer du Ã¥ grava pÃ¥ "
+"skrÃ¥ gjennom bakken, og dermed laga ein tunell som pingusane kan vandra "
 "gjennom."
 
 #: data/levels/tutorial/snow10-grumbel.pingus:5
 msgid "Panic Island (float/bash)"
-msgstr "Panikkøya (svev/knus)"
+msgstr "PanikkÃ¸ya (svev/knus)"
 
 #: data/levels/tutorial/snow10-grumbel.pingus:6
 msgid ""
@@ -1028,9 +1028,9 @@ msgid ""
 "one gets a bit trickier. The Pingus are coming out of two entrances in "
 "parallel and it is your job to coordinate the two groups wisely. "
 msgstr ""
-"Dei tidlegare bretta har ikkje krevd at du måtte handla kjapt, men no vert "
-"det meir vanskelegare. Pingusane kjem frå to stader samtidig, og du må "
-"samordna dei to gruppene på ein fornuftig måte."
+"Dei tidlegare bretta har ikkje krevd at du mÃ¥tte handla kjapt, men no vert "
+"det meir vanskelegare. Pingusane kjem frÃ¥ to stader samtidig, og du mÃ¥ "
+"samordna dei to gruppene pÃ¥ ein fornuftig mÃ¥te."
 
 #: data/levels/tutorial/snow11-grumbel.pingus:5
 msgid "Jump'n Bump... and Bash..."
@@ -1043,10 +1043,10 @@ msgid ""
 "coordinating them all. Since you only need to save 5 it should be doable, "
 "but if all else fails use the pause-mode ('p') to get an overview again. "
 msgstr ""
-"Tid for panikk att! Pingusane kjem ikkje så raskt, men sidan dei snur når "
-"dei treff ein vegg, får du snart problem med å samordna dei alle. Du treng "
-"heldigvis berre redda 5, så det bør la seg gjera. Og viss du får vanskar, "
-"kan du alltids bruka pauseknappen (trykk «p») for å få oversikta att."
+"Tid for panikk att! Pingusane kjem ikkje sÃ¥ raskt, men sidan dei snur nÃ¥r "
+"dei treff ein vegg, fÃ¥r du snart problem med Ã¥ samordna dei alle. Du treng "
+"heldigvis berre redda 5, sÃ¥ det bÃ¸r la seg gjera. Og viss du fÃ¥r vanskar, "
+"kan du alltids bruka pauseknappen (trykk Â«pÂ») for Ã¥ fÃ¥ oversikta att."
 
 #: data/levels/tutorial/snow12-grumbel.pingus:5
 msgid "Two groups in parallel, coordinate wisely"
@@ -1058,8 +1058,8 @@ msgid ""
 "level gives you enough time to think your actions through. No more tips this "
 "time, but good luck! "
 msgstr ""
-"Du har to grupper å samordna denne gongen. Men ikkje få panikk av den grunn, "
-"då du har god tid til å tenkja før du handlar på dette brettet. No får du "
+"Du har to grupper Ã¥ samordna denne gongen. Men ikkje fÃ¥ panikk av den grunn, "
+"dÃ¥ du har god tid til Ã¥ tenkja fÃ¸r du handlar pÃ¥ dette brettet. No fÃ¥r du "
 "ikkje fleire tips. Lykke til!"
 
 #: data/levels/tutorial/snow14-grumbel.pingus:5
@@ -1072,8 +1072,8 @@ msgid ""
 "levels. Blast your way free and make sure you also keep the rest of the "
 "Pingus under control. The Blocker action will be helpful. "
 msgstr ""
-"Atter ein gang får du sjansen til å kombinera det du har lært på tidlegare "
-"brett. Spreng deg veg, og sjå til at du samtidig held kontrollen på resten "
+"Atter ein gang fÃ¥r du sjansen til Ã¥ kombinera det du har lÃ¦rt pÃ¥ tidlegare "
+"brett. Spreng deg veg, og sjÃ¥ til at du samtidig held kontrollen pÃ¥ resten "
 "av pingusane. Blokkaren kan vera nyttig her."
 
 #: data/levels/tutorial/snow15-grumbel.pingus:5
@@ -1087,9 +1087,9 @@ msgid ""
 "Digger action in this level the Bomber needs to jump in, but how can it "
 "reach the place to bomb? "
 msgstr ""
-"Som du kanskje har forstått av tidlegare brett, må du ofte kombinera fleire "
-"ferdigheiter for å komma deg vidare. Og sidan du ikkje har ein Gravar på "
-"dette brettet, må ein Sprengar trå til. Men korleis kan han nå staden som "
+"Som du kanskje har forstÃ¥tt av tidlegare brett, mÃ¥ du ofte kombinera fleire "
+"ferdigheiter for Ã¥ komma deg vidare. Og sidan du ikkje har ein Gravar pÃ¥ "
+"dette brettet, mÃ¥ ein Sprengar trÃ¥ til. Men korleis kan han nÃ¥ staden som "
 "skal sprengast?"
 
 #: data/levels/tutorial/snow16-grumbel.pingus:5
@@ -1102,13 +1102,13 @@ msgid ""
 "you could end up in the hole just before the exit, so think about how to "
 "avoid that. "
 msgstr ""
-"Her må du kombinera ferdigheitene på ein klokleg måte. Viss ikkje, kan du "
-"lett enda opp i holet rett før utgangen, så tenk nøye etter korleis du kan "
-"unngå det."
+"Her mÃ¥ du kombinera ferdigheitene pÃ¥ ein klokleg mÃ¥te. Viss ikkje, kan du "
+"lett enda opp i holet rett fÃ¸r utgangen, sÃ¥ tenk nÃ¸ye etter korleis du kan "
+"unngÃ¥ det."
 
 #: data/levels/tutorial/snow17-grumbel.pingus:5
 msgid "If too high, your Pingu will die..."
-msgstr "Høgdeskrekk"
+msgstr "HÃ¸gdeskrekk"
 
 #: data/levels/tutorial/snow17-grumbel.pingus:6
 msgid ""
@@ -1116,12 +1116,12 @@ msgid ""
 "reach the exit, so just send a few and let them prepare the path for the "
 "rest. "
 msgstr ""
-"Lagarbeid er stikkordet her. Du har ikkje nok Svevarar til å nå utgangen med "
-"alle, så send heller nokre få, og la dei rydda vegen for dei andre."
+"Lagarbeid er stikkordet her. Du har ikkje nok Svevarar til Ã¥ nÃ¥ utgangen med "
+"alle, sÃ¥ send heller nokre fÃ¥, og la dei rydda vegen for dei andre."
 
 #: data/levels/tutorial/snow19-grumbel.pingus:5
 msgid "Learn to use the bridge"
-msgstr "Lær brubygging"
+msgstr "LÃ¦r brubygging"
 
 #: data/levels/tutorial/snow19-grumbel.pingus:6
 msgid ""
@@ -1129,13 +1129,13 @@ msgid ""
 "pretty helpful. It takes some time to build, but unlike the jumper action it "
 "allows following Pingus to reach the other end too. "
 msgstr ""
-"Viss du må komma over ein stor avgrunn, og ikkje har nokon Hopparar, kan det "
-"vera nyttig å byggja ei bru. Det tar litt tid å byggja ei bru, men når ho er "
+"Viss du mÃ¥ komma over ein stor avgrunn, og ikkje har nokon Hopparar, kan det "
+"vera nyttig Ã¥ byggja ei bru. Det tar litt tid Ã¥ byggja ei bru, men nÃ¥r ho er "
 "ferdig, kan alle bruka ho."
 
 #: data/levels/tutorial/snow20-grumbel.pingus:5
 msgid "Three solutions, it's up to you"
-msgstr "Tre løysingar å velja mellom"
+msgstr "Tre lÃ¸ysingar Ã¥ velja mellom"
 
 #: data/levels/tutorial/snow20-grumbel.pingus:6
 msgid ""
@@ -1143,9 +1143,9 @@ msgid ""
 "This level presents you with at least three different ways to solve it. It's "
 "up to you which one you pick. "
 msgstr ""
-"No som du har lært alle ferdigheitene, er det på tide å øva litt meir. Dette "
-"brettet kan du løysa på minst tre måtar. Det er opp til deg å velja kven av "
-"dei du føretrekkjer."
+"No som du har lÃ¦rt alle ferdigheitene, er det pÃ¥ tide Ã¥ Ã¸va litt meir. Dette "
+"brettet kan du lÃ¸ysa pÃ¥ minst tre mÃ¥tar. Det er opp til deg Ã¥ velja kven av "
+"dei du fÃ¸retrekkjer."
 
 #: data/levels/tutorial/snow21-grumbel.pingus:5
 msgid "Climb, Climber, climb... and build a bridge"
@@ -1157,12 +1157,12 @@ msgid ""
 "to climb up straight walls, thus allowing him to reach stuff that might be "
 "too high to reach by other means. "
 msgstr ""
-"Her lærer du deg nok ei ny ferdigheit. Klatraren kan klatra rett opp veggar, "
-"og kan nå stader du ikkje kan komma til på andre måtar."
+"Her lÃ¦rer du deg nok ei ny ferdigheit. Klatraren kan klatra rett opp veggar, "
+"og kan nÃ¥ stader du ikkje kan komma til pÃ¥ andre mÃ¥tar."
 
 #: data/levels/tutorial/snow22-grumbel.pingus:5
 msgid "Entrance high, Exit low"
-msgstr "Høg inngang og låg utgang"
+msgstr "HÃ¸g inngang og lÃ¥g utgang"
 
 #: data/levels/tutorial/snow22-grumbel.pingus:6
 msgid ""
@@ -1171,13 +1171,13 @@ msgid ""
 "the stuff you need for this level in previous levels, so this shouldn't be "
 "too much of a problem for you. "
 msgstr ""
-"Viss du ikkje har nok Svevarar til å få alle pingusane til utgangen, må du "
-"finna ein annan måte å hjelpa dei på. Du har lært alle ferdigheitene du "
-"treng på tidlegare brett, så dette bør ikkje vera for vanskeleg."
+"Viss du ikkje har nok Svevarar til Ã¥ fÃ¥ alle pingusane til utgangen, mÃ¥ du "
+"finna ein annan mÃ¥te Ã¥ hjelpa dei pÃ¥. Du har lÃ¦rt alle ferdigheitene du "
+"treng pÃ¥ tidlegare brett, sÃ¥ dette bÃ¸r ikkje vera for vanskeleg."
 
 #: data/levels/tutorial/snow7-grumbel.pingus:5
 msgid "One must prepare, the rest must follow"
-msgstr "Éin ryddar vegen, og dei andre følgjer"
+msgstr "Ã‰in ryddar vegen, og dei andre fÃ¸lgjer"
 
 #: data/levels/tutorial/snow7-grumbel.pingus:6
 msgid ""
@@ -1185,13 +1185,13 @@ msgid ""
 "coordinate your Pingus. You'll have to find other ways to keep them under "
 "control while a single one prepares the path for the rest. "
 msgstr ""
-"På nokre brett manglar du ein Blokkar, og må finna andre måtar å halda orden "
-"på pingusane. Dette er eit slikt brett. La éin pingus gå først og rydda "
+"PÃ¥ nokre brett manglar du ein Blokkar, og mÃ¥ finna andre mÃ¥tar Ã¥ halda orden "
+"pÃ¥ pingusane. Dette er eit slikt brett. La Ã©in pingus gÃ¥ fÃ¸rst og rydda "
 "vegen, mens dei andre ventar."
 
 #: data/levels/tutorial/snow8-grumbel.pingus:5
 msgid "Dig and float, but just don't fall and smash"
-msgstr "Grav og svev, men ikkje fell og døy"
+msgstr "Grav og svev, men ikkje fell og dÃ¸y"
 
 #: data/levels/tutorial/snow8-grumbel.pingus:6
 msgid ""
@@ -1201,9 +1201,9 @@ msgid ""
 "sure that not too many of them die. "
 msgstr ""
 "I motsetning til tidlegare, har du no to ferdigheiter du kan bruka. Det er "
-"ikkje så vanskeleg. Berre vel ei ferdigheit frå oversikta til venstre, og "
-"trykk på den pingusen du vil gje ferdigheita. Og sjå til at ikkje for mange "
-"pingusar døyr!"
+"ikkje sÃ¥ vanskeleg. Berre vel ei ferdigheit frÃ¥ oversikta til venstre, og "
+"trykk pÃ¥ den pingusen du vil gje ferdigheita. Og sjÃ¥ til at ikkje for mange "
+"pingusar dÃ¸yr!"
 
 #: data/levels/tutorial/snow9-grumbel.pingus:5
 msgid "Dig, bash and other problems"
@@ -1218,13 +1218,13 @@ msgid ""
 "level, double click the armageddon button at the lower right. "
 msgstr ""
 "Jo fleire brett du klarar, jo vanskelegare vert dei. Men slapp av: dette "
-"brettet er ganske lett. Berre bruk ferdigheitene du har lært tidlegare, og "
-"alt bør gå bra. Viss du trur du har komme i ein situasjon der du ikkje "
-"lenger kan løysa brettet, kan du trykkja på ragnarok-knappen nede til høgre."
+"brettet er ganske lett. Berre bruk ferdigheitene du har lÃ¦rt tidlegare, og "
+"alt bÃ¸r gÃ¥ bra. Viss du trur du har komme i ein situasjon der du ikkje "
+"lenger kan lÃ¸ysa brettet, kan du trykkja pÃ¥ ragnarok-knappen nede til hÃ¸gre."
 
 #: data/levels/tutorial/solid-tutorial-grumbel.pingus:5
 msgid "Solid ground can block the path"
-msgstr "Fast grunn kan stå i vegen"
+msgstr "Fast grunn kan stÃ¥ i vegen"
 
 #: data/levels/tutorial/solid-tutorial-grumbel.pingus:6
 msgid ""
@@ -1233,10 +1233,10 @@ msgid ""
 "These regions are marked dark grey on the level map and cannot be destroyed, "
 "so you must find a way around them. "
 msgstr ""
-"Som du har lært på dei tidlegare bretta, kan pingusane grava gjennom nesten "
-"alt. Men det finst eitt materiale dei ikkje kjem gjennom: stål. Stålområda "
-"er fargelagde mørk grå på brettkartet, og kan ikkje øydeleggjast, så du må "
-"nok gå utanom."
+"Som du har lÃ¦rt pÃ¥ dei tidlegare bretta, kan pingusane grava gjennom nesten "
+"alt. Men det finst eitt materiale dei ikkje kjem gjennom: stÃ¥l. StÃ¥lomrÃ¥da "
+"er fargelagde mÃ¸rk grÃ¥ pÃ¥ brettkartet, og kan ikkje Ã¸ydeleggjast, sÃ¥ du mÃ¥ "
+"nok gÃ¥ utanom."
 
 #: data/levels/halloween/halloween1-grumbel.pingus:7
 msgid "One jump to catch them all"
@@ -1352,11 +1352,11 @@ msgstr ""
 
 #: data/worldmaps/tutorial.worldmap:4
 msgid "Tutorial Island"
-msgstr "Opplæringsøya"
+msgstr "OpplÃ¦ringsÃ¸ya"
 
 #: data/worldmaps/tutorial.worldmap:6
 msgid "Learn the basics"
-msgstr "Lær det grunnleggjande"
+msgstr "LÃ¦r det grunnleggjande"
 
 #: data/worldmaps/tutorial.worldmap:15
 msgid "The Journey Begins"
@@ -1374,8 +1374,8 @@ msgid ""
 "like this could never end."
 msgstr ""
 "Pingusane har i lange tider levd lykkeleg og fredfullt saman med dei andre "
-"dyra på Sørpolen. Alt var i balanse og, pingusane var glade, og ingenting "
-"såg ut til å kunna forstyrra freden."
+"dyra pÃ¥ SÃ¸rpolen. Alt var i balanse og, pingusane var glade, og ingenting "
+"sÃ¥g ut til Ã¥ kunna forstyrra freden."
 
 #: data/worldmaps/tutorial.worldmap:30
 msgid ""
@@ -1384,9 +1384,9 @@ msgid ""
 "in the world's climate, but things seemed to get worse and worse with every "
 "year."
 msgstr ""
-"Men så éin dag starta ting sakte å forandra seg: Himmelen vart mørkare, og "
-"bakken vart varmare. Først trudde pingusane dette berre var naturlege "
-"klimavariasjonar, men ting vart verre frå år til år."
+"Men sÃ¥ Ã©in dag starta ting sakte Ã¥ forandra seg: Himmelen vart mÃ¸rkare, og "
+"bakken vart varmare. FÃ¸rst trudde pingusane dette berre var naturlege "
+"klimavariasjonar, men ting vart verre frÃ¥ Ã¥r til Ã¥r."
 
 #: data/worldmaps/tutorial.worldmap:38
 msgid ""
@@ -1395,9 +1395,9 @@ msgid ""
 "knew that this wouldn't help: they knew that they had to do something about "
 "it."
 msgstr ""
-"Snøen begynte å smelta i enkelte område, og det vart stadig vanskelegare å "
-"finna mat. Andre dyr prøvde å reisa for å leita etter kaldare plassar, men "
-"pingusane visste at dette ikkje ville hjelpa; dei visste at dei måtte gjera "
+"SnÃ¸en begynte Ã¥ smelta i enkelte omrÃ¥de, og det vart stadig vanskelegare Ã¥ "
+"finna mat. Andre dyr prÃ¸vde Ã¥ reisa for Ã¥ leita etter kaldare plassar, men "
+"pingusane visste at dette ikkje ville hjelpa; dei visste at dei mÃ¥tte gjera "
 "noko med problemet."
 
 #: data/worldmaps/tutorial.worldmap:46
@@ -1407,10 +1407,10 @@ msgid ""
 "this warming. The expedition consisted of hundreds of the bravest Pingus on "
 "the South Pole."
 msgstr ""
-"Dei eldste samla seg for å prøva å fastsetja kva dei skulle gjera. Etter "
-"lange diskusjonar bestemte dei seg for å senda ut ein ekspedisjon verda "
-"rundt for å finna kjelda til oppvarminga. Ekspedisjonen besto av fleire "
-"hundre av dei modigaste pingusane på sørpolen."
+"Dei eldste samla seg for Ã¥ prÃ¸va Ã¥ fastsetja kva dei skulle gjera. Etter "
+"lange diskusjonar bestemte dei seg for Ã¥ senda ut ein ekspedisjon verda "
+"rundt for Ã¥ finna kjelda til oppvarminga. Ekspedisjonen besto av fleire "
+"hundre av dei modigaste pingusane pÃ¥ sÃ¸rpolen."
 
 #: data/worldmaps/tutorial.worldmap:54
 msgid ""
@@ -1420,9 +1420,9 @@ msgid ""
 "island has always been the first stop of Pingus that were sent out into the "
 "world."
 msgstr ""
-"Og dei valde deg til å leia dei på denne ferda. Sidan ho vert både vanskeleg "
-"og farleg, er det første målet ditt øya Mogorok, òg kjend som opplæringsøya. "
-"Dei eldste fortel at denne øya alltid har vore første stopp for pingusar som "
+"Og dei valde deg til Ã¥ leia dei pÃ¥ denne ferda. Sidan ho vert bÃ¥de vanskeleg "
+"og farleg, er det fÃ¸rste mÃ¥let ditt Ã¸ya Mogorok, Ã²g kjend som opplÃ¦ringsÃ¸ya. "
+"Dei eldste fortel at denne Ã¸ya alltid har vore fÃ¸rste stopp for pingusar som "
 "skulle ut i verda."
 
 #: data/worldmaps/tutorial.worldmap:63
@@ -1431,9 +1431,9 @@ msgid ""
 "abilities. The Pingus can learn to build bridges, climb, bash and use many "
 "other talents which they will need on their long and dangerous journey."
 msgstr ""
-"Øya består av mange område som er perfekte for å læra pingusane "
-"ferdigheitene sine. Pingusane kan læra å byggja bruer, å klatra, og å knusa "
-"seg gjennom stein, samt mykje anna som dei får bruk for på den lange og "
+"Ã˜ya bestÃ¥r av mange omrÃ¥de som er perfekte for Ã¥ lÃ¦ra pingusane "
+"ferdigheitene sine. Pingusane kan lÃ¦ra Ã¥ byggja bruer, Ã¥ klatra, og Ã¥ knusa "
+"seg gjennom stein, samt mykje anna som dei fÃ¥r bruk for pÃ¥ den lange og "
 "farlege ferda."
 
 #: data/worldmaps/tutorial.worldmap:70
@@ -1443,17 +1443,17 @@ msgid ""
 "and learn to master them, since you will need all of them on your journey "
 "around the world."
 msgstr ""
-"Når du er på øya, kan du òg øva deg på å leia og hjelpa pingusane. Du vert "
-"kjend med alle ferdigheitene deira, og kan læra deg å meistra dei. Du kjem "
-"heilt sikkert til å trenga dette på ferda ut i verda."
+"NÃ¥r du er pÃ¥ Ã¸ya, kan du Ã²g Ã¸va deg pÃ¥ Ã¥ leia og hjelpa pingusane. Du vert "
+"kjend med alle ferdigheitene deira, og kan lÃ¦ra deg Ã¥ meistra dei. Du kjem "
+"heilt sikkert til Ã¥ trenga dette pÃ¥ ferda ut i verda."
 
 #: data/worldmaps/tutorial.worldmap:78
 msgid ""
 "Now that you and the Pingus have arrived at Tutorial Island it is time to "
 "take command and begin your mission. Good Luck!"
 msgstr ""
-"No som du og pingusane er komne fram til opplæringsøya, er det på tide å ta "
-"kommandoen og ta fatt på oppdraget. Lykke til!"
+"No som du og pingusane er komne fram til opplÃ¦ringsÃ¸ya, er det pÃ¥ tide Ã¥ ta "
+"kommandoen og ta fatt pÃ¥ oppdraget. Lykke til!"
 
 #: data/worldmaps/tutorial.worldmap:88
 msgid ""
@@ -1463,9 +1463,9 @@ msgid ""
 "the whole way into the warmer climates the Pingus have to find something "
 "else to guide them on their journey."
 msgstr ""
-"No som du og pingusane har lært det grunnleggjande, er det på tide å dra "
-"vidare, og ta fatt på ferda ut i verda. Sidan isflaket som pingusane kom til "
-"øya på ikkje vil halda heile vegen til varmare strøk, må de finna eit anna "
+"No som du og pingusane har lÃ¦rt det grunnleggjande, er det pÃ¥ tide Ã¥ dra "
+"vidare, og ta fatt pÃ¥ ferda ut i verda. Sidan isflaket som pingusane kom til "
+"Ã¸ya pÃ¥ ikkje vil halda heile vegen til varmare strÃ¸k, mÃ¥ de finna eit anna "
 "transportmiddel."
 
 #: data/worldmaps/tutorial.worldmap:97
@@ -1476,10 +1476,10 @@ msgid ""
 "large tree at the end of the island which gave them wood to construct a "
 "float."
 msgstr ""
-"Men som dei eldste sa: Opplæringsøya er ikkje berre ein fin stad for å øva "
-"seg; det er òg starten på ferda vidare ut i verda. Etter litt leiting fann "
-"pingusane ut kva dei eldste hadde meint. Det store treet på eine sida av øya "
-"inneheldt ved nok til å byggja fleire store flåtar."
+"Men som dei eldste sa: OpplÃ¦ringsÃ¸ya er ikkje berre ein fin stad for Ã¥ Ã¸va "
+"seg; det er Ã²g starten pÃ¥ ferda vidare ut i verda. Etter litt leiting fann "
+"pingusane ut kva dei eldste hadde meint. Det store treet pÃ¥ eine sida av Ã¸ya "
+"inneheldt ved nok til Ã¥ byggja fleire store flÃ¥tar."
 
 #: data/worldmaps/tutorial.worldmap:106
 msgid ""
@@ -1488,18 +1488,18 @@ msgid ""
 "their journey and leave their familiar ground and enter the unknown parts of "
 "the world."
 msgstr ""
-"Pingusane bygde nok flåtar til at alle fekk plass. Og etter å ha pakka "
-"rikeleg med proviant, var dei klar til å forlata kjende farvatn, og ta fatt "
-"på den lange og farlege ferda mot ukjende strøk."
+"Pingusane bygde nok flÃ¥tar til at alle fekk plass. Og etter Ã¥ ha pakka "
+"rikeleg med proviant, var dei klar til Ã¥ forlata kjende farvatn, og ta fatt "
+"pÃ¥ den lange og farlege ferda mot ukjende strÃ¸k."
 
 #: data/worldmaps/tutorial.worldmap:114
 msgid ""
 "So the Pingus sit on their raft, worrying about what's to come and where to "
 "go, while floating into the sunset.  To be continued..."
 msgstr ""
-"Så no sit pingusane der på flåten sin, og uroar seg for kva som er i vente, "
+"SÃ¥ no sit pingusane der pÃ¥ flÃ¥ten sin, og uroar seg for kva som er i vente, "
 "og kor dei skal dra, mens dei sakte flyt inn i solnedgangen. Framhald "
-"følgjer ..."
+"fÃ¸lgjer ..."
 
 #: data/levelsets/halloween.levelset:3
 msgid "Halloween 2007"
@@ -1516,13 +1516,13 @@ msgstr ""
 #~ msgstr "Vanskegrad: "
 
 #~ msgid "Finished!"
-#~ msgstr "Fullført!"
+#~ msgstr "FullfÃ¸rt!"
 
 #~ msgid "Not finished!"
-#~ msgstr "Ikkje fullført!"
+#~ msgstr "Ikkje fullfÃ¸rt!"
 
 #~ msgid "Not Finished"
-#~ msgstr "Ikkje fullført!"
+#~ msgstr "Ikkje fullfÃ¸rt!"
 
 #~ msgid "Not Accessible"
 #~ msgstr "Ikkje tilgjengeleg"
@@ -1560,11 +1560,11 @@ msgstr ""
 #~ msgstr "Skriv bilet per sekund til stdout."
 
 #~ msgid "Reduces the CPU usage by issuing sleep()"
-#~ msgstr "Reduserer prosessorbruk ved å senda sleep()-meldingar."
+#~ msgstr "Reduserer prosessorbruk ved Ã¥ senda sleep()-meldingar."
 
 #~ msgid ""
 #~ "Warning: Larger resolution than 800x600 will result in visual problems"
-#~ msgstr "Åtvaring: Høgare oppløysing enn 800x600 vil gje visuelle problem."
+#~ msgstr "Ã…tvaring: HÃ¸gare opplÃ¸ysing enn 800x600 vil gje visuelle problem."
 
 #~ msgid "PingusMain: Starting Main: "
 #~ msgstr "PingusMain: Startar Main: "
@@ -1573,20 +1573,20 @@ msgstr ""
 #~ msgstr "Rulletekst"
 
 #~ msgid "..:: See the credits ::.."
-#~ msgstr "..:: Sjå rulleteksten ::.."
+#~ msgstr "..:: SjÃ¥ rulleteksten ::.."
 
 #~ msgid "Disable intro"
-#~ msgstr "Slå av intro."
+#~ msgstr "SlÃ¥ av intro."
 
 #~ msgid "Set the refresh rate in fullscreen (default: 60)"
 #~ msgstr "Vel oppfriskingsrate for fullskjerm (standard: 60)."
 
 #~ msgid "Load a custom level from FILE"
-#~ msgstr "Last et sjølvlaga brett frå «FIL»."
+#~ msgstr "Last et sjÃ¸lvlaga brett frÃ¥ Â«FILÂ»."
 
 #~ msgid "PingusMain: Levelfile not found, ignoring: "
 #~ msgstr "PingusMain: Fann ikkje brettfil. Hoppar over: "
 
 #~ msgid "Environment variable $HOME not set, fix that and start again."
 #~ msgstr ""
-#~ "Miljøvariabelen «$HOME» er ikkje sett. Rett opp dette, og prøv på nytt."
+#~ "MiljÃ¸variabelen Â«$HOMEÂ» er ikkje sett. Rett opp dette, og prÃ¸v pÃ¥ nytt."

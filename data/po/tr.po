@@ -10,17 +10,17 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-10-31 06:55+0100\n"
 "PO-Revision-Date: 2003-04-15 17:28+0200\n"
-"Last-Translator: Çağrı Çöltekin <cagri@metu.edu.tr>\n"
-"Language-Team: Giray Devlet <giray@devlet.cc>, Cağrı Çöltekin <cagri@metu."
+"Last-Translator: Ã‡aÄŸrÄ± Ã‡Ã¶ltekin <cagri@metu.edu.tr>\n"
+"Language-Team: Giray Devlet <giray@devlet.cc>, CaÄŸrÄ± Ã‡Ã¶ltekin <cagri@metu."
 "edu.tr>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-9\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  tr.po (Pingus 0.5.0)  #-#-#-#-#\n"
 
 #: src/game_time.cpp:66
 msgid "unlimited"
-msgstr "sınırsız"
+msgstr "sÄ±nÄ±rsÄ±z"
 
 #: src/story_screen.cpp:40
 msgid "skip"
@@ -125,19 +125,19 @@ msgstr "Tamam"
 
 #: src/start_screen.cpp:114 src/result_screen.cpp:98 src/level_menu.cpp:57
 msgid "Abort"
-msgstr "Çık"
+msgstr "Ã‡Ä±k"
 
 #: src/start_screen.cpp:163
 msgid "Number of Pingus: "
-msgstr "Pingu sayısı: "
+msgstr "Pingu sayÄ±sÄ±: "
 
 #: src/start_screen.cpp:166
 msgid "Number to Save: "
-msgstr "Kurtarılıcak Pingus: "
+msgstr "KurtarÄ±lÄ±cak Pingus: "
 
 #: src/start_screen.cpp:169
 msgid "Time: "
-msgstr "Süre: "
+msgstr "SÃ¼re: "
 
 #: src/start_screen.cpp:176
 msgid "Author: "
@@ -145,16 +145,16 @@ msgstr "Tasarlayan: "
 
 #: src/start_screen.cpp:179
 msgid "Filename: "
-msgstr "Dosya adı: "
+msgstr "Dosya adÄ±: "
 
 #: src/pingus_main.cpp:259
 msgid "Displays this help"
-msgstr "Bu yardım ekranını göster"
+msgstr "Bu yardÄ±m ekranÄ±nÄ± gÃ¶ster"
 
 #: src/pingus_main.cpp:261
 #, fuzzy
 msgid "Print version number and exit"
-msgstr "Sürümü ekrana basar ve çıkar"
+msgstr "SÃ¼rÃ¼mÃ¼ ekrana basar ve Ã§Ä±kar"
 
 #: src/pingus_main.cpp:263
 msgid "Display:"
@@ -163,11 +163,11 @@ msgstr ""
 # FIXME: needs a better translation
 #: src/pingus_main.cpp:265
 msgid "Start in Window Mode"
-msgstr "Pencerede başlat"
+msgstr "Pencerede baÅŸlat"
 
 #: src/pingus_main.cpp:267
 msgid "Start in Fullscreen"
-msgstr "Tümekran başlat"
+msgstr "TÃ¼mekran baÅŸlat"
 
 #: src/pingus_main.cpp:269
 msgid "Allow Window resize (buggy)"
@@ -175,11 +175,11 @@ msgstr ""
 
 #: src/pingus_main.cpp:271
 msgid "Enable software cursor"
-msgstr "Yazılım imleci kullan"
+msgstr "YazÄ±lÄ±m imleci kullan"
 
 #: src/pingus_main.cpp:273
 msgid "Set the resolution for pingus (default: 800x600)"
-msgstr "Pingus çözünürlüğünü ayarla (öntanılı: 640x480)"
+msgstr "Pingus Ã§Ã¶zÃ¼nÃ¼rlÃ¼ÄŸÃ¼nÃ¼ ayarla (Ã¶ntanÄ±lÄ±: 640x480)"
 
 #: src/pingus_main.cpp:275
 msgid "Sound:"
@@ -191,7 +191,7 @@ msgstr "Sesi Kapat"
 
 #: src/pingus_main.cpp:279
 msgid "Disable music"
-msgstr "Müziği Kapat"
+msgstr "MÃ¼ziÄŸi Kapat"
 
 #: src/pingus_main.cpp:283
 msgid "Select language to use with Pingus"
@@ -204,7 +204,7 @@ msgstr ""
 #: src/pingus_main.cpp:289
 #, fuzzy
 msgid "Loads the level editor"
-msgstr "..:: Seviye Editörünü Çalıştır ::.."
+msgstr "..:: Seviye EditÃ¶rÃ¼nÃ¼ Ã‡alÄ±ÅŸtÄ±r ::.."
 
 #: src/pingus_main.cpp:291
 msgid "Test a font"
@@ -217,7 +217,7 @@ msgstr ""
 #: src/pingus_main.cpp:295
 #, fuzzy
 msgid "Misc Options:"
-msgstr "Seçenekler:"
+msgstr "SeÃ§enekler:"
 
 #: src/pingus_main.cpp:296
 msgid "PATH"
@@ -227,15 +227,15 @@ msgstr ""
 #, fuzzy
 msgid "Set the path to load the data files to 'path'"
 msgstr ""
-"   -d, --datadir DİZİN/YOL  Data dosyalarının yüklenecek `yol' (path)\n"
+"   -d, --datadir DÄ°ZÄ°N/YOL  Data dosyalarÄ±nÄ±n yÃ¼klenecek `yol' (path)\n"
 
 #: src/pingus_main.cpp:300
 msgid "Disable automatic scrolling"
-msgstr "Automatik kaydırmayı kapat"
+msgstr "Automatik kaydÄ±rmayÄ± kapat"
 
 #: src/pingus_main.cpp:302
 msgid "Don't read ~/.pingus/config"
-msgstr "~/.pingus/config dosyasını okuma"
+msgstr "~/.pingus/config dosyasÄ±nÄ± okuma"
 
 #: src/pingus_main.cpp:303
 #, fuzzy
@@ -247,7 +247,7 @@ msgstr "DOSYA    "
 msgid ""
 "Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
 "speed up the game on slower machines"
-msgstr "CPU kullanımını azalt. Bu yavaş makinalarda oyunu hızlandırabilir"
+msgstr "CPU kullanÄ±mÄ±nÄ± azalt. Bu yavaÅŸ makinalarda oyunu hÄ±zlandÄ±rabilir"
 
 # FIXME: better translation
 #: src/pingus_main.cpp:307
@@ -256,29 +256,29 @@ msgstr "DOSYA'daki denetleyiciyi kullan"
 
 #: src/pingus_main.cpp:309
 msgid "Debugging and experimental stuff:"
-msgstr "Deneyseyl şeyler:"
+msgstr "Deneyseyl ÅŸeyler:"
 
 #: src/pingus_main.cpp:311
 #, fuzzy
 msgid "Enables some features, only interesting to programmers"
-msgstr "Sadece programcılariçin ilginç olan, bazı özellikleri çalıştırır."
+msgstr "Sadece programcÄ±lariÃ§in ilginÃ§ olan, bazÄ± Ã¶zellikleri Ã§alÄ±ÅŸtÄ±rÄ±r."
 
 # worldmap = ??
 #: src/pingus_main.cpp:314
 #, fuzzy
 msgid "Load a custom worldmap"
-msgstr "DOSYAdan özel worldmap yükle"
+msgstr "DOSYAdan Ã¶zel worldmap yÃ¼kle"
 
 #: src/pingus_main.cpp:316
 #, fuzzy
 msgid ""
 "Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
 "actions, sound, resources, gui, input, pathmgr"
-msgstr "SEÇENEKLER: tiles, gametime, actions, sound, resources, gui."
+msgstr "SEÃ‡ENEKLER: tiles, gametime, actions, sound, resources, gui."
 
 #: src/pingus_main.cpp:320
 msgid "Skip at least N frames, larger values speed the game up"
-msgstr "En az N resim karesini atla. Büyük N oyunu hızlandırır"
+msgstr "En az N resim karesini atla. BÃ¼yÃ¼k N oyunu hÄ±zlandÄ±rÄ±r"
 
 #: src/pingus_main.cpp:322
 msgid "Skip at most N frames"
@@ -290,20 +290,20 @@ msgstr "Tam N resim karesi atla"
 
 #: src/pingus_main.cpp:326
 msgid "Set the game speed (0=fastest, >0=slower)"
-msgstr "Oyun hızını ayarla (0=en hızlı, >0=daha yavaş)"
+msgstr "Oyun hÄ±zÄ±nÄ± ayarla (0=en hÄ±zlÄ±, >0=daha yavaÅŸ)"
 
 # FIXME: better translation.
 #: src/pingus_main.cpp:328
 msgid "Set the size of the map tiles (default: 32)"
-msgstr "Döşeme boyutunu ayarla (öntanımlı: 32)"
+msgstr "DÃ¶ÅŸeme boyutunu ayarla (Ã¶ntanÄ±mlÄ±: 32)"
 
 #: src/pingus_main.cpp:330
 msgid "Disable some cpu intensive features"
-msgstr "İşlemci gerektiren bazı özellikleri kapat"
+msgstr "Ä°ÅŸlemci gerektiren bazÄ± Ã¶zellikleri kapat"
 
 #: src/pingus_main.cpp:334
 msgid "Demo playing and recording:"
-msgstr "Demo oynatma ve kayıt:"
+msgstr "Demo oynatma ve kayÄ±t:"
 
 #: src/pingus_main.cpp:336
 #, fuzzy
@@ -312,11 +312,11 @@ msgstr "DOSYA'dan bir demo oynat"
 
 #: src/pingus_main.cpp:338
 msgid "Record demos for each played level"
-msgstr "Oynanan her oyun için demo kaydet"
+msgstr "Oynanan her oyun iÃ§in demo kaydet"
 
 #: src/pingus_main.cpp:735
 msgid "Error caught from Pingus: "
-msgstr "Pingus'ta hata saptandı: "
+msgstr "Pingus'ta hata saptandÄ±: "
 
 #: src/pingus_main.cpp:739
 msgid "Pingus: Out of memory!"
@@ -326,11 +326,11 @@ msgstr "Pingus: Bellek yetersiz!"
 # daha mi iyi boyle :) -gd
 #: src/pingus_main.cpp:743
 msgid "Pingus: Standard exception caught!:\n"
-msgstr "Pingus: Genel olağan dışı durum saptandı!:\n"
+msgstr "Pingus: Genel olaÄŸan dÄ±ÅŸÄ± durum saptandÄ±!:\n"
 
 #: src/pingus_main.cpp:747
 msgid "Pingus: Unknown throw caught!"
-msgstr "Pingus: Bilinmeyen bir hata saptandı!"
+msgstr "Pingus: Bilinmeyen bir hata saptandÄ±!"
 
 #: src/credits.cpp:82
 msgid "-Idea"
@@ -338,7 +338,7 @@ msgstr "-Fikir"
 
 #: src/credits.cpp:86
 msgid "-Maintaining"
-msgstr "-Proje Yöneticisi"
+msgstr "-Proje YÃ¶neticisi"
 
 #: src/credits.cpp:90
 msgid "-Programming"
@@ -346,12 +346,12 @@ msgstr "-Programlama"
 
 #: src/credits.cpp:100
 msgid "-Porting (Win32)"
-msgstr "-Taşıma (Win32)"
+msgstr "-TaÅŸÄ±ma (Win32)"
 
 #: src/credits.cpp:109
 #, fuzzy
 msgid "-Porting (MacOSX)"
-msgstr "-Taşıma (Win32)"
+msgstr "-TaÅŸÄ±ma (Win32)"
 
 #: src/credits.cpp:114
 msgid "-Gfx"
@@ -359,35 +359,35 @@ msgstr "-Grafikler"
 
 #: src/credits.cpp:127
 msgid "-Music"
-msgstr "-Müzik"
+msgstr "-MÃ¼zik"
 
 #: src/credits.cpp:134
 msgid "-Level Design"
-msgstr "-Seviye Tasarımı"
+msgstr "-Seviye TasarÄ±mÄ±"
 
 #: src/credits.cpp:140
 msgid "-Story"
-msgstr "-Öykü"
+msgstr "-Ã–ykÃ¼"
 
 #: src/credits.cpp:144
 msgid "-Translation"
-msgstr "-Çeviri"
+msgstr "-Ã‡eviri"
 
 #: src/credits.cpp:159
 msgid "-Special"
-msgstr "-Özel"
+msgstr "-Ã–zel"
 
 #: src/credits.cpp:160
 msgid "-Thanks to"
-msgstr "-Şükranlarımız"
+msgstr "-ÅÃ¼kranlarÄ±mÄ±z"
 
 #: src/credits.cpp:204
 msgid "_And a very Special Thanks"
-msgstr "_Ve Özgür Yazılıma"
+msgstr "_Ve Ã–zgÃ¼r YazÄ±lÄ±ma"
 
 #: src/credits.cpp:205
 msgid "_to all the people who"
-msgstr "_katkıda bulunan"
+msgstr "_katkÄ±da bulunan"
 
 #: src/credits.cpp:206
 msgid "_contribute to"
@@ -395,20 +395,20 @@ msgstr "_herkese..."
 
 #: src/credits.cpp:207
 msgid "_Free Software!"
-msgstr "_Teşekkürler!"
+msgstr "_TeÅŸekkÃ¼rler!"
 
 #: src/credits.cpp:213
 msgid "_Thank you for"
-msgstr "_Oynadığınız için"
+msgstr "_OynadÄ±ÄŸÄ±nÄ±z iÃ§in"
 
 #: src/credits.cpp:214
 msgid "_playing!"
-msgstr "_teşekkürler!"
+msgstr "_teÅŸekkÃ¼rler!"
 
 #: src/credits.cpp:276 src/editor/panel.cpp:211
 #: src/editor/object_selector.cpp:318 src/pingus_menu.cpp:61
 msgid "Exit"
-msgstr "Çıkış"
+msgstr "Ã‡Ä±kÄ±ÅŸ"
 
 #: src/addon_menu.cpp:59 src/option_menu.cpp:94
 msgid "Close"
@@ -424,67 +424,67 @@ msgstr "Aferin!"
 
 #: src/result_screen.cpp:188
 msgid "Failure!"
-msgstr "Başaramadın!"
+msgstr "BaÅŸaramadÄ±n!"
 
 #: src/result_screen.cpp:197
 msgid "Perfect! You saved everyone possible - great!"
-msgstr "Mükemmel! Herkesi kurtardın galiba."
+msgstr "MÃ¼kemmel! Herkesi kurtardÄ±n galiba."
 
 #: src/result_screen.cpp:199
 msgid "No-one got killed, pretty good work."
-msgstr "Hiçkimse ölmedi, iyi iş çıkardın."
+msgstr "HiÃ§kimse Ã¶lmedi, iyi iÅŸ Ã§Ä±kardÄ±n."
 
 #: src/result_screen.cpp:201
 msgid ""
 "You saved exactly what you needed - you made it, but\n"
 "maybe you can do better?"
 msgstr ""
-"Tam gerektiği kadar Pingu kurtardın, geçer not, ama\n"
-"belki daha iyisini yapabilisin, hı?"
+"Tam gerektiÄŸi kadar Pingu kurtardÄ±n, geÃ§er not, ama\n"
+"belki daha iyisini yapabilisin, hÄ±?"
 
 #: src/result_screen.cpp:204
 msgid "Not everybody was saved, but still good work!"
-msgstr "Herkesi kurtaramadın, ama yine de iyi iş çıkardın!"
+msgstr "Herkesi kurtaramadÄ±n, ama yine de iyi iÅŸ Ã§Ä±kardÄ±n!"
 
 #: src/result_screen.cpp:206
 msgid "What can I say, you made it - congratulations!"
-msgstr "Ne diyebilirim, yaptın, aferin!"
+msgstr "Ne diyebilirim, yaptÄ±n, aferin!"
 
 #: src/result_screen.cpp:211
 msgid "You killed everybody, not good."
-msgstr "Herkesi öldürdun. Hiç hoş degil."
+msgstr "Herkesi Ã¶ldÃ¼rdun. HiÃ§ hoÅŸ degil."
 
 #: src/result_screen.cpp:213
 msgid "No-one got saved - I know you can do better."
-msgstr "Hiç kimseyi kurtaramadın, daha iyisini yapabileceğinden eminim."
+msgstr "HiÃ§ kimseyi kurtaramadÄ±n, daha iyisini yapabileceÄŸinden eminim."
 
 #: src/result_screen.cpp:215
 msgid ""
 "You didn't save enough, but you saved a few.  Next\n"
 "time you might do better."
 msgstr ""
-"Yeterince kurtaramadın, ama yine de birkaçı kurtuldu, bir\n"
+"Yeterince kurtaramadÄ±n, ama yine de birkaÃ§Ä± kurtuldu, bir\n"
 "dahakine daha dikkatli ol."
 
 #: src/result_screen.cpp:218
 msgid "Only one more and you would have made it - try again!"
-msgstr "Bir ya da iki tane daha kurtarsaydın olacaktı, hadi tekrar!"
+msgstr "Bir ya da iki tane daha kurtarsaydÄ±n olacaktÄ±, hadi tekrar!"
 
 #: src/result_screen.cpp:220
 msgid "Only a handful more and you would have made it - try again!"
-msgstr "Birkaç tane daha kurtarsan olacaktı, tekrar dene!"
+msgstr "BirkaÃ§ tane daha kurtarsan olacaktÄ±, tekrar dene!"
 
 #: src/result_screen.cpp:222
 msgid "Better luck next time!"
-msgstr "Bir dahaki oyunda iyi şanslar!"
+msgstr "Bir dahaki oyunda iyi ÅŸanslar!"
 
 #: src/result_screen.cpp:239
 msgid "Saved: "
-msgstr "Kurtarılan: "
+msgstr "KurtarÄ±lan: "
 
 #: src/result_screen.cpp:243
 msgid "Died: "
-msgstr "Ölen: "
+msgstr "Ã–len: "
 
 #: src/result_screen.cpp:247
 msgid "Time left: "
@@ -493,21 +493,21 @@ msgstr "Kalan zaman: "
 #: src/components/pingus_counter.cpp:49
 #, fuzzy, c-format, boost-format
 msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
-msgstr "Çıkan: %3d/%-3d Dışarıda: %3d  Kurtulan: %3d/%-3d"
+msgstr "Ã‡Ä±kan: %3d/%-3d DÄ±ÅŸarÄ±da: %3d  Kurtulan: %3d/%-3d"
 
 #: src/level_menu.cpp:108 src/pingus_menu.cpp:66
 #, fuzzy
 msgid "Levelsets"
-msgstr "-Seviye Tasarımı"
+msgstr "-Seviye TasarÄ±mÄ±"
 
 #: src/level_menu.cpp:124
 #, fuzzy
 msgid "Solved:"
-msgstr "Kurtarılan: "
+msgstr "KurtarÄ±lan: "
 
 #: src/config.cpp:72
 msgid "Couldn't open: "
-msgstr "Dosya açılamadı: "
+msgstr "Dosya aÃ§Ä±lamadÄ±: "
 
 #: src/config.cpp:171 src/config.cpp:205
 msgid "Unexpected char: '"
@@ -515,15 +515,15 @@ msgstr "Beklenmeyen harf: '"
 
 #: src/screenshot.cpp:38
 msgid "Screenshot: Saving screenshot to: "
-msgstr "Screenshot: Ekran görüntüsü için dosya adı: "
+msgstr "Screenshot: Ekran gÃ¶rÃ¼ntÃ¼sÃ¼ iÃ§in dosya adÄ±: "
 
 #: src/screenshot.cpp:40
 msgid "Screenshot: Screenshot is done."
-msgstr "Screenshot: Ekran görüntüsü kaydedildi."
+msgstr "Screenshot: Ekran gÃ¶rÃ¼ntÃ¼sÃ¼ kaydedildi."
 
 #: src/screenshot.cpp:115 src/screenshot.cpp:143
 msgid "Screenshot: Couldn't write file: "
-msgstr "Screenshot: Dosyaya yazılamıyor: "
+msgstr "Screenshot: Dosyaya yazÄ±lamÄ±yor: "
 
 #: src/editor/editor_screen.cpp:196
 msgid ""
@@ -572,7 +572,7 @@ msgstr ""
 #: src/editor/panel.cpp:153
 #, fuzzy
 msgid "    New level"
-msgstr "F5 - seviye yükle"
+msgstr "F5 - seviye yÃ¼kle"
 
 #: src/editor/panel.cpp:155
 msgid "Open level..."
@@ -581,12 +581,12 @@ msgstr ""
 #: src/editor/panel.cpp:157
 #, fuzzy
 msgid "Save level..."
-msgstr "Seviyeyi kayıt et (F6)"
+msgstr "Seviyeyi kayÄ±t et (F6)"
 
 #: src/editor/panel.cpp:159
 #, fuzzy
 msgid "Save level as..."
-msgstr "Seviyeyi kayıt et (F6)"
+msgstr "Seviyeyi kayÄ±t et (F6)"
 
 #: src/editor/panel.cpp:162
 msgid "Play level..."
@@ -599,12 +599,12 @@ msgstr ""
 #: src/editor/panel.cpp:167
 #, fuzzy
 msgid "Configure level"
-msgstr "Seviyeyi kayıt et (F6)"
+msgstr "Seviyeyi kayÄ±t et (F6)"
 
 #: src/editor/panel.cpp:169
 #, fuzzy
 msgid "Display object properties"
-msgstr "Nesne özelliklerini değiştir"
+msgstr "Nesne Ã¶zelliklerini deÄŸiÅŸtir"
 
 #: src/editor/panel.cpp:171
 msgid "Show object insertion window"
@@ -617,12 +617,12 @@ msgstr ""
 #: src/editor/panel.cpp:176
 #, fuzzy
 msgid "Duplicate the selected objects"
-msgstr "Seçili nesneleri çiftle (d)"
+msgstr "SeÃ§ili nesneleri Ã§iftle (d)"
 
 #: src/editor/panel.cpp:178
 #, fuzzy
 msgid "Delete the selected objects"
-msgstr "Remove - seçili neneyi sil"
+msgstr "Remove - seÃ§ili neneyi sil"
 
 #: src/editor/panel.cpp:181
 msgid "Raise object to top"
@@ -659,7 +659,7 @@ msgstr ""
 #: src/editor/panel.cpp:209
 #, fuzzy
 msgid "Display help"
-msgstr "Bu yardım ekranını göster"
+msgstr "Bu yardÄ±m ekranÄ±nÄ± gÃ¶ster"
 
 #: src/editor/object_properties.cpp:41 src/editor/object_properties.cpp:415
 msgid "Object:"
@@ -672,7 +672,7 @@ msgstr ""
 #: src/editor/object_properties.cpp:51
 #, fuzzy
 msgid "Transparent"
-msgstr "-Çeviri"
+msgstr "-Ã‡eviri"
 
 #: src/editor/object_properties.cpp:52
 #, fuzzy
@@ -697,7 +697,7 @@ msgstr "Waiter"
 #: src/editor/object_properties.cpp:56
 #, fuzzy
 msgid "Lava"
-msgstr "Çık?"
+msgstr "Ã‡Ä±k?"
 
 #: src/editor/object_properties.cpp:57
 msgid "Remove"
@@ -706,7 +706,7 @@ msgstr ""
 #: src/editor/object_properties.cpp:62
 #, fuzzy
 msgid "Direction:"
-msgstr "Seçenekler:"
+msgstr "SeÃ§enekler:"
 
 #: src/editor/object_properties.cpp:64
 msgid "Left"
@@ -715,7 +715,7 @@ msgstr ""
 #: src/editor/object_properties.cpp:65
 #, fuzzy
 msgid "Misc"
-msgstr "Müzik"
+msgstr "MÃ¼zik"
 
 #: src/editor/object_properties.cpp:66
 msgid "Right"
@@ -796,7 +796,7 @@ msgstr ""
 #: src/editor/file_dialog.cpp:61
 #, fuzzy
 msgid "Save"
-msgstr "Kurtarılan: "
+msgstr "KurtarÄ±lan: "
 
 #: src/editor/file_dialog.cpp:64
 msgid "Cancel"
@@ -805,7 +805,7 @@ msgstr ""
 #: src/editor/file_dialog.cpp:75
 #, fuzzy
 msgid "Filename:"
-msgstr "Dosya adı: "
+msgstr "Dosya adÄ±: "
 
 #: src/editor/file_dialog.cpp:76
 msgid "Pathname:"
@@ -818,12 +818,12 @@ msgstr ""
 #: src/editor/file_dialog.cpp:102
 #, fuzzy
 msgid "Save your level"
-msgstr "Seviyeyi kayıt et (F6)"
+msgstr "Seviyeyi kayÄ±t et (F6)"
 
 #: src/editor/object_selector.cpp:309
 #, fuzzy
 msgid "Entrance"
-msgstr "e - Giriş"
+msgstr "e - GiriÅŸ"
 
 #: src/editor/object_selector.cpp:310
 #, fuzzy
@@ -833,28 +833,28 @@ msgstr "g - Yer (toprak)"
 #: src/editor/object_selector.cpp:311
 #, fuzzy
 msgid "Groundpiece (solid)"
-msgstr "s - YerParçasi (katı)"
+msgstr "s - YerParÃ§asi (katÄ±)"
 
 #: src/editor/object_selector.cpp:312
 #, fuzzy
 msgid "Groundpiece (bridge)"
-msgstr "b - Köprü (bridge)"
+msgstr "b - KÃ¶prÃ¼ (bridge)"
 
 #: src/editor/object_selector.cpp:313
 #, fuzzy
 msgid "Groundpiece (transparent)"
-msgstr "n - YerParçası (şeffaf)"
+msgstr "n - YerParÃ§asÄ± (ÅŸeffaf)"
 
 #: src/editor/object_selector.cpp:314
 #, fuzzy
 msgid "Groundpiece (remove)"
-msgstr "r - YerParçası (silici)"
+msgstr "r - YerParÃ§asÄ± (silici)"
 
-# buna daha iyi bişi uydurabiliyormusun?  -gd
+# buna daha iyi biÅŸi uydurabiliyormusun?  -gd
 #: src/editor/object_selector.cpp:315
 #, fuzzy
 msgid "Hotspot"
-msgstr "h - GrafikParçası"
+msgstr "h - GrafikParÃ§asÄ±"
 
 #: src/editor/object_selector.cpp:316
 #, fuzzy
@@ -864,7 +864,7 @@ msgstr "z - Arkaplan"
 #: src/editor/object_selector.cpp:319
 #, fuzzy
 msgid "Liquid"
-msgstr "l - Sıvı"
+msgstr "l - SÄ±vÄ±"
 
 #: src/editor/object_selector.cpp:320
 #, fuzzy
@@ -874,28 +874,28 @@ msgstr "t - Tuzak"
 #: src/editor/object_selector.cpp:321
 #, fuzzy
 msgid "Weather"
-msgstr "w - İklim"
+msgstr "w - Ä°klim"
 
 #: src/editor/object_selector.cpp:322
 #, fuzzy
 msgid "Special Object"
-msgstr "-Özel"
+msgstr "-Ã–zel"
 
 #: src/worldmap/worldmap.cpp:425
 msgid "...walking..."
-msgstr "...yürüyor..."
+msgstr "...yÃ¼rÃ¼yor..."
 
 #: src/worldmap/manager.cpp:107
 msgid "Show Ending?"
-msgstr "Sonu Göster..."
+msgstr "Sonu GÃ¶ster..."
 
 #: src/worldmap/manager.cpp:138
 msgid "Show Story?"
-msgstr "Pingus öyküsü.."
+msgstr "Pingus Ã¶ykÃ¼sÃ¼.."
 
 #: src/worldmap/manager.cpp:167
 msgid "Leave?"
-msgstr "Çık?"
+msgstr "Ã‡Ä±k?"
 
 #: src/worldmap/manager.cpp:207
 #, fuzzy
@@ -904,7 +904,7 @@ msgstr "Gir?"
 
 #: src/worldmap/level_dot.cpp:152 src/worldmap/level_dot.cpp:162
 msgid "locked"
-msgstr "kapalı"
+msgstr "kapalÄ±"
 
 #: src/exit_menu.cpp:46 src/exit_menu.cpp:50
 msgid "Yes"
@@ -912,56 +912,56 @@ msgstr "Evet"
 
 #: src/exit_menu.cpp:85 src/exit_menu.cpp:89
 msgid "No"
-msgstr "Hayır"
+msgstr "HayÄ±r"
 
 #: src/exit_menu.cpp:124
 msgid "Exit Pingus?"
-msgstr "Çıkıyor musun?"
+msgstr "Ã‡Ä±kÄ±yor musun?"
 
 #: src/pingus_menu.cpp:50 src/pingus_menu.cpp:72
 #, fuzzy
 msgid "Story"
-msgstr "-Öykü"
+msgstr "-Ã–ykÃ¼"
 
 #: src/pingus_menu.cpp:51
 msgid "..:: Start the game ::.."
-msgstr "..:: Oyunu başlat ::.."
+msgstr "..:: Oyunu baÅŸlat ::.."
 
 #: src/pingus_menu.cpp:56
 #, fuzzy
 msgid "Editor"
 msgstr "Exiter"
 
-# FIXME: bu nasil olmuş? contrib -> katılımcı, dışarlıklı :))) -gd 
+# FIXME: bu nasil olmuÅŸ? contrib -> katÄ±lÄ±mcÄ±, dÄ±ÅŸarlÄ±klÄ± :))) -gd 
 #: src/pingus_menu.cpp:57
 #, fuzzy
 msgid "..:: Create your own levels ::.."
-msgstr "..:: Harici bir seviye başlat ::.."
+msgstr "..:: Harici bir seviye baÅŸlat ::.."
 
 #: src/pingus_menu.cpp:62
 msgid "..:: Bye, bye ::.."
-msgstr "..:: Güle güle... ::.."
+msgstr "..:: GÃ¼le gÃ¼le... ::.."
 
-# FIXME: bu nasil olmuş? contrib -> katılımcı, dışarlıklı :))) -gd 
+# FIXME: bu nasil olmuÅŸ? contrib -> katÄ±lÄ±mcÄ±, dÄ±ÅŸarlÄ±klÄ± :))) -gd 
 #: src/pingus_menu.cpp:67
 #, fuzzy
 msgid "..:: Play User Built levels ::.."
-msgstr "..:: Harici bir seviye başlat ::.."
+msgstr "..:: Harici bir seviye baÅŸlat ::.."
 
 #: src/pingus_menu.cpp:73
 #, fuzzy
 msgid "..:: Start the story ::.."
-msgstr "..:: Oyunu başlat ::.."
+msgstr "..:: Oyunu baÅŸlat ::.."
 
 #: src/pingus_menu.cpp:78
 #, fuzzy
 msgid "Multiplayer"
-msgstr "Çoklu"
+msgstr "Ã‡oklu"
 
 #: src/pingus_menu.cpp:79
 #, fuzzy
 msgid "..:: Multiplayer Match ::.."
-msgstr "..:: Çok oyunculu kipler... Deneysel şeyler ::.."
+msgstr "..:: Ã‡ok oyunculu kipler... Deneysel ÅŸeyler ::.."
 
 #: src/pingus_menu.cpp:82
 msgid ""
@@ -1402,7 +1402,7 @@ msgstr ""
 
 #: data/worldmaps/tutorial.worldmap:15
 msgid "The Journey Begins"
-msgstr "Yolculuk Başlıyor"
+msgstr "Yolculuk BaÅŸlÄ±yor"
 
 #: data/worldmaps/tutorial.worldmap:81
 msgid "The Journey Continues"
@@ -1416,9 +1416,9 @@ msgid ""
 "like nothing could disrupt their peace.  The Pingus were happy and it seemed "
 "like this could never end."
 msgstr ""
-"Pingular yüzyıllardır diğer hayvanlarla birlikte Güney Kutbu'nda\n"
-"barış içinde yaşamaktaydılar. Herşey uyum içindeydi, hiçbirşey bu\n"
-"güzel ortamı değiştiremeyecek gibiydi. \n"
+"Pingular yÃ¼zyÄ±llardÄ±r diÄŸer hayvanlarla birlikte GÃ¼ney Kutbu'nda\n"
+"barÄ±ÅŸ iÃ§inde yaÅŸamaktaydÄ±lar. HerÅŸey uyum iÃ§indeydi, hiÃ§birÅŸey bu\n"
+"gÃ¼zel ortamÄ± deÄŸiÅŸtiremeyecek gibiydi. \n"
 
 #: data/worldmaps/tutorial.worldmap:30
 #, fuzzy
@@ -1428,10 +1428,10 @@ msgid ""
 "in the world's climate, but things seemed to get worse and worse with every "
 "year."
 msgstr ""
-"Ama zamanla, durum yavaş yavaş değişmeye başladı. Gökyüzü\n"
-"kararmaya, dünya daha sıcak olmaya başladı. Önceleri bunun\n"
-"sıradan iklim farkı olduğunu düşündüler, ama her geçen yıl\n"
-"durum daha kötüye\n"
+"Ama zamanla, durum yavaÅŸ yavaÅŸ deÄŸiÅŸmeye baÅŸladÄ±. GÃ¶kyÃ¼zÃ¼\n"
+"kararmaya, dÃ¼nya daha sÄ±cak olmaya baÅŸladÄ±. Ã–nceleri bunun\n"
+"sÄ±radan iklim farkÄ± olduÄŸunu dÃ¼ÅŸÃ¼ndÃ¼ler, ama her geÃ§en yÄ±l\n"
+"durum daha kÃ¶tÃ¼ye\n"
 "gitmekteydi"
 
 #: data/worldmaps/tutorial.worldmap:38
@@ -1442,10 +1442,10 @@ msgid ""
 "knew that this wouldn't help: they knew that they had to do something about "
 "it."
 msgstr ""
-"Bazı bölgelerde karlar eridi, yiyecek bulmak giderek zorlaştı.\n"
-"Diğer hayvanlar bölgeyi terkedip daha soğuk yerler aramaeğilimine\n"
-"girmişlerdi bile. Ama Pingular bunun işe yaramayacağını, birşeyler\n"
-"yapmaları gerektiğini biliyorlardı."
+"BazÄ± bÃ¶lgelerde karlar eridi, yiyecek bulmak giderek zorlaÅŸtÄ±.\n"
+"DiÄŸer hayvanlar bÃ¶lgeyi terkedip daha soÄŸuk yerler aramaeÄŸilimine\n"
+"girmiÅŸlerdi bile. Ama Pingular bunun iÅŸe yaramayacaÄŸÄ±nÄ±, birÅŸeyler\n"
+"yapmalarÄ± gerektiÄŸini biliyorlardÄ±."
 
 #: data/worldmaps/tutorial.worldmap:46
 #, fuzzy
@@ -1455,10 +1455,10 @@ msgid ""
 "this warming. The expedition consisted of hundreds of the bravest Pingus on "
 "the South Pole."
 msgstr ""
-"Sonunda yaşlılar kurulu karar vermek için toplandı ve dünyayı dolaşıp\n"
-"bu ısınmanın nedenini araştıracak bir ekip kurmaya karar verdi.\n"
-"Böylece Güney Kutbu'nun heryerinden gelenyüzlerce cesur Pingudan\n"
-"oluşan bir ekip kuruldu."
+"Sonunda yaÅŸlÄ±lar kurulu karar vermek iÃ§in toplandÄ± ve dÃ¼nyayÄ± dolaÅŸÄ±p\n"
+"bu Ä±sÄ±nmanÄ±n nedenini araÅŸtÄ±racak bir ekip kurmaya karar verdi.\n"
+"BÃ¶ylece GÃ¼ney Kutbu'nun heryerinden gelenyÃ¼zlerce cesur Pingudan\n"
+"oluÅŸan bir ekip kuruldu."
 
 #: data/worldmaps/tutorial.worldmap:54
 #, fuzzy
@@ -1469,11 +1469,11 @@ msgid ""
 "island has always been the first stop of Pingus that were sent out into the "
 "world."
 msgstr ""
-"Ve Pingular seni dünya çevresindeki bu yolculuklarında onlara\n"
-"yol göstermen için seçtiler. Yolculuk tehlikeli ve zor\n"
-"olacağından, ilk hedefimiz eğitim adası diye de bilinen \n"
-"Magorok Adası. Yaşlılar der ki, bu ada, görev için yola düşen\n"
-"Pinguların herzaman ilk durakğı olmuştur."
+"Ve Pingular seni dÃ¼nya Ã§evresindeki bu yolculuklarÄ±nda onlara\n"
+"yol gÃ¶stermen iÃ§in seÃ§tiler. Yolculuk tehlikeli ve zor\n"
+"olacaÄŸÄ±ndan, ilk hedefimiz eÄŸitim adasÄ± diye de bilinen \n"
+"Magorok AdasÄ±. YaÅŸlÄ±lar der ki, bu ada, gÃ¶rev iÃ§in yola dÃ¼ÅŸen\n"
+"PingularÄ±n herzaman ilk durakÄŸÄ± olmuÅŸtur."
 
 #: data/worldmaps/tutorial.worldmap:63
 #, fuzzy
@@ -1482,10 +1482,10 @@ msgid ""
 "abilities. The Pingus can learn to build bridges, climb, bash and use many "
 "other talents which they will need on their long and dangerous journey."
 msgstr ""
-"Ada, bir Pingunun yeteneklerini gelistirmek için çalışabileceği\n"
-"birçok bolgeden oluşuyor. Pingular önlerindeki zorlu yolcukta\n"
-"kesinlikle gerekli olacak tırmanmak, kazmak, köprü yapmak ve\n"
-"benzeri biçok becerilerini burada geliştirebilecekler."
+"Ada, bir Pingunun yeteneklerini gelistirmek iÃ§in Ã§alÄ±ÅŸabileceÄŸi\n"
+"birÃ§ok bolgeden oluÅŸuyor. Pingular Ã¶nlerindeki zorlu yolcukta\n"
+"kesinlikle gerekli olacak tÄ±rmanmak, kazmak, kÃ¶prÃ¼ yapmak ve\n"
+"benzeri biÃ§ok becerilerini burada geliÅŸtirebilecekler."
 
 #: data/worldmaps/tutorial.worldmap:70
 #, fuzzy
@@ -1495,10 +1495,10 @@ msgid ""
 "and learn to master them, since you will need all of them on your journey "
 "around the world."
 msgstr ""
-"Bu arada sen de, onları yönlendirip yönetme yeteneğini burada\n"
-"deneyebilirsin. Aynı zamanda, Pinguların bütün becerilerini\n"
-"tanıyabilir, bu becerileri en iyi şekilde kullanmayı öğrenebilirsin\n"
-"Bu zorlu yolculukta hepsine gereksinim duyacaksın."
+"Bu arada sen de, onlarÄ± yÃ¶nlendirip yÃ¶netme yeteneÄŸini burada\n"
+"deneyebilirsin. AynÄ± zamanda, PingularÄ±n bÃ¼tÃ¼n becerilerini\n"
+"tanÄ±yabilir, bu becerileri en iyi ÅŸekilde kullanmayÄ± Ã¶ÄŸrenebilirsin\n"
+"Bu zorlu yolculukta hepsine gereksinim duyacaksÄ±n."
 
 #: data/worldmaps/tutorial.worldmap:78
 #, fuzzy
@@ -1506,10 +1506,10 @@ msgid ""
 "Now that you and the Pingus have arrived at Tutorial Island it is time to "
 "take command and begin your mission. Good Luck!"
 msgstr ""
-"Artık sen ve Pingular eğitim adasına vardığınıza göre, komutayı\n"
-"devralıp, göreve başlamanın zamanıdır.\n"
+"ArtÄ±k sen ve Pingular eÄŸitim adasÄ±na vardÄ±ÄŸÄ±nÄ±za gÃ¶re, komutayÄ±\n"
+"devralÄ±p, gÃ¶reve baÅŸlamanÄ±n zamanÄ±dÄ±r.\n"
 "\n"
-"                                                  Başarılar!"
+"                                                  BaÅŸarÄ±lar!"
 
 #: data/worldmaps/tutorial.worldmap:88
 #, fuzzy
@@ -1520,11 +1520,11 @@ msgid ""
 "the whole way into the warmer climates the Pingus have to find something "
 "else to guide them on their journey."
 msgstr ""
-"Pingular ve sen temel bilgileri öğrenip, biraz da alıştırma\n"
-"yaptığınıza göre, yola koyulmanın zamanıdır artık. Pinguların\n"
-"eğitim adasına gelmek için kullandıkları buz platform sıcak\n"
-"bölgelere dayanmayacağından, yolculuk için yeni bir yöntem\n"
-"bulmaları gerekecek.\n"
+"Pingular ve sen temel bilgileri Ã¶ÄŸrenip, biraz da alÄ±ÅŸtÄ±rma\n"
+"yaptÄ±ÄŸÄ±nÄ±za gÃ¶re, yola koyulmanÄ±n zamanÄ±dÄ±r artÄ±k. PingularÄ±n\n"
+"eÄŸitim adasÄ±na gelmek iÃ§in kullandÄ±klarÄ± buz platform sÄ±cak\n"
+"bÃ¶lgelere dayanmayacaÄŸÄ±ndan, yolculuk iÃ§in yeni bir yÃ¶ntem\n"
+"bulmalarÄ± gerekecek.\n"
 
 #: data/worldmaps/tutorial.worldmap:97
 #, fuzzy
@@ -1535,9 +1535,9 @@ msgid ""
 "large tree at the end of the island which gave them wood to construct a "
 "float."
 msgstr ""
-"Ama yaşlıların söylediği gibi, eğitim adası sadece alıştırma\n"
-"yapmaya yaramaz, aynı zamanda dünyaya açılan bir kapıdır da.\n"
-"Çünkü adanın diğer ucundaki ağaçın odunu, sal yapmak için\n"
+"Ama yaÅŸlÄ±larÄ±n sÃ¶ylediÄŸi gibi, eÄŸitim adasÄ± sadece alÄ±ÅŸtÄ±rma\n"
+"yapmaya yaramaz, aynÄ± zamanda dÃ¼nyaya aÃ§Ä±lan bir kapÄ±dÄ±r da.\n"
+"Ã‡Ã¼nkÃ¼ adanÄ±n diÄŸer ucundaki aÄŸaÃ§Ä±n odunu, sal yapmak iÃ§in\n"
 "birebirdir.\n"
 
 #: data/worldmaps/tutorial.worldmap:106
@@ -1548,10 +1548,10 @@ msgid ""
 "their journey and leave their familiar ground and enter the unknown parts of "
 "the world."
 msgstr ""
-"Pingular harekete geçip, herkesi taşımaya yetecek birkaç\n"
-"sal yaptılar. Yanlarına biraz azık da aldıktan sonra, tanıdık\n"
-"buzullardan ayrılıp dünyanın bilinmedik yerlerine doğru\n"
-"yolculuğa hazırlar.\n"
+"Pingular harekete geÃ§ip, herkesi taÅŸÄ±maya yetecek birkaÃ§\n"
+"sal yaptÄ±lar. YanlarÄ±na biraz azÄ±k da aldÄ±ktan sonra, tanÄ±dÄ±k\n"
+"buzullardan ayrÄ±lÄ±p dÃ¼nyanÄ±n bilinmedik yerlerine doÄŸru\n"
+"yolculuÄŸa hazÄ±rlar.\n"
 
 #: data/worldmaps/tutorial.worldmap:114
 #, fuzzy
@@ -1559,9 +1559,9 @@ msgid ""
 "So the Pingus sit on their raft, worrying about what's to come and where to "
 "go, while floating into the sunset.  To be continued..."
 msgstr ""
-"Sonunda Pingular sallarının üzerinde, gidecekleri yaban ellerde\n"
-"başlarına gelebileceklerin kaygısıyla gün batımına doğru yol\n"
-"almaya başladılar.\n"
+"Sonunda Pingular sallarÄ±nÄ±n Ã¼zerinde, gidecekleri yaban ellerde\n"
+"baÅŸlarÄ±na gelebileceklerin kaygÄ±sÄ±yla gÃ¼n batÄ±mÄ±na doÄŸru yol\n"
+"almaya baÅŸladÄ±lar.\n"
 "\n"
 "                                                Devam edecek..."
 
@@ -1575,7 +1575,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "none"
-#~ msgstr "açık"
+#~ msgstr "aÃ§Ä±k"
 
 #~ msgid "Difficulty:"
 #~ msgstr "Zorluk:"
@@ -1585,7 +1585,7 @@ msgstr ""
 #~ msgstr "Zorluk:"
 
 #~ msgid "Start"
-#~ msgstr "Başla"
+#~ msgstr "BaÅŸla"
 
 # FIXME: bu olmadi -cagri
 # bu daha da olmadi galiba -gd
@@ -1599,101 +1599,101 @@ msgstr ""
 #~ msgid ""
 #~ "Print some more messages to stdout, can be set multiple times to increase "
 #~ "verbosity"
-#~ msgstr "Stdout'a ayrıntılı bilgi ver. Daha cok `v' ile"
+#~ msgstr "Stdout'a ayrÄ±ntÄ±lÄ± bilgi ver. Daha cok `v' ile"
 
 #~ msgid "Use OpenGL"
 #~ msgstr "OpenGL kullan"
 
 #~ msgid "Prints the fps to stdout"
-#~ msgstr "stdout'a fps değerini bas"
+#~ msgstr "stdout'a fps deÄŸerini bas"
 
 #~ msgid "Reduces the CPU usage by issuing sleep()"
-#~ msgstr "CPU kullanımını sleep() kullanarak azalt"
+#~ msgstr "CPU kullanÄ±mÄ±nÄ± sleep() kullanarak azalt"
 
 #~ msgid ""
 #~ "Warning: Larger resolution than 800x600 will result in visual problems"
-#~ msgstr "Dikkat: 800x600'den büyük çözünürlük görüntü sorunu yaratabilir"
+#~ msgstr "Dikkat: 800x600'den bÃ¼yÃ¼k Ã§Ã¶zÃ¼nÃ¼rlÃ¼k gÃ¶rÃ¼ntÃ¼ sorunu yaratabilir"
 
-# 'Main' yerine başka bişi uydurmak lazim buraya -gd
+# 'Main' yerine baÅŸka biÅŸi uydurmak lazim buraya -gd
 #~ msgid "PingusMain: Starting Main: "
-#~ msgstr "PingusMain: Main Başlatılıyor: "
+#~ msgstr "PingusMain: Main BaÅŸlatÄ±lÄ±yor: "
 
 #~ msgid "| segfault_handler: catched a SIGSEGV."
 #~ msgstr "| segfault_handler: catched a SIGSEGV."
 
 #~ msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
-#~ msgstr "Amanin booo ...  Pingus çöktü! Tebrikler bir böcek (hata) buldun!"
+#~ msgstr "Amanin booo ...  Pingus Ã§Ã¶ktÃ¼! Tebrikler bir bÃ¶cek (hata) buldun!"
 
 #~ msgid ""
 #~ "| Please write a little bug report to <grumbel@gmx.de>, include "
 #~ "informations"
 #~ msgstr ""
-#~ "| Lütfen inglizce/almanca olarak <grumbel@gmx.de> adresine kısa bir hata"
+#~ "| LÃ¼tfen inglizce/almanca olarak <grumbel@gmx.de> adresine kÄ±sa bir hata"
 
 #~ msgid "| where exacly the SIGSEGV occured and how to reproduce it."
 #~ msgstr ""
-#~ "| raporu yaz. SIGSEGV'in nerede oluştuğunu ve nasıl tekrarlanabileceğini"
+#~ "| raporu yaz. SIGSEGV'in nerede oluÅŸtuÄŸunu ve nasÄ±l tekrarlanabileceÄŸini"
 
 #~ msgid "| Also try include a backtrace, you can get it like this:"
-#~ msgstr "| anlat.  Bir de bir 'backtrace' ekle ... Aşagıdaki gibi mesela:"
+#~ msgstr "| anlat.  Bir de bir 'backtrace' ekle ... AÅŸagÄ±daki gibi mesela:"
 
 #~ msgid "| If that doesn't work, try this:"
-#~ msgstr "| Bu çalışmazsa, şöyle de olabilir:"
+#~ msgstr "| Bu Ã§alÄ±ÅŸmazsa, ÅŸÃ¶yle de olabilir:"
 
 #~ msgid "| [play until it crashes again]"
-#~ msgstr "| [... ve çökene kadar tekrar oyna ... ]"
+#~ msgstr "| [... ve Ã§Ã¶kene kadar tekrar oyna ... ]"
 
 #~ msgid "| Warning: Pingus recieved a SIGINT, exiting now."
-#~ msgstr "| Uyarı: SIGINT sinyali aldık, oyundan çıkıyoruz."
+#~ msgstr "| UyarÄ±: SIGINT sinyali aldÄ±k, oyundan Ã§Ä±kÄ±yoruz."
 
 #~ msgid "Disable intro"
 #~ msgstr "Intoroyu kapat"
 
 #, fuzzy
 #~ msgid "Set the refresh rate in fullscreen (default: 60)"
-#~ msgstr "Pingus çözünürlüğünü ayarla (öntanılı: 640x480)"
+#~ msgstr "Pingus Ã§Ã¶zÃ¼nÃ¼rlÃ¼ÄŸÃ¼nÃ¼ ayarla (Ã¶ntanÄ±lÄ±: 640x480)"
 
 #~ msgid "Load a custom level from FILE"
-#~ msgstr "DOSYAdan özel seviye yükle"
+#~ msgstr "DOSYAdan Ã¶zel seviye yÃ¼kle"
 
 #, fuzzy
 #~ msgid "language:                "
-#~ msgstr "tümekran:                "
+#~ msgstr "tÃ¼mekran:                "
 
 #~ msgid "sound support:           enabled"
 #~ msgstr "ses:                     etkin"
 
 #~ msgid "sound support:          disabled"
-#~ msgstr "ses:                    etkin değil"
+#~ msgstr "ses:                    etkin deÄŸil"
 
 #~ msgid "music support:           enabled"
-#~ msgstr "müzik desteği:           etkin"
+#~ msgstr "mÃ¼zik desteÄŸi:           etkin"
 
 #~ msgid "music support:          disabled"
-#~ msgstr "müzik desteği:          etkin değil"
+#~ msgstr "mÃ¼zik desteÄŸi:          etkin deÄŸil"
 
 #, fuzzy
 #~ msgid "resolution:              "
-#~ msgstr "çözünürlük:              "
+#~ msgstr "Ã§Ã¶zÃ¼nÃ¼rlÃ¼k:              "
 
 #~ msgid "fullscreen:              "
-#~ msgstr "tümekran:                "
+#~ msgstr "tÃ¼mekran:                "
 
 #~ msgid " enabled"
 #~ msgstr " etkin"
 
 #~ msgid "disabled"
-#~ msgstr "etkin değil"
+#~ msgstr "etkin deÄŸil"
 
 #, fuzzy
 #~ msgid "using OpenGL:            "
-#~ msgstr "tümekran:                "
+#~ msgstr "tÃ¼mekran:                "
 
 #~ msgid "PingusMain: Levelfile not found, ignoring: "
-#~ msgstr "PingusMain: Seviye Dosyası bulunamadı, yok sayılacak: "
+#~ msgstr "PingusMain: Seviye DosyasÄ± bulunamadÄ±, yok sayÄ±lacak: "
 
 #~ msgid "Environment variable $HOME not set, fix that and start again."
-#~ msgstr "$HOME değişkeni atanmamış, düzeltip yeniden dene."
+#~ msgstr "$HOME deÄŸiÅŸkeni atanmamÄ±ÅŸ, dÃ¼zeltip yeniden dene."
 
 #~ msgid "Unexpected char '"
 #~ msgstr "Beklenmeyen harf: '"
@@ -1702,11 +1702,11 @@ msgstr ""
 #~ msgstr "bilinmeyen"
 
 #~ msgid "Credits"
-#~ msgstr "Yardımcı olanlar"
+#~ msgstr "YardÄ±mcÄ± olanlar"
 
 #, fuzzy
 #~ msgid "..:: See the credits ::.."
-#~ msgstr "..:: Oyunu başlat ::.."
+#~ msgstr "..:: Oyunu baÅŸlat ::.."
 
 #, fuzzy
 #~ msgid "Pingus do time"
@@ -1718,7 +1718,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Pingus in Parallel"
-#~ msgstr "Pingus Seçenekler Menüsü"
+#~ msgstr "Pingus SeÃ§enekler MenÃ¼sÃ¼"
 
 #, fuzzy
 #~ msgid "Smashing Zone"
@@ -1726,19 +1726,19 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Set your watches"
-#~ msgstr "Hava durumunu seç"
+#~ msgstr "Hava durumunu seÃ§"
 
 #, fuzzy
 #~ msgid "Entering the cave"
-#~ msgstr "Dosyayı ne olarak kayit edelim: "
+#~ msgstr "DosyayÄ± ne olarak kayit edelim: "
 
 #, fuzzy
 #~ msgid "Pingus in Wonderland"
-#~ msgstr "Pingus Seçenekler Menüsü"
+#~ msgstr "Pingus SeÃ§enekler MenÃ¼sÃ¼"
 
 #, fuzzy
 #~ msgid "Easy going..."
-#~ msgstr "Yükleniyor..."
+#~ msgstr "YÃ¼kleniyor..."
 
 #, fuzzy
 #~ msgid "Level 0"
@@ -1746,16 +1746,16 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Blocked Exit"
-#~ msgstr "kapalı"
+#~ msgstr "kapalÄ±"
 
 #~ msgid "Unknow char: "
 #~ msgstr "Bilinmeyen karakter: "
 
 #~ msgid "Usage: "
-#~ msgstr "Kullanım: "
+#~ msgstr "KullanÄ±m: "
 
 #~ msgid " [OPTIONS]... [LEVELFILE]"
-#~ msgstr "[SEÇENEKLER]... [SEVİYE DOSYASI]"
+#~ msgstr "[SEÃ‡ENEKLER]... [SEVÄ°YE DOSYASI]"
 
 #~ msgid "FILE      "
 #~ msgstr "DOSYA     "
@@ -1764,53 +1764,53 @@ msgstr ""
 #~ msgstr "DOSYA       "
 
 #~ msgid "multiple times to increase verbosity"
-#~ msgstr "ayrıntı artırılabilir."
+#~ msgstr "ayrÄ±ntÄ± artÄ±rÄ±labilir."
 
 #~ msgid "FILE       "
 #~ msgstr "DOSYA      "
 
 #~ msgid "Read config from FILE (default: ~/.pingus/config)"
-#~ msgstr "Ayarları `DOSYA'dan oku (öntanımlı: ~/.pingus/config)"
+#~ msgstr "AyarlarÄ± `DOSYA'dan oku (Ã¶ntanÄ±mlÄ±: ~/.pingus/config)"
 
 # debug = ?
 #~ msgid "Enable the output of debugging infos, possible"
-#~ msgstr "Debug mesajlarını ekrana bas"
+#~ msgstr "Debug mesajlarÄ±nÄ± ekrana bas"
 
 #~ msgid "clanVorbis support:           ok"
-#~ msgstr "clanVoribs desteği:      var"
+#~ msgstr "clanVoribs desteÄŸi:      var"
 
 #~ msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
-#~ msgstr "clanVoribs desteği: yok (.ogg müzik dosyaları çalışmayacak)"
+#~ msgstr "clanVoribs desteÄŸi: yok (.ogg mÃ¼zik dosyalarÄ± Ã§alÄ±ÅŸmayacak)"
 
 #~ msgid "clanMikMod support:           ok"
-#~ msgstr "clanMikMod desteği:      var"
+#~ msgstr "clanMikMod desteÄŸi:      var"
 
 #~ msgid "clanMikMod support:  missing (music files will not be playable)"
-#~ msgstr "clanMikMod desteği: yok (müzik dosyaları çalışmayacak) "
+#~ msgstr "clanMikMod desteÄŸi: yok (mÃ¼zik dosyalarÄ± Ã§alÄ±ÅŸmayacak) "
 
 #~ msgid "getext support:               ok"
-#~ msgstr "gettext desteği:         var"
+#~ msgstr "gettext desteÄŸi:         var"
 
 #~ msgid "gettext language:        english"
-#~ msgstr "gettext dili:            türkeçe"
+#~ msgstr "gettext dili:            tÃ¼rkeÃ§e"
 
 #~ msgid "Error caught from ClanLib: "
-#~ msgstr "ClanLib hatası: "
+#~ msgstr "ClanLib hatasÄ±: "
 
 #~ msgid "Image has wrong color depth: %d"
-#~ msgstr "Resmin renk derinliği yanlış: %d"
+#~ msgstr "Resmin renk derinliÄŸi yanlÄ±ÅŸ: %d"
 
 #~ msgid "Editor Helpscreen (hide with F1)"
-#~ msgstr "Editör Yardım Ekranı (F1 ile sakla)"
+#~ msgstr "EditÃ¶r YardÄ±m EkranÄ± (F1 ile sakla)"
 
 #~ msgid "F1 - show/hide this help screen"
-#~ msgstr "F1 - help ekranını sakla/göster"
+#~ msgstr "F1 - help ekranÄ±nÄ± sakla/gÃ¶ster"
 
 #~ msgid "F2 - launch level building tutorial"
-#~ msgstr "F2 - seviye tasarım dersi"
+#~ msgstr "F2 - seviye tasarÄ±m dersi"
 
 #~ msgid "F3 - toggle background color"
-#~ msgstr "F3 - arkaplan rengini değiştir"
+#~ msgstr "F3 - arkaplan rengini deÄŸiÅŸtir"
 
 #~ msgid "F4 - play/test the level"
 #~ msgstr "F4 - seviyeyi oyna/dene"
@@ -1819,120 +1819,120 @@ msgstr ""
 #~ msgstr "F6 - seviyeyi kaydet"
 
 #~ msgid "F7 - [unset]"
-#~ msgstr "F7 - [işlevsiz]"
+#~ msgstr "F7 - [iÅŸlevsiz]"
 
 #~ msgid "F8 - quick save/backup save?!"
-#~ msgstr "F8 - hızlı saklama/yedekleme?!"
+#~ msgstr "F8 - hÄ±zlÄ± saklama/yedekleme?!"
 
 #~ msgid "F9 - change level width and height"
-#~ msgstr "F9 - seviye boyutlarını değiştir"
+#~ msgstr "F9 - seviye boyutlarÄ±nÄ± deÄŸiÅŸtir"
 
 #~ msgid "F10 - [unset]"
-#~ msgstr "F10 - [işlevsiz]"
+#~ msgstr "F10 - [iÅŸlevsiz]"
 
 #~ msgid "F11 - toggle fps counter"
-#~ msgstr "F11 - FPS sayacı"
+#~ msgstr "F11 - FPS sayacÄ±"
 
 #~ msgid "F12 - make screenshot"
-#~ msgstr "F12 - ekrangörüntüsü kaydet"
+#~ msgstr "F12 - ekrangÃ¶rÃ¼ntÃ¼sÃ¼ kaydet"
 
 #~ msgid "Home - increase object size"
-#~ msgstr "Home - nesneyi büyüt"
+#~ msgstr "Home - nesneyi bÃ¼yÃ¼t"
 
 #~ msgid "End  - decrease object size"
-#~ msgstr "End - nesneyi küçült"
+#~ msgstr "End - nesneyi kÃ¼Ã§Ã¼lt"
 
 #~ msgid "Cursor Keys - Move object"
-#~ msgstr "Ok tuşları - Nesneyi taşı"
+#~ msgstr "Ok tuÅŸlarÄ± - Nesneyi taÅŸÄ±"
 
 #~ msgid "Shift 'Cursor Keys' - Move objects fast "
-#~ msgstr "Shift 'Ok tuşları' - Nesneyi hızlı taşı"
+#~ msgstr "Shift 'Ok tuÅŸlarÄ±' - Nesneyi hÄ±zlÄ± taÅŸÄ±"
 
 #~ msgid "PageUp   - level object up"
-#~ msgstr "PageUp   - nesneyi ön plana taşı"
+#~ msgstr "PageUp   - nesneyi Ã¶n plana taÅŸÄ±"
 
 #~ msgid "PageDown - level object down"
-#~ msgstr "PageDown - nesneyi arka plana taşı"
+#~ msgstr "PageDown - nesneyi arka plana taÅŸÄ±"
 
 #~ msgid "Shift PageUp   - increase objects z-pos by 50"
-#~ msgstr "Shift PageUp   - nesne z konumunu 50 artır"
+#~ msgstr "Shift PageUp   - nesne z konumunu 50 artÄ±r"
 
 #~ msgid "Shift PageDown - decrease objects z-pos by 50"
 #~ msgstr "Shift PageUp   - nesne z konumunu 50 azalt"
 
 #~ msgid "Enter - Set default zoom (1:1)"
-#~ msgstr "Enter - Varsayılan zumu ayarla (1:1)"
+#~ msgstr "Enter - VarsayÄ±lan zumu ayarla (1:1)"
 
 #~ msgid "d - duplicate object"
-#~ msgstr "d- seçili nesneleri çiftle"
+#~ msgstr "d- seÃ§ili nesneleri Ã§iftle"
 
 #~ msgid "a - mark all objects"
-#~ msgstr "a - seçili nesneleri sil"
+#~ msgstr "a - seÃ§ili nesneleri sil"
 
 #~ msgid "shift leftmouseclick - add object to selection"
-#~ msgstr "shift sol fare tuşu - nesneyi seçime ekle"
+#~ msgstr "shift sol fare tuÅŸu - nesneyi seÃ§ime ekle"
 
 #~ msgid "leftmouseclick - select object"
-#~ msgstr "sol fare tuşu - neneyi seç"
+#~ msgstr "sol fare tuÅŸu - neneyi seÃ§"
 
 #~ msgid "Insert - insert new object"
 #~ msgstr "Insert - yeni nesne ekle"
 
 #~ msgid "g - ungroup/group current selection"
-#~ msgstr "g - seçili nesneleri grupla/grubu boz"
+#~ msgstr "g - seÃ§ili nesneleri grupla/grubu boz"
 
 #~ msgid "Ctrl PageUp   - increase objects z-pos by 1"
-#~ msgstr "Ctrl PageUp   - nesne z konumunu 1 artır"
+#~ msgstr "Ctrl PageUp   - nesne z konumunu 1 artÄ±r"
 
 #~ msgid "Ctrl PageDown - decrease objects z-pos by 1"
 #~ msgstr "Ctrl PageUp   - nesne z konumunu 1 azalt"
 
 #~ msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.pingus"
-#~ msgstr "İsimlendirme yöntemi: <SeviyeAdı><Numara>-<Tasarımcı>.pingus"
+#~ msgstr "Ä°simlendirme yÃ¶ntemi: <SeviyeAdÄ±><Numara>-<TasarÄ±mcÄ±>.pingus"
 
 #~ msgid ""
 #~ "When you have created a level and want to have it in the next Pingus "
 #~ "release,\n"
 #~ "please mail it to pingus-devel@nongnu.org."
 #~ msgstr ""
-#~ "Bir seviye hazırladıysanız ve Pingus ile dağıtılmasını istiyorsanız,\n"
-#~ "pingus-devel@nongnu.org adresine gönderin."
+#~ "Bir seviye hazÄ±rladÄ±ysanÄ±z ve Pingus ile daÄŸÄ±tÄ±lmasÄ±nÄ± istiyorsanÄ±z,\n"
+#~ "pingus-devel@nongnu.org adresine gÃ¶nderin."
 
 #~ msgid "1 - guillotine"
 #~ msgstr "1 - Keser"
 
 #~ msgid "2 - hammer"
-#~ msgstr "2 - Çekiç"
+#~ msgstr "2 - Ã‡ekiÃ§"
 
 #~ msgid "3 - spike"
-#~ msgstr "3 - İğne"
+#~ msgstr "3 - Ä°ÄŸne"
 
 #~ msgid "4 - laser_exit"
-#~ msgstr "4 - Laser Çıkış"
+#~ msgstr "4 - Laser Ã‡Ä±kÄ±ÅŸ"
 
 #~ msgid "5 - fake_exit"
-#~ msgstr "5 - Yalancı Çıkış"
+#~ msgstr "5 - YalancÄ± Ã‡Ä±kÄ±ÅŸ"
 
 #~ msgid "6 - smasher"
 #~ msgstr "6 - Ezici"
 
 #~ msgid "7 - bumper"
-#~ msgstr "7 - İtici"
+#~ msgstr "7 - Ä°tici"
 
 #~ msgid "Select a WorldObj"
-#~ msgstr "Bir WorldObj seç"
+#~ msgstr "Bir WorldObj seÃ§"
 
 #~ msgid "1 - teleporter"
-#~ msgstr "1 - Işınlayıcı"
+#~ msgstr "1 - IÅŸÄ±nlayÄ±cÄ±"
 
 #~ msgid "2 - switch and door"
-#~ msgstr "2 - Şalter ve Kapı"
+#~ msgstr "2 - Åalter ve KapÄ±"
 
 #~ msgid "3 - ConveyorBelt"
-#~ msgstr "3 - YürüyenBant"
+#~ msgstr "3 - YÃ¼rÃ¼yenBant"
 
 #~ msgid "4 - IceBlock"
-#~ msgstr "4 - BuzBloğu"
+#~ msgstr "4 - BuzBloÄŸu"
 
 #~ msgid "5 - InfoBox"
 #~ msgstr "5 - BilgiKutusu"
@@ -1941,23 +1941,23 @@ msgstr ""
 #~ msgstr "1 - Kar"
 
 #~ msgid "2 - rain"
-#~ msgstr "2 - Yağmur"
+#~ msgstr "2 - YaÄŸmur"
 
 #~ msgid "Select an entrance"
-#~ msgstr "Bir çıkış seç"
+#~ msgstr "Bir Ã§Ä±kÄ±ÅŸ seÃ§"
 
 #~ msgid "1 - generic"
 #~ msgstr "1 - Genel"
 
 #~ msgid "2 - woodthing"
-#~ msgstr "2 - Ahşap"
+#~ msgstr "2 - AhÅŸap"
 
 #~ msgid "3 - cloud"
 #~ msgstr "3 - Bulut"
 
 # FIXME: sicaknokta salakligini.
 #~ msgid "h - entrance surface (hotspot)"
-#~ msgstr "h - giriş yüzeyi (sıcaknokta)"
+#~ msgstr "h - giriÅŸ yÃ¼zeyi (sÄ±caknokta)"
 
 #~ msgid "What object type do you want?"
 #~ msgstr "Hangi nesneyi istiyorsun?"
@@ -1972,7 +1972,7 @@ msgstr ""
 #~ msgstr "x - Bitir"
 
 #~ msgid "o - WorldObject"
-#~ msgstr "o - DünyaNesnesi"
+#~ msgstr "o - DÃ¼nyaNesnesi"
 
 #  FIXME: prefab ne demek
 #~ msgid "p - Prefab (ObjectGroup)"
@@ -1988,105 +1988,105 @@ msgstr ""
 #~ msgstr "1 - Arkaplan"
 
 #~ msgid "2 - Solid Color Background"
-#~ msgstr "2 - Düz Renk Arkaplan"
+#~ msgstr "2 - DÃ¼z Renk Arkaplan"
 
 #~ msgid "3 - Starfield Background"
-#~ msgstr "3 - Yıldızlı Arkaplan"
+#~ msgstr "3 - YÄ±ldÄ±zlÄ± Arkaplan"
 
 #~ msgid "4 - Thunderstorm Background"
-#~ msgstr "4 - Yıldırımlı Arkaplan"
+#~ msgstr "4 - YÄ±ldÄ±rÄ±mlÄ± Arkaplan"
 
 #~ msgid "Load a level (F5)"
-#~ msgstr "Seviye yükle (F5)"
+#~ msgstr "Seviye yÃ¼kle (F5)"
 
 #~ msgid "Exit the editor (Escape)"
-#~ msgstr "Editörden çık (Escape)"
+#~ msgstr "EditÃ¶rden Ã§Ä±k (Escape)"
 
 #~ msgid "Delete marked objects (delete)"
-#~ msgstr "Seçili nesneleri sil (delete)"
+#~ msgstr "SeÃ§ili nesneleri sil (delete)"
 
 #~ msgid "Edit Level Properties"
-#~ msgstr "Seviye Özelliklerini Değiştir"
+#~ msgstr "Seviye Ã–zelliklerini DeÄŸiÅŸtir"
 
 #~ msgid "Start the level and test it (F4)"
-#~ msgstr "Seviyeyi başlat ve test et (F4)"
+#~ msgstr "Seviyeyi baÅŸlat ve test et (F4)"
 
 #~ msgid "Create a new level from scratch"
-#~ msgstr "Sıfırdan yeni bir seviye yarat"
+#~ msgstr "SÄ±fÄ±rdan yeni bir seviye yarat"
 
 #~ msgid "Insert an object (Insert)"
 #~ msgstr "Nesne ekle (Insert)"
 
 #~ msgid "Zoom into a region"
-#~ msgstr "bir alanı yaklaştır"
+#~ msgstr "bir alanÄ± yaklaÅŸtÄ±r"
 
 #~ msgid "Zoom in"
-#~ msgstr "Yaklaştır"
+#~ msgstr "YaklaÅŸtÄ±r"
 
 #~ msgid "Zoom out"
-#~ msgstr "Uzaklaştır"
+#~ msgstr "UzaklaÅŸtÄ±r"
 
 #~ msgid "Setup Number of Actions"
-#~ msgstr "Eylem Sayısını Ayarla"
+#~ msgstr "Eylem SayÄ±sÄ±nÄ± Ayarla"
 
 #~ msgid "Display Help Screen (F1)"
-#~ msgstr "Yardım Ekranını Göster (F1)"
+#~ msgstr "YardÄ±m EkranÄ±nÄ± GÃ¶ster (F1)"
 
 #~ msgid "Designed by "
 #~ msgstr "Tasarlayan "
 
 #~ msgid "Pingus to Save: %d"
-#~ msgstr "Kurtarılacak Pingu: %d"
+#~ msgstr "KurtarÄ±lacak Pingu: %d"
 
 #~ msgid "Number of Pingus: %d"
-#~ msgstr "Pingu sayısı: %d"
+#~ msgstr "Pingu sayÄ±sÄ±: %d"
 
 #~ msgid "Loading finished. Press a mouse button to start the level"
-#~ msgstr "Yüklendi! Devam etmek için farenin tuşunu tıklat"
+#~ msgstr "YÃ¼klendi! Devam etmek iÃ§in farenin tuÅŸunu tÄ±klat"
 
 #~ msgid "Results:"
-#~ msgstr "Sonuçlar:"
+#~ msgstr "SonuÃ§lar:"
 
 #~ msgid "Pingus saved:   %3d/%3d"
-#~ msgstr "Kurtarılıcak Pingus: %3d/%3d"
+#~ msgstr "KurtarÄ±lÄ±cak Pingus: %3d/%3d"
 
 #~ msgid "Pingus died:  %3d/%3d"
-#~ msgstr "Ölen Pingular:  %3d/%3d"
+#~ msgstr "Ã–len Pingular:  %3d/%3d"
 
 #~ msgid "Press button to continue..."
-#~ msgstr "Devam etmek için tuşa bas..."
+#~ msgstr "Devam etmek iÃ§in tuÅŸa bas..."
 
 #~ msgid ""
 #~ "As many Pingus escaped as entered the level. That's going to be hard to "
 #~ "beat.... unless this game becomes pornographic."
 #~ msgstr ""
-#~ "Hocam, Hepsi kurtuldu!  Bu skoru aşabilmek için bu oyuna pornografik "
-#~ "bişiler katmamız gerekecek."
+#~ "Hocam, Hepsi kurtuldu!  Bu skoru aÅŸabilmek iÃ§in bu oyuna pornografik "
+#~ "biÅŸiler katmamÄ±z gerekecek."
 
 #~ msgid "Very impressive indeed."
 #~ msgstr "Helal Olsun ..."
 
 #~ msgid "Good work. Still room for improvement though."
-#~ msgstr "Aferin. Ama daha fazla çalışman lazım çekirge."
+#~ msgstr "Aferin. Ama daha fazla Ã§alÄ±ÅŸman lazÄ±m Ã§ekirge."
 
 #~ msgid "Not too shabby, not too shabby at all."
-#~ msgstr "Fena değil, hiç fena değil."
+#~ msgstr "Fena deÄŸil, hiÃ§ fena deÄŸil."
 
 #~ msgid ""
 #~ "That was OK, but Pingu life insurance premiums have just gotten more "
 #~ "expensive."
 #~ msgstr ""
-#~ "Fena değil. Fakat Pingu hayat sigortası aydatlarının "
-#~ "pahalıştırmayakatkıda bulundun."
+#~ "Fena deÄŸil. Fakat Pingu hayat sigortasÄ± aydatlarÄ±nÄ±n "
+#~ "pahalÄ±ÅŸtÄ±rmayakatkÄ±da bulundun."
 
 #~ msgid "Maybe this level calls for a different strategy."
-#~ msgstr "Farklı bir stateji uygulamakta yarar olabilir."
+#~ msgstr "FarklÄ± bir stateji uygulamakta yarar olabilir."
 
 #~ msgid "Exactly half. Are you saving only the female ones?"
-#~ msgstr "Tam yarısı. Ne o? Sadece dişileri falan mı kurtarıyoruz?!?"
+#~ msgstr "Tam yarÄ±sÄ±. Ne o? Sadece diÅŸileri falan mÄ± kurtarÄ±yoruz?!?"
 
 #~ msgid "If I were a Pingu, I never would have left that entrance."
-#~ msgstr "Ben bir Pingu olsaydım, o kapıdan adımımı atmazdım."
+#~ msgstr "Ben bir Pingu olsaydÄ±m, o kapÄ±dan adÄ±mÄ±mÄ± atmazdÄ±m."
 
 #~ msgid "Maybe you would feel more at home playing Quake."
 #~ msgstr "Abisi, belki de Quake sana daha uygun bi oyun."
@@ -2095,23 +2095,23 @@ msgstr ""
 #~ "Maybe this level calls for a different strategy. Like attempting to save "
 #~ "them, for example."
 #~ msgstr ""
-#~ "Tikkat tikkat! Stateji değişikliği! Bir daha sefere şunları kurtarmaya "
-#~ "çalışalım!"
+#~ "Tikkat tikkat! Stateji deÄŸiÅŸikliÄŸi! Bir daha sefere ÅŸunlarÄ± kurtarmaya "
+#~ "Ã§alÄ±ÅŸalÄ±m!"
 
 #~ msgid "Ever considered a career as a Pingu exterminator?"
-#~ msgstr "Pingo Terminatörü olarak iş mi arıyoruz?"
+#~ msgstr "Pingo TerminatÃ¶rÃ¼ olarak iÅŸ mi arÄ±yoruz?"
 
 #~ msgid "You missed one! What's your excuse!?"
-#~ msgstr "Ne o? Bi tane kaçırdık bakıyorum."
+#~ msgstr "Ne o? Bi tane kaÃ§Ä±rdÄ±k bakÄ±yorum."
 
 #~ msgid "Please reassure me that you hit the Armageddon button."
-#~ msgstr "Bu da bir başarı tabii. Hepsini nasil helak ettin?"
+#~ msgstr "Bu da bir baÅŸarÄ± tabii. Hepsini nasil helak ettin?"
 
 #~ msgid "You've got a negative save/total value, something is buggy."
-#~ msgstr "Eksi sayıda Pingus kurtardın, biyerde kesin hata var."
+#~ msgstr "Eksi sayÄ±da Pingus kurtardÄ±n, biyerde kesin hata var."
 
 #~ msgid "Launch the Level editor (experimental)"
-#~ msgstr "Seviye editörü'nu başlat (deneysel)"
+#~ msgstr "Seviye editÃ¶rÃ¼'nu baÅŸlat (deneysel)"
 
 # bu olmadi, c++'tan nefret... -cagri
 # niye c++'den nefret ediyon?
@@ -2124,47 +2124,47 @@ msgstr ""
 #~ msgstr "Yeni Seviye"
 
 #~ msgid "Screenshot: Couldn't save screenshot"
-#~ msgstr "Screenshot: Ekran görüntüsü kaydedilemedi"
+#~ msgstr "Screenshot: Ekran gÃ¶rÃ¼ntÃ¼sÃ¼ kaydedilemedi"
 
 #~ msgid "WorldMap: File not found: "
-#~ msgstr "WorldMap: Dosya bulunamadı: "
+#~ msgstr "WorldMap: Dosya bulunamadÄ±: "
 
 #~ msgid "..:: The people who brought this game to you ::.."
-#~ msgstr "..:: Bu oyunu sizin için hazırlayanlar... ::.."
+#~ msgstr "..:: Bu oyunu sizin iÃ§in hazÄ±rlayanlar... ::.."
 
 #~ msgid "..:: Takes you to the options menu ::.."
-#~ msgstr "..:: Seçenekler Menüsüne gider ::.."
+#~ msgstr "..:: SeÃ§enekler MenÃ¼sÃ¼ne gider ::.."
 
 #~ msgid "Options"
-#~ msgstr "Seçenekler"
+#~ msgstr "SeÃ§enekler"
 
 #, fuzzy
 #~ msgid "Perfect! You saved all the Pingus. Great!"
-#~ msgstr "Mükemmel! Herkesi kurtardın galiba."
+#~ msgstr "MÃ¼kemmel! Herkesi kurtardÄ±n galiba."
 
 #, fuzzy
 #~ msgid ""
 #~ "You saved just the ones you needed, you made it, but\n"
 #~ "maybe you can do it better next time?"
 #~ msgstr ""
-#~ "Tam gerektiği kadar Pingu kurtardın, geçer not, ama\n"
-#~ "belki daha iyisini yapabilisin, hı?"
+#~ "Tam gerektiÄŸi kadar Pingu kurtardÄ±n, geÃ§er not, ama\n"
+#~ "belki daha iyisini yapabilisin, hÄ±?"
 
 #, fuzzy
 #~ msgid "Not everybody got saved, but still good work!"
-#~ msgstr "Herkesi kurtaramadın, ama yine de iyi iş çıkardın!"
+#~ msgstr "Herkesi kurtaramadÄ±n, ama yine de iyi iÅŸ Ã§Ä±kardÄ±n!"
 
 #, fuzzy
 #~ msgid ""
 #~ "You didn't save enough, but you still saved a few, next\n"
 #~ "time you might be better."
 #~ msgstr ""
-#~ "Yeterince kurtaramadın, ama yine de birkaçı kurtuldu, bir\n"
+#~ "Yeterince kurtaramadÄ±n, ama yine de birkaÃ§Ä± kurtuldu, bir\n"
 #~ "dahakine daha dikkatli ol."
 
 #, fuzzy
 #~ msgid "Only a handful more and you would have made it, try again!"
-#~ msgstr "Birkaç tane daha kurtarsan olacaktı, tekrar dene!"
+#~ msgstr "BirkaÃ§ tane daha kurtarsan olacaktÄ±, tekrar dene!"
 
 #~ msgid "input, pathmgr"
 #~ msgstr "input, pathmgr"
@@ -2179,73 +2179,73 @@ msgstr ""
 #~ msgstr "eylem yok"
 
 #~ msgid "Setting action to a dead pingu"
-#~ msgstr "Ölü pingu'ya atanan aksiyon"
+#~ msgstr "Ã–lÃ¼ pingu'ya atanan aksiyon"
 
 #~ msgid "input"
 #~ msgstr "girdi"
 
 #~ msgid "System: Couldn't open: "
-#~ msgstr "Sistem: Açılamayan dosya: "
+#~ msgstr "Sistem: AÃ§Ä±lamayan dosya: "
 
 #~ msgid "Successfully created: "
-#~ msgstr "Yaratılan dosya: "
+#~ msgstr "YaratÄ±lan dosya: "
 
 #~ msgid "Found: "
 #~ msgstr "Bulundu: "
 
 #~ msgid "System::checksum: Couldn't open file: "
-#~ msgstr "Sistem::checksum: Açılamayan dosya: "
+#~ msgstr "Sistem::checksum: AÃ§Ä±lamayan dosya: "
 
 #~ msgid "System:checksum: file read error"
-#~ msgstr "Sistem:checksum: Dosya okunurken hata oluştu"
+#~ msgstr "Sistem:checksum: Dosya okunurken hata oluÅŸtu"
 
 #~ msgid "off"
-#~ msgstr "kapalı"
+#~ msgstr "kapalÄ±"
 
 #~ msgid "Not implemented"
-#~ msgstr "Daha gerçekleştirilmedi"
+#~ msgstr "Daha gerÃ§ekleÅŸtirilmedi"
 
 #~ msgid "OptionMenu::Event: Unknown key released: id="
-#~ msgstr "OptionMenu::Event: Bilinmeyen tuş bırakıldı: id="
+#~ msgstr "OptionMenu::Event: Bilinmeyen tuÅŸ bÄ±rakÄ±ldÄ±: id="
 
 #~ msgid "Button 0 pressed"
-#~ msgstr "Buton 0'a basıldı"
+#~ msgstr "Buton 0'a basÄ±ldÄ±"
 
 #~ msgid "Button 1 pressed"
-#~ msgstr "Buton 1'e basıldı"
+#~ msgstr "Buton 1'e basÄ±ldÄ±"
 
 #~ msgid "Button 2 pressed"
-#~ msgstr "Buton 2'ye basıldı"
+#~ msgstr "Buton 2'ye basÄ±ldÄ±"
 
 #~ msgid "OptionMenu::Event: Unknown mouse button released: id="
-#~ msgstr "OptionMenu::Event: Bilinmiyen fare butonu serbest bırakıldı: id="
+#~ msgstr "OptionMenu::Event: Bilinmiyen fare butonu serbest bÄ±rakÄ±ldÄ±: id="
 
 #~ msgid "Unlimited Actions"
-#~ msgstr "Sınırsız Eylem"
+#~ msgstr "SÄ±nÄ±rsÄ±z Eylem"
 
 #~ msgid "Print fps"
-#~ msgstr "FPS yazdır"
+#~ msgstr "FPS yazdÄ±r"
 
 #~ msgid "Cursor enabled"
-#~ msgstr "İmleç etkin"
+#~ msgstr "Ä°mleÃ§ etkin"
 
 #~ msgid "Fast Mode"
-#~ msgstr "Hızlı Kip"
+#~ msgstr "HÄ±zlÄ± Kip"
 
 #~ msgid "Game Speed"
-#~ msgstr "Oyun Hızı"
+#~ msgstr "Oyun HÄ±zÄ±"
 
 #~ msgid "Verbose"
-#~ msgstr "Ayrıntılı mesaj"
+#~ msgstr "AyrÄ±ntÄ±lÄ± mesaj"
 
 #~ msgid "Draw ColMap"
-#~ msgstr "RenkHaritasi Çiz"
+#~ msgstr "RenkHaritasi Ã‡iz"
 
 #~ msgid "Auto Scrolling"
-#~ msgstr "Otomatik Kaydırma"
+#~ msgstr "Otomatik KaydÄ±rma"
 
 #~ msgid "Action Help Strings"
-#~ msgstr "Eylem Yardım Mesajları"
+#~ msgstr "Eylem YardÄ±m MesajlarÄ±"
 
 #~ msgid "| $ gdb pingus core"
 #~ msgstr "| $ gdb pingus core"
@@ -2270,10 +2270,10 @@ msgstr ""
 #~ ",------------------------------------------------------------------------"
 #~ msgstr ""
 #~ "\n"
-#~ "Seçenekler:\n"
-#~ "   -g, --geometry {genişlik}x{yükseklik}\n"
-#~ "                            Çözünürlüğü ayarla (640x480)\n"
-#~ "   -h, --help               Yardım ekranını göster\n"
+#~ "SeÃ§enekler:\n"
+#~ "   -g, --geometry {geniÅŸlik}x{yÃ¼kseklik}\n"
+#~ "                            Ã‡Ã¶zÃ¼nÃ¼rlÃ¼ÄŸÃ¼ ayarla (640x480)\n"
+#~ "   -h, --help               YardÄ±m ekranÄ±nÄ± gÃ¶ster\n"
 #~ "   --disable-intro          Intro'yu kapat\n"
 
 #~ msgid ""
@@ -2285,9 +2285,9 @@ msgstr ""
 #~ msgstr ""
 #~ "\n"
 #~ "Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
-#~ "Geliştiriciler bu yazılımla ilgili HİÇBİR garanti vermemektedir.\n"
-#~ "Pingus serbest bir yazılımdır ve GNU GPL çerçevesinde \n"
-#~ "özgürce dağıtılabilir. Ayrıntılar için kaynak \n"
+#~ "GeliÅŸtiriciler bu yazÄ±lÄ±mla ilgili HÄ°Ã‡BÄ°R garanti vermemektedir.\n"
+#~ "Pingus serbest bir yazÄ±lÄ±mdÄ±r ve GNU GPL Ã§erÃ§evesinde \n"
+#~ "Ã¶zgÃ¼rce daÄŸÄ±tÄ±labilir. AyrÄ±ntÄ±lar iÃ§in kaynak \n"
 #~ "kodunda COPYING belgesini okuyun."
 
 #~ msgid ""
@@ -2300,10 +2300,10 @@ msgstr ""
 #~ "   --disable-intro          Disable intro\n"
 #~ msgstr ""
 #~ "\n"
-#~ "Seçenekler:\n"
-#~ "   -g, --geometry {genişlik}x{yükseklik}\n"
-#~ "                            Çözünürlüğü ayarla (640x480)\n"
-#~ "   -h, --help               Yardım ekranını göster\n"
+#~ "SeÃ§enekler:\n"
+#~ "   -g, --geometry {geniÅŸlik}x{yÃ¼kseklik}\n"
+#~ "                            Ã‡Ã¶zÃ¼nÃ¼rlÃ¼ÄŸÃ¼ ayarla (640x480)\n"
+#~ "   -h, --help               YardÄ±m ekranÄ±nÄ± gÃ¶ster\n"
 #~ "   --disable-intro          Intro'yu kapat\n"
 
 #~ msgid "   -G, --use-opengl         Use OpenGL\n"
@@ -2352,9 +2352,9 @@ msgstr ""
 #~ "   -r, --enable-demo-recording\n"
 #~ "                            Record demos for each played level\n"
 #~ msgstr ""
-#~ "Ama zamanla, durum yavaş yavaş değişmeye başladı. Gökyüzü kararmaya,\n"
-#~ "dünya daha sıcak olmaya başladı. Önceleri bunun sıradan iklim\n"
-#~ "farkı olduğunu düşündüler, ama hergeçen yıl durum daha kötüye\n"
+#~ "Ama zamanla, durum yavaÅŸ yavaÅŸ deÄŸiÅŸmeye baÅŸladÄ±. GÃ¶kyÃ¼zÃ¼ kararmaya,\n"
+#~ "dÃ¼nya daha sÄ±cak olmaya baÅŸladÄ±. Ã–nceleri bunun sÄ±radan iklim\n"
+#~ "farkÄ± olduÄŸunu dÃ¼ÅŸÃ¼ndÃ¼ler, ama hergeÃ§en yÄ±l durum daha kÃ¶tÃ¼ye\n"
 #~ "gittmekteydi"
 
 #~ msgid ""
@@ -2365,39 +2365,39 @@ msgstr ""
 #~ msgstr ""
 #~ "\n"
 #~ "Ses:\n"
-#~ "   -s, --enable-sound       Sesi aç\n"
-#~ "   -m, --enable-music       Müziği aç\n"
+#~ "   -s, --enable-sound       Sesi aÃ§\n"
+#~ "   -m, --enable-music       MÃ¼ziÄŸi aÃ§\n"
 
 #~ msgid "_If I forgot somebody in this"
-#~ msgstr "_Eğer birisini unutuysam,"
+#~ msgstr "_EÄŸer birisini unutuysam,"
 
 #~ msgid "_list, just drop me a line and"
-#~ msgstr "_lütfen bana haber verin."
+#~ msgstr "_lÃ¼tfen bana haber verin."
 
 #~ msgid "_I'll fix this."
-#~ msgstr "_Hemen düzeltirim."
+#~ msgstr "_Hemen dÃ¼zeltirim."
 
 #~ msgid "_Last Updated: 2000/06/27"
-#~ msgstr "_Son Değişiklik: 2000/06/27"
+#~ msgstr "_Son DeÄŸiÅŸiklik: 2000/06/27"
 
 #~ msgid "n"
 #~ msgstr "n"
 
 #~ msgid "..:: Press Start ::.."
-#~ msgstr "..:: Başla ::.."
+#~ msgstr "..:: BaÅŸla ::.."
 
 # bunu bilemedim -cagri
 # -gd ->
-#  gimmick : CAZİBEARTIRICISÜS  der bi on-line sözlük ... türkçe mi lan bu?
+#  gimmick : CAZÄ°BEARTIRICISÃœS  der bi on-line sÃ¶zlÃ¼k ... tÃ¼rkÃ§e mi lan bu?
 # sonra 
-#   gimmick : (dikkat çekmek için yapılan) hile
+#   gimmick : (dikkat Ã§ekmek iÃ§in yapÄ±lan) hile
 #   gimmick : numara
-#  ekstra bir özellik olarak biliyorum ben ...
+#  ekstra bir Ã¶zellik olarak biliyorum ben ...
 #~ msgid "Gimmicks"
 #~ msgstr "Ekstralar"
 
 #~ msgid "Level Previews"
-#~ msgstr "Seviye Önizleme"
+#~ msgstr "Seviye Ã–nizleme"
 
 #~ msgid "Couldn't find palette: %d"
 #~ msgstr "Bulunamayan palet: %d"
@@ -2406,98 +2406,98 @@ msgstr ""
 #~ msgstr "ump_after(): Beklenen '"
 
 #~ msgid "PLF: Syntax Error at line "
-#~ msgstr "PLF: Sözdizimi hatası. Satır: "
+#~ msgstr "PLF: SÃ¶zdizimi hatasÄ±. SatÄ±r: "
 
 #~ msgid "Config: Unknown valueid: "
 #~ msgstr "Config: Bilinmeyen valueid: "
 
 #~ msgid "Config: value: "
-#~ msgstr "Config: değer: "
+#~ msgstr "Config: deÄŸer: "
 
 #~ msgid " is not of type bool."
-#~ msgstr " bool tipinde değil."
+#~ msgstr " bool tipinde deÄŸil."
 
 #~ msgid "Config: Couldn't convert std::string to integer: "
-#~ msgstr "Config: std::string'i integer'e dönüştürelemedi"
+#~ msgstr "Config: std::string'i integer'e dÃ¶nÃ¼ÅŸtÃ¼relemedi"
 
 #~ msgid "PingusBug: "
-#~ msgstr "PingusBöceği: "
+#~ msgstr "PingusBÃ¶ceÄŸi: "
 
 #~ msgid "PingusError: "
-#~ msgstr "PingusHatası: "
+#~ msgstr "PingusHatasÄ±: "
 
 # bu olmadi -cagri
-# şimdi daha iyi mi? -gd
+# ÅŸimdi daha iyi mi? -gd
 #~ msgid "..:: Lets you select a world to start ::.."
-#~ msgstr "..:: Oynamak için bir dünya seçmenizi sağlar ::.."
+#~ msgstr "..:: Oynamak iÃ§in bir dÃ¼nya seÃ§menizi saÄŸlar ::.."
 
 #~ msgid "Unexpected keyword: '%s' at line: %d"
-#~ msgstr "Beklenmeyen anahtar kelime: '%s'. Bulunan satır: %d"
+#~ msgstr "Beklenmeyen anahtar kelime: '%s'. Bulunan satÄ±r: %d"
 
 #~ msgid "ColMap: File load - Feature is no longer implemented"
-#~ msgstr "ColMap: Dosya yükleme - Özellik artık desteklenmemektedir"
+#~ msgstr "ColMap: Dosya yÃ¼kleme - Ã–zellik artÄ±k desteklenmemektedir"
 
 #~ msgid "PingusBmpMap::get_colmap: Surface has wrong pixel format, need 8bpp!"
 #~ msgstr ""
-#~ "PingusBmpMap::get_colmap: Alanıda yanlış benek (pixel) biçemi mevcut, "
-#~ "8bpp'ye ihtiyac vardır"
+#~ "PingusBmpMap::get_colmap: AlanÄ±da yanlÄ±ÅŸ benek (pixel) biÃ§emi mevcut, "
+#~ "8bpp'ye ihtiyac vardÄ±r"
 
 #~ msgid "ColMap::load: Reloaded ColMap!"
-#~ msgstr "ColMap::load: Yeniden yüklenen ColMap!"
+#~ msgstr "ColMap::load: Yeniden yÃ¼klenen ColMap!"
 
 #~ msgid "InputDeviceButton: Button not found."
-#~ msgstr "InputDeviceButton: Buton bulunamadı"
+#~ msgstr "InputDeviceButton: Buton bulunamadÄ±"
 
 #~ msgid "DemoPlayer: Couldn't load "
-#~ msgstr "DemoPlayer: Açılamayan dosya: "
+#~ msgstr "DemoPlayer: AÃ§Ä±lamayan dosya: "
 
 #~ msgid "DemoRecorder: Couldn't open: "
-#~ msgstr "DemoRecorder: Açılamayan dosya: "
+#~ msgstr "DemoRecorder: AÃ§Ä±lamayan dosya: "
 
 #~ msgid "Edit Properties (not implemented)"
-#~ msgstr "Nesne özellikleri (daha geliştirilmedi)"
+#~ msgstr "Nesne Ã¶zellikleri (daha geliÅŸtirilmedi)"
 
 #~ msgid "Edit Preferences (not implemented)"
-#~ msgstr "Tercihleri ayarla (daha geliştirilmedi)"
+#~ msgstr "Tercihleri ayarla (daha geliÅŸtirilmedi)"
 
 #~ msgid "GamepadController: Couldn't find a gamepad controlling device!"
-#~ msgstr "GamepadController: Gamepad'i kullanmak için aygıt bulunamadı"
+#~ msgstr "GamepadController: Gamepad'i kullanmak iÃ§in aygÄ±t bulunamadÄ±"
 
 #~ msgid "Couldn't find enough axes on joystick"
-#~ msgstr "Dentim Kolunda (Joystick) yeterli eksen bulunamadı"
+#~ msgstr "Dentim Kolunda (Joystick) yeterli eksen bulunamadÄ±"
 
 #~ msgid "Gettext: PACKAGE="
 #~ msgstr "Gettext: Paket="
 
 #~ msgid ", LOCALEDIR="
-#~ msgstr "LOCALEDİZİNİ="
+#~ msgstr "LOCALEDÄ°ZÄ°NÄ°="
 
 #~ msgid "Build:"
 #~ msgstr "Derleme:"
 
 #~ msgid "GenericMain: Executable name \""
-#~ msgstr "GenericMain: Çalıştırabilir isim \""
+#~ msgstr "GenericMain: Ã‡alÄ±ÅŸtÄ±rabilir isim \""
 
 #~ msgid "\" unknown, default to Pingus mode"
 #~ msgstr "\" bilinmiyor, Pingus kipine git"
 
 #~ msgid "Start menu"
-#~ msgstr "Başlangıç menüsü"
+#~ msgstr "BaÅŸlangÄ±Ã§ menÃ¼sÃ¼"
 
 #~ msgid ": Could not open file\n"
-#~ msgstr "Sistem: Açılamayan dosya: "
+#~ msgstr "Sistem: AÃ§Ä±lamayan dosya: "
 
 #~ msgid "PingusDemo: Couldn't open out file: "
-#~ msgstr "PingusDemo: Açılamayan dosya: "
+#~ msgstr "PingusDemo: AÃ§Ä±lamayan dosya: "
 
 #~ msgid "PingusDemo: Couldn't open in file: "
-#~ msgstr "PingusDemo: Açılamayan dosya: "
+#~ msgstr "PingusDemo: AÃ§Ä±lamayan dosya: "
 
 #~ msgid "Time for war - Lets fight!"
-#~ msgstr "Savaş vaktidir ey ahali - haydi savaşa!"
+#~ msgstr "SavaÅŸ vaktidir ey ahali - haydi savaÅŸa!"
 
 #~ msgid "Couldn't find: "
-#~ msgstr "%d bulunamadı"
+#~ msgstr "%d bulunamadÄ±"
 
 #~ msgid "Horizontal Button Panel"
 #~ msgstr "Yatay buton paneli"
@@ -2506,62 +2506,62 @@ msgstr ""
 #~ msgstr "=================================================================\n"
 
 #~ msgid "                            WARNING!                             \n"
-#~ msgstr "                            DİKKAT!                               \n"
+#~ msgstr "                            DÄ°KKAT!                               \n"
 
 #~ msgid "Be warned, at the moment there is only some sound code pressent, \n"
-#~ msgstr "Bu şü anda sadece ufak bir miktar ses kodunun mevcut oldugunu\n"
+#~ msgstr "Bu ÅŸÃ¼ anda sadece ufak bir miktar ses kodunun mevcut oldugunu\n"
 
 #~ msgid "there are *no* sound files, so this will fail.\n"
-#~ msgstr "belirtmek lazım.  Pek ses dosyası yok, yani bu çalışmayacaktır.\n"
+#~ msgstr "belirtmek lazÄ±m.  Pek ses dosyasÄ± yok, yani bu Ã§alÄ±ÅŸmayacaktÄ±r.\n"
 
 #~ msgid "   -g, --geometry {width}x{height}\n"
-#~ msgstr "   -g, --geometry {genişlik}x{yükseklik}\n"
+#~ msgstr "   -g, --geometry {geniÅŸlik}x{yÃ¼kseklik}\n"
 
 #~ msgid "   -h, --help               Displays this screen\n"
-#~ msgstr "   -h, --help               Bu ekranı göster\n"
+#~ msgstr "   -h, --help               Bu ekranÄ± gÃ¶ster\n"
 
 #~ msgid "   --disable-intro          Disable intro\n"
-#~ msgstr "   --disable-intro          Giriş ekranını gösterme\n"
+#~ msgstr "   --disable-intro          GiriÅŸ ekranÄ±nÄ± gÃ¶sterme\n"
 
 #~ msgid "   -F, --disable-fullscreen Disable Fullscreen\n"
-#~ msgstr "   -F, --disable-fullscreen Tam-Ekran'ı kapa\n"
+#~ msgstr "   -F, --disable-fullscreen Tam-Ekran'Ä± kapa\n"
 
 #~ msgid "   -f, --enable-fullscreen  Enable Fullscreen (default)\n"
-#~ msgstr "   -f, --enable-fullscreen  Tam-Ekran'ı aç (öntanımlı)\n"
+#~ msgstr "   -f, --enable-fullscreen  Tam-Ekran'Ä± aÃ§ (Ã¶ntanÄ±mlÄ±)\n"
 
 #~ msgid ""
 #~ "   --use-datafile           Use the pre-compiled datafile (default)\n"
 #~ msgstr ""
-#~ "   --use-datafile           Derlenmiş olan data-dosyasını kullan "
-#~ "(öntanımlı)\n"
+#~ "   --use-datafile           DerlenmiÅŸ olan data-dosyasÄ±nÄ± kullan "
+#~ "(Ã¶ntanÄ±mlÄ±)\n"
 
 #~ msgid ""
 #~ "   --use-scriptfile         Use the scriptfile and read all data from "
 #~ "files\n"
 #~ msgstr ""
-#~ "   --use-scriptfile         Betik dosyasını kullan ve verileri dosyada "
+#~ "   --use-scriptfile         Betik dosyasÄ±nÄ± kullan ve verileri dosyada "
 #~ "oku\n"
 
 #~ msgid "   -l, --level FILE         Load a custom level from `file'\n"
-#~ msgstr "   -l, --level DOSYA         `DOSYA'dan Custom seviye yükle\n"
+#~ msgstr "   -l, --level DOSYA         `DOSYA'dan Custom seviye yÃ¼kle\n"
 
 #~ msgid ""
 #~ "   --disable-swcursor       Disable software cursor, use hw cursor "
 #~ "instead\n"
 #~ msgstr ""
-#~ "   --disable-swcursor       Yazılım imleçi kapa, domanım imleçini kullan\n"
+#~ "   --disable-swcursor       YazÄ±lÄ±m imleÃ§i kapa, domanÄ±m imleÃ§ini kullan\n"
 
 #~ msgid ""
 #~ "   --max-cpu-usage          Use all of the cpu power available, instead "
 #~ "of trying to\n"
-#~ msgstr "   --max-cpu-usage          İşlemcinin bütün gücünu kullan.\n"
+#~ msgstr "   --max-cpu-usage          Ä°ÅŸlemcinin bÃ¼tÃ¼n gÃ¼cÃ¼nu kullan.\n"
 
 #~ msgid ""
 #~ "   --enable-bg-manipulation Enables color manipulation of level "
 #~ "backgrounds\n"
 #~ msgstr ""
-#~ "   --enable-bg-manipulation Seviye art-alanların renk ayarlarını "
-#~ "kullanıma açar\n"
+#~ "   --enable-bg-manipulation Seviye art-alanlarÄ±n renk ayarlarÄ±nÄ± "
+#~ "kullanÄ±ma aÃ§ar\n"
 
 #~ msgid ""
 #~ "\n"
@@ -2569,19 +2569,19 @@ msgstr ""
 #~ msgstr "Ses: "
 
 #~ msgid "EditorObj: Warrning unknown WorldObjData pointer!"
-#~ msgstr "EditorObj: Uyarı: bilinmeyen WorldObjData imleci!"
+#~ msgstr "EditorObj: UyarÄ±: bilinmeyen WorldObjData imleci!"
 
 #~ msgid " (with sound support)"
-#~ msgstr " (Ses desteği ile)"
+#~ msgstr " (Ses desteÄŸi ile)"
 
 #~ msgid " (without sound support)"
-#~ msgstr " (Ses desteği olmaksızın)"
+#~ msgstr " (Ses desteÄŸi olmaksÄ±zÄ±n)"
 
 #~ msgid "Starting..."
-#~ msgstr "Pingus başlatılıyor..."
+#~ msgstr "Pingus baÅŸlatÄ±lÄ±yor..."
 
 #~ msgid "Pingus: Gimmicks enabled"
 #~ msgstr "Pingus: Gimmicks etkin"
 
 #~ msgid "Using demofile: "
-#~ msgstr "Demo Dosyası: "
+#~ msgstr "Demo DosyasÄ±: "
