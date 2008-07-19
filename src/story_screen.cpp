@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <vector>
 #include "gettext.h"
+#include "globals.hpp"
 #include "resource.hpp"
 #include "gui/gui_manager.hpp"
 #include "gui/surface_button.hpp"
@@ -123,16 +124,19 @@ public:
 };
 
 StoryScreen::StoryScreen(FileReader reader)
-  : story(new WorldmapNS::WorldmapStory(reader))
+  : story(new WorldmapNS::WorldmapStory(reader)),
+    continue_button(0),
+    skip_button(0)
 {
   story_comp = new StoryScreenComponent(story.get());
   gui_manager->add(story_comp);
   gui_manager->add(continue_button = new StoryScreenContinueButton(story_comp, 
-                                                                   Display::get_width()/2 + 220, 
-                                                                   Display::get_height()/2 + 180));
-  gui_manager->add(skip_button     = new StoryScreenSkipButton(story_comp, 
-                                                               Display::get_width() - 4, 
-                                                               Display::get_height() - 26));
+                                                                   Display::get_width()/2 + 220 + 40, 
+                                                                   Display::get_height()/2 + 180 + 32));
+  if (maintainer_mode)
+    gui_manager->add(skip_button     = new StoryScreenSkipButton(story_comp, 
+                                                                 Display::get_width() - 4, 
+                                                                 Display::get_height() - 26));
 }
 
 StoryScreen::~StoryScreen()
@@ -279,10 +283,11 @@ StoryScreen::resize(const Size& size)
 {
   GUIScreen::resize(size);
 
-  continue_button->set_pos(size.width/2 + 220, 
-                           size.height/2 + 180);
-  skip_button->set_pos(size.width  - 4, 
-                       size.height - 26);
+  continue_button->set_pos(size.width/2 + 220 + 40, 
+                           size.height/2 + 180 +32);
+  if (skip_button)
+    skip_button->set_pos(size.width  - 4, 
+                         size.height - 26);
 }
 
 /* EOF */

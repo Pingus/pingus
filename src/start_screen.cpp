@@ -152,7 +152,7 @@ StartScreenComponent::draw(DrawingContext& gc)
                   _(plf.get_levelname()));
 
   gc.print_left(Fonts::chalk_normal,
-                Vector2i(gc.get_width() /2 - 290,
+                Vector2i(gc.get_width() /2 - 300,
                          gc.get_height()/2 - 170),
                 format_description(800 - 200));
 

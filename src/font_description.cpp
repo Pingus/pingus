@@ -38,10 +38,10 @@ GlyphDescription::GlyphDescription(FileReader& reader)
 FontDescription::FontDescription(const Pathname& pathname_)
   : pathname(pathname_)
 {
-  name            = "<unknown>";
-  monospace       = false;
-  char_spacing    = 1.0f;
-  vertical_spacing = -1.0f;
+  name             = "<unknown>";
+  monospace        = false;
+  char_spacing     = 1.0f;
+  vertical_spacing = 1.0f;
 
   FileReader reader = FileReader::parse(pathname);
 

@@ -50,7 +50,7 @@ public:
         assert(false);
       }
 
-    vertical_spacing = (desc.vertical_spacing == -1.0f) ? size : desc.vertical_spacing;
+    vertical_spacing = size * desc.vertical_spacing;
    
     // Copyh Unicode -> Glyph mapping 
     for(std::vector<GlyphDescription>::const_iterator i = desc.glyphs.begin(); i != desc.glyphs.end(); ++i)
@@ -68,7 +68,7 @@ public:
     y_ += get_height();
 
     float y = float(y_);
-    // FIXME: only origins top_left, top_right and top_center to work right now
+    // FIXME: only origins top_left, top_right and top_center do work right now
     LineIterator it(text);
     while(it.next()) {
       render_line(origin, x, int(y), it.get(), fb);

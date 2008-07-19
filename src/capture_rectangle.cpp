@@ -60,16 +60,16 @@ CaptureRectangle::draw(SceneContext& sc)
       // Paint the direction arrow
       if (pingu->direction.is_left())
         {
-          sc.color().draw(arrow_left, pingu->get_center_pos() + Vector3f(0, 0, 1000));
+          sc.color().draw(arrow_left, pingu->get_center_pos() + Vector3f(0, 2, 1000));
         }
       else
         {
-          sc.color().draw(arrow_right, pingu->get_center_pos() + Vector3f(0, 0, 1000));
+          sc.color().draw(arrow_right, pingu->get_center_pos() + Vector3f(0, 2, 1000));
         }
 
       sc.color().print_center(font, 
                               Vector2i(pingu->get_center_pos().x,
-                                       pingu->get_center_pos().y - 32),
+                                       pingu->get_center_pos().y - 46),
                               action_str,
                               1000);
     }
