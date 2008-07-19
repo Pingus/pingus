@@ -37,7 +37,7 @@ init ()
 {
   chalk_large  = Resource::load_font("fonts/chalk-40px");
   chalk_normal = Resource::load_font("fonts/chalk-20px");
-  chalk_small  = chalk_normal;
+  chalk_small  = Resource::load_font("fonts/chalk-16px");
 
   pingus_small = Resource::load_font("fonts/pingus-small-20px");
   pingus_small_fixnum = pingus_small;
