@@ -48,9 +48,6 @@ public:
 
   bool monospace;
   
-  /** Length of the space character, ignored with monospace fonts */
-  int  space_length; 
-
   /** Space between two characters */
   float char_spacing;
 

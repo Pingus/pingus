@@ -2,6 +2,7 @@
   (image "images/fonts/verdana11.png")
   (size 11)
   (glyph-count 680)
+  (char-spacing 0)
   (glyphs 
     (glyph (unicode 7862) (offset 0 -11) (advance 8) (rect 0 0 8 13)) ;; ¶
     (glyph (unicode 7852) (offset 0 -11) (advance 8) (rect 8 0 16 13)) ;; ¬

@@ -39,8 +39,7 @@ public:
   int    size;
   
   FontImpl(const FontDescription& desc)
-    : space_length(desc.space_length),
-      char_spacing(desc.char_spacing),
+    : char_spacing(desc.char_spacing),
       size(desc.size)
   {
     framebuffer_surface = Display::get_framebuffer().create_surface(Surface(desc.image));
@@ -124,11 +123,7 @@ public:
       {
         const uint32_t& unicode = *i;
 
-        if (unicode == ' ')
-          {
-            width += space_length + char_spacing;
-          }
-        else if (unicode == '\n')
+        if (unicode == '\n')
           {
             last_width = std::max(last_width, width);
             width = 0;

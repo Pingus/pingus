@@ -19,8 +19,6 @@
 
 namespace Fonts {
 
-std::string encoding("iso-8859-1");
-
 Font chalk_large;
 Font chalk_normal;
 Font chalk_small;
@@ -41,7 +39,7 @@ init ()
   chalk_normal = Resource::load_font("fonts/chalk-21px");
   chalk_small  = chalk_normal;
 
-  pingus_small = Resource::load_font("fonts/pingus-small-18px");
+  pingus_small = Resource::load_font("fonts/pingus-small-20px");
   pingus_small_fixnum = pingus_small;
 
   courier_small = pingus_small;

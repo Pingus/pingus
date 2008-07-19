@@ -22,8 +22,6 @@
 
 namespace Fonts {
 
-extern std::string encoding;
-
 extern Font chalk_large;
 extern Font chalk_normal;
 extern Font chalk_small;

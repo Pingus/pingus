@@ -93,7 +93,7 @@ public:
       {
         int t_w = Fonts::verdana11.get_width(tooltip);
         Rect t_r(pos.x + 17 - t_w/2 - 4, pos.y + 38 - 2, 
-                 pos.x + 17 + t_w/2 + 4, pos.y + 38 + Fonts::verdana11.get_height() + 2);
+                 pos.x + 17 + t_w/2 + 4, pos.y + 38 + Fonts::verdana11.get_height() + 4);
         gc.draw_fillrect(t_r, Color(255, 255, 200), 1000.0f);
         gc.draw_rect(t_r, Color(0,0,0), 1000.0f);
         gc.print_center(Fonts::verdana11, Vector2i(pos.x + 17, pos.y + 38), tooltip, 1000.0f);

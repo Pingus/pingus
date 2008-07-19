@@ -40,7 +40,6 @@ FontDescription::FontDescription(const Pathname& pathname_)
 {
   name            = "<unknown>";
   monospace       = false;
-  space_length    = 20;
   char_spacing    = 1.0f;
   vertical_spacing = -1.0f;
 
@@ -56,7 +55,6 @@ FontDescription::FontDescription(const Pathname& pathname_)
       reader.read_path("image",             image);
       reader.read_float("char-spacing",     char_spacing);
       reader.read_float("vertical-spacing", vertical_spacing);
-      reader.read_int("space-length",       space_length);
       reader.read_int("size",               size);
       
       FileReader glyph_section;

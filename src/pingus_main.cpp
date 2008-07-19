@@ -253,7 +253,7 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Disable music"));
 
   argp.add_group("Language Options:");
-  argp.add_option('L', "language", "LANG",
+  argp.add_option('l', "language", "LANG",
                   _("Select language to use with Pingus"));
   argp.add_option(365, "list-languages", "",
                   _("List all available languages"));
@@ -495,7 +495,7 @@ PingusMain::parse_args(int argc, char** argv)
             cmd_options.font.set(true);
             break;
 
-          case 'L': // language
+          case 'l': // language
             cmd_options.language.set(argp.get_argument());
             break;
 
@@ -602,9 +602,6 @@ PingusMain::print_greeting_message()
             << dictionary_manager.get_dictionary().get_language()->code 
             << ")"
             << std::endl;
-
-  Fonts::encoding = StringUtil::to_lower(dictionary_manager.get_dictionary().get_charset());
-  std::cout << "font encoding:           " << Fonts::encoding << std::endl;
 
   if (sound_enabled)
     std::cout << "sound support:           enabled" << std::endl;

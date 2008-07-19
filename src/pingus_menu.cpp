@@ -138,12 +138,6 @@ PingusMenu::draw_background(DrawingContext& gc)
 {
   background->draw(gc);
 
-  gc.draw_fillrect(Rect(0,
-                        Display::get_height () - 26,
-                        Display::get_width (),
-                        Display::get_height ()),
-                   Color(0, 0, 0, 255));
-
   gc.draw(logo, Vector2i((gc.get_width()/2) - (logo.get_width()/2),
                          gc.get_height()/2 - 250));
 
@@ -154,9 +148,15 @@ PingusMenu::draw_background(DrawingContext& gc)
                 "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are\n"
                 "welcome to redistribute it under certain conditions; see the file COPYING for details.\n");
 
+  gc.draw_fillrect(Rect(0,
+                        Display::get_height () - 26,
+                        Display::get_width (),
+                        Display::get_height ()),
+                   Color(0, 0, 0, 255));
+
   gc.print_center(Fonts::pingus_small, 
                   Vector2i(gc.get_width() / 2,
-                           gc.get_height() - Fonts::pingus_small.get_height()),
+                           gc.get_height() - Fonts::pingus_small.get_height() - 8),
                   help);
 
   if (0) // display hint
