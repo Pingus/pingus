@@ -79,6 +79,8 @@
 
                    (sprite
                     (name "cross")
+                    (origin "center")
+                    (offset 0 0)
                     (image-file "../images/core/cursors/cross.png"))
 
                    (sprite
@@ -91,6 +93,12 @@
 
                    (sprite
                     (name "animcross")
+                    (origin "center")
+                    (offset 0 0)
+                    (image-file "../images/core/cursors/cross.png"))
+
+                   (sprite
+                    (name "animcross2")
                     (image-file "../images/core/cursors/animcross.png")
                     (offset -18 -18)
                     (image-array 10 1))
