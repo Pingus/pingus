@@ -32,8 +32,6 @@ Roadmap for Pingus 0.8.0:
 
 * CollisionMask cleanup
 
-* static in Entrance direction=misc is ugly
-
 * add "Save Demo" to the result screen
 
 * add "Replay" to the result screen
@@ -54,7 +52,7 @@ Roadmap for Pingus 0.8.0:
 
 * split Pingus into base and extra user contributed content
 
-* intro/end credits are not properly displayed currently
+* intro/end story and credits are not properly displayed currently
 
 * do SurfaceButton with signals
 
@@ -82,13 +80,30 @@ Roadmap for Pingus 0.8.0:
 * add alternative fullscreen, screenshot and print-fps shortcuts for the OLPC, which doesn't have Fxx keys
   Ctrl-f -> fullscreen, Ctrl-s screenshot, Ctrl->p printfps
 
-* add WorldObjs that provide hind to the solution
+* add WorldObjs that provide hint to the solution
 
 * remove default_screen_width/height, doesn't serve any purpose and is abused in a few places, same for screen_width/height
 
 * How to handle clipping? In DeltaFramebuffer? -> 1) do it via srcrect? 2) make it a DrawOp?
 
 * DeltaFramebuffer issues: clipping not yet implemented, particle effects are slow (to many small rectangles)
+
+* Integrade Input-Demo recording somewhat better, like with command line switch
+
+* Display when maintainer mode is active and display what keyboard shortcuts are available 
+
+* rewrite config file handling
+
+* change cursor to cross with arrows when scrolling
+
+* make "--language help" work
+
+* the ObjectSelector in the editor is eating CPU cycles like crazy due
+  to lack of clipping, minimap is also eating plenty of CPU due to its high object count
+
+* Editor is passing non-normalized rectangles to drawing code -> Crash
+
+* Thumbnail loading is slow 
 
 New Features
 ============
@@ -188,15 +203,6 @@ Unsorted:
 Roadmap for Pingus 0.7.3
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Must Have:
-==========
-
-* internal UTF8 Support with the current fonts (MES-1 later or more later)
-
-* resizable GUI for all screens
-
-* resize all tutorial levels to 1920x1200
-
 New Features:
 =============
 
@@ -208,9 +214,6 @@ New Features:
 * add cheats: all actions, unlimited actions, skip level, these must
   be triggerable via maintainer-mode, not via commandline switch
 
-* generate MES-1 fonts and add UTF-8 support to the Font system
-  (http://www.eki.ee/letter/chardata.cgi?comp1=MES-1&comp2=)
-
 * CollisionMask can't handle RGBA images and likely shouldn't (due to
   them being animated and stuff like that), we however don't have
   seperate colmask for those images
@@ -218,7 +221,6 @@ New Features:
 * test wall-jump: maybe make it smaller then a normal jump
 
 * make climber attach to wall after jumper 
-
 
 Bugs:
 =====
@@ -241,16 +243,6 @@ Bugs:
     then in-game) [Currently worked around in editor code, should be
     fixed in the converter]
 
-* bridging gets more complicated has graphical error (background?!)
-  surface background doesn't handle larger res due to the Playfield
-  being offsetted (might be solvable with new DrawingContext that
-  features Rect)
-
-* parallax scrolling is funky where background tiles are small. When
-  scrolling right, the leftmost column of tiles gets overlapped by the
-  next column a little bit. See the last tutorial level for an
-  example. (likely rounding error float/int)
-
 * StringFormat does line breaking TeX-style, but that isn't useful
   with the current s-expr format, which can handle explicit line
   breaks just fine
@@ -264,31 +256,13 @@ To replicate:
 Wishlist Stuff:
 ===============
 
-* The goal should be to provide fullscreen support for most common
-  monitors -> levels should have a minimum size of 1920x1200
-
-* FPS: issues, SDL_Delay() calls should be limited to ScreenManager: 
-
-  - Editor:     27fps - 20%
-  - Main Menu:  30fps - 50%
-  - Worldmap:   50fps - 22%
-  - Starscreen: 19fps - 14%
-  - Game:       32fps - 14%
-  - EndScreen:  50fps - 19%
-
 * integrate install command into scons (maybe), use 'install' instead of 'cp'
-
-* remove --verbose or make it an alias for --debug all
-
-* add dynamic resize for the game, problematic due to scaled
-  backgrounds, might be easier to do if backgrounds would be handled
-  more flexible (seperate background gradient from cloud objects and
-  stuff like that)
 
 * Liquids/water is 32, others are 64, this is causing trouble with the
   collision map
 
-Undecided stuff: ================
+Undecided stuff:
+================
 
 * start_pos is missing in editor (worked around by centering the view
   on the entrances)
@@ -298,6 +272,9 @@ Undecided stuff: ================
 * add something like FileReader::must_read_int() for cases where a
   value isn't optional, something that can figure out values that
   havn't be used would be nice as well
+
+  Suggestion:
+    read_int("name", name, "Error Message")
 
 * some people like auto-scrolling in window mode, in 0.6.0 it worked
   even when completly out of the window, in SDL the mouse coords don't
@@ -320,11 +297,6 @@ Undecided stuff: ================
 
 * write a README.input
 
-* LANG=sr ./pingus|grep language shows "English" but ingame text is not English
-
-* using some languages (sr, cs, tr) causes some kind of font mapping errors
-
-* replace "magic" numbers such as default screen size (800 and 600) with macros/globals or whatever is good programming practice
 
 Roadmap for Pingus Editor 0.7.3:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -344,8 +316,6 @@ Important:
 
 Medium Important:
 =================
-
-* shrinking the editor window to much causes a crash (limit size as temporary fix)
 
 * implement proper tmpfile Support (save tmp levels to ~/.pingus/tmp/
   for backup purpose in case of editor crash or so)
@@ -425,12 +395,6 @@ Older Stuff:
 
 * pingus doesn't die when out-of-screen
 
-* result screens
-
-* html like behaviour for level descriptions
-
-* description screen and result screen must be reworked
-
 * thumbnail handling should be reviewed
 
 * Floaters shouldn't float until they've fallen the minimum distance
@@ -455,12 +419,6 @@ Older Stuff:
 
 * Sometimes diggers can't be changed into miners.
 
-* If enough Pingu are saved and all that are left are blockers, end
-  level before time runs out, with a win
-
-* At least one kind of water (the kind in Evil in the Dark) doesn't
-  kill Pingu
-
 * In space levels, Pingu that fall off of a cliff into space don't
   die, though they should just like in water or lava.
 
@@ -476,37 +434,6 @@ Sortie Theme:
  - this theme needs 'normal' groundpieces which can be used to dig
    throught and things like that, it currently only has horizontal and
    vertical bars, which make building levels quite difficult
-
-Really Old Stuff:
-=================
-
-0.3.0
-~~~~~
-* ColMaps for hotspot objects (see the objects in the water in level9)
-* A better MessageBox
-* caching for level prviews
-* more ground gfx's
-* Better music support
-* colmap manipulation for liquid
-* right/left/random/left'n'right for entrances
-* Support for animated exits and entrances
-* More Backgrounds (tileable/fullscreen/resized)
-* Creating some sound effects
-* Integrading Demo recording/playing to the menu    
-* snow particles
-* A ground smashing animation
-
-0.4.0
-~~~~~
-* Collisions between water/lava and particles
-* Parallax scrolling backgrounds
-* All standard actions fine tuned working actions
-
-1.0.0
-~~~~~
-* Full Animated backgrounds, like Plasma and Fire effects
-* Dynamic loadable backgrounds, actions and traps
-* All memory leaks fixed
 
 Other Wishes:
 ~~~~~~~~~~~~~
