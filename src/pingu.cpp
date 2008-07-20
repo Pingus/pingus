@@ -47,7 +47,7 @@ Pingu::Pingu (int arg_id, const Vector3f& arg_pos, int owner)
     status(PS_ALIVE),
     pos_x(arg_pos.x),
     pos_y(arg_pos.y),
-    velocity(new Vector3f(0, 0, 0))
+    velocity(0, 0, 0)
 {
   direction.left ();
 
@@ -58,7 +58,6 @@ Pingu::Pingu (int arg_id, const Vector3f& arg_pos, int owner)
 
 Pingu::~Pingu ()
 {
-  delete velocity;
 }
 
 unsigned int
@@ -105,7 +104,7 @@ Pingu::set_pos (const Vector3f& arg_pos)
 void
 Pingu::set_velocity (const Vector3f& velocity_)
 {
-  *velocity = velocity_;
+  velocity = velocity_;
 }
 
 // Set the action of the pingu (bridger, blocker, bomber, etc.)
@@ -403,7 +402,7 @@ Pingu::get_action ()
 void
 Pingu::apply_force (Vector3f arg_v)
 {
-  *velocity += arg_v;
+  velocity += arg_v;
   // Moving the pingu on pixel up, so that the force can take effect
   // FIXME: this should be handled by a state-machine
   --pos_y;
