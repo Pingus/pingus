@@ -17,10 +17,10 @@
 #ifndef HEADER_PINGUS_PINGU_HPP
 #define HEADER_PINGUS_PINGU_HPP
 
+#include "math/vector3f.hpp"
 #include "direction.hpp"
 #include "pingu_enums.hpp"
 
-class Vector3f;
 class ActionHolder;
 class PinguAction;
 class SceneContext;
@@ -62,7 +62,7 @@ private:
   float pos_x;
   float pos_y;
 
-  Vector3f* const velocity;
+  Vector3f velocity;
 
   bool request_set_action (PinguAction*);
   void set_action (PinguAction*);
@@ -128,7 +128,7 @@ public:
   /// Set the pingu to the given coordinates
   void set_pos (const Vector3f& arg_pos);
 
-  const Vector3f& get_velocity () const { return *velocity; }
+  Vector3f get_velocity () const { return velocity; }
 
   void set_velocity (const Vector3f& velocity_);
 
