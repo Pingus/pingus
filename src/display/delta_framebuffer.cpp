@@ -31,6 +31,8 @@ struct DrawOp
     : type(type_)
   {}
 
+  virtual ~DrawOp() {}
+
   virtual void render(Framebuffer& fb) =0;
   virtual void mark_changed_regions(std::vector<Rect>& update_rects) const =0;
 

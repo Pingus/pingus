@@ -23,6 +23,9 @@
 class FramebufferSurfaceImpl
 {
 public:
+  FramebufferSurfaceImpl() {}
+  virtual ~FramebufferSurfaceImpl() {}
+
   virtual int get_width()  const =0;
   virtual int get_height() const =0;
 };
@@ -44,6 +47,7 @@ public:
   bool operator==(const FramebufferSurface& other) const { return impl == other.impl; }
 
   operator bool() const { return impl.get() != 0; }
+
 private:
   boost::shared_ptr<FramebufferSurfaceImpl> impl;
 };

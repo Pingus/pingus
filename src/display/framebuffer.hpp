@@ -30,6 +30,9 @@ class Surface;
 class Framebuffer
 {
 public:
+  Framebuffer() {}
+  virtual ~Framebuffer() {}
+
   virtual FramebufferSurface create_surface(const Surface& surface) =0;
 
   virtual void set_video_mode(const Size& size, bool fullscreen) =0;
