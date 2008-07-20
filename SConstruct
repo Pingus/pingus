@@ -307,6 +307,7 @@ def DefineOptions(filename, args):
    opts.Add('CPPDEFINES', 'defined constants', [])
    opts.Add('LIBS',       'Additional libraries', ['GL'])
    opts.Add('CCFLAGS',    'C Compiler flags', [])
+   opts.Add('CXXFLAGS',   'C++ Compiler flags', [])
    opts.Add('LINKFLAGS',  'Linker Compiler flags', [])
 
    opts.Add(BoolOption('with_xinput',        'Build with Xinput support', False))
