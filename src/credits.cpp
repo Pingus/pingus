@@ -27,7 +27,7 @@
 #include "gettext.h"
 #include "display/display.hpp"
 #include "blitter.hpp"
-
+
 class CreditsOkButton
   : public GUI::SurfaceButton
 {
@@ -35,8 +35,8 @@ private:
   Credits* parent;
 public:
   CreditsOkButton(Credits* p)
-    : GUI::SurfaceButton(Display::get_width()/2 + 225,
-                         Display::get_height()/2 + 125,
+    : GUI::SurfaceButton(Display::get_width()/2  + 260,
+                         Display::get_height()/2 + 170,
                          "core/start/ok",
                          "core/start/ok_clicked",
                          "core/start/ok_hover"),
@@ -55,7 +55,7 @@ public:
     Sound::PingusSound::play_sound("yipee");
   }
 };
-
+
 Credits::Credits()
   : background("core/menu/wood"),
     blackboard("core/menu/blackboard"),
@@ -93,9 +93,9 @@ Credits::Credits()
 
   credits.push_back(_("-Porting (Win32)"));
   credits.push_back("_Alberto Curro");
-  credits.push_back("_Björn Christoph Fischer");
-  credits.push_back("_Kenneth Gangstø");
-  credits.push_back("_Michael Käser");
+  credits.push_back("_BjÃ¶rn Christoph Fischer");
+  credits.push_back("_Kenneth GangstÃ¸");
+  credits.push_back("_Michael KÃ¤ser");
   credits.push_back("_Neil Mitchell");
   credits.push_back("_Jason Green");
   credits.push_back("n");
@@ -108,7 +108,7 @@ Credits::Credits()
   credits.push_back(_("-Gfx"));
   credits.push_back("_Alan Tennent");
   credits.push_back("_Craig Timpany");
-  credits.push_back("_Erik Søe Sørensen");
+  credits.push_back("_Erik SÃ¸e SÃ¸rensen");
   credits.push_back("_Ingo Ruhnke");
   credits.push_back("_Jarno Elonen");
   credits.push_back("_Joel Fauche");
@@ -140,7 +140,7 @@ Credits::Credits()
   credits.push_back("_David Philippi");
   credits.push_back("_Giray Devlet");
   credits.push_back("_Ingo Ruhnke");
-  credits.push_back("_Janne Morén");
+  credits.push_back("_Janne MorÃ©n");
   credits.push_back("_Jarno Elonen");
   credits.push_back("_Karl Ove Hufthammer");
   credits.push_back("_Milan Babuskov");
@@ -269,19 +269,13 @@ Credits::draw_background (DrawingContext& gc)
   gc.draw(blackboard, Vector2i(gc.get_width()/2, gc.get_height()/2));
 
   gc.draw(pingu, Vector2i(gc.get_width()/2, gc.get_height()/2 - 20));
-  
-  gc.print_right(Fonts::chalk_normal,
-                 Vector2i(Display::get_width()/2 + 275,
-                          Display::get_height()/2 + 110),
-                _("Exit"));
-  
+    
   yof = 0;
 
   scene_context->clear();
-  scene_context->set_cliprect(Rect(0,
-                                   static_cast<int>(0.125f * gc.get_height()),
-                                   static_cast<int>(gc.get_width()),
-                                   static_cast<int>(0.833f * gc.get_height())));
+  scene_context->set_cliprect(Rect(gc.get_width()/2 - 685/2, gc.get_height()/2 - 250,
+                                   gc.get_width()/2 + 685/2, gc.get_height()/2 + 250));
+
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)
     {
       switch ((*i)[0])
@@ -328,5 +322,5 @@ Credits::on_escape_press ()
 {
   ScreenManager::instance ()->pop_screen ();
 }
-
+
 /* EOF */
