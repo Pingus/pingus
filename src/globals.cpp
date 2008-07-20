@@ -44,6 +44,8 @@ unsigned int pingus_debug_flags              = 0;
 bool        fullscreen_enabled              = false;
 bool        delta_drawing                   = false;
 
+bool        static_graphics                 = false;
+
 FramebufferType framebuffer_type = DELTA_FRAMEBUFFER;
 
 /* EOF */

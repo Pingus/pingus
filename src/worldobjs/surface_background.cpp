@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
+#include "../globals.hpp"
 #include "../display/scene_context.hpp"
 #include "../world.hpp"
 #include "../resource.hpp"
@@ -102,7 +103,7 @@ SurfaceBackground::get_z_pos () const
 void
 SurfaceBackground::update()
 {
-  if (!bg_sprite)
+  if (!bg_sprite || static_graphics)
     return;
 
   if (scroll_x) 

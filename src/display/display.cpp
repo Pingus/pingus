@@ -84,6 +84,7 @@ Display::set_video_mode(const Size& size, bool fullscreen)
             break;
 
           case DELTA_FRAMEBUFFER:
+            static_graphics = true;
             framebuffer = std::auto_ptr<Framebuffer>(new DeltaFramebuffer());
             break;
 
