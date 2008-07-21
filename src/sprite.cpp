@@ -204,5 +204,14 @@ Sprite::set_hotspot(Origin origin, int x, int y)
       impl->offset = calc_origin(origin, impl->frame_size) - Vector2i(x, y);
     }
 }
+
+Surface
+Sprite::to_surface() const
+{
+  if (impl.get())
+    return impl->to_surface();
+  else
+    return Surface();
+}
 
 /* EOF */

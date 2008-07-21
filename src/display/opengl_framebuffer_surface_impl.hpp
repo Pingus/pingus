@@ -44,6 +44,8 @@ public:
   GLuint get_handle() const { return handle; }
   Size get_texture_size() const { return texture_size; }
   Size get_size() const { return size; }
+
+  Surface to_surface() const;
 };
 
 #endif

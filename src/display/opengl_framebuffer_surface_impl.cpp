@@ -76,5 +76,11 @@ OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src)
   // Unbind the texture
   glBindTexture(GL_TEXTURE_2D, 0);
 }
+
+Surface
+OpenGLFramebufferSurfaceImpl::to_surface() const
+{
+  return Surface();
+}
 
 /* EOF */

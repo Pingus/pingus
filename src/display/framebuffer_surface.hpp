@@ -18,6 +18,7 @@
 #define HEADER_FRAMEBUFFER_SURFACE_HPP
 
 #include <boost/smart_ptr.hpp>
+#include "surface.hpp"
 #include "../math/size.hpp"
 
 class FramebufferSurfaceImpl
@@ -28,6 +29,7 @@ public:
 
   virtual int get_width()  const =0;
   virtual int get_height() const =0;
+  virtual Surface to_surface() const =0; 
 };
 
 /** */
@@ -48,6 +50,7 @@ public:
 
   operator bool() const { return impl.get() != 0; }
 
+  Surface to_surface() const { return impl->to_surface(); }
 private:
   boost::shared_ptr<FramebufferSurfaceImpl> impl;
 };

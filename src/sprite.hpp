@@ -60,6 +60,8 @@ public:
   void finish();
   operator bool();
 
+  Surface to_surface() const;
+
 private:
   boost::shared_ptr<SpriteImpl> impl;
 };
