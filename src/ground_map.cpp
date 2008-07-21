@@ -31,7 +31,8 @@ class MapTile
 private:
   Sprite   sprite;
   Surface  surface;
-
+  bool sprite_needs_update;
+  
 public:
   MapTile();
   ~MapTile();
@@ -39,10 +40,11 @@ public:
   void remove(Surface, int x, int y, int real_x, int real_y, GroundMap*);  
   void put(Surface, int x, int y);  
 
-  Sprite get_sprite() const { return sprite; }
+  Sprite get_sprite();
 };
 
 MapTile::MapTile () 
+  : sprite_needs_update(false)
 {
 }
 
@@ -54,10 +56,10 @@ void
 MapTile::remove(Surface src, int x, int y, 
                 int real_x, int real_y, GroundMap* parent)
 {
-  if (sprite)
+  if (surface)
     {
       parent->put_alpha_surface(surface, src, x, y, real_x, real_y);
-      sprite = Sprite(surface);
+      sprite_needs_update = true;
     }
 }
 
@@ -66,9 +68,23 @@ MapTile::put(Surface src, int x, int y)
 {
   if (!surface)
     surface = Surface(tile_size, tile_size);
-
+  
   surface.blit(src, x, y);
-  sprite = Sprite(surface);
+  sprite_needs_update = true;
+}
+
+Sprite 
+MapTile::get_sprite() 
+{
+  if (sprite_needs_update)
+    {
+      sprite_needs_update = false;
+      return sprite = Sprite(surface);
+    }
+  else
+    {
+      return sprite; 
+    }
 }
 
 GroundMap::GroundMap(int width_, int height_)
