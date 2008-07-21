@@ -18,6 +18,7 @@
 #ifndef HEADER_PINGUS_UTF8_ITERATOR_HPP
 #define HEADER_PINGUS_UTF8_ITERATOR_HPP
 
+#include <stdint.h>
 #include <string>
 
 class UTF8Iterator
