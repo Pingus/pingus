@@ -20,7 +20,6 @@
 #include <vector>
 #include <memory>
 #include "fonts.hpp"
-#include "pingus_sub_menu.hpp"
 #include "screen/gui_screen.hpp"
 
 namespace GUI {
