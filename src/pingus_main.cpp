@@ -752,7 +752,12 @@ PingusMain::init_sdl()
     exit(1);
   }
   atexit(SDL_Quit); 
-  Display::set_video_mode(Size(800, 600), fullscreen_enabled);
+
+  Size screen_size(800,600);
+  if (cmd_options.geometry.is_set())
+    screen_size = cmd_options.geometry.get();
+
+  Display::set_video_mode(screen_size, fullscreen_enabled);
 
   SDL_WM_SetCaption("Pingus " VERSION " - SDL Edition", 0 /* icon */);
 
