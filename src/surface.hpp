@@ -28,8 +28,7 @@
 class Rect;
 class Pathname;
 class SurfaceImpl;
-
-/** */
+
 class Surface
 {
 public:
@@ -79,7 +78,7 @@ public:
 protected:
   boost::shared_ptr<SurfaceImpl> impl;
 };
-
+
 #endif
 
 /* EOF */
