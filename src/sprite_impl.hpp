@@ -30,6 +30,7 @@ private:
 
   Pathname filename;
   FramebufferSurface framebuffer_surface;
+
   Vector2i offset;
 
   Vector2i frame_pos;
