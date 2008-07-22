@@ -139,12 +139,6 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
   return new_surface;
 }
 
-Surface
-Blitter::scale_surface_to_canvas(Surface provider, int width, int height)
-{
-    return Surface(Blitter::scale_surface(provider.get_surface(), width, height));
-}
-
 /** Flip a surface horizontal */
 Surface
 Blitter::flip_horizontal (Surface prov)

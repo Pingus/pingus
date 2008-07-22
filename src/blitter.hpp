@@ -61,8 +61,6 @@ public:
       @return A newly created surface, the caller is responsible to delete it. */
   static SDL_Surface* scale_surface(SDL_Surface* surface, int width, int height);
 
-  static Surface scale_surface_to_canvas(Surface provider, int width, int height);
-
 private:
   Blitter (const Blitter&);
   Blitter& operator= (const Blitter&);
