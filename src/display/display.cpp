@@ -25,6 +25,7 @@
 #include "../screen/screen_manager.hpp"
 #include "sdl_framebuffer.hpp"
 #include "opengl_framebuffer.hpp"
+#include "null_framebuffer.hpp"
 #include "delta_framebuffer.hpp"
 #include "display.hpp"
 
@@ -81,6 +82,10 @@ Display::set_video_mode(const Size& size, bool fullscreen)
         {
           case OPENGL_FRAMEBUFFER:
             framebuffer = std::auto_ptr<Framebuffer>(new OpenGLFramebuffer());
+            break;
+
+          case NULL_FRAMEBUFFER:
+            framebuffer = std::auto_ptr<Framebuffer>(new NullFramebuffer());
             break;
 
           case DELTA_FRAMEBUFFER:

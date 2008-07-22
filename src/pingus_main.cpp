@@ -314,6 +314,10 @@ PingusMain::parse_args(int argc, char** argv)
               {
                 framebuffer_type = OPENGL_FRAMEBUFFER;
               }
+            else if (argp.get_argument() == "null")
+              {
+                framebuffer_type = NULL_FRAMEBUFFER;
+              }
             else if (argp.get_argument() == "sdl")
               {
                 framebuffer_type = SDL_FRAMEBUFFER;
@@ -324,6 +328,7 @@ PingusMain::parse_args(int argc, char** argv)
                 std::cout << "   delta: Software rendering with dirty-rectangles (default)" << std::endl;
                 std::cout << "     sdl: Software rendering" << std::endl;
                 std::cout << "  opengl: Hardware accelerated graphics" << std::endl;
+                std::cout << "    null: No rendering at all, for debugging" << std::endl;
                 exit(EXIT_SUCCESS);
               }
             else

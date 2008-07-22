@@ -51,7 +51,7 @@ extern std::string  global_email;                    ///< The email address of t
 extern std::string  default_language;                ///< The default language, which is used when the env var LANG is not set
 extern unsigned int pingus_debug_flags;              ///< Set some bits in this thing to get debug infos
 
-enum FramebufferType { DELTA_FRAMEBUFFER, SDL_FRAMEBUFFER, OPENGL_FRAMEBUFFER };
+enum FramebufferType { DELTA_FRAMEBUFFER, SDL_FRAMEBUFFER, NULL_FRAMEBUFFER, OPENGL_FRAMEBUFFER };
 extern FramebufferType framebuffer_type;
 
 enum { PINGUS_DEBUG_ACTIONS     = (1 << 0),
