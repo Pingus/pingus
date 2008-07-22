@@ -50,6 +50,8 @@ public:
 
   operator bool() const { return impl.get() != 0; }
 
+  long use_count() const { return impl.use_count(); }
+
   Surface to_surface() const { return impl->to_surface(); }
 private:
   boost::shared_ptr<FramebufferSurfaceImpl> impl;

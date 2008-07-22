@@ -14,39 +14,77 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include <map>
 #include "display/framebuffer.hpp"
 #include "display/display.hpp"
 #include "sprite_description.hpp"
 #include "sprite_impl.hpp"
+
+typedef std::map<std::string, FramebufferSurface> SurfaceCache;
+SurfaceCache surface_cache;
+
+FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceModifierNS::ResourceModifier mod)
+{
+  SurfaceCache::iterator i = surface_cache.find(filename.get_sys_path());
+  
+  if (i == surface_cache.end())
+    {
+
+      Surface surface(filename);
+      if (mod != ResourceModifierNS::ROT0)
+        surface = surface.mod(mod);
+
+      if (!surface)
+        {
+          std::cout << "Error: Sprite: couldn't load '" << filename << "'" << std::endl;
+          surface = Surface(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
+          if (!surface) assert(!"Surface Couldn't find 404");
+        }
+
+      FramebufferSurface framebuffer_surface = Display::get_framebuffer().create_surface(surface);
+
+      surface_cache[filename.get_sys_path()] = framebuffer_surface;
+
+      return framebuffer_surface;
+    }
+  else
+    {
+      //std::cout << "Sharing: " << filename.get_sys_path() << std::endl;
+      return i->second;
+    }
+}
+
+void delete_framebuffer_surface(const Pathname& filename)
+{
+  SurfaceCache::iterator i = surface_cache.find(filename.get_sys_path());
+  if (i != surface_cache.end())
+    {
+      //std::cout << "UseCount for " << filename << ": " << i->second.use_count() << std::endl;
+      if (i->second.use_count() == 1)
+        {
+          surface_cache.erase(i);
+        }
+    }
+}
 
 SpriteImpl::SpriteImpl()
 {
 }
 
 SpriteImpl::SpriteImpl(const SpriteDescription& desc, ResourceModifierNS::ResourceModifier mod)
-  : finished(false),
+  : filename(desc.filename),
+    finished(false),
     frame(0),
     tick_count(0)
 {
-  Surface surface(desc.filename);
-  if (mod != ResourceModifierNS::ROT0)
-    surface = surface.mod(mod);
-
-  if (!surface)
-    {
-      std::cout << "Error: Sprite: couldn't load '" << desc.filename << "'" << std::endl;
-      surface = Surface(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
-      if (!surface) assert(!"Surface Couldn't find 404");
-    }
-
-  framebuffer_surface = Display::get_framebuffer().create_surface(surface);
+  framebuffer_surface = load_framebuffer_surface(filename, mod);
 
   frame_pos = desc.frame_pos;
 
   array = desc.array;
 
-  frame_size.width  = (desc.frame_size.width  == -1) ? surface.get_width()/array.width   : desc.frame_size.width;
-  frame_size.height = (desc.frame_size.height == -1) ? surface.get_height()/array.height : desc.frame_size.height;
+  frame_size.width  = (desc.frame_size.width  == -1) ? framebuffer_surface.get_width()/array.width   : desc.frame_size.width;
+  frame_size.height = (desc.frame_size.height == -1) ? framebuffer_surface.get_height()/array.height : desc.frame_size.height;
 
   frame_delay  = desc.speed;
 
@@ -74,6 +112,8 @@ SpriteImpl::SpriteImpl(const Surface& surface)
 
 SpriteImpl::~SpriteImpl()
 {
+  framebuffer_surface = FramebufferSurface();
+  delete_framebuffer_surface(filename);
 }
 
 void

@@ -72,8 +72,7 @@ Sprite::Sprite(const Pathname& name)
 
 Sprite::Sprite(const Surface& surface)
   : impl(new SpriteImpl(surface))
-{
-  
+{  
 }
 
 Sprite::Sprite(const SpriteDescription& desc, ResourceModifierNS::ResourceModifier mod)
