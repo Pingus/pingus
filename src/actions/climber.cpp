@@ -64,14 +64,14 @@ Climber::update ()
 	    }
 
 	  // Finish climbing.
-	  pingu->set_action(Actions::Walker);
+	  pingu->set_action(Actions::WALKER);
 	}
     }
   else
     {
       //    std::cout << "Climber failed, falling down" << std::endl;
       pingu->direction.change();
-      pingu->set_action(Actions::Walker);
+      pingu->set_action(Actions::WALKER);
     }
 }
 
@@ -85,8 +85,8 @@ bool
 Climber::change_allowed(ActionName new_action)
 {
   return
-    (new_action == Actions::Floater) ||
-    (new_action == Actions::Jumper);
+    (new_action == Actions::FLOATER) ||
+    (new_action == Actions::JUMPER);
 }
 
 } // namespace Actions

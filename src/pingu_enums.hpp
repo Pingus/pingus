@@ -34,45 +34,45 @@ namespace Actions {
 /** The order of the actions here are the same as the order of actions
     in the buttonpanel, so if the order in the buttonpanel is not what
     it should be it needs to be changed here. */
-enum ActionName
-  { Angel,
-    Basher,
-    Blocker,
-    Boarder,
-    Bomber,
-    Bridger,
-    Climber,
-    Digger,
-    Drown,
-    Exiter,
-    Faller,
-    Floater,
-    Jumper,
-    Laserkill,
-    Miner,
-    Rocketlauncher,
-    Slider,
-    Smashed,
-    Splashed,
-    Superman,
-    Teleported,
-    Waiter,
-    Walker
-  };
+enum ActionName { 
+  ANGEL,
+  BASHER,
+  BLOCKER,
+  BOARDER,
+  BOMBER,
+  BRIDGER,
+  CLIMBER,
+  DIGGER,
+  DROWN,
+  EXITER,
+  FALLER,
+  FLOATER,
+  JUMPER,
+  LASERKILL,
+  MINER,
+  ROCKETLAUNCHER,
+  SLIDER,
+  SMASHED,
+  SPLASHED,
+  SUPERMAN,
+  TELEPORTED,
+  WAITER,
+  WALKER
+};
 
 /** Converts a action enum into its internal string representation, as
     used in the xml or the resource files Bomber => "bomber" */
-std::string action_to_string(ActionName action);
+std::string action_to_string(Actions::ActionName action);
 
 /** Converts a internal action string back into its action enum
     representation  "bomber" => Bomber */
-ActionName  action_from_string(const std::string& action);
+Actions::ActionName action_from_string(const std::string& action);
 
 /** Convert a action enum into its visual representation, aka the
     thing that is seen on the screen for the user Bomber => "Bomber" */
-std::string action_to_screenname(ActionName action);
+std::string action_to_screenname(Actions::ActionName action);
 
-} // namespace Actions
+} // namespace ActionName
 
 // Pingu "globals"
 extern const int pingu_height;

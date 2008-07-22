@@ -46,7 +46,7 @@ public:
   Bridger(Pingu*);
 
   std::string get_name () const;
-  ActionName get_type () const { return Actions::Bridger; }
+  ActionName get_type () const { return Actions::BRIDGER; }
 
   void   update ();
   void   update_build ();

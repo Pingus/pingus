@@ -23,24 +23,42 @@
 #include "sound/sound.hpp"
 #include "collision_map.hpp"
 #include "pingu_action.hpp"
-#include "pingu_action_factory.hpp"
 #include "gettext.h"
 #include "debug.hpp"
 #include "display/scene_context.hpp"
 #include "worldobj.hpp"
 #include "resource.hpp"
 #include "fonts.hpp"
+#include "pingu.hpp"
 
+#include "actions/rocket_launcher.hpp"
+#include "actions/boarder.hpp"
+#include "actions/superman.hpp"
+#include "actions/angel.hpp"
+#include "actions/basher.hpp"
+#include "actions/blocker.hpp"
+#include "actions/bomber.hpp"
+#include "actions/bridger.hpp"
+#include "actions/climber.hpp"
+#include "actions/digger.hpp"
+#include "actions/floater.hpp"
+#include "actions/miner.hpp"
+#include "actions/jumper.hpp"
+#include "actions/slider.hpp"
+#include "actions/exiter.hpp"
+#include "actions/smashed.hpp"
+#include "actions/laser_kill.hpp"
+#include "actions/splashed.hpp"
+#include "actions/waiter.hpp"
+#include "actions/drown.hpp"
+#include "actions/faller.hpp"
+#include "actions/walker.hpp"
 
 using namespace Actions;
-
+
 // Init a pingu at the given position while falling
 Pingu::Pingu (int arg_id, const Vector3f& arg_pos, int owner)
-  : action(0),
-    countdown_action (0),
-    wall_action(0),
-    fall_action(0),
-    previous_action(Actions::Faller),
+  : previous_action(FALLER),
     id(arg_id),
     action_time(-1),
     owner_id(owner),
@@ -53,7 +71,7 @@ Pingu::Pingu (int arg_id, const Vector3f& arg_pos, int owner)
 
   // Initialisize the action, after this step the action ptr will
   // always be valid in the pingu class
-  action = PinguActionFactory::instance()->create(this, Faller);
+  action = create_action(FALLER);
 }
 
 Pingu::~Pingu ()
@@ -112,7 +130,7 @@ Pingu::set_velocity (const Vector3f& velocity_)
 // When you select a function on the button panel and click on a
 // pingu, this action will be called with the action name
 bool
-Pingu::request_set_action (PinguAction* act)
+Pingu::request_set_action(boost::shared_ptr<PinguAction> act)
 {
   bool ret_val = false;
   assert(act);
@@ -215,18 +233,18 @@ Pingu::request_set_action (PinguAction* act)
 bool
 Pingu::request_set_action (ActionName action_name)
 {
-  return request_set_action (PinguActionFactory::instance ()->create (this, action_name));
+  return request_set_action(create_action(action_name));
 }
 
 void
 Pingu::set_action (ActionName action_name)
 {
-  set_action(PinguActionFactory::instance()->create(this, action_name));
+  set_action(create_action(action_name));
 }
 
 // Sets an action without any checking
 void
-Pingu::set_action (PinguAction* act)
+Pingu::set_action(boost::shared_ptr<PinguAction> act)
 {
   assert(act);
 
@@ -326,7 +344,7 @@ Pingu::update ()
     {
       set_action(countdown_action);
       // Reset the countdown action handlers
-      countdown_action = 0;
+      countdown_action = boost::shared_ptr<PinguAction>();
       action_time = -1;
       return;
     }
@@ -393,7 +411,7 @@ Pingu::get_name()
   return action->get_name();
 }
 
-Actions::ActionName
+ActionName
 Pingu::get_action ()
 {
   return action->get_type();
@@ -440,5 +458,35 @@ Pingu::catchable ()
   return action->catchable ();
 }
 
-
+boost::shared_ptr<PinguAction>
+Pingu::create_action(ActionName action)
+{
+  switch(action)
+    {
+      case ANGEL:     return boost::shared_ptr<PinguAction>(new Angel(this));
+      case BASHER:    return boost::shared_ptr<PinguAction>(new Basher(this));
+      case BLOCKER:   return boost::shared_ptr<PinguAction>(new Blocker(this));
+      case BOARDER:   return boost::shared_ptr<PinguAction>(new Boarder(this));
+      case BOMBER:    return boost::shared_ptr<PinguAction>(new Bomber(this));
+      case BRIDGER:   return boost::shared_ptr<PinguAction>(new Bridger(this));
+      case CLIMBER:   return boost::shared_ptr<PinguAction>(new Climber(this));
+      case DIGGER:    return boost::shared_ptr<PinguAction>(new Digger(this));
+      case DROWN:     return boost::shared_ptr<PinguAction>(new Drown(this));
+      case EXITER:    return boost::shared_ptr<PinguAction>(new Exiter(this));
+      case FALLER:    return boost::shared_ptr<PinguAction>(new Faller(this));
+      case FLOATER:   return boost::shared_ptr<PinguAction>(new Floater(this));
+      case JUMPER:    return boost::shared_ptr<PinguAction>(new Jumper(this));
+      case LASERKILL: return boost::shared_ptr<PinguAction>(new LaserKill(this));
+      case MINER:     return boost::shared_ptr<PinguAction>(new Miner(this));
+      case ROCKETLAUNCHER: return boost::shared_ptr<PinguAction>(new RocketLauncher(this));
+      case SLIDER:    return boost::shared_ptr<PinguAction>(new Slider(this));
+      case SMASHED:   return boost::shared_ptr<PinguAction>(new Smashed(this));
+      case SPLASHED:  return boost::shared_ptr<PinguAction>(new Splashed(this));
+      case SUPERMAN:  return boost::shared_ptr<PinguAction>(new Superman(this));
+      case WAITER:    return boost::shared_ptr<PinguAction>(new Waiter(this));
+      case WALKER:    return boost::shared_ptr<PinguAction>(new Walker(this));
+      default: assert(!"Invalid action name provied");
+    }
+}
+
 /* EOF */

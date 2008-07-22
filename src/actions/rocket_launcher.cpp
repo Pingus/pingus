@@ -47,7 +47,7 @@ RocketLauncher::update ()
 {
   if (sprite[pingu->direction].is_finished())
     {
-      pingu->set_action(Actions::Walker);
+      pingu->set_action(Actions::WALKER);
     }
 
   sprite.update();

@@ -59,7 +59,7 @@ Miner::update ()
       WorldObj::get_world()->remove(miner_radius,
                                     static_cast<int>(pingu->get_x() - (miner_radius.get_width() / 2) + pingu->direction),
                                     static_cast<int>(pingu->get_y() - miner_radius.get_width() + 3) );
-      pingu->set_action(Actions::Walker);
+      pingu->set_action(Actions::WALKER);
     }
   else if (rel_getpixel(0, -1) == Groundtype::GP_SOLID
 	|| rel_getpixel(0, pingu_height) == Groundtype::GP_SOLID)
@@ -70,7 +70,7 @@ Miner::update ()
       WorldObj::get_world()->remove(miner_radius,
                                     static_cast<int>(pingu->get_x() - (miner_radius.get_width() / 2) + pingu->direction),
                                     static_cast<int>(pingu->get_y() - miner_radius.get_width() + 1) );
-      pingu->set_action(Actions::Walker);
+      pingu->set_action(Actions::WALKER);
 
       // Stop Pingu walking further into the solid.
       pingu->direction.change();

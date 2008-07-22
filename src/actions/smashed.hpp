@@ -32,7 +32,7 @@ private:
 public:
   Smashed (Pingu*);
 
-  ActionName get_type () const { return Actions::Smashed; }
+  ActionName get_type () const { return Actions::SMASHED; }
 
   void draw (SceneContext& gc);
   void update ();

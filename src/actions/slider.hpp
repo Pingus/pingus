@@ -30,7 +30,7 @@ private:
 public:
   Slider (Pingu* p);
 
-  ActionName get_type() const { return Actions::Slider; }
+  ActionName get_type() const { return Actions::SLIDER; }
 
   void draw (SceneContext& gc);
   void update();

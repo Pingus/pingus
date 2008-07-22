@@ -36,7 +36,7 @@ public:
   void draw (SceneContext& gc);
   void update ();
 
-  ActionName get_type () const { return Actions::Walker; }
+  ActionName get_type () const { return Actions::WALKER; }
 
 private:
   Walker (const Walker&);

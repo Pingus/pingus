@@ -53,7 +53,7 @@ Slider::update ()
               pingu->set_velocity(pingu->get_velocity() + Vector3f(-speed, 0.0));
             }
 
-          pingu->set_action(Actions::Walker);
+          pingu->set_action(Actions::WALKER);
           return;
         }
     }
@@ -61,7 +61,7 @@ Slider::update ()
   speed -= 7 * 0.025f;
   if (speed < 1)
     {
-      pingu->set_action(Actions::Walker);
+      pingu->set_action(Actions::WALKER);
       return;
     }
 }

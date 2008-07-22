@@ -102,19 +102,19 @@ Faller::update ()
           if (rel_getpixel(0, -1) == Groundtype::GP_WATER
               || rel_getpixel(0, -1) == Groundtype::GP_LAVA)
             {
-              pingu->set_action(Actions::Drown);
+              pingu->set_action(Actions::DROWN);
             }
           // Did we stop too fast?
           else if (Math::abs(pingu->get_velocity().y) > deadly_velocity)
             {
               //std::cout << "Pingus splashed: " << pingu->get_velocity().y << " " << deadly_velocity << std::endl;
-              pingu->set_action(Actions::Splashed);
+              pingu->set_action(Actions::SPLASHED);
             }
           else
             {
               // This is where the jumper bug happens
               //std::cout << "Reached the unreachable: " << pingu->get_velocity().y << std::endl;
-              pingu->set_action(Actions::Walker);
+              pingu->set_action(Actions::WALKER);
             }
         }
       // If the Pingu collided into something while moving up...
@@ -150,7 +150,7 @@ Faller::is_tumbling () const
 bool
 Faller::change_allowed (ActionName new_action)
 {
-  return new_action == Actions::Floater || new_action == Actions::Climber;
+  return new_action == Actions::FLOATER || new_action == Actions::CLIMBER;
 }
 
 } // namespace Actions

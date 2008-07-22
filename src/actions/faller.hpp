@@ -39,7 +39,7 @@ public:
 
   bool change_allowed (Actions::ActionName new_action);
 
-  ActionName get_type() const { return Actions::Faller; }
+  ActionName get_type() const { return Actions::FALLER; }
   bool is_tumbling () const;
 
 private:

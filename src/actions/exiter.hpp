@@ -31,7 +31,7 @@ private:
 public:
   Exiter(Pingu*);
   void init(void);
-  ActionName get_type() const { return Actions::Exiter; }
+  ActionName get_type() const { return Actions::EXITER; }
 
   void draw (SceneContext& gc);
   void update();

@@ -30,7 +30,7 @@ private:
 public:
   Splashed (Pingu*);
 
-  ActionName get_type () const { return Actions::Splashed; }
+  ActionName get_type () const { return Actions::SPLASHED; }
 
   void draw (SceneContext& gc);
   void update ();

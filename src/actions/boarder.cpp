@@ -62,7 +62,7 @@ Boarder::update ()
 
         pingu->apply_force (Vector3f(float(speed * pingu->direction * 0.5),
           -float(speed * abs(pingu->direction) * 0.5)));
-        pingu->set_action(Actions::Walker);
+        pingu->set_action(Actions::WALKER);
         return;
       }
     }
@@ -70,7 +70,7 @@ Boarder::update ()
   else
   {
     pingu->apply_force (Vector3f((float)speed * pingu->direction, 0));
-    pingu->set_action(Actions::Walker);
+    pingu->set_action(Actions::WALKER);
   }
 }
 

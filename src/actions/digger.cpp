@@ -41,7 +41,7 @@ Digger::update ()
   if (rel_getpixel(0, -1) ==  Groundtype::GP_WATER
       || rel_getpixel(0, -1) ==  Groundtype::GP_LAVA)
     {
-      pingu->set_action(Actions::Drown);
+      pingu->set_action(Actions::DROWN);
       return;
     }
 
@@ -54,7 +54,7 @@ Digger::update ()
   if (!have_something_to_dig())
     {
       dig ();
-      pingu->set_action(Actions::Walker);
+      pingu->set_action(Actions::WALKER);
     }
 }
 

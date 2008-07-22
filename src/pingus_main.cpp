@@ -72,7 +72,6 @@ extern "C" {
 #include "stat_manager.hpp"
 #include "debug.hpp"
 #include "resource.hpp"
-#include "pingu_action_factory.hpp"
 #include "credits.hpp"
 #include "sound/sound.hpp"
 #include "worldmap/worldmap_screen.hpp"
@@ -784,14 +783,12 @@ PingusMain::init_pingus()
   Resource::init();
   Fonts::init();
   Sound::PingusSound::init();
-  PinguActionFactory::init();
 }
 
 void
 PingusMain::deinit_pingus()
 {
   Fonts::deinit();
-  PinguActionFactory::deinit();
   Sound::PingusSound::deinit();
   WorldObjFactory::deinit();
   StatManager::deinit();

@@ -66,7 +66,7 @@ PinguHolder::draw (SceneContext& gc)
       pingu != pingus.end();
       ++pingu)
     {
-      if ((*pingu)->get_action() == Actions::Walker)
+      if ((*pingu)->get_action() == Actions::WALKER)
 	(*pingu)->draw (gc);
     }
 
@@ -81,7 +81,7 @@ PinguHolder::draw (SceneContext& gc)
       pingu != pingus.end();
       ++pingu)
     {
-      if ((*pingu)->get_action() != Actions::Walker)
+      if ((*pingu)->get_action() != Actions::WALKER)
 	(*pingu)->draw (gc);
     }
 }

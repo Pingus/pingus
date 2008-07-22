@@ -34,7 +34,7 @@ private:
 public:
   Waiter (Pingu*);
 
-  ActionName get_type () const { return Actions::Waiter; }
+  ActionName get_type () const { return Actions::WAITER; }
 
   void draw (SceneContext& gc);
   void update ();

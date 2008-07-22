@@ -31,7 +31,7 @@ public:
   RocketLauncher(Pingu*);
   ~RocketLauncher() {}
 
-  ActionName get_type () const { return Actions::Rocketlauncher; }
+  ActionName get_type () const { return Actions::ROCKETLAUNCHER; }
 
   void draw (SceneContext& gc);
   void update ();

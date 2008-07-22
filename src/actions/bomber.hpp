@@ -40,7 +40,7 @@ private:
 public:
   Bomber (Pingu* p);
 
-  ActionName get_type() const { return Actions::Bomber; }
+  ActionName get_type() const { return Actions::BOMBER; }
   ActionType get_activation_mode() const { return COUNTDOWN_TRIGGERED; }
 
   void draw (SceneContext& gc);

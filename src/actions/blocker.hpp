@@ -32,7 +32,7 @@ public:
 
   int   y_offset ();
 
-  ActionName get_type() const { return Actions::Blocker; }
+  ActionName get_type() const { return Actions::BLOCKER; }
 
   void  draw (SceneContext& gc);
   void  update();

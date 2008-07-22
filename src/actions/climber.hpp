@@ -32,7 +32,7 @@ private:
 public:
   Climber (Pingu*);
 
-  ActionName get_type () const { return Actions::Climber; }
+  ActionName get_type () const { return Actions::CLIMBER; }
   ActionType get_activation_mode () const { return WALL_TRIGGERED; }
 
   void draw (SceneContext& gc);

@@ -35,7 +35,7 @@
 #include "collision_map.hpp"
 #include "debug.hpp"
 
-using Actions::Bomber;
+using Actions::BOMBER;
 
 static
 bool WorldObj_less (WorldObj* a, WorldObj* b)
@@ -150,7 +150,7 @@ World::update()
 
               if (pingu && pingu->get_status() == PS_ALIVE)
                 {
-                  pingu->request_set_action(Bomber);
+                  pingu->request_set_action(BOMBER);
                   break;
                 }
               else

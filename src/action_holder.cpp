@@ -16,7 +16,6 @@
 
 #include <iostream>
 #include "pingus_level.hpp"
-#include "pingu_action_factory.hpp"
 #include "action_holder.hpp"
 
 using namespace Actions;

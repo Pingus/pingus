@@ -33,7 +33,7 @@ private:
 public:
   Boarder (Pingu* p);
 
-  ActionName get_type () const { return Actions::Boarder; }
+  ActionName get_type () const { return Actions::BOARDER; }
 
   void  draw (SceneContext& gc);
   void  update ();

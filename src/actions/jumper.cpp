@@ -40,7 +40,7 @@ void
 Jumper::update ()
 {
   // if climber, do a wall-jump, else just jump forward
-  if ((pingu->get_previous_action() == Actions::Climber))
+  if ((pingu->get_previous_action() == Actions::CLIMBER))
     pingu->direction.change();
   
   if (pingu->direction.is_left())
@@ -55,7 +55,7 @@ Jumper::update ()
   // Move the pingu in the air, so that it can start 'falling'
   pingu->set_y(pingu->get_y() - 1);
 
-  pingu->set_action (Actions::Faller);
+  pingu->set_action (Actions::FALLER);
 }
 
 } // namespace Actions

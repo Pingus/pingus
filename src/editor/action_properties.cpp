@@ -36,16 +36,16 @@ ActionProperties::ActionProperties(EditorScreen* editor, const Rect& rect)
   : GroupComponent(rect),
     y_pos(0)
 {
-  add_action(Actions::Basher);
-  add_action(Actions::Blocker);
-  add_action(Actions::Bomber);
-  add_action(Actions::Bridger);
-  add_action(Actions::Climber);
-  add_action(Actions::Digger);
-  add_action(Actions::Floater);
-  add_action(Actions::Jumper);
-  add_action(Actions::Miner);
-  add_action(Actions::Slider);
+  add_action(Actions::BASHER);
+  add_action(Actions::BLOCKER);
+  add_action(Actions::BOMBER);
+  add_action(Actions::BRIDGER);
+  add_action(Actions::CLIMBER);
+  add_action(Actions::DIGGER);
+  add_action(Actions::FLOATER);
+  add_action(Actions::JUMPER);
+  add_action(Actions::MINER);
+  add_action(Actions::SLIDER);
 }
 
 ActionProperties::~ActionProperties()

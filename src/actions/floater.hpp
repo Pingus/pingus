@@ -32,7 +32,7 @@ private:
 public:
   Floater(Pingu* p);
 
-  ActionName get_type() const { return Actions::Floater; }
+  ActionName get_type() const { return Actions::FLOATER; }
   ActionType get_activation_mode() const { return FALL_TRIGGERED; }
 
   void init(void);

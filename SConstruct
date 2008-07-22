@@ -163,7 +163,6 @@ pingus_sources = [
 'src/pathname.cpp', 
 'src/pingu.cpp', 
 'src/pingu_action.cpp', 
-'src/pingu_action_factory.cpp', 
 'src/pingu_enums.cpp', 
 'src/pingu_holder.cpp', 
 'src/pingus_error.cpp', 

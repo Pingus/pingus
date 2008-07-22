@@ -47,7 +47,7 @@ Floater::update()
     }
   else
     {
-      pingu->set_action (Actions::Walker);
+      pingu->set_action (Actions::WALKER);
     }
 }
 

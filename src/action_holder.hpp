@@ -21,10 +21,9 @@
 #include <vector>
 #include "pingu_enums.hpp"
 
-
 class PingusLevel;
 class PinguAction;
-
+
 /**
  * The ActionHolder is the backend of the ButtonPanel. It is responsible for
  * creating new PinguActions and (if necessary) restricting the number of
@@ -76,8 +75,7 @@ private:
   ActionHolder (const ActionHolder&);
   ActionHolder& operator= (const ActionHolder&);
 };
-
-
+
 #endif
 
 /* EOF */

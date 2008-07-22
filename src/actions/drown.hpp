@@ -30,7 +30,7 @@ private:
 public:
   Drown (Pingu* p);
 
-  ActionName get_type () const { return Actions::Drown; }
+  ActionName get_type () const { return Actions::DROWN; }
 
   void draw (SceneContext& gc);
   void update ();

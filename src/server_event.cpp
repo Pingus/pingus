@@ -30,7 +30,7 @@ ServerEvent::ServerEvent()
   : type(PINGU_ACTION_EVENT),
     time_stamp(0),
     pingu_id(0),
-    pingu_action(Actions::Walker)
+    pingu_action(Actions::WALKER)
 {
 }
 

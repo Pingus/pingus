@@ -32,7 +32,7 @@ private:
 public:
   Superman (Pingu*);
 
-  ActionName get_type () const { return Actions::Superman; }
+  ActionName get_type () const { return Actions::SUPERMAN; }
 
   void draw (SceneContext& gc);
   void update ();

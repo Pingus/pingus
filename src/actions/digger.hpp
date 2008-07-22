@@ -31,7 +31,7 @@ private:
 public:
   Digger(Pingu*);
 
-  ActionName get_type () const { return Actions::Digger; }
+  ActionName get_type () const { return Actions::DIGGER; }
 
   bool have_something_to_dig ();
   void dig ();
