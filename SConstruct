@@ -123,9 +123,7 @@ pingus_sources = [
 'src/display/sdl_framebuffer_surface_impl.cpp', 
 'src/display/sdl_framebuffer.cpp', 
 
-'src/display/opengl_framebuffer_surface_impl.cpp', 
-'src/display/opengl_framebuffer.cpp', 
-
+'src/display/null_framebuffer.cpp', 
 'src/display/delta_framebuffer.cpp', 
 'src/display/rect_merger.cpp',
 'src/gui/group_component.cpp', 
@@ -304,11 +302,12 @@ def DefineOptions(filename, args):
    opts.Add('LIBPATH',    'Additional library paths',      [])
    opts.Add('CPPFLAGS',   'Additional preprocessor flags', [])
    opts.Add('CPPDEFINES', 'defined constants', [])
-   opts.Add('LIBS',       'Additional libraries', ['GL'])
+   opts.Add('LIBS',       'Additional libraries', [])
    opts.Add('CCFLAGS',    'C Compiler flags', [])
    opts.Add('CXXFLAGS',   'C++ Compiler flags', [])
    opts.Add('LINKFLAGS',  'Linker Compiler flags', [])
 
+   opts.Add(BoolOption('with_opengl',        'Build with OpenGL support', True))
    opts.Add(BoolOption('with_xinput',        'Build with Xinput support', False))
    opts.Add(BoolOption('with_linuxusbmouse', 'Build with Linux USB mouse support', True))
    opts.Add(BoolOption('with_linuxevdev',    'Build with Linux evdev support', True))
@@ -401,10 +400,19 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
     # if ret != "":
     #   reports += "  * C++ Compiler missing: " + ret
 
+    if not env['with_opengl']:
+       reports += "  * OpenGL support: disabled\n"
+    else:
+       reports += "  * OpenGL support: enabled\n"
+       config_h_defines  += [('HAVE_OPENGL', 1)]
+       env['LIBS']       += ['GL']
+       env['optional_sources'] += ['src/display/opengl_framebuffer_surface_impl.cpp', 
+                                   'src/display/opengl_framebuffer.cpp' ]
+
     if not env['with_linuxusbmouse']:
         reports += "  * Linux USB mouse support: disabled\n"
     else:
-        reports += "  * Linux USB mouse support: ok\n"
+        reports += "  * Linux USB mouse support: enabled\n"
         config_h_defines  += [('HAVE_LINUXUSBMOUSE', 1)]
         env['optional_sources'] += ['src/input/usbmouse_driver.cpp']
     

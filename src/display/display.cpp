@@ -14,9 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include <stdexcept>
 #include <algorithm>
 #include <stdio.h>
 #include <iostream>
+#include "../../config.h"
 #include "../globals.hpp"
 #include "../math/vector2i.hpp"
 #include "../math/rect.hpp"
@@ -24,7 +26,9 @@
 #include "../math.hpp"
 #include "../screen/screen_manager.hpp"
 #include "sdl_framebuffer.hpp"
-#include "opengl_framebuffer.hpp"
+#ifdef HAVE_OPENGL
+#  include "opengl_framebuffer.hpp"
+#endif
 #include "null_framebuffer.hpp"
 #include "delta_framebuffer.hpp"
 #include "display.hpp"
@@ -81,7 +85,11 @@ Display::set_video_mode(const Size& size, bool fullscreen)
       switch (framebuffer_type)
         {
           case OPENGL_FRAMEBUFFER:
+#ifdef HAVE_OPENGL
             framebuffer = std::auto_ptr<Framebuffer>(new OpenGLFramebuffer());
+#else
+            throw std::runtime_error("OpenGL support was not compiled in");
+#endif
             break;
 
           case NULL_FRAMEBUFFER:
