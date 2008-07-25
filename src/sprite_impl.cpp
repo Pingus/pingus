@@ -112,7 +112,7 @@ SpriteImpl::SpriteImpl(const Surface& surface)
 
 SpriteImpl::~SpriteImpl()
 {
-  if (!pathname.empty())
+  if (!filename.empty())
     {
       framebuffer_surface = FramebufferSurface();
       delete_framebuffer_surface(filename);
