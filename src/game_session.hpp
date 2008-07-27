@@ -93,7 +93,6 @@ public:
 
   // Overloaded GUIScreen stuff
   void on_startup ();
-  void on_shutdown ();
 
   void on_pause_press ();
   void on_fast_forward_press ();

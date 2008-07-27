@@ -331,11 +331,6 @@ GameSession::on_startup ()
     }
 }
 
-void
-GameSession::on_shutdown ()
-{
-}
-
 Actions::ActionName
 GameSession::get_action_name() const
 {

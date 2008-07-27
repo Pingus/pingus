@@ -50,10 +50,6 @@ public:
       screen */
   virtual void on_startup () {}
 
-  /** Called once the screen gets replaced or poped or shadowed by a
-      newly pushed screen */
-  virtual void on_shutdown () {}
-
   virtual void resize(const Size& s) { size = s; }
 
   virtual Size get_size() const { return size; }

@@ -240,7 +240,11 @@ void
 ScreenManager::update(float delta, const std::vector<Input::Event>& events)
 {
   ScreenPtr last_screen = get_current_screen();
-  
+
+  // Will be triggered when pop_all_screens() is called by pressing window close button
+  if (!last_screen)
+    return;
+
   for(std::vector<Input::Event>::const_iterator i = events.begin(); i != events.end(); ++i)
     {
       if (i->type == Input::POINTER_EVENT_TYPE && i->pointer.name == Input::STANDARD_POINTER)
@@ -248,6 +252,7 @@ ScreenManager::update(float delta, const std::vector<Input::Event>& events)
                              static_cast<int>(i->pointer.y)); 
 
       last_screen->update(*i);
+
       if (last_screen != get_current_screen())
         {
           fade_over(last_screen, get_current_screen());
@@ -299,18 +304,13 @@ ScreenManager::instance()
 void
 ScreenManager::push_screen (Screen* screen)
 { 
-  if (!screens.empty())
-    screens.back()->on_shutdown();
-
   screens.push_back(ScreenPtr(screen));
   screen->on_startup();
 }
 void
 ScreenManager::pop_screen()
 {
-  ScreenPtr back = screens.back();
   screens.pop_back();
-  back->on_shutdown();
 
   if (!screens.empty())
     {
@@ -323,21 +323,17 @@ ScreenManager::pop_screen()
 void
 ScreenManager::pop_all_screens()
 {
-  ScreenPtr back = screens.back();
-  screens.pop_back();
-  back->on_shutdown();
-
   screens.clear();
 }
 
 void
 ScreenManager::replace_screen (Screen* screen)
 {
-  screens.back()->on_shutdown();
   screens.back() = ScreenPtr(screen);
 
   if (screens.back()->get_size() != Display::get_size())
     screens.back()->resize(Display::get_size());
+
   screens.back()->on_startup();
 
 }
