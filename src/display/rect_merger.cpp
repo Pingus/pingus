@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //#include <ext/algorithm>
+#include <algorithm>
 #include <assert.h>
 #include <iostream>
 #include "../math/vector2i.hpp"
