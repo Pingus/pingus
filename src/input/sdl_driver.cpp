@@ -213,7 +213,7 @@ SDLDriver::update(float delta)
       switch(event.type)
         {
           case SDL_QUIT: // FIXME: make this into a GameEvent
-            exit(1);
+            ScreenManager::instance()->pop_all_screens();
             break;
 
           case SDL_MOUSEMOTION:
