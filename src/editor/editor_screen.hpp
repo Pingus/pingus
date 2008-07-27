@@ -77,7 +77,7 @@ public:
   void draw (DrawingContext& gc);
 
   /** Update the GUI objects */
-  void update(const Input::Event& delta);
+  void update(const Input::Event& event);
 
   /** Return the gui_manager */
   GUI::GUIManager* get_gui_manager() const { return gui_manager; }
