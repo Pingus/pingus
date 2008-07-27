@@ -14,8 +14,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include <stdexcept>
 #include "sdl_framebuffer_surface_impl.hpp"
-
+
 SDLFramebufferSurfaceImpl::SDLFramebufferSurfaceImpl(SDL_Surface* src)
 {
   if (src->format->Amask != 0 || (src->flags & SDL_SRCCOLORKEY))
@@ -52,5 +53,5 @@ SDLFramebufferSurfaceImpl::to_surface() const
 
   return Surface(surface);
 }
-
-  /* EOF */
+
+/* EOF */

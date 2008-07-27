@@ -36,23 +36,24 @@ public:
 class FramebufferSurface
 {
 public:
-  FramebufferSurface() {}
-  FramebufferSurface(FramebufferSurfaceImpl* impl) : impl(impl) {}
-  ~FramebufferSurface() {}
+  FramebufferSurface();
+  FramebufferSurface(FramebufferSurfaceImpl* impl);
+  ~FramebufferSurface();
 
-  int  get_width()  const { return impl->get_width();  }
-  int  get_height() const { return impl->get_height(); }
-  Size get_size()   const { return Size(impl->get_width(), impl->get_height()); }
+  int  get_width()  const;
+  int  get_height() const;
+  Size get_size()   const;
 
-  FramebufferSurfaceImpl* get_impl() const { return impl.get(); }
+  FramebufferSurfaceImpl* get_impl() const;
 
-  bool operator==(const FramebufferSurface& other) const { return impl == other.impl; }
+  bool operator==(const FramebufferSurface& other) const;
 
-  operator bool() const { return impl.get() != 0; }
+  operator bool() const;
 
-  long use_count() const { return impl.use_count(); }
+  long use_count() const;
 
-  Surface to_surface() const { return impl->to_surface(); }
+  Surface to_surface() const;
+
 private:
   boost::shared_ptr<FramebufferSurfaceImpl> impl;
 };

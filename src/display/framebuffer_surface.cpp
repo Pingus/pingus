@@ -15,7 +15,78 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "framebuffer_surface.hpp"
+
+FramebufferSurface::FramebufferSurface()
+{
+}
 
+FramebufferSurface::FramebufferSurface(FramebufferSurfaceImpl* impl)
+  : impl(impl) 
+{
+}
 
+FramebufferSurface::~FramebufferSurface() 
+{
+}
 
+int
+FramebufferSurface::get_width()  const 
+{
+  if (impl.get())
+    return impl->get_width(); 
+  else 
+    return 0;
+}
+
+int
+FramebufferSurface::get_height() const 
+{
+  if (impl.get())
+    return impl->get_height(); 
+  else
+    return 0;
+}
+
+Size
+FramebufferSurface::get_size() const
+{
+  if (impl.get())
+    return Size(impl->get_width(), impl->get_height()); 
+  else
+    return Size(0, 0);
+}
+
+FramebufferSurfaceImpl*
+FramebufferSurface::get_impl() const
+{
+  return impl.get(); 
+}
+
+bool
+FramebufferSurface::operator==(const FramebufferSurface& other) const 
+{
+  return impl == other.impl; 
+}
+
+FramebufferSurface::operator bool() const 
+{
+  return impl.get() != 0; 
+}
+
+long
+FramebufferSurface::use_count() const 
+{
+  return impl.use_count(); 
+}
+
+Surface
+FramebufferSurface::to_surface() const 
+{
+  if (impl.get())
+    return impl->to_surface(); 
+  else
+    return Surface();
+}
+
+  
 /* EOF */
