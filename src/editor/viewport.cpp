@@ -345,7 +345,7 @@ Viewport::update(float delta)
   UNUSED_ARG(delta);
 
   if (current_action == SCROLLING)
-    state.set_pos(state.get_pos() + Vector2i(mouse_screen_pos - drag_screen_pos) * delta * 5.0f);
+    state.set_pos(Vector2i(state.get_pos() + Vector2i(mouse_screen_pos - drag_screen_pos) * delta * 5));
 
   // Autoscroll if necessary
   if (autoscroll)

@@ -57,7 +57,7 @@ ObjectSelectorList::draw(DrawingContext& parent_gc)
   if (set)
     {
       gc.push_modelview();
-      gc.translate(0, offset);
+      gc.translate(0, static_cast<int>(offset));
 
       for(Objects::const_iterator i = set->get_objects().begin(); i != set->get_objects().end(); ++i)
         {

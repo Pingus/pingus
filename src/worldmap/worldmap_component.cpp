@@ -42,7 +42,7 @@ WorldmapComponent::draw (DrawingContext& gc)
 
   scene_context->clear();
   scene_context->push_modelview();
-  scene_context->translate((float)cliprect.left, (float)cliprect.top);
+  scene_context->translate(cliprect.left, cliprect.top);
 
   scene_context->set_cliprect(cliprect);
 
