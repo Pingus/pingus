@@ -342,11 +342,12 @@ Viewport::is_at(int x, int y)
 void
 Viewport::update(float delta)
 {
-  UNUSED_ARG(delta);
-
   if (current_action == SCROLLING)
-    state.set_pos(state.get_pos() + (mouse_screen_pos - drag_screen_pos) * 5 * delta);
-
+    {
+      state.set_pos(Vector2i(static_cast<int>(state.get_pos().x + (mouse_screen_pos.x - drag_screen_pos.x) * 5 * delta),
+                             static_cast<int>(state.get_pos().y + (mouse_screen_pos.y - drag_screen_pos.y) * 5 * delta)));
+    }
+  
   // Autoscroll if necessary
   if (autoscroll)
     {
