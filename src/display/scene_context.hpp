@@ -54,7 +54,7 @@ public:
   DrawingContext& highlight();
 
   /** Translate the drawing context */
-  void translate(float x, float y);
+  void translate(int x, int y);
 
   /** Set the rotation of the drawing context */
   void rotate(float angel);

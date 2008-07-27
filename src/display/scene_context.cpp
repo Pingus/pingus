@@ -79,7 +79,7 @@ SceneContext::highlight()
 
 /** Translate the drawing context */
 void
-SceneContext::translate(float x, float y)
+SceneContext::translate(int x, int y)
 {
   impl->color.translate(x, y);
   impl->light.translate(x, y);

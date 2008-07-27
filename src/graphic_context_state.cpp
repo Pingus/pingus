@@ -21,11 +21,8 @@
 class GraphicContextStateImpl
 {
 public:
-  Rect rect;
-  
+  Rect rect; 
   Vector2i offset;
-  float zoom;
-  float rotation;
 
   bool have_limit;
   Rect limit;
@@ -36,8 +33,6 @@ GraphicContextState::GraphicContextState()
 {
   impl->rect       = Rect(Vector2i(0,0), Size(Display::get_width(), Display::get_height()));
   impl->offset     = Vector2i(0,0);
-  impl->zoom       = 1.0f;
-  impl->rotation   = 0;
   impl->have_limit = false;
 }
 
@@ -46,8 +41,6 @@ GraphicContextState::GraphicContextState(int w, int h)
 {  
   impl->rect       = Rect(Vector2i(0,0), Size(w, h));
   impl->offset     = Vector2i(0,0); 
-  impl->zoom       = 1.0f;
-  impl->rotation   = 0;
   impl->have_limit = false;
 }
 
@@ -56,8 +49,6 @@ GraphicContextState::GraphicContextState(const Rect& rect)
 {
   impl->rect       = rect;
   impl->offset     = Vector2i(0,0); 
-  impl->zoom       = 1.0f;
-  impl->rotation   = 0;
   impl->have_limit = false;  
 }
 
@@ -113,42 +104,39 @@ GraphicContextState::pop (DrawingContext& gc)
 Rect
 GraphicContextState::get_clip_rect()
 {
-  return Rect(Vector2i(int(-impl->offset.x),
-                       int(-impl->offset.y)),
-              Size(int(get_width()  / impl->zoom),
-                   int(get_height() / impl->zoom)));
+  return Rect(-impl->offset, impl->rect.get_size());
 }
 
 void
 GraphicContextState::set_pos(const Vector2i& pos)
 {
-  impl->offset.x = -pos.x + (get_width()/2  / impl->zoom);
-  impl->offset.y = -pos.y + (get_height()/2 / impl->zoom);
+  impl->offset.x = -pos.x + (get_width()/2);
+  impl->offset.y = -pos.y + (get_height()/2);
 
   if (impl->have_limit)
     {
       if (-impl->offset.x < impl->limit.left)
         {
-          impl->offset.x = (float)-(impl->limit.left);
+          impl->offset.x = -(impl->limit.left);
         }
       else if (-impl->offset.x + get_width() > impl->limit.right)
         {
           if (impl->limit.right - impl->limit.left > get_width())
-            impl->offset.x = (float)-(impl->limit.right - get_width());
+            impl->offset.x = -(impl->limit.right - get_width());
           else
-            impl->offset.x = (float)-(impl->limit.left);
+            impl->offset.x = -(impl->limit.left);
         }
 
       if (-impl->offset.y < impl->limit.top)
         {
-          impl->offset.y = (float)-(impl->limit.top);
+          impl->offset.y = -(impl->limit.top);
         }
       else if (-impl->offset.y + get_height() > impl->limit.bottom)
         {
           if (impl->limit.bottom - impl->limit.top > get_height())
-            impl->offset.y = (float)-(impl->limit.bottom - get_height());
+            impl->offset.y = -(impl->limit.bottom - get_height());
           else
-            impl->offset.y = (float)-(impl->limit.top);
+            impl->offset.y = -(impl->limit.top);
         }
     }
 }
@@ -156,29 +144,19 @@ GraphicContextState::set_pos(const Vector2i& pos)
 Vector2i
 GraphicContextState::get_pos() const
 {
-  return Vector2i(-impl->offset.x + (get_width()/2  / impl->zoom),
-                  -impl->offset.y + (get_height()/2  / impl->zoom));
+  return Vector2i(-impl->offset.x + (get_width()/2),
+                  -impl->offset.y + (get_height()/2));
 }
 
 Vector2i
 GraphicContextState::screen2world(const Vector2i& pos_) const
 {
-  Vector2i pos(float(pos_.x - impl->rect.left),
-               float(pos_.y - impl->rect.top));
+  Vector2i pos(pos_.x - impl->rect.left,
+               pos_.y - impl->rect.top);
 
-  float sa = Math::sin(-impl->rotation/180.0f*Math::pi);
-  float ca = Math::cos(-impl->rotation/180.0f*Math::pi);
-
-  float dx = pos.x - (float)get_width()/2;
-  float dy = pos.y - (float)get_height()/2;
-
-  pos.x = get_width()/2  + (ca * dx - sa * dy);
-  pos.y = get_height()/2 + (sa * dx + ca * dy);
-
-  Vector2i p((float(pos.x) / impl->zoom) - impl->offset.x, 
-             (float(pos.y) / impl->zoom) - impl->offset.y);
-
-  return p;
+  return pos
+    - Vector2i(impl->rect.left, impl->rect.top) 
+    - impl->offset;
 }
 
 int

@@ -155,8 +155,7 @@ SurfaceBackground::draw (SceneContext& gc)
           x < world->get_width();
           x += bg_sprite.get_width())
         {
-          gc.color().draw(bg_sprite, Vector3f(x - offset.x, 
-                                              y - offset.y, pos.z));
+          gc.color().draw(bg_sprite, Vector2i(x - offset.x, y - offset.y), pos.z);
         }
     }
 }

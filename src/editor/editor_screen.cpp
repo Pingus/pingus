@@ -250,8 +250,8 @@ EditorScreen::update(const Input::Event& event)
     {
       case Input::SCROLLER_EVENT_TYPE:
         viewport->set_scroll_pos(viewport->get_scroll_pos() -
-                                 Vector2i(event.scroll.x_delta,
-                                          event.scroll.y_delta));
+                                 Vector2i(static_cast<int>(event.scroll.x_delta),
+                                          static_cast<int>(event.scroll.y_delta)));
         break;
 
       default:

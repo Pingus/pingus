@@ -26,8 +26,6 @@
 
 FontTestScreen::FontTestScreen(const Pathname& fontfile)
   : Screen(Display::get_size()),
-    scrollx(0),
-    scrolly(0),
     dark(true)
 {
   std::cout << "### Loading font file: " << fontfile << std::endl;
@@ -55,7 +53,7 @@ FontTestScreen::draw(DrawingContext& gc)
   gc.print_left(Fonts::chalk_large, Vector2i(10, 10), "Pingus - Font Test");
 
   gc.push_modelview();
-  gc.translate(scrollx, scrolly);
+  gc.translate(scroll.x, scroll.y);
 
   for(int i = 0; i < 256; ++i)
     {
@@ -109,8 +107,8 @@ FontTestScreen::update(const Input::Event& event)
         break;
             
       case Input::SCROLLER_EVENT_TYPE:
-        scrollx += event.scroll.x_delta;
-        scrolly += event.scroll.y_delta;
+        scroll.x += static_cast<int>(event.scroll.x_delta);
+        scroll.y += static_cast<int>(event.scroll.y_delta);
         break;
           
       default:

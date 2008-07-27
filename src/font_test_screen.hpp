@@ -26,8 +26,7 @@ class FontTestScreen : public Screen
 private:
   Font font;
   Font reference;
-  float scrollx;
-  float scrolly;
+  Vector2i scroll;
   bool  dark;
 public:
   FontTestScreen(const Pathname& fontfile);

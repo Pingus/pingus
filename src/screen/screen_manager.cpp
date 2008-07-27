@@ -244,7 +244,8 @@ ScreenManager::update(float delta, const std::vector<Input::Event>& events)
   for(std::vector<Input::Event>::const_iterator i = events.begin(); i != events.end(); ++i)
     {
       if (i->type == Input::POINTER_EVENT_TYPE && i->pointer.name == Input::STANDARD_POINTER)
-        mouse_pos = Vector2f(i->pointer.x, i->pointer.y);                 
+        mouse_pos = Vector2i(static_cast<int>(i->pointer.x),
+                             static_cast<int>(i->pointer.y)); 
 
       last_screen->update(*i);
       if (last_screen != get_current_screen())

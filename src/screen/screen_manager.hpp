@@ -55,7 +55,7 @@ private:
       or replaced) */
   std::vector<ScreenPtr> screens;
 
-  Vector2f mouse_pos;
+  Vector2i mouse_pos;
 
   bool record_input;
   bool playback_input;
