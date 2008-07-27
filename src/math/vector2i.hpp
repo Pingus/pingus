@@ -42,6 +42,11 @@ public:
     return Vector2i(x + add.x, y + add.y);
   }
 
+  Vector2i operator- () const
+  {
+    return Vector2i(-x, -y);
+  }
+
   Vector2i operator- (const Vector2i& sub) const
   {
     return Vector2i(x - sub.x, y - sub.y);
