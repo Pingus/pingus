@@ -18,7 +18,6 @@
 
 #include <config.h>
 #include <vector>
-#include <iconv.h>
 #include <errno.h>
 #include <sstream>
 #include <stdexcept>
