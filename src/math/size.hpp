@@ -111,8 +111,8 @@ public:
 	Sizef() : width(0.f), height(0.f) { return; }
 
 	Sizef(const Size& s) 
-		: width((float)s.width),
-		  height((float)s.height)
+          : width(static_cast<float>(s.width)),
+            height(static_cast<float>(s.height))
 	{}
 
 	Sizef(float width, float height)

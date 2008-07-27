@@ -54,9 +54,9 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
     SDL_LockSurface(surface);
     SDL_LockSurface(new_surface);
 
-    pixels = (unsigned char *)surface->pixels;
-    new_pixels = (unsigned char *)new_surface->pixels;
-    new_pitch = new_surface->pitch;
+    pixels     = static_cast<unsigned char*>(surface->pixels);
+    new_pixels = static_cast<unsigned char*>(new_surface->pixels);
+    new_pitch  = new_surface->pitch;
 
     memcpy(pal, surface->format->palette->colors, sizeof(SDL_Color) * 256);
     ckey = surface->format->colorkey;
@@ -87,8 +87,8 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
     SDL_LockSurface(surface);
     SDL_LockSurface(new_surface);
 
-    pixels = (unsigned char *)surface->pixels;
-    new_pixels = (unsigned char *)new_surface->pixels;
+    pixels     = static_cast<unsigned char*>(surface->pixels);
+    new_pixels = static_cast<unsigned char*>(new_surface->pixels);
     new_pitch = new_surface->pitch;
 
     for (i = 0; i < height; ++i) {

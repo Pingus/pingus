@@ -216,9 +216,9 @@ EvdevDevice::update(float delta)
 {
   struct input_event ev[128];
   // FIXME: turn this into a while loop so all events get processed
-  int rd = read(fd, ev, sizeof(struct input_event) * 128);
+  ssize_t rd = read(fd, ev, sizeof(struct input_event) * 128);
   //std::cout << rd / sizeof(struct input_event) << std::endl;
-  if (rd >= (int) sizeof(struct input_event))
+  if (rd >= static_cast<ssize_t>(sizeof(struct input_event)))
     {
       for (int i = 0; i < rd / (int)sizeof(struct input_event); ++i)
         {

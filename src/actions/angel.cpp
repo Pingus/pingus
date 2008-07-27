@@ -36,7 +36,7 @@ Angel::update ()
   sprite.update ();
 
   counter += game_speed;
-  pingu->set_pos((float)x_pos + 20 * (float)Math::sin(counter * 3.0f), pingu->get_y() - 50.0f * 0.025f);
+  pingu->set_pos(x_pos + 20 * Math::sin(counter * 3.0f), pingu->get_y() - 50.0f * 0.025f);
 
   // Out of screen, let the pingu die
   if (pingu->get_y() < -32)
