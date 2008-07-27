@@ -366,55 +366,6 @@ System::get_language()
 }
 
 std::string
-System::translate(const std::map<std::string, std::string>& strs)
-{
-  if (pingus_debug_flags & PINGUS_DEBUG_TRANSLATOR)
-    {
-      std::cout << ",-- [ Translator: lang=" << System::get_language ()
-		<< " default=" << default_language << " ] --" << std::endl;
-      for (std::map<std::string, std::string>::const_iterator i = strs.begin ();
-	   i != strs.end (); ++i)
-	{
-	  std::cout << "|  [" << i->first << "] ->" <<  i->second << std::endl;
-	}
-      std::cout << "`-- [ End Translator ] -----------------------" << std::endl;
-    }
-
-  std::map<std::string, std::string>::const_iterator p = strs.find(System::get_language());
-
-  if (p == strs.end ())
-    { // No native-language text found, fallback to default
-      return translate_default(strs);
-    }
-  else
-    { // Native language was empty, try default fallback
-      if (p->second.empty())
-	{
-          return translate_default(strs);
-	}
-      else
-        {
-          return p->second;
-        }
-    }
-}
-
-std::string
-System::translate_default(const std::map<std::string, std::string>& strs)
-{
-  std::map<std::string, std::string>::const_iterator default_text = strs.find(default_language);
-
-  if (default_text == strs.end())
-    { // no 'en' default text given probally a bug in the level data
-      return "<Translation Bug: no 'en' text given>";
-    }
-  else
-    {
-      return default_text->second;
-    }
-}
-
-std::string
 System::checksum(const Pathname& pathname)
 {
   return checksum(pathname.get_sys_path());

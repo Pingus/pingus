@@ -102,15 +102,6 @@ public:
   /** Return the modification time of a file */
   static uint64_t get_mtime(const std::string& filename);
 
-  /** Choose the correct translation out of the map, if there is none
-      present, fall back to the default language */
-  static std::string translate(const std::map<std::string, std::string>& strs);
-
-  static std::string translate(const std::string& str);
-
-  /** Translate to 'en' */
-  static std::string translate_default(const std::map<std::string, std::string>& strs);
-
   /** Removes all .., double slashes and such from a pathname */
   static std::string realpath(const std::string& pathname);
 
