@@ -117,9 +117,9 @@ RainParticleHolder::draw (SceneContext& gc)
         }
       else
         if (it->use_rain2_surf)
-          gc.color().draw(rain2_surf, it->pos.x, it->pos.y - rain1_surf.get_height());
+          gc.color().draw(rain2_surf, Vector2i(it->pos.x, it->pos.y - rain1_surf.get_height()));
         else
-          gc.color().draw(rain1_surf, it->pos.x, it->pos.y - rain1_surf.get_height());
+          gc.color().draw(rain1_surf, Vector2i(it->pos.x, it->pos.y - rain1_surf.get_height()));
     }
 }
 

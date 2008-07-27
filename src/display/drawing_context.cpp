@@ -245,22 +245,15 @@ DrawingContext::draw(DrawingContext& dc, float z)
 void
 DrawingContext::draw(const Sprite& sprite, const Vector2i& pos, float z)
 {
-  draw(sprite, (float)pos.x, (float)pos.y, z);
+  draw(new SpriteDrawingRequest(sprite, pos + translate_stack.back(), z));
 }
 
 void
 DrawingContext::draw(const Sprite& sprite, const Vector3f& pos)
 {
-  draw(sprite, pos.x, pos.y, pos.z);
-}
-
-void
-DrawingContext::draw(const Sprite&   sprite,  float x, float y, float z)
-{ // FIXME: This should get flattend down to a simple texture draw
-  // command for easier sorting after texture-id/alpha
-  draw(new SpriteDrawingRequest(sprite, Vector2i((int)translate_stack.back().x + x,
-                                                 (int)translate_stack.back().y + y),
-                                z));
+  draw(new SpriteDrawingRequest(sprite, Vector2i(static_cast<int>(translate_stack.back().x + pos.x),
+                                                 static_cast<int>(translate_stack.back().y + pos.y)),
+                                pos.z));
 }
 
 void

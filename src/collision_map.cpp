@@ -213,7 +213,7 @@ CollisionMap::draw(DrawingContext& gc)
   canvas.unlock();
 
   Sprite sprite(canvas);
-  gc.draw(sprite, 0, 0, 1000);
+  gc.draw(sprite, Vector2i(0, 0), 1000);
 }
 
 unsigned

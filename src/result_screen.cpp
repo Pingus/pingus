@@ -157,9 +157,9 @@ ResultScreenComponent::draw(DrawingContext& gc)
   // Paint the background wood panel
   for(int y = 0; y < gc.get_height(); y += background.get_height())
     for(int x = 0; x < gc.get_width(); x += background.get_width())
-      gc.draw(background, x, y);
+      gc.draw(background, Vector2i(x, y));
 
-  gc.draw(blackboard, gc.get_width()/2, gc.get_height()/2);
+  gc.draw(blackboard, Vector2i(gc.get_width()/2, gc.get_height()/2));
 
   gc.print_center(Fonts::chalk_large, 
                   Vector2i(gc.get_width()/2, 

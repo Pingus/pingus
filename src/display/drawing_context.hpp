@@ -69,7 +69,6 @@ public:
 
   void draw(const Sprite& sprite, const Vector2i& pos, float z = 0);
   void draw(const Sprite& sprite, const Vector3f& pos);
-  void draw(const Sprite& sprite, float x, float y, float z = 0);
   
   /** Fills the screen with a given color, this is different from
       clear() in that it doesn't remove other DrawingRequest from the
