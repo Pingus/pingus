@@ -14,7 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <ext/algorithm>
+//#include <ext/algorithm>
 #include <assert.h>
 #include <iostream>
 #include "../math/vector2i.hpp"
@@ -141,7 +141,7 @@ void generate_rows(const std::vector<Rect>& rects, std::vector<Row>& rows_out)
  */
 void split_rectangles(const std::vector<Rect>& rects, std::vector<Row>& rows)
 {
-  assert(__gnu_cxx::is_sorted(rects.begin(), rects.end(), rect_y_sorter));
+  //assert(__gnu_cxx::is_sorted(rects.begin(), rects.end(), rect_y_sorter));
 
   std::vector<Rect>::const_iterator rect = rects.begin();
   for(std::vector<Row>::iterator row = rows.begin(); row != rows.end(); ++row)
@@ -237,7 +237,7 @@ void generate_rectangles(const std::vector<Row>& rows, std::vector<Rect>& rects_
 */
 void merge_vertical_rectangles(const std::vector<Rect>& rects, std::vector<Rect>& rects_out)
 {  
-  assert(__gnu_cxx::is_sorted(rects.begin(), rects.end(), rect_xy_sorter));
+  //assert(__gnu_cxx::is_sorted(rects.begin(), rects.end(), rect_xy_sorter));
   assert(!rects.empty());
   
   Rect rect = rects.front();
