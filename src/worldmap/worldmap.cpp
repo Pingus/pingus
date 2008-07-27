@@ -108,25 +108,25 @@ Worldmap::draw(DrawingContext& gc)
 
   if (width >= gc.get_width())
     {
-      min = float(gc.get_width()/2);
-      max = float(width - gc.get_width()/2);
+      min = gc.get_width()/2;
+      max = width - gc.get_width()/2;
     }
   else
     {
-      min = float(width - gc.get_width()/2);
-      max = float(gc.get_width()/2);
+      min = width - gc.get_width()/2;
+      max = gc.get_width()/2;
     }
   pingu_pos.x = Math::clamp(min, pingu_pos.x, max);
 
   if (height >= gc.get_height())
     {
-      min = float(gc.get_height()/2);
-      max = float(height - gc.get_height()/2);
+      min = gc.get_height()/2;
+      max = height - gc.get_height()/2;
     }
   else
     {
-      min = float(height - gc.get_height()/2);
-      max = float(gc.get_height()/2);
+      min = height - gc.get_height()/2;
+      max = gc.get_height()/2;
     }
   pingu_pos.y = Math::clamp(min, pingu_pos.y, max);
 
@@ -147,7 +147,7 @@ Worldmap::draw(DrawingContext& gc)
 }
 
 void
-Worldmap::update (float delta)
+Worldmap::update(float delta)
 {
   for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
     {
