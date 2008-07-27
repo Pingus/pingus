@@ -62,9 +62,6 @@ public:
       @param dir The name of the directory */
   static void create_dir(std::string dir);
 
-  /** Change into the directory named dir, on error throw an PingusError */
-  static void change_dir (std::string dir);
-
   /** Check if all needed directories are available, if not then create
       them. */
   static void init_directories();

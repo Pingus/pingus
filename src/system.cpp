@@ -211,14 +211,6 @@ System::create_dir(std::string directory)
 #endif
 }
 
-/** Change into the directory named dir, on error throw an PingusError */
-void
-System::change_dir (std::string dir)
-{
-  std::cout << "System: change_dir: " << dir << std::endl;
-  chdir(dir.c_str());
-}
-
 std::string
 System::find_userdir()
 {
