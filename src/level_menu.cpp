@@ -130,7 +130,7 @@ public:
   void draw(DrawingContext& gc)
   {
     gc.push_modelview();
-    gc.translate(static_cast<float>(rect.left), static_cast<float>(rect.top));
+    gc.translate(rect.left, rect.top);
 
     gc.print_center(Fonts::chalk_large, Vector2i(rect.get_width()/2, -50), _("Levelsets"));
 
@@ -239,7 +239,7 @@ public:
   void draw(DrawingContext& gc) 
   {
     gc.push_modelview();
-    gc.translate(static_cast<float>(rect.left), static_cast<float>(rect.top));
+    gc.translate(rect.left, rect.top);
 
     gc.print_center(Fonts::chalk_large, Vector2i(rect.get_width()/2, -70), _(levelset->get_title()));
 

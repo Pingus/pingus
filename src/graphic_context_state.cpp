@@ -85,8 +85,8 @@ GraphicContextState::push(DrawingContext& gc)
 {
   gc.push_modelview();
 
-  gc.translate((float)impl->rect.left, (float)impl->rect.top);
-  gc.translate(impl->offset.x, impl->offset.y);
+  gc.translate(impl->rect.left, impl->rect.top);
+  gc.translate(impl->offset.x,  impl->offset.y);
 }
 
 void
@@ -94,8 +94,8 @@ GraphicContextState::push(SceneContext& gc)
 {
   gc.push_modelview();
 
-  gc.translate((float)impl->rect.left, (float)impl->rect.top);
-  gc.translate(impl->offset.x, impl->offset.y);
+  gc.translate(impl->rect.left, impl->rect.top);
+  gc.translate(impl->offset.x,  impl->offset.y);
 }
 
 void

@@ -81,7 +81,7 @@ public:
   /*} */
 
   /** Translate the drawing context */
-  void translate(float x, float y);
+  void translate(int x, int y);
 
   void push_modelview();
   void pop_modelview();

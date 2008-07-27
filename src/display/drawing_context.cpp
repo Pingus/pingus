@@ -296,7 +296,7 @@ DrawingContext::fill_screen(const Color& color)
 }
 
 void
-DrawingContext::translate(float x, float y)
+DrawingContext::translate(int x, int y)
 {
   translate_stack.back().x += x;
   translate_stack.back().y += y;
