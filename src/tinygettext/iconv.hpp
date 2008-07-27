@@ -20,7 +20,7 @@
 #define HEADER_ICONV_HPP
 
 #include <string>
-#include <iconv.h>
+#include "SDL_stdinc.h"
 
 namespace TinyGetText {
 
@@ -29,7 +29,7 @@ class IConv
 public:
   std::string to_charset;
   std::string from_charset;
-  iconv_t m_conv;
+  SDL_iconv_t m_conv;
 
   IConv();
   IConv(const std::string& fromcode, const std::string& tocode);
