@@ -148,13 +148,13 @@ SpriteImpl::update(float delta)
 }
 
 void 
-SpriteImpl::render(float x, float y, Framebuffer& fb)
+SpriteImpl::render(int x, int y, Framebuffer& fb)
 {
   fb.draw_surface(framebuffer_surface,
                   Rect(frame_pos + Vector2i(frame_size.width  * (frame%array.width),
                                             frame_size.height * (frame/array.width)),
                        frame_size),
-                  Vector2i(static_cast<int>(x - offset.x), static_cast<int>(y - offset.y)));
+                  Vector2i(x - offset.x, y - offset.y));
 }
 
 void

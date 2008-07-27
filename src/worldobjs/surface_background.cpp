@@ -132,9 +132,8 @@ SurfaceBackground::draw (SceneContext& gc)
 {
   if (!bg_sprite)
     return;
-
   
-  Vector3f offset = gc.color().world_to_screen(Vector3f(0,0));
+  Vector2i offset = gc.color().world_to_screen(Vector2i(0,0));
 
   offset.x -= gc.color().get_rect().left;
   offset.y -= gc.color().get_rect().top;

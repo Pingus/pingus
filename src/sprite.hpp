@@ -45,7 +45,7 @@ public:
   int get_width()  const;
   int get_height() const;
 
-  void render(float x, float y, Framebuffer& target);
+  void render(int x, int y, Framebuffer& target);
   void update(float delta = 0.033f);
 
   void set_hotspot(Origin origin, int x, int y);

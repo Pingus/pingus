@@ -100,8 +100,9 @@ Worldmap::~Worldmap()
 void
 Worldmap::draw(DrawingContext& gc)
 {
-  Vector3f pingu_pos = pingus->get_pos();
-  float min, max;
+  Vector2i pingu_pos(static_cast<int>(pingus->get_pos().x), 
+                     static_cast<int>(pingus->get_pos().y));
+  int min, max;
   int width  = worldmap.get_width();
   int height = worldmap.get_height();
 
@@ -129,7 +130,7 @@ Worldmap::draw(DrawingContext& gc)
     }
   pingu_pos.y = Math::clamp(min, pingu_pos.y, max);
 
-  gc_state.set_pos(Vector2f(pingu_pos.x, pingu_pos.y));
+  gc_state.set_pos(Vector2i(pingu_pos.x, pingu_pos.y));
 	
   gc_state.push(gc);
   

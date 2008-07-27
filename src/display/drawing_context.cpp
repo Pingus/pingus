@@ -384,20 +384,6 @@ DrawingContext::print_right(const Font& font_, const Vector2i& pos, const std::s
                               z));
 }
 
-Vector3f
-DrawingContext::screen_to_world(Vector3f pos)
-{
-  return pos - Vector3f(translate_stack.back().x + rect.left,
-                        translate_stack.back().y + rect.top);
-}
-
-Vector3f
-DrawingContext::world_to_screen(Vector3f pos)
-{
-  return pos + Vector3f(translate_stack.back().x + rect.left, 
-                        translate_stack.back().y + rect.top);
-}
-
 Vector2i
 DrawingContext::screen_to_world(const Vector2i pos)
 {

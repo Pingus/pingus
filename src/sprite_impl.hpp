@@ -55,7 +55,7 @@ public:
 
   void update(float delta);
 
-  void render(float x, float y, Framebuffer& fb);
+  void render(int x, int y, Framebuffer& fb);
 
   void restart();
   void finish();

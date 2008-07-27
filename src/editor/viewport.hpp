@@ -24,7 +24,6 @@
 #include <vector>
 #include <string>
 
-class Vector3f;
 class DrawingContext;
 class SceneContext;
 
@@ -100,8 +99,8 @@ public:
   /** Turns the "snap-to-grid" option on or off */
   void set_snap_to(bool s) { snap_to = s; }
 
-  Vector2f get_scroll_pos() const;
-  void     set_scroll_pos(const Vector2f& pos);
+  Vector2i get_scroll_pos() const;
+  void     set_scroll_pos(const Vector2i& pos);
 
   /// Mouse actions
   void on_primary_button_press(int x, int y);

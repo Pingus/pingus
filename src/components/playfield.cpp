@@ -131,8 +131,8 @@ Playfield::update(float delta)
         }
       else
         { 
-          state.set_pos(Vector2f(state.get_pos().x - float(scroll_center.x - mouse_pos.x) * 0.2f,
-                                 state.get_pos().y - float(scroll_center.y - mouse_pos.y) * 0.2f));
+          state.set_pos(Vector2i(static_cast<int>(state.get_pos().x - (scroll_center.x - mouse_pos.x) * 0.2f),
+                                 static_cast<int>(state.get_pos().y - (scroll_center.y - mouse_pos.y) * 0.2f)));
         }
     }
 
@@ -251,13 +251,13 @@ Playfield::get_pos() const
 void
 Playfield::set_viewpoint(int x, int y)
 {
-  state.set_pos(Vector2f(x, y));
+  state.set_pos(Vector2i(x, y));
 }
 
 void
 Playfield::scroll (int x, int y)
 {
-  state.set_pos(state.get_pos() + Vector2f((float)x, (float)y));
+  state.set_pos(state.get_pos() + Vector2i(x, y));
 }
 
 void

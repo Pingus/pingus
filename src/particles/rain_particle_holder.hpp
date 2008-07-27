@@ -26,7 +26,7 @@
 class GraphicContext;
 
 namespace Particles {
-
+
 class RainParticleHolder : public WorldObj
 {
   struct RainParticle {
@@ -66,7 +66,7 @@ private:
   RainParticleHolder (const RainParticleHolder&);
   RainParticleHolder& operator= (const RainParticleHolder&);
 };
-
+
 } // namespace Particles
 
 #endif

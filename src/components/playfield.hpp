@@ -50,7 +50,7 @@ private:
   std::vector<Rect> clipping_rectangles;
   
   Vector2i mouse_pos;
-  Vector2f old_state_pos;
+  Vector2i old_state_pos;
 
 public:
   Playfield(Server*, GameSession*, const Rect& rect);

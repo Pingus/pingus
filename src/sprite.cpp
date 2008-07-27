@@ -85,7 +85,7 @@ Sprite::~Sprite()
 }
 
 void
-Sprite::render(float x, float y, Framebuffer& fb)
+Sprite::render(int x, int y, Framebuffer& fb)
 {
   if (impl.get())
     impl->render(x, y, fb);

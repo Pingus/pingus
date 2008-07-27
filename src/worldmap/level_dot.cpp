@@ -51,8 +51,8 @@ LevelDot::LevelDot(FileReader reader)
 void
 LevelDot::draw(DrawingContext& gc)
 {
-  Vector3f mpos
-    = gc.screen_to_world(Vector3f(Input::Controller::current()->get_pointer(Input::STANDARD_POINTER)->get_pos()));
+  Vector2i mpos
+    = gc.screen_to_world(Vector2i(Input::Controller::current()->get_pointer(Input::STANDARD_POINTER)->get_pos()));
 
   float x = mpos.x - pos.x;
   float y = mpos.y - pos.y;
@@ -130,7 +130,7 @@ LevelDot::draw_hover(DrawingContext& gc)
   if (accessible())
     {
       int length = Fonts::pingus_small.bounding_rect(0, 0, _(get_plf().get_levelname())).get_width() / 2;
-      int realpos = static_cast<int>(gc.world_to_screen(Vector3f(pos.x, pos.y, 0)).x);
+      int realpos = static_cast<int>(gc.world_to_screen(Vector2i(pos.x, pos.y)).x);
       if (realpos - length < 0)
         pos_correction = realpos - length;
       else if (realpos + length > gc.get_width())
@@ -145,7 +145,7 @@ LevelDot::draw_hover(DrawingContext& gc)
   else
     {
       int length  = Fonts::pingus_small.bounding_rect(0, 0, _("locked")).get_width() / 2;
-      int realpos = static_cast<int>(gc.world_to_screen(Vector3f(pos.x, pos.y, 0)).x);
+      int realpos = static_cast<int>(gc.world_to_screen(Vector2i(pos.x, pos.y)).x);
       if (realpos - length < 0)
         pos_correction = realpos - length;
       else if (realpos + length > gc.get_width())

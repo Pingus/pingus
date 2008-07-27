@@ -345,7 +345,7 @@ Viewport::update(float delta)
   UNUSED_ARG(delta);
 
   if (current_action == SCROLLING)
-    state.set_pos(state.get_pos() + Vector2f(mouse_screen_pos - drag_screen_pos) * delta * 5.0f);
+    state.set_pos(state.get_pos() + Vector2i(mouse_screen_pos - drag_screen_pos) * delta * 5.0f);
 
   // Autoscroll if necessary
   if (autoscroll)
@@ -354,13 +354,13 @@ Viewport::update(float delta)
       if (autoscroll)
         {
           if (mouse_screen_pos.x < autoscroll_border)
-            state.set_pos(state.get_pos() - Vector2f(5, 0));
+            state.set_pos(state.get_pos() - Vector2i(5, 0));
           else if (Display::get_width() - mouse_screen_pos.x < autoscroll_border)
-            state.set_pos(state.get_pos() + Vector2f(5, 0));
+            state.set_pos(state.get_pos() + Vector2i(5, 0));
           else if (mouse_screen_pos.y < autoscroll_border)
-            state.set_pos(state.get_pos() - Vector2f(0, 5));
+            state.set_pos(state.get_pos() - Vector2i(0, 5));
           else if (Display::get_height() - mouse_screen_pos.y < autoscroll_border)
-            state.set_pos(state.get_pos() + Vector2f(0, 5));
+            state.set_pos(state.get_pos() + Vector2i(0, 5));
         }
     }
 }
@@ -446,7 +446,7 @@ Viewport::rotate_270_selected_objects()
 Vector2i
 Viewport::screen2world(int x, int y) const
 {
-  return Vector2i(state.screen2world(drawing_context->screen_to_world(Vector2i(x, y))));
+  return state.screen2world(drawing_context->screen_to_world(Vector2i(x, y)));
 }
 
 void
@@ -507,14 +507,14 @@ Viewport::move_objects(const Vector2i& offset)
     }
 }
 
-Vector2f
+Vector2i
 Viewport::get_scroll_pos() const
 {
   return state.get_pos();
 }
 
 void
-Viewport::set_scroll_pos(const Vector2f& pos)
+Viewport::set_scroll_pos(const Vector2i& pos)
 {
   state.set_pos(pos);
 }

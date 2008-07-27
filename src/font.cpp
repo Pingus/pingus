@@ -91,7 +91,7 @@ public:
         if (it != glyphs.end())
           {
             const GlyphDescription& glyph = it->second;
-            fb.draw_surface(framebuffer_surface, glyph.rect, Vector2i(dstx, dsty) + glyph.offset);
+            fb.draw_surface(framebuffer_surface, glyph.rect, Vector2i(static_cast<int>(dstx), static_cast<int>(dsty)) + glyph.offset);
             dstx += glyph.advance + char_spacing;
           }
         else

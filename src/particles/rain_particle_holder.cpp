@@ -23,7 +23,7 @@
 #include "rain_particle_holder.hpp"
 
 namespace Particles {
-
+
 RainParticleHolder::RainParticle::RainParticle(int x, int y)
   : alive(true), splash(false), use_rain2_surf(false), splash_counter(0), splash_frame(0), pos(Vector3f((float)x, (float)y))
 {
@@ -117,12 +117,14 @@ RainParticleHolder::draw (SceneContext& gc)
         }
       else
         if (it->use_rain2_surf)
-          gc.color().draw(rain2_surf, Vector2i(it->pos.x, it->pos.y - rain1_surf.get_height()));
+          gc.color().draw(rain2_surf, Vector2i(static_cast<int>(it->pos.x), 
+                                               static_cast<int>(it->pos.y - rain1_surf.get_height())));
         else
-          gc.color().draw(rain1_surf, Vector2i(it->pos.x, it->pos.y - rain1_surf.get_height()));
+          gc.color().draw(rain1_surf, Vector2i(static_cast<int>(it->pos.x),
+                                               static_cast<int>(it->pos.y - rain1_surf.get_height())));
     }
 }
-
+
 } // namespace Particles
 
 /* EOF */

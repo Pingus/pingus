@@ -105,9 +105,6 @@ public:
   /** Print a text right aligned */
   void print_right(const Font& font, const Vector2i& pos, const std::string& str, float z = 0.0f);
 
-  Vector3f screen_to_world (Vector3f pos);
-  Vector3f world_to_screen (Vector3f pos);
-
   Vector2i screen_to_world(const Vector2i pos);
   Vector2i world_to_screen(const Vector2i pos);
 
