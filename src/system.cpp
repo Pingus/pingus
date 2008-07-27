@@ -161,42 +161,6 @@ System::dirname (std::string filename)
   return filename.substr(0, i);
 }
 
-std::string
-System::cut_ext (std::string filename)
-{
-  std::string::size_type idx = filename.find_last_of('.');
-  if (idx != std::string::npos)
-    {
-      std::cout << "CutExt: " << filename << " -> " << filename.substr(0, idx)  << std::endl;
-      return filename.substr(0, idx);
-    }
-  else
-    {
-      return filename;
-    }
-}
-
-std::string
-System::extension (std::string filename)
-{
-  const char* str = filename.c_str ();
-  int i;
-  int last_char = (int)filename.size() - 1;
-
-  for(i = last_char; i >= 0; --i)
-    {
-      if (str[i] == '.' ) {
-	if (i != last_char)
-	  return filename.substr (i+1);
-	else
-	  return "";
-      } else if (str[i] == '/' ) {
-	return "";
-      }
-    }
-  return "";
-}
-
 bool
 System::exist(std::string filename)
 {

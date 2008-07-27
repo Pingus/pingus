@@ -77,15 +77,6 @@ public:
       @param filename The complete filename */
   static std::string dirname(std::string filename);
 
-  /** Return the extension of the given filename:
-
-      System::extension ("foobar.jpg")    => "jpg"
-      System::extension ("/bla/bla.blub/") => ""
-      System::extension ("/bla/blabl") => ""
-  */
-  static std::string extension (std::string filename);
-  static std::string cut_ext (std::string filename);
-
   static std::string find_userdir();
 
   /** Sets the directory to save users data to */
