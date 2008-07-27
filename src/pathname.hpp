@@ -20,7 +20,7 @@
 #include <iosfwd>
 #include <string>
 #include "SDL.h"
-
+
 /** Simple class to allow a distinction of paths that refer to the
  *  filesystem and paths that refer to the datadir, it also hides
  *  path_manager from the rest of the code. */
@@ -58,9 +58,9 @@ public:
   Type get_type() const;
 
   /** Converts the Pathname into human readable form, usefull for
-      debugging output and nothing else */
+      debugging output, but nothing else */
   std::string str() const;
-
+
   bool empty() const;
   
   bool exist() const;
@@ -69,7 +69,7 @@ public:
 };
 
 std::ostream& operator<< (std::ostream& os, const Pathname& p);
-
+
 #endif
 
 /* EOF */

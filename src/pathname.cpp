@@ -19,7 +19,7 @@
 #include "system.hpp"
 #include "path_manager.hpp"
 #include "pathname.hpp"
-
+
 Pathname Pathname::tmpfile(const std::string& prefix)
 {
   assert(!"Unimplemented");
@@ -124,5 +124,5 @@ std::ostream& operator<< (std::ostream& os, const Pathname& p)
     }
   return os;
 }
-
+
 /* EOF */
