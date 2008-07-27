@@ -36,7 +36,7 @@ IConv::IConv(const std::string& from_charset_, const std::string& to_charset_)
     m_conv(0)
 {
   // Create the converter.
-  if(!(m_conv = iconv_open(to_charset.c_str(), from_charset.c_str())))
+  if(!(m_conv = SDL_iconv_open(to_charset.c_str(), from_charset.c_str())))
     {
       if(errno == EINVAL)
         {
@@ -65,7 +65,7 @@ IConv::close()
   // Free, if exists.
   if(m_conv)
     {
-      iconv_close(m_conv);
+      SDL_iconv_close(m_conv);
       m_conv = 0;
     }
 }
@@ -123,7 +123,7 @@ IConv::convert(const std::string& text,
   const char* in  = in_orig;
 
   //std::cout << "IN: " << (int)in << " " << in_len << " " << (int)out << " " << out_len << std::endl;
-  int retval = iconv(cd, &in, &in_len, &out, &out_len);
+  int retval = SDL_iconv(cd, &in, &in_len, &out, &out_len);
   //std::cout << "OUT: " << (int)in << " " << in_len << " " << (int)out << " " << out_len << std::endl;
 
   if (retval != 0)
