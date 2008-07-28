@@ -20,6 +20,9 @@
 #include <assert.h>
 #include <vector>
 
+/** MemoryPool allows the allocation of small objects on a previous
+    allocated chunk of memeroy, thus reducing the amount of new/delete
+    calls that have do be done and providing a speed up. */
 template<class T>
 class MemoryPool
 {
@@ -79,15 +82,15 @@ public:
   }
 
   template<class C> 
-  C* create() { return keep(new (allocate(sizeof(C))) C()); }
+  T* create() { return keep(new (allocate(sizeof(C))) C()); }
   template<class C, class Arg1>
-  C* create(const Arg1& arg1) { return keep(new (allocate(sizeof(C))) C(arg1)); }
+  T* create(const Arg1& arg1) { return keep(new (allocate(sizeof(C))) C(arg1)); }
   template<class C, class Arg1, class Arg2> 
-  C* create(const Arg1& arg1, const Arg2& arg2) { return keep(new (allocate(sizeof(C))) C(arg1, arg2)); }
+  T* create(const Arg1& arg1, const Arg2& arg2) { return keep(new (allocate(sizeof(C))) C(arg1, arg2)); }
   template<class C, class Arg1, class Arg2, class Arg3> 
-  C* create(const Arg1& arg1, const Arg2& arg2, const Arg3& arg3) { return keep(new (allocate(sizeof(C))) C(arg1, arg2, arg3)); }
+  T* create(const Arg1& arg1, const Arg2& arg2, const Arg3& arg3) { return keep(new (allocate(sizeof(C))) C(arg1, arg2, arg3)); }
   template<class C, class Arg1, class Arg2, class Arg3, class Arg4> 
-  C* create(const Arg1& arg1, const Arg2& arg2, const Arg3& arg3, const Arg4& arg4) { return keep(new (allocate(sizeof(C))) C(arg1, arg2, arg3, arg4)); }
+  T* create(const Arg1& arg1, const Arg2& arg2, const Arg3& arg3, const Arg4& arg4) { return keep(new (allocate(sizeof(C))) C(arg1, arg2, arg3, arg4)); }
 
 private:
   MemoryPool (const MemoryPool&);
