@@ -124,6 +124,7 @@ Bridger::update_build ()
 {
   build_sprite[pingu->direction].update();
 
+  // FIXME: Game logic must not depend on Sprite states
   if (build_sprite[pingu->direction].get_current_frame () >= 7 && !block_build)
     {
       block_build = true;

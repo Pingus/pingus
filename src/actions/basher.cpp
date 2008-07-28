@@ -91,7 +91,7 @@ Basher::update ()
 	      if (basher_c % 2 == 0)
 		bash();
 	    }
-	  else if (sprite[pingu->direction].get_current_frame() 
+	  else if (sprite[pingu->direction].get_current_frame() // FIXME: Game logic must be separate from Sprite 
                    / float(sprite[pingu->direction].get_frame_count()) > 0.6f) 
 	    { // FIXME: EVIL! Engine must not relay on graphic
 	      pingu->set_action(Actions::WALKER);
