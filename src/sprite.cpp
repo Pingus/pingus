@@ -109,7 +109,7 @@ Sprite::get_height() const
     return 0;
 }
 
-Sprite::operator bool()
+Sprite::operator bool() const
 {
   return (impl.get() != 0);
 }

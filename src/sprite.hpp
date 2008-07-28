@@ -58,7 +58,7 @@ public:
   void set_play_loop(bool loop = true);
   void restart();
   void finish();
-  operator bool();
+  operator bool() const;
 
   Surface to_surface() const;
 
