@@ -40,7 +40,7 @@ public:
   void remove(Surface, int x, int y, int real_x, int real_y, GroundMap*);  
   void put(Surface, int x, int y);  
 
-  Sprite get_sprite();
+  const Sprite& get_sprite();
 };
 
 MapTile::MapTile () 
@@ -73,7 +73,7 @@ MapTile::put(Surface src, int x, int y)
   sprite_needs_update = true;
 }
 
-Sprite 
+const Sprite&
 MapTile::get_sprite() 
 {
   if (sprite_needs_update)
