@@ -90,7 +90,8 @@ Roadmap for Pingus 0.8.0:
 
 * Integrade Input-Demo recording somewhat better, like with command line switch
 
-* Display when maintainer mode is active and display what keyboard shortcuts are available 
+* Display a note when maintainer mode is active and display what
+  keyboard shortcuts are available, move cheats into maintainer mode
 
 * rewrite config file handling
 
@@ -103,7 +104,33 @@ Roadmap for Pingus 0.8.0:
 
 * Editor is passing non-normalized rectangles to drawing code -> Crash
 
-* Thumbnail loading is slow 
+* Thumbnail loading is slow (likely .png overhead)
+
+* do not keep software backstore for MapTiles, instead record the list of surfaces needed to generate it
+
+* keep statistic on allocated Surfaces and FramebufferSurfaces
+
+* remove pingus_debug_flags or find some use for it
+
+* make a more powerfull liquid type that automatically aligns itself to the bottom level border
+
+* add a form of add-on handling to Pathname()
+
+* datasets: core/, base/, add-on/ ?
+
+* repaint tutorial island to 1920x1200
+
+* cleanup sound, find out whats wrong with mod playback
+
+* StatManager and new Config stuff should share code
+
+* reduce the amount of new/delete's
+
+* StartScreen has high CPU usage in delta mode (Diff to blame!)
+
+* Worldmap doesn't properly handle scroll limits (did I break GraphicContext?)
+
+* Remove support for line drawing
 
 New Features
 ============
@@ -134,7 +161,7 @@ Animation and graphic issues:
 * convert all Pingu animations to a proper indexed format so that
   palette swap can be used in multiplayer
 
-* proper waiter animation (use the one from SuperTux? draw new one)
+* proper waiter animation
 
 * repaint pause and fast-forward button
 
@@ -162,7 +189,6 @@ Bugs:
 > terminal and then the window closes.
 > " PingusError: e has wrong color depth: "
 
-
 * GroundMap tiles are currently RGBA, while in reality they are just
   RGB with a colorkey, room for optimization
 
@@ -186,7 +212,7 @@ Unsorted:
 
 * Font::draw() origin only works properly for left, right and center, breaks with multiline text
 
-* implement xschema-like language to check for syntax errors in the level files
+* implement xschema-like language to check for syntax errors in the level files (partly done, needs documentation and proper integration)
 
 * trap in one tutorial level with two exits is in background, should
   be foreground (???)
@@ -197,7 +223,7 @@ Unsorted:
   the same purpose? Problem: Groundpieces all have the same z-level,
   the editor doesn't handle that and allows insertions inbetween
 
-* pregenerate thumbnails for the editor, generating them takes to long
+* pregenerate thumbnails for the editor, generating them takes to long (thumbnail loading takes long as well, need pack format)
 
 
 Roadmap for Pingus 0.7.3
@@ -360,11 +386,7 @@ Less Important:
 Older Stuff:
 ~~~~~~~~~~~~
 
-* hint system via herring or flower (it should show the path to walk)
-
 * smasher doesn't correctly check the y-coordinate
-
-* all working actions in default level
 
 * seperate colmap and gfx remover surfaces for digger, miner, etc. would be nice
   the current ones don't work very good since the remove path is too smooth
@@ -381,21 +403,11 @@ Older Stuff:
 
 * floater and jumper don't work together
 
-* hint system via herring or flower (it should show the path to walk)
-
-* smasher doesn't correctly check the y-coordinate
-
-* console is bound to the wrong keys and keys for it are not documented
-
-* music and sound should be up and running and included in the game [important - release critical]
-
 * playable and non-playable levels should be sorted
 
 * add better load-from-file support for hotspots, backgrounds, etc.
 
 * pingus doesn't die when out-of-screen
-
-* thumbnail handling should be reviewed
 
 * Floaters shouldn't float until they've fallen the minimum distance
   it'd take for a regular Pingu to splat. That way, you wouldn't have to
