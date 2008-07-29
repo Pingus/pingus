@@ -31,7 +31,7 @@ class FontImpl
 {
 public:
   FramebufferSurface framebuffer_surface;
-  typedef std::map<uint32_t, GlyphDescription> Glyphs;
+  typedef std::vector<GlyphDescription*> Glyphs;
   Glyphs glyphs; // FIXME: Use a hashmap or something else faster then a map
   int    space_length;
   float  char_spacing;
@@ -52,15 +52,22 @@ public:
 
     vertical_spacing = size * desc.vertical_spacing;
    
+    glyphs.resize(65536); // 16bit ought to be enough for everybody
+
     // Copyh Unicode -> Glyph mapping 
     for(std::vector<GlyphDescription>::const_iterator i = desc.glyphs.begin(); i != desc.glyphs.end(); ++i)
       {
-        glyphs[i->unicode] = *i;
+        if (i->unicode < glyphs.size())
+          glyphs[i->unicode] = new GlyphDescription(*i);
       }
   }
 
   ~FontImpl()
   {
+    for(Glyphs::iterator i = glyphs.begin(); i != glyphs.end(); ++i)
+      {
+        delete *i;
+      }
   }
 
   void render(Origin origin, int x, int y_, const std::string& text, Framebuffer& fb)
@@ -87,10 +94,9 @@ public:
       {
         const uint32_t& unicode = *i;
 
-        Glyphs::iterator it = glyphs.find(unicode);
-        if (it != glyphs.end())
+        if (unicode < glyphs.size() && glyphs[unicode])
           {
-            const GlyphDescription& glyph = it->second;
+            const GlyphDescription& glyph = *glyphs[unicode];
             fb.draw_surface(framebuffer_surface, glyph.rect, Vector2i(static_cast<int>(dstx), static_cast<int>(dsty)) + glyph.offset);
             dstx += glyph.advance + char_spacing;
           }
@@ -108,9 +114,8 @@ public:
 
   int get_width(uint32_t unicode) const
   {
-    Glyphs::const_iterator it = glyphs.find(unicode);
-    if (it != glyphs.end())
-      return it->second.advance;
+    if (unicode < glyphs.size() && glyphs[unicode])
+      return glyphs[unicode]->advance;
     else
       return 0;
   }
