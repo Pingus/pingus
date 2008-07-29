@@ -76,9 +76,17 @@ public:
   {
     for(typename Objects::reverse_iterator i = objects.rbegin(); i != objects.rend(); ++i)
       (*i)->~T();
+    objects.clear();
 
+    // FIXME: We don't have to delete the chunks, instead we should
+    // just reset the pointer to start and reuse them
     for(typename Chunks::reverse_iterator i = chunks.rbegin(); i != chunks.rend(); ++i)
-      delete[] *i;
+      {
+        delete[] *i;
+      }
+    chunks.clear();
+
+    next_free = 0;
   }
 
   template<class C> 
