@@ -17,16 +17,26 @@
 #include <assert.h>
 #include <iostream>
 #include "../math.hpp"
+#include "../memory_pool.hpp"
 #include "rect_merger.hpp"
 #include "sdl_framebuffer.hpp"
 #include "delta_framebuffer.hpp"
 
 enum DrawOpType { SURFACE_DRAWOP, FILLRECT_DRAWOP };
 
+uint32_t make_id(DrawOpType type, int x, int y)
+{
+  return
+    ((type & (4-1))  << 29) |
+    ((y & (32768-1)) << 15) |
+    ((x & (32768-1)) << 0);
+}
+
 struct DrawOp
 {
   DrawOpType type;
-  
+  uint32_t   id;
+
   DrawOp(DrawOpType type_)
     : type(type_)
   {}
@@ -37,6 +47,7 @@ struct DrawOp
   virtual void mark_changed_regions(std::vector<Rect>& update_rects) const =0;
 
   bool equal(DrawOp* op) const;
+  bool less(DrawOp* op) const;
 };
 
 struct SurfaceDrawOp : public DrawOp
@@ -52,7 +63,9 @@ struct SurfaceDrawOp : public DrawOp
       pos(pos_),
       surface(surface_),
       rect(rect_)
-  {}
+  {
+    id = make_id(type, pos.x, pos.y);
+  }
 
   void render(Framebuffer& fb) {
     fb.draw_surface(surface, rect, pos);
@@ -79,7 +92,9 @@ struct FillRectDrawOp : public DrawOp
     : DrawOp(FILLRECT_DRAWOP),
       rect(rect_),
       color(color_)
-  {}
+  {
+    id = make_id(type, rect.left, rect.top);
+  }
 
   void render(Framebuffer& fb) {
     fb.fill_rect(rect, color);
@@ -163,12 +178,66 @@ DrawOp::equal(DrawOp* op) const
       return false;
     }
 }
+
+bool
+DrawOp::less(DrawOp* rhs) const
+{
+  const DrawOp* lhs = this;
+  
+  if (lhs->type == rhs->type)
+    {
+      switch(lhs->type)
+        {
+          case SURFACE_DRAWOP:                        
+            {
+              const SurfaceDrawOp* slhs = static_cast<const SurfaceDrawOp*>(lhs);
+              const SurfaceDrawOp* srhs = static_cast<const SurfaceDrawOp*>(rhs);
+              
+              if (slhs->pos.x == srhs->pos.x)
+                return (slhs->pos.y < srhs->pos.y);
+              else
+                return (slhs->pos.x < srhs->pos.x);
+            }
+
+          case FILLRECT_DRAWOP:
+            {
+              const FillRectDrawOp* rlhs = static_cast<const FillRectDrawOp*>(lhs);
+              const FillRectDrawOp* rrhs = static_cast<const FillRectDrawOp*>(rhs);
+              
+              if (rlhs->rect.left == rrhs->rect.left)
+                return (rlhs->rect.top < rrhs->rect.top);
+              else
+                return (rlhs->rect.left < rrhs->rect.left);              
+            }
+
+          default:
+            assert(!"Never reached");
+            return false;
+        }
+    }
+  else
+    {
+      return (lhs->type < rhs->type);
+    }
+}
+
+bool ops_id_sorter(DrawOp* lhs, DrawOp* rhs)
+{
+  return lhs->id < rhs->id;
+}
+
+bool ops_xy_sorter(DrawOp* lhs, DrawOp* rhs)
+{
+  return lhs->less(rhs);
+}
 
 class DrawOpBuffer
 {
 private:
   typedef std::vector<DrawOp*> DrawOps;
   DrawOps draw_ops;
+  
+  MemoryPool<DrawOp> mempool;
 
 public:
   DrawOpBuffer()
@@ -177,14 +246,17 @@ public:
 
   ~DrawOpBuffer()
   {
-    for(DrawOps::const_iterator i = draw_ops.begin(); i != draw_ops.end(); ++i)
-      delete *i;
+  }
+
+  MemoryPool<DrawOp>& get_mempool() 
+  {
+    return mempool;
   }
   
-  void clear() {
-    for(DrawOps::const_iterator i = draw_ops.begin(); i != draw_ops.end(); ++i)
-      delete *i;
+  void clear() 
+  {
     draw_ops.clear();
+    mempool.clear();
   }
 
   bool has_op(DrawOp* op) const
@@ -201,10 +273,10 @@ public:
 
   /** Calculate the regions that are different between \a frontbuffer
       and \a backbuffer, results are written to \a changed_regions  */
-  void buffer_difference(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer, 
-                         std::vector<Rect>& changed_regions)
+  void buffer_difference_slow(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer, 
+                              std::vector<Rect>& changed_regions)
   {
-    // FIXME: This is kind of a slow brute force approach
+    // FIXME: This is a very slow brute force approach
     for(DrawOps::const_iterator i = backbuffer.draw_ops.begin(); i != backbuffer.draw_ops.end(); ++i)
       if (!frontbuffer.has_op(*i))
         (*i)->mark_changed_regions(changed_regions);
@@ -213,55 +285,117 @@ public:
       if (!backbuffer.has_op(*i))
         (*i)->mark_changed_regions(changed_regions);
   }
+
+  bool buffer_equal(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer)
+  {
+    if (frontbuffer.draw_ops.size() != backbuffer.draw_ops.size())
+      {
+        return false;
+      }
+    else
+      {
+        for(DrawOps::size_type i = 0; i < frontbuffer.draw_ops.size(); ++i)
+          {
+            if (!frontbuffer.draw_ops[i]->equal(backbuffer.draw_ops[i]))
+              return false;
+          }
+        return true;
+      }
+  }
+
+  /** Calculate the regions that are different between \a frontbuffer
+      and \a backbuffer, results are written to \a changed_regions  */
+  void buffer_difference(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer, 
+                         std::vector<Rect>& changed_regions)
+  {
+    std::vector<DrawOp*> ops;
+
+    for(DrawOps::const_iterator i = backbuffer.draw_ops.begin(); i != backbuffer.draw_ops.end(); ++i)
+      ops.push_back(*i);
+
+    for(DrawOps::const_iterator i = frontbuffer.draw_ops.begin(); i != frontbuffer.draw_ops.end(); ++i)    
+      ops.push_back(*i);
+
+    std::sort(ops.begin(), ops.end(), ops_id_sorter);
+    
+    for(DrawOps::const_iterator i = ops.begin(); i != ops.end();)
+      {
+        if (i+1 == ops.end())
+          {
+            (*i)->mark_changed_regions(changed_regions);
+            break;
+          }
+        else
+          {
+            // FIXME: Not exactly perfect, need to iterate over all
+            // following element, till we reach a point where they
+            // can't be equal
+            if (!(*i)->equal(*(i+1)))
+              {
+                (*i)->mark_changed_regions(changed_regions);
+                ++i;
+              }
+            else
+              {
+                ++i;
+                if (i == ops.end()) break;
+                ++i;
+              }
+          }
+      }
+  }
  
   void render(SDLFramebuffer& fb, DrawOpBuffer& frontbuffer) 
   {
-    std::vector<Rect> changed_regions;
-
-    buffer_difference(frontbuffer, *this, changed_regions);
-
-    // Clip things to the screen
-    Size screen_size = fb.get_size();
-    for(std::vector<Rect>::iterator i = changed_regions.begin(); i != changed_regions.end(); ++i)
-      { 
-        // FIXME: It might be a good idea to remove empty rectangles here, so that merge_rectangles() can work smoother
-        i->left = Math::clamp(0, int(i->left), screen_size.width);
-        i->top  = Math::clamp(0, int(i->top),  screen_size.height);
-
-        i->right  = Math::clamp(0, int(i->right),  screen_size.width);
-        i->bottom = Math::clamp(0, int(i->bottom), screen_size.height);
-      }
-
-    if (!changed_regions.empty())
+    if (!buffer_equal(frontbuffer, *this))
       {
-        // Merge rectangles
-        std::vector<Rect> update_rects;
-        merge_rectangles(changed_regions, update_rects);
-        //update_rects = changed_regions;
+        std::vector<Rect> changed_regions;
 
-        int area = calculate_area(update_rects);
+        buffer_difference(frontbuffer, *this, changed_regions);
 
-        if (area < fb.get_size().get_area()*75/100) // FIXME: Random Magic ratio, need benchmarking to find proper value
-          { // Update all regions that need update
+        // Clip things to the screen
+        Size screen_size = fb.get_size();
+        for(std::vector<Rect>::iterator i = changed_regions.begin(); i != changed_regions.end(); ++i)
+          { 
+            // FIXME: It might be a good idea to remove empty rectangles here, so that merge_rectangles() can work smoother
+            i->left = Math::clamp(0, int(i->left), screen_size.width);
+            i->top  = Math::clamp(0, int(i->top),  screen_size.height);
 
-            for(std::vector<Rect>::iterator i = update_rects.begin(); i != update_rects.end(); ++i)
-              { 
-                // FIXME: This is a pretty drastic brute force
-                // approach and slows things down when you have many
-                // tiny rectangles (i.e. particle effects)
-                fb.push_cliprect(*i);
+            i->right  = Math::clamp(0, int(i->right),  screen_size.width);
+            i->bottom = Math::clamp(0, int(i->bottom), screen_size.height);
+          }
+
+        if (!changed_regions.empty())
+          {
+            // Merge rectangles
+            std::vector<Rect> update_rects;
+            merge_rectangles(changed_regions, update_rects);
+            //update_rects = changed_regions;
+
+            int area = calculate_area(update_rects);
+
+            if (area < fb.get_size().get_area()*75/100) // FIXME: Random Magic ratio, need benchmarking to find proper value
+              { // Update all regions that need update
+
+                for(std::vector<Rect>::iterator i = update_rects.begin(); i != update_rects.end(); ++i)
+                  { 
+                    // FIXME: This is a pretty drastic brute force
+                    // approach and slows things down when you have many
+                    // tiny rectangles (i.e. particle effects)
+                    fb.push_cliprect(*i);
+                    for(DrawOps::iterator j = draw_ops.begin(); j != draw_ops.end(); ++j)
+                      (*j)->render(fb);
+                    fb.pop_cliprect();
+                  }
+    
+                fb.update_rects(update_rects);
+              }
+            else
+              { // Update the whole screen at once, since we have to many rects
                 for(DrawOps::iterator j = draw_ops.begin(); j != draw_ops.end(); ++j)
                   (*j)->render(fb);
-                fb.pop_cliprect();
+                fb.flip();
               }
-    
-            fb.update_rects(update_rects);
-          }
-        else
-          { // Update the whole screen at once, since we have to many rects
-            for(DrawOps::iterator j = draw_ops.begin(); j != draw_ops.end(); ++j)
-              (*j)->render(fb);
-            fb.flip();
           }
       }
   }
@@ -314,13 +448,13 @@ DeltaFramebuffer::pop_cliprect()
 void
 DeltaFramebuffer::draw_surface(const FramebufferSurface& src, const Vector2i& pos)
 {
-  backbuffer->add(new SurfaceDrawOp(pos , src, Rect(Vector2i(0, 0), src.get_size())));
+  backbuffer->add(backbuffer->get_mempool().create<SurfaceDrawOp>(pos , src, Rect(Vector2i(0, 0), src.get_size())));
 }
 
 void
 DeltaFramebuffer::draw_surface(const FramebufferSurface& src, const Rect& srcrect, const Vector2i& pos)
 {
-  backbuffer->add(new SurfaceDrawOp(pos , src, srcrect));
+  backbuffer->add(backbuffer->get_mempool().create<SurfaceDrawOp>(pos , src, srcrect));
 }
 
 void
@@ -332,13 +466,13 @@ DeltaFramebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Co
 void
 DeltaFramebuffer::draw_rect(const Rect& rect, const Color& color)
 {
-  backbuffer->add(new DrawRectDrawOp(rect, color));
+  backbuffer->add(backbuffer->get_mempool().create<DrawRectDrawOp>(rect, color));
 }
 
 void
 DeltaFramebuffer::fill_rect(const Rect& rect, const Color& color)
 {
-  backbuffer->add(new FillRectDrawOp(rect, color));
+  backbuffer->add(backbuffer->get_mempool().create<FillRectDrawOp>(rect, color));
 }
 
 Size
