@@ -21,7 +21,7 @@
 #include "../math/size.hpp"
 
 namespace Input {
-class Event;
+struct Event;
 }
 
 class Size;

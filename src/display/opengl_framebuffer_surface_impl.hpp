@@ -17,12 +17,17 @@
 #ifndef HEADER_OPENGL_FRAMEBUFFER_SURFACE_IMPL_HPP
 #define HEADER_OPENGL_FRAMEBUFFER_SURFACE_IMPL_HPP
 
-#ifndef MACOSX
+#if defined(_WIN32)
+#define WIN32_LEAN_AND_MEAN
+#define NOMINMAX	/* Don't defined min() and max() */
+#include <windows.h>
 #include <GL/gl.h>
-#include <GL/glext.h>
-#else
+#elif defined(MACOSX)
 #include <OpenGL/gl.h>
 #include <OpenGL/glext.h>
+#else
+#include <GL/gl.h>
+#include <GL/glext.h>
 #endif
 
 #include "SDL.h"

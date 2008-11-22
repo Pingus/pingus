@@ -171,6 +171,7 @@ DrawOp::equal(DrawOp* op) const
 
           default:
             assert(!"Never reached");
+            return false;
         }
     }
   else

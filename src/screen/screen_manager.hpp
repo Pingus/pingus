@@ -26,7 +26,7 @@
 
 namespace Input {
 class Manager;
-class Event;
+struct Event;
 class Controller;
 }
 

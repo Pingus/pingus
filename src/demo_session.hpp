@@ -23,8 +23,8 @@
 #include "server_event.hpp"
 
 namespace Input {
-class Event;
-class ScrollEvent;
+struct Event;
+struct ScrollEvent;
 }
 
 class Server;

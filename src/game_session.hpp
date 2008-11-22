@@ -24,9 +24,9 @@
 #include "pingu_enums.hpp"
 
 namespace Input {
-class ScrollEvent;
-class AxisEvent;
-class Event;
+struct ScrollEvent;
+struct AxisEvent;
+struct Event;
 }
 
 class ButtonPanel;
