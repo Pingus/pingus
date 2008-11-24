@@ -159,6 +159,7 @@ void
 Worldmap::on_startup()
 {
   Sound::PingusSound::play_music(worldmap.get_music());
+  update_locked_nodes();
 }
 
 void
