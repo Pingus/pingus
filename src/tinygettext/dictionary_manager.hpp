@@ -66,6 +66,8 @@ public:
   /** Return a set of the available languages in their country code */
   std::set<std::string> get_languages();
 
+  std::string get_current_language();
+
 private:
   void parseLocaleAliases();
 

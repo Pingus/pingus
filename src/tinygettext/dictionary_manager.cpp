@@ -148,6 +148,7 @@ std::set<std::string>
 DictionaryManager::get_languages()
 {
   std::set<std::string> languages;
+  languages.insert("en");
 
   for (SearchPath::iterator p = search_path.begin(); p != search_path.end(); ++p)
     {
@@ -171,6 +172,12 @@ DictionaryManager::get_languages()
         }
     }  
   return languages;
+}
+
+std::string
+DictionaryManager::get_current_language()
+{
+  return current_dict->get_language()->name;
 }
 
 void

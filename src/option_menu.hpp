@@ -23,6 +23,7 @@
 #include "screen/gui_screen.hpp"
 #include "components/label.hpp"
 #include "gui/rect_component.hpp"
+#include "gui/surface_button.hpp"
 
 class CheckBox;
 class SliderBox;
@@ -32,7 +33,7 @@ class OptionMenu : public GUIScreen
 {
 private:
   Sprite background;
-  Sprite ok_button;
+  GUI::SurfaceButton* ok_button;
   int x_pos;
   int y_pos;
 
@@ -58,6 +59,12 @@ private:
   SliderBox* sound_volume_box;
   SliderBox* music_volume_box;
 
+  Label* save_label;
+  CheckBox* save_box;
+
+  Label* defaults_label;
+  CheckBox* defaults_box;
+
   typedef std::vector<boost::signals::connection> Connections;
   Connections connections;
 
@@ -71,6 +78,7 @@ public:
   void add_item(const std::string& label, GUI::RectComponent* control);
 
   void resize(const Size&);
+  void close_screen();
 
   void on_swcursor_change(bool v);
   void on_fullscreen_change(bool v);
@@ -84,6 +92,7 @@ public:
   void on_music_volume_change(int v);
 
   void on_resolution_change(const std::string& str);
+
 private:
   OptionMenu (const OptionMenu&);
   OptionMenu& operator= (const OptionMenu&);

@@ -36,6 +36,7 @@ public:
   void on_primary_button_press(int x, int y);
   void update_layout() {}
   void add_choice(const std::string& str);
+  void set_current_choice(int choice);
   
   boost::signal<void (std::string)> on_change;
   

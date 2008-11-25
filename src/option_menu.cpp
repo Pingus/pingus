@@ -24,12 +24,14 @@
 #include "resource.hpp"
 #include "screen/screen_manager.hpp"
 #include "fonts.hpp"
+#include "display/display.hpp"
 #include "display/drawing_context.hpp"
 #include "components/label.hpp"
 #include "components/check_box.hpp"
 #include "components/slider_box.hpp"
 #include "components/choice_box.hpp"
 #include "gui/gui_manager.hpp"
+#include "sound/sound.hpp"
 #include "tinygettext/dictionary_manager.hpp"
 #include "option_menu.hpp"
 
@@ -37,41 +39,106 @@
 
 extern TinyGetText::DictionaryManager dictionary_manager;
 
+class OptionMenuCloseButton
+  : public GUI::SurfaceButton
+{
+private:
+  OptionMenu* parent;
+public:
+  OptionMenuCloseButton(OptionMenu* p, int x, int y)
+    : GUI::SurfaceButton(x, y,
+                         "core/start/ok",
+                         "core/start/ok_clicked",
+                         "core/start/ok_hover"),
+      parent(p)
+  {
+  }
+
+  void on_pointer_enter ()
+  {
+    SurfaceButton::on_pointer_enter();
+    Sound::PingusSound::play_sound("tick");
+  }
+
+  void on_click() {
+    parent->close_screen();
+    Sound::PingusSound::play_sound("yipee");
+  }
+};
+
 OptionMenu::OptionMenu()
 {
   background = Sprite("core/menu/optionmenu");
-  ok_button  = Sprite("core/start/ok");
+  gui_manager->add(ok_button = new OptionMenuCloseButton(this, 
+                                                         Display::get_width()/2 + 225,
+                                                         Display::get_height()/2 + 125));
 
   x_pos = 0;
   y_pos = 0;
 
+  int resolutions[][2] = {
+    640, 480,   // 4:3, VGA
+    768, 576,   // 4:3, PAL
+    800, 480,   // Nokia N770, N800
+    800, 600,   // 4:3, SVGA
+    1024, 768,  // 4:3, XGA
+    1152, 864,  // 4:3
+    1280, 720,  // 16:9, HD-TV, 720p
+    1280, 960,  // 4:3
+    1280, 1024, // 5:4
+    1366, 768,  // ~16:9, Wide XGA
+    1440, 900,  // 16:10
+    1600, 1200, // 4:3, UXGA
+    1680, 1050, // 16:10, WSXGA
+    1920, 1080, // 16:9, HD-TV, 1080p
+    1920, 1200, // 16:10
+    -1, -1,
+  };
+  int current_choice = -1;
+  int n;
+
   ChoiceBox* resolution_box = new ChoiceBox(Rect());
-  resolution_box->add_choice("640x480");   // 4:3, VGA
-  resolution_box->add_choice("768x576");   // 4:3, PAL
-  resolution_box->add_choice("800x480");   // Nokia N770, N800
-  resolution_box->add_choice("800x600");   // 4:3, SVGA
-  resolution_box->add_choice("1024x768");  // 4:3, XGA
-  resolution_box->add_choice("1152x864");  // 4:3
-  resolution_box->add_choice("1280x720");  // 16:9, HD-TV, 720p
-  resolution_box->add_choice("1280x960");  // 4:3
-  resolution_box->add_choice("1280x1024"); // 5:4
-  resolution_box->add_choice("1366x768");  // ~16:9, Wide XGA
-  resolution_box->add_choice("1440x900");  // 16:10
-  resolution_box->add_choice("1600x1200"); // 4:3, UXGA
-  resolution_box->add_choice("1680x1050"); // 16:10, WSXGA
-  resolution_box->add_choice("1920x1080"); // 16:9, HD-TV, 1080p
-  resolution_box->add_choice("1920x1200"); // 16:10
-  
+  for (n = 0; resolutions[n][0] != -1; ++n)
+    {
+      std::ostringstream ostr;
+      ostr << resolutions[n][0] << "x" << resolutions[n][1];
+      resolution_box->add_choice(ostr.str());
+      if (Display::get_width()  == resolutions[n][0] &&
+          Display::get_height() == resolutions[n][1])
+        {
+          current_choice = n;
+        }
+    }
   resolution_box->add_choice("Custom");
+  if (current_choice == -1)
+    current_choice = n;
+
+  resolution_box->set_current_choice(current_choice);
+
+  std::string current_language = dictionary_manager.get_current_language();
+  current_choice = -1;
+  n = 0;
 
   ChoiceBox* language_box = new ChoiceBox(Rect());
   std::set<std::string> lst = dictionary_manager.get_languages();
+  std::vector<std::string> languages;
   for (std::set<std::string>::iterator i = lst.begin(); i != lst.end(); ++i)
     {
       TinyGetText::LanguageDef* lang = TinyGetText::get_language_def(*i);
       if (lang)
-        language_box->add_choice(lang->name);
+        languages.push_back(lang->name);
     }
+  std::sort(languages.begin(), languages.end());
+
+  for (std::vector<std::string>::iterator i = languages.begin(); i != languages.end(); ++i, ++n)
+    {
+      language_box->add_choice(*i);
+      if (current_language == *i)
+        current_choice = n;
+    }
+
+  if (current_choice != -1)
+    language_box->set_current_choice(current_choice);
 
   ChoiceBox* scroll_box = new ChoiceBox(Rect());
   scroll_box->add_choice("Drag&Drop");
@@ -126,28 +193,42 @@ OptionMenu::OptionMenu()
 
   autoscroll_box->set_state(config_manager.get_autoscroll(), false);
   C(config_manager.on_autoscroll_change.connect(boost::bind(&CheckBox::set_state, autoscroll_box, _1, false)));
+
+  save_label = new Label(_("Save:"), Rect(Vector2i(Display::get_width()/2 - 280, Display::get_height()/2 + 160), Size(60, 32)));
+  gui_manager->add(save_label);
+  save_box = new CheckBox(Rect(Vector2i(Display::get_width()/2 - 280 + 60, Display::get_height()/2 + 160), Size(32, 32)));
+  gui_manager->add(save_box);
+
+  defaults_label = new Label(_("Reset to Defaults:"), Rect(Vector2i(Display::get_width()/2 - 100, Display::get_height()/2 + 160), Size(170, 32)));
+  gui_manager->add(defaults_label);
+  defaults_box = new CheckBox(Rect(Vector2i(Display::get_width()/2 - 100 + 170, Display::get_height()/2 + 160), Size(32, 32)));
+  gui_manager->add(defaults_box);
 }
 
 void
 OptionMenu::add_item(const std::string& label, GUI::RectComponent* control)
 {
-  gui_manager->add(new Label(label, Rect(Vector2i(120 + x_pos * 312, 177 + y_pos*32), 
-                                         Size(140, 32))));
+  int x_offset = (Display::get_width() - 800) / 2;
+  int y_offset = (Display::get_height() - 600) / 2;
+
+  Label* label_component = new Label(label, Rect(Vector2i(120 + x_pos * 312 + x_offset, 177 + y_pos*32 + y_offset), 
+                                                 Size(140, 32)));
+  gui_manager->add(label_component);
   gui_manager->add(control);
 
   if (dynamic_cast<ChoiceBox*>(control))
     {
-      control->set_rect(Rect(120 + x_pos * 312 + 140, 177 + y_pos*32,
-                             120 + x_pos * 312 + 256, 177 + y_pos*32 + 32));                             
+      control->set_rect(Rect(120 + x_pos * 312 + 140 + x_offset, 177 + y_pos*32 + y_offset,
+                             120 + x_pos * 312 + 256 + x_offset, 177 + y_pos*32 + 32 + y_offset));                             
     }
   else if (dynamic_cast<SliderBox*>(control))
     {
-      control->set_rect(Rect(120 + x_pos * 312 + 140, 177 + y_pos*32,
-                             120 + x_pos * 312 + 256, 177 + y_pos*32 + 32));
+      control->set_rect(Rect(120 + x_pos * 312 + 140 + x_offset, 177 + y_pos*32 + y_offset,
+                             120 + x_pos * 312 + 256 + x_offset, 177 + y_pos*32 + 32 + y_offset));
     }
   else if (dynamic_cast<CheckBox*>(control))
     {
-      control->set_rect(Rect(Vector2i(120 + x_pos * 312 + 156 + 32+28+8, 177 + y_pos*32), 
+      control->set_rect(Rect(Vector2i(120 + x_pos * 312 + 156 + 32+28+8 + x_offset, 177 + y_pos*32 + y_offset), 
                              Size(32, 32)));
     }
   else
@@ -155,7 +236,9 @@ OptionMenu::add_item(const std::string& label, GUI::RectComponent* control)
       assert(!"Unhandled control type");
     }
 
-  y_pos += 1;  
+  options.push_back(Option(label_component, control));
+
+  y_pos += 1;
   if (y_pos > 5)
     {
       y_pos = 0; 
@@ -189,26 +272,58 @@ OptionMenu::draw_background(DrawingContext& gc)
   // gc.draw_fillrect(Rect(100, 100, 400, 400), Color(255, 0, 0));
   gc.draw(background, Vector2i(gc.get_width()/2 - background.get_width()/2, gc.get_height()/2 - background.get_height()/2));
 
-  gc.print_center(Fonts::chalk_large, Vector2i(gc.get_width()/2, 90), "Option Menu");
+  gc.print_center(Fonts::chalk_large,
+                  Vector2i(gc.get_width()/2,
+                           gc.get_height()/2 - 210),
+                  _("Option Menu"));
 
   gc.print_center(Fonts::chalk_normal, Vector2i(gc.get_width()/2 + 225 + 30, gc.get_height()/2 + 125 - 20), _("Close"));
-  gc.draw(ok_button, Vector2i(gc.get_width()/2 + 225, gc.get_height()/2 + 125));
-
-  gc.print_center(Fonts::chalk_normal, Vector2i(gc.get_width()/2, gc.get_height()/2 + 160), "Reset to Defaults [ ]");
-  gc.print_left(Fonts::chalk_normal, Vector2i(gc.get_width()/2 - 280, gc.get_height()/2 + 160), "Save [ ]");
 }
 
 void
 OptionMenu::on_escape_press()
 {
-  std::cout << "OptionMenu: poping screen" << std::endl;
+  std::cout << "OptionMenu: popping screen" << std::endl;
   ScreenManager::instance()->pop_screen();
 }
 
 void
 OptionMenu::resize(const Size& size)
 {
-  
+  GUIScreen::resize(size);
+
+  if (ok_button)
+    ok_button->set_pos(size.width/2 + 225, size.height/2 + 125);
+  if (save_label)
+    save_label->set_rect(Rect(Vector2i(Display::get_width()/2 - 280, Display::get_height()/2 + 160), Size(60, 32)));
+  if (save_box)
+    save_box->set_rect(Rect(Vector2i(Display::get_width()/2 - 280 + 60, Display::get_height()/2 + 160), Size(32, 32)));
+  if (defaults_label)
+    defaults_label->set_rect(Rect(Vector2i(Display::get_width()/2 - 100, Display::get_height()/2 + 160), Size(170, 32)));
+  if (defaults_box)
+    defaults_box->set_rect(Rect(Vector2i(Display::get_width()/2 - 100 + 170, Display::get_height()/2 + 160), Size(32, 32)));
+
+  if (options.empty())
+    return;
+
+  Rect rect;
+  rect = options.front().label->get_rect();
+  int x_diff = 120 + (size.width - 800) / 2 - rect.left;
+  int y_diff = 177 + (size.height - 600) / 2 - rect.top;
+
+  for(std::vector<Option>::iterator i = options.begin(); i != options.end(); ++i)
+    {
+      rect = (*i).label->get_rect();
+      (*i).label->set_rect(Rect(Vector2i(rect.left + x_diff, rect.top + y_diff), rect.get_size()));
+      rect = (*i).control->get_rect();
+      (*i).control->set_rect(Rect(Vector2i(rect.left + x_diff, rect.top + y_diff), rect.get_size()));
+    }
+}
+
+void
+OptionMenu::close_screen()
+{
+  ScreenManager::instance()->pop_screen();
 }
 
 void
