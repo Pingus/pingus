@@ -16,10 +16,853 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: src/game_time.cpp:66
+msgid "unlimited"
+msgstr ""
+
+#: src/story_screen.cpp:40
+msgid "skip"
+msgstr ""
+
+#: src/pingu_enums.cpp:34
+msgid "Angel"
+msgstr ""
+
+#: src/pingu_enums.cpp:35
+msgid "Basher"
+msgstr ""
+
+#: src/pingu_enums.cpp:36
+msgid "Blocker"
+msgstr ""
+
+#: src/pingu_enums.cpp:37
+msgid "Boarder"
+msgstr ""
+
+#: src/pingu_enums.cpp:38
+msgid "Bomber"
+msgstr ""
+
+#: src/pingu_enums.cpp:39 src/actions/bridger.cpp:42
+#: src/actions/bridger.cpp:216
+msgid "Bridger"
+msgstr ""
+
+#: src/pingu_enums.cpp:40
+msgid "Climber"
+msgstr ""
+
+#: src/pingu_enums.cpp:41
+msgid "Digger"
+msgstr ""
+
+#: src/pingu_enums.cpp:42
+msgid "Drown"
+msgstr ""
+
+#: src/pingu_enums.cpp:43
+#, fuzzy
+msgid "Exiter"
+msgstr "離開"
+
+#: src/pingu_enums.cpp:44
+msgid "Faller"
+msgstr ""
+
+#: src/pingu_enums.cpp:45
+msgid "Floater"
+msgstr ""
+
+#: src/pingu_enums.cpp:46
+msgid "Jumper"
+msgstr ""
+
+#: src/pingu_enums.cpp:47
+msgid "Laserkill"
+msgstr ""
+
+#: src/pingu_enums.cpp:48
+msgid "Miner"
+msgstr ""
+
+#: src/pingu_enums.cpp:49
+msgid "Rocketlauncher"
+msgstr ""
+
+#: src/pingu_enums.cpp:50
+msgid "Slider"
+msgstr ""
+
+#: src/pingu_enums.cpp:51
+msgid "Smashed"
+msgstr ""
+
+#: src/pingu_enums.cpp:52
+msgid "Splashed"
+msgstr ""
+
+#: src/pingu_enums.cpp:53
+msgid "Superman"
+msgstr ""
+
+#: src/pingu_enums.cpp:54
+msgid "Teleported"
+msgstr ""
+
+#: src/pingu_enums.cpp:55
+msgid "Waiter"
+msgstr ""
+
+#: src/pingu_enums.cpp:56
+msgid "Walker"
+msgstr ""
+
+#: src/start_screen.cpp:74 src/editor/level_head.cpp:53
+msgid "Ok"
+msgstr ""
+
+#: src/start_screen.cpp:114 src/result_screen.cpp:98 src/level_menu.cpp:57
+msgid "Abort"
+msgstr ""
+
+#: src/start_screen.cpp:163
+msgid "Number of Pingus: "
+msgstr ""
+
+#: src/start_screen.cpp:166
+msgid "Number to Save: "
+msgstr ""
+
+#: src/start_screen.cpp:169
+msgid "Time: "
+msgstr ""
+
+#: src/start_screen.cpp:176
+msgid "Author: "
+msgstr ""
+
+#: src/start_screen.cpp:179
+msgid "Filename: "
+msgstr ""
+
+#: src/pingus_main.cpp:259
+msgid "Displays this help"
+msgstr ""
+
+#: src/pingus_main.cpp:261
+msgid "Print version number and exit"
+msgstr ""
+
+#: src/pingus_main.cpp:263
+msgid "Display:"
+msgstr ""
+
+#: src/pingus_main.cpp:265
+msgid "Start in Window Mode"
+msgstr ""
+
+#: src/pingus_main.cpp:267
+msgid "Start in Fullscreen"
+msgstr ""
+
+#: src/pingus_main.cpp:269
+msgid "Allow Window resize (buggy)"
+msgstr ""
+
+#: src/pingus_main.cpp:271
+msgid "Enable software cursor"
+msgstr ""
+
+#: src/pingus_main.cpp:273
+msgid "Set the resolution for pingus (default: 800x600)"
+msgstr ""
+
+#: src/pingus_main.cpp:275
+msgid "Sound:"
+msgstr ""
+
+#: src/pingus_main.cpp:277
+msgid "Disable sound"
+msgstr ""
+
+#: src/pingus_main.cpp:279
+msgid "Disable music"
+msgstr ""
+
+#: src/pingus_main.cpp:283
+msgid "Select language to use with Pingus"
+msgstr ""
+
+#: src/pingus_main.cpp:285
+msgid "List all available languages"
+msgstr ""
+
+#: src/pingus_main.cpp:289
+msgid "Loads the level editor"
+msgstr ""
+
+#: src/pingus_main.cpp:291
+msgid "Test a font"
+msgstr ""
+
+#: src/pingus_main.cpp:293
+msgid "Shows the credits"
+msgstr ""
+
+#: src/pingus_main.cpp:295
+msgid "Misc Options:"
+msgstr ""
+
+#: src/pingus_main.cpp:296
+msgid "PATH"
+msgstr ""
+
+#: src/pingus_main.cpp:297
+msgid "Set the path to load the data files to 'path'"
+msgstr ""
+
+#: src/pingus_main.cpp:300
+msgid "Disable automatic scrolling"
+msgstr ""
+
+#: src/pingus_main.cpp:302
+msgid "Don't read ~/.pingus/config"
+msgstr ""
+
+#: src/pingus_main.cpp:303
+msgid "FILE"
+msgstr ""
+
+#: src/pingus_main.cpp:304
+msgid ""
+"Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
+"speed up the game on slower machines"
+msgstr ""
+
+#: src/pingus_main.cpp:307
+msgid "Uses the controller given in FILE"
+msgstr ""
+
+#: src/pingus_main.cpp:309
+msgid "Debugging and experimental stuff:"
+msgstr ""
+
+#: src/pingus_main.cpp:311
+msgid "Enables some features, only interesting to programmers"
+msgstr ""
+
+#: src/pingus_main.cpp:314
+msgid "Load a custom worldmap"
+msgstr ""
+
+#: src/pingus_main.cpp:316
+msgid ""
+"Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
+"actions, sound, resources, gui, input, pathmgr"
+msgstr ""
+
+#: src/pingus_main.cpp:320
+msgid "Skip at least N frames, larger values speed the game up"
+msgstr ""
+
+#: src/pingus_main.cpp:322
+msgid "Skip at most N frames"
+msgstr ""
+
+#: src/pingus_main.cpp:324
+msgid "Set both min and max frameskip to N"
+msgstr ""
+
+#: src/pingus_main.cpp:326
+msgid "Set the game speed (0=fastest, >0=slower)"
+msgstr ""
+
+#: src/pingus_main.cpp:328
+msgid "Set the size of the map tiles (default: 32)"
+msgstr ""
+
+#: src/pingus_main.cpp:330
+msgid "Disable some cpu intensive features"
+msgstr ""
+
+#: src/pingus_main.cpp:334
+msgid "Demo playing and recording:"
+msgstr ""
+
+#: src/pingus_main.cpp:336
+msgid "Plays a demo session"
+msgstr ""
+
+#: src/pingus_main.cpp:338
+msgid "Record demos for each played level"
+msgstr ""
+
+#: src/pingus_main.cpp:735
+msgid "Error caught from Pingus: "
+msgstr ""
+
+#: src/pingus_main.cpp:739
+msgid "Pingus: Out of memory!"
+msgstr ""
+
+#: src/pingus_main.cpp:743
+msgid "Pingus: Standard exception caught!:\n"
+msgstr ""
+
+#: src/pingus_main.cpp:747
+msgid "Pingus: Unknown throw caught!"
+msgstr ""
+
+#: src/credits.cpp:82
+msgid "-Idea"
+msgstr ""
+
+#: src/credits.cpp:86
+msgid "-Maintaining"
+msgstr ""
+
+#: src/credits.cpp:90
+msgid "-Programming"
+msgstr ""
+
+#: src/credits.cpp:100
+msgid "-Porting (Win32)"
+msgstr ""
+
+#: src/credits.cpp:109
+msgid "-Porting (MacOSX)"
+msgstr ""
+
+#: src/credits.cpp:114
+msgid "-Gfx"
+msgstr ""
+
+#: src/credits.cpp:127
+msgid "-Music"
+msgstr ""
+
+#: src/credits.cpp:134
+#, fuzzy
+msgid "-Level Design"
+msgstr "關卡組合"
+
+#: src/credits.cpp:140
+#, fuzzy
+msgid "-Story"
+msgstr "故事"
+
+#: src/credits.cpp:144
+msgid "-Translation"
+msgstr ""
+
+#: src/credits.cpp:159
+msgid "-Special"
+msgstr ""
+
+#: src/credits.cpp:160
+msgid "-Thanks to"
+msgstr ""
+
+#: src/credits.cpp:204
+msgid "_And a very Special Thanks"
+msgstr ""
+
+#: src/credits.cpp:205
+msgid "_to all the people who"
+msgstr ""
+
+#: src/credits.cpp:206
+msgid "_contribute to"
+msgstr ""
+
+#: src/credits.cpp:207
+msgid "_Free Software!"
+msgstr ""
+
+#: src/credits.cpp:213
+msgid "_Thank you for"
+msgstr ""
+
+#: src/credits.cpp:214
+msgid "_playing!"
+msgstr ""
+
 #: src/credits.cpp:276 src/editor/panel.cpp:211
 #: src/editor/object_selector.cpp:318 src/pingus_menu.cpp:61
 msgid "Exit"
 msgstr "離開"
+
+#: src/addon_menu.cpp:59 src/option_menu.cpp:94
+msgid "Close"
+msgstr ""
+
+#: src/result_screen.cpp:131
+#, fuzzy
+msgid "Retry"
+msgstr "故事"
+
+#: src/result_screen.cpp:181
+msgid "Success!"
+msgstr ""
+
+#: src/result_screen.cpp:188
+msgid "Failure!"
+msgstr ""
+
+#: src/result_screen.cpp:197
+msgid "Perfect! You saved everyone possible - great!"
+msgstr ""
+
+#: src/result_screen.cpp:199
+msgid "No-one got killed, pretty good work."
+msgstr ""
+
+#: src/result_screen.cpp:201
+msgid ""
+"You saved exactly what you needed - you made it, but\n"
+"maybe you can do better?"
+msgstr ""
+
+#: src/result_screen.cpp:204
+msgid "Not everybody was saved, but still good work!"
+msgstr ""
+
+#: src/result_screen.cpp:206
+msgid "What can I say, you made it - congratulations!"
+msgstr ""
+
+#: src/result_screen.cpp:211
+msgid "You killed everybody, not good."
+msgstr ""
+
+#: src/result_screen.cpp:213
+msgid "No-one got saved - I know you can do better."
+msgstr ""
+
+#: src/result_screen.cpp:215
+msgid ""
+"You didn't save enough, but you saved a few.  Next\n"
+"time you might do better."
+msgstr ""
+
+#: src/result_screen.cpp:218
+msgid "Only one more and you would have made it - try again!"
+msgstr ""
+
+#: src/result_screen.cpp:220
+msgid "Only a handful more and you would have made it - try again!"
+msgstr ""
+
+#: src/result_screen.cpp:222
+msgid "Better luck next time!"
+msgstr ""
+
+#: src/result_screen.cpp:239
+msgid "Saved: "
+msgstr ""
+
+#: src/result_screen.cpp:243
+msgid "Died: "
+msgstr ""
+
+#: src/result_screen.cpp:247
+msgid "Time left: "
+msgstr ""
+
+#: src/components/pingus_counter.cpp:49
+#, c-format, boost-format
+msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
+msgstr ""
+
+#: src/level_menu.cpp:108 src/pingus_menu.cpp:66
+msgid "Levelsets"
+msgstr "關卡組合"
+
+#: src/level_menu.cpp:124
+msgid "Solved:"
+msgstr ""
+
+#: src/config.cpp:72
+msgid "Couldn't open: "
+msgstr ""
+
+#: src/config.cpp:171 src/config.cpp:205
+msgid "Unexpected char: '"
+msgstr ""
+
+#: src/screenshot.cpp:38
+msgid "Screenshot: Saving screenshot to: "
+msgstr ""
+
+#: src/screenshot.cpp:40
+msgid "Screenshot: Screenshot is done."
+msgstr ""
+
+#: src/screenshot.cpp:115 src/screenshot.cpp:143
+msgid "Screenshot: Couldn't write file: "
+msgstr ""
+
+#: src/editor/editor_screen.cpp:196
+msgid ""
+"Select all\n"
+"Clear Selection\n"
+"Raise objects\n"
+"Lower objects\n"
+"Lower objects to bottom\n"
+"Raise objects to top\n"
+"Rotate 90 degree\n"
+"Rotate 270 degree\n"
+msgstr ""
+
+#: src/editor/editor_screen.cpp:218
+msgid ""
+"Flip object horizontaly\n"
+"Flip object vertically\n"
+"Delete all marked objects\n"
+"Move objects up\n"
+"Move objects down\n"
+"Move objects left\n"
+"Move objects right\n"
+msgstr ""
+
+#: src/editor/editor_screen.cpp:230
+msgid ""
+"You should name your level files systematically, i.e. by their theme, their "
+"number and your nickname:\n"
+"\n"
+"     <levelname><number>-<creator>.pingus\n"
+"\n"
+"So if you create a your second level with a stone theme, call it: stone2-"
+"yourname.pingus\n"
+"\n"
+"When you have created a level and want to have it included in the game mail "
+"it to:\n"
+"\n"
+"     pingus-devel@nongnu.org\n"
+"\n"
+"Only levels published under the GPL are allowed into the game. The editor "
+"automatically inserts a reference \n"
+"to the GPL, if you want to have your level under a different license, you "
+"have to change that reference.\n"
+msgstr ""
+
+#: src/editor/panel.cpp:153
+msgid "    New level"
+msgstr ""
+
+#: src/editor/panel.cpp:155
+msgid "Open level..."
+msgstr ""
+
+#: src/editor/panel.cpp:157
+msgid "Save level..."
+msgstr ""
+
+#: src/editor/panel.cpp:159
+msgid "Save level as..."
+msgstr ""
+
+#: src/editor/panel.cpp:162
+msgid "Play level..."
+msgstr ""
+
+#: src/editor/panel.cpp:165
+msgid "Configure actions"
+msgstr ""
+
+#: src/editor/panel.cpp:167
+msgid "Configure level"
+msgstr ""
+
+#: src/editor/panel.cpp:169
+msgid "Display object properties"
+msgstr ""
+
+#: src/editor/panel.cpp:171
+msgid "Show object insertion window"
+msgstr ""
+
+#: src/editor/panel.cpp:173
+msgid "Show minimap"
+msgstr ""
+
+#: src/editor/panel.cpp:176
+msgid "Duplicate the selected objects"
+msgstr ""
+
+#: src/editor/panel.cpp:178
+msgid "Delete the selected objects"
+msgstr ""
+
+#: src/editor/panel.cpp:181
+msgid "Raise object to top"
+msgstr ""
+
+#: src/editor/panel.cpp:183
+msgid "Raise object"
+msgstr ""
+
+#: src/editor/panel.cpp:185
+msgid "Lower object"
+msgstr ""
+
+#: src/editor/panel.cpp:187
+msgid "Lower object to bottom"
+msgstr ""
+
+#: src/editor/panel.cpp:193
+msgid "Flip object horizontally"
+msgstr ""
+
+#: src/editor/panel.cpp:195
+msgid "Flip object vertically"
+msgstr ""
+
+#: src/editor/panel.cpp:198
+msgid "Rotate object -90 degree"
+msgstr ""
+
+#: src/editor/panel.cpp:200
+msgid "Rotate object 90 degree"
+msgstr ""
+
+#: src/editor/panel.cpp:209
+msgid "Display help"
+msgstr ""
+
+#: src/editor/object_properties.cpp:41 src/editor/object_properties.cpp:415
+msgid "Object:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:42 src/editor/object_properties.cpp:416
+msgid "Nothing selected"
+msgstr ""
+
+#: src/editor/object_properties.cpp:51
+msgid "Transparent"
+msgstr ""
+
+#: src/editor/object_properties.cpp:52
+msgid "Solid"
+msgstr ""
+
+#: src/editor/object_properties.cpp:53
+msgid "Ground"
+msgstr ""
+
+#: src/editor/object_properties.cpp:54
+msgid "Bridge"
+msgstr ""
+
+#: src/editor/object_properties.cpp:55
+msgid "Water"
+msgstr ""
+
+#: src/editor/object_properties.cpp:56
+msgid "Lava"
+msgstr ""
+
+#: src/editor/object_properties.cpp:57
+msgid "Remove"
+msgstr ""
+
+#: src/editor/object_properties.cpp:62
+msgid "Direction:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:64
+msgid "Left"
+msgstr ""
+
+#: src/editor/object_properties.cpp:65
+msgid "Misc"
+msgstr ""
+
+#: src/editor/object_properties.cpp:66
+msgid "Right"
+msgstr ""
+
+#: src/editor/object_properties.cpp:71
+msgid "ReleaseRate:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:88
+msgid "Para-X:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:89
+msgid "Para-Y:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:97
+msgid "Scroll-X:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:98
+msgid "Scroll-Y:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:106
+msgid "Owner Id:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:110
+msgid "Z-Pos:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:117
+msgid "Color:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:129
+msgid "Small Stars:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:132
+msgid "Middle Stars:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:135
+msgid "Large Stars:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:143
+msgid "Repeat:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:421
+msgid "Object: [Group]"
+msgstr ""
+
+#: src/editor/object_properties.cpp:422
+msgid "Group not supported"
+msgstr ""
+
+#: src/editor/object_properties.cpp:427
+msgid "Object: "
+msgstr ""
+
+#: src/editor/file_dialog.cpp:56
+msgid "Datadir"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:58
+msgid "Userdir"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:61
+msgid "Open"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:61
+msgid "Save"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:64
+msgid "Cancel"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:75
+msgid "Filename:"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:76
+msgid "Pathname:"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:102
+msgid "Open a level"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:102
+msgid "Save your level"
+msgstr ""
+
+#: src/editor/object_selector.cpp:309
+msgid "Entrance"
+msgstr ""
+
+#: src/editor/object_selector.cpp:310
+msgid "Groundpiece (ground)"
+msgstr ""
+
+#: src/editor/object_selector.cpp:311
+msgid "Groundpiece (solid)"
+msgstr ""
+
+#: src/editor/object_selector.cpp:312
+msgid "Groundpiece (bridge)"
+msgstr ""
+
+#: src/editor/object_selector.cpp:313
+msgid "Groundpiece (transparent)"
+msgstr ""
+
+#: src/editor/object_selector.cpp:314
+msgid "Groundpiece (remove)"
+msgstr ""
+
+#: src/editor/object_selector.cpp:315
+msgid "Hotspot"
+msgstr ""
+
+#: src/editor/object_selector.cpp:316
+msgid "Background"
+msgstr ""
+
+#: src/editor/object_selector.cpp:319
+msgid "Liquid"
+msgstr ""
+
+#: src/editor/object_selector.cpp:320
+msgid "Trap"
+msgstr ""
+
+#: src/editor/object_selector.cpp:321
+msgid "Weather"
+msgstr ""
+
+#: src/editor/object_selector.cpp:322
+msgid "Special Object"
+msgstr ""
+
+#: src/worldmap/worldmap.cpp:425
+msgid "...walking..."
+msgstr ""
+
+#: src/worldmap/manager.cpp:107
+msgid "Show Ending?"
+msgstr ""
+
+#: src/worldmap/manager.cpp:138
+#, fuzzy
+msgid "Show Story?"
+msgstr "故事"
+
+#: src/worldmap/manager.cpp:167
+msgid "Leave?"
+msgstr ""
+
+#: src/worldmap/manager.cpp:207
+msgid "Enter?"
+msgstr ""
+
+#: src/worldmap/level_dot.cpp:152 src/worldmap/level_dot.cpp:162
+msgid "locked"
+msgstr ""
+
+#: src/exit_menu.cpp:46 src/exit_menu.cpp:50
+msgid "Yes"
+msgstr ""
+
+#: src/exit_menu.cpp:85 src/exit_menu.cpp:89
+msgid "No"
+msgstr ""
+
+#: src/exit_menu.cpp:124
+msgid "Exit Pingus?"
+msgstr ""
 
 #: src/pingus_menu.cpp:50 src/pingus_menu.cpp:72
 msgid "Story"
@@ -58,9 +901,480 @@ msgid "..:: Multiplayer Match ::.."
 msgstr "..:: 多位玩家配對 ::.."
 
 #: src/pingus_menu.cpp:82
-msgid "..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: fullscreen   ::   F12: screenshot ::.."
-msgstr "..:: Ctrl-g: 滑鼠抓取  ::  F10: 每秒畫面數量  ::  F11: 全螢幕  ::  F12: 螢幕快照 ::.."
+msgid ""
+"..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
+"fullscreen   ::   F12: screenshot ::.."
+msgstr ""
+"..:: Ctrl-g: 滑鼠抓取  ::  F10: 每秒畫面數量  ::  F11: 全螢幕  ::  F12: 螢幕"
+"快照 ::.."
 
-#: src/level_menu.cpp:108 src/pingus_menu.cpp:66
-msgid "Levelsets"
-msgstr "關卡組合"
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
+msgid "If the way is blocked, bash away"
+msgstr ""
+
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus:6
+msgid ""
+"Similar to the Digger action that you already know from previous levels, "
+"there is also an action that allows the Pingus to dig horizontally, as "
+"opposed to the vertical dig ability the Digger action provides. This new "
+"action is called Basher. "
+msgstr ""
+
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:5
+msgid "Sacrifice a few and save the rest"
+msgstr ""
+
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:6
+msgid ""
+"Sometimes no other actions are available, so you have to bomb your way "
+"through the ground. The Pingus can do this by actually self- destructing. "
+"This will kill them, but it is sometimes necessary to sacrifice a few to "
+"save the rest. "
+msgstr ""
+
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:5
+msgid "Learning to dig"
+msgstr ""
+
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:6
+msgid ""
+"This is your first mission. As always, it's pretty easy. All you have to do "
+"is to give a Pingu the command to dig a hole into the ground so that they "
+"can reach the exit. This can be accomplished simply by clicking on a Pingu. "
+msgstr ""
+
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus:5
+msgid "Float or Die"
+msgstr ""
+
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus:6
+msgid ""
+"Well done in mission one! Now let's start the next one. This time you will "
+"need to equip your Pingus with a little propeller, so that they can float to "
+"the ground smoothly. If Pingus fall too far, they will not be able to "
+"survive the fall, so keep your eyes open! "
+msgstr ""
+
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:5
+msgid "Jump for joy"
+msgstr ""
+
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:6
+msgid ""
+"Sometimes a Pingu needs to reach a platform that is far away, but not "
+"reachable by walking. That's when the Jumper comes in handy - it allows the "
+"Pingu to make a small jump and so enables him to reach the platform. "
+msgstr ""
+
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:5
+msgid "Miner's heaven"
+msgstr ""
+
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:6
+msgid ""
+"Another action hits the street - another digging action, this time a "
+"diagonal one. It allows a Pingu to dig diagonally through ground, thus "
+"creating a path for following Pingus. The action is called Miner. "
+msgstr ""
+
+#: data/levels/tutorial/snow10-grumbel.pingus:5
+msgid "Panic Island (float/bash)"
+msgstr ""
+
+#: data/levels/tutorial/snow10-grumbel.pingus:6
+msgid ""
+"While the previous levels have not required much quick action from you, this "
+"one gets a bit trickier. The Pingus are coming out of two entrances in "
+"parallel and it is your job to coordinate the two groups wisely. "
+msgstr ""
+
+#: data/levels/tutorial/snow11-grumbel.pingus:5
+msgid "Jump'n Bump... and Bash..."
+msgstr ""
+
+#: data/levels/tutorial/snow11-grumbel.pingus:6
+msgid ""
+"It's panic time again. The Pingus will not come out very fast, but since "
+"they turn around when they hit walls you will soon have some trouble "
+"coordinating them all. Since you only need to save 5 it should be doable, "
+"but if all else fails use the pause-mode ('p') to get an overview again. "
+msgstr ""
+
+#: data/levels/tutorial/snow12-grumbel.pingus:5
+msgid "Two groups in parallel, coordinate wisely"
+msgstr ""
+
+#: data/levels/tutorial/snow12-grumbel.pingus:6
+msgid ""
+"You have two groups to coordinate this time. No need to panic, since this "
+"level gives you enough time to think your actions through. No more tips this "
+"time, but good luck! "
+msgstr ""
+
+#: data/levels/tutorial/snow14-grumbel.pingus:5
+msgid "Block'a Rock"
+msgstr ""
+
+#: data/levels/tutorial/snow14-grumbel.pingus:6
+msgid ""
+"Once again it's time to combine the stuff you have learned in your previous "
+"levels. Blast your way free and make sure you also keep the rest of the "
+"Pingus under control. The Blocker action will be helpful. "
+msgstr ""
+
+#: data/levels/tutorial/snow15-grumbel.pingus:5
+msgid "Climb, Climber,... Boom!"
+msgstr ""
+
+#: data/levels/tutorial/snow15-grumbel.pingus:6
+msgid ""
+"As you might have already figured out from previous levels, you often have "
+"to combine different actions to get the job done. Due to the lack of a "
+"Digger action in this level the Bomber needs to jump in, but how can it "
+"reach the place to bomb? "
+msgstr ""
+
+#: data/levels/tutorial/snow16-grumbel.pingus:5
+msgid "Bridging gets more complicated..."
+msgstr ""
+
+#: data/levels/tutorial/snow16-grumbel.pingus:6
+msgid ""
+"Once again you have to combine actions carefully and wisely. If you don't "
+"you could end up in the hole just before the exit, so think about how to "
+"avoid that. "
+msgstr ""
+
+#: data/levels/tutorial/snow17-grumbel.pingus:5
+msgid "If too high, your Pingu will die..."
+msgstr ""
+
+#: data/levels/tutorial/snow17-grumbel.pingus:6
+msgid ""
+"Teamwork is the way to the exit this time. You don't have enough Floaters to "
+"reach the exit, so just send a few and let them prepare the path for the "
+"rest. "
+msgstr ""
+
+#: data/levels/tutorial/snow19-grumbel.pingus:5
+msgid "Learn to use the bridge"
+msgstr ""
+
+#: data/levels/tutorial/snow19-grumbel.pingus:6
+msgid ""
+"If no Jumper is at hand and a large hole needs to be passed, a bridge can be "
+"pretty helpful. It takes some time to build, but unlike the jumper action it "
+"allows following Pingus to reach the other end too. "
+msgstr ""
+
+#: data/levels/tutorial/snow20-grumbel.pingus:5
+msgid "Three solutions, it's up to you"
+msgstr ""
+
+#: data/levels/tutorial/snow20-grumbel.pingus:6
+msgid ""
+"Now that you've learned all the actions, it's time for some more practice. "
+"This level presents you with at least three different ways to solve it. It's "
+"up to you which one you pick. "
+msgstr ""
+
+#: data/levels/tutorial/snow21-grumbel.pingus:5
+msgid "Climb, Climber, climb... and build a bridge"
+msgstr ""
+
+#: data/levels/tutorial/snow21-grumbel.pingus:6
+msgid ""
+"Once again you get access to a new action. The Climber action allows a Pingu "
+"to climb up straight walls, thus allowing him to reach stuff that might be "
+"too high to reach by other means. "
+msgstr ""
+
+#: data/levels/tutorial/snow22-grumbel.pingus:5
+msgid "Entrance high, Exit low"
+msgstr ""
+
+#: data/levels/tutorial/snow22-grumbel.pingus:6
+msgid ""
+"If you don't have enough floaters to bring all the Pingus down to the exit - "
+"you have to find other ways to guide them down. You should have learned all "
+"the stuff you need for this level in previous levels, so this shouldn't be "
+"too much of a problem for you. "
+msgstr ""
+
+#: data/levels/tutorial/snow7-grumbel.pingus:5
+msgid "One must prepare, the rest must follow"
+msgstr ""
+
+#: data/levels/tutorial/snow7-grumbel.pingus:6
+msgid ""
+"Sometimes there are situations where you don't have a Blocker at hand to "
+"coordinate your Pingus. You'll have to find other ways to keep them under "
+"control while a single one prepares the path for the rest. "
+msgstr ""
+
+#: data/levels/tutorial/snow8-grumbel.pingus:5
+msgid "Dig and float, but just don't fall and smash"
+msgstr ""
+
+#: data/levels/tutorial/snow8-grumbel.pingus:6
+msgid ""
+"Unlike the first two levels, you have two actions available in this level. "
+"Your job is again simple: select an action at the panel on the left and "
+"apply it to the Pingus so that they will be able to reach the exit. Make "
+"sure that not too many of them die. "
+msgstr ""
+
+#: data/levels/tutorial/snow9-grumbel.pingus:5
+msgid "Dig, bash and other problems"
+msgstr ""
+
+#: data/levels/tutorial/snow9-grumbel.pingus:6
+msgid ""
+"The more levels you master, the more difficult they will get, but don't "
+"panic, as this one is still pretty easy. Just use the stuff that you've "
+"learned in the previous levels and you shouldn't have many problems. If you "
+"think you've reached a situation from which you can no longer solve the "
+"level, double click the armageddon button at the lower right. "
+msgstr ""
+
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus:5
+msgid "Solid ground can block the path"
+msgstr ""
+
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus:6
+msgid ""
+"As you have learned in earlier levels your Pingus can dig through basically "
+"any terrain, but there is one material which they can't penetrate: steel. "
+"These regions are marked dark grey on the level map and cannot be destroyed, "
+"so you must find a way around them. "
+msgstr ""
+
+#: data/levels/halloween/halloween1-grumbel.pingus:7
+msgid "One jump to catch them all"
+msgstr ""
+
+#: data/levels/halloween/halloween1-grumbel.pingus:8
+msgid ""
+"The pingus have found themselves lost on their journey.  What is this "
+"mysterious place?  Smiling pumpkins, giant candlesticks, and some boiling "
+"soup below... what wizardry is this? Now, facing a deadly abyss right in "
+"front of them it's your job to save them. Can you save them from a terrible "
+"fate?"
+msgstr ""
+
+#: data/levels/halloween/halloween2-grumbel.pingus:7
+msgid "One Thousand and One Jumps"
+msgstr ""
+
+#: data/levels/halloween/halloween2-grumbel.pingus:8
+msgid ""
+"With the exit so high above and far out of reach for a normal Pingu, what "
+"options are there? Perhaps a jumper can rescue them?  Or will he simply slow "
+"their inevitable demise? It's your job to find out, but are you good enough "
+"to save them all?"
+msgstr ""
+
+#: data/levels/halloween/halloween3-grumbel.pingus:7
+msgid "Boom Boom"
+msgstr ""
+
+#: data/levels/halloween/halloween3-grumbel.pingus:8
+msgid ""
+"You've mastered the last challenge and now face the next. Their path to "
+"salvation seems to be cursed, but by whom? There is no time to think about "
+"it, since the next deadly challange already awaits the Pingus. Two mighty "
+"roots block the way, but without a basher at hand to bash them away, "
+"sacrifice might be the only option..."
+msgstr ""
+
+#: data/levels/halloween/halloween4-grumbel.pingus:7
+msgid "Full Circle"
+msgstr ""
+
+#: data/levels/halloween/halloween4-grumbel.pingus:8
+msgid ""
+"The exit is so close, yet out of reach. A step in the wrong direction and "
+"the Pingus will fall to a terrible fate. You must do something to help them, "
+"but is there enough time? You have to hurry and can't allow yourself any "
+"mistakes. The Pingus are counting on you!"
+msgstr ""
+
+#: data/levels/halloween/halloween5-grumbel.pingus:7
+msgid "Bridgers Nightmare"
+msgstr ""
+
+#: data/levels/halloween/halloween5-grumbel.pingus:8
+msgid ""
+"Who placed this monstrous wall here?  This terrible blockade separates your "
+"Pingus from the exit. Destruction of its awful construction seems an "
+"impossibility, but perhaps the bridger can come to the rescue?  Can they "
+"build their bridges high enough to guide the group yet again safely to the "
+"exit? Or is somebody playing evil mind tricks with you?\n"
+"\n"
+"Yet again the solution is your call... your gray matter is the key to the "
+"Pingus' success, so don't let yourself get confused and misguided from the "
+"true path."
+msgstr ""
+
+#: data/levels/halloween/halloween6-grumbel.pingus:7
+msgid "Locked up by the witch"
+msgstr ""
+
+#: data/levels/halloween/halloween6-grumbel.pingus:8
+msgid ""
+"Is this a prison? Blocked by solid walls all around, there doesn't seem to "
+"be a way to escape. Salvation seems impossible. But wait... the wall to the "
+"right seems weak... perhaps this is a way to escape? Or is it a false path "
+"that will lead to the Pingus' doom?\n"
+"\n"
+"This is a risky trip, but you must take it to find out how to bring them all "
+"to freedom once again."
+msgstr ""
+
+#: data/levels/halloween/halloween7-grumbel.pingus:7
+msgid "Splatterfest"
+msgstr ""
+
+#: data/levels/halloween/halloween7-grumbel.pingus:8
+msgid ""
+"This is by far the deepest pit the Pingus have yet encountered. Building a "
+"bridge across it seems obvious, but can't work. The exit is deep down in the "
+"pit itself, but Pingus who go down will just end up splattered upon the "
+"ground. But you have two groups of Pingus at your disposal... can you make "
+"them work together to reach even an exit this well hidden?"
+msgstr ""
+
+#: data/levels/halloween/halloween8-plouj.pingus:7
+msgid "Staircase Maintenance"
+msgstr ""
+
+#: data/levels/halloween/halloween8-plouj.pingus:8
+msgid ""
+"It seems we are up again against a mighty wall, and it is blocking the exit! "
+"But wait, some good soul has built a staircase around it. It seems, however, "
+"that the poor fool's efforts didn't last long, as the staircase is destroyed "
+"and full of holes. Can you fix it and make it over the wall? Yet of course "
+"you know that the right solution might not be the obvious one. But your "
+"Pingus are almost free, and they trust in your skill to guide them to safety "
+"once more. Succeed and you will have freed them once and for all from "
+"whatever evildoer that placed them in this nightmare... at least for this "
+"year."
+msgstr ""
+
+#: data/worldmaps/tutorial.worldmap:4
+msgid "Tutorial Island"
+msgstr ""
+
+#: data/worldmaps/tutorial.worldmap:6
+msgid "Learn the basics"
+msgstr ""
+
+#: data/worldmaps/tutorial.worldmap:15
+msgid "The Journey Begins"
+msgstr ""
+
+#: data/worldmaps/tutorial.worldmap:81
+msgid "The Journey Continues"
+msgstr ""
+
+#: data/worldmaps/tutorial.worldmap:22
+msgid ""
+"For a long time, the Pingus have lived happily in peace on the South Pole "
+"along with all the other animals. Everything was in balance and it seemed "
+"like nothing could disrupt their peace.  The Pingus were happy and it seemed "
+"like this could never end."
+msgstr ""
+
+#: data/worldmaps/tutorial.worldmap:30
+msgid ""
+"But then one day, things began to change slowly: the sky got darker and the "
+"earth got warmer. Firstly, they thought this was just a normal fluctuation "
+"in the world's climate, but things seemed to get worse and worse with every "
+"year."
+msgstr ""
+
+#: data/worldmaps/tutorial.worldmap:38
+msgid ""
+"The snow began to melt away in a few areas and food became an issue. Other "
+"animals tried to leave the region to search for colder areas, but the Pingus "
+"knew that this wouldn't help: they knew that they had to do something about "
+"it."
+msgstr ""
+
+#: data/worldmaps/tutorial.worldmap:46
+msgid ""
+"So the circle of the eldest came together to decide what to do about it. "
+"They decided to send out an expedition around the world to find the cause of "
+"this warming. The expedition consisted of hundreds of the bravest Pingus on "
+"the South Pole."
+msgstr ""
+
+#: data/worldmaps/tutorial.worldmap:54
+msgid ""
+"And they picked you to lead them on their journey around the world. Since "
+"the journey will be dangerous and difficult, your first goal is the Island "
+"of Mogorok, also known as the Tutorial Island. According to the eldest, this "
+"island has always been the first stop of Pingus that were sent out into the "
+"world."
+msgstr ""
+
+#: data/worldmaps/tutorial.worldmap:63
+msgid ""
+"The island consists of many areas that are ideal to teach the Pingus their "
+"abilities. The Pingus can learn to build bridges, climb, bash and use many "
+"other talents which they will need on their long and dangerous journey."
+msgstr ""
+
+#: data/worldmaps/tutorial.worldmap:70
+msgid ""
+"While there, you can practice your abilities in commanding and guiding the "
+"Pingus. You can also get familiar with all the abilities the Pingus provide "
+"and learn to master them, since you will need all of them on your journey "
+"around the world."
+msgstr ""
+
+#: data/worldmaps/tutorial.worldmap:78
+msgid ""
+"Now that you and the Pingus have arrived at Tutorial Island it is time to "
+"take command and begin your mission. Good Luck!"
+msgstr ""
+
+#: data/worldmaps/tutorial.worldmap:88
+msgid ""
+"Now after you and the Pingus have learned the basics and practiced a bit it "
+"is time to move on and begin the journey into the world. Since the ice floe "
+"with which the Pingus traveled to the Tutorial Island isn't going to hold on "
+"the whole way into the warmer climates the Pingus have to find something "
+"else to guide them on their journey."
+msgstr ""
+
+#: data/worldmaps/tutorial.worldmap:97
+msgid ""
+"But as the eldest have said, the Tutorial Island provides not only a good "
+"way to practice, but it is also the starting point into the world. After "
+"some searching the Pingus discovered the meaning of this, and they found the "
+"large tree at the end of the island which gave them wood to construct a "
+"float."
+msgstr ""
+
+#: data/worldmaps/tutorial.worldmap:106
+msgid ""
+"So the Pingus set out and constructed some large rafts, enough to carry them "
+"all. After also packing a bunch of provisions they were prepared to start "
+"their journey and leave their familiar ground and enter the unknown parts of "
+"the world."
+msgstr ""
+
+#: data/worldmaps/tutorial.worldmap:114
+msgid ""
+"So the Pingus sit on their raft, worrying about what's to come and where to "
+"go, while floating into the sunset.  To be continued..."
+msgstr ""
+
+#: data/levelsets/halloween.levelset:3
+msgid "Halloween 2007"
+msgstr ""
+
+#: data/levelsets/halloween.levelset:4
+msgid "Trapped at All Hallows Eve"
+msgstr ""
