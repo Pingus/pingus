@@ -44,19 +44,19 @@ Display::flip_display()
 int
 Display::get_width()
 {
-  return framebuffer->get_size().width;
+  return framebuffer.get() ? framebuffer->get_size().width : 0;
 }
 
 int
 Display::get_height()
 {
-  return framebuffer->get_size().height;
+  return framebuffer.get() ? framebuffer->get_size().height : 0;
 }
 
 Size
 Display::get_size()
 {
-  return framebuffer->get_size();
+  return framebuffer.get() ? framebuffer->get_size() : Size(0, 0);
 }
 
 void

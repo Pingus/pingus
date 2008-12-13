@@ -29,6 +29,9 @@ public:
   ConfigManager();
   ~ConfigManager();
 
+  /** Load the configuration file */
+  void load(const std::string& file);
+
   /** Save the configuration to file */
   void save();
 
@@ -79,6 +82,8 @@ public:
 private:
   ConfigManager (const ConfigManager&);
   ConfigManager& operator= (const ConfigManager&);
+
+  std::string filename;
 };
 
 extern ConfigManager config_manager;

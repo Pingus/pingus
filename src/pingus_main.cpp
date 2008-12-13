@@ -142,7 +142,7 @@ PingusMain::~PingusMain()
 void
 PingusMain::read_rc_file (void)
 {
-  if (cmd_options.no_config_file.is_set() &&
+  if (!cmd_options.no_config_file.is_set() ||
       !cmd_options.no_config_file.get())
     {
       std::string rcfile;
@@ -152,8 +152,7 @@ PingusMain::read_rc_file (void)
       else
 	rcfile = cmd_options.config_file.get();
 
-      //constructor of config must be run
-      //FIXME: Config config(rcfile);
+      config_manager.load(rcfile);
     }
 }
 

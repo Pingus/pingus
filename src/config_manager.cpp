@@ -15,12 +15,18 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
+#include <fstream>
 #include "SDL.h"
 #include "globals.hpp"
+#include "system.hpp"
 #include "fps_counter.hpp"
 #include "display/display.hpp"
 #include "screen/screen_manager.hpp"
+#include "sexpr_file_reader.hpp"
+#include "sexpr_file_writer.hpp"
 #include "config_manager.hpp"
+#include "lisp/lisp.hpp"
+#include "lisp/parser.hpp"
 
 ConfigManager config_manager;
 
@@ -30,6 +36,162 @@ ConfigManager::ConfigManager()
 
 ConfigManager::~ConfigManager()
 {
+}
+
+void
+ConfigManager::load(const std::string& file)
+{
+  filename = file;
+
+  boost::shared_ptr<lisp::Lisp> sexpr;
+
+  try 
+    {
+      sexpr = lisp::Parser::parse(filename);
+    }
+  catch (const std::runtime_error& e) 
+    {
+      std::cerr << "ConfigManager: " << e.what() << std::endl;
+      return;
+    }
+
+  if (!sexpr)
+    {
+      std::cerr << "ConfigManager: Couldn't find config file '" <<
+        filename << "'." << std::endl;
+      return;
+    }
+
+  SExprFileReader reader(sexpr->get_list_elem(0));
+  if (reader.get_name() != "pingus-config")
+    {
+      std::cerr << "Error: " << filename << ": not a (pingus-config) file" << std::endl;
+      return;
+    }
+
+  const std::vector<FileReader>& sections = reader.get_sections();
+  for (std::vector<FileReader>::const_iterator i = sections.begin();
+       i != sections.end(); ++i)
+    {
+      int int_value;
+      bool bool_value;
+      std::string string_value;
+      Size size_value;
+
+      if (i->get_name() == "master_volume")
+        {
+          i->read_int("value", int_value);
+          set_master_volume(int_value);
+        }
+      else if (i->get_name() == "sound_volume")
+        {
+          i->read_int("value", int_value);
+          set_sound_volume(int_value);
+        }
+      else if (i->get_name() == "music_volume")
+        {
+          i->read_int("value", int_value);
+          set_music_volume(int_value);
+        }
+      else if (i->get_name() == "resolution")
+        {
+          i->read_size("value", size_value);
+          set_resolution(size_value);
+        }
+      else if (i->get_name() == "fullscreen")
+        {
+          i->read_bool("value", bool_value);
+          set_fullscreen(bool_value);
+        }
+      else if (i->get_name() == "allow_resize")
+        {
+          i->read_bool("value", bool_value);
+          set_allow_resize(bool_value);
+        }
+      else if (i->get_name() == "mouse_grab")
+        {
+          i->read_bool("value", bool_value);
+          set_mouse_grab(bool_value);
+        }
+      else if (i->get_name() == "print_fps")
+        {
+          i->read_bool("value", bool_value);
+          set_print_fps(bool_value);
+        }
+      else if (i->get_name() == "language")
+        {
+          i->read_string("value", string_value);
+          set_language(string_value);
+        }
+      else if (i->get_name() == "swcursor")
+        {
+          i->read_bool("value", bool_value);
+          set_swcursor(bool_value);
+        }
+      else if (i->get_name() == "autoscroll")
+        {
+          i->read_bool("value", bool_value);
+          set_autoscroll(bool_value);
+        }
+    }
+}
+
+void
+ConfigManager::save()
+{
+  if (filename.empty())
+    filename = System::get_userdir() + "config";
+
+  std::ofstream out(filename.c_str());
+  SExprFileWriter writer(out);
+
+  writer.begin_section("pingus-config");
+
+  writer.begin_section("master_volume");
+  writer.write_int("value", get_master_volume());
+  writer.end_section();
+
+  writer.begin_section("sound_volume");
+  writer.write_int("value", get_sound_volume());
+  writer.end_section();
+
+  writer.begin_section("music_volume");
+  writer.write_int("value", get_music_volume());
+  writer.end_section();
+
+  writer.begin_section("resolution");
+  writer.write_size("value", get_resolution());
+  writer.end_section();
+
+  writer.begin_section("fullscreen");
+  writer.write_bool("value", get_fullscreen());
+  writer.end_section();
+
+  writer.begin_section("allow_resize");
+  writer.write_bool("value", get_allow_resize());
+  writer.end_section();
+
+  writer.begin_section("mouse_grab");
+  writer.write_bool("value", get_mouse_grab());
+  writer.end_section();
+
+  writer.begin_section("print_fps");
+  writer.write_bool("value", get_print_fps());
+  writer.end_section();
+
+  writer.begin_section("language");
+  writer.write_string("value", get_language());
+  writer.end_section();
+
+  writer.begin_section("swcursor");
+  writer.write_bool("value", get_swcursor());
+  writer.end_section();
+
+  writer.begin_section("autoscroll");
+  writer.write_bool("value", get_autoscroll());
+  writer.end_section();
+
+  writer.end_section();	// pingus-config
 }
 
 void

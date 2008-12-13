@@ -61,6 +61,7 @@ public:
   }
 
   void on_click() {
+    config_manager.save();
     parent->close_screen();
     Sound::PingusSound::play_sound("yipee");
   }
@@ -194,11 +195,6 @@ OptionMenu::OptionMenu()
   autoscroll_box->set_state(config_manager.get_autoscroll(), false);
   C(config_manager.on_autoscroll_change.connect(boost::bind(&CheckBox::set_state, autoscroll_box, _1, false)));
 
-  save_label = new Label(_("Save:"), Rect(Vector2i(Display::get_width()/2 - 280, Display::get_height()/2 + 160), Size(60, 32)));
-  gui_manager->add(save_label);
-  save_box = new CheckBox(Rect(Vector2i(Display::get_width()/2 - 280 + 60, Display::get_height()/2 + 160), Size(32, 32)));
-  gui_manager->add(save_box);
-
   defaults_label = new Label(_("Reset to Defaults:"), Rect(Vector2i(Display::get_width()/2 - 100, Display::get_height()/2 + 160), Size(170, 32)));
   gui_manager->add(defaults_label);
   defaults_box = new CheckBox(Rect(Vector2i(Display::get_width()/2 - 100 + 170, Display::get_height()/2 + 160), Size(32, 32)));
@@ -294,10 +290,6 @@ OptionMenu::resize(const Size& size)
 
   if (ok_button)
     ok_button->set_pos(size.width/2 + 225, size.height/2 + 125);
-  if (save_label)
-    save_label->set_rect(Rect(Vector2i(Display::get_width()/2 - 280, Display::get_height()/2 + 160), Size(60, 32)));
-  if (save_box)
-    save_box->set_rect(Rect(Vector2i(Display::get_width()/2 - 280 + 60, Display::get_height()/2 + 160), Size(32, 32)));
   if (defaults_label)
     defaults_label->set_rect(Rect(Vector2i(Display::get_width()/2 - 100, Display::get_height()/2 + 160), Size(170, 32)));
   if (defaults_box)

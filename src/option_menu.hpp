@@ -59,9 +59,6 @@ private:
   SliderBox* sound_volume_box;
   SliderBox* music_volume_box;
 
-  Label* save_label;
-  CheckBox* save_box;
-
   Label* defaults_label;
   CheckBox* defaults_box;
 
