@@ -35,7 +35,7 @@
 #include "tinygettext/dictionary_manager.hpp"
 #include "option_menu.hpp"
 
-#define C(x) x
+#define C(x) connections.push_back(x)
 
 extern TinyGetText::DictionaryManager dictionary_manager;
 
@@ -154,17 +154,17 @@ OptionMenu::OptionMenu()
   sound_volume_box  = new SliderBox(Rect());
   music_volume_box  = new SliderBox(Rect());
 
-  swcursor_box->on_change.connect(boost::bind(&OptionMenu::on_swcursor_change, this, _1));
-  fullscreen_box->on_change.connect(boost::bind(&OptionMenu::on_fullscreen_change, this, _1));
-  autoscroll_box->on_change.connect(boost::bind(&OptionMenu::on_autoscroll_change, this, _1));
-  mousegrab_box->on_change.connect(boost::bind(&OptionMenu::on_mousegrab_change, this, _1));
-  printfps_box->on_change.connect(boost::bind(&OptionMenu::on_printfps_change, this, _1));
+  C(swcursor_box->on_change.connect(boost::bind(&OptionMenu::on_swcursor_change, this, _1)));
+  C(fullscreen_box->on_change.connect(boost::bind(&OptionMenu::on_fullscreen_change, this, _1)));
+  C(autoscroll_box->on_change.connect(boost::bind(&OptionMenu::on_autoscroll_change, this, _1)));
+  C(mousegrab_box->on_change.connect(boost::bind(&OptionMenu::on_mousegrab_change, this, _1)));
+  C(printfps_box->on_change.connect(boost::bind(&OptionMenu::on_printfps_change, this, _1)));
 
-  master_volume_box->on_change.connect(boost::bind(&OptionMenu::on_master_volume_change, this, _1));
-  sound_volume_box->on_change.connect(boost::bind(&OptionMenu::on_sound_volume_change, this, _1));
-  music_volume_box->on_change.connect(boost::bind(&OptionMenu::on_music_volume_change, this, _1));
+  C(master_volume_box->on_change.connect(boost::bind(&OptionMenu::on_master_volume_change, this, _1)));
+  C(sound_volume_box->on_change.connect(boost::bind(&OptionMenu::on_sound_volume_change, this, _1)));
+  C(music_volume_box->on_change.connect(boost::bind(&OptionMenu::on_music_volume_change, this, _1)));
 
-  resolution_box->on_change.connect(boost::bind(&OptionMenu::on_resolution_change, this, _1));
+  C(resolution_box->on_change.connect(boost::bind(&OptionMenu::on_resolution_change, this, _1)));
 
   add_item(_("Language:"),        language_box);
   add_item(_("Scroll Mode:"),     scroll_box);
