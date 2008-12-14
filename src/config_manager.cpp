@@ -22,11 +22,14 @@
 #include "fps_counter.hpp"
 #include "display/display.hpp"
 #include "screen/screen_manager.hpp"
+#include "tinygettext/dictionary_manager.hpp"
 #include "sexpr_file_reader.hpp"
 #include "sexpr_file_writer.hpp"
 #include "config_manager.hpp"
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
+
+extern TinyGetText::DictionaryManager dictionary_manager;
 
 ConfigManager config_manager;
 
@@ -278,6 +281,11 @@ ConfigManager::set_allow_resize(bool v)
 {
   if (maintainer_mode)
     std::cout << "ConfigManager::set_allow_resize: " << v << std::endl;
+
+  if (v != get_allow_resize())
+    {
+      on_allow_resize_change(v);
+    }
 }
 
 bool
@@ -294,11 +302,7 @@ ConfigManager::set_mouse_grab(bool v)
 
   if (v != get_mouse_grab())
     {
-      if (v)
-        SDL_WM_GrabInput(SDL_GRAB_ON);
-      else
-        SDL_WM_GrabInput(SDL_GRAB_OFF);
-
+      SDL_WM_GrabInput(v ? SDL_GRAB_ON : SDL_GRAB_OFF);
       on_mouse_grab_change(v);
     }
 }
@@ -315,8 +319,11 @@ ConfigManager::set_print_fps(bool v)
   if (maintainer_mode)
     std::cout << "ConfigManager::set_print_fps: " << v << std::endl;
 
-  print_fps = v;
-  on_print_fps_change(v);
+  if (v != get_print_fps())
+    {
+      print_fps = v;
+      on_print_fps_change(v);
+    }
 }
 
 bool
@@ -330,12 +337,18 @@ ConfigManager::set_language(const std::string& v)
 {
   if (maintainer_mode)
     std::cout << "ConfigManager::set_language: '" << v << "'" << std::endl;
+
+  if (v != get_language())
+    {
+      dictionary_manager.set_current_dictionary(v);
+      on_language_change(v);
+    }
 }
 
 std::string
 ConfigManager::get_language()
 {
-  return "";
+  return dictionary_manager.get_dictionary().get_language()->code;
 }
 
 void
@@ -347,6 +360,7 @@ ConfigManager::set_swcursor(bool v)
   if (v != get_swcursor())
     {
       ScreenManager::instance()->show_swcursor(v);
+      on_swcursor_change(v);
     }
 }
 
@@ -361,12 +375,18 @@ ConfigManager::set_autoscroll(bool v)
 {
   if (maintainer_mode)
     std::cout << "ConfigManager::set_autoscroll: " << v << std::endl;
+
+  if (v != get_autoscroll())
+    {
+      auto_scrolling = v;
+      on_autoscroll_change(v);
+    }
 }
 
 bool
 ConfigManager::get_autoscroll()
 {
-  return false;
+  return auto_scrolling;
 }
 
 /* EOF */

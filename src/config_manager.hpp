@@ -57,7 +57,7 @@ public:
 
   void set_allow_resize(bool);
   bool get_allow_resize();
-  boost::signal<void(bool)> on_allow_reszie_change;
+  boost::signal<void(bool)> on_allow_resize_change;
 
   void set_mouse_grab(bool);
   bool get_mouse_grab();

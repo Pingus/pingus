@@ -18,6 +18,7 @@
 #define HEADER_OPTION_MENU_HPP
 
 #include <vector>
+#include <map>
 #include <boost/signals.hpp>
 #include "sprite.hpp"
 #include "screen/gui_screen.hpp"
@@ -65,6 +66,9 @@ private:
   typedef std::vector<boost::signals::connection> Connections;
   Connections connections;
 
+  std::string language;
+  std::map<std::string, std::string> language_map;
+
 public:
   OptionMenu();
   ~OptionMenu();
@@ -88,7 +92,10 @@ public:
   void on_sound_volume_change(int v);
   void on_music_volume_change(int v);
 
+  void on_language_change(const std::string& str);
   void on_resolution_change(const std::string& str);
+
+  void save_language();
 
 private:
   OptionMenu (const OptionMenu&);

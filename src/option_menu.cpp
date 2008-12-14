@@ -61,6 +61,7 @@ public:
   }
 
   void on_click() {
+    parent->save_language();
     config_manager.save();
     parent->close_screen();
     Sound::PingusSound::play_sound("yipee");
@@ -117,6 +118,7 @@ OptionMenu::OptionMenu()
   resolution_box->set_current_choice(current_choice);
 
   std::string current_language = dictionary_manager.get_current_language();
+  language = current_language;
   current_choice = -1;
   n = 0;
 
@@ -127,7 +129,10 @@ OptionMenu::OptionMenu()
     {
       TinyGetText::LanguageDef* lang = TinyGetText::get_language_def(*i);
       if (lang)
-        languages.push_back(lang->name);
+        {
+          languages.push_back(lang->name);
+          language_map[lang->name] = *i;
+        }
     }
   std::sort(languages.begin(), languages.end());
 
@@ -165,16 +170,17 @@ OptionMenu::OptionMenu()
   C(sound_volume_box->on_change.connect(boost::bind(&OptionMenu::on_sound_volume_change, this, _1)));
   C(music_volume_box->on_change.connect(boost::bind(&OptionMenu::on_music_volume_change, this, _1)));
 
+  C(language_box->on_change.connect(boost::bind(&OptionMenu::on_language_change, this, _1)));
   C(resolution_box->on_change.connect(boost::bind(&OptionMenu::on_resolution_change, this, _1)));
 
   add_item(_("Language:"),        language_box);
-  add_item(_("Scroll Mode:"),     scroll_box);
+//  add_item(_("Scroll Mode:"),     scroll_box);
   add_item(_("Resolution:"),      resolution_box);
   add_item(_("Fullscreen:"),      fullscreen_box);
-  add_item(_("Autoscrolling:"),   autoscroll_box);
   add_item(_("Master Volume:"),   master_volume_box);
   add_item(_("Sound Volume:"),    sound_volume_box);
   add_item(_("Music Volume:"),    music_volume_box);
+  add_item(_("Autoscrolling:"),   autoscroll_box);
   add_item(_("Print FPS:"),       printfps_box);
   add_item(_("Mouse Grab:"),      mousegrab_box);
   add_item(_("Software Cursor:"), swcursor_box);
@@ -367,6 +373,12 @@ OptionMenu::on_music_volume_change(int v)
 }
 
 void
+OptionMenu::on_language_change(const std::string &str)
+{
+  language = str;
+}
+
+void
 OptionMenu::on_resolution_change(const std::string& str)
 {
   if (str != "Custom")
@@ -377,6 +389,12 @@ OptionMenu::on_resolution_change(const std::string& str)
           config_manager.set_resolution(size); 
         }
     }
+}
+
+void
+OptionMenu::save_language()
+{
+  config_manager.set_language(language_map[language]);
 }
 
 /* EOF */
