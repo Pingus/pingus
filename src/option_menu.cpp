@@ -16,6 +16,7 @@
 
 #include <set>
 #include <boost/bind.hpp>
+#include <sstream>
 #include <iostream>
 
 #include "config_manager.hpp"
