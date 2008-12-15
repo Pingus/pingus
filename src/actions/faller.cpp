@@ -114,7 +114,10 @@ Faller::update ()
             {
               // This is where the jumper bug happens
               //std::cout << "Reached the unreachable: " << pingu->get_velocity().y << std::endl;
-              pingu->set_action(Actions::WALKER);
+              if (pingu->get_previous_action() == Actions::BLOCKER)
+                pingu->set_action(pingu->get_previous_action());
+              else
+                pingu->set_action(Actions::WALKER);
             }
         }
       // If the Pingu collided into something while moving up...

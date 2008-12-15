@@ -47,6 +47,7 @@ Blocker::update()
   if (!standing_on_ground())
     {
       pingu->set_action(Actions::FALLER);
+      return;
     }
   else
     {
