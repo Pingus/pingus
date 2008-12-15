@@ -182,11 +182,6 @@ Animation and graphic issues:
 Bugs:
 =====
 
-* Also, is this a already solved bug? I can play
-> playable/panic-cbrucher.pingus but when I am playing I get this error in
-> terminal and then the window closes.
-> " PingusError: e has wrong color depth: "
-
 * GroundMap tiles are currently RGBA, while in reality they are just
   RGB with a colorkey, room for optimization
 
