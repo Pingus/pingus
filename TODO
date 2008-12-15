@@ -46,7 +46,7 @@ Roadmap for Pingus 0.8.0:
 
 * generate thumbnails for the editor, loading times are inacceptable
 
-* Repaint Exit pannel
+* Repaint Exit panel
 
 * write level 'screenshot' tool
 
@@ -196,8 +196,6 @@ Bugs:
 
 * digger (mean basher?) follows down slopes
 
-* worldmap pingu walks right over locked levels
-
 * paint climber
 
 Unsorted:
@@ -225,10 +223,7 @@ Roadmap for Pingus 0.7.3
 New Features:
 =============
 
-* implement option menu
-
-* rewrite Config file support, make game automatically write a default
-  config file, use s-expr, goes hand in hand with the new option menu
+* implement option menu (already started, not all options work yet)
 
 * add cheats: all actions, unlimited actions, skip level, these must
   be triggerable via maintainer-mode, not via commandline switch
@@ -265,12 +260,6 @@ Bugs:
 * StringFormat does line breaking TeX-style, but that isn't useful
   with the current s-expr format, which can handle explicit line
   breaks just fine
-
-* http://savannah.nongnu.org/bugs/?21176
-To replicate:
-1. Order a pingu to build a bridge.
-2. When he "waits" after the bridge has been complete, order him to block.
-3. He'll fall off the end of the bridge and continue walking as normal.
 
 Wishlist Stuff:
 ===============
