@@ -39,6 +39,9 @@ private:
   std::vector<ActionButton> buttons;
   std::vector<ActionButton>::size_type current_button;
 
+  bool show_tip;
+  std::vector<ActionButton>::size_type tip_button;
+
 public:
   ButtonPanel(GameSession* s, const Vector2i& pos);
   virtual ~ButtonPanel();
@@ -56,6 +59,10 @@ public:
 
   void on_primary_button_press(int x, int y);
   void on_primary_button_release(int x, int y);
+
+  void on_pointer_enter();
+  void on_pointer_leave();
+  void on_pointer_move(int x, int y);
 
   void set_pos(const Vector2i& pos);
   

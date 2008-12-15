@@ -64,8 +64,6 @@ Roadmap for Pingus 0.8.0:
 
 * clicking while the screen changes is weird
 
-* tooltip missing for actions (got removed in refactoring)
-
 * fullscreen must use a different size then the current window size (round to nearest 'normal' resolution or so)
 
 * input recording in the ScreenManager can't work when the underlying

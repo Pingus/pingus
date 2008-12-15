@@ -32,7 +32,9 @@ ButtonPanel::ButtonPanel(GameSession* s, const Vector2i& pos)
     session(s),
     background("core/buttons/buttonbackground"),
     highlight("core/buttons/buttonbackgroundhl"),
-    current_button(0)
+    current_button(0),
+    show_tip(false),
+    tip_button(0)
 {
   ActionHolder* aholder = session->get_server()->get_action_holder();
 
@@ -75,6 +77,11 @@ ButtonPanel::draw(DrawingContext& gc)
 
       std::string str = StringUtil::to_string(aholder->get_available(buttons[i].name));
       gc.print_center(Fonts::pingus_small, Vector2i(rect.left + 46, rect.top + 5 + 38*i), str);
+
+      if (show_tip && tip_button == i)
+        {
+          gc.print_left(Fonts::pingus_small, Vector2i(rect.left + 65, rect.top + 5 + 38*i), action_to_screenname(buttons[i].name));
+        }
     }
 }
 
@@ -129,6 +136,25 @@ ButtonPanel::on_primary_button_press(int x, int y)
 void
 ButtonPanel::on_primary_button_release(int x, int y)
 {
+}
+
+void
+ButtonPanel::on_pointer_enter()
+{
+  show_tip = true;
+}
+
+void
+ButtonPanel::on_pointer_leave()
+{
+  show_tip = false;
+}
+
+void
+ButtonPanel::on_pointer_move(int x, int y)
+{
+  int action = (y - rect.top) / 38;
+  tip_button = Math::clamp(0, action, int(buttons.size()-1));
 }
 
 void
