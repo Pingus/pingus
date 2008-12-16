@@ -73,8 +73,6 @@ Roadmap for Pingus 0.8.0:
 * ScreenManager::fade_over should be integrated into
   ScreenManager::update, so that the mainloop is never left
 
-* make all Vector classes inline
-
 * add alternative fullscreen, screenshot and print-fps shortcuts for the OLPC, which doesn't have Fxx keys
   Ctrl-f -> fullscreen, Ctrl-s screenshot, Ctrl->p printfps
 

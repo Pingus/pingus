@@ -17,34 +17,7 @@
 
 #include <config.h>
 #include <iostream>
-#include "math.hpp"
 #include "math/vector2f.hpp"
-
-void
-Vector2f::normalize()
-{
-  float mag = magnitude();
-  x /= mag;
-  y /= mag;
-}
-
-Vector2f Vector2f::unit() const
-{
-  return *this / magnitude();
-}
-
-float
-Vector2f::magnitude() const
-{
-  return Math::sqrt(x*x + y*y);
-}
-
-Vector2f
-Vector2f::rotate(float angle) const
-{
-  float len = magnitude();
-  return Vector2f(len * Math::cos(angle), len * Math::sin(angle));
-}
 
 std::ostream& operator<<(std::ostream& s, const Vector2f& v)
 {

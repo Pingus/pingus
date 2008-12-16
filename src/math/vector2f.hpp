@@ -20,6 +20,7 @@
 
 #include <iosfwd>
 #include "vector2i.hpp"
+#include "math.hpp"
 
 /** Simple two dimensional vector. */
 class Vector2f
@@ -111,7 +112,11 @@ public:
 
   /** Takes angle in radian and returns a copy of the vector rotated
       by \a angle */
-  Vector2f rotate(float angle) const;
+  Vector2f rotate(float angle) const
+  {
+    float len = magnitude();
+    return Vector2f(len * Math::cos(angle), len * Math::sin(angle));
+  }
 
   /// Scalar product of 2 vectors
   float operator*(const Vector2f& other) const
@@ -119,11 +124,22 @@ public:
     return x*other.x + y*other.y;
   }
 
-  float magnitude() const;
+  float magnitude() const
+  {
+    return Math::sqrt(x*x + y*y);
+  }
   float length() const { return magnitude(); }
 
-  Vector2f unit() const;
-  void normalize();
+  Vector2f unit() const
+  {
+    return *this / magnitude();
+  }
+  void normalize()
+  {
+    float mag = magnitude();
+    x /= mag;
+    y /= mag;
+  }
 
   // ... add the other operators as needed, I'm too lazy now ...
 
