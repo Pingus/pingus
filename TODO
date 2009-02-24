@@ -27,8 +27,46 @@ Stuff to do at all times:
 Roadmap for Pingus 0.8.0:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+OLPC Issues
+===========
+
+* performance goes down a lot with many Pingus -> Benchmark if its the
+  drawing or collision detection (likely to many rectangles -> go
+  Microtile array or make RectMerger suck in rects that are close together)
+
+* music doesn't makes things very slow and then just stops working
+
+* cursor and icons are to small, fonts maybe too
+
+* maybe bigger font
+
+* 1920x1200 vs 1200x900 -> height 900 close to 1200, do magic so that
+  we don't have vertical scrolling for small levels
+
+* editor refreshes to much
+
+* doesn't have FXX keys in non-fullscreen mode
+
+
 "Important" Stuff and Random Notes:
 ===================================
+
+* Valgrind results:
+
+==11421== Conditional jump or move depends on uninitialised value(s)
+==11421==    at 0x080f9a56: void ((null):0)
+==11421==    by 0x080f9ae3: void ((null):0)
+==11421==    by 0x080f9ae3: void ((null):0)
+==11421==    by 0x080f9ae3: void ((null):0)
+==11421==    by 0x080fa7bf: DrawOpBuffer::render(SDLFramebuffer&, DrawOpBuffer&) (stl_algo.h:4820)
+==11421==    by 0x080f9666: DeltaFramebuffer::flip() (delta_framebuffer.cpp:426)
+==11421==    by 0x080fb1f2: Display::flip_display() (display.cpp:41)
+==11421==    by 0x08155c04: ScreenManager::update(float, std::vector<Input::Event, std::allocator<Input::Event> > const&) (screen_manager.cpp:286)
+==11421==    by 0x081560a5: ScreenManager::display() (screen_manager.cpp:223)
+==11421==    by 0x0809dff0: PingusMain::start_game() (pingus_main.cpp:696)
+==11421==    by 0x080a3ba8: PingusMain::main(int, char**) (pingus_main.cpp:726)
+==11421==    by 0x080a3f9b: main (pingus_main.cpp:806)
+==11421==
 
 * CollisionMask cleanup
 
@@ -127,6 +165,8 @@ Roadmap for Pingus 0.8.0:
 * Worldmap doesn't properly handle scroll limits (did I break GraphicContext?)
 
 * Remove support for line drawing
+
+* forest level shows bug in DeltaRenderer
 
 New Features
 ============
