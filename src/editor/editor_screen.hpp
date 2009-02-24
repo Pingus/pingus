@@ -24,7 +24,6 @@
 
 class DrawingContext;
 class FileDialog;
-class GUI::GUIManager;
 class Pathname;
 
 namespace Editor {
