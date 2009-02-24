@@ -24,6 +24,8 @@
 
 enum DrawOpType { SURFACE_DRAWOP, FILLRECT_DRAWOP };
 
+/** Little id creation function that is meant to bring equal objects
+    close together when sorting */
 uint32_t make_id(DrawOpType type, int x, int y)
 {
   return
@@ -222,12 +224,12 @@ DrawOp::less(DrawOp* rhs) const
     }
 }
 
-bool ops_id_sorter(DrawOp* lhs, DrawOp* rhs)
+inline bool ops_id_sorter(DrawOp* lhs, DrawOp* rhs)
 {
   return lhs->id < rhs->id;
 }
 
-bool ops_xy_sorter(DrawOp* lhs, DrawOp* rhs)
+inline bool ops_xy_sorter(DrawOp* lhs, DrawOp* rhs)
 {
   return lhs->less(rhs);
 }
@@ -310,6 +312,7 @@ public:
                          std::vector<Rect>& changed_regions)
   {
     std::vector<DrawOp*> ops;
+    ops.reserve(backbuffer.draw_ops.size() + frontbuffer.draw_ops.size());
 
     for(DrawOps::const_iterator i = backbuffer.draw_ops.begin(); i != backbuffer.draw_ops.end(); ++i)
       ops.push_back(*i);
@@ -319,30 +322,22 @@ public:
 
     std::sort(ops.begin(), ops.end(), ops_id_sorter);
     
-    for(DrawOps::const_iterator i = ops.begin(); i != ops.end();)
+    for(DrawOps::size_type i = 0; i < ops.size(); ++i)
       {
-        if (i+1 == ops.end())
+        bool is_equal = false;
+        for(DrawOps::size_type j = i+1; j < ops.size() && ops[i]->id == ops[j]->id; ++j)
           {
-            (*i)->mark_changed_regions(changed_regions);
-            break;
-          }
-        else
-          {
-            // FIXME: Not exactly perfect, need to iterate over all
-            // following element, till we reach a point where they
-            // can't be equal
-            if (!(*i)->equal(*(i+1)))
+            if (ops[i]->equal(ops[j]))
               {
-                (*i)->mark_changed_regions(changed_regions);
-                ++i;
-              }
-            else
-              {
-                ++i;
-                if (i == ops.end()) break;
-                ++i;
+                is_equal = true;
+                if (j == i+1) // FIXME: This is a bit fishy, since ops_id_sorter() doesn't give a perfect sorting 
+                  i = j; 
+                break;
               }
           }
+        
+        if (!is_equal)
+          ops[i]->mark_changed_regions(changed_regions);
       }
   }
  
@@ -371,7 +366,6 @@ public:
             // Merge rectangles
             std::vector<Rect> update_rects;
             merge_rectangles(changed_regions, update_rects);
-            //update_rects = changed_regions;
 
             int area = calculate_area(update_rects);
 
