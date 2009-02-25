@@ -30,7 +30,7 @@
 class FontImpl
 {
 public:
-  FramebufferSurface framebuffer_surface;
+  std::vector<FramebufferSurface> framebuffer_surfaces;
   typedef std::vector<GlyphDescription*> Glyphs;
   Glyphs glyphs;
   int    space_length;
@@ -42,23 +42,42 @@ public:
     : char_spacing(desc.char_spacing),
       size(desc.size)
   {
-    framebuffer_surface = Display::get_framebuffer().create_surface(Surface(desc.images[0].pathname));
-
-    if (!framebuffer_surface)
-      {
-        std::cout << "IMG: " << desc.images[0].pathname.str() << std::endl;
-        assert(false);
-      }
-
     vertical_spacing = size * desc.vertical_spacing;
    
-    glyphs.resize(65536); // 16bit ought to be enough for everybody
+    glyphs.resize(65536, 0); // 16bit ought to be enough for everybody
 
     // Copyh Unicode -> Glyph mapping 
-    for(std::vector<GlyphDescription>::const_iterator i = desc.images[0].glyphs.begin(); i != desc.images[0].glyphs.end(); ++i)
+    for(std::vector<GlyphImageDescription>::size_type j = 0; j < desc.images.size(); ++j)
       {
-        if (i->unicode < glyphs.size())
-          glyphs[i->unicode] = new GlyphDescription(*i);
+        framebuffer_surfaces.push_back(Display::get_framebuffer().create_surface(Surface(desc.images[j].pathname)));
+
+        if (!framebuffer_surfaces.back())
+          {
+            std::cout << "IMG: " << desc.images[j].pathname.str() << std::endl;
+            assert(false);
+          }
+
+        for(std::vector<GlyphDescription>::const_iterator i = desc.images[j].glyphs.begin();
+            i != desc.images[j].glyphs.end();
+            ++i)
+          {
+            if (i->unicode < glyphs.size())
+              {
+                if (glyphs[i->unicode] == 0)
+                  {
+                    glyphs[i->unicode] = new GlyphDescription(*i);
+                    glyphs[i->unicode]->image = framebuffer_surfaces.size()-1;
+                  }
+                else
+                  {
+                    std::cout << "Warning: unicode collision on " << i->unicode << std::endl;
+                  }            
+              }
+            else
+              {
+                std::cout << "Warning: unicode out of range: " << i->unicode << std::endl;
+              }
+          }
       }
   }
 
@@ -97,7 +116,8 @@ public:
         if (unicode < glyphs.size() && glyphs[unicode])
           {
             const GlyphDescription& glyph = *glyphs[unicode];
-            fb.draw_surface(framebuffer_surface, glyph.rect, Vector2i(static_cast<int>(dstx), static_cast<int>(dsty)) + glyph.offset);
+            fb.draw_surface(framebuffer_surfaces[glyph.image],
+                            glyph.rect, Vector2i(static_cast<int>(dstx), static_cast<int>(dsty)) + glyph.offset);
             dstx += glyph.advance + char_spacing;
           }
         else

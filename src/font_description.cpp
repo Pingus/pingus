@@ -20,13 +20,14 @@
 
 
 GlyphDescription::GlyphDescription()
-  : unicode(0), advance(0)
+  : image(0), unicode(0), advance(0)
 {
   
 }
 
 GlyphDescription::GlyphDescription(FileReader& reader)
 {
+  image = 0;
   int lazy = 0; // FIXME: implement read_uint32
   reader.read_int("unicode", lazy);
   unicode = lazy;

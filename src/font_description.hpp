@@ -27,6 +27,7 @@ class FileReader;
 class GlyphDescription
 {
 public:
+  int      image;
   uint32_t unicode; 
   Vector2i offset;
   int      advance; 
@@ -43,7 +44,7 @@ public:
   Pathname pathname;
 
   /** Characters in the font image */
-  std::vector<GlyphDescription> glyphs;  
+  std::vector<GlyphDescription> glyphs;
 };
 
 /** */
