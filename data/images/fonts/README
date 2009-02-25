@@ -4,5 +4,22 @@ chalk-small:  16px  Worldmap button, Author, skip
 pingus-small-20px: ButtonPanel, 
 verdana: 11px  Used for tooltips and GUI in the editor
 
+./tinygettext list-msgstrs ~/projects/pingus/svn/trunk/pingus/data/po/zh_TW.po | sed "s/\(.\)/\1\n/g" | sort | uniq > /tmp/codes
+./fontgen /usr/share/fonts/truetype/arphic/ukai.ttc 40 0 1024 5000 "$(cat /tmp/codes)
+
+
+(pingus-font
+  (size 16)
+  (images
+    (image 
+      (filename "images/fonts/chalk-16px.png")
+      (glyphs 
+      ...))
+    (image 
+      (filename "images/fonts/chalk-cjk-16px.png")
+      (glyphs 
+      ...))
+))
+
 # EOF #
 
