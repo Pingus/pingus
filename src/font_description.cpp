@@ -49,18 +49,30 @@ FontDescription::FontDescription(const Pathname& pathname_)
     }
   else
     {
-      reader.read_path("image",             image);
       reader.read_float("char-spacing",     char_spacing);
       reader.read_float("vertical-spacing", vertical_spacing);
       reader.read_int("size",               size);
-      
-      FileReader glyph_section;
-      if (reader.read_section("glyphs", glyph_section))
+
+      FileReader images_reader;
+      if (reader.read_section("images", images_reader))
         {
-          std::vector<FileReader> glyph_reader = glyph_section.get_sections();
-          for(std::vector<FileReader>::iterator i = glyph_reader.begin(); i != glyph_reader.end(); ++i)
+          std::vector<FileReader> images_lst = images_reader.get_sections();
+
+          for(std::vector<FileReader>::iterator i = images_lst.begin(); i != images_lst.end(); ++i)
             {
-              glyphs.push_back(GlyphDescription(*i));
+              GlyphImageDescription image_desc;
+              i->read_path("filename",             image_desc.pathname);
+      
+              FileReader glyph_section;
+              if (i->read_section("glyphs", glyph_section))
+                {
+                  std::vector<FileReader> glyph_reader = glyph_section.get_sections();
+                  for(std::vector<FileReader>::iterator i = glyph_reader.begin(); i != glyph_reader.end(); ++i)
+                    {
+                      image_desc.glyphs.push_back(GlyphDescription(*i));
+                    }
+                }
+              images.push_back(image_desc);
             }
         }
     }

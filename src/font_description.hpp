@@ -36,13 +36,23 @@ public:
   GlyphDescription(FileReader& reader);
 };
 
+class GlyphImageDescription
+{
+public:
+  /** Image file from which the basic surface is loaded */
+  Pathname pathname;
+
+  /** Characters in the font image */
+  std::vector<GlyphDescription> glyphs;  
+};
+
 /** */
 class FontDescription
 {
 public:
   Pathname    pathname;
 
-  /** Space between two characters */
+  /** Space between two characters, given in pixel */
   float char_spacing;
   
   /** Spacing between lines, given in multiples of \a size */
@@ -51,11 +61,7 @@ public:
   /** Vertical height of the font */
   int size;
 
-  /** Image file from which the basic surface is loaded */
-  Pathname image;
-
-  /** Characters in the font image */
-  std::vector<GlyphDescription> glyphs;
+  std::vector<GlyphImageDescription> images;
 
   FontDescription(const Pathname& filename);
 };

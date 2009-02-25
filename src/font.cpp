@@ -32,7 +32,7 @@ class FontImpl
 public:
   FramebufferSurface framebuffer_surface;
   typedef std::vector<GlyphDescription*> Glyphs;
-  Glyphs glyphs; // FIXME: Use a hashmap or something else faster then a map
+  Glyphs glyphs;
   int    space_length;
   float  char_spacing;
   float  vertical_spacing;
@@ -42,11 +42,11 @@ public:
     : char_spacing(desc.char_spacing),
       size(desc.size)
   {
-    framebuffer_surface = Display::get_framebuffer().create_surface(Surface(desc.image));
+    framebuffer_surface = Display::get_framebuffer().create_surface(Surface(desc.images[0].pathname));
 
     if (!framebuffer_surface)
       {
-        std::cout << "IMG: " << desc.image.str() << std::endl;
+        std::cout << "IMG: " << desc.images[0].pathname.str() << std::endl;
         assert(false);
       }
 
@@ -55,7 +55,7 @@ public:
     glyphs.resize(65536); // 16bit ought to be enough for everybody
 
     // Copyh Unicode -> Glyph mapping 
-    for(std::vector<GlyphDescription>::const_iterator i = desc.glyphs.begin(); i != desc.glyphs.end(); ++i)
+    for(std::vector<GlyphDescription>::const_iterator i = desc.images[0].glyphs.begin(); i != desc.images[0].glyphs.end(); ++i)
       {
         if (i->unicode < glyphs.size())
           glyphs[i->unicode] = new GlyphDescription(*i);

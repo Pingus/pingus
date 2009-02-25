@@ -1,10 +1,12 @@
 (pingus-font
-  (image "images/fonts/pingus-small-20px.png")
-  (size 20)
-  (glyph-count 533)
-  (char-spacing    1.6)
-  (vertical-spacing 1.4)
-  (glyphs 
+ (size 20)
+ (glyph-count 533)
+ (char-spacing    1.6)
+ (vertical-spacing 1.4)
+ (images
+  (image
+   (filename "images/fonts/pingus-small-20px.png")
+   (glyphs 
     (glyph (unicode 506) (offset 0 -24) (advance 14) (rect 0 0 16 28))
     (glyph (unicode 471) (offset 0 -25) (advance 10) (rect 16 0 28 28))
     (glyph (unicode 475) (offset 0 -25) (advance 10) (rect 28 0 40 28))
@@ -540,7 +542,6 @@
     (glyph (unicode 182) (offset 0 0) (advance 14) (rect 150 243 152 245))
     (glyph (unicode 167) (offset 0 0) (advance 14) (rect 152 243 154 245))
     (glyph (unicode 160) (offset 0 0) (advance 6) (rect 154 243 156 245))
-  ))
+    ))))
 
 ;; EOF ;;
-

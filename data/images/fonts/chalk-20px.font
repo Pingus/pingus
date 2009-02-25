@@ -1,9 +1,11 @@
 (pingus-font
-  (size 20)
-  (image "images/fonts/chalk-20px.png")
-  (glyph-count 533)
-  (vertical-spacing 1.4)
-  (glyphs 
+ (size 20)
+ (glyph-count 533)
+ (vertical-spacing 1.4)
+ (images
+  (image
+   (filename "images/fonts/chalk-20px.png")
+   (glyphs 
     (glyph (unicode 506) (offset 0 -24) (advance 14) (rect 0 0 14 26))
     (glyph (unicode 471) (offset 0 -25) (advance 10) (rect 14 0 24 26))
     (glyph (unicode 475) (offset 0 -25) (advance 10) (rect 24 0 34 26))
@@ -539,5 +541,5 @@
     (glyph (unicode 182) (offset 0 0) (advance 14) (rect 57 182 57 182))
     (glyph (unicode 167) (offset 0 0) (advance 14) (rect 57 182 57 182))
     (glyph (unicode 160) (offset 0 0) (advance 6) (rect 57 182 57 182))
-  ))
+    ))))
 ;; EOF ;;
