@@ -38,8 +38,6 @@ GlyphDescription::GlyphDescription(FileReader& reader)
 FontDescription::FontDescription(const Pathname& pathname_)
   : pathname(pathname_)
 {
-  name             = "<unknown>";
-  monospace        = false;
   char_spacing     = 1.0f;
   vertical_spacing = 1.0f;
 
@@ -51,7 +49,6 @@ FontDescription::FontDescription(const Pathname& pathname_)
     }
   else
     {
-      reader.read_string("name",            name);
       reader.read_path("image",             image);
       reader.read_float("char-spacing",     char_spacing);
       reader.read_float("vertical-spacing", vertical_spacing);

@@ -41,19 +41,18 @@ class FontDescription
 {
 public:
   Pathname    pathname;
-  std::string name;
+
+  /** Space between two characters */
+  float char_spacing;
+  
+  /** Spacing between lines, given in multiples of \a size */
+  float vertical_spacing;
+
+  /** Vertical height of the font */
+  int size;
 
   /** Image file from which the basic surface is loaded */
   Pathname image;
-
-  bool monospace;
-  
-  /** Space between two characters */
-  float char_spacing;
-
-  float vertical_spacing;
-
-  int size;
 
   /** Characters in the font image */
   std::vector<GlyphDescription> glyphs;
