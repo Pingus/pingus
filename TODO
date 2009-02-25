@@ -51,6 +51,8 @@ OLPC Issues
 "Important" Stuff and Random Notes:
 ===================================
 
+* Automatically generate Levelsets for User generated levels, maybe allow to edit them somehow
+
 * Valgrind results:
 
 ==11421== Conditional jump or move depends on uninitialised value(s)
