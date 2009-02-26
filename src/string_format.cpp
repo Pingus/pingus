@@ -77,7 +77,6 @@ StringFormat::break_line (const std::string& text_, int width, const Font& font)
       std::string word = UTF8::substr(beg, it+1);
       int word_width = font.get_width(word);
 
-      // This is pretty ugly and not fast
       if (UTF8::is_linebreak_character(*it))
         {
           if ((line_width + word_width) > width)
