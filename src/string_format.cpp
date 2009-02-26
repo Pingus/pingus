@@ -19,7 +19,7 @@
 
 
 std::string
-StringFormat::break_line (std::string text, int length, const Font& font)
+StringFormat::break_line (std::string text, int width, const Font& font)
 {
   std::string::size_type pos = 0;
   while ((pos = text.find('\t', pos)) != std::string::npos)
@@ -65,18 +65,18 @@ StringFormat::break_line (std::string text, int length, const Font& font)
 
   while ((pos = text.find(' ', pos + 1)) != std::string::npos)
     {
-      if (font.get_width(text.substr(start_pos, pos - start_pos)) > length)
+      if (font.get_width(text.substr(start_pos, pos - start_pos)) > width)
         {
 	  text[previous_space] = '\n';
 	  start_pos = previous_space + 1;
 	}
-      else if (font.get_width(text.substr(start_pos, text.length())) <= length)
+      else if (font.get_width(text.substr(start_pos, text.length())) <= width)
         break;
 
       previous_space = pos;
     }
 
-  if (font.get_width(text.substr(start_pos, text.length() - start_pos)) > length)
+  if (font.get_width(text.substr(start_pos, text.length() - start_pos)) > width)
     text[text.rfind(' ')] = '\n';
 
   return text;
