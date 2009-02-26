@@ -109,7 +109,8 @@ public:
     float dstx = float(x - offset.x);
     float dsty = float(y - offset.y);
     
-    for(UTF8::iterator i(text); !i.done(); ++i)
+    UTF8::iterator i(text);
+    while(i.next())
       {
         const uint32_t& unicode = *i;
 
@@ -144,7 +145,9 @@ public:
   {
     float width = 0.0f;
     float last_width = 0;
-    for(UTF8::iterator i(text); !i.done(); ++i)
+    
+    UTF8::iterator i(text);
+    while(i.next())
       {
         const uint32_t& unicode = *i;
 
@@ -158,6 +161,7 @@ public:
             width += get_width(unicode) + char_spacing;
           }
       }
+
     return std::max(width, last_width);
   }
 

@@ -45,12 +45,13 @@ public:
     iterator(const std::string& text);
     iterator(const std::string& text, std::string::iterator it);
 
-    bool done() const;
-    iterator& operator++();
+    bool next();
     iterator operator+(int n);
     uint32_t operator*() const;
     
+    /** Returns the starting position of the current character */
     std::string::size_type get_index() const { return idx; }
+
     const std::string& get_string() const { return *text; }
   };
 

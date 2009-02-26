@@ -187,52 +187,29 @@ UTF8::decode_utf8(const std::string& text, size_t& p)
 UTF8::iterator::iterator(const std::string& text_)
   : text(&text_),
     pos(0),
-    idx(0)
+    idx(0),
+    chr(INVALID_UTF8_SEQUENCE)
 {
-  try 
-    {
-      chr = decode_utf8(*text, pos);
-    } 
-  catch (std::exception) 
-    {
-      std::cout << "Malformed utf-8 sequence beginning with " << *((uint32_t*)(text->c_str() + pos)) << " found " << std::endl;
-      chr = INVALID_UTF8_SEQUENCE;
-    }
 }
 
 UTF8::iterator::iterator(const std::string& text_, const std::string::iterator it)
   : text(&text_),
     pos(it - text->begin()),
-    idx(pos)
+    idx(pos),
+    chr(INVALID_UTF8_SEQUENCE)
 {
-  try 
-    {
-      chr = decode_utf8(*text, pos);
-    } 
-  catch (std::exception) 
-    {
-      std::cout << "Malformed utf-8 sequence beginning with " << *((uint32_t*)(text->c_str() + pos)) << " found " << std::endl;
-      chr = INVALID_UTF8_SEQUENCE;
-    }
-}
-
-bool
-UTF8::iterator::done() const
-{
-  return pos > text->size();
 }
 
 UTF8::iterator
 UTF8::iterator::operator+(int n)
 {
   UTF8::iterator it = *this;
-  for(int i = 0; i < n; ++i)
-    ++it;
+  for(int i = 0; i < n && it.next(); ++i);
   return it;
 }
 
-UTF8::iterator&
-UTF8::iterator::operator++() 
+bool
+UTF8::iterator::next()
 {
   try 
     {
@@ -246,7 +223,7 @@ UTF8::iterator::operator++()
       ++pos;
     }
 
-  return *this;
+  return pos <= text->size();
 }
 
 uint32_t

@@ -72,7 +72,8 @@ StringFormat::break_line (const std::string& text_, int width, const Font& font)
   float line_width = 0;
   std::ostringstream out;
   
-  for(UTF8::iterator it(text); !it.done(); ++it)
+  UTF8::iterator it(text);
+  while(it.next())
     {
       std::string word = UTF8::substr(beg, it+1);
       float word_width = font.get_width(word);
