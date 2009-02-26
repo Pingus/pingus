@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pingus 0.7.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-10-31 06:55+0100\n"
-"PO-Revision-Date: 2009-02-15 00:14+0800\n"
+"PO-Revision-Date: 2009-02-26 15:04+0100\n"
 "Last-Translator: Adolar <dl7und@mail.toko.edu.tw>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "Language: zh_TW\n"
@@ -475,7 +475,7 @@ msgstr "剩餘時間： "
 #: src/components/pingus_counter.cpp:49
 #, c-format, boost-format
 msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
-msgstr "放出:%3d%d   在外面:%3d   獲救:%3d%d"
+msgstr "放出:%3d/%d   在外面:%3d   獲救:%3d/%d"
 
 #: src/level_menu.cpp:108 src/pingus_menu.cpp:66
 msgid "Levelsets"
