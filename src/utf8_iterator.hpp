@@ -24,11 +24,17 @@
 class UTF8
 {
 public:
+  /** 
+   * Returns the number of characters in a UTF-8 string 
+   */
   static std::string::size_type length(const std::string& str);
+
   static std::string substr(const std::string& text, std::string::size_type pos, std::string::size_type n);
   static std::string::const_iterator advance(std::string::const_iterator it, std::string::size_type n = 1);
 
-  /** return true if a linebreak is allowed after this character */
+  /** 
+   * return true if a linebreak is allowed after this character 
+   */
   static bool is_linebreak_character(uint32_t unicode);
 
   /**
