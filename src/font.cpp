@@ -132,7 +132,7 @@ public:
     return size;
   }
 
-  int get_width(uint32_t unicode) const
+  float get_width(uint32_t unicode) const
   {
     if (unicode < glyphs.size() && glyphs[unicode])
       return glyphs[unicode]->advance;
@@ -140,7 +140,7 @@ public:
       return 0;
   }
 
-  int  get_width(const std::string& text) const
+  float get_width(const std::string& text) const
   {
     float width = 0.0f;
     float last_width = 0;
@@ -158,7 +158,7 @@ public:
             width += get_width(unicode) + char_spacing;
           }
       }
-    return int(std::max(width, last_width));
+    return std::max(width, last_width);
   }
 
   Size get_size(const std::string& text) const
@@ -204,7 +204,7 @@ Font::get_height() const
     return 0;
 }
 
-int
+float
 Font::get_width(uint32_t unicode) const
 {
   if (impl)
@@ -213,7 +213,7 @@ Font::get_width(uint32_t unicode) const
     return 0; 
 }
 
-int
+float
 Font::get_width(const std::string& text) const
 {
   if (impl)
