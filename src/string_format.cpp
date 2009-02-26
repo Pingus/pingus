@@ -68,15 +68,17 @@ StringFormat::break_line (const std::string& text_, int width, const Font& font)
 {
   std::string text = StringFormat::normalize(text_);
 
-  std::string::const_iterator beg = text.begin();
+  UTF8::iterator beg(text);
   int line_width = 0;
   std::ostringstream out;
-  for(std::string::const_iterator it = beg; it != text.end(); it = UTF8::advance(it))
+  
+  for(UTF8::iterator it(text); !it.done(); ++it)
     {
-      std::string word(beg, UTF8::advance(it));
+      std::string word = UTF8::substr(beg, it+1);
       int word_width = font.get_width(word);
-      
-      if (UTF8::is_linebreak_character(UTF8::decode_utf8(std::string(it, const_cast<const std::string&>(text).end()))))
+
+      // This is pretty ugly and not fast
+      if (UTF8::is_linebreak_character(*it))
         {
           if ((line_width + word_width) > width)
             {
@@ -89,12 +91,11 @@ StringFormat::break_line (const std::string& text_, int width, const Font& font)
               line_width += word_width;
             }
           
-          beg = UTF8::advance(it);
+          beg = it+1;
         }
     }
   
-  std::string::const_iterator end = text.end();
-  out << std::string(beg, end);
+  out << UTF8::substr(beg, UTF8::iterator(text, text.end()));
 
   return out.str();
 }

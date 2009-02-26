@@ -18,6 +18,9 @@
 #include <iostream>
 #include <stdexcept>
 #include "utf8_iterator.hpp"
+
+/** Replacement character for invalid UTF-8 sequences */
+static const uint32_t INVALID_UTF8_SEQUENCE = 0xFFFD;
 
 bool
 UTF8::is_linebreak_character(uint32_t unicode)
@@ -35,7 +38,8 @@ UTF8::is_linebreak_character(uint32_t unicode)
 std::string::size_type
 UTF8::length(const std::string& str)
 {
-  // FIXME: Doesn't check if UTF8 sequence is valid
+  // Not checking for valid UTF-8 sequences should be ok, since
+  // incorrect ones are a character too.
   std::string::size_type len = 0;  
   for(std::string::const_iterator i = str.begin(); i != str.end(); ++i)
     {
@@ -47,6 +51,13 @@ UTF8::length(const std::string& str)
     }
   
   return len;
+}
+
+std::string
+UTF8::substr(const iterator& first, const iterator& last)
+{
+  return first.get_string().substr(first.get_index(), 
+                                   last.get_index() - first.get_index());
 }
 
 std::string
@@ -127,6 +138,7 @@ UTF8::decode_utf8(const std::string& text, size_t& p)
     {
       // 0xxx.xxxx: 1 byte sequence
       p+=1;
+
       return c1;
     }
   else if ((c1 & 0340) == 0300) 
@@ -136,6 +148,7 @@ UTF8::decode_utf8(const std::string& text, size_t& p)
       uint32_t c2 = (unsigned char) text[p+1];
       if (!has_multibyte_mark(c2)) throw std::runtime_error("Malformed utf-8 sequence");
       p+=2;
+
       return (c1 & 0037) << 6 | (c2 & 0077);
     }
   else if ((c1 & 0360) == 0340) 
@@ -147,6 +160,7 @@ UTF8::decode_utf8(const std::string& text, size_t& p)
       if (!has_multibyte_mark(c2)) throw std::runtime_error("Malformed utf-8 sequence");
       if (!has_multibyte_mark(c3)) throw std::runtime_error("Malformed utf-8 sequence");
       p+=3;
+
       return (c1 & 0017) << 12 | (c2 & 0077) << 6 | (c3 & 0077);
     }
   else if ((c1 & 0370) == 0360) 
@@ -160,6 +174,7 @@ UTF8::decode_utf8(const std::string& text, size_t& p)
       if (!has_multibyte_mark(c3)) throw std::runtime_error("Malformed utf-8 sequence");
       if (!has_multibyte_mark(c4)) throw std::runtime_error("Malformed utf-8 sequence");
       p+=4;
+
       return (c1 & 0007) << 18 | (c2 & 0077) << 12 | (c3 & 0077) << 6 | (c4 & 0077);
     }
   else
@@ -170,32 +185,66 @@ UTF8::decode_utf8(const std::string& text, size_t& p)
 
 // FIXME: Get rid of exceptions in this code
 UTF8::iterator::iterator(const std::string& text_)
-  : text(text_),
-    pos(0)
+  : text(&text_),
+    pos(0),
+    idx(0)
 {
-  try {
-    chr = decode_utf8(text, pos);
-  } catch (std::exception) {
-    std::cout << "Malformed utf-8 sequence beginning with " << *((uint32_t*)(text.c_str() + pos)) << " found " << std::endl;
-    chr = 0;
-  }
+  try 
+    {
+      chr = decode_utf8(*text, pos);
+    } 
+  catch (std::exception) 
+    {
+      std::cout << "Malformed utf-8 sequence beginning with " << *((uint32_t*)(text->c_str() + pos)) << " found " << std::endl;
+      chr = INVALID_UTF8_SEQUENCE;
+    }
+}
+
+UTF8::iterator::iterator(const std::string& text_, const std::string::iterator it)
+  : text(&text_),
+    pos(it - text->begin()),
+    idx(pos)
+{
+  try 
+    {
+      chr = decode_utf8(*text, pos);
+    } 
+  catch (std::exception) 
+    {
+      std::cout << "Malformed utf-8 sequence beginning with " << *((uint32_t*)(text->c_str() + pos)) << " found " << std::endl;
+      chr = INVALID_UTF8_SEQUENCE;
+    }
 }
 
 bool
 UTF8::iterator::done() const
 {
-  return pos > text.size();
+  return pos > text->size();
+}
+
+UTF8::iterator
+UTF8::iterator::operator+(int n)
+{
+  UTF8::iterator it = *this;
+  for(int i = 0; i < n; ++i)
+    ++it;
+  return it;
 }
 
 UTF8::iterator&
-UTF8::iterator::operator++() {
-  try {
-    chr = decode_utf8(text, pos);
-  } catch (std::exception) {
-    std::cout << "Malformed utf-8 sequence beginning with " << *((uint32_t*)(text.c_str() + pos)) << " found " << std::endl;
-    chr = 0;
-    ++pos;
-  }
+UTF8::iterator::operator++() 
+{
+  try 
+    {
+      idx = pos;
+      chr = decode_utf8(*text, pos);
+    } 
+  catch (std::exception) 
+    {
+      std::cout << "Malformed utf-8 sequence beginning with " << *((uint32_t*)(text->c_str() + pos)) << " found " << std::endl;
+      chr = INVALID_UTF8_SEQUENCE;
+      ++pos;
+    }
 
   return *this;
 }

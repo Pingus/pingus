@@ -24,11 +24,42 @@
 class UTF8
 {
 public:
+  class iterator
+  {
+  private:
+    const std::string* text;
+    
+    /** Position of the next Unicode character after \a chr */
+    std::string::size_type pos;
+    
+    /** Position of \a chr */
+    std::string::size_type idx;
+
+    /** Current Unicode character */
+    uint32_t chr;
+  
+  public:
+    /** Create a UTF8 iterator, note that \a text is stored as
+        pointer, thus it must remain valid for the lifetime of the
+        iterator. */
+    iterator(const std::string& text);
+    iterator(const std::string& text, std::string::iterator it);
+
+    bool done() const;
+    iterator& operator++();
+    iterator operator+(int n);
+    uint32_t operator*() const;
+    
+    std::string::size_type get_index() const { return idx; }
+    const std::string& get_string() const { return *text; }
+  };
+
   /** 
    * Returns the number of characters in a UTF-8 string 
    */
   static std::string::size_type length(const std::string& str);
 
+  static std::string substr(const iterator& first, const iterator& last);
   static std::string substr(const std::string& text, std::string::size_type pos, std::string::size_type n);
   static std::string::const_iterator advance(std::string::const_iterator it, std::string::size_type n = 1);
 
@@ -52,20 +83,6 @@ public:
   static uint32_t decode_utf8(const std::string& text, size_t& p);
 
   static uint32_t decode_utf8(const std::string& text);
-
-  class iterator
-  {
-  private:
-    const std::string&     text;
-    std::string::size_type pos;
-    uint32_t chr;
-  
-  public:
-    iterator(const std::string& text_);
-    bool done() const;
-    iterator& operator++();
-    uint32_t operator*() const;
-  };
 };
 
 #endif
