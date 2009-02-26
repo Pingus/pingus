@@ -69,20 +69,20 @@ StringFormat::break_line (const std::string& text_, int width, const Font& font)
   std::string text = StringFormat::normalize(text_);
 
   UTF8::iterator beg(text);
-  int line_width = 0;
+  float line_width = 0;
   std::ostringstream out;
   
   for(UTF8::iterator it(text); !it.done(); ++it)
     {
       std::string word = UTF8::substr(beg, it+1);
-      int word_width = font.get_width(word);
+      float word_width = font.get_width(word);
 
       if (UTF8::is_linebreak_character(*it))
         {
           if ((line_width + word_width) > width)
             {
               out << "\n" << word;
-              line_width = 0;
+              line_width = word_width;
             }
           else
             {
