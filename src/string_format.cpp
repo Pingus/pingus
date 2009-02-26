@@ -17,7 +17,7 @@
 #include <sstream>
 #include "font.hpp"
 #include "string_format.hpp"
-#include "utf8_iterator.hpp"
+#include "utf8.hpp"
 
 std::string
 StringFormat::normalize(std::string text)

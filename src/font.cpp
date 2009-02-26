@@ -22,7 +22,7 @@
 #include "font.hpp"
 #include "surface.hpp"
 #include "line_iterator.hpp"
-#include "utf8_iterator.hpp"
+#include "utf8.hpp"
 #include "font_description.hpp"
 #include "display/framebuffer.hpp"
 #include "display/display.hpp"
