@@ -33,6 +33,7 @@
 #include "stat_manager.hpp"
 #include "credits.hpp"
 #include "display/display.hpp"
+#include "utf8_iterator.hpp"
 #include "sound/sound.hpp"
 
 class StoryScreenComponent : public GUI::Component
@@ -46,7 +47,7 @@ private:
 
   bool page_displayed_completly;
 
-  WorldmapNS::WorldmapStory *story;
+  WorldmapNS::WorldmapStory* story;
   std::vector<StoryPage> pages;
   Sprite page_surface;
   StoryPage  current_page;
@@ -186,9 +187,11 @@ StoryScreenComponent::update(float delta)
   if (!page_displayed_completly)
     {
       std::string::size_type len = static_cast<std::string::size_type>(20.0f * time_passed);
-      display_text = current_page.text.substr(0, Math::min(current_page.text.length(), len));
-
-      if (current_page.text.length() < len)
+      std::string::size_type text_len = UTF8::length(current_page.text);
+      
+      display_text = UTF8::substr(current_page.text, 0, Math::min(text_len, len));
+       
+      if (text_len < len)
         {
           page_displayed_completly = true;
         }

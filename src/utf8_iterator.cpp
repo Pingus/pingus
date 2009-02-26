@@ -18,7 +18,67 @@
 #include <iostream>
 #include <stdexcept>
 #include "utf8_iterator.hpp"
+
+std::string::size_type
+UTF8::length(const std::string& str)
+{
+  // FIXME: Doesn't check if UTF8 sequence is valid
+  std::string::size_type len = 0;  
+  for(std::string::const_iterator i = str.begin(); i != str.end(); ++i)
+    {
+      unsigned char c = *i;
+      if (((c & 0xc0) == 0xc0) || (c < 0x80)) // 0xc0 == 1100_000
+        {
+          len += 1;
+        }
+    }
+  
+  return len;
+}
 
+std::string
+UTF8::substr(const std::string& text, std::string::size_type pos, std::string::size_type n)
+{
+  std::string::const_iterator beg_it = UTF8::advance(text.begin(), pos);
+  std::string::const_iterator end_it = UTF8::advance(beg_it, n);
+  
+  return std::string(beg_it, end_it);
+}
+
+std::string::const_iterator
+UTF8::advance(std::string::const_iterator it, std::string::size_type n)
+{
+  for(std::string::size_type i = 0; i < n; ++i)
+    {
+      // FIXME: Doesn't check if UTF8 sequence is valid
+      unsigned char c = *it;
+
+      if (c < 0x80)
+        {
+          it += 1;
+        }
+      else if ((c & 0xf0) == 0xf0)
+        {
+          it += 4;
+        }
+      else if ((c & 0xe0) == 0xe0)
+        {
+          it += 3;
+        }
+      else if ((c & 0xc0) == 0xc0)
+        {
+          it += 2;
+        }
+      else
+        {
+          std::cout << "UTF8: malformed UTF-8 sequence: " << (int)c << std::endl;
+          it += 1;
+        }
+    }
+  
+  return it;
+}
+
 // FIXME: Get rid of exceptions in this code
 UTF8Iterator::UTF8Iterator(const std::string& text_)
   : text(text_),
@@ -115,5 +175,24 @@ UTF8Iterator::decode_utf8(const std::string& text, size_t& p)
   }
   throw std::runtime_error("Malformed utf-8 sequence");
 }
+
+#ifdef __TEST__
+int main(int argc, char** argv)
+{
+  if (argc != 2)
+    {
+      std::cout << "Usage: " << argv[0] << " TEXT" << std::endl;
+    }
+  else
+    {
+      std::cout << "ASCII: " << std::string(argv[1]).length() << std::endl;
+      std::cout << "UTF8:  " << UTF8::length(argv[1]) << std::endl;
 
+      std::string res = UTF8::substr(argv[1], 1, 1);
+      std::cout << "substr:  " << res.length() << " " << res << std::endl;
+    }
+  return 0;
+}
+#endif
+
 /* EOF */

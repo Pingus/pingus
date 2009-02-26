@@ -20,7 +20,15 @@
 
 #include <stdint.h>
 #include <string>
-
+
+class UTF8
+{
+public:
+  static std::string::size_type length(const std::string& str);
+  static std::string substr(const std::string& text, std::string::size_type pos, std::string::size_type n);
+  static std::string::const_iterator advance(std::string::const_iterator it, std::string::size_type n = 1);
+};
+
 class UTF8Iterator
 {
 private:
@@ -48,7 +56,7 @@ public:
   UTF8Iterator& operator++();
   uint32_t operator*() const;
 };
-
+
 #endif
 
 /* EOF */
