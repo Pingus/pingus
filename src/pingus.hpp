@@ -40,7 +40,7 @@
 #  include <assert.h>
 #endif
 
-#define UNUSED_ARG(a) 
+#define UNUSED_ARG(expr) do { (void)(expr); } while (0)
 
 #endif
 
