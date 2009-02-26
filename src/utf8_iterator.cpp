@@ -91,54 +91,17 @@ UTF8::advance(std::string::const_iterator it, std::string::size_type n)
   
   return it;
 }
-
-// FIXME: Get rid of exceptions in this code
-UTF8Iterator::UTF8Iterator(const std::string& text_)
-  : text(text_),
-    pos(0)
-{
-  try {
-    chr = decode_utf8(text, pos);
-  } catch (std::exception) {
-    std::cout << "Malformed utf-8 sequence beginning with " << *((uint32_t*)(text.c_str() + pos)) << " found " << std::endl;
-    chr = 0;
-  }
-}
-
-bool
-UTF8Iterator::done() const
-{
-  return pos > text.size();
-}
-
-UTF8Iterator&
-UTF8Iterator::operator++() {
-  try {
-    chr = decode_utf8(text, pos);
-  } catch (std::exception) {
-    std::cout << "Malformed utf-8 sequence beginning with " << *((uint32_t*)(text.c_str() + pos)) << " found " << std::endl;
-    chr = 0;
-    ++pos;
-  }
-
-  return *this;
-}
-
-uint32_t
-UTF8Iterator::operator*() const {
-  return chr;
-}
-
 /**
  * returns true if this byte matches a bitmask of 10xx.xxxx, i.e. it is the 2nd, 3rd or 4th byte of a multibyte utf8 string
  */
 bool
-UTF8Iterator::has_multibyte_mark(unsigned char c) {
+UTF8::has_multibyte_mark(unsigned char c) 
+{
   return ((c & 0300) == 0200);
 }
 
 uint32_t
-UTF8Iterator::decode_utf8(const std::string& text)
+UTF8::decode_utf8(const std::string& text)
 {
   size_t p = 0;
   return decode_utf8(text, p);
@@ -152,7 +115,7 @@ UTF8Iterator::decode_utf8(const std::string& text)
  * See unicode standard section 3.10 table 3-5 and 3-6 for details.
  */
 uint32_t
-UTF8Iterator::decode_utf8(const std::string& text, size_t& p)
+UTF8::decode_utf8(const std::string& text, size_t& p)
 {
   uint32_t c1 = (unsigned char) text[p+0];
 
@@ -194,6 +157,44 @@ UTF8Iterator::decode_utf8(const std::string& text, size_t& p)
     return (c1 & 0007) << 18 | (c2 & 0077) << 12 | (c3 & 0077) << 6 | (c4 & 0077);
   }
   throw std::runtime_error("Malformed utf-8 sequence");
+}
+
+// FIXME: Get rid of exceptions in this code
+UTF8::iterator::iterator(const std::string& text_)
+  : text(text_),
+    pos(0)
+{
+  try {
+    chr = decode_utf8(text, pos);
+  } catch (std::exception) {
+    std::cout << "Malformed utf-8 sequence beginning with " << *((uint32_t*)(text.c_str() + pos)) << " found " << std::endl;
+    chr = 0;
+  }
+}
+
+bool
+UTF8::iterator::done() const
+{
+  return pos > text.size();
+}
+
+UTF8::iterator&
+UTF8::iterator::operator++() {
+  try {
+    chr = decode_utf8(text, pos);
+  } catch (std::exception) {
+    std::cout << "Malformed utf-8 sequence beginning with " << *((uint32_t*)(text.c_str() + pos)) << " found " << std::endl;
+    chr = 0;
+    ++pos;
+  }
+
+  return *this;
+}
+
+uint32_t
+UTF8::iterator::operator*() const 
+{
+  return chr;
 }
 
 #ifdef __TEST__

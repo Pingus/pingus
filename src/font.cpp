@@ -109,7 +109,7 @@ public:
     float dstx = float(x - offset.x);
     float dsty = float(y - offset.y);
     
-    for(UTF8Iterator i(text); !i.done(); ++i)
+    for(UTF8::iterator i(text); !i.done(); ++i)
       {
         const uint32_t& unicode = *i;
 
@@ -144,7 +144,7 @@ public:
   {
     float width = 0.0f;
     float last_width = 0;
-    for(UTF8Iterator i(text); !i.done(); ++i)
+    for(UTF8::iterator i(text); !i.done(); ++i)
       {
         const uint32_t& unicode = *i;
 

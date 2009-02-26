@@ -20,7 +20,7 @@
 #include "utf8_iterator.hpp"
 
 std::string
-StringFormat::break_line (std::string text, int width, const Font& font)
+StringFormat::normalize(std::string text)
 {
   std::string::size_type pos = 0;
   while ((pos = text.find('\t', pos)) != std::string::npos)
@@ -60,7 +60,14 @@ StringFormat::break_line (std::string text, int width, const Font& font)
   while ((pos = text.find("  ", pos)) != std::string::npos)
     text.replace(pos, 2, 1, ' ');
 
-  // Text is now normalized, time to start breaking the lines
+  return text;
+}
+
+std::string
+StringFormat::break_line (const std::string& text_, int width, const Font& font)
+{
+  std::string text = StringFormat::normalize(text_);
+
   std::string::const_iterator beg = text.begin();
   int line_width = 0;
   std::ostringstream out;
@@ -69,7 +76,7 @@ StringFormat::break_line (std::string text, int width, const Font& font)
       std::string word(beg, UTF8::advance(it));
       int word_width = font.get_width(word);
       
-      if (UTF8::is_linebreak_character(UTF8Iterator::decode_utf8(std::string(it, const_cast<const std::string&>(text).end()))))
+      if (UTF8::is_linebreak_character(UTF8::decode_utf8(std::string(it, const_cast<const std::string&>(text).end()))))
         {
           if ((line_width + word_width) > width)
             {

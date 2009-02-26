@@ -24,13 +24,16 @@ class Font;
 class StringFormat {
 
 public:
+  /** Joins series of whitespace into a single space, except doubte
+      newline which leaves a single newline (TeX style) */
+  static std::string normalize(std::string text);
+
   /** Takes a string \a text and wraps it into multiple lines, each
       less then \a width long. Line wrappings happens TeX style, i.e.
       a double newline marks a newline, while other whitespace is
       joined to a single space. */
-  static std::string break_line(std::string text, int width, const Font& font);
+  static std::string break_line(const std::string& text, int width, const Font& font);
 };
-
 
 #endif
 

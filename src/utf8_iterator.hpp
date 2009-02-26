@@ -30,16 +30,7 @@ public:
 
   /** return true if a linebreak is allowed after this character */
   static bool is_linebreak_character(uint32_t unicode);
-};
-
-class UTF8Iterator
-{
-private:
-  const std::string&     text;
-  std::string::size_type pos;
-  uint32_t chr;
 
-public:
   /**
    * returns true if this byte matches a bitmask of 10xx.xxxx, i.e. it is the 2nd, 3rd or 4th byte of a multibyte utf8 string
    */
@@ -55,12 +46,20 @@ public:
   static uint32_t decode_utf8(const std::string& text, size_t& p);
 
   static uint32_t decode_utf8(const std::string& text);
+
+  class iterator
+  {
+  private:
+    const std::string&     text;
+    std::string::size_type pos;
+    uint32_t chr;
   
-public:
-  UTF8Iterator(const std::string& text_);
-  bool done() const;
-  UTF8Iterator& operator++();
-  uint32_t operator*() const;
+  public:
+    iterator(const std::string& text_);
+    bool done() const;
+    iterator& operator++();
+    uint32_t operator*() const;
+  };
 };
 
 #endif
