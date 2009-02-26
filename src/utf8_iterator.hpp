@@ -27,6 +27,9 @@ public:
   static std::string::size_type length(const std::string& str);
   static std::string substr(const std::string& text, std::string::size_type pos, std::string::size_type n);
   static std::string::const_iterator advance(std::string::const_iterator it, std::string::size_type n = 1);
+
+  /** return true if a linebreak is allowed after this character */
+  static bool is_linebreak_character(uint32_t unicode);
 };
 
 class UTF8Iterator
@@ -36,10 +39,11 @@ private:
   std::string::size_type pos;
   uint32_t chr;
 
+public:
   /**
    * returns true if this byte matches a bitmask of 10xx.xxxx, i.e. it is the 2nd, 3rd or 4th byte of a multibyte utf8 string
    */
-  bool has_multibyte_mark(unsigned char c);
+  static bool has_multibyte_mark(unsigned char c);
 
   /**
    * gets unicode character at byte position @a p of UTF-8 encoded @a
@@ -48,8 +52,10 @@ private:
    * @throws std::runtime_error if decoding fails.
    * See unicode standard section 3.10 table 3-5 and 3-6 for details.
    */
-  uint32_t decode_utf8(const std::string& text, size_t& p);
+  static uint32_t decode_utf8(const std::string& text, size_t& p);
 
+  static uint32_t decode_utf8(const std::string& text);
+  
 public:
   UTF8Iterator(const std::string& text_);
   bool done() const;

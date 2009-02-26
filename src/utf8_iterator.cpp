@@ -19,6 +19,19 @@
 #include <stdexcept>
 #include "utf8_iterator.hpp"
 
+bool
+UTF8::is_linebreak_character(uint32_t unicode)
+{
+  if (unicode == ' ' || unicode >= 0x3400)
+    {
+      return true;
+    } 
+  else
+    {
+      return false;
+    }
+}
+
 std::string::size_type
 UTF8::length(const std::string& str)
 {
@@ -122,6 +135,13 @@ UTF8Iterator::operator*() const {
 bool
 UTF8Iterator::has_multibyte_mark(unsigned char c) {
   return ((c & 0300) == 0200);
+}
+
+uint32_t
+UTF8Iterator::decode_utf8(const std::string& text)
+{
+  size_t p = 0;
+  return decode_utf8(text, p);
 }
 
 /**

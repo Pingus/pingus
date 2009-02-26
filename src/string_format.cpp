@@ -14,9 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include <sstream>
 #include "font.hpp"
 #include "string_format.hpp"
-
+#include "utf8_iterator.hpp"
 
 std::string
 StringFormat::break_line (std::string text, int width, const Font& font)
@@ -59,27 +60,36 @@ StringFormat::break_line (std::string text, int width, const Font& font)
   while ((pos = text.find("  ", pos)) != std::string::npos)
     text.replace(pos, 2, 1, ' ');
 
-  size_t start_pos      = 0;
-  size_t previous_space = 0;
-  pos = 0;
-
-  while ((pos = text.find(' ', pos + 1)) != std::string::npos)
+  // Text is now normalized, time to start breaking the lines
+  std::string::const_iterator beg = text.begin();
+  int line_width = 0;
+  std::ostringstream out;
+  for(std::string::const_iterator it = beg; it != text.end(); it = UTF8::advance(it))
     {
-      if (font.get_width(text.substr(start_pos, pos - start_pos)) > width)
+      std::string word(beg, UTF8::advance(it));
+      int word_width = font.get_width(word);
+      
+      if (UTF8::is_linebreak_character(UTF8Iterator::decode_utf8(std::string(it, const_cast<const std::string&>(text).end()))))
         {
-	  text[previous_space] = '\n';
-	  start_pos = previous_space + 1;
-	}
-      else if (font.get_width(text.substr(start_pos, text.length())) <= width)
-        break;
-
-      previous_space = pos;
+          if ((line_width + word_width) > width)
+            {
+              out << "\n" << word;
+              line_width = 0;
+            }
+          else
+            {
+              out << word;
+              line_width += word_width;
+            }
+          
+          beg = UTF8::advance(it);
+        }
     }
+  
+  std::string::const_iterator end = text.end();
+  out << std::string(beg, end);
 
-  if (font.get_width(text.substr(start_pos, text.length() - start_pos)) > width)
-    text[text.rfind(' ')] = '\n';
-
-  return text;
+  return out.str();
 }
 
 
