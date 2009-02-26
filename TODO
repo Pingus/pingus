@@ -51,9 +51,6 @@ OLPC Issues
 "Important" Stuff and Random Notes:
 ===================================
 
-* line_width handling is broken either in Font or in StringFormat,
-  leading to overflow in the StoryScreen
-
 * Automatically generate Levelsets for User generated levels, maybe allow to edit them somehow
 
 * Valgrind results:
