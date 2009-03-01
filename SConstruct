@@ -95,7 +95,7 @@ pingus_sources = [
 'src/string_util.cpp',
 'src/surface.cpp',
 'src/system.cpp', 
-'src/utf8_iterator.cpp',
+'src/utf8.cpp',
 'src/world.cpp', 
 'src/worldobj.cpp', 
 'src/worldobj_factory.cpp', 
