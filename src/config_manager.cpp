@@ -29,7 +29,7 @@
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
 
-extern TinyGetText::DictionaryManager dictionary_manager;
+extern tinygettext::DictionaryManager dictionary_manager;
 
 ConfigManager config_manager;
 
@@ -124,7 +124,7 @@ ConfigManager::load(const std::string& file)
       else if (i->get_name() == "language")
         {
           i->read_string("value", string_value);
-          set_language(string_value);
+          set_language(tinygettext::Language::from_spec(string_value));
         }
       else if (i->get_name() == "swcursor")
         {
@@ -183,7 +183,7 @@ ConfigManager::save()
   writer.end_section();
 
   writer.begin_section("language");
-  writer.write_string("value", get_language());
+  writer.write_string("value", get_language().str());
   writer.end_section();
 
   writer.begin_section("swcursor");
@@ -333,22 +333,22 @@ ConfigManager::get_print_fps()
 }
 
 void
-ConfigManager::set_language(const std::string& v)
+ConfigManager::set_language(const tinygettext::Language& v)
 {
   if (maintainer_mode)
     std::cout << "ConfigManager::set_language: '" << v << "'" << std::endl;
 
   if (v != get_language())
     {
-      dictionary_manager.set_current_dictionary(v);
+      dictionary_manager.set_language(v);
       on_language_change(v);
     }
 }
 
-std::string
+tinygettext::Language
 ConfigManager::get_language()
 {
-  return dictionary_manager.get_dictionary().get_language()->code;
+  return dictionary_manager.get_language();
 }
 
 void

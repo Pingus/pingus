@@ -25,6 +25,7 @@
 #include "components/label.hpp"
 #include "gui/rect_component.hpp"
 #include "gui/surface_button.hpp"
+#include "tinygettext/language.hpp"
 
 class CheckBox;
 class SliderBox;
@@ -67,7 +68,7 @@ private:
   Connections connections;
 
   std::string language;
-  std::map<std::string, std::string> language_map;
+  std::map<std::string, tinygettext::Language> language_map;
 
 public:
   OptionMenu();

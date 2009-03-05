@@ -54,6 +54,7 @@ extern "C" {
 
 #include "gettext.h"
 #include "tinygettext/dictionary_manager.hpp"
+#include "tinygettext/log.hpp"
 #include "command_line.hpp"
 
 #include "screen/screen_manager.hpp"
@@ -86,7 +87,7 @@ extern "C" {
 #pragma warning( disable : 4996 ) 
 #endif
 
-extern TinyGetText::DictionaryManager dictionary_manager;
+extern tinygettext::DictionaryManager dictionary_manager;
 
 void
 signal_handler(int signo)
@@ -168,9 +169,9 @@ PingusMain::apply_args()
     { // language listing only works after the data path has been set
       std::cout << "Available languages are:" << std::endl;
       std::cout << "========================" << std::endl;
-      std::set<std::string> lst = dictionary_manager.get_languages();
-      for (std::set<std::string>::iterator i = lst.begin(); i != lst.end(); ++i)
-        std::cout << TinyGetText::get_language_def(*i)->name << " (" << *i << ")" << std::endl;
+      std::set<tinygettext::Language> lst = dictionary_manager.get_languages();
+      for (std::set<tinygettext::Language>::iterator i = lst.begin(); i != lst.end(); ++i)
+        std::cout << i->get_name() << " (" << i->str() << ")" << std::endl;
 
       std::cout << "\nLanguages can be used via:\n\n    pingus --language de\n" << std::endl; 
 
@@ -196,7 +197,7 @@ PingusMain::apply_args()
 
   // Misc
   if (options.language.is_set())
-    dictionary_manager.set_current_dictionary(options.language.get());
+    dictionary_manager.set_language(tinygettext::Language::from_name(options.language.get()));
 
   if (options.auto_scrolling.is_set())
     auto_scrolling = options.auto_scrolling.get();
@@ -600,9 +601,9 @@ PingusMain::print_greeting_message()
 
   std::cout << "data path:               " << path_manager.get_base_path() << std::endl;
   std::cout << "language:                " 
-            << dictionary_manager.get_dictionary().get_language()->name 
+            << dictionary_manager.get_language().get_name()
             << " ("
-            << dictionary_manager.get_dictionary().get_language()->code 
+            << dictionary_manager.get_language().str() 
             << ")"
             << std::endl;
 
@@ -699,6 +700,8 @@ PingusMain::start_game ()
 int
 PingusMain::main(int argc, char** argv)
 {
+  tinygettext::Log::set_log_info_callback(0);
+
    // Register the segfault_handler
 #ifndef WIN32
   signal(SIGSEGV, signal_handler);

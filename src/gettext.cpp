@@ -18,14 +18,14 @@
 #include "tinygettext/dictionary.hpp"
 #include "gettext.h"
 
-TinyGetText::DictionaryManager dictionary_manager;
+tinygettext::DictionaryManager dictionary_manager;
 
 std::string _(const std::string& msg) {
   return dictionary_manager.get_dictionary().translate(msg);
 }
 
-std::string N_(const std::string& msg, const std::string& msg_pl, int num) {
-  return dictionary_manager.get_dictionary().translate(msg, msg_pl, num);
+std::string _(const std::string& msg, const std::string& msg_pl, int num) {
+  return dictionary_manager.get_dictionary().translate_plural(msg, msg_pl, num);
 }
 
 /* EOF */

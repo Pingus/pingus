@@ -34,11 +34,12 @@
 #include "gui/gui_manager.hpp"
 #include "sound/sound.hpp"
 #include "tinygettext/dictionary_manager.hpp"
+#include "tinygettext/language.hpp"
 #include "option_menu.hpp"
 
 #define C(x) connections.push_back(x)
 
-extern TinyGetText::DictionaryManager dictionary_manager;
+extern tinygettext::DictionaryManager dictionary_manager;
 
 class OptionMenuCloseButton
   : public GUI::SurfaceButton
@@ -118,34 +119,19 @@ OptionMenu::OptionMenu()
 
   resolution_box->set_current_choice(current_choice);
 
-  std::string current_language = dictionary_manager.get_current_language();
+  tinygettext::Language current_language = dictionary_manager.get_language();
   language = current_language;
-  current_choice = -1;
   n = 0;
 
   ChoiceBox* language_box = new ChoiceBox(Rect());
-  std::set<std::string> lst = dictionary_manager.get_languages();
-  std::vector<std::string> languages;
-  for (std::set<std::string>::iterator i = lst.begin(); i != lst.end(); ++i)
-    {
-      TinyGetText::LanguageDef* lang = TinyGetText::get_language_def(*i);
-      if (lang)
-        {
-          languages.push_back(lang->name);
-          language_map[lang->name] = *i;
-        }
-    }
-  std::sort(languages.begin(), languages.end());
+  std::set<tinygettext::Language> languages = dictionary_manager.get_languages();
 
-  for (std::vector<std::string>::iterator i = languages.begin(); i != languages.end(); ++i, ++n)
+  for (std::set<tinygettext::Language>::iterator i = languages.begin(); i != languages.end(); ++i)
     {
-      language_box->add_choice(*i);
+      language_box->add_choice(i->str());
       if (current_language == *i)
-        current_choice = n;
+        language_box->set_current_choice(current_choice);
     }
-
-  if (current_choice != -1)
-    language_box->set_current_choice(current_choice);
 
   ChoiceBox* scroll_box = new ChoiceBox(Rect());
   scroll_box->add_choice("Drag&Drop");
@@ -175,7 +161,7 @@ OptionMenu::OptionMenu()
   C(resolution_box->on_change.connect(boost::bind(&OptionMenu::on_resolution_change, this, _1)));
 
   add_item(_("Language:"),        language_box);
-//  add_item(_("Scroll Mode:"),     scroll_box);
+  //  add_item(_("Scroll Mode:"),     scroll_box);
   add_item(_("Resolution:"),      resolution_box);
   add_item(_("Fullscreen:"),      fullscreen_box);
   add_item(_("Master Volume:"),   master_volume_box);

@@ -20,6 +20,7 @@
 #include <string>
 #include <boost/signal.hpp>
 #include "math/size.hpp"
+#include "tinygettext/language.hpp"
 
 /** */
 class ConfigManager
@@ -67,9 +68,9 @@ public:
   bool get_print_fps();
   boost::signal<void(bool)> on_print_fps_change;
 
-  void set_language(const std::string&);
-  std::string get_language();
-  boost::signal<void(const std::string&)> on_language_change;
+  void set_language(const tinygettext::Language&);
+  tinygettext::Language get_language();
+  boost::signal<void(const tinygettext::Language&)> on_language_change;
 
   void set_swcursor(bool);
   bool get_swcursor();
