@@ -28,6 +28,8 @@ verdana11.font
 
 Simple screen font for use in the editor.
 
+ % ./fontgen  generate /usr/share/fonts/truetype/arphic/ukai.ttc 11 0 256 5000 "$(cat characters-cjk.txt)"
+
 
 chalk-16px.font
 ===============
