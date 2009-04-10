@@ -93,12 +93,6 @@ Blocker::catch_pingu(Pingu* target)
     }
 }
 
-int
-Blocker::y_offset(void)
-{
-  return -33;
-}
-
 } // namespace Actions
 
 /* EOF */

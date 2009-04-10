@@ -30,8 +30,6 @@ private:
 public:
   Blocker (Pingu* p);
 
-  int   y_offset ();
-
   ActionName get_type() const { return Actions::BLOCKER; }
 
   void  draw (SceneContext& gc);
