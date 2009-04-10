@@ -208,11 +208,15 @@ pingus_sources = [
 'src/sound/sound_real.cpp', 
 'src/sound/sound_res_mgr.cpp', 
 
-'src/tinygettext/dictionary.cpp',
-'src/tinygettext/dictionary_manager.cpp',
-'src/tinygettext/iconv.cpp',
-'src/tinygettext/language_def.cpp',
-'src/tinygettext/po_file_reader.cpp',
+'external/tinygettext/dictionary.cpp',
+'external/tinygettext/iconv.cpp',
+'external/tinygettext/plural_forms.cpp',
+'external/tinygettext/dictionary_manager.cpp',
+'external/tinygettext/language.cpp',
+'external/tinygettext/po_parser.cpp',
+'external/tinygettext/directory.cpp',
+'external/tinygettext/log.cpp',
+'external/tinygettext/tinygettext.cpp',
 
 'src/worldmap/dot.cpp', 
 'src/worldmap/dot_factory.cpp', 
@@ -389,7 +393,7 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
     if os.environ.has_key('PKG_CONFIG_PATH'):
         env['ENV']['PKG_CONFIG_PATH'] = os.environ['PKG_CONFIG_PATH']
     
-    env['CPPPATH'] += ['.', 'src/']
+    env['CPPPATH'] += ['.', 'src/', 'external/']
 
     config_h_defines = []      
 
