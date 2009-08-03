@@ -457,7 +457,8 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
                                     'src/input/xinput_device.cpp']
         
     if not config.CheckLibWithHeader('boost_signals', 'boost/signals.hpp', 'c++'):
-        fatal_error += "  * library 'boost_signals' not found\n"
+       if not config.CheckLibWithHeader('boost_signals-mt', 'boost/signals.hpp', 'c++'):
+          fatal_error += "  * library 'boost_signals' not found\n"
 
     if not config.CheckLibWithHeader('png', 'png.h', 'c++'):
        fatal_error += "  * library 'png' not found\n"
