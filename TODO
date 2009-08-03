@@ -54,10 +54,10 @@ OLPC Issues
 * add a keyboard shortcut to single-step the gameloop
 
 * Blink Blinken <blinkblinken@googlemail.com>
-> I'm playing svn revision 3985 of pingus.
-> Find attached a demo of
-> pingus/data/levels/playable/if_only_i_can_fly_-_wayne_shelley.pingus
-> where the pingus are sort of tunneling through a row of blockers.
+  > I'm playing svn revision 3985 of pingus.
+  > Find attached a demo of
+  > pingus/data/levels/playable/if_only_i_can_fly_-_wayne_shelley.pingus
+  > where the pingus are sort of tunneling through a row of blockers.
 
 * ChoiceBox needs a way to carry user data for items
 
