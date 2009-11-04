@@ -21,8 +21,9 @@
 
 namespace Actions {
 
-Drown::Drown (Pingu* p)
-  : PinguAction(p)
+Drown::Drown (Pingu* p) :
+  PinguAction(p),
+  sprite()
 {
   sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
     pingu->get_owner_str() + "/drownfall/left"));

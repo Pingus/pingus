@@ -21,8 +21,9 @@
 
 namespace Actions {
 
-Jumper::Jumper (Pingu* p)
-  : PinguAction(p)
+Jumper::Jumper (Pingu* p) :
+  PinguAction(p),
+  sprite()
 {
   sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
                                                       pingu->get_owner_str() + "/jumper/left"));

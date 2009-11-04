@@ -137,10 +137,11 @@ private:
   StoryScreenSkipButton & operator=(const StoryScreenSkipButton&);
 };
 
-StoryScreen::StoryScreen(FileReader reader)
-  : story(new WorldmapNS::WorldmapStory(reader)),
-    continue_button(0),
-    skip_button(0)
+StoryScreen::StoryScreen(FileReader reader) :
+  story(new WorldmapNS::WorldmapStory(reader)),
+  story_comp(),
+  continue_button(0),
+  skip_button(0)
 {
   story_comp = new StoryScreenComponent(story.get());
   gui_manager->add(story_comp);
@@ -157,8 +158,16 @@ StoryScreen::~StoryScreen()
 {
 }
 
-StoryScreenComponent::StoryScreenComponent (WorldmapNS::WorldmapStory *arg_story)
-  : story(arg_story)
+StoryScreenComponent::StoryScreenComponent (WorldmapNS::WorldmapStory *arg_story) :
+  background(),
+  blackboard(),
+  display_text(),
+  time_passed(),
+  page_displayed_completly(),
+  story(arg_story),
+  pages(),
+  page_surface(),
+  current_page()
 {
   page_displayed_completly = false;
   time_passed  = 0;

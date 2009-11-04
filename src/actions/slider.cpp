@@ -21,9 +21,10 @@
 
 namespace Actions {
 
-Slider::Slider (Pingu* p)
-  : PinguAction(p),
-    speed(10)
+Slider::Slider (Pingu* p) :
+  PinguAction(p),
+  sprite(),
+  speed(10)
 {
   sprite.load(Direction::LEFT,  "pingus/player" + pingu->get_owner_str() + 
     "/slider/left");

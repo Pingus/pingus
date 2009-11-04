@@ -138,6 +138,10 @@ public:
   int get_width() const {
     return 34;
   }
+
+private:
+  PanelButton(const PanelButton&);
+  PanelButton & operator=(const PanelButton&);
 };
 
 Panel::Panel(EditorScreen* editor_)

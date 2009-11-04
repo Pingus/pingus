@@ -22,9 +22,10 @@
 
 namespace Actions {
 
-Smashed::Smashed (Pingu* p)
-  : PinguAction(p),
-    sound_played(false)
+Smashed::Smashed (Pingu* p) :
+  PinguAction(p),
+  sound_played(false),
+  sprite()
 {
   sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/bomber");
 }

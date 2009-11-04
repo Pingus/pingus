@@ -25,10 +25,11 @@
 
 namespace Actions {
 
-Digger::Digger (Pingu* p)
-  : PinguAction(p),
-    digger_radius("other/digger_radius_gfx", "other/digger_radius"),
-    digger_c(0)
+Digger::Digger (Pingu* p) :
+  PinguAction(p),
+  digger_radius("other/digger_radius_gfx", "other/digger_radius"),
+  sprite(),
+  digger_c(0)
 {
   sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/digger/left");
 }

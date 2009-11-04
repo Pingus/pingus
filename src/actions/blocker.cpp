@@ -22,8 +22,9 @@
 
 namespace Actions {
 
-Blocker::Blocker(Pingu* p)
-  : PinguAction(p)
+Blocker::Blocker(Pingu* p) :
+  PinguAction(p),
+  sprite()
 {
   sprite.load(Direction::LEFT,  "pingus/player" + pingu->get_owner_str() + "/blocker/left");
   sprite.load(Direction::RIGHT, "pingus/player" + pingu->get_owner_str() + "/blocker/right");

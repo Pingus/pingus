@@ -27,14 +27,16 @@
 
 namespace Actions {
 
-Bridger::Bridger (Pingu* p)
-  : PinguAction(p),
-    mode(B_BUILDING),
-    brick_l("other/brick_left"),
-    brick_r("other/brick_right"),
-    bricks(MAX_BRICKS),
-    block_build(false),
-    name(_("Bridger") + std::string(" (" + StringUtil::to_string(bricks) + ")"))
+Bridger::Bridger (Pingu* p) :
+  PinguAction(p),
+  mode(B_BUILDING),
+  walk_sprite(),
+  build_sprite(),
+  brick_l("other/brick_left"),
+  brick_r("other/brick_right"),
+  bricks(MAX_BRICKS),
+  block_build(false),
+  name(_("Bridger") + std::string(" (" + StringUtil::to_string(bricks) + ")"))
 {
   walk_sprite.load (Direction::LEFT,  Sprite("pingus/player" + 
                                              pingu->get_owner_str() + "/bridger_walk/left"));
@@ -66,57 +68,57 @@ Bridger::draw(SceneContext& gc)
   }
 
   switch (mode)
-    {
-      case B_BUILDING:
-        gc.color().draw(build_sprite[pingu->direction], Vector3f(pingu->get_pos().x - (x_offset * pingu->direction),
-                                                                 pingu->get_pos().y + y_offset));
-        break;
+  {
+    case B_BUILDING:
+      gc.color().draw(build_sprite[pingu->direction], Vector3f(pingu->get_pos().x - (x_offset * pingu->direction),
+                                                               pingu->get_pos().y + y_offset));
+      break;
 
-      case B_WALKING:
-        gc.color().draw(walk_sprite[pingu->direction], Vector3f(pingu->get_pos().x - (x_offset * pingu->direction),
-                                                                pingu->get_pos().y + y_offset));
-        break;
-    }
+    case B_WALKING:
+      gc.color().draw(walk_sprite[pingu->direction], Vector3f(pingu->get_pos().x - (x_offset * pingu->direction),
+                                                              pingu->get_pos().y + y_offset));
+      break;
+  }
 }
 
 void
 Bridger::update()
 {
   switch (mode)
-    {
-      case B_BUILDING:
-        update_build ();
-        break;
+  {
+    case B_BUILDING:
+      update_build ();
+      break;
 
-      case B_WALKING:
-        update_walk ();
-        break;
-    }
+    case B_WALKING:
+      update_walk ();
+      break;
+  }
 }
 
 void
 Bridger::update_walk ()
 {
   if (walk_sprite[pingu->direction].is_finished ()) // FIXME: Dangerous! might not be fixed timing
+  {
+    if (way_is_free())
     {
-      if (way_is_free())
-	{
-	  mode = B_BUILDING;
-	  block_build = false;
-	  walk_sprite[pingu->direction].restart();
-	  walk_one_step_up();
-	}
-      else // We reached a wall...
-	{
-	  pingu->direction.change ();
-	  pingu->set_action (Actions::WALKER);
-	  return;
-	}
+      mode = B_BUILDING;
+      block_build = false;
+      walk_sprite[pingu->direction].restart();
+      walk_one_step_up();
     }
+    else // We reached a wall...
+    {
+      pingu->direction.change ();
+      pingu->set_action (Actions::WALKER);
+      return;
+    }
+  }
   else
-    {
-      walk_sprite.update ();
-    }
+  {
+    walk_sprite.update ();
+  }
 }
 
 void
@@ -126,32 +128,32 @@ Bridger::update_build ()
 
   // FIXME: Game logic must not depend on Sprite states
   if (build_sprite[pingu->direction].get_current_frame () >= 7 && !block_build)
-    {
-      block_build = true;
+  {
+    block_build = true;
 
-      if (bricks > 0)
-	{
-	  if (brick_placement_allowed())
-	    place_a_brick();
-	  else
-	    {
-	      pingu->direction.change ();
-	      pingu->set_action (Actions::WALKER);
-	      return;
-	    }
-	}
-      else // Out of bricks
-	{
-	  pingu->set_action(Actions::WAITER);
-          return;
-	}
+    if (bricks > 0)
+    {
+      if (brick_placement_allowed())
+        place_a_brick();
+      else
+      {
+        pingu->direction.change ();
+        pingu->set_action (Actions::WALKER);
+        return;
+      }
     }
+    else // Out of bricks
+    {
+      pingu->set_action(Actions::WAITER);
+      return;
+    }
+  }
 
   if (build_sprite[pingu->direction].is_finished ())
-    {
-      mode = B_WALKING;
-      build_sprite[pingu->direction].restart();
-    }
+  {
+    mode = B_WALKING;
+    build_sprite[pingu->direction].restart();
+  }
 }
 
 // way_is_free() needs to stop BRIDGERS from getting stuck between a brick
@@ -166,14 +168,14 @@ Bridger::way_is_free()
   bool way_free = true;
 
   for (int x_inc = 1; x_inc <= 4; x_inc++)
+  {
+    if (rel_getpixel(x_inc, 2) != Groundtype::GP_NOTHING
+        || head_collision_on_walk(x_inc, 2))
     {
-      if (rel_getpixel(x_inc, 2) != Groundtype::GP_NOTHING
-	  || head_collision_on_walk(x_inc, 2))
-	{
-	  way_free = false;
-	  break;
-	}
+      way_free = false;
+      break;
     }
+  }
 
   return way_free;
 }
@@ -198,19 +200,19 @@ Bridger::place_a_brick()
     Sound::PingusSound::play_sound("ting");
 
   if (pingu->direction.is_right())
-    {
-      WorldObj::get_world()->put(brick_r,
-                                 static_cast<int>(pingu->get_pos().x + 10 - brick_r.get_width()),
-                                 static_cast<int>(pingu->get_pos().y),
-                                 Groundtype::GP_BRIDGE);
-    }
+  {
+    WorldObj::get_world()->put(brick_r,
+                               static_cast<int>(pingu->get_pos().x + 10 - brick_r.get_width()),
+                               static_cast<int>(pingu->get_pos().y),
+                               Groundtype::GP_BRIDGE);
+  }
   else
-    {
-      WorldObj::get_world()->put(brick_l,
-                                 static_cast<int>(pingu->get_pos().x - 10),
-                                 static_cast<int>(pingu->get_pos().y),
-                                 Groundtype::GP_BRIDGE);
-    }
+  {
+    WorldObj::get_world()->put(brick_l,
+                               static_cast<int>(pingu->get_pos().x - 10),
+                               static_cast<int>(pingu->get_pos().y),
+                               Groundtype::GP_BRIDGE);
+  }
 }
 
 void

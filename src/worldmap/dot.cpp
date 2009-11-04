@@ -21,8 +21,9 @@
 
 namespace WorldmapNS {
 
-Dot::Dot(FileReader reader)
-  : Drawable()
+Dot::Dot(FileReader reader) :
+  Drawable(),
+  pos()
 {
   reader.read_vector("position", pos);
   reader.read_string("name",     name);

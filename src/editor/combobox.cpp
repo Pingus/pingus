@@ -26,11 +26,15 @@
 
 namespace Editor {
 
-Combobox::Combobox(const Rect& rect_)
-  : RectComponent(rect_),
-    sprite("core/editor/combobox"),
-    current_item(-1),
-    drop_down(false)
+Combobox::Combobox(const Rect& rect_) :
+  RectComponent(rect_),
+  sprite("core/editor/combobox"),
+  list_rect(),
+  item_list(),
+  current_item(-1),
+  hover_item(),
+  drop_down(false),
+  list_offset()
 {
 }
 
@@ -69,29 +73,29 @@ void
 Combobox::on_primary_button_press(int x, int y)
 {
   if (drop_down)
-    {
-      // Determine which item was selected, if any, and set the current item to it.
-      drop_down = false;
-      ungrab();
+  {
+    // Determine which item was selected, if any, and set the current item to it.
+    drop_down = false;
+    ungrab();
       
-      if (hover_item != -1)
-        {
-          current_item = hover_item;
-          on_select(item_list[current_item]);
-        }
-    }
-  else
+    if (hover_item != -1)
     {
-      drop_down = true;
-      grab();
-
-      list_rect = Rect(Vector2i(rect.left, 
-                                rect.top + get_box_offset()),
-                       Size(rect.get_width(),
-                            rect.get_height() * item_list.size()));
-
-      on_pointer_move(x,y);
+      current_item = hover_item;
+      on_select(item_list[current_item]);
     }
+  }
+  else
+  {
+    drop_down = true;
+    grab();
+
+    list_rect = Rect(Vector2i(rect.left, 
+                              rect.top + get_box_offset()),
+                     Size(rect.get_width(),
+                          rect.get_height() * item_list.size()));
+
+    on_pointer_move(x,y);
+  }
 }
 
 void
@@ -103,33 +107,33 @@ Combobox::draw(DrawingContext &gc)
     gc.draw_rect(rect, Color(0,0,0));
 
     if (current_item != -1)
-      {
-        gc.print_left(Fonts::verdana11, 
-                      Vector2i(rect.left + 5, 
-                               rect.top + rect.get_height()/2 - Fonts::verdana11.get_height()/2),
-                      item_list[current_item].label);
-      }
+    {
+      gc.print_left(Fonts::verdana11, 
+                    Vector2i(rect.left + 5, 
+                             rect.top + rect.get_height()/2 - Fonts::verdana11.get_height()/2),
+                    item_list[current_item].label);
+    }
   }
 
   if (drop_down && !item_list.empty())
+  {
+    gc.draw_fillrect(list_rect, Color(255,255,255), 90);
+
+    for (int i = 0; i < int(item_list.size()); ++i)
     {
-      gc.draw_fillrect(list_rect, Color(255,255,255), 90);
+      if (i == hover_item)
+        gc.draw_fillrect(Rect(Vector2i(rect.left, list_rect.top + rect.get_height()*i),
+                              Size(rect.get_width(), rect.get_height())),
+                         Color(150,200,255), 95);
 
-      for (int i = 0; i < int(item_list.size()); ++i)
-        {
-          if (i == hover_item)
-            gc.draw_fillrect(Rect(Vector2i(rect.left, list_rect.top + rect.get_height()*i),
-                                  Size(rect.get_width(), rect.get_height())),
-                             Color(150,200,255), 95);
-
-          gc.print_left(Fonts::verdana11, 
-                        Vector2i(list_rect.left + 5, 
-                                 list_rect.top + i * rect.get_height() + rect.get_height()/2 - Fonts::verdana11.get_height()/2),
-                        item_list[i].label, 100);
-        }
-
-      gc.draw_rect(list_rect, Color(0,0,0), 100);
+      gc.print_left(Fonts::verdana11, 
+                    Vector2i(list_rect.left + 5, 
+                             list_rect.top + i * rect.get_height() + rect.get_height()/2 - Fonts::verdana11.get_height()/2),
+                    item_list[i].label, 100);
     }
+
+    gc.draw_rect(list_rect, Color(0,0,0), 100);
+  }
 }
 
 int
@@ -147,10 +151,10 @@ Combobox::set_selected_item(int id)
 {
   for(int i = 0; i < int(item_list.size()); ++i)
     if (item_list[i].id == id)
-      {
-        current_item = i;
-        return true;
-      }
+    {
+      current_item = i;
+      return true;
+    }
   return false;  
 }
 
@@ -158,17 +162,17 @@ void
 Combobox::on_pointer_move(int x, int y)
 {
   if (drop_down)
+  {
+    if (list_rect.contains(Vector2i(x,y)))
     {
-      if (list_rect.contains(Vector2i(x,y)))
-        {
-          hover_item = (y - list_rect.top) / rect.get_height();
-          hover_item = Math::clamp(0, hover_item, int(item_list.size()-1));
-        }
-      else
-        {
-          hover_item = -1;
-        }
+      hover_item = (y - list_rect.top) / rect.get_height();
+      hover_item = Math::clamp(0, hover_item, int(item_list.size()-1));
     }
+    else
+    {
+      hover_item = -1;
+    }
+  }
 }
 
 } // namespace Editor 

@@ -42,6 +42,7 @@ private:
   bool block_build;
 
   std::string name;
+
 public:
   Bridger(Pingu*);
 

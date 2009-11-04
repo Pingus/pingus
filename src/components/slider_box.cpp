@@ -23,7 +23,8 @@
 SliderBox::SliderBox(const Rect& rect_)
   : RectComponent(rect_),
     value(10),
-    drag_drop(false)
+    drag_drop(false),
+    on_change()
 {
 }
 

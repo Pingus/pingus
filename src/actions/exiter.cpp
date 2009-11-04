@@ -22,9 +22,10 @@
 
 namespace Actions {
 
-Exiter::Exiter (Pingu* p)
-  : PinguAction(p),
-    sound_played(false)
+Exiter::Exiter (Pingu* p) :
+  PinguAction(p),
+  sprite(),
+  sound_played(false)
 {
   sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
     pingu->get_owner_str() + "/exit/left"));

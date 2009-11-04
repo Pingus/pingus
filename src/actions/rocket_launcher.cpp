@@ -24,32 +24,33 @@
 
 namespace Actions {
 
-RocketLauncher::RocketLauncher (Pingu* p)
-  : PinguAction(p),
-    launched(false)
+RocketLauncher::RocketLauncher (Pingu* p) :
+  PinguAction(p),
+  sprite(),
+  launched(false)
 {
   sprite.load(Direction::LEFT,  "pingus/player" + pingu->get_owner_str() + 
-    "/rocketlauncher/left");
+              "/rocketlauncher/left");
   sprite.load(Direction::RIGHT, "pingus/player" + pingu->get_owner_str() + 
-    "/rocketlauncher/right");
+              "/rocketlauncher/right");
 
-/* Explosive Particles not supported right now
-  WorldObj::get_world()->get_particle_holder()->add_particle
-    (new ExplosiveParticle (static_cast<int>(pingu->get_x()),
-			    static_cast<int>(pingu->get_y()) - 12,
-			    pingu->direction.is_left() ? -400.0f : 400.0f,
-			    0.0f));
-*/
+  /* Explosive Particles not supported right now
+     WorldObj::get_world()->get_particle_holder()->add_particle
+     (new ExplosiveParticle (static_cast<int>(pingu->get_x()),
+     static_cast<int>(pingu->get_y()) - 12,
+     pingu->direction.is_left() ? -400.0f : 400.0f,
+     0.0f));
+  */
 }
 
 void
 RocketLauncher::update ()
 {
   if (sprite[pingu->direction].is_finished())
-    {
-      pingu->set_action(Actions::WALKER);
-      return;
-    }
+  {
+    pingu->set_action(Actions::WALKER);
+    return;
+  }
 
   sprite.update();
 }

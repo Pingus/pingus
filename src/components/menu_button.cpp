@@ -26,8 +26,18 @@
 
 MenuButton::MenuButton(PingusMenu* menu_,
                        const Vector2i& pos_,
-                       const std::string& text_, const std::string& desc_)
-  : menu(menu_)
+                       const std::string& text_, const std::string& desc_) :
+  menu(menu_),
+  surface_p(),
+  highlight(),
+  font(),
+  font_large(),
+  x_pos(),
+  y_pos(),
+  desc(),
+  text(),
+  mouse_over(),
+  pressed()
 {
   surface_p = Sprite("core/menu/menuitem");
   highlight = Sprite("core/menu/menuitem_highlight");

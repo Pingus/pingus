@@ -21,9 +21,10 @@
 
 namespace Actions {
 
-Waiter::Waiter (Pingu* p)
-  : PinguAction(p),
-    countdown(2.0f)
+Waiter::Waiter (Pingu* p) :
+  PinguAction(p),
+  countdown(2.0f),
+  sprite()
 {
   sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/waiter/left");
 }

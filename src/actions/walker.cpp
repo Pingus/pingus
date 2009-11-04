@@ -23,8 +23,10 @@
 
 namespace Actions {
 
-Walker::Walker (Pingu* p)
-  : PinguAction(p)
+Walker::Walker (Pingu* p) :
+  PinguAction(p),
+  walker(),
+  floaterlayer()
 {
   walker.load(Direction::LEFT, "pingus/player" + pingu->get_owner_str() + "/walker/left");
   walker.load(Direction::RIGHT, "pingus/player" + pingu->get_owner_str() + "/walker/right");

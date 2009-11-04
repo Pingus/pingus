@@ -29,11 +29,16 @@
 #include "components/playfield.hpp"
 #include "components/smallmap.hpp"
 
-SmallMap::SmallMap(Server* server_, Playfield* playfield_, const Rect& rect_)
-  : RectComponent(rect_), 
-    server(server_),
-    playfield(playfield_),
-    gc_ptr(0)
+SmallMap::SmallMap(Server* server_, Playfield* playfield_, const Rect& rect_) :
+  RectComponent(rect_), 
+  server(server_),
+  playfield(playfield_),
+  exit_sur(),
+  entrance_sur(),
+  image(),
+  scroll_mode(),
+  has_focus(),
+  gc_ptr(0)
 { 
   image = std::auto_ptr<SmallMapImage>(new SmallMapImage(server, rect.get_width(), rect.get_height()));
 

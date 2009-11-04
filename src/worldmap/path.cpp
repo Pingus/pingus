@@ -21,8 +21,10 @@
 
 namespace WorldmapNS {
 
-Path::Path()
-  : path_length_valid (false)
+Path::Path() :
+  vec(),
+  path_length_valid (false),
+  path_length()
 {
 }
 

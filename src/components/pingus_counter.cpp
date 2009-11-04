@@ -25,9 +25,10 @@
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
 
-PingusCounter::PingusCounter(Server* s)
-  : server(s),
-    background("core/buttons/info")
+PingusCounter::PingusCounter(Server* s) :
+  server(s),
+  font(),
+  background("core/buttons/info")
 {
   font = Fonts::pingus_small_fixnum;
 }

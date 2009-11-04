@@ -21,13 +21,16 @@
 
 namespace Actions {
 
-Climber::Climber (Pingu* p)
-  : PinguAction(p)
+Climber::Climber (Pingu* p) :
+  PinguAction(p),
+  sprite(),
+  sprite_width(),
+  sprite_height()
 {
   sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
-    pingu->get_owner_str() + "/climber/left"));
+                                       pingu->get_owner_str() + "/climber/left"));
   sprite.load(Direction::RIGHT, Sprite("pingus/player" + 
-    pingu->get_owner_str() + "/climber/right"));
+                                       pingu->get_owner_str() + "/climber/right"));
 }
 
 void
@@ -37,42 +40,42 @@ Climber::update ()
 
   // If above is free
   if (   rel_getpixel(0, 1) == Groundtype::GP_NOTHING
-      || rel_getpixel(0, 1) == Groundtype::GP_BRIDGE)
+         || rel_getpixel(0, 1) == Groundtype::GP_BRIDGE)
+  {
+    // and there is still ground to walk on
+    if (rel_getpixel(1, 1) != Groundtype::GP_NOTHING)
     {
-      // and there is still ground to walk on
-      if (rel_getpixel(1, 1) != Groundtype::GP_NOTHING)
-	{
-	  pingu->set_pos(pingu->get_x(),
-			 pingu->get_y() - 1);
-	  return;
-	}
-      else if (rel_getpixel(1, 1) ==  Groundtype::GP_NOTHING)
-	{
-	  //  std::cout << "Climber failed, no more wall" << std::endl;
-
-	  // If Pingu able to get to new position without head collision
-	  if (!head_collision_on_walk(pingu->direction, 1))
-	    {
-              // Get ready to walk
-	      pingu->set_pos(pingu->get_x() + pingu->direction,
-			     pingu->get_y() - 1);
-	    }
-	  else
-	    {
-              // Get ready to fall
-              pingu->direction.change();
-	    }
-
-	  // Finish climbing.
-	  pingu->set_action(Actions::WALKER);
-	}
+      pingu->set_pos(pingu->get_x(),
+                     pingu->get_y() - 1);
+      return;
     }
-  else
+    else if (rel_getpixel(1, 1) ==  Groundtype::GP_NOTHING)
     {
-      //    std::cout << "Climber failed, falling down" << std::endl;
-      pingu->direction.change();
+      //  std::cout << "Climber failed, no more wall" << std::endl;
+
+      // If Pingu able to get to new position without head collision
+      if (!head_collision_on_walk(pingu->direction, 1))
+      {
+        // Get ready to walk
+        pingu->set_pos(pingu->get_x() + pingu->direction,
+                       pingu->get_y() - 1);
+      }
+      else
+      {
+        // Get ready to fall
+        pingu->direction.change();
+      }
+
+      // Finish climbing.
       pingu->set_action(Actions::WALKER);
     }
+  }
+  else
+  {
+    //    std::cout << "Climber failed, falling down" << std::endl;
+    pingu->direction.change();
+    pingu->set_action(Actions::WALKER);
+  }
 }
 
 void

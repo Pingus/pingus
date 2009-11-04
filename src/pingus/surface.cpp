@@ -47,16 +47,18 @@ private:
   SurfaceImpl & operator=(const SurfaceImpl&);
 };
 
-Surface::Surface()
+Surface::Surface() :
+  impl()
 {
 }
 
-Surface::Surface(boost::shared_ptr<SurfaceImpl> impl_)
-  : impl(impl_)
+Surface::Surface(boost::shared_ptr<SurfaceImpl> impl_) :
+  impl(impl_)
 {
 }
 
-Surface::Surface(const Pathname& pathname)
+Surface::Surface(const Pathname& pathname) :
+  impl()
 {
   SDL_Surface* surface = IMG_Load(pathname.get_sys_path().c_str());
   if (surface)

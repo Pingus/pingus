@@ -34,6 +34,7 @@ private:
   bool  path_length_valid;
   float path_length;
 
+private:
   float calc_length();
 public:
   typedef Vec::iterator iterator;

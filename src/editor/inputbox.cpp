@@ -22,8 +22,9 @@
 
 namespace Editor {
 
-Inputbox::Inputbox(const Rect& rect_)
-  : RectComponent(rect_)
+Inputbox::Inputbox(const Rect& rect_) :
+  RectComponent(rect_),
+  text()
 {
 }
 

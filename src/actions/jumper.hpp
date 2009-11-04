@@ -26,6 +26,7 @@ class Jumper : public PinguAction
 {
 private:
   StateSprite sprite;
+
 public:
   Jumper(Pingu*);
 

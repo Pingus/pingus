@@ -28,6 +28,7 @@ namespace WorldObjs {
 
 Entrance::Entrance(const FileReader& reader) :
   direction(MISC),
+  pos(),
   release_rate(150),
   owner_id(0),
   type("generic"),

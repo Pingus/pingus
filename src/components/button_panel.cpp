@@ -28,14 +28,15 @@
 
 using namespace Actions;
 
-ButtonPanel::ButtonPanel(GameSession* s, const Vector2i& pos)
-  : RectComponent(Rect()),
-    session(s),
-    background("core/buttons/buttonbackground"),
-    highlight("core/buttons/buttonbackgroundhl"),
-    current_button(0),
-    show_tip(false),
-    tip_button(0)
+ButtonPanel::ButtonPanel(GameSession* s, const Vector2i& pos) :
+  RectComponent(Rect()),
+  session(s),
+  background("core/buttons/buttonbackground"),
+  highlight("core/buttons/buttonbackgroundhl"),
+  buttons(),
+  current_button(0),
+  show_tip(false),
+  tip_button(0)
 {
   ActionHolder* aholder = session->get_server()->get_action_holder();
 
@@ -48,14 +49,14 @@ ButtonPanel::ButtonPanel(GameSession* s, const Vector2i& pos)
   std::sort(actions.begin(), actions.end());
 
   for(std::vector<ActionName>::size_type i = 0; i < actions.size(); ++i)
-    {
-      ActionButton button;
-      button.name   = actions[i];
-      button.sprite = Sprite("pingus/player0/" + action_to_string(button.name) + "/right");
-      button.sprite.set_hotspot(origin_center, 0, 0);
-      button.sprite.set_play_loop(true);
-      buttons.push_back(button);
-    }
+  {
+    ActionButton button;
+    button.name   = actions[i];
+    button.sprite = Sprite("pingus/player0/" + action_to_string(button.name) + "/right");
+    button.sprite.set_hotspot(origin_center, 0, 0);
+    button.sprite.set_play_loop(true);
+    buttons.push_back(button);
+  }
 }
 
 ButtonPanel::~ButtonPanel()

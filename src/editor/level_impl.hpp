@@ -44,7 +44,8 @@ public:
     difficulty(),
     author(),
     comment(),
-    music("none")
+    music("none"),
+    objects()
   {
     // Do nothing
   }

@@ -29,9 +29,10 @@
 
 #include "components/time_display.hpp"
 
-TimeDisplay::TimeDisplay (GameSession* c)
-  : server(c->get_server()),
-    infinity_symbol("core/misc/infinity")
+TimeDisplay::TimeDisplay (GameSession* c) :
+  server(c->get_server()),
+  font(),
+  infinity_symbol("core/misc/infinity")
 {
   font = Fonts::pingus_small_fixnum;
 }

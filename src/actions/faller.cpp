@@ -27,8 +27,10 @@
 
 namespace Actions {
 
-Faller::Faller (Pingu* p)
-  : PinguAction(p)
+Faller::Faller (Pingu* p) :
+  PinguAction(p),
+  faller(),
+  tumbler()
 {
   faller.load(Direction::LEFT,  Sprite("pingus/player" + 
                                                       pingu->get_owner_str() + "/faller/left"));

@@ -170,9 +170,11 @@ public:
   }
 };
 
-DrawingContext::DrawingContext(const Rect& rect_, bool clip)
-  : rect(rect_),
-    do_clipping(clip)
+DrawingContext::DrawingContext(const Rect& rect_, bool clip) :
+  drawingrequests(),
+  translate_stack(),
+  rect(rect_),
+  do_clipping(clip)
 {
   translate_stack.push_back(Vector2i(0, 0));
 }

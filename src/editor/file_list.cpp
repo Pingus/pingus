@@ -24,12 +24,17 @@
 
 namespace Editor {
 
-FileList::FileList(const Rect& rect_)
-  : RectComponent(rect_),
-    current_item(-1),
-    click_item(-1),
-    page(0),
-    num_pages(0)
+FileList::FileList(const Rect& rect_) :
+  RectComponent(rect_),
+  hspace(),
+  vspace(),
+  file_icon(),
+  directory_icon(),
+  directory(),
+  current_item(-1),
+  click_item(-1),
+  page(0),
+  num_pages(0)
 {
   update_layout();
 }
@@ -54,16 +59,16 @@ struct DirectorySorter
                   const System::DirectoryEntry& rhs)
   {
     if (lhs.type == rhs.type)
-      {
-        return lhs.name < rhs.name;
-      }
+    {
+      return lhs.name < rhs.name;
+    }
     else
-      {
-        if (lhs.type == System::DE_DIRECTORY)
-          return true;
-        else
-          return false;
-      }
+    {
+      if (lhs.type == System::DE_DIRECTORY)
+        return true;
+      else
+        return false;
+    }
   }
 };
 
@@ -93,31 +98,31 @@ FileList::draw(DrawingContext& gc)
   int y = rect.top;
   for(System::Directory::iterator i = directory.begin() + page * items_per_page();
       i != directory.begin() + end; ++i)
+  {
+    if (i->type == System::DE_DIRECTORY)
+      gc.draw(directory_icon, Vector2i(x, y));
+    else if (i->type == System::DE_FILE)
+      gc.draw(file_icon, Vector2i(x, y));
+
+    if ((click_item == -1 && (i - directory.begin()) == current_item) ||
+        (i - directory.begin()) == click_item)
     {
-      if (i->type == System::DE_DIRECTORY)
-        gc.draw(directory_icon, Vector2i(x, y));
-      else if (i->type == System::DE_FILE)
-        gc.draw(file_icon, Vector2i(x, y));
-
-      if ((click_item == -1 && (i - directory.begin()) == current_item) ||
-          (i - directory.begin()) == click_item)
-        {
-          if (click_item == current_item)
-            gc.draw_fillrect(Rect(x, y, x + hspace, y + vspace), Color(0, 0, 255));
-          else
-            gc.draw_rect(Rect(x, y, x + hspace, y + vspace), Color(0, 0, 255));
-        }
-      
-      gc.print_left(Fonts::verdana11, Vector2i(x + 4, y + 3),
-                    ((i->type == System::DE_DIRECTORY) ? "[DIR]  " : "[FILE] ") + i->name);
-
-      y += 20;
-      if (y > rect.bottom - vspace)
-        {
-          y = rect.top;
-          x += hspace;
-        }
+      if (click_item == current_item)
+        gc.draw_fillrect(Rect(x, y, x + hspace, y + vspace), Color(0, 0, 255));
+      else
+        gc.draw_rect(Rect(x, y, x + hspace, y + vspace), Color(0, 0, 255));
     }
+      
+    gc.print_left(Fonts::verdana11, Vector2i(x + 4, y + 3),
+                  ((i->type == System::DE_DIRECTORY) ? "[DIR]  " : "[FILE] ") + i->name);
+
+    y += 20;
+    if (y > rect.bottom - vspace)
+    {
+      y = rect.top;
+      x += hspace;
+    }
+  }
 }
 
 void
@@ -132,10 +137,10 @@ FileList::on_primary_button_release (int x, int y)
 {
   on_pointer_move(x,y);
   if (click_item == current_item && current_item != -1)
-    {
-      //std::cout << directory[current_item].name << std::endl;
-      on_click(directory[current_item]);
-    }
+  {
+    //std::cout << directory[current_item].name << std::endl;
+    on_click(directory[current_item]);
+  }
   click_item = -1;
 }
 

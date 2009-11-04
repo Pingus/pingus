@@ -29,28 +29,32 @@ public:
   Rect cliprect;
   bool use_cliprect;
 
-  SceneContextImpl() 
-    : use_cliprect(false)
+  SceneContextImpl() :
+    color(),
+    light(),
+    highlight(),
+    cliprect(),
+    use_cliprect(false)
   {
   }
 
-  SceneContextImpl(const Rect& rect) 
-    : color(rect),
-      light(rect),
-      highlight(rect),
-      use_cliprect(false)
+  SceneContextImpl(const Rect& rect) :
+    color(rect),
+    light(rect),
+    highlight(rect),
+    use_cliprect(false)
   {
   }
 };
 
-SceneContext::SceneContext()
+SceneContext::SceneContext() : 
+  impl(new SceneContextImpl())
 {
-  impl = new SceneContextImpl();
 }
 
-SceneContext::SceneContext(const Rect& rect)
+SceneContext::SceneContext(const Rect& rect) :
+  impl(new SceneContextImpl(rect))
 {
-  impl = new SceneContextImpl(rect);
 }
 
 SceneContext::~SceneContext()

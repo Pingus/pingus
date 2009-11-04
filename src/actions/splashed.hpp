@@ -27,6 +27,7 @@ private:
   bool particle_thrown;
   bool sound_played;
   Sprite sprite;
+
 public:
   Splashed (Pingu*);
 

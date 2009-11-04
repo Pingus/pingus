@@ -21,8 +21,9 @@
 
 namespace Actions {
 
-LaserKill::LaserKill(Pingu* p)
-  : PinguAction(p)
+LaserKill::LaserKill(Pingu* p) :
+  PinguAction(p),
+  sprite()
 {
   sprite.load(Direction::LEFT,  Sprite("other/laser_kill/left"));
   sprite.load(Direction::RIGHT, Sprite("other/laser_kill/right"));

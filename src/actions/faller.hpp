@@ -28,8 +28,6 @@ private:
   StateSprite faller;
   StateSprite tumbler;
 
-  int falling;
-
 public:
   Faller(Pingu*);
   virtual ~Faller();

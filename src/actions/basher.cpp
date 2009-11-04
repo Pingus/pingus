@@ -27,16 +27,19 @@
 
 namespace Actions {
 
-Basher::Basher (Pingu* p)
-  : PinguAction(p),
-    bash_radius("other/bash_radius_gfx", "other/bash_radius"),
-    basher_c(0),
-    first_bash(true)
+Basher::Basher (Pingu* p) :
+  PinguAction(p),
+  sprite(),
+  bash_radius("other/bash_radius_gfx", "other/bash_radius"),
+  basher_c(0),
+  first_bash(true),
+  bash_radius_width(),
+  bash_reach()
 {
   sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
-    pingu->get_owner_str() + "/basher/left"));
+                                       pingu->get_owner_str() + "/basher/left"));
   sprite.load(Direction::RIGHT, Sprite("pingus/player" + 
-    pingu->get_owner_str() + "/basher/right"));
+                                       pingu->get_owner_str() + "/basher/right"));
 
   bash_radius_width = bash_radius.get_width();
   
@@ -62,42 +65,42 @@ Basher::update ()
 
   ++basher_c;
   if (basher_c % 3 == 0)
-    {
-      walk_forward();
+  {
+    walk_forward();
 
-      // If on walking forward the Basher has now walked on to water or lava
-      if (rel_getpixel(0, -1) == Groundtype::GP_WATER
-	  || rel_getpixel(0, -1) == Groundtype::GP_LAVA)
-	{
-	  pingu->set_action(Actions::DROWN);
-	}
-      // If walking on to something (i.e. hasn't fallen)
-      else if (rel_getpixel(0, -1) != Groundtype::GP_NOTHING)
-	{
-	  // If the Basher has walked into something that it won't be able to
-	  // bash
-	  if (rel_getpixel(0, 0) == Groundtype::GP_SOLID
-	      || rel_getpixel(0, pingu_height) == Groundtype::GP_SOLID)
-	    {
-	      // Change direction and let walk code walk forward/up to get out.
-              Sound::PingusSound::play_sound("chink");
-	      pingu->direction.change();
-	      pingu->set_action(Actions::WALKER);
-	    }
-	  else if (have_something_to_dig())
-	    {
-	      // We only bash every second step, cause the Pingus would
-	      // get trapped otherwise in the bashing area.
-	      if (basher_c % 2 == 0)
-		bash();
-	    }
-	  else if (sprite[pingu->direction].get_current_frame() // FIXME: Game logic must be separate from Sprite 
-                   / float(sprite[pingu->direction].get_frame_count()) > 0.6f) 
-	    { // FIXME: EVIL! Engine must not relay on graphic
-	      pingu->set_action(Actions::WALKER);
-	    }
-	}
+    // If on walking forward the Basher has now walked on to water or lava
+    if (rel_getpixel(0, -1) == Groundtype::GP_WATER
+        || rel_getpixel(0, -1) == Groundtype::GP_LAVA)
+    {
+      pingu->set_action(Actions::DROWN);
     }
+    // If walking on to something (i.e. hasn't fallen)
+    else if (rel_getpixel(0, -1) != Groundtype::GP_NOTHING)
+    {
+      // If the Basher has walked into something that it won't be able to
+      // bash
+      if (rel_getpixel(0, 0) == Groundtype::GP_SOLID
+          || rel_getpixel(0, pingu_height) == Groundtype::GP_SOLID)
+      {
+        // Change direction and let walk code walk forward/up to get out.
+        Sound::PingusSound::play_sound("chink");
+        pingu->direction.change();
+        pingu->set_action(Actions::WALKER);
+      }
+      else if (have_something_to_dig())
+      {
+        // We only bash every second step, cause the Pingus would
+        // get trapped otherwise in the bashing area.
+        if (basher_c % 2 == 0)
+          bash();
+      }
+      else if (sprite[pingu->direction].get_current_frame() // FIXME: Game logic must be separate from Sprite 
+               / float(sprite[pingu->direction].get_frame_count()) > 0.6f) 
+      { // FIXME: EVIL! Engine must not relay on graphic
+        pingu->set_action(Actions::WALKER);
+      }
+    }
+  }
 }
 
 void
@@ -115,47 +118,47 @@ Basher::walk_forward()
 
   // Find the correct y position to go to next
   for (y_inc = 0; y_inc >= -max_steps_down; --y_inc)
-    {
-      // If there is something below, get out of this loop
-      if (rel_getpixel(0, y_inc - 1) != Groundtype::GP_NOTHING)
-	break;
-    }
+  {
+    // If there is something below, get out of this loop
+    if (rel_getpixel(0, y_inc - 1) != Groundtype::GP_NOTHING)
+      break;
+  }
 
   if (y_inc < -max_steps_down)
-    {
-      // The step down is too much.  So stop being a Basher and be a Faller.
-      pingu->set_action(Actions::FALLER);
-    }
+  {
+    // The step down is too much.  So stop being a Basher and be a Faller.
+    pingu->set_action(Actions::FALLER);
+  }
   else
-    {
-      // Note that Pingu::set_pos() is the 'reverse' of the y co-ords of
-      // rel_getpixel()
-      pingu->set_pos(pingu->get_x() + static_cast<int>(pingu->direction),
-                     pingu->get_y() - y_inc);
-    }
+  {
+    // Note that Pingu::set_pos() is the 'reverse' of the y co-ords of
+    // rel_getpixel()
+    pingu->set_pos(pingu->get_x() + static_cast<int>(pingu->direction),
+                   pingu->get_y() - y_inc);
+  }
 }
 
 bool
 Basher::have_something_to_dig()
 {
   if (first_bash)
-    {
-      first_bash = false;
-      return true;
-    }
+  {
+    first_bash = false;
+    return true;
+  }
 
   // Check that there is something "within" the Basher's reach
   for(int x = 0; x <= bash_reach; ++x)
+  {
+    for (int y = min_bash_height; y <= max_bash_height; ++y)
     {
-      for (int y = min_bash_height; y <= max_bash_height; ++y)
-	{
-	  if (rel_getpixel(x, y) == Groundtype::GP_GROUND)
-	    {
-	      pout(PINGUS_DEBUG_ACTIONS) << "Basher: Found something to dig..." << std::endl;
-	      return true;
-	    }
-	}
+      if (rel_getpixel(x, y) == Groundtype::GP_GROUND)
+      {
+        pout(PINGUS_DEBUG_ACTIONS) << "Basher: Found something to dig..." << std::endl;
+        return true;
+      }
     }
+  }
 
   //std::cout << "nothing to dig found" << std::endl;
   return false;

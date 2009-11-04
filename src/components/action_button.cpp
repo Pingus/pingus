@@ -96,11 +96,12 @@ ArmageddonButton::on_primary_button_click (int x, int y)
   UNUSED_ARG(y);
 }
 
-ForwardButton::ForwardButton(GameSession* s, int x, int y)
-  : RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
-    session(s),
-    background ("core/buttons/hbuttonbgb"),
-    backgroundhl("core/buttons/hbuttonbg")
+ForwardButton::ForwardButton(GameSession* s, int x, int y) :
+  RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
+  session(s),
+  surface(),
+  background ("core/buttons/hbuttonbgb"),
+  backgroundhl("core/buttons/hbuttonbg")
 {
   surface = Sprite("core/buttons/fast_forward");
 }

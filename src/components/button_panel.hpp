@@ -27,9 +27,15 @@ class GameSession;
 class ButtonPanel : public GUI::RectComponent
 {
 private:
-  struct ActionButton {
+  struct ActionButton 
+  {
     Actions::ActionName name;
     Sprite     sprite;
+    
+    ActionButton() :
+      name(),
+      sprite()
+    {}
   };
 
   GameSession* session;

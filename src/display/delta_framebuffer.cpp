@@ -244,7 +244,9 @@ private:
   MemoryPool<DrawOp> mempool;
 
 public:
-  DrawOpBuffer()
+  DrawOpBuffer() :
+    draw_ops(),
+    mempool()
   {
   }
 

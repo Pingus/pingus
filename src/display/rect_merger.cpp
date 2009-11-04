@@ -30,10 +30,17 @@ struct Mark {
 };
 
 // [top, bottom[
-struct Row {
+struct Row 
+{
   int top;
   int bottom;
   std::vector<Mark> marks;
+  
+  Row() :
+    top(),
+    bottom(),
+    marks()
+  {}
 };
  
 bool rect_y_sorter(const Rect& lhs, const Rect& rhs)

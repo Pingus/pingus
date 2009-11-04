@@ -36,6 +36,7 @@ private:
 
   WorldObjFactory ();
   void free_factories();
+
 public:
   /** Return the singleton instance */
   static WorldObjFactory* instance ();

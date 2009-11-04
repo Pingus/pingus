@@ -31,6 +31,7 @@ private:
   Server* server;
   Font font;
   Sprite background;
+
 public:
   PingusCounter(Server* s);
   virtual ~PingusCounter() {}

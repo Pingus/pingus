@@ -23,10 +23,11 @@
 
 namespace Actions {
 
-Splashed::Splashed (Pingu* p)
-  : PinguAction(p),
-    particle_thrown(false),
-    sound_played(false)
+Splashed::Splashed (Pingu* p) :
+  PinguAction(p),
+  particle_thrown(false),
+  sound_played(false),
+  sprite()
 {
   sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/splat");
 }

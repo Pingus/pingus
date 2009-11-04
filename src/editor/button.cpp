@@ -20,12 +20,13 @@
 
 namespace Editor {
 
-Button::Button(const Rect& rect_, const std::string& text_)
-  : RectComponent(rect_), 
-    text(text_),
-    mouse_over(false),
-    mouse_down(false),
-    enabled(true)
+Button::Button(const Rect& rect_, const std::string& text_) :
+  RectComponent(rect_), 
+  text(text_),
+  mouse_over(false),
+  mouse_down(false),
+  enabled(true),
+  on_click()
 {
 }
 
@@ -33,14 +34,14 @@ void
 Button::draw (DrawingContext& gc)
 {
   if (enabled)
-    {
-      if (mouse_down && mouse_over)
-        GUIStyle::draw_lowered_box(gc, rect, Color(237, 233, 227), 2);
-      else if (mouse_over)
-        GUIStyle::draw_raised_box(gc, rect, Color(255, 255, 255), 2);
-      else
-        GUIStyle::draw_raised_box(gc, rect, Color(237, 233, 227), 2);  
-    }
+  {
+    if (mouse_down && mouse_over)
+      GUIStyle::draw_lowered_box(gc, rect, Color(237, 233, 227), 2);
+    else if (mouse_over)
+      GUIStyle::draw_raised_box(gc, rect, Color(255, 255, 255), 2);
+    else
+      GUIStyle::draw_raised_box(gc, rect, Color(237, 233, 227), 2);  
+  }
 
   gc.print_center(Fonts::verdana11, 
                   Vector2i(rect.left + rect.get_width()/2, rect.top + rect.get_height()/2 - 6),

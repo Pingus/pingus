@@ -81,13 +81,14 @@ private:
   WorldObjFactoryImpl& operator= (const WorldObjFactoryImpl&);
 };
 
-WorldObjFactory::WorldObjFactory ()
+WorldObjFactory::WorldObjFactory() :
+  factories()
 {
   // Register all WorldObj's
 }
 
 WorldObjFactory*
-WorldObjFactory::instance ()
+WorldObjFactory::instance()
 {
   if ( ! instance_)
     {

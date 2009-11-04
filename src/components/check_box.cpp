@@ -21,7 +21,8 @@
 
 CheckBox::CheckBox(const Rect& rect_) :
   RectComponent(rect_),
-  state(false)
+  state(false),
+  on_change()
 {
 }
 

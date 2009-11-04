@@ -27,14 +27,20 @@
 #include "pingus/game_session.hpp"
 #include "components/playfield.hpp"
 
-Playfield::Playfield(Server* server_, GameSession* session_, const Rect& rect_)
-  : RectComponent(rect_),
-    server(server_),
-    session(session_),
-    current_pingu(0),
-    scene_context(new SceneContext(rect_)),
-    state(rect_.get_width(), rect_.get_height()),
-    capture_rectangle(session)
+Playfield::Playfield(Server* server_, GameSession* session_, const Rect& rect_) :
+  RectComponent(rect_),
+  server(server_),
+  session(session_),
+  current_pingu(0),
+  mouse_scrolling(),
+  scroll_speed(),
+  scroll_center(),
+  scene_context(new SceneContext(rect_)),
+  state(rect_.get_width(), rect_.get_height()),
+  capture_rectangle(session),
+  clipping_rectangles(),
+  mouse_pos(),
+  old_state_pos()
 {
   mouse_scrolling    = false;
 

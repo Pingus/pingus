@@ -21,10 +21,11 @@
 
 namespace Actions {
 
-Boarder::Boarder (Pingu* p)
-  : PinguAction(p),
-    x_pos(pingu->get_x()),
-    speed(0.0)
+Boarder::Boarder (Pingu* p) :
+  PinguAction(p),
+  x_pos(pingu->get_x()),
+  speed(0.0),
+  sprite()
 {
   sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
     pingu->get_owner_str() + "/boarder/left"));
