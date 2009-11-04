@@ -86,12 +86,12 @@ public:
   void on_pointer_enter();
 };
 
-WorldmapScreenCreditsButton::WorldmapScreenCreditsButton(WorldmapScreen* worldmap_screen)
-  : GUI::SurfaceButton(Display::get_width() - 150, 0,
-                       "core/worldmap/credits_button_normal",
-                       "core/worldmap/credits_button_pressed",
-                       "core/worldmap/credits_button_hover"),
-    worldmap_screen(worldmap_screen)
+WorldmapScreenCreditsButton::WorldmapScreenCreditsButton(WorldmapScreen* worldmap_screen_) :
+  GUI::SurfaceButton(Display::get_width() - 150, 0,
+                     "core/worldmap/credits_button_normal",
+                     "core/worldmap/credits_button_pressed",
+                     "core/worldmap/credits_button_hover"),
+  worldmap_screen(worldmap_screen_)
 {
 }
 
@@ -115,12 +115,12 @@ WorldmapScreenCreditsButton::on_click()
   worldmap_screen->show_end_story();
 }
 
-WorldmapScreenStoryButton::WorldmapScreenStoryButton(WorldmapScreen* worldmap_screen)
-  : GUI::SurfaceButton(0, 0,
-                       "core/worldmap/story_button_normal",
-                       "core/worldmap/story_button_pressed",
-                       "core/worldmap/story_button_hover"),
-    worldmap_screen(worldmap_screen)
+WorldmapScreenStoryButton::WorldmapScreenStoryButton(WorldmapScreen* worldmap_screen_) :
+  GUI::SurfaceButton(0, 0,
+                     "core/worldmap/story_button_normal",
+                     "core/worldmap/story_button_pressed",
+                     "core/worldmap/story_button_hover"),
+  worldmap_screen(worldmap_screen_)
 {
 }
 
@@ -144,12 +144,12 @@ WorldmapScreenStoryButton::on_click()
   worldmap_screen->show_intro_story();
 }
 
-WorldmapScreenCloseButton::WorldmapScreenCloseButton(WorldmapScreen* worldmap_screen)
-  : GUI::SurfaceButton(0, Display::get_height() - 37,
-                       "core/worldmap/leave_button_normal",
-                       "core/worldmap/leave_button_pressed",
-                       "core/worldmap/leave_button_hover"),
-    worldmap_screen(worldmap_screen)
+WorldmapScreenCloseButton::WorldmapScreenCloseButton(WorldmapScreen* worldmap_screen_) :
+  GUI::SurfaceButton(0, Display::get_height() - 37,
+                     "core/worldmap/leave_button_normal",
+                     "core/worldmap/leave_button_pressed",
+                     "core/worldmap/leave_button_hover"),
+  worldmap_screen(worldmap_screen_)
 {
 }
 
@@ -173,12 +173,12 @@ WorldmapScreenCloseButton::on_click()
   ScreenManager::instance ()->pop_screen ();
 }
 
-WorldmapScreenEnterButton::WorldmapScreenEnterButton(WorldmapScreen* worldmap_screen)
-  : GUI::SurfaceButton(Display::get_width() - 119, Display::get_height() - 37,
-                       "core/worldmap/enter_button_normal",
-                       "core/worldmap/enter_button_pressed",
-                       "core/worldmap/enter_button_hover"),
-    worldmap_screen(worldmap_screen)
+WorldmapScreenEnterButton::WorldmapScreenEnterButton(WorldmapScreen* worldmap_screen_) :
+  GUI::SurfaceButton(Display::get_width() - 119, Display::get_height() - 37,
+                     "core/worldmap/enter_button_normal",
+                     "core/worldmap/enter_button_pressed",
+                     "core/worldmap/enter_button_hover"),
+  worldmap_screen(worldmap_screen_)
 {
 }
 
@@ -193,17 +193,17 @@ void
 WorldmapScreenEnterButton::draw (DrawingContext& gc)
 {
   if (worldmap_screen->get_worldmap()->get_pingus()->is_walking())
-    {
-      gc.draw(button_surface, Vector2i(x_pos, y_pos));
-    }
+  {
+    gc.draw(button_surface, Vector2i(x_pos, y_pos));
+  }
   else
-    {
-      SurfaceButton::draw(gc);
-      gc.print_center(Fonts::chalk_small,
-                      Vector2i(Display::get_width() - 43 - 22,
-                               Display::get_height() - 25),
-                      _("Enter?"));
-    }
+  {
+    SurfaceButton::draw(gc);
+    gc.print_center(Fonts::chalk_small,
+                    Vector2i(Display::get_width() - 43 - 22,
+                             Display::get_height() - 25),
+                    _("Enter?"));
+  }
 }
 
 void
@@ -242,9 +242,9 @@ WorldmapScreen::load (const std::string& filename)
   bool credits_unlocked = false;
   //StatManager::instance()->get_bool(worldmap->get_short_name() + "-endstory-seen", credits_unlocked);
   if (credits_unlocked)
-    {
-      gui_manager->add(new WorldmapScreenCreditsButton(this));
-    }
+  {
+    gui_manager->add(new WorldmapScreenCreditsButton(this));
+  }
 }
 
 void
@@ -275,9 +275,9 @@ WorldmapScreen::update (float delta)
 
   // Check if new worldmap is set and if so, change it
   if (new_worldmap.get())
-    {
-      worldmap = new_worldmap;
-    }
+  {
+    worldmap = new_worldmap;
+  }
 }
 
 void
@@ -315,8 +315,10 @@ WorldmapScreen::show_end_story()
 }
 
 void
-WorldmapScreen::resize(const Size& size)
+WorldmapScreen::resize(const Size& size_)
 {
+  GUIScreen::resize(size_);
+
   close_button->set_pos(0, size.height - 37);
   story_button->set_pos(0, 0);
   enter_button->set_pos(size.width - 119, size.height - 37);

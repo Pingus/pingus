@@ -20,8 +20,8 @@
 
 namespace Editor {
 
-Button::Button(const Rect& rect, const std::string& text_)
-  : RectComponent(rect), 
+Button::Button(const Rect& rect_, const std::string& text_)
+  : RectComponent(rect_), 
     text(text_),
     mouse_over(false),
     mouse_down(false),

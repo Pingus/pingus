@@ -43,8 +43,8 @@ private:
     Label*         label;
     GUI::RectComponent* control;
 
-    Option(Label* label, GUI::RectComponent* control)
-      : label(label), control(control)
+    Option(Label* label_, GUI::RectComponent* control_)
+      : label(label_), control(control_)
     {}
   };
 

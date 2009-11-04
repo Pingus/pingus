@@ -43,9 +43,9 @@ Sprite::Sprite(const std::string& name)
     }
   else
     {
-      SpriteDescription desc;
-      desc.filename = Pathname("images/core/misc/404.png", Pathname::DATA_PATH);
-      impl = boost::shared_ptr<SpriteImpl>(new SpriteImpl(desc));
+      SpriteDescription desc_;
+      desc_.filename = Pathname("images/core/misc/404.png", Pathname::DATA_PATH);
+      impl = boost::shared_ptr<SpriteImpl>(new SpriteImpl(desc_));
     }
 }
 
@@ -58,9 +58,9 @@ Sprite::Sprite(const ResDescriptor& res_desc)
     }
   else
     {
-      SpriteDescription desc;
-      desc.filename = Pathname("images/core/misc/404.png", Pathname::DATA_PATH);
-      impl = boost::shared_ptr<SpriteImpl>(new SpriteImpl(desc));
+      SpriteDescription desc_;
+      desc_.filename = Pathname("images/core/misc/404.png", Pathname::DATA_PATH);
+      impl = boost::shared_ptr<SpriteImpl>(new SpriteImpl(desc_));
     } 
 }
 

@@ -19,9 +19,9 @@
 #include "display/drawing_context.hpp"
 #include "components/label.hpp"
 
-Label::Label(const std::string& label, const Rect& rect)
-  : RectComponent(rect),
-    label(label)
+Label::Label(const std::string& label_, const Rect& rect_)
+  : RectComponent(rect_),
+    label(label_)
 {
 }
 

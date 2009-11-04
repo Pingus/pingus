@@ -20,8 +20,8 @@ FramebufferSurface::FramebufferSurface()
 {
 }
 
-FramebufferSurface::FramebufferSurface(FramebufferSurfaceImpl* impl)
-  : impl(impl) 
+FramebufferSurface::FramebufferSurface(FramebufferSurfaceImpl* impl_)
+  : impl(impl_) 
 {
 }
 

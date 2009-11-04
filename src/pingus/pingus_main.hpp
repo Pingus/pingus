@@ -60,9 +60,7 @@ private:
 
   PingusMain (const PingusMain&);
   PingusMain& operator= (const PingusMain&);
-
-} app; // golbal class instance
-
+};
 
 #endif
 

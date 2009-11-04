@@ -33,8 +33,8 @@
 
 namespace Editor {
 
-ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
-  : GUI::GroupComponent(rect, false),
+ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_)
+  : GUI::GroupComponent(rect_, false),
     editor(editor_)
 {
   add(type_label = new Label(Rect(Vector2i(4, 4), Size(120, 20)), _("Object:")));

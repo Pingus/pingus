@@ -23,8 +23,8 @@
 
 namespace Editor {
 
-Minimap::Minimap(EditorScreen* editor_, const Rect& rect)
-  : RectComponent(rect),
+Minimap::Minimap(EditorScreen* editor_, const Rect& rect_)
+  : RectComponent(rect_),
     editor(editor_),
     drawing_context(new DrawingContext(rect.grow(-3))),
     dragging(false)

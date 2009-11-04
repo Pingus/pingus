@@ -24,8 +24,8 @@
 
 namespace Editor {
 
-FileList::FileList(const Rect& rect)
-  : RectComponent(rect),
+FileList::FileList(const Rect& rect_)
+  : RectComponent(rect_),
     current_item(-1),
     click_item(-1),
     page(0),

@@ -20,8 +20,8 @@
 #include "display/drawing_context.hpp"
 #include "components/slider_box.hpp"
 
-SliderBox::SliderBox(const Rect& rect)
-  : RectComponent(rect),
+SliderBox::SliderBox(const Rect& rect_)
+  : RectComponent(rect_),
     value(10),
     drag_drop(false)
 {

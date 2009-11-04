@@ -229,9 +229,9 @@ Panel::update (float delta)
 }
 
 void
-Panel::add_button(const std::string& image, const std::string& tooltip, Callback callback)
+Panel::add_button(const std::string& image, const std::string& tooltip, Callback callback_)
 {
-  PanelButton* comp = new PanelButton(editor, pos, image, tooltip, callback);
+  PanelButton* comp = new PanelButton(editor, pos, image, tooltip, callback_);
   pos.x += comp->get_width();
   editor->get_gui_manager()->add(comp);
 }

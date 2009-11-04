@@ -26,8 +26,8 @@
 
 namespace Editor {
 
-Combobox::Combobox(const Rect& rect)
-  : RectComponent(rect),
+Combobox::Combobox(const Rect& rect_)
+  : RectComponent(rect_),
     sprite("core/editor/combobox"),
     current_item(-1),
     drop_down(false)

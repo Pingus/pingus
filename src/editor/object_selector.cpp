@@ -44,12 +44,12 @@ struct Groundpiece : public ObjectSelectorList::Object
   ResDescriptor desc;
   std::string   type;
   
-  Groundpiece(const std::string& name, const std::string& type)
-    : Object(Sprite(name),
-             Resource::load_thumb_sprite(name)),
-      desc(name),
-      type(type)
-  {}      
+  Groundpiece(const std::string& name_, const std::string& type_) : 
+    Object(Sprite(name_),
+           Resource::load_thumb_sprite(name_)),
+    desc(name_),
+    type(type_)
+  {}   
   
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
     LevelObj* obj = new LevelObj("groundpiece", impl);
@@ -103,11 +103,11 @@ struct Hotspot : public ObjectSelectorList::Object
   ResDescriptor desc;
   int z_pos;
   
-  Hotspot(const std::string& name, int z_pos = 0)
-    : Object(Sprite(name),
-             Resource::load_thumb_sprite(name)),
-      desc(name),
-      z_pos(z_pos)
+  Hotspot(const std::string& name_, int z_pos_ = 0)
+    : Object(Sprite(name_),
+             Resource::load_thumb_sprite(name_)),
+      desc(name_),
+      z_pos(z_pos_)
   {}
 
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
@@ -212,12 +212,12 @@ public:
 
 public:
   ObjectSelectorButton(ObjectSelectorList* object_list_,
-                       const Vector2i& pos, const std::string& sprite, const std::string& tooltip_)
-    : RectComponent(Rect(pos, Size(30, 30))),
+                       const Vector2i& pos_, const std::string& sprite_, const std::string& tooltip_)
+    : RectComponent(Rect(pos_, Size(30, 30))),
       object_list(object_list_),
       button_raised(Sprite("core/editor/obj_button-raised")),
       button_pressed(Sprite("core/editor/obj_button-pressed")),
-      sprite(Sprite(sprite)),
+      sprite(Sprite(sprite_)),
       mouse_over(false),
       mouse_down(false),
       tooltip(tooltip_)

@@ -32,8 +32,8 @@ public:
     : surface(0)
   {}
 
-  SurfaceImpl(SDL_Surface* surface)
-    : surface(surface)
+  SurfaceImpl(SDL_Surface* surface_) :
+    surface(surface_)
   {}
   
   ~SurfaceImpl() 

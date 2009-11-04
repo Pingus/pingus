@@ -20,9 +20,9 @@
 
 namespace GUI {
 
-GroupComponent::GroupComponent(const Rect& rect, bool clip)
-  : RectComponent(rect),
-    drawing_context(rect, clip),
+GroupComponent::GroupComponent(const Rect& rect_, bool clip_)
+  : RectComponent(rect_),
+    drawing_context(rect_, clip_),
     mouse_over_comp(0),
     focused_comp(0),
     grabbed_comp(0),

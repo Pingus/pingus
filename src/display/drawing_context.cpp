@@ -40,8 +40,8 @@ private:
   std::string text;
 
 public:
-  FontDrawingRequest(Font font_, Origin origin_, const Vector2i& pos, const std::string& text_, float z)
-    : DrawingRequest(pos, z),
+  FontDrawingRequest(Font font_, Origin origin_, const Vector2i& pos_, const std::string& text_, float z_)
+    : DrawingRequest(pos_, z_),
       font(font_), 
       origin(origin_),
       text(text_)
@@ -103,8 +103,8 @@ public:
   LineDrawingRequest(const Vector2i& pos1_, 
                      const Vector2i& pos2_, 
                      const Color&  color_,
-                     float z)
-    : DrawingRequest(Vector2i(0, 0), z),
+                     float z_)
+    : DrawingRequest(Vector2i(0, 0), z_),
       pos1(pos1_),
       pos2(pos2_),
       color(color_)
@@ -126,8 +126,8 @@ private:
   bool  filled;
   
 public:
-  RectDrawingRequest(const Rect& rect_, const Color& color_, bool filled_, float z)
-    : DrawingRequest(Vector2i(0, 0), z),
+  RectDrawingRequest(const Rect& rect_, const Color& color_, bool filled_, float z_)
+    : DrawingRequest(Vector2i(0, 0), z_),
       d_rect(rect_), color(color_), filled(filled_)
   {}
   
@@ -156,8 +156,8 @@ private:
   DrawingContext& dc;
   
 public:
-  DrawingContextDrawingRequest(DrawingContext& dc_, float z)
-    : DrawingRequest(Vector2i(0,0) ,z),
+  DrawingContextDrawingRequest(DrawingContext& dc_, float z_)
+    : DrawingRequest(Vector2i(0,0), z_),
       dc(dc_)
   {}
   
@@ -266,27 +266,27 @@ DrawingContext::draw_line(const Vector2i& pos1, const Vector2i& pos2,
 }
 
 void
-DrawingContext::draw_fillrect(const Rect& rect, const Color& color, float z)
+DrawingContext::draw_fillrect(const Rect& rect_, const Color& color_, float z_)
 {
-  draw(new RectDrawingRequest(Rect(int(rect.left + translate_stack.back().x), 
-                                   int(rect.top + translate_stack.back().y), 
-                                   int(rect.right + translate_stack.back().x), 
-                                   int(rect.bottom + translate_stack.back().y)),
-                              color,
+  draw(new RectDrawingRequest(Rect(int(rect_.left + translate_stack.back().x), 
+                                   int(rect_.top + translate_stack.back().y), 
+                                   int(rect_.right + translate_stack.back().x), 
+                                   int(rect_.bottom + translate_stack.back().y)),
+                              color_,
                               true,
-                              z));  
+                              z_));  
 }
 
 void
-DrawingContext::draw_rect(const Rect& rect, const Color& color, float z)
+DrawingContext::draw_rect(const Rect& rect_, const Color& color_, float z_)
 {
-  draw(new RectDrawingRequest(Rect(int(rect.left + translate_stack.back().x),
-                                   int(rect.top + translate_stack.back().y), 
-                                   int(rect.right + translate_stack.back().x),
-                                   int(rect.bottom + translate_stack.back().y)),
-                              color,
+  draw(new RectDrawingRequest(Rect(int(rect_.left   + translate_stack.back().x),
+                                   int(rect_.top    + translate_stack.back().y), 
+                                   int(rect_.right  + translate_stack.back().x),
+                                   int(rect_.bottom + translate_stack.back().y)),
+                              color_,
                               false,
-                              z));  
+                              z_));
 }
 
 void

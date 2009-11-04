@@ -362,9 +362,9 @@ GameSession::get_pause() const
 }
 
 void
-GameSession::resize(const Size& size)
+GameSession::resize(const Size& size_)
 {
-  GUIScreen::resize(size);
+  GUIScreen::resize(size_);
 
   int world_width  = server->get_world()->get_width();
   int world_height = server->get_world()->get_height();

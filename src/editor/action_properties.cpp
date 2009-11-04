@@ -33,8 +33,9 @@ namespace Editor {
  * [active] [Actionname] [count]
  *
  */
-ActionProperties::ActionProperties(EditorScreen* editor, const Rect& rect)
-  : GroupComponent(rect),
+ActionProperties::ActionProperties(EditorScreen* editor_, const Rect& rect_)
+  : GroupComponent(rect_),
+    editor(editor_),
     y_pos(0)
 {
   add_action(Actions::BASHER);

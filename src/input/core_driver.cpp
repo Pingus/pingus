@@ -31,10 +31,10 @@ private:
   float speed;
 
 public:
-  AxisPointer(Control* parent) 
-    : Pointer(parent),
-      x_axis(0), y_axis(0), speed_button(0),
-      speed(400.0f)
+  AxisPointer(Control* parent_) :
+    Pointer(parent_),
+    x_axis(0), y_axis(0), speed_button(0),
+    speed(400.0f)
   {
   }
 
@@ -92,10 +92,10 @@ private:
   float speed;
 
 public:
-  AxisScroller(Control* parent) 
-    : Scroller(parent),
-      x_axis(0), y_axis(0), speed_button(0),
-      speed(800.0f)
+  AxisScroller(Control* parent_) :
+    Scroller(parent_),
+    x_axis(0), y_axis(0), speed_button(0),
+    speed(800.0f)
   {
   }
 
@@ -115,12 +115,12 @@ public:
     //std::cout << "event" << std::endl;
   }
 
-  void update(float delta)
+  void update(float delta_)
   {
-    x_axis->update(delta);
-    y_axis->update(delta);
+    x_axis->update(delta_);
+    y_axis->update(delta_);
 
-    if (speed_button) speed_button->update(delta);
+    if (speed_button) speed_button->update(delta_);
 
     float    c_speed = speed;
     
@@ -129,8 +129,8 @@ public:
         c_speed *= 5.0f;
       }
 
-    this->delta.x = -x_axis->get_pos() * c_speed * delta;
-    this->delta.y = y_axis->get_pos() * c_speed * delta;
+    this->delta.x = -x_axis->get_pos() * c_speed * delta_;
+    this->delta.y = y_axis->get_pos() * c_speed * delta_;
 
     notify_parent();
   }
@@ -146,10 +146,10 @@ private:
   float speed; 
 
 public:
-  ButtonScroller(Control* parent)
-    : Scroller(parent),
-      up(0), down(0), left(0), right(0),
-      speed(800.0f)
+  ButtonScroller(Control* parent_) :
+    Scroller(parent_),
+    up(0), down(0), left(0), right(0),
+    speed(800.0f)
   {
   }
 

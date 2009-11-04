@@ -277,9 +277,9 @@ OptionMenu::on_escape_press()
 }
 
 void
-OptionMenu::resize(const Size& size)
+OptionMenu::resize(const Size& size_)
 {
-  GUIScreen::resize(size);
+  GUIScreen::resize(size_);
 
   if (ok_button)
     ok_button->set_pos(size.width/2 + 225, size.height/2 + 125);
@@ -370,10 +370,10 @@ OptionMenu::on_resolution_change(const std::string& str)
 {
   if (str != "Custom")
     {
-      Size size;
-      if (sscanf(str.c_str(), "%dx%d", &size.width, &size.height) == 2)
+      Size size_;
+      if (sscanf(str.c_str(), "%dx%d", &size_.width, &size_.height) == 2)
         {
-          config_manager.set_resolution(size); 
+          config_manager.set_resolution(size_); 
         }
     }
 }

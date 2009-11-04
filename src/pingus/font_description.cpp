@@ -67,9 +67,9 @@ FontDescription::FontDescription(const Pathname& pathname_)
               if (i->read_section("glyphs", glyph_section))
                 {
                   std::vector<FileReader> glyph_reader = glyph_section.get_sections();
-                  for(std::vector<FileReader>::iterator i = glyph_reader.begin(); i != glyph_reader.end(); ++i)
+                  for(std::vector<FileReader>::iterator j = glyph_reader.begin(); j != glyph_reader.end(); ++j)
                     {
-                      image_desc.glyphs.push_back(GlyphDescription(*i));
+                      image_desc.glyphs.push_back(GlyphDescription(*j));
                     }
                 }
               images.push_back(image_desc);

@@ -161,25 +161,25 @@ EditorScreen::draw(DrawingContext& gc)
   
   if (show_help)
     {
-      Size size(600, 400);
-      gc.draw_fillrect(Rect(gc.get_width()/2  - size.width/2 - 2,
-                            gc.get_height()/2 - size.height/2 - 2,
-                            gc.get_width()/2  + size.width/2 + 2,
-                            gc.get_height()/2 + size.height/2 + 2),
+      Size size_(600, 400);
+      gc.draw_fillrect(Rect(gc.get_width()/2  - size_.width/2 - 2,
+                            gc.get_height()/2 - size_.height/2 - 2,
+                            gc.get_width()/2  + size_.width/2 + 2,
+                            gc.get_height()/2 + size_.height/2 + 2),
                        Color(0,0,0));
-      gc.draw_fillrect(Rect(gc.get_width()/2  - size.width/2, 
-                            gc.get_height()/2 - size.height/2,
-                            gc.get_width()/2  + size.width/2, 
-                            gc.get_height()/2 + size.height/2),
+      gc.draw_fillrect(Rect(gc.get_width()/2  - size_.width/2, 
+                            gc.get_height()/2 - size_.height/2,
+                            gc.get_width()/2  + size_.width/2, 
+                            gc.get_height()/2 + size_.height/2),
                        Color(255,255,255));
       
       gc.print_center(Fonts::verdana11,
                       Vector2i(gc.get_width()/2,
-                               gc.get_height()/2 - size.height/2 + 12),
+                               gc.get_height()/2 - size_.height/2 + 12),
                       "Editor Help");
 
-      int x = gc.get_width()/2 - size.width/2 + 12;
-      int y = gc.get_height()/2 - size.height/2 + 36;
+      int x = gc.get_width()/2 - size_.width/2 + 12;
+      int y = gc.get_height()/2 - size_.height/2 + 36;
       gc.print_center(Fonts::verdana11, Vector2i(x + 50, y),
                       "A\n"
                       "Shift+A\n"
@@ -202,7 +202,7 @@ EditorScreen::draw(DrawingContext& gc)
                       "Rotate 270 degree\n"));
 
       x = int(gc.get_width()/2 + 12);
-      y = int(gc.get_height()/2) - size.height/2 + 36;
+      y = int(gc.get_height()/2) - size_.height/2 + 36;
       gc.print_center(Fonts::verdana11, Vector2i(x + 50, y),
                       "F\n"
                       "Shift+F\n"
@@ -224,7 +224,7 @@ EditorScreen::draw(DrawingContext& gc)
                     );
 
       gc.print_left(Fonts::verdana11,
-                    Vector2i(gc.get_width()/2 - size.width/2 + 12,
+                    Vector2i(gc.get_width()/2 - size_.width/2 + 12,
                              gc.get_height()/2 - 10),
                     _("You should name your level files systematically, i.e. by their theme, "
                       "their number and your nickname:\n\n"
@@ -470,43 +470,43 @@ EditorScreen::exit()
 void
 EditorScreen::update_layout()
 {
-  Size size(gui_manager->get_rect().get_width(),
+  Size size_(gui_manager->get_rect().get_width(),
             gui_manager->get_rect().get_height());
 
-  minimap->set_rect(Rect(Vector2i(size.width-244, size.height-183), Size(244, 183)));
+  minimap->set_rect(Rect(Vector2i(size_.width-244, size_.height-183), Size(244, 183)));
 
   if (minimap->is_visible())
-    object_selector->set_rect(Rect(size.width-244, 38, size.width, size.height - 183));
+    object_selector->set_rect(Rect(size_.width-244, 38, size_.width, size_.height - 183));
   else
-    object_selector->set_rect(Rect(size.width-244, 38, size.width, size.height));
+    object_selector->set_rect(Rect(size_.width-244, 38, size_.width, size_.height));
 
   if (object_selector->is_visible())
     {
-      viewport->set_rect(Rect(0, 38, size.width - 244, size.height));
-      level_properties->set_rect(Rect(Vector2i(0,38), Size(size.width-244, 302))); 
+      viewport->set_rect(Rect(0, 38, size_.width - 244, size_.height));
+      level_properties->set_rect(Rect(Vector2i(0,38), Size(size_.width-244, 302))); 
     }
   else
     {
-      viewport->set_rect(Rect(0, 38, size.width, size.height));
-      level_properties->set_rect(Rect(Vector2i(0,38), Size(size.width, 302))); 
+      viewport->set_rect(Rect(0, 38, size_.width, size_.height));
+      level_properties->set_rect(Rect(Vector2i(0,38), Size(size_.width, 302))); 
     }
 
   action_properties->set_rect(Rect(Vector2i(0, 38), Size(150, 240)));
 
-  object_properties->set_rect(Rect(Vector2i(0, size.height - object_properties->get_rect().get_height()), 
+  object_properties->set_rect(Rect(Vector2i(0, size_.height - object_properties->get_rect().get_height()), 
                                    Size(object_properties->get_rect().get_width(),
                                         object_properties->get_rect().get_height())));
   
-  file_load_dialog->set_rect(Rect(Vector2i(50, 50), Size(size.width  - 100, 
-                                                         size.height - 100)));
-  file_save_dialog->set_rect(Rect(Vector2i(50, 50), Size(size.width  - 100, 
-                                                         size.height - 100)));
+  file_load_dialog->set_rect(Rect(Vector2i(50, 50), Size(size_.width  - 100, 
+                                                         size_.height - 100)));
+  file_save_dialog->set_rect(Rect(Vector2i(50, 50), Size(size_.width  - 100, 
+                                                         size_.height - 100)));
 }
 
 void
-EditorScreen::resize(const Size& size)
+EditorScreen::resize(const Size& size_)
 {
-  gui_manager->set_rect(Rect(Vector2i(0, 0), size));
+  gui_manager->set_rect(Rect(Vector2i(0, 0), size_));
   update_layout();
 }
 

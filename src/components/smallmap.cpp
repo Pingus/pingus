@@ -29,8 +29,8 @@
 #include "components/playfield.hpp"
 #include "components/smallmap.hpp"
 
-SmallMap::SmallMap(Server* server_, Playfield* playfield_, const Rect& rect)
-  : RectComponent(rect), 
+SmallMap::SmallMap(Server* server_, Playfield* playfield_, const Rect& rect_)
+  : RectComponent(rect_), 
     server(server_),
     playfield(playfield_),
     gc_ptr(0)

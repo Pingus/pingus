@@ -35,9 +35,9 @@ Levelset::Levelset(const Pathname& pathname)
     {
       reader.read_string("title",       title);
       reader.read_string("description", description);
-      std::string image;
-      if (reader.read_string("image", image))
-        this->image = Sprite(image);
+      std::string image_str;
+      if (reader.read_string("image", image_str))
+        this->image = Sprite(image_str);
 
       FileReader level_reader = reader.read_section("levels");
       std::vector<FileReader> sections = level_reader.get_sections();

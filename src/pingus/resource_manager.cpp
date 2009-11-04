@@ -145,10 +145,10 @@ ResourceManager::get_sprite_description(const std::string& name) const
     }
   else
     {
-      Aliases::const_iterator i = aliases.find(name);
-      if (i != aliases.end())
+      Aliases::const_iterator j = aliases.find(name);
+      if (j != aliases.end())
         {
-          return get_sprite_description(i->second);
+          return get_sprite_description(j->second);
         }
       else
         {

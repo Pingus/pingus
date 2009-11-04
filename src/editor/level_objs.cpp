@@ -207,15 +207,15 @@ LevelObj::write_properties(FileWriter &fw)
 {
   fw.begin_section(section_name.c_str());
 
-  const unsigned attribs = get_attributes(section_name);
+  const unsigned attribs_ = get_attributes(section_name);
 
-  if (attribs & HAS_TYPE)
+  if (attribs_ & HAS_TYPE)
     fw.write_string("type", object_type);
 
-  if (attribs & HAS_GPTYPE)
+  if (attribs_ & HAS_GPTYPE)
     fw.write_string("type", ground_type);
 
-  if (attribs & HAS_SURFACE)
+  if (attribs_ & HAS_SURFACE)
     {
       fw.begin_section("surface");
       fw.write_string("image", desc.res_name);
@@ -225,38 +225,38 @@ LevelObj::write_properties(FileWriter &fw)
 
   fw.write_vector("position", pos);
       
-  if (attribs & HAS_SPEED)
+  if (attribs_ & HAS_SPEED)
     fw.write_int("speed", speed);
-  if (attribs & HAS_PARALLAX)
+  if (attribs_ & HAS_PARALLAX)
     fw.write_float("parallax", parallax);
-  if (attribs & HAS_REPEAT)
+  if (attribs_ & HAS_REPEAT)
     fw.write_int("repeat", repeat);
-  if (attribs & HAS_OWNER)
+  if (attribs_ & HAS_OWNER)
     fw.write_int("owner-id", owner_id);
-  if (attribs & HAS_DIRECTION)
+  if (attribs_ & HAS_DIRECTION)
     fw.write_string("direction", direction);
-  if (attribs & HAS_RELEASE_RATE)
+  if (attribs_ & HAS_RELEASE_RATE)
     fw.write_int("release-rate", release_rate);
-  if (attribs & HAS_COLOR)
+  if (attribs_ & HAS_COLOR)
     fw.write_color("color", color);
-  if (attribs & HAS_STRETCH)
+  if (attribs_ & HAS_STRETCH)
     {
       fw.write_bool("stretch-x", stretch_x);
       fw.write_bool("stretch-y", stretch_y);
       fw.write_bool("keep-aspect", keep_aspect);
     }
-  if (attribs & HAS_SCROLL)
+  if (attribs_ & HAS_SCROLL)
     {
       fw.write_float("scroll-x", scroll_x);
       fw.write_float("scroll-y", scroll_y);
     }
-  if (attribs & HAS_PARA)
+  if (attribs_ & HAS_PARA)
     {
       fw.write_float("para-x", para_x);
       fw.write_float("para-y", para_y);
     }
 
-  if (attribs & HAS_STARFIELD)
+  if (attribs_ & HAS_STARFIELD)
     {
       fw.write_int("small-stars", small_stars);
       fw.write_int("middle-stars", middle_stars);

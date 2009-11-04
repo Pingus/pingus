@@ -42,13 +42,13 @@ public:
   virtual void notify_parent() 
   {
     if (parent)
-      {
-        parent->update(this);
-      }
+    {
+      parent->update(this);
+    }
     else
-      {
-        std::cout << "Input: Control: Error: parent missing! " << std::endl;
-      }
+    {
+      std::cout << "Input: Control: Error: parent missing! " << std::endl;
+    }
   }
 
   virtual void update(float delta) {
@@ -65,9 +65,9 @@ protected:
   ButtonState state;
 
 public:
-  Button(Control* parent)
-    : Control(parent),
-      state(BUTTON_RELEASED)
+  Button(Control* parent_) :
+    Control(parent_),
+    state(BUTTON_RELEASED)
   {}  
 
   bool get_state() const { return state; }
@@ -75,10 +75,10 @@ public:
   virtual void set_state(ButtonState new_state) 
   {
     if (new_state != state) 
-      {
-        state = new_state;
-        notify_parent();
-      }
+    {
+      state = new_state;
+      notify_parent();
+    }
   }
 };
 
@@ -88,8 +88,8 @@ private:
   std::vector<Button*> buttons;
   
 public: 
-  ButtonGroup(Control* parent)
-    : Button(parent)
+  ButtonGroup(Control* parent_) :
+    Button(parent_)
   {}
 
   ~ButtonGroup()
@@ -98,8 +98,8 @@ public:
       delete *i;
   }
 
-  void add_button(Button* button) {
-    buttons.push_back(button);
+  void add_button(Button* button_) {
+    buttons.push_back(button_);
   }
 
   void update(float delta) {
@@ -113,16 +113,16 @@ public:
 
     for(std::vector<Button*>::iterator i = buttons.begin(); 
         i != buttons.end(); ++i)
-      {
-        if ((*i)->get_state() == BUTTON_PRESSED)
-          new_state = BUTTON_PRESSED;
-      }
+    {
+      if ((*i)->get_state() == BUTTON_PRESSED)
+        new_state = BUTTON_PRESSED;
+    }
 
     if (new_state != state)
-      {
-        state = new_state;
-        notify_parent();
-      }
+    {
+      state = new_state;
+      notify_parent();
+    }
   }
 };
 
@@ -152,11 +152,11 @@ protected:
   bool  invert;
 
 public:
-  Axis(Control* parent)
-    : Control(parent),
-      pos(0.0f),
-      dead_zone(0.2f),
-      invert(false)
+  Axis(Control* parent_) :
+    Control(parent_),
+    pos(0.0f),
+    dead_zone(0.2f),
+    invert(false)
   {}
 
   float get_pos() const { return pos; }
@@ -169,10 +169,10 @@ public:
       new_pos = 0.0f;
 
     if (new_pos != pos)
-      {
-        pos = new_pos;
-        notify_parent();
-      }
+    {
+      pos = new_pos;
+      notify_parent();
+    }
   }
 };
 
@@ -182,18 +182,18 @@ protected:
   Vector2f pos;
 
 public:
-  Pointer(Control* parent)
-    : Control(parent)
+  Pointer(Control* parent_) :
+    Control(parent_)
   {}
 
   Vector2f get_pos() const { return pos; }
 
   void set_pos(const Vector2f& new_pos) {
     if (pos != new_pos) 
-      {
-        pos = new_pos;
-        notify_parent();
-      }
+    {
+      pos = new_pos;
+      notify_parent();
+    }
   }
 };
 
@@ -203,19 +203,19 @@ protected:
   Vector2f delta;
   
 public:
-  Scroller(Control* parent)
-    : Control(parent),
-      delta(0.0f, 0.0f)
+  Scroller(Control* parent_) :
+    Control(parent_),
+    delta(0.0f, 0.0f)
   {}
 
   Vector2f get_delta() const { return delta; }
 
   void set_delta(const Vector2f& new_delta) {
     if (delta != new_delta) 
-      {
-        delta = new_delta;
-        notify_parent();
-      }
+    {
+      delta = new_delta;
+      notify_parent();
+    }
   }
 };
 
@@ -224,8 +224,8 @@ private:
   std::vector<Axis*> axes;
 
 public:
-  AxisGroup(Control* parent)
-    : Axis(parent)
+  AxisGroup(Control* parent_) :
+    Axis(parent_)
   {}
 
   ~AxisGroup()
@@ -248,9 +248,9 @@ public:
     float new_pos = 0;
     
     for(std::vector<Axis*>::iterator i = axes.begin(); i != axes.end(); ++i)
-      {
-        new_pos += (*i)->get_pos();
-      }
+    {
+      new_pos += (*i)->get_pos();
+    }
 
     new_pos = Math::clamp(-1.0f, new_pos, 1.0f);
 
@@ -282,8 +282,8 @@ private:
   std::vector<Pointer*> pointer;
 
 public:
-  PointerGroup(Control* parent)
-    : Pointer(parent)
+  PointerGroup(Control* parent_) :
+  Pointer(parent_)
   {}
 
   ~PointerGroup()
@@ -293,14 +293,14 @@ public:
   }
 
   void update(Control* p) {
-    Pointer* pointer = dynamic_cast<Pointer*>(p);
-    assert(pointer);
-    Vector2f new_pos = pointer->get_pos();
+    Pointer* pointer_ = dynamic_cast<Pointer*>(p);
+    assert(pointer_);
+    Vector2f new_pos = pointer_->get_pos();
     if (new_pos != pos)
-      {
-        pos = new_pos;
-        notify_parent();
-      }
+    {
+      pos = new_pos;
+      notify_parent();
+    }
   }
 
   void update(float delta) {
@@ -337,8 +337,8 @@ private:
   std::vector<Scroller*> scrollers;
 
 public:
-  ScrollerGroup(Control* parent)
-    : Scroller(parent)
+  ScrollerGroup(Control* parent_) :
+    Scroller(parent_)
   {}
 
   ~ScrollerGroup()
@@ -347,9 +347,9 @@ public:
       delete *i;
   }
 
-  void update(float delta) {
+  void update(float delta_) {
     for(std::vector<Scroller*>::iterator i = scrollers.begin(); i != scrollers.end(); ++i)
-      (*i)->update(delta);
+      (*i)->update(delta_);
   }
 
   void update(Control* p) {
@@ -388,8 +388,8 @@ protected:
   unsigned short chr;
 
 public:
-  Keyboard(Control* parent)
-    : Control(parent)
+  Keyboard(Control* parent_) :
+    Control(parent_)
   {}
 
   void send_char(unsigned short c) { chr = c; notify_parent(); }
@@ -402,8 +402,8 @@ private:
   std::vector<Keyboard*> keyboards;
 
 public:
-  KeyboardGroup(Control* parent)
-    : Keyboard(parent)
+  KeyboardGroup(Control* parent_) :
+    Keyboard(parent_)
   {}
 
   ~KeyboardGroup()

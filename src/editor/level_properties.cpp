@@ -37,8 +37,8 @@ Playable (unneeded)
 
 namespace Editor {
 
-LevelProperties::LevelProperties(EditorScreen* editor_, const Rect& rect)
-  : GroupComponent(rect),
+LevelProperties::LevelProperties(EditorScreen* editor_, const Rect& rect_)
+  : GroupComponent(rect_),
     editor(editor_),
     level(0)
 {

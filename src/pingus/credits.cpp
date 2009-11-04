@@ -254,17 +254,19 @@ Credits::update (float delta)
 void
 Credits::draw_background (DrawingContext& gc)
 {
+  {
+    // Paint the background wood panel
+    for(int y = 0; y < gc.get_height(); y += background.get_height())
+      for(int x = 0; x < gc.get_width(); x += background.get_width())
+        gc.draw(background, Vector2i(x, y));
+  }
+
   int x;
   int y;
   int yof;
 
   x = Display::get_width()/2;
   y = (int)offset;
-
-  // Paint the background wood panel
-  for(int y = 0; y < gc.get_height(); y += background.get_height())
-    for(int x = 0; x < gc.get_width(); x += background.get_width())
-      gc.draw(background, Vector2i(x, y));
 
   gc.draw(blackboard, Vector2i(gc.get_width()/2, gc.get_height()/2));
 
@@ -277,25 +279,25 @@ Credits::draw_background (DrawingContext& gc)
                                    gc.get_width()/2 + 685/2, gc.get_height()/2 + 250));
 
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)
+  {
+    switch ((*i)[0])
     {
-      switch ((*i)[0])
-	{
-	case '-':
-	  scene_context->color().print_center(font, Vector2i(x, (y + yof)), i->substr(1));
-	  yof += font.get_height() + 5;
-	  break;
-	case '_':
-	  scene_context->color().print_center(font_small, Vector2i(x, (y + yof)), i->substr(1));
-	  yof += font_small.get_height() + 5;
-	  break;
-	case 'n':
-	  yof += 50;
-	  break;
-	default:
-	  std::cout << "Credits: Syntax error: Unknown format: '" << (*i)[0] << "'" << std::endl;
-	  break;
-	}
+      case '-':
+        scene_context->color().print_center(font, Vector2i(x, (y + yof)), i->substr(1));
+        yof += font.get_height() + 5;
+        break;
+      case '_':
+        scene_context->color().print_center(font_small, Vector2i(x, (y + yof)), i->substr(1));
+        yof += font_small.get_height() + 5;
+        break;
+      case 'n':
+        yof += 50;
+        break;
+      default:
+        std::cout << "Credits: Syntax error: Unknown format: '" << (*i)[0] << "'" << std::endl;
+        break;
     }
+  }
   gc.draw(new SceneContextDrawingRequest(scene_context, Vector2i(0,0), 100));
 }
 

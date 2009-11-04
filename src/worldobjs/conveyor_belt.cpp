@@ -75,9 +75,9 @@ ConveyorBelt::update ()
 	  && (*pingu)->get_pos().y > pos.y - 2
 	  && (*pingu)->get_pos().y < pos.y + 10)
 	{
-	  Vector3f pos = (*pingu)->get_pos();
-	  pos.x -= speed * 0.025f;
-	  (*pingu)->set_pos(pos);
+	  Vector3f pos_ = (*pingu)->get_pos();
+	  pos_.x -= speed * 0.025f;
+	  (*pingu)->set_pos(pos_);
 	}
     }
 }

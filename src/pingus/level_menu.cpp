@@ -433,8 +433,10 @@ LevelMenu::set_levelset(Levelset* levelset)
 }
 
 void
-LevelMenu::resize(const Size& size)
+LevelMenu::resize(const Size& size_)
 {
+  GUIScreen::resize(size_);
+
   x_pos = (size.width  - default_screen_width)/2;
   y_pos = (size.height - default_screen_height)/2;
 

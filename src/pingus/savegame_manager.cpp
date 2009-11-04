@@ -97,9 +97,9 @@ SavegameManager::~SavegameManager()
 }
 
 Savegame*
-SavegameManager::get(const std::string& filename)
+SavegameManager::get(const std::string& filename_)
 {
-  SavegameTable::iterator i = find(filename);
+  SavegameTable::iterator i = find(filename_);
   if (i == savegames.end())
     return 0;
   else
@@ -133,13 +133,13 @@ SavegameManager::store(Savegame& arg_savegame)
 }
 
 SavegameManager::SavegameTable::iterator
-SavegameManager::find(const std::string& filename)
+SavegameManager::find(const std::string& filename_)
 {
   //std::cout << "SavegameManager::find: \"" << filename << "\"" << std::endl;
 
   for(SavegameTable::iterator i = savegames.begin();
       i != savegames.end(); ++i)
-    if ((*i)->get_filename() == filename)
+    if ((*i)->get_filename() == filename_)
       return i;
 
   return savegames.end();

@@ -175,11 +175,11 @@ LevelDot::unlock()
   Savegame* savegame = SavegameManager::instance()->get(plf.get_resname());
   if (savegame == 0 || savegame->get_status() == Savegame::NONE)
     {
-      Savegame savegame(plf.get_resname(),
+      Savegame savegame_(plf.get_resname(),
                         Savegame::ACCESSIBLE,
                         0,
                         0);
-      SavegameManager::instance()->store(savegame);
+      SavegameManager::instance()->store(savegame_);
     }
   else
     {

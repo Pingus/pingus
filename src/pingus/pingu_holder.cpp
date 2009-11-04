@@ -118,13 +118,13 @@ PinguHolder::update()
 }
 
 Pingu*
-PinguHolder::get_pingu(unsigned int id)
+PinguHolder::get_pingu(unsigned int id_)
 {
-  if (id < all_pingus.size())
+  if (id_ < all_pingus.size())
     {
-      Pingu* pingu = all_pingus[id];
+      Pingu* pingu = all_pingus[id_];
 
-      assert(pingu->get_id() == id);
+      assert(pingu->get_id() == id_);
 
       if (pingu->get_status() == PS_ALIVE)
         return pingu;

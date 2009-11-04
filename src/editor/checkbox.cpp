@@ -20,8 +20,8 @@
 
 namespace Editor {
 
-Checkbox::Checkbox(const Rect& rect, const std::string& label_)
-  : RectComponent(rect),
+Checkbox::Checkbox(const Rect& rect_, const std::string& label_)
+  : RectComponent(rect_),
     checked(false),
     label(label_)
 {

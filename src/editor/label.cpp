@@ -20,8 +20,8 @@
 
 namespace Editor {
 
-Label::Label(const Rect& rect, const std::string& text_)
-  : RectComponent(rect),
+Label::Label(const Rect& rect_, const std::string& text_)
+  : RectComponent(rect_),
     text(text_)
 {
 }

@@ -460,9 +460,9 @@ Pingu::catchable ()
 }
 
 boost::shared_ptr<PinguAction>
-Pingu::create_action(ActionName action)
+Pingu::create_action(ActionName action_)
 {
-  switch(action)
+  switch(action_)
     {
       case ANGEL:     return boost::shared_ptr<PinguAction>(new Angel(this));
       case BASHER:    return boost::shared_ptr<PinguAction>(new Basher(this));

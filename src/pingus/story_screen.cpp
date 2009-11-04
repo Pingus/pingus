@@ -282,9 +282,9 @@ StoryScreenComponent::next_text()
 }
 
 void
-StoryScreen::resize(const Size& size)
+StoryScreen::resize(const Size& size_)
 {
-  GUIScreen::resize(size);
+  GUIScreen::resize(size_);
 
   continue_button->set_pos(size.width/2 + 220 + 40, 
                            size.height/2 + 180 +32);

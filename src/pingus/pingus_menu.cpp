@@ -41,25 +41,25 @@ PingusMenu::PingusMenu()
 {
   is_init = false;
 
-  Size size(Display::get_width(), Display::get_height());
+  Size size_(Display::get_width(), Display::get_height());
      
-  start_button = new MenuButton(this, Vector2i(size.width/2 - 150,
-                                               size.height/2 + 20),
+  start_button = new MenuButton(this, Vector2i(size_.width/2 - 150,
+                                               size_.height/2 + 20),
                                 _("Story"),
                                 _("..:: Start the game ::.."));
 
-  editor_button = new MenuButton(this, Vector2i(size.width/2 + 150,
-                                                size.height/2 + 20),
+  editor_button = new MenuButton(this, Vector2i(size_.width/2 + 150,
+                                                size_.height/2 + 20),
                                  _("Editor"),
                                  _("..:: Create your own levels ::.."));
 
-  quit_button = new MenuButton(this, Vector2i(size.width/2 + 150, 
-                                              size.height/2 + 100),
+  quit_button = new MenuButton(this, Vector2i(size_.width/2 + 150, 
+                                              size_.height/2 + 100),
                                _("Exit"),
                                _("..:: Bye, bye ::.."));
 
-  contrib_button = new MenuButton(this, Vector2i(size.width/2 - 150,
-                                                 size.height/2 + 100),
+  contrib_button = new MenuButton(this, Vector2i(size_.width/2 - 150,
+                                                 size_.height/2 + 100),
                                   _("Levelsets"),
                                   _("..:: Play User Built levels ::.."));
 
@@ -201,7 +201,7 @@ PingusMenu::update(float delta)
 }
 
 void
-PingusMenu::create_background(const Size& size)
+PingusMenu::create_background(const Size& size_)
 {
   // Recreate the layer manager in the new size
   background = std::auto_ptr<LayerManager>(new LayerManager());
@@ -212,8 +212,8 @@ PingusMenu::create_background(const Size& size)
   Surface layer4 = Resource::load_surface("core/menu/layer4");
   Surface layer5 = Resource::load_surface("core/menu/layer5");
 
-  int w = size.width;
-  int h = size.height;
+  int w = size_.width;
+  int h = size_.height;
 
 // We only need to scale the background main menu images if the screen 
   // resolution is not default
@@ -242,9 +242,9 @@ PingusMenu::create_background(const Size& size)
 }
 
 void
-PingusMenu::resize(const Size& size)
+PingusMenu::resize(const Size& size_)
 {
-  GUIScreen::resize(size);
+  GUIScreen::resize(size_);
   create_background(size);
 
   start_button->set_pos(size.width/2 - 150,

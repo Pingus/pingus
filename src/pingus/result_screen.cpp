@@ -307,9 +307,9 @@ ResultScreen::on_escape_press()
 }
 
 void
-ResultScreen::resize(const Size& size)
+ResultScreen::resize(const Size& size_)
 {
-  GUIScreen::resize(size);
+  GUIScreen::resize(size_);
 
   if (ok_button)
     ok_button->set_pos(size.width/2 + 225, size.height/2 + 125);

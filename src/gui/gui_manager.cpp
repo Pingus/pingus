@@ -31,8 +31,8 @@ GUIManager::GUIManager ()
 {
 }
 
-GUIManager::GUIManager(const Rect& rect)
-  : GroupComponent(rect),
+GUIManager::GUIManager(const Rect& rect_)
+  : GroupComponent(rect_),
     mouse_pos(400,300)
 {
 }

@@ -32,8 +32,8 @@
 
 namespace Editor {
 
-FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect, Mode mode_)
-  : GroupComponent(rect),
+FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect_, Mode mode_)
+  : GroupComponent(rect_),
     editor(editor_),
     mode(mode_)
 {

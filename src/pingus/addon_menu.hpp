@@ -33,12 +33,12 @@ private:
     std::string description;
     std::string author;
 
-    AddOnEntry(const std::string& title,
-               const std::string& description,
-               const std::string& author)
-      : title(title),
-        description(description),
-        author(author)     
+    AddOnEntry(const std::string& title_,
+               const std::string& description_,
+               const std::string& author_)
+      : title(title_),
+        description(description_),
+        author(author_)     
     {}
   };
 

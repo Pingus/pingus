@@ -242,9 +242,9 @@ StartScreen::cancel_game()
 }
 
 void
-StartScreen::resize(const Size& size)
+StartScreen::resize(const Size& size_)
 {
-  GUIScreen::resize(size);
+  GUIScreen::resize(size_);
 
   abort_button->set_pos(size.width/2 - 300, size.height/2 + 144);
   ok_button   ->set_pos(size.width/2 + 225, size.height/2 + 125);
