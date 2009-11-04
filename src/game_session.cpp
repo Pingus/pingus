@@ -27,7 +27,7 @@
 #include "components/playfield.hpp"
 #include "input/event.hpp"
 #include "sound/sound.hpp"
-#include "math.hpp"
+#include "math/math.hpp"
 #include "game_session.hpp"
 #include "resource.hpp"
 #include "pingu_holder.hpp"

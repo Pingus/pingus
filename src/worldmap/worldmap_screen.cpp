@@ -25,7 +25,7 @@
 #include "../sound/sound.hpp"
 #include "../stat_manager.hpp"
 #include "../display/scene_context.hpp"
-#include "../math.hpp"
+#include "math/math.hpp"
 #include "worldmap.hpp"
 #include "worldmap_component.hpp"
 #include "resource.hpp"

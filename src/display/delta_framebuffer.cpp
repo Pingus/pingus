@@ -16,8 +16,8 @@
 
 #include <assert.h>
 #include <iostream>
-#include "../math.hpp"
-#include "../memory_pool.hpp"
+#include "math/math.hpp"
+#include "util/memory_pool.hpp"
 #include "rect_merger.hpp"
 #include "sdl_framebuffer.hpp"
 #include "delta_framebuffer.hpp"

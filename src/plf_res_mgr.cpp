@@ -17,7 +17,7 @@
 #include "globals.hpp"
 #include "debug.hpp"
 #include "util/system.hpp"
-#include "pathname.hpp"
+#include "util/pathname.hpp"
 #include "plf_res_mgr.hpp"
 
 PLFResMgr::PLFMap PLFResMgr::plf_map;

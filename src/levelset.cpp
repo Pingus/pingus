@@ -21,7 +21,7 @@
 #include "plf_res_mgr.hpp"
 #include "savegame_manager.hpp"
 #include "resource.hpp"
-#include "math.hpp"
+#include "math/math.hpp"
 
 Levelset::Levelset(const Pathname& pathname)
   : completion(0)

@@ -20,7 +20,7 @@
 #include <string>
 #include <vector>
 #include "pingus_level.hpp"
-#include "pathname.hpp"
+#include "util/pathname.hpp"
 #include "sprite.hpp"
 
 /** */

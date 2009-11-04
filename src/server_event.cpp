@@ -18,7 +18,7 @@
 #include <iostream>
 #include <boost/format.hpp>
 
-#include "math.hpp"
+#include "math/math.hpp"
 #include "pingus_error.hpp"
 #include "server.hpp"
 #include "world.hpp"

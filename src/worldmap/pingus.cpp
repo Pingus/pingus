@@ -15,13 +15,13 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "../math.hpp"
-#include "../math/vector3f.hpp"
-#include "../display/drawing_context.hpp"
+
+#include "math/math.hpp"
+#include "math/vector3f.hpp"
+#include "display/drawing_context.hpp"
 #include "dot.hpp"
-#include "../math.hpp"
-#include "../direction.hpp"
-#include "../resource.hpp"
+#include "direction.hpp"
+#include "resource.hpp"
 #include "pingus.hpp"
 
 namespace WorldmapNS {

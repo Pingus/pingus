@@ -20,8 +20,9 @@
 #include <string>
 #include "pingus.hpp"
 #include "SDL.h"
+
 #include "pingus_options.hpp"
-#include "pathname.hpp"
+#include "util/pathname.hpp"
 
 void segfault_handler(int);
 

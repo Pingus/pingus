@@ -16,7 +16,7 @@
 
 #include "../display/scene_context.hpp"
 #include "../pingu.hpp"
-#include "../math.hpp"
+#include "math/math.hpp"
 #include "../globals.hpp"
 #include "angel.hpp"
 

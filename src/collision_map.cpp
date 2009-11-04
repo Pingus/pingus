@@ -21,7 +21,7 @@
 #include "collision_map.hpp"
 #include "collision_mask.hpp"
 #include "pingus_error.hpp"
-#include "math.hpp"
+#include "math/math.hpp"
 #include "gettext.h"
 #include "sprite.hpp"
 

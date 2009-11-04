@@ -18,7 +18,7 @@
 
 #include "util/string_util.hpp"
 #include "pingus_error.hpp"
-#include "pathname.hpp"
+#include "util/pathname.hpp"
 #include "path_manager.hpp"
 #include "sdl_driver.hpp"
 #include "core_driver.hpp"

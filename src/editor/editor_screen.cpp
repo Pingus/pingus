@@ -30,7 +30,7 @@
 #include "gettext.h"
 #include "file_dialog.hpp"
 #include "../path_manager.hpp"
-#include "../pathname.hpp"
+#include "util/pathname.hpp"
 #include "game_session.hpp"
 #include "editor_level.hpp"
 #include "panel.hpp"

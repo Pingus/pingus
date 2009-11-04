@@ -41,7 +41,7 @@
 #include "dot.hpp"
 #include "level_dot.hpp"
 #include "path_graph.hpp"
-#include "../math.hpp"
+#include "math/math.hpp"
 #include "../stat_manager.hpp"
 
 #include "../story_screen.hpp"

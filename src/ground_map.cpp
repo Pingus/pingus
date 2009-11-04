@@ -23,7 +23,7 @@
 #include "pingus_level.hpp"
 #include "gettext.h"
 #include "collision_map.hpp"
-#include "math.hpp"
+#include "math/math.hpp"
 #include "SDL.h"
 
 class MapTile

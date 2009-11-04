@@ -22,7 +22,7 @@
 #include <boost/shared_ptr.hpp>
 #include "math/size.hpp"
 #include "resource_modifier.hpp"
-#include "pathname.hpp"
+#include "util/pathname.hpp"
 #include "math/color.hpp"
 
 class Rect;

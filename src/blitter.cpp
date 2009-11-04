@@ -22,7 +22,7 @@
 #include "util/string_util.hpp"
 #include "pingus_error.hpp"
 #include "globals.hpp"
-#include "math.hpp"
+#include "math/math.hpp"
 #include "blitter.hpp"
 #include "debug.hpp"
 #include "blitter_impl.hpp"

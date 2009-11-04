@@ -18,8 +18,9 @@
 #define HEADER_OPTIONS_HPP
 
 #include <string>
+
 #include "math/size.hpp"
-#include "pathname.hpp"
+#include "util/pathname.hpp"
 
 template<class T>
 class Value

@@ -15,7 +15,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "math.hpp"
+
+#include "math/math.hpp"
 #include "editor_screen.hpp"
 #include "object_selector_set.hpp"
 #include "object_selector.hpp"

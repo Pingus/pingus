@@ -15,7 +15,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <assert.h>
-#include "../math.hpp"
+
+#include "math/math.hpp"
 #include "../collision_map.hpp"
 #include "../display/scene_context.hpp"
 #include "../ground_map.hpp"

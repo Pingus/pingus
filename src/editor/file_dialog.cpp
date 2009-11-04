@@ -26,7 +26,7 @@
 #include "gettext.h"
 #include "label.hpp"
 #include "inputbox.hpp"
-#include "pathname.hpp"
+#include "util/pathname.hpp"
 #include "button.hpp"
 #include "file_dialog.hpp"
 

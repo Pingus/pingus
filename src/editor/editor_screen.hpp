@@ -19,7 +19,7 @@
 #define HEADER_PINGUS_EDITOR_SCREEN_HPP
 
 #include "../screen/gui_screen.hpp"
-#include "pathname.hpp"
+#include "util/pathname.hpp"
 #include "file_dialog.hpp"
 
 class DrawingContext;

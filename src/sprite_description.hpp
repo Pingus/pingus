@@ -22,7 +22,7 @@
 #include "math/size.hpp"
 #include "math/origin.hpp"
 #include "util/file_reader.hpp"
-#include "pathname.hpp"
+#include "util/pathname.hpp"
 
 /** */
 class SpriteDescription

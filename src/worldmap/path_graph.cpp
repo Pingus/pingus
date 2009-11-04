@@ -15,7 +15,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "../math.hpp"
+
+#include "math/math.hpp"
 #include "util/file_reader.hpp"
 #include "../pingus_error.hpp"
 #include "dot.hpp"

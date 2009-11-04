@@ -18,13 +18,14 @@
 #include <sstream>
 #include <assert.h>
 #include "SDL.h"
+
 #include "math/origin.hpp"
 #include "math/vector2i.hpp"
 #include "SDL_image.h"
 #include "sprite.hpp"
 #include "blitter.hpp"
 #include "surface.hpp"
-#include "pathname.hpp"
+#include "util/pathname.hpp"
 #include "resource.hpp"
 #include "sprite_impl.hpp"
 #include "sprite_description.hpp"

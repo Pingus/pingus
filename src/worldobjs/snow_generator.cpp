@@ -15,7 +15,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "../math.hpp"
+
+#include "math/math.hpp"
 #include "../world.hpp"
 #include "../particles/snow_particle_holder.hpp"
 #include "snow_generator.hpp"

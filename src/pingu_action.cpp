@@ -15,7 +15,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <assert.h>
-#include "math.hpp"
+
+#include "math/math.hpp"
 #include "math/vector3f.hpp"
 #include "collision_map.hpp"
 #include "world.hpp"

@@ -15,7 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "../math.hpp"
+#include "math/math.hpp"
 #include "../surface.hpp"
 #include "display.hpp"
 #include "sdl_framebuffer.hpp"

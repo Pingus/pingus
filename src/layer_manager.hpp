@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_LAYER_MANAGER_HPP
 #define HEADER_PINGUS_LAYER_MANAGER_HPP
 
-#include "math.hpp"
+#include "math/math.hpp"
 #include "globals.hpp"
 #include "pingus.hpp"
 #include "sprite.hpp"

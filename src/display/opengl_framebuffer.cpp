@@ -17,7 +17,8 @@
 #include <sstream>
 #include <iostream>
 #include <stdexcept>
-#include "math.hpp"
+
+#include "math/math.hpp"
 #include "surface.hpp"
 #include "opengl_framebuffer_surface_impl.hpp"
 #include "opengl_framebuffer.hpp"

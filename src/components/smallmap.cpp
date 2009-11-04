@@ -23,7 +23,7 @@
 #include "../server.hpp"
 #include "../smallmap_image.hpp"
 #include "../pingu.hpp"
-#include "../math.hpp"
+#include "math/math.hpp"
 #include "../math/vector3f.hpp"
 #include "../globals.hpp"
 #include "playfield.hpp"

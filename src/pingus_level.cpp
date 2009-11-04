@@ -21,7 +21,7 @@
 #include "pingus_error.hpp"
 #include "pingus_level_impl.hpp"
 #include "globals.hpp"
-#include "pathname.hpp"
+#include "util/pathname.hpp"
 #include "debug.hpp"
 
 PingusLevel::PingusLevel()

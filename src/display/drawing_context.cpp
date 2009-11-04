@@ -18,7 +18,7 @@
 #include <iostream>
 #include <algorithm>
 #include "drawing_context.hpp"
-#include "math.hpp"
+#include "math/math.hpp"
 #include "framebuffer.hpp"
 #include "display/display.hpp"
 #include "../sprite.hpp"

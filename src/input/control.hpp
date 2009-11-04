@@ -20,7 +20,7 @@
 #include <iostream>
 #include <vector>
 
-#include "math.hpp"
+#include "math/math.hpp"
 #include "math/vector2f.hpp"
 #include "event.hpp"
 #include "controller.hpp"

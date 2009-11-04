@@ -23,7 +23,7 @@
 #include "gui/surface_button.hpp"
 #include "screen/screen_manager.hpp"
 #include "gui/component.hpp"
-#include "math.hpp"
+#include "math/math.hpp"
 #include "fonts.hpp"
 #include "story_screen.hpp"
 #include "res_descriptor.hpp"

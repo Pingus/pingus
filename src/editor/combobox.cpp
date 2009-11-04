@@ -17,9 +17,10 @@
 #include <iostream>
 #include <vector>
 #include <string>
+
 #include "resource.hpp"
 #include "combobox.hpp"
-#include "math.hpp"
+#include "math/math.hpp"
 #include "../fonts.hpp"
 #include "../math/vector2i.hpp"
 

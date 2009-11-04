@@ -25,7 +25,7 @@
 #include "editor_screen.hpp"
 #include "display/drawing_context.hpp"
 #include "fonts.hpp"
-#include "math.hpp"
+#include "math/math.hpp"
 #include "viewport.hpp"
 #include "editor_level.hpp"
 #include "object_selector_list.hpp"

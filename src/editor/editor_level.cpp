@@ -19,13 +19,14 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "viewport.hpp"
+
+#include "../pingus_level.hpp"
 #include "editor_level.hpp"
 #include "level_impl.hpp"
 #include "level_objs.hpp"
-#include "pathname.hpp"
-#include "../pingus_level.hpp"
+#include "util/pathname.hpp"
 #include "util/sexpr_file_writer.hpp"
+#include "viewport.hpp"
 
 namespace Editor {
 

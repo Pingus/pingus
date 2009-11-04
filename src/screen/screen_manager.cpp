@@ -17,9 +17,10 @@
 #include "SDL.h"
 #include <iostream>
 #include <fstream>
+
 #include "../globals.hpp"
 #include "math/size.hpp"
-#include "pathname.hpp"
+#include "util/pathname.hpp"
 #include "display/display.hpp"
 #include "display/framebuffer.hpp"
 #include "screen_manager.hpp"

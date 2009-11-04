@@ -18,9 +18,9 @@
 #include <boost/bind.hpp>
 #include <iostream>
 
-#include "math.hpp"
+#include "math/math.hpp"
 #include "server.hpp"
-#include "pathname.hpp"
+#include "util/pathname.hpp"
 #include "world.hpp"
 #include "components/pingus_counter.hpp"
 #include "gui/gui_manager.hpp"

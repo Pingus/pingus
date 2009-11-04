@@ -31,7 +31,7 @@
 #include "gui/gui_manager.hpp"
 #include "plf_res_mgr.hpp"
 #include "path_manager.hpp"
-#include "pathname.hpp"
+#include "util/pathname.hpp"
 #include "editor/editor_screen.hpp"
 #include "credits.hpp"
 #include "layer_manager.hpp"

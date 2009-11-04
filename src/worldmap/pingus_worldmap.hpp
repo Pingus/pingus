@@ -18,9 +18,10 @@
 #define HEADER_PINGUS_WORLDMAP_HPP
 
 #include <boost/smart_ptr.hpp>
+
 #include "worldmap_story.hpp"
 #include "path_graph.hpp"
-#include "../pathname.hpp"
+#include "util/pathname.hpp"
 
 class PingusWorldmapImpl;
 

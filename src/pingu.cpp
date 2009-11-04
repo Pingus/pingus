@@ -17,7 +17,8 @@
 #include <sstream>
 #include <assert.h>
 #include <stdio.h>
-#include "math.hpp"
+
+#include "math/math.hpp"
 #include "globals.hpp"
 #include "world.hpp"
 #include "sound/sound.hpp"

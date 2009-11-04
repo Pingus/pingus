@@ -16,7 +16,8 @@
 
 #include <iostream>
 #include <algorithm>
-#include "../math.hpp"
+
+#include "math/math.hpp"
 #include "../fonts.hpp"
 #include "util/string_util.hpp"
 #include "../globals.hpp"

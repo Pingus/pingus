@@ -15,7 +15,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "math.hpp"
+
+#include "math/math.hpp"
 #include "fonts.hpp"
 #include "file_list.hpp"
 #include "gui_style.hpp"

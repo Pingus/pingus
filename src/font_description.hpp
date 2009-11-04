@@ -20,7 +20,7 @@
 #include <string>
 #include "math/vector2i.hpp"
 #include "math/rect.hpp"
-#include "pathname.hpp"
+#include "util/pathname.hpp"
 
 class FileReader;
 
