@@ -18,7 +18,7 @@
 #define HEADER_SEXPR_FILE_WRITER_HPP
 
 #include <iosfwd>
-#include "file_writer.hpp"
+#include "util/file_writer.hpp"
 #include "math/color.hpp"
 #include "math/vector3f.hpp"
 #include "math/size.hpp"

@@ -42,11 +42,11 @@
 #include <iostream>
 #include <sstream>
 
-#include "pathname.hpp"
+#include "util/pathname.hpp"
 #include "pingus_error.hpp"
 #include "globals.hpp"
-#include "system.hpp"
-#include "string_util.hpp"
+#include "util/system.hpp"
+#include "util/string_util.hpp"
 #include "gettext.h"
 
 std::string System::userdir;

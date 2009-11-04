@@ -22,8 +22,8 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include "editor_screen.hpp"
-#include "level_objs.hpp"
+#include "editor/editor_screen.hpp"
+#include "editor/level_objs.hpp"
 
 namespace Editor {
 

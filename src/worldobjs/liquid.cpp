@@ -19,7 +19,7 @@
 #include "../display/scene_context.hpp"
 #include "../resource.hpp"
 #include "../world.hpp"
-#include "liquid.hpp"
+#include "worldobjs/liquid.hpp"
 
 namespace WorldObjs {
 

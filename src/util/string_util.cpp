@@ -14,7 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "string_util.hpp"
+#include "util/string_util.hpp"
 
 // Code based on clanstring.cpp from ClanLib 0.8
 

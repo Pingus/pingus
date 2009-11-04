@@ -19,7 +19,7 @@
 #define HEADER_PINGUS_EDITOR_EDITORLEVEL_HPP
 
 #include <vector>
-#include "level_impl.hpp"
+#include "editor/level_impl.hpp"
 
 class Pathname;
 

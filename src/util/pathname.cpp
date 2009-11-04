@@ -18,7 +18,7 @@
 #include <iostream>
 #include "util/system.hpp"
 #include "path_manager.hpp"
-#include "pathname.hpp"
+#include "util/pathname.hpp"
 
 Pathname Pathname::tmpfile(const std::string& prefix)
 {

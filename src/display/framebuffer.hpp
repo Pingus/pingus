@@ -23,7 +23,7 @@
 #include "math/vector2i.hpp"
 #include "math/size.hpp"
 #include "math/rect.hpp"
-#include "framebuffer_surface.hpp"
+#include "display/framebuffer_surface.hpp"
 
 class Surface;
 

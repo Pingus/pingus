@@ -15,8 +15,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "starfield_background.hpp"
-#include "starfield_background_stars.hpp"
+#include "worldobjs/starfield_background.hpp"
+#include "worldobjs/starfield_background_stars.hpp"
 
 namespace WorldObjs {
 

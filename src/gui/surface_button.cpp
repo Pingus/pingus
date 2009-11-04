@@ -17,7 +17,7 @@
 #include "../resource.hpp"
 #include "../math/vector3f.hpp"
 #include "../display/drawing_context.hpp"
-#include "surface_button.hpp"
+#include "gui/surface_button.hpp"
 
 namespace GUI {
 

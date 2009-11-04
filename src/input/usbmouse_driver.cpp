@@ -25,7 +25,7 @@
 #include "debug.hpp"
 #include "globals.hpp"
 #include "math/vector2i.hpp"
-#include "usbmouse_driver.hpp"
+#include "input/usbmouse_driver.hpp"
 #include "../display/display.hpp"
 
 namespace Input {

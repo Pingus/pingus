@@ -19,7 +19,7 @@
 
 #include "../sprite.hpp"
 #include "../pingus_level.hpp"
-#include "dot.hpp"
+#include "worldmap/dot.hpp"
 
 namespace WorldmapNS {
 

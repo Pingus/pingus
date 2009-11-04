@@ -15,8 +15,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "../pingus_error.hpp"
-#include "level_dot.hpp"
-#include "dot_factory.hpp"
+#include "worldmap/level_dot.hpp"
+#include "worldmap/dot_factory.hpp"
 
 namespace WorldmapNS {
 

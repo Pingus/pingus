@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_GUISCREEN_HPP
 #define HEADER_PINGUS_GUISCREEN_HPP
 
-#include "screen.hpp"
+#include "screen/screen.hpp"
 
 namespace GUI {
   class GUIManager;

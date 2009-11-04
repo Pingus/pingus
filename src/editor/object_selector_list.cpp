@@ -17,15 +17,15 @@
 #include <iostream>
 
 #include "math/math.hpp"
-#include "editor_screen.hpp"
-#include "object_selector_set.hpp"
-#include "object_selector.hpp"
-#include "viewport.hpp"
-#include "editor_level.hpp"
+#include "editor/editor_screen.hpp"
+#include "editor/object_selector_set.hpp"
+#include "editor/object_selector.hpp"
+#include "editor/viewport.hpp"
+#include "editor/editor_level.hpp"
 #include "groundtype.hpp"
 #include "resource.hpp"
 #include "display/drawing_context.hpp"
-#include "object_selector_list.hpp"
+#include "editor/object_selector_list.hpp"
 
 namespace Editor {
 

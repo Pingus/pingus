@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_INPUT_EVDEV_DRIVER_HPP
 #define HEADER_PINGUS_INPUT_EVDEV_DRIVER_HPP
 
-#include "driver.hpp"
+#include "input/driver.hpp"
 
 namespace Input {
 

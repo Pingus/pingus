@@ -19,10 +19,10 @@
 #include <string>
 
 #include "resource.hpp"
-#include "combobox.hpp"
+#include "editor/combobox.hpp"
 #include "math/math.hpp"
-#include "../fonts.hpp"
-#include "../math/vector2i.hpp"
+#include "fonts.hpp"
+#include "math/vector2i.hpp"
 
 namespace Editor {
 

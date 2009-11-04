@@ -18,9 +18,9 @@
 #include <iostream>
 #include "math/math.hpp"
 #include "util/memory_pool.hpp"
-#include "rect_merger.hpp"
-#include "sdl_framebuffer.hpp"
-#include "delta_framebuffer.hpp"
+#include "display/rect_merger.hpp"
+#include "display/sdl_framebuffer.hpp"
+#include "display/delta_framebuffer.hpp"
 
 enum DrawOpType { SURFACE_DRAWOP, FILLRECT_DRAWOP };
 

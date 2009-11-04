@@ -18,10 +18,10 @@
 
 #include "../resource.hpp"
 #include "../display/drawing_context.hpp"
-#include "worldmap_screen.hpp"
-#include "worldmap.hpp"
-#include "pingus.hpp"
-#include "sprite_drawable.hpp"
+#include "worldmap/worldmap_screen.hpp"
+#include "worldmap/worldmap.hpp"
+#include "worldmap/pingus.hpp"
+#include "worldmap/sprite_drawable.hpp"
 
 namespace WorldmapNS {
 

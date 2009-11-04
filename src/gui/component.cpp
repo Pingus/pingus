@@ -15,8 +15,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <assert.h>
-#include "group_component.hpp"
-#include "component.hpp"
+#include "gui/group_component.hpp"
+#include "gui/component.hpp"
 
 namespace GUI {
 

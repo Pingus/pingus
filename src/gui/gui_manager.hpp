@@ -19,7 +19,7 @@
 
 #include <vector>
 #include "../input/event.hpp"
-#include "group_component.hpp"
+#include "gui/group_component.hpp"
 
 class DrawingContext;
 class GameDelta;

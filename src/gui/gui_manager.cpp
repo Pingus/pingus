@@ -19,7 +19,7 @@
 #include "../globals.hpp"
 #include "../input/event.hpp"
 #include "display/display.hpp"
-#include "gui_manager.hpp"
+#include "gui/gui_manager.hpp"
 
 using namespace Input;
 

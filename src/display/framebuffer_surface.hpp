@@ -18,8 +18,9 @@
 #define HEADER_FRAMEBUFFER_SURFACE_HPP
 
 #include <boost/smart_ptr.hpp>
+
 #include "surface.hpp"
-#include "../math/size.hpp"
+#include "math/size.hpp"
 
 class FramebufferSurfaceImpl
 {

@@ -18,7 +18,7 @@
 #include "../debug.hpp"
 #include "../display/display.hpp"
 #include "gui/gui_manager.hpp"
-#include "gui_screen.hpp"
+#include "screen/gui_screen.hpp"
 
 GUIScreen::GUIScreen()
   : Screen(Display::get_size()),

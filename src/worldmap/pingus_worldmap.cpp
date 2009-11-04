@@ -17,8 +17,8 @@
 #include <string>
 #include "../pingus_error.hpp"
 #include "util/file_reader.hpp"
-#include "drawable_factory.hpp"
-#include "pingus_worldmap.hpp"
+#include "worldmap/drawable_factory.hpp"
+#include "worldmap/pingus_worldmap.hpp"
 
 using namespace WorldmapNS;
 

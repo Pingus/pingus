@@ -16,11 +16,11 @@
 
 #include "SDL_syswm.h"
 
-#include "debug.hpp"
-#include "globals.hpp"
+#include "input/debug.hpp"
+#include "input/globals.hpp"
 
-#include "xinput_driver.hpp"
-#include "xinput_device.hpp"
+#include "input/xinput_driver.hpp"
+#include "input/xinput_device.hpp"
 
 namespace Input {
 

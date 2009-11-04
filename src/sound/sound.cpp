@@ -18,9 +18,9 @@
 #include <assert.h>
 #include "../path_manager.hpp"
 #include "../globals.hpp"
-#include "sound_dummy.hpp"
-#include "sound_real.hpp"
-#include "sound.hpp"
+#include "sound/sound_dummy.hpp"
+#include "sound/sound_real.hpp"
+#include "sound/sound.hpp"
 
 namespace Sound {
 

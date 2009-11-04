@@ -26,13 +26,13 @@
 #include "../stat_manager.hpp"
 #include "../display/scene_context.hpp"
 #include "math/math.hpp"
-#include "worldmap.hpp"
-#include "worldmap_component.hpp"
+#include "worldmap/worldmap.hpp"
+#include "worldmap/worldmap_component.hpp"
 #include "resource.hpp"
-#include "worldmap_story.hpp"
-#include "pingus.hpp"
+#include "worldmap/worldmap_story.hpp"
+#include "worldmap/pingus.hpp"
 #include "../story_screen.hpp"
-#include "worldmap_screen.hpp"
+#include "worldmap/worldmap_screen.hpp"
 
 namespace WorldmapNS {
 

@@ -14,12 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "editor_level.hpp"
-#include "editor_screen.hpp"
-#include "viewport.hpp"
-#include "level_objs.hpp"
-#include "gui_style.hpp"
-#include "minimap.hpp"
+#include "editor/editor_level.hpp"
+#include "editor/editor_screen.hpp"
+#include "editor/viewport.hpp"
+#include "editor/level_objs.hpp"
+#include "editor/gui_style.hpp"
+#include "editor/minimap.hpp"
 
 namespace Editor {
 

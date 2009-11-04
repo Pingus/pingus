@@ -19,12 +19,12 @@
 #include "math/math.hpp"
 #include "util/file_reader.hpp"
 #include "../pingus_error.hpp"
-#include "dot.hpp"
-#include "dot_factory.hpp"
-#include "worldmap.hpp"
-#include "pathfinder.hpp"
-#include "path_graph.hpp"
-#include "path_drawable.hpp"
+#include "worldmap/dot.hpp"
+#include "worldmap/dot_factory.hpp"
+#include "worldmap/worldmap.hpp"
+#include "worldmap/pathfinder.hpp"
+#include "worldmap/path_graph.hpp"
+#include "worldmap/path_drawable.hpp"
 #include "../globals.hpp"
 
 namespace WorldmapNS {

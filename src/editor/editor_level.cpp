@@ -21,12 +21,12 @@
 #include <fstream>
 
 #include "../pingus_level.hpp"
-#include "editor_level.hpp"
-#include "level_impl.hpp"
-#include "level_objs.hpp"
+#include "editor/editor_level.hpp"
+#include "editor/level_impl.hpp"
+#include "editor/level_objs.hpp"
 #include "util/pathname.hpp"
 #include "util/sexpr_file_writer.hpp"
-#include "viewport.hpp"
+#include "editor/viewport.hpp"
 
 namespace Editor {
 

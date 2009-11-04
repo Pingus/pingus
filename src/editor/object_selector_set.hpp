@@ -19,7 +19,7 @@
 
 #include <vector>
 #include "math/size.hpp"
-#include "object_selector_list.hpp"
+#include "editor/object_selector_list.hpp"
 
 namespace Editor {
 

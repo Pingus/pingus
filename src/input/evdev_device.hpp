@@ -19,7 +19,7 @@
 
 #include <vector>
 #include <string.h>
-#include "control.hpp"
+#include "input/control.hpp"
 
 namespace Input {
 

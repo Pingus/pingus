@@ -36,7 +36,7 @@
 
 #include <string>
 #include <vector>
-#include "command_line.hpp"
+#include "util/command_line.hpp"
 
 class CommandLine_Generic
 {

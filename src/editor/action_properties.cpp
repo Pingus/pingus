@@ -16,11 +16,11 @@
 
 #include <iostream>
 #include <boost/bind.hpp>
-#include "gui_style.hpp"
-#include "checkbox.hpp"
-#include "editor_level.hpp"
+#include "editor/gui_style.hpp"
+#include "editor/checkbox.hpp"
+#include "editor/editor_level.hpp"
 #include "pingu_enums.hpp"
-#include "inputbox.hpp"
+#include "editor/inputbox.hpp"
 #include "util/string_util.hpp"
 #include "action_properties.hpp"
 

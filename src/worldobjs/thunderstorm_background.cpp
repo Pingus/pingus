@@ -16,7 +16,7 @@
 
 #include "../resource.hpp"
 #include "../display/scene_context.hpp"
-#include "thunderstorm_background.hpp"
+#include "worldobjs/thunderstorm_background.hpp"
 
 namespace WorldObjs {
 

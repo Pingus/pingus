@@ -18,8 +18,8 @@
 #define HEADER_PINGUS_WORLDMAP_PINGUS_HPP
 
 #include "../state_sprite.hpp"
-#include "drawable.hpp"
-#include "path_graph.hpp"
+#include "worldmap/drawable.hpp"
+#include "worldmap/path_graph.hpp"
 
 namespace WorldmapNS {
 

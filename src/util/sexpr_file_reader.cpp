@@ -15,15 +15,16 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <assert.h>
-#include "math/vector3f.hpp"
+
 #include "math/color.hpp"
 #include "math/rect.hpp"
 #include "math/size.hpp"
+#include "math/vector2i.hpp"
+#include "math/vector3f.hpp"
 #include "res_descriptor.hpp"
 #include "resource_modifier.hpp"
-#include "math/vector2i.hpp"
-#include "file_reader_impl.hpp"
-#include "sexpr_file_reader.hpp"
+#include "util/file_reader_impl.hpp"
+#include "util/sexpr_file_reader.hpp"
 
 class SExprFileReaderImpl: public FileReaderImpl
 {

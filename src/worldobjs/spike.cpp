@@ -19,7 +19,7 @@
 #include "../pingu_holder.hpp"
 #include "../world.hpp"
 #include "../resource.hpp"
-#include "spike.hpp"
+#include "worldobjs/spike.hpp"
 
 namespace WorldObjs {
 

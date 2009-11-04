@@ -17,9 +17,9 @@
 #include <iostream>
 #include "math/math.hpp"
 #include "../surface.hpp"
-#include "display.hpp"
-#include "sdl_framebuffer.hpp"
-#include "sdl_framebuffer_surface_impl.hpp"
+#include "display/display.hpp"
+#include "display/sdl_framebuffer.hpp"
+#include "display/sdl_framebuffer_surface_impl.hpp"
 
 namespace {
 

@@ -15,7 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <stdexcept>
-#include "sdl_framebuffer_surface_impl.hpp"
+#include "display/sdl_framebuffer_surface_impl.hpp"
 
 SDLFramebufferSurfaceImpl::SDLFramebufferSurfaceImpl(SDL_Surface* src)
 {

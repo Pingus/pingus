@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_GUI_RECT_COMPONENT_HPP
 
 #include "math/rect.hpp"
-#include "component.hpp"
+#include "gui/component.hpp"
 
 namespace GUI {
 

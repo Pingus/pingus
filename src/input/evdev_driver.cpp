@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "evdev_device.hpp"
-#include "evdev_driver.hpp"
+#include "input/evdev_device.hpp"
+#include "input/evdev_driver.hpp"
 
 namespace Input {
 

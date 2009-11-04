@@ -19,7 +19,7 @@
 #include "../ground_map.hpp"
 #include "../collision_map.hpp"
 #include "../resource.hpp"
-#include "groundpiece.hpp"
+#include "worldobjs/groundpiece.hpp"
 
 namespace WorldObjs {
 

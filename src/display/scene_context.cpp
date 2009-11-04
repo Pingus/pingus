@@ -15,7 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "display/framebuffer.hpp"
-#include "scene_context.hpp"
+#include "display/scene_context.hpp"
 
 #define SCALE_FACTOR 8.0f
 

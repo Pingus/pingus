@@ -18,10 +18,10 @@
 #include <iostream>
 #include <stdexcept>
 
+#include "display/opengl_framebuffer.hpp"
+#include "display/opengl_framebuffer_surface_impl.hpp"
 #include "math/math.hpp"
 #include "surface.hpp"
-#include "opengl_framebuffer_surface_impl.hpp"
-#include "opengl_framebuffer.hpp"
 
 OpenGLFramebuffer::OpenGLFramebuffer()
 {

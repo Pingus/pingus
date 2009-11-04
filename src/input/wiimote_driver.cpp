@@ -14,11 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "debug.hpp"
-#include "globals.hpp"
-#include "string_util.hpp"
-#include "wiimote.hpp"
-#include "wiimote_driver.hpp"
+#include "input/debug.hpp"
+#include "input/globals.hpp"
+#include "input/string_util.hpp"
+#include "input/wiimote.hpp"
+#include "input/wiimote_driver.hpp"
 
 namespace Input {
 

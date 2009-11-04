@@ -17,7 +17,7 @@
 #include <iostream>
 #include <string>
 #include <map>
-#include "sexpr_file_writer.hpp"
+#include "util/sexpr_file_writer.hpp"
 
 SExprFileWriter::SExprFileWriter(std::ostream& out_)
   : out(&out_), level(0)

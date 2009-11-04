@@ -17,7 +17,7 @@
 #ifndef HEADER_CORE_DRIVER_HPP
 #define HEADER_CORE_DRIVER_HPP
 
-#include "driver.hpp"
+#include "input/driver.hpp"
 
 namespace Input {
 

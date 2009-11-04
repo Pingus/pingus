@@ -30,7 +30,7 @@
 #include "util/file_reader.hpp"
 #include "input/controller.hpp"
 #include "input/control.hpp"
-#include "level_dot.hpp"
+#include "worldmap/level_dot.hpp"
 
 namespace WorldmapNS {
 

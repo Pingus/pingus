@@ -20,7 +20,7 @@
 #include "../globals.hpp"
 #include "../resource.hpp"
 #include "../world.hpp"
-#include "rain_particle_holder.hpp"
+#include "particles/rain_particle_holder.hpp"
 
 namespace Particles {
 

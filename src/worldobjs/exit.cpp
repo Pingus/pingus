@@ -24,7 +24,7 @@
 #include "../components/smallmap.hpp"
 #include "../resource.hpp"
 #include "util/string_util.hpp"
-#include "exit.hpp"
+#include "worldobjs/exit.hpp"
 
 namespace WorldObjs {
 

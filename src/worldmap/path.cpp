@@ -17,7 +17,7 @@
 #include <iostream>
 #include <algorithm>
 #include <assert.h>
-#include "path.hpp"
+#include "worldmap/path.hpp"
 
 namespace WorldmapNS {
 

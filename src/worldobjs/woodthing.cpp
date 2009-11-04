@@ -19,7 +19,7 @@
 #include "../particles/smoke_particle_holder.hpp"
 #include "../resource.hpp"
 #include "../world.hpp"
-#include "woodthing.hpp"
+#include "worldobjs/woodthing.hpp"
 
 namespace WorldObjs {
 // FIXME: Re-enable this namespace.

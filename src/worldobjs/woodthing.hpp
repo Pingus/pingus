@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_ENTRANCES_WOODTHING_HPP
 #define HEADER_PINGUS_WORLDOBJS_ENTRANCES_WOODTHING_HPP
 
-#include "entrance.hpp"
+#include "worldobjs/entrance.hpp"
 
 namespace WorldObjs {
 // FIXME: Re-enable this namespace.

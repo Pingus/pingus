@@ -15,7 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <stdexcept>
-#include "controller_description.hpp"
+#include "input/controller_description.hpp"
 
 namespace Input {
 

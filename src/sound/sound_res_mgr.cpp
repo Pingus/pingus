@@ -17,7 +17,7 @@
 #include "../path_manager.hpp"
 #include "../globals.hpp"
 #include "../debug.hpp"
-#include "sound_res_mgr.hpp"
+#include "sound/sound_res_mgr.hpp"
 
 
 SoundResMgr::SoundMap SoundResMgr::sound_map;

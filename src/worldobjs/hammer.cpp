@@ -19,7 +19,7 @@
 #include "../pingu_holder.hpp"
 #include "../world.hpp"
 #include "../resource.hpp"
-#include "hammer.hpp"
+#include "worldobjs/hammer.hpp"
 
 namespace WorldObjs {
 

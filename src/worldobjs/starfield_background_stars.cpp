@@ -17,7 +17,7 @@
 #include "../display/scene_context.hpp"
 #include "../world.hpp"
 #include "../resource.hpp"
-#include "starfield_background_stars.hpp"
+#include "worldobjs/starfield_background_stars.hpp"
 #include "globals.hpp"
 
 namespace WorldObjs {

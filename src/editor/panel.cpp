@@ -21,9 +21,9 @@
 #include "sprite.hpp"
 #include "gettext.h"
 #include "math/vector2i.hpp"
-#include "editor_screen.hpp"
+#include "editor/editor_screen.hpp"
 #include "gui/gui_manager.hpp"
-#include "panel.hpp"
+#include "editor/panel.hpp"
 
 namespace Editor {
 

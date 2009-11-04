@@ -19,7 +19,7 @@
 
 #include <map>
 #include <string>
-#include "event.hpp"
+#include "input/event.hpp"
 
 namespace Input {
 

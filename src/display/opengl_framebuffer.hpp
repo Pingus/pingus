@@ -17,7 +17,7 @@
 #ifndef HEADER_OPENGL_FRAMEBUFFER_HPP
 #define HEADER_OPENGL_FRAMEBUFFER_HPP
 
-#include "framebuffer.hpp"
+#include "display/framebuffer.hpp"
 
 class OpenGLFramebuffer : public Framebuffer
 {

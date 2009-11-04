@@ -17,7 +17,7 @@
 #ifndef HEADER_NULL_FRAMEBUFFER_HPP
 #define HEADER_NULL_FRAMEBUFFER_HPP
 
-#include "framebuffer.hpp"
+#include "display/framebuffer.hpp"
 
 /** NullFramebuffer is an empty dummy class for debugging purposes */
 class NullFramebuffer : public Framebuffer

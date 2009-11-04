@@ -20,7 +20,7 @@
 #include "../pingu_holder.hpp"
 #include "../world.hpp"
 #include "../resource.hpp"
-#include "switch_door.hpp"
+#include "worldobjs/switch_door.hpp"
 
 namespace WorldObjs {
 

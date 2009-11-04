@@ -22,7 +22,7 @@
 #include "../ground_map.hpp"
 #include "../resource.hpp"
 #include "../world.hpp"
-#include "snow_particle_holder.hpp"
+#include "particles/snow_particle_holder.hpp"
 
 namespace Particles {
 

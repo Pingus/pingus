@@ -15,8 +15,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "math/math.hpp"
-#include "manager.hpp"
-#include "core_driver.hpp"
+#include "input/manager.hpp"
+#include "input/core_driver.hpp"
 #include "../display/display.hpp"
 #include "globals.hpp"
 

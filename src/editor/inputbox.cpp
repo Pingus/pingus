@@ -15,9 +15,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
+
 #include "fonts.hpp"
 #include "display/drawing_context.hpp"
-#include "inputbox.hpp"
+#include "editor/inputbox.hpp"
 
 namespace Editor {
 

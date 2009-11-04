@@ -20,8 +20,8 @@
 #include "SDL_mixer.h"
 #include <config.h>
 #include <vector>
-#include "sound_impl.hpp"
-#include "sound.hpp"
+#include "sound/sound_impl.hpp"
+#include "sound/sound.hpp"
 
 namespace Sound {
 

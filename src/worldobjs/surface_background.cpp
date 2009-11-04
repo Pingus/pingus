@@ -22,7 +22,7 @@
 #include "../globals.hpp"
 #include "../blitter.hpp"
 #include "../display/display.hpp"
-#include "surface_background.hpp"
+#include "worldobjs/surface_background.hpp"
 
 namespace WorldObjs {
 

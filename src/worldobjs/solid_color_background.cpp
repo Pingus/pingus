@@ -16,7 +16,7 @@
 
 #include "../display/display.hpp"
 #include "../display/scene_context.hpp"
-#include "solid_color_background.hpp"
+#include "worldobjs/solid_color_background.hpp"
 
 namespace WorldObjs {
 

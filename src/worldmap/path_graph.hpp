@@ -20,9 +20,9 @@
 #include <map>
 #include <vector>
 #include "../math/vector3f.hpp"
-#include "path.hpp"
-#include "pathfinder.hpp"
-#include "graph.hpp"
+#include "worldmap/path.hpp"
+#include "worldmap/pathfinder.hpp"
+#include "worldmap/graph.hpp"
 
 namespace WorldmapNS {
 

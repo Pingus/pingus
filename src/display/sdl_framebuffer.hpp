@@ -22,7 +22,7 @@
 #include "math/color.hpp"
 #include "math/vector2i.hpp"
 #include "math/rect.hpp"
-#include "framebuffer.hpp"
+#include "display/framebuffer.hpp"
 
 class SDLFramebuffer : public Framebuffer
 {

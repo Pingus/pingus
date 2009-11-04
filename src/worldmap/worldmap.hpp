@@ -22,7 +22,7 @@
 #include "util/file_reader.hpp"
 #include "../display/drawing_context.hpp"
 #include "../graphic_context_state.hpp"
-#include "pingus_worldmap.hpp"
+#include "worldmap/pingus_worldmap.hpp"
 
 class Font;
 class DrawingContext;

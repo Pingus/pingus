@@ -22,7 +22,7 @@
 #include "../pingu.hpp"
 #include "../resource.hpp"
 #include "../components/smallmap.hpp"
-#include "entrance.hpp"
+#include "worldobjs/entrance.hpp"
 
 namespace WorldObjs {
 

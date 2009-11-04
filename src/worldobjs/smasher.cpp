@@ -25,7 +25,7 @@
 #include "../resource.hpp"
 #include "../sound/sound.hpp"
 #include "../world.hpp"
-#include "smasher.hpp"
+#include "worldobjs/smasher.hpp"
 
 namespace WorldObjs {
 

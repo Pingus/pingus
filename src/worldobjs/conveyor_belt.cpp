@@ -20,7 +20,7 @@
 #include "../pingu_holder.hpp"
 #include "../resource.hpp"
 #include "../world.hpp"
-#include "conveyor_belt.hpp"
+#include "worldobjs/conveyor_belt.hpp"
 
 namespace WorldObjs {
 

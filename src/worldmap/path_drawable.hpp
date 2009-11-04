@@ -17,8 +17,8 @@
 #ifndef HEADER_PATH_DRAWABLE_HPP
 #define HEADER_PATH_DRAWABLE_HPP
 
-#include "drawable.hpp"
-#include "path_graph.hpp"
+#include "worldmap/drawable.hpp"
+#include "worldmap/path_graph.hpp"
 
 namespace WorldmapNS {
 

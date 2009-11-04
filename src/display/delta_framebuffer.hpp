@@ -20,7 +20,7 @@
 #include <memory>
 #include <map>
 #include "../math/vector2i.hpp"
-#include "framebuffer.hpp"
+#include "display/framebuffer.hpp"
 
 class SDLFramebuffer;
 class DrawOpBuffer;

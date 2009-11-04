@@ -31,7 +31,7 @@
 #endif
 
 #include "SDL.h"
-#include "framebuffer_surface.hpp"
+#include "display/framebuffer_surface.hpp"
 
 class OpenGLFramebufferSurfaceImpl : public FramebufferSurfaceImpl
 {

@@ -18,12 +18,12 @@
 #include <boost/bind.hpp>
 
 #include "util/string_util.hpp"
-#include "label.hpp"
-#include "inputbox.hpp"
-#include "gui_style.hpp"
-#include "editor_level.hpp"
-#include "viewport.hpp"
-#include "level_properties.hpp"
+#include "editor/label.hpp"
+#include "editor/inputbox.hpp"
+#include "editor/gui_style.hpp"
+#include "editor/editor_level.hpp"
+#include "editor/viewport.hpp"
+#include "editor/level_properties.hpp"
 
 /*
 Level Properties:

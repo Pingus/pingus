@@ -18,7 +18,7 @@
 #include "../pingu.hpp"
 #include "../pingu_holder.hpp"
 #include "../world.hpp"
-#include "laser_exit.hpp"
+#include "worldobjs/laser_exit.hpp"
 
 namespace WorldObjs {
 

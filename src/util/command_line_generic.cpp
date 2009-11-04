@@ -32,7 +32,7 @@
 #include <stdexcept>
 #include <stdio.h>
 
-#include "command_line_generic.hpp"
+#include "util/command_line_generic.hpp"
 
 
 #ifdef WIN32

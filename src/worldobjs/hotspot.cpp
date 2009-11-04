@@ -18,7 +18,7 @@
 #include "../globals.hpp"
 #include "../display/scene_context.hpp"
 #include "../resource.hpp"
-#include "hotspot.hpp"
+#include "worldobjs/hotspot.hpp"
 
 namespace WorldObjs {
 

@@ -22,8 +22,8 @@
 
 #include "math/math.hpp"
 #include "math/vector2f.hpp"
-#include "event.hpp"
-#include "controller.hpp"
+#include "input/event.hpp"
+#include "input/controller.hpp"
 
 namespace Input {
 

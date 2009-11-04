@@ -21,7 +21,7 @@
 #include "../ground_map.hpp"
 #include "../resource.hpp"
 #include "../world.hpp"
-#include "ice_block.hpp"
+#include "worldobjs/ice_block.hpp"
 
 namespace WorldObjs {
 

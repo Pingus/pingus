@@ -20,8 +20,8 @@
 #include "pingus_error.hpp"
 #include "util/pathname.hpp"
 #include "path_manager.hpp"
-#include "sdl_driver.hpp"
-#include "core_driver.hpp"
+#include "input/sdl_driver.hpp"
+#include "input/core_driver.hpp"
 #ifdef HAVE_CWIID
 #  include "wiimote_driver.hpp"
 #endif 
@@ -34,7 +34,7 @@
 #ifdef HAVE_LINUXEVDEV
 #  include "evdev_driver.hpp"
 #endif
-#include "manager.hpp"
+#include "input/manager.hpp"
 
 namespace Input {
 

@@ -16,7 +16,7 @@
 
 #include <algorithm>
 #include <vector>
-#include "worldmap_story.hpp"
+#include "worldmap/worldmap_story.hpp"
 #include "../story_screen.hpp"
 #include "util/file_reader.hpp"
 #include "../res_descriptor.hpp"

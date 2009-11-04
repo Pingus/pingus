@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_GUI_GROUP_COMPONENT_HPP
 
 #include "display/drawing_context.hpp"
-#include "rect_component.hpp"
+#include "gui/rect_component.hpp"
 
 namespace GUI {
 

@@ -23,7 +23,7 @@
 #include <vector>
 
 #include "SDL_syswm.h"
-#include "driver.hpp"
+#include "input/driver.hpp"
 
 namespace Input {
 

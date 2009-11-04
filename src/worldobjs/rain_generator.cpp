@@ -19,7 +19,7 @@
 #include "../sound/sound.hpp"
 #include "../world.hpp"
 #include "../display/scene_context.hpp"
-#include "rain_generator.hpp"
+#include "worldobjs/rain_generator.hpp"
 
 namespace WorldObjs {
 

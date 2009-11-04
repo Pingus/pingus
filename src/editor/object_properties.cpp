@@ -18,18 +18,18 @@
 #include <iostream>
 
 #include "util/string_util.hpp"
-#include "button.hpp"
-#include "editor_screen.hpp"
-#include "level_objs.hpp"
+#include "editor/button.hpp"
+#include "editor/editor_screen.hpp"
+#include "editor/level_objs.hpp"
 #include "fonts.hpp"
-#include "label.hpp"
+#include "editor/label.hpp"
 #include "gettext.h"
-#include "gui_style.hpp"
+#include "editor/gui_style.hpp"
 #include "groundtype.hpp"
-#include "combobox.hpp"
-#include "inputbox.hpp"
-#include "checkbox.hpp"
-#include "object_properties.hpp"
+#include "editor/combobox.hpp"
+#include "editor/inputbox.hpp"
+#include "editor/checkbox.hpp"
+#include "editor/object_properties.hpp"
 
 namespace Editor {
 

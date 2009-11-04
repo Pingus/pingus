@@ -18,7 +18,7 @@
 #define HEADER_SCENE_CONTEXT_HPP
 
 #include "SDL.h"
-#include "drawing_context.hpp"
+#include "display/drawing_context.hpp"
 
 class SceneContextImpl;
 

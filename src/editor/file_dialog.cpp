@@ -19,16 +19,16 @@
 
 #include "display/drawing_context.hpp"
 #include "gui/gui_manager.hpp"
-#include "editor_screen.hpp"
+#include "editor/editor_screen.hpp"
 #include "util/system.hpp"
-#include "gui_style.hpp"
+#include "editor/gui_style.hpp"
 #include "fonts.hpp"
 #include "gettext.h"
-#include "label.hpp"
-#include "inputbox.hpp"
+#include "editor/label.hpp"
+#include "editor/inputbox.hpp"
 #include "util/pathname.hpp"
-#include "button.hpp"
-#include "file_dialog.hpp"
+#include "editor/button.hpp"
+#include "editor/file_dialog.hpp"
 
 namespace Editor {
 

@@ -18,9 +18,10 @@
 #define HEADER_FILE_LIST_HPP
 
 #include <boost/signal.hpp>
-#include "util/system.hpp"
+
 #include "sprite.hpp"
 #include "gui/rect_component.hpp"
+#include "util/system.hpp"
 
 namespace Editor {
 

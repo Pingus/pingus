@@ -19,8 +19,8 @@
 #include "SDL_mixer.h"
 #include "../globals.hpp"
 #include "../debug.hpp"
-#include "sound_res_mgr.hpp"
-#include "sound_real.hpp"
+#include "sound/sound_res_mgr.hpp"
+#include "sound/sound_real.hpp"
 
 namespace Sound {
 

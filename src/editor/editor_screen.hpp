@@ -20,7 +20,7 @@
 
 #include "../screen/gui_screen.hpp"
 #include "util/pathname.hpp"
-#include "file_dialog.hpp"
+#include "editor/file_dialog.hpp"
 
 class DrawingContext;
 class FileDialog;

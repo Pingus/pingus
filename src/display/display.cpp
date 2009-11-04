@@ -26,13 +26,13 @@
 #include "../math/color.hpp"
 #include "math/math.hpp"
 #include "../screen/screen_manager.hpp"
-#include "sdl_framebuffer.hpp"
+#include "display/sdl_framebuffer.hpp"
 #ifdef HAVE_OPENGL
 #  include "opengl_framebuffer.hpp"
 #endif
-#include "null_framebuffer.hpp"
-#include "delta_framebuffer.hpp"
-#include "display.hpp"
+#include "display/null_framebuffer.hpp"
+#include "display/delta_framebuffer.hpp"
+#include "display/display.hpp"
 
 std::auto_ptr<Framebuffer> Display::framebuffer;
 

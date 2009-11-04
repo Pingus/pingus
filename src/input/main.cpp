@@ -1,7 +1,7 @@
 #include <stdexcept>
 #include "SDL.h"
-#include "manager.hpp"
-#include "controller.hpp"
+#include "input/manager.hpp"
+#include "input/controller.hpp"
 
 int main()
 {

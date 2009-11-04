@@ -15,8 +15,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "fonts.hpp"
-#include "gui_style.hpp"
-#include "checkbox.hpp"
+#include "editor/gui_style.hpp"
+#include "editor/checkbox.hpp"
 
 namespace Editor {
 

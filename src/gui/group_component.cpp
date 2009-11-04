@@ -16,7 +16,7 @@
 
 #include <assert.h>
 #include <iostream>
-#include "group_component.hpp"
+#include "gui/group_component.hpp"
 
 namespace GUI {
 

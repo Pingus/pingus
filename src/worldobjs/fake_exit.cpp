@@ -20,7 +20,7 @@
 #include "../world.hpp"
 #include "../components/smallmap.hpp"
 #include "../resource.hpp"
-#include "fake_exit.hpp"
+#include "worldobjs/fake_exit.hpp"
 
 namespace WorldObjs {
 

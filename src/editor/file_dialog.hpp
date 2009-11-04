@@ -17,7 +17,7 @@
 #ifndef HEADER_FILE_DIALOG_HPP
 #define HEADER_FILE_DIALOG_HPP
 
-#include "file_list.hpp"
+#include "editor/file_list.hpp"
 #include "gui/group_component.hpp"
 
 namespace Editor {

@@ -18,7 +18,7 @@
 #define HEADER_USBMOUSE_DRIVER_HPP
 
 #include <vector>
-#include "driver.hpp"
+#include "input/driver.hpp"
 
 namespace Input {
 

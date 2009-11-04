@@ -17,9 +17,9 @@
 #include <assert.h>
 #include <iostream>
 #include <algorithm>
-#include "drawing_context.hpp"
+#include "display/drawing_context.hpp"
 #include "math/math.hpp"
-#include "framebuffer.hpp"
+#include "display/framebuffer.hpp"
 #include "display/display.hpp"
 #include "../sprite.hpp"
 #include "../font.hpp"

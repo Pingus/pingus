@@ -16,7 +16,7 @@
 
 #include "display/drawing_context.hpp"
 #include "fonts.hpp"
-#include "label.hpp"
+#include "editor/label.hpp"
 
 namespace Editor {
 

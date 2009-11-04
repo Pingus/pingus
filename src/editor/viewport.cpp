@@ -23,10 +23,10 @@
 #include "../display/drawing_context.hpp"
 #include "../math/vector3f.hpp"
 #include "../graphic_context_state.hpp"
-#include "editor_level.hpp"
-#include "editor_screen.hpp"
-#include "viewport.hpp"
-#include "level_objs.hpp"
+#include "editor/editor_level.hpp"
+#include "editor/editor_screen.hpp"
+#include "editor/viewport.hpp"
+#include "editor/level_objs.hpp"
 
 namespace Editor {
 

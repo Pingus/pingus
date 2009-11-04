@@ -17,8 +17,8 @@
 
 #include <string>
 #include <iostream>
-#include "level_objs.hpp"
-#include "level_impl.hpp"
+#include "editor/level_objs.hpp"
+#include "editor/level_impl.hpp"
 #include "../blitter.hpp"
 #include "../resource.hpp"
 #include "../res_descriptor.hpp"

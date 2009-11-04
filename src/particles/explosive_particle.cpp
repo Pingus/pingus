@@ -19,7 +19,7 @@
 #include "../world.hpp"
 #include "../particles/particle_holder.hpp"
 #include "../resource.hpp"
-#include "explosive_particle.hpp"
+#include "particles/explosive_particle.hpp"
 
 ExplosiveParticle::ExplosiveParticle (int x, int y, float x_a, float y_a)
                                     : Particle (x, y, x_a, y_a),

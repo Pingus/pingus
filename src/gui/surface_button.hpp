@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_GUI_SURFACE_BUTTON_HPP
 
 #include "../sprite.hpp"
-#include "component.hpp"
+#include "gui/component.hpp"
 
 namespace GUI {
 

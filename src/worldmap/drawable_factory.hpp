@@ -17,7 +17,7 @@
 #ifndef HEADER_DRAWABLE_FACTORY_HPP
 #define HEADER_DRAWABLE_FACTORY_HPP
 
-#include "drawable.hpp"
+#include "worldmap/drawable.hpp"
 
 namespace WorldmapNS {
 

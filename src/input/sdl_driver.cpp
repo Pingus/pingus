@@ -19,7 +19,7 @@
 #include "math/size.hpp"
 #include "util/file_reader.hpp"
 #include "display/display.hpp"
-#include "sdl_driver.hpp"
+#include "input/sdl_driver.hpp"
 
 namespace Input {
 

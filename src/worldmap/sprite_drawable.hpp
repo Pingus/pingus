@@ -19,7 +19,7 @@
 
 #include "../sprite.hpp"
 #include "../math/vector3f.hpp"
-#include "drawable.hpp"
+#include "worldmap/drawable.hpp"
 
 namespace WorldmapNS {
 

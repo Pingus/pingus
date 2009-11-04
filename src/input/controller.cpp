@@ -14,9 +14,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "controller_description.hpp"
-#include "control.hpp"
-#include "controller.hpp"
+#include "input/controller_description.hpp"
+#include "input/control.hpp"
+#include "input/controller.hpp"
 
 namespace Input {
 

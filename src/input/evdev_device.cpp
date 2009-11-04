@@ -24,7 +24,7 @@
 #include <errno.h>
 #include <stdio.h>
 
-#include "evdev_device.hpp"
+#include "input/evdev_device.hpp"
 
 #define BITS_PER_LONG (sizeof(long) * 8)
 #define NBITS(x) ((((x)-1)/BITS_PER_LONG)+1)

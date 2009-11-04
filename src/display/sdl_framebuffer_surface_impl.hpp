@@ -18,7 +18,7 @@
 #define HEADER_SDL_FRAMEBUFFER_SURFACE_IMPL_HPP
 
 #include "SDL.h"
-#include "framebuffer_surface.hpp"
+#include "display/framebuffer_surface.hpp"
 
 /** */
 class SDLFramebufferSurfaceImpl : public FramebufferSurfaceImpl

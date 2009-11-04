@@ -15,7 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "null_framebuffer.hpp"
+#include "display/null_framebuffer.hpp"
 
 class NullFramebufferSurfaceImpl : public FramebufferSurfaceImpl
 {

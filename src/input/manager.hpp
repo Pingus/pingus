@@ -18,9 +18,9 @@
 #define HEADER_PINGUS_INPUT_MANAGER_HPP
 
 #include <vector>
-#include "controller.hpp"
-#include "controller_description.hpp"
-#include "driver.hpp"
+#include "input/controller.hpp"
+#include "input/controller_description.hpp"
+#include "input/driver.hpp"
 
 namespace Input {
 

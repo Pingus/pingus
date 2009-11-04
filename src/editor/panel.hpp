@@ -19,9 +19,10 @@
 #define HEADER_PINGUS_EDITOR_PANEL_HPP
 
 #include <string>
+
 #include "sprite.hpp"
 #include "math/vector2i.hpp"
-#include "../gui/component.hpp"
+#include "gui/component.hpp"
 
 namespace Editor {
 

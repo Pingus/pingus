@@ -19,7 +19,7 @@
 #include "../collision_map.hpp"
 #include "../resource.hpp"
 #include "../world.hpp"
-#include "pingu_particle_holder.hpp"
+#include "particles/pingu_particle_holder.hpp"
 
 namespace Particles {
 

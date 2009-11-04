@@ -16,11 +16,11 @@
 
 #include <iostream>
 
-#include "math/math.hpp"
+#include "editor/file_list.hpp"
+#include "editor/gui_style.hpp"
 #include "fonts.hpp"
-#include "file_list.hpp"
-#include "gui_style.hpp"
-#include "../math/vector2i.hpp"
+#include "math/math.hpp"
+#include "math/vector2i.hpp"
 
 namespace Editor {
 

@@ -19,6 +19,7 @@
 
 #include "gui/component.hpp"
 #include "res_descriptor.hpp"
+
 class DrawingContext;
 
 namespace Editor {

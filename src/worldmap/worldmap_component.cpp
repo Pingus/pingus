@@ -16,9 +16,9 @@
 
 #include "../display/display.hpp"
 #include "../display/scene_context.hpp"
-#include "worldmap_screen.hpp"
-#include "worldmap.hpp"
-#include "worldmap_component.hpp"
+#include "worldmap/worldmap_screen.hpp"
+#include "worldmap/worldmap.hpp"
+#include "worldmap/worldmap_component.hpp"
 
 namespace WorldmapNS {
 

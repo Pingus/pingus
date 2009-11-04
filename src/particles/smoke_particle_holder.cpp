@@ -17,7 +17,7 @@
 #include "../globals.hpp"
 #include "../display/scene_context.hpp"
 #include "../resource.hpp"
-#include "smoke_particle_holder.hpp"
+#include "particles/smoke_particle_holder.hpp"
 
 namespace Particles {
 

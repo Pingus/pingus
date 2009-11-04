@@ -16,7 +16,7 @@
 
 #include "../globals.hpp"
 #include "../debug.hpp"
-#include "sound_dummy.hpp"
+#include "sound/sound_dummy.hpp"
 
 namespace Sound {
 
