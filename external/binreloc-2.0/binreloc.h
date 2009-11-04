@@ -13,8 +13,6 @@
 #ifndef __BINRELOC_H__
 #define __BINRELOC_H__
 
-#include "config.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
@@ -37,21 +35,21 @@ typedef enum {
 
 #ifndef BINRELOC_RUNNING_DOXYGEN
 /* Mangle symbol names to avoid symbol collisions with other ELF objects. */
-	#define br_init             GBYX18816731510476_br_init
-	#define br_init_lib         GBYX18816731510476_br_init_lib
-	#define br_find_exe         GBYX18816731510476_br_find_exe
-	#define br_find_exe_dir     GBYX18816731510476_br_find_exe_dir
-	#define br_find_prefix      GBYX18816731510476_br_find_prefix
-	#define br_find_bin_dir     GBYX18816731510476_br_find_bin_dir
-	#define br_find_sbin_dir    GBYX18816731510476_br_find_sbin_dir
-	#define br_find_data_dir    GBYX18816731510476_br_find_data_dir
-	#define br_find_locale_dir  GBYX18816731510476_br_find_locale_dir
-	#define br_find_lib_dir     GBYX18816731510476_br_find_lib_dir
-	#define br_find_libexec_dir GBYX18816731510476_br_find_libexec_dir
-	#define br_find_etc_dir     GBYX18816731510476_br_find_etc_dir
-	#define br_strcat           GBYX18816731510476_br_strcat
-	#define br_build_path       GBYX18816731510476_br_build_path
-	#define br_dirname          GBYX18816731510476_br_dirname
+	#define br_init             gJdn38894613193140_br_init
+	#define br_init_lib         gJdn38894613193140_br_init_lib
+	#define br_find_exe         gJdn38894613193140_br_find_exe
+	#define br_find_exe_dir     gJdn38894613193140_br_find_exe_dir
+	#define br_find_prefix      gJdn38894613193140_br_find_prefix
+	#define br_find_bin_dir     gJdn38894613193140_br_find_bin_dir
+	#define br_find_sbin_dir    gJdn38894613193140_br_find_sbin_dir
+	#define br_find_data_dir    gJdn38894613193140_br_find_data_dir
+	#define br_find_locale_dir  gJdn38894613193140_br_find_locale_dir
+	#define br_find_lib_dir     gJdn38894613193140_br_find_lib_dir
+	#define br_find_libexec_dir gJdn38894613193140_br_find_libexec_dir
+	#define br_find_etc_dir     gJdn38894613193140_br_find_etc_dir
+	#define br_strcat           gJdn38894613193140_br_strcat
+	#define br_build_path       gJdn38894613193140_br_build_path
+	#define br_dirname          gJdn38894613193140_br_dirname
 
 
 #endif

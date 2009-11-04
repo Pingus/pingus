@@ -49,7 +49,7 @@ extern "C" {
 #include "SDL.h"
 
 #ifdef ENABLE_BINRELOC
-#include "../lib/binreloc/binreloc.h"
+#include "../external/binreloc-2.0/binreloc.h"
 #endif 
 
 #include "gettext.h"

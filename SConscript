@@ -260,7 +260,7 @@ pingus_sources = [
 'src/worldobjs/thunderstorm_background.cpp', 
 'src/worldobjs/woodthing.cpp',
 
-'lib/binreloc/binreloc.c'
+'external/binreloc-2.0/binreloc.c'
 ]
 
 class _SpaceListOptionClass:
@@ -505,7 +505,7 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
     else:
         print "Configuration written to config.h and config.py"
     ARGUMENTS = {}
-
+
 if not ('configure' in COMMAND_LINE_TARGETS):
     if ARGUMENTS != {}:
         print "Error: You must not supply arguments to the compile step."
