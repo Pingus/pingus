@@ -24,10 +24,14 @@
 
 namespace WorldObjs {
 
-ConveyorBelt::ConveyorBelt(const FileReader& reader)
-  : left_sur  (Sprite ("worldobjs/conveyorbelt_left")),
-    right_sur (Sprite ("worldobjs/conveyorbelt_right")),
-    middle_sur(Sprite ("worldobjs/conveyorbelt_middle"))
+ConveyorBelt::ConveyorBelt(const FileReader& reader) :
+  left_sur  (Sprite ("worldobjs/conveyorbelt_left")),
+  right_sur (Sprite ("worldobjs/conveyorbelt_right")),
+  middle_sur(Sprite ("worldobjs/conveyorbelt_middle")),
+  pos(),
+  width(),
+  speed(),
+  counter()
 {
   reader.read_vector("position", pos);
   reader.read_int   ("width",    width);
@@ -40,12 +44,12 @@ ConveyorBelt::draw (SceneContext& gc)
   gc.color().draw(left_sur, pos);
   for (int i=0; i < width; ++i)
     gc.color().draw(middle_sur,
-	    Vector3f(static_cast<float>(pos.x + left_sur.get_width() + i * middle_sur.get_width()),
-                  static_cast<float>(pos.y)));
+                    Vector3f(static_cast<float>(pos.x + left_sur.get_width() + i * middle_sur.get_width()),
+                             static_cast<float>(pos.y)));
 
   gc.color().draw(right_sur,
-	  Vector3f(static_cast<float>(pos.x + left_sur.get_width() + width * middle_sur.get_width()),
-                 static_cast<float>(pos.y)));
+                  Vector3f(static_cast<float>(pos.x + left_sur.get_width() + width * middle_sur.get_width()),
+                           static_cast<float>(pos.y)));
 }
 
 void
@@ -63,23 +67,23 @@ ConveyorBelt::on_startup ()
 void
 ConveyorBelt::update ()
 {
-	left_sur.update();
-	middle_sur.update();
-	right_sur.update();
+  left_sur.update();
+  middle_sur.update();
+  right_sur.update();
 
   PinguHolder* holder = world->get_pingus();
   for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
+  {
+    if (   (*pingu)->get_pos().x > pos.x
+           && (*pingu)->get_pos().x < pos.x + 15 * (width + 2)
+           && (*pingu)->get_pos().y > pos.y - 2
+           && (*pingu)->get_pos().y < pos.y + 10)
     {
-      if (   (*pingu)->get_pos().x > pos.x
-	  && (*pingu)->get_pos().x < pos.x + 15 * (width + 2)
-	  && (*pingu)->get_pos().y > pos.y - 2
-	  && (*pingu)->get_pos().y < pos.y + 10)
-	{
-	  Vector3f pos_ = (*pingu)->get_pos();
-	  pos_.x -= speed * 0.025f;
-	  (*pingu)->set_pos(pos_);
-	}
+      Vector3f pos_ = (*pingu)->get_pos();
+      pos_.x -= speed * 0.025f;
+      (*pingu)->set_pos(pos_);
     }
+  }
 }
 
 float

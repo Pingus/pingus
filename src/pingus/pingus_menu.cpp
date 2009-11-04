@@ -37,7 +37,17 @@
 #include "pingus/layer_manager.hpp"
 #include "pingus/pingus_menu.hpp"
 
-PingusMenu::PingusMenu()
+PingusMenu::PingusMenu() :
+  is_init(),
+  hint(),
+  help(),
+  text_scroll_offset(),
+  background(),
+  logo(),
+  start_button(),
+  quit_button(),
+  editor_button(),
+  contrib_button()
 {
   is_init = false;
 

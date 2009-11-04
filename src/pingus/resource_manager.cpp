@@ -24,7 +24,9 @@
 #include "util/sexpr_file_reader.hpp"
 #include "pingus/resource_manager.hpp"
 
-ResourceManager::ResourceManager()
+ResourceManager::ResourceManager() :
+  resources(),
+  aliases()
 {
 }
 

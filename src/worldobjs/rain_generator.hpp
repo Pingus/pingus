@@ -27,6 +27,7 @@ private:
   bool  do_thunder;
   float thunder_count;
   float waiter_count;
+
 public:
   RainGenerator(const FileReader& reader);
   ~RainGenerator();

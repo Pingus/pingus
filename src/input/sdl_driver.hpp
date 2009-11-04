@@ -27,9 +27,7 @@
 class FileReader;
 
 namespace Input {
-
 
-/** */
 class SDLDriver : public Driver
 {
 private:
@@ -95,6 +93,10 @@ public:
 
   void update(float delta);
   std::string get_name() const { return "sdl"; }
+
+private:
+  SDLDriver(const SDLDriver&);
+  SDLDriver & operator=(const SDLDriver&);
 };
 
 } // namespace Input

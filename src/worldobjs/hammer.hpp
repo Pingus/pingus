@@ -32,7 +32,7 @@ class Hammer : public WorldObj
 {
 private:
   Sprite sprite;
-  Vector3f    pos;
+  Vector3f pos;
 
 public:
   Hammer(const FileReader& reader);

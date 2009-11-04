@@ -30,11 +30,13 @@
 #include "pingus/sprite_impl.hpp"
 #include "pingus/sprite_description.hpp"
 
-Sprite::Sprite()
+Sprite::Sprite() :
+  impl()
 {
 }
 
-Sprite::Sprite(const std::string& name)
+Sprite::Sprite(const std::string& name) :
+  impl()
 {
   SpriteDescription* desc = Resource::load_sprite_desc(name);
   if (desc)
@@ -49,7 +51,8 @@ Sprite::Sprite(const std::string& name)
     }
 }
 
-Sprite::Sprite(const ResDescriptor& res_desc)
+Sprite::Sprite(const ResDescriptor& res_desc) :
+  impl()
 {
   SpriteDescription* desc = Resource::load_sprite_desc(res_desc.res_name);
   if (desc)
@@ -64,7 +67,8 @@ Sprite::Sprite(const ResDescriptor& res_desc)
     } 
 }
 
-Sprite::Sprite(const Pathname& name)
+Sprite::Sprite(const Pathname& name) :
+  impl()
 {
   SpriteDescription desc;
   desc.filename = name;

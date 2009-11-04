@@ -22,8 +22,10 @@
 
 namespace WorldObjs {
 
-LaserExit::LaserExit(const FileReader& reader)
-  : killing(false)
+LaserExit::LaserExit(const FileReader& reader) :
+  surface(),
+  pos(),
+  killing(false)
 {
   reader.read_vector("position", pos);
 }
@@ -51,7 +53,7 @@ LaserExit::update ()
 
   if (killing) {
     if (surface.is_finished()) {
-			surface.restart();
+      surface.restart();
       killing = false;
     } else {
       surface.update();
@@ -63,17 +65,17 @@ void
 LaserExit::catch_pingu (Pingu* pingu)
 {
   if (!killing)
+  {
+    if (   pingu->get_x () < pos.x + 34 + 10 && pingu->get_x () > pos.x + 34
+           && pingu->get_y () < pos.y + 43 + 20 && pingu->get_y () > pos.y + 43)
     {
-      if (   pingu->get_x () < pos.x + 34 + 10 && pingu->get_x () > pos.x + 34
-	     && pingu->get_y () < pos.y + 43 + 20 && pingu->get_y () > pos.y + 43)
-	{
-	  if (pingu->get_action() != Actions::LASERKILL)
-	    {
-	      killing = true;
-	      pingu->set_action(Actions::LASERKILL);
-	    }
-	}
+      if (pingu->get_action() != Actions::LASERKILL)
+      {
+        killing = true;
+        pingu->set_action(Actions::LASERKILL);
+      }
     }
+  }
 }
 
 } // namespace WorldObjs

@@ -115,6 +115,7 @@ class ResultScreenRetryButton : public GUI::SurfaceButton
 {
 private:
   ResultScreen* parent;
+
 public:
   ResultScreenRetryButton(ResultScreen* p, int x, int y)
     : GUI::SurfaceButton(x, y,
@@ -155,7 +156,8 @@ private:
 ResultScreenComponent::ResultScreenComponent(Result arg_result) :
   result(arg_result),
   background("core/menu/wood"),
-  blackboard("core/menu/blackboard")
+  blackboard("core/menu/blackboard"),
+  time_str()
 {   
   if (result.max_time == -1)
     time_str = "-";
@@ -245,8 +247,11 @@ ResultScreenComponent::draw(DrawingContext& gc)
   gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), time_str);
 }
 
-ResultScreen::ResultScreen(Result arg_result)
-  : result(arg_result)
+ResultScreen::ResultScreen(Result arg_result) :
+  result(arg_result),
+  ok_button(),
+  abort_button(),
+  retry_button()
 {
   ResultScreenComponent* comp = new ResultScreenComponent(result);
   gui_manager->add(comp);

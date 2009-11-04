@@ -36,19 +36,21 @@ protected:
   bool visible;
 
 public:
-  Drawable()
-    :visible(true)
+  Drawable() :
+    name(),
+    visible(true)
   {
   }
 
-  Drawable(std::string arg_name)
-    : name(arg_name),
-      visible(true)
+  Drawable(std::string arg_name) :
+    name(arg_name),
+    visible(true)
   {
   }
 
-  Drawable(FileReader reader)
-    : visible(true)
+  Drawable(FileReader reader) :
+    name(),
+    visible(true)
   {
     reader.read_string("name", name);
   }

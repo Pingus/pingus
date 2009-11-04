@@ -140,10 +140,16 @@ void write_event(std::ostream& out, const Input::Event& event)
 
 ScreenManager* ScreenManager::instance_ = 0;
 
-ScreenManager::ScreenManager()
-  : display_gc(new DrawingContext()),
-    record_input(false),
-    playback_input(false)
+ScreenManager::ScreenManager() :
+  input_manager(),
+  input_controller(),
+  display_gc(new DrawingContext()),
+  fps_counter(),
+  cursor(),
+  screens(),
+  mouse_pos(),
+  record_input(false),
+  playback_input(false)
 {
   assert(instance_ == 0);
   instance_ = this;

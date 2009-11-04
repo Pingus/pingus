@@ -29,11 +29,12 @@
 
 namespace WorldObjs {
 
-Smasher::Smasher(const FileReader& reader)
-  : surface("traps/smasher"),
-    smashing(false),
-    downwards(false),
-    count(0)
+Smasher::Smasher(const FileReader& reader) :
+  surface("traps/smasher"),
+  pos(),
+  smashing(false),
+  downwards(false),
+  count(0)
 {
   reader.read_vector("position", pos);
 }

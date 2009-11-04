@@ -65,6 +65,7 @@ private:
 
   Vector3f velocity;
 
+private:
   bool request_set_action(boost::shared_ptr<PinguAction>);
   void set_action(boost::shared_ptr<PinguAction>);
 

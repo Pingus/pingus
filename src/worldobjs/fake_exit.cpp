@@ -24,10 +24,11 @@
 
 namespace WorldObjs {
 
-FakeExit::FakeExit(const FileReader& reader)
-  : surface("traps/fake_exit"),
-    smallmap_symbol("core/misc/smallmap_exit"),
-    smashing(false)
+FakeExit::FakeExit(const FileReader& reader) :
+  surface("traps/fake_exit"),
+  smallmap_symbol("core/misc/smallmap_exit"),
+  pos(),
+  smashing(false)
 {
   reader.read_vector("position", pos);
   pos -= Vector3f((float)surface.get_width ()/2, (float)surface.get_height ());

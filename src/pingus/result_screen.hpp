@@ -30,8 +30,8 @@ class ResultScreen : public GUIScreen
 private:
   Result result;
   GUI::SurfaceButton*   ok_button;
-    GUI::SurfaceButton* abort_button;
-    GUI::SurfaceButton* retry_button;
+  GUI::SurfaceButton* abort_button;
+  GUI::SurfaceButton* retry_button;
 
 public:
   ResultScreen(Result result);

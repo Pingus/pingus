@@ -19,7 +19,8 @@
 #include "pingus/state_sprite.hpp"
 
 
-StateSprite::StateSprite()
+StateSprite::StateSprite() :
+  sprites()
 {
 }
 

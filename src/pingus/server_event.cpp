@@ -26,15 +26,21 @@
 #include "pingus/pingu.hpp"
 #include "util/string_util.hpp"
 
-ServerEvent::ServerEvent() 
-  : type(PINGU_ACTION_EVENT),
-    time_stamp(0),
-    pingu_id(0),
-    pingu_action(Actions::WALKER)
+ServerEvent::ServerEvent() :
+  type(PINGU_ACTION_EVENT),
+  time_stamp(0),
+  pingu_id(0),
+  pos(),
+  pingu_action(Actions::WALKER)
 {
 }
 
-ServerEvent::ServerEvent(FileReader reader)
+ServerEvent::ServerEvent(FileReader reader) :
+  type(PINGU_ACTION_EVENT),
+  time_stamp(0),
+  pingu_id(0),
+  pos(),
+  pingu_action(Actions::WALKER)
 {
   if (reader.get_name() == "armageddon")
     {

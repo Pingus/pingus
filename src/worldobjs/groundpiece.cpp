@@ -23,7 +23,10 @@
 
 namespace WorldObjs {
 
-Groundpiece::Groundpiece(const FileReader& reader)
+Groundpiece::Groundpiece(const FileReader& reader) :
+  pos(),
+  desc(),
+  gptype()
 {
   reader.read_vector("position", pos);
   reader.read_desc  ("surface",  desc);

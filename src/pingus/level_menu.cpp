@@ -241,6 +241,8 @@ public:
   LevelSelector(LevelMenu* level_menu_, const Rect& rect_) 
     : RectComponent(rect_),
       level_menu(level_menu_),
+      marker(),
+      marker_locked(),
       levelset(0),
       current_level(-1),
       page(0)
@@ -359,7 +361,13 @@ LevelMenu::LevelMenu() :
   x_pos((Display::get_width()  - default_screen_width)/2),
   y_pos((Display::get_height() - default_screen_height)/2),
   background("core/menu/wood"),
-  blackboard("core/menu/blackboard")
+  blackboard("core/menu/blackboard"),
+  ok_button(),
+  level_selector(),
+  levelset_selector(),
+  abort_button(),
+  next_button(),
+  prev_button()
 {
   ok_button  = Sprite("core/start/ok");
 

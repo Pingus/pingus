@@ -81,6 +81,10 @@ public:
         notify_parent();
       }
   }
+
+private:
+  AxisPointer(const AxisPointer&);
+  AxisPointer & operator=(const AxisPointer&);
 };
 
 class AxisScroller : public Scroller
@@ -134,6 +138,10 @@ public:
 
     notify_parent();
   }
+
+private:
+  AxisScroller(const AxisScroller&);
+  AxisScroller & operator=(const AxisScroller&);
 };
 
 class ButtonScroller : public Scroller
@@ -196,6 +204,10 @@ public:
 
     notify_parent();
   }
+
+private:
+  ButtonScroller(const ButtonScroller&);
+  ButtonScroller & operator=(const ButtonScroller&);
 };
 
 Button*

@@ -41,6 +41,10 @@ public:
   Scroller* create_scroller(const FileReader& reader, Control* parent);
   Pointer*  create_pointer (const FileReader& reader, Control* parent);
   Keyboard* create_keyboard(const FileReader& reader, Control* parent);
+
+private:
+  CoreDriver(const CoreDriver&);
+  CoreDriver & operator=(const CoreDriver&);
 };
 
 } // namespace Input

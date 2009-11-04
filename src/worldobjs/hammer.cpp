@@ -23,8 +23,9 @@
 
 namespace WorldObjs {
 
-Hammer::Hammer(const FileReader& reader)
-  : sprite("traps/hammer")
+Hammer::Hammer(const FileReader& reader) :
+  sprite("traps/hammer"),
+  pos()
 {
   reader.read_vector("position", pos);
 }

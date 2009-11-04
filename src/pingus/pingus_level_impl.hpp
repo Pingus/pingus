@@ -26,16 +26,22 @@
 class PingusLevelImpl
 {
 public:
-       
   // Set defaults in constructor
   PingusLevelImpl() :
+    resname(),
+    levelname(),
+    description(),
     ambient_light(255, 255, 255, 255),
-    number_of_pingus(0), number_to_save(0),
-    time(0), difficulty(0),
-    music("none")
-  {
-    // Do nothing
-  }
+    size(),
+    number_of_pingus(0), 
+    number_to_save(0),
+    actions(),
+    time(0), 
+    difficulty(0),
+    author(),
+    music("none"),
+    objects()
+  {}
                     
   std::string resname;
 

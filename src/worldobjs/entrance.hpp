@@ -36,6 +36,7 @@ class Entrance : public WorldObj
 {
 public:
   enum EntranceDirection { LEFT, RIGHT, MISC };
+
 protected:
   EntranceDirection direction;
   Vector3f          pos;

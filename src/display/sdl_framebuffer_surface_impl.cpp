@@ -17,7 +17,8 @@
 #include <stdexcept>
 #include "display/sdl_framebuffer_surface_impl.hpp"
 
-SDLFramebufferSurfaceImpl::SDLFramebufferSurfaceImpl(SDL_Surface* src)
+SDLFramebufferSurfaceImpl::SDLFramebufferSurfaceImpl(SDL_Surface* src) :
+  surface()
 {
   if (src->format->Amask != 0 || (src->flags & SDL_SRCCOLORKEY))
     surface = SDL_DisplayFormatAlpha(src);

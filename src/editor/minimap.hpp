@@ -43,6 +43,10 @@ public:
   void on_pointer_move(int x, int y);
 
   void update_layout();
+
+private:
+  Minimap(const Minimap&);
+  Minimap & operator=(const Minimap&);
 };
 
 } // namespace Editor

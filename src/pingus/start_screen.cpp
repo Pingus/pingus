@@ -132,10 +132,12 @@ private:
   StartScreenAbortButton & operator=(const StartScreenAbortButton&);
 };
 
-StartScreenComponent::StartScreenComponent(const PingusLevel& p)
-  : plf(p),
-    background("core/menu/wood"),
-    blackboard("core/menu/blackboard")
+StartScreenComponent::StartScreenComponent(const PingusLevel& p) :
+  plf(p),
+  background("core/menu/wood"),
+  blackboard("core/menu/blackboard"),
+  time_str(),
+  description()
 {
   time_str = GameTime::ticks_to_realtime_string(plf.get_time());
 }
@@ -204,8 +206,10 @@ StartScreenComponent::format_description(int length)
   return description;
 }
 
-StartScreen::StartScreen(const PingusLevel& arg_plf)
-  : plf(arg_plf)
+StartScreen::StartScreen(const PingusLevel& arg_plf) :
+  plf(arg_plf),
+  abort_button(),
+  ok_button()
 {
   StartScreenComponent* comp = new StartScreenComponent(plf);
   gui_manager->add(comp);

@@ -37,9 +37,9 @@ private:
   Sprite   surface;
   Sprite   smallmap_symbol;
 
-  Vector3f      pos;
+  Vector3f pos;
 
-	bool smashing;
+  bool smashing;
 
 public:
   FakeExit(const FileReader& reader);

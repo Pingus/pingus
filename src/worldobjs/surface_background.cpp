@@ -26,17 +26,19 @@
 
 namespace WorldObjs {
 
-SurfaceBackground::SurfaceBackground(const FileReader& reader)
-  : para_x(0.5),
-    para_y(0.5),
-    scroll_x(0.0),
-    scroll_y(0.0),
-    color(0,0,0,0),
-    stretch_x(false),
-    stretch_y(false),
-    keep_aspect(false),
-    scroll_ox(0),
-    scroll_oy(0)
+SurfaceBackground::SurfaceBackground(const FileReader& reader) :
+  para_x(0.5),
+  para_y(0.5),
+  pos(),
+  scroll_x(0.0),
+  scroll_y(0.0),
+  color(0,0,0,0),
+  stretch_x(false),
+  stretch_y(false),
+  keep_aspect(false),
+  bg_sprite(),
+  scroll_ox(0),
+  scroll_oy(0)
 {
   if (!reader.read_vector("position", pos))
     pos = Vector3f(0.f, 0.f, -150.f);
@@ -63,33 +65,33 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
 
   // Scaling Code
   if (stretch_x && stretch_y)
-    {
-      surface = surface.scale(world->get_width(), world->get_height());
-    }
+  {
+    surface = surface.scale(world->get_width(), world->get_height());
+  }
   else if (stretch_x && !stretch_y)
+  {
+    if (keep_aspect)
     {
-      if (keep_aspect)
-        {
-          float aspect = surface.get_height()/float(surface.get_width());
-          surface = surface.scale(world->get_width(), int(world->get_width()*aspect));
-        }
-      else
-        {
-          surface = surface.scale(world->get_width(), surface.get_height());
-        }
+      float aspect = surface.get_height()/float(surface.get_width());
+      surface = surface.scale(world->get_width(), int(world->get_width()*aspect));
     }
+    else
+    {
+      surface = surface.scale(world->get_width(), surface.get_height());
+    }
+  }
   else if (!stretch_x && stretch_y)
+  {
+    if (keep_aspect)
     {
-      if (keep_aspect)
-        {
-          float aspect = float(surface.get_width())/surface.get_height();
-          surface = surface.scale(int(world->get_height() * aspect), world->get_height());
-        }
-      else
-        {
-          surface = surface.scale(surface.get_width(), world->get_height());
-        }
+      float aspect = float(surface.get_width())/surface.get_height();
+      surface = surface.scale(int(world->get_height() * aspect), world->get_height());
     }
+    else
+    {
+      surface = surface.scale(surface.get_width(), world->get_height());
+    }
+  }
 
   bg_sprite = Sprite(surface);
 }
@@ -107,24 +109,24 @@ SurfaceBackground::update()
     return;
 
   if (scroll_x) 
-    {
-      scroll_ox += scroll_x;
+  {
+    scroll_ox += scroll_x;
 
-      if (scroll_ox > bg_sprite.get_width())
-        scroll_ox -= bg_sprite.get_width();
-      else if (-scroll_ox > bg_sprite.get_width())
-        scroll_ox += bg_sprite.get_width();
-    }
+    if (scroll_ox > bg_sprite.get_width())
+      scroll_ox -= bg_sprite.get_width();
+    else if (-scroll_ox > bg_sprite.get_width())
+      scroll_ox += bg_sprite.get_width();
+  }
 
   if (scroll_y) 
-    {
-      scroll_oy += scroll_y;
+  {
+    scroll_oy += scroll_y;
 
-      if (scroll_oy > bg_sprite.get_height())
-        scroll_oy -= bg_sprite.get_height();
-      else if (-scroll_oy > bg_sprite.get_height())
-        scroll_oy += bg_sprite.get_height();
-    }
+    if (scroll_oy > bg_sprite.get_height())
+      scroll_oy -= bg_sprite.get_height();
+    else if (-scroll_oy > bg_sprite.get_height())
+      scroll_oy += bg_sprite.get_height();
+  }
 }
 
 void
@@ -150,14 +152,14 @@ SurfaceBackground::draw (SceneContext& gc)
   for(int y = start_y;
       y < world->get_height();
       y += bg_sprite.get_height())
+  {
+    for(int x = start_x;
+        x < world->get_width();
+        x += bg_sprite.get_width())
     {
-      for(int x = start_x;
-          x < world->get_width();
-          x += bg_sprite.get_width())
-        {
-          gc.color().draw(bg_sprite, Vector2i(x - offset.x, y - offset.y), pos.z);
-        }
+      gc.color().draw(bg_sprite, Vector2i(x - offset.x, y - offset.y), pos.z);
     }
+  }
 }
 
 } // namespace WorldObjs

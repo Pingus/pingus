@@ -57,7 +57,6 @@ private:
   std::string title;
   std::string music;
   std::vector<StoryPage> pages;
-
 };
 
 } // namespace WorldmapNS

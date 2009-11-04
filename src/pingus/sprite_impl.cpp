@@ -67,15 +67,35 @@ void delete_framebuffer_surface(const Pathname& filename)
     }
 }
 
-SpriteImpl::SpriteImpl()
+SpriteImpl::SpriteImpl() :
+  filename(),
+  framebuffer_surface(),
+  offset(),
+  frame_pos(),
+  frame_size(),
+  frame_delay(),
+  array(),
+  loop(),
+  loop_last_cycle(),
+  finished(),
+  frame(),
+  tick_count()
 {
 }
 
-SpriteImpl::SpriteImpl(const SpriteDescription& desc, ResourceModifierNS::ResourceModifier mod)
-  : filename(desc.filename),
-    finished(false),
-    frame(0),
-    tick_count(0)
+SpriteImpl::SpriteImpl(const SpriteDescription& desc, ResourceModifierNS::ResourceModifier mod) :
+  filename(desc.filename),
+  framebuffer_surface(),
+  offset(),
+  frame_pos(),
+  frame_size(),
+  frame_delay(),
+  array(),
+  loop(),
+  loop_last_cycle(),
+  finished(false),
+  frame(0),
+  tick_count(0)
 {
   framebuffer_surface = load_framebuffer_surface(filename, mod);
 
@@ -95,18 +115,19 @@ SpriteImpl::SpriteImpl(const SpriteDescription& desc, ResourceModifierNS::Resour
     
 }
 
-SpriteImpl::SpriteImpl(const Surface& surface)
-  : framebuffer_surface(Display::get_framebuffer().create_surface(surface)),
-    offset(0,0),
-    frame_pos(0,0),
-    frame_size(surface.get_width(), surface.get_height()),
-    frame_delay(0),
-    array(1,1),
-    loop(true),
-    loop_last_cycle(false),
-    finished(false),
-    frame(0),
-    tick_count(0)
+SpriteImpl::SpriteImpl(const Surface& surface) :
+  filename(),
+  framebuffer_surface(Display::get_framebuffer().create_surface(surface)),
+  offset(0,0),
+  frame_pos(0,0),
+  frame_size(surface.get_width(), surface.get_height()),
+  frame_delay(0),
+  array(1,1),
+  loop(true),
+  loop_last_cycle(false),
+  finished(false),
+  frame(0),
+  tick_count(0)
 {
 }
 

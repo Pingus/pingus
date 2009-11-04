@@ -69,12 +69,12 @@ static std::auto_ptr<std::ostream> get_demostream(const std::string& levelname)
     }
 }
 
-Server::Server(const PingusLevel& arg_plf,
-               bool record_demo)
-  : plf(arg_plf),
-    world(new World (plf)),
-    action_holder (plf),
-    goal_manager(new GoalManager(this))
+Server::Server(const PingusLevel& arg_plf, bool record_demo) :
+  plf(arg_plf),
+  world(new World (plf)),
+  action_holder (plf),
+  goal_manager(new GoalManager(this)),
+  demostream()
 {
   if (record_demo)
     {

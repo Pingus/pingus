@@ -63,6 +63,10 @@ public:
   /** starts to display the next text page */
   void next_text();
   WorldmapNS::WorldmapStory* get_story() const { return story; }
+
+private:
+  StoryScreenComponent(const StoryScreenComponent&);
+  StoryScreenComponent & operator=(const StoryScreenComponent&);
 };
 
 class StoryScreenContinueButton : public GUI::SurfaceButton
@@ -89,12 +93,17 @@ public:
   {
     story_comp->next_text();
   }
+
+private:
+  StoryScreenContinueButton(const StoryScreenContinueButton&);
+  StoryScreenContinueButton & operator=(const StoryScreenContinueButton&);
 };
 
 class StoryScreenSkipButton : public GUI::SurfaceButton
 {
 private: 
   StoryScreenComponent* story_comp;
+
 public:
   StoryScreenSkipButton(StoryScreenComponent* arg_story_comp, int x, int y)
     : GUI::SurfaceButton(x, y, "", "", ""), // FIXME: Little fugly way to do a text button
@@ -122,6 +131,10 @@ public:
   {
     story_comp->skip_story();
   }
+
+private:
+  StoryScreenSkipButton(const StoryScreenSkipButton&);
+  StoryScreenSkipButton & operator=(const StoryScreenSkipButton&);
 };
 
 StoryScreen::StoryScreen(FileReader reader)

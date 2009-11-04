@@ -20,12 +20,12 @@
 
 namespace WorldObjs {
 
-StarfieldBackground::StarfieldBackground(const FileReader& reader)
+StarfieldBackground::StarfieldBackground(const FileReader& reader) :
+  small_stars_count(100),
+  middle_stars_count(50),
+  large_stars_count(25),
+  stars()
 {
-  small_stars_count  = 100;
-  middle_stars_count =  50;
-  large_stars_count  =  25;
-
   reader.read_int("small-stars",  small_stars_count);
   reader.read_int("middle-stars", middle_stars_count);
   reader.read_int("large-stars",  large_stars_count);

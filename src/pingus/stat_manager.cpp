@@ -68,7 +68,8 @@ StatManager::get_resname(const std::string& filename)
 }
 
 StatManager::StatManager(const std::string& arg_filename)
-  : statfilename(System::get_userdir() + arg_filename)
+  : statfilename(System::get_userdir() + arg_filename),
+    stats()
 {
   load(statfilename);
 }

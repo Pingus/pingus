@@ -28,9 +28,9 @@ namespace WorldObjs {
 class Hotspot : public WorldObj
 {
 private:
-  Sprite     sprite;
-  float         para;
-  Vector3f        pos;
+  Sprite   sprite;
+  float    para;
+  Vector3f pos;
 
 public:
   Hotspot(const FileReader& reader);

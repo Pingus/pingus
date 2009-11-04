@@ -32,8 +32,8 @@ class Spike : public WorldObj
 {
 private:
   Sprite   surface;
-  Vector3f      pos;
-  bool        killing;
+  Vector3f pos;
+  bool     killing;
 
 public:
   Spike(const FileReader& reader);

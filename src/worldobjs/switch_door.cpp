@@ -33,7 +33,8 @@ SwitchDoor::SwitchDoor(const FileReader& reader) :
   door_tile    ("worldobjs/switchdoor_tile"),
   door_tile_cmap("worldobjs/switchdoor_tile_cmap"),
   switch_sur   ("worldobjs/switchdoor_switch"),
-  is_opening(false)
+  is_opening(false),
+  current_door_height()
 {
   FileReader subreader;
   reader.read_section("switch", subreader);

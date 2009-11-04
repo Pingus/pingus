@@ -22,7 +22,10 @@
 
 namespace WorldObjs {
 
-Hotspot::Hotspot(const FileReader& reader)
+Hotspot::Hotspot(const FileReader& reader) :
+  sprite(),
+  para(),
+  pos()
 {
   ResDescriptor desc;
 

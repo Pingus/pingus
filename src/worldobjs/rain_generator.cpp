@@ -25,7 +25,8 @@ namespace WorldObjs {
 
 RainGenerator::RainGenerator (const FileReader& reader) :
   do_thunder(false),
-  thunder_count (0)
+  thunder_count (0),
+  waiter_count()
 {
 }
 

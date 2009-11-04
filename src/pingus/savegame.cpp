@@ -59,7 +59,11 @@ Savegame::Savegame() :
 {
 }
 
-Savegame::Savegame(FileReader reader)
+Savegame::Savegame(FileReader reader) :
+  filename(),
+  status(),
+  needed_time(),
+  saved_pingus()
 {
   read_sexpr(reader);
 }

@@ -91,6 +91,33 @@ struct PingusOptions
   Value<int>  speed;
   Value<float> desiredfps;
   Value<int>  tile_size;
+
+  PingusOptions() :
+    rest(),
+    list_languages(),
+    editor(),
+    credits(),
+    font(),
+    save(),
+    fullscreen(),
+    resize(),
+    swcursor(),
+    geometry(),
+    disable_sound(),
+    disable_music(),
+    language(),
+    datadir(),
+    userdir(),
+    auto_scrolling(),
+    no_config_file(),
+    config_file(),
+    controller(),
+    maintainer_mode(),
+    debug(),
+    speed(),
+    desiredfps(),
+    tile_size()
+  {}
 };
 
 #endif

@@ -23,9 +23,10 @@
 
 namespace WorldObjs {
 
-Spike::Spike (const FileReader& reader)
-  : surface("traps/spike"),
-    killing(false)
+Spike::Spike (const FileReader& reader) :
+  surface("traps/spike"),
+  pos(),
+  killing(false)
 {
   reader.read_vector("position", pos);
 }

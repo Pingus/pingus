@@ -23,6 +23,7 @@
 SmallMapImage::SmallMapImage(Server* s, int width, int height)
   : server(s),
     canvas(width, height),
+    sur(),
     update_count(0),
     colmap_serial(0)
 {

@@ -132,7 +132,8 @@ signal_handler(int signo)
   throw "crash";
 }
 
-PingusMain::PingusMain() 
+PingusMain::PingusMain() :
+  cmd_options()
 {
 }
 

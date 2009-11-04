@@ -23,11 +23,13 @@
 
 namespace WorldObjs {
 
-Guillotine::Guillotine(const FileReader& reader)
-  : sprite_kill_right("traps/guillotinekill/right"),
-    sprite_kill_left("traps/guillotinekill/left"),
-    sprite_idle("traps/guillotineidle"),
-    killing(false)
+Guillotine::Guillotine(const FileReader& reader) :
+  sprite_kill_right("traps/guillotinekill/right"),
+  sprite_kill_left("traps/guillotinekill/left"),
+  sprite_idle("traps/guillotineidle"),
+  pos(),
+  direction(),
+  killing(false)
 {
   reader.read_vector("position", pos);
   
