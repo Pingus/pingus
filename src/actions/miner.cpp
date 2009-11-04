@@ -21,7 +21,7 @@
 #include "../sound/sound.hpp"
 #include "../pingu.hpp"
 #include "../worldobj.hpp"
-#include "miner.hpp"
+#include "actions/miner.hpp"
 
 namespace Actions {
 

@@ -17,7 +17,7 @@
 #include "../display/scene_context.hpp"
 #include "../pingu.hpp"
 #include "../groundtype.hpp"
-#include "slider.hpp"
+#include "actions/slider.hpp"
 
 namespace Actions {
 

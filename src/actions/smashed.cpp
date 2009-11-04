@@ -18,7 +18,7 @@
 #include "../display/scene_context.hpp"
 #include "../pingu.hpp"
 #include "../sprite.hpp"
-#include "smashed.hpp"
+#include "actions/smashed.hpp"
 
 namespace Actions {
 

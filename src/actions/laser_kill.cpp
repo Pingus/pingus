@@ -17,7 +17,7 @@
 #include "../math/vector3f.hpp"
 #include "../display/scene_context.hpp"
 #include "../pingu.hpp"
-#include "laser_kill.hpp"
+#include "actions/laser_kill.hpp"
 
 namespace Actions {
 

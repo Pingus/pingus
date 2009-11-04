@@ -24,7 +24,7 @@
 #include "../particles/pingu_particle_holder.hpp"
 #include "../colliders/pingu_collider.hpp"
 #include "../movers/linear_mover.hpp"
-#include "bomber.hpp"
+#include "actions/bomber.hpp"
 
 namespace Actions {
 

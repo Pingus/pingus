@@ -18,7 +18,7 @@
 #include "../display/scene_context.hpp"
 #include "../pingu.hpp"
 #include "../sound/sound.hpp"
-#include "exiter.hpp"
+#include "actions/exiter.hpp"
 
 namespace Actions {
 

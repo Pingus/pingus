@@ -19,7 +19,7 @@
 #include "../world.hpp"
 #include "../pingu.hpp"
 #include "../worldobj.hpp"
-#include "splashed.hpp"
+#include "actions/splashed.hpp"
 
 namespace Actions {
 

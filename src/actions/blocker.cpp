@@ -18,7 +18,7 @@
 #include "../pingu.hpp"
 #include "../pingu_holder.hpp"
 #include "../world.hpp"
-#include "blocker.hpp"
+#include "actions/blocker.hpp"
 
 namespace Actions {
 

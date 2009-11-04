@@ -26,8 +26,8 @@
 #include "math/math.hpp"
 #include "../math/vector3f.hpp"
 #include "../globals.hpp"
-#include "playfield.hpp"
-#include "smallmap.hpp"
+#include "components/playfield.hpp"
+#include "components/smallmap.hpp"
 
 SmallMap::SmallMap(Server* server_, Playfield* playfield_, const Rect& rect)
   : RectComponent(rect), 

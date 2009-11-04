@@ -27,7 +27,7 @@
 #include "util/string_util.hpp"
 #include "../fonts.hpp"
 
-#include "time_display.hpp"
+#include "components/time_display.hpp"
 
 TimeDisplay::TimeDisplay (GameSession* c)
   : server(c->get_server()),

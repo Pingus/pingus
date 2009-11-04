@@ -17,7 +17,7 @@
 #include "globals.hpp"
 #include "fonts.hpp"
 #include "display/drawing_context.hpp"
-#include "label.hpp"
+#include "components/label.hpp"
 
 Label::Label(const std::string& label, const Rect& rect)
   : RectComponent(rect),

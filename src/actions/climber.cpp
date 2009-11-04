@@ -17,7 +17,7 @@
 #include "../display/scene_context.hpp"
 #include "../groundtype.hpp"
 #include "../pingu.hpp"
-#include "climber.hpp"
+#include "actions/climber.hpp"
 
 namespace Actions {
 

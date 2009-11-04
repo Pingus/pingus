@@ -17,7 +17,7 @@
 #include "../math/vector3f.hpp"
 #include "../display/scene_context.hpp"
 #include "../pingu.hpp"
-#include "waiter.hpp"
+#include "actions/waiter.hpp"
 
 namespace Actions {
 

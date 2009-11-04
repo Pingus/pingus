@@ -21,7 +21,7 @@
 #include "../worldobj.hpp"
 #include "../sound/sound.hpp"
 #include "../pingu.hpp"
-#include "digger.hpp"
+#include "actions/digger.hpp"
 
 namespace Actions {
 

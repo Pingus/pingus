@@ -20,7 +20,7 @@
 #include "../world.hpp"
 #include "../pingu.hpp"
 #include "../worldobj.hpp"
-#include "rocket_launcher.hpp"
+#include "actions/rocket_launcher.hpp"
 
 namespace Actions {
 

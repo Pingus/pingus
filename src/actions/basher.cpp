@@ -23,7 +23,7 @@
 #include "../pingu.hpp"
 #include "../world.hpp"
 #include "../worldobj.hpp"
-#include "basher.hpp"
+#include "actions/basher.hpp"
 
 namespace Actions {
 

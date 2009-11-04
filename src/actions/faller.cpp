@@ -23,7 +23,7 @@
 #include "../pingu.hpp"
 #include "../world.hpp"
 #include "../worldobj.hpp"
-#include "faller.hpp"
+#include "actions/faller.hpp"
 
 namespace Actions {
 

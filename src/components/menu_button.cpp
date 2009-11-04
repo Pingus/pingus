@@ -22,7 +22,7 @@
 #include "../gettext.h"
 #include "../pingus_menu.hpp"
 
-#include "menu_button.hpp"
+#include "components/menu_button.hpp"
 
 MenuButton::MenuButton(PingusMenu* menu_,
                        const Vector2i& pos_,

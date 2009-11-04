@@ -18,7 +18,7 @@
 #include "../pingu.hpp"
 #include "math/math.hpp"
 #include "../globals.hpp"
-#include "angel.hpp"
+#include "actions/angel.hpp"
 
 namespace Actions {
 

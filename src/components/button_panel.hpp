@@ -20,7 +20,7 @@
 #include <vector>
 #include "../sprite.hpp"
 #include "gui/rect_component.hpp"
-#include "action_button.hpp"
+#include "components/action_button.hpp"
 
 class GameSession;
 

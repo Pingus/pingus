@@ -24,7 +24,7 @@
 #include "../server.hpp"
 #include "../game_session.hpp"
 #include "../display/drawing_context.hpp"
-#include "button_panel.hpp"
+#include "components/button_panel.hpp"
 
 using namespace Actions;
 

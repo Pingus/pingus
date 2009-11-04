@@ -23,7 +23,7 @@
 #include "../worldobj.hpp"
 #include "../gettext.h"
 #include "util/string_util.hpp"
-#include "bridger.hpp"
+#include "actions/bridger.hpp"
 
 namespace Actions {
 

@@ -18,7 +18,7 @@
 #include "globals.hpp"
 #include "fonts.hpp"
 #include "display/drawing_context.hpp"
-#include "slider_box.hpp"
+#include "components/slider_box.hpp"
 
 SliderBox::SliderBox(const Rect& rect)
   : RectComponent(rect),

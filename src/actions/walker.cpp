@@ -19,7 +19,7 @@
 #include "../pingu.hpp"
 #include "../debug.hpp"
 #include "../groundtype.hpp"
-#include "walker.hpp"
+#include "actions/walker.hpp"
 
 namespace Actions {
 

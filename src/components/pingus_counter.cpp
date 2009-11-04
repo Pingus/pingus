@@ -22,7 +22,7 @@
 #include "../server.hpp"
 #include "../globals.hpp"
 #include "../fonts.hpp"
-#include "pingus_counter.hpp"
+#include "components/pingus_counter.hpp"
 
 
 PingusCounter::PingusCounter(Server* s)

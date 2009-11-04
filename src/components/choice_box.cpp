@@ -17,7 +17,7 @@
 #include "globals.hpp"
 #include "fonts.hpp"
 #include "display/drawing_context.hpp"
-#include "choice_box.hpp"
+#include "components/choice_box.hpp"
 
 ChoiceBox::ChoiceBox(const Rect& rect)
   : RectComponent(rect)

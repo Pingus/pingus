@@ -17,7 +17,7 @@
 #include "globals.hpp"
 #include "fonts.hpp"
 #include "display/drawing_context.hpp"
-#include "check_box.hpp"
+#include "components/check_box.hpp"
 
 CheckBox::CheckBox(const Rect& rect)
   : RectComponent(rect),
