@@ -22,8 +22,8 @@
 #include "editor/object_selector.hpp"
 #include "editor/viewport.hpp"
 #include "editor/editor_level.hpp"
-#include "groundtype.hpp"
-#include "resource.hpp"
+#include "pingus/groundtype.hpp"
+#include "pingus/resource.hpp"
 #include "display/drawing_context.hpp"
 #include "editor/object_selector_list.hpp"
 

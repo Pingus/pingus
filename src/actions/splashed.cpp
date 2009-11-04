@@ -16,9 +16,9 @@
 
 #include "math/vector3f.hpp"
 #include "display/scene_context.hpp"
-#include "world.hpp"
-#include "pingu.hpp"
-#include "worldobj.hpp"
+#include "pingus/world.hpp"
+#include "pingus/pingu.hpp"
+#include "pingus/worldobj.hpp"
 #include "actions/splashed.hpp"
 
 namespace Actions {

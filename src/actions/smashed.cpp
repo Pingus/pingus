@@ -16,8 +16,8 @@
 
 #include "math/vector3f.hpp"
 #include "display/scene_context.hpp"
-#include "pingu.hpp"
-#include "sprite.hpp"
+#include "pingus/pingu.hpp"
+#include "pingus/sprite.hpp"
 #include "actions/smashed.hpp"
 
 namespace Actions {

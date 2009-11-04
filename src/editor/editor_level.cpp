@@ -20,7 +20,7 @@
 #include <string>
 #include <fstream>
 
-#include "pingus_level.hpp"
+#include "pingus/pingus_level.hpp"
 #include "editor/editor_level.hpp"
 #include "editor/level_impl.hpp"
 #include "editor/level_objs.hpp"

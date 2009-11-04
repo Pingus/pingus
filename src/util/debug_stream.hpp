@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_DEBUG_STREAM_HPP
 #define HEADER_PINGUS_DEBUG_STREAM_HPP
 
-#include "pingus.hpp"
+#include "pingus/pingus.hpp"
 
 #include <string>
 #include <vector>

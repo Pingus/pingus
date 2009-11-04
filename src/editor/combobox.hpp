@@ -21,7 +21,7 @@
 #include <vector>
 #include <string>
 #include <boost/signal.hpp>
-#include "sprite.hpp"
+#include "pingus/sprite.hpp"
 #include "gui/component.hpp"
 #include "gui/rect_component.hpp"
 

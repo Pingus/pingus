@@ -18,10 +18,10 @@
 #define HEADER_PINGUS_WORLDMAP_WORLDMAP_HPP
 
 #include <vector>
-#include "sprite.hpp"
+#include "pingus/sprite.hpp"
 #include "util/file_reader.hpp"
 #include "display/drawing_context.hpp"
-#include "graphic_context_state.hpp"
+#include "pingus/graphic_context_state.hpp"
 #include "worldmap/pingus_worldmap.hpp"
 
 class Font;

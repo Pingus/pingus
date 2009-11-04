@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_SMALLMAP_HPP
 #define HEADER_PINGUS_SMALLMAP_HPP
 
-#include "sprite.hpp"
+#include "pingus/sprite.hpp"
 #include "gui/rect_component.hpp"
 
 class Playfield;

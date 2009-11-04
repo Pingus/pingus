@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_GUILLOTINE_HPP
 #define HEADER_PINGUS_WORLDOBJS_GUILLOTINE_HPP
 
-#include "direction.hpp"
-#include "worldobj.hpp"
+#include "pingus/direction.hpp"
+#include "pingus/worldobj.hpp"
 
 
 namespace WorldObjsData {

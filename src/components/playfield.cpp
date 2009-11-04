@@ -16,15 +16,15 @@
 
 #include <stdio.h>
 #include <iostream>
-#include "globals.hpp"
-#include "pingu_holder.hpp"
+#include "pingus/globals.hpp"
+#include "pingus/pingu_holder.hpp"
 #include "display/drawing_context.hpp"
 #include "display/scene_context.hpp"
-#include "world.hpp"
-#include "server.hpp"
-#include "pingu.hpp"
+#include "pingus/world.hpp"
+#include "pingus/server.hpp"
+#include "pingus/pingu.hpp"
 #include "display/display.hpp"
-#include "game_session.hpp"
+#include "pingus/game_session.hpp"
 #include "components/playfield.hpp"
 
 Playfield::Playfield(Server* server_, GameSession* session_, const Rect& rect_)

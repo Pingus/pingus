@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_ACTIONS_SPLASHED_HPP
 #define HEADER_PINGUS_ACTIONS_SPLASHED_HPP
 
-#include "pingu_action.hpp"
+#include "pingus/pingu_action.hpp"
 
 namespace Actions {
 

@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_DRAWABLE_HPP
 #define HEADER_PINGUS_DRAWABLE_HPP
 
-#include "pingus_error.hpp"
+#include "pingus/pingus_error.hpp"
 #include "util/file_reader.hpp"
 
 class DrawingContext;

@@ -27,6 +27,18 @@ Stuff to do at all times:
 Roadmap for Pingus 0.8.0:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Code Cleanup
+============
+
+* fix #includes to match style guide
+
+* move all files into subdirectories
+
+* use BuildDir in SConstruct
+
+* use wildcard in source file specification
+
+
 OLPC Issues
 ===========
 

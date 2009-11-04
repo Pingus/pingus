@@ -18,14 +18,14 @@
 #include <stdio.h>
 
 #include "display/display.hpp"
-#include "globals.hpp"
-#include "resource.hpp"
-#include "world.hpp"
-#include "server.hpp"
-#include "game_session.hpp"
-#include "game_time.hpp"
+#include "pingus/globals.hpp"
+#include "pingus/resource.hpp"
+#include "pingus/world.hpp"
+#include "pingus/server.hpp"
+#include "pingus/game_session.hpp"
+#include "pingus/game_time.hpp"
 #include "util/string_util.hpp"
-#include "fonts.hpp"
+#include "pingus/fonts.hpp"
 
 #include "components/time_display.hpp"
 

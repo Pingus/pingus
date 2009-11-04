@@ -20,7 +20,7 @@
 
 #include <iosfwd>
 #include "vector2i.hpp"
-#include "math.hpp"
+#include "math/math.hpp"
 
 /** Simple two dimensional vector. */
 class Vector2f

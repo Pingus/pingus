@@ -43,8 +43,8 @@
 #include <sstream>
 
 #include "util/pathname.hpp"
-#include "pingus_error.hpp"
-#include "globals.hpp"
+#include "pingus/pingus_error.hpp"
+#include "pingus/globals.hpp"
 #include "util/system.hpp"
 #include "util/string_util.hpp"
 #include "gettext.h"

@@ -16,7 +16,7 @@
 
 #include <iostream>
 
-#include "fonts.hpp"
+#include "pingus/fonts.hpp"
 #include "display/drawing_context.hpp"
 #include "editor/inputbox.hpp"
 

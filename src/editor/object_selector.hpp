@@ -18,7 +18,7 @@
 #define HEADER_OBJECT_SELECTOR_HPP
 
 #include "gui/component.hpp"
-#include "res_descriptor.hpp"
+#include "pingus/res_descriptor.hpp"
 
 class DrawingContext;
 

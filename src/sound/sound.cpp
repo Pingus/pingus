@@ -16,8 +16,8 @@
 
 #include <iostream>
 #include <assert.h>
-#include "path_manager.hpp"
-#include "globals.hpp"
+#include "pingus/path_manager.hpp"
+#include "pingus/globals.hpp"
 #include "sound/sound_dummy.hpp"
 #include "sound/sound_real.hpp"
 #include "sound/sound.hpp"

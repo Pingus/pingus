@@ -16,11 +16,11 @@
 
 #include <iostream>
 #include "display/scene_context.hpp"
-#include "world.hpp"
-#include "pingu_holder.hpp"
-#include "globals.hpp"
-#include "pingu.hpp"
-#include "resource.hpp"
+#include "pingus/world.hpp"
+#include "pingus/pingu_holder.hpp"
+#include "pingus/globals.hpp"
+#include "pingus/pingu.hpp"
+#include "pingus/resource.hpp"
 #include "components/smallmap.hpp"
 #include "worldobjs/entrance.hpp"
 

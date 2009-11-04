@@ -15,7 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "display/drawing_context.hpp"
-#include "fonts.hpp"
+#include "pingus/fonts.hpp"
 #include "editor/label.hpp"
 
 namespace Editor {

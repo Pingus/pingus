@@ -23,7 +23,8 @@
 **/
 
 #include <iostream>
-#include "size.hpp"
+
+#include "math/size.hpp"
 
 std::ostream& operator<<(std::ostream& os, const Size& size)
 {

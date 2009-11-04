@@ -17,11 +17,11 @@
 #include <assert.h>
 
 #include "math/math.hpp"
-#include "collision_map.hpp"
+#include "pingus/collision_map.hpp"
 #include "display/scene_context.hpp"
-#include "ground_map.hpp"
-#include "resource.hpp"
-#include "world.hpp"
+#include "pingus/ground_map.hpp"
+#include "pingus/resource.hpp"
+#include "pingus/world.hpp"
 #include "particles/snow_particle_holder.hpp"
 
 namespace Particles {

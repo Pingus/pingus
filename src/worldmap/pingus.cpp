@@ -20,8 +20,8 @@
 #include "math/vector3f.hpp"
 #include "display/drawing_context.hpp"
 #include "worldmap/dot.hpp"
-#include "direction.hpp"
-#include "resource.hpp"
+#include "pingus/direction.hpp"
+#include "pingus/resource.hpp"
 #include "worldmap/pingus.hpp"
 
 namespace WorldmapNS {

@@ -18,9 +18,9 @@
 #define HEADER_PINGUS_PLAYFIELD_HPP
 
 #include <memory>
-#include "graphic_context_state.hpp"
+#include "pingus/graphic_context_state.hpp"
 #include "gui/rect_component.hpp"
-#include "capture_rectangle.hpp"
+#include "pingus/capture_rectangle.hpp"
 
 class Pingu;
 class World;

@@ -16,10 +16,10 @@
 
 #include <iostream>
 #include "display/scene_context.hpp"
-#include "pingu.hpp"
-#include "pingu_holder.hpp"
-#include "world.hpp"
-#include "resource.hpp"
+#include "pingus/pingu.hpp"
+#include "pingus/pingu_holder.hpp"
+#include "pingus/world.hpp"
+#include "pingus/resource.hpp"
 #include "worldobjs/teleporter_target.hpp"
 
 namespace WorldObjs {

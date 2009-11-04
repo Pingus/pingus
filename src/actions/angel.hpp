@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_ACTIONS_ANGEL_HPP
 #define HEADER_PINGUS_ACTIONS_ANGEL_HPP
 
-#include "pingu_action.hpp"
-#include "sprite.hpp"
+#include "pingus/pingu_action.hpp"
+#include "pingus/sprite.hpp"
 
 namespace Actions {
 

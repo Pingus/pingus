@@ -15,8 +15,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <algorithm>
-#include "debug.hpp"
-#include "globals.hpp"
+#include "pingus/debug.hpp"
+#include "pingus/globals.hpp"
 #include "input/event.hpp"
 #include "display/display.hpp"
 #include "gui/gui_manager.hpp"

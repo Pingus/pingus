@@ -18,9 +18,9 @@
 #define HEADER_PINGUS_ACTION_BUTTON_HPP
 
 #include <string>
-#include "font.hpp"
-#include "pingu_enums.hpp"
-#include "state_sprite.hpp"
+#include "pingus/font.hpp"
+#include "pingus/pingu_enums.hpp"
+#include "pingus/state_sprite.hpp"
 #include "gui/component.hpp"
 #include "gui/rect_component.hpp"
 

@@ -14,11 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "globals.hpp"
+#include "pingus/globals.hpp"
 #include "display/scene_context.hpp"
-#include "pingu.hpp"
-#include "debug.hpp"
-#include "groundtype.hpp"
+#include "pingus/pingu.hpp"
+#include "pingus/debug.hpp"
+#include "pingus/groundtype.hpp"
 #include "actions/walker.hpp"
 
 namespace Actions {

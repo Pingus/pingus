@@ -14,13 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "debug.hpp"
-#include "globals.hpp"
+#include "pingus/debug.hpp"
+#include "pingus/globals.hpp"
 #include "display/scene_context.hpp"
-#include "pingu.hpp"
-#include "pingu_enums.hpp"
-#include "ground_map.hpp"
-#include "world.hpp"
+#include "pingus/pingu.hpp"
+#include "pingus/pingu_enums.hpp"
+#include "pingus/ground_map.hpp"
+#include "pingus/world.hpp"
 #include "particles/pingu_particle_holder.hpp"
 #include "colliders/pingu_collider.hpp"
 #include "movers/linear_mover.hpp"

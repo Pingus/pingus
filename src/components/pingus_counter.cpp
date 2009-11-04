@@ -16,12 +16,12 @@
 
 #include <stdio.h>
 #include "gettext.h"
-#include "resource.hpp"
-#include "world.hpp"
-#include "pingu_holder.hpp"
-#include "server.hpp"
-#include "globals.hpp"
-#include "fonts.hpp"
+#include "pingus/resource.hpp"
+#include "pingus/world.hpp"
+#include "pingus/pingu_holder.hpp"
+#include "pingus/server.hpp"
+#include "pingus/globals.hpp"
+#include "pingus/fonts.hpp"
 #include "components/pingus_counter.hpp"
 
 

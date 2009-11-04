@@ -17,7 +17,7 @@
 #include <iostream>
 #include "particles/rain_particle_holder.hpp"
 #include "sound/sound.hpp"
-#include "world.hpp"
+#include "pingus/world.hpp"
 #include "display/scene_context.hpp"
 #include "worldobjs/rain_generator.hpp"
 

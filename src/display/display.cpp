@@ -20,7 +20,7 @@
 #include <iostream>
 
 #include "../config.h"
-#include "globals.hpp"
+#include "pingus/globals.hpp"
 #include "math/vector2i.hpp"
 #include "math/rect.hpp"
 #include "math/color.hpp"

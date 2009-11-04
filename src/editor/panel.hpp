@@ -20,7 +20,7 @@
 
 #include <string>
 
-#include "sprite.hpp"
+#include "pingus/sprite.hpp"
 #include "math/vector2i.hpp"
 #include "gui/component.hpp"
 

@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_SYSTEM_HPP
 #define HEADER_PINGUS_SYSTEM_HPP
 
-#include "pingus.hpp"
+#include "pingus/pingus.hpp"
 
 #include <string>
 #include <vector>

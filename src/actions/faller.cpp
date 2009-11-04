@@ -16,13 +16,13 @@
 
 #include "math/math.hpp"
 #include "colliders/pingu_collider.hpp"
-#include "debug.hpp"
-#include "globals.hpp"
+#include "pingus/debug.hpp"
+#include "pingus/globals.hpp"
 #include "display/scene_context.hpp"
 #include "movers/linear_mover.hpp"
-#include "pingu.hpp"
-#include "world.hpp"
-#include "worldobj.hpp"
+#include "pingus/pingu.hpp"
+#include "pingus/world.hpp"
+#include "pingus/worldobj.hpp"
 #include "actions/faller.hpp"
 
 namespace Actions {

@@ -17,8 +17,8 @@
 #include "math/math.hpp"
 #include "display/scene_context.hpp"
 #include "particles/smoke_particle_holder.hpp"
-#include "resource.hpp"
-#include "world.hpp"
+#include "pingus/resource.hpp"
+#include "pingus/world.hpp"
 #include "worldobjs/woodthing.hpp"
 
 namespace WorldObjs {

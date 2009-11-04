@@ -21,8 +21,8 @@
 #include "math/size.hpp"
 #include "math/vector2i.hpp"
 #include "math/vector3f.hpp"
-#include "res_descriptor.hpp"
-#include "resource_modifier.hpp"
+#include "pingus/res_descriptor.hpp"
+#include "pingus/resource_modifier.hpp"
 #include "util/file_reader_impl.hpp"
 #include "util/sexpr_file_reader.hpp"
 

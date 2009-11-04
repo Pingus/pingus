@@ -15,9 +15,9 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "globals.hpp"
+#include "pingus/globals.hpp"
 #include "display/scene_context.hpp"
-#include "resource.hpp"
+#include "pingus/resource.hpp"
 #include "worldobjs/hotspot.hpp"
 
 namespace WorldObjs {

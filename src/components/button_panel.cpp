@@ -18,11 +18,11 @@
 #include <algorithm>
 
 #include "math/math.hpp"
-#include "fonts.hpp"
+#include "pingus/fonts.hpp"
 #include "util/string_util.hpp"
-#include "globals.hpp"
-#include "server.hpp"
-#include "game_session.hpp"
+#include "pingus/globals.hpp"
+#include "pingus/server.hpp"
+#include "pingus/game_session.hpp"
 #include "display/drawing_context.hpp"
 #include "components/button_panel.hpp"
 

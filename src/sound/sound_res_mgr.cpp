@@ -14,9 +14,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "path_manager.hpp"
-#include "globals.hpp"
-#include "debug.hpp"
+#include "pingus/path_manager.hpp"
+#include "pingus/globals.hpp"
+#include "pingus/debug.hpp"
 #include "sound/sound_res_mgr.hpp"
 
 

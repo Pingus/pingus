@@ -16,13 +16,13 @@
 
 #include <iostream>
 #include "display/scene_context.hpp"
-#include "collision_map.hpp"
-#include "world.hpp"
-#include "globals.hpp"
-#include "pingu_holder.hpp"
-#include "pingu.hpp"
+#include "pingus/collision_map.hpp"
+#include "pingus/world.hpp"
+#include "pingus/globals.hpp"
+#include "pingus/pingu_holder.hpp"
+#include "pingus/pingu.hpp"
 #include "components/smallmap.hpp"
-#include "resource.hpp"
+#include "pingus/resource.hpp"
 #include "util/string_util.hpp"
 #include "worldobjs/exit.hpp"
 

@@ -17,9 +17,9 @@
 #include "config.h"
 
 #include "util/string_util.hpp"
-#include "pingus_error.hpp"
+#include "pingus/pingus_error.hpp"
 #include "util/pathname.hpp"
-#include "path_manager.hpp"
+#include "pingus/path_manager.hpp"
 #include "input/sdl_driver.hpp"
 #include "input/core_driver.hpp"
 #ifdef HAVE_CWIID

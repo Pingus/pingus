@@ -16,11 +16,11 @@
 
 #include <cstdio>
 #include "display/scene_context.hpp"
-#include "ground_map.hpp"
-#include "world.hpp"
-#include "worldobj.hpp"
+#include "pingus/ground_map.hpp"
+#include "pingus/world.hpp"
+#include "pingus/worldobj.hpp"
 #include "sound/sound.hpp"
-#include "pingu.hpp"
+#include "pingus/pingu.hpp"
 #include "actions/digger.hpp"
 
 namespace Actions {

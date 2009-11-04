@@ -18,7 +18,7 @@
 
 #include "editor/file_list.hpp"
 #include "editor/gui_style.hpp"
-#include "fonts.hpp"
+#include "pingus/fonts.hpp"
 #include "math/math.hpp"
 #include "math/vector2i.hpp"
 

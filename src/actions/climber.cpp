@@ -15,8 +15,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "display/scene_context.hpp"
-#include "groundtype.hpp"
-#include "pingu.hpp"
+#include "pingus/groundtype.hpp"
+#include "pingus/pingu.hpp"
 #include "actions/climber.hpp"
 
 namespace Actions {

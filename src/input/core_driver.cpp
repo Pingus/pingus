@@ -18,7 +18,7 @@
 #include "input/manager.hpp"
 #include "input/core_driver.hpp"
 #include "display/display.hpp"
-#include "globals.hpp"
+#include "pingus/globals.hpp"
 
 namespace Input {
 

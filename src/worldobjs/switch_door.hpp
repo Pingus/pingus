@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_SWITCH_DOOR_HPP
 #define HEADER_PINGUS_WORLDOBJS_SWITCH_DOOR_HPP
 
-#include "worldobj.hpp"
+#include "pingus/worldobj.hpp"
 
 namespace WorldObjsData {
 class SwitchDoorData;

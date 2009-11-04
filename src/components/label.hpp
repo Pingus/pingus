@@ -18,7 +18,7 @@
 #define HEADER_LABEL_HPP
 
 #include <string>
-#include "font.hpp"
+#include "pingus/font.hpp"
 #include "gui/rect_component.hpp"
 
 /** */

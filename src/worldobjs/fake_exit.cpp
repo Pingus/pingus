@@ -15,11 +15,11 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "display/scene_context.hpp"
-#include "pingu.hpp"
-#include "pingu_holder.hpp"
-#include "world.hpp"
+#include "pingus/pingu.hpp"
+#include "pingus/pingu_holder.hpp"
+#include "pingus/world.hpp"
 #include "components/smallmap.hpp"
-#include "resource.hpp"
+#include "pingus/resource.hpp"
 #include "worldobjs/fake_exit.hpp"
 
 namespace WorldObjs {

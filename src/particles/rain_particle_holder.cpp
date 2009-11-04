@@ -16,10 +16,10 @@
 
 #include "display/scene_context.hpp"
 #include "math/math.hpp"
-#include "collision_map.hpp"
-#include "globals.hpp"
-#include "resource.hpp"
-#include "world.hpp"
+#include "pingus/collision_map.hpp"
+#include "pingus/globals.hpp"
+#include "pingus/resource.hpp"
+#include "pingus/world.hpp"
 #include "particles/rain_particle_holder.hpp"
 
 namespace Particles {

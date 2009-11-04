@@ -15,10 +15,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "collision_map.hpp"
+#include "pingus/collision_map.hpp"
 #include "display/scene_context.hpp"
-#include "resource.hpp"
-#include "world.hpp"
+#include "pingus/resource.hpp"
+#include "pingus/world.hpp"
 #include "worldobjs/liquid.hpp"
 
 namespace WorldObjs {

@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_LIQUID_HPP
 #define HEADER_PINGUS_WORLDOBJS_LIQUID_HPP
 
-#include "res_descriptor.hpp"
-#include "worldobj.hpp"
+#include "pingus/res_descriptor.hpp"
+#include "pingus/worldobj.hpp"
 
 namespace WorldObjsData {
 class LiquidData;

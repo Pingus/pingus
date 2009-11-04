@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_ACTIONS_SLIDER_HPP
 #define HEADER_PINGUS_ACTIONS_SLIDER_HPP
 
-#include "state_sprite.hpp"
-#include "pingu_action.hpp"
+#include "pingus/state_sprite.hpp"
+#include "pingus/pingu_action.hpp"
 
 namespace Actions {
 

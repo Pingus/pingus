@@ -16,11 +16,11 @@
 
 #include <cassert>
 #include "display/scene_context.hpp"
-#include "pingu.hpp"
-#include "ground_map.hpp"
+#include "pingus/pingu.hpp"
+#include "pingus/ground_map.hpp"
 #include "sound/sound.hpp"
-#include "world.hpp"
-#include "worldobj.hpp"
+#include "pingus/world.hpp"
+#include "pingus/worldobj.hpp"
 #include "gettext.h"
 #include "util/string_util.hpp"
 #include "actions/bridger.hpp"

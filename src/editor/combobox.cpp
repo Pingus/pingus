@@ -18,10 +18,10 @@
 #include <vector>
 #include <string>
 
-#include "resource.hpp"
+#include "pingus/resource.hpp"
 #include "editor/combobox.hpp"
 #include "math/math.hpp"
-#include "fonts.hpp"
+#include "pingus/fonts.hpp"
 #include "math/vector2i.hpp"
 
 namespace Editor {

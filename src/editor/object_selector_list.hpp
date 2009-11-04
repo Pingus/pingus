@@ -17,7 +17,7 @@
 #ifndef HEADER_OBJECT_SELECTOR_LIST_HPP
 #define HEADER_OBJECT_SELECTOR_LIST_HPP
 
-#include "sprite.hpp"
+#include "pingus/sprite.hpp"
 #include "gui/rect_component.hpp"
 
 class DrawingContext;

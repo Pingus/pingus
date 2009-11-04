@@ -14,9 +14,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "globals.hpp"
+#include "pingus/globals.hpp"
 #include "display/scene_context.hpp"
-#include "resource.hpp"
+#include "pingus/resource.hpp"
 #include "particles/smoke_particle_holder.hpp"
 
 namespace Particles {

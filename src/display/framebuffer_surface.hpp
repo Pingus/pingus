@@ -19,7 +19,7 @@
 
 #include <boost/smart_ptr.hpp>
 
-#include "surface.hpp"
+#include "pingus/surface.hpp"
 #include "math/size.hpp"
 
 class FramebufferSurfaceImpl

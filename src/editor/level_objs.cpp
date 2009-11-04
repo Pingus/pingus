@@ -19,9 +19,9 @@
 #include <iostream>
 #include "editor/level_objs.hpp"
 #include "editor/level_impl.hpp"
-#include "blitter.hpp"
-#include "resource.hpp"
-#include "res_descriptor.hpp"
+#include "pingus/blitter.hpp"
+#include "pingus/resource.hpp"
+#include "pingus/res_descriptor.hpp"
 #include "display/display.hpp"
 #include "display/drawing_context.hpp"
 

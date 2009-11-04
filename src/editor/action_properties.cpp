@@ -16,13 +16,14 @@
 
 #include <iostream>
 #include <boost/bind.hpp>
-#include "editor/gui_style.hpp"
+
+#include "editor/action_properties.hpp"
 #include "editor/checkbox.hpp"
 #include "editor/editor_level.hpp"
-#include "pingu_enums.hpp"
+#include "editor/gui_style.hpp"
 #include "editor/inputbox.hpp"
+#include "pingus/pingu_enums.hpp"
 #include "util/string_util.hpp"
-#include "action_properties.hpp"
 
 namespace Editor {
 

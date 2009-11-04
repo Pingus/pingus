@@ -18,14 +18,14 @@
 
 #include "math/math.hpp"
 #include "util/file_reader.hpp"
-#include "pingus_error.hpp"
+#include "pingus/pingus_error.hpp"
 #include "worldmap/dot.hpp"
 #include "worldmap/dot_factory.hpp"
 #include "worldmap/worldmap.hpp"
 #include "worldmap/pathfinder.hpp"
 #include "worldmap/path_graph.hpp"
 #include "worldmap/path_drawable.hpp"
-#include "globals.hpp"
+#include "pingus/globals.hpp"
 
 namespace WorldmapNS {
 

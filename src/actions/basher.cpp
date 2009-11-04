@@ -15,14 +15,14 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "sound/sound.hpp"
-#include "collision_map.hpp"
-#include "debug.hpp"
-#include "globals.hpp"
+#include "pingus/collision_map.hpp"
+#include "pingus/debug.hpp"
+#include "pingus/globals.hpp"
 #include "display/scene_context.hpp"
-#include "ground_map.hpp"
-#include "pingu.hpp"
-#include "world.hpp"
-#include "worldobj.hpp"
+#include "pingus/ground_map.hpp"
+#include "pingus/pingu.hpp"
+#include "pingus/world.hpp"
+#include "pingus/worldobj.hpp"
 #include "actions/basher.hpp"
 
 namespace Actions {

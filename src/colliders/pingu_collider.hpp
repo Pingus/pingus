@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_UPRIGHT_PINGU_COLLIDER_HPP
 #define HEADER_PINGUS_UPRIGHT_PINGU_COLLIDER_HPP
 
-#include "collider.hpp"
+#include "pingus/collider.hpp"
 
 namespace Colliders {
 

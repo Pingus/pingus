@@ -17,7 +17,7 @@
 #include <assert.h>
 #include <iostream>
 #include "util/system.hpp"
-#include "path_manager.hpp"
+#include "pingus/path_manager.hpp"
 #include "util/pathname.hpp"
 
 Pathname Pathname::tmpfile(const std::string& prefix)

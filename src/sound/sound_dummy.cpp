@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "globals.hpp"
-#include "debug.hpp"
+#include "pingus/globals.hpp"
+#include "pingus/debug.hpp"
 #include "sound/sound_dummy.hpp"
 
 namespace Sound {

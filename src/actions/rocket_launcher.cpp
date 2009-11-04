@@ -17,9 +17,9 @@
 #include "display/scene_context.hpp"
 //#include "particles/particle_holder.hpp"
 //#include "particles/explosive_particle.hpp"
-#include "world.hpp"
-#include "pingu.hpp"
-#include "worldobj.hpp"
+#include "pingus/world.hpp"
+#include "pingus/pingu.hpp"
+#include "pingus/worldobj.hpp"
 #include "actions/rocket_launcher.hpp"
 
 namespace Actions {

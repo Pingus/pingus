@@ -15,10 +15,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "display/scene_context.hpp"
-#include "world.hpp"
-#include "resource.hpp"
+#include "pingus/world.hpp"
+#include "pingus/resource.hpp"
 #include "worldobjs/starfield_background_stars.hpp"
-#include "globals.hpp"
+#include "pingus/globals.hpp"
 
 namespace WorldObjs {
 

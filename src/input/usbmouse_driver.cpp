@@ -22,8 +22,8 @@
 #include <errno.h>
 #include <string.h>
 
-#include "debug.hpp"
-#include "globals.hpp"
+#include "pingus/debug.hpp"
+#include "pingus/globals.hpp"
 #include "math/vector2i.hpp"
 #include "input/usbmouse_driver.hpp"
 #include "display/display.hpp"

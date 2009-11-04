@@ -17,10 +17,15 @@
 #ifndef HEADER_ACTION_PROPERTIES_HPP
 #define HEADER_ACTION_PROPERTIES_HPP
 
-#include "pingu_enums.hpp"
+#include <map>
+
+#include "pingus/pingu_enums.hpp"
 #include "gui/group_component.hpp"
 
 namespace Editor {
+
+class Checkbox;
+class Inputbox;
 
 class EditorScreen;
 class EditorLevel;

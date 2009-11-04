@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "globals.hpp"
-#include "fonts.hpp"
+#include "pingus/globals.hpp"
+#include "pingus/fonts.hpp"
 #include "display/drawing_context.hpp"
 #include "components/label.hpp"
 

@@ -18,8 +18,8 @@
 #define HEADER_PINGUS_MENU_BUTTON_HPP
 
 #include <string>
-#include "sprite.hpp"
-#include "font.hpp"
+#include "pingus/sprite.hpp"
+#include "pingus/font.hpp"
 #include "math/vector2i.hpp"
 #include "gui/component.hpp"
 

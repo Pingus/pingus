@@ -18,8 +18,8 @@
 #define HEADER_PINGUS_PINGUS_COUNTER_HPP
 
 #include "gui/component.hpp"
-#include "font.hpp"
-#include "sprite.hpp"
+#include "pingus/font.hpp"
+#include "pingus/sprite.hpp"
 
 class DrawingContext;
 class World;

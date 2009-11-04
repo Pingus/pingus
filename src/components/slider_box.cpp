@@ -15,8 +15,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "math/math.hpp"
-#include "globals.hpp"
-#include "fonts.hpp"
+#include "pingus/globals.hpp"
+#include "pingus/fonts.hpp"
 #include "display/drawing_context.hpp"
 #include "components/slider_box.hpp"
 

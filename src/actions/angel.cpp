@@ -15,9 +15,9 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "display/scene_context.hpp"
-#include "pingu.hpp"
+#include "pingus/pingu.hpp"
 #include "math/math.hpp"
-#include "globals.hpp"
+#include "pingus/globals.hpp"
 #include "actions/angel.hpp"
 
 namespace Actions {

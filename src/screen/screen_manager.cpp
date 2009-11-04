@@ -18,15 +18,15 @@
 #include <iostream>
 #include <fstream>
 
-#include "globals.hpp"
+#include "pingus/globals.hpp"
 #include "math/size.hpp"
 #include "util/pathname.hpp"
 #include "display/display.hpp"
 #include "display/framebuffer.hpp"
 #include "screen/screen_manager.hpp"
-#include "path_manager.hpp"
+#include "pingus/path_manager.hpp"
 #include "screen/screen.hpp"
-#include "fps_counter.hpp"
+#include "pingus/fps_counter.hpp"
 #include "display/drawing_context.hpp"
 #include "input/controller.hpp"
 #include "input/manager.hpp"

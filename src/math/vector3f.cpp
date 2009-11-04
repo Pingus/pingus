@@ -15,8 +15,9 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "math.hpp"
-#include "vector3f.hpp"
+
+#include "math/math.hpp"
+#include "math/vector3f.hpp"
 
 Vector3f
 Vector3f::rotate (float angle, const Vector3f& pos) const

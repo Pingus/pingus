@@ -16,7 +16,7 @@
 
 #include "math/vector3f.hpp"
 #include "display/scene_context.hpp"
-#include "pingu.hpp"
+#include "pingus/pingu.hpp"
 #include "actions/jumper.hpp"
 
 namespace Actions {

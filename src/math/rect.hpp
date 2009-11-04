@@ -31,9 +31,9 @@
 #define __MATH_RECT_HPP__
 
 #include <iosfwd>
-#include "origin.hpp"
-#include "vector3f.hpp"
-#include "size.hpp"
+#include "math/origin.hpp"
+#include "math/vector3f.hpp"
+#include "math/size.hpp"
 
 class Rectf;
 

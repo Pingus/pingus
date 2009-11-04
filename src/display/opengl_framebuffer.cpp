@@ -21,7 +21,7 @@
 #include "display/opengl_framebuffer.hpp"
 #include "display/opengl_framebuffer_surface_impl.hpp"
 #include "math/math.hpp"
-#include "surface.hpp"
+#include "pingus/surface.hpp"
 
 OpenGLFramebuffer::OpenGLFramebuffer()
 {

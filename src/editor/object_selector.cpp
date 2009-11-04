@@ -19,12 +19,12 @@
 
 #include "display/display.hpp"
 #include "editor/gui_style.hpp"
-#include "sprite.hpp"
+#include "pingus/sprite.hpp"
 #include "gettext.h"
 #include "math/vector2i.hpp"
 #include "editor/editor_screen.hpp"
 #include "display/drawing_context.hpp"
-#include "fonts.hpp"
+#include "pingus/fonts.hpp"
 #include "math/math.hpp"
 #include "editor/viewport.hpp"
 #include "editor/editor_level.hpp"
@@ -35,7 +35,7 @@
 #include "gui/gui_manager.hpp"
 #include "editor/object_selector.hpp"
 
-#include "resource.hpp"
+#include "pingus/resource.hpp"
 
 namespace Editor {
 

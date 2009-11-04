@@ -39,7 +39,7 @@
 
 #include <string>
 #include "vector2i.hpp"
-#include "size.hpp"
+#include "math/size.hpp"
 
 //: Alignment origins.
 //- !group=Core/Math!

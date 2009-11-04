@@ -17,7 +17,7 @@
 #ifndef HEADER_SURFACE_DRAWABLE_HPP
 #define HEADER_SURFACE_DRAWABLE_HPP
 
-#include "sprite.hpp"
+#include "pingus/sprite.hpp"
 #include "math/vector3f.hpp"
 #include "worldmap/drawable.hpp"
 

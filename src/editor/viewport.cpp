@@ -22,7 +22,7 @@
 #include "display/display.hpp"
 #include "display/drawing_context.hpp"
 #include "math/vector3f.hpp"
-#include "graphic_context_state.hpp"
+#include "pingus/graphic_context_state.hpp"
 #include "editor/editor_level.hpp"
 #include "editor/editor_screen.hpp"
 #include "editor/viewport.hpp"

@@ -22,7 +22,7 @@
 #include "editor/editor_screen.hpp"
 #include "util/system.hpp"
 #include "editor/gui_style.hpp"
-#include "fonts.hpp"
+#include "pingus/fonts.hpp"
 #include "gettext.h"
 #include "editor/label.hpp"
 #include "editor/inputbox.hpp"

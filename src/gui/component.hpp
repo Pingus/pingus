@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_GUI_COMPONENT_HPP
 #define HEADER_PINGUS_GUI_COMPONENT_HPP
 
-#include "pingus.hpp"
+#include "pingus/pingus.hpp"
 
 class DrawingContext;
 
