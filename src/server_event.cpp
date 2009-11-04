@@ -24,7 +24,7 @@
 #include "world.hpp"
 #include "pingu_holder.hpp"
 #include "pingu.hpp"
-#include "string_util.hpp"
+#include "util/string_util.hpp"
 
 ServerEvent::ServerEvent() 
   : type(PINGU_ACTION_EVENT),

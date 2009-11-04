@@ -16,10 +16,11 @@
 
 #include <assert.h>
 #include <fstream>
-#include "system.hpp"
+
+#include "util/system.hpp"
 #include "pingus_error.hpp"
-#include "sexpr_file_reader.hpp"
-#include "sexpr_file_writer.hpp"
+#include "util/sexpr_file_reader.hpp"
+#include "util/sexpr_file_writer.hpp"
 #include "savegame_manager.hpp"
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"

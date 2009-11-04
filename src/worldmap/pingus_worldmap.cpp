@@ -16,7 +16,7 @@
 
 #include <string>
 #include "../pingus_error.hpp"
-#include "../file_reader.hpp"
+#include "util/file_reader.hpp"
 #include "drawable_factory.hpp"
 #include "pingus_worldmap.hpp"
 

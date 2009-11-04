@@ -17,7 +17,7 @@
 #include <stdexcept>
 #include <fstream>
 #include "pathname.hpp"
-#include "file_reader.hpp"
+#include "util/file_reader.hpp"
 #include "server_event.hpp"
 #include "pingus_error.hpp"
 #include "pingu_enums.hpp"

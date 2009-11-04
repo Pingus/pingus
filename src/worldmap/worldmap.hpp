@@ -19,7 +19,7 @@
 
 #include <vector>
 #include "../sprite.hpp"
-#include "../file_reader.hpp"
+#include "util/file_reader.hpp"
 #include "../display/drawing_context.hpp"
 #include "../graphic_context_state.hpp"
 #include "pingus_worldmap.hpp"

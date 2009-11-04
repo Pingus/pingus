@@ -19,8 +19,8 @@
 
 #include <map>
 #include <string>
-#include "file_reader.hpp"
 
+#include "util/file_reader.hpp"
 
 class WorldObj;
 class WorldObjAbstractFactory;

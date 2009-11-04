@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_DEBUG_HPP
 #define HEADER_PINGUS_DEBUG_HPP
 
-#include "debug_stream.hpp"
+#include "util/debug_stream.hpp"
 
 
 /* Stream for error messages */

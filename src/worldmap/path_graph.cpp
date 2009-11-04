@@ -16,7 +16,7 @@
 
 #include <iostream>
 #include "../math.hpp"
-#include "../file_reader.hpp"
+#include "util/file_reader.hpp"
 #include "../pingus_error.hpp"
 #include "dot.hpp"
 #include "dot_factory.hpp"

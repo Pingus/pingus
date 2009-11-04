@@ -33,7 +33,7 @@
 #include "stat_manager.hpp"
 #include "credits.hpp"
 #include "display/display.hpp"
-#include "utf8.hpp"
+#include "util/utf8.hpp"
 #include "sound/sound.hpp"
 
 class StoryScreenComponent : public GUI::Component

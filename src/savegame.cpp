@@ -15,9 +15,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "sexpr_file_writer.hpp"
+
 #include "savegame.hpp"
-#include "string_util.hpp"
+#include "util/sexpr_file_writer.hpp"
+#include "util/string_util.hpp"
 
 std::string
 Savegame::status_to_string(S_Status status)

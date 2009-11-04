@@ -17,7 +17,7 @@
 #include <boost/bind.hpp>
 #include <iostream>
 
-#include "string_util.hpp"
+#include "util/string_util.hpp"
 #include "button.hpp"
 #include "editor_screen.hpp"
 #include "level_objs.hpp"

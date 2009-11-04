@@ -18,7 +18,7 @@
 
 #include "input/event.hpp"
 #include "fonts.hpp"
-#include "string_util.hpp"
+#include "util/string_util.hpp"
 #include "display/drawing_context.hpp"
 #include "display/display.hpp"
 #include "font_description.hpp"

@@ -21,7 +21,8 @@
 #include <vector>
 #include <map>
 #include <boost/shared_ptr.hpp>
-#include "file_reader.hpp"
+
+#include "util/file_reader.hpp"
 
 class Pathname;
 class FileReader;

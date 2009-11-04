@@ -17,8 +17,9 @@
 
 #include <iostream>
 #include <boost/bind.hpp>
+
 #include "../display/display.hpp"
-#include "../system.hpp"
+#include "util/system.hpp"
 #include "../sound/sound.hpp"
 #include "../gui/gui_manager.hpp"
 #include "../screen/screen_manager.hpp"

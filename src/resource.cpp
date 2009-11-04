@@ -16,7 +16,7 @@
 
 #include <assert.h>
 
-#include "system.hpp"
+#include "util/system.hpp"
 #include "path_manager.hpp"
 #include "globals.hpp"
 #include "font_description.hpp"

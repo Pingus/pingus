@@ -15,9 +15,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <sstream>
+
 #include "font.hpp"
 #include "string_format.hpp"
-#include "utf8.hpp"
+#include "util/utf8.hpp"
 
 std::string
 StringFormat::normalize(std::string text)

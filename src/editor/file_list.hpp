@@ -18,7 +18,7 @@
 #define HEADER_FILE_LIST_HPP
 
 #include <boost/signal.hpp>
-#include "system.hpp"
+#include "util/system.hpp"
 #include "sprite.hpp"
 #include "gui/rect_component.hpp"
 

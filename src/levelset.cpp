@@ -16,7 +16,7 @@
 
 #include <iostream>
 #include "pingus_error.hpp"
-#include "file_reader.hpp"
+#include "util/file_reader.hpp"
 #include "levelset.hpp"
 #include "plf_res_mgr.hpp"
 #include "savegame_manager.hpp"

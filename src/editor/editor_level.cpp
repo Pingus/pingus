@@ -25,7 +25,7 @@
 #include "level_objs.hpp"
 #include "pathname.hpp"
 #include "../pingus_level.hpp"
-#include "../sexpr_file_writer.hpp"
+#include "util/sexpr_file_writer.hpp"
 
 namespace Editor {
 

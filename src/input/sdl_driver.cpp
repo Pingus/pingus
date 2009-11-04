@@ -17,7 +17,7 @@
 #include "global_event.hpp"
 #include "screen/screen_manager.hpp"
 #include "math/size.hpp"
-#include "file_reader.hpp"
+#include "util/file_reader.hpp"
 #include "display/display.hpp"
 #include "sdl_driver.hpp"
 

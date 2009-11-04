@@ -18,8 +18,8 @@
 #define HEADER_PINGUS_SAVEGAME_HPP
 
 #include <string>
-#include "file_reader.hpp"
 
+#include "util/file_reader.hpp"
 
 class SExprFileWriter;
 

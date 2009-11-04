@@ -17,7 +17,8 @@
 #include <time.h>
 #include <iostream>
 #include <fstream>
-#include "system.hpp"
+
+#include "util/system.hpp"
 #include "pingu.hpp"
 #include "globals.hpp"
 #include "server.hpp"

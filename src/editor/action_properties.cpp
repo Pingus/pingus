@@ -21,7 +21,7 @@
 #include "editor_level.hpp"
 #include "pingu_enums.hpp"
 #include "inputbox.hpp"
-#include "string_util.hpp"
+#include "util/string_util.hpp"
 #include "action_properties.hpp"
 
 namespace Editor {

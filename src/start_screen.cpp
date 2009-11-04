@@ -23,7 +23,7 @@
 #include "gettext.h"
 #include "game_session.hpp"
 #include "globals.hpp"
-#include "system.hpp"
+#include "util/system.hpp"
 #include "fonts.hpp"
 #include "resource.hpp"
 #include "start_screen.hpp"
@@ -32,7 +32,7 @@
 #include "pingus_level.hpp"
 #include "string_format.hpp"
 #include "display/display.hpp"
-#include "string_util.hpp"
+#include "util/string_util.hpp"
 
 class StartScreenComponent : public GUI::Component
 {

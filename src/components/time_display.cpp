@@ -24,7 +24,7 @@
 #include "../server.hpp"
 #include "../game_session.hpp"
 #include "../game_time.hpp"
-#include "../string_util.hpp"
+#include "util/string_util.hpp"
 #include "../fonts.hpp"
 
 #include "time_display.hpp"

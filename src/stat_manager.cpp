@@ -16,14 +16,15 @@
 
 #include <algorithm>
 #include <fstream>
-#include "system.hpp"
-#include "pingus_error.hpp"
-#include "string_util.hpp"
-#include "stat_manager.hpp"
-#include "sexpr_file_reader.hpp"
-#include "sexpr_file_writer.hpp"
+
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
+#include "pingus_error.hpp"
+#include "stat_manager.hpp"
+#include "util/sexpr_file_reader.hpp"
+#include "util/sexpr_file_writer.hpp"
+#include "util/string_util.hpp"
+#include "util/system.hpp"
 
 StatManager* StatManager::instance_ = 0;
 

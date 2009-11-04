@@ -16,10 +16,11 @@
 
 #include <iostream>
 #include <boost/bind.hpp>
+
 #include "display/drawing_context.hpp"
 #include "gui/gui_manager.hpp"
 #include "editor_screen.hpp"
-#include "system.hpp"
+#include "util/system.hpp"
 #include "gui_style.hpp"
 #include "fonts.hpp"
 #include "gettext.h"

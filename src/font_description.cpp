@@ -15,9 +15,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "pingus_error.hpp"
-#include "file_reader.hpp"
+#include "util/file_reader.hpp"
 #include "font_description.hpp"
-
 
 GlyphDescription::GlyphDescription()
   : image(0), unicode(0), advance(0)

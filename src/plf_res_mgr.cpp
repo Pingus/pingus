@@ -16,7 +16,7 @@
 
 #include "globals.hpp"
 #include "debug.hpp"
-#include "system.hpp"
+#include "util/system.hpp"
 #include "pathname.hpp"
 #include "plf_res_mgr.hpp"
 

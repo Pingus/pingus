@@ -15,7 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "math/vector3f.hpp"
-#include "string_util.hpp"
+#include "util/string_util.hpp"
 #include "pingu.hpp"
 #include "resource.hpp"
 #include "capture_rectangle.hpp"

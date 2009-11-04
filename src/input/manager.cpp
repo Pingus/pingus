@@ -16,7 +16,7 @@
 
 #include "config.h"
 
-#include "string_util.hpp"
+#include "util/string_util.hpp"
 #include "pingus_error.hpp"
 #include "pathname.hpp"
 #include "path_manager.hpp"

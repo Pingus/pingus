@@ -16,7 +16,8 @@
 
 #include <iostream>
 #include <boost/bind.hpp>
-#include "string_util.hpp"
+
+#include "util/string_util.hpp"
 #include "label.hpp"
 #include "inputbox.hpp"
 #include "gui_style.hpp"

@@ -18,7 +18,7 @@
 #include <algorithm>
 #include "../math.hpp"
 #include "../fonts.hpp"
-#include "../string_util.hpp"
+#include "util/string_util.hpp"
 #include "../globals.hpp"
 #include "../server.hpp"
 #include "../game_session.hpp"

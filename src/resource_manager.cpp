@@ -19,9 +19,9 @@
 #include "globals.hpp"
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
-#include "string_util.hpp"
+#include "util/string_util.hpp"
 #include "sprite_description.hpp"
-#include "sexpr_file_reader.hpp"
+#include "util/sexpr_file_reader.hpp"
 #include "resource_manager.hpp"
 
 ResourceManager::ResourceManager()

@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_WORLDOBJ_HPP
 
 #include "pingus.hpp"
-#include "file_reader.hpp"
+#include "util/file_reader.hpp"
 #include "sprite.hpp"
 #include "collision_mask.hpp"
 
