@@ -87,8 +87,8 @@ MapTile::get_sprite()
     }
 }
 
-GroundMap::GroundMap(int width_, int height_)
-  : width(width_), height(height_)
+GroundMap::GroundMap(int width_, int height_) :
+  width(width_), height(height_)
 {
   colmap = new CollisionMap(width, height);
 

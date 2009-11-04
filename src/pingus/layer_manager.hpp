@@ -42,17 +42,18 @@ private:
     float y_offset;
 
   public:
-    Layer ()
-      : x_pos(0), y_pos(0),
-        x_update(0), y_update(0),
-        x_offset(0), y_offset(0)
+    Layer () :
+      sur(),
+      x_pos(0), y_pos(0),
+      x_update(0), y_update(0),
+      x_offset(0), y_offset(0)
     {}
 
-    Layer (const Sprite& arg_sur, float x_o, float y_o, float x_u, float y_u)
-      : sur(arg_sur),
-        x_pos(0), y_pos(0),
-        x_update(x_u), y_update(y_u),
-        x_offset(x_o), y_offset(y_o)
+    Layer (const Sprite& arg_sur, float x_o, float y_o, float x_u, float y_u) :
+      sur(arg_sur),
+      x_pos(0), y_pos(0),
+      x_update(x_u), y_update(y_u),
+      x_offset(x_o), y_offset(y_o)
     {}
 
     void draw (DrawingContext& gc)

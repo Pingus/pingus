@@ -24,39 +24,42 @@ class World;
 
 class Mover
 {
-  public:
-    /** Constructor of abstract class */
-    Mover(World* const world_arg, const Vector3f& pos_arg);
+public:
+  /** Constructor of abstract class */
+  Mover(World* const world_arg, const Vector3f& pos_arg);
 
-    /** Destructor of abstract class */
-    virtual ~Mover() = 0;
+  /** Destructor of abstract class */
+  virtual ~Mover() = 0;
 
-    /** Updates the position of the object taking into account collisions */
-    virtual void update(const Vector3f& move, const Collider& collider) = 0;
+  /** Updates the position of the object taking into account collisions */
+  virtual void update(const Vector3f& move, const Collider& collider) = 0;
 
-    /** Get the resulting position vector */
-    Vector3f get_pos() const;
+  /** Get the resulting position vector */
+  Vector3f get_pos() const;
 
-    /** Get the move vector remaining after a collision */
-    Vector3f remaining() const;
+  /** Get the move vector remaining after a collision */
+  Vector3f remaining() const;
 
-    /** Get whether object stopped moving because it collided with something */
-    bool collided() const;
+  /** Get whether object stopped moving because it collided with something */
+  bool collided() const;
 
-  protected:
-    /** World in which the object should move */
-    World* const world;
+protected:
+  /** World in which the object should move */
+  World* const world;
 
-    /** Position of the object to move */
-    Vector3f pos;
+  /** Position of the object to move */
+  Vector3f pos;
 
-    /** Move vector remaining after a collision */
-    Vector3f remaining_move;
+  /** Move vector remaining after a collision */
+  Vector3f remaining_move;
 
-    /** Flag to denote whether object has had a collision */
-    bool collision;
+  /** Flag to denote whether object has had a collision */
+  bool collision;
+
+private:
+  Mover(const Mover&);
+  Mover & operator=(const Mover&);
 };
-
 
 #endif
 

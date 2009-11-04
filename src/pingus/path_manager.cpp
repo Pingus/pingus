@@ -22,8 +22,10 @@
 
 PathManager path_manager;
 
-PathManager::PathManager ()
-  : path_found (false)
+PathManager::PathManager () :
+  path_list(),
+  path_found (false),
+  base_path()
 {
 }
 

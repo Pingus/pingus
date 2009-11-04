@@ -129,7 +129,7 @@ LevelObj::draw(DrawingContext &gc)
 bool
 LevelObj::is_at(int x, int y)
 {
-  return get_rect().is_inside(Vector2i(x,y));
+  return get_rect().contains(Vector2i(x,y));
 #if 0  
   // old code
   if (attribs & HAS_SURFACE || attribs & HAS_SURFACE_FAKE)

@@ -37,17 +37,18 @@
 #include "pingus/globals.hpp"
 #include "pingus/debug.hpp"
 
-GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_screen)
-  : plf(arg_plf),
-    show_result_screen(arg_show_result_screen),
-    is_finished  (false),
-    button_panel (0),
-    pcounter     (0),
-    playfield    (0),
-    time_display (0),
-    small_map    (0),
-    pause(false),
-    fast_forward(false)
+GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_screen) :
+  plf(arg_plf),
+  show_result_screen(arg_show_result_screen),
+  server(),
+  is_finished  (false),
+  button_panel (0),
+  pcounter     (0),
+  playfield    (0),
+  time_display (0),
+  small_map    (0),
+  pause(false),
+  fast_forward(false)
 {
   server = std::auto_ptr<Server>(new Server(plf, true));
 

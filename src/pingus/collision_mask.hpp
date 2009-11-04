@@ -45,6 +45,10 @@ public:
 
 private:
   void init_colmap(const Surface& surf, const std::string& surface_res);
+
+private:
+  CollisionMask(const CollisionMask&);
+  CollisionMask & operator=(const CollisionMask&);
 };
 
 #endif

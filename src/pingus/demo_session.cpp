@@ -72,10 +72,19 @@ public:
   }
 };
 
-DemoSession::DemoSession(const Pathname& pathname_)
-  : pathname(pathname_),
-    pause(false),
-    fast_forward(false)
+DemoSession::DemoSession(const Pathname& pathname_) :
+  pathname(pathname_),
+  server(),
+  demo(),
+  events(),
+  pcounter(),
+  playfield(),
+  small_map(),
+  fastforward_button(),
+  pause_button(),
+  restart_button(),
+  pause(false),
+  fast_forward(false)
 {
   // Load Demo file
   demo = std::auto_ptr<PingusDemo>(new PingusDemo(pathname));

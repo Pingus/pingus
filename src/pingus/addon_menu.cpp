@@ -22,7 +22,9 @@
 #include "pingus/option_menu.hpp"
 #include "pingus/addon_menu.hpp"
 
-AddOnMenu::AddOnMenu()
+AddOnMenu::AddOnMenu() :
+  background(),
+  ok_button()
 {
   background = Sprite("core/menu/filedialog");
   ok_button  = Sprite("core/start/ok");

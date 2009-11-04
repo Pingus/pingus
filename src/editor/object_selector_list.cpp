@@ -125,8 +125,8 @@ ObjectSelectorList::on_primary_button_release (int x, int y)
           // is the Viewport, else no drag should take place, this
           // checks if the current mouse_over_comp is the
           // ObjectSelector, which is good enough but not perfect 
-          if (!object_selector->get_rect().is_inside(Vector2i(x + object_selector->get_rect().left,
-                                                              y + object_selector->get_rect().top)))
+          if (!object_selector->get_rect().contains(Vector2i(x + object_selector->get_rect().left,
+                                                             y + object_selector->get_rect().top)))
             {
               Vector2i p = editor->get_viewport()->screen2world(x + object_selector->get_rect().left,
                                                                 y + object_selector->get_rect().top);

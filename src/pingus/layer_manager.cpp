@@ -18,8 +18,8 @@
 
 #include "pingus/layer_manager.hpp"
 
-
-LayerManager::LayerManager ()
+LayerManager::LayerManager () :
+  layers()
 {
 }
 

@@ -54,12 +54,24 @@ public:
     parent->on_escape_press();
     Sound::PingusSound::play_sound("yipee");
   }
+
+private:
+  CreditsOkButton(const CreditsOkButton&);
+  CreditsOkButton & operator=(const CreditsOkButton&);
 };
 
-Credits::Credits()
-  : background("core/menu/wood"),
-    blackboard("core/menu/blackboard"),
-    pingu("core/misc/creditpingu")
+Credits::Credits() :
+  scene_context(),
+  fast_scrolling(false),
+  background("core/menu/wood"),
+  blackboard("core/menu/blackboard"),
+  pingu("core/misc/creditpingu"),
+  font(),
+  font_small(),
+  is_init(),
+  end_offset(),
+  offset(),
+  credits()
 {
   scene_context = new SceneContext();
   fast_scrolling = false;
@@ -209,23 +221,23 @@ Credits::Credits()
 
   end_offset = -(float)Display::get_height()/2 - 50; // screen height + grace time
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)
+  {
+    switch ((*i)[0])
     {
-      switch ((*i)[0])
-	{
-	case '-':
-	  end_offset += font.get_height() + 5;
-	  break;
-	case '_':
-	  end_offset += font_small.get_height() + 5;
-	  break;
-	case 'n':
-	  end_offset += 50;
-	  break;
-	default:
-	  std::cout << "Credits: Syntax error: Unknown format: '" << (*i)[0] << "'" << std::endl;
-	  break;
-	}
+      case '-':
+        end_offset += font.get_height() + 5;
+        break;
+      case '_':
+        end_offset += font_small.get_height() + 5;
+        break;
+      case 'n':
+        end_offset += 50;
+        break;
+      default:
+        std::cout << "Credits: Syntax error: Unknown format: '" << (*i)[0] << "'" << std::endl;
+        break;
     }
+  }
   end_offset = -end_offset;
 }
 

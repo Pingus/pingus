@@ -45,6 +45,16 @@ struct Result
   /** Number of Pingus needed to save */
   int needed;
 
+  Result() :
+    plf(),
+    saved(),
+    killed(),
+    total(),
+    used_time(),
+    max_time(),
+    needed()
+  {}
+
   bool success() {
     return (saved >= needed);
   }

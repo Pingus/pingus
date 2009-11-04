@@ -28,6 +28,7 @@ private:
   Font reference;
   Vector2i scroll;
   bool  dark;
+
 public:
   FontTestScreen(const Pathname& fontfile);
 

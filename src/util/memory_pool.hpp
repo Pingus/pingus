@@ -60,12 +60,12 @@ private:
   }
 
 public:
-  MemoryPool(size_t chunk_size_ = 16384)
-    : chunk_size(chunk_size_),
-      next_free(0)
-  {
-    
-  }
+  MemoryPool(size_t chunk_size_ = 16384) :
+    objects(),
+    chunks(),
+    chunk_size(chunk_size_),
+    next_free(0)
+  {}
 
   ~MemoryPool() 
   {

@@ -45,6 +45,11 @@ public:
 
   /** Characters in the font image */
   std::vector<GlyphDescription> glyphs;
+
+  GlyphImageDescription() :
+    pathname(),
+    glyphs()
+  {}
 };
 
 /** */

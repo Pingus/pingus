@@ -53,7 +53,7 @@ public:
   WorldObj ();
   WorldObj(const FileReader& reader);
 
-  WorldObj (const WorldObj&)       { }
+  WorldObj (const WorldObj&) : id() {}
   WorldObj& operator= (const WorldObj&) { return *this; }
 
   /** Destroys a world object */

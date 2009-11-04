@@ -23,47 +23,51 @@
 #include "pingus/resource.hpp"
 #include "math/math.hpp"
 
-Levelset::Levelset(const Pathname& pathname)
-  : completion(0)
+Levelset::Levelset(const Pathname& pathname) :
+  title(),
+  description(),
+  image(),
+  completion(0),
+  levels()
 {
   FileReader reader = FileReader::parse(pathname);
   if (reader.get_name() != "pingus-levelset")
-    {
-      PingusError::raise("Error: " + pathname.str() + ": not a 'pingus-levelset' file");
-    }
+  {
+    PingusError::raise("Error: " + pathname.str() + ": not a 'pingus-levelset' file");
+  }
   else
+  {
+    reader.read_string("title",       title);
+    reader.read_string("description", description);
+    std::string image_str;
+    if (reader.read_string("image", image_str))
+      this->image = Sprite(image_str);
+
+    FileReader level_reader = reader.read_section("levels");
+    std::vector<FileReader> sections = level_reader.get_sections();
+    for(std::vector<FileReader>::iterator i = sections.begin(); i != sections.end(); ++i)
     {
-      reader.read_string("title",       title);
-      reader.read_string("description", description);
-      std::string image_str;
-      if (reader.read_string("image", image_str))
-        this->image = Sprite(image_str);
+      if (i->get_name() == "level")
+      {
+        Level* level = new Level();
 
-      FileReader level_reader = reader.read_section("levels");
-      std::vector<FileReader> sections = level_reader.get_sections();
-      for(std::vector<FileReader>::iterator i = sections.begin(); i != sections.end(); ++i)
+        if (i->read_string("filename", level->resname))
         {
-          if (i->get_name() == "level")
-            {
-              Level* level = new Level();
-
-              if (i->read_string("filename", level->resname))
-                {
-                  level->plf        = PLFResMgr::load_plf(level->resname);
+          level->plf        = PLFResMgr::load_plf(level->resname);
                   
-                  level->accessible = false;
-                  level->finished   = false;
+          level->accessible = false;
+          level->finished   = false;
                       
-                  levels.push_back(level);
-                }
-              else
-                {
-                  std::cout << "Levelset: " << pathname.str() << " is missing filename tag" << std::endl;
-                  delete level;
-                }
-            }
+          levels.push_back(level);
         }
+        else
+        {
+          std::cout << "Levelset: " << pathname.str() << " is missing filename tag" << std::endl;
+          delete level;
+        }
+      }
     }
+  }
 
   refresh();
 }

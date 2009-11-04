@@ -38,9 +38,13 @@ public:
   float  vertical_spacing;
   int    size;
   
-  FontImpl(const FontDescription& desc)
-    : char_spacing(desc.char_spacing),
-      size(desc.size)
+  FontImpl(const FontDescription& desc) :
+    framebuffer_surfaces(),
+    glyphs(),
+    space_length(),
+    char_spacing(desc.char_spacing),
+    vertical_spacing(),
+    size(desc.size)
   {
     vertical_spacing = size * desc.vertical_spacing;
    
@@ -176,12 +180,13 @@ public:
   }
 };
 
-Font::Font()
+Font::Font() :
+  impl()
 {
 }
 
-Font::Font(const FontDescription& desc)
-  : impl(new FontImpl(desc))
+Font::Font(const FontDescription& desc) :
+  impl(new FontImpl(desc))
 {
 }
 

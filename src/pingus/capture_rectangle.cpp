@@ -26,15 +26,16 @@
 #include "pingus/server.hpp"
 #include "util/string_util.hpp"
 
-CaptureRectangle::CaptureRectangle(GameSession* session_)
-  : session(session_),
-    pingu(0),
-    owner_id(0),
-    good("game/cursors/capgood"),
-    bad("game/cursors/capbad"),
-    arrow_left("game/cursors/arrow_left"),
-    arrow_right("game/cursors/arrow_right"),
-    font(Fonts::courier_small)
+CaptureRectangle::CaptureRectangle(GameSession* session_) :
+  session(session_),
+  pingu(0),
+  action_str(),
+  owner_id(0),
+  good("game/cursors/capgood"),
+  bad("game/cursors/capbad"),
+  arrow_left("game/cursors/arrow_left"),
+  arrow_right("game/cursors/arrow_right"),
+  font(Fonts::courier_small)
 {
 }
 

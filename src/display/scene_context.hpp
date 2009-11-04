@@ -91,6 +91,10 @@ public:
   SceneContextDrawingRequest(SceneContext* sc, const Vector2i& pos, float z);
   virtual ~SceneContextDrawingRequest();
   void render(Framebuffer& fb, const Rect& render);
+
+private:
+  SceneContextDrawingRequest(const SceneContextDrawingRequest&);
+  SceneContextDrawingRequest& operator=(const SceneContextDrawingRequest&);
 };
 
 #endif

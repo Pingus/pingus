@@ -26,6 +26,13 @@ public:
 
   bool have_limit;
   Rect limit;
+
+  GraphicContextStateImpl() :
+    rect(),
+    offset(),
+    have_limit(),
+    limit()
+  {}
 };
 
 GraphicContextState::GraphicContextState()

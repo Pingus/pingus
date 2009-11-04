@@ -134,8 +134,8 @@ Viewport::on_primary_button_release(int x_, int y_)
       highlighted_area.normalize();
       for (unsigned i = 0; i < get_objects()->size(); i++)
         {
-          if (highlighted_area.is_inside(Vector2i(int((*get_objects())[i]->get_pos().x),
-                                                  int((*get_objects())[i]->get_pos().y))))
+          if (highlighted_area.contains(Vector2i(int((*get_objects())[i]->get_pos().x),
+                                                 int((*get_objects())[i]->get_pos().y))))
             {
               selected_objs.push_back((*get_objects())[i]);
               (*get_objects())[i]->select();
@@ -336,7 +336,7 @@ Viewport::draw(DrawingContext &gc)
 bool
 Viewport::is_at(int x, int y)
 {
-  return drawing_context->get_rect().is_inside(Vector2i(x,y));
+  return drawing_context->get_rect().contains(Vector2i(x,y));
 }
 
 void

@@ -26,8 +26,9 @@ Pathname Pathname::tmpfile(const std::string& prefix)
   return Pathname();
 }
 
-Pathname::Pathname()
- : type(INVALID)
+Pathname::Pathname() :
+  pathname(),
+  type(INVALID)
 {
 }
 

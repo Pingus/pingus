@@ -16,7 +16,6 @@
 
 #include "pingus/mover.hpp"
 
-
 Mover::Mover(World* const world_arg, const Vector3f& pos_arg)
   : world(world_arg),
     pos(pos_arg),
@@ -43,6 +42,5 @@ bool Mover::collided() const
 {
   return collision;
 }
-
 
 /* EOF */

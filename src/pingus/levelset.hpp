@@ -27,11 +27,19 @@
 class Levelset
 {
 public:
-  struct Level {
+  struct Level 
+  {
     std::string resname;
     bool accessible;
     bool finished;
     PingusLevel plf;
+
+    Level() :
+      resname(),
+      accessible(),
+      finished(),
+      plf()
+    {}
   };
 
 private:

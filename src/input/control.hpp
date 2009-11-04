@@ -27,7 +27,8 @@
 
 namespace Input {
 
-class Control {
+class Control 
+{
 private:
   Control* parent;
   
@@ -57,6 +58,10 @@ public:
   virtual void update(Control* ctrl) {
     std::cout << "Warning: Control:update() not handled" << std::endl;
   }
+
+private:
+  Control(const Control&);
+  Control & operator=(const Control&);
 };
 
 class Button : public Control 
@@ -89,7 +94,8 @@ private:
   
 public: 
   ButtonGroup(Control* parent_) :
-    Button(parent_)
+    Button(parent_),
+    buttons()
   {}
 
   ~ButtonGroup()
@@ -142,6 +148,10 @@ public:
   virtual void notify_parent() {
     controller->add_button_event(id, state);
   }
+
+private:
+  ControllerButton(const ControllerButton&);
+  ControllerButton & operator=(const ControllerButton&);
 };
 
 class Axis : public Control 
@@ -183,7 +193,8 @@ protected:
 
 public:
   Pointer(Control* parent_) :
-    Control(parent_)
+    Control(parent_),
+    pos()
   {}
 
   Vector2f get_pos() const { return pos; }
@@ -225,7 +236,8 @@ private:
 
 public:
   AxisGroup(Control* parent_) :
-    Axis(parent_)
+    Axis(parent_),
+    axes()
   {}
 
   ~AxisGroup()
@@ -329,6 +341,10 @@ public:
   virtual void notify_parent() {
     controller->add_pointer_event(id, pos.x, pos.y);
   }
+
+private:
+  ControllerPointer(const ControllerPointer&);
+  ControllerPointer & operator=(const ControllerPointer&);
 };
 
 class ScrollerGroup : public Scroller 
@@ -362,6 +378,10 @@ public:
   void add_scroller(Scroller* p) {
     scrollers.push_back(p);
   }
+
+private:
+  ScrollerGroup(const ScrollerGroup&);
+  ScrollerGroup & operator=(const ScrollerGroup&);
 };
 
 class ControllerScroller : public ScrollerGroup
@@ -380,6 +400,10 @@ public:
   virtual void notify_parent() {
     controller->add_scroller_event(id, delta.x, delta.y);
   }
+
+private:
+  ControllerScroller(const ControllerScroller&);
+  ControllerScroller & operator=(const ControllerScroller&);
 };
 
 class Keyboard : public Control
@@ -389,11 +413,16 @@ protected:
 
 public:
   Keyboard(Control* parent_) :
-    Control(parent_)
+    Control(parent_),
+    chr()
   {}
 
   void send_char(unsigned short c) { chr = c; notify_parent(); }
   unsigned short get_char() { return chr; }
+
+private:
+  Keyboard(const Keyboard&);
+  Keyboard & operator=(const Keyboard&);
 };
 
 class KeyboardGroup : public Keyboard
@@ -442,6 +471,10 @@ public:
   virtual void notify_parent() {
     controller->add_keyboard_event(chr);
   }
+
+private:
+  ControllerKeyboard(const ControllerKeyboard&);
+  ControllerKeyboard & operator=(const ControllerKeyboard&);
 };
 
 } // namespace Input

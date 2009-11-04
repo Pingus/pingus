@@ -45,6 +45,10 @@ public:
    void fill_rect(const Rect& rect, const Color& color);
 
   Size get_size() const;
+
+private:
+  OpenGLFramebuffer(const OpenGLFramebuffer&);
+  OpenGLFramebuffer & operator=(const OpenGLFramebuffer&);
 };
 
 #endif

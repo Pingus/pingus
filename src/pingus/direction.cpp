@@ -21,9 +21,9 @@ Direction::Direction() : direction(NONE)
 {
 }
 
-Direction::Direction(const Direction& dir)
+Direction::Direction(const Direction& dir) :
+  direction(dir.direction)
 {
-  direction = dir.direction;
 }
 
 Direction::~Direction()

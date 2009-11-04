@@ -60,7 +60,7 @@ Combobox::is_at(int x, int y)
 {
   if (drop_down)
     return Rect(Vector2i(rect.left, rect.top + get_box_offset()),
-                Size(rect.get_width(), rect.get_height() * (item_list.size()))).is_inside(Vector2i(x,y));
+                Size(rect.get_width(), rect.get_height() * (item_list.size()))).contains(Vector2i(x,y));
   else
     return RectComponent::is_at(x,y);
 }
@@ -159,7 +159,7 @@ Combobox::on_pointer_move(int x, int y)
 {
   if (drop_down)
     {
-      if (list_rect.is_inside(Vector2i(x,y)))
+      if (list_rect.contains(Vector2i(x,y)))
         {
           hover_item = (y - list_rect.top) / rect.get_height();
           hover_item = Math::clamp(0, hover_item, int(item_list.size()-1));

@@ -24,9 +24,12 @@
 #include "pingus/font_description.hpp"
 #include "pingus/font_test_screen.hpp"
 
-FontTestScreen::FontTestScreen(const Pathname& fontfile)
-  : Screen(Display::get_size()),
-    dark(true)
+FontTestScreen::FontTestScreen(const Pathname& fontfile) :
+  Screen(Display::get_size()),
+  font(),
+  reference(),
+  scroll(),
+  dark(true)
 {
   std::cout << "### Loading font file: " << fontfile << std::endl;
   font = Font(FontDescription(fontfile));

@@ -21,7 +21,8 @@
 
 using namespace Actions;
 
-ActionHolder::ActionHolder(const PingusLevel& plf)
+ActionHolder::ActionHolder(const PingusLevel& plf) :
+  available_actions()
 {
   const std::map<std::string, int>& actions = plf.get_actions();
 

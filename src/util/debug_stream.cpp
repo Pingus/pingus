@@ -22,8 +22,10 @@ using std::ostream;
 
 NilStream DebugStream::nilstream;
 
-DebugStream::Buffer::Buffer (const std::string& p)
-  : prefix (p)
+DebugStream::Buffer::Buffer (const std::string& p) :
+  out_streams(),
+  char_buffer(),
+  prefix (p)
 {
   // Set the output buffer
   setp (char_buffer, char_buffer + buffersize - 1);
@@ -150,8 +152,9 @@ DebugStream::set_prefix (const std::string & prefix)
 }
 
 
-NilStream::NilStream ()
-  : ostream(&buffer)
+NilStream::NilStream() :
+  ostream(&buffer),
+  buffer()
 {
 }
 

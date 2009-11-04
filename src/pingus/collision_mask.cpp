@@ -19,25 +19,39 @@
 #include "util/system.hpp"
 #include "pingus/collision_mask.hpp"
 
-CollisionMask::CollisionMask()
-  : buffer(0)
+CollisionMask::CollisionMask() :
+  surface(),
+  buffer(),
+  width(),
+  height()
 {
 }
 
-CollisionMask::CollisionMask(const std::string& gfx_name, const std::string& col_name)
+CollisionMask::CollisionMask(const std::string& gfx_name, const std::string& col_name) :
+  surface(),
+  buffer(),
+  width(),
+  height()
 {
   surface = Resource::load_surface(gfx_name);
   init_colmap(Resource::load_surface(col_name), col_name);
 }
 
-CollisionMask::CollisionMask(const std::string& name)
+CollisionMask::CollisionMask(const std::string& name) :
+  surface(),
+  buffer(),
+  width(),
+  height()
 {
   surface = Resource::load_surface(name);
   init_colmap(surface, name);
 }
 
-CollisionMask::CollisionMask(const ResDescriptor& res_desc)
-  : buffer(0)
+CollisionMask::CollisionMask(const ResDescriptor& res_desc) :
+  surface(),
+  buffer(),
+  width(),
+  height()
 {
   surface = Resource::load_surface(res_desc);
   init_colmap(surface, res_desc.res_name);

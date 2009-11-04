@@ -39,9 +39,13 @@
 #define snprintf _snprintf
 #endif
 
-CommandLine_Generic::CommandLine_Generic()
-{
-  help_indent = 18;
+CommandLine_Generic::CommandLine_Generic() :
+  help_indent(18),
+  programm(),
+  options(),
+  parsed_options(),
+  current_option()
+{  
 }
 
 void CommandLine_Generic::parse_args(int argc, char** argv)

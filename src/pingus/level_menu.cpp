@@ -34,8 +34,7 @@
 #include "gui/surface_button.hpp"
 #include "sound/sound.hpp"
 
-class LevelMenuAbortButton
-  : public GUI::SurfaceButton
+class LevelMenuAbortButton : public GUI::SurfaceButton
 {
 private:
   LevelMenu* parent;
@@ -64,10 +63,13 @@ public:
     SurfaceButton::on_pointer_enter();
     Sound::PingusSound::play_sound ("tick");
   }
+
+private:
+  LevelMenuAbortButton(const LevelMenuAbortButton&);
+  LevelMenuAbortButton & operator=(const LevelMenuAbortButton&);
 };
 
-class LevelScrollButton
-  : public GUI::SurfaceButton
+class LevelScrollButton : public GUI::SurfaceButton
 {
 private:
   boost::function<void(void)> callback;
@@ -91,6 +93,10 @@ public:
     SurfaceButton::on_pointer_enter();
     Sound::PingusSound::play_sound("tick");
   }
+
+private:
+  LevelScrollButton(const LevelScrollButton&);
+  LevelScrollButton & operator=(const LevelScrollButton&);
 };
 
 class LevelsetSelector : public GUI::RectComponent
@@ -212,6 +218,10 @@ public:
   }
 
   void update_layout() {}
+
+private:
+  LevelsetSelector(const LevelsetSelector&);
+  LevelsetSelector & operator=(const LevelsetSelector&);
 };
 
 class LevelSelector : public GUI::RectComponent
@@ -336,13 +346,17 @@ public:
   }
 
   void update_layout() {}
+
+private:
+  LevelSelector(const LevelSelector&);
+  LevelSelector & operator=(const LevelSelector&);
 };
 
-LevelMenu::LevelMenu()
-  : x_pos((Display::get_width()  - default_screen_width)/2),
-    y_pos((Display::get_height() - default_screen_height)/2),
-    background("core/menu/wood"),
-    blackboard("core/menu/blackboard")
+LevelMenu::LevelMenu() :
+  x_pos((Display::get_width()  - default_screen_width)/2),
+  y_pos((Display::get_height() - default_screen_height)/2),
+  background("core/menu/wood"),
+  blackboard("core/menu/blackboard")
 {
   ok_button  = Sprite("core/start/ok");
 

@@ -21,12 +21,13 @@
 #include "util/file_reader.hpp"
 #include "util/file_reader_impl.hpp"
 
-FileReader::FileReader(boost::shared_ptr<FileReaderImpl> impl_)
-  : impl(impl_)
+FileReader::FileReader(boost::shared_ptr<FileReaderImpl> impl_) :
+  impl(impl_)
 {
 }
 
-FileReader::FileReader()
+FileReader::FileReader() :
+  impl()
 {
 }
 

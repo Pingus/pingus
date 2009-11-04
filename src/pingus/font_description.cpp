@@ -18,15 +18,22 @@
 #include "util/file_reader.hpp"
 #include "pingus/font_description.hpp"
 
-GlyphDescription::GlyphDescription()
-  : image(0), unicode(0), advance(0)
-{
-  
+GlyphDescription::GlyphDescription() :
+  image(0), 
+  unicode(0), 
+  offset(),
+  advance(0),
+  rect()
+{  
 }
 
-GlyphDescription::GlyphDescription(FileReader& reader)
+GlyphDescription::GlyphDescription(FileReader& reader) :
+  image(0), 
+  unicode(0), 
+  offset(),
+  advance(0),
+  rect()
 {
-  image = 0;
   int lazy = 0; // FIXME: implement read_uint32
   reader.read_int("unicode", lazy);
   unicode = lazy;
@@ -35,8 +42,12 @@ GlyphDescription::GlyphDescription(FileReader& reader)
   reader.read_rect("rect",   rect);
 }
 
-FontDescription::FontDescription(const Pathname& pathname_)
-  : pathname(pathname_)
+FontDescription::FontDescription(const Pathname& pathname_) :
+  pathname(pathname_),
+  char_spacing(),
+  vertical_spacing(),
+  size(),
+  images()
 {
   char_spacing     = 1.0f;
   vertical_spacing = 1.0f;

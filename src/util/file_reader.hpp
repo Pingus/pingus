@@ -38,6 +38,7 @@ class FileReader
 public:
   FileReader(boost::shared_ptr<FileReaderImpl> impl_);
   FileReader();
+  virtual ~FileReader() {}
 
   /** Name of the current section, ie. in the case of
       <groundpiece><pos>...</groundpiece> it would be 'groundpiece' */

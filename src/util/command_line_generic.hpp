@@ -52,6 +52,14 @@ private:
 		std::string long_option;
 		std::string argument;
 		bool visible;
+
+          Option() :
+            key(),
+            help(),
+            long_option(),
+            argument(),
+            visible()
+          {}
 	};
   
 	typedef std::vector<Option> Options;
@@ -61,6 +69,10 @@ private:
 	{
 		int key;
 		std::string argument;
+          ParsedOption() :
+            key(),
+            argument()
+          {}
 	};
 
 	typedef std::vector<ParsedOption> ParsedOptions;

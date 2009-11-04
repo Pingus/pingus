@@ -44,7 +44,12 @@ private:
 	
   // Relative Input Event
   struct Relative {
-    Relative(int code_) : code(code_), pos(0) {}
+    Relative(int code_) : 
+      code(code_),
+      pos(0),
+      bindings()
+    {}
+
     int code;
     int pos;
 
@@ -54,7 +59,7 @@ private:
 
   // Key Input Event
   struct Key {
-    Key(int code_) : code(code_), pressed(false) {}
+    Key(int code_) : code(code_), pressed(false), bindings() {}
     int code;
     bool pressed;
     std::vector<Button*> bindings;

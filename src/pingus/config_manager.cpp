@@ -33,7 +33,19 @@ extern tinygettext::DictionaryManager dictionary_manager;
 
 ConfigManager config_manager;
 
-ConfigManager::ConfigManager()
+ConfigManager::ConfigManager() :
+  on_master_volume_change(),
+  on_sound_volume_change(),
+  on_music_volume_change(),
+  on_resolution_change(),
+  on_fullscreen_change(),
+  on_allow_resize_change(),
+  on_mouse_grab_change(),
+  on_print_fps_change(),
+  on_language_change(),
+  on_swcursor_change(),
+  on_autoscroll_change(),
+  filename()
 {
 }
 

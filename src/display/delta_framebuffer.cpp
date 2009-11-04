@@ -39,8 +39,9 @@ struct DrawOp
   DrawOpType type;
   uint32_t   id;
 
-  DrawOp(DrawOpType type_)
-    : type(type_)
+  DrawOp(DrawOpType type_) :
+    type(type_),
+    id()
   {}
 
   virtual ~DrawOp() {}

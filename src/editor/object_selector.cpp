@@ -234,14 +234,14 @@ public:
     gc.draw(sprite, Vector2i(rect.left + 3, rect.top + 3));
 
     if (mouse_over)
-      {
-        int t_w = Fonts::verdana11.get_width(tooltip);
-        Rect t_r(rect.left + 17 - t_w/2 - 4, rect.top + 38 - 2, 
-                 rect.left + 17 + t_w/2 + 4, rect.top + 38 + Fonts::verdana11.get_height() + 4);
-        gc.draw_fillrect(t_r, Color(255, 255, 200), 1000.0f);
-        gc.draw_rect(t_r, Color(0,0,0), 1000.0f);
-        gc.print_center(Fonts::verdana11, Vector2i(rect.left + 17, rect.top + 38), tooltip, 1000.0f);
-      }
+    {
+      int t_w = Fonts::verdana11.get_width(tooltip);
+      Rect t_r(rect.left + 17 - t_w/2 - 4, rect.top + 38 - 2, 
+               rect.left + 17 + t_w/2 + 4, rect.top + 38 + Fonts::verdana11.get_height() + 4);
+      gc.draw_fillrect(t_r, Color(255, 255, 200), 1000.0f);
+      gc.draw_rect(t_r, Color(0,0,0), 1000.0f);
+      gc.print_center(Fonts::verdana11, Vector2i(rect.left + 17, rect.top + 38), tooltip, 1000.0f);
+    }
   }
 
   /** Emmitted when pointer enters the region of the component */
@@ -282,10 +282,24 @@ public:
 
 
 
-ObjectSelector::ObjectSelector(EditorScreen* editor_, const Rect& rect_)
-  : GroupComponent(rect_, false),
-    editor(editor_),
-    button_pos(0,0)
+ObjectSelector::ObjectSelector(EditorScreen* editor_, const Rect& rect_) :
+  GroupComponent(rect_, false),
+  editor(editor_),
+  button_pos(0,0),
+  object_list(0),
+  gp_ground_set(0),
+  gp_solid_set(0),
+  gp_bridge_set(0),
+  gp_transparent_set(0),
+  gp_remove_set(0),
+  hotspot_set(0),
+  background_set(0),
+  entrance_set(0),
+  exit_set(0),
+  liquid_set(0),
+  trap_set(0),
+  weather_set(0),
+  worldobj_set(0)
 {
   add(object_list = new ObjectSelectorList(editor, this, 
                                            Rect(2, 2 + 60 + 2, rect.get_width() - 2, rect.get_height() - 2)));
@@ -349,17 +363,17 @@ ObjectSelector::add_button(const std::string& image, const std::string& tooltip,
 {
   ObjectSelectorButton* button;
   add(button = new ObjectSelectorButton(object_list,
-                               Vector2i(2 + button_pos.x * 30,  
-                                        2 + button_pos.y * 30),
-                               image, tooltip));
+                                        Vector2i(2 + button_pos.x * 30,  
+                                                 2 + button_pos.y * 30),
+                                        image, tooltip));
   button->on_click.connect(boost::bind(&ObjectSelectorList::set_objects, object_list, set));
 
   button_pos.x += 1;
   if (button_pos.x > 7)
-    {
-      button_pos.x  = 0;
-      button_pos.y += 1;
-    }
+  {
+    button_pos.x  = 0;
+    button_pos.y += 1;
+  }
 }
 
 ObjectSelectorSet*
@@ -370,11 +384,11 @@ ObjectSelector::create_objects(const std::string& prefix)
   // FIXME: Simple debugging aid, needs to be replaced with custom code for the object types
   std::vector<std::string> lst = Resource::resmgr.get_section(prefix);
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
-    {
-      // need to reset the align to top/left
-      set->add(new ObjectSelectorList::Object(Sprite(*i),
-                                              Resource::load_thumb_sprite(*i)));
-    }
+  {
+    // need to reset the align to top/left
+    set->add(new ObjectSelectorList::Object(Sprite(*i),
+                                            Resource::load_thumb_sprite(*i)));
+  }
   
   return set;
 }
@@ -386,10 +400,10 @@ ObjectSelector::create_groundpiece(const std::string& prefix, const std::string&
 
   std::vector<std::string> lst = Resource::resmgr.get_section(prefix);
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
-    {
-      //sprite.scale(48, 48);
-      set->add(new Groundpiece(*i, type));
-    }
+  {
+    //sprite.scale(48, 48);
+    set->add(new Groundpiece(*i, type));
+  }
 
   return set;
 }
@@ -460,11 +474,11 @@ ObjectSelector::create_entrance()
 
   std::vector<std::string> lst = Resource::resmgr.get_section("entrances");
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
-    {
-      //sprite.scale(48, 48);
-      if (*i != "entrances/generic")
-        set->add(new Hotspot(*i, 100));
-    }
+  {
+    //sprite.scale(48, 48);
+    if (*i != "entrances/generic")
+      set->add(new Hotspot(*i, 100));
+  }
 
   return set;
 }
@@ -472,29 +486,29 @@ ObjectSelector::create_entrance()
 ObjectSelectorSet*
 ObjectSelector::create_exit()
 {
- ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+  ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
 
- std::vector<std::string> lst = Resource::resmgr.get_section("exit");
- for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
-    {
-      set->add(new Exit(*i));
-    }
+  std::vector<std::string> lst = Resource::resmgr.get_section("exit");
+  for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
+  {
+    set->add(new Exit(*i));
+  }
  
- return set;
+  return set;
 }
 
 ObjectSelectorSet*
 ObjectSelector::create_liquid()
 {
- ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+  ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
 
- std::vector<std::string> lst = Resource::resmgr.get_section("liquids");
- for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
-    {
-      set->add(new Liquid(*i));
-    }
+  std::vector<std::string> lst = Resource::resmgr.get_section("liquids");
+  for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
+  {
+    set->add(new Liquid(*i));
+  }
 
- return set;
+  return set;
 }
 
 ObjectSelectorSet*

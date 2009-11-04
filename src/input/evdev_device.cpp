@@ -35,8 +35,14 @@
 
 namespace Input {
 
-EvdevDevice::EvdevDevice(const std::string& filename)
-  : device(filename)
+EvdevDevice::EvdevDevice(const std::string& filename) :
+  fd(),
+  version(),
+  relatives(),
+  absolutes(),
+  keys(),
+  name(),
+  device(filename)
 {
   fd = open(device.c_str(), O_RDONLY | O_NONBLOCK);
 
