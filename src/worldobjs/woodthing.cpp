@@ -26,7 +26,8 @@ namespace WorldObjs {
 // namespace Entrances {
 
 WoodThing::WoodThing(const FileReader& reader)
-  : Entrance(reader)
+  : Entrance(reader),
+    surface2()
 {
   surface  = Sprite("entrances/woodthing_mov");
   surface2 = Sprite("entrances/woodthing_nmov");

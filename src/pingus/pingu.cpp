@@ -58,15 +58,15 @@
 using namespace Actions;
 
 // Init a pingu at the given position while falling
-Pingu::Pingu (int arg_id, const Vector3f& arg_pos, int owner)
-  : previous_action(FALLER),
-    id(arg_id),
-    action_time(-1),
-    owner_id(owner),
-    status(PS_ALIVE),
-    pos_x(arg_pos.x),
-    pos_y(arg_pos.y),
-    velocity(0, 0, 0)
+Pingu::Pingu (int arg_id, const Vector3f& arg_pos, int owner) :
+  previous_action(FALLER),
+  id(arg_id),
+  action_time(-1),
+  owner_id(owner),
+  status(PS_ALIVE),
+  pos_x(arg_pos.x),
+  pos_y(arg_pos.y),
+  velocity(0, 0, 0)
 {
   direction.left ();
 

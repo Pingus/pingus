@@ -89,6 +89,10 @@ public:
     SurfaceButton::on_pointer_enter();
     Sound::PingusSound::play_sound ("tick");
   }
+
+private:
+  StartScreenOkButton(const StartScreenOkButton&);
+  StartScreenOkButton & operator=(const StartScreenOkButton&);
 };
 
 class StartScreenAbortButton
@@ -122,6 +126,10 @@ public:
     SurfaceButton::on_pointer_enter();
     Sound::PingusSound::play_sound ("tick");
   }
+
+private:
+  StartScreenAbortButton(const StartScreenAbortButton&);
+  StartScreenAbortButton & operator=(const StartScreenAbortButton&);
 };
 
 StartScreenComponent::StartScreenComponent(const PingusLevel& p)

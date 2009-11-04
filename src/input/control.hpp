@@ -286,6 +286,10 @@ public:
   virtual void notify_parent() {
     controller->add_axis_event(id, pos);
   }
+
+private:
+  ControllerAxis(const ControllerAxis&);
+  ControllerAxis & operator=(const ControllerAxis&);
 };
 
 class PointerGroup : public Pointer 
@@ -295,7 +299,8 @@ private:
 
 public:
   PointerGroup(Control* parent_) :
-  Pointer(parent_)
+    Pointer(parent_),
+    pointer()
   {}
 
   ~PointerGroup()
@@ -354,7 +359,8 @@ private:
 
 public:
   ScrollerGroup(Control* parent_) :
-    Scroller(parent_)
+    Scroller(parent_),
+    scrollers()
   {}
 
   ~ScrollerGroup()
@@ -432,7 +438,8 @@ private:
 
 public:
   KeyboardGroup(Control* parent_) :
-    Keyboard(parent_)
+    Keyboard(parent_),
+    keyboards()
   {}
 
   ~KeyboardGroup()

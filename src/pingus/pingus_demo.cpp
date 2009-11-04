@@ -24,7 +24,10 @@
 #include "pingus/pingu_enums.hpp"
 #include "pingus/pingus_demo.hpp"
 
-PingusDemo::PingusDemo(const Pathname& pathname)
+PingusDemo::PingusDemo(const Pathname& pathname) :
+  levelname(),
+  checksum(),
+  events()
 {
   std::vector<FileReader> lines = FileReader::parse_many(pathname);
 

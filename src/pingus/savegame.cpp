@@ -51,11 +51,12 @@ Savegame::string_to_status (std::string str)
     return NONE;
 }
 
-Savegame::Savegame()
+Savegame::Savegame() :
+  filename(),
+  status(ACCESSIBLE),
+  needed_time(0),
+  saved_pingus(0)
 {
-  status = ACCESSIBLE;
-  saved_pingus = 0;
-  needed_time = 0;
 }
 
 Savegame::Savegame(FileReader reader)

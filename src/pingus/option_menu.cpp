@@ -68,9 +68,31 @@ public:
     parent->close_screen();
     Sound::PingusSound::play_sound("yipee");
   }
+
+private:
+  OptionMenuCloseButton(const OptionMenuCloseButton&);
+  OptionMenuCloseButton & operator=(const OptionMenuCloseButton&);
 };
 
-OptionMenu::OptionMenu()
+OptionMenu::OptionMenu() :
+  background(),
+  ok_button(),
+  x_pos(),
+  y_pos(),
+  options(),
+  fullscreen_box(),
+  swcursor_box(),
+  autoscroll_box(),
+  mousegrab_box(),
+  printfps_box(),
+  master_volume_box(),
+  sound_volume_box(),
+  music_volume_box(),
+  defaults_label(),
+  defaults_box(),
+  connections(),
+  language(),
+  language_map()
 {
   background = Sprite("core/menu/optionmenu");
   gui_manager->add(ok_button = new OptionMenuCloseButton(this, 
@@ -103,16 +125,16 @@ OptionMenu::OptionMenu()
 
   ChoiceBox* resolution_box = new ChoiceBox(Rect());
   for (n = 0; resolutions[n][0] != -1; ++n)
+  {
+    std::ostringstream ostr;
+    ostr << resolutions[n][0] << "x" << resolutions[n][1];
+    resolution_box->add_choice(ostr.str());
+    if (Display::get_width()  == resolutions[n][0] &&
+        Display::get_height() == resolutions[n][1])
     {
-      std::ostringstream ostr;
-      ostr << resolutions[n][0] << "x" << resolutions[n][1];
-      resolution_box->add_choice(ostr.str());
-      if (Display::get_width()  == resolutions[n][0] &&
-          Display::get_height() == resolutions[n][1])
-        {
-          current_choice = n;
-        }
+      current_choice = n;
     }
+  }
   resolution_box->add_choice("Custom");
   if (current_choice == -1)
     current_choice = n;
@@ -127,11 +149,11 @@ OptionMenu::OptionMenu()
   std::set<tinygettext::Language> languages = dictionary_manager.get_languages();
 
   for (std::set<tinygettext::Language>::iterator i = languages.begin(); i != languages.end(); ++i)
-    {
-      language_box->add_choice(i->str());
-      if (current_language == *i)
-        language_box->set_current_choice(current_choice);
-    }
+  {
+    language_box->add_choice(i->str());
+    if (current_language == *i)
+      language_box->set_current_choice(current_choice);
+  }
 
   ChoiceBox* scroll_box = new ChoiceBox(Rect());
   scroll_box->add_choice("Drag&Drop");

@@ -24,9 +24,9 @@
 
 namespace WorldObjs {
 
-SnowGenerator::SnowGenerator(const FileReader& reader)
+SnowGenerator::SnowGenerator(const FileReader& reader) :
+  intensity(1.0f)
 {
-  intensity = 1.0f;
   reader.read_float("intensity", intensity);
 }
 

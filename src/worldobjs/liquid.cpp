@@ -23,9 +23,12 @@
 
 namespace WorldObjs {
 
-Liquid::Liquid(const FileReader& reader)
-  : old_width_handling(false),
-    width(0)
+Liquid::Liquid(const FileReader& reader) :
+  sur(),
+  pos(),
+  old_width_handling(false),
+  width(0),
+  speed()
 {
   /*
     if (XMLhelper::get_prop(cur, "use-old-width-handling", old_width_handling))

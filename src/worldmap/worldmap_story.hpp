@@ -26,7 +26,11 @@ class FileReader;
 class StoryPage
 {
 public:
-  StoryPage() {}
+  StoryPage() :
+    image(),
+    text(),
+    page_name()
+  {}
 
   StoryPage(ResDescriptor arg_image, std::string arg_text, std::string arg_name = "")
     : image(arg_image), text(arg_text), page_name(arg_name)

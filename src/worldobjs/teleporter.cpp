@@ -25,8 +25,11 @@
 
 namespace WorldObjs {
 
-Teleporter::Teleporter(const FileReader& reader)
-  : sprite("worldobjs/teleporter")
+Teleporter::Teleporter(const FileReader& reader) :
+  pos(),
+  sprite("worldobjs/teleporter"),
+  target_id(),
+  target()
 {
   reader.read_vector("position", pos);
   reader.read_string("target-id", target_id);
@@ -48,16 +51,16 @@ void
 Teleporter::on_startup()
 {
   if (target_id.empty())
-    {
-      std::cout << "Teleporter: target-id is empty" << std::endl;
-    }
+  {
+    std::cout << "Teleporter: target-id is empty" << std::endl;
+  }
   else
-    {
-      // FIXME: find the target
-      target = dynamic_cast<TeleporterTarget*>(world->get_worldobj(target_id));
-      if (!target)
-        std::cout << "Teleporter: Couldn't find matching target-id or object isn't a TeleporterTarget" << std::endl;
-    }
+  {
+    // FIXME: find the target
+    target = dynamic_cast<TeleporterTarget*>(world->get_worldobj(target_id));
+    if (!target)
+      std::cout << "Teleporter: Couldn't find matching target-id or object isn't a TeleporterTarget" << std::endl;
+  }
 }
 
 void
@@ -66,19 +69,19 @@ Teleporter::update ()
   sprite.update();
 
   if (target)
+  {
+    PinguHolder* holder = world->get_pingus();
+    for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
     {
-      PinguHolder* holder = world->get_pingus();
-      for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
-        {
-          if (   (*pingu)->get_x() > pos.x - 3  && (*pingu)->get_x() < pos.x + 3
-                 && (*pingu)->get_y() > pos.y - 52 && (*pingu)->get_y() < pos.y)
-            {
-              (*pingu)->set_pos(target->get_pos().x, target->get_pos().y);
-              target->teleporter_used();
-              sprite.restart();
-            }
-        }
+      if (   (*pingu)->get_x() > pos.x - 3  && (*pingu)->get_x() < pos.x + 3
+             && (*pingu)->get_y() > pos.y - 52 && (*pingu)->get_y() < pos.y)
+      {
+        (*pingu)->set_pos(target->get_pos().x, target->get_pos().y);
+        target->teleporter_used();
+        sprite.restart();
+      }
     }
+  }
 }
 
 } // namespace WorldObjs

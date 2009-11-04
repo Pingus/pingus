@@ -22,7 +22,12 @@
 
 namespace WorldObjs {
 
-StarfieldBackgroundStars::StarfieldBackgroundStars (Type type)
+StarfieldBackgroundStars::StarfieldBackgroundStars (Type type) :
+  sur(),
+  x_pos(),
+  y_pos(),
+  x_add(),
+  y_add()
 {
   switch (type)
     {

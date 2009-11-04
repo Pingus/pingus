@@ -21,15 +21,16 @@
 #include "pingus/pingu.hpp"
 
 
-PinguHolder::PinguHolder(const PingusLevel& plf)
-  : number_of_allowed(plf.get_number_of_pingus()),
-    number_of_exited(0)
+PinguHolder::PinguHolder(const PingusLevel& plf) :
+  number_of_allowed(plf.get_number_of_pingus()),
+  number_of_exited(0),
+  all_pingus(),
+  pingus()
 {
 }
 
 PinguHolder::~PinguHolder()
 {
-  // Deleting all Pingu objects
   for(std::vector<Pingu*>::iterator i = all_pingus.begin();
       i != all_pingus.end(); ++i)
     delete *i;

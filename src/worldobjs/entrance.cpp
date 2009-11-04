@@ -26,13 +26,13 @@
 
 namespace WorldObjs {
 
-Entrance::Entrance(const FileReader& reader)
-  : direction(MISC),
-    release_rate(150),
-    owner_id(0),
-    type("generic"),
-    smallmap_symbol("core/misc/smallmap_entrance"),
-    last_direction(0)
+Entrance::Entrance(const FileReader& reader) :
+  direction(MISC),
+  release_rate(150),
+  owner_id(0),
+  type("generic"),
+  smallmap_symbol("core/misc/smallmap_entrance"),
+  last_direction(0)
 {
   reader.read_string("type",         type);
   reader.read_int   ("owner-id",     owner_id);

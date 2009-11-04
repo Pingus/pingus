@@ -28,8 +28,10 @@ inline int next_power_of_two(int val)
 
 } // namespace 
 
-OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src)
-  : size(src->w, src->h)
+OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src) :
+  handle(),
+  size(src->w, src->h),
+  texture_size()
 {
   glGenTextures(1, &handle);
   

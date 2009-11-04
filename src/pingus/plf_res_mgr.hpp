@@ -26,9 +26,15 @@ class Pathname;
 class PLFResMgr
 {
 private:
-  struct PLFEntry {
+  struct PLFEntry 
+  {
     PingusLevel plf;
     uint64_t mtime;
+    
+    PLFEntry() :
+      plf(),
+      mtime()
+    {}
   };
 
   typedef std::map<std::string, PLFEntry> PLFMap;

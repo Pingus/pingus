@@ -123,6 +123,10 @@ private:
   static Worldmap* current_; 
 public:
   static Worldmap* current() { return current_; }
+
+private:
+  Worldmap(const Worldmap&);
+  Worldmap & operator=(const Worldmap&);
 };
 
 } // namespace WorldmapNS

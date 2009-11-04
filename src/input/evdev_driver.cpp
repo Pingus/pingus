@@ -19,7 +19,8 @@
 
 namespace Input {
 
-EvdevDriver::EvdevDriver() 
+EvdevDriver::EvdevDriver() :
+  devices()
 {
 }
 

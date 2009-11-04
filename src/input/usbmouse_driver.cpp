@@ -44,10 +44,14 @@ private:
   std::vector<std::vector<Button*> >  button_bindings;
   
 public: 
-  USBMouse(const std::string& device_) 
-    : device(device_),
-      buttons(5),
-      button_bindings(7)
+  USBMouse(const std::string& device_) :
+    fd(),
+    mouse_pos(),
+    device(device_),
+    buttons(5),
+    pointer_bindings(),
+    scroller_bindings(),
+    button_bindings(7)
   {
     fd = open(device.c_str (), O_RDWR | O_NONBLOCK);
 
@@ -201,7 +205,8 @@ public:
   }
 };
 
-USBMouseDriver::USBMouseDriver()
+USBMouseDriver::USBMouseDriver() :
+  usbmice()
 {
 }
 

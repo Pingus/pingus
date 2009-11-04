@@ -69,6 +69,10 @@ public:
     parent->close_screen();
     Sound::PingusSound::play_sound("yipee");
   }
+
+private:
+  ResultScreenOkButton(const ResultScreenOkButton&);
+  ResultScreenOkButton & operator=(const ResultScreenOkButton&);
 };
 
 class ResultScreenAbortButton
@@ -101,6 +105,10 @@ public:
     SurfaceButton::on_pointer_enter();
     Sound::PingusSound::play_sound ("tick");
   }
+
+private:
+  ResultScreenAbortButton(const ResultScreenAbortButton&);
+  ResultScreenAbortButton & operator=(const ResultScreenAbortButton&);
 };
 
 class ResultScreenRetryButton : public GUI::SurfaceButton
@@ -138,12 +146,16 @@ public:
     SurfaceButton::on_pointer_enter();
     Sound::PingusSound::play_sound ("tick");
   }
+
+private:
+  ResultScreenRetryButton(const ResultScreenRetryButton&);
+  ResultScreenRetryButton & operator=(const ResultScreenRetryButton&);
 };
 
-ResultScreenComponent::ResultScreenComponent(Result arg_result)
-  : result(arg_result),
-    background("core/menu/wood"),
-    blackboard("core/menu/blackboard")
+ResultScreenComponent::ResultScreenComponent(Result arg_result) :
+  result(arg_result),
+  background("core/menu/wood"),
+  blackboard("core/menu/blackboard")
 {   
   if (result.max_time == -1)
     time_str = "-";

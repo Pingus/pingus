@@ -25,12 +25,14 @@
 
 namespace WorldObjs {
 
-IceBlock::IceBlock(const FileReader& reader)
-  : thickness(1.0),
-    is_finished(false),
-    last_contact(0),
-    block_sur("worldobjs/iceblock"),
-    block_sur_cmap("worldobjs/iceblock_cmap")
+IceBlock::IceBlock(const FileReader& reader) :
+  pos(),
+  width(),
+  thickness(1.0),
+  is_finished(false),
+  last_contact(0),
+  block_sur("worldobjs/iceblock"),
+  block_sur_cmap("worldobjs/iceblock_cmap")
 {
   reader.read_vector("position", pos);
   reader.read_int   ("width",    width);

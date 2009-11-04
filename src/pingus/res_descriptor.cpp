@@ -27,8 +27,9 @@
    ResDescriptor(const std::string& uri);
 */
 
-ResDescriptor::ResDescriptor()
-  : modifier(ResourceModifierNS::ROT0)
+ResDescriptor::ResDescriptor() :
+  res_name(),
+  modifier(ResourceModifierNS::ROT0)
 {
 }
 

@@ -24,13 +24,16 @@
 
 namespace WorldObjs {
 
-SwitchDoor::SwitchDoor(const FileReader& reader)
-  : door_box     ("worldobjs/switchdoor_box"),
-    door_box_cmap("worldobjs/switchdoor_box"),
-    door_tile    ("worldobjs/switchdoor_tile"),
-    door_tile_cmap("worldobjs/switchdoor_tile_cmap"),
-    switch_sur   ("worldobjs/switchdoor_switch"),
-    is_opening(false)
+SwitchDoor::SwitchDoor(const FileReader& reader) :
+  door_pos(),
+  switch_pos(),
+  door_height(),
+  door_box     ("worldobjs/switchdoor_box"),
+  door_box_cmap("worldobjs/switchdoor_box"),
+  door_tile    ("worldobjs/switchdoor_tile"),
+  door_tile_cmap("worldobjs/switchdoor_tile_cmap"),
+  switch_sur   ("worldobjs/switchdoor_switch"),
+  is_opening(false)
 {
   FileReader subreader;
   reader.read_section("switch", subreader);

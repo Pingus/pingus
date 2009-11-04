@@ -48,6 +48,10 @@ public:
   void on_click();
   void draw (DrawingContext& gc);
   void on_pointer_enter();
+
+private:
+  WorldmapScreenCloseButton(const WorldmapScreenCloseButton&);
+  WorldmapScreenCloseButton & operator=(const WorldmapScreenCloseButton&);
 };
 
 class WorldmapScreenStoryButton
@@ -60,6 +64,10 @@ public:
   void on_click();
   void draw (DrawingContext& gc);
   void on_pointer_enter();
+
+private:
+  WorldmapScreenStoryButton(const WorldmapScreenStoryButton&);
+  WorldmapScreenStoryButton & operator=(const WorldmapScreenStoryButton&);
 };
 
 class WorldmapScreenCreditsButton
@@ -72,6 +80,10 @@ public:
   void on_click();
   void draw (DrawingContext& gc);
   void on_pointer_enter();
+
+private:
+  WorldmapScreenCreditsButton(const WorldmapScreenCreditsButton&);
+  WorldmapScreenCreditsButton & operator=(const WorldmapScreenCreditsButton&);
 };
 
 class WorldmapScreenEnterButton
@@ -84,6 +96,10 @@ public:
   void on_click();
   void draw (DrawingContext& gc);
   void on_pointer_enter();
+
+private:
+  WorldmapScreenEnterButton(const WorldmapScreenEnterButton&);
+  WorldmapScreenEnterButton & operator=(const WorldmapScreenEnterButton&);
 };
 
 WorldmapScreenCreditsButton::WorldmapScreenCreditsButton(WorldmapScreen* worldmap_screen_) :

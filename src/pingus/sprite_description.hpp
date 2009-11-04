@@ -38,20 +38,26 @@ public:
   Vector2i    frame_pos;
   Size        frame_size;  
 
-  SpriteDescription() 
-    : origin(origin_top_left),
-      loop(true),
-      speed(100),
-      array(1, 1),
-      frame_size(-1, -1)
+  SpriteDescription() :
+    filename(),
+    offset(),
+    origin(origin_top_left),
+    loop(true),
+    speed(100),
+    array(1, 1),
+    frame_pos(),
+    frame_size(-1, -1)
   {}
 
-  SpriteDescription(const FileReader& reader)
-    : origin(origin_top_left),
-      loop(true),
-      speed(100),
-      array(1, 1),
-      frame_size(-1, -1)
+  SpriteDescription(const FileReader& reader) :
+    filename(),
+    offset(),
+    origin(origin_top_left),
+    loop(true),
+    speed(100),
+    array(1, 1),
+    frame_pos(),
+    frame_size(-1, -1)
   {
     reader.read_int   ("speed",  speed);
     reader.read_bool  ("loop",   loop);

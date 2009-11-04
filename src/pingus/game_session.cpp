@@ -41,12 +41,16 @@ GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_scree
   plf(arg_plf),
   show_result_screen(arg_show_result_screen),
   server(),
+  world_delay(),
   is_finished  (false),
   button_panel (0),
   pcounter     (0),
   playfield    (0),
   time_display (0),
   small_map    (0),
+  armageddon_button(),
+  forward_button(),
+  pause_button(),
   pause(false),
   fast_forward(false)
 {

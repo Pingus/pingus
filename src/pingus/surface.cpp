@@ -41,6 +41,10 @@ public:
     if (surface)
       SDL_FreeSurface(surface);
   }
+
+private:
+  SurfaceImpl(const SurfaceImpl&);
+  SurfaceImpl & operator=(const SurfaceImpl&);
 };
 
 Surface::Surface()

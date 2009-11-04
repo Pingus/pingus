@@ -43,14 +43,14 @@ bool WorldObj_less (WorldObj* a, WorldObj* b)
   return a->get_z_pos () < b->get_z_pos ();
 }
 
-World::World(const PingusLevel& plf)
-  : ambient_light(Color(plf.get_ambient_light())),
-    gfx_map(new GroundMap(plf.get_size().width, plf.get_size().height)),
-    game_time(0),
-    do_armageddon(false),
-    pingus(new PinguHolder(plf)),
-    colmap(gfx_map->get_colmap()),
-    gravitational_acceleration(0.25f)
+World::World(const PingusLevel& plf) :
+  ambient_light(Color(plf.get_ambient_light())),
+  gfx_map(new GroundMap(plf.get_size().width, plf.get_size().height)),
+  game_time(0),
+  do_armageddon(false),
+  pingus(new PinguHolder(plf)),
+  colmap(gfx_map->get_colmap()),
+  gravitational_acceleration(0.25f)
 {
   WorldObj::set_world(this);
 

@@ -43,8 +43,10 @@ public:
   const Sprite& get_sprite();
 };
 
-MapTile::MapTile () 
-  : sprite_needs_update(false)
+MapTile::MapTile () :
+  sprite(),
+  surface(),
+  sprite_needs_update(false)
 {
 }
 
@@ -88,7 +90,12 @@ MapTile::get_sprite()
 }
 
 GroundMap::GroundMap(int width_, int height_) :
-  width(width_), height(height_)
+  colmap(),
+  tiles(),
+  width(width_), 
+  height(height_),
+  tile_width(),
+  tile_height()
 {
   colmap = new CollisionMap(width, height);
 

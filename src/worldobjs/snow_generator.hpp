@@ -30,6 +30,7 @@ class SnowGenerator : public WorldObj
 {
 private:
   float intensity;
+
 public:
   SnowGenerator(const FileReader& reader);
   ~SnowGenerator ();

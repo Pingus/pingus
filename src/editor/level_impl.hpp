@@ -31,9 +31,20 @@ class LevelImpl
 {
 public:
   // Set defaults in constructor
-  LevelImpl()
-    : ambient_light(255, 255, 255),
-      music("none")
+  LevelImpl() :
+    resname(),
+    levelname(),
+    description(),
+    ambient_light(255, 255, 255),
+    size(),
+    number_of_pingus(),
+    number_to_save(),
+    actions(),
+    time(),
+    difficulty(),
+    author(),
+    comment(),
+    music("none")
   {
     // Do nothing
   }

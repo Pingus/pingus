@@ -23,7 +23,9 @@
 #include "math/math.hpp"
 #include "pingus/surface.hpp"
 
-OpenGLFramebuffer::OpenGLFramebuffer()
+OpenGLFramebuffer::OpenGLFramebuffer() :
+  screen(),
+  cliprect_stack()
 {
 }
 

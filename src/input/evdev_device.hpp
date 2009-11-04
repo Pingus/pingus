@@ -43,10 +43,12 @@ private:
   };
 	
   // Relative Input Event
-  struct Relative {
+  struct Relative 
+  {
     Relative(int code_) : 
       code(code_),
       pos(0),
+      binding_axis(),
       bindings()
     {}
 

@@ -110,10 +110,13 @@ private:
   int page;
 
 public:
-  LevelsetSelector(LevelMenu* level_menu_, const Rect& rect_) 
-    : RectComponent(rect_),
-      level_menu(level_menu_), current_levelset(NULL),
-      page(0)
+  LevelsetSelector(LevelMenu* level_menu_, const Rect& rect_) :
+    RectComponent(rect_),
+    level_menu(level_menu_), 
+    levelsets(),
+    current_levelset(),
+    marker(),
+    page(0)
   {
     marker      = Sprite("core/menu/marker");
    

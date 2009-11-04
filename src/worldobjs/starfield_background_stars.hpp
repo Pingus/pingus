@@ -36,8 +36,15 @@ private:
 public:
   enum Type { SMALL_STAR, MIDDLE_STAR, LARGE_STAR };
 
-  StarfieldBackgroundStars () {}
-  StarfieldBackgroundStars (Type type);
+  StarfieldBackgroundStars() :
+    sur(),
+    x_pos(),
+    y_pos(),
+    x_add(),
+    y_add()
+  {}
+
+  StarfieldBackgroundStars(Type type);
 
   // Never used
   float get_z_pos () const { return -100; }
