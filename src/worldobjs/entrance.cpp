@@ -15,13 +15,13 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "../display/scene_context.hpp"
-#include "../world.hpp"
-#include "../pingu_holder.hpp"
-#include "../globals.hpp"
-#include "../pingu.hpp"
-#include "../resource.hpp"
-#include "../components/smallmap.hpp"
+#include "display/scene_context.hpp"
+#include "world.hpp"
+#include "pingu_holder.hpp"
+#include "globals.hpp"
+#include "pingu.hpp"
+#include "resource.hpp"
+#include "components/smallmap.hpp"
 #include "worldobjs/entrance.hpp"
 
 namespace WorldObjs {

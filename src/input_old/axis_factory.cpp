@@ -14,7 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "../pingus_error.hpp"
+#include "pingus_error.hpp"
 #include "axis_factory.hpp"
 #include "button.hpp"
 #include "button_factory.hpp"
@@ -22,7 +22,7 @@
 #include "axes/inverted_axis.hpp"
 #include "axes/joystick_axis.hpp"
 #include "axes/multiple_axis.hpp"
-#include "../debug.hpp"
+#include "debug.hpp"
 
 namespace Input {
 

@@ -21,9 +21,9 @@
 #include "math/math.hpp"
 #include "display/framebuffer.hpp"
 #include "display/display.hpp"
-#include "../sprite.hpp"
-#include "../font.hpp"
-#include "../math/origin.hpp"
+#include "sprite.hpp"
+#include "font.hpp"
+#include "math/origin.hpp"
 
 struct DrawingRequestsSorter
 {

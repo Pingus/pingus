@@ -17,13 +17,13 @@
 #include <algorithm>
 #include <vector>
 #include "worldmap/worldmap_story.hpp"
-#include "../story_screen.hpp"
+#include "story_screen.hpp"
 #include "util/file_reader.hpp"
-#include "../res_descriptor.hpp"
-#include "../pingus_error.hpp"
-#include "../string_format.hpp"
-#include "../fonts.hpp"
-#include "../gettext.h"
+#include "res_descriptor.hpp"
+#include "pingus_error.hpp"
+#include "string_format.hpp"
+#include "fonts.hpp"
+#include "gettext.h"
 
 namespace WorldmapNS {
 

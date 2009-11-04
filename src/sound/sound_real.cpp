@@ -17,8 +17,8 @@
 #include <stdexcept>
 #include "SDL.h"
 #include "SDL_mixer.h"
-#include "../globals.hpp"
-#include "../debug.hpp"
+#include "globals.hpp"
+#include "debug.hpp"
 #include "sound/sound_res_mgr.hpp"
 #include "sound/sound_real.hpp"
 

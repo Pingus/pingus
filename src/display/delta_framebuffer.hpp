@@ -19,7 +19,7 @@
 
 #include <memory>
 #include <map>
-#include "../math/vector2i.hpp"
+#include "math/vector2i.hpp"
 #include "display/framebuffer.hpp"
 
 class SDLFramebuffer;

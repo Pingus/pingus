@@ -19,7 +19,7 @@
 
 #include <vector>
 #include <string>
-#include "../res_descriptor.hpp"
+#include "res_descriptor.hpp"
 	
 class FileReader;
 

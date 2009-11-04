@@ -16,8 +16,8 @@
 
 #include <iostream>
 
-#include "../resource.hpp"
-#include "../display/drawing_context.hpp"
+#include "resource.hpp"
+#include "display/drawing_context.hpp"
 #include "worldmap/worldmap_screen.hpp"
 #include "worldmap/worldmap.hpp"
 #include "worldmap/pingus.hpp"

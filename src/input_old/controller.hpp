@@ -22,7 +22,7 @@
 #include <string>
 #include <vector>
 #include "SDL.h"
-#include "../file_reader.hpp"
+#include "file_reader.hpp"
 #include "event.hpp"
 
 namespace Input {

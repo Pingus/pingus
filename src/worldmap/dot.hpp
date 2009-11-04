@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_DOT_HPP
 
 #include <string>
-#include "../math/vector3f.hpp"
+#include "math/vector3f.hpp"
 #include "worldmap/drawable.hpp"
 
 namespace WorldmapNS {

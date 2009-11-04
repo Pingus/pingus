@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_WORLDMAP_PINGUS_HPP
 #define HEADER_PINGUS_WORLDMAP_PINGUS_HPP
 
-#include "../state_sprite.hpp"
+#include "state_sprite.hpp"
 #include "worldmap/drawable.hpp"
 #include "worldmap/path_graph.hpp"
 

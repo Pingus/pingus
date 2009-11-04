@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_EXIT_HPP
 #define HEADER_PINGUS_WORLDOBJS_EXIT_HPP
 
-#include "../res_descriptor.hpp"
-#include "../worldobj.hpp"
+#include "res_descriptor.hpp"
+#include "worldobj.hpp"
 
 namespace WorldObjs {
 

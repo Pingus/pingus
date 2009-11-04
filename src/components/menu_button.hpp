@@ -21,7 +21,7 @@
 #include "sprite.hpp"
 #include "font.hpp"
 #include "math/vector2i.hpp"
-#include "../gui/component.hpp"
+#include "gui/component.hpp"
 
 class PingusMenu;
 

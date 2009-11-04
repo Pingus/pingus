@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_INPUT_SCROLLER_FACTORY_HPP
 #define HEADER_PINGUS_INPUT_SCROLLER_FACTORY_HPP
 
-#include "../file_reader.hpp"
+#include "file_reader.hpp"
 
 namespace Input {
 

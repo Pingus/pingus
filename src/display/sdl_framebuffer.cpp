@@ -16,7 +16,7 @@
 
 #include <iostream>
 #include "math/math.hpp"
-#include "../surface.hpp"
+#include "surface.hpp"
 #include "display/display.hpp"
 #include "display/sdl_framebuffer.hpp"
 #include "display/sdl_framebuffer_surface_impl.hpp"

@@ -15,13 +15,13 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <cassert>
-#include "../display/scene_context.hpp"
-#include "../pingu.hpp"
-#include "../ground_map.hpp"
-#include "../sound/sound.hpp"
-#include "../world.hpp"
-#include "../worldobj.hpp"
-#include "../gettext.h"
+#include "display/scene_context.hpp"
+#include "pingu.hpp"
+#include "ground_map.hpp"
+#include "sound/sound.hpp"
+#include "world.hpp"
+#include "worldobj.hpp"
+#include "gettext.h"
 #include "util/string_util.hpp"
 #include "actions/bridger.hpp"
 

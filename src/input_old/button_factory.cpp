@@ -15,8 +15,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "../file_reader.hpp"
-#include "../pingus_error.hpp"
+#include "file_reader.hpp"
+#include "pingus_error.hpp"
 #include "button_factory.hpp"
 #include "buttons/double_button.hpp"
 #include "buttons/joystick_button.hpp"

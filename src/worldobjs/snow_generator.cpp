@@ -17,8 +17,8 @@
 #include <iostream>
 
 #include "math/math.hpp"
-#include "../world.hpp"
-#include "../particles/snow_particle_holder.hpp"
+#include "world.hpp"
+#include "particles/snow_particle_holder.hpp"
 #include "worldobjs/snow_generator.hpp"
 #include "globals.hpp"
 

@@ -17,12 +17,12 @@
 #ifndef HEADER_PINGUS_EDITOR_LEVEL_OBJS_HPP
 #define HEADER_PINGUS_EDITOR_LEVEL_OBJS_HPP
 
-#include "../sprite.hpp"
-#include "../math/color.hpp"
-#include "../math/origin.hpp"
-#include "../math/rect.hpp"
-#include "../math/vector3f.hpp"
-#include "../res_descriptor.hpp"
+#include "sprite.hpp"
+#include "math/color.hpp"
+#include "math/origin.hpp"
+#include "math/rect.hpp"
+#include "math/vector3f.hpp"
+#include "res_descriptor.hpp"
 #include "util/file_writer.hpp"
 #include <string>
 

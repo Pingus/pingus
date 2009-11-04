@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PARTICLES_EXPLOSIVE_PARTICLE_HPP
 #define HEADER_PINGUS_PARTICLES_EXPLOSIVE_PARTICLE_HPP
 
-#include "../sprite.hpp"
+#include "sprite.hpp"
 #include "particles/particle.hpp"
 
 class ExplosiveParticle

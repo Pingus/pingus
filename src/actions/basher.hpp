@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_ACTIONS_BASHER_HPP
 #define HEADER_PINGUS_ACTIONS_BASHER_HPP
 
-#include "../state_sprite.hpp"
-#include "../pingu_action.hpp"
+#include "state_sprite.hpp"
+#include "pingu_action.hpp"
 
 namespace Actions {
 

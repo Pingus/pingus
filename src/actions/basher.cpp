@@ -14,15 +14,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "../sound/sound.hpp"
-#include "../collision_map.hpp"
-#include "../debug.hpp"
-#include "../globals.hpp"
-#include "../display/scene_context.hpp"
-#include "../ground_map.hpp"
-#include "../pingu.hpp"
-#include "../world.hpp"
-#include "../worldobj.hpp"
+#include "sound/sound.hpp"
+#include "collision_map.hpp"
+#include "debug.hpp"
+#include "globals.hpp"
+#include "display/scene_context.hpp"
+#include "ground_map.hpp"
+#include "pingu.hpp"
+#include "world.hpp"
+#include "worldobj.hpp"
 #include "actions/basher.hpp"
 
 namespace Actions {

@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_TRAPS_FAKE_EXIT_HPP
 #define HEADER_PINGUS_TRAPS_FAKE_EXIT_HPP
 
-#include "../worldobj.hpp"
+#include "worldobj.hpp"
 
 
 class Pingu;

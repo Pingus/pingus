@@ -20,9 +20,9 @@
 #include "SDL.h"
 #include <vector>
 #include "display/drawing_request.hpp"
-#include "../math/vector3f.hpp"
-#include "../math/rect.hpp"
-#include "../math/color.hpp"
+#include "math/vector3f.hpp"
+#include "math/rect.hpp"
+#include "math/color.hpp"
 
 class Framebuffer;
 class Font;

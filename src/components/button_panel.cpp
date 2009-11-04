@@ -18,12 +18,12 @@
 #include <algorithm>
 
 #include "math/math.hpp"
-#include "../fonts.hpp"
+#include "fonts.hpp"
 #include "util/string_util.hpp"
-#include "../globals.hpp"
-#include "../server.hpp"
-#include "../game_session.hpp"
-#include "../display/drawing_context.hpp"
+#include "globals.hpp"
+#include "server.hpp"
+#include "game_session.hpp"
+#include "display/drawing_context.hpp"
 #include "components/button_panel.hpp"
 
 using namespace Actions;

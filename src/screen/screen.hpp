@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_SCREEN_HPP
 
 #include "SDL.h"
-#include "../math/size.hpp"
+#include "math/size.hpp"
 
 namespace Input {
 struct Event;

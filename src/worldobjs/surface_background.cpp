@@ -15,13 +15,13 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "../globals.hpp"
-#include "../display/scene_context.hpp"
-#include "../world.hpp"
-#include "../resource.hpp"
-#include "../globals.hpp"
-#include "../blitter.hpp"
-#include "../display/display.hpp"
+#include "globals.hpp"
+#include "display/scene_context.hpp"
+#include "world.hpp"
+#include "resource.hpp"
+#include "globals.hpp"
+#include "blitter.hpp"
+#include "display/display.hpp"
 #include "worldobjs/surface_background.hpp"
 
 namespace WorldObjs {

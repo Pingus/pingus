@@ -19,7 +19,7 @@
 
 #include <map>
 #include <vector>
-#include "../math/vector3f.hpp"
+#include "math/vector3f.hpp"
 #include "worldmap/path.hpp"
 #include "worldmap/pathfinder.hpp"
 #include "worldmap/graph.hpp"

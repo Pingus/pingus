@@ -14,16 +14,16 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "../debug.hpp"
-#include "../globals.hpp"
-#include "../display/scene_context.hpp"
-#include "../pingu.hpp"
-#include "../pingu_enums.hpp"
-#include "../ground_map.hpp"
-#include "../world.hpp"
-#include "../particles/pingu_particle_holder.hpp"
-#include "../colliders/pingu_collider.hpp"
-#include "../movers/linear_mover.hpp"
+#include "debug.hpp"
+#include "globals.hpp"
+#include "display/scene_context.hpp"
+#include "pingu.hpp"
+#include "pingu_enums.hpp"
+#include "ground_map.hpp"
+#include "world.hpp"
+#include "particles/pingu_particle_holder.hpp"
+#include "colliders/pingu_collider.hpp"
+#include "movers/linear_mover.hpp"
 #include "actions/bomber.hpp"
 
 namespace Actions {

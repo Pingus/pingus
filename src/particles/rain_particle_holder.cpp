@@ -14,12 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "../display/scene_context.hpp"
+#include "display/scene_context.hpp"
 #include "math/math.hpp"
-#include "../collision_map.hpp"
-#include "../globals.hpp"
-#include "../resource.hpp"
-#include "../world.hpp"
+#include "collision_map.hpp"
+#include "globals.hpp"
+#include "resource.hpp"
+#include "world.hpp"
 #include "particles/rain_particle_holder.hpp"
 
 namespace Particles {

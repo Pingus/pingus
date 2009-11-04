@@ -15,10 +15,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "SDL.h"
-#include "../screen/screen_manager.hpp"
+#include "screen/screen_manager.hpp"
 
-#include "../debug.hpp"
-#include "../pingus_error.hpp"
+#include "debug.hpp"
+#include "pingus_error.hpp"
 
 #include "path_manager.hpp"
 #include "controller.hpp"
@@ -32,7 +32,7 @@
 #include "buttons/key_button.hpp"
 #include "buttons/mouse_button.hpp"
 #include "scrollers/axis_scroller.hpp"
-#include "../global_event.hpp"
+#include "global_event.hpp"
 
 namespace Input {
 

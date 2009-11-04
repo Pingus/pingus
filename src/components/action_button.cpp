@@ -14,15 +14,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "../globals.hpp"
+#include "globals.hpp"
 #include "components/action_button.hpp"
-#include "../server.hpp"
-#include "../game_session.hpp"
-#include "../world.hpp"
-#include "../display/drawing_context.hpp"
-#include "../fonts.hpp"
+#include "server.hpp"
+#include "game_session.hpp"
+#include "world.hpp"
+#include "display/drawing_context.hpp"
+#include "fonts.hpp"
 #include "util/string_util.hpp"
-#include "../math/vector3f.hpp"
+#include "math/vector3f.hpp"
 
 using namespace Actions;
 

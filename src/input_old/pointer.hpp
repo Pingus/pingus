@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_INPUT_POINTER_HPP
 #define HEADER_PINGUS_INPUT_POINTER_HPP
 
-#include "../pingus.hpp"
+#include "pingus.hpp"
 
 namespace Input {
 

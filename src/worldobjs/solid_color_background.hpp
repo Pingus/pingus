@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_SOLID_COLOR_BACKGROUND_HPP
 #define HEADER_PINGUS_WORLDOBJS_SOLID_COLOR_BACKGROUND_HPP
 
-#include "../math/color.hpp"
-#include "../worldobj.hpp"
+#include "math/color.hpp"
+#include "worldobj.hpp"
 
 namespace WorldObjsData {
 class SolidColorBackgroundData;

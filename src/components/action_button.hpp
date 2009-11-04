@@ -18,11 +18,11 @@
 #define HEADER_PINGUS_ACTION_BUTTON_HPP
 
 #include <string>
-#include "../font.hpp"
-#include "../pingu_enums.hpp"
-#include "../state_sprite.hpp"
-#include "../gui/component.hpp"
-#include "../gui/rect_component.hpp"
+#include "font.hpp"
+#include "pingu_enums.hpp"
+#include "state_sprite.hpp"
+#include "gui/component.hpp"
+#include "gui/rect_component.hpp"
 
 class Server;
 class GameSession;

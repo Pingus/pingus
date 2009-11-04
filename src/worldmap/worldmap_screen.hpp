@@ -19,9 +19,9 @@
 
 #include <string>
 #include <memory>
-#include "../sprite.hpp"
-#include "../gui/gui_manager.hpp"
-#include "../screen/gui_screen.hpp"
+#include "sprite.hpp"
+#include "gui/gui_manager.hpp"
+#include "screen/gui_screen.hpp"
 
 namespace GUI {
 class SurfaceButton;

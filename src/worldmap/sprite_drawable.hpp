@@ -17,8 +17,8 @@
 #ifndef HEADER_SURFACE_DRAWABLE_HPP
 #define HEADER_SURFACE_DRAWABLE_HPP
 
-#include "../sprite.hpp"
-#include "../math/vector3f.hpp"
+#include "sprite.hpp"
+#include "math/vector3f.hpp"
 #include "worldmap/drawable.hpp"
 
 namespace WorldmapNS {

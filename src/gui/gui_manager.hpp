@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_GUI_GUI_MANAGER_HPP
 
 #include <vector>
-#include "../input/event.hpp"
+#include "input/event.hpp"
 #include "gui/group_component.hpp"
 
 class DrawingContext;

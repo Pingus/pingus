@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_LASER_EXIT_HPP
 #define HEADER_PINGUS_WORLDOBJS_LASER_EXIT_HPP
 
-#include "../worldobj.hpp"
-#include "../sprite.hpp"
+#include "worldobj.hpp"
+#include "sprite.hpp"
 
 namespace WorldObjsData {
 class LaserExitData;

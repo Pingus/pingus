@@ -14,11 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "../display/scene_context.hpp"
-#include "../pingu.hpp"
-#include "../pingu_holder.hpp"
-#include "../world.hpp"
-#include "../resource.hpp"
+#include "display/scene_context.hpp"
+#include "pingu.hpp"
+#include "pingu_holder.hpp"
+#include "world.hpp"
+#include "resource.hpp"
 #include "worldobjs/spike.hpp"
 
 namespace WorldObjs {

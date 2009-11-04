@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "../display/display.hpp"
-#include "../display/scene_context.hpp"
+#include "display/display.hpp"
+#include "display/scene_context.hpp"
 #include "worldobjs/solid_color_background.hpp"
 
 namespace WorldObjs {

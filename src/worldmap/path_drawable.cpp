@@ -15,8 +15,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "../math/color.hpp"
-#include "../display/drawing_context.hpp"
+#include "math/color.hpp"
+#include "display/drawing_context.hpp"
 #include "worldmap/path_drawable.hpp"
 
 namespace WorldmapNS {

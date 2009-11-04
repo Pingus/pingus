@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_HOTSPOT_HPP
 #define HEADER_PINGUS_WORLDOBJS_HOTSPOT_HPP
 
-#include "../worldobj.hpp"
+#include "worldobj.hpp"
 
 namespace WorldObjsData {
 class HotspotData;

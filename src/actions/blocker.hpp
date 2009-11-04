@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_ACTIONS_BLOCKER_HPP
 #define HEADER_PINGUS_ACTIONS_BLOCKER_HPP
 
-#include "../state_sprite.hpp"
-#include "../pingu_action.hpp"
+#include "state_sprite.hpp"
+#include "pingu_action.hpp"
 
 namespace Actions {
 

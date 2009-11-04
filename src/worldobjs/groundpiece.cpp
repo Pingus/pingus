@@ -15,10 +15,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "../world.hpp"
-#include "../ground_map.hpp"
-#include "../collision_map.hpp"
-#include "../resource.hpp"
+#include "world.hpp"
+#include "ground_map.hpp"
+#include "collision_map.hpp"
+#include "resource.hpp"
 #include "worldobjs/groundpiece.hpp"
 
 namespace WorldObjs {

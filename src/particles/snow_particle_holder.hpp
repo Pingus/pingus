@@ -18,9 +18,9 @@
 #define HEADER_PINGUS_PARTICLES_SNOW_PARTICLE_HOLDER_HPP
 
 #include <vector>
-#include "../sprite.hpp"
-#include "../math/vector3f.hpp"
-#include "../worldobj.hpp"
+#include "sprite.hpp"
+#include "math/vector3f.hpp"
+#include "worldobj.hpp"
 
 
 class SceneContext;

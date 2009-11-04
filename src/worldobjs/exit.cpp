@@ -15,14 +15,14 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "../display/scene_context.hpp"
-#include "../collision_map.hpp"
-#include "../world.hpp"
-#include "../globals.hpp"
-#include "../pingu_holder.hpp"
-#include "../pingu.hpp"
-#include "../components/smallmap.hpp"
-#include "../resource.hpp"
+#include "display/scene_context.hpp"
+#include "collision_map.hpp"
+#include "world.hpp"
+#include "globals.hpp"
+#include "pingu_holder.hpp"
+#include "pingu.hpp"
+#include "components/smallmap.hpp"
+#include "resource.hpp"
 #include "util/string_util.hpp"
 #include "worldobjs/exit.hpp"
 

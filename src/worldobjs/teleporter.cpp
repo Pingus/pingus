@@ -15,11 +15,11 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "../display/scene_context.hpp"
-#include "../pingu.hpp"
-#include "../pingu_holder.hpp"
-#include "../world.hpp"
-#include "../resource.hpp"
+#include "display/scene_context.hpp"
+#include "pingu.hpp"
+#include "pingu_holder.hpp"
+#include "world.hpp"
+#include "resource.hpp"
 #include "worldobjs/teleporter_target.hpp"
 #include "worldobjs/teleporter.hpp"
 

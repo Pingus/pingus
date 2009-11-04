@@ -15,7 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <stdlib.h>
-#include "../pingus_error.hpp"
+#include "pingus_error.hpp"
 #include "axis.hpp"
 #include "axis_factory.hpp"
 #include "button.hpp"

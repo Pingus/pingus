@@ -18,18 +18,18 @@
 #include <iostream>
 #include <fstream>
 
-#include "../globals.hpp"
+#include "globals.hpp"
 #include "math/size.hpp"
 #include "util/pathname.hpp"
 #include "display/display.hpp"
 #include "display/framebuffer.hpp"
 #include "screen/screen_manager.hpp"
-#include "../path_manager.hpp"
+#include "path_manager.hpp"
 #include "screen/screen.hpp"
 #include "fps_counter.hpp"
-#include "../display/drawing_context.hpp"
-#include "../input/controller.hpp"
-#include "../input/manager.hpp"
+#include "display/drawing_context.hpp"
+#include "input/controller.hpp"
+#include "input/manager.hpp"
 
 template<class C>
 void write(std::ostream& out, C value)

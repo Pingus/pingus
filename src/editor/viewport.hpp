@@ -18,8 +18,8 @@
 #ifndef HEADER_PINGUS_EDITOR_VIEWPORT_HPP
 #define HEADER_PINGUS_EDITOR_VIEWPORT_HPP
 
-#include "../gui/rect_component.hpp"
-#include "../graphic_context_state.hpp"
+#include "gui/rect_component.hpp"
+#include "graphic_context_state.hpp"
 #include <boost/signal.hpp>
 #include <vector>
 #include <string>

@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_WORLDMAP_LEVEL_DOT_HPP
 #define HEADER_PINGUS_WORLDMAP_LEVEL_DOT_HPP
 
-#include "../sprite.hpp"
-#include "../pingus_level.hpp"
+#include "sprite.hpp"
+#include "pingus_level.hpp"
 #include "worldmap/dot.hpp"
 
 namespace WorldmapNS {

@@ -17,7 +17,7 @@
 #include "math/math.hpp"
 #include "input/manager.hpp"
 #include "input/core_driver.hpp"
-#include "../display/display.hpp"
+#include "display/display.hpp"
 #include "globals.hpp"
 
 namespace Input {

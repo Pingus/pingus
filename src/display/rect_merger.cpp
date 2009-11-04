@@ -18,8 +18,8 @@
 #include <algorithm>
 #include <assert.h>
 #include <iostream>
-#include "../math/vector2i.hpp"
-#include "../math/size.hpp"
+#include "math/vector2i.hpp"
+#include "math/size.hpp"
 #include "display/rect_merger.hpp"
 
 struct Mark {

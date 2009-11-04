@@ -15,12 +15,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "../ground_map.hpp"
-#include "../display/scene_context.hpp"
-#include "../world.hpp"
-#include "../sound/sound.hpp"
-#include "../pingu.hpp"
-#include "../worldobj.hpp"
+#include "ground_map.hpp"
+#include "display/scene_context.hpp"
+#include "world.hpp"
+#include "sound/sound.hpp"
+#include "pingu.hpp"
+#include "worldobj.hpp"
 #include "actions/miner.hpp"
 
 namespace Actions {

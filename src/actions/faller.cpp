@@ -15,14 +15,14 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "math/math.hpp"
-#include "../colliders/pingu_collider.hpp"
-#include "../debug.hpp"
-#include "../globals.hpp"
-#include "../display/scene_context.hpp"
-#include "../movers/linear_mover.hpp"
-#include "../pingu.hpp"
-#include "../world.hpp"
-#include "../worldobj.hpp"
+#include "colliders/pingu_collider.hpp"
+#include "debug.hpp"
+#include "globals.hpp"
+#include "display/scene_context.hpp"
+#include "movers/linear_mover.hpp"
+#include "pingu.hpp"
+#include "world.hpp"
+#include "worldobj.hpp"
 #include "actions/faller.hpp"
 
 namespace Actions {

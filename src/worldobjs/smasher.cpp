@@ -17,14 +17,14 @@
 #include <iostream>
 
 #include "math/math.hpp"
-#include "../collision_map.hpp"
-#include "../display/scene_context.hpp"
-#include "../particles/smoke_particle_holder.hpp"
-#include "../pingu.hpp"
-#include "../pingu_holder.hpp"
-#include "../resource.hpp"
-#include "../sound/sound.hpp"
-#include "../world.hpp"
+#include "collision_map.hpp"
+#include "display/scene_context.hpp"
+#include "particles/smoke_particle_holder.hpp"
+#include "pingu.hpp"
+#include "pingu_holder.hpp"
+#include "resource.hpp"
+#include "sound/sound.hpp"
+#include "world.hpp"
 #include "worldobjs/smasher.hpp"
 
 namespace WorldObjs {

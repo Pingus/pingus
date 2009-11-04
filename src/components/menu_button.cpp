@@ -14,13 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "../globals.hpp"
-#include "../debug.hpp"
-#include "../fonts.hpp"
-#include "../sound/sound.hpp"
-#include "../resource.hpp"
-#include "../gettext.h"
-#include "../pingus_menu.hpp"
+#include "globals.hpp"
+#include "debug.hpp"
+#include "fonts.hpp"
+#include "sound/sound.hpp"
+#include "resource.hpp"
+#include "gettext.h"
+#include "pingus_menu.hpp"
 
 #include "components/menu_button.hpp"
 

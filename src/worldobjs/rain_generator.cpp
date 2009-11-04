@@ -15,10 +15,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "../particles/rain_particle_holder.hpp"
-#include "../sound/sound.hpp"
-#include "../world.hpp"
-#include "../display/scene_context.hpp"
+#include "particles/rain_particle_holder.hpp"
+#include "sound/sound.hpp"
+#include "world.hpp"
+#include "display/scene_context.hpp"
 #include "worldobjs/rain_generator.hpp"
 
 namespace WorldObjs {

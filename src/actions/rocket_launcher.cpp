@@ -14,12 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "../display/scene_context.hpp"
-//#include "../particles/particle_holder.hpp"
-//#include "../particles/explosive_particle.hpp"
-#include "../world.hpp"
-#include "../pingu.hpp"
-#include "../worldobj.hpp"
+#include "display/scene_context.hpp"
+//#include "particles/particle_holder.hpp"
+//#include "particles/explosive_particle.hpp"
+#include "world.hpp"
+#include "pingu.hpp"
+#include "worldobj.hpp"
 #include "actions/rocket_launcher.hpp"
 
 namespace Actions {

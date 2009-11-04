@@ -17,15 +17,15 @@
 #include <assert.h>
 #include <stdio.h>
 
-#include "../display/display.hpp"
-#include "../globals.hpp"
-#include "../resource.hpp"
-#include "../world.hpp"
-#include "../server.hpp"
-#include "../game_session.hpp"
-#include "../game_time.hpp"
+#include "display/display.hpp"
+#include "globals.hpp"
+#include "resource.hpp"
+#include "world.hpp"
+#include "server.hpp"
+#include "game_session.hpp"
+#include "game_time.hpp"
 #include "util/string_util.hpp"
-#include "../fonts.hpp"
+#include "fonts.hpp"
 
 #include "components/time_display.hpp"
 

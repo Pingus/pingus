@@ -17,9 +17,9 @@
 #ifndef HEADER_PINGUS_ACTIONS_BRIDGER_HPP
 #define HEADER_PINGUS_ACTIONS_BRIDGER_HPP
 
-#include "../math/vector3f.hpp"
-#include "../pingu_action.hpp"
-#include "../state_sprite.hpp"
+#include "math/vector3f.hpp"
+#include "pingu_action.hpp"
+#include "state_sprite.hpp"
 
 namespace Actions {
 

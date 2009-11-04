@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_INPUT_BUTTON_HPP
 #define HEADER_PINGUS_INPUT_BUTTON_HPP
 
-#include "../pingus.hpp"
+#include "pingus.hpp"
 #include "controller.hpp"
 
 namespace Input {

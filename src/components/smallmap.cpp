@@ -14,18 +14,18 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "../game_session.hpp"
-#include "../pingu_holder.hpp"
-#include "../display/display.hpp"
-#include "../display/drawing_context.hpp"
-#include "../world.hpp"
-#include "../resource.hpp"
-#include "../server.hpp"
-#include "../smallmap_image.hpp"
-#include "../pingu.hpp"
+#include "game_session.hpp"
+#include "pingu_holder.hpp"
+#include "display/display.hpp"
+#include "display/drawing_context.hpp"
+#include "world.hpp"
+#include "resource.hpp"
+#include "server.hpp"
+#include "smallmap_image.hpp"
+#include "pingu.hpp"
 #include "math/math.hpp"
-#include "../math/vector3f.hpp"
-#include "../globals.hpp"
+#include "math/vector3f.hpp"
+#include "globals.hpp"
 #include "components/playfield.hpp"
 #include "components/smallmap.hpp"
 
