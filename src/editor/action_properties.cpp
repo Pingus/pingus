@@ -33,10 +33,12 @@ namespace Editor {
  * [active] [Actionname] [count]
  *
  */
-ActionProperties::ActionProperties(EditorScreen* editor_, const Rect& rect_)
-  : GroupComponent(rect_),
-    editor(editor_),
-    y_pos(0)
+ActionProperties::ActionProperties(EditorScreen* editor_, const Rect& rect_) :
+  GroupComponent(rect_),
+  editor(editor_),
+  level(),
+  y_pos(0),
+  action_comps()
 {
   add_action(Actions::BASHER);
   add_action(Actions::BLOCKER);

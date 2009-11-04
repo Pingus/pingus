@@ -33,6 +33,8 @@ Entrance::Entrance(const FileReader& reader) :
   owner_id(0),
   type("generic"),
   smallmap_symbol("core/misc/smallmap_entrance"),
+  surface(),
+  last_release(),
   last_direction(0)
 {
   reader.read_string("type",         type);

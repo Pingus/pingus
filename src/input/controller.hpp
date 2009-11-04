@@ -47,6 +47,7 @@ private:
   std::vector<ControllerKeyboard*> keyboards;
   
   std::vector<Event> events;
+
 public:
   void clear_events();
   void poll_events(std::vector<Event>& events);
@@ -73,6 +74,7 @@ public:
   void add_keyboard(int id, ControllerKeyboard* keyboard);
   
   void update(float delta);
+
 private:
   Controller(const Controller&);
   Controller& operator= (const Controller&);

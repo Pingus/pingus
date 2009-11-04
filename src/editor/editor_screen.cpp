@@ -47,12 +47,19 @@
 namespace Editor {
 
 // Default constructor
-EditorScreen::EditorScreen()
-  : plf(new EditorLevel()),
-    panel(0),
-    viewport(0),
-    object_selector(0),
-    show_help(false)
+EditorScreen::EditorScreen() :
+  plf(new EditorLevel()),
+  level_pathname(),
+  panel(0),
+  viewport(0),
+  object_selector(0),
+  minimap(),
+  object_properties(),
+  action_properties(),
+  level_properties(),
+  file_load_dialog(),
+  file_save_dialog(),
+  show_help(false)
 {
   // Create the viewport for the images and data
   viewport = new Viewport(this, Rect(0, 38,
@@ -134,9 +141,9 @@ EditorScreen::save(const Pathname& file)
   level_pathname = file;
   std::cout << "Save to: " << file.str() << std::endl;
   if (!plf->save_level(level_pathname.get_sys_path()))
-    {
-      // FIXME: save failed, prompt user
-    }
+  {
+    // FIXME: save failed, prompt user
+  }
 }
 
 // Load a new level
@@ -160,86 +167,86 @@ EditorScreen::draw(DrawingContext& gc)
   gui_manager->draw(gc);
   
   if (show_help)
-    {
-      Size size_(600, 400);
-      gc.draw_fillrect(Rect(gc.get_width()/2  - size_.width/2 - 2,
-                            gc.get_height()/2 - size_.height/2 - 2,
-                            gc.get_width()/2  + size_.width/2 + 2,
-                            gc.get_height()/2 + size_.height/2 + 2),
-                       Color(0,0,0));
-      gc.draw_fillrect(Rect(gc.get_width()/2  - size_.width/2, 
-                            gc.get_height()/2 - size_.height/2,
-                            gc.get_width()/2  + size_.width/2, 
-                            gc.get_height()/2 + size_.height/2),
-                       Color(255,255,255));
+  {
+    Size size_(600, 400);
+    gc.draw_fillrect(Rect(gc.get_width()/2  - size_.width/2 - 2,
+                          gc.get_height()/2 - size_.height/2 - 2,
+                          gc.get_width()/2  + size_.width/2 + 2,
+                          gc.get_height()/2 + size_.height/2 + 2),
+                     Color(0,0,0));
+    gc.draw_fillrect(Rect(gc.get_width()/2  - size_.width/2, 
+                          gc.get_height()/2 - size_.height/2,
+                          gc.get_width()/2  + size_.width/2, 
+                          gc.get_height()/2 + size_.height/2),
+                     Color(255,255,255));
       
-      gc.print_center(Fonts::verdana11,
-                      Vector2i(gc.get_width()/2,
-                               gc.get_height()/2 - size_.height/2 + 12),
-                      "Editor Help");
+    gc.print_center(Fonts::verdana11,
+                    Vector2i(gc.get_width()/2,
+                             gc.get_height()/2 - size_.height/2 + 12),
+                    "Editor Help");
 
-      int x = gc.get_width()/2 - size_.width/2 + 12;
-      int y = gc.get_height()/2 - size_.height/2 + 36;
-      gc.print_center(Fonts::verdana11, Vector2i(x + 50, y),
-                      "A\n"
-                      "Shift+A\n"
-                      "], w\n"
-                      "[, s\n"
-                      "Shift+]\n"
-                      "Shift+[\n"
-                      "R\n"
-                      "Shift+R\n"
-                      );
+    int x = gc.get_width()/2 - size_.width/2 + 12;
+    int y = gc.get_height()/2 - size_.height/2 + 36;
+    gc.print_center(Fonts::verdana11, Vector2i(x + 50, y),
+                    "A\n"
+                    "Shift+A\n"
+                    "], w\n"
+                    "[, s\n"
+                    "Shift+]\n"
+                    "Shift+[\n"
+                    "R\n"
+                    "Shift+R\n"
+      );
 
-      gc.print_left(Fonts::verdana11, Vector2i(x+100, y),
-                    _("Select all\n"
-                      "Clear Selection\n"
-                      "Raise objects\n"
-                      "Lower objects\n"
-                      "Lower objects to bottom\n"
-                      "Raise objects to top\n"
-                      "Rotate 90 degree\n"
-                      "Rotate 270 degree\n"));
+    gc.print_left(Fonts::verdana11, Vector2i(x+100, y),
+                  _("Select all\n"
+                    "Clear Selection\n"
+                    "Raise objects\n"
+                    "Lower objects\n"
+                    "Lower objects to bottom\n"
+                    "Raise objects to top\n"
+                    "Rotate 90 degree\n"
+                    "Rotate 270 degree\n"));
 
-      x = int(gc.get_width()/2 + 12);
-      y = int(gc.get_height()/2) - size_.height/2 + 36;
-      gc.print_center(Fonts::verdana11, Vector2i(x + 50, y),
-                      "F\n"
-                      "Shift+F\n"
-                      "Delete\n"
-                      "i\n"
-                      "k\n"
-                      "j\n"
-                      "l\n"
-                      );
+    x = int(gc.get_width()/2 + 12);
+    y = int(gc.get_height()/2) - size_.height/2 + 36;
+    gc.print_center(Fonts::verdana11, Vector2i(x + 50, y),
+                    "F\n"
+                    "Shift+F\n"
+                    "Delete\n"
+                    "i\n"
+                    "k\n"
+                    "j\n"
+                    "l\n"
+      );
 
-      gc.print_left(Fonts::verdana11, Vector2i(x + 100, y),
-                    _("Flip object horizontaly\n"
-                      "Flip object vertically\n"
-                      "Delete all marked objects\n"
-                      "Move objects up\n"
-                      "Move objects down\n"
-                      "Move objects left\n"
-                      "Move objects right\n")
-                    );
+    gc.print_left(Fonts::verdana11, Vector2i(x + 100, y),
+                  _("Flip object horizontaly\n"
+                    "Flip object vertically\n"
+                    "Delete all marked objects\n"
+                    "Move objects up\n"
+                    "Move objects down\n"
+                    "Move objects left\n"
+                    "Move objects right\n")
+      );
 
-      gc.print_left(Fonts::verdana11,
-                    Vector2i(gc.get_width()/2 - size_.width/2 + 12,
-                             gc.get_height()/2 - 10),
-                    _("You should name your level files systematically, i.e. by their theme, "
-                      "their number and your nickname:\n\n"
-                      "     <levelname><number>-<creator>.pingus\n\n"
-                      "So if you create a your second level with a stone theme, call it: "
-                      "stone2-yourname.pingus\n\n"
-                      "When you have created a level and want to have it included "
-                      "in the game mail it to:\n\n"
-                      "     pingus-devel@nongnu.org\n\n"
-                      "Only levels published under the GPL are allowed into the game. The editor "
-                      "automatically inserts a reference \n"
-                      "to the GPL, if you want to have your level under a different license, you "
-                      "have to change that reference.\n"
-                      ));
-    }
+    gc.print_left(Fonts::verdana11,
+                  Vector2i(gc.get_width()/2 - size_.width/2 + 12,
+                           gc.get_height()/2 - 10),
+                  _("You should name your level files systematically, i.e. by their theme, "
+                    "their number and your nickname:\n\n"
+                    "     <levelname><number>-<creator>.pingus\n\n"
+                    "So if you create a your second level with a stone theme, call it: "
+                    "stone2-yourname.pingus\n\n"
+                    "When you have created a level and want to have it included "
+                    "in the game mail it to:\n\n"
+                    "     pingus-devel@nongnu.org\n\n"
+                    "Only levels published under the GPL are allowed into the game. The editor "
+                    "automatically inserts a reference \n"
+                    "to the GPL, if you want to have your level under a different license, you "
+                    "have to change that reference.\n"
+                    ));
+  }
 }
 
 void
@@ -248,17 +255,17 @@ EditorScreen::update(const Input::Event& event)
   GUIScreen::update(event);
 
   switch (event.type)
-    {
-      case Input::SCROLLER_EVENT_TYPE:
-        viewport->set_scroll_pos(viewport->get_scroll_pos() -
-                                 Vector2i(static_cast<int>(event.scroll.x_delta),
-                                          static_cast<int>(event.scroll.y_delta)));
-        break;
+  {
+    case Input::SCROLLER_EVENT_TYPE:
+      viewport->set_scroll_pos(viewport->get_scroll_pos() -
+                               Vector2i(static_cast<int>(event.scroll.x_delta),
+                                        static_cast<int>(event.scroll.y_delta)));
+      break;
 
-      default:
-        // other events are for most part handled by the GUIScreen/GUIManager
-        break;
-    }
+    default:
+      // other events are for most part handled by the GUIScreen/GUIManager
+      break;
+  }
 }
 
 void
@@ -298,13 +305,13 @@ void
 EditorScreen::level_save()
 {
   if (level_pathname.empty())
-    {
-      level_save_as();
-    }
+  {
+    level_save_as();
+  }
   else
-    {
-      save(level_pathname); 
-    }
+  {
+    save(level_pathname); 
+  }
 }
 
 void 
@@ -321,10 +328,10 @@ EditorScreen::level_play()
 {
   Pathname tmp(System::get_userdir() + "backup/editortmpfile.pingus", Pathname::SYSTEM_PATH);
   if (!plf->save_level(tmp.get_sys_path()))
-    {
-      // FIXME: save failed, prompt user
-      return;
-    }
+  {
+    // FIXME: save failed, prompt user
+    return;
+  }
   PingusLevel level(tmp);
   ScreenManager::instance()->push_screen(new GameSession(level, false));
 }
@@ -437,28 +444,28 @@ void
 EditorScreen::toggle_action_properties()
 {
   if (action_properties->is_visible())
-    {
-      action_properties->hide();
-    }
+  {
+    action_properties->hide();
+  }
   else
-    {
-      action_properties->show();
-      level_properties->hide();
-    }
+  {
+    action_properties->show();
+    level_properties->hide();
+  }
 }
 
 void
 EditorScreen::toggle_level_properties()
 {
   if (level_properties->is_visible())
-    {
-      level_properties->hide();
-    }
+  {
+    level_properties->hide();
+  }
   else
-    {
-      level_properties->show();
-      action_properties->hide();
-    }
+  {
+    level_properties->show();
+    action_properties->hide();
+  }
 }
 
 void
@@ -471,7 +478,7 @@ void
 EditorScreen::update_layout()
 {
   Size size_(gui_manager->get_rect().get_width(),
-            gui_manager->get_rect().get_height());
+             gui_manager->get_rect().get_height());
 
   minimap->set_rect(Rect(Vector2i(size_.width-244, size_.height-183), Size(244, 183)));
 
@@ -481,15 +488,15 @@ EditorScreen::update_layout()
     object_selector->set_rect(Rect(size_.width-244, 38, size_.width, size_.height));
 
   if (object_selector->is_visible())
-    {
-      viewport->set_rect(Rect(0, 38, size_.width - 244, size_.height));
-      level_properties->set_rect(Rect(Vector2i(0,38), Size(size_.width-244, 302))); 
-    }
+  {
+    viewport->set_rect(Rect(0, 38, size_.width - 244, size_.height));
+    level_properties->set_rect(Rect(Vector2i(0,38), Size(size_.width-244, 302))); 
+  }
   else
-    {
-      viewport->set_rect(Rect(0, 38, size_.width, size_.height));
-      level_properties->set_rect(Rect(Vector2i(0,38), Size(size_.width, 302))); 
-    }
+  {
+    viewport->set_rect(Rect(0, 38, size_.width, size_.height));
+    level_properties->set_rect(Rect(Vector2i(0,38), Size(size_.width, 302))); 
+  }
 
   action_properties->set_rect(Rect(Vector2i(0, 38), Size(150, 240)));
 

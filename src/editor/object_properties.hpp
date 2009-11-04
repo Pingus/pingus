@@ -20,7 +20,7 @@
 #include "gui/group_component.hpp"
 
 namespace Editor {
-
+
 class Label;
 class EditorScreen;
 class Combobox;
@@ -112,7 +112,7 @@ public:
   void finalize();
   void place(GUI::RectComponent* comp);
   void place(GUI::RectComponent* comp1, GUI::RectComponent* comp2);
-
+
   void on_gptype_change(const ComboItem& item);
   void on_stretch_x_change(bool t);
   void on_stretch_y_change(bool t);
@@ -140,7 +140,10 @@ public:
   void on_flip_vertical();
   void on_rotate_90();
   void on_rotate_270();
-
+
+private:
+  ObjectProperties(const ObjectProperties&);
+  ObjectProperties & operator=(const ObjectProperties&);
 };
 
 } // namespace Editor

@@ -29,8 +29,13 @@
 
 namespace WorldmapNS {
 
-PathGraph::PathGraph(Worldmap* arg_worldmap, FileReader &reader)
-  : worldmap(arg_worldmap)
+PathGraph::PathGraph(Worldmap* arg_worldmap, FileReader &reader) :
+  worldmap(arg_worldmap),
+  graph(),
+  dots(),
+  pathfinder_cache(),
+  node_lookup(),
+  edge_lookup()
 {
   parse_nodes(reader.read_section("nodes"));
   parse_edges(reader.read_section("edges"));
@@ -58,28 +63,28 @@ PathGraph::parse_nodes(FileReader reader)
 
   for(std::vector<FileReader>::const_iterator i = childs.begin(); 
       i != childs.end(); ++i)
+  {
+    Dot* dot = DotFactory::create(*i);
+    if (dot)
     {
-      Dot* dot = DotFactory::create(*i);
-      if (dot)
-        {
-          // add the dot to the pathfinding
-          NodeId id = graph.add_node(dot);
+      // add the dot to the pathfinding
+      NodeId id = graph.add_node(dot);
 
-          //std::cout << "Adding to lookup table: " << dot->get_name() << std::endl;
-          node_lookup[dot->get_name()] = id;
+      //std::cout << "Adding to lookup table: " << dot->get_name() << std::endl;
+      node_lookup[dot->get_name()] = id;
 
-          // add the dot to the list of drawables
-          if (worldmap)
-            worldmap->add_drawable(dot);
+      // add the dot to the list of drawables
+      if (worldmap)
+        worldmap->add_drawable(dot);
 
-          // FIXME: should be use this for freeing the stuff?
-          dots.push_back(dot);
-        }
-      else
-        {
-          std::cout << "PathGraph: Couldn't create node" << std::endl;
-        }
+      // FIXME: should be use this for freeing the stuff?
+      dots.push_back(dot);
     }
+    else
+    {
+      std::cout << "PathGraph: Couldn't create node" << std::endl;
+    }
+  }
 }
 
 void
@@ -89,70 +94,70 @@ PathGraph::parse_edges(FileReader reader)
 
   for(std::vector<FileReader>::const_iterator i = childs.begin(); 
       i != childs.end(); ++i)
+  {
+    if (i->get_name() == "edge")
     {
-      if (i->get_name() == "edge")
+      std::string name;
+      std::string source;
+      std::string destination;
+
+      i->read_string("name",   name);
+      i->read_string("source", source);
+      i->read_string("destination", destination);
+          
+      // FIXME: add path-data parsing here
+      Path* path = new Path();
+          
+      const std::vector<FileReader>& childs2 = reader.read_section("positions").get_sections();
+          
+      for(std::vector<FileReader>::const_iterator j = childs2.begin(); 
+          j != childs2.end(); ++j)
+      {
+        if (j->get_name() == "position")
         {
-          std::string name;
-          std::string source;
-          std::string destination;
-
-          i->read_string("name",   name);
-          i->read_string("source", source);
-          i->read_string("destination", destination);
-          
-          // FIXME: add path-data parsing here
-          Path* path = new Path();
-          
-          const std::vector<FileReader>& childs2 = reader.read_section("positions").get_sections();
-          
-          for(std::vector<FileReader>::const_iterator j = childs2.begin(); 
-              j != childs2.end(); ++j)
-            {
-              if (j->get_name() == "position")
-                {
-                  Vector3f pos;
-                  j->read_float("x", pos.x);
-                  j->read_float("y", pos.y);
-                  j->read_float("z", pos.z);
-                  path->push_back(pos);
-                }
-            }
-
-          Path full_path;
-          full_path.push_back(graph.resolve_node(lookup_node(source)).data->get_pos());
-          full_path.insert(*path);
-          full_path.push_back(graph.resolve_node(lookup_node(destination)).data->get_pos());
-
-          // FIXME: merge this together with the Pingus::distance() stuff in a seperate Path class
-          float cost = full_path.length();
-
-          // FIXME: Memory leak
-          if (worldmap && pingus_debug_flags & PINGUS_DEBUG_WORLDMAP)
-            worldmap->add_drawable(new PathDrawable(full_path));
-
-          // FIXME: No error checking,
-          EdgeId id1 = graph.add_edge(path, // FIXME: Memory leak!
-                                      lookup_node(destination), lookup_node(source),
-                                      cost /* costs */);
-
-          Path* path2 = new Path();
-          path2->reverse_insert(*path);
-          //EdgeId id2 =
-          graph.add_edge(path2, // FIXME: Memory leak!
-                         lookup_node(source), lookup_node(destination),
-                         cost /* costs */);
-
-          //std::cout << "Cost: " << cost << std::endl;
-
-          // FIXME: edge lookup is flawed, since we have different edges in both directions
-
-          edge_lookup[name] = id1;
+          Vector3f pos;
+          j->read_float("x", pos.x);
+          j->read_float("y", pos.y);
+          j->read_float("z", pos.z);
+          path->push_back(pos);
         }
-      else
-        {
-          PingusError::raise("PathGraph: unhandled: ");
-        }
+      }
+
+      Path full_path;
+      full_path.push_back(graph.resolve_node(lookup_node(source)).data->get_pos());
+      full_path.insert(*path);
+      full_path.push_back(graph.resolve_node(lookup_node(destination)).data->get_pos());
+
+      // FIXME: merge this together with the Pingus::distance() stuff in a seperate Path class
+      float cost = full_path.length();
+
+      // FIXME: Memory leak
+      if (worldmap && pingus_debug_flags & PINGUS_DEBUG_WORLDMAP)
+        worldmap->add_drawable(new PathDrawable(full_path));
+
+      // FIXME: No error checking,
+      EdgeId id1 = graph.add_edge(path, // FIXME: Memory leak!
+                                  lookup_node(destination), lookup_node(source),
+                                  cost /* costs */);
+
+      Path* path2 = new Path();
+      path2->reverse_insert(*path);
+      //EdgeId id2 =
+      graph.add_edge(path2, // FIXME: Memory leak!
+                     lookup_node(source), lookup_node(destination),
+                     cost /* costs */);
+
+      //std::cout << "Cost: " << cost << std::endl;
+
+      // FIXME: edge lookup is flawed, since we have different edges in both directions
+
+      edge_lookup[name] = id1;
     }
+    else
+    {
+      PingusError::raise("PathGraph: unhandled: ");
+    }
+  }
 }
 
 PathfinderResult
@@ -161,10 +166,10 @@ PathGraph::get_path(NodeId start_id, NodeId end_id)
   Pathfinder<Dot*,Path*>*& pfinder = pathfinder_cache[start_id];
 
   if (!pfinder)
-    {
-      pfinder = new Pathfinder<Dot*, Path*>(graph, start_id);
-      pathfinder_cache[start_id] = pfinder;
-    }
+  {
+    pfinder = new Pathfinder<Dot*, Path*>(graph, start_id);
+    pathfinder_cache[start_id] = pfinder;
+  }
 
   return pfinder->get_result(end_id);
 }
@@ -174,14 +179,14 @@ PathGraph::lookup_edge(const std::string& name)
 {
   std::map<std::string, EdgeId>::iterator i = edge_lookup.find(name);
   if (i == edge_lookup.end())
-    {
-      std::cout << "Couldn't find EdgeId for: " << name << std::endl;
-      return NoEdge;
-    }
+  {
+    std::cout << "Couldn't find EdgeId for: " << name << std::endl;
+    return NoEdge;
+  }
   else
-    {
-      return i->second;
-    }
+  {
+    return i->second;
+  }
 }
 
 NodeId
@@ -189,14 +194,14 @@ PathGraph::lookup_node(const std::string& name)
 {
   std::map<std::string, NodeId>::iterator i = node_lookup.find(name);
   if (i == node_lookup.end())
-    {
-      std::cout << "Couldn't find NodeId for: " << name << std::endl;
-      return NoNode;
-    }
+  {
+    std::cout << "Couldn't find NodeId for: " << name << std::endl;
+    return NoNode;
+  }
   else
-    {
-      return i->second;
-    }
+  {
+    return i->second;
+  }
 }
 
 std::string
@@ -204,12 +209,12 @@ PathGraph::lookup_node(EdgeId id)
 {
   for (std::map<std::string, NodeId>::iterator i = node_lookup.begin();
        i != node_lookup.end(); ++i)
+  {
+    if (i->second == id)
     {
-      if (i->second == id)
-        {
-          return i->first;
-        }
+      return i->first;
     }
+  }
   std::cout << "PathGraph: Couldn't find id: " << id << std::endl;
   return "error_node";
 }
@@ -219,12 +224,12 @@ PathGraph::lookup_edge(NodeId id)
 {
   for (std::map<std::string, EdgeId>::iterator i = node_lookup.begin();
        i != node_lookup.end(); ++i)
+  {
+    if (i->second == id)
     {
-      if (i->second == id)
-        {
-          return i->first;
-        }
+      return i->first;
     }
+  }
   std::cout << "PathGraph: Couldn't find id: " << id << std::endl;
   return "error_node";
 }
@@ -239,13 +244,13 @@ Dot*
 PathGraph::get_dot(float x_pos, float y_pos)
 {
   for(std::vector<Dot*>::iterator i = dots.begin(); i != dots.end(); ++i)
-    {
-      float x = x_pos - (*i)->get_pos().x;
-      float y = y_pos - (*i)->get_pos().y;
+  {
+    float x = x_pos - (*i)->get_pos().x;
+    float y = y_pos - (*i)->get_pos().y;
 
-      if (Math::sqrt(x*x + y*y) < 30.0f)
-        return *i;
-    }
+    if (Math::sqrt(x*x + y*y) < 30.0f)
+      return *i;
+  }
   return 0;
 }
 

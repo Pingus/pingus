@@ -59,6 +59,7 @@ public:
 
   void on_checkbox_change(bool t, Actions::ActionName id);
   void on_inputbox_change(const std::string& str, Actions::ActionName id);
+
 private:
   ActionProperties (const ActionProperties&);
   ActionProperties& operator= (const ActionProperties&);

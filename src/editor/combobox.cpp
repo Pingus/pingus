@@ -34,7 +34,8 @@ Combobox::Combobox(const Rect& rect_) :
   current_item(-1),
   hover_item(),
   drop_down(false),
-  list_offset()
+  list_offset(),
+  on_select()
 {
 }
 

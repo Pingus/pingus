@@ -28,6 +28,12 @@ struct InputEventDefinition
   EventType   type;
   int         id;
   std::string name;
+
+  InputEventDefinition() :
+    type(),
+    id(),
+    name()
+  {}
 };
 
 class ControllerDescription

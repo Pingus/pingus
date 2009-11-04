@@ -36,13 +36,14 @@
 
 namespace WorldmapNS {
 
-LevelDot::LevelDot(FileReader reader)
-  : Dot(reader.read_section("dot")),
-    green_dot_sur("core/worldmap/dot_green"),
-    red_dot_sur("core/worldmap/dot_red"),
-    inaccessible_dot_sur("core/worldmap/dot_invalid"),
-    highlight_green_dot_sur("core/worldmap/dot_green_hl"),
-    highlight_red_dot_sur("core/worldmap/dot_red_hl")
+LevelDot::LevelDot(FileReader reader) :
+  Dot(reader.read_section("dot")),
+  green_dot_sur("core/worldmap/dot_green"),
+  red_dot_sur("core/worldmap/dot_red"),
+  inaccessible_dot_sur("core/worldmap/dot_invalid"),
+  highlight_green_dot_sur("core/worldmap/dot_green_hl"),
+  highlight_red_dot_sur("core/worldmap/dot_red_hl"),
+  plf()
 {
   std::string resname;
   reader.read_string("levelname", resname); 
@@ -68,26 +69,26 @@ LevelDot::draw(DrawingContext& gc)
   if (savegame
       && (savegame->get_status() == Savegame::FINISHED
           || savegame->get_status() == Savegame::ACCESSIBLE))
-    {
-      if (savegame->get_status() == Savegame::FINISHED)
-        if (highlight)
-          {
-            gc.draw (highlight_green_dot_sur, pos);
-          }
-        else
-          {
-            gc.draw (green_dot_sur, pos);
-          }
+  {
+    if (savegame->get_status() == Savegame::FINISHED)
+      if (highlight)
+      {
+        gc.draw (highlight_green_dot_sur, pos);
+      }
       else
-        if (highlight)
-          gc.draw (highlight_red_dot_sur, pos);
-        else
-          gc.draw (red_dot_sur, pos);
-    }
+      {
+        gc.draw (green_dot_sur, pos);
+      }
+    else
+      if (highlight)
+        gc.draw (highlight_red_dot_sur, pos);
+      else
+        gc.draw (red_dot_sur, pos);
+  }
   else
-    {
-      gc.draw (inaccessible_dot_sur, pos);
-    }
+  {
+    gc.draw (inaccessible_dot_sur, pos);
+  }
 }
 
 void
@@ -130,43 +131,43 @@ LevelDot::draw_hover(DrawingContext& gc)
   int pos_correction = 0;
 
   if (accessible())
-    {
-      int length = Fonts::pingus_small.bounding_rect(0, 0, _(get_plf().get_levelname())).get_width() / 2;
-      int realpos = gc.world_to_screen(Vector2i(static_cast<int>(pos.x), static_cast<int>(pos.y))).x;
-      if (realpos - length < 0)
-        pos_correction = realpos - length;
-      else if (realpos + length > gc.get_width())
-        pos_correction = realpos + length - static_cast<int>(gc.get_width());
+  {
+    int length = Fonts::pingus_small.bounding_rect(0, 0, _(get_plf().get_levelname())).get_width() / 2;
+    int realpos = gc.world_to_screen(Vector2i(static_cast<int>(pos.x), static_cast<int>(pos.y))).x;
+    if (realpos - length < 0)
+      pos_correction = realpos - length;
+    else if (realpos + length > gc.get_width())
+      pos_correction = realpos + length - static_cast<int>(gc.get_width());
       
-      gc.print_center(Fonts::pingus_small,
-                      Vector2i((int)pos.x - pos_correction,
-                               (int)pos.y - 44),
-                      _(get_plf().get_levelname()), 
-                      10000);
-    }
+    gc.print_center(Fonts::pingus_small,
+                    Vector2i((int)pos.x - pos_correction,
+                             (int)pos.y - 44),
+                    _(get_plf().get_levelname()), 
+                    10000);
+  }
   else
-    {
-      int length  = Fonts::pingus_small.bounding_rect(0, 0, _("locked")).get_width() / 2;
-      int realpos = gc.world_to_screen(Vector2i(static_cast<int>(pos.x), static_cast<int>(pos.y))).x;
-      if (realpos - length < 0)
-        pos_correction = realpos - length;
-      else if (realpos + length > gc.get_width())
-        pos_correction = realpos + length - static_cast<int>(gc.get_width());
+  {
+    int length  = Fonts::pingus_small.bounding_rect(0, 0, _("locked")).get_width() / 2;
+    int realpos = gc.world_to_screen(Vector2i(static_cast<int>(pos.x), static_cast<int>(pos.y))).x;
+    if (realpos - length < 0)
+      pos_correction = realpos - length;
+    else if (realpos + length > gc.get_width())
+      pos_correction = realpos + length - static_cast<int>(gc.get_width());
         
-      gc.print_center(Fonts::pingus_small,
-                      Vector2i((int)pos.x - pos_correction,
-                               (int)pos.y - 30),
-                      _("locked"), 
-                      10000);
-    }
+    gc.print_center(Fonts::pingus_small,
+                    Vector2i((int)pos.x - pos_correction,
+                             (int)pos.y - 30),
+                    _("locked"), 
+                    10000);
+  }
 
   if (maintainer_mode)
-    {
-      gc.print_center(Fonts::pingus_small,
-                      Vector2i((int)pos.x, (int)pos.y - 56),
-                      get_plf().get_resname(), 
-                      10000);
-    }
+  {
+    gc.print_center(Fonts::pingus_small,
+                    Vector2i((int)pos.x, (int)pos.y - 56),
+                    get_plf().get_resname(), 
+                    10000);
+  }
 }
 
 void
@@ -174,16 +175,16 @@ LevelDot::unlock()
 {
   Savegame* savegame = SavegameManager::instance()->get(plf.get_resname());
   if (savegame == 0 || savegame->get_status() == Savegame::NONE)
-    {
-      Savegame savegame_(plf.get_resname(),
-                        Savegame::ACCESSIBLE,
-                        0,
-                        0);
-      SavegameManager::instance()->store(savegame_);
-    }
+  {
+    Savegame savegame_(plf.get_resname(),
+                       Savegame::ACCESSIBLE,
+                       0,
+                       0);
+    SavegameManager::instance()->store(savegame_);
+  }
   else
-    {
-    }
+  {
+  }
 }
 
 } // namespace WorldmapNS

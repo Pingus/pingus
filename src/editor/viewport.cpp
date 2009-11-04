@@ -31,15 +31,22 @@
 namespace Editor {
 
 // Constructor
-Viewport::Viewport(EditorScreen* e, const Rect& rect_) 
-  : RectComponent(rect_),
-    state(rect.get_width(), rect.get_height()),
-    drawing_context(new DrawingContext(rect)),
-    editor(e),
-    autoscroll(false),
-    highlighted_area(0,0,0,0),
-    snap_to(false),
-    current_action(NOTHING)
+Viewport::Viewport(EditorScreen* e, const Rect& rect_)  :
+  RectComponent(rect_),
+  state(rect.get_width(), rect.get_height()),
+  drawing_context(new DrawingContext(rect)),
+  editor(e),
+  autoscroll(false),
+  mouse_world_pos(),
+  mouse_screen_pos(),
+  drag_world_pos(),
+  drag_screen_pos(),
+  selected_objs(),
+  highlighted_area(0,0,0,0),
+  context_menu(),
+  snap_to(false),
+  current_action(NOTHING),
+  selection_changed()
 {
 }
 

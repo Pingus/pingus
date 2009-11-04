@@ -16,12 +16,13 @@
 
 #include "display/framebuffer_surface.hpp"
 
-FramebufferSurface::FramebufferSurface()
+FramebufferSurface::FramebufferSurface() :
+  impl()
 {
 }
 
-FramebufferSurface::FramebufferSurface(FramebufferSurfaceImpl* impl_)
-  : impl(impl_) 
+FramebufferSurface::FramebufferSurface(FramebufferSurfaceImpl* impl_) :
+  impl(impl_) 
 {
 }
 

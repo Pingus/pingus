@@ -18,10 +18,11 @@
 
 namespace Editor {
 
-ObjectSelectorSet::ObjectSelectorSet(ObjectSelectorList* list_, int thumb_w, int thumb_h)
-  : list(list_),
-    thumb_size(thumb_w, thumb_h),
-    offset(0)
+ObjectSelectorSet::ObjectSelectorSet(ObjectSelectorList* list_, int thumb_w, int thumb_h) :
+  list(list_),
+  thumb_size(thumb_w, thumb_h),
+  objects(),
+  offset(0)
 {
 }
 

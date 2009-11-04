@@ -179,9 +179,11 @@ DrawingContext::DrawingContext(const Rect& rect_, bool clip) :
   translate_stack.push_back(Vector2i(0, 0));
 }
 
-DrawingContext::DrawingContext()
-  : rect(0, 0, Display::get_width(), Display::get_height()),
-    do_clipping(false)
+DrawingContext::DrawingContext() :
+  drawingrequests(),
+  translate_stack(),
+  rect(0, 0, Display::get_width(), Display::get_height()),
+  do_clipping(false)
 {
   translate_stack.push_back(Vector2i(0, 0));
 }

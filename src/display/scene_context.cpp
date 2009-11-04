@@ -42,6 +42,7 @@ public:
     color(rect),
     light(rect),
     highlight(rect),
+    cliprect(),
     use_cliprect(false)
   {
   }

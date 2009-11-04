@@ -28,7 +28,13 @@ Controller::current()
   return current_;
 }
 
-Controller::Controller(const ControllerDescription& desc)
+Controller::Controller(const ControllerDescription& desc) :
+  buttons(),
+  axes(),
+  pointers(),
+  scrollers(),
+  keyboards(),
+  events()
 {
   current_ = this; 
 

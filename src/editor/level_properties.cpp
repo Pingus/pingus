@@ -37,10 +37,21 @@ Playable (unneeded)
 
 namespace Editor {
 
-LevelProperties::LevelProperties(EditorScreen* editor_, const Rect& rect_)
-  : GroupComponent(rect_),
-    editor(editor_),
-    level(0)
+LevelProperties::LevelProperties(EditorScreen* editor_, const Rect& rect_) :
+  GroupComponent(rect_),
+  editor(editor_),
+  level(0),
+  author(),
+  levelname(),
+  description(),
+  number_of_pingus(),
+  number_to_save(),
+  time(),
+  width(),
+  height(),
+  difficulty(),
+  comment(),
+  music()
 {
   int w = rect.get_width() - 120;
   add(new Label   (Rect(Vector2i( 10,  10), Size( 80, 20)), "Author:"));
@@ -158,13 +169,13 @@ LevelProperties::on_number_to_save_change(const std::string& str)
 {
   int num = 0;
   if (StringUtil::from_string(str, num))
-    {
-      level->set_number_to_save(num);
-    }
+  {
+    level->set_number_to_save(num);
+  }
   else
-    {
-      std::cout << "LevelProperties::on_number_to_save_change: '" << str << "' not an integer" << std::endl;
-    }
+  {
+    std::cout << "LevelProperties::on_number_to_save_change: '" << str << "' not an integer" << std::endl;
+  }
   
 }
 
@@ -173,13 +184,13 @@ LevelProperties::on_number_of_pingus_change(const std::string& str)
 {
   int num = 0;
   if (StringUtil::from_string(str, num))
-    {
-      level->set_number_of_pingus(num);
-    }
+  {
+    level->set_number_of_pingus(num);
+  }
   else
-    {
-      std::cout << "LevelProperties::on_number_of_pingus_change: '" << str << "' not an integer" << std::endl;
-    }
+  {
+    std::cout << "LevelProperties::on_number_of_pingus_change: '" << str << "' not an integer" << std::endl;
+  }
 }
 
 void

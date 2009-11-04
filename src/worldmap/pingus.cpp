@@ -26,11 +26,20 @@
 
 namespace WorldmapNS {
 
-Pingus::Pingus (PathGraph* arg_path)
-  : Drawable("pingus"),
-    path(arg_path),
-    sprite_standing("core/worldmap/pingus_standing"),
-    arrow("core/worldmap/arrow")
+Pingus::Pingus (PathGraph* arg_path) :
+  Drawable("pingus"),
+  path(arg_path),
+  sprite_standing("core/worldmap/pingus_standing"),
+  arrow("core/worldmap/arrow"),
+  current_node(),
+  source_node(),
+  target_node(),
+  final_target_node(),
+  node_path(),
+  edge_path(),
+  edge_path_position(),
+  pos(),
+  last_pos()
 {
   sprite.load(Direction::LEFT,  Sprite("core/worldmap/pingus/left"));
   sprite.load(Direction::RIGHT, Sprite("core/worldmap/pingus/right"));
@@ -50,24 +59,24 @@ Pingus::draw (DrawingContext& gc)
   // Add 10 to z_pos so that the pingu gets drawn above the node it is
   // standing one
   if (final_target_node != NoNode && current_node == NoNode)
-    {
-      gc.draw(arrow, path->get_dot(final_target_node)->get_pos() + Vector3f(0, 0, 10));
-    }
+  {
+    gc.draw(arrow, path->get_dot(final_target_node)->get_pos() + Vector3f(0, 0, 10));
+  }
 
   if (!is_walking())
-    {
-      gc.draw(sprite_standing, pos);
-    }
+  {
+    gc.draw(sprite_standing, pos);
+  }
   else
-    {
-      // FIXME: Replace the sprite and add up/down here
-      float direction = get_direction();
+  {
+    // FIXME: Replace the sprite and add up/down here
+    float direction = get_direction();
       
-      if (direction >= 0 && direction < 180)
-        gc.draw(sprite[Direction::RIGHT], pos + Vector3f(0, 0, 10));
-      else
-        gc.draw(sprite[Direction::LEFT], pos + Vector3f(0, 0, 10));
-    }
+    if (direction >= 0 && direction < 180)
+      gc.draw(sprite[Direction::RIGHT], pos + Vector3f(0, 0, 10));
+    else
+      gc.draw(sprite[Direction::LEFT], pos + Vector3f(0, 0, 10));
+  }
 }
 
 void
@@ -93,17 +102,17 @@ Pingus::update_walk (float delta)
   edge_path_position += velocity * delta;
 
   if (edge_path_position > edge_path.length()) // target reached
+  {
+    if (node_path.empty ()) // final target reached
     {
-      if (node_path.empty ()) // final target reached
-        {
-          current_node = target_node;
-          final_target_node = NoNode;
-        }
-      else // edge is traveled, now go to the next node
-        {
-          update_edge_path();
-        }
+      current_node = target_node;
+      final_target_node = NoNode;
     }
+    else // edge is traveled, now go to the next node
+    {
+      update_edge_path();
+    }
+  }
 
   // Recalc pingu position on the screen
   last_pos = pos;
@@ -123,102 +132,102 @@ Pingus::walk_to_node (NodeId target)
   final_target_node = target;
 
   if (current_node == target)
+  {
+    return true;
+  }
+  else if (current_node != NoNode) // pingu stands still
+  {
+    const PathfinderResult& res = path->get_path (current_node, target);
+
+    if (res.path.empty())
     {
+      // No path could be found
+      return false;
+    }
+    else
+    {
+      node_path = res.path;
+
+      // Simulate that we just reached current_node, then update the edge_path
+      target_node = node_path.back(); // equal to current_node;
+      node_path.pop_back();
+      update_edge_path();
+
+      current_node = NoNode;
       return true;
     }
-  else if (current_node != NoNode) // pingu stands still
+  }
+  else // pingu between two nodes
+  {
+    if (target_node == target)
     {
-      const PathfinderResult& res = path->get_path (current_node, target);
+      node_path.clear();
+      return true;
+    }
+    else if (source_node == target)
+    {
+      // Reverse the pingu
+      std::swap(target_node, source_node);
+      edge_path.reverse();
+      edge_path_position = edge_path.length() - edge_path_position;
+      node_path.clear();
+      return true;
+    }
+    else
+    {
+      const PathfinderResult& node_path1 = path->get_path (source_node, target);
+      const PathfinderResult& node_path2 = path->get_path (target_node, target);
 
-      if (res.path.empty())
+      // Check that a path exist
+      if (node_path1.path.empty())
+      {
+        if (node_path2.path.empty())
         {
-          // No path could be found
           return false;
         }
+        else
+        {
+          node_path = node_path2.path;
+        }
+      }
       else
-        {
-          node_path = res.path;
+      {
+        // Select the shorter path
+        if (node_path1.cost + edge_path_position
+            < node_path2.cost + (edge_path.length() - edge_path_position))
+        { // walk to source node, which means to reverse the pingu
+          node_path = node_path1.path;
 
-          // Simulate that we just reached current_node, then update the edge_path
-          target_node = node_path.back(); // equal to current_node;
-          node_path.pop_back();
-          update_edge_path();
-
-          current_node = NoNode;
-          return true;
-        }
-    }
-  else // pingu between two nodes
-    {
-      if (target_node == target)
-        {
-          node_path.clear();
-          return true;
-        }
-      else if (source_node == target)
-        {
           // Reverse the pingu
           std::swap(target_node, source_node);
           edge_path.reverse();
           edge_path_position = edge_path.length() - edge_path_position;
-          node_path.clear();
-          return true;
         }
-      else
-        {
-          const PathfinderResult& node_path1 = path->get_path (source_node, target);
-          const PathfinderResult& node_path2 = path->get_path (target_node, target);
-
-          // Check that a path exist
-          if (node_path1.path.empty())
-            {
-              if (node_path2.path.empty())
-                {
-                  return false;
-                }
-              else
-                {
-                  node_path = node_path2.path;
-                }
-            }
-          else
-            {
-              // Select the shorter path
-              if (node_path1.cost + edge_path_position
-                  < node_path2.cost + (edge_path.length() - edge_path_position))
-                { // walk to source node, which means to reverse the pingu
-                  node_path = node_path1.path;
-
-                  // Reverse the pingu
-                  std::swap(target_node, source_node);
-                  edge_path.reverse();
-                  edge_path_position = edge_path.length() - edge_path_position;
-                }
-              else
-                { // walk to target_node
-                  node_path = node_path2.path;
-                }
-            }
-
-          // Pop the first element on the stack, since we are already targeting it
-          node_path.pop_back();
-
-          return true;
+        else
+        { // walk to target_node
+          node_path = node_path2.path;
         }
+      }
+
+      // Pop the first element on the stack, since we are already targeting it
+      node_path.pop_back();
+
+      return true;
     }
+  }
 }
 
 Vector3f
 Pingus::calc_pos ()
 {
   if (current_node != NoNode) // pingu stands still
-    {
-      return path->graph.resolve_node(current_node).data->get_pos ();
-    }
+  {
+    return path->graph.resolve_node(current_node).data->get_pos ();
+  }
   else // between two nodes
-    {
-      return edge_path.at(edge_path_position);
-    }
+  {
+    return edge_path.at(edge_path_position);
+  }
 }
 
 void

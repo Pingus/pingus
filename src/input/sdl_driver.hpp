@@ -78,9 +78,7 @@ private:
 
   typedef std::map<int, SDL_Joystick*> JoystickHandles;
   JoystickHandles joystick_handles;
-
-  bool open_joystick(int device);
-  
+ 
 public:
   SDLDriver();
   ~SDLDriver();
@@ -93,6 +91,9 @@ public:
 
   void update(float delta);
   std::string get_name() const { return "sdl"; }
+
+private:
+  bool open_joystick(int device);
 
 private:
   SDLDriver(const SDLDriver&);

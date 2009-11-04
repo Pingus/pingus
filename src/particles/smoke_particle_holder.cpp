@@ -21,8 +21,12 @@
 
 namespace Particles {
 
-SmokeParticleHolder::SmokeParticle::SmokeParticle (float x, float y, float vel_x, float vel_y)
-  : pos(Vector3f(x,y)), velocity(Vector3f(vel_x, vel_y))
+SmokeParticleHolder::SmokeParticle::SmokeParticle (float x, float y, float vel_x, float vel_y) :
+  time(),
+  livetime(),
+  use_surf2(),
+  pos(Vector3f(x,y)), 
+  velocity(Vector3f(vel_x, vel_y))
 {
   time = livetime = 25 + (rand() % 10);
   use_surf2 = rand() % 2;
@@ -31,7 +35,8 @@ SmokeParticleHolder::SmokeParticle::SmokeParticle (float x, float y, float vel_x
 
 SmokeParticleHolder::SmokeParticleHolder ()
   : surf1("particles/smoke"),
-    surf2("particles/smoke2")
+    surf2("particles/smoke2"),
+    particles()
 {
 }
 
@@ -42,12 +47,12 @@ SmokeParticleHolder::add_particle (float x, float y, float vel_x, float vel_y)
   // search for dead entry to replace
   for (std::vector<SmokeParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
     if (!it->livetime)
-      {
-        *it = SmokeParticle(x, y, vel_x, vel_y);
-	    return;
-	  }
+    {
+      *it = SmokeParticle(x, y, vel_x, vel_y);
+      return;
+    }
 
-	// create new entry
+  // create new entry
   particles.push_back(SmokeParticle(x, y, vel_x, vel_y));
 }
 
@@ -56,16 +61,16 @@ SmokeParticleHolder::update ()
 {
   // update all contained particles
   for (std::vector<SmokeParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
-    {
-      // skip dead particles
-      if (!it->livetime)
-        continue;
+  {
+    // skip dead particles
+    if (!it->livetime)
+      continue;
 
-      it->pos.x += it->velocity.x;
-	  it->pos.y += it->velocity.y;
+    it->pos.x += it->velocity.x;
+    it->pos.y += it->velocity.y;
 
-	  --it->livetime;
-    }
+    --it->livetime;
+  }
 }
 
 
@@ -73,15 +78,15 @@ void
 SmokeParticleHolder::draw (SceneContext& gc)
 {
   for (std::vector<SmokeParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
-    {
-      if (!it->livetime)
-        continue;
+  {
+    if (!it->livetime)
+      continue;
 
-      if (!it->use_surf2)
-        gc.color().draw(surf1, it->pos);
-	  else
-	    gc.color().draw(surf2, it->pos);
-    }
+    if (!it->use_surf2)
+      gc.color().draw(surf1, it->pos);
+    else
+      gc.color().draw(surf2, it->pos);
+  }
 }
 
 } // namespace Particles

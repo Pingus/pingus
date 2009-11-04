@@ -33,9 +33,51 @@
 
 namespace Editor {
 
-ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_)
-  : GUI::GroupComponent(rect_, false),
-    editor(editor_)
+ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
+  GUI::GroupComponent(rect_, false),
+  editor(editor_),
+  objects(),
+  type_label(),
+  mesg_label(),
+  gptype_label(),
+  gptype_type(),
+  entrance_direction_label(),
+  entrance_direction(),
+  release_rate_label(),
+  release_rate_inputbox(),
+  stretch_label(),
+  stretch_x_checkbox(),
+  stretch_y_checkbox(),
+  para_x_label(),
+  para_x_inputbox(),
+  para_y_label(),
+  para_y_inputbox(),
+  scroll_x_label(),
+  scroll_x_inputbox(),
+  scroll_y_label(),
+  scroll_y_inputbox(),
+  owner_label(),
+  owner_inputbox(),
+  pos_z_label(),
+  pos_z_inputbox(),
+  color_label(),
+  color_r_inputbox(),
+  color_g_inputbox(),
+  color_b_inputbox(),
+  color_a_inputbox(),
+  small_stars_label(),
+  small_stars_inputbox(),
+  middle_stars_label(),
+  middle_stars_inputbox(),
+  large_stars_label(),
+  large_stars_inputbox(),
+  repeat_label(),
+  repeat_inputbox(),
+  flip_horizontal_button(),
+  flip_vertical_button(),
+  rotate_90_button(),
+  rotate_270_button(),
+  y_pos()
 {
   add(type_label = new Label(Rect(Vector2i(4, 4), Size(120, 20)), _("Object:")));
   add(mesg_label = new Label(Rect(Vector2i(10, 0), Size(180, 20)), _("Nothing selected")));
@@ -269,131 +311,131 @@ ObjectProperties::set_object(LevelObj* obj)
   hide_all();
 
   if (obj)
+  {
+    unsigned int attr = obj->get_attribs();
+    if (attr & HAS_GPTYPE)
     {
-      unsigned int attr = obj->get_attribs();
-      if (attr & HAS_GPTYPE)
-        {
-          gptype_type->set_selected_item(Groundtype::string_to_type(obj->get_ground_type()));
-          place(gptype_label, gptype_type);
-        }
-      
-      if (attr & HAS_DIRECTION)
-        {
-          if (obj->get_direction() == "left")
-            entrance_direction->set_selected_item(0);
-          else if (obj->get_direction() == "misc")
-            entrance_direction->set_selected_item(1);
-          else if (obj->get_direction() == "right")
-            entrance_direction->set_selected_item(2);
-          else
-            std::cout << "Error: ObjectProperties::set_object: unknown direction: " << obj->get_direction() << std::endl;
-
-          place(entrance_direction_label, entrance_direction);
-        }
-      
-      if (attr & HAS_SPEED)
-        { // obsolete in large part, since sprites have their own speed
-        }
-      
-      if (attr & HAS_PARALLAX)
-        { // used for hotspot
-        }
-        
-      if (attr & HAS_REPEAT)
-        { 
-          repeat_inputbox->set_text(StringUtil::to_string(obj->get_repeat()));
-          place(repeat_label, repeat_inputbox);
-        }
-        
-      if (attr & HAS_OWNER)
-        {
-          owner_inputbox->set_text(StringUtil::to_string(obj->get_owner()));
-          place(owner_label, owner_inputbox);
-        }
-        
-      if (attr & HAS_COLOR)
-        {
-          color_r_inputbox->set_text(StringUtil::to_string((int)obj->get_color().r));
-          color_g_inputbox->set_text(StringUtil::to_string((int)obj->get_color().g));
-          color_b_inputbox->set_text(StringUtil::to_string((int)obj->get_color().b));
-          color_a_inputbox->set_text(StringUtil::to_string((int)obj->get_color().a));
-
-          place(color_label);
-          place(color_r_inputbox);
-          place(color_g_inputbox);
-          place(color_b_inputbox);
-          place(color_a_inputbox);
-          advance();
-        }
-
-      if (attr & HAS_SCROLL)
-        {
-          scroll_x_inputbox->set_text(StringUtil::to_string(obj->get_scroll_x()));
-          scroll_y_inputbox->set_text(StringUtil::to_string(obj->get_scroll_y()));          
-
-          place(scroll_x_label, scroll_x_inputbox);
-          place(scroll_y_label, scroll_y_inputbox);
-        }
-
-      if (attr & HAS_PARA)
-        {
-          para_x_inputbox->set_text(StringUtil::to_string(obj->get_para_x()));
-          para_y_inputbox->set_text(StringUtil::to_string(obj->get_para_y()));
-
-          place(para_x_label, para_x_inputbox);
-          place(para_y_label, para_y_inputbox);
-        }
-
-      if (attr & HAS_STRETCH)
-        {
-          stretch_x_checkbox->set_checked(obj->get_stretch_y());
-          stretch_y_checkbox->set_checked(obj->get_stretch_y());
-
-          place(stretch_label);
-          place(stretch_x_checkbox);
-          place(stretch_y_checkbox);
-          advance();
-        }
-
-      if (attr & HAS_RELEASE_RATE)
-        {
-          release_rate_inputbox->set_text(StringUtil::to_string(obj->get_release_rate()));
-          place(release_rate_label, release_rate_inputbox);
-        }
-
-      if (attr & HAS_STARFIELD)
-        {
-          small_stars_inputbox->set_text(StringUtil::to_string(obj->get_small_stars()));
-          middle_stars_inputbox->set_text(StringUtil::to_string(obj->get_middle_stars()));
-          large_stars_inputbox->set_text(StringUtil::to_string(obj->get_large_stars()));
-
-          place(small_stars_label,  small_stars_inputbox);
-          place(middle_stars_label, middle_stars_inputbox);
-          place(large_stars_label,  large_stars_inputbox);
-        }
-
-      if (1) // everybody has z-pos
-        {
-          pos_z_inputbox->set_text(StringUtil::to_string(obj->get_pos_z()));
-          place(pos_z_label, pos_z_inputbox);
-        }
-
-
-      if (attr & CAN_ROTATE)
-        {
-          y_pos += 4;
-          place(flip_horizontal_button);
-          place(flip_vertical_button);
-          place(rotate_90_button);
-          place(rotate_270_button);
-          y_pos += 36;
-        }
+      gptype_type->set_selected_item(Groundtype::string_to_type(obj->get_ground_type()));
+      place(gptype_label, gptype_type);
     }
-  else
+      
+    if (attr & HAS_DIRECTION)
     {
-      place(mesg_label);
+      if (obj->get_direction() == "left")
+        entrance_direction->set_selected_item(0);
+      else if (obj->get_direction() == "misc")
+        entrance_direction->set_selected_item(1);
+      else if (obj->get_direction() == "right")
+        entrance_direction->set_selected_item(2);
+      else
+        std::cout << "Error: ObjectProperties::set_object: unknown direction: " << obj->get_direction() << std::endl;
+
+      place(entrance_direction_label, entrance_direction);
+    }
+      
+    if (attr & HAS_SPEED)
+    { // obsolete in large part, since sprites have their own speed
+    }
+      
+    if (attr & HAS_PARALLAX)
+    { // used for hotspot
+    }
+        
+    if (attr & HAS_REPEAT)
+    { 
+      repeat_inputbox->set_text(StringUtil::to_string(obj->get_repeat()));
+      place(repeat_label, repeat_inputbox);
+    }
+        
+    if (attr & HAS_OWNER)
+    {
+      owner_inputbox->set_text(StringUtil::to_string(obj->get_owner()));
+      place(owner_label, owner_inputbox);
+    }
+        
+    if (attr & HAS_COLOR)
+    {
+      color_r_inputbox->set_text(StringUtil::to_string((int)obj->get_color().r));
+      color_g_inputbox->set_text(StringUtil::to_string((int)obj->get_color().g));
+      color_b_inputbox->set_text(StringUtil::to_string((int)obj->get_color().b));
+      color_a_inputbox->set_text(StringUtil::to_string((int)obj->get_color().a));
+
+      place(color_label);
+      place(color_r_inputbox);
+      place(color_g_inputbox);
+      place(color_b_inputbox);
+      place(color_a_inputbox);
       advance();
     }
+
+    if (attr & HAS_SCROLL)
+    {
+      scroll_x_inputbox->set_text(StringUtil::to_string(obj->get_scroll_x()));
+      scroll_y_inputbox->set_text(StringUtil::to_string(obj->get_scroll_y()));          
+
+      place(scroll_x_label, scroll_x_inputbox);
+      place(scroll_y_label, scroll_y_inputbox);
+    }
+
+    if (attr & HAS_PARA)
+    {
+      para_x_inputbox->set_text(StringUtil::to_string(obj->get_para_x()));
+      para_y_inputbox->set_text(StringUtil::to_string(obj->get_para_y()));
+
+      place(para_x_label, para_x_inputbox);
+      place(para_y_label, para_y_inputbox);
+    }
+
+    if (attr & HAS_STRETCH)
+    {
+      stretch_x_checkbox->set_checked(obj->get_stretch_y());
+      stretch_y_checkbox->set_checked(obj->get_stretch_y());
+
+      place(stretch_label);
+      place(stretch_x_checkbox);
+      place(stretch_y_checkbox);
+      advance();
+    }
+
+    if (attr & HAS_RELEASE_RATE)
+    {
+      release_rate_inputbox->set_text(StringUtil::to_string(obj->get_release_rate()));
+      place(release_rate_label, release_rate_inputbox);
+    }
+
+    if (attr & HAS_STARFIELD)
+    {
+      small_stars_inputbox->set_text(StringUtil::to_string(obj->get_small_stars()));
+      middle_stars_inputbox->set_text(StringUtil::to_string(obj->get_middle_stars()));
+      large_stars_inputbox->set_text(StringUtil::to_string(obj->get_large_stars()));
+
+      place(small_stars_label,  small_stars_inputbox);
+      place(middle_stars_label, middle_stars_inputbox);
+      place(large_stars_label,  large_stars_inputbox);
+    }
+
+    if (1) // everybody has z-pos
+    {
+      pos_z_inputbox->set_text(StringUtil::to_string(obj->get_pos_z()));
+      place(pos_z_label, pos_z_inputbox);
+    }
+
+
+    if (attr & CAN_ROTATE)
+    {
+      y_pos += 4;
+      place(flip_horizontal_button);
+      place(flip_vertical_button);
+      place(rotate_90_button);
+      place(rotate_270_button);
+      y_pos += 36;
+    }
+  }
+  else
+  {
+    place(mesg_label);
+    advance();
+  }
   finalize();
 }
 
@@ -410,22 +452,22 @@ ObjectProperties::set_objects(const std::vector<LevelObj*>& objs)
 
   std::string obj_type;
   if (objects.empty())
-    {
-      type_label->set_text(_("Object:"));
-      mesg_label->set_text(_("Nothing selected"));
-      set_object(0);
-    }
+  {
+    type_label->set_text(_("Object:"));
+    mesg_label->set_text(_("Nothing selected"));
+    set_object(0);
+  }
   else if (objects.size() > 1)
-    {
-      type_label->set_text(_("Object: [Group]"));
-      mesg_label->set_text(_("Group not supported"));
-      set_object(0);
-    }
+  {
+    type_label->set_text(_("Object: [Group]"));
+    mesg_label->set_text(_("Group not supported"));
+    set_object(0);
+  }
   else
-    {
-      type_label->set_text(_("Object: ") + objects.front()->get_section_name());
-      set_object(objects.front());
-    }
+  {
+    type_label->set_text(_("Object: ") + objects.front()->get_section_name());
+    set_object(objects.front());
+  }
 }
 
 void
@@ -459,14 +501,14 @@ void
 ObjectProperties::on_entrance_direction_change(const ComboItem& item)
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-    {
-      if (item.id == 0)
-        (*i)->set_direction("left");
-      else if (item.id == 1)
-        (*i)->set_direction("misc");
-      else // (item.id == 2)
-        (*i)->set_direction("right");
-    }
+  {
+    if (item.id == 0)
+      (*i)->set_direction("left");
+    else if (item.id == 1)
+      (*i)->set_direction("misc");
+    else // (item.id == 2)
+      (*i)->set_direction("right");
+  }
 }
 
 void
@@ -523,71 +565,71 @@ void
 ObjectProperties::on_color_r_change(const std::string& str)
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-    {
-      Color color = (*i)->get_color(); 
-      color.r = StringUtil::to<int>(str);
-      (*i)->set_color(color);
-    }
+  {
+    Color color = (*i)->get_color(); 
+    color.r = StringUtil::to<int>(str);
+    (*i)->set_color(color);
+  }
 }
 
 void
 ObjectProperties::on_color_g_change(const std::string& str)
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-    {
-      Color color = (*i)->get_color(); 
-      color.g = StringUtil::to<int>(str);
-      (*i)->set_color(color);
-    }
+  {
+    Color color = (*i)->get_color(); 
+    color.g = StringUtil::to<int>(str);
+    (*i)->set_color(color);
+  }
 }
 
 void
 ObjectProperties::on_color_b_change(const std::string& str)
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-    {
-      Color color = (*i)->get_color(); 
-      color.b = StringUtil::to<int>(str);
-      (*i)->set_color(color);
-    }
+  {
+    Color color = (*i)->get_color(); 
+    color.b = StringUtil::to<int>(str);
+    (*i)->set_color(color);
+  }
 }
 
 void
 ObjectProperties::on_color_a_change(const std::string& str)
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-    { 
-      Color color = (*i)->get_color(); 
-      color.a = StringUtil::to<int>(str);
-      (*i)->set_color(color);
-    }
+  { 
+    Color color = (*i)->get_color(); 
+    color.a = StringUtil::to<int>(str);
+    (*i)->set_color(color);
+  }
 }
 
 void
 ObjectProperties::on_small_stars_change(const std::string& str)
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-    {
-      (*i)->set_small_stars(StringUtil::to<int>(str));
-    }
+  {
+    (*i)->set_small_stars(StringUtil::to<int>(str));
+  }
 }
 
 void
 ObjectProperties::on_middle_stars_change(const std::string& str)
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-    {
-      (*i)->set_middle_stars(StringUtil::to<int>(str));
-    }
+  {
+    (*i)->set_middle_stars(StringUtil::to<int>(str));
+  }
 }
 
 void
 ObjectProperties::on_large_stars_change(const std::string& str)
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-    {
-      (*i)->set_large_stars(StringUtil::to<int>(str));
-    }  
+  {
+    (*i)->set_large_stars(StringUtil::to<int>(str));
+  }  
 }
 
 void
@@ -597,9 +639,9 @@ ObjectProperties::on_repeat_change(const std::string& str)
   if (r <= 0)
     r = 1;
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-    {
-      (*i)->set_repeat(r);
-    }
+  {
+    (*i)->set_repeat(r);
+  }
 }
 
 void

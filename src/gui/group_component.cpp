@@ -20,14 +20,15 @@
 
 namespace GUI {
 
-GroupComponent::GroupComponent(const Rect& rect_, bool clip_)
-  : RectComponent(rect_),
-    drawing_context(rect_, clip_),
-    mouse_over_comp(0),
-    focused_comp(0),
-    grabbed_comp(0),
-    primary_pressed_comp(0),
-    secondary_pressed_comp(0)
+GroupComponent::GroupComponent(const Rect& rect_, bool clip_) :
+  RectComponent(rect_),
+  children(),
+  drawing_context(rect_, clip_),
+  mouse_over_comp(0),
+  focused_comp(0),
+  grabbed_comp(0),
+  primary_pressed_comp(0),
+  secondary_pressed_comp(0)
 {
 }
 

@@ -228,14 +228,16 @@ WorldmapScreenEnterButton::on_click()
   worldmap_screen->get_worldmap()->enter_level();
 }
 
-WorldmapScreen::WorldmapScreen()
-  : levelname_bg("core/worldmap/levelname_bg"),
-    is_init(false),
-    exit_worldmap(false),
-    close_button(0),
-    story_button(0),
-    credits_button(0),
-    enter_button(0)
+WorldmapScreen::WorldmapScreen() :
+  levelname_bg("core/worldmap/levelname_bg"),
+  is_init(false),
+  exit_worldmap(false),
+  worldmap(),
+  new_worldmap(),
+  close_button(0),
+  story_button(0),
+  credits_button(0),
+  enter_button(0)
 {
   // FIXME: a bit ugly because of the proteced member, but should work
   // FIXME: well enough. GUIScreen could also use multi-inheritage,

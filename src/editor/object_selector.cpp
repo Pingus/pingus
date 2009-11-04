@@ -212,15 +212,16 @@ public:
 
 public:
   ObjectSelectorButton(ObjectSelectorList* object_list_,
-                       const Vector2i& pos_, const std::string& sprite_, const std::string& tooltip_)
-    : RectComponent(Rect(pos_, Size(30, 30))),
-      object_list(object_list_),
-      button_raised(Sprite("core/editor/obj_button-raised")),
-      button_pressed(Sprite("core/editor/obj_button-pressed")),
-      sprite(Sprite(sprite_)),
-      mouse_over(false),
-      mouse_down(false),
-      tooltip(tooltip_)
+                       const Vector2i& pos_, const std::string& sprite_, const std::string& tooltip_) :
+    RectComponent(Rect(pos_, Size(30, 30))),
+    object_list(object_list_),
+    button_raised(Sprite("core/editor/obj_button-raised")),
+    button_pressed(Sprite("core/editor/obj_button-pressed")),
+    sprite(Sprite(sprite_)),
+    mouse_over(false),
+    mouse_down(false),
+    tooltip(tooltip_),
+    on_click()
   {
   }
 
@@ -278,6 +279,10 @@ public:
   }
 
   void update_layout() {}
+
+private:
+  ObjectSelectorButton(const ObjectSelectorButton&);
+  ObjectSelectorButton & operator=(const ObjectSelectorButton&);
 };
 
 
@@ -299,7 +304,8 @@ ObjectSelector::ObjectSelector(EditorScreen* editor_, const Rect& rect_) :
   liquid_set(0),
   trap_set(0),
   weather_set(0),
-  worldobj_set(0)
+  worldobj_set(0),
+  callback()
 {
   add(object_list = new ObjectSelectorList(editor, this, 
                                            Rect(2, 2 + 60 + 2, rect.get_width() - 2, rect.get_height() - 2)));

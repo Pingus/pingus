@@ -90,14 +90,14 @@ public:
     gc.draw(sprite, pos + Vector2i(5,5));
 
     if (mouse_over)
-      {
-        int t_w = Fonts::verdana11.get_width(tooltip);
-        Rect t_r(pos.x + 17 - t_w/2 - 4, pos.y + 38 - 2, 
-                 pos.x + 17 + t_w/2 + 4, pos.y + 38 + Fonts::verdana11.get_height() + 4);
-        gc.draw_fillrect(t_r, Color(255, 255, 200), 1000.0f);
-        gc.draw_rect(t_r, Color(0,0,0), 1000.0f);
-        gc.print_center(Fonts::verdana11, Vector2i(pos.x + 17, pos.y + 38), tooltip, 1000.0f);
-      }
+    {
+      int t_w = Fonts::verdana11.get_width(tooltip);
+      Rect t_r(pos.x + 17 - t_w/2 - 4, pos.y + 38 - 2, 
+               pos.x + 17 + t_w/2 + 4, pos.y + 38 + Fonts::verdana11.get_height() + 4);
+      gc.draw_fillrect(t_r, Color(255, 255, 200), 1000.0f);
+      gc.draw_rect(t_r, Color(0,0,0), 1000.0f);
+      gc.print_center(Fonts::verdana11, Vector2i(pos.x + 17, pos.y + 38), tooltip, 1000.0f);
+    }
   }
 
   /** Emmitted when pointer enters the region of the component */
@@ -144,10 +144,11 @@ private:
   PanelButton & operator=(const PanelButton&);
 };
 
-Panel::Panel(EditorScreen* editor_)
-  : editor(editor_),
-    logo("core/editor/logo"),
-    pos(2,2)
+Panel::Panel(EditorScreen* editor_) :
+  editor(editor_),
+  logo("core/editor/logo"),
+  pos(2,2),
+  callback()
 {  
   editor->get_gui_manager()->add(this);
 
@@ -189,18 +190,18 @@ Panel::Panel(EditorScreen* editor_)
              &EditorScreen::objects_lower_to_bottom);
 
   if (0)
-    { // rotate and flip are now in the object properties
-      add_separator();
-      add_button("core/editor/object-flip-horizontal", _("Flip object horizontally") + " (F)", 
-                 &EditorScreen::objects_flip_horizontal);
-      add_button("core/editor/object-flip-vertical", _("Flip object vertically") + " (Shift+F)", 
-                 &EditorScreen::objects_flip_vertical);
-      add_separator();
-      add_button("core/editor/object-rotate-left",  _("Rotate object -90 degree") + " (Shift+R)", 
-                 &EditorScreen::objects_rotate_left);
-      add_button("core/editor/object-rotate-right", _("Rotate object 90 degree") + " (R)", 
-                 &EditorScreen::objects_rotate_right);
-    }
+  { // rotate and flip are now in the object properties
+    add_separator();
+    add_button("core/editor/object-flip-horizontal", _("Flip object horizontally") + " (F)", 
+               &EditorScreen::objects_flip_horizontal);
+    add_button("core/editor/object-flip-vertical", _("Flip object vertically") + " (Shift+F)", 
+               &EditorScreen::objects_flip_vertical);
+    add_separator();
+    add_button("core/editor/object-rotate-left",  _("Rotate object -90 degree") + " (Shift+R)", 
+               &EditorScreen::objects_rotate_left);
+    add_button("core/editor/object-rotate-right", _("Rotate object 90 degree") + " (R)", 
+               &EditorScreen::objects_rotate_right);
+  }
 
   // add_separator();
   //add_button("core/editor/snap-grid", "Snap objects to grid", 

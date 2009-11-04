@@ -26,11 +26,14 @@
 
 using namespace Actions;
 
-ArmageddonButton::ArmageddonButton(Server* s, int x, int y)
-  : RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
-    server(s),
-    background  ("core/buttons/hbuttonbgb"),
-    backgroundhl("core/buttons/hbuttonbg")
+ArmageddonButton::ArmageddonButton(Server* s, int x, int y) :
+  RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
+  server(s),
+  pressed(),
+  press_time(),
+  sprite(),
+  background  ("core/buttons/hbuttonbgb"),
+  backgroundhl("core/buttons/hbuttonbg")
 {
   pressed      = false;
   sprite       = Sprite("core/buttons/armageddon_anim");
@@ -134,11 +137,12 @@ ForwardButton::on_primary_button_click (int x, int y)
   UNUSED_ARG(y);
 }
 
-PauseButton::PauseButton(GameSession* s, int x, int y)
-  : RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
-    session(s),
-    background ("core/buttons/hbuttonbgb"),
-    backgroundhl("core/buttons/hbuttonbg")
+PauseButton::PauseButton(GameSession* s, int x, int y) :
+  RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
+  session(s),
+  surface(),
+  background ("core/buttons/hbuttonbgb"),
+  backgroundhl("core/buttons/hbuttonbg")
 {
   surface = Sprite("core/buttons/pause");
 }

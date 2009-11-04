@@ -31,7 +31,8 @@ public:
   Surface to_surface() const { return Surface(); }
 };
 
-NullFramebuffer::NullFramebuffer()
+NullFramebuffer::NullFramebuffer() :
+  size()
 {
 }
 

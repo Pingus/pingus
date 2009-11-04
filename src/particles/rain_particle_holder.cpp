@@ -32,10 +32,11 @@ RainParticleHolder::RainParticle::RainParticle(int x, int y)
 }
 
 
-RainParticleHolder::RainParticleHolder ()
-  : rain1_surf("particles/rain1"),
-    rain2_surf("particles/rain2"),
-    rain_splash("particles/rain_splash")
+RainParticleHolder::RainParticleHolder () :
+  rain1_surf("particles/rain1"),
+  rain2_surf("particles/rain2"),
+  rain_splash("particles/rain_splash"),
+  particles()
 {
 }
 

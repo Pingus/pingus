@@ -34,7 +34,8 @@ FileList::FileList(const Rect& rect_) :
   current_item(-1),
   click_item(-1),
   page(0),
-  num_pages(0)
+  num_pages(0),
+  on_click()
 {
   update_layout();
 }

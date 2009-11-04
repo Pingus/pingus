@@ -24,7 +24,9 @@ namespace Editor {
 
 Inputbox::Inputbox(const Rect& rect_) :
   RectComponent(rect_),
-  text()
+  text(),
+  on_change(),
+  on_enter()
 {
 }
 

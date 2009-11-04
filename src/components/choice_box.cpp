@@ -19,10 +19,12 @@
 #include "display/drawing_context.hpp"
 #include "components/choice_box.hpp"
 
-ChoiceBox::ChoiceBox(const Rect& rect_)
-  : RectComponent(rect_)
+ChoiceBox::ChoiceBox(const Rect& rect_) :
+  RectComponent(rect_),
+  current_choice(0),
+  choices(),
+  on_change()
 {
-  current_choice = 0;
 }
 
 void

@@ -48,6 +48,12 @@ World::World(const PingusLevel& plf) :
   gfx_map(new GroundMap(plf.get_size().width, plf.get_size().height)),
   game_time(0),
   do_armageddon(false),
+  armageddon_count(0),
+  world_obj(),
+  pingu_particle_holder(),
+  rain_particle_holder(),
+  smoke_particle_holder(),
+  snow_particle_holder(),
   pingus(new PinguHolder(plf)),
   colmap(gfx_map->get_colmap()),
   gravitational_acceleration(0.25f)

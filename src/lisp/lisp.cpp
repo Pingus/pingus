@@ -24,34 +24,34 @@
 namespace lisp
 {
     
-Lisp::Lisp(int val)
-  : type(TYPE_INT)
+Lisp::Lisp(int val) :
+  v(), type(TYPE_INT)
 {
   v.int_ = val;
 }
 
-Lisp::Lisp(float val)
-  : type(TYPE_FLOAT)
+Lisp::Lisp(float val) :
+  v(), type(TYPE_FLOAT)
 {
   v.float_ = val;
 }
 
-Lisp::Lisp(bool val)
-  : type(TYPE_BOOL)
+Lisp::Lisp(bool val) :
+  v(), type(TYPE_BOOL)
 {
   v.bool_ = val;
 }
 
-Lisp::Lisp(LispType newtype, const std::string& str)
-  : type(newtype)
+Lisp::Lisp(LispType newtype, const std::string& str) :
+  v(), type(newtype)
 {
   assert(newtype == TYPE_SYMBOL || type == TYPE_STRING);
   v.string = new char[str.size()+1];
   memcpy(v.string, str.c_str(), str.size()+1);
 }
 
-Lisp::Lisp(const std::vector<boost::shared_ptr<Lisp> >& list_elements)
-  : type(TYPE_LIST)
+Lisp::Lisp(const std::vector<boost::shared_ptr<Lisp> >& list_elements) :
+  v(), type(TYPE_LIST)
 {
   v.list.size = list_elements.size();
   v.list.entries = new boost::shared_ptr<Lisp> [v.list.size];

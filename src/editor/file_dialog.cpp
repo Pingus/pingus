@@ -32,10 +32,21 @@
 
 namespace Editor {
 
-FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect_, Mode mode_)
-  : GroupComponent(rect_),
-    editor(editor_),
-    mode(mode_)
+FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect_, Mode mode_) :
+  GroupComponent(rect_),
+  editor(editor_),
+  mode(mode_),
+  file_list(),
+  up_button(),
+  down_button(),
+  open_button(),
+  cancel_button(),
+  datadir_button(),
+  userdir_button(),
+  pathname_label(),
+  filename_label(),
+  pathname_inputbox(),
+  filename_inputbox()
 {
   file_list = new FileList(Rect(4, 30 + 30 + 30,
                                 rect.get_width()-4 - 30, rect.get_height() - 4 - 35));
@@ -106,14 +117,14 @@ FileDialog::load_file(const System::DirectoryEntry& entry)
 { // called when somebody clicks a file
 
   if (entry.type == System::DE_DIRECTORY)
-    {
-      //std::cout << "Directory: " << entry.name << std::endl;
-      set_directory(pathname_inputbox->get_text() + "/" + entry.name);
-    }
+  {
+    //std::cout << "Directory: " << entry.name << std::endl;
+    set_directory(pathname_inputbox->get_text() + "/" + entry.name);
+  }
   else
-    {
-      filename_inputbox->set_text(entry.name);
-    }  
+  {
+    filename_inputbox->set_text(entry.name);
+  }  
 }
 
 void
@@ -138,22 +149,22 @@ void
 FileDialog::on_open()
 {
   if (!filename_inputbox->get_text().empty())
+  {
+    if (mode == LOAD)
     {
-      if (mode == LOAD)
-        {
-          Pathname file(pathname_inputbox->get_text() + "/" + filename_inputbox->get_text(), Pathname::SYSTEM_PATH);
-          std::cout << "Open: " << file << std::endl;
-          editor->load(file);
-          hide();
-        }
-      else if (mode == SAVE) 
-        {
-          Pathname file(pathname_inputbox->get_text() + "/" + filename_inputbox->get_text(), Pathname::SYSTEM_PATH);
-          std::cout << "Save: " << file << std::endl;
-          editor->save(file);
-          hide();
-        }
+      Pathname file(pathname_inputbox->get_text() + "/" + filename_inputbox->get_text(), Pathname::SYSTEM_PATH);
+      std::cout << "Open: " << file << std::endl;
+      editor->load(file);
+      hide();
     }
+    else if (mode == SAVE) 
+    {
+      Pathname file(pathname_inputbox->get_text() + "/" + filename_inputbox->get_text(), Pathname::SYSTEM_PATH);
+      std::cout << "Save: " << file << std::endl;
+      editor->save(file);
+      hide();
+    }
+  }
 }
 
 void
@@ -176,7 +187,7 @@ FileDialog::update_layout()
   GUI::GroupComponent::update_layout();
 
   file_list->set_rect(Rect(4, 30 + 30 + 30,
-                          rect.get_width()-4 - 30, rect.get_height() - 4 - 35));
+                           rect.get_width()-4 - 30, rect.get_height() - 4 - 35));
   
   Rect file_rect = file_list->get_rect();
 

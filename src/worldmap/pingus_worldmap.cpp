@@ -44,14 +44,33 @@ public:
   FileReader path_graph;
 
   std::vector<FileReader> objects;
+
+  PingusWorldmapImpl() :
+    filename(),
+    name(),
+    short_name(),
+    description(),
+    music(),
+    author(),
+    email(),
+    width(),
+    height(),
+    default_node(),
+    final_node(),
+    intro_story(),
+    end_story(),
+    path_graph(),
+    objects()
+  {}
 };
 
-PingusWorldmap::PingusWorldmap()
+PingusWorldmap::PingusWorldmap() :
+  impl()
 {
 }
 
-PingusWorldmap::PingusWorldmap(const Pathname& pathname)
-  : impl(new PingusWorldmapImpl())
+PingusWorldmap::PingusWorldmap(const Pathname& pathname) :
+  impl(new PingusWorldmapImpl())
 {
   parse_file(FileReader::parse(pathname));
 }
