@@ -55,7 +55,7 @@ extern "C" {
 #include "gettext.h"
 #include "tinygettext/dictionary_manager.hpp"
 #include "tinygettext/log.hpp"
-#include "command_line.hpp"
+#include "util/command_line.hpp"
 
 #include "screen/screen_manager.hpp"
 #include "path_manager.hpp"
