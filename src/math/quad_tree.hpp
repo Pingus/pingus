@@ -1,30 +1,29 @@
-/*  $Id$
-**   __      __ __             ___        __   __ __   __
-**  /  \    /  \__| ____    __| _/_______/  |_|__|  | |  |   ____
-**  \   \/\/   /  |/    \  / __ |/  ___/\   __\  |  | |  | _/ __ \
-**   \        /|  |   |  \/ /_/ |\___ \  |  | |  |  |_|  |_\  ___/
-**    \__/\  / |__|___|  /\____ /____  > |__| |__|____/____/\___  >
-**         \/          \/      \/    \/                         \/
-**  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
+/*
+**  Galapix - an image viewer for large image collections
+**  Copyright (C) 2008 Ingo Ruhnke <grumbel@gmx.de>
 **
-**  This program is free software; you can redistribute it and/or
-**  modify it under the terms of the GNU General Public License
-**  as published by the Free Software Foundation; either version 2
-**  of the License, or (at your option) any later version.
+**  This program is free software: you can redistribute it and/or modify
+**  it under the terms of the GNU General Public License as published by
+**  the Free Software Foundation, either version 3 of the License, or
+**  (at your option) any later version.
 **
 **  This program is distributed in the hope that it will be useful,
 **  but WITHOUT ANY WARRANTY; without even the implied warranty of
 **  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 **  GNU General Public License for more details.
-** 
+**
 **  You should have received a copy of the GNU General Public License
-**  along with this program; if not, write to the Free Software
-**  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
-**  02111-1307, USA.
+**  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef HEADER_QUAD_TREE_HPP
-#define HEADER_QUAD_TREE_HPP
+#ifndef HEADER_GALAPIX_MATH_QUAD_TREE_HPP
+#define HEADER_GALAPIX_MATH_QUAD_TREE_HPP
+
+#include <vector>
+#include <memory>
+#include <boost/scoped_ptr.hpp>
+
+#include "math/rect.hpp"
 
 /** 
     +----+----+
@@ -38,107 +37,157 @@ class QuadTreeNode
 {
 private:
   struct Object {
-    Rect rect;
+    Rectf rect;
     C    data;
+
+    Object() :
+      rect(), 
+      data()
+    {}
   };
 
-  Rect bounding_rect;
-  Vector2i center;
   typedef std::vector<Object> Items;
-  Items items;
-  int depth;
 
-  std::auto_ptr<QuadTreeNode<C> > nw;
-  std::auto_ptr<QuadTreeNode<C> > ne;
-  std::auto_ptr<QuadTreeNode<C> > sw;
-  std::auto_ptr<QuadTreeNode<C> > se;
+private:
+  Rectf    m_bounding_rect;
+  Vector2f m_center;
+  Items    m_items;
+  int      m_depth;
+
+  boost::scoped_ptr<QuadTreeNode<C> > m_nw;
+  boost::scoped_ptr<QuadTreeNode<C> > m_ne;
+  boost::scoped_ptr<QuadTreeNode<C> > m_sw;
+  boost::scoped_ptr<QuadTreeNode<C> > m_se;
 
 public:
-  QuadTreeNode(int depth, const Rect& bounding_rect_)
-    : bounding_rect(bounding_rect_),
-      center((bounding_rect.left + bounding_rect.right)/2,
-             (bounding_rect.top  + bounding_rect.bottom)/2),
-      nw(0), ne(0), sw(0), se(0)
+  QuadTreeNode(int depth, const Rectf& bounding_rect) :
+    m_bounding_rect(bounding_rect),
+    m_center(bounding_rect.get_center()),
+    m_items(),
+    m_depth(depth),
+    m_nw(), 
+    m_ne(),
+    m_sw(), 
+    m_se()
   {
   }
 
-  void add(const Rect& rect, const C& c)
+  void add(const Rectf& rect, const C& c)
   {
-    if (depth > 8) // max depth
+    if (m_depth > 8) // FIXME: max_depth shouldn't be hardcode
+    {
+      Object obj;
+      obj.rect = rect;
+      obj.data = c;
+      m_items.push_back(obj);
+    }
+    else
+    {
+      if (rect.right < m_center.x) // west
+      {
+        if (rect.bottom < m_center.y) // north
+        {
+          if (!m_nw.get())
+          {
+            m_nw.reset(new QuadTreeNode(m_depth+1, Rectf(m_bounding_rect.left, m_bounding_rect.top,
+                                                         m_center.x, m_center.y)));
+          }
+          m_nw->add(rect, c);
+        }
+        else if(rect.top > m_center.y)  // south
+        {
+          if (!m_sw.get())
+          {
+            m_sw.reset(new QuadTreeNode(m_depth+1, Rectf(m_bounding_rect.left, m_center.y,
+                                                         m_center.x, m_bounding_rect.bottom)));
+          }
+          m_sw->add(rect, c);
+        }
+        else
+        {
+          Object obj;
+          obj.rect = rect;
+          obj.data = c;
+          m_items.push_back(obj);
+        }
+      }
+      else if (rect.left > m_center.x) // east
+      {
+        if (rect.bottom < m_center.y) // north
+        {
+          if (!m_ne.get())
+          {
+            m_ne.reset(new QuadTreeNode(m_depth+1, Rectf(m_center.x, m_bounding_rect.top,
+                                                         m_bounding_rect.right, m_center.y)));
+          }
+          m_ne->add(rect, c);
+        }
+        else if(rect.top > m_center.y) // south
+        {
+          if (!m_se.get())
+          {
+            m_se.reset(new QuadTreeNode(m_depth+1, Rectf(m_center.x, m_center.y,
+                                                         m_bounding_rect.right, m_bounding_rect.bottom)));
+          }
+          m_se->add(rect, c);
+        }
+        else
+        {
+          Object obj;
+          obj.rect = rect;
+          obj.data = c;
+          m_items.push_back(obj);
+        }
+      }
+      else
       {
         Object obj;
         obj.rect = rect;
         obj.data = c;
-        items.push_back(obj);
+        m_items.push_back(obj);
       }
-    else
-      {
-        if (rect.is_inside(center))
-          { // Rect overlaps all quadrants
-            Object obj;
-            obj.rect = rect;
-            obj.data = c;
-            items.push_back(obj);
-          }
-        else
-          {
-            if (rect.right <= center.x)
-              { // west
-                if(rect.top > center.y)
-                  {
-                    if (!ne)
-                      ne = new QuadTreeNode(depth+1, Rect(bounding_rect.left, bounding_rect.top,
-                                                          center.x, center.y));
-
-                    ne->add(rect, c);                   
-                  }
-                else // (rect.top >= center.y)
-                  {
-                    if (!ne)
-                      ne = new QuadTreeNode(depth+1, Rect(bounding_rect.left, bounding_rect.top,
-                                                          center.x, center.y));
-
-                    ne->add(rect, c);
-                  }
-              }
-            else // (rect.right > center.x)
-              { // east
-                
-              }
-          }
-      }
+    }
   }
 
-  void get_items_at(const Rect& rect, std::vector<C>& out_items) const
+  void get_items_at(const Rectf& rect, std::vector<C>& out_items) const
   {
-    for(typename Items::const_iterator i = items.begin(); i != items.end(); ++i)
-      {
-        if (i->rect.overlaps(rect))
-          {
-            out_items.push_back(i->data);
-          }
-      }
-
-    // Check other quadrands for overlapping objects
-    if (nw && 
-        nw->bounding_rect.right > rect.left &&
-        nw->bounding_rect.top   > rect.bottom)
-      nw->get_items_at(rect, out_items);
+    // If rect overlaps with the given quadrant, recursivly check the quadrant
+    if (m_nw.get() && 
+        rect.left < m_center.x &&
+        rect.top  < m_center.y)
+    {
+      m_nw->get_items_at(rect, out_items);
+    }
     
-    if (ne && 
-        ne->bounding_rect.left  < rect.right
-        ne->bounding_rect.left  < rect.right) 
-      ne->get_items_at(rect, out_items);
+    if (m_ne.get() && 
+        rect.right > m_center.x &&
+        rect.top   < m_center.y)
+    {
+      m_ne->get_items_at(rect, out_items);
+    }
+    
+    if (m_sw.get() &&
+        rect.left   < m_center.x &&
+        rect.bottom > m_center.y)
+    {
+      m_sw->get_items_at(rect, out_items);
+    }
 
-    if (sw &&
-        sw->bounding_rect.right > rect.left &&
-        sw->bounding_rect.right > rect.left)
-      sw->get_items_at(rect, out_items);
+    if (m_se.get() &&
+        rect.right  > m_center.x &&
+        rect.bottom > m_center.y)
+    {
+      m_se->get_items_at(rect, out_items);
+    }
 
-    if (se &&
-        se->bounding_rect.right > rect.left &&
-        se->bounding_rect.right > rect.left)
-      se->get_items_at(rect, out_items);
+    // Check all overlapping items
+    for(typename Items::const_iterator i = m_items.begin(); i != m_items.end(); ++i)
+    {
+      if (i->rect.is_overlapped(rect))
+      {
+        out_items.push_back(i->data);
+      }
+    }
   }
 };
 
@@ -146,24 +195,23 @@ template<class C>
 class QuadTree 
 {
 private:
-  std::auto_ptr<QuadTreeNode<C> > main_node;
+  boost::scoped_ptr<QuadTreeNode<C> > m_main_node;
 
 public: 
-  QuadTree(const Rect& bounding_rect)
-    : main_node(new QuadTreeNode<C>(0, bounding_rect))
+  QuadTree(const Rectf& bounding_rect) :
+    m_main_node(new QuadTreeNode<C>(0, bounding_rect))
   {
-    
   }
 
-  void add(const Rect& rect, const C& c)
+  void add(const Rectf& rect, const C& c)
   {
-    main_node->add(rect, c);
+    m_main_node->add(rect, c);
   }
 
-  std::vector<C> get_items_at(const Rect& rect)  
+  std::vector<C> get_items_at(const Rectf& rect)
   {
     std::vector<C> items;
-    main_node->get_items_at(const Rect& rect, items);
+    m_main_node->get_items_at(rect, items);
     return items;
   }
 };
