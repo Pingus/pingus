@@ -21,7 +21,7 @@ namespace Math {
 
 float abs(float v)
 {
-  return ::fabs(v);
+  return ::fabsf(v);
 }
 
 float sin(float a)

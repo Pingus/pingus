@@ -68,7 +68,7 @@ T clamp (const T& low, const T& v, const T& high)
 inline
 float frand()
 {
-  return rand() / (RAND_MAX + 1.0f);
+  return static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1.0f);
 }
 
 inline
