@@ -321,27 +321,4 @@ EvdevDevice::create_button(Control* parent, int id)
 
 } // namespace Input
 
-#ifdef __TEST__
-// g++ -D__TEST__ evdev_device.cpp -o evdev -Wall -Werror
-int main(int argc, char** argv)
-{
-  if (argc != 2)
-    {
-      std::cout << "Usage: evdev FILENAME" << std::endl;
-    }
-  else
-    {
-      std::cout << "EvdevDevice: " << argv[1] << std::endl;
-
-      Input::EvdevDevice dev(argv[1]);
-      while(true)
-        {
-          dev.update(0.0f);
-        }
-    }
-  return 0;
-}
-
-#endif
-
 /* EOF */

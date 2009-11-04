@@ -21,7 +21,7 @@
 
 /** Replacement character for invalid UTF-8 sequences */
 static const uint32_t INVALID_UTF8_SEQUENCE = 0xFFFD;
-
+
 bool
 UTF8::is_linebreak_character(uint32_t unicode)
 {
@@ -231,24 +231,5 @@ UTF8::iterator::operator*() const
 {
   return chr;
 }
-
-#ifdef __TEST__
-int main(int argc, char** argv)
-{
-  if (argc != 2)
-    {
-      std::cout << "Usage: " << argv[0] << " TEXT" << std::endl;
-    }
-  else
-    {
-      std::cout << "ASCII: " << std::string(argv[1]).length() << std::endl;
-      std::cout << "UTF8:  " << UTF8::length(argv[1]) << std::endl;
 
-      std::string res = UTF8::substr(argv[1], 1, 1);
-      std::cout << "substr:  " << res.length() << " " << res << std::endl;
-    }
-  return 0;
-}
-#endif
-
 /* EOF */

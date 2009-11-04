@@ -57,36 +57,4 @@ LineIterator::get()
   return std::string(first, line_end);
 }
 
-#ifdef __TEST__
-// g++ line_iterator.cpp -o line_iterator -D__TEST__  -Wall -Werror -ansi -pedantic
-#include <iostream>
-
-void test(const std::string& str)
-{
-  std::cout << "Testing: " << std::endl;
-  std::cout << "in:  \"" << str << "\"" << std::endl;
-
-  std::cout << "out: " << std::flush;
-
-  LineIterator it(str);
-  while(it.next())
-    std::cout << "\"" << it.get() << "\" " << std::flush;
-    
-  std::cout << std::endl;
-  std::cout << std::endl;
-}
-
-int main()
-{
-  test("Test One");
-  test("Test\nTwo");
-  test("\nHello\nThree");
-  test("Hello Four\n");
-  test("Hello\nWorld\nFooBar\n");
-  test("Hello\nWorld\nFooBar\n\n");
-  test("1");
-  return 0;
-}
-#endif
-
 /* EOF */
