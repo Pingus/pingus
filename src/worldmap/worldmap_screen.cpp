@@ -14,25 +14,27 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "worldmap/worldmap_screen.hpp"
+
 #include <iostream>
-#include "gettext.h"
-#include "pingus/fonts.hpp"
+
 #include "display/display.hpp"
-#include "screen/screen_manager.hpp"
+#include "display/scene_context.hpp"
 #include "gui/surface_button.hpp"
+#include "math/math.hpp"
+#include "pingus/fonts.hpp"
+#include "pingus/gettext.h"
 #include "pingus/path_manager.hpp"
 #include "pingus/res_descriptor.hpp"
-#include "sound/sound.hpp"
+#include "pingus/resource.hpp"
 #include "pingus/stat_manager.hpp"
-#include "display/scene_context.hpp"
-#include "math/math.hpp"
+#include "pingus/story_screen.hpp"
+#include "screen/screen_manager.hpp"
+#include "sound/sound.hpp"
+#include "worldmap/pingus.hpp"
 #include "worldmap/worldmap.hpp"
 #include "worldmap/worldmap_component.hpp"
-#include "pingus/resource.hpp"
 #include "worldmap/worldmap_story.hpp"
-#include "worldmap/pingus.hpp"
-#include "pingus/story_screen.hpp"
-#include "worldmap/worldmap_screen.hpp"
 
 namespace WorldmapNS {
 

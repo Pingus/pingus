@@ -23,7 +23,7 @@
 #include "util/system.hpp"
 #include "editor/gui_style.hpp"
 #include "pingus/fonts.hpp"
-#include "gettext.h"
+#include "pingus/gettext.h"
 #include "editor/label.hpp"
 #include "editor/inputbox.hpp"
 #include "util/pathname.hpp"

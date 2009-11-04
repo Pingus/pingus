@@ -23,7 +23,7 @@
 #include "pingus/pingus_error.hpp"
 #include "pingus/string_format.hpp"
 #include "pingus/fonts.hpp"
-#include "gettext.h"
+#include "pingus/gettext.h"
 
 namespace WorldmapNS {
 

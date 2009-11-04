@@ -14,16 +14,16 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "pingus/fonts.hpp"
 #include "display/display.hpp" 
 #include "display/drawing_context.hpp"
+#include "editor/editor_screen.hpp"
+#include "editor/panel.hpp"
+#include "gui/gui_manager.hpp"
+#include "math/vector2i.hpp"
+#include "pingus/fonts.hpp"
+#include "pingus/gettext.h"
 #include "pingus/resource.hpp"
 #include "pingus/sprite.hpp"
-#include "gettext.h"
-#include "math/vector2i.hpp"
-#include "editor/editor_screen.hpp"
-#include "gui/gui_manager.hpp"
-#include "editor/panel.hpp"
 
 namespace Editor {
 

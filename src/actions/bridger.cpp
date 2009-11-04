@@ -21,7 +21,7 @@
 #include "sound/sound.hpp"
 #include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"
-#include "gettext.h"
+#include "pingus/gettext.h"
 #include "util/string_util.hpp"
 #include "actions/bridger.hpp"
 

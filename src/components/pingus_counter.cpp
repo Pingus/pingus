@@ -15,15 +15,15 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <stdio.h>
-#include "gettext.h"
-#include "pingus/resource.hpp"
-#include "pingus/world.hpp"
-#include "pingus/pingu_holder.hpp"
-#include "pingus/server.hpp"
-#include "pingus/globals.hpp"
-#include "pingus/fonts.hpp"
-#include "components/pingus_counter.hpp"
 
+#include "components/pingus_counter.hpp"
+#include "pingus/gettext.h"
+#include "pingus/fonts.hpp"
+#include "pingus/globals.hpp"
+#include "pingus/pingu_holder.hpp"
+#include "pingus/resource.hpp"
+#include "pingus/server.hpp"
+#include "pingus/world.hpp"
 
 PingusCounter::PingusCounter(Server* s)
   : server(s),

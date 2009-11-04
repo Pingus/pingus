@@ -27,7 +27,7 @@
 #include "pingus/res_descriptor.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/fonts.hpp"
-#include "gettext.h"
+#include "pingus/gettext.h"
 #include "editor/file_dialog.hpp"
 #include "pingus/path_manager.hpp"
 #include "util/pathname.hpp"

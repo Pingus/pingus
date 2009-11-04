@@ -22,7 +22,7 @@
 #include "pingus/collision_mask.hpp"
 #include "pingus/pingus_error.hpp"
 #include "math/math.hpp"
-#include "gettext.h"
+#include "pingus/gettext.h"
 #include "pingus/sprite.hpp"
 
 CollisionMap::CollisionMap(int w, int h)

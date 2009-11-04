@@ -14,23 +14,25 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <iostream>
-#include "pingus/font.hpp"
-#include "gettext.h"
-#include "pingus/globals.hpp"
-#include "util/system.hpp"
-#include "pingus/fonts.hpp"
-#include "display/drawing_context.hpp"
-#include "screen/screen_manager.hpp"
-#include "pingus/resource.hpp"
-#include "pingus/path_manager.hpp"
-#include "pingus/start_screen.hpp"
-#include "pingus/plf_res_mgr.hpp"
-#include "pingus/savegame_manager.hpp"
-#include "util/file_reader.hpp"
-#include "input/controller.hpp"
-#include "input/control.hpp"
 #include "worldmap/level_dot.hpp"
+
+#include <iostream>
+
+#include "display/drawing_context.hpp"
+#include "input/control.hpp"
+#include "input/controller.hpp"
+#include "pingus/font.hpp"
+#include "pingus/fonts.hpp"
+#include "pingus/gettext.h"
+#include "pingus/globals.hpp"
+#include "pingus/path_manager.hpp"
+#include "pingus/plf_res_mgr.hpp"
+#include "pingus/resource.hpp"
+#include "pingus/savegame_manager.hpp"
+#include "pingus/start_screen.hpp"
+#include "screen/screen_manager.hpp"
+#include "util/file_reader.hpp"
+#include "util/system.hpp"
 
 namespace WorldmapNS {
 

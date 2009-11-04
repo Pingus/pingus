@@ -47,7 +47,7 @@
 #include "pingus/globals.hpp"
 #include "util/system.hpp"
 #include "util/string_util.hpp"
-#include "gettext.h"
+#include "pingus/gettext.h"
 
 std::string System::userdir;
 std::string System::default_email;

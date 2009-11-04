@@ -20,7 +20,7 @@
 #include "display/display.hpp"
 #include "editor/gui_style.hpp"
 #include "pingus/sprite.hpp"
-#include "gettext.h"
+#include "pingus/gettext.h"
 #include "math/vector2i.hpp"
 #include "editor/editor_screen.hpp"
 #include "display/drawing_context.hpp"
