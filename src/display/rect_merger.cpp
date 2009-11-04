@@ -21,26 +21,26 @@
 #include "math/vector2i.hpp"
 #include "math/size.hpp"
 #include "display/rect_merger.hpp"
-
+
 struct Mark {
   enum Type { START_MARK = 0, END_MARK = 1 } type;
   int pos;
 
   Mark(Type type_, int pos_) : type(type_), pos(pos_) {}
 };
-
+
 // [top, bottom[
 struct Row {
   int top;
   int bottom;
   std::vector<Mark> marks;
 };
- 
+ 
 bool rect_y_sorter(const Rect& lhs, const Rect& rhs)
 {
   return lhs.top < rhs.top;
 }
-
+
 bool rect_xy_sorter(const Rect& lhs, const Rect& rhs)
 {
   if (lhs.left == rhs.left)
@@ -52,7 +52,7 @@ bool rect_xy_sorter(const Rect& lhs, const Rect& rhs)
       return lhs.left < rhs.left;
     }
 }
-
+
 bool mark_sorter(const Mark& lhs, const Mark& rhs)
 {
   if (lhs.pos == rhs.pos)
@@ -261,7 +261,7 @@ void merge_vertical_rectangles(const std::vector<Rect>& rects, std::vector<Rect>
 
   assert(rects.size() >= rects_out.size());
 }
-
+
 /** Takes a list of overlapping rectangles and generates a list of
     non-overlapping rectangles covering the same area.
  */
@@ -299,7 +299,5 @@ void merge_rectangles(const std::vector<Rect>& rects_, std::vector<Rect>& rects_
   merge_vertical_rectangles(rects_out_step1, rects_out);
   //print_rects(std::cerr, rects_out);
 }
-
-#endif
 
 /* EOF */
