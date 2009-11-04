@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_SPRITE_HPP
-#define HEADER_SPRITE_HPP
+#ifndef HEADER_PINGUS_PINGUS_SPRITE_HPP
+#define HEADER_PINGUS_PINGUS_SPRITE_HPP
 
 #include <string>
 #include <boost/shared_ptr.hpp>

@@ -16,8 +16,8 @@
 **  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef HEADER_GALAPIX_MATH_QUAD_TREE_HPP
-#define HEADER_GALAPIX_MATH_QUAD_TREE_HPP
+#ifndef HEADER_PINGUS_MATH_QUAD_TREE_HPP
+#define HEADER_PINGUS_MATH_QUAD_TREE_HPP
 
 #include <vector>
 #include <memory>

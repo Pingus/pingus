@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_USBMOUSE_DRIVER_HPP
-#define HEADER_USBMOUSE_DRIVER_HPP
+#ifndef HEADER_PINGUS_INPUT_USBMOUSE_DRIVER_HPP
+#define HEADER_PINGUS_INPUT_USBMOUSE_DRIVER_HPP
 
 #include <vector>
 #include "input/driver.hpp"

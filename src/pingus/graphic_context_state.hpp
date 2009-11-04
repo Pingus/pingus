@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_GRAPHIC_CONTEXT_STATE_HPP
-#define HEADER_GRAPHIC_CONTEXT_STATE_HPP
+#ifndef HEADER_PINGUS_PINGUS_GRAPHIC_CONTEXT_STATE_HPP
+#define HEADER_PINGUS_PINGUS_GRAPHIC_CONTEXT_STATE_HPP
 
 #include <boost/shared_ptr.hpp>
 #include "math/rect.hpp"

@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PATHNAME_HPP
-#define HEADER_PATHNAME_HPP
+#ifndef HEADER_PINGUS_UTIL_PATHNAME_HPP
+#define HEADER_PINGUS_UTIL_PATHNAME_HPP
 
 #include <iosfwd>
 #include <string>

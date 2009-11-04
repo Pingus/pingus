@@ -17,8 +17,8 @@
 /** This file defines some global variables, most of them are used to
     keep the values of command line arguments. */
 
-#ifndef HEADER_PINGUS_GLOBALS_HPP
-#define HEADER_PINGUS_GLOBALS_HPP
+#ifndef HEADER_PINGUS_PINGUS_GLOBALS_HPP
+#define HEADER_PINGUS_PINGUS_GLOBALS_HPP
 
 #include "pingus/pingus.hpp"
 #include <string>

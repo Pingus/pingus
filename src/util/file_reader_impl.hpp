@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_FILE_READER_IMPL_HPP
-#define HEADER_FILE_READER_IMPL_HPP
+#ifndef HEADER_PINGUS_UTIL_FILE_READER_IMPL_HPP
+#define HEADER_PINGUS_UTIL_FILE_READER_IMPL_HPP
 
 #include <vector>
 #include <string>

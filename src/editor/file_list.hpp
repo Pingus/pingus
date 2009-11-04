@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_FILE_LIST_HPP
-#define HEADER_FILE_LIST_HPP
+#ifndef HEADER_PINGUS_EDITOR_FILE_LIST_HPP
+#define HEADER_PINGUS_EDITOR_FILE_LIST_HPP
 
 #include <boost/signal.hpp>
 

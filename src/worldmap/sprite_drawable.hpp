@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_SURFACE_DRAWABLE_HPP
-#define HEADER_SURFACE_DRAWABLE_HPP
+#ifndef HEADER_PINGUS_WORLDMAP_SPRITE_DRAWABLE_HPP
+#define HEADER_PINGUS_WORLDMAP_SPRITE_DRAWABLE_HPP
 
 #include "pingus/sprite.hpp"
 #include "math/vector3f.hpp"

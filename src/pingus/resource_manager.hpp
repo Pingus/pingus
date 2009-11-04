@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_RESOURCE_MANAGER_HPP
-#define HEADER_RESOURCE_MANAGER_HPP
+#ifndef HEADER_PINGUS_PINGUS_RESOURCE_MANAGER_HPP
+#define HEADER_PINGUS_PINGUS_RESOURCE_MANAGER_HPP
 
 #include <string>
 #include <map>

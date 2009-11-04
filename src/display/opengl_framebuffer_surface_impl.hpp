@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_OPENGL_FRAMEBUFFER_SURFACE_IMPL_HPP
-#define HEADER_OPENGL_FRAMEBUFFER_SURFACE_IMPL_HPP
+#ifndef HEADER_PINGUS_DISPLAY_OPENGL_FRAMEBUFFER_SURFACE_IMPL_HPP
+#define HEADER_PINGUS_DISPLAY_OPENGL_FRAMEBUFFER_SURFACE_IMPL_HPP
 
 #if defined(_WIN32)
 #define WIN32_LEAN_AND_MEAN

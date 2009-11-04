@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_WORLDOBJ_HPP
-#define HEADER_PINGUS_WORLDOBJ_HPP
+#ifndef HEADER_PINGUS_PINGUS_WORLDOBJ_HPP
+#define HEADER_PINGUS_PINGUS_WORLDOBJ_HPP
 
 #include "pingus/pingus.hpp"
 #include "util/file_reader.hpp"

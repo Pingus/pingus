@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_OBJECT_SELECTOR_SET_HPP
-#define HEADER_OBJECT_SELECTOR_SET_HPP
+#ifndef HEADER_PINGUS_EDITOR_OBJECT_SELECTOR_SET_HPP
+#define HEADER_PINGUS_EDITOR_OBJECT_SELECTOR_SET_HPP
 
 #include <vector>
 #include "math/size.hpp"

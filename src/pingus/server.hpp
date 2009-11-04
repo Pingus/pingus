@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_SERVER_HPP
-#define HEADER_PINGUS_SERVER_HPP
+#ifndef HEADER_PINGUS_PINGUS_SERVER_HPP
+#define HEADER_PINGUS_PINGUS_SERVER_HPP
 
 #include "pingus/server_event.hpp"
 #include "pingus/action_holder.hpp"

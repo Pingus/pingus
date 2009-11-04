@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_DRAWING_CONTEXT_HPP
-#define HEADER_DRAWING_CONTEXT_HPP
+#ifndef HEADER_PINGUS_DISPLAY_DRAWING_CONTEXT_HPP
+#define HEADER_PINGUS_DISPLAY_DRAWING_CONTEXT_HPP
 
 #include "SDL.h"
 #include <vector>

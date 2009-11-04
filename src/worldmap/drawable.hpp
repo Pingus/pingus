@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_DRAWABLE_HPP
-#define HEADER_PINGUS_DRAWABLE_HPP
+#ifndef HEADER_PINGUS_WORLDMAP_DRAWABLE_HPP
+#define HEADER_PINGUS_WORLDMAP_DRAWABLE_HPP
 
 #include "pingus/pingus_error.hpp"
 #include "util/file_reader.hpp"

@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_VECTOR2_HPP
-#define HEADER_VECTOR2_HPP
+#ifndef HEADER_PINGUS_MATH_VECTOR2I_HPP
+#define HEADER_PINGUS_MATH_VECTOR2I_HPP
 
 #include <iosfwd>
 

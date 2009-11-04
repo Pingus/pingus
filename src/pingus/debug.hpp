@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_DEBUG_HPP
-#define HEADER_PINGUS_DEBUG_HPP
+#ifndef HEADER_PINGUS_PINGUS_DEBUG_HPP
+#define HEADER_PINGUS_PINGUS_DEBUG_HPP
 
 #include "util/debug_stream.hpp"
 

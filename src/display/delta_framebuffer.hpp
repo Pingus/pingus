@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_DELTA_FRAMEBUFFER_HPP
-#define HEADER_DELTA_FRAMEBUFFER_HPP
+#ifndef HEADER_PINGUS_DISPLAY_DELTA_FRAMEBUFFER_HPP
+#define HEADER_PINGUS_DISPLAY_DELTA_FRAMEBUFFER_HPP
 
 #include <memory>
 #include <map>

@@ -30,8 +30,8 @@
 //! clanCore="System"
 //! header=core.h
 
-#ifndef HEADER_COMMAND_LINE_HPP
-#define HEADER_COMMAND_LINE_HPP
+#ifndef HEADER_PINGUS_UTIL_COMMAND_LINE_HPP
+#define HEADER_PINGUS_UTIL_COMMAND_LINE_HPP
 
 #if _MSC_VER > 1000
 #pragma once
