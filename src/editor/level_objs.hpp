@@ -137,17 +137,6 @@ protected:
   /** Marks is this object is currently selected */
   bool selected;
 
-  /** Loads any generic images necessary for objects with HAS_FAKE_SURFACE */
-  void load_generic_surface();
-
-  /** Write any additional properties to the file for this type */
-  virtual void write_extra_properties(FileWriter& fw) { }
-	
-  /** Sets a position vector of where the sprite is located based 
-      on the "translation origin" specified in the sprite file. */
-  void set_translated_pos();
-
-
   /////////////////////////////////////////////////////////
   /// Retrieve info
 public:
@@ -219,6 +208,7 @@ public:
 public:
   /** Default Constructor */
   LevelObj(const std::string obj_name, LevelImpl* level_);
+  LevelObj(const LevelObj& rhs);
 
   /** Destructor */
   virtual ~LevelObj() { }
@@ -328,6 +318,20 @@ public:
   void set_large_stars(int n)  {   large_stars = n; }
 
   LevelObj* duplicate(const Vector2i& offset) const;
+
+private:
+  /** Loads any generic images necessary for objects with HAS_FAKE_SURFACE */
+  void load_generic_surface();
+
+  /** Write any additional properties to the file for this type */
+  virtual void write_extra_properties(FileWriter& fw) { }
+	
+  /** Sets a position vector of where the sprite is located based 
+      on the "translation origin" specified in the sprite file. */
+  void set_translated_pos();
+
+private:
+  LevelObj & operator=(const LevelObj&);
 };
 
 } // namespace Editor 

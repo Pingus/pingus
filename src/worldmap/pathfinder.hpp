@@ -26,6 +26,11 @@ struct PathfinderResult
 {
   std::vector<NodeId> path;
   float cost;
+
+  PathfinderResult() :
+    path(),
+    cost()
+  {}
 };
 
 /** */
@@ -74,8 +79,11 @@ private:
 
 public:
   /** Find pathes to all other nodes, by starting from the node \a s */
-  Pathfinder (Graph<T, C>& g, NodeId s)
-    : graph (g), start (s), open_nodes(CostComp(*this))
+  Pathfinder (Graph<T, C>& g, NodeId s) :
+    graph(g), 
+    start(s), 
+    open_nodes(CostComp(*this)),
+    stat_graph()
   {
     stat_graph.resize (graph.max_node_handler_value());
     push_to_open (start);

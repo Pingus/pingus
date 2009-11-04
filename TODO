@@ -30,9 +30,10 @@ Roadmap for Pingus 0.8.0:
 Code Cleanup
 ============
 
-* use BuildDir in SConstruct
-
 * use wildcard in source file specification
+
+* Editor ObjectSelector is broken, graphics are not clipped (dirty
+  rectangle renderers fault)
 
 
 OLPC Issues

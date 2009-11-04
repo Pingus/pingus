@@ -29,6 +29,7 @@ namespace WorldmapNS {
 Pingus::Pingus (PathGraph* arg_path) :
   Drawable("pingus"),
   path(arg_path),
+  sprite(),
   sprite_standing("core/worldmap/pingus_standing"),
   arrow("core/worldmap/arrow"),
   current_node(),

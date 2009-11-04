@@ -28,30 +28,72 @@
 namespace Editor {
 
 // Default constructor
-LevelObj::LevelObj(std::string obj_name, LevelImpl* level_)
-  : level(level_),
-    pos(Vector3f(0,0,0)),
-    section_name(obj_name),
-    speed(0),
-    parallax(0.0),
-    repeat(0),
-    owner_id(0),
-    release_rate(0),
-    scroll_x(0),
-    scroll_y(0),
-    stretch_x(false),
-    stretch_y(false),
-    keep_aspect(false),
-    para_x(0),
-    para_y(0),
-    color(0,0,0,0),
-    attribs(get_attributes(obj_name)),
-    removed(false),
-    selected(false)
+LevelObj::LevelObj(std::string obj_name, LevelImpl* level_) :
+  sprite(),
+  level(level_),
+  desc(),
+  pos(Vector3f(0,0,0)),
+  orig_pos(),
+  section_name(obj_name),
+  object_type(),
+  ground_type(),
+  speed(0),
+  parallax(0.0),
+  repeat(0),
+  owner_id(0),
+  release_rate(0),
+  direction(),
+  scroll_x(0),
+  scroll_y(0),
+  stretch_x(false),
+  stretch_y(false),
+  keep_aspect(false),
+  para_x(0),
+  para_y(0),
+  color(0,0,0,0),
+  origin(),
+  small_stars(),
+  middle_stars(),
+  large_stars(),
+  attribs(get_attributes(obj_name)),
+  removed(false),
+  selected(false)
 {
   if (attribs & HAS_SURFACE_FAKE)
     load_generic_surface();
 }
+
+LevelObj::LevelObj(const LevelObj& rhs) :
+  sprite(rhs.sprite),
+  level(rhs.level),
+  desc(rhs.desc),
+  pos(rhs.pos),
+  orig_pos(rhs.orig_pos),
+  section_name(rhs.section_name),
+  object_type(rhs.object_type),
+  ground_type(rhs.ground_type),
+  speed(rhs.speed),
+  parallax(rhs.parallax),
+  repeat(rhs.repeat),
+  owner_id(rhs.owner_id),
+  release_rate(rhs.release_rate),
+  direction(rhs.direction),
+  scroll_x(rhs.scroll_x),
+  scroll_y(rhs.scroll_y),
+  stretch_x(rhs.stretch_x),
+  stretch_y(rhs.stretch_y),
+  keep_aspect(rhs.keep_aspect),
+  para_x(rhs.para_x),
+  para_y(rhs.para_y),
+  color(rhs.color),
+  origin(rhs.origin),
+  small_stars(rhs.small_stars),
+  middle_stars(rhs.middle_stars),
+  large_stars(rhs.large_stars),
+  attribs(rhs.attribs),
+  removed(rhs.removed),
+  selected(rhs.selected)
+{}
 
 unsigned int
 LevelObj::get_attributes(std::string obj_type)
@@ -73,11 +115,11 @@ LevelObj::get_attributes(std::string obj_type)
   else if (obj_type == "exit")
     return HAS_OWNER | HAS_SURFACE;
   else
-    {
-      std::cout << "Error: LevelObj::get_attributes(): unknown object type: '"
-                << obj_type << "'" << std::endl;
-      return 0;
-    }
+  {
+    std::cout << "Error: LevelObj::get_attributes(): unknown object type: '"
+              << obj_type << "'" << std::endl;
+    return 0;
+  }
 }
 
 void 
@@ -92,38 +134,38 @@ void
 LevelObj::draw(DrawingContext &gc)
 {
   if (attribs & HAS_SURFACE || attribs & HAS_SURFACE_FAKE)
+  {
+    if (attribs & HAS_REPEAT)
     {
-      if (attribs & HAS_REPEAT)
-        {
-          for(int x = int(pos.x); x < pos.x + sprite.get_width()*repeat; x += sprite.get_width())
-            gc.draw(sprite, Vector3f(static_cast<float>(x), pos.y, pos.z));
-        }
-#if 0
-      else if(attribs & HAS_STRETCH)
-        {
-          // Surface Background - tile it
-          for (int x = 0; x < level->size.width; x += sprite.get_width())
-            for (int y = 0; y < level->size.height; y += sprite.get_height())
-              gc.draw(sprite, Vector3f((float)x, (float)y, pos.z));
-        }
-#endif
-      else if (attribs & HAS_COLOR && section_name == "solidcolor-background")
-        { // FIXME: Should we have the object type in non-string form?
-          gc.draw_fillrect(get_rect(), color, pos.z);
-          gc.draw(sprite, pos);
-        }
-      else
-        {
-          gc.draw(sprite, pos);
-        }
-
-      // If selected, draw a highlighted box around it
-      if (selected)
-        {
-          gc.draw_fillrect(get_rect(), Color(255,0,0,50), pos.z);
-          gc.draw_rect(get_rect(), Color(255,0,0), pos.z);
-        }
+      for(int x = int(pos.x); x < pos.x + sprite.get_width()*repeat; x += sprite.get_width())
+        gc.draw(sprite, Vector3f(static_cast<float>(x), pos.y, pos.z));
     }
+#if 0
+    else if(attribs & HAS_STRETCH)
+    {
+      // Surface Background - tile it
+      for (int x = 0; x < level->size.width; x += sprite.get_width())
+        for (int y = 0; y < level->size.height; y += sprite.get_height())
+          gc.draw(sprite, Vector3f((float)x, (float)y, pos.z));
+    }
+#endif
+    else if (attribs & HAS_COLOR && section_name == "solidcolor-background")
+    { // FIXME: Should we have the object type in non-string form?
+      gc.draw_fillrect(get_rect(), color, pos.z);
+      gc.draw(sprite, pos);
+    }
+    else
+    {
+      gc.draw(sprite, pos);
+    }
+
+    // If selected, draw a highlighted box around it
+    if (selected)
+    {
+      gc.draw_fillrect(get_rect(), Color(255,0,0,50), pos.z);
+      gc.draw_rect(get_rect(), Color(255,0,0), pos.z);
+    }
+  }
 }
 
 bool
@@ -133,17 +175,17 @@ LevelObj::is_at(int x, int y)
 #if 0  
   // old code
   if (attribs & HAS_SURFACE || attribs & HAS_SURFACE_FAKE)
-    {
-      Vector2i offset = sprite.get_offset();
-      return (x > pos.x - offset.x &&
-              x < pos.x - offset.x + sprite.get_width() && 
-              y > pos.y - offset.y && 
-              y < pos.y - offset.y + sprite.get_height());
-    }
+  {
+    Vector2i offset = sprite.get_offset();
+    return (x > pos.x - offset.x &&
+            x < pos.x - offset.x + sprite.get_width() && 
+            y > pos.y - offset.y && 
+            y < pos.y - offset.y + sprite.get_height());
+  }
   else
-    {
-      return false;
-    }
+  {
+    return false;
+  }
 #endif 
 }
 
@@ -169,9 +211,9 @@ void
 LevelObj::refresh_sprite()
 {
   if (attribs & HAS_SURFACE || attribs & HAS_SURFACE_FAKE)
-    {
-      sprite = Sprite(desc);
-    }
+  {
+    sprite = Sprite(desc);
+  }
 }
 
 // Set the modifier and actually modify the sprite loaded in memory
@@ -216,12 +258,12 @@ LevelObj::write_properties(FileWriter &fw)
     fw.write_string("type", ground_type);
 
   if (attribs_ & HAS_SURFACE)
-    {
-      fw.begin_section("surface");
-      fw.write_string("image", desc.res_name);
-      fw.write_string("modifier", ResourceModifierNS::rs_to_string(desc.modifier));
-      fw.end_section();	// surface
-    }
+  {
+    fw.begin_section("surface");
+    fw.write_string("image", desc.res_name);
+    fw.write_string("modifier", ResourceModifierNS::rs_to_string(desc.modifier));
+    fw.end_section();	// surface
+  }
 
   fw.write_vector("position", pos);
       
@@ -240,28 +282,28 @@ LevelObj::write_properties(FileWriter &fw)
   if (attribs_ & HAS_COLOR)
     fw.write_color("color", color);
   if (attribs_ & HAS_STRETCH)
-    {
-      fw.write_bool("stretch-x", stretch_x);
-      fw.write_bool("stretch-y", stretch_y);
-      fw.write_bool("keep-aspect", keep_aspect);
-    }
+  {
+    fw.write_bool("stretch-x", stretch_x);
+    fw.write_bool("stretch-y", stretch_y);
+    fw.write_bool("keep-aspect", keep_aspect);
+  }
   if (attribs_ & HAS_SCROLL)
-    {
-      fw.write_float("scroll-x", scroll_x);
-      fw.write_float("scroll-y", scroll_y);
-    }
+  {
+    fw.write_float("scroll-x", scroll_x);
+    fw.write_float("scroll-y", scroll_y);
+  }
   if (attribs_ & HAS_PARA)
-    {
-      fw.write_float("para-x", para_x);
-      fw.write_float("para-y", para_y);
-    }
+  {
+    fw.write_float("para-x", para_x);
+    fw.write_float("para-y", para_y);
+  }
 
   if (attribs_ & HAS_STARFIELD)
-    {
-      fw.write_int("small-stars", small_stars);
-      fw.write_int("middle-stars", middle_stars);
-      fw.write_int("large-stars", large_stars);
-    }
+  {
+    fw.write_int("small-stars", small_stars);
+    fw.write_int("middle-stars", middle_stars);
+    fw.write_int("large-stars", large_stars);
+  }
 
   // Writes any extra properties that may be necessary (virtual function)
   write_extra_properties(fw);
@@ -273,23 +315,23 @@ void
 LevelObj::load_generic_surface()
 {
   if (section_name == "entrance")
-    {
-      desc.res_name = "entrances/generic";
-      desc.modifier = ResourceModifierNS::ROT0;
-      sprite = Sprite(desc);
-    }
+  {
+    desc.res_name = "entrances/generic";
+    desc.modifier = ResourceModifierNS::ROT0;
+    sprite = Sprite(desc);
+  }
   else if (section_name == "solidcolor-background")
-    {
-      desc.res_name = "core/editor/solidcolorbackground";
-      desc.modifier = ResourceModifierNS::ROT0;
-      sprite = Sprite(desc);
-    }
+  {
+    desc.res_name = "core/editor/solidcolorbackground";
+    desc.modifier = ResourceModifierNS::ROT0;
+    sprite = Sprite(desc);
+  }
   else if (section_name == "starfield-background")
-    {
-      desc.res_name = "core/editor/starfield";
-      desc.modifier = ResourceModifierNS::ROT0;
-      sprite = Sprite(desc);
-    }
+  {
+    desc.res_name = "core/editor/starfield";
+    desc.modifier = ResourceModifierNS::ROT0;
+    sprite = Sprite(desc);
+  }
 }
 
 void
@@ -314,15 +356,15 @@ Rect
 LevelObj::get_rect() const
 {
   if (attribs & HAS_REPEAT)
-    {
-      return Rect(Vector2i((int)pos.x, (int)pos.y) - sprite.get_offset(),
-                  Size(sprite.get_width() * repeat, sprite.get_height()));
-    }
+  {
+    return Rect(Vector2i((int)pos.x, (int)pos.y) - sprite.get_offset(),
+                Size(sprite.get_width() * repeat, sprite.get_height()));
+  }
   else
-    {
-      return Rect(Vector2i((int)pos.x, (int)pos.y) - sprite.get_offset(),
-                  Size(sprite.get_width(), sprite.get_height()));
-    }
+  {
+    return Rect(Vector2i((int)pos.x, (int)pos.y) - sprite.get_offset(),
+                Size(sprite.get_width(), sprite.get_height()));
+  }
 }
 
 LevelObj*

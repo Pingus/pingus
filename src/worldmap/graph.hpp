@@ -34,18 +34,35 @@ template<class NodeType>
 class Node
 {
 public:
-  Node (const NodeType& d)
-    : data (d)
+  NodeType data;
+  std::vector<EdgeId> next;
+
+public:
+  Node (const NodeType& d) :
+    data(d),
+    next()
   {}
 
-  Node& operator= (const NodeType& d)
+  Node (const Node& rhs) :
+    data(rhs.data),
+    next(rhs.next)
+  {}
+
+  Node& operator=(const Node& rhs)
+  {
+    if (this != &rhs)
+    {
+      data = rhs.data;
+      next = rhs.next;
+    }
+    return *this;
+  }
+
+  Node& operator=(const NodeType& d)
   {
     data = d;
     return *this;
   }
-
-  NodeType data;
-  std::vector<EdgeId> next;
 };
 
 template<class EdgeType>
@@ -73,7 +90,9 @@ private:
   std::vector<Edge<EdgeType> > edges;
 
 public:
-  Graph ()
+  Graph() :
+    nodes(),
+    edges()
   {
   }
 
@@ -94,7 +113,7 @@ public:
 
   NodeId add_node (NodeType d)
   {
-    nodes.push_back (Node<NodeType>(d));
+    nodes.push_back(Node<NodeType>(d));
     return NodeId (nodes.size ()-1);
   }
 
@@ -143,14 +162,14 @@ public:
     // FIXME: this could be done faster with an adjacense matrix
     for (typename std::vector<Edge<EdgeType> >::iterator i = edges.begin();
          i != edges.end(); ++i)
-      {
-        if (i->source == source
-            && i->destination == destination)
-          return *i;
-      }
+    {
+      if (i->source == source
+          && i->destination == destination)
+        return *i;
+    }
     std::cout << "couldn't resolve edge: source=" << source << " destination=" << destination << std::endl;
     assert(false);
-	return *((Edge<EdgeType>*) 0);
+    return *((Edge<EdgeType>*) 0);
   }
 
   /* FIXME: This might give problems under MSVC, so it could be better to not use it */
