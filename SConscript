@@ -377,7 +377,7 @@ def CheckMyProgram(context, prgn):
 Alias('configure')
     
 if ('configure' in COMMAND_LINE_TARGETS) or \
-   not (os.path.exists('config.py') and os.path.exists('config.h')) and \
+   not (File('config.py').exists() and File('config.h').exists()) and \
    not GetOption('clean'):
     opts = DefineOptions(None, ARGUMENTS)
     env = Environment(options = opts)
