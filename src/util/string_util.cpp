@@ -27,14 +27,14 @@ StringUtil::to_lower(const std::string &str)
        i != lower_impl.end();
        ++i )
     {
-      *i = tolower(*i);
+      *i = static_cast<char>(tolower(*i));
     }
 
   return lower_impl;
 }
 
 std::string
-StringUtil::to_upper(const std::string &str)
+StringUtil::to_upper(const std::string& str)
 {
   std::string upper_impl = str;
 
@@ -42,7 +42,7 @@ StringUtil::to_upper(const std::string &str)
        i != upper_impl.end();
        ++i )
     {
-      *i = toupper(*i);
+      *i = static_cast<char>(toupper(*i));
     }
 
   return upper_impl;

@@ -120,8 +120,8 @@ Surface::blit(const Surface& src, int x, int y)
     {
       SDL_Rect dstrect;
 
-      dstrect.x = x;
-      dstrect.y = y;
+      dstrect.x = static_cast<Sint16>(x);
+      dstrect.y = static_cast<Sint16>(y);
 
       SDL_BlitSurface(src.get_surface(), NULL, get_surface(), &dstrect);
     }
@@ -289,8 +289,8 @@ Surface::subsection(const Rect& rect) const
   new_surface = Blitter::create_surface_from_format(impl->surface,
                                                     rect.get_width(), rect.get_height());
   SDL_Rect dst_rect;
-  dst_rect.x = rect.left;
-  dst_rect.y = rect.top;
+  dst_rect.x = static_cast<Sint16>(rect.left);
+  dst_rect.y = static_cast<Sint16>(rect.top);
 
   if (impl->surface->format->palette)
     SDL_SetPalette(new_surface, SDL_LOGPAL, impl->surface->format->palette->colors, 

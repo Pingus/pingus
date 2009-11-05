@@ -225,10 +225,10 @@ Credits::Credits() :
     switch ((*i)[0])
     {
       case '-':
-        end_offset += font.get_height() + 5;
+        end_offset += static_cast<float>(font.get_height() + 5);
         break;
       case '_':
-        end_offset += font_small.get_height() + 5;
+        end_offset += static_cast<float>(font_small.get_height() + 5);
         break;
       case 'n':
         end_offset += 50;

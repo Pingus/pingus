@@ -54,7 +54,7 @@ DebugStream::Buffer::overflow (int c)
       	  str = "";
       	}
     }
-  str += c;
+  str += static_cast<char>(c);
   put_line (str);
 
   setp (char_buffer, char_buffer + buffersize - 1);

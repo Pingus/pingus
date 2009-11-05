@@ -40,10 +40,10 @@ Boarder::update ()
 
   if (on_ground())
   {
-    if (speed < 15.0)
-      speed += 15.0 * 25.0f/1000.0f;
+    if (speed < 15.0f)
+      speed += 15.0f * 25.0f/1000.0f;
     else {
-      speed = 15.0;
+      speed = 15.0f;
     }
 
     // Incremental update so that we don't skip pixels

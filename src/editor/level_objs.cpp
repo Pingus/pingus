@@ -138,7 +138,9 @@ LevelObj::draw(DrawingContext &gc)
     if (attribs & HAS_REPEAT)
     {
       for(int x = int(pos.x); x < pos.x + sprite.get_width()*repeat; x += sprite.get_width())
+      {
         gc.draw(sprite, Vector3f(static_cast<float>(x), pos.y, pos.z));
+      }
     }
 #if 0
     else if(attribs & HAS_STRETCH)

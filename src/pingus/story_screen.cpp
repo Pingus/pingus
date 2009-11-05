@@ -116,9 +116,13 @@ public:
     gc.print_right(Fonts::chalk_small, Vector2i(x_pos, y_pos), _("skip"));
   }
 
-  bool is_at(int x, int y) {
-	  return x > x_pos - Fonts::chalk_small.get_width(_("skip")) && x < x_pos
-		&& y > y_pos && y < y_pos + Fonts::chalk_small.get_height();
+  bool is_at(int x, int y) 
+  {
+    return
+      x > x_pos - Fonts::chalk_small.get_width(_("skip")) && 
+      x < x_pos &&
+      y > y_pos &&
+      y < y_pos + Fonts::chalk_small.get_height();
   }
 
   void on_pointer_enter()
