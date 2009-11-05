@@ -1,6 +1,4 @@
 ##  -*- python -*-
-##  $Id: pingus_main.hxx,v 1.14 2003/10/18 12:11:30 grumbel Exp $
-##
 ##  Pingus - A free Lemmings clone
 ##  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>,
 ##                     Francois Beerten
@@ -22,112 +20,91 @@
 import sys, os
 import SCons.Util
 
-pingus_sources = \
-               Glob('external/binreloc-2.0/*.c') + \
-               Glob('external/tinygettext/*.cpp') + \
-               Glob('src/editor/*.cpp') + \
-               Glob('src/engine/display/*.cpp') + \
-               Glob('src/engine/gui/*.cpp') + \
-               Glob('src/engine/input/*.cpp') + \
-               Glob('src/engine/screen/*.cpp') + \
-               Glob('src/engine/sound/*.cpp') + \
-               Glob('src/lisp/*.cpp') + \
-               Glob('src/math/*.cpp') + \
-               Glob('src/pingus/*.cpp') + \
-               Glob('src/pingus/actions/*.cpp') + \
-               Glob('src/pingus/colliders/*.cpp') + \
-               Glob('src/pingus/components/*.cpp') + \
-               Glob('src/pingus/movers/*.cpp') + \
-               Glob('src/pingus/particles/*.cpp') + \
-               Glob('src/pingus/worldmap/*.cpp') + \
-               Glob('src/pingus/worldobjs/*.cpp') + \
-               Glob('src/util/*.cpp')
-
 class _SpaceListOptionClass:
-   """An option type for space-separated lists with arbitrary elements."""
-   def CheckDir(self, val):
-      if not os.path.isdir(val):
-         raise SCons.Errors.UserError("No directory at %s" % val)
+    """An option type for space-separated lists with arbitrary elements."""
+    def CheckDir(self, val):
+        if not os.path.isdir(val):
+            raise SCons.Errors.UserError("No directory at %s" % val)
 
-   def _convert(self, key, val, env):
-      if SCons.Util.is_List(val): # prefer val if it's already a list
-         return val
-      elif len(val) > 0 and val[0] == '[' and val[-1] == ']':
-         # or a repr of a list
-         return eval(val)
-      elif env: # otherwise, use whatever's in env
-         val = env[key]
-         if not SCons.Util.is_List(val):
-            val = val.split(None)
-         return val
-      else: # val was substituted into a string, losing its structure
-         # We'll be called again with env, hopefully that's more useful
-         raise TypeError("try again with the environment")
+    def _convert(self, key, val, env):
+        if SCons.Util.is_List(val): # prefer val if it's already a list
+            return val
+        elif len(val) > 0 and val[0] == '[' and val[-1] == ']':
+            # or a repr of a list
+            return eval(val)
+        elif env: # otherwise, use whatever's in env
+            val = env[key]
+            if not SCons.Util.is_List(val):
+                val = val.split(None)
+            return val
+        else: # val was substituted into a string, losing its structure
+            # We'll be called again with env, hopefully that's more useful
+            raise TypeError("try again with the environment")
 
-   def _validate(self, val, env, check, converter):
-      for i in converter(val, env):
-         if check(i):
-            return True
-      return False
+    def _validate(self, val, env, check, converter):
+        for i in converter(val, env):
+            if check(i):
+                return True
+        return False
 
-   def __call__(self, key, help, check=None, default=[]):
-      def converter(val, env = None):
-         return self._convert(key, val, env)
- 
-      validator = None
-      if check is not None:
-         validator = lambda k, v, e: self._validate(v, e, check, converter)
-      return (key, help, default, validator, converter)
- 
+    def __call__(self, key, help, check=None, default=[]):
+        def converter(val, env = None):
+            return self._convert(key, val, env)
+
+        validator = None
+        if check is not None:
+            validator = lambda k, v, e: self._validate(v, e, check, converter)
+        return (key, help, default, validator, converter)
+
 SpaceListOption = _SpaceListOptionClass()
 
 def DefineOptions(filename, args):
-   opts = Variables(filename, args)
-   opts.Add('CC', 'C Compiler', 'gcc')
-   opts.Add('CXX', 'C++ Compiler', 'g++')
+    opts = Variables(filename, args)
+    opts.Add('CC', 'C Compiler', 'gcc')
+    opts.Add('CXX', 'C++ Compiler', 'g++')
 #   opts.Add('debug', 'Build with debugging options', 0)
 #   opts.Add('profile', 'Build with profiling support', 0)
 
-   opts.Add('CPPPATH',    'Additional preprocessor paths', [])
-   opts.Add('LIBPATH',    'Additional library paths',      [])
-   opts.Add('CPPFLAGS',   'Additional preprocessor flags', [])
-   opts.Add('CPPDEFINES', 'defined constants', [])
-   opts.Add('LIBS',       'Additional libraries', [])
-   opts.Add('CCFLAGS',    'C Compiler flags', [])
-   opts.Add('CXXFLAGS',   'C++ Compiler flags', [])
-   opts.Add('LINKFLAGS',  'Linker Compiler flags', [])
+    opts.Add('CPPPATH',    'Additional preprocessor paths', [])
+    opts.Add('LIBPATH',    'Additional library paths',      [])
+    opts.Add('CPPFLAGS',   'Additional preprocessor flags', [])
+    opts.Add('CPPDEFINES', 'defined constants', [])
+    opts.Add('LIBS',       'Additional libraries', [])
+    opts.Add('CCFLAGS',    'C Compiler flags', [])
+    opts.Add('CXXFLAGS',   'C++ Compiler flags', [])
+    opts.Add('LINKFLAGS',  'Linker Compiler flags', [])
 
-   opts.Add(BoolVariable('with_opengl',        'Build with OpenGL support', True))
-   opts.Add(BoolVariable('with_xinput',        'Build with Xinput support', False))
-   opts.Add(BoolVariable('with_linuxusbmouse', 'Build with Linux USB mouse support', True))
-   opts.Add(BoolVariable('with_linuxevdev',    'Build with Linux evdev support', True))
-   opts.Add(BoolVariable('with_wiimote',       'Build with Wiimote support', False))
-   opts.Add(BoolVariable('ignore_errors',      'Ignore any fatal configuration errors', False))
-   opts.Add('optional_sources', 'Additional source files', [])
-   return opts
+    opts.Add(BoolVariable('with_opengl',        'Build with OpenGL support', True))
+    opts.Add(BoolVariable('with_xinput',        'Build with Xinput support', False))
+    opts.Add(BoolVariable('with_linuxusbmouse', 'Build with Linux USB mouse support', True))
+    opts.Add(BoolVariable('with_linuxevdev',    'Build with Linux evdev support', True))
+    opts.Add(BoolVariable('with_wiimote',       'Build with Wiimote support', False))
+    opts.Add(BoolVariable('ignore_errors',      'Ignore any fatal configuration errors', False))
+    opts.Add('optional_sources', 'Additional source files', [])
+    return opts
 
 def CheckSDLLib(context, sdllib):
-   """
-   On some platforms, SDL does this ugly redefine-main thing, that can
-   interact badly with CheckLibWithHeader.
-   """
-   lib = "SDL_%s" % sdllib
-   context.Message('Checking for %s...' % lib)
-   text = """
+    """
+    On some platforms, SDL does this ugly redefine-main thing, that can
+    interact badly with CheckLibWithHeader.
+    """
+    lib = "SDL_%s" % sdllib
+    context.Message('Checking for %s...' % lib)
+    text = """
 #include "SDL.h"
 #include "%s.h"
 int main(int argc, char* argv[]) { return 0; }
 """ % lib
-   context.AppendLIBS(lib)
-   if context.BuildProg(text, ".cpp"):
-      context.Result("failed")
-      return False
-   else:
-      context.Result("ok")
-      return True
+    context.AppendLIBS(lib)
+    if context.BuildProg(text, ".cpp"):
+        context.Result("failed")
+        return False
+    else:
+        context.Result("ok")
+        return True
 
 def CheckIconv(context):
-   text = """
+    text = """
 #include <iconv.h>
 int main() {
    %s char *foo;
@@ -135,27 +112,27 @@ int main() {
    return 0;
 }
 """
-   config.CheckLibWithHeader('iconv', 'iconv.h', 'c++') # Ok to fail
-   context.Message('Check how to call iconv...')
+    config.CheckLibWithHeader('iconv', 'iconv.h', 'c++') # Ok to fail
+    context.Message('Check how to call iconv...')
 
-   for i in ['', 'const']:
-      if config.TryCompile(text % i, ".cpp"):
-         context.Result("use '%s'" % i)
-         return i
-   context.Result("failed")
-   return False
+    for i in ['', 'const']:
+        if config.TryCompile(text % i, ".cpp"):
+            context.Result("use '%s'" % i)
+            return i
+    context.Result("failed")
+    return False
 
 def CheckMyProgram(context, prgn):
-   context.Message('Checking for %s...' % prgn)
-   for i in context.env['ENV']['PATH'].split(":"):
-      if os.path.exists(i + "/sdl-config"):
-         context.Result(i + "/sdl-config")
-         return True
-   context.Result("failed")
-   return False
+    context.Message('Checking for %s...' % prgn)
+    for i in context.env['ENV']['PATH'].split(":"):
+        if os.path.exists(i + "/sdl-config"):
+            context.Result(i + "/sdl-config")
+            return True
+    context.Result("failed")
+    return False
 
 Alias('configure')
-    
+
 if ('configure' in COMMAND_LINE_TARGETS) or \
    not (File('config.py').exists() and File('config.h').exists()) and \
    not GetOption('clean'):
@@ -168,11 +145,11 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
     if os.environ.has_key('PATH'):
         env['ENV']['PATH'] = os.environ['PATH']
     if os.environ.has_key('HOME'):
-       env['ENV']['HOME'] = os.environ['HOME']
+        env['ENV']['HOME'] = os.environ['HOME']
 
     if os.environ.has_key('PKG_CONFIG_PATH'):
         env['ENV']['PKG_CONFIG_PATH'] = os.environ['PKG_CONFIG_PATH']
-    
+
     env['CPPPATH'] += ['.', 'src/', 'external/']
 
     config_h_defines = []      
@@ -191,13 +168,13 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
     #   reports += "  * C++ Compiler missing: " + ret
 
     if not env['with_opengl']:
-       reports += "  * OpenGL support: disabled\n"
+        reports += "  * OpenGL support: disabled\n"
     else:
-       reports += "  * OpenGL support: enabled\n"
-       config_h_defines  += [('HAVE_OPENGL', 1)]
-       env['LIBS']       += ['GL']
-       env['optional_sources'] += ['src/engine/display/opengl/opengl_framebuffer_surface_impl.cpp', 
-                                   'src/engine/display/opengl/opengl_framebuffer.cpp' ]
+        reports += "  * OpenGL support: enabled\n"
+        config_h_defines  += [('HAVE_OPENGL', 1)]
+        env['LIBS']       += ['GL']
+        env['optional_sources'] += ['src/engine/display/opengl/opengl_framebuffer_surface_impl.cpp', 
+                                    'src/engine/display/opengl/opengl_framebuffer.cpp' ]
 
     if not env['with_linuxusbmouse']:
         reports += "  * Linux USB mouse support: disabled\n"
@@ -237,23 +214,23 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
                                     'src/engine/input/xinput/xinput_device.cpp']
         
     if not config.CheckLibWithHeader('boost_signals', 'boost/signals.hpp', 'c++'):
-       if not config.CheckLibWithHeader('boost_signals-mt', 'boost/signals.hpp', 'c++'):
-          fatal_error += "  * library 'boost_signals' not found\n"
+        if not config.CheckLibWithHeader('boost_signals-mt', 'boost/signals.hpp', 'c++'):
+            fatal_error += "  * library 'boost_signals' not found\n"
 
     if not config.CheckLibWithHeader('png', 'png.h', 'c++'):
-       fatal_error += "  * library 'png' not found\n"
+        fatal_error += "  * library 'png' not found\n"
 
     if config.CheckMyProgram('sdl-config'):
-       env.ParseConfig('sdl-config  --cflags --libs')
-       for sdllib in ['image', 'mixer']:
-          if not config.CheckSDLLib(sdllib):
-             fatal_error += "  * SDL library '%s' not found\n" % sdllib
+        env.ParseConfig('sdl-config  --cflags --libs')
+        for sdllib in ['image', 'mixer']:
+            if not config.CheckSDLLib(sdllib):
+                fatal_error += "  * SDL library '%s' not found\n" % sdllib
     else:
-       fatal_error += "  * couldn't find sdl-config, SDL missing\n"
+        fatal_error += "  * couldn't find sdl-config, SDL missing\n"
 
     iconv_const = config.CheckIconv()
     if iconv_const == False:
-       fatal_error += "  * can't call iconv\n"
+        fatal_error += "  * can't call iconv\n"
 
     env = config.Finish()
     opts.Save("config.py", env)
@@ -265,9 +242,9 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
         print "Fatal Errors:"
         print fatal_error
         if not env['ignore_errors']:
-           Exit(1)
+            Exit(1)
         else:
-           print "\nError are being ignored, the build continues"
+            print "\nError are being ignored, the build continues"
 
     config_h = open('config.h', 'w')
     config_h.write('#define VERSION "0.7.3"\n')
@@ -295,15 +272,37 @@ if not ('configure' in COMMAND_LINE_TARGETS):
         print ""
         print "If you want to change the build configuration."
         os.sys.exit(1)
-        
+
     opts = DefineOptions("config.py", {})
     env = Environment(options = opts)
     Help(opts.GenerateHelpText(env))
 
     opts.Update(env)
     env['CPPPATH'] += ['.', 'src/']
-    Default(env.Program('pingus', pingus_sources + env['optional_sources']))
+
     Clean('pingus', ['config.py', 'config.h'])
 
-    
+    libpingus = env.StaticLibrary('pingus',
+                                  Glob('external/binreloc-2.0/*.c') + \
+                                  Glob('external/tinygettext/*.cpp') + \
+                                  Glob('src/editor/*.cpp') + \
+                                  Glob('src/engine/display/*.cpp') + \
+                                  Glob('src/engine/gui/*.cpp') + \
+                                  Glob('src/engine/input/*.cpp') + \
+                                  Glob('src/engine/screen/*.cpp') + \
+                                  Glob('src/engine/sound/*.cpp') + \
+                                  Glob('src/lisp/*.cpp') + \
+                                  Glob('src/math/*.cpp') + \
+                                  Glob('src/pingus/*.cpp') + \
+                                  Glob('src/pingus/actions/*.cpp') + \
+                                  Glob('src/pingus/colliders/*.cpp') + \
+                                  Glob('src/pingus/components/*.cpp') + \
+                                  Glob('src/pingus/movers/*.cpp') + \
+                                  Glob('src/pingus/particles/*.cpp') + \
+                                  Glob('src/pingus/worldmap/*.cpp') + \
+                                  Glob('src/pingus/worldobjs/*.cpp') + \
+                                  Glob('src/util/*.cpp') + \
+                                  env['optional_sources'])
+    env.Program('pingus', ['src/main.cpp', libpingus])
+
 ## EOF ##
