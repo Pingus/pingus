@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/level_menu.hpp"
+
 #include <boost/format.hpp>
 #include <boost/function.hpp>
 #include <boost/bind.hpp>
@@ -25,7 +27,6 @@
 #include "pingus/option_menu.hpp"
 #include "util/system.hpp"
 #include "display/display.hpp"
-#include "pingus/level_menu.hpp"
 #include "gui/rect_component.hpp"
 #include "gui/gui_manager.hpp"
 #include "pingus/game_session.hpp"

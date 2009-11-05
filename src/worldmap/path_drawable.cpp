@@ -14,10 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "worldmap/path_drawable.hpp"
+
 #include <iostream>
 #include "math/color.hpp"
 #include "display/drawing_context.hpp"
-#include "worldmap/path_drawable.hpp"
 
 namespace WorldmapNS {
 

@@ -14,10 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/levelset.hpp"
+
 #include <iostream>
 #include "pingus/pingus_error.hpp"
 #include "util/file_reader.hpp"
-#include "pingus/levelset.hpp"
 #include "pingus/plf_res_mgr.hpp"
 #include "pingus/savegame_manager.hpp"
 #include "pingus/resource.hpp"

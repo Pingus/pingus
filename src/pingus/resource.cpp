@@ -14,13 +14,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/resource.hpp"
+
 #include <assert.h>
 
 #include "util/system.hpp"
 #include "pingus/path_manager.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/font_description.hpp"
-#include "pingus/resource.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/blitter.hpp"
 #include "pingus/sprite_description.hpp"

@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_PINGUS_GAME_TIME_HPP
 #define HEADER_PINGUS_PINGUS_GAME_TIME_HPP
 
+#include <string>
+
 #include "pingus/pingus.hpp"
 
 /** The GameTime represents the time which passes in the Pingus World.

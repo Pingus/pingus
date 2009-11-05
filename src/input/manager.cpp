@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "input/manager.hpp"
+
 #include "config.h"
 
 #include "util/string_util.hpp"
@@ -34,7 +36,6 @@
 #ifdef HAVE_LINUXEVDEV
 #  include "evdev/evdev_driver.hpp"
 #endif
-#include "input/manager.hpp"
 
 namespace Input {
 

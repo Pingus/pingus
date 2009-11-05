@@ -22,8 +22,9 @@
 **  requirements or restrictions.
 **/
 
-#include <iostream>
 #include "math/size.hpp"
+
+#include <iostream>
 
 std::ostream& operator<<(std::ostream& os, const Size& size)
 {

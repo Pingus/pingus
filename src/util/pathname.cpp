@@ -14,11 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "util/pathname.hpp"
+
 #include <assert.h>
 #include <iostream>
 #include "util/system.hpp"
 #include "pingus/path_manager.hpp"
-#include "util/pathname.hpp"
 
 Pathname Pathname::tmpfile(const std::string& prefix)
 {

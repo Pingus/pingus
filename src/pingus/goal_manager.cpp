@@ -14,12 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/goal_manager.hpp"
+
 #include <iostream>
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/pingu_holder.hpp"
-#include "pingus/goal_manager.hpp"
 
 
 GoalManager::GoalManager(Server* s)

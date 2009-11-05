@@ -19,7 +19,7 @@
 
 #include "pingus/direction.hpp"
 #include "pingus/worldobj.hpp"
-
+#include "math/vector3f.hpp"
 
 namespace WorldObjsData {
 class GuillotineData;

@@ -14,9 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/pingu_holder.hpp"
+
 #include <iostream>
 #include <assert.h>
-#include "pingus/pingu_holder.hpp"
 #include "pingus/pingus_level.hpp"
 #include "pingus/pingu.hpp"
 

@@ -14,10 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/collision_mask.hpp"
+
 #include <iostream>
 #include "pingus/resource.hpp"
 #include "util/system.hpp"
-#include "pingus/collision_mask.hpp"
 
 CollisionMask::CollisionMask() :
   surface(),

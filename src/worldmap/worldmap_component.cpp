@@ -14,11 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "worldmap/worldmap_component.hpp"
+
 #include "display/display.hpp"
 #include "display/scene_context.hpp"
 #include "worldmap/worldmap_screen.hpp"
 #include "worldmap/worldmap.hpp"
-#include "worldmap/worldmap_component.hpp"
 
 namespace WorldmapNS {
 

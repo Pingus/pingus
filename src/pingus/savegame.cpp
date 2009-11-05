@@ -14,9 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/savegame.hpp"
+
 #include <iostream>
 
-#include "pingus/savegame.hpp"
 #include "util/sexpr_file_writer.hpp"
 #include "util/string_util.hpp"
 

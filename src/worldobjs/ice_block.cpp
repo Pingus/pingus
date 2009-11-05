@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "worldobjs/ice_block.hpp"
+
 #include "pingus/collision_map.hpp"
 #include "display/scene_context.hpp"
 #include "pingus/pingu.hpp"
@@ -21,7 +23,6 @@
 #include "pingus/ground_map.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/world.hpp"
-#include "worldobjs/ice_block.hpp"
 
 namespace WorldObjs {
 

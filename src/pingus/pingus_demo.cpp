@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/pingus_demo.hpp"
+
 #include <stdexcept>
 #include <fstream>
 
@@ -22,7 +24,6 @@
 #include "pingus/server_event.hpp"
 #include "pingus/pingus_error.hpp"
 #include "pingus/pingu_enums.hpp"
-#include "pingus/pingus_demo.hpp"
 
 PingusDemo::PingusDemo(const Pathname& pathname) :
   levelname(),

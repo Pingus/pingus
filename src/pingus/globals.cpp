@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "pingus/globals.hpp"
+
 
 int         game_speed                      = 20;
 float       desired_fps                     = 40;

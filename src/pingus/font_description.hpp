@@ -18,6 +18,8 @@
 #define HEADER_PINGUS_PINGUS_FONT_DESCRIPTION_HPP
 
 #include <string>
+#include <vector>
+
 #include "math/vector2i.hpp"
 #include "math/rect.hpp"
 #include "util/pathname.hpp"

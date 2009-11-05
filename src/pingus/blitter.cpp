@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/blitter.hpp"
+
 #include <config.h>
 #include <stdio.h>
 #include <assert.h>
@@ -23,7 +25,6 @@
 #include "pingus/pingus_error.hpp"
 #include "pingus/globals.hpp"
 #include "math/math.hpp"
-#include "pingus/blitter.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/blitter_impl.hpp"
 

@@ -14,9 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/font_description.hpp"
+
 #include "pingus/pingus_error.hpp"
 #include "util/file_reader.hpp"
-#include "pingus/font_description.hpp"
 
 GlyphDescription::GlyphDescription() :
   image(0), 

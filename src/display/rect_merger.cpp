@@ -14,13 +14,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "display/rect_merger.hpp"
+
 //#include <ext/algorithm>
 #include <algorithm>
 #include <assert.h>
 #include <iostream>
 #include "math/vector2i.hpp"
 #include "math/size.hpp"
-#include "display/rect_merger.hpp"
 
 struct Mark {
   enum Type { START_MARK = 0, END_MARK = 1 } type;

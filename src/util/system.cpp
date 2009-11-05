@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "util/system.hpp"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
@@ -45,7 +47,6 @@
 #include "util/pathname.hpp"
 #include "pingus/pingus_error.hpp"
 #include "pingus/globals.hpp"
-#include "util/system.hpp"
 #include "util/string_util.hpp"
 #include "pingus/gettext.h"
 

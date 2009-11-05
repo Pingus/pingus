@@ -14,11 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/plf_res_mgr.hpp"
+
 #include "pingus/globals.hpp"
 #include "pingus/debug.hpp"
 #include "util/system.hpp"
 #include "util/pathname.hpp"
-#include "pingus/plf_res_mgr.hpp"
 
 PLFResMgr::PLFMap PLFResMgr::plf_map;
 

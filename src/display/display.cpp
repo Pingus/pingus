@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "display/display.hpp"
+
 #include <stdexcept>
 #include <algorithm>
 #include <stdio.h>
@@ -32,7 +34,6 @@
 #endif
 #include "display/null_framebuffer.hpp"
 #include "display/delta_framebuffer.hpp"
-#include "display/display.hpp"
 
 std::auto_ptr<Framebuffer> Display::framebuffer;
 

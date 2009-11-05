@@ -14,10 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/action_holder.hpp"
+
 #include <iostream>
 
 #include "pingus/pingus_level.hpp"
-#include "pingus/action_holder.hpp"
 
 using namespace Actions;
 

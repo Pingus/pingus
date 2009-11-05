@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "editor/object_selector.hpp"
+
 #include <boost/bind.hpp>
 #include <iostream>
 
@@ -33,7 +35,6 @@
 #include "editor/level_objs.hpp"
 #include "display/drawing_context.hpp"
 #include "gui/gui_manager.hpp"
-#include "editor/object_selector.hpp"
 
 #include "pingus/resource.hpp"
 

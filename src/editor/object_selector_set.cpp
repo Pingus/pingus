@@ -16,6 +16,7 @@
 
 #include "editor/object_selector_set.hpp"
 
+
 namespace Editor {
 
 ObjectSelectorSet::ObjectSelectorSet(ObjectSelectorList* list_, int thumb_w, int thumb_h) :

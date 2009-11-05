@@ -14,12 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "input/sdl_driver.hpp"
+
 #include "pingus/global_event.hpp"
 #include "screen/screen_manager.hpp"
 #include "math/size.hpp"
 #include "util/file_reader.hpp"
 #include "display/display.hpp"
-#include "input/sdl_driver.hpp"
 
 namespace Input {
 

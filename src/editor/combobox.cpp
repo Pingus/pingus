@@ -14,12 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "editor/combobox.hpp"
+
 #include <iostream>
 #include <vector>
 #include <string>
 
 #include "pingus/resource.hpp"
-#include "editor/combobox.hpp"
 #include "math/math.hpp"
 #include "pingus/fonts.hpp"
 #include "math/vector2i.hpp"

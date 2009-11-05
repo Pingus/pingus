@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_WORLDOBJS_SMASHER_HPP
 
 #include "pingus/worldobj.hpp"
-
+#include "math/vector3f.hpp"
 
 namespace WorldObjsData {
 class SmasherData;

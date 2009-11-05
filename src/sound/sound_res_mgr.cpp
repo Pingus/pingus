@@ -14,11 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "sound/sound_res_mgr.hpp"
+
 #include "pingus/path_manager.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/debug.hpp"
-#include "sound/sound_res_mgr.hpp"
-
 
 SoundResMgr::SoundMap SoundResMgr::sound_map;
 
@@ -55,6 +55,5 @@ void SoundResMgr::free_sound_map()
       Mix_FreeChunk(i->second);
     }
 }
-
 
 /* EOF */

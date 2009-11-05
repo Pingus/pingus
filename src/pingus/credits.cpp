@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/credits.hpp"
+
 #include <iostream>
 #include "screen/screen_manager.hpp"
 #include "gui/surface_button.hpp"
@@ -22,7 +24,6 @@
 #include "pingus/stat_manager.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/res_descriptor.hpp"
-#include "pingus/credits.hpp"
 #include "pingus/fonts.hpp"
 #include "gettext.h"
 #include "display/display.hpp"

@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/pingu.hpp"
+
 #include <sstream>
 #include <assert.h>
 #include <stdio.h>
@@ -30,7 +32,6 @@
 #include "pingus/worldobj.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/fonts.hpp"
-#include "pingus/pingu.hpp"
 
 #include "actions/rocket_launcher.hpp"
 #include "actions/boarder.hpp"

@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/option_menu.hpp"
+
 #include <set>
 #include <boost/bind.hpp>
 #include <sstream>
@@ -35,7 +37,6 @@
 #include "sound/sound.hpp"
 #include "tinygettext/dictionary_manager.hpp"
 #include "tinygettext/language.hpp"
-#include "pingus/option_menu.hpp"
 
 #define C(x) connections.push_back(x)
 

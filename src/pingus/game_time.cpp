@@ -14,10 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/game_time.hpp"
+
 #include <stdio.h>
 #include "gettext.h"
 #include "pingus/globals.hpp"
-#include "pingus/game_time.hpp"
 
 std::string
 GameTime::ticks_to_realtime_string(int ticks)

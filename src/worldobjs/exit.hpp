@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_EXIT_HPP
 #define HEADER_PINGUS_WORLDOBJS_EXIT_HPP
 
+#include "math/vector3f.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/worldobj.hpp"
 

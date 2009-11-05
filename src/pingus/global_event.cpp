@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/global_event.hpp"
+
 #include <config.h>
 #include <stdio.h>
 #include <iostream>
@@ -24,7 +26,6 @@
 #include "pingus/option_menu.hpp"
 #include "pingus/level_menu.hpp"
 #include "pingus/addon_menu.hpp"
-#include "pingus/global_event.hpp"
 #include "pingus/config_manager.hpp"
 #include "pingus/globals.hpp"
 

@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_SOUND_SOUND_IMPL_HPP
 #define HEADER_PINGUS_SOUND_SOUND_IMPL_HPP
 
+#include <string>
+
 #include "pingus/pingus.hpp"
 
 namespace Sound {

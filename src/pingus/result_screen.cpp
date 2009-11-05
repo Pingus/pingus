@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/result_screen.hpp"
+
 #include <iostream>
 #include "gettext.h"
 #include "display/display.hpp"
@@ -29,7 +31,6 @@
 #include "util/string_util.hpp"
 #include "sound/sound.hpp"
 #include "pingus/game_time.hpp"
-#include "pingus/result_screen.hpp"
 
 class ResultScreenComponent : public GUI::Component
 {

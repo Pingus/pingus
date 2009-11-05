@@ -14,10 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "display/drawing_context.hpp"
+
 #include <assert.h>
 #include <iostream>
 #include <algorithm>
-#include "display/drawing_context.hpp"
 #include "math/math.hpp"
 #include "display/framebuffer.hpp"
 #include "display/display.hpp"

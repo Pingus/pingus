@@ -14,9 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "editor/checkbox.hpp"
+
 #include "pingus/fonts.hpp"
 #include "editor/gui_style.hpp"
-#include "editor/checkbox.hpp"
 
 namespace Editor {
 

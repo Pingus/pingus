@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_WORLDOBJS_SWITCH_DOOR_HPP
 
 #include "pingus/worldobj.hpp"
+#include "math/vector3f.hpp"
 
 namespace WorldObjsData {
 class SwitchDoorData;

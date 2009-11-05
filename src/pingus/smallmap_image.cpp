@@ -14,9 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/smallmap_image.hpp"
+
 #include <iostream>
 #include "pingus/world.hpp"
-#include "pingus/smallmap_image.hpp"
 #include "pingus/collision_map.hpp"
 #include "pingus/server.hpp"
 

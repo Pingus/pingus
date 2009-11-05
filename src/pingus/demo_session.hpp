@@ -18,14 +18,16 @@
 #define HEADER_PINGUS_PINGUS_DEMO_SESSION_HPP
 
 #include <memory>
-#include "screen/gui_screen.hpp"
 #include <vector>
+
+#include "util/pathname.hpp"
+#include "screen/gui_screen.hpp"
 #include "pingus/server_event.hpp"
 
 namespace Input {
 struct Event;
 struct ScrollEvent;
-}
+} // namespace Input
 
 class Server;
 class XMLPDF;

@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/game_session.hpp"
+
 #include <iostream>
 #include "screen/screen_manager.hpp"
 #include "pingus/server.hpp"
@@ -28,7 +30,6 @@
 #include "input/event.hpp"
 #include "sound/sound.hpp"
 #include "math/math.hpp"
-#include "pingus/game_session.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"

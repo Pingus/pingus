@@ -14,9 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "input/core_driver.hpp"
+
 #include "math/math.hpp"
 #include "input/manager.hpp"
-#include "input/core_driver.hpp"
 #include "display/display.hpp"
 #include "pingus/globals.hpp"
 

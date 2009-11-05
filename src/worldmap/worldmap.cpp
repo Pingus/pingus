@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "worldmap/worldmap.hpp"
+
 #include <assert.h>
 #include <iostream>
 #include "display/display.hpp"
@@ -32,7 +34,6 @@
 #include "pingus/debug.hpp"
 #include "lisp/parser.hpp"
 #include "lisp/lisp.hpp"
-#include "worldmap/worldmap.hpp"
 #include "worldmap/worldmap_story.hpp"
 #include "worldmap/worldmap_screen.hpp"
 #include "worldmap/pingus.hpp"

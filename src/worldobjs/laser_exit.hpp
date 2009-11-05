@@ -19,6 +19,7 @@
 
 #include "pingus/worldobj.hpp"
 #include "pingus/sprite.hpp"
+#include "math/vector3f.hpp"
 
 namespace WorldObjsData {
 class LaserExitData;

@@ -27,13 +27,12 @@
 **    (if your name is missing here, please add it)
 */
 
+#include "util/command_line_generic.hpp"
+
 #include <iomanip>
 #include <iostream>
 #include <stdexcept>
 #include <stdio.h>
-
-#include "util/command_line_generic.hpp"
-
 
 #ifdef WIN32
 #define snprintf _snprintf

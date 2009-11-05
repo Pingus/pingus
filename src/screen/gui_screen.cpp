@@ -14,11 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "screen/gui_screen.hpp"
+
 #include "pingus/globals.hpp"
 #include "pingus/debug.hpp"
 #include "display/display.hpp"
 #include "gui/gui_manager.hpp"
-#include "screen/gui_screen.hpp"
 
 GUIScreen::GUIScreen()
   : Screen(Display::get_size()),

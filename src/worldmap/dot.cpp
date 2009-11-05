@@ -14,10 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "worldmap/dot.hpp"
+
 #include <iostream>
 #include <assert.h>
 #include "util/file_reader.hpp"
-#include "worldmap/dot.hpp"
 
 namespace WorldmapNS {
 

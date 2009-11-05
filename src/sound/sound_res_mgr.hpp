@@ -18,10 +18,10 @@
 #define HEADER_PINGUS_SOUND_SOUND_RES_MGR_HPP
 
 #include <map>
+#include <string>
 #include "SDL_mixer.h"
 
 typedef Mix_Chunk* SoundHandle;
-
 
 /** */
 class SoundResMgr
@@ -37,7 +37,6 @@ private:
   SoundResMgr (const SoundResMgr&);
   SoundResMgr& operator= (const SoundResMgr&);
 };
-
 
 #endif
 

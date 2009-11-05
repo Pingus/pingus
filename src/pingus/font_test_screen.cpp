@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/font_test_screen.hpp"
+
 #include <iostream>
 
 #include "input/event.hpp"
@@ -22,7 +24,6 @@
 #include "display/drawing_context.hpp"
 #include "display/display.hpp"
 #include "pingus/font_description.hpp"
-#include "pingus/font_test_screen.hpp"
 
 FontTestScreen::FontTestScreen(const Pathname& fontfile) :
   Screen(Display::get_size()),

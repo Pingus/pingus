@@ -20,7 +20,8 @@
 #include "screen/screen.hpp"
 #include "pingus/font.hpp"
 
-/** */
+class Pathname;
+
 class FontTestScreen : public Screen
 {
 private:

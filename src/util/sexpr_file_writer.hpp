@@ -18,6 +18,8 @@
 #define HEADER_PINGUS_UTIL_SEXPR_FILE_WRITER_HPP
 
 #include <iosfwd>
+#include <ostream>
+
 #include "util/file_writer.hpp"
 #include "math/color.hpp"
 #include "math/vector3f.hpp"

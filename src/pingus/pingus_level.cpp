@@ -14,10 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/pingus_level.hpp"
+
 #include <iostream>
 
 #include "util/file_reader.hpp"
-#include "pingus/pingus_level.hpp"
 #include "pingus/pingus_error.hpp"
 #include "pingus/pingus_level_impl.hpp"
 #include "pingus/globals.hpp"

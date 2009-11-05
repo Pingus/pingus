@@ -15,13 +15,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "editor/editor_level.hpp"
+
 #include "config.h"
 #include <iostream>
 #include <string>
 #include <fstream>
 
 #include "pingus/pingus_level.hpp"
-#include "editor/editor_level.hpp"
 #include "editor/level_impl.hpp"
 #include "editor/level_objs.hpp"
 #include "util/pathname.hpp"

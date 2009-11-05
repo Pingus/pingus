@@ -19,7 +19,9 @@
 
 #include <vector>
 #include <memory>
+
 #include "pingus/fonts.hpp"
+#include "pingus/sprite.hpp"
 #include "screen/gui_screen.hpp"
 
 namespace GUI {

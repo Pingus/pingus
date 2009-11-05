@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "editor/object_selector_list.hpp"
+
 #include <iostream>
 
 #include "math/math.hpp"
@@ -25,7 +27,6 @@
 #include "pingus/groundtype.hpp"
 #include "pingus/resource.hpp"
 #include "display/drawing_context.hpp"
-#include "editor/object_selector_list.hpp"
 
 namespace Editor {
 

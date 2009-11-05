@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/story_screen.hpp"
+
 #include <algorithm>
 #include <vector>
 #include "gettext.h"
@@ -25,7 +27,6 @@
 #include "gui/component.hpp"
 #include "math/math.hpp"
 #include "pingus/fonts.hpp"
-#include "pingus/story_screen.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "worldmap/worldmap.hpp"
 #include "worldmap/worldmap_screen.hpp"

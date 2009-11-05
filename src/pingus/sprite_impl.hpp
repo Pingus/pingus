@@ -22,6 +22,7 @@
 #include "math/vector2i.hpp"
 
 class SpriteDescription;
+class Framebuffer;
 
 class SpriteImpl
 {

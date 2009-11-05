@@ -14,12 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/font.hpp"
+
 #include <iostream>
 #include <vector>
 #include <map>
 #include "SDL.h"
 #include "SDL_image.h"
-#include "pingus/font.hpp"
 #include "pingus/surface.hpp"
 #include "pingus/line_iterator.hpp"
 #include "util/utf8.hpp"

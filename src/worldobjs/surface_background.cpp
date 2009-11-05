@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "worldobjs/surface_background.hpp"
+
 #include <iostream>
 #include "pingus/globals.hpp"
 #include "display/scene_context.hpp"
@@ -22,7 +24,6 @@
 #include "pingus/globals.hpp"
 #include "pingus/blitter.hpp"
 #include "display/display.hpp"
-#include "worldobjs/surface_background.hpp"
 
 namespace WorldObjs {
 

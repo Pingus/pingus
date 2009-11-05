@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/start_screen.hpp"
+
 #include <iostream>
 #include "gui/gui_manager.hpp"
 #include "gui/surface_button.hpp"
@@ -26,7 +28,6 @@
 #include "util/system.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/resource.hpp"
-#include "pingus/start_screen.hpp"
 #include "pingus/game_time.hpp"
 #include "sound/sound.hpp"
 #include "pingus/pingus_level.hpp"

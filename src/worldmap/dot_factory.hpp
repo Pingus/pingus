@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_WORLDMAP_DOT_FACTORY_HPP
 #define HEADER_PINGUS_WORLDMAP_DOT_FACTORY_HPP
 
+#include "util/file_reader.hpp"
+
 namespace WorldmapNS {
 
 class Dot;

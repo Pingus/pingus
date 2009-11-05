@@ -14,13 +14,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "display/delta_framebuffer.hpp"
+
 #include <assert.h>
 #include <iostream>
 #include "math/math.hpp"
 #include "util/memory_pool.hpp"
 #include "display/rect_merger.hpp"
 #include "display/sdl_framebuffer.hpp"
-#include "display/delta_framebuffer.hpp"
 
 enum DrawOpType { SURFACE_DRAWOP, FILLRECT_DRAWOP };
 

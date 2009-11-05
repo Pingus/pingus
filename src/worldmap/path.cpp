@@ -14,10 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "worldmap/path.hpp"
+
 #include <iostream>
 #include <algorithm>
 #include <assert.h>
-#include "worldmap/path.hpp"
 
 namespace WorldmapNS {
 

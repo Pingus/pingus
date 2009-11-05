@@ -27,7 +27,6 @@
 **    (if your name is missing here, please add it)
 */
 
-#include "util/command_line.hpp"
 #include "util/command_line_generic.hpp"
 
 CommandLine::CommandLine() :

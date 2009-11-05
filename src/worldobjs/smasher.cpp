@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "worldobjs/smasher.hpp"
+
 #include <iostream>
 
 #include "math/math.hpp"
@@ -25,7 +27,6 @@
 #include "pingus/resource.hpp"
 #include "sound/sound.hpp"
 #include "pingus/world.hpp"
-#include "worldobjs/smasher.hpp"
 
 namespace WorldObjs {
 

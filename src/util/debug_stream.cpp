@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "util/debug_stream.hpp"
+
 #include "pingus/globals.hpp"
 
 using std::ostream;

@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/resource_manager.hpp"
+
 #include <iostream>
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
@@ -22,7 +24,6 @@
 #include "util/string_util.hpp"
 #include "pingus/sprite_description.hpp"
 #include "util/sexpr_file_reader.hpp"
-#include "pingus/resource_manager.hpp"
 
 ResourceManager::ResourceManager() :
   resources(),

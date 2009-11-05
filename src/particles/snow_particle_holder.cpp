@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "particles/snow_particle_holder.hpp"
+
 #include <assert.h>
 
 #include "math/math.hpp"
@@ -22,7 +24,6 @@
 #include "pingus/ground_map.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/world.hpp"
-#include "particles/snow_particle_holder.hpp"
 
 namespace Particles {
 

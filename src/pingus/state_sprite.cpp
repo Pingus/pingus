@@ -14,9 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/state_sprite.hpp"
+
 #include "pingus/resource.hpp"
 #include "pingus/pingus_error.hpp"
-#include "pingus/state_sprite.hpp"
 
 
 StateSprite::StateSprite() :

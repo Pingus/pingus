@@ -14,11 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "worldmap/pingus_worldmap.hpp"
+
 #include <string>
 #include "pingus/pingus_error.hpp"
 #include "util/file_reader.hpp"
 #include "worldmap/drawable_factory.hpp"
-#include "worldmap/pingus_worldmap.hpp"
 
 using namespace WorldmapNS;
 

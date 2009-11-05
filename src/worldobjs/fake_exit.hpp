@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_WORLDOBJS_FAKE_EXIT_HPP
 
 #include "pingus/worldobj.hpp"
-
+#include "math/vector3f.hpp"
 
 class Pingu;
 

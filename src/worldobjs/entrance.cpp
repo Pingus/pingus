@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "worldobjs/entrance.hpp"
+
 #include <iostream>
 #include "display/scene_context.hpp"
 #include "pingus/world.hpp"
@@ -22,7 +24,6 @@
 #include "pingus/pingu.hpp"
 #include "pingus/resource.hpp"
 #include "components/smallmap.hpp"
-#include "worldobjs/entrance.hpp"
 
 namespace WorldObjs {
 

@@ -15,6 +15,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "editor/viewport.hpp"
+
 #include <vector>
 #include <string>
 #include <iostream>
@@ -25,7 +27,6 @@
 #include "pingus/graphic_context_state.hpp"
 #include "editor/editor_level.hpp"
 #include "editor/editor_screen.hpp"
-#include "editor/viewport.hpp"
 #include "editor/level_objs.hpp"
 
 namespace Editor {

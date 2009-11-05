@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "screen/screen_manager.hpp"
+
 #include "SDL.h"
 #include <iostream>
 #include <fstream>
@@ -23,7 +25,6 @@
 #include "util/pathname.hpp"
 #include "display/display.hpp"
 #include "display/framebuffer.hpp"
-#include "screen/screen_manager.hpp"
 #include "pingus/path_manager.hpp"
 #include "screen/screen.hpp"
 #include "pingus/fps_counter.hpp"

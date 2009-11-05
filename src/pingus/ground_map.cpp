@@ -14,12 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/ground_map.hpp"
+
 #include <stdio.h>
 #include <iostream>
 #include "display/scene_context.hpp"
 #include "pingus/pingus_error.hpp"
 #include "pingus/blitter.hpp"
-#include "pingus/ground_map.hpp"
 #include "pingus/pingus_level.hpp"
 #include "gettext.h"
 #include "pingus/collision_map.hpp"

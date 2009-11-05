@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/pingus_menu.hpp"
+
 #include <config.h>
 #include "gettext.h"
 #include "components/menu_button.hpp"
@@ -35,7 +37,6 @@
 #include "editor/editor_screen.hpp"
 #include "pingus/credits.hpp"
 #include "pingus/layer_manager.hpp"
-#include "pingus/pingus_menu.hpp"
 
 PingusMenu::PingusMenu() :
   is_init(),

@@ -14,11 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "util/file_reader.hpp"
+
 #include "util/sexpr_file_reader.hpp"
 #include "lisp/parser.hpp"
 #include "lisp/lisp.hpp"
 #include "util/pathname.hpp"
-#include "util/file_reader.hpp"
 #include "util/file_reader_impl.hpp"
 
 FileReader::FileReader(boost::shared_ptr<FileReaderImpl> impl_) :

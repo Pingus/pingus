@@ -14,9 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "worldmap/worldmap_story.hpp"
+
 #include <algorithm>
 #include <vector>
-#include "worldmap/worldmap_story.hpp"
 #include "pingus/story_screen.hpp"
 #include "util/file_reader.hpp"
 #include "pingus/res_descriptor.hpp"

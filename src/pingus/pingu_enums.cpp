@@ -14,8 +14,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "gettext.h"
 #include "pingus/pingu_enums.hpp"
+
+#include "gettext.h"
 
 // Pingu "globals".  Make [deadly_velocity = 20 * sqrt("normal gravity")] so
 // that the "deadly distance" is the same and therefore doesn't break levels.

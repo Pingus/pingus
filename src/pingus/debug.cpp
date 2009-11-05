@@ -17,6 +17,7 @@
 #include "pingus/debug.hpp"
 
 
+
 /* Stream for error messages */
 DebugStream perr("[Error] ");
 

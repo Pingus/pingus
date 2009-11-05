@@ -21,14 +21,15 @@
 
 namespace Editor {
 
-class Label;
-class EditorScreen;
-class Combobox;
-class ComboItem;
+class Button;
 class Checkbox;
+class ComboItem;
+class Combobox;
+class EditorScreen;
 class Inputbox;
+class Label;
+class LevelObj;
 
-/** */
 class ObjectProperties : public GUI::GroupComponent
 {
 private:

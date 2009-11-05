@@ -14,9 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "gui/group_component.hpp"
+
 #include <assert.h>
 #include <iostream>
-#include "gui/group_component.hpp"
 
 namespace GUI {
 

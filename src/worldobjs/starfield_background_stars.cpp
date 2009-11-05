@@ -14,10 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "worldobjs/starfield_background_stars.hpp"
+
 #include "display/scene_context.hpp"
 #include "pingus/world.hpp"
 #include "pingus/resource.hpp"
-#include "worldobjs/starfield_background_stars.hpp"
 #include "pingus/globals.hpp"
 
 namespace WorldObjs {

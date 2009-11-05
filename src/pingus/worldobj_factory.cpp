@@ -14,9 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/worldobj_factory.hpp"
+
 #include <iostream>
 #include "pingus/pingus_error.hpp"
-#include "pingus/worldobj_factory.hpp"
 
 #include "worldobjs/conveyor_belt.hpp"
 #include "worldobjs/entrance.hpp"

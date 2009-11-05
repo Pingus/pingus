@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/config_manager.hpp"
+
 #include <iostream>
 #include <fstream>
 #include "SDL.h"
@@ -25,7 +27,6 @@
 #include "tinygettext/dictionary_manager.hpp"
 #include "util/sexpr_file_reader.hpp"
 #include "util/sexpr_file_writer.hpp"
-#include "pingus/config_manager.hpp"
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
 

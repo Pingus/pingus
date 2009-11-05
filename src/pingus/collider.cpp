@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "pingus/collider.hpp"
+
 #include "pingus/collision_map.hpp"
 #include "math/vector3f.hpp"
 #include "pingus/world.hpp"

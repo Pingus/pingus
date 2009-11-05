@@ -14,12 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "worldobjs/snow_generator.hpp"
+
 #include <iostream>
 
 #include "math/math.hpp"
 #include "pingus/world.hpp"
 #include "particles/snow_particle_holder.hpp"
-#include "worldobjs/snow_generator.hpp"
 #include "pingus/globals.hpp"
 
 namespace WorldObjs {

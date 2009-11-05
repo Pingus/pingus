@@ -14,10 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/string_format.hpp"
+
 #include <sstream>
 
 #include "pingus/font.hpp"
-#include "pingus/string_format.hpp"
 #include "util/utf8.hpp"
 
 std::string

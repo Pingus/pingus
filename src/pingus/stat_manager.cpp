@@ -14,13 +14,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/stat_manager.hpp"
+
 #include <algorithm>
 #include <fstream>
 
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
 #include "pingus/pingus_error.hpp"
-#include "pingus/stat_manager.hpp"
 #include "util/sexpr_file_reader.hpp"
 #include "util/sexpr_file_writer.hpp"
 #include "util/string_util.hpp"

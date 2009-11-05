@@ -19,6 +19,7 @@
 
 #include "pingus/pingus.hpp"
 #include "pingus/sprite.hpp"
+#include "pingus/surface.hpp"
 
 class Server;
 

@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/pingus_main.hpp"
+
 #include <config.h>
 #include <sys/stat.h>
 #include <stdio.h>
@@ -59,7 +61,6 @@ extern "C" {
 
 #include "screen/screen_manager.hpp"
 #include "pingus/path_manager.hpp"
-#include "pingus/pingus_main.hpp"
 #include "pingus/globals.hpp"
 #include "util/system.hpp"
 #include "pingus/pingus_error.hpp"

@@ -16,6 +16,7 @@
 
 #include "worldmap/graph.hpp"
 
+
 namespace WorldmapNS {
 
 const NodeId NoNode = -1;

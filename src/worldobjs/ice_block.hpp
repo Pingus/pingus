@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_WORLDOBJS_ICE_BLOCK_HPP
 
 #include "pingus/worldobj.hpp"
+#include "math/vector3f.hpp"
 
 namespace WorldObjsData {
 class IceBlockData;

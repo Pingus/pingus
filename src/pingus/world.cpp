@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/world.hpp"
+
 #include <algorithm>
 #include <assert.h>
 #include <iostream>
@@ -22,7 +24,6 @@
 #include "worldobjs/entrance.hpp"
 #include "sound/sound.hpp"
 #include "pingus/ground_map.hpp"
-#include "pingus/world.hpp"
 #include "particles/pingu_particle_holder.hpp"
 #include "particles/rain_particle_holder.hpp"
 #include "particles/smoke_particle_holder.hpp"

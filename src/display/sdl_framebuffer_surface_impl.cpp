@@ -14,8 +14,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <stdexcept>
 #include "display/sdl_framebuffer_surface_impl.hpp"
+
+#include <stdexcept>
 
 SDLFramebufferSurfaceImpl::SDLFramebufferSurfaceImpl(SDL_Surface* src) :
   surface()

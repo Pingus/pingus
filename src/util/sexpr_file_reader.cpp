@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "util/sexpr_file_reader.hpp"
+
 #include <assert.h>
 
 #include "math/color.hpp"
@@ -24,7 +26,6 @@
 #include "pingus/res_descriptor.hpp"
 #include "pingus/resource_modifier.hpp"
 #include "util/file_reader_impl.hpp"
-#include "util/sexpr_file_reader.hpp"
 
 class SExprFileReaderImpl: public FileReaderImpl
 {

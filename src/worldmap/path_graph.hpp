@@ -19,6 +19,8 @@
 
 #include <map>
 #include <vector>
+
+#include "util/file_reader.hpp"
 #include "math/vector3f.hpp"
 #include "worldmap/path.hpp"
 #include "worldmap/pathfinder.hpp"

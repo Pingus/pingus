@@ -17,6 +17,7 @@
 #include "pingus/direction.hpp"
 
 
+
 Direction::Direction() : direction(NONE)
 {
 }

@@ -14,8 +14,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "display/framebuffer.hpp"
 #include "display/scene_context.hpp"
+
+#include "display/framebuffer.hpp"
 
 #define SCALE_FACTOR 8.0f
 

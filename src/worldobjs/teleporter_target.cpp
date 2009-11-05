@@ -14,13 +14,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "worldobjs/teleporter_target.hpp"
+
 #include <iostream>
 #include "display/scene_context.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"
 #include "pingus/resource.hpp"
-#include "worldobjs/teleporter_target.hpp"
 
 namespace WorldObjs {
 

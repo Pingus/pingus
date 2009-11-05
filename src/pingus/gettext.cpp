@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/gettext.h"
+
 #include "tinygettext/dictionary_manager.hpp"
 #include "tinygettext/dictionary.hpp"
 #include "gettext.h"

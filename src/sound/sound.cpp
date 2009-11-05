@@ -14,13 +14,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "sound/sound.hpp"
+
 #include <iostream>
 #include <assert.h>
 #include "pingus/path_manager.hpp"
 #include "pingus/globals.hpp"
 #include "sound/sound_dummy.hpp"
 #include "sound/sound_real.hpp"
-#include "sound/sound.hpp"
 
 namespace Sound {
 

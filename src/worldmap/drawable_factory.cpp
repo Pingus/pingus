@@ -14,10 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "worldmap/drawable_factory.hpp"
+
 #include <iostream>
 #include "worldmap/sprite_drawable.hpp"
 #include "worldmap/sprite_drawable.hpp"
-#include "worldmap/drawable_factory.hpp"
 
 namespace WorldmapNS {
 

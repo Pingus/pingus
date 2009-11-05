@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/surface.hpp"
+
 #include "SDL_image.h"
 #include <boost/format.hpp>
 #include <sstream>
@@ -21,7 +23,6 @@
 #include "math/rect.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/blitter.hpp"
-#include "pingus/surface.hpp"
 
 class SurfaceImpl
 {

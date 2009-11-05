@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/sprite.hpp"
+
 #include <iostream>
 #include <sstream>
 #include <assert.h>
@@ -22,7 +24,6 @@
 #include "math/origin.hpp"
 #include "math/vector2i.hpp"
 #include "SDL_image.h"
-#include "pingus/sprite.hpp"
 #include "pingus/blitter.hpp"
 #include "pingus/surface.hpp"
 #include "util/pathname.hpp"

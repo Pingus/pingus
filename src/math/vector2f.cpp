@@ -15,9 +15,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "math/vector2f.hpp"
+
 #include <config.h>
 #include <iostream>
-#include "math/vector2f.hpp"
 
 std::ostream& operator<<(std::ostream& s, const Vector2f& v)
 {

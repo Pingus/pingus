@@ -14,11 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/collision_map.hpp"
+
 #include <iostream>
 #include "SDL.h"
 #include "display/drawing_context.hpp"
 #include "pingus/globals.hpp"
-#include "pingus/collision_map.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/pingus_error.hpp"
 #include "math/math.hpp"

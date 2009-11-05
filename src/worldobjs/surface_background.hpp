@@ -19,6 +19,7 @@
 
 #include "pingus/res_descriptor.hpp"
 #include "pingus/worldobj.hpp"
+#include "math/vector3f.hpp"
 
 namespace WorldObjsData {
 class SurfaceBackgroundData;

@@ -14,13 +14,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "sound/sound_real.hpp"
+
 #include <stdexcept>
 #include "SDL.h"
 #include "SDL_mixer.h"
 #include "pingus/globals.hpp"
 #include "pingus/debug.hpp"
 #include "sound/sound_res_mgr.hpp"
-#include "sound/sound_real.hpp"
 
 namespace Sound {
 

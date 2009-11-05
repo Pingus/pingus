@@ -19,6 +19,7 @@
 
 #include <string>
 #include <map>
+#include <vector>
 
 class SpriteDescription;
 class FileReader;

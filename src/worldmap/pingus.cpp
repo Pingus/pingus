@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "worldmap/pingus.hpp"
+
 #include <iostream>
 
 #include "math/math.hpp"
@@ -22,7 +24,6 @@
 #include "worldmap/dot.hpp"
 #include "pingus/direction.hpp"
 #include "pingus/resource.hpp"
-#include "worldmap/pingus.hpp"
 
 namespace WorldmapNS {
 

@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/screenshot.hpp"
+
 #include <assert.h>
 #include <config.h>
 #include <time.h>
@@ -24,7 +26,6 @@
 #include "display/display.hpp"
 #include "display/framebuffer.hpp"
 #include "util/system.hpp"
-#include "pingus/screenshot.hpp"
 #include "gettext.h"
 #include "png.h"
 

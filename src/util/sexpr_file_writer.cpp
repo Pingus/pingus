@@ -14,10 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "util/sexpr_file_writer.hpp"
+
 #include <iostream>
 #include <string>
 #include <map>
-#include "util/sexpr_file_writer.hpp"
 
 SExprFileWriter::SExprFileWriter(std::ostream& out_)
   : out(&out_), level(0)

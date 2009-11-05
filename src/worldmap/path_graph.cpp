@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "worldmap/path_graph.hpp"
+
 #include <iostream>
 
 #include "math/math.hpp"
@@ -23,7 +25,6 @@
 #include "worldmap/dot_factory.hpp"
 #include "worldmap/worldmap.hpp"
 #include "worldmap/pathfinder.hpp"
-#include "worldmap/path_graph.hpp"
 #include "worldmap/path_drawable.hpp"
 #include "pingus/globals.hpp"
 

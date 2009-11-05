@@ -14,13 +14,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/addon_menu.hpp"
+
 #include "pingus/gettext.h"
 #include "pingus/resource.hpp"
 #include "screen/screen_manager.hpp"
 #include "pingus/fonts.hpp"
 #include "display/drawing_context.hpp"
 #include "pingus/option_menu.hpp"
-#include "pingus/addon_menu.hpp"
 
 AddOnMenu::AddOnMenu() :
   background(),

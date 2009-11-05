@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "editor/object_properties.hpp"
+
 #include <boost/bind.hpp>
 #include <iostream>
 
@@ -29,7 +31,6 @@
 #include "editor/combobox.hpp"
 #include "editor/inputbox.hpp"
 #include "editor/checkbox.hpp"
-#include "editor/object_properties.hpp"
 
 namespace Editor {
 

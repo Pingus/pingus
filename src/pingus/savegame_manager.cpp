@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "pingus/savegame_manager.hpp"
+
 #include <assert.h>
 #include <fstream>
 
@@ -21,7 +23,6 @@
 #include "pingus/pingus_error.hpp"
 #include "util/sexpr_file_reader.hpp"
 #include "util/sexpr_file_writer.hpp"
-#include "pingus/savegame_manager.hpp"
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
 

@@ -14,8 +14,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <iostream>
 #include "display/null_framebuffer.hpp"
+
+#include <iostream>
 
 class NullFramebufferSurfaceImpl : public FramebufferSurfaceImpl
 {
