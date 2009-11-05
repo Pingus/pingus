@@ -23,25 +23,25 @@ import sys, os
 import SCons.Util
 
 pingus_sources = \
-               Glob('external/tinygettext/*.cpp') + \
                Glob('external/binreloc-2.0/*.c') + \
-               Glob('src/pingus/actions/*.cpp') + \
-               Glob('src/colliders/*.cpp') + \
-               Glob('src/components/*.cpp') + \
+               Glob('external/tinygettext/*.cpp') + \
                Glob('src/display/*.cpp') + \
                Glob('src/editor/*.cpp') + \
                Glob('src/gui/*.cpp') + \
                Glob('src/input/*.cpp') + \
                Glob('src/lisp/*.cpp') + \
                Glob('src/math/*.cpp') + \
-               Glob('src/movers/*.cpp') + \
-               Glob('src/particles/*.cpp') + \
                Glob('src/pingus/*.cpp') + \
+               Glob('src/pingus/actions/*.cpp') + \
+               Glob('src/pingus/colliders/*.cpp') + \
+               Glob('src/pingus/components/*.cpp') + \
+               Glob('src/pingus/movers/*.cpp') + \
+               Glob('src/pingus/particles/*.cpp') + \
+               Glob('src/pingus/worldmap/*.cpp') + \
+               Glob('src/pingus/worldobjs/*.cpp') + \
                Glob('src/screen/*.cpp') + \
                Glob('src/sound/*.cpp') + \
-               Glob('src/util/*.cpp') + \
-               Glob('src/worldmap/*.cpp') + \
-               Glob('src/worldobjs/*.cpp')
+               Glob('src/util/*.cpp')
 
 class _SpaceListOptionClass:
    """An option type for space-separated lists with arbitrary elements."""

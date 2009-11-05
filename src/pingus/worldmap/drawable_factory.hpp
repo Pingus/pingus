@@ -14,49 +14,27 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_PINGUS_STORY_SCREEN_HPP
-#define HEADER_PINGUS_PINGUS_STORY_SCREEN_HPP
+#ifndef HEADER_PINGUS_WORLDMAP_DRAWABLE_FACTORY_HPP
+#define HEADER_PINGUS_WORLDMAP_DRAWABLE_FACTORY_HPP
 
-#include <string>
-#include <memory>
-#include "pingus/res_descriptor.hpp"
-#include "screen/gui_screen.hpp"
-#include "pingus/worldmap/worldmap_story.hpp"
-
-class StoryScreenComponent;
+#include "pingus/worldmap/drawable.hpp"
 
 namespace WorldmapNS {
-class WorldmapStory;
-} // namespace WorldmapNS
 
-namespace GUI {
-class SurfaceButton;
-}
-
 /** */
-class StoryScreen : public GUIScreen
+class DrawableFactory
 {
 private:
-  std::auto_ptr<WorldmapNS::WorldmapStory> story;
-  StoryScreenComponent* story_comp;
-  GUI::SurfaceButton* continue_button;
-  GUI::SurfaceButton* skip_button;
-
 public:
-  StoryScreen(FileReader reader);
-  ~StoryScreen();
-
-  void on_startup();
-  void on_fast_forward_press ();
-  void on_escape_press ();
-
-  void resize(const Size& size);
-
+  /** Create a new drawable */
+  static Drawable* create(FileReader reader);
 private:
-  StoryScreen (const StoryScreen&);
-  StoryScreen& operator= (const StoryScreen&);
+  DrawableFactory (const DrawableFactory&);
+  DrawableFactory& operator= (const DrawableFactory&);
 };
-
+
+} // namespace WorldmapNS
+
 #endif
 
 /* EOF */

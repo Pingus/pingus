@@ -14,49 +14,38 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_PINGUS_STORY_SCREEN_HPP
-#define HEADER_PINGUS_PINGUS_STORY_SCREEN_HPP
+#ifndef HEADER_PINGUS_WORLDMAP_SPRITE_DRAWABLE_HPP
+#define HEADER_PINGUS_WORLDMAP_SPRITE_DRAWABLE_HPP
 
-#include <string>
-#include <memory>
-#include "pingus/res_descriptor.hpp"
-#include "screen/gui_screen.hpp"
-#include "pingus/worldmap/worldmap_story.hpp"
-
-class StoryScreenComponent;
+#include "pingus/sprite.hpp"
+#include "math/vector3f.hpp"
+#include "pingus/worldmap/drawable.hpp"
 
 namespace WorldmapNS {
-class WorldmapStory;
-} // namespace WorldmapNS
-
-namespace GUI {
-class SurfaceButton;
-}
 
-/** */
-class StoryScreen : public GUIScreen
+class SpriteDrawable : public Drawable
 {
 private:
-  std::auto_ptr<WorldmapNS::WorldmapStory> story;
-  StoryScreenComponent* story_comp;
-  GUI::SurfaceButton* continue_button;
-  GUI::SurfaceButton* skip_button;
+  Sprite surface;
+  Vector3f  pos;
+  /** If set to true the surface will disappear if the pingu gets
+      covered by it, so that the Pingu can travel into caves and other
+      things, while the roof will disapear */
+  bool       auto_uncover;
 
 public:
-  StoryScreen(FileReader reader);
-  ~StoryScreen();
+  SpriteDrawable(FileReader reader);
 
-  void on_startup();
-  void on_fast_forward_press ();
-  void on_escape_press ();
-
-  void resize(const Size& size);
+  void update(float delta);
+  void draw(DrawingContext&);
 
 private:
-  StoryScreen (const StoryScreen&);
-  StoryScreen& operator= (const StoryScreen&);
+  SpriteDrawable (const SpriteDrawable&);
+  SpriteDrawable& operator= (const SpriteDrawable&);
 };
 
+} // namespace WorldmapNS
+
 #endif
 
 /* EOF */

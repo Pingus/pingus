@@ -14,49 +14,34 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_PINGUS_STORY_SCREEN_HPP
-#define HEADER_PINGUS_PINGUS_STORY_SCREEN_HPP
+#ifndef HEADER_PINGUS_WORLDMAP_PATH_DRAWABLE_HPP
+#define HEADER_PINGUS_WORLDMAP_PATH_DRAWABLE_HPP
 
-#include <string>
-#include <memory>
-#include "pingus/res_descriptor.hpp"
-#include "screen/gui_screen.hpp"
-#include "pingus/worldmap/worldmap_story.hpp"
-
-class StoryScreenComponent;
+#include "pingus/worldmap/drawable.hpp"
+#include "pingus/worldmap/path_graph.hpp"
 
 namespace WorldmapNS {
-class WorldmapStory;
-} // namespace WorldmapNS
-
-namespace GUI {
-class SurfaceButton;
-}
 
-/** */
-class StoryScreen : public GUIScreen
+/** Drawable to show the path between two nodes, only used for
+    debugging */
+class PathDrawable : public Drawable
 {
 private:
-  std::auto_ptr<WorldmapNS::WorldmapStory> story;
-  StoryScreenComponent* story_comp;
-  GUI::SurfaceButton* continue_button;
-  GUI::SurfaceButton* skip_button;
+  Path path;
 
 public:
-  StoryScreen(FileReader reader);
-  ~StoryScreen();
+  PathDrawable(const Path& arg_path);
 
-  void on_startup();
-  void on_fast_forward_press ();
-  void on_escape_press ();
-
-  void resize(const Size& size);
+  void draw(DrawingContext& gc);
+  void update(float delta);
 
 private:
-  StoryScreen (const StoryScreen&);
-  StoryScreen& operator= (const StoryScreen&);
+  PathDrawable (const PathDrawable&);
+  PathDrawable& operator= (const PathDrawable&);
 };
 
+} // namespace WorldmapNS
+
 #endif
 
 /* EOF */

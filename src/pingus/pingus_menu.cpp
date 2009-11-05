@@ -18,7 +18,7 @@
 
 #include <config.h>
 #include "gettext.h"
-#include "components/menu_button.hpp"
+#include "pingus/components/menu_button.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
@@ -27,8 +27,8 @@
 #include "pingus/stat_manager.hpp"
 #include "pingus/start_screen.hpp"
 #include "pingus/story_screen.hpp"
-#include "worldmap/worldmap.hpp"
-#include "worldmap/worldmap_screen.hpp"
+#include "pingus/worldmap/worldmap.hpp"
+#include "pingus/worldmap/worldmap_screen.hpp"
 #include "screen/screen_manager.hpp"
 #include "gui/gui_manager.hpp"
 #include "pingus/plf_res_mgr.hpp"

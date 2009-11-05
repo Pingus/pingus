@@ -14,49 +14,48 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_PINGUS_STORY_SCREEN_HPP
-#define HEADER_PINGUS_PINGUS_STORY_SCREEN_HPP
+#ifndef HEADER_PINGUS_WORLDMAP_LEVEL_DOT_HPP
+#define HEADER_PINGUS_WORLDMAP_LEVEL_DOT_HPP
 
-#include <string>
-#include <memory>
-#include "pingus/res_descriptor.hpp"
-#include "screen/gui_screen.hpp"
-#include "pingus/worldmap/worldmap_story.hpp"
-
-class StoryScreenComponent;
+#include "pingus/sprite.hpp"
+#include "pingus/pingus_level.hpp"
+#include "pingus/worldmap/dot.hpp"
 
 namespace WorldmapNS {
-class WorldmapStory;
-} // namespace WorldmapNS
 
-namespace GUI {
-class SurfaceButton;
-}
-
 /** */
-class StoryScreen : public GUIScreen
+class LevelDot : public Dot
 {
 private:
-  std::auto_ptr<WorldmapNS::WorldmapStory> story;
-  StoryScreenComponent* story_comp;
-  GUI::SurfaceButton* continue_button;
-  GUI::SurfaceButton* skip_button;
+  Sprite green_dot_sur;
+  Sprite red_dot_sur;
+  Sprite inaccessible_dot_sur;
+  Sprite highlight_green_dot_sur;
+  Sprite highlight_red_dot_sur;
+
+  PingusLevel plf;
 
 public:
-  StoryScreen(FileReader reader);
-  ~StoryScreen();
+  LevelDot(FileReader reader);
 
-  void on_startup();
-  void on_fast_forward_press ();
-  void on_escape_press ();
+  void draw(DrawingContext& gc);
+  void draw_hover(DrawingContext& gc);
 
-  void resize(const Size& size);
+  void update(float delta);
+  PingusLevel get_plf () const { return plf; }
+  void on_click();
+
+  bool finished();
+  bool accessible();
+  void unlock();
 
 private:
-  StoryScreen (const StoryScreen&);
-  StoryScreen& operator= (const StoryScreen&);
+  LevelDot (const LevelDot&);
+  LevelDot& operator= (const LevelDot&);
 };
-
+
+} // namespace WorldmapNS
+
 #endif
 
 /* EOF */

@@ -76,9 +76,9 @@ extern "C" {
 #include "pingus/resource.hpp"
 #include "pingus/credits.hpp"
 #include "sound/sound.hpp"
-#include "worldmap/worldmap_screen.hpp"
+#include "pingus/worldmap/worldmap_screen.hpp"
 #include "pingus/font_test_screen.hpp"
-#include "worldmap/worldmap_screen.hpp"
+#include "pingus/worldmap/worldmap_screen.hpp"
 #include "pingus/worldobj_factory.hpp"
 
 #include "editor/editor_screen.hpp"

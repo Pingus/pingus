@@ -22,7 +22,7 @@
 #include <boost/signals.hpp>
 #include "pingus/sprite.hpp"
 #include "screen/gui_screen.hpp"
-#include "components/label.hpp"
+#include "pingus/components/label.hpp"
 #include "gui/rect_component.hpp"
 #include "gui/surface_button.hpp"
 #include "tinygettext/language.hpp"

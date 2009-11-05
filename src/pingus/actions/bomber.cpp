@@ -23,9 +23,9 @@
 #include "pingus/pingu_enums.hpp"
 #include "pingus/ground_map.hpp"
 #include "pingus/world.hpp"
-#include "particles/pingu_particle_holder.hpp"
-#include "colliders/pingu_collider.hpp"
-#include "movers/linear_mover.hpp"
+#include "pingus/particles/pingu_particle_holder.hpp"
+#include "pingus/colliders/pingu_collider.hpp"
+#include "pingus/movers/linear_mover.hpp"
 
 namespace Actions {
 

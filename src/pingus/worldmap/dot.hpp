@@ -14,49 +14,43 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_PINGUS_STORY_SCREEN_HPP
-#define HEADER_PINGUS_PINGUS_STORY_SCREEN_HPP
+#ifndef HEADER_PINGUS_WORLDMAP_DOT_HPP
+#define HEADER_PINGUS_WORLDMAP_DOT_HPP
 
 #include <string>
-#include <memory>
-#include "pingus/res_descriptor.hpp"
-#include "screen/gui_screen.hpp"
-#include "pingus/worldmap/worldmap_story.hpp"
-
-class StoryScreenComponent;
+#include "math/vector3f.hpp"
+#include "pingus/worldmap/drawable.hpp"
 
 namespace WorldmapNS {
-class WorldmapStory;
-} // namespace WorldmapNS
 
-namespace GUI {
-class SurfaceButton;
-}
-
-/** */
-class StoryScreen : public GUIScreen
+/** A Dot is a node between all the pathes on the worldmap, there are
+    LevelDots TubeDots and other availabe. */
+class Dot : public Drawable
 {
-private:
-  std::auto_ptr<WorldmapNS::WorldmapStory> story;
-  StoryScreenComponent* story_comp;
-  GUI::SurfaceButton* continue_button;
-  GUI::SurfaceButton* skip_button;
+protected:
+  Vector3f pos;
 
 public:
-  StoryScreen(FileReader reader);
-  ~StoryScreen();
+  Dot(FileReader reader);
 
-  void on_startup();
-  void on_fast_forward_press ();
-  void on_escape_press ();
+  /** Draw stuff that should be displayed if the mouse is over the dot */
+  virtual void draw_hover(DrawingContext& gc) =0;
 
-  void resize(const Size& size);
+  Vector3f get_pos() { return pos; }
 
+  virtual void on_click() =0;
+
+  virtual bool finished() =0;
+  virtual bool accessible() =0;
+  /** makes the node accessible */
+  virtual void unlock() =0;
 private:
-  StoryScreen (const StoryScreen&);
-  StoryScreen& operator= (const StoryScreen&);
+  Dot (const Dot&);
+  Dot& operator= (const Dot&);
 };
-
+
+} // namespace WorldmapNS
+
 #endif
 
 /* EOF */

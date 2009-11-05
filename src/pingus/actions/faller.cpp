@@ -17,11 +17,11 @@
 #include "pingus/actions/faller.hpp"
 
 #include "math/math.hpp"
-#include "colliders/pingu_collider.hpp"
+#include "pingus/colliders/pingu_collider.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 #include "display/scene_context.hpp"
-#include "movers/linear_mover.hpp"
+#include "pingus/movers/linear_mover.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"
