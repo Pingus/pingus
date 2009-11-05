@@ -14,9 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "components/pingus_counter.hpp"
+
 #include <stdio.h>
 
-#include "components/pingus_counter.hpp"
 #include "pingus/gettext.h"
 #include "pingus/fonts.hpp"
 #include "pingus/globals.hpp"

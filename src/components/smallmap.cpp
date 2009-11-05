@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "components/smallmap.hpp"
+
 #include "pingus/game_session.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "display/display.hpp"
@@ -27,7 +29,6 @@
 #include "math/vector3f.hpp"
 #include "pingus/globals.hpp"
 #include "components/playfield.hpp"
-#include "components/smallmap.hpp"
 
 SmallMap::SmallMap(Server* server_, Playfield* playfield_, const Rect& rect_) :
   RectComponent(rect_), 

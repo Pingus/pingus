@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "components/menu_button.hpp"
+
 #include "pingus/globals.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/fonts.hpp"
@@ -22,7 +24,6 @@
 #include "pingus/gettext.h"
 #include "pingus/pingus_menu.hpp"
 
-#include "components/menu_button.hpp"
 
 MenuButton::MenuButton(PingusMenu* menu_,
                        const Vector2i& pos_,

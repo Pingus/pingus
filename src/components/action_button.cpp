@@ -14,8 +14,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "pingus/globals.hpp"
 #include "components/action_button.hpp"
+
+#include "pingus/globals.hpp"
 #include "pingus/server.hpp"
 #include "pingus/game_session.hpp"
 #include "pingus/world.hpp"

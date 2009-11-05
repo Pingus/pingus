@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "components/time_display.hpp"
+
 #include <assert.h>
 #include <stdio.h>
 
@@ -27,7 +29,6 @@
 #include "util/string_util.hpp"
 #include "pingus/fonts.hpp"
 
-#include "components/time_display.hpp"
 
 TimeDisplay::TimeDisplay (GameSession* c) :
   server(c->get_server()),

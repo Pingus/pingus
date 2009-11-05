@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "components/playfield.hpp"
+
 #include <stdio.h>
 #include <iostream>
 #include "pingus/globals.hpp"
@@ -25,7 +27,6 @@
 #include "pingus/pingu.hpp"
 #include "display/display.hpp"
 #include "pingus/game_session.hpp"
-#include "components/playfield.hpp"
 
 Playfield::Playfield(Server* server_, GameSession* session_, const Rect& rect_) :
   RectComponent(rect_),

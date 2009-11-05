@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "components/button_panel.hpp"
+
 #include <iostream>
 #include <algorithm>
 
@@ -24,7 +26,6 @@
 #include "pingus/server.hpp"
 #include "pingus/game_session.hpp"
 #include "display/drawing_context.hpp"
-#include "components/button_panel.hpp"
 
 using namespace Actions;
 
