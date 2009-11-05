@@ -19,9 +19,9 @@
 
 #include <string>
 #include <boost/shared_ptr.hpp>
+
 #include "math/origin.hpp"
 #include "pingus/resource_modifier.hpp"
-#include "SDL.h"
 
 class Color;
 class Surface;
