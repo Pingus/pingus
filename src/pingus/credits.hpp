@@ -22,7 +22,7 @@
 #include "engine/screen/gui_screen.hpp"
 #include "pingus/font.hpp"
 #include "engine/display/scene_context.hpp"
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 
 class Credits : public GUIScreen
 {

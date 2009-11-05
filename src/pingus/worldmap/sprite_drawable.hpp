@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_WORLDMAP_SPRITE_DRAWABLE_HPP
 #define HEADER_PINGUS_WORLDMAP_SPRITE_DRAWABLE_HPP
 
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 #include "math/vector3f.hpp"
 #include "pingus/worldmap/drawable.hpp"
 

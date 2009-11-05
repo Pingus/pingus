@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_ADDON_MENU_HPP
 #define HEADER_PINGUS_PINGUS_ADDON_MENU_HPP
 
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 #include "engine/screen/gui_screen.hpp"
 
 /** */

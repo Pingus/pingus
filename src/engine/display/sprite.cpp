@@ -14,7 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 
 #include <iostream>
 #include <sstream>
@@ -25,11 +25,11 @@
 #include "math/vector2i.hpp"
 #include "SDL_image.h"
 #include "pingus/blitter.hpp"
-#include "pingus/surface.hpp"
+#include "engine/display/surface.hpp"
 #include "util/pathname.hpp"
 #include "pingus/resource.hpp"
-#include "pingus/sprite_impl.hpp"
-#include "pingus/sprite_description.hpp"
+#include "engine/display/sprite_impl.hpp"
+#include "engine/display/sprite_description.hpp"
 
 Sprite::Sprite() :
   impl()

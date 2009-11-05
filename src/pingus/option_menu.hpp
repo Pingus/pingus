@@ -20,7 +20,7 @@
 #include <vector>
 #include <map>
 #include <boost/signals.hpp>
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 #include "engine/screen/gui_screen.hpp"
 #include "pingus/components/label.hpp"
 #include "engine/gui/rect_component.hpp"

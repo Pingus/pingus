@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_PINGUS_LEVEL_MENU_HPP
 
 #include "pingus/levelset.hpp"
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 #include "engine/screen/gui_screen.hpp"
 
 namespace GUI {

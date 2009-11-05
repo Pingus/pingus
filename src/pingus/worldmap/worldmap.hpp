@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_WORLDMAP_WORLDMAP_HPP
 
 #include <vector>
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 #include "util/file_reader.hpp"
 #include "engine/display/drawing_context.hpp"
 #include "pingus/graphic_context_state.hpp"

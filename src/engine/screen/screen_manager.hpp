@@ -22,7 +22,7 @@
 #include <boost/smart_ptr.hpp>
 #include <vector>
 #include "math/vector2f.hpp"
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 
 namespace Input {
 class Manager;

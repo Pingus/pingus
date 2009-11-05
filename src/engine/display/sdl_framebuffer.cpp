@@ -18,7 +18,7 @@
 
 #include <iostream>
 #include "math/math.hpp"
-#include "pingus/surface.hpp"
+#include "engine/display/surface.hpp"
 #include "engine/display/display.hpp"
 #include "engine/display/sdl_framebuffer_surface_impl.hpp"
 

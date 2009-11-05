@@ -21,7 +21,7 @@
 #include <memory>
 
 #include "pingus/fonts.hpp"
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 #include "engine/screen/gui_screen.hpp"
 
 namespace GUI {

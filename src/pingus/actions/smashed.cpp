@@ -19,7 +19,7 @@
 #include "math/vector3f.hpp"
 #include "engine/display/scene_context.hpp"
 #include "pingus/pingu.hpp"
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 
 namespace Actions {
 

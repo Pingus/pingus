@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_PARTICLES_PINGU_PARTICLE_HOLDER_HPP
 
 #include <vector>
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 #include "math/vector3f.hpp"
 #include "pingus/worldobj.hpp"
 

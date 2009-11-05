@@ -22,7 +22,7 @@
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
 #include "util/string_util.hpp"
-#include "pingus/sprite_description.hpp"
+#include "engine/display/sprite_description.hpp"
 #include "util/sexpr_file_reader.hpp"
 
 ResourceManager::ResourceManager() :

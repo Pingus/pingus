@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_COMPONENTS_TIME_DISPLAY_HPP
 
 #include "engine/gui/component.hpp"
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 #include "pingus/font.hpp"
 
 class Font;

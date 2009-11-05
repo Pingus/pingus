@@ -19,7 +19,7 @@
 
 #include "engine/gui/component.hpp"
 #include "pingus/font.hpp"
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 
 class DrawingContext;
 class World;

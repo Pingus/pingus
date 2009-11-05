@@ -21,7 +21,7 @@
 
 #include "engine/display/display.hpp"
 #include "editor/gui_style.hpp"
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 #include "pingus/gettext.h"
 #include "math/vector2i.hpp"
 #include "editor/editor_screen.hpp"

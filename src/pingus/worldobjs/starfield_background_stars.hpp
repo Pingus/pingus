@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_WORLDOBJS_STARFIELD_BACKGROUND_STARS_HPP
 
 #include "pingus/worldobj.hpp"
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 
 namespace WorldObjs {
 

@@ -24,7 +24,7 @@
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "pingus/resource.hpp"
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 
 namespace Editor {
 

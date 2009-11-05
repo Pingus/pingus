@@ -14,12 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "pingus/sprite_impl.hpp"
+#include "engine/display/sprite_impl.hpp"
 
 #include <map>
 #include "engine/display/framebuffer.hpp"
 #include "engine/display/display.hpp"
-#include "pingus/sprite_description.hpp"
+#include "engine/display/sprite_description.hpp"
 
 typedef std::map<std::string, FramebufferSurface> SurfaceCache;
 SurfaceCache surface_cache;

@@ -22,7 +22,7 @@
 #include "math/math.hpp"
 #include "engine/display/framebuffer.hpp"
 #include "engine/display/display.hpp"
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 #include "pingus/font.hpp"
 #include "math/origin.hpp"
 

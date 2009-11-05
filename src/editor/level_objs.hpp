@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_EDITOR_LEVEL_OBJS_HPP
 #define HEADER_PINGUS_EDITOR_LEVEL_OBJS_HPP
 
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 #include "math/color.hpp"
 #include "math/origin.hpp"
 #include "math/rect.hpp"

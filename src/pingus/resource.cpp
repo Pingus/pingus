@@ -24,7 +24,7 @@
 #include "pingus/font_description.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/blitter.hpp"
-#include "pingus/sprite_description.hpp"
+#include "engine/display/sprite_description.hpp"
 #include "pingus/debug.hpp"
 
 ResourceManager Resource::resmgr;

@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_PINGUS_BLITTER_IMPL_HPP
 
 #include <iostream>
-#include "pingus/surface.hpp"
+#include "engine/display/surface.hpp"
 #include "pingus/pingus.hpp"
 
 /** A collection of helper functions for the blitter class */

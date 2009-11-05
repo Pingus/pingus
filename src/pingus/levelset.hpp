@@ -21,7 +21,7 @@
 #include <vector>
 #include "pingus/pingus_level.hpp"
 #include "util/pathname.hpp"
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 
 /** */
 class Levelset

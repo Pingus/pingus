@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_COMPONENTS_MENU_BUTTON_HPP
 
 #include <string>
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 #include "pingus/font.hpp"
 #include "math/vector2i.hpp"
 #include "engine/gui/component.hpp"

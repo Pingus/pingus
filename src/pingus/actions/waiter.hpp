@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_ACTIONS_WAITER_HPP
 #define HEADER_PINGUS_ACTIONS_WAITER_HPP
 
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 #include "pingus/pingu_action.hpp"
 
 namespace Actions {

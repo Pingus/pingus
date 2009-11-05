@@ -19,8 +19,8 @@
 
 #include <map>
 #include <vector>
-#include "pingus/sprite.hpp"
-#include "pingus/surface.hpp"
+#include "engine/display/sprite.hpp"
+#include "engine/display/surface.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/resource_manager.hpp"
 #include "pingus/collision_mask.hpp"

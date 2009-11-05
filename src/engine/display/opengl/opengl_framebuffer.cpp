@@ -21,8 +21,8 @@
 #include <stdexcept>
 
 #include "engine/display/opengl/opengl_framebuffer_surface_impl.hpp"
+#include "engine/display/surface.hpp"
 #include "math/math.hpp"
-#include "pingus/surface.hpp"
 
 OpenGLFramebuffer::OpenGLFramebuffer() :
   screen(),

@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_SPRITE_IMPL_HPP
 #define HEADER_PINGUS_PINGUS_SPRITE_IMPL_HPP
 
-#include "pingus/surface.hpp"
+#include "engine/display/surface.hpp"
 #include "engine/display/framebuffer_surface.hpp"
 #include "math/vector2i.hpp"
 

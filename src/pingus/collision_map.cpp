@@ -24,7 +24,7 @@
 #include "pingus/pingus_error.hpp"
 #include "math/math.hpp"
 #include "pingus/gettext.h"
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 
 CollisionMap::CollisionMap(int w, int h)
   : serial(0),

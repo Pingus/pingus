@@ -19,7 +19,7 @@
 
 #include "pingus/pingus.hpp"
 #include "util/file_reader.hpp"
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 #include "pingus/collision_mask.hpp"
 
 class FileReader;

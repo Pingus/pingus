@@ -19,7 +19,7 @@
 
 #include <string>
 #include <memory>
-#include "pingus/sprite.hpp"
+#include "engine/display/sprite.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/screen/gui_screen.hpp"
 
