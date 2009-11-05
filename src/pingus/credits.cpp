@@ -27,7 +27,7 @@
 #include "pingus/fonts.hpp"
 #include "gettext.h"
 #include "engine/display/display.hpp"
-#include "pingus/blitter.hpp"
+#include "engine/display/blitter.hpp"
 
 class CreditsOkButton
   : public GUI::SurfaceButton

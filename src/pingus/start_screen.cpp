@@ -21,7 +21,7 @@
 #include "engine/gui/surface_button.hpp"
 #include "engine/gui/component.hpp"
 #include "engine/screen/screen_manager.hpp"
-#include "pingus/blitter.hpp"
+#include "engine/display/blitter.hpp"
 #include "gettext.h"
 #include "pingus/game_session.hpp"
 #include "pingus/globals.hpp"

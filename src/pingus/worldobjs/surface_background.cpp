@@ -22,7 +22,7 @@
 #include "pingus/world.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/globals.hpp"
-#include "pingus/blitter.hpp"
+#include "engine/display/blitter.hpp"
 #include "engine/display/display.hpp"
 
 namespace WorldObjs {

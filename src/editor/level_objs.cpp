@@ -20,7 +20,7 @@
 #include <string>
 #include <iostream>
 #include "editor/level_impl.hpp"
-#include "pingus/blitter.hpp"
+#include "engine/display/blitter.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "engine/display/display.hpp"

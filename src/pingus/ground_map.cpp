@@ -20,7 +20,7 @@
 #include <iostream>
 #include "engine/display/scene_context.hpp"
 #include "pingus/pingus_error.hpp"
-#include "pingus/blitter.hpp"
+#include "engine/display/blitter.hpp"
 #include "pingus/pingus_level.hpp"
 #include "gettext.h"
 #include "pingus/collision_map.hpp"

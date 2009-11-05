@@ -22,7 +22,7 @@
 #include "engine/gui/surface_button.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/screen/screen_manager.hpp"
-#include "pingus/blitter.hpp"
+#include "engine/display/blitter.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/fonts.hpp"

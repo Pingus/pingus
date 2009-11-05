@@ -14,22 +14,19 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "pingus/blitter.hpp"
+#include "engine/display/blitter.hpp"
 
 #include <config.h>
 #include <stdio.h>
 #include <assert.h>
-
 #include "SDL.h"
+
 #include "util/string_util.hpp"
 #include "pingus/pingus_error.hpp"
 #include "pingus/globals.hpp"
 #include "math/math.hpp"
 #include "pingus/debug.hpp"
-#include "pingus/blitter_impl.hpp"
-
-/* Headers needed for i18n / gettext */
-#include "gettext.h"
+#include "engine/display/blitter_impl.hpp"
 
 SDL_Surface*
 Blitter::scale_surface(SDL_Surface* surface, int width, int height)

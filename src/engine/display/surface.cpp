@@ -23,7 +23,7 @@
 
 #include "math/rect.hpp"
 #include "pingus/debug.hpp"
-#include "pingus/blitter.hpp"
+#include "engine/display/blitter.hpp"
 
 class SurfaceImpl
 {

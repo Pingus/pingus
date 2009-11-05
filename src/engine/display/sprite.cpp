@@ -24,7 +24,7 @@
 #include "math/origin.hpp"
 #include "math/vector2i.hpp"
 #include "SDL_image.h"
-#include "pingus/blitter.hpp"
+#include "engine/display/blitter.hpp"
 #include "engine/display/surface.hpp"
 #include "util/pathname.hpp"
 #include "pingus/resource.hpp"
