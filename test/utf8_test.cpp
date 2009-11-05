@@ -14,22 +14,24 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "utf8_test.hpp"
+#include <iostream>
+
+#include "util/utf8.hpp"
 
 int main(int argc, char** argv)
 {
   if (argc != 2)
-    {
-      std::cout << "Usage: " << argv[0] << " TEXT" << std::endl;
-    }
+  {
+    std::cout << "Usage: " << argv[0] << " TEXT" << std::endl;
+  }
   else
-    {
-      std::cout << "ASCII: " << std::string(argv[1]).length() << std::endl;
-      std::cout << "UTF8:  " << UTF8::length(argv[1]) << std::endl;
+  {
+    std::cout << "length in ASCII characters: " << std::string(argv[1]).length() << std::endl;
+    std::cout << "length in UTF8 characters:  " << UTF8::length(argv[1]) << std::endl;
 
-      std::string res = UTF8::substr(argv[1], 1, 1);
-      std::cout << "substr:  " << res.length() << " " << res << std::endl;
-    }
+    std::string res = UTF8::substr(argv[1], 1, 1);
+    std::cout << "substr:  " << res.length() << " " << res << std::endl;
+  }
   return 0;
 }
 

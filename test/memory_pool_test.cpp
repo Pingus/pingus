@@ -14,12 +14,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "memory_pool_test.hpp"
-
-// g++ -Wall -Werror -ansi -pedantic -O2 -g memory_pool_test.cpp -o memory_pool_test
-
 #include <iostream>
-#include "memory_pool.hpp"
+
+#include "util/memory_pool.hpp"
 
 struct Thing {
   int i;

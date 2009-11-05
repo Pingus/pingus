@@ -14,11 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "rect_merger_test.hpp"
-
-// g++ -Wall -O2  -D__TEST__ rect_merger.cpp ../math/rect.cpp ../math/origin.cpp -o rect_merger
-
+#include <iostream>
 #include <stdlib.h>
+
+#include "engine/display/rect_merger.hpp"
 
 int main(int argc, char** argv)
 {

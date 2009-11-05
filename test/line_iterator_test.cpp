@@ -14,11 +14,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "line_iterator_test.hpp"
-
-// g++ line_iterator.cpp -o line_iterator -D__TEST__  -Wall -Werror -ansi -pedantic
-
 #include <iostream>
+
+#include "pingus/line_iterator.hpp"
 
 void test(const std::string& str)
 {

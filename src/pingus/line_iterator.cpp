@@ -16,7 +16,6 @@
 
 #include "pingus/line_iterator.hpp"
 
-
 LineIterator::LineIterator(const std::string& str)
   : first(str.begin()),
     last(str.end()),

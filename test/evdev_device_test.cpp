@@ -14,26 +14,26 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "evdev_device_test.hpp"
+#include "engine/input/evdev/evdev_device.hpp"
 
 // g++ -D__TEST__ evdev_device.cpp -o evdev -Wall -Werror
 
 int main(int argc, char** argv)
 {
   if (argc != 2)
-    {
-      std::cout << "Usage: evdev FILENAME" << std::endl;
-    }
+  {
+    std::cout << "Usage: evdev FILENAME" << std::endl;
+  }
   else
-    {
-      std::cout << "EvdevDevice: " << argv[1] << std::endl;
+  {
+    std::cout << "EvdevDevice: " << argv[1] << std::endl;
 
-      Input::EvdevDevice dev(argv[1]);
-      while(true)
-        {
-          dev.update(0.0f);
-        }
+    Input::EvdevDevice dev(argv[1]);
+    while(true)
+    {
+      dev.update(0.0f);
     }
+  }
   return 0;
 }
 

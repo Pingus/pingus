@@ -304,5 +304,8 @@ if not ('configure' in COMMAND_LINE_TARGETS):
                                   Glob('src/util/*.cpp') + \
                                   env['optional_sources'])
     env.Program('pingus', ['src/main.cpp', libpingus])
-
+    
+    for filename in Glob("test/*_test.cpp", strings=True):
+        env.Program(filename[:-4], [filename, libpingus])
+    
 ## EOF ##
