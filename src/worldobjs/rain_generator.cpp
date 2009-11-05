@@ -45,7 +45,7 @@ RainGenerator::draw (SceneContext& gc)
       	waiter_count = 1.0f;
       }
 
-      gc.color().fill_screen(Color(255, 255, 255, static_cast<int>(thunder_count*255)));
+      gc.color().fill_screen(Color(255, 255, 255, static_cast<uint8_t>(thunder_count*255)));
     }
 }
 

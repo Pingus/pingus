@@ -78,6 +78,7 @@ public:
   void disable_scroll_mode();
 
   void update_layout();
+
 private:
   Playfield (const Playfield&);
   Playfield& operator= (const Playfield&);

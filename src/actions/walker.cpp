@@ -63,9 +63,10 @@ Walker::update ()
 
   */
 
-  if (rel_getpixel(1, 0) == Groundtype::GP_OUTOFSCREEN) {
-		pingu->set_x(pingu->get_x() + pingu->direction);
-		return;
+  if (rel_getpixel(1, 0) == Groundtype::GP_OUTOFSCREEN) 
+  {
+    pingu->set_x(pingu->get_x() + static_cast<float>(pingu->direction));
+    return;
   }
 
   if (rel_getpixel(0, -1) ==  Groundtype::GP_WATER)
@@ -93,7 +94,7 @@ Walker::update ()
 
       if (found_ground)
 	{
-	  pingu->set_y(pingu->get_y() - i);
+	  pingu->set_y(pingu->get_y() - static_cast<float>(i));
 	}
       else
 	{
@@ -109,8 +110,8 @@ Walker::update ()
     {
       // simple, stupid, but working bridge code
       // FIXME: We don't check if we 'drift' into a solid ground block
-      pingu->set_pos(pingu->get_x() + pingu->direction,
-		     pingu->get_y() - 1); // pingus 'float' through bridges
+      pingu->set_pos(pingu->get_x() + static_cast<float>(pingu->direction),
+		     pingu->get_y() - 1.0f); // pingus 'float' through bridges
     }
   else
     {
@@ -144,8 +145,8 @@ Walker::update ()
       if (found_next_step)
 	{
 	  // pos.y has a reversed co-system to rel_getpixel()?
-	  pingu->set_pos(pingu->get_x() + pingu->direction,
-			 pingu->get_y() - possible_y_step);
+	  pingu->set_pos(pingu->get_x() + static_cast<float>(pingu->direction),
+			 pingu->get_y() - static_cast<float>(possible_y_step));
 	}
       else
 	{
@@ -165,7 +166,7 @@ Walker::update ()
 	  else
 	    {
 	      // We take the step, so that we are in the air
-	      pingu->set_x(pingu->get_x() + pingu->direction);
+	      pingu->set_x(pingu->get_x() + static_cast<float>(pingu->direction));
 	      // We reached a cliff
 	      pingu->set_action(Actions::FALLER);
 	      return;

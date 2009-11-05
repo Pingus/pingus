@@ -176,16 +176,16 @@ public:
       }    
     return false;
   }
-
+  
   bool read_color (const char* name, Color& v) const
   {
     boost::shared_ptr<lisp::Lisp> sub = get_subsection(name);
     if (sub && sub->get_list_size() == 5)
       {
-        v = Color(int(sub->get_list_elem(1)->get_float() * 255),
-                  int(sub->get_list_elem(2)->get_float() * 255),
-                  int(sub->get_list_elem(3)->get_float() * 255),
-                  int(sub->get_list_elem(4)->get_float() * 255));
+        v = Color(static_cast<char>(sub->get_list_elem(1)->get_float() * 255),
+                  static_cast<char>(sub->get_list_elem(2)->get_float() * 255),
+                  static_cast<char>(sub->get_list_elem(3)->get_float() * 255),
+                  static_cast<char>(sub->get_list_elem(4)->get_float() * 255));
         return true;
       }
     return false;

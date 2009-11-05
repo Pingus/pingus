@@ -74,8 +74,8 @@ PingusSoundReal::real_play_sound(const std::string& name, float volume, float pa
       Mix_Volume(channel, (int)(volume * MIX_MAX_VOLUME));
       if (panning != 0.0f)
         {
-          Uint8 left = (panning < 0.0f) ? 255 : (Uint8)((panning - 1.0f) * -255);
-          Uint8 right = (panning > 0.0f) ? 255 : (Uint8)((panning + 1.0f) * 255);
+          Uint8 left  = static_cast<Uint8>((panning < 0.0f) ? 255 : (Uint8)((panning - 1.0f) * -255));
+          Uint8 right = static_cast<Uint8>((panning > 0.0f) ? 255 : (Uint8)((panning + 1.0f) * 255));
           Mix_SetPanning(channel, left, right);
         }
     }

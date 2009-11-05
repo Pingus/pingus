@@ -94,8 +94,8 @@ Basher::update ()
         if (basher_c % 2 == 0)
           bash();
       }
-      else if (sprite[pingu->direction].get_current_frame() // FIXME: Game logic must be separate from Sprite 
-               / float(sprite[pingu->direction].get_frame_count()) > 0.6f) 
+      else if (static_cast<float>(sprite[pingu->direction].get_current_frame()) // FIXME: Game logic must be separate from Sprite 
+               / static_cast<float>(sprite[pingu->direction].get_frame_count()) > 0.6f)
       { // FIXME: EVIL! Engine must not relay on graphic
         pingu->set_action(Actions::WALKER);
       }
@@ -107,8 +107,8 @@ void
 Basher::bash()
 {
   WorldObj::get_world()->remove(bash_radius,
-                                static_cast<int>(pingu->get_x () - (bash_radius_width / 2)),
-                                static_cast<int>(pingu->get_y () - bash_radius_width + 1));
+                                static_cast<int>(pingu->get_x() - static_cast<float>(bash_radius_width / 2)),
+                                static_cast<int>(pingu->get_y() - static_cast<float>(bash_radius_width + 1)));
 }
 
 void
@@ -133,8 +133,8 @@ Basher::walk_forward()
   {
     // Note that Pingu::set_pos() is the 'reverse' of the y co-ords of
     // rel_getpixel()
-    pingu->set_pos(pingu->get_x() + static_cast<int>(pingu->direction),
-                   pingu->get_y() - y_inc);
+    pingu->set_pos(pingu->get_x() + static_cast<float>(pingu->direction),
+                   pingu->get_y() - static_cast<float>(y_inc));
   }
 }
 

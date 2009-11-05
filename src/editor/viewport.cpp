@@ -351,8 +351,8 @@ Viewport::update(float delta)
 {
   if (current_action == SCROLLING)
     {
-      state.set_pos(Vector2i(static_cast<int>(state.get_pos().x + (mouse_screen_pos.x - drag_screen_pos.x) * 5 * delta),
-                             static_cast<int>(state.get_pos().y + (mouse_screen_pos.y - drag_screen_pos.y) * 5 * delta)));
+      state.set_pos(Vector2i(static_cast<int>(static_cast<float>(state.get_pos().x + (mouse_screen_pos.x - drag_screen_pos.x)) * 5.0f * delta),
+                             static_cast<int>(static_cast<float>(state.get_pos().y + (mouse_screen_pos.y - drag_screen_pos.y)) * 5.0f * delta)));
     }
   
   // Autoscroll if necessary
@@ -511,7 +511,9 @@ Viewport::move_objects(const Vector2i& offset)
   for (unsigned i = 0; i < selected_objs.size(); i++)
     {
       Vector3f p = selected_objs[i]->get_pos(); 
-      selected_objs[i]->set_pos(Vector3f(p.x + offset.x, p.y + offset.y, p.z));
+      selected_objs[i]->set_pos(Vector3f(p.x + static_cast<float>(offset.x),
+                                         p.y + static_cast<float>(offset.y),
+                                         p.z));
     }
 }
 

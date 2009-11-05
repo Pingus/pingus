@@ -57,9 +57,8 @@ SpriteDrawable::draw(DrawingContext& gc)
     {
       Vector3f pingus_pos = Worldmap::current()->get_pingus()->get_pos();
       // Pingu is not over the surface
-      if (!(pingus_pos.x > pos.x && pingus_pos.x < pos.x + surface.get_width()
-            &&
-            pingus_pos.y > pos.y && pingus_pos.y < pos.y + surface.get_height()))
+      if (!(pingus_pos.x > pos.x && pingus_pos.x < pos.x + static_cast<float>(surface.get_width()) &&
+            pingus_pos.y > pos.y && pingus_pos.y < pos.y + static_cast<float>(surface.get_height())))
       {
         gc.draw(surface, pos);
       }
@@ -67,14 +66,14 @@ SpriteDrawable::draw(DrawingContext& gc)
       { // FIXME: Hack for the 0.6.0 release/tutorial world remove later
         gc.draw(surface, pos);
       }
-  }
+    }
     else
     {
       gc.draw(surface, pos);
     }
-}
+  }
 }
 
-  } // namespace WorldmapNS
+} // namespace WorldmapNS
 
 /* EOF */

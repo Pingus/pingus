@@ -35,6 +35,10 @@ Code Cleanup
 * Editor ObjectSelector is broken, graphics are not clipped (dirty
   rectangle renderers fault)
 
+* add check for OpenGL
+
+* banish Vector3f from the source code, along with float
+
 
 OLPC Issues
 ===========

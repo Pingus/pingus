@@ -82,7 +82,7 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
     unsigned char *p1, *p2, *p3, *p4;
 
     new_surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, surface->format->BitsPerPixel,
-      surface->format->Rmask, surface->format->Gmask, surface->format->Bmask, surface->format->Amask);
+                                       surface->format->Rmask, surface->format->Gmask, surface->format->Bmask, surface->format->Amask);
 
     SDL_LockSurface(surface);
     SDL_LockSurface(new_surface);
@@ -93,13 +93,13 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
 
     for (i = 0; i < height; ++i) {
       x = i * new_pitch;
-      fy = (float)i * surface->h / height;
+      fy = static_cast<float>(i) * static_cast<float>(surface->h) / static_cast<float>(height);
       iy = (int)fy;
-      fy -= iy;
+      fy -= static_cast<float>(iy);
       for (j = 0; j < width; ++j) {
-        fx = (float)j * surface->w / width;
+        fx = static_cast<float>(j) * static_cast<float>(surface->w) / static_cast<float>(width);
         ix = (int)fx;
-        fx -= ix;
+        fx -= static_cast<float>(ix);
         fz = (fx + fy) / 2;
 
         p1 = &pixels[iy * surface->pitch + ix * bpp];
@@ -111,22 +111,22 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
           &pixels[(iy + 1) * surface->pitch + (ix + 1) * bpp] : p1;
 
         new_pixels[x + 0] = static_cast<unsigned char>(
-          (p1[0] * (1 - fy) + p2[0] * fy +
-           p1[0] * (1 - fx) + p3[0] * fx +
-           p1[0] * (1 - fz) + p4[0] * fz) / 3.0 + .5);
+          (static_cast<float>(p1[0]) * (1 - fy) + static_cast<float>(p2[0]) * fy +
+           static_cast<float>(p1[0]) * (1 - fx) + static_cast<float>(p3[0]) * fx +
+           static_cast<float>(p1[0]) * (1 - fz) + static_cast<float>(p4[0]) * fz) / 3.0 + .5);
         new_pixels[x + 1] = static_cast<unsigned char>(
-          (p1[1] * (1 - fy) + p2[1] * fy +
-           p1[1] * (1 - fx) + p3[1] * fx +
-           p1[1] * (1 - fz) + p4[1] * fz) / 3.0 + .5);
+          (static_cast<float>(p1[1]) * (1 - fy) + static_cast<float>(p2[1]) * fy +
+           static_cast<float>(p1[1]) * (1 - fx) + static_cast<float>(p3[1]) * fx +
+           static_cast<float>(p1[1]) * (1 - fz) + static_cast<float>(p4[1]) * fz) / 3.0 + .5);
         new_pixels[x + 2] = static_cast<unsigned char>(
-          (p1[2] * (1 - fy) + p2[2] * fy +
-           p1[2] * (1 - fx) + p3[2] * fx +
-           p1[2] * (1 - fz) + p4[2] * fz) / 3.0 + .5);
+          (static_cast<float>(p1[2]) * (1 - fy) + static_cast<float>(p2[2]) * fy +
+           static_cast<float>(p1[2]) * (1 - fx) + static_cast<float>(p3[2]) * fx +
+           static_cast<float>(p1[2]) * (1 - fz) + static_cast<float>(p4[2]) * fz) / 3.0 + .5);
         if (bpp == 4) {
           new_pixels[x + 3] = static_cast<unsigned char>(
-            (p1[3] * (1 - fy) + p2[3] * fy +
-             p1[3] * (1 - fx) + p3[3] * fx +
-             p1[3] * (1 - fz) + p4[3] * fz) / 3.0 + .5);
+            (static_cast<float>(p1[3]) * (1 - fy) + static_cast<float>(p2[3]) * fy +
+             static_cast<float>(p1[3]) * (1 - fx) + static_cast<float>(p3[3]) * fx +
+             static_cast<float>(p1[3]) * (1 - fz) + static_cast<float>(p4[3]) * fz) / 3.0 + .5);
         }
         x += bpp;
       }

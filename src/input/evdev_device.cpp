@@ -151,9 +151,9 @@ EvdevDevice::process_relative(struct input_event& ev)
       i != relatives[idx].bindings.end(); ++i)
     {
       if (relatives[idx].binding_axis == 0)
-        (*i)->set_delta(Vector2f(-ev.value * 0.125f, 0)); // FIXME: make scaling and inversion configurable
+        (*i)->set_delta(Vector2f(static_cast<float>(-ev.value) * 0.125f, 0.0f)); // FIXME: make scaling and inversion configurable
       else if (relatives[idx].binding_axis == 1)
-        (*i)->set_delta(Vector2f(0, -ev.value * 0.125f));
+        (*i)->set_delta(Vector2f(0, static_cast<float>(-ev.value) * 0.125f));
     }
 }
 

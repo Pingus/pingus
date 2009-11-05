@@ -46,7 +46,7 @@ public:
     vertical_spacing(),
     size(desc.size)
   {
-    vertical_spacing = size * desc.vertical_spacing;
+    vertical_spacing = static_cast<float>(size) * desc.vertical_spacing;
    
     glyphs.resize(65536, 0); // 16bit ought to be enough for everybody
 
@@ -123,7 +123,7 @@ public:
             const GlyphDescription& glyph = *glyphs[unicode];
             fb.draw_surface(framebuffer_surfaces[glyph.image],
                             glyph.rect, Vector2i(static_cast<int>(dstx), static_cast<int>(dsty)) + glyph.offset);
-            dstx += glyph.advance + char_spacing;
+            dstx += static_cast<float>(glyph.advance) + char_spacing;
           }
         else
           {
@@ -140,7 +140,7 @@ public:
   float get_width(uint32_t unicode) const
   {
     if (unicode < glyphs.size() && glyphs[unicode])
-      return glyphs[unicode]->advance;
+      return static_cast<float>(glyphs[unicode]->advance);
     else
       return 0;
   }

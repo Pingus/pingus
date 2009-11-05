@@ -59,7 +59,7 @@ private:
     void draw (DrawingContext& gc)
     {
       gc.draw(sur, Vector3f(x_pos + x_offset, y_pos + y_offset));
-      gc.draw(sur, Vector3f(x_pos + x_offset - gc.get_width(), y_pos + y_offset));
+      gc.draw(sur, Vector3f(x_pos + x_offset - static_cast<float>(gc.get_width()), y_pos + y_offset));
     }
 
     void update (float delta)

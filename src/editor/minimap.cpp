@@ -75,9 +75,9 @@ Minimap::draw(DrawingContext& gc)
       else // hotspot, background, etc.
         color = Color(255,0,0);
 
-      Color bg_color(int(color.r * 0.75f), 
-                     int(color.g * 0.75f), 
-                     int(color.b * 0.75f));
+      Color bg_color(static_cast<uint8_t>(3 * color.r / 4), 
+                     static_cast<uint8_t>(3 * color.g / 4), 
+                     static_cast<uint8_t>(3 * color.b / 4));
 
       dc.draw_fillrect(r, bg_color, (*i)->get_pos().z);
       dc.draw_rect(r, color, (*i)->get_pos().z);
@@ -86,11 +86,11 @@ Minimap::draw(DrawingContext& gc)
   Vector2f viewport_pos  = editor->get_viewport()->get_scroll_pos();
   Rect     viewport_rect = editor->get_viewport()->get_rect();
 
-  viewport_pos.x -= viewport_rect.get_width()/2;
-  viewport_pos.y -= viewport_rect.get_height()/2;
+  viewport_pos.x -= static_cast<float>(viewport_rect.get_width())  / 2;
+  viewport_pos.y -= static_cast<float>(viewport_rect.get_height()) / 2;
 
-  Rect view(Vector2i(int(viewport_pos.x * minimap_rect.get_width() / levelsize.width),
-                     int(viewport_pos.y * minimap_rect.get_height() / levelsize.height)),
+  Rect view(Vector2i(static_cast<int>(viewport_pos.x * static_cast<float>(minimap_rect.get_width())  / static_cast<float>(levelsize.width)),
+                     static_cast<int>(viewport_pos.y * static_cast<float>(minimap_rect.get_height()) / static_cast<float>(levelsize.height))),
             Size(viewport_rect.get_width()  * minimap_rect.get_width() / levelsize.width,
                  viewport_rect.get_height() * minimap_rect.get_height() / levelsize.height));
   dc.draw_fillrect(view, Color(255, 255, 0, 150), 1000000.0f);

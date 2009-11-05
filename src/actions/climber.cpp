@@ -57,8 +57,8 @@ Climber::update ()
       if (!head_collision_on_walk(pingu->direction, 1))
       {
         // Get ready to walk
-        pingu->set_pos(pingu->get_x() + pingu->direction,
-                       pingu->get_y() - 1);
+        pingu->set_pos(pingu->get_x() + static_cast<float>(pingu->direction),
+                       pingu->get_y() - 1.0f);
       }
       else
       {

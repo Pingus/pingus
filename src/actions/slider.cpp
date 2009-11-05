@@ -39,7 +39,7 @@ Slider::update ()
 
   for (int i = 0; i < speed && rel_getpixel(1, 0) == Groundtype::GP_NOTHING; ++i)
     {
-      pingu->set_x(pingu->get_x() + pingu->direction);
+      pingu->set_x(pingu->get_x() + static_cast<float>(pingu->direction));
 
       if (rel_getpixel(0, -1) ==  Groundtype::GP_NOTHING)
         {

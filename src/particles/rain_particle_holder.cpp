@@ -74,8 +74,8 @@ RainParticleHolder::update ()
 	      continue;
 	    }
 
-	    it->splash_frame += 10 * game_speed / 1000.0f;
-	    (it->splash_counter == 3) ? it->alive = false : ++it->splash_counter;
+          it->splash_frame += 10.0f * static_cast<float>(game_speed) / 1000.0f;
+          (it->splash_counter == 3) ? it->alive = false : ++it->splash_counter;
 	}
       else
 	{
@@ -119,10 +119,10 @@ RainParticleHolder::draw (SceneContext& gc)
       else
         if (it->use_rain2_surf)
           gc.color().draw(rain2_surf, Vector2i(static_cast<int>(it->pos.x), 
-                                               static_cast<int>(it->pos.y - rain1_surf.get_height())));
+                                               static_cast<int>(it->pos.y - static_cast<float>(rain1_surf.get_height()))));
         else
           gc.color().draw(rain1_surf, Vector2i(static_cast<int>(it->pos.x),
-                                               static_cast<int>(it->pos.y - rain1_surf.get_height())));
+                                               static_cast<int>(it->pos.y - static_cast<float>(rain1_surf.get_height()))));
     }
 }
 

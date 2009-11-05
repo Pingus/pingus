@@ -236,10 +236,10 @@ PingusMenu::create_background(const Size& size_)
       layer5 = layer5.scale(302 * w / default_screen_width, 104 * h / default_screen_height);
       
       background->add_layer(Sprite(layer1), 0, 0, 12, 0);
-      background->add_layer(Sprite(layer2), 0, 150 * (float)h / default_screen_height, 25, 0);
-      background->add_layer(Sprite(layer3), 0, 200 * (float)h / default_screen_height, 50, 0);
-      background->add_layer(Sprite(layer4), 0, 429 * (float)h / default_screen_height, 100, 0);
-      background->add_layer(Sprite(layer5), 0, 500 * (float)h / default_screen_height, 200, 0);
+      background->add_layer(Sprite(layer2), 0, 150 * static_cast<float>(h) / static_cast<float>(default_screen_height), 25, 0);
+      background->add_layer(Sprite(layer3), 0, 200 * static_cast<float>(h) / static_cast<float>(default_screen_height), 50, 0);
+      background->add_layer(Sprite(layer4), 0, 429 * static_cast<float>(h) / static_cast<float>(default_screen_height), 100, 0);
+      background->add_layer(Sprite(layer5), 0, 500 * static_cast<float>(h) / static_cast<float>(default_screen_height), 200, 0);
     }
   else
     {

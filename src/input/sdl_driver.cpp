@@ -287,7 +287,7 @@ SDLDriver::update(float delta)
         {
           if (event.jaxis.which == i->device &&
               event.jaxis.axis  == i->axis)
-            i->binding->set_state(event.jaxis.value / 32767.0f);
+            i->binding->set_state(static_cast<float>(event.jaxis.value) / 32767.0f);
         }
         break;
             

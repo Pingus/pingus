@@ -137,7 +137,7 @@ LevelObj::draw(DrawingContext &gc)
   {
     if (attribs & HAS_REPEAT)
     {
-      for(int x = int(pos.x); x < pos.x + sprite.get_width()*repeat; x += sprite.get_width())
+      for(int x = static_cast<int>(pos.x); x < static_cast<int>(pos.x) + sprite.get_width() * repeat; x += sprite.get_width())
       {
         gc.draw(sprite, Vector3f(static_cast<float>(x), pos.y, pos.z));
       }
@@ -373,8 +373,8 @@ LevelObj*
 LevelObj::duplicate(const Vector2i& offset) const
 {
   LevelObj* obj = new LevelObj(*this);
-  obj->pos.x += offset.x;
-  obj->pos.y += offset.y;
+  obj->pos.x += static_cast<float>(offset.x);
+  obj->pos.y += static_cast<float>(offset.y);
   return obj;
 }
 

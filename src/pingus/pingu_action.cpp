@@ -48,8 +48,8 @@ int
 PinguAction::rel_getpixel (int x, int y)
 {
   // FIXME: Inline me
-  return WorldObj::get_world()->get_colmap()->getpixel(static_cast<int>(pingu->get_x() + (x * pingu->direction)),
-                                                       static_cast<int>(pingu->get_y() - y));
+  return WorldObj::get_world()->get_colmap()->getpixel(static_cast<int>(pingu->get_x() + static_cast<float>((x * pingu->direction))),
+                                                       static_cast<int>(pingu->get_y() - static_cast<float>(y)));
 }
 
 ActionType
@@ -215,8 +215,8 @@ PinguAction::move_with_forces ()
           else
             {
               // Move the Pingu left
-              pingu->set_x(pingu->get_x() + pingu->direction);
-              force_counter.x -= pingu->direction;
+              pingu->set_x(pingu->get_x() + static_cast<float>(pingu->direction));
+              force_counter.x -= static_cast<float>(pingu->direction);
             }
         }
 

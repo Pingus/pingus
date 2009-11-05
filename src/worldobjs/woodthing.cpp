@@ -44,8 +44,8 @@ WoodThing::update ()
   if (rand() % 5 == 0)
     {
       world->get_smoke_particle_holder()->
-        add_particle(pos.x - surface.get_width () /  2 - 24,
-                     pos.y - surface.get_height() + 32 - 147,
+        add_particle(pos.x - static_cast<float>(surface.get_width()) /  2.0f - 24.0f,
+                     pos.y - static_cast<float>(surface.get_height()) + 32.0f - 147.0f,
                      float(Math::frand() + 1) * -0.6f, float(Math::frand() + 1) * -0.6f);
     }
 }

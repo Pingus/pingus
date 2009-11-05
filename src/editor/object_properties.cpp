@@ -567,7 +567,7 @@ ObjectProperties::on_color_r_change(const std::string& str)
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
   {
     Color color = (*i)->get_color(); 
-    color.r = StringUtil::to<int>(str);
+    color.r = static_cast<char>(StringUtil::to<int>(str));
     (*i)->set_color(color);
   }
 }
@@ -578,7 +578,7 @@ ObjectProperties::on_color_g_change(const std::string& str)
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
   {
     Color color = (*i)->get_color(); 
-    color.g = StringUtil::to<int>(str);
+    color.g = static_cast<uint8_t>(StringUtil::to<int>(str));
     (*i)->set_color(color);
   }
 }
@@ -589,7 +589,7 @@ ObjectProperties::on_color_b_change(const std::string& str)
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
   {
     Color color = (*i)->get_color(); 
-    color.b = StringUtil::to<int>(str);
+    color.b = static_cast<uint8_t>(StringUtil::to<int>(str));
     (*i)->set_color(color);
   }
 }
@@ -600,7 +600,7 @@ ObjectProperties::on_color_a_change(const std::string& str)
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
   { 
     Color color = (*i)->get_color(); 
-    color.a = StringUtil::to<int>(str);
+    color.a = static_cast<uint8_t>(StringUtil::to<int>(str));
     (*i)->set_color(color);
   }
 }

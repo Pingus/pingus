@@ -137,8 +137,8 @@ Playfield::update(float delta)
         }
       else
         { 
-          state.set_pos(Vector2i(static_cast<int>(state.get_pos().x - (scroll_center.x - mouse_pos.x) * 0.2f),
-                                 static_cast<int>(state.get_pos().y - (scroll_center.y - mouse_pos.y) * 0.2f)));
+          state.set_pos(Vector2i(state.get_pos().x - static_cast<int>(static_cast<float>(scroll_center.x - mouse_pos.x) * 0.2f),
+                                 state.get_pos().y - static_cast<int>(static_cast<float>(scroll_center.y - mouse_pos.y) * 0.2f)));
         }
     }
 
@@ -216,34 +216,34 @@ Playfield::on_pointer_move (int x, int y)
   mouse_pos.y = y;
 
   if (maintainer_mode)
-    { // Some fun stuff that lets you draw directly on the level
-      Uint8 *keystate = SDL_GetKeyState(NULL);
-      if (keystate[SDLK_r])
-        {
-          CollisionMask mask("other/bash_radius_gfx");
-          Vector2f p = state.screen2world(mouse_pos);
-          server->get_world()->remove(mask, 
-                                      int(p.x - mask.get_width()/2), 
-                                      int(p.y - mask.get_height()/2));
-        }
-      else if (keystate[SDLK_g])
-        {
-          CollisionMask mask("other/bash_radius_gfx");
-          Vector2f p = state.screen2world(mouse_pos);
-          server->get_world()->put(mask, 
-                                   int(p.x - mask.get_width()/2), 
-                                   int(p.y - mask.get_height()/2),
-                                   Groundtype::GP_GROUND);
-        }
-      else if (keystate[SDLK_b])
-        {
-          CollisionMask mask("other/bash_radius_gfx");
-          Vector2f p = state.screen2world(mouse_pos);
-          server->get_world()->put(mask, 
-                                   int(p.x - mask.get_width()/2), 
-                                   int(p.y - mask.get_height()/2),
-                                   Groundtype::GP_BRIDGE);
-        }
+  { // Some fun stuff that lets you draw directly on the level
+    Uint8 *keystate = SDL_GetKeyState(NULL);
+    if (keystate[SDLK_r])
+    {
+      CollisionMask mask("other/bash_radius_gfx");
+      Vector2i p = state.screen2world(mouse_pos);
+      server->get_world()->remove(mask,
+                                  p.x - mask.get_width()/2, 
+                                  p.y - mask.get_height()/2);
+    }
+    else if (keystate[SDLK_g])
+    {
+      CollisionMask mask("other/bash_radius_gfx");
+      Vector2i p = state.screen2world(mouse_pos);
+      server->get_world()->put(mask, 
+                               p.x - mask.get_width()/2, 
+                               p.y - mask.get_height()/2,
+                               Groundtype::GP_GROUND);
+    }
+    else if (keystate[SDLK_b])
+    {
+      CollisionMask mask("other/bash_radius_gfx");
+      Vector2i p = state.screen2world(mouse_pos);
+      server->get_world()->put(mask, 
+                               p.x - mask.get_width()/2, 
+                               p.y - mask.get_height()/2,
+                               Groundtype::GP_BRIDGE);
+}
     }
 }
 

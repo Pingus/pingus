@@ -44,11 +44,11 @@ ConveyorBelt::draw (SceneContext& gc)
   gc.color().draw(left_sur, pos);
   for (int i=0; i < width; ++i)
     gc.color().draw(middle_sur,
-                    Vector3f(static_cast<float>(pos.x + left_sur.get_width() + i * middle_sur.get_width()),
+                    Vector3f(static_cast<float>(pos.x + static_cast<float>(left_sur.get_width() + i * middle_sur.get_width())),
                              static_cast<float>(pos.y)));
 
   gc.color().draw(right_sur,
-                  Vector3f(static_cast<float>(pos.x + left_sur.get_width() + width * middle_sur.get_width()),
+                  Vector3f(static_cast<float>(pos.x + static_cast<float>(left_sur.get_width() + width * middle_sur.get_width())),
                            static_cast<float>(pos.y)));
 }
 
@@ -75,7 +75,7 @@ ConveyorBelt::update ()
   for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
   {
     if (   (*pingu)->get_pos().x > pos.x
-           && (*pingu)->get_pos().x < pos.x + 15 * (width + 2)
+           && (*pingu)->get_pos().x < pos.x + 15 * static_cast<float>(width + 2)
            && (*pingu)->get_pos().y > pos.y - 2
            && (*pingu)->get_pos().y < pos.y + 10)
     {

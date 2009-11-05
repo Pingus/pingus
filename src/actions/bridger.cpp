@@ -70,13 +70,13 @@ Bridger::draw(SceneContext& gc)
   switch (mode)
   {
     case B_BUILDING:
-      gc.color().draw(build_sprite[pingu->direction], Vector3f(pingu->get_pos().x - (x_offset * pingu->direction),
-                                                               pingu->get_pos().y + y_offset));
+      gc.color().draw(build_sprite[pingu->direction], Vector3f(pingu->get_pos().x - static_cast<float>(x_offset * pingu->direction),
+                                                               pingu->get_pos().y + static_cast<float>(y_offset)));
       break;
 
     case B_WALKING:
-      gc.color().draw(walk_sprite[pingu->direction], Vector3f(pingu->get_pos().x - (x_offset * pingu->direction),
-                                                              pingu->get_pos().y + y_offset));
+      gc.color().draw(walk_sprite[pingu->direction], Vector3f(pingu->get_pos().x - static_cast<float>(x_offset * pingu->direction),
+                                                              pingu->get_pos().y + static_cast<float>(y_offset)));
       break;
   }
 }
@@ -202,14 +202,14 @@ Bridger::place_a_brick()
   if (pingu->direction.is_right())
   {
     WorldObj::get_world()->put(brick_r,
-                               static_cast<int>(pingu->get_pos().x + 10 - brick_r.get_width()),
+                               static_cast<int>(pingu->get_pos().x + 10.0f - static_cast<float>(brick_r.get_width())),
                                static_cast<int>(pingu->get_pos().y),
                                Groundtype::GP_BRIDGE);
   }
   else
   {
     WorldObj::get_world()->put(brick_l,
-                               static_cast<int>(pingu->get_pos().x - 10),
+                               static_cast<int>(pingu->get_pos().x - 10.0f),
                                static_cast<int>(pingu->get_pos().y),
                                Groundtype::GP_BRIDGE);
   }
@@ -218,7 +218,7 @@ Bridger::place_a_brick()
 void
 Bridger::walk_one_step_up()
 {
-  pingu->set_pos(pingu->get_pos().x + (4 * pingu->direction),
+  pingu->set_pos(pingu->get_pos().x + (4.0f * static_cast<float>(pingu->direction)),
                  pingu->get_pos().y - 2);
 }
 

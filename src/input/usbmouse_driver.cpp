@@ -127,7 +127,7 @@ public:
               (*i)->set_pos(mouse_pos);
 
             for(std::vector<Scroller*>::iterator i = scroller_bindings.begin(); i != scroller_bindings.end(); ++i)
-              (*i)->set_delta(Vector2f(-delta_x, delta_y)); // FIXME: Inversion should be configurable
+              (*i)->set_delta(Vector2f(static_cast<float>(-delta_x), static_cast<float>(delta_y))); // FIXME: Inversion should be configurable
           }
 
         // Scrollwheel move

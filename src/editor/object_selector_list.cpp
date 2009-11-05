@@ -189,7 +189,7 @@ ObjectSelectorList::on_pointer_move (int x, int y)
     if (!set->get_objects().empty())
     {
       int obj_x = Math::clamp(0, mouse_pos.x / 48, width - 1);
-      int obj_y = Math::clamp(0, int(mouse_pos.y - offset) / 48, height-1);
+      int obj_y = Math::clamp(0, (mouse_pos.y - static_cast<int>(offset)) / 48, height-1);
 
       current_object = Math::clamp(-1, (obj_y * 5) + obj_x, int(set->get_objects().size()-1));
     }
@@ -197,8 +197,8 @@ ObjectSelectorList::on_pointer_move (int x, int y)
 
   if (mode == SCROLLING)
   {
-    offset = old_offset + (y - drag_start.y);
-    offset = Math::clamp(Math::min(rect.get_height() - (height * 48.0f), 0.0f), offset, 0.0f);
+    offset = old_offset + static_cast<float>(y - drag_start.y);
+    offset = Math::clamp(Math::min(static_cast<float>(rect.get_height()) - (static_cast<float>(height) * 48.0f), 0.0f), offset, 0.0f);
   }
 }
 

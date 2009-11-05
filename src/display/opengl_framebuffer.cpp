@@ -150,11 +150,19 @@ OpenGLFramebuffer::draw_surface(const FramebufferSurface& src, const Rect& srcre
   glVertexPointer(2, GL_INT, 0, vertices);
   
   float uvs[] = {
-    float(srcrect.left)/texture->get_texture_size().width,  float(srcrect.top)/texture->get_texture_size().height,
-    float(srcrect.right)/texture->get_texture_size().width, float(srcrect.top)/texture->get_texture_size().height,
-    float(srcrect.right)/texture->get_texture_size().width, float(srcrect.bottom)/texture->get_texture_size().height,
-    float(srcrect.left)/texture->get_texture_size().width,  float(srcrect.bottom)/texture->get_texture_size().height
+    static_cast<float>(srcrect.left)   / static_cast<float>(texture->get_texture_size().width), 
+    static_cast<float>(srcrect.top)    / static_cast<float>(texture->get_texture_size().height),
+
+    static_cast<float>(srcrect.right)  / static_cast<float>(texture->get_texture_size().width), 
+    static_cast<float>(srcrect.top)    / static_cast<float>(texture->get_texture_size().height),
+
+    static_cast<float>(srcrect.right)  / static_cast<float>(texture->get_texture_size().width), 
+    static_cast<float>(srcrect.bottom) / static_cast<float>(texture->get_texture_size().height),
+
+    static_cast<float>(srcrect.left)   / static_cast<float>(texture->get_texture_size().width), 
+    static_cast<float>(srcrect.bottom) / static_cast<float>(texture->get_texture_size().height)
   };
+
   glTexCoordPointer(2, GL_FLOAT, 0, uvs);
 
   glDrawArrays(GL_TRIANGLE_FAN, 0, 4);

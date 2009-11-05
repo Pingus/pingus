@@ -356,8 +356,8 @@ ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
   Framebuffer& fb = Display::get_framebuffer();
   while (progress <= 1.0f)
     {
-      int border_x = int((Display::get_width()/2)  * (1.0f - progress));
-      int border_y = int((Display::get_height()/2) * (1.0f - progress));
+      int border_x = static_cast<int>(static_cast<float>(Display::get_width()/2)  * (1.0f - progress));
+      int border_y = static_cast<int>(static_cast<float>(Display::get_height()/2) * (1.0f - progress));
 
       old_screen->draw(*display_gc);
       display_gc->render(fb, Rect(Vector2i(0,0), Size(Display::get_width(),
@@ -377,7 +377,7 @@ ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
       fb.flip();
       display_gc->clear();
       
-      progress = (SDL_GetTicks() - last_ticks)/1000.0f;
+      progress = static_cast<float>(SDL_GetTicks() - last_ticks)/1000.0f;
     }
 }
 

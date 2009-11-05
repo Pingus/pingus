@@ -72,8 +72,8 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader) :
   {
     if (keep_aspect)
     {
-      float aspect = surface.get_height()/float(surface.get_width());
-      surface = surface.scale(world->get_width(), int(world->get_width()*aspect));
+      float aspect = static_cast<float>(surface.get_height()) / static_cast<float>(surface.get_width());
+      surface = surface.scale(world->get_width(), static_cast<int>(static_cast<float>(world->get_width()) * aspect));
     }
     else
     {
@@ -84,8 +84,8 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader) :
   {
     if (keep_aspect)
     {
-      float aspect = float(surface.get_width())/surface.get_height();
-      surface = surface.scale(int(world->get_height() * aspect), world->get_height());
+      float aspect = static_cast<float>(surface.get_width()) / static_cast<float>(surface.get_height());
+      surface = surface.scale(static_cast<int>(static_cast<float>(world->get_height()) * aspect), world->get_height());
     }
     else
     {
@@ -113,9 +113,9 @@ SurfaceBackground::update()
     scroll_ox += scroll_x;
 
     if (scroll_ox > bg_sprite.get_width())
-      scroll_ox -= bg_sprite.get_width();
+      scroll_ox -= static_cast<float>(bg_sprite.get_width());
     else if (-scroll_ox > bg_sprite.get_width())
-      scroll_ox += bg_sprite.get_width();
+      scroll_ox += static_cast<float>(bg_sprite.get_width());
   }
 
   if (scroll_y) 
@@ -123,9 +123,9 @@ SurfaceBackground::update()
     scroll_oy += scroll_y;
 
     if (scroll_oy > bg_sprite.get_height())
-      scroll_oy -= bg_sprite.get_height();
+      scroll_oy -= static_cast<float>(bg_sprite.get_height());
     else if (-scroll_oy > bg_sprite.get_height())
-      scroll_oy += bg_sprite.get_height();
+      scroll_oy += static_cast<float>(bg_sprite.get_height());
   }
 }
 
@@ -140,8 +140,8 @@ SurfaceBackground::draw (SceneContext& gc)
   offset.x -= gc.color().get_rect().left;
   offset.y -= gc.color().get_rect().top;
 
-  int start_x = static_cast<int>((offset.x * para_x) + scroll_ox);
-  int start_y = static_cast<int>((offset.y * para_y) + scroll_oy);
+  int start_x = static_cast<int>((static_cast<float>(offset.x) * para_x) + scroll_ox);
+  int start_y = static_cast<int>((static_cast<float>(offset.y) * para_y) + scroll_oy);
 
   if (start_x > 0)
     start_x = (start_x % bg_sprite.get_width()) - bg_sprite.get_width();

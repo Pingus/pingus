@@ -62,28 +62,28 @@ SmallMap::draw(DrawingContext& gc)
   Rect view_rect;
 
   if (world->get_width() > gc.get_width())
-    {
-      int rwidth = int(gc.get_width()  * rect.get_width()  / world->get_width());
-      view_rect.left  = rect.left + (of.x * rect.get_width()  / world->get_width()) - rwidth/2;
-      view_rect.right = view_rect.left + rwidth;
-    }
+  {
+    int rwidth = int(gc.get_width()  * rect.get_width()  / world->get_width());
+    view_rect.left  = rect.left + (of.x * rect.get_width()  / world->get_width()) - rwidth/2;
+    view_rect.right = view_rect.left + rwidth;
+  }
   else
-    {
-      view_rect.left  = rect.left;
-      view_rect.right = rect.left + rect.get_width();
-    }
+  {
+    view_rect.left  = rect.left;
+    view_rect.right = rect.left + rect.get_width();
+  }
 
   if (world->get_height() > gc.get_height())
-    {
-      int rheight = int(gc.get_height() * rect.get_height() / world->get_height());
-      view_rect.top    = rect.top + (of.y * rect.get_height() / world->get_height()) - rheight/2;
-      view_rect.bottom = view_rect.top + rheight;
-    }
+  {
+    int rheight = int(gc.get_height() * rect.get_height() / world->get_height());
+    view_rect.top    = rect.top + (of.y * rect.get_height() / world->get_height()) - rheight/2;
+    view_rect.bottom = view_rect.top + rheight;
+  }
   else
-    {
-      view_rect.top    = rect.top;
-      view_rect.bottom = rect.top + rect.get_height();
-    }
+  {
+    view_rect.top    = rect.top;
+    view_rect.bottom = rect.top + rect.get_height();
+  }
   
   gc.draw(image->get_surface(), Vector2i(rect.left, rect.top));
   gc.draw_rect(view_rect, Color(0, 255, 0));
@@ -93,12 +93,14 @@ SmallMap::draw(DrawingContext& gc)
   // Draw Pingus
   PinguHolder* pingus = world->get_pingus();
   for(PinguIter i = pingus->begin(); i != pingus->end(); ++i)
-    {
-      int x = static_cast<int>(rect.left + ((*i)->get_x() * rect.get_width()  / world->get_width()));
-      int y = static_cast<int>(rect.top + ((*i)->get_y() * rect.get_height() / world->get_height()));
+  {
+    int x = static_cast<int>(static_cast<float>(rect.left) + ((*i)->get_x() * static_cast<float>(rect.get_width()) 
+                                                              / static_cast<float>(world->get_width())));
+    int y = static_cast<int>(static_cast<float>(rect.top)  + ((*i)->get_y() * static_cast<float>(rect.get_height()) 
+                                                              / static_cast<float>(world->get_height())));
 
-      gc.draw_line(Vector2i(x, y), Vector2i(x, y-2), Color(255, 255, 0));
-    }
+    gc.draw_line(Vector2i(x, y), Vector2i(x, y-2), Color(255, 255, 0));
+  }
 
   gc_ptr = 0;
 }
@@ -113,8 +115,8 @@ void
 SmallMap::draw_sprite(Sprite sprite, Vector3f pos)
 {
   World* world = server->get_world();
-  float x = rect.left + (pos.x * rect.get_width()  / world->get_width());
-  float y = rect.top + (pos.y * rect.get_height() / world->get_height());
+  float x = static_cast<float>(rect.left) + (pos.x * static_cast<float>(rect.get_width())  / static_cast<float>(world->get_width()));
+  float y = static_cast<float>(rect.top)  + (pos.y * static_cast<float>(rect.get_height()) / static_cast<float>(world->get_height()));
 
   gc_ptr->draw(sprite, Vector3f(x, y));
 }

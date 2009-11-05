@@ -81,8 +81,8 @@ FontTestScreen::draw(DrawingContext& gc)
                             y+font.get_height()), 
                        Color(0,0,255));
           gc.draw_rect(Rect(x, y, 
-                            x+font.get_width(char(i)), 
-                            y+font.get_height()), 
+                            x + static_cast<int>(font.get_width(char(i))), 
+                            y + font.get_height()), 
                        Color(255,0,255));
           gc.print_left(font, Vector2i(x, y),
                         std::string(1, char(i)));

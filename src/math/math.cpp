@@ -36,7 +36,7 @@ float cos(float a)
 
 float sqrt(float a)
 {
-  return ::sqrt(a);
+  return ::sqrtf(a);
 }
 
 float mod(float x, float y)
@@ -51,7 +51,7 @@ float floor(float x)
 
 float atan2(float x, float y)
 {
-  return ::atan2(x, y);
+  return ::atan2f(x, y);
 }
 
 static char num2hex[] = "0123456789abcdef";
@@ -72,9 +72,9 @@ std::string float2string(float value)
 static char hex2int(char c)
 {
   if (c >= '0' && c <= '9')
-    return c - '0';
+    return static_cast<char>(c - '0');
   else if (c >= 'a' && c <= 'f')
-    return c - 'a' + 0xa;
+    return static_cast<char>(c - 'a' + 0xa);
   else
     return 0;    
 }
@@ -87,7 +87,7 @@ float string2float(const std::string& str)
   for(size_t i = 0; i < sizeof(float); ++i)
     {
       char& v = reinterpret_cast<char*>(&value)[i];
-      v = (hex2int(str[2*i+0]) << 4) | hex2int(str[2*i+1]);
+      v = static_cast<char>((hex2int(str[2*i+0]) << 4) | hex2int(str[2*i+1]));
     }
 
   return value;

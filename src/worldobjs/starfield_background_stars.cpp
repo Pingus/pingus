@@ -45,7 +45,7 @@ StarfieldBackgroundStars::StarfieldBackgroundStars (Type type) :
   x_pos = float(rand() % WorldObj::get_world()->get_width());
   y_pos = float(rand() % WorldObj::get_world()->get_height());
 
-  x_add = rand() % 5 + 1.0f;
+  x_add = static_cast<float>(rand() % 5) + 1.0f;
   y_add = 0.0f;
 }
 

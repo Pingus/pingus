@@ -32,10 +32,10 @@ inline void draw_pixel16(SDL_Surface* screen, int x, int y, const Color& c)
   if (c.a < 255) {
     Uint16 *p;
     unsigned long dp;
-    unsigned char alpha;
+    uint8_t alpha;
 
     // Loses precision for speed
-    alpha = (255 - c.a) >> 3;
+    alpha = static_cast<uint8_t>((255 - c.a) >> 3);
 
     p = &((Uint16 *)screen->pixels)[x + y * screen->w];
     color = (((color << 16) | color) & 0x07E0F81F);
@@ -44,7 +44,7 @@ inline void draw_pixel16(SDL_Surface* screen, int x, int y, const Color& c)
     dp = ((((dp - color) * alpha) >> 5) + color) & 0x07E0F81F;
     *p = (Uint16)((dp >> 16) | dp);
   } else {
-    ((Uint16 *)screen->pixels)[x + y * screen->w] = color;
+    static_cast<Uint16*>(screen->pixels)[x + y * screen->w] = static_cast<Uint16>(color);
   }
 }
 
@@ -59,7 +59,7 @@ inline void draw_pixel32(SDL_Surface* screen, int x, int y, const Color& c)
     unsigned long dp2;
     unsigned char alpha;
 
-    alpha = 255 - c.a;
+    alpha = static_cast<unsigned char>(255 - c.a);
 
     p = &((Uint32*)screen->pixels)[x + y * screen->w];
 
@@ -122,9 +122,9 @@ SDL_Rect Intersection(SDL_Rect* r1, SDL_Rect* r2)
   rect.x = Math::max(r1->x, r2->x);
   rect.y = Math::max(r1->y, r2->y);
   int endx = Math::min(r1->x + r1->w, r2->x + r2->w);
-  rect.w = Math::max(endx - rect.x, 0);
+  rect.w = static_cast<Uint16>(Math::max(static_cast<int>(endx - rect.x), 0));
   int endy = Math::min(r1->y + r1->h, r2->y + r2->h);
-  rect.h = Math::max(endy - rect.y, 0);
+  rect.h = static_cast<Uint16>(Math::max(static_cast<int>(endy - rect.y), 0));
   return rect;
 }
 
@@ -189,10 +189,10 @@ SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Rect& srcr
   dstrect.h = 0;  
 
   SDL_Rect sdlsrcrect;
-  sdlsrcrect.x = srcrect.left;
-  sdlsrcrect.y = srcrect.top;
-  sdlsrcrect.w = srcrect.get_width();
-  sdlsrcrect.h = srcrect.get_height();
+  sdlsrcrect.x = static_cast<Sint16>(srcrect.left);
+  sdlsrcrect.y = static_cast<Sint16>(srcrect.top);
+  sdlsrcrect.w = static_cast<Uint16>(srcrect.get_width());
+  sdlsrcrect.h = static_cast<Uint16>(srcrect.get_height());
 
   SDL_BlitSurface(src, &sdlsrcrect, screen, &dstrect);
 }
@@ -351,10 +351,10 @@ SDLFramebuffer::fill_rect(const Rect& rect, const Color& color)
     {
       SDL_Rect srcrect;
 
-      srcrect.x = rect.left;
-      srcrect.y = rect.top;
-      srcrect.w = rect.get_width();
-      srcrect.h = rect.get_height();
+      srcrect.x = static_cast<Sint16>(rect.left);
+      srcrect.y = static_cast<Sint16>(rect.top);
+      srcrect.w = static_cast<Uint16>(rect.get_width());
+      srcrect.h = static_cast<Uint16>(rect.get_height());
 
       SDL_FillRect(screen, &srcrect, SDL_MapRGB(screen->format, color.r, color.g, color.b));
     }
@@ -406,10 +406,10 @@ SDLFramebuffer::update_rects(const std::vector<Rect>& rects)
   for(std::vector<Rect>::const_iterator i = rects.begin(); i != rects.end(); ++i)
     {
       SDL_Rect sdl_rect;
-      sdl_rect.x = i->left;
-      sdl_rect.y = i->top;
-      sdl_rect.w = i->get_width();
-      sdl_rect.h = i->get_height();
+      sdl_rect.x = static_cast<Sint16>(i->left);
+      sdl_rect.y = static_cast<Sint16>(i->top);
+      sdl_rect.w = static_cast<Uint16>(i->get_width());
+      sdl_rect.h = static_cast<Uint16>(i->get_height());
       sdl_rects.push_back(sdl_rect);
     }
 
@@ -443,10 +443,10 @@ void
 SDLFramebuffer::push_cliprect(const Rect& rect)
 {
   SDL_Rect sdl_rect;
-  sdl_rect.x = rect.left;
-  sdl_rect.y = rect.top;
-  sdl_rect.w = rect.get_width();
-  sdl_rect.h = rect.get_height();
+  sdl_rect.x = static_cast<Sint16>(rect.left);
+  sdl_rect.y = static_cast<Sint16>(rect.top);
+  sdl_rect.w = static_cast<Uint16>(rect.get_width());
+  sdl_rect.h = static_cast<Uint16>(rect.get_height());
 
   if (!cliprect_stack.empty())
     {

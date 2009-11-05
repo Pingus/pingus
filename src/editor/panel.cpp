@@ -91,7 +91,7 @@ public:
 
     if (mouse_over)
     {
-      int t_w = Fonts::verdana11.get_width(tooltip);
+      int t_w = static_cast<int>(Fonts::verdana11.get_width(tooltip));
       Rect t_r(pos.x + 17 - t_w/2 - 4, pos.y + 38 - 2, 
                pos.x + 17 + t_w/2 + 4, pos.y + 38 + Fonts::verdana11.get_height() + 4);
       gc.draw_fillrect(t_r, Color(255, 255, 200), 1000.0f);

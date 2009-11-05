@@ -64,10 +64,10 @@ void
 SExprFileWriter::write_color(const char* name, const Color& color)
 {
   (*out) << "\n" << indent() << "(" << name << " "
-         << color.r/255.0f << " " 
-         << color.g/255.0f << " "
-         << color.b/255.0f << " " 
-         << color.a/255.0f << ")";
+         << static_cast<float>(color.r)/255.0f << " " 
+         << static_cast<float>(color.g)/255.0f << " "
+         << static_cast<float>(color.b)/255.0f << " " 
+         << static_cast<float>(color.a)/255.0f << ")";
 }
 
 void

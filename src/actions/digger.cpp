@@ -82,8 +82,8 @@ void
 Digger::dig ()
 {
   WorldObj::get_world()->remove(digger_radius,
-                                static_cast<int>(pingu->get_pos().x - (digger_radius.get_width() / 2)),
-                                static_cast<int>(pingu->get_pos().y - digger_radius.get_height() + 2));
+                                static_cast<int>(pingu->get_pos().x - static_cast<float>(digger_radius.get_width() / 2)),
+                                static_cast<int>(pingu->get_pos().y - static_cast<float>(digger_radius.get_height()) + 2.0f));
   pingu->set_pos(pingu->get_pos().x, pingu->get_pos().y + 1.0f);
 }
 

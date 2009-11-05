@@ -38,7 +38,7 @@ private:
     int pos;
 
     inline float get_posf() const {
-      return float(pos - min)/(max - min) * 2.0f - 1.0f;
+      return static_cast<float>(pos - min) / static_cast<float>(max - min) * 2.0f - 1.0f;
     }
   };
 	

@@ -45,7 +45,7 @@ SnowGenerator::update()
         world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -tile_size, true);
     }
 
-  if ((intensity - (int)intensity) > Math::frand())
+  if ((intensity - static_cast<float>(static_cast<int>(intensity))) > Math::frand())
     {
       if (rand() % 3 != 0)
         world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -tile_size, false);
