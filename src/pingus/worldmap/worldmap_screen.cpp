@@ -19,9 +19,9 @@
 
 #include <iostream>
 
-#include "display/display.hpp"
-#include "display/scene_context.hpp"
-#include "gui/surface_button.hpp"
+#include "engine/display/display.hpp"
+#include "engine/display/scene_context.hpp"
+#include "engine/gui/surface_button.hpp"
 #include "math/math.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
@@ -30,8 +30,8 @@
 #include "pingus/resource.hpp"
 #include "pingus/stat_manager.hpp"
 #include "pingus/story_screen.hpp"
-#include "screen/screen_manager.hpp"
-#include "sound/sound.hpp"
+#include "engine/screen/screen_manager.hpp"
+#include "engine/sound/sound.hpp"
 #include "pingus/worldmap/pingus.hpp"
 #include "pingus/worldmap/worldmap.hpp"
 #include "pingus/worldmap/worldmap_component.hpp"

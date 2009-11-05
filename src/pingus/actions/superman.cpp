@@ -16,7 +16,7 @@
 
 #include "pingus/actions/superman.hpp"
 
-#include "display/scene_context.hpp"
+#include "engine/display/scene_context.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/sprite.hpp"
 

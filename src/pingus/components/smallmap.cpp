@@ -18,8 +18,8 @@
 
 #include "pingus/game_session.hpp"
 #include "pingus/pingu_holder.hpp"
-#include "display/display.hpp"
-#include "display/drawing_context.hpp"
+#include "engine/display/display.hpp"
+#include "engine/display/drawing_context.hpp"
 #include "pingus/world.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/server.hpp"

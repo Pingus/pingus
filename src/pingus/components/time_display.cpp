@@ -19,7 +19,7 @@
 #include <assert.h>
 #include <stdio.h>
 
-#include "display/display.hpp"
+#include "engine/display/display.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/world.hpp"

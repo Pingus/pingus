@@ -17,7 +17,7 @@
 #include "pingus/worldobjs/exit.hpp"
 
 #include <iostream>
-#include "display/scene_context.hpp"
+#include "engine/display/scene_context.hpp"
 #include "pingus/collision_map.hpp"
 #include "pingus/world.hpp"
 #include "pingus/globals.hpp"

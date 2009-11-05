@@ -18,10 +18,10 @@
 
 #include <iostream>
 #include "gettext.h"
-#include "display/display.hpp"
-#include "gui/surface_button.hpp"
-#include "gui/gui_manager.hpp"
-#include "screen/screen_manager.hpp"
+#include "engine/display/display.hpp"
+#include "engine/gui/surface_button.hpp"
+#include "engine/gui/gui_manager.hpp"
+#include "engine/screen/screen_manager.hpp"
 #include "pingus/blitter.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/resource.hpp"
@@ -29,7 +29,7 @@
 #include "pingus/game_session.hpp"
 #include "util/system.hpp"
 #include "util/string_util.hpp"
-#include "sound/sound.hpp"
+#include "engine/sound/sound.hpp"
 #include "pingus/game_time.hpp"
 
 class ResultScreenComponent : public GUI::Component

@@ -19,9 +19,9 @@
 
 #include <iostream>
 
-#include "display/drawing_context.hpp"
-#include "input/control.hpp"
-#include "input/controller.hpp"
+#include "engine/display/drawing_context.hpp"
+#include "engine/input/control.hpp"
+#include "engine/input/controller.hpp"
 #include "pingus/font.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
@@ -31,7 +31,7 @@
 #include "pingus/resource.hpp"
 #include "pingus/savegame_manager.hpp"
 #include "pingus/start_screen.hpp"
-#include "screen/screen_manager.hpp"
+#include "engine/screen/screen_manager.hpp"
 #include "util/file_reader.hpp"
 #include "util/system.hpp"
 

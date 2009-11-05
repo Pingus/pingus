@@ -20,7 +20,7 @@
 #include <map>
 
 #include "pingus/pingu_enums.hpp"
-#include "gui/group_component.hpp"
+#include "engine/gui/group_component.hpp"
 
 namespace Editor {
 

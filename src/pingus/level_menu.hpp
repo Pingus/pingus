@@ -19,7 +19,7 @@
 
 #include "pingus/levelset.hpp"
 #include "pingus/sprite.hpp"
-#include "screen/gui_screen.hpp"
+#include "engine/screen/gui_screen.hpp"
 
 namespace GUI {
 class SurfaceButton;

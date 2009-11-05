@@ -16,10 +16,10 @@
 
 #include "editor/panel.hpp"
 
-#include "display/display.hpp" 
-#include "display/drawing_context.hpp"
+#include "engine/display/display.hpp" 
+#include "engine/display/drawing_context.hpp"
 #include "editor/editor_screen.hpp"
-#include "gui/gui_manager.hpp"
+#include "engine/gui/gui_manager.hpp"
 #include "math/vector2i.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"

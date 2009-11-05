@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_PINGUS_SPRITE_IMPL_HPP
 
 #include "pingus/surface.hpp"
-#include "display/framebuffer_surface.hpp"
+#include "engine/display/framebuffer_surface.hpp"
 #include "math/vector2i.hpp"
 
 class SpriteDescription;

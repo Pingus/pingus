@@ -16,7 +16,7 @@
 
 #include "pingus/particles/pingu_particle_holder.hpp"
 
-#include "display/scene_context.hpp"
+#include "engine/display/scene_context.hpp"
 #include "math/math.hpp"
 #include "pingus/collision_map.hpp"
 #include "pingus/resource.hpp"

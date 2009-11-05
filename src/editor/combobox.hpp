@@ -22,8 +22,8 @@
 #include <string>
 #include <boost/signal.hpp>
 #include "pingus/sprite.hpp"
-#include "gui/component.hpp"
-#include "gui/rect_component.hpp"
+#include "engine/gui/component.hpp"
+#include "engine/gui/rect_component.hpp"
 
 namespace Editor {
 	

@@ -21,7 +21,7 @@
 #include <vector>
 
 #include "util/pathname.hpp"
-#include "screen/gui_screen.hpp"
+#include "engine/screen/gui_screen.hpp"
 #include "pingus/server_event.hpp"
 
 namespace Input {

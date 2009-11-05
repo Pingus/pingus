@@ -20,7 +20,7 @@
 #include "pingus/server.hpp"
 #include "pingus/game_session.hpp"
 #include "pingus/world.hpp"
-#include "display/drawing_context.hpp"
+#include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
 #include "util/string_util.hpp"
 #include "math/vector3f.hpp"

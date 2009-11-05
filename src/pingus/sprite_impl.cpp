@@ -17,8 +17,8 @@
 #include "pingus/sprite_impl.hpp"
 
 #include <map>
-#include "display/framebuffer.hpp"
-#include "display/display.hpp"
+#include "engine/display/framebuffer.hpp"
+#include "engine/display/display.hpp"
 #include "pingus/sprite_description.hpp"
 
 typedef std::map<std::string, FramebufferSurface> SurfaceCache;

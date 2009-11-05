@@ -20,8 +20,8 @@
 #include <string>
 #include <memory>
 #include "pingus/sprite.hpp"
-#include "gui/gui_manager.hpp"
-#include "screen/gui_screen.hpp"
+#include "engine/gui/gui_manager.hpp"
+#include "engine/screen/gui_screen.hpp"
 
 namespace GUI {
 class SurfaceButton;

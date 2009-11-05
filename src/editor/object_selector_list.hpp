@@ -20,7 +20,7 @@
 #include <vector>
 
 #include "pingus/sprite.hpp"
-#include "gui/rect_component.hpp"
+#include "engine/gui/rect_component.hpp"
 
 class DrawingContext;
 

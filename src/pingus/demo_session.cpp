@@ -25,14 +25,14 @@
 #include "util/pathname.hpp"
 #include "pingus/world.hpp"
 #include "pingus/components/pingus_counter.hpp"
-#include "gui/gui_manager.hpp"
-#include "display/scene_context.hpp"
+#include "engine/gui/gui_manager.hpp"
+#include "engine/display/scene_context.hpp"
 #include "pingus/pingus_demo.hpp"
-#include "gui/surface_button.hpp"
+#include "engine/gui/surface_button.hpp"
 #include "pingus/components/playfield.hpp"
 #include "pingus/components/smallmap.hpp"
-#include "screen/screen_manager.hpp"
-#include "display/display.hpp"
+#include "engine/screen/screen_manager.hpp"
+#include "engine/display/display.hpp"
 #include "pingus/resource.hpp"
 
 static bool false_func() { return false; }

@@ -21,19 +21,19 @@
 #include <boost/bind.hpp>
 #include "gettext.h"
 #include "pingus/resource.hpp"
-#include "screen/screen_manager.hpp"
+#include "engine/screen/screen_manager.hpp"
 #include "pingus/fonts.hpp"
-#include "display/drawing_context.hpp"
+#include "engine/display/drawing_context.hpp"
 #include "pingus/option_menu.hpp"
 #include "util/system.hpp"
-#include "display/display.hpp"
-#include "gui/rect_component.hpp"
-#include "gui/gui_manager.hpp"
+#include "engine/display/display.hpp"
+#include "engine/gui/rect_component.hpp"
+#include "engine/gui/gui_manager.hpp"
 #include "pingus/game_session.hpp"
 #include "pingus/start_screen.hpp"
 #include "pingus/globals.hpp"
-#include "gui/surface_button.hpp"
-#include "sound/sound.hpp"
+#include "engine/gui/surface_button.hpp"
+#include "engine/sound/sound.hpp"
 
 class LevelMenuAbortButton : public GUI::SurfaceButton
 {

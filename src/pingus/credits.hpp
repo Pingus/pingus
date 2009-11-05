@@ -19,9 +19,9 @@
 
 #include <string>
 #include <vector>
-#include "screen/gui_screen.hpp"
+#include "engine/screen/gui_screen.hpp"
 #include "pingus/font.hpp"
-#include "display/scene_context.hpp"
+#include "engine/display/scene_context.hpp"
 #include "pingus/sprite.hpp"
 
 class Credits : public GUIScreen

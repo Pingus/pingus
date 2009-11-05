@@ -18,7 +18,7 @@
 
 #include <assert.h>
 #include <iostream>
-#include "display/display.hpp"
+#include "engine/display/display.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/path_manager.hpp"
 #include "pingus/stat_manager.hpp"
@@ -26,7 +26,7 @@
 #include "util/system.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/globals.hpp"
-#include "sound/sound.hpp"
+#include "engine/sound/sound.hpp"
 #include "pingus/pingus_error.hpp"
 #include "pingus/gettext.h"
 #include "pingus/globals.hpp"
@@ -46,7 +46,7 @@
 #include "pingus/stat_manager.hpp"
 
 #include "pingus/story_screen.hpp"
-#include "screen/screen_manager.hpp"
+#include "engine/screen/screen_manager.hpp"
 
 namespace WorldmapNS {
 

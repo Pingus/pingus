@@ -18,9 +18,9 @@
 
 #include "pingus/gettext.h"
 #include "pingus/resource.hpp"
-#include "screen/screen_manager.hpp"
+#include "engine/screen/screen_manager.hpp"
 #include "pingus/fonts.hpp"
-#include "display/drawing_context.hpp"
+#include "engine/display/drawing_context.hpp"
 #include "pingus/option_menu.hpp"
 
 AddOnMenu::AddOnMenu() :

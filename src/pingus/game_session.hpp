@@ -19,7 +19,7 @@
 
 #include <string>
 #include <memory>
-#include "screen/gui_screen.hpp"
+#include "engine/screen/gui_screen.hpp"
 #include "pingus/pingus_level.hpp"
 #include "pingus/pingu_enums.hpp"
 

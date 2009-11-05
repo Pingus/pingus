@@ -19,7 +19,7 @@
 #include <iostream>
 
 #include "pingus/fonts.hpp"
-#include "display/drawing_context.hpp"
+#include "engine/display/drawing_context.hpp"
 
 namespace Editor {
 

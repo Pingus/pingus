@@ -20,7 +20,7 @@
 #include <string>
 #include <vector>
 #include <boost/signal.hpp>
-#include "gui/rect_component.hpp"
+#include "engine/gui/rect_component.hpp"
 
 /** */
 class ChoiceBox : public GUI::RectComponent

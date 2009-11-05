@@ -18,7 +18,7 @@
 
 #include <typeinfo>
 #include <iostream>
-#include "display/scene_context.hpp"
+#include "engine/display/scene_context.hpp"
 
 
 World* WorldObj::world;

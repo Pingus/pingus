@@ -18,11 +18,11 @@
 
 #include <iostream>
 
-#include "input/event.hpp"
+#include "engine/input/event.hpp"
 #include "pingus/fonts.hpp"
 #include "util/string_util.hpp"
-#include "display/drawing_context.hpp"
-#include "display/display.hpp"
+#include "engine/display/drawing_context.hpp"
+#include "engine/display/display.hpp"
 #include "pingus/font_description.hpp"
 
 FontTestScreen::FontTestScreen(const Pathname& fontfile) :

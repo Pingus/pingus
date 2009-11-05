@@ -22,7 +22,7 @@
 
 #include "pingus/sprite.hpp"
 #include "math/vector2i.hpp"
-#include "gui/component.hpp"
+#include "engine/gui/component.hpp"
 
 namespace Editor {
 

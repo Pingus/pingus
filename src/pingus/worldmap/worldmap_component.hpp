@@ -19,7 +19,7 @@
 
 #include <string>
 #include <memory>
-#include "gui/gui_manager.hpp"
+#include "engine/gui/gui_manager.hpp"
 
 class SceneContext;
 

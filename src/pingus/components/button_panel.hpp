@@ -19,7 +19,7 @@
 
 #include <vector>
 #include "pingus/sprite.hpp"
-#include "gui/rect_component.hpp"
+#include "engine/gui/rect_component.hpp"
 #include "pingus/components/action_button.hpp"
 
 class GameSession;

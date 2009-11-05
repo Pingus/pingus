@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_EDITOR_OBJECT_PROPERTIES_HPP
 #define HEADER_PINGUS_EDITOR_OBJECT_PROPERTIES_HPP
 
-#include "gui/group_component.hpp"
+#include "engine/gui/group_component.hpp"
 
 namespace Editor {
 

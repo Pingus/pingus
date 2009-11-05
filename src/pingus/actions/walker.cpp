@@ -17,7 +17,7 @@
 #include "pingus/actions/walker.hpp"
 
 #include "pingus/globals.hpp"
-#include "display/scene_context.hpp"
+#include "engine/display/scene_context.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/groundtype.hpp"

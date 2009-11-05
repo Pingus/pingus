@@ -18,9 +18,9 @@
 
 #include <iostream>
 #include "pingus/particles/rain_particle_holder.hpp"
-#include "sound/sound.hpp"
+#include "engine/sound/sound.hpp"
 #include "pingus/world.hpp"
-#include "display/scene_context.hpp"
+#include "engine/display/scene_context.hpp"
 
 namespace WorldObjs {
 

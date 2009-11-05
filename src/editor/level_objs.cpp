@@ -23,8 +23,8 @@
 #include "pingus/blitter.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/res_descriptor.hpp"
-#include "display/display.hpp"
-#include "display/drawing_context.hpp"
+#include "engine/display/display.hpp"
+#include "engine/display/drawing_context.hpp"
 
 namespace Editor {
 

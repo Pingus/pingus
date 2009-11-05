@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_COMPONENTS_SMALLMAP_HPP
 
 #include "pingus/sprite.hpp"
-#include "gui/rect_component.hpp"
+#include "engine/gui/rect_component.hpp"
 
 class Playfield;
 class Server;

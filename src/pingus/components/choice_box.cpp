@@ -18,7 +18,7 @@
 
 #include "pingus/globals.hpp"
 #include "pingus/fonts.hpp"
-#include "display/drawing_context.hpp"
+#include "engine/display/drawing_context.hpp"
 
 ChoiceBox::ChoiceBox(const Rect& rect_) :
   RectComponent(rect_),

@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_PINGUS_ADDON_MENU_HPP
 
 #include "pingus/sprite.hpp"
-#include "screen/gui_screen.hpp"
+#include "engine/screen/gui_screen.hpp"
 
 /** */
 class AddOnMenu : public GUIScreen

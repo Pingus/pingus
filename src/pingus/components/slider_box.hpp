@@ -19,7 +19,7 @@
 
 #include <string>
 #include <boost/signal.hpp>
-#include "gui/rect_component.hpp"
+#include "engine/gui/rect_component.hpp"
 
 /** */
 class SliderBox : public GUI::RectComponent

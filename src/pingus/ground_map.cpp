@@ -18,7 +18,7 @@
 
 #include <stdio.h>
 #include <iostream>
-#include "display/scene_context.hpp"
+#include "engine/display/scene_context.hpp"
 #include "pingus/pingus_error.hpp"
 #include "pingus/blitter.hpp"
 #include "pingus/pingus_level.hpp"

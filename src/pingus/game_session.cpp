@@ -17,18 +17,18 @@
 #include "pingus/game_session.hpp"
 
 #include <iostream>
-#include "screen/screen_manager.hpp"
+#include "engine/screen/screen_manager.hpp"
 #include "pingus/server.hpp"
-#include "gui/gui_manager.hpp"
-#include "display/display.hpp"
+#include "engine/gui/gui_manager.hpp"
+#include "engine/display/display.hpp"
 
 #include "pingus/components/button_panel.hpp"
 #include "pingus/components/pingus_counter.hpp"
 #include "pingus/components/time_display.hpp"
 #include "pingus/components/smallmap.hpp"
 #include "pingus/components/playfield.hpp"
-#include "input/event.hpp"
-#include "sound/sound.hpp"
+#include "engine/input/event.hpp"
+#include "engine/sound/sound.hpp"
 #include "math/math.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/pingu_holder.hpp"

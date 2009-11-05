@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_EDITOR_GUI_STYLE_HPP
 
 #include "math/rect.hpp"
-#include "display/drawing_context.hpp"
+#include "engine/display/drawing_context.hpp"
 
 namespace Editor {
 

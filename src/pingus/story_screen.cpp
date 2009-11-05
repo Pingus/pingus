@@ -21,10 +21,10 @@
 #include "gettext.h"
 #include "pingus/globals.hpp"
 #include "pingus/resource.hpp"
-#include "gui/gui_manager.hpp"
-#include "gui/surface_button.hpp"
-#include "screen/screen_manager.hpp"
-#include "gui/component.hpp"
+#include "engine/gui/gui_manager.hpp"
+#include "engine/gui/surface_button.hpp"
+#include "engine/screen/screen_manager.hpp"
+#include "engine/gui/component.hpp"
 #include "math/math.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/res_descriptor.hpp"
@@ -33,9 +33,9 @@
 #include "pingus/worldmap/worldmap_story.hpp"
 #include "pingus/stat_manager.hpp"
 #include "pingus/credits.hpp"
-#include "display/display.hpp"
+#include "engine/display/display.hpp"
 #include "util/utf8.hpp"
-#include "sound/sound.hpp"
+#include "engine/sound/sound.hpp"
 
 class StoryScreenComponent : public GUI::Component
 {

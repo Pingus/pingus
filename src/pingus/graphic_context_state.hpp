@@ -22,8 +22,8 @@
 #include "math/vector3f.hpp"
 #include "math/vector2i.hpp"
 #include "math/vector2f.hpp"
-#include "display/drawing_context.hpp"
-#include "display/scene_context.hpp"
+#include "engine/display/drawing_context.hpp"
+#include "engine/display/scene_context.hpp"
 
 class GraphicContextStateImpl;
 

@@ -20,12 +20,12 @@
 #include <iostream>
 #include "pingus/globals.hpp"
 #include "pingus/pingu_holder.hpp"
-#include "display/drawing_context.hpp"
-#include "display/scene_context.hpp"
+#include "engine/display/drawing_context.hpp"
+#include "engine/display/scene_context.hpp"
 #include "pingus/world.hpp"
 #include "pingus/server.hpp"
 #include "pingus/pingu.hpp"
-#include "display/display.hpp"
+#include "engine/display/display.hpp"
 #include "pingus/game_session.hpp"
 
 Playfield::Playfield(Server* server_, GameSession* session_, const Rect& rect_) :

@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_COMPONENTS_PINGUS_COUNTER_HPP
 #define HEADER_PINGUS_COMPONENTS_PINGUS_COUNTER_HPP
 
-#include "gui/component.hpp"
+#include "engine/gui/component.hpp"
 #include "pingus/font.hpp"
 #include "pingus/sprite.hpp"
 

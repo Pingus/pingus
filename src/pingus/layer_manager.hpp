@@ -21,8 +21,8 @@
 #include "pingus/globals.hpp"
 #include "pingus/pingus.hpp"
 #include "pingus/sprite.hpp"
-#include "display/display.hpp"
-#include "display/drawing_context.hpp"
+#include "engine/display/display.hpp"
+#include "engine/display/drawing_context.hpp"
 
 class LayerManager
 {

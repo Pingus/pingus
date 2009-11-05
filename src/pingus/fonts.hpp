@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_FONTS_HPP
 #define HEADER_PINGUS_PINGUS_FONTS_HPP
 
-#include "display/drawing_context.hpp"
+#include "engine/display/drawing_context.hpp"
 #include "pingus/font.hpp"
 
 namespace Fonts {

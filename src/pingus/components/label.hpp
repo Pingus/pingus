@@ -19,7 +19,7 @@
 
 #include <string>
 #include "pingus/font.hpp"
-#include "gui/rect_component.hpp"
+#include "engine/gui/rect_component.hpp"
 
 /** */
 class Label : public GUI::RectComponent

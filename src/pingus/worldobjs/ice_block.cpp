@@ -17,7 +17,7 @@
 #include "pingus/worldobjs/ice_block.hpp"
 
 #include "pingus/collision_map.hpp"
-#include "display/scene_context.hpp"
+#include "engine/display/scene_context.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "pingus/ground_map.hpp"

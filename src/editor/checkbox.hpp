@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_EDITOR_CHECKBOX_HPP
 
 #include <boost/signal.hpp>
-#include "gui/rect_component.hpp"
+#include "engine/gui/rect_component.hpp"
 
 namespace Editor {
 

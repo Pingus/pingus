@@ -17,11 +17,11 @@
 #include "pingus/actions/digger.hpp"
 
 #include <cstdio>
-#include "display/scene_context.hpp"
+#include "engine/display/scene_context.hpp"
 #include "pingus/ground_map.hpp"
 #include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"
-#include "sound/sound.hpp"
+#include "engine/sound/sound.hpp"
 #include "pingus/pingu.hpp"
 
 namespace Actions {

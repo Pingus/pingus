@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_EDITOR_OBJECT_SELECTOR_HPP
 #define HEADER_PINGUS_EDITOR_OBJECT_SELECTOR_HPP
 
-#include "gui/component.hpp"
-#include "gui/group_component.hpp"
+#include "engine/gui/component.hpp"
+#include "engine/gui/group_component.hpp"
 #include "math/vector2i.hpp"
 #include "pingus/res_descriptor.hpp"
 

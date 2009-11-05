@@ -16,7 +16,7 @@
 
 #include "editor/label.hpp"
 
-#include "display/drawing_context.hpp"
+#include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
 
 namespace Editor {

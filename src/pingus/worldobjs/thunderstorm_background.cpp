@@ -17,7 +17,7 @@
 #include "pingus/worldobjs/thunderstorm_background.hpp"
 
 #include "pingus/resource.hpp"
-#include "display/scene_context.hpp"
+#include "engine/display/scene_context.hpp"
 
 namespace WorldObjs {
 

@@ -16,7 +16,7 @@
 
 #include "pingus/actions/climber.hpp"
 
-#include "display/scene_context.hpp"
+#include "engine/display/scene_context.hpp"
 #include "pingus/groundtype.hpp"
 #include "pingus/pingu.hpp"
 

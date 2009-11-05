@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_EDITOR_FILE_DIALOG_HPP
 
 #include "editor/file_list.hpp"
-#include "gui/group_component.hpp"
+#include "engine/gui/group_component.hpp"
 
 namespace Editor {
 

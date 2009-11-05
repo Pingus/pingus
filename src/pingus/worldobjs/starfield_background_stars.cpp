@@ -16,7 +16,7 @@
 
 #include "pingus/worldobjs/starfield_background_stars.hpp"
 
-#include "display/scene_context.hpp"
+#include "engine/display/scene_context.hpp"
 #include "pingus/world.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/globals.hpp"

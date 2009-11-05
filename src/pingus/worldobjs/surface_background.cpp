@@ -18,12 +18,12 @@
 
 #include <iostream>
 #include "pingus/globals.hpp"
-#include "display/scene_context.hpp"
+#include "engine/display/scene_context.hpp"
 #include "pingus/world.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/blitter.hpp"
-#include "display/display.hpp"
+#include "engine/display/display.hpp"
 
 namespace WorldObjs {
 

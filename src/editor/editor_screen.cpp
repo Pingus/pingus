@@ -20,12 +20,12 @@
 #include <iostream>
 #include <boost/bind.hpp>
 
-#include "display/display.hpp"
+#include "engine/display/display.hpp"
 #include "util/system.hpp"
-#include "sound/sound.hpp"
-#include "gui/gui_manager.hpp"
-#include "screen/screen_manager.hpp"
-#include "display/drawing_context.hpp"
+#include "engine/sound/sound.hpp"
+#include "engine/gui/gui_manager.hpp"
+#include "engine/screen/screen_manager.hpp"
+#include "engine/display/drawing_context.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/fonts.hpp"

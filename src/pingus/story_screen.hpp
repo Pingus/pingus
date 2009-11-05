@@ -20,7 +20,7 @@
 #include <string>
 #include <memory>
 #include "pingus/res_descriptor.hpp"
-#include "screen/gui_screen.hpp"
+#include "engine/screen/gui_screen.hpp"
 #include "pingus/worldmap/worldmap_story.hpp"
 
 class StoryScreenComponent;

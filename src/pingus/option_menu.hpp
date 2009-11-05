@@ -21,10 +21,10 @@
 #include <map>
 #include <boost/signals.hpp>
 #include "pingus/sprite.hpp"
-#include "screen/gui_screen.hpp"
+#include "engine/screen/gui_screen.hpp"
 #include "pingus/components/label.hpp"
-#include "gui/rect_component.hpp"
-#include "gui/surface_button.hpp"
+#include "engine/gui/rect_component.hpp"
+#include "engine/gui/surface_button.hpp"
 #include "tinygettext/language.hpp"
 
 class CheckBox;

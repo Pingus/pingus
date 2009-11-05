@@ -19,13 +19,13 @@
 #include <boost/bind.hpp>
 #include <iostream>
 
-#include "display/display.hpp"
+#include "engine/display/display.hpp"
 #include "editor/gui_style.hpp"
 #include "pingus/sprite.hpp"
 #include "pingus/gettext.h"
 #include "math/vector2i.hpp"
 #include "editor/editor_screen.hpp"
-#include "display/drawing_context.hpp"
+#include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
 #include "math/math.hpp"
 #include "editor/viewport.hpp"
@@ -33,8 +33,8 @@
 #include "editor/object_selector_list.hpp"
 #include "editor/object_selector_set.hpp"
 #include "editor/level_objs.hpp"
-#include "display/drawing_context.hpp"
-#include "gui/gui_manager.hpp"
+#include "engine/display/drawing_context.hpp"
+#include "engine/gui/gui_manager.hpp"
 
 #include "pingus/resource.hpp"
 

@@ -19,7 +19,7 @@
 #include "pingus/globals.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/fonts.hpp"
-#include "sound/sound.hpp"
+#include "engine/sound/sound.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/gettext.h"
 #include "pingus/pingus_menu.hpp"

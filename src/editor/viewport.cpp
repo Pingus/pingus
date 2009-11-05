@@ -20,9 +20,9 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include "gui/gui_manager.hpp"
-#include "display/display.hpp"
-#include "display/drawing_context.hpp"
+#include "engine/gui/gui_manager.hpp"
+#include "engine/display/display.hpp"
+#include "engine/display/drawing_context.hpp"
 #include "math/vector3f.hpp"
 #include "pingus/graphic_context_state.hpp"
 #include "editor/editor_level.hpp"

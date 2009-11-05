@@ -22,7 +22,7 @@
 #include <algorithm>
 #include "pingus/screenshot.hpp"
 #include "pingus/fps_counter.hpp"
-#include "screen/screen_manager.hpp"
+#include "engine/screen/screen_manager.hpp"
 #include "pingus/option_menu.hpp"
 #include "pingus/level_menu.hpp"
 #include "pingus/addon_menu.hpp"

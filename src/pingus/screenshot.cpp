@@ -23,8 +23,8 @@
 #include <fstream>
 #include <iostream>
 
-#include "display/display.hpp"
-#include "display/framebuffer.hpp"
+#include "engine/display/display.hpp"
+#include "engine/display/framebuffer.hpp"
 #include "util/system.hpp"
 #include "gettext.h"
 #include "png.h"

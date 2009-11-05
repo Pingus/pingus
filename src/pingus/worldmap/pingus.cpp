@@ -20,7 +20,7 @@
 
 #include "math/math.hpp"
 #include "math/vector3f.hpp"
-#include "display/drawing_context.hpp"
+#include "engine/display/drawing_context.hpp"
 #include "pingus/worldmap/dot.hpp"
 #include "pingus/direction.hpp"
 #include "pingus/resource.hpp"

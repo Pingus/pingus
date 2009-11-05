@@ -25,8 +25,8 @@
 #include "pingus/line_iterator.hpp"
 #include "util/utf8.hpp"
 #include "pingus/font_description.hpp"
-#include "display/framebuffer.hpp"
-#include "display/display.hpp"
+#include "engine/display/framebuffer.hpp"
+#include "engine/display/display.hpp"
 
 class FontImpl
 {

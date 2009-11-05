@@ -18,7 +18,7 @@
 
 #include <iostream>
 #include "SDL.h"
-#include "display/drawing_context.hpp"
+#include "engine/display/drawing_context.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/pingus_error.hpp"

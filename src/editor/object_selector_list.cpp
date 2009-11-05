@@ -26,7 +26,7 @@
 #include "editor/editor_level.hpp"
 #include "pingus/groundtype.hpp"
 #include "pingus/resource.hpp"
-#include "display/drawing_context.hpp"
+#include "engine/display/drawing_context.hpp"
 
 namespace Editor {
 

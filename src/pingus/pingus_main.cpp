@@ -30,7 +30,7 @@
 #include "util/sexpr_file_reader.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/config_manager.hpp"
-#include "display/display.hpp"
+#include "engine/display/display.hpp"
 #include "pingus/pingus_menu.hpp"
 
 #if defined(__APPLE__)
@@ -59,7 +59,7 @@ extern "C" {
 #include "tinygettext/log.hpp"
 #include "util/command_line.hpp"
 
-#include "screen/screen_manager.hpp"
+#include "engine/screen/screen_manager.hpp"
 #include "pingus/path_manager.hpp"
 #include "pingus/globals.hpp"
 #include "util/system.hpp"
@@ -75,7 +75,7 @@ extern "C" {
 #include "pingus/debug.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/credits.hpp"
-#include "sound/sound.hpp"
+#include "engine/sound/sound.hpp"
 #include "pingus/worldmap/worldmap_screen.hpp"
 #include "pingus/font_test_screen.hpp"
 #include "pingus/worldmap/worldmap_screen.hpp"

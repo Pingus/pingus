@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_EDITOR_LABEL_HPP
 #define HEADER_PINGUS_EDITOR_LABEL_HPP
 
-#include "gui/rect_component.hpp"
+#include "engine/gui/rect_component.hpp"
 
 namespace Editor {
 

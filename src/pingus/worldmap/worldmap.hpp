@@ -20,7 +20,7 @@
 #include <vector>
 #include "pingus/sprite.hpp"
 #include "util/file_reader.hpp"
-#include "display/drawing_context.hpp"
+#include "engine/display/drawing_context.hpp"
 #include "pingus/graphic_context_state.hpp"
 #include "pingus/worldmap/pingus_worldmap.hpp"
 

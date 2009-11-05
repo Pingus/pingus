@@ -19,7 +19,7 @@
 
 #include <memory>
 #include "pingus/graphic_context_state.hpp"
-#include "gui/rect_component.hpp"
+#include "engine/gui/rect_component.hpp"
 #include "pingus/capture_rectangle.hpp"
 
 class Pingu;

@@ -17,16 +17,16 @@
 #include "pingus/credits.hpp"
 
 #include <iostream>
-#include "screen/screen_manager.hpp"
-#include "gui/surface_button.hpp"
-#include "gui/gui_manager.hpp"
-#include "sound/sound.hpp"
+#include "engine/screen/screen_manager.hpp"
+#include "engine/gui/surface_button.hpp"
+#include "engine/gui/gui_manager.hpp"
+#include "engine/sound/sound.hpp"
 #include "pingus/stat_manager.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/fonts.hpp"
 #include "gettext.h"
-#include "display/display.hpp"
+#include "engine/display/display.hpp"
 #include "pingus/blitter.hpp"
 
 class CreditsOkButton

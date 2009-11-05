@@ -19,7 +19,7 @@
 
 #include <boost/signal.hpp>
 #include <string>
-#include "gui/rect_component.hpp"
+#include "engine/gui/rect_component.hpp"
 
 /** */
 class CheckBox : public GUI::RectComponent

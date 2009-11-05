@@ -16,7 +16,7 @@
 
 #include "pingus/capture_rectangle.hpp"
 
-#include "display/scene_context.hpp"
+#include "engine/display/scene_context.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/game_session.hpp"
 #include "pingus/globals.hpp"

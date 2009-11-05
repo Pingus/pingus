@@ -19,8 +19,8 @@
 #include <iostream>
 #include <boost/bind.hpp>
 
-#include "display/drawing_context.hpp"
-#include "gui/gui_manager.hpp"
+#include "engine/display/drawing_context.hpp"
+#include "engine/gui/gui_manager.hpp"
 #include "editor/editor_screen.hpp"
 #include "util/system.hpp"
 #include "editor/gui_style.hpp"

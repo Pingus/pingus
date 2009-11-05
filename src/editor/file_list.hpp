@@ -20,7 +20,7 @@
 #include <boost/signal.hpp>
 
 #include "pingus/sprite.hpp"
-#include "gui/rect_component.hpp"
+#include "engine/gui/rect_component.hpp"
 #include "util/system.hpp"
 
 namespace Editor {

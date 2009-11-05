@@ -25,10 +25,12 @@ import SCons.Util
 pingus_sources = \
                Glob('external/binreloc-2.0/*.c') + \
                Glob('external/tinygettext/*.cpp') + \
-               Glob('src/display/*.cpp') + \
                Glob('src/editor/*.cpp') + \
-               Glob('src/gui/*.cpp') + \
-               Glob('src/input/*.cpp') + \
+               Glob('src/engine/display/*.cpp') + \
+               Glob('src/engine/gui/*.cpp') + \
+               Glob('src/engine/input/*.cpp') + \
+               Glob('src/engine/screen/*.cpp') + \
+               Glob('src/engine/sound/*.cpp') + \
                Glob('src/lisp/*.cpp') + \
                Glob('src/math/*.cpp') + \
                Glob('src/pingus/*.cpp') + \
@@ -39,8 +41,6 @@ pingus_sources = \
                Glob('src/pingus/particles/*.cpp') + \
                Glob('src/pingus/worldmap/*.cpp') + \
                Glob('src/pingus/worldobjs/*.cpp') + \
-               Glob('src/screen/*.cpp') + \
-               Glob('src/sound/*.cpp') + \
                Glob('src/util/*.cpp')
 
 class _SpaceListOptionClass:
@@ -196,23 +196,23 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
        reports += "  * OpenGL support: enabled\n"
        config_h_defines  += [('HAVE_OPENGL', 1)]
        env['LIBS']       += ['GL']
-       env['optional_sources'] += ['src/display/opengl/opengl_framebuffer_surface_impl.cpp', 
-                                   'src/display/opengl/opengl_framebuffer.cpp' ]
+       env['optional_sources'] += ['src/engine/display/opengl/opengl_framebuffer_surface_impl.cpp', 
+                                   'src/engine/display/opengl/opengl_framebuffer.cpp' ]
 
     if not env['with_linuxusbmouse']:
         reports += "  * Linux USB mouse support: disabled\n"
     else:
         reports += "  * Linux USB mouse support: enabled\n"
         config_h_defines  += [('HAVE_LINUXUSBMOUSE', 1)]
-        env['optional_sources'] += ['src/input/usbmouse/usbmouse_driver.cpp']
+        env['optional_sources'] += ['src/engine/input/usbmouse/usbmouse_driver.cpp']
     
     if not env['with_linuxevdev']:
         reports += "  * Linux evdev support: disabled\n"
     else:
         reports += "  * Linux evdev support: ok\n"
         config_h_defines  += [('HAVE_LINUXEVDEV', 1)]
-        env['optional_sources'] += ['src/input/evdev/evdev_driver.cpp',
-                                    'src/input/evdev/evdev_device.cpp']
+        env['optional_sources'] += ['src/engine/input/evdev/evdev_driver.cpp',
+                                    'src/engine/input/evdev/evdev_device.cpp']
     
     if not env['with_wiimote']:
         reports += "  * Wiimote support: disabled\n"        
@@ -220,8 +220,8 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
         reports += "  * Wiimote support: yes\n"
         config_h_defines  += [('HAVE_CWIID', 1)]
         env['LIBS']       += ['cwiid']
-        env['optional_sources'] += ['src/input/wiimote/wiimote_driver.cpp',
-                                    'src/input/wiimote/wiimote.cpp']
+        env['optional_sources'] += ['src/engine/input/wiimote/wiimote_driver.cpp',
+                                    'src/engine/input/wiimote/wiimote.cpp']
     else:
         reports += "  * Wiimote support: no (libcwiid or cwiid.h not found)\n"
 
@@ -233,8 +233,8 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
         reports += "  * XInput support: yes\n"
         config_h_defines  += [('HAVE_XINPUT', 1)]
         env['LIBS'] += ['Xi']
-        env['optional_sources'] += ['src/input/xinput/xinput_driver.cpp',
-                                    'src/input/xinput/xinput_device.cpp']
+        env['optional_sources'] += ['src/engine/input/xinput/xinput_driver.cpp',
+                                    'src/engine/input/xinput/xinput_device.cpp']
         
     if not config.CheckLibWithHeader('boost_signals', 'boost/signals.hpp', 'c++'):
        if not config.CheckLibWithHeader('boost_signals-mt', 'boost/signals.hpp', 'c++'):

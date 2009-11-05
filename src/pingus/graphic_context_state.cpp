@@ -17,7 +17,7 @@
 #include "pingus/graphic_context_state.hpp"
 
 #include "math/math.hpp"
-#include "display/display.hpp"
+#include "engine/display/display.hpp"
 
 class GraphicContextStateImpl
 {

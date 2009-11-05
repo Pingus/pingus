@@ -17,7 +17,7 @@
 #include "pingus/worldobjs/conveyor_belt.hpp"
 
 #include "pingus/collision_map.hpp"
-#include "display/scene_context.hpp"
+#include "engine/display/scene_context.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "pingus/resource.hpp"
