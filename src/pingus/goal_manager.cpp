@@ -22,7 +22,6 @@
 #include "pingus/globals.hpp"
 #include "pingus/pingu_holder.hpp"
 
-
 GoalManager::GoalManager(Server* s)
   : server(s), goal(GT_NONE), exit_time(0)
 {
@@ -91,6 +90,5 @@ GoalManager::set_abort_goal()
 {
   goal = GT_GAME_ABORTED;
 }
-
 
 /* EOF */

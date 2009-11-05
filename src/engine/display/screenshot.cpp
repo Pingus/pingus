@@ -14,7 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "pingus/screenshot.hpp"
+#include "engine/display/screenshot.hpp"
 
 #include <assert.h>
 #include <config.h>
@@ -22,12 +22,12 @@
 #include <stdio.h>
 #include <fstream>
 #include <iostream>
+#include <png.h>
 
 #include "engine/display/display.hpp"
 #include "engine/display/framebuffer.hpp"
+#include "pingus/gettext.h"
 #include "util/system.hpp"
-#include "gettext.h"
-#include "png.h"
 
 // Saves a screenshot to file, it return the filename the screenshot
 // was saved to.

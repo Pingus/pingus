@@ -16,8 +16,6 @@
 
 #include "pingus/debug.hpp"
 
-
-
 /* Stream for error messages */
 DebugStream perr("[Error] ");
 
@@ -26,6 +24,5 @@ DebugStream pwarn("[Warning] ");
 
 /* For everything else (temporary stuff only) */
 DebugStream pout ("[Output] ");
-
 
 /* EOF */

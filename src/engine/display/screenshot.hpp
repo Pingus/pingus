@@ -18,9 +18,8 @@
 #define HEADER_PINGUS_PINGUS_SCREENSHOT_HPP
 
 #include "SDL.h"
-#include "pingus/pingus.hpp"
-#include <string>
 
+#include <string>
 
 /** Simple class to get a screenshot and save it as pnm */
 class Screenshot
@@ -36,12 +35,12 @@ public:
   /** buffer must be RGB and width*height*3 large */
   static void save_ppm(const std::string& filename, uint8_t* buffer, int width, int height);
   static void save_png(const std::string& filename, uint8_t* buffer, int width, int height);
-private:
-  Screenshot ();
-  Screenshot (const Screenshot&);
-  Screenshot& operator= (const Screenshot&);
-};
 
+private:
+  Screenshot();
+  Screenshot(const Screenshot&);
+  Screenshot& operator=(const Screenshot&);
+};
 
 #endif
 

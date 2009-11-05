@@ -19,7 +19,6 @@
 
 #include "util/debug_stream.hpp"
 
-
 /* Stream for error messages */
 extern DebugStream perr;
 
@@ -28,7 +27,6 @@ extern DebugStream pwarn;
 
 /* Stream for warnings */
 extern DebugStream pout;
-
 
 #endif
 
