@@ -14,10 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "colliders/pingu_collider.hpp"
+
 #include "pingus/pingu_action.hpp"
 #include "pingus/groundtype.hpp"
 #include "math/vector3f.hpp"
-#include "colliders/pingu_collider.hpp"
 
 namespace Colliders {
 
