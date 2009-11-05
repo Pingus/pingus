@@ -28,7 +28,7 @@
 #include "screen/screen_manager.hpp"
 #include "display/sdl_framebuffer.hpp"
 #ifdef HAVE_OPENGL
-#  include "opengl_framebuffer.hpp"
+#  include "display/opengl/opengl_framebuffer.hpp"
 #endif
 #include "display/null_framebuffer.hpp"
 #include "display/delta_framebuffer.hpp"

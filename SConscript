@@ -22,246 +22,26 @@
 import sys, os
 import SCons.Util
 
-pingus_sources = [
-'src/pingus/action_holder.cpp', 
-'src/pingus/addon_menu.cpp', 
-'src/pingus/blitter.cpp',
-'src/pingus/capture_rectangle.cpp', 
-'src/pingus/collider.cpp', 
-'src/pingus/collision_map.cpp', 
-'src/pingus/collision_mask.cpp',
-'src/util/command_line.cpp',
-'src/util/command_line_generic.cpp',
-'src/pingus/config_manager.cpp', 
-'src/pingus/credits.cpp', 
-'src/pingus/debug.cpp', 
-'src/util/debug_stream.cpp', 
-'src/pingus/demo_session.cpp', 
-'src/pingus/direction.cpp', 
-'src/util/file_reader.cpp',
-'src/pingus/font.cpp',
-'src/pingus/font_description.cpp',
-'src/pingus/font_test_screen.cpp',
-'src/pingus/fonts.cpp',
-'src/pingus/fps_counter.cpp', 
-'src/pingus/game_session.cpp', 
-'src/pingus/game_time.cpp', 
-'src/pingus/gettext.cpp', 
-'src/pingus/global_event.cpp', 
-'src/pingus/globals.cpp', 
-'src/pingus/goal_manager.cpp', 
-'src/pingus/graphic_context_state.cpp', 
-'src/pingus/ground_map.cpp', 
-'src/pingus/groundtype.cpp',
-'src/pingus/layer_manager.cpp', 
-'src/pingus/level_menu.cpp',
-'src/pingus/levelset.cpp',
-'src/pingus/line_iterator.cpp',
-'src/math/math.cpp',
-'src/pingus/mover.cpp', 
-'src/pingus/option_menu.cpp',
-'src/pingus/path_manager.cpp',
-'src/util/pathname.cpp', 
-'src/pingus/pingu.cpp', 
-'src/pingus/pingu_action.cpp', 
-'src/pingus/pingu_enums.cpp', 
-'src/pingus/pingu_holder.cpp', 
-'src/pingus/pingus_demo.cpp', 
-'src/pingus/pingus_error.cpp', 
-'src/pingus/pingus_level.cpp', 
-'src/pingus/pingus_main.cpp', 
-'src/pingus/pingus_menu.cpp', 
-'src/pingus/plf_res_mgr.cpp', 
-'src/pingus/res_descriptor.cpp', 
-'src/pingus/resource.cpp',
-'src/pingus/resource_manager.cpp', 
-'src/pingus/resource_modifier.cpp', 
-'src/pingus/result_screen.cpp', 
-'src/pingus/savegame.cpp', 
-'src/pingus/savegame_manager.cpp', 
-'src/pingus/screenshot.cpp', 
-'src/pingus/server.cpp', 
-'src/pingus/server_event.cpp', 
-'src/util/sexpr_file_reader.cpp', 
-'src/util/sexpr_file_writer.cpp', 
-'src/pingus/smallmap_image.cpp', 
-'src/pingus/sprite.cpp',
-'src/pingus/sprite_impl.cpp',
-'src/pingus/start_screen.cpp', 
-'src/pingus/stat_manager.cpp', 
-'src/pingus/state_sprite.cpp', 
-'src/pingus/story_screen.cpp', 
-'src/pingus/string_format.cpp',
-'src/util/string_util.cpp',
-'src/pingus/surface.cpp',
-'src/util/system.cpp', 
-'src/util/utf8.cpp',
-'src/pingus/world.cpp', 
-'src/pingus/worldobj.cpp', 
-'src/pingus/worldobj_factory.cpp', 
-
-'src/actions/angel.cpp', 
-'src/actions/basher.cpp', 
-'src/actions/blocker.cpp', 
-'src/actions/boarder.cpp', 
-'src/actions/bomber.cpp', 
-'src/actions/bridger.cpp', 
-'src/actions/climber.cpp', 
-'src/actions/digger.cpp', 
-'src/actions/drown.cpp', 
-'src/actions/exiter.cpp', 
-'src/actions/faller.cpp', 
-'src/actions/floater.cpp', 
-'src/actions/jumper.cpp', 
-'src/actions/laser_kill.cpp', 
-'src/actions/miner.cpp', 
-'src/actions/rocket_launcher.cpp', 
-'src/actions/slider.cpp', 
-'src/actions/smashed.cpp', 
-'src/actions/splashed.cpp', 
-'src/actions/superman.cpp', 
-'src/actions/waiter.cpp', 
-'src/actions/walker.cpp', 
-
-'src/colliders/pingu_collider.cpp',
-
-'src/components/action_button.cpp', 
-'src/components/button_panel.cpp', 
-'src/components/check_box.cpp', 
-'src/components/choice_box.cpp', 
-'src/components/label.cpp', 
-'src/components/menu_button.cpp', 
-'src/components/pingus_counter.cpp', 
-'src/components/playfield.cpp', 
-'src/components/slider_box.cpp', 
-'src/components/smallmap.cpp', 
-'src/components/time_display.cpp', 
-
-'src/display/delta_framebuffer.cpp', 
-'src/display/display.cpp', 
-'src/display/drawing_context.cpp', 
-'src/display/framebuffer_surface.cpp', 
-'src/display/null_framebuffer.cpp', 
-'src/display/rect_merger.cpp',
-'src/display/scene_context.cpp', 
-'src/display/sdl_framebuffer.cpp', 
-'src/display/sdl_framebuffer_surface_impl.cpp', 
-
-'src/editor/action_properties.cpp', 
-'src/editor/button.cpp',
-'src/editor/checkbox.cpp',
-'src/editor/combobox.cpp', 
-'src/editor/editor_level.cpp', 
-'src/editor/editor_screen.cpp',
-'src/editor/file_dialog.cpp',
-'src/editor/file_list.cpp',
-'src/editor/gui_style.cpp',
-'src/editor/inputbox.cpp',
-'src/editor/label.cpp',
-'src/editor/level_objs.cpp',
-'src/editor/level_properties.cpp',
-'src/editor/minimap.cpp', 
-'src/editor/object_properties.cpp',
-'src/editor/object_selector.cpp',
-'src/editor/object_selector_list.cpp',
-'src/editor/object_selector_set.cpp',
-'src/editor/panel.cpp',
-'src/editor/viewport.cpp', 
-
-'src/gui/component.cpp',
-'src/gui/group_component.cpp', 
-'src/gui/gui_manager.cpp', 
-'src/gui/surface_button.cpp',
-
-'src/input/controller_description.cpp',
-'src/input/controller.cpp',
-'src/input/core_driver.cpp',
-'src/input/sdl_driver.cpp',
-'src/input/manager.cpp',
-
-'src/lisp/getters.cpp',
-'src/lisp/lexer.cpp',
-'src/lisp/lisp.cpp',
-'src/lisp/parser.cpp',
-
-'src/math/origin.cpp',
-'src/math/rect.cpp',
-'src/math/size.cpp',
-'src/math/vector2f.cpp',
-'src/math/vector2i.cpp',
-'src/math/vector3f.cpp',
-
-'src/movers/linear_mover.cpp', 
-
-'src/particles/explosive_particle.cpp', 
-'src/particles/pingu_particle_holder.cpp', 
-'src/particles/rain_particle_holder.cpp', 
-'src/particles/smoke_particle_holder.cpp', 
-'src/particles/snow_particle_holder.cpp', 
-
-'src/screen/gui_screen.cpp', 
-'src/screen/screen.cpp', 
-'src/screen/screen_manager.cpp', 
-
-'src/sound/sound.cpp', 
-'src/sound/sound_dummy.cpp', 
-'src/sound/sound_real.cpp', 
-'src/sound/sound_res_mgr.cpp', 
-
-'external/tinygettext/dictionary.cpp',
-'external/tinygettext/iconv.cpp',
-'external/tinygettext/plural_forms.cpp',
-'external/tinygettext/dictionary_manager.cpp',
-'external/tinygettext/language.cpp',
-'external/tinygettext/po_parser.cpp',
-'external/tinygettext/directory.cpp',
-'external/tinygettext/log.cpp',
-'external/tinygettext/tinygettext.cpp',
-
-'src/worldmap/dot.cpp', 
-'src/worldmap/dot_factory.cpp', 
-'src/worldmap/drawable.cpp', 
-'src/worldmap/drawable_factory.cpp', 
-'src/worldmap/graph.cpp', 
-'src/worldmap/level_dot.cpp', 
-'src/worldmap/path.cpp', 
-'src/worldmap/path_drawable.cpp', 
-'src/worldmap/path_graph.cpp', 
-'src/worldmap/pingus.cpp', 
-'src/worldmap/pingus_worldmap.cpp', 
-'src/worldmap/sprite_drawable.cpp', 
-'src/worldmap/worldmap.cpp', 
-'src/worldmap/worldmap_component.cpp', 
-'src/worldmap/worldmap_screen.cpp', 
-'src/worldmap/worldmap_story.cpp', 
-
-'src/worldobjs/conveyor_belt.cpp', 
-'src/worldobjs/entrance.cpp', 
-'src/worldobjs/exit.cpp', 
-'src/worldobjs/fake_exit.cpp', 
-'src/worldobjs/groundpiece.cpp', 
-'src/worldobjs/guillotine.cpp', 
-'src/worldobjs/hammer.cpp', 
-'src/worldobjs/hotspot.cpp', 
-'src/worldobjs/ice_block.cpp', 
-'src/worldobjs/laser_exit.cpp', 
-'src/worldobjs/liquid.cpp', 
-'src/worldobjs/rain_generator.cpp', 
-'src/worldobjs/smasher.cpp', 
-'src/worldobjs/snow_generator.cpp', 
-'src/worldobjs/solid_color_background.cpp', 
-'src/worldobjs/spike.cpp', 
-'src/worldobjs/starfield_background.cpp', 
-'src/worldobjs/starfield_background_stars.cpp', 
-'src/worldobjs/surface_background.cpp', 
-'src/worldobjs/switch_door.cpp', 
-'src/worldobjs/teleporter.cpp',
-'src/worldobjs/teleporter_target.cpp', 
-'src/worldobjs/thunderstorm_background.cpp', 
-'src/worldobjs/woodthing.cpp',
-
-'external/binreloc-2.0/binreloc.c'
-]
+pingus_sources = \
+               Glob('external/tinygettext/*.cpp') + \
+               Glob('external/binreloc-2.0/*.c') + \
+               Glob('src/actions/*.cpp') + \
+               Glob('src/colliders/*.cpp') + \
+               Glob('src/components/*.cpp') + \
+               Glob('src/display/*.cpp') + \
+               Glob('src/editor/*.cpp') + \
+               Glob('src/gui/*.cpp') + \
+               Glob('src/input/*.cpp') + \
+               Glob('src/lisp/*.cpp') + \
+               Glob('src/math/*.cpp') + \
+               Glob('src/movers/*.cpp') + \
+               Glob('src/particles/*.cpp') + \
+               Glob('src/pingus/*.cpp') + \
+               Glob('src/screen/*.cpp') + \
+               Glob('src/sound/*.cpp') + \
+               Glob('src/util/*.cpp') + \
+               Glob('src/worldmap/*.cpp') + \
+               Glob('src/worldobjs/*.cpp')
 
 class _SpaceListOptionClass:
    """An option type for space-separated lists with arbitrary elements."""
@@ -416,23 +196,23 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
        reports += "  * OpenGL support: enabled\n"
        config_h_defines  += [('HAVE_OPENGL', 1)]
        env['LIBS']       += ['GL']
-       env['optional_sources'] += ['src/display/opengl_framebuffer_surface_impl.cpp', 
-                                   'src/display/opengl_framebuffer.cpp' ]
+       env['optional_sources'] += ['src/display/opengl/opengl_framebuffer_surface_impl.cpp', 
+                                   'src/display/opengl/opengl_framebuffer.cpp' ]
 
     if not env['with_linuxusbmouse']:
         reports += "  * Linux USB mouse support: disabled\n"
     else:
         reports += "  * Linux USB mouse support: enabled\n"
         config_h_defines  += [('HAVE_LINUXUSBMOUSE', 1)]
-        env['optional_sources'] += ['src/input/usbmouse_driver.cpp']
+        env['optional_sources'] += ['src/input/usbmouse/usbmouse_driver.cpp']
     
     if not env['with_linuxevdev']:
         reports += "  * Linux evdev support: disabled\n"
     else:
         reports += "  * Linux evdev support: ok\n"
         config_h_defines  += [('HAVE_LINUXEVDEV', 1)]
-        env['optional_sources'] += ['src/input/evdev_driver.cpp',
-                                    'src/input/evdev_device.cpp']
+        env['optional_sources'] += ['src/input/evdev/evdev_driver.cpp',
+                                    'src/input/evdev/evdev_device.cpp']
     
     if not env['with_wiimote']:
         reports += "  * Wiimote support: disabled\n"        
@@ -440,8 +220,8 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
         reports += "  * Wiimote support: yes\n"
         config_h_defines  += [('HAVE_CWIID', 1)]
         env['LIBS']       += ['cwiid']
-        env['optional_sources'] += ['src/input/wiimote_driver.cpp',
-                                    'src/input/wiimote.cpp']
+        env['optional_sources'] += ['src/input/wiimote/wiimote_driver.cpp',
+                                    'src/input/wiimote/wiimote.cpp']
     else:
         reports += "  * Wiimote support: no (libcwiid or cwiid.h not found)\n"
 
@@ -453,8 +233,8 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
         reports += "  * XInput support: yes\n"
         config_h_defines  += [('HAVE_XINPUT', 1)]
         env['LIBS'] += ['Xi']
-        env['optional_sources'] += ['src/input/xinput_driver.cpp',
-                                    'src/input/xinput_device.cpp']
+        env['optional_sources'] += ['src/input/xinput/xinput_driver.cpp',
+                                    'src/input/xinput/xinput_device.cpp']
         
     if not config.CheckLibWithHeader('boost_signals', 'boost/signals.hpp', 'c++'):
        if not config.CheckLibWithHeader('boost_signals-mt', 'boost/signals.hpp', 'c++'):

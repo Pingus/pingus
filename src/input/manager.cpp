@@ -23,16 +23,16 @@
 #include "input/sdl_driver.hpp"
 #include "input/core_driver.hpp"
 #ifdef HAVE_CWIID
-#  include "wiimote_driver.hpp"
+#  include "wiimote/wiimote_driver.hpp"
 #endif 
 #ifdef HAVE_XINPUT
-#  include "xinput_driver.hpp"
+#  include "xinput/xinput_driver.hpp"
 #endif
 #ifdef HAVE_LINUXUSBMOUSE
-#  include "usbmouse_driver.hpp"
+#  include "usbmouse/usbmouse_driver.hpp"
 #endif
 #ifdef HAVE_LINUXEVDEV
-#  include "evdev_driver.hpp"
+#  include "evdev/evdev_driver.hpp"
 #endif
 #include "input/manager.hpp"
 

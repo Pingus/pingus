@@ -25,7 +25,7 @@
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 #include "math/vector2i.hpp"
-#include "input/usbmouse_driver.hpp"
+#include "input/usbmouse/usbmouse_driver.hpp"
 #include "display/display.hpp"
 
 namespace Input {
