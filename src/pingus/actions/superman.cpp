@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,55 +14,37 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "actions/floater.hpp"
+#include "pingus/actions/superman.hpp"
 
-#include "pingus/pingu.hpp"
 #include "display/scene_context.hpp"
-#include "pingus/groundtype.hpp"
+#include "pingus/pingu.hpp"
+#include "pingus/sprite.hpp"
 
 namespace Actions {
 
-Floater::Floater(Pingu* p) :
-  PinguAction(p),
-  falling_depth(0),
-  step(0),
-  sprite()
+Superman::Superman (Pingu* p)
+  : PinguAction(p),
+    counter(0.0f),
+    x_pos(pingu->get_x()),
+    sprite(Sprite("pingus/player" + pingu->get_owner_str() + "/superman"))
 {
-  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/floater/left");
 }
 
 void
-Floater::update()
+Superman::update ()
 {
-  sprite.update ();
+  sprite.update();
+  counter += 0.025f;
+  pingu->set_pos(pingu->get_x() + 40.0f * 0.025f, pingu->get_y() - 200.0f * 0.025f);
 
-  pingu->set_velocity(Vector3f(0.0f, 1.0f));
-
-  if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING)
-  {
-    ++step;
-    if (step > 0)
-    {
-      pingu->set_y(pingu->get_y() + 1);
-      step = 0;
-    }
-  }
-  else
-  {
-    pingu->set_action (Actions::WALKER);
-  }
+  if (pingu->get_y() < -32)
+    pingu->set_status(PS_DEAD);
 }
 
 void
-Floater::draw (SceneContext& gc)
+Superman::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite, pingu->get_pos());
-}
-
-bool
-Floater::change_allowed (ActionName)
-{
-  return false;
+  gc.color().draw(sprite, pingu->get_pos ());
 }
 
 } // namespace Actions

@@ -14,46 +14,35 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "actions/splashed.hpp"
+#include "pingus/actions/laser_kill.hpp"
 
 #include "math/vector3f.hpp"
 #include "display/scene_context.hpp"
-#include "pingus/world.hpp"
 #include "pingus/pingu.hpp"
-#include "pingus/worldobj.hpp"
 
 namespace Actions {
 
-Splashed::Splashed (Pingu* p) :
+LaserKill::LaserKill(Pingu* p) :
   PinguAction(p),
-  particle_thrown(false),
-  sound_played(false),
   sprite()
 {
-  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/splat");
+  sprite.load(Direction::LEFT,  Sprite("other/laser_kill/left"));
+  sprite.load(Direction::RIGHT, Sprite("other/laser_kill/right"));
 }
 
 void
-Splashed::update ()
+LaserKill::draw (SceneContext& gc)
 {
-  sprite.update();
-
-  if (!particle_thrown)
-    {
-      particle_thrown = true;
-      WorldObj::get_world()->play_sound("splash", pingu->get_pos());
-    }
-
-  if (sprite.is_finished())
-    {
-      pingu->set_status(PS_DEAD);
-    }
+  gc.color().draw(sprite[pingu->direction], pingu->get_pos () + Vector3f (0, 2));
 }
 
 void
-Splashed::draw (SceneContext& gc)
+LaserKill::update ()
 {
-  gc.color().draw(sprite, pingu->get_pos ());
+  if (sprite[pingu->direction].is_finished())
+    pingu->set_status(PS_DEAD);
+  else
+    sprite[pingu->direction].update();
 }
 
 } // namespace Actions

@@ -14,7 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "actions/faller.hpp"
+#include "pingus/actions/faller.hpp"
 
 #include "math/math.hpp"
 #include "colliders/pingu_collider.hpp"

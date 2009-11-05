@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,40 +14,55 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "actions/waiter.hpp"
+#include "pingus/actions/floater.hpp"
 
-#include "math/vector3f.hpp"
-#include "display/scene_context.hpp"
 #include "pingus/pingu.hpp"
+#include "display/scene_context.hpp"
+#include "pingus/groundtype.hpp"
 
 namespace Actions {
 
-Waiter::Waiter (Pingu* p) :
+Floater::Floater(Pingu* p) :
   PinguAction(p),
-  countdown(2.0f),
+  falling_depth(0),
+  step(0),
   sprite()
 {
-  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/waiter/left");
+  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/floater/left");
 }
 
 void
-Waiter::update ()
+Floater::update()
 {
-  sprite.update();
+  sprite.update ();
 
-  if (countdown < 0)
+  pingu->set_velocity(Vector3f(0.0f, 1.0f));
+
+  if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING)
+  {
+    ++step;
+    if (step > 0)
     {
-      pingu->set_action(Actions::WALKER);
-      return;
+      pingu->set_y(pingu->get_y() + 1);
+      step = 0;
     }
-
-  countdown -= 0.025f;
+  }
+  else
+  {
+    pingu->set_action (Actions::WALKER);
+  }
 }
 
 void
-Waiter::draw (SceneContext& gc)
+Floater::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite, pingu->get_pos ());
+  gc.color().draw(sprite, pingu->get_pos());
+}
+
+bool
+Floater::change_allowed (ActionName)
+{
+  return false;
 }
 
 } // namespace Actions

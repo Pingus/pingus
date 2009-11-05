@@ -14,50 +14,50 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "actions/jumper.hpp"
+#include "pingus/actions/exiter.hpp"
 
 #include "math/vector3f.hpp"
 #include "display/scene_context.hpp"
 #include "pingus/pingu.hpp"
+#include "sound/sound.hpp"
 
 namespace Actions {
 
-Jumper::Jumper (Pingu* p) :
+Exiter::Exiter (Pingu* p) :
   PinguAction(p),
-  sprite()
+  sprite(),
+  sound_played(false)
 {
   sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
-                                                      pingu->get_owner_str() + "/jumper/left"));
+    pingu->get_owner_str() + "/exit/left"));
   sprite.load(Direction::RIGHT, Sprite("pingus/player" + 
-                                                      pingu->get_owner_str() + "/jumper/right"));
+    pingu->get_owner_str() + "/exit/right"));
 }
 
 void
-Jumper::draw (SceneContext& gc)
+Exiter::update ()
+{
+  sprite[pingu->direction].update();
+
+  if (!sound_played)
+    {
+      sound_played = true;
+      Sound::PingusSound::play_sound("yipee");
+    }
+
+  if (sprite[pingu->direction].is_finished())
+    {
+      if (pingu->get_status() != PS_EXITED)
+	{
+	  pingu->set_status(PS_EXITED);
+	}
+    }
+}
+
+void
+Exiter::draw (SceneContext& gc)
 {
   gc.color().draw(sprite[pingu->direction], pingu->get_pos());
-}
-
-void
-Jumper::update ()
-{
-  // if climber, do a wall-jump, else just jump forward
-  if ((pingu->get_previous_action() == Actions::CLIMBER))
-    pingu->direction.change();
-  
-  if (pingu->direction.is_left())
-    {
-      pingu->set_velocity(pingu->get_velocity() + Vector3f(-5.0, -5.0));
-    }
-  else // if (pingu->direction.is_right())
-    {
-      pingu->set_velocity(pingu->get_velocity() + Vector3f(5.0, -5.0));
-    }
-
-  // Move the pingu in the air, so that it can start 'falling'
-  pingu->set_y(pingu->get_y() - 1);
-
-  pingu->set_action (Actions::FALLER);
 }
 
 } // namespace Actions

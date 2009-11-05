@@ -25,7 +25,7 @@ import SCons.Util
 pingus_sources = \
                Glob('external/tinygettext/*.cpp') + \
                Glob('external/binreloc-2.0/*.c') + \
-               Glob('src/actions/*.cpp') + \
+               Glob('src/pingus/actions/*.cpp') + \
                Glob('src/colliders/*.cpp') + \
                Glob('src/components/*.cpp') + \
                Glob('src/display/*.cpp') + \

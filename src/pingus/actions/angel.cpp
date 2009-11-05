@@ -14,37 +14,40 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "actions/superman.hpp"
+#include "pingus/actions/angel.hpp"
 
 #include "display/scene_context.hpp"
 #include "pingus/pingu.hpp"
-#include "pingus/sprite.hpp"
+#include "math/math.hpp"
+#include "pingus/globals.hpp"
 
 namespace Actions {
 
-Superman::Superman (Pingu* p)
+Angel::Angel (Pingu* p)
   : PinguAction(p),
-    counter(0.0f),
+    counter(0.0),
     x_pos(pingu->get_x()),
-    sprite(Sprite("pingus/player" + pingu->get_owner_str() + "/superman"))
+    sprite(Sprite("pingus/player" + pingu->get_owner_str() + "/angel"))
 {
 }
 
 void
-Superman::update ()
+Angel::update ()
 {
-  sprite.update();
-  counter += 0.025f;
-  pingu->set_pos(pingu->get_x() + 40.0f * 0.025f, pingu->get_y() - 200.0f * 0.025f);
+  sprite.update ();
 
+  counter += static_cast<float>(game_speed);
+  pingu->set_pos(x_pos + 20 * Math::sin(counter * 3.0f), pingu->get_y() - 50.0f * 0.025f);
+
+  // Out of screen, let the pingu die
   if (pingu->get_y() < -32)
-    pingu->set_status(PS_DEAD);
+    pingu->set_status (PS_DEAD);
 }
 
 void
-Superman::draw (SceneContext& gc)
+Angel::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite, pingu->get_pos ());
+  gc.color().draw (sprite, pingu->get_pos ());
 }
 
 } // namespace Actions

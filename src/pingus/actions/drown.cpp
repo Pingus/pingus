@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,50 +14,38 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "actions/exiter.hpp"
+#include "pingus/actions/drown.hpp"
 
 #include "math/vector3f.hpp"
 #include "display/scene_context.hpp"
 #include "pingus/pingu.hpp"
-#include "sound/sound.hpp"
 
 namespace Actions {
 
-Exiter::Exiter (Pingu* p) :
+Drown::Drown (Pingu* p) :
   PinguAction(p),
-  sprite(),
-  sound_played(false)
+  sprite()
 {
   sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
-    pingu->get_owner_str() + "/exit/left"));
+    pingu->get_owner_str() + "/drownfall/left"));
   sprite.load(Direction::RIGHT, Sprite("pingus/player" + 
-    pingu->get_owner_str() + "/exit/right"));
+    pingu->get_owner_str() + "/drownfall/right"));
 }
 
 void
-Exiter::update ()
+Drown::draw (SceneContext& gc)
+{
+  gc.color().draw(sprite[pingu->direction], pingu->get_pos ());
+}
+
+void
+Drown::update ()
 {
   sprite[pingu->direction].update();
-
-  if (!sound_played)
-    {
-      sound_played = true;
-      Sound::PingusSound::play_sound("yipee");
-    }
-
   if (sprite[pingu->direction].is_finished())
     {
-      if (pingu->get_status() != PS_EXITED)
-	{
-	  pingu->set_status(PS_EXITED);
-	}
+      pingu->set_status(PS_DEAD);
     }
-}
-
-void
-Exiter::draw (SceneContext& gc)
-{
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
 }
 
 } // namespace Actions

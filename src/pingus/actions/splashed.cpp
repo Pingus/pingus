@@ -14,36 +14,46 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "actions/smashed.hpp"
+#include "pingus/actions/splashed.hpp"
 
 #include "math/vector3f.hpp"
 #include "display/scene_context.hpp"
+#include "pingus/world.hpp"
 #include "pingus/pingu.hpp"
-#include "pingus/sprite.hpp"
+#include "pingus/worldobj.hpp"
 
 namespace Actions {
 
-Smashed::Smashed (Pingu* p) :
+Splashed::Splashed (Pingu* p) :
   PinguAction(p),
+  particle_thrown(false),
   sound_played(false),
   sprite()
 {
-  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/bomber");
+  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/splat");
 }
 
 void
-Smashed::draw (SceneContext& gc)
-{
-  gc.color().draw(sprite, pingu->get_pos ());
-}
-
-void
-Smashed::update()
+Splashed::update ()
 {
   sprite.update();
-  //  pingu->particle->add_pingu_explo(pingu->x_pos, pingu->y_pos - 16);
+
+  if (!particle_thrown)
+    {
+      particle_thrown = true;
+      WorldObj::get_world()->play_sound("splash", pingu->get_pos());
+    }
+
   if (sprite.is_finished())
-    pingu->set_status(PS_DEAD);
+    {
+      pingu->set_status(PS_DEAD);
+    }
+}
+
+void
+Splashed::draw (SceneContext& gc)
+{
+  gc.color().draw(sprite, pingu->get_pos ());
 }
 
 } // namespace Actions

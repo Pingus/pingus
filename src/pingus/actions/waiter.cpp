@@ -14,7 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "actions/drown.hpp"
+#include "pingus/actions/waiter.hpp"
 
 #include "math/vector3f.hpp"
 #include "display/scene_context.hpp"
@@ -22,30 +22,32 @@
 
 namespace Actions {
 
-Drown::Drown (Pingu* p) :
+Waiter::Waiter (Pingu* p) :
   PinguAction(p),
+  countdown(2.0f),
   sprite()
 {
-  sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
-    pingu->get_owner_str() + "/drownfall/left"));
-  sprite.load(Direction::RIGHT, Sprite("pingus/player" + 
-    pingu->get_owner_str() + "/drownfall/right"));
+  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/waiter/left");
 }
 
 void
-Drown::draw (SceneContext& gc)
+Waiter::update ()
 {
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos ());
-}
+  sprite.update();
 
-void
-Drown::update ()
-{
-  sprite[pingu->direction].update();
-  if (sprite[pingu->direction].is_finished())
+  if (countdown < 0)
     {
-      pingu->set_status(PS_DEAD);
+      pingu->set_action(Actions::WALKER);
+      return;
     }
+
+  countdown -= 0.025f;
+}
+
+void
+Waiter::draw (SceneContext& gc)
+{
+  gc.color().draw(sprite, pingu->get_pos ());
 }
 
 } // namespace Actions

@@ -14,7 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "actions/rocket_launcher.hpp"
+#include "pingus/actions/rocket_launcher.hpp"
 
 #include "display/scene_context.hpp"
 //#include "particles/particle_holder.hpp"
