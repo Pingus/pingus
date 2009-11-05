@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_ACTIONS_DIGGER_HPP
 #define HEADER_PINGUS_ACTIONS_DIGGER_HPP
 
+#include "pingus/sprite.hpp"
 #include "pingus/pingu_action.hpp"
 
 namespace Actions {

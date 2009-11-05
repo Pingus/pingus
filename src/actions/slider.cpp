@@ -14,10 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "actions/slider.hpp"
+
 #include "display/scene_context.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/groundtype.hpp"
-#include "actions/slider.hpp"
 
 namespace Actions {
 

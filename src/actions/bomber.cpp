@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "actions/bomber.hpp"
+
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 #include "display/scene_context.hpp"
@@ -24,7 +26,6 @@
 #include "particles/pingu_particle_holder.hpp"
 #include "colliders/pingu_collider.hpp"
 #include "movers/linear_mover.hpp"
-#include "actions/bomber.hpp"
 
 namespace Actions {
 

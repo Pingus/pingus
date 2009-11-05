@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "actions/digger.hpp"
+
 #include <cstdio>
 #include "display/scene_context.hpp"
 #include "pingus/ground_map.hpp"
@@ -21,7 +23,6 @@
 #include "pingus/worldobj.hpp"
 #include "sound/sound.hpp"
 #include "pingus/pingu.hpp"
-#include "actions/digger.hpp"
 
 namespace Actions {
 

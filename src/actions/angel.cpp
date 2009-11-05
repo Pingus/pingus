@@ -14,11 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "actions/angel.hpp"
+
 #include "display/scene_context.hpp"
 #include "pingus/pingu.hpp"
 #include "math/math.hpp"
 #include "pingus/globals.hpp"
-#include "actions/angel.hpp"
 
 namespace Actions {
 

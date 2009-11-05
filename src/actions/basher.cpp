@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "actions/basher.hpp"
+
 #include "sound/sound.hpp"
 #include "pingus/collision_map.hpp"
 #include "pingus/debug.hpp"
@@ -23,7 +25,6 @@
 #include "pingus/pingu.hpp"
 #include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"
-#include "actions/basher.hpp"
 
 namespace Actions {
 

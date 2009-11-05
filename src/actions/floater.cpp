@@ -14,10 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "actions/floater.hpp"
+
 #include "pingus/pingu.hpp"
 #include "display/scene_context.hpp"
 #include "pingus/groundtype.hpp"
-#include "actions/floater.hpp"
 
 namespace Actions {
 

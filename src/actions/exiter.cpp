@@ -14,11 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "actions/exiter.hpp"
+
 #include "math/vector3f.hpp"
 #include "display/scene_context.hpp"
 #include "pingus/pingu.hpp"
 #include "sound/sound.hpp"
-#include "actions/exiter.hpp"
 
 namespace Actions {
 
