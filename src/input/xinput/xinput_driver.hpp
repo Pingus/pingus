@@ -34,12 +34,11 @@ class XInputDriver : public Driver
 {
 private:
   SDL_SysWMinfo sys;
-
-  void setup_xinput();
-  Bool xinput_is_present();
-
   std::vector<XInputDevice*> devices;
 
+private:
+  void setup_xinput();
+  Bool xinput_is_present();
 
   XDeviceInfo* find_device_info(Display *display,
                                 const char* name,

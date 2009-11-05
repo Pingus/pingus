@@ -14,17 +14,19 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "input/xinput/xinput_driver.hpp"
+
 #include <iostream>
 
-#include "input/debug.hpp"
-#include "input/globals.hpp"
-
-#include "input/xinput_driver.hpp"
-#include "input/xinput_device.hpp"
+#include "pingus/debug.hpp"
+#include "pingus/globals.hpp"
+#include "input/xinput/xinput_device.hpp"
 
 namespace Input {
 
-XInputDriver::XInputDriver()
+XInputDriver::XInputDriver() :
+  sys(),
+  devices()
 {
   SDL_VERSION(&sys.version); // this is important!
   if (!SDL_GetWMInfo(&sys))
@@ -90,7 +92,7 @@ XInputDriver::find_device_info(Display *display,
 {
   // FIXME: Not really needed could simply pass XDeviceInfo to the
   // constructor, might however make a nicer interface
-  XDeviceInfo *devices;
+  XDeviceInfo* x_devices;
   int  num_devices;
   int  len = strlen(name);
   Bool is_id = True;
@@ -109,14 +111,14 @@ XInputDriver::find_device_info(Display *display,
     id = atoi(name);
   }
 
-  devices = XListInputDevices(display, &num_devices);
+  x_devices = XListInputDevices(display, &num_devices);
 
   for(int i = 0; i < num_devices; ++i) 
     {
-      if ((!only_extended || (devices[i].use == IsXExtensionDevice)) &&
-          ((!is_id && strcmp(devices[i].name, name) == 0) ||
-           (is_id && devices[i].id == id))) {
-        return &devices[i];
+      if ((!only_extended || (x_devices[i].use == IsXExtensionDevice)) &&
+          ((!is_id && strcmp(x_devices[i].name, name) == 0) ||
+           (is_id && x_devices[i].id == id))) {
+        return &x_devices[i];
       }
     }
   return NULL;

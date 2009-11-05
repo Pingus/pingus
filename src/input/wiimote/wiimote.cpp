@@ -14,11 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "input/wiimote/wiimote.hpp"
+
 #include <iostream>
 #include <assert.h>
 #include <pthread.h>
-#include "input/math.hpp"
-#include "input/wiimote.hpp"
+
+#include "math/math.hpp"
 
 Wiimote* wiimote = 0;
 
@@ -110,21 +112,27 @@ Wiimote::deinit()
   wiimote = 0;
 }
 
-Wiimote::Wiimote()
-  : m_wiimote(0),
-    m_rumble(false),
-    m_led_state(0),
-    m_nunchuk_btns(0),
-    m_nunchuk_stick_x(0),
-    m_nunchuk_stick_y(0),
-    m_buttons(0)
+Wiimote::Wiimote() :
+  mutex(),
+  m_wiimote(0),
+  m_rumble(false),
+  m_led_state(0),
+  m_nunchuk_btns(0),
+  m_nunchuk_stick_x(0),
+  m_nunchuk_stick_y(0),
+  m_buttons(0),
+  wiimote_zero(),
+  wiimote_one(),
+  nunchuk_zero(),
+  nunchuk_one(),
+  events()
 {
   pthread_mutex_init(&mutex, NULL);
 
   assert(wiimote == 0);
   wiimote = this;
   
-  cwiid_set_err(&Wiimote::err_callback);
+  cwiid_set_err(&Wiimote::err_callback_c);
 }
 
 Wiimote::~Wiimote()
@@ -139,7 +147,7 @@ Wiimote::connect()
   assert(m_wiimote == 0);
 
   /* Connect to any wiimote */
-  bdaddr_t bdaddr = *BDADDR_ANY;
+  bdaddr_t bdaddr = {{0, 0, 0, 0, 0, 0}};
 
   /* Connect to address in string WIIMOTE_BDADDR */
   /* str2ba(WIIMOTE_BDADDR, &bdaddr); */
@@ -154,7 +162,7 @@ Wiimote::connect()
   else 
     {
       std::cout << "Wiimote connected: " << m_wiimote << std::endl;
-      if (cwiid_set_mesg_callback(m_wiimote, &Wiimote::mesg_callback))
+      if (cwiid_set_mesg_callback(m_wiimote, &Wiimote::mesg_callback_c))
         {
           std::cerr << "Unable to set message callback" << std::endl;
         }
@@ -258,7 +266,7 @@ Wiimote::set_led(int num, bool state)
   else // (!state)
     new_led_state &= ~(1 << (num-1));
 
-  set_led(new_led_state);
+  set_led(static_cast<unsigned char>(new_led_state));
 }
 
 void
@@ -389,9 +397,9 @@ Wiimote::on_acc(const cwiid_acc_mesg& msg)
   //printf("Acc Report: x=%d, y=%d, z=%d\n", msg.acc[0], msg.acc[1], msg.acc[2]);
 
   add_acc_event(0, 0, 
-                (msg.acc[0] - wiimote_zero.x) / float(wiimote_one.x - wiimote_zero.x),
-                (msg.acc[1] - wiimote_zero.y) / float(wiimote_one.y - wiimote_zero.y),
-                (msg.acc[2] - wiimote_zero.z) / float(wiimote_one.z - wiimote_zero.z));
+                static_cast<float>(msg.acc[0] - wiimote_zero.x) / static_cast<float>(wiimote_one.x - wiimote_zero.x),
+                static_cast<float>(msg.acc[1] - wiimote_zero.y) / static_cast<float>(wiimote_one.y - wiimote_zero.y),
+                static_cast<float>(msg.acc[2] - wiimote_zero.z) / static_cast<float>(wiimote_one.z - wiimote_zero.z));
 }
 
 void
@@ -422,11 +430,11 @@ inline float to_float(uint8_t min,
 {
   if (value < center)
     {
-      return Math::clamp(-1.0f, -(center - value) / float(center - min), 1.0f);
+      return Math::clamp(-1.0f, -static_cast<float>(center - value) / static_cast<float>(center - min), 1.0f);
     }
   else if (value > center)
     {
-      return Math::clamp(-1.0f, (value - center) / float(max - center), 1.0f);
+      return Math::clamp(-1.0f, static_cast<float>(value - center) / static_cast<float>(max - center), 1.0f);
     }
   else 
     {
@@ -462,9 +470,9 @@ Wiimote::on_nunchuk(const cwiid_nunchuk_mesg& msg)
     }
 
   add_acc_event(0, 1, 
-                (msg.acc[0] - nunchuk_zero.x) / float(nunchuk_one.x - nunchuk_zero.x),
-                (msg.acc[1] - nunchuk_zero.y) / float(nunchuk_one.y - nunchuk_zero.y),
-                (msg.acc[2] - nunchuk_zero.z) / float(nunchuk_one.z - nunchuk_zero.z));
+                static_cast<float>(msg.acc[0] - nunchuk_zero.x) / static_cast<float>(nunchuk_one.x - nunchuk_zero.x),
+                static_cast<float>(msg.acc[1] - nunchuk_zero.y) / static_cast<float>(nunchuk_one.y - nunchuk_zero.y),
+                static_cast<float>(msg.acc[2] - nunchuk_zero.z) / static_cast<float>(nunchuk_one.z - nunchuk_zero.z));
   if (0)
     printf("Nunchuk Report: btns=%.2X stick=(%3d,%3d) (%5.2f, %5.2f) acc.x=%d acc.y=%d acc.z=%d\n", 
            msg.buttons,
@@ -496,7 +504,7 @@ Wiimote::pop_events()
 
 // Callback function that get called by the Wiimote thread
 void
-Wiimote::err(cwiid_wiimote_t* w, const char *s, va_list ap)
+Wiimote::err_callback(cwiid_wiimote_t* w, const char *s, va_list ap)
 {
   pthread_mutex_lock(&mutex);
 
@@ -512,7 +520,7 @@ Wiimote::err(cwiid_wiimote_t* w, const char *s, va_list ap)
 }
 
 void
-Wiimote::mesg(cwiid_wiimote_t* w, int mesg_count, union cwiid_mesg mesg[])
+Wiimote::mesg_callback(cwiid_wiimote_t* w, int mesg_count, union cwiid_mesg mesg[])
 {
   pthread_mutex_lock(&mutex);
 
@@ -561,15 +569,15 @@ Wiimote::mesg(cwiid_wiimote_t* w, int mesg_count, union cwiid_mesg mesg[])
 // static callback functions
   
 void
-Wiimote::err_callback(cwiid_wiimote_t* w, const char *s, va_list ap)
+Wiimote::err_callback_c(cwiid_wiimote_t* w, const char *s, va_list ap)
 {
-  wiimote->err(w, s, ap);
+  wiimote->err_callback(w, s, ap);
 }
 
 void
-Wiimote::mesg_callback(cwiid_wiimote_t* w, int mesg_count, union cwiid_mesg mesg[], timespec*)
+Wiimote::mesg_callback_c(cwiid_wiimote_t* w, int mesg_count, union cwiid_mesg mesg[], timespec*)
 {
-  wiimote->mesg(w, mesg_count, mesg);
+  wiimote->mesg_callback(w, mesg_count, mesg);
 }
 
 /* EOF */

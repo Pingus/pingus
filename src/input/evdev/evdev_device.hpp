@@ -19,11 +19,12 @@
 
 #include <vector>
 #include <string.h>
+#include <linux/input.h>
+
 #include "input/control.hpp"
 
 namespace Input {
 
-/** */
 class EvdevDevice
 {
 private:

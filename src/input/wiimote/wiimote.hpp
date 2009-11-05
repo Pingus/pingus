@@ -18,6 +18,9 @@
 #define HEADER_PINGUS_INPUT_WIIMOTE_HPP
 
 #include <vector>
+#include <string>
+#include <pthread.h>
+
 #include "cwiid.h"
 
 struct WiimoteButtonEvent
@@ -64,8 +67,8 @@ struct AccCalibration
 class Wiimote
 {
 public:
-  static void err_callback(cwiid_wiimote_t*, const char *s, va_list ap);
-  static void mesg_callback(cwiid_wiimote_t*, int mesg_count, union cwiid_mesg mesg[], timespec*);
+  static void err_callback_c(cwiid_wiimote_t*, const char *s, va_list ap);
+  static void mesg_callback_c(cwiid_wiimote_t*, int mesg_count, union cwiid_mesg mesg[], timespec*);
 
   static void init();
   static void deinit();
@@ -161,8 +164,8 @@ public:
   void on_nunchuk(const cwiid_nunchuk_mesg& msg);
   void on_classic (const cwiid_classic_mesg& msg);
   
-  void mesg(cwiid_wiimote_t*, int mesg_count, union cwiid_mesg mesg[]);
-  void err(cwiid_wiimote_t*, const char *s, va_list ap);
+  void mesg_callback(cwiid_wiimote_t*, int mesg_count, union cwiid_mesg mesg[]);
+  void err_callback(cwiid_wiimote_t*, const char *s, va_list ap);
 
 private:
   Wiimote(const Wiimote&);

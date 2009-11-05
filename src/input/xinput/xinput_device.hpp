@@ -78,6 +78,10 @@ public:
                        XDeviceInfo* info,
                        const char* dev_name,
                        Bool handle_proximity);
+
+private:
+  XInputDevice(const XInputDevice&);
+  XInputDevice & operator=(const XInputDevice&);
 };
 
 } // namespace Input

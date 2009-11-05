@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "input/evdev/evdev_device.hpp"
+
 #include <assert.h>
 #include <linux/input.h>
 #include <sys/ioctl.h>
@@ -23,8 +25,6 @@
 #include <iostream>
 #include <errno.h>
 #include <stdio.h>
-
-#include "input/evdev/evdev_device.hpp"
 
 #define BITS_PER_LONG (sizeof(long) * 8)
 #define NBITS(x) ((((x)-1)/BITS_PER_LONG)+1)

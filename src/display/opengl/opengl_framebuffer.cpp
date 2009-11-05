@@ -14,11 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "display/opengl/opengl_framebuffer.hpp"
+
 #include <sstream>
 #include <iostream>
 #include <stdexcept>
 
-#include "display/opengl/opengl_framebuffer.hpp"
 #include "display/opengl/opengl_framebuffer_surface_impl.hpp"
 #include "math/math.hpp"
 #include "pingus/surface.hpp"

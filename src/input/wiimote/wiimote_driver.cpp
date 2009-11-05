@@ -14,15 +14,18 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "input/debug.hpp"
-#include "input/globals.hpp"
-#include "input/string_util.hpp"
-#include "input/wiimote.hpp"
-#include "input/wiimote_driver.hpp"
+#include "input/wiimote/wiimote_driver.hpp"
+
+#include "input/wiimote/wiimote.hpp"
+#include "pingus/debug.hpp"
+#include "pingus/globals.hpp"
+#include "util/string_util.hpp"
 
 namespace Input {
 
-WiimoteDriver::WiimoteDriver()
+WiimoteDriver::WiimoteDriver() :
+  button_bindings(),
+  axis_bindings()
 {
   Wiimote::init();
   wiimote->connect();

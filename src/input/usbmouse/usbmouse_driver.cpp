@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "input/usbmouse/usbmouse_driver.hpp"
+
 #include <stdexcept>
 #include <sys/ioctl.h>
 #include <fcntl.h>
@@ -25,7 +27,6 @@
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 #include "math/vector2i.hpp"
-#include "input/usbmouse/usbmouse_driver.hpp"
 #include "display/display.hpp"
 
 namespace Input {
