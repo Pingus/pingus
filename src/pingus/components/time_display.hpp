@@ -19,7 +19,7 @@
 
 #include "engine/gui/component.hpp"
 #include "engine/display/sprite.hpp"
-#include "pingus/font.hpp"
+#include "engine/display/font.hpp"
 
 class Font;
 class Server;

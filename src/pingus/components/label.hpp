@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_COMPONENTS_LABEL_HPP
 
 #include <string>
-#include "pingus/font.hpp"
+#include "engine/display/font.hpp"
 #include "engine/gui/rect_component.hpp"
 
 /** */

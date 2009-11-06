@@ -14,7 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "pingus/font.hpp"
+#include "engine/display/font.hpp"
 
 #include <iostream>
 #include <vector>
@@ -24,7 +24,7 @@
 #include "engine/display/surface.hpp"
 #include "util/line_iterator.hpp"
 #include "util/utf8.hpp"
-#include "pingus/font_description.hpp"
+#include "engine/display/font_description.hpp"
 #include "engine/display/framebuffer.hpp"
 #include "engine/display/display.hpp"
 

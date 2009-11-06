@@ -22,7 +22,7 @@
 #include "engine/display/drawing_context.hpp"
 #include "engine/input/control.hpp"
 #include "engine/input/controller.hpp"
-#include "pingus/font.hpp"
+#include "engine/display/font.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "pingus/globals.hpp"

@@ -20,7 +20,7 @@
 #include <string>
 #include <vector>
 #include "engine/screen/gui_screen.hpp"
-#include "pingus/font.hpp"
+#include "engine/display/font.hpp"
 #include "engine/display/scene_context.hpp"
 #include "engine/display/sprite.hpp"
 

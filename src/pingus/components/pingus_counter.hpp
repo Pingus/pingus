@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_COMPONENTS_PINGUS_COUNTER_HPP
 
 #include "engine/gui/component.hpp"
-#include "pingus/font.hpp"
+#include "engine/display/font.hpp"
 #include "engine/display/sprite.hpp"
 
 class DrawingContext;

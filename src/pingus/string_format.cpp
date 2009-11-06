@@ -18,7 +18,7 @@
 
 #include <sstream>
 
-#include "pingus/font.hpp"
+#include "engine/display/font.hpp"
 #include "util/utf8.hpp"
 
 std::string

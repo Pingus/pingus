@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_CAPTURE_RECTANGLE_HPP
 #define HEADER_PINGUS_PINGUS_CAPTURE_RECTANGLE_HPP
 
-#include "pingus/font.hpp"
+#include "engine/display/font.hpp"
 #include "engine/display/sprite.hpp"
 
 class Font;

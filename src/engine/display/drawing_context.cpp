@@ -23,7 +23,7 @@
 #include "engine/display/framebuffer.hpp"
 #include "engine/display/display.hpp"
 #include "engine/display/sprite.hpp"
-#include "pingus/font.hpp"
+#include "engine/display/font.hpp"
 #include "math/origin.hpp"
 
 struct DrawingRequestsSorter

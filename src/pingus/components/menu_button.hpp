@@ -19,7 +19,7 @@
 
 #include <string>
 #include "engine/display/sprite.hpp"
-#include "pingus/font.hpp"
+#include "engine/display/font.hpp"
 #include "math/vector2i.hpp"
 #include "engine/gui/component.hpp"
 
