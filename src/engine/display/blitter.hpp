@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_BLITTER_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_BLITTER_HPP
 
-#include "SDL.h"
-#include "pingus/pingus.hpp"
+#include <SDL.h>
+
 #include "math/color.hpp"
 #include "math/rect.hpp"
 

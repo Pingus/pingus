@@ -19,9 +19,7 @@
 
 #error "Don't used this the moment, its underdevelopment and not compilable"
 
-#include "pingus/pingus.hpp"
 #include <string>
-
 
 /** This will need some^H^H^H^H a lot of work */
 typedef enum {

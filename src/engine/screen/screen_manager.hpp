@@ -17,12 +17,12 @@
 #ifndef HEADER_PINGUS_ENGINE_SCREEN_SCREEN_MANAGER_HPP
 #define HEADER_PINGUS_ENGINE_SCREEN_SCREEN_MANAGER_HPP
 
-#include "pingus/pingus.hpp"
 #include <memory>
 #include <boost/smart_ptr.hpp>
 #include <vector>
-#include "math/vector2f.hpp"
+
 #include "engine/display/sprite.hpp"
+#include "math/vector2f.hpp"
 
 namespace Input {
 class Manager;

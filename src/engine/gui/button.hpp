@@ -17,9 +17,8 @@
 #ifndef HEADER_PINGUS_ENGINE_GUI_BUTTON_HPP
 #define HEADER_PINGUS_ENGINE_GUI_BUTTON_HPP
 
-#include "pingus/pingus.hpp"
-
 namespace GUI {
+
 class Button
 {
 protected:

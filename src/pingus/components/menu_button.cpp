@@ -81,13 +81,11 @@ MenuButton::draw (DrawingContext& gc)
       gc.draw(surface_p, Vector2i(x_pos, y_pos));
       gc.print_center(font_large, Vector2i(x_pos, y_pos - 28), text);
     }
-  UNUSED_ARG(gc);
 }
 
 void
 MenuButton::update (float delta)
 {
-  UNUSED_ARG(delta);
 }
 
 void

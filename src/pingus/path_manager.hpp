@@ -20,8 +20,6 @@
 #include <string>
 #include <list>
 
-#include "pingus/pingus.hpp"
-
 class PathManager
 {
 private:

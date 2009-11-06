@@ -19,7 +19,6 @@
 
 #include "math/math.hpp"
 #include "pingus/globals.hpp"
-#include "pingus/pingus.hpp"
 #include "engine/display/sprite.hpp"
 #include "engine/display/display.hpp"
 #include "engine/display/drawing_context.hpp"

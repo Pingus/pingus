@@ -17,9 +17,6 @@
 #ifndef HEADER_PINGUS_PINGUS_DIRECTION_HPP
 #define HEADER_PINGUS_PINGUS_DIRECTION_HPP
 
-#include "pingus/pingus.hpp"
-
-
 /// Simple class for managing the direction of a pingu
 class Direction
 {
@@ -44,7 +41,6 @@ public:
   bool is_left () const;
   bool is_right () const;
 };
-
 
 #endif
 

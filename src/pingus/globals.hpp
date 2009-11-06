@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_PINGUS_GLOBALS_HPP
 #define HEADER_PINGUS_PINGUS_GLOBALS_HPP
 
-#include "pingus/pingus.hpp"
 #include <string>
 
 extern int         game_speed;                      ///< -t, --set-speed

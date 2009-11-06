@@ -39,8 +39,6 @@ Code Cleanup
 
 * reduce global variables
 
-* get rid of "pingus/pingus.cpp"
-
 * make pingu.hpp use int not float
 
 * data/prefab/ completly obsolete? if so remove

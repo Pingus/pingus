@@ -18,8 +18,8 @@
 #define HEADER_PINGUS_ENGINE_DISPLAY_BLITTER_IMPL_HPP
 
 #include <iostream>
+
 #include "engine/display/surface.hpp"
-#include "pingus/pingus.hpp"
 
 /** A collection of helper functions for the blitter class */
 namespace BlitterImpl {
@@ -46,20 +46,23 @@ struct transform_rot90
 /** Rotate a surface 180 degree */
 struct transform_rot180
 {
-  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) {
+  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) 
+  {
     return (spitch * height) - (y * spitch + x) - 1;
   }
 
-  static inline int get_x(int width, int height, int x, int y) { UNUSED_ARG(height); UNUSED_ARG(y);
+  static inline int get_x(int width, int height, int x, int y) 
+  {
     return width - x - 1;
   }
 
-  static inline int get_y(int width, int height, int x, int y) { UNUSED_ARG(width);  UNUSED_ARG(x);
+  static inline int get_y(int width, int height, int x, int y) 
+  {
     return height - y - 1;
   }
 
-  static inline int get_width (int width, int height) { UNUSED_ARG(height); return width; }
-  static inline int get_height(int width, int height) { UNUSED_ARG(width);  return height; }
+  static inline int get_width (int width, int height) { return width; }
+  static inline int get_height(int width, int height) { return height; }
 };
 
 /** Rotate a surface 270 degree */
@@ -69,64 +72,60 @@ struct transform_rot270
     return ((width - x - 1) * tpitch) + y;
   }
 
-  static inline int get_x(int width, int height, int x, int y) {
-    UNUSED_ARG(width); UNUSED_ARG(height); UNUSED_ARG(x);
+  static inline int get_x(int width, int height, int x, int y) 
+  {
     return y;
   }
 
-  static inline int get_y(int width, int height, int x, int y) {
-    UNUSED_ARG(height);
-    UNUSED_ARG(y);
-
+  static inline int get_y(int width, int height, int x, int y) 
+  {
     return width - x - 1;
   }
 
-  static inline int get_width (int width, int height) { UNUSED_ARG(width);  return height; }
-  static inline int get_height(int width, int height) { UNUSED_ARG(height); return width; }
+  static inline int get_width (int width, int height) { return height; }
+  static inline int get_height(int width, int height) { return width; }
 };
 
 /** flip a surface  */
 struct transform_flip
 {
-  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) {
-    UNUSED_ARG(height);
+  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) 
+  {
     return (y * spitch) + (width - x - 1);
   }
 
-  static inline int get_x(int width, int height, int x, int y) {
-    UNUSED_ARG(height); UNUSED_ARG(y);
+  static inline int get_x(int width, int height, int x, int y) 
+  {
     return width - x - 1;
   }
 
-  static inline int get_y(int width, int height, int x, int y) {
-    UNUSED_ARG(width); UNUSED_ARG(height); UNUSED_ARG(x);
+  static inline int get_y(int width, int height, int x, int y) 
+  {
     return y;
   }
 
-  static inline int get_width (int width, int height) { UNUSED_ARG(height);  return width; }
-  static inline int get_height(int width, int height) { UNUSED_ARG(width); return height; }
+  static inline int get_width (int width, int height) { return width; }
+  static inline int get_height(int width, int height) { return height; }
 };
 
 /** Rotate a surface 90 degree and then flip it */
 struct transform_rot90_flip
 {
-  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) {
-    UNUSED_ARG(width);
+  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) 
+  {
     return (x * tpitch) + y;
   }
 
   static inline int get_x(int width, int height, int x, int y) {
-    UNUSED_ARG(width); UNUSED_ARG(height); UNUSED_ARG(x);
     return y;
   }
 
   static inline int get_y(int width, int height, int x, int y) {
-    UNUSED_ARG(width); UNUSED_ARG(height); UNUSED_ARG(y);
     return x;
   }
 
-  static inline int get_width (int width, int height) { UNUSED_ARG(width);  return height; }
-  static inline int get_height(int width, int height) { UNUSED_ARG(height); return width; }
+  static inline int get_width (int width, int height) { return height; }
+  static inline int get_height(int width, int height) { return width; }
 };
 
 /** Rotate a surface 180 degree and then flip it */
@@ -137,17 +136,15 @@ struct transform_rot180_flip
   }
 
   static inline int get_x(int width, int height, int x, int y) {
-    UNUSED_ARG(width); UNUSED_ARG(height); UNUSED_ARG(y);
     return x;
   }
 
   static inline int get_y(int width, int height, int x, int y) {
-    UNUSED_ARG(width); UNUSED_ARG(x);
     return height - y - 1;
   }
 
-  static inline int get_width (int width, int height) { UNUSED_ARG(height);  return width; }
-  static inline int get_height(int width, int height) { UNUSED_ARG(width); return height; }
+  static inline int get_width (int width, int height) { return width; }
+  static inline int get_height(int width, int height) { return height; }
 };
 
 /** Rotate a surface 270 degree and then flip it */
@@ -158,17 +155,15 @@ struct transform_rot270_flip
   }
 
   static inline int get_x(int width, int height, int x, int y) {
-    UNUSED_ARG(width); UNUSED_ARG(x);
     return height - y - 1;
   }
 
   static inline int get_y(int width, int height, int x, int y) {
-    UNUSED_ARG(height); UNUSED_ARG(y);
     return width - x - 1;
   }
 
-  static inline int get_width (int width, int height) { UNUSED_ARG(width);  return height; }
-  static inline int get_height(int width, int height) { UNUSED_ARG(height); return width; }
+  static inline int get_width (int width, int height) { return height; }
+  static inline int get_height(int width, int height) { return width; }
 };
 
 template<class TransF>

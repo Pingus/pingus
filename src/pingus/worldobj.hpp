@@ -17,10 +17,9 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDOBJ_HPP
 #define HEADER_PINGUS_PINGUS_WORLDOBJ_HPP
 
-#include "pingus/pingus.hpp"
-#include "util/file_reader.hpp"
 #include "engine/display/sprite.hpp"
 #include "pingus/collision_mask.hpp"
+#include "util/file_reader.hpp"
 
 class FileReader;
 class SceneContext;

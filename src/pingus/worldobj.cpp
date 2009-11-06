@@ -69,7 +69,6 @@ WorldObj::draw_offset(int /*x*/, int /*y*/, float /*s*/)
 void
 WorldObj::draw_smallmap(SmallMap* smallmap)
 {
-  UNUSED_ARG(smallmap);
 }
 
 void

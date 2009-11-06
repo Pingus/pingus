@@ -264,7 +264,6 @@ void
 GameSession::process_axis_event (const Input::AxisEvent& event)
 {
   // std::cout << "GameSession::process_axis_event ()" << std::endl;
-  UNUSED_ARG(event);
 }
 
 void

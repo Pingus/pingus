@@ -46,7 +46,6 @@ SpriteDrawable::SpriteDrawable(FileReader reader) :
 void
 SpriteDrawable::update(float delta)
 {
-  UNUSED_ARG(delta);
 }
 
 void

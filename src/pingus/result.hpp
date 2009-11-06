@@ -18,8 +18,6 @@
 #define HEADER_PINGUS_PINGUS_RESULT_HPP
 
 #include "pingus/pingus_level.hpp"
-#include "pingus/pingus.hpp"
-
 
 /** Result of a Pingus game */
 struct Result
@@ -59,7 +57,6 @@ struct Result
     return (saved >= needed);
   }
 };
-
 
 #endif
 

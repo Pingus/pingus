@@ -19,8 +19,6 @@
 
 #include <string>
 
-#include "pingus/pingus.hpp"
-
 namespace Sound {
 
 class PingusSoundImpl

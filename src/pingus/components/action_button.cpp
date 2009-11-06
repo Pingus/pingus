@@ -95,9 +95,6 @@ ArmageddonButton::on_primary_button_click (int x, int y)
     {
       pressed = true;
     }
-
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
 }
 
 ForwardButton::ForwardButton(GameSession* s, int x, int y) :
@@ -133,9 +130,6 @@ void
 ForwardButton::on_primary_button_click (int x, int y)
 {
   session->set_fast_forward(!session->get_fast_forward());
-
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
 }
 
 PauseButton::PauseButton(GameSession* s, int x, int y) :
@@ -173,9 +167,6 @@ void
 PauseButton::on_primary_button_click (int x, int y)
 {
   session->set_pause(!session->get_pause());
-
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
 }
 
 /* EOF */

@@ -20,7 +20,6 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <string>
-#include "pingus/pingus.hpp"
 
 /** A collection of small math helper functions, some of them might be
     equal in functionality to standard STL functions, but provided

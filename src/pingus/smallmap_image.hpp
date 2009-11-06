@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_PINGUS_SMALLMAP_IMAGE_HPP
 #define HEADER_PINGUS_PINGUS_SMALLMAP_IMAGE_HPP
 
-#include "pingus/pingus.hpp"
 #include "engine/display/sprite.hpp"
 #include "engine/display/surface.hpp"
 

@@ -19,7 +19,6 @@
 
 #include <vector>
 #include <string>
-#include "pingus/pingus.hpp"
 
 namespace Input {
 

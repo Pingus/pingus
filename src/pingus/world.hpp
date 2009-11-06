@@ -17,14 +17,14 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLD_HPP
 #define HEADER_PINGUS_PINGUS_WORLD_HPP
 
-#include "pingus/pingus.hpp"
-#include <vector>
-#include <string>
 #include <memory>
-#include "math/vector2i.hpp"
+#include <string>
+#include <vector>
+
 #include "math/color.hpp"
-#include "pingus/groundtype.hpp"
+#include "math/vector2i.hpp"
 #include "pingus/collision_mask.hpp"
+#include "pingus/groundtype.hpp"
 
 class Vector3f;
 class GroundMap;

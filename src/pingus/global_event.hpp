@@ -17,8 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_GLOBAL_EVENT_HPP
 #define HEADER_PINGUS_PINGUS_GLOBAL_EVENT_HPP
 
-#include "SDL.h"
-#include "pingus/pingus.hpp"
+#include <SDL.h>
 
 class GlobalEvent
 {

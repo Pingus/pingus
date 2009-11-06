@@ -18,8 +18,7 @@
 #define HEADER_PINGUS_PINGUS_PINGUS_MAIN_HPP
 
 #include <string>
-#include "pingus/pingus.hpp"
-#include "SDL.h"
+#include <SDL.h>
 
 #include "pingus/pingus_options.hpp"
 #include "util/pathname.hpp"

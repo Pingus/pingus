@@ -17,12 +17,9 @@
 #ifndef HEADER_PINGUS_UTIL_DEBUG_STREAM_HPP
 #define HEADER_PINGUS_UTIL_DEBUG_STREAM_HPP
 
-#include "pingus/pingus.hpp"
-
+#include <iostream>
 #include <string>
 #include <vector>
-#include <iostream>
-
 
 class NilStream;
 
@@ -115,7 +112,6 @@ class NilStream : public std::ostream
 
   friend class DebugStream;
 };
-
 
 #endif
 

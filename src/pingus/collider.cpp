@@ -31,10 +31,6 @@ Collider::~Collider()
 bool Collider::operator() (World* const world, Vector3f current_pos,
 			    const Vector3f& step_vector) const
 {
-  UNUSED_ARG(world);
-  UNUSED_ARG(current_pos);
-  UNUSED_ARG(step_vector);
-
   return false;
 }
 
