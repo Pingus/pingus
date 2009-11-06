@@ -21,6 +21,7 @@
 #include <X11/Xutil.h>
 #include <X11/extensions/XInput.h>
 #include <vector>
+
 #include "SDL_syswm.h"
 
 #include "engine/input/driver.hpp"

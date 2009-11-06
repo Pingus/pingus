@@ -19,6 +19,7 @@
 #define HEADER_PINGUS_ENGINE_INPUT_OLD_AXES_MULTIPLE_AXIS_HPP
 
 #include <vector>
+
 #include "../axis.hpp"
 
 namespace Input {

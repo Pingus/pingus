@@ -20,13 +20,13 @@
 #include <stdexcept>
 
 #include "math/math.hpp"
-#include "util/file_reader.hpp"
+#include "pingus/globals.hpp"
 #include "pingus/worldmap/dot.hpp"
 #include "pingus/worldmap/dot_factory.hpp"
-#include "pingus/worldmap/worldmap.hpp"
-#include "pingus/worldmap/pathfinder.hpp"
 #include "pingus/worldmap/path_drawable.hpp"
-#include "pingus/globals.hpp"
+#include "pingus/worldmap/pathfinder.hpp"
+#include "pingus/worldmap/worldmap.hpp"
+#include "util/file_reader.hpp"
 
 namespace WorldmapNS {
 

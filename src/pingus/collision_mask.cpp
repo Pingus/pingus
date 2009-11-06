@@ -17,6 +17,7 @@
 #include "pingus/collision_mask.hpp"
 
 #include <iostream>
+
 #include "pingus/resource.hpp"
 #include "util/system.hpp"
 

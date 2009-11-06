@@ -16,10 +16,10 @@
 
 #include "pingus/actions/smashed.hpp"
 
-#include "math/vector3f.hpp"
 #include "engine/display/scene_context.hpp"
-#include "pingus/pingu.hpp"
 #include "engine/display/sprite.hpp"
+#include "math/vector3f.hpp"
+#include "pingus/pingu.hpp"
 
 namespace Actions {
 

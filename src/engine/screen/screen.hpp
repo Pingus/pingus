@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_ENGINE_SCREEN_SCREEN_HPP
 
 #include <SDL.h>
+
 #include "math/size.hpp"
 
 namespace Input {

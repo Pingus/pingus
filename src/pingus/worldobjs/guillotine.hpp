@@ -17,9 +17,9 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDOBJS_GUILLOTINE_HPP
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_GUILLOTINE_HPP
 
+#include "math/vector3f.hpp"
 #include "pingus/direction.hpp"
 #include "pingus/worldobj.hpp"
-#include "math/vector3f.hpp"
 
 namespace WorldObjsData {
 class GuillotineData;

@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_STARFIELD_BACKGROUND_HPP
 
 #include <vector>
+
 #include "pingus/worldobj.hpp"
 
 

@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_UTIL_SEXPR_FILE_READER_HPP
 #define HEADER_PINGUS_UTIL_SEXPR_FILE_READER_HPP
 
-#include "util/file_reader.hpp"
 #include "lisp/lisp.hpp"
+#include "util/file_reader.hpp"
 
 /** */
 class SExprFileReader : public FileReader

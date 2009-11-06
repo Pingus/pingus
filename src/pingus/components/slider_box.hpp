@@ -17,8 +17,9 @@
 #ifndef HEADER_PINGUS_PINGUS_COMPONENTS_SLIDER_BOX_HPP
 #define HEADER_PINGUS_PINGUS_COMPONENTS_SLIDER_BOX_HPP
 
-#include <string>
 #include <boost/signal.hpp>
+#include <string>
+
 #include "engine/gui/rect_component.hpp"
 
 /** */

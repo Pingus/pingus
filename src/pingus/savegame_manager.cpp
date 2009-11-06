@@ -19,11 +19,11 @@
 #include <assert.h>
 #include <fstream>
 
-#include "util/system.hpp"
-#include "util/sexpr_file_reader.hpp"
-#include "util/sexpr_file_writer.hpp"
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
+#include "util/sexpr_file_reader.hpp"
+#include "util/sexpr_file_writer.hpp"
+#include "util/system.hpp"
 
 SavegameManager* SavegameManager::instance_ = 0;
 

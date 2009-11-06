@@ -17,9 +17,9 @@
 
 #include "editor/viewport.hpp"
 
-#include <vector>
-#include <string>
 #include <iostream>
+#include <string>
+#include <vector>
 
 #include "editor/editor_level.hpp"
 #include "editor/editor_screen.hpp"

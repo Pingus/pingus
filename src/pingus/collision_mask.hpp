@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_COLLISION_MASK_HPP
 
 #include <string>
+
 #include "engine/display/surface.hpp"
 #include "pingus/res_descriptor.hpp"
 

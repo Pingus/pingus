@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_ENGINE_INPUT_OLD_BUTTON_HPP
 #define HEADER_PINGUS_ENGINE_INPUT_OLD_BUTTON_HPP
 
-#include "pingus.hpp"
 #include "controller.hpp"
+#include "pingus.hpp"
 
 namespace Input {
 

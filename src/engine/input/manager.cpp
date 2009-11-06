@@ -19,11 +19,11 @@
 #include <stdexcept>
 
 #include "config.h"
-#include "util/string_util.hpp"
-#include "util/pathname.hpp"
-#include "pingus/path_manager.hpp"
-#include "engine/input/sdl_driver.hpp"
 #include "engine/input/core_driver.hpp"
+#include "engine/input/sdl_driver.hpp"
+#include "pingus/path_manager.hpp"
+#include "util/pathname.hpp"
+#include "util/string_util.hpp"
 #ifdef HAVE_CWIID
 #  include "engine/input/wiimote/wiimote_driver.hpp"
 #endif 

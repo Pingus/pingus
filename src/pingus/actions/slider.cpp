@@ -17,8 +17,8 @@
 #include "pingus/actions/slider.hpp"
 
 #include "engine/display/scene_context.hpp"
-#include "pingus/pingu.hpp"
 #include "pingus/groundtype.hpp"
+#include "pingus/pingu.hpp"
 
 namespace Actions {
 

@@ -18,10 +18,11 @@
 #define HEADER_PINGUS_PINGUS_COMPONENTS_MENU_BUTTON_HPP
 
 #include <string>
-#include "engine/display/sprite.hpp"
+
 #include "engine/display/font.hpp"
-#include "math/vector2i.hpp"
+#include "engine/display/sprite.hpp"
 #include "engine/gui/component.hpp"
+#include "math/vector2i.hpp"
 
 class PingusMenu;
 

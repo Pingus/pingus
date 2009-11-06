@@ -17,10 +17,10 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDOBJS_GROUNDPIECE_HPP
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_GROUNDPIECE_HPP
 
-#include "pingus/res_descriptor.hpp"
-#include "pingus/groundtype.hpp"
-#include "pingus/worldobj.hpp"
 #include "math/vector3f.hpp"
+#include "pingus/groundtype.hpp"
+#include "pingus/res_descriptor.hpp"
+#include "pingus/worldobj.hpp"
 
 
 namespace WorldObjsData {

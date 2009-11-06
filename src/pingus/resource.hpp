@@ -19,12 +19,13 @@
 
 #include <map>
 #include <vector>
+
+#include "engine/display/font.hpp"
 #include "engine/display/sprite.hpp"
 #include "engine/display/surface.hpp"
+#include "pingus/collision_mask.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/resource_manager.hpp"
-#include "pingus/collision_mask.hpp"
-#include "engine/display/font.hpp"
 
 class Resource
 {

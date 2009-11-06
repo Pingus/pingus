@@ -18,8 +18,9 @@
 #ifndef __LISPPARSER_H__
 #define __LISPPARSER_H__
 
-#include <string>
 #include <boost/shared_ptr.hpp>
+#include <string>
+
 #include "lexer.hpp"
 
 namespace lisp

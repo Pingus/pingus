@@ -16,8 +16,8 @@
 
 #include "engine/display/opengl/opengl_framebuffer.hpp"
 
-#include <sstream>
 #include <iostream>
+#include <sstream>
 #include <stdexcept>
 
 #include "engine/display/opengl/opengl_framebuffer_surface_impl.hpp"

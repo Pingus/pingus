@@ -16,10 +16,10 @@
 
 #include "pingus/actions/splashed.hpp"
 
-#include "math/vector3f.hpp"
 #include "engine/display/scene_context.hpp"
-#include "pingus/world.hpp"
+#include "math/vector3f.hpp"
 #include "pingus/pingu.hpp"
+#include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"
 
 namespace Actions {

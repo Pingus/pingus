@@ -17,9 +17,10 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_FONT_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_FONT_HPP
 
-#include <string>
-#include <boost/shared_ptr.hpp>
 #include <SDL.h>
+#include <boost/shared_ptr.hpp>
+#include <string>
+
 #include "math/origin.hpp"
 #include "math/rect.hpp"
 #include "math/size.hpp"

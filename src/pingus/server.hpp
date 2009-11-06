@@ -17,9 +17,9 @@
 #ifndef HEADER_PINGUS_PINGUS_SERVER_HPP
 #define HEADER_PINGUS_PINGUS_SERVER_HPP
 
-#include "pingus/server_event.hpp"
 #include "pingus/action_holder.hpp"
 #include "pingus/pingus_level.hpp"
+#include "pingus/server_event.hpp"
 #include <memory>
 
 class Pingu;

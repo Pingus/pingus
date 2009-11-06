@@ -17,11 +17,11 @@
 #ifndef HEADER_PINGUS_PINGUS_LAYER_MANAGER_HPP
 #define HEADER_PINGUS_PINGUS_LAYER_MANAGER_HPP
 
-#include "math/math.hpp"
-#include "pingus/globals.hpp"
-#include "engine/display/sprite.hpp"
 #include "engine/display/display.hpp"
 #include "engine/display/drawing_context.hpp"
+#include "engine/display/sprite.hpp"
+#include "math/math.hpp"
+#include "pingus/globals.hpp"
 
 class LayerManager
 {

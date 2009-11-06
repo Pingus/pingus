@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_WORLDMAP_PATHFINDER_HPP
 
 #include <queue>
+
 #include "pingus/worldmap/graph.hpp"
 
 namespace WorldmapNS {

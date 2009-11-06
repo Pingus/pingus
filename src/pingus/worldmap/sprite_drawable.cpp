@@ -18,11 +18,11 @@
 
 #include <iostream>
 
-#include "pingus/resource.hpp"
 #include "engine/display/drawing_context.hpp"
-#include "pingus/worldmap/worldmap_screen.hpp"
-#include "pingus/worldmap/worldmap.hpp"
+#include "pingus/resource.hpp"
 #include "pingus/worldmap/pingus.hpp"
+#include "pingus/worldmap/worldmap.hpp"
+#include "pingus/worldmap/worldmap_screen.hpp"
 
 namespace WorldmapNS {
 

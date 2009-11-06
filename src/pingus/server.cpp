@@ -16,16 +16,16 @@
 
 #include "pingus/server.hpp"
 
-#include <time.h>
-#include <iostream>
 #include <fstream>
+#include <iostream>
+#include <time.h>
 
-#include "util/system.hpp"
-#include "pingus/pingu.hpp"
-#include "pingus/globals.hpp"
 #include "pingus/game_time.hpp"
-#include "pingus/world.hpp"
+#include "pingus/globals.hpp"
 #include "pingus/goal_manager.hpp"
+#include "pingus/pingu.hpp"
+#include "pingus/world.hpp"
+#include "util/system.hpp"
 
 using Actions::action_from_string;
 

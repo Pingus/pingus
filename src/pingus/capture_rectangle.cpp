@@ -17,13 +17,13 @@
 #include "pingus/capture_rectangle.hpp"
 
 #include "engine/display/scene_context.hpp"
-#include "pingus/fonts.hpp"
-#include "pingus/screens/game_session.hpp"
-#include "pingus/globals.hpp"
 #include "math/vector3f.hpp"
+#include "pingus/fonts.hpp"
+#include "pingus/globals.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_action.hpp"
 #include "pingus/resource.hpp"
+#include "pingus/screens/game_session.hpp"
 #include "pingus/server.hpp"
 #include "util/string_util.hpp"
 

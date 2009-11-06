@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include <stdexcept>
+
 #include "utf8.hpp"
 
 /** Replacement character for invalid UTF-8 sequences */

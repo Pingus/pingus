@@ -15,8 +15,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "mouse_button.hpp"
 #include "../../pingus_error.hpp"
+#include "mouse_button.hpp"
 
 namespace Input {
 namespace Buttons {

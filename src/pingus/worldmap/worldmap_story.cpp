@@ -17,8 +17,8 @@
 #include "pingus/worldmap/worldmap_story.hpp"
 
 #include <algorithm>
-#include <vector>
 #include <stdexcept>
+#include <vector>
 
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"

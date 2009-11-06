@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_MATH_VECTOR3F_HPP
 
 #include <iosfwd>
+
 #include "math/math.hpp"
 #include "math/vector2f.hpp"
 #include "math/vector2i.hpp"

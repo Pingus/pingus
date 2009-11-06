@@ -19,9 +19,10 @@
 
 #include <string>
 #include <vector>
+
+#include "engine/display/sprite.hpp"
 #include "pingus/pingus_level.hpp"
 #include "util/pathname.hpp"
-#include "engine/display/sprite.hpp"
 
 /** */
 class Levelset

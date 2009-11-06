@@ -16,9 +16,9 @@
 
 #include "engine/sound/sound_res_mgr.hpp"
 
-#include "pingus/path_manager.hpp"
-#include "pingus/globals.hpp"
 #include "pingus/debug.hpp"
+#include "pingus/globals.hpp"
+#include "pingus/path_manager.hpp"
 
 SoundResMgr::SoundMap SoundResMgr::sound_map;
 

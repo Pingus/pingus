@@ -20,9 +20,9 @@
 #include <memory>
 #include <vector>
 
-#include "util/pathname.hpp"
 #include "engine/screen/gui_screen.hpp"
 #include "pingus/server_event.hpp"
+#include "util/pathname.hpp"
 
 namespace Input {
 struct Event;

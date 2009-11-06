@@ -18,12 +18,12 @@
 
 #include <iostream>
 
+#include "engine/display/display.hpp"
+#include "engine/display/drawing_context.hpp"
+#include "engine/display/font_description.hpp"
 #include "engine/input/event.hpp"
 #include "pingus/fonts.hpp"
 #include "util/string_util.hpp"
-#include "engine/display/drawing_context.hpp"
-#include "engine/display/display.hpp"
-#include "engine/display/font_description.hpp"
 
 FontTestScreen::FontTestScreen(const Pathname& fontfile) :
   Screen(Display::get_size()),

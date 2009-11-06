@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_PINGUS_RESOURCE_MANAGER_HPP
 #define HEADER_PINGUS_PINGUS_RESOURCE_MANAGER_HPP
 
-#include <string>
 #include <map>
+#include <string>
 #include <vector>
 
 class SpriteDescription;

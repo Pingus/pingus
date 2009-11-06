@@ -17,8 +17,9 @@
 #ifndef HEADER_PINGUS_PINGUS_CONFIG_MANAGER_HPP
 #define HEADER_PINGUS_PINGUS_CONFIG_MANAGER_HPP
 
-#include <string>
 #include <boost/signal.hpp>
+#include <string>
+
 #include "math/size.hpp"
 #include "tinygettext/language.hpp"
 

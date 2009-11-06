@@ -17,10 +17,11 @@
 #include "pingus/worldobjs/rain_generator.hpp"
 
 #include <iostream>
-#include "pingus/particles/rain_particle_holder.hpp"
-#include "engine/sound/sound.hpp"
-#include "pingus/world.hpp"
+
 #include "engine/display/scene_context.hpp"
+#include "engine/sound/sound.hpp"
+#include "pingus/particles/rain_particle_holder.hpp"
+#include "pingus/world.hpp"
 
 namespace WorldObjs {
 

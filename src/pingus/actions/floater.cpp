@@ -16,9 +16,9 @@
 
 #include "pingus/actions/floater.hpp"
 
-#include "pingus/pingu.hpp"
 #include "engine/display/scene_context.hpp"
 #include "pingus/groundtype.hpp"
+#include "pingus/pingu.hpp"
 
 namespace Actions {
 

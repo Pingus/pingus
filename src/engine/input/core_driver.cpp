@@ -16,9 +16,9 @@
 
 #include "engine/input/core_driver.hpp"
 
-#include "math/math.hpp"
-#include "engine/input/manager.hpp"
 #include "engine/display/display.hpp"
+#include "engine/input/manager.hpp"
+#include "math/math.hpp"
 #include "pingus/globals.hpp"
 
 namespace Input {

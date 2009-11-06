@@ -17,17 +17,18 @@
 #include "pingus/screens/credits.hpp"
 
 #include <iostream>
-#include "engine/screen/screen_manager.hpp"
-#include "engine/gui/surface_button.hpp"
+
+#include "engine/display/blitter.hpp"
+#include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
+#include "engine/gui/surface_button.hpp"
+#include "engine/screen/screen_manager.hpp"
 #include "engine/sound/sound.hpp"
-#include "pingus/stat_manager.hpp"
-#include "pingus/resource.hpp"
-#include "pingus/res_descriptor.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
-#include "engine/display/display.hpp"
-#include "engine/display/blitter.hpp"
+#include "pingus/res_descriptor.hpp"
+#include "pingus/resource.hpp"
+#include "pingus/stat_manager.hpp"
 
 class CreditsOkButton
   : public GUI::SurfaceButton

@@ -16,14 +16,14 @@
 
 #include "pingus/components/action_button.hpp"
 
-#include "pingus/globals.hpp"
-#include "pingus/server.hpp"
-#include "pingus/screens/game_session.hpp"
-#include "pingus/world.hpp"
 #include "engine/display/drawing_context.hpp"
-#include "pingus/fonts.hpp"
-#include "util/string_util.hpp"
 #include "math/vector3f.hpp"
+#include "pingus/fonts.hpp"
+#include "pingus/globals.hpp"
+#include "pingus/screens/game_session.hpp"
+#include "pingus/server.hpp"
+#include "pingus/world.hpp"
+#include "util/string_util.hpp"
 
 using namespace Actions;
 

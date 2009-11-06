@@ -18,8 +18,8 @@
 
 #include "engine/display/display.hpp"
 #include "engine/display/scene_context.hpp"
-#include "pingus/worldmap/worldmap_screen.hpp"
 #include "pingus/worldmap/worldmap.hpp"
+#include "pingus/worldmap/worldmap_screen.hpp"
 
 namespace WorldmapNS {
 

@@ -16,10 +16,10 @@
 
 #include "pingus/ground_map.hpp"
 
-#include <stdio.h>
+#include <SDL.h>
 #include <iostream>
 #include <stdexcept>
-#include <SDL.h>
+#include <stdio.h>
 
 #include "engine/display/blitter.hpp"
 #include "engine/display/scene_context.hpp"

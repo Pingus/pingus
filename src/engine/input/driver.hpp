@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_ENGINE_INPUT_DRIVER_HPP
 #define HEADER_PINGUS_ENGINE_INPUT_DRIVER_HPP
 
-#include "util/file_reader.hpp"
 #include "engine/input/control.hpp"
+#include "util/file_reader.hpp"
 
 namespace Input {
 

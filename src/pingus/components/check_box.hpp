@@ -19,6 +19,7 @@
 
 #include <boost/signal.hpp>
 #include <string>
+
 #include "engine/gui/rect_component.hpp"
 
 /** */

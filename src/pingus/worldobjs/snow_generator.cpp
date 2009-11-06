@@ -19,9 +19,9 @@
 #include <iostream>
 
 #include "math/math.hpp"
-#include "pingus/world.hpp"
-#include "pingus/particles/snow_particle_holder.hpp"
 #include "pingus/globals.hpp"
+#include "pingus/particles/snow_particle_holder.hpp"
+#include "pingus/world.hpp"
 
 namespace WorldObjs {
 

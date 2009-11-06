@@ -20,11 +20,11 @@
 #include <map>
 #include <vector>
 
-#include "util/file_reader.hpp"
 #include "math/vector3f.hpp"
+#include "pingus/worldmap/graph.hpp"
 #include "pingus/worldmap/path.hpp"
 #include "pingus/worldmap/pathfinder.hpp"
-#include "pingus/worldmap/graph.hpp"
+#include "util/file_reader.hpp"
 
 namespace WorldmapNS {
 

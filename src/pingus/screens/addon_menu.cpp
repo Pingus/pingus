@@ -16,11 +16,11 @@
 
 #include "pingus/screens/addon_menu.hpp"
 
-#include "pingus/gettext.h"
-#include "pingus/resource.hpp"
+#include "engine/display/drawing_context.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "pingus/fonts.hpp"
-#include "engine/display/drawing_context.hpp"
+#include "pingus/gettext.h"
+#include "pingus/resource.hpp"
 #include "pingus/screens/option_menu.hpp"
 
 AddOnMenu::AddOnMenu() :

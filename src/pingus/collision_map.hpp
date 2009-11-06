@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_COLLISION_MAP_HPP
 
 #include <SDL.h>
+
 #include "pingus/groundtype.hpp"
 
 class CollisionMask;

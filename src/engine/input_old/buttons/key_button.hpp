@@ -19,6 +19,7 @@
 #define HEADER_PINGUS_ENGINE_INPUT_OLD_BUTTONS_KEY_BUTTON_HPP
 
 #include <string>
+
 #include "../button.hpp"
 
 namespace Input {

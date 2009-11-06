@@ -16,18 +16,18 @@
 
 #include "engine/input/usbmouse/usbmouse_driver.hpp"
 
-#include <stdexcept>
-#include <sys/ioctl.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <iostream>
 #include <errno.h>
+#include <fcntl.h>
+#include <iostream>
+#include <stdexcept>
 #include <string.h>
+#include <sys/ioctl.h>
+#include <unistd.h>
 
+#include "engine/display/display.hpp"
+#include "math/vector2i.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
-#include "math/vector2i.hpp"
-#include "engine/display/display.hpp"
 
 namespace Input {
 

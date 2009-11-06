@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_ENGINE_INPUT_EVENT_HPP
 #define HEADER_PINGUS_ENGINE_INPUT_EVENT_HPP
 
-#include <vector>
 #include <string>
+#include <vector>
 
 namespace Input {
 

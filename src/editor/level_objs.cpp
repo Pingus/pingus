@@ -17,8 +17,8 @@
 
 #include "editor/level_objs.hpp"
 
-#include <string>
 #include <iostream>
+#include <string>
 
 #include "editor/level_impl.hpp"
 #include "engine/display/blitter.hpp"

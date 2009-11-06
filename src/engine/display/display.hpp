@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_DISPLAY_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_DISPLAY_HPP
 
-#include <memory>
 #include <list>
+#include <memory>
 #include <vector>
 
 #include "math/size.hpp"

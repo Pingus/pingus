@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_PARTICLES_RAIN_PARTICLE_HOLDER_HPP
 
 #include <vector>
+
 #include "engine/display/sprite.hpp"
 #include "math/vector3f.hpp"
 #include "pingus/worldobj.hpp"

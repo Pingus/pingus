@@ -16,11 +16,11 @@
 
 #include "pingus/actions/walker.hpp"
 
-#include "pingus/globals.hpp"
 #include "engine/display/scene_context.hpp"
-#include "pingus/pingu.hpp"
 #include "pingus/debug.hpp"
+#include "pingus/globals.hpp"
 #include "pingus/groundtype.hpp"
+#include "pingus/pingu.hpp"
 
 namespace Actions {
 

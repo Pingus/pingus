@@ -16,10 +16,11 @@
 
 #include "pingus/pingu_holder.hpp"
 
-#include <iostream>
 #include <assert.h>
-#include "pingus/pingus_level.hpp"
+#include <iostream>
+
 #include "pingus/pingu.hpp"
+#include "pingus/pingus_level.hpp"
 
 
 PinguHolder::PinguHolder(const PingusLevel& plf) :

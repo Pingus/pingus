@@ -17,14 +17,14 @@
 #include "pingus/server_event.hpp"
 
 #include <assert.h>
-#include <iostream>
 #include <boost/format.hpp>
+#include <iostream>
 
 #include "math/math.hpp"
+#include "pingus/pingu.hpp"
+#include "pingus/pingu_holder.hpp"
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
-#include "pingus/pingu_holder.hpp"
-#include "pingus/pingu.hpp"
 #include "util/string_util.hpp"
 
 ServerEvent::ServerEvent() :

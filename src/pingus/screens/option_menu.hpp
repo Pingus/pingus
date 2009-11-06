@@ -17,14 +17,15 @@
 #ifndef HEADER_PINGUS_PINGUS_SCREENS_OPTION_MENU_HPP
 #define HEADER_PINGUS_PINGUS_SCREENS_OPTION_MENU_HPP
 
-#include <vector>
-#include <map>
 #include <boost/signals.hpp>
+#include <map>
+#include <vector>
+
 #include "engine/display/sprite.hpp"
-#include "engine/screen/gui_screen.hpp"
-#include "pingus/components/label.hpp"
 #include "engine/gui/rect_component.hpp"
 #include "engine/gui/surface_button.hpp"
+#include "engine/screen/gui_screen.hpp"
+#include "pingus/components/label.hpp"
 #include "tinygettext/language.hpp"
 
 class CheckBox;

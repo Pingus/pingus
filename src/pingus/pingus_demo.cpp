@@ -16,8 +16,8 @@
 
 #include "pingus/pingus_demo.hpp"
 
-#include <stdexcept>
 #include <fstream>
+#include <stdexcept>
 
 #include "pingus/pingu_enums.hpp"
 #include "pingus/server_event.hpp"

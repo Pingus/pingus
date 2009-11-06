@@ -17,8 +17,9 @@
 #include "pingus/worldobjs/liquid.hpp"
 
 #include <iostream>
-#include "pingus/collision_map.hpp"
+
 #include "engine/display/scene_context.hpp"
+#include "pingus/collision_map.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/world.hpp"
 

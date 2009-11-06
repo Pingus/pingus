@@ -20,10 +20,10 @@
 #include <iostream>
 #include <vector>
 
+#include "engine/input/controller.hpp"
+#include "engine/input/event.hpp"
 #include "math/math.hpp"
 #include "math/vector2f.hpp"
-#include "engine/input/event.hpp"
-#include "engine/input/controller.hpp"
 
 namespace Input {
 

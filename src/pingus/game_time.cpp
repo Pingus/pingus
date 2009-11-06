@@ -17,6 +17,7 @@
 #include "pingus/game_time.hpp"
 
 #include <stdio.h>
+
 #include "gettext.h"
 #include "pingus/globals.hpp"
 

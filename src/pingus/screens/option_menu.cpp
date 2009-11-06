@@ -16,25 +16,25 @@
 
 #include "pingus/screens/option_menu.hpp"
 
-#include <set>
 #include <boost/bind.hpp>
-#include <sstream>
 #include <iostream>
+#include <set>
+#include <sstream>
 
-#include "pingus/config_manager.hpp"
-#include "pingus/globals.hpp"
-#include "pingus/gettext.h"
-#include "pingus/resource.hpp"
-#include "engine/screen/screen_manager.hpp"
-#include "pingus/fonts.hpp"
 #include "engine/display/display.hpp"
 #include "engine/display/drawing_context.hpp"
-#include "pingus/components/label.hpp"
-#include "pingus/components/check_box.hpp"
-#include "pingus/components/slider_box.hpp"
-#include "pingus/components/choice_box.hpp"
 #include "engine/gui/gui_manager.hpp"
+#include "engine/screen/screen_manager.hpp"
 #include "engine/sound/sound.hpp"
+#include "pingus/components/check_box.hpp"
+#include "pingus/components/choice_box.hpp"
+#include "pingus/components/label.hpp"
+#include "pingus/components/slider_box.hpp"
+#include "pingus/config_manager.hpp"
+#include "pingus/fonts.hpp"
+#include "pingus/gettext.h"
+#include "pingus/globals.hpp"
+#include "pingus/resource.hpp"
 #include "tinygettext/dictionary_manager.hpp"
 #include "tinygettext/language.hpp"
 

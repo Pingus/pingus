@@ -18,9 +18,10 @@
 #define HEADER_PINGUS_ENGINE_DISPLAY_SPRITE_DESCRIPTION_HPP
 
 #include <iostream>
-#include "math/vector2i.hpp"
-#include "math/size.hpp"
+
 #include "math/origin.hpp"
+#include "math/size.hpp"
+#include "math/vector2i.hpp"
 #include "util/file_reader.hpp"
 #include "util/pathname.hpp"
 

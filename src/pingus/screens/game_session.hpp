@@ -17,11 +17,12 @@
 #ifndef HEADER_PINGUS_PINGUS_SCREENS_GAME_SESSION_HPP
 #define HEADER_PINGUS_PINGUS_SCREENS_GAME_SESSION_HPP
 
-#include <string>
 #include <memory>
+#include <string>
+
 #include "engine/screen/gui_screen.hpp"
-#include "pingus/pingus_level.hpp"
 #include "pingus/pingu_enums.hpp"
+#include "pingus/pingus_level.hpp"
 
 namespace Input {
 struct ScrollEvent;

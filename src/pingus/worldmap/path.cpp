@@ -16,9 +16,9 @@
 
 #include "pingus/worldmap/path.hpp"
 
-#include <iostream>
 #include <algorithm>
 #include <assert.h>
+#include <iostream>
 
 namespace WorldmapNS {
 

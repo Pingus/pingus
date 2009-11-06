@@ -16,17 +16,17 @@
 
 #include "pingus/global_event.hpp"
 
-#include <config.h>
-#include <stdio.h>
-#include <iostream>
 #include <algorithm>
+#include <config.h>
+#include <iostream>
+#include <stdio.h>
 
 #include "engine/display/screenshot.hpp"
 #include "engine/screen/screen_manager.hpp"
-#include "pingus/screens/addon_menu.hpp"
 #include "pingus/config_manager.hpp"
 #include "pingus/fps_counter.hpp"
 #include "pingus/globals.hpp"
+#include "pingus/screens/addon_menu.hpp"
 #include "pingus/screens/level_menu.hpp"
 #include "pingus/screens/option_menu.hpp"
 

@@ -19,6 +19,7 @@
 
 #include <algorithm>
 #include <vector>
+
 #include "math/vector3f.hpp"
 
 namespace WorldmapNS {

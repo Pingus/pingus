@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_STATE_SPRITE_HPP
 
 #include <map>
+
 #include "engine/display/sprite.hpp"
 
 /** Simple Wrapper class around Sprite that allows to have multiple

@@ -18,12 +18,12 @@
 
 #include <iostream>
 
+#include "engine/display/drawing_context.hpp"
 #include "math/math.hpp"
 #include "math/vector3f.hpp"
-#include "engine/display/drawing_context.hpp"
-#include "pingus/worldmap/dot.hpp"
 #include "pingus/direction.hpp"
 #include "pingus/resource.hpp"
+#include "pingus/worldmap/dot.hpp"
 
 namespace WorldmapNS {
 

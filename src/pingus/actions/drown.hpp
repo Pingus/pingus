@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_DROWN_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_DROWN_HPP
 
-#include "pingus/state_sprite.hpp"
 #include "pingus/pingu_action.hpp"
+#include "pingus/state_sprite.hpp"
 
 namespace Actions {
 

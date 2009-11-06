@@ -17,9 +17,10 @@
 #include "pingus/smallmap_image.hpp"
 
 #include <iostream>
-#include "pingus/world.hpp"
+
 #include "pingus/collision_map.hpp"
 #include "pingus/server.hpp"
+#include "pingus/world.hpp"
 
 SmallMapImage::SmallMapImage(Server* s, int width, int height)
   : server(s),

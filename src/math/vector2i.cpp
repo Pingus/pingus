@@ -17,6 +17,7 @@
 #include "math/vector2i.hpp"
 
 #include <iostream>
+
 #include "vector2f.hpp"
 #include "vector2i.hpp"
 

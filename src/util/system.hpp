@@ -17,10 +17,10 @@
 #ifndef HEADER_PINGUS_UTIL_SYSTEM_HPP
 #define HEADER_PINGUS_UTIL_SYSTEM_HPP
 
-#include <string>
-#include <vector>
 #include <map>
 #include <stdint.h>
+#include <string>
+#include <vector>
 
 class Pathname;
 

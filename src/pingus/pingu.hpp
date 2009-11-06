@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_PINGU_HPP
 
 #include <boost/shared_ptr.hpp>
+
 #include "math/vector3f.hpp"
 #include "pingus/direction.hpp"
 #include "pingus/pingu_enums.hpp"

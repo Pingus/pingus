@@ -16,9 +16,9 @@
 
 #include "pingus/gettext.h"
 
-#include "tinygettext/dictionary_manager.hpp"
-#include "tinygettext/dictionary.hpp"
 #include "gettext.h"
+#include "tinygettext/dictionary.hpp"
+#include "tinygettext/dictionary_manager.hpp"
 
 tinygettext::DictionaryManager dictionary_manager;
 

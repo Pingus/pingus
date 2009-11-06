@@ -16,24 +16,24 @@
 
 #include "pingus/screens/demo_session.hpp"
 
-#include <boost/function.hpp>
 #include <boost/bind.hpp>
+#include <boost/function.hpp>
 #include <iostream>
 
-#include "math/math.hpp"
-#include "pingus/server.hpp"
-#include "util/pathname.hpp"
-#include "pingus/world.hpp"
-#include "pingus/components/pingus_counter.hpp"
-#include "engine/gui/gui_manager.hpp"
+#include "engine/display/display.hpp"
 #include "engine/display/scene_context.hpp"
-#include "pingus/pingus_demo.hpp"
+#include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
+#include "engine/screen/screen_manager.hpp"
+#include "math/math.hpp"
+#include "pingus/components/pingus_counter.hpp"
 #include "pingus/components/playfield.hpp"
 #include "pingus/components/smallmap.hpp"
-#include "engine/screen/screen_manager.hpp"
-#include "engine/display/display.hpp"
+#include "pingus/pingus_demo.hpp"
 #include "pingus/resource.hpp"
+#include "pingus/server.hpp"
+#include "pingus/world.hpp"
+#include "util/pathname.hpp"
 
 static bool false_func() { return false; }
 

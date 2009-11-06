@@ -16,24 +16,24 @@
 
 #include "engine/display/display.hpp"
 
-#include <stdexcept>
 #include <algorithm>
-#include <stdio.h>
 #include <iostream>
+#include <stdexcept>
+#include <stdio.h>
 
 #include "../config.h"
-#include "pingus/globals.hpp"
-#include "math/vector2i.hpp"
-#include "math/rect.hpp"
+#include "engine/display/sdl_framebuffer.hpp"
+#include "engine/screen/screen_manager.hpp"
 #include "math/color.hpp"
 #include "math/math.hpp"
-#include "engine/screen/screen_manager.hpp"
-#include "engine/display/sdl_framebuffer.hpp"
+#include "math/rect.hpp"
+#include "math/vector2i.hpp"
+#include "pingus/globals.hpp"
 #ifdef HAVE_OPENGL
 #  include "engine/display/opengl/opengl_framebuffer.hpp"
 #endif
-#include "engine/display/null_framebuffer.hpp"
 #include "engine/display/delta_framebuffer.hpp"
+#include "engine/display/null_framebuffer.hpp"
 
 std::auto_ptr<Framebuffer> Display::framebuffer;
 

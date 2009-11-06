@@ -15,11 +15,12 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <stdlib.h>
-#include "pingus_error.hpp"
+
 #include "axis.hpp"
 #include "axis_factory.hpp"
 #include "button.hpp"
 #include "button_factory.hpp"
+#include "pingus_error.hpp"
 #include "pointer.hpp"
 #include "pointer_factory.hpp"
 #include "scroller_factory.hpp"

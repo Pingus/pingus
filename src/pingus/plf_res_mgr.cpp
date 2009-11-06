@@ -16,10 +16,10 @@
 
 #include "pingus/plf_res_mgr.hpp"
 
-#include "pingus/globals.hpp"
 #include "pingus/debug.hpp"
-#include "util/system.hpp"
+#include "pingus/globals.hpp"
 #include "util/pathname.hpp"
+#include "util/system.hpp"
 
 PLFResMgr::PLFMap PLFResMgr::plf_map;
 

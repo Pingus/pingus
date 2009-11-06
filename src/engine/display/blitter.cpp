@@ -16,16 +16,16 @@
 
 #include "engine/display/blitter.hpp"
 
+#include <SDL.h>
+#include <assert.h>
 #include <config.h>
 #include <stdio.h>
-#include <assert.h>
-#include <SDL.h>
 
-#include "util/string_util.hpp"
-#include "pingus/globals.hpp"
+#include "engine/display/blitter_impl.hpp"
 #include "math/math.hpp"
 #include "pingus/debug.hpp"
-#include "engine/display/blitter_impl.hpp"
+#include "pingus/globals.hpp"
+#include "util/string_util.hpp"
 
 SDL_Surface*
 Blitter::scale_surface(SDL_Surface* surface, int width, int height)

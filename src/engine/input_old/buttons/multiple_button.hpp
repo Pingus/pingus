@@ -19,6 +19,7 @@
 #define HEADER_PINGUS_ENGINE_INPUT_OLD_BUTTONS_MULTIPLE_BUTTON_HPP
 
 #include <vector>
+
 #include "../button.hpp"
 
 namespace Input {

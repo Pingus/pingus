@@ -16,10 +16,10 @@
 
 #include "pingus/components/slider_box.hpp"
 
-#include "math/math.hpp"
-#include "pingus/globals.hpp"
-#include "pingus/fonts.hpp"
 #include "engine/display/drawing_context.hpp"
+#include "math/math.hpp"
+#include "pingus/fonts.hpp"
+#include "pingus/globals.hpp"
 
 SliderBox::SliderBox(const Rect& rect_)
   : RectComponent(rect_),

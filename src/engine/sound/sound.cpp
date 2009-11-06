@@ -16,12 +16,13 @@
 
 #include "engine/sound/sound.hpp"
 
-#include <iostream>
 #include <assert.h>
-#include "pingus/path_manager.hpp"
-#include "pingus/globals.hpp"
+#include <iostream>
+
 #include "engine/sound/sound_dummy.hpp"
 #include "engine/sound/sound_real.hpp"
+#include "pingus/globals.hpp"
+#include "pingus/path_manager.hpp"
 
 namespace Sound {
 

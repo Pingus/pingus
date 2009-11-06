@@ -18,12 +18,13 @@
 #define HEADER_PINGUS_ENGINE_DISPLAY_SURFACE_HPP
 
 #include <SDL.h>
-#include <string>
 #include <boost/shared_ptr.hpp>
+#include <string>
+
+#include "math/color.hpp"
 #include "math/size.hpp"
 #include "pingus/resource_modifier.hpp"
 #include "util/pathname.hpp"
-#include "math/color.hpp"
 
 class Rect;
 class Pathname;

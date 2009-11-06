@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_FLOATER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_FLOATER_HPP
 
-#include "pingus/pingu_action.hpp"
 #include "engine/display/sprite.hpp"
+#include "pingus/pingu_action.hpp"
 
 namespace Actions {
 

@@ -16,17 +16,18 @@
 
 #include "pingus/components/playfield.hpp"
 
-#include <stdio.h>
 #include <iostream>
-#include "pingus/globals.hpp"
-#include "pingus/pingu_holder.hpp"
+#include <stdio.h>
+
+#include "engine/display/display.hpp"
 #include "engine/display/drawing_context.hpp"
 #include "engine/display/scene_context.hpp"
-#include "pingus/world.hpp"
-#include "pingus/server.hpp"
+#include "pingus/globals.hpp"
 #include "pingus/pingu.hpp"
-#include "engine/display/display.hpp"
+#include "pingus/pingu_holder.hpp"
 #include "pingus/screens/game_session.hpp"
+#include "pingus/server.hpp"
+#include "pingus/world.hpp"
 
 Playfield::Playfield(Server* server_, GameSession* session_, const Rect& rect_) :
   RectComponent(rect_),

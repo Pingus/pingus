@@ -16,19 +16,19 @@
 
 #include "pingus/components/smallmap.hpp"
 
-#include "pingus/screens/game_session.hpp"
-#include "pingus/pingu_holder.hpp"
 #include "engine/display/display.hpp"
 #include "engine/display/drawing_context.hpp"
-#include "pingus/world.hpp"
-#include "pingus/resource.hpp"
-#include "pingus/server.hpp"
-#include "pingus/smallmap_image.hpp"
-#include "pingus/pingu.hpp"
 #include "math/math.hpp"
 #include "math/vector3f.hpp"
-#include "pingus/globals.hpp"
 #include "pingus/components/playfield.hpp"
+#include "pingus/globals.hpp"
+#include "pingus/pingu.hpp"
+#include "pingus/pingu_holder.hpp"
+#include "pingus/resource.hpp"
+#include "pingus/screens/game_session.hpp"
+#include "pingus/server.hpp"
+#include "pingus/smallmap_image.hpp"
+#include "pingus/world.hpp"
 
 SmallMap::SmallMap(Server* server_, Playfield* playfield_, const Rect& rect_) :
   RectComponent(rect_), 

@@ -18,17 +18,17 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <config.h>
 
-#include <sstream>
 #include <cassert>
-#include <iostream>
-#include <string>
-#include <fstream>
 #include <exception>
+#include <fstream>
+#include <iostream>
+#include <sstream>
 #include <string.h>
+#include <string>
 
 //#include "physfs/physfs_stream.hpp"
-#include "parser.hpp"
 #include "lisp.hpp"
+#include "parser.hpp"
 
 namespace lisp
 {

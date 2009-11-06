@@ -17,9 +17,9 @@
 #ifndef HEADER_PINGUS_PINGUS_COMPONENTS_PINGUS_COUNTER_HPP
 #define HEADER_PINGUS_PINGUS_COMPONENTS_PINGUS_COUNTER_HPP
 
-#include "engine/gui/component.hpp"
 #include "engine/display/font.hpp"
 #include "engine/display/sprite.hpp"
+#include "engine/gui/component.hpp"
 
 class DrawingContext;
 class World;

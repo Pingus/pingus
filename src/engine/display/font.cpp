@@ -16,17 +16,18 @@
 
 #include "engine/display/font.hpp"
 
-#include <iostream>
-#include <vector>
-#include <map>
 #include <SDL.h>
+#include <iostream>
+#include <map>
+#include <vector>
+
 #include "SDL_image.h"
+#include "engine/display/display.hpp"
+#include "engine/display/font_description.hpp"
+#include "engine/display/framebuffer.hpp"
 #include "engine/display/surface.hpp"
 #include "util/line_iterator.hpp"
 #include "util/utf8.hpp"
-#include "engine/display/font_description.hpp"
-#include "engine/display/framebuffer.hpp"
-#include "engine/display/display.hpp"
 
 class FontImpl
 {

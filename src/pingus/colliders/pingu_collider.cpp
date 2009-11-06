@@ -16,9 +16,9 @@
 
 #include "pingus/colliders/pingu_collider.hpp"
 
-#include "pingus/pingu_action.hpp"
-#include "pingus/groundtype.hpp"
 #include "math/vector3f.hpp"
+#include "pingus/groundtype.hpp"
+#include "pingus/pingu_action.hpp"
 
 namespace Colliders {
 

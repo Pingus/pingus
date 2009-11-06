@@ -17,10 +17,11 @@
 #ifndef HEADER_PINGUS_PINGUS_SCREENS_STORY_SCREEN_HPP
 #define HEADER_PINGUS_PINGUS_SCREENS_STORY_SCREEN_HPP
 
-#include <string>
 #include <memory>
-#include "pingus/res_descriptor.hpp"
+#include <string>
+
 #include "engine/screen/gui_screen.hpp"
+#include "pingus/res_descriptor.hpp"
 #include "pingus/worldmap/worldmap_story.hpp"
 
 class StoryScreenComponent;

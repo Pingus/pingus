@@ -17,13 +17,14 @@
 #include "pingus/resource_manager.hpp"
 
 #include <iostream>
-#include "pingus/debug.hpp"
-#include "pingus/globals.hpp"
+
+#include "engine/display/sprite_description.hpp"
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
-#include "util/string_util.hpp"
-#include "engine/display/sprite_description.hpp"
+#include "pingus/debug.hpp"
+#include "pingus/globals.hpp"
 #include "util/sexpr_file_reader.hpp"
+#include "util/string_util.hpp"
 
 ResourceManager::ResourceManager() :
   resources(),

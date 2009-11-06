@@ -17,9 +17,9 @@
 #ifndef HEADER_PINGUS_UTIL_FILE_READER_HPP
 #define HEADER_PINGUS_UTIL_FILE_READER_HPP
 
+#include <boost/shared_ptr.hpp>
 #include <string>
 #include <vector>
-#include <boost/shared_ptr.hpp>
 
 class Size;
 class Color;

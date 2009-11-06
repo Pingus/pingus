@@ -16,12 +16,13 @@
 
 #include "engine/sound/sound_real.hpp"
 
-#include <stdexcept>
 #include <SDL.h>
+#include <stdexcept>
+
 #include "SDL_mixer.h"
-#include "pingus/globals.hpp"
-#include "pingus/debug.hpp"
 #include "engine/sound/sound_res_mgr.hpp"
+#include "pingus/debug.hpp"
+#include "pingus/globals.hpp"
 
 namespace Sound {
 

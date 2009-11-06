@@ -18,10 +18,11 @@
 
 #include <assert.h>
 #include <iostream>
-#include "math/math.hpp"
-#include "util/memory_pool.hpp"
+
 #include "engine/display/rect_merger.hpp"
 #include "engine/display/sdl_framebuffer.hpp"
+#include "math/math.hpp"
+#include "util/memory_pool.hpp"
 
 enum DrawOpType { SURFACE_DRAWOP, FILLRECT_DRAWOP };
 

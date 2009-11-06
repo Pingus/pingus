@@ -19,6 +19,7 @@
 #define HEADER_PINGUS_ENGINE_INPUT_OLD_POINTERS_MULTIPLE_POINTER_HPP
 
 #include <vector>
+
 #include "../pointer.hpp"
 
 namespace Input {

@@ -17,8 +17,9 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDMAP_WORLDMAP_SCREEN_HPP
 #define HEADER_PINGUS_PINGUS_WORLDMAP_WORLDMAP_SCREEN_HPP
 
-#include <string>
 #include <memory>
+#include <string>
+
 #include "engine/display/sprite.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/screen/gui_screen.hpp"

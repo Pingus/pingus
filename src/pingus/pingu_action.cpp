@@ -21,8 +21,8 @@
 #include "math/math.hpp"
 #include "math/vector3f.hpp"
 #include "pingus/collision_map.hpp"
-#include "pingus/world.hpp"
 #include "pingus/pingu.hpp"
+#include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"
 
 

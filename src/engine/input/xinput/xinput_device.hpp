@@ -22,6 +22,7 @@
 #include <X11/extensions/XInput.h>
 #include <string>
 #include <vector>
+
 #include "math/vector2i.hpp"
 
 namespace Input {

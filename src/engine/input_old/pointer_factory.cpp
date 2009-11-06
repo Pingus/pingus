@@ -15,12 +15,13 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include "pingus_error.hpp"
+
 #include "axis_factory.hpp"
+#include "pingus_error.hpp"
+#include "pointer_factory.hpp"
 #include "pointers/axis_pointer.hpp"
 #include "pointers/mouse_pointer.hpp"
 #include "pointers/multiple_pointer.hpp"
-#include "pointer_factory.hpp"
 
 namespace Input {
 

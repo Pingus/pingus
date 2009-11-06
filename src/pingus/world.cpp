@@ -20,21 +20,22 @@
 #include <assert.h>
 #include <iostream>
 #include <typeinfo>
-#include "pingus/pingu_holder.hpp"
-#include "pingus/worldobjs/entrance.hpp"
+
+#include "engine/display/display.hpp"
+#include "engine/display/scene_context.hpp"
 #include "engine/sound/sound.hpp"
+#include "pingus/collision_map.hpp"
+#include "pingus/debug.hpp"
 #include "pingus/ground_map.hpp"
 #include "pingus/particles/pingu_particle_holder.hpp"
 #include "pingus/particles/rain_particle_holder.hpp"
 #include "pingus/particles/smoke_particle_holder.hpp"
 #include "pingus/particles/snow_particle_holder.hpp"
-#include "engine/display/display.hpp"
 #include "pingus/pingu.hpp"
-#include "engine/display/scene_context.hpp"
+#include "pingus/pingu_holder.hpp"
 #include "pingus/pingus_level.hpp"
 #include "pingus/worldobj_factory.hpp"
-#include "pingus/collision_map.hpp"
-#include "pingus/debug.hpp"
+#include "pingus/worldobjs/entrance.hpp"
 
 using Actions::BOMBER;
 

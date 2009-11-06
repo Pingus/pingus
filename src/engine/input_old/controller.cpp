@@ -15,24 +15,25 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <SDL.h>
+
 #include "engine/screen/screen_manager.hpp"
 
 #include "debug.hpp"
 #include "pingus_error.hpp"
 
-#include "path_manager.hpp"
-#include "controller.hpp"
 #include "axes/dummy_axis.hpp"
-#include "buttons/dummy_button.hpp"
-#include "pointers/dummy_pointer.hpp"
-#include "scrollers/dummy_scroller.hpp"
-#include "pointer_factory.hpp"
-#include "scroller_factory.hpp"
 #include "button_factory.hpp"
+#include "buttons/dummy_button.hpp"
 #include "buttons/key_button.hpp"
 #include "buttons/mouse_button.hpp"
-#include "scrollers/axis_scroller.hpp"
+#include "controller.hpp"
 #include "global_event.hpp"
+#include "path_manager.hpp"
+#include "pointer_factory.hpp"
+#include "pointers/dummy_pointer.hpp"
+#include "scroller_factory.hpp"
+#include "scrollers/axis_scroller.hpp"
+#include "scrollers/dummy_scroller.hpp"
 
 namespace Input {
 

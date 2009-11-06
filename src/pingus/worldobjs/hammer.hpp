@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDOBJS_HAMMER_HPP
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_HAMMER_HPP
 
-#include "pingus/worldobj.hpp"
 #include "math/vector3f.hpp"
+#include "pingus/worldobj.hpp"
 
 namespace WorldObjsData {
 class HammerData;

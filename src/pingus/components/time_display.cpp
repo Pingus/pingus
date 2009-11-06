@@ -20,14 +20,14 @@
 #include <stdio.h>
 
 #include "engine/display/display.hpp"
+#include "pingus/fonts.hpp"
+#include "pingus/game_time.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/resource.hpp"
-#include "pingus/world.hpp"
-#include "pingus/server.hpp"
 #include "pingus/screens/game_session.hpp"
-#include "pingus/game_time.hpp"
+#include "pingus/server.hpp"
+#include "pingus/world.hpp"
 #include "util/string_util.hpp"
-#include "pingus/fonts.hpp"
 
 
 TimeDisplay::TimeDisplay (GameSession* c) :

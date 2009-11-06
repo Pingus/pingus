@@ -17,8 +17,9 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDMAP_WORLDMAP_STORY_HPP
 #define HEADER_PINGUS_PINGUS_WORLDMAP_WORLDMAP_STORY_HPP
 
-#include <vector>
 #include <string>
+#include <vector>
+
 #include "pingus/res_descriptor.hpp"
 	
 class FileReader;

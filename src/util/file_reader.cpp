@@ -16,11 +16,11 @@
 
 #include "util/file_reader.hpp"
 
-#include "util/sexpr_file_reader.hpp"
-#include "lisp/parser.hpp"
 #include "lisp/lisp.hpp"
-#include "util/pathname.hpp"
+#include "lisp/parser.hpp"
 #include "util/file_reader_impl.hpp"
+#include "util/pathname.hpp"
+#include "util/sexpr_file_reader.hpp"
 
 FileReader::FileReader(boost::shared_ptr<FileReaderImpl> impl_) :
   impl(impl_)

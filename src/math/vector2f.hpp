@@ -19,8 +19,9 @@
 #define SUPERTUX_VECTOR_H
 
 #include <iosfwd>
-#include "vector2i.hpp"
+
 #include "math/math.hpp"
+#include "vector2i.hpp"
 
 /** Simple two dimensional vector. */
 class Vector2f

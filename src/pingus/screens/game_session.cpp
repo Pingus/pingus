@@ -17,26 +17,27 @@
 #include "pingus/screens/game_session.hpp"
 
 #include <iostream>
+
+#include "engine/display/display.hpp"
+#include "engine/gui/gui_manager.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "pingus/server.hpp"
-#include "engine/gui/gui_manager.hpp"
-#include "engine/display/display.hpp"
 
-#include "pingus/components/button_panel.hpp"
-#include "pingus/components/pingus_counter.hpp"
-#include "pingus/components/time_display.hpp"
-#include "pingus/components/smallmap.hpp"
-#include "pingus/components/playfield.hpp"
 #include "engine/input/event.hpp"
 #include "engine/sound/sound.hpp"
 #include "math/math.hpp"
-#include "pingus/resource.hpp"
-#include "pingus/pingu_holder.hpp"
-#include "pingus/world.hpp"
-#include "pingus/screens/result_screen.hpp"
-#include "pingus/savegame_manager.hpp"
-#include "pingus/globals.hpp"
+#include "pingus/components/button_panel.hpp"
+#include "pingus/components/pingus_counter.hpp"
+#include "pingus/components/playfield.hpp"
+#include "pingus/components/smallmap.hpp"
+#include "pingus/components/time_display.hpp"
 #include "pingus/debug.hpp"
+#include "pingus/globals.hpp"
+#include "pingus/pingu_holder.hpp"
+#include "pingus/resource.hpp"
+#include "pingus/savegame_manager.hpp"
+#include "pingus/screens/result_screen.hpp"
+#include "pingus/world.hpp"
 
 GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_screen) :
   plf(arg_plf),

@@ -16,9 +16,9 @@
 
 #include "pingus/components/label.hpp"
 
-#include "pingus/globals.hpp"
-#include "pingus/fonts.hpp"
 #include "engine/display/drawing_context.hpp"
+#include "pingus/fonts.hpp"
+#include "pingus/globals.hpp"
 
 Label::Label(const std::string& label_, const Rect& rect_)
   : RectComponent(rect_),

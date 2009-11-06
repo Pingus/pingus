@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_COMPONENTS_BUTTON_PANEL_HPP
 
 #include <vector>
+
 #include "engine/display/sprite.hpp"
 #include "engine/gui/rect_component.hpp"
 #include "pingus/components/action_button.hpp"

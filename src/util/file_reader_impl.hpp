@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_UTIL_FILE_READER_IMPL_HPP
 #define HEADER_PINGUS_UTIL_FILE_READER_IMPL_HPP
 
-#include <vector>
 #include <string>
+#include <vector>
 
 class Size;
 class Color;

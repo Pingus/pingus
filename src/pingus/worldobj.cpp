@@ -16,8 +16,9 @@
 
 #include "pingus/worldobj.hpp"
 
-#include <typeinfo>
 #include <iostream>
+#include <typeinfo>
+
 #include "engine/display/scene_context.hpp"
 
 

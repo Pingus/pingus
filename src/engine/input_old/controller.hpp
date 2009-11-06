@@ -17,13 +17,14 @@
 #ifndef HEADER_PINGUS_ENGINE_INPUT_OLD_CONTROLLER_HPP
 #define HEADER_PINGUS_ENGINE_INPUT_OLD_CONTROLLER_HPP
 
-#include <map>
+#include <SDL.h>
 #include <list>
+#include <map>
 #include <string>
 #include <vector>
-#include <SDL.h>
-#include "file_reader.hpp"
+
 #include "event.hpp"
+#include "file_reader.hpp"
 
 namespace Input {
 

@@ -17,12 +17,12 @@
 #ifndef HEADER_PINGUS_PINGUS_SCREENS_PINGUS_MENU_HPP
 #define HEADER_PINGUS_PINGUS_SCREENS_PINGUS_MENU_HPP
 
-#include <vector>
 #include <memory>
+#include <vector>
 
-#include "pingus/fonts.hpp"
 #include "engine/display/sprite.hpp"
 #include "engine/screen/gui_screen.hpp"
+#include "pingus/fonts.hpp"
 
 namespace GUI {
 class GUIManager;

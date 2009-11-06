@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_ENGINE_INPUT_CONTROLLER_HPP
 
 #include <assert.h>
+
 #include "engine/input/event.hpp"
 
 namespace Input {

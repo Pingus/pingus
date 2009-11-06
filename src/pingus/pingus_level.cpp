@@ -19,11 +19,11 @@
 #include <iostream>
 #include <stdexcept>
 
-#include "util/file_reader.hpp"
-#include "pingus/pingus_level_impl.hpp"
-#include "pingus/globals.hpp"
-#include "util/pathname.hpp"
 #include "pingus/debug.hpp"
+#include "pingus/globals.hpp"
+#include "pingus/pingus_level_impl.hpp"
+#include "util/file_reader.hpp"
+#include "util/pathname.hpp"
 
 PingusLevel::PingusLevel()
   : impl(new PingusLevelImpl())  

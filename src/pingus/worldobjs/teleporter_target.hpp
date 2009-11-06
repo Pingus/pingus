@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDOBJS_TELEPORTER_TARGET_HPP
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_TELEPORTER_TARGET_HPP
 
-#include "pingus/worldobj.hpp"
 #include "math/vector3f.hpp"
+#include "pingus/worldobj.hpp"
 
 namespace WorldObjs {
 

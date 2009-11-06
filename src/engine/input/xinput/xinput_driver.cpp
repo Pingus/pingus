@@ -18,9 +18,9 @@
 
 #include <iostream>
 
+#include "engine/input/xinput/xinput_device.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
-#include "engine/input/xinput/xinput_device.hpp"
 
 namespace Input {
 

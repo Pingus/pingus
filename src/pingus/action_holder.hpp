@@ -19,6 +19,7 @@
 
 #include <map>
 #include <vector>
+
 #include "pingus/pingu_enums.hpp"
 
 class PingusLevel;

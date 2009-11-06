@@ -17,8 +17,8 @@
 
 #include "editor/editor_screen.hpp"
 
-#include <iostream>
 #include <boost/bind.hpp>
+#include <iostream>
 
 #include "editor/action_properties.hpp"
 #include "editor/editor_level.hpp"

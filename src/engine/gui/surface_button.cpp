@@ -16,9 +16,9 @@
 
 #include "engine/gui/surface_button.hpp"
 
-#include "pingus/resource.hpp"
-#include "math/vector3f.hpp"
 #include "engine/display/drawing_context.hpp"
+#include "math/vector3f.hpp"
+#include "pingus/resource.hpp"
 
 namespace GUI {
 

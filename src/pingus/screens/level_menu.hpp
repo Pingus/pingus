@@ -17,9 +17,9 @@
 #ifndef HEADER_PINGUS_PINGUS_SCREENS_LEVEL_MENU_HPP
 #define HEADER_PINGUS_PINGUS_SCREENS_LEVEL_MENU_HPP
 
-#include "pingus/levelset.hpp"
 #include "engine/display/sprite.hpp"
 #include "engine/screen/gui_screen.hpp"
+#include "pingus/levelset.hpp"
 
 namespace GUI {
 class SurfaceButton;

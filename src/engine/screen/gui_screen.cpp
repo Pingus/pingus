@@ -16,10 +16,10 @@
 
 #include "engine/screen/gui_screen.hpp"
 
-#include "pingus/globals.hpp"
-#include "pingus/debug.hpp"
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
+#include "pingus/debug.hpp"
+#include "pingus/globals.hpp"
 
 GUIScreen::GUIScreen()
   : Screen(Display::get_size()),

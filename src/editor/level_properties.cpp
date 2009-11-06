@@ -16,8 +16,8 @@
 
 #include "editor/level_properties.hpp"
 
-#include <iostream>
 #include <boost/bind.hpp>
+#include <iostream>
 
 #include "editor/editor_level.hpp"
 #include "editor/gui_style.hpp"

@@ -17,9 +17,9 @@
 #ifndef HEADER_PINGUS_ENGINE_INPUT_EVDEV_EVDEV_DEVICE_HPP
 #define HEADER_PINGUS_ENGINE_INPUT_EVDEV_EVDEV_DEVICE_HPP
 
-#include <vector>
-#include <string.h>
 #include <linux/input.h>
+#include <string.h>
+#include <vector>
 
 #include "engine/input/control.hpp"
 

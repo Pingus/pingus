@@ -18,8 +18,8 @@
 
 #include <stdio.h>
 
-#include "pingus/gettext.h"
 #include "pingus/fonts.hpp"
+#include "pingus/gettext.h"
 #include "pingus/globals.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "pingus/resource.hpp"

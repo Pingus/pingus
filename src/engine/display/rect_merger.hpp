@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_ENGINE_DISPLAY_RECT_MERGER_HPP
 
 #include <vector>
+
 #include "math/rect.hpp"
 
 void merge_rectangles(const std::vector<Rect>& rects_in, std::vector<Rect>& rects_out);

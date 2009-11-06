@@ -18,9 +18,9 @@
 
 #include "SDL_syswm.h"
 
+#include "engine/input/xinput/xinput_driver.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
-#include "engine/input/xinput/xinput_driver.hpp"
 
 namespace Input {
 

@@ -16,25 +16,25 @@
 
 #include "pingus/screens/level_menu.hpp"
 
+#include <boost/bind.hpp>
 #include <boost/format.hpp>
 #include <boost/function.hpp>
-#include <boost/bind.hpp>
 
-#include "pingus/gettext.h"
-#include "pingus/resource.hpp"
-#include "engine/screen/screen_manager.hpp"
-#include "pingus/fonts.hpp"
-#include "engine/display/drawing_context.hpp"
-#include "pingus/screens/option_menu.hpp"
-#include "util/system.hpp"
 #include "engine/display/display.hpp"
-#include "engine/gui/rect_component.hpp"
+#include "engine/display/drawing_context.hpp"
 #include "engine/gui/gui_manager.hpp"
-#include "pingus/screens/game_session.hpp"
-#include "pingus/screens/start_screen.hpp"
-#include "pingus/globals.hpp"
+#include "engine/gui/rect_component.hpp"
 #include "engine/gui/surface_button.hpp"
+#include "engine/screen/screen_manager.hpp"
 #include "engine/sound/sound.hpp"
+#include "pingus/fonts.hpp"
+#include "pingus/gettext.h"
+#include "pingus/globals.hpp"
+#include "pingus/resource.hpp"
+#include "pingus/screens/game_session.hpp"
+#include "pingus/screens/option_menu.hpp"
+#include "pingus/screens/start_screen.hpp"
+#include "util/system.hpp"
 
 class LevelMenuAbortButton : public GUI::SurfaceButton
 {

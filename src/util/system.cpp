@@ -44,10 +44,10 @@
 #define F_OK   0
 #endif
 
-#include "util/pathname.hpp"
-#include "pingus/globals.hpp"
-#include "util/string_util.hpp"
 #include "pingus/gettext.h"
+#include "pingus/globals.hpp"
+#include "util/pathname.hpp"
+#include "util/string_util.hpp"
 
 std::string System::userdir;
 std::string System::default_email;

@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_PINGUS_PATH_MANAGER_HPP
 #define HEADER_PINGUS_PINGUS_PATH_MANAGER_HPP
 
-#include <string>
 #include <list>
+#include <string>
 
 class PathManager
 {

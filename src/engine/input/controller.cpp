@@ -16,8 +16,8 @@
 
 #include "engine/input/controller.hpp"
 
-#include "engine/input/controller_description.hpp"
 #include "engine/input/control.hpp"
+#include "engine/input/controller_description.hpp"
 
 namespace Input {
 

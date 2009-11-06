@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_PINGUS_SCREENS_RESULT_SCREEN_HPP
 #define HEADER_PINGUS_PINGUS_SCREENS_RESULT_SCREEN_HPP
 
-#include "pingus/result.hpp"
 #include "engine/screen/gui_screen.hpp"
+#include "pingus/result.hpp"
 
 namespace GUI {
 class SurfaceButton;

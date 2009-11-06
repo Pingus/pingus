@@ -17,11 +17,11 @@
 #ifndef HEADER_PINGUS_PINGUS_PINGUS_LEVEL_IMPL_HPP
 #define HEADER_PINGUS_PINGUS_PINGUS_LEVEL_IMPL_HPP
 
-#include "math/size.hpp"
 #include "math/color.hpp"
+#include "math/size.hpp"
+#include <map>
 #include <string>
 #include <vector>
-#include <map>
 
 class PingusLevelImpl
 {

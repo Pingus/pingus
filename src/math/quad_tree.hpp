@@ -19,9 +19,9 @@
 #ifndef HEADER_PINGUS_MATH_QUAD_TREE_HPP
 #define HEADER_PINGUS_MATH_QUAD_TREE_HPP
 
-#include <vector>
-#include <memory>
 #include <boost/scoped_ptr.hpp>
+#include <memory>
+#include <vector>
 
 #include "math/rect.hpp"
 

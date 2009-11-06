@@ -18,12 +18,12 @@
 
 #include "SDL_image.h"
 #include <boost/format.hpp>
-#include <sstream>
 #include <iostream>
+#include <sstream>
 
+#include "engine/display/blitter.hpp"
 #include "math/rect.hpp"
 #include "pingus/debug.hpp"
-#include "engine/display/blitter.hpp"
 
 class SurfaceImpl
 {

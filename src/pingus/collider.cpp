@@ -16,8 +16,8 @@
 
 #include "pingus/collider.hpp"
 
-#include "pingus/collision_map.hpp"
 #include "math/vector3f.hpp"
+#include "pingus/collision_map.hpp"
 #include "pingus/world.hpp"
 
 Collider::Collider()

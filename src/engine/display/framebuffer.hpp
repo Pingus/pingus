@@ -17,13 +17,14 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_FRAMEBUFFER_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_FRAMEBUFFER_HPP
 
-#include <vector>
 #include <SDL.h>
-#include "math/color.hpp"
-#include "math/vector2i.hpp"
-#include "math/size.hpp"
-#include "math/rect.hpp"
+#include <vector>
+
 #include "engine/display/framebuffer_surface.hpp"
+#include "math/color.hpp"
+#include "math/rect.hpp"
+#include "math/size.hpp"
+#include "math/vector2i.hpp"
 
 class Surface;
 

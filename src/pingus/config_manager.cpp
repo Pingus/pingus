@@ -16,19 +16,20 @@
 
 #include "pingus/config_manager.hpp"
 
-#include <iostream>
-#include <fstream>
 #include <SDL.h>
-#include "pingus/globals.hpp"
-#include "util/system.hpp"
-#include "pingus/fps_counter.hpp"
+#include <fstream>
+#include <iostream>
+
 #include "engine/display/display.hpp"
 #include "engine/screen/screen_manager.hpp"
+#include "lisp/lisp.hpp"
+#include "lisp/parser.hpp"
+#include "pingus/fps_counter.hpp"
+#include "pingus/globals.hpp"
 #include "tinygettext/dictionary_manager.hpp"
 #include "util/sexpr_file_reader.hpp"
 #include "util/sexpr_file_writer.hpp"
-#include "lisp/lisp.hpp"
-#include "lisp/parser.hpp"
+#include "util/system.hpp"
 
 extern tinygettext::DictionaryManager dictionary_manager;
 

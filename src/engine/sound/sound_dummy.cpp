@@ -16,8 +16,8 @@
 
 #include "engine/sound/sound_dummy.hpp"
 
-#include "pingus/globals.hpp"
 #include "pingus/debug.hpp"
+#include "pingus/globals.hpp"
 
 namespace Sound {
 

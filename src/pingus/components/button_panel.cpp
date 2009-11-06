@@ -16,16 +16,16 @@
 
 #include "pingus/components/button_panel.hpp"
 
-#include <iostream>
 #include <algorithm>
+#include <iostream>
 
+#include "engine/display/drawing_context.hpp"
 #include "math/math.hpp"
 #include "pingus/fonts.hpp"
-#include "util/string_util.hpp"
 #include "pingus/globals.hpp"
-#include "pingus/server.hpp"
 #include "pingus/screens/game_session.hpp"
-#include "engine/display/drawing_context.hpp"
+#include "pingus/server.hpp"
+#include "util/string_util.hpp"
 
 using namespace Actions;
 

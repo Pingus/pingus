@@ -18,26 +18,26 @@
 
 #include <config.h>
 
-#include "pingus/gettext.h"
-#include "pingus/components/menu_button.hpp"
-#include "pingus/resource.hpp"
-#include "pingus/debug.hpp"
-#include "pingus/globals.hpp"
+#include "editor/editor_screen.hpp"
+#include "engine/gui/gui_manager.hpp"
+#include "engine/screen/screen_manager.hpp"
 #include "engine/sound/sound.hpp"
+#include "pingus/components/menu_button.hpp"
+#include "pingus/debug.hpp"
+#include "pingus/gettext.h"
+#include "pingus/globals.hpp"
+#include "pingus/layer_manager.hpp"
+#include "pingus/path_manager.hpp"
+#include "pingus/plf_res_mgr.hpp"
+#include "pingus/resource.hpp"
+#include "pingus/screens/credits.hpp"
 #include "pingus/screens/level_menu.hpp"
-#include "pingus/stat_manager.hpp"
 #include "pingus/screens/start_screen.hpp"
 #include "pingus/screens/story_screen.hpp"
+#include "pingus/stat_manager.hpp"
 #include "pingus/worldmap/worldmap.hpp"
 #include "pingus/worldmap/worldmap_screen.hpp"
-#include "engine/screen/screen_manager.hpp"
-#include "engine/gui/gui_manager.hpp"
-#include "pingus/plf_res_mgr.hpp"
-#include "pingus/path_manager.hpp"
 #include "util/pathname.hpp"
-#include "editor/editor_screen.hpp"
-#include "pingus/screens/credits.hpp"
-#include "pingus/layer_manager.hpp"
 
 PingusMenu::PingusMenu() :
   is_init(),

@@ -18,8 +18,8 @@
 #ifndef HEADER_PINGUS_ENGINE_INPUT_OLD_POINTERS_MOUSE_POINTER_HPP
 #define HEADER_PINGUS_ENGINE_INPUT_OLD_POINTERS_MOUSE_POINTER_HPP
 
-#include "../pointer.hpp"
 #include "../controller.hpp"
+#include "../pointer.hpp"
 
 namespace Input {
 namespace Pointers {

@@ -17,9 +17,9 @@
 #ifndef HEADER_PINGUS_UTIL_PATHNAME_HPP
 #define HEADER_PINGUS_UTIL_PATHNAME_HPP
 
+#include <SDL.h>
 #include <iosfwd>
 #include <string>
-#include <SDL.h>
 
 /** Simple class to allow a distinction of paths that refer to the
  *  filesystem and paths that refer to the datadir, it also hides

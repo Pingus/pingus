@@ -21,8 +21,9 @@
 #include <vector>
 
 #include <SDL.h>
-#include "engine/input/driver.hpp"
+
 #include "engine/input/control.hpp"
+#include "engine/input/driver.hpp"
 
 class FileReader;
 

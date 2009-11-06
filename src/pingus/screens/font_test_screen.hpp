@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_PINGUS_SCREENS_FONT_TEST_SCREEN_HPP
 #define HEADER_PINGUS_PINGUS_SCREENS_FONT_TEST_SCREEN_HPP
 
-#include "engine/screen/screen.hpp"
 #include "engine/display/font.hpp"
+#include "engine/screen/screen.hpp"
 
 class Pathname;
 
