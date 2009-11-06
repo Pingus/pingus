@@ -16,7 +16,7 @@
 
 #include <iostream>
 
-#include "pingus/line_iterator.hpp"
+#include "util/line_iterator.hpp"
 
 void test(const std::string& str)
 {

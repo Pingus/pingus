@@ -22,7 +22,7 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include "engine/display/surface.hpp"
-#include "pingus/line_iterator.hpp"
+#include "util/line_iterator.hpp"
 #include "util/utf8.hpp"
 #include "pingus/font_description.hpp"
 #include "engine/display/framebuffer.hpp"

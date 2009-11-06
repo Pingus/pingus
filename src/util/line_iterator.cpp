@@ -14,7 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "pingus/line_iterator.hpp"
+#include "util/line_iterator.hpp"
 
 LineIterator::LineIterator(const std::string& str)
   : first(str.begin()),
