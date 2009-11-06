@@ -46,6 +46,24 @@ Code Cleanup
 * data/prefab/ completly obsolete? if so remove
 
 
+Beta Testing
+============
+
+* check that all levels (including playable/, testing/ and wip/)
+  behave the same as in Pingus0.6
+
+* check that those things that differ between Pingus0.6 and PingusSDL
+  are changed for the better
+
+* check that all translations are up to date
+
+* find the places where translation breaks the GUI (i.e. fonts running
+  over GUI elements)
+
+* check long-term play, play the game for an hour and check that
+  its not degrading (obvious memory leak or stuff like that)
+
+
 OLPC Issues
 ===========
 
@@ -418,6 +436,7 @@ Medium Important:
 
 * show an error message if save fails
 
+
 Less Important:
 ===============
 
@@ -494,6 +513,7 @@ Older Stuff:
 * In space levels, Pingu that fall off of a cliff into space don't
   die, though they should just like in water or lava.
 
+
 Missing Groundpieces
 ====================
 
@@ -506,6 +526,7 @@ Sortie Theme:
  - this theme needs 'normal' groundpieces which can be used to dig
    throught and things like that, it currently only has horizontal and
    vertical bars, which make building levels quite difficult
+
 
 Other Wishes:
 ~~~~~~~~~~~~~
