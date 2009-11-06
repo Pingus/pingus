@@ -23,8 +23,8 @@
 #include "pingus/world.hpp"
 
 ExplosiveParticle::ExplosiveParticle (int x, int y, float x_a, float y_a)
-                                    : Particle (x, y, x_a, y_a),
-                                      alive (true)
+  : Particle (x, y, x_a, y_a),
+    alive (true)
 {
 }
 
@@ -43,24 +43,24 @@ ExplosiveParticle::update (float delta)
   // FIXME: This thing needs to be more abstract, we just need it far
   // to often to reimplement it over and over again.
   while (   static_cast<int>(new_pos.x) != static_cast<int>(pos.x)
-	 || static_cast<int>(new_pos.y) != static_cast<int>(pos.y))
+            || static_cast<int>(new_pos.y) != static_cast<int>(pos.y))
+  {
+    pos -= incr;
+
+    if (   pos.x < 0
+           || pos.y < 0
+           || pos.x + 1 > WorldObj::get_world()->get_width ()
+           || pos.y + 1 > WorldObj::get_world()->get_height())
     {
-      pos -= incr;
-
-      if (   pos.x < 0
-          || pos.y < 0
-	  || pos.x + 1 > WorldObj::get_world()->get_width ()
-	  || pos.y + 1 > WorldObj::get_world()->get_height())
-	{
-	  alive = false;
-	  return;
-	}
-
-      if (WorldObj::get_world()->get_colmap()->getpixel(static_cast<int>(pos.x), static_cast<int>(pos.y)))
-	{
-	  detonate();
-	}
+      alive = false;
+      return;
     }
+
+    if (WorldObj::get_world()->get_colmap()->getpixel(static_cast<int>(pos.x), static_cast<int>(pos.y)))
+    {
+      detonate();
+    }
+  }
 
   pos = new_pos;
 }

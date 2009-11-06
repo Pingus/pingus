@@ -54,47 +54,47 @@ void
 GUIManager::update(const Input::Event& event)
 {
   switch (event.type)
-    {
-      case Input::POINTER_EVENT_TYPE:
-        mouse_pos.x = int(event.pointer.x);
-        mouse_pos.y = int(event.pointer.y);
-        on_pointer_move(mouse_pos.x, mouse_pos.y);
-        break;
+  {
+    case Input::POINTER_EVENT_TYPE:
+      mouse_pos.x = int(event.pointer.x);
+      mouse_pos.y = int(event.pointer.y);
+      on_pointer_move(mouse_pos.x, mouse_pos.y);
+      break;
 
-      case Input::BUTTON_EVENT_TYPE:
-        if (event.button.name == PRIMARY_BUTTON)
-          {
-            if (event.button.state == Input::BUTTON_PRESSED)
-              on_primary_button_press(mouse_pos.x, mouse_pos.y);
-            else if (event.button.state == Input::BUTTON_RELEASED)
-              on_primary_button_release(mouse_pos.x, mouse_pos.y);
-          }
-        else if (event.button.name == SECONDARY_BUTTON)
-          {
-            if (event.button.state == Input::BUTTON_PRESSED)
-              on_secondary_button_press(mouse_pos.x, mouse_pos.y);
-            else if (event.button.state == Input::BUTTON_RELEASED)
-              on_secondary_button_release(mouse_pos.x, mouse_pos.y);
-          }
-        break;
+    case Input::BUTTON_EVENT_TYPE:
+      if (event.button.name == PRIMARY_BUTTON)
+      {
+        if (event.button.state == Input::BUTTON_PRESSED)
+          on_primary_button_press(mouse_pos.x, mouse_pos.y);
+        else if (event.button.state == Input::BUTTON_RELEASED)
+          on_primary_button_release(mouse_pos.x, mouse_pos.y);
+      }
+      else if (event.button.name == SECONDARY_BUTTON)
+      {
+        if (event.button.state == Input::BUTTON_PRESSED)
+          on_secondary_button_press(mouse_pos.x, mouse_pos.y);
+        else if (event.button.state == Input::BUTTON_RELEASED)
+          on_secondary_button_release(mouse_pos.x, mouse_pos.y);
+      }
+      break;
 
-      case Input::AXIS_EVENT_TYPE:
-        // AxisEvents can be ignored in the GUI, they are handled elsewhere
-        pout(PINGUS_DEBUG_GUI) << "GUIManager: AxisEvent: " << event.axis.dir << std::endl;
-        break;
-	
-      case Input::KEYBOARD_EVENT_TYPE:
-        on_key_pressed(event.keyboard.key);
-        break;
+    case Input::AXIS_EVENT_TYPE:
+      // AxisEvents can be ignored in the GUI, they are handled elsewhere
+      pout(PINGUS_DEBUG_GUI) << "GUIManager: AxisEvent: " << event.axis.dir << std::endl;
+      break;
+        
+    case Input::KEYBOARD_EVENT_TYPE:
+      on_key_pressed(event.keyboard.key);
+      break;
 
-      case Input::SCROLLER_EVENT_TYPE:
-        on_scroller_move(event.scroll.x_delta, event.scroll.y_delta);
-        break;
+    case Input::SCROLLER_EVENT_TYPE:
+      on_scroller_move(event.scroll.x_delta, event.scroll.y_delta);
+      break;
 
-      default:
-        pwarn (PINGUS_DEBUG_GUI) << "GUIManager: unhandled event type " << event.type << std::endl;
-        break;
-    }
+    default:
+      pwarn (PINGUS_DEBUG_GUI) << "GUIManager: unhandled event type " << event.type << std::endl;
+      break;
+  }
 }
 
 } // namespace GUI

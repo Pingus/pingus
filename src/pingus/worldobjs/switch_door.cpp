@@ -53,16 +53,16 @@ SwitchDoor::on_startup ()
 {
   world->get_colmap()->put(door_box_cmap,
                            static_cast<int>(door_pos.x),
-			   static_cast<int>(door_pos.y),
-			   Groundtype::GP_SOLID);
+                           static_cast<int>(door_pos.y),
+                           Groundtype::GP_SOLID);
 
   for (int i=0; i < door_height; ++i)
     world->get_colmap()->put(door_tile_cmap,
-			     static_cast<int>(door_pos.x),
-			     static_cast<int>(door_pos.y)
-			     + i * door_tile.get_height()
-			     + door_box.get_height(),
-			     Groundtype::GP_SOLID);
+                             static_cast<int>(door_pos.x),
+                             static_cast<int>(door_pos.y)
+                             + i * door_tile.get_height()
+                             + door_box.get_height(),
+                             Groundtype::GP_SOLID);
 }
 
 void

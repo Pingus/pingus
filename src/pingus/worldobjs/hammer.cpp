@@ -50,21 +50,21 @@ Hammer::update()
   sprite.update();
 
   if (sprite.is_finished())
-    {
-      PinguHolder* holder = world->get_pingus();
+  {
+    PinguHolder* holder = world->get_pingus();
 
-      for (PinguIter pingu_it = holder->begin (); pingu_it != holder->end (); ++pingu_it)
-	{
-	  Pingu* pingu = *pingu_it;
-	  if (pingu->get_action() != Actions::SPLASHED)
-	    {
-	      if (pingu->get_x() > pos.x + 55  && pingu->get_x() < pos.x + 77
-		    && pingu->get_y() > pos.y + 146 && pingu->get_y() < pos.y + 185)
-		  pingu->set_action(Actions::SPLASHED);
-	    }
-	}
-      sprite.restart();
+    for (PinguIter pingu_it = holder->begin (); pingu_it != holder->end (); ++pingu_it)
+    {
+      Pingu* pingu = *pingu_it;
+      if (pingu->get_action() != Actions::SPLASHED)
+      {
+        if (pingu->get_x() > pos.x + 55  && pingu->get_x() < pos.x + 77
+            && pingu->get_y() > pos.y + 146 && pingu->get_y() < pos.y + 185)
+          pingu->set_action(Actions::SPLASHED);
+      }
     }
+    sprite.restart();
+  }
 }
 
 } // namespace WorldObjs

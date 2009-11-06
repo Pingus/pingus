@@ -34,29 +34,29 @@ StringFormat::normalize(std::string text)
 
   pos = 0;
   while ((pos = text.find('\n', pos)) != std::string::npos)
+  {
+    if (pos < text.length() && text[pos + 1] == '\n')   // double enter marks paragraph
     {
-      if (pos < text.length() && text[pos + 1] == '\n')   // double enter marks paragraph
-      	{
-          text.replace(pos, 2, 1, '\n');  		  // replace the two \n by one
-	}
-      else if (pos < text.length() - 1 && text[pos + 1] == ' ' && text[pos + 2] == '\n')
-        {
-          text.replace(pos, 3, 1, '\n');		  // whitespace between the two \n doesn't matter
-	}
-      else
-        {
-          text.replace(pos, 1, 1, ' ');
-	  continue;					  // no \n here anymore, so continue searching
-        }
-
-      if (pos && text[pos - 1] == ' ')
-        text.replace(pos - 1, 2, 1, '\n');		  // no whitespace in front
-
-      if (pos < text.length() && text[pos + 1] == ' ')
-        text.replace(pos, 2, 1, '\n');			  // no whitespace behind
-
-      ++pos;						  // we don't want to find it again
+      text.replace(pos, 2, 1, '\n');              // replace the two \n by one
     }
+    else if (pos < text.length() - 1 && text[pos + 1] == ' ' && text[pos + 2] == '\n')
+    {
+      text.replace(pos, 3, 1, '\n');              // whitespace between the two \n doesn't matter
+    }
+    else
+    {
+      text.replace(pos, 1, 1, ' ');
+      continue;                                   // no \n here anymore, so continue searching
+    }
+
+    if (pos && text[pos - 1] == ' ')
+      text.replace(pos - 1, 2, 1, '\n');                  // no whitespace in front
+
+    if (pos < text.length() && text[pos + 1] == ' ')
+      text.replace(pos, 2, 1, '\n');                      // no whitespace behind
+
+    ++pos;                                                // we don't want to find it again
+  }
 
   pos = 0;
   while ((pos = text.find("  ", pos)) != std::string::npos)
@@ -76,26 +76,26 @@ StringFormat::break_line (const std::string& text_, int width, const Font& font)
   
   UTF8::iterator it(text);
   while(it.next())
-    {
-      std::string word = UTF8::substr(beg, it+1);
-      float word_width = font.get_width(word);
+  {
+    std::string word = UTF8::substr(beg, it+1);
+    float word_width = font.get_width(word);
 
-      if (UTF8::is_linebreak_character(*it))
-        {
-          if ((line_width + word_width) > width)
-            {
-              out << "\n" << word;
-              line_width = word_width;
-            }
-          else
-            {
-              out << word;
-              line_width += word_width;
-            }
+    if (UTF8::is_linebreak_character(*it))
+    {
+      if ((line_width + word_width) > width)
+      {
+        out << "\n" << word;
+        line_width = word_width;
+      }
+      else
+      {
+        out << word;
+        line_width += word_width;
+      }
           
-          beg = it+1;
-        }
+      beg = it+1;
     }
+  }
   
   out << UTF8::substr(beg, UTF8::iterator(text, text.end()));
 

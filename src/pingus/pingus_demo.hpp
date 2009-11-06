@@ -1,4 +1,4 @@
- //  Pingus - A free Lemmings clone
+//  Pingus - A free Lemmings clone
 //  Copyright (C) 2008 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software: you can redistribute it and/or modify

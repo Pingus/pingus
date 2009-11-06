@@ -57,10 +57,10 @@ Entrance::Entrance(const FileReader& reader) :
   else if (direction_str == "misc")
     direction = MISC;
   else
-    {
-      std::cout << "EntranceData: Unknown direction: '" << direction_str << "'" << std::endl;
-      direction = MISC;
-    }
+  {
+    std::cout << "EntranceData: Unknown direction: '" << direction_str << "'" << std::endl;
+    direction = MISC;
+  }
 
   last_release = 150 - release_rate; // wait ~2sec at startup to allow a 'lets go' sound
 }
@@ -94,67 +94,67 @@ Entrance::create_pingu ()
   Pingu* pingu = world->get_pingus()->create_pingu(pos, owner_id);
 
   if (pingu) // still pingus in the pool
+  {
+    switch (direction)
     {
-      switch (direction)
+      case LEFT:
+        d.left();
+        pingu->set_direction(d);
+        break;
+
+      case MISC:
+        if (last_direction)
         {
-        case LEFT:
           d.left();
-          pingu->set_direction(d);
-          break;
-
-        case MISC:
-          if (last_direction)
-            {
-              d.left();
-              last_direction = 0;
-            }
-          else
-            {
-              d.right();
-              last_direction = 1;
-            }
-          pingu->set_direction(d);
-          break;
-
-        case RIGHT:
-          d.right();
-          pingu->set_direction(d);
-          break;
-
-        default:
-          std::cout << "Entrance:: Warning direction is wrong: " << direction << std::endl;
-          d.right();
-          pingu->set_direction(d);
-          break;
+          last_direction = 0;
         }
+        else
+        {
+          d.right();
+          last_direction = 1;
+        }
+        pingu->set_direction(d);
+        break;
 
-			// FIXME: Find the "oing" sound
-      //world->play_sound("oing", pos);
+      case RIGHT:
+        d.right();
+        pingu->set_direction(d);
+        break;
+
+      default:
+        std::cout << "Entrance:: Warning direction is wrong: " << direction << std::endl;
+        d.right();
+        pingu->set_direction(d);
+        break;
     }
+
+    // FIXME: Find the "oing" sound
+    //world->play_sound("oing", pos);
+  }
   else
-    {
-      //std::cout << "Entrance: pingu couldn't get created" << std::endl;
-    }
+  {
+    //std::cout << "Entrance: pingu couldn't get created" << std::endl;
+  }
 }
 
 void
 Entrance::update ()
 {
   if (pingu_ready() && (! world->check_armageddon()))
-    {
-      create_pingu();
-    }
+  {
+    create_pingu();
+  }
 }
 
 void
 Entrance::draw (SceneContext& gc)
 {
   if (!surface)
-    {
-      // Entrances have only a surface for historical reasons
-      //std::cout << "Entrance::draw (SceneContext& gc): entrance without a surface?!" << std::endl;
-      return;
-    }
+  {
+    // Entrances have only a surface for historical reasons
+    //std::cout << "Entrance::draw (SceneContext& gc): entrance without a surface?!" << std::endl;
+    return;
+  }
 
   // FIXME: Why do we still have these hardcoded offsets?!
   gc.color().draw(surface, Vector3f(pos.x - 32, pos.y - 16));

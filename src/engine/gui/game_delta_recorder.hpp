@@ -21,7 +21,7 @@ class GameDeltaRecorder
 {
 private:
 
-public:
+  public:
   GameDeltaRecorder ();
   GameDelta* get ();
 };

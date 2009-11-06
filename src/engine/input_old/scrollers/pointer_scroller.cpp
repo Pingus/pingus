@@ -64,25 +64,25 @@ PointerScroller::update (float delta)
   modifier->update(delta);
 
   if (modifier->is_pressed())
+  {
+    if (x_pos == -1)
     {
-      if (x_pos == -1)
-        {
-          x_pos = pointer->get_x_pos();
-          y_pos = pointer->get_y_pos();
-        }
-      else
-        {
-          x_delta = pointer->get_x_pos() - x_pos;
-          y_delta = pointer->get_y_pos() - y_pos;
+      x_pos = pointer->get_x_pos();
+      y_pos = pointer->get_y_pos();
+    }
+    else
+    {
+      x_delta = pointer->get_x_pos() - x_pos;
+      y_delta = pointer->get_y_pos() - y_pos;
 
-          pointer->set_pos(x_pos, y_pos);
-        }
+      pointer->set_pos(x_pos, y_pos);
     }
+  }
   else
-    {
-      x_pos = -1;
-      y_pos = -1;
-    }
+  {
+    x_pos = -1;
+    y_pos = -1;
+  }
 }
 
 } // namespace Axes

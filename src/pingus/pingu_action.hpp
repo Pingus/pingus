@@ -56,7 +56,7 @@ public:
       infront of the pingu
 
       @param y 1 is up, -1 is down
-   */
+  */
   int  rel_getpixel (int x, int y);
 
   /** Checks if this action allows to be overwritten with the given new action */

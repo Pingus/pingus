@@ -55,9 +55,9 @@ Pointer* PointerFactory::axis_pointer (FileReader reader)
   const std::vector<FileReader>& sections = reader.get_sections();
   for(std::vector<FileReader>::const_iterator i = sections.begin() + 1;
       i != sections.end(); ++i)
-    {
-      axes.push_back(AxisFactory::create(*i));
-    }
+  {
+    axes.push_back(AxisFactory::create(*i));
+  }
 
   return new AxisPointer(speed, axes);
 }

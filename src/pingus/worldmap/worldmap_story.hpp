@@ -21,7 +21,7 @@
 #include <vector>
 
 #include "pingus/res_descriptor.hpp"
-	
+      
 class FileReader;
 
 class StoryPage
@@ -39,7 +39,7 @@ public:
 
   ResDescriptor image;
   std::string   text;
-  std::string	page_name;
+  std::string   page_name;
 };
 
 namespace WorldmapNS {

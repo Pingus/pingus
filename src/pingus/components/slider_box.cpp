@@ -36,18 +36,18 @@ SliderBox::draw(DrawingContext& gc)
     gc.draw_rect(rect, Color(0, 255, 255));
 
   if (value == 0)
-    {
-      gc.print_center(Fonts::chalk_normal, Vector2i(rect.left + rect.get_width()/2, rect.top), "off");
-    }
+  {
+    gc.print_center(Fonts::chalk_normal, Vector2i(rect.left + rect.get_width()/2, rect.top), "off");
+  }
   else
+  {
+    for(int i = 0; i < 20; ++i)
     {
-      for(int i = 0; i < 20; ++i)
-        {
-          if (i < value)
-            gc.print_left(Fonts::chalk_normal, Vector2i(rect.left + i*(rect.get_width()-12)/20 + 6, rect.top), "l");
-          //gc.print_left(Fonts::chalk_normal, rect.left + i*(rect.get_width()-12)/20 + 6, rect.top, "l");
-        }
+      if (i < value)
+        gc.print_left(Fonts::chalk_normal, Vector2i(rect.left + i*(rect.get_width()-12)/20 + 6, rect.top), "l");
+      //gc.print_left(Fonts::chalk_normal, rect.left + i*(rect.get_width()-12)/20 + 6, rect.top, "l");
     }
+  }
   
   gc.print_left(Fonts::chalk_normal, Vector2i(rect.left, rect.top), 
                 "[");
@@ -73,18 +73,18 @@ void
 SliderBox::on_pointer_move(int x, int y)
 {
   if (drag_drop)
-    {
-      int old_value = value;
+  {
+    int old_value = value;
 
-      x -= rect.left;
+    x -= rect.left;
   
-      value = 20 * x / (rect.get_width() - 12);
+    value = 20 * x / (rect.get_width() - 12);
   
-      value = Math::clamp(0, value, 20);
+    value = Math::clamp(0, value, 20);
 
-      if (value != old_value)
-        on_change(value*5); // scale to [0,100]
-    }
+    if (value != old_value)
+      on_change(value*5); // scale to [0,100]
+  }
 }
 
 /* EOF */

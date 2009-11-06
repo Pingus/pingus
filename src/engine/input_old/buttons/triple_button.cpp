@@ -44,18 +44,18 @@ TripleButton::update (float delta)
   button3->update(delta);
 
   if (button1->is_pressed() && button2->is_pressed())
+  {
+    if (!first_second_pressed)
     {
-      if (!first_second_pressed)
-        {
-          first_second_pressed = true;
-          ignore_third = button3->is_pressed();
-        }
+      first_second_pressed = true;
+      ignore_third = button3->is_pressed();
     }
+  }
   else
-    {
-      first_second_pressed = false;
-      ignore_third         = true;
-    }
+  {
+    first_second_pressed = false;
+    ignore_third         = true;
+  }
 }
 
 bool

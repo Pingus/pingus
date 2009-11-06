@@ -63,24 +63,24 @@ MultiplePointer::update (float delta)
     pointers[i]->update(delta);
 
   for (unsigned int i = 0; i < pointers.size(); ++i)
+  {
+    if (pointers[i]->get_x_pos() != old_x_pos)
     {
-      if (pointers[i]->get_x_pos() != old_x_pos)
-        {
-          old_x_pos = x_pos;
-          x_pos = pointers[i]->get_x_pos();
-          do_break = i;
-        }
-
-      if (pointers[i]->get_y_pos() != old_y_pos)
-        {
-          old_y_pos = y_pos;
-          y_pos = pointers[i]->get_y_pos();
-          do_break = i;
-        }
-
-      if (do_break != UINT_MAX)
-        break;
+      old_x_pos = x_pos;
+      x_pos = pointers[i]->get_x_pos();
+      do_break = i;
     }
+
+    if (pointers[i]->get_y_pos() != old_y_pos)
+    {
+      old_y_pos = y_pos;
+      y_pos = pointers[i]->get_y_pos();
+      do_break = i;
+    }
+
+    if (do_break != UINT_MAX)
+      break;
+  }
 
   // no pointer changed, so there's no need to update the other pointers
   if (do_break == UINT_MAX)

@@ -47,16 +47,16 @@ void
 MultipleAxis::update (float delta)
 {
   for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
+  {
+    (*it)->update(delta);
+    const float & temp = (*it)->get_pos();
+    if (temp)
     {
-      (*it)->update(delta);
-      const float & temp = (*it)->get_pos();
-      if (temp)
-        {
-          pos   = temp;
-          angle = (*it)->get_angle();
-        }
-
+      pos   = temp;
+      angle = (*it)->get_angle();
     }
+
+  }
 }
 
 } // namespace Axes

@@ -20,11 +20,11 @@
 #include "engine/screen/screen.hpp"
 
 namespace GUI {
-  class GUIManager;
+class GUIManager;
 }
 
 namespace Input {
-  struct ButtonEvent;
+struct ButtonEvent;
 }
 
 class GUIScreen : public Screen

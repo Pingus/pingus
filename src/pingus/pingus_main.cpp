@@ -36,16 +36,16 @@
 
 #if defined(__APPLE__)
 /* Can't use the include, some type names conflict.
-#include <CoreFoundation/CoreFoundation.h>
+   #include <CoreFoundation/CoreFoundation.h>
 */
 extern "C" {
-       typedef unsigned char UInt8;
-       typedef void* CFTypeRef;
-       typedef CFTypeRef CFURLRef;
-       CFURLRef CFBundleGetMainBundle(void);
-       CFURLRef CFBundleCopyResourcesDirectoryURL(CFTypeRef);
-       bool CFURLGetFileSystemRepresentation(CFURLRef, bool, UInt8*, int);
-       void CFRelease(CFTypeRef);
+  typedef unsigned char UInt8;
+  typedef void* CFTypeRef;
+  typedef CFTypeRef CFURLRef;
+  CFURLRef CFBundleGetMainBundle(void);
+  CFURLRef CFBundleCopyResourcesDirectoryURL(CFTypeRef);
+  bool CFURLGetFileSystemRepresentation(CFURLRef, bool, UInt8*, int);
+  void CFRelease(CFTypeRef);
 }
 #endif
 
@@ -94,7 +94,7 @@ void
 signal_handler(int signo)
 {
   switch(signo)
-    {
+  {
     case SIGSEGV:
       puts("\n,------------------------------------------------------------------------");
       puts("| segfault_handler: caught a SIGSEGV.");
@@ -127,7 +127,7 @@ signal_handler(int signo)
     default:
       std::cout << "signal_handler (): Got unknown signal: " << signo << std::endl;
       break;
-    }
+  }
   puts ("exit(EXIT_FAILURE);");
   abort();
   throw "crash";
@@ -147,16 +147,16 @@ PingusMain::read_rc_file (void)
 {
   if (!cmd_options.no_config_file.is_set() ||
       !cmd_options.no_config_file.get())
-    {
-      std::string rcfile;
+  {
+    std::string rcfile;
 
-      if (!cmd_options.config_file.is_set())
-	rcfile = System::get_userdir() + "config";
-      else
-	rcfile = cmd_options.config_file.get();
+    if (!cmd_options.config_file.is_set())
+      rcfile = System::get_userdir() + "config";
+    else
+      rcfile = cmd_options.config_file.get();
 
-      config_manager.load(rcfile);
-    }
+    config_manager.load(rcfile);
+  }
 }
 
 void
@@ -168,17 +168,17 @@ PingusMain::apply_args()
   // Mode toggles
   if (options.list_languages.is_set() &&
       options.list_languages.get())
-    { // language listing only works after the data path has been set
-      std::cout << "Available languages are:" << std::endl;
-      std::cout << "========================" << std::endl;
-      std::set<tinygettext::Language> lst = dictionary_manager.get_languages();
-      for (std::set<tinygettext::Language>::iterator i = lst.begin(); i != lst.end(); ++i)
-        std::cout << i->get_name() << " (" << i->str() << ")" << std::endl;
+  { // language listing only works after the data path has been set
+    std::cout << "Available languages are:" << std::endl;
+    std::cout << "========================" << std::endl;
+    std::set<tinygettext::Language> lst = dictionary_manager.get_languages();
+    for (std::set<tinygettext::Language>::iterator i = lst.begin(); i != lst.end(); ++i)
+      std::cout << i->get_name() << " (" << i->str() << ")" << std::endl;
 
-      std::cout << "\nLanguages can be used via:\n\n    pingus --language de\n" << std::endl; 
+    std::cout << "\nLanguages can be used via:\n\n    pingus --language de\n" << std::endl; 
 
-      exit(EXIT_SUCCESS);
-    }
+    exit(EXIT_SUCCESS);
+  }
   
   // Display
   if (options.fullscreen.is_set())
@@ -296,7 +296,7 @@ PingusMain::parse_args(int argc, char** argv)
   argp.add_option('t', "speed", "SPEED",
                   _("Set the game speed (0=fastest, >0=slower)"));
   argp.add_option('k', "fps", "FPS",
-		  _("Set the desired game framerate (frames per second)"));
+                  _("Set the desired game framerate (frames per second)"));
   argp.add_option(344, "tile-size", "INT",
                   _("Set the size of the map tiles (default: 32)"));
 
@@ -304,234 +304,234 @@ PingusMain::parse_args(int argc, char** argv)
   argp.set_help_indent(20);
 
   while (argp.next())
-    {
-      switch (argp.get_key()) 
-        {          
-          case 'r': // --renderer
-            if (argp.get_argument() == "delta")
-              {
-                framebuffer_type = DELTA_FRAMEBUFFER;
-              }
-            else if (argp.get_argument() == "opengl")
-              {
-                framebuffer_type = OPENGL_FRAMEBUFFER;
-              }
-            else if (argp.get_argument() == "null")
-              {
-                framebuffer_type = NULL_FRAMEBUFFER;
-              }
-            else if (argp.get_argument() == "sdl")
-              {
-                framebuffer_type = SDL_FRAMEBUFFER;
-              }
-            else if (argp.get_argument() == "help")
-              {
-                std::cout << "Available renderers: " << std::endl;
-                std::cout << "   delta: Software rendering with dirty-rectangles (default)" << std::endl;
-                std::cout << "     sdl: Software rendering" << std::endl;
-                std::cout << "  opengl: Hardware accelerated graphics" << std::endl;
-                std::cout << "    null: No rendering at all, for debugging" << std::endl;
-                exit(EXIT_SUCCESS);
-              }
-            else
-              {
-                std::cout << "Unknown renderer: " << argp.get_argument()
-                          << " use '--renderer help' to get a list of available renderer" << std::endl;
-                exit(EXIT_FAILURE);
-              }
-            break;
-
-          case 359: // --credits
-            cmd_options.credits.set(true);
-            break;
-
-          case 'e': // -e, --editor
-            cmd_options.editor.set(true);
-            break;
-
-          case 't': // -t, --set-speed
-            cmd_options.speed.set(StringUtil::to<int>(argp.get_argument()));  
-            break;
-
-          case 'k': // -k, --set-fps
-	    cmd_options.desiredfps.set(StringUtil::to<float>(argp.get_argument()));
-	    break;
-
-          case 's': // -s, --disable-sound
-            cmd_options.disable_sound.set(true);
-            break;
-
-          case 'S':
-            cmd_options.save.set(argp.get_argument());
-            break;
-
-          case 'm': // -m, --disable-music
-            cmd_options.disable_music.set(true);
-            break;
-            
-          case 'g':
-            {
-              Size size; 
-              if (sscanf(argp.get_argument().c_str(), "%dx%d", &size.width, &size.height) != 2)
-                {
-                  std::cout << "Resolution std::string is wrong, it should be like: \n"
-                            << "\"640x480\" or \"800x600\"" << std::endl;
-                  exit(EXIT_FAILURE);
-                }
-              cmd_options.geometry.set(size);
-            }
-            break;
-
-          case 'd': // -d, --datadir
-            cmd_options.datadir.set(argp.get_argument());
-            break;
-
-          case 'u': // -u, --userdir
-            cmd_options.userdir.set(argp.get_argument());
-            break;
-
-          case 'v':
-            std::cout << "Pingus " << VERSION << std::endl;
-            std::cout << "\n"
-              "Copyright (C) 1998-2008 Ingo Ruhnke <grumbel@gmx.de>\n"
-              "See the file AUTHORS for a complete list of contributors.\n\n"
-              "There is NO warranty.  You may redistribute this software\n"
-              "under the terms of the GNU General Public License.\n"
-              "For more information about these matters, see the files named COPYING." << std::endl;
-            exit(EXIT_SUCCESS);
-            break;
-          
-          case 'f': // --fullscreen
-            cmd_options.fullscreen.set(true);
-            break;
-          
-          case 'w': // --window
-            cmd_options.fullscreen.set(false);
-            break;
-
-          case 334: // --maintainer-mode
-            cmd_options.maintainer_mode.set(true);
-            maintainer_mode = true;
-            break;
-
-          case 337:
-            cmd_options.auto_scrolling.set(false);
-            break;
-
-          case 342: // --no-cfg-file
-            cmd_options.no_config_file.set(true); 
-            break;
-
-          case 344:
-            cmd_options.tile_size.set(StringUtil::to<int>(argp.get_argument()));
-            break;
-
-          case 346:
-            cmd_options.swcursor.set(true);
-            break;
-
-          case 347:
-            cmd_options.config_file.set(argp.get_argument());
-            break;
-
-          case 'D':
-            if (argp.get_argument() == "all")
-              {
-                cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_ALL);
-              }
-            else if (argp.get_argument() == "actions")
-              {
-                cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_ACTIONS);
-              }
-            else if (argp.get_argument() == "sound")
-              {
-                cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_SOUND);
-              }
-            else if (argp.get_argument() == "gametime")
-              {
-                cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_GAMETIME);
-              }
-            else if (argp.get_argument() == "tiles")
-              {
-                cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_TILES);
-              }
-            else if (argp.get_argument() == "loading")
-              {
-                cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_LOADING);
-              }
-            else if (argp.get_argument() == "translator")
-              {
-                cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_TRANSLATOR);
-              }
-            else if (argp.get_argument() == "resources")
-              {
-                cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_RESOURCES);
-              }
-            else if (argp.get_argument() == "gui")
-              {
-                cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_GUI);
-              }
-            else if (argp.get_argument() == "input")
-              {
-                cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_INPUT);
-              }
-            else if (argp.get_argument() == "worldmap")
-              {
-                cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_WORLDMAP);
-              }
-            else if (argp.get_argument() == "pathmgr")
-              {
-                cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_PATHMGR);
-              }
-            else
-              {
-                std::cout << "PingusMain: Unhandled debug flag: " << argp.get_argument() << std::endl;
-                exit(EXIT_FAILURE);
-              }
-
-            // Update Pingus debug flags
-            pingus_debug_flags = cmd_options.debug.get();
-            break;
-
-          case 360:
-            cmd_options.controller.set(argp.get_argument());
-            break;
-
-          case 363: // font test
-            cmd_options.font.set(true);
-            break;
-
-          case 'l': // language
-            cmd_options.language.set(argp.get_argument());
-            break;
-
-          case 365: // list-languages
-            cmd_options.list_languages.set(true);
-            break;
-
-          case 'h':
-            argp.print_help();
-            exit(EXIT_SUCCESS);
-            break;
-
-          case CommandLine::REST_ARG:
-            if (!cmd_options.rest.is_set())
-              {
-                cmd_options.rest.set(argp.get_argument());
-              }
-            else
-              {
-                std::cout << "Wrong argument: '" << argp.get_argument() << "'" << std::endl;
-                std::cout << "You can only give one file argument," << std::endl;
-                exit(EXIT_FAILURE);
-              }
-            break;
-
-          default:
-            std::cout << "Error: Got " << argp.get_key() << " " << argp.get_argument() << std::endl;
-            break;
+  {
+    switch (argp.get_key()) 
+    {          
+      case 'r': // --renderer
+        if (argp.get_argument() == "delta")
+        {
+          framebuffer_type = DELTA_FRAMEBUFFER;
         }
+        else if (argp.get_argument() == "opengl")
+        {
+          framebuffer_type = OPENGL_FRAMEBUFFER;
+        }
+        else if (argp.get_argument() == "null")
+        {
+          framebuffer_type = NULL_FRAMEBUFFER;
+        }
+        else if (argp.get_argument() == "sdl")
+        {
+          framebuffer_type = SDL_FRAMEBUFFER;
+        }
+        else if (argp.get_argument() == "help")
+        {
+          std::cout << "Available renderers: " << std::endl;
+          std::cout << "   delta: Software rendering with dirty-rectangles (default)" << std::endl;
+          std::cout << "     sdl: Software rendering" << std::endl;
+          std::cout << "  opengl: Hardware accelerated graphics" << std::endl;
+          std::cout << "    null: No rendering at all, for debugging" << std::endl;
+          exit(EXIT_SUCCESS);
+        }
+        else
+        {
+          std::cout << "Unknown renderer: " << argp.get_argument()
+                    << " use '--renderer help' to get a list of available renderer" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        break;
+
+      case 359: // --credits
+        cmd_options.credits.set(true);
+        break;
+
+      case 'e': // -e, --editor
+        cmd_options.editor.set(true);
+        break;
+
+      case 't': // -t, --set-speed
+        cmd_options.speed.set(StringUtil::to<int>(argp.get_argument()));  
+        break;
+
+      case 'k': // -k, --set-fps
+        cmd_options.desiredfps.set(StringUtil::to<float>(argp.get_argument()));
+        break;
+
+      case 's': // -s, --disable-sound
+        cmd_options.disable_sound.set(true);
+        break;
+
+      case 'S':
+        cmd_options.save.set(argp.get_argument());
+        break;
+
+      case 'm': // -m, --disable-music
+        cmd_options.disable_music.set(true);
+        break;
+            
+      case 'g':
+      {
+        Size size; 
+        if (sscanf(argp.get_argument().c_str(), "%dx%d", &size.width, &size.height) != 2)
+        {
+          std::cout << "Resolution std::string is wrong, it should be like: \n"
+                    << "\"640x480\" or \"800x600\"" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        cmd_options.geometry.set(size);
+      }
+      break;
+
+      case 'd': // -d, --datadir
+        cmd_options.datadir.set(argp.get_argument());
+        break;
+
+      case 'u': // -u, --userdir
+        cmd_options.userdir.set(argp.get_argument());
+        break;
+
+      case 'v':
+        std::cout << "Pingus " << VERSION << std::endl;
+        std::cout << "\n"
+          "Copyright (C) 1998-2008 Ingo Ruhnke <grumbel@gmx.de>\n"
+          "See the file AUTHORS for a complete list of contributors.\n\n"
+          "There is NO warranty.  You may redistribute this software\n"
+          "under the terms of the GNU General Public License.\n"
+          "For more information about these matters, see the files named COPYING." << std::endl;
+        exit(EXIT_SUCCESS);
+        break;
+          
+      case 'f': // --fullscreen
+        cmd_options.fullscreen.set(true);
+        break;
+          
+      case 'w': // --window
+        cmd_options.fullscreen.set(false);
+        break;
+
+      case 334: // --maintainer-mode
+        cmd_options.maintainer_mode.set(true);
+        maintainer_mode = true;
+        break;
+
+      case 337:
+        cmd_options.auto_scrolling.set(false);
+        break;
+
+      case 342: // --no-cfg-file
+        cmd_options.no_config_file.set(true); 
+        break;
+
+      case 344:
+        cmd_options.tile_size.set(StringUtil::to<int>(argp.get_argument()));
+        break;
+
+      case 346:
+        cmd_options.swcursor.set(true);
+        break;
+
+      case 347:
+        cmd_options.config_file.set(argp.get_argument());
+        break;
+
+      case 'D':
+        if (argp.get_argument() == "all")
+        {
+          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_ALL);
+        }
+        else if (argp.get_argument() == "actions")
+        {
+          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_ACTIONS);
+        }
+        else if (argp.get_argument() == "sound")
+        {
+          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_SOUND);
+        }
+        else if (argp.get_argument() == "gametime")
+        {
+          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_GAMETIME);
+        }
+        else if (argp.get_argument() == "tiles")
+        {
+          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_TILES);
+        }
+        else if (argp.get_argument() == "loading")
+        {
+          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_LOADING);
+        }
+        else if (argp.get_argument() == "translator")
+        {
+          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_TRANSLATOR);
+        }
+        else if (argp.get_argument() == "resources")
+        {
+          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_RESOURCES);
+        }
+        else if (argp.get_argument() == "gui")
+        {
+          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_GUI);
+        }
+        else if (argp.get_argument() == "input")
+        {
+          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_INPUT);
+        }
+        else if (argp.get_argument() == "worldmap")
+        {
+          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_WORLDMAP);
+        }
+        else if (argp.get_argument() == "pathmgr")
+        {
+          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_PATHMGR);
+        }
+        else
+        {
+          std::cout << "PingusMain: Unhandled debug flag: " << argp.get_argument() << std::endl;
+          exit(EXIT_FAILURE);
+        }
+
+        // Update Pingus debug flags
+        pingus_debug_flags = cmd_options.debug.get();
+        break;
+
+      case 360:
+        cmd_options.controller.set(argp.get_argument());
+        break;
+
+      case 363: // font test
+        cmd_options.font.set(true);
+        break;
+
+      case 'l': // language
+        cmd_options.language.set(argp.get_argument());
+        break;
+
+      case 365: // list-languages
+        cmd_options.list_languages.set(true);
+        break;
+
+      case 'h':
+        argp.print_help();
+        exit(EXIT_SUCCESS);
+        break;
+
+      case CommandLine::REST_ARG:
+        if (!cmd_options.rest.is_set())
+        {
+          cmd_options.rest.set(argp.get_argument());
+        }
+        else
+        {
+          std::cout << "Wrong argument: '" << argp.get_argument() << "'" << std::endl;
+          std::cout << "You can only give one file argument," << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        break;
+
+      default:
+        std::cout << "Error: Got " << argp.get_key() << " " << argp.get_argument() << std::endl;
+        break;
     }
+  }
 }
 
 // Get all filenames and directories
@@ -544,44 +544,44 @@ PingusMain::init_path_finder()
   System::init_directories();
 
   if (cmd_options.datadir.is_set())
-    {
-      path_manager.set_base_path(cmd_options.datadir.get());
-    }
+  {
+    path_manager.set_base_path(cmd_options.datadir.get());
+  }
   else
-    { // do magic to guess the datadir
+  { // do magic to guess the datadir
 #if defined(__APPLE__)
-      char resource_path[PATH_MAX];
-      CFURLRef ref = CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle());
-      if (!ref || !CFURLGetFileSystemRepresentation(ref, true, (UInt8*)resource_path, PATH_MAX))
-        {
-          std::cout << "Error: Couldn't get Resources path.\n" << std::endl;
-          exit(EXIT_FAILURE);
-        }
-      CFRelease(ref);
-      path_manager.add_path("data");
+    char resource_path[PATH_MAX];
+    CFURLRef ref = CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle());
+    if (!ref || !CFURLGetFileSystemRepresentation(ref, true, (UInt8*)resource_path, PATH_MAX))
+    {
+      std::cout << "Error: Couldn't get Resources path.\n" << std::endl;
+      exit(EXIT_FAILURE);
+    }
+    CFRelease(ref);
+    path_manager.add_path("data");
 #elif ENABLE_BINRELOC
-      BrInitError error;
-      if (br_init(&error) == 0)
-        {
-          std::cout << "Warning: BinReloc failed to initialize (error code " << error << ")" << std::endl;
-          std::cout << "Will fallback to hardcoded default path." << std::endl; 
-        }
+    BrInitError error;
+    if (br_init(&error) == 0)
+    {
+      std::cout << "Warning: BinReloc failed to initialize (error code " << error << ")" << std::endl;
+      std::cout << "Will fallback to hardcoded default path." << std::endl; 
+    }
 
-      char* exe_path = br_find_exe_dir(".");
-      path_manager.add_path(exe_path + std::string("/../share/pingus/data/"));
-      path_manager.add_path(exe_path + std::string("/data"));
-      path_manager.add_path("data"); // assume game is run from source dir, without any magic
-      free(exe_path);
+    char* exe_path = br_find_exe_dir(".");
+    path_manager.add_path(exe_path + std::string("/../share/pingus/data/"));
+    path_manager.add_path(exe_path + std::string("/data"));
+    path_manager.add_path("data"); // assume game is run from source dir, without any magic
+    free(exe_path);
 #else
-      path_manager.add_path("data"); // assume game is run from source dir
+    path_manager.add_path("data"); // assume game is run from source dir
 #endif
 
-      if (!path_manager.find_path("data/core.res"))
-        {
-          std::cout << "Error: Couldn't find 'data/core.res' use the --datadir DIR option." << std::endl;
-          exit(EXIT_FAILURE);
-        }
+    if (!path_manager.find_path("data/core.res"))
+    {
+      std::cout << "Error: Couldn't find 'data/core.res' use the --datadir DIR option." << std::endl;
+      exit(EXIT_FAILURE);
     }
+  }
 
   // Language is automatically picked from env variable
   // dictionary_manager.set_language("de"); 
@@ -635,66 +635,66 @@ PingusMain::start_game ()
   ScreenManager screen_manager;
 
   if (cmd_options.save.is_set())
-    { // Load a level and save it again, useful to convert it in a new format
-      if (!cmd_options.rest.is_set())
-        {
-          std::cout << "Error: level argument required" << std::endl;
-        }
-      else
-        {
-          Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
-          Editor::EditorLevel level;
-          std::cout << "Loading: " << filename.str() << std::endl;
-          level.load_level(filename);
-          std::cout << "Saving:  " << cmd_options.save.get() << std::endl;
-          level.save_level(cmd_options.save.get());
-        }
-    }
-  else if (cmd_options.credits.is_set() && cmd_options.credits.get())
-    { // just show the credits screen
-      screen_manager.push_screen(new Credits());
-    }
-  else if (cmd_options.font.is_set() && cmd_options.font.get())
-    { // run the Font Test
-      if (!cmd_options.rest.is_set())
-        {
-          std::cout << "Error: FILE argument required" << std::endl;
-        }
-      else
-        {
-          Pathname file(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
-          screen_manager.push_screen(new FontTestScreen(file)); 
-        }
-    }
-  else if (cmd_options.editor.is_set() && cmd_options.editor.get())
-    { // Editor
-      Editor::EditorScreen* editor = new Editor::EditorScreen();
-      // optionally load a map in the editor if it was given
-      if (cmd_options.rest.is_set())
-        editor->load(Pathname(cmd_options.rest.get(), Pathname::SYSTEM_PATH));
-
-      screen_manager.push_screen(editor);
-    }
-  else if (cmd_options.rest.is_set())
-    { // just start the map that was passed on the command line
-      if (StringUtil::has_suffix(cmd_options.rest.get(), ".pingus-demo"))
-        { // Demo file
-          screen_manager.push_screen
-            (new DemoSession(Pathname(cmd_options.rest.get(), Pathname::SYSTEM_PATH)));
-        }
-      else
-        { // Level file
-          screen_manager.push_screen
-            (new StartScreen(PLFResMgr::load_plf_from_filename(Pathname(cmd_options.rest.get(),
-                                                                        Pathname::SYSTEM_PATH))));
-        }
-    }
-  else // start a normal game
+  { // Load a level and save it again, useful to convert it in a new format
+    if (!cmd_options.rest.is_set())
     {
-      pout(PINGUS_DEBUG_LOADING) << "starting normal game" << std::endl;
-      screen_manager.push_screen(new PingusMenu());
-      pout(PINGUS_DEBUG_LOADING) << "done: starting normal game" << std::endl;
+      std::cout << "Error: level argument required" << std::endl;
     }
+    else
+    {
+      Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
+      Editor::EditorLevel level;
+      std::cout << "Loading: " << filename.str() << std::endl;
+      level.load_level(filename);
+      std::cout << "Saving:  " << cmd_options.save.get() << std::endl;
+      level.save_level(cmd_options.save.get());
+    }
+  }
+  else if (cmd_options.credits.is_set() && cmd_options.credits.get())
+  { // just show the credits screen
+    screen_manager.push_screen(new Credits());
+  }
+  else if (cmd_options.font.is_set() && cmd_options.font.get())
+  { // run the Font Test
+    if (!cmd_options.rest.is_set())
+    {
+      std::cout << "Error: FILE argument required" << std::endl;
+    }
+    else
+    {
+      Pathname file(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
+      screen_manager.push_screen(new FontTestScreen(file)); 
+    }
+  }
+  else if (cmd_options.editor.is_set() && cmd_options.editor.get())
+  { // Editor
+    Editor::EditorScreen* editor = new Editor::EditorScreen();
+    // optionally load a map in the editor if it was given
+    if (cmd_options.rest.is_set())
+      editor->load(Pathname(cmd_options.rest.get(), Pathname::SYSTEM_PATH));
+
+    screen_manager.push_screen(editor);
+  }
+  else if (cmd_options.rest.is_set())
+  { // just start the map that was passed on the command line
+    if (StringUtil::has_suffix(cmd_options.rest.get(), ".pingus-demo"))
+    { // Demo file
+      screen_manager.push_screen
+        (new DemoSession(Pathname(cmd_options.rest.get(), Pathname::SYSTEM_PATH)));
+    }
+    else
+    { // Level file
+      screen_manager.push_screen
+        (new StartScreen(PLFResMgr::load_plf_from_filename(Pathname(cmd_options.rest.get(),
+                                                                    Pathname::SYSTEM_PATH))));
+    }
+  }
+  else // start a normal game
+  {
+    pout(PINGUS_DEBUG_LOADING) << "starting normal game" << std::endl;
+    screen_manager.push_screen(new PingusMenu());
+    pout(PINGUS_DEBUG_LOADING) << "done: starting normal game" << std::endl;
+  }
 
   screen_manager.display();
 }
@@ -704,7 +704,7 @@ PingusMain::main(int argc, char** argv)
 {
   tinygettext::Log::set_log_info_callback(0);
 
-   // Register the segfault_handler
+  // Register the segfault_handler
 #ifndef WIN32
   signal(SIGSEGV, signal_handler);
 #endif

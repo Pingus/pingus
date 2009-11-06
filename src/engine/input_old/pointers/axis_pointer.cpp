@@ -58,12 +58,12 @@ void
 AxisPointer::update(float delta)
 {
   for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
-    {
-      (*it)->update(delta);
+  {
+    (*it)->update(delta);
 
-      x_pos += (float)Math::cos((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
-      y_pos += (float)Math::sin((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
-    }
+    x_pos += (float)Math::cos((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
+    y_pos += (float)Math::sin((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
+  }
 }
 
 } // namespace Axes

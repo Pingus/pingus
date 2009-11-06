@@ -55,16 +55,16 @@ MultipleScroller::update (float delta)
   bool found_delta = false;
 
   for (std::vector<Scroller*>::const_iterator it = scrollers.begin(); it != scrollers.end(); it++)
-    {
-      (*it)->update(delta);
+  {
+    (*it)->update(delta);
 
-      if (!found_delta && ((*it)->get_x_delta() || (*it)->get_y_delta()))
-        {
-          x_pos = (*it)->get_x_delta();
-          y_pos = (*it)->get_y_delta();
-          found_delta = true;
-        }
+    if (!found_delta && ((*it)->get_x_delta() || (*it)->get_y_delta()))
+    {
+      x_pos = (*it)->get_x_delta();
+      y_pos = (*it)->get_y_delta();
+      found_delta = true;
     }
+  }
 }
 
 } // namespace Scroller

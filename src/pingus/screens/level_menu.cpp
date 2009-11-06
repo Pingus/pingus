@@ -125,17 +125,17 @@ public:
     std::string path = Pathname("levelsets", Pathname::DATA_PATH).get_sys_path();
     System::Directory directory = System::opendir(path, "*.levelset");
     for(System::Directory::iterator i = directory.begin(); i != directory.end(); ++i)
-      {
-        levelsets.push_back(new Levelset(Pathname(path + "/" + i->name, Pathname::SYSTEM_PATH)));
-      }
+    {
+      levelsets.push_back(new Levelset(Pathname(path + "/" + i->name, Pathname::SYSTEM_PATH)));
+    }
   }
 
   ~LevelsetSelector() 
   {
     for(Levelsets::iterator i = levelsets.begin(); i != levelsets.end(); ++i)
-      {
-        delete *i;
-      }
+    {
+      delete *i;
+    }
   }
   
   void draw(DrawingContext& gc)
@@ -150,24 +150,24 @@ public:
 
     int y = 0;
     for(int i = 3*page; (i < 3*(page+1)) && (i < int(levelsets.size())); ++i)
-      {
-        Levelset* levelset = levelsets[i];
+    {
+      Levelset* levelset = levelsets[i];
 
-        if (levelset == current_levelset)
-          gc.draw(marker, Vector2i(0, y - 5));
+      if (levelset == current_levelset)
+        gc.draw(marker, Vector2i(0, y - 5));
 
-        gc.draw(levelset->get_image(), Vector2i(30, y));
+      gc.draw(levelset->get_image(), Vector2i(30, y));
 
-        gc.print_left(Fonts::chalk_normal, Vector2i(85+30, 15 + y), _(levelset->get_title()));
-        gc.print_left(Fonts::chalk_small,  Vector2i(85+50, 40 + y), _(levelset->get_description()));
+      gc.print_left(Fonts::chalk_normal, Vector2i(85+30, 15 + y), _(levelset->get_title()));
+      gc.print_left(Fonts::chalk_small,  Vector2i(85+50, 40 + y), _(levelset->get_description()));
 
-        gc.print_right(Fonts::chalk_normal, Vector2i(rect.get_width() - 30, 15 + y), (boost::format("%1% %2%%%") % _("Solved:") % levelset->get_completion()).str());
-        gc.print_right(Fonts::chalk_small,  Vector2i(rect.get_width() - 30, 60 + y), (boost::format("%1% %2%") % levelset->get_level_count() % _("levels")).str());
+      gc.print_right(Fonts::chalk_normal, Vector2i(rect.get_width() - 30, 15 + y), (boost::format("%1% %2%%%") % _("Solved:") % levelset->get_completion()).str());
+      gc.print_right(Fonts::chalk_small,  Vector2i(rect.get_width() - 30, 60 + y), (boost::format("%1% %2%") % levelset->get_level_count() % _("levels")).str());
 
-        //gc.draw(ok_button, 620, y);
+      //gc.draw(ok_button, 620, y);
 
-        y += 95;
-      }
+      y += 95;
+    }
     
     int total_pages = (int(levelsets.size())+2)/3;
   
@@ -202,14 +202,14 @@ public:
     y -= rect.top;
 
     if (!levelsets.empty())
-      {
-        int i = y / 95 + page*3;
+    {
+      int i = y / 95 + page*3;
 
-        if (i >= 0 && i < static_cast<int>(levelsets.size()))
-          current_levelset = levelsets[i];
-        else
-          current_levelset = NULL;
-      }
+      if (i >= 0 && i < static_cast<int>(levelsets.size()))
+        current_levelset = levelsets[i];
+      else
+        current_levelset = NULL;
+    }
   }
 
   void on_primary_button_press (int x, int y)
@@ -217,9 +217,9 @@ public:
     on_pointer_move(x, y);
 
     if (current_levelset)
-      {
-        level_menu->set_levelset(current_levelset);
-      }
+    {
+      level_menu->set_levelset(current_levelset);
+    }
   }
 
   void update_layout() {}
@@ -261,36 +261,36 @@ public:
     gc.print_center(Fonts::chalk_large, Vector2i(rect.get_width()/2, -70), _(levelset->get_title()));
 
     if (levelset)
-      {
-        levelset->refresh(); // should be better placed in on_startup() or so
+    {
+      levelset->refresh(); // should be better placed in on_startup() or so
         
-        //gc.draw_fillrect(Rect(Vector2i(0,0), Size(rect.get_width(), rect.get_height())),
-        //                 Color(255, 255, 0, 100));
+      //gc.draw_fillrect(Rect(Vector2i(0,0), Size(rect.get_width(), rect.get_height())),
+      //                 Color(255, 255, 0, 100));
 
-        gc.print_left(Fonts::chalk_normal,  Vector2i(30, -32), _("Title"));
-        gc.print_right(Fonts::chalk_normal, Vector2i(rect.get_width() - 30, -32), _("Status"));
+      gc.print_left(Fonts::chalk_normal,  Vector2i(30, -32), _("Title"));
+      gc.print_right(Fonts::chalk_normal, Vector2i(rect.get_width() - 30, -32), _("Status"));
 
-        int y = 0;
-        for(int i = page*8; i < (page+1)*8 && i < levelset->get_level_count(); ++i)
-          {
-            if (!levelset->get_level(i)->accessible)
-              gc.draw(marker_locked, Vector2i(0, y));
-            else if (i == current_level)
-              gc.draw(marker, Vector2i(0, y));
+      int y = 0;
+      for(int i = page*8; i < (page+1)*8 && i < levelset->get_level_count(); ++i)
+      {
+        if (!levelset->get_level(i)->accessible)
+          gc.draw(marker_locked, Vector2i(0, y));
+        else if (i == current_level)
+          gc.draw(marker, Vector2i(0, y));
                         
-            if (maintainer_mode)
-              gc.print_left(Fonts::chalk_small, Vector2i(30, y+4), levelset->get_level(i)->plf.get_resname());
-            else
-              gc.print_left(Fonts::chalk_small, Vector2i(30, y+4), _(levelset->get_level(i)->plf.get_levelname()));
+        if (maintainer_mode)
+          gc.print_left(Fonts::chalk_small, Vector2i(30, y+4), levelset->get_level(i)->plf.get_resname());
+        else
+          gc.print_left(Fonts::chalk_small, Vector2i(30, y+4), _(levelset->get_level(i)->plf.get_levelname()));
 
-            if (levelset->get_level(i)->finished)
-              gc.print_right(Fonts::chalk_small, Vector2i(rect.get_width() -30, y+4), _("solved"));
-            else
-              gc.print_right(Fonts::chalk_small, Vector2i(rect.get_width() -30, y+4), _("unsolved"));
+        if (levelset->get_level(i)->finished)
+          gc.print_right(Fonts::chalk_small, Vector2i(rect.get_width() -30, y+4), _("solved"));
+        else
+          gc.print_right(Fonts::chalk_small, Vector2i(rect.get_width() -30, y+4), _("unsolved"));
 
-            y += 32;
-          }
+        y += 32;
       }
+    }
 
     gc.print_center(Fonts::chalk_normal, Vector2i(rect.get_width()/2, 360),
                     (boost::format("%1% %2%/%3%") % _("Page") % (page+1) % ((levelset->get_level_count()+7)/8)).str());
@@ -344,12 +344,12 @@ public:
   {
     on_pointer_move(x, y);
     if (current_level != -1)
+    {
+      if (levelset->get_level(current_level)->accessible)
       {
-        if (levelset->get_level(current_level)->accessible)
-          {
-            ScreenManager::instance()->push_screen(new StartScreen(levelset->get_level(current_level)->plf));
-          }
+        ScreenManager::instance()->push_screen(new StartScreen(levelset->get_level(current_level)->plf));
       }
+    }
   }
 
   void update_layout() {}
@@ -414,15 +414,15 @@ void
 LevelMenu::on_escape_press()
 {
   if (level_selector->is_visible())
-    {
-      levelset_selector->show();
-      level_selector->hide();           
-    }
+  {
+    levelset_selector->show();
+    level_selector->hide();           
+  }
   else
-    {
-      //std::cout << "OptionMenu: poping screen" << std::endl;
-      ScreenManager::instance()->pop_screen();
-    }
+  {
+    //std::cout << "OptionMenu: poping screen" << std::endl;
+    ScreenManager::instance()->pop_screen();
+  }
 }
 
 void
@@ -447,16 +447,16 @@ void
 LevelMenu::set_levelset(Levelset* levelset)
 {
   if (levelset)
-    {
-      level_selector->set_levelset(levelset);
-      levelset_selector->hide();
-      level_selector->show();
-    }
+  {
+    level_selector->set_levelset(levelset);
+    levelset_selector->hide();
+    level_selector->show();
+  }
   else
-    {
-      levelset_selector->show();
-      level_selector->hide();      
-    }
+  {
+    levelset_selector->show();
+    level_selector->hide();      
+  }
 }
 
 void

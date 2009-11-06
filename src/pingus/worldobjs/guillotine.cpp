@@ -75,7 +75,7 @@ Guillotine::update ()
     sprite_kill_right.update();
     // FIXME: Should be a different sound
     if (sprite_kill_left.get_current_frame() == 7)
-       WorldObj::get_world()->play_sound("splash", pos);
+      WorldObj::get_world()->play_sound("splash", pos);
   } else {
     sprite_idle.update();
   }
@@ -85,17 +85,17 @@ void
 Guillotine::catch_pingu (Pingu* pingu)
 {
   if (!killing)
+  {
+    if (pingu->is_inside (static_cast<int>(pos.x + 38), static_cast<int>(pos.y + 90),
+                          static_cast<int>(pos.x + 42), static_cast<int>(pos.y + 98)))
     {
-      if (pingu->is_inside (static_cast<int>(pos.x + 38), static_cast<int>(pos.y + 90),
-			    static_cast<int>(pos.x + 42), static_cast<int>(pos.y + 98)))
-	{
-	  killing = true;
-	  pingu->set_status(PS_DEAD);
-	  direction = pingu->direction;
-    sprite_kill_left.restart();
-    sprite_kill_right.restart();
-	}
+      killing = true;
+      pingu->set_status(PS_DEAD);
+      direction = pingu->direction;
+      sprite_kill_left.restart();
+      sprite_kill_right.restart();
     }
+  }
 }
 
 } // namespace WorldObjs

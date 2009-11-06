@@ -38,26 +38,26 @@ void
 WoodThing::update ()
 {
   Entrance::update ();
-	
-	if (last_release > 0)
-		surface.update();
-	
+        
+  if (last_release > 0)
+    surface.update();
+        
   if (rand() % 5 == 0)
-    {
-      world->get_smoke_particle_holder()->
-        add_particle(pos.x - static_cast<float>(surface.get_width()) /  2.0f - 24.0f,
-                     pos.y - static_cast<float>(surface.get_height()) + 32.0f - 147.0f,
-                     float(Math::frand() + 1) * -0.6f, float(Math::frand() + 1) * -0.6f);
-    }
+  {
+    world->get_smoke_particle_holder()->
+      add_particle(pos.x - static_cast<float>(surface.get_width()) /  2.0f - 24.0f,
+                   pos.y - static_cast<float>(surface.get_height()) + 32.0f - 147.0f,
+                   float(Math::frand() + 1) * -0.6f, float(Math::frand() + 1) * -0.6f);
+  }
 }
 
 void
 WoodThing::draw (SceneContext& gc)
 {
-	gc.color().draw(surface2, pos);
-	// Only draw the animation if a pingu is coming out.
-	if (last_release > 0)
-		gc.color().draw(surface, pos);
+  gc.color().draw(surface2, pos);
+  // Only draw the animation if a pingu is coming out.
+  if (last_release > 0)
+    gc.color().draw(surface, pos);
 }
 
 // } // namespace Entrances

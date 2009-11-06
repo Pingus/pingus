@@ -104,70 +104,70 @@ void
 GameSession::update_server(float delta)
 {
   if (server->is_finished())
+  {
+    PinguHolder* pingu_holder = server->get_world()->get_pingus();
+    Result result;
+
+    result.plf    = server->get_plf();
+
+    result.saved  = pingu_holder->get_number_of_exited();
+    result.killed = pingu_holder->get_number_of_killed();
+    result.total  = server->get_plf().get_number_of_pingus();
+
+    result.needed = server->get_plf().get_number_to_save();
+
+    result.max_time  = server->get_plf().get_time();
+    result.used_time = server->get_time();
+
+    { // Write the savegame
+      Savegame savegame(result.plf.get_resname(),
+                        (result.saved >= result.needed) ? Savegame::FINISHED : Savegame::ACCESSIBLE,
+                        result.used_time,
+                        result.saved);
+      SavegameManager::instance()->store(savegame);
+    }
+
+    if (show_result_screen)
+      ScreenManager::instance()->replace_screen(new ResultScreen(result));
+    else
+      ScreenManager::instance()->pop_screen();
+
+  }
+  else
+  {
+    // how much time we have to account for while doing world updates
+    int time_passed = int(delta * 1000) + world_delay;
+    // how much time each world update represents
+    int update_time = game_speed;
+
+    // update the world (and the objects in it) in constant steps to account
+    // for the time the previous frame took
+
+    // invariant: world_updates - the number of times the world
+    // has been updated during this frame
+    int world_updates = 0;
+
+    while ((world_updates+1)*update_time <= time_passed)
     {
-      PinguHolder* pingu_holder = server->get_world()->get_pingus();
-      Result result;
-
-      result.plf    = server->get_plf();
-
-      result.saved  = pingu_holder->get_number_of_exited();
-      result.killed = pingu_holder->get_number_of_killed();
-      result.total  = server->get_plf().get_number_of_pingus();
-
-      result.needed = server->get_plf().get_number_to_save();
-
-      result.max_time  = server->get_plf().get_time();
-      result.used_time = server->get_time();
-
-      { // Write the savegame
-        Savegame savegame(result.plf.get_resname(),
-                          (result.saved >= result.needed) ? Savegame::FINISHED : Savegame::ACCESSIBLE,
-                          result.used_time,
-                          result.saved);
-        SavegameManager::instance()->store(savegame);
+      if (!pause)
+      {
+        if (fast_forward)
+        {
+          for (int i = 0; i < fast_forward_time_scale; ++i)
+            server->update();
+        }
+        else
+        {
+          server->update();
+        }
       }
 
-      if (show_result_screen)
-        ScreenManager::instance()->replace_screen(new ResultScreen(result));
-      else
-        ScreenManager::instance()->pop_screen();
-
+      world_updates++;
     }
-  else
-    {
-      // how much time we have to account for while doing world updates
-      int time_passed = int(delta * 1000) + world_delay;
-      // how much time each world update represents
-      int update_time = game_speed;
-
-      // update the world (and the objects in it) in constant steps to account
-      // for the time the previous frame took
-
-      // invariant: world_updates - the number of times the world
-      // has been updated during this frame
-      int world_updates = 0;
-
-      while ((world_updates+1)*update_time <= time_passed)
-        {
-          if (!pause)
-            {
-              if (fast_forward)
-                {
-                  for (int i = 0; i < fast_forward_time_scale; ++i)
-                    server->update();
-                }
-              else
-                {
-                  server->update();
-                }
-            }
-
-          world_updates++;
-        }
-      // save how far behind is the world compared to the actual time
-      // so that we can account for that while updating in the next frame
-      world_delay = time_passed - (world_updates*update_time);
-    }
+    // save how far behind is the world compared to the actual time
+    // so that we can account for that while updating in the next frame
+    world_delay = time_passed - (world_updates*update_time);
+  }
 }
 
 void
@@ -176,21 +176,21 @@ GameSession::draw_background (DrawingContext& gc)
   Rect rect = playfield->get_rect();
   
   if (rect != Rect(Vector2i(0,0), Size(Display::get_width(), Display::get_height())))
-    { // Draw a black border around the playfield when the playfield is smaller then the screen
-      Color border_color(0, 0, 0);
-      // top
-      gc.draw_fillrect(Rect(0, 0, Display::get_width(), rect.top),
-                       border_color);
-      // bottom
-      gc.draw_fillrect(Rect(0, rect.bottom, Display::get_width(), Display::get_height()),
-                       border_color);
-      // left
-      gc.draw_fillrect(Rect(0, rect.top, rect.left, rect.bottom),
-                       border_color);
-      // right
-      gc.draw_fillrect(Rect(rect.right, rect.top, Display::get_width(), rect.bottom),
-                       border_color);
-    }
+  { // Draw a black border around the playfield when the playfield is smaller then the screen
+    Color border_color(0, 0, 0);
+    // top
+    gc.draw_fillrect(Rect(0, 0, Display::get_width(), rect.top),
+                     border_color);
+    // bottom
+    gc.draw_fillrect(Rect(0, rect.bottom, Display::get_width(), Display::get_height()),
+                     border_color);
+    // left
+    gc.draw_fillrect(Rect(0, rect.top, rect.left, rect.bottom),
+                     border_color);
+    // right
+    gc.draw_fillrect(Rect(rect.right, rect.top, Display::get_width(), rect.bottom),
+                     border_color);
+  }
 }
 
 void
@@ -208,50 +208,50 @@ GameSession::update(const Input::Event& event)
   //std::cout << "Events: " << event.get_type () << std::endl;
 
   switch (event.type)
+  {
+    case Input::BUTTON_EVENT_TYPE:
     {
-      case Input::BUTTON_EVENT_TYPE:
+      const Input::ButtonEvent& ev = event.button;
+
+      if (ev.state == Input::BUTTON_PRESSED)
+      {
+        if (ev.name >= Input::ACTION_1_BUTTON && ev.name <= Input::ACTION_10_BUTTON)
         {
-          const Input::ButtonEvent& ev = event.button;
-
-          if (ev.state == Input::BUTTON_PRESSED)
-            {
-              if (ev.name >= Input::ACTION_1_BUTTON && ev.name <= Input::ACTION_10_BUTTON)
-                {
-                  button_panel->set_button(ev.name - Input::ACTION_1_BUTTON);
-                }
-              else if (ev.name == Input::ACTION_DOWN_BUTTON)
-                {
-                  button_panel->next_action();
-                }
-              else if (ev.name == Input::ACTION_UP_BUTTON)
-                {
-                  button_panel->previous_action();
-                }
-            }
+          button_panel->set_button(ev.name - Input::ACTION_1_BUTTON);
         }
-        break;
-
-      case Input::POINTER_EVENT_TYPE:
-        // Ignore, is handled in GUIScreen
-        break;
-
-      case Input::AXIS_EVENT_TYPE:
-        // ???
-        process_axis_event (event.axis);
-        break;
-
-      case Input::SCROLLER_EVENT_TYPE:
-        process_scroll_event(event.scroll);
-        break;
-
-      case Input::KEYBOARD_EVENT_TYPE:
-        break;
-
-      default:
-        // unhandled event
-        std::cout << "GameSession::process_events (): unhandled event: " << event.type << std::endl;
-        break;
+        else if (ev.name == Input::ACTION_DOWN_BUTTON)
+        {
+          button_panel->next_action();
+        }
+        else if (ev.name == Input::ACTION_UP_BUTTON)
+        {
+          button_panel->previous_action();
+        }
+      }
     }
+    break;
+
+    case Input::POINTER_EVENT_TYPE:
+      // Ignore, is handled in GUIScreen
+      break;
+
+    case Input::AXIS_EVENT_TYPE:
+      // ???
+      process_axis_event (event.axis);
+      break;
+
+    case Input::SCROLLER_EVENT_TYPE:
+      process_scroll_event(event.scroll);
+      break;
+
+    case Input::KEYBOARD_EVENT_TYPE:
+      break;
+
+    default:
+      // unhandled event
+      std::cout << "GameSession::process_events (): unhandled event: " << event.type << std::endl;
+      break;
+  }
 }
 
 void
@@ -328,13 +328,13 @@ GameSession::on_startup ()
     std::cout << "Starting Music: " << server->get_plf().get_music() << std::endl;
 
   if (server->get_plf().get_music() == "none")
-    {
-      Sound::PingusSound::stop_music();
-    }
+  {
+    Sound::PingusSound::stop_music();
+  }
   else
-    {
-      Sound::PingusSound::play_music(server->get_plf().get_music());
-    }
+  {
+    Sound::PingusSound::play_music(server->get_plf().get_music());
+  }
 }
 
 Actions::ActionName
@@ -385,7 +385,7 @@ GameSession::resize(const Size& size_)
   forward_button->set_rect(Rect(Vector2i(size.width - 40*2, size.height - 62),
                                 Size(38, 60)));
   pause_button->set_rect(Rect(Vector2i(size.width - 40*3, size.height - 62),
-                                Size(38, 60)));
+                              Size(38, 60)));
 
   small_map->set_rect(Rect(Vector2i(5, size.height - 105), Size(175, 100)));
 

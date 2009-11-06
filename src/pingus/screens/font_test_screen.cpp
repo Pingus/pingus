@@ -43,16 +43,16 @@ FontTestScreen::draw(DrawingContext& gc)
   int checker = 40;
   for(int y = 0; y < gc.get_height()/checker; y += 1)
     for(int x = 0; x < gc.get_width()/checker; x += 1)
-      {
-        if ((x+y) % 2 != 0)
-          gc.draw_fillrect(Rect(x*checker, y*checker,
-                                x*checker + checker, y*checker + checker),
-                           dark ? Color(50, 50, 50) : Color(255, 255, 255));
-        else
-          gc.draw_fillrect(Rect(x*checker, y*checker,
-                                x*checker + checker, y*checker + checker),
-                           dark ? Color(0, 0, 0) : Color(200,200,200));
-      }
+    {
+      if ((x+y) % 2 != 0)
+        gc.draw_fillrect(Rect(x*checker, y*checker,
+                              x*checker + checker, y*checker + checker),
+                         dark ? Color(50, 50, 50) : Color(255, 255, 255));
+      else
+        gc.draw_fillrect(Rect(x*checker, y*checker,
+                              x*checker + checker, y*checker + checker),
+                         dark ? Color(0, 0, 0) : Color(200,200,200));
+    }
 
   gc.print_left(Fonts::chalk_large, Vector2i(10, 10), "Pingus - Font Test");
 
@@ -60,42 +60,42 @@ FontTestScreen::draw(DrawingContext& gc)
   gc.translate(scroll.x, scroll.y);
 
   for(int i = 0; i < 256; ++i)
-    {
-      int x = 64 + (i%20)*(font.get_height() + 24);
-      int y = 64 + (i/20)*(font.get_height() + reference.get_height()*3);
+  {
+    int x = 64 + (i%20)*(font.get_height() + 24);
+    int y = 64 + (i/20)*(font.get_height() + reference.get_height()*3);
 
-      // print the actual character
-      gc.print_left(reference,
-		    Vector2i(x,
-                             y - reference.get_height()),
-                    std::string(1, char(i)));
-      // print the index number
-      gc.print_left(reference,
-		    Vector2i(x, 
-                             y + font.get_height()),
-		    StringUtil::to_string(i));
+    // print the actual character
+    gc.print_left(reference,
+                  Vector2i(x,
+                           y - reference.get_height()),
+                  std::string(1, char(i)));
+    // print the index number
+    gc.print_left(reference,
+                  Vector2i(x, 
+                           y + font.get_height()),
+                  StringUtil::to_string(i));
       
-      if (font.get_width(char(i)))
-        {
-          gc.draw_rect(Rect(x, y, 
-                            x+font.get_height(), 
-                            y+font.get_height()), 
-                       Color(0,0,255));
-          gc.draw_rect(Rect(x, y, 
-                            x + static_cast<int>(font.get_width(char(i))), 
-                            y + font.get_height()), 
-                       Color(255,0,255));
-          gc.print_left(font, Vector2i(x, y),
-                        std::string(1, char(i)));
-        }
-      else
-        {
-          gc.draw_rect(Rect(x, y, 
-                            x+font.get_height(), 
-                            y+font.get_height()), 
-                       Color(255,0,0));
-        }
+    if (font.get_width(char(i)))
+    {
+      gc.draw_rect(Rect(x, y, 
+                        x+font.get_height(), 
+                        y+font.get_height()), 
+                   Color(0,0,255));
+      gc.draw_rect(Rect(x, y, 
+                        x + static_cast<int>(font.get_width(char(i))), 
+                        y + font.get_height()), 
+                   Color(255,0,255));
+      gc.print_left(font, Vector2i(x, y),
+                    std::string(1, char(i)));
     }
+    else
+    {
+      gc.draw_rect(Rect(x, y, 
+                        x+font.get_height(), 
+                        y+font.get_height()), 
+                   Color(255,0,0));
+    }
+  }
   gc.pop_modelview();
 }
 
@@ -103,21 +103,21 @@ void
 FontTestScreen::update(const Input::Event& event)
 {
   switch (event.type)
-    {
-      case Input::BUTTON_EVENT_TYPE:
-        if (event.button.state == Input::BUTTON_PRESSED &&
-            event.button.name == Input::PRIMARY_BUTTON)
-          dark = !dark;
-        break;
+  {
+    case Input::BUTTON_EVENT_TYPE:
+      if (event.button.state == Input::BUTTON_PRESSED &&
+          event.button.name == Input::PRIMARY_BUTTON)
+        dark = !dark;
+      break;
             
-      case Input::SCROLLER_EVENT_TYPE:
-        scroll.x += static_cast<int>(event.scroll.x_delta);
-        scroll.y += static_cast<int>(event.scroll.y_delta);
-        break;
+    case Input::SCROLLER_EVENT_TYPE:
+      scroll.x += static_cast<int>(event.scroll.x_delta);
+      scroll.y += static_cast<int>(event.scroll.y_delta);
+      break;
           
-      default:
-        break;
-    }
+    default:
+      break;
+  }
 } 
 
 /* EOF */

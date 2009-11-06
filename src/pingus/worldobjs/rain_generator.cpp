@@ -40,28 +40,28 @@ void
 RainGenerator::draw (SceneContext& gc)
 {
   if (do_thunder)
-    {
-      if (thunder_count < 0.0f) {
-      	do_thunder = false;
-      	thunder_count = 0.0f;
-      	waiter_count = 1.0f;
-      }
-
-      gc.color().fill_screen(Color(255, 255, 255, static_cast<uint8_t>(thunder_count*255)));
+  {
+    if (thunder_count < 0.0f) {
+      do_thunder = false;
+      thunder_count = 0.0f;
+      waiter_count = 1.0f;
     }
+
+    gc.color().fill_screen(Color(255, 255, 255, static_cast<uint8_t>(thunder_count*255)));
+  }
 }
 
 void
 RainGenerator::update()
 {
   if (waiter_count < 0.0f && rand () % 150 == 0)
-    {
-      std::cout << "Doing thunder" << std::endl;
-      do_thunder = true;
-      thunder_count = 1.0f;
-      waiter_count = 1.0f;
-      Sound::PingusSound::play_sound ("sounds/thunder.wav");
-    }
+  {
+    std::cout << "Doing thunder" << std::endl;
+    do_thunder = true;
+    thunder_count = 1.0f;
+    waiter_count = 1.0f;
+    Sound::PingusSound::play_sound ("sounds/thunder.wav");
+  }
 
   if (do_thunder)
     thunder_count -= 10.0f * 0.025f;

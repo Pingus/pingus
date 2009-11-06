@@ -96,35 +96,35 @@ ActionProperties::set_level(EditorLevel* level_)
   level = level_;
 
   for(ActionComponents::iterator i = action_comps.begin(); i != action_comps.end(); ++i)
-    {
-      i->second.inputbox->set_text("20");
-      i->second.checkbox->set_checked(false);
-    }
+  {
+    i->second.inputbox->set_text("20");
+    i->second.checkbox->set_checked(false);
+  }
 
   std::map<std::string, int> actions = level->get_actions();
   for(std::map<std::string, int>::iterator i = actions.begin(); i != actions.end(); ++i)
+  {
+    ActionComponents::iterator j = action_comps.find(Actions::action_from_string(i->first));
+    if (j != action_comps.end())
     {
-      ActionComponents::iterator j = action_comps.find(Actions::action_from_string(i->first));
-      if (j != action_comps.end())
-        {
-          j->second.inputbox->set_text(StringUtil::to_string(i->second));
-          j->second.checkbox->set_checked(true);
-        }
+      j->second.inputbox->set_text(StringUtil::to_string(i->second));
+      j->second.checkbox->set_checked(true);
     }
+  }
 }
 
 void
 ActionProperties::on_checkbox_change(bool t, Actions::ActionName id)
 {
   if (t)
-    {
-      level->set_action(Actions::action_to_string(id), 
-                        StringUtil::to<int>(action_comps[id].inputbox->get_text()));
-    }
+  {
+    level->set_action(Actions::action_to_string(id), 
+                      StringUtil::to<int>(action_comps[id].inputbox->get_text()));
+  }
   else
-    {
-      level->set_action(Actions::action_to_string(id), 0);
-    }
+  {
+    level->set_action(Actions::action_to_string(id), 0);
+  }
 }
 
 void

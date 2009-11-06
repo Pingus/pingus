@@ -65,9 +65,9 @@ public:
     float c_speed = speed;
     
     if (speed_button && speed_button->get_state() == BUTTON_PRESSED)
-      {
-        c_speed *= 5.0f;
-      }
+    {
+      c_speed *= 5.0f;
+    }
 
     new_pos.x += x_axis->get_pos() * c_speed * delta;
     new_pos.y += y_axis->get_pos() * c_speed * delta;
@@ -77,10 +77,10 @@ public:
     new_pos.y = Math::clamp(0.0f, new_pos.y, static_cast<float>(Display::get_height()));
 
     if (new_pos != pos)
-      {
-        pos = new_pos;
-        notify_parent();
-      }
+    {
+      pos = new_pos;
+      notify_parent();
+    }
   }
 
 private:
@@ -130,9 +130,9 @@ public:
     float    c_speed = speed;
     
     if (speed_button && speed_button->get_state() == BUTTON_PRESSED)
-      {
-        c_speed *= 5.0f;
-      }
+    {
+      c_speed *= 5.0f;
+    }
 
     this->delta.x = -x_axis->get_pos() * c_speed * delta_;
     this->delta.y = y_axis->get_pos() * c_speed * delta_;
@@ -227,146 +227,146 @@ Scroller*
 CoreDriver::create_scroller(const FileReader& reader, Control* parent)
 {
   if (reader.get_name() == "core:axis-scroller") 
-    {
-      AxisScroller* axis = new AxisScroller(parent);
+  {
+    AxisScroller* axis = new AxisScroller(parent);
 
-      FileReader x_reader;
-      if (!reader.read_section("x-axis", x_reader))
-        {
-          std::cout << "CoreDriver: Couldn't find x-axis" << std::endl;
-          delete axis;
-          return 0;
-        }
+    FileReader x_reader;
+    if (!reader.read_section("x-axis", x_reader))
+    {
+      std::cout << "CoreDriver: Couldn't find x-axis" << std::endl;
+      delete axis;
+      return 0;
+    }
     
-      FileReader y_reader;
-      if (!reader.read_section("y-axis", y_reader))
-        {
-          std::cout << "CoreDriver: Couldn't find y-axis" << std::endl;
-          delete axis;
-          return 0;       
-        }
-
-      Axis* x_axis = manager->create_axis(x_reader.get_sections().front(), axis);
-      Axis* y_axis = manager->create_axis(y_reader.get_sections().front(), axis);
-
-      Button* button = 0;
-      FileReader button_reader;
-      if (reader.read_section("button", button_reader))
-        {
-          button = manager->create_button(button_reader.get_sections().front(), axis);
-        }
-
-      if (x_axis && y_axis)
-        {
-          axis->setup(x_axis, y_axis, button);
-          return axis;
-        }
-      else
-        {
-          return 0;
-        }
-    }
-  else if (reader.get_name() == "core:button-scroller")
+    FileReader y_reader;
+    if (!reader.read_section("y-axis", y_reader))
     {
-      ButtonScroller* scroller = new ButtonScroller(parent);
-
-      FileReader left_reader;
-      if (!reader.read_section("left", left_reader))
-        {
-          std::cout << "CoreDriver: core:button-scroller: Couldn't find 'left'" << std::endl;
-          delete scroller;
-          return 0;
-        }
-
-      FileReader right_reader;
-      if (!reader.read_section("right", right_reader))
-        {
-          std::cout << "CoreDriver: core:button-scroller: Couldn't find 'right'" << std::endl;
-          delete scroller;
-          return 0;
-        }
-
-      FileReader up_reader;
-      if (!reader.read_section("up", up_reader))
-        {
-          std::cout << "CoreDriver: core:button-scroller: Couldn't find 'up'" << std::endl;
-          delete scroller;
-          return 0;
-        }
-
-      FileReader down_reader;
-      if (!reader.read_section("down", down_reader))
-        {
-          std::cout << "CoreDriver: core:button-scroller: Couldn't find 'down'" << std::endl;
-          delete scroller;
-          return 0;
-        }
-      
-      // FIXME: Add more error checking
-      Button* up_button    = manager->create_button(up_reader.get_sections().front(),    scroller);
-      Button* down_button  = manager->create_button(down_reader.get_sections().front(),  scroller);
-      Button* left_button  = manager->create_button(left_reader.get_sections().front(),  scroller);
-      Button* right_button = manager->create_button(right_reader.get_sections().front(), scroller);
-
-      scroller->setup(up_button,
-                      down_button,
-                      left_button,
-                      right_button);
-      return scroller;
+      std::cout << "CoreDriver: Couldn't find y-axis" << std::endl;
+      delete axis;
+      return 0;       
     }
-  else 
+
+    Axis* x_axis = manager->create_axis(x_reader.get_sections().front(), axis);
+    Axis* y_axis = manager->create_axis(y_reader.get_sections().front(), axis);
+
+    Button* button = 0;
+    FileReader button_reader;
+    if (reader.read_section("button", button_reader))
+    {
+      button = manager->create_button(button_reader.get_sections().front(), axis);
+    }
+
+    if (x_axis && y_axis)
+    {
+      axis->setup(x_axis, y_axis, button);
+      return axis;
+    }
+    else
     {
       return 0;
     }
+  }
+  else if (reader.get_name() == "core:button-scroller")
+  {
+    ButtonScroller* scroller = new ButtonScroller(parent);
+
+    FileReader left_reader;
+    if (!reader.read_section("left", left_reader))
+    {
+      std::cout << "CoreDriver: core:button-scroller: Couldn't find 'left'" << std::endl;
+      delete scroller;
+      return 0;
+    }
+
+    FileReader right_reader;
+    if (!reader.read_section("right", right_reader))
+    {
+      std::cout << "CoreDriver: core:button-scroller: Couldn't find 'right'" << std::endl;
+      delete scroller;
+      return 0;
+    }
+
+    FileReader up_reader;
+    if (!reader.read_section("up", up_reader))
+    {
+      std::cout << "CoreDriver: core:button-scroller: Couldn't find 'up'" << std::endl;
+      delete scroller;
+      return 0;
+    }
+
+    FileReader down_reader;
+    if (!reader.read_section("down", down_reader))
+    {
+      std::cout << "CoreDriver: core:button-scroller: Couldn't find 'down'" << std::endl;
+      delete scroller;
+      return 0;
+    }
+      
+    // FIXME: Add more error checking
+    Button* up_button    = manager->create_button(up_reader.get_sections().front(),    scroller);
+    Button* down_button  = manager->create_button(down_reader.get_sections().front(),  scroller);
+    Button* left_button  = manager->create_button(left_reader.get_sections().front(),  scroller);
+    Button* right_button = manager->create_button(right_reader.get_sections().front(), scroller);
+
+    scroller->setup(up_button,
+                    down_button,
+                    left_button,
+                    right_button);
+    return scroller;
+  }
+  else 
+  {
+    return 0;
+  }
 }
 
 Pointer*
 CoreDriver::create_pointer(const FileReader& reader, Control* parent)
 {
   if (reader.get_name() == "core:axis-pointer") 
+  {
+    AxisPointer* axis = new AxisPointer(parent);
+
+    FileReader x_reader;
+    if (!reader.read_section("x-axis", x_reader))
     {
-      AxisPointer* axis = new AxisPointer(parent);
-
-      FileReader x_reader;
-      if (!reader.read_section("x-axis", x_reader))
-        {
-          std::cout << "CoreDriver: Couldn't find x-axis" << std::endl;
-          delete axis;
-          return 0;
-        }
+      std::cout << "CoreDriver: Couldn't find x-axis" << std::endl;
+      delete axis;
+      return 0;
+    }
     
-      FileReader y_reader;
-      if (!reader.read_section("y-axis", y_reader))
-        {
-          std::cout << "CoreDriver: Couldn't find y-axis" << std::endl;
-          delete axis;
-          return 0;       
-        }
+    FileReader y_reader;
+    if (!reader.read_section("y-axis", y_reader))
+    {
+      std::cout << "CoreDriver: Couldn't find y-axis" << std::endl;
+      delete axis;
+      return 0;       
+    }
 
-      Axis* x_axis = manager->create_axis(x_reader.get_sections().front(), axis);
-      Axis* y_axis = manager->create_axis(y_reader.get_sections().front(), axis);
+    Axis* x_axis = manager->create_axis(x_reader.get_sections().front(), axis);
+    Axis* y_axis = manager->create_axis(y_reader.get_sections().front(), axis);
 
-      Button* button = 0;
-      FileReader button_reader;
-      if (reader.read_section("button", button_reader))
-        {
-          button = manager->create_button(button_reader.get_sections().front(), axis);
-        }
+    Button* button = 0;
+    FileReader button_reader;
+    if (reader.read_section("button", button_reader))
+    {
+      button = manager->create_button(button_reader.get_sections().front(), axis);
+    }
 
-      if (x_axis && y_axis)
-        {
-          axis->setup(x_axis, y_axis, button);
-          return axis;
-        }
-      else
-        {
-          return 0;
-        }
-    } 
-  else 
+    if (x_axis && y_axis)
+    {
+      axis->setup(x_axis, y_axis, button);
+      return axis;
+    }
+    else
     {
       return 0;
     }
+  } 
+  else 
+  {
+    return 0;
+  }
 }
 
 Keyboard*

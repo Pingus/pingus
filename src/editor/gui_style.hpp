@@ -25,7 +25,7 @@ namespace Editor {
 class GUIStyle
 {
 private:
-public:
+  public:
   static void draw_raised_box(DrawingContext& gc, const Rect& rect,
                               const Color& color = Color(237, 233, 227), int border = 1);
   static void draw_lowered_box(DrawingContext& gc, const Rect& rect, 

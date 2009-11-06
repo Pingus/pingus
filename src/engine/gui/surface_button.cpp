@@ -23,9 +23,9 @@
 namespace GUI {
 
 SurfaceButton::SurfaceButton (int arg_x_pos, int arg_y_pos,
-			      const std::string& arg_button_surface,
-			      const std::string& arg_button_pressed_surface,
-			      const std::string& arg_button_mouse_over_surface) :
+                              const std::string& arg_button_surface,
+                              const std::string& arg_button_pressed_surface,
+                              const std::string& arg_button_mouse_over_surface) :
   x_pos (arg_x_pos), 
   y_pos (arg_y_pos), 
   button_surface(),

@@ -29,7 +29,7 @@ Collider::~Collider()
 }
 
 bool Collider::operator() (World* const world, Vector3f current_pos,
-			    const Vector3f& step_vector) const
+                           const Vector3f& step_vector) const
 {
   return false;
 }

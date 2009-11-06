@@ -44,72 +44,72 @@ WiimoteDriver::update(float delta)
 
   std::vector<WiimoteEvent> events = wiimote->pop_events();
   for(std::vector<WiimoteEvent>::iterator i = events.begin(); i != events.end(); ++i)
+  {
+    WiimoteEvent& event = *i;
+    if (event.type == WiimoteEvent::WIIMOTE_BUTTON_EVENT)
     {
-      WiimoteEvent& event = *i;
-      if (event.type == WiimoteEvent::WIIMOTE_BUTTON_EVENT)
-        {
-          pout(PINGUS_DEBUG_INPUT) << "WiimoteDriver: (wiimote:button (button "
-                                   << event.button.button << ")) => "
-                                   << event.button.down << std::endl;
+      pout(PINGUS_DEBUG_INPUT) << "WiimoteDriver: (wiimote:button (button "
+                               << event.button.button << ")) => "
+                               << event.button.down << std::endl;
                   
-          for (std::vector<ButtonBinding>::const_iterator j = button_bindings.begin();
-               j != button_bindings.end();
-               ++j)
-            {
-              if (event.button.button == j->button)
-                {
-                  j->binding->set_state(event.button.down ? BUTTON_PRESSED : BUTTON_RELEASED);
-                }
-            }
-        }
-      else if (event.type == WiimoteEvent::WIIMOTE_AXIS_EVENT)
+      for (std::vector<ButtonBinding>::const_iterator j = button_bindings.begin();
+           j != button_bindings.end();
+           ++j)
+      {
+        if (event.button.button == j->button)
         {
-          pout(PINGUS_DEBUG_INPUT) << "WiimoteDriver: (wiimote:axis (axis "
-                                   << event.axis.axis << ")) => " 
-                                   << event.axis.pos
-                                   << std::endl; // Fixme: should output string
-
-          for (std::vector<AxisBinding>::const_iterator j = axis_bindings.begin();
-               j != axis_bindings.end(); ++j)
-            {
-              if (event.axis.axis == j->axis)
-                {
-                  j->binding->set_state(event.axis.pos);
-                }
-            }
+          j->binding->set_state(event.button.down ? BUTTON_PRESSED : BUTTON_RELEASED);
         }
-#if 0
-      else if (event.type == WiimoteEvent::WIIMOTE_ACC_EVENT)
-        {
-          if (event.acc.accelerometer == 0)
-            {
-              if (0)
-                printf("%d - %6.3f %6.3f %6.3f\n",  
-                       event.acc.accelerometer,
-                       event.acc.x,
-                       event.acc.y,
-                       event.acc.z);
-                 
-              float roll = atan(event.acc.x/event.acc.z);
-              if (event.acc.z <= 0.0) {
-                roll += M_PI * ((event.acc.x > 0.0) ? 1 : -1);
-              }
-              roll *= -1;
-
-              float pitch = atan(event.acc.y/event.acc.z*cos(roll));
-
-              add_axis_event(X2_AXIS, math::mid(-1.0f, -float(pitch / M_PI), 1.0f));
-              add_axis_event(Y2_AXIS, math::mid(-1.0f, -float(roll  / M_PI), 1.0f));
-
-              std::cout << boost::format("%|6.3f| %|6.3f|") % pitch % roll << std::endl;
-            }
-        }
-      else
-        {
-          assert(!"Never reached");
-        }
-#endif
+      }
     }
+    else if (event.type == WiimoteEvent::WIIMOTE_AXIS_EVENT)
+    {
+      pout(PINGUS_DEBUG_INPUT) << "WiimoteDriver: (wiimote:axis (axis "
+                               << event.axis.axis << ")) => " 
+                               << event.axis.pos
+                               << std::endl; // Fixme: should output string
+
+      for (std::vector<AxisBinding>::const_iterator j = axis_bindings.begin();
+           j != axis_bindings.end(); ++j)
+      {
+        if (event.axis.axis == j->axis)
+        {
+          j->binding->set_state(event.axis.pos);
+        }
+      }
+    }
+#if 0
+    else if (event.type == WiimoteEvent::WIIMOTE_ACC_EVENT)
+    {
+      if (event.acc.accelerometer == 0)
+      {
+        if (0)
+          printf("%d - %6.3f %6.3f %6.3f\n",  
+                 event.acc.accelerometer,
+                 event.acc.x,
+                 event.acc.y,
+                 event.acc.z);
+                 
+        float roll = atan(event.acc.x/event.acc.z);
+        if (event.acc.z <= 0.0) {
+          roll += M_PI * ((event.acc.x > 0.0) ? 1 : -1);
+        }
+        roll *= -1;
+
+        float pitch = atan(event.acc.y/event.acc.z*cos(roll));
+
+        add_axis_event(X2_AXIS, math::mid(-1.0f, -float(pitch / M_PI), 1.0f));
+        add_axis_event(Y2_AXIS, math::mid(-1.0f, -float(roll  / M_PI), 1.0f));
+
+        std::cout << boost::format("%|6.3f| %|6.3f|") % pitch % roll << std::endl;
+      }
+    }
+    else
+    {
+      assert(!"Never reached");
+    }
+#endif
+  }
 }
 
 Button*
@@ -117,34 +117,34 @@ WiimoteDriver::create_button(const FileReader& reader, Control* parent)
 {
   std::string button;
   if (reader.get_name() == "wiimote:button")
+  {
+    if (!reader.read_string("button", button))
     {
-      if (!reader.read_string("button", button))
-        {
-          std::cout << "WiimoteDriver: 'button' tag missing" << std::endl;
-          return 0;
-        }
-      else
-        {
-          int button_id = Wiimote::str2id(StringUtil::to_lower(button));
-          
-          if (button_id == Wiimote::UNKNOWN)
-            {
-              std::cout << "Error: WiimoteDriver: unknown button: " << button << std::endl;
-              return 0;
-            }
-
-          ButtonBinding binding;
-          binding.binding = new Button(parent);
-          binding.button = button_id;
-          button_bindings.push_back(binding);
-
-          return binding.binding;
-        }
-    }
-  else
-    {
+      std::cout << "WiimoteDriver: 'button' tag missing" << std::endl;
       return 0;
     }
+    else
+    {
+      int button_id = Wiimote::str2id(StringUtil::to_lower(button));
+          
+      if (button_id == Wiimote::UNKNOWN)
+      {
+        std::cout << "Error: WiimoteDriver: unknown button: " << button << std::endl;
+        return 0;
+      }
+
+      ButtonBinding binding;
+      binding.binding = new Button(parent);
+      binding.button = button_id;
+      button_bindings.push_back(binding);
+
+      return binding.binding;
+    }
+  }
+  else
+  {
+    return 0;
+  }
 }
 
 Axis*
@@ -152,38 +152,38 @@ WiimoteDriver::create_axis(const FileReader& reader, Control* parent)
 {
   std::string axis;
   if (reader.get_name() == "wiimote:axis")
+  {
+    if (!reader.read_string("axis", axis))
     {
-      if (!reader.read_string("axis", axis))
-        {
-          std::cout << "WiimoteDriver: 'axis' tag missing" << std::endl;
-          return 0;
-        }
-      else
-        {
-          axis = StringUtil::to_lower(axis);
-          int axis_id = 0;
-          if (axis == "nunchuk:x")
-            axis_id = 0;
-          else if (axis == "nunchuk:y")
-            axis_id = 1;
-          else
-            {
-              std::cout << "WiimoteDriver: unknown axis name: " << axis << std::endl;
-              return 0;
-            }
-
-          AxisBinding binding;
-          binding.binding = new Axis(parent);
-          binding.axis = axis_id;
-          axis_bindings.push_back(binding);
-
-          return binding.binding;
-        }
-    }
-  else
-    {
+      std::cout << "WiimoteDriver: 'axis' tag missing" << std::endl;
       return 0;
     }
+    else
+    {
+      axis = StringUtil::to_lower(axis);
+      int axis_id = 0;
+      if (axis == "nunchuk:x")
+        axis_id = 0;
+      else if (axis == "nunchuk:y")
+        axis_id = 1;
+      else
+      {
+        std::cout << "WiimoteDriver: unknown axis name: " << axis << std::endl;
+        return 0;
+      }
+
+      AxisBinding binding;
+      binding.binding = new Axis(parent);
+      binding.axis = axis_id;
+      axis_bindings.push_back(binding);
+
+      return binding.binding;
+    }
+  }
+  else
+  {
+    return 0;
+  }
 }
 
 Scroller*

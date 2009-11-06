@@ -45,23 +45,23 @@ TimeDisplay::draw (DrawingContext& gc)
   std::string time_string;
 
   if (server->get_plf().get_time() == -1 && !(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
-    {
-      // No need for this
-      //gc.draw(infinity_symbol, static_cast<float>(Display::get_width()
-      //                                            - infinity_symbol.get_width() - 6), 2.0f, 150.0f);
-    }
+  {
+    // No need for this
+    //gc.draw(infinity_symbol, static_cast<float>(Display::get_width()
+    //                                            - infinity_symbol.get_width() - 6), 2.0f, 150.0f);
+  }
   else
+  {
+    if (!(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
+      time_string = GameTime::ticks_to_realtime_string(time_value);
+    else
     {
-      if (!(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
-        time_string = GameTime::ticks_to_realtime_string(time_value);
-      else
-        {
-          time_value = server->get_world()->get_time();
-          time_string = StringUtil::to_string(time_value);
-        }
-
-      gc.print_right(font, Vector2i(Display::get_width() - 30, 3), time_string, 150);
+      time_value = server->get_world()->get_time();
+      time_string = StringUtil::to_string(time_value);
     }
+
+    gc.print_right(font, Vector2i(Display::get_width() - 30, 3), time_string, 150);
+  }
 }
 
 /* EOF */

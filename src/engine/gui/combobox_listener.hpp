@@ -18,16 +18,16 @@
 #define HEADER_PINGUS_ENGINE_GUI_COMBOBOX_LISTENER_HPP
 
 namespace GUI {
-	
-	class Combobox;
+        
+class Combobox;
 
 class ComboboxListener {
 public:
-	virtual void combobox_changed(Combobox* box) = 0;
-	virtual ~ComboboxListener() { }
-};	// ComboboxListener class
+  virtual void combobox_changed(Combobox* box) = 0;
+  virtual ~ComboboxListener() { }
+};      // ComboboxListener class
 
-}	// GUI namespace
+}       // GUI namespace
 
 #endif
 

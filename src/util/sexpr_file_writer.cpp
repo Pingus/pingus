@@ -80,26 +80,26 @@ SExprFileWriter::write_bool(const char* name, bool value)
 void
 SExprFileWriter::write_string(const char* name, const std::string& value)
 {
-	// Perform basic XML encoding (turns apostrophes into &apos;, etc.
-	std::string new_value = value;
-	std::string::size_type pos;
+  // Perform basic XML encoding (turns apostrophes into &apos;, etc.
+  std::string new_value = value;
+  std::string::size_type pos;
 
-	std::map<std::string, std::string> replacements;
-	
-	replacements["\""] = "\\\"";
-	replacements["\\"] = "\\\\";
+  std::map<std::string, std::string> replacements;
+        
+  replacements["\""] = "\\\"";
+  replacements["\\"] = "\\\\";
 
-	for (std::map<std::string, std::string>::iterator i = replacements.begin();
-		i != replacements.end(); i++)
-	{
-		for (pos = new_value.find(i->first); pos != std::string::npos; pos = new_value.find(i->first))
-		{
-			// Replace character with encoding characters
-			new_value.replace(pos, 1, i->second);
-		}
-	}
-	
-	(*out) << "\n" << indent() << "(" << name << " \"" << new_value << "\")";
+  for (std::map<std::string, std::string>::iterator i = replacements.begin();
+       i != replacements.end(); i++)
+  {
+    for (pos = new_value.find(i->first); pos != std::string::npos; pos = new_value.find(i->first))
+    {
+      // Replace character with encoding characters
+      new_value.replace(pos, 1, i->second);
+    }
+  }
+        
+  (*out) << "\n" << indent() << "(" << name << " \"" << new_value << "\")";
 }
 
 void

@@ -36,60 +36,60 @@ CommandLine::CommandLine() :
 
 CommandLine::~CommandLine()
 {
-	delete impl;
+  delete impl;
 }
 
 void CommandLine::parse_args(int argc, char** argv)
 {
-	impl->parse_args(argc, argv);
+  impl->parse_args(argc, argv);
 }
 
 void CommandLine::print_help()
 {
-	impl->print_help();
+  impl->print_help();
 }
 
 void CommandLine::set_help_indent(int i)
 {
-	impl->set_help_indent(i);
+  impl->set_help_indent(i);
 }
 
 void CommandLine::add_usage(const std::string& usage)
 {
-	impl->add_usage(usage);
+  impl->add_usage(usage);
 }
 
 void CommandLine::add_doc(const std::string& doc)
 {
-	impl->add_doc(doc);
+  impl->add_doc(doc);
 }
 
 void CommandLine::add_group(const std::string& grouptopic)
 {
-	impl->add_group(grouptopic);
+  impl->add_group(grouptopic);
 }
 
 void CommandLine::add_option(
-	int key, 
-	const std::string& long_option, 
-	const std::string& argument,
-	const std::string& help,
-	bool visible)
+  int key, 
+  const std::string& long_option, 
+  const std::string& argument,
+  const std::string& help,
+  bool visible)
 {
-	impl->add_option(key, long_option, argument, help, visible);
+  impl->add_option(key, long_option, argument, help, visible);
 }
 
 bool CommandLine::next()
 {
-	return impl->next();
+  return impl->next();
 }
 
 int CommandLine::get_key()
 {
-	return impl->get_key();
+  return impl->get_key();
 }
 
 std::string CommandLine::get_argument()
 {
-	return impl->get_argument();
+  return impl->get_argument();
 }

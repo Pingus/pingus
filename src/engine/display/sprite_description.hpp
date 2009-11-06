@@ -66,9 +66,9 @@ public:
     reader.read_enum("origin", origin, string2origin);
     
     if (!reader.read_path("image-file",  filename))
-      {
-        std::cout << "Error: SpriteDescription: " << reader.get_name() << " 'image-file' missing" << std::endl;
-      }    
+    {
+      std::cout << "Error: SpriteDescription: " << reader.get_name() << " 'image-file' missing" << std::endl;
+    }    
 
     filename = Pathname("data/" + filename.get_raw_path(), filename.get_type()); // FIXME: Hack
     reader.read_size("image-array", array);

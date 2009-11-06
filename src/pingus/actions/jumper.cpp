@@ -27,9 +27,9 @@ Jumper::Jumper (Pingu* p) :
   sprite()
 {
   sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
-                                                      pingu->get_owner_str() + "/jumper/left"));
+                                       pingu->get_owner_str() + "/jumper/left"));
   sprite.load(Direction::RIGHT, Sprite("pingus/player" + 
-                                                      pingu->get_owner_str() + "/jumper/right"));
+                                       pingu->get_owner_str() + "/jumper/right"));
 }
 
 void
@@ -46,13 +46,13 @@ Jumper::update ()
     pingu->direction.change();
   
   if (pingu->direction.is_left())
-    {
-      pingu->set_velocity(pingu->get_velocity() + Vector3f(-5.0, -5.0));
-    }
+  {
+    pingu->set_velocity(pingu->get_velocity() + Vector3f(-5.0, -5.0));
+  }
   else // if (pingu->direction.is_right())
-    {
-      pingu->set_velocity(pingu->get_velocity() + Vector3f(5.0, -5.0));
-    }
+  {
+    pingu->set_velocity(pingu->get_velocity() + Vector3f(5.0, -5.0));
+  }
 
   // Move the pingu in the air, so that it can start 'falling'
   pingu->set_y(pingu->get_y() - 1);

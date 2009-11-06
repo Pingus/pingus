@@ -39,9 +39,9 @@ public:
            sexpr->get_list_size() >= 1);
     
     for(size_t i = 1; i < sexpr->get_list_size(); ++i)
-      { // iterate over subsections
-        sexpr->get_list_elem(i);
-      }
+    { // iterate over subsections
+      sexpr->get_list_elem(i);
+    }
   }
 
   ~SExprFileReaderImpl()
@@ -58,10 +58,10 @@ public:
   {
     boost::shared_ptr<lisp::Lisp> item = get_subsection_item(name);
     if (item && item->get_type() == lisp::Lisp::TYPE_INT)
-      {
-        v = item->get_int();
-        return true;
-      }
+    {
+      v = item->get_int();
+      return true;
+    }
     return false;
   }
 
@@ -69,22 +69,22 @@ public:
   {
     boost::shared_ptr<lisp::Lisp> item = get_subsection_item(name);
     if (item)
+    {
+      if (item->get_type() == lisp::Lisp::TYPE_FLOAT)
       {
-        if (item->get_type() == lisp::Lisp::TYPE_FLOAT)
-          {
-            v = item->get_float();
-            return true;
-          }
-        else if (item->get_type() == lisp::Lisp::TYPE_INT)
-          {
-            v = (float)item->get_int();
-            return true;
-          }
-        else
-          {
-            return false;
-          }
+        v = item->get_float();
+        return true;
       }
+      else if (item->get_type() == lisp::Lisp::TYPE_INT)
+      {
+        v = (float)item->get_int();
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
     return false;
   }
 
@@ -92,15 +92,15 @@ public:
   {
     boost::shared_ptr<lisp::Lisp> item = get_subsection_item(name);
     if (item && item->get_type() == lisp::Lisp::TYPE_BOOL)
-      {
-        v = item->get_bool();
-        return true;
-      }
+    {
+      v = item->get_bool();
+      return true;
+    }
     else if (item && item->get_type() == lisp::Lisp::TYPE_INT)
-      {
-        v = item->get_int();
-        return true;
-      }
+    {
+      v = item->get_int();
+      return true;
+    }
     return false;
   }
 
@@ -108,22 +108,22 @@ public:
   {
     boost::shared_ptr<lisp::Lisp> sub = get_subsection(name);
     if (sub)
+    {
+      v = "";
+      for(size_t i = 1; i < sub->get_list_size(); ++i)
       {
-        v = "";
-        for(size_t i = 1; i < sub->get_list_size(); ++i)
-          {
-	    boost::shared_ptr<lisp::Lisp> item = sub->get_list_elem(i);
-            if (item->get_type() == lisp::Lisp::TYPE_STRING)
-              {
-                v += item->get_string();
-              }
-            else if (item->get_type() == lisp::Lisp::TYPE_SYMBOL)
-              {
-                v += item->get_symbol();
-              }
-          }
-        return true;
+        boost::shared_ptr<lisp::Lisp> item = sub->get_list_elem(i);
+        if (item->get_type() == lisp::Lisp::TYPE_STRING)
+        {
+          v += item->get_string();
+        }
+        else if (item->get_type() == lisp::Lisp::TYPE_SYMBOL)
+        {
+          v += item->get_symbol();
+        }
       }
+      return true;
+    }
     return false;
   }
 
@@ -131,12 +131,12 @@ public:
   {
     boost::shared_ptr<lisp::Lisp> sub = get_subsection(name);
     if (sub && sub->get_list_size() == 4)
-      {
-        v = Vector3f(sub->get_list_elem(1)->get_float(),
-                     sub->get_list_elem(2)->get_float(),
-                     sub->get_list_elem(3)->get_float());
-        return true;
-      }    
+    {
+      v = Vector3f(sub->get_list_elem(1)->get_float(),
+                   sub->get_list_elem(2)->get_float(),
+                   sub->get_list_elem(3)->get_float());
+      return true;
+    }    
     return false;
   }
 
@@ -144,11 +144,11 @@ public:
   {
     boost::shared_ptr<lisp::Lisp> sub = get_subsection(name);
     if (sub && sub->get_list_size() == 3)
-      {
-        v.width  = sub->get_list_elem(1)->get_int();
-        v.height = sub->get_list_elem(2)->get_int();
-        return true;
-      }    
+    {
+      v.width  = sub->get_list_elem(1)->get_int();
+      v.height = sub->get_list_elem(2)->get_int();
+      return true;
+    }    
     return false;
   }
 
@@ -156,11 +156,11 @@ public:
   {
     boost::shared_ptr<lisp::Lisp> sub = get_subsection(name);
     if (sub && sub->get_list_size() == 3)
-      {
-        v.x = sub->get_list_elem(1)->get_int();
-        v.y = sub->get_list_elem(2)->get_int();
-        return true;
-      }    
+    {
+      v.x = sub->get_list_elem(1)->get_int();
+      v.y = sub->get_list_elem(2)->get_int();
+      return true;
+    }    
     return false;
   }
 
@@ -168,13 +168,13 @@ public:
   {
     boost::shared_ptr<lisp::Lisp> sub = get_subsection(name);
     if (sub && sub->get_list_size() == 5)
-      {
-        rect.left   = sub->get_list_elem(1)->get_int();
-        rect.top    = sub->get_list_elem(2)->get_int();
-        rect.right  = sub->get_list_elem(3)->get_int();
-        rect.bottom = sub->get_list_elem(4)->get_int();
-        return true;
-      }    
+    {
+      rect.left   = sub->get_list_elem(1)->get_int();
+      rect.top    = sub->get_list_elem(2)->get_int();
+      rect.right  = sub->get_list_elem(3)->get_int();
+      rect.bottom = sub->get_list_elem(4)->get_int();
+      return true;
+    }    
     return false;
   }
   
@@ -182,13 +182,13 @@ public:
   {
     boost::shared_ptr<lisp::Lisp> sub = get_subsection(name);
     if (sub && sub->get_list_size() == 5)
-      {
-        v = Color(static_cast<char>(sub->get_list_elem(1)->get_float() * 255),
-                  static_cast<char>(sub->get_list_elem(2)->get_float() * 255),
-                  static_cast<char>(sub->get_list_elem(3)->get_float() * 255),
-                  static_cast<char>(sub->get_list_elem(4)->get_float() * 255));
-        return true;
-      }
+    {
+      v = Color(static_cast<char>(sub->get_list_elem(1)->get_float() * 255),
+                static_cast<char>(sub->get_list_elem(2)->get_float() * 255),
+                static_cast<char>(sub->get_list_elem(3)->get_float() * 255),
+                static_cast<char>(sub->get_list_elem(4)->get_float() * 255));
+      return true;
+    }
     return false;
   }
 
@@ -196,12 +196,12 @@ public:
   {
     boost::shared_ptr<lisp::Lisp> sub = get_subsection(name);
     if (sub)
-      {
-        SExprFileReader reader(sub);
-        reader.read_string("image",  v.res_name);
-        reader.read_enum("modifier", v.modifier, ResourceModifierNS::rs_from_string);
-        return true;
-      }
+    {
+      SExprFileReader reader(sub);
+      reader.read_string("image",  v.res_name);
+      reader.read_enum("modifier", v.modifier, ResourceModifierNS::rs_from_string);
+      return true;
+    }
     return false;
   }
 
@@ -209,10 +209,10 @@ public:
   {
     boost::shared_ptr<lisp::Lisp> cur = get_subsection(name);
     if (cur)
-      {
-        v = SExprFileReader(cur);
-        return true;
-      }
+    {
+      v = SExprFileReader(cur);
+      return true;
+    }
     return false;
   }
 
@@ -220,9 +220,9 @@ public:
   {
     std::vector<FileReader> lst;
     for(size_t i = 1; i < sexpr->get_list_size(); ++i)
-      { // iterate over subsections
-        lst.push_back(SExprFileReader(sexpr->get_list_elem(i)));
-      }
+    { // iterate over subsections
+      lst.push_back(SExprFileReader(sexpr->get_list_elem(i)));
+    }
     return lst;
   }
 
@@ -231,10 +231,10 @@ public:
     std::vector<std::string> lst;
 
     for(size_t i = 1; i < sexpr->get_list_size(); ++i)
-      { // iterate over subsections
-	boost::shared_ptr<lisp::Lisp> sub = sexpr->get_list_elem(i);
-        lst.push_back(sub->get_list_elem(0)->get_symbol());
-      }
+    { // iterate over subsections
+      boost::shared_ptr<lisp::Lisp> sub = sexpr->get_list_elem(i);
+      lst.push_back(sub->get_list_elem(0)->get_symbol());
+    }
 
     return lst;
   }
@@ -244,20 +244,20 @@ private:
   {
     boost::shared_ptr<lisp::Lisp> sub = get_subsection(name);
     if (sub && sub->get_list_size() == 2)
-      {
-        return sub->get_list_elem(1);
-      }
+    {
+      return sub->get_list_elem(1);
+    }
     return boost::shared_ptr<lisp::Lisp>();
   }
 
   boost::shared_ptr<lisp::Lisp> get_subsection(const char* name) const
   {
     for(size_t i = 1; i < sexpr->get_list_size(); ++i)
-      { // iterate over subsections
-	boost::shared_ptr<lisp::Lisp> sub = sexpr->get_list_elem(i);
-        if (strcmp(sub->get_list_elem(0)->get_symbol(), name) == 0)
-          return sub;
-      }
+    { // iterate over subsections
+      boost::shared_ptr<lisp::Lisp> sub = sexpr->get_list_elem(i);
+      if (strcmp(sub->get_list_elem(0)->get_symbol(), name) == 0)
+        return sub;
+    }
     return boost::shared_ptr<lisp::Lisp>();
   } 
 

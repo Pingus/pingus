@@ -94,20 +94,20 @@ World::init_worldobjs(const PingusLevel& plf)
   for (std::vector<FileReader>::const_iterator i = objects.begin();
        i != objects.end ();
        ++i)
-    {
-      add_object(WorldObjFactory::instance()->create(*i));
-    }
+  {
+    add_object(WorldObjFactory::instance()->create(*i));
+  }
 
-   world_obj.push_back(pingus);
+  world_obj.push_back(pingus);
 
-   std::stable_sort (world_obj.begin (), world_obj.end (), WorldObj_less);
+  std::stable_sort (world_obj.begin (), world_obj.end (), WorldObj_less);
 
   // Drawing all world objs to the colmap, gfx, or what ever the
   // objects want to do
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
-    {
-      (*obj)->on_startup();
-    }
+  {
+    (*obj)->on_startup();
+  }
 }
 
 World::~World()
@@ -125,9 +125,9 @@ World::draw (SceneContext& gc)
   gc.light().fill_screen(Color(ambient_light));
 
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
-    {
-      (*obj)->draw(gc);
-    }
+  {
+    (*obj)->draw(gc);
+  }
 }
 
 void
@@ -136,9 +136,9 @@ World::draw_smallmap(SmallMap* smallmap)
   WorldObj::set_world(this);
 
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
-    {
-      (*obj)->draw_smallmap (smallmap);
-    }
+  {
+    (*obj)->draw_smallmap (smallmap);
+  }
 }
 
 void
@@ -149,38 +149,38 @@ World::update()
   game_time += 1;
 
   if (do_armageddon)
+  {
+    if (game_time % 4 == 0)
     {
-      if (game_time % 4 == 0)
+      while (armageddon_count < pingus->get_end_id())
+      {
+        Pingu* pingu = pingus->get_pingu(armageddon_count);
+
+        if (pingu && pingu->get_status() == PS_ALIVE)
         {
-          while (armageddon_count < pingus->get_end_id())
-            {
-              Pingu* pingu = pingus->get_pingu(armageddon_count);
-
-              if (pingu && pingu->get_status() == PS_ALIVE)
-                {
-                  pingu->request_set_action(BOMBER);
-                  break;
-                }
-              else
-                {
-                  ++armageddon_count;
-                }
-            }
-
+          pingu->request_set_action(BOMBER);
+          break;
+        }
+        else
+        {
           ++armageddon_count;
         }
+      }
+
+      ++armageddon_count;
     }
+  }
 
   // Let all pingus move and
   // Let the pingus catch each other and
   // Let the traps catch the pingus and
   // Let the exit catch the pingus
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
-    {
-      // catch_pingu() is now done in relevant update() if WorldObj
-      // needs to catch pingus.
-      (*obj)->update();
-    }
+  {
+    // catch_pingu() is now done in relevant update() if WorldObj
+    // needs to catch pingus.
+    (*obj)->update();
+  }
 }
 
 PinguHolder*
@@ -257,13 +257,13 @@ World::get_pingu (const Vector3f& pos)
 
   for (PinguIter i = pingus->begin (); i != pingus->end (); ++i) {
     if ((*i)->is_over(int(pos.x), int(pos.y)))
+    {
+      if (distance == -1.0f || distance >= (*i)->dist((int) pos.x, (int)pos.y))
       {
-	      if (distance == -1.0f || distance >= (*i)->dist((int) pos.x, (int)pos.y))
-	        {
-	          current_pingu = (*i);
-	          distance = (*i)->dist((int)pos.x, (int)pos.y);
-	        }
+        current_pingu = (*i);
+        distance = (*i)->dist((int)pos.x, (int)pos.y);
       }
+    }
   }
 
   return current_pingu;
@@ -297,10 +297,10 @@ WorldObj*
 World::get_worldobj(const std::string& id)
 {
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
-    {
-      if ((*obj)->get_id() == id) 
-        return *obj;
-    }
+  {
+    if ((*obj)->get_id() == id) 
+      return *obj;
+  }
   return 0;
 }
 
@@ -311,22 +311,22 @@ World::get_start_pos(int player_id)
   Vector2i pos;
   int num_entrances = 0;
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
-    {  
-      WorldObjs::Entrance* entrance = dynamic_cast<WorldObjs::Entrance*>(*obj);
-      if (entrance && entrance->get_owner_id() == player_id)
-        {
-          pos += Vector2i(static_cast<int>(entrance->get_pos().x),
-                          static_cast<int>(entrance->get_pos().y));
-          num_entrances += 1;
-        }
+  {  
+    WorldObjs::Entrance* entrance = dynamic_cast<WorldObjs::Entrance*>(*obj);
+    if (entrance && entrance->get_owner_id() == player_id)
+    {
+      pos += Vector2i(static_cast<int>(entrance->get_pos().x),
+                      static_cast<int>(entrance->get_pos().y));
+      num_entrances += 1;
     }
+  }
 
   if (num_entrances > 0)
-    {
-      pos.x /= num_entrances;
-      pos.y /= num_entrances;
-      pos.y += 100;
-    }
+  {
+    pos.x /= num_entrances;
+    pos.y /= num_entrances;
+    pos.y += 100;
+  }
 
   return pos;
 }

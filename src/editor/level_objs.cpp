@@ -266,7 +266,7 @@ LevelObj::write_properties(FileWriter &fw)
     fw.begin_section("surface");
     fw.write_string("image", desc.res_name);
     fw.write_string("modifier", ResourceModifierNS::rs_to_string(desc.modifier));
-    fw.end_section();	// surface
+    fw.end_section();   // surface
   }
 
   fw.write_vector("position", pos);
@@ -312,7 +312,7 @@ LevelObj::write_properties(FileWriter &fw)
   // Writes any extra properties that may be necessary (virtual function)
   write_extra_properties(fw);
       
-  fw.end_section();	// object's section_name
+  fw.end_section();     // object's section_name
 }
 
 void

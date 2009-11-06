@@ -28,22 +28,22 @@ SoundResMgr::load(const std::string& name)
   SoundMap::iterator i = sound_map.find(name);
 
   if (i == sound_map.end())
-    {
-      std::string filename = path_manager.complete("sounds/" + name + ".wav");
-      Mix_Chunk* chunk = Mix_LoadWAV(filename.c_str());
-      pout(PINGUS_DEBUG_LOADING) << "SoundResMgr: Loading sound from disk: "
-                                 << name << " -> " << filename << std::endl;
-      if (!chunk)
-        pout(PINGUS_DEBUG_LOADING) << "Error: " << Mix_GetError() << std::endl;
+  {
+    std::string filename = path_manager.complete("sounds/" + name + ".wav");
+    Mix_Chunk* chunk = Mix_LoadWAV(filename.c_str());
+    pout(PINGUS_DEBUG_LOADING) << "SoundResMgr: Loading sound from disk: "
+                               << name << " -> " << filename << std::endl;
+    if (!chunk)
+      pout(PINGUS_DEBUG_LOADING) << "Error: " << Mix_GetError() << std::endl;
 
-      sound_map[name] = chunk;
-      return chunk;
-    }
+    sound_map[name] = chunk;
+    return chunk;
+  }
   else
-    {
-      pout(PINGUS_DEBUG_LOADING) << "SoundResMgr: Loading sound from cache: " << name << std::endl;
-      return i->second;
-    }
+  {
+    pout(PINGUS_DEBUG_LOADING) << "SoundResMgr: Loading sound from cache: " << name << std::endl;
+    return i->second;
+  }
 
   return 0;
 }
@@ -51,9 +51,9 @@ SoundResMgr::load(const std::string& name)
 void SoundResMgr::free_sound_map()
 {
   for (SoundMap::iterator i = sound_map.begin(); i != sound_map.end(); ++i)
-    {
-      Mix_FreeChunk(i->second);
-    }
+  {
+    Mix_FreeChunk(i->second);
+  }
 }
 
 /* EOF */

@@ -53,30 +53,30 @@ void
 Inputbox::on_key_pressed(const unsigned short c)
 {
   if (c == 0)
-    {
-      // ignore
-    }
+  {
+    // ignore
+  }
   else if (c == 8) // backspace
+  {
+    if (!text.empty())
     {
-      if (!text.empty())
-        {
-          text = text.substr(0, text.size()-1);
-          on_change(text);
-        }      
-    }
-  else if (c == 13) // enter
-    {
+      text = text.substr(0, text.size()-1);
       on_change(text);
-      on_enter(text);
-    }
+    }      
+  }
+  else if (c == 13) // enter
+  {
+    on_change(text);
+    on_enter(text);
+  }
   else
-    { // FIXME: This doesn't handle UTF8 properly 
-      if (c < 256)
-        {
-          text += (unsigned char)c;
-          on_change(text);
-        }
+  { // FIXME: This doesn't handle UTF8 properly 
+    if (c < 256)
+    {
+      text += (unsigned char)c;
+      on_change(text);
     }
+  }
 }
 
 } // namespace Editor

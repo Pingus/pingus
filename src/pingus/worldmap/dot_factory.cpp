@@ -26,13 +26,13 @@ Dot*
 DotFactory::create(FileReader reader)
 {
   if (reader.get_name() == "leveldot")
-    {
-      return new LevelDot(reader);
-    }
+  {
+    return new LevelDot(reader);
+  }
   else if (reader.get_name() == "tubedot")
-    {
-      throw std::runtime_error("DotFactory: unknown tag: ");
-    }
+  {
+    throw std::runtime_error("DotFactory: unknown tag: ");
+  }
   return 0;
 }
 

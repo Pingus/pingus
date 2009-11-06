@@ -142,31 +142,31 @@ SceneContext::render(Framebuffer& fb, const Rect& rect)
   // Render all buffers
   // FIXME: Render all to pbuffer for later combining of them
   if (impl->use_cliprect)
-    {
-      fb.push_cliprect(impl->cliprect);
-      impl->color.render(fb, rect);
-      fb.pop_cliprect();
-    }
+  {
+    fb.push_cliprect(impl->cliprect);
+    impl->color.render(fb, rect);
+    fb.pop_cliprect();
+  }
   else
-    {
-      impl->color.render(fb, rect);
-    }
+  {
+    impl->color.render(fb, rect);
+  }
   
 #if 0
-    { // lightmap support
-      impl->light.render(impl->canvas.get_gc());
-      impl->canvas.sync_surface();
+  { // lightmap support
+    impl->light.render(impl->canvas.get_gc());
+    impl->canvas.sync_surface();
 
-      //impl->lightmap.set_blend_func(blend_src_alpha, blend_one);
-      impl->lightmap.set_blend_func(blend_dest_color, blend_zero);
-      //GL_DST_COLOR, GL_ZERO
-      impl->lightmap.set_scale(SCALE_FACTOR, SCALE_FACTOR);
-      impl->lightmap.draw();
-      impl->canvas.get_gc()->clear();
-    }
+    //impl->lightmap.set_blend_func(blend_src_alpha, blend_one);
+    impl->lightmap.set_blend_func(blend_dest_color, blend_zero);
+    //GL_DST_COLOR, GL_ZERO
+    impl->lightmap.set_scale(SCALE_FACTOR, SCALE_FACTOR);
+    impl->lightmap.draw();
+    impl->canvas.get_gc()->clear();
+  }
 #endif
 
-    impl->highlight.render(fb, rect);
+  impl->highlight.render(fb, rect);
 }
 
 void

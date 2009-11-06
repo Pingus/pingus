@@ -52,124 +52,124 @@ void CommandLine_Generic::parse_args(int argc, char** argv)
   programm = argv[0];
 
   for(int i = 1; i < argc; ++i) 
+  {
+    if (argv[i][0] == '-') 
     {
-      if (argv[i][0] == '-') 
-        {
-          if (argv[i][1] == '-') 
-            {
-              // We got a long option
-              if (argv[i][2] == '\0') { 
-                // Got a '--', so we stop evaluating arguments
-                ++i;
-                while(i < argc) 
-                  {
-                    read_option(CommandLine::REST_ARG, argv[i]);
-                    ++i;
-                  }
-              } 
-              else
-                {
-                  std::string opt = argv[i] + 2;
-                  std::string long_opt;
-                  std::string long_opt_arg;
-
-                  std::string::size_type pos = opt.find('=');
-
-                  if (pos != std::string::npos) 
-                    {
-                      long_opt = opt.substr(0, pos);
-                      long_opt_arg = opt.substr(pos+1);
-                    }
-                  else 
-                    {
-                      long_opt = opt;
-                    }
-
-                  // Long Option
-                  Option* option = lookup_long_option(long_opt);
-
-                  if (option) 
-                    {
-                      if (option->argument.empty()) 
-                        {
-                          read_option(option->key, "");
-                        } 
-                      else
-                        {
-                          if (pos != std::string::npos) 
-                            {
-                              read_option(option->key, long_opt_arg);
-                            }
-                          else
-                            {            
-                              if (i == argc - 1) 
-                                {
-                                  throw std::runtime_error("option '" + std::string(argv[i]) + "' requires an argument");
-                                }
-                              else 
-                                {
-                                  read_option(option->key, argv[i + 1]);
-                                  ++i;
-                                }
-                            }
-                        }
-                    }
-                  else
-                    {
-                      throw std::runtime_error("unrecognized option '" + std::string(argv[i]) + "'");
-                    }
-                }
-            } 
-          else 
-            {
-              // We got a short option
-              char* p = argv[i] + 1;
-          
-              if (*p != '\0') {
-                // Handle option chains
-                while (*p) 
-                  {
-                    // Short option(s)
-                    Option* option = lookup_short_option(*p);
-
-                    if (option) 
-                      {
-                        if (option->argument.empty()) 
-                          {
-                            read_option(option->key, "");
-                          } 
-                        else 
-                          {
-                            if (i == argc - 1 || *(p+1) != '\0') 
-                              {
-                                // No more arguments
-                                throw std::runtime_error("option requires an argument -- " + std::string(1, *p));
-                              }
-                            else
-                              {
-                                read_option(option->key, argv[i + 1]);
-                                ++i;
-                              }
-                          }
-                      } 
-                    else 
-                      {
-                        throw std::runtime_error("invalid option -- " + std::string(1, *p));
-                      }
-                    ++p; 
-                  }
-              } 
-              else
-                {
-                  read_option(CommandLine::REST_ARG, "-");
-                } 
-            }
+      if (argv[i][1] == '-') 
+      {
+        // We got a long option
+        if (argv[i][2] == '\0') { 
+          // Got a '--', so we stop evaluating arguments
+          ++i;
+          while(i < argc) 
+          {
+            read_option(CommandLine::REST_ARG, argv[i]);
+            ++i;
+          }
         } 
-      else
+        else
         {
-          read_option(CommandLine::REST_ARG, argv[i]);
+          std::string opt = argv[i] + 2;
+          std::string long_opt;
+          std::string long_opt_arg;
+
+          std::string::size_type pos = opt.find('=');
+
+          if (pos != std::string::npos) 
+          {
+            long_opt = opt.substr(0, pos);
+            long_opt_arg = opt.substr(pos+1);
+          }
+          else 
+          {
+            long_opt = opt;
+          }
+
+          // Long Option
+          Option* option = lookup_long_option(long_opt);
+
+          if (option) 
+          {
+            if (option->argument.empty()) 
+            {
+              read_option(option->key, "");
+            } 
+            else
+            {
+              if (pos != std::string::npos) 
+              {
+                read_option(option->key, long_opt_arg);
+              }
+              else
+              {            
+                if (i == argc - 1) 
+                {
+                  throw std::runtime_error("option '" + std::string(argv[i]) + "' requires an argument");
+                }
+                else 
+                {
+                  read_option(option->key, argv[i + 1]);
+                  ++i;
+                }
+              }
+            }
+          }
+          else
+          {
+            throw std::runtime_error("unrecognized option '" + std::string(argv[i]) + "'");
+          }
         }
+      } 
+      else 
+      {
+        // We got a short option
+        char* p = argv[i] + 1;
+          
+        if (*p != '\0') {
+          // Handle option chains
+          while (*p) 
+          {
+            // Short option(s)
+            Option* option = lookup_short_option(*p);
+
+            if (option) 
+            {
+              if (option->argument.empty()) 
+              {
+                read_option(option->key, "");
+              } 
+              else 
+              {
+                if (i == argc - 1 || *(p+1) != '\0') 
+                {
+                  // No more arguments
+                  throw std::runtime_error("option requires an argument -- " + std::string(1, *p));
+                }
+                else
+                {
+                  read_option(option->key, argv[i + 1]);
+                  ++i;
+                }
+              }
+            } 
+            else 
+            {
+              throw std::runtime_error("invalid option -- " + std::string(1, *p));
+            }
+            ++p; 
+          }
+        } 
+        else
+        {
+          read_option(CommandLine::REST_ARG, "-");
+        } 
+      }
+    } 
+    else
+    {
+      read_option(CommandLine::REST_ARG, argv[i]);
     }
+  }
 
   current_option = parsed_options.end();
 }
@@ -177,20 +177,20 @@ void CommandLine_Generic::parse_args(int argc, char** argv)
 CommandLine_Generic::Option *CommandLine_Generic::lookup_short_option(char short_option)
 {
   for(Options::iterator i = options.begin(); i != options.end(); ++i)
-    {
-      if (i->key == short_option)
-        return &(*i);
-    }
+  {
+    if (i->key == short_option)
+      return &(*i);
+  }
   return 0;
 }
 
 CommandLine_Generic::Option *CommandLine_Generic::lookup_long_option(const std::string& long_option)
 {
   for(Options::iterator i = options.begin(); i != options.end(); ++i)
-    {
-      if (i->long_option == long_option)
-        return &*i;
-    }
+  {
+    if (i->long_option == long_option)
+      return &*i;
+  }
   return 0;
 }
 
@@ -208,60 +208,60 @@ void CommandLine_Generic::print_help()
 {
   bool first_usage = true;
   for(Options::iterator i = options.begin(); i != options.end(); ++i)
+  {
+    if (i->visible)
     {
-      if (i->visible)
+      if (i->key == USAGE) 
+      {
+        if (first_usage) 
         {
-          if (i->key == USAGE) 
-            {
-              if (first_usage) 
-                {
-                  std::cout << "Usage: " << programm << " " <<  i->help << std::endl; 
-                  first_usage = false;
-                }
-              else
-                {
-                  std::cout << "or:    " << programm << " " << i->help << std::endl; 
-                }
-            } 
-          else if (i->key == GROUP) 
-            {
-              if (i != options.begin())
-                std::cout << std::endl;
-              std::cout << i->help << std::endl;
-            }
-          else if (i->key == DOC) 
-            {
-              if (i != options.begin())
-                std::cout << std::endl;
-              std::cout << i->help << std::endl;
-            }
-          else 
-            {
-              char option[256]   = { 0 };
-              char argument[256] = { 0 };
-
-              if (i->key > 255 || i->key < 0)
-                snprintf(option, 256, "--%s", i->long_option.c_str());
-              else if (i->long_option.empty())
-                snprintf(option, 256, "-%c", char(i->key));
-              else
-                snprintf(option, 256, "-%c, --%s", char(i->key), i->long_option.c_str());
-
-              if (!i->argument.empty())
-                {
-                  if (i->long_option.empty())
-                    snprintf(argument, 256, " %s", i->argument.c_str());
-                  else
-                    snprintf(argument, 256, "=%s", i->argument.c_str());
-                }
-
-              std::cout << "  " 
-                        << std::setiosflags(std::ios::left) << std::setw(help_indent)
-                        << (std::string(option) + std::string(argument)) << std::setw(0)
-                        << " " << i->help << std::endl;
-            }
+          std::cout << "Usage: " << programm << " " <<  i->help << std::endl; 
+          first_usage = false;
         }
+        else
+        {
+          std::cout << "or:    " << programm << " " << i->help << std::endl; 
+        }
+      } 
+      else if (i->key == GROUP) 
+      {
+        if (i != options.begin())
+          std::cout << std::endl;
+        std::cout << i->help << std::endl;
+      }
+      else if (i->key == DOC) 
+      {
+        if (i != options.begin())
+          std::cout << std::endl;
+        std::cout << i->help << std::endl;
+      }
+      else 
+      {
+        char option[256]   = { 0 };
+        char argument[256] = { 0 };
+
+        if (i->key > 255 || i->key < 0)
+          snprintf(option, 256, "--%s", i->long_option.c_str());
+        else if (i->long_option.empty())
+          snprintf(option, 256, "-%c", char(i->key));
+        else
+          snprintf(option, 256, "-%c, --%s", char(i->key), i->long_option.c_str());
+
+        if (!i->argument.empty())
+        {
+          if (i->long_option.empty())
+            snprintf(argument, 256, " %s", i->argument.c_str());
+          else
+            snprintf(argument, 256, "=%s", i->argument.c_str());
+        }
+
+        std::cout << "  " 
+                  << std::setiosflags(std::ios::left) << std::setw(help_indent)
+                  << (std::string(option) + std::string(argument)) << std::setw(0)
+                  << " " << i->help << std::endl;
+      }
     }
+  }
   std::cout << std::endl;
 }
 
@@ -299,10 +299,10 @@ void CommandLine_Generic::add_group(const std::string& grouptopic)
 }
 
 void CommandLine_Generic::add_option(int key, 
-                                        const std::string& long_option, 
-                                        const std::string& argument,
-                                        const std::string& help,
-                                        bool visible)
+                                     const std::string& long_option, 
+                                     const std::string& argument,
+                                     const std::string& help,
+                                     bool visible)
 {
   Option option;
 
@@ -318,14 +318,14 @@ void CommandLine_Generic::add_option(int key,
 bool CommandLine_Generic::next()
 {
   if (current_option == parsed_options.end()) 
-    {
-      (current_option = parsed_options.begin());
-      return current_option != parsed_options.end();
-    }
+  {
+    (current_option = parsed_options.begin());
+    return current_option != parsed_options.end();
+  }
   else
-    {
-      return (++current_option) != parsed_options.end();
-    }
+  {
+    return (++current_option) != parsed_options.end();
+  }
 }
 
 int CommandLine_Generic::get_key()

@@ -28,7 +28,7 @@ namespace Actions {
 std::string action_to_screenname (ActionName action)
 {
   switch (action)
-    {
+  {
     case ANGEL          : return _("Angel");
     case BASHER         : return _("Basher");
     case BLOCKER        : return _("Blocker");
@@ -53,13 +53,13 @@ std::string action_to_screenname (ActionName action)
     case WAITER         : return _("Waiter");
     case WALKER         : return _("Walker");
     default             : return "Unknown ActionName";
-    }
+  }
 }
 
 std::string action_to_string(ActionName action)
 {
   switch (action)
-    {
+  {
     case ANGEL          : return "angel";
     case BASHER         : return "basher";
     case BLOCKER        : return "blocker";
@@ -84,7 +84,7 @@ std::string action_to_string(ActionName action)
     case WAITER         : return "waiter";
     case WALKER         : return "walker";
     default             : return "Unknown ActionName";
-    }
+  }
 }
 
 ActionName action_from_string(const std::string& action)

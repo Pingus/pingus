@@ -54,44 +54,44 @@ GUIScreen::update (const Input::Event& event)
   gui_manager->update(event);
 
   switch (event.type)
+  {
+    case Input::POINTER_EVENT_TYPE:
     {
-      case Input::POINTER_EVENT_TYPE:
-        {
-          // ignored cause this is handled in the gui_manager
-        }
-        break;
-
-      case Input::BUTTON_EVENT_TYPE:
-        {
-          process_button_event (event.button);
-        }
-        break;
-
-      case Input::AXIS_EVENT_TYPE:
-        {
-          if (event.axis.name == Input::ACTION_AXIS)
-            {
-              on_action_axis_move(event.axis.dir);
-            }
-        }
-        break;
-
-      case Input::SCROLLER_EVENT_TYPE:
-        {
-
-        }
-        break;
-		
-      case Input::KEYBOARD_EVENT_TYPE:
-        {
-		
-        }
-        break;
-
-      default:
-        std::cout << "GUIScreen::update (): unhandled event type: " << event.type << std::endl;
-        break;
+      // ignored cause this is handled in the gui_manager
     }
+    break;
+
+    case Input::BUTTON_EVENT_TYPE:
+    {
+      process_button_event (event.button);
+    }
+    break;
+
+    case Input::AXIS_EVENT_TYPE:
+    {
+      if (event.axis.name == Input::ACTION_AXIS)
+      {
+        on_action_axis_move(event.axis.dir);
+      }
+    }
+    break;
+
+    case Input::SCROLLER_EVENT_TYPE:
+    {
+
+    }
+    break;
+                
+    case Input::KEYBOARD_EVENT_TYPE:
+    {
+                
+    }
+    break;
+
+    default:
+      std::cout << "GUIScreen::update (): unhandled event type: " << event.type << std::endl;
+      break;
+  }
 }
 
 void
@@ -100,64 +100,64 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
   //std::cout << "GUIScreen::process_button_event (Input::ButtonEvent* event)" << std::endl;
 
   if (event.state == Input::BUTTON_PRESSED)
+  {
+    switch (event.name)
     {
-      switch (event.name)
-	{
-	case Input::PRIMARY_BUTTON:
-	  // ignoring, handled in the gui_manager
-	  break;
-	case Input::SECONDARY_BUTTON:
-	  // ignoring, handled in the gui_manager
-	  break;
-	case Input::PAUSE_BUTTON:
-	  on_pause_press ();
-	  break;
-	case Input::FAST_FORWARD_BUTTON:
-	  on_fast_forward_press ();
-	  break;
-	case Input::ARMAGEDDON_BUTTON:
-	  on_armageddon_press ();
-	  break;
-	case Input::ESCAPE_BUTTON:
-	  on_escape_press ();
-	  break;
-	default:
-	  perr(PINGUS_DEBUG_GUI) << "GUIScreen: ButtonEvent: unhandled event: " << event.name << std::endl;
-	  break;
-	}
+      case Input::PRIMARY_BUTTON:
+        // ignoring, handled in the gui_manager
+        break;
+      case Input::SECONDARY_BUTTON:
+        // ignoring, handled in the gui_manager
+        break;
+      case Input::PAUSE_BUTTON:
+        on_pause_press ();
+        break;
+      case Input::FAST_FORWARD_BUTTON:
+        on_fast_forward_press ();
+        break;
+      case Input::ARMAGEDDON_BUTTON:
+        on_armageddon_press ();
+        break;
+      case Input::ESCAPE_BUTTON:
+        on_escape_press ();
+        break;
+      default:
+        perr(PINGUS_DEBUG_GUI) << "GUIScreen: ButtonEvent: unhandled event: " << event.name << std::endl;
+        break;
     }
+  }
   else if (event.state == Input::BUTTON_RELEASED)
+  {
+    switch (event.name)
     {
-      switch (event.name)
-	{
-	case Input::PRIMARY_BUTTON:
-	  // ignoring, handled in the gui_manager
-	  break;
-	case Input::SECONDARY_BUTTON:
-	  // ignoring, handled in the gui_manager
-	  break;
-	case Input::PAUSE_BUTTON:
-	  on_pause_release ();
-	  break;
-	case Input::FAST_FORWARD_BUTTON:
-	  on_fast_forward_release ();
-	  break;
-	case Input::ARMAGEDDON_BUTTON:
-	  on_armageddon_release ();
-	  break;
-	case Input::ESCAPE_BUTTON:
-	  on_escape_release ();
-	  break;
-	default:
-	  perr(PINGUS_DEBUG_GUI) << "GUIScreen: ButtonEvent: unhandled event: " << event.name << std::endl;
-	  break;
-	}
+      case Input::PRIMARY_BUTTON:
+        // ignoring, handled in the gui_manager
+        break;
+      case Input::SECONDARY_BUTTON:
+        // ignoring, handled in the gui_manager
+        break;
+      case Input::PAUSE_BUTTON:
+        on_pause_release ();
+        break;
+      case Input::FAST_FORWARD_BUTTON:
+        on_fast_forward_release ();
+        break;
+      case Input::ARMAGEDDON_BUTTON:
+        on_armageddon_release ();
+        break;
+      case Input::ESCAPE_BUTTON:
+        on_escape_release ();
+        break;
+      default:
+        perr(PINGUS_DEBUG_GUI) << "GUIScreen: ButtonEvent: unhandled event: " << event.name << std::endl;
+        break;
     }
+  }
   else
-    {
-      perr(PINGUS_DEBUG_GUI) << "GUIScreen::process_button_event: got unknown event.state: "
-			     << event.state << std::endl;;
-    }
+  {
+    perr(PINGUS_DEBUG_GUI) << "GUIScreen::process_button_event: got unknown event.state: "
+                           << event.state << std::endl;;
+  }
 }
 
 void

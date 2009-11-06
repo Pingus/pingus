@@ -27,9 +27,9 @@ Drown::Drown (Pingu* p) :
   sprite()
 {
   sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
-    pingu->get_owner_str() + "/drownfall/left"));
+                                       pingu->get_owner_str() + "/drownfall/left"));
   sprite.load(Direction::RIGHT, Sprite("pingus/player" + 
-    pingu->get_owner_str() + "/drownfall/right"));
+                                       pingu->get_owner_str() + "/drownfall/right"));
 }
 
 void
@@ -43,9 +43,9 @@ Drown::update ()
 {
   sprite[pingu->direction].update();
   if (sprite[pingu->direction].is_finished())
-    {
-      pingu->set_status(PS_DEAD);
-    }
+  {
+    pingu->set_status(PS_DEAD);
+  }
 }
 
 } // namespace Actions

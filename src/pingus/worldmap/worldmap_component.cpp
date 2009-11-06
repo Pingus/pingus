@@ -55,21 +55,21 @@ WorldmapComponent::draw (DrawingContext& gc)
 
   // Draw border
   if (cliprect != Rect(Vector2i(0,0), Size(Display::get_width(), Display::get_height())))
-    {
-      Color border_color(0, 0, 0);
-      // top
-      gc.draw_fillrect(Rect(0, 0, Display::get_width(), cliprect.top),
-                       border_color);
-      // bottom
-      gc.draw_fillrect(Rect(0, cliprect.bottom, Display::get_width(), Display::get_height()),
-                       border_color);
-      // left
-      gc.draw_fillrect(Rect(0, cliprect.top, cliprect.left, cliprect.bottom),
-                       border_color);
-      // right
-      gc.draw_fillrect(Rect(cliprect.right, cliprect.top, Display::get_width(), cliprect.bottom),
-                       border_color);
-    }
+  {
+    Color border_color(0, 0, 0);
+    // top
+    gc.draw_fillrect(Rect(0, 0, Display::get_width(), cliprect.top),
+                     border_color);
+    // bottom
+    gc.draw_fillrect(Rect(0, cliprect.bottom, Display::get_width(), Display::get_height()),
+                     border_color);
+    // left
+    gc.draw_fillrect(Rect(0, cliprect.top, cliprect.left, cliprect.bottom),
+                     border_color);
+    // right
+    gc.draw_fillrect(Rect(cliprect.right, cliprect.top, Display::get_width(), cliprect.bottom),
+                     border_color);
+  }
 }
 
 void
@@ -83,7 +83,7 @@ WorldmapComponent::on_primary_button_press (int x, int y)
 {
   Rect cliprect = worldmap_screen->get_trans_rect();
   worldmap_screen->get_worldmap()->on_primary_button_press(x - cliprect.left,
-                                                     y - cliprect.top);
+                                                           y - cliprect.top);
 }
 
 void
@@ -91,7 +91,7 @@ WorldmapComponent::on_pointer_move (int x, int y)
 {
   Rect cliprect = worldmap_screen->get_trans_rect();
   worldmap_screen->get_worldmap()->on_pointer_move(x - cliprect.left,
-                                             y - cliprect.top);
+                                                   y - cliprect.top);
 }
 
 void
@@ -99,7 +99,7 @@ WorldmapComponent::on_secondary_button_press (int x, int y)
 {
   Rect cliprect = worldmap_screen->get_trans_rect();
   worldmap_screen->get_worldmap()->on_secondary_button_press(x - cliprect.left,
-                                                       y - cliprect.top);
+                                                             y - cliprect.top);
 }
 
 } // namespace WorldmapNS

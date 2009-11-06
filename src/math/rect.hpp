@@ -97,7 +97,7 @@ public:
   //: Rect -= Rect operator.
   Rect &operator-=(const Rect &r)
   { left -= r.left; top -= r.top; right -= r.right; bottom -= r.bottom; return *this; }
-	
+        
   //: Rect += Vector2i operator.
   Rect &operator+=(const Vector2i &p)
   { left += p.x; top += p.y; right += p.x; bottom += p.y; return *this; }
@@ -134,19 +134,19 @@ public:
 public:
   //: X1-coordinate.
   int left;
-	
+        
   //: Y1-coordinate.
   int top;
-	
+        
   //: X2-coordinate.
   int right;
-	
+        
   //: Y2-coordinate.
   int bottom;
-	
+        
   //: Returns the width of the rectangle.
   int get_width() const { return right - left; }
-	
+        
   //: Returns the height of the rectangle.
   int get_height() const { return bottom - top; }
 
@@ -165,7 +165,7 @@ public:
       left <= pos.x && pos.x < right &&
       top  <= pos.y && pos.y < bottom;
   }
-	
+        
   //: Returns another Rect containing a rotated version of this one.
   //param hotspot: Vector2i to rotate around.
   //param origin: Determines the hotspot point within the rectangle
@@ -173,7 +173,7 @@ public:
   //param angle: Angle to rotate in degrees.
   Rect get_rot_bounds(const Vector2i &hotspot, float angle) const;
   Rect get_rot_bounds(Origin origin, int x, int y, float angle) const;
-	
+        
   //! Operations:
 public:
   //: Sets the size of the rectangle, maintaining top/left position.
@@ -216,7 +216,7 @@ public:
       top = temp;
     }
   }
-	
+        
   //: Applies an origin and offset pair to this rectangle
   //param origin: The new origin to adjust to from default upper-left position
   //param x, y: Offsets applied negatively to each corner of the rectangle
@@ -225,7 +225,7 @@ public:
     Vector2i offset = calc_origin(origin, get_size());
     offset.x -= x;
     offset.y -= y;
-		
+                
     left += offset.x;
     top += offset.y;
     right += offset.x;
@@ -295,7 +295,7 @@ public:
   //: Rect -= Rect operator.
   Rectf &operator-=(const Rectf &r)
   { left -= r.left; top -= r.top; right -= r.right; bottom -= r.bottom; return *this; }
-	
+        
   //: Rect += Vector2i operator.
   Rectf &operator+=(const Vector2f &p)
   { left += p.x; top += p.y; right += p.x; bottom += p.y; return *this; }
@@ -332,34 +332,34 @@ public:
 public:
   //: X1-coordinate.
   float left;
-	
+        
   //: Y1-coordinate.
   float top;
-	
+        
   //: X2-coordinate.
   float right;
-	
+        
   //: Y2-coordinate.
   float bottom;
-	
+        
   //: Returns the width of the rectangle.
   float get_width() const { return right - left; }
-	
+        
   //: Returns the height of the rectangle.
   float get_height() const { return bottom - top; }
 
   //: Returns the size of the rectangle.
   Sizef get_size() const { return Sizef(right - left, bottom - top); }
-	
+        
   //: Returns true if point is inside the rectangle.
   bool is_inside(const Vector2f &p) const { return (p.x >= left && p.y >= top && p.x <= right && p.y <= bottom); }
-	
+        
   //: Returns true if rectangle passed is overlapping or inside this rectangle.
   bool is_overlapped(const Rectf &r) const 
   {
     return (r.left < right && r.right > left && r.top < bottom && r.bottom > top);
   }
-	
+        
   //! Operations:
 public:
   //: Sets the size of the rectangle, maintaining top/left position.
@@ -403,20 +403,20 @@ public:
     }
   }
 
-  /*	
+  /*    
   //: Applies an origin and offset pair to this rectangle
   //param origin: The new origin to adjust to from default upper-left position
   //param x, y: Offsets applied negatively to each corner of the rectangle
   void apply_alignment(Origin origin, float x, float y)
   {
-    Vector2f offset = calc_origin(origin, get_size());
-    offset.x -= x;
-    offset.y -= y;
-		
-    left += offset.x;
-    top += offset.y;
-    right += offset.x;
-    bottom += offset.y;
+  Vector2f offset = calc_origin(origin, get_size());
+  offset.x -= x;
+  offset.y -= y;
+                
+  left += offset.x;
+  top += offset.y;
+  right += offset.x;
+  bottom += offset.y;
   }
   */
 

@@ -102,8 +102,8 @@ public:
   static std::string realpath(const std::string& pathname);
 
   /** Read a file and generate a checksum and return it. The checksum
-   generation is very primitiv and should probably be replaced by CRC
-   or md5. */
+      generation is very primitiv and should probably be replaced by CRC
+      or md5. */
   static std::string checksum (std::string filename);
   static std::string checksum (const Pathname& pathname);
 private:

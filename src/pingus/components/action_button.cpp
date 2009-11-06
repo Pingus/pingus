@@ -50,17 +50,17 @@ ArmageddonButton::draw (DrawingContext& gc)
   Vector2i pos(rect.left, rect.top);
 
   if (server->get_world()->check_armageddon ())
-    {
-      gc.draw(backgroundhl, pos);
-      gc.draw(sprite, pos);
-    }
+  {
+    gc.draw(backgroundhl, pos);
+    gc.draw(sprite, pos);
+  }
   else
-    {
-      gc.draw(background, pos);
+  {
+    gc.draw(background, pos);
 
-      sprite.set_frame(7);
-      gc.draw(sprite, pos);
-    }
+    sprite.set_frame(7);
+    gc.draw(sprite, pos);
+  }
 }
 
 void
@@ -69,32 +69,32 @@ ArmageddonButton::update (float delta)
   sprite.update(delta);
 
   if (pressed)
+  {
+    press_time += delta;
+    if (press_time > 1.0f)
     {
-      press_time += delta;
-      if (press_time > 1.0f)
-	{
-	  press_time = 0;
-	  pressed = false;
-	}
-    }
-  else
-    {
-      pressed = false;
       press_time = 0;
+      pressed = false;
     }
+  }
+  else
+  {
+    pressed = false;
+    press_time = 0;
+  }
 }
 
 void
 ArmageddonButton::on_primary_button_click (int x, int y)
 {
   if (pressed)
-    {
-      server->send_armageddon_event();
-    }
+  {
+    server->send_armageddon_event();
+  }
   else
-    {
-      pressed = true;
-    }
+  {
+    pressed = true;
+  }
 }
 
 ForwardButton::ForwardButton(GameSession* s, int x, int y) :
@@ -115,13 +115,13 @@ ForwardButton::draw (DrawingContext& gc)
   Vector2i pos(rect.left, rect.top);
 
   if (session->get_fast_forward())
-    {
-      gc.draw(backgroundhl, pos);
-    }
+  {
+    gc.draw(backgroundhl, pos);
+  }
   else
-    {
-      gc.draw(background, pos);
-    }
+  {
+    gc.draw(background, pos);
+  }
 
   gc.draw(surface, pos);
 }
@@ -152,13 +152,13 @@ PauseButton::draw (DrawingContext& gc)
   Vector2i pos(rect.left, rect.top);
 
   if (session->get_pause())
-    {
-      gc.draw(backgroundhl, pos);
-    }
+  {
+    gc.draw(backgroundhl, pos);
+  }
   else
-    {
-      gc.draw(background, pos);
-    }
+  {
+    gc.draw(background, pos);
+  }
 
   gc.draw(surface, pos);
 }

@@ -111,19 +111,19 @@ PingusMenu::do_start(const std::string &filename)
 #if 0  // FIXME: Fri Jul  4 10:33:01 2008
   bool story_seen = false;
   StatManager::instance()->get_bool("tutorial-startstory-seen", story_seen); // FIXME: Hardcoding tutorial is evil
-	
+        
   if (!story_seen)
-    {
-      ScreenManager::instance()->push_screen
-        (new StoryScreen(WorldmapNS::WorldmapScreen::instance()->get_worldmap()->get_intro_story()), true);
-    }
+  {
+    ScreenManager::instance()->push_screen
+      (new StoryScreen(WorldmapNS::WorldmapScreen::instance()->get_worldmap()->get_intro_story()), true);
+  }
   else
 #endif
-    {
-      std::auto_ptr<WorldmapNS::WorldmapScreen> worldmap_screen(new WorldmapNS::WorldmapScreen());
-      worldmap_screen->load(filename);
-      ScreenManager::instance()->push_screen(worldmap_screen.release());
-    }
+  {
+    std::auto_ptr<WorldmapNS::WorldmapScreen> worldmap_screen(new WorldmapNS::WorldmapScreen());
+    worldmap_screen->load(filename);
+    ScreenManager::instance()->push_screen(worldmap_screen.release());
+  }
 }
 
 void PingusMenu::do_contrib(const std::string &levelfile)
@@ -134,7 +134,7 @@ void PingusMenu::do_contrib(const std::string &levelfile)
 }
 
 void PingusMenu::do_edit()
-{	// Launch the level editor
+{       // Launch the level editor
   Sound::PingusSound::stop_music();
   ScreenManager::instance()->push_screen (new Editor::EditorScreen());
 }
@@ -171,33 +171,33 @@ PingusMenu::draw_background(DrawingContext& gc)
                   help);
 
   if (0) // display hint
-    {
-      gc.print_center(Fonts::pingus_small, 
-                      Vector2i(gc.get_width() / 2,
-                               gc.get_height() - Fonts::pingus_small.get_height()),
-                      hint);
-    }
+  {
+    gc.print_center(Fonts::pingus_small, 
+                    Vector2i(gc.get_width() / 2,
+                             gc.get_height() - Fonts::pingus_small.get_height()),
+                    hint);
+  }
 }
 
 void
 PingusMenu::on_click(MenuButton* button)
 {
   if (button == start_button)
-    {
-      do_start("worldmaps/tutorial.worldmap");
-    }
+  {
+    do_start("worldmaps/tutorial.worldmap");
+  }
   else if (button == quit_button)
-    {
-      do_quit();
-    }
+  {
+    do_quit();
+  }
   else if (button == editor_button)
-    {
-      do_edit();
-    }
+  {
+    do_edit();
+  }
   else if (button == contrib_button)
-    {
-      ScreenManager::instance()->push_screen(new LevelMenu());
-    }
+  {
+    ScreenManager::instance()->push_screen(new LevelMenu());
+  }
 }
 
 void
@@ -227,30 +227,30 @@ PingusMenu::create_background(const Size& size_)
   int w = size_.width;
   int h = size_.height;
 
-// We only need to scale the background main menu images if the screen 
+  // We only need to scale the background main menu images if the screen 
   // resolution is not default
   if (w != default_screen_width && h != default_screen_height)
-    {
-      layer1 = layer1.scale(w, 185 * h / default_screen_height);
-      layer2 = layer2.scale(w, 362 * h / default_screen_height);
-      layer3 = layer3.scale(w, 306 * h / default_screen_height);
-      layer4 = layer4.scale(w, 171 * h / default_screen_height);
-      layer5 = layer5.scale(302 * w / default_screen_width, 104 * h / default_screen_height);
+  {
+    layer1 = layer1.scale(w, 185 * h / default_screen_height);
+    layer2 = layer2.scale(w, 362 * h / default_screen_height);
+    layer3 = layer3.scale(w, 306 * h / default_screen_height);
+    layer4 = layer4.scale(w, 171 * h / default_screen_height);
+    layer5 = layer5.scale(302 * w / default_screen_width, 104 * h / default_screen_height);
       
-      background->add_layer(Sprite(layer1), 0, 0, 12, 0);
-      background->add_layer(Sprite(layer2), 0, 150 * static_cast<float>(h) / static_cast<float>(default_screen_height), 25, 0);
-      background->add_layer(Sprite(layer3), 0, 200 * static_cast<float>(h) / static_cast<float>(default_screen_height), 50, 0);
-      background->add_layer(Sprite(layer4), 0, 429 * static_cast<float>(h) / static_cast<float>(default_screen_height), 100, 0);
-      background->add_layer(Sprite(layer5), 0, 500 * static_cast<float>(h) / static_cast<float>(default_screen_height), 200, 0);
-    }
+    background->add_layer(Sprite(layer1), 0, 0, 12, 0);
+    background->add_layer(Sprite(layer2), 0, 150 * static_cast<float>(h) / static_cast<float>(default_screen_height), 25, 0);
+    background->add_layer(Sprite(layer3), 0, 200 * static_cast<float>(h) / static_cast<float>(default_screen_height), 50, 0);
+    background->add_layer(Sprite(layer4), 0, 429 * static_cast<float>(h) / static_cast<float>(default_screen_height), 100, 0);
+    background->add_layer(Sprite(layer5), 0, 500 * static_cast<float>(h) / static_cast<float>(default_screen_height), 200, 0);
+  }
   else
-    {
-      background->add_layer(Sprite(layer1), 0, 0, 12, 0);
-      background->add_layer(Sprite(layer2), 0, 150, 25, 0);
-      background->add_layer(Sprite(layer3), 0, 200, 50, 0);
-      background->add_layer(Sprite(layer4), 0, 429, 100, 0);
-      background->add_layer(Sprite(layer5), 0, 500, 200, 0);
-    }
+  {
+    background->add_layer(Sprite(layer1), 0, 0, 12, 0);
+    background->add_layer(Sprite(layer2), 0, 150, 25, 0);
+    background->add_layer(Sprite(layer3), 0, 200, 50, 0);
+    background->add_layer(Sprite(layer4), 0, 429, 100, 0);
+    background->add_layer(Sprite(layer5), 0, 500, 200, 0);
+  }
 }
 
 void

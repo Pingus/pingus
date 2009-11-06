@@ -28,9 +28,9 @@ ActionHolder::ActionHolder(const PingusLevel& plf) :
   const std::map<std::string, int>& actions = plf.get_actions();
 
   for(std::map<std::string, int>::const_iterator i = actions.begin(); i != actions.end(); ++i)
-    {
-      set_actions(Actions::action_from_string(i->first), i->second);
-    }
+  {
+    set_actions(Actions::action_from_string(i->first), i->second);
+  }
 }
 
 ActionHolder::~ActionHolder ()
@@ -67,14 +67,14 @@ ActionHolder::pop_action (ActionName name)
   int& avail = available_actions[name];
 
   if (avail > 0)
-    {
-      --avail;
-      return true;
-    }
+  {
+    --avail;
+    return true;
+  }
   else
-    {
-      return false;
-    }
+  {
+    return false;
+  }
 }
 
 int

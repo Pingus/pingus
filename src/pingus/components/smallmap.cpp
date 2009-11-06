@@ -126,7 +126,7 @@ bool
 SmallMap::is_at (int x, int y)
 {
   return (x > rect.left && x < rect.left + (int)rect.get_width()
-	  && y > rect.top && y < rect.top + (int)rect.get_height());
+          && y > rect.top && y < rect.top + (int)rect.get_height());
 }
 
 void
@@ -136,12 +136,12 @@ SmallMap::on_pointer_move (int x, int y)
   World* world = server->get_world();
 
   if (scroll_mode)
-    {
-      cx = (x - rect.left) * static_cast<int>(world->get_width()  / rect.get_width());
-      cy = (y - rect.top) * static_cast<int>(world->get_height() / rect.get_height());
+  {
+    cx = (x - rect.left) * static_cast<int>(world->get_width()  / rect.get_width());
+    cy = (y - rect.top) * static_cast<int>(world->get_height() / rect.get_height());
 
-      playfield->set_viewpoint(cx, cy);
-    }
+    playfield->set_viewpoint(cx, cy);
+  }
 }
 
 void

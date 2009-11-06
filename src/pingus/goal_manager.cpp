@@ -32,58 +32,58 @@ bool
 GoalManager::is_finished()
 {
   switch (goal)
-    {
-      case GT_NONE:
-        return false;
+  {
+    case GT_NONE:
+      return false;
     
-      case GT_GAME_ABORTED:
-        return true;
+    case GT_GAME_ABORTED:
+      return true;
 
-      case GT_OUT_OF_TIME:
-      case GT_NO_PINGUS_IN_WORLD:
-      case GT_ARMAGEDDON:
-        if (exit_time == 0)
-          {
-            // we are finished, now wait a few second so that everybody can
-            // see the particles, etc.
-            exit_time = server->get_time() + 125;
-            return false;
-          }
-        else
-          {
-            return (exit_time < server->get_time());
-          }
-
-      default:
-        assert(!"GoalManager: unknown goal state");
+    case GT_OUT_OF_TIME:
+    case GT_NO_PINGUS_IN_WORLD:
+    case GT_ARMAGEDDON:
+      if (exit_time == 0)
+      {
+        // we are finished, now wait a few second so that everybody can
+        // see the particles, etc.
+        exit_time = server->get_time() + 125;
         return false;
-    }
+      }
+      else
+      {
+        return (exit_time < server->get_time());
+      }
+
+    default:
+      assert(!"GoalManager: unknown goal state");
+      return false;
+  }
 }
 
 void
 GoalManager::update()
 {
   if (exit_time == 0)
-    {
-      World*       world  = server->get_world();
-      PinguHolder* pingus = world->get_pingus();
-      const PingusLevel& plf    = server->get_plf();
+  {
+    World*       world  = server->get_world();
+    PinguHolder* pingus = world->get_pingus();
+    const PingusLevel& plf    = server->get_plf();
 
-      if (pingus->get_number_of_allowed() == pingus->get_number_of_released()
-          && pingus->get_number_of_alive() == 0)
-        {
-          goal = GT_NO_PINGUS_IN_WORLD;
-        }
-      else if (pingus->get_number_of_alive() == 0 && world->check_armageddon())
-        {
-          goal = GT_ARMAGEDDON;
-        }
-      else if (plf.get_time() != -1
-               && plf.get_time() <= server->get_time())
-        {
-          goal = GT_OUT_OF_TIME;
-        }
+    if (pingus->get_number_of_allowed() == pingus->get_number_of_released()
+        && pingus->get_number_of_alive() == 0)
+    {
+      goal = GT_NO_PINGUS_IN_WORLD;
     }
+    else if (pingus->get_number_of_alive() == 0 && world->check_armageddon())
+    {
+      goal = GT_ARMAGEDDON;
+    }
+    else if (plf.get_time() != -1
+             && plf.get_time() <= server->get_time())
+    {
+      goal = GT_OUT_OF_TIME;
+    }
+  }
 }
 
 void

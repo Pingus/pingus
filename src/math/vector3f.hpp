@@ -39,11 +39,11 @@ public:
   Vector3f& operator= (const Vector3f& old)
   {
     if (this != &old)
-      {
-        x = old.x;
-        y = old.y;
-        z = old.z;
-      }
+    {
+      x = old.x;
+      y = old.y;
+      z = old.z;
+    }
 
     return *this;
   }
@@ -93,11 +93,11 @@ public:
     float f = Math::sqrt(x * x + y * y + z * z);
 
     if (f)
-      {
-        x /= f;
-        y /= f;
-        z /= f;
-      }
+    {
+      x /= f;
+      y /= f;
+      z /= f;
+    }
   }
 
   float length() const

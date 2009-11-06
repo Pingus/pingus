@@ -36,11 +36,11 @@ GroupComponent::GroupComponent(const Rect& rect_, bool clip_) :
 GroupComponent::~GroupComponent()
 {
   for(Components::iterator i = children.begin(); i != children.end(); ++i)
-    {
-      delete *i;
-    }
+  {
+    delete *i;
+  }
 }
-  	
+        
 void
 GroupComponent::draw (DrawingContext& parent_gc)
 {
@@ -49,10 +49,10 @@ GroupComponent::draw (DrawingContext& parent_gc)
   draw_background(drawing_context);
 
   for(Components::iterator i = children.begin(); i != children.end(); ++i)
-    {
-      if ((*i)->is_visible())
-        (*i)->draw(drawing_context);
-    }
+  {
+    if ((*i)->is_visible())
+      (*i)->draw(drawing_context);
+  }
   
   parent_gc.draw(drawing_context);
 }
@@ -61,10 +61,10 @@ void
 GroupComponent::update (float delta)
 {
   for(Components::iterator i = children.begin(); i != children.end(); ++i)
-    {
-      if ((*i)->is_visible())
-        (*i)->update(delta);
-    }
+  {
+    if ((*i)->is_visible())
+      (*i)->update(delta);
+  }
 }
 
 bool
@@ -79,27 +79,27 @@ GroupComponent::on_primary_button_press (int x, int y)
   Vector2i mouse_pos = drawing_context.screen_to_world(Vector2i(x, y));
 
   if (grabbed_comp)
-    {
-      grabbed_comp->on_primary_button_press(mouse_pos.x, mouse_pos.y);
-    }
+  {
+    grabbed_comp->on_primary_button_press(mouse_pos.x, mouse_pos.y);
+  }
   else 
+  {
+    Component* comp = component_at(mouse_pos);
+    if (comp)
     {
-      Component* comp = component_at(mouse_pos);
-      if (comp)
-        {
-          comp->on_primary_button_press(mouse_pos.x, mouse_pos.y);
+      comp->on_primary_button_press(mouse_pos.x, mouse_pos.y);
       
-          if (focused_comp)
-            focused_comp->set_focus(false);
+      if (focused_comp)
+        focused_comp->set_focus(false);
 
-          focused_comp = comp;
+      focused_comp = comp;
 
-          if (focused_comp)
-            focused_comp->set_focus(true);
-        }
-
-      primary_pressed_comp = comp;
+      if (focused_comp)
+        focused_comp->set_focus(true);
     }
+
+    primary_pressed_comp = comp;
+  }
 }
 
 void
@@ -108,28 +108,28 @@ GroupComponent::on_primary_button_release (int x, int y)
   Vector2i mouse_pos = drawing_context.screen_to_world(Vector2i(x, y));
 
   if (grabbed_comp)
-    {
-      grabbed_comp->on_primary_button_release(mouse_pos.x, mouse_pos.y);
-    }
+  {
+    grabbed_comp->on_primary_button_release(mouse_pos.x, mouse_pos.y);
+  }
   else 
-    {
-      Component* comp = component_at(mouse_pos);
+  {
+    Component* comp = component_at(mouse_pos);
       
-      if (primary_pressed_comp)
-        {
-          primary_pressed_comp->on_primary_button_release(mouse_pos.x, mouse_pos.y);
+    if (primary_pressed_comp)
+    {
+      primary_pressed_comp->on_primary_button_release(mouse_pos.x, mouse_pos.y);
 
-          if (comp == primary_pressed_comp)
-            primary_pressed_comp->on_primary_button_click(mouse_pos.x, mouse_pos.y);
+      if (comp == primary_pressed_comp)
+        primary_pressed_comp->on_primary_button_click(mouse_pos.x, mouse_pos.y);
 
-          primary_pressed_comp = 0;
-        }
-      else
-        {
-          if (comp)
-            comp->on_primary_button_release(mouse_pos.x, mouse_pos.y);
-        }
+      primary_pressed_comp = 0;
     }
+    else
+    {
+      if (comp)
+        comp->on_primary_button_release(mouse_pos.x, mouse_pos.y);
+    }
+  }
 }
   
 void
@@ -138,18 +138,18 @@ GroupComponent::on_secondary_button_press (int x, int y)
   Vector2i mouse_pos = drawing_context.screen_to_world(Vector2i(x, y));
 
   if (grabbed_comp)
-    {
-      grabbed_comp->on_secondary_button_press(mouse_pos.x, mouse_pos.y);
-    }
+  {
+    grabbed_comp->on_secondary_button_press(mouse_pos.x, mouse_pos.y);
+  }
   else 
-    {
-      Component* comp = component_at(mouse_pos);
-      if (comp)
-        comp->on_secondary_button_press(mouse_pos.x, mouse_pos.y);
+  {
+    Component* comp = component_at(mouse_pos);
+    if (comp)
+      comp->on_secondary_button_press(mouse_pos.x, mouse_pos.y);
 
-      if (!primary_pressed_comp)
-        secondary_pressed_comp = comp;
-    }
+    if (!primary_pressed_comp)
+      secondary_pressed_comp = comp;
+  }
 }
 
 void
@@ -160,23 +160,23 @@ GroupComponent::on_secondary_button_release(int x, int y)
   Component* comp = component_at(mouse_pos);
   
   if (grabbed_comp)
-    {
-      grabbed_comp->on_secondary_button_release(mouse_pos.x, mouse_pos.y);
-    }
+  {
+    grabbed_comp->on_secondary_button_release(mouse_pos.x, mouse_pos.y);
+  }
   else if (secondary_pressed_comp)
-    {
-      secondary_pressed_comp->on_secondary_button_release(mouse_pos.x, mouse_pos.y);
+  {
+    secondary_pressed_comp->on_secondary_button_release(mouse_pos.x, mouse_pos.y);
       
-      if (comp == secondary_pressed_comp)
-        secondary_pressed_comp->on_secondary_button_click(mouse_pos.x, mouse_pos.y);
+    if (comp == secondary_pressed_comp)
+      secondary_pressed_comp->on_secondary_button_click(mouse_pos.x, mouse_pos.y);
       
-      secondary_pressed_comp = 0;
-    }
+    secondary_pressed_comp = 0;
+  }
   else
-    {
-      if (comp)
-        comp->on_secondary_button_release(mouse_pos.x, mouse_pos.y);
-    }
+  {
+    if (comp)
+      comp->on_secondary_button_release(mouse_pos.x, mouse_pos.y);
+  }
 }
 
 void
@@ -196,52 +196,52 @@ GroupComponent::on_pointer_move(int x, int y)
   Vector2i mouse_pos = drawing_context.screen_to_world(Vector2i(x, y));
 
   if (grabbed_comp)
-    {
-      grabbed_comp->on_pointer_move(mouse_pos.x, mouse_pos.y);
-    }
+  {
+    grabbed_comp->on_pointer_move(mouse_pos.x, mouse_pos.y);
+  }
   else if (primary_pressed_comp)
-    {
-      primary_pressed_comp->on_pointer_move(mouse_pos.x, mouse_pos.y);
-    }
+  {
+    primary_pressed_comp->on_pointer_move(mouse_pos.x, mouse_pos.y);
+  }
   else if (secondary_pressed_comp)
-    {
-      secondary_pressed_comp->on_pointer_move(mouse_pos.x, mouse_pos.y);
-    }
+  {
+    secondary_pressed_comp->on_pointer_move(mouse_pos.x, mouse_pos.y);
+  }
   else
+  {
+    Component* comp = component_at(mouse_pos);
+    if (comp)
     {
-      Component* comp = component_at(mouse_pos);
-      if (comp)
-        {
-          comp->on_pointer_move(mouse_pos.x, mouse_pos.y); 
-        }
-
-      if (comp != mouse_over_comp)
-        {
-          if (mouse_over_comp)
-            {
-              mouse_over_comp->set_mouse_over(false);
-              mouse_over_comp->on_pointer_leave();
-            }
-      
-          if (comp)
-            {
-              comp->set_mouse_over(true);
-              comp->on_pointer_enter();
-            }
-        }
-
-      mouse_over_comp = comp;
+      comp->on_pointer_move(mouse_pos.x, mouse_pos.y); 
     }
+
+    if (comp != mouse_over_comp)
+    {
+      if (mouse_over_comp)
+      {
+        mouse_over_comp->set_mouse_over(false);
+        mouse_over_comp->on_pointer_leave();
+      }
+      
+      if (comp)
+      {
+        comp->set_mouse_over(true);
+        comp->on_pointer_enter();
+      }
+    }
+
+    mouse_over_comp = comp;
+  }
 }
 
 Component*
 GroupComponent::component_at (const Vector2i& pos)
 {
   for(Components::reverse_iterator i = children.rbegin(); i != children.rend(); ++i)
-    {
-      if ((*i)->is_visible() && (*i)->is_at(pos.x, pos.y))
-        return *i;
-    }
+  {
+    if ((*i)->is_visible() && (*i)->is_at(pos.x, pos.y))
+      return *i;
+  }
   return 0;
 }
 
@@ -268,14 +268,14 @@ void
 GroupComponent::on_pointer_leave()
 {
   if (!grabbed_comp)
+  {
+    if (mouse_over_comp)
     {
-      if (mouse_over_comp)
-        {
-          mouse_over_comp->set_mouse_over(false);
-          mouse_over_comp->on_pointer_leave();
-        }
-      mouse_over_comp = 0; 
+      mouse_over_comp->set_mouse_over(false);
+      mouse_over_comp->on_pointer_leave();
     }
+    mouse_over_comp = 0; 
+  }
 }
 
 void

@@ -75,8 +75,8 @@ public:
   }
 
   bool is_at(int x, int y) {
-	  return x > x_pos && x < x_pos + int(button_surface.get_width())
-		&& y > y_pos - 20 && y < y_pos + int(button_surface.get_height());
+    return x > x_pos && x < x_pos + int(button_surface.get_width())
+      && y > y_pos - 20 && y < y_pos + int(button_surface.get_height());
   }
 
   void on_click()

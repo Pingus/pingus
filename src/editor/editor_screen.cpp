@@ -67,7 +67,7 @@ EditorScreen::EditorScreen() :
                                      size.width - 244, 
                                      size.height));
   gui_manager->add(viewport);
-	
+        
   // Create the panel for the buttons
   panel = new Panel(this);
 

@@ -41,23 +41,23 @@ Pingu*
 PinguHolder::create_pingu (const Vector3f& pos, int owner_id)
 {
   if (number_of_allowed > get_number_of_released())
-    {
-      // We use all_pingus.size() as pingu_id, so that id == array
-      // index
-      Pingu* pingu = new Pingu ((int)all_pingus.size(), pos, owner_id);
+  {
+    // We use all_pingus.size() as pingu_id, so that id == array
+    // index
+    Pingu* pingu = new Pingu ((int)all_pingus.size(), pos, owner_id);
 
-      // This list will deleted
-      all_pingus.push_back (pingu);
+    // This list will deleted
+    all_pingus.push_back (pingu);
 
-      // This list holds the active pingus
-      pingus.push_back(pingu);
+    // This list holds the active pingus
+    pingus.push_back(pingu);
 
-      return pingu;
-    }
+    return pingu;
+  }
   else
-    {
-      return 0;
-    }
+  {
+    return 0;
+  }
 }
 
 void
@@ -67,10 +67,10 @@ PinguHolder::draw (SceneContext& gc)
   for(std::list<Pingu*>::iterator pingu = pingus.begin();
       pingu != pingus.end();
       ++pingu)
-    {
-      if ((*pingu)->get_action() == Actions::WALKER)
-	(*pingu)->draw (gc);
-    }
+  {
+    if ((*pingu)->get_action() == Actions::WALKER)
+      (*pingu)->draw (gc);
+  }
 
   // Draw all non-walkers, so that they are easier spotable
 
@@ -82,10 +82,10 @@ PinguHolder::draw (SceneContext& gc)
   for(std::list<Pingu*>::iterator pingu = pingus.begin();
       pingu != pingus.end();
       ++pingu)
-    {
-      if ((*pingu)->get_action() != Actions::WALKER)
-	(*pingu)->draw (gc);
-    }
+  {
+    if ((*pingu)->get_action() != Actions::WALKER)
+      (*pingu)->draw (gc);
+  }
 }
 
 void
@@ -94,49 +94,49 @@ PinguHolder::update()
   PinguIter pingu = pingus.begin();
 
   while(pingu != pingus.end())
-    {
-      (*pingu)->update();
+  {
+    (*pingu)->update();
 
-      // FIXME: The draw-loop is not the place for things like this,
-      // this belongs in the update loop
-      if ((*pingu)->get_status() == PS_DEAD)
-	{
-	  // Removing the dead pingu and setting the iterator back to
-	  // the correct possition, no memory hole since pingus will
-	  // keep track of the allocated Pingus
-	  pingu = pingus.erase(pingu);
-	}
-      else if ((*pingu)->get_status() == PS_EXITED)
-	{
-	  number_of_exited += 1;
-	  pingu = pingus.erase(pingu);
-	}
-      else
-	{
-	  // move to the next Pingu
-	  ++pingu;
-	}
+    // FIXME: The draw-loop is not the place for things like this,
+    // this belongs in the update loop
+    if ((*pingu)->get_status() == PS_DEAD)
+    {
+      // Removing the dead pingu and setting the iterator back to
+      // the correct possition, no memory hole since pingus will
+      // keep track of the allocated Pingus
+      pingu = pingus.erase(pingu);
     }
+    else if ((*pingu)->get_status() == PS_EXITED)
+    {
+      number_of_exited += 1;
+      pingu = pingus.erase(pingu);
+    }
+    else
+    {
+      // move to the next Pingu
+      ++pingu;
+    }
+  }
 }
 
 Pingu*
 PinguHolder::get_pingu(unsigned int id_)
 {
   if (id_ < all_pingus.size())
-    {
-      Pingu* pingu = all_pingus[id_];
+  {
+    Pingu* pingu = all_pingus[id_];
 
-      assert(pingu->get_id() == id_);
+    assert(pingu->get_id() == id_);
 
-      if (pingu->get_status() == PS_ALIVE)
-        return pingu;
-      else
-        return 0;
-    }
-  else
-    {
+    if (pingu->get_status() == PS_ALIVE)
+      return pingu;
+    else
       return 0;
-    }
+  }
+  else
+  {
+    return 0;
+  }
 }
 
 float

@@ -55,13 +55,13 @@ StateSprite::operator[](int state)
 {
   Sprites::iterator i = sprites.find(state);
   if (i != sprites.end())
-    {
-      return i->second;
-    }
+  {
+    return i->second;
+  }
   else
-    {
-      throw std::runtime_error("StateSprite error");
-    }
+  {
+    throw std::runtime_error("StateSprite error");
+  }
 }
 
 /* EOF */

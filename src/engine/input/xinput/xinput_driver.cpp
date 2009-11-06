@@ -45,39 +45,39 @@ XInputDriver::xinput_is_present()
   XExtensionVersion* version = XGetExtensionVersion(sys.info.x11.display, INAME);
 
   if (version && (version != (XExtensionVersion*)NoSuchExtension)) 
-    {
-      Bool present = version->present;
-      XFree(version);
-      return present;
-    } 
+  {
+    Bool present = version->present;
+    XFree(version);
+    return present;
+  } 
   else 
-    {
-      return False;
-    }
+  {
+    return False;
+  }
 }
 
 void
 XInputDriver::setup_xinput()
 {
   if (!xinput_is_present())
-    {
-      std::cout << "debug: XInput extentsion not found" << std::endl;
-    }
+  {
+    std::cout << "debug: XInput extentsion not found" << std::endl;
+  }
   else
+  {
+    int num_devices;
+    XDeviceInfo* info = XListInputDevices(sys.info.x11.display, &num_devices);
+    for(int i = 0; i < num_devices; ++i) 
     {
-      int num_devices;
-      XDeviceInfo* info = XListInputDevices(sys.info.x11.display, &num_devices);
-      for(int i = 0; i < num_devices; ++i) 
-        {
-          pout(PINGUS_DEBUG_INPUT) << "XInputDriver: Device name='" << info[i].name << "'" << std::endl;
-          // FIXME: Xinput isn't necesarrily a mouse, could be anything
-          //if (info[i].use == IsXExtensionDevice)
-          // {
-              devices.push_back(new XInputDevice(this, &info[i]));
-              // } 
-        }
-      XFreeDeviceList(info);
+      pout(PINGUS_DEBUG_INPUT) << "XInputDriver: Device name='" << info[i].name << "'" << std::endl;
+      // FIXME: Xinput isn't necesarrily a mouse, could be anything
+      //if (info[i].use == IsXExtensionDevice)
+      // {
+      devices.push_back(new XInputDevice(this, &info[i]));
+      // } 
     }
+    XFreeDeviceList(info);
+  }
 }
 
 void
@@ -99,13 +99,13 @@ XInputDriver::find_device_info(Display *display,
   XID  id = 0;
 
   for(int i = 0; i < len; ++i) 
+  {
+    if (!isdigit(name[i])) 
     {
-      if (!isdigit(name[i])) 
-        {
-          is_id = False;
-          break;
-        }
+      is_id = False;
+      break;
     }
+  }
 
   if (is_id) {
     id = atoi(name);
@@ -114,13 +114,13 @@ XInputDriver::find_device_info(Display *display,
   x_devices = XListInputDevices(display, &num_devices);
 
   for(int i = 0; i < num_devices; ++i) 
-    {
-      if ((!only_extended || (x_devices[i].use == IsXExtensionDevice)) &&
-          ((!is_id && strcmp(x_devices[i].name, name) == 0) ||
-           (is_id && x_devices[i].id == id))) {
-        return &x_devices[i];
-      }
+  {
+    if ((!only_extended || (x_devices[i].use == IsXExtensionDevice)) &&
+        ((!is_id && strcmp(x_devices[i].name, name) == 0) ||
+         (is_id && x_devices[i].id == id))) {
+      return &x_devices[i];
     }
+  }
   return NULL;
 }
 

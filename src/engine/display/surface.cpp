@@ -64,25 +64,25 @@ Surface::Surface(const Pathname& pathname) :
 {
   SDL_Surface* surface = IMG_Load(pathname.get_sys_path().c_str());
   if (surface)
-    {
-      impl = boost::shared_ptr<SurfaceImpl>(new SurfaceImpl(surface));
-    }
+  {
+    impl = boost::shared_ptr<SurfaceImpl>(new SurfaceImpl(surface));
+  }
 }
 
 Surface::Surface(int width, int height, SDL_Palette* palette, int colorkey)
   : impl(new SurfaceImpl())
 {
   if (colorkey == -1)
-    {
-      impl->surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 8,
-                                           0, 0, 0 ,0);
-    }
+  {
+    impl->surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 8,
+                                         0, 0, 0 ,0);
+  }
   else
-    {
-      impl->surface = SDL_CreateRGBSurface(SDL_SWSURFACE | SDL_SRCCOLORKEY, width, height, 8,
-                                           0, 0, 0 ,0);
-      SDL_SetColorKey(impl->surface, SDL_SRCCOLORKEY, colorkey);
-    }
+  {
+    impl->surface = SDL_CreateRGBSurface(SDL_SWSURFACE | SDL_SRCCOLORKEY, width, height, 8,
+                                         0, 0, 0 ,0);
+    SDL_SetColorKey(impl->surface, SDL_SRCCOLORKEY, colorkey);
+  }
 
   SDL_SetColors(impl->surface, palette->colors, 0, palette->ncolors);
 }
@@ -111,22 +111,22 @@ void
 Surface::blit(const Surface& src, int x, int y)
 {
   if (!get_surface())
-    {
-      std::cout << "Surface: Trying to blit to empty surface" << std::endl;
-    }
+  {
+    std::cout << "Surface: Trying to blit to empty surface" << std::endl;
+  }
   else if (!src.get_surface())
-    {
-      std::cout << "Surface: Trying to blit with an empty surface" << std::endl;
-    }
+  {
+    std::cout << "Surface: Trying to blit with an empty surface" << std::endl;
+  }
   else
-    {
-      SDL_Rect dstrect;
+  {
+    SDL_Rect dstrect;
 
-      dstrect.x = static_cast<Sint16>(x);
-      dstrect.y = static_cast<Sint16>(y);
+    dstrect.x = static_cast<Sint16>(x);
+    dstrect.y = static_cast<Sint16>(y);
 
-      SDL_BlitSurface(src.get_surface(), NULL, get_surface(), &dstrect);
-    }
+    SDL_BlitSurface(src.get_surface(), NULL, get_surface(), &dstrect);
+  }
 }
 
 void
@@ -201,21 +201,21 @@ Surface::get_pixel(int x, int y) const
   Uint32 pixel;
 
   switch(get_surface()->format->BytesPerPixel)
-    {
+  {
     case 1:
       pixel = *p;
     case 2: /* This will cause some problems ... */
       pixel = *(Uint16 *)p;
     case 3:
       if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
-	pixel = p[0] << 16 | p[1] << 8 | p[2];
+        pixel = p[0] << 16 | p[1] << 8 | p[2];
       else
-	pixel = p[0] | p[1] << 8 | p[2] << 16;
+        pixel = p[0] | p[1] << 8 | p[2] << 16;
     case 4:
       pixel = *(Uint32 *)p;
     default:
       pixel = 0;       /* shouldn't happen, but avoids warnings */
-    } 
+  } 
 
   Color color;
   SDL_GetRGBA(pixel, get_surface()->format, &color.r, &color.g, &color.b, &color.a);
@@ -226,35 +226,35 @@ Surface
 Surface::mod(ResourceModifierNS::ResourceModifier modifier)
 {
   switch(modifier)
-    {
-      case ResourceModifierNS::ROT0:
-        return this->clone();
+  {
+    case ResourceModifierNS::ROT0:
+      return this->clone();
 
-      case ResourceModifierNS::ROT90:
-        return Blitter::rotate_90(*this);
+    case ResourceModifierNS::ROT90:
+      return Blitter::rotate_90(*this);
 
-      case ResourceModifierNS::ROT180:
-        return Blitter::rotate_180(*this);
+    case ResourceModifierNS::ROT180:
+      return Blitter::rotate_180(*this);
 
-      case ResourceModifierNS::ROT270:
-        return Blitter::rotate_270(*this);
+    case ResourceModifierNS::ROT270:
+      return Blitter::rotate_270(*this);
 
-      case ResourceModifierNS::ROT0FLIP:
-        return Blitter::flip_horizontal(*this);
+    case ResourceModifierNS::ROT0FLIP:
+      return Blitter::flip_horizontal(*this);
 
-      case ResourceModifierNS::ROT90FLIP:
-        return Blitter::rotate_90_flip(*this);
+    case ResourceModifierNS::ROT90FLIP:
+      return Blitter::rotate_90_flip(*this);
 
-      case ResourceModifierNS::ROT180FLIP:
-        return Blitter::rotate_180_flip(*this);
+    case ResourceModifierNS::ROT180FLIP:
+      return Blitter::rotate_180_flip(*this);
 
-      case ResourceModifierNS::ROT270FLIP:
-        return Blitter::rotate_270_flip(*this);
+    case ResourceModifierNS::ROT270FLIP:
+      return Blitter::rotate_270_flip(*this);
 
-      default:
-        perr << "Surface: unhandled modifier: " << modifier << std::endl;
-        return *this;
-    }
+    default:
+      perr << "Surface: unhandled modifier: " << modifier << std::endl;
+      return *this;
+  }
 }
 
 Surface
@@ -270,16 +270,16 @@ Surface::clone() const
   SDL_Surface* new_surface = Blitter::create_surface_from_format(impl->surface, 
                                                                  impl->surface->w, impl->surface->h);
   if (impl->surface->flags & SDL_SRCALPHA)
-    {
-      Uint8 alpha = impl->surface->format->alpha;
-      SDL_SetAlpha(impl->surface, 0, 0);
-      SDL_BlitSurface(impl->surface, NULL, new_surface, NULL);
-      SDL_SetAlpha(impl->surface, SDL_SRCALPHA, alpha);
-    }
+  {
+    Uint8 alpha = impl->surface->format->alpha;
+    SDL_SetAlpha(impl->surface, 0, 0);
+    SDL_BlitSurface(impl->surface, NULL, new_surface, NULL);
+    SDL_SetAlpha(impl->surface, SDL_SRCALPHA, alpha);
+  }
   else
-    {
-      SDL_BlitSurface(impl->surface, NULL, new_surface, NULL);
-    }
+  {
+    SDL_BlitSurface(impl->surface, NULL, new_surface, NULL);
+  }
  
   return Surface(boost::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface)));
 }
@@ -334,7 +334,7 @@ Surface::print(std::ostream& out)
                        "Flags:   0x%08x -> %s%s%s%s\n"
                        "Palette: 0x%08x\n"
                        "BitsPerPixel: %d\n"
-                       )
+    )
     % impl->surface
     % impl->surface->format->Rmask
     % impl->surface->format->Gmask
@@ -355,18 +355,18 @@ Surface::print(std::ostream& out)
     out << "Alpha: " << (int)impl->surface->format->alpha << std::endl;
 
   if (0)
-    {
-      SDL_LockSurface(impl->surface);
-      Uint8* pixels = static_cast<Uint8*>(impl->surface->pixels);
-      for(int i = 0; i < impl->surface->pitch * impl->surface->h; i += 4)
-        out << boost::format("(%3d %3d %3d %3d) ")
-          % (int)pixels[i+0]
-          % (int)pixels[i+1]
-          % (int)pixels[i+2]
-          % (int)pixels[i+3];
-      out << std::endl;
-      SDL_UnlockSurface(impl->surface);
-    }
+  {
+    SDL_LockSurface(impl->surface);
+    Uint8* pixels = static_cast<Uint8*>(impl->surface->pixels);
+    for(int i = 0; i < impl->surface->pitch * impl->surface->h; i += 4)
+      out << boost::format("(%3d %3d %3d %3d) ")
+        % (int)pixels[i+0]
+        % (int)pixels[i+1]
+        % (int)pixels[i+2]
+        % (int)pixels[i+3];
+    out << std::endl;
+    SDL_UnlockSurface(impl->surface);
+  }
 }
 
 /* EOF */

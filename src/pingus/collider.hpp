@@ -22,21 +22,21 @@ class World;
 
 class Collider
 {
-  public:
-    /** Constructor for abstract class */
-    Collider();
+public:
+  /** Constructor for abstract class */
+  Collider();
 
-    /** Destructor for abstract class */
-    virtual ~Collider() = 0;
+  /** Destructor for abstract class */
+  virtual ~Collider() = 0;
 
-    /** Find out if object will collide with something */
-    virtual bool operator() (World* const world, Vector3f current_pos,
-			      const Vector3f& step_vector) const = 0;
+  /** Find out if object will collide with something */
+  virtual bool operator() (World* const world, Vector3f current_pos,
+                           const Vector3f& step_vector) const = 0;
 
-  protected:
-    /** Get the Collision Map pixel at the specified position in the specified
-	world */
-    int getpixel(World* const world, const Vector3f& pos) const;
+protected:
+  /** Get the Collision Map pixel at the specified position in the specified
+      world */
+  int getpixel(World* const world, const Vector3f& pos) const;
 };
 
 #endif

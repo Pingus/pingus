@@ -84,7 +84,7 @@ public:
   //: Size -= Size operator.
   Size &operator-=(const Size &s)
   { width -= s.width; height -= s.height; return *this; }
-	
+        
   //: Size + Size operator.
   Size operator+(const Size &s) const
   { return Size(width + s.width, height + s.height); }
@@ -158,7 +158,7 @@ public:
   //: Size -= Size operator.
   Sizef &operator-=(const Sizef &s)
   { width -= s.width; height -= s.height; return *this; }
-	
+        
   //: Size + Size operator.
   Sizef operator+(const Sizef &s) const
   { return Sizef(width + s.width, height + s.height); }

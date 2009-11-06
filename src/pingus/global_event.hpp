@@ -29,8 +29,8 @@ public:
   virtual void on_button_release(const SDL_KeyboardEvent& event);
 
 private:
-   GlobalEvent (const GlobalEvent&);
-   GlobalEvent& operator= (const GlobalEvent&);
+  GlobalEvent (const GlobalEvent&);
+  GlobalEvent& operator= (const GlobalEvent&);
 };
 
 extern GlobalEvent global_event;

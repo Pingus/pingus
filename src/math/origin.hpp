@@ -47,15 +47,15 @@
 //- !header=core.h!
 enum Origin
 {
-	origin_top_left,
-	origin_top_center,
-	origin_top_right,
-	origin_center_left,
-	origin_center,
-	origin_center_right,
-	origin_bottom_left,
-	origin_bottom_center,
-	origin_bottom_right
+  origin_top_left,
+  origin_top_center,
+  origin_top_right,
+  origin_center_left,
+  origin_center,
+  origin_center_right,
+  origin_bottom_left,
+  origin_bottom_center,
+  origin_bottom_right
 };
 
 Origin string2origin(const std::string& str);

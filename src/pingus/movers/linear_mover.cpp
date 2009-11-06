@@ -44,11 +44,11 @@ void LinearMover::update(const Vector3f& move, const Collider& collision_check)
 
   // Move to the destination one unit vector at a time
   for (int i = 0; i < move_length && !collision; ++i)
-    {
-      collision = collision_check(world, pos, step_vector);
+  {
+    collision = collision_check(world, pos, step_vector);
 
-      pos += step_vector;
-    }
+    pos += step_vector;
+  }
 
   // If on a collision pixel, back away from it.
   if (collision)

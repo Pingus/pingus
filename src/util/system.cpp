@@ -70,58 +70,58 @@ System::opendir(const std::string& pathname, const std::string& pattern)
   dp = ::opendir(pathname.c_str());
 
   if (dp == 0)
-    {
-      std::cout << "System: Couldn't open: " << pathname << std::endl;
-    }
+  {
+    std::cout << "System: Couldn't open: " << pathname << std::endl;
+  }
   else
+  {
+    while ((de = ::readdir(dp)) != 0)
     {
-      while ((de = ::readdir(dp)) != 0)
-	{
-	  if (fnmatch(pattern.c_str(), de->d_name, FNM_PATHNAME) == 0)
-	    {
-	      struct stat buf;
-	      stat ((pathname + "/" + de->d_name).c_str (), &buf);
+      if (fnmatch(pattern.c_str(), de->d_name, FNM_PATHNAME) == 0)
+      {
+        struct stat buf;
+        stat ((pathname + "/" + de->d_name).c_str (), &buf);
 
-	      if (S_ISDIR(buf.st_mode))
-		{
-		  dir_list.push_back(DirectoryEntry(de->d_name, DE_DIRECTORY));
-		}
-	      else
-		{
-		  dir_list.push_back(DirectoryEntry(de->d_name, DE_FILE));
-		}
-	    }
-	}
-
-      closedir(dp);
+        if (S_ISDIR(buf.st_mode))
+        {
+          dir_list.push_back(DirectoryEntry(de->d_name, DE_DIRECTORY));
+        }
+        else
+        {
+          dir_list.push_back(DirectoryEntry(de->d_name, DE_FILE));
+        }
+      }
     }
+
+    closedir(dp);
+  }
 #else /* WIN32 */
   WIN32_FIND_DATA coFindData;
   std::string FindFileDir = pathname + "/" + pattern;
   HANDLE hFind = FindFirstFile(TEXT(FindFileDir.c_str()),&coFindData);
 
   if (hFind == INVALID_HANDLE_VALUE)
-    {
-      if (GetLastError() != ERROR_FILE_NOT_FOUND)
-	std::cout << "System: Couldn't open: " << pathname << std::endl;
-    }
+  {
+    if (GetLastError() != ERROR_FILE_NOT_FOUND)
+      std::cout << "System: Couldn't open: " << pathname << std::endl;
+  }
   else
+  {
+    do
     {
-      do
-	{
-	  if (coFindData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
-	    {
-	      dir_list.push_back(DirectoryEntry(coFindData.cFileName, System::DE_DIRECTORY));
-	    }
-	  else
-	    {
-	      dir_list.push_back(DirectoryEntry(coFindData.cFileName, System::DE_FILE));
-	    }
-	}
-      while (FindNextFile(hFind,&coFindData));
-
-      FindClose(hFind);
+      if (coFindData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+      {
+        dir_list.push_back(DirectoryEntry(coFindData.cFileName, System::DE_DIRECTORY));
+      }
+      else
+      {
+        dir_list.push_back(DirectoryEntry(coFindData.cFileName, System::DE_FILE));
+      }
     }
+    while (FindNextFile(hFind,&coFindData));
+
+    FindClose(hFind);
+  }
 #endif
 
   return dir_list;
@@ -136,11 +136,11 @@ System::basename(std::string filename)
   int i;
 
   for(i = (int)filename.size() - 1; i >= 0; --i)
-    {
-      if (*(str + i) == '/') {
-	break;
-      }
+  {
+    if (*(str + i) == '/') {
+      break;
     }
+  }
 
   return (str+i + 1);
 }
@@ -152,11 +152,11 @@ System::dirname (std::string filename)
   int i;
 
   for(i = (int)filename.size() - 1; i >= 0; --i)
-    {
-      if (*(str + i) == '/') {
-	break;
-      }
+  {
+    if (*(str + i) == '/') {
+      break;
     }
+  }
 
   return filename.substr(0, i);
 }
@@ -172,42 +172,42 @@ System::create_dir(std::string directory)
 {
 #ifndef WIN32
   if (pingus_debug_flags & PINGUS_DEBUG_DIRECTORIES)
-    {
-      std::cout << "System::create_dir: " << directory << std::endl;
-    }
+  {
+    std::cout << "System::create_dir: " << directory << std::endl;
+  }
 
   if (!exist(directory))
+  {
+    if (mkdir(directory.c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) != 0)
     {
-      if (mkdir(directory.c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) != 0)
-	{
-	  throw std::runtime_error("System::create_dir: " + directory + ": " + strerror(errno));
-	}
-      else
-	{
-	  std::cout << "Successfully created: " << directory << std::endl;
-	}
+      throw std::runtime_error("System::create_dir: " + directory + ": " + strerror(errno));
     }
-#else
-  if (!CreateDirectory(directory.c_str(), 0))
-    {
-      DWORD dwError = GetLastError();
-      if (dwError == ERROR_ALREADY_EXISTS)
-        {
-        }
-      else if (dwError == ERROR_PATH_NOT_FOUND)
-        {
-          throw std::runtime_error("CreateDirectory: " + directory +
-            ": One or more intermediate directories do not exist; this function will only create the final directory in the path.");
-        }
-      else
-        {
-          throw std::runtime_error("CreateDirectory: " + directory + ": failed with error " + StringUtil::to_string(dwError));
-        }
-    }
-  else
+    else
     {
       std::cout << "Successfully created: " << directory << std::endl;
     }
+  }
+#else
+  if (!CreateDirectory(directory.c_str(), 0))
+  {
+    DWORD dwError = GetLastError();
+    if (dwError == ERROR_ALREADY_EXISTS)
+    {
+    }
+    else if (dwError == ERROR_PATH_NOT_FOUND)
+    {
+      throw std::runtime_error("CreateDirectory: " + directory +
+                               ": One or more intermediate directories do not exist; this function will only create the final directory in the path.");
+    }
+    else
+    {
+      throw std::runtime_error("CreateDirectory: " + directory + ": failed with error " + StringUtil::to_string(dwError));
+    }
+  }
+  else
+  {
+    std::cout << "Successfully created: " << directory << std::endl;
+  }
 #endif
 }
 
@@ -218,15 +218,15 @@ System::find_userdir()
   std::string tmpstr;
   char* appdata  = getenv("APPDATA");
   if (appdata)
-    {
-      tmpstr = std::string(appdata) + "/Pingus/";
-      for (size_t pos = tmpstr.find('\\', 0); pos != std::string::npos; pos = tmpstr.find('\\', 0))
-        tmpstr[pos] = '/';
-    }
+  {
+    tmpstr = std::string(appdata) + "/Pingus/";
+    for (size_t pos = tmpstr.find('\\', 0); pos != std::string::npos; pos = tmpstr.find('\\', 0))
+      tmpstr[pos] = '/';
+  }
   else
-    {
-      tmpstr = "user/";
-    }
+  {
+    tmpstr = "user/";
+  }
 
   return tmpstr;
 
@@ -234,13 +234,13 @@ System::find_userdir()
   char* homedir = getenv("HOME");
 
   if (homedir)
-    {
-      return std::string(homedir) + "/.pingus/";
-    }
+  {
+    return std::string(homedir) + "/.pingus/";
+  }
   else
-    {
-      throw std::runtime_error("Environment variable $HOME not set, fix that and start again.");
-    }
+  {
+    throw std::runtime_error("Environment variable $HOME not set, fix that and start again.");
+  }
 #endif
 }
 
@@ -302,18 +302,18 @@ std::string
 System::get_username()
 {
   if (default_username.empty())
-    {
-      char* username = getenv("USERNAME");
+  {
+    char* username = getenv("USERNAME");
 
-      if (username)
-	return std::string(username);
-      else
-	return "";
-    }
+    if (username)
+      return std::string(username);
+    else
+      return "";
+  }
   else
-    {
-      return default_username;
-    }
+  {
+    return default_username;
+  }
 }
 
 /** Returns the EMail of the user or an empty string */
@@ -321,20 +321,20 @@ std::string
 System::get_email()
 {
   if (default_email.empty())
-    {
-      char* email = getenv("EMAIL");
+  {
+    char* email = getenv("EMAIL");
 
-      if (email)
-	// FIXME: $EMAIL contains the complete from header, not only
-	// the email address
-	return std::string(email);
-      else
-	return "";
-    }
+    if (email)
+      // FIXME: $EMAIL contains the complete from header, not only
+      // the email address
+      return std::string(email);
+    else
+      return "";
+  }
   else
-    {
-      return default_email;
-    }
+  {
+    return default_email;
+  }
 }
 
 std::string
@@ -375,23 +375,23 @@ System::checksum(std::string filename)
   in = fopen(filename.c_str(), "r");
 
   if (!in)
-    {
-      std::cout << "System::checksum: Couldn't open file: " << filename << std::endl;
-      return "";
-    }
+  {
+    std::cout << "System::checksum: Couldn't open file: " << filename << std::endl;
+    return "";
+  }
 
   do
+  {
+    bytes_read = fread(buffer, sizeof (char), 4096, in);
+
+    if (bytes_read != 4096 && !feof(in))
     {
-      bytes_read = fread(buffer, sizeof (char), 4096, in);
-
-      if (bytes_read != 4096 && !feof(in))
-	{
-	  throw std::runtime_error("System:checksum: file read error");
-	}
-
-      for (size_t i=0; i < bytes_read; ++i)
-	checksum = checksum * 17 + buffer[i];
+      throw std::runtime_error("System:checksum: file read error");
     }
+
+    for (size_t i=0; i < bytes_read; ++i)
+      checksum = checksum * 17 + buffer[i];
+  }
   while (bytes_read != 0);
 
   fclose (in);
@@ -430,35 +430,35 @@ System::realpath(const std::string& pathname)
   std::string drive;
   
   if (pathname.size() > 0 && pathname[0] == '/')
-    {
-      fullpath = pathname;
-    }
+  {
+    fullpath = pathname;
+  }
 #ifdef WIN32
   else if (pathname.size() > 2 && pathname[1] == ':' && pathname[2] == '/')
-    {
-      drive = pathname.substr(0, 2);
-      fullpath = pathname;
-    }
+  {
+    drive = pathname.substr(0, 2);
+    fullpath = pathname;
+  }
 #endif
   else
+  {
+    char buf[PATH_MAX];
+    if (getcwd(buf, PATH_MAX) == 0)
     {
-      char buf[PATH_MAX];
-      if (getcwd(buf, PATH_MAX) == 0)
-        {
-          std::cout << "System::realpath: Error: couldn't getcwd()" << std::endl;
-          return pathname;
-        }
+      std::cout << "System::realpath: Error: couldn't getcwd()" << std::endl;
+      return pathname;
+    }
 #ifdef WIN32
-      for (char *p = buf; *p; ++p)
-        {
-          if (*p == '\\')
-            *p = '/';
-        }
-      drive.assign(buf, 2);
+    for (char *p = buf; *p; ++p)
+    {
+      if (*p == '\\')
+        *p = '/';
+    }
+    drive.assign(buf, 2);
 #endif
       
-      fullpath = fullpath + buf + "/" + pathname;
-    }
+    fullpath = fullpath + buf + "/" + pathname;
+  }
   
   std::string result;
   std::string::reverse_iterator last_slash = fullpath.rbegin();
@@ -466,32 +466,32 @@ System::realpath(const std::string& pathname)
   // /foo/bar/../../bar/baz/
   //std::cout << "fullpath: '" << fullpath << "'" << std::endl;
   for(std::string::reverse_iterator i = fullpath.rbegin(); i != fullpath.rend(); ++i)
-    { // FIXME: Little crude and hackish
-      if (*i == '/')
+  { // FIXME: Little crude and hackish
+    if (*i == '/')
+    {
+      std::string dir(last_slash, i); 
+      //std::cout << "'" << dir << "'" << std::endl;
+      if (dir == ".." || dir == "/..")
+      {
+        skip += 1;
+      }
+      else if (dir == "." || dir == "/." || dir.empty() || dir == "/")
+      {
+        // pass
+      }
+      else
+      {
+        if (skip == 0)
         {
-          std::string dir(last_slash, i); 
-          //std::cout << "'" << dir << "'" << std::endl;
-          if (dir == ".." || dir == "/..")
-            {
-              skip += 1;
-            }
-          else if (dir == "." || dir == "/." || dir.empty() || dir == "/")
-            {
-              // pass
-            }
-          else
-            {
-              if (skip == 0)
-                {
-                  result += dir;
-                }
-              else
-                skip -= 1;
-            }
-
-          last_slash = i;
+          result += dir;
         }
+        else
+          skip -= 1;
+      }
+
+      last_slash = i;
     }
+  }
   
   return drive + "/" + std::string(result.rbegin(), result.rend());
 }

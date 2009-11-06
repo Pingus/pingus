@@ -39,7 +39,7 @@ class ContextMenu;
     inside of the Viewport */
 class Viewport : public GUI::RectComponent 
 {
-private:	
+private:        
   GraphicContextState state;
   DrawingContext* drawing_context;
 
@@ -95,7 +95,7 @@ public:
 
   /** Refresh the list of objects (do when loading or creating a new level) */
   void refresh();
-	
+        
   /** Turns the "snap-to-grid" option on or off */
   void set_snap_to(bool s) { snap_to = s; }
 

@@ -162,10 +162,10 @@ inline Event makeScrollerEvent(EventName name, float x_delta, float y_delta)
 inline Event makeKeyboardEvent(unsigned short c)
 {
   Event event;
-	
+        
   event.type = KEYBOARD_EVENT_TYPE;
   event.keyboard.key = c;
-	
+        
   return event;
 }
 

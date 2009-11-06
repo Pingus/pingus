@@ -77,9 +77,9 @@ Levelset::Levelset(const Pathname& pathname) :
 Levelset::~Levelset()
 {
   for(std::vector<Level*>::iterator i = levels.begin(); i != levels.end(); ++i)
-    {
-      delete *i;
-    }
+  {
+    delete *i;
+  }
 }
 
 std::string
@@ -125,23 +125,23 @@ void
 Levelset::refresh()
 {
   for(std::vector<Level*>::iterator i = levels.begin(); i != levels.end(); ++i)
-    {
-      Savegame* savegame = SavegameManager::instance()->get((*i)->resname);
+  {
+    Savegame* savegame = SavegameManager::instance()->get((*i)->resname);
 
-      if (savegame)
-        {
-          (*i)->accessible = (savegame->get_status() != Savegame::NONE);
-          (*i)->finished   = (savegame->get_status() == Savegame::FINISHED);
-        }
+    if (savegame)
+    {
+      (*i)->accessible = (savegame->get_status() != Savegame::NONE);
+      (*i)->finished   = (savegame->get_status() == Savegame::FINISHED);
     }
+  }
 
   if (!levels.empty())
-    {
-      levels[0]->accessible = true; 
-      for(std::vector<Level*>::size_type i = 0; i < levels.size()-1; ++i)
-        if (levels[i]->finished)
-          levels[i+1]->accessible = true;
-    }
+  {
+    levels[0]->accessible = true; 
+    for(std::vector<Level*>::size_type i = 0; i < levels.size()-1; ++i)
+      if (levels[i]->finished)
+        levels[i+1]->accessible = true;
+  }
 
   completion = 0;
   for(std::vector<Level*>::iterator i = levels.begin(); i != levels.end(); ++i)

@@ -41,57 +41,57 @@ Controller::Controller(const ControllerDescription& desc) :
 
   const std::vector<int>& button_lst = desc.get_buttons();
   for(std::vector<int>::const_iterator i = button_lst.begin(); i != button_lst.end(); ++i)
-    {
-      add_button(*i, new ControllerButton(this, *i));
-    }
+  {
+    add_button(*i, new ControllerButton(this, *i));
+  }
 
   const std::vector<int>& axis_lst = desc.get_axes();
   for(std::vector<int>::const_iterator i = axis_lst.begin(); i != axis_lst.end(); ++i)
-    {
-      add_axis(*i, new ControllerAxis(this, *i));
-    }
+  {
+    add_axis(*i, new ControllerAxis(this, *i));
+  }
 
   const std::vector<int>& pointer_lst = desc.get_pointers();
   for(std::vector<int>::const_iterator i = pointer_lst.begin(); i != pointer_lst.end(); ++i)
-    {
-      add_pointer(*i, new ControllerPointer(this, *i));
-    }
+  {
+    add_pointer(*i, new ControllerPointer(this, *i));
+  }
 
   const std::vector<int>& scroller_lst = desc.get_scrollers();
   for(std::vector<int>::const_iterator i = scroller_lst.begin(); i != scroller_lst.end(); ++i)
-    {
-      add_scroller(*i, new ControllerScroller(this, *i));
-    }
+  {
+    add_scroller(*i, new ControllerScroller(this, *i));
+  }
 
   const std::vector<int>& keyboard_lst = desc.get_keyboards();
   for(std::vector<int>::const_iterator i = keyboard_lst.begin(); i != keyboard_lst.end(); ++i)
-    {
-      add_keyboard(*i, new ControllerKeyboard(this, *i));
-    }
+  {
+    add_keyboard(*i, new ControllerKeyboard(this, *i));
+  }
 }
 
 Controller::~Controller()
 {
   for(std::vector<ControllerButton*>::iterator i = buttons.begin(); i != buttons.end(); ++i)
-    {
-      delete *i;
-    }
+  {
+    delete *i;
+  }
   for(std::vector<ControllerAxis*>::iterator i = axes.begin(); i != axes.end(); ++i)
-    {
-      delete *i;
-    }
+  {
+    delete *i;
+  }
   for(std::vector<ControllerPointer*>::iterator i = pointers.begin(); i != pointers.end(); ++i)
-    {
-      delete *i;
-    }
+  {
+    delete *i;
+  }
   for(std::vector<ControllerScroller*>::iterator i = scrollers.begin(); i != scrollers.end(); ++i)
-    {
-      delete *i;
-    }
+  {
+    delete *i;
+  }
   for(std::vector<ControllerKeyboard*>::iterator i = keyboards.begin(); i != keyboards.end(); ++i)
-    {
-      delete *i;
-    }
+  {
+    delete *i;
+  }
 }
 
 ControllerScroller*

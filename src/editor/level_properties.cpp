@@ -27,13 +27,13 @@
 #include "util/string_util.hpp"
 
 /*
-Level Properties:
-Levelname, Description, Author, 
-Number of Pingus, Time, Pingus to Save,
-Width, Height, (could be handled elsewhere)
-Difficulty
-Comment
-Playable (unneeded)
+  Level Properties:
+  Levelname, Description, Author, 
+  Number of Pingus, Time, Pingus to Save,
+  Width, Height, (could be handled elsewhere)
+  Difficulty
+  Comment
+  Playable (unneeded)
 */
 
 namespace Editor {

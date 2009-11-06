@@ -77,36 +77,36 @@ private:
 /// Stream used to consume unwanted debugmessages
 class NilStream : public std::ostream
 {
+private:
+
+  /// Do nothing Buffer for NilStream
+  class NilBuffer : public std::streambuf
+  {
   private:
 
-    /// Do nothing Buffer for NilStream
-    class NilBuffer : public std::streambuf
-    {
-      private:
-
-        char char_buffer[4];
-
-      public:
-
-         NilBuffer () { setp(char_buffer, char_buffer + 3); setg(0,0,0); }
-        ~NilBuffer () { }
-
-        int overflow (int) { return 0; }
-        int sync     ()    { return 0; }
-    } buffer;
-
-   NilStream ();
-   ~NilStream () { }
-
-    NilStream (const NilStream &); ///< not supported
+    char char_buffer[4];
 
   public:
 
-    // Avoid unneccessary calls to internal buffer and conversions
-    NilStream & operator << (const char *)        { return *this; }
-    NilStream & operator << (const std::string &) { return *this; }
-    NilStream & operator << (int &)               { return *this; }
-    NilStream & operator << (unsigned int &)      { return *this; }
+    NilBuffer () { setp(char_buffer, char_buffer + 3); setg(0,0,0); }
+    ~NilBuffer () { }
+
+    int overflow (int) { return 0; }
+    int sync     ()    { return 0; }
+  } buffer;
+
+  NilStream ();
+  ~NilStream () { }
+
+  NilStream (const NilStream &); ///< not supported
+
+public:
+
+  // Avoid unneccessary calls to internal buffer and conversions
+  NilStream & operator << (const char *)        { return *this; }
+  NilStream & operator << (const std::string &) { return *this; }
+  NilStream & operator << (int &)               { return *this; }
+  NilStream & operator << (unsigned int &)      { return *this; }
 
   friend class DebugStream;
 };

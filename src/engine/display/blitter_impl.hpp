@@ -174,34 +174,34 @@ Surface modify(Surface source_buffer, const TransF&)
   SDL_LockSurface(source);
 
   if (source->format->palette)
-    {
-      Surface target_buffer(TransF::get_width (source_buffer.get_width(), source_buffer.get_height()), 
-                            TransF::get_height(source_buffer.get_width(), source_buffer.get_height()),
-                            source->format->palette, 
-                            (source->flags & SDL_SRCCOLORKEY) ? source->format->colorkey : -1);
-      SDL_Surface* target = target_buffer.get_surface();
-      SDL_LockSurface(target);
+  {
+    Surface target_buffer(TransF::get_width (source_buffer.get_width(), source_buffer.get_height()), 
+                          TransF::get_height(source_buffer.get_width(), source_buffer.get_height()),
+                          source->format->palette, 
+                          (source->flags & SDL_SRCCOLORKEY) ? source->format->colorkey : -1);
+    SDL_Surface* target = target_buffer.get_surface();
+    SDL_LockSurface(target);
 
-      uint8_t* source_buf = static_cast<uint8_t*>(source->pixels);
-      uint8_t* target_buf = static_cast<uint8_t*>(target->pixels);
+    uint8_t* source_buf = static_cast<uint8_t*>(source->pixels);
+    uint8_t* target_buf = static_cast<uint8_t*>(target->pixels);
 
-      for (int y = 0; y < source->h; ++y)
-        for (int x = 0; x < source->w; ++x)
-          {
-            target_buf[TransF::get_index(source->w, source->h, source->pitch, target->pitch, x, y)] = source_buf[y * source->pitch + x];
-          }
+    for (int y = 0; y < source->h; ++y)
+      for (int x = 0; x < source->w; ++x)
+      {
+        target_buf[TransF::get_index(source->w, source->h, source->pitch, target->pitch, x, y)] = source_buf[y * source->pitch + x];
+      }
      
-      SDL_UnlockSurface(source);
-      SDL_UnlockSurface(target);
-      return target_buffer;
-    }
+    SDL_UnlockSurface(source);
+    SDL_UnlockSurface(target);
+    return target_buffer;
+  }
   else
-    {
-      std::cout << "Error: Blitter::modify: Unsupported PixelFormat: BytesPerPixel: "
-                << int(source->format->BytesPerPixel) << std::endl;
-      SDL_UnlockSurface(source);
-      return source_buffer.clone();
-    }
+  {
+    std::cout << "Error: Blitter::modify: Unsupported PixelFormat: BytesPerPixel: "
+              << int(source->format->BytesPerPixel) << std::endl;
+    SDL_UnlockSurface(source);
+    return source_buffer.clone();
+  }
 }
 
 } // namespace BlitterImpl

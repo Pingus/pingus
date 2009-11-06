@@ -42,24 +42,24 @@ OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen)
   int flags = SDL_OPENGL;
   
   if (fullscreen)
-    {
-      flags |= SDL_FULLSCREEN;
-    }
+  {
+    flags |= SDL_FULLSCREEN;
+  }
   else
-    {
-      flags |= SDL_RESIZABLE;
-    }
+  {
+    flags |= SDL_RESIZABLE;
+  }
 
   int bpp = 0; // auto-detect 
   screen = SDL_SetVideoMode(size.width, size.height, bpp, flags);
 
   if(screen == 0) 
-    {
-      std::ostringstream msg;
-      msg << "Couldn't set video mode (" << size.width << "x" << size.height
-          << "-" << bpp << "bpp): " << SDL_GetError();
-      throw std::runtime_error(msg.str());
-    }
+  {
+    std::ostringstream msg;
+    msg << "Couldn't set video mode (" << size.width << "x" << size.height
+        << "-" << bpp << "bpp): " << SDL_GetError();
+    throw std::runtime_error(msg.str());
+  }
 
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -95,16 +95,16 @@ OpenGLFramebuffer::push_cliprect(const Rect& rect)
     glEnable(GL_SCISSOR_TEST);
 
   if (cliprect_stack.empty())
-    {
-      cliprect_stack.push_back(rect);
-    }
+  {
+    cliprect_stack.push_back(rect);
+  }
   else
-    {
-      cliprect_stack.push_back(Rect(Math::max(cliprect_stack.back().left,   rect.left), 
-                                    Math::max(cliprect_stack.back().top,    rect.top), 
-                                    Math::min(cliprect_stack.back().right,  rect.right), 
-                                    Math::min(cliprect_stack.back().bottom, rect.bottom)));
-    }
+  {
+    cliprect_stack.push_back(Rect(Math::max(cliprect_stack.back().left,   rect.left), 
+                                  Math::max(cliprect_stack.back().top,    rect.top), 
+                                  Math::min(cliprect_stack.back().right,  rect.right), 
+                                  Math::min(cliprect_stack.back().bottom, rect.bottom)));
+  }
 
   glScissor(cliprect_stack.back().left,
             cliprect_stack.back().top, 
@@ -118,15 +118,15 @@ OpenGLFramebuffer::pop_cliprect()
   cliprect_stack.pop_back();
 
   if (cliprect_stack.empty())
-    {
-      glDisable(GL_SCISSOR_TEST);
-    }
+  {
+    glDisable(GL_SCISSOR_TEST);
+  }
   else
-    {
-      const Rect& rect = cliprect_stack.back();
-      glScissor(rect.left,        rect.top, 
-                rect.get_width(), rect.get_height());
-    }
+  {
+    const Rect& rect = cliprect_stack.back();
+    glScissor(rect.left,        rect.top, 
+              rect.get_width(), rect.get_height());
+  }
 }
 
 void

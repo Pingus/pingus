@@ -50,41 +50,41 @@ FakeExit::draw (SceneContext& gc)
 void
 FakeExit::update ()
 {
-	PinguHolder* holder = world->get_pingus();
-	for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
-		catch_pingu(*pingu);
+  PinguHolder* holder = world->get_pingus();
+  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+    catch_pingu(*pingu);
 
-	if (smashing)
-		surface.update();
+  if (smashing)
+    surface.update();
 }
 
 void
 FakeExit::catch_pingu (Pingu* pingu)
 {
-	if (surface.is_finished())
-		smashing = false;
+  if (surface.is_finished())
+    smashing = false;
 
-	if (   pingu->get_pos().x > pos.x + 31 && pingu->get_pos().x < pos.x + 31 + 15
-      && pingu->get_pos().y > pos.y + 56 && pingu->get_pos().y < pos.y + 56 + 56)
-	{
-		if (pingu->get_action() != Actions::SPLASHED)
-		{
-			if (!smashing) 
-			{
-			surface.restart();
-			smashing = true;
-			}
-	
-			if (surface.get_current_frame() == 4)
-				pingu->set_action(Actions::SPLASHED);
-		}
-	}
+  if (   pingu->get_pos().x > pos.x + 31 && pingu->get_pos().x < pos.x + 31 + 15
+         && pingu->get_pos().y > pos.y + 56 && pingu->get_pos().y < pos.y + 56 + 56)
+  {
+    if (pingu->get_action() != Actions::SPLASHED)
+    {
+      if (!smashing) 
+      {
+        surface.restart();
+        smashing = true;
+      }
+        
+      if (surface.get_current_frame() == 4)
+        pingu->set_action(Actions::SPLASHED);
+    }
+  }
 }
 
 void
 FakeExit::draw_smallmap(SmallMap* smallmap)
 {
-	smallmap->draw_sprite(smallmap_symbol, pos);
+  smallmap->draw_sprite(smallmap_symbol, pos);
 }
 
 } // namespace WorldObjs

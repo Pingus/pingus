@@ -46,7 +46,7 @@ public:
   /** @returns a handle to the PLF, which the caller *must not* delete
 
       @param res_name The resource name of the level, aka "snow11-grumbel"
-   */
+  */
   static PingusLevel load_plf(const std::string& res_name);
 
   /** @return a handle to the PLF, instead of loading it from a

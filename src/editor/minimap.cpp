@@ -53,36 +53,36 @@ Minimap::draw(DrawingContext& gc)
   Size levelsize = editor->get_level()->get_size();
 
   for(std::vector<LevelObj*>::iterator i = objects.begin(); i != objects.end(); ++i)
-    {
-      Rect r = (*i)->get_rect();
+  {
+    Rect r = (*i)->get_rect();
 
-      // Translate the object into minimap-co-space
-      r.left  = r.left  * minimap_rect.get_width() / levelsize.width;
-      r.right = r.right * minimap_rect.get_width() / levelsize.width;
+    // Translate the object into minimap-co-space
+    r.left  = r.left  * minimap_rect.get_width() / levelsize.width;
+    r.right = r.right * minimap_rect.get_width() / levelsize.width;
 
-      r.top    = r.top    * minimap_rect.get_height() / levelsize.height;
-      r.bottom = r.bottom * minimap_rect.get_height() / levelsize.height;
+    r.top    = r.top    * minimap_rect.get_height() / levelsize.height;
+    r.bottom = r.bottom * minimap_rect.get_height() / levelsize.height;
 
-      unsigned attr = (*i)->get_attribs();
+    unsigned attr = (*i)->get_attribs();
 
-      Color color;
+    Color color;
 
-      if (attr & HAS_OWNER) // entrance & exit
-        color = Color(255,255,0);
-      else if (attr & HAS_GPTYPE) // groundpiece
-        color = Color(0,255,0);
-      else if (attr & HAS_REPEAT) 
-        color = Color(0,0,255); // liquid
-      else // hotspot, background, etc.
-        color = Color(255,0,0);
+    if (attr & HAS_OWNER) // entrance & exit
+      color = Color(255,255,0);
+    else if (attr & HAS_GPTYPE) // groundpiece
+      color = Color(0,255,0);
+    else if (attr & HAS_REPEAT) 
+      color = Color(0,0,255); // liquid
+    else // hotspot, background, etc.
+      color = Color(255,0,0);
 
-      Color bg_color(static_cast<uint8_t>(3 * color.r / 4), 
-                     static_cast<uint8_t>(3 * color.g / 4), 
-                     static_cast<uint8_t>(3 * color.b / 4));
+    Color bg_color(static_cast<uint8_t>(3 * color.r / 4), 
+                   static_cast<uint8_t>(3 * color.g / 4), 
+                   static_cast<uint8_t>(3 * color.b / 4));
 
-      dc.draw_fillrect(r, bg_color, (*i)->get_pos().z);
-      dc.draw_rect(r, color, (*i)->get_pos().z);
-    }
+    dc.draw_fillrect(r, bg_color, (*i)->get_pos().z);
+    dc.draw_rect(r, color, (*i)->get_pos().z);
+  }
 
   Vector2f viewport_pos  = editor->get_viewport()->get_scroll_pos();
   Rect     viewport_rect = editor->get_viewport()->get_rect();
@@ -110,18 +110,18 @@ void
 Minimap::on_pointer_move(int x, int y)
 {
   if (dragging)
-    {
-      Rect minimap_rect = drawing_context->get_rect();
-      Size levelsize = editor->get_level()->get_size();
+  {
+    Rect minimap_rect = drawing_context->get_rect();
+    Size levelsize = editor->get_level()->get_size();
 
-      x -= 3 + rect.left; // take border into account
-      y -= 3 + rect.top;
+    x -= 3 + rect.left; // take border into account
+    y -= 3 + rect.top;
 
-      x = x * levelsize.width / minimap_rect.get_width();
-      y = y * levelsize.height / minimap_rect.get_height();
+    x = x * levelsize.width / minimap_rect.get_width();
+    y = y * levelsize.height / minimap_rect.get_height();
 
-      editor->get_viewport()->set_scroll_pos(Vector2i(x, y));
-    }
+    editor->get_viewport()->set_scroll_pos(Vector2i(x, y));
+  }
 }
 
 void

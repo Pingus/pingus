@@ -55,19 +55,19 @@ static std::auto_ptr<std::ostream> get_demostream(const std::string& levelname)
   std::auto_ptr<std::ofstream> out(new std::ofstream(filename.c_str()));
   
   if (!(*out.get()))
-    {
-      std::cout << "DemoRecorder: Error: Couldn't write DemoFile '" << filename
-                << "', demo recording will be disabled" << std::endl;
-      return std::auto_ptr<std::ostream>();
-    }
+  {
+    std::cout << "DemoRecorder: Error: Couldn't write DemoFile '" << filename
+              << "', demo recording will be disabled" << std::endl;
+    return std::auto_ptr<std::ostream>();
+  }
   else
-    {
-      std::cout << "DemoRecorder: Writing demo to: " << filename << std::endl;
+  {
+    std::cout << "DemoRecorder: Writing demo to: " << filename << std::endl;
 
-      // Write file header
-      *out << "(level (name \"" << levelname << "\"))\n";
-      return std::auto_ptr<std::ostream>(out.release());
-    }
+    // Write file header
+    *out << "(level (name \"" << levelname << "\"))\n";
+    return std::auto_ptr<std::ostream>(out.release());
+  }
 }
 
 Server::Server(const PingusLevel& arg_plf, bool record_demo) :
@@ -78,9 +78,9 @@ Server::Server(const PingusLevel& arg_plf, bool record_demo) :
   demostream()
 {
   if (record_demo)
-    {
-      demostream = get_demostream(plf.get_resname());
-    }
+  {
+    demostream = get_demostream(plf.get_resname());
+  }
 }
 
 Server::~Server ()
@@ -116,12 +116,12 @@ Server::send_pingu_action_event (Pingu* pingu, Actions::ActionName action)
   record(ServerEvent::make_pingu_action_event(get_time(), pingu->get_id(), pingu->get_pos(), action));
 
   if (action_holder.pop_action(action))
+  {
+    if (!(pingu->request_set_action(action)))
     {
-      if (!(pingu->request_set_action(action)))
-	{
-	  action_holder.push_action(action);
-	}
+      action_holder.push_action(action);
     }
+  }
 }
 
 void

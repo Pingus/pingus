@@ -27,10 +27,10 @@ MultipleButton::MultipleButton (const std::vector<Button*>& buttons_) : buttons(
   down_count = 0;
 
   for (std::vector<Button*>::iterator it = buttons.begin(); it != buttons.end(); it++)
-    {
-      (*it)->add_down_callback(&MultipleButton::on_button_down, this);
-      (*it)->add_up_callback(&MultipleButton::on_button_up, this);
-    }
+  {
+    (*it)->add_down_callback(&MultipleButton::on_button_down, this);
+    (*it)->add_up_callback(&MultipleButton::on_button_up, this);
+  }
 }
 
 MultipleButton::~MultipleButton ()

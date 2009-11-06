@@ -43,19 +43,19 @@ std::string
 Pathname::get_sys_path() const
 {
   switch(type)
-    {
-      case SYSTEM_PATH:
-        return pathname;
+  {
+    case SYSTEM_PATH:
+      return pathname;
         
-      case DATA_PATH:
-        return path_manager.complete(pathname);
+    case DATA_PATH:
+      return path_manager.complete(pathname);
 
-      case INVALID:
-        return "";
+    case INVALID:
+      return "";
 
-      default:
-        assert(!"Never reached");
-    }
+    default:
+      assert(!"Never reached");
+  }
   return "";
 }
 
@@ -93,38 +93,38 @@ std::string
 Pathname::str() const
 {
   switch(type)
-    {
-      case Pathname::INVALID:
-        return "invalid://" + pathname; 
+  {
+    case Pathname::INVALID:
+      return "invalid://" + pathname; 
 
-      case Pathname::DATA_PATH:
-        return "datadir://" + pathname;
+    case Pathname::DATA_PATH:
+      return "datadir://" + pathname;
 
-      case Pathname::SYSTEM_PATH:
-        return "system://" + pathname;
+    case Pathname::SYSTEM_PATH:
+      return "system://" + pathname;
 
-      default: 
-        assert(!"never reached");
-    }
+    default: 
+      assert(!"never reached");
+  }
   return std::string();
 }
 
 std::ostream& operator<< (std::ostream& os, const Pathname& p)
 {
   switch(p.get_type())
-    {
-      case Pathname::INVALID:
-        return os << "invalid://" << p.get_raw_path();
+  {
+    case Pathname::INVALID:
+      return os << "invalid://" << p.get_raw_path();
 
-      case Pathname::DATA_PATH:
-        return os << "datadir://" << p.get_raw_path();
+    case Pathname::DATA_PATH:
+      return os << "datadir://" << p.get_raw_path();
 
-      case Pathname::SYSTEM_PATH:
-        return os << "system://" << p.get_raw_path();
+    case Pathname::SYSTEM_PATH:
+      return os << "system://" << p.get_raw_path();
 
-      default: 
-        assert(!"never reached");
-    }
+    default: 
+      assert(!"never reached");
+  }
   return os;
 }
 

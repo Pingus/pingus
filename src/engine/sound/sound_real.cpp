@@ -32,18 +32,18 @@ PingusSoundReal::PingusSoundReal ()
   pout(PINGUS_DEBUG_SOUND) << "Initializing SDL audio" << std::endl;
 
   if (SDL_Init(SDL_INIT_AUDIO) == -1)
-    {
-      std::cout << "Unable to initialize SDL: " << SDL_GetError() << std::endl;
-      throw std::runtime_error(SDL_GetError());
-    }
+  {
+    std::cout << "Unable to initialize SDL: " << SDL_GetError() << std::endl;
+    throw std::runtime_error(SDL_GetError());
+  }
 
   pout(PINGUS_DEBUG_SOUND) << "Initializing SDL_Mixer" << std::endl;
 
   if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
-    {
-      std::cout << "Unable to initialize SDL_Mixer: " << Mix_GetError() << std::endl;
-      throw std::runtime_error(Mix_GetError());
-    }
+  {
+    std::cout << "Unable to initialize SDL_Mixer: " << Mix_GetError() << std::endl;
+    throw std::runtime_error(Mix_GetError());
+  }
 }
 
 PingusSoundReal::~PingusSoundReal()
@@ -64,34 +64,34 @@ PingusSoundReal::real_play_sound(const std::string& name, float volume, float pa
 
   chunk = SoundResMgr::load(name);
   if (!chunk)
-    {
-      perr(PINGUS_DEBUG_SOUND) << "Can't open sound '" << name << "' -- skipping\n"
-                               << "  Mix_Error: " << Mix_GetError() << std::endl;
-      return;
-    }
+  {
+    perr(PINGUS_DEBUG_SOUND) << "Can't open sound '" << name << "' -- skipping\n"
+                             << "  Mix_Error: " << Mix_GetError() << std::endl;
+    return;
+  }
 
   int channel = Mix_PlayChannel(-1, chunk, 0);
   if (channel != -1)
+  {
+    Mix_Volume(channel, (int)(volume * MIX_MAX_VOLUME));
+    if (panning != 0.0f)
     {
-      Mix_Volume(channel, (int)(volume * MIX_MAX_VOLUME));
-      if (panning != 0.0f)
-        {
-          Uint8 left  = static_cast<Uint8>((panning < 0.0f) ? 255 : (Uint8)((panning - 1.0f) * -255));
-          Uint8 right = static_cast<Uint8>((panning > 0.0f) ? 255 : (Uint8)((panning + 1.0f) * 255));
-          Mix_SetPanning(channel, left, right);
-        }
+      Uint8 left  = static_cast<Uint8>((panning < 0.0f) ? 255 : (Uint8)((panning - 1.0f) * -255));
+      Uint8 right = static_cast<Uint8>((panning > 0.0f) ? 255 : (Uint8)((panning + 1.0f) * 255));
+      Mix_SetPanning(channel, left, right);
     }
+  }
 }
 
 void
 PingusSoundReal::real_stop_music ()
 {
   if (music_sample)
-    {
-      Mix_HaltMusic();
-      Mix_FreeMusic(music_sample);
-      music_sample = 0;
-    }
+  {
+    Mix_HaltMusic();
+    Mix_FreeMusic(music_sample);
+    music_sample = 0;
+  }
 }
 
 void
@@ -110,11 +110,11 @@ PingusSoundReal::real_play_music (const std::string & arg_filename, float volume
 
   music_sample = Mix_LoadMUS(filename.c_str());
   if (!music_sample)
-    {
-      perr(PINGUS_DEBUG_SOUND) << "Can't load music: " << filename << "' -- skipping\n"
-                               << "  Mix_Error: " << Mix_GetError() << std::endl;
-      return;
-    }
+  {
+    perr(PINGUS_DEBUG_SOUND) << "Can't load music: " << filename << "' -- skipping\n"
+                             << "  Mix_Error: " << Mix_GetError() << std::endl;
+    return;
+  }
 
   Mix_VolumeMusic((int)(volume * 0.5f * MIX_MAX_VOLUME)); // FIXME: music_volume
   Mix_PlayMusic(music_sample, loop ? -1 : 0);

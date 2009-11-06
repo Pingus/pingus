@@ -81,23 +81,23 @@ void
 PingusWorldmap::parse_file(FileReader reader)
 {
   if (reader.get_name() == "pingus-worldmap")
+  {
+    if (!reader.read_section("graph", impl->path_graph))
     {
-      if (!reader.read_section("graph", impl->path_graph))
-        {
-          throw std::runtime_error("Worldmap: " + impl->filename + " is missed 'graph' section");
-        }
-
-      impl->objects = reader.read_section("objects").get_sections();
-
-      parse_properties(reader.read_section("head"));
-
-      reader.read_section("intro_story", impl->intro_story);
-      reader.read_section("end_story", impl->end_story);
+      throw std::runtime_error("Worldmap: " + impl->filename + " is missed 'graph' section");
     }
+
+    impl->objects = reader.read_section("objects").get_sections();
+
+    parse_properties(reader.read_section("head"));
+
+    reader.read_section("intro_story", impl->intro_story);
+    reader.read_section("end_story", impl->end_story);
+  }
   else
-    {
-      throw std::runtime_error("Worldmap:" + impl->filename + ": not a Worldmap file");
-    }
+  {
+    throw std::runtime_error("Worldmap:" + impl->filename + ": not a Worldmap file");
+  }
 }
 
 void

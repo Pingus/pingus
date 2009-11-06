@@ -50,9 +50,9 @@ void write_events(std::ostream& out, const std::vector<Input::Event>& events)
   for(std::vector<Input::Event>::const_iterator i = events.begin(); 
       i != events.end();
       ++i)
-    {
-      write(out, *i);
-    }
+  {
+    write(out, *i);
+  }
 }
 
 void read_events(std::istream& out, std::vector<Input::Event>& events)
@@ -60,83 +60,83 @@ void read_events(std::istream& out, std::vector<Input::Event>& events)
   std::vector<Input::Event>::size_type len;
   read(out, len);
   for(std::vector<Input::Event>::size_type i = 0; i < len; ++i)
-    {
-      Input::Event event;
-      read(out, event);
-      events.push_back(event);
-    }
+  {
+    Input::Event event;
+    read(out, event);
+    events.push_back(event);
+  }
 }
 
 void read_event(std::istream& out, Input::Event& event)
 {
   read(out, event.type);
   switch(event.type)
-    {
-      case Input::BUTTON_EVENT_TYPE:
-        read(out, event.button.name);
-        read(out, event.button.state);
-        break;
+  {
+    case Input::BUTTON_EVENT_TYPE:
+      read(out, event.button.name);
+      read(out, event.button.state);
+      break;
 
-      case Input::POINTER_EVENT_TYPE:
-        read(out, event.pointer.name);
-        read(out, event.pointer.x);
-        read(out, event.pointer.y);
-        break;
+    case Input::POINTER_EVENT_TYPE:
+      read(out, event.pointer.name);
+      read(out, event.pointer.x);
+      read(out, event.pointer.y);
+      break;
 
-      case Input::AXIS_EVENT_TYPE:
-        read(out, event.axis.name);
-        read(out, event.axis.dir);
-        break;
+    case Input::AXIS_EVENT_TYPE:
+      read(out, event.axis.name);
+      read(out, event.axis.dir);
+      break;
 
-      case Input::SCROLLER_EVENT_TYPE:
-        read(out, event.scroll.name);
-        read(out, event.scroll.x_delta);
-        read(out, event.scroll.y_delta);
-        break;
+    case Input::SCROLLER_EVENT_TYPE:
+      read(out, event.scroll.name);
+      read(out, event.scroll.x_delta);
+      read(out, event.scroll.y_delta);
+      break;
         
-      case Input::KEYBOARD_EVENT_TYPE:
-        read(out, event.keyboard.key);
-        break;
+    case Input::KEYBOARD_EVENT_TYPE:
+      read(out, event.keyboard.key);
+      break;
 
-      default:
-        assert(!"Unknown Event type");
-    }
+    default:
+      assert(!"Unknown Event type");
+  }
 }
 
 void write_event(std::ostream& out, const Input::Event& event)
 {
   write(out, event.type);
   switch(event.type)
-    {
-      case Input::BUTTON_EVENT_TYPE:
-        write(out, event.button.name);
-        write(out, event.button.state);
-        break;
+  {
+    case Input::BUTTON_EVENT_TYPE:
+      write(out, event.button.name);
+      write(out, event.button.state);
+      break;
 
-      case Input::POINTER_EVENT_TYPE:
-        write(out, event.pointer.name);
-        write(out, event.pointer.x);
-        write(out, event.pointer.y);
-        break;
+    case Input::POINTER_EVENT_TYPE:
+      write(out, event.pointer.name);
+      write(out, event.pointer.x);
+      write(out, event.pointer.y);
+      break;
 
-      case Input::AXIS_EVENT_TYPE:
-        write(out, event.axis.name);
-        write(out, event.axis.dir);
-        break;
+    case Input::AXIS_EVENT_TYPE:
+      write(out, event.axis.name);
+      write(out, event.axis.dir);
+      break;
 
-      case Input::SCROLLER_EVENT_TYPE:
-        write(out, event.scroll.name);
-        write(out, event.scroll.x_delta);
-        write(out, event.scroll.y_delta);
-        break;
+    case Input::SCROLLER_EVENT_TYPE:
+      write(out, event.scroll.name);
+      write(out, event.scroll.x_delta);
+      write(out, event.scroll.y_delta);
+      break;
         
-      case Input::KEYBOARD_EVENT_TYPE:
-        write(out, event.keyboard.key);
-        break;
+    case Input::KEYBOARD_EVENT_TYPE:
+      write(out, event.keyboard.key);
+      break;
 
-      default:
-        assert(!"Unknown Event type");
-    }
+    default:
+      assert(!"Unknown Event type");
+  }
 }
 
 ScreenManager* ScreenManager::instance_ = 0;
@@ -183,65 +183,65 @@ ScreenManager::display()
   std::vector<Input::Event> events;
 
   while (!screens.empty())
+  {
+    events.clear();
+      
+    // Get time and update Input::Events
+    if (playback_input)
     {
-      events.clear();
-      
-      // Get time and update Input::Events
-      if (playback_input)
-        {
-          // Get Time
-          read(std::cin, previous_frame_time);
+      // Get Time
+      read(std::cin, previous_frame_time);
 
-          // Update InputManager so that SDL_QUIT and stuff can be
-          // handled, even if the basic events are taken from record
-          input_manager->update(previous_frame_time);
-          input_controller->clear_events();
-          read_events(std::cin, events);
-        }
-      else
-        {
-          // Get Time
-          Uint32 ticks = SDL_GetTicks();
-          previous_frame_time  = float(ticks - last_ticks)/1000.0f;
-          last_ticks = ticks;
-
-          // Update InputManager and get Events
-          input_manager->update(previous_frame_time);
-          input_controller->poll_events(events);
-        }
-      
-      if (record_input)
-        {
-          write(std::cerr, previous_frame_time);
-          write_events(std::cerr, events);
-        }
-
-      if (swcursor_enabled)
-        cursor.update(previous_frame_time);
-
-      // previous frame took more than one second
-      if (previous_frame_time > 1.0)
-        {
-          if (maintainer_mode)
-            std::cout << "ScreenManager: previous frame took longer than 1 second (" << previous_frame_time
-                      << " sec.), ignoring and doing frameskip" << std::endl;
-        }
-      else
-        {  
-          update(previous_frame_time, events);
-      
-          // cap the framerate at the desired value
-	  // figure out how long this frame took
-	  float current_frame_time = float(SDL_GetTicks() - last_ticks) / 1000.0f;
-	  // idly delay if this frame didn't last long enough to
-	  // achieve <desired_fps> frames per second
-          if (current_frame_time < 1.0f / desired_fps) {
-            Uint32 sleep_time = static_cast<Uint32>(1000 *((1.0f / desired_fps) - current_frame_time));
-            // std::cout << "Sleep: " << sleep_time << std::endl;
-            SDL_Delay(sleep_time);
-          }
-        }
+      // Update InputManager so that SDL_QUIT and stuff can be
+      // handled, even if the basic events are taken from record
+      input_manager->update(previous_frame_time);
+      input_controller->clear_events();
+      read_events(std::cin, events);
     }
+    else
+    {
+      // Get Time
+      Uint32 ticks = SDL_GetTicks();
+      previous_frame_time  = float(ticks - last_ticks)/1000.0f;
+      last_ticks = ticks;
+
+      // Update InputManager and get Events
+      input_manager->update(previous_frame_time);
+      input_controller->poll_events(events);
+    }
+      
+    if (record_input)
+    {
+      write(std::cerr, previous_frame_time);
+      write_events(std::cerr, events);
+    }
+
+    if (swcursor_enabled)
+      cursor.update(previous_frame_time);
+
+    // previous frame took more than one second
+    if (previous_frame_time > 1.0)
+    {
+      if (maintainer_mode)
+        std::cout << "ScreenManager: previous frame took longer than 1 second (" << previous_frame_time
+                  << " sec.), ignoring and doing frameskip" << std::endl;
+    }
+    else
+    {  
+      update(previous_frame_time, events);
+      
+      // cap the framerate at the desired value
+      // figure out how long this frame took
+      float current_frame_time = float(SDL_GetTicks() - last_ticks) / 1000.0f;
+      // idly delay if this frame didn't last long enough to
+      // achieve <desired_fps> frames per second
+      if (current_frame_time < 1.0f / desired_fps) {
+        Uint32 sleep_time = static_cast<Uint32>(1000 *((1.0f / desired_fps) - current_frame_time));
+        // std::cout << "Sleep: " << sleep_time << std::endl;
+        SDL_Delay(sleep_time);
+      }
+    }
+  }
 }
  
 void
@@ -254,26 +254,26 @@ ScreenManager::update(float delta, const std::vector<Input::Event>& events)
     return;
 
   for(std::vector<Input::Event>::const_iterator i = events.begin(); i != events.end(); ++i)
-    {
-      if (i->type == Input::POINTER_EVENT_TYPE && i->pointer.name == Input::STANDARD_POINTER)
-        mouse_pos = Vector2i(static_cast<int>(i->pointer.x),
-                             static_cast<int>(i->pointer.y)); 
+  {
+    if (i->type == Input::POINTER_EVENT_TYPE && i->pointer.name == Input::STANDARD_POINTER)
+      mouse_pos = Vector2i(static_cast<int>(i->pointer.x),
+                           static_cast<int>(i->pointer.y)); 
 
-      last_screen->update(*i);
+    last_screen->update(*i);
 
-      if (last_screen != get_current_screen())
-        {
-          fade_over(last_screen, get_current_screen());
-          return;
-        }
-    }
-
-  last_screen->update(delta);
-  if (last_screen != get_current_screen())
+    if (last_screen != get_current_screen())
     {
       fade_over(last_screen, get_current_screen());
       return;
     }
+  }
+
+  last_screen->update(delta);
+  if (last_screen != get_current_screen())
+  {
+    fade_over(last_screen, get_current_screen());
+    return;
+  }
 
   // Draw screen to DrawingContext
   get_current_screen()->draw(*display_gc);
@@ -321,11 +321,11 @@ ScreenManager::pop_screen()
   screens.pop_back();
 
   if (!screens.empty())
-    {
-      if (screens.back()->get_size() != Display::get_size())
-        screens.back()->resize(Display::get_size());
-      screens.back()->on_startup();
-    }
+  {
+    if (screens.back()->get_size() != Display::get_size())
+      screens.back()->resize(Display::get_size());
+    screens.back()->on_startup();
+  }
 }
 
 void
@@ -356,30 +356,30 @@ ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
   float progress = 0.0f;
   Framebuffer& fb = Display::get_framebuffer();
   while (progress <= 1.0f)
-    {
-      int border_x = static_cast<int>(static_cast<float>(Display::get_width()/2)  * (1.0f - progress));
-      int border_y = static_cast<int>(static_cast<float>(Display::get_height()/2) * (1.0f - progress));
+  {
+    int border_x = static_cast<int>(static_cast<float>(Display::get_width()/2)  * (1.0f - progress));
+    int border_y = static_cast<int>(static_cast<float>(Display::get_height()/2) * (1.0f - progress));
 
-      old_screen->draw(*display_gc);
-      display_gc->render(fb, Rect(Vector2i(0,0), Size(Display::get_width(),
-                                                                              Display::get_height())));
-      display_gc->clear();
+    old_screen->draw(*display_gc);
+    display_gc->render(fb, Rect(Vector2i(0,0), Size(Display::get_width(),
+                                                    Display::get_height())));
+    display_gc->clear();
       
-      fb.push_cliprect(Rect(Vector2i(0 + border_x, 0 + border_y),
-                                  Size(Display::get_width()  - 2*border_x, 
-                                       Display::get_height() - 2*border_y)));
+    fb.push_cliprect(Rect(Vector2i(0 + border_x, 0 + border_y),
+                          Size(Display::get_width()  - 2*border_x, 
+                               Display::get_height() - 2*border_y)));
 
-      new_screen->draw(*display_gc);
-      display_gc->render(Display::get_framebuffer(), Rect(Vector2i(0,0), Size(Display::get_width(),
-                                                                              Display::get_height())));
-      display_gc->clear();
+    new_screen->draw(*display_gc);
+    display_gc->render(Display::get_framebuffer(), Rect(Vector2i(0,0), Size(Display::get_width(),
+                                                                            Display::get_height())));
+    display_gc->clear();
       
-      fb.pop_cliprect();
-      fb.flip();
-      display_gc->clear();
+    fb.pop_cliprect();
+    fb.flip();
+    display_gc->clear();
       
-      progress = static_cast<float>(SDL_GetTicks() - last_ticks)/1000.0f;
-    }
+    progress = static_cast<float>(SDL_GetTicks() - last_ticks)/1000.0f;
+  }
 }
 
 void
@@ -396,13 +396,13 @@ ScreenManager::show_swcursor(bool visible)
 {
   swcursor_enabled = visible;
   if (swcursor_enabled)
-    {
-      SDL_ShowCursor(SDL_DISABLE);
-    }
+  {
+    SDL_ShowCursor(SDL_DISABLE);
+  }
   else
-    {
-      SDL_ShowCursor(SDL_ENABLE);
-    }
+  {
+    SDL_ShowCursor(SDL_ENABLE);
+  }
 }
 
 /* EOF */

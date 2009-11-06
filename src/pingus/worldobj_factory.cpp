@@ -92,59 +92,59 @@ WorldObjFactory*
 WorldObjFactory::instance()
 {
   if ( ! instance_)
-    {
-      instance_ = new WorldObjFactory ();
+  {
+    instance_ = new WorldObjFactory ();
 
-      // Registring Factories
-      new WorldObjFactoryImpl<Liquid>("liquid");
-      new WorldObjFactoryImpl<Hotspot>("hotspot");
-      new WorldObjFactoryImpl<Entrance>("entrance");
-      new WorldObjFactoryImpl<WoodThing>("woodthing");
-      new WorldObjFactoryImpl<Exit>("exit");
+    // Registring Factories
+    new WorldObjFactoryImpl<Liquid>("liquid");
+    new WorldObjFactoryImpl<Hotspot>("hotspot");
+    new WorldObjFactoryImpl<Entrance>("entrance");
+    new WorldObjFactoryImpl<WoodThing>("woodthing");
+    new WorldObjFactoryImpl<Exit>("exit");
 
-      // traps
-      new WorldObjFactoryImpl<FakeExit>("fake_exit");
-      new WorldObjFactoryImpl<Guillotine>("guillotine");
-      new WorldObjFactoryImpl<Hammer>("hammer");
-      new WorldObjFactoryImpl<LaserExit>("laser_exit");
-      new WorldObjFactoryImpl<Smasher>("smasher");
-      new WorldObjFactoryImpl<Spike>("spike");
+    // traps
+    new WorldObjFactoryImpl<FakeExit>("fake_exit");
+    new WorldObjFactoryImpl<Guillotine>("guillotine");
+    new WorldObjFactoryImpl<Hammer>("hammer");
+    new WorldObjFactoryImpl<LaserExit>("laser_exit");
+    new WorldObjFactoryImpl<Smasher>("smasher");
+    new WorldObjFactoryImpl<Spike>("spike");
 
-      // Special Objects
-      new WorldObjFactoryImpl<SwitchDoor>("switchdoor");
-      new WorldObjFactoryImpl<IceBlock>("iceblock");
-      new WorldObjFactoryImpl<ConveyorBelt>("conveyorbelt");
-      new WorldObjFactoryImpl<Teleporter>("teleporter");
-      new WorldObjFactoryImpl<TeleporterTarget>("teleporter-target");
+    // Special Objects
+    new WorldObjFactoryImpl<SwitchDoor>("switchdoor");
+    new WorldObjFactoryImpl<IceBlock>("iceblock");
+    new WorldObjFactoryImpl<ConveyorBelt>("conveyorbelt");
+    new WorldObjFactoryImpl<Teleporter>("teleporter");
+    new WorldObjFactoryImpl<TeleporterTarget>("teleporter-target");
 
-      // Backgrounds
-      new WorldObjFactoryImpl<SurfaceBackground>("surface-background");
-      new WorldObjFactoryImpl<StarfieldBackground>("starfield-background");
-      new WorldObjFactoryImpl<SolidColorBackground>("solidcolor-background");
-      new WorldObjFactoryImpl<ThunderstormBackground>("thunderstorm-background");
+    // Backgrounds
+    new WorldObjFactoryImpl<SurfaceBackground>("surface-background");
+    new WorldObjFactoryImpl<StarfieldBackground>("starfield-background");
+    new WorldObjFactoryImpl<SolidColorBackground>("solidcolor-background");
+    new WorldObjFactoryImpl<ThunderstormBackground>("thunderstorm-background");
 
-      // Weather
-      new WorldObjFactoryImpl<SnowGenerator>("snow-generator");
-      new WorldObjFactoryImpl<RainGenerator>("rain-generator");
-      // Weather-Backward compability
-      new WorldObjFactoryImpl<SnowGenerator>("snow");
-      new WorldObjFactoryImpl<RainGenerator>("rain");
+    // Weather
+    new WorldObjFactoryImpl<SnowGenerator>("snow-generator");
+    new WorldObjFactoryImpl<RainGenerator>("rain-generator");
+    // Weather-Backward compability
+    new WorldObjFactoryImpl<SnowGenerator>("snow");
+    new WorldObjFactoryImpl<RainGenerator>("rain");
 
-      // Groundpieces
-      new WorldObjFactoryImpl<Groundpiece>("groundpiece");
-    }
+    // Groundpieces
+    new WorldObjFactoryImpl<Groundpiece>("groundpiece");
+  }
 
   return instance_;
 }
 
 void WorldObjFactory::deinit()
 {
-	if (instance_)
-	{
-		instance_->free_factories();
-		delete instance_;
-		instance_ = 0;
-	}
+  if (instance_)
+  {
+    instance_->free_factories();
+    delete instance_;
+    instance_ = 0;
+  }
 }
 
 WorldObj*
@@ -162,7 +162,7 @@ WorldObjFactory::create(const FileReader& reader)
 
 void
 WorldObjFactory::register_factory (const std::string& id,
-				       WorldObjAbstractFactory* factory)
+                                   WorldObjAbstractFactory* factory)
 {
   factories[id] = factory;
 }
@@ -172,7 +172,7 @@ WorldObjFactory::free_factories()
 {
   for (std::map<std::string, WorldObjAbstractFactory*>::iterator i = factories.begin(); i != factories.end(); ++i)
   {
-	  delete i->second;
+    delete i->second;
   }
 }
 

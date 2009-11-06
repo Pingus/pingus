@@ -125,9 +125,9 @@ ScrollerFactory::multiple_scroller(FileReader reader)
   const std::vector<FileReader>& sections = reader.get_sections();
   for(std::vector<FileReader>::const_iterator i = sections.begin();
       i != sections.end(); ++i)
-    {
-      scrollers.push_back(create(*i));
-    }
+  {
+    scrollers.push_back(create(*i));
+  }
 
   return new MultipleScroller(scrollers);
 }

@@ -25,15 +25,15 @@ namespace Movers {
 
 class LinearMover : public Mover
 {
-  public:
-    /** Constructor */
-    LinearMover(World* const world_arg, const Vector3f& pos_arg);
+public:
+  /** Constructor */
+  LinearMover(World* const world_arg, const Vector3f& pos_arg);
 
-    /** Destructor */
-    ~LinearMover();
+  /** Destructor */
+  ~LinearMover();
 
-    /** Updates the position of the object taking into account collisions */
-    void update(const Vector3f& move, const Collider& collision_at);
+  /** Updates the position of the object taking into account collisions */
+  void update(const Vector3f& move, const Collider& collision_at);
 };
 
 } // namespace Movers

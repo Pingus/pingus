@@ -81,77 +81,77 @@ class CommandLine_Generic;
 //- (aka filenames in most programs).</p>
 class CommandLine
 {
-//! Construction:
+  //! Construction:
 public:
-	CommandLine();
+  CommandLine();
 
-	~CommandLine();
+  ~CommandLine();
 
-//! Attributes:
+  //! Attributes:
 public:
-	enum
-	{
-		REST_ARG  = -2
-	};
+  enum
+  {
+    REST_ARG  = -2
+  };
 
-	//: Return the key of the current option
-	int get_key();
+  //: Return the key of the current option
+  int get_key();
 
-	//: Return the argument to the current option
-	std::string get_argument();
+  //: Return the argument to the current option
+  std::string get_argument();
 
-//! Operations:
+  //! Operations:
 public:
-	//: Change the indention used for the help message, default is 18
-	void set_help_indent(int i);
+  //: Change the indention used for the help message, default is 18
+  void set_help_indent(int i);
 
-	//: Add a usage line to the help output, usage is for example
-	//: "[OPTIONS]... FILE", the program name will get appended
-	//: automatically
-	void add_usage(const std::string& usage);
+  //: Add a usage line to the help output, usage is for example
+  //: "[OPTIONS]... FILE", the program name will get appended
+  //: automatically
+  void add_usage(const std::string& usage);
 
-	//: Adds extra documentation to the help output, should only be
-	//: used at the beginning or at the end, to
-	void add_doc(const std::string& doc);
-	
-	//: Starts a new group of options, the grouptopic gets printed
-	//: above the group of options in the print_help() output
-	void add_group(const std::string& grouptopic);
+  //: Adds extra documentation to the help output, should only be
+  //: used at the beginning or at the end, to
+  void add_doc(const std::string& doc);
+        
+  //: Starts a new group of options, the grouptopic gets printed
+  //: above the group of options in the print_help() output
+  void add_group(const std::string& grouptopic);
   
-	//: Adds a option to the parser
-	//param key: a letter for a short-option or a numeric value
-	//param key: larger than 255 that identifies the option
-	//param long_option: the long name of this option or "" if non
-	//param long_option: should be used for this option
-	//param argument: the type of the argument that this option
-	//param argument: requires (i.e. FILE, SIZE, WIDTH, etc.) or "" if no argument is
-	//param argument: required
-	//param help: the help string for this option
-	//param visible: true if the option should be listed in the help
-	//param visible: output, false will not list it in the help output which might
-	//param visible: be usefull for cheat-options or backward-compability options
-	//param visible: than would only clutter the help output
-	void add_option(
-		int key,
-		const std::string& long_option, 
-		const std::string& argument,
-		const std::string& help,
-		bool visible = true);
-	
-	//: Parse the options arcording to the options added with
-	//: add_option(), result of the parsing is accessible via
-	//: next() and get_key()/get_argument()
-	void parse_args(int argc, char** argv);
+  //: Adds a option to the parser
+  //param key: a letter for a short-option or a numeric value
+  //param key: larger than 255 that identifies the option
+  //param long_option: the long name of this option or "" if non
+  //param long_option: should be used for this option
+  //param argument: the type of the argument that this option
+  //param argument: requires (i.e. FILE, SIZE, WIDTH, etc.) or "" if no argument is
+  //param argument: required
+  //param help: the help string for this option
+  //param visible: true if the option should be listed in the help
+  //param visible: output, false will not list it in the help output which might
+  //param visible: be usefull for cheat-options or backward-compability options
+  //param visible: than would only clutter the help output
+  void add_option(
+    int key,
+    const std::string& long_option, 
+    const std::string& argument,
+    const std::string& help,
+    bool visible = true);
+        
+  //: Parse the options arcording to the options added with
+  //: add_option(), result of the parsing is accessible via
+  //: next() and get_key()/get_argument()
+  void parse_args(int argc, char** argv);
 
-	//: Print the help output, normaly done via a --help option
-	void print_help();
+  //: Print the help output, normaly done via a --help option
+  void print_help();
 
-	//: Goto the next option
-	bool next();
+  //: Goto the next option
+  bool next();
 
-//! Implementation:
+  //! Implementation:
 private:
-	CommandLine_Generic* impl;
+  CommandLine_Generic* impl;
 
 private:
   CommandLine(const CommandLine&);

@@ -52,7 +52,7 @@ private:
   std::vector<bool> buttons;
   std::vector<AxisInfo> axis;
 
-  int num_keys;	
+  int num_keys; 
   
   Vector2i mouse_pos;
   Time time_at_last_press;

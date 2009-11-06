@@ -63,10 +63,10 @@ public:
   {
     std::string str;
     if (read_string(name, str))
-      {
-        value = enum2string(str);
-        return true;
-      }
+    {
+      value = enum2string(str);
+      return true;
+    }
 
     return false;
   }

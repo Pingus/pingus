@@ -30,43 +30,43 @@ FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceMo
   SurfaceCache::iterator i = surface_cache.find(filename.get_sys_path());
   
   if (i == surface_cache.end())
+  {
+
+    Surface surface(filename);
+    if (mod != ResourceModifierNS::ROT0)
+      surface = surface.mod(mod);
+
+    if (!surface)
     {
-
-      Surface surface(filename);
-      if (mod != ResourceModifierNS::ROT0)
-        surface = surface.mod(mod);
-
-      if (!surface)
-        {
-          std::cout << "Error: Sprite: couldn't load '" << filename << "'" << std::endl;
-          surface = Surface(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
-          if (!surface) assert(!"Surface Couldn't find 404");
-        }
-
-      FramebufferSurface framebuffer_surface = Display::get_framebuffer().create_surface(surface);
-
-      surface_cache[filename.get_sys_path()] = framebuffer_surface;
-
-      return framebuffer_surface;
+      std::cout << "Error: Sprite: couldn't load '" << filename << "'" << std::endl;
+      surface = Surface(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
+      if (!surface) assert(!"Surface Couldn't find 404");
     }
+
+    FramebufferSurface framebuffer_surface = Display::get_framebuffer().create_surface(surface);
+
+    surface_cache[filename.get_sys_path()] = framebuffer_surface;
+
+    return framebuffer_surface;
+  }
   else
-    {
-      //std::cout << "Sharing: " << filename.get_sys_path() << std::endl;
-      return i->second;
-    }
+  {
+    //std::cout << "Sharing: " << filename.get_sys_path() << std::endl;
+    return i->second;
+  }
 }
 
 void delete_framebuffer_surface(const Pathname& filename)
 {
   SurfaceCache::iterator i = surface_cache.find(filename.get_sys_path());
   if (i != surface_cache.end())
+  {
+    //std::cout << "UseCount for " << filename << ": " << i->second.use_count() << std::endl;
+    if (i->second.use_count() == 1)
     {
-      //std::cout << "UseCount for " << filename << ": " << i->second.use_count() << std::endl;
-      if (i->second.use_count() == 1)
-        {
-          surface_cache.erase(i);
-        }
+      surface_cache.erase(i);
     }
+  }
 }
 
 SpriteImpl::SpriteImpl() :
@@ -136,10 +136,10 @@ SpriteImpl::SpriteImpl(const Surface& surface) :
 SpriteImpl::~SpriteImpl()
 {
   if (!filename.empty())
-    {
-      framebuffer_surface = FramebufferSurface();
-      delete_framebuffer_surface(filename);
-    }
+  {
+    framebuffer_surface = FramebufferSurface();
+    delete_framebuffer_surface(filename);
+  }
 }
 
 void
@@ -151,23 +151,23 @@ SpriteImpl::update(float delta)
   int total_time = frame_delay * (array.width * array.height);
   tick_count += int(delta * 1000.0f);
   if (tick_count >= total_time)
+  {
+    if (loop)
     {
-      if (loop)
-        {
-          loop_last_cycle = true;
-          tick_count = tick_count % total_time;
-          frame = tick_count / frame_delay;
-        }
-      else
-        {
-          finished = true;
-        }
-    }
-  else
-    {
-      loop_last_cycle = false;
+      loop_last_cycle = true;
+      tick_count = tick_count % total_time;
       frame = tick_count / frame_delay;
     }
+    else
+    {
+      finished = true;
+    }
+  }
+  else
+  {
+    loop_last_cycle = false;
+    frame = tick_count / frame_delay;
+  }
 }
 
 void 

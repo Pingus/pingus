@@ -31,7 +31,7 @@ public:
   ResDescriptor ();
   ResDescriptor (const std::string& res_name);
   ResDescriptor (const std::string& res_name, 
-		 ResourceModifierNS::ResourceModifier modifier);
+                 ResourceModifierNS::ResourceModifier modifier);
 
   bool operator< (const ResDescriptor&) const;
 };

@@ -51,35 +51,35 @@ Spike::draw (SceneContext& gc)
 void
 Spike::update()
 {
-	if (killing)
-		surface.update();
+  if (killing)
+    surface.update();
 
-	PinguHolder* holder = world->get_pingus();
-	for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
-		catch_pingu(*pingu);
-	
-	if (surface.get_current_frame() == surface.get_frame_count() - 1) 
-		killing = false;
+  PinguHolder* holder = world->get_pingus();
+  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+    catch_pingu(*pingu);
+        
+  if (surface.get_current_frame() == surface.get_frame_count() - 1) 
+    killing = false;
 }
 
 void
 Spike::catch_pingu (Pingu* pingu)
 {
-	if (!killing) {
-		if ( pingu->get_pos().x > pos.x + 16 - 5 && pingu->get_pos().x < pos.x + 16 + 5
-			&& pingu->get_pos().y > pos.y          && pingu->get_pos().y < pos.y + 32)
-		{
-			surface.restart();
-			killing = true;
-		}
-	} else {
-		if (surface.get_current_frame() == 3
-			&& pingu->get_pos().x > pos.x +16 - 12 && pingu->get_pos().x < pos.x + 16 + 12
-			&& pingu->get_pos().y > pos.y          && pingu->get_pos().y < pos.y + 32)
-		{
-			pingu->set_status(PS_DEAD);
-		}
-	}
+  if (!killing) {
+    if ( pingu->get_pos().x > pos.x + 16 - 5 && pingu->get_pos().x < pos.x + 16 + 5
+         && pingu->get_pos().y > pos.y          && pingu->get_pos().y < pos.y + 32)
+    {
+      surface.restart();
+      killing = true;
+    }
+  } else {
+    if (surface.get_current_frame() == 3
+        && pingu->get_pos().x > pos.x +16 - 12 && pingu->get_pos().x < pos.x + 16 + 12
+        && pingu->get_pos().y > pos.y          && pingu->get_pos().y < pos.y + 32)
+    {
+      pingu->set_status(PS_DEAD);
+    }
+  }
 }
 
 } // namespace WorldObjs

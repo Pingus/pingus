@@ -83,12 +83,12 @@ inline void draw_pixel32(SDL_Surface* screen, int x, int y, const Color& c)
 draw_pixel_func get_draw_pixel(SDL_Surface* screen)
 {
   switch (screen->format->BitsPerPixel)
-    {
-      case 16:
-        return draw_pixel16;
-      case 32:
-        return draw_pixel32;
-    }
+  {
+    case 16:
+      return draw_pixel16;
+    case 32:
+      return draw_pixel32;
+  }
   return NULL;
 }
 
@@ -154,13 +154,13 @@ FramebufferSurface
 SDLFramebuffer::create_surface(const Surface& surface)
 {
   if (surface)
-    {
-      return FramebufferSurface(new SDLFramebufferSurfaceImpl(surface.get_surface()));
-    }
+  {
+    return FramebufferSurface(new SDLFramebufferSurfaceImpl(surface.get_surface()));
+  }
   else
-    {
-      return FramebufferSurface();
-    }
+  {
+    return FramebufferSurface();
+  }
 }
 
 void
@@ -290,10 +290,10 @@ SDLFramebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Colo
         draw_pixel(screen, x, y, color);
       }
       if (p >= 0) {
-	y += incr;
-	p += (ylen - xlen) << 1;
+        y += incr;
+        p += (ylen - xlen) << 1;
       } else {
-	p += (ylen << 1);
+        p += (ylen << 1);
       }
     }
     SDL_UnlockSurface(screen);
@@ -309,10 +309,10 @@ SDLFramebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Colo
         draw_pixel(screen, x, y, color);
       }
       if (p >= 0) {
-	x += incr;
-	p += (xlen - ylen) << 1;
+        x += incr;
+        p += (xlen - ylen) << 1;
       } else {
-	p += (xlen << 1);
+        p += (xlen << 1);
       }
     }
     SDL_UnlockSurface(screen);
@@ -350,48 +350,48 @@ SDLFramebuffer::fill_rect(const Rect& rect, const Color& color)
   assert(rect.is_normal());
 
   if (color.a == 255)
-    {
-      SDL_Rect srcrect;
+  {
+    SDL_Rect srcrect;
 
-      srcrect.x = static_cast<Sint16>(rect.left);
-      srcrect.y = static_cast<Sint16>(rect.top);
-      srcrect.w = static_cast<Uint16>(rect.get_width());
-      srcrect.h = static_cast<Uint16>(rect.get_height());
+    srcrect.x = static_cast<Sint16>(rect.left);
+    srcrect.y = static_cast<Sint16>(rect.top);
+    srcrect.w = static_cast<Uint16>(rect.get_width());
+    srcrect.h = static_cast<Uint16>(rect.get_height());
 
-      SDL_FillRect(screen, &srcrect, SDL_MapRGB(screen->format, color.r, color.g, color.b));
-    }
+    SDL_FillRect(screen, &srcrect, SDL_MapRGB(screen->format, color.r, color.g, color.b));
+  }
   else if (color.a != 0)
-    {
-      int top, bottom, left, right;
-      int clipx1, clipx2, clipy1, clipy2;
-      SDL_Rect cliprect;
+  {
+    int top, bottom, left, right;
+    int clipx1, clipx2, clipy1, clipy2;
+    SDL_Rect cliprect;
 
-      SDL_GetClipRect(screen, &cliprect);
-      clipx1 = cliprect.x;
-      clipx2 = cliprect.x + cliprect.w - 1;
-      clipy1 = cliprect.y;
-      clipy2 = cliprect.y + cliprect.h - 1;
+    SDL_GetClipRect(screen, &cliprect);
+    clipx1 = cliprect.x;
+    clipx2 = cliprect.x + cliprect.w - 1;
+    clipy1 = cliprect.y;
+    clipy2 = cliprect.y + cliprect.h - 1;
 
-      if (rect.right < clipx1 || rect.left > clipx2 || rect.bottom < clipy1 || rect.top > clipy2)
-        return;
+    if (rect.right < clipx1 || rect.left > clipx2 || rect.bottom < clipy1 || rect.top > clipy2)
+      return;
 
-      top    = rect.top    < clipy1 ? clipy1 : rect.top;
-      bottom = rect.bottom > clipy2 ? clipy2 : rect.bottom-1;
-      left   = rect.left   < clipx1 ? clipx1 : rect.left;
-      right  = rect.right  > clipx2 ? clipx2 : rect.right-1;
+    top    = rect.top    < clipy1 ? clipy1 : rect.top;
+    bottom = rect.bottom > clipy2 ? clipy2 : rect.bottom-1;
+    left   = rect.left   < clipx1 ? clipx1 : rect.left;
+    right  = rect.right  > clipx2 ? clipx2 : rect.right-1;
 
-      draw_pixel_func draw_pixel = get_draw_pixel(screen);
-      if (!draw_pixel)
-        return;
+    draw_pixel_func draw_pixel = get_draw_pixel(screen);
+    if (!draw_pixel)
+      return;
 
-      SDL_LockSurface(screen);
-      for (int y = top; y <= bottom; ++y) {
-        for (int x = left; x <= right; ++x) {
-          draw_pixel(screen, x, y, color);
-        }
+    SDL_LockSurface(screen);
+    for (int y = top; y <= bottom; ++y) {
+      for (int x = left; x <= right; ++x) {
+        draw_pixel(screen, x, y, color);
       }
-      SDL_UnlockSurface(screen);
     }
+    SDL_UnlockSurface(screen);
+  }
 }
 
 void
@@ -406,14 +406,14 @@ SDLFramebuffer::update_rects(const std::vector<Rect>& rects)
   std::vector<SDL_Rect> sdl_rects;
 
   for(std::vector<Rect>::const_iterator i = rects.begin(); i != rects.end(); ++i)
-    {
-      SDL_Rect sdl_rect;
-      sdl_rect.x = static_cast<Sint16>(i->left);
-      sdl_rect.y = static_cast<Sint16>(i->top);
-      sdl_rect.w = static_cast<Uint16>(i->get_width());
-      sdl_rect.h = static_cast<Uint16>(i->get_height());
-      sdl_rects.push_back(sdl_rect);
-    }
+  {
+    SDL_Rect sdl_rect;
+    sdl_rect.x = static_cast<Sint16>(i->left);
+    sdl_rect.y = static_cast<Sint16>(i->top);
+    sdl_rect.w = static_cast<Uint16>(i->get_width());
+    sdl_rect.h = static_cast<Uint16>(i->get_height());
+    sdl_rects.push_back(sdl_rect);
+  }
 
   SDL_UpdateRects(screen, sdl_rects.size(), const_cast<SDL_Rect*>(&*sdl_rects.begin()));
 }
@@ -435,10 +435,10 @@ SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen)
   screen = SDL_SetVideoMode(size.width, size.height, 0, flags);
 
   if (screen == NULL) 
-    {
-      std::cout << "Unable to set video mode: " << SDL_GetError() << std::endl;
-      exit(1);
-    }
+  {
+    std::cout << "Unable to set video mode: " << SDL_GetError() << std::endl;
+    exit(1);
+  }
 }
 
 void
@@ -451,9 +451,9 @@ SDLFramebuffer::push_cliprect(const Rect& rect)
   sdl_rect.h = static_cast<Uint16>(rect.get_height());
 
   if (!cliprect_stack.empty())
-    {
-      sdl_rect = Intersection(&cliprect_stack.back(), &sdl_rect);
-    }
+  {
+    sdl_rect = Intersection(&cliprect_stack.back(), &sdl_rect);
+  }
   
   cliprect_stack.push_back(sdl_rect);
   SDL_SetClipRect(screen, &cliprect_stack.back());

@@ -43,7 +43,7 @@ WorldmapStory::WorldmapStory(const FileReader &reader) :
   ResDescriptor desc;
   std::string text;
   std::string page_name;
-		
+                
   // Read each page into the pages vector
   const std::vector<FileReader>& childs = all_pages.get_sections();
   for(std::vector<FileReader>::const_iterator i = childs.begin(); 

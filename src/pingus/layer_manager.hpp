@@ -64,10 +64,10 @@ private:
     void update (float delta)
     {
       if (!static_graphics)
-        {
-          x_pos = Math::mod((x_pos + x_update * delta),(float)Display::get_width());
-          y_pos = Math::mod((y_pos + y_update * delta),(float)Display::get_height());
-        }
+      {
+        x_pos = Math::mod((x_pos + x_update * delta),(float)Display::get_width());
+        y_pos = Math::mod((y_pos + y_update * delta),(float)Display::get_height());
+      }
     }
   };
 

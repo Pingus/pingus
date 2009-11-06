@@ -70,22 +70,22 @@ ButtonPanel::draw(DrawingContext& gc)
   ActionHolder* aholder = session->get_server()->get_action_holder();
 
   for(std::vector<ActionButton>::size_type i = 0; i < buttons.size(); ++i)
+  {
+    if (current_button == i)
+      gc.draw(highlight, Vector2i(rect.left, rect.top + 38*i));
+    else
+      gc.draw(background, Vector2i(rect.left, rect.top + 38*i));
+
+    gc.draw(buttons[i].sprite, Vector2i(rect.left + 20, rect.top + 38*i + 16));
+
+    std::string str = StringUtil::to_string(aholder->get_available(buttons[i].name));
+    gc.print_center(Fonts::pingus_small, Vector2i(rect.left + 46, rect.top + 5 + 38*i), str);
+
+    if (show_tip && tip_button == i)
     {
-      if (current_button == i)
-        gc.draw(highlight, Vector2i(rect.left, rect.top + 38*i));
-      else
-        gc.draw(background, Vector2i(rect.left, rect.top + 38*i));
-
-      gc.draw(buttons[i].sprite, Vector2i(rect.left + 20, rect.top + 38*i + 16));
-
-      std::string str = StringUtil::to_string(aholder->get_available(buttons[i].name));
-      gc.print_center(Fonts::pingus_small, Vector2i(rect.left + 46, rect.top + 5 + 38*i), str);
-
-      if (show_tip && tip_button == i)
-        {
-          gc.print_left(Fonts::pingus_small, Vector2i(rect.left + 65, rect.top + 5 + 38*i), action_to_screenname(buttons[i].name));
-        }
+      gc.print_left(Fonts::pingus_small, Vector2i(rect.left + 65, rect.top + 5 + 38*i), action_to_screenname(buttons[i].name));
     }
+  }
 }
 
 void
@@ -108,13 +108,13 @@ void
 ButtonPanel::set_button(int n)
 {
   if (n >= 0 || n < static_cast<int>(buttons.size()-1))
-    {
-      current_button = n;
-    }
+  {
+    current_button = n;
+  }
   else
-    {
-      // FIXME: Play 'boing' sound here
-    }
+  {
+    // FIXME: Play 'boing' sound here
+  }
 }
 
 void

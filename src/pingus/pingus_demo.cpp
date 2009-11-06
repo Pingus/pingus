@@ -1,4 +1,4 @@
- //  Pingus - A free Lemmings clone
+//  Pingus - A free Lemmings clone
 //  Copyright (C) 2008 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -32,26 +32,26 @@ PingusDemo::PingusDemo(const Pathname& pathname) :
   std::vector<FileReader> lines = FileReader::parse_many(pathname);
 
   if (lines.empty())
-    {
-      throw std::runtime_error("'" + pathname.str() + "', demo file is empty");
-    }
+  {
+    throw std::runtime_error("'" + pathname.str() + "', demo file is empty");
+  }
   else
+  {
+    if (lines.front().get_name() == "level")
     {
-      if (lines.front().get_name() == "level")
-        {
-          if (!lines.front().read_string("name", levelname))
-            {
-              throw std::runtime_error("(level (name ...)) entry missing in demo file '" + pathname.str() + "'");
-            }
+      if (!lines.front().read_string("name", levelname))
+      {
+        throw std::runtime_error("(level (name ...)) entry missing in demo file '" + pathname.str() + "'");
+      }
 
-          lines.front().read_string("checksum", checksum);
-        }
-            
-      for(std::vector<FileReader>::iterator i = lines.begin()+1; i != lines.end(); ++i)
-        {
-          events.push_back(ServerEvent(*i));
-        }
+      lines.front().read_string("checksum", checksum);
     }
+            
+    for(std::vector<FileReader>::iterator i = lines.begin()+1; i != lines.end(); ++i)
+    {
+      events.push_back(ServerEvent(*i));
+    }
+  }
 }
 
 /* EOF */

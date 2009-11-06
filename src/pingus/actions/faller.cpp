@@ -34,14 +34,14 @@ Faller::Faller (Pingu* p) :
   tumbler()
 {
   faller.load(Direction::LEFT,  Sprite("pingus/player" + 
-                                                      pingu->get_owner_str() + "/faller/left"));
+                                       pingu->get_owner_str() + "/faller/left"));
   faller.load(Direction::RIGHT, Sprite("pingus/player" + 
-                                                      pingu->get_owner_str() + "/faller/right"));
+                                       pingu->get_owner_str() + "/faller/right"));
 
   tumbler.load(Direction::LEFT,  Sprite("pingus/player" +
-                                                       pingu->get_owner_str() + "/tumbler/left"));
+                                        pingu->get_owner_str() + "/tumbler/left"));
   tumbler.load(Direction::RIGHT, Sprite("pingus/player" + 
-                                                       pingu->get_owner_str() + "/tumbler/right"));
+                                        pingu->get_owner_str() + "/tumbler/right"));
 
   // FIXME: add sprites for jumping here: if x_vel > y_vel, use them
 }
@@ -79,60 +79,60 @@ Faller::update ()
 
   // If the Pingu collided with something...
   if (collided)
+  {
+    if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING && 
+        rel_getpixel(0, -2) == Groundtype::GP_NOTHING &&
+        rel_getpixel(0, -3) == Groundtype::GP_NOTHING &&
+        rel_getpixel(1, 0)  != Groundtype::GP_NOTHING &&
+        rel_getpixel(1, 0)  != Groundtype::GP_BRIDGE)
     {
-      if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING && 
-          rel_getpixel(0, -2) == Groundtype::GP_NOTHING &&
-          rel_getpixel(0, -3) == Groundtype::GP_NOTHING &&
-          rel_getpixel(1, 0)  != Groundtype::GP_NOTHING &&
-          rel_getpixel(1, 0)  != Groundtype::GP_BRIDGE)
-        {
-          // Make Pingu bounce off wall
-          velocity.x = -(velocity.x / 3.0f);
+      // Make Pingu bounce off wall
+      velocity.x = -(velocity.x / 3.0f);
 
-          // Make the Pingu face the correct direction.  NB: Pingu may
-          // previously have been facing in the opposite direction of its
-          // velocity because of an explosion.
-          if (velocity.x > 0.0f)
-            pingu->direction.right();
-          else
-            pingu->direction.left();
+      // Make the Pingu face the correct direction.  NB: Pingu may
+      // previously have been facing in the opposite direction of its
+      // velocity because of an explosion.
+      if (velocity.x > 0.0f)
+        pingu->direction.right();
+      else
+        pingu->direction.left();
 
-          pingu->set_velocity(velocity);
-        }
-      else if (velocity.y > 0.0f) // If the Pingu collided into something while moving down...
-        {
-          // Ping is on ground/water/something
-          if (rel_getpixel(0, -1) == Groundtype::GP_WATER
-              || rel_getpixel(0, -1) == Groundtype::GP_LAVA)
-            {
-              pingu->set_action(Actions::DROWN);
-            }
-          // Did we stop too fast?
-          else if (Math::abs(pingu->get_velocity().y) > deadly_velocity)
-            {
-              //std::cout << "Pingus splashed: " << pingu->get_velocity().y << " " << deadly_velocity << std::endl;
-              pingu->set_action(Actions::SPLASHED);
-            }
-          else
-            {
-              // This is where the jumper bug happens
-              //std::cout << "Reached the unreachable: " << pingu->get_velocity().y << std::endl;
-              if (pingu->get_previous_action() == Actions::BLOCKER)
-                pingu->set_action(pingu->get_previous_action());
-              else
-                pingu->set_action(Actions::WALKER);
-            }
-        }
-      // If the Pingu collided into something while moving up...
-      else // if (velocity.y < 0.0f)
-        {
-          // Don't make the Pingu go up any further.
-          velocity.y = 0;
-          velocity.x = (velocity.x / 3.0f);
-
-          pingu->set_velocity(velocity);
-        }
+      pingu->set_velocity(velocity);
     }
+    else if (velocity.y > 0.0f) // If the Pingu collided into something while moving down...
+    {
+      // Ping is on ground/water/something
+      if (rel_getpixel(0, -1) == Groundtype::GP_WATER
+          || rel_getpixel(0, -1) == Groundtype::GP_LAVA)
+      {
+        pingu->set_action(Actions::DROWN);
+      }
+      // Did we stop too fast?
+      else if (Math::abs(pingu->get_velocity().y) > deadly_velocity)
+      {
+        //std::cout << "Pingus splashed: " << pingu->get_velocity().y << " " << deadly_velocity << std::endl;
+        pingu->set_action(Actions::SPLASHED);
+      }
+      else
+      {
+        // This is where the jumper bug happens
+        //std::cout << "Reached the unreachable: " << pingu->get_velocity().y << std::endl;
+        if (pingu->get_previous_action() == Actions::BLOCKER)
+          pingu->set_action(pingu->get_previous_action());
+        else
+          pingu->set_action(Actions::WALKER);
+      }
+    }
+    // If the Pingu collided into something while moving up...
+    else // if (velocity.y < 0.0f)
+    {
+      // Don't make the Pingu go up any further.
+      velocity.y = 0;
+      velocity.x = (velocity.x / 3.0f);
+
+      pingu->set_velocity(velocity);
+    }
+  }
 }
 
 void
@@ -150,7 +150,7 @@ Faller::is_tumbling () const
 {
   // If we are going fast enough to get smashed, start tumbling
   return (Math::abs(pingu->get_velocity().x) > deadly_velocity
-             || Math::abs(pingu->get_velocity().y) > deadly_velocity);
+          || Math::abs(pingu->get_velocity().y) > deadly_velocity);
 }
 
 bool

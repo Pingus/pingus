@@ -56,7 +56,7 @@ Origin string2origin(const std::string& str)
 Vector2i calc_origin(Origin origin, const Size &size)
 {
   switch(origin)
-    {
+  {
     case origin_top_left:
     default:
       return Vector2i(0, 0);
@@ -85,7 +85,7 @@ Vector2i calc_origin(Origin origin, const Size &size)
     case origin_bottom_right:
       return Vector2i(size.width, size.height);
       break;
-    }
+  }
 }
 
 /* EOF */

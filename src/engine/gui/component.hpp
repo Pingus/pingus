@@ -39,7 +39,7 @@ public:
 
   virtual void set_focus(bool val) { focus = val; }
   virtual void set_mouse_over(bool val) { mouse_over = val; }
-	
+        
   virtual bool has_mouse_over() const { return mouse_over; }
   virtual bool has_focus() const { return focus; }
 
@@ -78,7 +78,7 @@ public:
   /** Emitted when the pointer moved, x and y are the new pointer
       coordinates */
   virtual void on_pointer_move (int x, int y) {}
-	
+        
   virtual void on_scroller_move (float x, float y) {}
 
   /** Emitted whenever a keyboard character is pressed.  Only certain 

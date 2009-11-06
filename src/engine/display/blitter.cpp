@@ -196,7 +196,7 @@ Blitter::create_surface_rgba(int w, int h)
 #else
                               0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000
 #endif
-                              );
+    );
 }
 
 SDL_Surface*
@@ -208,7 +208,7 @@ Blitter::create_surface_rgb(int w, int h)
 #else
                               0x0000ff, 0x00ff00, 0xff0000, 0x000000
 #endif
-                              );
+    );
 }
 
 SDL_Surface*

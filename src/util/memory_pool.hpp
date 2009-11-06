@@ -42,11 +42,11 @@ private:
 
     if (chunks.empty() ||
         (next_free + size) > chunk_size)
-      {
-        char* chunk = new char[chunk_size];
-        chunks.push_back(chunk);
-        next_free = 0;
-      }
+    {
+      char* chunk = new char[chunk_size];
+      chunks.push_back(chunk);
+      next_free = 0;
+    }
     
     char* ptr = chunks.back() + next_free;
     next_free += size;
@@ -81,9 +81,9 @@ public:
     // FIXME: We don't have to delete the chunks, instead we should
     // just reset the pointer to start and reuse them
     for(typename Chunks::reverse_iterator i = chunks.rbegin(); i != chunks.rend(); ++i)
-      {
-        delete[] *i;
-      }
+    {
+      delete[] *i;
+    }
     chunks.clear();
 
     next_free = 0;

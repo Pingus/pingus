@@ -24,7 +24,7 @@ namespace WorldmapNS {
 class DrawableFactory
 {
 private:
-public:
+  public:
   /** Create a new drawable */
   static Drawable* create(FileReader reader);
 private:

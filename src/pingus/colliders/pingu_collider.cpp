@@ -43,40 +43,40 @@ bool PinguCollider::operator() (World* const world, Vector3f current_pos,
 
   // If the Pingu is going to move sideways to the next pixel...
   if (static_cast<int>(new_pos.x) != static_cast<int>(current_pos.x))
+  {
+    float top_of_pingu = new_pos.y - static_cast<float>(height);
+
+    for (; new_pos.y >= top_of_pingu; --new_pos.y)
     {
-      float top_of_pingu = new_pos.y - static_cast<float>(height);
+      pixel = getpixel(world, new_pos);
 
-      for (; new_pos.y >= top_of_pingu; --new_pos.y)
-	{
-	  pixel = getpixel(world, new_pos);
-
-	  // If there is something in the way, then Pingu has collided with
-	  // something.  However, if not falling and colliding with a
-	  // Bridge, allow Pingu to go through it.
-	  if (pixel != Groundtype::GP_NOTHING
-              && !(pixel == Groundtype::GP_BRIDGE && !falling))
-	    {
-	      collided = true;
-	      break;
-	    }
-	}
+      // If there is something in the way, then Pingu has collided with
+      // something.  However, if not falling and colliding with a
+      // Bridge, allow Pingu to go through it.
+      if (pixel != Groundtype::GP_NOTHING
+          && !(pixel == Groundtype::GP_BRIDGE && !falling))
+      {
+        collided = true;
+        break;
+      }
     }
+  }
   // If the Pingu is not falling...
   else if (!falling)
-    {
-      pixel = getpixel(world, Vector3f(new_pos.x, new_pos.y - static_cast<float>(height)));
+  {
+    pixel = getpixel(world, Vector3f(new_pos.x, new_pos.y - static_cast<float>(height)));
 
-      // If the top of the Pingu has hit something except a bridge...
-      if (pixel != Groundtype::GP_NOTHING && pixel != Groundtype::GP_BRIDGE)
-	{
-	  collided = true;
-	}
-    }
-  // If the Pingu's "feet" has hit something...
-  else if (getpixel(world, new_pos) != Groundtype::GP_NOTHING)
+    // If the top of the Pingu has hit something except a bridge...
+    if (pixel != Groundtype::GP_NOTHING && pixel != Groundtype::GP_BRIDGE)
     {
       collided = true;
     }
+  }
+  // If the Pingu's "feet" has hit something...
+  else if (getpixel(world, new_pos) != Groundtype::GP_NOTHING)
+  {
+    collided = true;
+  }
 
   return collided;
 }

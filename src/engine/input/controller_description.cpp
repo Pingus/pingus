@@ -123,10 +123,10 @@ static std::vector<int> map2vector(const std::map<int, InputEventDefinition>& ma
   std::vector<int> lst;
   for(std::map<int, InputEventDefinition>::const_iterator i = map.begin();
       i != map.end(); ++i)
-    {
-      if (i->second.type == type)
-        lst.push_back(i->second.id);
-    }
+  {
+    if (i->second.type == type)
+      lst.push_back(i->second.id);
+  }
   return lst;
 }
 

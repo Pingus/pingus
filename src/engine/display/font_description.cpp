@@ -57,38 +57,38 @@ FontDescription::FontDescription(const Pathname& pathname_) :
   FileReader reader = FileReader::parse(pathname);
 
   if (reader.get_name() != "pingus-font")
-    {
-      throw std::runtime_error("FontDescription: not a pingus-font file");
-    }
+  {
+    throw std::runtime_error("FontDescription: not a pingus-font file");
+  }
   else
+  {
+    reader.read_float("char-spacing",     char_spacing);
+    reader.read_float("vertical-spacing", vertical_spacing);
+    reader.read_int("size",               size);
+
+    FileReader images_reader;
+    if (reader.read_section("images", images_reader))
     {
-      reader.read_float("char-spacing",     char_spacing);
-      reader.read_float("vertical-spacing", vertical_spacing);
-      reader.read_int("size",               size);
+      std::vector<FileReader> images_lst = images_reader.get_sections();
 
-      FileReader images_reader;
-      if (reader.read_section("images", images_reader))
-        {
-          std::vector<FileReader> images_lst = images_reader.get_sections();
-
-          for(std::vector<FileReader>::iterator i = images_lst.begin(); i != images_lst.end(); ++i)
-            {
-              GlyphImageDescription image_desc;
-              i->read_path("filename",             image_desc.pathname);
+      for(std::vector<FileReader>::iterator i = images_lst.begin(); i != images_lst.end(); ++i)
+      {
+        GlyphImageDescription image_desc;
+        i->read_path("filename",             image_desc.pathname);
       
-              FileReader glyph_section;
-              if (i->read_section("glyphs", glyph_section))
-                {
-                  std::vector<FileReader> glyph_reader = glyph_section.get_sections();
-                  for(std::vector<FileReader>::iterator j = glyph_reader.begin(); j != glyph_reader.end(); ++j)
-                    {
-                      image_desc.glyphs.push_back(GlyphDescription(*j));
-                    }
-                }
-              images.push_back(image_desc);
-            }
+        FileReader glyph_section;
+        if (i->read_section("glyphs", glyph_section))
+        {
+          std::vector<FileReader> glyph_reader = glyph_section.get_sections();
+          for(std::vector<FileReader>::iterator j = glyph_reader.begin(); j != glyph_reader.end(); ++j)
+          {
+            image_desc.glyphs.push_back(GlyphDescription(*j));
+          }
         }
+        images.push_back(image_desc);
+      }
     }
+  }
 }
 
 /* EOF */

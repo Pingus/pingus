@@ -122,31 +122,31 @@ GraphicContextState::set_pos(const Vector2i& pos)
   impl->offset.y = -pos.y + (get_height()/2);
 
   if (impl->have_limit)
+  {
+    if (-impl->offset.x < impl->limit.left)
     {
-      if (-impl->offset.x < impl->limit.left)
-        {
-          impl->offset.x = -(impl->limit.left);
-        }
-      else if (-impl->offset.x + get_width() > impl->limit.right)
-        {
-          if (impl->limit.right - impl->limit.left > get_width())
-            impl->offset.x = -(impl->limit.right - get_width());
-          else
-            impl->offset.x = -(impl->limit.left);
-        }
-
-      if (-impl->offset.y < impl->limit.top)
-        {
-          impl->offset.y = -(impl->limit.top);
-        }
-      else if (-impl->offset.y + get_height() > impl->limit.bottom)
-        {
-          if (impl->limit.bottom - impl->limit.top > get_height())
-            impl->offset.y = -(impl->limit.bottom - get_height());
-          else
-            impl->offset.y = -(impl->limit.top);
-        }
+      impl->offset.x = -(impl->limit.left);
     }
+    else if (-impl->offset.x + get_width() > impl->limit.right)
+    {
+      if (impl->limit.right - impl->limit.left > get_width())
+        impl->offset.x = -(impl->limit.right - get_width());
+      else
+        impl->offset.x = -(impl->limit.left);
+    }
+
+    if (-impl->offset.y < impl->limit.top)
+    {
+      impl->offset.y = -(impl->limit.top);
+    }
+    else if (-impl->offset.y + get_height() > impl->limit.bottom)
+    {
+      if (impl->limit.bottom - impl->limit.top > get_height())
+        impl->offset.y = -(impl->limit.bottom - get_height());
+      else
+        impl->offset.y = -(impl->limit.top);
+    }
+  }
 }
 
 Vector2i

@@ -20,10 +20,10 @@
 #include <iostream>
 
 /*
-   uri -> file:///home/ingo/.pingus/images/...
-   uri -> resource://core/result/ok
-   uri -> file://bla.png (relative to ~/.pingus/images/)
-   ResDescriptor(const std::string& uri);
+  uri -> file:///home/ingo/.pingus/images/...
+  uri -> resource://core/result/ok
+  uri -> file://bla.png (relative to ~/.pingus/images/)
+  ResDescriptor(const std::string& uri);
 */
 
 ResDescriptor::ResDescriptor() :
@@ -39,7 +39,7 @@ ResDescriptor::ResDescriptor(const std::string& res_name_)
 }
 
 ResDescriptor::ResDescriptor(const std::string& arg_res_name,
-			     ResourceModifierNS::ResourceModifier arg_modifier)
+                             ResourceModifierNS::ResourceModifier arg_modifier)
   : res_name(arg_res_name),
     modifier(arg_modifier)
 {

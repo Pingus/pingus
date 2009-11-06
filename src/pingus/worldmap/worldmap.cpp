@@ -140,7 +140,7 @@ Worldmap::draw(DrawingContext& gc)
   pingu_pos.y = Math::clamp(min, pingu_pos.y, max);
 
   gc_state.set_pos(Vector2i(pingu_pos.x, pingu_pos.y));
-	
+        
   gc_state.push(gc);
   
   
@@ -348,7 +348,7 @@ Worldmap::set_starting_node()
   }
   else
     id = default_node;
-		
+                
   pingus->set_position(id);
 
   LevelDot* leveldot = dynamic_cast<LevelDot*>(path_graph->get_dot(id));

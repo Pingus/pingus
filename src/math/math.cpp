@@ -62,11 +62,11 @@ std::string float2string(float value)
   std::string str(2*sizeof(float), '0');
 
   for(size_t i = 0; i < sizeof(float); ++i)
-    {
-      char v = reinterpret_cast<char*>(&value)[i];
-      str[2*i + 0] = num2hex[(v & 0xf0) >> 4];
-      str[2*i + 1] = num2hex[v & 0x0f];
-    }
+  {
+    char v = reinterpret_cast<char*>(&value)[i];
+    str[2*i + 0] = num2hex[(v & 0xf0) >> 4];
+    str[2*i + 1] = num2hex[v & 0x0f];
+  }
   return str;
 }
 
@@ -86,10 +86,10 @@ float string2float(const std::string& str)
 
   float value;
   for(size_t i = 0; i < sizeof(float); ++i)
-    {
-      char& v = reinterpret_cast<char*>(&value)[i];
-      v = static_cast<char>((hex2int(str[2*i+0]) << 4) | hex2int(str[2*i+1]));
-    }
+  {
+    char& v = reinterpret_cast<char*>(&value)[i];
+    v = static_cast<char>((hex2int(str[2*i+0]) << 4) | hex2int(str[2*i+1]));
+  }
 
   return value;
 }

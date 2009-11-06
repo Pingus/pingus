@@ -43,41 +43,41 @@ Digger::update ()
 
   if (rel_getpixel(0, -1) ==  Groundtype::GP_WATER
       || rel_getpixel(0, -1) ==  Groundtype::GP_LAVA)
-    {
-      pingu->set_action(Actions::DROWN);
-      return;
-    }
+  {
+    pingu->set_action(Actions::DROWN);
+    return;
+  }
 
   if (++digger_c >= 5)
-    {
-      digger_c = 0;
-      dig();
-    }
+  {
+    digger_c = 0;
+    dig();
+  }
 
   if (!have_something_to_dig())
-    {
-      dig ();
-      pingu->set_action(Actions::WALKER);
-    }
+  {
+    dig ();
+    pingu->set_action(Actions::WALKER);
+  }
 }
 
 bool
 Digger::have_something_to_dig ()
 {
   if (rel_getpixel(0, -1) !=  Groundtype::GP_NOTHING)
+  {
+    if (rel_getpixel(0, -1) ==  Groundtype::GP_SOLID)
     {
-      if (rel_getpixel(0, -1) ==  Groundtype::GP_SOLID)
-	{
-	  Sound::PingusSound::play_sound("chink");
-	  return false;
-	}
-      else
-	return true;
-    }
-  else
-    {
+      Sound::PingusSound::play_sound("chink");
       return false;
     }
+    else
+      return true;
+  }
+  else
+  {
+    return false;
+  }
 }
 
 void

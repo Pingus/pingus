@@ -35,7 +35,7 @@ public:
   enum Type { ARMAGEDDON_EVENT,
               FINISH_EVENT,
               END_EVENT,
-	      PINGU_ACTION_EVENT };
+              PINGU_ACTION_EVENT };
 
   /** The type of event */
   Type type;

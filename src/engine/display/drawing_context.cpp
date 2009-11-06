@@ -136,19 +136,19 @@ public:
   void render(Framebuffer& fb, const Rect& rect)
   {
     if (filled)
-      {
-        fb.fill_rect(Rect(Vector2i(d_rect.left + rect.left, 
-                                   d_rect.top  + rect.top),
-                          d_rect.get_size()), 
-                     color);
-      }
+    {
+      fb.fill_rect(Rect(Vector2i(d_rect.left + rect.left, 
+                                 d_rect.top  + rect.top),
+                        d_rect.get_size()), 
+                   color);
+    }
     else
-      {
-        fb.draw_rect(Rect(Vector2i(d_rect.left + rect.left, 
-                                   d_rect.top  + rect.top),
-                          d_rect.get_size()), 
-                     color);
-      }
+    {
+      fb.draw_rect(Rect(Vector2i(d_rect.left + rect.left, 
+                                 d_rect.top  + rect.top),
+                        d_rect.get_size()), 
+                   color);
+    }
   }
 };
 
@@ -210,17 +210,17 @@ DrawingContext::render(Framebuffer& fb, const Rect& parent_rect)
   std::stable_sort(drawingrequests.begin(), drawingrequests.end(), DrawingRequestsSorter());
   
   if (0)
-    {
-      std::cout << "<<<<<<<<<<<<<<" << std::endl;
-      for(DrawingRequests::iterator i = drawingrequests.begin(); i != drawingrequests.end(); ++i)
-        std::cout << (*i)->get_z_pos() << std::endl;
-      std::cout << ">>>>>>>>>>>>>>" << std::endl;
-    }
+  {
+    std::cout << "<<<<<<<<<<<<<<" << std::endl;
+    for(DrawingRequests::iterator i = drawingrequests.begin(); i != drawingrequests.end(); ++i)
+      std::cout << (*i)->get_z_pos() << std::endl;
+    std::cout << ">>>>>>>>>>>>>>" << std::endl;
+  }
   for(DrawingRequests::iterator i = drawingrequests.begin(); i != drawingrequests.end(); ++i)
-    {
-      //std::cout << this << ": " << (*i)->get_z_pos() << std::endl;
-      (*i)->render(fb, this_rect); // FIXME: Should we clip size against parent rect?
-    }
+  {
+    //std::cout << this << ": " << (*i)->get_z_pos() << std::endl;
+    (*i)->render(fb, this_rect); // FIXME: Should we clip size against parent rect?
+  }
 
   if (do_clipping) 
     fb.pop_cliprect();
@@ -230,9 +230,9 @@ void
 DrawingContext::clear()
 {
   for(DrawingRequests::iterator i = drawingrequests.begin(); i != drawingrequests.end(); ++i)
-    {
-      delete *i;
-    }
+  {
+    delete *i;
+  }
   drawingrequests.clear();
 }
 

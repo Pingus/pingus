@@ -256,7 +256,7 @@ void
 WorldmapScreen::load (const std::string& filename)
 {
   worldmap = std::auto_ptr<Worldmap>(new Worldmap(filename));
-	
+        
   bool credits_unlocked = false;
   //StatManager::instance()->get_bool(worldmap->get_short_name() + "-endstory-seen", credits_unlocked);
   if (credits_unlocked)

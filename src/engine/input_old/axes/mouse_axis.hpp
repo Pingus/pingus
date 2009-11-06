@@ -24,31 +24,31 @@ namespace Input {
 
 namespace Axes {
 
-  /**
-    @brief represents an axis of the mouse
+/**
+   @brief represents an axis of the mouse
 
-    XML definition: <mouse-axis angle="?" axis="0/1"/>
-    */
-  class MouseAxis : public Axis {
+   XML definition: <mouse-axis angle="?" axis="0/1"/>
+*/
+class MouseAxis : public Axis {
 
-    private:
-      int   axis;
-      float angle;
-      float pos;
-      float old_pos;
+private:
+  int   axis;
+  float angle;
+  float pos;
+  float old_pos;
 
-    public:
-      MouseAxis (int axis_, float angle_);
+public:
+  MouseAxis (int axis_, float angle_);
 
-      virtual const float& get_pos   () const;
-      virtual const float& get_angle () const;
+  virtual const float& get_pos   () const;
+  virtual const float& get_angle () const;
 
-      virtual void  update (float);
+  virtual void  update (float);
 
-    private:
-      MouseAxis (const MouseAxis&);
-      MouseAxis& operator= (const MouseAxis&);
-  };
+private:
+  MouseAxis (const MouseAxis&);
+  MouseAxis& operator= (const MouseAxis&);
+};
 
 } // namespace Axes
 } // namespace Input

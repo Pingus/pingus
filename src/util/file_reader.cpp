@@ -81,18 +81,18 @@ bool
 FileReader::read_path(const char* name, Pathname& value) const
 {
   if (impl.get())
+  {
+    std::string filename;
+    if (impl->read_string(name, filename))
     {
-      std::string filename;
-      if (impl->read_string(name, filename))
-        {
-          value = Pathname(filename, Pathname::DATA_PATH);
-          return true;
-        }
-      else
-        {
-          return false;
-        }
+      value = Pathname(filename, Pathname::DATA_PATH);
+      return true;
     }
+    else
+    {
+      return false;
+    }
+  }
   else
     return false;
 }
@@ -197,13 +197,13 @@ FileReader::parse(const std::string& filename)
 {
   boost::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(filename);
   if (sexpr)
-    {
-      return SExprFileReader(sexpr->get_list_elem(0));
-    }
+  {
+    return SExprFileReader(sexpr->get_list_elem(0));
+  }
   else
-    {
-      return FileReader();
-    }
+  {
+    return FileReader();
+  }
 }
 
 FileReader
@@ -217,16 +217,16 @@ FileReader::parse_many(const Pathname& pathname)
 {
   boost::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(pathname.get_sys_path());
   if (sexpr)
-    {
-      std::vector<FileReader> sections;
-      for(size_t i = 0; i < sexpr->get_list_size(); ++i)
-        sections.push_back(SExprFileReader(sexpr->get_list_elem(i)));
-      return sections;
-    }
+  {
+    std::vector<FileReader> sections;
+    for(size_t i = 0; i < sexpr->get_list_size(); ++i)
+      sections.push_back(SExprFileReader(sexpr->get_list_elem(i)));
+    return sections;
+  }
   else
-    {
-      return std::vector<FileReader>();
-    }
+  {
+    return std::vector<FileReader>();
+  }
 }
 
 /* EOF */

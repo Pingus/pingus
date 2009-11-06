@@ -23,32 +23,32 @@
 namespace Input {
 namespace Axes {
 
-  /**
-    @brief represents an axis of a joystick
+/**
+   @brief represents an axis of a joystick
 
-    XML definition: <joystick-axis angle="?" id="joystick id" axis="axis of the joystick"/>
-    */
-  class JoystickAxis : public Axis {
+   XML definition: <joystick-axis angle="?" id="joystick id" axis="axis of the joystick"/>
+*/
+class JoystickAxis : public Axis {
 
-    private:
-      int     id;
-      int     axis;
-      float   pos;
-      float   angle;
+private:
+  int     id;
+  int     axis;
+  float   pos;
+  float   angle;
 
-    public:
+public:
 
-      JoystickAxis (int id_, int axis_, float angle_);
+  JoystickAxis (int id_, int axis_, float angle_);
 
-      virtual const float& get_pos   () const;
-      virtual const float& get_angle () const;
+  virtual const float& get_pos   () const;
+  virtual const float& get_angle () const;
 
-      virtual void  update (float);
+  virtual void  update (float);
 
-    private:
-      JoystickAxis (const JoystickAxis&);
-      JoystickAxis& operator= (const JoystickAxis&);
-  };
+private:
+  JoystickAxis (const JoystickAxis&);
+  JoystickAxis& operator= (const JoystickAxis&);
+};
 
 } // namespace Axes
 } // namespace Input

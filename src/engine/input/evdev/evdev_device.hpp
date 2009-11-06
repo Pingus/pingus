@@ -42,7 +42,7 @@ private:
       return static_cast<float>(pos - min) / static_cast<float>(max - min) * 2.0f - 1.0f;
     }
   };
-	
+        
   // Relative Input Event
   struct Relative 
   {

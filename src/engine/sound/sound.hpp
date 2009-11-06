@@ -39,9 +39,9 @@ public:
 
   /** Load a sound file and play it immediately.
 
-  @param name     Name of the sound, aka 'ohno'
-  @param volume   volume
-  @param panning  panning */
+      @param name     Name of the sound, aka 'ohno'
+      @param volume   volume
+      @param panning  panning */
   static void play_sound(const std::string & name, float volume = 1.0f, float panning = 0.0f);
 
   static void play_music(const std::string & name, float volume = 1.0f, bool loop = true);

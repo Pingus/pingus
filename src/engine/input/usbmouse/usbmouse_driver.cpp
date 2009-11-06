@@ -57,9 +57,9 @@ public:
     fd = open(device.c_str (), O_RDWR | O_NONBLOCK);
 
     if (fd == -1)
-      {
-        throw std::runtime_error(strerror(errno));
-      }
+    {
+      throw std::runtime_error(strerror(errno));
+    }
 
     {
       // Microsoft init sequence for Explorer mouse (wheel + 5 buttons)
@@ -104,105 +104,105 @@ public:
   {
     unsigned char data[4];
     while(read(fd, data, sizeof (data)) > 0)
-      {		
-        // Mouse Move:
-        int delta_x = (data[0] & 0x10) ? data[1]-256 : data[1];
-        int delta_y = (data[0] & 0x20) ? data[2]-256 : data[2];
+    {           
+      // Mouse Move:
+      int delta_x = (data[0] & 0x10) ? data[1]-256 : data[1];
+      int delta_y = (data[0] & 0x20) ? data[2]-256 : data[2];
 
-        if (delta_x != 0 || delta_y != 0)
-          {
-            mouse_pos.x += delta_x;
-            mouse_pos.y -= delta_y; // y-axis is reversed on-screen
+      if (delta_x != 0 || delta_y != 0)
+      {
+        mouse_pos.x += delta_x;
+        mouse_pos.y -= delta_y; // y-axis is reversed on-screen
 
-            if (mouse_pos.x < 0) 
-              mouse_pos.x = 0;
-            else if (mouse_pos.x >= Display::get_width())
-              mouse_pos.x = Display::get_width() - 1;
+        if (mouse_pos.x < 0) 
+          mouse_pos.x = 0;
+        else if (mouse_pos.x >= Display::get_width())
+          mouse_pos.x = Display::get_width() - 1;
 
-            if (mouse_pos.y < 0) 
-              mouse_pos.y = 0;
-            else if (mouse_pos.y >= Display::get_height())
-              mouse_pos.y = Display::get_height() - 1;
+        if (mouse_pos.y < 0) 
+          mouse_pos.y = 0;
+        else if (mouse_pos.y >= Display::get_height())
+          mouse_pos.y = Display::get_height() - 1;
 
-            for(std::vector<Pointer*>::iterator i = pointer_bindings.begin(); i != pointer_bindings.end(); ++i)
-              (*i)->set_pos(mouse_pos);
+        for(std::vector<Pointer*>::iterator i = pointer_bindings.begin(); i != pointer_bindings.end(); ++i)
+          (*i)->set_pos(mouse_pos);
 
-            for(std::vector<Scroller*>::iterator i = scroller_bindings.begin(); i != scroller_bindings.end(); ++i)
-              (*i)->set_delta(Vector2f(static_cast<float>(-delta_x), static_cast<float>(delta_y))); // FIXME: Inversion should be configurable
-          }
-
-        // Scrollwheel move
-        int delta_z = (data[3] & 0x08) ? (data[3] & 0x0F)-16 : (data[3] & 0x0F);
-
-        if (delta_z > 0)
-          {
-            while (delta_z != 0)
-              {
-                --delta_z;
-
-                // Wheel Down
-                pout(PINGUS_DEBUG_INPUT) << "USBMouseDriver: "
-                                         << "(usbmouse:button (device \"" << device << "\") "
-                                         << "(button " << 5 << ")) ;; wheel down" << std::endl;
-
-                for(std::vector<Button*>::iterator j = button_bindings[5].begin();
-                    j != button_bindings[5].end(); ++j)
-                  {
-                    (*j)->set_state(BUTTON_PRESSED);
-                    (*j)->set_state(BUTTON_RELEASED);
-                  }
-
-              }
-          } 
-        else if (delta_z < 0)
-          {
-            while (delta_z != 0)
-              {
-                ++delta_z;
-
-                // Wheel Down
-                pout(PINGUS_DEBUG_INPUT) << "USBMouseDriver: "
-                                         << "(usbmouse:button (device \"" << device << "\") "
-                                         << "(button " << 6 << ")) ;; wheel up" << std::endl;
-
-                for(std::vector<Button*>::iterator j = button_bindings[6].begin();
-                    j != button_bindings[6].end(); ++j)
-                  {
-                    (*j)->set_state(BUTTON_PRESSED);
-                    (*j)->set_state(BUTTON_RELEASED);
-                  }
-              }
-          }
-
-        // Button event
-        std::vector<bool> new_state(5);
-
-        new_state[0] = ((data[0] &  1)>0);
-        new_state[1] = ((data[0] &  2)>0);
-        new_state[2] = ((data[0] &  4)>0);
-        new_state[3] = ((data[3] & 16)>0);
-        new_state[4] = ((data[3] & 32)>0);
-
-        for (int i = 0; i < 5; ++i)
-          {
-            if (new_state[i] != buttons[i])
-              {
-                pout(PINGUS_DEBUG_INPUT) << "USBMouseDriver: "
-                                         << "(usbmouse:button (device \"" << device << "\") "
-                                         << "(button " << i << "))" << std::endl;
-
-                buttons[i] = new_state[i];
-
-                for(std::vector<Button*>::iterator j = button_bindings[i].begin();
-                    j != button_bindings[i].end(); ++j)
-                  {
-                    (*j)->set_state(buttons[i] ? BUTTON_PRESSED : BUTTON_RELEASED);
-                  }
-              }
-          }
-
-        buttons = new_state;
+        for(std::vector<Scroller*>::iterator i = scroller_bindings.begin(); i != scroller_bindings.end(); ++i)
+          (*i)->set_delta(Vector2f(static_cast<float>(-delta_x), static_cast<float>(delta_y))); // FIXME: Inversion should be configurable
       }
+
+      // Scrollwheel move
+      int delta_z = (data[3] & 0x08) ? (data[3] & 0x0F)-16 : (data[3] & 0x0F);
+
+      if (delta_z > 0)
+      {
+        while (delta_z != 0)
+        {
+          --delta_z;
+
+          // Wheel Down
+          pout(PINGUS_DEBUG_INPUT) << "USBMouseDriver: "
+                                   << "(usbmouse:button (device \"" << device << "\") "
+                                   << "(button " << 5 << ")) ;; wheel down" << std::endl;
+
+          for(std::vector<Button*>::iterator j = button_bindings[5].begin();
+              j != button_bindings[5].end(); ++j)
+          {
+            (*j)->set_state(BUTTON_PRESSED);
+            (*j)->set_state(BUTTON_RELEASED);
+          }
+
+        }
+      } 
+      else if (delta_z < 0)
+      {
+        while (delta_z != 0)
+        {
+          ++delta_z;
+
+          // Wheel Down
+          pout(PINGUS_DEBUG_INPUT) << "USBMouseDriver: "
+                                   << "(usbmouse:button (device \"" << device << "\") "
+                                   << "(button " << 6 << ")) ;; wheel up" << std::endl;
+
+          for(std::vector<Button*>::iterator j = button_bindings[6].begin();
+              j != button_bindings[6].end(); ++j)
+          {
+            (*j)->set_state(BUTTON_PRESSED);
+            (*j)->set_state(BUTTON_RELEASED);
+          }
+        }
+      }
+
+      // Button event
+      std::vector<bool> new_state(5);
+
+      new_state[0] = ((data[0] &  1)>0);
+      new_state[1] = ((data[0] &  2)>0);
+      new_state[2] = ((data[0] &  4)>0);
+      new_state[3] = ((data[3] & 16)>0);
+      new_state[4] = ((data[3] & 32)>0);
+
+      for (int i = 0; i < 5; ++i)
+      {
+        if (new_state[i] != buttons[i])
+        {
+          pout(PINGUS_DEBUG_INPUT) << "USBMouseDriver: "
+                                   << "(usbmouse:button (device \"" << device << "\") "
+                                   << "(button " << i << "))" << std::endl;
+
+          buttons[i] = new_state[i];
+
+          for(std::vector<Button*>::iterator j = button_bindings[i].begin();
+              j != button_bindings[i].end(); ++j)
+          {
+            (*j)->set_state(buttons[i] ? BUTTON_PRESSED : BUTTON_RELEASED);
+          }
+        }
+      }
+
+      buttons = new_state;
+    }
   }
 };
 
@@ -228,127 +228,127 @@ Button*
 USBMouseDriver::create_button(const FileReader& reader, Control* parent)
 {
   if (reader.get_name() == "usbmouse:button")
+  {
+    std::string device;
+    if (reader.read_string("device", device))
     {
-      std::string device;
-      if (reader.read_string("device", device))
+      int i;
+      if (reader.read_int("button", i))
+      {
+        USBMouse* mouse = get_mouse(device);
+        if (mouse)
         {
-          int i;
-          if (reader.read_int("button", i))
-            {
-              USBMouse* mouse = get_mouse(device);
-              if (mouse)
-                {
-                  Button* button = new Button(parent);
-                  mouse->add_listener(i, button);
-                  return button;
-                }
-              else
-                {
-                  return 0;
-                }
-            }
-          else
-            {
-              std::cout << "USBMouseDriver: 'button' entry is missing" << std::endl;
-              return 0;
-            }
+          Button* button = new Button(parent);
+          mouse->add_listener(i, button);
+          return button;
         }
-      else
+        else
         {
-          std::cout << "USBMouseDriver: 'device' entry is missing" << std::endl;
           return 0;
         }
+      }
+      else
+      {
+        std::cout << "USBMouseDriver: 'button' entry is missing" << std::endl;
+        return 0;
+      }
     }
-  else
+    else
     {
+      std::cout << "USBMouseDriver: 'device' entry is missing" << std::endl;
       return 0;
     }
+  }
+  else
+  {
+    return 0;
+  }
 }
 
 Pointer*
 USBMouseDriver::create_pointer(const FileReader& reader, Control* parent)
 {
   if (reader.get_name() == "usbmouse:pointer")
+  {
+    std::string device;
+    if (reader.read_string("device", device))
     {
-      std::string device;
-      if (reader.read_string("device", device))
-        {
-          USBMouse* mouse = get_mouse(device);
-          if (mouse)
-            {
-              Pointer* pointer = new Pointer(parent);
-              mouse->add_listener(pointer);
-              return pointer;
-            }
-          else
-            {
-              return 0;
-            }
-        }
+      USBMouse* mouse = get_mouse(device);
+      if (mouse)
+      {
+        Pointer* pointer = new Pointer(parent);
+        mouse->add_listener(pointer);
+        return pointer;
+      }
       else
-        {
-          std::cout << "USBMouseDriver: 'device' entry is missing" << std::endl;
-          return 0;
-        }
+      {
+        return 0;
+      }
     }
-  else
+    else
     {
+      std::cout << "USBMouseDriver: 'device' entry is missing" << std::endl;
       return 0;
     }
+  }
+  else
+  {
+    return 0;
+  }
 }
 
 Scroller*
 USBMouseDriver::create_scroller(const FileReader& reader, Control* parent)
 {
   if (reader.get_name() == "usbmouse:scroller")
+  {
+    std::string device;
+    if (reader.read_string("device", device))
     {
-      std::string device;
-      if (reader.read_string("device", device))
-        {
-          USBMouse* mouse = get_mouse(device);
-          if (mouse)
-            {
-              Scroller* scroller = new Scroller(parent);
-              mouse->add_listener(scroller);
-              return scroller;
-            }
-          else
-            {
-              return 0;
-            }
-        }
+      USBMouse* mouse = get_mouse(device);
+      if (mouse)
+      {
+        Scroller* scroller = new Scroller(parent);
+        mouse->add_listener(scroller);
+        return scroller;
+      }
       else
-        {
-          std::cout << "USBMouseDriver: 'device' entry is missing" << std::endl;
-          return 0;
-        }
+      {
+        return 0;
+      }
     }
-  else
+    else
     {
+      std::cout << "USBMouseDriver: 'device' entry is missing" << std::endl;
       return 0;
     }
+  }
+  else
+  {
+    return 0;
+  }
 }
 
 USBMouse*
 USBMouseDriver::get_mouse(const std::string& device)
 {
   for(USBMice::iterator i = usbmice.begin(); i != usbmice.end(); ++i)
-    {
-      if ((*i)->get_device() == device)
-        return *i;
-    }
+  {
+    if ((*i)->get_device() == device)
+      return *i;
+  }
 
   try 
-    {
-      USBMouse* usbmouse = new USBMouse(device);
-      usbmice.push_back(usbmouse);
-      return usbmouse;
-    }
+  {
+    USBMouse* usbmouse = new USBMouse(device);
+    usbmice.push_back(usbmouse);
+    return usbmouse;
+  }
   catch (std::exception& err) 
-    {
-      std::cout << "USBMouseDriver: " << err.what() << std::endl;
-      return 0;
-    }
+  {
+    std::cout << "USBMouseDriver: " << err.what() << std::endl;
+    return 0;
+  }
 }
 
 } // namespace Input

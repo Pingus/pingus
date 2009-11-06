@@ -60,8 +60,8 @@ Exit::on_startup ()
   // FIXME: This will fail with exits that contain multiple frames
   CollisionMask mask(desc);
   world->get_colmap()->remove(mask,
-			      static_cast<int>(pos.x) - sprite.get_width()/2,
-			      static_cast<int>(pos.y) - sprite.get_height());
+                              static_cast<int>(pos.x) - sprite.get_width()/2,
+                              static_cast<int>(pos.y) - sprite.get_height());
 }
 
 void

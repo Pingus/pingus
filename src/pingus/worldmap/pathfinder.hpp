@@ -49,9 +49,9 @@ public:
 
     NodeStat ()
       : status (UNKNOWN),
-	parent(-1),
-	cost(0),
-	handle (-1)
+        parent(-1),
+        cost(0),
+        handle (-1)
     {
     }
   };
@@ -89,37 +89,37 @@ public:
     push_to_open (start);
 
     while (!open_nodes.empty())
+    {
+      NodeId current = open_nodes.top ();
+      open_nodes.pop ();
+
+      //std::cout << "Current Node: " << current << " "
+      //<< stat_graph[current].cost << std::endl;
+
+      Node<T>& node = graph.resolve_node (current);
+      for (std::vector<EdgeId>::iterator e = node.next.begin ();
+           e != node.next.end ();
+           ++e)
       {
-	NodeId current = open_nodes.top ();
-	open_nodes.pop ();
+        NodeId child_node = graph.resolve_edge(*e).destination;
+        NodeStat& stat = stat_graph[child_node];
+        float new_cost = stat_graph[current].cost + graph.resolve_edge(*e).cost;
 
-	//std::cout << "Current Node: " << current << " "
-        //<< stat_graph[current].cost << std::endl;
+        if  (stat.status == NodeStat::OPEN
+             && stat.cost <= new_cost)
+        {
+          // do nothing, already now a better path
+        }
+        else
+        {
+          stat_graph[child_node].parent = current;
+          stat_graph[child_node].cost   = new_cost;
 
-	Node<T>& node = graph.resolve_node (current);
-	for (std::vector<EdgeId>::iterator e = node.next.begin ();
-	     e != node.next.end ();
-	     ++e)
-	  {
-	    NodeId child_node = graph.resolve_edge(*e).destination;
-	    NodeStat& stat = stat_graph[child_node];
-	    float new_cost = stat_graph[current].cost + graph.resolve_edge(*e).cost;
-
-	    if  (stat.status == NodeStat::OPEN
-		 && stat.cost <= new_cost)
-	      {
-		// do nothing, already now a better path
-	      }
-	    else
-	      {
-		stat_graph[child_node].parent = current;
-		stat_graph[child_node].cost   = new_cost;
-
-		if (!is_open (child_node))
-		  push_to_open (child_node);
-	      }
-	  }
+          if (!is_open (child_node))
+            push_to_open (child_node);
+        }
       }
+    }
     //std::cout << "---DONE---" << std::endl;
   }
 
@@ -131,25 +131,25 @@ public:
     NodeId handle = end;
 
     do
-      {
-	path.push_back(handle);
-	//std::cout << "Handle: " << handle
-        //<< " Parent: " << stat_graph[handle].parent << std::endl;
+    {
+      path.push_back(handle);
+      //std::cout << "Handle: " << handle
+      //<< " Parent: " << stat_graph[handle].parent << std::endl;
 
-	if (handle == start)
-	  {
-	    return path;
-	  }
-	else if (handle == -1)
-	  {
-	    // no path found
-	    return  std::vector<NodeId>();
-	  }
-	else
-	  {
-	    handle = stat_graph[handle].parent;
-	  }
+      if (handle == start)
+      {
+        return path;
       }
+      else if (handle == -1)
+      {
+        // no path found
+        return  std::vector<NodeId>();
+      }
+      else
+      {
+        handle = stat_graph[handle].parent;
+      }
+    }
     while (1);
   }
 

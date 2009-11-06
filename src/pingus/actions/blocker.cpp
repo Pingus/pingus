@@ -31,35 +31,35 @@ Blocker::Blocker(Pingu* p) :
   sprite.load(Direction::RIGHT, "pingus/player" + pingu->get_owner_str() + "/blocker/right");
 
   if (   rel_getpixel(0,-1)  ==  Groundtype::GP_NOTHING
-      && rel_getpixel(0, -2) ==  Groundtype::GP_GROUND)
-    {
-      pingu->set_y(pingu->get_y() + 1);
-    }
+         && rel_getpixel(0, -2) ==  Groundtype::GP_GROUND)
+  {
+    pingu->set_y(pingu->get_y() + 1);
+  }
   else if (   rel_getpixel(0,-1) ==  Groundtype::GP_NOTHING
-	   && rel_getpixel(0,-2) ==  Groundtype::GP_NOTHING
-	   && rel_getpixel(0,-3) ==  Groundtype::GP_GROUND)
-    {
-      pingu->set_y(pingu->get_y() + 2);
-    }
+              && rel_getpixel(0,-2) ==  Groundtype::GP_NOTHING
+              && rel_getpixel(0,-3) ==  Groundtype::GP_GROUND)
+  {
+    pingu->set_y(pingu->get_y() + 2);
+  }
 }
 
 void
 Blocker::update()
 {
   if (!standing_on_ground())
-    {
-      pingu->set_action(Actions::FALLER);
-      return;
-    }
+  {
+    pingu->set_action(Actions::FALLER);
+    return;
+  }
   else
+  {
+    // FIXME: PinguHolder iterations should be handled otherwise
+    PinguHolder* pingus = WorldObj::get_world()->get_pingus();
+    for(PinguIter i = pingus->begin(); i != pingus->end(); ++i)
     {
-      // FIXME: PinguHolder iterations should be handled otherwise
-      PinguHolder* pingus = WorldObj::get_world()->get_pingus();
-      for(PinguIter i = pingus->begin(); i != pingus->end(); ++i)
-        {
-          catch_pingu(*i);
-        }
+      catch_pingu(*i);
     }
+  }
   sprite.update();
 }
 
@@ -79,20 +79,20 @@ void
 Blocker::catch_pingu(Pingu* target)
 {
   if (target != pingu) // avoid 'self' catch
+  {
+    if (target->get_x () > pingu->get_x () - 16
+        && target->get_x () < pingu->get_x () + 16
+        && target->get_y () > pingu->get_y () - 32
+        && target->get_y () < pingu->get_y () + 5
+      )
     {
-      if (target->get_x () > pingu->get_x () - 16
-	  && target->get_x () < pingu->get_x () + 16
-	  && target->get_y () > pingu->get_y () - 32
-	  && target->get_y () < pingu->get_y () + 5
-	  )
-	{
-	  if (target->get_x () > pingu->get_x ()) {
-	    target->direction.right();
-	  } else {
-	    target->direction.left();
-	  }
-	}
+      if (target->get_x () > pingu->get_x ()) {
+        target->direction.right();
+      } else {
+        target->direction.left();
+      }
     }
+  }
 }
 
 } // namespace Actions

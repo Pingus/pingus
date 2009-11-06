@@ -41,7 +41,7 @@ MouseButton::mouse_handler(const SDL_Event& event, void* userdata)
 
   MouseButton* mb = (MouseButton*)userdata;
   switch (mb->button)
-    {
+  {
     case 1:
       if (event.button.button == SDL_BUTTON_LEFT) {
         if (event.button.state == SDL_PRESSED) {
@@ -80,7 +80,7 @@ MouseButton::mouse_handler(const SDL_Event& event, void* userdata)
             
     default: // only three buttons support so far
       break;
-    }
+  }
 }
 
 } // namespace Buttons

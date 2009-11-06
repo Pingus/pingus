@@ -32,26 +32,26 @@ void
 PingusSound::init (PingusSoundImpl* s)
 {
   if (s == 0)
+  {
+    if (sound_enabled || music_enabled)
     {
-      if (sound_enabled || music_enabled)
-        {
-          try {
-            PingusSound::init (new PingusSoundReal ());
-          } catch (const std::exception& err) {
-            std::cout << "Sound Error: " << err.what() << std::endl;
-            std::cout << "Sound will be disabled" << std::endl;
-            PingusSound::init (new PingusSoundDummy ());
-          }
-        }
-      else
-        {
-          PingusSound::init (new PingusSoundDummy ());
-        }
+      try {
+        PingusSound::init (new PingusSoundReal ());
+      } catch (const std::exception& err) {
+        std::cout << "Sound Error: " << err.what() << std::endl;
+        std::cout << "Sound will be disabled" << std::endl;
+        PingusSound::init (new PingusSoundDummy ());
+      }
     }
+    else
+    {
+      PingusSound::init (new PingusSoundDummy ());
+    }
+  }
   else
-    {
-      sound = s;
-    }
+  {
+    sound = s;
+  }
 }
 
 void
@@ -74,8 +74,8 @@ PingusSound::play_sound(const std::string& name, float volume, float panning)
 
 /** Load a sound file and play it immediately.
 
-@param name
-@param volume   volume */
+    @param name
+    @param volume   volume */
 void
 PingusSound::play_music(const std::string & name, float volume, bool loop)
 {

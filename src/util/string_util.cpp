@@ -26,9 +26,9 @@ StringUtil::to_lower(const std::string &str)
   for( std::string::iterator i = lower_impl.begin();
        i != lower_impl.end();
        ++i )
-    {
-      *i = static_cast<char>(tolower(*i));
-    }
+  {
+    *i = static_cast<char>(tolower(*i));
+  }
 
   return lower_impl;
 }
@@ -41,9 +41,9 @@ StringUtil::to_upper(const std::string& str)
   for( std::string::iterator i = upper_impl.begin();
        i != upper_impl.end();
        ++i )
-    {
-      *i = static_cast<char>(toupper(*i));
-    }
+  {
+    *i = static_cast<char>(toupper(*i));
+  }
 
   return upper_impl;
 }

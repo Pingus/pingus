@@ -42,14 +42,14 @@ public:
     T tmp;
     str >> tmp;
     if (str.fail())
-      {
-        return false;
-      }
+    {
+      return false;
+    }
     else
-      {
-        t = tmp;
-        return true;
-      }
+    {
+      t = tmp;
+      return true;
+    }
     return false;
   }
 

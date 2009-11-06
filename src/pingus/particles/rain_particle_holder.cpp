@@ -46,10 +46,10 @@ RainParticleHolder::add_particle (int x, int y)
   // search for dead entry to replace
   for (std::vector<RainParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
     if (!it->alive)
-      {
-        *it = RainParticle(x, y);
-        return;
-      }
+    {
+      *it = RainParticle(x, y);
+      return;
+    }
 
   // create new entry
   particles.push_back(RainParticle(x, y));
@@ -60,43 +60,43 @@ RainParticleHolder::update ()
 {
   // update all contained particles
   for (std::vector<RainParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
+  {
+    // skip dead particles
+    if (!it->alive)
+      continue;
+
+    if (it->splash)
     {
-      // skip dead particles
-      if (!it->alive)
+      if (it->splash_frame >= rain_splash.get_frame_count())
+      {
+        it->alive = false;
         continue;
+      }
 
-      if (it->splash)
-	{
-	  if (it->splash_frame >= rain_splash.get_frame_count())
-	    {
-	      it->alive = false;
-	      continue;
-	    }
-
-          it->splash_frame += 10.0f * static_cast<float>(game_speed) / 1000.0f;
-          (it->splash_counter == 3) ? it->alive = false : ++it->splash_counter;
-	}
-      else
-	{
-	  if ( world->get_colmap()->getpixel(static_cast<int>(it->pos.x), static_cast<int>(it->pos.y)) != Groundtype::GP_NOTHING
-	    && world->get_colmap()->getpixel(static_cast<int>(it->pos.x), static_cast<int>(it->pos.y)) != Groundtype::GP_OUTOFSCREEN
-	    && ((rand() % 2) == 0))
-            {
-	      it->splash = true;
-	    }
-	  else
-	    {
-	      if (it->pos.y > world->get_height())
-		{
-		  it->alive = false;
-		  continue;
-		}
-
-		it->pos.x -= 5  * it->pos.z;
-		it->pos.y += 16 * it->pos.z;
-	    }
-	}
+      it->splash_frame += 10.0f * static_cast<float>(game_speed) / 1000.0f;
+      (it->splash_counter == 3) ? it->alive = false : ++it->splash_counter;
     }
+    else
+    {
+      if ( world->get_colmap()->getpixel(static_cast<int>(it->pos.x), static_cast<int>(it->pos.y)) != Groundtype::GP_NOTHING
+           && world->get_colmap()->getpixel(static_cast<int>(it->pos.x), static_cast<int>(it->pos.y)) != Groundtype::GP_OUTOFSCREEN
+           && ((rand() % 2) == 0))
+      {
+        it->splash = true;
+      }
+      else
+      {
+        if (it->pos.y > world->get_height())
+        {
+          it->alive = false;
+          continue;
+        }
+
+        it->pos.x -= 5  * it->pos.z;
+        it->pos.y += 16 * it->pos.z;
+      }
+    }
+  }
 
 }
 
@@ -104,24 +104,24 @@ void
 RainParticleHolder::draw (SceneContext& gc)
 {
   for (std::vector<RainParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
-    {
-      // skip dead/invisible particles
-      if (!it->alive || it->pos.x > WorldObj::get_world()->get_width())
-        continue;
+  {
+    // skip dead/invisible particles
+    if (!it->alive || it->pos.x > WorldObj::get_world()->get_width())
+      continue;
 
-      if (it->splash)
-        {
-          rain_splash.set_frame(static_cast<int>(it->splash_frame));
-          gc.color().draw(rain_splash, it->pos);
-        }
-      else
-        if (it->use_rain2_surf)
-          gc.color().draw(rain2_surf, Vector2i(static_cast<int>(it->pos.x), 
-                                               static_cast<int>(it->pos.y - static_cast<float>(rain1_surf.get_height()))));
-        else
-          gc.color().draw(rain1_surf, Vector2i(static_cast<int>(it->pos.x),
-                                               static_cast<int>(it->pos.y - static_cast<float>(rain1_surf.get_height()))));
+    if (it->splash)
+    {
+      rain_splash.set_frame(static_cast<int>(it->splash_frame));
+      gc.color().draw(rain_splash, it->pos);
     }
+    else
+      if (it->use_rain2_surf)
+        gc.color().draw(rain2_surf, Vector2i(static_cast<int>(it->pos.x), 
+                                             static_cast<int>(it->pos.y - static_cast<float>(rain1_surf.get_height()))));
+      else
+        gc.color().draw(rain1_surf, Vector2i(static_cast<int>(it->pos.x),
+                                             static_cast<int>(it->pos.y - static_cast<float>(rain1_surf.get_height()))));
+  }
 }
 
 } // namespace Particles

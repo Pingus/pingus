@@ -58,14 +58,14 @@ public:
   {
 
     if (highlight_func())
-      {
-        gc.draw(button_pressed_surface, Vector2i(x_pos, y_pos));
-        gc.draw(highlight, Vector2i(x_pos, y_pos));
-      }
+    {
+      gc.draw(button_pressed_surface, Vector2i(x_pos, y_pos));
+      gc.draw(highlight, Vector2i(x_pos, y_pos));
+    }
     else
-      {
-        SurfaceButton::draw(gc);
-      }
+    {
+      SurfaceButton::draw(gc);
+    }
   }
 
   void on_click() {
@@ -138,67 +138,67 @@ DemoSession::update(float delta)
   GUIScreen::update(delta);
 
   if (server->is_finished())
-    {
-      ScreenManager::instance()->pop_screen();
-    }
+  {
+    ScreenManager::instance()->pop_screen();
+  }
   else
-    {
-      // FIXME: Duplicate all timing code here?!
+  {
+    // FIXME: Duplicate all timing code here?!
 
-      if (!pause)
+    if (!pause)
+    {
+      if (fast_forward)
+      {
+        for (int i = 0; i < 4; ++i)
         {
-          if (fast_forward)
-            {
-              for (int i = 0; i < 4; ++i)
-                {
-                  server->update();
-                  update_demo();
-                }
-            }
-          else
-            {
-              server->update();
-              update_demo();
-            }
+          server->update();
+          update_demo();
         }
+      }
+      else
+      {
+        server->update();
+        update_demo();
+      }
     }
+  }
 }
 
 void
 DemoSession::update_demo()
 {
   while(!events.empty() && events.back().time_stamp == server->get_time())
+  {
+    ServerEvent& event = events.back();
+
+    if (0)
     {
-      ServerEvent& event = events.back();
-
-      if (0)
-        {
-          std::cout << "Sending: ";
-          event.write(std::cout);
-        }
-
-      event.send(server.get());
-      events.pop_back();
+      std::cout << "Sending: ";
+      event.write(std::cout);
     }
+
+    event.send(server.get());
+    events.pop_back();
+  }
   
   // Check for unexpected things (might happen if the demo file is broken)
   if (!events.empty() && events.back().time_stamp < server->get_time())
-    {
-      std::cout << "DemoPlayer Bug: We missed a timestamp: " << events.back().time_stamp << std::endl;
-    }
+  {
+    std::cout << "DemoPlayer Bug: We missed a timestamp: " << events.back().time_stamp << std::endl;
+  }
 }
 
 void
 DemoSession::on_pause_press()
 {
   if (0)
+  {
+    for(std::vector<ServerEvent>::iterator i = events.begin(); i != events.end(); ++i)
     {
-      for(std::vector<ServerEvent>::iterator i = events.begin(); i != events.end(); ++i)
-        {
-          std::cout << "Event: ";
-          i->write(std::cout);      
-        }
+      std::cout << "Event: ";
+      i->write(std::cout);      
     }
+  }
 
   pause = !pause;
 

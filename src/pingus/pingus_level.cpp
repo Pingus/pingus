@@ -51,66 +51,66 @@ PingusLevel::load(const std::string& resname,
   FileReader reader = FileReader::parse(pathname);
 
   if (reader.get_name() != "pingus-level")
-    {
-      throw std::runtime_error("Error: " + pathname.str() + ": not a 'pingus-level' file");
-    }
+  {
+    throw std::runtime_error("Error: " + pathname.str() + ": not a 'pingus-level' file");
+  }
   else
+  {
+    int version;
+    if (reader.read_int("version", version))
+      pout(PINGUS_DEBUG_LOADING) << "Levelfile Version: " << version << std::endl;
+    else
+      pout(PINGUS_DEBUG_LOADING) << "Unknown Levelfile Version: " << version << std::endl;
+
+    FileReader head;
+    if (!reader.read_section("head", head))
     {
-      int version;
-      if (reader.read_int("version", version))
-        pout(PINGUS_DEBUG_LOADING) << "Levelfile Version: " << version << std::endl;
-      else
-        pout(PINGUS_DEBUG_LOADING) << "Unknown Levelfile Version: " << version << std::endl;
-
-      FileReader head;
-      if (!reader.read_section("head", head))
-        {
-          throw std::runtime_error("Error: (head) section not found in '" + pathname.str() + "'");
-        }
-      else
-        {
-          pout(PINGUS_DEBUG_LOADING) << "Reading head" << std::endl;
-          head.read_string("levelname",        impl->levelname);
-          head.read_string("description",      impl->description);
-          head.read_size  ("levelsize",        impl->size);
-          head.read_string("music",            impl->music);
-          head.read_int   ("time",             impl->time);
-          head.read_int   ("difficulty",       impl->difficulty);
-          head.read_int   ("number-of-pingus", impl->number_of_pingus);
-          head.read_int   ("number-to-save",   impl->number_to_save);
-          head.read_color ("ambient-light",    impl->ambient_light);
-          head.read_string("author",           impl->author);
-
-          pout(PINGUS_DEBUG_LOADING) << "Size: " << impl->size.width << " " << impl->size.height << std::endl;
-          
-          FileReader actions;
-          if (head.read_section("actions", actions))
-            {
-              std::vector<std::string> lst = actions.get_section_names();
-              for(std::vector<std::string>::iterator i = lst.begin(); i != lst.end(); ++i)
-                {
-                  int count = 0;
-                  pout(PINGUS_DEBUG_LOADING) << "Actions: " << i->c_str() << std::endl;
-                  if (actions.read_int(i->c_str(), count))
-                    impl->actions[*i] = count;
-                }
-            }
-          else
-            {
-              throw std::runtime_error("Error: (pingus-level head actions) not found in '" + pathname.str() + "'"); 
-            }
-        }
-      
-      FileReader objects;
-      if (reader.read_section("objects", objects))
-        {
-          std::vector<FileReader> object_lst = objects.get_sections();
-          for(std::vector<FileReader>::iterator i = object_lst.begin(); i != object_lst.end(); ++i)
-            {
-              impl->objects.push_back(*i);
-            }
-        }
+      throw std::runtime_error("Error: (head) section not found in '" + pathname.str() + "'");
     }
+    else
+    {
+      pout(PINGUS_DEBUG_LOADING) << "Reading head" << std::endl;
+      head.read_string("levelname",        impl->levelname);
+      head.read_string("description",      impl->description);
+      head.read_size  ("levelsize",        impl->size);
+      head.read_string("music",            impl->music);
+      head.read_int   ("time",             impl->time);
+      head.read_int   ("difficulty",       impl->difficulty);
+      head.read_int   ("number-of-pingus", impl->number_of_pingus);
+      head.read_int   ("number-to-save",   impl->number_to_save);
+      head.read_color ("ambient-light",    impl->ambient_light);
+      head.read_string("author",           impl->author);
+
+      pout(PINGUS_DEBUG_LOADING) << "Size: " << impl->size.width << " " << impl->size.height << std::endl;
+          
+      FileReader actions;
+      if (head.read_section("actions", actions))
+      {
+        std::vector<std::string> lst = actions.get_section_names();
+        for(std::vector<std::string>::iterator i = lst.begin(); i != lst.end(); ++i)
+        {
+          int count = 0;
+          pout(PINGUS_DEBUG_LOADING) << "Actions: " << i->c_str() << std::endl;
+          if (actions.read_int(i->c_str(), count))
+            impl->actions[*i] = count;
+        }
+      }
+      else
+      {
+        throw std::runtime_error("Error: (pingus-level head actions) not found in '" + pathname.str() + "'"); 
+      }
+    }
+      
+    FileReader objects;
+    if (reader.read_section("objects", objects))
+    {
+      std::vector<FileReader> object_lst = objects.get_sections();
+      for(std::vector<FileReader>::iterator i = object_lst.begin(); i != object_lst.end(); ++i)
+      {
+        impl->objects.push_back(*i);
+      }
+    }
+  }
 }
 
 const std::string&

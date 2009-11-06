@@ -68,7 +68,7 @@ enum { PINGUS_DEBUG_ACTIONS     = (1 << 0),
        PINGUS_DEBUG_PATHMGR     = (1 << 12),
        PINGUS_DEBUG_DIRECTORIES = (1 << 13),
        PINGUS_DEBUG_ALL         = (~0)
-     };
+};
 
 #endif
 

@@ -39,18 +39,18 @@ DoubleButton::update (float delta)
   button2->update(delta);
 
   if (button1->is_pressed())
+  {
+    if (!first_pressed)
     {
-      if (!first_pressed)
-        {
-          first_pressed = true;
-          ignore_second = button2->is_pressed();
-        }
+      first_pressed = true;
+      ignore_second = button2->is_pressed();
     }
+  }
   else
-    {
-      first_pressed = false;
-      ignore_second = true;
-    }
+  {
+    first_pressed = false;
+    ignore_second = true;
+  }
 }
 
 bool

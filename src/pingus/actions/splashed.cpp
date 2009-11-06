@@ -39,15 +39,15 @@ Splashed::update ()
   sprite.update();
 
   if (!particle_thrown)
-    {
-      particle_thrown = true;
-      WorldObj::get_world()->play_sound("splash", pingu->get_pos());
-    }
+  {
+    particle_thrown = true;
+    WorldObj::get_world()->play_sound("splash", pingu->get_pos());
+  }
 
   if (sprite.is_finished())
-    {
-      pingu->set_status(PS_DEAD);
-    }
+  {
+    pingu->set_status(PS_DEAD);
+  }
 }
 
 void

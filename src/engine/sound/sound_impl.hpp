@@ -24,23 +24,23 @@ namespace Sound {
 class PingusSoundImpl
 {
 public:
-	PingusSoundImpl () { };
-	virtual ~PingusSoundImpl () { };
+  PingusSoundImpl () { };
+  virtual ~PingusSoundImpl () { };
 
-	/** Load a music file and play it immediately.
-    @param filename The complete filename
-    @param volume   The volume to play the music with  */
+  /** Load a music file and play it immediately.
+      @param filename The complete filename
+      @param volume   The volume to play the music with  */
   virtual void real_play_music(const std::string & filename, float volume, bool loop) = 0;
 
-	/** Stops playing any music file */
+  /** Stops playing any music file */
   virtual void real_stop_music() = 0;
 
-	/** Load a sound file and play it immediately
-    @param filename The complete filename
-    @param volume   The volume to play the sound at
-    @param panning  The panning to play the sound with */
+  /** Load a sound file and play it immediately
+      @param filename The complete filename
+      @param volume   The volume to play the sound at
+      @param panning  The panning to play the sound with */
   virtual void real_play_sound(const std::string & filename, 
-															 float volume, float panning) = 0;
+                               float volume, float panning) = 0;
 }; // class PingusSoundImpl
 
 }  // namespace Sound

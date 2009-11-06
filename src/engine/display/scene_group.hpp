@@ -1,4 +1,4 @@
- //  Pingus - A free Lemmings clone
+//  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -20,9 +20,9 @@
 class Scene_Group
 {
 private:
-public:
+  public:
 
-private:
+  private:
   Scene_Group (const Scene_Group&);
   Scene_Group& operator= (const Scene_Group&);
 };

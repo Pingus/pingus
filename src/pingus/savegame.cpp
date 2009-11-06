@@ -25,7 +25,7 @@ std::string
 Savegame::status_to_string(S_Status status)
 {
   switch (status)
-    {
+  {
     case FINISHED:
       return "finished";
 
@@ -35,7 +35,7 @@ Savegame::status_to_string(S_Status status)
     case NONE:
     default:
       return "none";
-    }
+  }
 }
 
 Savegame::S_Status

@@ -35,20 +35,20 @@ bool
 LineIterator::next()
 {
   if (line_end == last || (line_end+1 == last && *first == '\n'))
-    {
-      return false;
-    }
+  {
+    return false;
+  }
   else
-    {
-      if (first != line_end)
-        first = line_end + 1;
+  {
+    if (first != line_end)
+      first = line_end + 1;
       
-      do {
-        ++line_end;
-      } while(line_end != last && *line_end != '\n');
+    do {
+      ++line_end;
+    } while(line_end != last && *line_end != '\n');
 
-      return true;
-    }
+    return true;
+  }
 }
 
 std::string

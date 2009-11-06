@@ -50,53 +50,53 @@ Screenshot::save(SDL_Surface* surface, const std::string& filename)
   uint8_t* buffer = new uint8_t[surface->w * surface->h * 3];
 
   switch(surface->format->BitsPerPixel)
-    {
+  {
     case 16: // 16bit
-      {
-        uint8_t* pixels = static_cast<uint8_t*>(surface->pixels);
-        for (int y = 0; y < surface->h; ++y)
-          for (int x = 0; x < surface->w; ++x)
-            {
-              int i = (y * surface->w + x);
-              SDL_GetRGB(*((uint16_t*)(pixels + y * surface->pitch + x*2)),
-                         surface->format, 
-                         buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
-            }
-        break;
-      }
+    {
+      uint8_t* pixels = static_cast<uint8_t*>(surface->pixels);
+      for (int y = 0; y < surface->h; ++y)
+        for (int x = 0; x < surface->w; ++x)
+        {
+          int i = (y * surface->w + x);
+          SDL_GetRGB(*((uint16_t*)(pixels + y * surface->pitch + x*2)),
+                     surface->format, 
+                     buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
+        }
+      break;
+    }
       
     case 24: // 24bit
-      {
-        uint8_t* pixels = static_cast<uint8_t*>(surface->pixels);
-        for (int y = 0; y < surface->h; ++y)
-          for (int x = 0; x < surface->w; ++x)
-            {
-              int i = (y * surface->w + x);
-              SDL_GetRGB(*((uint32_t*)(pixels + y * surface->pitch + x*3)),
-                         surface->format, 
-                         buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
-            }
-        break;
-      }
+    {
+      uint8_t* pixels = static_cast<uint8_t*>(surface->pixels);
+      for (int y = 0; y < surface->h; ++y)
+        for (int x = 0; x < surface->w; ++x)
+        {
+          int i = (y * surface->w + x);
+          SDL_GetRGB(*((uint32_t*)(pixels + y * surface->pitch + x*3)),
+                     surface->format, 
+                     buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
+        }
+      break;
+    }
 
     case 32: // 32bit
-      {
-        uint8_t* pixels = static_cast<uint8_t*>(surface->pixels);
-        for (int y = 0; y < surface->h; ++y)
-          for (int x = 0; x < surface->w; ++x)
-            {
-              int i = (y * surface->w + x);
-              SDL_GetRGB(*((uint32_t*)(pixels + y * surface->pitch + x*4)),
-                         surface->format, 
-                         buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
-            }
-        break;
-      }
+    {
+      uint8_t* pixels = static_cast<uint8_t*>(surface->pixels);
+      for (int y = 0; y < surface->h; ++y)
+        for (int x = 0; x < surface->w; ++x)
+        {
+          int i = (y * surface->w + x);
+          SDL_GetRGB(*((uint32_t*)(pixels + y * surface->pitch + x*4)),
+                     surface->format, 
+                     buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
+        }
+      break;
+    }
     default:
       std::cout << "BitsPerPixel: " << int(surface->format->BitsPerPixel) << std::endl;
       assert(!"Unknown color format");
       break;
-    }
+  }
 
   save_png(filename, buffer, surface->w, surface->h);
   delete[] buffer;
@@ -110,20 +110,20 @@ Screenshot::save_ppm(const std::string& filename, uint8_t* buffer, int width, in
   FILE* out = fopen(filename.c_str(), "wb");
 
   if (!out)
-    {
-      perror(filename.c_str());
-      std::cout << _("Screenshot: Couldn't write file: ") << filename << std::endl;
-      return;
-    }
+  {
+    perror(filename.c_str());
+    std::cout << _("Screenshot: Couldn't write file: ") << filename << std::endl;
+    return;
+  }
 
   fprintf(out,
-	  "P6\n"
-	  "# CREATOR: Pingus %s\n"
+          "P6\n"
+          "# CREATOR: Pingus %s\n"
           "%d %d\n"
-	  "255\n",
-	  VERSION,
-	  width,
-	  height);
+          "255\n",
+          VERSION,
+          width,
+          height);
 
   fwrite(buffer, sizeof(unsigned char), width * height * 3, out);
   fclose(out);
@@ -138,48 +138,48 @@ Screenshot::save_png(const std::string& filename, uint8_t* buffer, int width, in
 
   fp = fopen(filename.c_str(), "wb");
   if (fp == NULL)
-    {
-      perror(filename.c_str());
-      std::cout << _("Screenshot: Couldn't write file: ") << filename << std::endl;
-      return;
-    }
+  {
+    perror(filename.c_str());
+    std::cout << _("Screenshot: Couldn't write file: ") << filename << std::endl;
+    return;
+  }
 
   png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
   if (png_ptr == NULL)
-    {
-      fclose(fp);
-      return;
-    }
+  {
+    fclose(fp);
+    return;
+  }
 
   info_ptr = png_create_info_struct(png_ptr);
   if (info_ptr == NULL)
-    {
-      fclose(fp);
-      png_destroy_write_struct(&png_ptr, NULL);
-      return;
-    }
+  {
+    fclose(fp);
+    png_destroy_write_struct(&png_ptr, NULL);
+    return;
+  }
 
   if (setjmp(png_ptr->jmpbuf))
-    {
-      // If we get here, we had a problem reading the file
-      fclose(fp);
-      png_destroy_write_struct(&png_ptr, &info_ptr);
-      return;
-    }
+  {
+    // If we get here, we had a problem reading the file
+    fclose(fp);
+    png_destroy_write_struct(&png_ptr, &info_ptr);
+    return;
+  }
 
   // set up the output control if you are using standard C streams
   png_init_io(png_ptr, fp);
 
   png_set_IHDR(png_ptr, info_ptr, width, height, 8,
-    PNG_COLOR_TYPE_RGB, PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT,
-    PNG_FILTER_TYPE_DEFAULT);
+               PNG_COLOR_TYPE_RGB, PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT,
+               PNG_FILTER_TYPE_DEFAULT);
 
   png_write_info(png_ptr, info_ptr);
 
   for (int i = 0; i < height; ++i)
-    {
-      png_write_row(png_ptr, buffer + i * width * 3);
-    }
+  {
+    png_write_row(png_ptr, buffer + i * width * 3);
+  }
 
   png_write_end(png_ptr, info_ptr);
 

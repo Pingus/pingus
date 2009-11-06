@@ -37,9 +37,9 @@ public:
 class PinguGameEvent : public GameEvent
 {
   /** The id of the pingu to which this action should apply
-  int pingu_id;
+      int pingu_id;
 
-  /** The action to apply to the pingu */
+      /** The action to apply to the pingu */
   std::string action;
 };
 

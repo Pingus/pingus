@@ -253,16 +253,16 @@ void
 Credits::update (float delta)
 {
   if (offset < end_offset)
-    {
-      //ScreenManager::instance()->pop_screen ();
-    }
+  {
+    //ScreenManager::instance()->pop_screen ();
+  }
   else
-    {
-      if (fast_scrolling)
-        offset -= 450.0f * delta;
-      else
-        offset -= 35.0f * delta;
-    }
+  {
+    if (fast_scrolling)
+      offset -= 450.0f * delta;
+    else
+      offset -= 35.0f * delta;
+  }
 }
 
 void

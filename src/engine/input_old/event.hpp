@@ -130,10 +130,10 @@ inline Event makeScrollEvent(float x_delta, float y_delta)
 inline Event makeKeyboardEvent(unsigned short c)
 {
   Event event;
-	
+        
   event.type = KeyboardEventType;
   event.keyboard.key = c;
-	
+        
   return event;
 }
 

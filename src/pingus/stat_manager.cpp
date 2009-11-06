@@ -61,9 +61,9 @@ StatManager::get_resname(const std::string& filename)
   str = filename.substr(pos);
   pos = 0;
   while ((pos = str.find('.', pos)) != std::string::npos)
-    {
-      str.replace(pos, 1, 1, '-');
-    }
+  {
+    str.replace(pos, 1, 1, '-');
+  }
   return str;
 }
 
@@ -82,10 +82,10 @@ void
 StatManager::load(const std::string& filename)
 {
   if (!System::exist(filename.c_str()))
-    {
-      // Create empty file
-      save(filename);
-    }
+  {
+    // Create empty file
+    save(filename);
+  }
 
   boost::shared_ptr<lisp::Lisp> sexpr;
   try {
@@ -96,25 +96,25 @@ StatManager::load(const std::string& filename)
     return;
   }
   if (!sexpr)
-    {
-      std::cerr << "SavegameManager: Couldn't find savegame file '" <<
-        filename << "', starting with an empty one." << std::endl;
-      return;
-    }
+  {
+    std::cerr << "SavegameManager: Couldn't find savegame file '" <<
+      filename << "', starting with an empty one." << std::endl;
+    return;
+  }
 
   SExprFileReader reader(sexpr->get_list_elem(0));
   if (reader.get_name() != "pingus-stats")
-    {
-      std::cerr << "Error: " << filename << ": not a (pingus-stats) file" << std::endl;
-      return;
-    }
+  {
+    std::cerr << "Error: " << filename << ": not a (pingus-stats) file" << std::endl;
+    return;
+  }
 
   const std::vector<std::string>& section_names = reader.get_section_names();
   for(std::vector<std::string>::const_iterator i = section_names.begin();
       i != section_names.end(); ++i)
-    {
-      reader.read_string(i->c_str(), stats[*i]);
-    }
+  {
+    reader.read_string(i->c_str(), stats[*i]);
+  }
 }
 
 void
@@ -132,10 +132,10 @@ StatManager::save(const std::string& filename)
   writer.begin_section("pingus-stats");
 
   for (Table::iterator i = stats.begin(); i != stats.end(); ++i)
-    {
-      if (!i->second.empty())
-        writer.write_string(i->first.c_str(), i->second);
-    }
+  {
+    if (!i->second.empty())
+      writer.write_string(i->first.c_str(), i->second);
+  }
 
   writer.end_section();
 }
@@ -165,14 +165,14 @@ StatManager::get_string(const std::string& name, std::string& value)
 {
   Table::iterator i = stats.find(name);
   if (i == stats.end())
-    {
-      return false;
-    }
+  {
+    return false;
+  }
   else
-    {
-      value = i->second;
-      return true;
-    }
+  {
+    value = i->second;
+    return true;
+  }
 }
 
 void

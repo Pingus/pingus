@@ -44,72 +44,72 @@ ServerEvent::ServerEvent(FileReader reader) :
   pingu_action(Actions::WALKER)
 {
   if (reader.get_name() == "armageddon")
-    {
-      type = ARMAGEDDON_EVENT;
-      reader.read_int("time", time_stamp);
-    }
+  {
+    type = ARMAGEDDON_EVENT;
+    reader.read_int("time", time_stamp);
+  }
   else if (reader.get_name() == "end")
-    {
-      type = END_EVENT;
-      reader.read_int("time", time_stamp);
-    }
+  {
+    type = END_EVENT;
+    reader.read_int("time", time_stamp);
+  }
   else if (reader.get_name() == "finish")
-    {
-      type = FINISH_EVENT;
-      reader.read_int("time", time_stamp);
-    }
+  {
+    type = FINISH_EVENT;
+    reader.read_int("time", time_stamp);
+  }
   else if (reader.get_name() == "pingu-action")
-    {
-      std::string raw_x;
-      std::string raw_y;
+  {
+    std::string raw_x;
+    std::string raw_y;
 
-      type = PINGU_ACTION_EVENT;
-      reader.read_int ("time",   time_stamp);
-      reader.read_int ("id",     pingu_id);
+    type = PINGU_ACTION_EVENT;
+    reader.read_int ("time",   time_stamp);
+    reader.read_int ("id",     pingu_id);
 
-      if (reader.read_string("raw-x", raw_x))
-        pos.x = Math::string2float(raw_x);
+    if (reader.read_string("raw-x", raw_x))
+      pos.x = Math::string2float(raw_x);
 
-      if (reader.read_string("raw-y", raw_y))
-        pos.y = Math::string2float(raw_y);
+    if (reader.read_string("raw-y", raw_y))
+      pos.y = Math::string2float(raw_y);
 
-      reader.read_enum("action", pingu_action, Actions::action_from_string);
+    reader.read_enum("action", pingu_action, Actions::action_from_string);
 
       
-    }
+  }
   else
-    {
-      throw std::runtime_error(std::string("ServerEvent: Parse error: Unknown event: ")
-			 + reader.get_name());
-    }
+  {
+    throw std::runtime_error(std::string("ServerEvent: Parse error: Unknown event: ")
+                             + reader.get_name());
+  }
 }
 
 void
 ServerEvent::write(std::ostream& out) const
 {
   switch(type)
-    {
-      case ARMAGEDDON_EVENT:
-        out << "(armageddon (time " << time_stamp << "))" << std::endl;
-        break;
+  {
+    case ARMAGEDDON_EVENT:
+      out << "(armageddon (time " << time_stamp << "))" << std::endl;
+      break;
 
-      case FINISH_EVENT:
-        out << "(finish (time " << time_stamp << "))" << std::endl;
-        break;
+    case FINISH_EVENT:
+      out << "(finish (time " << time_stamp << "))" << std::endl;
+      break;
 
-      case PINGU_ACTION_EVENT:
-        out << "(pingu-action "
-            << "(time " << time_stamp << ") "
-            << "(id " << pingu_id << ") "
-            << "(raw-x \"" << Math::float2string(pos.x) << "\") "
-            << "(raw-y \"" << Math::float2string(pos.y) << "\") "
-            << "(action \"" << Actions::action_to_string(pingu_action) << "\"))"
-            << std::endl;
-        break;
+    case PINGU_ACTION_EVENT:
+      out << "(pingu-action "
+          << "(time " << time_stamp << ") "
+          << "(id " << pingu_id << ") "
+          << "(raw-x \"" << Math::float2string(pos.x) << "\") "
+          << "(raw-y \"" << Math::float2string(pos.y) << "\") "
+          << "(action \"" << Actions::action_to_string(pingu_action) << "\"))"
+          << std::endl;
+      break;
 
-      default:
-        assert(!"Unknown type");
-    }
+    default:
+      assert(!"Unknown type");
+  }
 }
 
 ServerEvent
@@ -155,42 +155,42 @@ void
 ServerEvent::send(Server* server)
 {
   switch(type)
+  {
+    case ARMAGEDDON_EVENT:
+      server->send_armageddon_event();
+      break;
+
+    case FINISH_EVENT:
+      server->send_finish_event();      
+      break;
+
+    case END_EVENT:
+      // do nothing
+      break;
+
+    case PINGU_ACTION_EVENT:
     {
-      case ARMAGEDDON_EVENT:
-        server->send_armageddon_event();
-        break;
-
-      case FINISH_EVENT:
-        server->send_finish_event();      
-        break;
-
-      case END_EVENT:
-        // do nothing
-        break;
-
-      case PINGU_ACTION_EVENT:
+      Pingu* pingu = server->get_world()->get_pingus()->get_pingu(pingu_id);
+      if (pingu)
+      {
+        if (pos.x != pingu->get_pos().x ||
+            pos.y != pingu->get_pos().y)
         {
-          Pingu* pingu = server->get_world()->get_pingus()->get_pingu(pingu_id);
-          if (pingu)
-            {
-              if (pos.x != pingu->get_pos().x ||
-                  pos.y != pingu->get_pos().y)
-                {
-                  std::cout << "ServerEvent: DemoFile inconsistent with world, pingu " << pingu_id << " is at the wrong position" << std::endl;
-                }
-
-              server->send_pingu_action_event(pingu, pingu_action);
-            }
-          else
-            {
-              std::cout << "ServerEvent: DemoFile inconsistent with world, pingu " << pingu_id << " missing" << std::endl;
-            }
+          std::cout << "ServerEvent: DemoFile inconsistent with world, pingu " << pingu_id << " is at the wrong position" << std::endl;
         }
-        break;
 
-      default:
-        assert(!"Unknown type");
+        server->send_pingu_action_event(pingu, pingu_action);
+      }
+      else
+      {
+        std::cout << "ServerEvent: DemoFile inconsistent with world, pingu " << pingu_id << " missing" << std::endl;
+      }
     }
+    break;
+
+    default:
+      assert(!"Unknown type");
+  }
 }
 
 /* EOF */

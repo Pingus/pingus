@@ -67,12 +67,12 @@ AxisScroller::update(float delta)
   y_delta = 0;
 
   for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
-    {
-      (*it)->update(delta);
+  {
+    (*it)->update(delta);
 
-      x_delta += (float)Math::cos((*it)->get_angle() * Math::pi / 180) * speed * delta * (*it)->get_pos();
-      y_delta += (float)Math::sin((*it)->get_angle() * Math::pi / 180) * speed * delta * (*it)->get_pos();
-    }
+    x_delta += (float)Math::cos((*it)->get_angle() * Math::pi / 180) * speed * delta * (*it)->get_pos();
+    y_delta += (float)Math::sin((*it)->get_angle() * Math::pi / 180) * speed * delta * (*it)->get_pos();
+  }
 
 }
 

@@ -76,16 +76,16 @@ Resource::load_surface(const ResDescriptor& desc_)
 {
   SpriteDescription* desc = resmgr.get_sprite_description(desc_.res_name);
   if (desc)
-    {
-      if (desc_.modifier == ResourceModifierNS::ROT0)
-        return Surface(desc->filename);
-      else
-        return Surface(desc->filename).mod(desc_.modifier);
-    }
+  {
+    if (desc_.modifier == ResourceModifierNS::ROT0)
+      return Surface(desc->filename);
+    else
+      return Surface(desc->filename).mod(desc_.modifier);
+  }
   else
-    {
-      return Surface(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
-    }
+  {
+    return Surface(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
+  }
 }
 
 Surface
@@ -107,29 +107,29 @@ Resource::load_thumb_sprite(const std::string& name)
 {
   Pathname thumb_path("thumbnails/" + name + ".png", Pathname::DATA_PATH);
   if (thumb_path.exist())
-    {
-      std::cout << "Loading thumb from: " << thumb_path.str() << std::endl;
-      return Sprite(thumb_path);
-    }
+  {
+    std::cout << "Loading thumb from: " << thumb_path.str() << std::endl;
+    return Sprite(thumb_path);
+  }
   else
-    {
-      Surface surface = load_surface(name);
+  {
+    Surface surface = load_surface(name);
 
-      Size thumb_size;
-      if (surface.get_width() <= 48)
-        thumb_size.width = surface.get_width();
-      else
-        thumb_size.width = 48;
+    Size thumb_size;
+    if (surface.get_width() <= 48)
+      thumb_size.width = surface.get_width();
+    else
+      thumb_size.width = 48;
 
-      if (surface.get_height() <= 48)
-        thumb_size.height = surface.get_height();
-      else
-        thumb_size.height = 48;
+    if (surface.get_height() <= 48)
+      thumb_size.height = surface.get_height();
+    else
+      thumb_size.height = 48;
 
-      Sprite sprite(surface.scale(thumb_size.width, thumb_size.height));
-      sprite.set_hotspot(origin_top_left, (48 - sprite.get_width())/2, (48 - sprite.get_height())/2);
-      return sprite;
-    }
+    Sprite sprite(surface.scale(thumb_size.width, thumb_size.height));
+    sprite.set_hotspot(origin_top_left, (48 - sprite.get_width())/2, (48 - sprite.get_height())/2);
+    return sprite;
+  }
 }
 
 /* EOF */

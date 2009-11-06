@@ -37,10 +37,10 @@ class SmallMap;
 class SceneContext;
 
 namespace Particles {
-  class PinguParticleHolder;
-  class RainParticleHolder;
-  class SmokeParticleHolder;
-  class SnowParticleHolder;
+class PinguParticleHolder;
+class RainParticleHolder;
+class SmokeParticleHolder;
+class SnowParticleHolder;
 }
 
 /** The World holds all objects of the pingu enviroment.
@@ -136,7 +136,7 @@ public:
   /** @return A pointer to the worlds snow particle holder */
   Particles::SnowParticleHolder* get_snow_particle_holder () { return snow_particle_holder; }
 
-    /** @return true if the world is currently doing an armageddon */
+  /** @return true if the world is currently doing an armageddon */
   bool check_armageddon() { return do_armageddon; }
 
   /** Play a sound as if it would have been generated at the given

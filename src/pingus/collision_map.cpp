@@ -90,17 +90,17 @@ CollisionMap::remove(const CollisionMask& mask, int x_pos, int y_pos)
   int end_y   = Math::min(sheight, height - y_pos);
 
   for (int y = start_y; y < end_y; ++y)
+  {
+    for (int x = start_x; x < end_x; ++x)
     {
-      for (int x = start_x; x < end_x; ++x)
-        {
-          if (buffer[y*swidth + x])
-            {
-              uint8_t& pixel = colmap[(y+y_pos)*width + (x+x_pos)];
-              if (pixel != Groundtype::GP_SOLID)
-                pixel = Groundtype::GP_NOTHING;
-            }
-        }
+      if (buffer[y*swidth + x])
+      {
+        uint8_t& pixel = colmap[(y+y_pos)*width + (x+x_pos)];
+        if (pixel != Groundtype::GP_SOLID)
+          pixel = Groundtype::GP_NOTHING;
+      }
     }
+  }
 }
 
 void
@@ -110,9 +110,9 @@ CollisionMap::put(int x, int y, Groundtype::GPType p)
 
   if (x >= 0 && x < width
       && y >= 0 && y < height)
-    {
-      colmap[x+y*width] = p;
-    }
+  {
+    colmap[x+y*width] = p;
+  }
 }
 
 bool
@@ -120,14 +120,14 @@ CollisionMap::blit_allowed (int x, int y,  Groundtype::GPType gtype)
 {
   // FIXME: Inline me
   if (gtype == Groundtype::GP_BRIDGE)
-    {
-      int pixel = getpixel(x, y);
-      return pixel == Groundtype::GP_NOTHING;
-    }
+  {
+    int pixel = getpixel(x, y);
+    return pixel == Groundtype::GP_NOTHING;
+  }
   else
-    {
-      return true;
-    }
+  {
+    return true;
+  }
 }
 
 // Puts a surface on the colmap
@@ -139,19 +139,19 @@ CollisionMap::put(const CollisionMask& mask, int sur_x, int sur_y, Groundtype::G
     return;
 
   if ((sur_x > width) || (sur_y > height))
-    {
-      return;
-    }
+  {
+    return;
+  }
 
   // FIXME: This could be speed up quite a bit
   uint8_t* source = mask.get_data();
   for (int y = 0; y < mask.get_height(); ++y)
     for (int x = 0; x < mask.get_width(); ++x)
-      {
-        if (source[y * mask.get_width() + x])
-          if (blit_allowed(x + sur_x, y + sur_y, pixel))
-            put(x + sur_x, y + sur_y, pixel);
-      }
+    {
+      if (source[y * mask.get_width() + x])
+        if (blit_allowed(x + sur_x, y + sur_y, pixel))
+          put(x + sur_x, y + sur_y, pixel);
+    }
 }
 
 void
@@ -178,38 +178,38 @@ CollisionMap::draw(DrawingContext& gc)
   uint8_t trans = 220;
 
   for(int i = 0; i < (width * height); ++i)
+  {
+    switch(colmap[i])
     {
-      switch(colmap[i])
-	{
-	case Groundtype::GP_NOTHING:
-	  buffer[i * 4 + red  ] =   0;
-	  buffer[i * 4 + green] =   0;
-	  buffer[i * 4 + blue ] =   0;
-	  buffer[i * 4 + alpha] =   0;
-	  break;
+      case Groundtype::GP_NOTHING:
+        buffer[i * 4 + red  ] =   0;
+        buffer[i * 4 + green] =   0;
+        buffer[i * 4 + blue ] =   0;
+        buffer[i * 4 + alpha] =   0;
+        break;
 
-	case Groundtype::GP_SOLID:
-	  buffer[i * 4 + red  ] = 100;
-	  buffer[i * 4 + green] = 100;
-	  buffer[i * 4 + blue ] = 100;
-	  buffer[i * 4 + alpha] = trans;
-	  break;
+      case Groundtype::GP_SOLID:
+        buffer[i * 4 + red  ] = 100;
+        buffer[i * 4 + green] = 100;
+        buffer[i * 4 + blue ] = 100;
+        buffer[i * 4 + alpha] = trans;
+        break;
 
-	case Groundtype::GP_BRIDGE:
-	  buffer[i * 4 + red  ] = 200;
-	  buffer[i * 4 + green] =   0;
-	  buffer[i * 4 + blue ] =   0;
-	  buffer[i * 4 + alpha] = trans;
-	  break;
+      case Groundtype::GP_BRIDGE:
+        buffer[i * 4 + red  ] = 200;
+        buffer[i * 4 + green] =   0;
+        buffer[i * 4 + blue ] =   0;
+        buffer[i * 4 + alpha] = trans;
+        break;
 
-	default:
-	  buffer[i * 4 + red  ] = 200;
-	  buffer[i * 4 + green] = 200;
-	  buffer[i * 4 + blue ] = 200;
-	  buffer[i * 4 + alpha] = trans;
-	  break;
-	}
+      default:
+        buffer[i * 4 + red  ] = 200;
+        buffer[i * 4 + green] = 200;
+        buffer[i * 4 + blue ] = 200;
+        buffer[i * 4 + alpha] = trans;
+        break;
     }
+  }
 
   canvas.unlock();
 

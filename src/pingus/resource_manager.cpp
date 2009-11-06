@@ -46,10 +46,10 @@ ResourceManager::get_section(const std::string& name)
   std::vector<std::string> lst;
   for (std::map<std::string, SpriteDescription*>::iterator i = resources.begin();
        i != resources.end(); ++i) 
-    {
-      if (StringUtil::has_prefix(i->first, name))
-        lst.push_back(i->first);
-    }
+  {
+    if (StringUtil::has_prefix(i->first, name))
+      lst.push_back(i->first);
+  }
   return lst;
 }
 
@@ -59,68 +59,68 @@ ResourceManager::add_resources(const std::string& filename)
   pout(PINGUS_DEBUG_RESOURCES) << "ResourceManager: " << filename << std::endl;
   boost::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(filename);
   if (sexpr)
-    {
-      SExprFileReader reader(sexpr->get_list_elem(0));
+  {
+    SExprFileReader reader(sexpr->get_list_elem(0));
 
-      if (reader.get_name() == "pingus-resources")
-        {
-          std::vector<FileReader> sections = reader.get_sections();
-          for(std::vector<FileReader>::iterator i = sections.begin(); i != sections.end(); ++i)
-            {
-              //std::cout << "Section: " << i->get_name() << std::endl;
-              parse("", *i);
-            }
-        }
-      else
-        {
-          std::cout << "Couldn't find section 'pingus-resources' section in file " << filename
-                    << "\ngot " << reader.get_name()
-                    << std::endl;
-        }
-    }
-  else
+    if (reader.get_name() == "pingus-resources")
     {
-      std::cout << "ResourceManager: File not found " << filename << std::endl;
+      std::vector<FileReader> sections = reader.get_sections();
+      for(std::vector<FileReader>::iterator i = sections.begin(); i != sections.end(); ++i)
+      {
+        //std::cout << "Section: " << i->get_name() << std::endl;
+        parse("", *i);
+      }
     }
+    else
+    {
+      std::cout << "Couldn't find section 'pingus-resources' section in file " << filename
+                << "\ngot " << reader.get_name()
+                << std::endl;
+    }
+  }
+  else
+  {
+    std::cout << "ResourceManager: File not found " << filename << std::endl;
+  }
 }
 
 void
 ResourceManager::parse(const std::string& section, FileReader& reader)
 {
   if (reader.get_name() == "section")
-    {
-      parse_section(section, reader);
-    }
+  {
+    parse_section(section, reader);
+  }
   else if (reader.get_name() == "sprite")
-    {
-      std::string name;
-      reader.read_string("name", name);
-      if (!section.empty())
-        name = section + "/" + name;
+  {
+    std::string name;
+    reader.read_string("name", name);
+    if (!section.empty())
+      name = section + "/" + name;
  
-      if (resources[name])
-	delete resources[name];
-      resources[name] = new SpriteDescription(reader);
-    }
+    if (resources[name])
+      delete resources[name];
+    resources[name] = new SpriteDescription(reader);
+  }
   else if (reader.get_name() == "alias")
+  {
+    std::string name;
+    std::string link;
+    if (reader.read_string("name", name) &&
+        reader.read_string("link", link))
     {
-      std::string name;
-      std::string link;
-      if (reader.read_string("name", name) &&
-          reader.read_string("link", link))
-        {
-          //std::cout << "alias: " << name << " -> " << link << std::endl;
-          aliases[name] = link;
-        }
+      //std::cout << "alias: " << name << " -> " << link << std::endl;
+      aliases[name] = link;
     }
+  }
   else if (reader.get_name() == "name")
-    {
-      // ignore (ugly)
-    }
+  {
+    // ignore (ugly)
+  }
   else
-    {
-      std::cout << "ResourceManager: unknown token: '" << reader.get_name() << "'" << std::endl;
-    }
+  {
+    std::cout << "ResourceManager: unknown token: '" << reader.get_name() << "'" << std::endl;
+  }
 }
 
 void
@@ -131,12 +131,12 @@ ResourceManager::parse_section(const std::string& section, FileReader& reader)
 
   std::vector<FileReader> sections = reader.get_sections();
   for(std::vector<FileReader>::iterator i = sections.begin(); i != sections.end(); ++i)
-    {    
-      if (section.empty())
-        parse(name, *i);
-      else
-        parse(section + "/" + name, *i);
-    }
+  {    
+    if (section.empty())
+      parse(name, *i);
+    else
+      parse(section + "/" + name, *i);
+  }
 }
 
 SpriteDescription* 
@@ -144,21 +144,21 @@ ResourceManager::get_sprite_description(const std::string& name) const
 {
   Resources::const_iterator i = resources.find(name);
   if (i != resources.end())
-    {
-      return i->second;
-    }
+  {
+    return i->second;
+  }
   else
+  {
+    Aliases::const_iterator j = aliases.find(name);
+    if (j != aliases.end())
     {
-      Aliases::const_iterator j = aliases.find(name);
-      if (j != aliases.end())
-        {
-          return get_sprite_description(j->second);
-        }
-      else
-        {
-          return 0;
-        }
-    }  
+      return get_sprite_description(j->second);
+    }
+    else
+    {
+      return 0;
+    }
+  }  
 }
 
 /* EOF */

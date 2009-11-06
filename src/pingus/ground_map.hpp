@@ -65,7 +65,7 @@ public:
 
   /** Remove the gives surface provider onto the given coordinates
       (everything non-transparent that isn't Groundtype::GP_Solid 
-			is removed from the map) */
+      is removed from the map) */
   void remove(Surface, int x, int y);
 
   float get_z_pos () const { return 0; }
@@ -73,7 +73,7 @@ public:
   /** Low level version of the remove() call, acts on a single tile
       instead of the complete map-tiles */
   void put_alpha_surface(Surface provider, Surface sprovider,
-			 int x, int y, int real_x, int real_y);
+                         int x, int y, int real_x, int real_y);
 
   MapTile* get_tile(int x, int y);
 private:

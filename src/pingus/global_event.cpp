@@ -42,71 +42,71 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
   Uint8 *keystate = SDL_GetKeyState(NULL);
 
   switch (event.keysym.sym)
+  {
+    case SDLK_F10:
+      config_manager.set_print_fps(!config_manager.get_print_fps());
+      break;
+
+    case SDLK_RETURN:
+      if (!keystate[SDLK_LALT] && !keystate[SDLK_RALT])
+        break;
+      // FALL THROUGH
+    case SDLK_F11:
+      config_manager.set_fullscreen(!config_manager.get_fullscreen());
+      break;
+
+    case SDLK_F5:
+      if (!dynamic_cast<OptionMenu*>(ScreenManager::instance()->get_current_screen().get()))
+        ScreenManager::instance()->push_screen(new OptionMenu());
+      break;
+
+    case SDLK_F6:
+      if (maintainer_mode)
+        if (!dynamic_cast<AddOnMenu*>(ScreenManager::instance()->get_current_screen().get()))
+          ScreenManager::instance()->push_screen(new AddOnMenu());
+      break;
+
+    case SDLK_F12:
     {
-      case SDLK_F10:
-        config_manager.set_print_fps(!config_manager.get_print_fps());
-        break;
-
-      case SDLK_RETURN:
-        if (!keystate[SDLK_LALT] && !keystate[SDLK_RALT])
-          break;
-        // FALL THROUGH
-      case SDLK_F11:
-        config_manager.set_fullscreen(!config_manager.get_fullscreen());
-        break;
-
-      case SDLK_F5:
-        if (!dynamic_cast<OptionMenu*>(ScreenManager::instance()->get_current_screen().get()))
-          ScreenManager::instance()->push_screen(new OptionMenu());
-        break;
-
-      case SDLK_F6:
-        if (maintainer_mode)
-          if (!dynamic_cast<AddOnMenu*>(ScreenManager::instance()->get_current_screen().get()))
-            ScreenManager::instance()->push_screen(new AddOnMenu());
-        break;
-
-      case SDLK_F12:
-        {
-          std::string filename;
-          filename = Screenshot::make_screenshot();
-        }
-        break;
-
-      case SDLK_c:
-        if (maintainer_mode)
-          draw_collision_map = !draw_collision_map;
-        break;
-
-      case SDLK_k:
-        if (maintainer_mode)
-          {
-            std::cout << "Low level screen clear triggered" << std::endl;
-            SDL_Surface* screen = SDL_GetVideoSurface();
-            SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 255, 255, 0));
-            SDL_Flip(screen);
-          }
-        break;
-
-      case SDLK_m:
-        if (keystate[SDLK_LCTRL] || keystate[SDLK_RCTRL])
-          {
-            std::cout << "Maintainer Mode: " << maintainer_mode << std::endl;
-            maintainer_mode = !maintainer_mode;
-          }
-        break;
-
-      case SDLK_g:
-        if (keystate[SDLK_LCTRL] || keystate[SDLK_RCTRL])
-          {
-            config_manager.set_mouse_grab(!config_manager.get_mouse_grab());
-          }
-        break;
-
-      default:
-        // console << "GlobalEvent: Unknown key pressed: " << key.id;
-        break;
+      std::string filename;
+      filename = Screenshot::make_screenshot();
     }
+    break;
+
+    case SDLK_c:
+      if (maintainer_mode)
+        draw_collision_map = !draw_collision_map;
+      break;
+
+    case SDLK_k:
+      if (maintainer_mode)
+      {
+        std::cout << "Low level screen clear triggered" << std::endl;
+        SDL_Surface* screen = SDL_GetVideoSurface();
+        SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 255, 255, 0));
+        SDL_Flip(screen);
+      }
+      break;
+
+    case SDLK_m:
+      if (keystate[SDLK_LCTRL] || keystate[SDLK_RCTRL])
+      {
+        std::cout << "Maintainer Mode: " << maintainer_mode << std::endl;
+        maintainer_mode = !maintainer_mode;
+      }
+      break;
+
+    case SDLK_g:
+      if (keystate[SDLK_LCTRL] || keystate[SDLK_RCTRL])
+      {
+        config_manager.set_mouse_grab(!config_manager.get_mouse_grab());
+      }
+      break;
+
+    default:
+      // console << "GlobalEvent: Unknown key pressed: " << key.id;
+      break;
+  }
 }
 
 void

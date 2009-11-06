@@ -54,45 +54,45 @@ public:
 
     // Copyh Unicode -> Glyph mapping 
     for(std::vector<GlyphImageDescription>::size_type j = 0; j < desc.images.size(); ++j)
+    {
+      framebuffer_surfaces.push_back(Display::get_framebuffer().create_surface(Surface(desc.images[j].pathname)));
+
+      if (!framebuffer_surfaces.back())
       {
-        framebuffer_surfaces.push_back(Display::get_framebuffer().create_surface(Surface(desc.images[j].pathname)));
-
-        if (!framebuffer_surfaces.back())
-          {
-            std::cout << "IMG: " << desc.images[j].pathname.str() << std::endl;
-            assert(false);
-          }
-
-        for(std::vector<GlyphDescription>::const_iterator i = desc.images[j].glyphs.begin();
-            i != desc.images[j].glyphs.end();
-            ++i)
-          {
-            if (i->unicode < glyphs.size())
-              {
-                if (glyphs[i->unicode] == 0)
-                  {
-                    glyphs[i->unicode] = new GlyphDescription(*i);
-                    glyphs[i->unicode]->image = framebuffer_surfaces.size()-1;
-                  }
-                else
-                  {
-                    std::cout << "Warning: unicode collision on " << i->unicode << std::endl;
-                  }            
-              }
-            else
-              {
-                std::cout << "Warning: unicode out of range: " << i->unicode << std::endl;
-              }
-          }
+        std::cout << "IMG: " << desc.images[j].pathname.str() << std::endl;
+        assert(false);
       }
+
+      for(std::vector<GlyphDescription>::const_iterator i = desc.images[j].glyphs.begin();
+          i != desc.images[j].glyphs.end();
+          ++i)
+      {
+        if (i->unicode < glyphs.size())
+        {
+          if (glyphs[i->unicode] == 0)
+          {
+            glyphs[i->unicode] = new GlyphDescription(*i);
+            glyphs[i->unicode]->image = framebuffer_surfaces.size()-1;
+          }
+          else
+          {
+            std::cout << "Warning: unicode collision on " << i->unicode << std::endl;
+          }            
+        }
+        else
+        {
+          std::cout << "Warning: unicode out of range: " << i->unicode << std::endl;
+        }
+      }
+    }
   }
 
   ~FontImpl()
   {
     for(Glyphs::iterator i = glyphs.begin(); i != glyphs.end(); ++i)
-      {
-        delete *i;
-      }
+    {
+      delete *i;
+    }
   }
 
   void render(Origin origin, int x, int y_, const std::string& text, Framebuffer& fb)
@@ -117,21 +117,21 @@ public:
     
     UTF8::iterator i(text);
     while(i.next())
-      {
-        const uint32_t& unicode = *i;
+    {
+      const uint32_t& unicode = *i;
 
-        if (unicode < glyphs.size() && glyphs[unicode])
-          {
-            const GlyphDescription& glyph = *glyphs[unicode];
-            fb.draw_surface(framebuffer_surfaces[glyph.image],
-                            glyph.rect, Vector2i(static_cast<int>(dstx), static_cast<int>(dsty)) + glyph.offset);
-            dstx += static_cast<float>(glyph.advance) + char_spacing;
-          }
-        else
-          {
-            // Draw placeholder char and issue a warning
-          }
+      if (unicode < glyphs.size() && glyphs[unicode])
+      {
+        const GlyphDescription& glyph = *glyphs[unicode];
+        fb.draw_surface(framebuffer_surfaces[glyph.image],
+                        glyph.rect, Vector2i(static_cast<int>(dstx), static_cast<int>(dsty)) + glyph.offset);
+        dstx += static_cast<float>(glyph.advance) + char_spacing;
       }
+      else
+      {
+        // Draw placeholder char and issue a warning
+      }
+    }
   }
 
   int get_height() const
@@ -154,19 +154,19 @@ public:
     
     UTF8::iterator i(text);
     while(i.next())
-      {
-        const uint32_t& unicode = *i;
+    {
+      const uint32_t& unicode = *i;
 
-        if (unicode == '\n')
-          {
-            last_width = std::max(last_width, width);
-            width = 0;
-          }
-        else
-          {
-            width += get_width(unicode) + char_spacing;
-          }
+      if (unicode == '\n')
+      {
+        last_width = std::max(last_width, width);
+        width = 0;
       }
+      else
+      {
+        width += get_width(unicode) + char_spacing;
+      }
+    }
 
     return std::max(width, last_width);
   }

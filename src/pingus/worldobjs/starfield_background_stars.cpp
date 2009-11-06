@@ -31,7 +31,7 @@ StarfieldBackgroundStars::StarfieldBackgroundStars (Type type) :
   y_add()
 {
   switch (type)
-    {
+  {
     case SMALL_STAR:
       sur = Sprite("game/stars/small_star");
       break;
@@ -41,7 +41,7 @@ StarfieldBackgroundStars::StarfieldBackgroundStars (Type type) :
     case LARGE_STAR:
       sur = Sprite("game/stars/large_star");
       break;
-    }
+  }
 
   x_pos = float(rand() % WorldObj::get_world()->get_width());
   y_pos = float(rand() % WorldObj::get_world()->get_height());
@@ -57,10 +57,10 @@ StarfieldBackgroundStars::update ()
   y_pos += y_add;
 
   if (x_pos > WorldObj::get_world()->get_width())
-    {
-      x_pos = float(-tile_size);
-      y_pos = float(rand() % WorldObj::get_world()->get_height());
-    }
+  {
+    x_pos = float(-tile_size);
+    y_pos = float(rand() % WorldObj::get_world()->get_height());
+  }
 }
 
 void

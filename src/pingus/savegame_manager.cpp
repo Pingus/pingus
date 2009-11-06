@@ -49,46 +49,46 @@ SavegameManager::SavegameManager(const std::string& arg_filename)
   boost::shared_ptr<lisp::Lisp> sexpr;
 
   try 
-    {
-      sexpr = lisp::Parser::parse(filename);
-    }
+  {
+    sexpr = lisp::Parser::parse(filename);
+  }
   catch (const std::runtime_error& e) 
-    {
-      std::cerr << "SavegameManager: " << e.what() << std::endl;
-      return;
-    }
+  {
+    std::cerr << "SavegameManager: " << e.what() << std::endl;
+    return;
+  }
 
   if (!sexpr)
-    {
-      std::cerr << "SavegameManager: Couldn't find savegame file '" <<
-        filename << "', starting with an empty one." << std::endl;
-      return;
-    }
+  {
+    std::cerr << "SavegameManager: Couldn't find savegame file '" <<
+      filename << "', starting with an empty one." << std::endl;
+    return;
+  }
 
   SExprFileReader reader(sexpr->get_list_elem(0));
   if (reader.get_name() != "pingus-savegame")
-    {
-      std::cerr << "Error: " << filename << ": not a (pingus-savegame) file" << std::endl;
-      return;
-    }
+  {
+    std::cerr << "Error: " << filename << ": not a (pingus-savegame) file" << std::endl;
+    return;
+  }
 
   const std::vector<FileReader>& sections = reader.get_sections();
   for(std::vector<FileReader>::const_iterator i = sections.begin();
       i != sections.end(); ++i)
-    {
-      Savegame* savegame = new Savegame(*i);
-      SavegameTable::iterator j = find(savegame->get_filename());
-      if (j != savegames.end())
-        { // overwrite duplicates, shouldn't happen, but harmless
-          std::cout << "SavegameManager: name collision: " << savegame->get_filename() << std::endl;
-          delete *j;
-          *j = savegame;
-        }
-      else
-        {
-          savegames.push_back(savegame);
-        }
+  {
+    Savegame* savegame = new Savegame(*i);
+    SavegameTable::iterator j = find(savegame->get_filename());
+    if (j != savegames.end())
+    { // overwrite duplicates, shouldn't happen, but harmless
+      std::cout << "SavegameManager: name collision: " << savegame->get_filename() << std::endl;
+      delete *j;
+      *j = savegame;
     }
+    else
+    {
+      savegames.push_back(savegame);
+    }
+  }
 }
 
 SavegameManager::~SavegameManager()
@@ -113,22 +113,22 @@ SavegameManager::store(Savegame& arg_savegame)
   Savegame* savegame = new Savegame(arg_savegame);
   SavegameTable::iterator i = find(savegame->get_filename());
   if (i == savegames.end())
-    { // don't know anything about the savegame
-      savegames.push_back(savegame);
-    }
+  { // don't know anything about the savegame
+    savegames.push_back(savegame);
+  }
   else
-    { // already have such a savegame
-      if ((*i)->get_status() == Savegame::FINISHED
-          && savegame->get_status() == Savegame::ACCESSIBLE)
-        { // saved savegame is better then new game
-          delete savegame;
-        }
-      else
-        { // new game is better or equal, save it
-          delete *i;
-          *i = savegame;
-        }
+  { // already have such a savegame
+    if ((*i)->get_status() == Savegame::FINISHED
+        && savegame->get_status() == Savegame::ACCESSIBLE)
+    { // saved savegame is better then new game
+      delete savegame;
     }
+    else
+    { // new game is better or equal, save it
+      delete *i;
+      *i = savegame;
+    }
+  }
 
   flush();
 }
@@ -155,11 +155,11 @@ SavegameManager::flush()
   writer.begin_section("pingus-savegame");
 
   for(SavegameTable::iterator i = savegames.begin(); i != savegames.end(); ++i)
-    {
-      (*i)->write_sexpr(writer);
-    }
+  {
+    (*i)->write_sexpr(writer);
+  }
 
-  writer.end_section();	// pingus-savegame
+  writer.end_section(); // pingus-savegame
 }
 
 /* EOF */

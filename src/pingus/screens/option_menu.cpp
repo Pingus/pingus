@@ -229,41 +229,41 @@ OptionMenu::add_item(const std::string& label, GUI::RectComponent* control)
   gui_manager->add(control);
 
   if (dynamic_cast<ChoiceBox*>(control))
-    {
-      control->set_rect(Rect(120 + x_pos * 312 + 140 + x_offset, 177 + y_pos*32 + y_offset,
-                             120 + x_pos * 312 + 256 + x_offset, 177 + y_pos*32 + 32 + y_offset));                             
-    }
+  {
+    control->set_rect(Rect(120 + x_pos * 312 + 140 + x_offset, 177 + y_pos*32 + y_offset,
+                           120 + x_pos * 312 + 256 + x_offset, 177 + y_pos*32 + 32 + y_offset));                             
+  }
   else if (dynamic_cast<SliderBox*>(control))
-    {
-      control->set_rect(Rect(120 + x_pos * 312 + 140 + x_offset, 177 + y_pos*32 + y_offset,
-                             120 + x_pos * 312 + 256 + x_offset, 177 + y_pos*32 + 32 + y_offset));
-    }
+  {
+    control->set_rect(Rect(120 + x_pos * 312 + 140 + x_offset, 177 + y_pos*32 + y_offset,
+                           120 + x_pos * 312 + 256 + x_offset, 177 + y_pos*32 + 32 + y_offset));
+  }
   else if (dynamic_cast<CheckBox*>(control))
-    {
-      control->set_rect(Rect(Vector2i(120 + x_pos * 312 + 156 + 32+28+8 + x_offset, 177 + y_pos*32 + y_offset), 
-                             Size(32, 32)));
-    }
+  {
+    control->set_rect(Rect(Vector2i(120 + x_pos * 312 + 156 + 32+28+8 + x_offset, 177 + y_pos*32 + y_offset), 
+                           Size(32, 32)));
+  }
   else
-    {
-      assert(!"Unhandled control type");
-    }
+  {
+    assert(!"Unhandled control type");
+  }
 
   options.push_back(Option(label_component, control));
 
   y_pos += 1;
   if (y_pos > 5)
-    {
-      y_pos = 0; 
-      x_pos += 1;
-    }
+  {
+    y_pos = 0; 
+    x_pos += 1;
+  }
 }
 
 OptionMenu::~OptionMenu()
 {
   for(Connections::iterator i = connections.begin(); i != connections.end(); ++i)
-    {
-      (*i).disconnect();
-    }
+  {
+    (*i).disconnect();
+  }
 }
   
 struct OptionEntry {
@@ -320,12 +320,12 @@ OptionMenu::resize(const Size& size_)
   int y_diff = 177 + (size.height - 600) / 2 - rect.top;
 
   for(std::vector<Option>::iterator i = options.begin(); i != options.end(); ++i)
-    {
-      rect = (*i).label->get_rect();
-      (*i).label->set_rect(Rect(Vector2i(rect.left + x_diff, rect.top + y_diff), rect.get_size()));
-      rect = (*i).control->get_rect();
-      (*i).control->set_rect(Rect(Vector2i(rect.left + x_diff, rect.top + y_diff), rect.get_size()));
-    }
+  {
+    rect = (*i).label->get_rect();
+    (*i).label->set_rect(Rect(Vector2i(rect.left + x_diff, rect.top + y_diff), rect.get_size()));
+    rect = (*i).control->get_rect();
+    (*i).control->set_rect(Rect(Vector2i(rect.left + x_diff, rect.top + y_diff), rect.get_size()));
+  }
 }
 
 void
@@ -392,13 +392,13 @@ void
 OptionMenu::on_resolution_change(const std::string& str)
 {
   if (str != "Custom")
+  {
+    Size size_;
+    if (sscanf(str.c_str(), "%dx%d", &size_.width, &size_.height) == 2)
     {
-      Size size_;
-      if (sscanf(str.c_str(), "%dx%d", &size_.width, &size_.height) == 2)
-        {
-          config_manager.set_resolution(size_); 
-        }
+      config_manager.set_resolution(size_); 
     }
+  }
 }
 
 void

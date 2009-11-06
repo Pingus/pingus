@@ -54,7 +54,7 @@ public:
   ~Controller();
 
   std::vector<Event>& get_events() { return events; }
-	
+        
   const Pointer * get_pointer() const  { return standard_pointer; }
   const Scroller* get_scroller() const { return scroller; }
 
@@ -72,7 +72,7 @@ public:
 
   static void add_key_callback(key_callback_func, void*);
   static void add_mouse_callback(mouse_callback_func, void*);
-	
+        
 private:
   static Controller* current_controller;
 

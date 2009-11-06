@@ -41,15 +41,15 @@ Sprite::Sprite(const std::string& name) :
 {
   SpriteDescription* desc = Resource::load_sprite_desc(name);
   if (desc)
-    {
-      impl = boost::shared_ptr<SpriteImpl>(new SpriteImpl(*desc));
-    }
+  {
+    impl = boost::shared_ptr<SpriteImpl>(new SpriteImpl(*desc));
+  }
   else
-    {
-      SpriteDescription desc_;
-      desc_.filename = Pathname("images/core/misc/404.png", Pathname::DATA_PATH);
-      impl = boost::shared_ptr<SpriteImpl>(new SpriteImpl(desc_));
-    }
+  {
+    SpriteDescription desc_;
+    desc_.filename = Pathname("images/core/misc/404.png", Pathname::DATA_PATH);
+    impl = boost::shared_ptr<SpriteImpl>(new SpriteImpl(desc_));
+  }
 }
 
 Sprite::Sprite(const ResDescriptor& res_desc) :
@@ -57,15 +57,15 @@ Sprite::Sprite(const ResDescriptor& res_desc) :
 {
   SpriteDescription* desc = Resource::load_sprite_desc(res_desc.res_name);
   if (desc)
-    {
-      impl = boost::shared_ptr<SpriteImpl>(new SpriteImpl(*desc, res_desc.modifier));
-    }
+  {
+    impl = boost::shared_ptr<SpriteImpl>(new SpriteImpl(*desc, res_desc.modifier));
+  }
   else
-    {
-      SpriteDescription desc_;
-      desc_.filename = Pathname("images/core/misc/404.png", Pathname::DATA_PATH);
-      impl = boost::shared_ptr<SpriteImpl>(new SpriteImpl(desc_));
-    } 
+  {
+    SpriteDescription desc_;
+    desc_.filename = Pathname("images/core/misc/404.png", Pathname::DATA_PATH);
+    impl = boost::shared_ptr<SpriteImpl>(new SpriteImpl(desc_));
+  } 
 }
 
 Sprite::Sprite(const Pathname& name) :
@@ -204,10 +204,10 @@ void
 Sprite::set_hotspot(Origin origin, int x, int y)
 {
   if (impl.get())
-    {
-      // FIXME: offset and other stuff should be member of the Sprite, not the SpriteImpl
-      impl->offset = calc_origin(origin, impl->frame_size) - Vector2i(x, y);
-    }
+  {
+    // FIXME: offset and other stuff should be member of the Sprite, not the SpriteImpl
+    impl->offset = calc_origin(origin, impl->frame_size) - Vector2i(x, y);
+  }
 }
 
 Surface

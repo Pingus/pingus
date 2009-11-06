@@ -39,20 +39,20 @@ void
 SnowGenerator::update()
 {
   for(int i = 0; i < Math::floor(intensity); ++i)
-    {
-      if (rand() % 3 != 0)
-        world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -tile_size, false);
-      else
-        world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -tile_size, true);
-    }
+  {
+    if (rand() % 3 != 0)
+      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -tile_size, false);
+    else
+      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -tile_size, true);
+  }
 
   if ((intensity - static_cast<float>(static_cast<int>(intensity))) > Math::frand())
-    {
-      if (rand() % 3 != 0)
-        world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -tile_size, false);
-      else
-        world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -tile_size, true);
-    }
+  {
+    if (rand() % 3 != 0)
+      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -tile_size, false);
+    else
+      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -tile_size, true);
+  }
 }
 
 void
@@ -61,11 +61,11 @@ SnowGenerator::on_startup()
   // FIXME: if snow should be available from start, this needs to get fixed to have the right amount of snow
 #if 0
   for (int i = 0; i < 500; ++i) // FIXME: 500 is a random value, doesn't work very often
-    {
-      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), rand() % world->get_height());
-      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), rand() % world->get_height());
-      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), rand() % world->get_height(), true);
-      }
+  {
+    world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), rand() % world->get_height());
+    world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), rand() % world->get_height());
+    world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), rand() % world->get_height(), true);
+  }
 #endif
 }
 

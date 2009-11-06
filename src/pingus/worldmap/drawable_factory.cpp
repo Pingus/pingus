@@ -27,14 +27,14 @@ Drawable*
 DrawableFactory::create(FileReader reader)
 {
   if (reader.get_name() == "surface")
-    {
-      return new SpriteDrawable(reader);
-    }
+  {
+    return new SpriteDrawable(reader);
+  }
   else
-    {
-      std::cout << "DrawableFactory::create(): Can't create " << reader.get_name() << std::endl;
-      return 0;
-    }
+  {
+    std::cout << "DrawableFactory::create(): Can't create " << reader.get_name() << std::endl;
+    return 0;
+  }
 }
 
 } // namespace WorldmapNS

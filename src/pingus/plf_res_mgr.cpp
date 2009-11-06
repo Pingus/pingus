@@ -32,13 +32,35 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
   PLFMap::iterator i = plf_map.find(res_name);
 
   if (i == plf_map.end())
-    { // Entry not cached, so load it and add it to cache
-      pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: Loading level from DISK: '" << res_name << "' -> '"
-                                 << pathname.str() << "'" << std::endl;
+  { // Entry not cached, so load it and add it to cache
+    pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: Loading level from DISK: '" << res_name << "' -> '"
+                               << pathname.str() << "'" << std::endl;
 
+    PingusLevel plf(res_name, pathname);
+
+    PLFEntry entry;
+    entry.plf   = plf;
+    entry.mtime = pathname.mtime();
+
+    plf_map[res_name]  = entry;
+
+    // FIXME: leaking pointers to the outsite work is not such a good
+    // idea, could lead to trouble sooner or later
+
+    return PingusLevel (entry.plf);
+  }
+  else
+  {
+    uint64_t current_mtime = pathname.mtime();
+    if (current_mtime != i->second.mtime)
+    {
+      pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: level changed on DISK, reloading: '" << res_name
+                                 << "' -> '" << pathname.str() << "'" << std::endl;
+
+      // Reload the file since it has changed on disk
       PingusLevel plf(res_name, pathname);
-
       PLFEntry entry;
+
       entry.plf   = plf;
       entry.mtime = pathname.mtime();
 
@@ -46,38 +68,16 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
 
       // FIXME: leaking pointers to the outsite work is not such a good
       // idea, could lead to trouble sooner or later
-
       return PingusLevel (entry.plf);
     }
-  else
-    {
-      uint64_t current_mtime = pathname.mtime();
-      if (current_mtime != i->second.mtime)
-        {
-          pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: level changed on DISK, reloading: '" << res_name
-                                     << "' -> '" << pathname.str() << "'" << std::endl;
+    else
+    { // File in cache is up to date, everything is all ready, return it
+      pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: Loading level from CACHE: '" << res_name << "' -> '"
+                                 << pathname.str() << "'" << std::endl;
 
-          // Reload the file since it has changed on disk
-          PingusLevel plf(res_name, pathname);
-          PLFEntry entry;
-
-          entry.plf   = plf;
-          entry.mtime = pathname.mtime();
-
-          plf_map[res_name]  = entry;
-
-          // FIXME: leaking pointers to the outsite work is not such a good
-          // idea, could lead to trouble sooner or later
-          return PingusLevel (entry.plf);
-        }
-      else
-        { // File in cache is up to date, everything is all ready, return it
-          pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: Loading level from CACHE: '" << res_name << "' -> '"
-                                     << pathname.str() << "'" << std::endl;
-
-          return i->second.plf;
-        }
+      return i->second.plf;
     }
+  }
 }
 
 PingusLevel

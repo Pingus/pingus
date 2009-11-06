@@ -186,7 +186,7 @@ Manager::create_controller(const Pathname& filename)
       else
       {
         throw std::runtime_error(std::string("Manager: Unkown Element in Controller Config: ") 
-                           + i->get_name());
+                                 + i->get_name());
       }
     }
   }

@@ -25,27 +25,27 @@ std::string
 GameTime::ticks_to_realtime_string(int ticks)
 {
   if (ticks == -1)
-    {
-      return _("unlimited");
-    }
+  {
+    return _("unlimited");
+  }
   else
-    {
-      const int time_str_size = 20;
-      char time_str[time_str_size];
+  {
+    const int time_str_size = 20;
+    char time_str[time_str_size];
 
-      int total_seconds = ticks * game_speed / 1000;
-      int seconds       = total_seconds % 60;
-      int minutes       = total_seconds / 60;
+    int total_seconds = ticks * game_speed / 1000;
+    int seconds       = total_seconds % 60;
+    int minutes       = total_seconds / 60;
 
-      // Stop displaying negative seconds, which can happen if armageddon is
-      // clicked with 1 second left.
-      if (seconds < 0)
-        seconds = 0;
+    // Stop displaying negative seconds, which can happen if armageddon is
+    // clicked with 1 second left.
+    if (seconds < 0)
+      seconds = 0;
 
-      snprintf(time_str, time_str_size, "%2d:%02d", minutes, seconds);
+    snprintf(time_str, time_str_size, "%2d:%02d", minutes, seconds);
 
-      return time_str;
-    }
+    return time_str;
+  }
 }
 
 /* EOF */

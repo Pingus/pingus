@@ -71,16 +71,16 @@ void
 MenuButton::draw (DrawingContext& gc)
 {
   if (mouse_over) // pressed
-    {
-      gc.draw(surface_p,Vector2i(x_pos, y_pos));
-      gc.draw(highlight, Vector2i(x_pos, y_pos));
-      gc.print_center(font_large, Vector2i(x_pos, y_pos - 28), text);
-    }
+  {
+    gc.draw(surface_p,Vector2i(x_pos, y_pos));
+    gc.draw(highlight, Vector2i(x_pos, y_pos));
+    gc.print_center(font_large, Vector2i(x_pos, y_pos - 28), text);
+  }
   else
-    {
-      gc.draw(surface_p, Vector2i(x_pos, y_pos));
-      gc.print_center(font_large, Vector2i(x_pos, y_pos - 28), text);
-    }
+  {
+    gc.draw(surface_p, Vector2i(x_pos, y_pos));
+    gc.print_center(font_large, Vector2i(x_pos, y_pos - 28), text);
+  }
 }
 
 void
@@ -121,9 +121,9 @@ bool
 MenuButton::is_at(int x, int y)
 {
   return (x > x_pos - int(surface_p.get_width()) / 2
-	  && x < x_pos + int(surface_p.get_width()) / 2
-	  && y > y_pos - int(surface_p.get_height()) / 2
-	  && y < y_pos + int(surface_p.get_height()) / 2);
+          && x < x_pos + int(surface_p.get_width()) / 2
+          && y > y_pos - int(surface_p.get_height()) / 2
+          && y < y_pos + int(surface_p.get_height()) / 2);
 }
 
 void

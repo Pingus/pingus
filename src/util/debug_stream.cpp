@@ -45,15 +45,15 @@ DebugStream::Buffer::overflow (int c)
   std::string str;
 
   for (char* ptr = pbase (); ptr != pptr (); ++ptr)
-    {
-      str += *ptr;
+  {
+    str += *ptr;
 
-      if (*ptr == '\n')
-      	{
-      	  put_line (prefix + str);
-      	  str = "";
-      	}
+    if (*ptr == '\n')
+    {
+      put_line (prefix + str);
+      str = "";
     }
+  }
   str += static_cast<char>(c);
   put_line (str);
 
@@ -65,17 +65,17 @@ void
 DebugStream::Buffer::put_line (const std::string& line)
 {
   if (!out_streams.empty ())
+  {
+    for (std::vector<std::ostream*>::iterator i = out_streams.begin ();
+         i != out_streams.end (); ++i)
     {
-      for (std::vector<std::ostream*>::iterator i = out_streams.begin ();
-	    i != out_streams.end (); ++i)
-      	{
-      	  *(*i) << line << std::flush;
-      	}
+      *(*i) << line << std::flush;
     }
+  }
   else
-    {
-      std::cout << "[DebugStream::Buffer fallback stream] " << line;
-    }
+  {
+    std::cout << "[DebugStream::Buffer fallback stream] " << line;
+  }
 }
 
 int
@@ -85,15 +85,15 @@ DebugStream::Buffer::sync ()
 
   // Walk through the buffer
   for (char* c = pbase (); c != pptr (); ++c)
-    {
-    	str += *c;
+  {
+    str += *c;
 
-      if (*c == '\n')
-      	{
-      	  put_line (prefix + str);
-      	  str = "";
-      	}
+    if (*c == '\n')
+    {
+      put_line (prefix + str);
+      str = "";
     }
+  }
 
   if (!str.empty ())
     put_line (str);

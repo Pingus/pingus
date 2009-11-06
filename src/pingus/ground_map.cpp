@@ -61,10 +61,10 @@ MapTile::remove(Surface src, int x, int y,
                 int real_x, int real_y, GroundMap* parent)
 {
   if (surface)
-    {
-      parent->put_alpha_surface(surface, src, x, y, real_x, real_y);
-      sprite_needs_update = true;
-    }
+  {
+    parent->put_alpha_surface(surface, src, x, y, real_x, real_y);
+    sprite_needs_update = true;
+  }
 }
 
 void
@@ -81,14 +81,14 @@ const Sprite&
 MapTile::get_sprite() 
 {
   if (sprite_needs_update)
-    {
-      sprite_needs_update = false;
-      return sprite = Sprite(surface);
-    }
+  {
+    sprite_needs_update = false;
+    return sprite = Sprite(surface);
+  }
   else
-    {
-      return sprite; 
-    }
+  {
+    return sprite; 
+  }
 }
 
 GroundMap::GroundMap(int width_, int height_) :
@@ -150,23 +150,23 @@ GroundMap::draw(SceneContext& gc)
   // drawing the stuff
   for (int x = start_x; x <= (start_x + tilemap_width) && x < tile_width; ++x)
     for (int y = start_y; y <= start_y + tilemap_height && y < tile_height; ++y)
+    {
+      if (get_tile(x, y)->get_sprite())
       {
-        if (get_tile(x, y)->get_sprite())
-          {
-            //std::cout << "Drawing GroundMap Tile " << std::endl;
-            gc.color().draw(get_tile(x, y)->get_sprite(),
-                            Vector2i(x * tile_size, y * tile_size));
-          }
-        else
-          {
-            if (0 /*pingus_debug_flags & PINGUS_DEBUG_TILES*/)
-              gc.color().draw_fillrect(Rect(x * tile_size,
-                                            y * tile_size,
-                                            x * tile_size + tile_size,
-                                            y * tile_size + tile_size),
-                                       Color(255, 0, 0, 75));
-          }
+        //std::cout << "Drawing GroundMap Tile " << std::endl;
+        gc.color().draw(get_tile(x, y)->get_sprite(),
+                        Vector2i(x * tile_size, y * tile_size));
       }
+      else
+      {
+        if (0 /*pingus_debug_flags & PINGUS_DEBUG_TILES*/)
+          gc.color().draw_fillrect(Rect(x * tile_size,
+                                        y * tile_size,
+                                        x * tile_size + tile_size,
+                                        y * tile_size + tile_size),
+                                   Color(255, 0, 0, 75));
+      }
+    }
 }
 
 // Returns the width of the map, it is read directly from the *.psm file
@@ -196,10 +196,10 @@ GroundMap::remove(Surface sprovider, int x, int y)
 
   for(int ix = start_x; ix <= end_x; ++ix)
     for(int iy = start_y; iy <= end_y; ++iy)
-      {
-        get_tile(ix, iy)->remove(sprovider, x - (ix * tile_size),
-                            y - (iy * tile_size), x, y, this);
-      }
+    {
+      get_tile(ix, iy)->remove(sprovider, x - (ix * tile_size),
+                               y - (iy * tile_size), x, y, this);
+    }
 }
 
 void
@@ -207,10 +207,10 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
                              int x_pos, int y_pos, int real_x_arg, int real_y_arg)
 {
   if (sprovider.get_surface()->format->BitsPerPixel != 8)
-    {
-      throw std::runtime_error(std::string("SpotMap::put_alpha_surface: Image has wrong color depth: " 
-                                     + sprovider.get_surface()->format->BitsPerPixel));
-    }
+  {
+    throw std::runtime_error(std::string("SpotMap::put_alpha_surface: Image has wrong color depth: " 
+                                         + sprovider.get_surface()->format->BitsPerPixel));
+  }
 
   int swidth  = sprovider.get_width();
   int twidth  = provider.get_width();
@@ -234,53 +234,53 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
   Uint8* source_buf = static_cast<Uint8*>(sprovider.get_data());
 
   if (sprovider.get_surface()->flags & SDL_SRCCOLORKEY)
+  {
+    Uint32 colorkey = sprovider.get_surface()->format->colorkey;
+
+    for (int y = start_y; y < end_y; ++y)
     {
-      Uint32 colorkey = sprovider.get_surface()->format->colorkey;
+      Uint8* tptr = target_buf + tpitch*(y+y_pos) + 4*(x_pos + start_x);
+      Uint8* sptr = source_buf + spitch*y + start_x;
 
-      for (int y = start_y; y < end_y; ++y)
+      for (int x = start_x; x < end_x; ++x)
+      { 
+        if (*sptr != colorkey && colmap->getpixel(real_x_arg+x, real_y_arg+y) != Groundtype::GP_SOLID)
         {
-          Uint8* tptr = target_buf + tpitch*(y+y_pos) + 4*(x_pos + start_x);
-          Uint8* sptr = source_buf + spitch*y + start_x;
-
-          for (int x = start_x; x < end_x; ++x)
-            { 
-              if (*sptr != colorkey && colmap->getpixel(real_x_arg+x, real_y_arg+y) != Groundtype::GP_SOLID)
-                {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-                  *tptr = 0;
+          *tptr = 0;
 #else
-                  tptr[3] = 0;
+          tptr[3] = 0;
 #endif
-                }
-
-              tptr += 4;
-              sptr += 1;
-            }
         }
+
+        tptr += 4;
+        sptr += 1;
+      }
     }
+  }
   else
+  {
+    for (int y = start_y; y < end_y; ++y)
     {
-      for (int y = start_y; y < end_y; ++y)
-        {
-          Uint8* tptr = target_buf + tpitch*(y+y_pos) + 4*(x_pos + start_x);
-          Uint8* sptr = source_buf + spitch*y + start_x;
+      Uint8* tptr = target_buf + tpitch*(y+y_pos) + 4*(x_pos + start_x);
+      Uint8* sptr = source_buf + spitch*y + start_x;
 
-          for (int x = start_x; x < end_x; ++x)
-            { 
-              if (colmap->getpixel(real_x_arg+x, real_y_arg+y) != Groundtype::GP_SOLID)
-                {
+      for (int x = start_x; x < end_x; ++x)
+      { 
+        if (colmap->getpixel(real_x_arg+x, real_y_arg+y) != Groundtype::GP_SOLID)
+        {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-                  *tptr = 0;
+          *tptr = 0;
 #else
-                  tptr[3] = 0;
+          tptr[3] = 0;
 #endif
-                }
-              
-              tptr += 4;
-              sptr += 1;
-            }
         }
+              
+        tptr += 4;
+        sptr += 1;
+      }
     }
+  }
   
   sprovider.unlock();
   provider.unlock();
@@ -299,10 +299,10 @@ GroundMap::put(Surface source, int x, int y)
 
   for(int ix = start_x; ix < end_x; ++ix)
     for(int iy = start_y; iy < end_y; ++iy)
-      {
-        get_tile(ix, iy)->put(source,
-                              x - (ix * tile_size), y - (iy * tile_size));
-      }
+    {
+      get_tile(ix, iy)->put(source,
+                            x - (ix * tile_size), y - (iy * tile_size));
+    }
 }
 
 CollisionMap*

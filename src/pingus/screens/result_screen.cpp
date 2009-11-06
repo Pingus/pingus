@@ -133,9 +133,9 @@ public:
   }
 
   bool is_at(int x, int y) {
-	  return x > x_pos && x < x_pos + int(button_surface.get_width())
-		&& y > y_pos - 24 &&
-		y < y_pos + int(button_surface.get_height());
+    return x > x_pos && x < x_pos + int(button_surface.get_width())
+      && y > y_pos - 24 &&
+      y < y_pos + int(button_surface.get_height());
   }
 
   void on_click()
@@ -182,54 +182,54 @@ ResultScreenComponent::draw(DrawingContext& gc)
                   _(result.plf.get_levelname()));
 
   if (result.success())
-    {
-      gc.print_center(Fonts::chalk_large, 
-                      Vector2i(gc.get_width()/2,
-                               Display::get_height()/2 - 140),
-                      _("Success!"));
-      /*gc.print_center(Fonts::pingus_small, gc.get_width()/2, gc.get_height()-30,
-        "..:: Press Space to continue ::..");*/
-    }
+  {
+    gc.print_center(Fonts::chalk_large, 
+                    Vector2i(gc.get_width()/2,
+                             Display::get_height()/2 - 140),
+                    _("Success!"));
+    /*gc.print_center(Fonts::pingus_small, gc.get_width()/2, gc.get_height()-30,
+      "..:: Press Space to continue ::..");*/
+  }
   else
-    {
-      gc.print_center(Fonts::chalk_large, 
-                      Vector2i(gc.get_width()/2, Display::get_height()/2 - 140),
-                      _("Failure!"));
-      /*gc.print_center(Fonts::pingus_normal, gc.get_width()/2, gc.get_height()-30,
-        "..:: Press Space to retry the level ::..");*/
-    }
+  {
+    gc.print_center(Fonts::chalk_large, 
+                    Vector2i(gc.get_width()/2, Display::get_height()/2 - 140),
+                    _("Failure!"));
+    /*gc.print_center(Fonts::pingus_normal, gc.get_width()/2, gc.get_height()-30,
+      "..:: Press Space to retry the level ::..");*/
+  }
 
   std::string message;
   if (result.success())
-    {
-      if (result.killed == 0 && result.saved == result.total)
-        message = _("Perfect! You saved everyone possible - great!");
-      else if (result.killed == 0)
-        message = _("No-one got killed, pretty good work.");
-      else if (result.saved == result.needed)
-        message = _("You saved exactly what you needed - you made it, but\n"
-                    "maybe you can do better?");
-      else if (result.killed >= 5)
-        message = _("Not everybody was saved, but still good work!");
-      else
-        message = _("What can I say, you made it - congratulations!");
-    }
+  {
+    if (result.killed == 0 && result.saved == result.total)
+      message = _("Perfect! You saved everyone possible - great!");
+    else if (result.killed == 0)
+      message = _("No-one got killed, pretty good work.");
+    else if (result.saved == result.needed)
+      message = _("You saved exactly what you needed - you made it, but\n"
+                  "maybe you can do better?");
+    else if (result.killed >= 5)
+      message = _("Not everybody was saved, but still good work!");
+    else
+      message = _("What can I say, you made it - congratulations!");
+  }
   else
-    {
-      if (result.killed == result.total)
-        message = _("You killed everybody, not good.");
-      else if (result.saved == 0)
-        message = _("No-one got saved - I know you can do better.");
-      else if (result.saved > 0)
-        message = _("You didn't save enough, but you saved a few.  Next\n"
-                    "time you might do better.");
-      else if (result.saved + 1 >= result.needed)
-        message = _("Only one more and you would have made it - try again!");
-      else if (result.saved + 5 >= result.needed)
-        message = _("Only a handful more and you would have made it - try again!");
-      else
-        message = _("Better luck next time!");
-    }
+  {
+    if (result.killed == result.total)
+      message = _("You killed everybody, not good.");
+    else if (result.saved == 0)
+      message = _("No-one got saved - I know you can do better.");
+    else if (result.saved > 0)
+      message = _("You didn't save enough, but you saved a few.  Next\n"
+                  "time you might do better.");
+    else if (result.saved + 1 >= result.needed)
+      message = _("Only one more and you would have made it - try again!");
+    else if (result.saved + 5 >= result.needed)
+      message = _("Only a handful more and you would have made it - try again!");
+    else
+      message = _("Better luck next time!");
+  }
   gc.print_center(Fonts::chalk_normal, Vector2i(gc.get_width()/2, gc.get_height()/2 - 70), message);
 
   int left_x  = gc.get_width()/2 - 100;
@@ -259,20 +259,20 @@ ResultScreen::ResultScreen(Result arg_result) :
   ok_button = abort_button = retry_button = 0;
 
   if (result.success())
-    {
-      gui_manager->add(ok_button = new ResultScreenOkButton(this, 
-                                                            Display::get_width()/2 + 225,
-                                                            Display::get_height()/2 + 125));
-    }
+  {
+    gui_manager->add(ok_button = new ResultScreenOkButton(this, 
+                                                          Display::get_width()/2 + 225,
+                                                          Display::get_height()/2 + 125));
+  }
   else
-    {
-      gui_manager->add(abort_button = new ResultScreenAbortButton(this,
-                                                                  Display::get_width()/2 - 278,
-                                                                  Display::get_height()/2 + 144));
-      gui_manager->add(retry_button = new ResultScreenRetryButton(this,
-                                                                  Display::get_width()/2 + 225,
-                                                                  Display::get_height()/2 + 125));
-    }
+  {
+    gui_manager->add(abort_button = new ResultScreenAbortButton(this,
+                                                                Display::get_width()/2 - 278,
+                                                                Display::get_height()/2 + 144));
+    gui_manager->add(retry_button = new ResultScreenRetryButton(this,
+                                                                Display::get_width()/2 + 225,
+                                                                Display::get_height()/2 + 125));
+  }
 
   //gui_manager->add(new GUI::SurfaceButton(500, 500, cancel_desc, cancel_desc, cancel_desc), true);
 }
@@ -281,13 +281,13 @@ void
 ResultScreen::on_startup()
 {
   if (result.success())
-    {
-      Sound::PingusSound::play_music("success_1.it", 1.f, false);
-    }
+  {
+    Sound::PingusSound::play_music("success_1.it", 1.f, false);
+  }
   else
-    {
-      Sound::PingusSound::play_music("pingus-2.it", 1.f, false);
-    }
+  {
+    Sound::PingusSound::play_music("pingus-2.it", 1.f, false);
+  }
 }
 
 void
@@ -332,7 +332,7 @@ ResultScreen::resize(const Size& size_)
     ok_button->set_pos(size.width/2 + 225, size.height/2 + 125);
 
   if (abort_button)
-      abort_button->set_pos(size.width/2 - 278, size.height/2 + 144);
+    abort_button->set_pos(size.width/2 - 278, size.height/2 + 144);
 
   if (retry_button)  
     retry_button->set_pos(size.width/2 + 225, size.height/2 + 125);

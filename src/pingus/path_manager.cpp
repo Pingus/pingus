@@ -57,19 +57,19 @@ PathManager::find_path (const std::string& file)
 {
   std::ostringstream out;
   for (PathIter i = path_list.begin (); !path_found && i != path_list.end (); ++i)
+  {
+    if (System::exist(*i + "/" + file))
     {
-      if (System::exist(*i + "/" + file))
-	{
-	  path_found = true;
-	  base_path = *i;
+      path_found = true;
+      base_path = *i;
 
-	  return true;
-	}
-      else
-        {
-          out << "PathManager: Checking for file: '" << *i << "/" << file << "' failed" << std::endl;
-        }
+      return true;
     }
+    else
+    {
+      out << "PathManager: Checking for file: '" << *i << "/" << file << "' failed" << std::endl;
+    }
+  }
 
   std::cout << out.str();
   std::cout << "PathManager: No base path found" << std::endl;

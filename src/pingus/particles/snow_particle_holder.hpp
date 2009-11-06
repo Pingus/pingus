@@ -42,7 +42,7 @@ private:
     SnowParticle(int x, int y, bool colliding_);
   };
 
-friend struct SnowParticle;
+  friend struct SnowParticle;
 
 private:
   Sprite snow1;

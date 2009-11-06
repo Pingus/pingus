@@ -53,9 +53,9 @@ StarfieldBackground::update ()
 {
   for (std::vector<StarfieldBackgroundStars*>::iterator i = stars.begin();
        i != stars.end(); ++i)
-    {
-      (*i)->update ();
-    }
+  {
+    (*i)->update ();
+  }
 }
 
 void
@@ -63,9 +63,9 @@ StarfieldBackground::draw (SceneContext& gc)
 {
   for (std::vector<StarfieldBackgroundStars*>::iterator i = stars.begin();
        i != stars.end(); ++i)
-    {
-      (*i)->draw (gc);
-    }
+  {
+    (*i)->draw (gc);
+  }
 }
 
 } // namespace WorldObjs

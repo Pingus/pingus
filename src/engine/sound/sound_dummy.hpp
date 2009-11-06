@@ -26,7 +26,7 @@ class PingusSoundDummy : public PingusSoundImpl
 {
 public:
   PingusSoundDummy () { }
-	virtual ~PingusSoundDummy () { }
+  virtual ~PingusSoundDummy () { }
 
   virtual void real_play_sound (const std::string & filename, float volume, float panning);
   virtual void real_play_music (const std::string & filename, float volume, bool loop);

@@ -23,22 +23,22 @@ namespace Colliders {
 
 class PinguCollider : public Collider
 {
-  public:
-    /** Constructor */
-    PinguCollider(const int height_arg);
+public:
+  /** Constructor */
+  PinguCollider(const int height_arg);
 
-    /** Destructor */
-    ~PinguCollider();
+  /** Destructor */
+  ~PinguCollider();
 
-    /** Find out if a Pingu at the specified position is colliding with
-        something */
-    bool operator() (World* const world, Vector3f current_pos,
-		      const Vector3f& step_vector) const;
+  /** Find out if a Pingu at the specified position is colliding with
+      something */
+  bool operator() (World* const world, Vector3f current_pos,
+                   const Vector3f& step_vector) const;
 
-  private:
-    /** Pingu could be on its belly.  Therefore, this is the current height of
-	the Pingu. */
-    int height;
+private:
+  /** Pingu could be on its belly.  Therefore, this is the current height of
+      the Pingu. */
+  int height;
 };
 
 } // namespace Colliders

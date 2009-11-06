@@ -36,10 +36,10 @@ Waiter::update ()
   sprite.update();
 
   if (countdown < 0)
-    {
-      pingu->set_action(Actions::WALKER);
-      return;
-    }
+  {
+    pingu->set_action(Actions::WALKER);
+    return;
+  }
 
   countdown -= 0.025f;
 }

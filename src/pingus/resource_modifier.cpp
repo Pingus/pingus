@@ -23,7 +23,7 @@ namespace ResourceModifierNS {
 ResourceModifier horizontal_flip (ResourceModifier modifier)
 {
   switch (modifier)
-    {
+  {
     case ROT0:
       return ROT0FLIP;
     case ROT90:
@@ -43,13 +43,13 @@ ResourceModifier horizontal_flip (ResourceModifier modifier)
     default:
       assert (0);
       return ROT0;
-    }
+  }
 }
 
 ResourceModifier vertical_flip (ResourceModifier modifier)
 {
   switch (modifier)
-    {
+  {
     case ROT0:
       return ROT180FLIP;
     case ROT90:
@@ -69,13 +69,13 @@ ResourceModifier vertical_flip (ResourceModifier modifier)
     default:
       assert (0);
       return ROT0;
-    }
+  }
 }
 
 ResourceModifier rotate_90 (ResourceModifier modifier)
 {
   switch (modifier)
-    {
+  {
     case ROT0:
       return ROT90;
     case ROT90:
@@ -95,13 +95,13 @@ ResourceModifier rotate_90 (ResourceModifier modifier)
     default:
       assert (0);
       return ROT0;
-    }
+  }
 }
 
 ResourceModifier rotate_270 (ResourceModifier modifier)
 {
   switch (modifier)
-    {
+  {
     case ROT0:
       return ROT270;
     case ROT90:
@@ -121,13 +121,13 @@ ResourceModifier rotate_270 (ResourceModifier modifier)
     default:
       assert (0);
       return ROT0;
-    }
+  }
 }
 
 std::string rs_to_string(ResourceModifier modifier)
 {
   switch (modifier)
-    {
+  {
     case ROT0:
       return "ROT0";
     case ROT90:
@@ -147,7 +147,7 @@ std::string rs_to_string(ResourceModifier modifier)
     default:
       assert (0);
       return "--Error--";
-    }
+  }
 }
 
 ResourceModifier rs_from_string (const std::string& modifier)
@@ -169,10 +169,10 @@ ResourceModifier rs_from_string (const std::string& modifier)
   else if (modifier == "ROT270FLIP")
     return ROT270FLIP;
   else
-    {
-      assert (0);
-      return ROT0;
-    }
+  {
+    assert (0);
+    return ROT0;
+  }
 }
 
 } // namespace ResourceModifierNS

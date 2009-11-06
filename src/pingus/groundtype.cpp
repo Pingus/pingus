@@ -36,17 +36,17 @@ Groundtype::string_to_type(const std::string& arg_type)
   else if (arg_type == "remove")
     return Groundtype::GP_REMOVE;
   else
-    {
-      std::cout << "Groundtype: Unhandled type: '" << arg_type << "'" << std::endl;
-      return Groundtype::GP_GROUND;
-    }
+  {
+    std::cout << "Groundtype: Unhandled type: '" << arg_type << "'" << std::endl;
+    return Groundtype::GP_GROUND;
+  }
 }
 
 std::string
 Groundtype::type_to_string(GPType arg_type)
 {
   switch (arg_type)
-    {
+  {
     case Groundtype::GP_SOLID:
       return "solid";
     case Groundtype::GP_TRANSPARENT:
@@ -64,7 +64,7 @@ Groundtype::type_to_string(GPType arg_type)
     default:
       std::cout << "Groundtype: Unhandled type: " << arg_type << std::endl;
       return "ground";
-    }
+  }
 }
 
 /* EOF */

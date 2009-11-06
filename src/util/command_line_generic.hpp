@@ -42,81 +42,81 @@
 class CommandLine_Generic
 {
 private:
-	int help_indent;
+  int help_indent;
 
-	std::string programm;
+  std::string programm;
 
-	struct Option 
-	{
-		int key;
-		std::string help;
-		std::string long_option;
-		std::string argument;
-		bool visible;
+  struct Option 
+  {
+    int key;
+    std::string help;
+    std::string long_option;
+    std::string argument;
+    bool visible;
 
-          Option() :
-            key(),
-            help(),
-            long_option(),
-            argument(),
-            visible()
-          {}
-	};
+    Option() :
+      key(),
+      help(),
+      long_option(),
+      argument(),
+      visible()
+    {}
+  };
   
-	typedef std::vector<Option> Options;
-	Options options;
+  typedef std::vector<Option> Options;
+  Options options;
 
-	struct ParsedOption
-	{
-		int key;
-		std::string argument;
-          ParsedOption() :
-            key(),
-            argument()
-          {}
-	};
+  struct ParsedOption
+  {
+    int key;
+    std::string argument;
+    ParsedOption() :
+      key(),
+      argument()
+    {}
+  };
 
-	typedef std::vector<ParsedOption> ParsedOptions;
-	ParsedOptions parsed_options;
-	ParsedOptions::iterator current_option;
+  typedef std::vector<ParsedOption> ParsedOptions;
+  ParsedOptions parsed_options;
+  ParsedOptions::iterator current_option;
 
-	enum
-	{
-		GROUP     = -3,
-		DOC       = -4,
-		USAGE     = -5
-	};
+  enum
+  {
+    GROUP     = -3,
+    DOC       = -4,
+    USAGE     = -5
+  };
 
 public:  
-	CommandLine_Generic();
+  CommandLine_Generic();
 
-	void set_help_indent(int i) { help_indent = i; }
+  void set_help_indent(int i) { help_indent = i; }
 
-	void add_usage(const std::string& usage);
-	void add_doc(const std::string& doc);
-	void add_group(const std::string& grouptopic);
+  void add_usage(const std::string& usage);
+  void add_doc(const std::string& doc);
+  void add_group(const std::string& grouptopic);
   
-	void add_option(int key,
-						 const std::string& long_option, 
-						 const std::string& argument,
-						 const std::string& help,
-						 bool visible = true);
+  void add_option(int key,
+                  const std::string& long_option, 
+                  const std::string& argument,
+                  const std::string& help,
+                  bool visible = true);
 
-	void parse_args(int argc, char** argv);
-	void print_help();
+  void parse_args(int argc, char** argv);
+  void print_help();
   
-	bool next();
-	int get_key();
-	std::string get_argument();
+  bool next();
+  int get_key();
+  std::string get_argument();
 
 private:
-	void read_option(int id, const std::string& argument);
+  void read_option(int id, const std::string& argument);
 
-	/** Find the Option structure that matches \a short_option */
-	Option* lookup_short_option(char short_option);
+  /** Find the Option structure that matches \a short_option */
+  Option* lookup_short_option(char short_option);
 
-	/** Find the Option structure that matches \a long_option */
-	Option* lookup_long_option (const std::string& long_option);
+  /** Find the Option structure that matches \a long_option */
+  Option* lookup_long_option (const std::string& long_option);
 };
 
 #endif

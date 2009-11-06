@@ -55,10 +55,10 @@ ButtonAxis::update(float delta)
   button2->update(delta);
 
   if (button1->is_pressed() == button2->is_pressed())
-    {
-      pos = 0;
-      return;
-    }
+  {
+    pos = 0;
+    return;
+  }
 
   if (button1->is_pressed() && pos > -1.0f)
     pos -= delta;

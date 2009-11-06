@@ -80,7 +80,7 @@ public:
 
   /** Return the gui_manager */
   GUI::GUIManager* get_gui_manager() const { return gui_manager; }
-	
+        
   /** Return the viewport */
   Viewport* get_viewport() const { return viewport; }
 
