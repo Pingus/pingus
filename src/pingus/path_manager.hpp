@@ -17,11 +17,10 @@
 #ifndef HEADER_PINGUS_PINGUS_PATH_MANAGER_HPP
 #define HEADER_PINGUS_PINGUS_PATH_MANAGER_HPP
 
-#include "pingus/pingus.hpp"
-#include "pingus/path_manager.hpp"
 #include <string>
 #include <list>
 
+#include "pingus/pingus.hpp"
 
 class PathManager
 {

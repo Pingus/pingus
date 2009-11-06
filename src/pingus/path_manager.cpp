@@ -17,9 +17,10 @@
 #include "pingus/path_manager.hpp"
 
 #include <sstream>
+
+#include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 #include "util/system.hpp"
-#include "pingus/debug.hpp"
 
 PathManager path_manager;
 
