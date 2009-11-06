@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_SCREEN_SCREEN_MANAGER_HPP
-#define HEADER_PINGUS_SCREEN_SCREEN_MANAGER_HPP
+#ifndef HEADER_PINGUS_ENGINE_SCREEN_SCREEN_MANAGER_HPP
+#define HEADER_PINGUS_ENGINE_SCREEN_SCREEN_MANAGER_HPP
 
 #include "pingus/pingus.hpp"
 #include <memory>

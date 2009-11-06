@@ -15,8 +15,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_INPUT_INVERTED_SCROLLER_HXX
-#define HEADER_PINGUS_INPUT_INVERTED_SCROLLER_HXX
+#ifndef HEADER_PINGUS_ENGINE_INPUT_OLD_SCROLLERS_INVERTED_SCROLLER_HPP
+#define HEADER_PINGUS_ENGINE_INPUT_OLD_SCROLLERS_INVERTED_SCROLLER_HPP
 
 #include "../scroller.hpp"
 

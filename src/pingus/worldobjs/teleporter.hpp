@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_WORLDOBJS_TELEPORTER_HPP
-#define HEADER_PINGUS_WORLDOBJS_TELEPORTER_HPP
+#ifndef HEADER_PINGUS_PINGUS_WORLDOBJS_TELEPORTER_HPP
+#define HEADER_PINGUS_PINGUS_WORLDOBJS_TELEPORTER_HPP
 
 #include "pingus/worldobj.hpp"
 #include "math/vector3f.hpp"

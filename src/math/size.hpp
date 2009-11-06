@@ -30,8 +30,8 @@
 //! clanCore="Math"
 //! header=core.h
 
-#ifndef HEADER_GALAPIX_MATH_SIZE_HPP
-#define HEADER_GALAPIX_MATH_SIZE_HPP
+#ifndef HEADER_PINGUS_MATH_SIZE_HPP
+#define HEADER_PINGUS_MATH_SIZE_HPP
 
 #if _MSC_VER > 1000
 #pragma once

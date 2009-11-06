@@ -50,6 +50,7 @@ public:
   
   /** Regenerate the smallmap surface */
   void update_surface();
+
 private:
   SmallMapImage (const SmallMapImage&);
   SmallMapImage& operator= (const SmallMapImage&);

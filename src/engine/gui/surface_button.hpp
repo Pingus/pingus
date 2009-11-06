@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_GUI_SURFACE_BUTTON_HPP
-#define HEADER_PINGUS_GUI_SURFACE_BUTTON_HPP
+#ifndef HEADER_PINGUS_ENGINE_GUI_SURFACE_BUTTON_HPP
+#define HEADER_PINGUS_ENGINE_GUI_SURFACE_BUTTON_HPP
 
 #include "engine/display/sprite.hpp"
 #include "engine/gui/component.hpp"

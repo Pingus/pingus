@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_DISPLAY_SCENE_CONTEXT_HPP
-#define HEADER_PINGUS_DISPLAY_SCENE_CONTEXT_HPP
+#ifndef HEADER_PINGUS_ENGINE_DISPLAY_SCENE_CONTEXT_HPP
+#define HEADER_PINGUS_ENGINE_DISPLAY_SCENE_CONTEXT_HPP
 
 #include "SDL.h"
 #include "engine/display/drawing_context.hpp"

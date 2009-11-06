@@ -15,8 +15,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_INPUT_BUTTON_AXIS_HXX
-#define HEADER_PINGUS_INPUT_BUTTON_AXIS_HXX
+#ifndef HEADER_PINGUS_ENGINE_INPUT_OLD_AXES_BUTTON_AXIS_HPP
+#define HEADER_PINGUS_ENGINE_INPUT_OLD_AXES_BUTTON_AXIS_HPP
 
 #include "../axis.hpp"
 

@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_ACTIONS_BRIDGER_HPP
-#define HEADER_PINGUS_ACTIONS_BRIDGER_HPP
+#ifndef HEADER_PINGUS_PINGUS_ACTIONS_BRIDGER_HPP
+#define HEADER_PINGUS_PINGUS_ACTIONS_BRIDGER_HPP
 
 #include "math/vector3f.hpp"
 #include "pingus/pingu_action.hpp"

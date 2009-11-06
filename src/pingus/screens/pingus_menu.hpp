@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_PINGUS_PINGUS_MENU_HPP
-#define HEADER_PINGUS_PINGUS_PINGUS_MENU_HPP
+#ifndef HEADER_PINGUS_PINGUS_SCREENS_PINGUS_MENU_HPP
+#define HEADER_PINGUS_PINGUS_SCREENS_PINGUS_MENU_HPP
 
 #include <vector>
 #include <memory>

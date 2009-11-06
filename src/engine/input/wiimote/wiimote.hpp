@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_INPUT_WIIMOTE_HPP
-#define HEADER_PINGUS_INPUT_WIIMOTE_HPP
+#ifndef HEADER_PINGUS_ENGINE_INPUT_WIIMOTE_WIIMOTE_HPP
+#define HEADER_PINGUS_ENGINE_INPUT_WIIMOTE_WIIMOTE_HPP
 
 #include <vector>
 #include <string>
