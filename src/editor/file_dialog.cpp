@@ -16,20 +16,20 @@
 
 #include "editor/file_dialog.hpp"
 
-#include <iostream>
 #include <boost/bind.hpp>
+#include <iostream>
 
+#include "editor/button.hpp"
+#include "editor/editor_screen.hpp"
+#include "editor/gui_style.hpp"
+#include "editor/inputbox.hpp"
+#include "editor/label.hpp"
 #include "engine/display/drawing_context.hpp"
 #include "engine/gui/gui_manager.hpp"
-#include "editor/editor_screen.hpp"
-#include "util/system.hpp"
-#include "editor/gui_style.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
-#include "editor/label.hpp"
-#include "editor/inputbox.hpp"
 #include "util/pathname.hpp"
-#include "editor/button.hpp"
+#include "util/system.hpp"
 
 namespace Editor {
 

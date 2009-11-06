@@ -18,9 +18,10 @@
 #ifndef HEADER_PINGUS_EDITOR_COMBOBOX_HPP
 #define HEADER_PINGUS_EDITOR_COMBOBOX_HPP
 
-#include <vector>
-#include <string>
 #include <boost/signal.hpp>
+#include <string>
+#include <vector>
+
 #include "engine/display/sprite.hpp"
 #include "engine/gui/component.hpp"
 #include "engine/gui/rect_component.hpp"

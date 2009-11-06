@@ -20,7 +20,7 @@
 #include "pingus/fonts.hpp"
 
 namespace Editor {
-
+
 Label::Label(const Rect& rect_, const std::string& text_)
   : RectComponent(rect_),
     text(text_)
@@ -39,7 +39,7 @@ void
 Label::update (float delta)
 {  
 }
-
+
 } // namespace Editor
 
 /* EOF */

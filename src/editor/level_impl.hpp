@@ -18,10 +18,11 @@
 #ifndef HEADER_PINGUS_EDITOR_LEVEL_IMPL_HPP
 #define HEADER_PINGUS_EDITOR_LEVEL_IMPL_HPP
 
+#include <algorithm>
 #include <map>
 #include <string>
 #include <vector>
-#include <algorithm>
+
 #include "editor/editor_screen.hpp"
 #include "editor/level_objs.hpp"
 
@@ -82,7 +83,7 @@ public:
 private:
   LevelImpl (const LevelImpl&);
   LevelImpl& operator= (const LevelImpl&);
-};	// LevelImpl class
+};
 
 } // namespace Editor
 

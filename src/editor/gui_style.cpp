@@ -16,9 +16,8 @@
 
 #include "editor/gui_style.hpp"
 
-
 namespace Editor {
-
+
 void
 GUIStyle::draw_raised_box(DrawingContext& gc, const Rect& rect, const Color& color, int border)
 {
@@ -41,7 +40,7 @@ GUIStyle::draw_lowered_box(DrawingContext& gc, const Rect& rect, const Color& co
   gc.draw_fillrect(Rect(rect.left+border, rect.top+border, rect.right-border, rect.bottom-border),
                    color);  
 }
-
+
 } // namespace Editor
 
 /* EOF */

@@ -17,13 +17,13 @@
 #include "editor/combobox.hpp"
 
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 
-#include "pingus/resource.hpp"
 #include "math/math.hpp"
-#include "pingus/fonts.hpp"
 #include "math/vector2i.hpp"
+#include "pingus/fonts.hpp"
+#include "pingus/resource.hpp"
 
 namespace Editor {
 

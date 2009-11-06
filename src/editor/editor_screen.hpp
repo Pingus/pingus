@@ -18,9 +18,9 @@
 #ifndef HEADER_PINGUS_EDITOR_EDITOR_SCREEN_HPP
 #define HEADER_PINGUS_EDITOR_EDITOR_SCREEN_HPP
 
+#include "editor/file_dialog.hpp"
 #include "engine/screen/gui_screen.hpp"
 #include "util/pathname.hpp"
-#include "editor/file_dialog.hpp"
 
 class DrawingContext;
 class FileDialog;

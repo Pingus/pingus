@@ -16,18 +16,18 @@
 
 #include "editor/panel.hpp"
 
+#include "editor/editor_screen.hpp"
 #include "engine/display/display.hpp" 
 #include "engine/display/drawing_context.hpp"
-#include "editor/editor_screen.hpp"
+#include "engine/display/sprite.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "math/vector2i.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "pingus/resource.hpp"
-#include "engine/display/sprite.hpp"
 
 namespace Editor {
-
+
 class PanelSeparator : public GUI::Component
 {
 private:
@@ -257,7 +257,7 @@ Panel::add_separator()
   pos.x += comp->get_width();
   editor->get_gui_manager()->add(comp);
 }
-
+
 } // namespace Editor
 
 /* EOF */

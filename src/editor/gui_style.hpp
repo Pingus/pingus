@@ -17,12 +17,11 @@
 #ifndef HEADER_PINGUS_EDITOR_GUI_STYLE_HPP
 #define HEADER_PINGUS_EDITOR_GUI_STYLE_HPP
 
-#include "math/rect.hpp"
 #include "engine/display/drawing_context.hpp"
+#include "math/rect.hpp"
 
 namespace Editor {
-
-/** */
+
 class GUIStyle
 {
 private:
@@ -32,7 +31,7 @@ public:
   static void draw_lowered_box(DrawingContext& gc, const Rect& rect, 
                                const Color& color = Color(237, 233, 227), int border = 1);
 };
-
+
 } // namespace Editor
 
 #endif

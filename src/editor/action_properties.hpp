@@ -19,8 +19,8 @@
 
 #include <map>
 
-#include "pingus/pingu_enums.hpp"
 #include "engine/gui/group_component.hpp"
+#include "pingus/pingu_enums.hpp"
 
 namespace Editor {
 

@@ -18,11 +18,11 @@
 #define HEADER_PINGUS_EDITOR_INPUTBOX_HPP
 
 #include <boost/signal.hpp>
+
 #include "engine/gui/rect_component.hpp"
 
 namespace Editor {
-
-/** */
+
 class Inputbox : public GUI::RectComponent
 {
 private:
@@ -46,7 +46,7 @@ private:
   Inputbox (const Inputbox&);
   Inputbox& operator= (const Inputbox&);
 };
-
+
 } // namespace Editor
 
 #endif

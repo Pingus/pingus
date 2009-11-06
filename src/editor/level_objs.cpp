@@ -19,15 +19,16 @@
 
 #include <string>
 #include <iostream>
+
 #include "editor/level_impl.hpp"
 #include "engine/display/blitter.hpp"
-#include "pingus/resource.hpp"
-#include "pingus/res_descriptor.hpp"
 #include "engine/display/display.hpp"
 #include "engine/display/drawing_context.hpp"
+#include "pingus/res_descriptor.hpp"
+#include "pingus/resource.hpp"
 
 namespace Editor {
-
+
 // Default constructor
 LevelObj::LevelObj(std::string obj_name, LevelImpl* level_) :
   sprite(),
@@ -378,7 +379,7 @@ LevelObj::duplicate(const Vector2i& offset) const
   obj->pos.y += static_cast<float>(offset.y);
   return obj;
 }
-
+
 } // namespace Editor 
 
 /* EOF */

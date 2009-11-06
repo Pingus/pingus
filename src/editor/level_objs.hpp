@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_EDITOR_LEVEL_OBJS_HPP
 #define HEADER_PINGUS_EDITOR_LEVEL_OBJS_HPP
 
+#include <string>
+
 #include "engine/display/sprite.hpp"
 #include "math/color.hpp"
 #include "math/origin.hpp"
@@ -24,12 +26,12 @@
 #include "math/vector3f.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "util/file_writer.hpp"
-#include <string>
-
 
 class DrawingContext;
 
 namespace Editor {
+
+class LevelImpl;
 
 const unsigned HAS_TYPE =         1 << 0;
 const unsigned HAS_SPEED =        1 << 1;
@@ -48,8 +50,6 @@ const unsigned HAS_SURFACE_FAKE = 1 << 12;
 const unsigned CAN_ROTATE =       1 << 13;
 const unsigned HAS_GPTYPE =       1 << 14;
 const unsigned HAS_STARFIELD =    1 << 15;
-
-class LevelImpl;
 
 /** Generic Level Object (groundpiece, sign, etc.)  Only special objects will have
     to inherit from this class - most objects will be able to use this class alone */
@@ -333,7 +333,7 @@ private:
 private:
   LevelObj & operator=(const LevelObj&);
 };
-
+
 } // namespace Editor 
 
 #endif

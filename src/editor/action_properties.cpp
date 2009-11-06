@@ -16,8 +16,8 @@
 
 #include "editor/action_properties.hpp"
 
-#include <iostream>
 #include <boost/bind.hpp>
+#include <iostream>
 
 #include "editor/checkbox.hpp"
 #include "editor/editor_level.hpp"

@@ -19,9 +19,9 @@
 #include <iostream>
 
 #include "editor/gui_style.hpp"
-#include "pingus/fonts.hpp"
 #include "math/math.hpp"
 #include "math/vector2i.hpp"
+#include "pingus/fonts.hpp"
 
 namespace Editor {
 

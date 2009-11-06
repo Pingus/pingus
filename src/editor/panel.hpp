@@ -21,11 +21,11 @@
 #include <string>
 
 #include "engine/display/sprite.hpp"
-#include "math/vector2i.hpp"
 #include "engine/gui/component.hpp"
+#include "math/vector2i.hpp"
 
 namespace Editor {
-
+
 class EditorScreen;
 
 /** */
@@ -54,7 +54,7 @@ private:
   Panel (const Panel&);
   Panel& operator= (const Panel&);
 };
-
+
 } // namespace Editor
 
 #endif

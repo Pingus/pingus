@@ -19,12 +19,12 @@
 #include <iostream>
 #include <boost/bind.hpp>
 
-#include "util/string_util.hpp"
-#include "editor/label.hpp"
-#include "editor/inputbox.hpp"
-#include "editor/gui_style.hpp"
 #include "editor/editor_level.hpp"
+#include "editor/gui_style.hpp"
+#include "editor/inputbox.hpp"
+#include "editor/label.hpp"
 #include "editor/viewport.hpp"
+#include "util/string_util.hpp"
 
 /*
 Level Properties:

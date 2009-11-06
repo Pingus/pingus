@@ -20,8 +20,7 @@
 #include "engine/gui/rect_component.hpp"
 
 namespace Editor {
-
-/** */
+
 class Label : public GUI::RectComponent
 {
 private:
@@ -37,7 +36,7 @@ public:
 
   void set_text(const std::string& text_) { text = text_; }
 };
-
+
 } // namespace Editor
 
 #endif

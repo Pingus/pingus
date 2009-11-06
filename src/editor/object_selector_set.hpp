@@ -18,12 +18,12 @@
 #define HEADER_PINGUS_EDITOR_OBJECT_SELECTOR_SET_HPP
 
 #include <vector>
-#include "math/size.hpp"
+
 #include "editor/object_selector_list.hpp"
+#include "math/size.hpp"
 
 namespace Editor {
-
-/** */
+
 class ObjectSelectorSet
 {
 private:
@@ -57,7 +57,7 @@ private:
   ObjectSelectorSet (const ObjectSelectorSet&);
   ObjectSelectorSet& operator= (const ObjectSelectorSet&);
 };
-
+
 } // namespace Editor
 
 #endif

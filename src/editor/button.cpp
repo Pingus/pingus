@@ -16,8 +16,8 @@
 
 #include "editor/button.hpp"
 
-#include "pingus/fonts.hpp"
 #include "editor/gui_style.hpp"
+#include "pingus/fonts.hpp"
 
 namespace Editor {
 

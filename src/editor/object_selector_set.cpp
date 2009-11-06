@@ -16,9 +16,8 @@
 
 #include "editor/object_selector_set.hpp"
 
-
 namespace Editor {
-
+
 ObjectSelectorSet::ObjectSelectorSet(ObjectSelectorList* list_, int thumb_w, int thumb_h) :
   list(list_),
   thumb_size(thumb_w, thumb_h),
@@ -50,7 +49,7 @@ ObjectSelectorSet::get_height() const
 {
   return (objects.size() / get_width()) + ((objects.size() % get_width() > 0) ? 1 : 0);
 }
-
+
 } // namespace Editor
 
 /* EOF */

@@ -18,11 +18,11 @@
 
 #include <iostream>
 
-#include "pingus/fonts.hpp"
 #include "engine/display/drawing_context.hpp"
+#include "pingus/fonts.hpp"
 
 namespace Editor {
-
+
 Inputbox::Inputbox(const Rect& rect_) :
   RectComponent(rect_),
   text(),
@@ -78,7 +78,7 @@ Inputbox::on_key_pressed(const unsigned short c)
         }
     }
 }
-
+
 } // namespace Editor
 
 /* EOF */

@@ -19,18 +19,18 @@
 #include <boost/bind.hpp>
 #include <iostream>
 
-#include "util/string_util.hpp"
 #include "editor/button.hpp"
+#include "editor/checkbox.hpp"
+#include "editor/combobox.hpp"
 #include "editor/editor_screen.hpp"
+#include "editor/gui_style.hpp"
+#include "editor/inputbox.hpp"
+#include "editor/label.hpp"
 #include "editor/level_objs.hpp"
 #include "pingus/fonts.hpp"
-#include "editor/label.hpp"
 #include "pingus/gettext.h"
-#include "editor/gui_style.hpp"
 #include "pingus/groundtype.hpp"
-#include "editor/combobox.hpp"
-#include "editor/inputbox.hpp"
-#include "editor/checkbox.hpp"
+#include "util/string_util.hpp"
 
 namespace Editor {
 

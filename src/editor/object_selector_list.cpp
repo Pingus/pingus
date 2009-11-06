@@ -18,15 +18,15 @@
 
 #include <iostream>
 
-#include "math/math.hpp"
-#include "editor/editor_screen.hpp"
-#include "editor/object_selector_set.hpp"
-#include "editor/object_selector.hpp"
-#include "editor/viewport.hpp"
 #include "editor/editor_level.hpp"
+#include "editor/editor_screen.hpp"
+#include "editor/object_selector.hpp"
+#include "editor/object_selector_set.hpp"
+#include "editor/viewport.hpp"
+#include "engine/display/drawing_context.hpp"
+#include "math/math.hpp"
 #include "pingus/groundtype.hpp"
 #include "pingus/resource.hpp"
-#include "engine/display/drawing_context.hpp"
 
 namespace Editor {
 

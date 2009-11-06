@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_EDITOR_BUTTON_HPP
 
 #include <boost/signal.hpp>
+
 #include "engine/gui/rect_component.hpp"
 
 namespace Editor {
