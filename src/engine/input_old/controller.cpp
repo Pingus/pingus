@@ -54,7 +54,7 @@ Controller::Controller(const std::string& configfile)
   FileReader reader = FileReader::parse(path_manager.complete(configfile));
   if (reader.get_name() != "pingus-controller")
     {
-      PingusError::raise("Controller: invalid config file <" + configfile + ">");
+      throw std::runtime_error("Controller: invalid config file <" + configfile + ">");
     }
   else
     {
@@ -108,7 +108,7 @@ Controller::Controller(const std::string& configfile)
             }
           else
             {
-              PingusError::raise(std::string("Unkown Element in Controller Config: ") 
+              throw std::runtime_error(std::string("Unkown Element in Controller Config: ") 
                                  + i->get_name());
             }
         }
@@ -215,7 +215,7 @@ Controller::create_action_buttons(FileReader reader)
       }
       else
       {
-        PingusError::raise(std::string("Wrong Element in Controller Config (action-buttons): ") 
+        throw std::runtime_error(std::string("Wrong Element in Controller Config (action-buttons): ") 
                            + i->get_name());
       }
       count++;

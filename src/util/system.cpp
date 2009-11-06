@@ -16,9 +16,13 @@
 
 #include "util/system.hpp"
 
+#include <config.h>
+#include <iostream>
+#include <locale.h>
+#include <sstream>
+#include <stdexcept>
 #include <stdio.h>
 #include <stdlib.h>
-#include <locale.h>
 
 #ifndef WIN32
 #  include <dirent.h>
@@ -40,12 +44,7 @@
 #define F_OK   0
 #endif
 
-#include <config.h>
-#include <iostream>
-#include <sstream>
-
 #include "util/pathname.hpp"
-#include "pingus/pingus_error.hpp"
 #include "pingus/globals.hpp"
 #include "util/string_util.hpp"
 #include "pingus/gettext.h"
@@ -181,7 +180,7 @@ System::create_dir(std::string directory)
     {
       if (mkdir(directory.c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) != 0)
 	{
-	  throw PingusError("System::create_dir: " + directory + ": " + strerror(errno));
+	  throw std::runtime_error("System::create_dir: " + directory + ": " + strerror(errno));
 	}
       else
 	{
@@ -197,12 +196,12 @@ System::create_dir(std::string directory)
         }
       else if (dwError == ERROR_PATH_NOT_FOUND)
         {
-          throw PingusError("CreateDirectory: " + directory +
+          throw std::runtime_error("CreateDirectory: " + directory +
             ": One or more intermediate directories do not exist; this function will only create the final directory in the path.");
         }
       else
         {
-          throw PingusError("CreateDirectory: " + directory + ": failed with error " + StringUtil::to_string(dwError));
+          throw std::runtime_error("CreateDirectory: " + directory + ": failed with error " + StringUtil::to_string(dwError));
         }
     }
   else
@@ -240,7 +239,7 @@ System::find_userdir()
     }
   else
     {
-      throw PingusError("Environment variable $HOME not set, fix that and start again.");
+      throw std::runtime_error("Environment variable $HOME not set, fix that and start again.");
     }
 #endif
 }
@@ -387,7 +386,7 @@ System::checksum(std::string filename)
 
       if (bytes_read != 4096 && !feof(in))
 	{
-	  throw PingusError("System:checksum: file read error");
+	  throw std::runtime_error("System:checksum: file read error");
 	}
 
       for (size_t i=0; i < bytes_read; ++i)

@@ -18,14 +18,15 @@
 
 #include <stdio.h>
 #include <iostream>
-#include "engine/display/scene_context.hpp"
-#include "pingus/pingus_error.hpp"
+#include <stdexcept>
+#include <SDL.h>
+
 #include "engine/display/blitter.hpp"
-#include "pingus/pingus_level.hpp"
+#include "engine/display/scene_context.hpp"
 #include "gettext.h"
-#include "pingus/collision_map.hpp"
 #include "math/math.hpp"
-#include "SDL.h"
+#include "pingus/collision_map.hpp"
+#include "pingus/pingus_level.hpp"
 
 class MapTile
 {
@@ -207,7 +208,7 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
 {
   if (sprovider.get_surface()->format->BitsPerPixel != 8)
     {
-      PingusError::raise(std::string("SpotMap::put_alpha_surface: Image has wrong color depth: " 
+      throw std::runtime_error(std::string("SpotMap::put_alpha_surface: Image has wrong color depth: " 
                                      + sprovider.get_surface()->format->BitsPerPixel));
     }
 

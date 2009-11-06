@@ -21,7 +21,6 @@
 
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
-#include "pingus/pingus_error.hpp"
 #include "util/sexpr_file_reader.hpp"
 #include "util/sexpr_file_writer.hpp"
 #include "util/string_util.hpp"

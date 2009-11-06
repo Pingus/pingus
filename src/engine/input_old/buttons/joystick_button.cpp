@@ -25,10 +25,10 @@ JoystickButton::JoystickButton(int id_, int button_) : id(id_), button(button_)
 {
 #if 0
   if (id >= CL_Joystick::get_device_count())
-    PingusError::raise("JoystickButton: Invalid joystick id: " + CL_String::to(id));
+    throw std::runtime_error("JoystickButton: Invalid joystick id: " + CL_String::to(id));
 
   if (button > CL_Joystick::get_device(id).get_button_count())
-    PingusError::raise("JoystickButton: Invalid joystick button id: " + CL_String::to(button));
+    throw std::runtime_error("JoystickButton: Invalid joystick button id: " + CL_String::to(button));
 #endif
 }
 

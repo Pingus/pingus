@@ -63,7 +63,6 @@ extern "C" {
 #include "pingus/path_manager.hpp"
 #include "pingus/globals.hpp"
 #include "util/system.hpp"
-#include "pingus/pingus_error.hpp"
 #include "pingus/fps_counter.hpp"
 #include "pingus/plf_res_mgr.hpp"
 #include "pingus/screens/game_session.hpp"
@@ -716,26 +715,22 @@ PingusMain::main(int argc, char** argv)
   perr.add(std::cout);
 
   try
-    {
-      parse_args(argc, argv);
-      init_path_finder();
-      read_rc_file();
-      apply_args();
-
-      print_greeting_message();
-
-      init_sdl();
-      init_pingus();
-
-      // start and run the actual game
-      start_game();
-    }
-
-  catch (const PingusError& err) {
-    std::cout << _("Error caught from Pingus: ") << err.get_message () << std::endl;
+  {
+    parse_args(argc, argv);
+    init_path_finder();
+    read_rc_file();
+    apply_args();
+    
+    print_greeting_message();
+    
+    init_sdl();
+    init_pingus();
+    
+    // start and run the actual game
+    start_game();
   }
-
-  catch (const std::bad_alloc&) {
+  catch (const std::bad_alloc&) 
+  {
     std::cout << _("Pingus: Out of memory!") << std::endl;
   }
 

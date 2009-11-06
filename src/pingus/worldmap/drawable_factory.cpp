@@ -17,6 +17,7 @@
 #include "pingus/worldmap/drawable_factory.hpp"
 
 #include <iostream>
+
 #include "pingus/worldmap/sprite_drawable.hpp"
 #include "pingus/worldmap/sprite_drawable.hpp"
 

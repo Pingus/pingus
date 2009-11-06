@@ -17,12 +17,13 @@
 #include "pingus/levelset.hpp"
 
 #include <iostream>
-#include "pingus/pingus_error.hpp"
-#include "util/file_reader.hpp"
-#include "pingus/plf_res_mgr.hpp"
-#include "pingus/savegame_manager.hpp"
-#include "pingus/resource.hpp"
+#include <stdexcept>
+
 #include "math/math.hpp"
+#include "pingus/plf_res_mgr.hpp"
+#include "pingus/resource.hpp"
+#include "pingus/savegame_manager.hpp"
+#include "util/file_reader.hpp"
 
 Levelset::Levelset(const Pathname& pathname) :
   title(),
@@ -34,7 +35,7 @@ Levelset::Levelset(const Pathname& pathname) :
   FileReader reader = FileReader::parse(pathname);
   if (reader.get_name() != "pingus-levelset")
   {
-    PingusError::raise("Error: " + pathname.str() + ": not a 'pingus-levelset' file");
+    throw std::runtime_error("Error: " + pathname.str() + ": not a 'pingus-levelset' file");
   }
   else
   {

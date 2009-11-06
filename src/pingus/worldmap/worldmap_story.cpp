@@ -18,13 +18,14 @@
 
 #include <algorithm>
 #include <vector>
-#include "pingus/screens/story_screen.hpp"
-#include "util/file_reader.hpp"
-#include "pingus/res_descriptor.hpp"
-#include "pingus/pingus_error.hpp"
-#include "pingus/string_format.hpp"
+#include <stdexcept>
+
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
+#include "pingus/res_descriptor.hpp"
+#include "pingus/screens/story_screen.hpp"
+#include "pingus/string_format.hpp"
+#include "util/file_reader.hpp"
 
 namespace WorldmapNS {
 
@@ -58,7 +59,7 @@ WorldmapStory::WorldmapStory(const FileReader &reader) :
   std::reverse(pages.begin(), pages.end());
 
   if (pages.empty())
-    PingusError::raise("WorldmapStory: Worldmap does not include a valid story");
+    throw std::runtime_error("WorldmapStory: Worldmap does not include a valid story");
 }
 
 } // namespace WorldmapNS

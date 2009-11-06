@@ -19,11 +19,10 @@
 #include <stdexcept>
 #include <fstream>
 
-#include "util/pathname.hpp"
-#include "util/file_reader.hpp"
-#include "pingus/server_event.hpp"
-#include "pingus/pingus_error.hpp"
 #include "pingus/pingu_enums.hpp"
+#include "pingus/server_event.hpp"
+#include "util/file_reader.hpp"
+#include "util/pathname.hpp"
 
 PingusDemo::PingusDemo(const Pathname& pathname) :
   levelname(),
@@ -34,7 +33,7 @@ PingusDemo::PingusDemo(const Pathname& pathname) :
 
   if (lines.empty())
     {
-      PingusError::raise("'" + pathname.str() + "', demo file is empty");
+      throw std::runtime_error("'" + pathname.str() + "', demo file is empty");
     }
   else
     {
@@ -42,7 +41,7 @@ PingusDemo::PingusDemo(const Pathname& pathname) :
         {
           if (!lines.front().read_string("name", levelname))
             {
-              PingusError::raise("(level (name ...)) entry missing in demo file '" + pathname.str() + "'");
+              throw std::runtime_error("(level (name ...)) entry missing in demo file '" + pathname.str() + "'");
             }
 
           lines.front().read_string("checksum", checksum);

@@ -17,7 +17,8 @@
 #include "pingus/worldmap/pingus_worldmap.hpp"
 
 #include <string>
-#include "pingus/pingus_error.hpp"
+#include <stdexcept>
+
 #include "util/file_reader.hpp"
 #include "pingus/worldmap/drawable_factory.hpp"
 
@@ -83,7 +84,7 @@ PingusWorldmap::parse_file(FileReader reader)
     {
       if (!reader.read_section("graph", impl->path_graph))
         {
-          PingusError::raise("Worldmap: " + impl->filename + " is missed 'graph' section");
+          throw std::runtime_error("Worldmap: " + impl->filename + " is missed 'graph' section");
         }
 
       impl->objects = reader.read_section("objects").get_sections();
@@ -95,7 +96,7 @@ PingusWorldmap::parse_file(FileReader reader)
     }
   else
     {
-      PingusError::raise("Worldmap:" + impl->filename + ": not a Worldmap file");
+      throw std::runtime_error("Worldmap:" + impl->filename + ": not a Worldmap file");
     }
 }
 

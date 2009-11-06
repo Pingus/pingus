@@ -17,7 +17,7 @@
 #include "pingus/worldobj_factory.hpp"
 
 #include <iostream>
-#include "pingus/pingus_error.hpp"
+#include <stdexcept>
 
 #include "pingus/worldobjs/conveyor_belt.hpp"
 #include "pingus/worldobjs/entrance.hpp"
@@ -153,7 +153,7 @@ WorldObjFactory::create(const FileReader& reader)
   std::map<std::string, WorldObjAbstractFactory*>::iterator it = factories.find(reader.get_name());
 
   if (it == factories.end())
-    PingusError::raise("WorldObjFactory: Invalid id: '" + reader.get_name() + "'");
+    throw std::runtime_error("WorldObjFactory: Invalid id: '" + reader.get_name() + "'");
   else
     return it->second->create(reader);
 

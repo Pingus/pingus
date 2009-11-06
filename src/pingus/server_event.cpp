@@ -21,7 +21,6 @@
 #include <boost/format.hpp>
 
 #include "math/math.hpp"
-#include "pingus/pingus_error.hpp"
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
 #include "pingus/pingu_holder.hpp"
@@ -80,7 +79,7 @@ ServerEvent::ServerEvent(FileReader reader) :
     }
   else
     {
-      PingusError::raise(std::string("ServerEvent: Parse error: Unknown event: ")
+      throw std::runtime_error(std::string("ServerEvent: Parse error: Unknown event: ")
 			 + reader.get_name());
     }
 }

@@ -17,10 +17,10 @@
 #include "pingus/worldmap/path_graph.hpp"
 
 #include <iostream>
+#include <stdexcept>
 
 #include "math/math.hpp"
 #include "util/file_reader.hpp"
-#include "pingus/pingus_error.hpp"
 #include "pingus/worldmap/dot.hpp"
 #include "pingus/worldmap/dot_factory.hpp"
 #include "pingus/worldmap/worldmap.hpp"
@@ -156,7 +156,7 @@ PathGraph::parse_edges(FileReader reader)
     }
     else
     {
-      PingusError::raise("PathGraph: unhandled: ");
+      throw std::runtime_error("PathGraph: unhandled: ");
     }
   }
 }

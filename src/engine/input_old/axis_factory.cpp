@@ -43,7 +43,7 @@ Axis* AxisFactory::create(FileReader reader)
     return multiple_axis(reader);
 
   else
-    PingusError::raise(std::string("Unknown axis type: ") + reader.get_name());
+    throw std::runtime_error(std::string("Unknown axis type: ") + reader.get_name());
 
   return 0; // never reached
 }
@@ -52,12 +52,12 @@ Axis* AxisFactory::button_axis(FileReader reader)
 {
   float angle;
   if (!reader.read_float("angle", angle))
-    PingusError::raise("ButtonAxis without angle parameter");
+    throw std::runtime_error("ButtonAxis without angle parameter");
 
   const std::vector<FileReader>& sections = reader.get_sections();
   
   if (sections.size() != 3)
-    PingusError::raise("ButtonAxis isn't <angle><button><button>");
+    throw std::runtime_error("ButtonAxis isn't <angle><button><button>");
 
   Button* button1 = ButtonFactory::create(sections[1]);
   Button* button2 = ButtonFactory::create(sections[2]);
@@ -74,15 +74,15 @@ Axis* AxisFactory::joystick_axis(FileReader reader)
 {
   float angle;
   if (!reader.read_float("angle", angle))
-    PingusError::raise("JoystickAxis without angle parameter");
+    throw std::runtime_error("JoystickAxis without angle parameter");
 
   int id;
   if (!reader.read_int("id", id))
-    PingusError::raise("JoystickAxis without id parameter");
+    throw std::runtime_error("JoystickAxis without id parameter");
 
   int axis;
   if (!reader.read_int("axis", axis))
-    PingusError::raise("JoystickAxis without axis parameter");
+    throw std::runtime_error("JoystickAxis without axis parameter");
 
   return new JoystickAxis(id, axis, angle);
 }
@@ -97,7 +97,7 @@ Axis* AxisFactory::multiple_axis(FileReader reader)
     axes.push_back(create(*i));
 
   if (!axes.size())
-    PingusError::raise("MultipleAxis without any axis");
+    throw std::runtime_error("MultipleAxis without any axis");
 
   return new MultipleAxis(axes);
 }

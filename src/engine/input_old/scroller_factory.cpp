@@ -56,7 +56,7 @@ ScrollerFactory::create(FileReader reader)
     return pointer_scroller(reader);
 
   else
-    PingusError::raise(std::string("Unknown scroller type: ") + reader.get_name());
+    throw std::runtime_error(std::string("Unknown scroller type: ") + reader.get_name());
 
   return 0; // never reached
 }
@@ -66,7 +66,7 @@ ScrollerFactory::axis_scroller(FileReader reader)
 {
   float speed;
   if (!reader.read_float("speed", speed))
-    PingusError::raise("AxisScroller without speed parameter");
+    throw std::runtime_error("AxisScroller without speed parameter");
 
   std::vector<Axis*> axes;
   const std::vector<FileReader>& sections = reader.get_sections();
@@ -82,11 +82,11 @@ ScrollerFactory::inverted_scroller(FileReader reader)
 {
   bool invert_x;
   if (!reader.read_bool("invert-x", invert_x))
-    PingusError::raise("InvertedScroller without invert X parameter");
+    throw std::runtime_error("InvertedScroller without invert X parameter");
 
   bool invert_y;
   if (!reader.read_bool("invert-y", invert_y))
-    PingusError::raise("InvertedScroller without invert Y parameter");
+    throw std::runtime_error("InvertedScroller without invert Y parameter");
 
   Scroller* scroller;
   scroller = create(reader);
@@ -99,11 +99,11 @@ ScrollerFactory::joystick_scroller(FileReader reader)
 {
   int id;
   if (!reader.read_int("id", id))
-    PingusError::raise("JoystickScroller without id parameter");
+    throw std::runtime_error("JoystickScroller without id parameter");
 
   float speed;
   if (!reader.read_float("speed", speed))
-    PingusError::raise("JoystickScroller without speed parameter");
+    throw std::runtime_error("JoystickScroller without speed parameter");
 
   return new JoystickScroller(id, speed);
 }
@@ -140,7 +140,7 @@ ScrollerFactory::pointer_scroller(FileReader reader)
   const std::vector<FileReader>& sections = reader.get_sections();
   
   if (sections.size() != 2)
-    PingusError::raise("ScrollerFactory isn't <pointer><button>");
+    throw std::runtime_error("ScrollerFactory isn't <pointer><button>");
 
   pointer = PointerFactory::create(sections[0]);
   button  = ButtonFactory::create(sections[1]);

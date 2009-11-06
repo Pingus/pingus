@@ -38,7 +38,7 @@ Pointer* PointerFactory::create (FileReader reader)
     return multiple_pointer(reader);
 
   else
-    PingusError::raise(std::string("Unknown pointer type: ") + reader.get_name());
+    throw std::runtime_error(std::string("Unknown pointer type: ") + reader.get_name());
 
   return 0; // never reached
 }
@@ -47,7 +47,7 @@ Pointer* PointerFactory::axis_pointer (FileReader reader)
 {
   float speed;
   if (!reader.read_float("speed", speed))
-    PingusError::raise("AxisPointer without speed parameter");
+    throw std::runtime_error("AxisPointer without speed parameter");
 
   std::vector<Axis*> axes;
   

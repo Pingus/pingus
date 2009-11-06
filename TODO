@@ -37,13 +37,13 @@ Code Cleanup
 
 * banish Vector3f from the source code, along with float
 
-* replace PingusError with std::runtime_error()
-
 * reduce global variables
 
 * get rid of "pingus/pingus.cpp"
 
 * make pingu.hpp use int not float
+
+* data/prefab/ completly obsolete? if so remove
 
 
 OLPC Issues
@@ -53,9 +53,9 @@ OLPC Issues
   drawing or collision detection (likely to many rectangles -> go
   Microtile array or make RectMerger suck in rects that are close together)
 
-* music doesn't makes things very slow and then just stops working
+* music does make things very slow and then just stops working
 
-* cursor and icons are to small, fonts maybe too
+* cursor and icons are to small
 
 * maybe bigger font
 
@@ -211,6 +211,9 @@ New Features
 * split screen multiplayer
 
 * keep highscores for levels (number saved and stuff like that)
+
+* add clickable WorldObjs, that can be triggered by the user, not by a
+  Pingu
 
 Wishlist:
 =========

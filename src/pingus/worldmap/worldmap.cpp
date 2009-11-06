@@ -27,7 +27,6 @@
 #include "pingus/resource.hpp"
 #include "pingus/globals.hpp"
 #include "engine/sound/sound.hpp"
-#include "pingus/pingus_error.hpp"
 #include "pingus/gettext.h"
 #include "pingus/globals.hpp"
 #include "util/sexpr_file_reader.hpp"

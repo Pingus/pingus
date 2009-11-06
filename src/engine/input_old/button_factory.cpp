@@ -50,7 +50,7 @@ Button* ButtonFactory::create(FileReader reader)
     return triple_button(reader);
 
   else
-    PingusError::raise(std::string("Unknown button type: ") + reader.get_name());
+    throw std::runtime_error(std::string("Unknown button type: ") + reader.get_name());
 
   return 0; // never reached
 }
@@ -60,7 +60,7 @@ Button* ButtonFactory::double_button(FileReader reader)
   const std::vector<FileReader>& sections = reader.get_sections();
   
   if (sections.size() != 2)
-    PingusError::raise("DoubleButton isn't <angle><button><button>");
+    throw std::runtime_error("DoubleButton isn't <angle><button><button>");
 
   Button *button1, *button2;
 
@@ -74,11 +74,11 @@ Button* ButtonFactory::joystick_button(FileReader reader)
 {
   int id;
   if (!reader.read_int("id", id))
-    PingusError::raise("JoystickButton without id parameter");
+    throw std::runtime_error("JoystickButton without id parameter");
 
   int button;
   if (!reader.read_int("button", button))
-    PingusError::raise("JoystickButton without button parameter");
+    throw std::runtime_error("JoystickButton without button parameter");
 
   return new JoystickButton(id, button);
 }
@@ -87,7 +87,7 @@ Button* ButtonFactory::key_button(FileReader reader)
 {
   std::string key;
   if (!reader.read_string("key", key))
-    PingusError::raise("KeyButton without key parameter");
+    throw std::runtime_error("KeyButton without key parameter");
 
   return new KeyButton(KeyButton::string_to_keyid(key));
 }
@@ -96,7 +96,7 @@ Button* ButtonFactory::mouse_button (FileReader reader)
 {
   int button;
   if (!reader.read_int("button", button))
-    PingusError::raise("MouseButton without button parameter");
+    throw std::runtime_error("MouseButton without button parameter");
 
   return new MouseButton(button);
 }
@@ -119,7 +119,7 @@ Button* ButtonFactory::triple_button(FileReader reader)
   const std::vector<FileReader>& sections = reader.get_sections();
   
   if (sections.size() != 3)
-    PingusError::raise("DoubleButton isn't <angle><button><button>");
+    throw std::runtime_error("DoubleButton isn't <angle><button><button>");
 
   Button *button1, *button2, *button3;
 

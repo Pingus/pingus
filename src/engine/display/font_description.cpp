@@ -16,7 +16,8 @@
 
 #include "engine/display/font_description.hpp"
 
-#include "pingus/pingus_error.hpp"
+#include <stdexcept>
+
 #include "util/file_reader.hpp"
 
 GlyphDescription::GlyphDescription() :
@@ -57,7 +58,7 @@ FontDescription::FontDescription(const Pathname& pathname_) :
 
   if (reader.get_name() != "pingus-font")
     {
-      PingusError::raise("FontDescription: not a pingus-font file");
+      throw std::runtime_error("FontDescription: not a pingus-font file");
     }
   else
     {

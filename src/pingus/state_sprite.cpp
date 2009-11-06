@@ -16,9 +16,9 @@
 
 #include "pingus/state_sprite.hpp"
 
-#include "pingus/resource.hpp"
-#include "pingus/pingus_error.hpp"
+#include <stdexcept>
 
+#include "pingus/resource.hpp"
 
 StateSprite::StateSprite() :
   sprites()
@@ -60,9 +60,8 @@ StateSprite::operator[](int state)
     }
   else
     {
-      throw PingusError("StateSprite error");
+      throw std::runtime_error("StateSprite error");
     }
 }
-
 
 /* EOF */

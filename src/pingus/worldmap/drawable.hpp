@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDMAP_DRAWABLE_HPP
 #define HEADER_PINGUS_PINGUS_WORLDMAP_DRAWABLE_HPP
 
-#include "pingus/pingus_error.hpp"
 #include "util/file_reader.hpp"
 
 class DrawingContext;

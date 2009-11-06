@@ -22,7 +22,6 @@
 #include "SDL.h"
 
 #include "util/string_util.hpp"
-#include "pingus/pingus_error.hpp"
 #include "pingus/globals.hpp"
 #include "math/math.hpp"
 #include "pingus/debug.hpp"

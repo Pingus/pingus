@@ -26,10 +26,10 @@ JoystickAxis::JoystickAxis(int id_, int axis_, float angle_)
 {
 #if 0
   if (id >= CL_Joystick::get_device_count())
-    PingusError::raise("JoystickAxis: Invalid joystick id");
+    throw std::runtime_error("JoystickAxis: Invalid joystick id");
 
   if (axis > CL_Joystick::get_device(id).get_axis_count())
-    PingusError::raise("JoystickAxis: Invalid joystick axis id");
+    throw std::runtime_error("JoystickAxis: Invalid joystick axis id");
 #endif
 
   if (angle < 0)

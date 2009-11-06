@@ -18,8 +18,6 @@
 
 #include <assert.h>
 #include <iostream>
-#include "pingus/pingus_error.hpp"
-
 
 /*
    uri -> file:///home/ingo/.pingus/images/...

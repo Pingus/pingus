@@ -16,10 +16,10 @@
 
 #include "engine/input/manager.hpp"
 
-#include "config.h"
+#include <stdexcept>
 
+#include "config.h"
 #include "util/string_util.hpp"
-#include "pingus/pingus_error.hpp"
 #include "util/pathname.hpp"
 #include "pingus/path_manager.hpp"
 #include "engine/input/sdl_driver.hpp"
@@ -103,7 +103,7 @@ Manager::create_controller(const Pathname& filename)
 
   if (reader.get_name() != "pingus-controller")
   {
-    PingusError::raise("Controller: invalid config file '" + filename.str() + "'");
+    throw std::runtime_error("Controller: invalid config file '" + filename.str() + "'");
   }
   else
   {
@@ -185,7 +185,7 @@ Manager::create_controller(const Pathname& filename)
       }
       else
       {
-        PingusError::raise(std::string("Manager: Unkown Element in Controller Config: ") 
+        throw std::runtime_error(std::string("Manager: Unkown Element in Controller Config: ") 
                            + i->get_name());
       }
     }
