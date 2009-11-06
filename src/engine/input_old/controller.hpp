@@ -21,7 +21,7 @@
 #include <list>
 #include <string>
 #include <vector>
-#include "SDL.h"
+#include <SDL.h>
 #include "file_reader.hpp"
 #include "event.hpp"
 

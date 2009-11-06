@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_SDL_FRAMEBUFFER_SURFACE_IMPL_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_SDL_FRAMEBUFFER_SURFACE_IMPL_HPP
 
-#include "SDL.h"
+#include <SDL.h>
 #include "engine/display/framebuffer_surface.hpp"
 
 /** */

@@ -48,7 +48,7 @@ extern "C" {
 }
 #endif
 
-#include "SDL.h"
+#include <SDL.h>
 
 #ifdef ENABLE_BINRELOC
 #include "../external/binreloc-2.0/binreloc.h"

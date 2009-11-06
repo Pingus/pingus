@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_ENGINE_DISPLAY_SDL_FRAMEBUFFER_HPP
 
 #include <vector>
-#include "SDL.h"
+#include <SDL.h>
 #include "math/color.hpp"
 #include "math/vector2i.hpp"
 #include "math/rect.hpp"

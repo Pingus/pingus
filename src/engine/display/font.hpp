@@ -19,7 +19,7 @@
 
 #include <string>
 #include <boost/shared_ptr.hpp>
-#include "SDL.h"
+#include <SDL.h>
 #include "math/origin.hpp"
 #include "math/rect.hpp"
 #include "math/size.hpp"

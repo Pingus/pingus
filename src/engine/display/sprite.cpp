@@ -19,7 +19,7 @@
 #include <iostream>
 #include <sstream>
 #include <assert.h>
-#include "SDL.h"
+#include <SDL.h>
 
 #include "math/origin.hpp"
 #include "math/vector2i.hpp"

@@ -20,7 +20,7 @@
 #include <map>
 #include <vector>
 
-#include "SDL.h"
+#include <SDL.h>
 #include "engine/input/driver.hpp"
 #include "engine/input/control.hpp"
 

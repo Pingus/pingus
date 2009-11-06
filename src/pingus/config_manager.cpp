@@ -18,7 +18,7 @@
 
 #include <iostream>
 #include <fstream>
-#include "SDL.h"
+#include <SDL.h>
 #include "pingus/globals.hpp"
 #include "util/system.hpp"
 #include "pingus/fps_counter.hpp"

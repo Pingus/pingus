@@ -19,7 +19,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include "SDL.h"
+#include <SDL.h>
 #include "SDL_image.h"
 #include "engine/display/surface.hpp"
 #include "util/line_iterator.hpp"

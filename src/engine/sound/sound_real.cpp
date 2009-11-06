@@ -17,7 +17,7 @@
 #include "engine/sound/sound_real.hpp"
 
 #include <stdexcept>
-#include "SDL.h"
+#include <SDL.h>
 #include "SDL_mixer.h"
 #include "pingus/globals.hpp"
 #include "pingus/debug.hpp"

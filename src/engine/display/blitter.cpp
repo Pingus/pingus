@@ -19,7 +19,7 @@
 #include <config.h>
 #include <stdio.h>
 #include <assert.h>
-#include "SDL.h"
+#include <SDL.h>
 
 #include "util/string_util.hpp"
 #include "pingus/globals.hpp"

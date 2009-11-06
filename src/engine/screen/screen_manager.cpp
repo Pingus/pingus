@@ -16,7 +16,7 @@
 
 #include "engine/screen/screen_manager.hpp"
 
-#include "SDL.h"
+#include <SDL.h>
 #include <iostream>
 #include <fstream>
 

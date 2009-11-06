@@ -29,7 +29,7 @@
 #include <GL/gl.h>
 #include <GL/glext.h>
 #endif
-#include "SDL.h"
+#include <SDL.h>
 
 #include "engine/display/framebuffer_surface.hpp"
 

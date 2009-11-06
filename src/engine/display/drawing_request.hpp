@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_DRAWING_REQUEST_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_DRAWING_REQUEST_HPP
 
-#include "SDL.h"
+#include <SDL.h>
 #include "math/vector2i.hpp"
 #include "math/rect.hpp"
 

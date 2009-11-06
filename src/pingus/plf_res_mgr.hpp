@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_PINGUS_PLF_RES_MGR_HPP
 
 #include "pingus/pingus_level.hpp"
-#include "SDL.h"
+#include <SDL.h>
 
 class Pathname;
 
