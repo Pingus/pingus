@@ -23,12 +23,12 @@
 
 #include "engine/display/screenshot.hpp"
 #include "engine/screen/screen_manager.hpp"
-#include "pingus/addon_menu.hpp"
+#include "pingus/screens/addon_menu.hpp"
 #include "pingus/config_manager.hpp"
 #include "pingus/fps_counter.hpp"
 #include "pingus/globals.hpp"
-#include "pingus/level_menu.hpp"
-#include "pingus/option_menu.hpp"
+#include "pingus/screens/level_menu.hpp"
+#include "pingus/screens/option_menu.hpp"
 
 GlobalEvent global_event;
 

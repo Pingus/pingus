@@ -14,19 +14,20 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "pingus/pingus_menu.hpp"
+#include "pingus/screens/pingus_menu.hpp"
 
 #include <config.h>
-#include "gettext.h"
+
+#include "pingus/gettext.h"
 #include "pingus/components/menu_button.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 #include "engine/sound/sound.hpp"
-#include "pingus/level_menu.hpp"
+#include "pingus/screens/level_menu.hpp"
 #include "pingus/stat_manager.hpp"
-#include "pingus/start_screen.hpp"
-#include "pingus/story_screen.hpp"
+#include "pingus/screens/start_screen.hpp"
+#include "pingus/screens/story_screen.hpp"
 #include "pingus/worldmap/worldmap.hpp"
 #include "pingus/worldmap/worldmap_screen.hpp"
 #include "engine/screen/screen_manager.hpp"
@@ -35,7 +36,7 @@
 #include "pingus/path_manager.hpp"
 #include "util/pathname.hpp"
 #include "editor/editor_screen.hpp"
-#include "pingus/credits.hpp"
+#include "pingus/screens/credits.hpp"
 #include "pingus/layer_manager.hpp"
 
 PingusMenu::PingusMenu() :

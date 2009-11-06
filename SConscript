@@ -299,6 +299,7 @@ if not ('configure' in COMMAND_LINE_TARGETS):
                                   Glob('src/pingus/components/*.cpp') + \
                                   Glob('src/pingus/movers/*.cpp') + \
                                   Glob('src/pingus/particles/*.cpp') + \
+                                  Glob('src/pingus/screens/*.cpp') + \
                                   Glob('src/pingus/worldmap/*.cpp') + \
                                   Glob('src/pingus/worldobjs/*.cpp') + \
                                   Glob('src/util/*.cpp') + \

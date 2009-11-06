@@ -29,7 +29,7 @@
 #include "pingus/res_descriptor.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/stat_manager.hpp"
-#include "pingus/story_screen.hpp"
+#include "pingus/screens/story_screen.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "engine/sound/sound.hpp"
 #include "pingus/worldmap/pingus.hpp"

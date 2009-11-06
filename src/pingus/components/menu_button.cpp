@@ -22,7 +22,7 @@
 #include "engine/sound/sound.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/gettext.h"
-#include "pingus/pingus_menu.hpp"
+#include "pingus/screens/pingus_menu.hpp"
 
 
 MenuButton::MenuButton(PingusMenu* menu_,

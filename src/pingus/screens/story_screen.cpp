@@ -14,28 +14,29 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "pingus/story_screen.hpp"
+#include "pingus/screens/story_screen.hpp"
 
 #include <algorithm>
 #include <vector>
-#include "gettext.h"
-#include "pingus/globals.hpp"
-#include "pingus/resource.hpp"
+
+#include "engine/display/display.hpp"
+#include "engine/gui/component.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
 #include "engine/screen/screen_manager.hpp"
-#include "engine/gui/component.hpp"
+#include "engine/sound/sound.hpp"
 #include "math/math.hpp"
 #include "pingus/fonts.hpp"
+#include "pingus/gettext.h"
+#include "pingus/globals.hpp"
 #include "pingus/res_descriptor.hpp"
+#include "pingus/resource.hpp"
+#include "pingus/screens/credits.hpp"
+#include "pingus/stat_manager.hpp"
 #include "pingus/worldmap/worldmap.hpp"
 #include "pingus/worldmap/worldmap_screen.hpp"
 #include "pingus/worldmap/worldmap_story.hpp"
-#include "pingus/stat_manager.hpp"
-#include "pingus/credits.hpp"
-#include "engine/display/display.hpp"
 #include "util/utf8.hpp"
-#include "engine/sound/sound.hpp"
 
 class StoryScreenComponent : public GUI::Component
 {

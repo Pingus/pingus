@@ -24,7 +24,7 @@
 #include "util/string_util.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/server.hpp"
-#include "pingus/game_session.hpp"
+#include "pingus/screens/game_session.hpp"
 #include "engine/display/drawing_context.hpp"
 
 using namespace Actions;

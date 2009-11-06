@@ -16,7 +16,7 @@
 
 #include "pingus/components/smallmap.hpp"
 
-#include "pingus/game_session.hpp"
+#include "pingus/screens/game_session.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "engine/display/display.hpp"
 #include "engine/display/drawing_context.hpp"

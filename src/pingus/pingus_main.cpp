@@ -26,12 +26,12 @@
 #include "lisp/parser.hpp"
 #include "editor/editor_level.hpp"
 #include "util/string_util.hpp"
-#include "pingus/demo_session.hpp"
+#include "pingus/screens/demo_session.hpp"
 #include "util/sexpr_file_reader.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/config_manager.hpp"
 #include "engine/display/display.hpp"
-#include "pingus/pingus_menu.hpp"
+#include "pingus/screens/pingus_menu.hpp"
 
 #if defined(__APPLE__)
 /* Can't use the include, some type names conflict.
@@ -66,18 +66,18 @@ extern "C" {
 #include "pingus/pingus_error.hpp"
 #include "pingus/fps_counter.hpp"
 #include "pingus/plf_res_mgr.hpp"
-#include "pingus/game_session.hpp"
-#include "pingus/story_screen.hpp"
+#include "pingus/screens/game_session.hpp"
+#include "pingus/screens/story_screen.hpp"
 
-#include "pingus/start_screen.hpp"
+#include "pingus/screens/start_screen.hpp"
 #include "pingus/savegame_manager.hpp"
 #include "pingus/stat_manager.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/resource.hpp"
-#include "pingus/credits.hpp"
+#include "pingus/screens/credits.hpp"
 #include "engine/sound/sound.hpp"
 #include "pingus/worldmap/worldmap_screen.hpp"
-#include "pingus/font_test_screen.hpp"
+#include "pingus/screens/font_test_screen.hpp"
 #include "pingus/worldmap/worldmap_screen.hpp"
 #include "pingus/worldobj_factory.hpp"
 

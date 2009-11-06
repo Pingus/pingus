@@ -45,7 +45,7 @@
 #include "math/math.hpp"
 #include "pingus/stat_manager.hpp"
 
-#include "pingus/story_screen.hpp"
+#include "pingus/screens/story_screen.hpp"
 #include "engine/screen/screen_manager.hpp"
 
 namespace WorldmapNS {

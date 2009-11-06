@@ -26,7 +26,7 @@
 #include "pingus/server.hpp"
 #include "pingus/pingu.hpp"
 #include "engine/display/display.hpp"
-#include "pingus/game_session.hpp"
+#include "pingus/screens/game_session.hpp"
 
 Playfield::Playfield(Server* server_, GameSession* session_, const Rect& rect_) :
   RectComponent(rect_),

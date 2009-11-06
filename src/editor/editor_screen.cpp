@@ -33,7 +33,7 @@
 #include "editor/file_dialog.hpp"
 #include "pingus/path_manager.hpp"
 #include "util/pathname.hpp"
-#include "pingus/game_session.hpp"
+#include "pingus/screens/game_session.hpp"
 #include "editor/editor_level.hpp"
 #include "editor/panel.hpp"
 #include "editor/panel.hpp"

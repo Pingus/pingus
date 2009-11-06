@@ -14,7 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "pingus/credits.hpp"
+#include "pingus/screens/credits.hpp"
 
 #include <iostream>
 #include "engine/screen/screen_manager.hpp"
@@ -25,7 +25,7 @@
 #include "pingus/resource.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/fonts.hpp"
-#include "gettext.h"
+#include "pingus/gettext.h"
 #include "engine/display/display.hpp"
 #include "engine/display/blitter.hpp"
 

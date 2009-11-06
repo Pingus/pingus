@@ -18,7 +18,7 @@
 
 #include <algorithm>
 #include <vector>
-#include "pingus/story_screen.hpp"
+#include "pingus/screens/story_screen.hpp"
 #include "util/file_reader.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/pingus_error.hpp"

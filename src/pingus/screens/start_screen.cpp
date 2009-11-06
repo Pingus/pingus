@@ -14,26 +14,27 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "pingus/start_screen.hpp"
+#include "pingus/screens/start_screen.hpp"
 
 #include <iostream>
+
+#include "engine/display/blitter.hpp"
+#include "engine/display/display.hpp"
+#include "engine/gui/component.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
-#include "engine/gui/component.hpp"
 #include "engine/screen/screen_manager.hpp"
-#include "engine/display/blitter.hpp"
-#include "gettext.h"
-#include "pingus/game_session.hpp"
-#include "pingus/globals.hpp"
-#include "util/system.hpp"
-#include "pingus/fonts.hpp"
-#include "pingus/resource.hpp"
-#include "pingus/game_time.hpp"
 #include "engine/sound/sound.hpp"
+#include "pingus/fonts.hpp"
+#include "pingus/game_time.hpp"
+#include "pingus/gettext.h"
+#include "pingus/globals.hpp"
 #include "pingus/pingus_level.hpp"
+#include "pingus/resource.hpp"
+#include "pingus/screens/game_session.hpp"
 #include "pingus/string_format.hpp"
-#include "engine/display/display.hpp"
 #include "util/string_util.hpp"
+#include "util/system.hpp"
 
 class StartScreenComponent : public GUI::Component
 {

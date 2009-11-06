@@ -30,7 +30,7 @@
 #include "pingus/plf_res_mgr.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/savegame_manager.hpp"
-#include "pingus/start_screen.hpp"
+#include "pingus/screens/start_screen.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "util/file_reader.hpp"
 #include "util/system.hpp"

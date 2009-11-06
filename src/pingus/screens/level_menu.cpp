@@ -14,23 +14,24 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "pingus/level_menu.hpp"
+#include "pingus/screens/level_menu.hpp"
 
 #include <boost/format.hpp>
 #include <boost/function.hpp>
 #include <boost/bind.hpp>
-#include "gettext.h"
+
+#include "pingus/gettext.h"
 #include "pingus/resource.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "pingus/fonts.hpp"
 #include "engine/display/drawing_context.hpp"
-#include "pingus/option_menu.hpp"
+#include "pingus/screens/option_menu.hpp"
 #include "util/system.hpp"
 #include "engine/display/display.hpp"
 #include "engine/gui/rect_component.hpp"
 #include "engine/gui/gui_manager.hpp"
-#include "pingus/game_session.hpp"
-#include "pingus/start_screen.hpp"
+#include "pingus/screens/game_session.hpp"
+#include "pingus/screens/start_screen.hpp"
 #include "pingus/globals.hpp"
 #include "engine/gui/surface_button.hpp"
 #include "engine/sound/sound.hpp"

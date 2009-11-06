@@ -18,7 +18,7 @@
 
 #include "engine/display/scene_context.hpp"
 #include "pingus/fonts.hpp"
-#include "pingus/game_session.hpp"
+#include "pingus/screens/game_session.hpp"
 #include "pingus/globals.hpp"
 #include "math/vector3f.hpp"
 #include "pingus/pingu.hpp"

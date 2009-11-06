@@ -18,7 +18,7 @@
 
 #include "pingus/globals.hpp"
 #include "pingus/server.hpp"
-#include "pingus/game_session.hpp"
+#include "pingus/screens/game_session.hpp"
 #include "pingus/world.hpp"
 #include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
