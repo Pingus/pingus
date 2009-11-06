@@ -30,15 +30,15 @@ class ControllerAxis;
 class ControllerPointer;
 class ControllerScroller;
 class ControllerKeyboard;
-
+
 class Controller
 {
-
+
 private:
   static Controller* current_;
 public:
   static Controller* current();
-
+
 private:
   // State Stuff
   std::vector<ControllerButton*>   buttons;
@@ -80,7 +80,7 @@ private:
   Controller(const Controller&);
   Controller& operator= (const Controller&);
 };
-
+
 } // namespace Input
 
 #endif 

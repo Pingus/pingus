@@ -24,7 +24,7 @@
 #include "engine/display/blitter.hpp"
 #include "math/rect.hpp"
 #include "pingus/debug.hpp"
-
+
 class SurfaceImpl
 {
 public:
@@ -48,7 +48,7 @@ private:
   SurfaceImpl(const SurfaceImpl&);
   SurfaceImpl & operator=(const SurfaceImpl&);
 };
-
+
 Surface::Surface() :
   impl()
 {
@@ -368,5 +368,5 @@ Surface::print(std::ostream& out)
       SDL_UnlockSurface(impl->surface);
     }
 }
-
+
 /* EOF */

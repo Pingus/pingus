@@ -27,7 +27,7 @@
 #include "util/string_util.hpp"
 
 namespace Editor {
-
+
 /*
  *
  * ActionDialog: 
@@ -133,7 +133,7 @@ ActionProperties::on_inputbox_change(const std::string& value, Actions::ActionNa
   level->set_action(Actions::action_to_string(id), StringUtil::to<int>(value));
 }
 
-
+
 } // namespace Editor
 
 /* EOF */

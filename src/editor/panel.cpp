@@ -144,7 +144,7 @@ private:
   PanelButton(const PanelButton&);
   PanelButton & operator=(const PanelButton&);
 };
-
+
 Panel::Panel(EditorScreen* editor_) :
   editor(editor_),
   logo("core/editor/logo"),

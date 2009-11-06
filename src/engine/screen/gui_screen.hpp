@@ -65,7 +65,6 @@ private:
   GUIScreen& operator= (const GUIScreen&);
 };
 
-
 #endif
 
 /* EOF */

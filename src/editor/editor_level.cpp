@@ -31,12 +31,12 @@
 #include "util/sexpr_file_writer.hpp"
 
 namespace Editor {
-
+
 static bool LevelObjSort(LevelObj *a, LevelObj *b)
 {
   return (a->get_pos().z < b->get_pos().z);
 }
-
+
 // Default constructor
 EditorLevel::EditorLevel()
   : impl(new LevelImpl())
@@ -92,20 +92,20 @@ EditorLevel::clear() {
   set_impl_defaults();
 }
 
-
+
 // Default Destructor
 EditorLevel::~EditorLevel()
 {
   if (impl)
     delete impl;
 }
-
+
 Size
 EditorLevel::get_size() const
 {
   return impl->size;
 }
-
+
 /** Verify that level is valid:
     Level should contain the following attributes in order to be "valid":
     -----------
@@ -126,7 +126,7 @@ bool EditorLevel::is_valid()
   else
     return false;
 }
-
+
 // Save the level to a file.  Returns true if successful
 bool EditorLevel::save_level(const std::string& filename)
 {
@@ -193,7 +193,7 @@ bool EditorLevel::save_level(const std::string& filename)
 
   return true;
 }
-
+
 // Load an existing level from a file
 void EditorLevel::load_level(const Pathname& pathname)
 {
@@ -328,14 +328,14 @@ void EditorLevel::load_level(const Pathname& pathname)
 
   sort();
 }
-
+
 void
 EditorLevel::sort()
 {
   // Sort by Z coordinate
   std::stable_sort(impl->objects.begin(), impl->objects.end(), LevelObjSort);
 }
-
+
 void
 EditorLevel::set_description(const std::string& str)
 {
@@ -551,7 +551,7 @@ EditorLevel::object_at (int x, int y)
     }
   return 0;
 }
-
+
 } // namespace Editor
 
 /* EOF */

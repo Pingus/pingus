@@ -27,7 +27,7 @@ class Vector2i;
 class Rect;
 class Color;
 class Framebuffer;
-
+
 class Display
 {
 private:
@@ -53,7 +53,7 @@ private:
   Display (const Display&);
   Display& operator= (const Display&);
 };
-
+
 #endif
 
 /* EOF */

@@ -20,7 +20,7 @@
 class DrawingContext;
 
 namespace GUI {
-
+
 class GroupComponent;
 
 /** A component represents an area which recivies events in the GUI,
@@ -52,7 +52,7 @@ public:
   virtual void update (float delta) { }
 
   virtual bool is_at (int x, int y) { return false; }
-
+
   // Events
   /** Gets issued once the primary button is pressed */
   virtual void on_primary_button_press (int x, int y) { }
@@ -95,7 +95,7 @@ private:
   Component (const Component&);
   Component& operator= (const Component&);
 };
-
+
 } // namespace GUI
 
 #endif

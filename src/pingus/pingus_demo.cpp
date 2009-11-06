@@ -23,7 +23,7 @@
 #include "pingus/server_event.hpp"
 #include "util/file_reader.hpp"
 #include "util/pathname.hpp"
-
+
 PingusDemo::PingusDemo(const Pathname& pathname) :
   levelname(),
   checksum(),
@@ -53,5 +53,5 @@ PingusDemo::PingusDemo(const Pathname& pathname) :
         }
     }
 }
-
+
 /* EOF */

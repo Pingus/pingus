@@ -30,7 +30,7 @@ class SpriteImpl;
 class SpriteDescription;
 class ResDescriptor;
 class Framebuffer;
-
+
 class Sprite
 {
 public:
@@ -65,7 +65,7 @@ public:
 private:
   boost::shared_ptr<SpriteImpl> impl;
 };
-
+
 #endif
 
 /* EOF */

@@ -19,7 +19,7 @@
 #include "engine/display/framebuffer.hpp"
 
 #define SCALE_FACTOR 8.0f
-
+
 class SceneContextImpl
 {
 public:
@@ -48,7 +48,7 @@ public:
   {
   }
 };
-
+
 SceneContext::SceneContext() : 
   impl(new SceneContextImpl())
 {
@@ -81,7 +81,6 @@ SceneContext::highlight()
 { 
   return impl->highlight; 
 }
-
 
 /** Translate the drawing context */
 void
@@ -194,5 +193,5 @@ SceneContextDrawingRequest::render(Framebuffer& fb, const Rect& rect)
 {
   sc->render(fb, rect);
 }
-
+
 /* EOF */

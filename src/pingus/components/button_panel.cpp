@@ -28,7 +28,7 @@
 #include "util/string_util.hpp"
 
 using namespace Actions;
-
+
 ButtonPanel::ButtonPanel(GameSession* s, const Vector2i& pos) :
   RectComponent(Rect()),
   session(s),
@@ -166,5 +166,5 @@ ButtonPanel::set_pos(const Vector2i& pos)
   set_rect(Rect(Vector2i(pos.x, pos.y - (buttons.size() * 38)/2),
                 Size(60, buttons.size() * 38)));
 }
-
+
 /* EOF */

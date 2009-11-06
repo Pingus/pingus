@@ -23,7 +23,7 @@
 #include "math/vector2i.hpp"
 
 class Framebuffer;
-
+
 class DrawingRequest
 {
 protected:
@@ -50,7 +50,7 @@ private:
   DrawingRequest (const DrawingRequest&);
   DrawingRequest& operator= (const DrawingRequest&);
 };
-
+
 #endif
 
 /* EOF */

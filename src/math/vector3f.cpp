@@ -39,10 +39,10 @@ Vector3f::rotate (float angle, const Vector3f& pos) const
 		+ z * (pos.z * pos.z * (1-c) + c)
 	       );
 }
-
+
 std::ostream& operator<<(std::ostream& os, const Vector3f& v)
 {
   return os << "Vector3f(" << v.x << ", " << v.y << ", " << v.z << ")";
 }
-
+
 /* EOF */

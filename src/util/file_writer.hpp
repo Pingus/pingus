@@ -19,7 +19,6 @@
 
 #include <string>
 
-
 class Vector3f;
 class Size;
 class Color;
@@ -43,7 +42,6 @@ public:
   virtual void write_vector (const char* name, const Vector3f&) =0;
   virtual void write_size   (const char* name, const Size&) = 0;
 };
-
 
 #endif
 

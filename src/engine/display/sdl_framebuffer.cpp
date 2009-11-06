@@ -22,7 +22,7 @@
 #include "engine/display/sdl_framebuffer_surface_impl.hpp"
 #include "engine/display/surface.hpp"
 #include "math/math.hpp"
-
+
 namespace {
 
 typedef void (*draw_pixel_func)(SDL_Surface* screen, int, int, const Color&);
@@ -139,7 +139,7 @@ void clip(int& i, int min, int max)
 }
 
 } // namespace
-
+
 SDLFramebuffer::SDLFramebuffer() :
   screen(0),
   cliprect_stack()
@@ -468,5 +468,5 @@ SDLFramebuffer::pop_cliprect()
   else
     SDL_SetClipRect(screen, &cliprect_stack.back());
 }
-
+
 /* EOF */

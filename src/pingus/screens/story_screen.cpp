@@ -37,7 +37,7 @@
 #include "pingus/worldmap/worldmap_screen.hpp"
 #include "pingus/worldmap/worldmap_story.hpp"
 #include "util/utf8.hpp"
-
+
 class StoryScreenComponent : public GUI::Component
 {
 private:
@@ -70,7 +70,7 @@ private:
   StoryScreenComponent(const StoryScreenComponent&);
   StoryScreenComponent & operator=(const StoryScreenComponent&);
 };
-
+
 class StoryScreenContinueButton : public GUI::SurfaceButton
 {
 private:
@@ -100,7 +100,7 @@ private:
   StoryScreenContinueButton(const StoryScreenContinueButton&);
   StoryScreenContinueButton & operator=(const StoryScreenContinueButton&);
 };
-
+
 class StoryScreenSkipButton : public GUI::SurfaceButton
 {
 private: 
@@ -142,7 +142,7 @@ private:
   StoryScreenSkipButton(const StoryScreenSkipButton&);
   StoryScreenSkipButton & operator=(const StoryScreenSkipButton&);
 };
-
+
 StoryScreen::StoryScreen(FileReader reader) :
   story(new WorldmapNS::WorldmapStory(reader)),
   story_comp(),
@@ -320,5 +320,5 @@ StoryScreen::resize(const Size& size_)
     skip_button->set_pos(size.width  - 4, 
                          size.height - 26);
 }
-
+
 /* EOF */

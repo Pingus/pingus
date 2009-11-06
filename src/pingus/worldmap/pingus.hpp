@@ -75,7 +75,6 @@ private:
   Vector3f last_pos;
 
 public:
-  /** */
   Pingus (PathGraph* arg_path);
   ~Pingus ();
 
@@ -113,7 +112,6 @@ private:
 
   float calc_edge_path_length();
 
-  /** */
   Vector3f interpolate(const Vector3f& a, const Vector3f& b, float perc);
 
   Pingus (const Pingus&);

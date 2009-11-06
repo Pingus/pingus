@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_ENGINE_DISPLAY_NULL_FRAMEBUFFER_HPP
 
 #include "engine/display/framebuffer.hpp"
-
+
 /** NullFramebuffer is an empty dummy class for debugging purposes */
 class NullFramebuffer : public Framebuffer
 {
@@ -47,7 +47,7 @@ public:
 
   Size get_size() const;
 };
-
+
 #endif
 
 /* EOF */

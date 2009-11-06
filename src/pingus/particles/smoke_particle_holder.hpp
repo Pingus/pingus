@@ -23,7 +23,6 @@
 #include "math/vector3f.hpp"
 #include "pingus/worldobj.hpp"
 
-
 class SceneContext;
 
 namespace Particles {

@@ -87,7 +87,7 @@ private:
   AxisPointer(const AxisPointer&);
   AxisPointer & operator=(const AxisPointer&);
 };
-
+
 class AxisScroller : public Scroller
 {
 private:
@@ -144,7 +144,7 @@ private:
   AxisScroller(const AxisScroller&);
   AxisScroller & operator=(const AxisScroller&);
 };
-
+
 class ButtonScroller : public Scroller
 {
 private:
@@ -210,7 +210,7 @@ private:
   ButtonScroller(const ButtonScroller&);
   ButtonScroller & operator=(const ButtonScroller&);
 };
-
+
 Button*
 CoreDriver::create_button(const FileReader& reader, Control* parent)
 {

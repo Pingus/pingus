@@ -83,7 +83,6 @@ MouseButton::mouse_handler(const SDL_Event& event, void* userdata)
     }
 }
 
-
 } // namespace Buttons
 } // namespace Input
 

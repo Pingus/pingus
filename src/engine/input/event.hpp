@@ -21,7 +21,7 @@
 #include <vector>
 
 namespace Input {
-
+
 enum EventType { BUTTON_EVENT_TYPE, 
                  POINTER_EVENT_TYPE, 
                  AXIS_EVENT_TYPE, 
@@ -63,7 +63,7 @@ enum EventName {
   ACTION_AXIS
 };
 
-
+
 enum ButtonState { BUTTON_RELEASED, BUTTON_PRESSED };
 
 struct ButtonEvent
@@ -71,7 +71,7 @@ struct ButtonEvent
   EventName   name;
   ButtonState state;
 };
-
+
 
 struct PointerEvent
 {
@@ -79,25 +79,25 @@ struct PointerEvent
   float x;
   float y;
 };
-
+
 struct AxisEvent
 {
   EventName name;
   float     dir;
 };
-
+
 struct ScrollEvent
 {
   EventName name;
   float x_delta;
   float y_delta;
 };
-
+
 struct KeyboardEvent
 {
   unsigned short key;
 };
-
+
 struct Event
 {
   EventType type;
@@ -112,7 +112,7 @@ struct Event
 };
 
 typedef std::vector<Event> EventLst;
-
+
 inline Event makeButtonEvent(EventName name, ButtonState state)
 {
   Event event;
@@ -123,7 +123,7 @@ inline Event makeButtonEvent(EventName name, ButtonState state)
 
   return event;
 }
-
+
 inline Event makePointerEvent(EventName name, float x, float y)
 {
   Event event;
@@ -135,7 +135,7 @@ inline Event makePointerEvent(EventName name, float x, float y)
 
   return event;
 }
-
+
 inline Event makeAxisEvent(EventName name, float dir)
 {
   Event event;
@@ -146,7 +146,7 @@ inline Event makeAxisEvent(EventName name, float dir)
 
   return event;
 }
-
+
 inline Event makeScrollerEvent(EventName name, float x_delta, float y_delta)
 {
   Event event;
@@ -158,7 +158,7 @@ inline Event makeScrollerEvent(EventName name, float x_delta, float y_delta)
 
   return event;
 }
-
+
 inline Event makeKeyboardEvent(unsigned short c)
 {
   Event event;
@@ -168,7 +168,7 @@ inline Event makeKeyboardEvent(unsigned short c)
 	
   return event;
 }
-
+
 } // namespace Input
 
 #endif

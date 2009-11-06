@@ -56,7 +56,6 @@ private:
 
 extern PathManager path_manager;
 
-
 #endif
 
 /* EOF */

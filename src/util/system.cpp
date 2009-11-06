@@ -401,7 +401,6 @@ System::checksum(std::string filename)
   return str.str();
 }
 
-
 uint64_t
 System::get_mtime(const std::string& filename)
 {

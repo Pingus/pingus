@@ -21,7 +21,7 @@
 
 #include "engine/display/surface.hpp"
 #include "math/size.hpp"
-
+
 class FramebufferSurfaceImpl
 {
 public:
@@ -32,8 +32,7 @@ public:
   virtual int get_height() const =0;
   virtual Surface to_surface() const =0; 
 };
-
-/** */
+
 class FramebufferSurface
 {
 public:
@@ -58,7 +57,7 @@ public:
 private:
   boost::shared_ptr<FramebufferSurfaceImpl> impl;
 };
-
+
 #endif
 
 /* EOF */

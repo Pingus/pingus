@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_ENGINE_GUI_GAME_DELTA_RECORDER_HPP
 #define HEADER_PINGUS_ENGINE_GUI_GAME_DELTA_RECORDER_HPP
 
-
 class GameDeltaRecorder
 {
 private:
@@ -26,7 +25,6 @@ public:
   GameDeltaRecorder ();
   GameDelta* get ();
 };
-
 
 #endif
 

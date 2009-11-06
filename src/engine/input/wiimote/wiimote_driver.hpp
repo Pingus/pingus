@@ -21,7 +21,6 @@
 
 namespace Input {
 
-/** */
 class WiimoteDriver : public Driver
 {
 private: 

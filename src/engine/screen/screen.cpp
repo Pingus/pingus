@@ -16,5 +16,4 @@
 
 #include "engine/screen/screen.hpp"
 
-
 /* EOF */

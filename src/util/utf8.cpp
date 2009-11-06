@@ -185,7 +185,7 @@ UTF8::decode_utf8(const std::string& text, size_t& p)
       throw std::runtime_error("Malformed utf-8 sequence");
     }
 }
-
+
 // FIXME: Get rid of exceptions in this code
 UTF8::iterator::iterator(const std::string& text_)
   : text(&text_),

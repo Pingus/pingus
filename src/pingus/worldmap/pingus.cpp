@@ -54,7 +54,6 @@ Pingus::~Pingus ()
 {
 }
 
-
 void
 Pingus::draw (DrawingContext& gc)
 {

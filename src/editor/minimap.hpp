@@ -20,10 +20,9 @@
 #include "engine/gui/rect_component.hpp"
 
 namespace Editor {
-
+
 class EditorScreen;
 
-/** */
 class Minimap : public GUI::RectComponent
 {
 private:
@@ -48,7 +47,7 @@ private:
   Minimap(const Minimap&);
   Minimap & operator=(const Minimap&);
 };
-
+
 } // namespace Editor
 
 #endif

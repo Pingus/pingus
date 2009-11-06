@@ -28,7 +28,7 @@
 #include "engine/display/surface.hpp"
 #include "util/line_iterator.hpp"
 #include "util/utf8.hpp"
-
+
 class FontImpl
 {
 public:
@@ -181,7 +181,7 @@ public:
     return Rect(Vector2i(x, y), get_size(str));
   }
 };
-
+
 Font::Font() :
   impl()
 {
@@ -250,5 +250,5 @@ Font::bounding_rect(int x, int y, const std::string& str) const
   else
     return Rect();
 }
-
+
 /* EOF */

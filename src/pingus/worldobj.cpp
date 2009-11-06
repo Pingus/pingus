@@ -21,7 +21,6 @@
 
 #include "engine/display/scene_context.hpp"
 
-
 World* WorldObj::world;
 
 void
@@ -84,6 +83,5 @@ WorldObj::draw (SceneContext& gc)
 	       gc.get_zoom ());
 #endif
 }
-
 
 /* EOF */

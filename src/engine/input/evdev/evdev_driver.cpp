@@ -19,7 +19,7 @@
 #include "engine/input/evdev/evdev_device.hpp"
 
 namespace Input {
-
+
 EvdevDriver::EvdevDriver() :
   devices()
 {
@@ -121,7 +121,7 @@ EvdevDriver::create_keyboard(const FileReader& reader, Control* parent)
 {
   return 0;
 }
-
+
 } // namespace Input
 
 /* EOF */

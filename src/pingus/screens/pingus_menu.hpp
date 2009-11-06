@@ -32,7 +32,7 @@ class SurfaceButton;
 class GameDelta;
 class LayerManager;
 class MenuButton;
-
+
 class PingusMenu : public GUIScreen
 {
 public:
@@ -79,7 +79,7 @@ private:
   PingusMenu (const PingusMenu&);
   PingusMenu& operator= (const PingusMenu&);
 };
-
+
 #endif
 
 /* EOF */

@@ -36,7 +36,7 @@
 #include "engine/display/null_framebuffer.hpp"
 
 std::auto_ptr<Framebuffer> Display::framebuffer;
-
+
 void
 Display::flip_display()
 {
@@ -206,5 +206,5 @@ Display::get_fullscreen_video_modes()
 
   return video_modes;
 }
-
+
 /* EOF */

@@ -23,7 +23,7 @@
 #include "engine/input/event.hpp"
 
 namespace Input {
-
+
 struct InputEventDefinition 
 {
   EventType   type;
@@ -36,7 +36,7 @@ struct InputEventDefinition
     name()
   {}
 };
-
+
 class ControllerDescription
 {
 private:
@@ -62,7 +62,7 @@ public:
   std::vector<int> get_scrollers() const;
   std::vector<int> get_keyboards() const;
 };
-
+
 } // namespace Input
 
 #endif

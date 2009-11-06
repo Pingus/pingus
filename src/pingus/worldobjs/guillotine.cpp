@@ -52,7 +52,6 @@ Guillotine::draw (SceneContext& gc)
   }
 }
 
-
 float
 Guillotine::get_z_pos () const
 {

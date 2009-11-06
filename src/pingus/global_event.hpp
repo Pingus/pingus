@@ -35,7 +35,6 @@ private:
 
 extern GlobalEvent global_event;
 
-
 #endif
 
 /* EOF */

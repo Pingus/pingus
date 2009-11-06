@@ -82,7 +82,6 @@ public:
   static ServerEvent make_pingu_action_event(int t, int id, const Vector3f& pos, Actions::ActionName action);
 };
 
-
 #endif
 
 /* EOF */

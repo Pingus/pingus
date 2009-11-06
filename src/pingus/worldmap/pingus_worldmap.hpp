@@ -24,7 +24,7 @@
 #include "util/pathname.hpp"
 
 class PingusWorldmapImpl;
-
+
 /** PingusWorldmap is responisble for loading .worldmap files, its
     analog to PingusLevel */
 class PingusWorldmap
@@ -59,7 +59,7 @@ private:
 protected:
   boost::shared_ptr<PingusWorldmapImpl> impl;
 };
-
+
 #endif
 
 /* EOF */

@@ -27,7 +27,7 @@ class FileDialog;
 class Pathname;
 
 namespace Editor {
-
+
 class EditorLevel;
 class LevelObj;
 class Panel;
@@ -102,7 +102,7 @@ public:
 
   /** Load a new level */
   void load(const Pathname& file);
-
+
   // Functions accessible from the GUI
   void level_new();
   void level_load();
@@ -145,7 +145,7 @@ private:
   EditorScreen& operator= (const EditorScreen&);
 
 };
-
+
 } // namespace Editor 
 
 #endif

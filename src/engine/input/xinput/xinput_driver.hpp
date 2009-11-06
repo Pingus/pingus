@@ -27,10 +27,9 @@
 #include "engine/input/driver.hpp"
 
 namespace Input {
-
+
 class XInputDevice;
 
-/** */
 class XInputDriver : public Driver
 {
 private:
@@ -59,7 +58,7 @@ public:
   Pointer*  create_pointer (const FileReader& reader, Control* parent);
   Keyboard* create_keyboard(const FileReader& reader, Control* parent) { return 0; }
 };
-
+
 } // namespace Input
 
 #endif

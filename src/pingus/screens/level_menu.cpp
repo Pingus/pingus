@@ -35,7 +35,7 @@
 #include "pingus/screens/option_menu.hpp"
 #include "pingus/screens/start_screen.hpp"
 #include "util/system.hpp"
-
+
 class LevelMenuAbortButton : public GUI::SurfaceButton
 {
 private:
@@ -70,7 +70,7 @@ private:
   LevelMenuAbortButton(const LevelMenuAbortButton&);
   LevelMenuAbortButton & operator=(const LevelMenuAbortButton&);
 };
-
+
 class LevelScrollButton : public GUI::SurfaceButton
 {
 private:
@@ -100,7 +100,7 @@ private:
   LevelScrollButton(const LevelScrollButton&);
   LevelScrollButton & operator=(const LevelScrollButton&);
 };
-
+
 class LevelsetSelector : public GUI::RectComponent
 {
 private:
@@ -228,7 +228,7 @@ private:
   LevelsetSelector(const LevelsetSelector&);
   LevelsetSelector & operator=(const LevelsetSelector&);
 };
-
+
 class LevelSelector : public GUI::RectComponent
 {
 private:
@@ -358,7 +358,7 @@ private:
   LevelSelector(const LevelSelector&);
   LevelSelector & operator=(const LevelSelector&);
 };
-
+
 LevelMenu::LevelMenu() :
   x_pos((Display::get_width()  - default_screen_width)/2),
   y_pos((Display::get_height() - default_screen_height)/2),
@@ -479,5 +479,5 @@ LevelMenu::resize(const Size& size_)
   abort_button->set_pos(size.width /2 - 300,
                         size.height/2 + 144);
 }
-
+
 /* EOF */

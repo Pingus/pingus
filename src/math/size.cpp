@@ -25,10 +25,10 @@
 #include "math/size.hpp"
 
 #include <iostream>
-
+
 std::ostream& operator<<(std::ostream& os, const Size& size)
 {
   return os << "Size(" << size.width << ", " << size.height << ")";
 }
-
+
 /* EOF */

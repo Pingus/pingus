@@ -20,7 +20,7 @@
 #include "pingus/fonts.hpp"
 
 namespace Editor {
-
+
 Button::Button(const Rect& rect_, const std::string& text_) :
   RectComponent(rect_), 
   text(text_),
@@ -79,7 +79,7 @@ Button::on_primary_button_release (int x, int y)
   if (mouse_over)
     on_click();    
 }
-
+
 } // namespace Editor
 
 /* EOF */

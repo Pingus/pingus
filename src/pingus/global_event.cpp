@@ -114,5 +114,4 @@ GlobalEvent::on_button_release(const SDL_KeyboardEvent& event)
 {
 }
 
-
 /* EOF */

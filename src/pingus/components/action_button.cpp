@@ -26,7 +26,7 @@
 #include "util/string_util.hpp"
 
 using namespace Actions;
-
+
 ArmageddonButton::ArmageddonButton(Server* s, int x, int y) :
   RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
   server(s),
@@ -96,7 +96,7 @@ ArmageddonButton::on_primary_button_click (int x, int y)
       pressed = true;
     }
 }
-
+
 ForwardButton::ForwardButton(GameSession* s, int x, int y) :
   RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
   session(s),
@@ -131,7 +131,7 @@ ForwardButton::on_primary_button_click (int x, int y)
 {
   session->set_fast_forward(!session->get_fast_forward());
 }
-
+
 PauseButton::PauseButton(GameSession* s, int x, int y) :
   RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
   session(s),
@@ -168,5 +168,5 @@ PauseButton::on_primary_button_click (int x, int y)
 {
   session->set_pause(!session->get_pause());
 }
-
+
 /* EOF */

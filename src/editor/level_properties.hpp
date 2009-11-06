@@ -20,12 +20,11 @@
 #include "engine/gui/group_component.hpp"
 
 namespace Editor {
-
+
 class EditorScreen;
 class EditorLevel;
 class Inputbox;
 
-/** */
 class LevelProperties : public GUI::GroupComponent
 {
 private:
@@ -75,7 +74,7 @@ private:
   LevelProperties (const LevelProperties&);
   LevelProperties& operator= (const LevelProperties&);
 };
-
+
 } // namespace Editor
 
 #endif

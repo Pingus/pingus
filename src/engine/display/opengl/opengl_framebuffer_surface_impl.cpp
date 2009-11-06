@@ -15,7 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "engine/display/opengl/opengl_framebuffer_surface_impl.hpp"
-
+
 namespace {
 
 inline int next_power_of_two(int val)
@@ -27,7 +27,7 @@ inline int next_power_of_two(int val)
 }
 
 } // namespace 
-
+
 OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src) :
   handle(),
   size(src->w, src->h),
@@ -84,5 +84,5 @@ OpenGLFramebufferSurfaceImpl::to_surface() const
 {
   return Surface();
 }
-
+
 /* EOF */

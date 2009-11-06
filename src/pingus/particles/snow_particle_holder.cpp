@@ -66,7 +66,6 @@ SnowParticleHolder::SnowParticleHolder() :
 {
 }
 
-
 void
 SnowParticleHolder::add_particle (int x, int y, bool colliding)
 {
@@ -114,7 +113,6 @@ SnowParticleHolder::update ()
     }
   }
 }
-
 
 void
 SnowParticleHolder::draw (SceneContext& gc)

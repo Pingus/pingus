@@ -34,7 +34,7 @@ class FPSCounter;
 class Size;
 class DrawingContext;
 class Screen;
-
+
 typedef boost::shared_ptr<Screen> ScreenPtr;
 
 class ScreenManager
@@ -100,7 +100,7 @@ private:
   ScreenManager (const ScreenManager&);
   ScreenManager& operator= (const ScreenManager&);
 };
-
+
 #endif
 
 /* EOF */

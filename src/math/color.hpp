@@ -19,7 +19,6 @@
 
 #include <SDL.h>
 
-/** */
 class Color
 {
 public:

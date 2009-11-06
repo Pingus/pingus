@@ -19,7 +19,6 @@
 
 #include "pingus/mover.hpp"
 
-
 class Collider;
 
 namespace Movers {

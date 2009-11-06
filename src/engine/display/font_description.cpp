@@ -19,7 +19,7 @@
 #include <stdexcept>
 
 #include "util/file_reader.hpp"
-
+
 GlyphDescription::GlyphDescription() :
   image(0), 
   unicode(0), 
@@ -43,7 +43,7 @@ GlyphDescription::GlyphDescription(FileReader& reader) :
   reader.read_int("advance", advance);
   reader.read_rect("rect",   rect);
 }
-
+
 FontDescription::FontDescription(const Pathname& pathname_) :
   pathname(pathname_),
   char_spacing(),
@@ -90,5 +90,5 @@ FontDescription::FontDescription(const Pathname& pathname_) :
         }
     }
 }
-
+
 /* EOF */

@@ -25,7 +25,7 @@
 #include "pingus/collision_mask.hpp"
 #include "pingus/gettext.h"
 #include "pingus/globals.hpp"
-
+
 CollisionMap::CollisionMap(int w, int h)
   : serial(0),
     width(w),
@@ -222,5 +222,5 @@ CollisionMap::get_serial()
 {
   return serial;
 }
-
+
 /* EOF */

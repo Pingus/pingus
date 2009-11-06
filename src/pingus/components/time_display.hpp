@@ -44,7 +44,6 @@ private:
   TimeDisplay& operator= (const TimeDisplay&);
 };
 
-
 #endif
 
 /* EOF */

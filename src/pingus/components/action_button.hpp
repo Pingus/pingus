@@ -29,7 +29,7 @@ class Server;
 class GameSession;
 class ActionHolder;
 class Vector;
-
+
 /** ArmageddonButton, press it to start the armageddon and to turn all
     pingus into bomber
 
@@ -56,7 +56,7 @@ private:
   ArmageddonButton (const ArmageddonButton&);
   ArmageddonButton& operator= (const ArmageddonButton&);
 };
-
+
 /** Fast Forward button, press it to let the game run faster, press it
     again to return to normal speed
 
@@ -80,7 +80,7 @@ private:
   ForwardButton (const ForwardButton&);
   ForwardButton& operator= (const ForwardButton&);
 };
-
+
 /** Pause button, press it to pause the game, press it again to
     continue
 
@@ -106,7 +106,7 @@ private:
   PauseButton (const PauseButton&);
   PauseButton& operator= (const PauseButton&);
 };
-
+
 #endif /* ACTIONBUTTON */
 
 /* EOF */

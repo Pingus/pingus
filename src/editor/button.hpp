@@ -22,8 +22,7 @@
 #include "engine/gui/rect_component.hpp"
 
 namespace Editor {
-
-/** */
+
 class Button : public GUI::RectComponent
 {
 private:
@@ -53,7 +52,7 @@ private:
   Button (const Button&);
   Button& operator= (const Button&);
 };
-
+
 } // namespace Editor
 
 #endif

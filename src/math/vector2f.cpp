@@ -19,11 +19,11 @@
 
 #include <config.h>
 #include <iostream>
-
+
 std::ostream& operator<<(std::ostream& s, const Vector2f& v)
 {
   s << "Vector2f(" << v.x << ", " << v.y << ")";
   return s;
 }
-
+
 /* EOF */

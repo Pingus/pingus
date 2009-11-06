@@ -34,7 +34,7 @@ namespace WorldmapNS {
 typedef int NodeId;
 class Worldmap;
 class WorldmapComponent;
-
+
 /** The WorldmapScreen manages the worldmaps and the translation
     between two worldmaps, it also holds the GUI elements that are
     accessible in the Worldmap Screen */
@@ -91,7 +91,7 @@ private:
   WorldmapScreen (const WorldmapScreen&);
   WorldmapScreen& operator= (const WorldmapScreen&);
 };
-
+
 } // namespace WorldmapNS
 
 #endif

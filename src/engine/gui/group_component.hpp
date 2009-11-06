@@ -21,8 +21,7 @@
 #include "engine/gui/rect_component.hpp"
 
 namespace GUI {
-
-/** */
+
 class GroupComponent : public RectComponent
 {
 private:
@@ -51,7 +50,7 @@ public:
   virtual void draw_background(DrawingContext& gc) {}
 
   void update(float delta);
-
+
   void on_primary_button_press(int x, int y);
   void on_primary_button_release(int x, int y);
  
@@ -84,7 +83,7 @@ private:
   GroupComponent(const GroupComponent&);
   GroupComponent& operator=(const GroupComponent&);
 };
-
+
 } // namespace GUI
 
 #endif

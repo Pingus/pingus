@@ -21,13 +21,12 @@
 #include "engine/gui/group_component.hpp"
 
 namespace Editor {
-
+
 class Button;
 class EditorScreen;
 class Inputbox;
 class Label;
 
-/** */
 class FileDialog : public GUI::GroupComponent
 {
 public: 
@@ -76,7 +75,7 @@ private:
   FileDialog (const FileDialog&);
   FileDialog& operator= (const FileDialog&);
 };
-
+
 } // namespace Editor
 
 #endif

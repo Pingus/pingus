@@ -38,7 +38,7 @@
 #endif
 
 namespace Input {
-
+
 Manager::Manager() :
   drivers(),
   controllers(),
@@ -72,7 +72,7 @@ Manager::Manager() :
   desc.add_button("action-9-button",     ACTION_9_BUTTON);
   desc.add_button("action-10-button",    ACTION_10_BUTTON);
 }
-
+
 Manager::~Manager()
 {
   for(Drivers::iterator i = drivers.begin(); i != drivers.end(); ++i)
@@ -80,7 +80,7 @@ Manager::~Manager()
     delete *i;
   }
 }
-
+
 static std::string get_driver_part(const std::string& fullname)
 {
   std::string::size_type i = fullname.find_first_of(':');
@@ -93,7 +93,7 @@ static std::string get_driver_part(const std::string& fullname)
     return "core";
   }
 }
-
+
 Controller*
 Manager::create_controller(const Pathname& filename)
 {
@@ -195,7 +195,7 @@ Manager::create_controller(const Pathname& filename)
   controllers.push_back(ctrl);
   return ctrl;
 }
-
+
 void
 Manager::update(float delta)
 {
@@ -206,7 +206,7 @@ Manager::update(float delta)
       i != controllers.end(); ++i)
     (*i)->update(delta);
 }
-
+
 Driver*
 Manager::get_driver(const std::string& name)
 {
@@ -219,7 +219,7 @@ Manager::get_driver(const std::string& name)
   }
   return 0;
 }
-
+
 Driver*
 Manager::load_driver(const std::string& name)
 {
@@ -262,7 +262,7 @@ Manager::load_driver(const std::string& name)
     return driver;
   }
 }
-
+
 Button*
 Manager::create_button(const FileReader& reader, Control* parent)
 {
@@ -279,7 +279,7 @@ Manager::create_button(const FileReader& reader, Control* parent)
     return 0;
   }
 }
-
+
 Axis*
 Manager::create_axis(const FileReader& reader, Control* parent)
 {
@@ -296,7 +296,7 @@ Manager::create_axis(const FileReader& reader, Control* parent)
     return 0;
   }
 }
-
+
 Pointer*
 Manager::create_pointer(const FileReader& reader, Control* parent)
 {
@@ -313,7 +313,7 @@ Manager::create_pointer(const FileReader& reader, Control* parent)
     return 0;
   }
 }
-
+
 Scroller*
 Manager::create_scroller(const FileReader& reader, Control* parent)
 {
@@ -347,7 +347,7 @@ Manager::create_keyboard(const FileReader& reader, Control* parent)
     return 0;
   }  
 }
-
+
 } // namespace Input
 
 /* EOF */

@@ -26,14 +26,14 @@
 #include "engine/display/sprite.hpp"
 #include "math/math.hpp"
 #include "math/origin.hpp"
-
+
 struct DrawingRequestsSorter
 {
   bool operator()(DrawingRequest* a, DrawingRequest* b) {
     return a->get_z_pos() < b->get_z_pos();
   }
 };
-
+
 class FontDrawingRequest : public DrawingRequest
 {
 private:
@@ -56,7 +56,7 @@ public:
     font.render(origin, static_cast<int>(pos.x + rect.left), static_cast<int>(pos.y + rect.top), text, fb);
   }
 };
-
+
 class SpriteDrawingRequest : public DrawingRequest
 {
 private:
@@ -75,7 +75,7 @@ public:
     sprite.render(pos.x + rect.left, pos.y + rect.top, fb);
   }
 };
-
+
 class FillScreenDrawingRequest : public DrawingRequest
 {
 private:
@@ -93,7 +93,7 @@ public:
     fb.fill_rect(rect, color);
   }
 };
-
+
 class LineDrawingRequest : public DrawingRequest
 {
 private:
@@ -119,7 +119,7 @@ public:
                  pos2 + Vector2i(rect.left, rect.top), color);
   }
 };
-
+
 class RectDrawingRequest : public DrawingRequest
 {
 private:
@@ -151,7 +151,7 @@ public:
       }
   }
 };
-
+
 class DrawingContextDrawingRequest : public DrawingRequest
 {
 private:
@@ -171,7 +171,7 @@ public:
     dc.render(fb, rect);
   }
 };
-
+
 DrawingContext::DrawingContext(const Rect& rect_, bool clip) :
   drawingrequests(),
   translate_stack(),
@@ -403,5 +403,5 @@ DrawingContext::world_to_screen(const Vector2i pos)
   return pos + Vector2i(int(translate_stack.back().x + rect.left), 
                         int(translate_stack.back().y + rect.top));
 }
-
+
 /* EOF */

@@ -21,7 +21,7 @@
 #include "engine/gui/group_component.hpp"
 
 namespace GUI {
-
+
 GroupComponent*
 Component::get_parent() const
 {
@@ -48,7 +48,7 @@ Component::ungrab()
   if (parent)
     parent->ungrab(this); 
 }
-
+
 } // namespace GUI
 
 /* EOF */

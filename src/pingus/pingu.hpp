@@ -26,7 +26,7 @@
 class ActionHolder;
 class PinguAction;
 class SceneContext;
-
+
 /** The class for managing one of the many penguins which are walking
     around in the World. All actions are handled by PinguAction
     objects. */
@@ -218,7 +218,7 @@ private:
   Pingu (const Pingu&);
   Pingu& operator= (const Pingu&);
 };
-
+
 #endif
 
 /* EOF */

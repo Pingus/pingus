@@ -35,13 +35,11 @@ PinguParticleHolder::PinguParticle::PinguParticle (int x, int y)
 {
 }
 
-
 PinguParticleHolder::PinguParticleHolder () :
   surface("particles/pingu_explo"),
   particles()
 {
 }
-
 
 void
 PinguParticleHolder::add_particle (int x, int y)
@@ -113,7 +111,6 @@ PinguParticleHolder::update ()
           it->pos.y += tmp_y_add;
         }
 
-
       if (it->velocity.x > 0)
         {
           for (tmp_x_add = it->velocity.x; tmp_x_add >= 1.0; --tmp_x_add)
@@ -148,7 +145,6 @@ PinguParticleHolder::update ()
       --it->livetime;
     }
 }
-
 
 void
 PinguParticleHolder::draw (SceneContext& gc)

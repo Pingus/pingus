@@ -127,7 +127,7 @@ protected:
   int small_stars;
   int middle_stars;
   int large_stars;
-
+
   /** Number representing which attributes this object possesses */
   unsigned attribs;
 
@@ -201,7 +201,6 @@ public:
 
   /** Retrieve the object's direction */
   std::string get_direction() { return direction; }
-
 
   /////////////////////////////////////////////////////////
   /// Operations

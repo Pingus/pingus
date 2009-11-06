@@ -281,7 +281,7 @@ Wiimote::set_rumble(bool r)
       }
     }
 }
-
+
 void
 Wiimote::add_button_event(int device, int button, bool down)
 {
@@ -325,7 +325,7 @@ Wiimote::add_acc_event(int device, int accelerometer, float x, float y, float z)
 
   events.push_back(event);  
 }
-
+
 
 void
 Wiimote::on_status(const cwiid_status_mesg& msg)
@@ -565,7 +565,7 @@ Wiimote::mesg_callback(cwiid_wiimote_t* w, int mesg_count, union cwiid_mesg mesg
 
   pthread_mutex_unlock(&mutex);
 }
-
+
 // static callback functions
   
 void

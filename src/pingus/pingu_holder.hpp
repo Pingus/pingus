@@ -22,7 +22,6 @@
 
 #include "pingus/worldobj.hpp"
 
-
 class PingusLevel;
 class Vector3f;
 class Pingu;
@@ -113,7 +112,6 @@ private:
   PinguHolder (const PinguHolder&);
   PinguHolder& operator= (const PinguHolder&);
 };
-
 
 #endif
 

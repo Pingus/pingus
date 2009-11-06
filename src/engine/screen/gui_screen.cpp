@@ -20,7 +20,7 @@
 #include "engine/gui/gui_manager.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
-
+
 GUIScreen::GUIScreen()
   : Screen(Display::get_size()),
     gui_manager(new GUI::GUIManager())
@@ -166,5 +166,5 @@ GUIScreen::resize(const Size& size_)
   Screen::resize(size_);
   gui_manager->set_rect(Rect(Vector2i(0, 0), size));
 }
-
+
 /* EOF */

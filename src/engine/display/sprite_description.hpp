@@ -25,7 +25,6 @@
 #include "util/file_reader.hpp"
 #include "util/pathname.hpp"
 
-/** */
 class SpriteDescription
 {
 public:

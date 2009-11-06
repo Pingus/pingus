@@ -63,7 +63,6 @@ struct AccCalibration
   uint8_t z;
 };
 
-/** */
 class Wiimote
 {
 public:

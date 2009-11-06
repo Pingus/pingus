@@ -28,7 +28,6 @@ namespace Editor {
 
 class EditorScreen;
 
-/** */
 class Panel : public GUI::Component
 {
 private:

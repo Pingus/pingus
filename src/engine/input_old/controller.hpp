@@ -66,7 +66,7 @@ public:
 
   Controller(const Controller&);
   Controller& operator= (const Controller&);
-
+
   static void set_current(Controller* controller) { current_controller = controller; }
   static Controller* get_current() { return current_controller; }
 

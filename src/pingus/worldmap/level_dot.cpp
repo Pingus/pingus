@@ -16,7 +16,6 @@
 
 #include "pingus/worldmap/level_dot.hpp"
 
-
 #include <iostream>
 
 #include "engine/display/drawing_context.hpp"
@@ -123,7 +122,6 @@ LevelDot::accessible()
   else
     return false;
 }
-
 
 void
 LevelDot::draw_hover(DrawingContext& gc)

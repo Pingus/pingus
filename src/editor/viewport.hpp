@@ -29,7 +29,7 @@ class DrawingContext;
 class SceneContext;
 
 namespace Editor {
-
+
 class LevelObj;
 class EditorScreen;
 class ContextMenu;
@@ -45,7 +45,6 @@ private:
 
   /** The EditorScreen to which this viewport belongs */
   EditorScreen* editor;
-
 
   /** Whether or not Autoscrolling is turned on */
   bool autoscroll;
@@ -113,7 +112,7 @@ public:
   void on_secondary_button_click(int x, int y);
 
   void on_key_pressed(const unsigned short c);
-
+
   void delete_selected_objects();
   void duplicate_selected_objects();
 
@@ -145,7 +144,7 @@ private:
   Viewport (const Viewport&);
   Viewport& operator= (const Viewport&);
 };
-
+
 } // Editor namespace
 
 #endif

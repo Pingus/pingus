@@ -29,7 +29,7 @@
 #include "pingus/res_descriptor.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/stat_manager.hpp"
-
+
 class CreditsOkButton
   : public GUI::SurfaceButton
 {
@@ -61,7 +61,7 @@ private:
   CreditsOkButton(const CreditsOkButton&);
   CreditsOkButton & operator=(const CreditsOkButton&);
 };
-
+
 Credits::Credits() :
   scene_context(),
   fast_scrolling(false),
@@ -338,5 +338,5 @@ Credits::on_escape_press ()
 {
   ScreenManager::instance ()->pop_screen ();
 }
-
+
 /* EOF */

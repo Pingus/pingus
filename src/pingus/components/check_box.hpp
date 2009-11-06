@@ -22,7 +22,6 @@
 
 #include "engine/gui/rect_component.hpp"
 
-/** */
 class CheckBox : public GUI::RectComponent
 {
 private:

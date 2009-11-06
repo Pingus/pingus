@@ -25,7 +25,7 @@
 #include "math/vector2i.hpp"
 
 class PingusMenu;
-
+
 /** Framework for menu buttons */
 class MenuButton : public GUI::Component
 {
@@ -70,7 +70,7 @@ private:
   MenuButton (const MenuButton&);
   MenuButton& operator= (const MenuButton&);
 };
-
+
 #endif
 
 /* EOF */

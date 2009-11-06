@@ -23,7 +23,7 @@
 #include "pingus/globals.hpp"
 
 namespace Input {
-
+
 #define INVALID_EVENT_TYPE -1
 
 XInputDevice::XInputDevice(XInputDriver* owner_, XDeviceInfo* info) :
@@ -138,7 +138,6 @@ XInputDevice::on_xevent(XEvent &event)
   {
     printf("CL_InputDevice_XInput: what's that %d\n", event.type);
   }
-
 
   for (std::vector<bool>::size_type i = 0; i < buttons.size(); ++i)
   {

@@ -99,5 +99,4 @@ PLFResMgr::load_plf(const std::string& res_name)
   return load_plf_raw(res_name, Pathname("levels/" + res_name + ".pingus", Pathname::DATA_PATH));
 }
 
-
 /* EOF */

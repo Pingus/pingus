@@ -74,7 +74,6 @@ private:
 };
 
 
-
 /// Stream used to consume unwanted debugmessages
 class NilStream : public std::ostream
 {
@@ -108,7 +107,6 @@ class NilStream : public std::ostream
     NilStream & operator << (const std::string &) { return *this; }
     NilStream & operator << (int &)               { return *this; }
     NilStream & operator << (unsigned int &)      { return *this; }
-
 
   friend class DebugStream;
 };

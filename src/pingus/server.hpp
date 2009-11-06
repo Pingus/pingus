@@ -70,7 +70,6 @@ private:
   Server& operator= (const Server&);
 };
 
-
 #endif
 
 /* EOF */

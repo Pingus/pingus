@@ -33,7 +33,7 @@
 #include "util/string_util.hpp"
 
 namespace Editor {
-
+
 ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
   GUI::GroupComponent(rect_, false),
   editor(editor_),
@@ -421,7 +421,6 @@ ObjectProperties::set_object(LevelObj* obj)
       place(pos_z_label, pos_z_inputbox);
     }
 
-
     if (attr & CAN_ROTATE)
     {
       y_pos += 4;
@@ -518,7 +517,6 @@ ObjectProperties::on_owner_change(const std::string& str)
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_owner(StringUtil::to<int>(str));
 }
-
 
 void
 ObjectProperties::on_pos_z_change(const std::string& str)
@@ -678,7 +676,7 @@ ObjectProperties::update_layout()
 {
   GroupComponent::update_layout();
 }
-
+
 } // namespace Editor
 
 /* EOF */

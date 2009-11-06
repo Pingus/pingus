@@ -19,7 +19,6 @@
 
 #include "pingus/worldobj.hpp"
 
-
 namespace WorldObjsData {
 class SnowGeneratorData;
 }

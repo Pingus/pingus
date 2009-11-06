@@ -22,7 +22,7 @@
 #include "math/math.hpp"
 #include "math/vector2f.hpp"
 #include "math/vector2i.hpp"
-
+
 class Vector3f
 {
 public:
@@ -131,9 +131,9 @@ public:
     return a + (c * perc);
   }
 };
-
+
 std::ostream& operator<< (std::ostream& os, const Vector3f& v);
-
+
 #endif
 
 /* EOF */

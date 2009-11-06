@@ -20,7 +20,6 @@
 
 using std::ostream;
 
-
 NilStream DebugStream::nilstream;
 
 DebugStream::Buffer::Buffer (const std::string& p) :
@@ -109,16 +108,13 @@ DebugStream::Buffer::add (ostream& s)
   out_streams.push_back (&s);
 }
 
-
 void
 DebugStream::Buffer::set_prefix (const std::string & prefix_)
 {
   prefix = prefix_;
 }
 
-
 // ----------------------------------------------------------------
-
 
 DebugStream::DebugStream (const std::string& prefix)
   : ostream (&buffer),
@@ -152,12 +148,10 @@ DebugStream::set_prefix (const std::string & prefix)
   buffer.set_prefix(prefix);
 }
 
-
 NilStream::NilStream() :
   ostream(&buffer),
   buffer()
 {
 }
-
 
 /* EOF */

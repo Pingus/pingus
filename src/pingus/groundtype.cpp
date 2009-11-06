@@ -18,7 +18,6 @@
 
 #include <iostream>
 
-
 Groundtype::GPType
 Groundtype::string_to_type(const std::string& arg_type)
 {
@@ -42,7 +41,6 @@ Groundtype::string_to_type(const std::string& arg_type)
       return Groundtype::GP_GROUND;
     }
 }
-
 
 std::string
 Groundtype::type_to_string(GPType arg_type)
@@ -68,6 +66,5 @@ Groundtype::type_to_string(GPType arg_type)
       return "ground";
     }
 }
-
 
 /* EOF */

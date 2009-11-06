@@ -26,7 +26,7 @@
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
 #include "util/string_util.hpp"
-
+
 ServerEvent::ServerEvent() :
   type(PINGU_ACTION_EVENT),
   time_stamp(0),
@@ -192,5 +192,5 @@ ServerEvent::send(Server* server)
         assert(!"Unknown type");
     }
 }
-
+
 /* EOF */

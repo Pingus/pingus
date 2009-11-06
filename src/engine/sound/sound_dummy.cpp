@@ -27,7 +27,6 @@ PingusSoundDummy::real_play_sound(const std::string & filename, float /*volume*/
   pout(PINGUS_DEBUG_SOUND) << "PingusSoundDummy::real_play_sound: " << filename << std::endl;
 }
 
-
 void
 PingusSoundDummy::real_play_music(const std::string & filename, float /*volume*/, bool /*loop*/)
 {

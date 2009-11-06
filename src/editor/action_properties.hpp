@@ -26,11 +26,10 @@ namespace Editor {
 
 class Checkbox;
 class Inputbox;
-
+
 class EditorScreen;
 class EditorLevel;
 
-/** */
 class ActionProperties : public GUI::GroupComponent
 {
 private:
@@ -64,7 +63,7 @@ private:
   ActionProperties (const ActionProperties&);
   ActionProperties& operator= (const ActionProperties&);
 };
-
+
 } // namespace Editor
 
 #endif

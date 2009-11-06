@@ -22,7 +22,7 @@
 #include "pingus/worldmap/worldmap_screen.hpp"
 
 namespace WorldmapNS {
-
+
 WorldmapComponent::WorldmapComponent(WorldmapScreen* worldmap_screen_) :
   scene_context(new SceneContext),
   worldmap_screen(worldmap_screen_)    
@@ -78,7 +78,6 @@ WorldmapComponent::update (float delta)
   worldmap_screen->get_worldmap()->update(delta);
 }
 
-
 void
 WorldmapComponent::on_primary_button_press (int x, int y)
 {
@@ -86,7 +85,6 @@ WorldmapComponent::on_primary_button_press (int x, int y)
   worldmap_screen->get_worldmap()->on_primary_button_press(x - cliprect.left,
                                                      y - cliprect.top);
 }
-
 
 void
 WorldmapComponent::on_pointer_move (int x, int y)
@@ -103,7 +101,7 @@ WorldmapComponent::on_secondary_button_press (int x, int y)
   worldmap_screen->get_worldmap()->on_secondary_button_press(x - cliprect.left,
                                                        y - cliprect.top);
 }
-
+
 } // namespace WorldmapNS
 
 /* EOF */

@@ -26,7 +26,7 @@
 #include "pingus/collision_mask.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/resource_manager.hpp"
-
+
 class Resource
 {
 public:
@@ -51,7 +51,7 @@ private:
   Resource (const Resource&);
   Resource& operator= (const Resource&);
 };
-
+
 #endif
 
 /* EOF */

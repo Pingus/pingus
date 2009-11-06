@@ -23,7 +23,7 @@
 #include "util/file_reader.hpp"
 
 using namespace WorldmapNS;
-
+
 class PingusWorldmapImpl
 {
 public:
@@ -65,7 +65,7 @@ public:
     objects()
   {}
 };
-
+
 PingusWorldmap::PingusWorldmap() :
   impl()
 {
@@ -114,7 +114,7 @@ PingusWorldmap::parse_properties(FileReader reader)
   reader.read_string("default-node", impl->default_node);
   reader.read_string("final-node",   impl->final_node);
 }
-
+
 std::string
 PingusWorldmap::get_name() const 
 {
@@ -198,5 +198,5 @@ PingusWorldmap::get_end_story() const
 {
   return impl->end_story;
 }  
-
+
 /* EOF */

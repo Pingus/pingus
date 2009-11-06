@@ -24,8 +24,7 @@
 #include "util/system.hpp"
 
 namespace Editor {
-
-/** */
+
 class FileList : public GUI::RectComponent
 {
 private:
@@ -68,7 +67,7 @@ private:
   FileList (const FileList&);
   FileList& operator= (const FileList&);
 };
-
+
 } // namespace Editor
 
 #endif

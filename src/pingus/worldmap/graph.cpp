@@ -16,7 +16,6 @@
 
 #include "pingus/worldmap/graph.hpp"
 
-
 namespace WorldmapNS {
 
 const NodeId NoNode = -1;

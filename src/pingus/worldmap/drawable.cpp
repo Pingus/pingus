@@ -17,5 +17,4 @@
 #include "pingus/worldmap/drawable.hpp"
 
 
-
 /* EOF */

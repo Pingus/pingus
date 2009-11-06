@@ -23,7 +23,7 @@
 
 /** A collection of helper functions for the blitter class */
 namespace BlitterImpl {
-
+
 /** Rotate a surface 90 degree */
 struct transform_rot90
 {
@@ -203,7 +203,7 @@ Surface modify(Surface source_buffer, const TransF&)
       return source_buffer.clone();
     }
 }
-
+
 } // namespace BlitterImpl
 
 #endif

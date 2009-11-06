@@ -191,5 +191,4 @@ PingusLevel::get_ambient_light() const
   return impl->ambient_light;
 }
 
-
 /* EOF */

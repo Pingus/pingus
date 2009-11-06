@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_SCENE_GROUP_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_SCENE_GROUP_HPP
 
-/** */
 class Scene_Group
 {
 private:

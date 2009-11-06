@@ -25,7 +25,7 @@
 #include "pingus/path_manager.hpp"
 
 namespace Sound {
-
+
 PingusSoundImpl * PingusSound::sound;
 
 void
@@ -89,7 +89,7 @@ PingusSound::stop_music()
   assert(sound);
   sound->real_stop_music();
 }
-
+
 } // namespace Sound
 
 /* EOF */

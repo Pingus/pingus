@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_PINGUS_COLLIDER_HPP
 #define HEADER_PINGUS_PINGUS_COLLIDER_HPP
 
-
 class Vector3f;
 class World;
 
@@ -39,7 +38,6 @@ class Collider
 	world */
     int getpixel(World* const world, const Vector3f& pos) const;
 };
-
 
 #endif
 

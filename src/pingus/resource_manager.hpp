@@ -24,7 +24,6 @@
 class SpriteDescription;
 class FileReader;
 
-/** */
 class ResourceManager
 {
 private:

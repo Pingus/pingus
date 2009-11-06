@@ -24,7 +24,7 @@
 #include "engine/input/control.hpp"
 
 namespace Input {
-
+
 class EvdevDevice
 {
 private:
@@ -97,7 +97,7 @@ public:
   Scroller* create_scroller(Control* parent, int x, int y);
   Button*   create_button(Control* parent, int id);
 };
-
+
 } // namespace Input
 
 #endif

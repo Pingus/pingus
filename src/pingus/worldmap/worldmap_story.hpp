@@ -43,7 +43,7 @@ public:
 };
 
 namespace WorldmapNS {
-
+
 class WorldmapStory
 {
 public:
@@ -59,7 +59,7 @@ private:
   std::string music;
   std::vector<StoryPage> pages;
 };
-
+
 } // namespace WorldmapNS
 
 #endif

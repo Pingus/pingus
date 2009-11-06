@@ -116,7 +116,6 @@ private:
   PinguAction& operator= (const PinguAction&);
 };
 
-
 #endif /* PINGU_ACTION_HH */
 
 /* EOF */

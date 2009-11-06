@@ -23,7 +23,7 @@
 
 class SpriteDescription;
 class Framebuffer;
-
+
 class SpriteImpl
 {
 private:
@@ -63,7 +63,7 @@ public:
 
   Surface to_surface() const;
 };
-
+
 #endif
 
 /* EOF */

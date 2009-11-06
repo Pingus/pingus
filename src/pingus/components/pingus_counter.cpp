@@ -53,5 +53,4 @@ PingusCounter::draw(DrawingContext& gc)
   gc.print_center(font, Vector2i(gc.get_width()/2, -2), str);
 }
 
-
 /* EOF */

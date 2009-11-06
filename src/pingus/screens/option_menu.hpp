@@ -31,7 +31,6 @@
 class CheckBox;
 class SliderBox;
 
-/** */
 class OptionMenu : public GUIScreen
 {
 private:

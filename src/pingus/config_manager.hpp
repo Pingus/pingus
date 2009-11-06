@@ -23,7 +23,6 @@
 #include "math/size.hpp"
 #include "tinygettext/language.hpp"
 
-/** */
 class ConfigManager
 {
 private:

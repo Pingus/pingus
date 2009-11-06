@@ -25,7 +25,7 @@
 
 class SDLFramebuffer;
 class DrawOpBuffer;
-
+
 class DeltaFramebuffer : public Framebuffer
 {
 private:
@@ -58,7 +58,7 @@ private:
   DeltaFramebuffer (const DeltaFramebuffer&);
   DeltaFramebuffer& operator= (const DeltaFramebuffer&);
 };
-
+
 #endif
 
 /* EOF */

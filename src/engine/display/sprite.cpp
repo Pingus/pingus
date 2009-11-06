@@ -30,7 +30,7 @@
 #include "math/vector2i.hpp"
 #include "pingus/resource.hpp"
 #include "util/pathname.hpp"
-
+
 Sprite::Sprite() :
   impl()
 {
@@ -218,5 +218,5 @@ Sprite::to_surface() const
   else
     return Surface();
 }
-
+
 /* EOF */

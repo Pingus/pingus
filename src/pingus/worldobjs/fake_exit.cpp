@@ -47,7 +47,6 @@ FakeExit::draw (SceneContext& gc)
   gc.color().draw (surface, pos);
 }
 
-
 void
 FakeExit::update ()
 {

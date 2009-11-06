@@ -19,7 +19,7 @@
 
 #include <assert.h>
 #include <vector>
-
+
 /** MemoryPool allows the allocation of small objects on a previous
     allocated chunk of memeroy, thus reducing the amount of new/delete
     calls that have do be done and providing a speed up. */
@@ -105,7 +105,7 @@ private:
   MemoryPool& operator= (const MemoryPool&);
 };
 
-
+
 #endif
 
 /* EOF */

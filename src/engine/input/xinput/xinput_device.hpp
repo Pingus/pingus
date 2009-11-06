@@ -26,10 +26,9 @@
 #include "math/vector2i.hpp"
 
 namespace Input {
-
+
 class XInputDriver;
 
-/** */
 class XInputDevice
 {
 private:
@@ -43,7 +42,7 @@ private:
       : min_value(min_value_), max_value(max_value_), resolution(resolution_), pos(0)
     {}
   };
-
+
 private:
   XInputDriver* owner;
   std::string name;
@@ -84,7 +83,7 @@ private:
   XInputDevice(const XInputDevice&);
   XInputDevice & operator=(const XInputDevice&);
 };
-
+
 } // namespace Input
 
 #endif

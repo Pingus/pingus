@@ -33,8 +33,7 @@ class WorldmapStory;
 namespace GUI {
 class SurfaceButton;
 }
-
-/** */
+
 class StoryScreen : public GUIScreen
 {
 private:
@@ -57,7 +56,7 @@ private:
   StoryScreen (const StoryScreen&);
   StoryScreen& operator= (const StoryScreen&);
 };
-
+
 #endif
 
 /* EOF */

@@ -90,7 +90,6 @@ protected:
   boost::shared_ptr<PingusLevelImpl> impl;
 };
 
-
 #endif
 
 /* EOF */

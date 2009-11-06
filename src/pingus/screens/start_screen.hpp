@@ -23,8 +23,7 @@
 namespace GUI {
 class SurfaceButton;
 } // namespace GUI
-
-/** */
+
 class StartScreen : public GUIScreen
 {
 private:
@@ -49,7 +48,7 @@ private:
   StartScreen (const StartScreen&);
   StartScreen& operator= (const StartScreen&);
 };
-
+
 #endif
 
 /* EOF */

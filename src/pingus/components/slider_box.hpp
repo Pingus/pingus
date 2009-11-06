@@ -22,7 +22,6 @@
 
 #include "engine/gui/rect_component.hpp"
 
-/** */
 class SliderBox : public GUI::RectComponent
 {
 private:

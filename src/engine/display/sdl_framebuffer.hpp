@@ -24,7 +24,7 @@
 #include "math/color.hpp"
 #include "math/rect.hpp"
 #include "math/vector2i.hpp"
-
+
 class SDLFramebuffer : public Framebuffer
 {
 private:
@@ -58,7 +58,7 @@ private:
   SDLFramebuffer (const SDLFramebuffer&);
   SDLFramebuffer& operator= (const SDLFramebuffer&);
 };
-
+
 #endif
 
 /* EOF */

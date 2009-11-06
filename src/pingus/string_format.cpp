@@ -102,5 +102,4 @@ StringFormat::break_line (const std::string& text_, int width, const Font& font)
   return out.str();
 }
 
-
 /* EOF */

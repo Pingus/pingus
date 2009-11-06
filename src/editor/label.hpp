@@ -33,7 +33,7 @@ public:
   void draw (DrawingContext& gc);
   void update (float delta);
   void update_layout() {}
-
+
   void set_text(const std::string& text_) { text = text_; }
 };
 

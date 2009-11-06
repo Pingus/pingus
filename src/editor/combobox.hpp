@@ -39,7 +39,7 @@ public:
     : id(id_), label(label_)
   {}
 };
-
+
 /** The Combobox class gives you a drop-down list of items to choose from. */
 class Combobox : public GUI::RectComponent
 {
@@ -99,7 +99,7 @@ private:
   Combobox& operator= (const Combobox&);
 
 };
-
+
 } // namespace Editor 
 
 #endif

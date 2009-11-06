@@ -32,7 +32,7 @@
 #include <SDL.h>
 
 #include "engine/display/framebuffer_surface.hpp"
-
+
 class OpenGLFramebufferSurfaceImpl : public FramebufferSurfaceImpl
 {
 private:
@@ -52,7 +52,7 @@ public:
 
   Surface to_surface() const;
 };
-
+
 #endif
 
 /* EOF */

@@ -19,7 +19,6 @@
 
 #include "engine/screen/pingus.hpp"
 
-
 class ScreenManagerImpl
 {
 private:
@@ -34,7 +33,6 @@ private:
   ScreenManagerImpl (const ScreenManagerImpl&);
   ScreenManagerImpl& operator= (const ScreenManagerImpl&);
 };
-
 
 #endif
 

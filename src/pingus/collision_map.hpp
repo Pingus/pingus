@@ -26,7 +26,7 @@ class CollisionMask;
 class DrawingContext;
 class ResDescriptor;
 class PixelStatus;
-
+
 /** The CollisionMap is used to represent the enviroment where the
     Pingus walk around. The ground can have different properties, it
     can contain lava or water, it can be solid and many more. */
@@ -88,7 +88,7 @@ private:
   CollisionMap (const CollisionMap&);
   CollisionMap& operator= (const CollisionMap&);
 };
-
+
 #endif
 
 /* EOF */

@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_PINGUS_GLOBALS_HPP
 
 #include <string>
-
+
 extern int         game_speed;                      ///< -t, --set-speed
 extern float       desired_fps;                     ///< -k, --set-fps
 extern bool        print_fps;                       ///< --print-fps
@@ -52,7 +52,7 @@ extern unsigned int pingus_debug_flags;              ///< Set some bits in this 
 
 enum FramebufferType { DELTA_FRAMEBUFFER, SDL_FRAMEBUFFER, NULL_FRAMEBUFFER, OPENGL_FRAMEBUFFER };
 extern FramebufferType framebuffer_type;
-
+
 enum { PINGUS_DEBUG_ACTIONS     = (1 << 0),
        PINGUS_DEBUG_SOUND       = (1 << 1),
        PINGUS_DEBUG_GAMETIME    = (1 << 2),
@@ -69,7 +69,7 @@ enum { PINGUS_DEBUG_ACTIONS     = (1 << 0),
        PINGUS_DEBUG_DIRECTORIES = (1 << 13),
        PINGUS_DEBUG_ALL         = (~0)
      };
-
+
 #endif
 
 /* EOF */

@@ -28,7 +28,7 @@ class SceneContext;
 class CollisionMap;
 class GroundMap;
 class MapTile;
-
+
 /** This map type is the defaulh maptype, it is should be used for the
     most levels. It allows to construct a map, from a set of simple
     small images, this allows the generation of large map without
@@ -83,7 +83,7 @@ private:
   GroundMap (const GroundMap&);
   GroundMap& operator= (const GroundMap&);
 };
-
+
 #endif
 
 /* EOF */

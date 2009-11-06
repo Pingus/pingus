@@ -46,7 +46,7 @@
 using namespace WorldObjs;
 
 WorldObjFactory* WorldObjFactory::instance_ = 0;
-
+
 /** WorldObjAbstractFactory, interface for creating factories */
 class WorldObjAbstractFactory
 {
@@ -63,7 +63,7 @@ private:
   WorldObjAbstractFactory (const WorldObjAbstractFactory&);
   WorldObjAbstractFactory& operator= (const WorldObjAbstractFactory&);
 };
-
+
 /** Template to create factories, usage:
     new WorldObjFactoryImpl<"liquid", Liquid>; */
 template<class T>
@@ -81,7 +81,7 @@ private:
   WorldObjFactoryImpl (const WorldObjFactoryImpl&);
   WorldObjFactoryImpl& operator= (const WorldObjFactoryImpl&);
 };
-
+
 WorldObjFactory::WorldObjFactory() :
   factories()
 {
@@ -175,5 +175,5 @@ WorldObjFactory::free_factories()
 	  delete i->second;
   }
 }
-
+
 /* EOF */

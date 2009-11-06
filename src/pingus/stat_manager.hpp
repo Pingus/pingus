@@ -20,8 +20,6 @@
 #include <map>
 #include <string>
 
-
-/** */
 class StatManager
 {
 private:
@@ -61,7 +59,6 @@ private:
   StatManager (const StatManager&);
   StatManager& operator= (const StatManager&);
 };
-
 
 #endif
 

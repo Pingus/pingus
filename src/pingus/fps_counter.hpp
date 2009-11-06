@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_PINGUS_FPS_COUNTER_HPP
 
 #include <string>
-
+
 class FPSCounter
 {
 private:
@@ -49,7 +49,7 @@ private:
   FPSCounter (const FPSCounter&);
   FPSCounter& operator= (const FPSCounter&);
 };
-
+
 #endif
 
 /* EOF */

@@ -20,10 +20,9 @@
 #include "engine/input/driver.hpp"
 
 namespace Input {
-
+
 class EvdevDevice;
 
-/** */
 class EvdevDriver : public Driver
 {
 private:
@@ -45,7 +44,7 @@ public:
 
   EvdevDevice* get_device(const std::string& device_filename);
 };
-
+
 } // namespace Input
 
 #endif

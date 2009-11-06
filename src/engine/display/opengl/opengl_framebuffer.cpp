@@ -23,7 +23,7 @@
 #include "engine/display/opengl/opengl_framebuffer_surface_impl.hpp"
 #include "engine/display/surface.hpp"
 #include "math/math.hpp"
-
+
 OpenGLFramebuffer::OpenGLFramebuffer() :
   screen(),
   cliprect_stack()
@@ -240,5 +240,5 @@ OpenGLFramebuffer::get_size() const
 {
   return Size(screen->w, screen->h);
 }
-
+
 /* EOF */

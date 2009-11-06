@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_PINGUS_GOAL_MANAGER_HPP
 #define HEADER_PINGUS_PINGUS_GOAL_MANAGER_HPP
 
-
 class Server;
 
 /** Class that looks at the server and searches for goal conditions,
@@ -53,7 +52,6 @@ private:
   GoalManager (const GoalManager&);
   GoalManager& operator= (const GoalManager&);
 };
-
 
 #endif
 

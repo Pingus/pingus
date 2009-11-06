@@ -21,7 +21,7 @@
 #include "engine/gui/component.hpp"
 
 namespace GUI {
-
+
 /** A simple surface button, which different surfaces for pressed,
     released and mouse over */
 class SurfaceButton : public Component
@@ -62,7 +62,7 @@ private:
   SurfaceButton (const SurfaceButton&);
   SurfaceButton& operator= (const SurfaceButton&);
 };
-
+
 } // namespace GUI
 
 #endif

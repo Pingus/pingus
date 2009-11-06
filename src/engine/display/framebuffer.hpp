@@ -27,7 +27,7 @@
 #include "math/vector2i.hpp"
 
 class Surface;
-
+
 class Framebuffer
 {
 public:
@@ -52,7 +52,7 @@ public:
 
   virtual Size get_size() const =0;
 };
-
+
 #endif
 
 /* EOF */

@@ -28,7 +28,7 @@ namespace WorldmapNS {
 
 class WorldmapScreen;
 class Worldmap;
-
+
 class WorldmapComponent : public GUI::Component
 {
 private:
@@ -52,7 +52,7 @@ private:
   WorldmapComponent (const WorldmapComponent&);
   WorldmapComponent& operator= (const WorldmapComponent&);
 };
-
+
 } // namespace WorldmapNS
 
 #endif

@@ -25,7 +25,7 @@
 #include "pingus/worldmap/worldmap_screen.hpp"
 
 namespace WorldmapNS {
-
+
 SpriteDrawable::SpriteDrawable(FileReader reader) :
   Drawable(reader),
   surface(),
@@ -73,7 +73,7 @@ SpriteDrawable::draw(DrawingContext& gc)
     }
   }
 }
-
+
 } // namespace WorldmapNS
 
 /* EOF */

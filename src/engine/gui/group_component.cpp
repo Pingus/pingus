@@ -20,7 +20,7 @@
 #include <iostream>
 
 namespace GUI {
-
+
 GroupComponent::GroupComponent(const Rect& rect_, bool clip_) :
   RectComponent(rect_),
   children(),
@@ -72,7 +72,7 @@ GroupComponent::is_at (int x, int y)
 {
   return (RectComponent::is_at(x,y) || component_at(drawing_context.screen_to_world(Vector2i(x, y))));
 }
-
+
 void
 GroupComponent::on_primary_button_press (int x, int y)
 {
@@ -291,7 +291,7 @@ GroupComponent::ungrab(Component* comp)
   grabbed_comp = 0;
   Component::ungrab();
 }
-
+
 } // namespace GUI
 
 /* EOF */

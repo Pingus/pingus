@@ -38,7 +38,7 @@
 #include "pingus/worldobjs/entrance.hpp"
 
 using Actions::BOMBER;
-
+
 static
 bool WorldObj_less (WorldObj* a, WorldObj* b)
 {
@@ -330,5 +330,5 @@ World::get_start_pos(int player_id)
 
   return pos;
 }
-
+
 /* EOF */

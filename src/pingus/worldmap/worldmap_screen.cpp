@@ -16,7 +16,6 @@
 
 #include "pingus/worldmap/worldmap_screen.hpp"
 
-
 #include <iostream>
 
 #include "engine/display/display.hpp"
@@ -38,7 +37,7 @@
 #include "pingus/worldmap/worldmap_story.hpp"
 
 namespace WorldmapNS {
-
+
 class WorldmapScreenCloseButton
   : public GUI::SurfaceButton
 {
@@ -54,7 +53,7 @@ private:
   WorldmapScreenCloseButton(const WorldmapScreenCloseButton&);
   WorldmapScreenCloseButton & operator=(const WorldmapScreenCloseButton&);
 };
-
+
 class WorldmapScreenStoryButton
   : public GUI::SurfaceButton
 {
@@ -70,7 +69,7 @@ private:
   WorldmapScreenStoryButton(const WorldmapScreenStoryButton&);
   WorldmapScreenStoryButton & operator=(const WorldmapScreenStoryButton&);
 };
-
+
 class WorldmapScreenCreditsButton
   : public GUI::SurfaceButton
 {
@@ -86,7 +85,7 @@ private:
   WorldmapScreenCreditsButton(const WorldmapScreenCreditsButton&);
   WorldmapScreenCreditsButton & operator=(const WorldmapScreenCreditsButton&);
 };
-
+
 class WorldmapScreenEnterButton
   : public GUI::SurfaceButton
 {
@@ -102,7 +101,7 @@ private:
   WorldmapScreenEnterButton(const WorldmapScreenEnterButton&);
   WorldmapScreenEnterButton & operator=(const WorldmapScreenEnterButton&);
 };
-
+
 WorldmapScreenCreditsButton::WorldmapScreenCreditsButton(WorldmapScreen* worldmap_screen_) :
   GUI::SurfaceButton(Display::get_width() - 150, 0,
                      "core/worldmap/credits_button_normal",
@@ -160,7 +159,7 @@ WorldmapScreenStoryButton::on_click()
 {
   worldmap_screen->show_intro_story();
 }
-
+
 WorldmapScreenCloseButton::WorldmapScreenCloseButton(WorldmapScreen* worldmap_screen_) :
   GUI::SurfaceButton(0, Display::get_height() - 37,
                      "core/worldmap/leave_button_normal",
@@ -189,7 +188,7 @@ WorldmapScreenCloseButton::on_click()
 {
   ScreenManager::instance ()->pop_screen ();
 }
-
+
 WorldmapScreenEnterButton::WorldmapScreenEnterButton(WorldmapScreen* worldmap_screen_) :
   GUI::SurfaceButton(Display::get_width() - 119, Display::get_height() - 37,
                      "core/worldmap/enter_button_normal",
@@ -228,7 +227,7 @@ WorldmapScreenEnterButton::on_click()
 {
   worldmap_screen->get_worldmap()->enter_level();
 }
-
+
 WorldmapScreen::WorldmapScreen() :
   levelname_bg("core/worldmap/levelname_bg"),
   is_init(false),
@@ -342,7 +341,7 @@ WorldmapScreen::resize(const Size& size_)
   story_button->set_pos(0, 0);
   enter_button->set_pos(size.width - 119, size.height - 37);
 }
-
+
 } // namespace WorldmapNS
 
 /* EOF */

@@ -30,7 +30,6 @@ class EditorScreen;
 class ObjectSelectorList;
 class ObjectSelectorSet;
 
-/** */
 class ObjectSelector : public GUI::GroupComponent
 {
 private:

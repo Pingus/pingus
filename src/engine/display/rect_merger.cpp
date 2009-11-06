@@ -73,7 +73,7 @@ bool mark_sorter(const Mark& lhs, const Mark& rhs)
       return (lhs.pos < rhs.pos);
     }
 }
-
+
 void print_rows(std::ostream& out, const std::vector<Row>& rows)
 {
   for(std::vector<Row>::const_iterator i = rows.begin(); i != rows.end(); ++i)
@@ -88,7 +88,7 @@ void print_rows(std::ostream& out, const std::vector<Row>& rows)
       out << std::endl;
     }
 }
-
+
 void print_rects(std::ostream& out, const std::vector<Rect>& rects)
 {
   out << "(rects " << std::endl;
@@ -98,7 +98,7 @@ void print_rects(std::ostream& out, const std::vector<Rect>& rects)
     }
   out << ") ;; rects " << std::endl;
 }
-
+
 /** Take a list of rectangles and generate a list of rows written to
     \a rows_out. The rows are returned empty and have to be filled via
     split_rectangles()
@@ -143,7 +143,7 @@ void generate_rows(const std::vector<Rect>& rects, std::vector<Row>& rows_out)
   //print_rects(std::cout, rects);
   assert(!rows_out.empty());
 }
-
+
 /** Takes a list of rectangles and adds their left and right borders to rows
 
     @param[in]     rects List of rectangles that get split up and filled into rows, must be sorted by rect_y_sorter
@@ -175,7 +175,7 @@ void split_rectangles(const std::vector<Rect>& rects, std::vector<Row>& rows)
   for(std::vector<Row>::iterator i = rows.begin(); i != rows.end(); ++i)
     std::sort(i->marks.begin(), i->marks.end(), mark_sorter);
 }
-
+
 /** Takes a list of rows along with markers in them to then generate a
     list of rectangles which are written to \a rects_out
 
@@ -238,7 +238,7 @@ void generate_rectangles(const std::vector<Row>& rows, std::vector<Rect>& rects_
         }
     }
 }
-
+
 /** Takes a list of rectangles and merges non overlapping vertically
     adjacent rectangles that have the same left and right borders 
 

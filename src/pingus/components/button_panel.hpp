@@ -24,7 +24,7 @@
 #include "pingus/components/action_button.hpp"
 
 class GameSession;
-
+
 class ButtonPanel : public GUI::RectComponent
 {
 private:
@@ -77,7 +77,7 @@ private:
   ButtonPanel (const ButtonPanel&);
   ButtonPanel& operator= (const ButtonPanel&);
 };
-
+
 #endif
 
 /* EOF */

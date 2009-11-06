@@ -34,7 +34,6 @@ struct PathfinderResult
   {}
 };
 
-/** */
 template<class T, class C>
 class Pathfinder
 {

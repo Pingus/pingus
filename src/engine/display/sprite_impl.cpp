@@ -24,7 +24,7 @@
 
 typedef std::map<std::string, FramebufferSurface> SurfaceCache;
 SurfaceCache surface_cache;
-
+
 FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceModifierNS::ResourceModifier mod)
 {
   SurfaceCache::iterator i = surface_cache.find(filename.get_sys_path());
@@ -68,7 +68,7 @@ void delete_framebuffer_surface(const Pathname& filename)
         }
     }
 }
-
+
 SpriteImpl::SpriteImpl() :
   filename(),
   framebuffer_surface(),
@@ -200,5 +200,5 @@ SpriteImpl::to_surface() const
 {
   return framebuffer_surface.to_surface();
 }
-
+
 /* EOF */

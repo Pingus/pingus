@@ -219,5 +219,4 @@ Screenshot::get_date()
   return std::string(buffer);
 }
 
-
 /* EOF */

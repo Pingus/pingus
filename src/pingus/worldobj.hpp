@@ -92,7 +92,6 @@ public:
   virtual void update ();
 };
 
-
 #endif
 
 /* EOF */

@@ -104,7 +104,6 @@ Bomber::update ()
                                                                      static_cast<int>(pingu->get_y()) - 5);
   }
 
-
   if (sprite[pingu->direction].get_current_frame () >= 13 && !colmap_exploded)
   {
     colmap_exploded = true;

@@ -25,7 +25,6 @@
 #include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"
 
-
 PinguAction::PinguAction (Pingu* p)
   : pingu (p)
 {
@@ -275,6 +274,5 @@ PinguAction::move_with_forces ()
     }
 #endif
 }
-
 
 /* EOF */

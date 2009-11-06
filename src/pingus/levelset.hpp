@@ -24,7 +24,6 @@
 #include "pingus/pingus_level.hpp"
 #include "util/pathname.hpp"
 
-/** */
 class Levelset
 {
 public:

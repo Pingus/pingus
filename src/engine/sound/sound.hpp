@@ -24,7 +24,7 @@
 namespace Sound {
 
 class PingusSoundImpl;
-
+
 class PingusSound
 {
 private:
@@ -51,7 +51,7 @@ private:
   PingusSound (const PingusSound&);
   PingusSound& operator= (const PingusSound&);
 };
-
+
 } // namespace Sound
 
 #endif

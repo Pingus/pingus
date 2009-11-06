@@ -28,7 +28,7 @@
 #include "util/file_reader.hpp"
 
 namespace WorldmapNS {
-
+
 WorldmapStory::WorldmapStory(const FileReader &reader) :
   title(),
   music(),
@@ -61,7 +61,7 @@ WorldmapStory::WorldmapStory(const FileReader &reader) :
   if (pages.empty())
     throw std::runtime_error("WorldmapStory: Worldmap does not include a valid story");
 }
-
+
 } // namespace WorldmapNS
 
 /* EOF */

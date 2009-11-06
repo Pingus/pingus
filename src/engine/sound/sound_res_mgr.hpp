@@ -23,7 +23,6 @@
 
 typedef Mix_Chunk* SoundHandle;
 
-/** */
 class SoundResMgr
 {
 private:

@@ -31,7 +31,7 @@
 #include "pingus/globals.hpp"
 #include "pingus/path_manager.hpp"
 #include "util/pathname.hpp"
-
+
 template<class C>
 void write(std::ostream& out, C value)
 {
@@ -138,9 +138,9 @@ void write_event(std::ostream& out, const Input::Event& event)
         assert(!"Unknown Event type");
     }
 }
-
+
 ScreenManager* ScreenManager::instance_ = 0;
-
+
 ScreenManager::ScreenManager() :
   input_manager(),
   input_controller(),
@@ -308,7 +308,7 @@ ScreenManager::instance()
 {
   return instance_;
 }
-
+
 void
 ScreenManager::push_screen (Screen* screen)
 { 
@@ -345,7 +345,7 @@ ScreenManager::replace_screen (Screen* screen)
   screens.back()->on_startup();
 
 }
-
+
 void
 ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
 {
@@ -404,5 +404,5 @@ ScreenManager::show_swcursor(bool visible)
       SDL_ShowCursor(SDL_ENABLE);
     }
 }
-
+
 /* EOF */

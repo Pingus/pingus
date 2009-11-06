@@ -20,7 +20,6 @@
 #include "engine/display/sprite.hpp"
 #include "engine/screen/gui_screen.hpp"
 
-/** */
 class AddOnMenu : public GUIScreen
 {
 private:

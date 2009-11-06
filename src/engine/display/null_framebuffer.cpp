@@ -17,7 +17,7 @@
 #include "engine/display/null_framebuffer.hpp"
 
 #include <iostream>
-
+
 class NullFramebufferSurfaceImpl : public FramebufferSurfaceImpl
 {
 private:
@@ -31,7 +31,7 @@ public:
   int get_height() const { return size.height; }
   Surface to_surface() const { return Surface(); }
 };
-
+
 NullFramebuffer::NullFramebuffer() :
   size()
 {
@@ -100,5 +100,5 @@ NullFramebuffer::get_size() const
 {
   return size;
 }
-
+
 /* EOF */

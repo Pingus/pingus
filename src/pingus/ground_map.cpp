@@ -27,7 +27,7 @@
 #include "math/math.hpp"
 #include "pingus/collision_map.hpp"
 #include "pingus/pingus_level.hpp"
-
+
 class MapTile
 {
 private:
@@ -44,7 +44,7 @@ public:
 
   const Sprite& get_sprite();
 };
-
+
 MapTile::MapTile () :
   sprite(),
   surface(),
@@ -90,7 +90,7 @@ MapTile::get_sprite()
       return sprite; 
     }
 }
-
+
 GroundMap::GroundMap(int width_, int height_) :
   colmap(),
   tiles(),
@@ -316,5 +316,5 @@ GroundMap::get_tile(int x, int y)
 {
   return tiles[y*tile_width + x];
 }
-
+
 /* EOF */

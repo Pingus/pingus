@@ -48,5 +48,4 @@ GameTime::ticks_to_realtime_string(int ticks)
     }
 }
 
-
 /* EOF */

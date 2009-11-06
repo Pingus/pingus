@@ -23,7 +23,7 @@
 #include "editor/viewport.hpp"
 
 namespace Editor {
-
+
 Minimap::Minimap(EditorScreen* editor_, const Rect& rect_)
   : RectComponent(rect_),
     editor(editor_),
@@ -143,7 +143,7 @@ Minimap::update_layout()
 {
   drawing_context->set_rect(rect.grow(-3));
 }
-
+
 } // namespace Editor
 
 /* EOF */

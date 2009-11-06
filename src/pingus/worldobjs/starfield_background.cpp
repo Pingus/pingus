@@ -48,7 +48,6 @@ StarfieldBackground::~StarfieldBackground ()
     delete stars[i];
 }
 
-
 void
 StarfieldBackground::update ()
 {

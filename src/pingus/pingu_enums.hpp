@@ -79,5 +79,4 @@ extern const float deadly_velocity;
 
 #endif
 
-
 /* EOF */

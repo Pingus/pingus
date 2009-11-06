@@ -42,7 +42,6 @@ private:
   PingusCounter& operator= (const PingusCounter&);
 };
 
-
 #endif
 
 /* EOF */

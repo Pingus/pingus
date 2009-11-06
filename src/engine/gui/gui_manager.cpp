@@ -26,30 +26,30 @@
 using namespace Input;
 
 namespace GUI { 
-
+
 GUIManager::GUIManager ()
   : GroupComponent(Rect(0, 0, Display::get_width(), Display::get_height()), false),
     mouse_pos(400,300)
 {
 }
-
+
 GUIManager::GUIManager(const Rect& rect_)
   : GroupComponent(rect_),
     mouse_pos(400,300)
 {
 }
-
+
 GUIManager::~GUIManager ()
 {
 }
 
-
+
 void
 GUIManager::update(float delta)
 {
   GroupComponent::update(delta);
 }
-
+
 void
 GUIManager::update(const Input::Event& event)
 {
@@ -96,7 +96,7 @@ GUIManager::update(const Input::Event& event)
         break;
     }
 }
-
+
 } // namespace GUI
 
 /* EOF */

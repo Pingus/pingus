@@ -29,7 +29,7 @@
 class Rect;
 class Pathname;
 class SurfaceImpl;
-
+
 class Surface
 {
 public:
@@ -64,7 +64,7 @@ public:
   Color get_pixel(int x, int y) const;
 
   void fill(const Color& color);
-
+
   Surface scale(int w, int h);
   Surface mod(ResourceModifierNS::ResourceModifier mod);
   Surface clone() const;
@@ -79,7 +79,7 @@ public:
 protected:
   boost::shared_ptr<SurfaceImpl> impl;
 };
-
+
 #endif
 
 /* EOF */

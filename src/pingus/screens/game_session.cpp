@@ -38,7 +38,7 @@
 #include "pingus/savegame_manager.hpp"
 #include "pingus/screens/result_screen.hpp"
 #include "pingus/world.hpp"
-
+
 GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_screen) :
   plf(arg_plf),
   show_result_screen(arg_show_result_screen),
@@ -391,5 +391,5 @@ GameSession::resize(const Size& size_)
 
   button_panel->set_pos(Vector2i(0, (size.height - 150)/2));
 }
-
+
 /* EOF */

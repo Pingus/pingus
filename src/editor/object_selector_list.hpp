@@ -25,14 +25,13 @@
 class DrawingContext;
 
 namespace Editor {
-
+
 class LevelObj;
 class LevelImpl;
 class EditorScreen;
 class ObjectSelector;
 class ObjectSelectorSet;
 
-/** */
 class ObjectSelectorList : public GUI::RectComponent
 {
 public:
@@ -91,7 +90,7 @@ private:
   ObjectSelectorList (const ObjectSelectorList&);
   ObjectSelectorList& operator= (const ObjectSelectorList&);
 };
-
+
 } // namespace Editor
 
 #endif

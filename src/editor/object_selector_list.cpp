@@ -29,7 +29,7 @@
 #include "pingus/resource.hpp"
 
 namespace Editor {
-
+
 ObjectSelectorList::ObjectSelectorList(EditorScreen* editor_, ObjectSelector* object_selector_, const Rect& rect_) :
   RectComponent(rect_),
   editor(editor_),
@@ -224,7 +224,7 @@ ObjectSelectorList::update_layout()
 {
   drawing_context->set_rect(rect);
 }
-
+
 } // namespace Editor
 
 /* EOF */

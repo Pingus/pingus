@@ -21,8 +21,6 @@
 
 #include "pingus/savegame.hpp"
 
-
-/** */
 class SavegameManager
 {
 private:
@@ -51,7 +49,6 @@ private:
   SavegameManager (const SavegameManager&);
   SavegameManager& operator= (const SavegameManager&);
 };
-
 
 #endif
 

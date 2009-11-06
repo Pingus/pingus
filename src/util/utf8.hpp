@@ -20,7 +20,7 @@
 
 #include <stdint.h>
 #include <string>
-
+
 class UTF8
 {
 public:
@@ -85,7 +85,7 @@ public:
 
   static uint32_t decode_utf8(const std::string& text);
 };
-
+
 #endif
 
 /* EOF */

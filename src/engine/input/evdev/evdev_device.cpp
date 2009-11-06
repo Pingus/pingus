@@ -34,7 +34,7 @@
 #define test_bit(bit, array)	((array[LONG(bit)] >> OFF(bit)) & 1)
 
 namespace Input {
-
+
 EvdevDevice::EvdevDevice(const std::string& filename) :
   fd(),
   version(),
@@ -324,7 +324,7 @@ EvdevDevice::create_button(Control* parent, int id)
   std::cout << "EvdevDevice: " << device << " doesn't have button " << id << std::endl;
   return 0;
 }
-
+
 } // namespace Input
 
 /* EOF */

@@ -26,7 +26,7 @@
 #include "pingus/res_descriptor.hpp"
 #include "pingus/resource_modifier.hpp"
 #include "util/file_reader_impl.hpp"
-
+
 class SExprFileReaderImpl: public FileReaderImpl
 {
 public:
@@ -267,5 +267,5 @@ SExprFileReader::SExprFileReader(boost::shared_ptr<lisp::Lisp> lisp)
   : FileReader(boost::shared_ptr<FileReaderImpl>(new SExprFileReaderImpl(lisp)))
 {
 }
-
+
 /* EOF */

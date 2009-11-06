@@ -31,7 +31,7 @@
 #include "math/vector3f.hpp"
 
 namespace Editor {
-
+
 // Constructor
 Viewport::Viewport(EditorScreen* e, const Rect& rect_)  :
   RectComponent(rect_),
@@ -536,7 +536,7 @@ Viewport::get_objects()
 {
   return editor->get_level()->get_objects();
 }
-
+
 } // namespace Editor
 
 /* EOF */

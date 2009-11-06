@@ -196,5 +196,4 @@ StatManager::set_bool(const std::string& name, bool value)
   flush();
 }
 
-
 /* EOF */

@@ -19,7 +19,6 @@
 
 #include <sstream>
 
-/** */
 class StringUtil
 {
 private:

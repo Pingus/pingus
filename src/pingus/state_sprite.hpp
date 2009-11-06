@@ -40,7 +40,6 @@ public:
   Sprite& operator[](int state);
 };
 
-
 #endif
 
 /* EOF */

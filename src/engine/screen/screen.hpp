@@ -27,7 +27,7 @@ struct Event;
 
 class Size;
 class DrawingContext;
-
+
 /** A interface for screens. A screen is a Pingus 'thing' which gets
     complete controll over the display and input. Examples of
     screens are the PingusMenu or a PingusGameSession */
@@ -59,7 +59,7 @@ private:
   Screen (const Screen&);
   Screen& operator= (const Screen&);
 };
-
+
 #endif
 
 /* EOF */

@@ -65,7 +65,6 @@ public:
   std::vector<FileReader> objects;
 }; 
 
-
 #endif
 
 /* EOF */

@@ -17,7 +17,6 @@
 #include "pingus/direction.hpp"
 
 
-
 Direction::Direction() : direction(NONE)
 {
 }
@@ -73,6 +72,5 @@ Direction::is_right() const
 {
   return direction == RIGHT;
 }
-
 
 /* EOF */

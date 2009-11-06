@@ -369,7 +369,6 @@ Controller::on_button_up(void* userdata)
   Controller::get_current()->events.push_back(makeButtonEvent(name, released));
 }
 
-
 } // namespace Input
 
 /* EOF */

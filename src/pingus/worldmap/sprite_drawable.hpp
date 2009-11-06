@@ -22,7 +22,7 @@
 #include "pingus/worldmap/drawable.hpp"
 
 namespace WorldmapNS {
-
+
 class SpriteDrawable : public Drawable
 {
 private:
@@ -43,7 +43,7 @@ private:
   SpriteDrawable (const SpriteDrawable&);
   SpriteDrawable& operator= (const SpriteDrawable&);
 };
-
+
 } // namespace WorldmapNS
 
 #endif

@@ -23,7 +23,6 @@ namespace Input {
 
 class Manager;
 
-/** */
 class CoreDriver : public Driver
 {
 private:

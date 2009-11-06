@@ -22,7 +22,7 @@
 #include "engine/display/drawing_context.hpp"
 
 class SceneContextImpl;
-
+
 /** The SceneContext maintains all the different drawing layers to
     which a game object can draw. Each drawing layer serves a
     different purporse and all are combined in the end to form the
@@ -82,7 +82,7 @@ private:
   SceneContext (const SceneContext&);
   SceneContext& operator= (const SceneContext&);
 };
-
+
 class SceneContextDrawingRequest : public DrawingRequest
 {
 private:
@@ -97,7 +97,7 @@ private:
   SceneContextDrawingRequest(const SceneContextDrawingRequest&);
   SceneContextDrawingRequest& operator=(const SceneContextDrawingRequest&);
 };
-
+
 #endif
 
 /* EOF */

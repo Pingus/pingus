@@ -111,7 +111,6 @@ private:
   System& operator= (const System&);
 };
 
-
 #endif
 
 /* EOF */

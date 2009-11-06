@@ -162,5 +162,4 @@ SavegameManager::flush()
   writer.end_section();	// pingus-savegame
 }
 
-
 /* EOF */

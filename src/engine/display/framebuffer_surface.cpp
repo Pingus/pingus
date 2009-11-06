@@ -16,7 +16,7 @@
 
 #include "engine/display/framebuffer_surface.hpp"
 
-
+
 FramebufferSurface::FramebufferSurface() :
   impl()
 {

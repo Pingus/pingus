@@ -28,7 +28,7 @@
 #include "pingus/screens/game_session.hpp"
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
-
+
 Playfield::Playfield(Server* server_, GameSession* session_, const Rect& rect_) :
   RectComponent(rect_),
   server(server_),
@@ -274,5 +274,5 @@ Playfield::update_layout()
   state.set_size(rect.get_width(), rect.get_height());
   scene_context->set_rect(rect);
 }
-
+
 /* EOF */

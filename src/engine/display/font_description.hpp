@@ -25,7 +25,7 @@
 #include "util/pathname.hpp"
 
 class FileReader;
-
+
 class GlyphDescription
 {
 public:
@@ -38,7 +38,7 @@ public:
   GlyphDescription();
   GlyphDescription(FileReader& reader);
 };
-
+
 class GlyphImageDescription
 {
 public:
@@ -53,8 +53,7 @@ public:
     glyphs()
   {}
 };
-
-/** */
+
 class FontDescription
 {
 public:
@@ -73,7 +72,7 @@ public:
 
   FontDescription(const Pathname& filename);
 };
-
+
 #endif
 
 /* EOF */

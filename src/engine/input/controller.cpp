@@ -20,7 +20,7 @@
 #include "engine/input/controller_description.hpp"
 
 namespace Input {
-
+
 Controller* Controller::current_ = 0;
 
 Controller* 
@@ -253,7 +253,7 @@ Controller::poll_events(std::vector<Event>& out_events)
 
   events.clear();
 }
-
+
 } // namespace Input
 
 /* EOF */

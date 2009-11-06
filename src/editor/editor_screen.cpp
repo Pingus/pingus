@@ -46,7 +46,7 @@
 #include "util/system.hpp"
 
 namespace Editor {
-
+
 // Default constructor
 EditorScreen::EditorScreen() :
   plf(new EditorLevel()),
@@ -281,7 +281,7 @@ EditorScreen::add_objects(std::vector<LevelObj*> objs)
   for (std::vector<LevelObj*>::const_iterator it = objs.begin(); it != objs.end(); it++)
     add_object(*it);
 }
-
+
 void 
 EditorScreen::level_new()
 {
@@ -372,7 +372,6 @@ EditorScreen::objects_lower_to_bottom()
 {
   viewport->lower_objects_to_bottom();
 }
-
 
 void 
 EditorScreen::objects_flip_vertical()
@@ -517,9 +516,8 @@ EditorScreen::resize(const Size& size_)
   gui_manager->set_rect(Rect(Vector2i(0, 0), size_));
   update_layout();
 }
-
+
 } // namespace Editor 
 
 /* EOF */
-
 

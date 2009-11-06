@@ -26,7 +26,7 @@
 #include "math/vector2f.hpp"
 
 namespace Input {
-
+
 class Control 
 {
 private:
@@ -63,7 +63,7 @@ private:
   Control(const Control&);
   Control & operator=(const Control&);
 };
-
+
 class Button : public Control 
 {
 protected:
@@ -86,7 +86,7 @@ public:
     }
   }
 };
-
+
 class ButtonGroup : public Button 
 {
 private:
@@ -131,7 +131,7 @@ public:
     }
   }
 };
-
+
 class ControllerButton : public ButtonGroup
 {
 private:
@@ -153,7 +153,7 @@ private:
   ControllerButton(const ControllerButton&);
   ControllerButton & operator=(const ControllerButton&);
 };
-
+
 class Axis : public Control 
 {
 protected:
@@ -185,7 +185,7 @@ public:
     }
   }
 };
-
+
 class Pointer : public Control 
 {
 protected:
@@ -207,7 +207,7 @@ public:
     }
   }
 };
-
+
 class Scroller : public Control 
 {
 protected:
@@ -229,7 +229,7 @@ public:
     }
   }
 };
-
+
 class AxisGroup : public Axis {
 private:
   std::vector<Axis*> axes;
@@ -269,7 +269,7 @@ public:
     set_state(new_pos);
   }
 };
-
+
 class ControllerAxis : public AxisGroup 
 {
 private:
@@ -291,7 +291,7 @@ private:
   ControllerAxis(const ControllerAxis&);
   ControllerAxis & operator=(const ControllerAxis&);
 };
-
+
 class PointerGroup : public Pointer 
 {
 private:
@@ -329,7 +329,7 @@ public:
     pointer.push_back(p);
   }
 };
-
+
 class ControllerPointer : public PointerGroup
 {
 private:
@@ -351,7 +351,7 @@ private:
   ControllerPointer(const ControllerPointer&);
   ControllerPointer & operator=(const ControllerPointer&);
 };
-
+
 class ScrollerGroup : public Scroller 
 {
 private:
@@ -389,7 +389,7 @@ private:
   ScrollerGroup(const ScrollerGroup&);
   ScrollerGroup & operator=(const ScrollerGroup&);
 };
-
+
 class ControllerScroller : public ScrollerGroup
 {
 private:
@@ -411,7 +411,7 @@ private:
   ControllerScroller(const ControllerScroller&);
   ControllerScroller & operator=(const ControllerScroller&);
 };
-
+
 class Keyboard : public Control
 {
 protected:
@@ -430,7 +430,7 @@ private:
   Keyboard(const Keyboard&);
   Keyboard & operator=(const Keyboard&);
 };
-
+
 class KeyboardGroup : public Keyboard
 {
 private:
@@ -461,7 +461,7 @@ public:
     keyboards.push_back(keyboard);
   }
 };
-
+
 class ControllerKeyboard : public KeyboardGroup
 {
 private:
@@ -483,7 +483,7 @@ private:
   ControllerKeyboard(const ControllerKeyboard&);
   ControllerKeyboard & operator=(const ControllerKeyboard&);
 };
-
+
 } // namespace Input
 
 #endif

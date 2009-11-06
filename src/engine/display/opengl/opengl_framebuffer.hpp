@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_ENGINE_DISPLAY_OPENGL_OPENGL_FRAMEBUFFER_HPP
 
 #include "engine/display/framebuffer.hpp"
-
+
 class OpenGLFramebuffer : public Framebuffer
 {
 private:
@@ -50,7 +50,7 @@ private:
   OpenGLFramebuffer(const OpenGLFramebuffer&);
   OpenGLFramebuffer & operator=(const OpenGLFramebuffer&);
 };
-
+
 #endif
 
 /* EOF */

@@ -32,7 +32,7 @@
 #include "util/system.hpp"
 
 namespace Editor {
-
+
 FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect_, Mode mode_) :
   GroupComponent(rect_),
   editor(editor_),

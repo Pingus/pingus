@@ -21,8 +21,7 @@
 #include "math/rect.hpp"
 
 namespace GUI {
-
-/** */
+
 class RectComponent : public Component
 {
 protected:
@@ -44,7 +43,7 @@ public:
 
   Rect get_rect() const { return rect; }
 };
-
+
 } // namespace GUI
 
 #endif

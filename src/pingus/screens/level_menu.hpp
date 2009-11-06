@@ -27,8 +27,7 @@ class SurfaceButton;
 
 class LevelSelector;
 class LevelsetSelector;
-
-/** */
+
 class LevelMenu : public GUIScreen
 {
 private:
@@ -64,7 +63,7 @@ private:
   LevelMenu (const LevelMenu&);
   LevelMenu& operator= (const LevelMenu&);
 };
-
+
 #endif
 
 /* EOF */

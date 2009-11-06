@@ -23,7 +23,7 @@
 #include "pingus/fonts.hpp"
 
 FPSCounter fps_counter;
-
+
 FPSCounter::FPSCounter() :
   odd_frame(),
   fps_string(),
@@ -75,5 +75,5 @@ FPSCounter::update_fps_counter()
       fps_string = str.str();
     }
 }
-
+
 /* EOF */

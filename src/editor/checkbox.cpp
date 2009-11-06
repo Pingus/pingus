@@ -20,7 +20,7 @@
 #include "pingus/fonts.hpp"
 
 namespace Editor {
-
+
 Checkbox::Checkbox(const Rect& rect_, const std::string& label_)
   : RectComponent(rect_),
     checked(false),
@@ -61,7 +61,7 @@ Checkbox::set_checked(bool t)
   checked = t;
   //on_change(checked);
 }
-
+
 } // namespace Editor
 
 /* EOF */

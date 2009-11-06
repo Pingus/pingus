@@ -28,7 +28,7 @@
 class FontImpl;
 class FontDescription;
 class Framebuffer;
-
+
 class Font
 {
 public:
@@ -47,7 +47,7 @@ public:
 private:
   boost::shared_ptr<FontImpl> impl;
 };
-
+
 #endif
 
 /* EOF */

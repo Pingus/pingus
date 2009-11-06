@@ -28,7 +28,7 @@
 #include "util/system.hpp"
 
 using Actions::action_from_string;
-
+
 static std::string get_date_string ()
 {
   char buffer[32];
@@ -155,5 +155,5 @@ Server::send_finish_event()
   record(ServerEvent::make_finish_event(get_time()));
   goal_manager->set_abort_goal();
 }
-
+
 /* EOF */

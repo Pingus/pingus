@@ -23,7 +23,7 @@
 #include "engine/display/sdl_framebuffer.hpp"
 #include "math/math.hpp"
 #include "util/memory_pool.hpp"
-
+
 enum DrawOpType { SURFACE_DRAWOP, FILLRECT_DRAWOP };
 
 /** Little id creation function that is meant to bring equal objects
@@ -54,7 +54,7 @@ struct DrawOp
   bool equal(DrawOp* op) const;
   bool less(DrawOp* op) const;
 };
-
+
 struct SurfaceDrawOp : public DrawOp
 {
   Vector2i           pos;
@@ -87,7 +87,7 @@ struct SurfaceDrawOp : public DrawOp
       rect    == rhs.rect;
   }
 };
-
+
 struct FillRectDrawOp : public DrawOp
 {
   Rect  rect;
@@ -116,7 +116,7 @@ struct FillRectDrawOp : public DrawOp
   }
 };
 
-
+
 struct DrawRectDrawOp : public DrawOp
 {
   Rect  rect;
@@ -142,7 +142,7 @@ struct DrawRectDrawOp : public DrawOp
       color == rhs.color;
   }
 };
-
+
 int calculate_area(const std::vector<Rect>& rects)
 {
   int area = 0;
@@ -152,7 +152,7 @@ int calculate_area(const std::vector<Rect>& rects)
     }
   return area;
 }
-
+
 bool
 DrawOp::equal(DrawOp* op) const
 {
@@ -226,7 +226,7 @@ DrawOp::less(DrawOp* rhs) const
       return (lhs->type < rhs->type);
     }
 }
-
+
 inline bool ops_id_sorter(DrawOp* lhs, DrawOp* rhs)
 {
   return lhs->id < rhs->id;
@@ -236,7 +236,7 @@ inline bool ops_xy_sorter(DrawOp* lhs, DrawOp* rhs)
 {
   return lhs->less(rhs);
 }
-
+
 class DrawOpBuffer
 {
 private:
@@ -404,7 +404,7 @@ public:
     draw_ops.push_back(op);
   }
 };
-
+
 DeltaFramebuffer::DeltaFramebuffer()
   : framebuffer(new SDLFramebuffer()),
     frontbuffer(new DrawOpBuffer()),
@@ -480,5 +480,5 @@ DeltaFramebuffer::get_size() const
 {
   return framebuffer->get_size();
 }
-
+
 /* EOF */

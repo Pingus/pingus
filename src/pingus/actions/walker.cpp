@@ -59,7 +59,6 @@ Walker::update ()
 
   3) Check if up-hill or down-hill is required
 
-
   4)
 
   */
@@ -104,7 +103,6 @@ Walker::update ()
 	}
     }
 
-
   // FIXME: here we could/should scan more pixels
   if (rel_getpixel(1, 0) == Groundtype::GP_BRIDGE
       && !head_collision_on_walk(1, 1))  // bridge
@@ -119,7 +117,6 @@ Walker::update ()
       // Non of the trivial moves worked, so we do up-hill or down-hill walking
       // FIXME: currently the pingu takes multiple steps at once when
       // FIXME: working uphill, this looks kind of ugly
-
 
       // FIXME: rel_getpixel works on the current pos, so modifing pos
       // FIXME: is evil, a backup copy might help
@@ -174,7 +171,6 @@ Walker::update ()
 	    }
 	}
     }
-
 
   // This is moved here to fix the bug where pingu stuck turning both
   // sides indefinetely when a head collision occured. the fix needs the

@@ -55,7 +55,6 @@ private:
   SmallMapImage& operator= (const SmallMapImage&);
 };
 
-
 #endif
 
 /* EOF */

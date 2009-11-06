@@ -38,7 +38,7 @@
 #include "pingus/resource.hpp"
 
 namespace Editor {
-
+
 struct Groundpiece : public ObjectSelectorList::Object 
 {
   ResDescriptor desc;
@@ -59,7 +59,7 @@ struct Groundpiece : public ObjectSelectorList::Object
     return obj;
   }
 };
-
+
 struct Entrance : public ObjectSelectorList::Object 
 {
   Entrance()
@@ -78,7 +78,7 @@ struct Entrance : public ObjectSelectorList::Object
     return obj;
   }
 };
-
+
 struct Exit : public ObjectSelectorList::Object 
 {
   ResDescriptor desc;
@@ -97,7 +97,7 @@ struct Exit : public ObjectSelectorList::Object
     return obj;
   }
 };
-
+
 struct Hotspot : public ObjectSelectorList::Object 
 {
   ResDescriptor desc;
@@ -119,7 +119,7 @@ struct Hotspot : public ObjectSelectorList::Object
     return obj;
   }
 };
-
+
 struct SurfaceBackground : public ObjectSelectorList::Object 
 {
   ResDescriptor desc;
@@ -143,7 +143,7 @@ struct SurfaceBackground : public ObjectSelectorList::Object
     return obj;
   }
 };
-
+
 struct SolidColorBackground : public ObjectSelectorList::Object
 {
   SolidColorBackground() 
@@ -158,7 +158,7 @@ struct SolidColorBackground : public ObjectSelectorList::Object
     return obj;
   }
 };
-
+
 struct StarfieldBackground : public ObjectSelectorList::Object
 {
   StarfieldBackground() 
@@ -175,7 +175,7 @@ struct StarfieldBackground : public ObjectSelectorList::Object
     return obj;    
   }
 };
-
+
 struct Liquid : public ObjectSelectorList::Object
 {
   ResDescriptor desc;
@@ -194,7 +194,7 @@ struct Liquid : public ObjectSelectorList::Object
     return obj;     
   }
 };
-
+
 class ObjectSelectorButton : public GUI::RectComponent
 {
 private:
@@ -284,9 +284,9 @@ private:
   ObjectSelectorButton(const ObjectSelectorButton&);
   ObjectSelectorButton & operator=(const ObjectSelectorButton&);
 };
-
 
-
+
+
 ObjectSelector::ObjectSelector(EditorScreen* editor_, const Rect& rect_) :
   GroupComponent(rect_, false),
   editor(editor_),
@@ -381,7 +381,7 @@ ObjectSelector::add_button(const std::string& image, const std::string& tooltip,
     button_pos.y += 1;
   }
 }
-
+
 ObjectSelectorSet*
 ObjectSelector::create_objects(const std::string& prefix)
 {
@@ -546,7 +546,7 @@ ObjectSelector::update_layout()
   GroupComponent::update_layout();
   object_list->set_rect(Rect(2, 2 + 60 + 2, rect.get_width() - 2, rect.get_height() - 2)); 
 }
-
+
 } // namespace Editor
 
 /* EOF */

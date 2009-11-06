@@ -16,7 +16,6 @@
 
 #include "util/string_util.hpp"
 
-
 // Code based on clanstring.cpp from ClanLib 0.8
 
 std::string

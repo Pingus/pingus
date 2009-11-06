@@ -24,7 +24,7 @@
 #include "engine/display/scene_context.hpp"
 #include "engine/display/sprite.hpp"
 #include "engine/screen/gui_screen.hpp"
-
+
 class Credits : public GUIScreen
 {
 private:
@@ -70,7 +70,7 @@ private:
   Credits& operator= (const Credits&);
 
 };
-
+
 #endif
 
 /* EOF */

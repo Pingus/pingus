@@ -157,7 +157,6 @@ Blitter::rotate_90 (Surface sur)
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot90());
 }
 
-
 Surface
 Blitter::rotate_180 (Surface sur)
 {

@@ -21,7 +21,6 @@
 
 namespace WorldmapNS {
 
-/** */
 class DrawableFactory
 {
 private:

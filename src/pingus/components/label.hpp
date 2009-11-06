@@ -22,7 +22,6 @@
 #include "engine/display/font.hpp"
 #include "engine/gui/rect_component.hpp"
 
-/** */
 class Label : public GUI::RectComponent
 {
 private:

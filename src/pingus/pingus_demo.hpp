@@ -23,8 +23,7 @@
 #include "pingus/server_event.hpp"
 
 class Pathname;
-
-/** */
+
 class PingusDemo
 {
 private:
@@ -44,7 +43,7 @@ private:
   PingusDemo (const PingusDemo&);
   PingusDemo& operator= (const PingusDemo&);
 };
-
+
 #endif
 
 /* EOF */

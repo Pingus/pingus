@@ -39,7 +39,7 @@ class ArmageddonButton;
 class ForwardButton;
 class PauseButton;
 class Server;
-
+
 /** You can use this class to start up a game session, which consist
     of a single level. */
 class GameSession : public GUIScreen
@@ -118,7 +118,7 @@ private:
   GameSession& operator= (const GameSession&);
 };
 
-
+
 #endif
 
 /* EOF */

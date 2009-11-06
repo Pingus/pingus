@@ -23,7 +23,6 @@ namespace WorldmapNS {
 
 class Dot;
 
-/** */
 class DotFactory
 {
 private:

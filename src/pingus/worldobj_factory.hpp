@@ -54,7 +54,6 @@ private:
   WorldObjFactory& operator= (const WorldObjFactory&);
 };
 
-
 #endif
 
 /* EOF */

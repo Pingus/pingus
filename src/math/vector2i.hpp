@@ -20,8 +20,7 @@
 #include <iosfwd>
 
 class Vector2f;
-
-/** */
+
 class Vector2i
 {
 public:
@@ -35,7 +34,6 @@ public:
 
   Vector2i(int x_, int y_) 
     : x(x_), y(y_) {}
-
 
   Vector2i operator+ (const Vector2i& add) const
   {
@@ -83,9 +81,9 @@ public:
     return (other.x == x && other.y == y);
   }
 };
-
+
 std::ostream& operator<<(std::ostream& s, const Vector2i& v);
-
+
 #endif
 
 /* EOF */

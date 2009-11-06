@@ -23,7 +23,6 @@
 
 namespace WorldmapNS {
 
-/** */
 class LevelDot : public Dot
 {
 private:

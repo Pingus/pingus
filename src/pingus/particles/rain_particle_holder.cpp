@@ -24,14 +24,13 @@
 #include "pingus/world.hpp"
 
 namespace Particles {
-
+
 RainParticleHolder::RainParticle::RainParticle(int x, int y)
   : alive(true), splash(false), use_rain2_surf(false), splash_counter(0), splash_frame(0), pos(Vector3f((float)x, (float)y))
 {
   use_rain2_surf = ((rand() % 3) == 0);
   pos.z = 1.0f + Math::frand() * 3.0f;
 }
-
 
 RainParticleHolder::RainParticleHolder () :
   rain1_surf("particles/rain1"),
@@ -40,7 +39,6 @@ RainParticleHolder::RainParticleHolder () :
   particles()
 {
 }
-
 
 void
 RainParticleHolder::add_particle (int x, int y)
@@ -102,7 +100,6 @@ RainParticleHolder::update ()
 
 }
 
-
 void
 RainParticleHolder::draw (SceneContext& gc)
 {
@@ -126,7 +123,7 @@ RainParticleHolder::draw (SceneContext& gc)
                                                static_cast<int>(it->pos.y - static_cast<float>(rain1_surf.get_height()))));
     }
 }
-
+
 } // namespace Particles
 
 /* EOF */

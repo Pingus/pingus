@@ -22,8 +22,7 @@
 #include "engine/gui/rect_component.hpp"
 
 namespace Editor {
-
-/** */
+
 class Checkbox : public GUI::RectComponent
 {
 private:
@@ -47,7 +46,7 @@ private:
   Checkbox (const Checkbox&);
   Checkbox& operator= (const Checkbox&);
 };
-
+
 } // namespace Editor
 
 #endif

@@ -35,7 +35,7 @@
 #include "pingus/string_format.hpp"
 #include "util/string_util.hpp"
 #include "util/system.hpp"
-
+
 class StartScreenComponent : public GUI::Component
 {
 private:
@@ -53,7 +53,7 @@ public:
 private:
   const std::string& format_description(int length);
 };
-
+
 class StartScreenOkButton : public GUI::SurfaceButton
 {
 private:
@@ -85,7 +85,6 @@ public:
     parent->start_game();
   }
 
-
   void on_pointer_enter()
   {
     SurfaceButton::on_pointer_enter();
@@ -96,7 +95,7 @@ private:
   StartScreenOkButton(const StartScreenOkButton&);
   StartScreenOkButton & operator=(const StartScreenOkButton&);
 };
-
+
 class StartScreenAbortButton
   : public GUI::SurfaceButton
 {
@@ -133,7 +132,7 @@ private:
   StartScreenAbortButton(const StartScreenAbortButton&);
   StartScreenAbortButton & operator=(const StartScreenAbortButton&);
 };
-
+
 StartScreenComponent::StartScreenComponent(const PingusLevel& p) :
   plf(p),
   background("core/menu/wood"),
@@ -207,7 +206,7 @@ StartScreenComponent::format_description(int length)
 
   return description;
 }
-
+
 StartScreen::StartScreen(const PingusLevel& arg_plf) :
   plf(arg_plf),
   abort_button(),
@@ -263,5 +262,5 @@ StartScreen::resize(const Size& size_)
   abort_button->set_pos(size.width/2 - 300, size.height/2 + 144);
   ok_button   ->set_pos(size.width/2 + 225, size.height/2 + 125);
 }
-
+
 /* EOF */

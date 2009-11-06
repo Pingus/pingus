@@ -32,7 +32,7 @@
 #include "pingus/screens/game_session.hpp"
 #include "util/string_util.hpp"
 #include "util/system.hpp"
-
+
 class ResultScreenComponent : public GUI::Component
 {
 public:
@@ -45,7 +45,7 @@ public:
   virtual ~ResultScreenComponent() {}
   void draw(DrawingContext& gc) ;
 };
-
+
 class ResultScreenOkButton
   : public GUI::SurfaceButton
 {
@@ -76,7 +76,7 @@ private:
   ResultScreenOkButton(const ResultScreenOkButton&);
   ResultScreenOkButton & operator=(const ResultScreenOkButton&);
 };
-
+
 class ResultScreenAbortButton
   : public GUI::SurfaceButton
 {
@@ -101,7 +101,6 @@ public:
     parent->close_screen();
   }
 
-
   void on_pointer_enter()
   {
     SurfaceButton::on_pointer_enter();
@@ -112,7 +111,7 @@ private:
   ResultScreenAbortButton(const ResultScreenAbortButton&);
   ResultScreenAbortButton & operator=(const ResultScreenAbortButton&);
 };
-
+
 class ResultScreenRetryButton : public GUI::SurfaceButton
 {
 private:
@@ -154,7 +153,7 @@ private:
   ResultScreenRetryButton(const ResultScreenRetryButton&);
   ResultScreenRetryButton & operator=(const ResultScreenRetryButton&);
 };
-
+
 ResultScreenComponent::ResultScreenComponent(Result arg_result) :
   result(arg_result),
   background("core/menu/wood"),
@@ -243,7 +242,6 @@ ResultScreenComponent::draw(DrawingContext& gc)
 
   gc.print_left(Fonts::chalk_normal,  Vector2i(left_x,  (y+=30)), _("Died: "));
   gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), StringUtil::to_string(result.killed));
-
 
   gc.print_left(Fonts::chalk_normal,  Vector2i(left_x, (y+=30)), _("Time left: "));
   gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), time_str);
@@ -339,5 +337,5 @@ ResultScreen::resize(const Size& size_)
   if (retry_button)  
     retry_button->set_pos(size.width/2 + 225, size.height/2 + 125);
 }
-
+
 /* EOF */

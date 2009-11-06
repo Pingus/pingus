@@ -25,7 +25,6 @@
 #include "math/vector3f.hpp"
 #include "util/file_writer.hpp"
 
-/** */
 class SExprFileWriter : public FileWriter
 {
 private:

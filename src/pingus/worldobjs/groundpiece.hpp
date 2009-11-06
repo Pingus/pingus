@@ -22,7 +22,6 @@
 #include "pingus/res_descriptor.hpp"
 #include "pingus/worldobj.hpp"
 
-
 namespace WorldObjsData {
 class GroundpieceData;
 }

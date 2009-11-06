@@ -48,7 +48,6 @@ class ArmageddonGameEvent : public GameEvent
   // nothing
 };
 
-
 #endif
 
 /* EOF */

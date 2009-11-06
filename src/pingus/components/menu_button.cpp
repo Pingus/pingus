@@ -24,7 +24,7 @@
 #include "pingus/resource.hpp"
 #include "pingus/screens/pingus_menu.hpp"
 
-
+
 MenuButton::MenuButton(PingusMenu* menu_,
                        const Vector2i& pos_,
                        const std::string& text_, const std::string& desc_) :
@@ -132,5 +132,5 @@ MenuButton::set_pos(int x, int y)
   x_pos = x;
   y_pos = y;
 }
-
+
 /* EOF */

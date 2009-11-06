@@ -22,7 +22,7 @@
 
 #include "math/math.hpp"
 #include "vector2i.hpp"
-
+
 /** Simple two dimensional vector. */
 class Vector2f
 {
@@ -147,8 +147,8 @@ public:
   float x, y; // leave this public, get/set methods just give me headaches
   // for such simple stuff :)
 };
-
+
 std::ostream& operator<<(std::ostream& s, const Vector2f& v);
-
+
 #endif
 

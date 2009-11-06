@@ -26,7 +26,7 @@
 #include "pingus/resource.hpp"
 
 namespace Editor {
-
+
 Combobox::Combobox(const Rect& rect_) :
   RectComponent(rect_),
   sprite("core/editor/combobox"),
@@ -176,7 +176,7 @@ Combobox::on_pointer_move(int x, int y)
     }
   }
 }
-
+
 } // namespace Editor 
 
 /* EOF */

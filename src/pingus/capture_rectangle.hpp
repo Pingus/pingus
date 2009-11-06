@@ -27,7 +27,7 @@ class Pingu;
 class GameSession;
 class DrawingContext;
 class SceneContext;
-
+
 /** The rectangle that is shown when the mouse cursor is above a
     pingu. The rectangle shows the current pingu direction along with
     the current active action.
@@ -61,7 +61,7 @@ private:
   CaptureRectangle (const CaptureRectangle&);
   CaptureRectangle& operator= (const CaptureRectangle&);
 };
-
+
 #endif
 
 /* EOF */

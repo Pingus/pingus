@@ -86,7 +86,6 @@ private:
   LayerManager& operator= (const LayerManager&);
 };
 
-
 #endif
 
 /* EOF */

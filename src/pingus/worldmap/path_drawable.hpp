@@ -21,7 +21,7 @@
 #include "pingus/worldmap/path_graph.hpp"
 
 namespace WorldmapNS {
-
+
 /** Drawable to show the path between two nodes, only used for
     debugging */
 class PathDrawable : public Drawable
@@ -39,7 +39,7 @@ private:
   PathDrawable (const PathDrawable&);
   PathDrawable& operator= (const PathDrawable&);
 };
-
+
 } // namespace WorldmapNS
 
 #endif

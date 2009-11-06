@@ -57,7 +57,7 @@
 #include "pingus/actions/walker.hpp"
 
 using namespace Actions;
-
+
 // Init a pingu at the given position while falling
 Pingu::Pingu (int arg_id, const Vector3f& arg_pos, int owner) :
   action(),
@@ -496,5 +496,5 @@ Pingu::create_action(ActionName action_)
       default: assert(!"Invalid action name provied");
     }
 }
-
+
 /* EOF */

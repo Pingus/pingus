@@ -22,7 +22,6 @@
 #include "engine/display/surface.hpp"
 #include "pingus/res_descriptor.hpp"
 
-/** */
 class CollisionMask
 {
 public:

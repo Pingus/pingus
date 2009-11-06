@@ -83,5 +83,4 @@ PathManager::set_path (const std::string& path)
   base_path = path;
 }
 
-
 /* EOF */

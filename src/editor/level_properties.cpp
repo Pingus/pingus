@@ -37,7 +37,7 @@ Playable (unneeded)
 */
 
 namespace Editor {
-
+
 LevelProperties::LevelProperties(EditorScreen* editor_, const Rect& rect_) :
   GroupComponent(rect_),
   editor(editor_),
@@ -130,7 +130,7 @@ LevelProperties::set_level(EditorLevel* level_)
   comment->set_text(level->get_comment());
   music->set_text(level->get_music());
 }
-
+
 void
 LevelProperties::on_author_change(const std::string& str)
 {
@@ -240,7 +240,7 @@ LevelProperties::update_layout()
   comment->set_rect(Rect(Vector2i(110, y+132), Size(  w, 20)));
   music->set_rect(Rect(Vector2i(110, y+154), Size(  w, 20)));
 }
-
+
 } // namespace Editor
 
 /* EOF */

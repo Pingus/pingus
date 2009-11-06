@@ -63,7 +63,6 @@ public:
   int get_saved_pingus() const { return saved_pingus; }
 };
 
-
 #endif
 
 /* EOF */

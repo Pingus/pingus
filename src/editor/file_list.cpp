@@ -24,7 +24,7 @@
 #include "pingus/fonts.hpp"
 
 namespace Editor {
-
+
 FileList::FileList(const Rect& rect_) :
   RectComponent(rect_),
   hspace(),
@@ -199,7 +199,7 @@ FileList::has_more_prev_pages()
 {
   return (page > 0);
 }
-
+
 } // namespace Editor
 
 /* EOF */

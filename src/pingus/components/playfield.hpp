@@ -30,7 +30,7 @@ class GameSession;
 class ButtonPanel;
 class Controller;
 class View;
-
+
 /** This class encapsulates all the different Views */
 class Playfield : public GUI::RectComponent
 {
@@ -84,7 +84,7 @@ private:
   Playfield (const Playfield&);
   Playfield& operator= (const Playfield&);
 };
-
+
 #endif
 
 /* EOF */

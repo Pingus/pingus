@@ -16,7 +16,7 @@
 
 #include "pingus/globals.hpp"
 
-
+
 int         game_speed                      = 20;
 float       desired_fps                     = 40;
 bool        print_fps                       = false;
@@ -48,5 +48,5 @@ bool        delta_drawing                   = false;
 bool        static_graphics                 = false;
 
 FramebufferType framebuffer_type = DELTA_FRAMEBUFFER;
-
+
 /* EOF */

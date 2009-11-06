@@ -34,7 +34,7 @@
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
 #include "util/pathname.hpp"
-
+
 static bool false_func() { return false; }
 
 class BButton : public GUI::SurfaceButton
@@ -72,7 +72,7 @@ public:
     callback();
   }
 };
-
+
 DemoSession::DemoSession(const Pathname& pathname_) :
   pathname(pathname_),
   server(),
@@ -248,12 +248,11 @@ DemoSession::resize(const Size& size_)
                            Size(Math::min(size.width,  world_width),
                                 Math::min(size.height, world_height))));
 
-
   fastforward_button->set_pos(32+50, 32);
   pause_button->set_pos(32,  32);
   restart_button->set_pos(size.width - 32 - 48, 32);
 
   small_map->set_rect(Rect(Vector2i(5, size.height - 105), Size(175, 100)));
 }
-
+
 /* EOF */

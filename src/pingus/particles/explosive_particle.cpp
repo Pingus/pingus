@@ -83,7 +83,6 @@ ExplosiveParticle::detonate ()
 //  sprite.put_screen (int(pos.x + ofx), int(pos.y + ofy));
 //}
 
-
 bool
 ExplosiveParticle::is_alive(void)
 {

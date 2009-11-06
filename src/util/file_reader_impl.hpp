@@ -27,7 +27,7 @@ class Vector2i;
 
 class FileReader;
 class ResDescriptor;
-
+
 class FileReaderImpl
 {
 public:
@@ -49,7 +49,7 @@ public:
   virtual std::vector<FileReader> get_sections() const =0;
   virtual std::vector<std::string> get_section_names() const =0;
 };
-
+
 #endif
 
 /* EOF */
