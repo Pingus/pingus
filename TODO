@@ -30,14 +30,20 @@ Roadmap for Pingus 0.8.0:
 Code Cleanup
 ============
 
-* use wildcard in source file specification
-
 * Editor ObjectSelector is broken, graphics are not clipped (dirty
   rectangle renderers fault)
 
 * add check for OpenGL
 
 * banish Vector3f from the source code, along with float
+
+* replace PingusError with std::runtime_error()
+
+* reduce global variables
+
+* get rid of "pingus/pingus.cpp"
+
+* make pingu.hpp use int not float
 
 
 OLPC Issues
