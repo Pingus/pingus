@@ -17,11 +17,11 @@
 #include "engine/display/font.hpp"
 
 #include <SDL.h>
+#include <SDL_image.h>
 #include <iostream>
 #include <map>
 #include <vector>
 
-#include "SDL_image.h"
 #include "engine/display/display.hpp"
 #include "engine/display/font_description.hpp"
 #include "engine/display/framebuffer.hpp"

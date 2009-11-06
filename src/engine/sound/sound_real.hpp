@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_ENGINE_SOUND_SOUND_REAL_HPP
 #define HEADER_PINGUS_ENGINE_SOUND_SOUND_REAL_HPP
 
-#include "SDL_mixer.h"
+#include <SDL_mixer.h>
 #include <config.h>
 #include <vector>
 

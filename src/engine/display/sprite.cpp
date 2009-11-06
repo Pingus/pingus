@@ -17,11 +17,11 @@
 #include "engine/display/sprite.hpp"
 
 #include <SDL.h>
+#include <SDL_image.h>
 #include <assert.h>
 #include <iostream>
 #include <sstream>
 
-#include "SDL_image.h"
 #include "engine/display/blitter.hpp"
 #include "engine/display/sprite_description.hpp"
 #include "engine/display/sprite_impl.hpp"
