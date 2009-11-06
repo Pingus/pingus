@@ -18,7 +18,8 @@
 #define HEADER_PINGUS_PINGUS_COMPONENTS_PLAYFIELD_HPP
 
 #include <memory>
-#include "pingus/graphic_context_state.hpp"
+
+#include "engine/display/graphic_context_state.hpp"
 #include "engine/gui/rect_component.hpp"
 #include "pingus/capture_rectangle.hpp"
 

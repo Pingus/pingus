@@ -18,11 +18,12 @@
 #ifndef HEADER_PINGUS_EDITOR_VIEWPORT_HPP
 #define HEADER_PINGUS_EDITOR_VIEWPORT_HPP
 
-#include "engine/gui/rect_component.hpp"
-#include "pingus/graphic_context_state.hpp"
 #include <boost/signal.hpp>
 #include <vector>
 #include <string>
+
+#include "engine/display/graphic_context_state.hpp"
+#include "engine/gui/rect_component.hpp"
 
 class DrawingContext;
 class SceneContext;

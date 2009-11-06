@@ -18,11 +18,12 @@
 #define HEADER_PINGUS_PINGUS_WORLDMAP_WORLDMAP_HPP
 
 #include <vector>
-#include "engine/display/sprite.hpp"
-#include "util/file_reader.hpp"
+
 #include "engine/display/drawing_context.hpp"
-#include "pingus/graphic_context_state.hpp"
+#include "engine/display/graphic_context_state.hpp"
+#include "engine/display/sprite.hpp"
 #include "pingus/worldmap/pingus_worldmap.hpp"
+#include "util/file_reader.hpp"
 
 class Font;
 class DrawingContext;

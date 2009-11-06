@@ -20,6 +20,7 @@
 #include <memory>
 #include <list>
 #include <vector>
+
 #include "math/size.hpp"
 
 class Vector2i;
