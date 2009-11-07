@@ -17,9 +17,7 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_SURFACE_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_SURFACE_HPP
 
-#include <SDL.h>
 #include <boost/shared_ptr.hpp>
-#include <string>
 
 #include "math/color.hpp"
 #include "math/size.hpp"

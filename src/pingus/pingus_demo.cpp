@@ -16,12 +16,8 @@
 
 #include "pingus/pingus_demo.hpp"
 
-//#include <fstream>
 #include <stdexcept>
 
-//#include "pingus/pingu_enums.hpp"
-//#include "pingus/server_event.hpp"
-//#include "util/file_reader.hpp"
 #include "util/pathname.hpp"
 
 PingusDemo::PingusDemo(const Pathname& pathname) :

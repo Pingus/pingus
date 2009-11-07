@@ -17,8 +17,6 @@
 #ifndef HEADER_PINGUS_PINGUS_SERVER_EVENT_HPP
 #define HEADER_PINGUS_PINGUS_SERVER_EVENT_HPP
 
-#include <iosfwd>
-
 #include "math/vector3f.hpp"
 #include "pingus/pingu_enums.hpp"
 #include "util/file_reader.hpp"

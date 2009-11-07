@@ -16,38 +16,16 @@
 
 #include "pingus/worldmap/worldmap.hpp"
 
-//#include <assert.h>
-//#include <iostream>
 
-//#include "engine/display/display.hpp"
 #include "engine/sound/sound.hpp"
-//#include "lisp/lisp.hpp"
-//#include "lisp/parser.hpp"
-//#include "math/math.hpp"
-//#include "pingus/debug.hpp"
-//#include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
-//#include "pingus/globals.hpp"
 #include "pingus/globals.hpp"
-//#include "pingus/path_manager.hpp"
-//#include "pingus/resource.hpp"
-//#include "pingus/savegame_manager.hpp"
 #include "pingus/stat_manager.hpp"
-//#include "pingus/stat_manager.hpp"
-//#include "pingus/worldmap/dot.hpp"
-//#include "pingus/worldmap/drawable.hpp"
 #include "pingus/worldmap/drawable_factory.hpp"
 #include "pingus/worldmap/level_dot.hpp"
-//#include "pingus/worldmap/path_graph.hpp"
 #include "pingus/worldmap/pingus.hpp"
-//#include "pingus/worldmap/worldmap_screen.hpp"
-//#include "pingus/worldmap/worldmap_story.hpp"
 #include "util/pathname.hpp"
-//#include "util/sexpr_file_reader.hpp"
-//#include "util/system.hpp"
 
-//#include "engine/screen/screen_manager.hpp"
-//#include "pingus/screens/story_screen.hpp"
 
 namespace WorldmapNS {
 

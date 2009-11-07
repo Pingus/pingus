@@ -16,13 +16,9 @@
 
 #include "pingus/components/button_panel.hpp"
 
-//#include <algorithm>
-//#include <iostream>
 
 #include "engine/display/drawing_context.hpp"
-//#include "math/math.hpp"
 #include "pingus/fonts.hpp"
-//#include "pingus/globals.hpp"
 #include "pingus/screens/game_session.hpp"
 #include "pingus/server.hpp"
 #include "util/string_util.hpp"

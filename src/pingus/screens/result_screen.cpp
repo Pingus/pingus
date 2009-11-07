@@ -16,9 +16,7 @@
 
 #include "pingus/screens/result_screen.hpp"
 
-//#include <iostream>
 
-//#include "engine/display/blitter.hpp"
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
@@ -27,11 +25,8 @@
 #include "pingus/fonts.hpp"
 #include "pingus/game_time.hpp"
 #include "pingus/gettext.h"
-//#include "pingus/res_descriptor.hpp"
-//#include "pingus/resource.hpp"
 #include "pingus/screens/game_session.hpp"
 #include "util/string_util.hpp"
-//#include "util/system.hpp"
 
 class ResultScreenComponent : public GUI::Component
 {

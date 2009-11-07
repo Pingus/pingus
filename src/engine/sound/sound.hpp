@@ -19,7 +19,6 @@
 
 #include <string>
 
-#include "engine/sound/sound_impl.hpp"
 
 namespace Sound {
 

@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_ENGINE_DISPLAY_SPRITE_HPP
 
 #include <boost/shared_ptr.hpp>
+#include <string>
 
 #include "math/origin.hpp"
 #include "pingus/resource_modifier.hpp"
@@ -34,7 +35,7 @@ class Sprite
 {
 public:
   Sprite();
-  Sprite(const std::string&   name);
+  Sprite(const std::string& name);
   Sprite(const ResDescriptor& desc);
   Sprite(const Pathname& name);
   Sprite(const SpriteDescription& desc, ResourceModifierNS::ResourceModifier mod = ResourceModifierNS::ROT0);

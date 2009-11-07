@@ -18,7 +18,6 @@
 #define HEADER_PINGUS_PINGUS_WORLDOBJ_FACTORY_HPP
 
 #include <map>
-#include <string>
 
 #include "util/file_reader.hpp"
 

@@ -18,8 +18,6 @@
 #define HEADER_PINGUS_PINGUS_COMPONENTS_CHOICE_BOX_HPP
 
 #include <boost/signal.hpp>
-#include <string>
-#include <vector>
 
 #include "engine/gui/rect_component.hpp"
 

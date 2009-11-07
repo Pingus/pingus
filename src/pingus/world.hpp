@@ -17,11 +17,9 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLD_HPP
 #define HEADER_PINGUS_PINGUS_WORLD_HPP
 
-#include <memory>
 #include <string>
 #include <vector>
 
-#include "math/color.hpp"
 #include "math/vector2i.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/groundtype.hpp"

@@ -17,11 +17,9 @@
 #ifndef HEADER_PINGUS_PINGUS_GROUND_MAP_HPP
 #define HEADER_PINGUS_PINGUS_GROUND_MAP_HPP
 
-//#include <vector>
 
 #include "engine/display/surface.hpp"
 #include "pingus/globals.hpp"
-//#include "pingus/ground_map.hpp"
 #include "pingus/worldobj.hpp"
 
 class SceneContext;

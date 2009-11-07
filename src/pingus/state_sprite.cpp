@@ -18,7 +18,6 @@
 
 #include <stdexcept>
 
-//#include "pingus/resource.hpp"
 
 StateSprite::StateSprite() :
   sprites()

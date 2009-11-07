@@ -16,10 +16,7 @@
 
 #include "pingus/worldmap/dot.hpp"
 
-//#include <assert.h>
-//#include <iostream>
 
-//#include "util/file_reader.hpp"
 
 namespace WorldmapNS {
 

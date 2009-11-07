@@ -18,7 +18,6 @@
 #define HEADER_PINGUS_PINGUS_PINGU_HOLDER_HPP
 
 #include <list>
-#include <vector>
 
 #include "pingus/worldobj.hpp"
 

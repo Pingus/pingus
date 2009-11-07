@@ -16,10 +16,8 @@
 
 #include "pingus/worldmap/path_drawable.hpp"
 
-//#include <iostream>
 
 #include "engine/display/drawing_context.hpp"
-//#include "math/color.hpp"
 
 namespace WorldmapNS {
 

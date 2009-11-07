@@ -17,7 +17,6 @@
 #include "pingus/components/slider_box.hpp"
 
 #include "engine/display/drawing_context.hpp"
-//#include "math/math.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/globals.hpp"
 

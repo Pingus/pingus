@@ -16,17 +16,10 @@
 
 #include "pingus/ground_map.hpp"
 
-//#include <SDL.h>
-//#include <iostream>
 #include <stdexcept>
-//#include <stdio.h>
 
-//#include "engine/display/blitter.hpp"
 #include "engine/display/scene_context.hpp"
-//#include "gettext.h"
-//#include "math/math.hpp"
 #include "pingus/collision_map.hpp"
-//#include "pingus/pingus_level.hpp"
 
 class MapTile
 {

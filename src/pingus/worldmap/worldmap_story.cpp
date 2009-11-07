@@ -16,14 +16,10 @@
 
 #include "pingus/worldmap/worldmap_story.hpp"
 
-//#include <algorithm>
 #include <stdexcept>
-//#include <vector>
 
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
-//#include "pingus/res_descriptor.hpp"
-//#include "pingus/screens/story_screen.hpp"
 #include "pingus/string_format.hpp"
 #include "util/file_reader.hpp"
 

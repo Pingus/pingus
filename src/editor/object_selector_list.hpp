@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_EDITOR_OBJECT_SELECTOR_LIST_HPP
 #define HEADER_PINGUS_EDITOR_OBJECT_SELECTOR_LIST_HPP
 
-#include <vector>
 
 #include "engine/display/sprite.hpp"
 #include "engine/gui/rect_component.hpp"

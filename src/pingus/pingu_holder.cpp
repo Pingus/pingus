@@ -16,8 +16,6 @@
 
 #include "pingus/pingu_holder.hpp"
 
-//#include <assert.h>
-//#include <iostream>
 
 #include "pingus/pingu.hpp"
 #include "pingus/pingus_level.hpp"

@@ -21,18 +21,13 @@
 #include <boost/function.hpp>
 
 #include "engine/display/display.hpp"
-//#include "engine/display/drawing_context.hpp"
 #include "engine/gui/gui_manager.hpp"
-//#include "engine/gui/rect_component.hpp"
 #include "engine/gui/surface_button.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "engine/sound/sound.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "pingus/globals.hpp"
-//#include "pingus/resource.hpp"
-//#include "pingus/screens/game_session.hpp"
-//#include "pingus/screens/option_menu.hpp"
 #include "pingus/screens/start_screen.hpp"
 #include "util/system.hpp"
 

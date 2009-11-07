@@ -16,25 +16,17 @@
 
 #include "pingus/worldmap/worldmap_screen.hpp"
 
-//#include <iostream>
 
 #include "engine/display/display.hpp"
-//#include "engine/display/scene_context.hpp"
 #include "engine/gui/surface_button.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "engine/sound/sound.hpp"
-//#include "math/math.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
-//#include "pingus/path_manager.hpp"
-//#include "pingus/res_descriptor.hpp"
-//#include "pingus/resource.hpp"
 #include "pingus/screens/story_screen.hpp"
-//#include "pingus/stat_manager.hpp"
 #include "pingus/worldmap/pingus.hpp"
 #include "pingus/worldmap/worldmap.hpp"
 #include "pingus/worldmap/worldmap_component.hpp"
-//#include "pingus/worldmap/worldmap_story.hpp"
 
 namespace WorldmapNS {
 

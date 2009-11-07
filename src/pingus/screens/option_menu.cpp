@@ -18,25 +18,18 @@
 
 #include <boost/bind.hpp>
 #include <iostream>
-//#include <set>
-//#include <sstream>
 
 #include "engine/display/display.hpp"
-//#include "engine/display/drawing_context.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "engine/sound/sound.hpp"
 #include "pingus/components/check_box.hpp"
 #include "pingus/components/choice_box.hpp"
-//#include "pingus/components/label.hpp"
 #include "pingus/components/slider_box.hpp"
 #include "pingus/config_manager.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
-//#include "pingus/globals.hpp"
-//#include "pingus/resource.hpp"
 #include "tinygettext/dictionary_manager.hpp"
-//#include "tinygettext/language.hpp"
 
 #define C(x) connections.push_back(x)
 

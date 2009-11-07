@@ -18,7 +18,6 @@
 #define HEADER_PINGUS_PINGUS_COMPONENTS_CHECK_BOX_HPP
 
 #include <boost/signal.hpp>
-#include <string>
 
 #include "engine/gui/rect_component.hpp"
 

@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_PINGUS_PINGU_ACTION_HPP
 #define HEADER_PINGUS_PINGUS_PINGU_ACTION_HPP
 
-#include "engine/display/surface.hpp"
 #include "pingus/pingu_enums.hpp"
 
 class ActionHolder;

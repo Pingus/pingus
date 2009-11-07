@@ -14,7 +14,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-//#include "pingus/particles/explosive_particle.hpp"
 #if 0
 //#include "pingus/collision_map.hpp"
 //#include "pingus/particles/particle_holder.hpp"

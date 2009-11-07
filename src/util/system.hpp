@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_UTIL_SYSTEM_HPP
 #define HEADER_PINGUS_UTIL_SYSTEM_HPP
 
-#include <map>
 #include <stdint.h>
 #include <string>
 #include <vector>

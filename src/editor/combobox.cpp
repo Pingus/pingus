@@ -18,7 +18,6 @@
 
 #include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
-#include "pingus/resource_modifier.hpp"
 
 namespace Editor {
 

@@ -16,7 +16,6 @@
 
 #include "pingus/action_holder.hpp"
 
-//#include <iostream>
 
 #include "pingus/pingus_level.hpp"
 

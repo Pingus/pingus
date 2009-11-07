@@ -16,13 +16,10 @@
 
 #include "pingus/worldmap/sprite_drawable.hpp"
 
-//#include <iostream>
 
-//#include "engine/display/drawing_context.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/worldmap/pingus.hpp"
 #include "pingus/worldmap/worldmap.hpp"
-//#include "pingus/worldmap/worldmap_screen.hpp"
 
 namespace WorldmapNS {
 

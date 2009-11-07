@@ -16,11 +16,8 @@
 
 #include "pingus/collision_mask.hpp"
 
-//#include <iostream>
 
 #include "pingus/resource.hpp"
-//#include "util/system.hpp"
-//#include "pingus/res_descriptor.hpp"
 
 CollisionMask::CollisionMask() :
   surface(),

@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_PINGUS_SAVEGAME_MANAGER_HPP
 #define HEADER_PINGUS_PINGUS_SAVEGAME_MANAGER_HPP
 
-//#include <map>
 
 #include "pingus/savegame.hpp"
 
