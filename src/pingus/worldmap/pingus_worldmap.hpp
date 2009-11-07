@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDMAP_PINGUS_WORLDMAP_HPP
 #define HEADER_PINGUS_PINGUS_WORLDMAP_PINGUS_WORLDMAP_HPP
 
-
 #include "pingus/worldmap/path_graph.hpp"
 
 class PingusWorldmapImpl;

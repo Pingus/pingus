@@ -16,7 +16,6 @@
 
 #include "pingus/components/button_panel.hpp"
 
-
 #include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/screens/game_session.hpp"

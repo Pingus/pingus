@@ -16,7 +16,6 @@
 
 #include "pingus/goal_manager.hpp"
 
-
 #include "pingus/pingu_holder.hpp"
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"

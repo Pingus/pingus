@@ -16,7 +16,6 @@
 
 #include "pingus/worldmap/level_dot.hpp"
 
-
 #include "engine/display/drawing_context.hpp"
 #include "engine/input/control.hpp"
 #include "engine/screen/screen_manager.hpp"

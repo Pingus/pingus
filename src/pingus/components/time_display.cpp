@@ -16,7 +16,6 @@
 
 #include "pingus/components/time_display.hpp"
 
-
 #include "engine/display/display.hpp"
 #include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"

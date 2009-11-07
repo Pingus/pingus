@@ -18,7 +18,6 @@
 
 #include <stdexcept>
 
-
 StateSprite::StateSprite() :
   sprites()
 {

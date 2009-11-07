@@ -16,7 +16,6 @@
 
 #include "pingus/screens/result_screen.hpp"
 
-
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"

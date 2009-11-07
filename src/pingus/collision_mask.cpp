@@ -16,7 +16,6 @@
 
 #include "pingus/collision_mask.hpp"
 
-
 #include "pingus/resource.hpp"
 
 CollisionMask::CollisionMask() :

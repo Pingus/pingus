@@ -18,7 +18,6 @@
 
 #include <stdexcept>
 
-
 using namespace WorldmapNS;
 
 class PingusWorldmapImpl

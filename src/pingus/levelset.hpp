@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_PINGUS_LEVELSET_HPP
 #define HEADER_PINGUS_PINGUS_LEVELSET_HPP
 
-
 #include "engine/display/sprite.hpp"
 #include "pingus/pingus_level.hpp"
 #include "util/pathname.hpp"

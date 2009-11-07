@@ -16,7 +16,6 @@
 
 #include "pingus/components/playfield.hpp"
 
-
 #include "engine/display/display.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/pingu.hpp"

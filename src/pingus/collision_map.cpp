@@ -16,7 +16,6 @@
 
 #include "pingus/collision_map.hpp"
 
-
 #include "engine/display/drawing_context.hpp"
 #include "engine/display/sprite.hpp"
 #include "pingus/collision_mask.hpp"

@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_PINGUS_PINGUS_MAIN_HPP
 #define HEADER_PINGUS_PINGUS_PINGUS_MAIN_HPP
 
-
 #include "pingus/pingus_options.hpp"
 
 void segfault_handler(int);

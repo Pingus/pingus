@@ -16,7 +16,6 @@
 
 #include "pingus/screens/game_session.hpp"
 
-
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/screen/screen_manager.hpp"

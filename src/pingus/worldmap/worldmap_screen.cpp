@@ -16,7 +16,6 @@
 
 #include "pingus/worldmap/worldmap_screen.hpp"
 
-
 #include "engine/display/display.hpp"
 #include "engine/gui/surface_button.hpp"
 #include "engine/screen/screen_manager.hpp"

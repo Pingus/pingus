@@ -16,7 +16,6 @@
 
 #include "pingus/worldmap/path.hpp"
 
-
 namespace WorldmapNS {
 
 Path::Path() :

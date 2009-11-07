@@ -16,7 +16,6 @@
 
 #include "pingus/worldmap/sprite_drawable.hpp"
 
-
 #include "pingus/res_descriptor.hpp"
 #include "pingus/worldmap/pingus.hpp"
 #include "pingus/worldmap/worldmap.hpp"

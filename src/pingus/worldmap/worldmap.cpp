@@ -16,7 +16,6 @@
 
 #include "pingus/worldmap/worldmap.hpp"
 
-
 #include "engine/sound/sound.hpp"
 #include "pingus/gettext.h"
 #include "pingus/globals.hpp"
@@ -25,7 +24,6 @@
 #include "pingus/worldmap/level_dot.hpp"
 #include "pingus/worldmap/pingus.hpp"
 #include "util/pathname.hpp"
-
 
 namespace WorldmapNS {
 

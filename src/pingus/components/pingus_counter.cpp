@@ -16,7 +16,6 @@
 
 #include "pingus/components/pingus_counter.hpp"
 
-
 #include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"

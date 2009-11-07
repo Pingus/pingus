@@ -16,7 +16,6 @@
 
 #include "pingus/smallmap_image.hpp"
 
-
 #include "pingus/collision_map.hpp"
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"

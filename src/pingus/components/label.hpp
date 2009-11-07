@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_PINGUS_COMPONENTS_LABEL_HPP
 #define HEADER_PINGUS_PINGUS_COMPONENTS_LABEL_HPP
 
-
 #include "engine/gui/rect_component.hpp"
 
 class Label : public GUI::RectComponent

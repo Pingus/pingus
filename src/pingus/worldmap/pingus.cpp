@@ -16,7 +16,6 @@
 
 #include "pingus/worldmap/pingus.hpp"
 
-
 #include "engine/display/drawing_context.hpp"
 #include "pingus/direction.hpp"
 #include "pingus/worldmap/dot.hpp"

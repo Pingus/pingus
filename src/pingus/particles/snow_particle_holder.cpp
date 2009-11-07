@@ -16,7 +16,6 @@
 
 #include "pingus/particles/snow_particle_holder.hpp"
 
-
 #include "engine/display/scene_context.hpp"
 #include "pingus/collision_map.hpp"
 #include "pingus/ground_map.hpp"

@@ -17,7 +17,6 @@
 #include "pingus/worldmap/dot.hpp"
 
 
-
 namespace WorldmapNS {
 
 Dot::Dot(FileReader reader) :
