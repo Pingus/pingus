@@ -23,8 +23,6 @@ namespace Input {
 
 class USBMouse;
 
-/** 
- */
 class USBMouseDriver : public Driver
 {
 private:
