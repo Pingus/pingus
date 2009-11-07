@@ -17,11 +17,11 @@
 #include "pingus/worldobjs/ice_block.hpp"
 
 #include "engine/display/scene_context.hpp"
-#include "pingus/collision_map.hpp"
-#include "pingus/ground_map.hpp"
+//#include "pingus/collision_map.hpp"
+//#include "pingus/ground_map.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
-#include "pingus/resource.hpp"
+//#include "pingus/resource.hpp"
 #include "pingus/world.hpp"
 
 namespace WorldObjs {

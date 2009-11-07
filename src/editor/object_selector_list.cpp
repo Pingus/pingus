@@ -14,19 +14,19 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "editor/object_selector_list.hpp"
+//#include "editor/object_selector_list.hpp"
 
 #include <iostream>
 
 #include "editor/editor_level.hpp"
-#include "editor/editor_screen.hpp"
+//#include "editor/editor_screen.hpp"
 #include "editor/object_selector.hpp"
 #include "editor/object_selector_set.hpp"
 #include "editor/viewport.hpp"
-#include "engine/display/drawing_context.hpp"
-#include "math/math.hpp"
-#include "pingus/groundtype.hpp"
-#include "pingus/resource.hpp"
+//#include "engine/display/drawing_context.hpp"
+//#include "math/math.hpp"
+//#include "pingus/groundtype.hpp"
+//#include "pingus/resource.hpp"
 
 namespace Editor {
 

@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_MATH_VECTOR2I_HPP
 #define HEADER_PINGUS_MATH_VECTOR2I_HPP
 
-#include <iosfwd>
+//#include <iosfwd>
 
 class Vector2f;
 

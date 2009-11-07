@@ -17,10 +17,10 @@
 #include "pingus/worldmap/pingus_worldmap.hpp"
 
 #include <stdexcept>
-#include <string>
+//#include <string>
 
-#include "pingus/worldmap/drawable_factory.hpp"
-#include "util/file_reader.hpp"
+//#include "pingus/worldmap/drawable_factory.hpp"
+//#include "util/file_reader.hpp"
 
 using namespace WorldmapNS;
 

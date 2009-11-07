@@ -14,10 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "pingus/gettext.h"
+//#include "pingus/gettext.h"
 
-#include "gettext.h"
-#include "tinygettext/dictionary.hpp"
+//#include "gettext.h"
+//#include "tinygettext/dictionary.hpp"
 #include "tinygettext/dictionary_manager.hpp"
 
 tinygettext::DictionaryManager dictionary_manager;

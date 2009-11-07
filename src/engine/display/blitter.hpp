@@ -19,8 +19,8 @@
 
 #include <SDL.h>
 
-#include "math/color.hpp"
-#include "math/rect.hpp"
+//#include "math/color.hpp"
+//#include "math/rect.hpp"
 
 class Surface;
 

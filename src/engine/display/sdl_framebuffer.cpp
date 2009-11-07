@@ -18,10 +18,10 @@
 
 #include <iostream>
 
-#include "engine/display/display.hpp"
+//#include "engine/display/display.hpp"
 #include "engine/display/sdl_framebuffer_surface_impl.hpp"
-#include "engine/display/surface.hpp"
-#include "math/math.hpp"
+//#include "engine/display/surface.hpp"
+//#include "math/math.hpp"
 
 namespace {
 

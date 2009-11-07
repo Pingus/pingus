@@ -16,13 +16,13 @@
 
 #include "pingus/worldobjs/surface_background.hpp"
 
-#include <iostream>
+//#include <iostream>
 
-#include "engine/display/blitter.hpp"
-#include "engine/display/display.hpp"
+//#include "engine/display/blitter.hpp"
+//#include "engine/display/display.hpp"
 #include "engine/display/scene_context.hpp"
 #include "pingus/globals.hpp"
-#include "pingus/globals.hpp"
+//#include "pingus/globals.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/world.hpp"
 

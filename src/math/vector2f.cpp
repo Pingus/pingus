@@ -17,7 +17,7 @@
 
 #include "math/vector2f.hpp"
 
-#include <config.h>
+//#include <config.h>
 #include <iostream>
 
 std::ostream& operator<<(std::ostream& s, const Vector2f& v)

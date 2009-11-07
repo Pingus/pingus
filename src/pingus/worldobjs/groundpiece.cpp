@@ -16,11 +16,11 @@
 
 #include "pingus/worldobjs/groundpiece.hpp"
 
-#include <iostream>
+//#include <iostream>
 
-#include "pingus/collision_map.hpp"
-#include "pingus/ground_map.hpp"
-#include "pingus/resource.hpp"
+//#include "pingus/collision_map.hpp"
+//#include "pingus/ground_map.hpp"
+//#include "pingus/resource.hpp"
 #include "pingus/world.hpp"
 
 namespace WorldObjs {

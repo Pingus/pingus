@@ -16,21 +16,21 @@
 
 #include "engine/screen/screen_manager.hpp"
 
-#include <SDL.h>
-#include <fstream>
-#include <iostream>
+//#include <SDL.h>
+//#include <fstream>
+//#include <iostream>
 
 #include "engine/display/display.hpp"
 #include "engine/display/drawing_context.hpp"
 #include "engine/display/framebuffer.hpp"
-#include "engine/input/controller.hpp"
+//#include "engine/input/controller.hpp"
 #include "engine/input/manager.hpp"
 #include "engine/screen/screen.hpp"
-#include "math/size.hpp"
+//#include "math/size.hpp"
 #include "pingus/fps_counter.hpp"
 #include "pingus/globals.hpp"
-#include "pingus/path_manager.hpp"
-#include "util/pathname.hpp"
+//#include "pingus/path_manager.hpp"
+//#include "util/pathname.hpp"
 
 template<class C>
 void write(std::ostream& out, C value)

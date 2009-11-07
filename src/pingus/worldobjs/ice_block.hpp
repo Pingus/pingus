@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_ICE_BLOCK_HPP
 
 #include "math/vector3f.hpp"
+#include "pingus/collision_mask.hpp"
 #include "pingus/worldobj.hpp"
 
 namespace WorldObjsData {

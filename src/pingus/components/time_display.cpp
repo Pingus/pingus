@@ -16,14 +16,15 @@
 
 #include "pingus/components/time_display.hpp"
 
-#include <assert.h>
-#include <stdio.h>
+//#include <assert.h>
+//#include <stdio.h>
 
 #include "engine/display/display.hpp"
+#include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/game_time.hpp"
 #include "pingus/globals.hpp"
-#include "pingus/resource.hpp"
+//#include "pingus/resource.hpp"
 #include "pingus/screens/game_session.hpp"
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"

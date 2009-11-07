@@ -18,7 +18,7 @@
 
 #include "engine/display/scene_context.hpp"
 #include "engine/sound/sound.hpp"
-#include "math/vector3f.hpp"
+//#include "math/vector3f.hpp"
 #include "pingus/pingu.hpp"
 
 namespace Actions {

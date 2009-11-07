@@ -17,10 +17,10 @@
 #ifndef HEADER_PINGUS_PINGUS_PINGUS_LEVEL_HPP
 #define HEADER_PINGUS_PINGUS_PINGUS_LEVEL_HPP
 
-#include <boost/shared_ptr.hpp>
+//#include <boost/shared_ptr.hpp>
 #include <map>
-#include <string>
-#include <vector>
+//#include <string>
+//#include <vector>
 
 #include "util/file_reader.hpp"
 

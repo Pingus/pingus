@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDMAP_DOT_HPP
 #define HEADER_PINGUS_PINGUS_WORLDMAP_DOT_HPP
 
-#include <string>
+//#include <string>
 
 #include "math/vector3f.hpp"
 #include "pingus/worldmap/drawable.hpp"

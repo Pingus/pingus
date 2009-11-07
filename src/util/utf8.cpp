@@ -20,8 +20,6 @@
 #include <iostream>
 #include <stdexcept>
 
-#include "utf8.hpp"
-
 /** Replacement character for invalid UTF-8 sequences */
 static const uint32_t INVALID_UTF8_SEQUENCE = 0xFFFD;
 

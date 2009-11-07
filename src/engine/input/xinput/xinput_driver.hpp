@@ -17,10 +17,10 @@
 #ifndef HEADER_PINGUS_ENGINE_INPUT_XINPUT_XINPUT_DRIVER_HPP
 #define HEADER_PINGUS_ENGINE_INPUT_XINPUT_XINPUT_DRIVER_HPP
 
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
+//#include <X11/Xlib.h>
+//#include <X11/Xutil.h>
 #include <X11/extensions/XInput.h>
-#include <vector>
+//#include <vector>
 
 #include <SDL_syswm.h>
 

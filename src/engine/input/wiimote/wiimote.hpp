@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_ENGINE_INPUT_WIIMOTE_WIIMOTE_HPP
 #define HEADER_PINGUS_ENGINE_INPUT_WIIMOTE_WIIMOTE_HPP
 
-#include <pthread.h>
+//#include <pthread.h>
 #include <string>
 #include <vector>
 

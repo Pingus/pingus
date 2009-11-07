@@ -17,13 +17,13 @@
 #include "editor/action_properties.hpp"
 
 #include <boost/bind.hpp>
-#include <iostream>
+//#include <iostream>
 
 #include "editor/checkbox.hpp"
 #include "editor/editor_level.hpp"
 #include "editor/gui_style.hpp"
 #include "editor/inputbox.hpp"
-#include "pingus/pingu_enums.hpp"
+//#include "pingus/pingu_enums.hpp"
 #include "util/string_util.hpp"
 
 namespace Editor {

@@ -17,7 +17,7 @@
 #include "engine/sound/sound_real.hpp"
 
 #include <SDL.h>
-#include <SDL_mixer.h>
+//#include <SDL_mixer.h>
 #include <stdexcept>
 
 #include "engine/sound/sound_res_mgr.hpp"

@@ -16,9 +16,9 @@
 
 #include "engine/input/wiimote/wiimote.hpp"
 
-#include <assert.h>
+//#include <assert.h>
 #include <iostream>
-#include <pthread.h>
+//#include <pthread.h>
 
 #include "math/math.hpp"
 

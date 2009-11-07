@@ -16,10 +16,10 @@
 
 #include "engine/gui/gui_manager.hpp"
 
-#include <algorithm>
+//#include <algorithm>
 
 #include "engine/display/display.hpp"
-#include "engine/input/event.hpp"
+//#include "engine/input/event.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 

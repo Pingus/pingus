@@ -17,12 +17,12 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_DRAWING_CONTEXT_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_DRAWING_CONTEXT_HPP
 
-#include <SDL.h>
+//#include <SDL.h>
 #include <vector>
 
 #include "engine/display/drawing_request.hpp"
 #include "math/color.hpp"
-#include "math/rect.hpp"
+//#include "math/rect.hpp"
 #include "math/vector3f.hpp"
 
 class Framebuffer;

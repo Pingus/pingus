@@ -16,16 +16,16 @@
 
 #include "pingus/screens/game_session.hpp"
 
-#include <iostream>
+//#include <iostream>
 
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "pingus/server.hpp"
 
-#include "engine/input/event.hpp"
+//#include "engine/input/event.hpp"
 #include "engine/sound/sound.hpp"
-#include "math/math.hpp"
+//#include "math/math.hpp"
 #include "pingus/components/button_panel.hpp"
 #include "pingus/components/pingus_counter.hpp"
 #include "pingus/components/playfield.hpp"
@@ -34,7 +34,7 @@
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/pingu_holder.hpp"
-#include "pingus/resource.hpp"
+//#include "pingus/resource.hpp"
 #include "pingus/savegame_manager.hpp"
 #include "pingus/screens/result_screen.hpp"
 #include "pingus/world.hpp"

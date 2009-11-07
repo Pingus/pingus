@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_UTIL_PATHNAME_HPP
 
 #include <SDL.h>
-#include <iosfwd>
+//#include <iosfwd>
 #include <string>
 
 /** Simple class to allow a distinction of paths that refer to the

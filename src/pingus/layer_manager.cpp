@@ -16,7 +16,7 @@
 
 #include "pingus/layer_manager.hpp"
 
-#include <iostream>
+//#include <iostream>
 
 LayerManager::LayerManager () :
   layers()

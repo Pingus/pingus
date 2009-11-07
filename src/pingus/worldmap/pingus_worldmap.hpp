@@ -17,11 +17,11 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDMAP_PINGUS_WORLDMAP_HPP
 #define HEADER_PINGUS_PINGUS_WORLDMAP_PINGUS_WORLDMAP_HPP
 
-#include <boost/smart_ptr.hpp>
+//#include <boost/smart_ptr.hpp>
 
 #include "pingus/worldmap/path_graph.hpp"
-#include "pingus/worldmap/worldmap_story.hpp"
-#include "util/pathname.hpp"
+//#include "pingus/worldmap/worldmap_story.hpp"
+//#include "util/pathname.hpp"
 
 class PingusWorldmapImpl;
 

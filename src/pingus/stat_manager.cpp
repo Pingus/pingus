@@ -16,10 +16,10 @@
 
 #include "pingus/stat_manager.hpp"
 
-#include <algorithm>
+//#include <algorithm>
 #include <fstream>
 
-#include "lisp/lisp.hpp"
+//#include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
 #include "util/sexpr_file_reader.hpp"
 #include "util/sexpr_file_writer.hpp"

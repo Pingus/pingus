@@ -16,12 +16,12 @@
 
 #include "pingus/components/playfield.hpp"
 
-#include <iostream>
-#include <stdio.h>
+//#include <iostream>
+//#include <stdio.h>
 
 #include "engine/display/display.hpp"
-#include "engine/display/drawing_context.hpp"
-#include "engine/display/scene_context.hpp"
+//#include "engine/display/drawing_context.hpp"
+//#include "engine/display/scene_context.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"

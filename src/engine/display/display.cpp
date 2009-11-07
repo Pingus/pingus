@@ -16,18 +16,18 @@
 
 #include "engine/display/display.hpp"
 
-#include <algorithm>
-#include <iostream>
+//#include <algorithm>
+//#include <iostream>
 #include <stdexcept>
-#include <stdio.h>
+//#include <stdio.h>
 
-#include "../config.h"
+//#include "../config.h"
 #include "engine/display/sdl_framebuffer.hpp"
 #include "engine/screen/screen_manager.hpp"
-#include "math/color.hpp"
-#include "math/math.hpp"
-#include "math/rect.hpp"
-#include "math/vector2i.hpp"
+//#include "math/color.hpp"
+//#include "math/math.hpp"
+//#include "math/rect.hpp"
+//#include "math/vector2i.hpp"
 #include "pingus/globals.hpp"
 #ifdef HAVE_OPENGL
 #  include "engine/display/opengl/opengl_framebuffer.hpp"

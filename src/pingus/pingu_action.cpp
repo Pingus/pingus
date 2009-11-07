@@ -16,10 +16,10 @@
 
 #include "pingus/pingu_action.hpp"
 
-#include <assert.h>
+//#include <assert.h>
 
-#include "math/math.hpp"
-#include "math/vector3f.hpp"
+//#include "math/math.hpp"
+//#include "math/vector3f.hpp"
 #include "pingus/collision_map.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/world.hpp"

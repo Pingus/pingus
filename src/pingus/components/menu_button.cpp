@@ -17,11 +17,12 @@
 #include "pingus/components/menu_button.hpp"
 
 #include "engine/sound/sound.hpp"
-#include "pingus/debug.hpp"
-#include "pingus/fonts.hpp"
-#include "pingus/gettext.h"
-#include "pingus/globals.hpp"
-#include "pingus/resource.hpp"
+#include "engine/display/drawing_context.hpp"
+//#include "pingus/debug.hpp"
+//#include "pingus/fonts.hpp"
+//#include "pingus/gettext.h"
+//#include "pingus/globals.hpp"
+//#include "pingus/resource.hpp"
 #include "pingus/screens/pingus_menu.hpp"
 
 

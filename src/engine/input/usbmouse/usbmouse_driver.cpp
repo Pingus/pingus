@@ -18,14 +18,14 @@
 
 #include <errno.h>
 #include <fcntl.h>
-#include <iostream>
+//#include <iostream>
 #include <stdexcept>
 #include <string.h>
-#include <sys/ioctl.h>
-#include <unistd.h>
+//#include <sys/ioctl.h>
+//#include <unistd.h>
 
 #include "engine/display/display.hpp"
-#include "math/vector2i.hpp"
+//#include "math/vector2i.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 

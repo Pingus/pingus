@@ -16,23 +16,23 @@
 
 #include "pingus/worldmap/level_dot.hpp"
 
-#include <iostream>
+//#include <iostream>
 
 #include "engine/display/drawing_context.hpp"
-#include "engine/display/font.hpp"
+//#include "engine/display/font.hpp"
 #include "engine/input/control.hpp"
-#include "engine/input/controller.hpp"
+//#include "engine/input/controller.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "pingus/globals.hpp"
-#include "pingus/path_manager.hpp"
+//#include "pingus/path_manager.hpp"
 #include "pingus/plf_res_mgr.hpp"
-#include "pingus/resource.hpp"
+//#include "pingus/resource.hpp"
 #include "pingus/savegame_manager.hpp"
 #include "pingus/screens/start_screen.hpp"
-#include "util/file_reader.hpp"
-#include "util/system.hpp"
+//#include "util/file_reader.hpp"
+//#include "util/system.hpp"
 
 namespace WorldmapNS {
 

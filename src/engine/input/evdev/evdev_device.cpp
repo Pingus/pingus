@@ -16,15 +16,15 @@
 
 #include "engine/input/evdev/evdev_device.hpp"
 
-#include <assert.h>
+//#include <assert.h>
 #include <errno.h>
 #include <fcntl.h>
-#include <iostream>
-#include <linux/input.h>
+//#include <iostream>
+//#include <linux/input.h>
 #include <stdexcept>
 #include <stdio.h>
-#include <sys/ioctl.h>
-#include <unistd.h>
+//#include <sys/ioctl.h>
+//#include <unistd.h>
 
 #define BITS_PER_LONG (sizeof(long) * 8)
 #define NBITS(x) ((((x)-1)/BITS_PER_LONG)+1)

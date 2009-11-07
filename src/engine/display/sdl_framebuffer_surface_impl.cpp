@@ -16,7 +16,7 @@
 
 #include "engine/display/sdl_framebuffer_surface_impl.hpp"
 
-#include <stdexcept>
+//#include <stdexcept>
 
 SDLFramebufferSurfaceImpl::SDLFramebufferSurfaceImpl(SDL_Surface* src) :
   surface()

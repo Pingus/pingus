@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_DIGGER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_DIGGER_HPP
 
+#include "pingus/collision_mask.hpp"
 #include "engine/display/sprite.hpp"
 #include "pingus/pingu_action.hpp"
 

@@ -18,10 +18,10 @@
 
 #include <stdexcept>
 
-#include "config.h"
+//#include "config.h"
 #include "engine/input/core_driver.hpp"
 #include "engine/input/sdl_driver.hpp"
-#include "pingus/path_manager.hpp"
+//#include "pingus/path_manager.hpp"
 #include "util/pathname.hpp"
 #include "util/string_util.hpp"
 #ifdef HAVE_CWIID

@@ -16,13 +16,14 @@
 
 #include "pingus/components/pingus_counter.hpp"
 
-#include <stdio.h>
+//#include <stdio.h>
 
+#include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
-#include "pingus/globals.hpp"
+//#include "pingus/globals.hpp"
 #include "pingus/pingu_holder.hpp"
-#include "pingus/resource.hpp"
+//#include "pingus/resource.hpp"
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
 

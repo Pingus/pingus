@@ -16,15 +16,15 @@
 
 #include "pingus/collision_map.hpp"
 
-#include <SDL.h>
-#include <iostream>
+//#include <SDL.h>
+//#include <iostream>
 
 #include "engine/display/drawing_context.hpp"
 #include "engine/display/sprite.hpp"
-#include "math/math.hpp"
+//#include "math/math.hpp"
 #include "pingus/collision_mask.hpp"
-#include "pingus/gettext.h"
-#include "pingus/globals.hpp"
+//#include "pingus/gettext.h"
+//#include "pingus/globals.hpp"
 
 CollisionMap::CollisionMap(int w, int h)
   : serial(0),

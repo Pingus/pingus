@@ -15,35 +15,35 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "editor/editor_screen.hpp"
+//#include "editor/editor_screen.hpp"
 
 #include <boost/bind.hpp>
 #include <iostream>
 
 #include "editor/action_properties.hpp"
 #include "editor/editor_level.hpp"
-#include "editor/file_dialog.hpp"
-#include "editor/level_objs.hpp"
+//#include "editor/file_dialog.hpp"
+//#include "editor/level_objs.hpp"
 #include "editor/level_properties.hpp"
 #include "editor/minimap.hpp"
 #include "editor/object_properties.hpp"
 #include "editor/object_selector.hpp"
 #include "editor/panel.hpp"
-#include "editor/panel.hpp"
+//#include "editor/panel.hpp"
 #include "editor/viewport.hpp"
 #include "engine/display/display.hpp"
-#include "engine/display/drawing_context.hpp"
+//#include "engine/display/drawing_context.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/screen/screen_manager.hpp"
-#include "engine/sound/sound.hpp"
+//#include "engine/sound/sound.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
-#include "pingus/path_manager.hpp"
-#include "pingus/res_descriptor.hpp"
-#include "pingus/resource.hpp"
+//#include "pingus/path_manager.hpp"
+//#include "pingus/res_descriptor.hpp"
+//#include "pingus/resource.hpp"
 #include "pingus/screens/game_session.hpp"
-#include "util/pathname.hpp"
-#include "util/system.hpp"
+//#include "util/pathname.hpp"
+//#include "util/system.hpp"
 
 namespace Editor {
 

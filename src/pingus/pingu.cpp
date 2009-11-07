@@ -16,20 +16,20 @@
 
 #include "pingus/pingu.hpp"
 
-#include <assert.h>
+//#include <assert.h>
 #include <sstream>
-#include <stdio.h>
+//#include <stdio.h>
 
 #include "engine/display/scene_context.hpp"
-#include "engine/sound/sound.hpp"
-#include "gettext.h"
-#include "math/math.hpp"
+//#include "engine/sound/sound.hpp"
+//#include "gettext.h"
+//#include "math/math.hpp"
 #include "pingus/collision_map.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/globals.hpp"
-#include "pingus/pingu_action.hpp"
-#include "pingus/resource.hpp"
+//#include "pingus/pingu_action.hpp"
+//#include "pingus/resource.hpp"
 #include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"
 

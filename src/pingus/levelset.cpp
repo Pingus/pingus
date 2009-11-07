@@ -21,9 +21,9 @@
 
 #include "math/math.hpp"
 #include "pingus/plf_res_mgr.hpp"
-#include "pingus/resource.hpp"
+//#include "pingus/resource.hpp"
 #include "pingus/savegame_manager.hpp"
-#include "util/file_reader.hpp"
+//#include "util/file_reader.hpp"
 
 Levelset::Levelset(const Pathname& pathname) :
   title(),

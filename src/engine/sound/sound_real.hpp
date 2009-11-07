@@ -18,10 +18,10 @@
 #define HEADER_PINGUS_ENGINE_SOUND_SOUND_REAL_HPP
 
 #include <SDL_mixer.h>
-#include <config.h>
-#include <vector>
+//#include <config.h>
+//#include <vector>
 
-#include "engine/sound/sound.hpp"
+//#include "engine/sound/sound.hpp"
 #include "engine/sound/sound_impl.hpp"
 
 namespace Sound {

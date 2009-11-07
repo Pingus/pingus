@@ -16,16 +16,16 @@
 
 #include "engine/display/drawing_context.hpp"
 
-#include <algorithm>
-#include <assert.h>
+//#include <algorithm>
+//#include <assert.h>
 #include <iostream>
 
 #include "engine/display/display.hpp"
 #include "engine/display/font.hpp"
 #include "engine/display/framebuffer.hpp"
 #include "engine/display/sprite.hpp"
-#include "math/math.hpp"
-#include "math/origin.hpp"
+//#include "math/math.hpp"
+//#include "math/origin.hpp"
 
 struct DrawingRequestsSorter
 {

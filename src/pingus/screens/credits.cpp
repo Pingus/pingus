@@ -18,7 +18,7 @@
 
 #include <iostream>
 
-#include "engine/display/blitter.hpp"
+//#include "engine/display/blitter.hpp"
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
@@ -26,8 +26,8 @@
 #include "engine/sound/sound.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
-#include "pingus/res_descriptor.hpp"
-#include "pingus/resource.hpp"
+//#include "pingus/res_descriptor.hpp"
+//#include "pingus/resource.hpp"
 #include "pingus/stat_manager.hpp"
 
 class CreditsOkButton

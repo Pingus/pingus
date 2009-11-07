@@ -16,7 +16,7 @@
 
 #include "pingus/worldobjs/solid_color_background.hpp"
 
-#include "engine/display/display.hpp"
+//#include "engine/display/display.hpp"
 #include "engine/display/scene_context.hpp"
 
 namespace WorldObjs {

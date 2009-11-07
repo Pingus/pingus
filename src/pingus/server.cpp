@@ -18,10 +18,10 @@
 
 #include <fstream>
 #include <iostream>
-#include <time.h>
+//#include <time.h>
 
-#include "pingus/game_time.hpp"
-#include "pingus/globals.hpp"
+//#include "pingus/game_time.hpp"
+//#include "pingus/globals.hpp"
 #include "pingus/goal_manager.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/world.hpp"

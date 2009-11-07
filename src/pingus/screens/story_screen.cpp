@@ -16,26 +16,26 @@
 
 #include "pingus/screens/story_screen.hpp"
 
-#include <algorithm>
-#include <vector>
+//#include <algorithm>
+//#include <vector>
 
 #include "engine/display/display.hpp"
-#include "engine/gui/component.hpp"
+//#include "engine/gui/component.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "engine/sound/sound.hpp"
-#include "math/math.hpp"
+//#include "math/math.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "pingus/globals.hpp"
-#include "pingus/res_descriptor.hpp"
-#include "pingus/resource.hpp"
-#include "pingus/screens/credits.hpp"
-#include "pingus/stat_manager.hpp"
+//#include "pingus/res_descriptor.hpp"
+//#include "pingus/resource.hpp"
+//#include "pingus/screens/credits.hpp"
+//#include "pingus/stat_manager.hpp"
 #include "pingus/worldmap/worldmap.hpp"
-#include "pingus/worldmap/worldmap_screen.hpp"
-#include "pingus/worldmap/worldmap_story.hpp"
+//#include "pingus/worldmap/worldmap_screen.hpp"
+//#include "pingus/worldmap/worldmap_story.hpp"
 #include "util/utf8.hpp"
 
 class StoryScreenComponent : public GUI::Component

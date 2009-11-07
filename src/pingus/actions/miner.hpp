@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_MINER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_MINER_HPP
 
+#include "pingus/collision_mask.hpp"
 #include "pingus/pingu_action.hpp"
 #include "pingus/state_sprite.hpp"
 

@@ -14,7 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "editor/file_dialog.hpp"
+//#include "editor/file_dialog.hpp"
 
 #include <boost/bind.hpp>
 #include <iostream>
@@ -24,12 +24,12 @@
 #include "editor/gui_style.hpp"
 #include "editor/inputbox.hpp"
 #include "editor/label.hpp"
-#include "engine/display/drawing_context.hpp"
-#include "engine/gui/gui_manager.hpp"
+//#include "engine/display/drawing_context.hpp"
+//#include "engine/gui/gui_manager.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
-#include "util/pathname.hpp"
-#include "util/system.hpp"
+//#include "util/pathname.hpp"
+//#include "util/system.hpp"
 
 namespace Editor {
 

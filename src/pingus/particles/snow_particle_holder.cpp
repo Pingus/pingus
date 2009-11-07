@@ -16,13 +16,13 @@
 
 #include "pingus/particles/snow_particle_holder.hpp"
 
-#include <assert.h>
+//#include <assert.h>
 
 #include "engine/display/scene_context.hpp"
-#include "math/math.hpp"
+//#include "math/math.hpp"
 #include "pingus/collision_map.hpp"
 #include "pingus/ground_map.hpp"
-#include "pingus/resource.hpp"
+//#include "pingus/resource.hpp"
 #include "pingus/world.hpp"
 
 namespace Particles {

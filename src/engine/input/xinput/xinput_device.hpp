@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_ENGINE_INPUT_XINPUT_XINPUT_DEVICE_HPP
 #define HEADER_PINGUS_ENGINE_INPUT_XINPUT_XINPUT_DEVICE_HPP
 
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
+//#include <X11/Xlib.h>
+//#include <X11/Xutil.h>
 #include <X11/extensions/XInput.h>
 #include <string>
 #include <vector>

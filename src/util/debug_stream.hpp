@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_UTIL_DEBUG_STREAM_HPP
 
 #include <iostream>
-#include <string>
+//#include <string>
 #include <vector>
 
 class NilStream;

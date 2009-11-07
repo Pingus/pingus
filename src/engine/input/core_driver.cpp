@@ -18,8 +18,8 @@
 
 #include "engine/display/display.hpp"
 #include "engine/input/manager.hpp"
-#include "math/math.hpp"
-#include "pingus/globals.hpp"
+//#include "math/math.hpp"
+//#include "pingus/globals.hpp"
 
 namespace Input {
 

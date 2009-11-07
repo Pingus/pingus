@@ -16,16 +16,16 @@
 
 #include "engine/display/font.hpp"
 
-#include <SDL.h>
-#include <SDL_image.h>
+//#include <SDL.h>
+//#include <SDL_image.h>
 #include <iostream>
-#include <map>
-#include <vector>
+//#include <map>
+//#include <vector>
 
 #include "engine/display/display.hpp"
 #include "engine/display/font_description.hpp"
 #include "engine/display/framebuffer.hpp"
-#include "engine/display/surface.hpp"
+//#include "engine/display/surface.hpp"
 #include "util/line_iterator.hpp"
 #include "util/utf8.hpp"
 

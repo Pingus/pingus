@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_ENGINE_DISPLAY_SPRITE_HPP
 
 #include <boost/shared_ptr.hpp>
-#include <string>
+//#include <string>
 
 #include "math/origin.hpp"
 #include "pingus/resource_modifier.hpp"

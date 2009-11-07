@@ -18,9 +18,9 @@
 
 #include "engine/display/display.hpp"
 #include "engine/screen/screen_manager.hpp"
-#include "math/size.hpp"
+//#include "math/size.hpp"
 #include "pingus/global_event.hpp"
-#include "util/file_reader.hpp"
+//#include "util/file_reader.hpp"
 
 namespace Input {
 

@@ -16,13 +16,13 @@
 
 #include "engine/display/opengl/opengl_framebuffer.hpp"
 
-#include <iostream>
+//#include <iostream>
 #include <sstream>
 #include <stdexcept>
 
 #include "engine/display/opengl/opengl_framebuffer_surface_impl.hpp"
-#include "engine/display/surface.hpp"
-#include "math/math.hpp"
+//#include "engine/display/surface.hpp"
+//#include "math/math.hpp"
 
 OpenGLFramebuffer::OpenGLFramebuffer() :
   screen(),

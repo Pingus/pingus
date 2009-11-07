@@ -17,10 +17,10 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_FRAMEBUFFER_SURFACE_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_FRAMEBUFFER_SURFACE_HPP
 
-#include <boost/smart_ptr.hpp>
+//#include <boost/smart_ptr.hpp>
 
 #include "engine/display/surface.hpp"
-#include "math/size.hpp"
+//#include "math/size.hpp"
 
 class FramebufferSurfaceImpl
 {

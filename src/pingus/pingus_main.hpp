@@ -17,11 +17,11 @@
 #ifndef HEADER_PINGUS_PINGUS_PINGUS_MAIN_HPP
 #define HEADER_PINGUS_PINGUS_PINGUS_MAIN_HPP
 
-#include <SDL.h>
-#include <string>
+//#include <SDL.h>
+//#include <string>
 
 #include "pingus/pingus_options.hpp"
-#include "util/pathname.hpp"
+//#include "util/pathname.hpp"
 
 void segfault_handler(int);
 

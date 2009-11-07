@@ -18,8 +18,8 @@
 
 #include <SDL_image.h>
 #include <boost/format.hpp>
-#include <iostream>
-#include <sstream>
+//#include <iostream>
+//#include <sstream>
 
 #include "engine/display/blitter.hpp"
 #include "math/rect.hpp"

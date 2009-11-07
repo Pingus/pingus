@@ -16,13 +16,13 @@
 
 #include "pingus/pingus_level.hpp"
 
-#include <iostream>
+//#include <iostream>
 #include <stdexcept>
 
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/pingus_level_impl.hpp"
-#include "util/file_reader.hpp"
+//#include "util/file_reader.hpp"
 #include "util/pathname.hpp"
 
 PingusLevel::PingusLevel()

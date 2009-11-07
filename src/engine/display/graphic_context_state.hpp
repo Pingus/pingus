@@ -19,12 +19,12 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include "engine/display/drawing_context.hpp"
+//#include "engine/display/drawing_context.hpp"
 #include "engine/display/scene_context.hpp"
-#include "math/rect.hpp"
-#include "math/vector2f.hpp"
-#include "math/vector2i.hpp"
-#include "math/vector3f.hpp"
+//#include "math/rect.hpp"
+//#include "math/vector2f.hpp"
+//#include "math/vector2i.hpp"
+//#include "math/vector3f.hpp"
 
 class GraphicContextStateImpl;
 

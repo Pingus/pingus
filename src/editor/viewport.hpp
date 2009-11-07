@@ -19,8 +19,8 @@
 #define HEADER_PINGUS_EDITOR_VIEWPORT_HPP
 
 #include <boost/signal.hpp>
-#include <string>
-#include <vector>
+//#include <string>
+//#include <vector>
 
 #include "engine/display/graphic_context_state.hpp"
 #include "engine/gui/rect_component.hpp"

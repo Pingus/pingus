@@ -16,10 +16,10 @@
 
 #include "pingus/savegame_manager.hpp"
 
-#include <assert.h>
+//#include <assert.h>
 #include <fstream>
 
-#include "lisp/lisp.hpp"
+//#include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
 #include "util/sexpr_file_reader.hpp"
 #include "util/sexpr_file_writer.hpp"
@@ -42,9 +42,9 @@ void SavegameManager::deinit()
   instance_ = 0;
 }
 
-SavegameManager::SavegameManager(const std::string& arg_filename)
-  : filename(System::get_userdir() + arg_filename),
-    savegames()
+SavegameManager::SavegameManager(const std::string& arg_filename) :
+  filename(System::get_userdir() + arg_filename),
+  savegames()
 {
   boost::shared_ptr<lisp::Lisp> sexpr;
 

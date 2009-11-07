@@ -17,13 +17,13 @@
 #ifndef HEADER_PINGUS_PINGUS_RESOURCE_HPP
 #define HEADER_PINGUS_PINGUS_RESOURCE_HPP
 
-#include <map>
-#include <vector>
+//#include <map>
+//#include <vector>
 
 #include "engine/display/font.hpp"
 #include "engine/display/sprite.hpp"
 #include "engine/display/surface.hpp"
-#include "pingus/collision_mask.hpp"
+//#include "pingus/collision_mask.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/resource_manager.hpp"
 

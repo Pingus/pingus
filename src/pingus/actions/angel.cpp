@@ -17,7 +17,7 @@
 #include "pingus/actions/angel.hpp"
 
 #include "engine/display/scene_context.hpp"
-#include "math/math.hpp"
+//#include "math/math.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/pingu.hpp"
 

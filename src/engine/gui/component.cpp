@@ -14,9 +14,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "engine/gui/component.hpp"
+//#include "engine/gui/component.hpp"
 
-#include <assert.h>
+//#include <assert.h>
 
 #include "engine/gui/group_component.hpp"
 

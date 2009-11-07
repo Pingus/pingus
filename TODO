@@ -43,6 +43,8 @@ Code Cleanup
 
 * data/prefab/ completly obsolete? if so remove
 
+* pass FileReader by const reference
+
 
 Beta Testing
 ============
@@ -221,6 +223,7 @@ OLPC Issues
 
 * forest level shows bug in DeltaRenderer
 
+
 New Features
 ============
 
@@ -230,6 +233,7 @@ New Features
 
 * add clickable WorldObjs, that can be triggered by the user, not by a
   Pingu
+
 
 Wishlist:
 =========
@@ -246,6 +250,7 @@ Wishlist:
 * move time into pingus counter
 
 * make option menu accessible from in-game (top/left corner)
+
 
 Animation and graphic issues:
 =============================
@@ -273,6 +278,7 @@ Animation and graphic issues:
 
 * create jumper animation
 
+
 Bugs:
 =====
 
@@ -291,6 +297,7 @@ Bugs:
 * digger (mean basher?) follows down slopes
 
 * paint climber
+
 
 Unsorted:
 =========
@@ -330,6 +337,7 @@ New Features:
 
 * make climber attach to wall after jumper 
 
+
 Bugs:
 =====
 
@@ -355,6 +363,7 @@ Bugs:
   with the current s-expr format, which can handle explicit line
   breaks just fine
 
+
 Wishlist Stuff:
 ===============
 
@@ -362,6 +371,7 @@ Wishlist Stuff:
 
 * Liquids/water is 32, others are 64, this is causing trouble with the
   collision map
+
 
 Undecided stuff:
 ================
@@ -415,6 +425,7 @@ Important:
 * Pack some new levels: indiana
 
 * keep-aspect is missing in the editor
+
 
 Medium Important:
 =================

@@ -16,12 +16,12 @@
 
 #include "engine/display/delta_framebuffer.hpp"
 
-#include <assert.h>
-#include <iostream>
+//#include <assert.h>
+//#include <iostream>
 
 #include "engine/display/rect_merger.hpp"
 #include "engine/display/sdl_framebuffer.hpp"
-#include "math/math.hpp"
+//#include "math/math.hpp"
 #include "util/memory_pool.hpp"
 
 enum DrawOpType { SURFACE_DRAWOP, FILLRECT_DRAWOP };

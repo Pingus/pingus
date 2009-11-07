@@ -16,12 +16,12 @@
 
 #include "pingus/actions/bridger.hpp"
 
-#include <cassert>
+//#include <cassert>
 
 #include "engine/display/scene_context.hpp"
 #include "engine/sound/sound.hpp"
 #include "pingus/gettext.h"
-#include "pingus/ground_map.hpp"
+//#include "pingus/ground_map.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"

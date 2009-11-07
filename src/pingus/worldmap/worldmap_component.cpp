@@ -17,7 +17,7 @@
 #include "pingus/worldmap/worldmap_component.hpp"
 
 #include "engine/display/display.hpp"
-#include "engine/display/scene_context.hpp"
+//#include "engine/display/scene_context.hpp"
 #include "pingus/worldmap/worldmap.hpp"
 #include "pingus/worldmap/worldmap_screen.hpp"
 

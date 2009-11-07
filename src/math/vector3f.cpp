@@ -18,7 +18,7 @@
 
 #include <iostream>
 
-#include "math/math.hpp"
+//#include "math/math.hpp"
 
 Vector3f
 Vector3f::rotate (float angle, const Vector3f& pos) const

@@ -32,7 +32,7 @@
 
 #include <math.h>
 
-#include "math/math.hpp"
+//#include "math/math.hpp"
 #include "math/origin.hpp"
 #include "math/vector2f.hpp"
 

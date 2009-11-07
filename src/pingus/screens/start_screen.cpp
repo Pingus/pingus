@@ -16,11 +16,11 @@
 
 #include "pingus/screens/start_screen.hpp"
 
-#include <iostream>
+//#include <iostream>
 
-#include "engine/display/blitter.hpp"
+//#include "engine/display/blitter.hpp"
 #include "engine/display/display.hpp"
-#include "engine/gui/component.hpp"
+//#include "engine/gui/component.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
 #include "engine/screen/screen_manager.hpp"
@@ -29,12 +29,12 @@
 #include "pingus/game_time.hpp"
 #include "pingus/gettext.h"
 #include "pingus/globals.hpp"
-#include "pingus/pingus_level.hpp"
-#include "pingus/resource.hpp"
+//#include "pingus/pingus_level.hpp"
+//#include "pingus/resource.hpp"
 #include "pingus/screens/game_session.hpp"
 #include "pingus/string_format.hpp"
 #include "util/string_util.hpp"
-#include "util/system.hpp"
+//#include "util/system.hpp"
 
 class StartScreenComponent : public GUI::Component
 {

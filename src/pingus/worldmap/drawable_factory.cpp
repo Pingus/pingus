@@ -19,7 +19,6 @@
 #include <iostream>
 
 #include "pingus/worldmap/sprite_drawable.hpp"
-#include "pingus/worldmap/sprite_drawable.hpp"
 
 namespace WorldmapNS {
 

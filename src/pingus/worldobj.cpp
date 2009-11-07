@@ -17,9 +17,9 @@
 #include "pingus/worldobj.hpp"
 
 #include <iostream>
-#include <typeinfo>
+//#include <typeinfo>
 
-#include "engine/display/scene_context.hpp"
+//#include "engine/display/scene_context.hpp"
 
 World* WorldObj::world;
 

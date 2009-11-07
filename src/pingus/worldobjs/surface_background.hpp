@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_SURFACE_BACKGROUND_HPP
 
 #include "math/vector3f.hpp"
+#include "math/color.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/worldobj.hpp"
 

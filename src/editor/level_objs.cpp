@@ -18,14 +18,14 @@
 #include "editor/level_objs.hpp"
 
 #include <iostream>
-#include <string>
+//#include <string>
 
-#include "editor/level_impl.hpp"
-#include "engine/display/blitter.hpp"
-#include "engine/display/display.hpp"
+//#include "editor/level_impl.hpp"
+//#include "engine/display/blitter.hpp"
+//#include "engine/display/display.hpp"
 #include "engine/display/drawing_context.hpp"
-#include "pingus/res_descriptor.hpp"
-#include "pingus/resource.hpp"
+//#include "pingus/res_descriptor.hpp"
+//#include "pingus/resource.hpp"
 
 namespace Editor {
 

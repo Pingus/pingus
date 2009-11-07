@@ -18,7 +18,7 @@
 #ifndef SUPERTUX_VECTOR_H
 #define SUPERTUX_VECTOR_H
 
-#include <iosfwd>
+//#include <iosfwd>
 
 #include "math/math.hpp"
 #include "vector2i.hpp"

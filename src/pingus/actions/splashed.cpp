@@ -17,7 +17,7 @@
 #include "pingus/actions/splashed.hpp"
 
 #include "engine/display/scene_context.hpp"
-#include "math/vector3f.hpp"
+//#include "math/vector3f.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"
