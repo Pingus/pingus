@@ -64,7 +64,7 @@ public:
   void fill(const Color& color);
 
   Surface scale(int w, int h);
-  Surface mod(ResourceModifierNS::ResourceModifier mod);
+  Surface mod(ResourceModifier::Enum mod);
   Surface clone() const;
   Surface subsection(const Rect& rect) const;
 

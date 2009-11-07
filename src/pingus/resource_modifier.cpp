@@ -18,9 +18,9 @@
 
 #include <assert.h>
 
-namespace ResourceModifierNS {
+namespace ResourceModifier {
 
-ResourceModifier horizontal_flip (ResourceModifier modifier)
+ResourceModifier::Enum horizontal_flip (ResourceModifier::Enum modifier)
 {
   switch (modifier)
   {
@@ -46,7 +46,7 @@ ResourceModifier horizontal_flip (ResourceModifier modifier)
   }
 }
 
-ResourceModifier vertical_flip (ResourceModifier modifier)
+ResourceModifier::Enum vertical_flip (ResourceModifier::Enum modifier)
 {
   switch (modifier)
   {
@@ -72,7 +72,7 @@ ResourceModifier vertical_flip (ResourceModifier modifier)
   }
 }
 
-ResourceModifier rotate_90 (ResourceModifier modifier)
+ResourceModifier::Enum rotate_90 (ResourceModifier::Enum modifier)
 {
   switch (modifier)
   {
@@ -98,7 +98,7 @@ ResourceModifier rotate_90 (ResourceModifier modifier)
   }
 }
 
-ResourceModifier rotate_270 (ResourceModifier modifier)
+ResourceModifier::Enum rotate_270 (ResourceModifier::Enum modifier)
 {
   switch (modifier)
   {
@@ -124,7 +124,7 @@ ResourceModifier rotate_270 (ResourceModifier modifier)
   }
 }
 
-std::string rs_to_string(ResourceModifier modifier)
+std::string to_string(ResourceModifier::Enum modifier)
 {
   switch (modifier)
   {
@@ -150,7 +150,7 @@ std::string rs_to_string(ResourceModifier modifier)
   }
 }
 
-ResourceModifier rs_from_string (const std::string& modifier)
+ResourceModifier::Enum from_string (const std::string& modifier)
 {
   if (modifier == "ROT0")
     return ROT0;
@@ -175,6 +175,6 @@ ResourceModifier rs_from_string (const std::string& modifier)
   }
 }
 
-} // namespace ResourceModifierNS
+} // namespace ResourceModifier
 
 /* EOF */

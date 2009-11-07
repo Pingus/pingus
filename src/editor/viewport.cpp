@@ -414,7 +414,7 @@ Viewport::hflip_selected_objects()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
   {
-    (*i)->set_modifier(ResourceModifierNS::horizontal_flip((*i)->get_modifier()));
+    (*i)->set_modifier(ResourceModifier::horizontal_flip((*i)->get_modifier()));
   }  
 }
 
@@ -423,7 +423,7 @@ Viewport::vflip_selected_objects()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
   {
-    (*i)->set_modifier(ResourceModifierNS::vertical_flip((*i)->get_modifier()));
+    (*i)->set_modifier(ResourceModifier::vertical_flip((*i)->get_modifier()));
   }
 }
 
@@ -432,7 +432,7 @@ Viewport::rotate_90_selected_objects()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
   {
-    (*i)->set_modifier(ResourceModifierNS::rotate_90((*i)->get_modifier()));
+    (*i)->set_modifier(ResourceModifier::rotate_90((*i)->get_modifier()));
   }
 }
 
@@ -441,7 +441,7 @@ Viewport::rotate_270_selected_objects()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
   {
-    (*i)->set_modifier(ResourceModifierNS::rotate_270((*i)->get_modifier()));
+    (*i)->set_modifier(ResourceModifier::rotate_270((*i)->get_modifier()));
   }
 }
 

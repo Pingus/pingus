@@ -26,12 +26,12 @@ public:
   /// The name of the data, filename or resourcename ("textures/desert")
   std::string res_name;
 
-  ResourceModifierNS::ResourceModifier modifier;
+  ResourceModifier::Enum modifier;
 
   ResDescriptor ();
   ResDescriptor (const std::string& res_name);
   ResDescriptor (const std::string& res_name, 
-                 ResourceModifierNS::ResourceModifier modifier);
+                 ResourceModifier::Enum modifier);
 
   bool operator< (const ResDescriptor&) const;
 };

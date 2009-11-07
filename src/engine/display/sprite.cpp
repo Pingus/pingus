@@ -70,7 +70,7 @@ Sprite::Sprite(const Surface& surface)
 {  
 }
 
-Sprite::Sprite(const SpriteDescription& desc, ResourceModifierNS::ResourceModifier mod)
+Sprite::Sprite(const SpriteDescription& desc, ResourceModifier::Enum mod)
   : impl(new SpriteImpl(desc, mod))
 {
 }

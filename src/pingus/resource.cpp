@@ -70,7 +70,7 @@ Resource::load_surface(const ResDescriptor& desc_)
   SpriteDescription* desc = resmgr.get_sprite_description(desc_.res_name);
   if (desc)
   {
-    if (desc_.modifier == ResourceModifierNS::ROT0)
+    if (desc_.modifier == ResourceModifier::ROT0)
       return Surface(desc->filename);
     else
       return Surface(desc->filename).mod(desc_.modifier);

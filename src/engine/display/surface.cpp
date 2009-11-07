@@ -221,32 +221,32 @@ Surface::get_pixel(int x, int y) const
 }
 
 Surface
-Surface::mod(ResourceModifierNS::ResourceModifier modifier)
+Surface::mod(ResourceModifier::Enum modifier)
 {
   switch(modifier)
   {
-    case ResourceModifierNS::ROT0:
+    case ResourceModifier::ROT0:
       return this->clone();
 
-    case ResourceModifierNS::ROT90:
+    case ResourceModifier::ROT90:
       return Blitter::rotate_90(*this);
 
-    case ResourceModifierNS::ROT180:
+    case ResourceModifier::ROT180:
       return Blitter::rotate_180(*this);
 
-    case ResourceModifierNS::ROT270:
+    case ResourceModifier::ROT270:
       return Blitter::rotate_270(*this);
 
-    case ResourceModifierNS::ROT0FLIP:
+    case ResourceModifier::ROT0FLIP:
       return Blitter::flip_horizontal(*this);
 
-    case ResourceModifierNS::ROT90FLIP:
+    case ResourceModifier::ROT90FLIP:
       return Blitter::rotate_90_flip(*this);
 
-    case ResourceModifierNS::ROT180FLIP:
+    case ResourceModifier::ROT180FLIP:
       return Blitter::rotate_180_flip(*this);
 
-    case ResourceModifierNS::ROT270FLIP:
+    case ResourceModifier::ROT270FLIP:
       return Blitter::rotate_270_flip(*this);
 
     default:

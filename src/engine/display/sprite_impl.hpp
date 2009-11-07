@@ -49,7 +49,7 @@ private:
 
 public:
   SpriteImpl();
-  SpriteImpl(const SpriteDescription& desc, ResourceModifierNS::ResourceModifier mod = ResourceModifierNS::ROT0);
+  SpriteImpl(const SpriteDescription& desc, ResourceModifier::Enum mod = ResourceModifier::ROT0);
   SpriteImpl(const Surface& surface_);
   ~SpriteImpl();
 

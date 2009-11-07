@@ -220,13 +220,13 @@ LevelObj::set_modifier(const std::string m)
 {
   // Set modifier
   if (attribs & CAN_ROTATE)
-    desc.modifier = ResourceModifierNS::rs_from_string(m);
+    desc.modifier = ResourceModifier::from_string(m);
   refresh_sprite();
 }
 
 /** Set the object's modifier */
 void
-LevelObj::set_modifier(ResourceModifierNS::ResourceModifier modifier)
+LevelObj::set_modifier(ResourceModifier::Enum modifier)
 {
   // Set modifier
   if (attribs & CAN_ROTATE)
@@ -235,7 +235,7 @@ LevelObj::set_modifier(ResourceModifierNS::ResourceModifier modifier)
   refresh_sprite();  
 }
 
-ResourceModifierNS::ResourceModifier
+ResourceModifier::Enum
 LevelObj::get_modifier() const
 {
   return desc.modifier;
@@ -259,7 +259,7 @@ LevelObj::write_properties(FileWriter &fw)
   {
     fw.begin_section("surface");
     fw.write_string("image", desc.res_name);
-    fw.write_string("modifier", ResourceModifierNS::rs_to_string(desc.modifier));
+    fw.write_string("modifier", ResourceModifier::to_string(desc.modifier));
     fw.end_section();   // surface
   }
 
@@ -315,19 +315,19 @@ LevelObj::load_generic_surface()
   if (section_name == "entrance")
   {
     desc.res_name = "entrances/generic";
-    desc.modifier = ResourceModifierNS::ROT0;
+    desc.modifier = ResourceModifier::ROT0;
     sprite = Sprite(desc);
   }
   else if (section_name == "solidcolor-background")
   {
     desc.res_name = "core/editor/solidcolorbackground";
-    desc.modifier = ResourceModifierNS::ROT0;
+    desc.modifier = ResourceModifier::ROT0;
     sprite = Sprite(desc);
   }
   else if (section_name == "starfield-background")
   {
     desc.res_name = "core/editor/starfield";
-    desc.modifier = ResourceModifierNS::ROT0;
+    desc.modifier = ResourceModifier::ROT0;
     sprite = Sprite(desc);
   }
 }

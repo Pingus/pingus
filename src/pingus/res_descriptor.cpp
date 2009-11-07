@@ -27,18 +27,18 @@
 
 ResDescriptor::ResDescriptor() :
   res_name(),
-  modifier(ResourceModifierNS::ROT0)
+  modifier(ResourceModifier::ROT0)
 {
 }
 
 ResDescriptor::ResDescriptor(const std::string& res_name_)
   : res_name(res_name_),
-    modifier(ResourceModifierNS::ROT0)
+    modifier(ResourceModifier::ROT0)
 {
 }
 
 ResDescriptor::ResDescriptor(const std::string& arg_res_name,
-                             ResourceModifierNS::ResourceModifier arg_modifier)
+                             ResourceModifier::Enum arg_modifier)
   : res_name(arg_res_name),
     modifier(arg_modifier)
 {
@@ -53,7 +53,7 @@ ResDescriptor::operator<(const ResDescriptor& res_desc) const
 std::ostream& operator<<(std::ostream& s, const ResDescriptor& desc)
 {
   return s << "[" << desc.res_name << ", "
-           << ResourceModifierNS::rs_to_string(desc.modifier) << "]";
+           << ResourceModifier::to_string(desc.modifier) << "]";
 }
 
 /* EOF */

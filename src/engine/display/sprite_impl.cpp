@@ -25,7 +25,7 @@
 typedef std::map<std::string, FramebufferSurface> SurfaceCache;
 SurfaceCache surface_cache;
 
-FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceModifierNS::ResourceModifier mod)
+FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceModifier::Enum mod)
 {
   SurfaceCache::iterator i = surface_cache.find(filename.get_sys_path());
   
@@ -33,7 +33,7 @@ FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceMo
   {
 
     Surface surface(filename);
-    if (mod != ResourceModifierNS::ROT0)
+    if (mod != ResourceModifier::ROT0)
       surface = surface.mod(mod);
 
     if (!surface)
@@ -85,7 +85,7 @@ SpriteImpl::SpriteImpl() :
 {
 }
 
-SpriteImpl::SpriteImpl(const SpriteDescription& desc, ResourceModifierNS::ResourceModifier mod) :
+SpriteImpl::SpriteImpl(const SpriteDescription& desc, ResourceModifier::Enum mod) :
   filename(desc.filename),
   framebuffer_surface(),
   offset(),

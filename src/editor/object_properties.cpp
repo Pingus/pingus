@@ -645,28 +645,28 @@ void
 ObjectProperties::on_flip_horizontal()
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_modifier(ResourceModifierNS::horizontal_flip((*i)->get_modifier()));
+    (*i)->set_modifier(ResourceModifier::horizontal_flip((*i)->get_modifier()));
 }
 
 void
 ObjectProperties::on_flip_vertical()
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_modifier(ResourceModifierNS::vertical_flip((*i)->get_modifier()));
+    (*i)->set_modifier(ResourceModifier::vertical_flip((*i)->get_modifier()));
 }
 
 void
 ObjectProperties::on_rotate_90()
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_modifier(ResourceModifierNS::rotate_90((*i)->get_modifier()));
+    (*i)->set_modifier(ResourceModifier::rotate_90((*i)->get_modifier()));
 }
 
 void
 ObjectProperties::on_rotate_270()
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_modifier(ResourceModifierNS::rotate_270((*i)->get_modifier()));
+    (*i)->set_modifier(ResourceModifier::rotate_270((*i)->get_modifier()));
 }
 
 void

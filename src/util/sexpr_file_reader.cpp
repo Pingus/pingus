@@ -194,7 +194,7 @@ public:
     {
       SExprFileReader reader(sub);
       reader.read_string("image",  v.res_name);
-      reader.read_enum("modifier", v.modifier, ResourceModifierNS::rs_from_string);
+      reader.read_enum("modifier", v.modifier, &ResourceModifier::from_string);
       return true;
     }
     return false;

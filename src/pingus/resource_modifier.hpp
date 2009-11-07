@@ -19,10 +19,11 @@
 
 #include <string>
 
-namespace ResourceModifierNS {
+namespace ResourceModifier {
 
 /** This array contains possible modifications of a surface */
-typedef enum {
+enum Enum 
+{
   ROT0,
   ROT90,
   ROT180,
@@ -31,17 +32,17 @@ typedef enum {
   ROT90FLIP,
   ROT180FLIP,
   ROT270FLIP
-} ResourceModifier;
+};
 
-ResourceModifier horizontal_flip (ResourceModifier);
-ResourceModifier vertical_flip (ResourceModifier);
-ResourceModifier rotate_90 (ResourceModifier);
-ResourceModifier rotate_270 (ResourceModifier);
+ResourceModifier::Enum horizontal_flip(ResourceModifier::Enum modifier);
+ResourceModifier::Enum vertical_flip(ResourceModifier::Enum modifier);
+ResourceModifier::Enum rotate_90(ResourceModifier::Enum modifier);
+ResourceModifier::Enum rotate_270(ResourceModifier::Enum modifier);
 
-std::string rs_to_string (ResourceModifier);
-ResourceModifier rs_from_string (const std::string&);
+std::string to_string(ResourceModifier::Enum modifier);
+ResourceModifier::Enum from_string(const std::string& name);
 
-} // namespace ResourceModifierNS
+} // namespace ResourceModifier
 
 #endif
 
