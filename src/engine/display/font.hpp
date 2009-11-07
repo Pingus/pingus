@@ -19,11 +19,8 @@
 
 #include <SDL.h>
 #include <boost/shared_ptr.hpp>
-//#include <string>
 
-//#include "math/origin.hpp"
 #include "math/rect.hpp"
-//#include "math/size.hpp"
 
 class FontImpl;
 class FontDescription;

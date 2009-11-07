@@ -16,10 +16,7 @@
 
 #include "pingus/resource_manager.hpp"
 
-//#include <iostream>
-
 #include "engine/display/sprite_description.hpp"
-//#include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"

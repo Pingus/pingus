@@ -16,13 +16,8 @@
 
 #include "engine/display/rect_merger.hpp"
 
-//#include <ext/algorithm>
 #include <algorithm>
-//#include <assert.h>
 #include <iostream>
-
-//#include "math/size.hpp"
-//#include "math/vector2i.hpp"
 
 struct Mark {
   enum Type { START_MARK = 0, END_MARK = 1 } type;

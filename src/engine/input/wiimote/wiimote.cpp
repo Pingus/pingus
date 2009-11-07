@@ -16,9 +16,7 @@
 
 #include "engine/input/wiimote/wiimote.hpp"
 
-//#include <assert.h>
 #include <iostream>
-//#include <pthread.h>
 
 #include "math/math.hpp"
 
@@ -325,7 +323,6 @@ Wiimote::add_acc_event(int device, int accelerometer, float x, float y, float z)
 
   events.push_back(event);  
 }
-
 
 void
 Wiimote::on_status(const cwiid_status_mesg& msg)

@@ -16,16 +16,9 @@
 
 #include "pingus/resource.hpp"
 
-//#include <assert.h>
-
-//#include "engine/display/blitter.hpp"
 #include "engine/display/font_description.hpp"
 #include "engine/display/sprite_description.hpp"
-//#include "pingus/debug.hpp"
-//#include "pingus/globals.hpp"
 #include "pingus/path_manager.hpp"
-//#include "pingus/res_descriptor.hpp"
-//#include "util/system.hpp"
 
 ResourceManager Resource::resmgr;
 

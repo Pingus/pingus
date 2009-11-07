@@ -16,9 +16,6 @@
 
 #include "engine/gui/group_component.hpp"
 
-//#include <assert.h>
-//#include <iostream>
-
 namespace GUI {
 
 GroupComponent::GroupComponent(const Rect& rect_, bool clip_) :

@@ -17,11 +17,7 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_DELTA_FRAMEBUFFER_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_DELTA_FRAMEBUFFER_HPP
 
-//#include <map>
-//#include <memory>
-
 #include "engine/display/framebuffer.hpp"
-//#include "math/vector2i.hpp"
 
 class SDLFramebuffer;
 class DrawOpBuffer;

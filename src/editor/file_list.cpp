@@ -16,11 +16,7 @@
 
 #include "editor/file_list.hpp"
 
-//#include <iostream>
-
 #include "editor/gui_style.hpp"
-//#include "math/math.hpp"
-//#include "math/vector2i.hpp"
 #include "pingus/fonts.hpp"
 
 namespace Editor {

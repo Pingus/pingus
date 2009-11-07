@@ -18,17 +18,9 @@
 #include "editor/viewport.hpp"
 
 #include <iostream>
-//#include <string>
-//#include <vector>
 
 #include "editor/editor_level.hpp"
-//#include "editor/editor_screen.hpp"
-//#include "editor/level_objs.hpp"
 #include "engine/display/display.hpp"
-//#include "engine/display/drawing_context.hpp"
-//#include "engine/display/graphic_context_state.hpp"
-//#include "engine/gui/gui_manager.hpp"
-//#include "math/vector3f.hpp"
 
 namespace Editor {
 

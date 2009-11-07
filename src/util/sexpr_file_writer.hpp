@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_UTIL_SEXPR_FILE_WRITER_HPP
 #define HEADER_PINGUS_UTIL_SEXPR_FILE_WRITER_HPP
 
-//#include <iosfwd>
 #include <ostream>
 
 #include "math/color.hpp"

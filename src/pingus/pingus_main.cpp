@@ -17,21 +17,13 @@
 #include "pingus/pingus_main.hpp"
 
 #include <config.h>
-//#include <iostream>
-//#include <locale.h>
 #include <signal.h>
-//#include <stdio.h>
-//#include <sys/stat.h>
 
 #include "editor/editor_level.hpp"
 #include "engine/display/display.hpp"
-//#include "lisp/lisp.hpp"
-//#include "lisp/parser.hpp"
 #include "pingus/config_manager.hpp"
-//#include "pingus/fonts.hpp"
 #include "pingus/screens/demo_session.hpp"
 #include "pingus/screens/pingus_menu.hpp"
-//#include "util/sexpr_file_reader.hpp"
 #include "util/string_util.hpp"
 
 #if defined(__APPLE__)
@@ -49,8 +41,6 @@ extern "C" {
 }
 #endif
 
-//#include <SDL.h>
-
 #ifdef ENABLE_BINRELOC
 #include "../external/binreloc-2.0/binreloc.h"
 #endif 
@@ -61,13 +51,9 @@ extern "C" {
 #include "util/command_line.hpp"
 
 #include "engine/screen/screen_manager.hpp"
-//#include "pingus/fps_counter.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/path_manager.hpp"
 #include "pingus/plf_res_mgr.hpp"
-//#include "pingus/screens/game_session.hpp"
-//#include "pingus/screens/story_screen.hpp"
-//#include "util/system.hpp"
 
 #include "engine/sound/sound.hpp"
 #include "pingus/debug.hpp"
@@ -77,11 +63,7 @@ extern "C" {
 #include "pingus/screens/font_test_screen.hpp"
 #include "pingus/screens/start_screen.hpp"
 #include "pingus/stat_manager.hpp"
-//#include "pingus/worldmap/worldmap_screen.hpp"
-//#include "pingus/worldmap/worldmap_screen.hpp"
 #include "pingus/worldobj_factory.hpp"
-
-//#include "editor/editor_screen.hpp"
 
 #if _MSC_VER >= 1400
 // Disable stupid deprecation warnings

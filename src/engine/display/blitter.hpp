@@ -19,9 +19,6 @@
 
 #include <SDL.h>
 
-//#include "math/color.hpp"
-//#include "math/rect.hpp"
-
 class Surface;
 
 /** A bunch of blitting and creation functions to operate on Surface.  */

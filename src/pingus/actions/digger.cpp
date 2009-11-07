@@ -16,11 +16,8 @@
 
 #include "pingus/actions/digger.hpp"
 
-//#include <cstdio>
-
 #include "engine/display/scene_context.hpp"
 #include "engine/sound/sound.hpp"
-//#include "pingus/ground_map.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"

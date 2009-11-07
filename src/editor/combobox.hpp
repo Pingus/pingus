@@ -19,11 +19,8 @@
 #define HEADER_PINGUS_EDITOR_COMBOBOX_HPP
 
 #include <boost/signal.hpp>
-//#include <string>
-//#include <vector>
 
 #include "engine/display/sprite.hpp"
-//#include "engine/gui/component.hpp"
 #include "engine/gui/rect_component.hpp"
 
 namespace Editor {

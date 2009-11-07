@@ -17,8 +17,6 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_SCENE_CONTEXT_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_SCENE_CONTEXT_HPP
 
-//#include <SDL.h>
-
 #include "engine/display/drawing_context.hpp"
 
 class SceneContextImpl;

@@ -16,7 +16,6 @@
 
 #include "util/file_reader.hpp"
 
-//#include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
 #include "util/file_reader_impl.hpp"
 #include "util/pathname.hpp"

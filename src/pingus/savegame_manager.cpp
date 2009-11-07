@@ -16,10 +16,8 @@
 
 #include "pingus/savegame_manager.hpp"
 
-//#include <assert.h>
 #include <fstream>
 
-//#include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
 #include "util/sexpr_file_reader.hpp"
 #include "util/sexpr_file_writer.hpp"

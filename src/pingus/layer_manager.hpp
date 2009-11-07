@@ -20,7 +20,6 @@
 #include "engine/display/display.hpp"
 #include "engine/display/drawing_context.hpp"
 #include "engine/display/sprite.hpp"
-//#include "math/math.hpp"
 #include "pingus/globals.hpp"
 
 class LayerManager

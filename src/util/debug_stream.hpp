@@ -18,7 +18,6 @@
 #define HEADER_PINGUS_UTIL_DEBUG_STREAM_HPP
 
 #include <iostream>
-//#include <string>
 #include <vector>
 
 class NilStream;
@@ -72,7 +71,6 @@ private:
   DebugStream (const DebugStream&);
   DebugStream& operator= (const DebugStream&);
 };
-
 
 /// Stream used to consume unwanted debugmessages
 class NilStream : public std::ostream

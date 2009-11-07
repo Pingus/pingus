@@ -19,7 +19,6 @@
 #include <sstream>
 
 #include "engine/display/display.hpp"
-//#include "gettext.h"
 #include "pingus/fonts.hpp"
 
 FPSCounter fps_counter;

@@ -17,8 +17,6 @@
 #ifndef HEADER_PINGUS_ENGINE_GUI_GUI_MANAGER_HPP
 #define HEADER_PINGUS_ENGINE_GUI_GUI_MANAGER_HPP
 
-//#include <vector>
-
 #include "engine/gui/group_component.hpp"
 #include "engine/input/event.hpp"
 

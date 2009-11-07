@@ -18,13 +18,9 @@
 
 #include "editor/editor_screen.hpp"
 #include "engine/display/display.hpp" 
-//#include "engine/display/drawing_context.hpp"
-//#include "engine/display/sprite.hpp"
 #include "engine/gui/gui_manager.hpp"
-//#include "math/vector2i.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
-//#include "pingus/resource.hpp"
 
 namespace Editor {
 

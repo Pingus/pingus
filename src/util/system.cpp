@@ -16,13 +16,9 @@
 
 #include "util/system.hpp"
 
-//#include <config.h>
 #include <iostream>
-//#include <locale.h>
 #include <sstream>
 #include <stdexcept>
-//#include <stdio.h>
-//#include <stdlib.h>
 
 #ifndef WIN32
 #  include <dirent.h>
@@ -44,10 +40,8 @@
 #define F_OK   0
 #endif
 
-//#include "pingus/gettext.h"
 #include "pingus/globals.hpp"
 #include "util/pathname.hpp"
-//#include "util/string_util.hpp"
 
 std::string System::userdir;
 std::string System::default_email;

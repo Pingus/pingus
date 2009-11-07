@@ -18,7 +18,6 @@
 #define HEADER_PINGUS_ENGINE_INPUT_CONTROLLER_DESCRIPTION_HPP
 
 #include <map>
-//#include <string>
 
 #include "engine/input/event.hpp"
 

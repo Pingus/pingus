@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_ENGINE_SOUND_SOUND_DUMMY_HPP
 #define HEADER_PINGUS_ENGINE_SOUND_SOUND_DUMMY_HPP
 
-//#include "engine/sound/sound.hpp"
 #include "engine/sound/sound_impl.hpp"
 
 namespace Sound {

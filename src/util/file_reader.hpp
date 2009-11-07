@@ -18,7 +18,6 @@
 #define HEADER_PINGUS_UTIL_FILE_READER_HPP
 
 #include <boost/shared_ptr.hpp>
-//#include <string>
 #include <vector>
 
 class Size;

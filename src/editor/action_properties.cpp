@@ -17,13 +17,11 @@
 #include "editor/action_properties.hpp"
 
 #include <boost/bind.hpp>
-//#include <iostream>
 
 #include "editor/checkbox.hpp"
 #include "editor/editor_level.hpp"
 #include "editor/gui_style.hpp"
 #include "editor/inputbox.hpp"
-//#include "pingus/pingu_enums.hpp"
 #include "util/string_util.hpp"
 
 namespace Editor {
@@ -132,7 +130,6 @@ ActionProperties::on_inputbox_change(const std::string& value, Actions::ActionNa
 {
   level->set_action(Actions::action_to_string(id), StringUtil::to<int>(value));
 }
-
 
 } // namespace Editor
 

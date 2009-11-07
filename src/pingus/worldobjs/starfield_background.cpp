@@ -16,8 +16,6 @@
 
 #include "pingus/worldobjs/starfield_background.hpp"
 
-//#include <iostream>
-
 #include "pingus/worldobjs/starfield_background_stars.hpp"
 
 namespace WorldObjs {

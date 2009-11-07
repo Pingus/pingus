@@ -19,15 +19,10 @@
 
 #include <fstream>
 #include <iostream>
-//#include <string>
 
 #include "config.h"
 
-//#include "editor/level_impl.hpp"
-//#include "editor/level_objs.hpp"
-//#include "editor/viewport.hpp"
 #include "pingus/pingus_level.hpp"
-//#include "util/pathname.hpp"
 #include "util/sexpr_file_writer.hpp"
 
 namespace Editor {
@@ -91,7 +86,6 @@ EditorLevel::clear() {
   clear_impl();
   set_impl_defaults();
 }
-
 
 // Default Destructor
 EditorLevel::~EditorLevel()

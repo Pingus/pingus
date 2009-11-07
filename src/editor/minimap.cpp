@@ -17,9 +17,7 @@
 #include "editor/minimap.hpp"
 
 #include "editor/editor_level.hpp"
-//#include "editor/editor_screen.hpp"
 #include "editor/gui_style.hpp"
-//#include "editor/level_objs.hpp"
 #include "editor/viewport.hpp"
 
 namespace Editor {

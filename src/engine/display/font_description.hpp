@@ -17,11 +17,9 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_FONT_DESCRIPTION_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_FONT_DESCRIPTION_HPP
 
-//#include <string>
 #include <vector>
 
 #include "math/rect.hpp"
-//#include "math/vector2i.hpp"
 #include "util/pathname.hpp"
 
 class FileReader;

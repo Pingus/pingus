@@ -18,11 +18,8 @@
 #ifndef HEADER_PINGUS_EDITOR_PANEL_HPP
 #define HEADER_PINGUS_EDITOR_PANEL_HPP
 
-//#include <string>
-
 #include "engine/display/sprite.hpp"
 #include "engine/gui/component.hpp"
-//#include "math/vector2i.hpp"
 
 namespace Editor {
 

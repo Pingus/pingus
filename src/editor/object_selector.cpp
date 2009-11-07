@@ -20,20 +20,9 @@
 #include <boost/signal.hpp>
 #include <iostream>
 
-//#include "editor/editor_level.hpp"
-//#include "editor/editor_screen.hpp"
 #include "editor/gui_style.hpp"
 #include "editor/level_objs.hpp"
-//#include "editor/object_selector_list.hpp"
 #include "editor/object_selector_set.hpp"
-//#include "editor/viewport.hpp"
-//#include "engine/display/display.hpp"
-//#include "engine/display/drawing_context.hpp"
-//#include "engine/display/drawing_context.hpp"
-//#include "engine/display/sprite.hpp"
-//#include "engine/gui/gui_manager.hpp"
-//#include "math/math.hpp"
-//#include "math/vector2i.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "pingus/resource.hpp"
@@ -285,8 +274,6 @@ private:
   ObjectSelectorButton(const ObjectSelectorButton&);
   ObjectSelectorButton & operator=(const ObjectSelectorButton&);
 };
-
-
 
 ObjectSelector::ObjectSelector(EditorScreen* editor_, const Rect& rect_) :
   GroupComponent(rect_, false),

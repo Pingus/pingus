@@ -16,15 +16,10 @@
 
 #include "util/sexpr_file_reader.hpp"
 
-//#include <assert.h>
-
 #include "math/color.hpp"
 #include "math/rect.hpp"
-//#include "math/size.hpp"
-//#include "math/vector2i.hpp"
 #include "math/vector3f.hpp"
 #include "pingus/res_descriptor.hpp"
-//#include "pingus/resource_modifier.hpp"
 #include "util/file_reader_impl.hpp"
 
 class SExprFileReaderImpl: public FileReaderImpl

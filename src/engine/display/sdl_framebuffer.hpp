@@ -17,13 +17,7 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_SDL_FRAMEBUFFER_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_SDL_FRAMEBUFFER_HPP
 
-//#include <SDL.h>
-//#include <vector>
-
 #include "engine/display/framebuffer.hpp"
-//#include "math/color.hpp"
-//#include "math/rect.hpp"
-//#include "math/vector2i.hpp"
 
 class SDLFramebuffer : public Framebuffer
 {

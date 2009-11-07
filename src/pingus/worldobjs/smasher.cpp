@@ -20,12 +20,9 @@
 
 #include "engine/display/scene_context.hpp"
 #include "engine/sound/sound.hpp"
-//#include "math/math.hpp"
-//#include "pingus/collision_map.hpp"
 #include "pingus/particles/smoke_particle_holder.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
-//#include "pingus/resource.hpp"
 #include "pingus/world.hpp"
 
 namespace WorldObjs {

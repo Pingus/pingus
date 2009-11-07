@@ -18,13 +18,9 @@
 
 #include "engine/display/scene_context.hpp"
 #include "pingus/colliders/pingu_collider.hpp"
-//#include "pingus/debug.hpp"
-//#include "pingus/globals.hpp"
-//#include "pingus/ground_map.hpp"
 #include "pingus/movers/linear_mover.hpp"
 #include "pingus/particles/pingu_particle_holder.hpp"
 #include "pingus/pingu.hpp"
-//#include "pingus/pingu_enums.hpp"
 #include "pingus/world.hpp"
 
 namespace Actions {

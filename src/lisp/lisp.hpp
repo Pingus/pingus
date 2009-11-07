@@ -18,12 +18,9 @@
 #ifndef __LISP_HPP__
 #define __LISP_HPP__
 
-//#include <assert.h>
 #include <boost/shared_ptr.hpp>
 #include <iostream>
-//#include <sstream>
 #include <stdexcept>
-//#include <string>
 #include <vector>
 
 namespace lisp

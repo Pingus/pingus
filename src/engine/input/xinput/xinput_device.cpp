@@ -16,11 +16,7 @@
 
 #include "engine/input/xinput/xinput_device.hpp"
 
-//#include <SDL_syswm.h>
-
 #include "engine/input/xinput/xinput_driver.hpp"
-//#include "pingus/debug.hpp"
-//#include "pingus/globals.hpp"
 
 namespace Input {
 

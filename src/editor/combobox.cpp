@@ -16,16 +16,9 @@
 
 #include "editor/combobox.hpp"
 
-//#include <iostream>
-//#include <string>
-//#include <vector>
-
 #include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/resource_modifier.hpp"
-//#include "math/math.hpp"
-//#include "math/vector2i.hpp"
-//#include "pingus/resource.hpp"
 
 namespace Editor {
 

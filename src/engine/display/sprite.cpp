@@ -16,20 +16,9 @@
 
 #include "engine/display/sprite.hpp"
 
-//#include <SDL.h>
-//#include <SDL_image.h>
-//#include <assert.h>
-//#include <iostream>
-//#include <sstream>
-
-//#include "engine/display/blitter.hpp"
 #include "engine/display/sprite_description.hpp"
 #include "engine/display/sprite_impl.hpp"
-//#include "engine/display/surface.hpp"
-//#include "math/origin.hpp"
-//#include "math/vector2i.hpp"
 #include "pingus/resource.hpp"
-//#include "util/pathname.hpp"
 
 Sprite::Sprite() :
   impl()

@@ -19,7 +19,6 @@
 
 #include <linux/input.h>
 #include <string.h>
-//#include <vector>
 
 #include "engine/input/control.hpp"
 

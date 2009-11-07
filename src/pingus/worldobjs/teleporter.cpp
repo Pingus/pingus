@@ -21,7 +21,6 @@
 #include "engine/display/scene_context.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
-//#include "pingus/resource.hpp"
 #include "pingus/world.hpp"
 #include "pingus/worldobjs/teleporter_target.hpp"
 

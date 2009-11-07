@@ -16,8 +16,6 @@
 
 #include "engine/input/xinput/xinput_driver.hpp"
 
-//#include <iostream>
-
 #include "engine/input/xinput/xinput_device.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"

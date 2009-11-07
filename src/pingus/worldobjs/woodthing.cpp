@@ -17,9 +17,7 @@
 #include "pingus/worldobjs/woodthing.hpp"
 
 #include "engine/display/scene_context.hpp"
-//#include "math/math.hpp"
 #include "pingus/particles/smoke_particle_holder.hpp"
-//#include "pingus/resource.hpp"
 #include "pingus/world.hpp"
 
 namespace WorldObjs {

@@ -16,9 +16,6 @@
 
 #include "pingus/worldobjs/snow_generator.hpp"
 
-//#include <iostream>
-
-//#include "math/math.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/particles/snow_particle_holder.hpp"
 #include "pingus/world.hpp"

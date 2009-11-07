@@ -25,7 +25,6 @@
 //#include "pingus/resource.hpp"
 #include "pingus/screens/pingus_menu.hpp"
 
-
 MenuButton::MenuButton(PingusMenu* menu_,
                        const Vector2i& pos_,
                        const std::string& text_, const std::string& desc_) :

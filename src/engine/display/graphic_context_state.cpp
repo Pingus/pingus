@@ -17,7 +17,6 @@
 #include "engine/display/graphic_context_state.hpp"
 
 #include "engine/display/display.hpp"
-//#include "math/math.hpp"
 
 class GraphicContextStateImpl
 {

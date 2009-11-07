@@ -18,14 +18,9 @@
 
 #include <assert.h>
 #include <config.h>
-//#include <fstream>
 #include <iostream>
 #include <png.h>
-//#include <stdio.h>
-//#include <time.h>
 
-//#include "engine/display/display.hpp"
-//#include "engine/display/framebuffer.hpp"
 #include "pingus/gettext.h"
 #include "util/system.hpp"
 

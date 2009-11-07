@@ -17,8 +17,6 @@
 #ifndef HEADER_PINGUS_ENGINE_INPUT_USBMOUSE_USBMOUSE_DRIVER_HPP
 #define HEADER_PINGUS_ENGINE_INPUT_USBMOUSE_USBMOUSE_DRIVER_HPP
 
-//#include <vector>
-
 #include "engine/input/driver.hpp"
 
 namespace Input {

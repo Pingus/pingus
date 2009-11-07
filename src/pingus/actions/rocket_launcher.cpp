@@ -17,11 +17,7 @@
 #include "pingus/actions/rocket_launcher.hpp"
 
 #include "engine/display/scene_context.hpp"
-//#include "pingus/particles/particle_holder.hpp"
-//#include "pingus/particles/explosive_particle.hpp"
 #include "pingus/pingu.hpp"
-//#include "pingus/world.hpp"
-//#include "pingus/worldobj.hpp"
 
 namespace Actions {
 

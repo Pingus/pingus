@@ -30,7 +30,6 @@
 #include "pingus/world.hpp"
 #include "util/string_util.hpp"
 
-
 TimeDisplay::TimeDisplay (GameSession* c) :
   server(c->get_server()),
   font(),

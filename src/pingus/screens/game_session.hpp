@@ -118,7 +118,6 @@ private:
   GameSession& operator= (const GameSession&);
 };
 
-
 #endif
 
 /* EOF */

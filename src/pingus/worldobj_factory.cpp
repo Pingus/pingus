@@ -16,11 +16,9 @@
 
 #include "pingus/worldobj_factory.hpp"
 
-//#include <iostream>
 #include <stdexcept>
 
 #include "pingus/worldobjs/conveyor_belt.hpp"
-//#include "pingus/worldobjs/entrance.hpp"
 #include "pingus/worldobjs/exit.hpp"
 #include "pingus/worldobjs/fake_exit.hpp"
 #include "pingus/worldobjs/groundpiece.hpp"

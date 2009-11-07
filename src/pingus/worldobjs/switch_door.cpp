@@ -20,7 +20,6 @@
 #include "pingus/collision_map.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
-//#include "pingus/resource.hpp"
 #include "pingus/world.hpp"
 
 namespace WorldObjs {

@@ -30,7 +30,6 @@ enum ButtonName { primary, secondary, pause, fast_forward, armageddon, escape, a
                   action_3, action_4, action_5, action_6, action_7, action_8, action_9, action_10,
                   action_up, action_down, max_button };
 
-
 enum State { pressed, released };
 
 struct ButtonEvent

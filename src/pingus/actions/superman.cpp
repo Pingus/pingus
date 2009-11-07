@@ -17,7 +17,6 @@
 #include "pingus/actions/superman.hpp"
 
 #include "engine/display/scene_context.hpp"
-//#include "engine/display/sprite.hpp"
 #include "pingus/pingu.hpp"
 
 namespace Actions {

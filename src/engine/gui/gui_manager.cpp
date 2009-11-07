@@ -16,10 +16,7 @@
 
 #include "engine/gui/gui_manager.hpp"
 
-//#include <algorithm>
-
 #include "engine/display/display.hpp"
-//#include "engine/input/event.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 
@@ -42,7 +39,6 @@ GUIManager::GUIManager(const Rect& rect_)
 GUIManager::~GUIManager ()
 {
 }
-
 
 void
 GUIManager::update(float delta)

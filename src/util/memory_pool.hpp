@@ -105,7 +105,6 @@ private:
   MemoryPool& operator= (const MemoryPool&);
 };
 
-
 #endif
 
 /* EOF */

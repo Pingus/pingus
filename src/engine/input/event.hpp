@@ -63,7 +63,6 @@ enum EventName {
   ACTION_AXIS
 };
 
-
 enum ButtonState { BUTTON_RELEASED, BUTTON_PRESSED };
 
 struct ButtonEvent
@@ -71,7 +70,6 @@ struct ButtonEvent
   EventName   name;
   ButtonState state;
 };
-
 
 struct PointerEvent
 {

@@ -20,7 +20,6 @@
 
 namespace Input {
 
-
 ControllerDescription::ControllerDescription() :
   str_to_event(),
   id_to_event()
@@ -116,7 +115,6 @@ ControllerDescription::get_definition(const std::string& name) const
   return i->second;
 }
 
-
 static std::vector<int> map2vector(const std::map<int, InputEventDefinition>& map,
                                    EventType type)
 {
@@ -159,7 +157,6 @@ ControllerDescription::get_keyboards() const
 {
   return map2vector(id_to_event, KEYBOARD_EVENT_TYPE);  
 }
-
 
 } // namespace Input
 

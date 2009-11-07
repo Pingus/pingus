@@ -16,7 +16,6 @@
 
 #include "pingus/res_descriptor.hpp"
 
-//#include <assert.h>
 #include <iostream>
 
 /*
