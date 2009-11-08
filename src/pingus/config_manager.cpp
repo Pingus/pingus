@@ -210,7 +210,7 @@ ConfigManager::save()
 void
 ConfigManager::set_master_volume(int v)
 {
-  if (maintainer_mode)
+  if (globals::maintainer_mode)
     std::cout << "ConfigManager::set_master_volume: " << v << std::endl;
 }
 
@@ -223,7 +223,7 @@ ConfigManager::get_master_volume()
 void
 ConfigManager::set_sound_volume(int v)
 {
-  if (maintainer_mode)
+  if (globals::maintainer_mode)
     std::cout << "ConfigManager::set_sound_volume: " << v << std::endl;
 }
 
@@ -236,7 +236,7 @@ ConfigManager::get_sound_volume()
 void
 ConfigManager::set_music_volume(int v)
 {
-  if (maintainer_mode)
+  if (globals::maintainer_mode)
     std::cout << "ConfigManager::set_music_volume: " << v << std::endl;
 }
 
@@ -249,12 +249,12 @@ ConfigManager::get_music_volume()
 void
 ConfigManager::set_resolution(const Size& size)
 {
-  if (maintainer_mode)
+  if (globals::maintainer_mode)
     std::cout << "ConfigManager::set_resolution: " << size.width << "x" << size.height << std::endl;
 
   if (size != get_resolution())
   {
-    Display::set_video_mode(size, fullscreen_enabled);
+    Display::set_video_mode(size, globals::fullscreen_enabled);
     on_resolution_change(size);
   }
 }
@@ -268,14 +268,14 @@ ConfigManager::get_resolution()
 void
 ConfigManager::set_fullscreen(bool v)
 {
-  if (maintainer_mode)
+  if (globals::maintainer_mode)
     std::cout << "ConfigManager::set_fullscreen: " << v << std::endl;
 
   if (v != get_fullscreen())
   {
-    fullscreen_enabled = v;
+    globals::fullscreen_enabled = v;
     Size screen_size = Display::get_size();
-    Display::set_video_mode(screen_size, fullscreen_enabled);
+    Display::set_video_mode(screen_size, globals::fullscreen_enabled);
     on_fullscreen_change(v);
   }
 }
@@ -283,13 +283,13 @@ ConfigManager::set_fullscreen(bool v)
 bool
 ConfigManager::get_fullscreen()
 {
-  return fullscreen_enabled;
+  return globals::fullscreen_enabled;
 }
 
 void
 ConfigManager::set_allow_resize(bool v)
 {
-  if (maintainer_mode)
+  if (globals::maintainer_mode)
     std::cout << "ConfigManager::set_allow_resize: " << v << std::endl;
 
   if (v != get_allow_resize())
@@ -307,7 +307,7 @@ ConfigManager::get_allow_resize()
 void
 ConfigManager::set_mouse_grab(bool v)
 {
-  if (maintainer_mode)
+  if (globals::maintainer_mode)
     std::cout << "ConfigManager::set_mouse_grab: " << v << std::endl;
 
   if (v != get_mouse_grab())
@@ -326,12 +326,12 @@ ConfigManager::get_mouse_grab()
 void
 ConfigManager::set_print_fps(bool v)
 {
-  if (maintainer_mode)
+  if (globals::maintainer_mode)
     std::cout << "ConfigManager::set_print_fps: " << v << std::endl;
 
   if (v != get_print_fps())
   {
-    print_fps = v;
+    globals::print_fps = v;
     on_print_fps_change(v);
   }
 }
@@ -339,13 +339,13 @@ ConfigManager::set_print_fps(bool v)
 bool
 ConfigManager::get_print_fps()
 {
-  return print_fps;
+  return globals::print_fps;
 }
 
 void
 ConfigManager::set_language(const tinygettext::Language& v)
 {
-  if (maintainer_mode)
+  if (globals::maintainer_mode)
     std::cout << "ConfigManager::set_language: '" << v << "'" << std::endl;
 
   if (v != get_language())
@@ -364,7 +364,7 @@ ConfigManager::get_language()
 void
 ConfigManager::set_swcursor(bool v)
 {
-  if (maintainer_mode)
+  if (globals::maintainer_mode)
     std::cout << "ConfigManager::set_swcursor: " << v << std::endl;
 
   if (v != get_swcursor())
@@ -377,18 +377,18 @@ ConfigManager::set_swcursor(bool v)
 bool
 ConfigManager::get_swcursor()
 {
-  return swcursor_enabled;
+  return globals::swcursor_enabled;
 }
 
 void
 ConfigManager::set_autoscroll(bool v)
 {
-  if (maintainer_mode)
+  if (globals::maintainer_mode)
     std::cout << "ConfigManager::set_autoscroll: " << v << std::endl;
 
   if (v != get_autoscroll())
   {
-    auto_scrolling = v;
+    globals::auto_scrolling = v;
     on_autoscroll_change(v);
   }
 }
@@ -396,7 +396,7 @@ ConfigManager::set_autoscroll(bool v)
 bool
 ConfigManager::get_autoscroll()
 {
-  return auto_scrolling;
+  return globals::auto_scrolling;
 }
 
 /* EOF */

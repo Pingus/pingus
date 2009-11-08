@@ -33,7 +33,7 @@ GameTime::ticks_to_realtime_string(int ticks)
     const int time_str_size = 20;
     char time_str[time_str_size];
 
-    int total_seconds = ticks * game_speed / 1000;
+    int total_seconds = ticks * globals::game_speed / 1000;
     int seconds       = total_seconds % 60;
     int minutes       = total_seconds / 60;
 

@@ -164,45 +164,45 @@ PingusMain::apply_args()
   
   // Display
   if (options.fullscreen.is_set())
-    fullscreen_enabled = options.fullscreen.get();
+    globals::fullscreen_enabled = options.fullscreen.get();
 
   if (options.swcursor.is_set())
-    swcursor_enabled = options.swcursor.get();
+    globals::swcursor_enabled = options.swcursor.get();
 
   // FIXME: if (options.geometry.is_set())
   // FIXME:   config_manager.set_resolution(options.geometry.get());
 
   // Sound
   if (options.disable_music.is_set())
-    music_enabled = !options.disable_music.get();
+    globals::music_enabled = !options.disable_music.get();
 
   if (options.disable_sound.is_set())
-    sound_enabled = !options.disable_sound.get();
+    globals::sound_enabled = !options.disable_sound.get();
 
   // Misc
   if (options.language.is_set())
     dictionary_manager.set_language(tinygettext::Language::from_name(options.language.get()));
 
   if (options.auto_scrolling.is_set())
-    auto_scrolling = options.auto_scrolling.get();
+    globals::auto_scrolling = options.auto_scrolling.get();
   
   if (options.controller.is_set())
-    controller_file = options.controller.get();
+    globals::controller_file = options.controller.get();
 
   if (options.maintainer_mode.is_set())
-    maintainer_mode = options.maintainer_mode.get();
+    globals::maintainer_mode = options.maintainer_mode.get();
 
   if (options.debug.is_set())
-    pingus_debug_flags = options.debug.get();
+    globals::pingus_debug_flags = options.debug.get();
 
   if (options.speed.is_set())
-    game_speed = options.speed.get();
+    globals::game_speed = options.speed.get();
 
   if (options.desiredfps.is_set())
-    desired_fps = options.desiredfps.get();
+    globals::desired_fps = options.desiredfps.get();
 
   if (options.tile_size.is_set())
-    tile_size = options.tile_size.get();
+    globals::tile_size = options.tile_size.get();
 }
 
 void
@@ -292,19 +292,19 @@ PingusMain::parse_args(int argc, char** argv)
       case 'r': // --renderer
         if (argp.get_argument() == "delta")
         {
-          framebuffer_type = DELTA_FRAMEBUFFER;
+          globals::framebuffer_type = DELTA_FRAMEBUFFER;
         }
         else if (argp.get_argument() == "opengl")
         {
-          framebuffer_type = OPENGL_FRAMEBUFFER;
+          globals::framebuffer_type = OPENGL_FRAMEBUFFER;
         }
         else if (argp.get_argument() == "null")
         {
-          framebuffer_type = NULL_FRAMEBUFFER;
+          globals::framebuffer_type = NULL_FRAMEBUFFER;
         }
         else if (argp.get_argument() == "sdl")
         {
-          framebuffer_type = SDL_FRAMEBUFFER;
+          globals::framebuffer_type = SDL_FRAMEBUFFER;
         }
         else if (argp.get_argument() == "help")
         {
@@ -393,7 +393,7 @@ PingusMain::parse_args(int argc, char** argv)
 
       case 334: // --maintainer-mode
         cmd_options.maintainer_mode.set(true);
-        maintainer_mode = true;
+        globals::maintainer_mode = true;
         break;
 
       case 337:
@@ -472,7 +472,7 @@ PingusMain::parse_args(int argc, char** argv)
         }
 
         // Update Pingus debug flags
-        pingus_debug_flags = cmd_options.debug.get();
+        globals::pingus_debug_flags = cmd_options.debug.get();
         break;
 
       case 360:
@@ -569,7 +569,7 @@ PingusMain::init_path_finder()
   // dictionary_manager.set_language("de"); 
   dictionary_manager.add_directory(path_manager.complete("po/"));
 
-  if (maintainer_mode)
+  if (globals::maintainer_mode)
     std::cout << "BasePath: " << path_manager.get_base_path () << std::endl;
 }
 
@@ -591,12 +591,12 @@ PingusMain::print_greeting_message()
             << ")"
             << std::endl;
 
-  if (sound_enabled)
+  if (globals::sound_enabled)
     std::cout << "sound support:           enabled" << std::endl;
   else
     std::cout << "sound support:          disabled" << std::endl;
 
-  if (music_enabled)
+  if (globals::music_enabled)
     std::cout << "music support:           enabled" << std::endl;
   else
     std::cout << "music support:          disabled" << std::endl;
@@ -605,7 +605,7 @@ PingusMain::print_greeting_message()
   // FIXME: << config_manager.get_resolution().width << "x"
   // FIXME:            << config_manager.get_resolution().height << std::endl;
   std::cout << "fullscreen:              "
-            << (fullscreen_enabled ? " enabled" : "disabled")
+            << (globals::fullscreen_enabled ? " enabled" : "disabled")
             << std::endl;
 
   std::cout << std::endl;
@@ -743,7 +743,7 @@ PingusMain::init_sdl()
   if (cmd_options.geometry.is_set())
     screen_size = cmd_options.geometry.get();
 
-  Display::set_video_mode(screen_size, fullscreen_enabled);
+  Display::set_video_mode(screen_size, globals::fullscreen_enabled);
 
   SDL_WM_SetCaption("Pingus " VERSION " - SDL Edition", 0 /* icon */);
 

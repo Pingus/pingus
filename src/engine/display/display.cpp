@@ -65,7 +65,7 @@ Display::resize(const Size& size_)
   // FIXME: Calling this causes horrible flicker, since the screen
   // goes black on a size change. Seems to be an SDL issue.
   // This call  also shouldn't be part of ScreenManager, but Framebuffer/Display internal
-  Display::set_video_mode(size, fullscreen_enabled);
+  Display::set_video_mode(size, globals::fullscreen_enabled);
 
   if (ScreenManager::instance())
     ScreenManager::instance()->resize(size);
@@ -76,7 +76,7 @@ Display::set_video_mode(const Size& size, bool fullscreen)
 {
   if (!framebuffer.get())
   {
-    switch (framebuffer_type)
+    switch (globals::framebuffer_type)
     {
       case OPENGL_FRAMEBUFFER:
 #ifdef HAVE_OPENGL
@@ -91,7 +91,7 @@ Display::set_video_mode(const Size& size, bool fullscreen)
         break;
 
       case DELTA_FRAMEBUFFER:
-        static_graphics = true;
+        globals::static_graphics = true;
         framebuffer = std::auto_ptr<Framebuffer>(new DeltaFramebuffer());
         break;
 

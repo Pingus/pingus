@@ -165,7 +165,7 @@ void
 System::create_dir(std::string directory)
 {
 #ifndef WIN32
-  if (pingus_debug_flags & PINGUS_DEBUG_DIRECTORIES)
+  if (globals::pingus_debug_flags & PINGUS_DEBUG_DIRECTORIES)
   {
     std::cout << "System::create_dir: " << directory << std::endl;
   }
@@ -346,7 +346,7 @@ System::get_language()
     lang = lang_c;
 
   if (lang.empty() || lang == "C")
-    return default_language;
+    return globals::default_language;
   else
     return lang.substr(0, 2);
 }

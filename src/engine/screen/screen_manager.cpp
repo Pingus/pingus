@@ -149,11 +149,11 @@ ScreenManager::ScreenManager() :
     
   input_manager = std::auto_ptr<Input::Manager>(new Input::Manager());
 
-  if (controller_file.empty())
+  if (globals::controller_file.empty())
     input_controller = std::auto_ptr<Input::Controller>(input_manager->create_controller(Pathname("controller/default.scm", 
                                                                                                   Pathname::DATA_PATH)));
   else
-    input_controller = std::auto_ptr<Input::Controller>(input_manager->create_controller(Pathname(controller_file,
+    input_controller = std::auto_ptr<Input::Controller>(input_manager->create_controller(Pathname(globals::controller_file,
                                                                                                   Pathname::SYSTEM_PATH)));
 
   cursor = Sprite("core/cursors/animcross");
@@ -168,7 +168,7 @@ ScreenManager::~ScreenManager()
 void
 ScreenManager::display()
 {
-  show_swcursor(swcursor_enabled);
+  show_swcursor(globals::swcursor_enabled);
   
   Uint32 last_ticks = SDL_GetTicks();
   float previous_frame_time;
@@ -208,13 +208,13 @@ ScreenManager::display()
       write_events(std::cerr, events);
     }
 
-    if (swcursor_enabled)
+    if (globals::swcursor_enabled)
       cursor.update(previous_frame_time);
 
     // previous frame took more than one second
     if (previous_frame_time > 1.0)
     {
-      if (maintainer_mode)
+      if (globals::maintainer_mode)
         std::cout << "ScreenManager: previous frame took longer than 1 second (" << previous_frame_time
                   << " sec.), ignoring and doing frameskip" << std::endl;
     }
@@ -227,8 +227,8 @@ ScreenManager::display()
       float current_frame_time = float(SDL_GetTicks() - last_ticks) / 1000.0f;
       // idly delay if this frame didn't last long enough to
       // achieve <desired_fps> frames per second
-      if (current_frame_time < 1.0f / desired_fps) {
-        Uint32 sleep_time = static_cast<Uint32>(1000 *((1.0f / desired_fps) - current_frame_time));
+      if (current_frame_time < 1.0f / globals::desired_fps) {
+        Uint32 sleep_time = static_cast<Uint32>(1000 *((1.0f / globals::desired_fps) - current_frame_time));
         // std::cout << "Sleep: " << sleep_time << std::endl;
         SDL_Delay(sleep_time);
       }
@@ -276,11 +276,11 @@ ScreenManager::update(float delta, const std::vector<Input::Event>& events)
   display_gc->clear();
   
   // Draw the mouse pointer
-  if (swcursor_enabled)
+  if (globals::swcursor_enabled)
     cursor.render(mouse_pos.x, mouse_pos.y, Display::get_framebuffer());
   
   // Draw FPS Counter
-  if (print_fps)
+  if (globals::print_fps)
     fps_counter->draw();
   
   Display::flip_display();
@@ -386,8 +386,9 @@ ScreenManager::resize(const Size& size)
 void
 ScreenManager::show_swcursor(bool visible)
 {
-  swcursor_enabled = visible;
-  if (swcursor_enabled)
+  globals::swcursor_enabled = visible;
+
+  if (globals::swcursor_enabled)
   {
     SDL_ShowCursor(SDL_DISABLE);
   }

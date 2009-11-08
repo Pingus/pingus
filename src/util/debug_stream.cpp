@@ -129,7 +129,7 @@ DebugStream::~DebugStream ()
 /// returns self if the debug flag is set, else nilstream
 ostream & DebugStream::operator () (int component) {
 
-  if (pingus_debug_flags & component) {
+  if (globals::pingus_debug_flags & component) {
     return *this;
   } else {
     return nilstream;

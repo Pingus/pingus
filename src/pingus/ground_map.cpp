@@ -64,7 +64,7 @@ void
 MapTile::put(Surface src, int x, int y)
 {
   if (!surface)
-    surface = Surface(tile_size, tile_size);
+    surface = Surface(globals::tile_size, globals::tile_size);
   
   surface.blit(src, x, y);
   sprite_needs_update = true;
@@ -94,16 +94,16 @@ GroundMap::GroundMap(int width_, int height_) :
 {
   colmap = new CollisionMap(width, height);
 
-  tile_width  = width /tile_size;
-  tile_height = height/tile_size;
+  tile_width  = width  / globals::tile_size;
+  tile_height = height / globals::tile_size;
 
   // Checking that the map has the correct size, only multiples of
   // tile_size are allowed, anything else wouldn't fit very well on
   // the colmap
-  if ((width % tile_size) != 0)
+  if ((width % globals::tile_size) != 0)
     tile_width += 1;
 
-  if ((height % tile_size) != 0)
+  if ((height % globals::tile_size) != 0)
     tile_height += 1; 
 
   // Allocating tile map
@@ -131,14 +131,14 @@ GroundMap::draw(SceneContext& gc)
 {
   const Rect& display = gc.color().get_world_clip_rect();
 
-  if (draw_collision_map)
+  if (globals::draw_collision_map)
     draw_colmap(gc);
 
   // Trying to calc which parts of the tilemap needs to be drawn
-  int start_x = Math::max(0, display.left/tile_size);
-  int start_y = Math::max(0, display.top/tile_size);
-  int tilemap_width  = display.get_width()  / tile_size + 1;
-  int tilemap_height = display.get_height() / tile_size + 1;
+  int start_x = Math::max(0, display.left / globals::tile_size);
+  int start_y = Math::max(0, display.top  / globals::tile_size);
+  int tilemap_width  = display.get_width()  / globals::tile_size + 1;
+  int tilemap_height = display.get_height() / globals::tile_size + 1;
 
   // drawing the stuff
   for (int x = start_x; x <= (start_x + tilemap_width) && x < tile_width; ++x)
@@ -148,15 +148,15 @@ GroundMap::draw(SceneContext& gc)
       {
         //std::cout << "Drawing GroundMap Tile " << std::endl;
         gc.color().draw(get_tile(x, y)->get_sprite(),
-                        Vector2i(x * tile_size, y * tile_size));
+                        Vector2i(x * globals::tile_size, y * globals::tile_size));
       }
       else
       {
         if (0 /*pingus_debug_flags & PINGUS_DEBUG_TILES*/)
-          gc.color().draw_fillrect(Rect(x * tile_size,
-                                        y * tile_size,
-                                        x * tile_size + tile_size,
-                                        y * tile_size + tile_size),
+          gc.color().draw_fillrect(Rect(x * globals::tile_size,
+                                        y * globals::tile_size,
+                                        x * globals::tile_size + globals::tile_size,
+                                        y * globals::tile_size + globals::tile_size),
                                    Color(255, 0, 0, 75));
       }
     }
@@ -180,18 +180,19 @@ void
 GroundMap::remove(Surface sprovider, int x, int y)
 {
   // Get the start tile and end tile
-  int start_x = Math::max(x / tile_size, 0);
-  int start_y = Math::max(y / tile_size, 0);
-  int end_x   = Math::min((x + sprovider.get_width()) / tile_size,
-                          (width - 1) / tile_size);
-  int end_y   = Math::min((y + sprovider.get_height()) / tile_size,
-                          (height - 1) / tile_size);
+  int start_x = Math::max(x / globals::tile_size, 0);
+  int start_y = Math::max(y / globals::tile_size, 0);
+  int end_x   = Math::min((x + sprovider.get_width()) / globals::tile_size,
+                          (width - 1) / globals::tile_size);
+  int end_y   = Math::min((y + sprovider.get_height()) / globals::tile_size,
+                          (height - 1) / globals::tile_size);
 
   for(int ix = start_x; ix <= end_x; ++ix)
     for(int iy = start_y; iy <= end_y; ++iy)
     {
-      get_tile(ix, iy)->remove(sprovider, x - (ix * tile_size),
-                               y - (iy * tile_size), x, y, this);
+      get_tile(ix, iy)->remove(sprovider, 
+                               x - (ix * globals::tile_size),
+                               y - (iy * globals::tile_size), x, y, this);
     }
 }
 
@@ -283,10 +284,10 @@ void
 GroundMap::put(Surface source, int x, int y)
 {
   // Get the start tile and end tile
-  int start_x = std::max(0, x / tile_size);
-  int start_y = std::max(0, y / tile_size);
-  int end_x   = std::min(tile_width,  (x + source.get_width())  / tile_size + 1);
-  int end_y   = std::min(tile_height, (y + source.get_height()) / tile_size + 1);
+  int start_x = std::max(0, x / globals::tile_size);
+  int start_y = std::max(0, y / globals::tile_size);
+  int end_x   = std::min(tile_width,  (x + source.get_width())  / globals::tile_size + 1);
+  int end_y   = std::min(tile_height, (y + source.get_height()) / globals::tile_size + 1);
 
   //std::cout << "GroundMap:put: " << source.get_width() << "x" << source.get_height() << std::endl;
 
@@ -294,7 +295,7 @@ GroundMap::put(Surface source, int x, int y)
     for(int iy = start_y; iy < end_y; ++iy)
     {
       get_tile(ix, iy)->put(source,
-                            x - (ix * tile_size), y - (iy * tile_size));
+                            x - (ix * globals::tile_size), y - (iy * globals::tile_size));
     }
 }
 

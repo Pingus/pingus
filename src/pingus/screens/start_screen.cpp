@@ -180,7 +180,7 @@ StartScreenComponent::draw(DrawingContext& gc)
                            gc.get_height()/2 + 215),
                   _("Author: ") + plf.get_author());
 
-  if (maintainer_mode)
+  if (globals::maintainer_mode)
     gc.print_left(Fonts::chalk_small, Vector2i(110, 430), _("Filename: ") + plf.get_resname());
 }
 

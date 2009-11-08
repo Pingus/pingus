@@ -133,7 +133,7 @@ GameSession::update_server(float delta)
     // how much time we have to account for while doing world updates
     int time_passed = int(delta * 1000) + world_delay;
     // how much time each world update represents
-    int update_time = game_speed;
+    int update_time = globals::game_speed;
 
     // update the world (and the objects in it) in constant steps to account
     // for the time the previous frame took
@@ -148,7 +148,7 @@ GameSession::update_server(float delta)
       {
         if (fast_forward)
         {
-          for (int i = 0; i < fast_forward_time_scale; ++i)
+          for (int i = 0; i < globals::fast_forward_time_scale; ++i)
             server->update();
         }
         else
@@ -319,7 +319,7 @@ GameSession::on_startup ()
 {
   is_finished = false;
 
-  if (maintainer_mode)
+  if (globals::maintainer_mode)
     std::cout << "Starting Music: " << server->get_plf().get_music() << std::endl;
 
   if (server->get_plf().get_music() == "none")

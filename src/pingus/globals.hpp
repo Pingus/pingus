@@ -22,6 +22,35 @@
 
 #include <string>
 
+enum FramebufferType 
+{
+ DELTA_FRAMEBUFFER, 
+ SDL_FRAMEBUFFER, 
+ NULL_FRAMEBUFFER, 
+ OPENGL_FRAMEBUFFER 
+};
+
+enum 
+{
+  PINGUS_DEBUG_ACTIONS     = (1 << 0),
+  PINGUS_DEBUG_SOUND       = (1 << 1),
+  PINGUS_DEBUG_GAMETIME    = (1 << 2),
+  PINGUS_DEBUG_TILES       = (1 << 3),
+  PINGUS_DEBUG_LOADING     = (1 << 4),
+
+  PINGUS_DEBUG_BLITTER     = (1 << 6),
+  PINGUS_DEBUG_TRANSLATOR  = (1 << 7),
+  PINGUS_DEBUG_RESOURCES   = (1 << 8),
+  PINGUS_DEBUG_GUI         = (1 << 9),
+  PINGUS_DEBUG_INPUT       = (1 << 10),
+  PINGUS_DEBUG_WORLDMAP    = (1 << 11),
+  PINGUS_DEBUG_PATHMGR     = (1 << 12),
+  PINGUS_DEBUG_DIRECTORIES = (1 << 13),
+  PINGUS_DEBUG_ALL         = (~0)
+};
+
+namespace globals {
+
 extern int         game_speed;                      ///< -t, --set-speed
 extern float       desired_fps;                     ///< -k, --set-fps
 extern bool        print_fps;                       ///< --print-fps
@@ -50,25 +79,9 @@ extern std::string  global_email;                    ///< The email address of t
 extern std::string  default_language;                ///< The default language, which is used when the env var LANG is not set
 extern unsigned int pingus_debug_flags;              ///< Set some bits in this thing to get debug infos
 
-enum FramebufferType { DELTA_FRAMEBUFFER, SDL_FRAMEBUFFER, NULL_FRAMEBUFFER, OPENGL_FRAMEBUFFER };
 extern FramebufferType framebuffer_type;
 
-enum { PINGUS_DEBUG_ACTIONS     = (1 << 0),
-       PINGUS_DEBUG_SOUND       = (1 << 1),
-       PINGUS_DEBUG_GAMETIME    = (1 << 2),
-       PINGUS_DEBUG_TILES       = (1 << 3),
-       PINGUS_DEBUG_LOADING     = (1 << 4),
-
-       PINGUS_DEBUG_BLITTER     = (1 << 6),
-       PINGUS_DEBUG_TRANSLATOR  = (1 << 7),
-       PINGUS_DEBUG_RESOURCES   = (1 << 8),
-       PINGUS_DEBUG_GUI         = (1 << 9),
-       PINGUS_DEBUG_INPUT       = (1 << 10),
-       PINGUS_DEBUG_WORLDMAP    = (1 << 11),
-       PINGUS_DEBUG_PATHMGR     = (1 << 12),
-       PINGUS_DEBUG_DIRECTORIES = (1 << 13),
-       PINGUS_DEBUG_ALL         = (~0)
-};
+} // namespace globals
 
 #endif
 

@@ -127,7 +127,7 @@ PathGraph::parse_edges(FileReader reader)
       float cost = full_path.length();
 
       // FIXME: Memory leak
-      if (worldmap && pingus_debug_flags & PINGUS_DEBUG_WORLDMAP)
+      if (worldmap && globals::pingus_debug_flags & PINGUS_DEBUG_WORLDMAP)
         worldmap->add_drawable(new PathDrawable(full_path));
 
       // FIXME: No error checking,

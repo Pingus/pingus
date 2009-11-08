@@ -40,7 +40,8 @@ TimeDisplay::draw (DrawingContext& gc)
   int  time_value = server->get_plf().get_time() - server->get_world()->get_time();
   std::string time_string;
 
-  if (server->get_plf().get_time() == -1 && !(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
+  if (server->get_plf().get_time() == -1 &&
+      !(globals::pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
   {
     // No need for this
     //gc.draw(infinity_symbol, static_cast<float>(Display::get_width()
@@ -48,7 +49,7 @@ TimeDisplay::draw (DrawingContext& gc)
   }
   else
   {
-    if (!(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
+    if (!(globals::pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
       time_string = GameTime::ticks_to_realtime_string(time_value);
     else
     {

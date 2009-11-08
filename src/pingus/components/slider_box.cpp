@@ -31,7 +31,7 @@ SliderBox::SliderBox(const Rect& rect_)
 void
 SliderBox::draw(DrawingContext& gc)
 {
-  if (maintainer_mode)
+  if (globals::maintainer_mode)
     gc.draw_rect(rect, Color(0, 255, 255));
 
   if (value == 0)

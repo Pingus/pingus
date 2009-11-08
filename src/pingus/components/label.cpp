@@ -29,7 +29,7 @@ Label::Label(const std::string& label_, const Rect& rect_)
 void
 Label::draw(DrawingContext& gc)
 {
-  if (maintainer_mode)
+  if (globals::maintainer_mode)
     gc.draw_rect(rect, Color(0, 255, 255));
 
   gc.print_left(Fonts::chalk_normal, Vector2i(rect.left, rect.top), label);

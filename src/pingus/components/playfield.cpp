@@ -72,7 +72,7 @@ Playfield::draw(DrawingContext& gc)
   gc.push_modelview();
   gc.translate(rect.left, rect.top);
   // Draw the scrolling band
-  if (mouse_scrolling && !drag_drop_scrolling)
+  if (mouse_scrolling && !globals::drag_drop_scrolling)
   {
     gc.draw_line(mouse_pos, scroll_center - Vector2i(0, 15),
                  Color(0, 255, 0));
@@ -128,7 +128,7 @@ Playfield::update(float delta)
   }
   else
   {
-    if (drag_drop_scrolling)
+    if (globals::drag_drop_scrolling)
     {
       state.set_pos(old_state_pos + (scroll_center - mouse_pos));
     }
@@ -139,7 +139,7 @@ Playfield::update(float delta)
     }
   }
 
-  if (auto_scrolling && (fullscreen_enabled || SDL_WM_GrabInput(SDL_GRAB_QUERY) == SDL_GRAB_ON))
+  if (globals::auto_scrolling && (globals::fullscreen_enabled || SDL_WM_GrabInput(SDL_GRAB_QUERY) == SDL_GRAB_ON))
   {
     scroll_speed = static_cast<int>(800 * delta);
     
@@ -212,7 +212,7 @@ Playfield::on_pointer_move (int x, int y)
   mouse_pos.x = x;
   mouse_pos.y = y;
 
-  if (maintainer_mode)
+  if (globals::maintainer_mode)
   { // Some fun stuff that lets you draw directly on the level
     Uint8 *keystate = SDL_GetKeyState(NULL);
     if (keystate[SDLK_r])

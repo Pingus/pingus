@@ -33,7 +33,7 @@ PingusSound::init (PingusSoundImpl* s)
 {
   if (s == 0)
   {
-    if (sound_enabled || music_enabled)
+    if (globals::sound_enabled || globals::music_enabled)
     {
       try {
         PingusSound::init (new PingusSoundReal ());

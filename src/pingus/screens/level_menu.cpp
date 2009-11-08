@@ -273,7 +273,7 @@ public:
         else if (i == current_level)
           gc.draw(marker, Vector2i(0, y));
                         
-        if (maintainer_mode)
+        if (globals::maintainer_mode)
           gc.print_left(Fonts::chalk_small, Vector2i(30, y+4), levelset->get_level(i)->plf.get_resname());
         else
           gc.print_left(Fonts::chalk_small, Vector2i(30, y+4), _(levelset->get_level(i)->plf.get_levelname()));
@@ -355,8 +355,8 @@ private:
 };
 
 LevelMenu::LevelMenu() :
-  x_pos((Display::get_width()  - default_screen_width)/2),
-  y_pos((Display::get_height() - default_screen_height)/2),
+  x_pos((Display::get_width()  - globals::default_screen_width)/2),
+  y_pos((Display::get_height() - globals::default_screen_height)/2),
   background("core/menu/wood"),
   blackboard("core/menu/blackboard"),
   ok_button(),
@@ -459,8 +459,8 @@ LevelMenu::resize(const Size& size_)
 {
   GUIScreen::resize(size_);
 
-  x_pos = (size.width  - default_screen_width)/2;
-  y_pos = (size.height - default_screen_height)/2;
+  x_pos = (size.width  - globals::default_screen_width)/2;
+  y_pos = (size.height - globals::default_screen_height)/2;
 
   levelset_selector->set_rect(Rect(Vector2i(x_pos + 100, y_pos + 140), Size(600, 285)));
   level_selector   ->set_rect(Rect(Vector2i(x_pos + 100, y_pos + 160), Size(600, 256)));

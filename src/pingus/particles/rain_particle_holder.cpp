@@ -71,7 +71,7 @@ RainParticleHolder::update ()
         continue;
       }
 
-      it->splash_frame += 10.0f * static_cast<float>(game_speed) / 1000.0f;
+      it->splash_frame += 10.0f * static_cast<float>(globals::game_speed) / 1000.0f;
       (it->splash_counter == 3) ? it->alive = false : ++it->splash_counter;
     }
     else

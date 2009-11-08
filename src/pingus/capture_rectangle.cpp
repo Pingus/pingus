@@ -96,7 +96,7 @@ CaptureRectangle::set_pingu (Pingu* p)
       action_str += "]";
     }
 
-    if (maintainer_mode)
+    if (globals::maintainer_mode)
     {
       action_str += " Id: ";
       action_str += StringUtil::to_string(pingu->get_id());

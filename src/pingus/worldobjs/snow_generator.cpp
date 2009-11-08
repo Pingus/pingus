@@ -38,17 +38,17 @@ SnowGenerator::update()
   for(int i = 0; i < Math::floor(intensity); ++i)
   {
     if (rand() % 3 != 0)
-      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -tile_size, false);
+      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -globals::tile_size, false);
     else
-      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -tile_size, true);
+      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -globals::tile_size, true);
   }
 
   if ((intensity - static_cast<float>(static_cast<int>(intensity))) > Math::frand())
   {
     if (rand() % 3 != 0)
-      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -tile_size, false);
+      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -globals::tile_size, false);
     else
-      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -tile_size, true);
+      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -globals::tile_size, true);
   }
 }
 

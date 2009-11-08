@@ -102,7 +102,7 @@ SurfaceBackground::get_z_pos () const
 void
 SurfaceBackground::update()
 {
-  if (!bg_sprite || static_graphics)
+  if (!bg_sprite || globals::static_graphics)
     return;
 
   if (scroll_x) 

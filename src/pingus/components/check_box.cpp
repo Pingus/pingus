@@ -37,7 +37,7 @@ CheckBox::on_primary_button_press (int x, int y)
 void
 CheckBox::draw(DrawingContext& gc)
 {
-  if (maintainer_mode)
+  if (globals::maintainer_mode)
     gc.draw_rect(rect, Color(0, 255, 255));
 
   if (state)

@@ -56,7 +56,7 @@ PingusSoundReal::~PingusSoundReal()
 void
 PingusSoundReal::real_play_sound(const std::string& name, float volume, float panning)
 {
-  if (!sound_enabled)
+  if (!globals::sound_enabled)
     return;
 
   SoundHandle chunk;
@@ -100,7 +100,7 @@ PingusSoundReal::real_play_music (const std::string & arg_filename, float volume
 
   filename = arg_filename;
 
-  if (!music_enabled)
+  if (!globals::music_enabled)
     return;
 
   pout(PINGUS_DEBUG_SOUND) << "PingusSoundReal: Playing music: " << filename << std::endl;

@@ -56,7 +56,7 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
       break;
 
     case SDLK_F6:
-      if (maintainer_mode)
+      if (globals::maintainer_mode)
         if (!dynamic_cast<AddOnMenu*>(ScreenManager::instance()->get_current_screen().get()))
           ScreenManager::instance()->push_screen(new AddOnMenu());
       break;
@@ -69,12 +69,12 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
     break;
 
     case SDLK_c:
-      if (maintainer_mode)
-        draw_collision_map = !draw_collision_map;
+      if (globals::maintainer_mode)
+        globals::draw_collision_map = !globals::draw_collision_map;
       break;
 
     case SDLK_k:
-      if (maintainer_mode)
+      if (globals::maintainer_mode)
       {
         std::cout << "Low level screen clear triggered" << std::endl;
         SDL_Surface* screen = SDL_GetVideoSurface();
@@ -86,8 +86,8 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
     case SDLK_m:
       if (keystate[SDLK_LCTRL] || keystate[SDLK_RCTRL])
       {
-        std::cout << "Maintainer Mode: " << maintainer_mode << std::endl;
-        maintainer_mode = !maintainer_mode;
+        std::cout << "Maintainer Mode: " << globals::maintainer_mode << std::endl;
+        globals::maintainer_mode = !globals::maintainer_mode;
       }
       break;
 
