@@ -37,7 +37,7 @@ Superman::update ()
   pingu->set_pos(pingu->get_x() + 40.0f * 0.025f, pingu->get_y() - 200.0f * 0.025f);
 
   if (pingu->get_y() < -32)
-    pingu->set_status(PS_DEAD);
+    pingu->set_status(Pingu::PS_DEAD);
 }
 
 void

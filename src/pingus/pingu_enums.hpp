@@ -19,15 +19,6 @@
 
 #include <string>
 
-/** The Pingus Status shows the current status of a Pingu, as
-    displayed in the PingusCounter pannel. PS_DEAD are pingus that got
-    killed, PS_ALIVE are pingus that are still active in the world and
-    PS_EXITED are pingus that successfully finished a level
-
-    FIXME: different subvalues of PS_DEAD might be usefull (drowned,
-    FIXME: splashed, smashed, etc.) */
-enum PinguStatus { PS_ALIVE, PS_EXITED, PS_DEAD };
-
 namespace Actions {
 
 /** The order of the actions here are the same as the order of actions

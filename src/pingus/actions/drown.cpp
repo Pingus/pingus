@@ -43,7 +43,7 @@ Drown::update ()
   sprite[pingu->direction].update();
   if (sprite[pingu->direction].is_finished())
   {
-    pingu->set_status(PS_DEAD);
+    pingu->set_status(Pingu::PS_DEAD);
   }
 }
 

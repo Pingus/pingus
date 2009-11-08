@@ -150,7 +150,7 @@ World::update()
       {
         Pingu* pingu = pingus->get_pingu(armageddon_count);
 
-        if (pingu && pingu->get_status() == PS_ALIVE)
+        if (pingu && pingu->get_status() == Pingu::PS_ALIVE)
         {
           pingu->request_set_action(BOMBER);
           break;

@@ -40,7 +40,7 @@ Angel::update ()
 
   // Out of screen, let the pingu die
   if (pingu->get_y() < -32)
-    pingu->set_status (PS_DEAD);
+    pingu->set_status (Pingu::PS_DEAD);
 }
 
 void

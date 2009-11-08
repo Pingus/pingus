@@ -41,7 +41,7 @@ Smashed::update()
   sprite.update();
   //  pingu->particle->add_pingu_explo(pingu->x_pos, pingu->y_pos - 16);
   if (sprite.is_finished())
-    pingu->set_status(PS_DEAD);
+    pingu->set_status(Pingu::PS_DEAD);
 }
 
 } // namespace Actions

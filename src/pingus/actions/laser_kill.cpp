@@ -39,7 +39,7 @@ void
 LaserKill::update ()
 {
   if (sprite[pingu->direction].is_finished())
-    pingu->set_status(PS_DEAD);
+    pingu->set_status(Pingu::PS_DEAD);
   else
     sprite[pingu->direction].update();
 }

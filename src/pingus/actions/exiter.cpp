@@ -46,9 +46,9 @@ Exiter::update ()
 
   if (sprite[pingu->direction].is_finished())
   {
-    if (pingu->get_status() != PS_EXITED)
+    if (pingu->get_status() != Pingu::PS_EXITED)
     {
-      pingu->set_status(PS_EXITED);
+      pingu->set_status(Pingu::PS_EXITED);
     }
   }
 }

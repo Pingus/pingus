@@ -45,7 +45,7 @@ Splashed::update ()
 
   if (sprite.is_finished())
   {
-    pingu->set_status(PS_DEAD);
+    pingu->set_status(Pingu::PS_DEAD);
   }
 }
 

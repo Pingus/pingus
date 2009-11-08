@@ -90,8 +90,8 @@ Exit::update ()
              && (*pingu)->get_pos().y > pos.y - 5 && (*pingu)->get_pos().y < pos.y + 2)
       {
         // Now, make sure the pingu isn't already exiting, gone, or dead
-        if (   (*pingu)->get_status() != PS_EXITED
-               && (*pingu)->get_status() != PS_DEAD
+        if (   (*pingu)->get_status() != Pingu::PS_EXITED
+               && (*pingu)->get_status() != Pingu::PS_DEAD
                && (*pingu)->get_action() != Actions::EXITER)
         {
           // Pingu actually exits

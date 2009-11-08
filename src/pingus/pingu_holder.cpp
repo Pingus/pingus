@@ -96,14 +96,14 @@ PinguHolder::update()
 
     // FIXME: The draw-loop is not the place for things like this,
     // this belongs in the update loop
-    if ((*pingu)->get_status() == PS_DEAD)
+    if ((*pingu)->get_status() == Pingu::PS_DEAD)
     {
       // Removing the dead pingu and setting the iterator back to
       // the correct possition, no memory hole since pingus will
       // keep track of the allocated Pingus
       pingu = pingus.erase(pingu);
     }
-    else if ((*pingu)->get_status() == PS_EXITED)
+    else if ((*pingu)->get_status() == Pingu::PS_EXITED)
     {
       number_of_exited += 1;
       pingu = pingus.erase(pingu);
@@ -125,7 +125,7 @@ PinguHolder::get_pingu(unsigned int id_)
 
     assert(pingu->get_id() == id_);
 
-    if (pingu->get_status() == PS_ALIVE)
+    if (pingu->get_status() == Pingu::PS_ALIVE)
       return pingu;
     else
       return 0;

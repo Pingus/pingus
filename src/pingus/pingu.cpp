@@ -277,13 +277,13 @@ Pingu::request_wall_action ()
   return false;
 }
 
-PinguStatus
+Pingu::PinguStatus
 Pingu::get_status (void) const
 {
   return status;
 }
 
-PinguStatus
+Pingu::PinguStatus
 Pingu::set_status (PinguStatus s)
 {
   return (status = s);
