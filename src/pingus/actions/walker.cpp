@@ -71,7 +71,7 @@ Walker::update ()
 
   if (rel_getpixel(0, -1) ==  Groundtype::GP_WATER)
   {
-    pingu->set_action(Actions::DROWN);
+    pingu->set_action(ActionName::DROWN);
     return;
   }
 
@@ -98,7 +98,7 @@ Walker::update ()
     }
     else
     {
-      pingu->set_action(Actions::FALLER);
+      pingu->set_action(ActionName::FALLER);
       return;
     }
   }
@@ -166,7 +166,7 @@ Walker::update ()
         // We take the step, so that we are in the air
         pingu->set_x(pingu->get_x() + static_cast<float>(pingu->direction));
         // We reached a cliff
-        pingu->set_action(Actions::FALLER);
+        pingu->set_action(ActionName::FALLER);
         return;
       }
     }
@@ -208,7 +208,7 @@ Walker::draw (SceneContext& gc)
 {
   gc.color().draw(walker[pingu->direction], pingu->get_pos());
 
-  if (pingu->get_fall_action() && pingu->get_fall_action()->get_type() == Actions::FLOATER)
+  if (pingu->get_fall_action() && pingu->get_fall_action()->get_type() == ActionName::FLOATER)
   {
     gc.color().draw(floaterlayer[pingu->direction], pingu->get_pos());
   }

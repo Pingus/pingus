@@ -30,7 +30,7 @@ private:
 public:
   Blocker (Pingu* p);
 
-  ActionName get_type() const { return Actions::BLOCKER; }
+  ActionName::Enum get_type() const { return ActionName::BLOCKER; }
 
   void  draw (SceneContext& gc);
   void  update();

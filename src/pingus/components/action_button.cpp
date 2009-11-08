@@ -21,8 +21,6 @@
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
 
-using namespace Actions;
-
 ArmageddonButton::ArmageddonButton(Server* s, int x, int y) :
   RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
   server(s),

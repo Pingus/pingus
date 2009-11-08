@@ -39,16 +39,16 @@ ActionProperties::ActionProperties(EditorScreen* editor_, const Rect& rect_) :
   y_pos(0),
   action_comps()
 {
-  add_action(Actions::BASHER);
-  add_action(Actions::BLOCKER);
-  add_action(Actions::BOMBER);
-  add_action(Actions::BRIDGER);
-  add_action(Actions::CLIMBER);
-  add_action(Actions::DIGGER);
-  add_action(Actions::FLOATER);
-  add_action(Actions::JUMPER);
-  add_action(Actions::MINER);
-  add_action(Actions::SLIDER);
+  add_action(ActionName::BASHER);
+  add_action(ActionName::BLOCKER);
+  add_action(ActionName::BOMBER);
+  add_action(ActionName::BRIDGER);
+  add_action(ActionName::CLIMBER);
+  add_action(ActionName::DIGGER);
+  add_action(ActionName::FLOATER);
+  add_action(ActionName::JUMPER);
+  add_action(ActionName::MINER);
+  add_action(ActionName::SLIDER);
 }
 
 ActionProperties::~ActionProperties()
@@ -68,10 +68,10 @@ ActionProperties::update (float delta)
 }
 
 void
-ActionProperties::add_action(Actions::ActionName id)
+ActionProperties::add_action(ActionName::Enum id)
 {
   ActionComponent comp;
-  comp.checkbox = new Checkbox(Rect(Vector2i(10,10 + y_pos), Size(80,20)), Actions::action_to_screenname(id));
+  comp.checkbox = new Checkbox(Rect(Vector2i(10,10 + y_pos), Size(80,20)), ActionName::to_screenname(id));
   comp.inputbox = new Inputbox(Rect(Vector2i(100,10 + y_pos), Size(40,20)));
 
   comp.checkbox->set_checked(true);
@@ -102,7 +102,7 @@ ActionProperties::set_level(EditorLevel* level_)
   std::map<std::string, int> actions = level->get_actions();
   for(std::map<std::string, int>::iterator i = actions.begin(); i != actions.end(); ++i)
   {
-    ActionComponents::iterator j = action_comps.find(Actions::action_from_string(i->first));
+    ActionComponents::iterator j = action_comps.find(ActionName::from_string(i->first));
     if (j != action_comps.end())
     {
       j->second.inputbox->set_text(StringUtil::to_string(i->second));
@@ -112,23 +112,23 @@ ActionProperties::set_level(EditorLevel* level_)
 }
 
 void
-ActionProperties::on_checkbox_change(bool t, Actions::ActionName id)
+ActionProperties::on_checkbox_change(bool t, ActionName::Enum id)
 {
   if (t)
   {
-    level->set_action(Actions::action_to_string(id), 
+    level->set_action(ActionName::to_string(id), 
                       StringUtil::to<int>(action_comps[id].inputbox->get_text()));
   }
   else
   {
-    level->set_action(Actions::action_to_string(id), 0);
+    level->set_action(ActionName::to_string(id), 0);
   }
 }
 
 void
-ActionProperties::on_inputbox_change(const std::string& value, Actions::ActionName id)
+ActionProperties::on_inputbox_change(const std::string& value, ActionName::Enum id)
 {
-  level->set_action(Actions::action_to_string(id), StringUtil::to<int>(value));
+  level->set_action(ActionName::to_string(id), StringUtil::to<int>(value));
 }
 
 } // namespace Editor

@@ -32,7 +32,7 @@ private:
 public:
   LaserKill (Pingu*);
 
-  ActionName get_type () const { return Actions::LASERKILL; }
+  ActionName::Enum get_type () const { return ActionName::LASERKILL; }
   void init (void);
 
   void draw (SceneContext& gc);

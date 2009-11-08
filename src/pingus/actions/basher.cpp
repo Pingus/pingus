@@ -71,7 +71,7 @@ Basher::update ()
     if (rel_getpixel(0, -1) == Groundtype::GP_WATER
         || rel_getpixel(0, -1) == Groundtype::GP_LAVA)
     {
-      pingu->set_action(Actions::DROWN);
+      pingu->set_action(ActionName::DROWN);
     }
     // If walking on to something (i.e. hasn't fallen)
     else if (rel_getpixel(0, -1) != Groundtype::GP_NOTHING)
@@ -84,7 +84,7 @@ Basher::update ()
         // Change direction and let walk code walk forward/up to get out.
         Sound::PingusSound::play_sound("chink");
         pingu->direction.change();
-        pingu->set_action(Actions::WALKER);
+        pingu->set_action(ActionName::WALKER);
       }
       else if (have_something_to_dig())
       {
@@ -96,7 +96,7 @@ Basher::update ()
       else if (static_cast<float>(sprite[pingu->direction].get_current_frame()) // FIXME: Game logic must be separate from Sprite 
                / static_cast<float>(sprite[pingu->direction].get_frame_count()) > 0.6f)
       { // FIXME: EVIL! Engine must not relay on graphic
-        pingu->set_action(Actions::WALKER);
+        pingu->set_action(ActionName::WALKER);
       }
     }
   }
@@ -126,7 +126,7 @@ Basher::walk_forward()
   if (y_inc < -max_steps_down)
   {
     // The step down is too much.  So stop being a Basher and be a Faller.
-    pingu->set_action(Actions::FALLER);
+    pingu->set_action(ActionName::FALLER);
   }
   else
   {

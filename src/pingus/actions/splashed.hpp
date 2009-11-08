@@ -32,13 +32,13 @@ private:
 public:
   Splashed (Pingu*);
 
-  ActionName get_type () const { return Actions::SPLASHED; }
+  ActionName::Enum get_type () const { return ActionName::SPLASHED; }
 
   void draw (SceneContext& gc);
   void update ();
 
   bool catchable () { return false; }
-  bool change_allowed (Actions::ActionName) { return false; }
+  bool change_allowed (ActionName::Enum ) { return false; }
 
 private:
   Splashed (const Splashed&);

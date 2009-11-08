@@ -18,14 +18,9 @@
 
 #include "gettext.h"
 
-// Pingu "globals".  Make [deadly_velocity = 20 * sqrt("normal gravity")] so
-// that the "deadly distance" is the same and therefore doesn't break levels.
-const float deadly_velocity = 10.0f;
-const int pingu_height = 26;
+namespace ActionName {
 
-namespace Actions {
-
-std::string action_to_screenname (ActionName action)
+std::string to_screenname(Enum action)
 {
   switch (action)
   {
@@ -56,7 +51,7 @@ std::string action_to_screenname (ActionName action)
   }
 }
 
-std::string action_to_string(ActionName action)
+std::string to_string(Enum action)
 {
   switch (action)
   {
@@ -87,7 +82,7 @@ std::string action_to_string(ActionName action)
   }
 }
 
-ActionName action_from_string(const std::string& action)
+Enum from_string(const std::string& action)
 {
   if (action == "angel")          return ANGEL;
   if (action == "basher")         return BASHER;

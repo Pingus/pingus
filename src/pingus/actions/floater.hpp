@@ -32,7 +32,7 @@ private:
 public:
   Floater(Pingu* p);
 
-  ActionName get_type() const { return Actions::FLOATER; }
+  ActionName::Enum get_type() const { return ActionName::FLOATER; }
   ActionType get_activation_mode() const { return FALL_TRIGGERED; }
 
   void init(void);
@@ -41,7 +41,7 @@ public:
   void update();
 
   char get_persistent_char () { return 'f'; }
-  bool change_allowed (ActionName new_action);
+  bool change_allowed (ActionName::Enum new_action);
 
 private:
   Floater (const Floater&);

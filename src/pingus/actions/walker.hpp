@@ -36,7 +36,7 @@ public:
   void draw (SceneContext& gc);
   void update ();
 
-  ActionName get_type () const { return Actions::WALKER; }
+  ActionName::Enum get_type () const { return ActionName::WALKER; }
 
 private:
   Walker (const Walker&);

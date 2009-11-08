@@ -24,8 +24,6 @@
 #include "pingus/world.hpp"
 #include "util/system.hpp"
 
-using Actions::action_from_string;
-
 static std::string get_date_string ()
 {
   char buffer[32];
@@ -108,7 +106,7 @@ Server::send_armageddon_event ()
 }
 
 void
-Server::send_pingu_action_event (Pingu* pingu, Actions::ActionName action)
+Server::send_pingu_action_event (Pingu* pingu, ActionName::Enum action)
 {
   record(ServerEvent::make_pingu_action_event(get_time(), pingu->get_id(), pingu->get_pos(), action));
 

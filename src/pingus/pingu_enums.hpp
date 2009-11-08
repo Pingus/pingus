@@ -19,12 +19,13 @@
 
 #include <string>
 
-namespace Actions {
+namespace ActionName {
 
 /** The order of the actions here are the same as the order of actions
     in the buttonpanel, so if the order in the buttonpanel is not what
     it should be it needs to be changed here. */
-enum ActionName { 
+enum Enum
+{ 
   ANGEL,
   BASHER,
   BLOCKER,
@@ -52,21 +53,22 @@ enum ActionName {
 
 /** Converts a action enum into its internal string representation, as
     used in the xml or the resource files Bomber => "bomber" */
-std::string action_to_string(Actions::ActionName action);
+std::string to_string(Enum action);
 
 /** Converts a internal action string back into its action enum
     representation  "bomber" => Bomber */
-Actions::ActionName action_from_string(const std::string& action);
+Enum from_string(const std::string& action);
 
 /** Convert a action enum into its visual representation, aka the
     thing that is seen on the screen for the user Bomber => "Bomber" */
-std::string action_to_screenname(Actions::ActionName action);
+std::string to_screenname(Enum action);
 
 } // namespace ActionName
 
-// Pingu "globals"
-extern const int pingu_height;
-extern const float deadly_velocity;
+// Pingu "globals".  Make [deadly_velocity = 20 * sqrt("normal gravity")] so
+// that the "deadly distance" is the same and therefore doesn't break levels.
+const float deadly_velocity = 10.0f;
+const int   pingu_height    = 26;
 
 #endif
 

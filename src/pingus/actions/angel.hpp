@@ -32,7 +32,7 @@ private:
 public:
   Angel (Pingu* p);
 
-  ActionName get_type () const { return Actions::ANGEL; }
+  ActionName::Enum get_type () const { return ActionName::ANGEL; }
 
   void  update ();
   void  draw (SceneContext& gc);

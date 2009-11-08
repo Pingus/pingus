@@ -101,7 +101,7 @@ public:
   void on_escape_press ();
   void on_action_axis_move (float);
 
-  Actions::ActionName get_action_name() const;
+  ActionName::Enum get_action_name() const;
 
   void set_fast_forward(bool value);
   bool get_fast_forward() const;

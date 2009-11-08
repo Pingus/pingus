@@ -36,7 +36,7 @@ Waiter::update ()
 
   if (countdown < 0)
   {
-    pingu->set_action(Actions::WALKER);
+    pingu->set_action(ActionName::WALKER);
     return;
   }
 

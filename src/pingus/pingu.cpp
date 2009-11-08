@@ -57,7 +57,7 @@ Pingu::Pingu (int arg_id, const Vector3f& arg_pos, int owner) :
   countdown_action(),
   wall_action(),
   fall_action(),
-  previous_action(FALLER),
+  previous_action(ActionName::FALLER),
   id(arg_id),
   action_time(-1),
   owner_id(owner),
@@ -71,7 +71,7 @@ Pingu::Pingu (int arg_id, const Vector3f& arg_pos, int owner) :
 
   // Initialisize the action, after this step the action ptr will
   // always be valid in the pingu class
-  action = create_action(FALLER);
+  action = create_action(ActionName::FALLER);
 }
 
 Pingu::~Pingu ()
@@ -85,7 +85,7 @@ Pingu::get_id ()
 }
 
 bool
-Pingu::change_allowed (ActionName new_action)
+Pingu::change_allowed(ActionName::Enum new_action)
 {
   assert (action);
   return action->change_allowed (new_action);
@@ -231,13 +231,13 @@ Pingu::request_set_action(boost::shared_ptr<PinguAction> act)
 }
 
 bool
-Pingu::request_set_action (ActionName action_name)
+Pingu::request_set_action (ActionName::Enum action_name)
 {
   return request_set_action(create_action(action_name));
 }
 
 void
-Pingu::set_action (ActionName action_name)
+Pingu::set_action (ActionName::Enum action_name)
 {
   set_action(create_action(action_name));
 }
@@ -412,7 +412,7 @@ Pingu::get_name()
   return action->get_name();
 }
 
-ActionName
+ActionName::Enum
 Pingu::get_action ()
 {
   return action->get_type();
@@ -460,32 +460,32 @@ Pingu::catchable ()
 }
 
 boost::shared_ptr<PinguAction>
-Pingu::create_action(ActionName action_)
+Pingu::create_action(ActionName::Enum action_)
 {
   switch(action_)
   {
-    case ANGEL:     return boost::shared_ptr<PinguAction>(new Angel(this));
-    case BASHER:    return boost::shared_ptr<PinguAction>(new Basher(this));
-    case BLOCKER:   return boost::shared_ptr<PinguAction>(new Blocker(this));
-    case BOARDER:   return boost::shared_ptr<PinguAction>(new Boarder(this));
-    case BOMBER:    return boost::shared_ptr<PinguAction>(new Bomber(this));
-    case BRIDGER:   return boost::shared_ptr<PinguAction>(new Bridger(this));
-    case CLIMBER:   return boost::shared_ptr<PinguAction>(new Climber(this));
-    case DIGGER:    return boost::shared_ptr<PinguAction>(new Digger(this));
-    case DROWN:     return boost::shared_ptr<PinguAction>(new Drown(this));
-    case EXITER:    return boost::shared_ptr<PinguAction>(new Exiter(this));
-    case FALLER:    return boost::shared_ptr<PinguAction>(new Faller(this));
-    case FLOATER:   return boost::shared_ptr<PinguAction>(new Floater(this));
-    case JUMPER:    return boost::shared_ptr<PinguAction>(new Jumper(this));
-    case LASERKILL: return boost::shared_ptr<PinguAction>(new LaserKill(this));
-    case MINER:     return boost::shared_ptr<PinguAction>(new Miner(this));
-    case ROCKETLAUNCHER: return boost::shared_ptr<PinguAction>(new RocketLauncher(this));
-    case SLIDER:    return boost::shared_ptr<PinguAction>(new Slider(this));
-    case SMASHED:   return boost::shared_ptr<PinguAction>(new Smashed(this));
-    case SPLASHED:  return boost::shared_ptr<PinguAction>(new Splashed(this));
-    case SUPERMAN:  return boost::shared_ptr<PinguAction>(new Superman(this));
-    case WAITER:    return boost::shared_ptr<PinguAction>(new Waiter(this));
-    case WALKER:    return boost::shared_ptr<PinguAction>(new Walker(this));
+    case ActionName::ANGEL:     return boost::shared_ptr<PinguAction>(new Angel(this));
+    case ActionName::BASHER:    return boost::shared_ptr<PinguAction>(new Basher(this));
+    case ActionName::BLOCKER:   return boost::shared_ptr<PinguAction>(new Blocker(this));
+    case ActionName::BOARDER:   return boost::shared_ptr<PinguAction>(new Boarder(this));
+    case ActionName::BOMBER:    return boost::shared_ptr<PinguAction>(new Bomber(this));
+    case ActionName::BRIDGER:   return boost::shared_ptr<PinguAction>(new Bridger(this));
+    case ActionName::CLIMBER:   return boost::shared_ptr<PinguAction>(new Climber(this));
+    case ActionName::DIGGER:    return boost::shared_ptr<PinguAction>(new Digger(this));
+    case ActionName::DROWN:     return boost::shared_ptr<PinguAction>(new Drown(this));
+    case ActionName::EXITER:    return boost::shared_ptr<PinguAction>(new Exiter(this));
+    case ActionName::FALLER:    return boost::shared_ptr<PinguAction>(new Faller(this));
+    case ActionName::FLOATER:   return boost::shared_ptr<PinguAction>(new Floater(this));
+    case ActionName::JUMPER:    return boost::shared_ptr<PinguAction>(new Jumper(this));
+    case ActionName::LASERKILL: return boost::shared_ptr<PinguAction>(new LaserKill(this));
+    case ActionName::MINER:     return boost::shared_ptr<PinguAction>(new Miner(this));
+    case ActionName::ROCKETLAUNCHER: return boost::shared_ptr<PinguAction>(new RocketLauncher(this));
+    case ActionName::SLIDER:    return boost::shared_ptr<PinguAction>(new Slider(this));
+    case ActionName::SMASHED:   return boost::shared_ptr<PinguAction>(new Smashed(this));
+    case ActionName::SPLASHED:  return boost::shared_ptr<PinguAction>(new Splashed(this));
+    case ActionName::SUPERMAN:  return boost::shared_ptr<PinguAction>(new Superman(this));
+    case ActionName::WAITER:    return boost::shared_ptr<PinguAction>(new Waiter(this));
+    case ActionName::WALKER:    return boost::shared_ptr<PinguAction>(new Walker(this));
     default: assert(!"Invalid action name provied");
   }
 }

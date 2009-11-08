@@ -31,7 +31,7 @@ private:
 public:
   Exiter(Pingu*);
   void init(void);
-  ActionName get_type() const { return Actions::EXITER; }
+  ActionName::Enum get_type() const { return ActionName::EXITER; }
 
   void draw (SceneContext& gc);
   void update();

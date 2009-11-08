@@ -30,7 +30,7 @@ class ButtonPanel : public GUI::RectComponent
 private:
   struct ActionButton 
   {
-    Actions::ActionName name;
+    ActionName::Enum name;
     Sprite     sprite;
     
     ActionButton() :
@@ -56,7 +56,7 @@ public:
   void draw(DrawingContext& gc);
   void update (float delta);
 
-  Actions::ActionName get_action_name();
+  ActionName::Enum get_action_name();
 
   // Set the n'th button active
   void set_button(int n);

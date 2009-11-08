@@ -110,7 +110,7 @@ Bridger::update_walk ()
     else // We reached a wall...
     {
       pingu->direction.change ();
-      pingu->set_action (Actions::WALKER);
+      pingu->set_action (ActionName::WALKER);
       return;
     }
   }
@@ -137,13 +137,13 @@ Bridger::update_build ()
       else
       {
         pingu->direction.change ();
-        pingu->set_action (Actions::WALKER);
+        pingu->set_action (ActionName::WALKER);
         return;
       }
     }
     else // Out of bricks
     {
-      pingu->set_action(Actions::WAITER);
+      pingu->set_action(ActionName::WAITER);
       return;
     }
   }

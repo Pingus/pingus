@@ -34,7 +34,7 @@ public:
   Miner (Pingu* p);
   virtual ~Miner () {}
 
-  ActionName get_type () const { return Actions::MINER; }
+  ActionName::Enum get_type () const { return ActionName::MINER; }
 
   void draw (SceneContext& gc);
   void update ();

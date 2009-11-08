@@ -39,7 +39,7 @@ private:
    *  where the integer <i>n</i> indicates how much more actions
    *  called <i>name</i> can be created.
    */
-  std::map<Actions::ActionName, int> available_actions;
+  std::map<ActionName::Enum, int> available_actions;
 
 public:
   /** Create an action holder from the number of actions given in a
@@ -48,29 +48,29 @@ public:
   ~ActionHolder();
 
   /** @return a list of available actions in the current level */
-  std::vector<Actions::ActionName> get_available_actions();
+  std::vector<ActionName::Enum> get_available_actions();
 
   /** Sets the number of actions, which are available in the pool.
    * @param name the name of the action
    * @param available the number of actions available
    */
-  void set_actions (Actions::ActionName name, int available);
+  void set_actions (ActionName::Enum name, int available);
 
   /** Adds an action to the pool of actions, making one more action available
    * @param name the name of the action
    */
-  void push_action (Actions::ActionName name);
+  void push_action (ActionName::Enum name);
 
   /** Removes an action from the pool of actions
       @return true if an action was available and removed, false if no
       actions where available */
-  bool pop_action (Actions::ActionName name);
+  bool pop_action (ActionName::Enum name);
 
   /** Returns the number of actions of the specified name which are available
    *  thru get_action()
    * @return 0 if the name is unknown FIXME: should use .find instead of []
    */
-  int get_available (Actions::ActionName name);
+  int get_available (ActionName::Enum name);
 
 private:
   ActionHolder (const ActionHolder&);

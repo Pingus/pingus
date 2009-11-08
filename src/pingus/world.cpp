@@ -31,8 +31,6 @@
 #include "pingus/worldobj_factory.hpp"
 #include "pingus/worldobjs/entrance.hpp"
 
-using Actions::BOMBER;
-
 static
 bool WorldObj_less (WorldObj* a, WorldObj* b)
 {
@@ -152,7 +150,7 @@ World::update()
 
         if (pingu && pingu->get_status() == Pingu::PS_ALIVE)
         {
-          pingu->request_set_action(BOMBER);
+          pingu->request_set_action(ActionName::BOMBER);
           break;
         }
         else

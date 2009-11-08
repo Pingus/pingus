@@ -18,8 +18,6 @@
 
 #include "pingus/pingus_level.hpp"
 
-using namespace Actions;
-
 ActionHolder::ActionHolder(const PingusLevel& plf) :
   available_actions()
 {
@@ -27,7 +25,7 @@ ActionHolder::ActionHolder(const PingusLevel& plf) :
 
   for(std::map<std::string, int>::const_iterator i = actions.begin(); i != actions.end(); ++i)
   {
-    set_actions(Actions::action_from_string(i->first), i->second);
+    set_actions(ActionName::from_string(i->first), i->second);
   }
 }
 
@@ -35,12 +33,12 @@ ActionHolder::~ActionHolder ()
 {
 }
 
-std::vector<Actions::ActionName>
+std::vector<ActionName::Enum>
 ActionHolder::get_available_actions()
 {
-  std::vector<ActionName> ret;
+  std::vector<ActionName::Enum> ret;
 
-  for(std::map<ActionName, int>::iterator i= available_actions.begin();
+  for(std::map<ActionName::Enum, int>::iterator i= available_actions.begin();
       i != available_actions.end(); ++i)
     ret.push_back(i->first);
 
@@ -48,19 +46,19 @@ ActionHolder::get_available_actions()
 }
 
 void
-ActionHolder::set_actions (ActionName name, int available)
+ActionHolder::set_actions (ActionName::Enum name, int available)
 {
   available_actions[name] = available;
 }
 
 void
-ActionHolder::push_action (ActionName name)
+ActionHolder::push_action (ActionName::Enum name)
 {
   available_actions[name]++;
 }
 
 bool
-ActionHolder::pop_action (ActionName name)
+ActionHolder::pop_action (ActionName::Enum name)
 {
   int& avail = available_actions[name];
 
@@ -76,7 +74,7 @@ ActionHolder::pop_action (ActionName name)
 }
 
 int
-ActionHolder::get_available (ActionName name)
+ActionHolder::get_available (ActionName::Enum name)
 {
   return available_actions[name];
 }

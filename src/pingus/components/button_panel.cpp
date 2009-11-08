@@ -22,8 +22,6 @@
 #include "pingus/server.hpp"
 #include "util/string_util.hpp"
 
-using namespace Actions;
-
 ButtonPanel::ButtonPanel(GameSession* s, const Vector2i& pos) :
   RectComponent(Rect()),
   session(s),
@@ -36,7 +34,7 @@ ButtonPanel::ButtonPanel(GameSession* s, const Vector2i& pos) :
 {
   ActionHolder* aholder = session->get_server()->get_action_holder();
 
-  std::vector<ActionName> actions = aholder->get_available_actions();
+  std::vector<ActionName::Enum> actions = aholder->get_available_actions();
 
   set_rect(Rect(Vector2i(pos.x, pos.y - (actions.size() * 38)/2),
                 Size(60, actions.size() * 38)));
@@ -44,11 +42,11 @@ ButtonPanel::ButtonPanel(GameSession* s, const Vector2i& pos) :
   // Sort the action so that they always have the same order in the panel
   std::sort(actions.begin(), actions.end());
 
-  for(std::vector<ActionName>::size_type i = 0; i < actions.size(); ++i)
+  for(std::vector<ActionName::Enum>::size_type i = 0; i < actions.size(); ++i)
   {
     ActionButton button;
     button.name   = actions[i];
-    button.sprite = Sprite("pingus/player0/" + action_to_string(button.name) + "/right");
+    button.sprite = Sprite("pingus/player0/" + ActionName::to_string(button.name) + "/right");
     button.sprite.set_hotspot(origin_center, 0, 0);
     button.sprite.set_play_loop(true);
     buttons.push_back(button);
@@ -78,7 +76,8 @@ ButtonPanel::draw(DrawingContext& gc)
 
     if (show_tip && tip_button == i)
     {
-      gc.print_left(Fonts::pingus_small, Vector2i(rect.left + 65, rect.top + 5 + 38*i), action_to_screenname(buttons[i].name));
+      gc.print_left(Fonts::pingus_small, Vector2i(rect.left + 65, rect.top + 5 + 38*i), 
+                    ActionName::to_screenname(buttons[i].name));
     }
   }
 }
@@ -93,7 +92,7 @@ ButtonPanel::update (float delta)
       buttons[i].sprite.set_frame(0);
 }
 
-ActionName
+ActionName::Enum
 ButtonPanel::get_action_name()
 {
   return buttons[current_button].name;

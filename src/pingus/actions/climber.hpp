@@ -32,7 +32,7 @@ private:
 public:
   Climber (Pingu*);
 
-  ActionName get_type () const { return Actions::CLIMBER; }
+  ActionName::Enum get_type () const { return ActionName::CLIMBER; }
   ActionType get_activation_mode () const { return WALL_TRIGGERED; }
 
   void draw (SceneContext& gc);
@@ -40,7 +40,7 @@ public:
   void update ();
 
   char get_persistent_char () { return 'c'; }
-  bool change_allowed(ActionName new_action);
+  bool change_allowed(ActionName::Enum new_action);
 
 private:
   Climber (const Climber&);

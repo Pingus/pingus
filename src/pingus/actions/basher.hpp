@@ -53,7 +53,7 @@ private:
 public:
   Basher (Pingu* p);
 
-  ActionName get_type () const { return Actions::BASHER; }
+  ActionName::Enum get_type () const { return ActionName::BASHER; }
 
   void draw (SceneContext& gc);
   void update ();

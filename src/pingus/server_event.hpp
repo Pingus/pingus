@@ -49,7 +49,7 @@ public:
   Vector3f pos;
 
   /** action name */
-  Actions::ActionName pingu_action;
+  ActionName::Enum pingu_action;
 
   ServerEvent();
 
@@ -77,7 +77,7 @@ public:
 
   /** The pingu action event is triggered whenever the user applies an
       action to a Pingu */
-  static ServerEvent make_pingu_action_event(int t, int id, const Vector3f& pos, Actions::ActionName action);
+  static ServerEvent make_pingu_action_event(int t, int id, const Vector3f& pos, ActionName::Enum action);
 };
 
 #endif

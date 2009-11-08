@@ -66,7 +66,7 @@ FakeExit::catch_pingu (Pingu* pingu)
   if (   pingu->get_pos().x > pos.x + 31 && pingu->get_pos().x < pos.x + 31 + 15
          && pingu->get_pos().y > pos.y + 56 && pingu->get_pos().y < pos.y + 56 + 56)
   {
-    if (pingu->get_action() != Actions::SPLASHED)
+    if (pingu->get_action() != ActionName::SPLASHED)
     {
       if (!smashing) 
       {
@@ -75,7 +75,7 @@ FakeExit::catch_pingu (Pingu* pingu)
       }
         
       if (surface.get_current_frame() == 4)
-        pingu->set_action(Actions::SPLASHED);
+        pingu->set_action(ActionName::SPLASHED);
     }
   }
 }

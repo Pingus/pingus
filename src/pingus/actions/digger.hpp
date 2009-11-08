@@ -33,7 +33,7 @@ private:
 public:
   Digger(Pingu*);
 
-  ActionName get_type () const { return Actions::DIGGER; }
+  ActionName::Enum get_type () const { return ActionName::DIGGER; }
 
   bool have_something_to_dig ();
   void dig ();

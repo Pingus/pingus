@@ -58,7 +58,7 @@ public:
   int  rel_getpixel (int x, int y);
 
   /** Checks if this action allows to be overwritten with the given new action */
-  virtual bool change_allowed (Actions::ActionName) { return true; }
+  virtual bool change_allowed (ActionName::Enum action) { return true; }
 
   /// The "AI" of the pingu.
   virtual void update () = 0;
@@ -74,7 +74,7 @@ public:
   virtual std::string get_name () const;
 
   /// The type of the action
-  virtual Actions::ActionName get_type () const =0;
+  virtual ActionName::Enum get_type () const =0;
 
   /** Return the character that is shown when a persitent action is
       activated in the CaptureRectangle. */

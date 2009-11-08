@@ -49,7 +49,7 @@ Floater::update()
   }
   else
   {
-    pingu->set_action (Actions::WALKER);
+    pingu->set_action (ActionName::WALKER);
   }
 }
 
@@ -60,7 +60,7 @@ Floater::draw (SceneContext& gc)
 }
 
 bool
-Floater::change_allowed (ActionName)
+Floater::change_allowed(ActionName::Enum)
 {
   return false;
 }

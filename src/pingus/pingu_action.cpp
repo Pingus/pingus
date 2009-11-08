@@ -95,7 +95,7 @@ PinguAction::collision_on_walk (int x, int y)
 std::string
 PinguAction::get_name () const
 {
-  return Actions::action_to_screenname(get_type());
+  return ActionName::to_screenname(get_type());
 }
 
 void
@@ -234,7 +234,7 @@ PinguAction::move_with_forces ()
           // FIXME: quick&dirty way to kill falling pingus
           if (resultant_force.y >= deadly_velocity)
           {
-            pingu->set_action(Actions::SPLASHED);
+            pingu->set_action(ActionName::SPLASHED);
             return;
           }
           // Make it so that the Pingu won't go down any further.

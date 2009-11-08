@@ -27,7 +27,7 @@ ServerEvent::ServerEvent() :
   time_stamp(0),
   pingu_id(0),
   pos(),
-  pingu_action(Actions::WALKER)
+  pingu_action(ActionName::WALKER)
 {
 }
 
@@ -36,7 +36,7 @@ ServerEvent::ServerEvent(FileReader reader) :
   time_stamp(0),
   pingu_id(0),
   pos(),
-  pingu_action(Actions::WALKER)
+  pingu_action(ActionName::WALKER)
 {
   if (reader.get_name() == "armageddon")
   {
@@ -68,7 +68,7 @@ ServerEvent::ServerEvent(FileReader reader) :
     if (reader.read_string("raw-y", raw_y))
       pos.y = Math::string2float(raw_y);
 
-    reader.read_enum("action", pingu_action, Actions::action_from_string);
+    reader.read_enum("action", pingu_action, &ActionName::from_string);
 
       
   }
@@ -98,7 +98,7 @@ ServerEvent::write(std::ostream& out) const
           << "(id " << pingu_id << ") "
           << "(raw-x \"" << Math::float2string(pos.x) << "\") "
           << "(raw-y \"" << Math::float2string(pos.y) << "\") "
-          << "(action \"" << Actions::action_to_string(pingu_action) << "\"))"
+          << "(action \"" << ActionName::to_string(pingu_action) << "\"))"
           << std::endl;
       break;
 
@@ -135,7 +135,7 @@ ServerEvent::make_armageddon_event(int t)
 }
 
 ServerEvent
-ServerEvent::make_pingu_action_event(int t, int id, const Vector3f& pos, Actions::ActionName action)
+ServerEvent::make_pingu_action_event(int t, int id, const Vector3f& pos, ActionName::Enum action)
 {
   ServerEvent event;
   event.type         = PINGU_ACTION_EVENT;

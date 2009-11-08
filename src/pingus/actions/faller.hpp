@@ -35,9 +35,9 @@ public:
   void  draw (SceneContext& gc);
   void  update();
 
-  bool change_allowed (Actions::ActionName new_action);
+  bool change_allowed (ActionName::Enum new_action);
 
-  ActionName get_type() const { return Actions::FALLER; }
+  ActionName::Enum get_type() const { return ActionName::FALLER; }
   bool is_tumbling () const;
 
 private:

@@ -76,8 +76,8 @@ Smasher::update ()
                                   static_cast<int>(pos.x + 250),
                                   static_cast<int>(pos.y + 190)))
           {
-            if ((*pingu)->get_action() != Actions::SPLASHED)
-              (*pingu)->set_action(Actions::SPLASHED);
+            if ((*pingu)->get_action() != ActionName::SPLASHED)
+              (*pingu)->set_action(ActionName::SPLASHED);
           }
         }
       }
@@ -128,7 +128,7 @@ Smasher::catch_pingu (Pingu* pingu)
           && pingu->get_pos().x > pos.x + 190
           && pingu->get_pos().x < pos.x + 210))
   {
-    if (pingu->get_action() != Actions::SPLASHED)
+    if (pingu->get_action() != ActionName::SPLASHED)
     {
       if (!smashing)
       {

@@ -332,7 +332,7 @@ GameSession::on_startup ()
   }
 }
 
-Actions::ActionName
+ActionName::Enum
 GameSession::get_action_name() const
 {
   return button_panel->get_action_name();

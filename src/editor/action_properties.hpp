@@ -42,7 +42,7 @@ private:
     Inputbox* inputbox;
   };
 
-  typedef std::map<Actions::ActionName, ActionComponent> ActionComponents;
+  typedef std::map<ActionName::Enum, ActionComponent> ActionComponents;
   ActionComponents action_comps;
 
 public:
@@ -52,12 +52,12 @@ public:
   void draw_background(DrawingContext& gc);
   void update (float delta); 
   
-  void add_action(Actions::ActionName id);
+  void add_action(ActionName::Enum id);
 
   void set_level(EditorLevel* level);
 
-  void on_checkbox_change(bool t, Actions::ActionName id);
-  void on_inputbox_change(const std::string& str, Actions::ActionName id);
+  void on_checkbox_change(bool t, ActionName::Enum id);
+  void on_inputbox_change(const std::string& str, ActionName::Enum id);
 
 private:
   ActionProperties (const ActionProperties&);

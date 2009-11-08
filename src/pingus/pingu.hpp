@@ -59,7 +59,7 @@ private:
   /** The previous_action contains the action type that was in action
       before action got applied, its here to enable action to behave
       differently depending on the previous action */
-  Actions::ActionName previous_action;
+  ActionName::Enum previous_action;
 
   /** The uniq id of the Pingu, this is used to refer to the Pingu in
       a demo file or in a network connection */
@@ -83,7 +83,7 @@ private:
   bool request_set_action(boost::shared_ptr<PinguAction>);
   void set_action(boost::shared_ptr<PinguAction>);
 
-  boost::shared_ptr<PinguAction> create_action(Actions::ActionName action);
+  boost::shared_ptr<PinguAction> create_action(ActionName::Enum action);
 
 public:
 
@@ -118,7 +118,7 @@ public:
   const float& get_y () const { return pos_y; }
 
   /** Checks if this action allows to be overwritten with the given new action */
-  bool change_allowed (Actions::ActionName new_action);
+  bool change_allowed (ActionName::Enum new_action);
 
   /// Check if the pingu is still alive
   bool is_alive (void);
@@ -157,11 +157,11 @@ public:
       action, it will be hold back for later execution, same with a
       timed action, normal action will be applied if the current
       action allows that. */
-  bool request_set_action (Actions::ActionName action_name);
+  bool request_set_action (ActionName::Enum action_name);
 
   /** Set an action without any checking, the action will take
       instantly control. */
-  void set_action (Actions::ActionName action_name);
+  void set_action (ActionName::Enum action_name);
 
   /// set the wall action if we have one
   bool request_wall_action ();
@@ -218,14 +218,14 @@ public:
   bool catchable ();
 
   /** @return the name of the action the Pingu currently has */
-  Actions::ActionName get_action ();
+  ActionName::Enum get_action ();
 
   /** @return the action that was active before the action returned by
       get_action() took place. This is used in a few situations where
       an action needs to now what the Pingu was doing before the
       action took place (faller->bomber translation is different
       walker->bomber, etc.). */
-  Actions::ActionName get_previous_action() const { return previous_action; }
+  ActionName::Enum get_previous_action() const { return previous_action; }
 
 private:
   Pingu (const Pingu&);

@@ -61,7 +61,7 @@ public:
       press ESCAPE inside a game */
   void send_finish_event();
   void send_armageddon_event();
-  void send_pingu_action_event(Pingu* pingu, Actions::ActionName action);
+  void send_pingu_action_event(Pingu* pingu, ActionName::Enum action);
 
 private:
   void record(const ServerEvent& event);
