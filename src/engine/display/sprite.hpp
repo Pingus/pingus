@@ -21,7 +21,7 @@
 #include <string>
 
 #include "math/origin.hpp"
-#include "pingus/resource_modifier.hpp"
+#include "engine/display/resource_modifier.hpp"
 
 class Color;
 class Surface;

@@ -19,9 +19,9 @@
 
 #include <boost/shared_ptr.hpp>
 
+#include "engine/display/resource_modifier.hpp"
 #include "math/color.hpp"
 #include "math/size.hpp"
-#include "pingus/resource_modifier.hpp"
 #include "util/pathname.hpp"
 
 class Rect;
