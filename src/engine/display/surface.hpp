@@ -28,6 +28,7 @@ class Rect;
 class Pathname;
 class SurfaceImpl;
 
+/** A software surface that is stored in system memory */
 class Surface
 {
 public:
