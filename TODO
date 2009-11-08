@@ -45,6 +45,35 @@ Code Cleanup
 
 * pass FileReader by const reference
 
+* namespaces need some cleanup, most names are very ugly and
+  capitalized, get rid of namespace unless obsolutely needed
+
+* move resource system into separate subdirectory and then to engine/
+
+
+Cleanup engine/ from pingus/ dependencies
+=========================================
+
+* pingus/debug.hpp move to engine/ or util/
+
+* pingus/fps_counter.hpp move to engine (needs pingus/fonts.hpp, could
+  be solved by either setting the Font manually or having a dedicated
+  engine/system font)
+
+* pingus/gexttext.hpp used by Screenshot, solvable by moving text output to
+  pingus/
+
+* pingus/global_event.hpp used by SDLDriver, could be solved with boost::signal
+
+* pingus/globals.hpp needs cleanup
+
+* pingus/path_manager.hpp used in sound, could be replaced with Pathname
+
+* pingus/resource.hpp used by Sprite
+
+* DebugFlags are currently used for text output as well as visual
+  hints, should be changed, maybe use maintainer_mode instead
+
 
 Beta Testing
 ============
