@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_PINGU_ACTION_HPP
 #define HEADER_PINGUS_PINGUS_PINGU_ACTION_HPP
 
-#include "pingus/pingu_enums.hpp"
+#include "pingus/action_name.hpp"
 
 class ActionHolder;
 class SceneContext;

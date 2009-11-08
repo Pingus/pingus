@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_PINGUS_SERVER_EVENT_HPP
 
 #include "math/vector3f.hpp"
-#include "pingus/pingu_enums.hpp"
+#include "pingus/action_name.hpp"
 #include "util/file_reader.hpp"
 
 class Server;

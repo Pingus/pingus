@@ -20,7 +20,7 @@
 #include <map>
 #include <vector>
 
-#include "pingus/pingu_enums.hpp"
+#include "pingus/action_name.hpp"
 
 class PingusLevel;
 class PinguAction;

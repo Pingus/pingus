@@ -21,7 +21,7 @@
 
 #include "math/vector3f.hpp"
 #include "pingus/direction.hpp"
-#include "pingus/pingu_enums.hpp"
+#include "pingus/action_name.hpp"
 
 class ActionHolder;
 class PinguAction;

@@ -21,7 +21,7 @@
 #include <string>
 
 #include "engine/screen/gui_screen.hpp"
-#include "pingus/pingu_enums.hpp"
+#include "pingus/action_name.hpp"
 #include "pingus/pingus_level.hpp"
 
 namespace Input {

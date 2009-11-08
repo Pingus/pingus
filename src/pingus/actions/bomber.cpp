@@ -21,6 +21,7 @@
 #include "pingus/movers/linear_mover.hpp"
 #include "pingus/particles/pingu_particle_holder.hpp"
 #include "pingus/pingu.hpp"
+#include "pingus/pingu_enums.hpp"
 #include "pingus/world.hpp"
 
 namespace Actions {

@@ -22,7 +22,7 @@
 #include "engine/display/font.hpp"
 #include "engine/gui/component.hpp"
 #include "engine/gui/rect_component.hpp"
-#include "pingus/pingu_enums.hpp"
+#include "pingus/action_name.hpp"
 #include "pingus/state_sprite.hpp"
 
 class Server;
