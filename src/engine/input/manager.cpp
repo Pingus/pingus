@@ -18,22 +18,9 @@
 
 #include <stdexcept>
 
-#include "engine/input/core_driver.hpp"
-#include "engine/input/sdl_driver.hpp"
+#include "engine/input/driver_factory.hpp"
 #include "util/pathname.hpp"
 #include "util/string_util.hpp"
-#ifdef HAVE_CWIID
-#  include "engine/input/wiimote/wiimote_driver.hpp"
-#endif 
-#ifdef HAVE_XINPUT
-#  include "engine/input/xinput/xinput_driver.hpp"
-#endif
-#ifdef HAVE_LINUXUSBMOUSE
-#  include "engine/input/usbmouse/usbmouse_driver.hpp"
-#endif
-#ifdef HAVE_LINUXEVDEV
-#  include "engine/input/evdev/evdev_driver.hpp"
-#endif
 
 namespace Input {
 
@@ -231,33 +218,17 @@ Manager::load_driver(const std::string& name)
   {
     std::cout << "Manager: Loading driver '" << name << "'" << std::endl;
 
-    if (name == "sdl") {
-      driver = new SDLDriver();
-    } else if (name == "core") {
-      driver = new CoreDriver(this);
-#ifdef HAVE_LINUXUSBMOUSE
-    } else if (name == "usbmouse") {
-      driver = new USBMouseDriver();
-#endif
-#ifdef HAVE_LINUXEVDEV
-    } else if (name == "evdev") {
-      driver = new EvdevDriver();
-#endif
-#ifdef HAVE_XINPUT
-    } else if (name == "xinput") {
-      driver = new XInputDriver();
-#endif
-#ifdef HAVE_CWIID
-    } else if (name == "wiimote") {
-      driver = new WiimoteDriver();
-#endif
-    } else {
+    driver = DriverFactory::create(name, this);
+    if (!driver)
+    {
       std::cout << "Manager: Unknown driver: " << name << std::endl;
       return 0;
     }
-
-    drivers.push_back(driver);
-    return driver;
+    else
+    {
+      drivers.push_back(driver);
+      return driver;
+    }
   }
 }
 
