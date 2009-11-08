@@ -28,7 +28,7 @@ class DotFactory
 private:
 public:
   /** Create a Dot from a given piece of XML */
-  static Dot* create(FileReader reader);
+  static Dot* create(const FileReader& reader);
 private:
   DotFactory (const DotFactory&);
   DotFactory& operator= (const DotFactory&);

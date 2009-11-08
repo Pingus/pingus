@@ -43,7 +43,7 @@ private:
   GUI::SurfaceButton* skip_button;
 
 public:
-  StoryScreen(FileReader reader);
+  StoryScreen(const FileReader& reader);
   ~StoryScreen();
 
   void on_startup();

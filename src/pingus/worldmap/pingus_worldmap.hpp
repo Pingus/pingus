@@ -28,7 +28,7 @@ class PingusWorldmap
 public:
   PingusWorldmap();
   PingusWorldmap(const Pathname& pathname);
-  PingusWorldmap(FileReader reader);
+  PingusWorldmap(const FileReader& reader);
 
   std::string get_name() const;
   std::string get_short_name() const;
@@ -49,8 +49,8 @@ public:
   const std::vector<FileReader>& get_objects() const;
 
 private:
-  void parse_file(FileReader reader);
-  void parse_properties(FileReader reader);
+  void parse_file(const FileReader& reader);
+  void parse_properties(const FileReader& reader);
 
 protected:
   boost::shared_ptr<PingusWorldmapImpl> impl;

@@ -27,7 +27,7 @@ namespace Input {
 
 using namespace Pointers;
 
-Pointer* PointerFactory::create (FileReader reader)
+Pointer* PointerFactory::create (const FileReader& reader)
 {
   if (reader.get_name() == "axis-pointer")
     return axis_pointer(reader);
@@ -44,7 +44,7 @@ Pointer* PointerFactory::create (FileReader reader)
   return 0; // never reached
 }
 
-Pointer* PointerFactory::axis_pointer (FileReader reader)
+Pointer* PointerFactory::axis_pointer (const FileReader& reader)
 {
   float speed;
   if (!reader.read_float("speed", speed))
@@ -67,7 +67,7 @@ Pointer* PointerFactory::mouse_pointer ()
   return new MousePointer;
 }
 
-Pointer* PointerFactory::multiple_pointer (FileReader reader)
+Pointer* PointerFactory::multiple_pointer (const FileReader& reader)
 {
   std::vector<Pointer*> pointers;
 

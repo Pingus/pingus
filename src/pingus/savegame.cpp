@@ -58,7 +58,7 @@ Savegame::Savegame() :
 {
 }
 
-Savegame::Savegame(FileReader reader) :
+Savegame::Savegame(const FileReader& reader) :
   filename(),
   status(),
   needed_time(),
@@ -90,7 +90,7 @@ Savegame::write_sexpr(SExprFileWriter& writer)
 }
 
 void
-Savegame::read_sexpr(FileReader reader)
+Savegame::read_sexpr(const FileReader& reader)
 {
   reader.read_string ("filename", filename);
   reader.read_enum   ("status",   status, string_to_status);

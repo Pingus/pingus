@@ -201,7 +201,7 @@ Controller::~Controller()
 }
 
 void
-Controller::create_action_buttons(FileReader reader)
+Controller::create_action_buttons(const FileReader& reader)
 {
   int count = 0;
   

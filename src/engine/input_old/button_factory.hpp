@@ -26,15 +26,15 @@ class Button;
 class ButtonFactory
 {
 private:
-  static Button* double_button   (FileReader reader);
-  static Button* joystick_button (FileReader reader);
-  static Button* key_button      (FileReader reader);
-  static Button* mouse_button    (FileReader reader);
-  static Button* multiple_button (FileReader reader);
-  static Button* triple_button   (FileReader reader);
+  static Button* double_button   (const FileReader& reader);
+  static Button* joystick_button (const FileReader& reader);
+  static Button* key_button      (const FileReader& reader);
+  static Button* mouse_button    (const FileReader& reader);
+  static Button* multiple_button (const FileReader& reader);
+  static Button* triple_button   (const FileReader& reader);
 
 public:
-  static Button* create (FileReader reader);
+  static Button* create (const FileReader& reader);
 
 private:
   ButtonFactory ();

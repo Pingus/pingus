@@ -28,7 +28,7 @@ namespace Input {
 
 using namespace Axes;
 
-Axis* AxisFactory::create(FileReader reader)
+Axis* AxisFactory::create(const FileReader& reader)
 {
   if (reader.get_name() == "button-axis")
     return button_axis(reader);
@@ -48,7 +48,7 @@ Axis* AxisFactory::create(FileReader reader)
   return 0; // never reached
 }
 
-Axis* AxisFactory::button_axis(FileReader reader)
+Axis* AxisFactory::button_axis(const FileReader& reader)
 {
   float angle;
   if (!reader.read_float("angle", angle))
@@ -65,12 +65,12 @@ Axis* AxisFactory::button_axis(FileReader reader)
   return new ButtonAxis(angle, button1, button2);
 }
 
-Axis* AxisFactory::inverted_axis (FileReader reader)
+Axis* AxisFactory::inverted_axis (const FileReader& reader)
 {
   return new InvertedAxis(create(reader));
 }
 
-Axis* AxisFactory::joystick_axis(FileReader reader)
+Axis* AxisFactory::joystick_axis(const FileReader& reader)
 {
   float angle;
   if (!reader.read_float("angle", angle))
@@ -87,7 +87,7 @@ Axis* AxisFactory::joystick_axis(FileReader reader)
   return new JoystickAxis(id, axis, angle);
 }
 
-Axis* AxisFactory::multiple_axis(FileReader reader)
+Axis* AxisFactory::multiple_axis(const FileReader& reader)
 {
   std::vector<Axis*> axes;
 

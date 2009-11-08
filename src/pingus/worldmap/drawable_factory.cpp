@@ -23,7 +23,7 @@
 namespace WorldmapNS {
 
 Drawable*
-DrawableFactory::create(FileReader reader)
+DrawableFactory::create(const FileReader& reader)
 {
   if (reader.get_name() == "surface")
   {

@@ -26,13 +26,13 @@ class Axis;
 class AxisFactory
 {
 private:
-  static Axis* button_axis(FileReader reader);
-  static Axis* inverted_axis(FileReader reader);
-  static Axis* joystick_axis(FileReader reader);
-  static Axis* multiple_axis(FileReader reader);
+  static Axis* button_axis(const FileReader& reader);
+  static Axis* inverted_axis(const FileReader& reader);
+  static Axis* joystick_axis(const FileReader& reader);
+  static Axis* multiple_axis(const FileReader& reader);
 
 public:
-  static Axis* create(FileReader reader);
+  static Axis* create(const FileReader& reader);
 
 private:
   AxisFactory();

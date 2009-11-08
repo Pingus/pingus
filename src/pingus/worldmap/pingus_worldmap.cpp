@@ -74,7 +74,7 @@ PingusWorldmap::PingusWorldmap(const Pathname& pathname) :
 }
  
 void
-PingusWorldmap::parse_file(FileReader reader)
+PingusWorldmap::parse_file(const FileReader& reader)
 {
   if (reader.get_name() == "pingus-worldmap")
   {
@@ -97,7 +97,7 @@ PingusWorldmap::parse_file(FileReader reader)
 }
 
 void
-PingusWorldmap::parse_properties(FileReader reader)
+PingusWorldmap::parse_properties(const FileReader& reader)
 {
   reader.read_string("music",  impl->music);
   reader.read_string("author", impl->author);

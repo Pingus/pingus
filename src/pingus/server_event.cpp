@@ -31,7 +31,7 @@ ServerEvent::ServerEvent() :
 {
 }
 
-ServerEvent::ServerEvent(FileReader reader) :
+ServerEvent::ServerEvent(const FileReader& reader) :
   type(PINGU_ACTION_EVENT),
   time_stamp(0),
   pingu_id(0),

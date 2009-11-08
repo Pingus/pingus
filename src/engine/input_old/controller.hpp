@@ -78,7 +78,7 @@ private:
 
   static void on_button_down(void*);
   static void on_button_up(void*);
-  void create_action_buttons(FileReader reader);
+  void create_action_buttons(const FileReader& reader);
 
   struct key_callback_info {
     key_callback_func callback;

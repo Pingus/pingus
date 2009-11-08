@@ -26,7 +26,7 @@ class DrawableFactory
 private:
   public:
   /** Create a new drawable */
-  static Drawable* create(FileReader reader);
+  static Drawable* create(const FileReader& reader);
 private:
   DrawableFactory (const DrawableFactory&);
   DrawableFactory& operator= (const DrawableFactory&);

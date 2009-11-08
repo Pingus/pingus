@@ -54,7 +54,7 @@ public:
   ServerEvent();
 
   /** Construct an server event from an xml subtree */
-  ServerEvent(FileReader reader);
+  ServerEvent(const FileReader& reader);
 
   void write(std::ostream& out) const;
 

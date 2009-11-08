@@ -35,7 +35,7 @@ private:
   PingusLevel plf;
 
 public:
-  LevelDot(FileReader reader);
+  LevelDot(const FileReader& reader);
 
   void draw(DrawingContext& gc);
   void draw_hover(DrawingContext& gc);

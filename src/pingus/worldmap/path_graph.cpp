@@ -52,7 +52,7 @@ PathGraph::~PathGraph()
 }
 
 void
-PathGraph::parse_nodes(FileReader reader)
+PathGraph::parse_nodes(const FileReader& reader)
 {
   const std::vector<FileReader>& childs = reader.get_sections();
 
@@ -83,7 +83,7 @@ PathGraph::parse_nodes(FileReader reader)
 }
 
 void
-PathGraph::parse_edges(FileReader reader)
+PathGraph::parse_edges(const FileReader& reader)
 {
   const std::vector<FileReader>& childs = reader.get_sections();
 

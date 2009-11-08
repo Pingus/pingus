@@ -28,7 +28,7 @@
 
 namespace WorldmapNS {
 
-LevelDot::LevelDot(FileReader reader) :
+LevelDot::LevelDot(const FileReader& reader) :
   Dot(reader.read_section("dot")),
   green_dot_sur("core/worldmap/dot_green"),
   red_dot_sur("core/worldmap/dot_red"),

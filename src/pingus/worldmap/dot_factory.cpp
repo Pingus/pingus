@@ -23,7 +23,7 @@
 namespace WorldmapNS {
 
 Dot*
-DotFactory::create(FileReader reader)
+DotFactory::create(const FileReader& reader)
 {
   if (reader.get_name() == "leveldot")
   {

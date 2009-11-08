@@ -30,7 +30,7 @@ namespace Input {
 
 using namespace Buttons;
 
-Button* ButtonFactory::create(FileReader reader)
+Button* ButtonFactory::create(const FileReader& reader)
 {
   if (reader.get_name() == "double-button")
     return double_button(reader);
@@ -56,7 +56,7 @@ Button* ButtonFactory::create(FileReader reader)
   return 0; // never reached
 }
 
-Button* ButtonFactory::double_button(FileReader reader)
+Button* ButtonFactory::double_button(const FileReader& reader)
 {
   const std::vector<FileReader>& sections = reader.get_sections();
   
@@ -71,7 +71,7 @@ Button* ButtonFactory::double_button(FileReader reader)
   return new DoubleButton(button1, button2);
 }
 
-Button* ButtonFactory::joystick_button(FileReader reader)
+Button* ButtonFactory::joystick_button(const FileReader& reader)
 {
   int id;
   if (!reader.read_int("id", id))
@@ -84,7 +84,7 @@ Button* ButtonFactory::joystick_button(FileReader reader)
   return new JoystickButton(id, button);
 }
 
-Button* ButtonFactory::key_button(FileReader reader)
+Button* ButtonFactory::key_button(const FileReader& reader)
 {
   std::string key;
   if (!reader.read_string("key", key))
@@ -93,7 +93,7 @@ Button* ButtonFactory::key_button(FileReader reader)
   return new KeyButton(KeyButton::string_to_keyid(key));
 }
 
-Button* ButtonFactory::mouse_button (FileReader reader)
+Button* ButtonFactory::mouse_button (const FileReader& reader)
 {
   int button;
   if (!reader.read_int("button", button))
@@ -102,7 +102,7 @@ Button* ButtonFactory::mouse_button (FileReader reader)
   return new MouseButton(button);
 }
 
-Button* ButtonFactory::multiple_button(FileReader reader)
+Button* ButtonFactory::multiple_button(const FileReader& reader)
 {
   std::vector<Button*> buttons;
 
@@ -115,7 +115,7 @@ Button* ButtonFactory::multiple_button(FileReader reader)
   return new MultipleButton(buttons);
 }
 
-Button* ButtonFactory::triple_button(FileReader reader)
+Button* ButtonFactory::triple_button(const FileReader& reader)
 {
   const std::vector<FileReader>& sections = reader.get_sections();
   

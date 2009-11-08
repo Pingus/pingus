@@ -81,8 +81,8 @@ public:
   std::string lookup_edge(NodeId id);
 
 private:
-  void parse_nodes(FileReader reader);
-  void parse_edges(FileReader reader);
+  void parse_nodes(const FileReader& reader);
+  void parse_edges(const FileReader& reader);
   void init_cache();
 
   PathGraph (const PathGraph&);
