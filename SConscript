@@ -351,10 +351,27 @@ class Project:
                   action='store',
                   metavar='DIR',
                   help='installation prefix')
-        self.env = Environment(PREFIX = GetOption('prefix'))
+        prefix = GetOption('prefix')
+        if not prefix:
+            raise Exception("no prefix given")
+        
+        self.env = Environment(PREFIX = prefix)
 
-        for filename in []:
-            Default(env.Install('$PREFIX/bin', filename))
+        patterns = [
+            'data/music/*.it',
+            'data/music/*.ogg',
+            'data/music/*.s3m',
+            'data/levels/*/*.pingus',
+            'data/worldmap/*.worldmap',
+            ]
+
+        install_files = []
+        for pattern in patterns:
+            install_files += Glob(pattern, strings=True)
+
+        for filename in install_files:
+            target_filename = '$PREFIX/share/pingus/%s' % filename[5:]
+            Alias('install', self.env.InstallAs(target_filename, filename))
 
 project = Project()
 
