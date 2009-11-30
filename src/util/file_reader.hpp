@@ -76,7 +76,11 @@ public:
 
   static FileReader parse(const std::string& filename);
   static FileReader parse(const Pathname& pathname);
+
+  /** Reads multiple trees from a file, for use with files that don't
+      contain a root element */
   static std::vector<FileReader> parse_many(const Pathname& pathname);
+
 private:
   boost::shared_ptr<FileReaderImpl> impl;
 };
