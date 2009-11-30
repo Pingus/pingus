@@ -18,6 +18,7 @@
 
 #include <boost/bind.hpp>
 #include <iostream>
+#include <sstream>
 
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
