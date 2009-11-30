@@ -331,9 +331,14 @@ SDLFramebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Colo
 }
 
 void
-SDLFramebuffer::draw_rect(const Rect& rect, const Color& color)
+SDLFramebuffer::draw_rect(const Rect& rect_, const Color& color)
 {
-  assert(rect.is_normal());
+  Rect rect = rect_;
+  if (!rect.is_normal())
+  {
+    std::cout << "SDLFramebuffer::draw_rect: unnormal rect supplied" << std::endl;
+    rect.normalize();
+  }  
 
   draw_line(Vector2i(rect.left,    rect.top),      Vector2i(rect.right-1, rect.top),      color);
   draw_line(Vector2i(rect.left,    rect.bottom-1), Vector2i(rect.right-1, rect.bottom-1), color);
@@ -342,9 +347,14 @@ SDLFramebuffer::draw_rect(const Rect& rect, const Color& color)
 }
 
 void
-SDLFramebuffer::fill_rect(const Rect& rect, const Color& color)
+SDLFramebuffer::fill_rect(const Rect& rect_, const Color& color)
 {
-  assert(rect.is_normal());
+  Rect rect = rect_;
+  if (!rect.is_normal())
+  {
+    std::cout << "SDLFramebuffer::draw_rect: unnormal rect supplied" << std::endl;
+    rect.normalize();
+  }  
 
   if (color.a == 255)
   {
