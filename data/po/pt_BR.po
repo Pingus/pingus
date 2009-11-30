@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#"Last-Translator: Fred Ulisses Maranhão <fred.maranhao@gmail.com>\n"
 msgid ""
 msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-10-31 06:55+0100\n"
 "PO-Revision-Date: 2008-01-16 21:11-0300\n"
-"Last-Translator: Fred Ulisses Maranhão <fred.maranhao@gmail.com>\n"
+"Last-Translator: Ralph <ralph.etal@gmail.com>\n"
 "Language-Team: Brazilian Portuguese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,7 +80,7 @@ msgstr "Saltador"
 
 #: src/pingu_enums.cpp:47
 msgid "Laserkill"
-msgstr "Morte de laser"
+msgstr "Morte por laser"
 
 #: src/pingu_enums.cpp:48
 msgid "Miner"
@@ -123,7 +124,7 @@ msgstr "Ok"
 
 #: src/start_screen.cpp:114 src/result_screen.cpp:98 src/level_menu.cpp:57
 msgid "Abort"
-msgstr "Abortar"
+msgstr "Cancelar"
 
 #: src/start_screen.cpp:163
 msgid "Number of Pingus: "
@@ -159,19 +160,19 @@ msgstr "Tela:"
 
 #: src/pingus_main.cpp:265
 msgid "Start in Window Mode"
-msgstr "Abrir em Modo Janela"
+msgstr "Não executa em tela cheia"
 
 #: src/pingus_main.cpp:267
 msgid "Start in Fullscreen"
-msgstr "Abrir com tela cheia"
+msgstr "Executa em tela cheia"
 
 #: src/pingus_main.cpp:269
 msgid "Allow Window resize (buggy)"
-msgstr "Permite redimensionar tela (problemático)"
+msgstr "Permite redimensionar a janela (problemático)"
 
 #: src/pingus_main.cpp:271
 msgid "Enable software cursor"
-msgstr "habilita cursor por software"
+msgstr "Habilita cursor por software"
 
 #: src/pingus_main.cpp:273
 msgid "Set the resolution for pingus (default: 800x600)"
@@ -408,7 +409,7 @@ msgstr "Sucesso!"
 
 #: src/result_screen.cpp:188
 msgid "Failure!"
-msgstr "Falha!"
+msgstr "Fracasso!"
 
 #: src/result_screen.cpp:197
 msgid "Perfect! You saved everyone possible - great!"
@@ -416,7 +417,7 @@ msgstr "Perfeito! Salvou todos os possíveis - fantástico!"
 
 #: src/result_screen.cpp:199
 msgid "No-one got killed, pretty good work."
-msgstr "Nenhum foi morto, impressionante trabalho."
+msgstr "Nenhum foi morto, trabalho impressionante."
 
 #: src/result_screen.cpp:201
 msgid ""
@@ -481,7 +482,7 @@ msgstr "Soltos:%3d/%d   Fora:%3d   Salvos:%3d/%d"
 
 #: src/level_menu.cpp:108 src/pingus_menu.cpp:66
 msgid "Levelsets"
-msgstr "Conjuntos de Níveis"
+msgstr "Outros Níveis"
 
 #: src/level_menu.cpp:124
 msgid "Solved:"
@@ -497,15 +498,15 @@ msgstr "Caractere inesperado: '"
 
 #: src/screenshot.cpp:38
 msgid "Screenshot: Saving screenshot to: "
-msgstr "Foto da tela: Gravando foto da tela para: "
+msgstr "Screenshot: Gravando imagem da tela para: "
 
 #: src/screenshot.cpp:40
 msgid "Screenshot: Screenshot is done."
-msgstr "Foto da tela: foto da tela tirada."
+msgstr "Screenshot: foto da tela tirada."
 
 #: src/screenshot.cpp:115 src/screenshot.cpp:143
 msgid "Screenshot: Couldn't write file: "
-msgstr "Foto da tela: Não consegui escrever arquivo: "
+msgstr "Screenshot: Não consegui gravar o arquivo: "
 
 #: src/editor/editor_screen.cpp:196
 msgid ""
@@ -1260,7 +1261,7 @@ msgstr ""
 
 #: data/levels/halloween/halloween1-grumbel.pingus:7
 msgid "One jump to catch them all"
-msgstr "um salto para pegar todos"
+msgstr "Um salto para todos apanhar"
 
 #: data/levels/halloween/halloween1-grumbel.pingus:8
 msgid ""
@@ -1269,14 +1270,14 @@ msgid ""
 "soup below... what wizardry is this? Now, facing a deadly abyss right in "
 "front of them it's your job to save them. Can you save them from a terrible "
 "fate?"
-msgstr "Os pingus se encontram perdidos na sua jornada.  Que lugar misterioso "
-"é este?  Abóboras com rostos, candelabros gigantes, e uma substância "
-"borbulhante embaixo... Que magia é esta? Agora, diante de um abismo mortal "
-"é hora de você salvá-los. Poderá você salva-los de um destino terrível?"
+msgstr "Os pingus se encontram perdidos em sua jornada.  Que lugar misterioso "
+"é este?  Abóboras com rostos, velas gigantes, e algum tipo de poção "
+"borbulhando lá embaixo... Que bruxaria é essa? Diante de um abismo mortal, "
+"é seu trabalho salvá-los. Poderá você salva-los de um destino terrível?"
 
 #: data/levels/halloween/halloween2-grumbel.pingus:7
 msgid "One Thousand and One Jumps"
-msgstr "Cento e Um Pulos"
+msgstr "Mil e Uma Saltadas"
 
 #: data/levels/halloween/halloween2-grumbel.pingus:8
 msgid ""
@@ -1284,9 +1285,9 @@ msgid ""
 "options are there? Perhaps a jumper can rescue them?  Or will he simply slow "
 "their inevitable demise? It's your job to find out, but are you good enough "
 "to save them all?"
-msgstr "Com a saída tão alta e totalmente inalcancável para um pingus normal, "
-"que opções existem? Talvez um saltador possa resgatá-los?  Ou vai "
-"simplesmente retardar a morte certa? É seu trabalho descobrir, mas você é bom "
+msgstr "Com a saída tão alta e totalmente inalcançável para um simples pingus, "
+"que opções existem? Talvez um saltador possa resgatá-los?  Ou ele irá "
+"simplesmente adiar a morte certa? É seu trabalho descobrir, será que você é bom "
 "o suficiente para salvar todos eles?"
 
 #: data/levels/halloween/halloween3-grumbel.pingus:7
@@ -1360,7 +1361,7 @@ msgid ""
 "This is a risky trip, but you must take it to find out how to bring them all "
 "to freedom once again."
 msgstr ""
-"Isto é uma prisão? Cercado de paredes sólidas por todo lado, parece não haver "
+"Isto é uma prisão? Cercado de paredes sólidas por todos os lados, parece não haver "
 "meios de escapar. A salvação parece impossível. Mas espere... a parede à "
 "direita parece ser frágil... talvez seja uma forma de escapar? Ou será um "
 "caminho perigoso que levará os Pingus à perdição?\n"
@@ -1573,6 +1574,23 @@ msgstr "Dia das Bruxas 2007"
 #: data/levelsets/halloween.levelset:4
 msgid "Trapped at All Hallows Eve"
 msgstr "Presos no Dia das Bruxas"
+
+#: data/levelsets/pacman.levelset:3
+msgid "Pac-Man"
+msgstr "Come-Come"
+
+
+#: data/levelsets/pacman.levelset:4
+msgid "Trapped in a video game"
+msgstr "Presos em um jogo de video game"
+
+#: data/levelsets/xmas.levelset:3
+msgid "X-Mas 2007"
+msgstr "Natal 2007"
+
+#: data/levelsets/xmas.levelset:4
+msgid "Merry Christmas and a Happy New Year"
+msgstr "Feliz Natal e um Próspero Ano Novo"
 
 #~ msgid "Difficulty:"
 #~ msgstr "Dificuldade: "
@@ -2106,20 +2124,20 @@ msgstr "Presos no Dia das Bruxas"
 #~ "Maybe this level calls for a different strategy. Like attempting to save "
 #~ "them, for example."
 #~ msgstr ""
-#~ "Talvez seja preciso aplicar uma estratégia diferente neste nível. Como "
-#~ "tentar salvá-los, por exemplo."
+#~ "Talvez seja preciso utilizar uma estratégia diferente neste nível. Por que "
+#~ "não tenta salvar os Pingus, por exemplo."
 
 #~ msgid "Ever considered a career as a Pingu exterminator?"
-#~ msgstr "Alguma vez consideraste uma carreira de exterminador de Pingus?"
+#~ msgstr "Já considerou uma carreira de exterminador de Pingus?"
 
 #~ msgid "You missed one! What's your excuse!?"
-#~ msgstr "Perdeste um! Qual é a tua desculpa!?"
+#~ msgstr "Você deixou um passar! Qual é a sua desculpa!?"
 
 #~ msgid "Please reassure me that you hit the Armageddon button."
-#~ msgstr "Por favor, diz-me que carregaste no botão de Armagedão."
+#~ msgstr "Por favor me diga que apertou o botão do Fim do Mundo."
 
 #~ msgid "You've got a negative save/total value, something is buggy."
-#~ msgstr "Tiveste um valor negativo de salvações, há algum bug por aqui."
+#~ msgstr "Você salvou um número negativo de Pingus, algo está bugado."
 
 #~ msgid "Launch the Level editor (experimental)"
 #~ msgstr "Lança o Editor de Nível (experimental)"
@@ -2131,16 +2149,16 @@ msgstr "Presos no Dia das Bruxas"
 #~ msgstr "Criar um"
 
 #~ msgid "Screenshot: Couldn't save screenshot"
-#~ msgstr "Instântaneo: Não foi possível gravar instântaneo"
+#~ msgstr "Screenshot: Não foi possível gravar uma imagem da tela"
 
 #~ msgid "WorldMap: File not found: "
 #~ msgstr "WorldMap: Ficheiro não encontrado: "
 
 #~ msgid "..:: The people who brought this game to you ::.."
-#~ msgstr "..:: As pessoas que levaram este jogo até ti ::.."
+#~ msgstr "..:: As pessoas que levaram este jogo a você ::.."
 
 #~ msgid "..:: Takes you to the options menu ::.."
-#~ msgstr "..:: Leva-te ao menu de opções ::.."
+#~ msgstr "..:: Vai ao menu de opções ::.."
 
 #~ msgid "Options"
 #~ msgstr "Opções"
