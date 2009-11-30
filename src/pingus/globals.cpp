@@ -48,7 +48,7 @@ bool        delta_drawing           = false;
 
 bool        static_graphics         = false;
 
-FramebufferType framebuffer_type = DELTA_FRAMEBUFFER;
+FramebufferType framebuffer_type = SDL_FRAMEBUFFER;
 
 } // namespace globals
 
