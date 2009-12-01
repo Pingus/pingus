@@ -218,21 +218,18 @@ LevelObj::refresh_sprite()
 void
 LevelObj::set_modifier(const std::string m)
 {
-  // Set modifier
-  if (attribs & CAN_ROTATE)
-    desc.modifier = ResourceModifier::from_string(m);
-  refresh_sprite();
+  set_modifier(ResourceModifier::from_string(m));
 }
 
 /** Set the object's modifier */
 void
 LevelObj::set_modifier(ResourceModifier::Enum modifier)
 {
-  // Set modifier
   if (attribs & CAN_ROTATE)
+  {
     desc.modifier = modifier;
-
-  refresh_sprite();  
+    refresh_sprite();  
+  }
 }
 
 ResourceModifier::Enum
