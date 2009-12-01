@@ -22,51 +22,23 @@
 #include "engine/display/framebuffer.hpp"
 #include "engine/display/sprite_description.hpp"
 
-typedef std::map<std::string, FramebufferSurface> SurfaceCache;
-SurfaceCache surface_cache;
-
-FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceModifier::Enum mod)
+FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceModifier::Enum modifier)
 {
-  SurfaceCache::iterator i = surface_cache.find(filename.get_sys_path());
-  
-  if (i == surface_cache.end())
+  // FIXME: Implement proper cache 
+  Surface surface(filename);
+  if (modifier != ResourceModifier::ROT0)
   {
-
-    Surface surface(filename);
-    if (mod != ResourceModifier::ROT0)
-      surface = surface.mod(mod);
-
-    if (!surface)
-    {
-      std::cout << "Error: Sprite: couldn't load '" << filename << "'" << std::endl;
-      surface = Surface(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
-      if (!surface) assert(!"Surface Couldn't find 404");
-    }
-
-    FramebufferSurface framebuffer_surface = Display::get_framebuffer().create_surface(surface);
-
-    surface_cache[filename.get_sys_path()] = framebuffer_surface;
-
-    return framebuffer_surface;
+    surface = surface.mod(modifier);
   }
-  else
+
+  if (!surface)
   {
-    //std::cout << "Sharing: " << filename.get_sys_path() << std::endl;
-    return i->second;
+    std::cout << "Error: Sprite: couldn't load '" << filename << "'" << std::endl;
+    surface = Surface(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
+    if (!surface) assert(!"Surface Couldn't find 404");
   }
-}
 
-void delete_framebuffer_surface(const Pathname& filename)
-{
-  SurfaceCache::iterator i = surface_cache.find(filename.get_sys_path());
-  if (i != surface_cache.end())
-  {
-    //std::cout << "UseCount for " << filename << ": " << i->second.use_count() << std::endl;
-    if (i->second.use_count() == 1)
-    {
-      surface_cache.erase(i);
-    }
-  }
+  return Display::get_framebuffer().create_surface(surface);
 }
 
 SpriteImpl::SpriteImpl() :
@@ -99,7 +71,7 @@ SpriteImpl::SpriteImpl(const SpriteDescription& desc, ResourceModifier::Enum mod
   frame(0),
   tick_count(0)
 {
-  framebuffer_surface = load_framebuffer_surface(filename, mod);
+  framebuffer_surface = load_framebuffer_surface(desc.filename, mod);
 
   frame_pos = desc.frame_pos;
 
@@ -135,11 +107,6 @@ SpriteImpl::SpriteImpl(const Surface& surface) :
 
 SpriteImpl::~SpriteImpl()
 {
-  if (!filename.empty())
-  {
-    framebuffer_surface = FramebufferSurface();
-    delete_framebuffer_surface(filename);
-  }
 }
 
 void
