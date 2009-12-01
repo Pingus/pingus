@@ -17,6 +17,7 @@
 #include "engine/display/display.hpp"
 
 #include <stdexcept>
+#include <config.h>
 
 #include "engine/display/sdl_framebuffer.hpp"
 #include "engine/screen/screen_manager.hpp"
