@@ -24,6 +24,8 @@
 
 namespace Editor {
 
+static const int keyboard_movement_distance = 32;
+
 // Constructor
 Viewport::Viewport(EditorScreen* e, const Rect& rect_)  :
   RectComponent(rect_),
@@ -296,6 +298,28 @@ Viewport::on_key_pressed(const unsigned short c)
       case 'l': // right
         move_objects(Vector2i(1,0));
       break;
+
+
+      case 'C': // dvorak-up
+      case 'I': // up
+        move_objects(Vector2i(0,-keyboard_movement_distance));
+      break;
+
+      case 'T': // dvorak-down
+      case 'K': // down
+        move_objects(Vector2i(0,keyboard_movement_distance));
+      break;
+
+      case 'H': // dvorak-left
+      case 'J': // left
+        move_objects(Vector2i(-keyboard_movement_distance,0));
+      break;
+
+      case 'N': // dvorak-right
+      case 'L': // right
+        move_objects(Vector2i(keyboard_movement_distance,0));
+      break;
+
 
       default:
         std::cout << "Viewport::on_key_pressed: " << int(c) << " " << (char)c << std::endl;
