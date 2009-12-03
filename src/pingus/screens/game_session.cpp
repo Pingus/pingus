@@ -61,7 +61,7 @@ GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_scree
   // -- Client stuff
   
   // These object will get deleted by the gui_manager
-  button_panel = new ButtonPanel(this, Vector2i(0, (size.height - 150)/2));
+  button_panel = new ButtonPanel(get_server(), Vector2i(0, (size.height - 150)/2));
 
   int world_width  = server->get_world()->get_width();
   int world_height = server->get_world()->get_height();

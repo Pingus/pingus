@@ -18,13 +18,12 @@
 
 #include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
-#include "pingus/screens/game_session.hpp"
 #include "pingus/server.hpp"
 #include "util/string_util.hpp"
 
-ButtonPanel::ButtonPanel(GameSession* s, const Vector2i& pos) :
+ButtonPanel::ButtonPanel(Server* s, const Vector2i& pos) :
   RectComponent(Rect()),
-  session(s),
+  server(s),
   background("core/buttons/buttonbackground"),
   highlight("core/buttons/buttonbackgroundhl"),
   buttons(),
@@ -32,7 +31,7 @@ ButtonPanel::ButtonPanel(GameSession* s, const Vector2i& pos) :
   show_tip(false),
   tip_button(0)
 {
-  ActionHolder* aholder = session->get_server()->get_action_holder();
+  ActionHolder* aholder = server->get_action_holder();
 
   std::vector<ActionName::Enum> actions = aholder->get_available_actions();
 
@@ -60,7 +59,7 @@ ButtonPanel::~ButtonPanel()
 void
 ButtonPanel::draw(DrawingContext& gc)
 {
-  ActionHolder* aholder = session->get_server()->get_action_holder();
+  ActionHolder* aholder = server->get_action_holder();
 
   for(std::vector<ActionButton>::size_type i = 0; i < buttons.size(); ++i)
   {

@@ -23,7 +23,7 @@
 #include "engine/gui/rect_component.hpp"
 #include "pingus/components/action_button.hpp"
 
-class GameSession;
+class Server;
 
 class ButtonPanel : public GUI::RectComponent
 {
@@ -39,7 +39,7 @@ private:
     {}
   };
 
-  GameSession* session;
+  Server* server;
   Sprite background;
   Sprite highlight;
 
@@ -50,7 +50,7 @@ private:
   std::vector<ActionButton>::size_type tip_button;
 
 public:
-  ButtonPanel(GameSession* s, const Vector2i& pos);
+  ButtonPanel(Server* s, const Vector2i& pos);
   virtual ~ButtonPanel();
 
   void draw(DrawingContext& gc);
