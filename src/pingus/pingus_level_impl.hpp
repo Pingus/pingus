@@ -45,6 +45,8 @@ public:
                     
   std::string resname;
 
+  std::string checksum;
+
   std::string levelname;
   std::string description;
 

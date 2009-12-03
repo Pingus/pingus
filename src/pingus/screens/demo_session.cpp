@@ -42,11 +42,11 @@ private:
 public:
   BButton(int x, int y, const std::string& name, 
           boost::function<void (void)> callback_,
-          boost::function<bool(void)> highlight_func_ = &false_func)
-    : SurfaceButton(x, y, name, name + "-pressed", name + "-hover"),
-      highlight("core/demo/highlight"),
-      callback(callback_),
-      highlight_func(highlight_func_)
+          boost::function<bool(void)> highlight_func_ = &false_func) :
+    SurfaceButton(x, y, name, name + "-pressed", name + "-hover"),
+    highlight("core/demo/highlight"),
+    callback(callback_),
+    highlight_func(highlight_func_)
   {}
 
   virtual void draw (DrawingContext& gc) 
@@ -90,9 +90,16 @@ DemoSession::DemoSession(const Pathname& pathname_) :
   std::reverse(events.begin(), events.end());
 
   // Create server
-  server   = std::auto_ptr<Server>(new Server(PingusLevel(Pathname("levels/" + demo->get_levelname()  + ".pingus", 
-                                                                   Pathname::DATA_PATH)), 
-                                              false));
+  PingusLevel plf(Pathname("levels/" + demo->get_levelname()  + ".pingus", Pathname::DATA_PATH));
+
+  if (plf.get_checksum() != demo->get_checksum())
+  {
+    std::cout << "Warning: checksum missmatch between demo (" 
+              << demo->get_checksum() << ") and level (" 
+              << plf.get_checksum() << ")" << std::endl;
+  }
+
+  server   = std::auto_ptr<Server>(new Server(plf, false));
 
   // Create GUI
   pcounter = new PingusCounter(server.get());

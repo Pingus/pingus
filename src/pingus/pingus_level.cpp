@@ -22,29 +22,37 @@
 #include "pingus/globals.hpp"
 #include "pingus/pingus_level_impl.hpp"
 #include "util/pathname.hpp"
+#include "util/system.hpp"
 
-PingusLevel::PingusLevel()
-  : impl(new PingusLevelImpl())  
+PingusLevel::PingusLevel() :
+  impl(new PingusLevelImpl())  
 {
 }
 
-PingusLevel::PingusLevel(const Pathname& pathname)
-  : impl(new PingusLevelImpl())
+PingusLevel::PingusLevel(const Pathname& pathname) :
+  impl(new PingusLevelImpl())
 {
   load("", pathname);
 }
 
-PingusLevel::PingusLevel(const std::string& resname,
-                         const Pathname& pathname)
-  : impl(new PingusLevelImpl())
+PingusLevel::PingusLevel(const std::string& resname, const Pathname& pathname) :
+  impl(new PingusLevelImpl())
 {
   load(resname, pathname);
+}
+
+std::string
+PingusLevel::get_checksum() const
+{
+  return impl->checksum;
 }
 
 void
 PingusLevel::load(const std::string& resname,
                   const Pathname& pathname)
 {
+  impl->checksum = System::checksum(pathname);
+
   impl->resname = resname;
   FileReader reader = FileReader::parse(pathname);
 

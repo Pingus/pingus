@@ -36,16 +36,16 @@ static std::string get_date_string ()
   return std::string(buffer);
 }
 
-static std::auto_ptr<std::ostream> get_demostream(const std::string& levelname)
+static std::auto_ptr<std::ostream> get_demostream(const PingusLevel& plf)
 {
-  std::string flat_levelname = levelname;
+  std::string flat_levelname = plf.get_resname();
 
   // 'Flatten' the levelname so that we don't need directories
   for (std::string::iterator i = flat_levelname.begin(); i != flat_levelname.end(); ++i)
     if (*i == '/')
       *i = '_';
 
-  std::string filename = System::get_userdir() + "demos/" + get_date_string() + "-" + flat_levelname + ".pingus-demo";
+  std::string filename = System::get_userdir() + "demos/" + flat_levelname + "-" + get_date_string() + ".pingus-demo";
 
   std::auto_ptr<std::ofstream> out(new std::ofstream(filename.c_str()));
   
@@ -60,7 +60,8 @@ static std::auto_ptr<std::ostream> get_demostream(const std::string& levelname)
     std::cout << "DemoRecorder: Writing demo to: " << filename << std::endl;
 
     // Write file header
-    *out << "(level (name \"" << levelname << "\"))\n";
+    *out << "(level (name \"" << plf.get_resname() << "\"))\n";
+    *out << "(checksum \"" << plf.get_checksum() << "\")\n";
     return std::auto_ptr<std::ostream>(out.release());
   }
 }
@@ -74,7 +75,7 @@ Server::Server(const PingusLevel& arg_plf, bool record_demo) :
 {
   if (record_demo)
   {
-    demostream = get_demostream(plf.get_resname());
+    demostream = get_demostream(plf);
   }
 }
 

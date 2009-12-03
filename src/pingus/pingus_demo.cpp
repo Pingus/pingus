@@ -21,9 +21,9 @@
 #include "util/pathname.hpp"
 
 PingusDemo::PingusDemo(const Pathname& pathname) :
-  levelname(),
-  checksum(),
-  events()
+  m_levelname(),
+  m_checksum(),
+  m_events()
 {
   std::vector<FileReader> lines = FileReader::parse_many(pathname);
 
@@ -35,17 +35,17 @@ PingusDemo::PingusDemo(const Pathname& pathname) :
   {
     if (lines.front().get_name() == "level")
     {
-      if (!lines.front().read_string("name", levelname))
+      if (!lines.front().read_string("name", m_levelname))
       {
         throw std::runtime_error("(level (name ...)) entry missing in demo file '" + pathname.str() + "'");
       }
 
-      lines.front().read_string("checksum", checksum);
+      lines.front().read_string("checksum", m_checksum);
     }
             
     for(std::vector<FileReader>::iterator i = lines.begin()+1; i != lines.end(); ++i)
     {
-      events.push_back(ServerEvent(*i));
+      m_events.push_back(ServerEvent(*i));
     }
   }
 }

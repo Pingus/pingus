@@ -37,6 +37,9 @@ public:
   PingusLevel(const std::string& resname,
               const Pathname& pathname);
 
+  /** Returns a short checksum for the level file */
+  std::string get_checksum() const;
+
   /** Returns the name of the current level, {\em not} the level file name. */
   const std::string& get_levelname() const;
 
