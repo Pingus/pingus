@@ -117,6 +117,17 @@ OLPC Issues
 "Important" Stuff and Random Notes:
 ===================================
 
+* map middle button to pause
+
+* confusing output: 
+
+Manager: Loading driver 'sdl'
+Manager: Loading driver 'core'
+
+* delta renderer can do no clipping
+
+* add button bar to the demo recorder, so that used action are visible
+
 * add a keyboard shortcut to single-step the gameloop
 
 * Blink Blinken <blinkblinken@googlemail.com>
