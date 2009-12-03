@@ -26,6 +26,7 @@
 #include "pingus/components/pingus_counter.hpp"
 #include "pingus/components/playfield.hpp"
 #include "pingus/components/smallmap.hpp"
+#include "pingus/components/button_panel.hpp"
 #include "pingus/pingus_demo.hpp"
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
@@ -104,6 +105,7 @@ DemoSession::DemoSession(const Pathname& pathname_) :
   // Create GUI
   pcounter = new PingusCounter(server.get());
   gui_manager->add(pcounter);
+  gui_manager->add(new ButtonPanel(server.get(), Vector2i(0, (size.height - 100)/2)));
 
   int world_width  = server->get_world()->get_width();
   int world_height = server->get_world()->get_height();

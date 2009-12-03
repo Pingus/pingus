@@ -37,6 +37,7 @@ class PingusDemo;
 class Playfield;
 class SmallMap;
 class BButton;
+class ButtonPanel;
 
 /** A DemoSession is analog to a GameSession, but instead of loading a
     level and letting the player play a game, a demo file will be
@@ -53,7 +54,7 @@ private:
   PingusCounter* pcounter;
   Playfield*     playfield;
   SmallMap*      small_map;
-  
+
   BButton* fastforward_button;
   BButton* pause_button;
   BButton* restart_button;
