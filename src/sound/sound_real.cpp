@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <stdexcept>
 #include "SDL.h"
 #include "SDL_mixer.h"
 #include "../globals.hpp"
@@ -34,7 +35,7 @@ PingusSoundReal::PingusSoundReal ()
   if (SDL_Init(SDL_INIT_AUDIO) == -1)
     {
       std::cout << "Unable to initialize SDL: " << SDL_GetError() << std::endl;
-      throw SDL_GetError();
+      throw std::runtime_error(SDL_GetError());
     }
 
   pout(PINGUS_DEBUG_SOUND) << "Initializing SDL_Mixer" << std::endl;
@@ -42,7 +43,7 @@ PingusSoundReal::PingusSoundReal ()
   if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
     {
       std::cout << "Unable to initialize SDL_Mixer: " << Mix_GetError() << std::endl;
-      throw Mix_GetError();
+      throw std::runtime_error(Mix_GetError());
     }
 }
 

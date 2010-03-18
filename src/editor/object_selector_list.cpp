@@ -22,7 +22,7 @@
 #include "editor_screen.hpp"
 #include "object_selector_set.hpp"
 #include "object_selector.hpp"
-#include "editor_viewport.hpp"
+#include "viewport.hpp"
 #include "editor_level.hpp"
 #include "groundtype.hpp"
 #include "resource.hpp"

@@ -19,7 +19,7 @@
 
 #include "editor_level.hpp"
 #include "editor_screen.hpp"
-#include "editor_viewport.hpp"
+#include "viewport.hpp"
 #include "level_objs.hpp"
 #include "gui_style.hpp"
 #include "minimap.hpp"

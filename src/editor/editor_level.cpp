@@ -22,7 +22,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "editor_viewport.hpp"
+#include "viewport.hpp"
 #include "editor_level.hpp"
 #include "level_impl.hpp"
 #include "level_objs.hpp"
@@ -38,9 +38,8 @@ static bool LevelObjSort(LevelObj *a, LevelObj *b)
 }
 
 // Default constructor
-EditorLevel::EditorLevel(EditorScreen* editor_) 
-  : editor(editor_),
-    impl(new LevelImpl())
+EditorLevel::EditorLevel()
+  : impl(new LevelImpl())
 {
   clear();
 }
@@ -103,7 +102,7 @@ EditorLevel::get_size() const
 */
 bool EditorLevel::is_valid()
 {
-  std::cout << "EditorLevel::is_valid() - Not yet implemented" << std::endl;
+  //std::cout << "EditorLevel::is_valid() - Not yet implemented" << std::endl;
   if (impl)
     return true;
   else
@@ -113,6 +112,10 @@ bool EditorLevel::is_valid()
 // Save the level to a file.  Returns true if successful
 bool EditorLevel::save_level(const std::string& filename)
 {
+  // Sort the level before saving, so that object order doesn't change
+  // after a save/load cycle (load sort() too)
+  sort();
+
   // Make sure level is valid
   if (!is_valid())
     return false;
@@ -159,9 +162,8 @@ bool EditorLevel::save_level(const std::string& filename)
 
   // Write the objects
   fw.begin_section("objects");
-  std::vector<LevelObj*>* objects = editor->get_viewport()->get_objects();
-  for (unsigned i = 0; i < objects->size(); i++)
-    (*objects)[i]->write_properties(fw);
+  for (unsigned i = 0; i < impl->objects.size(); i++)
+    impl->objects[i]->write_properties(fw);
   fw.end_section();	// objects
 
   fw.end_section();	// pingus-level
@@ -182,8 +184,6 @@ void EditorLevel::load_level(const Pathname& pathname)
   if (impl)
     delete impl;
   impl = new LevelImpl();
-
-  editor->get_viewport()->clear();
 
   // Load the level from the file - we don't care what it's res_name is.
   PingusLevel level(pathname);
@@ -304,13 +304,17 @@ void EditorLevel::load_level(const Pathname& pathname)
           obj->set_release_rate(tmp_int);
         }
 
-      editor->get_viewport()->add_object(obj);
+      add_object(obj);
     }
 
+  sort();
+}
+
+void
+EditorLevel::sort()
+{
   // Sort by Z coordinate
-  std::stable_sort(editor->get_viewport()->get_objects()->begin(),
-                   editor->get_viewport()->get_objects()->end(),
-                   LevelObjSort);
+  std::stable_sort(impl->objects.begin(), impl->objects.end(), LevelObjSort);
 }
 
 void
@@ -443,6 +447,90 @@ EditorLevel::set_size(const Size& s)
 
   if (impl->size.height <= 0)
     impl->size.height = 1;
+}
+
+void
+EditorLevel::raise_object_to_top(LevelObj* obj)
+{
+  for(std::vector<LevelObj*>::size_type i = 0; i < impl->objects.size(); ++i)
+    {
+      if (impl->objects[i] == obj)
+        {
+          for(int j = i; j < int(impl->objects.size()-1); ++j)
+            std::swap(impl->objects[j], impl->objects[j+1]);
+
+          break;
+        }      
+    } 
+}
+
+void
+EditorLevel::lower_object_to_bottom(LevelObj* obj)
+{
+  for(std::vector<LevelObj*>::size_type i = 0; i < impl->objects.size(); ++i)
+    {
+      if (impl->objects[i] == obj)
+        {
+          for(int j = i; j >= 1; --j)
+            std::swap(impl->objects[j], impl->objects[j-1]);
+          
+          break;
+        }      
+    }
+}
+
+void
+EditorLevel::raise_object(LevelObj* obj)
+{
+  for(std::vector<LevelObj*>::size_type i = 0; i < impl->objects.size(); ++i)
+    {
+      if (impl->objects[i] == obj)
+        {
+          if (i != impl->objects.size()-1)
+            std::swap(impl->objects[i], impl->objects[i+1]);
+          break;
+        }
+    }
+}
+
+void
+EditorLevel::lower_object(LevelObj* obj)
+{
+  for(std::vector<LevelObj*>::size_type i = 0; i < impl->objects.size(); ++i)
+    {
+      if (impl->objects[i] == obj)
+        {
+          if (i != 0)
+            std::swap(impl->objects[i], impl->objects[i-1]);
+          break;
+        }
+    }
+}  
+
+std::vector<LevelObj*>*
+EditorLevel::get_objects()
+{
+  return &(impl->objects);
+}
+
+void 
+EditorLevel::add_object(LevelObj* obj)
+{
+  impl->objects.push_back(obj);
+}
+
+LevelObj*
+EditorLevel::object_at (int x, int y)
+{
+  // we travel reversly through the object list, so that we get the
+  // top-most object
+  for (std::vector<LevelObj*>::reverse_iterator i = (*get_objects()).rbegin ();
+       i != (*get_objects()).rend (); ++i)
+    {
+      if ((*i)->is_at(x, y))
+        return *i;
+    }
+  return 0;
 }
 
 } // namespace Editor

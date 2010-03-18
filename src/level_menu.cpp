@@ -118,11 +118,11 @@ public:
 
         gc.draw((*i)->get_image(), Vector2i(30, y));
 
-        gc.print_left(Fonts::chalk_normal, 85+30, 15 + y, (*i)->get_title());
-        gc.print_left(Fonts::chalk_small,  85+50, 40 + y, (*i)->get_description());
+        gc.print_left(Fonts::chalk_normal, 85+30, 15 + y, _((*i)->get_title()));
+        gc.print_left(Fonts::chalk_small,  85+50, 40 + y, _((*i)->get_description()));
 
         gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, 15 + y, (boost::format("%1% %2%%%") % _("Solved:") % (*i)->get_completion()).str());
-        gc.print_right(Fonts::chalk_small,  rect.get_width() - 30, 60 + y, (boost::format("%1% levels") % (*i)->get_level_count()).str());
+        gc.print_right(Fonts::chalk_small,  rect.get_width() - 30, 60 + y, (boost::format("%1% %2%") % (*i)->get_level_count() % _("levels")).str());
 
         //gc.draw(ok_button, 620, y);
 
@@ -192,8 +192,8 @@ public:
         //gc.draw_fillrect(Rect(Vector2i(0,0), Size(rect.get_width(), rect.get_height())),
         //                 Color(255, 255, 0, 100));
 
-        gc.print_left(Fonts::chalk_normal,  30, -32, "Title");
-        gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, - 32, "Status");
+        gc.print_left(Fonts::chalk_normal,  30, -32, _("Title"));
+        gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, - 32, _("Status"));
 
         int y = 0;
         for(int i = 0; i < levelset->get_level_count(); ++i)
@@ -206,12 +206,12 @@ public:
             if (maintainer_mode)
               gc.print_left(Fonts::chalk_small, 30, y+4, levelset->get_level(i)->plf.get_resname());
             else
-              gc.print_left(Fonts::chalk_small, 30, y+4, levelset->get_level(i)->plf.get_levelname());
+              gc.print_left(Fonts::chalk_small, 30, y+4, _(levelset->get_level(i)->plf.get_levelname()));
 
             if (levelset->get_level(i)->finished)
-              gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, "solved");
+              gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, _("solved"));
             else
-              gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, "unsolved");
+              gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, _("unsolved"));
 
             y += 32;
           }

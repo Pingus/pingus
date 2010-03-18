@@ -39,8 +39,8 @@ class ContextMenu;
 
 /** This class is where the actual level graphics will display in the
     level editor.  Objects can be added, deleted, moved, modified, etc. 
-    inside of the EditorViewport */
-class EditorViewport : public GUI::RectComponent 
+    inside of the Viewport */
+class Viewport : public GUI::RectComponent 
 {
 private:	
   GraphicContextState state;
@@ -48,6 +48,7 @@ private:
 
   /** The EditorScreen to which this viewport belongs */
   EditorScreen* editor;
+
 
   /** Whether or not Autoscrolling is turned on */
   bool autoscroll;
@@ -59,18 +60,12 @@ private:
   /** Where the mouse started dragging from */
   Vector2i drag_world_pos;
   Vector2i drag_screen_pos;
-
-  /** All objects in the level */
-  std::vector<LevelObj*> objs;
-
+  
   /** The currently selected LevelObjs */
   std::vector<LevelObj*> selected_objs;
 
   /** The region that is currently highlighted */
   Rect highlighted_area;
-
-  /** Returns the topmost object at this x, y location */
-  LevelObj* object_at(int x, int y);
 
   /** There should only be 0 or 1 context menus on the screen */
   ContextMenu* context_menu;
@@ -84,10 +79,10 @@ private:
 public:
   /** Constructor
       @param e The EditorScreen to which this viewport belongs */
-  EditorViewport(EditorScreen* e, const Rect& rect);
+  Viewport(EditorScreen* e, const Rect& rect);
 
   /** Destructor */
-  ~EditorViewport ();
+  ~Viewport ();
 
   /** Draws all of the objects in the viewport */
   void draw(DrawingContext &gc);
@@ -107,9 +102,6 @@ public:
 	
   /** Turns the "snap-to-grid" option on or off */
   void set_snap_to(bool s) { snap_to = s; }
-
-  /** Add an object to the currently displayed vector of objects */
-  void add_object(LevelObj* obj);
 
   /** Return a pointer to the EditorScreen object */
   EditorScreen* get_screen() { return editor; }
@@ -137,12 +129,6 @@ public:
   void rotate_90_selected_objects();
   void rotate_270_selected_objects();
 
-  void raise_object(LevelObj* obj);
-  void lower_object(LevelObj* obj);
-
-  void raise_object_to_top(LevelObj* obj);
-  void lower_object_to_bottom(LevelObj* obj);
-
   void raise_objects();
   void lower_objects();
 
@@ -155,16 +141,15 @@ public:
 
   void update_layout();
 
-  std::vector<LevelObj*>* get_objects() { return &objs; }
+  std::vector<LevelObj*>* get_objects();
 
   void clear_selection();
-  void clear();
 
   boost::signal<void (const std::vector<LevelObj*>&)> selection_changed;
 private:
-  EditorViewport();
-  EditorViewport (const EditorViewport&);
-  EditorViewport& operator= (const EditorViewport&);
+  Viewport();
+  Viewport (const Viewport&);
+  Viewport& operator= (const Viewport&);
 };
 
 } // Editor namespace

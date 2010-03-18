@@ -29,7 +29,7 @@
 namespace Editor {
 
 class LevelObj;
-class EditorViewport;
+class Viewport;
 class ContextMenu;
 
 typedef enum ItemModifier { REMOVE, ROTATE, SET_OWNER, SET_DIRECTION, 
@@ -61,7 +61,7 @@ private:
   std::vector<LevelObj*> objs;
 
   /** Viewport to which this menu belongs */
-  EditorViewport* viewport;
+  Viewport* viewport;
 
   /** List of actions available in this menu */
   std::vector<ContextItem> actions;
@@ -92,7 +92,7 @@ private:
 
 public:
   // Constructor
-  ContextMenu (std::vector<LevelObj*>, Vector2i p, EditorViewport* v, bool base_menu = true);
+  ContextMenu (std::vector<LevelObj*>, Vector2i p, Viewport* v, bool base_menu = true);
 		
   // Desctructor
   ~ContextMenu ();

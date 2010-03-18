@@ -44,6 +44,8 @@ public:
   /** Destructor */
   ~LevelImpl()
   {
+    for(std::vector<LevelObj*>::iterator i = objects.begin(); i != objects.end(); ++i)
+      delete *i;
   }
                    
   std::string resname;
@@ -65,6 +67,8 @@ public:
   std::string author;
   std::string comment;
   std::string music;
+
+  std::vector<LevelObj*> objects;
 
 private:
   LevelImpl (const LevelImpl&);

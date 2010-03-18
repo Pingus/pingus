@@ -65,6 +65,7 @@ struct PingusOptions
   Value<bool> editor;
   Value<bool> credits;
   Value<bool> font;
+  Value<std::string> save;
 
   // Display
   Value<bool> fullscreen;

@@ -20,7 +20,7 @@
 
 #include "context_menu.hpp"
 #include "level_objs.hpp"
-#include "editor_viewport.hpp"
+#include "viewport.hpp"
 #include "editor_screen.hpp"
 #include "../gui/gui_manager.hpp"
 #include "../string_util.hpp"
@@ -29,7 +29,7 @@
 namespace Editor {
 
 // Determine which actions are available for these objects
-ContextMenu::ContextMenu(std::vector<LevelObj*> o, Vector2i p, EditorViewport* vp, bool base_menu)
+ContextMenu::ContextMenu(std::vector<LevelObj*> o, Vector2i p, Viewport* vp, bool base_menu)
   : objs(o), 
     viewport(vp),
     pos(p),

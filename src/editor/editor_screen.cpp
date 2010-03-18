@@ -39,7 +39,7 @@
 #include "panel.hpp"
 #include "minimap.hpp"
 #include "editor_screen.hpp"
-#include "editor_viewport.hpp"
+#include "viewport.hpp"
 #include "level_objs.hpp"
 #include "object_selector.hpp"
 #include "object_properties.hpp"
@@ -50,14 +50,14 @@ namespace Editor {
 
 // Default constructor
 EditorScreen::EditorScreen()
-  : plf(new EditorLevel(this)), 
+  : plf(new EditorLevel()),
     panel(0),
     viewport(0),
     object_selector(0),
     show_help(false)
 {
   // Create the viewport for the images and data
-  viewport = new EditorViewport(this, Rect(0, 38,
+  viewport = new Viewport(this, Rect(0, 38,
                                            Display::get_width() - 244, 
                                            Display::get_height()));
   gui_manager->add(viewport, true);	
@@ -146,6 +146,7 @@ void
 EditorScreen::load(const Pathname& file)
 {
   level_pathname = file;
+  viewport->clear_selection();
   plf->load_level(level_pathname);
   level_properties->set_level(plf);
   action_properties->set_level(plf);
@@ -275,7 +276,7 @@ EditorScreen::update(const GameDelta &delta)
 void
 EditorScreen::add_object(LevelObj* obj)
 {
-  viewport->add_object(obj);
+  plf->add_object(obj);
 }
 
 void
@@ -290,7 +291,7 @@ EditorScreen::level_new()
 {
   // FIXME: dialogs don't update
   level_pathname = Pathname();
-  viewport->clear();
+  viewport->clear_selection();
   plf->clear();
   level_properties->set_level(plf);
   action_properties->set_level(plf);

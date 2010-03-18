@@ -82,7 +82,6 @@ pingus_sources = [
 
 'src/editor/button.cpp',
 'src/editor/gui_style.cpp',
-'src/editor/context_menu.cpp',
 'src/editor/checkbox.cpp',
 'src/editor/editor_level.cpp', 
 'src/editor/panel.cpp',
@@ -92,7 +91,7 @@ pingus_sources = [
 'src/editor/editor_screen.cpp',
 'src/editor/combobox.cpp', 
 'src/editor/minimap.cpp', 
-'src/editor/editor_viewport.cpp', 
+'src/editor/viewport.cpp', 
 'src/editor/level_objs.cpp',
 'src/editor/inputbox.cpp',
 'src/editor/object_selector.cpp',
