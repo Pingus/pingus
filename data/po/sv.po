@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-31 06:55+0100\n"
+"POT-Creation-Date: 2010-03-18 14:31+0100\n"
 "PO-Revision-Date: 2003-04-23 22:26+0200\n"
 "Last-Translator: Jan Morén <jan.moren@lucs.lu.se>\n"
 "Language-Team: sv <jan.moren@lucs.lu.se>\n"
@@ -23,228 +23,103 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  sv.po (Pingus 0.6.0)  #-#-#-#-#\n"
 
-#: src/game_time.cpp:66
-msgid "unlimited"
-msgstr "obegränsad"
-
-#: src/story_screen.cpp:40
-msgid "skip"
-msgstr ""
-
-#: src/pingu_enums.cpp:34
-msgid "Angel"
-msgstr "Ängel"
-
-#: src/pingu_enums.cpp:35
-msgid "Basher"
-msgstr "Bankare"
-
-#: src/pingu_enums.cpp:36
-msgid "Blocker"
-msgstr "Blockare"
-
-#: src/pingu_enums.cpp:37
-msgid "Boarder"
-msgstr "Skejtare"
-
-#: src/pingu_enums.cpp:38
-msgid "Bomber"
-msgstr "Bombare"
-
-#: src/pingu_enums.cpp:39 src/actions/bridger.cpp:42
-#: src/actions/bridger.cpp:216
-msgid "Bridger"
-msgstr "Byggare"
-
-#: src/pingu_enums.cpp:40
-msgid "Climber"
-msgstr "Klättrare"
-
-#: src/pingu_enums.cpp:41
-msgid "Digger"
-msgstr "Grävare"
-
-#: src/pingu_enums.cpp:42
-msgid "Drown"
-msgstr "Drunkna"
-
-#: src/pingu_enums.cpp:43
-msgid "Exiter"
-msgstr "Lämnar"
-
-#: src/pingu_enums.cpp:44
-msgid "Faller"
-msgstr "Fallare"
-
-#: src/pingu_enums.cpp:45
-msgid "Floater"
-msgstr "Svävare"
-
-#: src/pingu_enums.cpp:46
-msgid "Jumper"
-msgstr "Hoppare"
-
-#: src/pingu_enums.cpp:47
-msgid "Laserkill"
-msgstr "Laserdöd"
-
-#: src/pingu_enums.cpp:48
-msgid "Miner"
-msgstr "Tunnlare"
-
-#: src/pingu_enums.cpp:49
-msgid "Rocketlauncher"
-msgstr "Raketavfyrare"
-
-#: src/pingu_enums.cpp:50
-msgid "Slider"
-msgstr "Glidare"
-
-#: src/pingu_enums.cpp:51
-msgid "Smashed"
-msgstr "Krossad"
-
-#: src/pingu_enums.cpp:52
-msgid "Splashed"
-msgstr "Utsmetad"
-
-#: src/pingu_enums.cpp:53
-msgid "Superman"
-msgstr "Stålman"
-
-#: src/pingu_enums.cpp:54
-msgid "Teleported"
-msgstr "Teleporterad"
-
-#: src/pingu_enums.cpp:55
-msgid "Waiter"
-msgstr "Väntare"
-
-#: src/pingu_enums.cpp:56
-msgid "Walker"
-msgstr "Gångare"
-
-#: src/start_screen.cpp:74 src/editor/level_head.cpp:53
-msgid "Ok"
-msgstr "Ok"
-
-#: src/start_screen.cpp:114 src/result_screen.cpp:98 src/level_menu.cpp:57
-msgid "Abort"
-msgstr "Avbryt"
-
-#: src/start_screen.cpp:163
-msgid "Number of Pingus: "
-msgstr "Antal Pingus: "
-
-#: src/start_screen.cpp:166
-msgid "Number to Save: "
-msgstr "Antal att Rädda: "
-
-#: src/start_screen.cpp:169
-msgid "Time: "
-msgstr "Tid: "
-
-#: src/start_screen.cpp:176
-msgid "Author: "
-msgstr "Skapare: "
-
-#: src/start_screen.cpp:179
-msgid "Filename: "
-msgstr "Filnamn: "
-
-#: src/pingus_main.cpp:259
+#: src/pingus_main.cpp:260
 msgid "Displays this help"
 msgstr "Visar den här hjälpen"
 
-#: src/pingus_main.cpp:261
+#: src/pingus_main.cpp:262
 #, fuzzy
 msgid "Print version number and exit"
 msgstr "Skriver ut versionen och avslutar"
 
-#: src/pingus_main.cpp:263
+#: src/pingus_main.cpp:264
 msgid "Display:"
 msgstr ""
 
-#: src/pingus_main.cpp:265
+#: src/pingus_main.cpp:266
 msgid "Start in Window Mode"
 msgstr "Starta i fönster"
 
-#: src/pingus_main.cpp:267
+#: src/pingus_main.cpp:268
 msgid "Start in Fullscreen"
 msgstr "Starta i fullskärm"
 
-#: src/pingus_main.cpp:269
+#: src/pingus_main.cpp:270
 msgid "Allow Window resize (buggy)"
 msgstr ""
 
-#: src/pingus_main.cpp:271
+#: src/pingus_main.cpp:272
 msgid "Enable software cursor"
 msgstr "Aktivera mjukvarupekare"
 
-#: src/pingus_main.cpp:273
+#: src/pingus_main.cpp:274
 msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "Sätt upplösningen för pingus (standard: 800x600)"
 
-#: src/pingus_main.cpp:275
+#: src/pingus_main.cpp:276
 msgid "Sound:"
 msgstr "Ljud:"
 
-#: src/pingus_main.cpp:277
+#: src/pingus_main.cpp:278
 msgid "Disable sound"
 msgstr "Avaktivera ljud"
 
-#: src/pingus_main.cpp:279
+#: src/pingus_main.cpp:280
 msgid "Disable music"
 msgstr "Avaktivera musik"
 
-#: src/pingus_main.cpp:283
+#: src/pingus_main.cpp:284
 msgid "Select language to use with Pingus"
 msgstr ""
 
-#: src/pingus_main.cpp:285
+#: src/pingus_main.cpp:286
 msgid "List all available languages"
 msgstr ""
 
-#: src/pingus_main.cpp:289
+#: src/pingus_main.cpp:290
 #, fuzzy
 msgid "Loads the level editor"
 msgstr "..:: Starta nivåeditorn ::.."
 
-#: src/pingus_main.cpp:291
+#: src/pingus_main.cpp:292
+msgid "Save the level given level to FILENAME and quit"
+msgstr ""
+
+#: src/pingus_main.cpp:294
 msgid "Test a font"
 msgstr ""
 
-#: src/pingus_main.cpp:293
+#: src/pingus_main.cpp:296
 msgid "Shows the credits"
 msgstr ""
 
-#: src/pingus_main.cpp:295
+#: src/pingus_main.cpp:298
 #, fuzzy
 msgid "Misc Options:"
 msgstr "Flaggor:"
 
-#: src/pingus_main.cpp:296
+#: src/pingus_main.cpp:299
 msgid "PATH"
 msgstr ""
 
-#: src/pingus_main.cpp:297
+#: src/pingus_main.cpp:300
 msgid "Set the path to load the data files to 'path'"
 msgstr ""
 
-#: src/pingus_main.cpp:300
+#: src/pingus_main.cpp:303
 msgid "Disable automatic scrolling"
 msgstr "Avaktivera automatisk skärmrullning"
 
-#: src/pingus_main.cpp:302
+#: src/pingus_main.cpp:305
 msgid "Don't read ~/.pingus/config"
 msgstr "Läs inte ~/.pingus/config"
 
-#: src/pingus_main.cpp:303
+#: src/pingus_main.cpp:306
 #, fuzzy
 msgid "FILE"
 msgstr "FIL      "
 
-#: src/pingus_main.cpp:304
+#: src/pingus_main.cpp:307
 #, fuzzy
 msgid ""
 "Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
@@ -253,81 +128,81 @@ msgstr ""
 "minska processoranvändning, kan öka hastigheten på spelet för långsammare "
 "maskiner"
 
-#: src/pingus_main.cpp:307
+#: src/pingus_main.cpp:310
 msgid "Uses the controller given in FILE"
 msgstr "Använd kontrollern som ges i FIL"
 
-#: src/pingus_main.cpp:309
+#: src/pingus_main.cpp:312
 msgid "Debugging and experimental stuff:"
 msgstr "Avlusnings- och experimentella saker:"
 
-#: src/pingus_main.cpp:311
+#: src/pingus_main.cpp:314
 #, fuzzy
 msgid "Enables some features, only interesting to programmers"
 msgstr "Aktiverar vissa egenskaper, bara intressant programmerare"
 
-#: src/pingus_main.cpp:314
+#: src/pingus_main.cpp:317
 #, fuzzy
 msgid "Load a custom worldmap"
 msgstr "Läs in en särskild världskarta från FIL"
 
-#: src/pingus_main.cpp:316
+#: src/pingus_main.cpp:319
 #, fuzzy
 msgid ""
 "Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
 "actions, sound, resources, gui, input, pathmgr"
 msgstr "FLAGGOR är tiles, gametime, actions, sound, resources, gui,"
 
-#: src/pingus_main.cpp:320
+#: src/pingus_main.cpp:323
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "Hoppa över minst N bildrutor, högre värde ökar hastigheten på spelet"
 
-#: src/pingus_main.cpp:322
+#: src/pingus_main.cpp:325
 msgid "Skip at most N frames"
 msgstr "Hoppa över högst N bildrutor"
 
-#: src/pingus_main.cpp:324
+#: src/pingus_main.cpp:327
 msgid "Set both min and max frameskip to N"
 msgstr "Sätt både minsta och största bildrutehoppet till N"
 
-#: src/pingus_main.cpp:326
+#: src/pingus_main.cpp:329
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Sätt spelhastigheten (0=snabbast, >0=långsammare)"
 
-#: src/pingus_main.cpp:328
+#: src/pingus_main.cpp:331
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Sätter storleken på kartrutorna (standard: 32)"
 
-#: src/pingus_main.cpp:330
+#: src/pingus_main.cpp:333
 msgid "Disable some cpu intensive features"
 msgstr "Avaktivera vissa processorintensiva egenskaper"
 
-#: src/pingus_main.cpp:334
+#: src/pingus_main.cpp:337
 msgid "Demo playing and recording:"
 msgstr "Spela upp och spela in demo:"
 
-#: src/pingus_main.cpp:336
+#: src/pingus_main.cpp:339
 #, fuzzy
 msgid "Plays a demo session"
 msgstr "Spelar upp en demo från FIL"
 
-#: src/pingus_main.cpp:338
+#: src/pingus_main.cpp:341
 msgid "Record demos for each played level"
 msgstr "Spela in en demo för varje spelad nivå"
 
-#: src/pingus_main.cpp:735
+#: src/pingus_main.cpp:758
 msgid "Error caught from Pingus: "
 msgstr "Fel fångat från Pingus: "
 
-#: src/pingus_main.cpp:739
+#: src/pingus_main.cpp:762
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Slut på minnet!"
 
-#: src/pingus_main.cpp:743
+#: src/pingus_main.cpp:766
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: standardavbrott fångat!:\n"
 
-#: src/pingus_main.cpp:747
+#: src/pingus_main.cpp:770
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: okänt kast fångat!"
 
@@ -409,109 +284,42 @@ msgstr "_du spelar!"
 msgid "Exit"
 msgstr "Avsluta"
 
-#: src/addon_menu.cpp:59 src/option_menu.cpp:94
-msgid "Close"
-msgstr ""
+#: src/game_time.cpp:66
+msgid "unlimited"
+msgstr "obegränsad"
 
-#: src/result_screen.cpp:131
-msgid "Retry"
-msgstr "Försök igen"
+#: src/start_screen.cpp:74 src/editor/level_head.cpp:53
+msgid "Ok"
+msgstr "Ok"
 
-#: src/result_screen.cpp:181
-msgid "Success!"
-msgstr "Succé!"
+#: src/start_screen.cpp:114 src/level_menu.cpp:57 src/result_screen.cpp:98
+msgid "Abort"
+msgstr "Avbryt"
 
-#: src/result_screen.cpp:188
-msgid "Failure!"
-msgstr "Misslyckande!"
+#: src/start_screen.cpp:163
+msgid "Number of Pingus: "
+msgstr "Antal Pingus: "
 
-#: src/result_screen.cpp:197
-msgid "Perfect! You saved everyone possible - great!"
-msgstr "Perfekt! Du räddade alla som var möjliga - jättebra!"
+#: src/start_screen.cpp:166
+msgid "Number to Save: "
+msgstr "Antal att Rädda: "
 
-#: src/result_screen.cpp:199
-msgid "No-one got killed, pretty good work."
-msgstr "Ingen blev dödad, bra gjort"
+#: src/start_screen.cpp:169
+msgid "Time: "
+msgstr "Tid: "
 
-#: src/result_screen.cpp:201
-msgid ""
-"You saved exactly what you needed - you made it, but\n"
-"maybe you can do better?"
-msgstr ""
-"Du räddade precis vad du behövde, du klarade det, men\n"
-"kanske kan du bättre?"
+#: src/start_screen.cpp:176
+msgid "Author: "
+msgstr "Skapare: "
 
-#: src/result_screen.cpp:204
-msgid "Not everybody was saved, but still good work!"
-msgstr "Inte alla kunde räddas, men bra gjort ändå!"
+#: src/start_screen.cpp:179
+msgid "Filename: "
+msgstr "Filnamn: "
 
-#: src/result_screen.cpp:206
-msgid "What can I say, you made it - congratulations!"
-msgstr "Vad kan jag säga, du klarade det - grattis!"
-
-#: src/result_screen.cpp:211
-msgid "You killed everybody, not good."
-msgstr "Du dödade alla, inte bra."
-
-#: src/result_screen.cpp:213
-msgid "No-one got saved - I know you can do better."
-msgstr "Ingen räddades - jag vet att du kan bättre."
-
-#: src/result_screen.cpp:215
-msgid ""
-"You didn't save enough, but you saved a few.  Next\n"
-"time you might do better."
-msgstr ""
-"Du räddade inte tillräckligt, men några ändå, nästa\n"
-"gång blir det bättre."
-
-#: src/result_screen.cpp:218
-msgid "Only one more and you would have made it - try again!"
-msgstr "Bara en till så hade du klarat det - försök igen!"
-
-#: src/result_screen.cpp:220
-msgid "Only a handful more and you would have made it - try again!"
-msgstr "Bara några till så hade du klarat det - försök igen!"
-
-#: src/result_screen.cpp:222
-msgid "Better luck next time!"
-msgstr "Bättre lycka nästa gång!"
-
-#: src/result_screen.cpp:239
-msgid "Saved: "
-msgstr "Räddade: "
-
-#: src/result_screen.cpp:243
-#, fuzzy
-msgid "Died: "
-msgstr "Dödade: "
-
-#: src/result_screen.cpp:247
-msgid "Time left: "
-msgstr "Tid kvar: "
-
-#: src/components/pingus_counter.cpp:49
-#, fuzzy, c-format, boost-format
-msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
-msgstr "Utsläppt:%3d/%-3d   Ut:%3d   Räddade:%3d/%-3d"
-
-#: src/level_menu.cpp:108 src/pingus_menu.cpp:66
-#, fuzzy
-msgid "Levelsets"
-msgstr "-Nivådesign"
-
-#: src/level_menu.cpp:124
-#, fuzzy
-msgid "Solved:"
-msgstr "Räddade: "
-
-#: src/config.cpp:72
-msgid "Couldn't open: "
-msgstr "Kunde inte öppna: "
-
-#: src/config.cpp:171 src/config.cpp:205
-msgid "Unexpected char: '"
-msgstr "Oväntat tecken: '"
+#: src/actions/bridger.cpp:42 src/actions/bridger.cpp:216
+#: src/pingu_enums.cpp:39
+msgid "Bridger"
+msgstr "Byggare"
 
 #: src/screenshot.cpp:38
 msgid "Screenshot: Saving screenshot to: "
@@ -525,7 +333,95 @@ msgstr "Skärmdump: Skärmdump är klar."
 msgid "Screenshot: Couldn't write file: "
 msgstr "Skärmdump: Kunde inte skriva till fil: "
 
-#: src/editor/editor_screen.cpp:196
+#: src/pingu_enums.cpp:34
+msgid "Angel"
+msgstr "Ängel"
+
+#: src/pingu_enums.cpp:35
+msgid "Basher"
+msgstr "Bankare"
+
+#: src/pingu_enums.cpp:36
+msgid "Blocker"
+msgstr "Blockare"
+
+#: src/pingu_enums.cpp:37
+msgid "Boarder"
+msgstr "Skejtare"
+
+#: src/pingu_enums.cpp:38
+msgid "Bomber"
+msgstr "Bombare"
+
+#: src/pingu_enums.cpp:40
+msgid "Climber"
+msgstr "Klättrare"
+
+#: src/pingu_enums.cpp:41
+msgid "Digger"
+msgstr "Grävare"
+
+#: src/pingu_enums.cpp:42
+msgid "Drown"
+msgstr "Drunkna"
+
+#: src/pingu_enums.cpp:43
+msgid "Exiter"
+msgstr "Lämnar"
+
+#: src/pingu_enums.cpp:44
+msgid "Faller"
+msgstr "Fallare"
+
+#: src/pingu_enums.cpp:45
+msgid "Floater"
+msgstr "Svävare"
+
+#: src/pingu_enums.cpp:46
+msgid "Jumper"
+msgstr "Hoppare"
+
+#: src/pingu_enums.cpp:47
+msgid "Laserkill"
+msgstr "Laserdöd"
+
+#: src/pingu_enums.cpp:48
+msgid "Miner"
+msgstr "Tunnlare"
+
+#: src/pingu_enums.cpp:49
+msgid "Rocketlauncher"
+msgstr "Raketavfyrare"
+
+#: src/pingu_enums.cpp:50
+msgid "Slider"
+msgstr "Glidare"
+
+#: src/pingu_enums.cpp:51
+msgid "Smashed"
+msgstr "Krossad"
+
+#: src/pingu_enums.cpp:52
+msgid "Splashed"
+msgstr "Utsmetad"
+
+#: src/pingu_enums.cpp:53
+msgid "Superman"
+msgstr "Stålman"
+
+#: src/pingu_enums.cpp:54
+msgid "Teleported"
+msgstr "Teleporterad"
+
+#: src/pingu_enums.cpp:55
+msgid "Waiter"
+msgstr "Väntare"
+
+#: src/pingu_enums.cpp:56
+msgid "Walker"
+msgstr "Gångare"
+
+#: src/editor/editor_screen.cpp:197
 msgid ""
 "Select all\n"
 "Clear Selection\n"
@@ -537,7 +433,7 @@ msgid ""
 "Rotate 270 degree\n"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:218
+#: src/editor/editor_screen.cpp:219
 msgid ""
 "Flip object horizontaly\n"
 "Flip object vertically\n"
@@ -548,7 +444,7 @@ msgid ""
 "Move objects right\n"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:230
+#: src/editor/editor_screen.cpp:231
 msgid ""
 "You should name your level files systematically, i.e. by their theme, their "
 "number and your nickname:\n"
@@ -568,6 +464,45 @@ msgid ""
 "to the GPL, if you want to have your level under a different license, you "
 "have to change that reference.\n"
 msgstr ""
+
+#: src/editor/file_dialog.cpp:56
+msgid "Datadir"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:58
+msgid "Userdir"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:61
+msgid "Open"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:61
+#, fuzzy
+msgid "Save"
+msgstr "Räddade: "
+
+#: src/editor/file_dialog.cpp:64
+msgid "Cancel"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:75
+#, fuzzy
+msgid "Filename:"
+msgstr "Filnamn: "
+
+#: src/editor/file_dialog.cpp:76
+msgid "Pathname:"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:102
+msgid "Open a level"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:102
+#, fuzzy
+msgid "Save your level"
+msgstr "Spara nivån (F6)"
 
 #: src/editor/panel.cpp:153
 #, fuzzy
@@ -660,6 +595,66 @@ msgstr ""
 #, fuzzy
 msgid "Display help"
 msgstr "Visar den här hjälpen"
+
+#: src/editor/object_selector.cpp:309
+#, fuzzy
+msgid "Entrance"
+msgstr "e - Ingång"
+
+#: src/editor/object_selector.cpp:310
+#, fuzzy
+msgid "Groundpiece (ground)"
+msgstr "g - Markbit (mark)"
+
+#: src/editor/object_selector.cpp:311
+#, fuzzy
+msgid "Groundpiece (solid)"
+msgstr "s - Markbit (solid)"
+
+#: src/editor/object_selector.cpp:312
+#, fuzzy
+msgid "Groundpiece (bridge)"
+msgstr "b - Markbit (bro)"
+
+#: src/editor/object_selector.cpp:313
+#, fuzzy
+msgid "Groundpiece (transparent)"
+msgstr "n - Markbit (transparent)"
+
+#: src/editor/object_selector.cpp:314
+#, fuzzy
+msgid "Groundpiece (remove)"
+msgstr "r - Markbit (ta bort)"
+
+#: src/editor/object_selector.cpp:315
+#, fuzzy
+msgid "Hotspot"
+msgstr "h - Hotspot"
+
+#: src/editor/object_selector.cpp:316
+#, fuzzy
+msgid "Background"
+msgstr "z - Bakgrund"
+
+#: src/editor/object_selector.cpp:319
+#, fuzzy
+msgid "Liquid"
+msgstr "l - Vätska"
+
+#: src/editor/object_selector.cpp:320
+#, fuzzy
+msgid "Trap"
+msgstr "t - Fällor"
+
+#: src/editor/object_selector.cpp:321
+#, fuzzy
+msgid "Weather"
+msgstr "w - Väder"
+
+#: src/editor/object_selector.cpp:322
+#, fuzzy
+msgid "Special Object"
+msgstr "-Special"
 
 #: src/editor/object_properties.cpp:41 src/editor/object_properties.cpp:415
 msgid "Object:"
@@ -781,141 +776,9 @@ msgstr ""
 msgid "Object: "
 msgstr ""
 
-#: src/editor/file_dialog.cpp:56
-msgid "Datadir"
+#: src/addon_menu.cpp:59 src/option_menu.cpp:94
+msgid "Close"
 msgstr ""
-
-#: src/editor/file_dialog.cpp:58
-msgid "Userdir"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:61
-msgid "Open"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:61
-#, fuzzy
-msgid "Save"
-msgstr "Räddade: "
-
-#: src/editor/file_dialog.cpp:64
-msgid "Cancel"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:75
-#, fuzzy
-msgid "Filename:"
-msgstr "Filnamn: "
-
-#: src/editor/file_dialog.cpp:76
-msgid "Pathname:"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:102
-msgid "Open a level"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:102
-#, fuzzy
-msgid "Save your level"
-msgstr "Spara nivån (F6)"
-
-#: src/editor/object_selector.cpp:309
-#, fuzzy
-msgid "Entrance"
-msgstr "e - Ingång"
-
-#: src/editor/object_selector.cpp:310
-#, fuzzy
-msgid "Groundpiece (ground)"
-msgstr "g - Markbit (mark)"
-
-#: src/editor/object_selector.cpp:311
-#, fuzzy
-msgid "Groundpiece (solid)"
-msgstr "s - Markbit (solid)"
-
-#: src/editor/object_selector.cpp:312
-#, fuzzy
-msgid "Groundpiece (bridge)"
-msgstr "b - Markbit (bro)"
-
-#: src/editor/object_selector.cpp:313
-#, fuzzy
-msgid "Groundpiece (transparent)"
-msgstr "n - Markbit (transparent)"
-
-#: src/editor/object_selector.cpp:314
-#, fuzzy
-msgid "Groundpiece (remove)"
-msgstr "r - Markbit (ta bort)"
-
-#: src/editor/object_selector.cpp:315
-#, fuzzy
-msgid "Hotspot"
-msgstr "h - Hotspot"
-
-#: src/editor/object_selector.cpp:316
-#, fuzzy
-msgid "Background"
-msgstr "z - Bakgrund"
-
-#: src/editor/object_selector.cpp:319
-#, fuzzy
-msgid "Liquid"
-msgstr "l - Vätska"
-
-#: src/editor/object_selector.cpp:320
-#, fuzzy
-msgid "Trap"
-msgstr "t - Fällor"
-
-#: src/editor/object_selector.cpp:321
-#, fuzzy
-msgid "Weather"
-msgstr "w - Väder"
-
-#: src/editor/object_selector.cpp:322
-#, fuzzy
-msgid "Special Object"
-msgstr "-Special"
-
-#: src/worldmap/worldmap.cpp:425
-msgid "...walking..."
-msgstr "...går..."
-
-#: src/worldmap/manager.cpp:107
-msgid "Show Ending?"
-msgstr "Visa Slut?"
-
-#: src/worldmap/manager.cpp:138
-msgid "Show Story?"
-msgstr "Visa Historia?"
-
-#: src/worldmap/manager.cpp:167
-msgid "Leave?"
-msgstr "Lämna?"
-
-#: src/worldmap/manager.cpp:207
-#, fuzzy
-msgid "Enter?"
-msgstr "Gå in?"
-
-#: src/worldmap/level_dot.cpp:152 src/worldmap/level_dot.cpp:162
-msgid "locked"
-msgstr "låst"
-
-#: src/exit_menu.cpp:46 src/exit_menu.cpp:50
-msgid "Yes"
-msgstr "Ja"
-
-#: src/exit_menu.cpp:85 src/exit_menu.cpp:89
-msgid "No"
-msgstr "Nej"
-
-#: src/exit_menu.cpp:124
-msgid "Exit Pingus?"
-msgstr "Avsluta Pingus?"
 
 #: src/pingus_menu.cpp:50 src/pingus_menu.cpp:72
 #, fuzzy
@@ -939,6 +802,11 @@ msgstr "..:: Starta en bidragen nivå ::.."
 #: src/pingus_menu.cpp:62
 msgid "..:: Bye, bye ::.."
 msgstr "..:: Adjö ::.."
+
+#: src/pingus_menu.cpp:66 src/level_menu.cpp:108
+#, fuzzy
+msgid "Levelsets"
+msgstr "-Nivådesign"
 
 #: src/pingus_menu.cpp:67
 #, fuzzy
@@ -965,6 +833,166 @@ msgid ""
 "..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
 "fullscreen   ::   F12: screenshot ::.."
 msgstr ""
+
+#: src/level_menu.cpp:124
+#, fuzzy
+msgid "Solved:"
+msgstr "Räddade: "
+
+#: src/level_menu.cpp:125
+#, fuzzy
+msgid "levels"
+msgstr "-Nivådesign"
+
+#: src/level_menu.cpp:195
+msgid "Title"
+msgstr ""
+
+#: src/level_menu.cpp:196
+#, fuzzy
+msgid "Status"
+msgstr "Starta"
+
+#: src/level_menu.cpp:212
+#, fuzzy
+msgid "solved"
+msgstr "Räddade: "
+
+#: src/level_menu.cpp:214
+#, fuzzy
+msgid "unsolved"
+msgstr "Räddade: "
+
+#: src/components/pingus_counter.cpp:49
+#, fuzzy, c-format, boost-format
+msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
+msgstr "Utsläppt:%3d/%-3d   Ut:%3d   Räddade:%3d/%-3d"
+
+#: src/worldmap/manager.cpp:107
+msgid "Show Ending?"
+msgstr "Visa Slut?"
+
+#: src/worldmap/manager.cpp:138
+msgid "Show Story?"
+msgstr "Visa Historia?"
+
+#: src/worldmap/manager.cpp:167
+msgid "Leave?"
+msgstr "Lämna?"
+
+#: src/worldmap/manager.cpp:207
+#, fuzzy
+msgid "Enter?"
+msgstr "Gå in?"
+
+#: src/worldmap/worldmap.cpp:423
+msgid "...walking..."
+msgstr "...går..."
+
+#: src/worldmap/level_dot.cpp:151 src/worldmap/level_dot.cpp:161
+msgid "locked"
+msgstr "låst"
+
+#: src/story_screen.cpp:40
+msgid "skip"
+msgstr ""
+
+#: src/result_screen.cpp:131
+msgid "Retry"
+msgstr "Försök igen"
+
+#: src/result_screen.cpp:181
+msgid "Success!"
+msgstr "Succé!"
+
+#: src/result_screen.cpp:188
+msgid "Failure!"
+msgstr "Misslyckande!"
+
+#: src/result_screen.cpp:197
+msgid "Perfect! You saved everyone possible - great!"
+msgstr "Perfekt! Du räddade alla som var möjliga - jättebra!"
+
+#: src/result_screen.cpp:199
+msgid "No-one got killed, pretty good work."
+msgstr "Ingen blev dödad, bra gjort"
+
+#: src/result_screen.cpp:201
+msgid ""
+"You saved exactly what you needed - you made it, but\n"
+"maybe you can do better?"
+msgstr ""
+"Du räddade precis vad du behövde, du klarade det, men\n"
+"kanske kan du bättre?"
+
+#: src/result_screen.cpp:204
+msgid "Not everybody was saved, but still good work!"
+msgstr "Inte alla kunde räddas, men bra gjort ändå!"
+
+#: src/result_screen.cpp:206
+msgid "What can I say, you made it - congratulations!"
+msgstr "Vad kan jag säga, du klarade det - grattis!"
+
+#: src/result_screen.cpp:211
+msgid "You killed everybody, not good."
+msgstr "Du dödade alla, inte bra."
+
+#: src/result_screen.cpp:213
+msgid "No-one got saved - I know you can do better."
+msgstr "Ingen räddades - jag vet att du kan bättre."
+
+#: src/result_screen.cpp:215
+msgid ""
+"You didn't save enough, but you saved a few.  Next\n"
+"time you might do better."
+msgstr ""
+"Du räddade inte tillräckligt, men några ändå, nästa\n"
+"gång blir det bättre."
+
+#: src/result_screen.cpp:218
+msgid "Only one more and you would have made it - try again!"
+msgstr "Bara en till så hade du klarat det - försök igen!"
+
+#: src/result_screen.cpp:220
+msgid "Only a handful more and you would have made it - try again!"
+msgstr "Bara några till så hade du klarat det - försök igen!"
+
+#: src/result_screen.cpp:222
+msgid "Better luck next time!"
+msgstr "Bättre lycka nästa gång!"
+
+#: src/result_screen.cpp:239
+msgid "Saved: "
+msgstr "Räddade: "
+
+#: src/result_screen.cpp:243
+#, fuzzy
+msgid "Died: "
+msgstr "Dödade: "
+
+#: src/result_screen.cpp:247
+msgid "Time left: "
+msgstr "Tid kvar: "
+
+#: src/config.cpp:72
+msgid "Couldn't open: "
+msgstr "Kunde inte öppna: "
+
+#: src/config.cpp:171 src/config.cpp:205
+msgid "Unexpected char: '"
+msgstr "Oväntat tecken: '"
+
+#: src/exit_menu.cpp:46 src/exit_menu.cpp:50
+msgid "Yes"
+msgstr "Ja"
+
+#: src/exit_menu.cpp:85 src/exit_menu.cpp:89
+msgid "No"
+msgstr "Nej"
+
+#: src/exit_menu.cpp:124
+msgid "Exit Pingus?"
+msgstr "Avsluta Pingus?"
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
 msgid "If the way is blocked, bash away"
@@ -1244,7 +1272,7 @@ msgstr ""
 msgid ""
 "You've mastered the last challenge and now face the next. Their path to "
 "salvation seems to be cursed, but by whom? There is no time to think about "
-"it, since the next deadly challange already awaits the Pingus. Two mighty "
+"it, since the next deadly challenge already awaits the Pingus. Two mighty "
 "roots block the way, but without a basher at hand to bash them away, "
 "sacrifice might be the only option..."
 msgstr ""
@@ -1300,10 +1328,11 @@ msgstr ""
 #: data/levels/halloween/halloween7-grumbel.pingus:8
 msgid ""
 "This is by far the deepest pit the Pingus have yet encountered. Building a "
-"bridge across it seems obvious, but can't work. The exit is deep down in the "
-"pit itself, but Pingus who go down will just end up splattered upon the "
-"ground. But you have two groups of Pingus at your disposal... can you make "
-"them work together to reach even an exit this well hidden?"
+"bridge across it seems obvious but that won't help since the exit is deep "
+"down in the pit itself. Pingus who try to go down the pit will just end up "
+"splattered all over the ground. You have two groups of Pingus at your "
+"disposal, can you make them work together to reach even an exit this well "
+"hidden?"
 msgstr ""
 
 #: data/levels/halloween/halloween8-plouj.pingus:7
@@ -1509,9 +1538,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Difficulty: "
 #~ msgstr "Svårighetsgrad:"
-
-#~ msgid "Start"
-#~ msgstr "Starta"
 
 #, fuzzy
 #~ msgid ""

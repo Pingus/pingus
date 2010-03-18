@@ -332,7 +332,7 @@ class _SpaceListOptionClass:
 SpaceListOption = _SpaceListOptionClass()
 
 def DefineOptions(filename, args):
-   opts = Options(filename, args)
+   opts = Variables(filename, args)
    opts.Add('CC', 'C Compiler', 'gcc')
    opts.Add('CXX', 'C++ Compiler', 'g++')
 #   opts.Add('debug', 'Build with debugging options', 0)
@@ -346,11 +346,11 @@ def DefineOptions(filename, args):
    opts.Add('CCFLAGS',    'C Compiler flags', [])
    opts.Add('LINKFLAGS',  'Linker Compiler flags', [])
 
-   opts.Add(BoolOption('with_xinput',        'Build with Xinput support', False))
-   opts.Add(BoolOption('with_linuxusbmouse', 'Build with Linux USB mouse support', True))
-   opts.Add(BoolOption('with_linuxevdev',    'Build with Linux evdev support', True))
-   opts.Add(BoolOption('with_wiimote',       'Build with Wiimote support', False))
-   opts.Add(BoolOption('ignore_errors',      'Ignore any fatal configuration errors', False))
+   opts.Add(BoolVariable('with_xinput',        'Build with Xinput support', False))
+   opts.Add(BoolVariable('with_linuxusbmouse', 'Build with Linux USB mouse support', True))
+   opts.Add(BoolVariable('with_linuxevdev',    'Build with Linux evdev support', True))
+   opts.Add(BoolVariable('with_wiimote',       'Build with Wiimote support', False))
+   opts.Add(BoolVariable('ignore_errors',      'Ignore any fatal configuration errors', False))
    opts.Add('optional_sources', 'Additional source files', [])
    return opts
 

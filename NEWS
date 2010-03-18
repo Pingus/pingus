@@ -1,6 +1,6 @@
-0.7.3 (??/Nov/2007)
+0.7.3 (18/Mar/2010)
 ===================
-* fixed game not starting when no soundcard is present
+* fixes some compiler warnings
 
 
 0.7.2 (31/Oct/2007)

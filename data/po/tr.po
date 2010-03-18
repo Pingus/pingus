@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-31 06:55+0100\n"
+"POT-Creation-Date: 2010-03-18 14:31+0100\n"
 "PO-Revision-Date: 2003-04-15 17:28+0200\n"
 "Last-Translator: Çaðrý Çöltekin <cagri@metu.edu.tr>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
@@ -18,231 +18,106 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  tr.po (Pingus 0.5.0)  #-#-#-#-#\n"
 
-#: src/game_time.cpp:66
-msgid "unlimited"
-msgstr "sýnýrsýz"
-
-#: src/story_screen.cpp:40
-msgid "skip"
-msgstr ""
-
-#: src/pingu_enums.cpp:34
-msgid "Angel"
-msgstr "Angel"
-
-#: src/pingu_enums.cpp:35
-msgid "Basher"
-msgstr "Basher"
-
-#: src/pingu_enums.cpp:36
-msgid "Blocker"
-msgstr "Blocker"
-
-#: src/pingu_enums.cpp:37
-msgid "Boarder"
-msgstr "Boarder"
-
-#: src/pingu_enums.cpp:38
-msgid "Bomber"
-msgstr "Bomber"
-
-#: src/pingu_enums.cpp:39 src/actions/bridger.cpp:42
-#: src/actions/bridger.cpp:216
-msgid "Bridger"
-msgstr "Bridger"
-
-#: src/pingu_enums.cpp:40
-msgid "Climber"
-msgstr "Climber"
-
-#: src/pingu_enums.cpp:41
-msgid "Digger"
-msgstr "Digger"
-
-#: src/pingu_enums.cpp:42
-msgid "Drown"
-msgstr "Drown"
-
-#: src/pingu_enums.cpp:43
-msgid "Exiter"
-msgstr "Exiter"
-
-#: src/pingu_enums.cpp:44
-msgid "Faller"
-msgstr "Faller"
-
-#: src/pingu_enums.cpp:45
-msgid "Floater"
-msgstr "Floater"
-
-#: src/pingu_enums.cpp:46
-msgid "Jumper"
-msgstr "Jumper"
-
-#: src/pingu_enums.cpp:47
-msgid "Laserkill"
-msgstr "Laserkill"
-
-#: src/pingu_enums.cpp:48
-msgid "Miner"
-msgstr "Miner"
-
-#: src/pingu_enums.cpp:49
-msgid "Rocketlauncher"
-msgstr "Rocketlauncher"
-
-#: src/pingu_enums.cpp:50
-msgid "Slider"
-msgstr "Slider"
-
-#: src/pingu_enums.cpp:51
-msgid "Smashed"
-msgstr "Smashed"
-
-#: src/pingu_enums.cpp:52
-msgid "Splashed"
-msgstr "Splashed"
-
-#: src/pingu_enums.cpp:53
-msgid "Superman"
-msgstr "Superman"
-
-#: src/pingu_enums.cpp:54
-msgid "Teleported"
-msgstr "Teleported"
-
-#: src/pingu_enums.cpp:55
-msgid "Waiter"
-msgstr "Waiter"
-
-#: src/pingu_enums.cpp:56
-msgid "Walker"
-msgstr "Walker"
-
-#: src/start_screen.cpp:74 src/editor/level_head.cpp:53
-msgid "Ok"
-msgstr "Tamam"
-
-#: src/start_screen.cpp:114 src/result_screen.cpp:98 src/level_menu.cpp:57
-msgid "Abort"
-msgstr "Çýk"
-
-#: src/start_screen.cpp:163
-msgid "Number of Pingus: "
-msgstr "Pingu sayýsý: "
-
-#: src/start_screen.cpp:166
-msgid "Number to Save: "
-msgstr "Kurtarýlýcak Pingus: "
-
-#: src/start_screen.cpp:169
-msgid "Time: "
-msgstr "Süre: "
-
-#: src/start_screen.cpp:176
-msgid "Author: "
-msgstr "Tasarlayan: "
-
-#: src/start_screen.cpp:179
-msgid "Filename: "
-msgstr "Dosya adý: "
-
-#: src/pingus_main.cpp:259
+#: src/pingus_main.cpp:260
 msgid "Displays this help"
 msgstr "Bu yardým ekranýný göster"
 
-#: src/pingus_main.cpp:261
+#: src/pingus_main.cpp:262
 #, fuzzy
 msgid "Print version number and exit"
 msgstr "Sürümü ekrana basar ve çýkar"
 
-#: src/pingus_main.cpp:263
+#: src/pingus_main.cpp:264
 msgid "Display:"
 msgstr ""
 
 # FIXME: needs a better translation
-#: src/pingus_main.cpp:265
+#: src/pingus_main.cpp:266
 msgid "Start in Window Mode"
 msgstr "Pencerede baþlat"
 
-#: src/pingus_main.cpp:267
+#: src/pingus_main.cpp:268
 msgid "Start in Fullscreen"
 msgstr "Tümekran baþlat"
 
-#: src/pingus_main.cpp:269
+#: src/pingus_main.cpp:270
 msgid "Allow Window resize (buggy)"
 msgstr ""
 
-#: src/pingus_main.cpp:271
+#: src/pingus_main.cpp:272
 msgid "Enable software cursor"
 msgstr "Yazýlým imleci kullan"
 
-#: src/pingus_main.cpp:273
+#: src/pingus_main.cpp:274
 msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "Pingus çözünürlüðünü ayarla (öntanýlý: 640x480)"
 
-#: src/pingus_main.cpp:275
+#: src/pingus_main.cpp:276
 msgid "Sound:"
 msgstr "Ses"
 
-#: src/pingus_main.cpp:277
+#: src/pingus_main.cpp:278
 msgid "Disable sound"
 msgstr "Sesi Kapat"
 
-#: src/pingus_main.cpp:279
+#: src/pingus_main.cpp:280
 msgid "Disable music"
 msgstr "Müziði Kapat"
 
-#: src/pingus_main.cpp:283
+#: src/pingus_main.cpp:284
 msgid "Select language to use with Pingus"
 msgstr ""
 
-#: src/pingus_main.cpp:285
+#: src/pingus_main.cpp:286
 msgid "List all available languages"
 msgstr ""
 
-#: src/pingus_main.cpp:289
+#: src/pingus_main.cpp:290
 #, fuzzy
 msgid "Loads the level editor"
 msgstr "..:: Seviye Editörünü Çalýþtýr ::.."
 
-#: src/pingus_main.cpp:291
+#: src/pingus_main.cpp:292
+msgid "Save the level given level to FILENAME and quit"
+msgstr ""
+
+#: src/pingus_main.cpp:294
 msgid "Test a font"
 msgstr ""
 
-#: src/pingus_main.cpp:293
+#: src/pingus_main.cpp:296
 msgid "Shows the credits"
 msgstr ""
 
-#: src/pingus_main.cpp:295
+#: src/pingus_main.cpp:298
 #, fuzzy
 msgid "Misc Options:"
 msgstr "Seçenekler:"
 
-#: src/pingus_main.cpp:296
+#: src/pingus_main.cpp:299
 msgid "PATH"
 msgstr ""
 
-#: src/pingus_main.cpp:297
+#: src/pingus_main.cpp:300
 #, fuzzy
 msgid "Set the path to load the data files to 'path'"
 msgstr ""
 "   -d, --datadir DÝZÝN/YOL  Data dosyalarýnýn yüklenecek `yol' (path)\n"
 
-#: src/pingus_main.cpp:300
+#: src/pingus_main.cpp:303
 msgid "Disable automatic scrolling"
 msgstr "Automatik kaydýrmayý kapat"
 
-#: src/pingus_main.cpp:302
+#: src/pingus_main.cpp:305
 msgid "Don't read ~/.pingus/config"
 msgstr "~/.pingus/config dosyasýný okuma"
 
-#: src/pingus_main.cpp:303
+#: src/pingus_main.cpp:306
 #, fuzzy
 msgid "FILE"
 msgstr "DOSYA    "
 
-#: src/pingus_main.cpp:304
+#: src/pingus_main.cpp:307
 #, fuzzy
 msgid ""
 "Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
@@ -250,85 +125,85 @@ msgid ""
 msgstr "CPU kullanýmýný azalt. Bu yavaþ makinalarda oyunu hýzlandýrabilir"
 
 # FIXME: better translation
-#: src/pingus_main.cpp:307
+#: src/pingus_main.cpp:310
 msgid "Uses the controller given in FILE"
 msgstr "DOSYA'daki denetleyiciyi kullan"
 
-#: src/pingus_main.cpp:309
+#: src/pingus_main.cpp:312
 msgid "Debugging and experimental stuff:"
 msgstr "Deneyseyl þeyler:"
 
-#: src/pingus_main.cpp:311
+#: src/pingus_main.cpp:314
 #, fuzzy
 msgid "Enables some features, only interesting to programmers"
 msgstr "Sadece programcýlariçin ilginç olan, bazý özellikleri çalýþtýrýr."
 
 # worldmap = ??
-#: src/pingus_main.cpp:314
+#: src/pingus_main.cpp:317
 #, fuzzy
 msgid "Load a custom worldmap"
 msgstr "DOSYAdan özel worldmap yükle"
 
-#: src/pingus_main.cpp:316
+#: src/pingus_main.cpp:319
 #, fuzzy
 msgid ""
 "Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
 "actions, sound, resources, gui, input, pathmgr"
 msgstr "SEÇENEKLER: tiles, gametime, actions, sound, resources, gui."
 
-#: src/pingus_main.cpp:320
+#: src/pingus_main.cpp:323
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "En az N resim karesini atla. Büyük N oyunu hýzlandýrýr"
 
-#: src/pingus_main.cpp:322
+#: src/pingus_main.cpp:325
 msgid "Skip at most N frames"
 msgstr "En fazla N resim karesi atla"
 
-#: src/pingus_main.cpp:324
+#: src/pingus_main.cpp:327
 msgid "Set both min and max frameskip to N"
 msgstr "Tam N resim karesi atla"
 
-#: src/pingus_main.cpp:326
+#: src/pingus_main.cpp:329
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Oyun hýzýný ayarla (0=en hýzlý, >0=daha yavaþ)"
 
 # FIXME: better translation.
-#: src/pingus_main.cpp:328
+#: src/pingus_main.cpp:331
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Döþeme boyutunu ayarla (öntanýmlý: 32)"
 
-#: src/pingus_main.cpp:330
+#: src/pingus_main.cpp:333
 msgid "Disable some cpu intensive features"
 msgstr "Ýþlemci gerektiren bazý özellikleri kapat"
 
-#: src/pingus_main.cpp:334
+#: src/pingus_main.cpp:337
 msgid "Demo playing and recording:"
 msgstr "Demo oynatma ve kayýt:"
 
-#: src/pingus_main.cpp:336
+#: src/pingus_main.cpp:339
 #, fuzzy
 msgid "Plays a demo session"
 msgstr "DOSYA'dan bir demo oynat"
 
-#: src/pingus_main.cpp:338
+#: src/pingus_main.cpp:341
 msgid "Record demos for each played level"
 msgstr "Oynanan her oyun için demo kaydet"
 
-#: src/pingus_main.cpp:735
+#: src/pingus_main.cpp:758
 msgid "Error caught from Pingus: "
 msgstr "Pingus'ta hata saptandý: "
 
-#: src/pingus_main.cpp:739
+#: src/pingus_main.cpp:762
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Bellek yetersiz!"
 
 # bu komik oldu -cagri
 # daha mi iyi boyle :) -gd
-#: src/pingus_main.cpp:743
+#: src/pingus_main.cpp:766
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Genel olaðan dýþý durum saptandý!:\n"
 
-#: src/pingus_main.cpp:747
+#: src/pingus_main.cpp:770
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Bilinmeyen bir hata saptandý!"
 
@@ -410,108 +285,42 @@ msgstr "_teþekkürler!"
 msgid "Exit"
 msgstr "Çýkýþ"
 
-#: src/addon_menu.cpp:59 src/option_menu.cpp:94
-msgid "Close"
-msgstr ""
+#: src/game_time.cpp:66
+msgid "unlimited"
+msgstr "sýnýrsýz"
 
-#: src/result_screen.cpp:131
-msgid "Retry"
-msgstr "Yeniden dene"
+#: src/start_screen.cpp:74 src/editor/level_head.cpp:53
+msgid "Ok"
+msgstr "Tamam"
 
-#: src/result_screen.cpp:181
-msgid "Success!"
-msgstr "Aferin!"
+#: src/start_screen.cpp:114 src/level_menu.cpp:57 src/result_screen.cpp:98
+msgid "Abort"
+msgstr "Çýk"
 
-#: src/result_screen.cpp:188
-msgid "Failure!"
-msgstr "Baþaramadýn!"
+#: src/start_screen.cpp:163
+msgid "Number of Pingus: "
+msgstr "Pingu sayýsý: "
 
-#: src/result_screen.cpp:197
-msgid "Perfect! You saved everyone possible - great!"
-msgstr "Mükemmel! Herkesi kurtardýn galiba."
+#: src/start_screen.cpp:166
+msgid "Number to Save: "
+msgstr "Kurtarýlýcak Pingus: "
 
-#: src/result_screen.cpp:199
-msgid "No-one got killed, pretty good work."
-msgstr "Hiçkimse ölmedi, iyi iþ çýkardýn."
+#: src/start_screen.cpp:169
+msgid "Time: "
+msgstr "Süre: "
 
-#: src/result_screen.cpp:201
-msgid ""
-"You saved exactly what you needed - you made it, but\n"
-"maybe you can do better?"
-msgstr ""
-"Tam gerektiði kadar Pingu kurtardýn, geçer not, ama\n"
-"belki daha iyisini yapabilisin, hý?"
+#: src/start_screen.cpp:176
+msgid "Author: "
+msgstr "Tasarlayan: "
 
-#: src/result_screen.cpp:204
-msgid "Not everybody was saved, but still good work!"
-msgstr "Herkesi kurtaramadýn, ama yine de iyi iþ çýkardýn!"
+#: src/start_screen.cpp:179
+msgid "Filename: "
+msgstr "Dosya adý: "
 
-#: src/result_screen.cpp:206
-msgid "What can I say, you made it - congratulations!"
-msgstr "Ne diyebilirim, yaptýn, aferin!"
-
-#: src/result_screen.cpp:211
-msgid "You killed everybody, not good."
-msgstr "Herkesi öldürdun. Hiç hoþ degil."
-
-#: src/result_screen.cpp:213
-msgid "No-one got saved - I know you can do better."
-msgstr "Hiç kimseyi kurtaramadýn, daha iyisini yapabileceðinden eminim."
-
-#: src/result_screen.cpp:215
-msgid ""
-"You didn't save enough, but you saved a few.  Next\n"
-"time you might do better."
-msgstr ""
-"Yeterince kurtaramadýn, ama yine de birkaçý kurtuldu, bir\n"
-"dahakine daha dikkatli ol."
-
-#: src/result_screen.cpp:218
-msgid "Only one more and you would have made it - try again!"
-msgstr "Bir ya da iki tane daha kurtarsaydýn olacaktý, hadi tekrar!"
-
-#: src/result_screen.cpp:220
-msgid "Only a handful more and you would have made it - try again!"
-msgstr "Birkaç tane daha kurtarsan olacaktý, tekrar dene!"
-
-#: src/result_screen.cpp:222
-msgid "Better luck next time!"
-msgstr "Bir dahaki oyunda iyi þanslar!"
-
-#: src/result_screen.cpp:239
-msgid "Saved: "
-msgstr "Kurtarýlan: "
-
-#: src/result_screen.cpp:243
-msgid "Died: "
-msgstr "Ölen: "
-
-#: src/result_screen.cpp:247
-msgid "Time left: "
-msgstr "Kalan zaman: "
-
-#: src/components/pingus_counter.cpp:49
-#, fuzzy, c-format, boost-format
-msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
-msgstr "Çýkan: %3d/%-3d Dýþarýda: %3d  Kurtulan: %3d/%-3d"
-
-#: src/level_menu.cpp:108 src/pingus_menu.cpp:66
-#, fuzzy
-msgid "Levelsets"
-msgstr "-Seviye Tasarýmý"
-
-#: src/level_menu.cpp:124
-#, fuzzy
-msgid "Solved:"
-msgstr "Kurtarýlan: "
-
-#: src/config.cpp:72
-msgid "Couldn't open: "
-msgstr "Dosya açýlamadý: "
-
-#: src/config.cpp:171 src/config.cpp:205
-msgid "Unexpected char: '"
-msgstr "Beklenmeyen harf: '"
+#: src/actions/bridger.cpp:42 src/actions/bridger.cpp:216
+#: src/pingu_enums.cpp:39
+msgid "Bridger"
+msgstr "Bridger"
 
 #: src/screenshot.cpp:38
 msgid "Screenshot: Saving screenshot to: "
@@ -525,7 +334,95 @@ msgstr "Screenshot: Ekran görüntüsü kaydedildi."
 msgid "Screenshot: Couldn't write file: "
 msgstr "Screenshot: Dosyaya yazýlamýyor: "
 
-#: src/editor/editor_screen.cpp:196
+#: src/pingu_enums.cpp:34
+msgid "Angel"
+msgstr "Angel"
+
+#: src/pingu_enums.cpp:35
+msgid "Basher"
+msgstr "Basher"
+
+#: src/pingu_enums.cpp:36
+msgid "Blocker"
+msgstr "Blocker"
+
+#: src/pingu_enums.cpp:37
+msgid "Boarder"
+msgstr "Boarder"
+
+#: src/pingu_enums.cpp:38
+msgid "Bomber"
+msgstr "Bomber"
+
+#: src/pingu_enums.cpp:40
+msgid "Climber"
+msgstr "Climber"
+
+#: src/pingu_enums.cpp:41
+msgid "Digger"
+msgstr "Digger"
+
+#: src/pingu_enums.cpp:42
+msgid "Drown"
+msgstr "Drown"
+
+#: src/pingu_enums.cpp:43
+msgid "Exiter"
+msgstr "Exiter"
+
+#: src/pingu_enums.cpp:44
+msgid "Faller"
+msgstr "Faller"
+
+#: src/pingu_enums.cpp:45
+msgid "Floater"
+msgstr "Floater"
+
+#: src/pingu_enums.cpp:46
+msgid "Jumper"
+msgstr "Jumper"
+
+#: src/pingu_enums.cpp:47
+msgid "Laserkill"
+msgstr "Laserkill"
+
+#: src/pingu_enums.cpp:48
+msgid "Miner"
+msgstr "Miner"
+
+#: src/pingu_enums.cpp:49
+msgid "Rocketlauncher"
+msgstr "Rocketlauncher"
+
+#: src/pingu_enums.cpp:50
+msgid "Slider"
+msgstr "Slider"
+
+#: src/pingu_enums.cpp:51
+msgid "Smashed"
+msgstr "Smashed"
+
+#: src/pingu_enums.cpp:52
+msgid "Splashed"
+msgstr "Splashed"
+
+#: src/pingu_enums.cpp:53
+msgid "Superman"
+msgstr "Superman"
+
+#: src/pingu_enums.cpp:54
+msgid "Teleported"
+msgstr "Teleported"
+
+#: src/pingu_enums.cpp:55
+msgid "Waiter"
+msgstr "Waiter"
+
+#: src/pingu_enums.cpp:56
+msgid "Walker"
+msgstr "Walker"
+
+#: src/editor/editor_screen.cpp:197
 msgid ""
 "Select all\n"
 "Clear Selection\n"
@@ -537,7 +434,7 @@ msgid ""
 "Rotate 270 degree\n"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:218
+#: src/editor/editor_screen.cpp:219
 msgid ""
 "Flip object horizontaly\n"
 "Flip object vertically\n"
@@ -548,7 +445,7 @@ msgid ""
 "Move objects right\n"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:230
+#: src/editor/editor_screen.cpp:231
 msgid ""
 "You should name your level files systematically, i.e. by their theme, their "
 "number and your nickname:\n"
@@ -568,6 +465,45 @@ msgid ""
 "to the GPL, if you want to have your level under a different license, you "
 "have to change that reference.\n"
 msgstr ""
+
+#: src/editor/file_dialog.cpp:56
+msgid "Datadir"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:58
+msgid "Userdir"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:61
+msgid "Open"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:61
+#, fuzzy
+msgid "Save"
+msgstr "Kurtarýlan: "
+
+#: src/editor/file_dialog.cpp:64
+msgid "Cancel"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:75
+#, fuzzy
+msgid "Filename:"
+msgstr "Dosya adý: "
+
+#: src/editor/file_dialog.cpp:76
+msgid "Pathname:"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:102
+msgid "Open a level"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:102
+#, fuzzy
+msgid "Save your level"
+msgstr "Seviyeyi kayýt et (F6)"
 
 #: src/editor/panel.cpp:153
 #, fuzzy
@@ -660,6 +596,67 @@ msgstr ""
 #, fuzzy
 msgid "Display help"
 msgstr "Bu yardým ekranýný göster"
+
+#: src/editor/object_selector.cpp:309
+#, fuzzy
+msgid "Entrance"
+msgstr "e - Giriþ"
+
+#: src/editor/object_selector.cpp:310
+#, fuzzy
+msgid "Groundpiece (ground)"
+msgstr "g - Yer (toprak)"
+
+#: src/editor/object_selector.cpp:311
+#, fuzzy
+msgid "Groundpiece (solid)"
+msgstr "s - YerParçasi (katý)"
+
+#: src/editor/object_selector.cpp:312
+#, fuzzy
+msgid "Groundpiece (bridge)"
+msgstr "b - Köprü (bridge)"
+
+#: src/editor/object_selector.cpp:313
+#, fuzzy
+msgid "Groundpiece (transparent)"
+msgstr "n - YerParçasý (þeffaf)"
+
+#: src/editor/object_selector.cpp:314
+#, fuzzy
+msgid "Groundpiece (remove)"
+msgstr "r - YerParçasý (silici)"
+
+# buna daha iyi biþi uydurabiliyormusun?  -gd
+#: src/editor/object_selector.cpp:315
+#, fuzzy
+msgid "Hotspot"
+msgstr "h - GrafikParçasý"
+
+#: src/editor/object_selector.cpp:316
+#, fuzzy
+msgid "Background"
+msgstr "z - Arkaplan"
+
+#: src/editor/object_selector.cpp:319
+#, fuzzy
+msgid "Liquid"
+msgstr "l - Sývý"
+
+#: src/editor/object_selector.cpp:320
+#, fuzzy
+msgid "Trap"
+msgstr "t - Tuzak"
+
+#: src/editor/object_selector.cpp:321
+#, fuzzy
+msgid "Weather"
+msgstr "w - Ýklim"
+
+#: src/editor/object_selector.cpp:322
+#, fuzzy
+msgid "Special Object"
+msgstr "-Özel"
 
 #: src/editor/object_properties.cpp:41 src/editor/object_properties.cpp:415
 msgid "Object:"
@@ -781,142 +778,9 @@ msgstr ""
 msgid "Object: "
 msgstr ""
 
-#: src/editor/file_dialog.cpp:56
-msgid "Datadir"
+#: src/addon_menu.cpp:59 src/option_menu.cpp:94
+msgid "Close"
 msgstr ""
-
-#: src/editor/file_dialog.cpp:58
-msgid "Userdir"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:61
-msgid "Open"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:61
-#, fuzzy
-msgid "Save"
-msgstr "Kurtarýlan: "
-
-#: src/editor/file_dialog.cpp:64
-msgid "Cancel"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:75
-#, fuzzy
-msgid "Filename:"
-msgstr "Dosya adý: "
-
-#: src/editor/file_dialog.cpp:76
-msgid "Pathname:"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:102
-msgid "Open a level"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:102
-#, fuzzy
-msgid "Save your level"
-msgstr "Seviyeyi kayýt et (F6)"
-
-#: src/editor/object_selector.cpp:309
-#, fuzzy
-msgid "Entrance"
-msgstr "e - Giriþ"
-
-#: src/editor/object_selector.cpp:310
-#, fuzzy
-msgid "Groundpiece (ground)"
-msgstr "g - Yer (toprak)"
-
-#: src/editor/object_selector.cpp:311
-#, fuzzy
-msgid "Groundpiece (solid)"
-msgstr "s - YerParçasi (katý)"
-
-#: src/editor/object_selector.cpp:312
-#, fuzzy
-msgid "Groundpiece (bridge)"
-msgstr "b - Köprü (bridge)"
-
-#: src/editor/object_selector.cpp:313
-#, fuzzy
-msgid "Groundpiece (transparent)"
-msgstr "n - YerParçasý (þeffaf)"
-
-#: src/editor/object_selector.cpp:314
-#, fuzzy
-msgid "Groundpiece (remove)"
-msgstr "r - YerParçasý (silici)"
-
-# buna daha iyi biþi uydurabiliyormusun?  -gd
-#: src/editor/object_selector.cpp:315
-#, fuzzy
-msgid "Hotspot"
-msgstr "h - GrafikParçasý"
-
-#: src/editor/object_selector.cpp:316
-#, fuzzy
-msgid "Background"
-msgstr "z - Arkaplan"
-
-#: src/editor/object_selector.cpp:319
-#, fuzzy
-msgid "Liquid"
-msgstr "l - Sývý"
-
-#: src/editor/object_selector.cpp:320
-#, fuzzy
-msgid "Trap"
-msgstr "t - Tuzak"
-
-#: src/editor/object_selector.cpp:321
-#, fuzzy
-msgid "Weather"
-msgstr "w - Ýklim"
-
-#: src/editor/object_selector.cpp:322
-#, fuzzy
-msgid "Special Object"
-msgstr "-Özel"
-
-#: src/worldmap/worldmap.cpp:425
-msgid "...walking..."
-msgstr "...yürüyor..."
-
-#: src/worldmap/manager.cpp:107
-msgid "Show Ending?"
-msgstr "Sonu Göster..."
-
-#: src/worldmap/manager.cpp:138
-msgid "Show Story?"
-msgstr "Pingus öyküsü.."
-
-#: src/worldmap/manager.cpp:167
-msgid "Leave?"
-msgstr "Çýk?"
-
-#: src/worldmap/manager.cpp:207
-#, fuzzy
-msgid "Enter?"
-msgstr "Gir?"
-
-#: src/worldmap/level_dot.cpp:152 src/worldmap/level_dot.cpp:162
-msgid "locked"
-msgstr "kapalý"
-
-#: src/exit_menu.cpp:46 src/exit_menu.cpp:50
-msgid "Yes"
-msgstr "Evet"
-
-#: src/exit_menu.cpp:85 src/exit_menu.cpp:89
-msgid "No"
-msgstr "Hayýr"
-
-#: src/exit_menu.cpp:124
-msgid "Exit Pingus?"
-msgstr "Çýkýyor musun?"
 
 #: src/pingus_menu.cpp:50 src/pingus_menu.cpp:72
 #, fuzzy
@@ -941,6 +805,11 @@ msgstr "..:: Harici bir seviye baþlat ::.."
 #: src/pingus_menu.cpp:62
 msgid "..:: Bye, bye ::.."
 msgstr "..:: Güle güle... ::.."
+
+#: src/pingus_menu.cpp:66 src/level_menu.cpp:108
+#, fuzzy
+msgid "Levelsets"
+msgstr "-Seviye Tasarýmý"
 
 # FIXME: bu nasil olmuþ? contrib -> katýlýmcý, dýþarlýklý :))) -gd 
 #: src/pingus_menu.cpp:67
@@ -968,6 +837,165 @@ msgid ""
 "..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
 "fullscreen   ::   F12: screenshot ::.."
 msgstr ""
+
+#: src/level_menu.cpp:124
+#, fuzzy
+msgid "Solved:"
+msgstr "Kurtarýlan: "
+
+#: src/level_menu.cpp:125
+#, fuzzy
+msgid "levels"
+msgstr "-Seviye Tasarýmý"
+
+#: src/level_menu.cpp:195
+msgid "Title"
+msgstr ""
+
+#: src/level_menu.cpp:196
+#, fuzzy
+msgid "Status"
+msgstr "Baþla"
+
+#: src/level_menu.cpp:212
+#, fuzzy
+msgid "solved"
+msgstr "Kurtarýlan: "
+
+#: src/level_menu.cpp:214
+#, fuzzy
+msgid "unsolved"
+msgstr "Kurtarýlan: "
+
+#: src/components/pingus_counter.cpp:49
+#, fuzzy, c-format, boost-format
+msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
+msgstr "Çýkan: %3d/%-3d Dýþarýda: %3d  Kurtulan: %3d/%-3d"
+
+#: src/worldmap/manager.cpp:107
+msgid "Show Ending?"
+msgstr "Sonu Göster..."
+
+#: src/worldmap/manager.cpp:138
+msgid "Show Story?"
+msgstr "Pingus öyküsü.."
+
+#: src/worldmap/manager.cpp:167
+msgid "Leave?"
+msgstr "Çýk?"
+
+#: src/worldmap/manager.cpp:207
+#, fuzzy
+msgid "Enter?"
+msgstr "Gir?"
+
+#: src/worldmap/worldmap.cpp:423
+msgid "...walking..."
+msgstr "...yürüyor..."
+
+#: src/worldmap/level_dot.cpp:151 src/worldmap/level_dot.cpp:161
+msgid "locked"
+msgstr "kapalý"
+
+#: src/story_screen.cpp:40
+msgid "skip"
+msgstr ""
+
+#: src/result_screen.cpp:131
+msgid "Retry"
+msgstr "Yeniden dene"
+
+#: src/result_screen.cpp:181
+msgid "Success!"
+msgstr "Aferin!"
+
+#: src/result_screen.cpp:188
+msgid "Failure!"
+msgstr "Baþaramadýn!"
+
+#: src/result_screen.cpp:197
+msgid "Perfect! You saved everyone possible - great!"
+msgstr "Mükemmel! Herkesi kurtardýn galiba."
+
+#: src/result_screen.cpp:199
+msgid "No-one got killed, pretty good work."
+msgstr "Hiçkimse ölmedi, iyi iþ çýkardýn."
+
+#: src/result_screen.cpp:201
+msgid ""
+"You saved exactly what you needed - you made it, but\n"
+"maybe you can do better?"
+msgstr ""
+"Tam gerektiði kadar Pingu kurtardýn, geçer not, ama\n"
+"belki daha iyisini yapabilisin, hý?"
+
+#: src/result_screen.cpp:204
+msgid "Not everybody was saved, but still good work!"
+msgstr "Herkesi kurtaramadýn, ama yine de iyi iþ çýkardýn!"
+
+#: src/result_screen.cpp:206
+msgid "What can I say, you made it - congratulations!"
+msgstr "Ne diyebilirim, yaptýn, aferin!"
+
+#: src/result_screen.cpp:211
+msgid "You killed everybody, not good."
+msgstr "Herkesi öldürdun. Hiç hoþ degil."
+
+#: src/result_screen.cpp:213
+msgid "No-one got saved - I know you can do better."
+msgstr "Hiç kimseyi kurtaramadýn, daha iyisini yapabileceðinden eminim."
+
+#: src/result_screen.cpp:215
+msgid ""
+"You didn't save enough, but you saved a few.  Next\n"
+"time you might do better."
+msgstr ""
+"Yeterince kurtaramadýn, ama yine de birkaçý kurtuldu, bir\n"
+"dahakine daha dikkatli ol."
+
+#: src/result_screen.cpp:218
+msgid "Only one more and you would have made it - try again!"
+msgstr "Bir ya da iki tane daha kurtarsaydýn olacaktý, hadi tekrar!"
+
+#: src/result_screen.cpp:220
+msgid "Only a handful more and you would have made it - try again!"
+msgstr "Birkaç tane daha kurtarsan olacaktý, tekrar dene!"
+
+#: src/result_screen.cpp:222
+msgid "Better luck next time!"
+msgstr "Bir dahaki oyunda iyi þanslar!"
+
+#: src/result_screen.cpp:239
+msgid "Saved: "
+msgstr "Kurtarýlan: "
+
+#: src/result_screen.cpp:243
+msgid "Died: "
+msgstr "Ölen: "
+
+#: src/result_screen.cpp:247
+msgid "Time left: "
+msgstr "Kalan zaman: "
+
+#: src/config.cpp:72
+msgid "Couldn't open: "
+msgstr "Dosya açýlamadý: "
+
+#: src/config.cpp:171 src/config.cpp:205
+msgid "Unexpected char: '"
+msgstr "Beklenmeyen harf: '"
+
+#: src/exit_menu.cpp:46 src/exit_menu.cpp:50
+msgid "Yes"
+msgstr "Evet"
+
+#: src/exit_menu.cpp:85 src/exit_menu.cpp:89
+msgid "No"
+msgstr "Hayýr"
+
+#: src/exit_menu.cpp:124
+msgid "Exit Pingus?"
+msgstr "Çýkýyor musun?"
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
 msgid "If the way is blocked, bash away"
@@ -1313,7 +1341,7 @@ msgstr ""
 msgid ""
 "You've mastered the last challenge and now face the next. Their path to "
 "salvation seems to be cursed, but by whom? There is no time to think about "
-"it, since the next deadly challange already awaits the Pingus. Two mighty "
+"it, since the next deadly challenge already awaits the Pingus. Two mighty "
 "roots block the way, but without a basher at hand to bash them away, "
 "sacrifice might be the only option..."
 msgstr ""
@@ -1369,10 +1397,11 @@ msgstr ""
 #: data/levels/halloween/halloween7-grumbel.pingus:8
 msgid ""
 "This is by far the deepest pit the Pingus have yet encountered. Building a "
-"bridge across it seems obvious, but can't work. The exit is deep down in the "
-"pit itself, but Pingus who go down will just end up splattered upon the "
-"ground. But you have two groups of Pingus at your disposal... can you make "
-"them work together to reach even an exit this well hidden?"
+"bridge across it seems obvious but that won't help since the exit is deep "
+"down in the pit itself. Pingus who try to go down the pit will just end up "
+"splattered all over the ground. You have two groups of Pingus at your "
+"disposal, can you make them work together to reach even an exit this well "
+"hidden?"
 msgstr ""
 
 #: data/levels/halloween/halloween8-plouj.pingus:7
@@ -1583,9 +1612,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Difficulty: "
 #~ msgstr "Zorluk:"
-
-#~ msgid "Start"
-#~ msgstr "Baþla"
 
 # FIXME: bu olmadi -cagri
 # bu daha da olmadi galiba -gd
