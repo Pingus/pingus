@@ -95,8 +95,7 @@ LevelDot::draw(DrawingContext& gc)
 void
 LevelDot::update(float delta)
 {
-  UNUSED_ARG(delta);
-}
+  }
 
 void
 LevelDot::on_click()

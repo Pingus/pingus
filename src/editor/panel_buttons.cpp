@@ -83,9 +83,7 @@ PanelButton::is_at(int x, int y)
 void
 PanelButton::on_primary_button_click(int x, int y)
 {
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
-  panel->set_selected_button(this);
+      panel->set_selected_button(this);
 }
 
 // Standard exit button

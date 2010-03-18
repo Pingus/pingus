@@ -345,8 +345,6 @@ Viewport::is_at(int x, int y)
 void
 Viewport::update(float delta)
 {
-  UNUSED_ARG(delta);
-
   if (current_action == SCROLLING)
     state.set_pos(state.get_pos() + Vector2f(mouse_screen_pos - drag_screen_pos) * delta * 5.0f);
 

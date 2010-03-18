@@ -40,8 +40,7 @@ InputDebugScreen::draw (DrawingContext& gc)
 {
   std::cout << "InputDebugScreen::draw ()" << std::endl;
   CL_System::sleep(100);
-  UNUSED_ARG(gc);
-  return true;
+    return true;
 }
 
 /** Pass a delta to the screen */

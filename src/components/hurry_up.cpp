@@ -54,8 +54,7 @@ HurryUp::draw(DrawingContext& gc)
 		       CL_Display::get_height()/2 - font->get_height(),
 		       "Up");
     }
-  UNUSED_ARG(gc);
-#endif
+  #endif
 }
 
 void

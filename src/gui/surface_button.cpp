@@ -66,9 +66,6 @@ void
 SurfaceButton::on_primary_button_press (int x, int y)
 {
   pressed = true;
-
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
 }
 
 void
@@ -76,8 +73,8 @@ SurfaceButton::on_primary_button_release (int x, int y)
 {
   pressed = false;
 
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
+  
+  
 }
 
 void
@@ -96,8 +93,6 @@ void
 SurfaceButton::on_primary_button_click (int x, int y)
 {
   on_click();
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
 }
 
 } // namespace GUI

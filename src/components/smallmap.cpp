@@ -186,9 +186,7 @@ void
 SmallMap::on_primary_button_release(int x, int y)
 {
   scroll_mode = false;
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
-}
+    }
 
 void
 SmallMap::on_pointer_enter ()

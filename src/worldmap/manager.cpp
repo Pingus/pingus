@@ -284,8 +284,7 @@ WorldMapManager::on_escape_press ()
 void
 WorldMapManager::update (float delta)
 {
-  UNUSED_ARG(delta);
-
+  
   // Exit the word
   if (exit_worldmap)
     ScreenManager::instance ()->pop_screen ();
@@ -353,8 +352,7 @@ void
 WorldMapComponent::update (float delta)
 {
   WorldMapManager::instance()->worldmap->update(delta);
-  UNUSED_ARG(delta);
-}
+  }
 
 void
 WorldMapManager::draw_foreground(DrawingContext& gc)

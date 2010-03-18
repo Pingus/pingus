@@ -221,8 +221,7 @@ ContextMenu::display(bool should_display)
 void
 ContextMenu::update(float delta)
 {
-  UNUSED_ARG(delta);
-
+  
   if (displayed_child != actions[selected_action_offset].child)
     {
       if (displayed_child)

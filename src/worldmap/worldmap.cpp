@@ -218,14 +218,12 @@ WorldMap::add_drawable(Drawable* drawable)
 void
 WorldMap::remove_drawable(Drawable* drawable)
 {
-  UNUSED_ARG(drawable);
-}
+  }
 
 void
 WorldMap::set_pingus(NodeId id)
 {
-  UNUSED_ARG(id);
-}
+  }
 
 void
 WorldMap::on_pointer_move(int x, int y)

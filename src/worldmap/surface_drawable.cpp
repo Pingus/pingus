@@ -45,8 +45,7 @@ SurfaceDrawable::SurfaceDrawable(FileReader reader)
 void
 SurfaceDrawable::update(float delta)
 {
-  UNUSED_ARG(delta);
-}
+  }
 
 void
 SurfaceDrawable::draw(DrawingContext& gc)

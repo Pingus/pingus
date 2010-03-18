@@ -89,7 +89,7 @@ public:
   /// Members used to communicate between different screen objs
   void set_server(Server*);
 
-  bool is_at (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); return true; }
+  bool is_at (int x, int y) {   return true; }
   Rect get_rect() const { return rect; }
   void update_layout() {}
 private:

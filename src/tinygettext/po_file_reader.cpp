@@ -24,6 +24,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <string.h>
+#include <stdio.h>
 #include "iconv.hpp"
 #include "po_file_reader.hpp"
 

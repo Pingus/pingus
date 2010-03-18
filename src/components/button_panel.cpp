@@ -150,9 +150,7 @@ ButtonPanel::is_at (int x, int y)
 void
 ButtonPanel::on_primary_button_release(int x, int y)
 {
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
-}
+    }
 
 /// Select the next action
 void

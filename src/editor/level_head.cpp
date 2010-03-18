@@ -125,8 +125,7 @@ LevelHead::is_at(int x, int y)
 void
 LevelHead::update(float delta)
 {
-  UNUSED_ARG(delta);
-  // FIXME:  Should only update this information if it has changed. 
+    // FIXME:  Should only update this information if it has changed. 
   impl->levelname   = name->get_string();
   impl->description = desc->get_string(); 
 }   

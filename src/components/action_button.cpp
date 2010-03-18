@@ -226,9 +226,7 @@ ArmageddonButton::on_primary_button_click (int x, int y)
       pressed = true;
     }
 
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
-}
+    }
 
 ForwardButton::ForwardButton (TrueServer* s, int x, int y)
   : server (s),
@@ -274,9 +272,7 @@ ForwardButton::on_primary_button_click (int x, int y)
 {
   server->set_fast_forward(!server->get_fast_forward());
 
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
-}
+    }
 
 PauseButton::PauseButton (TrueServer* s, int x, int y)
   : server (s),
@@ -322,9 +318,7 @@ PauseButton::on_primary_button_click (int x, int y)
 {
   server->set_pause(!server->get_pause());
 
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
-}
+    }
 
 
 /* EOF */

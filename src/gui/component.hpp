@@ -54,25 +54,25 @@ public:
   virtual bool is_visible() const { return visible; }
 
   virtual void draw (DrawingContext& gc) =0;
-  virtual void update (float delta) { UNUSED_ARG(delta);}
+  virtual void update (float delta) { }
 
-  virtual bool is_at (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); return false; }
+  virtual bool is_at (int x, int y) {   return false; }
 
   // Events
   /** Gets issued once the primary button is pressed */
-  virtual void on_primary_button_press (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
+  virtual void on_primary_button_press (int x, int y) {   }
 
   /** Gets issued once the primary button is released */
-  virtual void on_primary_button_release (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
+  virtual void on_primary_button_release (int x, int y) {   }
 
-  virtual void on_secondary_button_press (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
-  virtual void on_secondary_button_release (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
+  virtual void on_secondary_button_press (int x, int y) {   }
+  virtual void on_secondary_button_release (int x, int y) {   }
 
   /** Gets emmited when a button is pressed and released over the
       same component */
-  virtual void on_primary_button_click (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
+  virtual void on_primary_button_click (int x, int y) {   }
 
-  virtual void on_secondary_button_click (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
+  virtual void on_secondary_button_click (int x, int y) {   }
 
   /** Emmitted when pointer enters the region of the component */
   virtual void on_pointer_enter () {}
@@ -82,11 +82,11 @@ public:
 
   /** Emitted when the pointer moved, x and y are the new pointer
       coordinates */
-  virtual void on_pointer_move (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
+  virtual void on_pointer_move (int x, int y) {   }
 	
   /** Emitted whenever a keyboard character is pressed.  Only certain 
       components should implement this */
-  virtual void on_key_pressed(const unsigned short c) { UNUSED_ARG(c); }
+  virtual void on_key_pressed(const unsigned short c) {  }
 
   GroupComponent* get_parent() const;
   void set_parent(GroupComponent* p);

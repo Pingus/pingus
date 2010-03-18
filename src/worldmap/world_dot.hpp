@@ -35,9 +35,9 @@ public:
   WorldDot(FileReader reader);
 
   /** Draw stuff that should be displayed if the mouse is over the dot */
-	virtual void draw_hover(DrawingContext& gc) { UNUSED_ARG(gc); }
-	virtual void draw(DrawingContext& gc) { UNUSED_ARG(gc); }
-	virtual void update(float delta) { UNUSED_ARG(delta); }
+	virtual void draw_hover(DrawingContext& gc) {  }
+	virtual void draw(DrawingContext& gc) {  }
+	virtual void update(float delta) {  }
 
   Vector3f get_pos() { return pos; }
 

@@ -43,8 +43,6 @@
 #  include <assert.h>
 #endif
 
-#define UNUSED_ARG(a) do {/* null */} while (&a == 0)
-
 #endif
 
 /* EOF */

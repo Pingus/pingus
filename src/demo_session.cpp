@@ -97,8 +97,7 @@ DemoSession::draw_background(DrawingContext& gc)
 void
 DemoSession::update(float delta)
 {
-  UNUSED_ARG(delta);
-
+  
   // FIXME: Duplicate all timing code here?!
   server->update();
   demo_player->update();

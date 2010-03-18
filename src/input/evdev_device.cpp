@@ -25,6 +25,8 @@
 #include <stdexcept>
 #include <iostream>
 #include <errno.h>
+#include <string.h>
+#include <stdio.h>
 
 #include "evdev_device.hpp"
 

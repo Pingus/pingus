@@ -46,8 +46,7 @@ PathDrawable::draw (DrawingContext& gc)
 void
 PathDrawable::update (float delta)
 {
-  UNUSED_ARG(delta);
-}
+  }
 
 } // namespace WorldMapNS
 

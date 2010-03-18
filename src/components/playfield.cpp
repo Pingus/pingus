@@ -175,9 +175,7 @@ Playfield::update(float delta)
 void
 Playfield::on_primary_button_press(int x, int y)
 {
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
-
+    
   if (current_pingu)
     {
       server->send_pingu_action_event(current_pingu, buttons->get_action_name());
@@ -197,9 +195,7 @@ Playfield::on_secondary_button_press(int x, int y)
 void
 Playfield::on_secondary_button_release (int x, int y)
 {
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
-
+    
   mouse_scrolling = false;
 }
 
