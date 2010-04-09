@@ -62,7 +62,7 @@ msgstr "Noyé"
 
 #: src/pingu_enums.cpp:43
 msgid "Exiter"
-msgstr "Sorteur"
+msgstr "Editeur"
 
 #: src/pingu_enums.cpp:44
 msgid "Faller"
@@ -169,7 +169,7 @@ msgstr "Démarre en mode plein écran"
 
 #: src/pingus_main.cpp:269
 msgid "Allow Window resize (buggy)"
-msgstr "Autorise le redimensionnement de fenêtres (bugs...)"
+msgstr "Autorise le redimensionnement de fenêtres (bogué)"
 
 #: src/pingus_main.cpp:271
 msgid "Enable software cursor"
@@ -177,7 +177,7 @@ msgstr "Activer le curseur logiciel"
 
 #: src/pingus_main.cpp:273
 msgid "Set the resolution for pingus (default: 800x600)"
-msgstr "Ajuste la résolution de Pingus (défaut: 800x600)"
+msgstr "Ajuste la résolution de Pingus (par défaut: 800x600)"
 
 #: src/pingus_main.cpp:275
 msgid "Sound:"
@@ -579,7 +579,7 @@ msgstr "Nouveau niveau"
 
 #: src/editor/panel.cpp:155
 msgid "Open level..."
-msgstr "Ouvrir niveau..."
+msgstr "Ouvrir un niveau..."
 
 #: src/editor/panel.cpp:157
 msgid "Save level..."
@@ -591,11 +591,11 @@ msgstr "Enregistrer ce niveau sous..."
 
 #: src/editor/panel.cpp:162
 msgid "Play level..."
-msgstr "Jouer niveau..."
+msgstr "Jouer le niveau..."
 
 #: src/editor/panel.cpp:165
 msgid "Configure actions"
-msgstr "Configurer actions"
+msgstr "Configurer les actions"
 
 #: src/editor/panel.cpp:167
 msgid "Configure level"
@@ -607,11 +607,11 @@ msgstr "Afficher les propriétés de l'objet"
 
 #: src/editor/panel.cpp:171
 msgid "Show object insertion window"
-msgstr "Montrer fenêtre insertion objet"
+msgstr "Montrer la fenêtre d'insertion d'objet"
 
 #: src/editor/panel.cpp:173
 msgid "Show minimap"
-msgstr "Montrer minicarte"
+msgstr "Montrer la minicarte"
 
 #: src/editor/panel.cpp:176
 msgid "Duplicate the selected objects"
@@ -981,7 +981,7 @@ msgstr "Paradis des mineurs"
 
 #: data/levels/tutorial/miner-tutorial2-grumbel.pingus:6
 msgid "Another action hits the street - another digging action, this time a diagonal one. It allows a Pingu to dig diagonally through ground, thus creating a path for following Pingus. The action is called Miner. "
-msgstr "Une nouvelle action fait son apparition. C'est une nouvelle façon de creuser, en diagonale cette fois-ci. Elle permet à un Pingu de creuser  le sol en diagonale, créant ainsi une voie que pourront emprunter les autres Pingus. Cette action se nomme 'Mineur'. "
+msgstr "Une nouvelle action fait son apparition. C'est une nouvelle façon de creuser, en diagonale cette fois-ci. Elle permet à un Pingu de creuser le sol en diagonale, créant ainsi une voie que pourront emprunter les autres Pingus. Cette action se nomme 'Mineur'. "
 
 #: data/levels/tutorial/snow10-grumbel.pingus:5
 msgid "Panic Island (float/bash)"
@@ -997,7 +997,7 @@ msgstr "Sauter, rebondir ... et défoncer..."
 
 #: data/levels/tutorial/snow11-grumbel.pingus:6
 msgid "It's panic time again. The Pingus will not come out very fast, but since they turn around when they hit walls you will soon have some trouble coordinating them all. Since you only need to save 5 it should be doable, but if all else fails use the pause-mode ('p') to get an overview again. "
-msgstr "C'est encore une fois la panique. Les Pingus ne sortiront pas très rapidement, mais puisque qu'ils vont faire demi-tour en rencontrant les murs, vous allez rapidement être en difficulté pour tous les coordonner. Puisqu'il vous suffit d'en sauver 5, cela devrait être réalisable. Si vous êtes en difficulté, utilisez le mode pause ('p') pour avoir une vue d'ensemble. "
+msgstr "C'est encore une fois la panique. Les Pingus ne sortiront pas très rapidement, mais puisqu'ils vont faire demi-tour en rencontrant les murs, vous allez rapidement être en difficulté pour tous les coordonner. Puisqu'il vous suffit d'en sauver 5, cela devrait être réalisable. Si vous êtes en difficulté, utilisez le mode pause ('p') pour avoir une vue d'ensemble. "
 
 #: data/levels/tutorial/snow12-grumbel.pingus:5
 msgid "Two groups in parallel, coordinate wisely"
