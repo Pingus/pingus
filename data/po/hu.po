@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus Hungarian translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-31 06:55+0100\n"
+"POT-Creation-Date: 2010-07-23 02:10+0200\n"
 "PO-Revision-Date: 2007-11-01 14:17+0100\n"
 "Last-Translator: Kővágó Zoltán <DirtY.iCE.hu@gmail.com>\n"
 "Language-Team: \n"
@@ -10,499 +10,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/game_time.cpp:66
-msgid "unlimited"
-msgstr "végtelen"
-
-#: src/story_screen.cpp:40
-msgid "skip"
-msgstr "kihagyás"
-
-#: src/pingu_enums.cpp:34
-msgid "Angel"
-msgstr "Angyal"
-
-#: src/pingu_enums.cpp:35
-msgid "Basher"
-msgstr "Vízszintes ásó"
-
-#: src/pingu_enums.cpp:36
-msgid "Blocker"
-msgstr "Blokkoló"
-
-#: src/pingu_enums.cpp:37
-msgid "Boarder"
-msgstr "Gördeszkás"
-
-#: src/pingu_enums.cpp:38
-msgid "Bomber"
-msgstr "Bombázó"
-
-#: src/pingu_enums.cpp:39 src/actions/bridger.cpp:42
-#: src/actions/bridger.cpp:216
-msgid "Bridger"
-msgstr "Hídépítő"
-
-#: src/pingu_enums.cpp:40
-msgid "Climber"
-msgstr "Mászó"
-
-#: src/pingu_enums.cpp:41
-msgid "Digger"
-msgstr "Ásó"
-
-#: src/pingu_enums.cpp:42
-msgid "Drown"
-msgstr "Meghalt"
-
-#: src/pingu_enums.cpp:43
-msgid "Exiter"
-msgstr "Kilépő"
-
-#: src/pingu_enums.cpp:44
-msgid "Faller"
-msgstr "Eső"
-
-#: src/pingu_enums.cpp:45
-msgid "Floater"
-msgstr "Szálló"
-
-#: src/pingu_enums.cpp:46
-msgid "Jumper"
-msgstr "Ugró"
-
-#: src/pingu_enums.cpp:47
-msgid "Laserkill"
-msgstr "Lézerhalál"
-
-#: src/pingu_enums.cpp:48
-msgid "Miner"
-msgstr "Bányászó"
-
-#: src/pingu_enums.cpp:49
-msgid "Rocketlauncher"
-msgstr "Rakétakilövő"
-
-#: src/pingu_enums.cpp:50
-msgid "Slider"
-msgstr "Csúszó"
-
-#: src/pingu_enums.cpp:51
-msgid "Smashed"
-msgstr "Nyomi"
-
-#: src/pingu_enums.cpp:52
-msgid "Splashed"
-msgstr "Szétplaccsant"
-
-#: src/pingu_enums.cpp:53
-msgid "Superman"
-msgstr "Szuperman!"
-
-#: src/pingu_enums.cpp:54
-msgid "Teleported"
-msgstr "Teleportált"
-
-#: src/pingu_enums.cpp:55
-msgid "Waiter"
-msgstr "Váró"
-
-#: src/pingu_enums.cpp:56
-msgid "Walker"
-msgstr "Sétáló"
-
-#: src/start_screen.cpp:74 src/editor/level_head.cpp:53
-msgid "Ok"
-msgstr "Rendben"
-
-#: src/start_screen.cpp:114 src/result_screen.cpp:98 src/level_menu.cpp:57
-msgid "Abort"
-msgstr "Megszakítás"
-
-#: src/start_screen.cpp:163
-msgid "Number of Pingus: "
-msgstr "Pingvinek száma:"
-
-#: src/start_screen.cpp:166
-msgid "Number to Save: "
-msgstr "Megmentendőek: "
-
-#: src/start_screen.cpp:169
-msgid "Time: "
-msgstr "Idő: "
-
-#: src/start_screen.cpp:176
-msgid "Author: "
-msgstr "Szerző: "
-
-#: src/start_screen.cpp:179
-msgid "Filename: "
-msgstr "Fájlnév: "
-
-#: src/pingus_main.cpp:259
-msgid "Displays this help"
-msgstr "Eme súgóüzenet megjelenítése"
-
-#: src/pingus_main.cpp:261
-msgid "Print version number and exit"
-msgstr "Verziószám kiírása, majd kilépés"
-
-#: src/pingus_main.cpp:263
-msgid "Display:"
-msgstr "Megjelenítés:"
-
-#: src/pingus_main.cpp:265
-msgid "Start in Window Mode"
-msgstr "Indítás ablakos módban"
-
-#: src/pingus_main.cpp:267
-msgid "Start in Fullscreen"
-msgstr "Indítás teljes képernyős módban"
-
-#: src/pingus_main.cpp:269
-msgid "Allow Window resize (buggy)"
-msgstr "Ablak átméretezésének engedélyezése (bugos)"
-
-#: src/pingus_main.cpp:271
-msgid "Enable software cursor"
-msgstr "Szoftveres kurzor engedélyezése"
-
-#: src/pingus_main.cpp:273
-msgid "Set the resolution for pingus (default: 800x600)"
-msgstr "Pingus felbontásának beállítása (alapértelmezett: 800x600)"
-
-#: src/pingus_main.cpp:275
-msgid "Sound:"
-msgstr "Hang:"
-
-#: src/pingus_main.cpp:277
-msgid "Disable sound"
-msgstr "Hang letiltása"
-
-#: src/pingus_main.cpp:279
-msgid "Disable music"
-msgstr "Zene letiltása"
-
-#: src/pingus_main.cpp:283
-msgid "Select language to use with Pingus"
-msgstr "Pingus által használandó nyelv kiválasztása"
-
-#: src/pingus_main.cpp:285
-msgid "List all available languages"
-msgstr "Összes lehetséges nyelv listázása"
-
-#: src/pingus_main.cpp:289
-msgid "Loads the level editor"
-msgstr "Betölti a pályaszerkesztőt"
-
-#: src/pingus_main.cpp:291
-msgid "Test a font"
-msgstr "Betűtípus tesztelése"
-
-#: src/pingus_main.cpp:293
-msgid "Shows the credits"
-msgstr "Készítők megjelenítése"
-
-#: src/pingus_main.cpp:295
-msgid "Misc Options:"
-msgstr "Egyéb opciók:"
-
-#: src/pingus_main.cpp:296
-msgid "PATH"
-msgstr "ÚTVONAL"
-
-#: src/pingus_main.cpp:297
-msgid "Set the path to load the data files to 'path'"
-msgstr "Az adatfájlok könyvtárának megadása"
-
-#: src/pingus_main.cpp:300
-msgid "Disable automatic scrolling"
-msgstr "Automatikus görgetés letiltása"
-
-#: src/pingus_main.cpp:302
-msgid "Don't read ~/.pingus/config"
-msgstr "Ne olvassa be a ~/.pingus/config fájlt"
-
-#: src/pingus_main.cpp:303
-msgid "FILE"
-msgstr "FILE"
-
-#: src/pingus_main.cpp:304
-#, fuzzy
-msgid ""
-"Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
-"speed up the game on slower machines"
-msgstr ""
-"Konfigurációs fájl beolvasása FÁJLból (alapértelmezett ~/.pingus/config) CPU "
-"használat csökkentése, a játék felgyorsulhat régebbi gépeken"
-
-#: src/pingus_main.cpp:307
-msgid "Uses the controller given in FILE"
-msgstr "FÁJLban megadot controller használata"
-
-#: src/pingus_main.cpp:309
-msgid "Debugging and experimental stuff:"
-msgstr "Debuggolás és kezdetleges cuccok:"
-
-#: src/pingus_main.cpp:311
-msgid "Enables some features, only interesting to programmers"
-msgstr "Néhány funkció engedélyezése, mely csak a fejlesztőknek érdekes"
-
-#: src/pingus_main.cpp:314
-msgid "Load a custom worldmap"
-msgstr "Egyedi térkép betöltése"
-
-#: src/pingus_main.cpp:316
-msgid ""
-"Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
-"actions, sound, resources, gui, input, pathmgr"
-msgstr ""
-"Debug kimenet engedélyezése, használható OPCIÓK: tiles, gametime, actions, "
-"sound, resources, gui, input, pathmgr"
-
-#: src/pingus_main.cpp:320
-msgid "Skip at least N frames, larger values speed the game up"
-msgstr "Legalább N képkocka kihagyása, nagyobb érték felgyorsíthatja a játékot"
-
-#: src/pingus_main.cpp:322
-msgid "Skip at most N frames"
-msgstr "Legfeljebb N képkocka kihagyása"
-
-#: src/pingus_main.cpp:324
-msgid "Set both min and max frameskip to N"
-msgstr "Minimum és maximum képkocka kihagyási érték Nre állítása"
-
-#: src/pingus_main.cpp:326
-msgid "Set the game speed (0=fastest, >0=slower)"
-msgstr "Játék sebességének beállítása (0: leggyorsabb; >0: lassabb)"
-
-#: src/pingus_main.cpp:328
-msgid "Set the size of the map tiles (default: 32)"
-msgstr "Térkép-csempék méretének beállítása (alapértelmezett: 32)"
-
-#: src/pingus_main.cpp:330
-msgid "Disable some cpu intensive features"
-msgstr "Néhány processzor-zabáló funkció letiltása"
-
-#: src/pingus_main.cpp:334
-msgid "Demo playing and recording:"
-msgstr "Demo lejátszás és felvétel"
-
-#: src/pingus_main.cpp:336
-msgid "Plays a demo session"
-msgstr "Egy demo lejátszása"
-
-#: src/pingus_main.cpp:338
-msgid "Record demos for each played level"
-msgstr "Demo felvétele minden egyes lejátszott pályán"
-
-#: src/pingus_main.cpp:735
-msgid "Error caught from Pingus: "
-msgstr "Hiba a Pingusban: "
-
-#: src/pingus_main.cpp:739
-msgid "Pingus: Out of memory!"
-msgstr "Pingus: Kifogyott a memória!"
-
-#: src/pingus_main.cpp:743
-msgid "Pingus: Standard exception caught!:\n"
-msgstr "Pingus: Normál hiba történt!:\n"
-
-#: src/pingus_main.cpp:747
-msgid "Pingus: Unknown throw caught!"
-msgstr "Pingus: Ismeretlen hiba történt!"
-
-#: src/credits.cpp:82
-msgid "-Idea"
-msgstr "-Ötlet"
-
-#: src/credits.cpp:86
-msgid "-Maintaining"
-msgstr "-Karbantartás"
-
-#: src/credits.cpp:90
-msgid "-Programming"
-msgstr "-Programozás"
-
-#: src/credits.cpp:100
-msgid "-Porting (Win32)"
-msgstr "-Portolás (Win32)"
-
-#: src/credits.cpp:109
-msgid "-Porting (MacOSX)"
-msgstr "-Portolás (MacOSX)"
-
-#: src/credits.cpp:114
-msgid "-Gfx"
-msgstr "-Grafika"
-
-#: src/credits.cpp:127
-msgid "-Music"
-msgstr "-Zene"
-
-#: src/credits.cpp:134
-msgid "-Level Design"
-msgstr "-Pálya tervező"
-
-#: src/credits.cpp:140
-msgid "-Story"
-msgstr "-Történet"
-
-#: src/credits.cpp:144
-msgid "-Translation"
-msgstr "-Fordítás"
-
-#: src/credits.cpp:159
-msgid "-Special"
-msgstr "-Külön"
-
-#: src/credits.cpp:160
-msgid "-Thanks to"
-msgstr "-Köszönet"
-
-#: src/credits.cpp:204
-msgid "_And a very Special Thanks"
-msgstr "_És egy hatalmas külön köszönet"
-
-#: src/credits.cpp:205
-msgid "_to all the people who"
-msgstr "_mindazoknak, akik"
-
-#: src/credits.cpp:206
-msgid "_contribute to"
-msgstr "_támogatják a"
-
-#: src/credits.cpp:207
-msgid "_Free Software!"
-msgstr "_Szabad Szoftvereket!"
-
-#: src/credits.cpp:213
-msgid "_Thank you for"
-msgstr "_Köszönet neked"
-
-#: src/credits.cpp:214
-msgid "_playing!"
-msgstr "_a játszásért!"
-
-#: src/credits.cpp:276 src/editor/panel.cpp:211
-#: src/editor/object_selector.cpp:318 src/pingus_menu.cpp:61
-msgid "Exit"
-msgstr "Kilépés"
-
-#: src/addon_menu.cpp:59 src/option_menu.cpp:94
-msgid "Close"
-msgstr "Bezár"
-
-#: src/result_screen.cpp:131
-msgid "Retry"
-msgstr "Újrapróbál"
-
-#: src/result_screen.cpp:181
-msgid "Success!"
-msgstr "Siker!"
-
-#: src/result_screen.cpp:188
-msgid "Failure!"
-msgstr "Kudarc!"
-
-#: src/result_screen.cpp:197
-msgid "Perfect! You saved everyone possible - great!"
-msgstr "Tökéletes! Mindenkit megmentettél!"
-
-#: src/result_screen.cpp:199
-msgid "No-one got killed, pretty good work."
-msgstr "Senki se halt meg, igen jó munka."
-
-#: src/result_screen.cpp:201
-msgid ""
-"You saved exactly what you needed - you made it, but\n"
-"maybe you can do better?"
-msgstr ""
-"Pont annyit mentettél meg, amenyit kellett -\n"
-"most megcsináltad, de talán jobban is teljesíthetnél"
-
-#: src/result_screen.cpp:204
-msgid "Not everybody was saved, but still good work!"
-msgstr "Nem mindenkit sikerült megmenteni, de így is jó munka!"
-
-#: src/result_screen.cpp:206
-msgid "What can I say, you made it - congratulations!"
-msgstr "Amit csak tudok mondani, azt megcsinálod - gratulálok!"
-
-#: src/result_screen.cpp:211
-msgid "You killed everybody, not good."
-msgstr "Mindenkit megöltél, ez így nem jó."
-
-#: src/result_screen.cpp:213
-msgid "No-one got saved - I know you can do better."
-msgstr "Senkit se mentettél meg - tudom hogy többre is képes vagy."
-
-#: src/result_screen.cpp:215
-msgid ""
-"You didn't save enough, but you saved a few.  Next\n"
-"time you might do better."
-msgstr ""
-"Nem mentettél meg eleget, viszont sikerült megmenteni egy párat.\n"
-"Legközelebb lehet hogy jobban sikerül."
-
-#: src/result_screen.cpp:218
-msgid "Only one more and you would have made it - try again!"
-msgstr "Csak még egy kellet volna, hogy megcsináld - próbáld meg újból!"
-
-#: src/result_screen.cpp:220
-msgid "Only a handful more and you would have made it - try again!"
-msgstr "Csak egy maréknyival kelett volna több - próbáld újra!"
-
-#: src/result_screen.cpp:222
-msgid "Better luck next time!"
-msgstr "Több szerencsét legközelebb!"
-
-#: src/result_screen.cpp:239
-msgid "Saved: "
-msgstr "Megmentve: "
-
-#: src/result_screen.cpp:243
-msgid "Died: "
-msgstr "Meghalt: "
-
-#: src/result_screen.cpp:247
-msgid "Time left: "
-msgstr "Hátralévő idő: "
-
-#: src/components/pingus_counter.cpp:49
-#, c-format, boost-format
-msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
-msgstr "Kiengedve: %3d/%d   Kint: %3d   Megmentve: %3d/%d"
-
-#: src/level_menu.cpp:108 src/pingus_menu.cpp:66
-msgid "Levelsets"
-msgstr "Pályacsomagok"
-
-#: src/level_menu.cpp:124
-msgid "Solved:"
-msgstr "Megoldva:"
-
-#: src/config.cpp:72
-msgid "Couldn't open: "
-msgstr "Nem sikerült megnyitni: "
-
-#: src/config.cpp:171 src/config.cpp:205
-msgid "Unexpected char: '"
-msgstr "Nem várt karakter: '"
-
-#: src/screenshot.cpp:38
+#: src/engine/display/screenshot.cpp:33
 msgid "Screenshot: Saving screenshot to: "
 msgstr "Képernyőmentés: Hiba a következő fájlba való mentés közben: "
 
-#: src/screenshot.cpp:40
+#: src/engine/display/screenshot.cpp:35
 msgid "Screenshot: Screenshot is done."
 msgstr "Képernyőmentés: Képernyőmentés sikeresen elkészült."
 
-#: src/screenshot.cpp:115 src/screenshot.cpp:143
+#: src/engine/display/screenshot.cpp:110 src/engine/display/screenshot.cpp:138
 msgid "Screenshot: Couldn't write file: "
 msgstr "Képernyőmentés: Nem sikerült írni a fájlba: "
 
-#: src/editor/editor_screen.cpp:196
+#: src/editor/editor_screen.cpp:191
 msgid ""
 "Select all\n"
 "Clear Selection\n"
@@ -522,7 +42,7 @@ msgstr ""
 "Elforgatás 90 fokkal\n"
 "Elforgatás 270 fokkal\n"
 
-#: src/editor/editor_screen.cpp:218
+#: src/editor/editor_screen.cpp:213
 msgid ""
 "Flip object horizontaly\n"
 "Flip object vertically\n"
@@ -540,7 +60,7 @@ msgstr ""
 "Objektum balrább helyezése\n"
 "Objektum jobbrább helyezése\n"
 
-#: src/editor/editor_screen.cpp:230
+#: src/editor/editor_screen.cpp:225
 msgid ""
 "You should name your level files systematically, i.e. by their theme, their "
 "number and your nickname:\n"
@@ -579,359 +99,584 @@ msgstr ""
 "írnod a referenciát egy szövegszer-\n"
 "kesztővel.\n"
 
-#: src/editor/panel.cpp:153
-msgid "    New level"
-msgstr "    Új pálya"
-
-#: src/editor/panel.cpp:155
-msgid "Open level..."
-msgstr "Pálya megnyitása..."
-
-#: src/editor/panel.cpp:157
-msgid "Save level..."
-msgstr "Pálya mentése..."
-
-#: src/editor/panel.cpp:159
-msgid "Save level as..."
-msgstr "Pálya mentése másként..."
-
-#: src/editor/panel.cpp:162
-msgid "Play level..."
-msgstr "Pálya kipróbálása..."
-
-#: src/editor/panel.cpp:165
-msgid "Configure actions"
-msgstr "Utasítások beállítása"
-
-#: src/editor/panel.cpp:167
-msgid "Configure level"
-msgstr "Pálya beállítása"
-
-#: src/editor/panel.cpp:169
-msgid "Display object properties"
-msgstr "Objektum tulajdonságainak megjelenítése"
-
-#: src/editor/panel.cpp:171
-msgid "Show object insertion window"
-msgstr "Objektum beszúrási ablak megjelenítése"
-
-#: src/editor/panel.cpp:173
-msgid "Show minimap"
-msgstr "Kis térkép megjelenítése"
-
-#: src/editor/panel.cpp:176
-msgid "Duplicate the selected objects"
-msgstr "Kijelölt objektum kétszerezése"
-
-#: src/editor/panel.cpp:178
-msgid "Delete the selected objects"
-msgstr "Kijelölt objektum törlése"
-
-#: src/editor/panel.cpp:181
-msgid "Raise object to top"
-msgstr "Objektum legfölülre helyezése"
-
-#: src/editor/panel.cpp:183
-msgid "Raise object"
-msgstr "Objektum fölljeb helyezése"
-
-#: src/editor/panel.cpp:185
-msgid "Lower object"
-msgstr "Objektum lejjeb helyezése"
-
-#: src/editor/panel.cpp:187
-msgid "Lower object to bottom"
-msgstr "Objektum legalulra helyezése"
-
-#: src/editor/panel.cpp:193
-msgid "Flip object horizontally"
-msgstr "Objektum vízszintes tükrözése"
-
-#: src/editor/panel.cpp:195
-msgid "Flip object vertically"
-msgstr "Objektum függőleges tükrözése"
-
-#: src/editor/panel.cpp:198
-msgid "Rotate object -90 degree"
-msgstr "Objektum elforgatása -90 fokkal"
-
-#: src/editor/panel.cpp:200
-msgid "Rotate object 90 degree"
-msgstr "Objektum elforgatása 90 fokkal"
-
-#: src/editor/panel.cpp:209
-msgid "Display help"
-msgstr "Súgó megjelenítése"
-
-#: src/editor/object_properties.cpp:41 src/editor/object_properties.cpp:415
-msgid "Object:"
-msgstr "Objektum:"
-
-#: src/editor/object_properties.cpp:42 src/editor/object_properties.cpp:416
-msgid "Nothing selected"
-msgstr "Semmi sincs kiválasztva"
-
-#: src/editor/object_properties.cpp:51
-msgid "Transparent"
-msgstr "Átlátszó"
-
-#: src/editor/object_properties.cpp:52
-msgid "Solid"
-msgstr "Szilárd"
-
-#: src/editor/object_properties.cpp:53
-msgid "Ground"
-msgstr "Föld"
-
-#: src/editor/object_properties.cpp:54
-msgid "Bridge"
-msgstr "Híd"
-
-#: src/editor/object_properties.cpp:55
-msgid "Water"
-msgstr "Víz"
-
-#: src/editor/object_properties.cpp:56
-msgid "Lava"
-msgstr "Láva"
-
-#: src/editor/object_properties.cpp:57
-msgid "Remove"
-msgstr "Törlő"
-
-#: src/editor/object_properties.cpp:62
-msgid "Direction:"
-msgstr "Irány"
-
-#: src/editor/object_properties.cpp:64
-msgid "Left"
-msgstr "Bal"
-
-#: src/editor/object_properties.cpp:65
-msgid "Misc"
-msgstr "Egyéb"
-
-#: src/editor/object_properties.cpp:66
-msgid "Right"
-msgstr "Jobb"
-
-#: src/editor/object_properties.cpp:71
-msgid "ReleaseRate:"
-msgstr "KiengedésiRáta:"
-
-#: src/editor/object_properties.cpp:88
-msgid "Para-X:"
-msgstr "Para-X:"
-
-#: src/editor/object_properties.cpp:89
-msgid "Para-Y:"
-msgstr "Para-Y:"
-
-#: src/editor/object_properties.cpp:97
-msgid "Scroll-X:"
-msgstr "X-Görgetés:"
-
-#: src/editor/object_properties.cpp:98
-msgid "Scroll-Y:"
-msgstr "Y-Görgetés:"
-
-#: src/editor/object_properties.cpp:106
-msgid "Owner Id:"
-msgstr "Tulajdonos ID:"
-
-#: src/editor/object_properties.cpp:110
-msgid "Z-Pos:"
-msgstr "Z-Pozíció:"
-
-#: src/editor/object_properties.cpp:117
-msgid "Color:"
-msgstr "Szín:"
-
-#: src/editor/object_properties.cpp:129
-msgid "Small Stars:"
-msgstr "Kicsi csillagok:"
-
-#: src/editor/object_properties.cpp:132
-msgid "Middle Stars:"
-msgstr "Közepes csillagok:"
-
-#: src/editor/object_properties.cpp:135
-msgid "Large Stars:"
-msgstr "Nagy csillagok:"
-
-#: src/editor/object_properties.cpp:143
-msgid "Repeat:"
-msgstr "Ismétlődés:"
-
-#: src/editor/object_properties.cpp:421
-msgid "Object: [Group]"
-msgstr "Objektum [Csoport]"
-
-#: src/editor/object_properties.cpp:422
-msgid "Group not supported"
-msgstr "Csoport nem támogatott"
-
-#: src/editor/object_properties.cpp:427
-msgid "Object: "
-msgstr "Objektum: "
-
-#: src/editor/file_dialog.cpp:56
+#: src/editor/file_dialog.cpp:61
 msgid "Datadir"
 msgstr "Adatkönyvtár"
 
-#: src/editor/file_dialog.cpp:58
+#: src/editor/file_dialog.cpp:63
 msgid "Userdir"
 msgstr "Felhasználói könyvtár"
 
-#: src/editor/file_dialog.cpp:61
+#: src/editor/file_dialog.cpp:66
 msgid "Open"
 msgstr "Megnyit"
 
-#: src/editor/file_dialog.cpp:61
+#: src/editor/file_dialog.cpp:66
 msgid "Save"
 msgstr "Mentés"
 
-#: src/editor/file_dialog.cpp:64
+#: src/editor/file_dialog.cpp:69
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: src/editor/file_dialog.cpp:75
+#: src/editor/file_dialog.cpp:80
 msgid "Filename:"
 msgstr "Fájlnév:"
 
-#: src/editor/file_dialog.cpp:76
+#: src/editor/file_dialog.cpp:81
 msgid "Pathname:"
 msgstr "Útvonal:"
 
-#: src/editor/file_dialog.cpp:102
+#: src/editor/file_dialog.cpp:107
 msgid "Open a level"
 msgstr "Egy pálya megnyitása"
 
-#: src/editor/file_dialog.cpp:102
+#: src/editor/file_dialog.cpp:107
 msgid "Save your level"
 msgstr "A pályád mentése"
 
-#: src/editor/object_selector.cpp:309
+#: src/editor/panel.cpp:152
+msgid "    New level"
+msgstr "    Új pálya"
+
+#: src/editor/panel.cpp:154
+msgid "Open level..."
+msgstr "Pálya megnyitása..."
+
+#: src/editor/panel.cpp:156
+msgid "Save level..."
+msgstr "Pálya mentése..."
+
+#: src/editor/panel.cpp:158
+msgid "Save level as..."
+msgstr "Pálya mentése másként..."
+
+#: src/editor/panel.cpp:161
+msgid "Play level..."
+msgstr "Pálya kipróbálása..."
+
+#: src/editor/panel.cpp:164
+msgid "Configure actions"
+msgstr "Utasítások beállítása"
+
+#: src/editor/panel.cpp:166
+msgid "Configure level"
+msgstr "Pálya beállítása"
+
+#: src/editor/panel.cpp:168
+msgid "Display object properties"
+msgstr "Objektum tulajdonságainak megjelenítése"
+
+#: src/editor/panel.cpp:170
+msgid "Show object insertion window"
+msgstr "Objektum beszúrási ablak megjelenítése"
+
+#: src/editor/panel.cpp:172
+msgid "Show minimap"
+msgstr "Kis térkép megjelenítése"
+
+#: src/editor/panel.cpp:175
+msgid "Duplicate the selected objects"
+msgstr "Kijelölt objektum kétszerezése"
+
+#: src/editor/panel.cpp:177
+msgid "Delete the selected objects"
+msgstr "Kijelölt objektum törlése"
+
+#: src/editor/panel.cpp:180
+msgid "Raise object to top"
+msgstr "Objektum legfölülre helyezése"
+
+#: src/editor/panel.cpp:182
+msgid "Raise object"
+msgstr "Objektum fölljeb helyezése"
+
+#: src/editor/panel.cpp:184
+msgid "Lower object"
+msgstr "Objektum lejjeb helyezése"
+
+#: src/editor/panel.cpp:186
+msgid "Lower object to bottom"
+msgstr "Objektum legalulra helyezése"
+
+#: src/editor/panel.cpp:192
+msgid "Flip object horizontally"
+msgstr "Objektum vízszintes tükrözése"
+
+#: src/editor/panel.cpp:194
+msgid "Flip object vertically"
+msgstr "Objektum függőleges tükrözése"
+
+#: src/editor/panel.cpp:197
+msgid "Rotate object -90 degree"
+msgstr "Objektum elforgatása -90 fokkal"
+
+#: src/editor/panel.cpp:199
+msgid "Rotate object 90 degree"
+msgstr "Objektum elforgatása 90 fokkal"
+
+#: src/editor/panel.cpp:208
+msgid "Display help"
+msgstr "Súgó megjelenítése"
+
+#: src/editor/panel.cpp:210 src/editor/object_selector.cpp:324
+#: src/pingus/screens/pingus_menu.cpp:62
+msgid "Exit"
+msgstr "Kilépés"
+
+#: src/editor/object_selector.cpp:315
 msgid "Entrance"
 msgstr "Bejárat"
 
-#: src/editor/object_selector.cpp:310
+#: src/editor/object_selector.cpp:316
 msgid "Groundpiece (ground)"
 msgstr "Földdarab (föld)"
 
-#: src/editor/object_selector.cpp:311
+#: src/editor/object_selector.cpp:317
 msgid "Groundpiece (solid)"
 msgstr "Földdarab (szilárd)"
 
-#: src/editor/object_selector.cpp:312
+#: src/editor/object_selector.cpp:318
 msgid "Groundpiece (bridge)"
 msgstr "Földdarab (híd)"
 
-#: src/editor/object_selector.cpp:313
+#: src/editor/object_selector.cpp:319
 msgid "Groundpiece (transparent)"
 msgstr "Földdarab (átlátszó)"
 
-#: src/editor/object_selector.cpp:314
+#: src/editor/object_selector.cpp:320
 msgid "Groundpiece (remove)"
 msgstr "Folddarab (törlő)"
 
-#: src/editor/object_selector.cpp:315
+#: src/editor/object_selector.cpp:321
 msgid "Hotspot"
 msgstr "Forrópont"
 
-#: src/editor/object_selector.cpp:316
+#: src/editor/object_selector.cpp:322
 msgid "Background"
 msgstr "Háttér"
 
-#: src/editor/object_selector.cpp:319
+#: src/editor/object_selector.cpp:325
 msgid "Liquid"
 msgstr "Folyadék"
 
-#: src/editor/object_selector.cpp:320
+#: src/editor/object_selector.cpp:326
 msgid "Trap"
 msgstr "Csapda"
 
-#: src/editor/object_selector.cpp:321
+#: src/editor/object_selector.cpp:327
 msgid "Weather"
 msgstr "Időjárás"
 
-#: src/editor/object_selector.cpp:322
+#: src/editor/object_selector.cpp:328
 msgid "Special Object"
 msgstr "Speciális objektumok"
 
-#: src/worldmap/worldmap.cpp:425
-msgid "...walking..."
-msgstr "...sétál..."
+#: src/editor/object_properties.cpp:81 src/editor/object_properties.cpp:454
+msgid "Object:"
+msgstr "Objektum:"
 
-#: src/worldmap/manager.cpp:107
-msgid "Show Ending?"
-msgstr "Befejezés megmutatása?"
+#: src/editor/object_properties.cpp:82 src/editor/object_properties.cpp:455
+msgid "Nothing selected"
+msgstr "Semmi sincs kiválasztva"
 
-#: src/worldmap/manager.cpp:138
-msgid "Show Story?"
-msgstr "Történet megmutatása?"
+#: src/editor/object_properties.cpp:91
+msgid "Transparent"
+msgstr "Átlátszó"
 
-#: src/worldmap/manager.cpp:167
-msgid "Leave?"
-msgstr "Elhagyás?"
+#: src/editor/object_properties.cpp:92
+msgid "Solid"
+msgstr "Szilárd"
 
-#: src/worldmap/manager.cpp:207
-msgid "Enter?"
-msgstr "Belép?"
+#: src/editor/object_properties.cpp:93
+msgid "Ground"
+msgstr "Föld"
 
-#: src/worldmap/level_dot.cpp:152 src/worldmap/level_dot.cpp:162
-msgid "locked"
-msgstr "blokkolt"
+#: src/editor/object_properties.cpp:94
+msgid "Bridge"
+msgstr "Híd"
 
-#: src/exit_menu.cpp:46 src/exit_menu.cpp:50
-msgid "Yes"
-msgstr "Igen"
+#: src/editor/object_properties.cpp:95
+msgid "Water"
+msgstr "Víz"
 
-#: src/exit_menu.cpp:85 src/exit_menu.cpp:89
-msgid "No"
-msgstr "Nem"
+#: src/editor/object_properties.cpp:96
+msgid "Lava"
+msgstr "Láva"
 
-#: src/exit_menu.cpp:124
-msgid "Exit Pingus?"
-msgstr "Kilépsz a Pingusból?"
+#: src/editor/object_properties.cpp:97
+msgid "Remove"
+msgstr "Törlő"
 
-#: src/pingus_menu.cpp:50 src/pingus_menu.cpp:72
+#: src/editor/object_properties.cpp:102
+msgid "Direction:"
+msgstr "Irány"
+
+#: src/editor/object_properties.cpp:104
+msgid "Left"
+msgstr "Bal"
+
+#: src/editor/object_properties.cpp:105
+msgid "Misc"
+msgstr "Egyéb"
+
+#: src/editor/object_properties.cpp:106
+msgid "Right"
+msgstr "Jobb"
+
+#: src/editor/object_properties.cpp:111
+msgid "ReleaseRate:"
+msgstr "KiengedésiRáta:"
+
+#: src/editor/object_properties.cpp:128
+msgid "Para-X:"
+msgstr "Para-X:"
+
+#: src/editor/object_properties.cpp:129
+msgid "Para-Y:"
+msgstr "Para-Y:"
+
+#: src/editor/object_properties.cpp:137
+msgid "Scroll-X:"
+msgstr "X-Görgetés:"
+
+#: src/editor/object_properties.cpp:138
+msgid "Scroll-Y:"
+msgstr "Y-Görgetés:"
+
+#: src/editor/object_properties.cpp:146
+msgid "Owner Id:"
+msgstr "Tulajdonos ID:"
+
+#: src/editor/object_properties.cpp:150
+msgid "Z-Pos:"
+msgstr "Z-Pozíció:"
+
+#: src/editor/object_properties.cpp:157
+msgid "Color:"
+msgstr "Szín:"
+
+#: src/editor/object_properties.cpp:169
+msgid "Small Stars:"
+msgstr "Kicsi csillagok:"
+
+#: src/editor/object_properties.cpp:172
+msgid "Middle Stars:"
+msgstr "Közepes csillagok:"
+
+#: src/editor/object_properties.cpp:175
+msgid "Large Stars:"
+msgstr "Nagy csillagok:"
+
+#: src/editor/object_properties.cpp:183
+msgid "Repeat:"
+msgstr "Ismétlődés:"
+
+#: src/editor/object_properties.cpp:460
+msgid "Object: [Group]"
+msgstr "Objektum [Csoport]"
+
+#: src/editor/object_properties.cpp:461
+msgid "Group not supported"
+msgstr "Csoport nem támogatott"
+
+#: src/editor/object_properties.cpp:466
+msgid "Object: "
+msgstr "Objektum: "
+
+#: src/pingus/pingus_main.cpp:216
+msgid "Displays this help"
+msgstr "Eme súgóüzenet megjelenítése"
+
+#: src/pingus/pingus_main.cpp:218
+msgid "Print version number and exit"
+msgstr "Verziószám kiírása, majd kilépés"
+
+#: src/pingus/pingus_main.cpp:220
+msgid "Display:"
+msgstr "Megjelenítés:"
+
+#: src/pingus/pingus_main.cpp:222
+msgid "Start in Window Mode"
+msgstr "Indítás ablakos módban"
+
+#: src/pingus/pingus_main.cpp:224
+msgid "Start in Fullscreen"
+msgstr "Indítás teljes képernyős módban"
+
+#: src/pingus/pingus_main.cpp:226
+msgid "Use the given renderer (default: delta)"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:228
+msgid "Enable software cursor"
+msgstr "Szoftveres kurzor engedélyezése"
+
+#: src/pingus/pingus_main.cpp:230
+msgid "Set the resolution for pingus (default: 800x600)"
+msgstr "Pingus felbontásának beállítása (alapértelmezett: 800x600)"
+
+#: src/pingus/pingus_main.cpp:232
+msgid "Sound:"
+msgstr "Hang:"
+
+#: src/pingus/pingus_main.cpp:234
+msgid "Disable sound"
+msgstr "Hang letiltása"
+
+#: src/pingus/pingus_main.cpp:236
+msgid "Disable music"
+msgstr "Zene letiltása"
+
+#: src/pingus/pingus_main.cpp:240
+msgid "Select language to use with Pingus"
+msgstr "Pingus által használandó nyelv kiválasztása"
+
+#: src/pingus/pingus_main.cpp:242
+msgid "List all available languages"
+msgstr "Összes lehetséges nyelv listázása"
+
+#: src/pingus/pingus_main.cpp:246
+msgid "Loads the level editor"
+msgstr "Betölti a pályaszerkesztőt"
+
+#: src/pingus/pingus_main.cpp:248
+msgid "Save the level given level to FILENAME and quit"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:250
+msgid "Test a font"
+msgstr "Betűtípus tesztelése"
+
+#: src/pingus/pingus_main.cpp:252
+msgid "Shows the credits"
+msgstr "Készítők megjelenítése"
+
+#: src/pingus/pingus_main.cpp:254
+msgid "Misc Options:"
+msgstr "Egyéb opciók:"
+
+#: src/pingus/pingus_main.cpp:255 src/pingus/pingus_main.cpp:257
+msgid "PATH"
+msgstr "ÚTVONAL"
+
+#: src/pingus/pingus_main.cpp:256
+msgid "Set the path to load the data files to 'path'"
+msgstr "Az adatfájlok könyvtárának megadása"
+
+#: src/pingus/pingus_main.cpp:258
+msgid "Set the path to load and save user files (savegames, etc.) to PATH"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:261
+msgid "Disable automatic scrolling"
+msgstr "Automatikus görgetés letiltása"
+
+#: src/pingus/pingus_main.cpp:263
+msgid "Don't read ~/.pingus/config"
+msgstr "Ne olvassa be a ~/.pingus/config fájlt"
+
+#: src/pingus/pingus_main.cpp:264
+msgid "FILE"
+msgstr "FILE"
+
+#: src/pingus/pingus_main.cpp:265
+#, fuzzy
+msgid ""
+"Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
+"speed up the game on slower machines"
+msgstr ""
+"Konfigurációs fájl beolvasása FÁJLból (alapértelmezett ~/.pingus/config) CPU "
+"használat csökkentése, a játék felgyorsulhat régebbi gépeken"
+
+#: src/pingus/pingus_main.cpp:268
+msgid "Uses the controller given in FILE"
+msgstr "FÁJLban megadot controller használata"
+
+#: src/pingus/pingus_main.cpp:270
+msgid "Debugging and experimental stuff:"
+msgstr "Debuggolás és kezdetleges cuccok:"
+
+#: src/pingus/pingus_main.cpp:272
+msgid "Enables some features, only interesting to programmers"
+msgstr "Néhány funkció engedélyezése, mely csak a fejlesztőknek érdekes"
+
+#: src/pingus/pingus_main.cpp:275
+msgid ""
+"Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
+"actions, sound, resources, gui, input, pathmgr"
+msgstr ""
+"Debug kimenet engedélyezése, használható OPCIÓK: tiles, gametime, actions, "
+"sound, resources, gui, input, pathmgr"
+
+#: src/pingus/pingus_main.cpp:279
+msgid "Set the game speed (0=fastest, >0=slower)"
+msgstr "Játék sebességének beállítása (0: leggyorsabb; >0: lassabb)"
+
+#: src/pingus/pingus_main.cpp:281
+msgid "Set the desired game framerate (frames per second)"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:283
+msgid "Set the size of the map tiles (default: 32)"
+msgstr "Térkép-csempék méretének beállítása (alapértelmezett: 32)"
+
+#: src/pingus/pingus_main.cpp:717
+msgid "Pingus: Out of memory!"
+msgstr "Pingus: Kifogyott a memória!"
+
+#: src/pingus/pingus_main.cpp:721
+msgid "Pingus: Standard exception caught!:\n"
+msgstr "Pingus: Normál hiba történt!:\n"
+
+#: src/pingus/pingus_main.cpp:725
+msgid "Pingus: Unknown throw caught!"
+msgstr "Pingus: Ismeretlen hiba történt!"
+
+#: src/pingus/game_time.cpp:29
+msgid "unlimited"
+msgstr "végtelen"
+
+#: src/pingus/actions/bridger.cpp:38 src/pingus/actions/bridger.cpp:196
+#: src/pingus/action_name.cpp:32
+msgid "Bridger"
+msgstr "Hídépítő"
+
+#: src/pingus/screens/credits.cpp:87
+msgid "-Idea"
+msgstr "-Ötlet"
+
+#: src/pingus/screens/credits.cpp:91
+msgid "-Maintaining"
+msgstr "-Karbantartás"
+
+#: src/pingus/screens/credits.cpp:95
+msgid "-Programming"
+msgstr "-Programozás"
+
+#: src/pingus/screens/credits.cpp:105
+msgid "-Porting (Win32)"
+msgstr "-Portolás (Win32)"
+
+#: src/pingus/screens/credits.cpp:114
+msgid "-Porting (MacOSX)"
+msgstr "-Portolás (MacOSX)"
+
+#: src/pingus/screens/credits.cpp:119
+msgid "-Gfx"
+msgstr "-Grafika"
+
+#: src/pingus/screens/credits.cpp:132
+msgid "-Music"
+msgstr "-Zene"
+
+#: src/pingus/screens/credits.cpp:139
+msgid "-Level Design"
+msgstr "-Pálya tervező"
+
+#: src/pingus/screens/credits.cpp:145
+msgid "-Story"
+msgstr "-Történet"
+
+#: src/pingus/screens/credits.cpp:149
+msgid "-Translation"
+msgstr "-Fordítás"
+
+#: src/pingus/screens/credits.cpp:164
+msgid "-Special"
+msgstr "-Külön"
+
+#: src/pingus/screens/credits.cpp:165
+msgid "-Thanks to"
+msgstr "-Köszönet"
+
+#: src/pingus/screens/credits.cpp:209
+msgid "_And a very Special Thanks"
+msgstr "_És egy hatalmas külön köszönet"
+
+#: src/pingus/screens/credits.cpp:210
+msgid "_to all the people who"
+msgstr "_mindazoknak, akik"
+
+#: src/pingus/screens/credits.cpp:211
+msgid "_contribute to"
+msgstr "_támogatják a"
+
+#: src/pingus/screens/credits.cpp:212
+msgid "_Free Software!"
+msgstr "_Szabad Szoftvereket!"
+
+#: src/pingus/screens/credits.cpp:218
+msgid "_Thank you for"
+msgstr "_Köszönet neked"
+
+#: src/pingus/screens/credits.cpp:219
+msgid "_playing!"
+msgstr "_a játszásért!"
+
+#: src/pingus/screens/start_screen.cpp:67
+msgid "Ok"
+msgstr "Rendben"
+
+#: src/pingus/screens/start_screen.cpp:111
+#: src/pingus/screens/level_menu.cpp:51
+#: src/pingus/screens/result_screen.cpp:91
+msgid "Abort"
+msgstr "Megszakítás"
+
+#: src/pingus/screens/start_screen.cpp:166
+msgid "Number of Pingus: "
+msgstr "Pingvinek száma:"
+
+#: src/pingus/screens/start_screen.cpp:169
+msgid "Number to Save: "
+msgstr "Megmentendőek: "
+
+#: src/pingus/screens/start_screen.cpp:172
+msgid "Time: "
+msgstr "Idő: "
+
+#: src/pingus/screens/start_screen.cpp:181
+msgid "Author: "
+msgstr "Szerző: "
+
+#: src/pingus/screens/start_screen.cpp:184
+msgid "Filename: "
+msgstr "Fájlnév: "
+
+#: src/pingus/screens/addon_menu.cpp:50 src/pingus/screens/option_menu.cpp:286
+msgid "Close"
+msgstr "Bezár"
+
+#: src/pingus/screens/pingus_menu.cpp:52
 msgid "Story"
 msgstr "Történet"
 
-#: src/pingus_menu.cpp:51
+#: src/pingus/screens/pingus_menu.cpp:53
 msgid "..:: Start the game ::.."
 msgstr "..:: Játék indítása ::.."
 
-#: src/pingus_menu.cpp:56
+#: src/pingus/screens/pingus_menu.cpp:57
 msgid "Editor"
 msgstr "Szerkesztő"
 
-#: src/pingus_menu.cpp:57
+#: src/pingus/screens/pingus_menu.cpp:58
 msgid "..:: Create your own levels ::.."
 msgstr "..:: Saját pályák készítése ::.."
 
-#: src/pingus_menu.cpp:62
+#: src/pingus/screens/pingus_menu.cpp:63
 msgid "..:: Bye, bye ::.."
 msgstr "..:: Pá, pá! ::.."
 
-#: src/pingus_menu.cpp:67
+#: src/pingus/screens/pingus_menu.cpp:67 src/pingus/screens/level_menu.cpp:141
+msgid "Levelsets"
+msgstr "Pályacsomagok"
+
+#: src/pingus/screens/pingus_menu.cpp:68
 msgid "..:: Play User Built levels ::.."
 msgstr "..:: Felhasználók által készített pályákon játszás ::.."
 
-#: src/pingus_menu.cpp:73
-msgid "..:: Start the story ::.."
-msgstr "..:: A történet indítása ::.."
-
-#: src/pingus_menu.cpp:78
-msgid "Multiplayer"
-msgstr "Többjárékos"
-
-#: src/pingus_menu.cpp:79
-msgid "..:: Multiplayer Match ::.."
-msgstr "..:: Többjátékos Meccs ::.."
-
-#: src/pingus_menu.cpp:82
+#: src/pingus/screens/pingus_menu.cpp:79
 msgid ""
 "..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
 "fullscreen   ::   F12: screenshot ::.."
@@ -939,11 +684,288 @@ msgstr ""
 "..:: Ctrl-g: egér megfogása  ::  F10: fps számláló  ::  F11: teljes "
 "képernyő  ::  F12: képernyőmentés ::.."
 
-#: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
+#: src/pingus/screens/level_menu.cpp:159
+msgid "Solved:"
+msgstr "Megoldva:"
+
+#: src/pingus/screens/level_menu.cpp:160
+msgid "levels"
+msgstr "pálya"
+
+#: src/pingus/screens/level_menu.cpp:170 src/pingus/screens/level_menu.cpp:291
+msgid "Page"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:265
+msgid "Title"
+msgstr "Cím"
+
+#: src/pingus/screens/level_menu.cpp:266
+msgid "Status"
+msgstr "Állapot"
+
+#: src/pingus/screens/level_menu.cpp:282
+msgid "solved"
+msgstr "megoldva"
+
+#: src/pingus/screens/level_menu.cpp:284
+msgid "unsolved"
+msgstr "nincs megoldva"
+
+#: src/pingus/screens/story_screen.cpp:107
+#: src/pingus/screens/story_screen.cpp:113
+msgid "skip"
+msgstr "kihagyás"
+
+#: src/pingus/screens/option_menu.cpp:180
+msgid "Language:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:182
+msgid "Resolution:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:183
+#, fuzzy
+msgid "Fullscreen:"
+msgstr "Indítás teljes képernyős módban"
+
+#: src/pingus/screens/option_menu.cpp:184
+msgid "Master Volume:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:185
+#, fuzzy
+msgid "Sound Volume:"
+msgstr "Hang:"
+
+#: src/pingus/screens/option_menu.cpp:186
+msgid "Music Volume:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:187
+msgid "Autoscrolling:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:188
+msgid "Print FPS:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:189
+msgid "Mouse Grab:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:190
+#, fuzzy
+msgid "Software Cursor:"
+msgstr "Szoftveres kurzor engedélyezése"
+
+#: src/pingus/screens/option_menu.cpp:208
+msgid "Reset to Defaults:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:284
+msgid "Option Menu"
+msgstr ""
+
+#: src/pingus/screens/result_screen.cpp:126
+msgid "Retry"
+msgstr "Újrapróbál"
+
+#: src/pingus/screens/result_screen.cpp:183
+msgid "Success!"
+msgstr "Siker!"
+
+#: src/pingus/screens/result_screen.cpp:191
+msgid "Failure!"
+msgstr "Kudarc!"
+
+#: src/pingus/screens/result_screen.cpp:200
+msgid "Perfect! You saved everyone possible - great!"
+msgstr "Tökéletes! Mindenkit megmentettél!"
+
+#: src/pingus/screens/result_screen.cpp:202
+msgid "No-one got killed, pretty good work."
+msgstr "Senki se halt meg, igen jó munka."
+
+#: src/pingus/screens/result_screen.cpp:204
+msgid ""
+"You saved exactly what you needed - you made it, but\n"
+"maybe you can do better?"
+msgstr ""
+"Pont annyit mentettél meg, amenyit kellett -\n"
+"most megcsináltad, de talán jobban is teljesíthetnél"
+
+#: src/pingus/screens/result_screen.cpp:207
+msgid "Not everybody was saved, but still good work!"
+msgstr "Nem mindenkit sikerült megmenteni, de így is jó munka!"
+
+#: src/pingus/screens/result_screen.cpp:209
+msgid "What can I say, you made it - congratulations!"
+msgstr "Amit csak tudok mondani, azt megcsinálod - gratulálok!"
+
+#: src/pingus/screens/result_screen.cpp:214
+msgid "You killed everybody, not good."
+msgstr "Mindenkit megöltél, ez így nem jó."
+
+#: src/pingus/screens/result_screen.cpp:216
+msgid "No-one got saved - I know you can do better."
+msgstr "Senkit se mentettél meg - tudom hogy többre is képes vagy."
+
+#: src/pingus/screens/result_screen.cpp:218
+msgid ""
+"You didn't save enough, but you saved a few.  Next\n"
+"time you might do better."
+msgstr ""
+"Nem mentettél meg eleget, viszont sikerült megmenteni egy párat.\n"
+"Legközelebb lehet hogy jobban sikerül."
+
+#: src/pingus/screens/result_screen.cpp:221
+msgid "Only one more and you would have made it - try again!"
+msgstr "Csak még egy kellet volna, hogy megcsináld - próbáld meg újból!"
+
+#: src/pingus/screens/result_screen.cpp:223
+msgid "Only a handful more and you would have made it - try again!"
+msgstr "Csak egy maréknyival kelett volna több - próbáld újra!"
+
+#: src/pingus/screens/result_screen.cpp:225
+msgid "Better luck next time!"
+msgstr "Több szerencsét legközelebb!"
+
+#: src/pingus/screens/result_screen.cpp:233
+msgid "Saved: "
+msgstr "Megmentve: "
+
+#: src/pingus/screens/result_screen.cpp:237
+msgid "Died: "
+msgstr "Meghalt: "
+
+#: src/pingus/screens/result_screen.cpp:240
+msgid "Time left: "
+msgstr "Hátralévő idő: "
+
+#: src/pingus/action_name.cpp:27
+msgid "Angel"
+msgstr "Angyal"
+
+#: src/pingus/action_name.cpp:28
+msgid "Basher"
+msgstr "Vízszintes ásó"
+
+#: src/pingus/action_name.cpp:29
+msgid "Blocker"
+msgstr "Blokkoló"
+
+#: src/pingus/action_name.cpp:30
+msgid "Boarder"
+msgstr "Gördeszkás"
+
+#: src/pingus/action_name.cpp:31
+msgid "Bomber"
+msgstr "Bombázó"
+
+#: src/pingus/action_name.cpp:33
+msgid "Climber"
+msgstr "Mászó"
+
+#: src/pingus/action_name.cpp:34
+msgid "Digger"
+msgstr "Ásó"
+
+#: src/pingus/action_name.cpp:35
+msgid "Drown"
+msgstr "Meghalt"
+
+#: src/pingus/action_name.cpp:36
+msgid "Exiter"
+msgstr "Kilépő"
+
+#: src/pingus/action_name.cpp:37
+msgid "Faller"
+msgstr "Eső"
+
+#: src/pingus/action_name.cpp:38
+msgid "Floater"
+msgstr "Szálló"
+
+#: src/pingus/action_name.cpp:39
+msgid "Jumper"
+msgstr "Ugró"
+
+#: src/pingus/action_name.cpp:40
+msgid "Laserkill"
+msgstr "Lézerhalál"
+
+#: src/pingus/action_name.cpp:41
+msgid "Miner"
+msgstr "Bányászó"
+
+#: src/pingus/action_name.cpp:42
+msgid "Rocketlauncher"
+msgstr "Rakétakilövő"
+
+#: src/pingus/action_name.cpp:43
+msgid "Slider"
+msgstr "Csúszó"
+
+#: src/pingus/action_name.cpp:44
+msgid "Smashed"
+msgstr "Nyomi"
+
+#: src/pingus/action_name.cpp:45
+msgid "Splashed"
+msgstr "Szétplaccsant"
+
+#: src/pingus/action_name.cpp:46
+msgid "Superman"
+msgstr "Szuperman!"
+
+#: src/pingus/action_name.cpp:47
+msgid "Teleported"
+msgstr "Teleportált"
+
+#: src/pingus/action_name.cpp:48
+msgid "Waiter"
+msgstr "Váró"
+
+#: src/pingus/action_name.cpp:49
+msgid "Walker"
+msgstr "Sétáló"
+
+#: src/pingus/components/pingus_counter.cpp:43
+#, c-format, boost-format
+msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
+msgstr "Kiengedve: %3d/%d   Kint: %3d   Megmentve: %3d/%d"
+
+#: src/pingus/worldmap/worldmap.cpp:354
+msgid "...walking..."
+msgstr "...sétál..."
+
+#: src/pingus/worldmap/level_dot.cpp:140 src/pingus/worldmap/level_dot.cpp:150
+msgid "locked"
+msgstr "blokkolt"
+
+#: src/pingus/worldmap/worldmap_screen.cpp:116
+msgid "Show Ending?"
+msgstr "Befejezés megmutatása?"
+
+#: src/pingus/worldmap/worldmap_screen.cpp:145
+msgid "Show Story?"
+msgstr "Történet megmutatása?"
+
+#: src/pingus/worldmap/worldmap_screen.cpp:174
+msgid "Leave?"
+msgstr "Elhagyás?"
+
+#: src/pingus/worldmap/worldmap_screen.cpp:212
+msgid "Enter?"
+msgstr "Belép?"
+
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus:7
 msgid "If the way is blocked, bash away"
 msgstr "Ha az út blokkolva van, törd át"
 
-#: data/levels/tutorial/basher-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus:8
 msgid ""
 "Similar to the Digger action that you already know from previous levels, "
 "there is also an action that allows the Pingus to dig horizontally, as "
@@ -954,11 +976,11 @@ msgstr ""
 "utasítás, amitől a Pingu vízszintesen fog ásni, az ásó függőlegességével "
 "ellentétben. Ezt az utasítást vízszintes ásónak hívják."
 
-#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:5
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:7
 msgid "Sacrifice a few and save the rest"
 msgstr "Néhány feláldozása a többiek megmentéért"
 
-#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:6
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:8
 msgid ""
 "Sometimes no other actions are available, so you have to bomb your way "
 "through the ground. The Pingus can do this by actually self- destructing. "
@@ -970,12 +992,12 @@ msgstr ""
 "magukat. Ettől ők meghalnak, de néha szükséges, hogy feláldozzunk egy párat "
 "a többiek megmentésének az érdekében."
 
-#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:5
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:7
 #, fuzzy
 msgid "Learning to dig"
 msgstr "Megtanulni ásni (meg magyarul)"
 
-#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:6
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:8
 msgid ""
 "This is your first mission. As always, it's pretty easy. All you have to do "
 "is to give a Pingu the command to dig a hole into the ground so that they "
@@ -986,11 +1008,11 @@ msgstr ""
 "fölbe, és így elérjék a kijáratot. Ezt úgy érheted el, hogy rákattintasz egy "
 "Pingura."
 
-#: data/levels/tutorial/floater-tutorial-grumbel.pingus:5
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus:7
 msgid "Float or Die"
 msgstr "Repülj, vagy meghalsz"
 
-#: data/levels/tutorial/floater-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus:8
 msgid ""
 "Well done in mission one! Now let's start the next one. This time you will "
 "need to equip your Pingus with a little propeller, so that they can float to "
@@ -1002,11 +1024,11 @@ msgstr ""
 "a földig. Ha egy Pingu túl magasról esik le propeller nélkül, akkor meghal, "
 "szóval tartsd a szemed nyitva!"
 
-#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:5
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:7
 msgid "Jump for joy"
 msgstr "Ugrálás az örömért"
 
-#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:8
 msgid ""
 "Sometimes a Pingu needs to reach a platform that is far away, but not "
 "reachable by walking. That's when the Jumper comes in handy - it allows the "
@@ -1016,11 +1038,11 @@ msgstr ""
 "elérhető járással. Ekkor jön jól az ugrás - a Pingu csinál egy kis ugrást, "
 "aminek segítségével elérheti a földdarabot."
 
-#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:5
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:7
 msgid "Miner's heaven"
 msgstr "Bányászok paradicsoma"
 
-#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:6
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:8
 msgid ""
 "Another action hits the street - another digging action, this time a "
 "diagonal one. It allows a Pingu to dig diagonally through ground, thus "
@@ -1031,11 +1053,11 @@ msgstr ""
 "keresztül, és ezáltal egy utat csinálva a többieknek. Az utasítás neve: "
 "bányászó."
 
-#: data/levels/tutorial/snow10-grumbel.pingus:5
+#: data/levels/tutorial/snow10-grumbel.pingus:7
 msgid "Panic Island (float/bash)"
 msgstr "Pánik sziget(repülés/vízszintes ásás)"
 
-#: data/levels/tutorial/snow10-grumbel.pingus:6
+#: data/levels/tutorial/snow10-grumbel.pingus:8
 msgid ""
 "While the previous levels have not required much quick action from you, this "
 "one gets a bit trickier. The Pingus are coming out of two entrances in "
@@ -1045,11 +1067,11 @@ msgstr ""
 "cselesebb. A Pinguk két bejáraton keresztül jönnek, a te dolgod pedig hogy a "
 "két csoportot bölcsen irányítsd."
 
-#: data/levels/tutorial/snow11-grumbel.pingus:5
+#: data/levels/tutorial/snow11-grumbel.pingus:7
 msgid "Jump'n Bump... and Bash..."
 msgstr "Ugrándozás és vízszintes ásás"
 
-#: data/levels/tutorial/snow11-grumbel.pingus:6
+#: data/levels/tutorial/snow11-grumbel.pingus:8
 msgid ""
 "It's panic time again. The Pingus will not come out very fast, but since "
 "they turn around when they hit walls you will soon have some trouble "
@@ -1062,11 +1084,11 @@ msgstr ""
 "se sikerül, próbáld meg a szünet-módot ('p' gomb) hogy újra átnézhesd a "
 "dolgokat."
 
-#: data/levels/tutorial/snow12-grumbel.pingus:5
+#: data/levels/tutorial/snow12-grumbel.pingus:7
 msgid "Two groups in parallel, coordinate wisely"
 msgstr "Két párhuzamos csoport, írányíts bölcsen"
 
-#: data/levels/tutorial/snow12-grumbel.pingus:6
+#: data/levels/tutorial/snow12-grumbel.pingus:8
 msgid ""
 "You have two groups to coordinate this time. No need to panic, since this "
 "level gives you enough time to think your actions through. No more tips this "
@@ -1076,11 +1098,11 @@ msgstr ""
 "pályán elég időd van, hogy meggondold mit teszel. Nem kapsz több tippet "
 "most, csak sok szerencsét!"
 
-#: data/levels/tutorial/snow14-grumbel.pingus:5
+#: data/levels/tutorial/snow14-grumbel.pingus:7
 msgid "Block'a Rock"
 msgstr "Blokkolj és bombázz"
 
-#: data/levels/tutorial/snow14-grumbel.pingus:6
+#: data/levels/tutorial/snow14-grumbel.pingus:8
 msgid ""
 "Once again it's time to combine the stuff you have learned in your previous "
 "levels. Blast your way free and make sure you also keep the rest of the "
@@ -1090,11 +1112,11 @@ msgstr ""
 "szabaddé az utat, miközben figyelj oda a többi Pingura. A blokkoló utasítás "
 "hasznos lessz."
 
-#: data/levels/tutorial/snow15-grumbel.pingus:5
+#: data/levels/tutorial/snow15-grumbel.pingus:7
 msgid "Climb, Climber,... Boom!"
 msgstr "Mászni, mászó,... Boom!"
 
-#: data/levels/tutorial/snow15-grumbel.pingus:6
+#: data/levels/tutorial/snow15-grumbel.pingus:8
 msgid ""
 "As you might have already figured out from previous levels, you often have "
 "to combine different actions to get the job done. Due to the lack of a "
@@ -1106,11 +1128,11 @@ msgstr ""
 "utasítás ezen a pályán, bombázóval kell megoldanod, de hogy tudja elérni a "
 "felrobbantandó helyet?"
 
-#: data/levels/tutorial/snow16-grumbel.pingus:5
+#: data/levels/tutorial/snow16-grumbel.pingus:7
 msgid "Bridging gets more complicated..."
 msgstr "Hídépítés komplikáltabban"
 
-#: data/levels/tutorial/snow16-grumbel.pingus:6
+#: data/levels/tutorial/snow16-grumbel.pingus:8
 msgid ""
 "Once again you have to combine actions carefully and wisely. If you don't "
 "you could end up in the hole just before the exit, so think about how to "
@@ -1120,11 +1142,11 @@ msgstr ""
 "akkor kiköthetsz a kijárat előtti gödörben, tehát gondolkozz hogy tudnád "
 "elkerülni."
 
-#: data/levels/tutorial/snow17-grumbel.pingus:5
+#: data/levels/tutorial/snow17-grumbel.pingus:7
 msgid "If too high, your Pingu will die..."
 msgstr "Ha túl magas, a Pingu meg fog halni..."
 
-#: data/levels/tutorial/snow17-grumbel.pingus:6
+#: data/levels/tutorial/snow17-grumbel.pingus:8
 msgid ""
 "Teamwork is the way to the exit this time. You don't have enough Floaters to "
 "reach the exit, so just send a few and let them prepare the path for the "
@@ -1134,11 +1156,11 @@ msgstr ""
 "utasításod, így egy párat előre kell küldeni, hogy előkészítse az utat a "
 "többiek számára."
 
-#: data/levels/tutorial/snow19-grumbel.pingus:5
+#: data/levels/tutorial/snow19-grumbel.pingus:7
 msgid "Learn to use the bridge"
 msgstr "Híd építésének a megtanulása"
 
-#: data/levels/tutorial/snow19-grumbel.pingus:6
+#: data/levels/tutorial/snow19-grumbel.pingus:8
 msgid ""
 "If no Jumper is at hand and a large hole needs to be passed, a bridge can be "
 "pretty helpful. It takes some time to build, but unlike the jumper action it "
@@ -1148,11 +1170,11 @@ msgstr ""
 "igen hasznos lehet. Egy ideig eltart, amíg megépül, de utána az ugróval "
 "ellentétben a többi Pingu is át tud rata menni, hogy elérje a célt."
 
-#: data/levels/tutorial/snow20-grumbel.pingus:5
+#: data/levels/tutorial/snow20-grumbel.pingus:7
 msgid "Three solutions, it's up to you"
 msgstr "Három megöldás, rajtad a döntés"
 
-#: data/levels/tutorial/snow20-grumbel.pingus:6
+#: data/levels/tutorial/snow20-grumbel.pingus:8
 msgid ""
 "Now that you've learned all the actions, it's time for some more practice. "
 "This level presents you with at least three different ways to solve it. It's "
@@ -1162,11 +1184,11 @@ msgstr ""
 "pályát legalább háromféle képpen meg lehet oldani. Hogy melyiket választod, "
 "az csak rajtad múlik."
 
-#: data/levels/tutorial/snow21-grumbel.pingus:5
+#: data/levels/tutorial/snow21-grumbel.pingus:7
 msgid "Climb, Climber, climb... and build a bridge"
 msgstr "Mászni, mászó, mászni... aztán építs egy hidat"
 
-#: data/levels/tutorial/snow21-grumbel.pingus:6
+#: data/levels/tutorial/snow21-grumbel.pingus:8
 msgid ""
 "Once again you get access to a new action. The Climber action allows a Pingu "
 "to climb up straight walls, thus allowing him to reach stuff that might be "
@@ -1176,11 +1198,11 @@ msgstr ""
 "föl tud mászni függőleges falakra, így el tud érni olyan dolgokat, amit más "
 "módszerrel nem lehet."
 
-#: data/levels/tutorial/snow22-grumbel.pingus:5
+#: data/levels/tutorial/snow22-grumbel.pingus:7
 msgid "Entrance high, Exit low"
 msgstr "Bejárat magasan, kijárat alacsonyan"
 
-#: data/levels/tutorial/snow22-grumbel.pingus:6
+#: data/levels/tutorial/snow22-grumbel.pingus:8
 msgid ""
 "If you don't have enough floaters to bring all the Pingus down to the exit - "
 "you have to find other ways to guide them down. You should have learned all "
@@ -1192,11 +1214,11 @@ msgstr ""
 "megtanultál, ami ennek a pályának a teljesítéséhez kell, úgyhogy nem okozhat "
 "sok problémát."
 
-#: data/levels/tutorial/snow7-grumbel.pingus:5
+#: data/levels/tutorial/snow7-grumbel.pingus:7
 msgid "One must prepare, the rest must follow"
 msgstr "Egynek elő kell készítenie, a többinek meg követni"
 
-#: data/levels/tutorial/snow7-grumbel.pingus:6
+#: data/levels/tutorial/snow7-grumbel.pingus:8
 msgid ""
 "Sometimes there are situations where you don't have a Blocker at hand to "
 "coordinate your Pingus. You'll have to find other ways to keep them under "
@@ -1206,11 +1228,11 @@ msgstr ""
 "tartásához. Ilyenkor más megoldást kell találnod hogy egy helyen tartsd "
 "őket, még egy Pingu előkészíti az utat."
 
-#: data/levels/tutorial/snow8-grumbel.pingus:5
+#: data/levels/tutorial/snow8-grumbel.pingus:7
 msgid "Dig and float, but just don't fall and smash"
 msgstr "Ásás és repülés, de nem esés és kilapulás"
 
-#: data/levels/tutorial/snow8-grumbel.pingus:6
+#: data/levels/tutorial/snow8-grumbel.pingus:8
 msgid ""
 "Unlike the first two levels, you have two actions available in this level. "
 "Your job is again simple: select an action at the panel on the left and "
@@ -1222,11 +1244,11 @@ msgstr ""
 "kattnts egy Pingura. Ha jól csinálod, elérik a kijáratot, és nem fognak "
 "sokan meghalni."
 
-#: data/levels/tutorial/snow9-grumbel.pingus:5
+#: data/levels/tutorial/snow9-grumbel.pingus:7
 msgid "Dig, bash and other problems"
 msgstr "Kétféle ásás, meg egyéb problémák"
 
-#: data/levels/tutorial/snow9-grumbel.pingus:6
+#: data/levels/tutorial/snow9-grumbel.pingus:8
 msgid ""
 "The more levels you master, the more difficult they will get, but don't "
 "panic, as this one is still pretty easy. Just use the stuff that you've "
@@ -1240,11 +1262,11 @@ msgstr ""
 "olyan szituációba kerültél, ahonnan nincs visszaút, kattints duplán az "
 "armageddon gombra a jobb alsó sarokban."
 
-#: data/levels/tutorial/solid-tutorial-grumbel.pingus:5
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus:7
 msgid "Solid ground can block the path"
 msgstr "Szilárd talaj megakadályozhatja az utat"
 
-#: data/levels/tutorial/solid-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus:8
 msgid ""
 "As you have learned in earlier levels your Pingus can dig through basically "
 "any terrain, but there is one material which they can't penetrate: steel. "
@@ -1298,7 +1320,7 @@ msgstr "Boom Boom"
 msgid ""
 "You've mastered the last challenge and now face the next. Their path to "
 "salvation seems to be cursed, but by whom? There is no time to think about "
-"it, since the next deadly challange already awaits the Pingus. Two mighty "
+"it, since the next deadly challenge already awaits the Pingus. Two mighty "
 "roots block the way, but without a basher at hand to bash them away, "
 "sacrifice might be the only option..."
 msgstr ""
@@ -1379,10 +1401,11 @@ msgstr "Szétloccsanó fesztivál"
 #, fuzzy
 msgid ""
 "This is by far the deepest pit the Pingus have yet encountered. Building a "
-"bridge across it seems obvious, but can't work. The exit is deep down in the "
-"pit itself, but Pingus who go down will just end up splattered upon the "
-"ground. But you have two groups of Pingus at your disposal... can you make "
-"them work together to reach even an exit this well hidden?"
+"bridge across it seems obvious but that won't help since the exit is deep "
+"down in the pit itself. Pingus who try to go down the pit will just end up "
+"splattered all over the ground. You have two groups of Pingus at your "
+"disposal, can you make them work together to reach even an exit this well "
+"hidden?"
 msgstr ""
 "Ez messze a legmélyebb gödör amivel a Pinguk idáig találkoztak. Hidat "
 "építeni fölé egyszerűnek tűnhet, de mégis lehetetlen. A kijárat mélyen van, "
@@ -1565,6 +1588,14 @@ msgstr ""
 "Tehát a Pinguk felültek a tutajaikra, azon aggódva mi fog történni, és hogy "
 "hova mennek, miközben sodródtak a naplementében.  Folytatása következik...."
 
+#: data/levelsets/desert.levelset:2
+msgid "Desert"
+msgstr ""
+
+#: data/levelsets/desert.levelset:3
+msgid "Abandoned in the Arabian Desert"
+msgstr ""
+
 #: data/levelsets/halloween.levelset:3
 msgid "Halloween 2007"
 msgstr "Halloween 2007"
@@ -1573,17 +1604,73 @@ msgstr "Halloween 2007"
 msgid "Trapped at All Hallows Eve"
 msgstr "Elfogva Halloween éjszakáján"
 
-#~ msgid "levels"
-#~ msgstr "pálya"
+#: data/levelsets/pacman.levelset:3
+msgid "Pac-Man"
+msgstr ""
 
-#~ msgid "Title"
-#~ msgstr "Cím"
+#: data/levelsets/pacman.levelset:4
+msgid "Trapped in a video game"
+msgstr ""
 
-#~ msgid "Status"
-#~ msgstr "Állapot"
+#: data/levelsets/xmas.levelset:3
+msgid "X-Mas 2007"
+msgstr ""
 
-#~ msgid "solved"
-#~ msgstr "megoldva"
+#: data/levelsets/xmas.levelset:4
+msgid "Merry Christmas and a Happy New Year"
+msgstr ""
 
-#~ msgid "unsolved"
-#~ msgstr "nincs megoldva"
+#~ msgid "Allow Window resize (buggy)"
+#~ msgstr "Ablak átméretezésének engedélyezése (bugos)"
+
+#~ msgid "Load a custom worldmap"
+#~ msgstr "Egyedi térkép betöltése"
+
+#~ msgid "Skip at least N frames, larger values speed the game up"
+#~ msgstr ""
+#~ "Legalább N képkocka kihagyása, nagyobb érték felgyorsíthatja a játékot"
+
+#~ msgid "Skip at most N frames"
+#~ msgstr "Legfeljebb N képkocka kihagyása"
+
+#~ msgid "Set both min and max frameskip to N"
+#~ msgstr "Minimum és maximum képkocka kihagyási érték Nre állítása"
+
+#~ msgid "Disable some cpu intensive features"
+#~ msgstr "Néhány processzor-zabáló funkció letiltása"
+
+#~ msgid "Demo playing and recording:"
+#~ msgstr "Demo lejátszás és felvétel"
+
+#~ msgid "Plays a demo session"
+#~ msgstr "Egy demo lejátszása"
+
+#~ msgid "Record demos for each played level"
+#~ msgstr "Demo felvétele minden egyes lejátszott pályán"
+
+#~ msgid "Error caught from Pingus: "
+#~ msgstr "Hiba a Pingusban: "
+
+#~ msgid "Couldn't open: "
+#~ msgstr "Nem sikerült megnyitni: "
+
+#~ msgid "Unexpected char: '"
+#~ msgstr "Nem várt karakter: '"
+
+#~ msgid "Yes"
+#~ msgstr "Igen"
+
+#~ msgid "No"
+#~ msgstr "Nem"
+
+#~ msgid "Exit Pingus?"
+#~ msgstr "Kilépsz a Pingusból?"
+
+#~ msgid "..:: Start the story ::.."
+#~ msgstr "..:: A történet indítása ::.."
+
+#~ msgid "Multiplayer"
+#~ msgstr "Többjárékos"
+
+#~ msgid "..:: Multiplayer Match ::.."
+#~ msgstr "..:: Többjátékos Meccs ::.."

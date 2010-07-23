@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-31 06:55+0100\n"
+"POT-Creation-Date: 2010-07-23 02:10+0200\n"
 "PO-Revision-Date: 2008-09-02 15:01+0300\n"
 "Last-Translator: Risto H. Kurppa <risto@kurppa.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -21,503 +21,19 @@ msgstr ""
 "#-#-#-#-#  fi.po (fi)  #-#-#-#-#\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/game_time.cpp:66
-msgid "unlimited"
-msgstr "rajaton"
-
-#: src/story_screen.cpp:40
-msgid "skip"
-msgstr "ohita"
-
-#: src/pingu_enums.cpp:34
-msgid "Angel"
-msgstr "Enkeli"
-
-#: src/pingu_enums.cpp:35
-msgid "Basher"
-msgstr "Murskaaja"
-
-#: src/pingu_enums.cpp:36
-msgid "Blocker"
-msgstr "Pysäyttäjä"
-
-#: src/pingu_enums.cpp:37
-msgid "Boarder"
-msgstr "Laatoittaja"
-
-#: src/pingu_enums.cpp:38
-msgid "Bomber"
-msgstr "Pommittaja"
-
-#: src/pingu_enums.cpp:39 src/actions/bridger.cpp:42
-#: src/actions/bridger.cpp:216
-msgid "Bridger"
-msgstr "Siltaaja"
-
-#: src/pingu_enums.cpp:40
-msgid "Climber"
-msgstr "Kiipeilijä"
-
-#: src/pingu_enums.cpp:41
-msgid "Digger"
-msgstr "Kaivaja"
-
-#: src/pingu_enums.cpp:42
-msgid "Drown"
-msgstr "Hukkuminen"
-
-#: src/pingu_enums.cpp:43
-msgid "Exiter"
-msgstr "Poistuja"
-
-#: src/pingu_enums.cpp:44
-msgid "Faller"
-msgstr "Putoaja"
-
-#: src/pingu_enums.cpp:45
-msgid "Floater"
-msgstr "Leijuja"
-
-#: src/pingu_enums.cpp:46
-msgid "Jumper"
-msgstr "Hyppääjä"
-
-#: src/pingu_enums.cpp:47
-msgid "Laserkill"
-msgstr "Laserkuolema"
-
-#: src/pingu_enums.cpp:48
-msgid "Miner"
-msgstr "Louhija"
-
-#: src/pingu_enums.cpp:49
-msgid "Rocketlauncher"
-msgstr "Raketinheittäjä"
-
-#: src/pingu_enums.cpp:50
-msgid "Slider"
-msgstr "Liukuja"
-
-#: src/pingu_enums.cpp:51
-msgid "Smashed"
-msgstr "Liiskaus"
-
-#: src/pingu_enums.cpp:52
-msgid "Splashed"
-msgstr "Roiskaus"
-
-#: src/pingu_enums.cpp:53
-msgid "Superman"
-msgstr "Teräsmies"
-
-#: src/pingu_enums.cpp:54
-msgid "Teleported"
-msgstr "Teleportattu"
-
-#: src/pingu_enums.cpp:55
-msgid "Waiter"
-msgstr "Odottaja"
-
-#: src/pingu_enums.cpp:56
-msgid "Walker"
-msgstr "Kävelijä"
-
-#: src/start_screen.cpp:74 src/editor/level_head.cpp:53
-msgid "Ok"
-msgstr "OK"
-
-#: src/start_screen.cpp:114 src/result_screen.cpp:98 src/level_menu.cpp:57
-msgid "Abort"
-msgstr "Lopeta"
-
-#: src/start_screen.cpp:163
-msgid "Number of Pingus: "
-msgstr "Pingujen määrä: "
-
-#: src/start_screen.cpp:166
-msgid "Number to Save: "
-msgstr "Pelastettavien määrä: "
-
-#: src/start_screen.cpp:169
-msgid "Time: "
-msgstr "Aika: "
-
-#: src/start_screen.cpp:176
-msgid "Author: "
-msgstr "Tekijä: "
-
-#: src/start_screen.cpp:179
-msgid "Filename: "
-msgstr "Tiedostonimi: "
-
-#: src/pingus_main.cpp:259
-msgid "Displays this help"
-msgstr "Näytä tämä ohje"
-
-#: src/pingus_main.cpp:261
-#, fuzzy
-msgid "Print version number and exit"
-msgstr "Näytä versionumero ja poistu"
-
-#: src/pingus_main.cpp:263
-msgid "Display:"
-msgstr "Näyttö:"
-
-#: src/pingus_main.cpp:265
-msgid "Start in Window Mode"
-msgstr "Käynnistä ikkunassa"
-
-#: src/pingus_main.cpp:267
-msgid "Start in Fullscreen"
-msgstr "Käynnistä koko ruudulla"
-
-#: src/pingus_main.cpp:269
-msgid "Allow Window resize (buggy)"
-msgstr "Salli ikkunan skaalaus (kokeellinen)"
-
-#: src/pingus_main.cpp:271
-msgid "Enable software cursor"
-msgstr "Ota käyttöön ohjelmallinen osoitin"
-
-#: src/pingus_main.cpp:273
-msgid "Set the resolution for pingus (default: 800x600)"
-msgstr "Aseta näytön tarkkuus (oletusarvo: 800x600)"
-
-#: src/pingus_main.cpp:275
-msgid "Sound:"
-msgstr "Äänet:"
-
-#: src/pingus_main.cpp:277
-msgid "Disable sound"
-msgstr "Ei ääniä"
-
-#: src/pingus_main.cpp:279
-msgid "Disable music"
-msgstr "Ei musiikkia"
-
-#: src/pingus_main.cpp:283
-msgid "Select language to use with Pingus"
-msgstr "Valitse käytettävä kieli"
-
-#: src/pingus_main.cpp:285
-msgid "List all available languages"
-msgstr "Listaa kaikki käytettävissä olevat kielet"
-
-#: src/pingus_main.cpp:289
-#, fuzzy
-msgid "Loads the level editor"
-msgstr "..:: Käynnistä kenttäeditori ::.."
-
-#: src/pingus_main.cpp:291
-msgid "Test a font"
-msgstr "Kokeile kirjaisinta"
-
-#: src/pingus_main.cpp:293
-msgid "Shows the credits"
-msgstr ""
-
-#: src/pingus_main.cpp:295
-#, fuzzy
-msgid "Misc Options:"
-msgstr "Valitsimet:"
-
-#: src/pingus_main.cpp:296
-msgid "PATH"
-msgstr ""
-
-#: src/pingus_main.cpp:297
-msgid "Set the path to load the data files to 'path'"
-msgstr ""
-
-#: src/pingus_main.cpp:300
-msgid "Disable automatic scrolling"
-msgstr "Poista automaattinen vieritys käytöstä"
-
-#: src/pingus_main.cpp:302
-msgid "Don't read ~/.pingus/config"
-msgstr "Älä lue tiedostoa ~/.pingus/config:a"
-
-#: src/pingus_main.cpp:303
-#, fuzzy
-msgid "FILE"
-msgstr "TIEDOSTO     "
-
-#: src/pingus_main.cpp:304
-#, fuzzy
-msgid ""
-"Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
-"speed up the game on slower machines"
-msgstr "vähennä suorittimen käyttöä; saattaa nopeuttaa peliä hitailla koneilla"
-
-#: src/pingus_main.cpp:307
-msgid "Uses the controller given in FILE"
-msgstr "Käyttää TIEDOSTO:ssa annettua ohjainta"
-
-#: src/pingus_main.cpp:309
-msgid "Debugging and experimental stuff:"
-msgstr "Kokeellista ja virheiden korjaamiseen liittyvää tavaraa:"
-
-#: src/pingus_main.cpp:311
-#, fuzzy
-msgid "Enables some features, only interesting to programmers"
-msgstr "Kytkee päälle joitain vain ohjelmoijia kiinnostavia ominaisuuksia"
-
-#: src/pingus_main.cpp:314
-msgid "Load a custom worldmap"
-msgstr "Lataa maailmankartta tiedostosta"
-
-#: src/pingus_main.cpp:316
-msgid ""
-"Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
-"actions, sound, resources, gui, input, pathmgr"
-msgstr "Tulosta virheenkorjauksessa tarvittavia teitoja. Mahdollisia asetuksia "
-"ovat tiles, gametime, actions, sound, resources, gui, input ja pathmgr."
-
-#: src/pingus_main.cpp:320
-msgid "Skip at least N frames, larger values speed the game up"
-msgstr "Jätä piirtämättä vähintään N ruutua. Suuremmat arvot nopeuttavat peliä"
-
-#: src/pingus_main.cpp:322
-msgid "Skip at most N frames"
-msgstr "Jätä piirtämättä korkeintaan N ruutua"
-
-#: src/pingus_main.cpp:324
-msgid "Set both min and max frameskip to N"
-msgstr "Aseta minimi- ja maksimi-ruudunhyppäys N:ään"
-
-#: src/pingus_main.cpp:326
-msgid "Set the game speed (0=fastest, >0=slower)"
-msgstr "Aseta pelin nopeus (0=nopein, >0=hitaampi)"
-
-#: src/pingus_main.cpp:328
-msgid "Set the size of the map tiles (default: 32)"
-msgstr "Aseta karttaruutujen koko (oletusarvo: 32)"
-
-#: src/pingus_main.cpp:330
-msgid "Disable some cpu intensive features"
-msgstr "Poista joitain suoritinsyöppöjä ominaisuuksia käytöstä"
-
-#: src/pingus_main.cpp:334
-msgid "Demo playing and recording:"
-msgstr "Demon näyttäminen ja nauhoitus:"
-
-#: src/pingus_main.cpp:336
-#, fuzzy
-msgid "Plays a demo session"
-msgstr "Näyttää demopelin TIEDOSTOsta"
-
-#: src/pingus_main.cpp:338
-msgid "Record demos for each played level"
-msgstr "Nauhoittaa demopelit jokaiselle pelatulle kentälle"
-
-#: src/pingus_main.cpp:735
-msgid "Error caught from Pingus: "
-msgstr "Virhe Pingusilta: "
-
-#: src/pingus_main.cpp:739
-msgid "Pingus: Out of memory!"
-msgstr "Pingus: Muisti loppu!"
-
-#: src/pingus_main.cpp:743
-msgid "Pingus: Standard exception caught!:\n"
-msgstr "Pingus: Standardikeskeytys!:\n"
-
-#: src/pingus_main.cpp:747
-msgid "Pingus: Unknown throw caught!"
-msgstr "Pingus: Tuntematon keskytys!"
-
-#: src/credits.cpp:82
-msgid "-Idea"
-msgstr "-Idea"
-
-#: src/credits.cpp:86
-msgid "-Maintaining"
-msgstr "-Ylläpito"
-
-#: src/credits.cpp:90
-msgid "-Programming"
-msgstr "-Ohjelmointi"
-
-#: src/credits.cpp:100
-msgid "-Porting (Win32)"
-msgstr "-Porttaus (Win32)"
-
-#: src/credits.cpp:109
-msgid "-Porting (MacOSX)"
-msgstr "-Porttaus (MacOSX)"
-
-#: src/credits.cpp:114
-msgid "-Gfx"
-msgstr "-Grafiikka"
-
-#: src/credits.cpp:127
-msgid "-Music"
-msgstr "-Musiikki"
-
-#: src/credits.cpp:134
-msgid "-Level Design"
-msgstr "-Kenttäsuunnittelu"
-
-#: src/credits.cpp:140
-msgid "-Story"
-msgstr "-Tarina"
-
-#: src/credits.cpp:144
-msgid "-Translation"
-msgstr "-Käännöstyö"
-
-#: src/credits.cpp:159
-msgid "-Special"
-msgstr "-Erityiset"
-
-#: src/credits.cpp:160
-msgid "-Thanks to"
-msgstr "-Kiitokset"
-
-#: src/credits.cpp:204
-msgid "_And a very Special Thanks"
-msgstr "_Ja aivan erityiskiitokset"
-
-#: src/credits.cpp:205
-msgid "_to all the people who"
-msgstr "_kaikille niille, jotka"
-
-#: src/credits.cpp:206
-msgid "_contribute to"
-msgstr "_osallistuvat kehittämään"
-
-#: src/credits.cpp:207
-msgid "_Free Software!"
-msgstr "_vapaita ohjelmia!"
-
-#: src/credits.cpp:213
-msgid "_Thank you for"
-msgstr "_Kiitos sinulle"
-
-#: src/credits.cpp:214
-msgid "_playing!"
-msgstr "_pelaamisesta!"
-
-#: src/credits.cpp:276 src/editor/panel.cpp:211
-#: src/editor/object_selector.cpp:318 src/pingus_menu.cpp:61
-msgid "Exit"
-msgstr "Poistu"
-
-#: src/addon_menu.cpp:59 src/option_menu.cpp:94
-msgid "Close"
-msgstr "Sulje"
-
-#: src/result_screen.cpp:131
-msgid "Retry"
-msgstr "Yritä uudelleen"
-
-#: src/result_screen.cpp:181
-msgid "Success!"
-msgstr "Onnistuit!"
-
-#: src/result_screen.cpp:188
-msgid "Failure!"
-msgstr "Epäonnistuit."
-
-#: src/result_screen.cpp:197
-msgid "Perfect! You saved everyone possible - great!"
-msgstr "Täydellistä! Pelastit joka ikisen, loistavaa!"
-
-#: src/result_screen.cpp:199
-msgid "No-one got killed, pretty good work."
-msgstr "Yksikään ei menehtynyt, hyvin tehty."
-
-#: src/result_screen.cpp:201
-msgid ""
-"You saved exactly what you needed - you made it, but\n"
-"maybe you can do better?"
-msgstr ""
-"Pelastit tasan tarvittavan määrän - pääsit kyllä kentän läpi,\n"
-"mutta kai pystyt parempaankin?"
-
-#: src/result_screen.cpp:204
-msgid "Not everybody was saved, but still good work!"
-msgstr "Ihan kaikki eivät pelastuneet, mutta hyvää työtä joka tapauksessa!"
-
-#: src/result_screen.cpp:206
-msgid "What can I say, you made it - congratulations!"
-msgstr "Mitästä tässä voi sanoa... Pääsit läpi - onneksi olkoon!"
-
-#: src/result_screen.cpp:211
-msgid "You killed everybody, not good."
-msgstr "Tapatit kaikki - ei hyvä, ei."
-
-#: src/result_screen.cpp:213
-msgid "No-one got saved - I know you can do better."
-msgstr "Yksikään ei selvinnyt - pystyt varmasti parempaankin."
-
-#: src/result_screen.cpp:215
-msgid ""
-"You didn't save enough, but you saved a few.  Next\n"
-"time you might do better."
-msgstr ""
-"Et pelastanut ihan tarpeeksi, mutta muutaman kuitenkin.\n"
-"Ensi kerralla paremmin, vai mitä?"
-
-#: src/result_screen.cpp:218
-msgid "Only one more and you would have made it - try again!"
-msgstr "Vielä yksi lisää maaliin asti niin olisit päässyt läpi - yritä uudestaan!"
-
-#: src/result_screen.cpp:220
-msgid "Only a handful more and you would have made it - try again!"
-msgstr "Vain muutama lisää maaliin asti niin olisi päässyt läpi - yritä uudestaan!"
-
-#: src/result_screen.cpp:222
-msgid "Better luck next time!"
-msgstr "Parempi tuuri ensi kerralla!"
-
-#: src/result_screen.cpp:239
-msgid "Saved: "
-msgstr "Pelastui: "
-
-#: src/result_screen.cpp:243
-msgid "Died: "
-msgstr "Kuoli: "
-
-#: src/result_screen.cpp:247
-msgid "Time left: "
-msgstr "Aikaa jäljellä: "
-
-#: src/components/pingus_counter.cpp:49
-#, c-format, boost-format
-msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
-msgstr "Lähteneitä:%3d/%-3d   Liikkeellä:%3d   Pelastettu:%3d/%-3d"
-
-#: src/level_menu.cpp:108 src/pingus_menu.cpp:66
-msgid "Levelsets"
-msgstr "Kenttäpaketit"
-
-#: src/level_menu.cpp:124
-#, fuzzy
-msgid "Solved:"
-msgstr "Pelastui: "
-
-#: src/config.cpp:72
-msgid "Couldn't open: "
-msgstr "Avaus epäonnistui: "
-
-#: src/config.cpp:171 src/config.cpp:205
-msgid "Unexpected char: '"
-msgstr "Odottamaton merkki: '"
-
-#: src/screenshot.cpp:38
+#: src/engine/display/screenshot.cpp:33
 msgid "Screenshot: Saving screenshot to: "
 msgstr "Ruutukaappaus: Tallennetaan kaappausta: "
 
-#: src/screenshot.cpp:40
+#: src/engine/display/screenshot.cpp:35
 msgid "Screenshot: Screenshot is done."
 msgstr "Ruutukaappaus: Ruutukaappaus valmis."
 
-#: src/screenshot.cpp:115 src/screenshot.cpp:143
+#: src/engine/display/screenshot.cpp:110 src/engine/display/screenshot.cpp:138
 msgid "Screenshot: Couldn't write file: "
 msgstr "Ruutukaappaus: Tiedostoon ei voitu kirjoittaa: "
 
-#: src/editor/editor_screen.cpp:196
+#: src/editor/editor_screen.cpp:191
 msgid ""
 "Select all\n"
 "Clear Selection\n"
@@ -529,7 +45,7 @@ msgid ""
 "Rotate 270 degree\n"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:218
+#: src/editor/editor_screen.cpp:213
 msgid ""
 "Flip object horizontaly\n"
 "Flip object vertically\n"
@@ -540,7 +56,7 @@ msgid ""
 "Move objects right\n"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:230
+#: src/editor/editor_screen.cpp:225
 msgid ""
 "You should name your level files systematically, i.e. by their theme, their "
 "number and your nickname:\n"
@@ -568,375 +84,601 @@ msgstr ""
 "Joten jos kenttäsi on kivi-teeman toinen osa, tiedostonimen tulisi olla "
 "kivi2-nimesi.pingus\n"
 "\n"
-"Kun oelt saanut kenttäsi valmiiksi ja haluat sen päätyvän Pingusiin, lähetä"
-" kenttä sähköpostilla osoitteeseen\n"
+"Kun oelt saanut kenttäsi valmiiksi ja haluat sen päätyvän Pingusiin, lähetä "
+"kenttä sähköpostilla osoitteeseen\n"
 "\n"
 "     pingus-devel@nongnu.org\n"
 "\n"
 "Vain GPL-lisenssin alaiset kentät voidaan lisätä peliin. Oletuksena "
-"kenttätyökalu tekee kaikista kentistä GPL-lisensoituja. Jos haluat "
-"käyttää eri lisenssiä, se tulee asettaa erikseen." 
+"kenttätyökalu tekee kaikista kentistä GPL-lisensoituja. Jos haluat käyttää "
+"eri lisenssiä, se tulee asettaa erikseen."
 
-#: src/editor/panel.cpp:153
+#: src/editor/file_dialog.cpp:61
+msgid "Datadir"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:63
+msgid "Userdir"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:66
+msgid "Open"
+msgstr "Avaa"
+
+#: src/editor/file_dialog.cpp:66
+msgid "Save"
+msgstr "Tallenna"
+
+#: src/editor/file_dialog.cpp:69
+msgid "Cancel"
+msgstr "Peruuta"
+
+#: src/editor/file_dialog.cpp:80
+msgid "Filename:"
+msgstr "Tiedostonimi: "
+
+#: src/editor/file_dialog.cpp:81
+msgid "Pathname:"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:107
+msgid "Open a level"
+msgstr "Avaa kenttä"
+
+#: src/editor/file_dialog.cpp:107
+msgid "Save your level"
+msgstr "Tallenna kenttä"
+
+#: src/editor/panel.cpp:152
 msgid "    New level"
 msgstr "    Uusi kenttä"
 
-#: src/editor/panel.cpp:155
+#: src/editor/panel.cpp:154
 msgid "Open level..."
 msgstr "Avaa kenttä..."
 
-#: src/editor/panel.cpp:157
+#: src/editor/panel.cpp:156
 msgid "Save level..."
 msgstr "Tallenna kenttä..."
 
-#: src/editor/panel.cpp:159
+#: src/editor/panel.cpp:158
 msgid "Save level as..."
 msgstr "Tallenna kenttä nimellä..."
 
-#: src/editor/panel.cpp:162
+#: src/editor/panel.cpp:161
 msgid "Play level..."
 msgstr "Pelaa kenttä..."
 
-#: src/editor/panel.cpp:165
+#: src/editor/panel.cpp:164
 msgid "Configure actions"
 msgstr "Aseta toiminnot"
 
-#: src/editor/panel.cpp:167
+#: src/editor/panel.cpp:166
 #, fuzzy
 msgid "Configure level"
 msgstr "Tallenna kenttä (F6)"
 
-#: src/editor/panel.cpp:169
+#: src/editor/panel.cpp:168
 msgid "Display object properties"
 msgstr "Muokkaa kohteen asetuksia"
 
-#: src/editor/panel.cpp:171
+#: src/editor/panel.cpp:170
 msgid "Show object insertion window"
 msgstr ""
 
-#: src/editor/panel.cpp:173
+#: src/editor/panel.cpp:172
 msgid "Show minimap"
 msgstr "Näytä minikartta"
 
-#: src/editor/panel.cpp:176
+#: src/editor/panel.cpp:175
 msgid "Duplicate the selected objects"
 msgstr "Monista kohde (d)"
 
-#: src/editor/panel.cpp:178
+#: src/editor/panel.cpp:177
 msgid "Delete the selected objects"
 msgstr "Delete - poista valittu kohde"
 
-#: src/editor/panel.cpp:181
+#: src/editor/panel.cpp:180
 msgid "Raise object to top"
 msgstr "Tuo päälimmäiseksi"
 
-#: src/editor/panel.cpp:183
+#: src/editor/panel.cpp:182
 msgid "Raise object"
 msgstr "Nosta "
 
-#: src/editor/panel.cpp:185
+#: src/editor/panel.cpp:184
 msgid "Lower object"
 msgstr "Laske "
 
-#: src/editor/panel.cpp:187
+#: src/editor/panel.cpp:186
 msgid "Lower object to bottom"
 msgstr "Vie alimmaiseksi"
 
-#: src/editor/panel.cpp:193
+#: src/editor/panel.cpp:192
 msgid "Flip object horizontally"
 msgstr "Käännä vaakasuunnassa"
 
-#: src/editor/panel.cpp:195
+#: src/editor/panel.cpp:194
 msgid "Flip object vertically"
-msgstr ""
-"Käännä pystysuunnassa"
+msgstr "Käännä pystysuunnassa"
 
-#: src/editor/panel.cpp:198
+#: src/editor/panel.cpp:197
 msgid "Rotate object -90 degree"
 msgstr "Käännä kohdetta -90 astetta "
 
-#: src/editor/panel.cpp:200
+#: src/editor/panel.cpp:199
 msgid "Rotate object 90 degree"
 msgstr "Käännä kohdetta 90 astetta"
 
-#: src/editor/panel.cpp:209
+#: src/editor/panel.cpp:208
 #, fuzzy
 msgid "Display help"
 msgstr "Näytä ohje"
 
-#: src/editor/object_properties.cpp:41 src/editor/object_properties.cpp:415
-msgid "Object:"
-msgstr "Kohde:"
+#: src/editor/panel.cpp:210 src/editor/object_selector.cpp:324
+#: src/pingus/screens/pingus_menu.cpp:62
+msgid "Exit"
+msgstr "Poistu"
 
-#: src/editor/object_properties.cpp:42 src/editor/object_properties.cpp:416
-msgid "Nothing selected"
-msgstr "Ei valintaa"
-
-#: src/editor/object_properties.cpp:51
-msgid "Transparent"
-msgstr "Läpinäkyvä"
-
-#: src/editor/object_properties.cpp:52
-msgid "Solid"
-msgstr "Kiinteä"
-
-#: src/editor/object_properties.cpp:53
-msgid "Ground"
-msgstr "Maa"
-
-#: src/editor/object_properties.cpp:54
-msgid "Bridge"
-msgstr "Silta"
-
-#: src/editor/object_properties.cpp:55
-msgid "Water"
-msgstr "Vesi"
-
-#: src/editor/object_properties.cpp:56
-msgid "Lava"
-msgstr "Laava"
-
-#: src/editor/object_properties.cpp:57
-msgid "Remove"
-msgstr "Poista"
-
-#: src/editor/object_properties.cpp:62
-#, fuzzy
-msgid "Direction:"
-msgstr "Valitsimet:"
-
-#: src/editor/object_properties.cpp:64
-msgid "Left"
-msgstr "Vasen"
-
-#: src/editor/object_properties.cpp:65
-msgid "Misc"
-msgstr "Sekalaiset"
-
-#: src/editor/object_properties.cpp:66
-msgid "Right"
-msgstr "Oikea"
-
-#: src/editor/object_properties.cpp:71
-msgid "ReleaseRate:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:88
-msgid "Para-X:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:89
-msgid "Para-Y:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:97
-msgid "Scroll-X:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:98
-msgid "Scroll-Y:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:106
-msgid "Owner Id:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:110
-msgid "Z-Pos:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:117
-msgid "Color:"
-msgstr "Väri:"
-
-#: src/editor/object_properties.cpp:129
-msgid "Small Stars:"
-msgstr "Pienet tähdet:"
-
-#: src/editor/object_properties.cpp:132
-msgid "Middle Stars:"
-msgstr "Keskikokoiset tähdet:"
-
-#: src/editor/object_properties.cpp:135
-msgid "Large Stars:"
-msgstr "Suuret tähdet:"
-
-#: src/editor/object_properties.cpp:143
-msgid "Repeat:"
-msgstr "Toista:"
-
-#: src/editor/object_properties.cpp:421
-msgid "Object: [Group]"
-msgstr ""
-
-#: src/editor/object_properties.cpp:422
-msgid "Group not supported"
-msgstr ""
-
-#: src/editor/object_properties.cpp:427
-msgid "Object: "
-msgstr ""
-
-#: src/editor/file_dialog.cpp:56
-msgid "Datadir"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:58
-msgid "Userdir"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:61
-msgid "Open"
-msgstr "Avaa"
-
-#: src/editor/file_dialog.cpp:61
-msgid "Save"
-msgstr "Tallenna"
-
-#: src/editor/file_dialog.cpp:64
-msgid "Cancel"
-msgstr "Peruuta"
-
-#: src/editor/file_dialog.cpp:75
-msgid "Filename:"
-msgstr "Tiedostonimi: "
-
-#: src/editor/file_dialog.cpp:76
-msgid "Pathname:"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:102
-msgid "Open a level"
-msgstr "Avaa kenttä"
-
-#: src/editor/file_dialog.cpp:102
-msgid "Save your level"
-msgstr "Tallenna kenttä"
-
-#: src/editor/object_selector.cpp:309
+#: src/editor/object_selector.cpp:315
 msgid "Entrance"
 msgstr "e - Sisäänkäynti"
 
-#: src/editor/object_selector.cpp:310
+#: src/editor/object_selector.cpp:316
 msgid "Groundpiece (ground)"
 msgstr "g - Maapala (maa)"
 
-#: src/editor/object_selector.cpp:311
+#: src/editor/object_selector.cpp:317
 msgid "Groundpiece (solid)"
 msgstr "s - Maapala (kiinteä)"
 
-#: src/editor/object_selector.cpp:312
+#: src/editor/object_selector.cpp:318
 msgid "Groundpiece (bridge)"
 msgstr "b - Maapala (silta)"
 
-#: src/editor/object_selector.cpp:313
+#: src/editor/object_selector.cpp:319
 msgid "Groundpiece (transparent)"
 msgstr "n - Maapala (läpinäkyvä)"
 
-#: src/editor/object_selector.cpp:314
+#: src/editor/object_selector.cpp:320
 msgid "Groundpiece (remove)"
 msgstr "r - Maapala ('poista')"
 
-#: src/editor/object_selector.cpp:315
+#: src/editor/object_selector.cpp:321
 #, fuzzy
 msgid "Hotspot"
 msgstr "h - Hotspot"
 
-#: src/editor/object_selector.cpp:316
+#: src/editor/object_selector.cpp:322
 msgid "Background"
 msgstr "Tausta"
 
-#: src/editor/object_selector.cpp:319
+#: src/editor/object_selector.cpp:325
 msgid "Liquid"
 msgstr "Neste"
 
-#: src/editor/object_selector.cpp:320
+#: src/editor/object_selector.cpp:326
 msgid "Trap"
 msgstr "Ansat"
 
-#: src/editor/object_selector.cpp:321
+#: src/editor/object_selector.cpp:327
 msgid "Weather"
 msgstr "Sää"
 
-#: src/editor/object_selector.cpp:322
+#: src/editor/object_selector.cpp:328
 msgid "Special Object"
 msgstr "Erityiset"
 
-#: src/worldmap/worldmap.cpp:425
-msgid "...walking..."
-msgstr "...kävelee..."
+#: src/editor/object_properties.cpp:81 src/editor/object_properties.cpp:454
+msgid "Object:"
+msgstr "Kohde:"
 
-#: src/worldmap/manager.cpp:107
-msgid "Show Ending?"
-msgstr "Näytä lopetus?"
+#: src/editor/object_properties.cpp:82 src/editor/object_properties.cpp:455
+msgid "Nothing selected"
+msgstr "Ei valintaa"
 
-#: src/worldmap/manager.cpp:138
-msgid "Show Story?"
-msgstr "Näytä tarina?"
+#: src/editor/object_properties.cpp:91
+msgid "Transparent"
+msgstr "Läpinäkyvä"
 
-#: src/worldmap/manager.cpp:167
-msgid "Leave?"
-msgstr "Poistu?"
+#: src/editor/object_properties.cpp:92
+msgid "Solid"
+msgstr "Kiinteä"
 
-#: src/worldmap/manager.cpp:207
-msgid "Enter?"
-msgstr "Valitse?"
+#: src/editor/object_properties.cpp:93
+msgid "Ground"
+msgstr "Maa"
 
-#: src/worldmap/level_dot.cpp:152 src/worldmap/level_dot.cpp:162
-msgid "locked"
-msgstr "lukittu"
+#: src/editor/object_properties.cpp:94
+msgid "Bridge"
+msgstr "Silta"
 
-#: src/exit_menu.cpp:46 src/exit_menu.cpp:50
-msgid "Yes"
-msgstr "Kyllä"
+#: src/editor/object_properties.cpp:95
+msgid "Water"
+msgstr "Vesi"
 
-#: src/exit_menu.cpp:85 src/exit_menu.cpp:89
-msgid "No"
-msgstr "Ei"
+#: src/editor/object_properties.cpp:96
+msgid "Lava"
+msgstr "Laava"
 
-#: src/exit_menu.cpp:124
-msgid "Exit Pingus?"
-msgstr "Lopeta peli?"
+#: src/editor/object_properties.cpp:97
+msgid "Remove"
+msgstr "Poista"
 
-#: src/pingus_menu.cpp:50 src/pingus_menu.cpp:72
+#: src/editor/object_properties.cpp:102
+#, fuzzy
+msgid "Direction:"
+msgstr "Valitsimet:"
+
+#: src/editor/object_properties.cpp:104
+msgid "Left"
+msgstr "Vasen"
+
+#: src/editor/object_properties.cpp:105
+msgid "Misc"
+msgstr "Sekalaiset"
+
+#: src/editor/object_properties.cpp:106
+msgid "Right"
+msgstr "Oikea"
+
+#: src/editor/object_properties.cpp:111
+msgid "ReleaseRate:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:128
+msgid "Para-X:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:129
+msgid "Para-Y:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:137
+msgid "Scroll-X:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:138
+msgid "Scroll-Y:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:146
+msgid "Owner Id:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:150
+msgid "Z-Pos:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:157
+msgid "Color:"
+msgstr "Väri:"
+
+#: src/editor/object_properties.cpp:169
+msgid "Small Stars:"
+msgstr "Pienet tähdet:"
+
+#: src/editor/object_properties.cpp:172
+msgid "Middle Stars:"
+msgstr "Keskikokoiset tähdet:"
+
+#: src/editor/object_properties.cpp:175
+msgid "Large Stars:"
+msgstr "Suuret tähdet:"
+
+#: src/editor/object_properties.cpp:183
+msgid "Repeat:"
+msgstr "Toista:"
+
+#: src/editor/object_properties.cpp:460
+msgid "Object: [Group]"
+msgstr ""
+
+#: src/editor/object_properties.cpp:461
+msgid "Group not supported"
+msgstr ""
+
+#: src/editor/object_properties.cpp:466
+msgid "Object: "
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:216
+msgid "Displays this help"
+msgstr "Näytä tämä ohje"
+
+#: src/pingus/pingus_main.cpp:218
+#, fuzzy
+msgid "Print version number and exit"
+msgstr "Näytä versionumero ja poistu"
+
+#: src/pingus/pingus_main.cpp:220
+msgid "Display:"
+msgstr "Näyttö:"
+
+#: src/pingus/pingus_main.cpp:222
+msgid "Start in Window Mode"
+msgstr "Käynnistä ikkunassa"
+
+#: src/pingus/pingus_main.cpp:224
+msgid "Start in Fullscreen"
+msgstr "Käynnistä koko ruudulla"
+
+#: src/pingus/pingus_main.cpp:226
+msgid "Use the given renderer (default: delta)"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:228
+msgid "Enable software cursor"
+msgstr "Ota käyttöön ohjelmallinen osoitin"
+
+#: src/pingus/pingus_main.cpp:230
+msgid "Set the resolution for pingus (default: 800x600)"
+msgstr "Aseta näytön tarkkuus (oletusarvo: 800x600)"
+
+#: src/pingus/pingus_main.cpp:232
+msgid "Sound:"
+msgstr "Äänet:"
+
+#: src/pingus/pingus_main.cpp:234
+msgid "Disable sound"
+msgstr "Ei ääniä"
+
+#: src/pingus/pingus_main.cpp:236
+msgid "Disable music"
+msgstr "Ei musiikkia"
+
+#: src/pingus/pingus_main.cpp:240
+msgid "Select language to use with Pingus"
+msgstr "Valitse käytettävä kieli"
+
+#: src/pingus/pingus_main.cpp:242
+msgid "List all available languages"
+msgstr "Listaa kaikki käytettävissä olevat kielet"
+
+#: src/pingus/pingus_main.cpp:246
+#, fuzzy
+msgid "Loads the level editor"
+msgstr "..:: Käynnistä kenttäeditori ::.."
+
+#: src/pingus/pingus_main.cpp:248
+msgid "Save the level given level to FILENAME and quit"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:250
+msgid "Test a font"
+msgstr "Kokeile kirjaisinta"
+
+#: src/pingus/pingus_main.cpp:252
+msgid "Shows the credits"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:254
+#, fuzzy
+msgid "Misc Options:"
+msgstr "Valitsimet:"
+
+#: src/pingus/pingus_main.cpp:255 src/pingus/pingus_main.cpp:257
+msgid "PATH"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:256
+msgid "Set the path to load the data files to 'path'"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:258
+msgid "Set the path to load and save user files (savegames, etc.) to PATH"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:261
+msgid "Disable automatic scrolling"
+msgstr "Poista automaattinen vieritys käytöstä"
+
+#: src/pingus/pingus_main.cpp:263
+msgid "Don't read ~/.pingus/config"
+msgstr "Älä lue tiedostoa ~/.pingus/config:a"
+
+#: src/pingus/pingus_main.cpp:264
+#, fuzzy
+msgid "FILE"
+msgstr "TIEDOSTO     "
+
+#: src/pingus/pingus_main.cpp:265
+#, fuzzy
+msgid ""
+"Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
+"speed up the game on slower machines"
+msgstr "vähennä suorittimen käyttöä; saattaa nopeuttaa peliä hitailla koneilla"
+
+#: src/pingus/pingus_main.cpp:268
+msgid "Uses the controller given in FILE"
+msgstr "Käyttää TIEDOSTO:ssa annettua ohjainta"
+
+#: src/pingus/pingus_main.cpp:270
+msgid "Debugging and experimental stuff:"
+msgstr "Kokeellista ja virheiden korjaamiseen liittyvää tavaraa:"
+
+#: src/pingus/pingus_main.cpp:272
+#, fuzzy
+msgid "Enables some features, only interesting to programmers"
+msgstr "Kytkee päälle joitain vain ohjelmoijia kiinnostavia ominaisuuksia"
+
+#: src/pingus/pingus_main.cpp:275
+msgid ""
+"Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
+"actions, sound, resources, gui, input, pathmgr"
+msgstr ""
+"Tulosta virheenkorjauksessa tarvittavia teitoja. Mahdollisia asetuksia ovat "
+"tiles, gametime, actions, sound, resources, gui, input ja pathmgr."
+
+#: src/pingus/pingus_main.cpp:279
+msgid "Set the game speed (0=fastest, >0=slower)"
+msgstr "Aseta pelin nopeus (0=nopein, >0=hitaampi)"
+
+#: src/pingus/pingus_main.cpp:281
+msgid "Set the desired game framerate (frames per second)"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:283
+msgid "Set the size of the map tiles (default: 32)"
+msgstr "Aseta karttaruutujen koko (oletusarvo: 32)"
+
+#: src/pingus/pingus_main.cpp:717
+msgid "Pingus: Out of memory!"
+msgstr "Pingus: Muisti loppu!"
+
+#: src/pingus/pingus_main.cpp:721
+msgid "Pingus: Standard exception caught!:\n"
+msgstr "Pingus: Standardikeskeytys!:\n"
+
+#: src/pingus/pingus_main.cpp:725
+msgid "Pingus: Unknown throw caught!"
+msgstr "Pingus: Tuntematon keskytys!"
+
+#: src/pingus/game_time.cpp:29
+msgid "unlimited"
+msgstr "rajaton"
+
+#: src/pingus/actions/bridger.cpp:38 src/pingus/actions/bridger.cpp:196
+#: src/pingus/action_name.cpp:32
+msgid "Bridger"
+msgstr "Siltaaja"
+
+#: src/pingus/screens/credits.cpp:87
+msgid "-Idea"
+msgstr "-Idea"
+
+#: src/pingus/screens/credits.cpp:91
+msgid "-Maintaining"
+msgstr "-Ylläpito"
+
+#: src/pingus/screens/credits.cpp:95
+msgid "-Programming"
+msgstr "-Ohjelmointi"
+
+#: src/pingus/screens/credits.cpp:105
+msgid "-Porting (Win32)"
+msgstr "-Porttaus (Win32)"
+
+#: src/pingus/screens/credits.cpp:114
+msgid "-Porting (MacOSX)"
+msgstr "-Porttaus (MacOSX)"
+
+#: src/pingus/screens/credits.cpp:119
+msgid "-Gfx"
+msgstr "-Grafiikka"
+
+#: src/pingus/screens/credits.cpp:132
+msgid "-Music"
+msgstr "-Musiikki"
+
+#: src/pingus/screens/credits.cpp:139
+msgid "-Level Design"
+msgstr "-Kenttäsuunnittelu"
+
+#: src/pingus/screens/credits.cpp:145
+msgid "-Story"
+msgstr "-Tarina"
+
+#: src/pingus/screens/credits.cpp:149
+msgid "-Translation"
+msgstr "-Käännöstyö"
+
+#: src/pingus/screens/credits.cpp:164
+msgid "-Special"
+msgstr "-Erityiset"
+
+#: src/pingus/screens/credits.cpp:165
+msgid "-Thanks to"
+msgstr "-Kiitokset"
+
+#: src/pingus/screens/credits.cpp:209
+msgid "_And a very Special Thanks"
+msgstr "_Ja aivan erityiskiitokset"
+
+#: src/pingus/screens/credits.cpp:210
+msgid "_to all the people who"
+msgstr "_kaikille niille, jotka"
+
+#: src/pingus/screens/credits.cpp:211
+msgid "_contribute to"
+msgstr "_osallistuvat kehittämään"
+
+#: src/pingus/screens/credits.cpp:212
+msgid "_Free Software!"
+msgstr "_vapaita ohjelmia!"
+
+#: src/pingus/screens/credits.cpp:218
+msgid "_Thank you for"
+msgstr "_Kiitos sinulle"
+
+#: src/pingus/screens/credits.cpp:219
+msgid "_playing!"
+msgstr "_pelaamisesta!"
+
+#: src/pingus/screens/start_screen.cpp:67
+msgid "Ok"
+msgstr "OK"
+
+#: src/pingus/screens/start_screen.cpp:111
+#: src/pingus/screens/level_menu.cpp:51
+#: src/pingus/screens/result_screen.cpp:91
+msgid "Abort"
+msgstr "Lopeta"
+
+#: src/pingus/screens/start_screen.cpp:166
+msgid "Number of Pingus: "
+msgstr "Pingujen määrä: "
+
+#: src/pingus/screens/start_screen.cpp:169
+msgid "Number to Save: "
+msgstr "Pelastettavien määrä: "
+
+#: src/pingus/screens/start_screen.cpp:172
+msgid "Time: "
+msgstr "Aika: "
+
+#: src/pingus/screens/start_screen.cpp:181
+msgid "Author: "
+msgstr "Tekijä: "
+
+#: src/pingus/screens/start_screen.cpp:184
+msgid "Filename: "
+msgstr "Tiedostonimi: "
+
+#: src/pingus/screens/addon_menu.cpp:50 src/pingus/screens/option_menu.cpp:286
+msgid "Close"
+msgstr "Sulje"
+
+#: src/pingus/screens/pingus_menu.cpp:52
 msgid "Story"
 msgstr "Tarina"
 
-#: src/pingus_menu.cpp:51
+#: src/pingus/screens/pingus_menu.cpp:53
 msgid "..:: Start the game ::.."
 msgstr "..:: Aloita peli ::.."
 
-#: src/pingus_menu.cpp:56
+#: src/pingus/screens/pingus_menu.cpp:57
 msgid "Editor"
 msgstr "Kenttäeditori"
 
-#: src/pingus_menu.cpp:57
+#: src/pingus/screens/pingus_menu.cpp:58
 msgid "..:: Create your own levels ::.."
 msgstr "..:: Luo omat kentät ::.."
 
-#: src/pingus_menu.cpp:62
+#: src/pingus/screens/pingus_menu.cpp:63
 msgid "..:: Bye, bye ::.."
 msgstr "..:: Hei hei! ::.."
 
-#: src/pingus_menu.cpp:67
+#: src/pingus/screens/pingus_menu.cpp:67 src/pingus/screens/level_menu.cpp:141
+msgid "Levelsets"
+msgstr "Kenttäpaketit"
+
+#: src/pingus/screens/pingus_menu.cpp:68
 #, fuzzy
 msgid "..:: Play User Built levels ::.."
 msgstr "..:: Aloita lisäkenttä ::.."
 
-#: src/pingus_menu.cpp:73
-msgid "..:: Start the story ::.."
-msgstr "..:: Aloita peli ::.."
-
-#: src/pingus_menu.cpp:78
-msgid "Multiplayer"
-msgstr "Moninpeli"
-
-#: src/pingus_menu.cpp:79
-#, fuzzy
-msgid "..:: Multiplayer Match ::.."
-msgstr "..:: Moninpelit... kokeellista tavaraa ::.."
-
-#: src/pingus_menu.cpp:82
+#: src/pingus/screens/pingus_menu.cpp:79
 msgid ""
 "..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
 "fullscreen   ::   F12: screenshot ::.."
@@ -944,11 +686,294 @@ msgstr ""
 "..:: Ctrl-g: kaappaa hiiri   ::   F10: fps-laskuri   ::   F11: "
 "kokoruutu   ::   F12: ruutukaappaus ::.."
 
-#: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
+#: src/pingus/screens/level_menu.cpp:159
+#, fuzzy
+msgid "Solved:"
+msgstr "Pelastui: "
+
+#: src/pingus/screens/level_menu.cpp:160
+#, fuzzy
+msgid "levels"
+msgstr "Kenttäpaketit"
+
+#: src/pingus/screens/level_menu.cpp:170 src/pingus/screens/level_menu.cpp:291
+msgid "Page"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:265
+msgid "Title"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:266
+msgid "Status"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:282
+#, fuzzy
+msgid "solved"
+msgstr "Pelastui: "
+
+#: src/pingus/screens/level_menu.cpp:284
+#, fuzzy
+msgid "unsolved"
+msgstr "Pelastui: "
+
+#: src/pingus/screens/story_screen.cpp:107
+#: src/pingus/screens/story_screen.cpp:113
+msgid "skip"
+msgstr "ohita"
+
+#: src/pingus/screens/option_menu.cpp:180
+msgid "Language:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:182
+msgid "Resolution:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:183
+#, fuzzy
+msgid "Fullscreen:"
+msgstr "Käynnistä koko ruudulla"
+
+#: src/pingus/screens/option_menu.cpp:184
+msgid "Master Volume:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:185
+#, fuzzy
+msgid "Sound Volume:"
+msgstr "Äänet:"
+
+#: src/pingus/screens/option_menu.cpp:186
+msgid "Music Volume:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:187
+msgid "Autoscrolling:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:188
+msgid "Print FPS:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:189
+msgid "Mouse Grab:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:190
+#, fuzzy
+msgid "Software Cursor:"
+msgstr "Ota käyttöön ohjelmallinen osoitin"
+
+#: src/pingus/screens/option_menu.cpp:208
+msgid "Reset to Defaults:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:284
+msgid "Option Menu"
+msgstr ""
+
+#: src/pingus/screens/result_screen.cpp:126
+msgid "Retry"
+msgstr "Yritä uudelleen"
+
+#: src/pingus/screens/result_screen.cpp:183
+msgid "Success!"
+msgstr "Onnistuit!"
+
+#: src/pingus/screens/result_screen.cpp:191
+msgid "Failure!"
+msgstr "Epäonnistuit."
+
+#: src/pingus/screens/result_screen.cpp:200
+msgid "Perfect! You saved everyone possible - great!"
+msgstr "Täydellistä! Pelastit joka ikisen, loistavaa!"
+
+#: src/pingus/screens/result_screen.cpp:202
+msgid "No-one got killed, pretty good work."
+msgstr "Yksikään ei menehtynyt, hyvin tehty."
+
+#: src/pingus/screens/result_screen.cpp:204
+msgid ""
+"You saved exactly what you needed - you made it, but\n"
+"maybe you can do better?"
+msgstr ""
+"Pelastit tasan tarvittavan määrän - pääsit kyllä kentän läpi,\n"
+"mutta kai pystyt parempaankin?"
+
+#: src/pingus/screens/result_screen.cpp:207
+msgid "Not everybody was saved, but still good work!"
+msgstr "Ihan kaikki eivät pelastuneet, mutta hyvää työtä joka tapauksessa!"
+
+#: src/pingus/screens/result_screen.cpp:209
+msgid "What can I say, you made it - congratulations!"
+msgstr "Mitästä tässä voi sanoa... Pääsit läpi - onneksi olkoon!"
+
+#: src/pingus/screens/result_screen.cpp:214
+msgid "You killed everybody, not good."
+msgstr "Tapatit kaikki - ei hyvä, ei."
+
+#: src/pingus/screens/result_screen.cpp:216
+msgid "No-one got saved - I know you can do better."
+msgstr "Yksikään ei selvinnyt - pystyt varmasti parempaankin."
+
+#: src/pingus/screens/result_screen.cpp:218
+msgid ""
+"You didn't save enough, but you saved a few.  Next\n"
+"time you might do better."
+msgstr ""
+"Et pelastanut ihan tarpeeksi, mutta muutaman kuitenkin.\n"
+"Ensi kerralla paremmin, vai mitä?"
+
+#: src/pingus/screens/result_screen.cpp:221
+msgid "Only one more and you would have made it - try again!"
+msgstr ""
+"Vielä yksi lisää maaliin asti niin olisit päässyt läpi - yritä uudestaan!"
+
+#: src/pingus/screens/result_screen.cpp:223
+msgid "Only a handful more and you would have made it - try again!"
+msgstr ""
+"Vain muutama lisää maaliin asti niin olisi päässyt läpi - yritä uudestaan!"
+
+#: src/pingus/screens/result_screen.cpp:225
+msgid "Better luck next time!"
+msgstr "Parempi tuuri ensi kerralla!"
+
+#: src/pingus/screens/result_screen.cpp:233
+msgid "Saved: "
+msgstr "Pelastui: "
+
+#: src/pingus/screens/result_screen.cpp:237
+msgid "Died: "
+msgstr "Kuoli: "
+
+#: src/pingus/screens/result_screen.cpp:240
+msgid "Time left: "
+msgstr "Aikaa jäljellä: "
+
+#: src/pingus/action_name.cpp:27
+msgid "Angel"
+msgstr "Enkeli"
+
+#: src/pingus/action_name.cpp:28
+msgid "Basher"
+msgstr "Murskaaja"
+
+#: src/pingus/action_name.cpp:29
+msgid "Blocker"
+msgstr "Pysäyttäjä"
+
+#: src/pingus/action_name.cpp:30
+msgid "Boarder"
+msgstr "Laatoittaja"
+
+#: src/pingus/action_name.cpp:31
+msgid "Bomber"
+msgstr "Pommittaja"
+
+#: src/pingus/action_name.cpp:33
+msgid "Climber"
+msgstr "Kiipeilijä"
+
+#: src/pingus/action_name.cpp:34
+msgid "Digger"
+msgstr "Kaivaja"
+
+#: src/pingus/action_name.cpp:35
+msgid "Drown"
+msgstr "Hukkuminen"
+
+#: src/pingus/action_name.cpp:36
+msgid "Exiter"
+msgstr "Poistuja"
+
+#: src/pingus/action_name.cpp:37
+msgid "Faller"
+msgstr "Putoaja"
+
+#: src/pingus/action_name.cpp:38
+msgid "Floater"
+msgstr "Leijuja"
+
+#: src/pingus/action_name.cpp:39
+msgid "Jumper"
+msgstr "Hyppääjä"
+
+#: src/pingus/action_name.cpp:40
+msgid "Laserkill"
+msgstr "Laserkuolema"
+
+#: src/pingus/action_name.cpp:41
+msgid "Miner"
+msgstr "Louhija"
+
+#: src/pingus/action_name.cpp:42
+msgid "Rocketlauncher"
+msgstr "Raketinheittäjä"
+
+#: src/pingus/action_name.cpp:43
+msgid "Slider"
+msgstr "Liukuja"
+
+#: src/pingus/action_name.cpp:44
+msgid "Smashed"
+msgstr "Liiskaus"
+
+#: src/pingus/action_name.cpp:45
+msgid "Splashed"
+msgstr "Roiskaus"
+
+#: src/pingus/action_name.cpp:46
+msgid "Superman"
+msgstr "Teräsmies"
+
+#: src/pingus/action_name.cpp:47
+msgid "Teleported"
+msgstr "Teleportattu"
+
+#: src/pingus/action_name.cpp:48
+msgid "Waiter"
+msgstr "Odottaja"
+
+#: src/pingus/action_name.cpp:49
+msgid "Walker"
+msgstr "Kävelijä"
+
+#: src/pingus/components/pingus_counter.cpp:43
+#, c-format, boost-format
+msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
+msgstr "Lähteneitä:%3d/%-3d   Liikkeellä:%3d   Pelastettu:%3d/%-3d"
+
+#: src/pingus/worldmap/worldmap.cpp:354
+msgid "...walking..."
+msgstr "...kävelee..."
+
+#: src/pingus/worldmap/level_dot.cpp:140 src/pingus/worldmap/level_dot.cpp:150
+msgid "locked"
+msgstr "lukittu"
+
+#: src/pingus/worldmap/worldmap_screen.cpp:116
+msgid "Show Ending?"
+msgstr "Näytä lopetus?"
+
+#: src/pingus/worldmap/worldmap_screen.cpp:145
+msgid "Show Story?"
+msgstr "Näytä tarina?"
+
+#: src/pingus/worldmap/worldmap_screen.cpp:174
+msgid "Leave?"
+msgstr "Poistu?"
+
+#: src/pingus/worldmap/worldmap_screen.cpp:212
+msgid "Enter?"
+msgstr "Valitse?"
+
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus:7
 msgid "If the way is blocked, bash away"
 msgstr "Kun tie on tukossa, murskaaja auttaa"
 
-#: data/levels/tutorial/basher-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus:8
 msgid ""
 "Similar to the Digger action that you already know from previous levels, "
 "there is also an action that allows the Pingus to dig horizontally, as "
@@ -959,11 +984,11 @@ msgstr ""
 "Murskaaja kaivaa tunneleita. Toisin kuin Kaivaja, se kuitenkin etenee "
 "vaakasuoraan eikä alaspäin. "
 
-#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:5
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:7
 msgid "Sacrifice a few and save the rest"
 msgstr "Uhraa muutama ja pelasta loput"
 
-#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:6
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:8
 msgid ""
 "Sometimes no other actions are available, so you have to bomb your way "
 "through the ground. The Pingus can do this by actually self- destructing. "
@@ -974,11 +999,11 @@ msgstr ""
 "tie selväksi. Räjäyttämisen yhteydessä pingu tietysti kuolee, mutta "
 "toisinaan on tarpeen uhrata muutama loppujen hyväksi. "
 
-#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:5
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:7
 msgid "Learning to dig"
 msgstr "Opettele kaivamaan"
 
-#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:6
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:8
 msgid ""
 "This is your first mission. As always, it's pretty easy. All you have to do "
 "is to give a Pingu the command to dig a hole into the ground so that they "
@@ -989,11 +1014,11 @@ msgstr ""
 "kaikki pääsevät uloskäynnille. Kaivaminen hoituu yksinkertaisesti "
 "klikkaamalla pingua. "
 
-#: data/levels/tutorial/floater-tutorial-grumbel.pingus:5
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus:7
 msgid "Float or Die"
 msgstr "Leiju tai kuole"
 
-#: data/levels/tutorial/floater-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus:8
 msgid ""
 "Well done in mission one! Now let's start the next one. This time you will "
 "need to equip your Pingus with a little propeller, so that they can float to "
@@ -1005,11 +1030,11 @@ msgstr ""
 "nimittäin liiskautuvat pudotessaan liian korkealta. Pidä siis silmät auki ja "
 "hermot kurissa! "
 
-#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:5
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:7
 msgid "Jump for joy"
 msgstr "Hypi riemusta"
 
-#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:8
 msgid ""
 "Sometimes a Pingu needs to reach a platform that is far away, but not "
 "reachable by walking. That's when the Jumper comes in handy - it allows the "
@@ -1019,11 +1044,11 @@ msgstr ""
 "mutta jolle ei pääse kävellen. Hyppääjä auttaa. Sen avulla pingun saa "
 "hyppäytettyä lyhyitä matkoja ylävistoon. "
 
-#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:5
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:7
 msgid "Miner's heaven"
 msgstr "Louhijan toiveuni"
 
-#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:6
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:8
 msgid ""
 "Another action hits the street - another digging action, this time a "
 "diagonal one. It allows a Pingu to dig diagonally through ground, thus "
@@ -1033,11 +1058,11 @@ msgstr ""
 "viiston tunnelin. Sen avulla perästä tulevat pingut pääsevät samaan aikaan "
 "sekä sivulle että alaspäin. Toiminnon nimi on Louhija. "
 
-#: data/levels/tutorial/snow10-grumbel.pingus:5
+#: data/levels/tutorial/snow10-grumbel.pingus:7
 msgid "Panic Island (float/bash)"
 msgstr "Paniikkisaari (leiju/murksaa)"
 
-#: data/levels/tutorial/snow10-grumbel.pingus:6
+#: data/levels/tutorial/snow10-grumbel.pingus:8
 msgid ""
 "While the previous levels have not required much quick action from you, this "
 "one gets a bit trickier. The Pingus are coming out of two entrances in "
@@ -1047,11 +1072,11 @@ msgstr ""
 "olla jo vähän hankalampi. Pinguja tulee samaan aikaan kahdesta eri "
 "sisäänkäynnistä ja tehtäväsi on koordinoida ryhmiä järkevästi. "
 
-#: data/levels/tutorial/snow11-grumbel.pingus:5
+#: data/levels/tutorial/snow11-grumbel.pingus:7
 msgid "Jump'n Bump... and Bash..."
 msgstr "Hypi, pompi... murskaa..."
 
-#: data/levels/tutorial/snow11-grumbel.pingus:6
+#: data/levels/tutorial/snow11-grumbel.pingus:8
 msgid ""
 "It's panic time again. The Pingus will not come out very fast, but since "
 "they turn around when they hit walls you will soon have some trouble "
@@ -1065,11 +1090,11 @@ msgstr ""
 "onnistuvan, kokeile pysäyttää peli 'p'-näppäimellä tai alareunan "
 "painikkeella. "
 
-#: data/levels/tutorial/snow12-grumbel.pingus:5
+#: data/levels/tutorial/snow12-grumbel.pingus:7
 msgid "Two groups in parallel, coordinate wisely"
 msgstr "Kaksi ryhmää rinnakkain, koordinoi viisaasti"
 
-#: data/levels/tutorial/snow12-grumbel.pingus:6
+#: data/levels/tutorial/snow12-grumbel.pingus:8
 msgid ""
 "You have two groups to coordinate this time. No need to panic, since this "
 "level gives you enough time to think your actions through. No more tips this "
@@ -1079,11 +1104,11 @@ msgstr ""
 "paniikkiin, sillä kentän ratkaisuun on varattu aikaa yllin kyllin. Siinä "
 "tämänkertaiset vihjeet, onnea matkaan! "
 
-#: data/levels/tutorial/snow14-grumbel.pingus:5
+#: data/levels/tutorial/snow14-grumbel.pingus:7
 msgid "Block'a Rock"
 msgstr "Stop'n Roll"
 
-#: data/levels/tutorial/snow14-grumbel.pingus:6
+#: data/levels/tutorial/snow14-grumbel.pingus:8
 msgid ""
 "Once again it's time to combine the stuff you have learned in your previous "
 "levels. Blast your way free and make sure you also keep the rest of the "
@@ -1093,11 +1118,11 @@ msgstr ""
 "mutta varmista samalla, että loput pingut pysyvät hallinnassa. Pysäyttäjistä "
 "on apua. "
 
-#: data/levels/tutorial/snow15-grumbel.pingus:5
+#: data/levels/tutorial/snow15-grumbel.pingus:7
 msgid "Climb, Climber,... Boom!"
 msgstr "Kiipeä, Kiipeäjä... Pum!"
 
-#: data/levels/tutorial/snow15-grumbel.pingus:6
+#: data/levels/tutorial/snow15-grumbel.pingus:8
 msgid ""
 "As you might have already figured out from previous levels, you often have "
 "to combine different actions to get the job done. Due to the lack of a "
@@ -1109,11 +1134,11 @@ msgstr ""
 "täytyy käyttää Pommittajia, mutta miten Pommittajat saa räjähtämään oikeaan "
 "aikaan? "
 
-#: data/levels/tutorial/snow16-grumbel.pingus:5
+#: data/levels/tutorial/snow16-grumbel.pingus:7
 msgid "Bridging gets more complicated..."
 msgstr "Mutkikkaampaa siltailua..."
 
-#: data/levels/tutorial/snow16-grumbel.pingus:6
+#: data/levels/tutorial/snow16-grumbel.pingus:8
 msgid ""
 "Once again you have to combine actions carefully and wisely. If you don't "
 "you could end up in the hole just before the exit, so think about how to "
@@ -1122,11 +1147,11 @@ msgstr ""
 "On jälleen aika yhdistellä viisaasti eri toimintoja. Hätiköimällä voit saada "
 "aikaan kolon juuri ennen uloskäyntiä, joten mieti tarkaan mitä teet. "
 
-#: data/levels/tutorial/snow17-grumbel.pingus:5
+#: data/levels/tutorial/snow17-grumbel.pingus:7
 msgid "If too high, your Pingu will die..."
 msgstr "Liian korkea pudotus vaarantaa terveytesi..."
 
-#: data/levels/tutorial/snow17-grumbel.pingus:6
+#: data/levels/tutorial/snow17-grumbel.pingus:8
 msgid ""
 "Teamwork is the way to the exit this time. You don't have enough Floaters to "
 "reach the exit, so just send a few and let them prepare the path for the "
@@ -1136,11 +1161,11 @@ msgstr ""
 "kannattaa lähettää muutama pingu edeltä raivaamaan tietä ennen kuin päästää "
 "muut liikkeelle. "
 
-#: data/levels/tutorial/snow19-grumbel.pingus:5
+#: data/levels/tutorial/snow19-grumbel.pingus:7
 msgid "Learn to use the bridge"
 msgstr "Opettele rakentamaan siltoja"
 
-#: data/levels/tutorial/snow19-grumbel.pingus:6
+#: data/levels/tutorial/snow19-grumbel.pingus:8
 msgid ""
 "If no Jumper is at hand and a large hole needs to be passed, a bridge can be "
 "pretty helpful. It takes some time to build, but unlike the jumper action it "
@@ -1150,11 +1175,11 @@ msgstr ""
 "voi olla hyötyä. Sillan rakentaminen kestää hieman, mutta toisin kuin "
 "Hypääjän kanssa, sillan avulla muutkin pingut pääsevät perille. "
 
-#: data/levels/tutorial/snow20-grumbel.pingus:5
+#: data/levels/tutorial/snow20-grumbel.pingus:7
 msgid "Three solutions, it's up to you"
 msgstr "Kolme ratkaisua, valitse minkä haluat"
 
-#: data/levels/tutorial/snow20-grumbel.pingus:6
+#: data/levels/tutorial/snow20-grumbel.pingus:8
 msgid ""
 "Now that you've learned all the actions, it's time for some more practice. "
 "This level presents you with at least three different ways to solve it. It's "
@@ -1164,11 +1189,11 @@ msgstr ""
 "kentän voi ratkaista kolmella eri tavalla. Valitse itse, mitä niistä haluat "
 "kokeilla. "
 
-#: data/levels/tutorial/snow21-grumbel.pingus:5
+#: data/levels/tutorial/snow21-grumbel.pingus:7
 msgid "Climb, Climber, climb... and build a bridge"
 msgstr "Kiipeä, Kiipeäjä, kiipeä... ja rakenna sitten silta"
 
-#: data/levels/tutorial/snow21-grumbel.pingus:6
+#: data/levels/tutorial/snow21-grumbel.pingus:8
 msgid ""
 "Once again you get access to a new action. The Climber action allows a Pingu "
 "to climb up straight walls, thus allowing him to reach stuff that might be "
@@ -1178,11 +1203,11 @@ msgstr ""
 "pystysuoraa seinää pitkin ja pääsemään siten paikkoihin, joihin ei niiden "
 "korkeuden vuoksi muilla keinoin ole asiaa. "
 
-#: data/levels/tutorial/snow22-grumbel.pingus:5
+#: data/levels/tutorial/snow22-grumbel.pingus:7
 msgid "Entrance high, Exit low"
 msgstr "Sisäänkäynti ylhäällä, uloskäynti alhaalla"
 
-#: data/levels/tutorial/snow22-grumbel.pingus:6
+#: data/levels/tutorial/snow22-grumbel.pingus:8
 msgid ""
 "If you don't have enough floaters to bring all the Pingus down to the exit - "
 "you have to find other ways to guide them down. You should have learned all "
@@ -1194,11 +1219,11 @@ msgstr ""
 "edellisissä kentissä riittävästi tämänkin kentän ratkaisemiseen, joten "
 "suuria ongelmia tuskin on odotettavissa. "
 
-#: data/levels/tutorial/snow7-grumbel.pingus:5
+#: data/levels/tutorial/snow7-grumbel.pingus:7
 msgid "One must prepare, the rest must follow"
 msgstr "Yksi selvittää reitin, muut seuraavat perässä"
 
-#: data/levels/tutorial/snow7-grumbel.pingus:6
+#: data/levels/tutorial/snow7-grumbel.pingus:8
 msgid ""
 "Sometimes there are situations where you don't have a Blocker at hand to "
 "coordinate your Pingus. You'll have to find other ways to keep them under "
@@ -1209,11 +1234,11 @@ msgstr ""
 "muita tapoja pingujen kaitsemiseen sillä välin kun yksinäinen sankari on "
 "raivaamassa tietä muille. "
 
-#: data/levels/tutorial/snow8-grumbel.pingus:5
+#: data/levels/tutorial/snow8-grumbel.pingus:7
 msgid "Dig and float, but just don't fall and smash"
 msgstr "Kaiva ja leiju, älä putoa ja liiskaannu"
 
-#: data/levels/tutorial/snow8-grumbel.pingus:6
+#: data/levels/tutorial/snow8-grumbel.pingus:8
 msgid ""
 "Unlike the first two levels, you have two actions available in this level. "
 "Your job is again simple: select an action at the panel on the left and "
@@ -1225,11 +1250,11 @@ msgstr ""
 "haluamiasi toimintoja ja käytä niitä pinguihin, että ne pääsevät "
 "uloskäynnille. Pidä huolta, ettei liian moni kuole matkalla. "
 
-#: data/levels/tutorial/snow9-grumbel.pingus:5
+#: data/levels/tutorial/snow9-grumbel.pingus:7
 msgid "Dig, bash and other problems"
 msgstr "Kaivamista, murskausta ja muuta mukavaa"
 
-#: data/levels/tutorial/snow9-grumbel.pingus:6
+#: data/levels/tutorial/snow9-grumbel.pingus:8
 msgid ""
 "The more levels you master, the more difficult they will get, but don't "
 "panic, as this one is still pretty easy. Just use the stuff that you've "
@@ -1243,11 +1268,11 @@ msgstr ""
 "että olet onnistunut pilaamaan ratkaisumahdollisuutesi, paina ruudun "
 "alanurkassa olevaa joukkotuhonappia ja yritä uudelleen. "
 
-#: data/levels/tutorial/solid-tutorial-grumbel.pingus:5
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus:7
 msgid "Solid ground can block the path"
 msgstr "Maasto voi tukkia tien"
 
-#: data/levels/tutorial/solid-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus:8
 msgid ""
 "As you have learned in earlier levels your Pingus can dig through basically "
 "any terrain, but there is one material which they can't penetrate: steel. "
@@ -1288,23 +1313,23 @@ msgstr ""
 "vain heidän väistämätöntä tuhoaan. Sinun tehtäväsi on selvittää asia. Mutta "
 "oletko tarpeeksi hyvä pelastamaan heidät kaikki?"
 
-
 #: data/levels/halloween/halloween3-grumbel.pingus:7
 msgid "Boom Boom"
 msgstr ""
 
 #: data/levels/halloween/halloween3-grumbel.pingus:8
+#, fuzzy
 msgid ""
 "You've mastered the last challenge and now face the next. Their path to "
 "salvation seems to be cursed, but by whom? There is no time to think about "
-"it, since the next deadly challange already awaits the Pingus. Two mighty "
+"it, since the next deadly challenge already awaits the Pingus. Two mighty "
 "roots block the way, but without a basher at hand to bash them away, "
 "sacrifice might be the only option..."
 msgstr ""
 "Selvitit edellisen haasteen ja nyt on aika kääntää katseet kohti seuraavaa. "
 "Aivan kuin joku olisi kironnut Pingujen tien turvaan. Mutta kuka? Sitä ei "
-"ole aikaa jäädä miettimään, sillä seuraava kuolettava haaste odottaa Pinguja. "
-"Kaksi suurta estettä pitäisi ohittaa, mutta kun murskaajia ei ole "
+"ole aikaa jäädä miettimään, sillä seuraava kuolettava haaste odottaa "
+"Pinguja. Kaksi suurta estettä pitäisi ohittaa, mutta kun murskaajia ei ole "
 "käytettävissä muutaman Pingun uhraaminen voi olla ainoa vaihtoehto..."
 
 #: data/levels/halloween/halloween4-grumbel.pingus:7
@@ -1340,13 +1365,13 @@ msgid ""
 "true path."
 msgstr ""
 "Kuka on asettanut tämän järkyttävän seinämän kentälle? Seinämän, joka "
-"erottaa Pingusi turvapaikasta. Sen tuhoaminen vaikuttaa mahdottomalta, "
-"mutta kenties Siltaaja voi rakentaa sillan turvapaikkaan. Voivatko he "
-"rakentaa riittävän korkean sillan joka vie Pingut turvaan, vai onko "
-"joku mielipuoli asettanut mahdottoman haasteen eteesi?\n"
+"erottaa Pingusi turvapaikasta. Sen tuhoaminen vaikuttaa mahdottomalta, mutta "
+"kenties Siltaaja voi rakentaa sillan turvapaikkaan. Voivatko he rakentaa "
+"riittävän korkean sillan joka vie Pingut turvaan, vai onko joku mielipuoli "
+"asettanut mahdottoman haasteen eteesi?\n"
 "\n"
-"Jälleen kerran sinun on ratkaistava ongelma. Aivosi ovat Pingujen "
-"ainoa toivo, joten älä hämäänny äläkä eksy oikealta polulta."
+"Jälleen kerran sinun on ratkaistava ongelma. Aivosi ovat Pingujen ainoa "
+"toivo, joten älä hämäänny äläkä eksy oikealta polulta."
 
 #: data/levels/halloween/halloween6-grumbel.pingus:7
 msgid "Locked up by the witch"
@@ -1377,10 +1402,11 @@ msgstr ""
 #: data/levels/halloween/halloween7-grumbel.pingus:8
 msgid ""
 "This is by far the deepest pit the Pingus have yet encountered. Building a "
-"bridge across it seems obvious, but can't work. The exit is deep down in the "
-"pit itself, but Pingus who go down will just end up splattered upon the "
-"ground. But you have two groups of Pingus at your disposal... can you make "
-"them work together to reach even an exit this well hidden?"
+"bridge across it seems obvious but that won't help since the exit is deep "
+"down in the pit itself. Pingus who try to go down the pit will just end up "
+"splattered all over the ground. You have two groups of Pingus at your "
+"disposal, can you make them work together to reach even an exit this well "
+"hidden?"
 msgstr ""
 
 #: data/levels/halloween/halloween8-plouj.pingus:7
@@ -1423,10 +1449,9 @@ msgid ""
 "like nothing could disrupt their peace.  The Pingus were happy and it seemed "
 "like this could never end."
 msgstr ""
-"Pingut olivat pitkään asuneet etelänävalla, hyvässä sovussa sen"
-"muiden eläinlajien kanssa. Kaikki oli tasapainoista ja vaikutti siltä,"
-"ettei mikään voisi häiritä niiden rauhaa. Pingut voivat hyvin, onnelle"
-"ei näkynyt loppua."
+"Pingut olivat pitkään asuneet etelänävalla, hyvässä sovussa senmuiden "
+"eläinlajien kanssa. Kaikki oli tasapainoista ja vaikutti siltä,ettei mikään "
+"voisi häiritä niiden rauhaa. Pingut voivat hyvin, onnelleei näkynyt loppua."
 
 #: data/worldmaps/tutorial.worldmap:30
 msgid ""
@@ -1435,10 +1460,9 @@ msgid ""
 "in the world's climate, but things seemed to get worse and worse with every "
 "year."
 msgstr ""
-"Eräänä päivänä rauha alkoi kuitenkin hiljalleen järkkyä: taivas"
-"tummeni ja maa lämpeni. Aluksi pingut ajattelivat sen johtuvan"
-"vain ilmaston normaalista vaihtelusta, mutta tilanne"
-"näyttikin vuosi vuodelta vain pahenevan."
+"Eräänä päivänä rauha alkoi kuitenkin hiljalleen järkkyä: taivastummeni ja "
+"maa lämpeni. Aluksi pingut ajattelivat sen johtuvanvain ilmaston normaalista "
+"vaihtelusta, mutta tilannenäyttikin vuosi vuodelta vain pahenevan."
 
 #: data/worldmaps/tutorial.worldmap:38
 msgid ""
@@ -1567,6 +1591,14 @@ msgstr ""
 "\n"
 "Jatkuu..."
 
+#: data/levelsets/desert.levelset:2
+msgid "Desert"
+msgstr ""
+
+#: data/levelsets/desert.levelset:3
+msgid "Abandoned in the Arabian Desert"
+msgstr ""
+
 #: data/levelsets/halloween.levelset:3
 msgid "Halloween 2007"
 msgstr "Halloween 2007"
@@ -1575,3 +1607,75 @@ msgstr "Halloween 2007"
 msgid "Trapped at All Hallows Eve"
 msgstr ""
 
+#: data/levelsets/pacman.levelset:3
+msgid "Pac-Man"
+msgstr ""
+
+#: data/levelsets/pacman.levelset:4
+msgid "Trapped in a video game"
+msgstr ""
+
+#: data/levelsets/xmas.levelset:3
+msgid "X-Mas 2007"
+msgstr ""
+
+#: data/levelsets/xmas.levelset:4
+msgid "Merry Christmas and a Happy New Year"
+msgstr ""
+
+#~ msgid "Allow Window resize (buggy)"
+#~ msgstr "Salli ikkunan skaalaus (kokeellinen)"
+
+#~ msgid "Load a custom worldmap"
+#~ msgstr "Lataa maailmankartta tiedostosta"
+
+#~ msgid "Skip at least N frames, larger values speed the game up"
+#~ msgstr ""
+#~ "Jätä piirtämättä vähintään N ruutua. Suuremmat arvot nopeuttavat peliä"
+
+#~ msgid "Skip at most N frames"
+#~ msgstr "Jätä piirtämättä korkeintaan N ruutua"
+
+#~ msgid "Set both min and max frameskip to N"
+#~ msgstr "Aseta minimi- ja maksimi-ruudunhyppäys N:ään"
+
+#~ msgid "Disable some cpu intensive features"
+#~ msgstr "Poista joitain suoritinsyöppöjä ominaisuuksia käytöstä"
+
+#~ msgid "Demo playing and recording:"
+#~ msgstr "Demon näyttäminen ja nauhoitus:"
+
+#, fuzzy
+#~ msgid "Plays a demo session"
+#~ msgstr "Näyttää demopelin TIEDOSTOsta"
+
+#~ msgid "Record demos for each played level"
+#~ msgstr "Nauhoittaa demopelit jokaiselle pelatulle kentälle"
+
+#~ msgid "Error caught from Pingus: "
+#~ msgstr "Virhe Pingusilta: "
+
+#~ msgid "Couldn't open: "
+#~ msgstr "Avaus epäonnistui: "
+
+#~ msgid "Unexpected char: '"
+#~ msgstr "Odottamaton merkki: '"
+
+#~ msgid "Yes"
+#~ msgstr "Kyllä"
+
+#~ msgid "No"
+#~ msgstr "Ei"
+
+#~ msgid "Exit Pingus?"
+#~ msgstr "Lopeta peli?"
+
+#~ msgid "..:: Start the story ::.."
+#~ msgstr "..:: Aloita peli ::.."
+
+#~ msgid "Multiplayer"
+#~ msgstr "Moninpeli"
+
+#, fuzzy
+#~ msgid "..:: Multiplayer Match ::.."
+#~ msgstr "..:: Moninpelit... kokeellista tavaraa ::.."

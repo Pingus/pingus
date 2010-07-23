@@ -27,7 +27,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-31 06:55+0100\n"
+"POT-Creation-Date: 2010-07-23 02:10+0200\n"
 "PO-Revision-Date: 2007-09-26 19:30+0200\n"
 "Last-Translator: Janus Troelsen <ysangkok@gmail.com>\n"
 "Language-Team: danish <da@li.org>\n"
@@ -37,515 +37,19 @@ msgstr ""
 "#-#-#-#-#  da.po (Pingus 0.6.0)  #-#-#-#-#\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/game_time.cpp:66
-msgid "unlimited"
-msgstr "ubegrænset"
-
-#: src/story_screen.cpp:40
-msgid "skip"
-msgstr "spring over"
-
-#: src/pingu_enums.cpp:34
-msgid "Angel"
-msgstr "Engel"
-
-# ?
-#: src/pingu_enums.cpp:35
-msgid "Basher"
-msgstr "Graver"
-
-# ?
-#: src/pingu_enums.cpp:36
-msgid "Blocker"
-msgstr "Spærrer"
-
-#: src/pingu_enums.cpp:37
-msgid "Boarder"
-msgstr "Skater"
-
-# ??
-#: src/pingu_enums.cpp:38
-msgid "Bomber"
-msgstr "Bomber"
-
-#: src/pingu_enums.cpp:39 src/actions/bridger.cpp:42
-#: src/actions/bridger.cpp:216
-msgid "Bridger"
-msgstr "Brobygger"
-
-# ?
-#: src/pingu_enums.cpp:40
-msgid "Climber"
-msgstr "Klatrer"
-
-#: src/pingu_enums.cpp:41
-msgid "Digger"
-msgstr "Borer"
-
-#: src/pingu_enums.cpp:42
-msgid "Drown"
-msgstr "Drukner"
-
-# ??
-#: src/pingu_enums.cpp:43
-msgid "Exiter"
-msgstr "Reddet"
-
-#: src/pingu_enums.cpp:44
-msgid "Faller"
-msgstr "Falder"
-
-#: src/pingu_enums.cpp:45
-msgid "Floater"
-msgstr "Svæver"
-
-#: src/pingu_enums.cpp:46
-msgid "Jumper"
-msgstr "Hopper"
-
-#: src/pingu_enums.cpp:47
-msgid "Laserkill"
-msgstr "Skudt"
-
-#: src/pingu_enums.cpp:48
-msgid "Miner"
-msgstr "Minør"
-
-#: src/pingu_enums.cpp:49
-msgid "Rocketlauncher"
-msgstr "Raketaffyrer"
-
-#: src/pingu_enums.cpp:50
-msgid "Slider"
-msgstr "Glider"
-
-#: src/pingu_enums.cpp:51
-msgid "Smashed"
-msgstr "Smat"
-
-#: src/pingu_enums.cpp:52
-msgid "Splashed"
-msgstr "Splat"
-
-#: src/pingu_enums.cpp:53
-msgid "Superman"
-msgstr "SuperPingu"
-
-#: src/pingu_enums.cpp:54
-msgid "Teleported"
-msgstr "Teleporteret"
-
-#: src/pingu_enums.cpp:55
-msgid "Waiter"
-msgstr "Venter"
-
-#: src/pingu_enums.cpp:56
-msgid "Walker"
-msgstr "Går"
-
-# ? TEST
-#: src/start_screen.cpp:74 src/editor/level_head.cpp:53
-msgid "Ok"
-msgstr "O.k."
-
-#: src/start_screen.cpp:114 src/result_screen.cpp:98 src/level_menu.cpp:57
-msgid "Abort"
-msgstr "Forlad"
-
-#: src/start_screen.cpp:163
-msgid "Number of Pingus: "
-msgstr "Antal pinguer: "
-
-#: src/start_screen.cpp:166
-msgid "Number to Save: "
-msgstr "Der skal reddes: "
-
-# ? TEST
-#: src/start_screen.cpp:169
-msgid "Time: "
-msgstr "Tid til rådighed: "
-
-#: src/start_screen.cpp:176
-msgid "Author: "
-msgstr "Designer: "
-
-#: src/start_screen.cpp:179
-msgid "Filename: "
-msgstr "Filnavn: "
-
-#: src/pingus_main.cpp:259
-msgid "Displays this help"
-msgstr "Viser denne brugsvejledning"
-
-#: src/pingus_main.cpp:261
-msgid "Print version number and exit"
-msgstr "Udskriv versionsnummer og afslut"
-
-#: src/pingus_main.cpp:263
-msgid "Display:"
-msgstr "Vis:"
-
-#: src/pingus_main.cpp:265
-msgid "Start in Window Mode"
-msgstr "Start Pingus i et vindue"
-
-#: src/pingus_main.cpp:267
-msgid "Start in Fullscreen"
-msgstr "Start Pingus i fuldskærm"
-
-#: src/pingus_main.cpp:269
-msgid "Allow Window resize (buggy)"
-msgstr "Tillad at ændre størrelse på vindue (ikke fejlfri)"
-
-#: src/pingus_main.cpp:271
-msgid "Enable software cursor"
-msgstr "Brug software-markør (cursor)"
-
-#: src/pingus_main.cpp:273
-msgid "Set the resolution for pingus (default: 800x600)"
-msgstr "Indstil skærmopløsningen for Pingus (standard: 800×600)"
-
-# ? TEST
-#: src/pingus_main.cpp:275
-msgid "Sound:"
-msgstr "Lyd:"
-
-#: src/pingus_main.cpp:277
-msgid "Disable sound"
-msgstr "Slå lyd fra"
-
-#: src/pingus_main.cpp:279
-msgid "Disable music"
-msgstr "Slå musik fra"
-
-#: src/pingus_main.cpp:283
-msgid "Select language to use with Pingus"
-msgstr "Vælg hvilket sprog Pingus skal bruge"
-
-#: src/pingus_main.cpp:285
-msgid "List all available languages"
-msgstr "Vis alle tilgængelige sprog"
-
-#: src/pingus_main.cpp:289
-msgid "Loads the level editor"
-msgstr "Start banebyggeren"
-
-#: src/pingus_main.cpp:291
-msgid "Test a font"
-msgstr "Test en font"
-
-#: src/pingus_main.cpp:293
-msgid "Shows the credits"
-msgstr "Viser forfatterne"
-
-#: src/pingus_main.cpp:295
-msgid "Misc Options:"
-msgstr "Andre indstillinger:"
-
-#: src/pingus_main.cpp:296
-msgid "PATH"
-msgstr "STI"
-
-#: src/pingus_main.cpp:297
-msgid "Set the path to load the data files to 'path'"
-msgstr "Angiv stien hvor datafilerne ligger til 'sti'"
-
-#: src/pingus_main.cpp:300
-msgid "Disable automatic scrolling"
-msgstr "Slå automatisk rulning (scroll) fra"
-
-#: src/pingus_main.cpp:302
-msgid "Don't read ~/.pingus/config"
-msgstr "Undlad at indlæse ~/.pingus/config"
-
-#: src/pingus_main.cpp:303
-msgid "FILE"
-msgstr "FIL"
-
-#: src/pingus_main.cpp:304
-msgid ""
-"Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
-"speed up the game on slower machines"
-msgstr ""
-"Læs konfiguration fra FIL (standard: ~/.pingus/config) reducér CPU-"
-"belastning; kan sætte spillets fart op på langsommere maskiner"
-
-#: src/pingus_main.cpp:307
-msgid "Uses the controller given in FILE"
-msgstr "Brug kontrollen der er angivet i FIL"
-
-# ?
-#: src/pingus_main.cpp:309
-msgid "Debugging and experimental stuff:"
-msgstr "Debug- og eksperimentelle ting"
-
-#: src/pingus_main.cpp:311
-msgid "Enables some features, only interesting to programmers"
-msgstr "Slå nogle funktioner til; kun beregnet programmører"
-
-# TEST
-#: src/pingus_main.cpp:314
-msgid "Load a custom worldmap"
-msgstr "Indlæs et verdenskort"
-
-#: src/pingus_main.cpp:316
-msgid ""
-"Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
-"actions, sound, resources, gui, input, pathmgr"
-msgstr ""
-"Slå output af debugging information til. Tilladte OPTION'er er tiles, "
-"gametime, actions, sound, resources, gui, input, pathmgr"
-
-#: src/pingus_main.cpp:320
-msgid "Skip at least N frames, larger values speed the game up"
-msgstr "Spring mindst N skærmbilleder over; højere værdier øger hastigheden"
-
-#: src/pingus_main.cpp:322
-msgid "Skip at most N frames"
-msgstr "Spring højst N skærmbilleder over"
-
-# ? skær
-#: src/pingus_main.cpp:324
-msgid "Set both min and max frameskip to N"
-msgstr "Spring præcis N skærmbilleder over"
-
-#: src/pingus_main.cpp:326
-msgid "Set the game speed (0=fastest, >0=slower)"
-msgstr "Indstil spillehastigheden (0 : hurtigst; >0 : langsommere)"
-
-#: src/pingus_main.cpp:328
-msgid "Set the size of the map tiles (default: 32)"
-msgstr "Indstil størrelsen (i pixels) af kort-brikkerne (standard: 32)"
-
-# ?? TODO
-#: src/pingus_main.cpp:330
-msgid "Disable some cpu intensive features"
-msgstr "Deaktivér visse CPU-intensive funktioner"
-
-#: src/pingus_main.cpp:334
-msgid "Demo playing and recording:"
-msgstr "Optagning og afspilning af demoer:"
-
-#: src/pingus_main.cpp:336
-msgid "Plays a demo session"
-msgstr "Vis et demonstrationsspil"
-
-#: src/pingus_main.cpp:338
-msgid "Record demos for each played level"
-msgstr "Optag demoer for hver spillet bane"
-
-#: src/pingus_main.cpp:735
-msgid "Error caught from Pingus: "
-msgstr "Fejl fra Pingus fanget: "
-
-#: src/pingus_main.cpp:739
-msgid "Pingus: Out of memory!"
-msgstr "Pingus: Løbet tør for hukommelse!"
-
-#: src/pingus_main.cpp:743
-msgid "Pingus: Standard exception caught!:\n"
-msgstr "Pingus: Standard-undtagelse (exception) fanget!:\n"
-
-#: src/pingus_main.cpp:747
-msgid "Pingus: Unknown throw caught!"
-msgstr "Pingus: Ukendt undtagelse (exception) fanget!"
-
-#: src/credits.cpp:82
-msgid "-Idea"
-msgstr "-Idé"
-
-#: src/credits.cpp:86
-msgid "-Maintaining"
-msgstr "-Vedligeholdelse"
-
-#: src/credits.cpp:90
-msgid "-Programming"
-msgstr "-Programmering"
-
-#: src/credits.cpp:100
-msgid "-Porting (Win32)"
-msgstr "-Portering (Win32)"
-
-#: src/credits.cpp:109
-msgid "-Porting (MacOSX)"
-msgstr "-Portering (Mac OS X)"
-
-#: src/credits.cpp:114
-msgid "-Gfx"
-msgstr "-Grafik"
-
-#: src/credits.cpp:127
-msgid "-Music"
-msgstr "-Musik"
-
-#: src/credits.cpp:134
-msgid "-Level Design"
-msgstr "-Banedesign"
-
-#: src/credits.cpp:140
-msgid "-Story"
-msgstr "-Historie"
-
-#: src/credits.cpp:144
-msgid "-Translation"
-msgstr "-Oversættelse"
-
-#: src/credits.cpp:159
-msgid "-Special"
-msgstr "-Speciel"
-
-#: src/credits.cpp:160
-msgid "-Thanks to"
-msgstr "-Tak til"
-
-#: src/credits.cpp:204
-msgid "_And a very Special Thanks"
-msgstr "_Og en meget særlig tak"
-
-#: src/credits.cpp:205
-msgid "_to all the people who"
-msgstr "_til alle de folk som"
-
-#: src/credits.cpp:206
-msgid "_contribute to"
-msgstr "_bidrager til"
-
-#: src/credits.cpp:207
-msgid "_Free Software!"
-msgstr "_fri software!"
-
-#: src/credits.cpp:213
-msgid "_Thank you for"
-msgstr "_Tak fordi du ville"
-
-#: src/credits.cpp:214
-msgid "_playing!"
-msgstr "_spille med!"
-
-#: src/credits.cpp:276 src/editor/panel.cpp:211
-#: src/editor/object_selector.cpp:318 src/pingus_menu.cpp:61
-msgid "Exit"
-msgstr "Afslut"
-
-#: src/addon_menu.cpp:59 src/option_menu.cpp:94
-msgid "Close"
-msgstr ""
-
-#: src/result_screen.cpp:131
-msgid "Retry"
-msgstr "Prøv igen"
-
-#: src/result_screen.cpp:181
-msgid "Success!"
-msgstr "Succes!"
-
-#: src/result_screen.cpp:188
-msgid "Failure!"
-msgstr "Det mislykkedes!"
-
-# ? TEST
-#: src/result_screen.cpp:197
-msgid "Perfect! You saved everyone possible - great!"
-msgstr "Perfekt! Du har reddet allesammen - glimrende!"
-
-#: src/result_screen.cpp:199
-msgid "No-one got killed, pretty good work."
-msgstr "Ingen blev slået ihjel, ret godt gået."
-
-# ? TEST
-#: src/result_screen.cpp:201
-msgid ""
-"You saved exactly what you needed - you made it, but\n"
-"maybe you can do better?"
-msgstr ""
-"Du reddede præcis så mange som nødvendigt - du klarede det,\n"
-"men måske kan du gøre det bedre?"
-
-#: src/result_screen.cpp:204
-msgid "Not everybody was saved, but still good work!"
-msgstr "Ikke alle blev reddet, men du gjorde det stadig godt!"
-
-#: src/result_screen.cpp:206
-msgid "What can I say, you made it - congratulations!"
-msgstr "Hvad kan jeg sige - du klarede det. Tillykke!"
-
-#: src/result_screen.cpp:211
-msgid "You killed everybody, not good."
-msgstr "Du slog alle ihjel. Ikke godt."
-
-#: src/result_screen.cpp:213
-msgid "No-one got saved - I know you can do better."
-msgstr "Ingen blev reddet - jeg ved, at du kan klare det bedre."
-
-#: src/result_screen.cpp:215
-msgid ""
-"You didn't save enough, but you saved a few.  Next\n"
-"time you might do better."
-msgstr ""
-"Du reddede ikke nok, men dog nogle få.\n"
-"Næste gang går det sikkert bedre."
-
-#: src/result_screen.cpp:218
-msgid "Only one more and you would have made it - try again!"
-msgstr "Kun én mere, og du ville have klaret det - prøv igen!"
-
-#: src/result_screen.cpp:220
-msgid "Only a handful more and you would have made it - try again!"
-msgstr "Kun et par stykker flere, og du ville have klaret det - prøv igen!"
-
-#: src/result_screen.cpp:222
-msgid "Better luck next time!"
-msgstr "Bedre held næste gang!"
-
-#: src/result_screen.cpp:239
-msgid "Saved: "
-msgstr "Reddet: "
-
-#: src/result_screen.cpp:243
-msgid "Died: "
-msgstr "Døde: "
-
-# ? TEST
-#: src/result_screen.cpp:247
-msgid "Time left: "
-msgstr "Resterende tid: "
-
-#: src/components/pingus_counter.cpp:49
-#, c-format, boost-format
-msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
-msgstr "Frigivet:%3d/%d   På banen:%3d   Reddet:%3d/%d"
-
-#: src/level_menu.cpp:108 src/pingus_menu.cpp:66
-#, fuzzy
-msgid "Levelsets"
-msgstr "-Banedesign"
-
-#: src/level_menu.cpp:124
-#, fuzzy
-msgid "Solved:"
-msgstr "Reddet: "
-
-#: src/config.cpp:72
-msgid "Couldn't open: "
-msgstr "Kunne ikke åbne filen: "
-
-#: src/config.cpp:171 src/config.cpp:205
-msgid "Unexpected char: '"
-msgstr "Uventet tegn: '"
-
-#: src/screenshot.cpp:38
+#: src/engine/display/screenshot.cpp:33
 msgid "Screenshot: Saving screenshot to: "
 msgstr "Skærmskud: Gemmer skærmbillede som: "
 
-#: src/screenshot.cpp:40
+#: src/engine/display/screenshot.cpp:35
 msgid "Screenshot: Screenshot is done."
 msgstr "Skærmskud: Skærmbilledet er gemt."
 
-#: src/screenshot.cpp:115 src/screenshot.cpp:143
+#: src/engine/display/screenshot.cpp:110 src/engine/display/screenshot.cpp:138
 msgid "Screenshot: Couldn't write file: "
 msgstr "Skærmskud: Kunne ikke skrive til filen: "
 
-#: src/editor/editor_screen.cpp:196
+#: src/editor/editor_screen.cpp:191
 msgid ""
 "Select all\n"
 "Clear Selection\n"
@@ -565,7 +69,7 @@ msgstr ""
 "Rotér 90 grader\n"
 "Rotér 270 grader\n"
 
-#: src/editor/editor_screen.cpp:218
+#: src/editor/editor_screen.cpp:213
 msgid ""
 "Flip object horizontaly\n"
 "Flip object vertically\n"
@@ -583,7 +87,7 @@ msgstr ""
 "Flyt objekter til venstre\n"
 "Flyt objekter til højre\n"
 
-#: src/editor/editor_screen.cpp:230
+#: src/editor/editor_screen.cpp:225
 msgid ""
 "You should name your level files systematically, i.e. by their theme, their "
 "number and your nickname:\n"
@@ -620,365 +124,591 @@ msgstr ""
 "til GPL'en, så hvis du vil have din bane under en anden licens, så husk at "
 "ændre dette.\n"
 
-#: src/editor/panel.cpp:153
+#: src/editor/file_dialog.cpp:61
+msgid "Datadir"
+msgstr "Datakatalog"
+
+#: src/editor/file_dialog.cpp:63
+msgid "Userdir"
+msgstr "Brugerkatalog"
+
+#: src/editor/file_dialog.cpp:66
+msgid "Open"
+msgstr "Åben"
+
+#: src/editor/file_dialog.cpp:66
+msgid "Save"
+msgstr "Gem"
+
+#: src/editor/file_dialog.cpp:69
+msgid "Cancel"
+msgstr "Annuller"
+
+#: src/editor/file_dialog.cpp:80
+msgid "Filename:"
+msgstr "Filnavn:"
+
+#: src/editor/file_dialog.cpp:81
+msgid "Pathname:"
+msgstr "Filsti:"
+
+#: src/editor/file_dialog.cpp:107
+msgid "Open a level"
+msgstr "Åben en bane"
+
+#: src/editor/file_dialog.cpp:107
+msgid "Save your level"
+msgstr "Gem din bane"
+
+#: src/editor/panel.cpp:152
 msgid "    New level"
 msgstr "    Ny bane"
 
-#: src/editor/panel.cpp:155
+#: src/editor/panel.cpp:154
 msgid "Open level..."
 msgstr "Åben bane..."
 
-#: src/editor/panel.cpp:157
+#: src/editor/panel.cpp:156
 msgid "Save level..."
 msgstr "Gem banen..."
 
-#: src/editor/panel.cpp:159
+#: src/editor/panel.cpp:158
 msgid "Save level as..."
 msgstr "Gem banen som..."
 
-#: src/editor/panel.cpp:162
+#: src/editor/panel.cpp:161
 msgid "Play level..."
 msgstr "Spil banen..."
 
-#: src/editor/panel.cpp:165
+#: src/editor/panel.cpp:164
 msgid "Configure actions"
 msgstr "Indstil handlinger"
 
-#: src/editor/panel.cpp:167
+#: src/editor/panel.cpp:166
 msgid "Configure level"
 msgstr "Indstillinger for banen"
 
-#: src/editor/panel.cpp:169
+#: src/editor/panel.cpp:168
 msgid "Display object properties"
 msgstr "Vis objektegenskaber"
 
-#: src/editor/panel.cpp:171
+#: src/editor/panel.cpp:170
 msgid "Show object insertion window"
 msgstr "Vis objektindsætningsvinduet"
 
-#: src/editor/panel.cpp:173
+#: src/editor/panel.cpp:172
 msgid "Show minimap"
 msgstr ""
 
-#: src/editor/panel.cpp:176
+#: src/editor/panel.cpp:175
 msgid "Duplicate the selected objects"
 msgstr "Duplikér de valgte objekter"
 
-#: src/editor/panel.cpp:178
+#: src/editor/panel.cpp:177
 msgid "Delete the selected objects"
 msgstr "Slet det valgte objekt"
 
-#: src/editor/panel.cpp:181
+#: src/editor/panel.cpp:180
 msgid "Raise object to top"
 msgstr "Hæv objekt til top"
 
-#: src/editor/panel.cpp:183
+#: src/editor/panel.cpp:182
 msgid "Raise object"
 msgstr "Hæv objekt"
 
-#: src/editor/panel.cpp:185
+#: src/editor/panel.cpp:184
 msgid "Lower object"
 msgstr "Sænk objekt"
 
-#: src/editor/panel.cpp:187
+#: src/editor/panel.cpp:186
 msgid "Lower object to bottom"
 msgstr "Sænk objekt til bunden"
 
-#: src/editor/panel.cpp:193
+#: src/editor/panel.cpp:192
 msgid "Flip object horizontally"
 msgstr "Spejlvend objekt"
 
-#: src/editor/panel.cpp:195
+#: src/editor/panel.cpp:194
 msgid "Flip object vertically"
 msgstr "Vend objekt lodret"
 
-#: src/editor/panel.cpp:198
+#: src/editor/panel.cpp:197
 msgid "Rotate object -90 degree"
 msgstr "Rotér objekt -90 grader"
 
-#: src/editor/panel.cpp:200
+#: src/editor/panel.cpp:199
 msgid "Rotate object 90 degree"
 msgstr "Rotér objekt 90 grader"
 
-#: src/editor/panel.cpp:209
+#: src/editor/panel.cpp:208
 msgid "Display help"
 msgstr "Vis hjælp"
 
-#: src/editor/object_properties.cpp:41 src/editor/object_properties.cpp:415
+#: src/editor/panel.cpp:210 src/editor/object_selector.cpp:324
+#: src/pingus/screens/pingus_menu.cpp:62
+msgid "Exit"
+msgstr "Afslut"
+
+#: src/editor/object_selector.cpp:315
+msgid "Entrance"
+msgstr "Indgang"
+
+#: src/editor/object_selector.cpp:316
+msgid "Groundpiece (ground)"
+msgstr "Jordstykke (jord)"
+
+#: src/editor/object_selector.cpp:317
+msgid "Groundpiece (solid)"
+msgstr "Jordstykke (solidt)"
+
+#: src/editor/object_selector.cpp:318
+msgid "Groundpiece (bridge)"
+msgstr "Jordstykke (bro)"
+
+#: src/editor/object_selector.cpp:319
+msgid "Groundpiece (transparent)"
+msgstr "Jordstykke (gennemsigtigt)"
+
+#: src/editor/object_selector.cpp:320
+msgid "Groundpiece (remove)"
+msgstr "Jordstykke (fjern)"
+
+#: src/editor/object_selector.cpp:321
+msgid "Hotspot"
+msgstr "Hotspot"
+
+#: src/editor/object_selector.cpp:322
+msgid "Background"
+msgstr "Baggrund"
+
+#: src/editor/object_selector.cpp:325
+msgid "Liquid"
+msgstr "Flydende"
+
+#: src/editor/object_selector.cpp:326
+msgid "Trap"
+msgstr "Fælde"
+
+#: src/editor/object_selector.cpp:327
+msgid "Weather"
+msgstr "Vejr"
+
+#: src/editor/object_selector.cpp:328
+msgid "Special Object"
+msgstr "Specialobjekt"
+
+#: src/editor/object_properties.cpp:81 src/editor/object_properties.cpp:454
 msgid "Object:"
 msgstr "Objekt:"
 
-#: src/editor/object_properties.cpp:42 src/editor/object_properties.cpp:416
+#: src/editor/object_properties.cpp:82 src/editor/object_properties.cpp:455
 msgid "Nothing selected"
 msgstr "Intet er markeret"
 
-#: src/editor/object_properties.cpp:51
+#: src/editor/object_properties.cpp:91
 msgid "Transparent"
 msgstr "Gennemsigtig"
 
-#: src/editor/object_properties.cpp:52
+#: src/editor/object_properties.cpp:92
 msgid "Solid"
 msgstr "Solid"
 
 # ? TEST
-#: src/editor/object_properties.cpp:53
+#: src/editor/object_properties.cpp:93
 msgid "Ground"
 msgstr "Jord"
 
-#: src/editor/object_properties.cpp:54
+#: src/editor/object_properties.cpp:94
 msgid "Bridge"
 msgstr "Bro"
 
-#: src/editor/object_properties.cpp:55
+#: src/editor/object_properties.cpp:95
 msgid "Water"
 msgstr "Vand"
 
-#: src/editor/object_properties.cpp:56
+#: src/editor/object_properties.cpp:96
 msgid "Lava"
 msgstr "Lava"
 
-#: src/editor/object_properties.cpp:57
+#: src/editor/object_properties.cpp:97
 msgid "Remove"
 msgstr "Fjern"
 
-#: src/editor/object_properties.cpp:62
+#: src/editor/object_properties.cpp:102
 msgid "Direction:"
 msgstr "Retning:"
 
-#: src/editor/object_properties.cpp:64
+#: src/editor/object_properties.cpp:104
 msgid "Left"
 msgstr "Venstre"
 
-#: src/editor/object_properties.cpp:65
+#: src/editor/object_properties.cpp:105
 msgid "Misc"
 msgstr "Andet"
 
-#: src/editor/object_properties.cpp:66
+#: src/editor/object_properties.cpp:106
 msgid "Right"
 msgstr "Højre"
 
-#: src/editor/object_properties.cpp:71
+#: src/editor/object_properties.cpp:111
 msgid "ReleaseRate:"
 msgstr "Frigivelsesrate:"
 
-#: src/editor/object_properties.cpp:88
+#: src/editor/object_properties.cpp:128
 msgid "Para-X:"
 msgstr "Para-X:"
 
-#: src/editor/object_properties.cpp:89
+#: src/editor/object_properties.cpp:129
 msgid "Para-Y:"
 msgstr "Para-Y:"
 
-#: src/editor/object_properties.cpp:97
+#: src/editor/object_properties.cpp:137
 msgid "Scroll-X:"
 msgstr "Scroll-X:"
 
-#: src/editor/object_properties.cpp:98
+#: src/editor/object_properties.cpp:138
 msgid "Scroll-Y:"
 msgstr "Scroll-Y:"
 
-#: src/editor/object_properties.cpp:106
+#: src/editor/object_properties.cpp:146
 msgid "Owner Id:"
 msgstr "Ejer ID:"
 
-#: src/editor/object_properties.cpp:110
+#: src/editor/object_properties.cpp:150
 msgid "Z-Pos:"
 msgstr "Z-Pos:"
 
-#: src/editor/object_properties.cpp:117
+#: src/editor/object_properties.cpp:157
 msgid "Color:"
 msgstr "Farve:"
 
-#: src/editor/object_properties.cpp:129
+#: src/editor/object_properties.cpp:169
 msgid "Small Stars:"
 msgstr "Små stjerner:"
 
-#: src/editor/object_properties.cpp:132
+#: src/editor/object_properties.cpp:172
 msgid "Middle Stars:"
 msgstr "Mellem stjerner:"
 
-#: src/editor/object_properties.cpp:135
+#: src/editor/object_properties.cpp:175
 msgid "Large Stars:"
 msgstr "Store stjerner:"
 
-#: src/editor/object_properties.cpp:143
+#: src/editor/object_properties.cpp:183
 msgid "Repeat:"
 msgstr "Gentag:"
 
-#: src/editor/object_properties.cpp:421
+#: src/editor/object_properties.cpp:460
 msgid "Object: [Group]"
 msgstr "Objekt: [Gruppe]"
 
-#: src/editor/object_properties.cpp:422
+#: src/editor/object_properties.cpp:461
 msgid "Group not supported"
 msgstr "Gruppe ikke understøttet"
 
-#: src/editor/object_properties.cpp:427
+#: src/editor/object_properties.cpp:466
 msgid "Object: "
 msgstr "Objekt: "
 
-#: src/editor/file_dialog.cpp:56
-msgid "Datadir"
-msgstr "Datakatalog"
+#: src/pingus/pingus_main.cpp:216
+msgid "Displays this help"
+msgstr "Viser denne brugsvejledning"
 
-#: src/editor/file_dialog.cpp:58
-msgid "Userdir"
-msgstr "Brugerkatalog"
+#: src/pingus/pingus_main.cpp:218
+msgid "Print version number and exit"
+msgstr "Udskriv versionsnummer og afslut"
 
-#: src/editor/file_dialog.cpp:61
-msgid "Open"
-msgstr "Åben"
+#: src/pingus/pingus_main.cpp:220
+msgid "Display:"
+msgstr "Vis:"
 
-#: src/editor/file_dialog.cpp:61
-msgid "Save"
-msgstr "Gem"
+#: src/pingus/pingus_main.cpp:222
+msgid "Start in Window Mode"
+msgstr "Start Pingus i et vindue"
 
-#: src/editor/file_dialog.cpp:64
-msgid "Cancel"
-msgstr "Annuller"
+#: src/pingus/pingus_main.cpp:224
+msgid "Start in Fullscreen"
+msgstr "Start Pingus i fuldskærm"
 
-#: src/editor/file_dialog.cpp:75
-msgid "Filename:"
-msgstr "Filnavn:"
+#: src/pingus/pingus_main.cpp:226
+msgid "Use the given renderer (default: delta)"
+msgstr ""
 
-#: src/editor/file_dialog.cpp:76
-msgid "Pathname:"
-msgstr "Filsti:"
+#: src/pingus/pingus_main.cpp:228
+msgid "Enable software cursor"
+msgstr "Brug software-markør (cursor)"
 
-#: src/editor/file_dialog.cpp:102
-msgid "Open a level"
-msgstr "Åben en bane"
+#: src/pingus/pingus_main.cpp:230
+msgid "Set the resolution for pingus (default: 800x600)"
+msgstr "Indstil skærmopløsningen for Pingus (standard: 800×600)"
 
-#: src/editor/file_dialog.cpp:102
-msgid "Save your level"
-msgstr "Gem din bane"
+# ? TEST
+#: src/pingus/pingus_main.cpp:232
+msgid "Sound:"
+msgstr "Lyd:"
 
-#: src/editor/object_selector.cpp:309
-msgid "Entrance"
-msgstr "Indgang"
+#: src/pingus/pingus_main.cpp:234
+msgid "Disable sound"
+msgstr "Slå lyd fra"
 
-#: src/editor/object_selector.cpp:310
-msgid "Groundpiece (ground)"
-msgstr "Jordstykke (jord)"
+#: src/pingus/pingus_main.cpp:236
+msgid "Disable music"
+msgstr "Slå musik fra"
 
-#: src/editor/object_selector.cpp:311
-msgid "Groundpiece (solid)"
-msgstr "Jordstykke (solidt)"
+#: src/pingus/pingus_main.cpp:240
+msgid "Select language to use with Pingus"
+msgstr "Vælg hvilket sprog Pingus skal bruge"
 
-#: src/editor/object_selector.cpp:312
-msgid "Groundpiece (bridge)"
-msgstr "Jordstykke (bro)"
+#: src/pingus/pingus_main.cpp:242
+msgid "List all available languages"
+msgstr "Vis alle tilgængelige sprog"
 
-#: src/editor/object_selector.cpp:313
-msgid "Groundpiece (transparent)"
-msgstr "Jordstykke (gennemsigtigt)"
+#: src/pingus/pingus_main.cpp:246
+msgid "Loads the level editor"
+msgstr "Start banebyggeren"
 
-#: src/editor/object_selector.cpp:314
-msgid "Groundpiece (remove)"
-msgstr "Jordstykke (fjern)"
+#: src/pingus/pingus_main.cpp:248
+msgid "Save the level given level to FILENAME and quit"
+msgstr ""
 
-#: src/editor/object_selector.cpp:315
-msgid "Hotspot"
-msgstr "Hotspot"
+#: src/pingus/pingus_main.cpp:250
+msgid "Test a font"
+msgstr "Test en font"
 
-#: src/editor/object_selector.cpp:316
-msgid "Background"
-msgstr "Baggrund"
+#: src/pingus/pingus_main.cpp:252
+msgid "Shows the credits"
+msgstr "Viser forfatterne"
 
-#: src/editor/object_selector.cpp:319
-msgid "Liquid"
-msgstr "Flydende"
+#: src/pingus/pingus_main.cpp:254
+msgid "Misc Options:"
+msgstr "Andre indstillinger:"
 
-#: src/editor/object_selector.cpp:320
-msgid "Trap"
-msgstr "Fælde"
+#: src/pingus/pingus_main.cpp:255 src/pingus/pingus_main.cpp:257
+msgid "PATH"
+msgstr "STI"
 
-#: src/editor/object_selector.cpp:321
-msgid "Weather"
-msgstr "Vejr"
+#: src/pingus/pingus_main.cpp:256
+msgid "Set the path to load the data files to 'path'"
+msgstr "Angiv stien hvor datafilerne ligger til 'sti'"
 
-#: src/editor/object_selector.cpp:322
-msgid "Special Object"
-msgstr "Specialobjekt"
+#: src/pingus/pingus_main.cpp:258
+msgid "Set the path to load and save user files (savegames, etc.) to PATH"
+msgstr ""
 
-#: src/worldmap/worldmap.cpp:425
-msgid "...walking..."
-msgstr "...går..."
+#: src/pingus/pingus_main.cpp:261
+msgid "Disable automatic scrolling"
+msgstr "Slå automatisk rulning (scroll) fra"
 
-#: src/worldmap/manager.cpp:107
-msgid "Show Ending?"
-msgstr "Vis afslutning?"
+#: src/pingus/pingus_main.cpp:263
+msgid "Don't read ~/.pingus/config"
+msgstr "Undlad at indlæse ~/.pingus/config"
 
-#: src/worldmap/manager.cpp:138
-msgid "Show Story?"
-msgstr "Vis historie?"
+#: src/pingus/pingus_main.cpp:264
+msgid "FILE"
+msgstr "FIL"
 
-#: src/worldmap/manager.cpp:167
-msgid "Leave?"
-msgstr "Forlad?"
+#: src/pingus/pingus_main.cpp:265
+msgid ""
+"Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
+"speed up the game on slower machines"
+msgstr ""
+"Læs konfiguration fra FIL (standard: ~/.pingus/config) reducér CPU-"
+"belastning; kan sætte spillets fart op på langsommere maskiner"
 
-#: src/worldmap/manager.cpp:207
-msgid "Enter?"
-msgstr "Start"
+#: src/pingus/pingus_main.cpp:268
+msgid "Uses the controller given in FILE"
+msgstr "Brug kontrollen der er angivet i FIL"
 
-#: src/worldmap/level_dot.cpp:152 src/worldmap/level_dot.cpp:162
-msgid "locked"
-msgstr "låst"
+# ?
+#: src/pingus/pingus_main.cpp:270
+msgid "Debugging and experimental stuff:"
+msgstr "Debug- og eksperimentelle ting"
 
-#: src/exit_menu.cpp:46 src/exit_menu.cpp:50
-msgid "Yes"
-msgstr "Ja"
+#: src/pingus/pingus_main.cpp:272
+msgid "Enables some features, only interesting to programmers"
+msgstr "Slå nogle funktioner til; kun beregnet programmører"
 
-#: src/exit_menu.cpp:85 src/exit_menu.cpp:89
-msgid "No"
-msgstr "Nej"
+#: src/pingus/pingus_main.cpp:275
+msgid ""
+"Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
+"actions, sound, resources, gui, input, pathmgr"
+msgstr ""
+"Slå output af debugging information til. Tilladte OPTION'er er tiles, "
+"gametime, actions, sound, resources, gui, input, pathmgr"
 
-#: src/exit_menu.cpp:124
-msgid "Exit Pingus?"
-msgstr "Afslut Pingus?"
+#: src/pingus/pingus_main.cpp:279
+msgid "Set the game speed (0=fastest, >0=slower)"
+msgstr "Indstil spillehastigheden (0 : hurtigst; >0 : langsommere)"
 
-#: src/pingus_menu.cpp:50 src/pingus_menu.cpp:72
+#: src/pingus/pingus_main.cpp:281
+msgid "Set the desired game framerate (frames per second)"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:283
+msgid "Set the size of the map tiles (default: 32)"
+msgstr "Indstil størrelsen (i pixels) af kort-brikkerne (standard: 32)"
+
+#: src/pingus/pingus_main.cpp:717
+msgid "Pingus: Out of memory!"
+msgstr "Pingus: Løbet tør for hukommelse!"
+
+#: src/pingus/pingus_main.cpp:721
+msgid "Pingus: Standard exception caught!:\n"
+msgstr "Pingus: Standard-undtagelse (exception) fanget!:\n"
+
+#: src/pingus/pingus_main.cpp:725
+msgid "Pingus: Unknown throw caught!"
+msgstr "Pingus: Ukendt undtagelse (exception) fanget!"
+
+#: src/pingus/game_time.cpp:29
+msgid "unlimited"
+msgstr "ubegrænset"
+
+#: src/pingus/actions/bridger.cpp:38 src/pingus/actions/bridger.cpp:196
+#: src/pingus/action_name.cpp:32
+msgid "Bridger"
+msgstr "Brobygger"
+
+#: src/pingus/screens/credits.cpp:87
+msgid "-Idea"
+msgstr "-Idé"
+
+#: src/pingus/screens/credits.cpp:91
+msgid "-Maintaining"
+msgstr "-Vedligeholdelse"
+
+#: src/pingus/screens/credits.cpp:95
+msgid "-Programming"
+msgstr "-Programmering"
+
+#: src/pingus/screens/credits.cpp:105
+msgid "-Porting (Win32)"
+msgstr "-Portering (Win32)"
+
+#: src/pingus/screens/credits.cpp:114
+msgid "-Porting (MacOSX)"
+msgstr "-Portering (Mac OS X)"
+
+#: src/pingus/screens/credits.cpp:119
+msgid "-Gfx"
+msgstr "-Grafik"
+
+#: src/pingus/screens/credits.cpp:132
+msgid "-Music"
+msgstr "-Musik"
+
+#: src/pingus/screens/credits.cpp:139
+msgid "-Level Design"
+msgstr "-Banedesign"
+
+#: src/pingus/screens/credits.cpp:145
+msgid "-Story"
+msgstr "-Historie"
+
+#: src/pingus/screens/credits.cpp:149
+msgid "-Translation"
+msgstr "-Oversættelse"
+
+#: src/pingus/screens/credits.cpp:164
+msgid "-Special"
+msgstr "-Speciel"
+
+#: src/pingus/screens/credits.cpp:165
+msgid "-Thanks to"
+msgstr "-Tak til"
+
+#: src/pingus/screens/credits.cpp:209
+msgid "_And a very Special Thanks"
+msgstr "_Og en meget særlig tak"
+
+#: src/pingus/screens/credits.cpp:210
+msgid "_to all the people who"
+msgstr "_til alle de folk som"
+
+#: src/pingus/screens/credits.cpp:211
+msgid "_contribute to"
+msgstr "_bidrager til"
+
+#: src/pingus/screens/credits.cpp:212
+msgid "_Free Software!"
+msgstr "_fri software!"
+
+#: src/pingus/screens/credits.cpp:218
+msgid "_Thank you for"
+msgstr "_Tak fordi du ville"
+
+#: src/pingus/screens/credits.cpp:219
+msgid "_playing!"
+msgstr "_spille med!"
+
+# ? TEST
+#: src/pingus/screens/start_screen.cpp:67
+msgid "Ok"
+msgstr "O.k."
+
+#: src/pingus/screens/start_screen.cpp:111
+#: src/pingus/screens/level_menu.cpp:51
+#: src/pingus/screens/result_screen.cpp:91
+msgid "Abort"
+msgstr "Forlad"
+
+#: src/pingus/screens/start_screen.cpp:166
+msgid "Number of Pingus: "
+msgstr "Antal pinguer: "
+
+#: src/pingus/screens/start_screen.cpp:169
+msgid "Number to Save: "
+msgstr "Der skal reddes: "
+
+# ? TEST
+#: src/pingus/screens/start_screen.cpp:172
+msgid "Time: "
+msgstr "Tid til rådighed: "
+
+#: src/pingus/screens/start_screen.cpp:181
+msgid "Author: "
+msgstr "Designer: "
+
+#: src/pingus/screens/start_screen.cpp:184
+msgid "Filename: "
+msgstr "Filnavn: "
+
+#: src/pingus/screens/addon_menu.cpp:50 src/pingus/screens/option_menu.cpp:286
+msgid "Close"
+msgstr ""
+
+#: src/pingus/screens/pingus_menu.cpp:52
 msgid "Story"
 msgstr "Historie"
 
-#: src/pingus_menu.cpp:51
+#: src/pingus/screens/pingus_menu.cpp:53
 msgid "..:: Start the game ::.."
 msgstr "..:: Start spillet ::.."
 
 # ??
-#: src/pingus_menu.cpp:56
+#: src/pingus/screens/pingus_menu.cpp:57
 #, fuzzy
 msgid "Editor"
 msgstr "Reddet"
 
-#: src/pingus_menu.cpp:57
+#: src/pingus/screens/pingus_menu.cpp:58
 msgid "..:: Create your own levels ::.."
 msgstr "..:: Lav dine egne baner ::.."
 
-#: src/pingus_menu.cpp:62
+#: src/pingus/screens/pingus_menu.cpp:63
 msgid "..:: Bye, bye ::.."
 msgstr "..:: På gensyn ::.."
 
-#: src/pingus_menu.cpp:67
+#: src/pingus/screens/pingus_menu.cpp:67 src/pingus/screens/level_menu.cpp:141
+#, fuzzy
+msgid "Levelsets"
+msgstr "-Banedesign"
+
+#: src/pingus/screens/pingus_menu.cpp:68
 msgid "..:: Play User Built levels ::.."
 msgstr "..:: Spil brugerlavede baner ::.."
 
-#: src/pingus_menu.cpp:73
-msgid "..:: Start the story ::.."
-msgstr "..:: Vis historien ::.."
-
-# ? TEST
-# Måske "Flerspiller-menu" ?
-#: src/pingus_menu.cpp:78
-msgid "Multiplayer"
-msgstr "Flerspiller"
-
-# ? TEST
-#: src/pingus_menu.cpp:79
-msgid "..:: Multiplayer Match ::.."
-msgstr "..:: Flerspiller-modus ::.."
-
-#: src/pingus_menu.cpp:82
+#: src/pingus/screens/pingus_menu.cpp:79
 msgid ""
 "..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
 "fullscreen   ::   F12: screenshot ::.."
@@ -986,11 +716,302 @@ msgstr ""
 "..::Ctrl-G: Tag musen   ::   F10: FPS tæller   ::   F11: Fuldskærm   ::   "
 "F12: Skærmskud"
 
-#: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
+#: src/pingus/screens/level_menu.cpp:159
+#, fuzzy
+msgid "Solved:"
+msgstr "Reddet: "
+
+#: src/pingus/screens/level_menu.cpp:160
+#, fuzzy
+msgid "levels"
+msgstr "-Banedesign"
+
+#: src/pingus/screens/level_menu.cpp:170 src/pingus/screens/level_menu.cpp:291
+msgid "Page"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:265
+msgid "Title"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:266
+#, fuzzy
+msgid "Status"
+msgstr "Start"
+
+#: src/pingus/screens/level_menu.cpp:282
+#, fuzzy
+msgid "solved"
+msgstr "Reddet: "
+
+#: src/pingus/screens/level_menu.cpp:284
+#, fuzzy
+msgid "unsolved"
+msgstr "Reddet: "
+
+#: src/pingus/screens/story_screen.cpp:107
+#: src/pingus/screens/story_screen.cpp:113
+msgid "skip"
+msgstr "spring over"
+
+#: src/pingus/screens/option_menu.cpp:180
+msgid "Language:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:182
+msgid "Resolution:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:183
+#, fuzzy
+msgid "Fullscreen:"
+msgstr "Start Pingus i fuldskærm"
+
+#: src/pingus/screens/option_menu.cpp:184
+msgid "Master Volume:"
+msgstr ""
+
+# ? TEST
+#: src/pingus/screens/option_menu.cpp:185
+#, fuzzy
+msgid "Sound Volume:"
+msgstr "Lyd:"
+
+#: src/pingus/screens/option_menu.cpp:186
+msgid "Music Volume:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:187
+msgid "Autoscrolling:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:188
+msgid "Print FPS:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:189
+msgid "Mouse Grab:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:190
+#, fuzzy
+msgid "Software Cursor:"
+msgstr "Brug software-markør (cursor)"
+
+#: src/pingus/screens/option_menu.cpp:208
+msgid "Reset to Defaults:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:284
+msgid "Option Menu"
+msgstr ""
+
+#: src/pingus/screens/result_screen.cpp:126
+msgid "Retry"
+msgstr "Prøv igen"
+
+#: src/pingus/screens/result_screen.cpp:183
+msgid "Success!"
+msgstr "Succes!"
+
+#: src/pingus/screens/result_screen.cpp:191
+msgid "Failure!"
+msgstr "Det mislykkedes!"
+
+# ? TEST
+#: src/pingus/screens/result_screen.cpp:200
+msgid "Perfect! You saved everyone possible - great!"
+msgstr "Perfekt! Du har reddet allesammen - glimrende!"
+
+#: src/pingus/screens/result_screen.cpp:202
+msgid "No-one got killed, pretty good work."
+msgstr "Ingen blev slået ihjel, ret godt gået."
+
+# ? TEST
+#: src/pingus/screens/result_screen.cpp:204
+msgid ""
+"You saved exactly what you needed - you made it, but\n"
+"maybe you can do better?"
+msgstr ""
+"Du reddede præcis så mange som nødvendigt - du klarede det,\n"
+"men måske kan du gøre det bedre?"
+
+#: src/pingus/screens/result_screen.cpp:207
+msgid "Not everybody was saved, but still good work!"
+msgstr "Ikke alle blev reddet, men du gjorde det stadig godt!"
+
+#: src/pingus/screens/result_screen.cpp:209
+msgid "What can I say, you made it - congratulations!"
+msgstr "Hvad kan jeg sige - du klarede det. Tillykke!"
+
+#: src/pingus/screens/result_screen.cpp:214
+msgid "You killed everybody, not good."
+msgstr "Du slog alle ihjel. Ikke godt."
+
+#: src/pingus/screens/result_screen.cpp:216
+msgid "No-one got saved - I know you can do better."
+msgstr "Ingen blev reddet - jeg ved, at du kan klare det bedre."
+
+#: src/pingus/screens/result_screen.cpp:218
+msgid ""
+"You didn't save enough, but you saved a few.  Next\n"
+"time you might do better."
+msgstr ""
+"Du reddede ikke nok, men dog nogle få.\n"
+"Næste gang går det sikkert bedre."
+
+#: src/pingus/screens/result_screen.cpp:221
+msgid "Only one more and you would have made it - try again!"
+msgstr "Kun én mere, og du ville have klaret det - prøv igen!"
+
+#: src/pingus/screens/result_screen.cpp:223
+msgid "Only a handful more and you would have made it - try again!"
+msgstr "Kun et par stykker flere, og du ville have klaret det - prøv igen!"
+
+#: src/pingus/screens/result_screen.cpp:225
+msgid "Better luck next time!"
+msgstr "Bedre held næste gang!"
+
+#: src/pingus/screens/result_screen.cpp:233
+msgid "Saved: "
+msgstr "Reddet: "
+
+#: src/pingus/screens/result_screen.cpp:237
+msgid "Died: "
+msgstr "Døde: "
+
+# ? TEST
+#: src/pingus/screens/result_screen.cpp:240
+msgid "Time left: "
+msgstr "Resterende tid: "
+
+#: src/pingus/action_name.cpp:27
+msgid "Angel"
+msgstr "Engel"
+
+# ?
+#: src/pingus/action_name.cpp:28
+msgid "Basher"
+msgstr "Graver"
+
+# ?
+#: src/pingus/action_name.cpp:29
+msgid "Blocker"
+msgstr "Spærrer"
+
+#: src/pingus/action_name.cpp:30
+msgid "Boarder"
+msgstr "Skater"
+
+# ??
+#: src/pingus/action_name.cpp:31
+msgid "Bomber"
+msgstr "Bomber"
+
+# ?
+#: src/pingus/action_name.cpp:33
+msgid "Climber"
+msgstr "Klatrer"
+
+#: src/pingus/action_name.cpp:34
+msgid "Digger"
+msgstr "Borer"
+
+#: src/pingus/action_name.cpp:35
+msgid "Drown"
+msgstr "Drukner"
+
+# ??
+#: src/pingus/action_name.cpp:36
+msgid "Exiter"
+msgstr "Reddet"
+
+#: src/pingus/action_name.cpp:37
+msgid "Faller"
+msgstr "Falder"
+
+#: src/pingus/action_name.cpp:38
+msgid "Floater"
+msgstr "Svæver"
+
+#: src/pingus/action_name.cpp:39
+msgid "Jumper"
+msgstr "Hopper"
+
+#: src/pingus/action_name.cpp:40
+msgid "Laserkill"
+msgstr "Skudt"
+
+#: src/pingus/action_name.cpp:41
+msgid "Miner"
+msgstr "Minør"
+
+#: src/pingus/action_name.cpp:42
+msgid "Rocketlauncher"
+msgstr "Raketaffyrer"
+
+#: src/pingus/action_name.cpp:43
+msgid "Slider"
+msgstr "Glider"
+
+#: src/pingus/action_name.cpp:44
+msgid "Smashed"
+msgstr "Smat"
+
+#: src/pingus/action_name.cpp:45
+msgid "Splashed"
+msgstr "Splat"
+
+#: src/pingus/action_name.cpp:46
+msgid "Superman"
+msgstr "SuperPingu"
+
+#: src/pingus/action_name.cpp:47
+msgid "Teleported"
+msgstr "Teleporteret"
+
+#: src/pingus/action_name.cpp:48
+msgid "Waiter"
+msgstr "Venter"
+
+#: src/pingus/action_name.cpp:49
+msgid "Walker"
+msgstr "Går"
+
+#: src/pingus/components/pingus_counter.cpp:43
+#, c-format, boost-format
+msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
+msgstr "Frigivet:%3d/%d   På banen:%3d   Reddet:%3d/%d"
+
+#: src/pingus/worldmap/worldmap.cpp:354
+msgid "...walking..."
+msgstr "...går..."
+
+#: src/pingus/worldmap/level_dot.cpp:140 src/pingus/worldmap/level_dot.cpp:150
+msgid "locked"
+msgstr "låst"
+
+#: src/pingus/worldmap/worldmap_screen.cpp:116
+msgid "Show Ending?"
+msgstr "Vis afslutning?"
+
+#: src/pingus/worldmap/worldmap_screen.cpp:145
+msgid "Show Story?"
+msgstr "Vis historie?"
+
+#: src/pingus/worldmap/worldmap_screen.cpp:174
+msgid "Leave?"
+msgstr "Forlad?"
+
+#: src/pingus/worldmap/worldmap_screen.cpp:212
+msgid "Enter?"
+msgstr "Start"
+
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus:7
 msgid "If the way is blocked, bash away"
 msgstr "Hvis vejen er blokeret, så grav løs"
 
-#: data/levels/tutorial/basher-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus:8
 msgid ""
 "Similar to the Digger action that you already know from previous levels, "
 "there is also an action that allows the Pingus to dig horizontally, as "
@@ -1001,11 +1022,11 @@ msgstr ""
 "gjorde det muligt at grave lodret, er der også en handling - at grave - som "
 "tillader pinguerne at lave vandrette huller. "
 
-#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:5
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:7
 msgid "Sacrifice a few and save the rest"
 msgstr "Ofr nogle få og red resten"
 
-#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:6
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:8
 msgid ""
 "Sometimes no other actions are available, so you have to bomb your way "
 "through the ground. The Pingus can do this by actually self- destructing. "
@@ -1017,11 +1038,11 @@ msgstr ""
 "selvdestruere. De dør af det, men nogle gange kan det være den eneste udvej, "
 "hvis resten skal reddes. "
 
-#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:5
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:7
 msgid "Learning to dig"
 msgstr "Lær at bore"
 
-#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:6
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:8
 msgid ""
 "This is your first mission. As always, it's pretty easy. All you have to do "
 "is to give a Pingu the command to dig a hole into the ground so that they "
@@ -1031,11 +1052,11 @@ msgstr ""
 "behøver at gøre, er at beordre pinguerne til at bore et hul i jorden, så de "
 "kan nå frem til udgangen. Dette gøres ved simpelthen at klikke på en pingu. "
 
-#: data/levels/tutorial/floater-tutorial-grumbel.pingus:5
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus:7
 msgid "Float or Die"
 msgstr "Svæv eller dø"
 
-#: data/levels/tutorial/floater-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus:8
 msgid ""
 "Well done in mission one! Now let's start the next one. This time you will "
 "need to equip your Pingus with a little propeller, so that they can float to "
@@ -1047,11 +1068,11 @@ msgstr ""
 "blødt ned til jorden. Hvis pinguer falder fra for stor højde, vil de ikke "
 "overleve faldet, så pas nu på! "
 
-#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:5
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:7
 msgid "Jump for joy"
 msgstr "Glædesspring"
 
-#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:8
 msgid ""
 "Sometimes a Pingu needs to reach a platform that is far away, but not "
 "reachable by walking. That's when the Jumper comes in handy - it allows the "
@@ -1062,11 +1083,11 @@ msgstr ""
 "nyttig - den tillader en pingu at springe et stykke vej, så den derved kan "
 "nå platformen. "
 
-#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:5
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:7
 msgid "Miner's heaven"
 msgstr "Minegraverens paradis"
 
-#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:6
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:8
 msgid ""
 "Another action hits the street - another digging action, this time a "
 "diagonal one. It allows a Pingu to dig diagonally through ground, thus "
@@ -1076,11 +1097,11 @@ msgstr ""
 "grave skråt. Med den kan en pingu grave en skrå tunnel gennem jorden, som de "
 "efterfølgende pinguer kan bruge. Handlingen kaldes Minegravning. "
 
-#: data/levels/tutorial/snow10-grumbel.pingus:5
+#: data/levels/tutorial/snow10-grumbel.pingus:7
 msgid "Panic Island (float/bash)"
 msgstr "Panik-øen (svæv/grav)"
 
-#: data/levels/tutorial/snow10-grumbel.pingus:6
+#: data/levels/tutorial/snow10-grumbel.pingus:8
 msgid ""
 "While the previous levels have not required much quick action from you, this "
 "one gets a bit trickier. The Pingus are coming out of two entrances in "
@@ -1090,11 +1111,11 @@ msgstr ""
 "aftrækkeren. Pinguerne kommer ud af to indgange på samme tid, og du skal "
 "sørge for at holde styr på begge grupper samtidig. "
 
-#: data/levels/tutorial/snow11-grumbel.pingus:5
+#: data/levels/tutorial/snow11-grumbel.pingus:7
 msgid "Jump'n Bump... and Bash..."
 msgstr "Hop og spring... og grav..."
 
-#: data/levels/tutorial/snow11-grumbel.pingus:6
+#: data/levels/tutorial/snow11-grumbel.pingus:8
 msgid ""
 "It's panic time again. The Pingus will not come out very fast, but since "
 "they turn around when they hit walls you will soon have some trouble "
@@ -1106,11 +1127,11 @@ msgstr ""
 "alle. Du behøver kun at redde 5, så det skulle være muligt - og du kan som "
 "altid i nødstilfælde bruge pauseknappen ('p') til at genvinde overblikket. "
 
-#: data/levels/tutorial/snow12-grumbel.pingus:5
+#: data/levels/tutorial/snow12-grumbel.pingus:7
 msgid "Two groups in parallel, coordinate wisely"
 msgstr "Samarbejde med hakke og spade"
 
-#: data/levels/tutorial/snow12-grumbel.pingus:6
+#: data/levels/tutorial/snow12-grumbel.pingus:8
 msgid ""
 "You have two groups to coordinate this time. No need to panic, since this "
 "level gives you enough time to think your actions through. No more tips this "
@@ -1120,11 +1141,11 @@ msgstr ""
 "til panik, da du har masser af tid til at planlægge dine handlinger. Ikke "
 "mere hjælp denne gang, men held og lykke! "
 
-#: data/levels/tutorial/snow14-grumbel.pingus:5
+#: data/levels/tutorial/snow14-grumbel.pingus:7
 msgid "Block'a Rock"
 msgstr "Spær og spræng"
 
-#: data/levels/tutorial/snow14-grumbel.pingus:6
+#: data/levels/tutorial/snow14-grumbel.pingus:8
 msgid ""
 "Once again it's time to combine the stuff you have learned in your previous "
 "levels. Blast your way free and make sure you also keep the rest of the "
@@ -1134,11 +1155,11 @@ msgstr ""
 "dig vej og sørg samtidig for at holde styr på resten af pinguerne. Spærre-"
 "pinguer vil vise sig nyttige. "
 
-#: data/levels/tutorial/snow15-grumbel.pingus:5
+#: data/levels/tutorial/snow15-grumbel.pingus:7
 msgid "Climb, Climber,... Boom!"
 msgstr "Klatre-pinguer med krudt i"
 
-#: data/levels/tutorial/snow15-grumbel.pingus:6
+#: data/levels/tutorial/snow15-grumbel.pingus:8
 msgid ""
 "As you might have already figured out from previous levels, you often have "
 "to combine different actions to get the job done. Due to the lack of a "
@@ -1150,11 +1171,11 @@ msgstr ""
 "denne bane, så en Bombe-pingu må ofre sig - men hvordan skal den komme hen "
 "hvor der skal sprænges? "
 
-#: data/levels/tutorial/snow16-grumbel.pingus:5
+#: data/levels/tutorial/snow16-grumbel.pingus:7
 msgid "Bridging gets more complicated..."
 msgstr "Brobygning for viderekomne"
 
-#: data/levels/tutorial/snow16-grumbel.pingus:6
+#: data/levels/tutorial/snow16-grumbel.pingus:8
 msgid ""
 "Once again you have to combine actions carefully and wisely. If you don't "
 "you could end up in the hole just before the exit, so think about how to "
@@ -1163,11 +1184,11 @@ msgstr ""
 "Nok en gang skal handlingerne kombineres med omtanke og omhu - hvis ikke du "
 "vil ende i faldgruben lige før udgangen. "
 
-#: data/levels/tutorial/snow17-grumbel.pingus:5
+#: data/levels/tutorial/snow17-grumbel.pingus:7
 msgid "If too high, your Pingu will die..."
 msgstr "En tand for højt"
 
-#: data/levels/tutorial/snow17-grumbel.pingus:6
+#: data/levels/tutorial/snow17-grumbel.pingus:8
 msgid ""
 "Teamwork is the way to the exit this time. You don't have enough Floaters to "
 "reach the exit, so just send a few and let them prepare the path for the "
@@ -1177,11 +1198,11 @@ msgstr ""
 "egen hånd. Der er ikke nok propeller til alle, så send nogle stykker i "
 "forvejen for at berede vejen for resten. "
 
-#: data/levels/tutorial/snow19-grumbel.pingus:5
+#: data/levels/tutorial/snow19-grumbel.pingus:7
 msgid "Learn to use the bridge"
 msgstr "Brobygning for begyndere"
 
-#: data/levels/tutorial/snow19-grumbel.pingus:6
+#: data/levels/tutorial/snow19-grumbel.pingus:8
 msgid ""
 "If no Jumper is at hand and a large hole needs to be passed, a bridge can be "
 "pretty helpful. It takes some time to build, but unlike the jumper action it "
@@ -1191,11 +1212,11 @@ msgstr ""
 "en bro. Den tager lidt tid at bygge, men til gengæld kan de efterfølgende "
 "pinguer også bruge den. "
 
-#: data/levels/tutorial/snow20-grumbel.pingus:5
+#: data/levels/tutorial/snow20-grumbel.pingus:7
 msgid "Three solutions, it's up to you"
 msgstr "Tre løsninger - vælg selv"
 
-#: data/levels/tutorial/snow20-grumbel.pingus:6
+#: data/levels/tutorial/snow20-grumbel.pingus:8
 msgid ""
 "Now that you've learned all the actions, it's time for some more practice. "
 "This level presents you with at least three different ways to solve it. It's "
@@ -1205,11 +1226,11 @@ msgstr ""
 "Der er mindst tre måder at gennemføre banen på, så det er helt op til dig, "
 "hvordan du vil føre pinguerne i mål. "
 
-#: data/levels/tutorial/snow21-grumbel.pingus:5
+#: data/levels/tutorial/snow21-grumbel.pingus:7
 msgid "Climb, Climber, climb... and build a bridge"
 msgstr "Klatreren bygger bro"
 
-#: data/levels/tutorial/snow21-grumbel.pingus:6
+#: data/levels/tutorial/snow21-grumbel.pingus:8
 msgid ""
 "Once again you get access to a new action. The Climber action allows a Pingu "
 "to climb up straight walls, thus allowing him to reach stuff that might be "
@@ -1220,11 +1241,11 @@ msgstr ""
 "ellers kan være utilgængelige. En pingu, der én gang har lært at klatre, vil "
 "- ligesom en svæve-pingu - huske og bruge sine evner ved senere lejligheder. "
 
-#: data/levels/tutorial/snow22-grumbel.pingus:5
+#: data/levels/tutorial/snow22-grumbel.pingus:7
 msgid "Entrance high, Exit low"
 msgstr "Kom så ned derfra!"
 
-#: data/levels/tutorial/snow22-grumbel.pingus:6
+#: data/levels/tutorial/snow22-grumbel.pingus:8
 msgid ""
 "If you don't have enough floaters to bring all the Pingus down to the exit - "
 "you have to find other ways to guide them down. You should have learned all "
@@ -1235,11 +1256,11 @@ msgstr ""
 "så må du tage alternative metoder i brug. Du skulle kende de nødvendige "
 "midler i forvejen, så det skulle du nok kunne klare. "
 
-#: data/levels/tutorial/snow7-grumbel.pingus:5
+#: data/levels/tutorial/snow7-grumbel.pingus:7
 msgid "One must prepare, the rest must follow"
 msgstr "En baner vej for resten"
 
-#: data/levels/tutorial/snow7-grumbel.pingus:6
+#: data/levels/tutorial/snow7-grumbel.pingus:8
 msgid ""
 "Sometimes there are situations where you don't have a Blocker at hand to "
 "coordinate your Pingus. You'll have to find other ways to keep them under "
@@ -1249,11 +1270,11 @@ msgstr ""
 "andre. Du bliver så nødt til at finde på andre måde at kontrollere dem på, "
 "mens en fortrop bereder vejen for resten. "
 
-#: data/levels/tutorial/snow8-grumbel.pingus:5
+#: data/levels/tutorial/snow8-grumbel.pingus:7
 msgid "Dig and float, but just don't fall and smash"
 msgstr "Bor og svæv, så du ikke falder"
 
-#: data/levels/tutorial/snow8-grumbel.pingus:6
+#: data/levels/tutorial/snow8-grumbel.pingus:8
 msgid ""
 "Unlike the first two levels, you have two actions available in this level. "
 "Your job is again simple: select an action at the panel on the left and "
@@ -1265,11 +1286,11 @@ msgstr ""
 "derpå de pinguer, der skal udføre den - og få dermed pinguerne frem til "
 "udgangen. Sørg for at der ikke er for mange der dør. "
 
-#: data/levels/tutorial/snow9-grumbel.pingus:5
+#: data/levels/tutorial/snow9-grumbel.pingus:7
 msgid "Dig, bash and other problems"
 msgstr "En bore- og graveøvelse"
 
-#: data/levels/tutorial/snow9-grumbel.pingus:6
+#: data/levels/tutorial/snow9-grumbel.pingus:8
 msgid ""
 "The more levels you master, the more difficult they will get, but don't "
 "panic, as this one is still pretty easy. Just use the stuff that you've "
@@ -1283,11 +1304,11 @@ msgstr ""
 "baglås-tilstand, hvorfra det ikke længere er muligt at gennemføre banen, så "
 "dobbeltklik på 'dommedagsknappen' nederst til højre i skærmen. "
 
-#: data/levels/tutorial/solid-tutorial-grumbel.pingus:5
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus:7
 msgid "Solid ground can block the path"
 msgstr "Hårde ting kan blokere vejen"
 
-#: data/levels/tutorial/solid-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus:8
 msgid ""
 "As you have learned in earlier levels your Pingus can dig through basically "
 "any terrain, but there is one material which they can't penetrate: steel. "
@@ -1333,7 +1354,7 @@ msgstr ""
 msgid ""
 "You've mastered the last challenge and now face the next. Their path to "
 "salvation seems to be cursed, but by whom? There is no time to think about "
-"it, since the next deadly challange already awaits the Pingus. Two mighty "
+"it, since the next deadly challenge already awaits the Pingus. Two mighty "
 "roots block the way, but without a basher at hand to bash them away, "
 "sacrifice might be the only option..."
 msgstr ""
@@ -1389,10 +1410,11 @@ msgstr ""
 #: data/levels/halloween/halloween7-grumbel.pingus:8
 msgid ""
 "This is by far the deepest pit the Pingus have yet encountered. Building a "
-"bridge across it seems obvious, but can't work. The exit is deep down in the "
-"pit itself, but Pingus who go down will just end up splattered upon the "
-"ground. But you have two groups of Pingus at your disposal... can you make "
-"them work together to reach even an exit this well hidden?"
+"bridge across it seems obvious but that won't help since the exit is deep "
+"down in the pit itself. Pingus who try to go down the pit will just end up "
+"splattered all over the ground. You have two groups of Pingus at your "
+"disposal, can you make them work together to reach even an exit this well "
+"hidden?"
 msgstr ""
 
 #: data/levels/halloween/halloween8-plouj.pingus:7
@@ -1571,6 +1593,14 @@ msgstr ""
 "Så pinguerne sidder på deres flåder, bekymrede for hvad der vil ske og hvor "
 "de vil komme hen, og flyder mod solnedgangen.  Fortsættes..."
 
+#: data/levelsets/desert.levelset:2
+msgid "Desert"
+msgstr ""
+
+#: data/levelsets/desert.levelset:3
+msgid "Abandoned in the Arabian Desert"
+msgstr ""
+
 #: data/levelsets/halloween.levelset:3
 msgid "Halloween 2007"
 msgstr ""
@@ -1578,6 +1608,82 @@ msgstr ""
 #: data/levelsets/halloween.levelset:4
 msgid "Trapped at All Hallows Eve"
 msgstr ""
+
+#: data/levelsets/pacman.levelset:3
+msgid "Pac-Man"
+msgstr ""
+
+#: data/levelsets/pacman.levelset:4
+msgid "Trapped in a video game"
+msgstr ""
+
+#: data/levelsets/xmas.levelset:3
+msgid "X-Mas 2007"
+msgstr ""
+
+#: data/levelsets/xmas.levelset:4
+msgid "Merry Christmas and a Happy New Year"
+msgstr ""
+
+#~ msgid "Allow Window resize (buggy)"
+#~ msgstr "Tillad at ændre størrelse på vindue (ikke fejlfri)"
+
+# TEST
+#~ msgid "Load a custom worldmap"
+#~ msgstr "Indlæs et verdenskort"
+
+#~ msgid "Skip at least N frames, larger values speed the game up"
+#~ msgstr "Spring mindst N skærmbilleder over; højere værdier øger hastigheden"
+
+#~ msgid "Skip at most N frames"
+#~ msgstr "Spring højst N skærmbilleder over"
+
+# ? skær
+#~ msgid "Set both min and max frameskip to N"
+#~ msgstr "Spring præcis N skærmbilleder over"
+
+# ?? TODO
+#~ msgid "Disable some cpu intensive features"
+#~ msgstr "Deaktivér visse CPU-intensive funktioner"
+
+#~ msgid "Demo playing and recording:"
+#~ msgstr "Optagning og afspilning af demoer:"
+
+#~ msgid "Plays a demo session"
+#~ msgstr "Vis et demonstrationsspil"
+
+#~ msgid "Record demos for each played level"
+#~ msgstr "Optag demoer for hver spillet bane"
+
+#~ msgid "Error caught from Pingus: "
+#~ msgstr "Fejl fra Pingus fanget: "
+
+#~ msgid "Couldn't open: "
+#~ msgstr "Kunne ikke åbne filen: "
+
+#~ msgid "Unexpected char: '"
+#~ msgstr "Uventet tegn: '"
+
+#~ msgid "Yes"
+#~ msgstr "Ja"
+
+#~ msgid "No"
+#~ msgstr "Nej"
+
+#~ msgid "Exit Pingus?"
+#~ msgstr "Afslut Pingus?"
+
+#~ msgid "..:: Start the story ::.."
+#~ msgstr "..:: Vis historien ::.."
+
+# ? TEST
+# Måske "Flerspiller-menu" ?
+#~ msgid "Multiplayer"
+#~ msgstr "Flerspiller"
+
+# ? TEST
+#~ msgid "..:: Multiplayer Match ::.."
+#~ msgstr "..:: Flerspiller-modus ::.."
 
 # ? TEST - hvor meget plads er der?
 #~ msgid "Difficulty:"
@@ -1601,9 +1707,6 @@ msgstr ""
 
 #~ msgid "Load"
 #~ msgstr "Indlæs"
-
-#~ msgid "Start"
-#~ msgstr "Start"
 
 #~ msgid "Level Editor"
 #~ msgstr "Banebygger"
