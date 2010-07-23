@@ -48,14 +48,6 @@ msgid ""
 "Rotate 90 degree\n"
 "Rotate 270 degree\n"
 msgstr ""
-"Seleccionar todos\n"
-"Borrar selección\n"
-"Subir objetos\n"
-"Bajar objetos\n"
-"Bajar objetos al fondo\n"
-"Subir objetos al techo\n"
-"Rotar 90 grados\n"
-"Rotar 270 grados\n"
 
 #: src/editor/editor_screen.cpp:213
 msgid ""
@@ -67,13 +59,6 @@ msgid ""
 "Move objects left\n"
 "Move objects right\n"
 msgstr ""
-"Voltear el objeto horizontalmente<\n"
-"Voltear el objeto verticalmente\n"
-"Borrar todos los objetos marcados\n"
-"Mover los objetos arriba\n"
-"Mover los objetos abajo\n"
-"Mover los objetos a la izquierda\n"
-"Mover los objetos a la derecha\n"
 
 #: src/editor/editor_screen.cpp:225
 msgid ""
@@ -194,7 +179,7 @@ msgstr "Borrar los objetos seleccionados"
 
 #: src/editor/panel.cpp:180
 msgid "Raise object to top"
-msgstr "Alzar el objeto al techo"
+msgstr "Alzar el objeto al primer plano"
 
 #: src/editor/panel.cpp:182
 msgid "Raise object"
@@ -206,7 +191,7 @@ msgstr "Bajar objeto"
 
 #: src/editor/panel.cpp:186
 msgid "Lower object to bottom"
-msgstr "Bajar objeto al suelo"
+msgstr "Bajar objeto al fondo"
 
 #: src/editor/panel.cpp:192
 msgid "Flip object horizontally"
@@ -222,7 +207,7 @@ msgstr "Rotar el objeto -90 grados"
 
 #: src/editor/panel.cpp:199
 msgid "Rotate object 90 degree"
-msgstr "Rotar el objeto 90 grados<"
+msgstr "Rotar el objeto 90 grados"
 
 #: src/editor/panel.cpp:208
 msgid "Display help"
@@ -585,7 +570,7 @@ msgstr "-Diseño de niveles"
 
 #: src/pingus/screens/credits.cpp:145
 msgid "-Story"
-msgstr "-Historia"
+msgstr "Historia"
 
 #: src/pingus/screens/credits.cpp:149
 msgid "-Translation"
@@ -679,7 +664,7 @@ msgstr "..:: ¡Adios! ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:67 src/pingus/screens/level_menu.cpp:141
 msgid "Levelsets"
-msgstr "Conjuntos de niveles"
+msgstr "Otros niveles"
 
 #: src/pingus/screens/pingus_menu.cpp:68
 msgid "..:: Play User Built levels ::.."
@@ -690,8 +675,8 @@ msgid ""
 "..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
 "fullscreen   ::   F12: screenshot ::.."
 msgstr ""
-"..:: Ctrl-g: capturar ratón   ::   F10: contador fps   ::   F11: ventana "
-"completa   ::   F12: captura de pantalla ::.."
+"..:: Ctrl-g: capturar ratón :: F10: contador fps  :: F11: vent. completa :: "
+"F12: captura pantalla ::.."
 
 #: src/pingus/screens/level_menu.cpp:159
 msgid "Solved:"
@@ -700,7 +685,7 @@ msgstr "Resueltos:"
 #: src/pingus/screens/level_menu.cpp:160
 #, fuzzy
 msgid "levels"
-msgstr "Conjuntos de niveles"
+msgstr "-Diseño de niveles"
 
 #: src/pingus/screens/level_menu.cpp:170 src/pingus/screens/level_menu.cpp:291
 msgid "Page"
@@ -718,12 +703,12 @@ msgstr "Inicia"
 #: src/pingus/screens/level_menu.cpp:282
 #, fuzzy
 msgid "solved"
-msgstr "Resueltos:"
+msgstr "Salvados: "
 
 #: src/pingus/screens/level_menu.cpp:284
 #, fuzzy
 msgid "unsolved"
-msgstr "Resueltos:"
+msgstr "Salvados: "
 
 #: src/pingus/screens/story_screen.cpp:107
 #: src/pingus/screens/story_screen.cpp:113
@@ -1293,7 +1278,15 @@ msgstr ""
 
 #: data/levels/halloween/halloween1-grumbel.pingus:7
 msgid "One jump to catch them all"
-msgstr "Un salto para cogerlos a todos"
+msgstr ""
+"Un salto para cogerlos a todosSeleccionar todos\n"
+"Borrar selección\n"
+"Alzar objetos\n"
+"Bajar objetos\n"
+"Bajar objetos al fondo\n"
+"Alzar objetos al primer plano\n"
+"Rotar 90 grados\n"
+"Rotar 270 grados\n"
 
 #: data/levels/halloween/halloween1-grumbel.pingus:8
 msgid ""
@@ -1310,7 +1303,14 @@ msgstr ""
 
 #: data/levels/halloween/halloween2-grumbel.pingus:7
 msgid "One Thousand and One Jumps"
-msgstr "Mil y un saltos"
+msgstr ""
+"Mil y un saltosVoltear el objeto horizontalmente<\n"
+"Voltear el objeto verticalmente\n"
+"Borrar todos los objetos marcados\n"
+"Mover los objetos arriba\n"
+"Mover los objetos abajo\n"
+"Mover los objetos a la izquierda\n"
+"Mover los objetos a la derecha\n"
 
 #: data/levels/halloween/halloween2-grumbel.pingus:8
 msgid ""
@@ -1330,7 +1330,6 @@ msgstr "Boom Boom"
 
 # TYPO in original: challange
 #: data/levels/halloween/halloween3-grumbel.pingus:8
-#, fuzzy
 msgid ""
 "You've mastered the last challenge and now face the next. Their path to "
 "salvation seems to be cursed, but by whom? There is no time to think about "
@@ -1413,7 +1412,6 @@ msgid "Splatterfest"
 msgstr "Festival de caídas"
 
 #: data/levels/halloween/halloween7-grumbel.pingus:8
-#, fuzzy
 msgid ""
 "This is by far the deepest pit the Pingus have yet encountered. Building a "
 "bridge across it seems obvious but that won't help since the exit is deep "
@@ -1643,9 +1641,6 @@ msgstr ""
 msgid "Merry Christmas and a Happy New Year"
 msgstr ""
 
-#~ msgid "Allow Window resize (buggy)"
-#~ msgstr "Permitir reajuste de ventana (falla)"
-
 #~ msgid "Load a custom worldmap"
 #~ msgstr "Carga un mundo personalizado"
 
@@ -1686,7 +1681,7 @@ msgstr ""
 #~ msgstr "No"
 
 #~ msgid "Exit Pingus?"
-#~ msgstr "Abandonar Pingus?"
+#~ msgstr "¿Abandonar Pingus?"
 
 #~ msgid "..:: Start the story ::.."
 #~ msgstr "..:: Inicia la historia ::.."
