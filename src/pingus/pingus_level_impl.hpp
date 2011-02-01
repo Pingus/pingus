@@ -29,6 +29,7 @@ public:
   // Set defaults in constructor
   PingusLevelImpl() :
     resname(),
+    checksum(),
     levelname(),
     description(),
     ambient_light(255, 255, 255, 255),
