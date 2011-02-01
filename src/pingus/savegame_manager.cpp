@@ -28,22 +28,17 @@ SavegameManager* SavegameManager::instance_ = 0;
 SavegameManager*
 SavegameManager::instance()
 {
-  if (instance_)
-    return instance_;
-  else
-    return (instance_ = new SavegameManager("savegames/savegames.scm"));
-}
-
-void SavegameManager::deinit()
-{
-  delete instance_;
-  instance_ = 0;
+  assert(instance_);
+  return instance_;
 }
 
 SavegameManager::SavegameManager(const std::string& arg_filename) :
   filename(System::get_userdir() + arg_filename),
   savegames()
 {
+  assert(instance_ == 0);
+  instance_ = this;
+
   boost::shared_ptr<lisp::Lisp> sexpr;
 
   try 
@@ -93,6 +88,8 @@ SavegameManager::~SavegameManager()
 {
   for (SavegameTable::iterator i =  savegames.begin(); i !=  savegames.end (); ++i)
     delete *i;
+
+  instance_ = 0;
 }
 
 Savegame*

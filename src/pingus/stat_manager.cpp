@@ -29,24 +29,8 @@ StatManager* StatManager::instance_ = 0;
 StatManager*
 StatManager::instance()
 {
-  if (instance_)
-    return instance_;
-  else
-    return (instance_ = new StatManager("savegames/variables.scm"));
-}
-
-void
-StatManager::init()
-{
-  StatManager::instance();
-}
-
-void
-StatManager::deinit()
-{
-  instance()->flush();
-  delete instance_;
-  instance_ = 0;
+  assert(instance_);
+  return instance_;
 }
 
 std::string
@@ -64,16 +48,21 @@ StatManager::get_resname(const std::string& filename)
   }
   return str;
 }
-
+
 StatManager::StatManager(const std::string& arg_filename)
   : statfilename(System::get_userdir() + arg_filename),
     stats()
 {
   load(statfilename);
+
+  assert(instance_ == 0);
+  instance_ = this;
 }
 
 StatManager::~StatManager()
 {
+  flush();
+  instance_ = 0;
 }
 
 void

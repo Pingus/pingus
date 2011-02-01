@@ -32,7 +32,6 @@ private:
 
 public:
   static SavegameManager* instance();
-  static void deinit();
   SavegameManager(const std::string& filename);
   ~SavegameManager();
 

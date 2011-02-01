@@ -46,12 +46,7 @@ private:
 
   void print_greeting_message();
 
-  void init_sdl();
-  void deinit_sdl();
-
-  void init_pingus();
   void init_path_finder();
-  void deinit_pingus();
 
   PingusMain (const PingusMain&);
   PingusMain& operator= (const PingusMain&);

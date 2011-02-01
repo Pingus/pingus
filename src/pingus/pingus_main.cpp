@@ -21,6 +21,7 @@
 
 #include "editor/editor_level.hpp"
 #include "engine/display/display.hpp"
+#include "engine/system/sdl_system.hpp"
 #include "pingus/config_manager.hpp"
 #include "pingus/screens/demo_session.hpp"
 #include "pingus/screens/pingus_menu.hpp"
@@ -706,8 +707,21 @@ PingusMain::main(int argc, char** argv)
     
     print_greeting_message();
     
-    init_sdl();
-    init_pingus();
+    SDLSystem system;
+    if (cmd_options.geometry.is_set())
+    {
+      system.init_display(cmd_options.geometry.get(), globals::fullscreen_enabled);
+    }
+    else
+    {
+      system.init_display(Size(800, 600), globals::fullscreen_enabled);
+    }
+
+    SavegameManager savegame_manager("savegames/savegames.scm");
+    StatManager stat_manager("savegames/variables.scm");
+    Resource::init();
+    Fonts::init();
+    Sound::PingusSound::init();
     
     // start and run the actual game
     start_game();
@@ -716,43 +730,21 @@ PingusMain::main(int argc, char** argv)
   {
     std::cout << _("Pingus: Out of memory!") << std::endl;
   }
-
-  catch (const std::exception& a) {
+  catch (const std::exception& a) 
+  {
     std::cout << _("Pingus: Standard exception caught!:\n") << a.what() << std::endl;
   }
-
-  catch (...) {
+  catch (...) 
+  {
     std::cout << _("Pingus: Unknown throw caught!") << std::endl;
   }
 
-  deinit_pingus();
+  Sound::PingusSound::deinit();
+  Fonts::deinit();
+  WorldObjFactory::deinit();
+  Resource::deinit();
 
   return 0;
-}
-
-void
-PingusMain::init_sdl()
-{
-  if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) != 0) {
-    std::cout << "Unable to initialize SDL: " << SDL_GetError() << std::endl;
-    exit(1);
-  }
-  atexit(SDL_Quit); 
-
-  Size screen_size(800,600);
-  if (cmd_options.geometry.is_set())
-    screen_size = cmd_options.geometry.get();
-
-  Display::set_video_mode(screen_size, globals::fullscreen_enabled);
-
-  SDL_WM_SetCaption("Pingus " VERSION " - SDL Edition", 0 /* icon */);
-
-  SDL_EnableUNICODE(1);
-}
-
-void
-PingusMain::deinit_sdl()
-{
 }
 
 void
@@ -760,27 +752,6 @@ PingusMain::on_exit_press()
 {
   std::cout << "Exit pressed" << std::endl;
   ScreenManager::instance()->pop_all_screens();
-}
-
-void
-PingusMain::init_pingus()
-{
-  SavegameManager::instance();
-  StatManager::init();
-  Resource::init();
-  Fonts::init();
-  Sound::PingusSound::init();
-}
-
-void
-PingusMain::deinit_pingus()
-{
-  Fonts::deinit();
-  Sound::PingusSound::deinit();
-  WorldObjFactory::deinit();
-  StatManager::deinit();
-  SavegameManager::deinit();
-  Resource::deinit();
 }
 
 /* EOF */
