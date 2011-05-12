@@ -34,6 +34,8 @@
 #include "globals.hpp"
 #include "gui/surface_button.hpp"
 #include "sound/sound.hpp"
+#include "string_util.hpp"
+#include "statistics.hpp"
 
 class LevelMenuAbortButton
   : public GUI::SurfaceButton
@@ -258,7 +260,9 @@ public:
 LevelMenu::LevelMenu() :
   start_time(SDL_GetTicks()),
   x_pos((Display::get_width()  - 800)/2),
-  y_pos((Display::get_height() - 600)/2)
+  y_pos((Display::get_height() - 600)/2),
+  m_time_limit(15),
+  m_mode(kLevelsetSelector)
 {
   //background = Resource::load_sprite("core/menu/filedialog");
   background = Resource::load_sprite("core/menu/startscreenbg");
@@ -276,7 +280,7 @@ LevelMenu::LevelMenu() :
   gui_manager->add(level_selector,    true);
   gui_manager->add(m_username_inputbox,    true);
   gui_manager->add(m_time_inputbox,    true);
-  gui_manager->add(new LevelMenuAbortButton(this), true);
+  gui_manager->add(m_abort_button = new LevelMenuAbortButton(this), true);
 
   level_selector->hide();
 }
@@ -290,17 +294,30 @@ LevelMenu::draw_background(DrawingContext& gc)
 {
   gc.draw(background, Vector2i(gc.get_width()/2, gc.get_height()/2));
 
-  if (level_selector->is_visible())
+  if (m_mode == kLevelSelector)
   {
-    int total_time = 15 * 60;
+    int total_time = m_time_limit;
     int sec = total_time - ((SDL_GetTicks() - start_time) / 1000);
-    int min = sec / 60;
-    sec = sec % 60;
 
-    gc.print_center(Fonts::chalk_small, gc.get_width()/2, gc.get_height()/2 + 180, 
-                    (boost::format("%2d:%02d") % min % sec).str());
+    if (sec <= 0)
+    {
+      // time limit reached
+      gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 - 60,
+                      "Time Out");
+      
+      m_abort_button->show();
+      level_selector->hide();
+    }
+    else
+    {
+      int min = sec / 60;
+      sec = sec % 60;
+
+      gc.print_center(Fonts::chalk_small, gc.get_width()/2, gc.get_height()/2 + 180, 
+                      (boost::format("%2d:%02d") % min % sec).str());
+    }
   }
-  else
+  else if (m_mode == kLevelsetSelector)
   {
     gc.print_right(Fonts::chalk_small, gc.get_width()/2 - 160, gc.get_height()/2, 
                    "Username:");
@@ -312,51 +329,69 @@ LevelMenu::draw_background(DrawingContext& gc)
   SDL_Delay(10);
 }
 
+
+void
+LevelMenu::update (float)
+{
+}
+
 void
 LevelMenu::on_escape_press()
 {
-  if (level_selector->is_visible())
-    {
-      levelset_selector->show();
-
-      m_username_inputbox->show();
-      m_username_inputbox->set_string("");
-      m_time_inputbox->show();
-
-      level_selector->hide();           
-    }
+  if (m_mode == kLevelSelector)
+  {
+    set_levelset(0);
+  }
   else
-    {
-      //std::cout << "OptionMenu: poping screen" << std::endl;
-      ScreenManager::instance()->pop_screen();
-    }
+  {
+    //std::cout << "OptionMenu: poping screen" << std::endl;
+    ScreenManager::instance()->pop_screen();
+  }
 }
 
 void
 LevelMenu::set_levelset(Levelset* levelset)
 {
-  if (!m_username_inputbox->get_string().empty())
-  {
   if (levelset)
+  {
+    m_mode = kLevelSelector;
+
+    if (!m_username_inputbox->get_string().empty())
     {
-      level_selector->set_levelset(levelset);
-      levelset_selector->hide();
-      level_selector->show();
+      Statistics::instance()->set_username(m_username_inputbox->get_string());
 
-      m_username_inputbox->hide();
-      m_time_inputbox->hide();
+      if (!StringUtil::from_string(m_time_inputbox->get_string(), m_time_limit))
+      {
+        m_time_inputbox->set_string("err");
+      }
+      else
+      {
+        //FIXME:m_time_limit *= 60;
 
-      start_time = SDL_GetTicks();
+        level_selector->set_levelset(levelset);
+        levelset_selector->hide();
+        m_abort_button->hide();
+
+        level_selector->show();
+
+        m_username_inputbox->hide();
+        m_time_inputbox->hide();
+
+        start_time = SDL_GetTicks();
+      }
     }
+  }
   else
-    {
-      levelset_selector->show();
-      level_selector->hide();   
+  {
+    m_mode = kLevelsetSelector;
 
-      m_username_inputbox->show();
-      m_username_inputbox->set_string("");
-      m_time_inputbox->show(); 
-    }
+    levelset_selector->show();
+    level_selector->hide();   
+    m_abort_button->show();
+
+    m_username_inputbox->show();
+    m_username_inputbox->set_string("");
+    m_time_inputbox->show(); 
   }
 }
 

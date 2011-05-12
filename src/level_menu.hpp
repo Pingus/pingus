@@ -27,6 +27,7 @@
 
 class LevelSelector;
 class LevelsetSelector;
+class LevelMenuAbortButton;
 
 /** */
 class LevelMenu : public GUIScreen
@@ -41,8 +42,13 @@ private:
 
   LevelSelector* level_selector;
   LevelsetSelector* levelset_selector;
+  LevelMenuAbortButton* m_abort_button;
   GUI::InputBox* m_username_inputbox;
   GUI::InputBox* m_time_inputbox;
+
+  int m_time_limit;
+
+  enum { kLevelsetSelector, kLevelSelector} m_mode;
 
 public:
   LevelMenu();
@@ -51,6 +57,8 @@ public:
   void draw_background (DrawingContext& gc);
   void on_escape_press ();
   
+  void update (float);
+
   void set_levelset(Levelset* levelset);
 
 private:
