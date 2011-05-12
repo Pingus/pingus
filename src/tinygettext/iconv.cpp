@@ -24,6 +24,9 @@
 #include <stdexcept>
 #include <string.h>
 #include <stdlib.h>
+//#include <iconv.h>
+#include <SDL_stdinc.h>
+
 #include "iconv.hpp"
 
 namespace TinyGetText {
@@ -37,7 +40,7 @@ IConv::IConv(const std::string& from_charset_, const std::string& to_charset_)
     m_conv(0)
 {
   // Create the converter.
-  if(!(m_conv = iconv_open(to_charset.c_str(), from_charset.c_str())))
+  if(!(m_conv = SDL_iconv_open(to_charset.c_str(), from_charset.c_str())))
     {
       if(errno == EINVAL)
         {
@@ -66,7 +69,7 @@ IConv::close()
   // Free, if exists.
   if(m_conv)
     {
-      iconv_close(m_conv);
+      SDL_iconv_close(m_conv);
       m_conv = 0;
     }
 }
@@ -84,7 +87,7 @@ IConv::convert(std::string text)
   char* out_str = &result[0];
  
   // Try to convert the text.
-  if(iconv(m_conv, &in_str, &in_size, &out_str, &out_size) != 0) {
+  if(SDL_iconv(m_conv, &in_str, &in_size, &out_str, &out_size) != 0) {
     std::cout << "TinyGetText: text: \"" << text << "\"" << std::endl;
     std::cout << "TinyGetText: Error while converting (" 
               << from_charset << " -> " << to_charset 
