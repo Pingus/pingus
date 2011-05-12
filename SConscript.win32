@@ -1,6 +1,7 @@
 
 env = Environment(PATH="/home/ingo/projects/mingw32/run/bin:$PATH",
                   PKG_CONFIG_LIBDIR="/home/ingo/projects/mingw32/run/lib/pkgconfig:/home/ingo/projects/mingw32/run/opt/gtk/lib/pkgconfig",
+                  CXXFLAGS=["-O2", "-s"],
                   PROGSUFFIX = '.exe',
                   CXX='i586-mingw32msvc-c++',
                   AR='i586-mingw32msvc-ar',
