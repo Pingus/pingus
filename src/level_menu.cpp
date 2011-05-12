@@ -366,7 +366,7 @@ LevelMenu::set_levelset(Levelset* levelset)
       }
       else
       {
-        //FIXME:m_time_limit *= 60;
+        m_time_limit *= 60; // convert from min to sec
 
         level_selector->set_levelset(levelset);
         levelset_selector->hide();
