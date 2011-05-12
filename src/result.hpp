@@ -48,7 +48,7 @@ struct Result
   /** Number of Pingus needed to save */
   int needed;
 
-  bool success() {
+  bool success() const {
     return (saved >= needed);
   }
 };
