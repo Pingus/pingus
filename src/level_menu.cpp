@@ -354,10 +354,10 @@ LevelMenu::set_levelset(Levelset* levelset)
 {
   if (levelset)
   {
-    m_mode = kLevelSelector;
-
     if (!m_username_inputbox->get_string().empty())
     {
+      m_mode = kLevelSelector;
+    
       Statistics::instance()->set_username(m_username_inputbox->get_string());
 
       if (!StringUtil::from_string(m_time_inputbox->get_string(), m_time_limit))
