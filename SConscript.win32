@@ -110,6 +110,7 @@ pingus_sources = [
 'build-win32/src/file_reader.cpp',
 'build-win32/src/sexpr_file_reader.cpp', 
 'build-win32/src/sexpr_file_writer.cpp', 
+'build-win32/src/statistics.cpp', 
 'build-win32/src/fonts.cpp',
 'build-win32/src/font.cpp',
 'build-win32/src/font_test_screen.cpp',
