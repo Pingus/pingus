@@ -38,7 +38,7 @@ public:
     PingusLevel plf;
 
     bool is_accessible() const {
-      return play_count < 3;
+      return (play_count < 3) && !finished;
     }
   };
 
