@@ -31,6 +31,7 @@
 #include "savegame_manager.hpp"
 #include "globals.hpp"
 #include "debug.hpp"
+#include "statistics.hpp"
 
 PingusGameSession::PingusGameSession (const PingusLevel& arg_plf, bool arg_show_result_screen)
   : plf(arg_plf),
@@ -121,6 +122,10 @@ PingusGameSession::update (const GameDelta& delta)
                           result.used_time,
                           result.saved);
         SavegameManager::instance()->store(savegame);
+      }
+
+      {
+        Statistics::instance()->save_result(result);
       }
 
       if (show_result_screen)
