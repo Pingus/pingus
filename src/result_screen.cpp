@@ -266,7 +266,7 @@ ResultScreen::ResultScreen(Result arg_result)
   else
     {
       gui_manager->add(new ResultScreenAbortButton(this), true);
-      gui_manager->add(new ResultScreenRetryButton(this), true);
+      //gui_manager->add(new ResultScreenRetryButton(this), true);
     }
 
   //gui_manager->add(new GUI::SurfaceButton(500, 500, cancel_desc, cancel_desc, cancel_desc), true);
