@@ -23,6 +23,7 @@
 #include "levelset.hpp"
 #include "sprite.hpp"
 #include "screen/gui_screen.hpp"
+#include "gui/input_box.hpp"
 
 class LevelSelector;
 class LevelsetSelector;
@@ -31,6 +32,7 @@ class LevelsetSelector;
 class LevelMenu : public GUIScreen
 {
 private:
+  int start_time;
   int x_pos;
   int y_pos;
 
@@ -39,6 +41,8 @@ private:
 
   LevelSelector* level_selector;
   LevelsetSelector* levelset_selector;
+  GUI::InputBox* m_username_inputbox;
+  GUI::InputBox* m_time_inputbox;
 
 public:
   LevelMenu();

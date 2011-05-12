@@ -54,9 +54,10 @@ Levelset::Levelset(const Pathname& pathname)
                 {
                   level->plf        = PLFResMgr::load_plf(level->resname);
                   
-                  level->accessible = false;
+                  level->accessible = true;
                   level->finished   = false;
-                      
+                  level->play_count = 0;
+  
                   levels.push_back(level);
                 }
               else

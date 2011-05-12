@@ -34,6 +34,7 @@
 #include "lisp/parser.hpp"
 #include "editor/editor_level.hpp"
 #include "string_util.hpp"
+#include "level_menu.hpp"
 #include "sexpr_file_reader.hpp"
 
 #if defined(__APPLE__)
@@ -715,7 +716,10 @@ PingusMain::start_game ()
   else // start a normal game
     {
       pout(PINGUS_DEBUG_LOADING) << "starting normal game" << std::endl;
-      ScreenManager::instance()->push_screen(PingusMenuManager::instance (), false);
+
+      //ScreenManager::instance()->push_screen(PingusMenuManager::instance (), false);
+      ScreenManager::instance()->push_screen(new LevelMenu(), true);
+
       pout(PINGUS_DEBUG_LOADING) << "done: starting normal game" << std::endl;
     }
 

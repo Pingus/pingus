@@ -34,7 +34,12 @@ public:
     std::string resname;
     bool accessible;
     bool finished;
+    int  play_count;
     PingusLevel plf;
+
+    bool is_accessible() const {
+      return play_count < 3;
+    }
   };
 
 private:

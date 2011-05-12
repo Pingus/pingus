@@ -194,11 +194,12 @@ public:
 
         gc.print_left(Fonts::chalk_normal,  30, -32, _("Title"));
         gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, - 32, _("Status"));
+        gc.print_center(Fonts::chalk_normal, rect.get_width() - 165, - 32, _("Retries Left"));
 
         int y = 0;
         for(int i = 0; i < levelset->get_level_count(); ++i)
           {
-            if (!levelset->get_level(i)->accessible)
+            if (!levelset->get_level(i)->is_accessible())
               gc.draw(marker_locked, Vector2i(0, y));
             else if (i == current_level)
               gc.draw(marker, Vector2i(0, y));
@@ -212,6 +213,9 @@ public:
               gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, _("solved"));
             else
               gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, _("unsolved"));
+
+            gc.print_right(Fonts::chalk_small, rect.get_width() -30 -125, y+4, 
+                           (boost::format("%d") % (3 - levelset->get_level(i)->play_count)).str());
 
             y += 32;
           }
@@ -240,8 +244,9 @@ public:
   {
     if (current_level != -1)
       {
-        if (levelset->get_level(current_level)->accessible)
+        if (levelset->get_level(current_level)->is_accessible())
           {
+            levelset->get_level(current_level)->play_count += 1;
             ScreenManager::instance()->push_screen(new StartScreen(levelset->get_level(current_level)->plf), true);
           }
       }
@@ -250,9 +255,10 @@ public:
   void update_layout() {}
 };
 
-LevelMenu::LevelMenu()
-  : x_pos((Display::get_width()  - 800)/2),
-    y_pos((Display::get_height() - 600)/2)
+LevelMenu::LevelMenu() :
+  start_time(SDL_GetTicks()),
+  x_pos((Display::get_width()  - 800)/2),
+  y_pos((Display::get_height() - 600)/2)
 {
   //background = Resource::load_sprite("core/menu/filedialog");
   background = Resource::load_sprite("core/menu/startscreenbg");
@@ -263,8 +269,13 @@ LevelMenu::LevelMenu()
   levelset_selector = new LevelsetSelector(this, Rect(Vector2i(x_pos + 100, y_pos + 140), Size(600, 300)));
   level_selector    = new LevelSelector(this, Rect(Vector2i(x_pos + 100, y_pos + 160), Size(600, 300)));
 
+  m_username_inputbox = new GUI::InputBox(350, Vector2i(x_pos + 300, y_pos + 300), "");
+  m_time_inputbox = new GUI::InputBox(350, Vector2i(x_pos + 300, y_pos + 350), "15");
+
   gui_manager->add(levelset_selector, true);
   gui_manager->add(level_selector,    true);
+  gui_manager->add(m_username_inputbox,    true);
+  gui_manager->add(m_time_inputbox,    true);
   gui_manager->add(new LevelMenuAbortButton(this), true);
 
   level_selector->hide();
@@ -278,6 +289,26 @@ void
 LevelMenu::draw_background(DrawingContext& gc)
 {
   gc.draw(background, Vector2i(gc.get_width()/2, gc.get_height()/2));
+
+  if (level_selector->is_visible())
+  {
+    int total_time = 15 * 60;
+    int sec = total_time - ((SDL_GetTicks() - start_time) / 1000);
+    int min = sec / 60;
+    sec = sec % 60;
+
+    gc.print_center(Fonts::chalk_small, gc.get_width()/2, gc.get_height()/2 + 180, 
+                    (boost::format("%2d:%02d") % min % sec).str());
+  }
+  else
+  {
+    gc.print_right(Fonts::chalk_small, gc.get_width()/2 - 160, gc.get_height()/2, 
+                   "Username:");
+
+    gc.print_right(Fonts::chalk_small, gc.get_width()/2 - 160, gc.get_height()/2 + 50, 
+                   "Time:");
+  }
+
   SDL_Delay(10);
 }
 
@@ -287,6 +318,11 @@ LevelMenu::on_escape_press()
   if (level_selector->is_visible())
     {
       levelset_selector->show();
+
+      m_username_inputbox->show();
+      m_username_inputbox->set_string("");
+      m_time_inputbox->show();
+
       level_selector->hide();           
     }
   else
@@ -299,17 +335,29 @@ LevelMenu::on_escape_press()
 void
 LevelMenu::set_levelset(Levelset* levelset)
 {
+  if (!m_username_inputbox->get_string().empty())
+  {
   if (levelset)
     {
       level_selector->set_levelset(levelset);
       levelset_selector->hide();
       level_selector->show();
+
+      m_username_inputbox->hide();
+      m_time_inputbox->hide();
+
+      start_time = SDL_GetTicks();
     }
   else
     {
       levelset_selector->show();
-      level_selector->hide();      
+      level_selector->hide();   
+
+      m_username_inputbox->show();
+      m_username_inputbox->set_string("");
+      m_time_inputbox->show(); 
     }
+  }
 }
 
 /* EOF */
