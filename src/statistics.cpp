@@ -37,6 +37,11 @@ void
 Statistics::set_username(const std::string& username)
 {
   m_username = username;
+  for(std::string::iterator i = m_username.begin(); i != m_username.end(); ++i)
+  {
+    if (*i == ';')
+      *i = ':';
+  }
 }
 
 void
@@ -50,11 +55,11 @@ Statistics::save_result(const Result& result)
   }
   else
   {
-    m_out << m_username << ", "
-          << result.plf.get_resname() << ", "
-          << result.saved << ", "
-          << result.killed << ", "
-          << result.used_time << ", "
+    m_out << m_username << ";"
+          << result.plf.get_resname() << ";"
+          << result.saved << ";"
+          << result.killed << ";"
+          << result.used_time << ";"
           << (result.success()?"success":"failure") << std::endl;
   }
 }
