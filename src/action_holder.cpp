@@ -25,7 +25,8 @@
 
 using namespace Actions;
 
-ActionHolder::ActionHolder(const PingusLevel& plf)
+ActionHolder::ActionHolder(const PingusLevel& plf) :
+  m_actions_used(0)
 {
   const std::map<std::string, int>& actions = plf.get_actions();
 
@@ -62,6 +63,9 @@ ActionHolder::push_action (ActionName name)
 {
   if (!Cheat::unlimited_actions)
     available_actions[name]++;
+
+  m_actions_used -= 1;
+  std::cout << "ActionsUsed: " << m_actions_used << std::endl;
 }
 
 bool
@@ -78,6 +82,10 @@ ActionHolder::pop_action (ActionName name)
       if (avail > 0)
         {
           --avail;
+
+          m_actions_used += 1;
+          std::cout << "ActionsUsed: " << m_actions_used << std::endl;
+
           return true;
         }
       else

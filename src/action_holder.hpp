@@ -44,6 +44,8 @@ private:
    */
   std::map<Actions::ActionName, int> available_actions;
 
+  int m_actions_used;
+
 public:
   /** Create an action holder from the number of actions given in a
       Pingus Level file */
@@ -74,6 +76,8 @@ public:
    * @return 0 if the name is unknown FIXME: should use .find instead of []
    */
   int get_available (Actions::ActionName name);
+
+  int get_actions_used() const { return m_actions_used; }
 
 private:
   ActionHolder (const ActionHolder&);

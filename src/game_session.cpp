@@ -125,7 +125,7 @@ PingusGameSession::update (const GameDelta& delta)
       }
 
       {
-        Statistics::instance()->save_result(result);
+        Statistics::instance()->save_result(result, server->get_action_holder()->get_actions_used());
       }
 
       if (show_result_screen)

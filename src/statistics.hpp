@@ -42,7 +42,7 @@ public:
   ~Statistics();
 
   void set_username(const std::string& username);
-  void save_result(const Result& result);
+  void save_result(const Result& result, int actions_used);
 
 private:
   Statistics(const Statistics&);

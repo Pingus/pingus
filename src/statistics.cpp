@@ -45,7 +45,7 @@ Statistics::set_username(const std::string& username)
 }
 
 void
-Statistics::save_result(const Result& result)
+Statistics::save_result(const Result& result, int actions_used)
 {
   //m_out << "# username, levelname, saved, killed, time, success" << std::endl;
   std::ofstream m_out(m_filename.c_str(), std::ios::app);
@@ -60,6 +60,7 @@ Statistics::save_result(const Result& result)
           << result.saved << ";"
           << result.killed << ";"
           << result.used_time << ";"
+          << actions_used << ";"
           << (result.success()?"success":"failure") << std::endl;
   }
 }
