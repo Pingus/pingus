@@ -47,6 +47,7 @@ void SavegameManager::deinit()
 SavegameManager::SavegameManager(const std::string& arg_filename)
   : filename(System::get_statdir() + arg_filename)
 {
+#if 0
   boost::shared_ptr<lisp::Lisp> sexpr;
 
   try 
@@ -90,6 +91,7 @@ SavegameManager::SavegameManager(const std::string& arg_filename)
           savegames.push_back(savegame);
         }
     }
+#endif
 }
 
 SavegameManager::~SavegameManager()
