@@ -310,11 +310,14 @@ LevelMenu::draw_background(DrawingContext& gc)
     }
     else
     {
-      int min = sec / 60;
-      sec = sec % 60;
+      if (maintainer_mode)
+      {
+        int min = sec / 60;
+        sec = sec % 60;
 
-      gc.print_center(Fonts::chalk_small, gc.get_width()/2, gc.get_height()/2 + 180, 
-                      (boost::format("%2d:%02d") % min % sec).str());
+        gc.print_center(Fonts::chalk_small, gc.get_width()/2, gc.get_height()/2 + 180, 
+                        (boost::format("%2d:%02d") % min % sec).str());
+      }
     }
   }
   else if (m_mode == kLevelsetSelector)
