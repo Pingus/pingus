@@ -104,5 +104,10 @@ Server::get_time ()
   return get_world()->get_game_time()->get_ticks();
 }
 
+bool
+Server::was_aborted() const
+{
+  return goal_manager->get_goal() == GoalManager::GT_GLOBAL_TIME_LIMIT;
+}
 
 /* EOF */

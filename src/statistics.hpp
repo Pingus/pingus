@@ -44,6 +44,9 @@ public:
   void set_username(const std::string& username);
   void save_result(const Result& result, int actions_used);
 
+  void mark_session_start();
+  void mark_session_end();
+
 private:
   Statistics(const Statistics&);
   Statistics& operator=(const Statistics&);

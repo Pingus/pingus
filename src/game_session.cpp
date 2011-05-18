@@ -116,6 +116,8 @@ PingusGameSession::update (const GameDelta& delta)
       result.max_time  = server->get_plf().get_time();
       result.used_time = server->get_time();
 
+      result.aborted = server->was_aborted();
+
       { // Write the savegame
         Savegame savegame(result.plf.get_resname(),
                           (result.saved >= result.needed) ? Savegame::FINISHED : Savegame::ACCESSIBLE,

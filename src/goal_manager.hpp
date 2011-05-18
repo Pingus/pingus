@@ -30,11 +30,17 @@ class GoalManager
 private:
   Server* server;
 
-  enum GoalType { GT_NONE,        // No goal is reached
-                  GT_OUT_OF_TIME, // if the timelimit has passed
-                  GT_NO_PINGUS_IN_WORLD, // if all pingus are released and exited/killed
-                  GT_ARMAGEDDON, // if armageddon as destroyed all pingus
-                  GT_GAME_ABORTED }; // if the user pressed Escape to exit the level };
+public:
+  enum GoalType { 
+    GT_NONE,        // No goal is reached
+    GT_OUT_OF_TIME, // if the timelimit has passed
+    GT_NO_PINGUS_IN_WORLD, // if all pingus are released and exited/killed
+    GT_ARMAGEDDON, // if armageddon as destroyed all pingus
+    GT_GAME_ABORTED, // if the user pressed Escape to exit the level
+    GT_GLOBAL_TIME_LIMIT
+  };
+
+private:
   GoalType goal;
 
   /** time at which is_finished() will return true */
@@ -48,6 +54,8 @@ public:
 
   /** Abort the level */
   void set_abort_goal();
+
+  GoalType get_goal() const { return GT_GLOBAL_TIME_LIMIT; }
 
   /** Check for goal conditions and set finished accordingly */
   void update();

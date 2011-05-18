@@ -46,8 +46,6 @@ private:
   GUI::InputBox* m_username_inputbox;
   GUI::InputBox* m_time_inputbox;
 
-  int m_time_limit;
-
   enum { kLevelsetSelector, kLevelSelector} m_mode;
 
 public:

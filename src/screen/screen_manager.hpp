@@ -48,6 +48,9 @@ private:
   enum { CA_NONE, CA_POP, CA_POP_ALL, CA_REPLACE, CA_CLEAR } cached_action;
   ScreenPtr replace_screen_arg;
 
+  int m_time_limit_msec;
+  int m_time_passed;
+
 protected:
   ScreenManager ();
 public:
@@ -79,6 +82,12 @@ public:
 
   /** @return a pointer to the current Screen */
   Screen* get_screen();
+
+  void set_time_limit(int msec);
+  int get_time_limit() const;
+  bool time_limit_over() const;
+
+  void draw_time_limit(DrawingContext& gc);
 
 private:
   void real_clear();

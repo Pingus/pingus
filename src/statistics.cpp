@@ -61,7 +61,35 @@ Statistics::save_result(const Result& result, int actions_used)
           << result.killed << ";"
           << result.used_time << ";"
           << actions_used << ";"
-          << (result.success()?"success":"failure") << std::endl;
+          << (result.aborted ? "aborted" : (result.success()?"success":"failure")) << std::endl;
+  }
+}
+
+void
+Statistics::mark_session_end()
+{
+  std::ofstream m_out(m_filename.c_str(), std::ios::app);
+  if (!m_out)
+  {
+    throw std::runtime_error(m_filename + ": couldn't open file for writing");
+  }
+  else
+  {
+    m_out << "### session end: " <<  m_username << " ###\n" << std::endl;
+  }
+}
+
+void
+Statistics::mark_session_start()
+{
+  std::ofstream m_out(m_filename.c_str(), std::ios::app);
+  if (!m_out)
+  {
+    throw std::runtime_error(m_filename + ": couldn't open file for writing");
+  }
+  else
+  {
+    m_out << "### session start: " <<  m_username << " ###\n" << std::endl;
   }
 }
 

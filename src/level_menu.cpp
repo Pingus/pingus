@@ -261,7 +261,6 @@ LevelMenu::LevelMenu() :
   start_time(SDL_GetTicks()),
   x_pos((Display::get_width()  - 800)/2),
   y_pos((Display::get_height() - 600)/2),
-  m_time_limit(15),
   m_mode(kLevelsetSelector)
 {
   //background = Resource::load_sprite("core/menu/filedialog");
@@ -296,10 +295,7 @@ LevelMenu::draw_background(DrawingContext& gc)
 
   if (m_mode == kLevelSelector)
   {
-    int total_time = m_time_limit;
-    int sec = total_time - ((SDL_GetTicks() - start_time) / 1000);
-
-    if (sec <= 0)
+    if (ScreenManager::instance()->time_limit_over())
     {
       // time limit reached
       gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 - 60,
@@ -307,17 +303,6 @@ LevelMenu::draw_background(DrawingContext& gc)
       
       m_abort_button->show();
       level_selector->hide();
-    }
-    else
-    {
-      if (maintainer_mode)
-      {
-        int min = sec / 60;
-        sec = sec % 60;
-
-        gc.print_center(Fonts::chalk_small, gc.get_width()/2, gc.get_height()/2 + 180, 
-                        (boost::format("%2d:%02d") % min % sec).str());
-      }
     }
   }
   else if (m_mode == kLevelsetSelector)
@@ -363,13 +348,16 @@ LevelMenu::set_levelset(Levelset* levelset)
     
       Statistics::instance()->set_username(m_username_inputbox->get_string());
 
-      if (!StringUtil::from_string(m_time_inputbox->get_string(), m_time_limit))
+      int time_limit;
+      if (!StringUtil::from_string(m_time_inputbox->get_string(), time_limit))
       {
         m_time_inputbox->set_string("err");
       }
       else
       {
-        m_time_limit *= 60; // convert from min to sec
+        time_limit *= 60 * 1000; // convert from min to msec
+        
+        ScreenManager::instance()->set_time_limit(time_limit);
 
         level_selector->set_levelset(levelset);
         levelset_selector->hide();
@@ -387,6 +375,8 @@ LevelMenu::set_levelset(Levelset* levelset)
   else
   {
     m_mode = kLevelsetSelector;
+
+    ScreenManager::instance()->set_time_limit(-1);
 
     levelset_selector->show();
     level_selector->hide();   

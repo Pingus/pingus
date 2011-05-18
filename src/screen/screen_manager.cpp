@@ -19,6 +19,8 @@
 
 #include "SDL.h"
 #include <iostream>
+#include <boost/format.hpp>
+
 #include "../globals.hpp"
 #include "math/size.hpp"
 #include "pathname.hpp"
@@ -30,10 +32,13 @@
 #include "../display/drawing_context.hpp"
 #include "../input/controller.hpp"
 #include "../input/manager.hpp"
+#include "../fonts.hpp"
 
 ScreenManager* ScreenManager::instance_ = 0;
 
-ScreenManager::ScreenManager()
+ScreenManager::ScreenManager() :
+  m_time_limit_msec(-1),
+  m_time_passed(0)
 {
   display_gc = new DrawingContext();
 
@@ -84,6 +89,8 @@ ScreenManager::display()
 
       input_manager.update(time_delta);
 
+      m_time_passed += static_cast<int>(time_delta * 1000.0f);
+
       // Fill the delta with values
       GameDelta delta(time_delta, delta_manager.get_absolute(),  
                       input_controller->poll_events());
@@ -131,8 +138,10 @@ ScreenManager::display()
       	{
 	  if (get_current_screen()->draw(*display_gc))
             {
+              draw_time_limit(*display_gc);
               display_gc->render(Display::get_screen(), Rect(Vector2i(0,0), Size(Display::get_width(),
-                                                                                     Display::get_height())));
+                                                                                 Display::get_height())));
+
               Display::flip_display ();
               display_gc->clear();
             }
@@ -141,6 +150,7 @@ ScreenManager::display()
 	{
 	  //std::cout << "ScreenManager: fading screens" << std::endl;
 	  fade_over(last_screen, get_current_screen());
+          Display::flip_display();
 	}
 
       // Stupid hack to make this thing take less CPU
@@ -150,6 +160,33 @@ ScreenManager::display()
   Display::remove_flip_screen_hook(cursor);
   delete cursor;
   delete input_controller;
+}
+
+void
+ScreenManager::draw_time_limit(DrawingContext& gc)
+{
+  if (maintainer_mode)
+  {
+    if (m_time_limit_msec == -1)
+    {
+      gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 + 250, 
+                      "no time limit");
+    }
+    else if (time_limit_over())
+    {
+      gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 + 250, 
+                      "time limit over");
+    }
+    else
+    {
+      int sec = (m_time_limit_msec - m_time_passed) / 1000;
+      int min = sec / 60;
+      sec = sec % 60;
+
+      gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 + 250, 
+                      (boost::format("%2d:%02d") % min % sec).str());
+    }
+  }
 }
 
 ScreenPtr&
@@ -273,6 +310,7 @@ ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
                                   Size(screen_width  - 2*border_x, screen_height - 2*border_y)));
 
       new_screen->draw(*display_gc);
+      draw_time_limit(*display_gc);
       display_gc->render(Display::get_screen(), Rect(Vector2i(0,0), Size(Display::get_width(),
                                                                          Display::get_height())));
       display_gc->clear();
@@ -283,7 +321,6 @@ ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
       //old_screen->update (delta);
       
       Display::pop_cliprect();
-      Display::flip_display ();
       display_gc->clear();
       
       progress = passed_time/1.0f;
@@ -318,6 +355,32 @@ ScreenManager::deinit()
 {
   delete instance_;
   instance_ = 0;
+}
+
+void
+ScreenManager::set_time_limit(int msec)
+{
+  m_time_limit_msec = msec;
+  m_time_passed = 0;
+}
+
+int
+ScreenManager::get_time_limit() const
+{
+  return m_time_limit_msec;
+}
+
+bool
+ScreenManager::time_limit_over() const
+{
+  if (m_time_limit_msec == -1)
+  {
+    return false;
+  }
+  else
+  {
+    return m_time_limit_msec < m_time_passed;
+  }
 }
 
 /* EOF */

@@ -69,6 +69,8 @@ public:
   void send_armageddon_event();
   void send_pingu_action_event(Pingu* pingu, Actions::ActionName action);
 
+  bool was_aborted() const;
+
 private:
   Server (const Server&);
   Server& operator= (const Server&);
