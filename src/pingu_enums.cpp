@@ -22,7 +22,12 @@
 
 // Pingu "globals".  Make [deadly_velocity = 20 * sqrt("normal gravity")] so
 // that the "deadly distance" is the same and therefore doesn't break levels.
+#ifdef PINGUS_MODE_EVIL
+const float deadly_velocity = 13.0f;
+#else
 const float deadly_velocity = 10.0f;
+#endif
+
 const int pingu_height = 26;
 
 namespace Actions {

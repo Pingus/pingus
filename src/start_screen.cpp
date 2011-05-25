@@ -163,7 +163,12 @@ StartScreenComponent::draw(DrawingContext& gc)
   gc.print_left (Fonts::chalk_normal, left_x,  y, _("Number of Pingus: "));
   gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(plf.get_number_of_pingus()));
 
+#ifdef PINGUS_MODE_EVIL
+  gc.print_left (Fonts::chalk_normal, left_x,  (y += 30), _("Number to Kill: "));
+#else
   gc.print_left (Fonts::chalk_normal, left_x,  (y += 30), _("Number to Save: "));
+#endif
+
   gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(plf.get_number_to_save()));
 
   gc.print_left (Fonts::chalk_normal, left_x,  (y += 30), _("Time: "));

@@ -51,7 +51,11 @@ struct Result
   bool aborted;
 
   bool success() const {
+#ifdef PINGUS_MODE_EVIL
+    return (killed >= needed);
+#else
     return (saved >= needed);
+#endif
   }
 };
 

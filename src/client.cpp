@@ -72,7 +72,10 @@ Client::Client (TrueServer * s)
   gui_manager->add(small_map,    true);
   gui_manager->add(time_display, true);
 
+#ifndef PINGUS_MODE_EVIL
   gui_manager->add(new ArmageddonButton(server, Display::get_width() - 40,     Display::get_height() - 62), true);
+#endif
+
   gui_manager->add(new ForwardButton   (server, Display::get_width() - 40 * 2, Display::get_height() - 62), true);
   gui_manager->add(new PauseButton     (server, Display::get_width() - 40 * 3, Display::get_height() - 62), true);
   // Connect the button_panel with the playfield

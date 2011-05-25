@@ -193,6 +193,15 @@ ResultScreenComponent::draw(DrawingContext& gc)
   std::string message;
   if (result.success())
     {
+#ifdef PINGUS_MODE_EVIL
+      if (result.killed == result.total)
+        message = _("Perfect! You killed everyone possible - great!");
+      else if (result.killed == result.needed)
+        message = _("You killed exactly what you needed - you made it, but\n"
+                     "maybe you can do better?");
+      else
+        message = _("Not everybody was killed, but still good work!");
+#else
       if (result.killed == 0 && result.saved == result.total)
         message = _("Perfect! You saved everyone possible - great!");
       else if (result.killed == 0)
@@ -204,9 +213,16 @@ ResultScreenComponent::draw(DrawingContext& gc)
         message = _("Not everybody was saved, but still good work!");
       else
         message = _("What can I say, you made it - congratulations!");
+#endif
     }
   else
     {
+#ifdef PINGUS_MODE_EVIL
+      if (result.killed == 0)
+        message = _("You are not a killer, aren't you.");
+      else
+        message = _("Better luck next time!");
+#else
       if (result.killed == result.total)
         message = _("You killed everybody, not good.");
       else if (result.saved == 0)
@@ -220,6 +236,7 @@ ResultScreenComponent::draw(DrawingContext& gc)
         message = _("Only a handful more and you would have made it - try again!");
       else
         message = _("Better luck next time!");
+#endif
     }
   gc.print_center(Fonts::chalk_normal, gc.get_width()/2,
                   Display::get_height()/2 - 70, message);
@@ -236,13 +253,23 @@ ResultScreenComponent::draw(DrawingContext& gc)
   int right_x = Display::get_width()/2 + 100;
   int y = Display::get_height()/2 + 10;
 
+#ifdef PINGUS_MODE_EVIL
+  gc.print_left(Fonts::chalk_normal,  left_x,  y, _("Killed: "));
+  gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(result.killed)
+                  + "/" + StringUtil::to_string(result.needed));;
+#else
   gc.print_left(Fonts::chalk_normal,  left_x,  y, _("Saved: "));
   gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(result.saved)
                  + "/" + StringUtil::to_string(result.needed));;
+#endif
 
+#ifdef PINGUS_MODE_EVIL
+  gc.print_left(Fonts::chalk_normal,  left_x,  (y+=30), _("Survived: "));
+  gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(result.saved));
+#else
   gc.print_left(Fonts::chalk_normal,  left_x,  (y+=30), _("Died: "));
   gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(result.killed));
-
+#endif
 
   gc.print_left(Fonts::chalk_normal,  left_x, (y+=30), _("Time left: "));
   gc.print_right(Fonts::chalk_normal, right_x, y, time_str);
