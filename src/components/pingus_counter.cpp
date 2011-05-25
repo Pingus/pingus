@@ -47,19 +47,27 @@ PingusCounter::draw(DrawingContext& gc)
   World* world = server->get_world();
 
 #ifdef PINGUS_MODE_EVIL
-    snprintf(str, 128, _("Released:%3d/%d   Out:%3d   Killed:%3d/%d").c_str(),
-             world->get_pingus()->get_number_of_released(),
-             world->get_pingus()->get_number_of_allowed(),
-             world->get_pingus()->get_number_of_alive(),
-             world->get_pingus()->get_number_of_killed(),
-             server->get_plf().get_number_to_save());    
+  snprintf(str, 128, _("Released:%3d/%d   Out:%3d   Killed:%3d/%d").c_str(),
+           world->get_pingus()->get_number_of_released(),
+           world->get_pingus()->get_number_of_allowed(),
+           world->get_pingus()->get_number_of_alive(),
+           world->get_pingus()->get_number_of_killed(),
+           server->get_plf().get_number_to_save());
+#elif PINGUS_MODE_NEUTRAL
+  snprintf(str, 128, _("Released:%3d/%d   Out:%3d   Scored:%3d/%d").c_str(),
+           world->get_pingus()->get_number_of_released(),
+           world->get_pingus()->get_number_of_allowed(),
+           world->get_pingus()->get_number_of_alive(),
+           world->get_pingus()->get_number_of_exited(),
+           server->get_plf().get_number_to_save());
+
 #else
-    snprintf(str, 128, _("Released:%3d/%d   Out:%3d   Saved:%3d/%d").c_str(),
-             world->get_pingus()->get_number_of_released(),
-             world->get_pingus()->get_number_of_allowed(),
-             world->get_pingus()->get_number_of_alive(),
-             world->get_pingus()->get_number_of_exited(),
-             server->get_plf().get_number_to_save());
+  snprintf(str, 128, _("Released:%3d/%d   Out:%3d   Saved:%3d/%d").c_str(),
+           world->get_pingus()->get_number_of_released(),
+           world->get_pingus()->get_number_of_allowed(),
+           world->get_pingus()->get_number_of_alive(),
+           world->get_pingus()->get_number_of_exited(),
+           server->get_plf().get_number_to_save());
 #endif
 
   gc.print_center(font, gc.get_width()/2, -1, str);

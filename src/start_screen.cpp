@@ -160,11 +160,18 @@ StartScreenComponent::draw(DrawingContext& gc)
   y += 32;
   y += 30;
 
+#ifdef PINGUS_MODE_NEUTRAL
+  gc.print_left (Fonts::chalk_normal, left_x,  y, _("Number of Balls: "));
+#else
   gc.print_left (Fonts::chalk_normal, left_x,  y, _("Number of Pingus: "));
+#endif
+
   gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(plf.get_number_of_pingus()));
 
 #ifdef PINGUS_MODE_EVIL
   gc.print_left (Fonts::chalk_normal, left_x,  (y += 30), _("Number to Kill: "));
+#elif PINGUS_MODE_NEUTRAL
+  gc.print_left (Fonts::chalk_normal, left_x,  (y += 30), _("Number to Win: "));
 #else
   gc.print_left (Fonts::chalk_normal, left_x,  (y += 30), _("Number to Save: "));
 #endif

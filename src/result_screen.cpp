@@ -201,6 +201,18 @@ ResultScreenComponent::draw(DrawingContext& gc)
                      "maybe you can do better?");
       else
         message = _("Not everybody was killed, but still good work!");
+#elif PINGUS_MODE_NEUTRAL
+       if (result.killed == 0 && result.saved == result.total)
+         message = _("Perfect! You have got a perfect score!");
+       else if (result.killed == 0)
+         message = _("Pretty good work.");
+       else if (result.saved == result.needed)
+         message = _("You scored exactly what you needed - you made it, but\n"
+                     "maybe you can do better?");
+       else if (result.killed >= 5)
+         message = _("Good work!");
+       else
+         message = _("What can I say, you made it - congratulations!");
 #else
       if (result.killed == 0 && result.saved == result.total)
         message = _("Perfect! You saved everyone possible - great!");
@@ -222,6 +234,19 @@ ResultScreenComponent::draw(DrawingContext& gc)
         message = _("You are not a killer, aren't you.");
       else
         message = _("Better luck next time!");
+#elif PINGUS_MODE_NEUTRAL
+      if (result.killed == result.total)
+        message = _("Not good.");
+      else if (result.saved == 0)
+        message = _("I know you can do better.");
+      else if (result.saved > 0)
+        message = _("Next time you might do better.");
+      else if (result.saved + 1 >= result.needed)
+        message = _("Only one more and you would have made it - try again!");
+      else if (result.saved + 5 >= result.needed)
+        message = _("Only a handful more and you would have made it - try again!");
+      else
+        message = _("Better luck next time!");     
 #else
       if (result.killed == result.total)
         message = _("You killed everybody, not good.");
@@ -256,16 +281,23 @@ ResultScreenComponent::draw(DrawingContext& gc)
 #ifdef PINGUS_MODE_EVIL
   gc.print_left(Fonts::chalk_normal,  left_x,  y, _("Killed: "));
   gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(result.killed)
-                  + "/" + StringUtil::to_string(result.needed));;
+                  + "/" + StringUtil::to_string(result.needed));
+#elif PINGUS_MODE_NEUTRAL
+  gc.print_left(Fonts::chalk_normal,  left_x,  y, _("Scored: "));
+  gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(result.saved)
+                 + "/" + StringUtil::to_string(result.needed));  
 #else
   gc.print_left(Fonts::chalk_normal,  left_x,  y, _("Saved: "));
   gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(result.saved)
-                 + "/" + StringUtil::to_string(result.needed));;
+                 + "/" + StringUtil::to_string(result.needed));
 #endif
 
 #ifdef PINGUS_MODE_EVIL
   gc.print_left(Fonts::chalk_normal,  left_x,  (y+=30), _("Survived: "));
   gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(result.saved));
+#elif PINGUS_MODE_NEUTRAL
+  gc.print_left(Fonts::chalk_normal,  left_x,  (y+=30), _("Lost: "));
+  gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(result.killed));
 #else
   gc.print_left(Fonts::chalk_normal,  left_x,  (y+=30), _("Died: "));
   gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(result.killed));
