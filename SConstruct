@@ -22,6 +22,8 @@
 import sys, os
 import SCons.Util
 
+CacheDir('cache')
+
 pingus_sources = [
 # # 'gui/buffer_graphic_context.cpp', 
 # # 'pingus_level_test.cpp', 
@@ -509,7 +511,7 @@ if ('configure' in COMMAND_LINE_TARGETS) or \
            print "\nError are being ignored, the build continues"
 
     config_h = open('config.h', 'w')
-    config_h.write('#define VERSION "0.7.3-hanusz\n')
+    config_h.write('#define VERSION "0.7.3-hanusz"\n')
     config_h.write('#define ENABLE_BINRELOC 1\n')
     config_h.write('#define ICONV_CONST %s\n' % iconv_const)
     for (v,k) in config_h_defines:

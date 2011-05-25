@@ -1,5 +1,7 @@
 # -*- mode: python-mode -*-
 
+CacheDir('cache')
+
 VariantDir("build-win32", ".")
 SConscript('build-win32/SConscript.win32')
 
