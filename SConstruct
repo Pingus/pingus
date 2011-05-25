@@ -541,7 +541,22 @@ if not ('configure' in COMMAND_LINE_TARGETS):
 
     opts.Update(env)
     env['CPPPATH'] += ['.', 'src/']
-    Default(env.Program('pingus', pingus_sources + env['optional_sources']))
+  
+    env_evil    = env.Clone()
+    env_evil.Append(CPPDEFINES=[("PINGUS_MODE_EVIL", 1)])
+    env_evil.Append(OBJPREFIX="evil-")
+    env_evil.Program('pingus-evil', pingus_sources + env['optional_sources'])
+
+    env_nice    = env.Clone()
+    env_nice.Append(CPPDEFINES=[("PINGUS_MODE_NICE", 1)])
+    env_nice.Append(OBJPREFIX="nice-")
+    env_nice.Program('pingus-nice', pingus_sources + env['optional_sources'])
+        
+    env_neutral = env.Clone()
+    env_neutral.Append(CPPDEFINES=[("PINGUS_MODE_NEUTRAL", 1)])
+    env_neutral.Append(OBJPREFIX="neutral-")
+    env_neutral.Program('pingus-neutral', pingus_sources + env['optional_sources'])
+    
     Clean('pingus', ['config.py', 'config.h'])
 
     

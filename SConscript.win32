@@ -293,6 +293,19 @@ pingus_sources = [
 
 ]
 
-env.Program("pingus-win32", pingus_sources)
+env_evil    = env.Clone()
+env_evil.Append(CPPDEFINES=[("PINGUS_MODE_EVIL", 1)])
+env_evil.Append(OBJPREFIX="evil-")
+env_evil.Program("pingus-evil-win32", pingus_sources)
+
+env_nice    = env.Clone()
+env_nice.Append(CPPDEFINES=[("PINGUS_MODE_NICE", 1)])
+env_nice.Append(OBJPREFIX="nice-")
+env_nice.Program("pingus-nice-win32", pingus_sources)
+
+env_neutral = env.Clone()
+env_neutral.Append(CPPDEFINES=[("PINGUS_MODE_NEUTRAL", 1)])
+env_neutral.Append(OBJPREFIX="neutral-")
+env_neutral.Program("pingus-neutral-win32", pingus_sources)
                   
 # EOF #
