@@ -231,6 +231,11 @@ public:
     levelset = levelset_;
   }
 
+  Levelset* get_levelset() const
+  {
+    return levelset;
+  }
+
   void on_pointer_move(int x, int y)
   {
     x -= rect.left;
@@ -295,7 +300,16 @@ LevelMenu::draw_background(DrawingContext& gc)
 
   if (m_mode == kLevelSelector)
   {
-    if (ScreenManager::instance()->time_limit_over())
+    if (level_selector->get_levelset() && level_selector->get_levelset()->is_finished())
+    {
+      // time limit reached
+      gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 - 60,
+                      "Game Completed");
+      
+      m_abort_button->show();
+      level_selector->hide();      
+    }
+    else if (ScreenManager::instance()->time_limit_over())
     {
       // time limit reached
       gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 - 60,

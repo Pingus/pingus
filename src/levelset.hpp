@@ -63,6 +63,8 @@ public:
   /** Return the number of completed levels */
   int get_completion()  const;
 
+  bool is_finished() const;
+
   void refresh();
 private:
   Levelset (const Levelset&);

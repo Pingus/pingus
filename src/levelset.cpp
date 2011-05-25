@@ -148,4 +148,17 @@ Levelset::refresh()
   completion = Math::clamp(0, completion * 100 / int(levels.size()), 100);
 }
 
+bool
+Levelset::is_finished() const
+{
+  for(std::vector<Level*>::const_iterator i = levels.begin(); i != levels.end(); ++i)
+  {
+    if (!(*i)->finished)
+    {
+      return false;
+    }
+  }
+  return true;
+}
+
 /* EOF */
