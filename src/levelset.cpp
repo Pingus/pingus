@@ -25,9 +25,10 @@
 #include "savegame_manager.hpp"
 #include "resource.hpp"
 #include "math.hpp"
+#include "statistics.hpp"
 
-Levelset::Levelset(const Pathname& pathname)
-  : completion(0)
+Levelset::Levelset(const Pathname& pathname) :
+  completion(0)
 {
   FileReader reader = FileReader::parse(pathname);
   if (reader.get_name() != "pingus-levelset")
@@ -53,11 +54,7 @@ Levelset::Levelset(const Pathname& pathname)
               if (i->read_string("filename", level->resname))
                 {
                   level->plf        = PLFResMgr::load_plf(level->resname);
-                  
-                  level->accessible = true;
-                  level->finished   = false;
-                  level->play_count = 0;
-  
+                    
                   levels.push_back(level);
                 }
               else
@@ -107,12 +104,6 @@ Levelset::get_level_count() const
   return levels.size();
 }
 
-int
-Levelset::get_completion()  const
-{
-  return completion;
-}
-
 Sprite
 Levelset::get_image() const
 {
@@ -122,6 +113,7 @@ Levelset::get_image() const
 void
 Levelset::refresh()
 {
+#if 0
   for(std::vector<Level*>::iterator i = levels.begin(); i != levels.end(); ++i)
     {
       Savegame* savegame = SavegameManager::instance()->get((*i)->resname);
@@ -146,6 +138,7 @@ Levelset::refresh()
     if ((*i)->finished)
       completion += 1;
   completion = Math::clamp(0, completion * 100 / int(levels.size()), 100);
+#endif
 }
 
 bool
@@ -153,7 +146,20 @@ Levelset::is_finished() const
 {
   for(std::vector<Level*>::const_iterator i = levels.begin(); i != levels.end(); ++i)
   {
-    if (!(*i)->finished)
+    if (!Statistics::instance()->get_level_stat((*i)->resname).is_finished())
+    {
+      return false;
+    }
+  }
+  return true;
+}
+
+bool
+Levelset::is_failed() const
+{
+  for(std::vector<Level*>::const_iterator i = levels.begin(); i != levels.end(); ++i)
+  {
+    if (Statistics::instance()->get_level_stat((*i)->resname).is_accessible())
     {
       return false;
     }

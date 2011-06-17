@@ -216,7 +216,7 @@ StartScreen::StartScreen(const PingusLevel& arg_plf)
   StartScreenComponent* comp = new StartScreenComponent(plf);
   gui_manager->add(comp, true);
   gui_manager->add(new StartScreenOkButton(this), true);
-  //gui_manager->add(new StartScreenAbortButton(this), true);
+  gui_manager->add(new StartScreenAbortButton(this), true);
 }
 
 void

@@ -32,14 +32,7 @@ class Levelset
 public:
   struct Level {
     std::string resname;
-    bool accessible;
-    bool finished;
-    int  play_count;
     PingusLevel plf;
-
-    bool is_accessible() const {
-      return (play_count < 3) && !finished;
-    }
   };
 
 private:
@@ -61,9 +54,10 @@ public:
   int get_level_count() const;
 
   /** Return the number of completed levels */
-  int get_completion()  const;
+  //int get_completion()  const;
 
   bool is_finished() const;
+  bool is_failed() const;
 
   void refresh();
 private:

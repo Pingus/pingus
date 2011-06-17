@@ -21,6 +21,48 @@
 
 Statistics* Statistics::s_instance = 0;
 
+LevelStat::LevelStat() :
+  m_play_count(0),
+  m_finished(false)
+{
+}
+
+bool
+LevelStat::is_accessible() const
+{
+  return (m_play_count < get_max_play_count()) && !m_finished;
+}
+
+bool
+LevelStat::is_finished() const
+{
+  return m_finished;
+}
+
+void
+LevelStat::set_finished(bool v)
+{
+  m_finished = v;
+}
+
+int
+LevelStat::get_play_count() const
+{
+  return m_play_count;
+}
+
+void
+LevelStat::incr_play_count()
+{
+  m_play_count += 1;
+}
+
+int
+LevelStat::get_max_play_count() const
+{
+  return 3;
+}
+
 Statistics::Statistics() :
   m_filename("statistics.txt"),
   m_username("<unset>")
@@ -47,6 +89,13 @@ Statistics::set_username(const std::string& username)
 void
 Statistics::save_result(const Result& result, int actions_used)
 {
+  // transfer the state from result to level_stats
+  LevelStat& stat = get_level_stat(result.plf.get_resname());
+  if (result.success())
+  {
+    stat.set_finished(true);
+  }
+
   //m_out << "# username, levelname, saved, killed, time, success" << std::endl;
   std::ofstream m_out(m_filename.c_str(), std::ios::app);
   if (!m_out)
@@ -66,7 +115,24 @@ Statistics::save_result(const Result& result, int actions_used)
 }
 
 void
-Statistics::mark_session_end()
+Statistics::start_session(const std::string& username)
+{
+  clear();
+  set_username(username);
+
+  std::ofstream m_out(m_filename.c_str(), std::ios::app);
+  if (!m_out)
+  {
+    throw std::runtime_error(m_filename + ": couldn't open file for writing");
+  }
+  else
+  {
+    m_out << "### session start: " <<  m_username << " ###\n" << std::endl;
+  }
+}
+
+void
+Statistics::end_session()
 {
   std::ofstream m_out(m_filename.c_str(), std::ios::app);
   if (!m_out)
@@ -80,17 +146,15 @@ Statistics::mark_session_end()
 }
 
 void
-Statistics::mark_session_start()
+Statistics::clear()
 {
-  std::ofstream m_out(m_filename.c_str(), std::ios::app);
-  if (!m_out)
-  {
-    throw std::runtime_error(m_filename + ": couldn't open file for writing");
-  }
-  else
-  {
-    m_out << "### session start: " <<  m_username << " ###\n" << std::endl;
-  }
+  m_level_stats.clear();
+}
+
+LevelStat&
+Statistics::get_level_stat(const std::string& resname)
+{
+  return m_level_stats[resname];
 }
 
 /* EOF */

@@ -123,7 +123,7 @@ public:
         gc.print_left(Fonts::chalk_normal, 85+30, 15 + y, _((*i)->get_title()));
         gc.print_left(Fonts::chalk_small,  85+50, 40 + y, _((*i)->get_description()));
 
-        gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, 15 + y, (boost::format("%1% %2%%%") % _("Solved:") % (*i)->get_completion()).str());
+        //gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, 15 + y, (boost::format("%1% %2%%%") % _("Solved:") % (*i)->get_completion()).str());
         gc.print_right(Fonts::chalk_small,  rect.get_width() - 30, 60 + y, (boost::format("%1% %2%") % (*i)->get_level_count() % _("levels")).str());
 
         //gc.draw(ok_button, 620, y);
@@ -196,12 +196,14 @@ public:
 
         gc.print_left(Fonts::chalk_normal,  30, -32, _("Title"));
         gc.print_right(Fonts::chalk_normal, rect.get_width() - 30, - 32, _("Status"));
-        gc.print_center(Fonts::chalk_normal, rect.get_width() - 165, - 32, _("Retries Left"));
+        gc.print_center(Fonts::chalk_normal, rect.get_width() - 165, - 32, _("Tries Left"));
 
         int y = 0;
         for(int i = 0; i < levelset->get_level_count(); ++i)
           {
-            if (!levelset->get_level(i)->is_accessible())
+            LevelStat& level_stat = Statistics::instance()->get_level_stat(levelset->get_level(i)->resname);
+
+            if (!level_stat.is_accessible())
               gc.draw(marker_locked, Vector2i(0, y));
             else if (i == current_level)
               gc.draw(marker, Vector2i(0, y));
@@ -211,13 +213,14 @@ public:
             else
               gc.print_left(Fonts::chalk_small, 30, y+4, _(levelset->get_level(i)->plf.get_levelname()));
 
-            if (levelset->get_level(i)->finished)
+            if (level_stat.is_finished())
               gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, _("solved"));
             else
               gc.print_right(Fonts::chalk_small, rect.get_width() -30, y+4, _("unsolved"));
 
             gc.print_right(Fonts::chalk_small, rect.get_width() -30 -125, y+4, 
-                           (boost::format("%d") % (3 - levelset->get_level(i)->play_count)).str());
+                           (boost::format("%d") 
+                            % (level_stat.get_max_play_count() - level_stat.get_play_count())).str());
 
             y += 32;
           }
@@ -251,9 +254,8 @@ public:
   {
     if (current_level != -1)
       {
-        if (levelset->get_level(current_level)->is_accessible())
+        if (Statistics::instance()->get_level_stat(levelset->get_level(current_level)->resname).is_accessible())
           {
-            levelset->get_level(current_level)->play_count += 1;
             ScreenManager::instance()->push_screen(new StartScreen(levelset->get_level(current_level)->plf), true);
           }
       }
@@ -309,6 +311,15 @@ LevelMenu::draw_background(DrawingContext& gc)
       m_abort_button->show();
       level_selector->hide();      
     }
+    else if (level_selector->get_levelset() && level_selector->get_levelset()->is_failed())
+    {
+      // time limit reached
+      gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 - 60,
+                      "Game Over");
+      
+      m_abort_button->show();
+      level_selector->hide();
+    }
     else if (ScreenManager::instance()->time_limit_over())
     {
       // time limit reached
@@ -360,7 +371,7 @@ LevelMenu::set_levelset(Levelset* levelset)
     {
       m_mode = kLevelSelector;
     
-      Statistics::instance()->set_username(m_username_inputbox->get_string());
+      Statistics::instance()->start_session(m_username_inputbox->get_string());
 
       int time_limit;
       if (!StringUtil::from_string(m_time_inputbox->get_string(), time_limit))

@@ -54,6 +54,9 @@ PingusGameSession::PingusGameSession (const PingusLevel& arg_plf, bool arg_show_
 
   left_over_time = 0;
   pout(PINGUS_DEBUG_LOADING) << "PingusGameSession" << std::endl;
+
+  LevelStat& stat = Statistics::instance()->get_level_stat(plf.get_resname());
+  stat.incr_play_count();
 }
 
 PingusGameSession::~PingusGameSession ()

@@ -21,6 +21,26 @@
 
 class Result;
 
+class LevelStat
+{
+private:
+  int m_play_count;
+  bool m_finished;
+
+public:
+  LevelStat();
+
+  bool is_accessible() const;
+  bool is_finished() const;
+  int  get_play_count() const;
+  void incr_play_count();
+
+  void set_finished(bool v);
+
+  /** Maximum number of times a user is allowed to retry the given level */
+  int get_max_play_count() const;
+};
+
 class Statistics
 {
 private:
@@ -37,15 +57,24 @@ private:
   std::string m_filename;
   std::string m_username;
 
+  typedef std::map<std::string, LevelStat> LevelStats;
+  LevelStats m_level_stats;
+
 public:
   Statistics();
   ~Statistics();
 
-  void set_username(const std::string& username);
+  void clear();
+
   void save_result(const Result& result, int actions_used);
 
-  void mark_session_start();
-  void mark_session_end();
+  LevelStat& get_level_stat(const std::string& resname);
+
+  void start_session(const std::string& username);
+  void end_session();
+
+private:
+  void set_username(const std::string& username);
 
 private:
   Statistics(const Statistics&);
