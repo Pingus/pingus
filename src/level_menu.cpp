@@ -353,7 +353,10 @@ LevelMenu::on_escape_press()
 {
   if (m_mode == kLevelSelector)
   {
-    set_levelset(0);
+    if (maintainer_mode)
+    {
+      set_levelset(0);
+    }
   }
   else
   {
