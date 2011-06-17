@@ -127,7 +127,7 @@ Statistics::start_session(const std::string& username)
   }
   else
   {
-    m_out << "### session start: " <<  m_username << " ###\n" << std::endl;
+    m_out << "### session start: " <<  m_username << std::endl;
   }
 }
 

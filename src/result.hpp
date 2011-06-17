@@ -48,6 +48,7 @@ struct Result
   /** Number of Pingus needed to save */
   int needed;
 
+  /** Set when the global time limit is reached */
   bool aborted;
 
   bool success() const {
