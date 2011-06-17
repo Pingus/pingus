@@ -62,9 +62,6 @@ public:
   /** Clean up */
   ~PingusGameSession ();
 
-  /** Get the results of the last gaming session */
-  PingusGameSessionResult get_result ();
-
   // Overloaded Screen functions
   /** Draw this screen */
   bool draw(DrawingContext& gc);

@@ -84,12 +84,6 @@ PingusGameSession::on_shutdown()
   client->on_shutdown();
 }
 
-PingusGameSessionResult
-PingusGameSession::get_result ()
-{
-  return PingusGameSessionResult ();
-}
-
 bool
 PingusGameSession::draw(DrawingContext& gc)
 {
@@ -187,13 +181,16 @@ PingusGameSession::on_fast_forward_press ()
 void
 PingusGameSession::on_armageddon_press ()
 {
-  client->on_armageddon_press ();
+  //client->on_armageddon_press ();
 }
 
 void
 PingusGameSession::on_escape_press ()
 {
-  client->on_escape_press ();
+  if (maintainer_mode)
+  {
+    client->on_escape_press ();
+  }
 }
 
 

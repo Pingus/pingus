@@ -222,7 +222,10 @@ Client::set_finished()
 void
 Client:: on_escape_press ()
 {
-  server->set_finished();
+  if (maintainer_mode)
+  {
+    server->set_finished();
+  }
 }
 
 void
@@ -240,7 +243,7 @@ Client::on_fast_forward_press ()
 void
 Client::on_armageddon_press ()
 {
-  server->send_armageddon_event();
+  //server->send_armageddon_event();
 }
 
 void
