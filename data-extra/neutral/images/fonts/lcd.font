@@ -1,0 +1,11 @@
+;; -*- scheme -*-
+(pingus-font
+ (name "LCD")
+ (monospace #t)
+ (char-spacing 0)
+ (space-length    9)
+ (alpha-threshold  0)
+ (characters "0123456789:")
+ (image "images/fonts/lcd.png"))
+
+;; EOF ;;

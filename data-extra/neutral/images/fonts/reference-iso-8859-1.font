@@ -1,0 +1,11 @@
+;; -*- scheme -*-
+(pingus-font
+ (name "Verdana9 with Border")
+ (space-length     8)
+ (alpha-threshold  0)
+ (characters "!\"#$%&'()*+,-./0123456789:;<=>?@"
+             "ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
+             "¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüışÿ")
+ (image "images/fonts/reference-iso-8859-1.png"))
+
+;; EOF ;;

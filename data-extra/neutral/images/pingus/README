@@ -1,0 +1,39 @@
+Making changes to the pingus graphics
+-------------------------------------
+
+To add a new action or change an existing one, you need to
+create one for each player (0 through 3).  Place them in the
+proper directory, then update data/data/pingus-player0.xml.
+
+The other "pingus-player#".xml files are exactly the same
+as pingus-player0.xml, except every reference to "player0"
+is replaced with "player1", etc.  There is a script named
+data/data/update-pingus-player.sh which will copy the player0.xml
+file to the other player#'s, and replace the references to
+player0 with the appropriate number.  You need 'sed' on your
+system to run this script.
+
+Also, if you add or remove images, don't forget to update
+/data/images/Makefile.am
+
+
+Credits (may be outdated)
+--------------------------------------
+
+data/images/pingus
+==================
+
+Filename:      | Author:
+---------------+--------------------------------------
+basher.pcx     | Joel Fauche <joel.fauche@wanadoo.fr>
+blocker.pcx    | Stefan Stiasny <sc@swi.priv.at>
+bomber.pcx     | Joel Fauche <joel.fauche@wanadoo.fr>
+bridger.pcx    | Stefan Stiasny <sc@swi.priv.at>
+climber.pcx    | Joel Fauche <joel.fauche@wanadoo.fr>
+digger.pcx     | Craig Timpany <timpany@es.co.nz>
+faller.pcx     | Joel Fauche <joel.fauche@wanadoo.fr>
+floater.pcx    | Joel Fauche <joel.fauche@wanadoo.fr>
+miner.pcx      | Stefan Stiasny <sc@swi.priv.at>
+tumble.pcx     | Craig Timpany <timpany@es.co.nz>
+walker.pcx     | Joel Fauche <joel.fauche@wanadoo.fr>
+    

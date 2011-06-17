@@ -1,0 +1,13 @@
+;; -*- scheme -*-
+(pingus-font
+ (name "Pingus Small")
+ (space-length    12)
+ (char-spacing 0)
+ (vertical-spacing 23)
+ (alpha-threshold  0)
+ (characters "!\"#$%&'()*+,-./0123456789:;<=>?@"
+             "ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
+             "¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüışÿ")
+ (image "images/fonts/pingus_small-iso-8859-1.png"))
+
+;; EOF ;;

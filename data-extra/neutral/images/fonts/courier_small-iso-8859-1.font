@@ -1,0 +1,14 @@
+;; -*- scheme -*-
+(pingus-font
+ (name "Pingus Small")
+ (space-length    8)
+ (alpha-threshold  0)
+ (characters
+  "!\"#$%&'()*+,-./0123456789:;<=>?@"
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
+  "ƒ÷‹‰ˆ¸ﬂ«Á«Á«Á«Á") ;; FIXME: Are those last few chars even latin1?
+                     ;; anyway, font needs to be redone or removed,
+                     ;; but this workaround will do for now
+ (image "images/fonts/courier_small2.png"))
+
+;; EOF ;;
