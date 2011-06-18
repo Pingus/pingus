@@ -101,8 +101,14 @@ WorldObjFactory::instance ()
       new WorldObjFactoryImpl<Liquid>("liquid");
       new WorldObjFactoryImpl<Hotspot>("hotspot");
       new WorldObjFactoryImpl<Entrance>("entrance");
-			new WorldObjFactoryImpl<WoodThing>("woodthing");
+      new WorldObjFactoryImpl<WoodThing>("woodthing");
       new WorldObjFactoryImpl<Exit>("exit");
+
+#ifdef PINGUS_MODE_EVIL
+      new WorldObjFactoryImpl<Exit>("trap-exit");
+#else
+      new WorldObjFactoryImpl<Guillotine>("trap-exit");
+#endif
 
       // traps
       new WorldObjFactoryImpl<FakeExit>("fake_exit");

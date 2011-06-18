@@ -33,6 +33,12 @@ Guillotine::Guillotine(const FileReader& reader)
     killing(false)
 {
   reader.read_vector("position", pos);
+
+  if (reader.get_name() == "trap-exit")
+  {
+    pos.x -= 40;
+    pos.y -= 96;
+  }
   
   sprite_kill_right.set_play_loop(false);
   sprite_kill_left.set_play_loop(false);
