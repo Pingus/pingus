@@ -56,6 +56,7 @@ public:
 
   World* get_world();
   ActionHolder* get_action_holder();
+  GoalManager* get_goal_manager() { return goal_manager; }
 
   /** @return true if the server is finished and the game can be
       exited */
@@ -63,7 +64,7 @@ public:
 
   /** set the server into the finshed state, this is used when you
       press ESCAPE inside a game */
-  virtual void set_finished() =0;
+  virtual void set_finished(bool always_fail) =0;
 
   /* Event handling stuff */
   void send_armageddon_event();

@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
+
 #include "../globals.hpp"
 #include "../cheat.hpp"
 #include "../resource.hpp"
@@ -227,7 +229,43 @@ ArmageddonButton::on_primary_button_click (int x, int y)
     }
 
     }
+
+ExitButton::ExitButton (TrueServer* s, int x, int y)
+  : server (s),
+    x_pos(x), y_pos(y),
+    background  (Resource::load_sprite("core/buttons/buttonbackgroundhl")),
+    backgroundhl(Resource::load_sprite("core/buttons/buttonbackground"))
+{
+  //surface = Resource::load_sprite("core/buttons/pause");
+}
 
+ExitButton::~ExitButton () {}
+
+void
+ExitButton::draw (DrawingContext& gc)
+{
+  gc.draw(backgroundhl, Vector2i(x_pos, y_pos));
+  gc.print_center(Fonts::pingus_small, x_pos + background.get_width()/2, y_pos + 5, "Exit");
+}
+
+bool
+ExitButton::is_at (int x, int y)
+{
+  if (x > x_pos && x < x_pos + int(background.get_width())
+      && y > y_pos && y < y_pos + int(background.get_height()))
+    {
+      return true;
+    } else  {
+      return false;
+    }
+}
+
+void
+ExitButton::on_primary_button_click (int x, int y)
+{
+  server->set_finished(true);
+}
+
 ForwardButton::ForwardButton (TrueServer* s, int x, int y)
   : server (s),
     x_pos (x), y_pos (y),

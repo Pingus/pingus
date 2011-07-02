@@ -46,6 +46,8 @@ private:
   /** time at which is_finished() will return true */
   int exit_time;
 
+  bool m_always_fail;
+
 public:
   GoalManager(Server* plf);
 
@@ -53,12 +55,14 @@ public:
   bool is_finished();
 
   /** Abort the level */
-  void set_abort_goal();
+  void set_abort_goal(bool always_fail = false);
 
-  GoalType get_goal() const { return GT_GLOBAL_TIME_LIMIT; }
+  GoalType get_goal() const { return goal; }
 
   /** Check for goal conditions and set finished accordingly */
   void update();
+
+  bool get_always_fail() const { return m_always_fail; }
 
 private:
   GoalManager (const GoalManager&);

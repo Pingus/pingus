@@ -26,7 +26,7 @@
 #include "screen/screen_manager.hpp"
 
 GoalManager::GoalManager(Server* s)
-  : server(s), goal(GT_NONE), exit_time(0)
+  : server(s), goal(GT_NONE), exit_time(0), m_always_fail(false)
 {
 }
 
@@ -88,8 +88,10 @@ GoalManager::update()
 }
 
 void
-GoalManager::set_abort_goal()
+GoalManager::set_abort_goal(bool always_fail)
 {
+  m_always_fail = always_fail;
+
   if (exit_time == 0)
     {
       goal = GT_GAME_ABORTED;

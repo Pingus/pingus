@@ -32,6 +32,7 @@
 #include "globals.hpp"
 #include "debug.hpp"
 #include "statistics.hpp"
+#include "goal_manager.hpp"
 
 PingusGameSession::PingusGameSession (const PingusLevel& arg_plf, bool arg_show_result_screen)
   : plf(arg_plf),
@@ -114,6 +115,7 @@ PingusGameSession::update (const GameDelta& delta)
       result.used_time = server->get_time();
 
       result.aborted = server->was_aborted();
+      result.exited  = server->get_goal_manager()->get_always_fail();
 
       { // Write the savegame
         Savegame savegame(result.plf.get_resname(),

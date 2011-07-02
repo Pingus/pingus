@@ -191,7 +191,11 @@ ResultScreenComponent::draw(DrawingContext& gc)
     }
 
   std::string message;
-  if (result.success())
+  if (result.exited)
+  {
+    message = _("The level was aborted.");
+  }
+  else if (result.success())
     {
 #ifdef PINGUS_MODE_EVIL
       if (result.killed == result.total)
@@ -278,6 +282,8 @@ ResultScreenComponent::draw(DrawingContext& gc)
   int right_x = Display::get_width()/2 + 100;
   int y = Display::get_height()/2 + 10;
 
+  if (!result.exited)
+  {
 #ifdef PINGUS_MODE_EVIL
   gc.print_left(Fonts::chalk_normal,  left_x,  y, _("Killed: "));
   gc.print_right(Fonts::chalk_normal, right_x, y, StringUtil::to_string(result.killed)
@@ -305,6 +311,7 @@ ResultScreenComponent::draw(DrawingContext& gc)
 
   gc.print_left(Fonts::chalk_normal,  left_x, (y+=30), _("Time left: "));
   gc.print_right(Fonts::chalk_normal, right_x, y, time_str);
+  }
 
   SDL_Delay(10);
 }

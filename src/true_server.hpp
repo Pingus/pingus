@@ -46,7 +46,7 @@ public:
 
   /** set the server into the finshed state, this is used when you
       press ESCAPE inside a game */
-  void set_finished();
+  void set_finished(bool always_fail);
 
 private:
   TrueServer (const TrueServer&);

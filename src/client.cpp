@@ -75,6 +75,7 @@ Client::Client (TrueServer * s)
 #if defined(PINGUS_MODE_NEUTRAL) || defined(PINGUS_MODE_EVIL) || defined(PINGUS_MODE_NICE)
   gui_manager->add(new ForwardButton   (server, Display::get_width() - 40 * 1, Display::get_height() - 62), true);
   gui_manager->add(new PauseButton     (server, Display::get_width() - 40 * 2, Display::get_height() - 62), true);
+  gui_manager->add(new ExitButton(server, 0, 0), true);
 #else
   gui_manager->add(new ArmageddonButton(server, Display::get_width() - 40,     Display::get_height() - 62), true);
 
@@ -199,13 +200,6 @@ Client::replay()
   return do_replay;
 }
 
-void
-Client::do_restart()
-{
-  do_replay = true;
-  server->set_finished();
-}
-
 bool
 Client::finished()
 {
@@ -216,7 +210,7 @@ void
 Client::set_finished()
 {
   is_finished = true;
-  server->set_finished();
+  server->set_finished(false);
 }
 
 void
@@ -224,7 +218,7 @@ Client:: on_escape_press ()
 {
   if (maintainer_mode)
   {
-    server->set_finished();
+    server->set_finished(true);
   }
 }
 

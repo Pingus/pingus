@@ -18,6 +18,7 @@
 
 #include "statistics.hpp"
 #include <stdexcept>
+#include <iostream>
 
 Statistics* Statistics::s_instance = 0;
 
@@ -110,7 +111,9 @@ Statistics::save_result(const Result& result, int actions_used)
           << result.killed << ";"
           << result.used_time << ";"
           << actions_used << ";"
-          << (result.aborted ? "aborted" : (result.success()?"success":"failure")) << std::endl;
+          << (result.exited ? "exited" : 
+              (result.aborted ? "aborted" : 
+               (result.success()?"success":"failure"))) << std::endl;
   }
 }
 

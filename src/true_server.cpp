@@ -76,9 +76,9 @@ TrueServer::get_pause()
 }
 
 void
-TrueServer::set_finished ()
+TrueServer::set_finished (bool always_fail)
 {
-  goal_manager->set_abort_goal();
+  goal_manager->set_abort_goal(always_fail);
   set_pause(false);
 }
 

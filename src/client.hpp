@@ -70,7 +70,6 @@ public:
   Playfield* get_playfield() { return playfield; }
 
   bool replay();
-  void do_restart();
   bool finished();
   void set_finished();
 

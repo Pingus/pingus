@@ -51,11 +51,13 @@ struct Result
   /** Set when the global time limit is reached */
   bool aborted;
 
+  bool exited;
+
   bool success() const {
 #ifdef PINGUS_MODE_EVIL
-    return (killed >= needed);
+    return (killed >= needed) && !aborted && !exited;
 #else
-    return (saved >= needed);
+    return (saved >= needed) && !aborted && !exited;
 #endif
   }
 };

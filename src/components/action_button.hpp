@@ -91,6 +91,33 @@ private:
   ForwardButton& operator= (const ForwardButton&);
 };
 
+/** Fast Forward button, press it to let the game run faster, press it
+    again to return to normal speed
+
+    \sa Client */
+class ExitButton : public GUI::Component
+{
+private:
+  TrueServer* server;
+  int x_pos;
+  int y_pos;
+
+  Sprite background;
+  Sprite backgroundhl;
+  friend class ButtonPanel;
+public:
+  ExitButton(TrueServer*, int x, int y);
+  virtual ~ExitButton();
+
+  void draw(DrawingContext& gc);
+  bool is_at (int x, int y);
+  void on_primary_button_click (int x, int y);
+
+private:
+  ExitButton (const ExitButton&);
+  ExitButton& operator= (const ExitButton&);
+};
+
 // ----------------- snip --------------------
 
 /** Pause button, press it to pause the game, press it again to
