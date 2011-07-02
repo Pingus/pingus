@@ -55,9 +55,9 @@ struct Result
 
   bool success() const {
 #ifdef PINGUS_MODE_EVIL
-    return (killed >= needed) && !aborted && !exited;
+    return (killed >= needed) && !exited;
 #else
-    return (saved >= needed) && !aborted && !exited;
+    return (saved >= needed) && !exited;
 #endif
   }
 };
