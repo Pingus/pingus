@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-07-23 02:10+0200\n"
-"PO-Revision-Date: 2011-06-21 09:37+0200\n"
+"PO-Revision-Date: 2011-07-09 19:30+0200\n"
 "Last-Translator: Helge Kreutzmann <debian@helgefjell.de>\n"
 "Language-Team: de <debian-l10n-german@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -555,7 +555,7 @@ msgstr "unbegrenzt"
 #: src/pingus/actions/bridger.cpp:38 src/pingus/actions/bridger.cpp:196
 #: src/pingus/action_name.cpp:32
 msgid "Bridger"
-msgstr "Bridger"
+msgstr "Brückenbauer"
 
 #: src/pingus/screens/credits.cpp:87
 msgid "-Idea"
@@ -863,11 +863,11 @@ msgstr "Angel"
 
 #: src/pingus/action_name.cpp:28
 msgid "Basher"
-msgstr "Basher"
+msgstr "Tunnelbauer"
 
 #: src/pingus/action_name.cpp:29
 msgid "Blocker"
-msgstr "Blocker"
+msgstr "Blockierer"
 
 #: src/pingus/action_name.cpp:30
 msgid "Boarder"
@@ -879,11 +879,11 @@ msgstr "Bomber"
 
 #: src/pingus/action_name.cpp:33
 msgid "Climber"
-msgstr "Climber"
+msgstr "Kletterer"
 
 #: src/pingus/action_name.cpp:34
 msgid "Digger"
-msgstr "Digger"
+msgstr "Lochgräber"
 
 #: src/pingus/action_name.cpp:35
 msgid "Drown"
@@ -899,11 +899,11 @@ msgstr "Faller"
 
 #: src/pingus/action_name.cpp:38
 msgid "Floater"
-msgstr "Floater"
+msgstr "Schweber"
 
 #: src/pingus/action_name.cpp:39
 msgid "Jumper"
-msgstr "Jumper"
+msgstr "Springer"
 
 #: src/pingus/action_name.cpp:40
 msgid "Laserkill"
@@ -911,7 +911,7 @@ msgstr "Laserkill"
 
 #: src/pingus/action_name.cpp:41
 msgid "Miner"
-msgstr "Miner"
+msgstr "Bergmann"
 
 #: src/pingus/action_name.cpp:42
 msgid "Rocketlauncher"
@@ -919,7 +919,7 @@ msgstr "Rocketlauncher"
 
 #: src/pingus/action_name.cpp:43
 msgid "Slider"
-msgstr "Slider"
+msgstr "Gleiter"
 
 #: src/pingus/action_name.cpp:44
 msgid "Smashed"
@@ -985,10 +985,10 @@ msgid ""
 "opposed to the vertical dig ability the Digger action provides. This new "
 "action is called Basher. "
 msgstr ""
-"Vergleichbar zum Digger, der bereits aus den vorherigen Leveln bekannt ist, "
+"Vergleichbar zum Lochgräber, der bereits aus den vorherigen Leveln bekannt ist, "
 "gibt es auch eine Fähigkeit, mit der ein Pingu horizontal graben kann, im "
-"Gegensatz zur Fähigkeit zum vertikalen Graben eines Diggers. Diese neue "
-"Fähigkeit heißt Basher. "
+"Gegensatz zur Fähigkeit zum vertikalen Graben eines Lochgräbers. Diese neue "
+"Fähigkeit heißt Tunnelbauer. "
 
 #: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:7
 msgid "Sacrifice a few and save the rest"
@@ -1048,13 +1048,13 @@ msgid ""
 "Pingu to make a small jump and so enables him to reach the platform. "
 msgstr ""
 "Manchmal muss ein Pingu eine Plattform erreichen, die weit weg ist und nicht "
-"durch Laufen erreicht werden kann. Dann ist der Jumper hilfreich, er erlaubt "
+"durch Laufen erreicht werden kann. Dann ist der Springer hilfreich, er erlaubt "
 "es einem Pingu, einen kleinen Sprung zu machen und ermöglicht es so, die "
 "Plattform zu erreichen. "
 
 #: data/levels/tutorial/miner-tutorial2-grumbel.pingus:7
 msgid "Miner's heaven"
-msgstr "Miner's Himmel"
+msgstr "Bergmanns Himmel"
 
 #: data/levels/tutorial/miner-tutorial2-grumbel.pingus:8
 msgid ""
@@ -1065,7 +1065,7 @@ msgstr ""
 "Und eine weitere Fähigkeit taucht auf, es ist wieder eine Fähigkeit, "
 "zu graben, dieses Mal diagonal. Sie erlaubt es einem Pingu, diagonal durch "
 "den Boden zu graben und damit einen Weg für die folgenden Pingus zu bahnen. "
-"Diese Fähigkeit heißt Miner. "
+"Diese Fähigkeit heißt Bergmann. "
 
 #: data/levels/tutorial/snow10-grumbel.pingus:7
 msgid "Panic Island (float/bash)"
@@ -1125,7 +1125,7 @@ msgid ""
 msgstr ""
 "Wieder ist es an der Zeit, die in den vorangangenen Leveln gelernten Dinge "
 "zu verbinden. Sprenge Dir den Weg frei und achte darauf, dass Du auch die "
-"restlichen Pingus unter Kontrolle hältst. Der Blocker wird Dir helfen. "
+"restlichen Pingus unter Kontrolle hältst. Der Blockierer wird Dir helfen. "
 
 #: data/levels/tutorial/snow15-grumbel.pingus:7
 msgid "Climb, Climber,... Boom!"
@@ -1139,7 +1139,7 @@ msgid ""
 "reach the place to bomb? "
 msgstr ""
 "Wie Du wohl bereits in den vorherigen Leveln bemerkt hast, musst Du oftmals "
-"mehrere Fähigkeiten kombinieren, um das Ziel zu erreichen. Da die Digger-"
+"mehrere Fähigkeiten kombinieren, um das Ziel zu erreichen. Da die Lochgräber-"
 "Fähigkeit fehlt, muss der Bomber einspringen, aber wie erreicht er den Platz "
 "zum Sprengen? "
 
@@ -1167,7 +1167,7 @@ msgid ""
 "reach the exit, so just send a few and let them prepare the path for the "
 "rest. "
 msgstr ""
-"Dieses Mal führt Teamwork zum Ausgang. Du hast nicht genug Floater, um den "
+"Dieses Mal führt Teamwork zum Ausgang. Du hast nicht genug Schweber, um den "
 "Ausgang zu erreichen, also schicke ein paar und lass sie den Weg für den "
 "Rest vorbereiten. "
 
@@ -1181,9 +1181,9 @@ msgid ""
 "pretty helpful. It takes some time to build, but unlike the jumper action it "
 "allows following Pingus to reach the other end too. "
 msgstr ""
-"Wenn kein Jumper da ist und ein großes Loch passiert werden muss, kann eine "
+"Wenn kein Springer da ist und ein großes Loch passiert werden muss, kann eine "
 "Brücke sehr nützlich sein. Es dauert einige Zeit, sie zu bauen, aber anders "
-"als die Jumper-Fähigkeit erlaubt sie auch den nachfolgenden Pingus auf die "
+"als die Springer-Fähigkeit erlaubt sie auch den nachfolgenden Pingus auf die "
 "andere Seite zu kommen. "
 
 #: data/levels/tutorial/snow20-grumbel.pingus:7
@@ -1202,7 +1202,7 @@ msgstr ""
 
 #: data/levels/tutorial/snow21-grumbel.pingus:7
 msgid "Climb, Climber, climb... and build a bridge"
-msgstr "Kletter, Climber, kletter ... und bau' eine Brücke"
+msgstr "Kletter, Kletterer, kletter ... und bau' eine Brücke"
 
 #: data/levels/tutorial/snow21-grumbel.pingus:8
 msgid ""
@@ -1210,7 +1210,7 @@ msgid ""
 "to climb up straight walls, thus allowing him to reach stuff that might be "
 "too high to reach by other means. "
 msgstr ""
-"Wieder erhältst Du Zugriff auf eine neue Fähigkeit. Die Climber-Fähigkeit "
+"Wieder erhältst Du Zugriff auf eine neue Fähigkeit. Die Kletterer-Fähigkeit "
 "ermöglicht es einem Pingu, senkrechte Wände hochzuklettern und dadurch an "
 "Orte zu kommen, die sonst unerreichbar wären. "
 
@@ -1225,7 +1225,7 @@ msgid ""
 "the stuff you need for this level in previous levels, so this shouldn't be "
 "too much of a problem for you. "
 msgstr ""
-"Wenn Du nicht genug Floater hast, um alle Pingus zum Ausgang hinunter zu "
+"Wenn Du nicht genug Schweber hast, um alle Pingus zum Ausgang hinunter zu "
 "bringen, dann musst Du andere Wege finden, sie nach unten zu führen. Alles, "
 "was Du in diesem Level brauchst, solltest Du bereits in vorangegangen Leveln "
 "gelernt haben. Daher sollte dies kein sonderliches Problem darstellen. "
@@ -1240,7 +1240,7 @@ msgid ""
 "coordinate your Pingus. You'll have to find other ways to keep them under "
 "control while a single one prepares the path for the rest. "
 msgstr ""
-"Manchmal kommt es vor, dass Du keinen Blocker zur Hand hast, um Deine Pingus "
+"Manchmal kommt es vor, dass Du keinen Blockierer zur Hand hast, um Deine Pingus "
 "zu koordinieren. Darum musst Du andere Wege finden, sie unter Kontrolle zu "
 "halten, während ein einzelner den Weg für die anderen vorbereitet. "
 
@@ -1324,7 +1324,7 @@ msgid ""
 "to save them all?"
 msgstr ""
 "Mit dem Ausgang so hoch oben und weit außer Reichweite für einen normalen "
-"Pingu, welche Möglichkeiten bleiben hier? Vielleicht kann sie ein Jumper "
+"Pingu, welche Möglichkeiten bleiben hier? Vielleicht kann sie ein Springer "
 "retten? Oder wird er ihre unausweichliche Niederlage nur herauszögern? Es "
 "ist Deine Aufgabe, es herauszufinden, aber bist Du gut genug, sie alle zu "
 "retten?"
@@ -1345,7 +1345,7 @@ msgstr ""
 "nächsten. Ihr Weg zur Errettung scheint verflucht, aber von wem? Es "
 "bleibt keine Zeit, darüber nachzudenken, denn die nächste lebensgefährliche "
 "Herausforderung erwartet die Pingus bereits. Zwei mächtige Wurzeln versperren "
-"den Weg, aber ohne einen Basher, um sie zur Seite zu räumen, könnte ein "
+"den Weg, aber ohne einen Tunnelbauer, um sie zur Seite zu räumen, könnte ein "
 "Selbstopfer die einzige Möglichkeit darstellen ..."
 
 #: data/levels/halloween/halloween4-grumbel.pingus:7
@@ -1367,7 +1367,7 @@ msgstr ""
 
 #: data/levels/halloween/halloween5-grumbel.pingus:7
 msgid "Bridgers Nightmare"
-msgstr "Bridgers Albtraum"
+msgstr "Brückenbauers Albtraum"
 
 #: data/levels/halloween/halloween5-grumbel.pingus:8
 msgid ""
@@ -1383,7 +1383,7 @@ msgid ""
 msgstr ""
 "Wer hat diese monsterhafte Mauer hier hingestellt? Dieses schreckliche "
 "Hindernis trennt Deine Pingus vom Ausgang. Das scheußliche Bauwerk zu "
-"zerstören erscheint unmöglich, aber vielleicht kann der Bridger zu Hilfe "
+"zerstören erscheint unmöglich, aber vielleicht kann der Brückenbauer zu Hilfe "
 "kommen? Können sie ihre Brücken hoch genug bauen, um die Gruppe noch einmal "
 "sicher zum Ausgang zu führen? Oder führt Dich jemand teuflisch hinters "
 "Licht?\n"
