@@ -253,7 +253,11 @@ ResultScreenComponent::draw(DrawingContext& gc)
         message = _("Better luck next time!");     
 #else
       if (result.killed == result.total)
+#if PINGUS_MODE_NICE
+        message = _("Not good.");
+#else
         message = _("You killed everybody, not good.");
+#endif
       else if (result.saved == 0)
         message = _("No-one got saved - I know you can do better.");
       else if (result.saved > 0)
