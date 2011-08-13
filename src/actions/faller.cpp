@@ -110,11 +110,13 @@ Faller::update ()
               pingu->set_action(Actions::Drown);
             }
           // Did we stop too fast?
+#if 0
           else if (fabs(pingu->get_velocity().y) > deadly_velocity)
             {
               //std::cout << "Pingus splashed: " << pingu->get_velocity().y << " " << deadly_velocity << std::endl;
               pingu->set_action(Actions::Splashed);
             }
+#endif
           else
             {
               // This is where the jumper bug happens
