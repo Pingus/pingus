@@ -45,6 +45,7 @@ private:
   LevelMenuAbortButton* m_abort_button;
   GUI::InputBox* m_username_inputbox;
   GUI::InputBox* m_time_inputbox;
+  GUI::InputBox* m_tries_inputbox;
 
   enum { kLevelsetSelector, kLevelSelector} m_mode;
 

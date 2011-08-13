@@ -22,6 +22,8 @@
 
 Statistics* Statistics::s_instance = 0;
 
+int LevelStat::s_max_number_of_tries = 3;
+
 LevelStat::LevelStat() :
   m_play_count(0),
   m_finished(false)
@@ -61,7 +63,13 @@ LevelStat::incr_play_count()
 int
 LevelStat::get_max_play_count() const
 {
-  return 3;
+  return s_max_number_of_tries;
+}
+
+void
+LevelStat::set_max_play_count(int v)
+{
+  s_max_number_of_tries = v;
 }
 
 Statistics::Statistics() :

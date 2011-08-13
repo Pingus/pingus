@@ -281,11 +281,13 @@ LevelMenu::LevelMenu() :
 
   m_username_inputbox = new GUI::InputBox(350, Vector2i(x_pos + 300, y_pos + 300), "");
   m_time_inputbox = new GUI::InputBox(350, Vector2i(x_pos + 300, y_pos + 350), "15");
+  m_tries_inputbox = new GUI::InputBox(350, Vector2i(x_pos + 300, y_pos + 400), "3");
 
   gui_manager->add(levelset_selector, true);
   gui_manager->add(level_selector,    true);
   gui_manager->add(m_username_inputbox,    true);
   gui_manager->add(m_time_inputbox,    true);
+  gui_manager->add(m_tries_inputbox,    true);
   gui_manager->add(m_abort_button = new LevelMenuAbortButton(this), true);
 
   level_selector->hide();
@@ -337,6 +339,9 @@ LevelMenu::draw_background(DrawingContext& gc)
 
     gc.print_right(Fonts::chalk_small, gc.get_width()/2 - 160, gc.get_height()/2 + 50, 
                    "Time:");
+
+    gc.print_right(Fonts::chalk_small, gc.get_width()/2 - 160, gc.get_height()/2 + 100, 
+                   "Tries:");
   }
 
   SDL_Delay(10);
@@ -387,16 +392,28 @@ LevelMenu::set_levelset(Levelset* levelset)
         
         ScreenManager::instance()->set_time_limit(time_limit);
 
-        level_selector->set_levelset(levelset);
-        levelset_selector->hide();
-        m_abort_button->hide();
+        int num_tries;
+        if (!StringUtil::from_string(m_tries_inputbox->get_string(), num_tries))
+        {
+          m_tries_inputbox->set_string("err");
+        }
+        else
+        {
+          LevelStat::set_max_play_count(num_tries);
 
-        level_selector->show();
+          // handle the switch
+          level_selector->set_levelset(levelset);
+          levelset_selector->hide();
+          m_abort_button->hide();
 
-        m_username_inputbox->hide();
-        m_time_inputbox->hide();
+          level_selector->show();
 
-        start_time = SDL_GetTicks();
+          m_username_inputbox->hide();
+          m_time_inputbox->hide();
+          m_tries_inputbox->hide();
+
+          start_time = SDL_GetTicks();
+        }
       }
     }
   }
@@ -413,6 +430,7 @@ LevelMenu::set_levelset(Levelset* levelset)
     m_username_inputbox->show();
     m_username_inputbox->set_string("");
     m_time_inputbox->show(); 
+    m_tries_inputbox->show(); 
   }
 }
 

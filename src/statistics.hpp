@@ -27,6 +27,7 @@ private:
   int m_play_count;
   bool m_finished;
 
+  static int s_max_number_of_tries;
 public:
   LevelStat();
 
@@ -39,6 +40,7 @@ public:
 
   /** Maximum number of times a user is allowed to retry the given level */
   int get_max_play_count() const;
+  static void set_max_play_count(int v);
 };
 
 class Statistics
