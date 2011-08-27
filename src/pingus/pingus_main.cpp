@@ -42,10 +42,6 @@ extern "C" {
 }
 #endif
 
-#ifdef ENABLE_BINRELOC
-#include "../external/binreloc-2.0/binreloc.h"
-#endif 
-
 #include "gettext.h"
 #include "tinygettext/dictionary_manager.hpp"
 #include "tinygettext/log.hpp"
@@ -542,19 +538,6 @@ PingusMain::init_path_finder()
     }
     CFRelease(ref);
     path_manager.add_path("data");
-#elif ENABLE_BINRELOC
-    BrInitError error;
-    if (br_init(&error) == 0)
-    {
-      std::cout << "Warning: BinReloc failed to initialize (error code " << error << ")" << std::endl;
-      std::cout << "Will fallback to hardcoded default path." << std::endl; 
-    }
-
-    char* exe_path = br_find_exe_dir(".");
-    path_manager.add_path(exe_path + std::string("/../share/pingus/data/"));
-    path_manager.add_path(exe_path + std::string("/data"));
-    path_manager.add_path("data"); // assume game is run from source dir, without any magic
-    free(exe_path);
 #else
     path_manager.add_path("data"); // assume game is run from source dir
 #endif

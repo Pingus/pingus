@@ -20,44 +20,6 @@
 import sys, os
 import SCons.Util
 
-class _SpaceListOptionClass:
-    """An option type for space-separated lists with arbitrary elements."""
-    def CheckDir(self, val):
-        if not os.path.isdir(val):
-            raise SCons.Errors.UserError("No directory at %s" % val)
-
-    def _convert(self, key, val, env):
-        if SCons.Util.is_List(val): # prefer val if it's already a list
-            return val
-        elif len(val) > 0 and val[0] == '[' and val[-1] == ']':
-            # or a repr of a list
-            return eval(val)
-        elif env: # otherwise, use whatever's in env
-            val = env[key]
-            if not SCons.Util.is_List(val):
-                val = val.split(None)
-            return val
-        else: # val was substituted into a string, losing its structure
-            # We'll be called again with env, hopefully that's more useful
-            raise TypeError("try again with the environment")
-
-    def _validate(self, val, env, check, converter):
-        for i in converter(val, env):
-            if check(i):
-                return True
-        return False
-
-    def __call__(self, key, help, check=None, default=[]):
-        def converter(val, env = None):
-            return self._convert(key, val, env)
-
-        validator = None
-        if check is not None:
-            validator = lambda k, v, e: self._validate(v, e, check, converter)
-        return (key, help, default, validator, converter)
-
-SpaceListOption = _SpaceListOptionClass()
-
 def CheckSDLLib(context, sdllib):
     """
     On some platforms, SDL does this ugly redefine-main thing, that can
@@ -107,17 +69,8 @@ def CheckMyProgram(context, prgn):
 
 class Project:
     def __init__(self):
-        Alias('configure')
-        Alias('install')
-
-        if ('configure' in COMMAND_LINE_TARGETS) or \
-           not (File('config.py').exists() and File('config.h').exists()) and \
-           not GetOption('clean'):
-            self.configure()
-        elif ('install' in COMMAND_LINE_TARGETS):
-            self.install()
-        else:
-            self.build()
+        self.configure()
+        self.build()
 
     def configure(self):
         self.configure_begin()
@@ -133,7 +86,7 @@ class Project:
         self.configure_end()
 
     def configure_begin(self):
-        self.define_options(None, ARGUMENTS)
+        self.define_options("custom.py", ARGUMENTS)
         self.env = Environment(options = self.opts)
         Help(self.opts.GenerateHelpText(self.env))
 
@@ -176,7 +129,6 @@ class Project:
 
         config_h = open('config.h', 'w')
         config_h.write('#define VERSION "0.7.3"\n')
-        config_h.write('#define ENABLE_BINRELOC 1\n')
         config_h.write('#define ICONV_CONST %s\n' % self.iconv_const)
         for (v,k) in self.config_h_defines:
             config_h.write('#define %s %s\n' % (v, k))
@@ -297,83 +249,41 @@ class Project:
         self.opts.Add('optional_sources', 'Additional source files', [])
         
     def build(self):
-        if not ('configure' in COMMAND_LINE_TARGETS):
-            if ARGUMENTS != {}:
-                print "Error: You must not supply arguments to the compile step."
-                print "Use:"
-                print ""
-                print "  scons configure [ARGUMENTS]..."
-                print ""
-                print "If you want to change the build configuration."
-                os.sys.exit(1)
+        self.define_options("config.py", {})
+        self.env = Environment(options = self.opts)
+        Help(self.opts.GenerateHelpText(self.env))
 
-            self.define_options("config.py", {})
-            self.env = Environment(options = self.opts)
-            Help(self.opts.GenerateHelpText(self.env))
+        self.opts.Update(self.env)
+        self.env['CPPPATH'] += ['.', 'src/']
 
-            self.opts.Update(self.env)
-            self.env['CPPPATH'] += ['.', 'src/']
+        Clean('pingus', ['config.py', 'config.h'])
 
-            Clean('pingus', ['config.py', 'config.h'])
+        libpingus = self.env.StaticLibrary('pingus',
+                                           Glob('external/tinygettext/*.cpp') + \
+                                           Glob('src/editor/*.cpp') + \
+                                           Glob('src/engine/display/*.cpp') + \
+                                           Glob('src/engine/gui/*.cpp') + \
+                                           Glob('src/engine/input/*.cpp') + \
+                                           Glob('src/engine/screen/*.cpp') + \
+                                           Glob('src/engine/sound/*.cpp') + \
+                                           Glob('src/engine/system/*.cpp') + \
+                                           Glob('src/lisp/*.cpp') + \
+                                           Glob('src/math/*.cpp') + \
+                                           Glob('src/pingus/*.cpp') + \
+                                           Glob('src/pingus/actions/*.cpp') + \
+                                           Glob('src/pingus/colliders/*.cpp') + \
+                                           Glob('src/pingus/components/*.cpp') + \
+                                           Glob('src/pingus/movers/*.cpp') + \
+                                           Glob('src/pingus/particles/*.cpp') + \
+                                           Glob('src/pingus/screens/*.cpp') + \
+                                           Glob('src/pingus/worldmap/*.cpp') + \
+                                           Glob('src/pingus/worldobjs/*.cpp') + \
+                                           Glob('src/util/*.cpp') + \
+                                           self.env['optional_sources'])
+        self.env.Program('pingus', ['src/main.cpp', libpingus])
 
-            libpingus = self.env.StaticLibrary('pingus',
-                                               Glob('external/binreloc-2.0/*.c') + \
-                                               Glob('external/tinygettext/*.cpp') + \
-                                               Glob('src/editor/*.cpp') + \
-                                               Glob('src/engine/display/*.cpp') + \
-                                               Glob('src/engine/gui/*.cpp') + \
-                                               Glob('src/engine/input/*.cpp') + \
-                                               Glob('src/engine/screen/*.cpp') + \
-                                               Glob('src/engine/sound/*.cpp') + \
-                                               Glob('src/engine/system/*.cpp') + \
-                                               Glob('src/lisp/*.cpp') + \
-                                               Glob('src/math/*.cpp') + \
-                                               Glob('src/pingus/*.cpp') + \
-                                               Glob('src/pingus/actions/*.cpp') + \
-                                               Glob('src/pingus/colliders/*.cpp') + \
-                                               Glob('src/pingus/components/*.cpp') + \
-                                               Glob('src/pingus/movers/*.cpp') + \
-                                               Glob('src/pingus/particles/*.cpp') + \
-                                               Glob('src/pingus/screens/*.cpp') + \
-                                               Glob('src/pingus/worldmap/*.cpp') + \
-                                               Glob('src/pingus/worldobjs/*.cpp') + \
-                                               Glob('src/util/*.cpp') + \
-                                               self.env['optional_sources'])
-            self.env.Program('pingus', ['src/main.cpp', libpingus])
-
-            for filename in Glob("test/*_test.cpp", strings=True):
-                self.env.Program(filename[:-4], [filename, libpingus])
-
-    def install(self):
-        AddOption('--prefix',
-                  dest='prefix',
-                  type='string',
-                  nargs=1,
-                  action='store',
-                  metavar='DIR',
-                  help='installation prefix')
-        prefix = GetOption('prefix')
-        if not prefix:
-            raise Exception("no prefix given")
-        
-        self.env = Environment(PREFIX = prefix)
-
-        # find data/ -type f | grep -v "\.svn" | sed "s/[^/]*\.\(.*\)\$/*.\1/" | sort | uniq
-        patterns = [
-            'data/music/*.it',
-            'data/music/*.ogg',
-            'data/music/*.s3m',
-            'data/levels/*/*.pingus',
-            'data/worldmap/*.worldmap',
-            ]
-
-        install_files = []
-        for pattern in patterns:
-            install_files += Glob(pattern, strings=True)
-
-        for filename in install_files:
-            target_filename = '$PREFIX/share/pingus/%s' % filename[5:]
-            Alias('install', self.env.InstallAs(target_filename, filename))
+        for filename in Glob("test/*_test.cpp", strings=True):
+            self.env.Program(filename[:-4], [filename, libpingus])
 
 project = Project()
 
