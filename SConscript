@@ -68,14 +68,9 @@ def CheckMyProgram(context, prgn):
     return False
 
 class Project:
-    def __init__(self):
-        self.configure()
-        self.build()
-
     def configure(self):
         self.configure_begin()
         self.configure_opengl()
-        self.configure_linuxusbmouse()
         self.configure_linuxevdev()
         self.configure_wiimote()
         self.configure_xinput()
@@ -86,146 +81,7 @@ class Project:
         self.configure_end()
 
     def configure_begin(self):
-        self.define_options("custom.py", ARGUMENTS)
-        self.env = Environment(options = self.opts)
-        Help(self.opts.GenerateHelpText(self.env))
-
-        self.opts.Update(self.env)
-
-        if os.environ.has_key('PATH'):
-            self.env['ENV']['PATH'] = os.environ['PATH']
-        if os.environ.has_key('HOME'):
-            self.env['ENV']['HOME'] = os.environ['HOME']
-
-        if os.environ.has_key('PKG_CONFIG_PATH'):
-            self.env['ENV']['PKG_CONFIG_PATH'] = os.environ['PKG_CONFIG_PATH']
-
-        self.env['CPPPATH'] += ['.', 'src/', 'external/']
-
-        self.config_h_defines = []      
-
-        self.config = self.env.Configure(custom_tests = {
-            'CheckMyProgram' : CheckMyProgram,
-            'CheckSDLLib': CheckSDLLib,
-            'CheckIconv': CheckIconv,
-            })
-        self.fatal_error = ""
-        self.reports = ""
-
-    def configure_end(self):
-        self.env = self.config.Finish()
-        self.opts.Save("config.py", self.env)
-
-        print "Reports:"
-        print self.reports
-
-        if not self.fatal_error == "":
-            print "Fatal Errors:"
-            print self.fatal_error
-            if not self.env['ignore_errors']:
-                Exit(1)
-            else:
-                print "\nError are being ignored, the build continues"
-
-        config_h = open('config.h', 'w')
-        config_h.write('#define VERSION "0.7.3"\n')
-        config_h.write('#define ICONV_CONST %s\n' % self.iconv_const)
-        for (v,k) in self.config_h_defines:
-            config_h.write('#define %s %s\n' % (v, k))
-        config_h.close()
-
-        if ('configure' in COMMAND_LINE_TARGETS):
-            print "Configuration written to config.h and config.py, run:"
-            print ""
-            print "  scons"
-            print ""
-            print "To start the compile"
-        else:
-            print "Configuration written to config.h and config.py"
-        ARGUMENTS = {}
-
-    def configure_gxx(self): 
-        # FIXME: Seems to require a rather new version of SCons
-        ret = config.CheckBuilder(context, None, "C++")
-        if ret != "":
-            reports += "  * C++ Compiler missing: " + ret
-
-    def configure_opengl(self):
-        if not self.env['with_opengl']:
-            self.reports += "  * OpenGL support: disabled\n"
-        else:
-            self.reports += "  * OpenGL support: enabled\n"
-            self.config_h_defines  += [('HAVE_OPENGL', 1)]
-            self.env['LIBS']       += ['GL']
-            self.env['optional_sources'] += ['src/engine/display/opengl/opengl_framebuffer_surface_impl.cpp', 
-                                             'src/engine/display/opengl/opengl_framebuffer.cpp' ]
-
-    def configure_linuxusbmouse(self):
-        if not self.env['with_linuxusbmouse']:
-            self.reports += "  * Linux USB mouse support: disabled\n"
-        else:
-            self.reports += "  * Linux USB mouse support: enabled\n"
-            self.config_h_defines  += [('HAVE_LINUXUSBMOUSE', 1)]
-            self.env['optional_sources'] += ['src/engine/input/usbmouse/usbmouse_driver.cpp']
-
-    def configure_linuxevdev(self):
-        if not self.env['with_linuxevdev']:
-            reports += "  * Linux evdev support: disabled\n"
-        else:
-            self.reports += "  * Linux evdev support: ok\n"
-            self.config_h_defines  += [('HAVE_LINUXEVDEV', 1)]
-            self.env['optional_sources'] += ['src/engine/input/evdev/evdev_driver.cpp',
-                                        'src/engine/input/evdev/evdev_device.cpp']
-
-    def configure_wiimote(self):
-        if not self.env['with_wiimote']:
-            self.reports += "  * Wiimote support: disabled\n"        
-        elif config.CheckLibWithHeader('cwiid', 'cwiid.h', 'c++'):
-            self.reports += "  * Wiimote support: yes\n"
-            self.config_h_defines  += [('HAVE_CWIID', 1)]
-            self.env['LIBS']       += ['cwiid']
-            self.env['optional_sources'] += ['src/engine/input/wiimote/wiimote_driver.cpp',
-                                             'src/engine/input/wiimote/wiimote.cpp']
-        else:
-            self.reports += "  * Wiimote support: no (libcwiid or cwiid.h not found)\n"
-
-    def configure_xinput(self):
-        if not self.env['with_xinput']:
-            self.reports += "  * XInput support: disabled\n"
-        elif not config.CheckLibWithHeader('Xi', 'X11/extensions/XInput.h', 'c++'):
-            self.reports += "  * XInput support: no (library Xi not found)\n" ## FIXME: Need to set a define
-        else:
-            self.reports += "  * XInput support: yes\n"
-            self.config_h_defines  += [('HAVE_XINPUT', 1)]
-            self.env['LIBS'] += ['Xi']
-            self.env['optional_sources'] += ['src/engine/input/xinput/xinput_driver.cpp',
-                                             'src/engine/input/xinput/xinput_device.cpp']
-
-    def configure_boost(self):
-        if not self.config.CheckLibWithHeader('boost_signals', 'boost/signals.hpp', 'c++'):
-            if not self.config.CheckLibWithHeader('boost_signals-mt', 'boost/signals.hpp', 'c++'):
-                self.fatal_error += "  * library 'boost_signals' not found\n"
-
-    def configure_png(self):
-        if not self.config.CheckLibWithHeader('png', 'png.h', 'c++'):
-            self.fatal_error += "  * library 'png' not found\n"
-
-    def configure_sdl(self):
-        if self.config.CheckMyProgram('sdl-config'):
-            self.env.ParseConfig('sdl-config  --cflags --libs')
-            for sdllib in ['image', 'mixer']:
-                if not self.config.CheckSDLLib(sdllib):
-                    self.fatal_error += "  * SDL library '%s' not found\n" % sdllib
-        else:
-            fatal_error += "  * couldn't find sdl-config, SDL missing\n"
-
-    def configure_iconv(self):
-        self.iconv_const = self.config.CheckIconv()
-        if self.iconv_const == False:
-            self.fatal_error += "  * can't call iconv\n"
-
-    def define_options(self, filename, args):
-        self.opts = Variables(filename, args)
+        self.opts = Variables("custom.py", ARGUMENTS)
         self.opts.Add('CC', 'C Compiler', 'gcc')
         self.opts.Add('CXX', 'C++ Compiler', 'g++')
     #   self.opts.Add('debug', 'Build with debugging options', 0)
@@ -242,21 +98,120 @@ class Project:
 
         self.opts.Add(BoolVariable('with_opengl',        'Build with OpenGL support', True))
         self.opts.Add(BoolVariable('with_xinput',        'Build with Xinput support', False))
-        self.opts.Add(BoolVariable('with_linuxusbmouse', 'Build with Linux USB mouse support', True))
         self.opts.Add(BoolVariable('with_linuxevdev',    'Build with Linux evdev support', True))
         self.opts.Add(BoolVariable('with_wiimote',       'Build with Wiimote support', False))
         self.opts.Add(BoolVariable('ignore_errors',      'Ignore any fatal configuration errors', False))
         self.opts.Add('optional_sources', 'Additional source files', [])
-        
-    def build(self):
-        self.define_options("config.py", {})
+
         self.env = Environment(options = self.opts)
+        self.env.Append(CPPDEFINES = [('VERSION', '"\\"0.8.0\\""')])
         Help(self.opts.GenerateHelpText(self.env))
 
-        self.opts.Update(self.env)
-        self.env['CPPPATH'] += ['.', 'src/']
+        if os.environ.has_key('PATH'):
+            self.env['ENV']['PATH'] = os.environ['PATH']
+        if os.environ.has_key('HOME'):
+            self.env['ENV']['HOME'] = os.environ['HOME']
 
-        Clean('pingus', ['config.py', 'config.h'])
+        if os.environ.has_key('PKG_CONFIG_PATH'):
+            self.env['ENV']['PKG_CONFIG_PATH'] = os.environ['PKG_CONFIG_PATH']
+
+        self.env.Append(CPPPATH = ['.', 'src/', 'external/'])
+
+        self.conf = self.env.Configure(custom_tests = {
+            'CheckMyProgram' : CheckMyProgram,
+            'CheckSDLLib': CheckSDLLib,
+            'CheckIconv': CheckIconv,
+            })
+        self.fatal_error = ""
+        self.reports = ""
+
+    def configure_end(self):
+        self.env = self.conf.Finish()
+
+        print "Reports:"
+        print self.reports
+
+        if not self.fatal_error == "":
+            print "Fatal Errors:"
+            print self.fatal_error
+            Exit(1)
+
+    def configure_gxx(self): 
+        # FIXME: Seems to require a rather new version of SCons
+        ret = config.CheckBuilder(context, None, "C++")
+        if ret != "":
+            reports += "  * C++ Compiler missing: " + ret
+
+    def configure_opengl(self):
+        if not self.env['with_opengl']:
+            self.reports += "  * OpenGL support: disabled\n"
+        else:
+            self.reports += "  * OpenGL support: enabled\n"
+            self.conf.env.Append(CPPDEFINES = [('HAVE_OPENGL', 1)])
+            self.conf.env.Append(LIBS = ['GL'])
+            self.conf.env.Append(optional_sources = ['src/engine/display/opengl/opengl_framebuffer_surface_impl.cpp', 
+                                                     'src/engine/display/opengl/opengl_framebuffer.cpp' ])
+
+    def configure_linuxevdev(self):
+        if not self.env['with_linuxevdev']:
+            reports += "  * Linux evdev support: disabled\n"
+        else:
+            self.reports += "  * Linux evdev support: ok\n"
+            self.conf.env.Append(CPPDEFINES = [('HAVE_LINUXEVDEV', 1)])
+            self.conf.env.Append(optional_sources = ['src/engine/input/evdev/evdev_driver.cpp',
+                                                     'src/engine/input/evdev/evdev_device.cpp'])
+
+    def configure_wiimote(self):
+        if not self.env['with_wiimote']:
+            self.reports += "  * Wiimote support: disabled\n"        
+        elif config.CheckLibWithHeader('cwiid', 'cwiid.h', 'c++'):
+            self.reports += "  * Wiimote support: yes\n"
+            self.conf.env.Append(CPPDEFINES = [('HAVE_CWIID', 1)])
+            self.conf.env.Append(LIBS = ['cwiid'])
+            self.conf.env.Append(optional_sources = ['src/engine/input/wiimote/wiimote_driver.cpp',
+                                                     'src/engine/input/wiimote/wiimote.cpp'])
+        else:
+            self.reports += "  * Wiimote support: no (libcwiid or cwiid.h not found)\n"
+
+    def configure_xinput(self):
+        if not self.env['with_xinput']:
+            self.reports += "  * XInput support: disabled\n"
+        elif not config.CheckLibWithHeader('Xi', 'X11/extensions/XInput.h', 'c++'):
+            self.reports += "  * XInput support: no (library Xi not found)\n" ## FIXME: Need to set a define
+        else:
+            self.reports += "  * XInput support: yes\n"
+            self.conf.env.Append(CPPDEFINES = [('HAVE_XINPUT', 1)])
+            self.conf.env.Append(LIBS = ['Xi'])
+            self.conf.env.Append(optional_sources = ['src/engine/input/xinput/xinput_driver.cpp',
+                                                     'src/engine/input/xinput/xinput_device.cpp'])
+            
+    def configure_boost(self):
+        if not self.conf.CheckLibWithHeader('boost_signals', 'boost/signals.hpp', 'c++'):
+            if not self.conf.CheckLibWithHeader('boost_signals-mt', 'boost/signals.hpp', 'c++'):
+                self.fatal_error += "  * library 'boost_signals' not found\n"
+
+    def configure_png(self):
+        if not self.conf.CheckLibWithHeader('png', 'png.h', 'c++'):
+            self.fatal_error += "  * library 'png' not found\n"
+
+    def configure_sdl(self):
+        if self.conf.CheckMyProgram('sdl-config'):
+            self.conf.env.ParseConfig('sdl-config  --cflags --libs')
+            for sdllib in ['image', 'mixer']:
+                if not self.conf.CheckSDLLib(sdllib):
+                    self.fatal_error += "  * SDL library '%s' not found\n" % sdllib
+        else:
+            fatal_error += "  * couldn't find sdl-config, SDL missing\n"
+
+    def configure_iconv(self):
+        iconv_const = self.conf.CheckIconv()
+        if iconv_const == False:
+            self.fatal_error += "  * can't call iconv\n"
+        else:
+            self.conf.env.Append(CPPDEFINES = [('ICONV_CONST', iconv_const)])
+
+    def build(self):
+        self.env.Append(CPPPATH = ['.', 'src/'])
 
         libpingus = self.env.StaticLibrary('pingus',
                                            Glob('external/tinygettext/*.cpp') + \
@@ -280,11 +235,14 @@ class Project:
                                            Glob('src/pingus/worldobjs/*.cpp') + \
                                            Glob('src/util/*.cpp') + \
                                            self.env['optional_sources'])
+
         self.env.Program('pingus', ['src/main.cpp', libpingus])
 
         for filename in Glob("test/*_test.cpp", strings=True):
             self.env.Program(filename[:-4], [filename, libpingus])
 
 project = Project()
+project.configure()
+project.build()
 
 ## EOF ##

@@ -20,8 +20,6 @@
 #include <fstream>
 #include <iostream>
 
-#include "config.h"
-
 #include "pingus/pingus_level.hpp"
 #include "util/sexpr_file_writer.hpp"
 

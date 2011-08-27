@@ -17,7 +17,6 @@
 #include "engine/display/screenshot.hpp"
 
 #include <assert.h>
-#include <config.h>
 #include <iostream>
 #include <png.h>
 

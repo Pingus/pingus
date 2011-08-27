@@ -60,14 +60,6 @@ A full list of variables is available via:
 
  % scons -h
 
-If the configuration step fails for any reason and you want to simply
-skip it, use: 
-
- % scons configure ignore_errors=True
- % scons
-
-The build might however fail if you do that.
-
 
 Running:
 --------

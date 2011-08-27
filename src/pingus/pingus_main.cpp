@@ -16,7 +16,6 @@
 
 #include "pingus/pingus_main.hpp"
 
-#include <config.h>
 #include <signal.h>
 
 #include "editor/editor_level.hpp"

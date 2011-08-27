@@ -18,7 +18,6 @@
 
 #include <iostream>
 
-#include "config.h"
 #include "engine/display/display.hpp"
 #include "math/size.hpp"
 

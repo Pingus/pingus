@@ -16,8 +16,6 @@
 
 #include "pingus/screens/pingus_menu.hpp"
 
-#include <config.h>
-
 #include "editor/editor_screen.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "engine/sound/sound.hpp"
