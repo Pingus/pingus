@@ -27,6 +27,10 @@ Stuff to do at all times:
 Roadmap for Pingus 0.8.0:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* add priority to levelsets that can be used to sort them
+
+* make video walkthrough for the whole game (demo files still don't really work)
+
 Code Cleanup
 ============
 
@@ -116,6 +120,10 @@ OLPC Issues
 
 "Important" Stuff and Random Notes:
 ===================================
+
+* music is ignoring some notes in playback, mikmod is likely cause of
+  the trouble, converting everything to .ogg might be an acceptable
+  workaround
 
 * map middle button to pause
 
@@ -278,6 +286,8 @@ New Features
 Wishlist:
 =========
 
+* levelset list should resize on window resize
+
 * particle pingu explosions are rects, should be circles
   (Vel(rand()%10, rand()%10) vs Vel(angle, length))
 
@@ -321,6 +331,8 @@ Animation and graphic issues:
 
 Bugs:
 =====
+
+* go into  a level, resize the window, leave the level, worldmap will look messed up 
 
 * GroundMap tiles are currently RGBA, while in reality they are just
   RGB with a colorkey, room for optimization

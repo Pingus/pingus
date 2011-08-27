@@ -1,17 +1,25 @@
 pingus/src/
 -=-=-=-=-=-
 
-pingus/
-	The core game, menus and stuff
-
 editor/
         The level editor
 
 engine/
         Generic non game specific rendering and sounds parts of the code
 
+lisp/
+        S-Expression parsing library
+
+math/
+        Math related classes
+
+pingus/
+	The core game, menus and stuff
+
 util/
         Portable utility classes that don't depend on SDL or other multimedia libraries
 
+win32/
+        Windows specific code
 
 # EOF #
