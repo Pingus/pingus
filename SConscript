@@ -50,7 +50,7 @@ int main() {
    return 0;
 }
 """
-    # config.CheckLibWithHeader(context, 'iconv', 'iconv.h', 'c++') # Ok to fail
+    # self.conf.CheckLibWithHeader(context, 'iconv', 'iconv.h', 'c++') # Ok to fail
     for i in ['', 'const']:
         if context.TryCompile(text % i, ".cpp"):
             context.Result("use '%s'" % i)
@@ -138,7 +138,7 @@ class Project:
 
     def configure_gxx(self): 
         # FIXME: Seems to require a rather new version of SCons
-        ret = config.CheckBuilder(context, None, "C++")
+        ret = self.conf.CheckBuilder(context, None, "C++")
         if ret != "":
             reports += "  * C++ Compiler missing: " + ret
 
@@ -164,7 +164,7 @@ class Project:
     def configure_wiimote(self):
         if not self.env['with_wiimote']:
             self.reports += "  * Wiimote support: disabled\n"        
-        elif config.CheckLibWithHeader('cwiid', 'cwiid.h', 'c++'):
+        elif self.conf.CheckLibWithHeader('cwiid', 'cwiid.h', 'c++'):
             self.reports += "  * Wiimote support: yes\n"
             self.conf.env.Append(CPPDEFINES = [('HAVE_CWIID', 1)])
             self.conf.env.Append(LIBS = ['cwiid'])
@@ -176,7 +176,7 @@ class Project:
     def configure_xinput(self):
         if not self.env['with_xinput']:
             self.reports += "  * XInput support: disabled\n"
-        elif not config.CheckLibWithHeader('Xi', 'X11/extensions/XInput.h', 'c++'):
+        elif not self.conf.CheckLibWithHeader('Xi', 'X11/extensions/XInput.h', 'c++'):
             self.reports += "  * XInput support: no (library Xi not found)\n" ## FIXME: Need to set a define
         else:
             self.reports += "  * XInput support: yes\n"
