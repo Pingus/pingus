@@ -325,6 +325,7 @@ class Project:
                                                Glob('src/engine/input/*.cpp') + \
                                                Glob('src/engine/screen/*.cpp') + \
                                                Glob('src/engine/sound/*.cpp') + \
+                                               Glob('src/engine/system/*.cpp') + \
                                                Glob('src/lisp/*.cpp') + \
                                                Glob('src/math/*.cpp') + \
                                                Glob('src/pingus/*.cpp') + \
@@ -357,6 +358,7 @@ class Project:
         
         self.env = Environment(PREFIX = prefix)
 
+        # find data/ -type f | grep -v "\.svn" | sed "s/[^/]*\.\(.*\)\$/*.\1/" | sort | uniq
         patterns = [
             'data/music/*.it',
             'data/music/*.ogg',
