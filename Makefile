@@ -15,9 +15,9 @@
 ##  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 DESTDIR = 
-PREFIX  = "/usr/local"
-DATADIR = "${PREFIX}/share/pingus"
-BINDIR  = "${PREFIX}/bin"
+PREFIX  = /usr/local
+DATADIR = $(PREFIX)/share/pingus
+BINDIR  = $(PREFIX)/bin
 
 build/pingus:
 	scons
@@ -30,11 +30,11 @@ clean:
 install: install-exec install-data
 
 install-exec: build/pingus
-	install -d "${DESTDIR}${BINDIR}"
+	install -d "$(DESTDIR)$(BINDIR)"
 
-	install -D build/pingus "${DESTDIR}${BINDIR}/pingus.bin"
-	echo "#!/bin/sh\nexec \"${BINDIR}/pingus.bin\" --datadir \"${DATADIR}\"" > "${DESTDIR}${BINDIR}/pingus"
-	chmod 755 "${DESTDIR}${BINDIR}/pingus"
+	install -D build/pingus "$(DESTDIR)$(BINDIR)/pingus.bin"
+	echo "#!/bin/sh\nexec \"$(BINDIR)/pingus.bin\" --datadir \"$(DATADIR)\"" > "$(DESTDIR)$(BINDIR)/pingus"
+	chmod 755 "$(DESTDIR)$(BINDIR)/pingus"
 
 install-data:
 	cd data/ && \
@@ -53,7 +53,7 @@ install-data:
         -name "*.res" -o \
         -name "*.pingus" -o \
         -name "*.levelset" \
-        \) -exec install -D {} ${DESTDIR}${DATADIR}/{} \;
+        \) -exec install -D {} $(DESTDIR)$(DATADIR)/{} \;
 
 .PHONY : clean install install-exec install-data
 
