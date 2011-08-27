@@ -159,7 +159,7 @@ Screenshot::save_png(const std::string& filename, uint8_t* buffer, int width, in
       return;
     }
 
-  if (setjmp(png_ptr->jmpbuf))
+  if (setjmp(png_jmpbuf(png_ptr)))
     {
       // If we get here, we had a problem reading the file
       fclose(fp);
