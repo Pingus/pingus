@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_SURFACE_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_SURFACE_HPP
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include "engine/display/resource_modifier.hpp"
 #include "math/color.hpp"
@@ -34,7 +34,7 @@ class Surface
 public:
   Surface();
 
-  Surface(boost::shared_ptr<SurfaceImpl> impl);
+  Surface(std::shared_ptr<SurfaceImpl> impl);
 
   Surface(const Pathname& name);
 
@@ -76,7 +76,7 @@ public:
   void print(std::ostream& out);
 
 protected:
-  boost::shared_ptr<SurfaceImpl> impl;
+  std::shared_ptr<SurfaceImpl> impl;
 };
 
 #endif

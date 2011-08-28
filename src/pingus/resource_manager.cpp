@@ -54,7 +54,7 @@ void
 ResourceManager::add_resources(const std::string& filename)
 {
   pout(PINGUS_DEBUG_RESOURCES) << "ResourceManager: " << filename << std::endl;
-  boost::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(filename);
+  std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(filename);
   if (sexpr)
   {
     SExprFileReader reader(sexpr->get_list_elem(0));

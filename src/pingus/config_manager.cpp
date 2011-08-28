@@ -56,7 +56,7 @@ ConfigManager::load(const std::string& file)
 {
   filename = file;
 
-  boost::shared_ptr<lisp::Lisp> sexpr;
+  std::shared_ptr<lisp::Lisp> sexpr;
 
   try 
   {

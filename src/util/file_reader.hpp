@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_UTIL_FILE_READER_HPP
 #define HEADER_PINGUS_UTIL_FILE_READER_HPP
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include <vector>
 
 class Size;
@@ -35,7 +35,7 @@ class Pathname;
 class FileReader
 {
 public:
-  FileReader(boost::shared_ptr<FileReaderImpl> impl_);
+  FileReader(std::shared_ptr<FileReaderImpl> impl_);
   FileReader();
   virtual ~FileReader() {}
 
@@ -82,7 +82,7 @@ public:
   static std::vector<FileReader> parse_many(const Pathname& pathname);
 
 private:
-  boost::shared_ptr<FileReaderImpl> impl;
+  std::shared_ptr<FileReaderImpl> impl;
 };
 
 #endif

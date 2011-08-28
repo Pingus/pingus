@@ -49,11 +49,11 @@ Lisp::Lisp(LispType newtype, const std::string& str) :
   memcpy(v.string, str.c_str(), str.size()+1);
 }
 
-Lisp::Lisp(const std::vector<boost::shared_ptr<Lisp> >& list_elements) :
+Lisp::Lisp(const std::vector<std::shared_ptr<Lisp> >& list_elements) :
   v(), type(TYPE_LIST)
 {
   v.list.size = list_elements.size();
-  v.list.entries = new boost::shared_ptr<Lisp> [v.list.size];
+  v.list.entries = new std::shared_ptr<Lisp> [v.list.size];
   for(size_t i = 0; i < v.list.size; ++i) {
     v.list.entries[i] = list_elements[i];
   }

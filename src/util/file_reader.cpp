@@ -21,7 +21,7 @@
 #include "util/pathname.hpp"
 #include "util/sexpr_file_reader.hpp"
 
-FileReader::FileReader(boost::shared_ptr<FileReaderImpl> impl_) :
+FileReader::FileReader(std::shared_ptr<FileReaderImpl> impl_) :
   impl(impl_)
 {
 }
@@ -194,7 +194,7 @@ FileReader::read_section(const char* name)   const
 FileReader
 FileReader::parse(const std::string& filename)
 {
-  boost::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(filename);
+  std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(filename);
   if (sexpr)
   {
     return SExprFileReader(sexpr->get_list_elem(0));
@@ -214,7 +214,7 @@ FileReader::parse(const Pathname& pathname)
 std::vector<FileReader>
 FileReader::parse_many(const Pathname& pathname)
 {
-  boost::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(pathname.get_sys_path());
+  std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(pathname.get_sys_path());
   if (sexpr)
   {
     std::vector<FileReader> sections;

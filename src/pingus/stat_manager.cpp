@@ -74,7 +74,7 @@ StatManager::load(const std::string& filename)
     save(filename);
   }
 
-  boost::shared_ptr<lisp::Lisp> sexpr;
+  std::shared_ptr<lisp::Lisp> sexpr;
   try {
     sexpr = lisp::Parser::parse(filename);
   }

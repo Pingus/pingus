@@ -16,6 +16,8 @@
 
 #include "pingus/world.hpp"
 
+#include <algorithm>
+
 #include "engine/display/scene_context.hpp"
 #include "engine/sound/sound.hpp"
 #include "pingus/collision_map.hpp"

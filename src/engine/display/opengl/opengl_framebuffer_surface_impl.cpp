@@ -16,6 +16,8 @@
 
 #include "engine/display/opengl/opengl_framebuffer_surface_impl.hpp"
 
+#include <assert.h>
+
 namespace {
 
 inline int next_power_of_two(int val)

@@ -52,7 +52,7 @@ public:
   Surface to_surface() const;
 
 private:
-  boost::shared_ptr<FramebufferSurfaceImpl> impl;
+  std::shared_ptr<FramebufferSurfaceImpl> impl;
 };
 
 #endif

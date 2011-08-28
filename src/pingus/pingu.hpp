@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_PINGU_HPP
 #define HEADER_PINGUS_PINGUS_PINGU_HPP
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include "math/vector3f.hpp"
 #include "pingus/direction.hpp"
@@ -44,17 +44,17 @@ public:
 
 private:
   /** The primary action with is currently in use */
-  boost::shared_ptr<PinguAction> action;
+  std::shared_ptr<PinguAction> action;
 
   /** A secondary action which will turn active after a given amount of time
       The only example is currently the bomber. */
-  boost::shared_ptr<PinguAction> countdown_action;
+  std::shared_ptr<PinguAction> countdown_action;
 
   /** the action that gets triggered when the pingu hits a wall */
-  boost::shared_ptr<PinguAction> wall_action;
+  std::shared_ptr<PinguAction> wall_action;
 
   /** the action that gets triggered when the pingu falls */
-  boost::shared_ptr<PinguAction> fall_action;
+  std::shared_ptr<PinguAction> fall_action;
 
   /** The previous_action contains the action type that was in action
       before action got applied, its here to enable action to behave
@@ -80,10 +80,10 @@ private:
   Vector3f velocity;
 
 private:
-  bool request_set_action(boost::shared_ptr<PinguAction>);
-  void set_action(boost::shared_ptr<PinguAction>);
+  bool request_set_action(std::shared_ptr<PinguAction>);
+  void set_action(std::shared_ptr<PinguAction>);
 
-  boost::shared_ptr<PinguAction> create_action(ActionName::Enum action);
+  std::shared_ptr<PinguAction> create_action(ActionName::Enum action);
 
 public:
 

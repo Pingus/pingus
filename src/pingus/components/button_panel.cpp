@@ -16,6 +16,8 @@
 
 #include "pingus/components/button_panel.hpp"
 
+#include <algorithm>
+
 #include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/server.hpp"

@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_GRAPHIC_CONTEXT_STATE_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_GRAPHIC_CONTEXT_STATE_HPP
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include "engine/display/scene_context.hpp"
 
@@ -61,7 +61,7 @@ public:
   Vector2i screen2world(const Vector2i& pos) const;
 
 private:
-  boost::shared_ptr<GraphicContextStateImpl> impl;
+  std::shared_ptr<GraphicContextStateImpl> impl;
 };
 
 #endif

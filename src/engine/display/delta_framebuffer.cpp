@@ -16,6 +16,8 @@
 
 #include "engine/display/delta_framebuffer.hpp"
 
+#include <algorithm>
+
 #include "engine/display/rect_merger.hpp"
 #include "engine/display/sdl_framebuffer.hpp"
 #include "util/memory_pool.hpp"

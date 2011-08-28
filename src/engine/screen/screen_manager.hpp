@@ -35,7 +35,7 @@ class Size;
 class DrawingContext;
 class Screen;
 
-typedef boost::shared_ptr<Screen> ScreenPtr;
+typedef std::shared_ptr<Screen> ScreenPtr;
 
 class ScreenManager
 {

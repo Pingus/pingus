@@ -39,7 +39,7 @@ SavegameManager::SavegameManager(const std::string& arg_filename) :
   assert(instance_ == 0);
   instance_ = this;
 
-  boost::shared_ptr<lisp::Lisp> sexpr;
+  std::shared_ptr<lisp::Lisp> sexpr;
 
   try 
   {

@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_ENGINE_DISPLAY_FONT_HPP
 
 #include <SDL.h>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include "math/rect.hpp"
 
@@ -42,7 +42,7 @@ public:
   Rect bounding_rect(int , int, const std::string& str) const;
 
 private:
-  boost::shared_ptr<FontImpl> impl;
+  std::shared_ptr<FontImpl> impl;
 };
 
 #endif

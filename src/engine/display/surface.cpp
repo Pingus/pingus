@@ -52,7 +52,7 @@ Surface::Surface() :
 {
 }
 
-Surface::Surface(boost::shared_ptr<SurfaceImpl> impl_) :
+Surface::Surface(std::shared_ptr<SurfaceImpl> impl_) :
   impl(impl_)
 {
 }
@@ -63,7 +63,7 @@ Surface::Surface(const Pathname& pathname) :
   SDL_Surface* surface = IMG_Load(pathname.get_sys_path().c_str());
   if (surface)
   {
-    impl = boost::shared_ptr<SurfaceImpl>(new SurfaceImpl(surface));
+    impl = std::shared_ptr<SurfaceImpl>(new SurfaceImpl(surface));
   }
 }
 
@@ -258,7 +258,7 @@ Surface::mod(ResourceModifier::Enum modifier)
 Surface
 Surface::scale(int w, int h)
 {
-  return Surface(boost::shared_ptr<SurfaceImpl>
+  return Surface(std::shared_ptr<SurfaceImpl>
                  (new SurfaceImpl(Blitter::scale_surface(impl->surface, w, h))));
 }
 
@@ -279,7 +279,7 @@ Surface::clone() const
     SDL_BlitSurface(impl->surface, NULL, new_surface, NULL);
   }
  
-  return Surface(boost::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface)));
+  return Surface(std::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface)));
 }
 
 Surface
@@ -301,7 +301,7 @@ Surface::subsection(const Rect& rect) const
 
   SDL_BlitSurface(impl->surface, NULL, new_surface, &dst_rect);
 
-  return Surface(boost::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface)));
+  return Surface(std::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface)));
 }
 
 void

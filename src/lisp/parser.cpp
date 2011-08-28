@@ -62,7 +62,7 @@ Parser::~Parser()
   delete lexer;
 }
 
-boost::shared_ptr<Lisp>
+std::shared_ptr<Lisp>
 Parser::parse(const std::string& filename)
 {
   std::ifstream in(filename.c_str()); // FIXME: Temporary switched away from physfs IFileStream
@@ -75,7 +75,7 @@ Parser::parse(const std::string& filename)
   return parse(in, filename);
 }
 
-boost::shared_ptr<Lisp>
+std::shared_ptr<Lisp>
 Parser::parse(std::istream& stream, const std::string& filename)
 {
   std::unique_ptr<Parser> parser (new Parser());
@@ -87,7 +87,7 @@ Parser::parse(std::istream& stream, const std::string& filename)
   if(parser->token != Lexer::TOKEN_OPEN_PAREN)
     throw ParseError(parser.get(), "file doesn't start with '('");
 
-  boost::shared_ptr<Lisp> result(parser->parse());
+  std::shared_ptr<Lisp> result(parser->parse());
   if(parser->token != Lexer::TOKEN_EOF) {
     if(parser->token == Lexer::TOKEN_CLOSE_PAREN)
       throw ParseError(parser.get(), "too many ')'");
@@ -98,10 +98,10 @@ Parser::parse(std::istream& stream, const std::string& filename)
   return result;
 }
 
-boost::shared_ptr<Lisp>
+std::shared_ptr<Lisp>
 Parser::parse()
 {
-  std::vector<boost::shared_ptr<Lisp> > entries;
+  std::vector<std::shared_ptr<Lisp> > entries;
   while(token != Lexer::TOKEN_CLOSE_PAREN && token != Lexer::TOKEN_EOF) {
     switch(token) {
       case Lexer::TOKEN_OPEN_PAREN:
@@ -113,7 +113,7 @@ Parser::parse()
           token = lexer->getNextToken();
           if(token != Lexer::TOKEN_STRING)
             throw ParseError(this, "Expected string after '(_' sequence");
-          entries.push_back(boost::shared_ptr<Lisp>(new Lisp(Lisp::TYPE_STRING, lexer->getString())));
+          entries.push_back(std::shared_ptr<Lisp>(new Lisp(Lisp::TYPE_STRING, lexer->getString())));
           
           token = lexer->getNextToken();
           if(token != Lexer::TOKEN_CLOSE_PAREN)
@@ -130,28 +130,28 @@ Parser::parse()
         }
         break;
       case Lexer::TOKEN_SYMBOL:
-        entries.push_back(boost::shared_ptr<Lisp>(new Lisp(Lisp::TYPE_SYMBOL, lexer->getString())));
+        entries.push_back(std::shared_ptr<Lisp>(new Lisp(Lisp::TYPE_SYMBOL, lexer->getString())));
         break;
       case Lexer::TOKEN_STRING:
-        entries.push_back(boost::shared_ptr<Lisp>(new Lisp(Lisp::TYPE_STRING, lexer->getString())));
+        entries.push_back(std::shared_ptr<Lisp>(new Lisp(Lisp::TYPE_STRING, lexer->getString())));
         break;
       case Lexer::TOKEN_INTEGER: {
         int val;
         sscanf(lexer->getString(), "%d", &val);
-        entries.push_back(boost::shared_ptr<Lisp>(new Lisp(val)));
+        entries.push_back(std::shared_ptr<Lisp>(new Lisp(val)));
         break;
       }
       case Lexer::TOKEN_REAL: {
         float val;
         sscanf(lexer->getString(), "%f", &val);
-        entries.push_back(boost::shared_ptr<Lisp>(new Lisp(val)));
+        entries.push_back(std::shared_ptr<Lisp>(new Lisp(val)));
         break;
       }
       case Lexer::TOKEN_TRUE:
-        entries.push_back(boost::shared_ptr<Lisp>(new Lisp(true)));
+        entries.push_back(std::shared_ptr<Lisp>(new Lisp(true)));
         break;
       case Lexer::TOKEN_FALSE:
-        entries.push_back(boost::shared_ptr<Lisp>(new Lisp(false)));
+        entries.push_back(std::shared_ptr<Lisp>(new Lisp(false)));
         break;
       default:
         // this should never happen
@@ -161,7 +161,7 @@ Parser::parse()
     token = lexer->getNextToken();
   }
   
-  return boost::shared_ptr<Lisp>(new Lisp(entries));
+  return std::shared_ptr<Lisp>(new Lisp(entries));
 }
 
 } // end of namespace lisp

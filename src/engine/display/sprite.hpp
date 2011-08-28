@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_SPRITE_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_SPRITE_HPP
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include <string>
 
 #include "math/origin.hpp"
@@ -63,7 +63,7 @@ public:
   Surface to_surface() const;
 
 private:
-  boost::shared_ptr<SpriteImpl> impl;
+  std::shared_ptr<SpriteImpl> impl;
 };
 
 #endif

@@ -53,7 +53,7 @@ private:
   void parse_properties(const FileReader& reader);
 
 protected:
-  boost::shared_ptr<PingusWorldmapImpl> impl;
+  std::shared_ptr<PingusWorldmapImpl> impl;
 };
 
 #endif

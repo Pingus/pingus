@@ -17,6 +17,7 @@
 #include "engine/display/drawing_context.hpp"
 
 #include <iostream>
+#include <algorithm>
 
 #include "engine/display/display.hpp"
 #include "engine/display/font.hpp"

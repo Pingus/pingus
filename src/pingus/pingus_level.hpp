@@ -87,7 +87,7 @@ private:
             const Pathname& pathname);
 
 protected:
-  boost::shared_ptr<PingusLevelImpl> impl;
+  std::shared_ptr<PingusLevelImpl> impl;
 };
 
 #endif
