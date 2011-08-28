@@ -140,7 +140,7 @@ class Project:
         # FIXME: Seems to require a rather new version of SCons
         ret = self.conf.CheckBuilder(context, None, "C++")
         if ret != "":
-            reports += "  * C++ Compiler missing: " + ret
+            self.reports += "  * C++ Compiler missing: " + ret
 
     def configure_opengl(self):
         if not self.env['with_opengl']:
@@ -154,7 +154,7 @@ class Project:
 
     def configure_linuxevdev(self):
         if not self.env['with_linuxevdev']:
-            reports += "  * Linux evdev support: disabled\n"
+            self.reports += "  * Linux evdev support: disabled\n"
         else:
             self.reports += "  * Linux evdev support: ok\n"
             self.conf.env.Append(CPPDEFINES = [('HAVE_LINUXEVDEV', 1)])
