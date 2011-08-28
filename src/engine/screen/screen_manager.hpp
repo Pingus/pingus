@@ -42,12 +42,12 @@ class ScreenManager
 private:
   static ScreenManager* instance_;
 
-  std::auto_ptr<Input::Manager>    input_manager;
-  std::auto_ptr<Input::Controller> input_controller;
+  std::unique_ptr<Input::Manager>    input_manager;
+  std::unique_ptr<Input::Controller> input_controller;
 
-  std::auto_ptr<DrawingContext> display_gc;
+  std::unique_ptr<DrawingContext> display_gc;
   
-  std::auto_ptr<FPSCounter> fps_counter;
+  std::unique_ptr<FPSCounter> fps_counter;
   Sprite cursor;
 
   /** Screen stack (first is the screen, second is delete_screen,

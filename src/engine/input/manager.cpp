@@ -82,7 +82,7 @@ static std::string get_driver_part(const std::string& fullname)
 Controller*
 Manager::create_controller(const Pathname& filename)
 {
-  std::auto_ptr<Controller> controller(new Controller(desc));
+  std::unique_ptr<Controller> controller(new Controller(desc));
 
   FileReader reader = FileReader::parse(filename);
 

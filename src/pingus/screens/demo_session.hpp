@@ -47,8 +47,8 @@ class DemoSession : public GUIScreen
 private:
   Pathname pathname;
 
-  std::auto_ptr<Server>     server;
-  std::auto_ptr<PingusDemo> demo;
+  std::unique_ptr<Server>     server;
+  std::unique_ptr<PingusDemo> demo;
   std::vector<ServerEvent>  events;
 
   PingusCounter* pcounter;

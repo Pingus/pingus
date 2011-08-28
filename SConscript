@@ -104,6 +104,7 @@ class Project:
         self.opts.Add('optional_sources', 'Additional source files', [])
 
         self.env = Environment(options = self.opts)
+        self.env.Append(CXXFLAGS = ["-std=c++0x"])
         self.env.Append(CPPDEFINES = [('VERSION', '"\\"0.8.0\\""')])
         Help(self.opts.GenerateHelpText(self.env))
 
@@ -115,7 +116,7 @@ class Project:
         if os.environ.has_key('PKG_CONFIG_PATH'):
             self.env['ENV']['PKG_CONFIG_PATH'] = os.environ['PKG_CONFIG_PATH']
 
-        self.env.Append(CPPPATH = ['.', 'src/', 'external/'])
+        self.env.Append(CPPPATH = ['.', 'src/'])
 
         self.conf = self.env.Configure(custom_tests = {
             'CheckMyProgram' : CheckMyProgram,
@@ -211,10 +212,10 @@ class Project:
             self.conf.env.Append(CPPDEFINES = [('ICONV_CONST', iconv_const)])
 
     def build(self):
-        self.env.Append(CPPPATH = ['.', 'src/'])
+        self.env.Append(CPPPATH = ['.', 'src/', 'external/tinygettext/'])
 
         libpingus = self.env.StaticLibrary('pingus',
-                                           Glob('external/tinygettext/*.cpp') + \
+                                           Glob('external/tinygettext/tinygettext/*.cpp') + \
                                            Glob('src/editor/*.cpp') + \
                                            Glob('src/engine/display/*.cpp') + \
                                            Glob('src/engine/gui/*.cpp') + \
@@ -238,8 +239,9 @@ class Project:
 
         self.env.Program('pingus', ['src/main.cpp', libpingus])
 
-        for filename in Glob("test/*_test.cpp", strings=True):
-            self.env.Program(filename[:-4], [filename, libpingus])
+        if False:
+            for filename in Glob("test/*_test.cpp", strings=True):
+                self.env.Program(filename[:-4], [filename, libpingus])
 
 project = Project()
 project.configure()

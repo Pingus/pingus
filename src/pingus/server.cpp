@@ -36,7 +36,7 @@ static std::string get_date_string ()
   return std::string(buffer);
 }
 
-static std::auto_ptr<std::ostream> get_demostream(const PingusLevel& plf)
+static std::unique_ptr<std::ostream> get_demostream(const PingusLevel& plf)
 {
   std::string flat_levelname = plf.get_resname();
 
@@ -47,13 +47,13 @@ static std::auto_ptr<std::ostream> get_demostream(const PingusLevel& plf)
 
   std::string filename = System::get_userdir() + "demos/" + flat_levelname + "-" + get_date_string() + ".pingus-demo";
 
-  std::auto_ptr<std::ofstream> out(new std::ofstream(filename.c_str()));
+  std::unique_ptr<std::ofstream> out(new std::ofstream(filename.c_str()));
   
   if (!(*out.get()))
   {
     std::cout << "DemoRecorder: Error: Couldn't write DemoFile '" << filename
               << "', demo recording will be disabled" << std::endl;
-    return std::auto_ptr<std::ostream>();
+    return std::unique_ptr<std::ostream>();
   }
   else
   {
@@ -62,7 +62,7 @@ static std::auto_ptr<std::ostream> get_demostream(const PingusLevel& plf)
     // Write file header
     *out << "(level (name \"" << plf.get_resname() << "\"))\n";
     *out << "(checksum \"" << plf.get_checksum() << "\")\n";
-    return std::auto_ptr<std::ostream>(out.release());
+    return std::unique_ptr<std::ostream>(out.release());
   }
 }
 

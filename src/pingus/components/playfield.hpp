@@ -44,7 +44,7 @@ private:
 
   Vector2i scroll_center;
 
-  std::auto_ptr<SceneContext> scene_context;
+  std::unique_ptr<SceneContext> scene_context;
   GraphicContextState state;
   CaptureRectangle capture_rectangle;
 

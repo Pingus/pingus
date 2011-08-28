@@ -110,7 +110,7 @@ PingusMenu::do_start(const std::string &filename)
   else
 #endif
   {
-    std::auto_ptr<WorldmapNS::WorldmapScreen> worldmap_screen(new WorldmapNS::WorldmapScreen());
+    std::unique_ptr<WorldmapNS::WorldmapScreen> worldmap_screen(new WorldmapNS::WorldmapScreen());
     worldmap_screen->load(filename);
     ScreenManager::instance()->push_screen(worldmap_screen.release());
   }
@@ -206,7 +206,7 @@ void
 PingusMenu::create_background(const Size& size_)
 {
   // Recreate the layer manager in the new size
-  background = std::auto_ptr<LayerManager>(new LayerManager());
+  background = std::unique_ptr<LayerManager>(new LayerManager());
 
   Surface layer1 = Resource::load_surface("core/menu/layer1");
   Surface layer2 = Resource::load_surface("core/menu/layer2");

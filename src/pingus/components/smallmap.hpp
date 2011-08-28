@@ -38,7 +38,7 @@ private:
   /** Graphic surface of the entrance */
   Sprite entrance_sur;
 
-  std::auto_ptr<SmallMapImage> image;
+  std::unique_ptr<SmallMapImage> image;
 
   /** Indicates whether the playfield should can be scrolled around depending
       on the position of the cursor in the small map */

@@ -84,7 +84,7 @@ DemoSession::DemoSession(const Pathname& pathname_) :
   fast_forward(false)
 {
   // Load Demo file
-  demo = std::auto_ptr<PingusDemo>(new PingusDemo(pathname));
+  demo = std::unique_ptr<PingusDemo>(new PingusDemo(pathname));
 
   events = demo->get_events();
   // Reverse the vector so that we can use pop_back()  
@@ -100,7 +100,7 @@ DemoSession::DemoSession(const Pathname& pathname_) :
               << plf.get_checksum() << ")" << std::endl;
   }
 
-  server   = std::auto_ptr<Server>(new Server(plf, false));
+  server   = std::unique_ptr<Server>(new Server(plf, false));
 
   // Create GUI
   pcounter = new PingusCounter(server.get());

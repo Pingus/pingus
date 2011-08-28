@@ -27,7 +27,7 @@
 #include "engine/display/delta_framebuffer.hpp"
 #include "engine/display/null_framebuffer.hpp"
 
-std::auto_ptr<Framebuffer> Display::framebuffer;
+std::unique_ptr<Framebuffer> Display::framebuffer;
 
 void
 Display::flip_display()
@@ -80,23 +80,23 @@ Display::set_video_mode(const Size& size, bool fullscreen)
     {
       case OPENGL_FRAMEBUFFER:
 #ifdef HAVE_OPENGL
-        framebuffer = std::auto_ptr<Framebuffer>(new OpenGLFramebuffer());
+        framebuffer = std::unique_ptr<Framebuffer>(new OpenGLFramebuffer());
 #else
         throw std::runtime_error("OpenGL support was not compiled in");
 #endif
         break;
 
       case NULL_FRAMEBUFFER:
-        framebuffer = std::auto_ptr<Framebuffer>(new NullFramebuffer());
+        framebuffer = std::unique_ptr<Framebuffer>(new NullFramebuffer());
         break;
 
       case DELTA_FRAMEBUFFER:
         globals::static_graphics = true;
-        framebuffer = std::auto_ptr<Framebuffer>(new DeltaFramebuffer());
+        framebuffer = std::unique_ptr<Framebuffer>(new DeltaFramebuffer());
         break;
 
       case SDL_FRAMEBUFFER:
-        framebuffer = std::auto_ptr<Framebuffer>(new SDLFramebuffer());
+        framebuffer = std::unique_ptr<Framebuffer>(new SDLFramebuffer());
         break;
           
       default:

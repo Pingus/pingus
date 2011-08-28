@@ -32,7 +32,7 @@ class Worldmap;
 class WorldmapComponent : public GUI::Component
 {
 private:
-  std::auto_ptr<SceneContext> scene_context;
+  std::unique_ptr<SceneContext> scene_context;
   WorldmapScreen* worldmap_screen;
   
 public:

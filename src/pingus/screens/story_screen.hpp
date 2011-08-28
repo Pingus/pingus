@@ -37,7 +37,7 @@ class SurfaceButton;
 class StoryScreen : public GUIScreen
 {
 private:
-  std::auto_ptr<WorldmapNS::WorldmapStory> story;
+  std::unique_ptr<WorldmapNS::WorldmapStory> story;
   StoryScreenComponent* story_comp;
   GUI::SurfaceButton* continue_button;
   GUI::SurfaceButton* skip_button;

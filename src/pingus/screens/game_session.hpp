@@ -51,7 +51,7 @@ private:
   bool show_result_screen;
 
   /// The server
-  std::auto_ptr<Server> server;
+  std::unique_ptr<Server> server;
 
   int world_delay; ///< how many milliseconds is the world behind the actual time
 

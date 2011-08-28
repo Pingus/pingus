@@ -30,7 +30,7 @@ class Framebuffer;
 class Display
 {
 private:
-  static std::auto_ptr<Framebuffer> framebuffer;
+  static std::unique_ptr<Framebuffer> framebuffer;
 
 public:
   static void flip_display();

@@ -42,7 +42,7 @@ public:
   float text_scroll_offset;
 
 private:
-  std::auto_ptr<LayerManager> background;
+  std::unique_ptr<LayerManager> background;
   Sprite logo;
 
   MenuButton* start_button;

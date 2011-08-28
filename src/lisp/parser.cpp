@@ -78,7 +78,7 @@ Parser::parse(const std::string& filename)
 boost::shared_ptr<Lisp>
 Parser::parse(std::istream& stream, const std::string& filename)
 {
-  std::auto_ptr<Parser> parser (new Parser());
+  std::unique_ptr<Parser> parser (new Parser());
 
   parser->filename = filename;
   parser->lexer = new Lexer(stream);

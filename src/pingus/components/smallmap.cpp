@@ -34,7 +34,7 @@ SmallMap::SmallMap(Server* server_, Playfield* playfield_, const Rect& rect_) :
   has_focus(),
   gc_ptr(0)
 { 
-  image = std::auto_ptr<SmallMapImage>(new SmallMapImage(server, rect.get_width(), rect.get_height()));
+  image = std::unique_ptr<SmallMapImage>(new SmallMapImage(server, rect.get_width(), rect.get_height()));
 
   scroll_mode = false;
 }

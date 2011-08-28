@@ -25,9 +25,9 @@ class DrawOpBuffer;
 class DeltaFramebuffer : public Framebuffer
 {
 private:
-  std::auto_ptr<SDLFramebuffer> framebuffer;
-  std::auto_ptr<DrawOpBuffer>   frontbuffer;
-  std::auto_ptr<DrawOpBuffer>   backbuffer;
+  std::unique_ptr<SDLFramebuffer> framebuffer;
+  std::unique_ptr<DrawOpBuffer>   frontbuffer;
+  std::unique_ptr<DrawOpBuffer>   backbuffer;
  
 public:
   DeltaFramebuffer();

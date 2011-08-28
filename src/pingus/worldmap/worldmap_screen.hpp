@@ -46,8 +46,8 @@ private:
   bool is_init;
   bool exit_worldmap;
 
-  std::auto_ptr<Worldmap> worldmap;
-  std::auto_ptr<Worldmap> new_worldmap;
+  std::unique_ptr<Worldmap> worldmap;
+  std::unique_ptr<Worldmap> new_worldmap;
 
   GUI::SurfaceButton* close_button;
   GUI::SurfaceButton* story_button;

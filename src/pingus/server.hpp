@@ -32,13 +32,13 @@ class Server
 {
 protected:
   PingusLevel plf;
-  std::auto_ptr<World> world;
+  std::unique_ptr<World> world;
 
   /** Manager class for the number of available actions */
   ActionHolder action_holder;
 
-  std::auto_ptr<GoalManager>  goal_manager;
-  std::auto_ptr<std::ostream> demostream;
+  std::unique_ptr<GoalManager>  goal_manager;
+  std::unique_ptr<std::ostream> demostream;
 
 public:
   Server(const PingusLevel& arg_plf, bool record_demo);

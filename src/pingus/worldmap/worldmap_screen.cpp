@@ -246,7 +246,7 @@ WorldmapScreen::~WorldmapScreen ()
 void
 WorldmapScreen::load (const std::string& filename)
 {
-  worldmap = std::auto_ptr<Worldmap>(new Worldmap(filename));
+  worldmap = std::unique_ptr<Worldmap>(new Worldmap(filename));
         
   bool credits_unlocked = false;
   //StatManager::instance()->get_bool(worldmap->get_short_name() + "-endstory-seen", credits_unlocked);
@@ -285,7 +285,7 @@ WorldmapScreen::update (float delta)
   // Check if new worldmap is set and if so, change it
   if (new_worldmap.get())
   {
-    worldmap = new_worldmap;
+    worldmap = std::move(new_worldmap);
   }
 }
 

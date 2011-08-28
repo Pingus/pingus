@@ -147,17 +147,17 @@ ScreenManager::ScreenManager() :
   assert(instance_ == 0);
   instance_ = this;
     
-  input_manager = std::auto_ptr<Input::Manager>(new Input::Manager());
+  input_manager = std::unique_ptr<Input::Manager>(new Input::Manager());
 
   if (globals::controller_file.empty())
-    input_controller = std::auto_ptr<Input::Controller>(input_manager->create_controller(Pathname("controller/default.scm", 
+    input_controller = std::unique_ptr<Input::Controller>(input_manager->create_controller(Pathname("controller/default.scm", 
                                                                                                   Pathname::DATA_PATH)));
   else
-    input_controller = std::auto_ptr<Input::Controller>(input_manager->create_controller(Pathname(globals::controller_file,
+    input_controller = std::unique_ptr<Input::Controller>(input_manager->create_controller(Pathname(globals::controller_file,
                                                                                                   Pathname::SYSTEM_PATH)));
 
   cursor = Sprite("core/cursors/animcross");
-  fps_counter = std::auto_ptr<FPSCounter>(new FPSCounter());
+  fps_counter = std::unique_ptr<FPSCounter>(new FPSCounter());
 }
 
 ScreenManager::~ScreenManager()
