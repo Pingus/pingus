@@ -16,8 +16,6 @@
 
 #include "editor/action_properties.hpp"
 
-#include <boost/bind.hpp>
-
 #include "editor/checkbox.hpp"
 #include "editor/editor_level.hpp"
 #include "editor/gui_style.hpp"
@@ -82,8 +80,8 @@ ActionProperties::add_action(ActionName::Enum id)
   
   action_comps[id] = comp;
 
-  comp.checkbox->on_change.connect(boost::bind(&ActionProperties::on_checkbox_change, this, _1, id));
-  comp.inputbox->on_change.connect(boost::bind(&ActionProperties::on_inputbox_change, this, _1, id));
+  comp.checkbox->on_change.connect(std::bind(&ActionProperties::on_checkbox_change, this, std::placeholders::_1, id));
+  comp.inputbox->on_change.connect(std::bind(&ActionProperties::on_inputbox_change, this, std::placeholders::_1, id));
 
   y_pos += 22;
 }

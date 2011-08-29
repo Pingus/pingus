@@ -16,7 +16,6 @@
 
 #include "pingus/screens/option_menu.hpp"
 
-#include <boost/bind.hpp>
 #include <iostream>
 #include <sstream>
 
@@ -164,18 +163,18 @@ OptionMenu::OptionMenu() :
   sound_volume_box  = new SliderBox(Rect());
   music_volume_box  = new SliderBox(Rect());
 
-  C(swcursor_box->on_change.connect(boost::bind(&OptionMenu::on_swcursor_change, this, _1)));
-  C(fullscreen_box->on_change.connect(boost::bind(&OptionMenu::on_fullscreen_change, this, _1)));
-  C(autoscroll_box->on_change.connect(boost::bind(&OptionMenu::on_autoscroll_change, this, _1)));
-  C(mousegrab_box->on_change.connect(boost::bind(&OptionMenu::on_mousegrab_change, this, _1)));
-  C(printfps_box->on_change.connect(boost::bind(&OptionMenu::on_printfps_change, this, _1)));
+  C(swcursor_box->on_change.connect(std::bind(&OptionMenu::on_swcursor_change, this, std::placeholders::_1)));
+  C(fullscreen_box->on_change.connect(std::bind(&OptionMenu::on_fullscreen_change, this, std::placeholders::_1)));
+  C(autoscroll_box->on_change.connect(std::bind(&OptionMenu::on_autoscroll_change, this, std::placeholders::_1)));
+  C(mousegrab_box->on_change.connect(std::bind(&OptionMenu::on_mousegrab_change, this, std::placeholders::_1)));
+  C(printfps_box->on_change.connect(std::bind(&OptionMenu::on_printfps_change, this, std::placeholders::_1)));
 
-  C(master_volume_box->on_change.connect(boost::bind(&OptionMenu::on_master_volume_change, this, _1)));
-  C(sound_volume_box->on_change.connect(boost::bind(&OptionMenu::on_sound_volume_change, this, _1)));
-  C(music_volume_box->on_change.connect(boost::bind(&OptionMenu::on_music_volume_change, this, _1)));
+  C(master_volume_box->on_change.connect(std::bind(&OptionMenu::on_master_volume_change, this, std::placeholders::_1)));
+  C(sound_volume_box->on_change.connect(std::bind(&OptionMenu::on_sound_volume_change, this, std::placeholders::_1)));
+  C(music_volume_box->on_change.connect(std::bind(&OptionMenu::on_music_volume_change, this, std::placeholders::_1)));
 
-  C(language_box->on_change.connect(boost::bind(&OptionMenu::on_language_change, this, _1)));
-  C(resolution_box->on_change.connect(boost::bind(&OptionMenu::on_resolution_change, this, _1)));
+  C(language_box->on_change.connect(std::bind(&OptionMenu::on_language_change, this, std::placeholders::_1)));
+  C(resolution_box->on_change.connect(std::bind(&OptionMenu::on_resolution_change, this, std::placeholders::_1)));
 
   add_item(_("Language:"),        language_box);
   //  add_item(_("Scroll Mode:"),     scroll_box);
@@ -191,19 +190,19 @@ OptionMenu::OptionMenu() :
 
   // Connect with ConfigManager
   mousegrab_box->set_state(config_manager.get_mouse_grab(), false);
-  C(config_manager.on_mouse_grab_change.connect(boost::bind(&CheckBox::set_state, mousegrab_box, _1, false)));
+  C(config_manager.on_mouse_grab_change.connect(std::bind(&CheckBox::set_state, mousegrab_box, std::placeholders::_1, false)));
 
   printfps_box->set_state(config_manager.get_print_fps(), false);
-  C(config_manager.on_print_fps_change.connect(boost::bind(&CheckBox::set_state, printfps_box, _1, false)));
+  C(config_manager.on_print_fps_change.connect(std::bind(&CheckBox::set_state, printfps_box, std::placeholders::_1, false)));
 
   fullscreen_box->set_state(config_manager.get_fullscreen(), false);
-  C(config_manager.on_fullscreen_change.connect(boost::bind(&CheckBox::set_state, fullscreen_box, _1, false)));
+  C(config_manager.on_fullscreen_change.connect(std::bind(&CheckBox::set_state, fullscreen_box, std::placeholders::_1, false)));
 
   swcursor_box->set_state(config_manager.get_swcursor(), false);
-  C(config_manager.on_swcursor_change.connect(boost::bind(&CheckBox::set_state, swcursor_box, _1, false)));
+  C(config_manager.on_swcursor_change.connect(std::bind(&CheckBox::set_state, swcursor_box, std::placeholders::_1, false)));
 
   autoscroll_box->set_state(config_manager.get_autoscroll(), false);
-  C(config_manager.on_autoscroll_change.connect(boost::bind(&CheckBox::set_state, autoscroll_box, _1, false)));
+  C(config_manager.on_autoscroll_change.connect(std::bind(&CheckBox::set_state, autoscroll_box, std::placeholders::_1, false)));
 
   defaults_label = new Label(_("Reset to Defaults:"), Rect(Vector2i(Display::get_width()/2 - 100, Display::get_height()/2 + 160), Size(170, 32)));
   gui_manager->add(defaults_label);

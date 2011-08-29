@@ -14,7 +14,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <boost/bind.hpp>
 #include <iostream>
 
 #include "editor/button.hpp"
@@ -47,7 +46,7 @@ FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect_, Mode mode_) :
                                 rect.get_width()-4 - 30, rect.get_height() - 4 - 35));
   add(file_list);
 
-  file_list->on_click.connect(boost::bind(&FileDialog::load_file, this, _1));
+  file_list->on_click.connect(std::bind(&FileDialog::load_file, this, std::placeholders::_1));
 
   Rect file_rect = file_list->get_rect();
   up_button = new Button(Rect(file_rect.right + 2, file_rect.top,
@@ -68,14 +67,14 @@ FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect_, Mode mode_) :
   cancel_button = new Button(Rect(Vector2i(rect.get_width() - 104 - 104, rect.get_height() - 4 - 30),
                                   Size(100, 30)), _("Cancel"));
   
-  up_button->on_click.connect(boost::bind(&FileDialog::on_up, this));
-  down_button->on_click.connect(boost::bind(&FileDialog::on_down, this));
+  up_button->on_click.connect(std::bind(&FileDialog::on_up, this));
+  down_button->on_click.connect(std::bind(&FileDialog::on_down, this));
 
-  datadir_button->on_click.connect(boost::bind(&FileDialog::on_datadir, this));
-  userdir_button->on_click.connect(boost::bind(&FileDialog::on_userdir, this));
+  datadir_button->on_click.connect(std::bind(&FileDialog::on_datadir, this));
+  userdir_button->on_click.connect(std::bind(&FileDialog::on_userdir, this));
 
-  open_button->on_click.connect(boost::bind(&FileDialog::on_open, this));
-  cancel_button->on_click.connect(boost::bind(&FileDialog::on_cancel, this));
+  open_button->on_click.connect(std::bind(&FileDialog::on_open, this));
+  cancel_button->on_click.connect(std::bind(&FileDialog::on_cancel, this));
 
   add(filename_label = new Label(Rect(6, 4+30, 4 + 60, 26+30), _("Filename:")));
   add(pathname_label = new Label(Rect(6, 4+60, 4 + 60, 26+60), _("Pathname:")));

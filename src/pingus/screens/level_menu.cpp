@@ -16,9 +16,7 @@
 
 #include "pingus/screens/level_menu.hpp"
 
-#include <boost/bind.hpp>
 #include <boost/format.hpp>
-#include <boost/function.hpp>
 
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
@@ -69,10 +67,10 @@ private:
 class LevelScrollButton : public GUI::SurfaceButton
 {
 private:
-  boost::function<void(void)> callback;
+  std::function<void(void)> callback;
 
 public:
-  LevelScrollButton(int x, int y, const std::string& str, boost::function<void (void)> callback_)
+  LevelScrollButton(int x, int y, const std::string& str, std::function<void (void)> callback_)
     : GUI::SurfaceButton(x, y,
                          str,
                          str + "_pressed",
@@ -374,12 +372,12 @@ LevelMenu::LevelMenu() :
   gui_manager->add(prev_button = new LevelScrollButton(Display::get_width()/2  + 160,
                                                        Display::get_height()/2 + 145,
                                                        "core/menu/arrow_left",
-                                                       boost::bind(&LevelMenu::prev_page, this)));
+                                                       std::bind(&LevelMenu::prev_page, this)));
 
   gui_manager->add(next_button = new LevelScrollButton(Display::get_width()/2  + 230,
                                                        Display::get_height()/2 + 145,
                                                        "core/menu/arrow_right",
-                                                       boost::bind(&LevelMenu::next_page, this)));
+                                                       std::bind(&LevelMenu::next_page, this)));
 
   gui_manager->add(levelset_selector);
   gui_manager->add(level_selector);

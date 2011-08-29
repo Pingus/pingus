@@ -16,7 +16,6 @@
 
 #include "editor/object_selector.hpp"
 
-#include <boost/bind.hpp>
 #include <boost/signal.hpp>
 #include <iostream>
 
@@ -360,7 +359,7 @@ ObjectSelector::add_button(const std::string& image, const std::string& tooltip,
                                         Vector2i(2 + button_pos.x * 30,  
                                                  2 + button_pos.y * 30),
                                         image, tooltip));
-  button->on_click.connect(boost::bind(&ObjectSelectorList::set_objects, object_list, set));
+  button->on_click.connect(std::bind(&ObjectSelectorList::set_objects, object_list, set));
 
   button_pos.x += 1;
   if (button_pos.x > 7)

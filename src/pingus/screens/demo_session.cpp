@@ -16,8 +16,7 @@
 
 #include "pingus/screens/demo_session.hpp"
 
-#include <boost/bind.hpp>
-#include <boost/function.hpp>
+#include <algorithm>
 #include <iostream>
 
 #include "engine/gui/gui_manager.hpp"
@@ -37,13 +36,13 @@ class BButton : public GUI::SurfaceButton
 {
 private:
   Sprite highlight;
-  boost::function<void(void)> callback;
-  boost::function<bool(void)> highlight_func;
+  std::function<void(void)> callback;
+  std::function<bool(void)> highlight_func;
   
 public:
   BButton(int x, int y, const std::string& name, 
-          boost::function<void (void)> callback_,
-          boost::function<bool(void)> highlight_func_ = &false_func) :
+          std::function<void (void)> callback_,
+          std::function<bool(void)> highlight_func_ = &false_func) :
     SurfaceButton(x, y, name, name + "-pressed", name + "-hover"),
     highlight("core/demo/highlight"),
     callback(callback_),
@@ -122,13 +121,13 @@ DemoSession::DemoSession(const Pathname& pathname_) :
   gui_manager->add(small_map);
 
   gui_manager->add(fastforward_button= new BButton(32+50, 32, "core/demo/fastforward",
-                                                   boost::bind(&DemoSession::on_fast_forward_press, this),
-                                                   boost::bind(&DemoSession::is_fast_forward, this)));
+                                                   std::bind(&DemoSession::on_fast_forward_press, this),
+                                                   std::bind(&DemoSession::is_fast_forward, this)));
   gui_manager->add(pause_button =new BButton(32,  32, "core/demo/pause",
-                                             boost::bind(&DemoSession::on_pause_press, this),
-                                             boost::bind(&DemoSession::is_pause, this)));
+                                             std::bind(&DemoSession::on_pause_press, this),
+                                             std::bind(&DemoSession::is_pause, this)));
   gui_manager->add(restart_button = new BButton(size.width - 32 - 48, 32, "core/demo/reload",
-                                                boost::bind(&DemoSession::restart, this)));
+                                                std::bind(&DemoSession::restart, this)));
 }
 
 DemoSession::~DemoSession()

@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_ENGINE_SCREEN_SCREEN_MANAGER_HPP
 #define HEADER_PINGUS_ENGINE_SCREEN_SCREEN_MANAGER_HPP
 
-#include <boost/smart_ptr.hpp>
 #include <memory>
 #include <vector>
 

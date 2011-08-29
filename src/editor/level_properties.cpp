@@ -16,7 +16,6 @@
 
 #include "editor/level_properties.hpp"
 
-#include <boost/bind.hpp>
 #include <iostream>
 
 #include "editor/editor_level.hpp"
@@ -82,19 +81,19 @@ LevelProperties::LevelProperties(EditorScreen* editor_, const Rect& rect_) :
   add(new Label   (Rect(Vector2i( 10, y+154), Size( 80, 20)), "Music:"));
   add(music = new Inputbox(Rect(Vector2i(110, y+154), Size(  w, 20))));
 
-  author->on_change.connect(boost::bind(&LevelProperties::on_author_change, this, _1));
-  levelname->on_change.connect(boost::bind(&LevelProperties::on_levelname_change, this, _1));
-  description->on_change.connect(boost::bind(&LevelProperties::on_description_change, this, _1));
+  author->on_change.connect(std::bind(&LevelProperties::on_author_change, this, std::placeholders::_1));
+  levelname->on_change.connect(std::bind(&LevelProperties::on_levelname_change, this, std::placeholders::_1));
+  description->on_change.connect(std::bind(&LevelProperties::on_description_change, this, std::placeholders::_1));
 
-  number_to_save->on_change.connect(boost::bind(&LevelProperties::on_number_to_save_change, this, _1));
-  number_of_pingus->on_change.connect(boost::bind(&LevelProperties::on_number_of_pingus_change, this, _1));
+  number_to_save->on_change.connect(std::bind(&LevelProperties::on_number_to_save_change, this, std::placeholders::_1));
+  number_of_pingus->on_change.connect(std::bind(&LevelProperties::on_number_of_pingus_change, this, std::placeholders::_1));
 
-  width->on_change.connect(boost::bind(&LevelProperties::on_width_change, this, _1));
-  height->on_change.connect(boost::bind(&LevelProperties::on_height_change, this, _1));
-  time->on_change.connect(boost::bind(&LevelProperties::on_time_change, this, _1));
-  difficulty->on_change.connect(boost::bind(&LevelProperties::on_difficulty_change, this, _1));
-  comment->on_change.connect(boost::bind(&LevelProperties::on_comment_change, this, _1));
-  music->on_change.connect(boost::bind(&LevelProperties::on_music_change, this, _1));
+  width->on_change.connect(std::bind(&LevelProperties::on_width_change, this, std::placeholders::_1));
+  height->on_change.connect(std::bind(&LevelProperties::on_height_change, this, std::placeholders::_1));
+  time->on_change.connect(std::bind(&LevelProperties::on_time_change, this, std::placeholders::_1));
+  difficulty->on_change.connect(std::bind(&LevelProperties::on_difficulty_change, this, std::placeholders::_1));
+  comment->on_change.connect(std::bind(&LevelProperties::on_comment_change, this, std::placeholders::_1));
+  music->on_change.connect(std::bind(&LevelProperties::on_music_change, this, std::placeholders::_1));
 }
 
 LevelProperties::~LevelProperties()

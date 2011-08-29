@@ -15,7 +15,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <boost/bind.hpp>
 #include <iostream>
 
 #include "editor/action_properties.hpp"
@@ -97,7 +96,7 @@ EditorScreen::EditorScreen() :
   file_save_dialog->hide();
   gui_manager->add(file_save_dialog);
 
-  viewport->selection_changed.connect(boost::bind(&ObjectProperties::set_objects, object_properties, _1));
+  viewport->selection_changed.connect(std::bind(&ObjectProperties::set_objects, object_properties, std::placeholders::_1));
   viewport->refresh();
 
   update_layout();
