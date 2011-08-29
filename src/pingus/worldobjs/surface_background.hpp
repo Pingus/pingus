@@ -19,7 +19,6 @@
 
 #include "math/vector3f.hpp"
 #include "math/color.hpp"
-#include "pingus/res_descriptor.hpp"
 #include "pingus/worldobj.hpp"
 
 namespace WorldObjsData {

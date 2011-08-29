@@ -19,6 +19,7 @@
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
+#include <string.h>
 
 #ifndef WIN32
 #  include <dirent.h>

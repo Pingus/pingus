@@ -19,8 +19,8 @@
 
 #include "math/vector3f.hpp"
 #include "pingus/action_name.hpp"
-#include "util/file_reader.hpp"
 
+class FileReader;
 class Server;
 
 /** This class represents an event that the Server can recieve from

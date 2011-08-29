@@ -19,11 +19,8 @@
 
 #include <vector>
 
-#include "engine/display/drawing_context.hpp"
 #include "engine/display/graphic_context_state.hpp"
-#include "engine/display/sprite.hpp"
 #include "pingus/worldmap/pingus_worldmap.hpp"
-#include "util/file_reader.hpp"
 
 class Font;
 class DrawingContext;

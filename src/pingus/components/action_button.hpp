@@ -17,12 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_COMPONENTS_ACTION_BUTTON_HPP
 #define HEADER_PINGUS_PINGUS_COMPONENTS_ACTION_BUTTON_HPP
 
-#include <string>
-
-#include "engine/display/font.hpp"
-#include "engine/gui/component.hpp"
 #include "engine/gui/rect_component.hpp"
-#include "pingus/action_name.hpp"
 #include "pingus/state_sprite.hpp"
 
 class Server;

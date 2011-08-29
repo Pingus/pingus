@@ -18,7 +18,6 @@
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_ENTRANCE_HPP
 
 #include "math/vector3f.hpp"
-#include "pingus/res_descriptor.hpp"
 #include "pingus/worldobj.hpp"
 
 namespace WorldObjsData {

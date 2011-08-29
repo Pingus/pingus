@@ -23,7 +23,6 @@ namespace Input {
 struct Event;
 }
 
-class Size;
 class DrawingContext;
 
 /** A interface for screens. A screen is a Pingus 'thing' which gets

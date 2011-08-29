@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_UTIL_PATHNAME_HPP
 #define HEADER_PINGUS_UTIL_PATHNAME_HPP
 
-#include <SDL.h>
 #include <string>
 
 /** Simple class to allow a distinction of paths that refer to the

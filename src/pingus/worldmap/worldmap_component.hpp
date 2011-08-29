@@ -18,7 +18,6 @@
 #define HEADER_PINGUS_PINGUS_WORLDMAP_WORLDMAP_COMPONENT_HPP
 
 #include <memory>
-#include <string>
 
 #include "engine/gui/gui_manager.hpp"
 

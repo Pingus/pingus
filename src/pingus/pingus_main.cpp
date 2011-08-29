@@ -19,7 +19,6 @@
 #include <signal.h>
 
 #include "editor/editor_level.hpp"
-#include "engine/display/display.hpp"
 #include "engine/system/sdl_system.hpp"
 #include "pingus/config_manager.hpp"
 #include "pingus/screens/demo_session.hpp"

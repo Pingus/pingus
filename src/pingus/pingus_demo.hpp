@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_PINGUS_PINGUS_DEMO_HPP
 #define HEADER_PINGUS_PINGUS_PINGUS_DEMO_HPP
 
+#include <vector>
+
 #include "pingus/server_event.hpp"
 
 class Pathname;

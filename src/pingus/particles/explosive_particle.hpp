@@ -17,14 +17,11 @@
 #ifndef HEADER_PINGUS_PINGUS_PARTICLES_EXPLOSIVE_PARTICLE_HPP
 #define HEADER_PINGUS_PINGUS_PARTICLES_EXPLOSIVE_PARTICLE_HPP
 
-//#include "engine/display/sprite.hpp"
-//#include "pingus/particles/particle.hpp"
+#include "pingus/particles/particle.hpp"
 
-class ExplosiveParticle
-  : public Particle
+class ExplosiveParticle : public Particle
 {
 private:
-  //Sprite sprite;
   bool alive;
 
 public:

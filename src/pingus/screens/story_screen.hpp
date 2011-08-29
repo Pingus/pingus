@@ -18,10 +18,8 @@
 #define HEADER_PINGUS_PINGUS_SCREENS_STORY_SCREEN_HPP
 
 #include <memory>
-#include <string>
 
 #include "engine/screen/gui_screen.hpp"
-#include "pingus/res_descriptor.hpp"
 #include "pingus/worldmap/worldmap_story.hpp"
 
 class StoryScreenComponent;

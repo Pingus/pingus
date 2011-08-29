@@ -24,7 +24,6 @@
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "pingus/globals.hpp"
-#include "pingus/worldmap/worldmap.hpp"
 #include "util/utf8.hpp"
 
 class StoryScreenComponent : public GUI::Component

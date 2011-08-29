@@ -18,7 +18,6 @@
 #define HEADER_PINGUS_PINGUS_SCREENS_GAME_SESSION_HPP
 
 #include <memory>
-#include <string>
 
 #include "engine/screen/gui_screen.hpp"
 #include "pingus/action_name.hpp"

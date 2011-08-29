@@ -16,8 +16,6 @@
 
 #include "engine/display/sprite_impl.hpp"
 
-#include <map>
-
 #include "engine/display/display.hpp"
 #include "engine/display/framebuffer.hpp"
 #include "engine/display/sprite_description.hpp"

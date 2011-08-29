@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_FONT_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_FONT_HPP
 
-#include <SDL.h>
 #include <memory>
 
 #include "math/rect.hpp"

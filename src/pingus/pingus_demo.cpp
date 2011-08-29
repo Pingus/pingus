@@ -18,6 +18,7 @@
 
 #include <stdexcept>
 
+#include "util/file_reader.hpp"
 #include "util/pathname.hpp"
 
 PingusDemo::PingusDemo(const Pathname& pathname) :

@@ -21,6 +21,7 @@
 #include "pingus/pingu_holder.hpp"
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
+#include "util/file_reader.hpp"
 
 ServerEvent::ServerEvent() :
   type(PINGU_ACTION_EVENT),

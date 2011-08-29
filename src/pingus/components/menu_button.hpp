@@ -22,9 +22,9 @@
 #include "engine/display/font.hpp"
 #include "engine/display/sprite.hpp"
 #include "engine/gui/component.hpp"
-#include "math/vector2i.hpp"
 
 class PingusMenu;
+class Vector2i;
 
 /** Framework for menu buttons */
 class MenuButton : public GUI::Component

@@ -18,7 +18,6 @@
 #define HEADER_PINGUS_PINGUS_SCREENS_PINGUS_MENU_HPP
 
 #include <memory>
-#include <vector>
 
 #include "engine/display/sprite.hpp"
 #include "engine/screen/gui_screen.hpp"

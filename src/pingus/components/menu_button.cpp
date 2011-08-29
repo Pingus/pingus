@@ -16,8 +16,9 @@
 
 #include "pingus/components/menu_button.hpp"
 
-#include "engine/sound/sound.hpp"
 #include "engine/display/drawing_context.hpp"
+#include "engine/sound/sound.hpp"
+#include "math/vector2i.hpp"
 #include "pingus/screens/pingus_menu.hpp"
 
 MenuButton::MenuButton(PingusMenu* menu_,
