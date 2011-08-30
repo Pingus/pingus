@@ -1,0 +1,13 @@
+;; -*- scheme -*-
+(pingus-levelset
+ (title "Crystal")
+ (description "")
+ (image  "levelsets/xmas")
+ (levels 
+(level (filename "playable/crystal-10-rz"))
+(level (filename "playable/crystal2"))
+(level (filename "playable/crystal5"))
+
+    ))
+
+;; EOF ;;

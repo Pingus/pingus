@@ -75,6 +75,8 @@ PingusMenu::PingusMenu() :
   create_background(Size(Display::get_width(), Display::get_height()));
 
   help = _("..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: fullscreen   ::   F12: screenshot ::..");
+
+  Sound::PingusSound::play_music("pingus-1.it");
 }
 
 PingusMenu::~PingusMenu()

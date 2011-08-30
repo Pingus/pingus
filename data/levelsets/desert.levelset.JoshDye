@@ -1,0 +1,24 @@
+;; -*- scheme -*-
+(pingus-levelset
+ (title "Desert")
+ (description "")
+ (image  "levelsets/xmas")
+(levels 
+(level (filename "playable/desert-crawl-timpany"))
+(level (filename "playable/desert1"))
+(level (filename "playable/desert2"))
+(level (filename "playable/desert3-jings"))
+(level (filename "playable/desert3-tflavel"))
+(level (filename "playable/desert3"))
+(level (filename "playable/desert4"))
+(level (filename "playable/desert5-tflavel"))
+(level (filename "playable/desert5"))
+(level (filename "playable/desert6-grumbel"))
+(level (filename "playable/desert7-grumbel"))
+(level (filename "playable/desert8-grumbel"))
+(level (filename "playable/desert9-jings"))
+(level (filename "playable/desertwaste1-grumbel"))
+
+    ))
+
+;; EOF ;;

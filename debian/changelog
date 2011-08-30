@@ -1,0 +1,420 @@
+pingus (0.7.3.5-1~ppa1) maverick; urgency=low
+
+  * add music by Kev Bailey
+  * add levelset alien by Josh Dye
+  * add levelset icon by Gabriel Rota
+  * fix graphics music description solution animation name gameplay of the levels
+  * update translation
+  * add debian folder for use bzr builddeb --source
+
+ -- Gabriel Rota <gabriel.rota@gmail.com>  Thu, 05 May 2011 15:43:55 +0200
+
+pingus (0.7.3.4-1~ppa2) lucid; urgency=low
+
+  * fix rule to copile adding
+    mkdir -p build
+    scons src
+
+ -- Gabriel Rota <gabriel.rota@gmail.com>  Wed, 09 Feb 2011 21:08:16 +0100
+
+pingus (0.7.3.4-1~ppa1) lucid; urgency=low
+
+  * data/*:
+    - add levelset from 0.7.3.3
+    - rename for disable pacman e xmas not ready levelset
+  * src/pingus/pingus_main.cpp,
+    src/util/system.cpp:
+    - forcing read LANG for start with correct locale
+  * src/pingus/screens/pingus_menu.cpp:
+    - add music in main menu
+  * 10_fix_data_directory, 60_bashisms
+    - updated for new sources
+
+ -- Gabriel Rota <gabriel.rota@gmail.com>  Wed, 09 Feb 2011 12:11:22 +0100
+
+pingus (0.7.3.3-1~ppa1) lucid; urgency=low
+
+  * add levelset mystery island from http://ubuntuforums.org/showthread.php?t=1372315
+    http://ubuntuforums.org/attachment.php?attachmentid=169610&d=1284610028
+  * small fix on levels and levelsets
+  * add icon for levelsets
+  * update translation
+
+ -- Gabriel Rota <gabriel.rota@gmail.com>  Sat, 05 Feb 2011 13:14:46 +0100
+
+pingus (0.7.3.2-1~ppa1) lucid; urgency=low
+
+  * add levelset desert from http://ubuntuforums.org/showthread.php?t=1372315
+    http://ubuntuforums.org/attachment.php?attachmentid=142420&d=1262621039
+  * translation for new levelset
+  * complete levels in levelset by Gabriel Rota <gabriel.rota@gmail.com>
+    and Giuseppe Porciello <big_moviola@hotmail.com>
+
+ -- Gabriel Rota <gabriel.rota@gmail.com>  Wed, 26 Jan 2011 14:14:29 +0100
+
+pingus (0.7.3.1-1~ppa1) lucid; urgency=low
+
+  * upstream 0.7.3
+  * upstream include:
+      30_update_nl_translation
+      30_update_es_translation
+  * remove for build
+      20_fix_FTBFS_with_gcc-4.3
+      40_fix_FTBFS_with_gcc-4.4
+
+ -- Gabriel Rota <gabriel.rota@gmail.com>  Sat, 22 Jan 2011 14:51:05 +0100
+
+pingus (0.7.2-4ubuild2) natty; urgency=low
+
+  * No change rebuild against libboost 1.42
+
+ -- Scott Kitterman <scott@kitterman.com>  Wed, 20 Oct 2010 10:38:49 -0400
+
+pingus (0.7.2-4ubuild1) lucid; urgency=low
+
+  * Rebuild to pick up new libboost-signals version.
+
+ -- Benjamin Drung <bdrung@ubuntu.com>  Fri, 22 Jan 2010 16:36:48 +0100
+
+pingus (0.7.2-4) unstable; urgency=low
+
+  [ Barry deFreese ]
+  * 40_fix_FTBFS_with_gcc-4.4 - Build with gcc-4.4. (Closes: #525741).
+    + Thanks to Martin Michlmayr for the fix!.
+  * 50_boost_signals_mt - Use multi-threaded boost. (Closes: #530474).
+  * 60_bashisms - Replace echo -e with printf. (Closes: #530162).
+  * Minor debian/copyright syntax clean-up.
+  * Bump Standards Version to 3.8.1.
+
+ -- Miriam Ruiz <little_miry@yahoo.es>  Thu, 28 May 2009 23:07:47 +0200
+
+pingus (0.7.2-3) unstable; urgency=low
+
+  [ Peter De Wachter ]
+  * Fix watch file.
+
+  [ Cyril Brulebois ]
+  * Fix patch name:
+     - Rename 10_fix_data_directory into 10_fix_data_directory.
+  * Update translation:
+     - Dutch, thanks to Bas Wijnen (Closes: #493584).
+        + Add patch: 30_update_nl_translation
+     - Spanish, thanks to Javier Fernández-Sanguino Peña (Closes: #482121).
+        + Add patch: 30_update_es_translation
+  * Clean up debian/rules:
+     - No need to define CFLAGS, dpkg-buildpackage does it…
+     - Use dpatch.make include, and tweak targets accordingly.
+  * Make it possible to resume an interrupted build: use “scons configure”
+    in configure, and “scons” in build.
+  * Update my mail address.
+
+ -- Cyril Brulebois <kibi@debian.org>  Wed, 25 Mar 2009 13:55:25 +0100
+
+pingus (0.7.2-2) unstable; urgency=low
+
+  * Fix FTBFS with gcc-4.3 by adding the missing include in
+    src/input/evdev_device.cpp (Closes: #462238):
+     + debian/patches/20_fix_FTBFS_with_gcc-4.3.
+  * Rename former patch so that the filename reflects the order in which
+    the patches are applied:
+     - debian/patches/data_dir.patch
+     + debian/patches/10_fix_data_directory.
+  * Bump Standards-Version from 3.7.2 to 3.7.3, no changes needed.
+  * Add a dh_desktop call in the arch-dep part of debian/rules.
+  * Adjust the “missing-dep-for-interpreter guile” override since lintian
+    now lists an alternative for that dependency.
+
+ -- Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>  Thu, 28 Feb 2008 19:44:25 +0100
+
+pingus (0.7.2-1) unstable; urgency=low
+
+  [Marco Rodrigues]
+  * XInput support enabled by default. Thanks to Bas Wijnen
+  * Add libxi-dev to Build-Depends
+  * Add Homepage field to debian/control
+  * Add the installation of the level sets by adding “-name "*.levelset"” to
+    the find+cp command in debian/rules.
+
+  [Miriam Ruiz]
+  * New Upstream Release
+  * Removed Marco from Uploaders
+
+  [Cyril Brulebois]
+  * Renamed “XS-Vcs-*” to “Vcs-*”, now officially supported by dpkg.
+  * Removed the Homepage from the long descriptions.
+  * Updated watch file to only match pingus-$version (digits and dots),
+    and not pingus-sound-$version.
+  * Added myself to the Uploaders.
+
+ -- Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>  Mon, 05 Nov 2007 06:46:49 +0100
+
+pingus (0.7.1-1) unstable; urgency=low
+
+  [Marco Rodrigues]
+  * New upstream version.
+   - faster sprite drawing, so more overall fps
+   - level editor rewritten from scratch
+   - level loading from command line fixed
+   - numerous other command line parsing bugs fixed
+   - separate images for gfx and colmap are used again
+   - input subsystem rewritten from scratch, supports now
+     gamepads, usbmice, wiimote (some of those might
+     unfinished and not enabled by default)
+  * Add libboost-signals-dev to debian/control.
+
+  [Miriam Ruiz]
+  * Changed priority to optional in debian/control.
+
+ -- Marco Rodrigues <gothicx@sapo.pt>  Wed, 23 Sep 2007 14:49:15 +0200
+
+pingus (0.7.0-2) unstable; urgency=low
+
+  [Miriam Ruiz]
+  * Fixed debian/copyright properly.
+  * Added XS-Vcs-Svn and XS-Vcs-Browser to debian/control.
+
+  [Marco Rodrigues]
+  * Closed a lot of already fixed bugs at Pingus Debian BTS.
+
+ -- Miriam Ruiz <little_miry@yahoo.es>  Sat, 03 Sep 2007 22:57:30 +0000
+
+pingus (0.7.0-1) unstable; urgency=low
+
+  [Miriam Ruiz]
+  * New upstream version (Closes: #439463)
+  * New maintainer: Debian Games Team (Closes: #440322)
+
+  [Marco Rodrigues]
+  * Added .desktop (Closes: #375769)
+
+ -- Miriam Ruiz <little_miry@yahoo.es>  Fri, 31 Aug 2007 22:54:30 +0000
+
+pingus (0.6.0-8.4) unstable; urgency=low
+
+  * NMU as part of the GCC 4.1 transition.
+  * patches/51_gcc41.dpatch: Include cassert. (Closes: #356455).
+
+ -- Martin Michlmayr <tbm@cyrius.com>  Thu, 25 May 2006 22:51:25 +0200
+
+pingus (0.6.0-8.3) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Rebuild against the new version of libclanlib (C++ c2a
+    transition).
+  * debian/rules: Strip off the binary NMU version suffix for the
+    versioned pingus-data dependency.  This will prevent breakage
+    when binary NMUs occur.
+
+ -- Roger Leigh <rleigh@debian.org>  Mon, 26 Dec 2005 23:09:14 +0000
+
+pingus (0.6.0-8.2) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Added patch to prevent installation of /usr/share/locale/locale.alias.
+    Patch from Moritz Breit and Ubuntu. (Closes: #327718)
+
+ -- Petter Reinholdtsen <pere@debian.org>  Fri, 23 Sep 2005 22:30:53 +0200
+
+pingus (0.6.0-8.1) unstable; urgency=low
+
+  * Non-maintainer upload to move package to new C++ ABI. (Closes: #324839)
+  * Fix build problem with GCC 4.0.  Patch from Andreas
+    Jochens.  (Closes: #287923)
+  * Fix meny icon path.  Patch from Mark Purcell. (Closes: #275651)
+  * Moved various debian patches into debian/patches/60_misc.dpatch.
+  * Update german translation.  Patch from Jens Seidel. (Closes: #313937)
+
+ -- Petter Reinholdtsen <pere@debian.org>  Fri,  9 Sep 2005 19:58:01 +0200
+
+pingus (0.6.0-8) unstable; urgency=low
+
+  * Applied patch from Andreas Jochens (Closes: #263992)
+
+ -- Raphael Goulais <rafou@debian.org>  Mon, 09 Aug 2004 10:26:00 +0200
+
+pingus (0.6.0-7) unstable; urgency=low
+
+  * Applied patch from Thime Neubauer on rules (Closes #237799)
+  * Updated menu file to remove lintian warnings
+  * Updated build-depends to reflect the clanlib NMU problem
+
+ -- Raphael Goulais <rafou@debian.org>  Thu, 29 Apr 2004 16:56:00 +0200
+
+pingus (0.6.0-6) unstable; urgency=low
+
+  * Corrected more typo, thanks Jason Dorje Short (Closes: #226169)
+  * Applied patch from Thimo Neubauer for Alpha (Closes: #237800)
+
+ -- Raphael Goulais <rafou@debian.org>  Wed, 18 Feb 2004 22:44:00 +0100
+
+pingus (0.6.0-5) unstable; urgency=low
+
+  * The "This is not an NMU" upload. Fix the mail in the changelog
+  * Ack the false NMU, and really close bugs (Closes: #222152, #231335)
+
+ -- Raphael Goulais <rafou@debian.org>  Tue, 17 Feb 2004 15:09:00 +0100
+
+pingus (0.6.0-4) unstable; urgency=low
+
+  * New Maintainer (Closes: #231335)
+  * Backported modifications to use dpatch
+  * Bug fix: another small spelling correction (Closes #222152)
+  * Really fixed bug 218970 (closed in previous upload)
+
+ -- Raphael Goulais (Rafou) <raphael@nicedays.net>  Fri, 06 Feb 2004 05:03:00 +0100
+
+pingus (0.6.0-3) unstable; urgency=low
+
+  * New Maintainer
+  * Bug fix: "pingus-data: Small spelling correction", thanks to Chris
+    AtLee (Closes: #218970).
+  * Standards 3.6.1
+  * Remove useless INSTALL_PROGRAMM setting from rules-file. dh_strip
+    does the neccessary things.
+  * Kick the config.{sub|guess} crap out of the rules file. Ask Upstream to
+    update his files and if they arent do that manually for the package.
+  * Add --disable-rpath to configure call
+
+ -- Joerg Jaspert <joerg@debian.org>  Mon, 17 Nov 2003 22:40:38 +0100
+
+pingus (0.6.0-2) unstable; urgency=low
+
+  * GCC 3.3 and 64 bit fixes (patch courtesy of John Lightsey, closes:
+    #189969)
+
+ -- Simon Richter <sjr@debian.org>  Sun, 15 Jun 2003 18:13:17 +0200
+
+pingus (0.6.0-1) unstable; urgency=low
+
+  * Took over maintainership (Closes: #158510)
+  * New upstream release.
+
+ -- Simon Richter <sjr@debian.org>  Wed, 16 Apr 2003 23:06:19 +0200
+
+pingus (0.5.0pre3-1) unstable; urgency=low
+
+  * The "All you pingus are belong to blendi" release
+  * Really added libxml2-dev to Build-Depends
+    Closes: #141196
+  * The Superman bug is gone
+    Closes: 137888
+
+ -- Martin Butterweck <blendi@debian.org>  Wed, 10 Apr 2002 16:33:35 +0200
+
+pingus (0.5.0pre3-0.2) unstable; urgency=high
+
+  * NMU.
+  * Recompile for new ClanLib release. (Closes: #141367)
+  * Add libxml2-dev to Build-Depends. (Closes: #141196)
+  * Your version of pingus is ancient; this error is due to API changes in the
+    libraries pingus depends on. Fixed in testing and unstable - the only
+    archives which have pingus anyway. (Closes: #139526)
+  * Fix spelling errors in Description:. (Closes: #140797)
+  * Actually, rewrite the Description: entirely.
+  * Make sure to set a "superman" string to the Superman
+    PinguActionFactoryImpl. I'll check manually if this fixes #137888.
+  * Remove the emacs local variables from debian/changelog.
+  * Add myself to the Uploaders: field in debian/control. This makes it not
+    really an NMU anymore. I'll have to remember to subscribe to this package.
+  * Certain CL_Input::sig_* have changed to be functions now. Fixes stolen from
+    CVS snapshot.
+  * Add a config.status target to debian/rules, and run configure in that.
+  * See if this Uploaders: field really works; acknowledge previous NMU's
+    bugfixes.
+    (Closes: #61540, #62200, #72343, #74210, #76009, #78558, #88569, #102502)
+    (Closes: #117570, #133346, #134285)
+
+ -- Filip Van Raemdonck <mechanix@debian.org>  Fri,  5 Apr 2002 22:11:44 +0200
+
+pingus (0.5.0pre3-0.1) unstable; urgency=low
+
+  * NMU
+  * New upstream version
+    closes: #117570
+    closes: #134285
+    closes: #133346
+    closes: #72343
+    closes: #78739
+  * Standards-Version: 3.5.6
+  * Added URL: http://pingus.seul.org to debian/control
+  * Architecture: any
+    closes: #102502
+  * Split package into architecture dependend binary part and
+    architecture independend data part
+  * removed INSTALL from /usr/share/doc/pingus
+
+ -- Andreas Tille <tille@debian.org>  Fri,  8 Mar 2002 13:13:08 +0100
+
+pingus (0.3.1-1.1) unstable; urgency=low
+
+  * NMU for bug squashing party.
+  * Version is correct again. Closes: #61540.
+  * Added Build-Depends.
+  * Recompile to flush outdated dependencies. Closes: #74210, #62200,
+    #88569, #76009, #78558.
+  * lintian:
+    + Remove empty CREDITS, duplicated COPYING.
+    + Let dh_installchangelogs do its thing.
+
+ -- Robert Bihlmeyer <robbe@orcus.priv.at>  Sat, 14 Apr 2001 01:07:21 +0200
+
+pingus (0.3.1) unstable; urgency=medium
+
+  * New upstream version compiled aginst clanlib 0.4.3 and hermes 1.3.1
+  * Closes: #60943, #60945, #59473
+
+ -- Vaidhyanathan G Mayilrangam <vaidhy@debian.org>  Sun, 26 Mar 2000 09:55:14 -0500
+
+pingus (0.3.0-1) unstable; urgency=medium
+
+  * New upstream version
+  * Closes: #53795
+  * Does not work in 8 bit mode. Closes: #51726
+
+ -- Vaidhyanathan G Mayilrangam <vaidhy@debian.org>  Tue,  4 Jan 2000 16:54:31 -0500
+
+pingus (0.2.3-1) unstable; urgency=medium
+
+  * New upstream version
+
+ -- Daniel Patterson <danpat@debian.org>  Sat,  6 Nov 1999 04:17:14 +1000
+
+pingus (0.2.1-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Daniel Patterson <danpat@debian.org>  Thu,  9 Aug 1999 21:10:43 +1000
+
+pingus (0.1.1-3) unstable; urgency=medium
+
+  * Rebuilt against clanlib 0.1.16 because font datafile
+    format has changed.
+
+ -- Daniel Patterson <danpat@debian.org>  Sun,  1 Aug 1999 07:28:45 +1000
+
+pingus (0.1.1-2) unstable; urgency=low
+
+  * Fixed depend on clanlib-display-x11 which doesn't exist
+    (should be clanlib0-display-x11)
+
+ -- Daniel Patterson <danpat@debian.org>  Sat, 31 Jul 1999 22:48:01 +1000
+
+pingus (0.1.1-1) unstable; urgency=low
+
+  * New upstream version
+  * Added extra depend for dselect to be able to provide a nice default
+
+ -- Daniel Patterson <danpat@debian.org>  Wed,  7 Jul 1999 12:05:12 +1000
+
+pingus (0.1.0-2) unstable; urgency=low
+
+  * Fixed maintainer field
+  * Put some decent content in the manpage
+
+ -- Daniel Patterson <danpat@debian.org>  Sat, 26 Jun 1999 09:43:00 +1000
+
+pingus (0.1.0-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Daniel Patterson <danpat@danpat.net>  Wed, 23 Jun 1999 17:41:16 +1000

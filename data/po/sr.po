@@ -4,551 +4,160 @@
 # Copyright (C) 2003. Ingo Ruhnke
 # This file is distributed under the same license as the PACKAGE package.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-23 02:10+0200\n"
-"PO-Revision-Date: 2003-04-15 17:29+0200\n"
+"POT-Creation-Date: 2011-05-06 14:58+0200\n"
+"PO-Revision-Date: 2011-01-17 16:50+0000\n"
 "Last-Translator: Milan Babuskov <mbabuskov@yahoo.com>\n"
 "Language-Team: <mbabuskov@yahoo.com>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  sr.po (Pingus 0.6.0)  #-#-#-#-#\n"
-
-#: src/engine/display/screenshot.cpp:33
-msgid "Screenshot: Saving screenshot to: "
-msgstr "Snimak ekrana: Snimam snimak u: "
-
-#: src/engine/display/screenshot.cpp:35
-msgid "Screenshot: Screenshot is done."
-msgstr "Snimak ekrana: snimak napravljen."
-
-#: src/engine/display/screenshot.cpp:110 src/engine/display/screenshot.cpp:138
-msgid "Screenshot: Couldn't write file: "
-msgstr "Snimak ekrana: Nije moguće snimiti fajl: "
-
-#: src/editor/editor_screen.cpp:191
-msgid ""
-"Select all\n"
-"Clear Selection\n"
-"Raise objects\n"
-"Lower objects\n"
-"Lower objects to bottom\n"
-"Raise objects to top\n"
-"Rotate 90 degree\n"
-"Rotate 270 degree\n"
-msgstr ""
-
-#: src/editor/editor_screen.cpp:213
-msgid ""
-"Flip object horizontaly\n"
-"Flip object vertically\n"
-"Delete all marked objects\n"
-"Move objects up\n"
-"Move objects down\n"
-"Move objects left\n"
-"Move objects right\n"
-msgstr ""
-
-#: src/editor/editor_screen.cpp:225
-msgid ""
-"You should name your level files systematically, i.e. by their theme, their "
-"number and your nickname:\n"
-"\n"
-"     <levelname><number>-<creator>.pingus\n"
-"\n"
-"So if you create a your second level with a stone theme, call it: stone2-"
-"yourname.pingus\n"
-"\n"
-"When you have created a level and want to have it included in the game mail "
-"it to:\n"
-"\n"
-"     pingus-devel@nongnu.org\n"
-"\n"
-"Only levels published under the GPL are allowed into the game. The editor "
-"automatically inserts a reference \n"
-"to the GPL, if you want to have your level under a different license, you "
-"have to change that reference.\n"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:61
-msgid "Datadir"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:63
-msgid "Userdir"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:66
-msgid "Open"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:66
-#, fuzzy
-msgid "Save"
-msgstr "Spaeno: "
-
-#: src/editor/file_dialog.cpp:69
-msgid "Cancel"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:80
-#, fuzzy
-msgid "Filename:"
-msgstr "Fajl: "
-
-#: src/editor/file_dialog.cpp:81
-msgid "Pathname:"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:107
-msgid "Open a level"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:107
-#, fuzzy
-msgid "Save your level"
-msgstr "Snimi ovaj nivo (F6)"
-
-#: src/editor/panel.cpp:152
-#, fuzzy
-msgid "    New level"
-msgstr "F5 - ucitaj nivo"
-
-#: src/editor/panel.cpp:154
-msgid "Open level..."
-msgstr ""
-
-#: src/editor/panel.cpp:156
-#, fuzzy
-msgid "Save level..."
-msgstr "Snimi ovaj nivo (F6)"
-
-#: src/editor/panel.cpp:158
-#, fuzzy
-msgid "Save level as..."
-msgstr "Snimi ovaj nivo (F6)"
-
-#: src/editor/panel.cpp:161
-msgid "Play level..."
-msgstr ""
-
-#: src/editor/panel.cpp:164
-msgid "Configure actions"
-msgstr ""
-
-#: src/editor/panel.cpp:166
-#, fuzzy
-msgid "Configure level"
-msgstr "Snimi ovaj nivo (F6)"
-
-#: src/editor/panel.cpp:168
-#, fuzzy
-msgid "Display object properties"
-msgstr "Podesi Karakteristike Objekta"
-
-#: src/editor/panel.cpp:170
-msgid "Show object insertion window"
-msgstr ""
-
-#: src/editor/panel.cpp:172
-msgid "Show minimap"
-msgstr ""
-
-#: src/editor/panel.cpp:175
-#, fuzzy
-msgid "Duplicate the selected objects"
-msgstr "Dupliraj trenutni objekat (d)"
-
-#: src/editor/panel.cpp:177
-#, fuzzy
-msgid "Delete the selected objects"
-msgstr "Remove - ukloni izabrani objekat"
-
-#: src/editor/panel.cpp:180
-msgid "Raise object to top"
-msgstr ""
-
-#: src/editor/panel.cpp:182
-msgid "Raise object"
-msgstr ""
-
-#: src/editor/panel.cpp:184
-msgid "Lower object"
-msgstr ""
-
-#: src/editor/panel.cpp:186
-msgid "Lower object to bottom"
-msgstr ""
-
-#: src/editor/panel.cpp:192
-msgid "Flip object horizontally"
-msgstr ""
-
-#: src/editor/panel.cpp:194
-msgid "Flip object vertically"
-msgstr ""
-
-#: src/editor/panel.cpp:197
-msgid "Rotate object -90 degree"
-msgstr ""
-
-#: src/editor/panel.cpp:199
-msgid "Rotate object 90 degree"
-msgstr ""
-
-#: src/editor/panel.cpp:208
-#, fuzzy
-msgid "Display help"
-msgstr "Prikai ovu pomoć"
-
-#: src/editor/panel.cpp:210 src/editor/object_selector.cpp:324
-#: src/pingus/screens/pingus_menu.cpp:62
-msgid "Exit"
-msgstr "Izlaz"
-
-#: src/editor/object_selector.cpp:315
-#, fuzzy
-msgid "Entrance"
-msgstr "e - Ulaz"
-
-#: src/editor/object_selector.cpp:316
-#, fuzzy
-msgid "Groundpiece (ground)"
-msgstr "g - Zemljite (zemlja)"
-
-#: src/editor/object_selector.cpp:317
-#, fuzzy
-msgid "Groundpiece (solid)"
-msgstr "s - Zemljite (čvrsto)"
-
-#: src/editor/object_selector.cpp:318
-#, fuzzy
-msgid "Groundpiece (bridge)"
-msgstr "b - Zemljite (most)"
-
-#: src/editor/object_selector.cpp:319
-#, fuzzy
-msgid "Groundpiece (transparent)"
-msgstr "n - Zemljite (providno)"
-
-#: src/editor/object_selector.cpp:320
-#, fuzzy
-msgid "Groundpiece (remove)"
-msgstr "r - Zemljite (ukloni)"
-
-#: src/editor/object_selector.cpp:321
-#, fuzzy
-msgid "Hotspot"
-msgstr "h - Senzor"
-
-#: src/editor/object_selector.cpp:322
-#, fuzzy
-msgid "Background"
-msgstr "z - Pozadina"
-
-#: src/editor/object_selector.cpp:325
-#, fuzzy
-msgid "Liquid"
-msgstr "l - Tečnost"
-
-#: src/editor/object_selector.cpp:326
-#, fuzzy
-msgid "Trap"
-msgstr "t - Zamke"
-
-#: src/editor/object_selector.cpp:327
-#, fuzzy
-msgid "Weather"
-msgstr "w - Vreme"
-
-#: src/editor/object_selector.cpp:328
-#, fuzzy
-msgid "Special Object"
-msgstr "-Posebno"
-
-#: src/editor/object_properties.cpp:81 src/editor/object_properties.cpp:454
-msgid "Object:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:82 src/editor/object_properties.cpp:455
-msgid "Nothing selected"
-msgstr ""
-
-#: src/editor/object_properties.cpp:91
-#, fuzzy
-msgid "Transparent"
-msgstr "-Prevod"
-
-#: src/editor/object_properties.cpp:92
-#, fuzzy
-msgid "Solid"
-msgstr "Klizač"
-
-#: src/editor/object_properties.cpp:93
-#, fuzzy
-msgid "Ground"
-msgstr "Zvuk:"
-
-#: src/editor/object_properties.cpp:94
-#, fuzzy
-msgid "Bridge"
-msgstr "Neimar"
-
-#: src/editor/object_properties.cpp:95
-#, fuzzy
-msgid "Water"
-msgstr "Čekač"
-
-#: src/editor/object_properties.cpp:96
-#, fuzzy
-msgid "Lava"
-msgstr "Napusti?"
-
-#: src/editor/object_properties.cpp:97
-msgid "Remove"
-msgstr ""
-
-#: src/editor/object_properties.cpp:102
-#, fuzzy
-msgid "Direction:"
-msgstr "Opcije:"
-
-#: src/editor/object_properties.cpp:104
-msgid "Left"
-msgstr ""
-
-#: src/editor/object_properties.cpp:105
-#, fuzzy
-msgid "Misc"
-msgstr "-Muzika"
-
-#: src/editor/object_properties.cpp:106
-msgid "Right"
-msgstr ""
-
-#: src/editor/object_properties.cpp:111
-msgid "ReleaseRate:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:128
-msgid "Para-X:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:129
-msgid "Para-Y:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:137
-msgid "Scroll-X:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:138
-msgid "Scroll-Y:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:146
-msgid "Owner Id:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:150
-msgid "Z-Pos:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:157
-msgid "Color:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:169
-msgid "Small Stars:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:172
-msgid "Middle Stars:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:175
-msgid "Large Stars:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:183
-msgid "Repeat:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:460
-msgid "Object: [Group]"
-msgstr ""
-
-#: src/editor/object_properties.cpp:461
-msgid "Group not supported"
-msgstr ""
-
-#: src/editor/object_properties.cpp:466
-msgid "Object: "
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:216
-msgid "Displays this help"
-msgstr "Prikai ovu pomoć"
-
-#: src/pingus/pingus_main.cpp:218
-#, fuzzy
-msgid "Print version number and exit"
-msgstr "Ispisuje verziju i izlazi"
-
-#: src/pingus/pingus_main.cpp:220
-msgid "Display:"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:222
-msgid "Start in Window Mode"
-msgstr "Pokreni u prozoru"
-
-#: src/pingus/pingus_main.cpp:224
-msgid "Start in Fullscreen"
-msgstr "Pokreni preko celog ekrana"
-
-#: src/pingus/pingus_main.cpp:226
-msgid "Use the given renderer (default: delta)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:228
-msgid "Enable software cursor"
-msgstr "Omogući softverski kursor"
-
-#: src/pingus/pingus_main.cpp:230
-msgid "Set the resolution for pingus (default: 800x600)"
-msgstr "Postavi rezoluciju za pingus (osnovna: 800x600)"
-
-#: src/pingus/pingus_main.cpp:232
-msgid "Sound:"
-msgstr "Zvuk:"
-
-#: src/pingus/pingus_main.cpp:234
-msgid "Disable sound"
-msgstr "Onemogući zvuk"
-
-#: src/pingus/pingus_main.cpp:236
-msgid "Disable music"
-msgstr "Onemogući muziku"
-
-#: src/pingus/pingus_main.cpp:240
-msgid "Select language to use with Pingus"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:242
-msgid "List all available languages"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:246
-#, fuzzy
-msgid "Loads the level editor"
-msgstr "..:: Pokreni editor nivoa ::.."
-
-#: src/pingus/pingus_main.cpp:248
-msgid "Save the level given level to FILENAME and quit"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:250
-msgid "Test a font"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:252
-msgid "Shows the credits"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:254
-#, fuzzy
-msgid "Misc Options:"
-msgstr "Opcije:"
-
-#: src/pingus/pingus_main.cpp:255 src/pingus/pingus_main.cpp:257
-msgid "PATH"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:256
-msgid "Set the path to load the data files to 'path'"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:258
-msgid "Set the path to load and save user files (savegames, etc.) to PATH"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:261
-msgid "Disable automatic scrolling"
-msgstr "Onemogući automatsko skrolovanje"
-
-#: src/pingus/pingus_main.cpp:263
-msgid "Don't read ~/.pingus/config"
-msgstr "Ne čitaj ~/.pingus/config"
-
-#: src/pingus/pingus_main.cpp:264
-#, fuzzy
-msgid "FILE"
-msgstr "FAJL     "
-
-#: src/pingus/pingus_main.cpp:265
-#, fuzzy
-msgid ""
-"Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
-"speed up the game on slower machines"
-msgstr "smanji upotrebu procesora, da se ubrza igra na sporim masinama"
-
-#: src/pingus/pingus_main.cpp:268
-msgid "Uses the controller given in FILE"
-msgstr "Koristi kontroler iz FAJLA"
-
-#: src/pingus/pingus_main.cpp:270
-msgid "Debugging and experimental stuff:"
-msgstr "Stvari za dibaging i eksperimente:"
-
-#: src/pingus/pingus_main.cpp:272
-#, fuzzy
-msgid "Enables some features, only interesting to programmers"
-msgstr "Ukljuuje neke mogućnosti, samo za programere"
-
-#: src/pingus/pingus_main.cpp:275
-#, fuzzy
-msgid ""
-"Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
-"actions, sound, resources, gui, input, pathmgr"
-msgstr "OPCIJE su polja, vreme igre, akcije, zvuk, resursi, interfejs,"
-
-#: src/pingus/pingus_main.cpp:279
-msgid "Set the game speed (0=fastest, >0=slower)"
-msgstr "Podesi brzinu igre (0=najbrze, >0=sporije)"
-
-#: src/pingus/pingus_main.cpp:281
-msgid "Set the desired game framerate (frames per second)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:283
-msgid "Set the size of the map tiles (default: 32)"
-msgstr "Podesi velicinu polja mape (osnovna: 32)"
-
-#: src/pingus/pingus_main.cpp:717
-msgid "Pingus: Out of memory!"
-msgstr "Pingus: Nema memorije!"
-
-#: src/pingus/pingus_main.cpp:721
-msgid "Pingus: Standard exception caught!:\n"
-msgstr "Pingus: Uhvaćen standardan izuzetak!:\n"
-
-#: src/pingus/pingus_main.cpp:725
-msgid "Pingus: Unknown throw caught!"
-msgstr "Pingus: Uhvaćen nepoznat throw!"
+"X-Launchpad-Export-Date: 2011-05-05 14:08+0000\n"
+"X-Generator: Launchpad (build 12959)\n"
 
 #: src/pingus/game_time.cpp:29
 msgid "unlimited"
 msgstr "neograničeno"
 
-#: src/pingus/actions/bridger.cpp:38 src/pingus/actions/bridger.cpp:196
-#: src/pingus/action_name.cpp:32
+#: src/pingus/action_name.cpp:27
+msgid "Angel"
+msgstr "Anđeo"
+
+#: src/pingus/action_name.cpp:28
+msgid "Basher"
+msgstr "Glodač"
+
+#: src/pingus/action_name.cpp:29
+msgid "Blocker"
+msgstr "Bloker"
+
+#: src/pingus/action_name.cpp:30
+msgid "Boarder"
+msgstr "Skejter"
+
+#: src/pingus/action_name.cpp:31
+msgid "Bomber"
+msgstr "Samoubica"
+
+#: src/pingus/action_name.cpp:32 src/pingus/actions/bridger.cpp:38
+#: src/pingus/actions/bridger.cpp:196
 msgid "Bridger"
 msgstr "Neimar"
+
+#: src/pingus/action_name.cpp:33
+msgid "Climber"
+msgstr "Penjač"
+
+#: src/pingus/action_name.cpp:34
+msgid "Digger"
+msgstr "Kopač"
+
+#: src/pingus/action_name.cpp:35
+msgid "Drown"
+msgstr "Davljenik"
+
+#: src/pingus/action_name.cpp:36
+msgid "Exiter"
+msgstr "Izlaznik"
+
+#: src/pingus/action_name.cpp:37
+msgid "Faller"
+msgstr "Padač"
+
+#: src/pingus/action_name.cpp:38
+msgid "Floater"
+msgstr "Padobranac"
+
+#: src/pingus/action_name.cpp:39
+msgid "Jumper"
+msgstr "Skakač"
+
+#: src/pingus/action_name.cpp:40
+msgid "Laserkill"
+msgstr "rtva lasera"
+
+#: src/pingus/action_name.cpp:41
+msgid "Miner"
+msgstr "Rudar"
+
+#: src/pingus/action_name.cpp:42
+msgid "Rocketlauncher"
+msgstr "Lanser raketa"
+
+#: src/pingus/action_name.cpp:43
+msgid "Slider"
+msgstr "Klizač"
+
+#: src/pingus/action_name.cpp:44
+msgid "Smashed"
+msgstr "Smrskan"
+
+#: src/pingus/action_name.cpp:45
+msgid "Splashed"
+msgstr "Zgnječen"
+
+#: src/pingus/action_name.cpp:46
+msgid "Superman"
+msgstr "Supermen"
+
+#: src/pingus/action_name.cpp:47
+msgid "Teleported"
+msgstr "Teleportovan"
+
+#: src/pingus/action_name.cpp:48
+msgid "Waiter"
+msgstr "Čekač"
+
+#: src/pingus/action_name.cpp:49
+msgid "Walker"
+msgstr "Hodač"
+
+#: src/pingus/screens/story_screen.cpp:107
+#: src/pingus/screens/story_screen.cpp:113
+msgid "skip"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:51
+#: src/pingus/screens/start_screen.cpp:111
+#: src/pingus/screens/result_screen.cpp:91
+msgid "Abort"
+msgstr "Odustani"
+
+#: src/pingus/screens/level_menu.cpp:141 src/pingus/screens/pingus_menu.cpp:67
+msgid "Levelsets"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:159
+msgid "Solved:"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:160
+msgid "levels"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:170 src/pingus/screens/level_menu.cpp:291
+msgid "Page"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:265
+msgid "Title"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:266
+msgid "Status"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:282
+msgid "solved"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:284
+msgid "unsolved"
+msgstr ""
 
 #: src/pingus/screens/credits.cpp:87
 msgid "-Idea"
@@ -567,9 +176,8 @@ msgid "-Porting (Win32)"
 msgstr "-Windows verzija"
 
 #: src/pingus/screens/credits.cpp:114
-#, fuzzy
 msgid "-Porting (MacOSX)"
-msgstr "-Windows verzija"
+msgstr ""
 
 #: src/pingus/screens/credits.cpp:119
 msgid "-Gfx"
@@ -623,15 +231,96 @@ msgstr "_Hvala to"
 msgid "_playing!"
 msgstr "_ste igrali!"
 
+#: src/pingus/screens/pingus_menu.cpp:52
+msgid "Story"
+msgstr ""
+
+#: src/pingus/screens/pingus_menu.cpp:53
+msgid "..:: Start the game ::.."
+msgstr "..:: Pokreni igru ::.."
+
+#: src/pingus/screens/pingus_menu.cpp:57
+msgid "Editor"
+msgstr ""
+
+#: src/pingus/screens/pingus_menu.cpp:58
+msgid "..:: Create your own levels ::.."
+msgstr ""
+
+#: src/pingus/screens/pingus_menu.cpp:62 src/editor/object_selector.cpp:324
+#: src/editor/panel.cpp:210
+msgid "Exit"
+msgstr "Izlaz"
+
+#: src/pingus/screens/pingus_menu.cpp:63
+msgid "..:: Bye, bye ::.."
+msgstr "..:: Vidimo se ::.."
+
+#: src/pingus/screens/pingus_menu.cpp:68
+msgid "..:: Play User Built levels ::.."
+msgstr ""
+
+#: src/pingus/screens/pingus_menu.cpp:79
+msgid ""
+"..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
+"fullscreen   ::   F12: screenshot ::.."
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:180
+msgid "Language:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:182
+msgid "Resolution:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:183
+msgid "Fullscreen:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:184
+msgid "Master Volume:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:185
+msgid "Sound Volume:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:186
+msgid "Music Volume:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:187
+msgid "Autoscrolling:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:188
+msgid "Print FPS:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:189
+msgid "Mouse Grab:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:190
+msgid "Software Cursor:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:208
+msgid "Reset to Defaults:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:284
+msgid "Option Menu"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:286 src/pingus/screens/addon_menu.cpp:50
+msgid "Close"
+msgstr ""
+
 #: src/pingus/screens/start_screen.cpp:67
 msgid "Ok"
 msgstr "Ok"
-
-#: src/pingus/screens/start_screen.cpp:111
-#: src/pingus/screens/level_menu.cpp:51
-#: src/pingus/screens/result_screen.cpp:91
-msgid "Abort"
-msgstr "Odustani"
 
 #: src/pingus/screens/start_screen.cpp:166
 msgid "Number of Pingus: "
@@ -652,141 +341,6 @@ msgstr "Autor: "
 #: src/pingus/screens/start_screen.cpp:184
 msgid "Filename: "
 msgstr "Fajl: "
-
-#: src/pingus/screens/addon_menu.cpp:50 src/pingus/screens/option_menu.cpp:286
-msgid "Close"
-msgstr ""
-
-#: src/pingus/screens/pingus_menu.cpp:52
-#, fuzzy
-msgid "Story"
-msgstr "-Priča"
-
-#: src/pingus/screens/pingus_menu.cpp:53
-msgid "..:: Start the game ::.."
-msgstr "..:: Pokreni igru ::.."
-
-#: src/pingus/screens/pingus_menu.cpp:57
-#, fuzzy
-msgid "Editor"
-msgstr "Izlaznik"
-
-#: src/pingus/screens/pingus_menu.cpp:58
-#, fuzzy
-msgid "..:: Create your own levels ::.."
-msgstr "..:: Pokreni dodatni nivo ::.."
-
-#: src/pingus/screens/pingus_menu.cpp:63
-msgid "..:: Bye, bye ::.."
-msgstr "..:: Vidimo se ::.."
-
-#: src/pingus/screens/pingus_menu.cpp:67 src/pingus/screens/level_menu.cpp:141
-#, fuzzy
-msgid "Levelsets"
-msgstr "-Dizajn nivoa"
-
-#: src/pingus/screens/pingus_menu.cpp:68
-#, fuzzy
-msgid "..:: Play User Built levels ::.."
-msgstr "..:: Pokreni dodatni nivo ::.."
-
-#: src/pingus/screens/pingus_menu.cpp:79
-msgid ""
-"..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
-"fullscreen   ::   F12: screenshot ::.."
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:159
-#, fuzzy
-msgid "Solved:"
-msgstr "Spaeno: "
-
-#: src/pingus/screens/level_menu.cpp:160
-#, fuzzy
-msgid "levels"
-msgstr "-Dizajn nivoa"
-
-#: src/pingus/screens/level_menu.cpp:170 src/pingus/screens/level_menu.cpp:291
-msgid "Page"
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:265
-msgid "Title"
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:266
-#, fuzzy
-msgid "Status"
-msgstr "Pokreni"
-
-#: src/pingus/screens/level_menu.cpp:282
-#, fuzzy
-msgid "solved"
-msgstr "Spaeno: "
-
-#: src/pingus/screens/level_menu.cpp:284
-#, fuzzy
-msgid "unsolved"
-msgstr "Spaeno: "
-
-#: src/pingus/screens/story_screen.cpp:107
-#: src/pingus/screens/story_screen.cpp:113
-msgid "skip"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:180
-msgid "Language:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:182
-#, fuzzy
-msgid "Resolution:"
-msgstr "Rezultati:"
-
-#: src/pingus/screens/option_menu.cpp:183
-#, fuzzy
-msgid "Fullscreen:"
-msgstr "Pokreni preko celog ekrana"
-
-#: src/pingus/screens/option_menu.cpp:184
-msgid "Master Volume:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:185
-#, fuzzy
-msgid "Sound Volume:"
-msgstr "Zvuk:"
-
-#: src/pingus/screens/option_menu.cpp:186
-msgid "Music Volume:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:187
-msgid "Autoscrolling:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:188
-msgid "Print FPS:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:189
-msgid "Mouse Grab:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:190
-#, fuzzy
-msgid "Software Cursor:"
-msgstr "Omogući softverski kursor"
-
-#: src/pingus/screens/option_menu.cpp:208
-#, fuzzy
-msgid "Reset to Defaults:"
-msgstr "Rezultati:"
-
-#: src/pingus/screens/option_menu.cpp:284
-#, fuzzy
-msgid "Option Menu"
-msgstr "Opcije"
 
 #: src/pingus/screens/result_screen.cpp:126
 msgid "Retry"
@@ -864,102 +418,164 @@ msgstr "Umrlo: "
 msgid "Time left: "
 msgstr "Preostalo vreme: "
 
-#: src/pingus/action_name.cpp:27
-msgid "Angel"
-msgstr "Anđeo"
-
-#: src/pingus/action_name.cpp:28
-msgid "Basher"
-msgstr "Glodač"
-
-#: src/pingus/action_name.cpp:29
-msgid "Blocker"
-msgstr "Bloker"
-
-#: src/pingus/action_name.cpp:30
-msgid "Boarder"
-msgstr "Skejter"
-
-#: src/pingus/action_name.cpp:31
-msgid "Bomber"
-msgstr "Samoubica"
-
-#: src/pingus/action_name.cpp:33
-msgid "Climber"
-msgstr "Penjač"
-
-#: src/pingus/action_name.cpp:34
-msgid "Digger"
-msgstr "Kopač"
-
-#: src/pingus/action_name.cpp:35
-msgid "Drown"
-msgstr "Davljenik"
-
-#: src/pingus/action_name.cpp:36
-msgid "Exiter"
-msgstr "Izlaznik"
-
-#: src/pingus/action_name.cpp:37
-msgid "Faller"
-msgstr "Padač"
-
-#: src/pingus/action_name.cpp:38
-msgid "Floater"
-msgstr "Padobranac"
-
-#: src/pingus/action_name.cpp:39
-msgid "Jumper"
-msgstr "Skakač"
-
-#: src/pingus/action_name.cpp:40
-msgid "Laserkill"
-msgstr "rtva lasera"
-
-#: src/pingus/action_name.cpp:41
-msgid "Miner"
-msgstr "Rudar"
-
-#: src/pingus/action_name.cpp:42
-msgid "Rocketlauncher"
-msgstr "Lanser raketa"
-
-#: src/pingus/action_name.cpp:43
-msgid "Slider"
-msgstr "Klizač"
-
-#: src/pingus/action_name.cpp:44
-msgid "Smashed"
-msgstr "Smrskan"
-
-#: src/pingus/action_name.cpp:45
-msgid "Splashed"
-msgstr "Zgnječen"
-
-#: src/pingus/action_name.cpp:46
-msgid "Superman"
-msgstr "Supermen"
-
-#: src/pingus/action_name.cpp:47
-msgid "Teleported"
-msgstr "Teleportovan"
-
-#: src/pingus/action_name.cpp:48
-msgid "Waiter"
-msgstr "Čekač"
-
-#: src/pingus/action_name.cpp:49
-msgid "Walker"
-msgstr "Hodač"
-
 #: src/pingus/components/pingus_counter.cpp:43
-#, fuzzy, c-format, boost-format
+#, c-format, boost-format
 msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
-msgstr "Puteno:%3d/%-3d   Izalo:%3d   Spaeno:%3d/%-3d"
+msgstr ""
 
-#: src/pingus/worldmap/worldmap.cpp:354
-msgid "...walking..."
-msgstr "...hodanje..."
+#: src/pingus/pingus_main.cpp:212
+msgid "[OPTIONS]... [FILE]"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:213
+msgid ""
+"Pingus is a puzzle game where you need to guide a bunch of little penguins "
+"around the world."
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:216
+msgid "Displays this help"
+msgstr "Prikai ovu pomoć"
+
+#: src/pingus/pingus_main.cpp:218
+msgid "Print version number and exit"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:220
+msgid "Display:"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:222
+msgid "Start in Window Mode"
+msgstr "Pokreni u prozoru"
+
+#: src/pingus/pingus_main.cpp:224
+msgid "Start in Fullscreen"
+msgstr "Pokreni preko celog ekrana"
+
+#: src/pingus/pingus_main.cpp:226
+msgid "Use the given renderer (default: delta)"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:228
+msgid "Enable software cursor"
+msgstr "Omogući softverski kursor"
+
+#: src/pingus/pingus_main.cpp:230
+msgid "Set the resolution for pingus (default: 800x600)"
+msgstr "Postavi rezoluciju za pingus (osnovna: 800x600)"
+
+#: src/pingus/pingus_main.cpp:232
+msgid "Sound:"
+msgstr "Zvuk:"
+
+#: src/pingus/pingus_main.cpp:234
+msgid "Disable sound"
+msgstr "Onemogući zvuk"
+
+#: src/pingus/pingus_main.cpp:236
+msgid "Disable music"
+msgstr "Onemogući muziku"
+
+#: src/pingus/pingus_main.cpp:240
+msgid "Select language to use with Pingus"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:242
+msgid "List all available languages"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:246
+msgid "Loads the level editor"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:248
+msgid "Save the level given level to FILENAME and quit"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:250
+msgid "Test a font"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:252
+msgid "Shows the credits"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:254
+msgid "Misc Options:"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:255 src/pingus/pingus_main.cpp:257
+msgid "PATH"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:256
+msgid "Set the path to load the data files to 'path'"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:258
+msgid "Set the path to load and save user files (savegames, etc.) to PATH"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:261
+msgid "Disable automatic scrolling"
+msgstr "Onemogući automatsko skrolovanje"
+
+#: src/pingus/pingus_main.cpp:263
+msgid "Don't read ~/.pingus/config"
+msgstr "Ne čitaj ~/.pingus/config"
+
+#: src/pingus/pingus_main.cpp:264
+msgid "FILE"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:265
+msgid ""
+"Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
+"speed up the game on slower machines"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:268
+msgid "Uses the controller given in FILE"
+msgstr "Koristi kontroler iz FAJLA"
+
+#: src/pingus/pingus_main.cpp:270
+msgid "Debugging and experimental stuff:"
+msgstr "Stvari za dibaging i eksperimente:"
+
+#: src/pingus/pingus_main.cpp:272
+msgid "Enables some features, only interesting to programmers"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:275
+msgid ""
+"Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
+"actions, sound, resources, gui, input, pathmgr"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:279
+msgid "Set the game speed (0=fastest, >0=slower)"
+msgstr "Podesi brzinu igre (0=najbrze, >0=sporije)"
+
+#: src/pingus/pingus_main.cpp:281
+msgid "Set the desired game framerate (frames per second)"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:283
+msgid "Set the size of the map tiles (default: 32)"
+msgstr "Podesi velicinu polja mape (osnovna: 32)"
+
+#: src/pingus/pingus_main.cpp:720
+msgid "Pingus: Out of memory!"
+msgstr "Pingus: Nema memorije!"
+
+#: src/pingus/pingus_main.cpp:724
+msgid "Pingus: Standard exception caught!:\n"
+msgstr "Pingus: Uhvaćen standardan izuzetak!:\n"
+
+#: src/pingus/pingus_main.cpp:728
+msgid "Pingus: Unknown throw caught!"
+msgstr "Pingus: Uhvaćen nepoznat throw!"
 
 #: src/pingus/worldmap/level_dot.cpp:140 src/pingus/worldmap/level_dot.cpp:150
 msgid "locked"
@@ -978,9 +594,348 @@ msgid "Leave?"
 msgstr "Napusti?"
 
 #: src/pingus/worldmap/worldmap_screen.cpp:212
-#, fuzzy
 msgid "Enter?"
-msgstr "Udji?"
+msgstr ""
+
+#: src/pingus/worldmap/worldmap.cpp:354
+msgid "...walking..."
+msgstr "...hodanje..."
+
+#: src/engine/display/screenshot.cpp:33
+msgid "Screenshot: Saving screenshot to: "
+msgstr "Snimak ekrana: Snimam snimak u: "
+
+#: src/engine/display/screenshot.cpp:35
+msgid "Screenshot: Screenshot is done."
+msgstr "Snimak ekrana: snimak napravljen."
+
+#: src/engine/display/screenshot.cpp:110 src/engine/display/screenshot.cpp:138
+msgid "Screenshot: Couldn't write file: "
+msgstr "Snimak ekrana: Nije moguće snimiti fajl: "
+
+#: src/editor/object_selector.cpp:315
+msgid "Entrance"
+msgstr ""
+
+#: src/editor/object_selector.cpp:316
+msgid "Groundpiece (ground)"
+msgstr ""
+
+#: src/editor/object_selector.cpp:317
+msgid "Groundpiece (solid)"
+msgstr ""
+
+#: src/editor/object_selector.cpp:318
+msgid "Groundpiece (bridge)"
+msgstr ""
+
+#: src/editor/object_selector.cpp:319
+msgid "Groundpiece (transparent)"
+msgstr ""
+
+#: src/editor/object_selector.cpp:320
+msgid "Groundpiece (remove)"
+msgstr ""
+
+#: src/editor/object_selector.cpp:321
+msgid "Hotspot"
+msgstr ""
+
+#: src/editor/object_selector.cpp:322
+msgid "Background"
+msgstr ""
+
+#: src/editor/object_selector.cpp:325
+msgid "Liquid"
+msgstr ""
+
+#: src/editor/object_selector.cpp:326
+msgid "Trap"
+msgstr ""
+
+#: src/editor/object_selector.cpp:327
+msgid "Weather"
+msgstr ""
+
+#: src/editor/object_selector.cpp:328
+msgid "Special Object"
+msgstr ""
+
+#: src/editor/object_properties.cpp:81 src/editor/object_properties.cpp:454
+msgid "Object:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:82 src/editor/object_properties.cpp:455
+msgid "Nothing selected"
+msgstr ""
+
+#: src/editor/object_properties.cpp:91
+msgid "Transparent"
+msgstr ""
+
+#: src/editor/object_properties.cpp:92
+msgid "Solid"
+msgstr ""
+
+#: src/editor/object_properties.cpp:93
+msgid "Ground"
+msgstr ""
+
+#: src/editor/object_properties.cpp:94
+msgid "Bridge"
+msgstr ""
+
+#: src/editor/object_properties.cpp:95
+msgid "Water"
+msgstr ""
+
+#: src/editor/object_properties.cpp:96
+msgid "Lava"
+msgstr ""
+
+#: src/editor/object_properties.cpp:97
+msgid "Remove"
+msgstr ""
+
+#: src/editor/object_properties.cpp:102
+msgid "Direction:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:104
+msgid "Left"
+msgstr ""
+
+#: src/editor/object_properties.cpp:105
+msgid "Misc"
+msgstr ""
+
+#: src/editor/object_properties.cpp:106
+msgid "Right"
+msgstr ""
+
+#: src/editor/object_properties.cpp:111
+msgid "ReleaseRate:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:128
+msgid "Para-X:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:129
+msgid "Para-Y:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:137
+msgid "Scroll-X:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:138
+msgid "Scroll-Y:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:146
+msgid "Owner Id:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:150
+msgid "Z-Pos:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:157
+msgid "Color:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:169
+msgid "Small Stars:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:172
+msgid "Middle Stars:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:175
+msgid "Large Stars:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:183
+msgid "Repeat:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:460
+msgid "Object: [Group]"
+msgstr ""
+
+#: src/editor/object_properties.cpp:461
+msgid "Group not supported"
+msgstr ""
+
+#: src/editor/object_properties.cpp:466
+msgid "Object: "
+msgstr ""
+
+#: src/editor/editor_screen.cpp:191
+msgid ""
+"Select all\n"
+"Clear Selection\n"
+"Raise objects\n"
+"Lower objects\n"
+"Lower objects to bottom\n"
+"Raise objects to top\n"
+"Rotate 90 degree\n"
+"Rotate 270 degree\n"
+msgstr ""
+
+#: src/editor/editor_screen.cpp:213
+msgid ""
+"Flip object horizontaly\n"
+"Flip object vertically\n"
+"Delete all marked objects\n"
+"Move objects up\n"
+"Move objects down\n"
+"Move objects left\n"
+"Move objects right\n"
+msgstr ""
+
+#: src/editor/editor_screen.cpp:225
+msgid ""
+"You should name your level files systematically, i.e. by their theme, their "
+"number and your nickname:\n"
+"\n"
+"     <levelname><number>-<creator>.pingus\n"
+"\n"
+"So if you create a your second level with a stone theme, call it: stone2-"
+"yourname.pingus\n"
+"\n"
+"When you have created a level and want to have it included in the game mail "
+"it to:\n"
+"\n"
+"     pingus-devel@nongnu.org\n"
+"\n"
+"Only levels published under the GPL are allowed into the game. The editor "
+"automatically inserts a reference \n"
+"to the GPL, if you want to have your level under a different license, you "
+"have to change that reference.\n"
+msgstr ""
+
+#: src/editor/panel.cpp:152
+msgid "    New level"
+msgstr ""
+
+#: src/editor/panel.cpp:154
+msgid "Open level..."
+msgstr ""
+
+#: src/editor/panel.cpp:156
+msgid "Save level..."
+msgstr ""
+
+#: src/editor/panel.cpp:158
+msgid "Save level as..."
+msgstr ""
+
+#: src/editor/panel.cpp:161
+msgid "Play level..."
+msgstr ""
+
+#: src/editor/panel.cpp:164
+msgid "Configure actions"
+msgstr ""
+
+#: src/editor/panel.cpp:166
+msgid "Configure level"
+msgstr ""
+
+#: src/editor/panel.cpp:168
+msgid "Display object properties"
+msgstr ""
+
+#: src/editor/panel.cpp:170
+msgid "Show object insertion window"
+msgstr ""
+
+#: src/editor/panel.cpp:172
+msgid "Show minimap"
+msgstr ""
+
+#: src/editor/panel.cpp:175
+msgid "Duplicate the selected objects"
+msgstr ""
+
+#: src/editor/panel.cpp:177
+msgid "Delete the selected objects"
+msgstr ""
+
+#: src/editor/panel.cpp:180
+msgid "Raise object to top"
+msgstr ""
+
+#: src/editor/panel.cpp:182
+msgid "Raise object"
+msgstr ""
+
+#: src/editor/panel.cpp:184
+msgid "Lower object"
+msgstr ""
+
+#: src/editor/panel.cpp:186
+msgid "Lower object to bottom"
+msgstr ""
+
+#: src/editor/panel.cpp:192
+msgid "Flip object horizontally"
+msgstr ""
+
+#: src/editor/panel.cpp:194
+msgid "Flip object vertically"
+msgstr ""
+
+#: src/editor/panel.cpp:197
+msgid "Rotate object -90 degree"
+msgstr ""
+
+#: src/editor/panel.cpp:199
+msgid "Rotate object 90 degree"
+msgstr ""
+
+#: src/editor/panel.cpp:208
+msgid "Display help"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:61
+msgid "Datadir"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:63
+msgid "Userdir"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:66
+msgid "Open"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:66
+msgid "Save"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:69
+msgid "Cancel"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:80
+msgid "Filename:"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:81
+msgid "Pathname:"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:107
+msgid "Open a level"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:107
+msgid "Save your level"
+msgstr ""
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:7
 msgid "If the way is blocked, bash away"
@@ -1406,6 +1361,480 @@ msgid ""
 "year."
 msgstr ""
 
+#: data/levels/desert/desert1.pingus:7
+msgid "Entering the pyramid"
+msgstr ""
+
+#: data/levels/desert/desert1.pingus:8
+msgid ""
+"After their long and dangerous journey through the desert they finally reach "
+"the large pyramid..."
+msgstr ""
+
+#: data/levels/desert/desert2.pingus:5
+msgid "The window room"
+msgstr ""
+
+#: data/levels/desert/desert2.pingus:6
+msgid ""
+"After the Pingus have entered the pyramid, they reach a large room with a "
+"large window. The only problem they have is that the entrance to the room is "
+"much to high to survive the landing. Can you help them?"
+msgstr ""
+
+#: data/levels/desert/desert3.pingus:7
+msgid "Pass the pedestal"
+msgstr ""
+
+#: data/levels/desert/desert3.pingus:8
+msgid ""
+"After the Pingus successfully passed the large window room, they are "
+"entering another great hall. A large pedestal is blocking the way to the "
+"entrance."
+msgstr ""
+
+#: data/levels/desert/desert3-tflavel.pingus:7
+msgid "Sandstorm"
+msgstr ""
+
+#: data/levels/desert/desert3-tflavel.pingus:8
+msgid ""
+"Deep inside the pyramid the pingus are surprised to find their way blocked "
+"by a large sand drift - pondering the absence of gravity they continue "
+"relentlessly..."
+msgstr ""
+
+#: data/levels/desert/desert4.pingus:5
+msgid "The excavation of the pyramid"
+msgstr ""
+
+#: data/levels/desert/desert4.pingus:6
+msgid ""
+"The excavations are open to reach the pyramid for his redeeming content. "
+"Some excavations, however, is best done with two competitors. Who comes "
+"first?"
+msgstr ""
+
+#: data/levels/desert/desert6-grumbel.pingus:7
+msgid "A bit to the right a bit to left"
+msgstr ""
+
+#: data/levels/desert/desert6-grumbel.pingus:8
+msgid "Only the most audacious Pingus will be allowed to continue."
+msgstr ""
+
+#: data/levels/desert/desert7-grumbel.pingus:7
+msgid "25 Pingus free and 25 in the box"
+msgstr ""
+
+#: data/levels/desert/desert7-grumbel.pingus:8
+msgid ""
+"Okay for the Bridger but what can I do with Digger? You should be save at "
+"least one Pingus trapped in the box above the exit."
+msgstr ""
+
+#: data/levels/desert/desert8-grumbel.pingus:7
+msgid "Tunnel Time"
+msgstr ""
+
+#: data/levels/desert/desert8-grumbel.pingus:8
+msgid ""
+"Dig a tunnel and you might make it to the exit. Digger and miners and stuff "
+"have to work together."
+msgstr ""
+
+#: data/levels/desert/desertwaste1-grumbel.pingus:7
+msgid "The Roof"
+msgstr ""
+
+#: data/levels/desert/desertwaste1-grumbel.pingus:8
+msgid ""
+"Sometimes the roofs are not good for refuge, sometimes it should be "
+"demolished!"
+msgstr ""
+
+#: data/levels/mysteryIsland/cave1-marcotte.pingus:5
+msgid "Near can mean far"
+msgstr ""
+
+#: data/levels/mysteryIsland/cave1-marcotte.pingus:6
+msgid ""
+"What do you do when you're going in the wrong direction ? Simple : walk into "
+"a wall. But it is easier said than done..."
+msgstr ""
+
+#: data/levels/mysteryIsland/cave level lac.pingus:7
+msgid "Trapped Underground"
+msgstr ""
+
+#: data/levels/mysteryIsland/cave level lac.pingus:8
+msgid ""
+"The penguins escaped the mad scientist, but now they were trapped deep "
+"underground. They had no food or water, so they had to move fast."
+msgstr ""
+
+#: data/levels/mysteryIsland/Copy of rainy1 lac.pingus:7
+msgid "The Final (and suprisingly easy) Challenge"
+msgstr ""
+
+#: data/levels/mysteryIsland/Copy of rainy1 lac.pingus:8
+msgid ""
+"The penguins had reached the end of the island. In the water was a long "
+"tree, perfect for the penguin's needs. Their journey was almost over."
+msgstr ""
+
+#: data/levels/mysteryIsland/emperiment lac.pingus:7
+msgid "Experimentation"
+msgstr ""
+
+#: data/levels/mysteryIsland/emperiment lac.pingus:8
+msgid ""
+"A mad scientist has captured the penguins and is experimenting on them. How "
+"can the penguins escape the guillotine?"
+msgstr ""
+
+#: data/levels/mysteryIsland/hall of illusion lac.pingus:7
+msgid "Hall of Illusion"
+msgstr ""
+
+#: data/levels/mysteryIsland/hall of illusion lac.pingus:8
+msgid ""
+"The penguins stopped and stood in indecision. What was real and what was "
+"not? Flame lanced from above and a guillotine glittered in the distance. "
+"almost all penguins must survive."
+msgstr ""
+
+#: data/levels/mysteryIsland/lavapit3.pingus:7
+msgid "The Lava Pit"
+msgstr ""
+
+#: data/levels/mysteryIsland/lavapit3.pingus:8
+msgid ""
+"The penguins had defeated the mad scientist, and were walking away from his "
+"destroyed laboratory when a huge hole opened under their feet. The penguins "
+"fell into an underground cave and the only way out was across the lava pit. "
+"Luckily, it seemed someone had left some helpful signs."
+msgstr ""
+
+#: data/levels/mysteryIsland/madscientist1 lac.pingus:7
+msgid "At least the experiments are over..."
+msgstr ""
+
+#: data/levels/mysteryIsland/madscientist1 lac.pingus:8
+msgid ""
+"The good news was that the mad scientist had tired of his experiments, the "
+"bad news was that now he was dumping them down a pit. A single floatation "
+"device was all the penguins had. Save as many as possible."
+msgstr ""
+
+#: data/levels/mysteryIsland/multi 1 lac.pingus:7
+msgid "Ghosting"
+msgstr ""
+
+#: data/levels/mysteryIsland/multi 1 lac.pingus:8
+msgid ""
+"The penguins came to a long pass. Acid bubbled underneath and it seemed a "
+"climber or two were needed.  Hint: slider can be used to stop the miner "
+"ability."
+msgstr ""
+
+#: data/levels/mysteryIsland/revenge1 lac.pingus:7
+#: data/levels/mysteryIsland/revenge2
+msgid "Revenge is sweet"
+msgstr ""
+
+#: data/levels/mysteryIsland/revenge1 lac.pingus:8
+msgid ""
+"The penguins had escaped the mad scientist but now they wanted revenge. They "
+"intended to destroy the support structures , sending the evil laboratory "
+"crashing down."
+msgstr ""
+
+#: data/levels/mysteryIsland/revenge2 lac.pingus:8
+msgid ""
+"The penguins had escaped the mad scientist but now they wanted revenge. They "
+"intended to destroy the support structures , sending the evil laboratory "
+"crashing down. They had to move fast though, because the mad scientist would "
+"detect and recapture them if they weren't fast enough."
+msgstr ""
+
+#: data/levels/mysteryIsland/snow2 lac.pingus:7
+msgid "Winter Wonderland"
+msgstr ""
+
+#: data/levels/mysteryIsland/snow2 lac.pingus:8
+msgid ""
+"After getting past the lava pit, the penguins walked and walked until they "
+"reached a snowed in exit. That would be relatively easy to tunnel through "
+"but how would it be possible to tunnel through solid metal?"
+msgstr ""
+
+#: data/levels/mysteryIsland/Theend lac.pingus:7
+msgid "The Journey Goes On"
+msgstr ""
+
+#: data/levels/mysteryIsland/Theend lac.pingus:8
+msgid ""
+"And so the penguins continued on their journey, drawing ever closer to the "
+"North Pole. They had escaped the guillotine, defeated the mad scientist and "
+"got a new boat. And so this chapter in their voyage was over, but there "
+"would be other obstacles. Nothing  would stop the determined penguins from "
+"reaching their goal."
+msgstr ""
+
+#: data/levels/mysteryIsland/use the slide lac.pingus:7
+msgid "Think fast (literally)"
+msgstr ""
+
+#: data/levels/mysteryIsland/use the slide lac.pingus:8
+msgid ""
+"This would be simple but for one thing, there are no blockers. All the "
+"penguins must survive."
+msgstr ""
+
+#: data/levels/mysteryIsland/volcano1-grumbel.pingus:7
+msgid "Shipwrecked"
+msgstr ""
+
+#: data/levels/mysteryIsland/volcano1-grumbel.pingus:8
+msgid ""
+"The penguins were sailing along happily on their makeshift boat until "
+"suddenly, an island appeared. The penguins were drawn towards it and "
+"crashed, destroying their boat. Now they must find their way acoss this "
+"strange island."
+msgstr ""
+
+#: data/levels/alien/aliens1-phil.pingus:7
+msgid "Escape from Aliens"
+msgstr ""
+
+#: data/levels/alien/aliens1-phil.pingus:8
+msgid ""
+"Aliens invade our starship blocking intrance to the teleporter. Your crew is "
+"well trained, like you they don't panic."
+msgstr ""
+
+#: data/levels/alien/aliens2-phil.pingus:7
+msgid "Escape from Aliens 2"
+msgstr ""
+
+#: data/levels/alien/aliens2-phil.pingus:8
+msgid "Aliens are now closest making your escape harder. You must dig it up."
+msgstr ""
+
+#: data/levels/alien/aliens4-phil.pingus:5
+msgid "Alien's nest"
+msgstr ""
+
+#: data/levels/alien/aliens4-phil.pingus:6
+msgid "Pingus invade the nest. Take care of jaws What's the matrix above ?"
+msgstr ""
+
+#: data/levels/alien/aliens5-phil.pingus:5
+msgid "Matrix of the death"
+msgstr ""
+
+#: data/levels/alien/aliens5-phil.pingus:6
+msgid ""
+"Take a piece of paper. Now pingus have to enter the matrix of the death. "
+"This is a maze, bad ways are protect by jaws."
+msgstr ""
+
+#: data/levels/alien/aliens6-phil.pingus:7
+msgid "Spy's pingus in the matrix of the death"
+msgstr ""
+
+#: data/levels/alien/aliens6-phil.pingus:8
+msgid ""
+"Spy's pingus have marked the location of jaws in the matrix of the death. "
+"Many died to gain that information :..( Perhaps this help. Perhaps..."
+msgstr ""
+
+#: data/levels/alien/aliens7-phil.pingus:7
+msgid "Fourth dimension"
+msgstr ""
+
+#: data/levels/alien/aliens7-phil.pingus:8
+msgid ""
+"The defenses of the aliens get stronger. Now you have to jump in the fourth "
+"dimension to win !"
+msgstr ""
+
+#: data/levels/alien/space-11-rz+eriksoe.pingus:5
+msgid "Set your watches"
+msgstr ""
+
+#: data/levels/alien/space-11-rz+eriksoe.pingus:6
+msgid "Cooperation in space."
+msgstr ""
+
+#: data/levels/alien/space2.pingus:5
+msgid "Lost in Space"
+msgstr ""
+
+#: data/levels/alien/space2.pingus:6
+msgid "We don't know where we are but we don't leave anybody behind."
+msgstr ""
+
+#: data/levels/alien/space-9-tom.pingus:7
+msgid "Outside In"
+msgstr ""
+
+#: data/levels/alien/space-9-tom.pingus:8
+msgid "Can you help the pingus escape without getting their flippers wet?"
+msgstr ""
+
+#: data/levels/alien/space-loop-timpany.pingus:5
+msgid "Endless Loop"
+msgstr ""
+
+#: data/levels/alien/space-loop-timpany.pingus:6
+msgid ""
+"To the right and left Pingus certain death and 50 to save! You can help them "
+"get out of this mess?"
+msgstr ""
+
+#: data/levels/alien/space-tom1.pingus:7
+msgid "Up up in the space"
+msgstr ""
+
+#: data/levels/alien/space-tom1.pingus:8
+msgid "What good is a pick in space? Certainly not to go to the stars."
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign10.pingus:7
+#, fuzzy
+msgid "Jump"
+msgstr "Skakač"
+
+#: data/levels/factorycampaign/factory_campaign10.pingus:8
+msgid ""
+"All Pingus need is to jump.... Hint: While pausing (press P key) you still "
+"can control Pingus. "
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign11.pingus:7
+#, fuzzy
+msgid "Factory"
+msgstr "-Priča"
+
+#: data/levels/factorycampaign/factory_campaign11.pingus:8
+msgid ""
+"Finally you reached the factory. Watch out as there are many dangers. Use "
+"bombers to destroy the basement of the factory. Good luck!"
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign12.pingus:7
+msgid "Going back home"
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign12.pingus:8
+msgid "Your mission is over. Pingus can go back home, but be careful!"
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign13.pingus:7
+msgid "Bonus track"
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign13.pingus:8
+msgid ""
+"Pingus are at home, but after the climate change living on the South Pole "
+"became more dangerous. There is one more mission for you."
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign1.pingus:7
+msgid "Falling down"
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign1.pingus:8
+msgid ""
+"Pingus intelligence reported that a huge factories located in the "
+"subtropical zone might be a reason of a climate change. They decided to go "
+"there and shut down the factories. This will be a long and dangerous "
+"expedition. Pingus and you will have to face many diffuculties on your way. "
+"As the ice is melting, at first you have to build some bridges and watch out "
+"for the cliff."
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign2.pingus:7
+msgid "Destination North"
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign2.pingus:8
+msgid ""
+"For now, Pingus are leaving South Pole and moving North. You have to help "
+"them!"
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign3.pingus:7
+msgid "The cave"
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign3.pingus:8
+msgid ""
+"Pingus on their way came across a huge cave. You have to lead them through. "
+"Remember that sometimes there is more than one way out. Hint: To 'unlock' "
+"blockers you can use bashers and jumpers."
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign4.pingus:7
+msgid "Difficulties on the way"
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign4.pingus:8
+msgid ""
+"It looks you have encountered serious difficulties. But don't panic, Pingus "
+"are waiting for your orders, they count on you so don't fail! Hint: Miners, "
+"diggers and bashers are very important here!"
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign5.pingus:7
+msgid "Four ways out"
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign5.pingus:8
+msgid ""
+"It's getting warmer but Pingus are breavely moving North. This time it will "
+"be much easier. There are at least four ways out. Could you find them?"
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign6.pingus:7
+msgid "Egypt - So easy"
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign6.pingus:8
+msgid "Pingus reached Egypt. Looks easy but is it really so easy. Try out. "
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign7.pingus:7
+msgid "Egypt - Oasis"
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign7.pingus:8
+msgid ""
+"Last time it was easy. Now it will be a little bit harder. Pingus are "
+"entering oasis. Watch out for the water. "
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign8.pingus:7
+msgid "Egypt - The Maze"
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign8.pingus:8
+msgid ""
+"You came across a maze. Can you find the way out? Think twice before digging."
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign9.pingus:7
+msgid "Egypt - Piramids"
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign9.pingus:8
+msgid ""
+"The maze led you to the big piramid. Now you have 4 minutes to escape. Hurry "
+"up!"
+msgstr ""
+
 #: data/worldmaps/tutorial.worldmap:4
 msgid "Tutorial Island"
 msgstr ""
@@ -1423,59 +1852,38 @@ msgid "The Journey Continues"
 msgstr "Putovanje se nastavlja"
 
 #: data/worldmaps/tutorial.worldmap:22
-#, fuzzy
 msgid ""
 "For a long time, the Pingus have lived happily in peace on the South Pole "
 "along with all the other animals. Everything was in balance and it seemed "
 "like nothing could disrupt their peace.  The Pingus were happy and it seemed "
 "like this could never end."
 msgstr ""
-"Dugo vremena su Pingusi ziveli srecno i u miru na juznom polu uz\n"
-"sve druge zivotinje. Sve je bilo u ravnotezi i izgledalo je kao\n"
-"da nista ne moze narusiti njihov mir. Bili su vrlo srecni i\n"
-"izgledalo je kao da tome nema kraja.\n"
 
 #: data/worldmaps/tutorial.worldmap:30
-#, fuzzy
 msgid ""
 "But then one day, things began to change slowly: the sky got darker and the "
 "earth got warmer. Firstly, they thought this was just a normal fluctuation "
 "in the world's climate, but things seemed to get worse and worse with every "
 "year."
 msgstr ""
-"Ali, jednog dana, stvari su pocele da se polako menjaju, nebo\n"
-"se zacrnilo, zemlja se ugrejala. Prvo su pomislili da je to\n"
-"samo normalna fluktuacija u svetkskom klimatu, ali izgledalo je\n"
-"kao da se iz godine u godinu stvari sve vise i vise pogorsavaju."
 
 #: data/worldmaps/tutorial.worldmap:38
-#, fuzzy
 msgid ""
 "The snow began to melt away in a few areas and food became an issue. Other "
 "animals tried to leave the region to search for colder areas, but the Pingus "
 "knew that this wouldn't help: they knew that they had to do something about "
 "it."
 msgstr ""
-"Sneg je poceo da se topi i u nekim delovima hrana je postala\n"
-"vazno pitanje. Druge zivotinje su vec pocele da napustaju\n"
-"region u potrazi za hladnijim podrucjima, ali Pingusi su\n"
-"znali da to nece pomoci, vec su morali da ucine nesto."
 
 #: data/worldmaps/tutorial.worldmap:46
-#, fuzzy
 msgid ""
 "So the circle of the eldest came together to decide what to do about it. "
 "They decided to send out an expedition around the world to find the cause of "
 "this warming. The expedition consisted of hundreds of the bravest Pingus on "
 "the South Pole."
 msgstr ""
-"Tako se okupio krug najstarijih da odluce sta ce da urade\n"
-"povodom situacije. Odlucili su da posalju ekspediciju na put oko\n"
-"sveta da nadje razlog zagrevanju. Ekspedicija se sastojala od\n"
-"stotina najhrabrijih Pingusa sa Juznog pola."
 
 #: data/worldmaps/tutorial.worldmap:54
-#, fuzzy
 msgid ""
 "And they picked you to lead them on their journey around the world. Since "
 "the journey will be dangerous and difficult, your first goal is the Island "
@@ -1483,51 +1891,29 @@ msgid ""
 "island has always been the first stop of Pingus that were sent out into the "
 "world."
 msgstr ""
-"A tebe su izabrali da ih vodis na njihovom putuovanju oko\n"
-"sveta. Posto ce putovanje biti opasno i tesko, tvoj prvi cilj\n"
-"je Ostrvo Mogorok, takodje poznato i kao Tutorsko Ostrvo. Po\n"
-"prici najstarijih, to ostrvo je oduvek bilo pocetna tacka\n"
-"Pingusa poslatih u svet."
 
 #: data/worldmaps/tutorial.worldmap:63
-#, fuzzy
 msgid ""
 "The island consists of many areas that are ideal to teach the Pingus their "
 "abilities. The Pingus can learn to build bridges, climb, bash and use many "
 "other talents which they will need on their long and dangerous journey."
 msgstr ""
-"Ostrvo se sastoji iz mnostva regiona, koji su idealni za\n"
-"uvezbavanje sposobnosti Pingusa. Pingusi mogu tamo vezbati svoje\n"
-"sposobnosti mostogradnje, penjanja, kopanja, kad i razne druge\n"
-"vestine koje ce im sigurno zatrebati u dugom i opasnom putovanju."
 
 #: data/worldmaps/tutorial.worldmap:70
-#, fuzzy
 msgid ""
 "While there, you can practice your abilities in commanding and guiding the "
 "Pingus. You can also get familiar with all the abilities the Pingus provide "
 "and learn to master them, since you will need all of them on your journey "
 "around the world."
 msgstr ""
-"Sa druge strane, ti mozes uvezbati svoju sposobnost da\n"
-"naredjujes i vodis Pinguse. Takodje se mozes upoznati sa svim\n"
-"sposobnostima koje Pingusi poseduju i nauciti da koristis, jer\n"
-"ce ti sve te vestine sigurno trebati na vasem putu oko\n"
-"sveta"
 
 #: data/worldmaps/tutorial.worldmap:78
-#, fuzzy
 msgid ""
 "Now that you and the Pingus have arrived at Tutorial Island it is time to "
 "take command and begin your mission. Good Luck!"
 msgstr ""
-"Sada, kada ste Pingusi i ti stigli na Tutorsko ostrvo, vreme\n"
-"je da preuzmes komandu i zapocnes svoju misiju.\n"
-"\n"
-"                                                     Srecno!"
 
 #: data/worldmaps/tutorial.worldmap:88
-#, fuzzy
 msgid ""
 "Now after you and the Pingus have learned the basics and practiced a bit it "
 "is time to move on and begin the journey into the world. Since the ice floe "
@@ -1535,15 +1921,8 @@ msgid ""
 "the whole way into the warmer climates the Pingus have to find something "
 "else to guide them on their journey."
 msgstr ""
-"Sada kada si sa Pingusima naučio osnove i malo vebao\n"
-"vreme je da se krene dalje i započne putovanje u svet.\n"
-"Poto ledena santa na kojoj su Pingusi putovali do\n"
-"Tutorskog ostrva ne bi izdrala celo putovanje u toplijim\n"
-"krajevima, Pingusi moraju pronaći neto drugo da ih\n"
-"vodi na njihovom putovanju.\n"
 
 #: data/worldmaps/tutorial.worldmap:97
-#, fuzzy
 msgid ""
 "But as the eldest have said, the Tutorial Island provides not only a good "
 "way to practice, but it is also the starting point into the world. After "
@@ -1551,42 +1930,43 @@ msgid ""
 "large tree at the end of the island which gave them wood to construct a "
 "float."
 msgstr ""
-"Ali, kao sto su najstariji rekli, Tutorsko ostrvo ne pruza\n"
-"samo mogucnost vezbanja, vec je takodje i pocetna tacka ka\n"
-"svetu, jer ce materijal od velikog drveta sa kraja ostrva\n"
-"biti dobra gradja za konstruisanje splava.\n"
 
 #: data/worldmaps/tutorial.worldmap:106
-#, fuzzy
 msgid ""
 "So the Pingus set out and constructed some large rafts, enough to carry them "
 "all. After also packing a bunch of provisions they were prepared to start "
 "their journey and leave their familiar ground and enter the unknown parts of "
 "the world."
 msgstr ""
-"Tako su Pingusi otisli i napravili nekoliko velikih splavova,\n"
-"dovoljno da ih sve ponesu. Nakon pakovanja raznih namirnica\n"
-"bili su konacno spremni da zapocnu svoje putovanje i napuste\n"
-"sebi poznate krajeve i zadju u nepoznate delove\n"
-"sveta.\n"
 
 #: data/worldmaps/tutorial.worldmap:114
-#, fuzzy
 msgid ""
 "So the Pingus sit on their raft, worrying about what's to come and where to "
 "go, while floating into the sunset.  To be continued..."
 msgstr ""
-"Tako su Pingusi seli u svoj splav, i brinuli sta ce da se\n"
-"desi i kuda ce ici, i plovili prema zalasku sunca.\n"
-"\n"
-"Nastavice se..."
 
-#: data/levelsets/desert.levelset:2
-msgid "Desert"
+#: data/levelsets/alien.levelset:3
+msgid "Alien by Josh Dye"
+msgstr ""
+
+#: data/levelsets/alien.levelset:4
+msgid "Escape from alien"
 msgstr ""
 
 #: data/levelsets/desert.levelset:3
-msgid "Abandoned in the Arabian Desert"
+msgid "Desert"
+msgstr ""
+
+#: data/levelsets/desert.levelset:4
+msgid "Getting hot outside..."
+msgstr ""
+
+#: data/levelsets/factory.levelset:3
+msgid "Factory Campaign"
+msgstr ""
+
+#: data/levelsets/factory.levelset:4
+msgid "Pingus expedition"
 msgstr ""
 
 #: data/levelsets/halloween.levelset:3
@@ -1597,668 +1977,10 @@ msgstr ""
 msgid "Trapped at All Hallows Eve"
 msgstr ""
 
-#: data/levelsets/pacman.levelset:3
-msgid "Pac-Man"
+#: data/levelsets/mysteryIsland.levelset:3
+msgid "Island of Mystery"
 msgstr ""
 
-#: data/levelsets/pacman.levelset:4
-msgid "Trapped in a video game"
+#: data/levelsets/mysteryIsland.levelset:4
+msgid "Marooned on an Uncharted Isle [by Lachlan McCubbin]"
 msgstr ""
-
-#: data/levelsets/xmas.levelset:3
-msgid "X-Mas 2007"
-msgstr ""
-
-#: data/levelsets/xmas.levelset:4
-msgid "Merry Christmas and a Happy New Year"
-msgstr ""
-
-#, fuzzy
-#~ msgid "Load a custom worldmap"
-#~ msgstr "Učitaj neku mapu sveta iz FAJLA"
-
-#~ msgid "Skip at least N frames, larger values speed the game up"
-#~ msgstr "Preskoči N frejmova, veće vrednosti ubrzavaju igru"
-
-#~ msgid "Skip at most N frames"
-#~ msgstr "Preskoči najvie N frejmova"
-
-#~ msgid "Set both min and max frameskip to N"
-#~ msgstr "Postavi min i max preskakanje frejmova na N"
-
-#~ msgid "Disable some cpu intensive features"
-#~ msgstr "Onemogući neke intenzivne mogucnosti"
-
-#~ msgid "Demo playing and recording:"
-#~ msgstr "Igranje i snimanje demoa"
-
-#, fuzzy
-#~ msgid "Plays a demo session"
-#~ msgstr "Igra demo na osnovu FAJLA"
-
-#~ msgid "Record demos for each played level"
-#~ msgstr "Snimi demo za svaki odigran nivo"
-
-#~ msgid "Error caught from Pingus: "
-#~ msgstr "Uhvaćena greka iz Pingusa: "
-
-#~ msgid "Couldn't open: "
-#~ msgstr "Nije moguće otvoriti: "
-
-#~ msgid "Unexpected char: '"
-#~ msgstr "Neočekivan karakter: '"
-
-#~ msgid "Yes"
-#~ msgstr "Da"
-
-#~ msgid "No"
-#~ msgstr "Ne"
-
-#~ msgid "Exit Pingus?"
-#~ msgstr "Izlaz iz Pingusa?"
-
-#, fuzzy
-#~ msgid "..:: Start the story ::.."
-#~ msgstr "..:: Pokreni igru ::.."
-
-#, fuzzy
-#~ msgid "Multiplayer"
-#~ msgstr "Vie"
-
-#, fuzzy
-#~ msgid "..:: Multiplayer Match ::.."
-#~ msgstr "..:: Modovi za vie igrača... eksperimentalno ::.."
-
-#~ msgid "Difficulty:"
-#~ msgstr "Teina:"
-
-#, fuzzy
-#~ msgid "Difficulty: "
-#~ msgstr "Teina:"
-
-#, fuzzy
-#~ msgid ""
-#~ "Contrib\n"
-#~ "Levels"
-#~ msgstr "Dodaci"
-
-#, fuzzy
-#~ msgid ""
-#~ "Print some more messages to stdout, can be set multiple times to increase "
-#~ "verbosity"
-#~ msgstr "Ispis jos nekih poruka na stdout, moe biti postavljeno"
-
-#~ msgid "Use OpenGL"
-#~ msgstr "Koristi OpenGL"
-
-#~ msgid "Prints the fps to stdout"
-#~ msgstr "Ispii fps na stdout"
-
-#~ msgid "Reduces the CPU usage by issuing sleep()"
-#~ msgstr "Smanjuje upotrebu procesora korićenjem sleep()-a"
-
-#~ msgid ""
-#~ "Warning: Larger resolution than 800x600 will result in visual problems"
-#~ msgstr ""
-#~ "Upozorenje: Rezolucije veće od 800x600 mogu da izazovu vizuelne probleme"
-
-#~ msgid "PingusMain: Starting Main: "
-#~ msgstr "PingusMain: Pokretanje Main: "
-
-#~ msgid "| segfault_handler: catched a SIGSEGV."
-#~ msgstr "| segfault_handler: uhvaćen SIGSEGV."
-
-#~ msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
-#~ msgstr "| Oops, Pingus sa zakucao, čestitke na pronađenoj greki."
-
-#~ msgid ""
-#~ "| Please write a little bug report to <grumbel@gmx.de>, include "
-#~ "informations"
-#~ msgstr ""
-#~ "| Molimo Vas da napiete mali izvetaj o greki na <grumbel@gmx.de>, sa "
-#~ "informacijama"
-
-#~ msgid "| where exacly the SIGSEGV occured and how to reproduce it."
-#~ msgstr "| gde se tačno SIGSEGV desio i kako da ga reprodukujemo."
-
-#~ msgid "| Also try include a backtrace, you can get it like this:"
-#~ msgstr "| Takođe pokuajte dati i backtrace, koji moete dobiti ovako:"
-
-#~ msgid "| If that doesn't work, try this:"
-#~ msgstr "| Ako ne radi, probajte ovo:"
-
-#~ msgid "| [play until it crashes again]"
-#~ msgstr "| [igrajte dok se opet ne zakuca]"
-
-#~ msgid "| Warning: Pingus recieved a SIGINT, exiting now."
-#~ msgstr "| Upozorenje: Pingus je primio SIGINT, izlaz odmah."
-
-#~ msgid "Disable intro"
-#~ msgstr "Onemogući uvod"
-
-#, fuzzy
-#~ msgid "Set the refresh rate in fullscreen (default: 60)"
-#~ msgstr "Postavi rezoluciju za pingus (osnovna: 800x600)"
-
-#~ msgid "Load a custom level from FILE"
-#~ msgstr "Učitaj neki nivo iz FAJLA"
-
-#, fuzzy
-#~ msgid "language:                "
-#~ msgstr "ceo ekran:               "
-
-#~ msgid "sound support:           enabled"
-#~ msgstr "podrka za zvuk:       omogućena"
-
-#~ msgid "sound support:          disabled"
-#~ msgstr "podrka za zvuk:     onemogućena"
-
-#~ msgid "music support:           enabled"
-#~ msgstr "podrka za muziku:     omogućena"
-
-#~ msgid "music support:          disabled"
-#~ msgstr "podrka za muziku:   onemogućena"
-
-#, fuzzy
-#~ msgid "resolution:              "
-#~ msgstr "rezolucija postavljna na:"
-
-#~ msgid "fullscreen:              "
-#~ msgstr "ceo ekran:               "
-
-#~ msgid " enabled"
-#~ msgstr " omogućeno"
-
-#~ msgid "disabled"
-#~ msgstr "onemogućeno"
-
-#, fuzzy
-#~ msgid "using OpenGL:            "
-#~ msgstr "ceo ekran:               "
-
-#~ msgid "PingusMain: Levelfile not found, ignoring: "
-#~ msgstr "PingusMain: Fajl nivoa nije nađen, ignorisano: "
-
-#~ msgid "Environment variable $HOME not set, fix that and start again."
-#~ msgstr "Varijabla okruzenja $HOME nije postavljena, ispravi pa ponovi."
-
-#~ msgid "Unexpected char '"
-#~ msgstr "Neočekivan karakter: '"
-
-#~ msgid "unknown"
-#~ msgstr "nepoznato"
-
-#~ msgid "Credits"
-#~ msgstr "Zasluge"
-
-#, fuzzy
-#~ msgid "..:: See the credits ::.."
-#~ msgstr "..:: Pokreni igru ::.."
-
-#, fuzzy
-#~ msgid "Pingus do time"
-#~ msgstr "Spasiti Pingusa: %d"
-
-#, fuzzy
-#~ msgid "PLE Level"
-#~ msgstr "Nivo"
-
-#, fuzzy
-#~ msgid "Smashing Zone"
-#~ msgstr "Smrskan"
-
-#, fuzzy
-#~ msgid "Set your watches"
-#~ msgstr "Odaberi vreme"
-
-#, fuzzy
-#~ msgid "Entering the cave"
-#~ msgstr "Unesi naziv fajla za snimanje:"
-
-#, fuzzy
-#~ msgid "Easy going..."
-#~ msgstr "Učitavanje..."
-
-#, fuzzy
-#~ msgid "Level 0"
-#~ msgstr "Nivo"
-
-#, fuzzy
-#~ msgid "Blocked Exit"
-#~ msgstr "zakljucano"
-
-#~ msgid "Unknow char: "
-#~ msgstr "Nepoznat karakter: "
-
-#~ msgid "Usage: "
-#~ msgstr "Upotreba: "
-
-#~ msgid " [OPTIONS]... [LEVELFILE]"
-#~ msgstr " [OPCIJE]... [FAJL_NIVOA]"
-
-#~ msgid "FILE      "
-#~ msgstr "FAJL      "
-
-#~ msgid "FILE        "
-#~ msgstr "FAJL       "
-
-#~ msgid "multiple times to increase verbosity"
-#~ msgstr "vie puta da se poveća informativnost"
-
-#~ msgid "FILE       "
-#~ msgstr "FAJL       "
-
-#~ msgid "Read config from FILE (default: ~/.pingus/config)"
-#~ msgstr "Čitaj podeavanja iz FAJLA (osnovni: ~/.pingus/config)"
-
-#~ msgid "Enable the output of debugging infos, possible"
-#~ msgstr "Omogućuje ispis dibaging informacija, moguće"
-
-#~ msgid "clanVorbis support:           ok"
-#~ msgstr "podrka za clanVorbis:        ok"
-
-#~ msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
-#~ msgstr "podrka za clanVorbis:  nedostaje (.ogg fajlovi neće biti puteni)"
-
-#~ msgid "clanMikMod support:           ok"
-#~ msgstr "podrka za clanMikMod:        ok"
-
-#~ msgid "clanMikMod support:  missing (music files will not be playable)"
-#~ msgstr "podrka za clanMikMod:  nedostaje (neće biti muzike)"
-
-#~ msgid "getext support:               ok"
-#~ msgstr "podrka za gettext:           ok"
-
-#~ msgid "gettext language:        english"
-#~ msgstr "gettext jezik:           engleski"
-
-#~ msgid "Error caught from ClanLib: "
-#~ msgstr "Uhvacena greska iz ClanLiba: "
-
-#~ msgid "Image has wrong color depth: %d"
-#~ msgstr "Slika ima pogrean color depth: %d"
-
-#~ msgid "Editor Helpscreen (hide with F1)"
-#~ msgstr "Pomoć za editor (sakrij sa F1)"
-
-#~ msgid "F1 - show/hide this help screen"
-#~ msgstr "F1 - prikai/sakrij ovaj pomoćni ekran"
-
-#~ msgid "F2 - launch level building tutorial"
-#~ msgstr "F2 - pokreni kurs za kreiranje nivoa"
-
-#~ msgid "F3 - toggle background color"
-#~ msgstr "F3 - izmeni boju pozadine"
-
-#~ msgid "F4 - play/test the level"
-#~ msgstr "F4 - igraj/testiraj nivo"
-
-#~ msgid "F6 - save this level"
-#~ msgstr "F6 - snimi ovaj nivo"
-
-#~ msgid "F7 - [unset]"
-#~ msgstr "F7 - [nista]"
-
-#~ msgid "F8 - quick save/backup save?!"
-#~ msgstr "F9 - brzo snimi/snimi rezervu?!"
-
-#~ msgid "F9 - change level width and height"
-#~ msgstr "F9 - promeni irinu i visinu nivoa"
-
-#~ msgid "F10 - [unset]"
-#~ msgstr "F10 - [nista]"
-
-#~ msgid "F11 - toggle fps counter"
-#~ msgstr "F11 - promeni brojač fps"
-
-#~ msgid "F12 - make screenshot"
-#~ msgstr "F12 - uslikaj ekran"
-
-#~ msgid "Home - increase object size"
-#~ msgstr "Posl - povećaj objekat"
-
-#~ msgid "End  - decrease object size"
-#~ msgstr "End  - smanji objekat"
-
-#~ msgid "Cursor Keys - Move object"
-#~ msgstr "Kursorske strelice - Pomeri objekat"
-
-#~ msgid "Shift 'Cursor Keys' - Move objects fast "
-#~ msgstr "Shift i 'Kursorske strelice' - Brzo pomeri objekte"
-
-#~ msgid "PageUp   - level object up"
-#~ msgstr "PageUp   - podigni objekat"
-
-#~ msgid "PageDown - level object down"
-#~ msgstr "PageDown - spusti objekat"
-
-#~ msgid "Shift PageUp   - increase objects z-pos by 50"
-#~ msgstr "Shift PageUp   - povećaj z-koordinatu za 50"
-
-#~ msgid "Shift PageDown - decrease objects z-pos by 50"
-#~ msgstr "Shift PageDown - smanji z-koordinatu za 50"
-
-#~ msgid "Enter - Set default zoom (1:1)"
-#~ msgstr "Enter - Postavi standardni zum (1:1)"
-
-#~ msgid "d - duplicate object"
-#~ msgstr "d - dupliraj objekat"
-
-#~ msgid "a - mark all objects"
-#~ msgstr "a - označi sve objekte"
-
-#~ msgid "shift leftmouseclick - add object to selection"
-#~ msgstr "shift levo_dugme_mia - dodaj objekat odabiru"
-
-#~ msgid "leftmouseclick - select object"
-#~ msgstr "levo_dugme_mia - izaberi objekat"
-
-#~ msgid "Insert - insert new object"
-#~ msgstr "Insert - ubaci novi objekat"
-
-#~ msgid "g - ungroup/group current selection"
-#~ msgstr "g - grupisi/razdvoj trenutni odabir"
-
-#~ msgid "Ctrl PageUp   - increase objects z-pos by 1"
-#~ msgstr "Ctrl PageUp   - povećaj z-koordinatu za 1"
-
-#~ msgid "Ctrl PageDown - decrease objects z-pos by 1"
-#~ msgstr "Ctrl PageDown - smanji z-koordinatu za 1"
-
-#, fuzzy
-#~ msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.pingus"
-#~ msgstr "Konvencija Nazivanja: <NAZIVNIVOA><BROJ>-<AUTOR>.plf"
-
-#~ msgid ""
-#~ "When you have created a level and want to have it in the next Pingus "
-#~ "release,\n"
-#~ "please mail it to pingus-devel@nongnu.org."
-#~ msgstr ""
-#~ "Ako si kreirao nivo i zelis da se pojavi u sledećem izdanju Pingusa,\n"
-#~ "treba poslati e-mail na pingus-devel@nongnu.org."
-
-#~ msgid "1 - guillotine"
-#~ msgstr "1 - giljotina"
-
-#~ msgid "2 - hammer"
-#~ msgstr "2 - čekić"
-
-#~ msgid "3 - spike"
-#~ msgstr "3 - koplje"
-
-#~ msgid "4 - laser_exit"
-#~ msgstr "4 - laserski_izlaz"
-
-#~ msgid "5 - fake_exit"
-#~ msgstr "5 - lani_izlaz"
-
-#~ msgid "6 - smasher"
-#~ msgstr "6 - gnječilica"
-
-#~ msgid "7 - bumper"
-#~ msgstr "7 - odbijač"
-
-#~ msgid "Select a WorldObj"
-#~ msgstr "Izaberi SvetskiObj"
-
-#~ msgid "1 - teleporter"
-#~ msgstr "1 - teleport"
-
-#~ msgid "2 - switch and door"
-#~ msgstr "2 - prekidač i vrata"
-
-#~ msgid "3 - ConveyorBelt"
-#~ msgstr "3 - PokretnaTraka"
-
-#~ msgid "4 - IceBlock"
-#~ msgstr "4 - SantaLeda"
-
-#~ msgid "5 - InfoBox"
-#~ msgstr "5 - Obavetenje"
-
-#~ msgid "1 - snow"
-#~ msgstr "1 - sneg"
-
-#~ msgid "2 - rain"
-#~ msgstr "2 - kia"
-
-#~ msgid "Select an entrance"
-#~ msgstr "Odaberi ulaz"
-
-#~ msgid "1 - generic"
-#~ msgstr "1 - generički"
-
-#~ msgid "2 - woodthing"
-#~ msgstr "2 - drveni"
-
-#~ msgid "3 - cloud"
-#~ msgstr "3 - oblak"
-
-#~ msgid "h - entrance surface (hotspot)"
-#~ msgstr "h - povrina ulaza (senzor)"
-
-#~ msgid "What object type do you want?"
-#~ msgstr "Koju vrstu objekta eli?"
-
-#~ msgid "g - Groundpiece (ground) [not implemented]"
-#~ msgstr "g - Zemljite (zemlja) [nije napravljeno]"
-
-#~ msgid "Which object do you want?"
-#~ msgstr "Koji objekat eli?"
-
-#~ msgid "x - Exit"
-#~ msgstr "x - Izlaz"
-
-#~ msgid "o - WorldObject"
-#~ msgstr "o - ObjekatSveta"
-
-#~ msgid "p - Prefab (ObjectGroup)"
-#~ msgstr "p - Montaa (GrupaObjekata)"
-
-#~ msgid "f - something from file (~/.pingus/images/)"
-#~ msgstr "f - neto iz fajla (~/.pingus/images/)"
-
-#~ msgid "Which prefab do you want?"
-#~ msgstr "Koju montau zelis?"
-
-#~ msgid "1 - Surface Background"
-#~ msgstr "1 - Pozadina sa dezenom"
-
-#~ msgid "2 - Solid Color Background"
-#~ msgstr "2 - Jednobojna Pozadina"
-
-#~ msgid "3 - Starfield Background"
-#~ msgstr "3 - Zvezdana Pozadina"
-
-#~ msgid "4 - Thunderstorm Background"
-#~ msgstr "4 - Olujna Pozadina"
-
-#~ msgid "Load a level (F5)"
-#~ msgstr "Učitaj nivo (F5)"
-
-#~ msgid "Exit the editor (Escape)"
-#~ msgstr "Izlaz iz editora (Escape)"
-
-#~ msgid "Delete marked objects (delete)"
-#~ msgstr "Brisanje označenih objekata (delete)"
-
-#~ msgid "Edit Level Properties"
-#~ msgstr "Podesi Karakteristike Nivoa"
-
-#~ msgid "Start the level and test it (F4)"
-#~ msgstr "Pokreni i testiraj nivo(F4)"
-
-#~ msgid "Create a new level from scratch"
-#~ msgstr "Kreiraj novi nivo iz početka"
-
-#~ msgid "Insert an object (Insert)"
-#~ msgstr "Ubaci objekat (Insert)"
-
-#~ msgid "Zoom into a region"
-#~ msgstr "Priblii oblast"
-
-#~ msgid "Zoom in"
-#~ msgstr "Priblii"
-
-#~ msgid "Zoom out"
-#~ msgstr "Udalji"
-
-#~ msgid "Setup Number of Actions"
-#~ msgstr "Podesi broj akcija"
-
-#~ msgid "Display Help Screen (F1)"
-#~ msgstr "Prikazi pomoćni ekran (F1)"
-
-#~ msgid "Designed by "
-#~ msgstr "Dizajnirao"
-
-#~ msgid "Number of Pingus: %d"
-#~ msgstr "Broj Pingusa: %d"
-
-#~ msgid "Loading finished. Press a mouse button to start the level"
-#~ msgstr "Učitavanje gotovo. Pritisni dugme mia da počne nivo"
-
-#~ msgid "Pingus saved:   %3d/%3d"
-#~ msgstr "Spaeno Pingusa:   %3d/%3d"
-
-#~ msgid "Pingus died:  %3d/%3d"
-#~ msgstr "Ubijeno Pingusa:  %3d/%3d"
-
-#~ msgid "Press button to continue..."
-#~ msgstr "Pritisni dugme za nastavak..."
-
-#~ msgid ""
-#~ "As many Pingus escaped as entered the level. That's going to be hard to "
-#~ "beat.... unless this game becomes pornographic."
-#~ msgstr ""
-#~ "Spaeno je onoliko Pingusa koliko je ulo u nivo. To će biti teko "
-#~ "nadmaiti.... osim ako igra postane pornografska."
-
-#~ msgid "Very impressive indeed."
-#~ msgstr "Zaista vrlo impresivno."
-
-#~ msgid "Good work. Still room for improvement though."
-#~ msgstr "Dobro urađeno. Mada, moe to i bolje."
-
-#~ msgid "Not too shabby, not too shabby at all."
-#~ msgstr "Nije loe, uopte nije loe."
-
-#~ msgid ""
-#~ "That was OK, but Pingu life insurance premiums have just gotten more "
-#~ "expensive."
-#~ msgstr ""
-#~ "To je bilo dobro, ali polise ivotnog osiguranja za Pinguse upravo "
-#~ "poskupljuju."
-
-#~ msgid "Maybe this level calls for a different strategy."
-#~ msgstr "Mozda ovaj nivo zahteva drugačiji pristup."
-
-#~ msgid "Exactly half. Are you saving only the female ones?"
-#~ msgstr "Tačno pola. Da li moda spaava samo zenske?"
-
-#~ msgid "If I were a Pingu, I never would have left that entrance."
-#~ msgstr "Da sam ja Pingus, nikad ne bih ni krenuo sa ulaza."
-
-#~ msgid "Maybe you would feel more at home playing Quake."
-#~ msgstr "Moda si vrsta osobe koja vise voli Quake."
-
-#~ msgid ""
-#~ "Maybe this level calls for a different strategy. Like attempting to save "
-#~ "them, for example."
-#~ msgstr ""
-#~ "Moda ovaj nivo zahteva drugačiji pristup. Na primer, bilo bi dobro da ih "
-#~ "proba spasiti."
-
-#~ msgid "Ever considered a career as a Pingu exterminator?"
-#~ msgstr "Da li razmislja da se profesionalno bavi ubijanjem Pingusa?"
-
-#~ msgid "You missed one! What's your excuse!?"
-#~ msgstr "Propustio si jednog! Koji je tvoj izgovor?!"
-
-#~ msgid "Please reassure me that you hit the Armageddon button."
-#~ msgstr "Molim te, ubedi me da si aktivirao Armageddon dugme."
-
-#~ msgid "You've got a negative save/total value, something is buggy."
-#~ msgstr "Ima negativan odnos spaeno/ukupno, postoji neka greka."
-
-#~ msgid "Launch the Level editor (experimental)"
-#~ msgstr "Pokrece editor nivoa (eksperimentalno)"
-
-#, fuzzy
-#~ msgid ""
-#~ "Create a\n"
-#~ "Level"
-#~ msgstr "Kreiraj"
-
-#~ msgid "Screenshot: Couldn't save screenshot"
-#~ msgstr "Snimak ekrana: Nije moguće napraviti"
-
-#~ msgid "WorldMap: File not found: "
-#~ msgstr "WorldMap: Fajl nije nadjen: "
-
-#~ msgid "..:: The people who brought this game to you ::.."
-#~ msgstr "..:: Ljudi koji su Vam omogućili ovu igru ::.."
-
-#~ msgid "..:: Takes you to the options menu ::.."
-#~ msgstr "..:: Vodi Vas na meni sa opcijama ::.."
-
-#, fuzzy
-#~ msgid "Perfect! You saved all the Pingus. Great!"
-#~ msgstr "Savrseno! Spaseni su svi moguci, sjajno!"
-
-#, fuzzy
-#~ msgid ""
-#~ "You saved just the ones you needed, you made it, but\n"
-#~ "maybe you can do it better next time?"
-#~ msgstr ""
-#~ "Spaseno je koliko je i trebalo, svaka cast, ali\n"
-#~ "mozda mozes jos bolje?"
-
-#, fuzzy
-#~ msgid "Not everybody got saved, but still good work!"
-#~ msgstr "Nisu svi mogli biti spaseni, ali ipak dobro uradjeno!"
-
-#, fuzzy
-#~ msgid ""
-#~ "You didn't save enough, but you still saved a few, next\n"
-#~ "time you might be better."
-#~ msgstr ""
-#~ "Nisi spasao dovoljno, ali si spasao nekoliko, mozda\n"
-#~ "ce sledeci put biti bolje."
-
-#, fuzzy
-#~ msgid "Only a handful more and you would have made it, try again!"
-#~ msgstr "Samo jos nekoliko i uspeo bi, probaj ponovo!"
-
-#~ msgid "input, pathmgr"
-#~ msgstr "kontrole, putanje"
-
-#~ msgid "pingu_id %d"
-#~ msgstr "pingus_id %d"
-
-#~ msgid "action %s"
-#~ msgstr "akcija %s"
-
-#~ msgid "action none"
-#~ msgstr "bez akcije"
-
-#~ msgid "Setting action to a dead pingu"
-#~ msgstr "Postavljanje akcije za mrtvog pingusa"
-
-#~ msgid "input"
-#~ msgstr "ulaz"
-
-#~ msgid "System: Couldn't open: "
-#~ msgstr "System: Ne mogu da otvorim: "
-
-#~ msgid "Successfully created: "
-#~ msgstr "Uspesno kreirano: "
-
-#~ msgid "Found: "
-#~ msgstr "Nadjeno: "
-
-#~ msgid "System::checksum: Couldn't open file: "
-#~ msgstr "System::checksum: Ne mogu da otvorim fajl: "
-
-#~ msgid "System:checksum: file read error"
-#~ msgstr "System:checksum: greska pri citanju fajla"

@@ -1,0 +1,1 @@
+pingus-data binary: missing-dep-for-interpreter guile => guile | guile-1.6 | guile-1.8 (./usr/share/games/pingus/data/gen-scrfile.scm)

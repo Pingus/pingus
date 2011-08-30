@@ -347,6 +347,9 @@ System::get_language()
     lang = lang_c;
 
   if (lang.empty() || lang == "C")
+    lang = getenv("LANG");
+
+  if (lang.empty() || lang == "C")
     return globals::default_language;
   else
     return lang.substr(0, 2);

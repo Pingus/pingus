@@ -1,0 +1,20 @@
+#Author: Barry deFreese <bdefreese@debian.org>
+#Review: Gabriel Rota <gabriel.rota@gmail.com>
+#Description: Replaces echo -e with printf in clanlib scripts.
+Index: pingus-0.7.3.4/doc/clanlib_make_datafile.sh
+===================================================================
+=== modified file 'doc/clanlib_make_datafile.sh'
+--- pingus-0.7.3.4.orig/doc/clanlib_make_datafile.sh	2005-12-05 17:00:26 +0000
++++ pingus-0.7.3.4/doc/clanlib_make_datafile.sh	2011-02-09 13:55:00 +0000
+@@ -23,9 +23,9 @@
+     #echo "Datafile line:"
+ 
+     if [ "$type" = "PCX (ZSoft IBM PC Paintbrush)" ]; then 
+-	echo -e "\t$name = $filename (type=surface, x=0, y=0, width=$width, height=$height, tcol=0);"
++	printf "\t%s = %s (type=surface, x=0, y=0, width=%d, height=%d, tcol=0);" "$name" "$filename" "&width" "&height"
+     else
+-	echo -e "\t$name = $filename (type=surface, x=0, y=0, width=$width, height=$height);"
++	printf "\t%s = %s (type=surface, x=0, y=0, width=%d, height=%d);" "$name" "$filename" "&width" "&height"
+     fi
+ 
+ done

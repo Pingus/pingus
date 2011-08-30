@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Pingus
+GenericName=Free Lemmings(TM) clone
+Comment=Guide a horde of penguins through various obstacles
+Exec=pingus
+Icon=pingus
+Terminal=false
+Type=Application
+Categories=Game;StrategyGame;

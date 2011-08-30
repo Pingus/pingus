@@ -1,0 +1,39 @@
+Source: pingus
+Section: games
+Priority: optional
+Maintainer: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
+Uploaders: Miriam Ruiz <little_miry@yahoo.es>, Cyril Brulebois <kibi@debian.org>
+Build-Depends: debhelper (>= 5), quilt, scons,
+ libsdl1.2-dev, libsdl-mixer1.2-dev, libsdl-image1.2-dev,
+ libphysfs-dev, libboost-signals-dev, libxi-dev
+Standards-Version: 3.8.1
+Vcs-Svn: svn://svn.debian.org/svn/pkg-games/packages/trunk/pingus/
+Vcs-Browser: http://svn.debian.org/wsvn/pkg-games/packages/trunk/pingus/?op=log
+Homepage: http://pingus.seul.org/
+
+Package: pingus
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, pingus-data (= ${source:Version})
+Description: Free Lemmings(TM) clone
+ Pingus is a free clone of the popular Lemmings game.
+ .
+ Your goal is to guide a horde of penguins through a world full of obstacles
+ and penguin traps to safety. Although penguins (unlike lemmings) are rather
+ smart, they sometimes lack the necessary overview and now rely on you to
+ save them.
+ .
+ This package contains the main program.
+
+Package: pingus-data
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: pingus
+Description: Data files for pingus, a free Lemmings(TM) clone
+ Pingus is a free clone of the popular Lemmings game.
+ .
+ Your goal is to guide a horde of penguins through a world full of obstacles
+ and penguin traps to safety. Although penguins (unlike lemmings) are rather
+ smart, they sometimes lack the necessary overview and now rely on you to
+ save them.
+ .
+ This package contains the data files.

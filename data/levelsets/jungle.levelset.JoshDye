@@ -1,0 +1,14 @@
+;; -*- scheme -*-
+(pingus-levelset
+ (title "Jungle")
+ (description "")
+ (image  "levelsets/xmas")
+(levels
+(level (filename "playable/jungle-13-rz+eriksoe"))
+(level (filename "playable/jungle-airline-timpany"))
+(level (filename "playable/jungle-crisscross-timpany"))
+(level (filename "playable/jungle1"))
+
+    ))
+
+;; EOF ;;

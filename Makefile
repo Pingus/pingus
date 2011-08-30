@@ -20,6 +20,8 @@ DATADIR = $(PREFIX)/share/pingus
 BINDIR  = $(PREFIX)/bin
 
 build/pingus:
+	mkdir -p build
+	scons src
 	scons
 
 clean:

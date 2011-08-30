@@ -160,7 +160,11 @@
     (section (name "space")
       (sprite
         (name "engine")
-        (image-file "../images/hotspots/space/engine.png"))
+        (image-file "../images/hotspots/space/engine.png")
+        (image-array 4 1)
+        (image-size 108 166)
+        (image-pos 0 0))
+
      )
    )
  )

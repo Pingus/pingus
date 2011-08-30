@@ -14,6 +14,15 @@
                    (sprite
                     (name "desert")
                     (image-file "../images/levelsets/desert.png"))
+                   (sprite
+                    (name "mysteryIsland")
+                    (image-file "../images/levelsets/mysteryIsland.png"))
+                   (sprite
+                    (name "alien")
+                    (image-file "../images/levelsets/alien.png"))
+                   (sprite
+                    (name "factory")
+                    (image-file "../images/levelsets/factory.png"))
            )
 
  (section (name "core")

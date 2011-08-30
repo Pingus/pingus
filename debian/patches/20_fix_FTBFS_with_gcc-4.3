@@ -1,0 +1,12 @@
+# Copyright 2008 Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>
+# Licensed under the GPL, see /usr/share/common-licenses/GPL
+--- a/src/input/evdev_device.cpp
++++ b/src/input/evdev_device.cpp
+@@ -25,6 +25,7 @@
+ #include <stdexcept>
+ #include <iostream>
+ #include <errno.h>
++#include <cstring>
+ 
+ #include "evdev_device.hpp"
+ 

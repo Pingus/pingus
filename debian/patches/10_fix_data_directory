@@ -1,0 +1,15 @@
+# Copyright (C) 2007 Miriam Ruiz <little_miry@yahoo.es>
+# Copyright (C) 2011 Gabriel Rota <gabriel.rota@gmail.com>
+# Licensed under the GPL, see /usr/share/common-licenses/GPL
+
+--- pingus-0.7.3.4/src/pingus/pingus_main.orig.cpp	2011-02-09 12:31:15.000000000 +0100
++++ pingus-0.7.3.4/src/pingus/pingus_main.cpp	2011-02-09 12:31:51.559258952 +0100
+@@ -550,7 +550,7 @@
+     }
+ 
+     char* exe_path = br_find_exe_dir(".");
+-    path_manager.add_path(exe_path + std::string("/../share/pingus/data/"));
++    path_manager.add_path(exe_path + std::string("/../share/games/pingus/data/"));
+     path_manager.add_path(exe_path + std::string("/data"));
+     path_manager.add_path("data"); // assume game is run from source dir, without any magic
+     free(exe_path);

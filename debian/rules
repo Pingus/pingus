@@ -1,0 +1,102 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+include /usr/share/quilt/quilt.make
+
+configure: configure-stamp
+configure-stamp: $(QUILT_STAMPFN)
+	dh_testdir
+	cat debian/options.cache | sed -e 's/:CFLAGS:/$(CFLAGS)/g' > options.cache
+	scons configure prefix=/usr resources_dir=/usr/share/games/pingus lib_dir=$(CURDIR)
+	touch $@
+
+build: build-stamp
+build-stamp: configure-stamp
+	dh_testdir
+	mkdir -p build
+	scons src
+	scons
+	touch $@
+
+clean: clean-patched unpatch
+	dh_testdir
+	dh_testroot
+	dh_clean
+
+clean-patched:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp configure-stamp
+	-scons -c
+	rm -f `find . -name "*.o"`
+	rm -f `find . -name "*.os"`
+	rm -f `find . -name "*.so"`
+	rm -f config.log options.cache bt.xml .sconsign.dblite
+	rm -rf .sconf_temp build/release
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k -a
+	dh_installdirs
+
+# Build architecture-independent files here.
+binary-indep:
+	dh_testdir
+	dh_testroot
+	dh_clean -k -i
+	dh_installchangelogs -i ChangeLog
+	dh_installdocs -i --exclude=pingus.6
+
+	mkdir -p "$(CURDIR)/debian/pingus-data/usr/share/games/pingus/"
+	find data/ \
+		-type f -a  \( \
+		-name "*.png" -o \
+		-name "*.jpg" -o \
+		-name "*.wav" -o \
+		-name "*.scm" -o \
+		-name "*.font" -o \
+		-name "*.it" -o \
+		-name "*.ogg" -o \
+		-name "*.s3m" -o \
+		-name "*.po" -o \
+		-name "*.worldmap" -o \
+		-name "*.res" -o \
+		-name "*.pingus" -o \
+		-name "*.levelset" \
+		\) -exec cp --parents -v {} "$(CURDIR)/debian/pingus-data/usr/share/games/pingus/" \;
+
+	dh_install -i
+	dh_compress -i
+	dh_fixperms -i
+	dh_installdeb -i
+	dh_gencontrol -i
+	dh_md5sums -i
+	dh_builddeb -i
+
+
+# Build architecture-dependent files here.
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs -a ChangeLog
+	dh_installdocs -a --exclude=pingus.6
+	dh_installexamples -a
+	dh_install -a
+	dh_installmenu -a
+	dh_installman -a doc/pingus.6
+	dh_link -a
+	dh_strip -a
+	dh_compress -a
+	dh_fixperms -a
+#	dh_makeshlibs -a
+	dh_installdeb -a
+	dh_shlibdeps -a
+	dh_gencontrol -a
+	dh_md5sums -a
+	dh_builddeb -a
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install configure

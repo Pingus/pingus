@@ -1,0 +1,13 @@
+;; -*- scheme -*-
+(pingus-levelset
+ (title "Hot Desert")
+ (description "Getting more hot outside...")
+ (image  "hotspots/signposts/arrow_west")
+ (levels
+  (level (filename "playable/desert8-grumbel"))
+  (level (filename "playable/desert5"))
+  (level (filename "playable/desert5-tflavel"))
+  (level (filename "playable/desert-crawl-timpany"))
+ ))
+
+;; EOF ;;

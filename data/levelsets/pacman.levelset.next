@@ -1,0 +1,12 @@
+;; -*- scheme -*-
+(pingus-levelset
+ (title "Pac-Man")
+ (description "Trapped in a video game")
+ (image  "levelsets/pacman")
+ (levels 
+  (level (filename "playable/pacman1-yingwan"))
+  (level (filename "playable/pacman2-yingwan"))
+  (level (filename "playable/pacman3-yingwan"))
+  ))
+
+;; EOF ;;

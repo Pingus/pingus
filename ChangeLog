@@ -1,3 +1,14 @@
+2011-02-06 22:49 gabriel
+
+	* data/*:
+	  - add levelset from 0.7.3.3
+	  - rename for disable pacman e xmas not ready levelset
+	* src/pingus/pingus_main.cpp,
+	  src/util/system.cpp:
+	  - forcing read LANG for start with correct locale
+	* src/pingus/screens/pingus_menu.cpp:
+	  - add music in main menu
+
 2007-10-31 05:39  grumbel
 
 	* data/levels/halloween/halloween2-grumbel.pingus,

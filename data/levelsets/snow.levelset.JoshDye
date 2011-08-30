@@ -1,0 +1,36 @@
+;; -*- scheme -*-
+(pingus-levelset
+ (title "Winter")
+ (description "")
+ (image  "levelsets/xmas")
+ (levels 
+(level (filename "playable/cave-snow1-mw"))
+(level (filename "playable/sept-snow1-mw"))
+(level (filename "playable/winter1-chei"))
+(level (filename "playable/winter2-chei"))
+(level (filename "playable/snow-lukis"))
+(level (filename "playable/snow1-marcotte"))
+(level (filename "playable/snow1"))
+(level (filename "playable/snow10-grumbel"))
+(level (filename "playable/snow11-grumbel"))
+(level (filename "playable/snow12-grumbel"))
+(level (filename "playable/snow14-grumbel"))
+(level (filename "playable/snow15-grumbel"))
+(level (filename "playable/snow16-grumbel"))
+(level (filename "playable/snow17-grumbel"))
+(level (filename "playable/snow19-grumbel"))
+(level (filename "playable/snow2"))
+(level (filename "playable/snow20-grumbel"))
+(level (filename "playable/snow21-grumbel"))
+(level (filename "playable/snow22-grumbel"))
+(level (filename "playable/snow3"))
+(level (filename "playable/snow4"))
+(level (filename "playable/snow5"))
+(level (filename "playable/snow6"))
+(level (filename "playable/snow7-grumbel"))
+(level (filename "playable/snow8-grumbel"))
+(level (filename "playable/snow9-grumbel"))
+
+    ))
+
+;; EOF ;;

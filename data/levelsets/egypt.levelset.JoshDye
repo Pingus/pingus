@@ -1,0 +1,14 @@
+;; -*- scheme -*-
+(pingus-levelset
+ (title "Egypt")
+ (description "")
+ (image  "levelsets/xmas")
+(levels
+(level (filename "playable/egypt1-judit"))
+(level (filename "playable/egypt1-moredhel"))
+(level (filename "playable/pyramid1-yingwan"))
+(level (filename "playable/pyramid2-yingwan"))
+
+    ))
+
+;; EOF ;;

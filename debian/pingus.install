@@ -1,0 +1,3 @@
+build/pingus usr/games/
+debian/*.xpm usr/share/pixmaps/
+debian/*.desktop usr/share/applications/

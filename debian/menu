@@ -1,0 +1,5 @@
+?package(pingus):needs="X11" \
+  section="Games/Strategy" \
+  title="Pingus - Enhanced Lemmings clone" \
+  command="/usr/games/pingus" \
+  icon="/usr/share/pixmaps/pingus.xpm"

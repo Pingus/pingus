@@ -1,0 +1,13 @@
+;; -*- scheme -*-
+(pingus-levelset
+ (title "Forest")
+ (description "")
+ (image  "levelsets/xmas")
+ (levels 
+  (level (filename "forest/forest1-grumbel"))
+(level (filename "playable/forest1-chei"))
+(level (filename "playable/forest2-chei"))
+
+    ))
+
+;; EOF ;;

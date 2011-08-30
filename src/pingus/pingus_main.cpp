@@ -204,8 +204,8 @@ void
 PingusMain::parse_args(int argc, char** argv)
 {
   CommandLine argp;
-  argp.add_usage("pingus [OPTIONS]... [FILE]");
-  argp.add_doc("Pingus is a puzzle game where you need to guide a bunch of little penguins around the world.");
+  argp.add_usage(_("[OPTIONS]... [FILE]"));
+  argp.add_doc(_("Pingus is a puzzle game where you need to guide a bunch of little penguins around the world."));
 
   argp.add_option('h', "help", "", 
                   _("Displays this help"));
@@ -548,7 +548,7 @@ PingusMain::init_path_finder()
   }
 
   // Language is automatically picked from env variable
-  // dictionary_manager.set_language("de"); 
+  //dictionary_manager.set_language(tinygettext::Language::from_env("it_IT.utf8")); // maybe overwritten by file ~/.pingus/config
   dictionary_manager.add_directory(path_manager.complete("po/"));
 
   if (globals::maintainer_mode)
@@ -681,10 +681,13 @@ PingusMain::main(int argc, char** argv)
 
   try
   {
-    parse_args(argc, argv);
-    init_path_finder();
-    read_rc_file();
-    apply_args();
+    // FIXME force set language using System::get_language() to get it from env
+    dictionary_manager.set_language(tinygettext::Language::from_env(System::get_language()));
+    
+    parse_args(argc, argv); // here language and po dir isn't set, no traslation in command line
+    init_path_finder(); // here init language path
+    read_rc_file(); // here set language if ~/.pingus/config exist and language value is set
+    apply_args(); // here set language if arg -l is specified
     
     print_greeting_message();
     

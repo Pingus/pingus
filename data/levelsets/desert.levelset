@@ -1,0 +1,18 @@
+;; -*- scheme -*-
+(pingus-levelset
+ (title "Desert")
+ (description "Getting hot outside...")
+ (image  "levelsets/desert")
+ (levels
+  (level (filename "desert/desert1"))
+  (level (filename "desert/desert2"))
+  (level (filename "desert/desert3"))
+  (level (filename "desert/desert3-tflavel"))
+  (level (filename "desert/desert4"))
+  (level (filename "desert/desert6-grumbel"))
+  (level (filename "desert/desert7-grumbel"))
+  (level (filename "desert/desertwaste1-grumbel"))
+  (level (filename "desert/desert8-grumbel"))
+ ))
+
+;; EOF ;;
