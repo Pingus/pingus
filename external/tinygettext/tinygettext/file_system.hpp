@@ -15,20 +15,23 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_TINYGETTEXT_UNIX_FILE_SYSTEM_HPP
-#define HEADER_TINYGETTEXT_UNIX_FILE_SYSTEM_HPP
+#ifndef HEADER_TINYGETTEXT_FILE_SYSTEM_HPP
+#define HEADER_TINYGETTEXT_FILE_SYSTEM_HPP
 
-#include "file_system.hpp"
+#include <vector>
+#include <memory>
+#include <iosfwd>
+#include <string>
 
 namespace tinygettext {
 
-class UnixFileSystem : public FileSystem
+class FileSystem 
 {
 public:
-  UnixFileSystem();
+  virtual ~FileSystem() {}
 
-  std::vector<std::string>    open_directory(const std::string& pathname);
-  std::auto_ptr<std::istream> open_file(const std::string& filename);
+  virtual std::vector<std::string>      open_directory(const std::string& pathname) =0;
+  virtual std::unique_ptr<std::istream> open_file(const std::string& filename)      =0;
 };
 
 } // namespace tinygettext
@@ -36,3 +39,4 @@ public:
 #endif
 
 /* EOF */
+

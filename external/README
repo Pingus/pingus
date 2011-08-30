@@ -1,0 +1,6 @@
+tinygettext/
+============
+
+ svn export https://tinygettext.googlecode.com/svn/branches/tinygettext-c++11 tinygettext
+
+# EOF #
