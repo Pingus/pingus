@@ -43,7 +43,7 @@ public:
   enum PinguStatus { PS_ALIVE, PS_EXITED, PS_DEAD };
 
 private:
-  /** The primary action with is currently in use */
+  /** The primary action which is currently in use */
   std::shared_ptr<PinguAction> action;
 
   /** A secondary action which will turn active after a given amount of time
