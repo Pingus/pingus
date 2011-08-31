@@ -1,5 +1,11 @@
 /.sconf_temp
 /.sconsign.dblite
+/cache
 /build
 /config.log
 *~
+*.o
+/pingus-evil
+/pingus-neutral
+/pingus-nice
+/pingus
