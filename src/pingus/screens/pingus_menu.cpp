@@ -146,7 +146,7 @@ PingusMenu::draw_background(DrawingContext& gc)
                          gc.get_height()/2 - 250));
 
   gc.print_left(Fonts::pingus_small, Vector2i(25, gc.get_height()-140),
-                "Pingus "VERSION", Copyright (C) 1998-2007 Ingo Ruhnke <grumbel@gmx.de>\n"
+                "Pingus "VERSION", Copyright (C) 1998-2011 Ingo Ruhnke <grumbel@gmx.de>\n"
                 "See the file AUTHORS for a complete list of contributors.\n"
                 "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are\n"
                 "welcome to redistribute it under certain conditions; see the file COPYING for details.\n");
