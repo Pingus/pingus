@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-18 14:31+0100\n"
-"PO-Revision-Date: 2004-04-13 23:02+0200\n"
+"PO-Revision-Date: 2011-08-31 12:22+0200\n"
 "Last-Translator: Tomá¹ Bláha\n"
 "Language-Team: czech\n"
 "MIME-Version: 1.0\n"
@@ -784,7 +784,7 @@ msgstr "..:: Spustit hru ::.."
 #: src/pingus_menu.cpp:56
 #, fuzzy
 msgid "Editor"
-msgstr "Vycházející"
+msgstr "Tvorba úrovní"
 
 #: src/pingus_menu.cpp:57
 msgid "..:: Create your own levels ::.."
@@ -797,7 +797,7 @@ msgstr "..:: Na shledanou ::.."
 #: src/pingus_menu.cpp:66 src/level_menu.cpp:108
 #, fuzzy
 msgid "Levelsets"
-msgstr "-Tvorba úrovní"
+msgstr "Vycházející"
 
 #: src/pingus_menu.cpp:67
 msgid "..:: Play User Built levels ::.."
