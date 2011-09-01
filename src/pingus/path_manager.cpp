@@ -22,28 +22,28 @@
 #include "pingus/globals.hpp"
 #include "util/system.hpp"
 
-PathManager path_manager;
+PathManager g_path_manager;
 
-PathManager::PathManager () :
+PathManager::PathManager() :
   path_list(),
-  path_found (false),
+  path_found(false),
   base_path()
 {
 }
 
-PathManager::~PathManager ()
+PathManager::~PathManager()
 {
 }
 
 void
-PathManager::add_path (const std::string& path)
+PathManager::add_path(const std::string& path)
 {
   pout(PINGUS_DEBUG_PATHMGR) << "PathManager: add_path: " << path << std::endl;
-  path_list.push_back (path);
+  path_list.push_back(path);
 }
 
 std::string
-PathManager::complete (const std::string& relative_path)
+PathManager::complete(const std::string& relative_path)
 {
   std::string comp_path = base_path + "/" + relative_path;
   pout(PINGUS_DEBUG_PATHMGR) << "PathManager: " << relative_path << " -> " << comp_path << std::endl;
@@ -53,12 +53,12 @@ PathManager::complete (const std::string& relative_path)
 
 /** Search for a path which contains the file 'file' */
 bool
-PathManager::find_path (const std::string& file)
+PathManager::find_path(const std::string& file)
 {
   std::ostringstream out;
-  for (PathIter i = path_list.begin (); !path_found && i != path_list.end (); ++i)
+  for(PathIter i = path_list.begin(); !path_found && i != path_list.end(); ++i)
   {
-    if (System::exist(*i + "/" + file))
+    if(System::exist(*i + "/" + file))
     {
       path_found = true;
       base_path = *i;
@@ -78,7 +78,7 @@ PathManager::find_path (const std::string& file)
 }
 
 void
-PathManager::set_path (const std::string& path)
+PathManager::set_path(const std::string& path)
 {
   base_path = path;
 }

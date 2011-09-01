@@ -28,6 +28,7 @@ private:
 
   bool path_found;
   std::string base_path;
+
 public:
   PathManager ();
   ~PathManager ();
@@ -54,7 +55,7 @@ private:
   PathManager& operator= (const PathManager&);
 };
 
-extern PathManager path_manager;
+extern PathManager g_path_manager;
 
 #endif
 

@@ -48,7 +48,7 @@ Pathname::get_sys_path() const
       return pathname;
         
     case DATA_PATH:
-      return path_manager.complete(pathname);
+      return g_path_manager.complete(pathname);
 
     case INVALID:
       return "";

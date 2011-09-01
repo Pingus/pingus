@@ -80,7 +80,7 @@ void
 PingusSound::play_music(const std::string & name, float volume, bool loop)
 {
   assert (sound);
-  sound->real_play_music(path_manager.complete ("music/" + name), volume, loop);
+  sound->real_play_music(g_path_manager.complete ("music/" + name), volume, loop);
 }
 
 void
