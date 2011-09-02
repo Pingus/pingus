@@ -243,6 +243,9 @@ class Project:
             for filename in Glob("test/*_test.cpp", strings=True):
                 self.env.Program(filename[:-4], [filename, libpingus])
 
+        for filename in Glob("extra/*.cpp", strings=True):
+            self.env.Program(filename[:-4], [filename, libpingus])
+
 project = Project()
 project.configure()
 project.build()
