@@ -46,7 +46,7 @@ def CheckIconv(context):
 #include <iconv.h>
 int main() {
    %s char *foo;
-   (void)iconv((iconv_t)0, &foo, (size_t*)0, (char**)0, (size_t*)0);
+   (void)iconv(static_cast<iconv_t>(0), &foo, static_cast<size_t*>(0), static_cast<char**>(0), static_cast<size_t*>(0));
    return 0;
 }
 """
@@ -197,7 +197,7 @@ class Project:
 
     def configure_sdl(self):
         if self.conf.CheckMyProgram('sdl-config'):
-            self.conf.env.ParseConfig('sdl-config  --cflags --libs')
+            self.conf.env.ParseConfig("sdl-config  --cflags --libs | sed 's/-I/-isystem/g'")
             for sdllib in ['image', 'mixer']:
                 if not self.conf.CheckSDLLib(sdllib):
                     self.fatal_error += "  * SDL library '%s' not found\n" % sdllib
