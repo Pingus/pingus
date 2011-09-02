@@ -458,12 +458,18 @@ System::realpath(const std::string& pathname)
     fullpath = fullpath + buf + "/" + pathname;
   }
   
+  return drive + "/" + normalize_path(fullpath);
+}
+
+std::string
+System::normalize_path(const std::string& fullpath)
+{
   std::string result;
-  std::string::reverse_iterator last_slash = fullpath.rbegin();
+  std::string::const_reverse_iterator last_slash = fullpath.rbegin();
   int skip = 0;
   // /foo/bar/../../bar/baz/
   //std::cout << "fullpath: '" << fullpath << "'" << std::endl;
-  for(std::string::reverse_iterator i = fullpath.rbegin(); i != fullpath.rend(); ++i)
+  for(std::string::const_reverse_iterator i = fullpath.rbegin(); i != fullpath.rend(); ++i)
   { // FIXME: Little crude and hackish
     if (*i == '/')
     {
@@ -490,8 +496,8 @@ System::realpath(const std::string& pathname)
       last_slash = i;
     }
   }
-  
-  return drive + "/" + std::string(result.rbegin(), result.rend());
+
+  return std::string(result.rbegin(), result.rend());
 }
 
 /* EOF */

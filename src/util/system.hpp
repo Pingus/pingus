@@ -97,8 +97,12 @@ public:
   /** Return the modification time of a file */
   static uint64_t get_mtime(const std::string& filename);
 
-  /** Removes all .., double slashes and such from a pathname */
+  /** Removes all '..', double slashes and such from a pathname and
+      makes it absolute */
   static std::string realpath(const std::string& pathname);
+
+  /** Removes all '..', double slashes and such from a pathname */
+  static std::string normalize_path(const std::string& pathname);
 
   /** Read a file and generate a checksum and return it. The checksum
       generation is very primitiv and should probably be replaced by CRC
