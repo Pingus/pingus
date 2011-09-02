@@ -21,6 +21,7 @@ int main(int argc, char** argv)
 
   argp.add_option('h', "help",    "", "Displays this help");
   argp.add_option('b', "background",  "RRGGBBAA", "Set background color");
+  argp.add_option('c', "colmap", "", "Render collision map instead of graphic map");
 
   argp.parse_args(argc, argv);
 
@@ -31,6 +32,14 @@ int main(int argc, char** argv)
       case 'h':
         argp.print_help();
         exit(EXIT_SUCCESS);
+        break;
+
+      case 'c':
+        // FIXME: not implemented
+        break;
+
+      case 'b':
+        // FIXME: not implemented
         break;
 
       case CommandLine::REST_ARG:
@@ -66,7 +75,8 @@ int main(int argc, char** argv)
 
       // FIXME: does not handle sprite alignment
       // FIXME: does not handle remove groundpieces
-      
+      // FIXME: does not handle liquid
+
       if (reader.get_name() != "surface-background" && 
           reader.get_name() != "starfield-background" &&
           reader.get_name() != "solidcolor-background")
@@ -81,6 +91,24 @@ int main(int argc, char** argv)
             out_surface.blit(surface, 
                              static_cast<int>(pos.x) - surface.get_width()/2, 
                              static_cast<int>(pos.y) - surface.get_height());
+          }
+          else if (reader.get_name() == "groundpiece")
+          {
+            std::string type;
+            reader.read_string("type", type);
+            if (type == "remove")
+            {
+              // FIXME: don't have blit_remove()
+              out_surface.blit(surface, 
+                               static_cast<int>(pos.x), 
+                               static_cast<int>(pos.y));
+            }
+            else
+            {
+              out_surface.blit(surface, 
+                               static_cast<int>(pos.x), 
+                               static_cast<int>(pos.y));
+            }
           }
           else
           {
