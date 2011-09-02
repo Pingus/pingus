@@ -59,6 +59,7 @@ enum Origin
 };
 
 Origin string2origin(const std::string& str);
+std::string origin2string(Origin origin);
 
 Vector2i calc_origin(Origin origin, const Size& size);
 

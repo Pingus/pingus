@@ -27,6 +27,8 @@
 **    (if your name is missing here, please add it)
 */
 
+#include <assert.h>
+
 #include "math/origin.hpp"
 
 Origin string2origin(const std::string& str)
@@ -51,6 +53,42 @@ Origin string2origin(const std::string& str)
     return origin_bottom_right;
   else 
     return origin_top_left;
+}
+
+std::string origin2string(Origin origin)
+{
+  switch(origin)
+  {
+    case origin_top_left:
+      return "top_left";
+
+    case origin_top_center:
+      return "top_center";
+
+    case origin_top_right:
+      return "top_right";
+
+    case origin_center_left:
+      return "center_left";
+
+    case origin_center:
+      return "center";
+
+    case origin_center_right:
+      return "center_right";
+
+    case origin_bottom_left:
+      return "bottom_left";
+
+    case origin_bottom_center:
+      return "bottom_center";
+
+    case origin_bottom_right:
+      return "bottom_right";
+
+    default:
+      assert(!"never reached");
+  }
 }
 
 Vector2i calc_origin(Origin origin, const Size &size)
