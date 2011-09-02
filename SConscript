@@ -239,7 +239,7 @@ class Project:
 
         self.env.Program('pingus', ['src/main.cpp', libpingus])
 
-        if False:
+        if self.env.has_key('BUILD') and self.env['BUILD'] == 'development':
             for filename in Glob("test/*_test.cpp", strings=True):
                 self.env.Program(filename[:-4], [filename, libpingus])
 
