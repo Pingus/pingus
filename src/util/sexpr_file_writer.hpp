@@ -46,6 +46,8 @@ public:
   virtual void write_string(const char* name, const std::string&);
   virtual void write_vector(const char* name, const Vector3f&);
   virtual void write_size(const char* name, const Size&);
+  virtual void write_vector2i(const char* name, const Vector2i&);
+  virtual void write_path(const char* name, const Pathname&);
 
   template<class E, class F>
   void write_enum(const char* name, E value, F enum2string)

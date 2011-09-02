@@ -18,6 +18,8 @@
 
 #include <map>
 
+#include "util/pathname.hpp"
+
 SExprFileWriter::SExprFileWriter(std::ostream& out_)
   : out(&out_), level(0)
 {
@@ -36,7 +38,7 @@ SExprFileWriter::indent()
 void
 SExprFileWriter::begin_section(const char* name)
 {
-  (*out) << "\n" << indent() << "(" << name << " ";
+  (*out) << indent() << "(" << name << " ";
   ++level;
 }
 
@@ -111,6 +113,18 @@ void
 SExprFileWriter::write_size(const char* name, const Size& size)
 {
   (*out) << "\n" << indent() << "(" << name << " " << size.width << " " << size.height << ")";
+}
+
+void
+SExprFileWriter::write_vector2i(const char* name, const Vector2i& v)
+{
+  (*out) << "\n" << indent() << "(" << name << " " << v.x << " " << v.y << ")";
+}
+
+void
+SExprFileWriter::write_path(const char* name, const Pathname& path)
+{
+  write_string(name, path.get_raw_path());
 }
 
 /* EOF */
