@@ -31,18 +31,13 @@ ResourceManager::ResourceManager() :
 
 ResourceManager::~ResourceManager()
 {
-  std::map<std::string, SpriteDescription*>::iterator i;
-  for (i = resources.begin(); i != resources.end(); ++i) {
-    delete (*i).second;
-  }
 }
 
 std::vector<std::string>
 ResourceManager::get_section(const std::string& name)
 {
   std::vector<std::string> lst;
-  for (std::map<std::string, SpriteDescription*>::iterator i = resources.begin();
-       i != resources.end(); ++i) 
+  for (auto i = resources.begin(); i != resources.end(); ++i)
   {
     if (StringUtil::has_prefix(i->first, name))
       lst.push_back(i->first);
@@ -95,9 +90,7 @@ ResourceManager::parse(const std::string& section, FileReader& reader)
     if (!section.empty())
       name = section + "/" + name;
  
-    if (resources[name])
-      delete resources[name];
-    resources[name] = new SpriteDescription(reader);
+    resources[name].reset(new SpriteDescription(reader));
   }
   else if (reader.get_name() == "alias")
   {
@@ -142,7 +135,7 @@ ResourceManager::get_sprite_description(const std::string& name) const
   Resources::const_iterator i = resources.find(name);
   if (i != resources.end())
   {
-    return i->second;
+    return i->second.get();
   }
   else
   {

@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_RESOURCE_MANAGER_HPP
 
 #include <map>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -26,11 +27,12 @@ class FileReader;
 
 class ResourceManager
 {
-private:
-  typedef std::map<std::string, SpriteDescription*> Resources;
-  Resources resources;
-  
+public:
+  typedef std::map<std::string, std::shared_ptr<SpriteDescription> > Resources;
   typedef std::map<std::string, std::string> Aliases;
+
+private:
+  Resources resources; 
   Aliases aliases;
 
 public:
@@ -38,9 +40,14 @@ public:
   ~ResourceManager();
 
   void add_resources(const std::string& filename);
+
+  /** Returns a pointer to the requested SpriteDescription or 0 if it's not found */
   SpriteDescription* get_sprite_description(const std::string& name) const;
 
   std::vector<std::string> get_section(const std::string& name);
+
+  const Resources& get_resources() const { return resources; }
+  const Aliases&   get_aliases() const { return aliases; }
 
 private:
   void parse(const std::string& section, FileReader&);
