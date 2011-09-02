@@ -88,7 +88,7 @@ public:
       if(type != TYPE_INT)
         throw std::runtime_error("Lisp is not a float");
       else
-        return (float)v.int_;
+        return static_cast<float>(v.int_);
     }
     else
     {    

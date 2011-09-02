@@ -72,7 +72,7 @@ public:
       }
       else if (item->get_type() == lisp::Lisp::TYPE_INT)
       {
-        v = (float)item->get_int();
+        v = static_cast<float>(item->get_int());
         return true;
       }
       else

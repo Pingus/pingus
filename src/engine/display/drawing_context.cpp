@@ -330,7 +330,7 @@ DrawingContext::get_world_clip_rect() const
 {
   return Rect(Vector2i(static_cast<int>(-translate_stack.back().x),
                        static_cast<int>(-translate_stack.back().y)),
-              Size((int)get_width(), (int)get_height()));
+              Size(static_cast<int>(get_width()), static_cast<int>(get_height())));
 }
 
 void

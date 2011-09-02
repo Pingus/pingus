@@ -173,8 +173,8 @@ public:
   void next_page()
   {
     page += 1;
-    if (page >= ((int)levelsets.size()+2)/3)
-      page = ((int)levelsets.size()+2)/3 - 1;
+    if (page >= (static_cast<int>(levelsets.size())+2)/3)
+      page = (static_cast<int>(levelsets.size())+2)/3 - 1;
   }
 
   void prev_page()

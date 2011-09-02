@@ -98,12 +98,12 @@ CollisionMask::init_colmap(const Surface& surf, const std::string& surface_res)
            "  bmask: 0x%08x\n"
            "  amask: 0x%08x\n",
            surface_res.c_str(),
-           int(sdl_surface->format->BitsPerPixel),
-           int(sdl_surface->format->BytesPerPixel),
-           (unsigned int)sdl_surface->format->Rmask,
-           (unsigned int)sdl_surface->format->Gmask,
-           (unsigned int)sdl_surface->format->Bmask,
-           (unsigned int)sdl_surface->format->Amask);
+           static_cast<int>(sdl_surface->format->BitsPerPixel),
+           static_cast<int>(sdl_surface->format->BytesPerPixel),
+           static_cast<unsigned int>(sdl_surface->format->Rmask),
+           static_cast<unsigned int>(sdl_surface->format->Gmask),
+           static_cast<unsigned int>(sdl_surface->format->Bmask),
+           static_cast<unsigned int>(sdl_surface->format->Amask));
   }
 
   SDL_UnlockSurface(sdl_surface);

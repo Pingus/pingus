@@ -353,10 +353,10 @@ ObjectProperties::set_object(LevelObj* obj)
         
     if (attr & HAS_COLOR)
     {
-      color_r_inputbox->set_text(StringUtil::to_string((int)obj->get_color().r));
-      color_g_inputbox->set_text(StringUtil::to_string((int)obj->get_color().g));
-      color_b_inputbox->set_text(StringUtil::to_string((int)obj->get_color().b));
-      color_a_inputbox->set_text(StringUtil::to_string((int)obj->get_color().a));
+      color_r_inputbox->set_text(StringUtil::to_string(static_cast<int>(obj->get_color().r)));
+      color_g_inputbox->set_text(StringUtil::to_string(static_cast<int>(obj->get_color().g)));
+      color_b_inputbox->set_text(StringUtil::to_string(static_cast<int>(obj->get_color().b)));
+      color_a_inputbox->set_text(StringUtil::to_string(static_cast<int>(obj->get_color().a)));
 
       place(color_label);
       place(color_r_inputbox);
@@ -477,7 +477,7 @@ void
 ObjectProperties::on_gptype_change(const ComboItem& item)
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_ground_type(Groundtype::type_to_string((Groundtype::GPType)item.id));
+    (*i)->set_ground_type(Groundtype::type_to_string(static_cast<Groundtype::GPType>(item.id)));
 }
 
 void

@@ -27,7 +27,7 @@ SnowParticleHolder::SnowParticle::SnowParticle (int x, int y, bool colliding_) :
   alive(true),
   colliding(colliding_),
   type(SnowParticleHolder::Snow1),
-  pos(Vector3f((float)x,(float)y)),
+  pos(Vector3f(static_cast<float>(x),static_cast<float>(y))),
   velocity(Vector3f(0.0f, 1 + (Math::frand() * 3.5f)))
 {
   switch (rand() % 10)

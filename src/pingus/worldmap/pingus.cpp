@@ -119,7 +119,7 @@ float
 Pingus::get_direction() const
 {
   return (Math::atan2(last_pos.x - pos.x,
-                      -(last_pos.y - pos.y)) / (float)Math::pi * 180.0f) + 180.0f;
+                      -(last_pos.y - pos.y)) / static_cast<float>(Math::pi) * 180.0f) + 180.0f;
 }
 
 bool

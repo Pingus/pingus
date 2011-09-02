@@ -24,7 +24,7 @@
 namespace Particles {
 
 RainParticleHolder::RainParticle::RainParticle(int x, int y)
-  : alive(true), splash(false), use_rain2_surf(false), splash_counter(0), splash_frame(0), pos(Vector3f((float)x, (float)y))
+  : alive(true), splash(false), use_rain2_surf(false), splash_counter(0), splash_frame(0), pos(Vector3f(static_cast<float>(x), static_cast<float>(y)))
 {
   use_rain2_surf = ((rand() % 3) == 0);
   pos.z = 1.0f + Math::frand() * 3.0f;

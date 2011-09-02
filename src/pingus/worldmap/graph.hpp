@@ -121,7 +121,7 @@ public:
   {
     Edge<EdgeType> new_edge (data, a, b, cost);
     edges.push_back (new_edge);
-    resolve_node(a).next.push_back ((int)edges.size()-1);
+    resolve_node(a).next.push_back (static_cast<int>(edges.size())-1);
     return EdgeId (edges.size ()-1);
   }
 
@@ -169,7 +169,7 @@ public:
     }
     std::cout << "couldn't resolve edge: source=" << source << " destination=" << destination << std::endl;
     assert(false);
-    return *((Edge<EdgeType>*) 0);
+    return *(static_cast<Edge<EdgeType>*>(0));
   }
 
   /* FIXME: This might give problems under MSVC, so it could be better to not use it */
@@ -190,7 +190,7 @@ public:
   }
 
   int max_node_handler_value () {
-    return (int)nodes.size ();
+    return static_cast<int>(nodes.size());
   }
 };
 

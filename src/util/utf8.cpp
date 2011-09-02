@@ -96,7 +96,7 @@ UTF8::advance(std::string::const_iterator it, std::string::size_type n)
     }
     else
     {
-      std::cout << "UTF8: malformed UTF-8 sequence: " << (int)c << std::endl;
+      std::cout << "UTF8: malformed UTF-8 sequence: " << static_cast<int>(c) << std::endl;
       it += 1;
     }
   }
@@ -219,7 +219,7 @@ UTF8::iterator::next()
   } 
   catch (std::exception) 
   {
-    std::cout << "Malformed utf-8 sequence beginning with " << *((uint32_t*)(text->c_str() + pos)) << " found " << std::endl;
+    std::cout << "Malformed utf-8 sequence beginning with " << *(reinterpret_cast<const uint32_t*>(text->c_str() + pos)) << " found " << std::endl;
     chr = INVALID_UTF8_SEQUENCE;
     ++pos;
   }

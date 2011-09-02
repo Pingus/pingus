@@ -139,7 +139,7 @@ Combobox::get_box_offset()
   //return -(rect.get_height() * current_item);
 
   // open to the top
-  return -(rect.get_height() * (int)item_list.size());
+  return -(rect.get_height() * static_cast<int>(item_list.size()));
 }
 
 bool

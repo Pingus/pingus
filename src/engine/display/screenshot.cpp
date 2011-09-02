@@ -52,7 +52,7 @@ Screenshot::save(SDL_Surface* surface, const std::string& filename)
         for (int x = 0; x < surface->w; ++x)
         {
           int i = (y * surface->w + x);
-          SDL_GetRGB(*((uint16_t*)(pixels + y * surface->pitch + x*2)),
+          SDL_GetRGB(*(reinterpret_cast<uint16_t*>(pixels + y * surface->pitch + x*2)),
                      surface->format, 
                      buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
         }
@@ -66,7 +66,7 @@ Screenshot::save(SDL_Surface* surface, const std::string& filename)
         for (int x = 0; x < surface->w; ++x)
         {
           int i = (y * surface->w + x);
-          SDL_GetRGB(*((uint32_t*)(pixels + y * surface->pitch + x*3)),
+          SDL_GetRGB(*(reinterpret_cast<uint32_t*>(pixels + y * surface->pitch + x*3)),
                      surface->format, 
                      buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
         }
@@ -80,7 +80,7 @@ Screenshot::save(SDL_Surface* surface, const std::string& filename)
         for (int x = 0; x < surface->w; ++x)
         {
           int i = (y * surface->w + x);
-          SDL_GetRGB(*((uint32_t*)(pixels + y * surface->pitch + x*4)),
+          SDL_GetRGB(*(reinterpret_cast<uint32_t*>(pixels + y * surface->pitch + x*4)),
                      surface->format, 
                      buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
         }

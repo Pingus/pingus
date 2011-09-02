@@ -130,7 +130,7 @@ System::basename(std::string filename)
   const char* str = filename.c_str();
   int i;
 
-  for(i = (int)filename.size() - 1; i >= 0; --i)
+  for(i = static_cast<int>(filename.size()) - 1; i >= 0; --i)
   {
     if (*(str + i) == '/') {
       break;
@@ -146,7 +146,7 @@ System::dirname (std::string filename)
   const char* str = filename.c_str();
   int i;
 
-  for(i = (int)filename.size() - 1; i >= 0; --i)
+  for(i = static_cast<int>(filename.size()) - 1; i >= 0; --i)
   {
     if (*(str + i) == '/') {
       break;

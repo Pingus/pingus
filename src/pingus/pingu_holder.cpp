@@ -41,7 +41,7 @@ PinguHolder::create_pingu (const Vector3f& pos, int owner_id)
   {
     // We use all_pingus.size() as pingu_id, so that id == array
     // index
-    Pingu* pingu = new Pingu ((int)all_pingus.size(), pos, owner_id);
+    Pingu* pingu = new Pingu (static_cast<int>(all_pingus.size()), pos, owner_id);
 
     // This list will deleted
     all_pingus.push_back (pingu);
@@ -151,19 +151,19 @@ PinguHolder::get_number_of_exited()
 int
 PinguHolder::get_number_of_killed()
 {
-  return (int)all_pingus.size() - (int)pingus.size() - get_number_of_exited();
+  return static_cast<int>(all_pingus.size()) - static_cast<int>(pingus.size()) - get_number_of_exited();
 }
 
 int
 PinguHolder::get_number_of_alive()
 {
-  return (int)pingus.size();
+  return static_cast<int>(pingus.size());
 }
 
 int
 PinguHolder::get_number_of_released()
 {
-  return (int)all_pingus.size();
+  return static_cast<int>(all_pingus.size());
 }
 
 int
@@ -175,7 +175,7 @@ PinguHolder::get_number_of_allowed()
 unsigned int
 PinguHolder::get_end_id()
 {
-  return (unsigned int)all_pingus.size();
+  return static_cast<unsigned int>(all_pingus.size());
 }
 
 /* EOF */

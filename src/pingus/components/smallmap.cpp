@@ -118,8 +118,8 @@ SmallMap::draw_sprite(Sprite sprite, Vector3f pos)
 bool
 SmallMap::is_at (int x, int y)
 {
-  return (x > rect.left && x < rect.left + (int)rect.get_width()
-          && y > rect.top && y < rect.top + (int)rect.get_height());
+  return (x > rect.left && x < rect.left + static_cast<int>(rect.get_width())
+          && y > rect.top && y < rect.top + static_cast<int>(rect.get_height()));
 }
 
 void

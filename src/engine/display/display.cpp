@@ -130,11 +130,11 @@ Display::find_closest_fullscreen_video_mode(const Size& size)
 {
   SDL_Rect** modes = SDL_ListModes(NULL, SDL_FULLSCREEN);
 
-  if (modes == (SDL_Rect **)0) 
+  if (modes == static_cast<SDL_Rect**>(0))
   { // No resolutions at all available, bad
     return size;
   }
-  else if(modes == (SDL_Rect **)-1) 
+  else if(modes == reinterpret_cast<SDL_Rect**>(-1))
   {  
     return size;
   }
@@ -170,11 +170,11 @@ Display::get_fullscreen_video_modes()
   std::vector<Size> video_modes;  
   SDL_Rect** modes = SDL_ListModes(NULL, SDL_FULLSCREEN);
 
-  if (modes == (SDL_Rect **)0) 
+  if (modes == reinterpret_cast<SDL_Rect**>(0))
   { // No resolutions at all available, bad
       
   }
-  else if(modes == (SDL_Rect **)-1) 
+  else if(modes == reinterpret_cast<SDL_Rect**>(-1))
   {  // FIXME: Under which OSs is this triggred, if ever?
 
     // All resolutions should work, so we fall back to hardcoded defaults

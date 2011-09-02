@@ -218,7 +218,7 @@ Credits::Credits() :
   credits.push_back(_("_Thank you for"));
   credits.push_back(_("_playing!"));
 
-  end_offset = -(float)Display::get_height()/2 - 50; // screen height + grace time
+  end_offset = -static_cast<float>(Display::get_height())/2 - 50; // screen height + grace time
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)
   {
     switch ((*i)[0])
@@ -277,7 +277,7 @@ Credits::draw_background (DrawingContext& gc)
   int yof;
 
   x = Display::get_width()/2;
-  y = (int)offset;
+  y = static_cast<int>(offset);
 
   gc.draw(blackboard, Vector2i(gc.get_width()/2, gc.get_height()/2));
 
@@ -315,7 +315,7 @@ Credits::draw_background (DrawingContext& gc)
 void
 Credits::on_startup ()
 {
-  offset = (float)Display::get_height() - 50;
+  offset = static_cast<float>(Display::get_height()) - 50;
   //PingusSound::play_music("pingus-5.it");
 }
 

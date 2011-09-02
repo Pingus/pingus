@@ -28,7 +28,7 @@ const float y_collision_decrease = 0.6f;
 PinguParticleHolder::PinguParticle::PinguParticle (int x, int y)
   : livetime(50 + (rand() % 75)),
     use_frame2((rand() % 5) == 0),
-    pos(Vector3f((float)x, (float)y)),
+    pos(Vector3f(static_cast<float>(x), static_cast<float>(y))),
     velocity(Vector3f(Math::frand() * 7 - 3.5f, Math::frand() * -9))
 {
 }

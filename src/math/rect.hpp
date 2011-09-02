@@ -253,10 +253,10 @@ public:
   {}
 
   Rectf(const Rect& rect)
-    : left((float)rect.left), 
-      top((float)rect.top), 
-      right((float)rect.right), 
-      bottom((float)rect.bottom)
+    : left(static_cast<float>(rect.left)), 
+      top(static_cast<float>(rect.top)), 
+      right(static_cast<float>(rect.right)), 
+      bottom(static_cast<float>(rect.bottom))
   {}
 
   Rectf(float new_left, float new_top, float new_right, float new_bottom)

@@ -195,7 +195,7 @@ Surface::operator bool() const
 Color
 Surface::get_pixel(int x, int y) const
 {
-  Uint8 *p = (Uint8 *)get_surface()->pixels + y * get_surface()->pitch + x * get_surface()->format->BytesPerPixel;
+  Uint8 *p = static_cast<Uint8 *>(get_surface()->pixels) + y * get_surface()->pitch + x * get_surface()->format->BytesPerPixel;
   Uint32 pixel;
 
   switch(get_surface()->format->BytesPerPixel)
@@ -203,14 +203,14 @@ Surface::get_pixel(int x, int y) const
     case 1:
       pixel = *p;
     case 2: /* This will cause some problems ... */
-      pixel = *(Uint16 *)p;
+      pixel = *reinterpret_cast<Uint16*>(p);
     case 3:
       if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
         pixel = p[0] << 16 | p[1] << 8 | p[2];
       else
         pixel = p[0] | p[1] << 8 | p[2] << 16;
     case 4:
-      pixel = *(Uint32 *)p;
+      pixel = *reinterpret_cast<Uint32*>(p);
     default:
       pixel = 0;       /* shouldn't happen, but avoids warnings */
   } 
@@ -347,10 +347,10 @@ Surface::print(std::ostream& out)
     % static_cast<int>(impl->surface->format->BitsPerPixel);
 
   if (impl->surface->flags & SDL_SRCCOLORKEY)
-    out << "Colorkey: " << (int)impl->surface->format->colorkey << std::endl;
+    out << "Colorkey: " << static_cast<int>(impl->surface->format->colorkey) << std::endl;
 
   if (impl->surface->flags & SDL_SRCALPHA)
-    out << "Alpha: " << (int)impl->surface->format->alpha << std::endl;
+    out << "Alpha: " << static_cast<int>(impl->surface->format->alpha) << std::endl;
 
   if (0)
   {
@@ -358,10 +358,10 @@ Surface::print(std::ostream& out)
     Uint8* pixels = static_cast<Uint8*>(impl->surface->pixels);
     for(int i = 0; i < impl->surface->pitch * impl->surface->h; i += 4)
       out << boost::format("(%3d %3d %3d %3d) ")
-        % (int)pixels[i+0]
-        % (int)pixels[i+1]
-        % (int)pixels[i+2]
-        % (int)pixels[i+3];
+        % static_cast<int>(pixels[i+0])
+        % static_cast<int>(pixels[i+1])
+        % static_cast<int>(pixels[i+2])
+        % static_cast<int>(pixels[i+3]);
     out << std::endl;
     SDL_UnlockSurface(impl->surface);
   }

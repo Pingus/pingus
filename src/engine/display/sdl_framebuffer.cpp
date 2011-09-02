@@ -36,12 +36,12 @@ inline void draw_pixel16(SDL_Surface* screen, int x, int y, const Color& c)
     // Loses precision for speed
     alpha = static_cast<uint8_t>((255 - c.a) >> 3);
 
-    p = &((Uint16 *)screen->pixels)[x + y * screen->w];
+    p = &(static_cast<Uint16 *>(screen->pixels))[x + y * screen->w];
     color = (((color << 16) | color) & 0x07E0F81F);
     dp = *p;
     dp = ((dp << 16) | dp) & 0x07E0F81F;
     dp = ((((dp - color) * alpha) >> 5) + color) & 0x07E0F81F;
-    *p = (Uint16)((dp >> 16) | dp);
+    *p = static_cast<Uint16>((dp >> 16) | dp);
   } else {
     static_cast<Uint16*>(screen->pixels)[x + y * screen->w] = static_cast<Uint16>(color);
   }
@@ -60,7 +60,7 @@ inline void draw_pixel32(SDL_Surface* screen, int x, int y, const Color& c)
 
     alpha = static_cast<unsigned char>(255 - c.a);
 
-    p = &((Uint32*)screen->pixels)[x + y * screen->w];
+    p = &(static_cast<Uint32*>(screen->pixels))[x + y * screen->w];
 
     sp2 = (color & 0xFF00FF00) >> 8;
     color &= 0x00FF00FF;
@@ -73,7 +73,7 @@ inline void draw_pixel32(SDL_Surface* screen, int x, int y, const Color& c)
     dp2 = ((((dp2 - sp2) * alpha) >> 8) + sp2) & 0x00FF00FF;
     *p = (dp1 | (dp2 << 8));
   } else {
-    ((Uint32 *)screen->pixels)[x + y * screen->w] = color;
+    (static_cast<Uint32*>(screen->pixels))[x + y * screen->w] = color;
   }
 }
 
@@ -167,8 +167,8 @@ SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Vector2i& 
   SDL_Surface* src = impl->get_surface();
 
   SDL_Rect dstrect;
-  dstrect.x = (Sint16)pos.x;
-  dstrect.y = (Sint16)pos.y;
+  dstrect.x = static_cast<Sint16>(pos.x);
+  dstrect.y = static_cast<Sint16>(pos.y);
   dstrect.w = 0;
   dstrect.h = 0;  
 
@@ -182,8 +182,8 @@ SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Rect& srcr
   SDL_Surface* src = impl->get_surface();
 
   SDL_Rect dstrect;
-  dstrect.x = (Sint16)pos.x;
-  dstrect.y = (Sint16)pos.y;
+  dstrect.x = static_cast<Sint16>(pos.x);
+  dstrect.y = static_cast<Sint16>(pos.y);
   dstrect.w = 0;
   dstrect.h = 0;  
 

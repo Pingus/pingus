@@ -73,7 +73,7 @@ Liquid::draw (SceneContext& gc)
       x < static_cast<int>(pos.x) + width;
       x += sur.get_width())
   {
-    gc.color().draw(sur, Vector3f((float)x, pos.y));
+    gc.color().draw(sur, Vector3f(static_cast<float>(x), pos.y));
   }
 }
 

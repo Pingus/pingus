@@ -178,14 +178,14 @@ Viewport::on_pointer_move(int x_, int y_)
       for (unsigned i = 0; i < selected_objs.size(); i++)
       {
         Vector3f orig_pos(selected_objs[i]->get_orig_pos());
-        float x_offset = (float)(mouse_world_pos.x - drag_world_pos.x);
-        float y_offset = (float)(mouse_world_pos.y - drag_world_pos.y);
+        float x_offset = static_cast<float>(mouse_world_pos.x - drag_world_pos.x);
+        float y_offset = static_cast<float>(mouse_world_pos.y - drag_world_pos.y);
 
         if (snap_to)
         {
           // FIXME: May need to adjust the snap-to offset here.
-          new_x = (float)((int)((x_offset + orig_pos.x) / 10) * 10);
-          new_y = (float)((int)((y_offset + orig_pos.y) / 10) * 10);
+          new_x = static_cast<float>(static_cast<int>((x_offset + orig_pos.x) / 10) * 10);
+          new_y = static_cast<float>(static_cast<int>((y_offset + orig_pos.y) / 10) * 10);
         }
         else
         {
@@ -322,7 +322,7 @@ Viewport::on_key_pressed(const unsigned short c)
 
 
       default:
-        std::cout << "Viewport::on_key_pressed: " << int(c) << " " << (char)c << std::endl;
+        std::cout << "Viewport::on_key_pressed: " << int(c) << " " << static_cast<char>(c) << std::endl;
         break;
     }
   }

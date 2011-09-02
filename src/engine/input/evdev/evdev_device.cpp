@@ -223,7 +223,7 @@ EvdevDevice::update(float delta)
   //std::cout << rd / sizeof(struct input_event) << std::endl;
   if (rd >= static_cast<ssize_t>(sizeof(struct input_event)))
   {
-    for (int i = 0; i < rd / (int)sizeof(struct input_event); ++i)
+    for (int i = 0; i < rd / static_cast<int>(sizeof(struct input_event)); ++i)
     {
       //std::cout << ev[i].type << " " << ev[i].code << " " << ev[i].value << std::endl;
 

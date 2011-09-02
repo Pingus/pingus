@@ -121,7 +121,7 @@ struct SurfaceBackground : public ObjectSelectorList::Object
 
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) { 
     LevelObj* obj = new LevelObj("surface-background", impl);
-    obj->set_pos(Vector3f((float)pos.x, (float)pos.y, -1000.0f)); // FIXME: Hack, z-pos handling is messed up
+    obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y), -1000.0f)); // FIXME: Hack, z-pos handling is messed up
     obj->set_para_x(0.5f);
     obj->set_para_y(0.5f);
     obj->set_scroll_x(0.0f);
@@ -142,7 +142,7 @@ struct SolidColorBackground : public ObjectSelectorList::Object
   
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
     LevelObj* obj = new LevelObj("solidcolor-background", impl);
-    obj->set_pos(Vector3f((float)pos.x, (float)pos.y, -1000.0f)); // FIXME: Hack, z-pos handling is messed up
+    obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y), -1000.0f)); // FIXME: Hack, z-pos handling is messed up
     obj->set_color(Color(255, 0, 255));
     return obj;
   }
@@ -157,7 +157,7 @@ struct StarfieldBackground : public ObjectSelectorList::Object
   
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
     LevelObj* obj = new LevelObj("starfield-background", impl);
-    obj->set_pos(Vector3f((float)pos.x, (float)pos.y, -1000.0f)); // FIXME: Hack, z-pos handling is messed up
+    obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y), -1000.0f)); // FIXME: Hack, z-pos handling is messed up
     obj->set_small_stars(500);
     obj->set_middle_stars(250);
     obj->set_large_stars(125);
@@ -177,7 +177,7 @@ struct Liquid : public ObjectSelectorList::Object
   
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
     LevelObj* obj = new LevelObj("liquid", impl);
-    obj->set_pos(Vector3f((float)pos.x, (float)pos.y));
+    obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     obj->set_res_desc(desc);
     obj->set_repeat(1);
     return obj;     

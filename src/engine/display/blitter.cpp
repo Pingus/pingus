@@ -82,11 +82,11 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
     for (i = 0; i < height; ++i) {
       x = i * new_pitch;
       fy = static_cast<float>(i) * static_cast<float>(surface->h) / static_cast<float>(height);
-      iy = (int)fy;
+      iy = static_cast<int>(fy);
       fy -= static_cast<float>(iy);
       for (j = 0; j < width; ++j) {
         fx = static_cast<float>(j) * static_cast<float>(surface->w) / static_cast<float>(width);
-        ix = (int)fx;
+        ix = static_cast<int>(fx);
         fx -= static_cast<float>(ix);
         fz = (fx + fy) / 2;
 

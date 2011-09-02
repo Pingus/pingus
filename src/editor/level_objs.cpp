@@ -352,12 +352,12 @@ LevelObj::get_rect() const
 {
   if (attribs & HAS_REPEAT)
   {
-    return Rect(Vector2i((int)pos.x, (int)pos.y) - sprite.get_offset(),
+    return Rect(Vector2i(static_cast<int>(pos.x), static_cast<int>(pos.y)) - sprite.get_offset(),
                 Size(sprite.get_width() * repeat, sprite.get_height()));
   }
   else
   {
-    return Rect(Vector2i((int)pos.x, (int)pos.y) - sprite.get_offset(),
+    return Rect(Vector2i(static_cast<int>(pos.x), static_cast<int>(pos.y)) - sprite.get_offset(),
                 Size(sprite.get_width(), sprite.get_height()));
   }
 }

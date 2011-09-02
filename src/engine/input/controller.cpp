@@ -207,28 +207,28 @@ void
 Controller::add_axis_event(int id, float pos)
 {
   // std::cout << "Controller::axis_event: id=" << id << " " << pos << std::endl;
-  events.push_back(makeAxisEvent((EventName)id, pos));
+  events.push_back(makeAxisEvent(static_cast<EventName>(id), pos));
 }
 
 void
 Controller::add_button_event(int id, ButtonState state)
 {
   // std::cout << "Controller::button_event: id=" << id << " " << state << std::endl;
-  events.push_back(makeButtonEvent((EventName)id, state));
+  events.push_back(makeButtonEvent(static_cast<EventName>(id), state));
 }
 
 void
 Controller::add_pointer_event(int id, float x, float y)
 {
   // std::cout << "Controller::pointer_event: id=" << id << " " << x << ", " << y << std::endl;
-  events.push_back(makePointerEvent((EventName)id, x, y));
+  events.push_back(makePointerEvent(static_cast<EventName>(id), x, y));
 }
 
 void
 Controller::add_scroller_event(int id, float xrel, float yrel)
 {
   // std::cout << "Controller::scroller_event: id=" << id << " " << xrel << ", " << yrel << std::endl;
-  events.push_back(makeScrollerEvent((EventName)id, xrel, yrel));
+  events.push_back(makeScrollerEvent(static_cast<EventName>(id), xrel, yrel));
 }
 
 void

@@ -72,11 +72,11 @@ PingusSoundReal::real_play_sound(const std::string& name, float volume, float pa
   int channel = Mix_PlayChannel(-1, chunk, 0);
   if (channel != -1)
   {
-    Mix_Volume(channel, (int)(volume * MIX_MAX_VOLUME));
+    Mix_Volume(channel, static_cast<int>(volume * MIX_MAX_VOLUME));
     if (panning != 0.0f)
     {
-      Uint8 left  = static_cast<Uint8>((panning < 0.0f) ? 255 : (Uint8)((panning - 1.0f) * -255));
-      Uint8 right = static_cast<Uint8>((panning > 0.0f) ? 255 : (Uint8)((panning + 1.0f) * 255));
+      Uint8 left  = static_cast<Uint8>((panning < 0.0f) ? 255 : static_cast<Uint8>((panning - 1.0f) * -255));
+      Uint8 right = static_cast<Uint8>((panning > 0.0f) ? 255 : static_cast<Uint8>((panning + 1.0f) * 255));
       Mix_SetPanning(channel, left, right);
     }
   }
@@ -115,7 +115,7 @@ PingusSoundReal::real_play_music (const std::string & arg_filename, float volume
     return;
   }
 
-  Mix_VolumeMusic((int)(volume * 0.5f * MIX_MAX_VOLUME)); // FIXME: music_volume
+  Mix_VolumeMusic(static_cast<int>(volume * 0.5f * MIX_MAX_VOLUME)); // FIXME: music_volume
   Mix_PlayMusic(music_sample, loop ? -1 : 0);
 }
 
