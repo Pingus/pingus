@@ -16,6 +16,7 @@
 
 #include "util/system.hpp"
 
+#include <algorithm>
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
@@ -440,64 +441,128 @@ System::realpath(const std::string& pathname)
 #endif
   else
   {
-    char buf[PATH_MAX];
-    if (getcwd(buf, PATH_MAX) == 0)
+    char cwd[PATH_MAX];
+    if (getcwd(cwd, PATH_MAX) == 0)
     {
       std::cout << "System::realpath: Error: couldn't getcwd()" << std::endl;
       return pathname;
     }
 #ifdef WIN32
-    for (char *p = buf; *p; ++p)
+    for (char *p = cwd; *p; ++p)
     {
       if (*p == '\\')
         *p = '/';
     }
-    drive.assign(buf, 2);
+    drive.assign(cwd, 2);
 #endif
       
-    fullpath = fullpath + buf + "/" + pathname;
+    fullpath = std::string(cwd) + "/" + pathname;
   }
-  
+
+#ifdef WIN32  
   return drive + "/" + normalize_path(fullpath);
+#else
+  return normalize_path(fullpath);
+#endif
 }
 
-std::string
-System::normalize_path(const std::string& fullpath)
+namespace {
+
+void handle_directory(const std::string& dir, int& skip, std::string& result)
 {
-  std::string result;
-  std::string::const_reverse_iterator last_slash = fullpath.rbegin();
-  int skip = 0;
-  // /foo/bar/../../bar/baz/
-  //std::cout << "fullpath: '" << fullpath << "'" << std::endl;
-  for(std::string::const_reverse_iterator i = fullpath.rbegin(); i != fullpath.rend(); ++i)
-  { // FIXME: Little crude and hackish
-    if (*i == '/')
+  if (dir.empty() || dir == ".")
+  {
+    // ignore
+  }
+  else if (dir == "..")
+  {
+    skip += 1;
+  }
+  else
+  {
+    if (skip == 0)
     {
-      std::string dir(last_slash, i); 
-      //std::cout << "'" << dir << "'" << std::endl;
-      if (dir == ".." || dir == "/..")
+      if (result.empty())
       {
-        skip += 1;
-      }
-      else if (dir == "." || dir == "/." || dir.empty() || dir == "/")
-      {
-        // pass
+        result.append(dir);
       }
       else
       {
-        if (skip == 0)
-        {
-          result += dir;
-        }
-        else
-          skip -= 1;
+        result.append("/");
+        result.append(dir);
       }
-
-      last_slash = i;
+    }
+    else
+    {
+      skip -= 1;
     }
   }
+}
 
-  return std::string(result.rbegin(), result.rend());
+} // namespaces
+
+std::string
+System::normalize_path(const std::string& path)
+{
+  if (path.empty())
+  {
+    return std::string();
+  }
+  else
+  {
+    bool absolute = false;
+    if (path[0] == '/')
+    {
+      absolute = true;
+    }
+
+    std::string result;
+    result.reserve(path.size());
+
+    std::string::const_reverse_iterator last_slash = path.rbegin();
+    int skip = 0;
+
+    for(std::string::const_reverse_iterator i = path.rbegin(); i != path.rend(); ++i)
+    {
+      if (*i == '/')
+      {
+        std::string dir(last_slash, i); 
+
+        handle_directory(dir, skip, result);
+
+        last_slash = i+1;
+      }
+    }
+
+    // relative path name
+    if (last_slash != path.rend())
+    {
+      std::string dir(last_slash, path.rend());
+      handle_directory(dir, skip, result);
+    }
+
+    if (!absolute)
+    {
+      for(int i = 0; i < skip; ++i)
+      {
+        if (i == skip - 1)
+        {
+          result.append("..");
+        }
+        else
+        {
+          result.append("../");
+        }
+      }
+    }
+    else // if (absolute)
+    {
+      result += "/";
+    }
+
+    std::reverse(result.begin(), result.end());
+    return result;
+  }
 }
 
 /* EOF */

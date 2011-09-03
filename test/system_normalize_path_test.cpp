@@ -1,13 +1,20 @@
-#include <iostream>
+#include <assert.h>
 
 #include "util/system.hpp"
 
 int main(int argc, char** argv)
 {
-  for(int i = 1; i < argc; ++i)
-  {
-    std::cout << System::normalize_path(argv[i]) << std::endl;
-  }
+  assert(System::normalize_path("") == "");
+  assert(System::normalize_path("/") == "/");
+  assert(System::normalize_path("abc") == "abc");
+
+  assert(System::normalize_path("/abc") == "/abc");
+  assert(System::normalize_path("/../..") == "/");
+  assert(System::normalize_path("a/../..") == "..");
+  assert(System::normalize_path("a////c") == "a/c");
+  assert(System::normalize_path("a//..///c") == "c");
+  assert(System::normalize_path("/a//..///c") == "/c");
+  assert(System::normalize_path("/a/../../b/c") == "/b/c");
 
   return 0;
 }

@@ -82,11 +82,12 @@ class Project:
 
     def configure_begin(self):
         self.opts = Variables("custom.py", ARGUMENTS)
+        self.opts.Add('BUILD', 'Set the build type', "default")
         self.opts.Add('CC', 'C Compiler', 'gcc')
         self.opts.Add('CXX', 'C++ Compiler', 'g++')
     #   self.opts.Add('debug', 'Build with debugging options', 0)
     #   self.opts.Add('profile', 'Build with profiling support', 0)
-
+    
         self.opts.Add('CPPPATH',    'Additional preprocessor paths', [])
         self.opts.Add('LIBPATH',    'Additional library paths',      [])
         self.opts.Add('CPPFLAGS',   'Additional preprocessor flags', [])
@@ -242,6 +243,8 @@ class Project:
         if self.env.has_key('BUILD') and self.env['BUILD'] == 'development':
             for filename in Glob("test/*_test.cpp", strings=True):
                 self.env.Program(filename[:-4], [filename, libpingus])
+            for filename in Glob("test/*_util.cpp", strings=True):
+                self.env.Program(filename[:-4], [filename, libpingus])                
 
         for filename in Glob("extra/*.cpp", strings=True):
             self.env.Program(filename[:-4], [filename, libpingus])
