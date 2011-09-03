@@ -9,7 +9,6 @@
     (author "Jings")
     (number-of-pingus 50)
     (number-to-save 50)
-    (time 6000)
     (difficulty 0)
     (playable 1)
     (comment "")

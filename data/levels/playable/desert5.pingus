@@ -25,13 +25,14 @@
       (surface 
         (image "textures/desert")
         (modifier "ROT0"))
-      (color 0 0 0 1)
+      (color 0 0 0 0)
       (scroll-x 0.0)
       (scroll-y 0.0)
       (para-x 0.5)
       (para-y 0.5)
+      (keep-aspect #t)
       (stretch-x #f)
-      (stretch-y #f))
+      (stretch-y #t))
     (hotspot 
       (surface 
         (image "entrances/wood_bottom")

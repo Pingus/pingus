@@ -15,13 +15,12 @@
     (actions 
       (basher 1)
       (blocker 1)
-      (bomber 1)
+      (bomber 2)
       (bridger 1)
       (climber 1)
       (digger 1)
       (floater 1)
-      (jumper 1)
-      (miner 1))
+      (jumper 1))
     (levelsize 800 672))
   (objects 
     (surface-background 

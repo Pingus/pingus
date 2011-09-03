@@ -13,15 +13,13 @@
     (comment "actions not tuned and very similar to desert5.xml")
     (music "pingus-3.it")
     (actions 
-      (basher 20)
-      (blocker 20)
-      (bomber 20)
-      (bridger 20)
-      (climber 20)
-      (digger 20)
-      (floater 20)
-      (jumper 20)
-      (miner 20))
+      (basher 10)
+      (bomber 3)
+      (bridger 10)
+      (digger 10)
+      (floater 5)
+      (jumper 10)
+      (miner 10))
     (levelsize 1400 800))
   (objects 
     (surface-background 
