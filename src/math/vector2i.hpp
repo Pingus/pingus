@@ -78,6 +78,11 @@ public:
   {
     return (other.x == x && other.y == y);
   }
+
+  bool operator!= (const Vector2i& other) const
+  {
+    return (other.x != x || other.y != y);
+  }
 };
 
 std::ostream& operator<<(std::ostream& s, const Vector2i& v);
