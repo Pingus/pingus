@@ -20,6 +20,10 @@
 #include <iostream>
 #include <png.h>
 
+#ifdef HAVE_OPENGL
+#include <SDL_opengl.h>
+#endif
+
 #include "pingus/gettext.h"
 #include "util/system.hpp"
 
@@ -39,63 +43,72 @@ Screenshot::make_screenshot()
 void
 Screenshot::save(SDL_Surface* surface, const std::string& filename)
 {
-  SDL_LockSurface(surface);
-
   uint8_t* buffer = new uint8_t[surface->w * surface->h * 3];
-
-  switch(surface->format->BitsPerPixel)
+#ifdef HAVE_OPENGL
+  if(surface->flags & SDL_OPENGL){
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+    glReadPixels(0, 0, surface->w, surface->h, GL_RGB, GL_UNSIGNED_BYTE, buffer);
+    save_png(filename, buffer, surface->w, surface->h);
+  } else
+#endif
   {
-    case 16: // 16bit
+    SDL_LockSurface(surface);
+
+    switch(surface->format->BitsPerPixel)
     {
-      uint8_t* pixels = static_cast<uint8_t*>(surface->pixels);
-      for (int y = 0; y < surface->h; ++y)
-        for (int x = 0; x < surface->w; ++x)
-        {
-          int i = (y * surface->w + x);
-          SDL_GetRGB(*(reinterpret_cast<uint16_t*>(pixels + y * surface->pitch + x*2)),
-                     surface->format, 
-                     buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
-        }
-      break;
-    }
-      
-    case 24: // 24bit
-    {
-      uint8_t* pixels = static_cast<uint8_t*>(surface->pixels);
-      for (int y = 0; y < surface->h; ++y)
-        for (int x = 0; x < surface->w; ++x)
-        {
-          int i = (y * surface->w + x);
-          SDL_GetRGB(*(reinterpret_cast<uint32_t*>(pixels + y * surface->pitch + x*3)),
-                     surface->format, 
-                     buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
-        }
-      break;
+      case 16: // 16bit
+      {
+        uint8_t* pixels = static_cast<uint8_t*>(surface->pixels);
+        for (int y = 0; y < surface->h; ++y)
+          for (int x = 0; x < surface->w; ++x)
+          {
+            int i = (y * surface->w + x);
+            SDL_GetRGB(*(reinterpret_cast<uint16_t*>(pixels + y * surface->pitch + x*2)),
+                       surface->format, 
+                       buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
+          }
+        break;
+      }
+
+      case 24: // 24bit
+      {
+        uint8_t* pixels = static_cast<uint8_t*>(surface->pixels);
+        for (int y = 0; y < surface->h; ++y)
+          for (int x = 0; x < surface->w; ++x)
+          {
+            int i = (y * surface->w + x);
+            SDL_GetRGB(*(reinterpret_cast<uint32_t*>(pixels + y * surface->pitch + x*3)),
+                       surface->format, 
+                       buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
+          }
+        break;
+      }
+
+      case 32: // 32bit
+      {
+        uint8_t* pixels = static_cast<uint8_t*>(surface->pixels);
+        for (int y = 0; y < surface->h; ++y)
+          for (int x = 0; x < surface->w; ++x)
+          {
+            int i = (y * surface->w + x);
+            SDL_GetRGB(*(reinterpret_cast<uint32_t*>(pixels + y * surface->pitch + x*4)),
+                       surface->format, 
+                       buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
+          }
+        break;
+      }
+      default:
+        std::cout << "BitsPerPixel: " << int(surface->format->BitsPerPixel) << std::endl;
+        assert(!"Unknown color format");
+        break;
     }
 
-    case 32: // 32bit
-    {
-      uint8_t* pixels = static_cast<uint8_t*>(surface->pixels);
-      for (int y = 0; y < surface->h; ++y)
-        for (int x = 0; x < surface->w; ++x)
-        {
-          int i = (y * surface->w + x);
-          SDL_GetRGB(*(reinterpret_cast<uint32_t*>(pixels + y * surface->pitch + x*4)),
-                     surface->format, 
-                     buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
-        }
-      break;
-    }
-    default:
-      std::cout << "BitsPerPixel: " << int(surface->format->BitsPerPixel) << std::endl;
-      assert(!"Unknown color format");
-      break;
+    save_png(filename, buffer, surface->w, surface->h);
+
+    SDL_UnlockSurface(surface);
   }
 
-  save_png(filename, buffer, surface->w, surface->h);
   delete[] buffer;
-
-  SDL_UnlockSurface(surface);
 }
 
 void
