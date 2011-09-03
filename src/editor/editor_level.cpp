@@ -51,11 +51,11 @@ EditorLevel::clear_impl()
 void
 EditorLevel::set_impl_defaults()
 {
-  impl->levelname   = "none";
-  impl->description = "none";
-  impl->author = "none";
-  impl->comment = "none";
-  impl->music   = "none";
+  impl->levelname   = "";
+  impl->description = "";
+  impl->author = "";
+  impl->comment = "";
+  impl->music   = "";
 
   impl->ambient_light = Color(255,255,255);
   impl->size = Size(2000, 1000);
