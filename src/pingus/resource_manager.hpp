@@ -42,7 +42,8 @@ public:
   void add_resources(const std::string& filename);
 
   /** Returns a pointer to the requested SpriteDescription or 0 if it's not found */
-  SpriteDescription* get_sprite_description(const std::string& name) const;
+  SpriteDescription* get_sprite_description(const std::string& name);
+  std::shared_ptr<SpriteDescription> get_sprite_description_from_file(const std::string& name);
 
   std::vector<std::string> get_section(const std::string& name);
 

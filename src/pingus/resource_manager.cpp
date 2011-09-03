@@ -22,6 +22,7 @@
 #include "pingus/globals.hpp"
 #include "util/sexpr_file_reader.hpp"
 #include "util/string_util.hpp"
+#include "util/system.hpp"
 
 ResourceManager::ResourceManager() :
   resources(),
@@ -129,8 +130,51 @@ ResourceManager::parse_section(const std::string& section, FileReader& reader)
   }
 }
 
+std::shared_ptr<SpriteDescription>
+ResourceManager::get_sprite_description_from_file(const std::string& resname)
+{
+  // try to load a .sprite file
+  std::string filename = "images/" + resname + ".sprite";
+  Pathname path(filename, Pathname::DATA_PATH);
+  if (path.exist())
+  {
+    SpriteDescriptionPtr desc = SpriteDescription::from_file(path);
+
+    // resolve relative filenames
+    if (!desc->filename.absolute())
+    {
+      desc->filename = Pathname(System::dirname(filename) + "/" + desc->filename.get_raw_path(), Pathname::DATA_PATH);
+    }
+
+    return desc;
+  }
+
+  // try to load a .png file
+  filename = "images/" + resname + ".png";
+  path = Pathname(filename, Pathname::DATA_PATH);
+  if (path.exist())
+  {
+    SpriteDescriptionPtr desc(new SpriteDescription);
+    desc->filename = path;
+    return desc;
+  }
+
+  // try to load a .jpg file
+  filename = "images/" + resname + ".jpg";
+  path = Pathname(filename, Pathname::DATA_PATH);
+  if (path.exist())
+  {
+    SpriteDescriptionPtr desc(new SpriteDescription);
+    desc->filename = path;
+    return desc;
+  }
+
+  // give up
+  return SpriteDescriptionPtr();
+}
+
 SpriteDescription* 
-ResourceManager::get_sprite_description(const std::string& name) const
+ResourceManager::get_sprite_description(const std::string& name)
 {
   Resources::const_iterator i = resources.find(name);
   if (i != resources.end())
@@ -139,14 +183,23 @@ ResourceManager::get_sprite_description(const std::string& name) const
   }
   else
   {
-    Aliases::const_iterator j = aliases.find(name);
-    if (j != aliases.end())
+    SpriteDescriptionPtr desc = get_sprite_description_from_file(name);
+    if (desc)
     {
-      return get_sprite_description(j->second);
+      resources[name] = desc;
+      return desc.get();
     }
     else
     {
-      return 0;
+      Aliases::const_iterator j = aliases.find(name);
+      if (j != aliases.end())
+      {
+        return get_sprite_description(j->second);
+      }
+      else
+      {
+        return 0;
+      }
     }
   }  
 }

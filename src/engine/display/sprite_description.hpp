@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_ENGINE_DISPLAY_SPRITE_DESCRIPTION_HPP
 
 #include <iostream>
+#include <memory>
 
 #include "math/origin.hpp"
 #include "math/size.hpp"
@@ -25,8 +26,15 @@
 #include "util/file_reader.hpp"
 #include "util/pathname.hpp"
 
+class SpriteDescription;
+
+typedef std::shared_ptr<SpriteDescription> SpriteDescriptionPtr;
+
 class SpriteDescription
 {
+public:
+  static SpriteDescriptionPtr from_file(const Pathname& path);
+
 public:
   Pathname    filename;
   Vector2i    offset;
