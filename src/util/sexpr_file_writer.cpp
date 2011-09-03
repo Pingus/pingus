@@ -20,8 +20,9 @@
 
 #include "util/pathname.hpp"
 
-SExprFileWriter::SExprFileWriter(std::ostream& out_)
-  : out(&out_), level(0)
+SExprFileWriter::SExprFileWriter(std::ostream& out_) :
+  out(&out_), 
+  level(0)
 {
 }
 
@@ -38,6 +39,9 @@ SExprFileWriter::indent()
 void
 SExprFileWriter::begin_section(const char* name)
 {
+  if (level != 0)
+    (*out) << std::endl;
+
   (*out) << indent() << "(" << name << " ";
   ++level;
 }
