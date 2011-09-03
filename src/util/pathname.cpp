@@ -109,6 +109,12 @@ Pathname::str() const
   return std::string();
 }
 
+bool
+Pathname::absolute() const
+{
+  return !pathname.empty() && pathname[0] == '/';
+}
+
 std::ostream& operator<< (std::ostream& os, const Pathname& p)
 {
   switch(p.get_type())

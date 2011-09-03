@@ -59,6 +59,8 @@ public:
       debugging output, but nothing else */
   std::string str() const;
 
+  bool absolute() const;
+
   bool empty() const;
   
   bool exist() const;
