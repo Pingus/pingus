@@ -51,6 +51,8 @@ Resource::init(bool load_obsolete)
     resmgr.add_resources(g_path_manager.complete("data/worldmaps.res"));
     resmgr.add_resources(g_path_manager.complete("data/worldobjs.res"));
   }
+
+  resmgr.add_resources_from_directory(Pathname("images", Pathname::DATA_PATH));
   resmgr.add_resources(g_path_manager.complete("data/alias.res"));
 }
 

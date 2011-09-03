@@ -16,6 +16,8 @@
 
 #include "pingus/resource_manager.hpp"
 
+#include <algorithm>
+
 #include "engine/display/sprite_description.hpp"
 #include "lisp/parser.hpp"
 #include "pingus/debug.hpp"
@@ -26,6 +28,7 @@
 
 ResourceManager::ResourceManager() :
   resources(),
+  m_resources(),
   aliases()
 {
 }
@@ -41,8 +44,19 @@ ResourceManager::get_section(const std::string& name)
   for (auto i = resources.begin(); i != resources.end(); ++i)
   {
     if (StringUtil::has_prefix(i->first, name))
+    {
       lst.push_back(i->first);
+    }
   }
+
+  for (auto i = m_resources.begin(); i != m_resources.end(); ++i)
+  {
+    if (StringUtil::has_prefix(*i, name))
+    {
+      lst.push_back(*i);
+    }
+  }
+
   return lst;
 }
 
@@ -75,6 +89,28 @@ ResourceManager::add_resources(const std::string& filename)
   {
     std::cout << "ResourceManager: File not found " << filename << std::endl;
   }
+}
+
+void
+ResourceManager::add_resources_from_directory(const Pathname& path)
+{
+  assert(path.get_type() == Pathname::DATA_PATH);
+
+  std::vector<std::string> files = System::opendir_recursive(path.get_sys_path());
+  for(auto it = files.begin(); it != files.end(); ++it)
+  {
+    if (StringUtil::has_suffix(*it, ".sprite") ||
+        StringUtil::has_suffix(*it, ".png") ||
+        StringUtil::has_suffix(*it, ".jpg"))
+    {
+      // FIXME: ugly hack to remove "data/images/" prefix, need better
+      // way to cut stuff away
+      m_resources.push_back(System::cut_file_extension(it->substr(12)));
+      std::cout << m_resources.back() << std::endl;
+    }
+  }
+
+  std::sort(m_resources.begin(), m_resources.end());
 }
 
 void

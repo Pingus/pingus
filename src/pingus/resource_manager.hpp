@@ -22,8 +22,9 @@
 #include <string>
 #include <vector>
 
-class SpriteDescription;
 class FileReader;
+class Pathname;
+class SpriteDescription;
 
 class ResourceManager
 {
@@ -32,7 +33,8 @@ public:
   typedef std::map<std::string, std::string> Aliases;
 
 private:
-  Resources resources; 
+  Resources resources; // FIXME: obsolete
+  std::vector<std::string> m_resources;
   Aliases aliases;
 
 public:
@@ -40,6 +42,7 @@ public:
   ~ResourceManager();
 
   void add_resources(const std::string& filename);
+  void add_resources_from_directory(const Pathname& path);
 
   /** Returns a pointer to the requested SpriteDescription or 0 if it's not found */
   SpriteDescription* get_sprite_description(const std::string& name);
