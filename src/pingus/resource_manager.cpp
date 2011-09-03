@@ -106,7 +106,6 @@ ResourceManager::add_resources_from_directory(const Pathname& path)
       // FIXME: ugly hack to remove "data/images/" prefix, need better
       // way to cut stuff away
       m_resources.push_back(System::cut_file_extension(it->substr(12)));
-      std::cout << m_resources.back() << std::endl;
     }
   }
 
