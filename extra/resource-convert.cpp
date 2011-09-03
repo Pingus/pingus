@@ -22,7 +22,7 @@ bool is_default_sprite(const SpriteDescription& desc)
 int main(int argc, char** argv)
 {
   g_path_manager.set_base_path("data/");
-  Resource::init();
+  Resource::init(true);
 
   {  // print SpriteDescription
     const ResourceManager::Resources& resources = Resource::resmgr.get_resources();
@@ -38,6 +38,7 @@ int main(int argc, char** argv)
         throw std::runtime_error(resname + ": unexpected SpriteDescription");
       }
 
+      std::string orig_image_file = System::normalize_path(desc.filename.get_raw_path());
       std::string image_file = System::normalize_path(desc.filename.get_raw_path());
       std::string outfile = "data/images/" + resname + ".sprite";
 
@@ -56,25 +57,33 @@ int main(int argc, char** argv)
         image_file = "/" + image_file;
       }
 
-      std::cout << resname << std::endl;
-      std::cout << "     outfile : " << outfile << std::endl;
-      std::cout << "     default : " << (is_default_sprite(desc) ? "DEFAULT" : "regular") << std::endl;
-      std::cout << "  image_file : " << image_file << std::endl;
-      std::cout << "     resname : " << resname << std::endl;
-      std::cout << "    filename : " << desc.filename.get_raw_path() << std::endl;
-      std::cout << "      offset : " << desc.offset << std::endl;
-      std::cout << "      origin : " << desc.origin << std::endl;
-      std::cout << "        loop : " << desc.loop << std::endl;
-      std::cout << "       speed : " << desc.speed << std::endl;
-      std::cout << "       array : " << desc.array << std::endl;
-      std::cout << "   frame_pos : " << desc.frame_pos << std::endl;
-      std::cout << "  frame_size : " << desc.frame_size << std::endl;
-      std::cout << std::endl;
-      
-      if (!is_default_sprite(desc))
+      if (false)
+      {
+        std::cout << resname << std::endl;
+        std::cout << "     outfile : " << outfile << std::endl;
+        std::cout << "     default : " << (is_default_sprite(desc) ? "DEFAULT" : "regular") << std::endl;
+        std::cout << "  image_file : " << image_file << std::endl;
+        std::cout << "     resname : " << resname << std::endl;
+        std::cout << "    filename : " << desc.filename.get_raw_path() << std::endl;
+        std::cout << "      offset : " << desc.offset << std::endl;
+        std::cout << "      origin : " << desc.origin << std::endl;
+        std::cout << "        loop : " << desc.loop << std::endl;
+        std::cout << "       speed : " << desc.speed << std::endl;
+        std::cout << "       array : " << desc.array << std::endl;
+        std::cout << "   frame_pos : " << desc.frame_pos << std::endl;
+        std::cout << "  frame_size : " << desc.frame_size << std::endl;
+        std::cout << std::endl;
+      }
+
+      //std::cout << "images/" + resname << "   " << orig_image_file.substr(0, orig_image_file.size()-4) << std::endl;
+
+      // FIXME: doesn't handle sprites that are default, but in a different path
+      if (!is_default_sprite(desc) ||
+          ("images/" + resname) != orig_image_file.substr(0, orig_image_file.size()-4))
       {
         System::create_dir(System::dirname(outfile));
 
+        std::cout << "Writing: " << outfile << std::endl;
         std::ofstream out(outfile);
         if (!out)
         {
