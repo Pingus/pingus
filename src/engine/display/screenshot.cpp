@@ -48,7 +48,7 @@ Screenshot::save(SDL_Surface* surface, const std::string& filename)
   if(surface->flags & SDL_OPENGL){
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
     glReadPixels(0, 0, surface->w, surface->h, GL_RGB, GL_UNSIGNED_BYTE, buffer);
-    save_png(filename, buffer, surface->w, surface->h);
+    save_png(filename, buffer, surface->w, surface->h, true);
   } else
 #endif
   {
@@ -137,7 +137,7 @@ Screenshot::save_ppm(const std::string& filename, uint8_t* buffer, int width, in
 }
 
 void
-Screenshot::save_png(const std::string& filename, uint8_t* buffer, int width, int height)
+Screenshot::save_png(const std::string& filename, uint8_t* buffer, int width, int height, bool flipvertically)
 {
   FILE* fp;
   png_structp png_ptr;
@@ -183,9 +183,16 @@ Screenshot::save_png(const std::string& filename, uint8_t* buffer, int width, in
 
   png_write_info(png_ptr, info_ptr);
 
-  for (int i = 0; i < height; ++i)
-  {
-    png_write_row(png_ptr, buffer + i * width * 3);
+  if (flipvertically){
+    for (int i = height-1; i >= 0; --i)
+    {
+      png_write_row(png_ptr, buffer + i * width * 3);
+    }
+  } else {
+    for (int i = 0; i < height; ++i)
+    {
+      png_write_row(png_ptr, buffer + i * width * 3);
+    }
   }
 
   png_write_end(png_ptr, info_ptr);
