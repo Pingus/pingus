@@ -76,15 +76,19 @@ System::opendir(const std::string& pathname, const std::string& pattern)
       if (fnmatch(pattern.c_str(), de->d_name, FNM_PATHNAME) == 0)
       {
         struct stat buf;
-        stat ((pathname + "/" + de->d_name).c_str (), &buf);
-
-        if (S_ISDIR(buf.st_mode))
+        stat((pathname + "/" + de->d_name).c_str (), &buf);
+        
+        if (strcmp(de->d_name, "..") != 0 &&
+            strcmp(de->d_name, ".") != 0)
         {
-          dir_list.push_back(DirectoryEntry(de->d_name, DE_DIRECTORY));
-        }
-        else
-        {
-          dir_list.push_back(DirectoryEntry(de->d_name, DE_FILE));
+          if (S_ISDIR(buf.st_mode))
+          {
+            dir_list.push_back(DirectoryEntry(de->d_name, DE_DIRECTORY));
+          }
+          else
+          {
+            dir_list.push_back(DirectoryEntry(de->d_name, DE_FILE));
+          }
         }
       }
     }
@@ -105,13 +109,17 @@ System::opendir(const std::string& pathname, const std::string& pattern)
   {
     do
     {
-      if (coFindData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+      if (strcmp(coFindData.cFileName, "..") != 0 &&
+          strcmp(coFindData.cFileName, ".") != 0)
       {
-        dir_list.push_back(DirectoryEntry(coFindData.cFileName, System::DE_DIRECTORY));
-      }
-      else
-      {
-        dir_list.push_back(DirectoryEntry(coFindData.cFileName, System::DE_FILE));
+        if (coFindData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+        {
+          dir_list.push_back(DirectoryEntry(coFindData.cFileName, System::DE_DIRECTORY));
+        }
+        else
+        {
+          dir_list.push_back(DirectoryEntry(coFindData.cFileName, System::DE_FILE));
+        }
       }
     }
     while (FindNextFile(hFind,&coFindData));
@@ -121,6 +129,26 @@ System::opendir(const std::string& pathname, const std::string& pattern)
 #endif
 
   return dir_list;
+}
+
+std::vector<std::string>
+System::opendir_recursive(const std::string& pathname)
+{
+  std::vector<std::string> lst;
+  Directory dir = opendir(pathname);
+  for(auto it = dir.begin(); it != dir.end(); ++it)
+  {
+    if (it->type == DE_DIRECTORY)
+    {
+      std::vector<std::string> subdir = opendir_recursive(pathname + "/" + it->name);
+      lst.insert(lst.end(), subdir.begin(), subdir.end());
+    }
+    else if (it->type == DE_FILE)
+    {
+      lst.push_back(pathname + "/" + it->name);
+    }
+  }
+  return lst;
 }
 
 // Returns the basic filename without the path

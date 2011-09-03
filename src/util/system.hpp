@@ -48,9 +48,11 @@ public:
   typedef std::vector<DirectoryEntry> Directory;
   typedef Directory::iterator DirectoryIter;
 
-  ///
+  /** Returns the content of the given directory, filtered by applying
+      pattern. "." and ".." are removed from the output. */
   static Directory opendir(const std::string& pathname, const std::string& pattern = "*");
-
+  static std::vector<std::string> opendir_recursive(const std::string& pathname);
+    
   /** Check if a file is avaiblable (no checking for permissens is currently performed)
       @param filename The name of the file
       @return True, if the file exist, false otherwise */
