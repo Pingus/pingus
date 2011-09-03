@@ -334,11 +334,7 @@ void
 SDLFramebuffer::draw_rect(const Rect& rect_, const Color& color)
 {
   Rect rect = rect_;
-  if (!rect.is_normal())
-  {
-    std::cout << "SDLFramebuffer::draw_rect: unnormal rect supplied" << std::endl;
-    rect.normalize();
-  }  
+  rect.normalize();
 
   draw_line(Vector2i(rect.left,    rect.top),      Vector2i(rect.right-1, rect.top),      color);
   draw_line(Vector2i(rect.left,    rect.bottom-1), Vector2i(rect.right-1, rect.bottom-1), color);
