@@ -1,0 +1,6 @@
+(pingus-sprite 
+  (image "smasher.png")
+  (speed 100)
+  (loop #t)
+  (array 6 1)
+  (size 282 189))

@@ -1,0 +1,6 @@
+(pingus-sprite 
+  (image "smoke2.png")
+  (speed 100)
+  (loop #t)
+  (array 8 1)
+  (size 32 32))

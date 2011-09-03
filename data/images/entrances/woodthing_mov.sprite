@@ -1,0 +1,6 @@
+(pingus-sprite 
+  (image "woodthing_mov.png")
+  (speed 100)
+  (loop #t)
+  (array 17 1)
+  (size 105 17))
