@@ -54,6 +54,42 @@ System::DirectoryEntry::DirectoryEntry(const std::string& n, FileType t)
 {
 }
 
+std::string
+System::cut_file_extension(const std::string& filename)
+{
+  for(int i = filename.size()-1; i >= 0; --i)
+  {
+    if (filename[i] == '.')
+    {
+      return filename.substr(0, i);
+    }
+    else if (filename[i] == '/')
+    {
+      return filename;
+    }
+  }
+
+  return filename;
+}
+
+std::string
+System::get_file_extension(const std::string& filename)
+{
+  for(int i = filename.size()-1; i >= 0; --i)
+  {
+    if (filename[i] == '.')
+    {
+      return filename.substr(i+1);
+    }
+    else if (filename[i] == '/')
+    {
+      return std::string();
+    }
+  }
+
+  return std::string();
+}
+
 System::Directory
 System::opendir(const std::string& pathname, const std::string& pattern)
 {

@@ -53,6 +53,9 @@ public:
   static Directory opendir(const std::string& pathname, const std::string& pattern = "*");
   static std::vector<std::string> opendir_recursive(const std::string& pathname);
     
+  static std::string get_file_extension(const std::string& filename);
+  static std::string cut_file_extension(const std::string& filename);
+  
   /** Check if a file is avaiblable (no checking for permissens is currently performed)
       @param filename The name of the file
       @return True, if the file exist, false otherwise */
