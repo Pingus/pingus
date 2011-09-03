@@ -21,7 +21,7 @@ bool is_default_sprite(const SpriteDescription& desc)
 
 int main(int argc, char** argv)
 {
-  g_path_manager.set_base_path("data/");
+  g_path_manager.set_path("data/");
   Resource::init(true);
 
   {  // print SpriteDescription

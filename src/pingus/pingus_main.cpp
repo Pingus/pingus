@@ -522,7 +522,7 @@ PingusMain::init_path_finder()
 
   if (cmd_options.datadir.is_set())
   {
-    g_path_manager.set_base_path(cmd_options.datadir.get());
+    g_path_manager.set_path(cmd_options.datadir.get());
   }
   else
   { // do magic to guess the datadir
@@ -537,22 +537,13 @@ PingusMain::init_path_finder()
     CFRelease(ref);
     path_manager.add_path("data");
 #else
-    g_path_manager.add_path("data"); // assume game is run from source dir
+    g_path_manager.set_path("data"); // assume game is run from source dir
 #endif
-
-    if (!g_path_manager.find_path("data/core.res"))
-    {
-      std::cout << "Error: Couldn't find 'data/core.res' use the --datadir DIR option." << std::endl;
-      exit(EXIT_FAILURE);
-    }
   }
 
   // Language is automatically picked from env variable
   //dictionary_manager.set_language(tinygettext::Language::from_env("it_IT.utf8")); // maybe overwritten by file ~/.pingus/config
   dictionary_manager.add_directory(g_path_manager.complete("po/"));
-
-  if (globals::maintainer_mode)
-    std::cout << "BasePath: " << g_path_manager.get_base_path () << std::endl;
 }
 
 void
@@ -565,7 +556,7 @@ PingusMain::print_greeting_message()
     std::cout.put('=');
   std::cout << std::endl;
 
-  std::cout << "data path:               " << g_path_manager.get_base_path() << std::endl;
+  std::cout << "datadir:                 " << g_path_manager.get_path() << std::endl;
   std::cout << "language:                " 
             << dictionary_manager.get_language().get_name()
             << " ("

@@ -23,36 +23,25 @@
 class PathManager
 {
 private:
-  std::list<std::string> path_list;
-  typedef std::list<std::string>::const_iterator PathIter;
-
-  bool path_found;
   std::string base_path;
 
 public:
-  PathManager ();
-  ~PathManager ();
-
-  /** Search for a path which contains the file 'file' */
-  bool find_path (const std::string& file);
+  PathManager();
+  ~PathManager();
 
   /** Set the path directly without using find_path/add_path
       Must include trailing slash */
-  void set_path (const std::string& path);
+  void set_path(const std::string& path);
 
-  /** Add a path to the search list */
-  void add_path (const std::string& path);
-
-  std::string get_base_path () { return base_path; }
-  void set_base_path (const std::string& d) { base_path = d; }
+  std::string get_path() const { return base_path; }
 
   /** Complete a releative path to the absolute path, the returned
       path contains a trailing slash */
-  std::string complete (const std::string& relative_path);
+  std::string complete(const std::string& relative_path);
 
 private:
-  PathManager (const PathManager&);
-  PathManager& operator= (const PathManager&);
+  PathManager(const PathManager&);
+  PathManager& operator=(const PathManager&);
 };
 
 extern PathManager g_path_manager;

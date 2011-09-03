@@ -55,7 +55,7 @@ int main(int argc, char** argv)
   }
   else
   {
-    g_path_manager.set_base_path("data/");
+    g_path_manager.set_path("data/");
     Resource::init();
     PingusLevel plf(files[0]);
 
