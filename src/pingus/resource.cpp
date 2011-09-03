@@ -23,31 +23,34 @@
 ResourceManager Resource::resmgr;
 
 void
-Resource::init()
+Resource::init(bool load_obsolete)
 {
-  resmgr.add_resources(g_path_manager.complete("data/core.res"));
-  resmgr.add_resources(g_path_manager.complete("data/entrances.res"));
-  resmgr.add_resources(g_path_manager.complete("data/exits.res"));
-  resmgr.add_resources(g_path_manager.complete("data/game.res"));
-  resmgr.add_resources(g_path_manager.complete("data/special.res"));
-  resmgr.add_resources(g_path_manager.complete("data/groundpieces-bridge.res"));
-  resmgr.add_resources(g_path_manager.complete("data/groundpieces-ground.res"));
-  resmgr.add_resources(g_path_manager.complete("data/groundpieces-remove.res"));
-  resmgr.add_resources(g_path_manager.complete("data/groundpieces-solid.res"));
-  resmgr.add_resources(g_path_manager.complete("data/groundpieces-transparent.res"));
-  resmgr.add_resources(g_path_manager.complete("data/hotspots.res"));
-  resmgr.add_resources(g_path_manager.complete("data/liquids.res"));
-  resmgr.add_resources(g_path_manager.complete("data/pingus-player0.res"));
-  resmgr.add_resources(g_path_manager.complete("data/pingus-player1.res"));
-  resmgr.add_resources(g_path_manager.complete("data/pingus-player2.res"));
-  resmgr.add_resources(g_path_manager.complete("data/pingus-player3.res"));
-  resmgr.add_resources(g_path_manager.complete("data/pingus-common.res"));
-  resmgr.add_resources(g_path_manager.complete("data/particles.res"));
-  resmgr.add_resources(g_path_manager.complete("data/story.res"));
-  resmgr.add_resources(g_path_manager.complete("data/textures.res"));
-  resmgr.add_resources(g_path_manager.complete("data/traps.res"));
-  resmgr.add_resources(g_path_manager.complete("data/worldmaps.res"));
-  resmgr.add_resources(g_path_manager.complete("data/worldobjs.res"));
+  if (load_obsolete)
+  {
+    resmgr.add_resources(g_path_manager.complete("data/core.res"));
+    resmgr.add_resources(g_path_manager.complete("data/entrances.res"));
+    resmgr.add_resources(g_path_manager.complete("data/exits.res"));
+    resmgr.add_resources(g_path_manager.complete("data/game.res"));
+    resmgr.add_resources(g_path_manager.complete("data/special.res"));
+    resmgr.add_resources(g_path_manager.complete("data/groundpieces-bridge.res"));
+    resmgr.add_resources(g_path_manager.complete("data/groundpieces-ground.res"));
+    resmgr.add_resources(g_path_manager.complete("data/groundpieces-remove.res"));
+    resmgr.add_resources(g_path_manager.complete("data/groundpieces-solid.res"));
+    resmgr.add_resources(g_path_manager.complete("data/groundpieces-transparent.res"));
+    resmgr.add_resources(g_path_manager.complete("data/hotspots.res"));
+    resmgr.add_resources(g_path_manager.complete("data/liquids.res"));
+    resmgr.add_resources(g_path_manager.complete("data/pingus-player0.res"));
+    resmgr.add_resources(g_path_manager.complete("data/pingus-player1.res"));
+    resmgr.add_resources(g_path_manager.complete("data/pingus-player2.res"));
+    resmgr.add_resources(g_path_manager.complete("data/pingus-player3.res"));
+    resmgr.add_resources(g_path_manager.complete("data/pingus-common.res"));
+    resmgr.add_resources(g_path_manager.complete("data/particles.res"));
+    resmgr.add_resources(g_path_manager.complete("data/story.res"));
+    resmgr.add_resources(g_path_manager.complete("data/textures.res"));
+    resmgr.add_resources(g_path_manager.complete("data/traps.res"));
+    resmgr.add_resources(g_path_manager.complete("data/worldmaps.res"));
+    resmgr.add_resources(g_path_manager.complete("data/worldobjs.res"));
+  }
   resmgr.add_resources(g_path_manager.complete("data/alias.res"));
 }
 

@@ -29,7 +29,7 @@ public:
   static ResourceManager resmgr;
 
 public:
-  static void init();
+  static void init(bool load_obsolete = false);
   static void deinit();
 
   /** Loads a 48x48 size thumbnail of a sprite */
