@@ -84,33 +84,34 @@ int main(int argc, char** argv)
         {
           SExprFileWriter writer(out);
           writer.begin_section("pingus-sprite");
-          writer.write_string   ("image-file",  image_file);
+          writer.write_string("image", image_file);
           if (desc.offset != Vector2i(0,0))
-            writer.write_vector2i ("offset", desc.offset);
+            writer.write_vector2i("offset", desc.offset);
 
           if (desc.origin != origin_top_left)
-          writer.write_enum     ("origin", desc.origin, origin2string);
+            writer.write_enum("origin", desc.origin, origin2string);
 
           if (desc.frame_pos != Vector2i(0, 0))
-            writer.write_vector2i ("image-pos",   desc.frame_pos);
+            writer.write_vector2i("position",   desc.frame_pos);
 
           if (desc.array != Size(1, 1))
           {
             writer.write_int ("speed",  desc.speed);
             writer.write_bool("loop",   desc.loop);
-            writer.write_size("image-array", desc.array);
+            writer.write_size("array", desc.array);
           }
 
           if (desc.frame_size != Size(-1, -1)) 
-            writer.write_size     ("image-size",  desc.frame_size);
+            writer.write_size("size",  desc.frame_size);
 
           writer.end_section();
-          out << "\n\n;; EOF ;;" << std::endl;
+          out << std::endl;
         }
       }
     }
   }
 
+  if (false)
   { // print aliases
     const ResourceManager::Aliases& aliases = Resource::resmgr.get_aliases();
     for(ResourceManager::Aliases::const_iterator it = aliases.begin(); it != aliases.end(); ++it)
