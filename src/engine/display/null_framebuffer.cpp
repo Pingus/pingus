@@ -16,7 +16,7 @@
 
 #include "engine/display/null_framebuffer.hpp"
 
-#include <iostream>
+#include "util/log.hpp"
 
 class NullFramebufferSurfaceImpl : public FramebufferSurfaceImpl
 {
@@ -44,7 +44,7 @@ NullFramebuffer::~NullFramebuffer()
 FramebufferSurface
 NullFramebuffer::create_surface(const Surface& surface)
 {
-  std::cout << "Creating surface: " << surface.get_size() << std::endl;
+  log_info("creating surface: " << surface.get_size());
   return FramebufferSurface(new NullFramebufferSurfaceImpl(surface.get_size()));
 }
 
@@ -52,7 +52,7 @@ void
 NullFramebuffer::set_video_mode(const Size& size_, bool fullscreen)
 {
   size = size_;
-  std::cout << "Size: " << size.width << "x" << size.height << " fullscreen: " << fullscreen << std::endl;
+  log_info("size: " << size.width << "x" << size.height << " fullscreen: " << fullscreen);
 }
 
 void

@@ -75,7 +75,7 @@ IceBlock::update()
 
   if (last_contact && last_contact + 1000 > world->get_time())
   {
-    //std::cout << "IceBlock: Catched Pingu: " << thickness  << std::endl;
+    //log_error("IceBlock: Catched Pingu: " << thickness);
     thickness -= 0.01f;
 
     if (thickness < 0)

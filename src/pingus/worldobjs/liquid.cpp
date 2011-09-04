@@ -29,13 +29,6 @@ Liquid::Liquid(const FileReader& reader) :
   width(0),
   speed()
 {
-  /*
-    if (XMLhelper::get_prop(cur, "use-old-width-handling", old_width_handling))
-    {
-    if (old_width_handling)
-    std::cout << "XMLPLF: Using Old Width Handling: " << std::endl;
-    }
-  */
   ResDescriptor desc;
 
   reader.read_vector("position", pos);

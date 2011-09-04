@@ -16,13 +16,12 @@
 
 #include "pingus/worldobjs/entrance.hpp"
 
-#include <iostream>
-
 #include "engine/display/scene_context.hpp"
 #include "pingus/components/smallmap.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"
+#include "util/log.hpp"
 
 namespace WorldObjs {
 
@@ -56,7 +55,7 @@ Entrance::Entrance(const FileReader& reader) :
     direction = MISC;
   else
   {
-    std::cout << "EntranceData: Unknown direction: '" << direction_str << "'" << std::endl;
+    log_error("unknown direction: '" << direction_str << "'");
     direction = MISC;
   }
 
@@ -120,7 +119,7 @@ Entrance::create_pingu ()
         break;
 
       default:
-        std::cout << "Entrance:: Warning direction is wrong: " << direction << std::endl;
+        log_error("warning direction is wrong: " << direction);
         d.right();
         pingu->set_direction(d);
         break;
@@ -131,7 +130,7 @@ Entrance::create_pingu ()
   }
   else
   {
-    //std::cout << "Entrance: pingu couldn't get created" << std::endl;
+    //log_error("entrance: pingu couldn't get created");
   }
 }
 
@@ -150,7 +149,7 @@ Entrance::draw (SceneContext& gc)
   if (!surface)
   {
     // Entrances have only a surface for historical reasons
-    //std::cout << "Entrance::draw (SceneContext& gc): entrance without a surface?!" << std::endl;
+    // log_error("entrance without a surface?!");
     return;
   }
 

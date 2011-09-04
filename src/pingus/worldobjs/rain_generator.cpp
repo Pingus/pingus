@@ -16,12 +16,11 @@
 
 #include "pingus/worldobjs/rain_generator.hpp"
 
-#include <iostream>
-
 #include "engine/display/scene_context.hpp"
 #include "engine/sound/sound.hpp"
 #include "pingus/particles/rain_particle_holder.hpp"
 #include "pingus/world.hpp"
+#include "util/log.hpp"
 
 namespace WorldObjs {
 
@@ -56,7 +55,7 @@ RainGenerator::update()
 {
   if (waiter_count < 0.0f && rand () % 150 == 0)
   {
-    std::cout << "Doing thunder" << std::endl;
+    log_info("Doing thunder");
     do_thunder = true;
     thunder_count = 1.0f;
     waiter_count = 1.0f;

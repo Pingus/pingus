@@ -16,13 +16,12 @@
 
 #include "pingus/worldobjs/teleporter.hpp"
 
-#include <iostream>
-
 #include "engine/display/scene_context.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"
 #include "pingus/worldobjs/teleporter_target.hpp"
+#include "util/log.hpp"
 
 namespace WorldObjs {
 
@@ -53,14 +52,14 @@ Teleporter::on_startup()
 {
   if (target_id.empty())
   {
-    std::cout << "Teleporter: target-id is empty" << std::endl;
+    log_error("target-id is empty");
   }
   else
   {
     // FIXME: find the target
     target = dynamic_cast<TeleporterTarget*>(world->get_worldobj(target_id));
     if (!target)
-      std::cout << "Teleporter: Couldn't find matching target-id or object isn't a TeleporterTarget" << std::endl;
+      log_error("Teleporter: Couldn't find matching target-id or object isn't a TeleporterTarget");
   }
 }
 

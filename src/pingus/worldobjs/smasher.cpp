@@ -16,14 +16,13 @@
 
 #include "pingus/worldobjs/smasher.hpp"
 
-#include <iostream>
-
 #include "engine/display/scene_context.hpp"
 #include "engine/sound/sound.hpp"
 #include "pingus/particles/smoke_particle_holder.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"
+#include "util/log.hpp"
 
 namespace WorldObjs {
 
@@ -102,7 +101,7 @@ Smasher::update ()
 void
 Smasher::on_startup ()
 {
-  std::cout << "Drawing colmap entry" << std::endl;
+  log_info("Drawing colmap entry");
   CollisionMask buf("traps/smasher_cmap");
   world->put(buf, 
              static_cast<int>(pos.x),
