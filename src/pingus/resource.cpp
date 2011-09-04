@@ -18,7 +18,10 @@
 
 #include "engine/display/font_description.hpp"
 #include "engine/display/sprite_description.hpp"
+#include "engine/display/sprite_description.hpp"
 #include "pingus/path_manager.hpp"
+#include "util/log.hpp"
+#include "util/pathname.hpp"
 
 ResourceManager Resource::resmgr;
 
@@ -82,6 +85,7 @@ Resource::load_surface(const ResDescriptor& desc_)
   }
   else
   {
+    log_error("failed to load surface: " << desc_.res_name);
     return Surface(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
   }
 }
