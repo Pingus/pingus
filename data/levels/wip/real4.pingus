@@ -179,37 +179,37 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Entrances/sun")
+        (image "groundpieces/transparent/misc/sun")
         (modifier "ROT0"))
       (position 296 442 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Entrances/sun")
+        (image "groundpieces/transparent/misc/sun")
         (modifier "ROT0"))
       (position 341 465 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Entrances/sun")
+        (image "groundpieces/transparent/misc/sun")
         (modifier "ROT0"))
       (position 336 460 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Entrances/sun")
+        (image "groundpieces/transparent/misc/sun")
         (modifier "ROT0"))
       (position 395 435 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Entrances/sun")
+        (image "groundpieces/transparent/misc/sun")
         (modifier "ROT0"))
       (position 431 227 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Entrances/sun")
+        (image "groundpieces/transparent/misc/sun")
         (modifier "ROT0"))
       (position 463 129 0))
     (entrance 

@@ -36,37 +36,37 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece6")
+        (image "groundpieces/ground/misc/piece6")
         (modifier "ROT0"))
       (position 1757 281 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece6")
+        (image "groundpieces/ground/misc/piece6")
         (modifier "ROT0"))
       (position 1766 144 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece6")
+        (image "groundpieces/ground/misc/piece6")
         (modifier "ROT0"))
       (position 1738 133 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece6")
+        (image "groundpieces/ground/misc/piece6")
         (modifier "ROT0"))
       (position 1744 94 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece6")
+        (image "groundpieces/ground/misc/piece6")
         (modifier "ROT0"))
       (position 1742 55 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece6")
+        (image "groundpieces/ground/misc/piece6")
         (modifier "ROT0"))
       (position 1743 20 0))
     (groundpiece 
@@ -540,19 +540,19 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece5")
+        (image "groundpieces/ground/misc/piece5")
         (modifier "ROT0"))
       (position 1219 421 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece6")
+        (image "groundpieces/ground/misc/piece6")
         (modifier "ROT0"))
       (position 1331 479 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece6")
+        (image "groundpieces/ground/misc/piece6")
         (modifier "ROT0"))
       (position 1339 486 0))
     (groundpiece 
@@ -588,25 +588,25 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece5")
+        (image "groundpieces/ground/misc/piece5")
         (modifier "ROT0"))
       (position 1324 421 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece5")
+        (image "groundpieces/ground/misc/piece5")
         (modifier "ROT0"))
       (position 1699 446 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece5")
+        (image "groundpieces/ground/misc/piece5")
         (modifier "ROT0"))
       (position 1359 423 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece5")
+        (image "groundpieces/ground/misc/piece5")
         (modifier "ROT0"))
       (position 1268 423 0))
     (groundpiece 
@@ -618,37 +618,37 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece4")
+        (image "groundpieces/ground/misc/piece4")
         (modifier "ROT0"))
       (position 1685 71 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece4")
+        (image "groundpieces/ground/misc/piece4")
         (modifier "ROT0"))
       (position 1721 376 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece4")
+        (image "groundpieces/ground/misc/piece4")
         (modifier "ROT0"))
       (position 1690 13 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece4")
+        (image "groundpieces/ground/misc/piece4")
         (modifier "ROT0"))
       (position 1741 290 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece4")
+        (image "groundpieces/ground/misc/piece4")
         (modifier "ROT0"))
       (position 1688 397 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece4")
+        (image "groundpieces/ground/misc/piece4")
         (modifier "ROT0"))
       (position 1357 30 0))
     (groundpiece 

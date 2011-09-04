@@ -23,7 +23,7 @@
   (objects 
     (surface-background 
       (surface 
-        (image "textures.dat/Textures/rocktile")
+        (image "textures/rocktile")
         (modifier "ROT0"))
       (color 0 0 0 0)
       (scroll-x 0.0)
@@ -1713,19 +1713,19 @@
     (groundpiece 
       (type "remove")
       (surface 
-        (image "groundpieces/remove/column1.png")
+        (image "groundpieces/remove/misc/column1")
         (modifier "ROT0"))
       (position 546 536 0))
     (groundpiece 
       (type "remove")
       (surface 
-        (image "groundpieces/remove/column1.png")
+        (image "groundpieces/remove/misc/column1")
         (modifier "ROT0"))
       (position 547 647 0))
     (groundpiece 
       (type "remove")
       (surface 
-        (image "groundpieces/remove/column1.png")
+        (image "groundpieces/remove/misc/column1")
         (modifier "ROT0"))
       (position 546 747 0))))
 ;; EOF ;;

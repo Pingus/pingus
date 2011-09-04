@@ -307,79 +307,79 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/black")
+        (image "groundpieces/transparent/misc/black")
         (modifier "ROT0"))
       (position -99 245 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/black")
+        (image "groundpieces/transparent/misc/black")
         (modifier "ROT0"))
       (position 269 -68 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/black")
+        (image "groundpieces/transparent/misc/black")
         (modifier "ROT0"))
       (position 305 13 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/black")
+        (image "groundpieces/transparent/misc/black")
         (modifier "ROT0"))
       (position 311 132 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/black")
+        (image "groundpieces/transparent/misc/black")
         (modifier "ROT0"))
       (position 57 296 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/black")
+        (image "groundpieces/transparent/misc/black")
         (modifier "ROT0"))
       (position 277 225 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/black")
+        (image "groundpieces/transparent/misc/black")
         (modifier "ROT0"))
       (position 201 271 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/black")
+        (image "groundpieces/transparent/misc/black")
         (modifier "ROT0"))
       (position -128 150 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/black")
+        (image "groundpieces/transparent/misc/black")
         (modifier "ROT0"))
       (position -81 -106 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/black")
+        (image "groundpieces/transparent/misc/black")
         (modifier "ROT0"))
       (position -114 -60 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/black")
+        (image "groundpieces/transparent/misc/black")
         (modifier "ROT0"))
       (position -136 51 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/black")
+        (image "groundpieces/transparent/misc/black")
         (modifier "ROT0"))
       (position 58 -129 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/black")
+        (image "groundpieces/transparent/misc/black")
         (modifier "ROT0"))
       (position 196 -132 0))
     (entrance 

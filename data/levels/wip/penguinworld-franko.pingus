@@ -605,26 +605,26 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/PenguinWorld/Penguin")
+        (image "groundpieces/ground/penguinworld/penguin")
         (modifier "ROT0"))
       (position 1120 201 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/PenguinWorld/Penguin")
+        (image "groundpieces/ground/penguinworld/penguin")
         (modifier "ROT0"))
       (position 32 201 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/PenguinWorld/PenguinWorld")
+        (image "groundpieces/ground/penguinworld/penguinworld")
         (modifier "ROT0"))
       (position 350 320 0))
     (exit 
       (owner-id 0)
       (position 696 528 0)
       (surface 
-        (image "franko/PenguinWorld/PWExit")
+        (image "exits/pwexit")
         (modifier "ROT0"))
       (owner-id 0))
     (entrance 

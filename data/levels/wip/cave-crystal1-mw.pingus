@@ -587,7 +587,7 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Hotspots/crystal")
+        (image "hotspots/misc/crystal")
         (modifier "ROT0"))
       (position 243 765 0))
     (groundpiece 

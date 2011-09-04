@@ -1256,12 +1256,6 @@
  (alias (name "global/Hotspots/signposts/nogo")
         (link "hotspots/signposts/nogo"))
 
- (alias (name "global/Hotspots/signposts/e")
-        (link "hotspots/signposts/arrow_east"))
-
- (alias (name "global/Hotspots/signposts/w")
-        (link "hotspots/signposts/arrow_west"))
-
  (alias (name "global/Hotspots/engine")
         (link "hotspots/space/engine"))
 
@@ -1831,6 +1825,26 @@
 
  (alias (name "liquids/liquid/slime")
         (link "liquids/slime"))
+
+ ;; stuff used in older levels and missing for some reason
+ (alias (name "global/Hotspots/down_arrow") 
+        (link "groundpieces/ground/signposts/arrow_down"))
+
+ (alias (name "global/Hotspots/left_arrow") 
+        (link "groundpieces/ground/signposts/arrow_left"))
+
+ (alias (name "global/Hotspots/right_arrow") 
+        (link "groundpieces/ground/signposts/arrow_right"))
+
+ (alias (name "global/Hotspots/up_arrow")    
+        (link "groundpieces/ground/signposts/arrow_up"))
+
+ (alias (name "global/Hotspots/signposts/e")
+        (link "hotspots/signposts/arrow_east"))
+
+ (alias (name "global/Hotspots/signposts/w")
+        (link "hotspots/signposts/arrow_west"))
+
  )
 
 ;; EOF ;;

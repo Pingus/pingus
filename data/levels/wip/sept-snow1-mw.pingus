@@ -212,13 +212,13 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece5")
+        (image "groundpieces/ground/misc/piece5")
         (modifier "ROT0"))
       (position 212 1072 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece5")
+        (image "groundpieces/ground/misc/piece5")
         (modifier "ROT0"))
       (position 96 1139 0))
     (groundpiece 
@@ -230,25 +230,25 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece5")
+        (image "groundpieces/ground/misc/piece5")
         (modifier "ROT0"))
       (position 77 926 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece5")
+        (image "groundpieces/ground/misc/piece5")
         (modifier "ROT0"))
       (position 108 927 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece4")
+        (image "groundpieces/ground/misc/piece4")
         (modifier "ROT0"))
       (position 195 1028 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece4")
+        (image "groundpieces/ground/misc/piece4")
         (modifier "ROT0"))
       (position 171 1017 0))
     (groundpiece 
@@ -410,19 +410,19 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece6")
+        (image "groundpieces/ground/misc/piece6")
         (modifier "ROT0"))
       (position 176 1337 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece6")
+        (image "groundpieces/ground/misc/piece6")
         (modifier "ROT0"))
       (position 94 1334 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/GroundPieces/Misc/piece6")
+        (image "groundpieces/ground/misc/piece6")
         (modifier "ROT0"))
       (position 155 1289 0))
     (groundpiece 

@@ -23,7 +23,7 @@
   (objects 
     (surface-background 
       (surface 
-        (image "textures.dat/Textures/rocktile")
+        (image "textures/rocktile")
         (modifier "ROT0"))
       (color 0 0 0 0)
       (scroll-x 0.0)

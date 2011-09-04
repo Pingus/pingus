@@ -975,7 +975,7 @@
     (groundpiece 
       (type "solid")
       (surface 
-        (image "global/GroundPieces/tree")
+        (image "hotspots/misc/tree")
         (modifier "ROT0"))
       (position 631 133 0))
     (groundpiece 
