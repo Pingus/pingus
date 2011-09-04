@@ -89,7 +89,11 @@ World::init_worldobjs(const PingusLevel& plf)
        i != objects.end ();
        ++i)
   {
-    add_object(WorldObjFactory::instance()->create(*i));
+    WorldObj* obj = WorldObjFactory::instance()->create(*i);
+    if (obj)
+    {
+      add_object(obj);
+    }
   }
 
   world_obj.push_back(pingus);

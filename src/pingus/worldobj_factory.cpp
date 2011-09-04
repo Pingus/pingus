@@ -40,6 +40,7 @@
 #include "pingus/worldobjs/teleporter_target.hpp"
 #include "pingus/worldobjs/thunderstorm_background.hpp"
 #include "pingus/worldobjs/woodthing.hpp"
+#include "util/log.hpp"
 
 using namespace WorldObjs;
 
@@ -151,11 +152,14 @@ WorldObjFactory::create(const FileReader& reader)
   std::map<std::string, WorldObjAbstractFactory*>::iterator it = factories.find(reader.get_name());
 
   if (it == factories.end())
-    throw std::runtime_error("WorldObjFactory: Invalid id: '" + reader.get_name() + "'");
+  {
+    log_error("invalid id: '" << reader.get_name() << "'");
+    return 0;
+  }
   else
+  {
     return it->second->create(reader);
-
-  return 0; // never reached
+  }
 }
 
 void
