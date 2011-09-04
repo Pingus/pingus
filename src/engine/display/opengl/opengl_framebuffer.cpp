@@ -104,7 +104,7 @@ OpenGLFramebuffer::push_cliprect(const Rect& rect)
   }
 
   glScissor(cliprect_stack.back().left,
-            cliprect_stack.back().top, 
+            screen->h - cliprect_stack.back().bottom, 
             cliprect_stack.back().get_width(), 
             cliprect_stack.back().get_height());
 }
