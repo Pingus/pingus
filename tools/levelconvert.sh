@@ -8,31 +8,34 @@ function errmsg() {
 
 trap errmsg ERR
 
-if [ ! \( -d "trunk/pingus" \) ]; then
-    echo "You must call this script from the top level of the SVN repository"
+if [ ! \( -d "data/levels" \) ]; then
+    echo "You must call this script from the top level Pingus directory"
     exit 1
 fi
 
 for IN in "$@"; do
     PREFIX=$(echo $IN | sed "s/\(.*\)data\/levels\/.*/\1/")
     TMP=$(tempfile)
-    OUT="trunk/pingus/${IN##${PREFIX}}"
+    OUT="${IN##${PREFIX}}"
+    OUT="${OUT%%.xml}"
+    OUT="${OUT%%.plf}"    
+    OUT="${OUT}.pingus"
     # echo "Prefix: $PREFIX"
     echo "IN:     $IN"
     echo "OUT:    $OUT"
     if true; then
         xsltproc \
             -o "$TMP" \
-            trunk/pingus/contrib/pingusv1tov2.xsl \
+            tools/pingusv1tov2.xsl \
             "$IN"
-        trunk/pingus/contrib/xml2sexpr.rb "$TMP" "$IN" > "${OUT}"        
+        tools/xml2sexpr.rb "$TMP" "$IN" > "${OUT}"        
     else
         xalan \
             -indent 0 \
-            -xsl trunk/pingus/contrib/pingusv1tov2.xsl \
+            -xsl tools/pingusv1tov2.xsl \
             -in "$IN" \
             -out "$TMP"
-        trunk/pingus/contrib/xml2sexpr.rb "$TMP" "$IN" > "${OUT}"
+        tools/xml2sexpr.rb "$TMP" "$IN" > "${OUT}"
     fi
     rm "$TMP"
     echo "Conversion ok"
