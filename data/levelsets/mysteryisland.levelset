@@ -1,0 +1,21 @@
+;; -*- scheme -*-
+(pingus-levelset
+ (title "Island of Mystery")
+ (description "Marooned on an Uncharted Isle [by Lachlan McCubbin]")
+ (image "levelsets/mysteryigsland")
+ (levels
+  (level (filename "mysteryisland/volcano1-grumbel"))
+  (level (filename "mysteryisland/multi 1 lac"))
+  (level (filename "mysteryisland/use the slide lac"))
+  (level (filename "mysteryisland/hall of illusion lac"))
+  (level (filename "mysteryisland/emperiment lac"))
+  (level (filename "mysteryisland/madscientist1 lac"))
+  (level (filename "mysteryisland/cave level lac"))
+  (level (filename "mysteryisland/revenge2 lac"))
+  (level (filename "mysteryisland/lavapit3"))
+  (level (filename "mysteryisland/snow2 lac"))
+  (level (filename "mysteryisland/Copy of rainy1 lac"))
+  (level (filename "mysteryisland/Theend lac"))
+ )
+)
+;; EOF ;;
