@@ -1845,6 +1845,14 @@
  (alias (name "global/Hotspots/signposts/w")
         (link "hotspots/signposts/arrow_west"))
 
+ (alias (name "hotspots/Signposts/arrow_east")
+        (link "hotspots/signposts/arrow_east"))
+
+ (alias (name "hotspots/Signposts/arrow_west")
+        (link "hotspots/signposts/arrow_west"))
+
+ (alias (name "hotspots/Signposts/arrow_south")
+        (link "hotspots/signposts/arrow_south"))
  )
 
 ;; EOF ;;
