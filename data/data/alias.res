@@ -1256,6 +1256,12 @@
  (alias (name "global/Hotspots/signposts/nogo")
         (link "hotspots/signposts/nogo"))
 
+ (alias (name "global/Hotspots/signposts/e")
+        (link "hotspots/signposts/arrow_east"))
+
+ (alias (name "global/Hotspots/signposts/w")
+        (link "hotspots/signposts/arrow_west"))
+
  (alias (name "global/Hotspots/engine")
         (link "hotspots/space/engine"))
 
