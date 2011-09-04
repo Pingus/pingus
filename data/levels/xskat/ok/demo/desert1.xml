@@ -1,0 +1,8 @@
+<pingus-demo>
+  <level>ok/desert1</level>
+  <events>
+  <pingu-action time="357" id="0" action="basher"/>
+  <pingu-action time="1152" id="0" action="bridger"/>
+  <pingu-action time="1917" id="0" action="bridger"/>
+  </events>
+</pingus-demo>

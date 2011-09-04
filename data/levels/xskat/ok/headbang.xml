@@ -1,0 +1,543 @@
+<?xml version="1.0"?>
+
+<pingus-level>
+  <global>
+    <levelname lang="en">Headbanger</levelname>
+    <description lang="en"></description>
+    <author></author>
+    <number-of-pingus>50</number-of-pingus>
+    <number-to-save>40</number-to-save>
+    <time>9000</time>
+    <width>800</width>
+    <height>480</height>
+    
+    <difficulty>70</difficulty>
+    <playable>1</playable>
+    <comment>the obvious solution is not the right one</comment>
+
+  </global>
+
+<background>
+  <surface><resource type="datafile">
+    <resource-datafile>textures</resource-datafile>
+  <resource-ident>Textures/darkjungle</resource-ident>
+  </resource></surface>
+  <alpha>0.3</alpha>
+  <red>0</red>
+  <green>0</green>
+  <blue>0</blue>
+  <scroll-x>0</scroll-x>
+  <scroll-y>0</scroll-y>
+  <para-x>0.5</para-x>
+  <para-y>0.5</para-y>
+  <stretch-x>0</stretch-x>
+  <stretch-y>0</stretch-y>
+</background>
+
+  <action-list>
+    <basher>5</basher>
+    <climber>5</climber>
+    <digger>5</digger>
+    <floater>5</floater>
+    <bridger>5</bridger>
+    <bomber>1</bomber>
+  </action-list>
+
+<entrance>
+  <position>
+    <x-pos>279</x-pos>
+    <y-pos>5</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>left</direction>
+  <release-rate>25</release-rate>
+</entrance>
+
+<exit>
+  <position>
+    <x-pos>699</x-pos>
+    <y-pos>101</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>exits</resource-datafile>
+  <resource-ident>Exits/stone</resource-ident>
+  </resource></surface>
+</exit>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>69</x-pos>
+    <y-pos>190</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>134</x-pos>
+    <y-pos>128</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>198</x-pos>
+    <y-pos>159</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>262</x-pos>
+    <y-pos>129</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>325</x-pos>
+    <y-pos>192</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>544</x-pos>
+    <y-pos>329</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>544</x-pos>
+    <y-pos>265</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>671</x-pos>
+    <y-pos>457</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>671</x-pos>
+    <y-pos>393</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>607</x-pos>
+    <y-pos>393</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>544</x-pos>
+    <y-pos>393</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>480</x-pos>
+    <y-pos>393</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>431</x-pos>
+    <y-pos>326</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>15</x-pos>
+    <y-pos>256</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>378</x-pos>
+    <y-pos>259</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/pillar2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>471</x-pos>
+    <y-pos>326</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/pillar2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>3</x-pos>
+    <y-pos>260</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/pillar2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>148</x-pos>
+    <y-pos>-2</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/pillar2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>110</x-pos>
+    <y-pos>254</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/pillar2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>422</x-pos>
+    <y-pos>259</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/pillar2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>312</x-pos>
+    <y-pos>255</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/pillar2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>52</x-pos>
+    <y-pos>190</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Desert/pillar2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>369</x-pos>
+    <y-pos>192</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Jungle/carabatree</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>50</x-pos>
+    <y-pos>151</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Jungle/carabatree</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>554</x-pos>
+    <y-pos>291</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/green1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>625</x-pos>
+    <y-pos>159</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Jungle/twist</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-13</x-pos>
+    <y-pos>376</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Jungle/twist</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>576</x-pos>
+    <y-pos>158</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/real19</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>70</x-pos>
+    <y-pos>-14</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/real19</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>385</x-pos>
+    <y-pos>10</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/real19</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>537</x-pos>
+    <y-pos>-19</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/real19</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>451</x-pos>
+    <y-pos>-42</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/real23</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>286</x-pos>
+    <y-pos>-39</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/real23</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>478</x-pos>
+    <y-pos>28</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/real23</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-57</x-pos>
+    <y-pos>28</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/real7</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-67</x-pos>
+    <y-pos>-77</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/real7</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>464</x-pos>
+    <y-pos>432</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Rock/real7</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>272</x-pos>
+    <y-pos>365</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate_small</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>471</x-pos>
+    <y-pos>170</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate_small</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>471</x-pos>
+    <y-pos>138</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>608</x-pos>
+    <y-pos>138</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>544</x-pos>
+    <y-pos>138</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>544</x-pos>
+    <y-pos>201</y-pos>
+    <z-pos>43</z-pos>
+  </position>
+</groundpiece>
+
+</pingus-level>
+

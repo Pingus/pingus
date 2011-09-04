@@ -1,0 +1,9 @@
+<pingus-demo>
+  <level>ok/crystal2</level>
+  <events>
+  <pingu-action time="702" id="0" action="blocker"/>
+  <pingu-action time="1545" id="1" action="blocker"/>
+  <pingu-action time="1880" id="2" action="blocker"/>
+  <armageddon time="3575"/>
+  </events>
+</pingus-demo>

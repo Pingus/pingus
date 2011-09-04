@@ -1,0 +1,6 @@
+<pingus-demo>
+  <level>ok/digger-tutorial-grumbel</level>
+  <events>
+  <pingu-action time="213" id="0" action="digger"/>
+  </events>
+</pingus-demo>
