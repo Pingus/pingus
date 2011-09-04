@@ -346,12 +346,8 @@ void
 SDLFramebuffer::fill_rect(const Rect& rect_, const Color& color)
 {
   Rect rect = rect_;
-  if (!rect.is_normal())
-  {
-    std::cout << "SDLFramebuffer::draw_rect: unnormal rect supplied" << std::endl;
-    rect.normalize();
-  }  
-
+  rect.normalize();
+    
   if (color.a == 255)
   {
     SDL_Rect srcrect;
