@@ -46,7 +46,7 @@ Screenshot::save(SDL_Surface* surface, const std::string& filename)
   uint8_t* buffer = new uint8_t[surface->w * surface->h * 3];
 #ifdef HAVE_OPENGL
   if(surface->flags & SDL_OPENGL){
-    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+    glPixelStorei(GL_PACK_ALIGNMENT, 1);
     glReadPixels(0, 0, surface->w, surface->h, GL_RGB, GL_UNSIGNED_BYTE, buffer);
     save_png(filename, buffer, surface->w, surface->h, true);
   } else
