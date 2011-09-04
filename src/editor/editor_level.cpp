@@ -54,7 +54,6 @@ EditorLevel::set_impl_defaults()
   impl->levelname   = "";
   impl->description = "";
   impl->author = "";
-  impl->comment = "";
   impl->music   = "";
 
   impl->ambient_light = Color(255,255,255);
@@ -151,7 +150,6 @@ bool EditorLevel::save_level(const std::string& filename)
   fw.write_int("difficulty", impl->difficulty);
   // FIXME: Allow user to decide if level is playable or not
   fw.write_int("playable", 1);
-  fw.write_string("comment", impl->comment);
   fw.write_string("music", impl->music);
         
   // Write the list of actions to the file
@@ -404,12 +402,6 @@ EditorLevel::get_difficulty() const
 }
 
 std::string
-EditorLevel::get_comment() const
-{
-  return impl->comment;
-}
-
-std::string
 EditorLevel::get_music() const
 {
   return impl->music;
@@ -431,12 +423,6 @@ void
 EditorLevel::set_difficulty(int d)
 {
   impl->difficulty = d;
-}
-
-void
-EditorLevel::set_comment(const std::string& str)
-{
-  impl->comment = str;
 }
 
 void

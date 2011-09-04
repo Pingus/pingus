@@ -44,7 +44,6 @@ public:
     time(),
     difficulty(),
     author(),
-    comment(),
     music("none"),
     objects()
   {
@@ -75,7 +74,6 @@ public:
   int difficulty;
   
   std::string author;
-  std::string comment;
   std::string music;
 
   std::vector<LevelObj*> objects;

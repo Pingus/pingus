@@ -77,12 +77,10 @@ public:
 
   int get_time() const;
   int get_difficulty() const;
-  std::string get_comment() const;
   std::string get_music() const;
 
   void set_time(int);
   void set_difficulty(int);
-  void set_comment(const std::string&);
   void set_music(const std::string&);
 
   /** Sorts the level according to the objects z-pos */

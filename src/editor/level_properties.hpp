@@ -42,7 +42,6 @@ private:
   Inputbox* width;
   Inputbox* height;
   Inputbox* difficulty;
-  Inputbox* comment;
   Inputbox* music;
 
 public:
@@ -65,7 +64,6 @@ public:
   void on_width_change(const std::string& str);
   void on_height_change(const std::string& str);
   void on_difficulty_change(const std::string& str);
-  void on_comment_change(const std::string& str);
   void on_music_change(const std::string& str);
 
   void update_layout();

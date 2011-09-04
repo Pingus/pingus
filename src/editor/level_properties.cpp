@@ -50,7 +50,6 @@ LevelProperties::LevelProperties(EditorScreen* editor_, const Rect& rect_) :
   width(),
   height(),
   difficulty(),
-  comment(),
   music()
 {
   int w = rect.get_width() - 120;
@@ -77,7 +76,6 @@ LevelProperties::LevelProperties(EditorScreen* editor_, const Rect& rect_) :
   add(new Label   (Rect(Vector2i( 10, y+110), Size( 80, 20)), "Difficulty:"));
   add(difficulty = new Inputbox(Rect(Vector2i(110, y+110), Size(  w, 20))));
   add(new Label   (Rect(Vector2i( 10, y+132), Size( 80, 20)), "Comment:"));
-  add(comment = new Inputbox(Rect(Vector2i(110, y+132), Size(  w, 20))));
   add(new Label   (Rect(Vector2i( 10, y+154), Size( 80, 20)), "Music:"));
   add(music = new Inputbox(Rect(Vector2i(110, y+154), Size(  w, 20))));
 
@@ -92,7 +90,6 @@ LevelProperties::LevelProperties(EditorScreen* editor_, const Rect& rect_) :
   height->on_change.connect(std::bind(&LevelProperties::on_height_change, this, std::placeholders::_1));
   time->on_change.connect(std::bind(&LevelProperties::on_time_change, this, std::placeholders::_1));
   difficulty->on_change.connect(std::bind(&LevelProperties::on_difficulty_change, this, std::placeholders::_1));
-  comment->on_change.connect(std::bind(&LevelProperties::on_comment_change, this, std::placeholders::_1));
   music->on_change.connect(std::bind(&LevelProperties::on_music_change, this, std::placeholders::_1));
 }
 
@@ -126,7 +123,6 @@ LevelProperties::set_level(EditorLevel* level_)
   width->set_text(StringUtil::to_string(level->get_size().width));
   height->set_text(StringUtil::to_string(level->get_size().height));
   difficulty->set_text(StringUtil::to_string(level->get_difficulty()));
-  comment->set_text(level->get_comment());
   music->set_text(level->get_music());
 }
 
@@ -206,12 +202,6 @@ LevelProperties::on_difficulty_change(const std::string& str)
 }
 
 void
-LevelProperties::on_comment_change(const std::string& str)
-{
-  level->set_comment(str);
-}
-
-void
 LevelProperties::on_music_change(const std::string& str)
 { 
   level->set_music(str);
@@ -236,8 +226,7 @@ LevelProperties::update_layout()
   height->set_rect(Rect(Vector2i(110,  y+88), Size(  w, 20)));
   
   difficulty->set_rect(Rect(Vector2i(110, y+110), Size(  w, 20)));
-  comment->set_rect(Rect(Vector2i(110, y+132), Size(  w, 20)));
-  music->set_rect(Rect(Vector2i(110, y+154), Size(  w, 20)));
+  music->set_rect(Rect(Vector2i(110, y+132), Size(  w, 20)));
 }
 
 } // namespace Editor
