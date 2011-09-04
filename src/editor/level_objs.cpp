@@ -200,7 +200,7 @@ LevelObj::set_stretch_y(const bool s)
 }
 
 void
-LevelObj::set_aspect(const bool a)
+LevelObj::set_keep_aspect(const bool a)
 { 
   keep_aspect = a;
 }

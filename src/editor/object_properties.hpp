@@ -53,6 +53,9 @@ private:
   Label*    stretch_label;
   Checkbox* stretch_x_checkbox;
   Checkbox* stretch_y_checkbox;
+
+  Label*    keep_aspect_label;
+  Checkbox* keep_aspect_checkbox;
   
   Label*    para_x_label;
   Inputbox* para_x_inputbox;
@@ -117,6 +120,7 @@ public:
   void on_gptype_change(const ComboItem& item);
   void on_stretch_x_change(bool t);
   void on_stretch_y_change(bool t);
+  void on_keep_aspect_change(bool t);
   void on_entrance_direction_change(const ComboItem& item);
   void on_owner_change(const std::string& str);
   void on_para_x_change(const std::string& str);

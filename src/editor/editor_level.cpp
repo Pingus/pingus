@@ -297,7 +297,7 @@ void EditorLevel::load_level(const Pathname& pathname)
       i->read_bool("stretch-y", tmp_bool);
       obj->set_stretch_y(tmp_bool);
       i->read_bool("keep-aspect", tmp_bool);
-      obj->set_aspect(tmp_bool);
+      obj->set_keep_aspect(tmp_bool);
     }
     if (attribs & HAS_PARA)
     {

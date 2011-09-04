@@ -180,7 +180,7 @@ public:
   bool get_stretch_y() const { return stretch_y; }
 
   /** Returns true if the object is to maintain it's aspect ratio if stretched */
-  bool get_aspect() const { return keep_aspect; }
+  bool get_keep_aspect() const { return keep_aspect; }
 
   /** Retrive the objects scroll value in the x direction */
   float get_scroll_x() const { return scroll_x; }
@@ -265,7 +265,7 @@ public:
   void set_stretch_y(bool s);
 
   /** Set whether or not the object should maintain it's aspect ratio when stretched */
-  void set_aspect(const bool a);
+  void set_keep_aspect(const bool a);
 
   /** Set the objects color if applicable */
   void set_color(const Color& c)

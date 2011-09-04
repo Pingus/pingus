@@ -46,6 +46,8 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
   stretch_label(),
   stretch_x_checkbox(),
   stretch_y_checkbox(),
+  keep_aspect_label(),
+  keep_aspect_checkbox(),
   para_x_label(),
   para_x_inputbox(),
   para_y_label(),
@@ -123,7 +125,13 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
 
   stretch_x_checkbox->on_change.connect(std::bind(&ObjectProperties::on_stretch_x_change, this, std::placeholders::_1));
   stretch_y_checkbox->on_change.connect(std::bind(&ObjectProperties::on_stretch_y_change, this, std::placeholders::_1));
-  
+
+  add(keep_aspect_label = new Label(label_rect, "Aspect:"));
+  add(keep_aspect_checkbox = new Checkbox(Rect(Vector2i(box_rect.left, box_rect.top), 
+                                               Size(box_rect.get_width(), box_rect.get_height())),
+                                          "keep"));
+  keep_aspect_checkbox->on_change.connect(std::bind(&ObjectProperties::on_keep_aspect_change, this, std::placeholders::_1));
+ 
   add(para_x_label = new Label(label_rect, _("Para-X:")));
   add(para_y_label = new Label(label_rect, _("Para-Y:")));
 
@@ -261,7 +269,10 @@ ObjectProperties::hide_all()
   stretch_label->hide();
   stretch_x_checkbox->hide();
   stretch_y_checkbox->hide();
- 
+
+  keep_aspect_label->hide();
+  keep_aspect_checkbox->hide();
+
   para_x_label->hide();
   para_x_inputbox->hide();
  
@@ -393,6 +404,11 @@ ObjectProperties::set_object(LevelObj* obj)
       place(stretch_x_checkbox);
       place(stretch_y_checkbox);
       advance();
+
+      keep_aspect_checkbox->set_checked(obj->get_keep_aspect());
+      place(keep_aspect_label);
+      place(keep_aspect_checkbox);
+      advance();
     }
 
     if (attr & HAS_RELEASE_RATE)
@@ -492,6 +508,13 @@ ObjectProperties::on_stretch_y_change(bool t)
 {
   for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_stretch_y(t);
+}
+
+void
+ObjectProperties::on_keep_aspect_change(bool t)
+{
+  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+    (*i)->set_keep_aspect(t);
 }
 
 void
