@@ -37,7 +37,6 @@ public:
   Sprite();
   Sprite(const std::string& name);
   Sprite(const ResDescriptor& desc);
-  Sprite(const Pathname& name);
   Sprite(const SpriteDescription& desc, ResourceModifier::Enum mod = ResourceModifier::ROT0);
   Sprite(const Surface& surface);
   ~Sprite();

@@ -57,14 +57,6 @@ Sprite::Sprite(const ResDescriptor& res_desc) :
   } 
 }
 
-Sprite::Sprite(const Pathname& name) :
-  impl()
-{
-  SpriteDescription desc;
-  desc.filename = name;
-  impl = std::shared_ptr<SpriteImpl>(new SpriteImpl(desc));
-}
-
 Sprite::Sprite(const Surface& surface)
   : impl(new SpriteImpl(surface))
 {  
