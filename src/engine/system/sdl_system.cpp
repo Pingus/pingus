@@ -16,16 +16,15 @@
 
 #include "engine/system/sdl_system.hpp"
 
-#include <iostream>
-
 #include "engine/display/display.hpp"
 #include "math/size.hpp"
+#include "util/log.hpp"
 
 SDLSystem::SDLSystem()
 {
   if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) != 0) 
   {
-    std::cout << "Unable to initialize SDL: " << SDL_GetError() << std::endl;
+    log_error("Unable to initialize SDL: " << SDL_GetError());
     exit(1);
   }
   else

@@ -136,7 +136,6 @@ FileList::on_primary_button_release (int x, int y)
   on_pointer_move(x,y);
   if (click_item == current_item && current_item != -1)
   {
-    //std::cout << directory[current_item].name << std::endl;
     on_click(directory[current_item]);
   }
   click_item = -1;

@@ -39,7 +39,7 @@ SDLDriver::SDLDriver() :
     string2key[key_name] = static_cast<SDLKey>(i);
     
     // FIXME: Make the keynames somewhere user visible so that users can use them
-    // std::cout << "Key: '" << key_name << "'" << std::endl;
+    // log_info("Key: '" << key_name << "'");
   }
 }
 
@@ -57,7 +57,7 @@ SDLDriver::create_keyboard(const FileReader& reader, Control* parent)
 Button*
 SDLDriver::create_button(const FileReader& reader, Control* parent)
 {
-  //std::cout << "SDL: " << reader.get_name() << std::endl;
+  //log_info("SDL: " << reader.get_name());
   if (reader.get_name() == "sdl:joystick-button")
   {
     JoystickButtonBinding binding;
@@ -105,13 +105,13 @@ SDLDriver::create_button(const FileReader& reader, Control* parent)
       }
       else 
       {
-        std::cout << "SDLDriver: Couldn't find keysym for key '" << key << "'" << std::endl;
+        log_error("couldn't find keysym for key '" << key << "'");
         return 0;
       }
     }
     else
     {
-      std::cout << "SDLDriver: 'key' missing" << std::endl;
+      log_error("'key' missing");
       return 0;
     }
   }
@@ -199,7 +199,7 @@ SDLDriver::open_joystick(int device)
     }
     else
     {
-      std::cout << "SDLDriver: Couldn't open joystick number " << device << std::endl;
+      log_error("couldn't open joystick number " << device);
       return false;
     }
   }

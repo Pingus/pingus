@@ -17,7 +17,6 @@
 #include "util/system.hpp"
 
 #include <algorithm>
-#include <iostream>
 #include <sstream>
 #include <stdexcept>
 #include <string.h>

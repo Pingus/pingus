@@ -18,12 +18,12 @@
 
 #include "engine/display/scene_context.hpp"
 #include "engine/sound/sound.hpp"
-#include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_enums.hpp"
 #include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"
+#include "util/log.hpp"
 
 namespace Actions {
 
@@ -152,7 +152,7 @@ Basher::have_something_to_dig()
       {
         if (rel_getpixel(x, y) == Groundtype::GP_GROUND)
         {
-          pout(PINGUS_DEBUG_ACTIONS) << "Basher: Found something to dig..." << std::endl;
+          log_debug("Basher: Found something to dig...");
           return true;
         }
       }

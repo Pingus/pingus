@@ -16,8 +16,6 @@
 
 #include "engine/display/font.hpp"
 
-#include <iostream>
-
 #include "engine/display/display.hpp"
 #include "engine/display/font_description.hpp"
 #include "engine/display/framebuffer.hpp"

@@ -118,7 +118,7 @@ Controller::Controller(const std::string& configfile)
   if (!standard_pointer)
   {
     standard_pointer = new DummyPointer;
-    pwarn << "Controller: No standard pointer - inserting dummy" << std::endl;
+    log_warn("Controller: No standard pointer - inserting dummy");
   }
   else
   {
@@ -129,55 +129,55 @@ Controller::Controller(const std::string& configfile)
   if (!buttons.count(primary))
   {
     buttons[primary] = new DummyButton;
-    pwarn << "Controller: No primary button - inserting dummy" << std::endl;
+    log_warn("Controller: No primary button - inserting dummy");
   }
 
   if (!buttons.count(secondary))
   {
     buttons[secondary] = new DummyButton;
-    pwarn << "Controller: No secondary button - inserting dummy" << std::endl;
+    log_warn("Controller: No secondary button - inserting dummy");
   }
 
   if (!buttons.count(pause))
   {
     buttons[pause] = new DummyButton;
-    pwarn << "Controller: No pause button - inserting dummy" << std::endl;
+    log_warn("Controller: No pause button - inserting dummy");
   }
 
   if (!buttons.count(fast_forward))
   {
     buttons[fast_forward] = new DummyButton;
-    pwarn << "Controller: No fast_forward button - inserting dummy" << std::endl;
+    log_warn("Controller: No fast_forward button - inserting dummy");
   }
 
   if (!buttons.count(armageddon))
   {
     buttons[armageddon] = new DummyButton;
-    pwarn << "Controller: No armageddon button - inserting dummy" << std::endl;
+    log_warn("Controller: No armageddon button - inserting dummy");
   }
 
   if (!buttons.count(escape))
   {
     buttons[escape] = new DummyButton;
-    pwarn << "Controller: No escape button - inserting dummy" << std::endl;
+    log_warn("Controller: No escape button - inserting dummy");
   }
 
   if (!scroller)
   {
     scroller = new DummyScroller;
-    pwarn << "Controller: No scroller - inserting dummy" << std::endl;
+    log_warn("Controller: No scroller - inserting dummy");
   }
 
   if (!buttons.count(action_up))
   {
     buttons[action_up] = new DummyButton;
-    pwarn << "Controller: No action up button - inserting dummy" << std::endl;
+    log_warn("Controller: No action up button - inserting dummy");
   }
 
   if (!buttons.count(action_down))
   {
     buttons[action_down] = new DummyButton;
-    pwarn << "Controller: No action down button - inserting dummy" << std::endl;
+    log_warn("Controller: No action down button - inserting dummy");
   }
 
   for (std::map<ButtonName, Button*>::iterator it = buttons.begin(); it != buttons.end(); ++it)

@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_ENGINE_INPUT_CONTROL_HPP
 #define HEADER_PINGUS_ENGINE_INPUT_CONTROL_HPP
 
-#include <iostream>
 #include <vector>
 
 #include "engine/input/controller.hpp"

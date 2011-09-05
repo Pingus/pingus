@@ -18,7 +18,6 @@
 #include "editor/editor_level.hpp"
 
 #include <fstream>
-#include <iostream>
 
 #include "pingus/pingus_level.hpp"
 #include "util/log.hpp"

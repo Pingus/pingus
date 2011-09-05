@@ -62,7 +62,7 @@ EvdevDriver::get_device(const std::string& device_filename)
     devices.push_back(device);
     return device;
   } catch (std::exception& err) {
-    std::cout << "EvdevDriver: " << err.what() << std::endl;
+    log_error("EvdevDriver: " << err.what());
     return 0;
   }
 }
@@ -80,7 +80,7 @@ EvdevDriver::create_button(const FileReader& reader, Control* parent)
   }
   else
   {
-    std::cout << "Error: Some of 'device', 'button' missing" << std::endl;
+    log_error("Error: Some of 'device', 'button' missing");
     return 0;
   }
 }
@@ -105,7 +105,7 @@ EvdevDriver::create_scroller(const FileReader& reader, Control* parent)
   }
   else
   {
-    std::cout << "Error: Some of 'device', 'x', 'y' missing" << std::endl;
+    log_error("Error: Some of 'device', 'x', 'y' missing");
     return 0;
   }
 }

@@ -19,6 +19,7 @@
 #include <fstream>
 
 #include "lisp/parser.hpp"
+#include "util/log.hpp"
 #include "util/sexpr_file_reader.hpp"
 #include "util/sexpr_file_writer.hpp"
 #include "util/string_util.hpp"
@@ -84,8 +85,7 @@ StatManager::load(const std::string& filename)
   }
   if (!sexpr)
   {
-    std::cerr << "SavegameManager: Couldn't find savegame file '" <<
-      filename << "', starting with an empty one." << std::endl;
+    log_error("couldn't find savegame file '" << filename << "', starting with an empty one.");
     return;
   }
 

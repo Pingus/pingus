@@ -16,7 +16,7 @@
 
 #include "pingus/groundtype.hpp"
 
-#include <iostream>
+#include "util/log.hpp"
 
 Groundtype::GPType
 Groundtype::string_to_type(const std::string& arg_type)
@@ -37,7 +37,7 @@ Groundtype::string_to_type(const std::string& arg_type)
     return Groundtype::GP_REMOVE;
   else
   {
-    std::cout << "Groundtype: Unhandled type: '" << arg_type << "'" << std::endl;
+    log_error("Groundtype: Unhandled type: '" << arg_type << "'");
     return Groundtype::GP_GROUND;
   }
 }
@@ -62,7 +62,7 @@ Groundtype::type_to_string(GPType arg_type)
     case Groundtype::GP_REMOVE:
       return "remove";
     default:
-      std::cout << "Groundtype: Unhandled type: " << arg_type << std::endl;
+      log_error("Groundtype: Unhandled type: " << arg_type);
       return "ground";
   }
 }

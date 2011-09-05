@@ -16,8 +16,6 @@
 
 #include "pingus/global_event.hpp"
 
-#include <iostream>
-
 #include "engine/display/screenshot.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "pingus/config_manager.hpp"

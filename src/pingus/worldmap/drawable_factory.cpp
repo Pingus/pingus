@@ -16,9 +16,8 @@
 
 #include "pingus/worldmap/drawable_factory.hpp"
 
-#include <iostream>
-
 #include "pingus/worldmap/sprite_drawable.hpp"
+#include "util/log.hpp"
 
 namespace WorldmapNS {
 
@@ -31,7 +30,7 @@ DrawableFactory::create(const FileReader& reader)
   }
   else
   {
-    std::cout << "DrawableFactory::create(): Can't create " << reader.get_name() << std::endl;
+    log_error("can't create " << reader.get_name());
     return 0;
   }
 }

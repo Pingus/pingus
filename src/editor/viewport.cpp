@@ -17,8 +17,6 @@
 
 #include "editor/viewport.hpp"
 
-#include <iostream>
-
 #include "editor/editor_level.hpp"
 #include "engine/display/display.hpp"
 #include "util/log.hpp"

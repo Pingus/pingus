@@ -16,9 +16,9 @@
 **  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "log.hpp"
-
 #include <iostream>
+
+#include "log.hpp"
 
 Logger g_logger;
 

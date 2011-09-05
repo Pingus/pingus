@@ -17,13 +17,13 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_SPRITE_DESCRIPTION_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_SPRITE_DESCRIPTION_HPP
 
-#include <iostream>
 #include <memory>
 
 #include "math/origin.hpp"
 #include "math/size.hpp"
 #include "math/vector2i.hpp"
 #include "util/file_reader.hpp"
+#include "util/log.hpp"
 #include "util/pathname.hpp"
 
 class SpriteDescription;
@@ -75,7 +75,7 @@ public:
     
     if (!reader.read_path("image-file",  filename))
     {
-      std::cout << "Error: SpriteDescription: " << reader.get_name() << " 'image-file' missing" << std::endl;
+      log_error(reader.get_name() << " 'image-file' missing");
     }    
 
     filename = Pathname("data/" + filename.get_raw_path(), filename.get_type()); // FIXME: Hack

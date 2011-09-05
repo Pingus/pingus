@@ -17,12 +17,12 @@
 #include "engine/sound/sound.hpp"
 
 #include <assert.h>
-#include <iostream>
 
 #include "engine/sound/sound_dummy.hpp"
 #include "engine/sound/sound_real.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/path_manager.hpp"
+#include "util/log.hpp"
 
 namespace Sound {
 
@@ -38,8 +38,8 @@ PingusSound::init (PingusSoundImpl* s)
       try {
         PingusSound::init (new PingusSoundReal ());
       } catch (const std::exception& err) {
-        std::cout << "Sound Error: " << err.what() << std::endl;
-        std::cout << "Sound will be disabled" << std::endl;
+        log_error("Sound Error: " << err.what());
+        log_error("Sound will be disabled");
         PingusSound::init (new PingusSoundDummy ());
       }
     }

@@ -413,7 +413,7 @@ LevelMenu::on_escape_press()
   }
   else
   {
-    //std::cout << "OptionMenu: poping screen" << std::endl;
+    //log_debug("OptionMenu: poping screen");
     ScreenManager::instance()->pop_screen();
   }
 }

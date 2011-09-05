@@ -16,9 +16,9 @@
 
 #include "engine/sound/sound_res_mgr.hpp"
 
-#include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/path_manager.hpp"
+#include "util/log.hpp"
 
 SoundResMgr::SoundMap SoundResMgr::sound_map;
 
@@ -31,17 +31,16 @@ SoundResMgr::load(const std::string& name)
   {
     std::string filename = g_path_manager.complete("sounds/" + name + ".wav");
     Mix_Chunk* chunk = Mix_LoadWAV(filename.c_str());
-    pout(PINGUS_DEBUG_LOADING) << "SoundResMgr: Loading sound from disk: "
-                               << name << " -> " << filename << std::endl;
+    log_info("SoundResMgr: Loading sound from disk: " << name << " -> " << filename);
     if (!chunk)
-      pout(PINGUS_DEBUG_LOADING) << "Error: " << Mix_GetError() << std::endl;
+      log_info("Error: " << Mix_GetError());
 
     sound_map[name] = chunk;
     return chunk;
   }
   else
   {
-    pout(PINGUS_DEBUG_LOADING) << "SoundResMgr: Loading sound from cache: " << name << std::endl;
+    log_info("SoundResMgr: Loading sound from cache: " << name);
     return i->second;
   }
 

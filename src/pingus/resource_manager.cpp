@@ -20,7 +20,6 @@
 
 #include "engine/display/sprite_description.hpp"
 #include "lisp/parser.hpp"
-#include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 #include "util/log.hpp"
 #include "util/sexpr_file_reader.hpp"
@@ -64,7 +63,8 @@ ResourceManager::get_section(const std::string& name)
 void
 ResourceManager::add_resources(const std::string& filename)
 {
-  pout(PINGUS_DEBUG_RESOURCES) << "ResourceManager: " << filename << std::endl;
+  log_info(filename);
+
   std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(filename);
   if (sexpr)
   {
@@ -81,9 +81,8 @@ ResourceManager::add_resources(const std::string& filename)
     }
     else
     {
-      std::cout << "Couldn't find section 'pingus-resources' section in file " << filename
-                << "\ngot " << reader.get_name()
-                << std::endl;
+      log_error("couldn't find section 'pingus-resources' section in file " << filename
+                << "\ngot " << reader.get_name());
     }
   }
   else

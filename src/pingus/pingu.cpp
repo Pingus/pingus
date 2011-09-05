@@ -20,7 +20,6 @@
 
 #include "engine/display/scene_context.hpp"
 #include "pingus/collision_map.hpp"
-#include "pingus/debug.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/world.hpp"
@@ -48,6 +47,8 @@
 #include "pingus/actions/superman.hpp"
 #include "pingus/actions/waiter.hpp"
 #include "pingus/actions/walker.hpp"
+
+#include "util/log.hpp"
 
 using namespace Actions;
 
@@ -94,14 +95,12 @@ Pingu::change_allowed(ActionName::Enum new_action)
 void
 Pingu::set_x (float x)
 {
-  //std::cout << "Pingu::set_x (" << x << ")" << std::endl;
   pos_x = x;
 }
 
 void
 Pingu::set_y (float y)
 {
-  //std::cout << "Pingu::set_y (" << y << ")" << std::endl;
   pos_y = y;
 }
 
@@ -137,7 +136,7 @@ Pingu::request_set_action(std::shared_ptr<PinguAction> act)
 
   if (status == PS_DEAD)
   {
-    pout(PINGUS_DEBUG_ACTIONS) << "Setting action to a dead pingu" << std::endl;
+    log_debug("Setting action to a dead pingu");
     ret_val =  false;
   }
   else
@@ -148,18 +147,18 @@ Pingu::request_set_action(std::shared_ptr<PinguAction> act)
 
         if (act->get_type() == action->get_type())
         {
-          pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Already have action" << std::endl;
+          log_debug("Pingu: Already have action");
           ret_val = false;
         }
         else if (action->change_allowed(act->get_type()))
         {
-          pout(PINGUS_DEBUG_ACTIONS) << "setting instant action" << std::endl;
+          log_debug("setting instant action");
           set_action(act);
           ret_val = true;
         }
         else
         {
-          pout(PINGUS_DEBUG_ACTIONS) << "change from action " << action->get_name () << " not allowed" << std::endl;
+          log_debug("change from action " << action->get_name () << " not allowed");
           ret_val = false;
         }
         break;
@@ -168,12 +167,12 @@ Pingu::request_set_action(std::shared_ptr<PinguAction> act)
 
         if (wall_action && wall_action->get_type() == act->get_type())
         {
-          pout(PINGUS_DEBUG_ACTIONS) << "Not using wall action, we have already" << std::endl;
+          log_debug("Not using wall action, we have already");
           ret_val = false;
         }
         else
         {
-          pout(PINGUS_DEBUG_ACTIONS) << "Setting wall action" << std::endl;
+          log_debug("Setting wall action");
           wall_action = act;
           ret_val = true;
         }
@@ -183,12 +182,12 @@ Pingu::request_set_action(std::shared_ptr<PinguAction> act)
 
         if (fall_action && fall_action->get_type() == act->get_type())
         {
-          pout(PINGUS_DEBUG_ACTIONS) << "Not using fall action, we have already" << std::endl;
+          log_debug("Not using fall action, we have already");
           ret_val = false;
         }
         else
         {
-          pout(PINGUS_DEBUG_ACTIONS) << "Setting fall action" << std::endl;
+          log_debug("Setting fall action");
           fall_action = act;
           ret_val = true;
         }
@@ -198,12 +197,12 @@ Pingu::request_set_action(std::shared_ptr<PinguAction> act)
 
         if (countdown_action && countdown_action->get_type() == act->get_type())
         {
-          pout(PINGUS_DEBUG_ACTIONS) << "Not using countdown action, we have already" << std::endl;
+          log_debug("Not using countdown action, we have already");
           ret_val = false;
           break;
         }
 
-        pout(PINGUS_DEBUG_ACTIONS) << "Setting countdown action" << std::endl;
+        log_debug("Setting countdown action");
         // We set the action and start the countdown
         action_time = act->activation_time();
         countdown_action = act;
@@ -211,7 +210,7 @@ Pingu::request_set_action(std::shared_ptr<PinguAction> act)
         break;
 
       default:
-        pout(PINGUS_DEBUG_ACTIONS) << "unknown action activation_mode" << std::endl;
+        log_debug("unknown action activation_mode");
         ret_val = false;
         assert(0);
         break;

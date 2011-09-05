@@ -91,7 +91,7 @@ LevelDot::update(float delta)
 void
 LevelDot::on_click()
 {
-  //std::cout << "Starting level: " << levelname << std::endl;
+  //log_info("Starting level: " << levelname);
   ScreenManager::instance()->push_screen(new StartScreen(plf));
 }
 

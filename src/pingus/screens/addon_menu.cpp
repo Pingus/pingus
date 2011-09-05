@@ -56,7 +56,7 @@ AddOnMenu::draw_background(DrawingContext& gc)
 void
 AddOnMenu::on_escape_press()
 {
-  //std::cout << "OptionMenu: poping screen" << std::endl;
+  //log_info("OptionMenu: poping screen");
   ScreenManager::instance()->pop_screen();
 }
 

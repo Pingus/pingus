@@ -16,8 +16,8 @@
 
 #include "pingus/plf_res_mgr.hpp"
 
-#include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
+#include "util/log.hpp"
 #include "util/pathname.hpp"
 #include "util/system.hpp"
 
@@ -27,14 +27,13 @@ PingusLevel
 PLFResMgr::load_plf_raw(const std::string& res_name,
                         const Pathname& pathname)
 {
-  pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: '" << res_name << "'  -> '" << pathname.str() << "'" << std::endl;
+  log_info("PLFResMgr: '" << res_name << "'  -> '" << pathname.str() << "'");
 
   PLFMap::iterator i = plf_map.find(res_name);
 
   if (i == plf_map.end())
   { // Entry not cached, so load it and add it to cache
-    pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: Loading level from DISK: '" << res_name << "' -> '"
-                               << pathname.str() << "'" << std::endl;
+    log_info("loading level from DISK: '" << res_name << "' -> '" << pathname.str() << "'");
 
     PingusLevel plf(res_name, pathname);
 
@@ -54,8 +53,8 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
     uint64_t current_mtime = pathname.mtime();
     if (current_mtime != i->second.mtime)
     {
-      pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: level changed on DISK, reloading: '" << res_name
-                                 << "' -> '" << pathname.str() << "'" << std::endl;
+      log_info("PLFResMgr: level changed on DISK, reloading: '" << res_name
+               << "' -> '" << pathname.str() << "'");
 
       // Reload the file since it has changed on disk
       PingusLevel plf(res_name, pathname);
@@ -72,8 +71,8 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
     }
     else
     { // File in cache is up to date, everything is all ready, return it
-      pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: Loading level from CACHE: '" << res_name << "' -> '"
-                                 << pathname.str() << "'" << std::endl;
+      log_info("PLFResMgr: Loading level from CACHE: '" << res_name << "' -> '"
+               << pathname.str() << "'");
 
       return i->second.plf;
     }

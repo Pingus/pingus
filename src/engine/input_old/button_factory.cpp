@@ -14,8 +14,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <iostream>
-
 #include "button_factory.hpp"
 #include "buttons/double_button.hpp"
 #include "buttons/joystick_button.hpp"

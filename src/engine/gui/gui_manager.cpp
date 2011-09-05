@@ -17,8 +17,8 @@
 #include "engine/gui/gui_manager.hpp"
 
 #include "engine/display/display.hpp"
-#include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
+#include "util/log.hpp"
 
 using namespace Input;
 
@@ -76,7 +76,7 @@ GUIManager::update(const Input::Event& event)
 
     case Input::AXIS_EVENT_TYPE:
       // AxisEvents can be ignored in the GUI, they are handled elsewhere
-      pout(PINGUS_DEBUG_GUI) << "GUIManager: AxisEvent: " << event.axis.dir << std::endl;
+      log_debug("GUIManager: AxisEvent: " << event.axis.dir);
       break;
         
     case Input::KEYBOARD_EVENT_TYPE:
@@ -88,7 +88,7 @@ GUIManager::update(const Input::Event& event)
       break;
 
     default:
-      pwarn (PINGUS_DEBUG_GUI) << "GUIManager: unhandled event type " << event.type << std::endl;
+      log_warn("unhandled event type " << event.type);
       break;
   }
 }

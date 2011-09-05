@@ -17,7 +17,6 @@
 #include "editor/object_selector.hpp"
 
 #include <boost/signal.hpp>
-#include <iostream>
 
 #include "editor/gui_style.hpp"
 #include "editor/level_objs.hpp"

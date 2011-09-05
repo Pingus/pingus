@@ -24,7 +24,7 @@
 
 #include "math/size.hpp"
 
-#include <iostream>
+#include <ostream>
 
 std::ostream& operator<<(std::ostream& os, const Size& size)
 {

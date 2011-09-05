@@ -18,8 +18,8 @@
 
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
-#include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
+#include "util/log.hpp"
 
 GUIScreen::GUIScreen()
   : Screen(Display::get_size()),
@@ -89,7 +89,7 @@ GUIScreen::update (const Input::Event& event)
     break;
 
     default:
-      std::cout << "GUIScreen::update (): unhandled event type: " << event.type << std::endl;
+      log_error("GUIScreen::update (): unhandled event type: " << event.type);
       break;
   }
 }
@@ -97,8 +97,6 @@ GUIScreen::update (const Input::Event& event)
 void
 GUIScreen::process_button_event (const Input::ButtonEvent& event)
 {
-  //std::cout << "GUIScreen::process_button_event (Input::ButtonEvent* event)" << std::endl;
-
   if (event.state == Input::BUTTON_PRESSED)
   {
     switch (event.name)
@@ -122,7 +120,7 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
         on_escape_press ();
         break;
       default:
-        perr(PINGUS_DEBUG_GUI) << "GUIScreen: ButtonEvent: unhandled event: " << event.name << std::endl;
+        log_error("GUIScreen: ButtonEvent: unhandled event: " << event.name);
         break;
     }
   }
@@ -149,14 +147,13 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
         on_escape_release ();
         break;
       default:
-        perr(PINGUS_DEBUG_GUI) << "GUIScreen: ButtonEvent: unhandled event: " << event.name << std::endl;
+        log_error("GUIScreen: ButtonEvent: unhandled event: " << event.name);
         break;
     }
   }
   else
   {
-    perr(PINGUS_DEBUG_GUI) << "GUIScreen::process_button_event: got unknown event.state: "
-                           << event.state << std::endl;;
+    log_error("GUIScreen::process_button_event: got unknown event.state: " << event.state);
   }
 }
 

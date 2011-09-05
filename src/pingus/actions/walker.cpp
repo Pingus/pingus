@@ -17,10 +17,10 @@
 #include "pingus/actions/walker.hpp"
 
 #include "engine/display/scene_context.hpp"
-#include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/groundtype.hpp"
 #include "pingus/pingu.hpp"
+#include "util/log.hpp"
 
 namespace Actions {
 
@@ -153,8 +153,7 @@ Walker::update ()
         // We reached a wall
         if (pingu->request_wall_action())
         {
-          pout(PINGUS_DEBUG_ACTIONS)
-            << "Pingu: We are in front of a wall, setting persistant action" << std::endl;
+          log_debug("Pingu: We are in front of a wall, setting persistant action");
           return;
         }
 
@@ -177,7 +176,7 @@ Walker::update ()
   // above downhill walk being done before head collision check.
   if (head_collision_on_walk(0, 0))
   {
-    pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Head collision" << std::endl;
+    log_debug("Pingu: Head collision");
 
     //if the new position causes a head collision, we are already
     //stuck in a wall, so lets go back to the old position

@@ -16,8 +16,6 @@
 
 #include "pingus/screens/credits.hpp"
 
-#include <iostream>
-
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
@@ -26,6 +24,7 @@
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "pingus/stat_manager.hpp"
+#include "util/log.hpp"
 
 class CreditsOkButton
   : public GUI::SurfaceButton
@@ -233,7 +232,7 @@ Credits::Credits() :
         end_offset += 50;
         break;
       default:
-        std::cout << "Credits: Syntax error: Unknown format: '" << (*i)[0] << "'" << std::endl;
+        log_error("Credits: Syntax error: Unknown format: '" << (*i)[0] << "'");
         break;
     }
   }
@@ -305,7 +304,7 @@ Credits::draw_background (DrawingContext& gc)
         yof += 50;
         break;
       default:
-        std::cout << "Credits: Syntax error: Unknown format: '" << (*i)[0] << "'" << std::endl;
+        log_error("Credits: Syntax error: Unknown format: '" << (*i)[0] << "'");
         break;
     }
   }

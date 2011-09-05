@@ -65,7 +65,7 @@ ConfigManager::load(const std::string& file)
   }
   catch (const std::runtime_error& e) 
   {
-    std::cerr << "ConfigManager: " << e.what() << std::endl;
+    log_error("ConfigManager: " << e.what());
     return;
   }
 
@@ -79,7 +79,7 @@ ConfigManager::load(const std::string& file)
   SExprFileReader reader(sexpr->get_list_elem(0));
   if (reader.get_name() != "pingus-config")
   {
-    std::cerr << "Error: " << filename << ": not a (pingus-config) file" << std::endl;
+    log_error("Error: " << filename << ": not a (pingus-config) file");
     return;
   }
 

@@ -18,8 +18,8 @@
 
 #include <sstream>
 
-#include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
+#include "util/log.hpp"
 #include "util/system.hpp"
 
 PathManager g_path_manager;
@@ -43,8 +43,7 @@ std::string
 PathManager::complete(const std::string& relative_path)
 {
   std::string comp_path = base_path + "/" + relative_path;
-  pout(PINGUS_DEBUG_PATHMGR) << "PathManager: " << relative_path << " -> " << comp_path << std::endl;
-
+  log_debug(relative_path << " -> " << comp_path);
   return comp_path;
 }
 

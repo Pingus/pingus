@@ -15,13 +15,13 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <boost/format.hpp>
-#include <iostream>
 
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
 #include "util/file_reader.hpp"
+#include "util/log.hpp"
 
 ServerEvent::ServerEvent() :
   type(PINGU_ACTION_EVENT),
@@ -172,14 +172,14 @@ ServerEvent::send(Server* server)
         if (pos.x != pingu->get_pos().x ||
             pos.y != pingu->get_pos().y)
         {
-          std::cout << "ServerEvent: DemoFile inconsistent with world, pingu " << pingu_id << " is at the wrong position" << std::endl;
+          log_error("DemoFile inconsistent with world, pingu " << pingu_id << " is at the wrong position");
         }
 
         server->send_pingu_action_event(pingu, pingu_action);
       }
       else
       {
-        std::cout << "ServerEvent: DemoFile inconsistent with world, pingu " << pingu_id << " missing" << std::endl;
+        log_error("DemoFile inconsistent with world, pingu " << pingu_id << " missing");
       }
     }
     break;

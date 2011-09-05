@@ -16,6 +16,8 @@
 
 #include "pingus/worldmap/worldmap.hpp"
 
+#include <iostream>
+
 #include "engine/sound/sound.hpp"
 #include "pingus/gettext.h"
 #include "pingus/globals.hpp"
@@ -24,6 +26,7 @@
 #include "pingus/worldmap/level_dot.hpp"
 #include "pingus/worldmap/pingus.hpp"
 #include "util/log.hpp"
+#include "util/sexpr_file_writer.hpp"
 #include "util/pathname.hpp"
 
 namespace WorldmapNS {
@@ -169,18 +172,16 @@ Worldmap::on_primary_button_press(int x, int y)
 
   if (globals::pingus_debug_flags & PINGUS_DEBUG_WORLDMAP)
   {
-    std::cout
-      << "\n<leveldot>\n"
-      << "  <dot>\n"
-      << "    <name>leveldot_X</name>\n"
-      << "    <position>\n"
-      << "      <x>" << static_cast<int>(click_pos.x) << "</x>\n"
-      << "      <y>" << static_cast<int>(click_pos.y) << "</y>\n"
-      << "      <z>0</z>\n"
-      << "    </position>\n"
-      << "  </dot>\n"
-      << "  <levelname>level10.pingus</levelname>\n"
-      << "</leveldot>\n" << std::endl;
+    SExprFileWriter writer(std::cout);
+    writer.begin_section("leveldot");
+    writer.write_string("levelname", "");
+    writer.begin_section("dot");
+    writer.write_string("name", "leveldot_X");
+    writer.write_vector("position", click_pos);
+    writer.end_section();
+    writer.end_section();
+    std::cout << std::endl;
+    std::cout << std::endl;
   }
 
   Dot* dot = path_graph->get_dot(click_pos.x, click_pos.y);

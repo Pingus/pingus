@@ -17,7 +17,7 @@
 #include "util/pathname.hpp"
 
 #include <assert.h>
-#include <iostream>
+#include <ostream>
 
 #include "pingus/path_manager.hpp"
 #include "util/system.hpp"

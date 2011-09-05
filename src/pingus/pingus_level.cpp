@@ -18,9 +18,9 @@
 
 #include <stdexcept>
 
-#include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/pingus_level_impl.hpp"
+#include "util/log.hpp"
 #include "util/pathname.hpp"
 #include "util/system.hpp"
 
@@ -64,9 +64,9 @@ PingusLevel::load(const std::string& resname,
   {
     int version;
     if (reader.read_int("version", version))
-      pout(PINGUS_DEBUG_LOADING) << "Levelfile Version: " << version << std::endl;
+      log_info("Levelfile Version: " << version);
     else
-      pout(PINGUS_DEBUG_LOADING) << "Unknown Levelfile Version: " << version << std::endl;
+      log_info("Unknown Levelfile Version: " << version);
 
     FileReader head;
     if (!reader.read_section("head", head))
@@ -75,7 +75,7 @@ PingusLevel::load(const std::string& resname,
     }
     else
     {
-      pout(PINGUS_DEBUG_LOADING) << "Reading head" << std::endl;
+      log_info("Reading head");
       head.read_string("levelname",        impl->levelname);
       head.read_string("description",      impl->description);
       head.read_size  ("levelsize",        impl->size);
@@ -87,7 +87,7 @@ PingusLevel::load(const std::string& resname,
       head.read_colorf("ambient-light",    impl->ambient_light);
       head.read_string("author",           impl->author);
 
-      pout(PINGUS_DEBUG_LOADING) << "Size: " << impl->size.width << " " << impl->size.height << std::endl;
+      log_info("Size: " << impl->size.width << " " << impl->size.height);
           
       FileReader actions;
       if (head.read_section("actions", actions))
@@ -96,7 +96,7 @@ PingusLevel::load(const std::string& resname,
         for(std::vector<std::string>::iterator i = lst.begin(); i != lst.end(); ++i)
         {
           int count = 0;
-          pout(PINGUS_DEBUG_LOADING) << "Actions: " << i->c_str() << std::endl;
+          log_info("Actions: " << i->c_str());
           if (actions.read_int(i->c_str(), count))
             impl->actions[*i] = count;
         }

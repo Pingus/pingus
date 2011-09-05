@@ -16,6 +16,7 @@
 
 #include "pingus/pingus_main.hpp"
 
+#include <iostream>
 #include <signal.h>
 
 #include "editor/editor_level.hpp"
@@ -23,6 +24,7 @@
 #include "pingus/config_manager.hpp"
 #include "pingus/screens/demo_session.hpp"
 #include "pingus/screens/pingus_menu.hpp"
+#include "util/log.hpp"
 #include "util/string_util.hpp"
 
 #if defined(__APPLE__)
@@ -51,7 +53,6 @@ extern "C" {
 #include "pingus/plf_res_mgr.hpp"
 
 #include "engine/sound/sound.hpp"
-#include "pingus/debug.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/savegame_manager.hpp"
 #include "pingus/screens/credits.hpp"
@@ -646,9 +647,9 @@ PingusMain::start_game ()
   }
   else // start a normal game
   {
-    pout(PINGUS_DEBUG_LOADING) << "starting normal game" << std::endl;
+    log_info("starting normal game");
     screen_manager.push_screen(new PingusMenu());
-    pout(PINGUS_DEBUG_LOADING) << "done: starting normal game" << std::endl;
+    log_info("done: starting normal game");
   }
 
   screen_manager.display();
@@ -664,12 +665,7 @@ PingusMain::main(int argc, char** argv)
   signal(SIGSEGV, signal_handler);
 #endif
   //signal(SIGINT, signal_handler);
-
-  // Init error/warning/notice streams
-  pout.add(std::cout);
-  pwarn.add(std::cout);
-  perr.add(std::cout);
-
+  
   try
   {
     // FIXME force set language using System::get_language() to get it from env

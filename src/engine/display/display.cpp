@@ -148,7 +148,7 @@ Display::find_closest_fullscreen_video_mode(const Size& size)
     {
       int this_distance = abs(size.width - modes[i]->w) + abs(size.height - modes[i]->h);
           
-      //std::cout << "Mode: " << size << " -> " << modes[i]->w << "x" << modes[i]->h << " " << this_distance << std::endl;        
+      // log_info("Mode: " << size << " -> " << modes[i]->w << "x" << modes[i]->h << " " << this_distance);
 
       if (distance == -1 || distance > this_distance)
       {

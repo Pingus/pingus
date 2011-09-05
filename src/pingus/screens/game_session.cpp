@@ -27,7 +27,6 @@
 #include "pingus/components/playfield.hpp"
 #include "pingus/components/smallmap.hpp"
 #include "pingus/components/time_display.hpp"
-#include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "pingus/savegame_manager.hpp"
@@ -57,7 +56,7 @@ GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_scree
   // the world is initially on time
   world_delay = 0;
 
-  pout(PINGUS_DEBUG_LOADING) << "GameSession" << std::endl;
+  log_debug("GameSession");
 
   // -- Client stuff
   

@@ -16,7 +16,7 @@
 
 #include "pingus/res_descriptor.hpp"
 
-#include <iostream>
+#include <ostream>
 
 /*
   uri -> file:///home/ingo/.pingus/images/...

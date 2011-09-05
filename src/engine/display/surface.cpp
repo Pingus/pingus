@@ -21,7 +21,6 @@
 
 #include "engine/display/blitter.hpp"
 #include "math/rect.hpp"
-#include "pingus/debug.hpp"
 #include "util/log.hpp"
 
 class SurfaceImpl
@@ -251,7 +250,7 @@ Surface::mod(ResourceModifier::Enum modifier)
       return Blitter::rotate_270_flip(*this);
 
     default:
-      perr << "Surface: unhandled modifier: " << modifier << std::endl;
+      log_error("Surface: unhandled modifier: " << modifier);
       return *this;
   }
 }

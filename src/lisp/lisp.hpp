@@ -19,8 +19,8 @@
 #define __LISP_HPP__
 
 #include <assert.h>
-#include <memory>
 #include <iostream>
+#include <memory>
 #include <stdexcept>
 #include <vector>
 

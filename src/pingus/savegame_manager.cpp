@@ -48,7 +48,7 @@ SavegameManager::SavegameManager(const std::string& arg_filename) :
   }
   catch (const std::runtime_error& e) 
   {
-    std::cerr << "SavegameManager: " << e.what() << std::endl;
+    log_error("SavegameManager: " << e.what());
     return;
   }
 
@@ -62,7 +62,7 @@ SavegameManager::SavegameManager(const std::string& arg_filename) :
   SExprFileReader reader(sexpr->get_list_elem(0));
   if (reader.get_name() != "pingus-savegame")
   {
-    std::cerr << "Error: " << filename << ": not a (pingus-savegame) file" << std::endl;
+    log_error("Error: " << filename << ": not a (pingus-savegame) file");
     return;
   }
 

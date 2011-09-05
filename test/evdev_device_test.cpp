@@ -18,6 +18,8 @@
 
 // g++ -D__TEST__ evdev_device.cpp -o evdev -Wall -Werror
 
+#include <iostream>
+
 int main(int argc, char** argv)
 {
   if (argc != 2)

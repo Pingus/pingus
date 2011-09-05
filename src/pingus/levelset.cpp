@@ -16,12 +16,12 @@
 
 #include "pingus/levelset.hpp"
 
-#include <iostream>
 #include <stdexcept>
 
 #include "math/math.hpp"
 #include "pingus/plf_res_mgr.hpp"
 #include "pingus/savegame_manager.hpp"
+#include "util/log.hpp"
 
 Levelset::Levelset(const Pathname& pathname) :
   title(),
@@ -62,7 +62,7 @@ Levelset::Levelset(const Pathname& pathname) :
         }
         else
         {
-          std::cout << "Levelset: " << pathname.str() << " is missing filename tag" << std::endl;
+          log_error("Levelset: " << pathname.str() << " is missing filename tag");
           delete level;
         }
       }

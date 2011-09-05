@@ -19,8 +19,9 @@
 
 #include <algorithm>
 #include <assert.h>
-#include <iostream>
 #include <vector>
+
+#include "util/log.hpp"
 
 namespace WorldmapNS {
 
@@ -167,7 +168,7 @@ public:
           && i->destination == destination)
         return *i;
     }
-    std::cout << "couldn't resolve edge: source=" << source << " destination=" << destination << std::endl;
+    log_error("couldn't resolve edge: source=" << source << " destination=" << destination);
     assert(false);
     return *(static_cast<Edge<EdgeType>*>(0));
   }

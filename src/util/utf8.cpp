@@ -17,8 +17,9 @@
 
 #include "util/utf8.hpp"
 
-#include <iostream>
 #include <stdexcept>
+
+#include "util/log.hpp"
 
 /** Replacement character for invalid UTF-8 sequences */
 static const uint32_t INVALID_UTF8_SEQUENCE = 0xFFFD;
@@ -96,7 +97,7 @@ UTF8::advance(std::string::const_iterator it, std::string::size_type n)
     }
     else
     {
-      std::cout << "UTF8: malformed UTF-8 sequence: " << static_cast<int>(c) << std::endl;
+      log_error("UTF8: malformed UTF-8 sequence: " << static_cast<int>(c));
       it += 1;
     }
   }
@@ -219,7 +220,7 @@ UTF8::iterator::next()
   } 
   catch (std::exception) 
   {
-    std::cout << "Malformed utf-8 sequence beginning with " << *(reinterpret_cast<const uint32_t*>(text->c_str() + pos)) << " found " << std::endl;
+    log_error("Malformed utf-8 sequence beginning with " << *(reinterpret_cast<const uint32_t*>(text->c_str() + pos)) << " found ");
     chr = INVALID_UTF8_SEQUENCE;
     ++pos;
   }

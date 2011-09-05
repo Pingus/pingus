@@ -16,13 +16,13 @@
 
 #include "engine/display/drawing_context.hpp"
 
-#include <iostream>
 #include <algorithm>
 
 #include "engine/display/display.hpp"
 #include "engine/display/font.hpp"
 #include "engine/display/framebuffer.hpp"
 #include "engine/display/sprite.hpp"
+#include "util/log.hpp"
 
 struct DrawingRequestsSorter
 {
@@ -208,14 +208,14 @@ DrawingContext::render(Framebuffer& fb, const Rect& parent_rect)
   
   if (0)
   {
-    std::cout << "<<<<<<<<<<<<<<" << std::endl;
+    log_info("<<<<<<<<<<<<<<");
     for(DrawingRequests::iterator i = drawingrequests.begin(); i != drawingrequests.end(); ++i)
-      std::cout << (*i)->get_z_pos() << std::endl;
-    std::cout << ">>>>>>>>>>>>>>" << std::endl;
+      log_info((*i)->get_z_pos());
+    log_info(">>>>>>>>>>>>>>");
   }
   for(DrawingRequests::iterator i = drawingrequests.begin(); i != drawingrequests.end(); ++i)
   {
-    //std::cout << this << ": " << (*i)->get_z_pos() << std::endl;
+    //log_info(this << ": " << (*i)->get_z_pos());
     (*i)->render(fb, this_rect); // FIXME: Should we clip size against parent rect?
   }
 

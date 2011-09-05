@@ -64,7 +64,7 @@ EvdevDevice::EvdevDevice(const std::string& filename) :
     char c_name[256] = "unknown";
     ioctl(fd, EVIOCGNAME(sizeof(c_name)), c_name);
     name = c_name;
-    std::cout << "Name: " << name << std::endl;
+    log_info("Name: " << name);
   }
 
   { // Read in how many buttons the device has
@@ -220,12 +220,12 @@ EvdevDevice::update(float delta)
   struct input_event ev[128];
   // FIXME: turn this into a while loop so all events get processed
   ssize_t rd = read(fd, ev, sizeof(struct input_event) * 128);
-  //std::cout << rd / sizeof(struct input_event) << std::endl;
+  //log_debug(rd / sizeof(struct input_event));
   if (rd >= static_cast<ssize_t>(sizeof(struct input_event)))
   {
     for (int i = 0; i < rd / static_cast<int>(sizeof(struct input_event)); ++i)
     {
-      //std::cout << ev[i].type << " " << ev[i].code << " " << ev[i].value << std::endl;
+      //log_debug(ev[i].type << " " << ev[i].code << " " << ev[i].value);
 
       switch (ev[i].type)
       {
@@ -302,7 +302,7 @@ EvdevDevice::create_scroller(Control* parent, int x, int y)
   else
   {
     delete scroller;
-    std::cout << "EvdevDevice: " << device << " doesn't have x or y: x=" << x << " y=" << y << std::endl;
+    log_error("EvdevDevice: " << device << " doesn't have x or y: x=" << x << " y=" << y);
     return 0;
   }
 }
@@ -317,7 +317,7 @@ EvdevDevice::create_button(Control* parent, int id)
       keys[i].bindings.push_back(button);
       return button;
     }
-  std::cout << "EvdevDevice: " << device << " doesn't have button " << id << std::endl;
+  log_error("EvdevDevice: " << device << " doesn't have button " << id);
   return 0;
 }
 

@@ -21,7 +21,6 @@
 #include "engine/display/scene_context.hpp"
 #include "engine/sound/sound.hpp"
 #include "pingus/collision_map.hpp"
-#include "pingus/debug.hpp"
 #include "pingus/ground_map.hpp"
 #include "pingus/particles/pingu_particle_holder.hpp"
 #include "pingus/particles/rain_particle_holder.hpp"
@@ -32,6 +31,7 @@
 #include "pingus/pingus_level.hpp"
 #include "pingus/worldobj_factory.hpp"
 #include "pingus/worldobjs/entrance.hpp"
+#include "util/log.hpp"
 
 static
 bool WorldObj_less (WorldObj* a, WorldObj* b)
@@ -56,7 +56,7 @@ World::World(const PingusLevel& plf) :
 {
   WorldObj::set_world(this);
 
-  pout(PINGUS_DEBUG_ALL) << "create particle holder" << std::endl;
+  log_debug("create particle holder");
 
   // These get deleted via the world_obj vector in the destructor
   pingu_particle_holder = new Particles::PinguParticleHolder();

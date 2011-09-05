@@ -16,7 +16,6 @@
 
 #include "pingus/screens/option_menu.hpp"
 
-#include <iostream>
 #include <sstream>
 
 #include "engine/display/display.hpp"
@@ -30,6 +29,7 @@
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "tinygettext/dictionary_manager.hpp"
+#include "util/log.hpp"
 
 #define C(x) connections.push_back(x)
 
@@ -288,7 +288,7 @@ OptionMenu::draw_background(DrawingContext& gc)
 void
 OptionMenu::on_escape_press()
 {
-  std::cout << "OptionMenu: popping screen" << std::endl;
+  log_debug("OptionMenu: popping screen");
   ScreenManager::instance()->pop_screen();
 }
 

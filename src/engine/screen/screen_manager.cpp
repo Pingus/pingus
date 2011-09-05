@@ -16,6 +16,8 @@
 
 #include "engine/screen/screen_manager.hpp"
 
+#include <iostream>
+
 #include "engine/display/display.hpp"
 #include "engine/display/drawing_context.hpp"
 #include "engine/display/framebuffer.hpp"
@@ -215,8 +217,8 @@ ScreenManager::display()
     if (previous_frame_time > 1.0)
     {
       if (globals::maintainer_mode)
-        std::cout << "ScreenManager: previous frame took longer than 1 second (" << previous_frame_time
-                  << " sec.), ignoring and doing frameskip" << std::endl;
+        log_warn("ScreenManager: previous frame took longer than 1 second (" << previous_frame_time
+                 << " sec.), ignoring and doing frameskip");
     }
     else
     {  
@@ -229,7 +231,7 @@ ScreenManager::display()
       // achieve <desired_fps> frames per second
       if (current_frame_time < 1.0f / globals::desired_fps) {
         Uint32 sleep_time = static_cast<Uint32>(1000 *((1.0f / globals::desired_fps) - current_frame_time));
-        // std::cout << "Sleep: " << sleep_time << std::endl;
+        // log_debug("Sleep: " << sleep_time);
         SDL_Delay(sleep_time);
       }
     }

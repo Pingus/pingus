@@ -29,7 +29,7 @@
 
 #include "math/rect.hpp"
 
-#include <iostream>
+#include <ostream>
 
 #define cl_min(a,b) ((a < b) ? a : b)
 #define cl_max(a,b) ((a > b) ? a : b)

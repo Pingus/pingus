@@ -16,9 +16,8 @@
 
 #include "engine/display/sdl_framebuffer.hpp"
 
-#include <iostream>
-
 #include "engine/display/sdl_framebuffer_surface_impl.hpp"
+#include "util/log.hpp"
 
 namespace {
 
@@ -435,7 +434,7 @@ SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen)
 
   if (screen == NULL) 
   {
-    std::cout << "Unable to set video mode: " << SDL_GetError() << std::endl;
+    log_error("Unable to set video mode: " << SDL_GetError());
     exit(1);
   }
 }

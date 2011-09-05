@@ -93,8 +93,7 @@ public:
       NodeId current = open_nodes.top ();
       open_nodes.pop ();
 
-      //std::cout << "Current Node: " << current << " "
-      //<< stat_graph[current].cost << std::endl;
+      // log_info("Current Node: " << current << " " << stat_graph[current].cost);
 
       Node<T>& node = graph.resolve_node (current);
       for (std::vector<EdgeId>::iterator e = node.next.begin ();
@@ -133,8 +132,7 @@ public:
     do
     {
       path.push_back(handle);
-      //std::cout << "Handle: " << handle
-      //<< " Parent: " << stat_graph[handle].parent << std::endl;
+      // log_info("Handle: " << handle << " Parent: " << stat_graph[handle].parent);
 
       if (handle == start)
       {

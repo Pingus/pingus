@@ -16,8 +16,6 @@
 
 #include "pingus/screens/font_test_screen.hpp"
 
-#include <iostream>
-
 #include "engine/display/display.hpp"
 #include "engine/display/drawing_context.hpp"
 #include "engine/display/font_description.hpp"

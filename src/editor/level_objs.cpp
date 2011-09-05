@@ -17,8 +17,6 @@
 
 #include "editor/level_objs.hpp"
 
-#include <iostream>
-
 #include "engine/display/drawing_context.hpp"
 #include "util/log.hpp"
 

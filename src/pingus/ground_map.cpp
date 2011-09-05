@@ -146,7 +146,6 @@ GroundMap::draw(SceneContext& gc)
     {
       if (get_tile(x, y)->get_sprite())
       {
-        //std::cout << "Drawing GroundMap Tile " << std::endl;
         gc.color().draw(get_tile(x, y)->get_sprite(),
                         Vector2i(x * globals::tile_size, y * globals::tile_size));
       }
@@ -289,7 +288,7 @@ GroundMap::put(Surface source, int x, int y)
   int end_x   = std::min(tile_width,  (x + source.get_width())  / globals::tile_size + 1);
   int end_y   = std::min(tile_height, (y + source.get_height()) / globals::tile_size + 1);
 
-  //std::cout << "GroundMap:put: " << source.get_width() << "x" << source.get_height() << std::endl;
+  //log_debug("GroundMap:put: " << source.get_width() << "x" << source.get_height());
 
   for(int ix = start_x; ix < end_x; ++ix)
     for(int iy = start_y; iy < end_y; ++iy)

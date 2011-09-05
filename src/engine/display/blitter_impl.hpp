@@ -17,9 +17,8 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_BLITTER_IMPL_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_BLITTER_IMPL_HPP
 
-#include <iostream>
-
 #include "engine/display/surface.hpp"
+#include "util/log.hpp"
 
 /** A collection of helper functions for the blitter class */
 namespace BlitterImpl {
@@ -197,8 +196,8 @@ Surface modify(Surface source_buffer, const TransF&)
   }
   else
   {
-    std::cout << "Error: Blitter::modify: Unsupported PixelFormat: BytesPerPixel: "
-              << int(source->format->BytesPerPixel) << std::endl;
+    log_error("Blitter::modify: Unsupported PixelFormat: BytesPerPixel: "
+              << int(source->format->BytesPerPixel));
     SDL_UnlockSurface(source);
     return source_buffer.clone();
   }

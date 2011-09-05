@@ -17,7 +17,9 @@
 #include "engine/display/rect_merger.hpp"
 
 #include <algorithm>
-#include <iostream>
+#include <ostream>
+
+#include "util/log.hpp"
 
 struct Mark {
   enum Type { START_MARK = 0, END_MARK = 1 } type;
@@ -188,13 +190,13 @@ void generate_rectangles(const std::vector<Row>& rows, std::vector<Rect>& rects_
       assert(marks.front().type == Mark::START_MARK);
       if (0)
       {
-        std::cerr << "Size: " << i->marks.size() << std::endl;
+        log_error("Size: " << i->marks.size());
         if (marks.front().type != Mark::START_MARK)
         {
           for(std::vector<Mark>::const_iterator mark_it = marks.begin(); mark_it != marks.end(); )
-            std::cerr << ((mark_it->type == Mark::START_MARK) ? "'(" : "')")
+            log_error(((mark_it->type == Mark::START_MARK) ? "'(" : "')")
                       << mark_it->pos 
-                      << "' ";            
+                      << "' ");
           assert(!"False");
         }
       }

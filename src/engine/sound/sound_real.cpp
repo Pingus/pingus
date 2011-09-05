@@ -20,7 +20,6 @@
 #include <stdexcept>
 
 #include "engine/sound/sound_res_mgr.hpp"
-#include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 #include "util/log.hpp"
 
@@ -29,7 +28,7 @@ namespace Sound {
 PingusSoundReal::PingusSoundReal ()
   : music_sample(0)
 {
-  pout(PINGUS_DEBUG_SOUND) << "Initializing SDL audio" << std::endl;
+  log_info("Initializing SDL audio");
 
   if (SDL_Init(SDL_INIT_AUDIO) == -1)
   {
@@ -37,7 +36,7 @@ PingusSoundReal::PingusSoundReal ()
     throw std::runtime_error(SDL_GetError());
   }
 
-  pout(PINGUS_DEBUG_SOUND) << "Initializing SDL_Mixer" << std::endl;
+  log_info("Initializing SDL_Mixer");
 
   if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
   {
@@ -65,8 +64,8 @@ PingusSoundReal::real_play_sound(const std::string& name, float volume, float pa
   chunk = SoundResMgr::load(name);
   if (!chunk)
   {
-    perr(PINGUS_DEBUG_SOUND) << "Can't open sound '" << name << "' -- skipping\n"
-                             << "  Mix_Error: " << Mix_GetError() << std::endl;
+    log_error("Can't open sound '" << name << "' -- skipping\n"
+              << "  Mix_Error: " << Mix_GetError());
     return;
   }
 
@@ -104,15 +103,15 @@ PingusSoundReal::real_play_music (const std::string & arg_filename, float volume
   if (!globals::music_enabled)
     return;
 
-  pout(PINGUS_DEBUG_SOUND) << "PingusSoundReal: Playing music: " << filename << std::endl;
+  log_info("PingusSoundReal: Playing music: " << filename);
 
   real_stop_music();
 
   music_sample = Mix_LoadMUS(filename.c_str());
   if (!music_sample)
   {
-    perr(PINGUS_DEBUG_SOUND) << "Can't load music: " << filename << "' -- skipping\n"
-                             << "  Mix_Error: " << Mix_GetError() << std::endl;
+    log_error("Can't load music: " << filename << "' -- skipping\n"
+              << "  Mix_Error: " << Mix_GetError());
     return;
   }
 

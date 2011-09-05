@@ -16,8 +16,6 @@
 
 #include "editor/object_properties.hpp"
 
-#include <iostream>
-
 #include "editor/button.hpp"
 #include "editor/checkbox.hpp"
 #include "editor/combobox.hpp"
