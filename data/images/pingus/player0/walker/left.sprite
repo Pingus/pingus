@@ -2,7 +2,7 @@
   (image "../walker.png")
   (offset 0 2)
   (origin "bottom_center")
-  (speed 100)
+  (speed 80)
   (loop #t)
   (array 8 1)
   (size 32 32))
