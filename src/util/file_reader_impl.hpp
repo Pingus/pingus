@@ -43,7 +43,7 @@ public:
   virtual bool read_size  (const char* name, Size&)        const =0;
   virtual bool read_vector2i(const char* name, Vector2i&)  const =0;
   virtual bool read_rect  (const char* name, Rect&)        const =0;
-  virtual bool read_color (const char* name, Color&)       const =0;
+  virtual bool read_colorf(const char* name, Color&)       const =0;
   virtual bool read_desc  (const char* name, ResDescriptor&) const =0;
   virtual bool read_section(const char* name, FileReader&)   const =0;
   virtual std::vector<FileReader> get_sections() const =0;

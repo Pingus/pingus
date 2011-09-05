@@ -43,7 +43,7 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader) :
   ResDescriptor desc;
 
   reader.read_desc("surface", desc);
-  reader.read_color("color", color);
+  reader.read_colorf("color", color);
 
   reader.read_float("para-x", para_x);
   reader.read_float("para-y", para_y);

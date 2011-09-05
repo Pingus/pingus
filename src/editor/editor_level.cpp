@@ -278,7 +278,7 @@ void EditorLevel::load_level(const Pathname& pathname)
     }
     if (attribs & HAS_COLOR)
     {
-      i->read_color("color", tmp_color);
+      i->read_colorf("color", tmp_color);
       obj->set_color(tmp_color);
     }
     if (attribs & HAS_SCROLL)

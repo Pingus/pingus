@@ -173,7 +173,7 @@ public:
     return false;
   }
   
-  bool read_color (const char* name, Color& v) const
+  bool read_colorf(const char* name, Color& v) const
   {
     std::shared_ptr<lisp::Lisp> sub = get_subsection(name);
     if (sub && sub->get_list_size() == 5)
@@ -258,8 +258,8 @@ private:
 
 };
 
-SExprFileReader::SExprFileReader(std::shared_ptr<lisp::Lisp> lisp)
-  : FileReader(std::shared_ptr<FileReaderImpl>(new SExprFileReaderImpl(lisp)))
+SExprFileReader::SExprFileReader(std::shared_ptr<lisp::Lisp> lisp) :
+  FileReader(std::shared_ptr<FileReaderImpl>(new SExprFileReaderImpl(lisp)))
 {
 }
 
