@@ -1646,6 +1646,42 @@
       (position 1101 185 0)
       (owner-id 0)
       (direction "left")
-      (release-rate 1000))))
+      (release-rate 1000))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/test/block1")
+        (modifier "ROT0"))
+      (position 947 449 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/test/block1")
+        (modifier "ROT0"))
+      (position 671 450 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/column")
+        (modifier "ROT0"))
+      (position 927 333 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/column")
+        (modifier "ROT0"))
+      (position 927 433 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/column")
+        (modifier "ROT0"))
+      (position 927 275 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/column")
+        (modifier "ROT90"))
+      (position 947 533 0))))
 
 ;; EOF ;;

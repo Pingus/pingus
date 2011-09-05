@@ -24,42 +24,44 @@
 
 namespace Actions {
 
-Digger::Digger (Pingu* p) :
+Digger::Digger(Pingu* p) :
   PinguAction(p),
-  digger_radius("other/digger_radius_gfx", "other/digger_radius"),
+  digger_radius("pingus/common/digger_radius_gfx", "pingus/common/digger_radius"),
+  digger_radius_final("pingus/common/digger_radius_final_gfx", "pingus/common/digger_radius_final_gfx"),
   sprite(),
-  digger_c(0)
+  delay_count(0)
 {
   sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/digger/left");
 }
 
 void
-Digger::update ()
+Digger::update()
 {
-  sprite.update ();
+  sprite.update();
+
+  delay_count += 1;
 
   if (rel_getpixel(0, -1) ==  Groundtype::GP_WATER
       || rel_getpixel(0, -1) ==  Groundtype::GP_LAVA)
   {
     pingu->set_action(ActionName::DROWN);
-    return;
   }
-
-  if (++digger_c >= 5)
+  else
   {
-    digger_c = 0;
-    dig();
-  }
-
-  if (!have_something_to_dig())
-  {
-    dig ();
-    pingu->set_action(ActionName::WALKER);
+    if (!have_something_to_dig())
+    {
+      dig(true);
+      pingu->set_action(ActionName::WALKER);
+    }
+    else if (delay_count % 4 == 0)
+    {
+      dig(false);
+    }
   }
 }
 
 bool
-Digger::have_something_to_dig ()
+Digger::have_something_to_dig()
 {
   if (rel_getpixel(0, -1) !=  Groundtype::GP_NOTHING)
   {
@@ -78,18 +80,27 @@ Digger::have_something_to_dig ()
 }
 
 void
-Digger::dig ()
+Digger::dig(bool final)
 {
-  WorldObj::get_world()->remove(digger_radius,
-                                static_cast<int>(pingu->get_pos().x - static_cast<float>(digger_radius.get_width() / 2)),
-                                static_cast<int>(pingu->get_pos().y - static_cast<float>(digger_radius.get_height()) + 2.0f));
-  pingu->set_pos(pingu->get_pos().x, pingu->get_pos().y + 1.0f);
+  if (!final)
+  {
+    WorldObj::get_world()->remove(digger_radius,
+                                  pingu->get_xi() - digger_radius.get_width() / 2,
+                                  pingu->get_yi() - digger_radius.get_height() + 2);
+  }
+  else
+  {
+    WorldObj::get_world()->remove(digger_radius_final,
+                                  pingu->get_xi() - digger_radius.get_width() / 2,
+                                  pingu->get_yi() - digger_radius.get_height() + 2);
+  }
+  pingu->set_pos(pingu->get_xi(), pingu->get_yi() + 1);
 }
 
 void
-Digger::draw (SceneContext& gc)
+Digger::draw(SceneContext& gc)
 {
-  gc.color().draw(sprite, pingu->get_pos ());
+  gc.color().draw(sprite, pingu->get_pos());
 }
 
 } // namespace Actions

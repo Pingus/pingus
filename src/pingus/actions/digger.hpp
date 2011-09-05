@@ -27,19 +27,20 @@ class Digger : public PinguAction
 {
 private:
   CollisionMask digger_radius;
+  CollisionMask digger_radius_final;
   Sprite sprite;
-  int digger_c;
+  int delay_count;
 
 public:
   Digger(Pingu*);
 
-  ActionName::Enum get_type () const { return ActionName::DIGGER; }
+  ActionName::Enum get_type() const { return ActionName::DIGGER; }
 
-  bool have_something_to_dig ();
-  void dig ();
+  bool have_something_to_dig();
+  void dig(bool final);
 
-  void draw (SceneContext& gc);
-  void update ();
+  void draw(SceneContext& gc);
+  void update();
 
 private:
   Digger (const Digger&);
