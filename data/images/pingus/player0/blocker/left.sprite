@@ -1,6 +1,6 @@
 (pingus-sprite 
   (image "../blocker.png")
-  (offset 0 2)
+  (offset 0 1)
   (origin "bottom_center")
   (speed 150)
   (loop #t)
