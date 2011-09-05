@@ -1602,116 +1602,50 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/test/test3")
+        (image "groundpieces/ground/test/test10")
         (modifier "ROT0"))
-      (position 851 403 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/test3")
-        (modifier "ROT0"))
-      (position 938 403 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/test3")
-        (modifier "ROT0"))
-      (position 851 449 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/test3")
-        (modifier "ROT0"))
-      (position 938 449 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/test3")
-        (modifier "ROT0"))
-      (position 851 495 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/test3")
-        (modifier "ROT0"))
-      (position 938 495 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/test3")
-        (modifier "ROT0"))
-      (position 851 541 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/test3")
-        (modifier "ROT0"))
-      (position 938 541 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/test3")
-        (modifier "ROT0"))
-      (position 1025 403 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/test3")
-        (modifier "ROT0"))
-      (position 1112 403 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/test3")
-        (modifier "ROT0"))
-      (position 1025 449 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/test3")
-        (modifier "ROT0"))
-      (position 1112 449 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/test3")
-        (modifier "ROT0"))
-      (position 1025 495 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/test3")
-        (modifier "ROT0"))
-      (position 1112 495 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/test3")
-        (modifier "ROT0"))
-      (position 1025 541 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/test3")
-        (modifier "ROT0"))
-      (position 1112 541 0))
+      (position 690 217 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/test/test10")
         (modifier "ROT0"))
-      (position 859 349 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/test10")
-        (modifier "ROT0"))
-      (position 1188 349 0))
+      (position 1183 218 0))
     (entrance 
       (type "generic")
-      (position 1010 303 0)
+      (position 799 188 0)
       (owner-id 0)
-      (direction "misc")
+      (direction "right")
+      (release-rate 1000))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/test/block1")
+        (modifier "ROT0"))
+      (position 690 277 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/test/block1")
+        (modifier "ROT0"))
+      (position 946 277 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/test/block1")
+        (modifier "ROT0"))
+      (position 690 405 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/test/block1")
+        (modifier "ROT0"))
+      (position 946 405 0))
+    (entrance 
+      (type "generic")
+      (position 1101 185 0)
+      (owner-id 0)
+      (direction "left")
       (release-rate 1000))))
 
 ;; EOF ;;
