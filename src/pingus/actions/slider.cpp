@@ -55,7 +55,7 @@ Slider::update ()
         pingu->set_velocity(pingu->get_velocity() + Vector3f(-speed, 0.0));
       }
 
-      pingu->set_action(ActionName::WALKER);
+      pingu->set_action(ActionName::FALLER);
       return;
     }
   }
