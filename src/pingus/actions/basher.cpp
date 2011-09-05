@@ -30,22 +30,19 @@ namespace Actions {
 Basher::Basher (Pingu* p) :
   PinguAction(p),
   sprite(),
-  bash_radius("other/bash_radius_gfx", "other/bash_radius"),
+  bash_radius("pingus/common/bash_radius_gfx", "pingus/common/bash_radius"),
   basher_c(0),
   first_bash(true),
-  bash_radius_width(),
   bash_reach()
 {
+  assert(bash_radius.get_width() % 2 == 0);
+
   sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
                                        pingu->get_owner_str() + "/basher/left"));
   sprite.load(Direction::RIGHT, Sprite("pingus/player" + 
                                        pingu->get_owner_str() + "/basher/right"));
 
-  bash_radius_width = bash_radius.get_width();
-  
-  // The +1 is just in case bash_radius is an odd no.  In which case, want to
-  // round up the result.
-  bash_reach = static_cast<int>(bash_radius_width + 1) / 2;
+  bash_reach = bash_radius.get_width();
 
   // Start a bash even so the action will stops instantly after the
   // first bash
@@ -107,8 +104,8 @@ void
 Basher::bash()
 {
   WorldObj::get_world()->remove(bash_radius,
-                                static_cast<int>(pingu->get_x() - static_cast<float>(bash_radius_width / 2)),
-                                static_cast<int>(pingu->get_y() - static_cast<float>(bash_radius_width + 1)));
+                                pingu->get_xi() - bash_radius.get_width() / 2,
+                                pingu->get_yi() - bash_radius.get_height() + 1);
 }
 
 void
@@ -146,22 +143,23 @@ Basher::have_something_to_dig()
     first_bash = false;
     return true;
   }
-
-  // Check that there is something "within" the Basher's reach
-  for(int x = 0; x <= bash_reach; ++x)
+  else
   {
-    for (int y = min_bash_height; y <= max_bash_height; ++y)
+    // Check that there is something "within" the Basher's reach
+    for(int x = 0; x <= bash_reach; ++x)
     {
-      if (rel_getpixel(x, y) == Groundtype::GP_GROUND)
+      for (int y = min_bash_height; y <= max_bash_height; ++y)
       {
-        pout(PINGUS_DEBUG_ACTIONS) << "Basher: Found something to dig..." << std::endl;
-        return true;
+        if (rel_getpixel(x, y) == Groundtype::GP_GROUND)
+        {
+          pout(PINGUS_DEBUG_ACTIONS) << "Basher: Found something to dig..." << std::endl;
+          return true;
+        }
       }
     }
-  }
 
-  //std::cout << "nothing to dig found" << std::endl;
-  return false;
+    return false;
+  }
 }
 
 } // namespace Actions

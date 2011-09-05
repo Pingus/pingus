@@ -117,6 +117,9 @@ public:
       For backward comp. only */
   const float& get_y () const { return pos_y; }
 
+  int get_xi () const { return static_cast<int>(pos_x); }
+  int get_yi () const { return static_cast<int>(pos_y); }
+
   /** Checks if this action allows to be overwritten with the given new action */
   bool change_allowed (ActionName::Enum new_action);
 

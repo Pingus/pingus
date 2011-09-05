@@ -31,24 +31,21 @@ private:
   int  basher_c;
   bool first_bash;
 
-  /** Width of the bash_radius surface */
-  unsigned int bash_radius_width;
-
   /** The no. of pixels ahead that a Basher checks for something bashable.
       This is initialised using the size of the bash_radius surface. */
   int bash_reach;
 
   /** Defines the minimum "wall" height needed for a bash to happen. */
-  enum { min_bash_height = 5 };
+  static const int min_bash_height = 5;
 
   /** Defines the maximum height up to which a check is made to see if there
       is anything to bash.  Best to make this at least (min_bash_height +
       pingu_height). */
-  enum { max_bash_height = 33 };
+  static const int max_bash_height = 33;
 
   /** Defines the maximum no. of steps down a Basher can go down before it
       stops being a Basher and turns into a Faller. */
-  enum { max_steps_down = 3 };
+  static const int max_steps_down = 3;
 
 public:
   Basher (Pingu* p);
