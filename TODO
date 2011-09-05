@@ -5,17 +5,22 @@ Release Checklist:
 
 - run ./extract-po.sh && ./update-po.sh
 
-- update ChangeLog: svn2cl --break-before-msg
-
-- make sure that the game still runs after install.sh
+- make sure that the game still runs after "make install"
 
 - check NEWS, README, INSTALL.*
 
+- remove log_tmp()
+
 Make a release:
 
-(export can also work with a already checked out version)
-svn export ~/projects/pingus/svn/trunk/pingus/ pingus-0.7.2
-tar cvjf pingus-0.7.2.tar.bz2 pingus-0.7.2
+VERSION="$(cat VERSION)"
+TAG="v${VERSION}"
+git tag -s "${TAG}" -m "pingus ${TAG}" 
+
+# Normal Source
+git archive --format=tar --prefix="pingus-${VERSION}/" ${TAG} | bzip2 -c > /tmp/pingus-${VERSION}.tar.bz2
+
+git push --tags
 
 
 Stuff to do at all times:
@@ -27,9 +32,15 @@ Stuff to do at all times:
 Roadmap for Pingus 0.8.0:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* write a man-page
+
 * add priority to levelsets that can be used to sort them
 
 * make video walkthrough for the whole game (demo files still don't really work)
+
+* give better error message when datadir is not set
+
+* check data/themes/ for any useful stuff
 
 Code Cleanup
 ============
@@ -45,8 +56,6 @@ Code Cleanup
 
 * make pingu.hpp use int not float
 
-* data/prefab/ completly obsolete? if so remove
-
 * pass FileReader by const reference
 
 * namespaces need some cleanup, most names are very ugly and
@@ -57,8 +66,6 @@ Code Cleanup
 
 Cleanup engine/ from pingus/ dependencies
 =========================================
-
-* pingus/debug.hpp move to engine/ or util/
 
 * pingus/fps_counter.hpp move to engine (needs pingus/fonts.hpp, could
   be solved by either setting the Font manually or having a dedicated
@@ -121,10 +128,6 @@ OLPC Issues
 "Important" Stuff and Random Notes:
 ===================================
 
-* music is ignoring some notes in playback, mikmod is likely cause of
-  the trouble, converting everything to .ogg might be an acceptable
-  workaround
-
 * map middle button to pause
 
 * confusing output: 
@@ -177,19 +180,11 @@ Manager: Loading driver 'core'
 
 * add "Replay" to the result screen
 
-* incooperate xskat levels
-
 * animate the flag or remove it for single-player
-
-* make GUI resizable
 
 * playfield scrolling should be float
 
-* generate thumbnails for the editor, loading times are inacceptable
-
 * Repaint Exit panel
-
-* write level 'screenshot' tool
 
 * split Pingus into base and extra user contributed content
 
@@ -256,8 +251,6 @@ Manager: Loading driver 'core'
 * datasets: core/, base/, add-on/ ?
 
 * repaint tutorial island to 1920x1200
-
-* cleanup sound, find out whats wrong with mod playback
 
 * StatManager and new Config stuff should share code
 
@@ -332,8 +325,6 @@ Animation and graphic issues:
 Bugs:
 =====
 
-* go into  a level, resize the window, leave the level, worldmap will look messed up 
-
 * GroundMap tiles are currently RGBA, while in reality they are just
   RGB with a colorkey, room for optimization
 
@@ -346,7 +337,7 @@ Bugs:
 
  - b) The big sign on the 'Tutorial Island' image
 
-* digger (mean basher?) follows down slopes
+* basher follows down slopes (feature?)
 
 * paint climber
 
@@ -387,29 +378,13 @@ New Features:
 
 * test wall-jump: maybe make it smaller then a normal jump
 
-* make climber attach to wall after jumper 
+* make climber attach to wall after jump
 
 
 Bugs:
 =====
 
 * resource system needs a rewrite/implementation
-
-* Level Converter needs to be finalized:
-
-  - convert all levels and check all classic levels for issues, also compare with xskat
-
-  - level converter has a bug that causes some object types to be
-    ignored (startpos and likely the other more excotic worldobj
-    things)
-
-  - fix the level convert script and write test cases for it
-
-  - Loading data/levels/playable/chouser02.pingus in Editor and saving
-    it again causes the background to be at the wrong position (caused
-    by level lacking position and editor setting a different fallback
-    then in-game) [Currently worked around in editor code, should be
-    fixed in the converter]
 
 * StringFormat does line breaking TeX-style, but that isn't useful
   with the current s-expr format, which can handle explicit line
@@ -419,17 +394,12 @@ Bugs:
 Wishlist Stuff:
 ===============
 
-* integrate install command into scons (maybe), use 'install' instead of 'cp'
-
 * Liquids/water is 32, others are 64, this is causing trouble with the
   collision map
 
 
 Undecided stuff:
 ================
-
-* start_pos is missing in editor (worked around by centering the view
-  on the entrances)
 
 * implemented input/ComboButton for Shift+Tab combinations
 
@@ -449,17 +419,11 @@ Undecided stuff:
 
 * remove SceneContext from Credits, replace with DrawingContext
 
-* sv.po, Swedish is incomplete, lacks level and story text
-
 * story graphics have a missing vertical line (due to age old gimp scaling bug)
  
 * add drag&drop scrolling
 
 * nuke button is unclean, other buttons not so great either -> repaint
-
-* walker speed looks wrong, other actions might need fine tuning as well
-
-* write a README.input
 
 
 Roadmap for Pingus Editor 0.7.3:
@@ -475,8 +439,6 @@ Important:
   - hotpost/parallax (replace with para-x, para-y)
 
 * Pack some new levels: indiana
-
-* keep-aspect is missing in the editor
 
 
 Medium Important:
@@ -532,18 +494,11 @@ Older Stuff:
   the current ones don't work very good since the remove path is too smooth
   - keep_trans,alpha blitters would also be very nice (darken the border of a digging path or something like that)
 
-* diggers leave a small pixel barier when finished with there digging,
-  which can be abused as a step
-
 * replace all '9000' time levels with '-1' time or correct time
 
 * fix author in all levels
 
 * update email addrs and missing author fields in level files
-
-* floater and jumper don't work together
-
-* playable and non-playable levels should be sorted
 
 * add better load-from-file support for hotspots, backgrounds, etc.
 
@@ -554,12 +509,6 @@ Older Stuff:
   worry about floaters moving so slowly a lot of the time, when
   unnecessary
 
-* Bashers cut in circles, so their last two or three swipes should be
-  square when breaking through to an open space, since they currently
-  can trap Pingu in, requiring another one or two bashes. This is
-  especially obvious when bashing through wells. They can also bash
-  through metal, which they shouldn't be able to.
-
 * All entrances should have graphics and be animated
 
 * Bridgers seem to move backwards when they first start stacking (I
@@ -568,8 +517,6 @@ Older Stuff:
   graphic - probably because it's confined to a square of the same
   size - maybe give special workers slightly larger graphic sizes, so
   they can appear to be the same size as walkers)
-
-* Sometimes diggers can't be changed into miners.
 
 * In space levels, Pingu that fall off of a cliff into space don't
   die, though they should just like in water or lava.
