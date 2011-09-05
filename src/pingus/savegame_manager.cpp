@@ -19,6 +19,7 @@
 #include <fstream>
 
 #include "lisp/parser.hpp"
+#include "util/log.hpp"
 #include "util/sexpr_file_reader.hpp"
 #include "util/sexpr_file_writer.hpp"
 #include "util/system.hpp"
@@ -73,7 +74,7 @@ SavegameManager::SavegameManager(const std::string& arg_filename) :
     SavegameTable::iterator j = find(savegame->get_filename());
     if (j != savegames.end())
     { // overwrite duplicates, shouldn't happen, but harmless
-      std::cout << "SavegameManager: name collision: " << savegame->get_filename() << std::endl;
+      log_info("SavegameManager: name collision: " << savegame->get_filename());
       delete *j;
       *j = savegame;
     }
@@ -131,7 +132,7 @@ SavegameManager::store(Savegame& arg_savegame)
 SavegameManager::SavegameTable::iterator
 SavegameManager::find(const std::string& filename_)
 {
-  //std::cout << "SavegameManager::find: \"" << filename << "\"" << std::endl;
+  //log_info("SavegameManager::find: \"" << filename << "\"");
 
   for(SavegameTable::iterator i = savegames.begin();
       i != savegames.end(); ++i)

@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "engine/display/sprite_description.hpp"
+#include "util/log.hpp"
 
 SpriteDescriptionPtr
 SpriteDescription::from_file(const Pathname& path)
@@ -30,7 +31,7 @@ SpriteDescription::from_file(const Pathname& path)
     
   if (!reader.read_path("image",  desc->filename))
   {
-    std::cout << "Error: SpriteDescription: " << reader.get_name() << " 'image' missing" << std::endl;
+    log_error(reader.get_name() << " 'image' missing");
   }    
 
   desc->filename = Pathname(desc->filename.get_raw_path(), Pathname::DATA_PATH); // FIXME: Hack

@@ -27,6 +27,7 @@
 #include "editor/level_objs.hpp"
 #include "pingus/gettext.h"
 #include "pingus/groundtype.hpp"
+#include "util/log.hpp"
 #include "util/string_util.hpp"
 
 namespace Editor {
@@ -337,7 +338,7 @@ ObjectProperties::set_object(LevelObj* obj)
       else if (obj->get_direction() == "right")
         entrance_direction->set_selected_item(2);
       else
-        std::cout << "Error: ObjectProperties::set_object: unknown direction: " << obj->get_direction() << std::endl;
+        log_error("unknown direction: " << obj->get_direction());
 
       place(entrance_direction_label, entrance_direction);
     }

@@ -20,6 +20,7 @@
 #include <iostream>
 
 #include "engine/display/drawing_context.hpp"
+#include "util/log.hpp"
 
 namespace Editor {
 
@@ -112,8 +113,7 @@ LevelObj::get_attributes(std::string obj_type)
     return HAS_OWNER | HAS_SURFACE;
   else
   {
-    std::cout << "Error: LevelObj::get_attributes(): unknown object type: '"
-              << obj_type << "'" << std::endl;
+    log_error("unknown object type: '" << obj_type << "'");
     return 0;
   }
 }

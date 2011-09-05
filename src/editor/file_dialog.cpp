@@ -23,6 +23,7 @@
 #include "editor/label.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
+#include "util/log.hpp"
 
 namespace Editor {
 
@@ -112,7 +113,7 @@ FileDialog::load_file(const System::DirectoryEntry& entry)
 
   if (entry.type == System::DE_DIRECTORY)
   {
-    //std::cout << "Directory: " << entry.name << std::endl;
+    //log_info("Directory: " << entry.name);
     set_directory(pathname_inputbox->get_text() + "/" + entry.name);
   }
   else
@@ -135,7 +136,7 @@ FileDialog::set_directory(const std::string& pathname_)
 void
 FileDialog::on_cancel()
 {
-  std::cout << "Cancel" << std::endl;
+  log_info("Cancel");
   hide();
 }
 
@@ -147,14 +148,14 @@ FileDialog::on_open()
     if (mode == LOAD)
     {
       Pathname file(pathname_inputbox->get_text() + "/" + filename_inputbox->get_text(), Pathname::SYSTEM_PATH);
-      std::cout << "Open: " << file << std::endl;
+      log_info("Open: " << file);
       editor->load(file);
       hide();
     }
     else if (mode == SAVE) 
     {
       Pathname file(pathname_inputbox->get_text() + "/" + filename_inputbox->get_text(), Pathname::SYSTEM_PATH);
-      std::cout << "Save: " << file << std::endl;
+      log_info("Save: " << file);
       editor->save(file);
       hide();
     }

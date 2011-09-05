@@ -19,6 +19,7 @@
 #include "engine/display/display.hpp"
 #include "engine/display/framebuffer.hpp"
 #include "engine/display/sprite_description.hpp"
+#include "util/log.hpp"
 
 FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceModifier::Enum modifier)
 {
@@ -31,7 +32,7 @@ FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceMo
 
   if (!surface)
   {
-    std::cout << "Error: Sprite: couldn't load '" << filename << "'" << std::endl;
+    log_error("couldn't load '" << filename << "'");
     surface = Surface(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
     if (!surface) assert(!"Surface Couldn't find 404");
   }

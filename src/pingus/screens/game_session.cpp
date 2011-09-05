@@ -33,6 +33,7 @@
 #include "pingus/savegame_manager.hpp"
 #include "pingus/screens/result_screen.hpp"
 #include "pingus/world.hpp"
+#include "util/log.hpp"
 
 GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_screen) :
   plf(arg_plf),
@@ -200,7 +201,7 @@ GameSession::update(const Input::Event& event)
 {
   GUIScreen::update(event);
 
-  //std::cout << "Events: " << event.get_type () << std::endl;
+  //log_info("Events: " << event.get_type ());
 
   switch (event.type)
   {
@@ -244,7 +245,7 @@ GameSession::update(const Input::Event& event)
 
     default:
       // unhandled event
-      std::cout << "GameSession::process_events (): unhandled event: " << event.type << std::endl;
+      log_info("GameSession::process_events (): unhandled event: " << event.type);
       break;
   }
 }
@@ -259,7 +260,7 @@ GameSession::process_scroll_event (const Input::ScrollEvent& ev)
 void
 GameSession::process_axis_event (const Input::AxisEvent& event)
 {
-  // std::cout << "GameSession::process_axis_event ()" << std::endl;
+  // log_info("GameSession::process_axis_event ()");
 }
 
 void
@@ -320,7 +321,7 @@ GameSession::on_startup ()
   is_finished = false;
 
   if (globals::maintainer_mode)
-    std::cout << "Starting Music: " << server->get_plf().get_music() << std::endl;
+    log_info("Starting Music: " << server->get_plf().get_music());
 
   if (server->get_plf().get_music() == "none")
   {

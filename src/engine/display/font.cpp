@@ -22,6 +22,7 @@
 #include "engine/display/font_description.hpp"
 #include "engine/display/framebuffer.hpp"
 #include "util/line_iterator.hpp"
+#include "util/log.hpp"
 #include "util/utf8.hpp"
 
 class FontImpl
@@ -54,7 +55,7 @@ public:
 
       if (!framebuffer_surfaces.back())
       {
-        std::cout << "IMG: " << desc.images[j].pathname.str() << std::endl;
+        log_info("IMG: " << desc.images[j].pathname.str());
         assert(false);
       }
 
@@ -71,12 +72,12 @@ public:
           }
           else
           {
-            std::cout << "Warning: unicode collision on " << i->unicode << std::endl;
+            log_warn("unicode collision on " << i->unicode);
           }            
         }
         else
         {
-          std::cout << "Warning: unicode out of range: " << i->unicode << std::endl;
+          log_warn("unicode out of range: " << i->unicode);
         }
       }
     }

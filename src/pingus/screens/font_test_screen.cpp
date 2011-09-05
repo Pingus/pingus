@@ -23,6 +23,7 @@
 #include "engine/display/font_description.hpp"
 #include "engine/input/event.hpp"
 #include "pingus/fonts.hpp"
+#include "util/log.hpp"
 #include "util/string_util.hpp"
 
 FontTestScreen::FontTestScreen(const Pathname& fontfile) :
@@ -32,7 +33,7 @@ FontTestScreen::FontTestScreen(const Pathname& fontfile) :
   scroll(),
   dark(true)
 {
-  std::cout << "### Loading font file: " << fontfile << std::endl;
+  log_info("### Loading font file: " << fontfile);
   font = Font(FontDescription(fontfile));
   reference = Font(FontDescription(Pathname("images/fonts/reference-iso-8859-1.font", Pathname::DATA_PATH)));
 }

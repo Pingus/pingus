@@ -59,7 +59,7 @@ MenuButton::~MenuButton ()
 void
 MenuButton::on_click ()
 {
-  //std::cout << "MenuButton: Click" << std::endl;
+  //log_info("MenuButton: Click");
   menu->on_click(this);
 }
 
@@ -89,14 +89,14 @@ MenuButton::on_pointer_enter ()
 {
   mouse_over = true;
   Sound::PingusSound::play_sound ("tick");
-  //std::cout << "X: " << this << "enter" << std::endl;
+  //log_info("X: " << this << "enter");
   menu->set_hint(desc);
 }
 
 void
 MenuButton::on_pointer_leave ()
 {
-  //std::cout << "X: " << this << "leave" << std::endl;
+  //log_info("X: " << this << "leave");
   mouse_over = false;
   menu->set_hint("");
 }

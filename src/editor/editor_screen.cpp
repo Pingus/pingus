@@ -31,6 +31,7 @@
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "pingus/screens/game_session.hpp"
+#include "util/log.hpp"
 
 namespace Editor {
 
@@ -127,7 +128,7 @@ void
 EditorScreen::save(const Pathname& file)
 {
   level_pathname = file;
-  std::cout << "Save to: " << file.str() << std::endl;
+  log_info("Save to: " << file.str());
   if (!plf->save_level(level_pathname.get_sys_path()))
   {
     // FIXME: save failed, prompt user
@@ -387,7 +388,7 @@ EditorScreen::objects_rotate_right()
 void 
 EditorScreen::toggle_grid_snap()
 {
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+  log_info("Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented"); 
 }
  
 void

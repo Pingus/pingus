@@ -19,6 +19,7 @@
 #include <stdexcept>
 
 #include "engine/input/driver_factory.hpp"
+#include "util/log.hpp"
 #include "util/pathname.hpp"
 #include "util/string_util.hpp"
 
@@ -107,7 +108,7 @@ Manager::create_controller(const Pathname& filename)
           if (pointer)
             ctrl_pointer->add_pointer(pointer);
           else
-            std::cout << "Manager: pointer: Couldn't create pointer " << j->get_name() << std::endl;
+            log_error("Manager: pointer: Couldn't create pointer " << j->get_name());
         }
 
       }
@@ -122,7 +123,7 @@ Manager::create_controller(const Pathname& filename)
           if (scroller)
             ctrl_scroller->add_scroller(scroller);
           else
-            std::cout << "Manager: scroller: Couldn't create scroller " << j->get_name() << std::endl;
+            log_error("Manager: scroller: Couldn't create scroller " << j->get_name());
         }
 
       }
@@ -137,7 +138,7 @@ Manager::create_controller(const Pathname& filename)
           if (button)
             ctrl_button->add_button(button);
           else
-            std::cout << "Manager: button: Couldn't create button " << j->get_name() << std::endl;
+            log_error("Manager: button: Couldn't create button " << j->get_name());
         }
       }
       else if (StringUtil::has_suffix(i->get_name(), "axis"))
@@ -151,7 +152,7 @@ Manager::create_controller(const Pathname& filename)
           if (axis)
             ctrl_axis->add_axis(axis);
           else
-            std::cout << "Manager: axis: Couldn't create axis " << j->get_name() << std::endl;
+            log_error("Manager: axis: Couldn't create axis " << j->get_name());
         }
       }
       else if (StringUtil::has_suffix(i->get_name(), "keyboard"))
@@ -165,7 +166,7 @@ Manager::create_controller(const Pathname& filename)
           if (keyboard)
             ctrl_keyboard->add_keyboard(keyboard);
           else
-            std::cout << "Manager: keyboard: Couldn't create keyboard " << j->get_name() << std::endl;
+            log_error("Manager: keyboard: Couldn't create keyboard " << j->get_name());
         }              
       }
       else
@@ -216,12 +217,12 @@ Manager::load_driver(const std::string& name)
   }
   else
   {
-    std::cout << "Manager: Loading driver '" << name << "'" << std::endl;
+    log_error("Manager: Loading driver '" << name << "'");
 
     driver = DriverFactory::create(name, this);
     if (!driver)
     {
-      std::cout << "Manager: Unknown driver: " << name << std::endl;
+      log_error("Manager: Unknown driver: " << name);
       return 0;
     }
     else
@@ -244,7 +245,7 @@ Manager::create_button(const FileReader& reader, Control* parent)
   }
   else
   {
-    std::cout << "Manager: Error: Couldn't find driver: '" << driver << "'" << std::endl;
+    log_error("Manager: Error: Couldn't find driver: '" << driver << "'");
     return 0;
   }
 }
@@ -261,7 +262,7 @@ Manager::create_axis(const FileReader& reader, Control* parent)
   }
   else
   {
-    std::cout << "Manager: Error: Couldn't find driver: '" << driver << "'" << std::endl;
+    log_error("Manager: Error: Couldn't find driver: '" << driver << "'");
     return 0;
   }
 }
@@ -278,7 +279,7 @@ Manager::create_pointer(const FileReader& reader, Control* parent)
   }
   else
   {
-    std::cout << "Manager: Error: Couldn't find driver: '" << driver << "'" << std::endl;
+    log_error("Manager: Error: Couldn't find driver: '" << driver << "'");
     return 0;
   }
 }
@@ -295,7 +296,7 @@ Manager::create_scroller(const FileReader& reader, Control* parent)
   }
   else
   {
-    std::cout << "Manager: Error: Couldn't find driver: '" << driver << "'" << std::endl;
+    log_error("Manager: Error: Couldn't find driver: '" << driver << "'");
     return 0;
   }
 }
@@ -312,7 +313,7 @@ Manager::create_keyboard(const FileReader& reader, Control* parent)
   }
   else
   {
-    std::cout << "Manager: Error: Couldn't find driver: '" << driver << "'" << std::endl;
+    log_error("Manager: Error: Couldn't find driver: '" << driver << "'");
     return 0;
   }  
 }

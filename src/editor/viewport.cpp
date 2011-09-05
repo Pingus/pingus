@@ -21,6 +21,7 @@
 
 #include "editor/editor_level.hpp"
 #include "engine/display/display.hpp"
+#include "util/log.hpp"
 
 namespace Editor {
 
@@ -322,7 +323,7 @@ Viewport::on_key_pressed(const unsigned short c)
 
 
       default:
-        std::cout << "Viewport::on_key_pressed: " << int(c) << " " << static_cast<char>(c) << std::endl;
+        log_debug("Viewport::on_key_pressed: " << int(c) << " " << static_cast<char>(c));
         break;
     }
   }

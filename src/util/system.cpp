@@ -43,6 +43,7 @@
 #endif
 
 #include "pingus/globals.hpp"
+#include "util/log.hpp"
 #include "util/pathname.hpp"
 
 std::string System::userdir;
@@ -103,7 +104,7 @@ System::opendir(const std::string& pathname, const std::string& pattern)
 
   if (dp == 0)
   {
-    std::cout << "System: Couldn't open: " << pathname << std::endl;
+    log_error("System: Couldn't open: " << pathname);
   }
   else
   {
@@ -139,7 +140,7 @@ System::opendir(const std::string& pathname, const std::string& pattern)
   if (hFind == INVALID_HANDLE_VALUE)
   {
     if (GetLastError() != ERROR_FILE_NOT_FOUND)
-      std::cout << "System: Couldn't open: " << pathname << std::endl;
+      log_error("System: Couldn't open: " << pathname);
   }
   else
   {
@@ -233,7 +234,7 @@ System::create_dir(std::string directory)
 #ifndef WIN32
   if (globals::pingus_debug_flags & PINGUS_DEBUG_DIRECTORIES)
   {
-    std::cout << "System::create_dir: " << directory << std::endl;
+    log_info("System::create_dir: " << directory);
   }
 
   if (!exist(directory))
@@ -244,7 +245,7 @@ System::create_dir(std::string directory)
     }
     else
     {
-      std::cout << "Successfully created: " << directory << std::endl;
+      log_info("Successfully created: " << directory);
     }
   }
 #else
@@ -266,7 +267,7 @@ System::create_dir(std::string directory)
   }
   else
   {
-    std::cout << "Successfully created: " << directory << std::endl;
+    log_info("Successfully created: " << directory);
   }
 #endif
 }
@@ -439,7 +440,7 @@ System::checksum(std::string filename)
 
   if (!in)
   {
-    std::cout << "System::checksum: Couldn't open file: " << filename << std::endl;
+    log_error("System::checksum: Couldn't open file: " << filename);
     return "";
   }
 
@@ -508,7 +509,7 @@ System::realpath(const std::string& pathname)
     char cwd[PATH_MAX];
     if (getcwd(cwd, PATH_MAX) == 0)
     {
-      std::cout << "System::realpath: Error: couldn't getcwd()" << std::endl;
+      log_error("System::realpath: Error: couldn't getcwd()");
       return pathname;
     }
 #ifdef WIN32

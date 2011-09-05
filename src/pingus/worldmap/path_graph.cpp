@@ -21,6 +21,7 @@
 #include "pingus/worldmap/dot_factory.hpp"
 #include "pingus/worldmap/path_drawable.hpp"
 #include "pingus/worldmap/worldmap.hpp"
+#include "util/log.hpp"
 
 namespace WorldmapNS {
 
@@ -65,7 +66,7 @@ PathGraph::parse_nodes(const FileReader& reader)
       // add the dot to the pathfinding
       NodeId id = graph.add_node(dot);
 
-      //std::cout << "Adding to lookup table: " << dot->get_name() << std::endl;
+      //log_info("Adding to lookup table: " << dot->get_name());
       node_lookup[dot->get_name()] = id;
 
       // add the dot to the list of drawables
@@ -77,7 +78,7 @@ PathGraph::parse_nodes(const FileReader& reader)
     }
     else
     {
-      std::cout << "PathGraph: Couldn't create node" << std::endl;
+      log_info("PathGraph: Couldn't create node");
     }
   }
 }
@@ -142,7 +143,7 @@ PathGraph::parse_edges(const FileReader& reader)
                      lookup_node(source), lookup_node(destination),
                      cost /* costs */);
 
-      //std::cout << "Cost: " << cost << std::endl;
+      //log_info("Cost: " << cost);
 
       // FIXME: edge lookup is flawed, since we have different edges in both directions
 
@@ -175,7 +176,7 @@ PathGraph::lookup_edge(const std::string& name)
   std::map<std::string, EdgeId>::iterator i = edge_lookup.find(name);
   if (i == edge_lookup.end())
   {
-    std::cout << "Couldn't find EdgeId for: " << name << std::endl;
+    log_info("Couldn't find EdgeId for: " << name);
     return NoEdge;
   }
   else
@@ -190,7 +191,7 @@ PathGraph::lookup_node(const std::string& name)
   std::map<std::string, NodeId>::iterator i = node_lookup.find(name);
   if (i == node_lookup.end())
   {
-    std::cout << "Couldn't find NodeId for: " << name << std::endl;
+    log_info("Couldn't find NodeId for: " << name);
     return NoNode;
   }
   else
@@ -210,7 +211,7 @@ PathGraph::lookup_node(EdgeId id)
       return i->first;
     }
   }
-  std::cout << "PathGraph: Couldn't find id: " << id << std::endl;
+  log_info("PathGraph: Couldn't find id: " << id);
   return "error_node";
 }
 
@@ -225,7 +226,7 @@ PathGraph::lookup_edge(NodeId id)
       return i->first;
     }
   }
-  std::cout << "PathGraph: Couldn't find id: " << id << std::endl;
+  log_info("PathGraph: Couldn't find id: " << id);
   return "error_node";
 }
 

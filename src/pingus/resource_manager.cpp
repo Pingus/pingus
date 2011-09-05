@@ -22,6 +22,7 @@
 #include "lisp/parser.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
+#include "util/log.hpp"
 #include "util/sexpr_file_reader.hpp"
 #include "util/string_util.hpp"
 #include "util/system.hpp"
@@ -74,7 +75,7 @@ ResourceManager::add_resources(const std::string& filename)
       std::vector<FileReader> sections = reader.get_sections();
       for(std::vector<FileReader>::iterator i = sections.begin(); i != sections.end(); ++i)
       {
-        //std::cout << "Section: " << i->get_name() << std::endl;
+        //log_info("Section: " << i->get_name());
         parse("", *i);
       }
     }
@@ -87,7 +88,7 @@ ResourceManager::add_resources(const std::string& filename)
   }
   else
   {
-    std::cout << "ResourceManager: File not found " << filename << std::endl;
+    log_info("ResourceManager: File not found " << filename);
   }
 }
 
@@ -135,7 +136,7 @@ ResourceManager::parse(const std::string& section, FileReader& reader)
     if (reader.read_string("name", name) &&
         reader.read_string("link", link))
     {
-      //std::cout << "alias: " << name << " -> " << link << std::endl;
+      //log_info("alias: " << name << " -> " << link);
       aliases[name] = link;
     }
   }
@@ -145,7 +146,7 @@ ResourceManager::parse(const std::string& section, FileReader& reader)
   }
   else
   {
-    std::cout << "ResourceManager: unknown token: '" << reader.get_name() << "'" << std::endl;
+    log_info("ResourceManager: unknown token: '" << reader.get_name() << "'");
   }
 }
 

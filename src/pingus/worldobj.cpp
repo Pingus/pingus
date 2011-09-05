@@ -18,6 +18,8 @@
 
 #include <iostream>
 
+#include "util/log.hpp"
+
 World* WorldObj::world;
 
 void
@@ -59,8 +61,8 @@ void
 WorldObj::draw_offset(int /*x*/, int /*y*/, float /*s*/)
 {
   // do nothing
-  std::cout << "WorldObj::draw_offset(): not implemented, probally a bug: "
-            << typeid(*this).name () << std::endl;
+  log_error("WorldObj::draw_offset(): not implemented, probally a bug: "
+            << typeid(*this).name ());
 }
 
 void
@@ -72,8 +74,8 @@ void
 WorldObj::draw (SceneContext& gc)
 {
   // FIXME: I need some docu on the meaning of get_x_offset() and co.
-  std::cout << "WorldObj:draw(SceneContext): Using compat-wrapper: "
-            << typeid(*this).name () << std::endl;
+  log_error("WorldObj:draw(SceneContext): Using compat-wrapper: "
+            << typeid(*this).name ());
 #if 0 // FIXME:
   draw_offset (static_cast<int>(gc.get_x_offset () + gc.get_width ()/2),
                static_cast<int>(gc.get_y_offset () + gc.get_height ()/2),

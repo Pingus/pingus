@@ -20,6 +20,7 @@
 #include "editor/object_selector.hpp"
 #include "editor/object_selector_set.hpp"
 #include "editor/viewport.hpp"
+#include "util/log.hpp"
 
 namespace Editor {
 
@@ -138,7 +139,7 @@ ObjectSelectorList::on_primary_button_release (int x, int y)
         if (obj)
           editor->add_object(obj);
         else
-          std::cout << "ObjectSelectorList::Object: create() not implemented" << std::endl;
+          log_error("ObjectSelectorList::Object: create() not implemented");
       }
     }
   }

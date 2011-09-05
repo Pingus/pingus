@@ -25,6 +25,7 @@
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "pingus/resource.hpp"
+#include "util/log.hpp"
 
 namespace Editor {
 
@@ -516,14 +517,14 @@ ObjectSelectorSet*
 ObjectSelector::create_weather()
 {
   //create_objects("weather");
-  std::cout << "ObjectSelector: unimplemented: " << __FILE__ << ":" << __LINE__ << std::endl;
+  log_warn("ObjectSelector: unimplemented: " << __FILE__ << ":" << __LINE__);
   return new ObjectSelectorSet(object_list, 48, 48);
 }
 
 ObjectSelectorSet*
 ObjectSelector::create_worldobj()
 {
-  std::cout << "ObjectSelector: unimplemented: " << __FILE__ << ":" << __LINE__ << std::endl;
+  log_warn("ObjectSelector: unimplemented: " << __FILE__ << ":" << __LINE__);
   return new ObjectSelectorSet(object_list, 48, 48);
 }
 

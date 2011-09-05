@@ -24,6 +24,7 @@
 #include "engine/input/event.hpp"
 #include "math/math.hpp"
 #include "math/vector2f.hpp"
+#include "util/log.hpp"
 
 namespace Input {
 
@@ -48,7 +49,7 @@ public:
     }
     else
     {
-      std::cout << "Input: Control: Error: parent missing! " << std::endl;
+      log_error("parent missing!");
     }
   }
 
@@ -56,7 +57,7 @@ public:
   }
   
   virtual void update(Control* ctrl) {
-    std::cout << "Warning: Control:update() not handled" << std::endl;
+    log_warn("Control:update() not handled");
   }
 
 private:

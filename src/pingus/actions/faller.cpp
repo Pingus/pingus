@@ -108,13 +108,13 @@ Faller::update ()
       // Did we stop too fast?
       else if (Math::abs(pingu->get_velocity().y) > deadly_velocity)
       {
-        //std::cout << "Pingus splashed: " << pingu->get_velocity().y << " " << deadly_velocity << std::endl;
+        //log_info("Pingus splashed: " << pingu->get_velocity().y << " " << deadly_velocity);
         pingu->set_action(ActionName::SPLASHED);
       }
       else
       {
         // This is where the jumper bug happens
-        //std::cout << "Reached the unreachable: " << pingu->get_velocity().y << std::endl;
+        //log_info("Reached the unreachable: " << pingu->get_velocity().y);
         if (pingu->get_previous_action() == ActionName::BLOCKER)
           pingu->set_action(pingu->get_previous_action());
         else

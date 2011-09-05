@@ -22,6 +22,7 @@
 #include "engine/display/blitter.hpp"
 #include "math/rect.hpp"
 #include "pingus/debug.hpp"
+#include "util/log.hpp"
 
 class SurfaceImpl
 {
@@ -110,11 +111,11 @@ Surface::blit(const Surface& src, int x, int y)
 {
   if (!get_surface())
   {
-    std::cout << "Surface: Trying to blit to empty surface" << std::endl;
+    log_error("trying to blit to empty surface");
   }
   else if (!src.get_surface())
   {
-    std::cout << "Surface: Trying to blit with an empty surface" << std::endl;
+    log_error("trying to blit with an empty surface");
   }
   else
   {

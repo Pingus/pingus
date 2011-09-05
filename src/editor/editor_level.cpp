@@ -21,6 +21,7 @@
 #include <iostream>
 
 #include "pingus/pingus_level.hpp"
+#include "util/log.hpp"
 #include "util/sexpr_file_writer.hpp"
 
 namespace Editor {
@@ -111,7 +112,7 @@ EditorLevel::get_size() const
 */
 bool EditorLevel::is_valid()
 {
-  //std::cout << "EditorLevel::is_valid() - Not yet implemented" << std::endl;
+  //log_info("EditorLevel::is_valid() - Not yet implemented");
   if (impl)
     return true;
   else
@@ -184,7 +185,7 @@ bool EditorLevel::save_level(const std::string& filename)
 // Load an existing level from a file
 void EditorLevel::load_level(const Pathname& pathname)
 {
-  std::cout << "EditorLevel::load_level: " << pathname.str() << std::endl;
+  log_info("EditorLevel::load_level: " << pathname.str());
 
   // Get a new level implementation with default settings. It is a
   // good idea to set the level defaults first, in case the level file

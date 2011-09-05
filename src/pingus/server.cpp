@@ -22,6 +22,7 @@
 #include "pingus/goal_manager.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/world.hpp"
+#include "util/log.hpp"
 #include "util/system.hpp"
 
 static std::string get_date_string ()
@@ -51,13 +52,13 @@ static std::unique_ptr<std::ostream> get_demostream(const PingusLevel& plf)
   
   if (!(*out.get()))
   {
-    std::cout << "DemoRecorder: Error: Couldn't write DemoFile '" << filename
-              << "', demo recording will be disabled" << std::endl;
+    log_error("DemoRecorder: Error: Couldn't write DemoFile '" << filename
+             << "', demo recording will be disabled");
     return std::unique_ptr<std::ostream>();
   }
   else
   {
-    std::cout << "DemoRecorder: Writing demo to: " << filename << std::endl;
+    log_info("DemoRecorder: Writing demo to: " << filename);
 
     // Write file header
     *out << "(level (name \"" << plf.get_resname() << "\"))\n";

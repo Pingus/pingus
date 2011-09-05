@@ -24,6 +24,7 @@
 #include "pingus/globals.hpp"
 #include "pingus/screens/addon_menu.hpp"
 #include "pingus/screens/option_menu.hpp"
+#include "util/log.hpp"
 
 GlobalEvent global_event;
 
@@ -76,7 +77,7 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
     case SDLK_k:
       if (globals::maintainer_mode)
       {
-        std::cout << "Low level screen clear triggered" << std::endl;
+        log_info("Low level screen clear triggered");
         SDL_Surface* screen = SDL_GetVideoSurface();
         SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 255, 255, 0));
         SDL_Flip(screen);
@@ -86,7 +87,7 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
     case SDLK_m:
       if (keystate[SDLK_LCTRL] || keystate[SDLK_RCTRL])
       {
-        std::cout << "Maintainer Mode: " << globals::maintainer_mode << std::endl;
+        log_info("Maintainer Mode: " << globals::maintainer_mode);
         globals::maintainer_mode = !globals::maintainer_mode;
       }
       break;

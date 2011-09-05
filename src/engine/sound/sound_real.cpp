@@ -22,6 +22,7 @@
 #include "engine/sound/sound_res_mgr.hpp"
 #include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
+#include "util/log.hpp"
 
 namespace Sound {
 
@@ -32,7 +33,7 @@ PingusSoundReal::PingusSoundReal ()
 
   if (SDL_Init(SDL_INIT_AUDIO) == -1)
   {
-    std::cout << "Unable to initialize SDL: " << SDL_GetError() << std::endl;
+    log_error("Unable to initialize SDL: " << SDL_GetError());
     throw std::runtime_error(SDL_GetError());
   }
 
@@ -40,7 +41,7 @@ PingusSoundReal::PingusSoundReal ()
 
   if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
   {
-    std::cout << "Unable to initialize SDL_Mixer: " << Mix_GetError() << std::endl;
+    log_error("Unable to initialize SDL_Mixer: " << Mix_GetError());
     throw std::runtime_error(Mix_GetError());
   }
 }

@@ -110,7 +110,7 @@ Resource::load_thumb_sprite(const std::string& name)
   Pathname thumb_path("thumbnails/" + name + ".png", Pathname::DATA_PATH);
   if (thumb_path.exist())
   {
-    std::cout << "Loading thumb from: " << thumb_path.str() << std::endl;
+    log_info("Loading thumb from: " << thumb_path.str());
     return Sprite(thumb_path);
   }
   else

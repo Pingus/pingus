@@ -18,6 +18,7 @@
 
 #include "engine/display/display.hpp"
 #include "engine/input/manager.hpp"
+#include "util/log.hpp"
 
 namespace Input {
 
@@ -50,7 +51,7 @@ public:
 
   void update(Control* ) 
   {
-    //std::cout << "event" << std::endl;
+    //log_error("event");
   }
 
   void update(float delta)
@@ -115,7 +116,7 @@ public:
 
   void update(Control* ) 
   {
-    //std::cout << "event" << std::endl;
+    //log_error("event");
   }
 
   void update(float delta_)
@@ -231,7 +232,7 @@ CoreDriver::create_scroller(const FileReader& reader, Control* parent)
     FileReader x_reader;
     if (!reader.read_section("x-axis", x_reader))
     {
-      std::cout << "CoreDriver: Couldn't find x-axis" << std::endl;
+      log_error("CoreDriver: Couldn't find x-axis");
       delete axis;
       return 0;
     }
@@ -239,7 +240,7 @@ CoreDriver::create_scroller(const FileReader& reader, Control* parent)
     FileReader y_reader;
     if (!reader.read_section("y-axis", y_reader))
     {
-      std::cout << "CoreDriver: Couldn't find y-axis" << std::endl;
+      log_error("CoreDriver: Couldn't find y-axis");
       delete axis;
       return 0;       
     }
@@ -271,7 +272,7 @@ CoreDriver::create_scroller(const FileReader& reader, Control* parent)
     FileReader left_reader;
     if (!reader.read_section("left", left_reader))
     {
-      std::cout << "CoreDriver: core:button-scroller: Couldn't find 'left'" << std::endl;
+      log_error("CoreDriver: core:button-scroller: Couldn't find 'left'");
       delete scroller;
       return 0;
     }
@@ -279,7 +280,7 @@ CoreDriver::create_scroller(const FileReader& reader, Control* parent)
     FileReader right_reader;
     if (!reader.read_section("right", right_reader))
     {
-      std::cout << "CoreDriver: core:button-scroller: Couldn't find 'right'" << std::endl;
+      log_error("CoreDriver: core:button-scroller: Couldn't find 'right'");
       delete scroller;
       return 0;
     }
@@ -287,7 +288,7 @@ CoreDriver::create_scroller(const FileReader& reader, Control* parent)
     FileReader up_reader;
     if (!reader.read_section("up", up_reader))
     {
-      std::cout << "CoreDriver: core:button-scroller: Couldn't find 'up'" << std::endl;
+      log_error("CoreDriver: core:button-scroller: Couldn't find 'up'");
       delete scroller;
       return 0;
     }
@@ -295,7 +296,7 @@ CoreDriver::create_scroller(const FileReader& reader, Control* parent)
     FileReader down_reader;
     if (!reader.read_section("down", down_reader))
     {
-      std::cout << "CoreDriver: core:button-scroller: Couldn't find 'down'" << std::endl;
+      log_error("CoreDriver: core:button-scroller: Couldn't find 'down'");
       delete scroller;
       return 0;
     }
@@ -328,7 +329,7 @@ CoreDriver::create_pointer(const FileReader& reader, Control* parent)
     FileReader x_reader;
     if (!reader.read_section("x-axis", x_reader))
     {
-      std::cout << "CoreDriver: Couldn't find x-axis" << std::endl;
+      log_error("CoreDriver: Couldn't find x-axis");
       delete axis;
       return 0;
     }
@@ -336,7 +337,7 @@ CoreDriver::create_pointer(const FileReader& reader, Control* parent)
     FileReader y_reader;
     if (!reader.read_section("y-axis", y_reader))
     {
-      std::cout << "CoreDriver: Couldn't find y-axis" << std::endl;
+      log_error("CoreDriver: Couldn't find y-axis");
       delete axis;
       return 0;       
     }

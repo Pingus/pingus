@@ -269,7 +269,7 @@ WorldmapScreen::on_startup ()
 void
 WorldmapScreen::on_escape_press ()
 {
-  //std::cout << "WorldmapScreen::on_escape_press ()..." << std::endl;
+  //log_info("WorldmapScreen::on_escape_press ()...");
   exit_worldmap = true;
 }
 

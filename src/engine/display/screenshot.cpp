@@ -25,6 +25,7 @@
 #endif
 
 #include "pingus/gettext.h"
+#include "util/log.hpp"
 #include "util/system.hpp"
 
 // Saves a screenshot to file, it return the filename the screenshot
@@ -33,9 +34,9 @@ std::string
 Screenshot::make_screenshot()
 {
   std::string filename = get_filename();
-  std::cout << _("Screenshot: Saving screenshot to: ") << filename << std::endl;
+  log_info(_("Screenshot: Saving screenshot to: ") << filename);
   save(SDL_GetVideoSurface(), filename);
-  std::cout << _("Screenshot: Screenshot is done.") << std::endl;
+  log_info(_("Screenshot: Screenshot is done."));
   
   return filename;
 }
@@ -98,7 +99,7 @@ Screenshot::save(SDL_Surface* surface, const std::string& filename)
         break;
       }
       default:
-        std::cout << "BitsPerPixel: " << int(surface->format->BitsPerPixel) << std::endl;
+        log_info("BitsPerPixel: " << int(surface->format->BitsPerPixel));
         assert(!"Unknown color format");
         break;
     }
@@ -119,7 +120,7 @@ Screenshot::save_ppm(const std::string& filename, uint8_t* buffer, int width, in
   if (!out)
   {
     perror(filename.c_str());
-    std::cout << _("Screenshot: Couldn't write file: ") << filename << std::endl;
+    log_info(_("Screenshot: Couldn't write file: ") << filename);
     return;
   }
 
@@ -147,7 +148,7 @@ Screenshot::save_png(const std::string& filename, uint8_t* buffer, int width, in
   if (fp == NULL)
   {
     perror(filename.c_str());
-    std::cout << _("Screenshot: Couldn't write file: ") << filename << std::endl;
+    log_info(_("Screenshot: Couldn't write file: ") << filename);
     return;
   }
 

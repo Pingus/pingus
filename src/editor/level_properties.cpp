@@ -23,6 +23,7 @@
 #include "editor/inputbox.hpp"
 #include "editor/label.hpp"
 #include "editor/viewport.hpp"
+#include "util/log.hpp"
 #include "util/string_util.hpp"
 
 /*
@@ -170,7 +171,7 @@ LevelProperties::on_number_to_save_change(const std::string& str)
   }
   else
   {
-    std::cout << "LevelProperties::on_number_to_save_change: '" << str << "' not an integer" << std::endl;
+    log_error("LevelProperties::on_number_to_save_change: '" << str << "' not an integer");
   }
   
 }
@@ -185,7 +186,7 @@ LevelProperties::on_number_of_pingus_change(const std::string& str)
   }
   else
   {
-    std::cout << "LevelProperties::on_number_of_pingus_change: '" << str << "' not an integer" << std::endl;
+    log_error("LevelProperties::on_number_of_pingus_change: '" << str << "' not an integer");
   }
 }
 

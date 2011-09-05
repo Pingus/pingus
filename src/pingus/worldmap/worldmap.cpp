@@ -23,6 +23,7 @@
 #include "pingus/worldmap/drawable_factory.hpp"
 #include "pingus/worldmap/level_dot.hpp"
 #include "pingus/worldmap/pingus.hpp"
+#include "util/log.hpp"
 #include "util/pathname.hpp"
 
 namespace WorldmapNS {
@@ -58,7 +59,7 @@ Worldmap::Worldmap(const std::string& arg_filename) :
     }
     else
     {
-      std::cout << "Worldmap::parse_objects: Parse Error" << std::endl;
+      log_info("Worldmap::parse_objects: Parse Error");
     }
   }
 
@@ -186,12 +187,12 @@ Worldmap::on_primary_button_press(int x, int y)
   if (dot)
   {
     if (globals::maintainer_mode)
-      std::cout << "Worldmap: Clicked on: " << dot->get_name() << std::endl;
+      log_info("Worldmap: Clicked on: " << dot->get_name());
 
     if (path_graph->lookup_node(dot->get_name()) == pingus->get_node())
     {
       if (globals::maintainer_mode)
-        std::cout << "Worldmap: Pingu is on node, issue on_click()" << std::endl;
+        log_info("Worldmap: Pingu is on node, issue on_click()");
       dot->on_click();
     }
     else
@@ -201,7 +202,7 @@ Worldmap::on_primary_button_press(int x, int y)
         if (!pingus->walk_to_node(path_graph->lookup_node(dot->get_name())))
         {
           if (globals::maintainer_mode)
-            std::cout << "Worldmap: NO PATH TO NODE FOUND!" << std::endl;
+            log_info("Worldmap: NO PATH TO NODE FOUND!");
         }
         else
         {
@@ -248,7 +249,7 @@ Worldmap::enter_level()
   else
   {
     if (globals::maintainer_mode)
-      std::cout << "Worldmap: Pingus not on level" << std::endl;
+      log_info("Worldmap: Pingus not on level");
   }
 }
 
@@ -265,7 +266,7 @@ struct unlock_nodes
   {
     if (node.data->finished())
     {
-      //std::cout << "Unlocking neightbours of: " << node.data << std::endl;
+      //log_info("Unlocking neightbours of: " << node.data);
       for (std::vector<EdgeId>::iterator i = node.next.begin(); i != node.next.end(); ++i)
       {
         Edge<Path*>& edge = path_graph->graph.resolve_edge(*i);
@@ -301,7 +302,7 @@ Worldmap::update_locked_nodes()
     }
     else
     {
-      std::cout << "Error: Worldmap: Last level missing" << std::endl;
+      log_info("Error: Worldmap: Last level missing");
     }
   }
 #endif

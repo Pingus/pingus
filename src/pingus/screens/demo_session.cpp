@@ -29,6 +29,7 @@
 #include "pingus/pingus_demo.hpp"
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
+#include "util/log.hpp"
 
 static bool false_func() { return false; }
 
@@ -94,9 +95,9 @@ DemoSession::DemoSession(const Pathname& pathname_) :
 
   if (plf.get_checksum() != demo->get_checksum())
   {
-    std::cout << "Warning: checksum missmatch between demo (" 
-              << demo->get_checksum() << ") and level (" 
-              << plf.get_checksum() << ")" << std::endl;
+    log_warn("checksum missmatch between demo (" 
+             << demo->get_checksum() << ") and level (" 
+             << plf.get_checksum() << ")");
   }
 
   server   = std::unique_ptr<Server>(new Server(plf, false));
@@ -187,7 +188,7 @@ DemoSession::update_demo()
   // Check for unexpected things (might happen if the demo file is broken)
   if (!events.empty() && events.back().time_stamp < server->get_time())
   {
-    std::cout << "DemoPlayer Bug: We missed a timestamp: " << events.back().time_stamp << std::endl;
+    log_info("DemoPlayer Bug: We missed a timestamp: " << events.back().time_stamp);
   }
 }
 
@@ -211,7 +212,7 @@ void
 DemoSession::on_fast_forward_press()
 {
   if (0)
-    std::cout << "Fast Forward Pressed: " << events.size() << " " << server->get_time() << std::endl;
+    log_info("Fast Forward Pressed: " << events.size() << " " << server->get_time());
 
   fast_forward = !fast_forward;
 }
@@ -219,7 +220,7 @@ DemoSession::on_fast_forward_press()
 void
 DemoSession::on_escape_press()
 {
-  std::cout << "Escape Pressed" << std::endl;
+  log_info("Escape Pressed");
   server->send_finish_event();
   ScreenManager::instance()->pop_screen();
 }
