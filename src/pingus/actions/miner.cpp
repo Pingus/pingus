@@ -23,6 +23,7 @@
 #include "pingus/pingu_enums.hpp"
 #include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"
+#include "util/log.hpp"
 
 namespace Actions {
 
@@ -49,8 +50,8 @@ Miner::update ()
     if (!(slow_count % 3))
     {
       WorldObj::get_world()->remove(miner_radius,
-                                    static_cast<int>(pingu->get_x() - static_cast<float>((miner_radius.get_width() / 2) + pingu->direction)),
-                                    static_cast<int>(pingu->get_y() + 3 - static_cast<float>(miner_radius.get_width() + 1)));
+                                    pingu->get_xi() - (miner_radius.get_width() / 2) + pingu->direction,
+                                    pingu->get_yi() - miner_radius.get_height() + 2);
     }
 
     pingu->set_pos(pingu->get_x() + static_cast<float>(pingu->direction),
@@ -59,20 +60,22 @@ Miner::update ()
 
   if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING)
   {
+    log_tmp("miner dig into nothing");
     WorldObj::get_world()->remove(miner_radius,
-                                  static_cast<int>(pingu->get_x() - static_cast<float>((miner_radius.get_width() / 2) + pingu->direction)),
-                                  static_cast<int>(pingu->get_y() - static_cast<float>(miner_radius.get_width() - 1) ));
+                                  pingu->get_xi() - ((miner_radius.get_width() / 2) + pingu->direction),
+                                  pingu->get_yi() - (miner_radius.get_height() - 1));
     pingu->set_action(ActionName::WALKER);
   }
-  else if (rel_getpixel(0, -1) == Groundtype::GP_SOLID
-           || rel_getpixel(0, pingu_height) == Groundtype::GP_SOLID)
+  else if (rel_getpixel(0, -1) == Groundtype::GP_SOLID || 
+           rel_getpixel(0, pingu_height) == Groundtype::GP_SOLID)
   {
+    log_tmp("miner ran into solid");
     if (rel_getpixel(0, -1) == Groundtype::GP_SOLID)
       Sound::PingusSound::play_sound("chink");
 
     WorldObj::get_world()->remove(miner_radius,
-                                  static_cast<int>(pingu->get_x() - static_cast<float>((miner_radius.get_width() / 2) + pingu->direction)),
-                                  static_cast<int>(pingu->get_y() - static_cast<float>(miner_radius.get_width() + 1) ));
+                                  pingu->get_xi() - ((miner_radius.get_width() / 2) + pingu->direction),
+                                  pingu->get_yi() - (miner_radius.get_height() + 1));
     pingu->set_action(ActionName::WALKER);
 
     // Stop Pingu walking further into the solid.
