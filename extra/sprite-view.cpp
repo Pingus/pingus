@@ -35,7 +35,7 @@ int main(int argc, char** argv)
     Display::get_framebuffer().fill_rect(Rect(0, 0, 800, 600), Color(155, 0, 155));
     for(auto it = sprites.begin(); it != sprites.end(); ++it)
     {
-      (*it).render(400, 300, Display::get_framebuffer());
+      (*it).render(400 - (*it).get_width()/2, 300 - (*it).get_height()/2, Display::get_framebuffer());
       (*it).update();
     }
     Display::flip_display();
