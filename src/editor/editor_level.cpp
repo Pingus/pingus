@@ -57,7 +57,7 @@ EditorLevel::set_impl_defaults()
   impl->music   = "";
 
   impl->ambient_light = Color(255,255,255);
-  impl->size = Size(2000, 1000);
+  impl->size = Size(1920, 1200);
 
   impl->number_of_pingus = 50;
   impl->number_to_save   = 20;
