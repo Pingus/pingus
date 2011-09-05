@@ -29,9 +29,11 @@ namespace Actions {
 
 Miner::Miner (Pingu* p) :
   PinguAction(p),
-  miner_radius("other/bash_radius_gfx", "other/bash_radius"),
+  miner_radius("pingus/common/miner_radius_gfx", "pingus/common/miner_radius"),
+  miner_radius_left("pingus/common/miner_radius_left_gfx", "pingus/common/miner_radius_left"),
+  miner_radius_right("pingus/common/miner_radius_right_gfx", "pingus/common/miner_radius_right"),
   sprite(),
-  slow_count(0)
+  delay_count(0)
 {
   sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
                                        pingu->get_owner_str() + "/miner/left"));
@@ -44,42 +46,60 @@ Miner::update ()
 {
   sprite[pingu->direction].update();
 
-  ++slow_count;
-  if (!(slow_count % 4))
+  delay_count += 1;
+  
+  if (delay_count % 4 == 0)
   {
-    if (!(slow_count % 3))
+    if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING)
     {
+      // stop mining when in the air
+      mine(true);
+      pingu->set_action(ActionName::WALKER);
+    }
+    else if (rel_getpixel(0, -1) == Groundtype::GP_SOLID || 
+             rel_getpixel(0, pingu_height) == Groundtype::GP_SOLID)
+    {  
+      // stop mining when hitting solid ground
+      if (rel_getpixel(0, -1) == Groundtype::GP_SOLID)
+        Sound::PingusSound::play_sound("chink");
+
+      mine(true);
+
+      // stop pingu from walking further into the solid.
+      pingu->direction.change();
+
+      pingu->set_action(ActionName::WALKER);
+    }
+    else
+    {
+      // mine and walk forward
+      mine(false);
+      pingu->set_pos(pingu->get_xi() + pingu->direction,
+                     pingu->get_yi() + 1);
+    }
+  }
+}
+
+void
+Miner::mine(bool final)
+{
+  if (!final)
+  {
+    if (delay_count % 2 == 0)
+    {
+      // regular mine action
       WorldObj::get_world()->remove(miner_radius,
                                     pingu->get_xi() - (miner_radius.get_width() / 2) + pingu->direction,
                                     pingu->get_yi() - miner_radius.get_height() + 2);
     }
-
-    pingu->set_pos(pingu->get_x() + static_cast<float>(pingu->direction),
-                   pingu->get_y() + 1.0f);
   }
-
-  if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING)
+  else
   {
-    log_tmp("miner dig into nothing");
-    WorldObj::get_world()->remove(miner_radius,
-                                  pingu->get_xi() - ((miner_radius.get_width() / 2) + pingu->direction),
-                                  pingu->get_yi() - (miner_radius.get_height() - 1));
-    pingu->set_action(ActionName::WALKER);
-  }
-  else if (rel_getpixel(0, -1) == Groundtype::GP_SOLID || 
-           rel_getpixel(0, pingu_height) == Groundtype::GP_SOLID)
-  {
-    log_tmp("miner ran into solid");
-    if (rel_getpixel(0, -1) == Groundtype::GP_SOLID)
-      Sound::PingusSound::play_sound("chink");
-
-    WorldObj::get_world()->remove(miner_radius,
-                                  pingu->get_xi() - ((miner_radius.get_width() / 2) + pingu->direction),
-                                  pingu->get_yi() - (miner_radius.get_height() + 1));
-    pingu->set_action(ActionName::WALKER);
-
-    // Stop Pingu walking further into the solid.
-    pingu->direction.change();
+    // the last mine action before switching to another action
+    CollisionMask& radius = (pingu->direction == Direction::LEFT) ? miner_radius_left : miner_radius_right;
+    WorldObj::get_world()->remove(radius,
+                                  pingu->get_xi() - (radius.get_width() / 2) + pingu->direction,
+                                  pingu->get_yi() - radius.get_height() + 2);
   }
 }
 

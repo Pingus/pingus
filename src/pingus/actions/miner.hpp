@@ -27,8 +27,11 @@ class Miner : public PinguAction
 {
 private:
   CollisionMask miner_radius;
+  CollisionMask miner_radius_left;
+  CollisionMask miner_radius_right;
+
   StateSprite sprite;
-  int slow_count;
+  int delay_count;
 
 public:
   Miner (Pingu* p);
@@ -38,6 +41,9 @@ public:
 
   void draw (SceneContext& gc);
   void update ();
+
+private:
+  void mine(bool final);
 
 private:
   Miner (const Miner&);

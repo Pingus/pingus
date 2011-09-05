@@ -141,6 +141,7 @@ public:
 
   /// Set the pingu to the given coordinates
   void set_pos (float x, float y);
+  void set_pos (int x, int y) { set_pos(static_cast<float>(x), static_cast<float>(y)); }
 
   void set_x (float x);
 
