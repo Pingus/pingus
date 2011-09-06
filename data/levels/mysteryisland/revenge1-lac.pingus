@@ -9,7 +9,7 @@
     (author "lac")
     (number-of-pingus 60)
     (number-to-save 50)
-    (time 9000)
+    (time -1)
     (difficulty 0)
     (playable 1)
     (comment "")

@@ -8,7 +8,7 @@
     (author "Ingo Ruhnke <grumbel@gmx.de>")
     (number-of-pingus 100)
     (number-to-save 50)
-    (time 9000)
+    (time -1)
     (comment "I think this level is way too difficult to be any fun. -Phlog")
     (actions 
       (basher 20)

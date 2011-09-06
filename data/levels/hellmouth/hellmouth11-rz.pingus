@@ -7,7 +7,7 @@
     (author "Rune Zedeler <rz@daimi.au.dk>")
     (number-of-pingus 20)
     (number-to-save 11)
-    (time 9000)
+    (time -1)
     (difficulty 65)
     (playable 1)
     (music "none")

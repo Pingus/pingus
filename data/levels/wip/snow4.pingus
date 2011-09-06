@@ -7,7 +7,7 @@
     (author "Ingo Ruhnke <grumbel@gmx.de>")
     (number-of-pingus 100)
     (number-to-save 0)
-    (time 9000)
+    (time -1)
     (difficulty 5)
     (playable 0)
     (comment "no exit, water stops before the final rock, making square water")

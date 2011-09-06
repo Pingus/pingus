@@ -7,7 +7,7 @@
     (author "Ying-Wan Lam <yingwan.lam@yale.edu>")
     (number-of-pingus 20)
     (number-to-save 12)
-    (time 9000)
+    (time -1)
     (playable 1)
     (actions 
       (basher 20)

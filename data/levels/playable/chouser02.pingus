@@ -8,7 +8,7 @@
     (author )
     (number-of-pingus 100)
     (number-to-save 90)
-    (time 9000)
+    (time -1)
     (actions 
       (basher 5)
       (blocker 5)

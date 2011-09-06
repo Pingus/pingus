@@ -7,7 +7,7 @@
     (author "Ingo Ruhnke <grumbel@gmx.de>")
     (number-of-pingus 35)
     (number-to-save 30)
-    (time 9000)
+    (time -1)
     (difficulty 60)
     (playable 1)
     (comment )

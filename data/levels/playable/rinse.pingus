@@ -7,7 +7,7 @@
     (author )
     (number-of-pingus 40)
     (number-to-save 20)
-    (time 9000)
+    (time -1)
     (comment "Pingu walk on air right above the plant. Also, Pingu get trapped in middle "
              "of plant and stuck on the left side of the map (at the top) too easily.")
     (actions 

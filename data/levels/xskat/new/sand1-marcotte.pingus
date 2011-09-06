@@ -8,7 +8,7 @@
     (author "Etienne Marcotte <marcotte_moi@yahoo.com>")
     (number-of-pingus 20)
     (number-to-save 15)
-    (time 9000)
+    (time -1)
     (difficulty 30)
     (playable 1)
     (comment )

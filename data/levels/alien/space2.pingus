@@ -7,7 +7,7 @@
     (author "Ingo Ruhnke <grumbel@gmx.de>")
     (number-of-pingus 30)
     (number-to-save 15)
-    (time 9000)
+    (time -1)
     (actions 
       (blocker 20)
       (bomber 20)

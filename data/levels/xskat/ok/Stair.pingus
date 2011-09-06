@@ -7,7 +7,7 @@
     (author "Craig Timpany <timpany@pingus.cx>")
     (number-of-pingus 60)
     (number-to-save 40)
-    (time 9000)
+    (time -1)
     (playable 1)
     (actions 
       (basher )

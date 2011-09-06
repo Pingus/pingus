@@ -7,7 +7,7 @@
     (author "Phil Descamps <pwrdesc@free.fr>")
     (number-of-pingus 60)
     (number-to-save 55)
-    (time 9000)
+    (time -1)
     (difficulty 5)
     (playable 0)
     (comment )

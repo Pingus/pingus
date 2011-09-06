@@ -7,7 +7,7 @@
     (author "Ingo Ruhnke <grumbel@gmx.de>")
     (number-of-pingus 120)
     (number-to-save 0)
-    (time 9000)
+    (time -1)
     (comment "drop off on the far right is too high.. building up a bridge from the left "
              "would be a major hassle.. or just make this a very difficult level.")
     (actions 

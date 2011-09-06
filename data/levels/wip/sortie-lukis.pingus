@@ -7,7 +7,7 @@
     (author "Carmen Müller, carmen@othello.ch")
     (number-of-pingus 121)
     (number-to-save 111)
-    (time 9000)
+    (time -1)
     (actions 
       (jumper 100))
     (music "none")
