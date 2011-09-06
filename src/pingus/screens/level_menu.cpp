@@ -142,7 +142,7 @@ public:
     //                 Color(255, 255, 0, 100));
 
     int y = 0;
-    for(int i = 3*page; (i < 3*(page+1)) && (i < int(levelsets.size())); ++i)
+    for(int i = page; (i < (page+3)) && (i < int(levelsets.size())); ++i)
     {
       Levelset* levelset = levelsets[i];
 
@@ -162,7 +162,7 @@ public:
       y += 95;
     }
     
-    int total_pages = (int(levelsets.size())+2)/3;
+    int total_pages = static_cast<int>(levelsets.size());;
   
     gc.print_center(Fonts::chalk_normal, Vector2i(rect.get_width()/2, 360),
                     (boost::format("%1% %2%/%3%") % _("Page") % (page+1) % total_pages).str());
@@ -173,8 +173,8 @@ public:
   void next_page()
   {
     page += 1;
-    if (page >= (static_cast<int>(levelsets.size())+2)/3)
-      page = (static_cast<int>(levelsets.size())+2)/3 - 1;
+    if (page >= (static_cast<int>(levelsets.size())))
+      page = (static_cast<int>(levelsets.size())) - 1;
   }
 
   void prev_page()
@@ -196,7 +196,7 @@ public:
 
     if (!levelsets.empty())
     {
-      int i = y / 95 + page*3;
+      int i = y / 95 + page;
 
       if (i >= 0 && i < static_cast<int>(levelsets.size()))
         current_levelset = levelsets[i];
@@ -264,7 +264,7 @@ public:
       gc.print_right(Fonts::chalk_normal, Vector2i(rect.get_width() - 30, -32), _("Status"));
 
       int y = 0;
-      for(int i = page*8; i < (page+1)*8 && i < levelset->get_level_count(); ++i)
+      for(int i = page; i < (page+8) && i < levelset->get_level_count(); ++i)
       {
         if (!levelset->get_level(i)->accessible)
           gc.draw(marker_locked, Vector2i(0, y));
@@ -286,7 +286,7 @@ public:
     }
 
     gc.print_center(Fonts::chalk_normal, Vector2i(rect.get_width()/2, 360),
-                    (boost::format("%1% %2%/%3%") % _("Page") % (page+1) % ((levelset->get_level_count()+7)/8)).str());
+                    (boost::format("%1% %2%/%3%") % _("Page") % (page+1) % levelset->get_level_count()).str());
 
     gc.pop_modelview();
   }
@@ -301,8 +301,8 @@ public:
   void next_page()
   {
     page += 1;
-    if (page >= (levelset->get_level_count()+7)/8)
-      page = (levelset->get_level_count()+7)/8 - 1;
+    if (page >= (levelset->get_level_count()))
+      page = (levelset->get_level_count()) - 1;
   }
 
   void set_levelset(Levelset* levelset_)
@@ -317,7 +317,7 @@ public:
 
   int get_current_level(int x, int y)
   {
-    int cl = current_level = y / 32 + page*8;
+    int cl = current_level = y / 32 + page;
     if (cl < 0 || cl >= levelset->get_level_count())
       cl = -1;
     return cl;
@@ -328,7 +328,7 @@ public:
     x -= rect.left;
     y -= rect.top;
 
-    current_level = y / 32 + page*8;
+    current_level = y / 32 + page;
     if (current_level < 0 || current_level >= levelset->get_level_count())
       current_level = -1;
   }
@@ -366,17 +366,17 @@ LevelMenu::LevelMenu() :
 {
   ok_button  = Sprite("core/start/ok");
 
-  levelset_selector = new LevelsetSelector(this, Rect(Vector2i(x_pos + 100, y_pos + 140), Size(600, 285)));
-  level_selector    = new LevelSelector(this, Rect(Vector2i(x_pos + 100, y_pos + 160), Size(600, 256)));
+  levelset_selector = new LevelsetSelector(this, Rect(Vector2i(x_pos + 70, y_pos + 140), Size(600, 285)));
+  level_selector    = new LevelSelector(this, Rect(Vector2i(x_pos + 70, y_pos + 160), Size(600, 256)));
 
-  gui_manager->add(prev_button = new LevelScrollButton(Display::get_width()/2  + 160,
-                                                       Display::get_height()/2 + 145,
-                                                       "core/menu/arrow_left",
+  gui_manager->add(prev_button = new LevelScrollButton(Display::get_width()/2  + 280,
+                                                       Display::get_height()/2 - 150,
+                                                       "core/menu/arrow_up",
                                                        std::bind(&LevelMenu::prev_page, this)));
 
-  gui_manager->add(next_button = new LevelScrollButton(Display::get_width()/2  + 230,
-                                                       Display::get_height()/2 + 145,
-                                                       "core/menu/arrow_right",
+  gui_manager->add(next_button = new LevelScrollButton(Display::get_width()/2  + 280,
+                                                       Display::get_height()/2 + 70,
+                                                       "core/menu/arrow_down",
                                                        std::bind(&LevelMenu::next_page, this)));
 
   gui_manager->add(levelset_selector);
