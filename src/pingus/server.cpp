@@ -22,6 +22,7 @@
 #include "pingus/pingu.hpp"
 #include "pingus/world.hpp"
 #include "util/log.hpp"
+#include "util/sexpr_file_writer.hpp"
 #include "util/system.hpp"
 
 static std::string get_date_string ()
@@ -60,8 +61,12 @@ static std::unique_ptr<std::ostream> get_demostream(const PingusLevel& plf)
     log_info("DemoRecorder: Writing demo to: " << filename);
 
     // Write file header
-    *out << "(level (name \"" << plf.get_resname() << "\"))\n";
-    *out << "(checksum \"" << plf.get_checksum() << "\")\n";
+    SExprFileWriter writer(*out);
+    writer.begin_section("level");
+    writer.write_string("name", plf.get_resname());
+    writer.write_string("checksum", plf.get_checksum());
+    writer.end_section();
+    *out << std::endl;
     return std::unique_ptr<std::ostream>(out.release());
   }
 }

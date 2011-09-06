@@ -20,6 +20,7 @@
 
 #include "util/file_reader.hpp"
 #include "util/pathname.hpp"
+#include "util/log.hpp"
 
 PingusDemo::PingusDemo(const Pathname& pathname) :
   m_levelname(),
@@ -36,17 +37,21 @@ PingusDemo::PingusDemo(const Pathname& pathname) :
   {
     if (lines.front().get_name() == "level")
     {
-      if (!lines.front().read_string("name", m_levelname))
+      FileReader& reader = lines.front();
+      if (!reader.read_string("name", m_levelname))
       {
         throw std::runtime_error("(level (name ...)) entry missing in demo file '" + pathname.str() + "'");
       }
 
-      lines.front().read_string("checksum", m_checksum);
+      reader.read_string("checksum", m_checksum);
     }
-            
+
     for(std::vector<FileReader>::iterator i = lines.begin()+1; i != lines.end(); ++i)
     {
-      m_events.push_back(ServerEvent(*i));
+      if (i->get_name() != "checksum") // workaround for old incorrectly recorded demo files
+      {
+        m_events.push_back(ServerEvent(*i));
+      }
     }
   }
 }
