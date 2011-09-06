@@ -252,8 +252,8 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Set the path to load the data files to 'path'"));
   argp.add_option('u', "userdir", _("PATH"),
                   _("Set the path to load and save user files (savegames, etc.) to PATH"));
-  argp.add_option('M', "mod", _("PATH"),
-                  _("Add a path that is searched for datadir content"));
+  argp.add_option('a', "addon", _("PATH"),
+                  _("Add an addon path that is searched for datadir content"));
 
   argp.add_group(_("Misc Options:"));
   argp.add_option(337, "disable-auto-scrolling", "",
@@ -367,7 +367,7 @@ PingusMain::parse_args(int argc, char** argv)
         cmd_options.datadir.set(argp.get_argument());
         break;
 
-      case 'M': // -M, --mod
+      case 'a': // -a, --addon
         g_path_manager.add_overlay_path(argp.get_argument());
         break;
 
