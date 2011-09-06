@@ -49,7 +49,8 @@ GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_scree
   forward_button(),
   pause_button(),
   pause(false),
-  fast_forward(false)
+  fast_forward(false),
+  single_step(false)
 {
   server = std::unique_ptr<Server>(new Server(plf, true));
 
@@ -144,8 +145,10 @@ GameSession::update_server(float delta)
 
     while ((world_updates+1)*update_time <= time_passed)
     {
-      if (!pause)
+      if (!pause || single_step)
       {
+        single_step = false;
+
         if (fast_forward)
         {
           for (int i = 0; i < globals::fast_forward_time_scale; ++i)
@@ -290,19 +293,20 @@ GameSession:: on_escape_press ()
 void
 GameSession:: on_pause_press ()
 {
-  pause = !pause;
+  set_pause(!get_pause());
 }
 
 void
 GameSession::on_single_step_press ()
 {
-  log_tmp("single step");
+  set_pause(true);
+  single_step = true;
 }
 
 void
 GameSession::on_fast_forward_press ()
 {
-  fast_forward = !fast_forward;
+  set_fast_forward(!get_fast_forward());
 }
 
 void
@@ -348,6 +352,10 @@ void
 GameSession::set_fast_forward(bool value)
 {
   fast_forward = value;
+  if (fast_forward)
+  {
+    pause = false;
+  }
 }
 
 bool
@@ -360,6 +368,10 @@ void
 GameSession::set_pause(bool value)
 {
   pause = value;
+  if (pause)
+  {
+    fast_forward = false;
+  }
 }
 
 bool

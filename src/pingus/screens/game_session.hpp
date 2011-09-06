@@ -69,6 +69,7 @@ private:
 
   bool pause;
   bool fast_forward;
+  bool single_step;
 
 public:
   GameSession(const PingusLevel& arg_plf, bool arg_show_result_screen);
