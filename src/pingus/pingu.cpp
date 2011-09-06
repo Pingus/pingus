@@ -24,6 +24,7 @@
 #include "pingus/globals.hpp"
 #include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"
+#include "pingus/pingu_enums.hpp"
 
 #include "pingus/actions/angel.hpp"
 #include "pingus/actions/basher.hpp"
@@ -122,6 +123,10 @@ void
 Pingu::set_velocity (const Vector3f& velocity_)
 {
   velocity = velocity_;
+
+  // crude terminal velocity
+  velocity.x = Math::clamp(-terminal_velocity, velocity.x, terminal_velocity);
+  velocity.y = Math::clamp(-terminal_velocity, velocity.y, terminal_velocity);
 }
 
 // Set the action of the pingu (bridger, blocker, bomber, etc.)

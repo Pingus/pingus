@@ -19,8 +19,9 @@
 
 // Pingu "globals".  Make [deadly_velocity = 20 * sqrt("normal gravity")] so
 // that the "deadly distance" is the same and therefore doesn't break levels.
-const float deadly_velocity = 10.0f;
-const int   pingu_height    = 26;
+const float deadly_velocity   = 10.0f;
+const float terminal_velocity = 15.0f;
+const int   pingu_height      = 26;
 
 #endif
 
