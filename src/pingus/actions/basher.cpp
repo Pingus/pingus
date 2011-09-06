@@ -63,7 +63,13 @@ Basher::update ()
   ++basher_c;
   if (basher_c % 3 == 0)
   {
-    walk_forward();
+    if (!walk_forward())
+    {
+      // FIXME: set_action() in walk_forward() makes the Basher object
+      // invalid, thus making all further access illegal and thus
+      // forces the return here
+      return;
+    }
 
     // If on walking forward the Basher has now walked on to water or lava
     if (rel_getpixel(0, -1) == Groundtype::GP_WATER
@@ -108,7 +114,7 @@ Basher::bash()
                                 pingu->get_yi() - bash_radius.get_height() + 1);
 }
 
-void
+bool
 Basher::walk_forward()
 {
   int y_inc = 0;
@@ -125,6 +131,7 @@ Basher::walk_forward()
   {
     // The step down is too much.  So stop being a Basher and be a Faller.
     pingu->set_action(ActionName::FALLER);
+    return false;
   }
   else
   {
@@ -133,6 +140,8 @@ Basher::walk_forward()
     pingu->set_pos(pingu->get_x() + static_cast<float>(pingu->direction),
                    pingu->get_y() - static_cast<float>(y_inc));
   }
+
+  return true;
 }
 
 bool

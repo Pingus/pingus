@@ -56,7 +56,7 @@ public:
   void update ();
 
   bool have_something_to_dig ();
-  void walk_forward ();
+  bool walk_forward ();
   void bash ();
 
 private:
