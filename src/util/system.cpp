@@ -611,7 +611,14 @@ System::normalize_path(const std::string& path)
       {
         if (i == skip - 1)
         {
-          result.append("..");
+          if (result.empty())
+          {
+            result.append("..");
+          }
+          else
+          {
+            result.append("/..");
+          }
         }
         else
         {

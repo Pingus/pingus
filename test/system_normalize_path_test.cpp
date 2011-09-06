@@ -15,6 +15,7 @@ int main(int argc, char** argv)
   assert(System::normalize_path("a//..///c") == "c");
   assert(System::normalize_path("/a//..///c") == "/c");
   assert(System::normalize_path("/a/../../b/c") == "/b/c");
+  assert(System::normalize_path("../foo/bar/") == "../foo/bar");
 
   return 0;
 }
