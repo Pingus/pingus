@@ -39,6 +39,12 @@ PinguAction::need_catch ()
   return false;
 }
 
+Vector3f
+PinguAction::get_center_pos() const
+{
+  return pingu->get_pos() + Vector3f(0, -16);
+}
+
 // Wrapper around the colmap, to get the pixels infront of the pingu,
 // from is current position
 int

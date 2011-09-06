@@ -42,6 +42,8 @@ public:
   char get_persistent_char () { return 'c'; }
   bool change_allowed(ActionName::Enum new_action);
 
+  Vector3f get_center_pos() const;
+
 private:
   Climber (const Climber&);
   Climber& operator= (const Climber&);

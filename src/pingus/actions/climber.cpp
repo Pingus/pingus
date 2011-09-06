@@ -34,6 +34,19 @@ Climber::Climber (Pingu* p) :
                                        pingu->get_owner_str() + "/climber/right"));
 }
 
+Vector3f
+Climber::get_center_pos() const
+{
+  if (pingu->direction.is_left())
+  {
+    return pingu->get_pos() + Vector3f(16, 0);
+  }
+  else
+  {
+    return pingu->get_pos() + Vector3f(-16, 0);
+  }
+}
+
 void
 Climber::update ()
 {

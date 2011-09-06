@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_PINGU_ACTION_HPP
 #define HEADER_PINGUS_PINGUS_PINGU_ACTION_HPP
 
+#include "math/vector3f.hpp"
 #include "pingus/action_name.hpp"
 
 class ActionHolder;
@@ -65,6 +66,8 @@ public:
 
   /** Draws the action */
   virtual void draw (SceneContext& gc) =0;
+
+  virtual Vector3f get_center_pos() const;
 
   /// Returns the activation mode
   virtual ActionType get_activation_mode (void) const;

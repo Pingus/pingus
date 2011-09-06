@@ -440,7 +440,7 @@ Pingu::get_pos () const
 Vector3f
 Pingu::get_center_pos () const
 {
-  return Vector3f(pos_x, pos_y) + Vector3f(0, -16);
+  return action->get_center_pos();
 }
 
 int
