@@ -217,12 +217,12 @@ Manager::load_driver(const std::string& name)
   }
   else
   {
-    log_error("Manager: Loading driver '" << name << "'");
+    log_info("loading driver '" << name << "'");
 
     driver = DriverFactory::create(name, this);
     if (!driver)
     {
-      log_error("Manager: Unknown driver: " << name);
+      log_error("unknown driver: " << name);
       return 0;
     }
     else
@@ -245,7 +245,7 @@ Manager::create_button(const FileReader& reader, Control* parent)
   }
   else
   {
-    log_error("Manager: Error: Couldn't find driver: '" << driver << "'");
+    log_error("couldn't find driver: '" << driver << "'");
     return 0;
   }
 }
@@ -262,7 +262,7 @@ Manager::create_axis(const FileReader& reader, Control* parent)
   }
   else
   {
-    log_error("Manager: Error: Couldn't find driver: '" << driver << "'");
+    log_error("couldn't find driver: '" << driver << "'");
     return 0;
   }
 }
@@ -279,7 +279,7 @@ Manager::create_pointer(const FileReader& reader, Control* parent)
   }
   else
   {
-    log_error("Manager: Error: Couldn't find driver: '" << driver << "'");
+    log_error("couldn't find driver: '" << driver << "'");
     return 0;
   }
 }
@@ -296,7 +296,7 @@ Manager::create_scroller(const FileReader& reader, Control* parent)
   }
   else
   {
-    log_error("Manager: Error: Couldn't find driver: '" << driver << "'");
+    log_error("couldn't find driver: '" << driver << "'");
     return 0;
   }
 }
@@ -313,7 +313,7 @@ Manager::create_keyboard(const FileReader& reader, Control* parent)
   }
   else
   {
-    log_error("Manager: Error: Couldn't find driver: '" << driver << "'");
+    log_error("couldn't find driver: '" << driver << "'");
     return 0;
   }  
 }
