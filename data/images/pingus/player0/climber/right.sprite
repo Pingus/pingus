@@ -1,7 +1,7 @@
 (pingus-sprite 
   (image "../climber.png")
-  (offset -14 2)
-  (origin "bottom_center")
+  (offset 1 0)
+  (origin "center_right")
   (position 0 32)
   (speed 100)
   (loop #t)
