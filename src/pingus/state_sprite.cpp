@@ -16,6 +16,7 @@
 
 #include "pingus/state_sprite.hpp"
 
+#include <sstream>
 #include <stdexcept>
 
 StateSprite::StateSprite() :
@@ -58,7 +59,9 @@ StateSprite::operator[](int state)
   }
   else
   {
-    throw std::runtime_error("StateSprite error");
+    std::ostringstream out;
+    out << "StateSprite error: state " << state << " not available";
+    throw std::runtime_error(out.str());
   }
 }
 
