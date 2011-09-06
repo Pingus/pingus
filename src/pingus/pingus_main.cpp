@@ -658,6 +658,8 @@ PingusMain::start_game ()
 int
 PingusMain::main(int argc, char** argv)
 {
+  g_logger.set_log_level(Logger::kTemp);
+
   tinygettext::Log::set_log_info_callback(0);
 
   // Register the segfault_handler
