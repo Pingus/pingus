@@ -178,7 +178,12 @@ ResourceManager::get_sprite_description_from_file(const std::string& resname)
     // resolve relative filenames
     if (!desc->filename.absolute())
     {
-      desc->filename = Pathname(System::dirname(filename) + "/" + desc->filename.get_raw_path(), Pathname::DATA_PATH);
+      // path normalization is important here to allow overlay paths,
+      // as a path of the form "pingus/blocker/../blocker.png" would
+      // fail when "pingus/blocker/" is missing, even so
+      // "pingus/blocker.png" exists
+      desc->filename = Pathname(System::normalize_path(System::dirname(filename) + "/" + desc->filename.get_raw_path()),
+                                Pathname::DATA_PATH);
     }
 
     return desc;

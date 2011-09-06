@@ -25,7 +25,8 @@
 PathManager g_path_manager;
 
 PathManager::PathManager() :
-  base_path()
+  m_base_path(),
+  m_paths()
 {
 }
 
@@ -34,16 +35,34 @@ PathManager::~PathManager()
 }
 
 void
+PathManager::add_overlay_path(const std::string& path)
+{
+  m_paths.push_back(System::normalize_path(path));
+}
+
+void
 PathManager::set_path(const std::string& path)
 {
-  base_path = path;
+  m_base_path = path;
 }
 
 std::string
 PathManager::complete(const std::string& relative_path)
 {
-  std::string comp_path = base_path + "/" + relative_path;
-  return comp_path;
+  for(auto it = m_paths.rbegin(); it != m_paths.rend(); ++it)
+  {
+    std::string absolute_path = *it + "/" + relative_path;
+    bool exist = System::exist(absolute_path);
+
+    log_debug(absolute_path << ": " << (exist ? "exist" : "missing"));
+
+    if (exist)
+    {
+      return absolute_path;
+    }
+  }
+  
+  return m_base_path + "/" + relative_path;
 }
 
 /* EOF */
