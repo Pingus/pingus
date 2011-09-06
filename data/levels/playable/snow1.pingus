@@ -774,43 +774,43 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Hotspots/left_arrow")
+        (image "groundpieces/ground/signposts/arrow_left")
         (modifier "ROT0"))
       (position 1772 447 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Hotspots/left_arrow")
+        (image "groundpieces/ground/signposts/arrow_left")
         (modifier "ROT0"))
       (position 1390 417 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Hotspots/left_arrow")
+        (image "groundpieces/ground/signposts/arrow_left")
         (modifier "ROT0"))
       (position 1004 398 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Hotspots/down_arrow")
+        (image "groundpieces/ground/signposts/arrow_down")
         (modifier "ROT0"))
       (position 442 512 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Hotspots/right_arrow")
+        (image "groundpieces/ground/signposts/arrow_right")
         (modifier "ROT0"))
       (position 530 753 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Hotspots/right_arrow")
+        (image "groundpieces/ground/signposts/arrow_right")
         (modifier "ROT0"))
       (position 949 772 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Hotspots/right_arrow")
+        (image "groundpieces/ground/signposts/arrow_right")
         (modifier "ROT0"))
       (position 1353 809 0))
     (groundpiece 

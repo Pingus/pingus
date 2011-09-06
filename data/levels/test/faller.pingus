@@ -41,13 +41,13 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Hotspots/down_arrow")
+        (image "groundpieces/ground/signposts/arrow_down")
         (modifier "ROT0"))
       (position 1995 476 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Hotspots/up_arrow")
+        (image "groundpieces/ground/signposts/arrow_up")
         (modifier "ROT0"))
       (position 2004 840 0))
     (entrance 

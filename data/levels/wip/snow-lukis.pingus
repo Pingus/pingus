@@ -340,25 +340,25 @@
     (groundpiece 
       (type "solid")
       (surface 
-        (image "global/Hotspots/right_arrow")
+        (image "groundpieces/ground/signposts/arrow_right")
         (modifier "ROT0"))
       (position 157 279 0))
     (groundpiece 
       (type "solid")
       (surface 
-        (image "global/Hotspots/right_arrow")
+        (image "groundpieces/ground/signposts/arrow_right")
         (modifier "ROT0"))
       (position 614 290 0))
     (groundpiece 
       (type "solid")
       (surface 
-        (image "global/Hotspots/right_arrow")
+        (image "groundpieces/ground/signposts/arrow_right")
         (modifier "ROT0"))
       (position 841 293 0))
     (groundpiece 
       (type "solid")
       (surface 
-        (image "global/Hotspots/right_arrow")
+        (image "groundpieces/ground/signposts/arrow_right")
         (modifier "ROT0"))
       (position 399 283 0))
     (groundpiece 

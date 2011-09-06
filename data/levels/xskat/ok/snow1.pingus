@@ -775,43 +775,43 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "hotspots/Signposts/arrow_west")
+        (image "hotspots/signposts/arrow_west")
         (modifier "ROT0"))
       (position 1772 447 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "hotspots/Signposts/arrow_west")
+        (image "hotspots/signposts/arrow_west")
         (modifier "ROT0"))
       (position 1390 417 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "hotspots/Signposts/arrow_west")
+        (image "hotspots/signposts/arrow_west")
         (modifier "ROT0"))
       (position 1004 398 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "hotspots/Signposts/arrow_south")
+        (image "hotspots/signposts/arrow_south")
         (modifier "ROT0"))
       (position 442 512 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "hotspots/Signposts/arrow_east")
+        (image "hotspots/signposts/arrow_east")
         (modifier "ROT0"))
       (position 530 753 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "hotspots/Signposts/arrow_east")
+        (image "hotspots/signposts/arrow_east")
         (modifier "ROT0"))
       (position 949 772 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "hotspots/Signposts/arrow_east")
+        (image "hotspots/signposts/arrow_east")
         (modifier "ROT0"))
       (position 1353 809 0))
     (groundpiece 

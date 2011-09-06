@@ -34,7 +34,7 @@
       (stretch-y #f))
     (hotspot 
       (surface 
-        (image "global/Ywlam/pacbkg")
+        (image "special/pacman/pacman-bkg")
         (modifier "ROT0"))
       (position 174 16 -5)
       (speed -1)
@@ -42,13 +42,13 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Ywlam/pacmaze")
+        (image "special/pacman/pacman-maze")
         (modifier "ROT0"))
       (position 174 16 0))
     (groundpiece 
       (type "solid")
       (surface 
-        (image "global/Ywlam/pacframe")
+        (image "special/pacman/pacman-frame")
         (modifier "ROT0"))
       (position 174 16 0))
     (entrance 
@@ -61,33 +61,33 @@
       (owner-id 0)
       (position 204 555 0)
       (surface 
-        (image "global/Ywlam/pacman")
+        (image "special/pacman/pacman")
         (modifier "ROT0"))
       (owner-id 0))
     (hotspot 
       (surface 
-        (image "global/Ywlam/blinky")
+        (image "special/pacman/blinky")
         (modifier "ROT0"))
       (position 484 283 80)
       (speed -1)
       (parallax 1))
     (hotspot 
       (surface 
-        (image "global/Ywlam/inky")
+        (image "special/pacman/inky")
         (modifier "ROT0"))
       (position 307 378 80)
       (speed -1)
       (parallax 1))
     (hotspot 
       (surface 
-        (image "global/Ywlam/pinky")
+        (image "special/pacman/pinky")
         (modifier "ROT0"))
       (position 459 379 80)
       (speed -1)
       (parallax 1))
     (hotspot 
       (surface 
-        (image "global/Ywlam/clyde")
+        (image "special/pacman/clyde")
         (modifier "ROT0"))
       (position 410 232 80)
       (speed -1)

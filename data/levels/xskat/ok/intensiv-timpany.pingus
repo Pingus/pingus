@@ -432,7 +432,7 @@
     (groundpiece 
       (type "transparent")
       (surface 
-        (image "hotspots/Signposts/arrow_east")
+        (image "hotspots/signposts/arrow_east")
         (modifier "ROT0"))
       (position 239 752 0))
     (groundpiece 
@@ -510,7 +510,7 @@
     (groundpiece 
       (type "transparent")
       (surface 
-        (image "hotspots/Signposts/arrow_east")
+        (image "hotspots/signposts/arrow_east")
         (modifier "ROT0"))
       (position 243 592 0))
     (groundpiece 
@@ -528,7 +528,7 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "hotspots/Signposts/arrow_west")
+        (image "hotspots/signposts/arrow_west")
         (modifier "ROT0"))
       (position 340 916 0))
     (entrance 

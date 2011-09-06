@@ -113,7 +113,7 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Hotspots/up_arrow")
+        (image "groundpieces/ground/signposts/arrow_up")
         (modifier "ROT0"))
       (position 1015 614 0))
     (groundpiece 

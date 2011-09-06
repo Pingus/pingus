@@ -1073,7 +1073,7 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Hotspots/right_arrow")
+        (image "groundpieces/ground/signposts/arrow_right")
         (modifier "ROT0"))
       (position 550 458 0))
     (groundpiece 
