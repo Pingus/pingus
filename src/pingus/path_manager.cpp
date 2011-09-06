@@ -43,7 +43,6 @@ std::string
 PathManager::complete(const std::string& relative_path)
 {
   std::string comp_path = base_path + "/" + relative_path;
-  log_debug(relative_path << " -> " << comp_path);
   return comp_path;
 }
 
