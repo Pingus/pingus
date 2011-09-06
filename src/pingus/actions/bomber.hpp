@@ -44,6 +44,8 @@ public:
   ActionName::Enum get_type() const { return ActionName::BOMBER; }
   //ActionType get_activation_mode() const { return COUNTDOWN_TRIGGERED; }
 
+  bool change_allowed (ActionName::Enum action) { return false; }
+
   void draw (SceneContext& gc);
   void update();
 

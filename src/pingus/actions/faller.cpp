@@ -154,7 +154,10 @@ Faller::is_tumbling () const
 bool
 Faller::change_allowed (ActionName::Enum new_action)
 {
-  return new_action == ActionName::FLOATER || new_action == ActionName::CLIMBER;
+  return
+    new_action == ActionName::FLOATER || 
+    new_action == ActionName::CLIMBER ||
+    new_action == ActionName::BOMBER;
 }
 
 } // namespace Actions

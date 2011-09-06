@@ -60,9 +60,9 @@ Floater::draw (SceneContext& gc)
 }
 
 bool
-Floater::change_allowed(ActionName::Enum)
+Floater::change_allowed(ActionName::Enum action)
 {
-  return false;
+  return action == ActionName::BOMBER;
 }
 
 } // namespace Actions
