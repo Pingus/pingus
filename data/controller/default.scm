@@ -26,6 +26,9 @@
    (sdl:keyboard-button (key "f"))
    (sdl:keyboard-button (key "space")))
 
+  (single-step-button
+   (sdl:keyboard-button (key "s")))
+
   (armageddon-button
    (sdl:keyboard-button (key "a")))
 

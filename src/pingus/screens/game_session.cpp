@@ -294,6 +294,12 @@ GameSession:: on_pause_press ()
 }
 
 void
+GameSession::on_single_step_press ()
+{
+  log_tmp("single step");
+}
+
+void
 GameSession::on_fast_forward_press ()
 {
   fast_forward = !fast_forward;

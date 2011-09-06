@@ -26,7 +26,7 @@ namespace Input {
 
 enum EventType { ButtonEventType, PointerEventType, AxisEventType, ScrollEventType, KeyboardEventType };
 
-enum ButtonName { primary, secondary, pause, fast_forward, armageddon, escape, action_1, action_2,
+enum ButtonName { primary, secondary, pause, fast_forward, single_step, armageddon, escape, action_1, action_2,
                   action_3, action_4, action_5, action_6, action_7, action_8, action_9, action_10,
                   action_up, action_down, max_button };
 

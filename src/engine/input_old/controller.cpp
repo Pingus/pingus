@@ -83,6 +83,10 @@ Controller::Controller(const std::string& configfile)
       {
         buttons[fast_forward] = ButtonFactory::create(i->get_sections()[0]);
       }
+      else if (i->get_name() == "single-step-button")
+      {
+        buttons[single_step] = ButtonFactory::create(i->get_sections()[0]);
+      }
       else if (i->get_name() == "armageddon-button")
       {
         buttons[armageddon] = ButtonFactory::create(i->get_sections()[0]);

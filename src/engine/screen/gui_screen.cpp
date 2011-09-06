@@ -89,7 +89,7 @@ GUIScreen::update (const Input::Event& event)
     break;
 
     default:
-      log_error("GUIScreen::update (): unhandled event type: " << event.type);
+      log_error("unhandled event type: " << event.type);
       break;
   }
 }
@@ -110,6 +110,9 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
       case Input::PAUSE_BUTTON:
         on_pause_press ();
         break;
+      case Input::SINGLE_STEP_BUTTON:
+        on_single_step_press();
+        break;
       case Input::FAST_FORWARD_BUTTON:
         on_fast_forward_press ();
         break;
@@ -120,7 +123,7 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
         on_escape_press ();
         break;
       default:
-        log_error("GUIScreen: ButtonEvent: unhandled event: " << event.name);
+        log_error("unhandled event: " << event.name);
         break;
     }
   }
@@ -137,6 +140,9 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
       case Input::PAUSE_BUTTON:
         on_pause_release ();
         break;
+      case Input::SINGLE_STEP_BUTTON:
+        on_single_step_release();
+        break;
       case Input::FAST_FORWARD_BUTTON:
         on_fast_forward_release ();
         break;
@@ -147,13 +153,13 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
         on_escape_release ();
         break;
       default:
-        log_error("GUIScreen: ButtonEvent: unhandled event: " << event.name);
+        log_error("unhandled event: " << event.name);
         break;
     }
   }
   else
   {
-    log_error("GUIScreen::process_button_event: got unknown event.state: " << event.state);
+    log_error("got unknown event.state: " << event.state);
   }
 }
 

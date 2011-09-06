@@ -42,6 +42,7 @@ Manager::Manager() :
   desc.add_button("fast-forward-button", FAST_FORWARD_BUTTON);
   desc.add_button("armageddon-button",   ARMAGEDDON_BUTTON);
   desc.add_button("pause-button",        PAUSE_BUTTON);
+  desc.add_button("single-step-button",  SINGLE_STEP_BUTTON);
   desc.add_button("escape-button",       ESCAPE_BUTTON);
 
   desc.add_button("action-up-button",    ACTION_UP_BUTTON);
