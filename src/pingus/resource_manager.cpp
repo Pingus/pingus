@@ -229,6 +229,7 @@ ResourceManager::get_sprite_description(const std::string& name)
       Aliases::const_iterator j = aliases.find(name);
       if (j != aliases.end())
       {
+        log_warn("using alias \"" << j->first << "\" -> \"" << j->second << "\"");
         return get_sprite_description(j->second);
       }
       else
