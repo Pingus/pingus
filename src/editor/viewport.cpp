@@ -161,12 +161,12 @@ Viewport::on_primary_button_release(int x_, int y_)
   if (current_action == HIGHLIGHTING)
   {
     highlighted_area.normalize();
-    for (unsigned i = 0; i < get_objects()->size(); i++)
+    for (auto it = get_objects()->begin(); it != get_objects()->end(); ++it)
     {
-      if (highlighted_area.contains(Vector2i(int((*get_objects())[i]->get_pos().x),
-                                             int((*get_objects())[i]->get_pos().y))))
+      if (highlighted_area.contains(Vector2i(int((*it)->get_pos().x),
+                                             int((*it)->get_pos().y))))
       {
-        selection.insert((*get_objects())[i]);
+        selection.insert(*it);
       }
     }
     selection_changed(selection);
@@ -174,9 +174,9 @@ Viewport::on_primary_button_release(int x_, int y_)
   else if (current_action == DRAGGING)
   {
     // Set the objects' positions for good
-    for (unsigned i = 0; i < (*get_objects()).size(); i++)
+    for (auto it = get_objects()->begin(); it != get_objects()->end(); ++it)
     {
-      (*get_objects())[i]->set_orig_pos((*get_objects())[i]->get_pos());
+      (*it)->set_orig_pos((*it)->get_pos());
     }
   }
   current_action = NOTHING;

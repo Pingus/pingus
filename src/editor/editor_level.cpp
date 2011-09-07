@@ -17,6 +17,8 @@
 
 #include "editor/editor_level.hpp"
 
+#include <algorithm>
+
 #include "editor/level_objs.hpp"
 #include "editor/level_impl.hpp"
 #include "pingus/pingus_level.hpp"
@@ -159,8 +161,10 @@ bool EditorLevel::save_level(const std::string& filename)
 
   // Write the objects
   fw.begin_section("objects");
-  for (unsigned i = 0; i < impl->objects.size(); i++)
-    impl->objects[i]->write_properties(fw);
+  for (auto it = impl->objects.begin(); it != impl->objects.end(); ++it)
+  {
+    (*it)->write_properties(fw);
+  }
   fw.end_section();     // objects
 
   fw.end_section();     // pingus-level
@@ -311,7 +315,7 @@ void
 EditorLevel::sort()
 {
   // Sort by Z coordinate
-  std::stable_sort(impl->objects.begin(), impl->objects.end(), LevelObjSort);
+  impl->objects.sort(LevelObjSort);
 }
 
 void
@@ -425,61 +429,60 @@ EditorLevel::set_size(const Size& s)
 void
 EditorLevel::raise_object_to_top(LevelObj* obj)
 {
-  for(std::vector<LevelObj*>::size_type i = 0; i < impl->objects.size(); ++i)
+  Objects::iterator it = std::find(impl->objects.begin(), impl->objects.end(), obj);
+  if (it != impl->objects.end())
   {
-    if (impl->objects[i] == obj)
-    {
-      for(int j = i; j < int(impl->objects.size()-1); ++j)
-        std::swap(impl->objects[j], impl->objects[j+1]);
-
-      break;
-    }      
-  } 
+    impl->objects.erase(it);
+    impl->objects.push_back(obj);
+  }
 }
 
 void
 EditorLevel::lower_object_to_bottom(LevelObj* obj)
 {
-  for(std::vector<LevelObj*>::size_type i = 0; i < impl->objects.size(); ++i)
+  Objects::iterator it = std::find(impl->objects.begin(), impl->objects.end(), obj);
+  if (it != impl->objects.end())
   {
-    if (impl->objects[i] == obj)
-    {
-      for(int j = i; j >= 1; --j)
-        std::swap(impl->objects[j], impl->objects[j-1]);
-          
-      break;
-    }      
+    impl->objects.erase(it);
+    impl->objects.push_front(obj);
   }
 }
+
+struct OverlapsWith
+{
+  Rect rect;
+
+  OverlapsWith(const Rect& rect_) :
+    rect(rect_)
+  {}
+
+  bool operator()(LevelObj* obj) {
+    return rect.is_overlapped(obj->get_rect());
+  }
+};
 
 void
 EditorLevel::raise_object(LevelObj* obj)
 {
-#if 0
-  Objects::iterator i = std::find(objects.begin(), objects.end(), object);
-  assert(i != objects.end());
-  Objects::iterator j = i;
-  ++j;
-  j = std::find_if(j, objects.end(), OverlapsWith(object->get_bounding_box()));
-
-  if (j == objects.end())
+  Objects::iterator i = std::find(impl->objects.begin(), impl->objects.end(), obj);
+  if (i == impl->objects.end())
   {
-    // object overlaps with no other object, no point in raising it
+    log_error("couldn't find object: " << obj);
   }
   else
   {
-    objects.erase(i);
-    objects.insert(++j, object);
-  }
-#endif 
+    Objects::iterator j = i;
+    ++j;
+    j = std::find_if(j, impl->objects.end(), OverlapsWith(obj->get_rect()));
 
-  for(std::vector<LevelObj*>::size_type i = 0; i < impl->objects.size(); ++i)
-  {
-    if (impl->objects[i] == obj)
+    if (j == impl->objects.end())
     {
-      if (i != impl->objects.size()-1)
-        std::swap(impl->objects[i], impl->objects[i+1]);
-      break;
+      // object overlaps with no other object, no point in raising it
+    }
+    else
+    {
+      impl->objects.erase(i);
+      impl->objects.insert(++j, obj);
     }
   }
 }
@@ -487,13 +490,28 @@ EditorLevel::raise_object(LevelObj* obj)
 void
 EditorLevel::lower_object(LevelObj* obj)
 {
-  for(std::vector<LevelObj*>::size_type i = 0; i < impl->objects.size(); ++i)
+  Objects::reverse_iterator i = std::find(impl->objects.rbegin(), impl->objects.rend(), obj);
+  if (i == impl->objects.rend())
   {
-    if (impl->objects[i] == obj)
+    log_error("couldn't find object: " << obj);
+  }
+  else
+  {
+    Objects::reverse_iterator j = i;
+    ++j;
+    j = std::find_if(j, impl->objects.rend(), OverlapsWith(obj->get_rect()));
+
+    if (j == impl->objects.rend())
     {
-      if (i != 0)
-        std::swap(impl->objects[i], impl->objects[i-1]);
-      break;
+      // object overlaps with no other object, no point in lowering it
+    }
+    else
+    {
+      // the base() of base in one further then where the reverse
+      // iterator was, so we have to move back to get the same
+      // position
+      impl->objects.erase(--(i.base()));
+      impl->objects.insert(--(j.base()), obj);
     }
   }
 }  

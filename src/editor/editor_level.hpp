@@ -18,9 +18,10 @@
 #ifndef HEADER_PINGUS_EDITOR_EDITOR_LEVEL_HPP
 #define HEADER_PINGUS_EDITOR_EDITOR_LEVEL_HPP
 
+#include <list>
+#include <map>
 #include <memory>
 #include <vector>
-#include <map>
 
 #include "math/size.hpp"
 
@@ -35,7 +36,7 @@ class LevelObj;
 class EditorLevel
 {
 public:
-  typedef std::vector<LevelObj*> Objects;
+  typedef std::list<LevelObj*> Objects;
 
   /** Construct new blank level */
   EditorLevel();
