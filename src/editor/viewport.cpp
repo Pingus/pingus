@@ -236,6 +236,7 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
       }
       break;
 
+    case SDLK_PAGEUP:
     case SDLK_RIGHTBRACKET:
     case SDLK_w:
       if (ev.keysym.mod & KMOD_SHIFT)
@@ -248,6 +249,7 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
       }
       break;
 
+    case SDLK_PAGEDOWN:
     case SDLK_LEFTBRACKET:
     case SDLK_s:
       if (ev.keysym.mod & KMOD_SHIFT)
@@ -294,11 +296,11 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
     case SDLK_v:
       if (ev.keysym.mod & KMOD_SHIFT)
       {
-        vflip_selected_objects();
+        hflip_selected_objects();
       }
       else
       {
-        hflip_selected_objects();
+        vflip_selected_objects();
       }
       break;
             
