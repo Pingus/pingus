@@ -177,14 +177,14 @@ GroupComponent::on_secondary_button_release(int x, int y)
 }
 
 void
-GroupComponent::on_key_pressed(const unsigned short c)
+GroupComponent::on_key_pressed(const Input::KeyboardEvent& ev)
 {
   if (grabbed_comp)
-    grabbed_comp->on_key_pressed(c);
+    grabbed_comp->on_key_pressed(ev);
   else if (focused_comp)
-    focused_comp->on_key_pressed(c);
+    focused_comp->on_key_pressed(ev);
   else if (mouse_over_comp)
-    mouse_over_comp->on_key_pressed(c);
+    mouse_over_comp->on_key_pressed(ev);
 }
 
 void

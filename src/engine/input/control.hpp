@@ -415,16 +415,16 @@ private:
 class Keyboard : public Control
 {
 protected:
-  unsigned short chr;
+  SDL_KeyboardEvent m_ev;
 
 public:
   Keyboard(Control* parent_) :
     Control(parent_),
-    chr()
+    m_ev()
   {}
 
-  void send_char(unsigned short c) { chr = c; notify_parent(); }
-  unsigned short get_char() { return chr; }
+  void send_char(const SDL_KeyboardEvent& ev) { m_ev = ev; notify_parent(); }
+  SDL_KeyboardEvent get_ev() { return m_ev; }
 
 private:
   Keyboard(const Keyboard&);
@@ -452,7 +452,7 @@ public:
   }
 
   void update(Control* p) {
-    chr = dynamic_cast<Keyboard*>(p)->get_char();
+    m_ev = dynamic_cast<Keyboard*>(p)->get_ev();
     notify_parent();
   }
 
@@ -469,14 +469,14 @@ private:
   int id;
 
 public:
-  ControllerKeyboard(Controller* controller_, int id_)
-    : KeyboardGroup(0),
-      controller(controller_),
-      id(id_)
+  ControllerKeyboard(Controller* controller_, int id_) :
+    KeyboardGroup(0),
+    controller(controller_),
+    id(id_)
   {}
   
   virtual void notify_parent() {
-    controller->add_keyboard_event(chr);
+    controller->add_keyboard_event(m_ev);
   }
 
 private:

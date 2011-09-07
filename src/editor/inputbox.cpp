@@ -16,6 +16,7 @@
 
 #include "editor/inputbox.hpp"
 
+#include "util/utf8.hpp"
 #include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
 
@@ -48,13 +49,9 @@ Inputbox::set_text(const std::string& text_)
 }
 
 void
-Inputbox::on_key_pressed(const unsigned short c)
+Inputbox::on_key_pressed(const Input::KeyboardEvent& ev)
 {
-  if (c == 0)
-  {
-    // ignore
-  }
-  else if (c == 8) // backspace
+  if (ev.keysym.sym == SDLK_BACKSPACE) // backspace
   {
     if (!text.empty())
     {
@@ -62,18 +59,15 @@ Inputbox::on_key_pressed(const unsigned short c)
       on_change(text);
     }      
   }
-  else if (c == 13) // enter
+  else if (ev.keysym.sym == SDLK_RETURN) // enter
   {
     on_change(text);
     on_enter(text);
   }
   else
-  { // FIXME: This doesn't handle UTF8 properly 
-    if (c < 256)
-    {
-      text += static_cast<unsigned char>(c);
-      on_change(text);
-    }
+  { 
+    text += UTF8::encode_utf8(ev.keysym.unicode);
+    on_change(text);
   }
 }
 

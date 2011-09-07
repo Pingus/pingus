@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_ENGINE_GUI_COMPONENT_HPP
 #define HEADER_PINGUS_ENGINE_GUI_COMPONENT_HPP
 
+#include "engine/input/event.hpp"
+
 class DrawingContext;
 
 namespace GUI {
@@ -83,7 +85,7 @@ public:
 
   /** Emitted whenever a keyboard character is pressed.  Only certain 
       components should implement this */
-  virtual void on_key_pressed(const unsigned short c) {}
+  virtual void on_key_pressed(const Input::KeyboardEvent& ev) {}
 
   GroupComponent* get_parent() const;
   void set_parent(GroupComponent* p);

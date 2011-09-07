@@ -20,6 +20,9 @@
 #include <string>
 #include <vector>
 
+#include <SDL/SDL_keyboard.h>
+#include <SDL/SDL_events.h>
+
 namespace Input {
 
 enum EventType { BUTTON_EVENT_TYPE, 
@@ -94,7 +97,8 @@ struct ScrollEvent
 
 struct KeyboardEvent
 {
-  unsigned short key;
+  bool state;
+  SDL_keysym keysym;
 };
 
 struct Event
@@ -158,13 +162,14 @@ inline Event makeScrollerEvent(EventName name, float x_delta, float y_delta)
   return event;
 }
 
-inline Event makeKeyboardEvent(unsigned short c)
+inline Event makeKeyboardEvent(const SDL_KeyboardEvent& ev)
 {
   Event event;
-        
+  
   event.type = KEYBOARD_EVENT_TYPE;
-  event.keyboard.key = c;
-        
+  event.keyboard.state  = ev.state;
+  event.keyboard.keysym = ev.keysym;
+  
   return event;
 }
 

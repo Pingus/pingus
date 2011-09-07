@@ -259,14 +259,21 @@ SDLDriver::update(float delta)
 
       case SDL_KEYDOWN:
         if (keyboard_binding)
-          keyboard_binding->send_char(event.key.keysym.unicode);
-            
+          keyboard_binding->send_char(event.key);
+        break;
+           
       case SDL_KEYUP:
+        // keyboard events
+        if (keyboard_binding)
+          keyboard_binding->send_char(event.key);
+
+        // global event hacks
         if (event.key.state == SDL_PRESSED)
           global_event.on_button_press(event.key);
         else
           global_event.on_button_release(event.key);            
 
+        // game button events
         for(std::vector<KeyboardButtonBinding>::iterator i = keyboard_button_bindings.begin();
             i != keyboard_button_bindings.end(); ++i)
         {

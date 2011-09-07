@@ -80,7 +80,14 @@ GUIManager::update(const Input::Event& event)
       break;
         
     case Input::KEYBOARD_EVENT_TYPE:
-      on_key_pressed(event.keyboard.key);
+      if (event.keyboard.state)
+      {
+        on_key_pressed(event.keyboard);
+      }
+      else
+      {
+        //FIXME: implement this on_key_release(event.keyboard);
+      }
       break;
 
     case Input::SCROLLER_EVENT_TYPE:

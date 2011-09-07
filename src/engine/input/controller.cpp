@@ -232,9 +232,9 @@ Controller::add_scroller_event(int id, float xrel, float yrel)
 }
 
 void
-Controller::add_keyboard_event(unsigned short key)
+Controller::add_keyboard_event(const SDL_KeyboardEvent& ev)
 {
-  events.push_back(makeKeyboardEvent(key));
+  events.push_back(makeKeyboardEvent(ev));
 }
 
 void

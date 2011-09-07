@@ -17,9 +17,12 @@
 
 #include "editor/viewport.hpp"
 
+#include <boost/format.hpp>
+
 #include "editor/editor_level.hpp"
 #include "engine/display/display.hpp"
 #include "util/log.hpp"
+#include "util/utf8.hpp"
 
 namespace Editor {
 
@@ -171,30 +174,30 @@ Viewport::on_pointer_move(int x_, int y_)
       break;
         
     case DRAGGING:
-    {
-      float new_x, new_y;
-
-      for (unsigned i = 0; i < selected_objs.size(); i++)
       {
-        Vector3f orig_pos(selected_objs[i]->get_orig_pos());
-        float x_offset = static_cast<float>(mouse_world_pos.x - drag_world_pos.x);
-        float y_offset = static_cast<float>(mouse_world_pos.y - drag_world_pos.y);
+        float new_x, new_y;
 
-        if (snap_to)
+        for (unsigned i = 0; i < selected_objs.size(); i++)
         {
-          // FIXME: May need to adjust the snap-to offset here.
-          new_x = static_cast<float>(static_cast<int>((x_offset + orig_pos.x) / 10) * 10);
-          new_y = static_cast<float>(static_cast<int>((y_offset + orig_pos.y) / 10) * 10);
+          Vector3f orig_pos(selected_objs[i]->get_orig_pos());
+          float x_offset = static_cast<float>(mouse_world_pos.x - drag_world_pos.x);
+          float y_offset = static_cast<float>(mouse_world_pos.y - drag_world_pos.y);
+
+          if (snap_to)
+          {
+            // FIXME: May need to adjust the snap-to offset here.
+            new_x = static_cast<float>(static_cast<int>((x_offset + orig_pos.x) / 10) * 10);
+            new_y = static_cast<float>(static_cast<int>((y_offset + orig_pos.y) / 10) * 10);
+          }
+          else
+          {
+            new_x = x_offset + orig_pos.x;
+            new_y = y_offset + orig_pos.y;
+          }
+          selected_objs[i]->set_pos(Vector3f(new_x, new_y, orig_pos.z));
         }
-        else
-        {
-          new_x = x_offset + orig_pos.x;
-          new_y = y_offset + orig_pos.y;
-        }
-        selected_objs[i]->set_pos(Vector3f(new_x, new_y, orig_pos.z));
       }
-    }
-    break;
+      break;
 
     case SCROLLING:
       break;
@@ -205,18 +208,19 @@ Viewport::on_pointer_move(int x_, int y_)
 }
 
 void
-Viewport::on_key_pressed(const unsigned short c)
+Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
 {
-  if (c < 256)
+  switch(ev.keysym.sym)
   {
-    switch(c)
-    {
-      case 'A':
+    case SDLK_a:
+      if (ev.keysym.mod & KMOD_SHIFT)
+      {
         clear_selection();
         selection_changed(selected_objs);
-        break;
-
-      case 'a':
+      }
+      else
+      {
+        
         if (selected_objs == (*get_objects()))
         {
           clear_selection();
@@ -229,101 +233,128 @@ Viewport::on_key_pressed(const unsigned short c)
             selected_objs[i]->select();
         }
         selection_changed(selected_objs);
-        break;
-
-      case ']':
-      case 'w':
-        raise_objects();
+      }
       break;
-            
-      case '}':
-      case 'W':
+
+    case SDLK_RIGHTBRACKET:
+    case SDLK_w:
+      if (ev.keysym.mod & KMOD_SHIFT)
+      {
         raise_objects_to_top();
+      }
+      else
+      {
+        raise_objects();
+      }
       break;
 
-      case '{':
-      case 'S':
+    case SDLK_LEFTBRACKET:
+    case SDLK_s:
+      if (ev.keysym.mod & KMOD_SHIFT)
+      {
         lower_objects_to_bottom();
-      break;
-
-      case '[':
-      case 's':
+      }
+      else
+      {
         lower_objects();
+      }
       break;
 
-      case 'r':
-        rotate_90_selected_objects();
-        break;
-            
-      case 'R':
+    case SDLK_r:
+      if (ev.keysym.mod & KMOD_SHIFT)
+      {
         rotate_270_selected_objects();
-        break;
-
-      case 8: // backspace
-      case 127: // delete
-        delete_selected_objects();
-        break;
-             
-      case 'd':
-        duplicate_selected_objects();
-        break;
-
-      case 'V':
-      case 'f':
-        hflip_selected_objects();
-      break;
-
-      case 'F':
-      case 'v':
-        vflip_selected_objects();
+      }
+      else
+      {
+        rotate_90_selected_objects();
+      }
       break;
             
-      case 'c': // dvorak-up
-      case 'i': // up
-        move_objects(Vector2i(0,-1));
+    case SDLK_DELETE:
+    case SDLK_BACKSPACE:
+      delete_selected_objects();
+      break;
+             
+    case SDLK_d:
+      duplicate_selected_objects();
       break;
 
-      case 't': // dvorak-down
-      case 'k': // down
-        move_objects(Vector2i(0,1));
+    case SDLK_f:
+      if (ev.keysym.mod & KMOD_SHIFT)
+      {
+        vflip_selected_objects();       
+      }
+      else
+      {
+        hflip_selected_objects();
+      }
       break;
 
-      case 'h': // dvorak-left
-      case 'j': // left
-        move_objects(Vector2i(-1,0));
+    case SDLK_v:
+      if (ev.keysym.mod & KMOD_SHIFT)
+      {
+        vflip_selected_objects();
+      }
+      else
+      {
+        hflip_selected_objects();
+      }
       break;
-
-      case 'n': // dvorak-right
-      case 'l': // right
-        move_objects(Vector2i(1,0));
-      break;
-
-
-      case 'C': // dvorak-up
-      case 'I': // up
+            
+    case SDLK_c: // dvorak-up
+    case SDLK_i: // up
+      if (ev.keysym.mod & KMOD_SHIFT)
+      {
         move_objects(Vector2i(0,-keyboard_movement_distance));
+      }
+      else
+      {
+        move_objects(Vector2i(0,-1));
+      }
       break;
 
-      case 'T': // dvorak-down
-      case 'K': // down
-        move_objects(Vector2i(0,keyboard_movement_distance));
+    case SDLK_t: // dvorak-down
+    case SDLK_k: // down
+      if (ev.keysym.mod & KMOD_SHIFT)
+      {
+        move_objects(Vector2i(0, keyboard_movement_distance));       
+      }
+      else
+      {
+        move_objects(Vector2i(0,1));
+      }
       break;
 
-      case 'H': // dvorak-left
-      case 'J': // left
-        move_objects(Vector2i(-keyboard_movement_distance,0));
+    case SDLK_h: // dvorak-left
+    case SDLK_j: // left
+      if (ev.keysym.mod & KMOD_SHIFT)
+      {
+        move_objects(Vector2i(-keyboard_movement_distance, 0));
+      }
+      else
+      {
+        move_objects(Vector2i(-1,0));
+      }
       break;
 
-      case 'N': // dvorak-right
-      case 'L': // right
-        move_objects(Vector2i(keyboard_movement_distance,0));
+    case SDLK_n: // dvorak-right
+    case SDLK_l: // right
+      if (ev.keysym.mod & KMOD_SHIFT)
+      {
+        move_objects(Vector2i(keyboard_movement_distance, 0));
+      }
+      else
+      {
+        move_objects(Vector2i(1,0));
+      }
       break;
-
-
-      default:
-        log_debug("Viewport::on_key_pressed: " << int(c) << " " << static_cast<char>(c));
-        break;
-    }
+      
+    default:
+      log_debug("Viewport::on_key_pressed: " << ev.keysym.sym 
+                << " U+" << (boost::format("%04x") % ev.keysym.unicode)
+                << " " << UTF8::encode_utf8(ev.keysym.unicode));
+      break;
   }
 }
 

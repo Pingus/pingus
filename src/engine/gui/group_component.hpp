@@ -60,7 +60,7 @@ public:
   void on_primary_button_click(int x, int y) {}
   void on_secondary_button_click(int x, int y) {}
 
-  void on_key_pressed(const unsigned short c);
+  void on_key_pressed(const Input::KeyboardEvent& ev);
 
   void on_pointer_enter();
   void on_pointer_leave();

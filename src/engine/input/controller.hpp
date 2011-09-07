@@ -64,7 +64,7 @@ public:
   void add_button_event(int id, ButtonState state);
   void add_pointer_event(int id, float x, float y);
   void add_scroller_event(int id, float xrel, float yrel);
-  void add_keyboard_event(unsigned short key);
+  void add_keyboard_event(const SDL_KeyboardEvent& ev);
 
   void add_axis(int id, ControllerAxis* axis);
   void add_button(int id, ControllerButton* button); 

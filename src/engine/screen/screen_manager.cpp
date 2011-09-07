@@ -27,9 +27,9 @@
 #include "pingus/globals.hpp"
 
 template<class C>
-void write(std::ostream& out, C value)
+void write(std::ostream& out, const C& value)
 {
-  out.write(reinterpret_cast<char*>(&value), sizeof(value));
+  out.write(reinterpret_cast<const char*>(&value), sizeof(value));
 }
 
 template<class C>
@@ -89,7 +89,7 @@ void read_event(std::istream& out, Input::Event& event)
       break;
         
     case Input::KEYBOARD_EVENT_TYPE:
-      read(out, event.keyboard.key);
+      read(out, event.keyboard);
       break;
 
     default:
@@ -125,7 +125,7 @@ void write_event(std::ostream& out, const Input::Event& event)
       break;
         
     case Input::KEYBOARD_EVENT_TYPE:
-      write(out, event.keyboard.key);
+      write(out, event.keyboard);
       break;
 
     default:
