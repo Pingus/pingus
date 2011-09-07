@@ -19,6 +19,7 @@
 #define HEADER_PINGUS_EDITOR_EDITOR_SCREEN_HPP
 
 #include "editor/file_dialog.hpp"
+#include "editor/editor_level.hpp"
 #include "engine/screen/gui_screen.hpp"
 #include "util/pathname.hpp"
 
@@ -86,11 +87,7 @@ public:
 
   /** Return a pointer to the current level */
   EditorLevel* get_level() const { return plf.get(); }
-
-  /** Add an object to both the EditorLevel and the Viewport */
-  void add_object(LevelObj* obj);
-  void add_objects(std::vector<LevelObj*> objs);
-
+  
   /** Show a file dialog box */
   void show_file_dialog(bool for_loading);
 

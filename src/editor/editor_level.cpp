@@ -17,6 +17,8 @@
 
 #include "editor/editor_level.hpp"
 
+#include "editor/level_objs.hpp"
+#include "editor/level_impl.hpp"
 #include "pingus/pingus_level.hpp"
 #include "util/log.hpp"
 #include "util/system.hpp"
@@ -145,8 +147,7 @@ bool EditorLevel::save_level(const std::string& filename)
         
   // Write the list of actions to the file
   fw.begin_section("actions");
-  for (std::map<std::string, int>::const_iterator i = impl->actions.begin();
-       i != impl->actions.end(); i++)
+  for (auto i = impl->actions.begin(); i != impl->actions.end(); i++)
   {
     if (i->second > 0)
       fw.write_int(i->first.c_str(), i->second);
@@ -497,7 +498,7 @@ EditorLevel::lower_object(LevelObj* obj)
   }
 }  
 
-std::vector<LevelObj*>*
+EditorLevel::Objects*
 EditorLevel::get_objects()
 {
   return &(impl->objects);
@@ -514,8 +515,7 @@ EditorLevel::object_at (int x, int y)
 {
   // we travel reversly through the object list, so that we get the
   // top-most object
-  for (std::vector<LevelObj*>::reverse_iterator i = (*get_objects()).rbegin ();
-       i != (*get_objects()).rend (); ++i)
+  for (auto i = (*get_objects()).rbegin (); i != (*get_objects()).rend (); ++i)
   {
     if ((*i)->is_at(x, y))
       return *i;

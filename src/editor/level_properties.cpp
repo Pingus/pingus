@@ -17,6 +17,7 @@
 #include "editor/level_properties.hpp"
 
 #include "editor/editor_level.hpp"
+#include "editor/editor_screen.hpp"
 #include "editor/gui_style.hpp"
 #include "editor/inputbox.hpp"
 #include "editor/label.hpp"

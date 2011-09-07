@@ -20,12 +20,14 @@
 #include <signal.h>
 
 #include "editor/editor_level.hpp"
+#include "editor/editor_screen.hpp"
 #include "engine/system/sdl_system.hpp"
 #include "pingus/config_manager.hpp"
 #include "pingus/screens/demo_session.hpp"
 #include "pingus/screens/pingus_menu.hpp"
 #include "util/log.hpp"
 #include "util/string_util.hpp"
+#include "util/system.hpp"
 
 #if defined(__APPLE__)
 /* Can't use the include, some type names conflict.

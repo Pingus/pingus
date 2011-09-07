@@ -22,6 +22,7 @@
 #include <set>
 
 #include "editor/selection.hpp"
+#include "editor/editor_level.hpp"
 #include "engine/display/graphic_context_state.hpp"
 #include "engine/gui/rect_component.hpp"
 
@@ -134,7 +135,7 @@ public:
 
   void update_layout();
 
-  std::vector<LevelObj*>* get_objects();
+  EditorLevel::Objects* get_objects();
 
   void clear_selection();
 

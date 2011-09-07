@@ -17,7 +17,9 @@
 #include "editor/minimap.hpp"
 
 #include "editor/editor_level.hpp"
+#include "editor/editor_screen.hpp"
 #include "editor/gui_style.hpp"
+#include "editor/level_objs.hpp"
 #include "editor/viewport.hpp"
 
 namespace Editor {
@@ -47,10 +49,10 @@ Minimap::draw(DrawingContext& gc)
   dc.draw_fillrect(Rect(Vector2i(0, 0), Size(minimap_rect.get_width(), minimap_rect.get_height())),
                    Color(0,0,0), -100000.0f);
 
-  std::vector<LevelObj*>& objects = *editor->get_viewport()->get_objects();
+  auto& objects = *editor->get_viewport()->get_objects();
   Size levelsize = editor->get_level()->get_size();
 
-  for(std::vector<LevelObj*>::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
   {
     Rect r = (*i)->get_rect();
 

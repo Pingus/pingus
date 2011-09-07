@@ -25,6 +25,7 @@
 
 #include "editor/editor_screen.hpp"
 #include "editor/level_objs.hpp"
+#include "editor/editor_level.hpp"
 
 namespace Editor {
 
@@ -52,7 +53,7 @@ public:
   /** Destructor */
   ~LevelImpl()
   {
-    for(std::vector<LevelObj*>::iterator i = objects.begin(); i != objects.end(); ++i)
+    for(auto i = objects.begin(); i != objects.end(); ++i)
     {
       delete *i;
     }
@@ -76,7 +77,7 @@ public:
   std::string author;
   std::string music;
 
-  std::vector<LevelObj*> objects;
+  EditorLevel::Objects objects;
 
 private:
   LevelImpl (const LevelImpl&);

@@ -19,19 +19,24 @@
 #define HEADER_PINGUS_EDITOR_EDITOR_LEVEL_HPP
 
 #include <memory>
+#include <vector>
+#include <map>
 
-#include "editor/level_impl.hpp"
+#include "math/size.hpp"
 
 class Pathname;
 
 namespace Editor {
 
-class LevelObj;
 class EditorScreen;
+class LevelImpl;
+class LevelObj;
 
 class EditorLevel
 {
 public:
+  typedef std::vector<LevelObj*> Objects;
+
   /** Construct new blank level */
   EditorLevel();
 
@@ -95,7 +100,7 @@ public:
   void raise_object_to_top(LevelObj* obj);
   void lower_object_to_bottom(LevelObj* obj);
 
-  std::vector<LevelObj*>* get_objects();
+  Objects* get_objects();
 
   void add_object(LevelObj* obj);
   LevelObj* object_at (int x, int y);

@@ -15,6 +15,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "editor/editor_screen.hpp"
 
 #include "editor/action_properties.hpp"
 #include "editor/editor_level.hpp"
@@ -253,19 +254,6 @@ EditorScreen::update(const Input::Event& event)
       // other events are for most part handled by the GUIScreen/GUIManager
       break;
   }
-}
-
-void
-EditorScreen::add_object(LevelObj* obj)
-{
-  plf->add_object(obj);
-}
-
-void
-EditorScreen::add_objects(std::vector<LevelObj*> objs)
-{
-  for (std::vector<LevelObj*>::const_iterator it = objs.begin(); it != objs.end(); it++)
-    add_object(*it);
 }
 
 void 

@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "editor/editor_level.hpp"
+#include "editor/editor_screen.hpp"
 #include "editor/object_selector.hpp"
 #include "editor/object_selector_set.hpp"
 #include "editor/viewport.hpp"
@@ -135,9 +136,13 @@ ObjectSelectorList::on_primary_button_release (int x, int y)
 
         LevelObj* obj = set->get_objects()[current_object]->create(p, editor->get_level()->get_level_impl());
         if (obj)
-          editor->add_object(obj);
+        {
+          editor->get_level()->add_object(obj);
+        }
         else
+        {
           log_error("ObjectSelectorList::Object: create() not implemented");
+        }
       }
     }
   }

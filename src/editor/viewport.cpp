@@ -20,6 +20,7 @@
 #include <boost/format.hpp>
 
 #include "editor/editor_level.hpp"
+#include "editor/editor_screen.hpp"
 #include "editor/level_objs.hpp"
 #include "engine/display/display.hpp"
 #include "util/log.hpp"
@@ -605,7 +606,7 @@ Viewport::set_scroll_pos(const Vector2i& pos)
   state.set_pos(pos);
 }
 
-std::vector<LevelObj*>*
+EditorLevel::Objects*
 Viewport::get_objects()
 {
   return editor->get_level()->get_objects();
