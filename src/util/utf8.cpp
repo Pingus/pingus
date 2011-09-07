@@ -185,6 +185,35 @@ UTF8::decode_utf8(const std::string& text, size_t& p)
   }
 }
 
+std::string
+UTF8::encode_utf8(uint32_t unicode)
+{
+  std::string result;
+  if (unicode < 0x80)
+  {
+    result += static_cast<uint8_t>(unicode);
+  }
+  else if (unicode < 0x800) 
+  {
+    result += static_cast<uint8_t>((unicode >> 6) | 0xc0);
+    result += static_cast<uint8_t>((unicode & 0x3f) | 0x80);
+  }
+  else if (unicode < 0x10000)
+  {
+    result += static_cast<uint8_t>((unicode  >> 12) | 0xe0);
+    result += static_cast<uint8_t>(((unicode >> 6) & 0x3f) | 0x80);
+    result += static_cast<uint8_t>((unicode & 0x3f) | 0x80);
+  }
+  else
+  {
+    result += static_cast<uint8_t>((unicode  >> 18) | 0xf0);
+    result += static_cast<uint8_t>(((unicode >> 12) & 0x3f) | 0x80);
+    result += static_cast<uint8_t>(((unicode >>  6) & 0x3f) | 0x80);
+    result += static_cast<uint8_t>((unicode & 0x3f) | 0x80);
+  }
+  return result;
+}
+
 // FIXME: Get rid of exceptions in this code
 UTF8::iterator::iterator(const std::string& text_)
   : text(&text_),

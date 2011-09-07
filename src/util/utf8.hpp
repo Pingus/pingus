@@ -84,6 +84,8 @@ public:
   static uint32_t decode_utf8(const std::string& text, size_t& p);
 
   static uint32_t decode_utf8(const std::string& text);
+
+  static std::string encode_utf8(uint32_t unicode);
 };
 
 #endif
