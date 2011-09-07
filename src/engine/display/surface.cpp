@@ -202,17 +202,26 @@ Surface::get_pixel(int x, int y) const
   {
     case 1:
       pixel = *p;
+      break;
+
     case 2: /* This will cause some problems ... */
       pixel = *reinterpret_cast<Uint16*>(p);
+      break;
+
     case 3:
       if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
         pixel = p[0] << 16 | p[1] << 8 | p[2];
       else
         pixel = p[0] | p[1] << 8 | p[2] << 16;
+      break;
+
     case 4:
       pixel = *reinterpret_cast<Uint32*>(p);
+      break;
+
     default:
       pixel = 0;       /* shouldn't happen, but avoids warnings */
+      break;
   } 
 
   Color color;
