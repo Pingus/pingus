@@ -121,9 +121,15 @@ ForwardButton::draw (DrawingContext& gc)
 }
 
 void
-ForwardButton::on_primary_button_click (int x, int y)
+ForwardButton::on_primary_button_press (int x, int y)
 {
-  session->set_fast_forward(!session->get_fast_forward());
+  session->set_fast_forward(true);
+}
+
+void
+ForwardButton::on_primary_button_release (int x, int y)
+{
+  session->set_fast_forward(false);
 }
 
 PauseButton::PauseButton(GameSession* s, int x, int y) :

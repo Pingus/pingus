@@ -306,7 +306,13 @@ GameSession::on_single_step_press ()
 void
 GameSession::on_fast_forward_press ()
 {
-  set_fast_forward(!get_fast_forward());
+  set_fast_forward(true);
+}
+
+void
+GameSession::on_fast_forward_release ()
+{
+  set_fast_forward(false);
 }
 
 void

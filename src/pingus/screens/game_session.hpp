@@ -98,6 +98,7 @@ public:
   void on_pause_press ();
   void on_single_step_press ();
   void on_fast_forward_press ();
+  void on_fast_forward_release ();
   void on_armageddon_press ();
   void on_escape_press ();
   void on_action_axis_move (float);

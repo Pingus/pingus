@@ -69,7 +69,8 @@ public:
   virtual ~ForwardButton();
 
   void draw(DrawingContext& gc);
-  void on_primary_button_click (int x, int y);
+  void on_primary_button_press (int x, int y);
+  void on_primary_button_release (int x, int y);
 
 private:
   ForwardButton (const ForwardButton&);
