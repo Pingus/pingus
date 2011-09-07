@@ -20,6 +20,7 @@
 #include <boost/format.hpp>
 
 #include "editor/editor_level.hpp"
+#include "editor/level_objs.hpp"
 #include "engine/display/display.hpp"
 #include "util/log.hpp"
 #include "util/utf8.hpp"
@@ -39,7 +40,7 @@ Viewport::Viewport(EditorScreen* e, const Rect& rect_)  :
   mouse_screen_pos(),
   drag_world_pos(),
   drag_screen_pos(),
-  selected_objs(),
+  selection(),
   highlighted_area(0,0,0,0),
   context_menu(),
   snap_to(false),
@@ -103,13 +104,15 @@ Viewport::on_primary_button_press(int x_, int y_)
       {
         clear_selection();
         obj->select();
-        selected_objs.push_back(obj);
+        selection.insert(obj);
 
-        selection_changed(selected_objs);
+        selection_changed(selection);
       }
 
-      for (unsigned i = 0; i < selected_objs.size(); i++)
-        selected_objs[i]->set_orig_pos(selected_objs[i]->get_pos());
+      for (auto it = selection.begin(); it != selection.end(); ++it) 
+      {
+        (*it)->set_orig_pos((*it)->get_pos());
+      }
 
       // Allow dragging of the currently selected objects
       current_action = DRAGGING;
@@ -123,7 +126,7 @@ Viewport::on_primary_button_press(int x_, int y_)
 
       clear_selection();
 
-      selection_changed(selected_objs);
+      selection_changed(selection);
     }
   }
 }
@@ -142,14 +145,16 @@ Viewport::on_primary_button_release(int x_, int y_)
       if (highlighted_area.contains(Vector2i(int((*get_objects())[i]->get_pos().x),
                                              int((*get_objects())[i]->get_pos().y))))
       {
-        selected_objs.push_back((*get_objects())[i]);
+        selection.insert((*get_objects())[i]);
         (*get_objects())[i]->select();
       }
       else
+      {
         (*get_objects())[i]->unselect();
+      }
     }
 
-    selection_changed(selected_objs);
+    selection_changed(selection);
   }
   else if (current_action == DRAGGING)
   {
@@ -177,9 +182,9 @@ Viewport::on_pointer_move(int x_, int y_)
       {
         float new_x, new_y;
 
-        for (unsigned i = 0; i < selected_objs.size(); i++)
+        for (auto it = selection.begin(); it != selection.end(); ++it)
         {
-          Vector3f orig_pos(selected_objs[i]->get_orig_pos());
+          Vector3f orig_pos((*it)->get_orig_pos());
           float x_offset = static_cast<float>(mouse_world_pos.x - drag_world_pos.x);
           float y_offset = static_cast<float>(mouse_world_pos.y - drag_world_pos.y);
 
@@ -194,7 +199,7 @@ Viewport::on_pointer_move(int x_, int y_)
             new_x = x_offset + orig_pos.x;
             new_y = y_offset + orig_pos.y;
           }
-          selected_objs[i]->set_pos(Vector3f(new_x, new_y, orig_pos.z));
+          (*it)->set_pos(Vector3f(new_x, new_y, orig_pos.z));
         }
       }
       break;
@@ -216,23 +221,24 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
       if (ev.keysym.mod & KMOD_SHIFT)
       {
         clear_selection();
-        selection_changed(selected_objs);
+        selection_changed(selection);
       }
       else
       {
-        
-        if (selected_objs == (*get_objects()))
+        if (selection.size() == get_objects()->size())
         {
           clear_selection();
         }
         else 
         {
           clear_selection();
-          selected_objs = (*get_objects());
-          for (unsigned i = 0; i < selected_objs.size(); i++)
-            selected_objs[i]->select();
+          selection.insert(get_objects()->begin(), get_objects()->end());
+          for (auto it = selection.begin(); it != selection.end(); ++it)
+          {
+            (*it)->select();
+          }
         }
-        selection_changed(selected_objs);
+        selection_changed(selection);
       }
       break;
 
@@ -432,43 +438,43 @@ Viewport::refresh()
 void
 Viewport::duplicate_selected_objects()
 {
-  std::vector<LevelObj*> new_objs;
-  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+  Selection new_selection;
+  for(auto i = selection.begin(); i != selection.end(); ++i)
   {
     LevelObj* clone = (*i)->duplicate(Vector2i(32, 32));
     if (clone)
     {
-      new_objs.push_back(clone);
-      (*get_objects()).push_back(clone);
+      new_selection.insert(clone);
+      get_objects()->push_back(clone);
       clone->select();
     }
   }
   
   clear_selection();
-  selected_objs = new_objs;
-  selection_changed(selected_objs);  
+  selection = new_selection;
+  selection_changed(selection);  
 }
 
 void
 Viewport::delete_selected_objects()
 {
-  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+  for(auto i = selection.begin(); i != selection.end(); ++i)
     (*i)->remove();
   
   (*get_objects()).erase(std::remove_if((*get_objects()).begin(), (*get_objects()).end(), boost::mem_fn(&LevelObj::is_removed)),
                          (*get_objects()).end());
 
-  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+  for(auto i = selection.begin(); i != selection.end(); ++i)
     delete (*i);
 
-  selected_objs.clear();
-  selection_changed(selected_objs);
+  selection.clear();
+  selection_changed(selection);
 }
 
 void
 Viewport::hflip_selected_objects()
 {
-  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+  for(auto i = selection.begin(); i != selection.end(); ++i)
   {
     (*i)->set_modifier(ResourceModifier::horizontal_flip((*i)->get_modifier()));
   }  
@@ -477,7 +483,7 @@ Viewport::hflip_selected_objects()
 void
 Viewport::vflip_selected_objects()
 {
-  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+  for(auto i = selection.begin(); i != selection.end(); ++i)
   {
     (*i)->set_modifier(ResourceModifier::vertical_flip((*i)->get_modifier()));
   }
@@ -486,7 +492,7 @@ Viewport::vflip_selected_objects()
 void
 Viewport::rotate_90_selected_objects()
 {
-  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+  for(auto i = selection.begin(); i != selection.end(); ++i)
   {
     (*i)->set_modifier(ResourceModifier::rotate_90((*i)->get_modifier()));
   }
@@ -495,7 +501,7 @@ Viewport::rotate_90_selected_objects()
 void
 Viewport::rotate_270_selected_objects()
 {
-  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+  for(auto i = selection.begin(); i != selection.end(); ++i)
   {
     (*i)->set_modifier(ResourceModifier::rotate_270((*i)->get_modifier()));
   }
@@ -510,7 +516,7 @@ Viewport::screen2world(int x, int y) const
 void
 Viewport::raise_objects()
 {
-  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+  for(auto i = selection.begin(); i != selection.end(); ++i)
   {
     editor->get_level()->raise_object(*i);
   }
@@ -519,7 +525,7 @@ Viewport::raise_objects()
 void
 Viewport::lower_objects()
 {
-  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+  for(auto i = selection.begin(); i != selection.end(); ++i)
   {
     editor->get_level()->lower_object(*i);
   }
@@ -528,14 +534,14 @@ Viewport::lower_objects()
 void
 Viewport::raise_objects_to_top()
 {
-  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+  for(auto i = selection.begin(); i != selection.end(); ++i)
     editor->get_level()->raise_object_to_top(*i);
 }
 
 void
 Viewport::lower_objects_to_bottom()
 {
-  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+  for(auto i = selection.begin(); i != selection.end(); ++i)
     editor->get_level()->lower_object_to_bottom(*i); 
 }
 
@@ -549,19 +555,20 @@ Viewport::update_layout()
 void
 Viewport::clear_selection()
 {
-  for (unsigned i = 0; i < selected_objs.size(); i++)
-    selected_objs[i]->unselect();
-                
-  selected_objs.clear(); 
+  for (auto it = selection.begin(); it != selection.end(); ++it)
+  {
+    (*it)->unselect();
+  }                
+  selection.clear(); 
 }
 
 void
 Viewport::move_objects(const Vector2i& offset)
 {
-  for (unsigned i = 0; i < selected_objs.size(); i++)
+  for (auto it = selection.begin(); it != selection.end(); ++it)
   {
-    Vector3f p = selected_objs[i]->get_pos(); 
-    selected_objs[i]->set_pos(Vector3f(p.x + static_cast<float>(offset.x),
+    Vector3f p = (*it)->get_pos(); 
+    (*it)->set_pos(Vector3f(p.x + static_cast<float>(offset.x),
                                        p.y + static_cast<float>(offset.y),
                                        p.z));
   }

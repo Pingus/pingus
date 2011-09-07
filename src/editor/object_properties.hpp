@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_EDITOR_OBJECT_PROPERTIES_HPP
 #define HEADER_PINGUS_EDITOR_OBJECT_PROPERTIES_HPP
 
+#include "editor/selection.hpp"
 #include "engine/gui/group_component.hpp"
 
 namespace Editor {
@@ -34,8 +35,7 @@ class ObjectProperties : public GUI::GroupComponent
 {
 private:
   EditorScreen* editor;
-  typedef std::vector<LevelObj*> Objects;
-  Objects objects;
+  Selection objects;
 
   Label* type_label;
   Label* mesg_label;
@@ -108,7 +108,7 @@ public:
   void draw_background(DrawingContext& gc);
   void update_layout();
 
-  void set_objects(const std::vector<LevelObj*>& objs);
+  void set_objects(const Selection& objs);
 
   // GUI Placement functions
   void hide_all();

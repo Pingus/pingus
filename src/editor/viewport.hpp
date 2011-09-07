@@ -19,7 +19,9 @@
 #define HEADER_PINGUS_EDITOR_VIEWPORT_HPP
 
 #include <boost/signal.hpp>
+#include <set>
 
+#include "editor/selection.hpp"
 #include "engine/display/graphic_context_state.hpp"
 #include "engine/gui/rect_component.hpp"
 
@@ -56,7 +58,7 @@ private:
   Vector2i drag_screen_pos;
   
   /** The currently selected LevelObjs */
-  std::vector<LevelObj*> selected_objs;
+  Selection selection;
 
   /** The region that is currently highlighted */
   Rect highlighted_area;
@@ -136,7 +138,7 @@ public:
 
   void clear_selection();
 
-  boost::signal<void (const std::vector<LevelObj*>&)> selection_changed;
+  boost::signal<void (const Selection&)> selection_changed;
 private:
   Viewport();
   Viewport (const Viewport&);

@@ -458,7 +458,7 @@ ObjectProperties::draw_background(DrawingContext& gc)
 }
 
 void
-ObjectProperties::set_objects(const std::vector<LevelObj*>& objs)
+ObjectProperties::set_objects(const Selection& objs)
 {
   objects = objs;
 
@@ -477,8 +477,8 @@ ObjectProperties::set_objects(const std::vector<LevelObj*>& objs)
   }
   else
   {
-    type_label->set_text(_("Object: ") + objects.front()->get_section_name());
-    set_object(objects.front());
+    type_label->set_text(_("Object: ") + (*objects.begin())->get_section_name());
+    set_object(*objects.begin());
   }
 }
 
@@ -491,35 +491,35 @@ ObjectProperties::finalize()
 void
 ObjectProperties::on_gptype_change(const ComboItem& item)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_ground_type(Groundtype::type_to_string(static_cast<Groundtype::GPType>(item.id)));
 }
 
 void
 ObjectProperties::on_stretch_x_change(bool t)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_stretch_x(t);
 }
 
 void
 ObjectProperties::on_stretch_y_change(bool t)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_stretch_y(t);
 }
 
 void
 ObjectProperties::on_keep_aspect_change(bool t)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_keep_aspect(t);
 }
 
 void
 ObjectProperties::on_entrance_direction_change(const ComboItem& item)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
   {
     if (item.id == 0)
       (*i)->set_direction("left");
@@ -533,56 +533,56 @@ ObjectProperties::on_entrance_direction_change(const ComboItem& item)
 void
 ObjectProperties::on_owner_change(const std::string& str)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_owner(StringUtil::to<int>(str));
 }
 
 void
 ObjectProperties::on_pos_z_change(const std::string& str)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_pos_z(StringUtil::to<float>(str));
 }
 
 void
 ObjectProperties::on_para_x_change(const std::string& str)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_para_x(StringUtil::to<float>(str));
 }
 
 void
 ObjectProperties::on_para_y_change(const std::string& str)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_para_y(StringUtil::to<float>(str));
 }
 
 void
 ObjectProperties::on_scroll_x_change(const std::string& str)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_scroll_x(StringUtil::to<float>(str));
 }
 
 void
 ObjectProperties::on_scroll_y_change(const std::string& str)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_scroll_y(StringUtil::to<float>(str));
 }
 
 void
 ObjectProperties::on_release_rate_change(const std::string& str)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_release_rate(StringUtil::to<int>(str));
 }
 
 void
 ObjectProperties::on_color_r_change(const std::string& str)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
   {
     Color color = (*i)->get_color(); 
     color.r = static_cast<char>(StringUtil::to<int>(str));
@@ -593,7 +593,7 @@ ObjectProperties::on_color_r_change(const std::string& str)
 void
 ObjectProperties::on_color_g_change(const std::string& str)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
   {
     Color color = (*i)->get_color(); 
     color.g = static_cast<uint8_t>(StringUtil::to<int>(str));
@@ -604,7 +604,7 @@ ObjectProperties::on_color_g_change(const std::string& str)
 void
 ObjectProperties::on_color_b_change(const std::string& str)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
   {
     Color color = (*i)->get_color(); 
     color.b = static_cast<uint8_t>(StringUtil::to<int>(str));
@@ -615,7 +615,7 @@ ObjectProperties::on_color_b_change(const std::string& str)
 void
 ObjectProperties::on_color_a_change(const std::string& str)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
   { 
     Color color = (*i)->get_color(); 
     color.a = static_cast<uint8_t>(StringUtil::to<int>(str));
@@ -626,7 +626,7 @@ ObjectProperties::on_color_a_change(const std::string& str)
 void
 ObjectProperties::on_small_stars_change(const std::string& str)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
   {
     (*i)->set_small_stars(StringUtil::to<int>(str));
   }
@@ -635,7 +635,7 @@ ObjectProperties::on_small_stars_change(const std::string& str)
 void
 ObjectProperties::on_middle_stars_change(const std::string& str)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
   {
     (*i)->set_middle_stars(StringUtil::to<int>(str));
   }
@@ -644,7 +644,7 @@ ObjectProperties::on_middle_stars_change(const std::string& str)
 void
 ObjectProperties::on_large_stars_change(const std::string& str)
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
   {
     (*i)->set_large_stars(StringUtil::to<int>(str));
   }  
@@ -656,7 +656,7 @@ ObjectProperties::on_repeat_change(const std::string& str)
   int r = StringUtil::to<int>(str);
   if (r <= 0)
     r = 1;
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
   {
     (*i)->set_repeat(r);
   }
@@ -665,28 +665,28 @@ ObjectProperties::on_repeat_change(const std::string& str)
 void
 ObjectProperties::on_flip_horizontal()
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_modifier(ResourceModifier::horizontal_flip((*i)->get_modifier()));
 }
 
 void
 ObjectProperties::on_flip_vertical()
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_modifier(ResourceModifier::vertical_flip((*i)->get_modifier()));
 }
 
 void
 ObjectProperties::on_rotate_90()
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_modifier(ResourceModifier::rotate_90((*i)->get_modifier()));
 }
 
 void
 ObjectProperties::on_rotate_270()
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
+  for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_modifier(ResourceModifier::rotate_270((*i)->get_modifier()));
 }
 
