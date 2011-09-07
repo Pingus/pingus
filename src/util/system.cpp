@@ -17,6 +17,8 @@
 #include "util/system.hpp"
 
 #include <algorithm>
+#include <fstream>
+#include <memory>
 #include <sstream>
 #include <stdexcept>
 #include <string.h>
@@ -32,7 +34,6 @@
 #else /* WIN32 */
 #  include <windows.h>
 #  include <direct.h>
-#  include <fstream>
 #  include <sys/stat.h>
 #  include <sys/types.h>
 #  include <io.h>
@@ -634,6 +635,66 @@ System::normalize_path(const std::string& path)
     std::reverse(result.begin(), result.end());
     return result;
   }
+}
+
+void
+System::write_file(const std::string& filename, const std::string& content)
+{
+  log_debug("writing " << filename);
+
+#ifdef WIN32
+  // FIXME: not save
+  std::ofstream out(pathname);
+  out.write(content.data(), content.size());
+#else
+  // build the filename: "/home/foo/outfile.pngXXXXXX"
+  std::unique_ptr<char[]> tmpfile(new char[filename.size()+6+1]);
+  strcpy(tmpfile.get(), filename.c_str());
+  strcpy(tmpfile.get() + filename.size(), "XXXXXX");
+
+  // create a temporary file
+  mode_t old_mask = umask(S_IRWXO | S_IRWXG);
+  int fd = mkstemp(tmpfile.get());
+  umask(old_mask);
+  if (fd < 0)
+  {
+    std::ostringstream out;
+    out << tmpfile.get() << ": " << strerror(errno);
+    throw std::runtime_error(out.str());
+  }
+
+  // write the data to the temporary file
+  if (write(fd, content.data(), content.size()) < 0)
+  {
+    std::ostringstream out;
+    out << tmpfile.get() << ": " << strerror(errno);
+    throw std::runtime_error(out.str());
+  }
+
+  if (close(fd) < 0)
+  {
+    std::ostringstream out;
+    out << tmpfile.get() << ": " << strerror(errno);
+    throw std::runtime_error(out.str());
+  }
+
+  // rename the temporary file to it's final location
+  if (rename(tmpfile.get(), filename.c_str()) < 0)
+  {
+    std::ostringstream out;
+    out << tmpfile.get() << ": " << strerror(errno);
+    throw std::runtime_error(out.str());
+  }
+
+  // adjust permissions to normal default permissions, as mkstemp
+  // might not honor umask
+  if (chmod(filename.c_str(), ~old_mask & 0666) < 0)
+  {
+    std::ostringstream out;
+    out << tmpfile.get() << ": " << strerror(errno);
+    throw std::runtime_error(out.str());    
+  }
+#endif
 }
 
 /* EOF */

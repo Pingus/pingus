@@ -17,10 +17,9 @@
 
 #include "editor/editor_level.hpp"
 
-#include <fstream>
-
 #include "pingus/pingus_level.hpp"
 #include "util/log.hpp"
+#include "util/system.hpp"
 #include "util/sexpr_file_writer.hpp"
 
 namespace Editor {
@@ -130,9 +129,7 @@ bool EditorLevel::save_level(const std::string& filename)
     return false;
 
   // Create new file (overwrite existing file)
-  std::ofstream out_file(filename.c_str());
-  if (!out_file)
-    return false;
+  std::ostringstream out_file;
 
   SExprFileWriter fw(out_file);
         
@@ -175,8 +172,8 @@ bool EditorLevel::save_level(const std::string& filename)
 
   out_file << "\n\n;; EOF ;;" << std::endl;
         
-  // Clean up
-  out_file.close();
+  // Write the file
+  System::write_file(filename, out_file.str());
 
   return true;
 }

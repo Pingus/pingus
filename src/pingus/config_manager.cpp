@@ -16,8 +16,6 @@
 
 #include "pingus/config_manager.hpp"
 
-#include <fstream>
-
 #include "engine/display/display.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "lisp/parser.hpp"
@@ -156,7 +154,7 @@ ConfigManager::save()
   if (filename.empty())
     filename = System::get_userdir() + "config";
 
-  std::ofstream out(filename.c_str());
+  std::ostringstream out;
   SExprFileWriter writer(out);
 
   writer.begin_section("pingus-config");
@@ -206,6 +204,8 @@ ConfigManager::save()
   writer.end_section();
 
   writer.end_section(); // pingus-config
+
+  System::write_file(filename, out.str());
 }
 
 void

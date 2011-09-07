@@ -114,6 +114,10 @@ public:
       or md5. */
   static std::string checksum (std::string filename);
   static std::string checksum (const Pathname& pathname);
+
+  /** Write \a content to the given filename atomically */
+  static void write_file(const std::string& filename, const std::string& content);
+
 private:
   System (const System&);
   System& operator= (const System&);

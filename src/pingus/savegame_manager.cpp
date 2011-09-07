@@ -16,8 +16,6 @@
 
 #include "pingus/savegame_manager.hpp"
 
-#include <fstream>
-
 #include "lisp/parser.hpp"
 #include "util/log.hpp"
 #include "util/sexpr_file_reader.hpp"
@@ -145,7 +143,7 @@ SavegameManager::find(const std::string& filename_)
 void
 SavegameManager::flush()
 {
-  std::ofstream out(filename.c_str());
+  std::ostringstream out;
   SExprFileWriter writer(out);
 
   writer.begin_section("pingus-savegame");
@@ -156,6 +154,8 @@ SavegameManager::flush()
   }
 
   writer.end_section(); // pingus-savegame
+
+  System::write_file(filename, out.str());
 }
 
 /* EOF */

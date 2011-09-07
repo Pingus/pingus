@@ -16,8 +16,6 @@
 
 #include "pingus/stat_manager.hpp"
 
-#include <fstream>
-
 #include "lisp/parser.hpp"
 #include "util/log.hpp"
 #include "util/sexpr_file_reader.hpp"
@@ -113,7 +111,7 @@ StatManager::flush()
 void
 StatManager::save(const std::string& filename)
 {
-  std::ofstream out(filename.c_str());
+  std::ostringstream out;
   SExprFileWriter writer(out);
 
   writer.begin_section("pingus-stats");
@@ -125,6 +123,8 @@ StatManager::save(const std::string& filename)
   }
 
   writer.end_section();
+
+  System::write_file(filename, out.str());
 }
 
 bool
