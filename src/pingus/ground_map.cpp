@@ -239,11 +239,7 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
       { 
         if (*sptr != colorkey && colmap->getpixel(real_x_arg+x, real_y_arg+y) != Groundtype::GP_SOLID)
         {
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-          *tptr = 0;
-#else
           tptr[3] = 0;
-#endif
         }
 
         tptr += 4;
@@ -262,11 +258,7 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
       { 
         if (colmap->getpixel(real_x_arg+x, real_y_arg+y) != Groundtype::GP_SOLID)
         {
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-          *tptr = 0;
-#else
           tptr[3] = 0;
-#endif
         }
               
         tptr += 4;

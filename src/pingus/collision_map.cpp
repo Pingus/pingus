@@ -27,12 +27,11 @@ CollisionMap::CollisionMap(int w, int h)
     colmap(new unsigned char[width * height])
 {
   // Clear the colmap
-  memset(colmap, Groundtype::GP_NOTHING, sizeof(unsigned char) * width * height);
+  memset(colmap.get(), Groundtype::GP_NOTHING, sizeof(unsigned char) * width * height);
 }
 
 CollisionMap::~CollisionMap()
 {
-  delete[] colmap;
 }
 
 int
@@ -54,7 +53,7 @@ CollisionMap::getpixel_fast(int x, int y)
 unsigned char*
 CollisionMap::get_data()
 {
-  return colmap;
+  return colmap.get();
 }
 
 int
@@ -157,17 +156,10 @@ CollisionMap::draw(DrawingContext& gc)
   canvas.lock();
   buffer = static_cast<unsigned char*>(canvas.get_data());
 
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-  const int red   = 3;
-  const int green = 2;
-  const int blue  = 1;
-  const int alpha = 0;  
-#else
   const int red   = 0;
   const int green = 1;
   const int blue  = 2;
   const int alpha = 3;
-#endif
 
   uint8_t trans = 220;
 

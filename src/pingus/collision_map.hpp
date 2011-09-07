@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_PINGUS_COLLISION_MAP_HPP
 #define HEADER_PINGUS_PINGUS_COLLISION_MAP_HPP
 
+#include <memory>
+
 #include "pingus/groundtype.hpp"
 
 class CollisionMask;
@@ -42,7 +44,7 @@ private:
   int   height;
 
   /** A array of uchar, each uchar represents a pixel on the map. */
-  uint8_t* colmap;
+  std::unique_ptr<uint8_t[]> colmap;
 
 public:
   /** Init the colmap from a given area of memory.

@@ -85,17 +85,10 @@ SmallMapImage::update_surface()
 
   assert(width < cmap_width && height < cmap_height);
 
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-  const int red   = 3;
-  const int green = 2;
-  const int blue  = 1;
-  const int alpha = 0;
-#else
   const int red   = 0;
   const int green = 1;
   const int blue  = 2;
   const int alpha = 3;
-#endif 
 
   for(int y = 0; y < height; ++y)
   {

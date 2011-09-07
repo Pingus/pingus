@@ -85,14 +85,16 @@ Surface::Surface(int width, int height, SDL_Palette* palette, int colorkey)
   SDL_SetColors(impl->surface, palette->colors, 0, palette->ncolors);
 }
 
-Surface::Surface(int width, int height)
-  : impl(new SurfaceImpl())
+Surface::Surface(int width, int height) :
+  impl(new SurfaceImpl())
 {
   impl->surface = SDL_CreateRGBSurface(SDL_SWSURFACE | SDL_SRCALPHA, width, height, 32,
-                                       0x000000ff,
-                                       0x0000ff00,
-                                       0x00ff0000,
-                                       0xff000000);
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+                                       0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff
+#else
+                                       0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000
+#endif
+    );
   //SDL_FillRect(surface, NULL, SDL_MapRGBA(surface->format, 0, 0, 0, 0));
 }
 
@@ -209,10 +211,7 @@ Surface::get_pixel(int x, int y) const
       break;
 
     case 3:
-      if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
-        pixel = p[0] << 16 | p[1] << 8 | p[2];
-      else
-        pixel = p[0] | p[1] << 8 | p[2] << 16;
+      pixel = p[0] | p[1] << 8 | p[2] << 16;
       break;
 
     case 4:
