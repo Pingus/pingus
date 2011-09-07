@@ -53,7 +53,9 @@ public:
   ~LevelImpl()
   {
     for(std::vector<LevelObj*>::iterator i = objects.begin(); i != objects.end(); ++i)
+    {
       delete *i;
+    }
   }
                    
   std::string resname;

@@ -18,6 +18,8 @@
 #ifndef HEADER_PINGUS_EDITOR_EDITOR_LEVEL_HPP
 #define HEADER_PINGUS_EDITOR_EDITOR_LEVEL_HPP
 
+#include <memory>
+
 #include "editor/level_impl.hpp"
 
 class Pathname;
@@ -57,9 +59,9 @@ public:
 
   Size get_size() const;
   void set_size(const Size& s);
-        
+  
   /** Return LevelImpl */
-  LevelImpl* get_level_impl() { return impl; }
+  LevelImpl* get_level_impl() { return impl.get(); }
 
   void set_description(const std::string& str);
   void set_levelname(const std::string& str);
@@ -99,7 +101,7 @@ public:
   LevelObj* object_at (int x, int y);
 
 private:
-  LevelImpl* impl;
+  std::unique_ptr<LevelImpl> impl;
 
 private:
   EditorLevel (const EditorLevel&);

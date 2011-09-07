@@ -30,8 +30,8 @@ static bool LevelObjSort(LevelObj *a, LevelObj *b)
 }
 
 // Default constructor
-EditorLevel::EditorLevel()
-  : impl(new LevelImpl())
+EditorLevel::EditorLevel() :
+  impl(new LevelImpl())
 {
   set_impl_defaults();
 }
@@ -41,9 +41,7 @@ EditorLevel::EditorLevel()
 void
 EditorLevel::clear_impl()
 {
-  if (impl)
-    delete impl;
-  impl = new LevelImpl();
+  impl.reset(new LevelImpl);
 }
 
 /** assuming we have a valid implementation, set default values */
@@ -85,8 +83,6 @@ EditorLevel::clear() {
 // Default Destructor
 EditorLevel::~EditorLevel()
 {
-  if (impl)
-    delete impl;
 }
 
 Size
@@ -216,7 +212,7 @@ void EditorLevel::load_level(const Pathname& pathname)
   for (std::vector<FileReader>::const_iterator i = objs.begin(); i != objs.end(); i++)
   {
     // Create new object
-    LevelObj* obj = new LevelObj(i->get_name(), impl);
+    LevelObj* obj = new LevelObj(i->get_name(), impl.get());
     attribs = obj->get_attribs();
 
     // All objects have a position - get that.
@@ -458,6 +454,24 @@ EditorLevel::lower_object_to_bottom(LevelObj* obj)
 void
 EditorLevel::raise_object(LevelObj* obj)
 {
+#if 0
+  Objects::iterator i = std::find(objects.begin(), objects.end(), object);
+  assert(i != objects.end());
+  Objects::iterator j = i;
+  ++j;
+  j = std::find_if(j, objects.end(), OverlapsWith(object->get_bounding_box()));
+
+  if (j == objects.end())
+  {
+    // object overlaps with no other object, no point in raising it
+  }
+  else
+  {
+    objects.erase(i);
+    objects.insert(++j, object);
+  }
+#endif 
+
   for(std::vector<LevelObj*>::size_type i = 0; i < impl->objects.size(); ++i)
   {
     if (impl->objects[i] == obj)
