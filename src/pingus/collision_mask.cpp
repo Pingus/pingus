@@ -16,7 +16,10 @@
 
 #include "pingus/collision_mask.hpp"
 
+#include <boost/format.hpp>
+
 #include "pingus/resource.hpp"
+#include "util/log.hpp"
 
 CollisionMask::CollisionMask() :
   surface(),
@@ -89,21 +92,21 @@ CollisionMask::init_colmap(const Surface& surf, const std::string& surface_res)
   }
   else
   {
-    printf("CollisionMask: unsupported image format:\n" 
-           "  File: %s\n"
-           "  BitsPerPixel: %d\n"
-           "  BytesPerPixel: %d\n"
-           "  rmask: 0x%08x\n"
-           "  gmask: 0x%08x\n"
-           "  bmask: 0x%08x\n"
-           "  amask: 0x%08x\n",
-           surface_res.c_str(),
-           static_cast<int>(sdl_surface->format->BitsPerPixel),
-           static_cast<int>(sdl_surface->format->BytesPerPixel),
-           static_cast<unsigned int>(sdl_surface->format->Rmask),
-           static_cast<unsigned int>(sdl_surface->format->Gmask),
-           static_cast<unsigned int>(sdl_surface->format->Bmask),
-           static_cast<unsigned int>(sdl_surface->format->Amask));
+    log_error("unsupported image format:\n" <<
+              boost::format("  File: %s\n"
+                            "  BitsPerPixel: %d\n"
+                            "  BytesPerPixel: %d\n"
+                            "  rmask: 0x%08x\n"
+                            "  gmask: 0x%08x\n"
+                            "  bmask: 0x%08x\n"
+                            "  amask: 0x%08x\n") %
+              surface_res.c_str() %
+              static_cast<int>(sdl_surface->format->BitsPerPixel) %
+              static_cast<int>(sdl_surface->format->BytesPerPixel) %
+              static_cast<unsigned int>(sdl_surface->format->Rmask) %
+              static_cast<unsigned int>(sdl_surface->format->Gmask) %
+              static_cast<unsigned int>(sdl_surface->format->Bmask) %
+              static_cast<unsigned int>(sdl_surface->format->Amask));
   }
 
   SDL_UnlockSurface(sdl_surface);
