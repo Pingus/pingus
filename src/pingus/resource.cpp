@@ -78,10 +78,21 @@ Resource::load_surface(const ResDescriptor& desc_)
   SpriteDescription* desc = resmgr.get_sprite_description(desc_.res_name);
   if (desc)
   {
+    if (desc->array != Size(1, 1) ||
+        desc->frame_pos != Vector2i(0, 0) ||
+        desc->frame_size != Size(-1, -1))
+    {
+      log_error(desc_.res_name << ": can't load animated sprite as surface");
+    }
+
     if (desc_.modifier == ResourceModifier::ROT0)
+    {
       return Surface(desc->filename);
+    }
     else
+    {
       return Surface(desc->filename).mod(desc_.modifier);
+    }
   }
   else
   {
