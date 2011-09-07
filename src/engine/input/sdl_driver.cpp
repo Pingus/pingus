@@ -257,11 +257,7 @@ SDLDriver::update(float delta)
         Display::resize(Size(event.resize.w, event.resize.h));
         break;
 
-      case SDL_KEYDOWN:
-        if (keyboard_binding)
-          keyboard_binding->send_char(event.key);
-        break;
-           
+      case SDL_KEYDOWN:          
       case SDL_KEYUP:
         // keyboard events
         if (keyboard_binding)
