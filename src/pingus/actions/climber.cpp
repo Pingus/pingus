@@ -103,6 +103,7 @@ Climber::change_allowed(ActionName::Enum new_action)
 {
   return
     (new_action == ActionName::FLOATER) ||
+    (new_action == ActionName::BOMBER) ||
     (new_action == ActionName::JUMPER);
 }
 
