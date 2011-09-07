@@ -29,8 +29,6 @@
   Levelname, Description, Author, 
   Number of Pingus, Time, Pingus to Save,
   Width, Height, (could be handled elsewhere)
-  Difficulty
-  Comment
   Playable (unneeded)
 */
 
@@ -48,35 +46,35 @@ LevelProperties::LevelProperties(EditorScreen* editor_, const Rect& rect_) :
   time(),
   width(),
   height(),
-  difficulty(),
   music()
 {
-  int w = rect.get_width() - 120;
   add(new Label   (Rect(Vector2i( 10,  10), Size( 80, 20)), "Author:"));
-  add(author = new Inputbox(Rect(Vector2i(110,  10), Size(  w, 20))));
+  add(author = new Inputbox);
+
   add(new Label   (Rect(Vector2i( 10,  32), Size( 80, 20)), "Levelname:"));
-  add(levelname = new Inputbox(Rect(Vector2i(110,  32), Size(  w, 20))));
+  add(levelname = new Inputbox);
+
   add(new Label   (Rect(Vector2i( 10,  54), Size( 80, 20)), "Description:"));
-  add(description = new Inputbox(Rect(Vector2i(110,  54), Size(  w, 20*3))));
+  add(description = new Inputbox);
 
   int y = 116;
   add(new Label   (Rect(Vector2i( 10,  y), Size( 80, 20)), "Pingus Count:"));
-  add(number_of_pingus = new Inputbox(Rect(Vector2i(110,  y), Size(  w, 20))));
+  add(number_of_pingus = new Inputbox);
+
   add(new Label   (Rect(Vector2i( 10,  y+22), Size( 80, 20)), "Pingus to Save:"));
-  add(number_to_save = new Inputbox(Rect(Vector2i(110,  y+22), Size(  w, 20))));
+  add(number_to_save = new Inputbox);
 
   add(new Label   (Rect(Vector2i( 10,  y+44), Size( 80, 20)), "Time:"));
-  add(time = new Inputbox(Rect(Vector2i(110,  y+44), Size(  w, 20))));
-  add(new Label   (Rect(Vector2i( 10,  y+66), Size( 80, 20)), "Width:"));
-  add(width = new Inputbox(Rect(Vector2i(110,  y+66), Size(  w, 20))));
-  add(new Label   (Rect(Vector2i( 10,  y+88), Size( 80, 20)), "Height:"));
-  add(height = new Inputbox(Rect(Vector2i(110,  y+88), Size(  w, 20))));
+  add(time = new Inputbox);
 
-  add(new Label   (Rect(Vector2i( 10, y+110), Size( 80, 20)), "Difficulty:"));
-  add(difficulty = new Inputbox(Rect(Vector2i(110, y+110), Size(  w, 20))));
-  add(new Label   (Rect(Vector2i( 10, y+132), Size( 80, 20)), "Comment:"));
-  add(new Label   (Rect(Vector2i( 10, y+154), Size( 80, 20)), "Music:"));
-  add(music = new Inputbox(Rect(Vector2i(110, y+154), Size(  w, 20))));
+  add(new Label   (Rect(Vector2i( 10,  y+66), Size( 80, 20)), "Width:"));
+  add(width = new Inputbox);
+
+  add(new Label   (Rect(Vector2i( 10,  y+88), Size( 80, 20)), "Height:"));
+  add(height = new Inputbox);
+
+  add(new Label   (Rect(Vector2i( 10, y+110), Size( 80, 20)), "Music:"));
+  add(music = new Inputbox);
 
   author->on_change.connect(std::bind(&LevelProperties::on_author_change, this, std::placeholders::_1));
   levelname->on_change.connect(std::bind(&LevelProperties::on_levelname_change, this, std::placeholders::_1));
@@ -88,7 +86,6 @@ LevelProperties::LevelProperties(EditorScreen* editor_, const Rect& rect_) :
   width->on_change.connect(std::bind(&LevelProperties::on_width_change, this, std::placeholders::_1));
   height->on_change.connect(std::bind(&LevelProperties::on_height_change, this, std::placeholders::_1));
   time->on_change.connect(std::bind(&LevelProperties::on_time_change, this, std::placeholders::_1));
-  difficulty->on_change.connect(std::bind(&LevelProperties::on_difficulty_change, this, std::placeholders::_1));
   music->on_change.connect(std::bind(&LevelProperties::on_music_change, this, std::placeholders::_1));
 }
 
@@ -121,7 +118,6 @@ LevelProperties::set_level(EditorLevel* level_)
   time->set_text(StringUtil::to_string(level->get_time()));
   width->set_text(StringUtil::to_string(level->get_size().width));
   height->set_text(StringUtil::to_string(level->get_size().height));
-  difficulty->set_text(StringUtil::to_string(level->get_difficulty()));
   music->set_text(level->get_music());
 }
 
@@ -195,12 +191,6 @@ LevelProperties::on_time_change(const std::string& str)
 }
 
 void
-LevelProperties::on_difficulty_change(const std::string& str)
-{
-  level->set_difficulty(StringUtil::to<int>(str));
-}
-
-void
 LevelProperties::on_music_change(const std::string& str)
 { 
   level->set_music(str);
@@ -224,8 +214,7 @@ LevelProperties::update_layout()
   width->set_rect(Rect(Vector2i(110,  y+66), Size(  w, 20)));
   height->set_rect(Rect(Vector2i(110,  y+88), Size(  w, 20)));
   
-  difficulty->set_rect(Rect(Vector2i(110, y+110), Size(  w, 20)));
-  music->set_rect(Rect(Vector2i(110, y+132), Size(  w, 20)));
+  music->set_rect(Rect(Vector2i(110, y+110), Size(  w, 20)));
 }
 
 } // namespace Editor

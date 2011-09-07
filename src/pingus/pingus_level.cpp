@@ -81,7 +81,6 @@ PingusLevel::load(const std::string& resname,
       head.read_size  ("levelsize",        impl->size);
       head.read_string("music",            impl->music);
       head.read_int   ("time",             impl->time);
-      head.read_int   ("difficulty",       impl->difficulty);
       head.read_int   ("number-of-pingus", impl->number_of_pingus);
       head.read_int   ("number-to-save",   impl->number_to_save);
       head.read_colorf("ambient-light",    impl->ambient_light);
@@ -159,12 +158,6 @@ int
 PingusLevel::get_time() const
 {
   return impl->time;
-}
-
-int
-PingusLevel::get_difficulty() const
-{
-  return impl->difficulty;
 }
 
 const std::string&

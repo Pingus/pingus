@@ -28,8 +28,12 @@ protected:
   Rect rect;
 
 public:
-  RectComponent(const Rect& rect_)
-    : rect(rect_)
+  RectComponent() :
+    rect()
+  {}
+
+  RectComponent(const Rect& rect_) :
+    rect(rect_)
   {}
   
   virtual bool is_at (int x, int y) { return rect.contains(Vector2i(x, y)); }

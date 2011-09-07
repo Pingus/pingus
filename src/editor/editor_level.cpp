@@ -74,7 +74,6 @@ EditorLevel::set_impl_defaults()
   impl->actions["slider"]  = 20;
   
   impl->time = -1;
-  impl->difficulty = 0;
 }
 
 void
@@ -144,7 +143,6 @@ bool EditorLevel::save_level(const std::string& filename)
   fw.write_int("number-of-pingus", impl->number_of_pingus);
   fw.write_int("number-to-save", impl->number_to_save);
   fw.write_int("time", impl->time);
-  fw.write_int("difficulty", impl->difficulty);
   // FIXME: Allow user to decide if level is playable or not
   fw.write_int("playable", 1);
   fw.write_string("music", impl->music);
@@ -200,7 +198,6 @@ void EditorLevel::load_level(const Pathname& pathname)
   impl->number_to_save   = level.get_number_to_save();
   impl->actions          = level.get_actions();
   impl->time             = level.get_time();
-  impl->difficulty       = level.get_difficulty();
   impl->author           = level.get_author();
   impl->music            = level.get_music();
         
@@ -392,12 +389,6 @@ EditorLevel::get_actions() const
   return impl->actions;
 }
 
-int
-EditorLevel::get_difficulty() const
-{
-  return impl->difficulty;
-}
-
 std::string
 EditorLevel::get_music() const
 {
@@ -414,12 +405,6 @@ void
 EditorLevel::set_time(int t)
 {
   impl->time = t;
-}
-
-void
-EditorLevel::set_difficulty(int d)
-{
-  impl->difficulty = d;
 }
 
 void

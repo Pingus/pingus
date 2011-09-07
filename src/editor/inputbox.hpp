@@ -30,6 +30,7 @@ private:
   
 public:
   Inputbox(const Rect& rect);
+  Inputbox();
 
   void draw(DrawingContext& gc);
   

@@ -28,6 +28,7 @@ private:
 
 public:
   Label(const Rect& rect, const std::string& text);
+  Label(const std::string& text);
 
   bool is_at(int, int) { return false; }
   void draw (DrawingContext& gc);

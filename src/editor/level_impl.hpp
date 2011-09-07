@@ -42,7 +42,6 @@ public:
     number_to_save(),
     actions(),
     time(),
-    difficulty(),
     author(),
     music("none"),
     objects()
@@ -71,7 +70,6 @@ public:
   std::map<std::string, int> actions;
 
   int time;
-  int difficulty;
   
   std::string author;
   std::string music;

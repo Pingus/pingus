@@ -41,7 +41,6 @@ private:
   Inputbox* time;
   Inputbox* width;
   Inputbox* height;
-  Inputbox* difficulty;
   Inputbox* music;
 
 public:
@@ -63,7 +62,6 @@ public:
   void on_time_change(const std::string& str);
   void on_width_change(const std::string& str);
   void on_height_change(const std::string& str);
-  void on_difficulty_change(const std::string& str);
   void on_music_change(const std::string& str);
 
   void update_layout();

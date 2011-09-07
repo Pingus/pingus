@@ -477,12 +477,12 @@ EditorScreen::update_layout()
   if (object_selector->is_visible())
   {
     viewport->set_rect(Rect(0, 38, size_.width - 244, size_.height));
-    level_properties->set_rect(Rect(Vector2i(0,38), Size(size_.width-244, 302))); 
+    level_properties->set_rect(Rect(Vector2i(0,38), Size(size_.width-244, 258))); 
   }
   else
   {
     viewport->set_rect(Rect(0, 38, size_.width, size_.height));
-    level_properties->set_rect(Rect(Vector2i(0,38), Size(size_.width, 302))); 
+    level_properties->set_rect(Rect(Vector2i(0,38), Size(size_.width, 258))); 
   }
 
   action_properties->set_rect(Rect(Vector2i(0, 38), Size(150, 240)));

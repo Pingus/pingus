@@ -63,9 +63,6 @@ public:
   /** Returns the time you have to complete a level */
   int         get_time() const;
 
-  /** Returns the difficulty of the current level */
-  int         get_difficulty() const;
-
   /** Returns the name of the author, who creates this level */
   const std::string& get_author() const;
 
