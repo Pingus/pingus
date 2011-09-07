@@ -90,6 +90,8 @@ Viewport::on_secondary_button_click(int x_, int y_)
 void 
 Viewport::on_primary_button_press(int x_, int y_)
 {
+  Uint8* keystate = SDL_GetKeyState(NULL);
+
   mouse_world_pos  = screen2world(x_, y_);
   mouse_screen_pos = Vector2i(x_, y_);
   
@@ -99,14 +101,30 @@ Viewport::on_primary_button_press(int x_, int y_)
 
     if (obj)
     {
-      // If the currently selected object isn't selected, select it and deselect the rest
-      if (!obj->is_selected())
+      if (selection.find(obj) == selection.end())
       {
-        clear_selection();
-        obj->select();
-        selection.insert(obj);
-
-        selection_changed(selection);
+        // if the clicked on object isn't selected, select it and deselect the rest
+        if (keystate[SDLK_LSHIFT] || keystate[SDLK_RSHIFT])
+        {
+          selection.insert(obj);
+          selection_changed(selection);
+        }
+        else
+        {
+          clear_selection();
+          selection.insert(obj);
+          selection_changed(selection);
+        }
+      }
+      else
+      {
+        if (keystate[SDLK_LSHIFT] || keystate[SDLK_RSHIFT])
+        {
+          // if object is already selected and shift is pressed remove
+          // it from the selection
+          selection.erase(obj);
+          selection_changed(selection);
+        }
       }
 
       for (auto it = selection.begin(); it != selection.end(); ++it) 
@@ -124,9 +142,11 @@ Viewport::on_primary_button_press(int x_, int y_)
       highlighted_area.left = highlighted_area.right  = mouse_world_pos.x;
       highlighted_area.top  = highlighted_area.bottom = mouse_world_pos.y;
 
-      clear_selection();
-
-      selection_changed(selection);
+      if (!keystate[SDLK_LSHIFT] && !keystate[SDLK_RSHIFT])
+      {
+        clear_selection();
+        selection_changed(selection);
+      }
     }
   }
 }
@@ -146,21 +166,17 @@ Viewport::on_primary_button_release(int x_, int y_)
                                              int((*get_objects())[i]->get_pos().y))))
       {
         selection.insert((*get_objects())[i]);
-        (*get_objects())[i]->select();
-      }
-      else
-      {
-        (*get_objects())[i]->unselect();
       }
     }
-
     selection_changed(selection);
   }
   else if (current_action == DRAGGING)
   {
     // Set the objects' positions for good
     for (unsigned i = 0; i < (*get_objects()).size(); i++)
+    {
       (*get_objects())[i]->set_orig_pos((*get_objects())[i]->get_pos());
+    }
   }
   current_action = NOTHING;
 }
@@ -225,20 +241,19 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
       }
       else
       {
+        // FIXME: not quite a perfect way to find out if all objects
+        // are selected
         if (selection.size() == get_objects()->size())
         {
           clear_selection();
+          selection_changed(selection);
         }
         else 
         {
           clear_selection();
           selection.insert(get_objects()->begin(), get_objects()->end());
-          for (auto it = selection.begin(); it != selection.end(); ++it)
-          {
-            (*it)->select();
-          }
+          selection_changed(selection);
         }
-        selection_changed(selection);
       }
       break;
 
@@ -382,8 +397,17 @@ Viewport::draw(DrawingContext &gc)
   drawing_context->draw_rect(Rect(Vector2i(0,0), editor->get_level()->get_size()).grow(-100), Color(155,155,155), 5000.0f);
         
   // Draw the level objects
-  for (unsigned i = 0; i < (*get_objects()).size(); i++)
-    (*get_objects())[i]->draw(*drawing_context);
+  for (auto it = get_objects()->begin(); it != get_objects()->end(); ++it)
+  {
+    (*it)->draw(*drawing_context);
+  }
+  for (auto it = get_objects()->begin(); it != get_objects()->end(); ++it)
+  {
+    if (selection.find(*it) != selection.end())
+    {
+      (*it)->draw_selection(*drawing_context);
+    }
+  }
 
   if (current_action == HIGHLIGHTING)
   {
@@ -446,7 +470,6 @@ Viewport::duplicate_selected_objects()
     {
       new_selection.insert(clone);
       get_objects()->push_back(clone);
-      clone->select();
     }
   }
   
@@ -555,10 +578,6 @@ Viewport::update_layout()
 void
 Viewport::clear_selection()
 {
-  for (auto it = selection.begin(); it != selection.end(); ++it)
-  {
-    (*it)->unselect();
-  }                
   selection.clear(); 
 }
 
@@ -569,8 +588,8 @@ Viewport::move_objects(const Vector2i& offset)
   {
     Vector3f p = (*it)->get_pos(); 
     (*it)->set_pos(Vector3f(p.x + static_cast<float>(offset.x),
-                                       p.y + static_cast<float>(offset.y),
-                                       p.z));
+                            p.y + static_cast<float>(offset.y),
+                            p.z));
   }
 }
 

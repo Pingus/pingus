@@ -131,9 +131,6 @@ protected:
   /** Marks if this object has been deleted or not */
   bool removed;
 
-  /** Marks is this object is currently selected */
-  bool selected;
-
   /////////////////////////////////////////////////////////
   /// Retrieve info
 public:
@@ -193,8 +190,6 @@ public:
 
   /** Returns the parallax speed multiplier in the y direction */
   float get_para_y() const { return para_y; }
-
-  bool is_selected() { return selected; }
 
   /** Retrieve the object's direction */
   std::string get_direction() { return direction; }
@@ -284,10 +279,6 @@ public:
   void remove() { removed = true; }
   bool is_removed() const { return removed; }
 
-  /** Select or unselect this object */
-  void select() { selected = true; }
-  void unselect() { selected = false; }
-
   /** Write basic properties to the file for this type */
   virtual void write_properties(FileWriter &fw);
 
@@ -296,6 +287,9 @@ public:
 
   /** Draws the sprite with the modifier applied */
   virtual void draw(DrawingContext &gc);
+
+  /** Draws the sprites selection with the modifier applied */
+  virtual void draw_selection(DrawingContext &gc);
 
   /** Returns true if the mouse is hovering over this object */
   virtual bool is_at (int x, int y);

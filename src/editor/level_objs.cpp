@@ -51,8 +51,7 @@ LevelObj::LevelObj(std::string obj_name, LevelImpl* level_) :
   middle_stars(),
   large_stars(),
   attribs(get_attributes(obj_name)),
-  removed(false),
-  selected(false)
+  removed(false)
 {
   if (attribs & HAS_SURFACE_FAKE)
     load_generic_surface();
@@ -86,8 +85,7 @@ LevelObj::LevelObj(const LevelObj& rhs) :
   middle_stars(rhs.middle_stars),
   large_stars(rhs.large_stars),
   attribs(rhs.attribs),
-  removed(rhs.removed),
-  selected(rhs.selected)
+  removed(rhs.removed)
 {}
 
 unsigned int
@@ -153,15 +151,15 @@ LevelObj::draw(DrawingContext &gc)
     else
     {
       gc.draw(sprite, pos);
-    }
-
-    // If selected, draw a highlighted box around it
-    if (selected)
-    {
-      gc.draw_fillrect(get_rect(), Color(255,0,0,50), pos.z);
-      gc.draw_rect(get_rect(), Color(255,0,0), pos.z);
-    }
+    }  
   }
+}
+
+void
+LevelObj::draw_selection(DrawingContext &gc)
+{
+  gc.draw_fillrect(get_rect(), Color(255,0,0,50), pos.z);
+  gc.draw_rect(get_rect(), Color(255,0,0), pos.z);
 }
 
 bool
