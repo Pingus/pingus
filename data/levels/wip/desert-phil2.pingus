@@ -372,7 +372,7 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "global/Buttons/forward")
+        (image "core/buttons/fast_forward")
         (modifier "ROT0"))
       (position 374 313 0))
     (entrance 
