@@ -73,8 +73,8 @@ EditorScreen::EditorScreen() :
 
   level_properties = new LevelProperties(this, Rect());
   level_properties->hide();
-  level_properties->set_level(plf);
-  action_properties->set_level(plf);
+  level_properties->set_level(plf.get());
+  action_properties->set_level(plf.get());
   gui_manager->add(level_properties);
 
   object_selector = new ObjectSelector(this, Rect());
@@ -105,7 +105,6 @@ EditorScreen::EditorScreen() :
 // Destructor
 EditorScreen::~EditorScreen()
 {
-  delete plf;
 }
 
 // Close the current screen
@@ -141,8 +140,8 @@ EditorScreen::load(const Pathname& file)
   level_pathname = file;
   viewport->clear_selection();
   plf->load_level(level_pathname);
-  level_properties->set_level(plf);
-  action_properties->set_level(plf);
+  level_properties->set_level(plf.get());
+  action_properties->set_level(plf.get());
   viewport->refresh();
 }
 
@@ -276,8 +275,8 @@ EditorScreen::level_new()
   level_pathname = Pathname();
   viewport->clear_selection();
   plf->clear();
-  level_properties->set_level(plf);
-  action_properties->set_level(plf);
+  level_properties->set_level(plf.get());
+  action_properties->set_level(plf.get());
 }
 
 void 

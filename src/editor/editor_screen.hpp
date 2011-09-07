@@ -43,7 +43,7 @@ class Minimap;
 class EditorScreen : public GUIScreen
 {
 private:
-  EditorLevel* plf;
+  std::unique_ptr<EditorLevel> plf;
   Pathname level_pathname;
   
   Panel* panel;
@@ -85,7 +85,7 @@ public:
   Viewport* get_viewport() const { return viewport; }
 
   /** Return a pointer to the current level */
-  EditorLevel* get_level() const { return plf; }
+  EditorLevel* get_level() const { return plf.get(); }
 
   /** Add an object to both the EditorLevel and the Viewport */
   void add_object(LevelObj* obj);
@@ -140,10 +140,10 @@ public:
   void resize(const Size&);
 
   void update_layout();
+
 private:
   EditorScreen (const EditorScreen&);
   EditorScreen& operator= (const EditorScreen&);
-
 };
 
 } // namespace Editor 
