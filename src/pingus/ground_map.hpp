@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_PINGUS_GROUND_MAP_HPP
 #define HEADER_PINGUS_PINGUS_GROUND_MAP_HPP
 
+#include <memory>
+
 #include "engine/display/surface.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/worldobj.hpp"
@@ -33,10 +35,10 @@ class MapTile;
 class GroundMap : public WorldObj
 {
 private:
-  CollisionMap* colmap;
+  std::unique_ptr<CollisionMap> colmap;
 
   /** The tiles out of which the map is constructed */
-  std::vector<MapTile*> tiles;
+  std::vector<std::shared_ptr<MapTile> > tiles;
 
   /** Width of the map */
   int width;

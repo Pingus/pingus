@@ -92,7 +92,7 @@ GroundMap::GroundMap(int width_, int height_) :
   tile_width(),
   tile_height()
 {
-  colmap = new CollisionMap(width, height);
+  colmap.reset(new CollisionMap(width, height));
 
   tile_width  = width  / globals::tile_size;
   tile_height = height / globals::tile_size;
@@ -108,15 +108,14 @@ GroundMap::GroundMap(int width_, int height_) :
 
   // Allocating tile map
   tiles.resize(tile_width * tile_height);
-  for(std::vector<MapTile*>::iterator i = tiles.begin(); i != tiles.end(); ++i)
-    *i = new MapTile();
+  for(auto i = tiles.begin(); i != tiles.end(); ++i)
+  {
+    i->reset(new MapTile());
+  }
 }
 
 GroundMap::~GroundMap(void)
 {
-  delete colmap;
-  for(std::vector<MapTile*>::iterator i = tiles.begin(); i != tiles.end(); ++i)
-    delete *i;
 }
 
 void
@@ -293,13 +292,13 @@ GroundMap::put(Surface source, int x, int y)
 CollisionMap*
 GroundMap::get_colmap(void)
 {
-  return colmap;
+  return colmap.get();
 }
 
 MapTile*
 GroundMap::get_tile(int x, int y)
 {
-  return tiles[y*tile_width + x];
+  return tiles[y*tile_width + x].get();
 }
 
 /* EOF */
