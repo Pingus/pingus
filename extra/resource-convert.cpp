@@ -21,6 +21,11 @@ bool is_default_sprite(const SpriteDescription& desc)
 
 int main(int argc, char** argv)
 {
+  assert(!"resource-convert is no longer needed, final resource conversion was "
+         "done on 2011-09-03 in revision 7364f3cd701c6c57a38846bd6d2ed16b5baf3452, "
+         "resource-conversion is kept here for historical purpose and potentialally "
+         "future bug fixing");
+
   g_path_manager.set_path("data/");
   Resource::init(true);
 
