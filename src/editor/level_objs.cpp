@@ -17,6 +17,8 @@
 
 #include "editor/level_objs.hpp"
 
+#include <stdexcept>
+
 #include "engine/display/drawing_context.hpp"
 #include "util/log.hpp"
 
@@ -109,8 +111,9 @@ LevelObj::get_attributes(std::string obj_type)
     return HAS_OWNER | HAS_SPRITE;
   else
   {
-    log_error("unknown object type: '" << obj_type << "'");
-    return 0;
+    std::ostringstream out;
+    out << "unknown object type: '" << obj_type << "'";
+    throw std::runtime_error(out.str());
   }
 }
 
