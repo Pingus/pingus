@@ -167,7 +167,7 @@ struct transform_rot270_flip
 
 template<class TransF>
 inline
-Surface modify(Surface source_buffer, const TransF&)
+Surface modify(Surface source_buffer)
 {
   SDL_Surface* source = source_buffer.get_surface();
   SDL_LockSurface(source);

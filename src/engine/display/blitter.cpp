@@ -131,51 +131,51 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
 Surface
 Blitter::flip_horizontal (Surface prov)
 {
-  return BlitterImpl::modify(prov, BlitterImpl::transform_flip());
+  return BlitterImpl::modify<BlitterImpl::transform_flip>(prov);
 }
 
 /** Flip a surface vertical */
 Surface
 Blitter::flip_vertical (Surface sur)
 {
-  return BlitterImpl::modify(sur, BlitterImpl::transform_rot180_flip());
+  return BlitterImpl::modify<BlitterImpl::transform_rot180_flip>(sur);
 }
 
 /** Rotate a surface 90 degrees */
 Surface
 Blitter::rotate_90 (Surface sur)
 {
-  return BlitterImpl::modify(sur, BlitterImpl::transform_rot90());
+  return BlitterImpl::modify<BlitterImpl::transform_rot90>(sur);
 }
 
 Surface
 Blitter::rotate_180 (Surface sur)
 {
-  return BlitterImpl::modify(sur, BlitterImpl::transform_rot180());
+  return BlitterImpl::modify<BlitterImpl::transform_rot180>(sur);
 }
 
 Surface
 Blitter::rotate_270 (Surface sur)
 {
-  return BlitterImpl::modify(sur, BlitterImpl::transform_rot270());
+  return BlitterImpl::modify<BlitterImpl::transform_rot270>(sur);
 }
 
 Surface
 Blitter::rotate_90_flip (Surface sur)
 {
-  return BlitterImpl::modify(sur, BlitterImpl::transform_rot90_flip());
+  return BlitterImpl::modify<BlitterImpl::transform_rot90_flip>(sur);
 }
 
 Surface
 Blitter::rotate_180_flip (Surface sur)
 {
-  return BlitterImpl::modify(sur, BlitterImpl::transform_rot180_flip());
+  return BlitterImpl::modify<BlitterImpl::transform_rot180_flip>(sur);
 }
 
 Surface
 Blitter::rotate_270_flip (Surface sur)
 {
-  return BlitterImpl::modify(sur, BlitterImpl::transform_rot270_flip());
+  return BlitterImpl::modify<BlitterImpl::transform_rot270_flip>(sur);
 }
 
 SDL_Surface*
