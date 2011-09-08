@@ -30,14 +30,6 @@ struct transform_rot90
     return (x * tpitch) + (height - y - 1);
   }
 
-  static inline int get_x(int width, int height, int x, int y) {
-    return (height - y - 1);
-  }
-
-  static inline int get_y(int width, int height, int x, int y) {
-    return x;
-  }
-
   static inline int get_width(int width, int height) { return height; }
   static inline int get_height(int width, int height) { return width; }
 };
@@ -50,16 +42,6 @@ struct transform_rot180
     return (spitch * height) - (y * spitch + x) - 1;
   }
 
-  static inline int get_x(int width, int height, int x, int y) 
-  {
-    return width - x - 1;
-  }
-
-  static inline int get_y(int width, int height, int x, int y) 
-  {
-    return height - y - 1;
-  }
-
   static inline int get_width (int width, int height) { return width; }
   static inline int get_height(int width, int height) { return height; }
 };
@@ -69,16 +51,6 @@ struct transform_rot270
 {
   static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) {
     return ((width - x - 1) * tpitch) + y;
-  }
-
-  static inline int get_x(int width, int height, int x, int y) 
-  {
-    return y;
-  }
-
-  static inline int get_y(int width, int height, int x, int y) 
-  {
-    return width - x - 1;
   }
 
   static inline int get_width (int width, int height) { return height; }
@@ -93,16 +65,6 @@ struct transform_flip
     return (y * spitch) + (width - x - 1);
   }
 
-  static inline int get_x(int width, int height, int x, int y) 
-  {
-    return width - x - 1;
-  }
-
-  static inline int get_y(int width, int height, int x, int y) 
-  {
-    return y;
-  }
-
   static inline int get_width (int width, int height) { return width; }
   static inline int get_height(int width, int height) { return height; }
 };
@@ -113,14 +75,6 @@ struct transform_rot90_flip
   static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) 
   {
     return (x * tpitch) + y;
-  }
-
-  static inline int get_x(int width, int height, int x, int y) {
-    return y;
-  }
-
-  static inline int get_y(int width, int height, int x, int y) {
-    return x;
   }
 
   static inline int get_width (int width, int height) { return height; }
@@ -134,14 +88,6 @@ struct transform_rot180_flip
     return ((height - y - 1) * spitch) + x;
   }
 
-  static inline int get_x(int width, int height, int x, int y) {
-    return x;
-  }
-
-  static inline int get_y(int width, int height, int x, int y) {
-    return height - y - 1;
-  }
-
   static inline int get_width (int width, int height) { return width; }
   static inline int get_height(int width, int height) { return height; }
 };
@@ -153,19 +99,11 @@ struct transform_rot270_flip
     return ((width - x - 1) * tpitch) + height - y - 1;
   }
 
-  static inline int get_x(int width, int height, int x, int y) {
-    return height - y - 1;
-  }
-
-  static inline int get_y(int width, int height, int x, int y) {
-    return width - x - 1;
-  }
-
   static inline int get_width (int width, int height) { return height; }
   static inline int get_height(int width, int height) { return width; }
 };
 
-template<class TransF>
+template<class Transform>
 inline
 Surface modify(Surface source_buffer)
 {
@@ -174,8 +112,8 @@ Surface modify(Surface source_buffer)
 
   if (source->format->palette)
   {
-    Surface target_buffer(TransF::get_width (source_buffer.get_width(), source_buffer.get_height()), 
-                          TransF::get_height(source_buffer.get_width(), source_buffer.get_height()),
+    Surface target_buffer(Transform::get_width (source_buffer.get_width(), source_buffer.get_height()), 
+                          Transform::get_height(source_buffer.get_width(), source_buffer.get_height()),
                           source->format->palette, 
                           (source->flags & SDL_SRCCOLORKEY) ? source->format->colorkey : -1);
     SDL_Surface* target = target_buffer.get_surface();
@@ -187,7 +125,7 @@ Surface modify(Surface source_buffer)
     for (int y = 0; y < source->h; ++y)
       for (int x = 0; x < source->w; ++x)
       {
-        target_buf[TransF::get_index(source->w, source->h, source->pitch, target->pitch, x, y)] = source_buf[y * source->pitch + x];
+        target_buf[Transform::get_index(source->w, source->h, source->pitch, target->pitch, x, y)] = source_buf[y * source->pitch + x];
       }
      
     SDL_UnlockSurface(source);
