@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_PINGUS_COLLISION_MASK_HPP
 #define HEADER_PINGUS_PINGUS_COLLISION_MASK_HPP
 
+#include <memory>
+
 #include "engine/display/surface.hpp"
 
 class ResDescriptor;
@@ -25,7 +27,7 @@ class CollisionMask
 {
 public:
   Surface   surface;
-  uint8_t*  buffer;
+  std::unique_ptr<uint8_t[]>  buffer;
   int       width;
   int       height;
 
