@@ -298,16 +298,22 @@
     (switchdoor 
       (position 878 654 0))
     (teleporter 
+      (target-id "id2250277")
       (position 512 948 0))
     (teleporter-target 
+      (id "id2250277")
       (position 877 710 0))
     (teleporter 
+      (target-id "id2250313")
       (position 1250 954 0))
     (teleporter-target 
+      (id "id2250313")
       (position 877 707 0))
     (teleporter 
+      (target-id "id2250348")
       (position 1089 721 0))
     (teleporter-target 
+      (id "id2250348")
       (position 878 435 0))
     (switchdoor 
       (position 878 435 0))
