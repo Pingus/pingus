@@ -82,16 +82,29 @@ Resource::load_surface(const ResDescriptor& desc_)
         desc->frame_pos != Vector2i(0, 0) ||
         desc->frame_size != Size(-1, -1))
     {
-      log_error(desc_.res_name << ": can't load animated sprite as surface");
-    }
+      Surface surface(desc->filename);
 
-    if (desc_.modifier == ResourceModifier::ROT0)
-    {
-      return Surface(desc->filename);
+      surface = surface.subsection(Rect(desc->frame_pos, desc->frame_size));
+
+      if (desc_.modifier == ResourceModifier::ROT0)
+      {
+        return surface;
+      }
+      else
+      {
+        return surface.mod(desc_.modifier);
+      }
     }
     else
     {
-      return Surface(desc->filename).mod(desc_.modifier);
+      if (desc_.modifier == ResourceModifier::ROT0)
+      {
+        return Surface(desc->filename);
+      }
+      else
+      {
+        return Surface(desc->filename).mod(desc_.modifier);
+      }
     }
   }
   else
