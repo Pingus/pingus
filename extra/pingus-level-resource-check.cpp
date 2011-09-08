@@ -29,7 +29,7 @@ int main(int argc, char** argv)
   {
     try 
     {
-      std::cout << "Processing: " << argv[i] << " " << i << "/" << argc << std::endl;
+      std::cout << "Processing: " << argv[i] << " " << i << "/" << (argc-1) << std::endl;
       PingusLevel plf(Pathname(argv[i], Pathname::SYSTEM_PATH));
       World world(plf);
     }
