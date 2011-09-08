@@ -293,21 +293,29 @@ Surface::clone() const
 Surface
 Surface::subsection(const Rect& rect) const
 {
-  SDL_Surface* new_surface;
-  new_surface = Blitter::create_surface_from_format(impl->surface,
-                                                    rect.get_width(), rect.get_height());
-  SDL_Rect dst_rect;
-  dst_rect.x = static_cast<Sint16>(rect.left);
-  dst_rect.y = static_cast<Sint16>(rect.top);
+  assert(rect.left  >= 0);
+  assert(rect.top   >= 0);
+  assert(rect.right <= impl->surface->w);
+  assert(rect.top   <= impl->surface->h);
 
-  if (impl->surface->format->palette)
-    SDL_SetPalette(new_surface, SDL_LOGPAL, impl->surface->format->palette->colors, 
-                   0, impl->surface->format->palette->ncolors);
+  SDL_Surface* new_surface
+    = Blitter::create_surface_from_format(impl->surface,
+                                          rect.get_width(), 
+                                          rect.get_height());
 
-  if (impl->surface->flags & SDL_SRCCOLORKEY)
-    SDL_SetColorKey(new_surface, SDL_SRCCOLORKEY, impl->surface->format->colorkey);
-
-  SDL_BlitSurface(impl->surface, NULL, new_surface, &dst_rect);
+  SDL_LockSurface(impl->surface); 
+  SDL_LockSurface(new_surface);
+  for(int y = 0; y < new_surface->h; ++y)
+  {
+    memcpy(static_cast<uint8_t*>(new_surface->pixels) 
+           + (y * new_surface->pitch),
+           static_cast<uint8_t*>(impl->surface->pixels)
+           + (impl->surface->pitch * (y + rect.top)) 
+           + rect.left * impl->surface->format->BytesPerPixel,
+           new_surface->pitch);
+  }
+  SDL_UnlockSurface(new_surface);  
+  SDL_UnlockSurface(impl->surface); 
 
   return Surface(std::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface)));
 }
