@@ -17,87 +17,71 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_BLITTER_IMPL_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_BLITTER_IMPL_HPP
 
+#include "blitter.hpp"
 #include "engine/display/surface.hpp"
 #include "util/log.hpp"
 
 /** A collection of helper functions for the blitter class */
 namespace BlitterImpl {
 
-/** Rotate a surface 90 degree */
 struct transform_rot90
 {
-  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) {
-    return (x * tpitch) + (height - y - 1);
-  }
+  static inline int get_col(int width, int height, int x, int y) { return height - y - 1; }
+  static inline int get_row(int width, int height, int x, int y) { return x; }
 
   static inline int get_width(int width, int height) { return height; }
   static inline int get_height(int width, int height) { return width; }
 };
 
-/** Rotate a surface 180 degree */
 struct transform_rot180
 {
-  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) 
-  {
-    return (spitch * height) - (y * spitch + x) - 1;
-  }
+  static inline int get_col(int width, int height, int x, int y) { return width - x - 1; }
+  static inline int get_row(int width, int height, int x, int y) { return height - y - 1; }
 
   static inline int get_width (int width, int height) { return width; }
   static inline int get_height(int width, int height) { return height; }
 };
 
-/** Rotate a surface 270 degree */
 struct transform_rot270
 {
-  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) {
-    return ((width - x - 1) * tpitch) + y;
-  }
+  static inline int get_col(int width, int height, int x, int y) { return y; }
+  static inline int get_row(int width, int height, int x, int y) { return width - x - 1; }
 
   static inline int get_width (int width, int height) { return height; }
   static inline int get_height(int width, int height) { return width; }
 };
 
-/** flip a surface  */
 struct transform_flip
 {
-  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) 
-  {
-    return (y * spitch) + (width - x - 1);
-  }
+  static inline int get_col(int width, int height, int x, int y) { return width - x - 1; }
+  static inline int get_row(int width, int height, int x, int y) { return y; }
 
   static inline int get_width (int width, int height) { return width; }
   static inline int get_height(int width, int height) { return height; }
 };
 
-/** Rotate a surface 90 degree and then flip it */
 struct transform_rot90_flip
 {
-  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) 
-  {
-    return (x * tpitch) + y;
-  }
+  static inline int get_col(int width, int height, int x, int y) { return y; }
+  static inline int get_row(int width, int height, int x, int y) { return x; }
 
   static inline int get_width (int width, int height) { return height; }
   static inline int get_height(int width, int height) { return width; }
 };
 
-/** Rotate a surface 180 degree and then flip it */
 struct transform_rot180_flip
 {
-  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) {
-    return ((height - y - 1) * spitch) + x;
-  }
+  static inline int get_col(int width, int height, int x, int y) { return x; }
+  static inline int get_row(int width, int height, int x, int y) { return height - y - 1; }
 
   static inline int get_width (int width, int height) { return width; }
   static inline int get_height(int width, int height) { return height; }
 };
 
-/** Rotate a surface 270 degree and then flip it */
 struct transform_rot270_flip
 {
-  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) {
-    return ((width - x - 1) * tpitch) + height - y - 1;
-  }
+  static inline int get_col(int width, int height, int x, int y) { return height - y - 1; }
+  static inline int get_row(int width, int height, int x, int y) { return width - x - 1; }
 
   static inline int get_width (int width, int height) { return height; }
   static inline int get_height(int width, int height) { return width; }
@@ -105,40 +89,82 @@ struct transform_rot270_flip
 
 template<class Transform>
 inline
-Surface modify(Surface source_buffer)
+Surface modify(Surface source)
 {
-  SDL_Surface* source = source_buffer.get_surface();
-  SDL_LockSurface(source);
+  SDL_Surface* target_surface
+    = Blitter::create_surface_from_format(source.get_surface(),
+                                          Transform::get_width (source.get_width(), source.get_height()),
+                                          Transform::get_height(source.get_width(), source.get_height()));
+  Surface target(target_surface);
 
-  if (source->format->palette)
+  const int bpp = target.get_surface()->format->BytesPerPixel;
+
+  target.lock();
+  source.lock();
+
+  uint8_t* source_buf = source.get_data();
+  uint8_t* target_buf = target.get_data();
+
+  if (bpp == 1)
   {
-    Surface target_buffer(Transform::get_width (source_buffer.get_width(), source_buffer.get_height()), 
-                          Transform::get_height(source_buffer.get_width(), source_buffer.get_height()),
-                          source->format->palette, 
-                          (source->flags & SDL_SRCCOLORKEY) ? source->format->colorkey : -1);
-    SDL_Surface* target = target_buffer.get_surface();
-    SDL_LockSurface(target);
-
-    uint8_t* source_buf = static_cast<uint8_t*>(source->pixels);
-    uint8_t* target_buf = static_cast<uint8_t*>(target->pixels);
-
-    for (int y = 0; y < source->h; ++y)
-      for (int x = 0; x < source->w; ++x)
+    for (int y = 0; y < source.get_height(); ++y)
+    {
+      for (int x = 0; x < source.get_width(); ++x)
       {
-        target_buf[Transform::get_index(source->w, source->h, source->pitch, target->pitch, x, y)] = source_buf[y * source->pitch + x];
+        const int col = Transform::get_col(source.get_width(), source.get_height(), x, y);
+        const int row = Transform::get_row(source.get_width(), source.get_height(), x, y);
+
+        const int tidx = row * target.get_pitch() + col;
+        const int sidx = y * source.get_pitch() + x;
+
+        target_buf[tidx] = source_buf[sidx];
       }
-     
-    SDL_UnlockSurface(source);
-    SDL_UnlockSurface(target);
-    return target_buffer;
+    }
+  }
+  else if (bpp == 3)
+  {
+    for (int y = 0; y < source.get_height(); ++y)
+    {
+      for (int x = 0; x < source.get_width(); ++x)
+      {
+        const int col = Transform::get_col(source.get_width(), source.get_height(), x, y);
+        const int row = Transform::get_row(source.get_width(), source.get_height(), x, y);
+
+        const int tidx = row * target.get_pitch() + col * 3;
+        const int sidx = y * source.get_pitch() + x * 3;
+
+        target_buf[tidx+0] = source_buf[sidx+0];
+        target_buf[tidx+1] = source_buf[sidx+1];
+        target_buf[tidx+2] = source_buf[sidx+2];
+      }
+    }
+  }
+  else if (bpp == 4)
+  {
+    for (int y = 0; y < source.get_height(); ++y)
+    {
+      for (int x = 0; x < source.get_width(); ++x)
+      {
+        const int col = Transform::get_col(source.get_width(), source.get_height(), x, y);
+        const int row = Transform::get_row(source.get_width(), source.get_height(), x, y);
+
+        const int tidx = row * target.get_pitch() + col * 4;
+        const int sidx = y * source.get_pitch() + x * 4;
+
+        // copy all four subpixels in one go
+        *reinterpret_cast<uint32_t*>(target_buf + tidx) = *reinterpret_cast<uint32_t*>(source_buf + sidx);
+      }
+    }
   }
   else
   {
-    log_error("Blitter::modify: Unsupported PixelFormat: BytesPerPixel: "
-              << int(source->format->BytesPerPixel));
-    SDL_UnlockSurface(source);
-    return source_buffer.clone();
+    log_error("unhandled BytesPerPixel: " << bpp);
   }
+     
+  source.unlock();
+  target.unlock();
+
+  return target;
 }
 
 } // namespace BlitterImpl
