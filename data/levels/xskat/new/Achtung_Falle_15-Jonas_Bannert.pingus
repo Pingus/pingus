@@ -97,16 +97,6 @@
         (image "groundpieces/ground/snow/block3")
         (modifier "ROT0"))
       (position 790 261 0))
-    (hotspot 
-      (surface 
-        (image "global/")
-        (modifier "ROT0"))
-      (position -319.2 220.4 0)
-      (speed -1)
-      (parallax 1))
-    (infobox 
-      (position -385 5 0)
-      (info-text ))
     (exit 
       (owner-id 0)
       (position 822.4 351.4 0)
