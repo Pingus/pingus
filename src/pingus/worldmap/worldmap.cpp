@@ -120,10 +120,10 @@ Worldmap::draw(DrawingContext& gc)
   }
   pingu_pos.y = Math::clamp(min, pingu_pos.y, max);
 
+  gc_state.set_size(gc.get_width(), gc.get_height());
   gc_state.set_pos(Vector2i(pingu_pos.x, pingu_pos.y));
         
   gc_state.push(gc);
-  
   
   for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
     (*i)->draw(gc);

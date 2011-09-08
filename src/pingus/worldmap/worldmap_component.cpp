@@ -38,14 +38,12 @@ WorldmapComponent::draw (DrawingContext& gc)
   Worldmap* worldmap = worldmap_screen->get_worldmap();
 
   Rect cliprect = worldmap_screen->get_trans_rect();
+  
+  scene_context->set_rect(cliprect);
 
   scene_context->clear();
   scene_context->push_modelview();
-  scene_context->translate(cliprect.left, cliprect.top);
 
-  scene_context->set_cliprect(cliprect);
-
-  //scene_context->color().draw_fillrect(-100, -100, 2000, 2000, Color(255,0,0,0), -10000);
   worldmap->draw(scene_context->color());
 
   gc.draw(new SceneContextDrawingRequest(scene_context.get(), Vector2i(0,0), -1000));
