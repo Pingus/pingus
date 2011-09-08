@@ -41,9 +41,9 @@ const unsigned HAS_PARA =         1 << 7;
 const unsigned HAS_STRETCH =      1 << 8;
 const unsigned HAS_DIRECTION =    1 << 9;
 const unsigned HAS_RELEASE_RATE = 1 << 10;
-const unsigned HAS_SURFACE =      1 << 11;
-// HAS_SURFACE_FAKE means it has a generic image in the editor, but isn't saved.
-const unsigned HAS_SURFACE_FAKE = 1 << 12;
+const unsigned HAS_SPRITE =      1 << 11;
+// HAS_SPRITE_FAKE means it has a generic image in the editor, but isn't saved.
+const unsigned HAS_SPRITE_FAKE = 1 << 12;
 const unsigned CAN_ROTATE =       1 << 13;
 const unsigned HAS_GPTYPE =       1 << 14;
 const unsigned HAS_STARFIELD =    1 << 15;

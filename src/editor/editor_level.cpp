@@ -231,7 +231,7 @@ void EditorLevel::load_level(const Pathname& pathname)
     obj->set_pos(p);
 
     // Get optional attributes based on the attribs value
-    if (attribs & HAS_SURFACE)
+    if (attribs & HAS_SPRITE)
     {
       i->read_desc("surface", desc);
       obj->set_res_desc(desc);

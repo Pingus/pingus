@@ -53,7 +53,7 @@ LevelObj::LevelObj(std::string obj_name, LevelImpl* level_) :
   attribs(get_attributes(obj_name)),
   removed(false)
 {
-  if (attribs & HAS_SURFACE_FAKE)
+  if (attribs & HAS_SPRITE_FAKE)
     load_generic_surface();
 }
 
@@ -92,21 +92,21 @@ unsigned int
 LevelObj::get_attributes(std::string obj_type)
 {
   if (obj_type == "groundpiece")
-    return HAS_GPTYPE | HAS_SURFACE | CAN_ROTATE;
+    return HAS_GPTYPE | HAS_SPRITE | CAN_ROTATE;
   else if (obj_type == "hotspot")
-    return HAS_SPEED | HAS_PARALLAX | HAS_SURFACE | CAN_ROTATE;
+    return HAS_SPEED | HAS_PARALLAX | HAS_SPRITE | CAN_ROTATE;
   else if (obj_type == "liquid")
-    return HAS_SPEED | HAS_REPEAT | HAS_SURFACE;
+    return HAS_SPEED | HAS_REPEAT | HAS_SPRITE;
   else if (obj_type == "surface-background")
-    return HAS_COLOR | HAS_STRETCH | HAS_PARA | HAS_SCROLL | HAS_SURFACE;
+    return HAS_COLOR | HAS_STRETCH | HAS_PARA | HAS_SCROLL | HAS_SPRITE;
   else if (obj_type == "solidcolor-background")
-    return HAS_COLOR | HAS_SURFACE_FAKE;
+    return HAS_COLOR | HAS_SPRITE_FAKE;
   else if (obj_type == "starfield-background")
-    return HAS_STARFIELD | HAS_SURFACE_FAKE;
+    return HAS_STARFIELD | HAS_SPRITE_FAKE;
   else if (obj_type == "entrance" || obj_type == "woodthing")
-    return HAS_TYPE | HAS_DIRECTION | HAS_RELEASE_RATE | HAS_OWNER | HAS_SURFACE_FAKE;
+    return HAS_TYPE | HAS_DIRECTION | HAS_RELEASE_RATE | HAS_OWNER | HAS_SPRITE_FAKE;
   else if (obj_type == "exit")
-    return HAS_OWNER | HAS_SURFACE;
+    return HAS_OWNER | HAS_SPRITE;
   else
   {
     log_error("unknown object type: '" << obj_type << "'");
@@ -125,7 +125,7 @@ LevelObj::set_res_desc(const ResDescriptor d)
 void
 LevelObj::draw(DrawingContext &gc)
 {
-  if (attribs & HAS_SURFACE || attribs & HAS_SURFACE_FAKE)
+  if (attribs & HAS_SPRITE || attribs & HAS_SPRITE_FAKE)
   {
     if (attribs & HAS_REPEAT)
     {
@@ -168,7 +168,7 @@ LevelObj::is_at(int x, int y)
   return get_rect().contains(Vector2i(x,y));
 #if 0  
   // old code
-  if (attribs & HAS_SURFACE || attribs & HAS_SURFACE_FAKE)
+  if (attribs & HAS_SPRITE || attribs & HAS_SPRITE_FAKE)
   {
     Vector2i offset = sprite.get_offset();
     return (x > pos.x - offset.x &&
@@ -204,7 +204,7 @@ LevelObj::set_keep_aspect(const bool a)
 void
 LevelObj::refresh_sprite()
 {
-  if (attribs & HAS_SURFACE || attribs & HAS_SURFACE_FAKE)
+  if (attribs & HAS_SPRITE || attribs & HAS_SPRITE_FAKE)
   {
     sprite = Sprite(desc);
   }
@@ -248,7 +248,7 @@ LevelObj::write_properties(FileWriter &fw)
   if (attribs_ & HAS_GPTYPE)
     fw.write_string("type", ground_type);
 
-  if (attribs_ & HAS_SURFACE)
+  if (attribs_ & HAS_SPRITE)
   {
     fw.begin_section("surface");
     fw.write_string("image", desc.res_name);
