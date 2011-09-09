@@ -104,7 +104,7 @@ class Project:
         self.opts.Add(BoolVariable('ignore_errors',      'Ignore any fatal configuration errors', False))
         self.opts.Add('optional_sources', 'Additional source files', [])
 
-        self.env = Environment(options = self.opts)
+        self.env = Environment(options = self.opts, ENV=os.environ)
         self.env.Append(CXXFLAGS = ["-std=c++0x"])
         self.env.Append(CPPDEFINES = [('VERSION', '"\\"0.8.0\\""')])
         Help(self.opts.GenerateHelpText(self.env))
