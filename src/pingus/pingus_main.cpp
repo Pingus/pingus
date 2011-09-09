@@ -545,7 +545,7 @@ PingusMain::init_path_finder()
       exit(EXIT_FAILURE);
     }
     CFRelease(ref);
-    path_manager.add_path("data");
+    g_path_manager.set_path("data");
 #else
     g_path_manager.set_path("data"); // assume game is run from source dir
 #endif

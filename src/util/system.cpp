@@ -506,8 +506,8 @@ System::realpath(const std::string& pathname)
 #endif
   else
   {
-    char cwd[PATH_MAX];
-    if (getcwd(cwd, PATH_MAX) == 0)
+    char* cwd = getcwd(NULL, 0);
+    if (!cwd)
     {
       log_error("System::realpath: Error: couldn't getcwd()");
       return pathname;
@@ -522,6 +522,7 @@ System::realpath(const std::string& pathname)
 #endif
       
     fullpath = std::string(cwd) + "/" + pathname;
+    free(cwd);
   }
 
 #ifdef WIN32  
