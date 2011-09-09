@@ -10,7 +10,7 @@
     (time -1)
     (playable 1)
     (actions 
-      (bridger ))
+      (bridger 10))
     (music "none")
     (levelsize 1600 800))
   (objects 

@@ -10,9 +10,9 @@
     (time 8000)
     (playable 1)
     (actions 
-      (bomber )
-      (climber )
-      (floater ))
+      (bomber 20)
+      (climber 20)
+      (floater 20))
     (music "none")
     (levelsize 800 1600))
   (objects 

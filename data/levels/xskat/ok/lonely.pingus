@@ -10,10 +10,10 @@
     (time -1)
     (playable 1)
     (actions 
-      (climber )
-      (bridger )
-      (basher )
-      (miner ))
+      (climber 1)
+      (bridger 5)
+      (basher 5)
+      (miner 5))
     (music "none")
     (levelsize 800 600))
   (objects 

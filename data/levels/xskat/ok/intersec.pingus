@@ -10,11 +10,11 @@
     (time -1)
     (playable 1)
     (actions 
-      (basher )
-      (bomber )
-      (digger )
-      (bridger )
-      (jumper ))
+      (basher 5)
+      (bomber 5)
+      (digger 5)
+      (bridger 10)
+      (jumper 30))
     (music "none")
     (levelsize 1504 600))
   (objects 

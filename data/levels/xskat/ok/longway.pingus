@@ -10,9 +10,9 @@
     (time -1)
     (playable 1)
     (actions 
-      (basher )
-      (blocker )
-      (miner ))
+      (basher 2)
+      (blocker 3)
+      (miner 10))
     (music "none")
     (levelsize 800 1024))
   (objects 

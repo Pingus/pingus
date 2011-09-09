@@ -13,11 +13,11 @@
     (comment "floaters was 2, increased to 3, 'cause there doesn't seem to be a way to "
              "solve it cleanly with 2 floaters")
     (actions 
-      (blocker )
-      (bomber )
-      (bridger )
-      (climber )
-      (floater ))
+      (blocker 5)
+      (bomber 20)
+      (bridger 5)
+      (climber 5)
+      (floater 3))
     (music "none")
     (levelsize 1216 800))
   (objects 

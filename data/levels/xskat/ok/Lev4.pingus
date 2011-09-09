@@ -11,11 +11,11 @@
     (playable 1)
     (comment "Not too exciting.. just hard -Phlog")
     (actions 
-      (miner )
-      (blocker )
-      (bomber )
-      (bridger )
-      (floater ))
+      (miner 2)
+      (blocker 5)
+      (bomber 5)
+      (bridger 15)
+      (floater 3))
     (music "none")
     (levelsize 800 600))
   (objects 

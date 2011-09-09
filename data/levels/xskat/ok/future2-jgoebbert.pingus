@@ -10,11 +10,11 @@
     (time 8000)
     (playable 1)
     (actions 
-      (blocker )
-      (basher )
-      (bridger )
-      (digger )
-      (miner ))
+      (blocker 5)
+      (basher 10)
+      (bridger 20)
+      (digger 10)
+      (miner 5))
     (music "none")
     (levelsize 1216 600))
   (objects 
@@ -3226,15 +3226,15 @@
         (image "exits/sortie_anim")
         (modifier "ROT0")))
     (teleporter 
-      (target-id "id2671973")
+      (target-id "id2769013")
       (position 92 466 100))
     (teleporter-target 
-      (id "id2671973")
+      (id "id2769013")
       (position 260 70 100))
     (teleporter 
-      (target-id "id2672004")
+      (target-id "id2769045")
       (position 1053 465 100))
     (teleporter-target 
-      (id "id2672004")
+      (id "id2769045")
       (position 260 70 100))))
 ;; EOF ;;

@@ -10,9 +10,9 @@
     (time -1)
     (playable 1)
     (actions 
-      (digger )
-      (climber )
-      (miner ))
+      (digger 5)
+      (climber 5)
+      (miner 5))
     (music "none")
     (levelsize 1216 600))
   (objects 

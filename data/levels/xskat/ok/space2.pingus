@@ -10,11 +10,11 @@
     (time -1)
     (playable 1)
     (actions 
-      (blocker )
-      (bomber )
-      (bridger )
-      (climber )
-      (floater ))
+      (blocker 20)
+      (bomber 20)
+      (bridger 20)
+      (climber 20)
+      (floater 20))
     (music "none")
     (levelsize 1600 600))
   (objects 

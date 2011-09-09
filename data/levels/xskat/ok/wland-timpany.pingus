@@ -11,11 +11,11 @@
     (playable 1)
     (comment "need fix due to head-bounce feature")
     (actions 
-      (basher )
-      (bridger )
-      (climber )
-      (floater )
-      (miner ))
+      (basher 10)
+      (bridger 2)
+      (climber 10)
+      (floater 5)
+      (miner 1))
     (music "none")
     (levelsize 1216 896))
   (objects 

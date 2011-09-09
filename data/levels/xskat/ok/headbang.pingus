@@ -12,12 +12,12 @@
     (playable 1)
     (comment "the obvious solution is not the right one")
     (actions 
-      (basher )
-      (climber )
-      (digger )
-      (floater )
-      (bridger )
-      (bomber ))
+      (basher 5)
+      (climber 5)
+      (digger 5)
+      (floater 5)
+      (bridger 5)
+      (bomber 1))
     (music "none")
     (levelsize 800 480))
   (objects 

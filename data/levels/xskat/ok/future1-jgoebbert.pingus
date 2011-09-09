@@ -10,11 +10,11 @@
     (time 10000)
     (playable 1)
     (actions 
-      (basher )
-      (blocker )
-      (bridger )
-      (digger )
-      (floater ))
+      (basher 5)
+      (blocker 5)
+      (bridger 25)
+      (digger 6)
+      (floater 2))
     (music "none")
     (levelsize 1216 600))
   (objects 

@@ -11,9 +11,9 @@
     (time -1)
     (playable 1)
     (actions 
-      (digger )
-      (blocker )
-      (floater ))
+      (digger 10)
+      (blocker 3)
+      (floater 1))
     (music "none")
     (levelsize 800 800))
   (objects 

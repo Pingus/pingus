@@ -13,8 +13,8 @@
     (comment "- could need fixing if out-of-screen causes death - has some pingus stuck "
              "in wall errors")
     (actions 
-      (blocker )
-      (bomber ))
+      (blocker 20)
+      (bomber 20))
     (music "none")
     (levelsize 800 1600))
   (objects 

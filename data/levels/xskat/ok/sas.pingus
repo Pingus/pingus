@@ -10,12 +10,12 @@
     (time 8000)
     (playable 1)
     (actions 
-      (miner )
-      (blocker )
-      (bomber )
-      (bridger )
-      (climber )
-      (digger ))
+      (miner 1)
+      (blocker 4)
+      (bomber 20)
+      (bridger 20)
+      (climber 20)
+      (digger 20))
     (music "none")
     (levelsize 1312 1120))
   (objects 
