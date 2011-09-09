@@ -24,7 +24,7 @@
 namespace WorldObjs {
 
 LaserExit::LaserExit(const FileReader& reader) :
-  surface(),
+  surface("traps/laser_exit"),
   pos(),
   killing(false)
 {
