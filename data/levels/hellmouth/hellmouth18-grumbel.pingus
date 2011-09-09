@@ -8,7 +8,6 @@
     (number-of-pingus 50)
     (number-to-save 40)
     (time -1)
-    (playable 1)
     (music "none")
     (actions 
       (blocker 10)

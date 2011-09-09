@@ -8,7 +8,6 @@
     (number-of-pingus 20)
     (number-to-save 15)
     (time -1)
-    (playable 1)
     (music "none")
     (actions 
       (jumper 100))

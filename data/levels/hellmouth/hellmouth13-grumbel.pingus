@@ -8,7 +8,6 @@
     (number-of-pingus 100)
     (number-to-save 90)
     (time -1)
-    (playable 1)
     (music "none")
     (actions 
       (basher 10)
