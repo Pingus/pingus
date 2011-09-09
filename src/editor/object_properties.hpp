@@ -98,6 +98,12 @@ private:
   Button*   rotate_90_button;
   Button*   rotate_270_button;
 
+  Label*    id_label;
+  Inputbox* id_inputbox;
+
+  Label*    target_id_label;
+  Inputbox* target_id_inputbox;
+
   int y_pos;
 
 public:
@@ -140,7 +146,10 @@ public:
   void on_large_stars_change(const std::string& str);
 
   void on_repeat_change(const std::string& str);
-  
+
+  void on_id_change(const std::string& str);
+  void on_target_id_change(const std::string& str);
+
   void on_flip_horizontal();
   void on_flip_vertical();
   void on_rotate_90();

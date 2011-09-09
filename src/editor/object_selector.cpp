@@ -25,6 +25,7 @@
 #include "pingus/gettext.h"
 #include "pingus/resource.hpp"
 #include "util/log.hpp"
+#include "util/string_util.hpp"
 
 namespace Editor {
 
@@ -278,6 +279,36 @@ struct RainGenerator : public ObjectSelectorList::Object
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
     LevelObj* obj = new LevelObj("rain-generator", impl);
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
+    return obj;
+  }
+};
+
+struct Teleporter : public ObjectSelectorList::Object
+{
+  Teleporter() :
+    Object(Sprite("worldobjs/teleporter"),
+           Resource::load_thumb_sprite("worldobjs/teleporter"))
+  {}
+  
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
+    LevelObj* obj = new LevelObj("teleporter", impl);
+    obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
+    obj->set_target_id("");
+    return obj;
+  }
+};
+
+struct TeleporterTarget : public ObjectSelectorList::Object
+{
+  TeleporterTarget() :
+    Object(Sprite("worldobjs/teleportertarget"),
+           Resource::load_thumb_sprite("worldobjs/teleportertarget"))
+  {}
+  
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
+    LevelObj* obj = new LevelObj("teleporter-target", impl);
+    obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
+    obj->set_id("id" + StringUtil::to_string(rand()));
     return obj;
   }
 };
@@ -626,8 +657,10 @@ ObjectSelector::create_weather()
 ObjectSelectorSet*
 ObjectSelector::create_worldobj()
 {
-  log_warn("ObjectSelector: unimplemented: " << __FILE__ << ":" << __LINE__);
-  return new ObjectSelectorSet(object_list, 48, 48);
+  ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+  set->add(new Teleporter);
+  set->add(new TeleporterTarget);
+  return set;
 }
 
 void

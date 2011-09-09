@@ -76,6 +76,10 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
   flip_vertical_button(),
   rotate_90_button(),
   rotate_270_button(),
+  id_label(),
+  id_inputbox(),
+  target_id_label(),
+  target_id_inputbox(),
   y_pos()
 {
   add(type_label = new Label(Rect(Vector2i(4, 4), Size(120, 20)), _("Object:")));
@@ -202,6 +206,15 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
   rotate_270_button->on_click.connect(std::bind(&ObjectProperties::on_rotate_270, this));
   // ___________________________________________________________________
   //
+  add(id_label    = new Label(label_rect, _("Id:")));
+  add(id_inputbox = new Inputbox(box_rect));
+  id_inputbox->on_change.connect(std::bind(&ObjectProperties::on_id_change, this, std::placeholders::_1));
+
+  add(target_id_label    = new Label(label_rect, _("Target Id:")));
+  add(target_id_inputbox = new Inputbox(box_rect));
+  target_id_inputbox->on_change.connect(std::bind(&ObjectProperties::on_target_id_change, this, std::placeholders::_1));
+  // ___________________________________________________________________
+  //
   set_object(0);
 }
 
@@ -311,6 +324,12 @@ ObjectProperties::hide_all()
   flip_vertical_button->hide();
   rotate_90_button->hide();
   rotate_270_button->hide();
+
+  id_label->hide();
+  id_inputbox->hide();
+
+  target_id_label->hide();
+  target_id_inputbox->hide();
 }
 
 void
@@ -425,6 +444,18 @@ ObjectProperties::set_object(LevelObj* obj)
       place(small_stars_label,  small_stars_inputbox);
       place(middle_stars_label, middle_stars_inputbox);
       place(large_stars_label,  large_stars_inputbox);
+    }
+
+    if (attr & HAS_ID)
+    {
+      id_inputbox->set_text(obj->get_id());
+      place(id_label, id_inputbox);
+    }
+
+    if (attr & HAS_TARGET_ID)
+    {
+      target_id_inputbox->set_text(obj->get_target_id());
+      place(target_id_label, target_id_inputbox);
     }
 
     if (1) // everybody has z-pos
@@ -688,6 +719,20 @@ ObjectProperties::on_rotate_270()
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_modifier(ResourceModifier::rotate_270((*i)->get_modifier()));
+}
+
+void
+ObjectProperties::on_id_change(const std::string& str)
+{
+  for(auto i = objects.begin(); i != objects.end(); ++i)
+    (*i)->set_id(str);
+}
+
+void
+ObjectProperties::on_target_id_change(const std::string& str)
+{
+  for(auto i = objects.begin(); i != objects.end(); ++i)
+    (*i)->set_target_id(str);
 }
 
 void
