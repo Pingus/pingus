@@ -184,6 +184,76 @@ struct Liquid : public ObjectSelectorList::Object
   }
 };
 
+struct Guillotine : public ObjectSelectorList::Object
+{
+  Guillotine() :
+    Object(Sprite("traps/guillotineidle"),
+           Resource::load_thumb_sprite("traps/guillotineidle"))
+  {}
+  
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
+    LevelObj* obj = new LevelObj("guillotine", impl);
+    obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
+    return obj;     
+  }
+};
+
+struct FakeExit : public ObjectSelectorList::Object
+{
+  FakeExit() :
+    Object(Sprite("traps/fake_exit"),
+           Resource::load_thumb_sprite("traps/fake_exit"))
+  {}
+  
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
+    LevelObj* obj = new LevelObj("fake_exit", impl);
+    obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
+    return obj;     
+  }
+};
+
+struct LaserExit : public ObjectSelectorList::Object
+{
+  LaserExit() :
+    Object(Sprite("traps/laser_exit"),
+           Resource::load_thumb_sprite("traps/laser_exit"))
+  {}
+  
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
+    LevelObj* obj = new LevelObj("laser_exit", impl);
+    obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
+    return obj;
+  }
+};
+
+struct Smasher : public ObjectSelectorList::Object
+{
+  Smasher() :
+    Object(Sprite("traps/smasher"),
+           Resource::load_thumb_sprite("traps/smasher"))
+  {}
+  
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
+    LevelObj* obj = new LevelObj("smasher", impl);
+    obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
+    return obj;
+  }
+};
+
+struct Hammer : public ObjectSelectorList::Object
+{
+  Hammer() :
+    Object(Sprite("traps/hammer"),
+           Resource::load_thumb_sprite("traps/hammer"))
+  {}
+  
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
+    LevelObj* obj = new LevelObj("hammer", impl);
+    obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
+    return obj;
+  }
+};
+
 class ObjectSelectorButton : public GUI::RectComponent
 {
 private:
@@ -507,9 +577,13 @@ ObjectSelector::create_liquid()
 ObjectSelectorSet*
 ObjectSelector::create_trap()
 {
-  // Need to differentiate the different trap types
-  //return create_objects("traps");
-  return new ObjectSelectorSet(object_list, 48, 48);
+  ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+  set->add(new Guillotine);
+  set->add(new LaserExit);
+  set->add(new FakeExit);
+  set->add(new Hammer);
+  set->add(new Smasher);
+  return set;
 }
 
 ObjectSelectorSet*
