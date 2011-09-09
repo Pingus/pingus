@@ -44,7 +44,7 @@ public:
     actions(),
     time(),
     author(),
-    music("none"),
+    music(),
     objects()
   {
     // Do nothing
