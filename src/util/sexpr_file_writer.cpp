@@ -66,13 +66,23 @@ SExprFileWriter::write_float(const char* name, float value)
 }
 
 void
-SExprFileWriter::write_color(const char* name, const Color& color)
+SExprFileWriter::write_colorf(const char* name, const Color& color)
 {
   (*out) << "\n" << indent() << "(" << name << " "
          << static_cast<float>(color.r)/255.0f << " " 
          << static_cast<float>(color.g)/255.0f << " "
          << static_cast<float>(color.b)/255.0f << " " 
          << static_cast<float>(color.a)/255.0f << ")";
+}
+
+void
+SExprFileWriter::write_colori(const char* name, const Color& color)
+{
+  (*out) << "\n" << indent() << "(" << name << " "
+         << static_cast<int>(color.r) << " " 
+         << static_cast<int>(color.g) << " "
+         << static_cast<int>(color.b) << " " 
+         << static_cast<int>(color.a) << ")";
 }
 
 void

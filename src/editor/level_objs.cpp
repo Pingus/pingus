@@ -302,7 +302,7 @@ LevelObj::write_properties(FileWriter &fw)
   if (attribs_ & HAS_RELEASE_RATE)
     fw.write_int("release-rate", release_rate);
   if (attribs_ & HAS_COLOR)
-    fw.write_color("color", color);
+    fw.write_colori("colori", color);
   if (attribs_ & HAS_STRETCH)
   {
     fw.write_bool("stretch-x", stretch_x);

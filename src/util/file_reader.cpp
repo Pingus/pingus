@@ -115,6 +115,15 @@ FileReader::read_colorf(const char* name, Color& value) const
 }
 
 bool
+FileReader::read_colori(const char* name, Color& value) const
+{
+  if (impl.get())
+    return impl->read_colori(name, value);
+  else
+    return false;
+}
+
+bool
 FileReader::read_desc(const char* name, ResDescriptor& desc) const
 {
   if (impl.get())

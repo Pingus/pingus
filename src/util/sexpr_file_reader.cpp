@@ -187,6 +187,20 @@ public:
     return false;
   }
 
+  bool read_colori(const char* name, Color& v) const
+  {
+    std::shared_ptr<lisp::Lisp> sub = get_subsection(name);
+    if (sub && sub->get_list_size() == 5)
+    {
+      v = Color(static_cast<char>(sub->get_list_elem(1)->get_int()),
+                static_cast<char>(sub->get_list_elem(2)->get_int()),
+                static_cast<char>(sub->get_list_elem(3)->get_int()),
+                static_cast<char>(sub->get_list_elem(4)->get_int()));
+      return true;
+    }
+    return false;
+  }
+
   bool read_desc  (const char* name, ResDescriptor& v) const 
   {
     std::shared_ptr<lisp::Lisp> sub = get_subsection(name);

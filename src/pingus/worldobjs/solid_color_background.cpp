@@ -23,7 +23,8 @@ namespace WorldObjs {
 SolidColorBackground::SolidColorBackground(const FileReader& reader) :
   color()
 {
-  reader.read_colorf("color", color);
+  if (!reader.read_colori("colori", color))
+    reader.read_colorf("color", color);
 }
 
 void

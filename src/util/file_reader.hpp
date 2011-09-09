@@ -53,6 +53,7 @@ public:
   bool read_rect(const char* name, Rect&)    const;
   bool read_size  (const char* name, Size&)          const;
   bool read_colorf(const char* name, Color&)         const;
+  bool read_colori(const char* name, Color&)         const;
   bool read_desc  (const char* name, ResDescriptor&) const;
   bool read_section(const char* name, FileReader&)   const;
   FileReader read_section(const char* name)   const;
