@@ -1,5 +1,5 @@
 (pingus-level 
-  (version 2)
+  (version 3)
   (head 
     (license "GPLv3+")
     (levelname "Claustrophobia")
@@ -8,9 +8,6 @@
     (number-of-pingus 30)
     (number-to-save 25)
     (time 6000)
-    (difficulty 0)
-    (playable 1)
-    (comment "")
     (music "pingus-3.it")
     (actions 
       (basher 1)
@@ -28,7 +25,7 @@
         (image "textures/desert_room")
         (modifier "ROT0"))
       (position 1 -4 -150)
-      (color 0 0 0 0.470588)
+      (colori 0 0 0 119)
       (stretch-x #f)
       (stretch-y #f)
       (keep-aspect #f)

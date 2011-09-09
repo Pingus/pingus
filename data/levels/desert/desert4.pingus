@@ -1,5 +1,5 @@
 (pingus-level 
-  (version 2)
+  (version 3)
   (head 
     (license "GPLv3+")
     (levelname "The excavation of the pyramid")
@@ -8,9 +8,6 @@
     (number-of-pingus 50)
     (number-to-save 25)
     (time -1)
-    (difficulty 60)
-    (playable 1)
-    (comment "")
     (music "pingus-3.it")
     (actions 
       (basher 10)
@@ -27,7 +24,7 @@
         (image "textures/desert")
         (modifier "ROT0"))
       (position 416 132 -150)
-      (color 0 0 0 0)
+      (colori 0 0 0 0)
       (stretch-x #f)
       (stretch-y #t)
       (keep-aspect #t)

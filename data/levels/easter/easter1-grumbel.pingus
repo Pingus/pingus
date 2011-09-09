@@ -1,5 +1,5 @@
 (pingus-level 
-  (version 2)
+  (version 3)
   (head 
     (license "GPLv3+")
     (levelname "none")
@@ -8,8 +8,6 @@
     (number-of-pingus 50)
     (number-to-save 20)
     (time -1)
-    (difficulty 0)
-    (playable 1)
     (music "none")
     (actions 
       (basher 20)
@@ -29,7 +27,7 @@
         (image "textures/easter_sky")
         (modifier "ROT0"))
       (position -803 -107 -1000)
-      (color 0 0 0 0)
+      (colori 0 0 0 0)
       (stretch-x #f)
       (stretch-y #t)
       (keep-aspect #t)
@@ -42,7 +40,7 @@
         (image "textures/easter_grass")
         (modifier "ROT0"))
       (position -651 219 -999)
-      (color 0 0 0 0)
+      (colori 0 0 0 0)
       (stretch-x #f)
       (stretch-y #t)
       (keep-aspect #t)

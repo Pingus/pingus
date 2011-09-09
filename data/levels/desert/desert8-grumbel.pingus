@@ -1,5 +1,5 @@
 (pingus-level 
-  (version 2)
+  (version 3)
   (head 
     (license "GPLv3+")
     (levelname "Tunnel Time")
@@ -8,8 +8,6 @@
     (number-of-pingus 50)
     (number-to-save 40)
     (time -1)
-    (difficulty 90)
-    (playable 1)
     (music "pingus-8.it")
     (actions 
       (basher 5)
@@ -24,7 +22,7 @@
         (image "textures/desert_room")
         (modifier "ROT0"))
       (position 166 -8 -1000)
-      (color 0 0 0 0)
+      (colori 0 0 0 0)
       (stretch-x #f)
       (stretch-y #f)
       (keep-aspect #f)

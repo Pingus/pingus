@@ -1,5 +1,5 @@
 (pingus-level 
-  (version 2)
+  (version 3)
   (head 
     (license "GPLv3+")
     (levelname "A bit to the right a bit to left")
@@ -8,7 +8,6 @@
     (number-of-pingus 50)
     (number-to-save 25)
     (time -1)
-    (playable 1)
     (music "pingus-4.it")
     (actions 
       (blocker 20)
@@ -20,7 +19,7 @@
         (image "textures/desert_room")
         (modifier "ROT0"))
       (position -381 33 -150)
-      (color 0 0 0 0.494118)
+      (colori 0 0 0 126)
       (stretch-x #f)
       (stretch-y #f)
       (keep-aspect #f)

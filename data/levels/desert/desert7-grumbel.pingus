@@ -1,5 +1,5 @@
 (pingus-level 
-  (version 2)
+  (version 3)
   (head 
     (license "GPLv3+")
     (levelname "25 Pingus free and 25 in the box")
@@ -8,9 +8,6 @@
     (number-of-pingus 50)
     (number-to-save 26)
     (time -1)
-    (difficulty 40)
-    (playable 1)
-    (comment "")
     (music "pingus-6.it")
     (actions 
       (blocker 5)
@@ -24,7 +21,7 @@
         (image "textures/desert_room")
         (modifier "ROT0"))
       (position 372 248 -150)
-      (color 0 0 0 0)
+      (colori 0 0 0 0)
       (stretch-x #f)
       (stretch-y #f)
       (keep-aspect #f)

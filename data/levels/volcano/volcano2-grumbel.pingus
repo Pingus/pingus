@@ -1,5 +1,5 @@
 (pingus-level 
-  (version 2)
+  (version 3)
   (head 
     (license "GPLv3+")
     (levelname "EditorDefaultValue: Please give me a name...")
@@ -8,8 +8,6 @@
     (number-of-pingus 25)
     (number-to-save 10)
     (time -1)
-    (difficulty 40)
-    (playable 1)
     (music "none")
     (actions 
       (blocker 10)
@@ -24,7 +22,7 @@
         (image "textures/rock6")
         (modifier "ROT0"))
       (position 156 -266 -150)
-      (color 0 0 0 0.4)
+      (colori 0 0 0 102)
       (stretch-x #f)
       (stretch-y #f)
       (keep-aspect #f)

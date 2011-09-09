@@ -1,5 +1,5 @@
 (pingus-level 
-  (version 2)
+  (version 3)
   (head 
     (license "GPLv3+")
     (levelname "The Roof")
@@ -8,7 +8,6 @@
     (number-of-pingus 50)
     (number-to-save 40)
     (time -1)
-    (playable 1)
     (music "pingus-9.it")
     (actions 
       (basher 10)
@@ -23,7 +22,7 @@
         (image "textures/rooftile2")
         (modifier "ROT0"))
       (position 83 474 -150)
-      (color 0 0 0 0.392157)
+      (colori 0 0 0 100)
       (stretch-x #f)
       (stretch-y #f)
       (keep-aspect #f)
