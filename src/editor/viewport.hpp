@@ -73,6 +73,9 @@ private:
   /** What is the currently selected action that the mouse is doing */
   enum ActionType { NOTHING, HIGHLIGHTING, DRAGGING, SCROLLING } current_action;
 
+  std::vector<Color> m_background_colors;
+  std::vector<Color>::size_type  m_background_colors_idx;
+
 public:
   /** Constructor
       @param e The EditorScreen to which this viewport belongs */

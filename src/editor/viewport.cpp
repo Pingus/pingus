@@ -46,8 +46,29 @@ Viewport::Viewport(EditorScreen* e, const Rect& rect_)  :
   context_menu(),
   snap_to(false),
   current_action(NOTHING),
+  m_background_colors(),
+  m_background_colors_idx(12),
   selection_changed()
 {
+  // Black to White
+  m_background_colors.push_back(Color(  0,   0,   0));
+  m_background_colors.push_back(Color( 64,  64,  64));
+  m_background_colors.push_back(Color(128, 128, 128));
+  m_background_colors.push_back(Color(255, 255, 255));
+  // Rainbow
+  m_background_colors.push_back(Color(255,   0,   0));
+  m_background_colors.push_back(Color(255, 255,   0));
+  m_background_colors.push_back(Color(255,   0, 255));
+  m_background_colors.push_back(Color(  0, 255,   0));
+  m_background_colors.push_back(Color(  0, 255, 255));
+  m_background_colors.push_back(Color(  0,   0, 255));
+  // Dimmed Rainbow
+  m_background_colors.push_back(Color(128,   0,   0));
+  m_background_colors.push_back(Color(128, 128,   0));
+  m_background_colors.push_back(Color(128,   0, 128));
+  m_background_colors.push_back(Color(  0, 128,   0));
+  m_background_colors.push_back(Color(  0, 128, 128));
+  m_background_colors.push_back(Color(  0,   0, 128));
 }
 
 // Destructor
@@ -234,6 +255,31 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
 {
   switch(ev.keysym.sym)
   {
+    case SDLK_b:
+      if (ev.keysym.mod & KMOD_SHIFT)
+      {
+        if (m_background_colors_idx > 1)
+        {
+          m_background_colors_idx -= 1;
+        }
+        else
+        {
+          m_background_colors_idx = m_background_colors.size() - 1;
+        }
+      }
+      else
+      {
+        if (m_background_colors_idx < m_background_colors.size()-1)
+        {
+          m_background_colors_idx += 1;
+        }
+        else
+        {
+          m_background_colors_idx = 0;
+        }
+      }
+      break;
+
     case SDLK_a:
       if (ev.keysym.mod & KMOD_SHIFT)
       {
@@ -413,7 +459,7 @@ void
 Viewport::draw(DrawingContext &gc)
 {
   drawing_context->clear();
-  drawing_context->fill_screen(Color(155,0,155));
+  drawing_context->fill_screen(m_background_colors[m_background_colors_idx]);
   state.push(*drawing_context);
   
   // Level border
