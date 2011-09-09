@@ -200,6 +200,9 @@ void EditorLevel::load_level(const Pathname& pathname)
   impl->author           = level.get_author();
   impl->music            = level.get_music();
         
+  if (impl->music == "none")
+    impl->music = "";
+
   // Temporary objects
   unsigned attribs;
   Vector3f p;
