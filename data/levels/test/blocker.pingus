@@ -11,8 +11,8 @@
     (music "none")
     (actions 
       (basher 20)
-      (blocker 20)
-      (bomber 20)
+      (blocker 2000)
+      (bomber 2000)
       (bridger 20)
       (climber 20)
       (digger 20)
@@ -1613,8 +1613,8 @@
       (type "generic")
       (position 799 188 0)
       (owner-id 0)
-      (direction "right")
-      (release-rate 1000))
+      (direction "misc")
+      (release-rate 10))
     (groundpiece 
       (type "ground")
       (surface 
