@@ -148,11 +148,14 @@ class Project:
         if not self.env['with_opengl']:
             self.reports += "  * OpenGL support: disabled\n"
         else:
-            self.reports += "  * OpenGL support: enabled\n"
-            self.conf.env.Append(CPPDEFINES = [('HAVE_OPENGL', 1)])
-            self.conf.env.Append(LIBS = ['GL'])
             self.conf.env.Append(optional_sources = ['src/engine/display/opengl/opengl_framebuffer_surface_impl.cpp', 
                                                      'src/engine/display/opengl/opengl_framebuffer.cpp' ])
+            if sys.platform == "darwin":
+                self.conf.env.Append(LINKFLAGS = [ '-framework', 'OpenGL' ])
+            else:
+                self.reports += "  * OpenGL support: enabled\n"
+                self.conf.env.Append(CPPDEFINES = [('HAVE_OPENGL', 1)])
+                self.conf.env.Append(LIBS = ['GL'])
 
     def configure_linuxevdev(self):
         if not self.env['with_linuxevdev']:
@@ -203,14 +206,23 @@ class Project:
                 if not self.conf.CheckSDLLib(sdllib):
                     self.fatal_error += "  * SDL library '%s' not found\n" % sdllib
         else:
-            fatal_error += "  * couldn't find sdl-config, SDL missing\n"
+            if sys.platform == 'darwin':
+                self.conf.env.Append(LINKFLAGS = [ '-framework', 'SDL',
+                                                   '-framework', 'Cocoa' ],
+                                     CPPPATH   = '/Library/Frameworks/SDL.framework/Headers/',
+                                     LIBS      = [ File('libsdlmain.a') ])
+                self.conf.env.Append(LINKFLAGS = [ '-framework', 'SDL_image' ],
+                                     LIBS = [ 'jpeg' ],
+                                     CPPPATH = '/Library/Frameworks/SDL_image.framework/Headers/')
+            else:
+                fatal_error += "  * couldn't find sdl-config, SDL missing\n"
 
     def configure_iconv(self):
         iconv_const = self.conf.CheckIconv()
         if iconv_const == False:
             self.fatal_error += "  * can't call iconv\n"
         else:
-            self.conf.env.Append(CPPDEFINES = [('ICONV_CONST', iconv_const)])
+            self.conf.env.Append(CPPDEFINES = [ 'HAVE_ICONV_CONST', ('ICONV_CONST', iconv_const) ])
 
     def build(self):
         self.env.Append(CPPPATH = ['.', 'src/', 'external/tinygettext/'])
@@ -237,6 +249,9 @@ class Project:
                                            Glob('src/pingus/worldobjs/*.cpp') + \
                                            Glob('src/util/*.cpp') + \
                                            self.env['optional_sources'])
+
+        if sys.platform == "darwin":
+            self.env.StaticLibrary("sdlmain", ["src/macosx/SDLmain.m"], [ 'SDL' ])
 
         self.env.Program('pingus', ['src/main.cpp', libpingus])
 
