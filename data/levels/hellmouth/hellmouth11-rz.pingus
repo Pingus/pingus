@@ -1,5 +1,5 @@
 (pingus-level 
-  (version 2)
+  (version 3)
   (head 
     (license "GPLv3+")
     (levelname "The Ones")
@@ -8,7 +8,6 @@
     (number-of-pingus 20)
     (number-to-save 11)
     (time -1)
-    (difficulty 65)
     (playable 1)
     (music "none")
     (actions 
@@ -27,7 +26,7 @@
         (image "textures/stones")
         (modifier "ROT0"))
       (position 92 161 -150)
-      (color 0 0 0 0.4)
+      (colori 0 0 0 102)
       (stretch-x #f)
       (stretch-y #f)
       (keep-aspect #t)

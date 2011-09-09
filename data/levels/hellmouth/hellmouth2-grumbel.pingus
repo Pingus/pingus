@@ -1,5 +1,5 @@
 (pingus-level 
-  (version 2)
+  (version 3)
   (head 
     (license "GPLv3+")
     (levelname "EditorDefaultValue: Please give me a name...")
@@ -8,7 +8,6 @@
     (number-of-pingus 50)
     (number-to-save 40)
     (time -1)
-    (difficulty 80)
     (playable 1)
     (music "none")
     (actions 
@@ -27,7 +26,7 @@
         (image "textures/cyanspace")
         (modifier "ROT0"))
       (position 13 400 -100)
-      (color 0 0 0 0.0980392)
+      (colori 0 0 0 24)
       (stretch-x #f)
       (stretch-y #f)
       (keep-aspect #f)

@@ -1,5 +1,5 @@
 (pingus-level 
-  (version 2)
+  (version 3)
   (head 
     (license "GPLv3+")
     (levelname "EditorDefaultValue: Please give me a name...")
@@ -8,7 +8,6 @@
     (number-of-pingus 30)
     (number-to-save 20)
     (time -1)
-    (difficulty 40)
     (playable 1)
     (music "none")
     (actions 
@@ -21,7 +20,7 @@
         (image "textures/bwsortiebg")
         (modifier "ROT0"))
       (position 157 315 -150)
-      (color 0 0 0 0.392157)
+      (colori 0 0 0 100)
       (stretch-x #f)
       (stretch-y #f)
       (keep-aspect #f)
@@ -34,7 +33,7 @@
         (image "textures/green_tendrils")
         (modifier "ROT0"))
       (position 20 336 -150)
-      (color 0 0 0 0.4)
+      (colori 0 0 0 102)
       (stretch-x #f)
       (stretch-y #f)
       (keep-aspect #f)
