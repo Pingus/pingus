@@ -254,6 +254,34 @@ struct Hammer : public ObjectSelectorList::Object
   }
 };
 
+struct SnowGenerator : public ObjectSelectorList::Object
+{
+  SnowGenerator() :
+    Object(Sprite("core/editor/weather_snow"),
+           Resource::load_thumb_sprite("core/editor/weather_snow"))
+  {}
+  
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
+    LevelObj* obj = new LevelObj("snow-generator", impl);
+    obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
+    return obj;
+  }
+};
+
+struct RainGenerator : public ObjectSelectorList::Object
+{
+  RainGenerator() :
+    Object(Sprite("core/editor/weather_rain"),
+           Resource::load_thumb_sprite("core/editor/weather_rain"))
+  {}
+  
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
+    LevelObj* obj = new LevelObj("rain-generator", impl);
+    obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
+    return obj;
+  }
+};
+
 class ObjectSelectorButton : public GUI::RectComponent
 {
 private:
@@ -589,9 +617,10 @@ ObjectSelector::create_trap()
 ObjectSelectorSet*
 ObjectSelector::create_weather()
 {
-  //create_objects("weather");
-  log_warn("ObjectSelector: unimplemented: " << __FILE__ << ":" << __LINE__);
-  return new ObjectSelectorSet(object_list, 48, 48);
+  ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+  set->add(new RainGenerator);
+  set->add(new SnowGenerator);
+  return set;
 }
 
 ObjectSelectorSet*
