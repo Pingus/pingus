@@ -328,6 +328,21 @@ struct IceBlock : public ObjectSelectorList::Object
   }
 };
 
+struct Conveyorbelt : public ObjectSelectorList::Object
+{
+  Conveyorbelt() :
+    Object(Sprite("worldobjs/conveyorbelt_middle"),
+           Resource::load_thumb_sprite("worldobjs/conveyorbelt_middle"))
+  {}
+  
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
+    LevelObj* obj = new LevelObj("conveyorbelt", impl);
+    obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
+    obj->set_repeat(1);
+    return obj;
+  }
+};
+
 class ObjectSelectorButton : public GUI::RectComponent
 {
 private:
@@ -676,6 +691,7 @@ ObjectSelector::create_worldobj()
   set->add(new Teleporter);
   set->add(new TeleporterTarget);
   set->add(new IceBlock);
+  set->add(new Conveyorbelt);
   return set;
 }
 

@@ -135,6 +135,8 @@ LevelObj::get_attributes(std::string obj_type)
     return HAS_SPRITE_FAKE;
   else if (obj_type == "iceblock")
     return HAS_SPRITE_FAKE | HAS_REPEAT;
+  else if (obj_type == "conveyorbelt")
+    return HAS_SPRITE_FAKE | HAS_REPEAT | HAS_SPEED;
   else
   {
     std::ostringstream out;
@@ -425,6 +427,12 @@ LevelObj::load_generic_surface()
   else if (section_name == "iceblock")
   {
     desc.res_name = "worldobjs/iceblock";    
+    desc.modifier = ResourceModifier::ROT0;
+    sprite = Sprite(desc);
+  }
+  else if (section_name == "conveyorbelt")
+  {
+    desc.res_name = "worldobjs/conveyorbelt_middle";    
     desc.modifier = ResourceModifier::ROT0;
     sprite = Sprite(desc);
   }
