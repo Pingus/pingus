@@ -20,6 +20,7 @@
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"
+#include "util/log.hpp"
 
 namespace WorldObjs {
 
@@ -33,7 +34,11 @@ ConveyorBelt::ConveyorBelt(const FileReader& reader) :
   counter()
 {
   reader.read_vector("position", pos);
-  reader.read_int   ("width",    width);
+  if (!reader.read_int   ("repeat",    width))
+  {
+    log_warn("old 'width' tag used");
+    reader.read_int   ("width",    width);
+  }
   reader.read_float ("speed",    speed);
 }
 

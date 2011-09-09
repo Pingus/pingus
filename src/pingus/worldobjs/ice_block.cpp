@@ -20,6 +20,7 @@
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"
+#include "util/log.hpp"
 
 namespace WorldObjs {
 
@@ -32,11 +33,12 @@ IceBlock::IceBlock(const FileReader& reader) :
   block_sur("worldobjs/iceblock"),
   block_sur_cmap("worldobjs/iceblock_cmap")
 {
-  // for backward compatibility
-  reader.read_int   ("width",    width); 
-
   reader.read_vector("position", pos);
-  reader.read_int   ("repeat",    width);
+  if (!reader.read_int("repeat", width))
+  {
+    log_warn("old 'width' tag used");
+    reader.read_int("width", width); 
+  }
 }
 
 void
