@@ -34,9 +34,9 @@ public:
   typedef std::map<std::string, std::string> Aliases;
 
 private:
-  Resources resources;
+  Resources m_cache;
   std::set<std::string> m_resources;
-  Aliases aliases;
+  Aliases m_aliases;
 
 public:
   ResourceManager();
@@ -51,8 +51,9 @@ public:
 
   std::vector<std::string> get_section(const std::string& name);
 
-  const Resources& get_resources() const { return resources; }
-  const Aliases&   get_aliases() const { return aliases; }
+  // FIXME: used by extra/resource-convert, obsolete now
+  const Resources& get_resources() const { return m_cache; } 
+  const Aliases&   get_aliases() const { return m_aliases; }
 
 private:
   void parse(const std::string& section, FileReader&);

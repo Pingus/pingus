@@ -27,9 +27,9 @@
 #include "util/system.hpp"
 
 ResourceManager::ResourceManager() :
-  resources(),
+  m_cache(),
   m_resources(),
-  aliases()
+  m_aliases()
 {
 }
 
@@ -41,7 +41,7 @@ std::vector<std::string>
 ResourceManager::get_section(const std::string& name)
 {
   std::vector<std::string> lst;
-  for (auto i = resources.begin(); i != resources.end(); ++i)
+  for (auto i = m_cache.begin(); i != m_cache.end(); ++i)
   {
     if (StringUtil::has_prefix(i->first, name))
     {
@@ -124,7 +124,7 @@ ResourceManager::parse(const std::string& section, FileReader& reader)
     if (!section.empty())
       name = section + "/" + name;
  
-    resources[name].reset(new SpriteDescription(reader));
+    m_cache[name].reset(new SpriteDescription(reader));
   }
   else if (reader.get_name() == "alias")
   {
@@ -134,7 +134,7 @@ ResourceManager::parse(const std::string& section, FileReader& reader)
         reader.read_string("link", link))
     {
       //log_info("alias: " << name << " -> " << link);
-      aliases[name] = link;
+      m_aliases[name] = link;
     }
   }
   else if (reader.get_name() == "name")
@@ -214,8 +214,8 @@ ResourceManager::get_sprite_description_from_file(const std::string& resname)
 SpriteDescription* 
 ResourceManager::get_sprite_description(const std::string& name)
 {
-  Resources::const_iterator i = resources.find(name);
-  if (i != resources.end())
+  auto i = m_cache.find(name);
+  if (i != m_cache.end())
   {
     return i->second.get();
   }
@@ -224,13 +224,13 @@ ResourceManager::get_sprite_description(const std::string& name)
     SpriteDescriptionPtr desc = get_sprite_description_from_file(name);
     if (desc)
     {
-      resources[name] = desc;
+      m_cache[name] = desc;
       return desc.get();
     }
     else
     {
-      Aliases::const_iterator j = aliases.find(name);
-      if (j != aliases.end())
+      auto j = m_aliases.find(name);
+      if (j != m_aliases.end())
       {
         log_warn("using alias \"" << j->first << "\" -> \"" << j->second << "\"");
         return get_sprite_description(j->second);
