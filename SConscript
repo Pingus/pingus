@@ -61,8 +61,9 @@ int main() {
 def CheckMyProgram(context, prgn):
     context.Message('Checking for %s...' % prgn)
     for i in context.env['ENV']['PATH'].split(":"):
-        if os.path.exists(i + "/sdl-config"):
-            context.Result(i + "/sdl-config")
+        filename = os.path.join(i, prgn)
+        if os.path.exists(filename):
+            context.Result(filename)
             return True
     context.Result("failed")
     return False
@@ -150,11 +151,11 @@ class Project:
         else:
             self.reports += "  * OpenGL support: enabled\n"           
             self.conf.env.Append(optional_sources = ['src/engine/display/opengl/opengl_framebuffer_surface_impl.cpp', 
-                                                     'src/engine/display/opengl/opengl_framebuffer.cpp' ])
+                                                     'src/engine/display/opengl/opengl_framebuffer.cpp' ],
+                                 CPPDEFINES = [('HAVE_OPENGL', 1)])
             if sys.platform == "darwin":
                 self.conf.env.Append(LINKFLAGS = [ '-framework', 'OpenGL' ])
             else:
-                self.conf.env.Append(CPPDEFINES = [('HAVE_OPENGL', 1)])
                 self.conf.env.Append(LIBS = ['GL'])
 
     def configure_linuxevdev(self):
@@ -210,22 +211,29 @@ class Project:
                     self.fatal_error += "  * SDL library '%s' not found\n" % sdllib
         else:
             if sys.platform == 'darwin':
+                # self.conf.env.StaticLibrary("sdlmain", ["src/macosx/SDLmain.m"], [ 'SDL' ])
+                self.conf.env.Append(optional_sources = [ "src/macosx/SDLmain.m" ])
                 self.conf.env.Append(LINKFLAGS = [ '-framework', 'SDL',
                                                    '-framework', 'Cocoa' ],
-                                     CPPPATH   = '/Library/Frameworks/SDL.framework/Headers/',
-                                     LIBS      = [ File('libsdlmain.a') ])
+                                     CPPPATH   = ['/Library/Frameworks/SDL.framework/Headers/'])
                 self.conf.env.Append(LINKFLAGS = [ '-framework', 'SDL_image' ],
                                      LIBS = [ 'jpeg' ],
-                                     CPPPATH = '/Library/Frameworks/SDL_image.framework/Headers/')
+                                     CPPPATH = ['/Library/Frameworks/SDL_image.framework/Headers/'])
+                self.conf.env.Append(LINKFLAGS = [ '-framework', 'SDL_mixer',
+                                                   # see http://forums.libsdl.org/viewtopic.php?t=5176&sid=72ad0db5b3f2ae62cfb0314adb517d42
+                                                   '-dylib_file', '@loader_path/Frameworks/mikmod.framework/Versions/A/mikmod:/Library/Frameworks/SDL_mixer.framework/Versions/A/Frameworks/mikmod.framework/Versions/A/mikmod',
+                                                   '-dylib_file', '@loader_path/Frameworks/smpeg.framework/Versions/A/smpeg:/Library/Frameworks/SDL_mixer.framework/Versions/A/Frameworks/smpeg.framework/Versions/A/smpeg' ],
+                                     CPPPATH = ['/Library/Frameworks/SDL_mixer.framework/Headers/'])
             else:
-                fatal_error += "  * couldn't find sdl-config, SDL missing\n"
-
+                self.fatal_error += "  * couldn't find sdl-config, SDL missing\n"
+                
     def configure_iconv(self):
         iconv_const = self.conf.CheckIconv()
         if iconv_const == False:
             self.fatal_error += "  * can't call iconv\n"
         else:
             self.conf.env.Append(CPPDEFINES = [ 'HAVE_ICONV_CONST', ('ICONV_CONST', iconv_const) ])
+        self.conf.CheckLib('iconv')
 
     def build(self):
         self.env.Append(CPPPATH = ['.', 'src/', 'external/tinygettext/'])
@@ -253,19 +261,22 @@ class Project:
                                            Glob('src/util/*.cpp') + \
                                            self.env['optional_sources'])
 
-        if sys.platform == "darwin":
-            self.env.StaticLibrary("sdlmain", ["src/macosx/SDLmain.m"], [ 'SDL' ])
+        #if sys.platform == "darwin":
+        #    self.env.StaticLibrary("sdlmain", ["src/macosx/SDLmain.m"], [ 'SDL' ])
 
         self.env.Program('pingus', ['src/main.cpp', libpingus])
 
+        # build test and utils
         if self.env.has_key('BUILD') and self.env['BUILD'] == 'development':
             for filename in Glob("test/*_test.cpp", strings=True):
                 self.env.Program(filename[:-4], [filename, libpingus])
             for filename in Glob("test/*_util.cpp", strings=True):
                 self.env.Program(filename[:-4], [filename, libpingus])                
 
-        for filename in Glob("extra/*.cpp", strings=True):
-            self.env.Program(filename[:-4], [filename, libpingus])
+        # build extra stuff
+        if self.env.has_key('BUILD') and self.env['BUILD'] == 'development':
+            for filename in Glob("extra/*.cpp", strings=True):
+                self.env.Program(filename[:-4], [filename, libpingus])
 
 project = Project()
 project.configure()
