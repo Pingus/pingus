@@ -148,12 +148,12 @@ class Project:
         if not self.env['with_opengl']:
             self.reports += "  * OpenGL support: disabled\n"
         else:
+            self.reports += "  * OpenGL support: enabled\n"           
             self.conf.env.Append(optional_sources = ['src/engine/display/opengl/opengl_framebuffer_surface_impl.cpp', 
                                                      'src/engine/display/opengl/opengl_framebuffer.cpp' ])
             if sys.platform == "darwin":
                 self.conf.env.Append(LINKFLAGS = [ '-framework', 'OpenGL' ])
             else:
-                self.reports += "  * OpenGL support: enabled\n"
                 self.conf.env.Append(CPPDEFINES = [('HAVE_OPENGL', 1)])
                 self.conf.env.Append(LIBS = ['GL'])
 
@@ -196,8 +196,11 @@ class Project:
                 self.fatal_error += "  * library 'boost_signals' not found\n"
 
     def configure_png(self):
-        if not self.conf.CheckLibWithHeader('png', 'png.h', 'c++'):
-            self.fatal_error += "  * library 'png' not found\n"
+        if self.conf.CheckMyProgram('pkg-config'):
+            self.conf.env.ParseConfig("pkg-config  --cflags --libs libpng | sed 's/-I/-isystem/g'")
+        else:
+            if not self.conf.CheckLibWithHeader('png', 'png.h', 'c++'):
+                self.fatal_error += "  * library 'png' not found\n"
 
     def configure_sdl(self):
         if self.conf.CheckMyProgram('sdl-config'):
