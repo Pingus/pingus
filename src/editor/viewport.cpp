@@ -373,6 +373,32 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
         move_objects(Vector2i(1,0));
       }
       break;
+
+    case SDLK_EQUALS:
+    case SDLK_PLUS:
+      for (auto it = selection.begin(); it != selection.end(); ++it)
+      {
+        if ((*it)->get_attribs() & HAS_REPEAT)
+        {
+          (*it)->set_repeat((*it)->get_repeat() + 1);
+        }
+      }
+      selection_changed(selection);
+      break;
+
+    case SDLK_MINUS:
+      for (auto it = selection.begin(); it != selection.end(); ++it)
+      {
+        if ((*it)->get_attribs() & HAS_REPEAT)
+        {
+          if ((*it)->get_repeat() > 1)
+          {
+            (*it)->set_repeat((*it)->get_repeat() - 1);
+          }
+        }
+      }
+      selection_changed(selection);
+      break;
       
     default:
       log_debug("Viewport::on_key_pressed: " << ev.keysym.sym 
