@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_RESOURCE_MANAGER_HPP
 
 #include <map>
+#include <set>
 #include <memory>
 #include <string>
 #include <vector>
@@ -33,8 +34,8 @@ public:
   typedef std::map<std::string, std::string> Aliases;
 
 private:
-  Resources resources; // FIXME: obsolete
-  std::vector<std::string> m_resources;
+  Resources resources;
+  std::set<std::string> m_resources;
   Aliases aliases;
 
 public:
