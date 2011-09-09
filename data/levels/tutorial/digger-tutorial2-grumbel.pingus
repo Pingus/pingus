@@ -1,5 +1,5 @@
 (pingus-level 
-  (version 2)
+  (version 3)
   (head 
     (license "GPLv3+")
     (levelname "Learning to dig")
@@ -8,7 +8,6 @@
     (number-of-pingus 10)
     (number-to-save 5)
     (time -1)
-    (difficulty 0)
     (playable 1)
     (music "pingus-7.it")
     (actions 
@@ -20,7 +19,7 @@
         (image "textures/clouds2")
         (modifier "ROT0"))
       (position 554 365 -150)
-      (color 0.0901961 0 0 0.294118)
+      (colori 23 0 0 75)
       (stretch-x #f)
       (stretch-y #f)
       (keep-aspect #f)
