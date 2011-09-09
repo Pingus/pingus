@@ -38,7 +38,6 @@
 #include "pingus/worldobjs/switch_door.hpp"
 #include "pingus/worldobjs/teleporter.hpp"
 #include "pingus/worldobjs/teleporter_target.hpp"
-#include "pingus/worldobjs/thunderstorm_background.hpp"
 #include "pingus/worldobjs/woodthing.hpp"
 #include "util/log.hpp"
 
@@ -120,7 +119,6 @@ WorldObjFactory::instance()
     new WorldObjFactoryImpl<SurfaceBackground>("surface-background");
     new WorldObjFactoryImpl<StarfieldBackground>("starfield-background");
     new WorldObjFactoryImpl<SolidColorBackground>("solidcolor-background");
-    new WorldObjFactoryImpl<ThunderstormBackground>("thunderstorm-background");
 
     // Weather
     new WorldObjFactoryImpl<SnowGenerator>("snow-generator");
