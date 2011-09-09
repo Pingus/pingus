@@ -134,7 +134,7 @@ bool EditorLevel::save_level(const std::string& filename)
         
   // Write header
   fw.begin_section("pingus-level");
-  fw.write_int("version", 2);
+  fw.write_int("version", 3);
   fw.begin_section("head");
   fw.write_string("license", "GPLv3+");
   fw.write_string("levelname", impl->levelname);
@@ -253,7 +253,8 @@ void EditorLevel::load_level(const Pathname& pathname)
     }
     if (attribs & HAS_REPEAT)
     {
-      i->read_int("repeat", tmp_int);
+      if (!i->read_int("repeat", tmp_int))
+        i->read_int("width", tmp_int);
       obj->set_repeat(tmp_int);
     }
     if (attribs & HAS_PARALLAX)

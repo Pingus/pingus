@@ -313,6 +313,21 @@ struct TeleporterTarget : public ObjectSelectorList::Object
   }
 };
 
+struct IceBlock : public ObjectSelectorList::Object
+{
+  IceBlock() :
+    Object(Sprite("worldobjs/iceblock"),
+           Resource::load_thumb_sprite("worldobjs/iceblock"))
+  {}
+  
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
+    LevelObj* obj = new LevelObj("iceblock", impl);
+    obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
+    obj->set_repeat(1);
+    return obj;
+  }
+};
+
 class ObjectSelectorButton : public GUI::RectComponent
 {
 private:
@@ -660,6 +675,7 @@ ObjectSelector::create_worldobj()
   ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
   set->add(new Teleporter);
   set->add(new TeleporterTarget);
+  set->add(new IceBlock);
   return set;
 }
 

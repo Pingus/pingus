@@ -32,8 +32,11 @@ IceBlock::IceBlock(const FileReader& reader) :
   block_sur("worldobjs/iceblock"),
   block_sur_cmap("worldobjs/iceblock_cmap")
 {
+  // for backward compatibility
+  reader.read_int   ("width",    width); 
+
   reader.read_vector("position", pos);
-  reader.read_int   ("width",    width);
+  reader.read_int   ("repeat",    width);
 }
 
 void

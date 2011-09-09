@@ -123,8 +123,6 @@ LevelObj::get_attributes(std::string obj_type)
     return HAS_SPRITE_FAKE;
   else if (obj_type == "laser_exit")
     return HAS_SPRITE_FAKE;
-  else if (obj_type == "iceblock")
-    return HAS_SPRITE_FAKE;
   else if (obj_type == "hammer")
     return HAS_SPRITE_FAKE;
   else if (obj_type == "teleporter")
@@ -135,6 +133,8 @@ LevelObj::get_attributes(std::string obj_type)
     return HAS_SPRITE_FAKE;
   else if (obj_type == "guillotine")
     return HAS_SPRITE_FAKE;
+  else if (obj_type == "iceblock")
+    return HAS_SPRITE_FAKE | HAS_REPEAT;
   else
   {
     std::ostringstream out;
@@ -392,12 +392,6 @@ LevelObj::load_generic_surface()
     desc.modifier = ResourceModifier::ROT0;
     sprite = Sprite(desc);
   }
-  else if (section_name == "iceblock")
-  {
-    desc.res_name = "traps/iceblock";
-    desc.modifier = ResourceModifier::ROT0;
-    sprite = Sprite(desc);
-  }
   else if (section_name == "hammer")
   {
     desc.res_name = "traps/hammer";
@@ -425,6 +419,12 @@ LevelObj::load_generic_surface()
   else if (section_name == "guillotine")
   {
     desc.res_name = "traps/guillotineidle";
+    desc.modifier = ResourceModifier::ROT0;
+    sprite = Sprite(desc);
+  }
+  else if (section_name == "iceblock")
+  {
+    desc.res_name = "worldobjs/iceblock";    
     desc.modifier = ResourceModifier::ROT0;
     sprite = Sprite(desc);
   }
