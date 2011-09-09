@@ -33,6 +33,17 @@
     </pingus-level>
   </xsl:template>
 
+  <xsl:template match="/pingus-level/global/time/text()">
+    <xsl:choose>
+      <xsl:when test=".='9000'">
+        <xsl:text>-1</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+      <xsl:value-of select="." />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <xsl:template match="/pingus-level/global/levelname">
     <xsl:choose>
       <xsl:when test="@lang='en'">
