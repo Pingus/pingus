@@ -52,8 +52,6 @@
         (image "groundpieces/bridge/misc/bridge_right")
         (modifier "ROT0"))
       (position 255 141 0))
-    (thunderstorm-background 
-     )
     (groundpiece 
       (type "solid")
       (surface 
