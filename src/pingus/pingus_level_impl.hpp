@@ -39,7 +39,7 @@ public:
     actions(),
     time(0), 
     author(),
-    music("none"),
+    music(),
     objects()
   {}
                     

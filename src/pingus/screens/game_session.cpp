@@ -338,7 +338,8 @@ GameSession::on_startup ()
   if (globals::maintainer_mode)
     log_info("Starting Music: " << server->get_plf().get_music());
 
-  if (server->get_plf().get_music() == "none")
+  if (server->get_plf().get_music() == "none" || 
+      server->get_plf().get_music().empty())
   {
     Sound::PingusSound::stop_music();
   }
