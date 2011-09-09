@@ -124,7 +124,14 @@
 
   <xsl:template match="action-list/*">
     <xsl:element name="{name()}">
-      <xsl:value-of select="@count"/>
+        <xsl:choose>
+          <xsl:when test="@count">
+            <xsl:value-of select="@count"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="text()"/>
+          </xsl:otherwise>
+        </xsl:choose>
     </xsl:element>
   </xsl:template>
 

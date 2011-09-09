@@ -14,15 +14,15 @@ if [ ! \( -d "data/levels" \) ]; then
 fi
 
 for IN in "$@"; do
-    PREFIX=$(echo $IN | sed "s/\(.*\)data\/levels\/.*/\1/")
     TMP=$(tempfile)
-    OUT="${IN##${PREFIX}}"
+    OUT="${IN}"
     OUT="${OUT%%.xml}"
     OUT="${OUT%%.plf}"    
     OUT="${OUT}.pingus"
     # echo "Prefix: $PREFIX"
     echo "IN:     $IN"
     echo "OUT:    $OUT"
+    echo "TMP:    $TMP"
     if true; then
         xsltproc \
             -o "$TMP" \
@@ -37,7 +37,7 @@ for IN in "$@"; do
             -out "$TMP"
         tools/xml2sexpr.rb "$TMP" "$IN" > "${OUT}"
     fi
-    rm "$TMP"
+    # rm "$TMP"
     echo "Conversion ok"
     echo ""
 done
