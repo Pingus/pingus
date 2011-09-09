@@ -406,19 +406,30 @@ System::get_language()
 #else
   char* lang_c = setlocale(LC_MESSAGES, NULL);
 #endif
-
   std::string lang;
 
   if (lang_c)
+  {
     lang = lang_c;
+  }
 
   if (lang.empty() || lang == "C")
-    lang = getenv("LANG");
+  {
+    lang_c = getenv("LANG");
+    if (lang_c)
+    {
+      lang = lang_c;
+    }
+  }
 
   if (lang.empty() || lang == "C")
+  {
     return globals::default_language;
+  }
   else
+  {
     return lang.substr(0, 2);
+  }
 }
 
 std::string
