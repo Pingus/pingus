@@ -30,7 +30,7 @@ public:
   PingusMain();
   virtual ~PingusMain();
 
-  virtual int main(int argc, char** argv);
+  virtual int run(int argc, char** argv);
 
   void on_exit_press();
 private:

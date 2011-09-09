@@ -19,7 +19,7 @@
 int main(int argc, char** argv)
 {
   PingusMain app;
-  return app.main(argc, argv);
+  return app.run(argc, argv);
 }
 
 /* EOF */
