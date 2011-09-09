@@ -17,13 +17,7 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_OPENGL_OPENGL_FRAMEBUFFER_SURFACE_IMPL_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_OPENGL_OPENGL_FRAMEBUFFER_SURFACE_IMPL_HPP
 
-#if defined(_WIN32)
-#define WIN32_LEAN_AND_MEAN
-#define NOMINMAX        /* Don't defined min() and max() */
-#elif defined(MACOSX)
-#else
-#include <GL/gl.h>
-#endif
+#include <SDL_opengl.h>
 
 #include "engine/display/framebuffer_surface.hpp"
 
