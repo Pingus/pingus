@@ -52,6 +52,8 @@ LevelObj::LevelObj(std::string obj_name, LevelImpl* level_) :
   small_stars(),
   middle_stars(),
   large_stars(),
+  id(),
+  target_id(),
   attribs(get_attributes(obj_name)),
   removed(false)
 {
@@ -86,6 +88,8 @@ LevelObj::LevelObj(const LevelObj& rhs) :
   small_stars(rhs.small_stars),
   middle_stars(rhs.middle_stars),
   large_stars(rhs.large_stars),
+  id(rhs.id),
+  target_id(rhs.target_id),
   attribs(rhs.attribs),
   removed(rhs.removed)
 {}
@@ -109,6 +113,28 @@ LevelObj::get_attributes(std::string obj_type)
     return HAS_TYPE | HAS_DIRECTION | HAS_RELEASE_RATE | HAS_OWNER | HAS_SPRITE_FAKE;
   else if (obj_type == "exit")
     return HAS_OWNER | HAS_SPRITE;
+  else if (obj_type == "spike")
+    return HAS_SPRITE_FAKE;
+  else if (obj_type == "snow-generator" || obj_type == "snow")
+    return HAS_SPRITE_FAKE;
+  else if (obj_type == "rain-generator" || obj_type == "rain")
+    return HAS_SPRITE_FAKE;
+  else if (obj_type == "smasher")
+    return HAS_SPRITE_FAKE;
+  else if (obj_type == "laser_exit")
+    return HAS_SPRITE_FAKE;
+  else if (obj_type == "iceblock")
+    return HAS_SPRITE_FAKE;
+  else if (obj_type == "hammer")
+    return HAS_SPRITE_FAKE;
+  else if (obj_type == "teleporter")
+    return HAS_SPRITE_FAKE | HAS_TARGET_ID;
+  else if (obj_type == "teleporter-target")
+    return HAS_SPRITE_FAKE | HAS_ID;
+  else if (obj_type == "fake_exit")
+    return HAS_SPRITE_FAKE;
+  else if (obj_type == "guillotine")
+    return HAS_SPRITE_FAKE;
   else
   {
     std::ostringstream out;
@@ -299,6 +325,16 @@ LevelObj::write_properties(FileWriter &fw)
     fw.write_int("large-stars", large_stars);
   }
 
+  if (attribs_ & HAS_ID)
+  {
+    fw.write_string("id", id);
+  }
+
+  if (attribs_ & HAS_TARGET_ID)
+  {
+    fw.write_string("target-id", target_id);
+  }
+
   // Writes any extra properties that may be necessary (virtual function)
   write_extra_properties(fw);
       
@@ -323,6 +359,72 @@ LevelObj::load_generic_surface()
   else if (section_name == "starfield-background")
   {
     desc.res_name = "core/editor/starfield";
+    desc.modifier = ResourceModifier::ROT0;
+    sprite = Sprite(desc);
+  }
+  else if (section_name == "spike")
+  {
+    desc.res_name = "traps/spike";
+    desc.modifier = ResourceModifier::ROT0;
+    sprite = Sprite(desc);
+  }
+  else if (section_name == "snow-generator" || section_name == "snow")
+  {
+    desc.res_name = "core/editor/weather_snow";
+    desc.modifier = ResourceModifier::ROT0;
+    sprite = Sprite(desc);
+  }
+  else if (section_name == "rain-generator" || section_name == "rain")
+  {
+    desc.res_name = "core/editor/weather_rain";
+    desc.modifier = ResourceModifier::ROT0;
+    sprite = Sprite(desc);
+  }
+  else if (section_name == "smasher")
+  {
+    desc.res_name = "traps/smasher";
+    desc.modifier = ResourceModifier::ROT0;
+    sprite = Sprite(desc);
+  }
+  else if (section_name == "laser_exit")
+  {
+    desc.res_name = "traps/laser_exit";
+    desc.modifier = ResourceModifier::ROT0;
+    sprite = Sprite(desc);
+  }
+  else if (section_name == "iceblock")
+  {
+    desc.res_name = "traps/iceblock";
+    desc.modifier = ResourceModifier::ROT0;
+    sprite = Sprite(desc);
+  }
+  else if (section_name == "hammer")
+  {
+    desc.res_name = "traps/hammer";
+    desc.modifier = ResourceModifier::ROT0;
+    sprite = Sprite(desc);
+  }
+  else if (section_name == "teleporter")
+  {
+    desc.res_name = "worldobjs/teleporter";
+    desc.modifier = ResourceModifier::ROT0;
+    sprite = Sprite(desc);
+  }
+  else if (section_name == "teleporter-target")
+  {
+    desc.res_name = "worldobjs/teleportertarget";
+    desc.modifier = ResourceModifier::ROT0;
+    sprite = Sprite(desc);
+  }
+  else if (section_name == "fake_exit")
+  {
+    desc.res_name = "traps/fake_exit";
+    desc.modifier = ResourceModifier::ROT0;
+    sprite = Sprite(desc);
+  }
+  else if (section_name == "guillotine")
+  {
+    desc.res_name = "traps/guillotineidle";
     desc.modifier = ResourceModifier::ROT0;
     sprite = Sprite(desc);
   }

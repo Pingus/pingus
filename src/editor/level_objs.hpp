@@ -33,7 +33,7 @@ class LevelImpl;
 const unsigned HAS_TYPE =         1 << 0;
 const unsigned HAS_SPEED =        1 << 1;
 const unsigned HAS_PARALLAX =     1 << 2;
-const unsigned HAS_REPEAT =        1 << 3;
+const unsigned HAS_REPEAT =       1 << 3;
 const unsigned HAS_OWNER =        1 << 4;
 const unsigned HAS_COLOR =        1 << 5;
 const unsigned HAS_SCROLL =       1 << 6;
@@ -41,12 +41,14 @@ const unsigned HAS_PARA =         1 << 7;
 const unsigned HAS_STRETCH =      1 << 8;
 const unsigned HAS_DIRECTION =    1 << 9;
 const unsigned HAS_RELEASE_RATE = 1 << 10;
-const unsigned HAS_SPRITE =      1 << 11;
+const unsigned HAS_SPRITE =       1 << 11;
 // HAS_SPRITE_FAKE means it has a generic image in the editor, but isn't saved.
-const unsigned HAS_SPRITE_FAKE = 1 << 12;
+const unsigned HAS_SPRITE_FAKE =  1 << 12;
 const unsigned CAN_ROTATE =       1 << 13;
 const unsigned HAS_GPTYPE =       1 << 14;
 const unsigned HAS_STARFIELD =    1 << 15;
+const unsigned HAS_ID =           1 << 16;
+const unsigned HAS_TARGET_ID =    1 << 17;
 
 /** Generic Level Object (groundpiece, sign, etc.)  Only special objects will have
     to inherit from this class - most objects will be able to use this class alone */
@@ -125,6 +127,9 @@ protected:
   int middle_stars;
   int large_stars;
 
+  std::string id;
+  std::string target_id;
+
   /** Number representing which attributes this object possesses */
   unsigned attribs;
 
@@ -194,6 +199,9 @@ public:
   /** Retrieve the object's direction */
   std::string get_direction() { return direction; }
 
+  std::string get_id() const { return id; }
+  std::string get_target_id() const { return target_id; }
+
   /////////////////////////////////////////////////////////
   /// Operations
 public:
@@ -245,7 +253,7 @@ public:
   void set_repeat(const int w) { repeat = w; }
 
   /** Set the object's owner_id */
-  void set_owner(const int id) { owner_id = id; }
+  void set_owner(const int owner) { owner_id = owner; }
 
   /** Set the object's scroll rate in the x direction */
   void set_scroll_x(const float s) { scroll_x = s; }
@@ -274,6 +282,10 @@ public:
 
   /** Set the object's direction if applicable */
   void set_direction(const std::string d) { direction = d; }
+
+  void set_id(const std::string& t) { id = t; }
+  void set_target_id(const std::string& t) { target_id = t; }
+
 
   /** Soft delete of the object (needed for Undo action) */
   void remove() { removed = true; }

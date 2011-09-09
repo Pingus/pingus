@@ -304,6 +304,16 @@ void EditorLevel::load_level(const Pathname& pathname)
       i->read_int("release-rate", tmp_int);
       obj->set_release_rate(tmp_int);
     }
+    if (attribs & HAS_ID)
+    {
+      i->read_string("id", tmp_str);
+      obj->set_id(tmp_str);
+    }
+    if (attribs & HAS_TARGET_ID)
+    {
+      i->read_string("target-id", tmp_str);
+      obj->set_target_id(tmp_str);
+    }
 
     add_object(obj);
   }
