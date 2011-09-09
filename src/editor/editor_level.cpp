@@ -143,8 +143,6 @@ bool EditorLevel::save_level(const std::string& filename)
   fw.write_int("number-of-pingus", impl->number_of_pingus);
   fw.write_int("number-to-save", impl->number_to_save);
   fw.write_int("time", impl->time);
-  // FIXME: Allow user to decide if level is playable or not
-  fw.write_int("playable", 1);
   fw.write_string("music", impl->music);
         
   // Write the list of actions to the file
