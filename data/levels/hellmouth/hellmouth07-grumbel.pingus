@@ -8,7 +8,7 @@
     (number-of-pingus 50)
     (number-to-save 40)
     (time -1)
-    (music "none")
+    (music "")
     (actions 
       (basher 3)
       (blocker 5)
@@ -289,49 +289,49 @@
       (surface 
         (image "groundpieces/transparent/misc/moos1")
         (modifier "ROT0"))
-      (position 1035 431 0))
+      (position 1035 436 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/misc/moos1")
         (modifier "ROT0"))
-      (position 911 431 0))
+      (position 911 436 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/misc/moos1")
         (modifier "ROT0"))
-      (position 971 430 0))
+      (position 971 436 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/misc/moos1")
         (modifier "ROT0"))
-      (position 846 433 0))
+      (position 846 436 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/misc/moos1")
         (modifier "ROT0"))
-      (position 1103 432 0))
+      (position 1103 436 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/misc/moos1")
         (modifier "ROT0"))
-      (position 1167 432 0))
+      (position 1167 436 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/misc/moos1")
         (modifier "ROT0"))
-      (position 780 433 0))
+      (position 780 436 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/misc/moos1")
         (modifier "ROT0"))
-      (position 716 432 0))
+      (position 716 436 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -398,6 +398,48 @@
         (image "groundpieces/ground/misc/stone6")
         (modifier "ROT0"))
       (position 989 1104 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos1")
+        (modifier "ROT0"))
+      (position 1233 688 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos1")
+        (modifier "ROT0"))
+      (position 676 689 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos6")
+        (modifier "ROT0"))
+      (position 1266 688 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos6")
+        (modifier "ROT0"))
+      (position 647 694 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos6")
+        (modifier "ROT0"))
+      (position 912 691 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos6")
+        (modifier "ROT0"))
+      (position 982 690 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos6")
+        (modifier "ROT0"))
+      (position 952 691 0))
     (liquid 
       (surface 
         (image "liquids/slime")

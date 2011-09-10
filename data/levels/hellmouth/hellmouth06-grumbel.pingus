@@ -8,7 +8,7 @@
     (number-of-pingus 40)
     (number-to-save 30)
     (time -1)
-    (music "none")
+    (music "")
     (actions 
       (basher 5)
       (blocker 5)
