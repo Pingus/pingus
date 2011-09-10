@@ -20,6 +20,7 @@
 #include <algorithm>
 
 #include "editor/level_objs.hpp"
+#include "editor/generic_level_obj.hpp"
 #include "editor/level_impl.hpp"
 #include "pingus/pingus_level.hpp"
 #include "util/log.hpp"
@@ -192,7 +193,7 @@ void EditorLevel::load_level(const Pathname& pathname)
   for (std::vector<FileReader>::const_iterator i = objs.begin(); i != objs.end(); i++)
   {
     // Create new object
-    LevelObj* obj = new LevelObj(i->get_name(), impl.get());
+    LevelObj* obj = new GenericLevelObj(i->get_name(), impl.get());
     attribs = obj->get_attribs();
 
     // All objects have a position - get that.
