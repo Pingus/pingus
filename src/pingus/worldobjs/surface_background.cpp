@@ -57,53 +57,62 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader) :
 
   reader.read_bool("keep-aspect", keep_aspect);
 
-  Surface surface = Resource::load_surface(desc);
-  
-  if (color.a != 0 && surface.is_indexed())
+  if (!stretch_x && !stretch_y && color.a == 0)
   {
-    if (surface.has_colorkey())
-    {
-      surface = surface.convert_to_rgba();
-    }
-    else
-    {
-      surface = surface.convert_to_rgb();
-    }
+    // FIXME: would be nice to allow surface manipulation with
+    // animated sprites, but it's not that easy to do
+    bg_sprite = Sprite(desc);
   }
+  else
+  {
+    Surface surface = Resource::load_surface(desc);
 
-  surface.fill(color);
+    if (color.a != 0 && surface.is_indexed())
+    {
+      if (surface.has_colorkey())
+      {
+        surface = surface.convert_to_rgba();
+      }
+      else
+      {
+        surface = surface.convert_to_rgb();
+      }
+    }
 
-  // Scaling Code
-  if (stretch_x && stretch_y)
-  {
-    surface = surface.scale(world->get_width(), world->get_height());
-  }
-  else if (stretch_x && !stretch_y)
-  {
-    if (keep_aspect)
-    {
-      float aspect = static_cast<float>(surface.get_height()) / static_cast<float>(surface.get_width());
-      surface = surface.scale(world->get_width(), static_cast<int>(static_cast<float>(world->get_width()) * aspect));
-    }
-    else
-    {
-      surface = surface.scale(world->get_width(), surface.get_height());
-    }
-  }
-  else if (!stretch_x && stretch_y)
-  {
-    if (keep_aspect)
-    {
-      float aspect = static_cast<float>(surface.get_width()) / static_cast<float>(surface.get_height());
-      surface = surface.scale(static_cast<int>(static_cast<float>(world->get_height()) * aspect), world->get_height());
-    }
-    else
-    {
-      surface = surface.scale(surface.get_width(), world->get_height());
-    }
-  }
+    surface.fill(color);
 
-  bg_sprite = Sprite(surface);
+    // Scaling Code
+    if (stretch_x && stretch_y)
+    {
+      surface = surface.scale(world->get_width(), world->get_height());
+    }
+    else if (stretch_x && !stretch_y)
+    {
+      if (keep_aspect)
+      {
+        float aspect = static_cast<float>(surface.get_height()) / static_cast<float>(surface.get_width());
+        surface = surface.scale(world->get_width(), static_cast<int>(static_cast<float>(world->get_width()) * aspect));
+      }
+      else
+      {
+        surface = surface.scale(world->get_width(), surface.get_height());
+      }
+    }
+    else if (!stretch_x && stretch_y)
+    {
+      if (keep_aspect)
+      {
+        float aspect = static_cast<float>(surface.get_width()) / static_cast<float>(surface.get_height());
+        surface = surface.scale(static_cast<int>(static_cast<float>(world->get_height()) * aspect), world->get_height());
+      }
+      else
+      {
+        surface = surface.scale(surface.get_width(), world->get_height());
+      }
+    }
+
+    bg_sprite = Sprite(surface);
+  }
 }
 
 float
@@ -115,6 +124,8 @@ SurfaceBackground::get_z_pos () const
 void
 SurfaceBackground::update()
 {
+  bg_sprite.update();
+
   if (!bg_sprite || globals::static_graphics)
     return;
 
