@@ -343,6 +343,38 @@ struct Conveyorbelt : public ObjectSelectorList::Object
   }
 };
 
+struct SwitchDoorSwitch : public ObjectSelectorList::Object
+{
+  SwitchDoorSwitch() :
+    Object(Sprite("worldobjs/switchdoor_switch"),
+           Resource::load_thumb_sprite("worldobjs/switchdoor_switch"))
+  {}
+  
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
+    LevelObj* obj = new LevelObj("switchdoor-switch", impl);
+    obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
+    obj->set_repeat(1);
+    obj->set_target_id("");
+    return obj;
+  }
+};
+
+struct SwitchDoorDoor : public ObjectSelectorList::Object
+{
+  SwitchDoorDoor() :
+    Object(Sprite("worldobjs/switchdoor_box"),
+           Resource::load_thumb_sprite("worldobjs/switchdoor_box"))
+  {}
+  
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
+    LevelObj* obj = new LevelObj("switchdoor-door", impl);
+    obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
+    obj->set_repeat(1);
+    obj->set_id("id" + StringUtil::to_string(rand()));
+    return obj;
+  }
+};
+
 class ObjectSelectorButton : public GUI::RectComponent
 {
 private:
@@ -692,6 +724,8 @@ ObjectSelector::create_worldobj()
   set->add(new TeleporterTarget);
   set->add(new IceBlock);
   set->add(new Conveyorbelt);
+  set->add(new SwitchDoorDoor);
+  set->add(new SwitchDoorSwitch);
   return set;
 }
 

@@ -137,6 +137,10 @@ LevelObj::get_attributes(std::string obj_type)
     return HAS_SPRITE_FAKE | HAS_REPEAT;
   else if (obj_type == "conveyorbelt")
     return HAS_SPRITE_FAKE | HAS_REPEAT | HAS_SPEED;
+  else if (obj_type == "switchdoor-door")
+    return HAS_SPRITE_FAKE | HAS_ID; // FIXME: no height handling
+  else if (obj_type == "switchdoor-switch")
+    return HAS_SPRITE_FAKE | HAS_TARGET_ID;
   else
   {
     std::ostringstream out;
@@ -433,6 +437,18 @@ LevelObj::load_generic_surface()
   else if (section_name == "conveyorbelt")
   {
     desc.res_name = "worldobjs/conveyorbelt_middle";    
+    desc.modifier = ResourceModifier::ROT0;
+    sprite = Sprite(desc);
+  }
+  else if (section_name == "switchdoor-door")
+  {
+    desc.res_name = "worldobjs/switchdoor_box";
+    desc.modifier = ResourceModifier::ROT0;
+    sprite = Sprite(desc);   
+  }
+  else if (section_name == "switchdoor-switch")
+  {
+    desc.res_name = "worldobjs/switchdoor_switch";
     desc.modifier = ResourceModifier::ROT0;
     sprite = Sprite(desc);
   }
