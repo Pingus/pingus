@@ -58,6 +58,18 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader) :
   reader.read_bool("keep-aspect", keep_aspect);
 
   Surface surface = Resource::load_surface(desc);
+  
+  if (color.a != 0 && surface.is_indexed())
+  {
+    if (surface.has_colorkey())
+    {
+      surface = surface.convert_to_rgba();
+    }
+    else
+    {
+      surface = surface.convert_to_rgb();
+    }
+  }
 
   surface.fill(color);
 
