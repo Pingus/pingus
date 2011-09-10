@@ -20,6 +20,7 @@
 #include <algorithm>
 
 #include "editor/level_objs.hpp"
+#include "editor/level_obj_factory.hpp"
 #include "editor/generic_level_obj.hpp"
 #include "editor/level_impl.hpp"
 #include "pingus/pingus_level.hpp"
@@ -178,139 +179,15 @@ void EditorLevel::load_level(const Pathname& pathname)
   if (impl->music == "none")
     impl->music = "";
 
-  // Temporary objects
-  unsigned attribs;
-  Vector3f p;
-  Color    tmp_color;
-  ResDescriptor desc;
-  std::string   tmp_str;
-  int   tmp_int;
-  float tmp_float;
-  bool  tmp_bool;
-
   // Get the objects
   std::vector<FileReader> objs = level.get_objects();
   for (std::vector<FileReader>::const_iterator i = objs.begin(); i != objs.end(); i++)
   {
-    // Create new object
-    LevelObj* obj = new GenericLevelObj(i->get_name(), impl.get());
-    attribs = obj->get_attribs();
-
-    // All objects have a position - get that.
-    if (!i->read_vector("position", p))
-    { // Workaround for lack of position for background
-      if (i->get_name() == "surface-background")
-        p = Vector3f(0.f, 0.f, -150.f);
-    }
-
-    obj->set_orig_pos(p);
-    obj->set_pos(p);
-
-    // Get optional attributes based on the attribs value
-    if (attribs & HAS_SPRITE)
+    LevelObj* obj = LevelObjFactory::create(*i, impl.get());
+    if (obj)
     {
-      i->read_desc("surface", desc);
-      obj->set_res_desc(desc);
+      add_object(obj);
     }
-    if (attribs & HAS_TYPE)
-    {   
-      i->read_string("type", tmp_str);
-      obj->set_type(tmp_str);
-    }
-    if (attribs & HAS_GPTYPE)
-    {   
-      i->read_string("type", tmp_str);
-      obj->set_ground_type(tmp_str);
-    }
-    if (attribs & HAS_SPEED)
-    {
-      i->read_int("speed", tmp_int);
-      obj->set_speed(tmp_int);
-    }
-    if (attribs & HAS_REPEAT)
-    {
-      if (!i->read_int("repeat", tmp_int))
-        i->read_int("width", tmp_int);
-      obj->set_repeat(tmp_int);
-    }
-    if (attribs & HAS_PARALLAX)
-    {
-      i->read_float("parallax", tmp_float);
-      obj->set_parallax(tmp_float);
-    }
-    if (attribs & HAS_OWNER)
-    {
-      i->read_int("owner-id", tmp_int);
-      obj->set_owner(tmp_int);
-    }
-    if (attribs & HAS_DIRECTION)
-    {
-      i->read_string("direction", tmp_str);
-      obj->set_direction(tmp_str);
-    }
-    if (attribs & HAS_COLOR)
-    {
-      if (!i->read_colori("colori", tmp_color))
-        i->read_colorf("color", tmp_color);
-      obj->set_color(tmp_color);
-    }
-    if (attribs & HAS_SCROLL)
-    {
-      i->read_float("scroll-x", tmp_float);
-      obj->set_scroll_x(tmp_float);
-      i->read_float("scroll-y", tmp_float);
-      obj->set_scroll_y(tmp_float);
-    }
-    if (attribs & HAS_STRETCH)
-    {
-      i->read_bool("stretch-x", tmp_bool);
-      obj->set_stretch_x(tmp_bool);
-      i->read_bool("stretch-y", tmp_bool);
-      obj->set_stretch_y(tmp_bool);
-      i->read_bool("keep-aspect", tmp_bool);
-      obj->set_keep_aspect(tmp_bool);
-    }
-    if (attribs & HAS_PARA)
-    {
-      i->read_float("para-x", tmp_float);
-      obj->set_para_x(tmp_float);
-      i->read_float("para-y", tmp_float);
-      obj->set_para_y(tmp_float);
-    }
-    if (attribs & HAS_RELEASE_RATE)
-    {
-      i->read_int("release-rate", tmp_int);
-      obj->set_release_rate(tmp_int);
-    }
-    if (attribs & HAS_ID)
-    {
-      i->read_string("id", tmp_str);
-      obj->set_id(tmp_str);
-    }
-    if (attribs & HAS_TARGET_ID)
-    {
-      i->read_string("target-id", tmp_str);
-      obj->set_target_id(tmp_str);
-    }
-
-    if (attribs & HAS_STARFIELD)
-    {
-      i->read_int("small-stars", tmp_int);
-      obj->set_small_stars(tmp_int);
-
-      i->read_int("middle-stars", tmp_int);
-      obj->set_middle_stars(tmp_int);
-
-      i->read_int("large-stars", tmp_int);
-      obj->set_large_stars(tmp_int);
-    }
-    if (attribs & HAS_HEIGHT)
-    {
-      i->read_int("height", tmp_int);
-      obj->set_repeat(tmp_int);
-    }
-
-    add_object(obj);
   }
 
   sort();
