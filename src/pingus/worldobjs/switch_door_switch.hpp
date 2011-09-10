@@ -14,48 +14,31 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_PINGUS_WORLDOBJS_SWITCH_DOOR_HPP
-#define HEADER_PINGUS_PINGUS_WORLDOBJS_SWITCH_DOOR_HPP
+#ifndef HEADER_PINGUS_PINGUS_WORLDOBJS_SWITCH_DOOR_SWITCH_HPP
+#define HEADER_PINGUS_PINGUS_WORLDOBJS_SWITCH_DOOR_SWITCH_HPP
 
 #include "math/vector3f.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/worldobj.hpp"
 
-namespace WorldObjsData {
-class SwitchDoorData;
-} // namespace WorldObjsData
-
 namespace WorldObjs {
+
+class SwitchDoorDoor;
 
 /** A door and a switch, if a pingu is passing the switch, the door
     will open. */
-class SwitchDoor : public WorldObj
+class SwitchDoorSwitch : public WorldObj
 {
 private:
-  /// The upper/middle pos of the door
-  Vector3f door_pos;
-
   /// The bottom/middle pos of the switch
   Vector3f switch_pos;
-
-  // The height of the door in graphic tiles
-  int door_height;
-
-  Sprite door_box;
-  CollisionMask door_box_cmap;
-  Sprite door_tile;
-  CollisionMask door_tile_cmap;
   Sprite switch_sur;
-
-  /** True if the door is opening */
-  bool is_opening;
-
-  /** The current height of the door, it might decrease when the door
-      is opening, it will be zero when the door is fully opened */
-  int current_door_height;
+  std::string m_target;
+  bool is_triggered;
+  SwitchDoorDoor* m_door;
 
 public:
-  SwitchDoor(const FileReader& reader);
+  SwitchDoorSwitch(const FileReader& reader);
 
   void on_startup();
   void draw (SceneContext& gc);
@@ -65,8 +48,8 @@ public:
   float get_z_pos() const { return 100; }
 
 private:
-  SwitchDoor (const SwitchDoor&);
-  SwitchDoor& operator= (const SwitchDoor&);
+  SwitchDoorSwitch (const SwitchDoorSwitch&);
+  SwitchDoorSwitch& operator= (const SwitchDoorSwitch&);
 };
 
 } // namespace WorldObjs

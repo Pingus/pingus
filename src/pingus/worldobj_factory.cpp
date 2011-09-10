@@ -35,7 +35,8 @@
 #include "pingus/worldobjs/spike.hpp"
 #include "pingus/worldobjs/starfield_background.hpp"
 #include "pingus/worldobjs/surface_background.hpp"
-#include "pingus/worldobjs/switch_door.hpp"
+#include "pingus/worldobjs/switch_door_door.hpp"
+#include "pingus/worldobjs/switch_door_switch.hpp"
 #include "pingus/worldobjs/teleporter.hpp"
 #include "pingus/worldobjs/teleporter_target.hpp"
 #include "pingus/worldobjs/woodthing.hpp"
@@ -109,7 +110,8 @@ WorldObjFactory::instance()
     new WorldObjFactoryImpl<Spike>("spike");
 
     // Special Objects
-    new WorldObjFactoryImpl<SwitchDoor>("switchdoor");
+    new WorldObjFactoryImpl<SwitchDoorSwitch>("switchdoor-switch");
+    new WorldObjFactoryImpl<SwitchDoorDoor>("switchdoor-door");
     new WorldObjFactoryImpl<IceBlock>("iceblock");
     new WorldObjFactoryImpl<ConveyorBelt>("conveyorbelt");
     new WorldObjFactoryImpl<Teleporter>("teleporter");
