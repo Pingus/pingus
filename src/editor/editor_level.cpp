@@ -292,6 +292,18 @@ void EditorLevel::load_level(const Pathname& pathname)
       obj->set_target_id(tmp_str);
     }
 
+    if (attribs & HAS_STARFIELD)
+    {
+      i->read_int("small-stars", tmp_int);
+      obj->set_small_stars(tmp_int);
+
+      i->read_int("middle-stars", tmp_int);
+      obj->set_middle_stars(tmp_int);
+
+      i->read_int("large-stars", tmp_int);
+      obj->set_large_stars(tmp_int);
+    }
+
     add_object(obj);
   }
 
