@@ -56,7 +56,7 @@ public:
 
   virtual ~WorldObjAbstractFactory() {}
 
-  virtual WorldObj* create(const FileReader& reader) =0;
+  virtual std::vector<WorldObj*> create(const FileReader& reader) =0;
 
 private:
   WorldObjAbstractFactory (const WorldObjAbstractFactory&);
@@ -72,13 +72,47 @@ public:
   WorldObjFactoryImpl (const std::string& id)
     : WorldObjAbstractFactory (id) {}
 
-  WorldObj* create(const FileReader& reader) {
-    return new T(reader);
+  std::vector<WorldObj*> create(const FileReader& reader) {
+    std::vector<WorldObj*> lst;
+    lst.push_back(new T(reader));
+    return lst;
   }
 
 private:
   WorldObjFactoryImpl (const WorldObjFactoryImpl&);
   WorldObjFactoryImpl& operator= (const WorldObjFactoryImpl&);
+};
+
+class WorldObjGroupFactory : public WorldObjAbstractFactory
+{
+public:
+  WorldObjGroupFactory (const std::string& id) :
+    WorldObjAbstractFactory(id)
+  {}
+
+  virtual ~WorldObjGroupFactory() {}
+
+  virtual std::vector<WorldObj*> create(const FileReader& reader) {
+    std::vector<WorldObj*> group;
+    
+    const std::vector<FileReader>& sections = reader.get_sections();
+    for(auto it = sections.begin(); it != sections.end(); ++it)
+    {
+      std::vector<WorldObj*> objs = WorldObjFactory::instance()->create(*it);
+      for(auto obj = objs.begin(); obj != objs.end(); ++obj)
+      {
+        if (*obj)
+        {
+          group.push_back(*obj);
+        }
+      }
+    }
+    return group;
+  }
+
+private:
+  WorldObjGroupFactory (const WorldObjGroupFactory&);
+  WorldObjGroupFactory& operator= (const WorldObjGroupFactory&);
 };
 
 WorldObjFactory::WorldObjFactory() :
@@ -95,6 +129,8 @@ WorldObjFactory::instance()
     instance_ = new WorldObjFactory ();
 
     // Registring Factories
+    new WorldObjGroupFactory("group");
+
     new WorldObjFactoryImpl<Liquid>("liquid");
     new WorldObjFactoryImpl<Hotspot>("hotspot");
     new WorldObjFactoryImpl<Entrance>("entrance");
@@ -146,7 +182,7 @@ void WorldObjFactory::deinit()
   }
 }
 
-WorldObj*
+std::vector<WorldObj*>
 WorldObjFactory::create(const FileReader& reader)
 {
   std::map<std::string, WorldObjAbstractFactory*>::iterator it = factories.find(reader.get_name());
@@ -154,7 +190,7 @@ WorldObjFactory::create(const FileReader& reader)
   if (it == factories.end())
   {
     log_error("invalid id: '" << reader.get_name() << "'");
-    return 0;
+    return std::vector<WorldObj*>();
   }
   else
   {

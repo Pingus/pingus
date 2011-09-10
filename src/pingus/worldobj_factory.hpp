@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_WORLDOBJ_FACTORY_HPP
 
 #include <map>
+#include <vector>
 
 #include "util/file_reader.hpp"
 
@@ -46,7 +47,7 @@ public:
 
   /** Create a WorldObj type from a given piece of xml, use the
       'type' property for determinating the object type. */
-  WorldObj* create(const FileReader& reader);
+  std::vector<WorldObj*> create(const FileReader& reader);
 
 private:
   WorldObjFactory (const WorldObjFactory&);
