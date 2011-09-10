@@ -323,43 +323,50 @@ Surface::subsection(const Rect& rect) const
 void
 Surface::fill(const Color& color)
 {
-  if (impl->surface->format->BytesPerPixel == 4)
+  if (color.a == 0)
   {
-    SDL_LockSurface(impl->surface);
-    uint8_t* pixels = static_cast<uint8_t*>(impl->surface->pixels);
-    for(int y = 0; y < impl->surface->h; ++y)
-    {
-      for(int x = 0; x < impl->surface->w; ++x)
-      {
-        uint8_t* p = pixels + y * impl->surface->pitch + 4*x;
-
-        p[0] = static_cast<uint8_t>(std::min(255, ((255 - color.a) * p[0] + color.a * color.r) / 255));
-        p[1] = static_cast<uint8_t>(std::min(255, ((255 - color.a) * p[1] + color.a * color.g) / 255));
-        p[2] = static_cast<uint8_t>(std::min(255, ((255 - color.a) * p[2] + color.a * color.b) / 255));
-      }
-    }
-    SDL_UnlockSurface(impl->surface);
-  }
-  else if (impl->surface->format->BytesPerPixel == 3)
-  {
-    SDL_LockSurface(impl->surface);
-    uint8_t* pixels = static_cast<uint8_t*>(impl->surface->pixels);
-    for(int y = 0; y < impl->surface->h; ++y)
-    {
-      for(int x = 0; x < impl->surface->w; ++x)
-      {
-        uint8_t* p = pixels + y * impl->surface->pitch + 3*x;
-
-        p[0] = static_cast<uint8_t>(std::min(255, ((255 - color.a) * p[0] + color.a * color.r) / 255));
-        p[1] = static_cast<uint8_t>(std::min(255, ((255 - color.a) * p[1] + color.a * color.g) / 255));
-        p[2] = static_cast<uint8_t>(std::min(255, ((255 - color.a) * p[2] + color.a * color.b) / 255));
-      }
-    }
-    SDL_UnlockSurface(impl->surface);
+    // fill wouldn't change the surface, so ignore it
   }
   else
   {
-    log_error("unsupported BytesPerPixel format: " << impl->surface->format->BytesPerPixel);
+    if (impl->surface->format->BytesPerPixel == 4)
+    {
+      SDL_LockSurface(impl->surface);
+      uint8_t* pixels = static_cast<uint8_t*>(impl->surface->pixels);
+      for(int y = 0; y < impl->surface->h; ++y)
+      {
+        for(int x = 0; x < impl->surface->w; ++x)
+        {
+          uint8_t* p = pixels + y * impl->surface->pitch + 4*x;
+
+          p[0] = static_cast<uint8_t>(std::min(255, ((255 - color.a) * p[0] + color.a * color.r) / 255));
+          p[1] = static_cast<uint8_t>(std::min(255, ((255 - color.a) * p[1] + color.a * color.g) / 255));
+          p[2] = static_cast<uint8_t>(std::min(255, ((255 - color.a) * p[2] + color.a * color.b) / 255));
+        }
+      }
+      SDL_UnlockSurface(impl->surface);
+    }
+    else if (impl->surface->format->BytesPerPixel == 3)
+    {
+      SDL_LockSurface(impl->surface);
+      uint8_t* pixels = static_cast<uint8_t*>(impl->surface->pixels);
+      for(int y = 0; y < impl->surface->h; ++y)
+      {
+        for(int x = 0; x < impl->surface->w; ++x)
+        {
+          uint8_t* p = pixels + y * impl->surface->pitch + 3*x;
+
+          p[0] = static_cast<uint8_t>(std::min(255, ((255 - color.a) * p[0] + color.a * color.r) / 255));
+          p[1] = static_cast<uint8_t>(std::min(255, ((255 - color.a) * p[1] + color.a * color.g) / 255));
+          p[2] = static_cast<uint8_t>(std::min(255, ((255 - color.a) * p[2] + color.a * color.b) / 255));
+        }
+      }
+      SDL_UnlockSurface(impl->surface);
+    }
+    else
+    {
+      log_error("unsupported BytesPerPixel format: " << impl->surface->format->BytesPerPixel);
+    }
   }
 }
 
