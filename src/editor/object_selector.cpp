@@ -353,7 +353,7 @@ struct SwitchDoorSwitch : public ObjectSelectorList::Object
   LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
     LevelObj* obj = new LevelObj("switchdoor-switch", impl);
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
-    obj->set_repeat(1);
+    obj->set_height(15);
     obj->set_target_id("");
     return obj;
   }

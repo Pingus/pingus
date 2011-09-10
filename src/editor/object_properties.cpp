@@ -80,6 +80,8 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
   id_inputbox(),
   target_id_label(),
   target_id_inputbox(),
+  height_label(),
+  height_inputbox(),
   y_pos()
 {
   add(type_label = new Label(Rect(Vector2i(4, 4), Size(120, 20)), _("Object:")));
@@ -215,6 +217,11 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
   target_id_inputbox->on_change.connect(std::bind(&ObjectProperties::on_target_id_change, this, std::placeholders::_1));
   // ___________________________________________________________________
   //
+  add(height_label    = new Label(label_rect, _("Height:")));
+  add(height_inputbox = new Inputbox(box_rect));
+  height_inputbox->on_change.connect(std::bind(&ObjectProperties::on_height_change, this, std::placeholders::_1));
+  // ___________________________________________________________________
+  //
   set_object(0);
 }
 
@@ -330,6 +337,9 @@ ObjectProperties::hide_all()
 
   target_id_label->hide();
   target_id_inputbox->hide();
+
+  height_label->hide();
+  height_inputbox->hide();
 }
 
 void
@@ -456,6 +466,12 @@ ObjectProperties::set_object(LevelObj* obj)
     {
       target_id_inputbox->set_text(obj->get_target_id());
       place(target_id_label, target_id_inputbox);
+    }
+
+    if (attr & HAS_HEIGHT)
+    {
+      height_inputbox->set_text(StringUtil::to_string(obj->get_height()));
+      place(height_label, height_inputbox);
     }
 
     if (1) // everybody has z-pos
@@ -733,6 +749,13 @@ ObjectProperties::on_target_id_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_target_id(str);
+}
+
+void
+ObjectProperties::on_height_change(const std::string& str)
+{
+  for(auto i = objects.begin(); i != objects.end(); ++i)
+    (*i)->set_height(StringUtil::to<int>(str));
 }
 
 void

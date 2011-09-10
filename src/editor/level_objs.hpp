@@ -49,6 +49,7 @@ const unsigned HAS_GPTYPE =       1 << 14;
 const unsigned HAS_STARFIELD =    1 << 15;
 const unsigned HAS_ID =           1 << 16;
 const unsigned HAS_TARGET_ID =    1 << 17;
+const unsigned HAS_HEIGHT =       1 << 18;
 
 /** Generic Level Object (groundpiece, sign, etc.)  Only special objects will have
     to inherit from this class - most objects will be able to use this class alone */
@@ -130,6 +131,8 @@ protected:
   std::string id;
   std::string target_id;
 
+  int height;
+
   /** Number representing which attributes this object possesses */
   unsigned attribs;
 
@@ -201,6 +204,8 @@ public:
 
   std::string get_id() const { return id; }
   std::string get_target_id() const { return target_id; }
+
+  int get_height() const { return height; }
 
   /////////////////////////////////////////////////////////
   /// Operations
@@ -286,6 +291,7 @@ public:
   void set_id(const std::string& t) { id = t; }
   void set_target_id(const std::string& t) { target_id = t; }
 
+  void set_height(const int h) { height = h; }
 
   /** Soft delete of the object (needed for Undo action) */
   void remove() { removed = true; }

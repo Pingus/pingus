@@ -428,6 +428,10 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
         {
           (*it)->set_repeat((*it)->get_repeat() + 1);
         }
+        else if ((*it)->get_attribs() & HAS_HEIGHT)
+        {
+          (*it)->set_height((*it)->get_height() + 1);
+        }
       }
       selection_changed(selection);
       break;
@@ -440,6 +444,13 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
           if ((*it)->get_repeat() > 1)
           {
             (*it)->set_repeat((*it)->get_repeat() - 1);
+          }
+        }
+        else if ((*it)->get_attribs() & HAS_HEIGHT)
+        {
+          if ((*it)->get_height() > 1)
+          {
+            (*it)->set_height((*it)->get_height() - 1);
           }
         }
       }

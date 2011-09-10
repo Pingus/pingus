@@ -54,6 +54,7 @@ LevelObj::LevelObj(std::string obj_name, LevelImpl* level_) :
   large_stars(),
   id(),
   target_id(),
+  height(15),
   attribs(get_attributes(obj_name)),
   removed(false)
 {
@@ -90,6 +91,7 @@ LevelObj::LevelObj(const LevelObj& rhs) :
   large_stars(rhs.large_stars),
   id(rhs.id),
   target_id(rhs.target_id),
+  height(rhs.height),
   attribs(rhs.attribs),
   removed(rhs.removed)
 {}
@@ -138,7 +140,7 @@ LevelObj::get_attributes(std::string obj_type)
   else if (obj_type == "conveyorbelt")
     return HAS_SPRITE_FAKE | HAS_REPEAT | HAS_SPEED;
   else if (obj_type == "switchdoor-door")
-    return HAS_SPRITE_FAKE | HAS_ID; // FIXME: no height handling
+    return HAS_SPRITE_FAKE | HAS_ID | HAS_HEIGHT;
   else if (obj_type == "switchdoor-switch")
     return HAS_SPRITE_FAKE | HAS_TARGET_ID;
   else
@@ -340,6 +342,9 @@ LevelObj::write_properties(FileWriter &fw)
   {
     fw.write_string("target-id", target_id);
   }
+
+  if (attribs_ & HAS_HEIGHT)
+    fw.write_int("height", height);
 
   // Writes any extra properties that may be necessary (virtual function)
   write_extra_properties(fw);

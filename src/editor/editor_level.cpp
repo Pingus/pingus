@@ -303,6 +303,11 @@ void EditorLevel::load_level(const Pathname& pathname)
       i->read_int("large-stars", tmp_int);
       obj->set_large_stars(tmp_int);
     }
+    if (attribs & HAS_HEIGHT)
+    {
+      i->read_int("height", tmp_int);
+      obj->set_repeat(tmp_int);
+    }
 
     add_object(obj);
   }
