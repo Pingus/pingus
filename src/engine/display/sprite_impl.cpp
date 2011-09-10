@@ -111,7 +111,7 @@ SpriteImpl::~SpriteImpl()
 void
 SpriteImpl::update(float delta)
 {
-  if (finished)
+  if (finished || frame_delay == 0)
     return;
 
   int total_time = frame_delay * (array.width * array.height);
