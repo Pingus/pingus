@@ -16,6 +16,8 @@
 
 #include "pingus/worldobjs/smasher.hpp"
 
+#include <assert.h>
+
 #include "engine/display/scene_context.hpp"
 #include "engine/sound/sound.hpp"
 #include "pingus/particles/smoke_particle_holder.hpp"
@@ -27,12 +29,14 @@
 namespace WorldObjs {
 
 Smasher::Smasher(const FileReader& reader) :
-  surface("traps/smasher"),
+  sprite("traps/smasher"),
   pos(),
   smashing(false),
   downwards(false),
   count(0)
 {
+  assert(sprite.get_frame_count() == 6);
+
   reader.read_vector("position", pos);
 }
 
@@ -45,13 +49,16 @@ Smasher::get_z_pos () const
 void
 Smasher::update ()
 {
-
   PinguHolder* holder = world->get_pingus();
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+  {
     catch_pingu(*pingu);
+  }
 
   if (smashing)
   {
+    sprite.set_frame(count);
+
     if (downwards)
     {
       if (count >= 5)
@@ -112,7 +119,7 @@ Smasher::on_startup ()
 void
 Smasher::draw (SceneContext& gc)
 {
-  gc.color().draw (surface, pos);
+  gc.color().draw(sprite, pos);
 }
 
 void

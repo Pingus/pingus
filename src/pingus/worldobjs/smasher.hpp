@@ -31,7 +31,7 @@ namespace WorldObjs {
 class Smasher : public WorldObj
 {
 private:
-  Sprite  surface;
+  Sprite  sprite;
   Vector3f pos;
 
   bool smashing;
