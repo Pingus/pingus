@@ -128,10 +128,7 @@ EditorScreen::save(const Pathname& file)
 {
   level_pathname = file;
   log_info("Save to: " << file.str());
-  if (!plf->save_level(level_pathname.get_sys_path()))
-  {
-    // FIXME: save failed, prompt user
-  }
+  plf->save_level(level_pathname.get_sys_path());
 }
 
 // Load a new level
@@ -302,11 +299,7 @@ void
 EditorScreen::level_play()
 {
   Pathname tmp(System::get_userdir() + "backup/editortmpfile.pingus", Pathname::SYSTEM_PATH);
-  if (!plf->save_level(tmp.get_sys_path()))
-  {
-    // FIXME: save failed, prompt user
-    return;
-  }
+  plf->save_level(tmp.get_sys_path());
   PingusLevel level(tmp);
   ScreenManager::instance()->push_screen(new GameSession(level, false));
 }

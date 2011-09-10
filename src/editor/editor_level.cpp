@@ -95,37 +95,13 @@ EditorLevel::get_size() const
   return impl->size;
 }
 
-/** Verify that level is valid:
-    Level should contain the following attributes in order to be "valid":
-    -----------
-    LevelObj's:
-    - At least 1 entrance
-    - At least 1 exit
-    - At least 1 surface-background
-    - Each object should be within valid ranges (pos Vector3f should be inside the world)
-    -----------
-    Head section:
-    - Everything should be filled in and within valid ranges
-*/
-bool EditorLevel::is_valid()
-{
-  //log_info("EditorLevel::is_valid() - Not yet implemented");
-  if (impl)
-    return true;
-  else
-    return false;
-}
-
 // Save the level to a file.  Returns true if successful
-bool EditorLevel::save_level(const std::string& filename)
+void
+EditorLevel::save_level(const std::string& filename)
 {
   // Sort the level before saving, so that object order doesn't change
   // after a save/load cycle (load sort() too)
   sort();
-
-  // Make sure level is valid
-  if (!is_valid())
-    return false;
 
   // Create new file (overwrite existing file)
   std::ostringstream out_file;
@@ -171,8 +147,6 @@ bool EditorLevel::save_level(const std::string& filename)
         
   // Write the file
   System::write_file(filename, out_file.str());
-
-  return true;
 }
 
 // Load an existing level from a file

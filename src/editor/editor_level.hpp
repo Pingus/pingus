@@ -54,11 +54,8 @@ public:
   /** get a new implementation with default settings */
   void clear();
 
-  /** Verify that level is valid */
-  bool is_valid();
-
   /** Save the level to a file.  Returns true if successful */
-  bool save_level(const std::string& filename);
+  void save_level(const std::string& filename);
 
   /** Load an existing level from a file */
   void load_level(const Pathname& pathname);
