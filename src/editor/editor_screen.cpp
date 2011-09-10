@@ -153,7 +153,7 @@ EditorScreen::draw(DrawingContext& gc)
   
   if (show_help)
   {
-    Size size_(600, 400);
+    Size size_(640, 400);
     gc.draw_fillrect(Rect(gc.get_width()/2  - size_.width/2 - 2,
                           gc.get_height()/2 - size_.height/2 - 2,
                           gc.get_width()/2  + size_.width/2 + 2,
