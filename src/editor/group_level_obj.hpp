@@ -40,6 +40,8 @@ public:
   void draw(DrawingContext& gc);
   void draw_selection(DrawingContext &gc);
 
+  std::list<LevelObj*>& get_objects() { return m_objects; }
+
 public:
   /** Retrieve the object's position */
   Vector3f get_pos() const { return m_pos; }

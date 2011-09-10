@@ -22,6 +22,7 @@
 #include "editor/editor_level.hpp"
 #include "editor/editor_screen.hpp"
 #include "editor/level_objs.hpp"
+#include "editor/group_level_obj.hpp"
 #include "engine/display/display.hpp"
 #include "util/log.hpp"
 #include "util/utf8.hpp"
@@ -255,6 +256,17 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
 {
   switch(ev.keysym.sym)
   {
+    case SDLK_g:
+      if (ev.keysym.mod & KMOD_SHIFT)
+      {
+        ungroup_selection();
+      }
+      else
+      {
+        group_selection();
+      }
+      break;
+
     case SDLK_b:
       if (ev.keysym.mod & KMOD_SHIFT)
       {
@@ -650,6 +662,61 @@ Viewport::lower_objects_to_bottom()
 {
   for(auto i = selection.begin(); i != selection.end(); ++i)
     editor->get_level()->lower_object_to_bottom(*i); 
+}
+
+void
+Viewport::group_selection()
+{
+  // only group two or more objects
+  if (selection.size() > 1)
+  {
+    log_info("grouping selection");
+
+    GroupLevelObj* group = new GroupLevelObj;
+    for(auto i = selection.begin(); i != selection.end(); ++i)
+    {
+      // FIXME: ugly, refactor EditorLevel to have some more operations
+      // for manipulating the level to avoid this hackery
+      get_objects()->remove(*i);
+
+      group->add_child(*i);
+    }
+    editor->get_level()->add_object(group);
+
+    selection.clear();
+    selection.insert(group);
+    selection_changed(selection);
+  }
+}
+
+void
+Viewport::ungroup_selection()
+{
+  log_info("ungrouping selection");
+  Selection new_selection;
+
+  for(auto i = selection.begin(); i != selection.end(); ++i)
+  {
+    GroupLevelObj* group = dynamic_cast<GroupLevelObj*>(*i);
+    if (group)
+    {
+      auto group_it = std::find(get_objects()->begin(), get_objects()->end(), group);
+      assert(group_it != get_objects()->end());
+
+      for(auto j = group->get_objects().begin(); j != group->get_objects().end(); ++j)
+      {
+        get_objects()->insert(group_it, *j);
+        new_selection.insert(*j);
+      }
+
+      // remove the old group object
+      group->get_objects().clear();
+      get_objects()->erase(group_it);
+    }
+  }
+
+  selection = new_selection;
+  selection_changed(selection);
 }
 
 void
