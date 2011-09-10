@@ -64,9 +64,14 @@ public:
 
   void fill(const Color& color);
 
+  bool is_indexed() const;
+  bool has_colorkey() const;
+
   Surface scale(int w, int h);
   Surface mod(ResourceModifier::Enum mod);
   Surface clone() const;
+  Surface convert_to_rgba() const;
+  Surface convert_to_rgb() const;
   Surface subsection(const Rect& rect) const;
 
   SDL_Surface* get_surface() const;

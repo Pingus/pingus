@@ -323,18 +323,74 @@ Surface::subsection(const Rect& rect) const
 void
 Surface::fill(const Color& color)
 {
-  // FIXME: Couldn't get this to work with a RGBA surface for some
-  // reason, something to do with tmp format and impl->surface
-  // matching up maybe, anyway with RGB it works and it saves a
-  // little bit of space to
-  // FIXME: sould/should use a proper RGBA rect_fill function, this is just a work around
-  SDL_Surface* tmp = Blitter::create_surface_rgb(impl->surface->w, impl->surface->h);
-  SDL_FillRect(tmp, NULL, SDL_MapRGBA(tmp->format, color.r, color.g, color.b, 255));
-  SDL_SetAlpha(tmp, SDL_SRCALPHA, color.a);
-          
-  SDL_BlitSurface(tmp, NULL, impl->surface, NULL);
+  if (impl->surface->format->BytesPerPixel == 4)
+  {
+    SDL_LockSurface(impl->surface);
+    uint8_t* pixels = static_cast<uint8_t*>(impl->surface->pixels);
+    for(int y = 0; y < impl->surface->h; ++y)
+    {
+      for(int x = 0; x < impl->surface->w; ++x)
+      {
+        uint8_t* p = pixels + y * impl->surface->pitch + 4*x;
 
-  SDL_FreeSurface(tmp);
+        p[0] = static_cast<uint8_t>(std::min(255, ((255 - color.a) * p[0] + color.a * color.r) / 255));
+        p[1] = static_cast<uint8_t>(std::min(255, ((255 - color.a) * p[1] + color.a * color.g) / 255));
+        p[2] = static_cast<uint8_t>(std::min(255, ((255 - color.a) * p[2] + color.a * color.b) / 255));
+      }
+    }
+    SDL_UnlockSurface(impl->surface);
+  }
+  else if (impl->surface->format->BytesPerPixel == 3)
+  {
+    SDL_LockSurface(impl->surface);
+    uint8_t* pixels = static_cast<uint8_t*>(impl->surface->pixels);
+    for(int y = 0; y < impl->surface->h; ++y)
+    {
+      for(int x = 0; x < impl->surface->w; ++x)
+      {
+        uint8_t* p = pixels + y * impl->surface->pitch + 3*x;
+
+        p[0] = static_cast<uint8_t>(std::min(255, ((255 - color.a) * p[0] + color.a * color.r) / 255));
+        p[1] = static_cast<uint8_t>(std::min(255, ((255 - color.a) * p[1] + color.a * color.g) / 255));
+        p[2] = static_cast<uint8_t>(std::min(255, ((255 - color.a) * p[2] + color.a * color.b) / 255));
+      }
+    }
+    SDL_UnlockSurface(impl->surface);
+  }
+  else
+  {
+    log_error("unsupported BytesPerPixel format: " << impl->surface->format->BytesPerPixel);
+  }
+}
+
+Surface
+Surface::convert_to_rgba() const
+{
+  SDL_Surface* surface = Blitter::create_surface_rgba(impl->surface->w, impl->surface->h);
+  SDL_SetAlpha(impl->surface, 0, 0);
+  SDL_BlitSurface(impl->surface, NULL, surface, NULL);
+  return Surface(surface);
+}
+
+Surface
+Surface::convert_to_rgb() const
+{
+  SDL_Surface* surface = Blitter::create_surface_rgb(impl->surface->w, impl->surface->h);
+  SDL_SetAlpha(impl->surface, 0, 0);
+  SDL_BlitSurface(impl->surface, NULL, surface, NULL);
+  return Surface(surface);
+}
+
+bool
+Surface::has_colorkey() const
+{
+  return impl->surface->flags & SDL_SRCCOLORKEY;
+}
+
+bool
+Surface::is_indexed() const
+{
+  return impl->surface->format->palette;
 }
 
 void
