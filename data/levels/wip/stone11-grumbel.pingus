@@ -303,12 +303,13 @@
         (image "exits/stone")
         (modifier "ROT0"))
       (owner-id 0))
-    (switchdoor 
-      (switch 
-        (position 721 348 0))
-      (door 
-        (height 15)
-        (position 426 328 0)))
+    (switchdoor-switch
+      (target-id "id3506441718")
+      (position 721 348 0))
+    (switchdoor-door
+      (id "id3506441718")
+      (height 15)
+      (position 426 328 0))
     (liquid 
       (surface 
         (image "liquids/slime")

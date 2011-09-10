@@ -1536,12 +1536,13 @@
         (image "exits/industrial")
         (modifier "ROT0"))
       (owner-id 0))
-    (switchdoor 
-      (switch 
-        (position 399 700 0))
-      (door 
-        (height 15)
-        (position 732 546 0)))
+    (switchdoor-switch
+      (target-id "id2401004030")
+      (position 399 700 0))
+    (switchdoor-door
+      (id "id2401004030")
+      (height 15)
+      (position 732 546 0))
     (hotspot 
       (surface 
         (image "entrances/industrial_top")

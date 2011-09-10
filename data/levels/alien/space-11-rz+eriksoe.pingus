@@ -370,18 +370,20 @@
         (image "exits/space")
         (modifier "ROT0"))
       (owner-id 0))
-    (switchdoor 
-      (switch 
-        (position 478 1141 0))
-      (door 
-        (height 15)
-        (position 148 1120 0)))
-    (switchdoor 
-      (switch 
-        (position 360 1141 0))
-      (door 
-        (height 15)
-        (position 662 1120 0)))
+    (switchdoor-switch
+      (target-id "id4018304927")
+      (position 478 1141 0))
+    (switchdoor-door
+      (id "id4018304927")
+      (height 15)
+      (position 148 1120 0))
+    (switchdoor-switch
+      (target-id "id1754998798")
+      (position 360 1141 0))
+    (switchdoor-door
+      (id "id1754998798")
+      (height 15)
+      (position 662 1120 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -400,12 +402,13 @@
         (image "groundpieces/ground/space/smallblock1")
         (modifier "ROT0"))
       (position 220 655 0))
-    (switchdoor 
-      (switch 
-        (position 383 647 0))
-      (door 
-        (height 15)
-        (position 534 626 0)))
+    (switchdoor-switch
+      (target-id "id1179682853")
+      (position 383 647 0))
+    (switchdoor-door
+      (id "id1179682853")
+      (height 15)
+      (position 534 626 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -418,12 +421,13 @@
         (image "groundpieces/ground/space/way")
         (modifier "ROT0"))
       (position 252 620 0))
-    (switchdoor 
-      (switch 
-        (position 446 647 0))
-      (door 
-        (height 15)
-        (position 292 626 0)))
+    (switchdoor-switch
+      (target-id "id3308038705")
+      (position 446 647 0))
+    (switchdoor-door
+      (id "id3308038705")
+      (height 15)
+      (position 292 626 0))
     (groundpiece 
       (type "ground")
       (surface 

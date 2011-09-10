@@ -347,12 +347,13 @@
         (image "groundpieces/solid/misc/metalplate_small")
         (modifier "ROT0"))
       (position 523 277 0))
-    (switchdoor 
-      (switch 
-        (position 702 301 0))
-      (door 
-        (height 20)
-        (position 326 251 0)))
+    (switchdoor-switch
+      (target-id "id2082973718")
+      (position 702 301 0))
+    (switchdoor-door
+      (id "id2082973718")
+      (height 20)
+      (position 326 251 0))
     (entrance 
       (position 279 256 0)
       (type "generic")

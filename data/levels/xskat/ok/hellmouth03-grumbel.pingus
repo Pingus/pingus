@@ -292,18 +292,20 @@
       (direction "misc")
       (release-rate 50)
       (owner-id 0))
-    (switchdoor 
-      (switch 
-        (position 914 552 0))
-      (door 
-        (height 15)
-        (position 622 306 0)))
-    (switchdoor 
-      (switch 
-        (position 241 554 0))
-      (door 
-        (height 15)
-        (position 510 306 0)))
+    (switchdoor-switch
+      (target-id "id2301449227")
+      (position 914 552 0))
+    (switchdoor-door
+      (id "id2301449227")
+      (height 15)
+      (position 622 306 0))
+    (switchdoor-switch
+      (target-id "id302493444")
+      (position 241 554 0))
+    (switchdoor-door
+      (id "id302493444")
+      (height 15)
+      (position 510 306 0))
     (teleporter 
       (target-id "id2475010")
       (position 214 753 0))
@@ -322,12 +324,13 @@
     (teleporter-target 
       (id "id2475079")
       (position 580 240 0))
-    (switchdoor 
-      (switch 
-        (position 331 830 0))
-      (door 
-        (height 11)
-        (position 756 472 0)))
+    (switchdoor-switch
+      (target-id "id1319239757")
+      (position 331 830 0))
+    (switchdoor-door
+      (id "id1319239757")
+      (height 11)
+      (position 756 472 0))
     (liquid 
       (surface 
         (image "liquids/slime")

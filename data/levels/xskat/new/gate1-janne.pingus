@@ -58,12 +58,13 @@
         (image "groundpieces/ground/real/real35")
         (modifier "ROT0"))
       (position 158 284 0))
-    (switchdoor 
-      (switch 
-        (position 801 296 0))
-      (door 
-        (height 15)
-        (position 201 230 0)))
+    (switchdoor-switch
+      (target-id "id321527167")
+      (position 801 296 0))
+    (switchdoor-door
+      (id "id321527167")
+      (height 15)
+      (position 201 230 0))
     (groundpiece 
       (type "ground")
       (surface 

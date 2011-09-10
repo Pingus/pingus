@@ -87,12 +87,13 @@
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
       (position 908 451 0))
-    (switchdoor 
-      (switch 
-        (position 825 291 0))
-      (door 
-        (height 17)
-        (position 908.054 384.211 0)))
+    (switchdoor-switch
+      (target-id "id1075505413")
+      (position 825 291 0))
+    (switchdoor-door
+      (id "id1075505413")
+      (height 17)
+      (position 908.054 384.211 0))
     (groundpiece 
       (type "solid")
       (surface 

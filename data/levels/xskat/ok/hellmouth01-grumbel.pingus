@@ -504,12 +504,13 @@
         (image "exits/stone")
         (modifier "ROT0"))
       (owner-id 0))
-    (switchdoor 
-      (switch 
-        (position 822 732 0))
-      (door 
-        (height 15)
-        (position 1668 265 0)))
+    (switchdoor-switch
+      (target-id "id2872105197")
+      (position 822 732 0))
+    (switchdoor-door
+      (id "id2872105197")
+      (height 15)
+      (position 1668 265 0))
     (groundpiece 
       (type "solid")
       (surface 

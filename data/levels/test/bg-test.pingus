@@ -97,10 +97,11 @@
       (position 324 354 0)
       (width 10)
       (speed 0))
-    (switchdoor 
-      (switch 
-        (position 193 313 0))
-      (door 
-        (height 15)
-        (position 472 293 0)))))
+    (switchdoor-switch
+      (target-id "id1265166065")
+      (position 193 313 0))
+    (switchdoor-door
+      (id "id1265166065")
+      (height 15)
+      (position 472 293 0))))
 ;; EOF ;;

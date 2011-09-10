@@ -83,10 +83,11 @@
     (conveyorbelt 
       (position 340 200 0)
       (width 10))
-    (switchdoor 
-      (switch 
-        (position 340 200 0))
-      (door 
-        (position 340 200 0)
-        (height 20)))))
+    (switchdoor-switch
+      (target-id "id1139996653")
+      (position 340 200 0))
+    (switchdoor-door
+      (id "id1139996653")
+      (height 20)
+      (position 340 200 0))))
 ;; EOF ;;

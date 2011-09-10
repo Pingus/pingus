@@ -212,12 +212,13 @@
         (image "groundpieces/ground/jungle/stick3")
         (modifier "ROT0"))
       (position 1710 1503 0))
-    (switchdoor 
-      (switch 
-        (position 411 1422 0))
-      (door 
-        (height 15)
-        (position 1849 1444 0)))
+    (switchdoor-switch
+      (target-id "id1611358619")
+      (position 411 1422 0))
+    (switchdoor-door
+      (id "id1611358619")
+      (height 15)
+      (position 1849 1444 0))
     (groundpiece 
       (type "ground")
       (surface 

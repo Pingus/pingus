@@ -1351,18 +1351,20 @@
         (image "groundpieces/ground/rock/blackrock4")
         (modifier "ROT0"))
       (position 1470 522 0))
-    (switchdoor 
-      (switch 
-        (position 639 146 0))
-      (door 
-        (height 15)
-        (position 1285 919 0)))
-    (switchdoor 
-      (switch 
-        (position 172 889 0))
-      (door 
-        (height 15)
-        (position 806 510 0)))
+    (switchdoor-switch
+      (target-id "id1657433057")
+      (position 639 146 0))
+    (switchdoor-door
+      (id "id1657433057")
+      (height 15)
+      (position 1285 919 0))
+    (switchdoor-switch
+      (target-id "id1930848665")
+      (position 172 889 0))
+    (switchdoor-door
+      (id "id1930848665")
+      (height 15)
+      (position 806 510 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -1375,12 +1377,13 @@
         (image "groundpieces/ground/rock/blackrock1")
         (modifier "ROT0"))
       (position -51.2401 168.72 0))
-    (switchdoor 
-      (switch 
-        (position 743 530 0))
-      (door 
-        (height 15)
-        (position 359 160 0)))
+    (switchdoor-switch
+      (target-id "id2534049628")
+      (position 743 530 0))
+    (switchdoor-door
+      (id "id2534049628")
+      (height 15)
+      (position 359 160 0))
     (spike 
       (position 1305 143 100))
     (spike 
