@@ -36,9 +36,11 @@
    (sdl:keyboard-button (key "escape")))
 
   (action-up-button
+   (sdl:keyboard-button (key "q"))
    (sdl:mouse-button (button 4)))
   
   (action-down-button
+   (sdl:keyboard-button (key "e"))
    (sdl:keyboard-button (key "tab"))
    (sdl:mouse-button (button 5)))
 
