@@ -56,6 +56,7 @@ public:
 
   /** Save the level to a file.  Returns true if successful */
   void save_level(const std::string& filename);
+  void save_prefab(const std::string& filename);
 
   /** Load an existing level from a file */
   void load_level(const Pathname& pathname);

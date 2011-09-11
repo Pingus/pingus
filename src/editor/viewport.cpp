@@ -484,6 +484,15 @@ Viewport::draw(DrawingContext &gc)
   drawing_context->clear();
   drawing_context->fill_screen(m_background_colors[m_background_colors_idx]);
   state.push(*drawing_context);
+
+  // Center Cross
+  {
+    Size size = editor->get_level()->get_size();
+    Vector2i center(size.width / 2, size.height / 2);
+
+    drawing_context->draw_line(center - Vector2i(16, 0), center + Vector2i(16, 0), Color(155,155,155), 5000.0f);
+    drawing_context->draw_line(center - Vector2i(0, 16), center + Vector2i(0, 16), Color(155,155,155), 5000.0f);
+  }
   
   // Level border
   drawing_context->draw_rect(Rect(Vector2i(0,0), editor->get_level()->get_size()), Color(255,255,255), 5000.0f);

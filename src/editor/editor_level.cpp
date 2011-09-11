@@ -97,6 +97,44 @@ EditorLevel::get_size() const
   return impl->size;
 }
 
+void
+EditorLevel::save_prefab(const std::string& filename)
+{
+  // Sort the level before saving, so that object order doesn't change
+  // after a save/load cycle (load sort() too)
+  sort();
+
+  // Create new file (overwrite existing file)
+  std::ostringstream out_file;
+
+  SExprFileWriter fw(out_file);
+        
+  // Write header
+  fw.begin_section("pingus-prefab");
+  fw.write_int("version", 3);
+ 
+  Vector3f level_center(static_cast<float>(get_size().width)/2.0f,
+                        static_cast<float>(get_size().height)/2.0f);
+
+  // Write the objects
+  fw.begin_section("objects");
+  for (auto it = impl->objects.begin(); it != impl->objects.end(); ++it)
+  {
+    LevelObj* obj = (*it)->duplicate(Vector2i(static_cast<int>(-level_center.x),
+                                              static_cast<int>(-level_center.y)));
+    obj->write_properties(fw);
+    delete obj;
+  }
+  fw.end_section();     // objects
+
+  fw.end_section();     // pingus-prefab
+
+  out_file << "\n\n;; EOF ;;" << std::endl;
+        
+  // Write the file
+  System::write_file(filename, out_file.str());
+}
+
 // Save the level to a file.  Returns true if successful
 void
 EditorLevel::save_level(const std::string& filename)

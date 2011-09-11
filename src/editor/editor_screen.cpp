@@ -126,9 +126,20 @@ EditorScreen::on_escape_press()
 void 
 EditorScreen::save(const Pathname& file)
 {
-  level_pathname = file;
-  log_info("Save to: " << file.str());
-  plf->save_level(level_pathname.get_sys_path());
+  std::string filename = file.get_sys_path();
+
+  if (System::get_file_extension(filename) == "prefab")
+  {
+    level_pathname = file;
+    log_info("Save to: " << file.str());
+    plf->save_prefab(filename);
+  }
+  else
+  {
+    level_pathname = file;
+    log_info("Save to: " << file.str());
+    plf->save_level(filename);
+  }
 }
 
 // Load a new level
