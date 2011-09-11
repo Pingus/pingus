@@ -65,7 +65,7 @@ Levelset::Levelset(const Pathname& pathname) :
             level->accessible = false;
             level->finished   = false;
                       
-            levels.push_back(level.get());
+            levels.push_back(level.release());
           }
           catch(const std::exception& err)
           {
@@ -140,14 +140,20 @@ Levelset::refresh()
     }
   }
 
+  // unlock the next level
   if (!levels.empty())
   {
     levels[0]->accessible = true; 
-    for(std::vector<Level*>::size_type i = 0; i < levels.size()-1; ++i)
+    for(std::vector<Level*>::size_type i = 1; i < levels.size()-1; ++i)
+    {
       if (levels[i]->finished)
+      {
         levels[i+1]->accessible = true;
+      }
+    }
   }
 
+  // update completion count
   completion = 0;
   for(std::vector<Level*>::iterator i = levels.begin(); i != levels.end(); ++i)
   {
