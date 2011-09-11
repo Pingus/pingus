@@ -27,6 +27,7 @@
 #include "pingus/gettext.h"
 #include "pingus/resource.hpp"
 #include "util/log.hpp"
+#include "util/system.hpp"
 #include "util/string_util.hpp"
 
 namespace Editor {
@@ -748,7 +749,17 @@ std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_prefab()
 {
   std::unique_ptr<ObjectSelectorSet> set(new ObjectSelectorSet(object_list, 48, 48));
-  set->add(new Prefab("prefabs/snow_entrance"));
+
+  std::string path = Pathname("prefabs", Pathname::DATA_PATH).get_sys_path();
+
+  // FIXME: doesn't recurse down the prefabs/ directory, doesn't
+  // handle ~/.pingus/prefabs/ or other user or modifier directories
+  System::Directory directory = System::opendir(path, "*.prefab");
+  for(System::Directory::iterator i = directory.begin(); i != directory.end(); ++i)
+  {
+    set->add(new Prefab("prefabs/" + System::cut_file_extension(i->name)));
+  }
+
   return set;
 }
 
