@@ -26,6 +26,7 @@ class PrefabFile
 {
 public:
   static PrefabFile from_resource(const std::string& name);
+  static PrefabFile from_path(const Pathname& file);
 
 private:
   std::string m_name;

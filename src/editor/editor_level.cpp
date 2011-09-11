@@ -24,6 +24,7 @@
 #include "editor/generic_level_obj.hpp"
 #include "editor/level_impl.hpp"
 #include "pingus/pingus_level.hpp"
+#include "pingus/prefab_file.hpp"
 #include "util/log.hpp"
 #include "util/system.hpp"
 #include "util/sexpr_file_writer.hpp"
@@ -189,8 +190,45 @@ EditorLevel::save_level(const std::string& filename)
   System::write_file(filename, out_file.str());
 }
 
+void
+EditorLevel::load_prefab(const Pathname& pathname)
+{
+  log_info("EditorLevel::load_level: " << pathname.str());
+
+  // Get a new level implementation with default settings. It is a
+  // good idea to set the level defaults first, in case the level file
+  // doesn't set everything.
+  clear();
+
+  // Load the level from the file - we don't care what it's res_name is.
+  PrefabFile prefab = PrefabFile::from_path(pathname);
+
+  // FIMXE: there would be better way to handle prefab size, but it's
+  // probably not worth the effort
+  impl->size.width  = 1920;
+  impl->size.height = 1200;
+
+  // Get the objects
+  const std::vector<FileReader>& objs = prefab.get_objects();
+  for (auto i = objs.begin(); i != objs.end(); i++)
+  {
+    LevelObj* obj = LevelObjFactory::create(*i, impl.get());
+    if (obj)
+    {
+      // move origin of the level to the center of it
+      obj->set_pos(obj->get_pos() + Vector3f(static_cast<float>(impl->size.width)/2.0f, 
+                                             static_cast<float>(impl->size.height)/2.0f));
+
+      add_object(obj);
+    }
+  }
+
+  sort(); 
+}
+
 // Load an existing level from a file
-void EditorLevel::load_level(const Pathname& pathname)
+void
+EditorLevel::load_level(const Pathname& pathname)
 {
   log_info("EditorLevel::load_level: " << pathname.str());
 

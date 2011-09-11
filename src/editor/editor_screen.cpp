@@ -146,12 +146,26 @@ EditorScreen::save(const Pathname& file)
 void 
 EditorScreen::load(const Pathname& file)
 {
-  level_pathname = file;
-  viewport->clear_selection();
-  plf->load_level(level_pathname);
-  level_properties->set_level(plf.get());
-  action_properties->set_level(plf.get());
-  viewport->refresh();
+  std::string filename = file.get_sys_path();
+
+  if (System::get_file_extension(filename) == "prefab")
+  {
+    level_pathname = file;
+    viewport->clear_selection();
+    plf->load_prefab(level_pathname);
+    level_properties->set_level(plf.get());
+    action_properties->set_level(plf.get());
+    viewport->refresh();   
+  }
+  else
+  {
+    level_pathname = file;
+    viewport->clear_selection();
+    plf->load_level(level_pathname);
+    level_properties->set_level(plf.get());
+    action_properties->set_level(plf.get());
+    viewport->refresh();
+  }
 }
 
 // Draw the background and components

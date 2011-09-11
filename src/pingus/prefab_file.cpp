@@ -19,11 +19,11 @@
 #include <stdexcept>
 
 #include "util/file_reader.hpp"
+#include "util/system.hpp"
 
 PrefabFile
-PrefabFile::from_resource(const std::string& name)
+PrefabFile::from_path(const Pathname& filename)
 {
-  Pathname filename(name + ".prefab", Pathname::DATA_PATH);
   FileReader reader = FileReader::parse(filename);
 
   if (reader.get_name() != "pingus-prefab")
@@ -39,10 +39,19 @@ PrefabFile::from_resource(const std::string& name)
     }
     else
     {
-      PrefabFile prefab(name, objects.get_sections());
+      // FIXME: Hacky way to get the Prefab name
+      PrefabFile prefab(System::cut_file_extension(filename.get_raw_path()),
+                        objects.get_sections());
       return prefab;
     }
-  }
+  } 
+}
+
+PrefabFile
+PrefabFile::from_resource(const std::string& name)
+{
+  Pathname filename(name + ".prefab", Pathname::DATA_PATH);
+  return from_path(filename);
 }
 
 PrefabFile::PrefabFile(const std::string& name, const std::vector<FileReader>& objects) :

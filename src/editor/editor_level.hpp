@@ -60,6 +60,7 @@ public:
 
   /** Load an existing level from a file */
   void load_level(const Pathname& pathname);
+  void load_prefab(const Pathname& pathname);
 
   Size get_size() const;
   void set_size(const Size& s);
