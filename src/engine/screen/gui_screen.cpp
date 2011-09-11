@@ -123,7 +123,7 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
         on_escape_press ();
         break;
       default:
-        log_error("unhandled event: " << event.name);
+        log_debug("unhandled event: " << event.name);
         break;
     }
   }
@@ -153,7 +153,7 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
         on_escape_release ();
         break;
       default:
-        log_error("unhandled event: " << event.name);
+        log_debug("unhandled event: " << event.name);
         break;
     }
   }
