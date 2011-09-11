@@ -115,13 +115,13 @@ ButtonPanel::set_button(int n)
 void
 ButtonPanel::next_action()
 {
-  current_button = (current_button + 1) + int(buttons.size()) % int(buttons.size());
+  current_button = (current_button + 1 + int(buttons.size())) % int(buttons.size());
 }
 
 void
 ButtonPanel::previous_action()
 {
-  current_button = (current_button - 1) + int(buttons.size()) % int(buttons.size());
+  current_button = (current_button - 1 + int(buttons.size())) % int(buttons.size());
 }
 
 void
