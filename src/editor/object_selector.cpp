@@ -377,38 +377,13 @@ struct SwitchDoorDoor : public ObjectSelectorList::Object
   }
 };
 
-struct GroupTest : public ObjectSelectorList::Object
-{
-  GroupTest() :
-    Object(Sprite("worldobjs/infobox"),
-           Resource::load_thumb_sprite("worldobjs/infobox"))
-  {}
-  
-  LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
-    GroupLevelObj* group = new GroupLevelObj;
-
-    LevelObj* obj1 = new GenericLevelObj("switchdoor-door", impl);
-    LevelObj* obj2 = new GenericLevelObj("switchdoor-switch", impl);
-
-    obj1->set_pos(Vector3f(32.0f, 0.0f));
-    obj2->set_pos(Vector3f(0.0f, 0.0f));
-
-    group->add_child(obj1);
-    group->add_child(obj2);
-    
-    group->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
-
-    return group;
-  }
-};
-
-struct PrefabTest : public ObjectSelectorList::Object
+struct Prefab : public ObjectSelectorList::Object
 {
 private:
   std::string m_name;
 
 public:
-  PrefabTest(const std::string& name) :
+  Prefab(const std::string& name) :
     Object(Sprite("worldobjs/infobox"),
            Resource::load_thumb_sprite("worldobjs/infobox")),
     m_name(name)
@@ -533,6 +508,7 @@ ObjectSelector::ObjectSelector(EditorScreen* editor_, const Rect& rect_) :
   trap_set(0),
   weather_set(0),
   worldobj_set(0),
+  prefab_set(),
   callback()
 {
   add(object_list = new ObjectSelectorList(editor, this, 
@@ -551,6 +527,7 @@ ObjectSelector::ObjectSelector(EditorScreen* editor_, const Rect& rect_) :
   trap_set       = create_trap();
   weather_set    = create_weather();
   worldobj_set   = create_worldobj();
+  prefab_set     = create_prefab();
 
   add_button("core/editor/obj_entrance",   _("Entrance"), entrance_set);
   add_button("core/editor/obj_gp_ground",  _("Groundpiece (ground)"), gp_ground_set);
@@ -566,6 +543,7 @@ ObjectSelector::ObjectSelector(EditorScreen* editor_, const Rect& rect_) :
   add_button("core/editor/obj_trap",     _("Trap"), trap_set);
   add_button("core/editor/obj_weather",  _("Weather"), weather_set);
   add_button("core/editor/obj_worldobj", _("Special Object"), worldobj_set);
+  add_button("core/editor/obj_prefab",   _("Prefab Object"), prefab_set);
 }
 
 ObjectSelector::~ObjectSelector()
@@ -776,8 +754,14 @@ ObjectSelector::create_worldobj()
   set->add(new Conveyorbelt);
   set->add(new SwitchDoorDoor);
   set->add(new SwitchDoorSwitch);
-  set->add(new GroupTest);
-  set->add(new PrefabTest("prefabs/snow_entrance"));
+  return set;
+}
+
+ObjectSelectorSet*
+ObjectSelector::create_prefab()
+{
+  ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+  set->add(new Prefab("prefabs/snow_entrance"));
   return set;
 }
 

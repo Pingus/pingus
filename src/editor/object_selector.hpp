@@ -47,6 +47,7 @@ private:
   ObjectSelectorSet*  trap_set;
   ObjectSelectorSet*  weather_set;
   ObjectSelectorSet*  worldobj_set;
+  ObjectSelectorSet*  prefab_set;
 
 public:
   typedef void (ObjectSelectorList::*Callback)();
@@ -73,6 +74,7 @@ public:
   ObjectSelectorSet* create_trap();
   ObjectSelectorSet* create_weather();
   ObjectSelectorSet* create_worldobj();
+  ObjectSelectorSet* create_prefab();
 
   void update_layout();
 private:
