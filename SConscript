@@ -264,19 +264,17 @@ class Project:
         #if sys.platform == "darwin":
         #    self.env.StaticLibrary("sdlmain", ["src/macosx/SDLmain.m"], [ 'SDL' ])
 
-        self.env.Program('pingus', ['src/main.cpp', libpingus])
+        self.env.Default(self.env.Program('pingus', ['src/main.cpp', libpingus]))
 
         # build test and utils
-        if self.env.has_key('BUILD') and self.env['BUILD'] == 'development':
-            for filename in Glob("test/*_test.cpp", strings=True):
-                self.env.Program(filename[:-4], [filename, libpingus])
-            for filename in Glob("test/*_util.cpp", strings=True):
-                self.env.Program(filename[:-4], [filename, libpingus])                
+        for filename in Glob("test/*_test.cpp", strings=True):
+            self.env.Alias('test', self.env.Program(filename[:-4], [filename, libpingus]))
+        for filename in Glob("test/*_util.cpp", strings=True):
+            self.env.Alias('test', self.env.Program(filename[:-4], [filename, libpingus]))
 
         # build extra stuff
-        if self.env.has_key('BUILD') and self.env['BUILD'] == 'development':
-            for filename in Glob("extra/*.cpp", strings=True):
-                self.env.Program(filename[:-4], [filename, libpingus])
+        for filename in Glob("extra/*.cpp", strings=True):
+            self.env.Alias('extra', self.env.Program(filename[:-4], [filename, libpingus]))
 
 project = Project()
 project.configure()
