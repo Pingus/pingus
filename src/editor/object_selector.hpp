@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_EDITOR_OBJECT_SELECTOR_HPP
 #define HEADER_PINGUS_EDITOR_OBJECT_SELECTOR_HPP
 
+#include <memory>
+
 #include "engine/gui/group_component.hpp"
 
 class DrawingContext;
@@ -34,20 +36,20 @@ private:
   Vector2i button_pos;
   ObjectSelectorList* object_list;
 
-  ObjectSelectorSet*  gp_ground_set;
-  ObjectSelectorSet*  gp_solid_set;
-  ObjectSelectorSet*  gp_bridge_set;
-  ObjectSelectorSet*  gp_transparent_set;
-  ObjectSelectorSet*  gp_remove_set;
-  ObjectSelectorSet*  hotspot_set;
-  ObjectSelectorSet*  background_set;
-  ObjectSelectorSet*  entrance_set;
-  ObjectSelectorSet*  exit_set;
-  ObjectSelectorSet*  liquid_set;
-  ObjectSelectorSet*  trap_set;
-  ObjectSelectorSet*  weather_set;
-  ObjectSelectorSet*  worldobj_set;
-  ObjectSelectorSet*  prefab_set;
+  std::unique_ptr<ObjectSelectorSet>  gp_ground_set;
+  std::unique_ptr<ObjectSelectorSet>  gp_solid_set;
+  std::unique_ptr<ObjectSelectorSet>  gp_bridge_set;
+  std::unique_ptr<ObjectSelectorSet>  gp_transparent_set;
+  std::unique_ptr<ObjectSelectorSet>  gp_remove_set;
+  std::unique_ptr<ObjectSelectorSet>  hotspot_set;
+  std::unique_ptr<ObjectSelectorSet>  background_set;
+  std::unique_ptr<ObjectSelectorSet>  entrance_set;
+  std::unique_ptr<ObjectSelectorSet>  exit_set;
+  std::unique_ptr<ObjectSelectorSet>  liquid_set;
+  std::unique_ptr<ObjectSelectorSet>  trap_set;
+  std::unique_ptr<ObjectSelectorSet>  weather_set;
+  std::unique_ptr<ObjectSelectorSet>  worldobj_set;
+  std::unique_ptr<ObjectSelectorSet>  prefab_set;
 
 public:
   typedef void (ObjectSelectorList::*Callback)();
@@ -59,22 +61,22 @@ public:
   void draw_background(DrawingContext& gc);
   void add_button(const std::string& image, const std::string& tooltip, ObjectSelectorSet* set);
 
-  ObjectSelectorSet* create_objects(const std::string& prefix);
-  ObjectSelectorSet* create_groundpiece(const std::string& prefix, const std::string& type);
-  ObjectSelectorSet* create_gp_ground();
-  ObjectSelectorSet* create_gp_solid();
-  ObjectSelectorSet* create_gp_bridge();
-  ObjectSelectorSet* create_gp_transparent();
-  ObjectSelectorSet* create_gp_remove();
-  ObjectSelectorSet* create_hotspot();
-  ObjectSelectorSet* create_background();
-  ObjectSelectorSet* create_entrance();
-  ObjectSelectorSet* create_exit();
-  ObjectSelectorSet* create_liquid();
-  ObjectSelectorSet* create_trap();
-  ObjectSelectorSet* create_weather();
-  ObjectSelectorSet* create_worldobj();
-  ObjectSelectorSet* create_prefab();
+  std::unique_ptr<ObjectSelectorSet> create_objects(const std::string& prefix);
+  std::unique_ptr<ObjectSelectorSet> create_groundpiece(const std::string& prefix, const std::string& type);
+  std::unique_ptr<ObjectSelectorSet> create_gp_ground();
+  std::unique_ptr<ObjectSelectorSet> create_gp_solid();
+  std::unique_ptr<ObjectSelectorSet> create_gp_bridge();
+  std::unique_ptr<ObjectSelectorSet> create_gp_transparent();
+  std::unique_ptr<ObjectSelectorSet> create_gp_remove();
+  std::unique_ptr<ObjectSelectorSet> create_hotspot();
+  std::unique_ptr<ObjectSelectorSet> create_background();
+  std::unique_ptr<ObjectSelectorSet> create_entrance();
+  std::unique_ptr<ObjectSelectorSet> create_exit();
+  std::unique_ptr<ObjectSelectorSet> create_liquid();
+  std::unique_ptr<ObjectSelectorSet> create_trap();
+  std::unique_ptr<ObjectSelectorSet> create_weather();
+  std::unique_ptr<ObjectSelectorSet> create_worldobj();
+  std::unique_ptr<ObjectSelectorSet> create_prefab();
 
   void update_layout();
 private:

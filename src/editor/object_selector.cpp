@@ -529,38 +529,25 @@ ObjectSelector::ObjectSelector(EditorScreen* editor_, const Rect& rect_) :
   worldobj_set   = create_worldobj();
   prefab_set     = create_prefab();
 
-  add_button("core/editor/obj_entrance",   _("Entrance"), entrance_set);
-  add_button("core/editor/obj_gp_ground",  _("Groundpiece (ground)"), gp_ground_set);
-  add_button("core/editor/obj_gp_solid",   _("Groundpiece (solid)"), gp_solid_set);
-  add_button("core/editor/obj_gp_bridge",  _("Groundpiece (bridge)"), gp_bridge_set);
-  add_button("core/editor/obj_gp_transparent", _("Groundpiece (transparent)"), gp_transparent_set);
-  add_button("core/editor/obj_gp_remove",  _("Groundpiece (remove)"), gp_remove_set);
-  add_button("core/editor/obj_hotspot",    _("Hotspot"), hotspot_set);
-  add_button("core/editor/obj_background", _("Background"), background_set);
+  add_button("core/editor/obj_entrance",   _("Entrance"), entrance_set.get());
+  add_button("core/editor/obj_gp_ground",  _("Groundpiece (ground)"), gp_ground_set.get());
+  add_button("core/editor/obj_gp_solid",   _("Groundpiece (solid)"), gp_solid_set.get());
+  add_button("core/editor/obj_gp_bridge",  _("Groundpiece (bridge)"), gp_bridge_set.get());
+  add_button("core/editor/obj_gp_transparent", _("Groundpiece (transparent)"), gp_transparent_set.get());
+  add_button("core/editor/obj_gp_remove",  _("Groundpiece (remove)"), gp_remove_set.get());
+  add_button("core/editor/obj_hotspot",    _("Hotspot"), hotspot_set.get());
+  add_button("core/editor/obj_background", _("Background"), background_set.get());
   // -------------------------------
-  add_button("core/editor/obj_exit",     _("Exit"), exit_set);
-  add_button("core/editor/obj_liquid",   _("Liquid"), liquid_set);
-  add_button("core/editor/obj_trap",     _("Trap"), trap_set);
-  add_button("core/editor/obj_weather",  _("Weather"), weather_set);
-  add_button("core/editor/obj_worldobj", _("Special Object"), worldobj_set);
-  add_button("core/editor/obj_prefab",   _("Prefab Object"), prefab_set);
+  add_button("core/editor/obj_exit",     _("Exit"), exit_set.get());
+  add_button("core/editor/obj_liquid",   _("Liquid"), liquid_set.get());
+  add_button("core/editor/obj_trap",     _("Trap"), trap_set.get());
+  add_button("core/editor/obj_weather",  _("Weather"), weather_set.get());
+  add_button("core/editor/obj_worldobj", _("Special Object"), worldobj_set.get());
+  add_button("core/editor/obj_prefab",   _("Prefab Object"), prefab_set.get());
 }
 
 ObjectSelector::~ObjectSelector()
 {
-  delete worldobj_set;
-  delete weather_set;
-  delete trap_set;
-  delete liquid_set; 
-  delete exit_set;
-  delete entrance_set;
-  delete background_set;
-  delete hotspot_set;
-  delete gp_remove_set;
-  delete gp_transparent_set;
-  delete gp_bridge_set;
-  delete gp_solid_set;
-  delete gp_ground_set;
 }
 
 void
@@ -588,10 +575,10 @@ ObjectSelector::add_button(const std::string& image, const std::string& tooltip,
   }
 }
 
-ObjectSelectorSet*
+std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_objects(const std::string& prefix)
 {
-  ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+  std::unique_ptr<ObjectSelectorSet> set(new ObjectSelectorSet(object_list, 48, 48));
 
   // FIXME: Simple debugging aid, needs to be replaced with custom code for the object types
   std::vector<std::string> lst = Resource::resmgr.get_section(prefix);
@@ -605,10 +592,10 @@ ObjectSelector::create_objects(const std::string& prefix)
   return set;
 }
 
-ObjectSelectorSet*
+std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_groundpiece(const std::string& prefix, const std::string& type)
 {
-  ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+  std::unique_ptr<ObjectSelectorSet> set(new ObjectSelectorSet(object_list, 48, 48));
 
   std::vector<std::string> lst = Resource::resmgr.get_section(prefix);
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
@@ -620,40 +607,40 @@ ObjectSelector::create_groundpiece(const std::string& prefix, const std::string&
   return set;
 }
 
-ObjectSelectorSet*
+std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_gp_ground()
 {
   return create_groundpiece("groundpieces/ground", "ground");
 }
 
-ObjectSelectorSet*
+std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_gp_solid()
 {
   return create_groundpiece("groundpieces/solid", "solid");
 }
 
-ObjectSelectorSet*
+std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_gp_bridge()
 {
   return create_groundpiece("groundpieces/bridge", "bridge");
 }
 
-ObjectSelectorSet*
+std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_gp_transparent()
 {
   return create_groundpiece("groundpieces/transparent", "transparent");
 }
 
-ObjectSelectorSet*
+std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_gp_remove()
 {
   return create_groundpiece("groundpieces/remove", "remove");
 }
 
-ObjectSelectorSet*
+std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_hotspot()
 {
-  ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+  std::unique_ptr<ObjectSelectorSet> set(new ObjectSelectorSet(object_list, 48, 48));
 
   std::vector<std::string> lst = Resource::resmgr.get_section("hotspots");
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
@@ -662,10 +649,10 @@ ObjectSelector::create_hotspot()
   return set;
 }
 
-ObjectSelectorSet*
+std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_background()
 {
-  ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+  std::unique_ptr<ObjectSelectorSet> set(new ObjectSelectorSet(object_list, 48, 48));
   
   set->add(new SolidColorBackground());
   set->add(new StarfieldBackground());
@@ -677,10 +664,10 @@ ObjectSelector::create_background()
   return set;
 }
 
-ObjectSelectorSet*
+std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_entrance()
 {
-  ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+  std::unique_ptr<ObjectSelectorSet> set(new ObjectSelectorSet(object_list, 48, 48));
   
   set->add(new Entrance());
 
@@ -695,10 +682,10 @@ ObjectSelector::create_entrance()
   return set;
 }
 
-ObjectSelectorSet*
+std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_exit()
 {
-  ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+  std::unique_ptr<ObjectSelectorSet> set(new ObjectSelectorSet(object_list, 48, 48));
 
   std::vector<std::string> lst = Resource::resmgr.get_section("exit");
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
@@ -709,10 +696,10 @@ ObjectSelector::create_exit()
   return set;
 }
 
-ObjectSelectorSet*
+std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_liquid()
 {
-  ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+  std::unique_ptr<ObjectSelectorSet> set(new ObjectSelectorSet(object_list, 48, 48));
 
   std::vector<std::string> lst = Resource::resmgr.get_section("liquids");
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
@@ -723,10 +710,10 @@ ObjectSelector::create_liquid()
   return set;
 }
 
-ObjectSelectorSet*
+std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_trap()
 {
-  ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+  std::unique_ptr<ObjectSelectorSet> set(new ObjectSelectorSet(object_list, 48, 48));
   set->add(new Guillotine);
   set->add(new LaserExit);
   set->add(new FakeExit);
@@ -735,19 +722,19 @@ ObjectSelector::create_trap()
   return set;
 }
 
-ObjectSelectorSet*
+std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_weather()
 {
-  ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+  std::unique_ptr<ObjectSelectorSet> set(new ObjectSelectorSet(object_list, 48, 48));
   set->add(new RainGenerator);
   set->add(new SnowGenerator);
   return set;
 }
 
-ObjectSelectorSet*
+std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_worldobj()
 {
-  ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+  std::unique_ptr<ObjectSelectorSet> set(new ObjectSelectorSet(object_list, 48, 48));
   set->add(new Teleporter);
   set->add(new TeleporterTarget);
   set->add(new IceBlock);
@@ -757,10 +744,10 @@ ObjectSelector::create_worldobj()
   return set;
 }
 
-ObjectSelectorSet*
+std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_prefab()
 {
-  ObjectSelectorSet* set = new ObjectSelectorSet(object_list, 48, 48);
+  std::unique_ptr<ObjectSelectorSet> set(new ObjectSelectorSet(object_list, 48, 48));
   set->add(new Prefab("prefabs/snow_entrance"));
   return set;
 }
