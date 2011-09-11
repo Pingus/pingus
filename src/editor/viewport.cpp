@@ -682,14 +682,27 @@ Viewport::group_selection()
     log_info("grouping selection");
 
     GroupLevelObj* group = new GroupLevelObj;
-    for(auto i = selection.begin(); i != selection.end(); ++i)
+    // iterating over all objects instead of the selection, as that
+    // way the relative object order is preserved
+    for(auto i = get_objects()->begin(); i != get_objects()->end();)
     {
-      // FIXME: ugly, refactor EditorLevel to have some more operations
-      // for manipulating the level to avoid this hackery
-      get_objects()->remove(*i);
+      // object is member of selection, so add it
+      if (selection.find(*i) != selection.end())
+      {
+        group->add_child(*i);
 
-      group->add_child(*i);
+        // FIXME: ugly, refactor EditorLevel to have some more operations
+        // for manipulating the level to avoid this hackery
+        i = get_objects()->erase(i);
+      }
+      else
+      {
+        ++i;
+      }
     }
+
+    // FIXME: could make better guesses on where to insert the group
+    // instead of just adding it to the top
     editor->get_level()->add_object(group);
 
     selection.clear();
