@@ -45,6 +45,8 @@ SDLSystem::init_display(const Size& size, bool fullscreen)
   SDL_WM_SetCaption("Pingus " VERSION " - SDL Edition", 0 /* icon */);
 
   SDL_EnableUNICODE(1);
+
+  SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
 }
 
 /* EOF */
