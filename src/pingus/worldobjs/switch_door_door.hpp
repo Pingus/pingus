@@ -53,6 +53,8 @@ public:
 
   /// The switch and the door should stay above the pingus
   float get_z_pos() const { return 100; }
+  void set_pos(const Vector3f& p) { door_pos = p; }
+  Vector3f get_pos() const { return door_pos; }
 
   void open_door();
 

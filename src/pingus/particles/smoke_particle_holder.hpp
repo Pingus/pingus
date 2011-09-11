@@ -51,6 +51,8 @@ public:
   void add_particle (float x, float y, float vel_x, float vel_y);
 
   float get_z_pos () const { return 1000.0f; }
+  void set_pos(const Vector3f& p) {}
+  Vector3f get_pos() const { return Vector3f(); }
 
   /// Let the particle move
   void update ();

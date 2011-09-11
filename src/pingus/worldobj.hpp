@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_WORLDOBJ_HPP
 
 #include "engine/display/sprite.hpp"
+#include "math/vector3f.hpp"
 #include "util/file_reader.hpp"
 
 class FileReader;
@@ -61,6 +62,9 @@ public:
 
   /** Returns the $z$-position of this object. */
   virtual float get_z_pos () const =0;
+
+  virtual void set_pos(const Vector3f& p) = 0;
+  virtual Vector3f get_pos() const = 0;
 
   /** Draws this WorldObject on the screen with the specified offset. If not
    *  overloaded, this method does nothing.

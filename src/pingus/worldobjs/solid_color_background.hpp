@@ -36,6 +36,9 @@ public:
 
   // FIXME: Make z_position editable
   float get_z_pos () const { return -10; }
+  void set_pos(const Vector3f& p) {}
+  Vector3f get_pos() const { return Vector3f(); }
+
   void update () {}
 
   void draw (SceneContext& gc);

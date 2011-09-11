@@ -41,6 +41,8 @@ public:
   Groundpiece(const FileReader& reader);
 
   float get_z_pos () const { return pos.z; }
+  void set_pos(const Vector3f& p) { pos = p; }
+  Vector3f get_pos() const { return pos; }
 
   void draw (SceneContext&) {}
   void on_startup ();

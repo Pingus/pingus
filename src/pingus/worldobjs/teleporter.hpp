@@ -37,7 +37,11 @@ public:
 
   void  draw(SceneContext& gc);
   void  update();
+
   float get_z_pos() const;
+  void set_pos(const Vector3f& p) { pos = p; }
+  Vector3f get_pos() const { return pos; }
+
   void  on_startup();
 
 private:

@@ -68,6 +68,8 @@ public:
   void remove(Surface, int x, int y);
 
   float get_z_pos () const { return 0; }
+  void set_pos(const Vector3f& p) {}
+  Vector3f get_pos() const { return Vector3f(); }
 
   /** Low level version of the remove() call, acts on a single tile
       instead of the complete map-tiles */

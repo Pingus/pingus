@@ -54,6 +54,8 @@ public:
   ~Entrance();
 
   float get_z_pos () const;
+  void set_pos(const Vector3f& p) { pos = p; }
+  Vector3f get_pos() const { return pos; }
 
   virtual bool   pingu_ready ();
   virtual void   create_pingu ();
@@ -64,7 +66,6 @@ public:
 
   void  draw_smallmap(SmallMap* smallmap);
 
-  Vector3f get_pos() const { return pos; }
   int get_owner_id() { return owner_id; }
 private:
   Entrance (const Entrance&);
