@@ -143,6 +143,7 @@ public:
       {
         if (*obj)
         {
+          (*obj)->set_pos((*obj)->get_pos() + pos);
           group.push_back(*obj);
         }
       }
