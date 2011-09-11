@@ -1,0 +1,60 @@
+//  Pingus - A free Lemmings clone
+//  Copyright (C) 1998-2011 Ingo Ruhnke <grumbel@gmx.de>
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#include "pingus/prefab_file.hpp"
+
+#include <stdexcept>
+
+#include "util/file_reader.hpp"
+
+PrefabFile
+PrefabFile::from_resource(const std::string& name)
+{
+  Pathname filename(name + ".prefab", Pathname::DATA_PATH);
+  FileReader reader = FileReader::parse(filename);
+
+  if (reader.get_name() != "pingus-prefab")
+  {
+    throw std::runtime_error("Error: " + filename.str() + ": not a 'pingus-prefab' file");
+  }
+  else
+  {
+    FileReader objects;
+    if (!reader.read_section("objects", objects) || objects.get_sections().empty())
+    {
+      throw std::runtime_error("Error: " + filename.str() + ": empty prefab file");
+    }
+    else
+    {
+      PrefabFile prefab(name, objects.get_sections());
+      return prefab;
+    }
+  }
+}
+
+PrefabFile::PrefabFile(const std::string& name, const std::vector<FileReader>& objects) :
+  m_name(name),
+  m_objects(objects)
+{
+}
+
+const std::vector<FileReader>&
+PrefabFile::get_objects() const
+{
+  return m_objects;
+}
+
+/* EOF */

@@ -25,7 +25,14 @@ namespace Editor {
 
 class GroupLevelObj : public LevelObj
 {
+public:
+  static GroupLevelObj* from_prefab(const std::string& name, LevelImpl* level);
+
 private:
+  /** unnamed Groups are saved as (group ...) named ones are
+      considered prefabs and will be saved as (prefab ...) */
+  std::string m_name;
+
   std::list<LevelObj*> m_objects;
   Vector3f m_pos;
   Vector3f m_orig_pos;

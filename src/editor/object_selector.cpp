@@ -402,6 +402,29 @@ struct GroupTest : public ObjectSelectorList::Object
   }
 };
 
+struct PrefabTest : public ObjectSelectorList::Object
+{
+private:
+  std::string m_name;
+
+public:
+  PrefabTest(const std::string& name) :
+    Object(Sprite("worldobjs/infobox"),
+           Resource::load_thumb_sprite("worldobjs/infobox")),
+    m_name(name)
+  {}
+  
+  LevelObj* create(const Vector2i& pos, LevelImpl* impl) {
+    GroupLevelObj* group = GroupLevelObj::from_prefab(m_name, impl);
+    if (group)
+    {
+      group->set_orig_pos(Vector3f(0, 0, 0));
+      group->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
+    }
+    return group;
+  }
+};
+
 class ObjectSelectorButton : public GUI::RectComponent
 {
 private:
@@ -754,6 +777,7 @@ ObjectSelector::create_worldobj()
   set->add(new SwitchDoorDoor);
   set->add(new SwitchDoorSwitch);
   set->add(new GroupTest);
+  set->add(new PrefabTest("prefabs/snow_entrance"));
   return set;
 }
 

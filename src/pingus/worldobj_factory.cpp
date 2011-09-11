@@ -18,6 +18,7 @@
 
 #include <stdexcept>
 
+#include "pingus/prefab_file.hpp"
 #include "pingus/worldobjs/conveyor_belt.hpp"
 #include "pingus/worldobjs/exit.hpp"
 #include "pingus/worldobjs/fake_exit.hpp"
@@ -115,6 +116,45 @@ private:
   WorldObjGroupFactory& operator= (const WorldObjGroupFactory&);
 };
 
+class WorldObjPrefabFactory : public WorldObjAbstractFactory
+{
+public:
+  WorldObjPrefabFactory (const std::string& id) :
+    WorldObjAbstractFactory(id)
+  {}
+
+  virtual ~WorldObjPrefabFactory() {}
+
+  virtual std::vector<WorldObj*> create(const FileReader& reader) {
+    std::string name;
+    reader.read_string("name", name);
+
+    Vector3f pos;
+    reader.read_vector("position", pos); // FIXME: No WorldObj::set_pos()/get_pos()
+
+    PrefabFile prefab = PrefabFile::from_resource(name);
+    
+    std::vector<WorldObj*> group;
+    const std::vector<FileReader>& objects = prefab.get_objects();
+    for(auto it = objects.begin(); it != objects.end(); ++it)
+    {
+      std::vector<WorldObj*> objs = WorldObjFactory::instance()->create(*it);
+      for(auto obj = objs.begin(); obj != objs.end(); ++obj)
+      {
+        if (*obj)
+        {
+          group.push_back(*obj);
+        }
+      }
+    }
+    return group;
+  }
+
+private:
+  WorldObjPrefabFactory (const WorldObjPrefabFactory&);
+  WorldObjPrefabFactory& operator= (const WorldObjPrefabFactory&);
+};
+
 WorldObjFactory::WorldObjFactory() :
   factories()
 {
@@ -130,6 +170,7 @@ WorldObjFactory::instance()
 
     // Registring Factories
     new WorldObjGroupFactory("group");
+    new WorldObjPrefabFactory("prefab");
 
     new WorldObjFactoryImpl<Liquid>("liquid");
     new WorldObjFactoryImpl<Hotspot>("hotspot");

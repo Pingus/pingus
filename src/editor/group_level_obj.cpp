@@ -16,11 +16,41 @@
 
 #include "editor/group_level_obj.hpp"
 
+#include "pingus/prefab_file.hpp"
+#include "editor/level_obj_factory.hpp"
 #include "util/log.hpp"
 
 namespace Editor {
 
+GroupLevelObj*
+GroupLevelObj::from_prefab(const std::string& name, LevelImpl* level)
+{
+  try 
+  {
+    PrefabFile prefab = PrefabFile::from_resource(name);
+
+    GroupLevelObj* group = new GroupLevelObj();
+    group->m_name = name;
+    for(auto it = prefab.get_objects().begin(); it != prefab.get_objects().end(); ++it)
+    {
+      LevelObj* obj = LevelObjFactory::create(*it, level);
+      if (obj)
+      {
+        group->add_child(obj);
+      }
+    }
+
+    return group;
+  }
+  catch(const std::exception& err)
+  {
+    log_error(err.what());
+    return 0;
+  }
+}
+
 GroupLevelObj::GroupLevelObj() :
+  m_name(),
   m_objects(),
   m_pos(),
   m_orig_pos()
@@ -46,12 +76,22 @@ GroupLevelObj::remove_child(LevelObj* obj)
 void
 GroupLevelObj::write_properties(FileWriter& writer)
 {
-  writer.begin_section("group");
-  for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
+  if (m_name.empty())
   {
-    (*it)->write_properties(writer);
+    writer.begin_section("group");
+    for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
+    {
+      (*it)->write_properties(writer);
+    }
+    writer.end_section();
   }
-  writer.end_section();
+  else
+  {
+    writer.begin_section("prefab");
+    writer.write_string("name", m_name);
+    writer.write_vector("position", m_pos);
+    writer.end_section();
+  }
 }
 
 void
@@ -75,8 +115,6 @@ GroupLevelObj::draw_selection(DrawingContext& gc)
 void
 GroupLevelObj::set_pos(const Vector3f p)
 {
-  log_tmp("group pos: " << p);
-
   Vector3f diff = p - m_pos;
   m_pos = p;
   for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
@@ -106,7 +144,6 @@ GroupLevelObj::get_rect() const
       rect.right  = std::max(rect.right, rhs.right);
       rect.bottom = std::max(rect.bottom, rhs.bottom);
     }
-    log_tmp("group rect: " << rect);
     return rect;
   }
 }
@@ -126,6 +163,11 @@ LevelObj*
 GroupLevelObj::duplicate(const Vector2i& offset) const
 {
   GroupLevelObj* group = new GroupLevelObj;
+
+  group->m_name = m_name;
+  group->m_pos = m_pos;
+  group->m_orig_pos = m_orig_pos;
+
   for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
   {
     group->add_child((*it)->duplicate(offset));

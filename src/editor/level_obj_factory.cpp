@@ -39,6 +39,26 @@ LevelObjFactory::create(const FileReader& reader, LevelImpl* level)
     }
     return group;
   }
+  if (reader.get_name() == "prefab")
+  {  
+    std::string name;
+    reader.read_string("name", name);
+
+    Vector3f p;
+    reader.read_vector("position", p);
+  
+    GroupLevelObj* group = GroupLevelObj::from_prefab(name, level);
+    if (!group)
+    {
+      return 0;
+    }
+    else
+    {
+      group->set_orig_pos(p);
+      group->set_pos(p);
+      return group;
+    }
+  }
   else
   {
     // Temporary objects
