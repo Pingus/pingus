@@ -22,6 +22,7 @@
 #include "pingus/plf_res_mgr.hpp"
 #include "pingus/savegame_manager.hpp"
 #include "util/log.hpp"
+#include "util/raise_exception.hpp"
 
 Levelset::Levelset(const Pathname& pathname) :
   title(),
@@ -49,21 +50,27 @@ Levelset::Levelset(const Pathname& pathname) :
     {
       if (i->get_name() == "level")
       {
-        Level* level = new Level();
+        std::unique_ptr<Level> level(new Level);
 
-        if (i->read_string("filename", level->resname))
+        if (!i->read_string("filename", level->resname))
         {
-          level->plf        = PLFResMgr::load_plf(level->resname);
-                  
-          level->accessible = false;
-          level->finished   = false;
-                      
-          levels.push_back(level);
+          log_error("Levelset: " << pathname.str() << " is missing filename tag");
         }
         else
         {
-          log_error("Levelset: " << pathname.str() << " is missing filename tag");
-          delete level;
+          try 
+          {
+            level->plf        = PLFResMgr::load_plf(level->resname);
+                  
+            level->accessible = false;
+            level->finished   = false;
+                      
+            levels.push_back(level.get());
+          }
+          catch(const std::exception& err)
+          {
+            log_error("failed to load: " << level->resname << ": " << err.what());
+          }
         }
       }
     }
@@ -143,9 +150,17 @@ Levelset::refresh()
 
   completion = 0;
   for(std::vector<Level*>::iterator i = levels.begin(); i != levels.end(); ++i)
+  {
     if ((*i)->finished)
+    {
       completion += 1;
-  completion = Math::clamp(0, completion * 100 / int(levels.size()), 100);
+    }
+  }
+
+  if (!levels.empty())
+  {
+    completion = Math::clamp(0, completion * 100 / int(levels.size()), 100);
+  }
 }
 
 /* EOF */
