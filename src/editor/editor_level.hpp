@@ -66,9 +66,6 @@ public:
   Size get_size() const;
   void set_size(const Size& s);
   
-  /** Return LevelImpl */
-  LevelImpl* get_level_impl() { return impl.get(); }
-
   void set_description(const std::string& str);
   void set_levelname(const std::string& str);
   void set_author(const std::string& str);

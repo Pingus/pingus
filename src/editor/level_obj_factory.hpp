@@ -29,7 +29,7 @@ class LevelObjFactory
 {
 private:
 public:
-  static LevelObjPtr create(const FileReader& reader, LevelImpl* level);
+  static LevelObjPtr create(const FileReader& reader);
 
 private:
   LevelObjFactory(const LevelObjFactory&);

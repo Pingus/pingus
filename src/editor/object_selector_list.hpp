@@ -46,7 +46,7 @@ public:
 
     virtual ~Object() {}
 
-    virtual LevelObjPtr create(const Vector2i&, LevelImpl* impl) { return LevelObjPtr(); }
+    virtual LevelObjPtr create(const Vector2i&) { return LevelObjPtr(); }
   };
 
 private:

@@ -24,9 +24,8 @@
 namespace Editor {
 
 // Default constructor
-GenericLevelObj::GenericLevelObj(std::string obj_name, LevelImpl* level_) :
+GenericLevelObj::GenericLevelObj(std::string obj_name) :
   sprite(),
-  level(level_),
   desc(),
   pos(Vector3f(0,0,0)),
   orig_pos(),
@@ -63,7 +62,6 @@ GenericLevelObj::GenericLevelObj(std::string obj_name, LevelImpl* level_) :
 GenericLevelObj::GenericLevelObj(const GenericLevelObj& rhs) :
   LevelObj(rhs),
   sprite(rhs.sprite),
-  level(rhs.level),
   desc(rhs.desc),
   pos(rhs.pos),
   orig_pos(rhs.orig_pos),

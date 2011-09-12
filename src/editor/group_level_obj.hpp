@@ -28,7 +28,7 @@ namespace Editor {
 class GroupLevelObj : public LevelObj
 {
 public:
-  static std::shared_ptr<GroupLevelObj> from_prefab(const std::string& name, LevelImpl* level);
+  static std::shared_ptr<GroupLevelObj> from_prefab(const std::string& name);
 
 private:
   /** unnamed Groups are saved as (group ...) named ones are

@@ -24,7 +24,7 @@
 namespace Editor {
 
 std::shared_ptr<GroupLevelObj>
-GroupLevelObj::from_prefab(const std::string& name, LevelImpl* level)
+GroupLevelObj::from_prefab(const std::string& name)
 {
   try 
   {
@@ -35,7 +35,7 @@ GroupLevelObj::from_prefab(const std::string& name, LevelImpl* level)
     group->m_name = name;
     for(auto it = prefab.get_objects().begin(); it != prefab.get_objects().end(); ++it)
     {
-      LevelObjPtr obj = LevelObjFactory::create(*it, level);
+      LevelObjPtr obj = LevelObjFactory::create(*it);
       if (obj)
       {
         group->add_child(obj);

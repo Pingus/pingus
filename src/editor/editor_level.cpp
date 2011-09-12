@@ -213,7 +213,7 @@ EditorLevel::load_prefab(const Pathname& pathname)
   const std::vector<FileReader>& objs = prefab.get_objects();
   for (auto i = objs.begin(); i != objs.end(); i++)
   {
-    LevelObjPtr obj = LevelObjFactory::create(*i, impl.get());
+    LevelObjPtr obj = LevelObjFactory::create(*i);
     if (obj)
     {
       // move origin of the level to the center of it
@@ -260,7 +260,7 @@ EditorLevel::load_level(const Pathname& pathname)
   std::vector<FileReader> objs = level.get_objects();
   for (std::vector<FileReader>::const_iterator i = objs.begin(); i != objs.end(); i++)
   {
-    LevelObjPtr obj = LevelObjFactory::create(*i, impl.get());
+    LevelObjPtr obj = LevelObjFactory::create(*i);
     if (obj)
     {
       add_object(obj);

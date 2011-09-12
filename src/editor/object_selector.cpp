@@ -44,8 +44,8 @@ struct Groundpiece : public ObjectSelectorList::Object
     type(type_)
   {}   
   
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) { 
-    LevelObjPtr obj(new GenericLevelObj("groundpiece", impl));
+  LevelObjPtr create(const Vector2i& pos) { 
+    LevelObjPtr obj(new GenericLevelObj("groundpiece"));
     obj->set_pos(pos);
     obj->set_res_desc(desc);
     obj->set_ground_type(type);
@@ -60,8 +60,8 @@ struct Entrance : public ObjectSelectorList::Object
              Resource::load_thumb_sprite("entrances/generic"))
   {}
 
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) { 
-    LevelObjPtr obj(new GenericLevelObj("entrance", impl));
+  LevelObjPtr create(const Vector2i& pos) { 
+    LevelObjPtr obj(new GenericLevelObj("entrance"));
     obj->set_type("generic");
     obj->set_pos(pos);
     obj->set_pos_z(110);
@@ -82,8 +82,8 @@ struct Exit : public ObjectSelectorList::Object
       desc(name)
   {}
 
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) { 
-    LevelObjPtr obj(new GenericLevelObj("exit", impl));
+  LevelObjPtr create(const Vector2i& pos) { 
+    LevelObjPtr obj(new GenericLevelObj("exit"));
     obj->set_pos(pos);
     obj->set_res_desc(desc);
     // obj->set_para();
@@ -103,8 +103,8 @@ struct Hotspot : public ObjectSelectorList::Object
       z_pos(z_pos_)
   {}
 
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) { 
-    LevelObjPtr obj(new GenericLevelObj("hotspot", impl));
+  LevelObjPtr create(const Vector2i& pos) { 
+    LevelObjPtr obj(new GenericLevelObj("hotspot"));
     obj->set_pos(pos);
     obj->set_pos_z(static_cast<float>(z_pos));
     obj->set_res_desc(desc);
@@ -123,8 +123,8 @@ struct SurfaceBackground : public ObjectSelectorList::Object
       desc(name)
   {}
 
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) { 
-    LevelObjPtr obj(new GenericLevelObj("surface-background", impl));
+  LevelObjPtr create(const Vector2i& pos) { 
+    LevelObjPtr obj(new GenericLevelObj("surface-background"));
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y), -1000.0f)); // FIXME: Hack, z-pos handling is messed up
     obj->set_para_x(0.5f);
     obj->set_para_y(0.5f);
@@ -144,8 +144,8 @@ struct SolidColorBackground : public ObjectSelectorList::Object
              Resource::load_thumb_sprite("core/editor/solidcolorbackground_thumb"))
   {}
   
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) {
-    LevelObjPtr obj(new GenericLevelObj("solidcolor-background", impl));
+  LevelObjPtr create(const Vector2i& pos) {
+    LevelObjPtr obj(new GenericLevelObj("solidcolor-background"));
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y), -1000.0f)); // FIXME: Hack, z-pos handling is messed up
     obj->set_color(Color(255, 0, 255));
     return obj;
@@ -159,8 +159,8 @@ struct StarfieldBackground : public ObjectSelectorList::Object
              Resource::load_thumb_sprite("core/editor/starfield_thumb"))
   {}
   
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) {
-    LevelObjPtr obj(new GenericLevelObj("starfield-background", impl));
+  LevelObjPtr create(const Vector2i& pos) {
+    LevelObjPtr obj(new GenericLevelObj("starfield-background"));
     // FIXME: Hack, z-pos handling is messed up
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y), -1000.0f)); 
     obj->set_small_stars(500);
@@ -180,8 +180,8 @@ struct Liquid : public ObjectSelectorList::Object
       desc(name)
   {}
   
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) {
-    LevelObjPtr obj(new GenericLevelObj("liquid", impl));
+  LevelObjPtr create(const Vector2i& pos) {
+    LevelObjPtr obj(new GenericLevelObj("liquid"));
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     obj->set_res_desc(desc);
     obj->set_repeat(1);
@@ -196,8 +196,8 @@ struct Guillotine : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("traps/guillotineidle"))
   {}
   
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) {
-    LevelObjPtr obj(new GenericLevelObj("guillotine", impl));
+  LevelObjPtr create(const Vector2i& pos) {
+    LevelObjPtr obj(new GenericLevelObj("guillotine"));
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     return obj;     
   }
@@ -210,8 +210,8 @@ struct FakeExit : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("traps/fake_exit"))
   {}
   
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) {
-    LevelObjPtr obj(new GenericLevelObj("fake_exit", impl));
+  LevelObjPtr create(const Vector2i& pos) {
+    LevelObjPtr obj(new GenericLevelObj("fake_exit"));
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     return obj;     
   }
@@ -224,8 +224,8 @@ struct LaserExit : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("traps/laser_exit"))
   {}
   
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) {
-    LevelObjPtr obj(new GenericLevelObj("laser_exit", impl));
+  LevelObjPtr create(const Vector2i& pos) {
+    LevelObjPtr obj(new GenericLevelObj("laser_exit"));
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     return obj;
   }
@@ -238,8 +238,8 @@ struct Smasher : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("traps/smasher"))
   {}
   
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) {
-    LevelObjPtr obj(new GenericLevelObj("smasher", impl));
+  LevelObjPtr create(const Vector2i& pos) {
+    LevelObjPtr obj(new GenericLevelObj("smasher"));
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     return obj;
   }
@@ -252,8 +252,8 @@ struct Hammer : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("traps/hammer"))
   {}
   
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) {
-    LevelObjPtr obj(new GenericLevelObj("hammer", impl));
+  LevelObjPtr create(const Vector2i& pos) {
+    LevelObjPtr obj(new GenericLevelObj("hammer"));
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     return obj;
   }
@@ -266,8 +266,8 @@ struct SnowGenerator : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("core/editor/weather_snow"))
   {}
   
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) {
-    LevelObjPtr obj(new GenericLevelObj("snow-generator", impl));
+  LevelObjPtr create(const Vector2i& pos) {
+    LevelObjPtr obj(new GenericLevelObj("snow-generator"));
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     return obj;
   }
@@ -280,8 +280,8 @@ struct RainGenerator : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("core/editor/weather_rain"))
   {}
   
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) {
-    LevelObjPtr obj(new GenericLevelObj("rain-generator", impl));
+  LevelObjPtr create(const Vector2i& pos) {
+    LevelObjPtr obj(new GenericLevelObj("rain-generator"));
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     return obj;
   }
@@ -294,8 +294,8 @@ struct Teleporter : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("worldobjs/teleporter"))
   {}
   
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) {
-    LevelObjPtr obj(new GenericLevelObj("teleporter", impl));
+  LevelObjPtr create(const Vector2i& pos) {
+    LevelObjPtr obj(new GenericLevelObj("teleporter"));
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     obj->set_target_id("");
     return obj;
@@ -309,8 +309,8 @@ struct TeleporterTarget : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("worldobjs/teleportertarget"))
   {}
   
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) {
-    LevelObjPtr obj(new GenericLevelObj("teleporter-target", impl));
+  LevelObjPtr create(const Vector2i& pos) {
+    LevelObjPtr obj(new GenericLevelObj("teleporter-target"));
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     obj->set_id("id" + StringUtil::to_string(rand()));
     return obj;
@@ -324,8 +324,8 @@ struct IceBlock : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("worldobjs/iceblock"))
   {}
   
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) {
-    LevelObjPtr obj(new GenericLevelObj("iceblock", impl));
+  LevelObjPtr create(const Vector2i& pos) {
+    LevelObjPtr obj(new GenericLevelObj("iceblock"));
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     obj->set_repeat(1);
     return obj;
@@ -339,8 +339,8 @@ struct Conveyorbelt : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("worldobjs/conveyorbelt_middle"))
   {}
   
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) {
-    LevelObjPtr obj(new GenericLevelObj("conveyorbelt", impl));
+  LevelObjPtr create(const Vector2i& pos) {
+    LevelObjPtr obj(new GenericLevelObj("conveyorbelt"));
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     obj->set_repeat(1);
     return obj;
@@ -354,8 +354,8 @@ struct SwitchDoorSwitch : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("worldobjs/switchdoor_switch"))
   {}
   
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) {
-    LevelObjPtr obj(new GenericLevelObj("switchdoor-switch", impl));
+  LevelObjPtr create(const Vector2i& pos) {
+    LevelObjPtr obj(new GenericLevelObj("switchdoor-switch"));
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     obj->set_height(15);
     obj->set_target_id("");
@@ -370,8 +370,8 @@ struct SwitchDoorDoor : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("worldobjs/switchdoor_box"))
   {}
   
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) {
-    LevelObjPtr obj(new GenericLevelObj("switchdoor-door", impl));
+  LevelObjPtr create(const Vector2i& pos) {
+    LevelObjPtr obj(new GenericLevelObj("switchdoor-door"));
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     obj->set_repeat(1);
     obj->set_id("id" + StringUtil::to_string(rand()));
@@ -391,8 +391,8 @@ public:
     m_name(name)
   {}
   
-  LevelObjPtr create(const Vector2i& pos, LevelImpl* impl) {
-    std::shared_ptr<GroupLevelObj> group = GroupLevelObj::from_prefab(m_name, impl);
+  LevelObjPtr create(const Vector2i& pos) {
+    std::shared_ptr<GroupLevelObj> group = GroupLevelObj::from_prefab(m_name);
     if (group)
     {
       group->set_orig_pos(Vector3f(0, 0, 0));

@@ -30,9 +30,6 @@ protected:
   /** Sprite used to draw this object */
   Sprite sprite;
   
-  /** Level to which this object belongs */
-  LevelImpl* level;
-
   /** Resource Desciptor of this object */
   ResDescriptor desc;
 
@@ -179,7 +176,7 @@ public:
   /// Operations
 public:
   /** Default Constructor */
-  GenericLevelObj(const std::string obj_name, LevelImpl* level_);
+  GenericLevelObj(const std::string obj_name);
   GenericLevelObj(const GenericLevelObj& rhs);
 
   /** Destructor */
