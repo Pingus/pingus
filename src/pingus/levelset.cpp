@@ -144,7 +144,7 @@ Levelset::refresh()
   if (!levels.empty())
   {
     levels[0]->accessible = true; 
-    for(std::vector<Level*>::size_type i = 1; i < levels.size()-1; ++i)
+    for(std::vector<Level*>::size_type i = 0; i < levels.size()-1; ++i)
     {
       if (levels[i]->finished)
       {
