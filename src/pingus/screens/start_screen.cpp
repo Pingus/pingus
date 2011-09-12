@@ -98,7 +98,7 @@ private:
 public:
   StartScreenAbortButton(StartScreen* p)
     : GUI::SurfaceButton(Display::get_width()/2 - 300,
-                         Display::get_height()/2 + 144,
+                         Display::get_height()/2 + 200,
                          "core/start/back",
                          "core/start/back_clicked",
                          "core/start/back_hover"),
@@ -249,7 +249,7 @@ StartScreen::resize(const Size& size_)
 {
   GUIScreen::resize(size_);
 
-  abort_button->set_pos(size.width/2 - 300, size.height/2 + 144);
+  abort_button->set_pos(size.width /2 - 300, size.height/2 + 200);
   ok_button   ->set_pos(size.width/2 + 225, size.height/2 + 125);
 }
 
