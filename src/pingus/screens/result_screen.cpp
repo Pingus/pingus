@@ -255,8 +255,8 @@ ResultScreen::ResultScreen(Result arg_result) :
   if (result.success())
   {
     gui_manager->add(ok_button = new ResultScreenOkButton(this, 
-                                                          Display::get_width()/2 + 225,
-                                                          Display::get_height()/2 + 125));
+                                                          Display::get_width()/2 + 245,
+                                                          Display::get_height()/2 + 150));
   }
   else
   {
@@ -264,8 +264,8 @@ ResultScreen::ResultScreen(Result arg_result) :
                                                                 Display::get_width()/2 - 300,
                                                                 Display::get_height()/2 + 200));
     gui_manager->add(retry_button = new ResultScreenRetryButton(this,
-                                                                Display::get_width()/2 + 225,
-                                                                Display::get_height()/2 + 125));
+                                                                Display::get_width()/2 + 245,
+                                                                Display::get_height()/2 + 150));
   }
 
   //gui_manager->add(new GUI::SurfaceButton(500, 500, cancel_desc, cancel_desc, cancel_desc), true);
@@ -323,13 +323,13 @@ ResultScreen::resize(const Size& size_)
   GUIScreen::resize(size_);
 
   if (ok_button)
-    ok_button->set_pos(size.width/2 + 225, size.height/2 + 125);
+    ok_button->set_pos(size.width/2 + 245, size.height/2 + 150);
 
   if (abort_button)
     abort_button->set_pos(size.width/2 - 300, size.height/2 + 144);
 
   if (retry_button)  
-    retry_button->set_pos(size.width/2 + 225, size.height/2 + 125);
+    retry_button->set_pos(size.width/2 + 245, size.height/2 + 150);
 }
 
 /* EOF */

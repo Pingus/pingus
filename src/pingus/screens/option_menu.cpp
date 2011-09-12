@@ -90,8 +90,8 @@ OptionMenu::OptionMenu() :
 {
   background = Sprite("core/menu/optionmenu");
   gui_manager->add(ok_button = new OptionMenuCloseButton(this, 
-                                                         Display::get_width()/2 + 225,
-                                                         Display::get_height()/2 + 125));
+                                                         Display::get_width()/2 + 245,
+                                                         Display::get_height()/2 + 150));
 
   x_pos = 0;
   y_pos = 0;
@@ -282,7 +282,7 @@ OptionMenu::draw_background(DrawingContext& gc)
                            gc.get_height()/2 - 210),
                   _("Option Menu"));
 
-  gc.print_center(Fonts::chalk_normal, Vector2i(gc.get_width()/2 + 225 + 30, gc.get_height()/2 + 125 - 20), _("Close"));
+  gc.print_center(Fonts::chalk_normal, Vector2i(gc.get_width()/2 + 245 + 30, gc.get_height()/2 + 150 - 20), _("Close"));
 }
 
 void
@@ -298,7 +298,7 @@ OptionMenu::resize(const Size& size_)
   GUIScreen::resize(size_);
 
   if (ok_button)
-    ok_button->set_pos(size.width/2 + 225, size.height/2 + 125);
+    ok_button->set_pos(size.width/2 + 245, size.height/2 + 150);
   if (defaults_label)
     defaults_label->set_rect(Rect(Vector2i(Display::get_width()/2 - 100, Display::get_height()/2 + 160), Size(170, 32)));
   if (defaults_box)

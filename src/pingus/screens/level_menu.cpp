@@ -295,9 +295,9 @@ public:
       for(int i = page; i < (page + items_per_page) && i < levelset->get_level_count(); ++i)
       {
         if (!levelset->get_level(i)->accessible)
-          gc.draw(marker_locked, Vector2i(10, y));
+          gc.draw(marker_locked, Vector2i(20, y));
         else if (i == current_level)
-          gc.draw(marker, Vector2i(10, y));
+          gc.draw(marker, Vector2i(20, y));
                         
         if (globals::maintainer_mode)
           gc.print_left(Fonts::chalk_small, Vector2i(list_rect.left, y+4), levelset->get_level(i)->plf.get_resname());

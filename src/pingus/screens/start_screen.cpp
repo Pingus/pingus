@@ -53,8 +53,8 @@ private:
   StartScreen* parent;
 public:
   StartScreenOkButton(StartScreen* p)
-    : GUI::SurfaceButton(Display::get_width()/2 + 225,
-                         Display::get_height()/2 + 125,
+    : GUI::SurfaceButton(Display::get_width()/2 + 245,
+                         Display::get_height()/2 + 150,
                          "core/start/ok",
                          "core/start/ok_clicked",
                          "core/start/ok_hover"),
@@ -64,7 +64,7 @@ public:
 
   void draw(DrawingContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_center(Fonts::chalk_normal, Vector2i(x_pos + 30, y_pos - 20), _("Ok"));
+    gc.print_center(Fonts::chalk_normal, Vector2i(x_pos + 30, y_pos - 20), _("Play"));
   }
 
   bool is_at(int x, int y) {
@@ -250,7 +250,7 @@ StartScreen::resize(const Size& size_)
   GUIScreen::resize(size_);
 
   abort_button->set_pos(size.width /2 - 300, size.height/2 + 200);
-  ok_button   ->set_pos(size.width/2 + 225, size.height/2 + 125);
+  ok_button   ->set_pos(size.width/2 + 245, size.height/2 + 150);
 }
 
 /* EOF */
