@@ -373,7 +373,7 @@ GenericLevelObj::load_generic_surface()
   }
   else if (section_name == "spike")
   {
-    desc.res_name = "traps/spike";
+    desc.res_name = "traps/spike_editor";
     desc.modifier = ResourceModifier::ROT0;
     sprite = Sprite(desc);
   }
