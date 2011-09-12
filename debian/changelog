@@ -1,3 +1,10 @@
+pingus (0.7.3.6-1~ppa1) natty; urgency=low
+
+  * removed obsolete 10_fix_data_directory
+  * modified the debian folder for build new pingus version
+
+ -- Gabriel Rota <gabriel.rota@gmail.com>  Fri, 09 Sep 2011 21:18:00 +0200
+
 pingus (0.7.3.5-1~ppa1) maverick; urgency=low
 
   * add music by Kev Bailey

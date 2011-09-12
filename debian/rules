@@ -9,7 +9,7 @@ configure: configure-stamp
 configure-stamp: $(QUILT_STAMPFN)
 	dh_testdir
 	cat debian/options.cache | sed -e 's/:CFLAGS:/$(CFLAGS)/g' > options.cache
-	scons configure prefix=/usr resources_dir=/usr/share/games/pingus lib_dir=$(CURDIR)
+#	scons configure prefix=/usr resources_dir=/usr/share/games/pingus lib_dir=$(CURDIR)
 	touch $@
 
 build: build-stamp
@@ -35,19 +35,25 @@ clean-patched:
 	rm -f `find . -name "*.so"`
 	rm -f config.log options.cache bt.xml .sconsign.dblite
 	rm -rf .sconf_temp build/release
+	rm -rf build/
 
 install: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k -a
+	#dh_clean -k -a
+	dh_prep -k -a
 	dh_installdirs
+	mv build/pingus build/pingus.bin
+	echo "#!/bin/sh\nexec \"/usr/games/pingus.bin\" --datadir \"/usr/share/games/pingus/data\" --language \$$LANG" > build/pingus
+	chmod 755 build/pingus
 
 # Build architecture-independent files here.
 binary-indep:
 	dh_testdir
 	dh_testroot
-	dh_clean -k -i
-	dh_installchangelogs -i ChangeLog
+	#dh_clean -k -i
+	dh_prep -k -i
+	#dh_installchangelogs -i ChangeLog
 	dh_installdocs -i --exclude=pingus.6
 
 	mkdir -p "$(CURDIR)/debian/pingus-data/usr/share/games/pingus/"
@@ -65,7 +71,8 @@ binary-indep:
 		-name "*.worldmap" -o \
 		-name "*.res" -o \
 		-name "*.pingus" -o \
-		-name "*.levelset" \
+		-name "*.levelset" -o \
+		-name "*.sprite" \
 		\) -exec cp --parents -v {} "$(CURDIR)/debian/pingus-data/usr/share/games/pingus/" \;
 
 	dh_install -i
@@ -81,7 +88,7 @@ binary-indep:
 binary-arch: build install
 	dh_testdir
 	dh_testroot
-	dh_installchangelogs -a ChangeLog
+#	dh_installchangelogs -a ChangeLog
 	dh_installdocs -a --exclude=pingus.6
 	dh_installexamples -a
 	dh_install -a

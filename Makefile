@@ -23,11 +23,14 @@ build/pingus:
 	mkdir -p build
 	scons src
 	scons
+	ln -fs build/pingus
 
 clean:
 	scons -c
 	rm -rf .sconf_temp/
 	rm -f .sconsign.dblite
+	rm -rf build/
+	rm pingus
 
 install: install-exec install-data
 
@@ -54,7 +57,8 @@ install-data:
         -name "*.worldmap" -o \
         -name "*.res" -o \
         -name "*.pingus" -o \
-        -name "*.levelset" \
+        -name "*.levelset" -o \
+        -name "*.sprite" \
         \) -exec install -D {} $(DESTDIR)$(DATADIR)/{} \;
 
 .PHONY : clean install install-exec install-data
