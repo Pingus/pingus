@@ -24,7 +24,7 @@
 #include <vector>
 
 #include "editor/editor_screen.hpp"
-#include "editor/level_objs.hpp"
+#include "editor/level_obj.hpp"
 #include "editor/editor_level.hpp"
 
 namespace Editor {

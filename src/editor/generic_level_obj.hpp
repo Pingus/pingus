@@ -18,7 +18,7 @@
 #ifndef HEADER_PINGUS_EDITOR_GENERIC_LEVEL_OBJ_HPP
 #define HEADER_PINGUS_EDITOR_GENERIC_LEVEL_OBJ_HPP
 
-#include "editor/level_objs.hpp"
+#include "editor/level_obj.hpp"
 
 namespace Editor {
 

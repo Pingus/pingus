@@ -20,7 +20,7 @@
 
 #include "editor/generic_level_obj.hpp"
 #include "editor/gui_style.hpp"
-#include "editor/level_objs.hpp"
+#include "editor/level_obj.hpp"
 #include "editor/group_level_obj.hpp"
 #include "editor/object_selector_set.hpp"
 #include "pingus/fonts.hpp"

@@ -22,7 +22,7 @@
 #include "editor/gui_style.hpp"
 #include "editor/inputbox.hpp"
 #include "editor/label.hpp"
-#include "editor/level_objs.hpp"
+#include "editor/level_obj.hpp"
 #include "pingus/gettext.h"
 #include "pingus/groundtype.hpp"
 #include "util/log.hpp"

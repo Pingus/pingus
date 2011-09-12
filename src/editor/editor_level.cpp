@@ -19,7 +19,7 @@
 
 #include <algorithm>
 
-#include "editor/level_objs.hpp"
+#include "editor/level_obj.hpp"
 #include "editor/level_obj_factory.hpp"
 #include "editor/generic_level_obj.hpp"
 #include "editor/level_impl.hpp"

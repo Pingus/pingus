@@ -14,8 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_EDITOR_LEVEL_OBJS_HPP
-#define HEADER_PINGUS_EDITOR_LEVEL_OBJS_HPP
+#ifndef HEADER_PINGUS_EDITOR_LEVEL_OBJ_HPP
+#define HEADER_PINGUS_EDITOR_LEVEL_OBJ_HPP
 
 #include "engine/display/sprite.hpp"
 #include "math/color.hpp"
