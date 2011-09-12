@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_EDITOR_OBJECT_SELECTOR_LIST_HPP
 #define HEADER_PINGUS_EDITOR_OBJECT_SELECTOR_LIST_HPP
 
+#include "editor/level_obj_ptr.hpp"
 #include "engine/display/sprite.hpp"
 #include "engine/gui/rect_component.hpp"
 
@@ -45,7 +46,7 @@ public:
 
     virtual ~Object() {}
 
-    virtual LevelObj* create(const Vector2i&, LevelImpl* impl) { return 0; }
+    virtual LevelObjPtr create(const Vector2i&, LevelImpl* impl) { return LevelObjPtr(); }
   };
 
 private:

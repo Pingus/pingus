@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_EDITOR_LEVEL_OBJ_HPP
 #define HEADER_PINGUS_EDITOR_LEVEL_OBJ_HPP
 
+#include "editor/level_obj_ptr.hpp"
 #include "engine/display/sprite.hpp"
 #include "math/color.hpp"
 #include "math/rect.hpp"
@@ -244,7 +245,7 @@ public:
   virtual void set_middle_stars(int n) = 0;
   virtual void set_large_stars(int n)  = 0;
 
-  virtual LevelObj* duplicate(const Vector2i& offset) const = 0;
+  virtual LevelObjPtr duplicate(const Vector2i& offset) const = 0;
 };
   
 } // namespace Editor 

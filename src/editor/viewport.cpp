@@ -75,7 +75,6 @@ Viewport::Viewport(EditorScreen* e, const Rect& rect_)  :
 // Destructor
 Viewport::~Viewport ()
 {
-  delete drawing_context;
 }
 
 void
@@ -120,7 +119,7 @@ Viewport::on_primary_button_press(int x_, int y_)
   
   if (current_action == NOTHING)
   {
-    LevelObj* obj = editor->get_level()->object_at(mouse_world_pos.x, mouse_world_pos.y);
+    LevelObjPtr obj = editor->get_level()->object_at(mouse_world_pos.x, mouse_world_pos.y);
 
     if (obj)
     {
@@ -580,7 +579,7 @@ Viewport::duplicate_selected_objects()
   Selection new_selection;
   for(auto i = selection.begin(); i != selection.end(); ++i)
   {
-    LevelObj* clone = (*i)->duplicate(Vector2i(32, 32));
+    LevelObjPtr clone = (*i)->duplicate(Vector2i(32, 32));
     if (clone)
     {
       new_selection.insert(clone);
@@ -599,11 +598,9 @@ Viewport::delete_selected_objects()
   for(auto i = selection.begin(); i != selection.end(); ++i)
     (*i)->remove();
   
-  (*get_objects()).erase(std::remove_if((*get_objects()).begin(), (*get_objects()).end(), boost::mem_fn(&LevelObj::is_removed)),
+  (*get_objects()).erase(std::remove_if((*get_objects()).begin(), (*get_objects()).end(), 
+                                        std::bind(&LevelObj::is_removed, std::placeholders::_1)),
                          (*get_objects()).end());
-
-  for(auto i = selection.begin(); i != selection.end(); ++i)
-    delete (*i);
 
   selection.clear();
   selection_changed(selection);
@@ -711,7 +708,7 @@ Viewport::group_selection()
   {
     log_info("grouping selection");
 
-    GroupLevelObj* group = new GroupLevelObj;
+    std::shared_ptr<GroupLevelObj> group(new GroupLevelObj);
     // iterating over all objects instead of the selection, as that
     // way the relative object order is preserved
     for(auto i = get_objects()->begin(); i != get_objects()->end();)
@@ -749,7 +746,7 @@ Viewport::ungroup_selection()
 
   for(auto i = selection.begin(); i != selection.end(); ++i)
   {
-    GroupLevelObj* group = dynamic_cast<GroupLevelObj*>(*i);
+    std::shared_ptr<GroupLevelObj> group = std::dynamic_pointer_cast<GroupLevelObj>(*i);
     if (group)
     {
       auto group_it = std::find(get_objects()->begin(), get_objects()->end(), group);

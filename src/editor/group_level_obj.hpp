@@ -26,14 +26,14 @@ namespace Editor {
 class GroupLevelObj : public LevelObj
 {
 public:
-  static GroupLevelObj* from_prefab(const std::string& name, LevelImpl* level);
+  static std::shared_ptr<GroupLevelObj> from_prefab(const std::string& name, LevelImpl* level);
 
 private:
   /** unnamed Groups are saved as (group ...) named ones are
       considered prefabs and will be saved as (prefab ...) */
   std::string m_name;
 
-  std::list<LevelObj*> m_objects;
+  std::list<LevelObjPtr> m_objects;
   Vector3f m_pos;
   Vector3f m_orig_pos;
 
@@ -41,13 +41,13 @@ public:
   GroupLevelObj();
   ~GroupLevelObj();
 
-  void add_child(LevelObj*);
-  void remove_child(LevelObj*);
+  void add_child(LevelObjPtr);
+  void remove_child(LevelObjPtr);
 
   void draw(DrawingContext& gc);
   void draw_selection(DrawingContext &gc);
 
-  std::list<LevelObj*>& get_objects() { return m_objects; }
+  std::list<LevelObjPtr>& get_objects() { return m_objects; }
 
 public:
   /** Retrieve the object's position */
@@ -215,7 +215,7 @@ public:
   void set_middle_stars(int n) {}
   void set_large_stars(int n)  {}
 
-  LevelObj* duplicate(const Vector2i& offset) const;
+  LevelObjPtr duplicate(const Vector2i& offset) const;
 
 private:
   GroupLevelObj(const GroupLevelObj&);

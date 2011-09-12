@@ -222,7 +222,7 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
   height_inputbox->on_change.connect(std::bind(&ObjectProperties::on_height_change, this, std::placeholders::_1));
   // ___________________________________________________________________
   //
-  set_object(0);
+  set_object(LevelObjPtr());
 }
 
 ObjectProperties::~ObjectProperties()
@@ -343,7 +343,7 @@ ObjectProperties::hide_all()
 }
 
 void
-ObjectProperties::set_object(LevelObj* obj)
+ObjectProperties::set_object(LevelObjPtr obj)
 {
   hide_all();
 
@@ -514,13 +514,13 @@ ObjectProperties::set_objects(const Selection& objs)
   {
     type_label->set_text(_("Object:"));
     mesg_label->set_text(_("Nothing selected"));
-    set_object(0);
+    set_object(LevelObjPtr());
   }
   else if (objects.size() > 1)
   {
     type_label->set_text(_("Object: [Group]"));
     mesg_label->set_text(_("Group not supported"));
-    set_object(0);
+    set_object(LevelObjPtr());
   }
   else
   {

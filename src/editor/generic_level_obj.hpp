@@ -289,7 +289,7 @@ public:
   void set_middle_stars(int n) {  middle_stars = n; }
   void set_large_stars(int n)  {   large_stars = n; }
 
-  LevelObj* duplicate(const Vector2i& offset) const;
+  LevelObjPtr duplicate(const Vector2i& offset) const;
 
 private:
   /** Loads any generic images necessary for objects with HAS_FAKE_SURFACE */

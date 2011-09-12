@@ -22,18 +22,18 @@
 
 namespace Editor {
 
-GroupLevelObj*
+std::shared_ptr<GroupLevelObj>
 GroupLevelObj::from_prefab(const std::string& name, LevelImpl* level)
 {
   try 
   {
     PrefabFile prefab = PrefabFile::from_resource(name);
 
-    GroupLevelObj* group = new GroupLevelObj();
+    std::shared_ptr<GroupLevelObj> group(new GroupLevelObj);
     group->m_name = name;
     for(auto it = prefab.get_objects().begin(); it != prefab.get_objects().end(); ++it)
     {
-      LevelObj* obj = LevelObjFactory::create(*it, level);
+      LevelObjPtr obj = LevelObjFactory::create(*it, level);
       if (obj)
       {
         group->add_child(obj);
@@ -45,7 +45,7 @@ GroupLevelObj::from_prefab(const std::string& name, LevelImpl* level)
   catch(const std::exception& err)
   {
     log_error(err.what());
-    return 0;
+    return std::shared_ptr<GroupLevelObj>();
   }
 }
 
@@ -62,13 +62,13 @@ GroupLevelObj::~GroupLevelObj()
 }
 
 void
-GroupLevelObj::add_child(LevelObj* obj)
+GroupLevelObj::add_child(LevelObjPtr obj)
 {
   m_objects.push_back(obj);
 }
 
 void
-GroupLevelObj::remove_child(LevelObj* obj)
+GroupLevelObj::remove_child(LevelObjPtr obj)
 {
   m_objects.push_back(obj);
 }
@@ -159,10 +159,10 @@ GroupLevelObj::is_at(int x, int y)
   return false;
 }
 
-LevelObj*
+LevelObjPtr
 GroupLevelObj::duplicate(const Vector2i& offset) const
 {
-  GroupLevelObj* group = new GroupLevelObj;
+  std::shared_ptr<GroupLevelObj> group(new GroupLevelObj);
 
   group->m_name = m_name;
   group->m_pos = m_pos;

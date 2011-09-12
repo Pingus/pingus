@@ -24,6 +24,7 @@
 #include <vector>
 
 #include "math/size.hpp"
+#include "editor/level_obj.hpp"
 
 class Pathname;
 
@@ -36,7 +37,7 @@ class LevelObj;
 class EditorLevel
 {
 public:
-  typedef std::list<LevelObj*> Objects;
+  typedef std::list<LevelObjPtr> Objects;
 
   /** Construct new blank level */
   EditorLevel();
@@ -94,16 +95,16 @@ public:
   void set_action(const std::string& actionname, int count); 
   std::map<std::string, int> get_actions() const;
 
-  void raise_object(LevelObj* obj);
-  void lower_object(LevelObj* obj);
+  void raise_object(LevelObjPtr obj);
+  void lower_object(LevelObjPtr obj);
 
-  void raise_object_to_top(LevelObj* obj);
-  void lower_object_to_bottom(LevelObj* obj);
+  void raise_object_to_top(LevelObjPtr obj);
+  void lower_object_to_bottom(LevelObjPtr obj);
 
   Objects* get_objects();
 
-  void add_object(LevelObj* obj);
-  LevelObj* object_at (int x, int y);
+  void add_object(LevelObjPtr obj);
+  LevelObjPtr object_at (int x, int y);
 
 private:
   std::unique_ptr<LevelImpl> impl;

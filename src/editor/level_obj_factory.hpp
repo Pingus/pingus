@@ -17,18 +17,19 @@
 #ifndef HEADER_PINGUS_EDITOR_LEVEL_OBJ_FACTORY_HPP
 #define HEADER_PINGUS_EDITOR_LEVEL_OBJ_FACTORY_HPP
 
+#include "editor/level_obj_ptr.hpp"
+
 class FileReader;
 
 namespace Editor {
 
-class LevelObj;
 class LevelImpl;
 
 class LevelObjFactory
 {
 private:
 public:
-  static LevelObj* create(const FileReader& reader, LevelImpl* level);
+  static LevelObjPtr create(const FileReader& reader, LevelImpl* level);
 
 private:
   LevelObjFactory(const LevelObjFactory&);

@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_EDITOR_MINIMAP_HPP
 #define HEADER_PINGUS_EDITOR_MINIMAP_HPP
 
+#include <memory>
+
 #include "engine/gui/rect_component.hpp"
 
 namespace Editor {
@@ -27,7 +29,7 @@ class Minimap : public GUI::RectComponent
 {
 private:
   EditorScreen* editor;
-  DrawingContext* drawing_context;
+  std::unique_ptr<DrawingContext> drawing_context;
   bool dragging;
   
 public:

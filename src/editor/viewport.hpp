@@ -42,7 +42,7 @@ class Viewport : public GUI::RectComponent
 {
 private:        
   GraphicContextState state;
-  DrawingContext* drawing_context;
+  std::unique_ptr<DrawingContext> drawing_context;
 
   /** The EditorScreen to which this viewport belongs */
   EditorScreen* editor;

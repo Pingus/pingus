@@ -14,16 +14,16 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_EDITOR_SELECTION_HPP
-#define HEADER_PINGUS_EDITOR_SELECTION_HPP
+#ifndef HEADER_PINGUS_EDITOR_LEVEL_OBJ_PTR_HPP
+#define HEADER_PINGUS_EDITOR_LEVEL_OBJ_PTR_HPP
 
-#include <set>
-
-#include "editor/level_obj_ptr.hpp"
+#include <memory>
 
 namespace Editor {
 
-typedef std::set<LevelObjPtr> Selection;
+class LevelObj;
+
+typedef std::shared_ptr<LevelObj> LevelObjPtr;
 
 } // namespace Editor
 

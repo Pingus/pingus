@@ -31,7 +31,7 @@
 
 namespace Editor {
 
-static bool LevelObjSort(LevelObj *a, LevelObj *b)
+static bool LevelObjSort(const LevelObjPtr& a, const LevelObjPtr& b)
 {
   return (a->get_pos().z < b->get_pos().z);
 }
@@ -121,10 +121,9 @@ EditorLevel::save_prefab(const std::string& filename)
   fw.begin_section("objects");
   for (auto it = impl->objects.begin(); it != impl->objects.end(); ++it)
   {
-    LevelObj* obj = (*it)->duplicate(Vector2i(static_cast<int>(-level_center.x),
-                                              static_cast<int>(-level_center.y)));
+    LevelObjPtr obj = (*it)->duplicate(Vector2i(static_cast<int>(-level_center.x),
+                                                static_cast<int>(-level_center.y)));
     obj->write_properties(fw);
-    delete obj;
   }
   fw.end_section();     // objects
 
@@ -212,7 +211,7 @@ EditorLevel::load_prefab(const Pathname& pathname)
   const std::vector<FileReader>& objs = prefab.get_objects();
   for (auto i = objs.begin(); i != objs.end(); i++)
   {
-    LevelObj* obj = LevelObjFactory::create(*i, impl.get());
+    LevelObjPtr obj = LevelObjFactory::create(*i, impl.get());
     if (obj)
     {
       // move origin of the level to the center of it
@@ -259,7 +258,7 @@ EditorLevel::load_level(const Pathname& pathname)
   std::vector<FileReader> objs = level.get_objects();
   for (std::vector<FileReader>::const_iterator i = objs.begin(); i != objs.end(); i++)
   {
-    LevelObj* obj = LevelObjFactory::create(*i, impl.get());
+    LevelObjPtr obj = LevelObjFactory::create(*i, impl.get());
     if (obj)
     {
       add_object(obj);
@@ -385,7 +384,7 @@ EditorLevel::set_size(const Size& s)
 }
 
 void
-EditorLevel::raise_object_to_top(LevelObj* obj)
+EditorLevel::raise_object_to_top(LevelObjPtr obj)
 {
   Objects::iterator it = std::find(impl->objects.begin(), impl->objects.end(), obj);
   if (it != impl->objects.end())
@@ -396,7 +395,7 @@ EditorLevel::raise_object_to_top(LevelObj* obj)
 }
 
 void
-EditorLevel::lower_object_to_bottom(LevelObj* obj)
+EditorLevel::lower_object_to_bottom(LevelObjPtr obj)
 {
   Objects::iterator it = std::find(impl->objects.begin(), impl->objects.end(), obj);
   if (it != impl->objects.end())
@@ -414,13 +413,13 @@ struct OverlapsWith
     rect(rect_)
   {}
 
-  bool operator()(LevelObj* obj) {
+  bool operator()(LevelObjPtr obj) {
     return rect.is_overlapped(obj->get_rect());
   }
 };
 
 void
-EditorLevel::raise_object(LevelObj* obj)
+EditorLevel::raise_object(LevelObjPtr obj)
 {
   Objects::iterator i = std::find(impl->objects.begin(), impl->objects.end(), obj);
   if (i == impl->objects.end())
@@ -446,7 +445,7 @@ EditorLevel::raise_object(LevelObj* obj)
 }
 
 void
-EditorLevel::lower_object(LevelObj* obj)
+EditorLevel::lower_object(LevelObjPtr obj)
 {
   Objects::reverse_iterator i = std::find(impl->objects.rbegin(), impl->objects.rend(), obj);
   if (i == impl->objects.rend())
@@ -481,13 +480,13 @@ EditorLevel::get_objects()
 }
 
 void 
-EditorLevel::add_object(LevelObj* obj)
+EditorLevel::add_object(LevelObjPtr obj)
 {
   impl->objects.push_back(obj);
 }
 
-LevelObj*
-EditorLevel::object_at (int x, int y)
+LevelObjPtr
+EditorLevel::object_at(int x, int y)
 {
   // we travel reversly through the object list, so that we get the
   // top-most object
@@ -496,7 +495,7 @@ EditorLevel::object_at (int x, int y)
     if ((*i)->is_at(x, y))
       return *i;
   }
-  return 0;
+  return LevelObjPtr();
 }
 
 } // namespace Editor

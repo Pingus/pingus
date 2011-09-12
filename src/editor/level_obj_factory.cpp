@@ -22,16 +22,16 @@
 
 namespace Editor {
 
-LevelObj*
+LevelObjPtr
 LevelObjFactory::create(const FileReader& reader, LevelImpl* level)
 {    
   if (reader.get_name() == "group")
   {
-    GroupLevelObj* group = new GroupLevelObj;
+    std::shared_ptr<GroupLevelObj> group(new GroupLevelObj);
     const std::vector<FileReader>& sections = reader.get_sections();
     for(auto it = sections.begin(); it != sections.end(); ++it)
     {
-      LevelObj* obj = create(*it, level);
+      LevelObjPtr obj = create(*it, level);
       if (obj)
       {
         group->add_child(obj);
@@ -47,10 +47,10 @@ LevelObjFactory::create(const FileReader& reader, LevelImpl* level)
     Vector3f p;
     reader.read_vector("position", p);
   
-    GroupLevelObj* group = GroupLevelObj::from_prefab(name, level);
+    std::shared_ptr<GroupLevelObj> group = GroupLevelObj::from_prefab(name, level);
     if (!group)
     {
-      return 0;
+      return LevelObjPtr();
     }
     else
     {
@@ -72,7 +72,7 @@ LevelObjFactory::create(const FileReader& reader, LevelImpl* level)
     bool  tmp_bool;
 
     // Create new object
-    LevelObj* obj = new GenericLevelObj(reader.get_name(), level);
+    LevelObjPtr obj(new GenericLevelObj(reader.get_name(), level));
     attribs = obj->get_attribs();
 
     // All objects have a position - get that.
