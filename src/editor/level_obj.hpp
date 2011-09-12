@@ -232,9 +232,6 @@ public:
   /** Returns true if the mouse is hovering over this object */
   virtual bool is_at (int x, int y) = 0;
 
-  /** Returns a number representing which attributes this object possesses */
-  virtual unsigned int get_attributes(std::string obj_type) = 0;
-
   virtual Rect get_rect() const = 0;
 
   virtual int get_small_stars() const = 0;

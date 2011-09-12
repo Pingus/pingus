@@ -21,6 +21,8 @@
 
 #include <list>
 
+class FileReader;
+
 namespace Editor {
 
 class GroupLevelObj : public LevelObj
@@ -37,9 +39,18 @@ private:
   Vector3f m_pos;
   Vector3f m_orig_pos;
 
+  // properties
+  unsigned int m_overrides;
+  int m_repeat;
+  int m_owner_id;
+  int m_release_rate;
+  std::string m_direction;
+
 public:
   GroupLevelObj();
   ~GroupLevelObj();
+
+  bool is_prefab() const { return !m_name.empty(); }
 
   void add_child(LevelObjPtr);
   void remove_child(LevelObjPtr);
@@ -49,19 +60,21 @@ public:
 
   std::list<LevelObjPtr>& get_objects() { return m_objects; }
 
+  void set_overrides(const FileReader& reader);
+
 public:
   /** Retrieve the object's position */
   Vector3f get_pos() const { return m_pos; }
   Vector3f get_orig_pos() const { return m_orig_pos; }
 
   /** Retrieve this object's attribute number */
-  unsigned int get_attribs() const { return 0; }
+  unsigned int get_attribs() const { return m_overrides; }
 
   /** Retrieve the object's resource name */
   ResDescriptor get_res_desc() const { return ResDescriptor(); }
 
   /** Retrieve the name of the section header for this object */
-  std::string get_section_name() const { return "group"; }
+  std::string get_section_name() const;
 
   /** Retrieve the object's type */
   std::string get_type() const { return "group"; }
@@ -72,16 +85,16 @@ public:
   int get_speed() const { return 0; }
 
   /** Retrieve the object's release rate (entrances) */
-  int get_release_rate() const { return 0; }
+  int get_release_rate() const { return m_release_rate; }
 
   /** Retrive the object's parallax (is this even used???) */
   float get_parallax() const { return 0; }
 
   /** Retrieve the object's owner */
-  int get_owner() const { return 0; }
+  int get_owner() const { return m_owner_id; }
 
   /** Retrieve the object's repeat */
-  int get_repeat() const { return 0; }
+  int get_repeat() const { return m_repeat; }
 
   /** Retrieve the object's color */
   Color get_color() const { return Color(); }
@@ -108,7 +121,7 @@ public:
   float get_para_y() const { return 0; }
 
   /** Retrieve the object's direction */
-  std::string get_direction() { return 0; }
+  std::string get_direction() { return m_direction; }
 
   std::string get_id() const { return 0; }
   std::string get_target_id() const { return 0; }
@@ -150,16 +163,16 @@ public:
   void set_speed(const int s) { }
 
   /** Set the objects release rate */
-  void set_release_rate(const int r) { }
+  void set_release_rate(const int r);
 
   /** Set the object's parallax */
   void set_parallax(const float para) { }
 
   /** Set the object's repeat */
-  void set_repeat(const int w) { }
+  void set_repeat(const int w);
 
   /** Set the object's owner_id */
-  void set_owner(const int owner) { }
+  void set_owner(const int owner);
 
   /** Set the object's scroll rate in the x direction */
   void set_scroll_x(const float s) { }
@@ -186,7 +199,7 @@ public:
   void set_para_y(const float p) { }
 
   /** Set the object's direction if applicable */
-  void set_direction(const std::string d) { }
+  void set_direction(const std::string d);
 
   void set_id(const std::string& t) { }
   void set_target_id(const std::string& t) { }

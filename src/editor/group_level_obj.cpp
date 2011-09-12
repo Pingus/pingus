@@ -19,6 +19,7 @@
 #include "pingus/prefab_file.hpp"
 #include "editor/level_obj_factory.hpp"
 #include "util/log.hpp"
+#include "util/file_reader.hpp"
 
 namespace Editor {
 
@@ -30,6 +31,7 @@ GroupLevelObj::from_prefab(const std::string& name, LevelImpl* level)
     PrefabFile prefab = PrefabFile::from_resource(name);
 
     std::shared_ptr<GroupLevelObj> group(new GroupLevelObj);
+
     group->m_name = name;
     for(auto it = prefab.get_objects().begin(); it != prefab.get_objects().end(); ++it)
     {
@@ -39,6 +41,8 @@ GroupLevelObj::from_prefab(const std::string& name, LevelImpl* level)
         group->add_child(obj);
       }
     }
+
+    group->set_overrides(prefab.get_overrides());
 
     return group;
   }
@@ -53,12 +57,30 @@ GroupLevelObj::GroupLevelObj() :
   m_name(),
   m_objects(),
   m_pos(),
-  m_orig_pos()
+  m_orig_pos(),
+  m_overrides(),
+  m_repeat(),
+  m_owner_id(),
+  m_release_rate(),
+  m_direction()
 {
 }
 
 GroupLevelObj::~GroupLevelObj()
 {
+}
+
+std::string
+GroupLevelObj::get_section_name() const
+{
+  if (is_prefab()) 
+  {
+    return "prefab"; 
+  }
+  else
+  {
+    return "group"; 
+  }
 }
 
 void
@@ -71,6 +93,34 @@ void
 GroupLevelObj::remove_child(LevelObjPtr obj)
 {
   m_objects.push_back(obj);
+}
+
+void
+GroupLevelObj::set_overrides(const FileReader& reader)
+{
+  if (reader.read_int("repeat", m_repeat))
+  {
+    set_repeat(m_repeat);
+    m_overrides |= HAS_REPEAT;
+  }
+
+  if (reader.read_int("owner-id", m_owner_id))
+  {
+    set_owner(m_owner_id);
+    m_overrides |= HAS_OWNER;
+  }
+
+  if (reader.read_int("release-rate", m_release_rate))
+  {
+    set_release_rate(m_release_rate);
+    m_overrides |= HAS_RELEASE_RATE;
+  }
+
+  if (reader.read_string("direction",  m_direction))
+  {
+    set_direction(m_direction);
+    m_overrides |= HAS_DIRECTION;
+  }
 }
 
 void
@@ -90,6 +140,12 @@ GroupLevelObj::write_properties(FileWriter& writer)
     writer.begin_section("prefab");
     writer.write_string("name", m_name);
     writer.write_vector("position", m_pos);
+    writer.begin_section("overrides");
+    if (m_overrides & HAS_REPEAT)       writer.write_int("repeat", m_repeat);
+    if (m_overrides & HAS_RELEASE_RATE) writer.write_int("release-rate", m_release_rate);
+    if (m_overrides & HAS_DIRECTION)    writer.write_string("direction", m_direction);
+    if (m_overrides & HAS_OWNER)        writer.write_int("owner-id", m_owner_id);
+    writer.end_section();
     writer.end_section();
   }
 }
@@ -157,6 +213,50 @@ GroupLevelObj::is_at(int x, int y)
       return true;
   } 
   return false;
+}
+
+void
+GroupLevelObj::set_release_rate(const int r)
+{ 
+  m_release_rate = r;
+
+  for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
+  {
+    (*it)->set_release_rate(m_release_rate);
+  }
+}
+
+void
+GroupLevelObj::set_owner(const int owner)
+{
+  m_owner_id = owner;
+
+  for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
+  {
+    (*it)->set_owner(m_owner_id);
+  } 
+}
+
+void
+GroupLevelObj::set_direction(const std::string direction)
+{ 
+  m_direction = direction;
+
+  for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
+  {
+    (*it)->set_direction(m_direction);
+  }  
+}
+
+void
+GroupLevelObj::set_repeat(const int repeat)
+{
+  m_repeat = repeat;
+
+  for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
+  {
+    (*it)->set_repeat(m_repeat);
+  } 
 }
 
 LevelObjPtr

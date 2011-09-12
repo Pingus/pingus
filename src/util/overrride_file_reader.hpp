@@ -14,32 +14,17 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_PINGUS_PREFAB_FILE_HPP
-#define HEADER_PINGUS_PINGUS_PREFAB_FILE_HPP
-
-#include <vector>
+#ifndef HEADER_PINGUS_UTIL_OVERRIDE_FILE_READER_HPP
+#define HEADER_PINGUS_UTIL_OVERRIDE_FILE_READER_HPP
 
 #include "util/file_reader.hpp"
-#include "util/pathname.hpp"
 
-class PrefabFile
+/** */
+class OverrideFileReader : public FileReader
 {
 public:
-  static PrefabFile from_resource(const std::string& name);
-  static PrefabFile from_path(const Pathname& file);
-
-private:
-  std::string m_name;
-  std::vector<FileReader> m_objects;
-  FileReader m_overrides;
-
-private:
-  PrefabFile(const std::string& filename, const std::vector<FileReader>& objects, 
-             const FileReader& overrides);
-  
-public:
-  const std::vector<FileReader>& get_objects() const;
-  FileReader get_overrides() const;
+  OverrideFileReader(const FileReader& reader,
+                     const FileReader& overrides);
 };
 
 #endif

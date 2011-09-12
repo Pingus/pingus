@@ -19,6 +19,7 @@
 #include <stdexcept>
 
 #include "util/file_reader.hpp"
+#include "util/log.hpp"
 #include "util/system.hpp"
 
 PrefabFile
@@ -32,6 +33,12 @@ PrefabFile::from_path(const Pathname& filename)
   }
   else
   {
+    FileReader overrides;
+    if (reader.read_section("overrides", overrides))
+    {
+      log_tmp("OVERRIDES: SUCCESS: ");
+    }
+
     FileReader objects;
     if (!reader.read_section("objects", objects) || objects.get_sections().empty())
     {
@@ -41,10 +48,10 @@ PrefabFile::from_path(const Pathname& filename)
     {
       // FIXME: Hacky way to get the Prefab name
       PrefabFile prefab(System::cut_file_extension(filename.get_raw_path()),
-                        objects.get_sections());
+                        objects.get_sections(), overrides);
       return prefab;
     }
-  } 
+  }
 }
 
 PrefabFile
@@ -54,9 +61,11 @@ PrefabFile::from_resource(const std::string& name)
   return from_path(filename);
 }
 
-PrefabFile::PrefabFile(const std::string& name, const std::vector<FileReader>& objects) :
+PrefabFile::PrefabFile(const std::string& name, const std::vector<FileReader>& objects,
+                       const FileReader& overrides) :
   m_name(name),
-  m_objects(objects)
+  m_objects(objects),
+  m_overrides(overrides)
 {
 }
 
@@ -64,6 +73,12 @@ const std::vector<FileReader>&
 PrefabFile::get_objects() const
 {
   return m_objects;
+}
+
+FileReader
+PrefabFile::get_overrides() const
+{
+  return m_overrides; 
 }
 
 /* EOF */

@@ -42,6 +42,7 @@
 #include "pingus/worldobjs/teleporter_target.hpp"
 #include "pingus/worldobjs/woodthing.hpp"
 #include "util/log.hpp"
+#include "util/overrride_file_reader.hpp"
 
 using namespace WorldObjs;
 
@@ -130,15 +131,19 @@ public:
     reader.read_string("name", name);
 
     Vector3f pos;
-    reader.read_vector("position", pos); // FIXME: No WorldObj::set_pos()/get_pos()
+    reader.read_vector("position", pos);
 
     PrefabFile prefab = PrefabFile::from_resource(name);
-    
+    FileReader overrides;
+    reader.read_section("overrides", overrides);
+
     std::vector<WorldObj*> group;
     const std::vector<FileReader>& objects = prefab.get_objects();
     for(auto it = objects.begin(); it != objects.end(); ++it)
     {
-      std::vector<WorldObj*> objs = WorldObjFactory::instance()->create(*it);
+      OverrideFileReader override_reader(*it, overrides);
+
+      std::vector<WorldObj*> objs = WorldObjFactory::instance()->create(override_reader);
       for(auto obj = objs.begin(); obj != objs.end(); ++obj)
       {
         if (*obj)

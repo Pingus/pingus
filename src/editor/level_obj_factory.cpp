@@ -46,7 +46,7 @@ LevelObjFactory::create(const FileReader& reader, LevelImpl* level)
 
     Vector3f p;
     reader.read_vector("position", p);
-  
+
     std::shared_ptr<GroupLevelObj> group = GroupLevelObj::from_prefab(name, level);
     if (!group)
     {
@@ -54,6 +54,10 @@ LevelObjFactory::create(const FileReader& reader, LevelImpl* level)
     }
     else
     {
+      FileReader overrides;
+      if (reader.read_section("overrides", overrides))
+        group->set_overrides(overrides);
+
       group->set_orig_pos(p);
       group->set_pos(p);
       return group;

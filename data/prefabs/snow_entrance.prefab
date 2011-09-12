@@ -1,4 +1,8 @@
 (pingus-prefab
+ (overrides
+   (owner-id 0)
+   (direction "misc")
+   (release-rate 50))
  (objects
   (hotspot 
    (surface 
@@ -12,8 +16,8 @@
    (type "generic")
    (position 0 0 0)
    (owner-id 0)
-   (direction "right")
-   (release-rate 250))
+   (direction "misc")
+   (release-rate 50))
   
   (hotspot 
    (surface 

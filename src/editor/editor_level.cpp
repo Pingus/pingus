@@ -207,6 +207,8 @@ EditorLevel::load_prefab(const Pathname& pathname)
   impl->size.width  = 1920;
   impl->size.height = 1200;
 
+  // FIXME: overrides are getting ignored
+
   // Get the objects
   const std::vector<FileReader>& objs = prefab.get_objects();
   for (auto i = objs.begin(); i != objs.end(); i++)
