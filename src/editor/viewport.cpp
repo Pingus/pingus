@@ -319,6 +319,11 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
     case SDLK_PAGEUP:
     case SDLK_RIGHTBRACKET:
     case SDLK_w:
+      if (ev.keysym.mod & KMOD_CTRL)
+      {
+        raise_objects_z_pos();
+      }
+
       if (ev.keysym.mod & KMOD_SHIFT)
       {
         raise_objects_to_top();
@@ -332,6 +337,11 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
     case SDLK_PAGEDOWN:
     case SDLK_LEFTBRACKET:
     case SDLK_s:
+      if (ev.keysym.mod & KMOD_CTRL)
+      {
+        lower_objects_z_pos();
+      }
+
       if (ev.keysym.mod & KMOD_SHIFT)
       {
         lower_objects_to_bottom();
@@ -671,6 +681,26 @@ Viewport::lower_objects_to_bottom()
 {
   for(auto i = selection.begin(); i != selection.end(); ++i)
     editor->get_level()->lower_object_to_bottom(*i); 
+}
+
+void
+Viewport::raise_objects_z_pos()
+{
+  for(auto i = selection.begin(); i != selection.end(); ++i)
+  {
+    (*i)->set_pos_z((*i)->get_pos_z() + 10.0f);
+  }
+  selection_changed(selection);
+}
+
+void
+Viewport::lower_objects_z_pos()
+{
+  for(auto i = selection.begin(); i != selection.end(); ++i)
+  {
+    (*i)->set_pos_z((*i)->get_pos_z() - 10.0f);
+  }
+  selection_changed(selection);
 }
 
 void

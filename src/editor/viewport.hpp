@@ -132,6 +132,9 @@ public:
   void raise_objects_to_top();
   void lower_objects_to_bottom();
 
+  void raise_objects_z_pos();
+  void lower_objects_z_pos();
+
   void group_selection();
   void ungroup_selection();
 
