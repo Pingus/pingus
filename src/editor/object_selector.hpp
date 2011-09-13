@@ -61,6 +61,10 @@ public:
   void draw_background(DrawingContext& gc);
   void add_button(const std::string& image, const std::string& tooltip, ObjectSelectorSet* set);
 
+  void scroll_up();
+  void scroll_down();
+
+private:
   std::unique_ptr<ObjectSelectorSet> create_objects(const std::string& prefix);
   std::unique_ptr<ObjectSelectorSet> create_groundpiece(const std::string& prefix, const std::string& type);
   std::unique_ptr<ObjectSelectorSet> create_gp_ground();

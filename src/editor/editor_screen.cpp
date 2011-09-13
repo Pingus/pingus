@@ -122,6 +122,18 @@ EditorScreen::on_escape_press()
   close_screen();
 }
 
+void
+EditorScreen::on_action_up_press()
+{
+  object_selector->scroll_up();
+}
+
+void
+EditorScreen::on_action_down_press()
+{
+  object_selector->scroll_down();
+}
+
 // Save the current level
 void 
 EditorScreen::save(const Pathname& file)

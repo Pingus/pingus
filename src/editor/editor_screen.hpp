@@ -72,6 +72,8 @@ public:
 
   /** Code that runs when the Escape button is pressed */
   void on_escape_press();
+  void on_action_up_press();
+  void on_action_down_press();
 
   /** Draw the items in the screen */
   void draw (DrawingContext& gc);

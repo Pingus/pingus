@@ -201,6 +201,18 @@ ObjectSelectorList::on_pointer_move (int x, int y)
 }
 
 void
+ObjectSelectorList::scroll(float y)
+{
+  offset += y;
+
+  // FIXME: move this to a separate function
+  int width = 5;
+  int height = (set->get_objects().size() / width) + ((set->get_objects().size() % width > 0) ? 1 : 0);
+  offset = Math::clamp(Math::min(static_cast<float>(rect.get_height()) - (static_cast<float>(height) * 48.0f),
+                                 0.0f), offset, 0.0f);
+}
+
+void
 ObjectSelectorList::set_objects(ObjectSelectorSet* new_set)
 {
   if (set)

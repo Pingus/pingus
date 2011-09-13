@@ -577,6 +577,18 @@ ObjectSelector::add_button(const std::string& image, const std::string& tooltip,
   }
 }
 
+void
+ObjectSelector::scroll_up()
+{
+  object_list->scroll(+48.0f);
+}
+
+void
+ObjectSelector::scroll_down()
+{
+  object_list->scroll(-48.0f);
+}
+
 std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_objects(const std::string& prefix)
 {

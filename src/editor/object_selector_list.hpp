@@ -84,6 +84,8 @@ public:
 
   void set_objects(ObjectSelectorSet* object_set);
 
+  void scroll(float y);
+
   void update_layout();
 private:
   ObjectSelectorList (const ObjectSelectorList&);
