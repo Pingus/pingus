@@ -1925,7 +1925,7 @@ msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign1.pingus:7
 msgid "Falling down"
-msgstr ""
+msgstr "Cadendo giù"
 
 #: data/levels/factorycampaign/factory_campaign1.pingus:8
 msgid ""
@@ -1936,6 +1936,13 @@ msgid ""
 "As the ice is melting, at first you have to build some bridges and watch out "
 "for the cliff."
 msgstr ""
+"L'intelligence Pingus ha riferito che enormi fabbriche situate nella "
+"zona subtropicale potrebbero essere la ragione del cambiabiamento climatico. "
+"Si è deciso di andare lì e di chiudere le fabbriche. Questa sarà una spedizione "
+"lunga e pericolosa. Con i Pingus dovrete affrontare molte difficoltà sulla "
+"vostra strada. Dato che il ghiaccio si stà sciogliendo, in un primo momento "
+"sarà necessario costruire ponti e prestare attenzione alla scogliera."
+
 
 #: data/levels/factorycampaign/factory_campaign2.pingus:7
 msgid "Destination North"
@@ -2196,7 +2203,7 @@ msgstr ""
 
 #: data/levelsets/factory.levelset:4
 msgid "Pingus expedition"
-msgstr ""
+msgstr "Spedizione Pingus"
 
 #: data/levelsets/halloween.levelset:3
 msgid "Halloween 2007"
