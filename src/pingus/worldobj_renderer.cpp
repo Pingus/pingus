@@ -19,9 +19,54 @@
 #include "math/vector3f.hpp"
 #include "util/log.hpp"
 
-WorldObjRenderer::WorldObjRenderer(Surface& output) :
-  m_surface(output)
+WorldObjRenderer::WorldObjRenderer() :
+  m_draw_op()
 {
+}
+
+void
+WorldObjRenderer::blit(Surface& out_surface, int off_x, int off_y)
+{
+  for(auto it = m_draw_op.begin(); it != m_draw_op.end(); ++it)
+  {
+    out_surface.blit(it->surface, it->pos.x + off_x, it->pos.y + off_y);
+  }
+}
+
+void
+WorldObjRenderer::blit_surface(const Surface& surface, int x, int y)
+{
+  m_draw_op.push_back(DrawOp{surface, Vector2i(x, y)});
+}
+
+Rect
+WorldObjRenderer::get_clip_rect() const
+{
+  if (m_draw_op.empty())
+  {
+    return Rect();
+  }
+  else
+  {
+    Rect rect;
+
+    rect.left   = m_draw_op.front().pos.x;
+    rect.top    = m_draw_op.front().pos.y;
+    rect.right  = rect.left + m_draw_op.front().surface.get_width();
+    rect.bottom = rect.top + m_draw_op.front().surface.get_height();
+
+    for(auto it = m_draw_op.begin()+1; it != m_draw_op.end(); ++it)
+    {
+      Rect img(it->pos, it->surface.get_size());
+
+      rect.left   = std::min(img.left,   rect.left);
+      rect.top    = std::min(img.top,    rect.top);
+      rect.right  = std::max(img.right,  rect.right);
+      rect.bottom = std::max(img.bottom, rect.bottom);
+    }
+    
+    return rect;
+  }
 }
 
 void
@@ -31,9 +76,9 @@ WorldObjRenderer::render_sprite(const ResDescriptor& desc,
   Surface surface = Resource::load_surface(desc);
 
   // FIXME: hack, should take that info from the resource file
-  m_surface.blit(surface, 
-                 static_cast<int>(pos.x) - surface.get_width()/2, 
-                 static_cast<int>(pos.y) - surface.get_height());    
+  blit_surface(surface, 
+               static_cast<int>(pos.x) - surface.get_width()/2,
+               static_cast<int>(pos.y) - surface.get_height());
 }
 
 void
@@ -44,9 +89,9 @@ WorldObjRenderer::render_surface(const ResDescriptor& desc,
   Surface surface = Resource::load_surface(desc);
   for(int i = 0; i < repeat; ++i)
   {
-    m_surface.blit(surface, 
-                   static_cast<int>(pos.x) + surface.get_width()*i,
-                   static_cast<int>(pos.y));
+    blit_surface(surface, 
+                 static_cast<int>(pos.x) + surface.get_width()*i,
+                 static_cast<int>(pos.y));
   }
 }
 
@@ -126,6 +171,9 @@ WorldObjRenderer::process_object_with_surface(const FileReader& reader)
     {
       int repeat = 1;
       reader.read_int("repeat", repeat);
+
+      log_tmp("Repeat: " << repeat);
+
       render_surface(desc, pos, repeat);
     }
   }

@@ -26,13 +26,24 @@
 class WorldObjRenderer
 {
 private:
-  Surface m_surface;
+  struct DrawOp
+  {
+    Surface  surface;
+    Vector2i pos;
+  };
+
+  std::vector<DrawOp> m_draw_op;
  
 public:
-  WorldObjRenderer(Surface& output);
-
+  WorldObjRenderer();
+  
+  Rect get_clip_rect() const;
   void process(const std::vector<FileReader>& readers);
   void process(const FileReader& reader);
+  void blit(Surface& out_surface, int off_x = 0, int off_y = 0);
+
+private:
+  void blit_surface(const Surface& surface, int x, int y);
 
   void render_sprite(const ResDescriptor& desc,
                      const Vector3f& pos);
@@ -40,7 +51,6 @@ public:
                       const Vector3f& pos,
                       int repeat = 1);
 
-private:
   void process_object_with_surface(const FileReader& reader);
 };
 

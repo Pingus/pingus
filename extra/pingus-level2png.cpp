@@ -7,9 +7,11 @@
 #include "pingus/pingus_level.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/resource.hpp"
+#include "pingus/prefab_file.hpp"
 #include "util/command_line.hpp"
 #include "util/log.hpp"
 #include "util/pathname.hpp"
+#include "util/system.hpp"
 #include "pingus/path_manager.hpp"
 #include "pingus/worldobj_renderer.hpp"
 #include "engine/display/screenshot.hpp"
@@ -17,13 +19,14 @@
 int main(int argc, char** argv)
 {
   std::vector<Pathname> files;
+  bool crop = false;
 
   CommandLine argp;
   argp.add_usage("[OPTIONS]... LEVELFILE OUTPUTFILE");
 
   argp.add_option('h', "help",    "", "Displays this help");
   argp.add_option('b', "background",  "RRGGBBAA", "Set background color");
-  argp.add_option('c', "colmap", "", "Render collision map instead of graphic map");
+  argp.add_option('c', "crop", "", "crop output to the actual objects rendered, not levelsize ");
 
   argp.parse_args(argc, argv);
 
@@ -37,7 +40,7 @@ int main(int argc, char** argv)
         break;
 
       case 'c':
-        // FIXME: not implemented
+        crop = true;
         break;
 
       case 'b':
@@ -59,16 +62,46 @@ int main(int argc, char** argv)
   {
     g_path_manager.set_path("data/");
     Resource::init();
-    PingusLevel plf(files[0]);
-
-    Surface out_surface(plf.get_size().width, plf.get_size().height);
-
-    // FIXME: alpha doesn't work, as the PNG saver can't handle that
-    out_surface.fill(Color(255, 255, 255, 255));
 
     // render all the objects
-    WorldObjRenderer renderer(out_surface);
-    renderer.process(plf.get_objects());
+    WorldObjRenderer renderer;
+    Size size;
+    
+    if (System::get_file_extension(files[0].get_raw_path()) == "prefab")
+    {
+      PrefabFile prefab = PrefabFile::from_path(files[0]);
+      renderer.process(prefab.get_objects());
+      crop = true;
+    }
+    else
+    {
+      PingusLevel plf(files[0]);
+      renderer.process(plf.get_objects());
+      size = plf.get_size();
+    }
+
+    Surface out_surface;
+
+    if (crop)
+    {
+      Rect rect = renderer.get_clip_rect();
+      
+      out_surface = Surface(rect.get_width(), rect.get_height());
+      
+      // FIXME: alpha doesn't work, as the PNG saver can't handle that
+      out_surface.fill(Color(255, 255, 255, 255));
+
+      renderer.blit(out_surface, -rect.left, -rect.top);
+    }
+    else
+    {
+      out_surface = Surface(size.width, size.height);
+
+      // FIXME: alpha doesn't work, as the PNG saver can't handle that
+      out_surface.fill(Color(255, 255, 255, 255));
+
+      renderer.blit(out_surface);
+    }
 
     Screenshot::save(out_surface.get_surface(), files[1].get_sys_path());
 
