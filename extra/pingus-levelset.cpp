@@ -17,6 +17,7 @@
 #include "pingus/stat_manager.hpp"
 #include "util/command_line.hpp"
 #include "util/pathname.hpp"
+#include "util/system.hpp"
 
 int main(int argc, char** argv)
 {
@@ -82,6 +83,7 @@ int main(int argc, char** argv)
   else
   {
     // FIXME: a little ugly that levelset loads sprites and savegames
+    System::init_directories();
     g_path_manager.set_path("data/");
     SavegameManager savegame_manager("savegames/savegames.scm");
     StatManager stat_manager("savegames/variables.scm");
