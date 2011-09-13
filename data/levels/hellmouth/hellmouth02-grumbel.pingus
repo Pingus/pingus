@@ -37,7 +37,7 @@
       (surface 
         (image "liquids/slime")
         (modifier "ROT0"))
-      (position 0 1123 -50)
+      (position -3 1125 -50)
       (speed 50)
       (repeat 31))
     (hotspot 
@@ -803,11 +803,29 @@
         (image "groundpieces/transparent/misc/moos1")
         (modifier "ROT90"))
       (position 1457 670 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/bpiece6")
+        (modifier "ROT0"))
+      (position 491 1115 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/bpiece6")
+        (modifier "ROT0"))
+      (position 702 1156 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/bpiece6")
+        (modifier "ROT0"))
+      (position 1364 1141 0))
     (liquid 
       (surface 
         (image "liquids/slime")
         (modifier "ROT0"))
-      (position -33 1139 50)
+      (position -36 1141 50)
       (speed 50)
       (repeat 31))))
 
