@@ -49,9 +49,11 @@ public:
   LevelMenu();
   ~LevelMenu();
   
-  void draw_background (DrawingContext& gc);
-  void on_escape_press ();
-  
+  void draw_background(DrawingContext& gc);
+  void on_escape_press();
+  void on_action_up_press();
+  void on_action_down_press();
+    
   void set_levelset(Levelset* levelset);
 
   void next_page();

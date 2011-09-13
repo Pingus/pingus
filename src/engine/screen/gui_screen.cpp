@@ -122,6 +122,12 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
       case Input::ESCAPE_BUTTON:
         on_escape_press ();
         break;
+      case Input::ACTION_UP_BUTTON:
+        on_action_up_press();
+        break;
+      case Input::ACTION_DOWN_BUTTON:
+        on_action_down_press();
+        break;
       default:
         log_debug("unhandled event: " << event.name);
         break;
@@ -151,6 +157,12 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
         break;
       case Input::ESCAPE_BUTTON:
         on_escape_release ();
+        break;
+      case Input::ACTION_UP_BUTTON:
+        on_action_up_release();
+        break;
+      case Input::ACTION_DOWN_BUTTON:
+        on_action_down_release();
         break;
       default:
         log_debug("unhandled event: " << event.name);

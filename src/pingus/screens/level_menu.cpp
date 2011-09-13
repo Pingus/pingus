@@ -396,124 +396,142 @@ private:
   LevelSelector & operator=(const LevelSelector&);
 };
 
-  LevelMenu::LevelMenu() :
-    x_pos((Display::get_width()  - globals::default_screen_width)/2),
-    y_pos((Display::get_height() - globals::default_screen_height)/2),
-    background("core/menu/wood"),
-    blackboard("core/menu/blackboard"),
-    ok_button(),
-    level_selector(),
-    levelset_selector(),
-    abort_button(),
-    next_button(),
-    prev_button()
+LevelMenu::LevelMenu() :
+  x_pos((Display::get_width()  - globals::default_screen_width)/2),
+  y_pos((Display::get_height() - globals::default_screen_height)/2),
+  background("core/menu/wood"),
+  blackboard("core/menu/blackboard"),
+  ok_button(),
+  level_selector(),
+  levelset_selector(),
+  abort_button(),
+  next_button(),
+  prev_button()
+{
+  ok_button  = Sprite("core/start/ok");
+
+  levelset_selector = new LevelsetSelector(this, Rect());
+  level_selector    = new LevelSelector(this, Rect());
+
+  gui_manager->add(levelset_selector);
+  gui_manager->add(level_selector);
+
+  gui_manager->add(prev_button = new LevelScrollButton(Display::get_width()/2  + 280,
+                                                       Display::get_height()/2 - 150,
+                                                       "core/menu/arrow_up",
+                                                       std::bind(&LevelMenu::prev_page, this)));
+
+  gui_manager->add(next_button = new LevelScrollButton(Display::get_width()/2  + 280,
+                                                       Display::get_height()/2 + 70,
+                                                       "core/menu/arrow_down",
+                                                       std::bind(&LevelMenu::next_page, this)));
+
+  gui_manager->add(abort_button = new LevelMenuAbortButton(this, 
+                                                           Display::get_width()/2 - 300,
+                                                           Display::get_height()/2 + 144));
+
+  level_selector->hide();
+  resize(Display::get_size());
+}
+
+LevelMenu::~LevelMenu()
+{
+}
+
+void
+LevelMenu::draw_background(DrawingContext& gc)
+{
+  // Paint the background wood panel
+  for(int y = 0; y < gc.get_height(); y += background.get_height())
+    for(int x = 0; x < gc.get_width(); x += background.get_width())
+      gc.draw(background, Vector2i(x, y));
+
+  gc.draw(blackboard, Vector2i(gc.get_width()/2, gc.get_height()/2));
+}
+
+void
+LevelMenu::on_escape_press()
+{
+  if (level_selector->is_visible())
   {
-    ok_button  = Sprite("core/start/ok");
-
-    levelset_selector = new LevelsetSelector(this, Rect());
-    level_selector    = new LevelSelector(this, Rect());
-
-    gui_manager->add(levelset_selector);
-    gui_manager->add(level_selector);
-
-    gui_manager->add(prev_button = new LevelScrollButton(Display::get_width()/2  + 280,
-                                                         Display::get_height()/2 - 150,
-                                                         "core/menu/arrow_up",
-                                                         std::bind(&LevelMenu::prev_page, this)));
-
-    gui_manager->add(next_button = new LevelScrollButton(Display::get_width()/2  + 280,
-                                                         Display::get_height()/2 + 70,
-                                                         "core/menu/arrow_down",
-                                                         std::bind(&LevelMenu::next_page, this)));
-
-    gui_manager->add(abort_button = new LevelMenuAbortButton(this, 
-                                                             Display::get_width()/2 - 300,
-                                                             Display::get_height()/2 + 144));
-
-    level_selector->hide();
-    resize(Display::get_size());
+    levelset_selector->show();
+    level_selector->hide();           
   }
-
-  LevelMenu::~LevelMenu()
+  else
   {
+    //log_debug("OptionMenu: poping screen");
+    ScreenManager::instance()->pop_screen();
   }
+}
 
-  void
-  LevelMenu::draw_background(DrawingContext& gc)
+void
+LevelMenu::on_action_up_press()
+{
+  if (level_selector->is_visible())
+    level_selector->prev_page();
+  else
+    levelset_selector->prev_page();
+}
+
+void
+LevelMenu::on_action_down_press()
+{
+  if (level_selector->is_visible())
+    level_selector->next_page();
+  else
+    levelset_selector->next_page();
+}
+
+void
+LevelMenu::next_page()
+{
+  if (level_selector->is_visible())
+    level_selector->next_page();
+  else
+    levelset_selector->next_page();  
+}
+
+void
+LevelMenu::prev_page()
+{
+  if (level_selector->is_visible())
+    level_selector->prev_page();
+  else
+    levelset_selector->prev_page();
+}
+
+void
+LevelMenu::set_levelset(Levelset* levelset)
+{
+  if (levelset)
   {
-    // Paint the background wood panel
-    for(int y = 0; y < gc.get_height(); y += background.get_height())
-      for(int x = 0; x < gc.get_width(); x += background.get_width())
-        gc.draw(background, Vector2i(x, y));
-
-    gc.draw(blackboard, Vector2i(gc.get_width()/2, gc.get_height()/2));
+    level_selector->set_levelset(levelset);
+    levelset_selector->hide();
+    level_selector->show();
   }
-
-  void
-  LevelMenu::on_escape_press()
+  else
   {
-    if (level_selector->is_visible())
-    {
-      levelset_selector->show();
-      level_selector->hide();           
-    }
-    else
-    {
-      //log_debug("OptionMenu: poping screen");
-      ScreenManager::instance()->pop_screen();
-    }
+    levelset_selector->show();
+    level_selector->hide();      
   }
+}
 
-  void
-  LevelMenu::next_page()
-  {
-    if (level_selector->is_visible())
-      level_selector->next_page();
-    else
-      levelset_selector->next_page();  
-  }
+void
+LevelMenu::resize(const Size& size_)
+{
+  GUIScreen::resize(size_);
 
-  void
-  LevelMenu::prev_page()
-  {
-    if (level_selector->is_visible())
-      level_selector->prev_page();
-    else
-      levelset_selector->prev_page();
-  }
+  x_pos = (size.width  - globals::default_screen_width)/2;
+  y_pos = (size.height - globals::default_screen_height)/2;
 
-  void
-  LevelMenu::set_levelset(Levelset* levelset)
-  {
-    if (levelset)
-    {
-      level_selector->set_levelset(levelset);
-      levelset_selector->hide();
-      level_selector->show();
-    }
-    else
-    {
-      levelset_selector->show();
-      level_selector->hide();      
-    }
-  }
+  levelset_selector->set_rect(Rect(Vector2i(x_pos + 60, y_pos + 50), Size(680, 500)));
+  level_selector   ->set_rect(Rect(Vector2i(x_pos + 60, y_pos + 50), Size(680, 500)));
 
-  void
-  LevelMenu::resize(const Size& size_)
-  {
-    GUIScreen::resize(size_);
+  prev_button->set_pos(size.width/2  + 280, size.height/2 - 48 - 12);
+  next_button->set_pos(size.width/2  + 280, size.height/2 + 12);
 
-    x_pos = (size.width  - globals::default_screen_width)/2;
-    y_pos = (size.height - globals::default_screen_height)/2;
+  abort_button->set_pos(size.width /2 - 300,
+                        size.height/2 + 200);
+}
 
-    levelset_selector->set_rect(Rect(Vector2i(x_pos + 60, y_pos + 50), Size(680, 500)));
-    level_selector   ->set_rect(Rect(Vector2i(x_pos + 60, y_pos + 50), Size(680, 500)));
-
-    prev_button->set_pos(size.width/2  + 280, size.height/2 - 48 - 12);
-    next_button->set_pos(size.width/2  + 280, size.height/2 + 12);
-
-    abort_button->set_pos(size.width /2 - 300,
-                          size.height/2 + 200);
-  }
-
-  /* EOF */
+/* EOF */
