@@ -2,6 +2,7 @@
  (size 11)
  (glyph-count 680)
  (char-spacing 0)
+ (vertical-spacing 1.2)
  (images 
   (image
    (filename "images/fonts/verdana11.png")
