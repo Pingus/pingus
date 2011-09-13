@@ -328,7 +328,7 @@ public:
     page += 1;
     if (page >= (levelset->get_level_count() - items_per_page))
     {
-      page = std::max(0, (levelset->get_level_count()) - 1 - items_per_page);
+      page = std::max(0, (levelset->get_level_count()) - items_per_page);
     }
   }
 
