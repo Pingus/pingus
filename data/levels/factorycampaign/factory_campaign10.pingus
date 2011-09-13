@@ -285,6 +285,12 @@
           (image "groundpieces/ground/desert/pillar2")
           (modifier "ROT180FLIP"))
         (position 285 1077 0)))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/peakdune")
+        (modifier "ROT0"))
+      (position 222 1092 0))
     (group 
       (groundpiece 
         (type "ground")
@@ -310,6 +316,12 @@
           (image "groundpieces/ground/desert/pillar2")
           (modifier "ROT180FLIP"))
         (position 443 1041 0)))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/peakdune")
+        (modifier "ROT0"))
+      (position 382 1092 0))
     (group 
       (groundpiece 
         (type "ground")
@@ -594,6 +606,177 @@
         (image "groundpieces/ground/desert/pillar2")
         (modifier "ROT0"))
       (position 1206 1192 0))
+    (group 
+      (groundpiece 
+        (type "ground")
+        (surface 
+          (image "groundpieces/ground/desert/bigdune1")
+          (modifier "ROT0"))
+        (position -36 1107 0))
+      (groundpiece 
+        (type "ground")
+        (surface 
+          (image "groundpieces/ground/desert/bigsand")
+          (modifier "ROT0"))
+        (position -29 1135 0)))
+    (group 
+      (groundpiece 
+        (type "ground")
+        (surface 
+          (image "groundpieces/ground/desert/bigdune1")
+          (modifier "ROT0"))
+        (position 230 1111 0))
+      (groundpiece 
+        (type "ground")
+        (surface 
+          (image "groundpieces/ground/desert/bigsand")
+          (modifier "ROT0"))
+        (position 237 1139 0)))
+    (group 
+      (groundpiece 
+        (type "ground")
+        (surface 
+          (image "groundpieces/ground/desert/bigdune1")
+          (modifier "ROT0"))
+        (position 503 1105 0))
+      (groundpiece 
+        (type "ground")
+        (surface 
+          (image "groundpieces/ground/desert/bigsand")
+          (modifier "ROT0"))
+        (position 510 1133 0)))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigdune1")
+        (modifier "ROT0"))
+      (position 793 1094 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigsand")
+        (modifier "ROT0"))
+      (position 792 1135 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigdune1")
+        (modifier "ROT0"))
+      (position 1069 1106 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigsand")
+        (modifier "ROT0"))
+      (position 1078 1135 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigdune1")
+        (modifier "ROT0"))
+      (position 1343 1108 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigdune1")
+        (modifier "ROT0"))
+      (position 1587 1094 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigsand")
+        (modifier "ROT0"))
+      (position 1635 1140 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigsand")
+        (modifier "ROT0"))
+      (position 1352 1137 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigdune1")
+        (modifier "ROT0"))
+      (position 1866 1082 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigdune1")
+        (modifier "ROT0"))
+      (position 2042 1076 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigsand")
+        (modifier "ROT0"))
+      (position 2003 1115 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigsand")
+        (modifier "ROT0"))
+      (position 1853 1125 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/peakdune")
+        (modifier "ROT0"))
+      (position 493 1094 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/peakdune")
+        (modifier "ROT0"))
+      (position 692 1087 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/peakdune")
+        (modifier "ROT0"))
+      (position 892 1064 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/peakdune")
+        (modifier "ROT0"))
+      (position 998 1069 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/peakdune")
+        (modifier "ROT0"))
+      (position 1144 1081 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/peakdune")
+        (modifier "ROT0"))
+      (position 1255 1076 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/peakdune")
+        (modifier "ROT0"))
+      (position 1399 1073 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/peakdune")
+        (modifier "ROT0"))
+      (position 1507 1073 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/peakdune")
+        (modifier "ROT0"))
+      (position 1658 1077 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/peakdune")
+        (modifier "ROT0"))
+      (position 1769 1070 0))
     (groundpiece 
       (type "ground")
       (surface 
