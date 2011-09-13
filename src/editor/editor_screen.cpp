@@ -205,52 +205,54 @@ EditorScreen::draw(DrawingContext& gc)
     gc.print_center(Fonts::verdana11,
                     Vector2i(gc.get_width()/2,
                              gc.get_height()/2 - size_.height/2 + 12),
-                    "Editor Help");
+                    _("== Editor Help =="));
 
     int x = gc.get_width()/2 - size_.width/2 + 12;
     int y = gc.get_height()/2 - size_.height/2 + 36;
-    gc.print_center(Fonts::verdana11, Vector2i(x + 50, y),
+    gc.print_center(Fonts::verdana11, Vector2i(x + 75, y),
                     "A\n"
                     "Shift+A\n"
-                    "], w\n"
-                    "[, s\n"
-                    "Shift+]\n"
-                    "Shift+[\n"
+                    "PageUp, ], w\n"
+                    "PageDown, [, s\n"
+                    "Shift+PageUp\n"
+                    "Shift+PageDown\n"
                     "R\n"
                     "Shift+R\n"
+                    "G\n"
+                    "Shift+G\n"
       );
 
-    gc.print_left(Fonts::verdana11, Vector2i(x+100, y),
+    gc.print_left(Fonts::verdana11, Vector2i(x+150, y),
                   _("Select all\n"
                     "Clear Selection\n"
                     "Raise objects\n"
                     "Lower objects\n"
-                    "Lower objects to bottom\n"
                     "Raise objects to top\n"
+                    "Lower objects to bottom\n"
                     "Rotate 90 degree\n"
-                    "Rotate 270 degree\n"));
+                    "Rotate 270 degree\n"
+                    "Group selected objects\n"
+                    "Ungroup selected objects\n"));
 
     x = int(gc.get_width()/2 + 12);
     y = int(gc.get_height()/2) - size_.height/2 + 36;
     gc.print_center(Fonts::verdana11, Vector2i(x + 50, y),
                     "F\n"
                     "Shift+F\n"
-                    "Delete\n"
-                    "i\n"
-                    "k\n"
-                    "j\n"
-                    "l\n"
-      );
+                    "Delete, Backspace\n"
+                    "I, K, J, L\n"
+                    "Shift+I, K, J, L\n"
+                    "B, Shift+B\n"
+                    "=, +, -\n");
 
-    gc.print_left(Fonts::verdana11, Vector2i(x + 100, y),
+    gc.print_left(Fonts::verdana11, Vector2i(x + 125, y),
                   _("Flip object horizontaly\n"
                     "Flip object vertically\n"
                     "Delete all marked objects\n"
-                    "Move objects up\n"
-                    "Move objects down\n"
-                    "Move objects left\n"
-                    "Move objects right\n")
-      );
+                    "Move objects by one pixel\n"
+                    "Move objects by 32 pixel\n"
+                    "Toggle background color\n"
+                    "Increase/lower repeat\n"));
 
     gc.print_left(Fonts::verdana11,
                   Vector2i(gc.get_width()/2 - size_.width/2 + 12,
