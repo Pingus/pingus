@@ -8,7 +8,7 @@
     (number-of-pingus 20)
     (number-to-save 20)
     (time -1)
-    (music "")
+    (music "pingus-7.it")
     (actions 
       (basher 4)
       (blocker 2)
@@ -19,6 +19,13 @@
     (solidcolor-background 
       (position -166 62 -1000)
       (colori 100 100 200 255))
+    (hotspot 
+      (surface 
+        (image "entrances/snow_back")
+        (modifier "ROT0"))
+      (position 239 551 -100)
+      (speed 0)
+      (parallax 0))
     (liquid 
       (surface 
         (image "liquids/water2")
@@ -657,19 +664,19 @@
       (position -1 1139 10)
       (speed 0)
       (repeat 35))
+    (entrance 
+      (type "generic")
+      (position 284 595 50)
+      (owner-id 0)
+      (direction "right")
+      (release-rate 150))
     (hotspot 
       (surface 
-        (image "entrances/snow_back")
+        (image "entrances/snow_front")
         (modifier "ROT0"))
       (position 239 551 100)
       (speed 0)
       (parallax 0))
-    (entrance 
-      (type "generic")
-      (position 288 630 110)
-      (owner-id 0)
-      (direction "right")
-      (release-rate 150))
     (snow-generator 
       (position 86 -53 200))))
 

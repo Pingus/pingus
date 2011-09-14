@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-06 14:58+0200\n"
-"PO-Revision-Date: 2011-03-29 09:42+0000\n"
+"PO-Revision-Date: 2011-09-14 13:05+0000\n"
 "Last-Translator: Gabriel Rota <gabriel.rota@gmail.com>\n"
 "Language-Team: http://translationproject.org/\n"
 "Language: it\n"
@@ -1884,20 +1884,18 @@ msgstr ""
 "stelle."
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:7
-#, fuzzy
 msgid "Jump"
-msgstr "Saltatore"
+msgstr "Salta"
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:8
 msgid ""
 "All Pingus need is to jump.... Hint: While pausing (press P key) you still "
 "can control Pingus. "
-msgstr ""
+msgstr "Tutti i Pingus devono satare"
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:7
-#, fuzzy
 msgid "Factory"
-msgstr "Trama"
+msgstr "Indutria"
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:8
 msgid ""
@@ -1946,18 +1944,18 @@ msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign2.pingus:7
 msgid "Destination North"
-msgstr ""
+msgstr "Destinazione Nord"
 
 #: data/levels/factorycampaign/factory_campaign2.pingus:8
 msgid ""
 "For now, Pingus are leaving South Pole and moving North. You have to help "
 "them!"
-msgstr ""
+msgstr "Ora i Pingus stanno lasciando il polo sud per raggiungere il nord. "
+"Devi aiutarli!"
 
 #: data/levels/factorycampaign/factory_campaign3.pingus:7
-#, fuzzy
 msgid "The cave"
-msgstr "Il pozzo di lava"
+msgstr "La cava"
 
 #: data/levels/factorycampaign/factory_campaign3.pingus:8
 msgid ""
@@ -1968,7 +1966,7 @@ msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign4.pingus:7
 msgid "Difficulties on the way"
-msgstr ""
+msgstr "Difficoltà di percorso"
 
 #: data/levels/factorycampaign/factory_campaign4.pingus:8
 msgid ""
@@ -1979,7 +1977,7 @@ msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign5.pingus:7
 msgid "Four ways out"
-msgstr ""
+msgstr "Quattro vie di fuga"
 
 #: data/levels/factorycampaign/factory_campaign5.pingus:8
 msgid ""
@@ -1989,40 +1987,43 @@ msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign6.pingus:7
 msgid "Egypt - So easy"
-msgstr ""
+msgstr "Egitto - Così facile"
 
 #: data/levels/factorycampaign/factory_campaign6.pingus:8
 msgid "Pingus reached Egypt. Looks easy but is it really so easy. Try out. "
-msgstr ""
+msgstr "I Pingus raggiungono. Sembra facile me è veramente così facile. Prova."
 
 #: data/levels/factorycampaign/factory_campaign7.pingus:7
 msgid "Egypt - Oasis"
-msgstr ""
+msgstr "Egitto - Oasi"
 
 #: data/levels/factorycampaign/factory_campaign7.pingus:8
 msgid ""
 "Last time it was easy. Now it will be a little bit harder. Pingus are "
 "entering oasis. Watch out for the water. "
-msgstr ""
+msgstr "L'ultima volta è stato facile. Ora sarà un po' più difficile. "
+"I Pingus sono entrati in un'oasi. Attenzione all'acqua. "
 
 #: data/levels/factorycampaign/factory_campaign8.pingus:7
 msgid "Egypt - The Maze"
-msgstr ""
+msgstr "Egitto - Il labirinto"
 
 #: data/levels/factorycampaign/factory_campaign8.pingus:8
 msgid ""
 "You came across a maze. Can you find the way out? Think twice before digging."
-msgstr ""
+msgstr "Vi siere imbattuti in un labirinto. Riuscirai a trovare il modo di uscirne?"
+"Pensaci due volte prima di scavare."
 
 #: data/levels/factorycampaign/factory_campaign9.pingus:7
 msgid "Egypt - Piramids"
-msgstr ""
+msgstr "Egitto - Piramidi"
 
 #: data/levels/factorycampaign/factory_campaign9.pingus:8
 msgid ""
 "The maze led you to the big piramid. Now you have 4 minutes to escape. Hurry "
 "up!"
-msgstr ""
+msgstr "Il labirinto ti ha condotto alla grande piramide. Ora hai quattro "
+"minuti per fuggire. Sbrigati "
 
 #: data/worldmaps/tutorial.worldmap:4
 msgid "Tutorial Island"
