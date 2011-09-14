@@ -1991,6 +1991,8 @@ msgid ""
 "It's getting warmer but Pingus are breavely moving North. This time it will "
 "be much easier. There are at least four ways out. Could you find them?"
 msgstr ""
+"Fa sempre più caldo ma i Pingus stanno coraggiasamente continuando a muoversi verso il Nord. "
+"Questa volta sarà molto più facile. Ci sono almeno quattro vie d'uscita. Potrai trovarle?"
 
 #: data/levels/factorycampaign/factory_campaign6.pingus:7
 msgid "Egypt - So easy"
