@@ -29,32 +29,76 @@ Stuff to do at all times:
 - grep for all the FIXME's and '#if 0' and find those that might be
   important, add what you find to this TODO
 
+Levels
+======
+
+Processing: data/levels/xskat/ok/hellmouth13-grumbel.pingus 73/469
+[ERROR] WorldObjFactory::create(): invalid id: 'infobox'
+[ERROR] WorldObjFactory::create(): invalid id: 'infobox'
+[ERROR] WorldObjFactory::create(): invalid id: 'infobox'
+--
+Processing: data/levels/wip/stone2.pingus 263/469
+[ERROR] WorldObjFactory::create(): invalid id: 'bumper'
+[ERROR] WorldObjFactory::create(): invalid id: 'bumper'
+--
+Processing: data/levels/wip/desert-phil2.pingus 270/469
+[ERROR] WorldObjFactory::create(): invalid id: 'bumper'
+--
+Processing: data/levels/test/test6.pingus 283/469
+
+[ERROR] WorldObjFactory::create(): invalid id: 'bumper'
+
+Broken by level editor bug (teleporter are at the wrong position, id removed):
+==============================================================================
+data/levels/mysteryisland/hall-of-illusion-lac.pingus
+data/levels/mysteryisland/emperiment-lac.pingus
+
 Editor
 ======
 
 * changing surface-background color doesn't update the surface
 
-* no shift+click for selecting multiple objects
-
-* remove comment and difficulty support
-
-map PGUP/PGDOWN to object raise/lower
-
-* make entrances special objects with code behind them, not just hotspot hacks
-
 * get rid of time completely? maybe not, but don't use it in any of the official levels
 
-* info text overflows the box
+* z-pos is not taken into account when raise/lower objects, need to
+  sort object list by z-pos
 
-* does the editor preserve newlines in strings
+* "new level" leaves the scrolling limits untouched, makes you stuck
 
-* checksum in demo files causes exception
+* editor must distingush between sprites and surfaces, as align will
+  be off when using a Sprite in a Surface context
 
-* flipping selection flips individual objects, not the whole group
+* System::opendir() is not modifier-directory aware, thus will not
+  return things installed in ~/.pingus/
 
+* editor/InputBox is not multi-line capable
+
+* no up button in the file dialog
+
+* groups can't be flipped
+
+* selection's can't be flipped, only the individual objects get flipped
+
+* display help text when pressing F1
+
+* document all new keyboard shortcuts
 
 Roadmap for Pingus 0.8.0:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* use better checksum algorithm (sha1, md5, etc.)
+
+* save checksum with savegame
+
+[ERROR] Resource::load_surface(): exits/sortie_anim: can't load animated sprite as surface
+[ERROR] Resource::load_surface(): exits/space: can't load animated sprite as surface
+[ERROR] Resource::load_surface(): textures/anim_fire: can't load animated sprite as surface
+
+* add Gimp scripts for packing/unpacking animations
+
+* display keyboard shortcuts in the GUI (a little tricky with remapable keys)
+
+* climber right animation is the wrong way around
 
 * write a man-page
 
@@ -65,6 +109,9 @@ Roadmap for Pingus 0.8.0:
 * give better error message when datadir is not set
 
 * check data/themes/ for any useful stuff
+
+* allow fast forward on worldmap
+
 
 Code Cleanup
 ============
@@ -158,17 +205,9 @@ OLPC Issues
 
 * add button bar to the demo recorder, so that used action are visible
 
-* add a keyboard shortcut to single-step the gameloop
-
 * ChoiceBox needs a way to carry user data for items
 
-* improve fontgen to accept proper command line arguments, such as
-  output filename, also add .png support, support for background and
-  foreground color, border and plenty more
-
 * check that all data is overridable/addable by modifying ~/.pingus/ (levelsets seem missing)
-
-* Automatically generate Levelsets for User generated levels, maybe allow to edit them somehow
 
 * Valgrind results:
 
@@ -258,8 +297,6 @@ OLPC Issues
 * remove pingus_debug_flags or find some use for it
 
 * make a more powerfull liquid type that automatically aligns itself to the bottom level border
-
-* add a form of add-on handling to Pathname()
 
 * datasets: core/, base/, add-on/ ?
 
