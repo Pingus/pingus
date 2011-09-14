@@ -1978,6 +1978,9 @@ msgid ""
 "are waiting for your orders, they count on you so don't fail! Hint: Miners, "
 "diggers and bashers are very important here!"
 msgstr ""
+"Sembra che tu abbia incontrato serie difficoltà. Ma niente panico, i Pingus "
+"stanno attendendo i tuoi ordini, contano su di te per non fallire! "
+"Suggerimento: \"Minatori\", \"Scavatori\" e \"Sfondamuri\" sono veramente importati qui!"
 
 #: data/levels/factorycampaign/factory_campaign5.pingus:7
 msgid "Four ways out"
