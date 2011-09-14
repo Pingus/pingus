@@ -8,7 +8,7 @@
     (number-of-pingus 20)
     (number-to-save 19)
     (time -1)
-    (music "")
+    (music "07-Travels.ogg")
     (actions 
       (basher 10)
       (blocker 4)
@@ -33,6 +33,12 @@
       (scroll-y 0)
       (para-x 0.5)
       (para-y 0.5))
+    (entrance 
+      (type "generic")
+      (position 316 488 -50)
+      (owner-id 0)
+      (direction "right")
+      (release-rate 150))
     (groundpiece 
       (type "ground")
       (surface 
@@ -854,14 +860,8 @@
       (surface 
         (image "entrances/halloween")
         (modifier "ROT0"))
-      (position 274 416 100)
+      (position 275 415 100)
       (speed 0)
-      (parallax 0))
-    (entrance 
-      (type "generic")
-      (position 318 514 110)
-      (owner-id 0)
-      (direction "right")
-      (release-rate 150))))
+      (parallax 0))))
 
 ;; EOF ;;

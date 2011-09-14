@@ -1963,6 +1963,10 @@ msgid ""
 "Remember that sometimes there is more than one way out. Hint: To 'unlock' "
 "blockers you can use bashers and jumpers."
 msgstr ""
+"I Pingus sulla loro strada si sono imbattuti in una grotta enorme. "
+"Devi condurli attraverso. Ricorda che a volte c'è più di una via d'uscita. "
+"Suggerimento: per 'sbloccare' l'abilità \"Ostacolo\" puoi usare l'abilità "
+"\"Scavatore\" e quella \"Saltatore\""
 
 #: data/levels/factorycampaign/factory_campaign4.pingus:7
 msgid "Difficulties on the way"
