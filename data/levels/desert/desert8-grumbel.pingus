@@ -443,7 +443,7 @@
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/middleprickpiece")
-        (modifier "ROT90"))
+        (modifier "ROT90FLIP"))
       (position 592 577 0))
     (groundpiece 
       (type "ground")
