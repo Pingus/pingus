@@ -638,13 +638,6 @@
         (image "groundpieces/ground/misc/bpiece4")
         (modifier "ROT90FLIP"))
       (position 964 511 20))
-    (hotspot 
-      (surface 
-        (image "entrances/entrance")
-        (modifier "ROT0"))
-      (position 416 287 100)
-      (speed 0)
-      (parallax 0))
     (liquid 
       (surface 
         (image "liquids/water2")
@@ -652,9 +645,16 @@
       (position -2 1138 100)
       (speed 0)
       (repeat 32))
+    (hotspot 
+      (surface 
+        (image "entrances/industrial_top")
+        (modifier "ROT0"))
+      (position 430 275 100)
+      (speed 0)
+      (parallax 0))
     (entrance 
       (type "generic")
-      (position 450 319 110)
+      (position 451 313 110)
       (owner-id 0)
       (direction "misc")
       (release-rate 150))))
