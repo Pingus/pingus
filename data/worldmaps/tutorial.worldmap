@@ -7,8 +7,8 @@
     (music "pingus-1.it")
     (author "Ingo Ruhnke")
     (email "grumbel@gmx.de")
-    (width 1161)
-    (height 600)
+    (width 1920)
+    (height 1200)
     (default-node "leveldot_1")
     (final-node "leveldot_19"))
   (intro_story 
@@ -118,107 +118,107 @@
       (leveldot 
         (dot 
           (name "leveldot_1")
-          (position 135 414 0))
+          (position 513 713 0))
         (levelname "tutorial/digger-tutorial2-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_2")
-          (position 240 404 0))
+          (position 618 703 0))
         (levelname "tutorial/floater-tutorial-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_3")
-          (position 326 360 -55))
+          (position 704 659 -55))
         (levelname "tutorial/snow8-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_4")
-          (position 415 325 -55))
+          (position 793 624 -55))
         (levelname "tutorial/basher-tutorial-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_5")
-          (position 520 288 0))
+          (position 898 587 0))
         (levelname "tutorial/snow9-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_6")
-          (position 595 280 0))
+          (position 973 579 0))
         (levelname "tutorial/snow10-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_7")
-          (position 658 216 0))
+          (position 1036 515 0))
         (levelname "tutorial/jumper-tutorial-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_8")
-          (position 739 213 0))
+          (position 1117 512 0))
         (levelname "tutorial/miner-tutorial2-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_9")
-          (position 819.5 298.5 0))
+          (position 1197 597 0))
         (levelname "tutorial/bomber-tutorial2-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_10")
-          (position 736 330 0))
+          (position 1114 629 0))
         (levelname "tutorial/solid-tutorial-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_11")
-          (position 594 376 5000))
+          (position 972 675 5000))
         (levelname "tutorial/snow14-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_12")
-          (position 481 373 5000))
+          (position 859 672 5000))
         (levelname "tutorial/snow19-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_13")
-          (position 373 418 5000))
+          (position 751 717 5000))
         (levelname "tutorial/snow21-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_14")
-          (position 454 460 5000))
+          (position 832 759 5000))
         (levelname "tutorial/snow15-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_15")
-          (position 630 467 150))
+          (position 1008 766 150))
         (levelname "tutorial/snow20-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_16")
-          (position 718 473 150))
+          (position 1096 772 150))
         (levelname "tutorial/snow17-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_17")
-          (position 844 445 150))
+          (position 1222 744 150))
         (levelname "tutorial/snow12-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_18")
-          (position 962 383 0))
+          (position 1340 682 0))
         (levelname "tutorial/snow7-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_19")
-          (position 1028 388 0))
+          (position 1406 687 0))
         (levelname "tutorial/snow11-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_20")
-          (position 729 403 0))
+          (position 1107 702 0))
         (levelname "tutorial/snow16-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_21")
-          (position 870 377 0))
+          (position 1248 676 0))
         (levelname "tutorial/snow22-grumbel")))
     (edges 
       (edge 
@@ -231,7 +231,7 @@
         (source "leveldot_2")
         (destination "leveldot_3")
         (positions 
-          (position 269 393 0)))
+          (position 647 692 0)))
       (edge 
         (name "egde_3")
         (source "leveldot_3")
@@ -252,7 +252,7 @@
         (source "leveldot_6")
         (destination "leveldot_7")
         (positions 
-          (position 637 228 0)))
+          (position 1015 527 0)))
       (edge 
         (name "egde_7")
         (source "leveldot_7")
@@ -268,9 +268,9 @@
         (source "leveldot_8")
         (destination "leveldot_9")
         (positions 
-          (position 761 229 0)
-          (position 784 256 0)
-          (position 818 285 0)))
+          (position 1139 528 0)
+          (position 1162 555 0)
+          (position 1196 584 0)))
       (edge 
         (name "egde_10")
         (source "leveldot_9")
@@ -281,7 +281,7 @@
         (source "leveldot_10")
         (destination "leveldot_11")
         (positions 
-          (position 678 347 5000)))
+          (position 1056 646 5000)))
       (edge 
         (name "egde_12")
         (source "leveldot_11")
@@ -292,8 +292,8 @@
         (source "leveldot_12")
         (destination "leveldot_13")
         (positions 
-          (position 444 379 5000)
-          (position 389 403 5000)))
+          (position 822 678 5000)
+          (position 767 702 5000)))
       (edge 
         (name "egde_22")
         (source "leveldot_13")
@@ -304,8 +304,8 @@
         (source "leveldot_14")
         (destination "leveldot_15")
         (positions 
-          (position 503 470 5000)
-          (position 568 471 250)))
+          (position 881 769 5000)
+          (position 946 770 250)))
       (edge 
         (name "egde_15")
         (source "leveldot_15")
@@ -321,7 +321,7 @@
         (source "leveldot_17")
         (destination "leveldot_18")
         (positions 
-          (position 905 417 250)))
+          (position 1283 716 250)))
       (edge 
         (name "egde_18")
         (source "leveldot_18")
@@ -332,13 +332,13 @@
         (source "leveldot_15")
         (destination "leveldot_20")
         (positions 
-          (position 678 449 150)))
+          (position 1056 748 150)))
       (edge 
         (name "egde_20")
         (source "leveldot_20")
         (destination "leveldot_21")
         (positions 
-          (position 787 384 0)))
+          (position 1165 683 0)))
       (edge 
         (name "egde_21")
         (source "leveldot_21")
@@ -356,19 +356,19 @@
       (surface 
         (image "worldmaps/tutorial/layer3")
         (modifer ))
-      (position 701 405 100))
+      (position 1079 704 100))
     (surface 
       (name "mountain_1")
       (surface 
         (image "worldmaps/tutorial/layer1")
         (modifer ))
-      (position 208 309 -50)
+      (position 586 608 -50)
       (auto-uncover 1))
     (surface 
       (name "mountain_2")
       (surface 
         (image "worldmaps/tutorial/layer2")
         (modifer ))
-      (position 788 343 100)
+      (position 1166 642 100)
       (auto-uncover 0))))
 ;; EOF ;;
