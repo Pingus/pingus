@@ -8,7 +8,7 @@
     (number-of-pingus 20)
     (number-to-save 16)
     (time -1)
-    (music "")
+    (music "02-Smoke and Mirrors.ogg")
     (actions 
       (blocker 4)
       (bomber 4)
@@ -685,6 +685,13 @@
         (image "groundpieces/ground/desert/bigdune1")
         (modifier "ROT0FLIP"))
       (position -54 823 0))
+    (hotspot 
+      (surface 
+        (image "entrances/wood_bottom")
+        (modifier "ROT0"))
+      (position 474 106 0)
+      (speed 0)
+      (parallax 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -739,18 +746,18 @@
         (image "groundpieces/ground/desert/bigdune1")
         (modifier "ROT0"))
       (position 453 784 2))
-    (hotspot 
-      (surface 
-        (image "entrances/wood_bottom")
-        (modifier "ROT0"))
-      (position 474 106 100)
-      (speed 0)
-      (parallax 0))
     (entrance 
       (type "generic")
-      (position 524 164 110)
+      (position 525 148 100)
       (owner-id 0)
       (direction "misc")
-      (release-rate 150))))
+      (release-rate 150))
+    (hotspot 
+      (surface 
+        (image "entrances/wood_top")
+        (modifier "ROT0"))
+      (position 474 105 150)
+      (speed 0)
+      (parallax 0))))
 
 ;; EOF ;;

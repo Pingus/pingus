@@ -8,7 +8,7 @@
     (number-of-pingus 3)
     (number-to-save 3)
     (time -1)
-    (music "")
+    (music "08-Big Country.ogg")
     (actions 
       (jumper 30))
     (levelsize 2200 1200))
@@ -777,24 +777,31 @@
         (image "groundpieces/ground/desert/peakdune")
         (modifier "ROT0"))
       (position 1769 1070 0))
+    (hotspot 
+      (surface 
+        (image "entrances/wood_bottom")
+        (modifier "ROT0"))
+      (position 230 626 0)
+      (speed 0)
+      (parallax 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/pillar1")
         (modifier "ROT0"))
       (position 1869 403 1))
-    (hotspot 
-      (surface 
-        (image "entrances/wood_bottom")
-        (modifier "ROT0"))
-      (position 230 626 100)
-      (speed 0)
-      (parallax 0))
     (entrance 
       (type "generic")
-      (position 282 711 110)
+      (position 279 669 100)
       (owner-id 0)
       (direction "right")
-      (release-rate 150))))
+      (release-rate 150))
+    (hotspot 
+      (surface 
+        (image "entrances/wood_top")
+        (modifier "ROT0"))
+      (position 230 625 100)
+      (speed 0)
+      (parallax 0))))
 
 ;; EOF ;;

@@ -2212,7 +2212,7 @@ msgstr "Sta facendo caldo fuori..."
 
 #: data/levelsets/factory.levelset:3
 msgid "Factory Campaign"
-msgstr ""
+msgstr "Campagnia Industria"
 
 #: data/levelsets/factory.levelset:4
 msgid "Pingus expedition"
