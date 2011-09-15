@@ -8,7 +8,7 @@
     (number-of-pingus 100)
     (number-to-save 80)
     (time -1)
-    (music "")
+    (music "gd-cancn.it")
     (actions 
       (basher 3)
       (blocker 15)
@@ -1362,31 +1362,31 @@
         (image "groundpieces/ground/industrial/pipe2")
         (modifier "ROT0"))
       (position 428 307 1))
-    (hotspot 
-      (surface 
-        (image "entrances/entrance")
-        (modifier "ROT0"))
-      (position 207 200 100)
-      (speed 0)
-      (parallax 0))
-    (hotspot 
-      (surface 
-        (image "entrances/entrance")
-        (modifier "ROT0"))
-      (position 998 101 100)
-      (speed 0)
-      (parallax 0))
     (entrance 
       (type "generic")
-      (position 238 239 110)
+      (position 234 222 100)
       (owner-id 0)
       (direction "right")
       (release-rate 150))
     (entrance 
       (type "generic")
-      (position 1030 166 110)
+      (position 1034 101 100)
       (owner-id 0)
       (direction "misc")
-      (release-rate 150))))
+      (release-rate 150))
+    (hotspot 
+      (surface 
+        (image "entrances/industrial_top")
+        (modifier "ROT0"))
+      (position 211 169 100)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "entrances/industrial_top")
+        (modifier "ROT0"))
+      (position 1014 49 100)
+      (speed 0)
+      (parallax 0))))
 
 ;; EOF ;;
