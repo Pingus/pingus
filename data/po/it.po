@@ -1891,7 +1891,8 @@ msgstr "Salta"
 msgid ""
 "All Pingus need is to jump.... Hint: While pausing (press P key) you still "
 "can control Pingus. "
-msgstr "Tutti i Pingus devono satare"
+msgstr "Tutti i Pingus devono satare.... Suggerimento: Mentre sei in pausa "
+"(premi il tasto p) puoi controllare i Piungus. "
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:7
 msgid "Factory"
@@ -1902,6 +1903,8 @@ msgid ""
 "Finally you reached the factory. Watch out as there are many dangers. Use "
 "bombers to destroy the basement of the factory. Good luck!"
 msgstr ""
+"Finalmente hai raggiunto l'industria. Fai attenzione ci sono molti pericoli. "
+"Usa i \"\" per distruggere il basamento della fabbrica. Buona fortuna!"
 
 #: data/levels/factorycampaign/factory_campaign12.pingus:7
 msgid "Going back home"
@@ -2000,7 +2003,7 @@ msgstr "Egitto - Così facile"
 
 #: data/levels/factorycampaign/factory_campaign6.pingus:8
 msgid "Pingus reached Egypt. Looks easy but is it really so easy. Try out. "
-msgstr "I Pingus raggiungono. Sembra facile me è veramente così facile. Prova."
+msgstr "I Pingus raggiungono l'Egitto. Sembra facile ma è veramente così facile. Prova. "
 
 #: data/levels/factorycampaign/factory_campaign7.pingus:7
 msgid "Egypt - Oasis"
@@ -2020,7 +2023,7 @@ msgstr "Egitto - Il labirinto"
 #: data/levels/factorycampaign/factory_campaign8.pingus:8
 msgid ""
 "You came across a maze. Can you find the way out? Think twice before digging."
-msgstr "Vi siere imbattuti in un labirinto. Riuscirai a trovare il modo di uscirne?"
+msgstr "Vi siete imbattuti in un labirinto. Riuscirai a trovare il modo di uscirne? "
 "Pensaci due volte prima di scavare."
 
 #: data/levels/factorycampaign/factory_campaign9.pingus:7

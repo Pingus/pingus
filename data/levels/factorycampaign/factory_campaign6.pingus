@@ -8,7 +8,7 @@
     (number-of-pingus 20)
     (number-to-save 18)
     (time -1)
-    (music "")
+    (music "pingus-3.it")
     (actions 
       (basher 4)
       (blocker 1)
@@ -557,14 +557,21 @@
       (surface 
         (image "entrances/wood_bottom")
         (modifier "ROT0"))
-      (position 501 318 100)
+      (position 501 318 0)
       (speed 0)
       (parallax 0))
     (entrance 
       (type "generic")
-      (position 552 370 110)
+      (position 552 370 100)
       (owner-id 0)
       (direction "misc")
-      (release-rate 150))))
+      (release-rate 150))
+    (hotspot 
+      (surface 
+        (image "entrances/wood_top")
+        (modifier "ROT0"))
+      (position 501 317 100)
+      (speed 0)
+      (parallax 0))))
 
 ;; EOF ;;
