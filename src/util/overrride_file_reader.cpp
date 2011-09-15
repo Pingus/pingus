@@ -40,24 +40,15 @@ public:
 
   bool read_int(const char* name, int& v) const
   {
-    log_tmp("--------------------------- READER: " << name);
-
     std::vector<std::string> lst = get_section_names();
-    for(auto it = lst.begin(); it != lst.end(); ++it)
-    {
-      log_tmp(">>>>>>>>>>>>>>>>>>> " << *it);
-    }
-
     if (m_overrides.read_int(name, v))
     {
-      log_tmp(">>>>>>>>>>> " << v);
       return true;
     }
     else
     {
       if (m_reader.read_int(name, v))
       {
-        log_tmp(">>------------->>>>>>>>> " << v);
         return true;
       }
       return false;

@@ -172,8 +172,6 @@ WorldObjRenderer::process_object_with_surface(const FileReader& reader)
       int repeat = 1;
       reader.read_int("repeat", repeat);
 
-      log_tmp("Repeat: " << repeat);
-
       render_surface(desc, pos, repeat);
     }
   }

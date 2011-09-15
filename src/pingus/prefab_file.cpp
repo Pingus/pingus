@@ -34,10 +34,7 @@ PrefabFile::from_path(const Pathname& filename)
   else
   {
     FileReader overrides;
-    if (reader.read_section("overrides", overrides))
-    {
-      log_tmp("OVERRIDES: SUCCESS: ");
-    }
+    reader.read_section("overrides", overrides);
 
     FileReader objects;
     if (!reader.read_section("objects", objects) || objects.get_sections().empty())

@@ -356,8 +356,6 @@ public:
     x -= rect.left;
     y -= rect.top;
 
-    log_tmp(list_rect << " " << x << " " << y);
-
     if (!list_rect.contains(Vector2i(x, y)))
     {
       current_level = -1;
