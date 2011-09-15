@@ -30,7 +30,7 @@ clean:
 	rm -rf .sconf_temp/
 	rm -f .sconsign.dblite
 	rm -rf build/
-	rm pingus
+	rm -f pingus
 
 install: install-exec install-data
 
