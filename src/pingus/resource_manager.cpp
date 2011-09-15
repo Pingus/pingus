@@ -40,6 +40,7 @@ ResourceManager::~ResourceManager()
 std::vector<std::string>
 ResourceManager::get_section(const std::string& name)
 {
+  // FIXME: completely wrong!!
   std::vector<std::string> lst;
   for (auto i = m_cache.begin(); i != m_cache.end(); ++i)
   {

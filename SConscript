@@ -244,6 +244,7 @@ class Project:
                                            Glob('src/engine/display/*.cpp') + \
                                            Glob('src/engine/gui/*.cpp') + \
                                            Glob('src/engine/input/*.cpp') + \
+                                           Glob('src/engine/resource/*.cpp') + \
                                            Glob('src/engine/screen/*.cpp') + \
                                            Glob('src/engine/sound/*.cpp') + \
                                            Glob('src/engine/system/*.cpp') + \
