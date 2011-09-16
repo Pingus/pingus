@@ -244,8 +244,6 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Loads the level editor"));
   argp.add_option('S', "save", "FILENAME",
                   _("Save the level given level to FILENAME and quit"));
-  argp.add_option(363, "font", "",
-                  _("Test a font"));
   argp.add_option(359, "credits", "",
                   _("Shows the credits"));
 
@@ -484,10 +482,6 @@ PingusMain::parse_args(int argc, char** argv)
         cmd_options.controller.set(argp.get_argument());
         break;
 
-      case 363: // font test
-        cmd_options.font.set(true);
-        break;
-
       case 'l': // language
         cmd_options.language.set(argp.get_argument());
         break;
@@ -619,18 +613,6 @@ PingusMain::start_game ()
   { // just show the credits screen
     screen_manager.push_screen(new Credits());
   }
-  else if (cmd_options.font.is_set() && cmd_options.font.get())
-  { // run the Font Test
-    if (!cmd_options.rest.is_set())
-    {
-      std::cout << "Error: FILE argument required" << std::endl;
-    }
-    else
-    {
-      Pathname file(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
-      screen_manager.push_screen(new FontTestScreen(file)); 
-    }
-  }
   else if (cmd_options.editor.is_set() && cmd_options.editor.get())
   { // Editor
     Editor::EditorScreen* editor = new Editor::EditorScreen();
@@ -646,6 +628,11 @@ PingusMain::start_game ()
     { // Demo file
       screen_manager.push_screen
         (new DemoSession(Pathname(cmd_options.rest.get(), Pathname::SYSTEM_PATH)));
+    }
+    else if (StringUtil::has_suffix(cmd_options.rest.get(), ".font"))
+    {
+      Pathname file(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
+      screen_manager.push_screen(new FontTestScreen(file)); 
     }
     else
     { // Level file
