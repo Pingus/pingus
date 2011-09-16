@@ -25,7 +25,9 @@ namespace WorldObjs {
 
 Hammer::Hammer(const FileReader& reader) :
   sprite("traps/hammer"),
-  pos()
+  pos(),
+  m_down(true),
+  m_count(0)
 {
   reader.read_vector("position", pos);
 }
@@ -45,23 +47,37 @@ Hammer::draw(SceneContext& gc)
 void
 Hammer::update()
 {
-  sprite.update();
-
-  if (sprite.is_finished())
+  if (m_down)
   {
-    PinguHolder* holder = world->get_pingus();
+    m_count += 1;
+    sprite.set_frame(m_count);
 
-    for (PinguIter pingu_it = holder->begin (); pingu_it != holder->end (); ++pingu_it)
+    if (m_count == sprite.get_frame_count()-1)
     {
-      Pingu* pingu = *pingu_it;
-      if (pingu->get_action() != ActionName::SPLASHED)
+      PinguHolder* holder = world->get_pingus();
+
+      for (PinguIter pingu_it = holder->begin (); pingu_it != holder->end (); ++pingu_it)
       {
-        if (pingu->get_x() > pos.x + 55  && pingu->get_x() < pos.x + 77
-            && pingu->get_y() > pos.y + 146 && pingu->get_y() < pos.y + 185)
-          pingu->set_action(ActionName::SPLASHED);
+        Pingu* pingu = *pingu_it;
+        if (pingu->get_action() != ActionName::SPLASHED)
+        {
+          if (pingu->get_x() > pos.x + 55  && pingu->get_x() < pos.x + 77
+              && pingu->get_y() > pos.y + 146 && pingu->get_y() < pos.y + 185)
+            pingu->set_action(ActionName::SPLASHED);
+        }
       }
+
+      m_down = false;
     }
-    sprite.restart();
+  }
+  else
+  {
+    m_count -= 1;
+    sprite.set_frame(m_count);
+    if (m_count == 0)
+    {
+      m_down = true;
+    }
   }
 }
 
