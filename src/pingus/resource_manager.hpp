@@ -31,18 +31,15 @@ class ResourceManager
 {
 public:
   typedef std::map<std::string, std::shared_ptr<SpriteDescription> > Resources;
-  typedef std::map<std::string, std::string> Aliases;
 
 private:
   Resources m_cache;
   std::set<std::string> m_resources;
-  Aliases m_aliases;
 
 public:
   ResourceManager();
   ~ResourceManager();
 
-  void add_resources(const std::string& filename);
   void add_resources_from_directory(const Pathname& path);
 
   /** Returns a pointer to the requested SpriteDescription or 0 if it's not found */
@@ -51,14 +48,7 @@ public:
 
   std::vector<std::string> get_section(const std::string& name);
 
-  // FIXME: used by extra/resource-convert, obsolete now
-  const Resources& get_resources() const { return m_cache; } 
-  const Aliases&   get_aliases() const { return m_aliases; }
-
 private:
-  void parse(const std::string& section, FileReader&);
-  void parse_section(const std::string& section, FileReader&);
-
   ResourceManager (const ResourceManager&);
   ResourceManager& operator= (const ResourceManager&);
 };

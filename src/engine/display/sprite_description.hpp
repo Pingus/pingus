@@ -46,6 +46,7 @@ public:
   Vector2i    frame_pos;
   Size        frame_size;  
 
+public:
   SpriteDescription() :
     filename(),
     offset(),
@@ -56,33 +57,6 @@ public:
     frame_pos(),
     frame_size(-1, -1)
   {}
-
-  SpriteDescription(const FileReader& reader) :
-    filename(),
-    offset(),
-    origin(origin_top_left),
-    loop(true),
-    speed(100),
-    array(1, 1),
-    frame_pos(),
-    frame_size(-1, -1)
-  {
-    reader.read_int   ("speed",  speed);
-    reader.read_bool  ("loop",   loop);
-    reader.read_vector2i("offset", offset);
-
-    reader.read_enum("origin", origin, string2origin);
-    
-    if (!reader.read_path("image-file",  filename))
-    {
-      log_error(reader.get_name() << " 'image-file' missing");
-    }    
-
-    filename = Pathname("data/" + filename.get_raw_path(), filename.get_type()); // FIXME: Hack
-    reader.read_size("image-array", array);
-    reader.read_vector2i("image-pos",   frame_pos);
-    reader.read_size("image-size",  frame_size);
-  }
 
   ~SpriteDescription()
   {  

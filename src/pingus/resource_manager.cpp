@@ -28,8 +28,7 @@
 
 ResourceManager::ResourceManager() :
   m_cache(),
-  m_resources(),
-  m_aliases()
+  m_resources()
 {
 }
 
@@ -40,15 +39,7 @@ ResourceManager::~ResourceManager()
 std::vector<std::string>
 ResourceManager::get_section(const std::string& name)
 {
-  // FIXME: completely wrong!!
   std::vector<std::string> lst;
-  for (auto i = m_cache.begin(); i != m_cache.end(); ++i)
-  {
-    if (StringUtil::has_prefix(i->first, name))
-    {
-      lst.push_back(i->first);
-    }
-  }
 
   for (auto i = m_resources.begin(); i != m_resources.end(); ++i)
   {
@@ -59,37 +50,6 @@ ResourceManager::get_section(const std::string& name)
   }
 
   return lst;
-}
-
-void
-ResourceManager::add_resources(const std::string& filename)
-{
-  log_info(filename);
-
-  std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(filename);
-  if (sexpr)
-  {
-    SExprFileReader reader(sexpr->get_list_elem(0));
-
-    if (reader.get_name() == "pingus-resources")
-    {
-      std::vector<FileReader> sections = reader.get_sections();
-      for(std::vector<FileReader>::iterator i = sections.begin(); i != sections.end(); ++i)
-      {
-        //log_info("Section: " << i->get_name());
-        parse("", *i);
-      }
-    }
-    else
-    {
-      log_error("couldn't find section 'pingus-resources' section in file " << filename
-                << "\ngot " << reader.get_name());
-    }
-  }
-  else
-  {
-    log_info("ResourceManager: File not found " << filename);
-  }
 }
 
 void
@@ -108,59 +68,6 @@ ResourceManager::add_resources_from_directory(const Pathname& path)
       // way to cut stuff away
       m_resources.insert(System::cut_file_extension(it->substr(12)));
     }
-  }
-}
-
-void
-ResourceManager::parse(const std::string& section, FileReader& reader)
-{
-  if (reader.get_name() == "section")
-  {
-    parse_section(section, reader);
-  }
-  else if (reader.get_name() == "sprite")
-  {
-    std::string name;
-    reader.read_string("name", name);
-    if (!section.empty())
-      name = section + "/" + name;
- 
-    m_cache[name].reset(new SpriteDescription(reader));
-  }
-  else if (reader.get_name() == "alias")
-  {
-    std::string name;
-    std::string link;
-    if (reader.read_string("name", name) &&
-        reader.read_string("link", link))
-    {
-      //log_info("alias: " << name << " -> " << link);
-      m_aliases[name] = link;
-    }
-  }
-  else if (reader.get_name() == "name")
-  {
-    // ignore (ugly)
-  }
-  else
-  {
-    log_info("ResourceManager: unknown token: '" << reader.get_name() << "'");
-  }
-}
-
-void
-ResourceManager::parse_section(const std::string& section, FileReader& reader)
-{
-  std::string name;
-  reader.read_string("name", name);
-
-  std::vector<FileReader> sections = reader.get_sections();
-  for(std::vector<FileReader>::iterator i = sections.begin(); i != sections.end(); ++i)
-  {    
-    if (section.empty())
-      parse(name, *i);
-    else
-      parse(section + "/" + name, *i);
   }
 }
 
@@ -230,16 +137,7 @@ ResourceManager::get_sprite_description(const std::string& name)
     }
     else
     {
-      auto j = m_aliases.find(name);
-      if (j != m_aliases.end())
-      {
-        log_warn("using alias \"" << j->first << "\" -> \"" << j->second << "\"");
-        return get_sprite_description(j->second);
-      }
-      else
-      {
-        return 0;
-      }
+      return 0;
     }
   }  
 }
