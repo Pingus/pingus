@@ -51,6 +51,8 @@ public:
 
   Data get() const
   {
+    assert(m_impl);
+
     if (!m_impl->data)
     {
       load();
@@ -61,12 +63,22 @@ public:
 
   void load()
   {
-    m_impl->data = m_impl->loader();
+    if (m_impl)
+    {
+      m_impl->data = m_impl->loader();
+    }
   }
 
   void unload()
   {
-    m_impl->data = Data();
+    if (m_impl)
+    {
+      m_impl->data = Data();
+    }
+  }
+
+  explicit operator bool(){
+    return m_impl && m_impl->data;
   }
 
 private:

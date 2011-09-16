@@ -60,7 +60,10 @@ public:
   {
     for(auto it = m_resources.begin(); it != m_resources.end(); ++it)
     {
-      (*it)->load();
+      if (*it)
+      {
+        (*it)->load();
+      }
     }
   }
 
