@@ -187,9 +187,20 @@ ObjectSelectorList::on_pointer_move (int x, int y)
     if (!set->get_objects().empty())
     {
       int obj_x = Math::clamp(0, mouse_pos.x / 48, width - 1);
-      int obj_y = Math::clamp(0, (mouse_pos.y - static_cast<int>(offset)) / 48, height-1);
+      int obj_y = (mouse_pos.y - static_cast<int>(offset)) / 48;
 
-      current_object = Math::clamp(-1, (obj_y * 5) + obj_x, int(set->get_objects().size()-1));
+      current_object = (obj_y * 5) + obj_x;
+
+      if (obj_y < 0 ||
+          obj_y >= height)
+      {
+        current_object = -1;
+      }
+      else if (current_object < 0 ||
+          current_object >= int(set->get_objects().size()))
+      {
+        current_object = -1;
+      }
     }
   }
 
