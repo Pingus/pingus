@@ -53,7 +53,6 @@ Exit::~Exit ()
 void
 Exit::on_startup ()
 {
-  // FIXME: This will fail with exits that contain multiple frames
   CollisionMask mask(desc);
   world->get_colmap()->remove(mask,
                               static_cast<int>(pos.x) - sprite.get_width()/2,
@@ -87,7 +86,7 @@ Exit::update ()
     {
       // Now, make sure the pingu is within range
       if (   (*pingu)->get_pos().x > pos.x - 1 && (*pingu)->get_pos().x < pos.x + 1
-             && (*pingu)->get_pos().y > pos.y - 5 && (*pingu)->get_pos().y < pos.y + 2)
+             && (*pingu)->get_pos().y > pos.y - 5 && (*pingu)->get_pos().y < pos.y + 5)
       {
         // Now, make sure the pingu isn't already exiting, gone, or dead
         if (   (*pingu)->get_status() != Pingu::PS_EXITED
