@@ -33,6 +33,7 @@ private:
 
   Sprite file_icon;
   Sprite directory_icon;
+  std::string m_direction;
   System::Directory directory;
   int current_item;
   int click_item;
@@ -46,6 +47,7 @@ public:
   void update (float delta);
   
   void update_layout();
+  std::string get_direction() const { return m_direction; }
   void set_directory(const std::string& pathname, const std::string& pattern = "*"); 
 
   void on_pointer_move (int x, int y);

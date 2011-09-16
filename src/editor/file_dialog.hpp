@@ -60,6 +60,7 @@ public:
   void load_file(const System::DirectoryEntry& entry);
   void set_directory(const std::string& pathname);
 
+private:
   void on_cancel();
   void on_open();
 
@@ -68,6 +69,9 @@ public:
   
   void on_datadir();
   void on_userdir();
+
+  void on_filename_enter();
+  void on_pathname_change();
 
 private:
   void update_button_state();

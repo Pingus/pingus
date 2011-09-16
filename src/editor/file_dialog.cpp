@@ -80,6 +80,9 @@ FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect_, Mode mode_) :
   
   add(filename_inputbox = new Inputbox(Rect(4 + 60, 4+30, rect.get_width()-4, 26+30)));
   add(pathname_inputbox = new Inputbox(Rect(4 + 60, 4+60, rect.get_width()-4, 26+60)));
+  
+  filename_inputbox->on_enter.connect(std::bind(&FileDialog::on_filename_enter, this));
+  pathname_inputbox->on_change.connect(std::bind(&FileDialog::on_pathname_change, this));
 
   add(up_button);
   add(down_button);
@@ -124,11 +127,22 @@ void
 FileDialog::set_directory(const std::string& pathname_)
 {
   std::string pathname = System::realpath(pathname_);
-  file_list->set_directory(pathname);
-  update_button_state();
 
-  filename_inputbox->set_text("");
-  pathname_inputbox->set_text(pathname);
+  if (pathname != file_list->get_direction())
+  {
+    file_list->set_directory(pathname);
+    update_button_state();
+
+    filename_inputbox->set_text("");
+    if (pathname == "/")
+    {
+      pathname_inputbox->set_text("/");
+    }
+    else
+    {
+      pathname_inputbox->set_text(pathname + "/");
+    }
+  }
 }
 
 void
@@ -213,6 +227,22 @@ void
 FileDialog::on_datadir()
 { 
   set_directory(Pathname("levels/", Pathname::DATA_PATH).get_sys_path());
+}
+
+void
+FileDialog::on_filename_enter()
+{
+  on_open();
+}
+
+void
+FileDialog::on_pathname_change()
+{
+  Pathname path(pathname_inputbox->get_text(), Pathname::SYSTEM_PATH);
+  if (path.exist())
+  {
+    set_directory(path.get_sys_path());
+  }
 }
 
 void

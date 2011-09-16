@@ -27,6 +27,7 @@ FileList::FileList(const Rect& rect_) :
   vspace(),
   file_icon(),
   directory_icon(),
+  m_direction(),
   directory(),
   current_item(-1),
   click_item(-1),
@@ -73,6 +74,7 @@ struct DirectorySorter
 void
 FileList::set_directory(const std::string& pathname, const std::string& pattern)
 {
+  m_direction = pathname;
   directory = System::opendir(pathname, pattern);
   std::sort(directory.begin(), directory.end(), DirectorySorter());
 
