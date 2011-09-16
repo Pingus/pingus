@@ -7,14 +7,14 @@
     (author "Jings")
     (number-of-pingus 50)
     (number-to-save 50)
-    (time 16000)
+    (time -1)
     (music "pingus-3.it")
     (actions 
       (basher 4)
       (blocker 4)
       (climber 4)
       (miner 4)
-      (slider 4))
+      (jumper 4))
     (levelsize 2350 1200))
   (objects 
     (surface-background 
