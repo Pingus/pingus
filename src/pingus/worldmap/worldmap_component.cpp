@@ -17,6 +17,7 @@
 #include "pingus/worldmap/worldmap_component.hpp"
 
 #include "engine/display/display.hpp"
+#include "pingus/globals.hpp"
 #include "pingus/worldmap/worldmap.hpp"
 #include "pingus/worldmap/worldmap_screen.hpp"
 
@@ -24,7 +25,8 @@ namespace WorldmapNS {
 
 WorldmapComponent::WorldmapComponent(WorldmapScreen* worldmap_screen_) :
   scene_context(new SceneContext),
-  worldmap_screen(worldmap_screen_)    
+  worldmap_screen(worldmap_screen_),
+  m_fast_forward(false)
 {
 }
 
@@ -70,9 +72,19 @@ WorldmapComponent::draw (DrawingContext& gc)
 }
 
 void
-WorldmapComponent::update (float delta)
+WorldmapComponent::update(float delta)
 {
-  worldmap_screen->get_worldmap()->update(delta);
+  if (m_fast_forward)
+  {
+    for (int i = 0; i < globals::fast_forward_time_scale; ++i)
+    {
+      worldmap_screen->get_worldmap()->update(delta);
+    }
+  }
+  else
+  {
+    worldmap_screen->get_worldmap()->update(delta);
+  }
 }
 
 void
@@ -97,6 +109,18 @@ WorldmapComponent::on_secondary_button_press (int x, int y)
   Rect cliprect = worldmap_screen->get_trans_rect();
   worldmap_screen->get_worldmap()->on_secondary_button_press(x - cliprect.left,
                                                              y - cliprect.top);
+}
+
+void
+WorldmapComponent::on_fast_forward_press()
+{
+  m_fast_forward = true;
+}
+
+void
+WorldmapComponent::on_fast_forward_release()
+{
+  m_fast_forward = false;
 }
 
 } // namespace WorldmapNS

@@ -53,6 +53,7 @@ private:
   GUI::SurfaceButton* story_button;
   GUI::SurfaceButton* credits_button;
   GUI::SurfaceButton* enter_button;
+  WorldmapComponent* m_worldmap_component;
 
 public:
   WorldmapScreen ();
@@ -71,6 +72,9 @@ public:
       to that node. If a node is double-cliked, the pingu should go
       faster. */
   void on_primary_button_press (int x, int y);
+
+  void on_fast_forward_press();
+  void on_fast_forward_release();
 
   /** Exit the WorldmapScreen and return to the previous screen */
   void on_escape_press ();

@@ -218,7 +218,7 @@ WorldmapScreenEnterButton::on_click()
 {
   worldmap_screen->get_worldmap()->enter_level();
 }
-
+
 WorldmapScreen::WorldmapScreen() :
   levelname_bg("core/worldmap/levelname_bg"),
   is_init(false),
@@ -228,12 +228,13 @@ WorldmapScreen::WorldmapScreen() :
   close_button(0),
   story_button(0),
   credits_button(0),
-  enter_button(0)
+  enter_button(0),
+  m_worldmap_component()
 {
   // FIXME: a bit ugly because of the proteced member, but should work
   // FIXME: well enough. GUIScreen could also use multi-inheritage,
   // FIXME: but that could lead to member function name conflicts
-  gui_manager->add(new WorldmapComponent(this));
+  gui_manager->add(m_worldmap_component = new WorldmapComponent(this));
   gui_manager->add(close_button = new WorldmapScreenCloseButton(this));
   gui_manager->add(enter_button = new WorldmapScreenEnterButton(this));
   gui_manager->add(story_button = new WorldmapScreenStoryButton(this));
@@ -280,7 +281,7 @@ WorldmapScreen::update (float delta)
 
   // Exit the word
   if (exit_worldmap)
-    ScreenManager::instance ()->pop_screen ();
+    ScreenManager::instance ()->pop_screen();
 
   // Check if new worldmap is set and if so, change it
   if (new_worldmap.get())
@@ -331,6 +332,18 @@ WorldmapScreen::resize(const Size& size_)
   close_button->set_pos(0, size.height - 37);
   story_button->set_pos(0, 0);
   enter_button->set_pos(size.width - 119, size.height - 37);
+}
+
+void
+WorldmapScreen::on_fast_forward_press()
+{
+  m_worldmap_component->on_fast_forward_press();
+}
+
+void
+WorldmapScreen::on_fast_forward_release()
+{
+  m_worldmap_component->on_fast_forward_release();
 }
 
 } // namespace WorldmapNS

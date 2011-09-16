@@ -33,6 +33,7 @@ class WorldmapComponent : public GUI::Component
 private:
   std::unique_ptr<SceneContext> scene_context;
   WorldmapScreen* worldmap_screen;
+  bool m_fast_forward;
   
 public:
   WorldmapComponent(WorldmapScreen* worldmap_screen);
@@ -41,6 +42,9 @@ public:
   void on_primary_button_press (int x, int y);
   void on_secondary_button_press (int x, int y);
   void on_pointer_move(int x, int y);
+
+  void on_fast_forward_press();
+  void on_fast_forward_release();
 
   void draw (DrawingContext& gc);
   void update (float delta);
