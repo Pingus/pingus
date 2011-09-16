@@ -31,8 +31,6 @@
       (stretch-x #f)
       (stretch-y #f)
       (position 0 0 -150))
-    (bumper 
-      (position 356 258 -100))
     (groundpiece 
       (type "solid")
       (surface 

@@ -32,10 +32,6 @@
       (para-y 0.5)
       (stretch-x #f)
       (stretch-y #f))
-    (bumper 
-      (position 707 280 -100))
-    (bumper 
-      (position 522 30 -100))
     (groundpiece 
       (type "ground")
       (surface 

@@ -34,8 +34,6 @@
       (stretch-y #f))
     (laser_exit 
       (position 538 435 -100))
-    (bumper 
-      (position 384 394 -100))
     (entrance 
       (position 354 132 0)
       (type "generic")
