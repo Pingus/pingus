@@ -8,7 +8,7 @@
     (number-of-pingus 20)
     (number-to-save 20)
     (time 12000)
-    (music "")
+    (music "06-Ozric Echo.ogg")
     (actions 
       (basher 3)
       (blocker 3)
@@ -1057,14 +1057,21 @@
       (surface 
         (image "entrances/wood_bottom")
         (modifier "ROT0"))
-      (position 280 754 100)
+      (position 280 754 0)
       (speed 0)
       (parallax 0))
     (entrance 
       (type "generic")
-      (position 331 814 110)
+      (position 329 797 50)
       (owner-id 0)
       (direction "misc")
-      (release-rate 150))))
+      (release-rate 150))
+    (hotspot 
+      (surface 
+        (image "entrances/wood_top")
+        (modifier "ROT0"))
+      (position 280 754 100)
+      (speed 0)
+      (parallax 0))))
 
 ;; EOF ;;

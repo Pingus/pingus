@@ -8,7 +8,7 @@
     (number-of-pingus 50)
     (number-to-save 40)
     (time -1)
-    (music "")
+    (music "pingus-4.it")
     (actions 
       (basher 2)
       (blocker 3)
@@ -833,6 +833,13 @@
         (image "groundpieces/ground/desert/pillar3")
         (modifier "ROT0"))
       (position 96 80 0))
+    (hotspot 
+      (surface 
+        (image "entrances/wood_bottom")
+        (modifier "ROT0"))
+      (position 423 243 0)
+      (speed 0)
+      (parallax 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -882,18 +889,18 @@
       (position -2 1139 100)
       (speed 0)
       (repeat 32))
-    (hotspot 
-      (surface 
-        (image "entrances/wood_bottom")
-        (modifier "ROT0"))
-      (position 423 243 100)
-      (speed 0)
-      (parallax 0))
     (entrance 
       (type "generic")
-      (position 474 303 110)
+      (position 474 285 100)
       (owner-id 0)
       (direction "misc")
-      (release-rate 150))))
+      (release-rate 150))
+    (hotspot 
+      (surface 
+        (image "entrances/wood_top")
+        (modifier "ROT0"))
+      (position 423 242 150)
+      (speed 0)
+      (parallax 0))))
 
 ;; EOF ;;
