@@ -49,7 +49,7 @@
       (position 266 247 0))
     (iceblock 
       (position 330 247 0)
-      (width 1))
+      (repeat 1))
     (groundpiece 
       (type "ground")
       (surface 
@@ -76,7 +76,7 @@
       (position 181 318 0))
     (iceblock 
       (position 373 338 0)
-      (width 1))
+      (repeat 1))
     (groundpiece 
       (type "ground")
       (surface 
@@ -314,43 +314,43 @@
       (position 1148 279 0))
     (iceblock 
       (position 575 503 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 600 503 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 625 503 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 650 503 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 675 503 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 739 388 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 714 388 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 689 388 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 664 388 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 480 439 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 505 439 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 530 439 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 555 439 0)
-      (width 1))
+      (repeat 1))
     (groundpiece 
       (type "ground")
       (surface 

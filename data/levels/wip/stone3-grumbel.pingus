@@ -246,11 +246,11 @@
       (speed 50))
     (conveyorbelt 
       (position 991 456 0)
-      (width 5)
+      (repeat 5)
       (speed 20))
     (conveyorbelt 
       (position 1017 380 0)
-      (width 5)
+      (repeat 5)
       (speed 20))
     (liquid 
       (surface 

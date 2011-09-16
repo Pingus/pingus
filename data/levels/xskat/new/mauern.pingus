@@ -184,7 +184,7 @@
       (parallax 1))
     (conveyorbelt 
       (position 1199 389 0)
-      (width 5)
+      (repeat 5)
       (speed 2))
     (exit 
       (owner-id 0)

@@ -43,7 +43,7 @@
       (position 87 238 0))
     (conveyorbelt 
       (position 288 327 0)
-      (width 40)
+      (repeat 40)
       (speed 30))
     (groundpiece 
       (type "ground")
@@ -155,7 +155,7 @@
       (position 440 636 0))
     (conveyorbelt 
       (position 540 652 0)
-      (width 15)
+      (repeat 15)
       (speed -2))
     (groundpiece 
       (type "ground")

@@ -224,32 +224,32 @@
       (position 502 563 0))
     (iceblock 
       (position 484 296 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 459 296 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 508 296 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 531 296 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 556 296 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 605 296 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 580 296 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 629 296 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 652 296 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 677 296 0)
-      (width 1))))
+      (repeat 1))))
 ;; EOF ;;

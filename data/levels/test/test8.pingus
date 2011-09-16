@@ -58,31 +58,31 @@
       (release-rate 50))
     (iceblock 
       (position 491 403 0)
-      (width 10))
+      (repeat 10))
     (iceblock 
       (position 441 403 0)
-      (width 10))
+      (repeat 10))
     (iceblock 
       (position 466 403 0)
-      (width 10))
+      (repeat 10))
     (iceblock 
       (position 516 403 0)
-      (width 10))
+      (repeat 10))
     (iceblock 
       (position 541 403 0)
-      (width 10))
+      (repeat 10))
     (iceblock 
       (position 566 403 0)
-      (width 10))
+      (repeat 10))
     (conveyorbelt 
       (position 430 274 0)
-      (width 10))
+      (repeat 10))
     (conveyorbelt 
       (position 345 340 0)
-      (width 10))
+      (repeat 10))
     (conveyorbelt 
       (position 340 200 0)
-      (width 10))
+      (repeat 10))
     (switchdoor-switch
       (target-id "id1139996653")
       (position 340 200 0))

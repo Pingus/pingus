@@ -23,10 +23,10 @@
   (objects 
     (conveyorbelt 
       (position 84 149 0)
-      (width 10)
+      (repeat 10)
       (speed 4))
     (conveyorbelt 
       (position 84 149 0)
-      (width 10)
+      (repeat 10)
       (speed 2))))
 ;; EOF ;;

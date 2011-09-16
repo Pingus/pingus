@@ -95,7 +95,7 @@
       (position 326 306 0))
     (iceblock 
       (position 173 306 0)
-      (width 1))
+      (repeat 1))
     (groundpiece 
       (type "ground")
       (surface 

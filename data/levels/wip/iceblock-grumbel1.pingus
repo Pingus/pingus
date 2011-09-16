@@ -196,28 +196,28 @@
       (position 415 191 0))
     (iceblock 
       (position 364 253 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 414 253 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 389 253 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 339 253 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 364 263 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 414 263 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 389 263 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 339 263 0)
-      (width 1))
+      (repeat 1))
     (entrance 
       (position 528 219 0)
       (type "generic")

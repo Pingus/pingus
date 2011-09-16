@@ -45,7 +45,7 @@
       (owner-id 0))
     (iceblock 
       (position 638.003 275.883 0)
-      (width 1))
+      (repeat 1))
     (groundpiece 
       (type "bridge")
       (surface 
@@ -78,28 +78,28 @@
       (position 604 656 0))
     (iceblock 
       (position 659.61 275.45 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 681.413 273.533 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 706.213 273.733 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 728.816 273.816 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 747.019 273.899 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 770.022 274.582 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 793.826 275.266 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 816.635 273.515 0)
-      (width 1))
+      (repeat 1))
     (groundpiece 
       (type "bridge")
       (surface 
@@ -355,34 +355,34 @@
       (position 961 185 0))
     (iceblock 
       (position 1035.84 273.798 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 1057.24 273.881 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 1080.04 274.564 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 1104.25 273.648 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 1127.05 273.731 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 1147.05 274.014 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 1168.86 273.097 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 1190.46 274.98 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 1212.86 273.863 0)
-      (width 1))
+      (repeat 1))
     (iceblock 
       (position 1236.07 273.946 0)
-      (width 1))
+      (repeat 1))
     (hotspot 
       (surface 
         (image "hotspots/signposts/climber")

@@ -59,7 +59,7 @@
       (position 94 280 0))
     (conveyorbelt 
       (position 575 448 0)
-      (width 9)
+      (repeat 9)
       (speed 10))
     (entrance 
       (position 535 198 0)

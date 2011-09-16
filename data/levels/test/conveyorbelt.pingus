@@ -34,23 +34,23 @@
       (stretch-y #f))
     (conveyorbelt 
       (position 456 227 0)
-      (width 5)
+      (repeat 5)
       (speed 55))
     (conveyorbelt 
       (position 390 274 0)
-      (width 15)
+      (repeat 15)
       (speed 52))
     (conveyorbelt 
       (position 444 326 0)
-      (width 5)
+      (repeat 5)
       (speed 52))
     (conveyorbelt 
       (position 391 376 0)
-      (width 5)
+      (repeat 5)
       (speed 52))
     (conveyorbelt 
       (position 386 172 0)
-      (width 5)
+      (repeat 5)
       (speed 52))
     (entrance 
       (position 472 129 0)

@@ -87,15 +87,15 @@
       (release-rate 50))
     (conveyorbelt 
       (position 245 276 0)
-      (width 5)
+      (repeat 5)
       (speed 0))
     (conveyorbelt 
       (position 180 353 0)
-      (width 5)
+      (repeat 5)
       (speed 1))
     (conveyorbelt 
       (position 324 354 0)
-      (width 10)
+      (repeat 10)
       (speed 0))
     (switchdoor-switch
       (target-id "id1265166065")
