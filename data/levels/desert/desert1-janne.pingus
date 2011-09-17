@@ -6,20 +6,18 @@
     (description "Find your way through the obstacle")
     (author "Janne Leppanen")
     (number-of-pingus 20)
-    (number-to-save 11)
+    (number-to-save 15)
     (time -1)
     (music "")
     (actions 
-      (basher 10)
-      (blocker 10)
-      (bomber 10)
-      (bridger 9)
+      (basher 5)
+      (blocker 5)
+      (bomber 5)
+      (bridger 6)
       (climber 10)
-      (digger 10)
       (floater 10)
-      (jumper 10)
-      (miner 10)
-      (slider 10))
+      (jumper 5)
+      (miner 5))
     (levelsize 1920 1200))
   (objects 
     (surface-background 
@@ -49,6 +47,33 @@
       (position 1647 728 -20)
       (speed 0)
       (repeat 6))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/bigdimwall")
+        (modifier "ROT0"))
+      (position 217 992 -20)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/smallegyptpic")
+        (modifier "ROT0"))
+      (position 318 1018 -10)
+      (speed 0)
+      (parallax 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigsand")
+        (modifier "ROT0"))
+      (position 1127 1086 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/signposts/danger")
+        (modifier "ROT0"))
+      (position 451 492 0)
+      (speed 0)
+      (parallax 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -66,13 +91,13 @@
       (surface 
         (image "groundpieces/ground/desert/pillar1")
         (modifier "ROT180"))
-      (position 195 304 0))
+      (position 195 336 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/desert/bigbrickpiece")
         (modifier "ROT90FLIP"))
-      (position 186 505 0))
+      (position 186 537 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -132,7 +157,7 @@
       (surface 
         (image "groundpieces/solid/desert/bigbrickpiece")
         (modifier "ROT90FLIP"))
-      (position 336 504 0))
+      (position 336 536 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -167,7 +192,7 @@
       (surface 
         (image "exits/desert")
         (modifier "ROT0"))
-      (position 1481.2 503.4 0)
+      (position 1557.2 503.4 0)
       (owner-id 0))
     (groundpiece 
       (type "solid")
@@ -192,25 +217,19 @@
       (surface 
         (image "groundpieces/ground/desert/bigsand")
         (modifier "ROT0"))
-      (position 498 952 0))
+      (position 878 949 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/bigsand")
         (modifier "ROT0"))
-      (position 198 952 0))
+      (position 578 949 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/bigsand")
         (modifier "ROT0"))
-      (position 1098 952 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/bigsand")
-        (modifier "ROT0"))
-      (position 798 952 0))
+      (position 1168 940 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -246,7 +265,7 @@
       (surface 
         (image "groundpieces/ground/desert/bigsand")
         (modifier "ROT0"))
-      (position 499 1102 0))
+      (position 879 1099 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -258,25 +277,13 @@
       (surface 
         (image "groundpieces/ground/desert/bigsand")
         (modifier "ROT0"))
-      (position 1099 1102 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/bigsand")
-        (modifier "ROT0"))
-      (position 799 1102 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/bigsand")
-        (modifier "ROT0"))
       (position 1399 1103 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/bigsand")
         (modifier "ROT0"))
-      (position 199 1102 0))
+      (position 579 1099 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -310,9 +317,40 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/desert/bigdune1")
+        (image "groundpieces/ground/desert/flatdune")
         (modifier "ROT0"))
-      (position -112 777 0))
+      (position 329 784 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/middlebrickpiece")
+        (modifier "ROT0"))
+      (position 186 462 0))
+    (prefab 
+      (name "prefabs/desert_entrance")
+      (position 399 392 0)
+      (overrides 
+        (release-rate 250)
+        (direction "right")
+        (owner-id 0)))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigprickpiece")
+        (modifier "ROT0"))
+      (position -50 991 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigprickpiece")
+        (modifier "ROT0"))
+      (position 479 993 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigprickpiece")
+        (modifier "ROT0"))
+      (position 77 842 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -322,21 +360,82 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/desert/flatdune")
+        (image "groundpieces/ground/desert/bigdune1")
         (modifier "ROT0"))
-      (position 329 784 0))
+      (position -112 777 0))
     (groundpiece 
-      (type "solid")
+      (type "ground")
       (surface 
-        (image "groundpieces/solid/desert/middlebrickpiece")
+        (image "groundpieces/ground/desert/bigprickpiece")
         (modifier "ROT0"))
-      (position 186 430 0))
-    (prefab 
-      (name "prefabs/desert_entrance")
-      (position 399 360 0)
-      (overrides 
-        (release-rate 250)
-        (direction "right")
-        (owner-id 0)))))
+      (position 377 842 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigprickpiece")
+        (modifier "ROT0"))
+      (position 92 1137 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigprickpiece")
+        (modifier "ROT0"))
+      (position 392 1137 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/smallsphinx")
+        (modifier "ROT0"))
+      (position 250 1089 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/smallsphinx")
+        (modifier "ROT0FLIP"))
+      (position 403 1089 0)
+      (speed 0)
+      (parallax 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/middleprickpiece")
+        (modifier "ROT0"))
+      (position 17 951 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/middleprickpiece")
+        (modifier "ROT0"))
+      (position 585 946 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/middleprickpiece")
+        (modifier "ROT0"))
+      (position 575 1113 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/middleprickpiece")
+        (modifier "ROT0"))
+      (position 31 1116 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigdune1")
+        (modifier "ROT0"))
+      (position 479 805 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigdune1")
+        (modifier "ROT0"))
+      (position 634 912 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigdune1")
+        (modifier "ROT0"))
+      (position -201 924 0))))
 
 ;; EOF ;;
