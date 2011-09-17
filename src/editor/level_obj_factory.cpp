@@ -190,7 +190,7 @@ LevelObjFactory::create(const FileReader& reader)
     if (attribs & HAS_HEIGHT)
     {
       reader.read_int("height", tmp_int);
-      obj->set_repeat(tmp_int);
+      obj->set_height(tmp_int);
     }
 
     return obj;
