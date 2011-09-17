@@ -303,7 +303,7 @@
       (surface 
         (image "groundpieces/ground/desert/sluggydu")
         (modifier "ROT0"))
-      (position 798.387 833.26 0))
+      (position 833.387 833.26 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -525,7 +525,7 @@
       (surface 
         (image "groundpieces/ground/desert/sluggydu")
         (modifier "ROT0"))
-      (position 666 848 0))
+      (position 678 845 0))
     (groundpiece 
       (type "ground")
       (surface 
