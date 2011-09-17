@@ -139,12 +139,6 @@
         (image "groundpieces/solid/desert/middlebrickpiece")
         (modifier "ROT0"))
       (position 565 667 0))
-    (entrance 
-      (type "generic")
-      (position 536 553.5 0)
-      (owner-id 0)
-      (direction "right")
-      (release-rate 50))
     (groundpiece 
       (type "solid")
       (surface 
@@ -307,13 +301,6 @@
         (image "groundpieces/solid/desert/leftsmallbrick")
         (modifier "ROT0"))
       (position 1088 671 0))
-    (hotspot 
-      (surface 
-        (image "entrances/wood_bottom")
-        (modifier "ROT0"))
-      (position 491 509 0)
-      (speed 0)
-      (parallax 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -350,19 +337,19 @@
         (image "groundpieces/solid/desert/leftsmallbrick")
         (modifier "ROT180FLIP"))
       (position 1016 389 0))
+    (prefab 
+      (name "prefabs/desert_entrance")
+      (position 560 533 0)
+      (overrides 
+        (release-rate 50)
+        (direction "right")
+        (owner-id 0)))
     (liquid 
       (surface 
         (image "liquids/slime")
         (modifier "ROT0"))
       (position -47 1142 50)
       (speed 50)
-      (repeat 32))
-    (hotspot 
-      (surface 
-        (image "entrances/wood_top")
-        (modifier "ROT0"))
-      (position 490 508 100)
-      (speed 0)
-      (parallax 0))))
+      (repeat 32))))
 
 ;; EOF ;;
