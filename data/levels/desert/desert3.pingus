@@ -11,12 +11,11 @@
     (music "pingus-3.it")
     (actions 
       (basher 2)
-      (blocker 10)
+      (blocker 5)
       (bridger 10)
-      (climber 10)
-      (digger 10)
-      (floater 10)
-      (jumper 10))
+      (climber 5)
+      (digger 5)
+      (jumper 5))
     (levelsize 1920 1200))
   (objects 
     (surface-background 
@@ -52,6 +51,18 @@
         (release-rate 75)
         (direction "right")
         (owner-id 0)))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/pillar1")
+        (modifier "ROT0"))
+      (position 1074 744 42))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/pillar1")
+        (modifier "ROT0"))
+      (position 964 744 42))
     (groundpiece 
       (type "ground")
       (surface 
@@ -99,7 +110,7 @@
       (surface 
         (image "groundpieces/ground/desert/blobdune")
         (modifier "ROT0"))
-      (position 913 889 42))
+      (position 933 895 42))
     (groundpiece 
       (type "ground")
       (surface 
@@ -129,19 +140,7 @@
       (surface 
         (image "groundpieces/ground/desert/pillar1")
         (modifier "ROT0"))
-      (position 1074 744 42))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/pillar1")
-        (modifier "ROT0"))
       (position 860 744 42))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/pillar1")
-        (modifier "ROT0"))
-      (position 964 744 42))
     (groundpiece 
       (type "ground")
       (surface 
@@ -165,7 +164,7 @@
       (surface 
         (image "groundpieces/ground/desert/blobdune")
         (modifier "ROT0"))
-      (position 1070 893 42))
+      (position 1053 897 42))
     (groundpiece 
       (type "ground")
       (surface 
