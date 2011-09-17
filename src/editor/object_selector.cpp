@@ -141,8 +141,7 @@ ObjectSelector::ObjectSelector(EditorScreen* editor_, const Rect& rect_) :
   trap_set(),
   weather_set(),
   worldobj_set(),
-  prefab_set(),
-  callback()
+  prefab_set()
 {
   add(object_list = new ObjectSelectorList(editor, this, 
                                            Rect(2, 2 + 60 + 2, rect.get_width() - 2, rect.get_height() - 2)));

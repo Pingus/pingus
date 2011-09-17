@@ -52,9 +52,6 @@ private:
   std::unique_ptr<ObjectSelectorSet>  prefab_set;
 
 public:
-  typedef void (ObjectSelectorList::*Callback)();
-  Callback callback;
-
   ObjectSelector(EditorScreen* editor, const Rect& rect);
   ~ObjectSelector();
 
