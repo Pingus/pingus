@@ -173,12 +173,12 @@
       (surface 
         (image "groundpieces/ground/desert/middleprickpiece")
         (modifier "ROT0"))
-      (position 1111 578 0))
+      (position 1109 578 0))
     (exit 
       (surface 
         (image "exits/desert")
         (modifier "ROT0"))
-      (position 1445 504 0)
+      (position 1552 504 0)
       (owner-id 0))
     (groundpiece 
       (type "ground")
@@ -383,7 +383,7 @@
       (surface 
         (image "groundpieces/solid/desert/bigbrickpiece")
         (modifier "ROT0"))
-      (position 1259 503 0))
+      (position 1334 503 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -456,6 +456,12 @@
       (overrides 
         (release-rate 150)
         (direction "right")
-        (owner-id 0)))))
+        (owner-id 0)))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/middlebrickpiece")
+        (modifier "ROT90FLIP"))
+      (position 1259 503 0))))
 
 ;; EOF ;;
