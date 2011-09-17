@@ -16,10 +16,11 @@
 
 #include "pingus/action_holder.hpp"
 
+#include "pingus/globals.hpp"
 #include "pingus/pingus_level.hpp"
 
 ActionHolder::ActionHolder(const PingusLevel& plf) :
-  available_actions()
+  m_actions()
 {
   const std::map<std::string, int>& actions = plf.get_actions();
 
@@ -38,9 +39,10 @@ ActionHolder::get_available_actions()
 {
   std::vector<ActionName::Enum> ret;
 
-  for(std::map<ActionName::Enum, int>::iterator i= available_actions.begin();
-      i != available_actions.end(); ++i)
+  for(auto i= m_actions.begin(); i != m_actions.end(); ++i)
+  {
     ret.push_back(i->first);
+  }
 
   return ret;
 }
@@ -48,35 +50,65 @@ ActionHolder::get_available_actions()
 void
 ActionHolder::set_actions (ActionName::Enum name, int available)
 {
-  available_actions[name] = available;
+  m_actions[name] = ActionCount{available, 0};
 }
 
 void
 ActionHolder::push_action (ActionName::Enum name)
 {
-  available_actions[name]++;
+  m_actions[name].available += 1;
+  m_actions[name].used -= 1;
 }
 
 bool
 ActionHolder::pop_action (ActionName::Enum name)
 {
-  int& avail = available_actions[name];
-
-  if (avail > 0)
+  auto it = m_actions.find(name);
+  if (it == m_actions.end())
   {
-    --avail;
-    return true;
+    return false;
   }
   else
   {
-    return false;
+    if (it->second.available > 0 || globals::maintainer_mode)
+    {
+      it->second.available -= 1;
+      it->second.used      += 1;
+      return true;
+    }
+    else
+    {
+      return false;
+    }
   }
 }
 
 int
-ActionHolder::get_available (ActionName::Enum name)
+ActionHolder::get_available(ActionName::Enum name)
 {
-  return available_actions[name];
+  auto it = m_actions.find(name);
+  if (it != m_actions.end())
+  {
+    return it->second.available;
+  }
+  else
+  {
+    return 0;
+  }
+}
+
+int
+ActionHolder::get_used(ActionName::Enum name)
+{
+  auto it = m_actions.find(name);
+  if (it != m_actions.end())
+  {
+    return it->second.used;
+  }
+  else
+  {
+    return 0;
+  }
 }
 
 /* EOF */

@@ -20,6 +20,7 @@
 
 #include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
+#include "pingus/globals.hpp"
 #include "pingus/server.hpp"
 #include "util/string_util.hpp"
 
@@ -72,8 +73,20 @@ ButtonPanel::draw(DrawingContext& gc)
 
     gc.draw(buttons[i].sprite, Vector2i(rect.left + 20, rect.top + 38*i + 16));
 
-    std::string str = StringUtil::to_string(aholder->get_available(buttons[i].name));
-    gc.print_center(Fonts::pingus_small, Vector2i(rect.left + 46, rect.top + 5 + 38*i), str);
+    if (globals::maintainer_mode)
+    {
+      std::ostringstream out;
+      std::string str = StringUtil::to_string(aholder->get_available(buttons[i].name));
+      out << aholder->get_available(buttons[i].name) 
+          << " / "
+          << aholder->get_used(buttons[i].name);
+      gc.print_left(Fonts::pingus_small, Vector2i(rect.left + 46, rect.top + 5 + 38*i), out.str());
+    }
+    else
+    {
+      std::string str = StringUtil::to_string(aholder->get_available(buttons[i].name));
+      gc.print_center(Fonts::pingus_small, Vector2i(rect.left + 46, rect.top + 5 + 38*i), str);
+    }
 
     if (show_tip && tip_button == i)
     {

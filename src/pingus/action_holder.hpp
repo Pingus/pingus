@@ -34,12 +34,18 @@ class PinguAction;
 class ActionHolder
 {
 private:
+  struct ActionCount
+  {
+    int available;
+    int used;
+  };
+
   /** A map holding the number of available actions.
    *  For each action <i>name</i> there is a map (<i>name</i>, <i>n</i>)
    *  where the integer <i>n</i> indicates how much more actions
    *  called <i>name</i> can be created.
    */
-  std::map<ActionName::Enum, int> available_actions;
+  std::map<ActionName::Enum, ActionCount> m_actions;
 
 public:
   /** Create an action holder from the number of actions given in a
@@ -54,7 +60,7 @@ public:
    * @param name the name of the action
    * @param available the number of actions available
    */
-  void set_actions (ActionName::Enum name, int available);
+  void set_actions(ActionName::Enum name, int available);
 
   /** Adds an action to the pool of actions, making one more action available
    * @param name the name of the action
@@ -67,10 +73,11 @@ public:
   bool pop_action (ActionName::Enum name);
 
   /** Returns the number of actions of the specified name which are available
-   *  thru get_action()
-   * @return 0 if the name is unknown FIXME: should use .find instead of []
-   */
-  int get_available (ActionName::Enum name);
+      thru get_action()
+      
+      @return 0 if the name is unknown */
+  int get_available(ActionName::Enum name);
+  int get_used(ActionName::Enum name);
 
 private:
   ActionHolder (const ActionHolder&);
