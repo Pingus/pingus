@@ -33,6 +33,7 @@ private:
   };
 
   std::vector<DrawOp> m_draw_op;
+  std::vector<Vector2i> m_translate_stack;
  
 public:
   WorldObjRenderer();
@@ -41,6 +42,10 @@ public:
   void process(const std::vector<FileReader>& readers);
   void process(const FileReader& reader);
   void blit(Surface& out_surface, int off_x = 0, int off_y = 0);
+
+  Vector2i get_translate() const;
+  void push_translate(int x, int y);
+  void pop_translate();
 
 private:
   void blit_surface(const Surface& surface, int x, int y);

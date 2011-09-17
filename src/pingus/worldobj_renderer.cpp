@@ -16,11 +16,13 @@
 
 #include "pingus/worldobj_renderer.hpp"
 
+#include "pingus/prefab_file.hpp"
 #include "math/vector3f.hpp"
 #include "util/log.hpp"
 
 WorldObjRenderer::WorldObjRenderer() :
-  m_draw_op()
+  m_draw_op(),
+  m_translate_stack()
 {
 }
 
@@ -36,7 +38,33 @@ WorldObjRenderer::blit(Surface& out_surface, int off_x, int off_y)
 void
 WorldObjRenderer::blit_surface(const Surface& surface, int x, int y)
 {
-  m_draw_op.push_back(DrawOp{surface, Vector2i(x, y)});
+  Vector2i offset = get_translate();
+  m_draw_op.push_back(DrawOp{surface, Vector2i(x + offset.x, y + offset.y)});
+}
+
+Vector2i
+WorldObjRenderer::get_translate() const
+{
+  Vector2i offset;
+  if (!m_translate_stack.empty())
+  {
+    offset = m_translate_stack.back();
+  }
+  return offset;
+}
+
+void
+WorldObjRenderer::push_translate(int x, int y)
+{
+  Vector2i offset = get_translate();
+  m_translate_stack.push_back(Vector2i(x + offset.x, y + offset.y));
+}
+
+void
+WorldObjRenderer::pop_translate()
+{
+  assert(!m_translate_stack.empty());
+  m_translate_stack.pop_back();
 }
 
 Rect
@@ -128,6 +156,30 @@ WorldObjRenderer::process(const FileReader& reader)
     Vector3f pos;
     reader.read_vector("position", pos);
     render_sprite(ResDescriptor("entrances/generic"), pos);
+  }
+  else if (reader.get_name() == "group")
+  {
+    FileReader objects = reader.read_section("objects");
+    process(objects.get_sections());
+  }
+  else if (reader.get_name() == "prefab")
+  {
+    std::string name;
+    if (!reader.read_string("name", name))
+    {
+      log_error("'name' tag missing for prefab");
+    }
+    else
+    {
+      PrefabFile prefab = PrefabFile::from_resource(name);
+
+      Vector3f position;
+      reader.read_vector("position", position);
+      push_translate(static_cast<int>(position.x),
+                     static_cast<int>(position.y));
+      process(prefab.get_objects());
+      pop_translate();
+    }
   }
   else
   {
