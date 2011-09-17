@@ -8,7 +8,7 @@
     (number-of-pingus 50)
     (number-to-save 45)
     (time -1)
-    (music "none")
+    (music "")
     (actions 
       (bridger 2)
       (climber 20)

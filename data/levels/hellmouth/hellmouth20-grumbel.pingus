@@ -8,7 +8,7 @@
     (number-of-pingus 20)
     (number-to-save 15)
     (time -1)
-    (music "none")
+    (music "")
     (actions 
       (jumper 100))
     (levelsize 2528 1200))
