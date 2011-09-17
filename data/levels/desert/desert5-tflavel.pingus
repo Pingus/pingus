@@ -232,12 +232,6 @@
         (image "groundpieces/ground/desert/pillar1")
         (modifier "ROT0"))
       (position 735 623 0))
-    (entrance 
-      (type "generic")
-      (position 1054 374 0)
-      (owner-id 200)
-      (direction "left")
-      (release-rate 35))
     (exit 
       (surface 
         (image "exits/desert")
@@ -388,6 +382,13 @@
         (image "groundpieces/remove/misc/rect1")
         (modifier "ROT0"))
       (position 735 603 0))
+    (prefab 
+      (name "prefabs/desert_entrance")
+      (position 1056 335 0)
+      (overrides 
+        (release-rate 35)
+        (direction "left")
+        (owner-id 0)))
     (liquid 
       (surface 
         (image "liquids/slime")
