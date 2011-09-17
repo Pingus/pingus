@@ -30,23 +30,4 @@ SDLFramebufferSurfaceImpl::~SDLFramebufferSurfaceImpl()
   SDL_FreeSurface(surface);
 }
 
-Surface
-SDLFramebufferSurfaceImpl::to_surface() const
-{
-  //  Convert the surface to a format usable for the Blitter code
-  SDL_Surface* convert; 
-    convert = SDL_CreateRGBSurface(SDL_SWSURFACE, surface->w, surface->h, 32,
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-                                   0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff
-#else
-                                   0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000
-#endif
-      );
-
-  SDL_SetAlpha(surface, 0, 0); // FIXME: Do we have to reset this?
-  SDL_BlitSurface(surface, 0, convert, 0);
-
-  return Surface(surface);
-}
-
 /* EOF */

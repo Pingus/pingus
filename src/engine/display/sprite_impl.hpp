@@ -59,8 +59,6 @@ public:
 
   void restart();
   void finish();
-
-  Surface to_surface() const;
 };
 
 #endif

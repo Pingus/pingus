@@ -161,10 +161,4 @@ SpriteImpl::finish()
   finished = true;
 }
 
-Surface
-SpriteImpl::to_surface() const
-{
-  return framebuffer_surface.to_surface();
-}
-
 /* EOF */

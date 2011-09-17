@@ -59,8 +59,6 @@ public:
   void finish();
   operator bool() const;
 
-  Surface to_surface() const;
-
 private:
   std::shared_ptr<SpriteImpl> impl;
 };

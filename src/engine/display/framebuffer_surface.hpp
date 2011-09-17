@@ -27,7 +27,6 @@ public:
 
   virtual int get_width()  const =0;
   virtual int get_height() const =0;
-  virtual Surface to_surface() const =0; 
 };
 
 class FramebufferSurface
@@ -48,8 +47,6 @@ public:
   operator bool() const;
 
   long use_count() const;
-
-  Surface to_surface() const;
 
 private:
   std::shared_ptr<FramebufferSurfaceImpl> impl;

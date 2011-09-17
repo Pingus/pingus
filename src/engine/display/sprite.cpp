@@ -192,13 +192,4 @@ Sprite::set_hotspot(Origin origin, int x, int y)
   }
 }
 
-Surface
-Sprite::to_surface() const
-{
-  if (impl.get())
-    return impl->to_surface();
-  else
-    return Surface();
-}
-
 /* EOF */

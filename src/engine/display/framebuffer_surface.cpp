@@ -79,15 +79,5 @@ FramebufferSurface::use_count() const
 {
   return impl.use_count(); 
 }
-
-Surface
-FramebufferSurface::to_surface() const 
-{
-  if (impl.get())
-    return impl->to_surface(); 
-  else
-    return Surface();
-}
-
   
 /* EOF */

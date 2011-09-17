@@ -33,8 +33,6 @@ public:
 
   SDL_Surface* get_surface() const { return surface; }
 
-  Surface to_surface() const;
-
 private:
   SDLFramebufferSurfaceImpl(const SDLFramebufferSurfaceImpl&);
   SDLFramebufferSurfaceImpl & operator=(const SDLFramebufferSurfaceImpl&);

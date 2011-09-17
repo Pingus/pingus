@@ -29,7 +29,6 @@ public:
 
   int get_width()  const { return size.width; }
   int get_height() const { return size.height; }
-  Surface to_surface() const { return Surface(); }
 };
 
 NullFramebuffer::NullFramebuffer() :
