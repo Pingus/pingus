@@ -38,13 +38,6 @@
         (modifier "ROT0"))
       (position 708 633 -100)
       (owner-id 0))
-    (hotspot 
-      (surface 
-        (image "entrances/wood_bottom")
-        (modifier "ROT0"))
-      (position 1094 212 -100)
-      (speed -1)
-      (parallax 1))
     (groundpiece 
       (type "ground")
       (surface 
@@ -309,12 +302,6 @@
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
       (position 1033 658 0))
-    (entrance 
-      (type "generic")
-      (position 1144 269 0)
-      (owner-id 0)
-      (direction "misc")
-      (release-rate 50))
     (groundpiece 
       (type "ground")
       (surface 
@@ -369,12 +356,12 @@
         (image "groundpieces/ground/desert/bigprickpiece")
         (modifier "ROT0"))
       (position 982 1117 0))
-    (hotspot 
-      (surface 
-        (image "entrances/wood_top")
-        (modifier "ROT0"))
-      (position 1094 213 100)
-      (speed -1)
-      (parallax 1))))
+    (prefab 
+      (name "prefabs/desert_entrance")
+      (position 1141 229 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))))
 
 ;; EOF ;;

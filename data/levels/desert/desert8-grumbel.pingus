@@ -21,7 +21,7 @@
       (surface 
         (image "textures/desert_room")
         (modifier "ROT0"))
-      (position 166 -8 -1000)
+      (position 149 -23 -1000)
       (colori 0 0 0 0)
       (stretch-x #f)
       (stretch-y #f)
@@ -30,13 +30,6 @@
       (scroll-y 0)
       (para-x 0.5)
       (para-y 0.5))
-    (hotspot 
-      (surface 
-        (image "entrances/wood_bottom")
-        (modifier "ROT0"))
-      (position 355 400 -100)
-      (speed 0)
-      (parallax 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -187,12 +180,6 @@
         (modifier "ROT0"))
       (position 1445 504 0)
       (owner-id 0))
-    (entrance 
-      (type "generic")
-      (position 405 435 0)
-      (owner-id 0)
-      (direction "right")
-      (release-rate 150))
     (groundpiece 
       (type "ground")
       (surface 
@@ -463,12 +450,12 @@
         (image "groundpieces/solid/desert/middlebrickpiece")
         (modifier "ROT90FLIP"))
       (position 218 536 0))
-    (hotspot 
-      (surface 
-        (image "entrances/wood_top")
-        (modifier "ROT0"))
-      (position 354 401 100)
-      (speed 0)
-      (parallax 0))))
+    (prefab 
+      (name "prefabs/desert_entrance")
+      (position 360 430 0)
+      (overrides 
+        (release-rate 150)
+        (direction "right")
+        (owner-id 0)))))
 
 ;; EOF ;;

@@ -133,12 +133,6 @@
         (image "groundpieces/solid/desert/bigbrickpiece")
         (modifier "ROT90FLIP"))
       (position 336 504 0))
-    (entrance 
-      (type "woodthing")
-      (position 375.2 442.2 0)
-      (owner-id 0)
-      (direction "right")
-      (release-rate 250))
     (groundpiece 
       (type "ground")
       (surface 
@@ -336,6 +330,13 @@
       (surface 
         (image "groundpieces/solid/desert/middlebrickpiece")
         (modifier "ROT0"))
-      (position 186 430 0))))
+      (position 186 430 0))
+    (prefab 
+      (name "prefabs/desert_entrance")
+      (position 399 360 0)
+      (overrides 
+        (release-rate 250)
+        (direction "right")
+        (owner-id 0)))))
 
 ;; EOF ;;

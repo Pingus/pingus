@@ -13,8 +13,8 @@
       (basher 4)
       (blocker 4)
       (climber 4)
-      (miner 4)
-      (jumper 4))
+      (jumper 4)
+      (miner 4))
     (levelsize 2350 1200))
   (objects 
     (surface-background 
@@ -30,13 +30,6 @@
       (scroll-y 0)
       (para-x 0.5)
       (para-y 0.5))
-    (hotspot 
-      (surface 
-        (image "entrances/wood_bottom")
-        (modifier "ROT0"))
-      (position 286 613 -100)
-      (speed -1)
-      (parallax 1))
     (hotspot 
       (surface 
         (image "hotspots/desert/bigdimwall")
@@ -126,12 +119,6 @@
         (image "groundpieces/ground/desert/bigprickpiece")
         (modifier "ROT0"))
       (position 1997 83 0))
-    (entrance 
-      (type "generic")
-      (position 339 650 0)
-      (owner-id 0)
-      (direction "right")
-      (release-rate 75))
     (groundpiece 
       (type "ground")
       (surface 
@@ -587,6 +574,13 @@
         (image "groundpieces/bridge/misc/bridge_left")
         (modifier "ROT0"))
       (position 1988 606 0))
+    (prefab 
+      (name "prefabs/desert_entrance")
+      (position 351 645 0)
+      (overrides 
+        (release-rate 75)
+        (direction "right")
+        (owner-id 0)))
     (groundpiece 
       (type "ground")
       (surface 
@@ -850,13 +844,6 @@
       (surface 
         (image "groundpieces/ground/desert/bigprickpiece")
         (modifier "ROT0"))
-      (position 339 -27 42))
-    (hotspot 
-      (surface 
-        (image "entrances/wood_top")
-        (modifier "ROT0"))
-      (position 286 614 100)
-      (speed -1)
-      (parallax 1))))
+      (position 339 -27 42))))
 
 ;; EOF ;;

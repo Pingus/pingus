@@ -652,13 +652,6 @@
         (image "groundpieces/ground/desert/sluggydu")
         (modifier "ROT0"))
       (position 1111 974 0))
-    (hotspot 
-      (surface 
-        (image "entrances/wood_bottom")
-        (modifier "ROT0"))
-      (position 443 717 0)
-      (speed -1)
-      (parallax 1))
     (exit 
       (surface 
         (image "exits/desert")
@@ -773,18 +766,12 @@
         (image "groundpieces/ground/desert/bigdune1")
         (modifier "ROT0"))
       (position -90 928 0))
-    (entrance 
-      (type "generic")
-      (position 494 745 50)
-      (owner-id 0)
-      (direction "right")
-      (release-rate 100))
-    (hotspot 
-      (surface 
-        (image "entrances/wood_top")
-        (modifier "ROT0"))
-      (position 443 717 100)
-      (speed -1)
-      (parallax 1))))
+    (prefab 
+      (name "prefabs/desert_entrance")
+      (position 433 744 0)
+      (overrides 
+        (release-rate 100)
+        (direction "right")
+        (owner-id 0)))))
 
 ;; EOF ;;

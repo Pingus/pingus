@@ -36,20 +36,6 @@
       (position 467 849 -50)
       (speed 50)
       (repeat 17))
-    (hotspot 
-      (surface 
-        (image "entrances/wood_bottom")
-        (modifier "ROT0"))
-      (position 542 480 -50)
-      (speed 0)
-      (parallax 0))
-    (hotspot 
-      (surface 
-        (image "entrances/wood_bottom")
-        (modifier "ROT0"))
-      (position 1022 444 -50)
-      (speed 0)
-      (parallax 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -248,18 +234,6 @@
         (image "groundpieces/ground/desert/bigprickpiece")
         (modifier "ROT0"))
       (position 1372.82 761.699 0))
-    (entrance 
-      (type "generic")
-      (position 1073 495 0)
-      (owner-id 0)
-      (direction "misc")
-      (release-rate 50))
-    (entrance 
-      (type "generic")
-      (position 590 528 0)
-      (owner-id 0)
-      (direction "misc")
-      (release-rate 50))
     (exit 
       (surface 
         (image "exits/desert")
@@ -320,19 +294,19 @@
         (image "groundpieces/ground/desert/bigprickpiece")
         (modifier "ROT0"))
       (position 1050.05 82.595 0))
-    (hotspot 
-      (surface 
-        (image "entrances/wood_top")
-        (modifier "ROT0"))
-      (position 541 480 100)
-      (speed 0)
-      (parallax 0))
-    (hotspot 
-      (surface 
-        (image "entrances/wood_top")
-        (modifier "ROT0"))
-      (position 1022 443 100)
-      (speed 0)
-      (parallax 0))))
+    (prefab 
+      (name "prefabs/desert_entrance")
+      (position 559 496 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/desert_entrance")
+      (position 1073 470 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))))
 
 ;; EOF ;;

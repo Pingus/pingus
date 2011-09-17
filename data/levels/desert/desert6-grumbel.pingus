@@ -27,12 +27,19 @@
       (scroll-y 0)
       (para-x 0.5)
       (para-y 0.5))
-    (exit 
+    (liquid 
       (surface 
-        (image "exits/desert")
+        (image "liquids/slime")
         (modifier "ROT0"))
-      (position 961 936 -50)
-      (owner-id 0))
+      (position 211 1118 -10)
+      (speed 0)
+      (repeat 24))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigprickpiece")
+        (modifier "ROT90FLIP"))
+      (position 887 938 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -111,12 +118,6 @@
         (image "groundpieces/ground/desert/flat")
         (modifier "ROT0"))
       (position 609 436 0))
-    (entrance 
-      (type "generic")
-      (position 899 259 0)
-      (owner-id 0)
-      (direction "right")
-      (release-rate 50))
     (groundpiece 
       (type "ground")
       (surface 
@@ -267,13 +268,6 @@
         (image "groundpieces/ground/desert/middleprickpiece")
         (modifier "ROT0"))
       (position 121 966 0))
-    (hotspot 
-      (surface 
-        (image "entrances/wood_bottom")
-        (modifier "ROT0"))
-      (position 851 215 0)
-      (speed 0)
-      (parallax 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -297,7 +291,7 @@
       (surface 
         (image "groundpieces/ground/desert/middleprickpiece")
         (modifier "ROT0"))
-      (position 112 1133 0))
+      (position 91 1132 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -334,12 +328,31 @@
         (image "groundpieces/ground/desert/bigprickpiece")
         (modifier "ROT0"))
       (position 1868 588 0))
-    (hotspot 
+    (prefab 
+      (name "prefabs/desert_entrance")
+      (position 955 200 0)
+      (overrides 
+        (release-rate 50)
+        (direction "right")
+        (owner-id 0)))
+    (exit 
       (surface 
-        (image "entrances/wood_top")
+        (image "exits/desert_tut")
         (modifier "ROT0"))
-      (position 850 213 100)
+      (position 962 937 0)
+      (owner-id 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/middleprickpiece")
+        (modifier "ROT0"))
+      (position 1711 1142 0))
+    (liquid 
+      (surface 
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position 240 1141 10)
       (speed 0)
-      (parallax 0))))
+      (repeat 23))))
 
 ;; EOF ;;
