@@ -28,7 +28,9 @@ LevelObjFactory::create(const FileReader& reader)
   if (reader.get_name() == "group")
   {
     std::shared_ptr<GroupLevelObj> group(new GroupLevelObj);
-    const std::vector<FileReader>& sections = reader.get_sections();
+
+    FileReader objects = reader.read_section("objects");
+    std::vector<FileReader> sections = objects.get_sections();
     for(auto it = sections.begin(); it != sections.end(); ++it)
     {
       LevelObjPtr obj = create(*it);

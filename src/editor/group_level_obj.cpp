@@ -129,10 +129,12 @@ GroupLevelObj::write_properties(FileWriter& writer)
   if (m_name.empty())
   {
     writer.begin_section("group");
+    writer.begin_section("objects");
     for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
     {
       (*it)->write_properties(writer);
     }
+    writer.end_section();
     writer.end_section();
   }
   else

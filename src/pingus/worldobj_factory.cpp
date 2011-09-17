@@ -97,7 +97,8 @@ public:
   virtual std::vector<WorldObj*> create(const FileReader& reader) {
     std::vector<WorldObj*> group;
     
-    const std::vector<FileReader>& sections = reader.get_sections();
+    FileReader objects = reader.read_section("objects");
+    std::vector<FileReader> sections = objects.get_sections();
     for(auto it = sections.begin(); it != sections.end(); ++it)
     {
       std::vector<WorldObj*> objs = WorldObjFactory::instance()->create(*it);
