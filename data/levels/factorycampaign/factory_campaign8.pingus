@@ -91,30 +91,31 @@
         (modifier "ROT0"))
       (position -115 628 0))
     (group 
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/bigsand")
-          (modifier "ROT0"))
-        (position 563 1161 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/bigsand")
-          (modifier "ROT0"))
-        (position 563 1011 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/bigsand")
-          (modifier "ROT0"))
-        (position 863 1011 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/bigsand")
-          (modifier "ROT0"))
-        (position 863 1161 0)))
+      (objects 
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/bigsand")
+            (modifier "ROT0"))
+          (position 563 1161 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/bigsand")
+            (modifier "ROT0"))
+          (position 563 1011 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/bigsand")
+            (modifier "ROT0"))
+          (position 863 1011 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/bigsand")
+            (modifier "ROT0"))
+          (position 863 1161 0))))
     (groundpiece 
       (type "ground")
       (surface 

@@ -261,30 +261,31 @@
         (modifier "ROT0"))
       (position 935 322 0))
     (group 
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 285 818 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 285 947 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 285 1206 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 285 1077 0)))
+      (objects 
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 285 818 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 285 947 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 285 1206 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 285 1077 0))))
     (groundpiece 
       (type "ground")
       (surface 
@@ -292,30 +293,31 @@
         (modifier "ROT0"))
       (position 222 1092 0))
     (group 
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 443 782 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 443 911 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 443 1170 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 443 1041 0)))
+      (objects 
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 443 782 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 443 911 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 443 1170 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 443 1041 0))))
     (groundpiece 
       (type "ground")
       (surface 
@@ -323,205 +325,213 @@
         (modifier "ROT0"))
       (position 382 1092 0))
     (group 
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 754 746 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 754 875 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 754 1134 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 754 1005 0)))
+      (objects 
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 754 746 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 754 875 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 754 1134 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 754 1005 0))))
     (group 
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 553 782 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 553 911 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 553 1170 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 553 1041 0)))
+      (objects 
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 553 782 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 553 911 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 553 1170 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 553 1041 0))))
     (group 
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 1061 710 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 1061 839 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 1061 1098 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 1061 969 0)))
+      (objects 
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 1061 710 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 1061 839 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 1061 1098 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 1061 969 0))))
     (group 
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 951 710 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 951 839 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 951 1098 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 951 969 0)))
+      (objects 
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 951 710 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 951 839 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 951 1098 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 951 969 0))))
     (group 
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 1206 674 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 1206 803 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 1206 1062 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 1206 933 0)))
+      (objects 
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 1206 674 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 1206 803 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 1206 1062 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 1206 933 0))))
     (group 
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 1316 674 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 1316 803 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 1316 1062 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 1316 933 0)))
+      (objects 
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 1316 674 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 1316 803 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 1316 1062 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 1316 933 0))))
     (group 
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 1460 638 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 1460 767 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 1460 1026 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 1460 897 0)))
+      (objects 
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 1460 638 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 1460 767 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 1460 1026 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 1460 897 0))))
     (group 
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 1570 638 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 1570 767 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT0"))
-        (position 1570 1026 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/pillar2")
-          (modifier "ROT180FLIP"))
-        (position 1570 897 0)))
+      (objects 
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 1570 638 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 1570 767 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT0"))
+          (position 1570 1026 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/pillar2")
+            (modifier "ROT180FLIP"))
+          (position 1570 897 0))))
     (groundpiece 
       (type "ground")
       (surface 
@@ -607,44 +617,47 @@
         (modifier "ROT0"))
       (position 1206 1192 0))
     (group 
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/bigdune1")
-          (modifier "ROT0"))
-        (position -36 1107 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/bigsand")
-          (modifier "ROT0"))
-        (position -29 1135 0)))
+      (objects 
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/bigdune1")
+            (modifier "ROT0"))
+          (position -36 1107 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/bigsand")
+            (modifier "ROT0"))
+          (position -29 1135 0))))
     (group 
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/bigdune1")
-          (modifier "ROT0"))
-        (position 230 1111 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/bigsand")
-          (modifier "ROT0"))
-        (position 237 1139 0)))
+      (objects 
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/bigdune1")
+            (modifier "ROT0"))
+          (position 230 1111 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/bigsand")
+            (modifier "ROT0"))
+          (position 237 1139 0))))
     (group 
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/bigdune1")
-          (modifier "ROT0"))
-        (position 503 1105 0))
-      (groundpiece 
-        (type "ground")
-        (surface 
-          (image "groundpieces/ground/desert/bigsand")
-          (modifier "ROT0"))
-        (position 510 1133 0)))
+      (objects 
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/bigdune1")
+            (modifier "ROT0"))
+          (position 503 1105 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/desert/bigsand")
+            (modifier "ROT0"))
+          (position 510 1133 0))))
     (groundpiece 
       (type "ground")
       (surface 
