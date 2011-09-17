@@ -149,13 +149,13 @@
       (surface 
         (image "groundpieces/ground/desert/bigprickpiece")
         (modifier "ROT0"))
-      (position 1030 579 0))
+      (position 1030 609 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/bigprickpiece")
         (modifier "ROT0"))
-      (position 1030 351 0))
+      (position 1030 381 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -173,7 +173,7 @@
       (surface 
         (image "groundpieces/ground/desert/bigprickpiece")
         (modifier "ROT0"))
-      (position 1030 460 0))
+      (position 1030 490 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -197,7 +197,7 @@
       (surface 
         (image "groundpieces/ground/desert/middleprickpiece")
         (modifier "ROT0"))
-      (position 1056 576 0))
+      (position 1056 606 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -209,13 +209,13 @@
       (surface 
         (image "groundpieces/ground/desert/middleprickpiece")
         (modifier "ROT0"))
-      (position 1180 418 0))
+      (position 1180 448 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/middleprickpiece")
         (modifier "ROT0"))
-      (position 1007 471 0))
+      (position 1007 501 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -233,13 +233,13 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1007 351 0))
+      (position 1007 381 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1007 605 0))
+      (position 1007 635 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -257,7 +257,7 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1007 446 0))
+      (position 1007 476 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -269,31 +269,31 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_large")
         (modifier "ROT0"))
-      (position 1007 635 0))
+      (position 1007 665 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/smallbrickpiece")
         (modifier "ROT0"))
-      (position 1254 590 0))
+      (position 1254 620 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/smallbrickpiece")
         (modifier "ROT0"))
-      (position 1087 373 0))
+      (position 1087 403 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/smallbrickpiece")
         (modifier "ROT0"))
-      (position 1254 314 0))
+      (position 1254 344 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/smallbrickpiece")
         (modifier "ROT0"))
-      (position 1125 439 0))
+      (position 1125 469 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -311,25 +311,25 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_large")
         (modifier "ROT0"))
-      (position 1007 541 0))
+      (position 1007 571 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_large")
         (modifier "ROT0"))
-      (position 1044 477 0))
+      (position 1044 507 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_large")
         (modifier "ROT0"))
-      (position 1007 382 0))
+      (position 1007 412 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_small")
         (modifier "ROT0"))
-      (position 1033 463 0))
+      (position 1033 493 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -359,7 +359,7 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_small")
         (modifier "ROT0"))
-      (position 1007 425 0))
+      (position 1007 455 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -383,13 +383,13 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_small")
         (modifier "ROT0"))
-      (position 1024 589 0))
+      (position 1024 619 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_small")
         (modifier "ROT0"))
-      (position 1033 530 0))
+      (position 1033 560 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -401,7 +401,7 @@
       (surface 
         (image "groundpieces/ground/desert/pillar1")
         (modifier "ROT0"))
-      (position 1294 153 0))
+      (position 1294 183 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -494,7 +494,7 @@
       (position 193 1071 0))
     (prefab 
       (name "prefabs/desert_entrance")
-      (position 1187 233 0)
+      (position 1187 263 0)
       (overrides 
         (release-rate 50)
         (direction "left")
