@@ -19,6 +19,7 @@
 
 #include "pingus/resource.hpp"
 #include "util/string_util.hpp"
+#include "util/log.hpp"
 
 namespace Editor {
 
@@ -376,16 +377,16 @@ private:
 
 public:
   Prefab(const std::string& name) :
-    Object(Sprite("worldobjs/infobox"),
-           Resource::load_thumb_sprite("worldobjs/infobox")),
+    Object(Sprite(name),
+           Resource::load_thumb_sprite(name)),
     m_name(name)
-  {}
+  {
+  }
   
   LevelObjPtr create(const Vector2i& pos) {
     std::shared_ptr<GroupLevelObj> group = GroupLevelObj::from_prefab(m_name);
     if (group)
     {
-      group->set_orig_pos(Vector3f(0, 0, 0));
       group->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     }
     return group;
