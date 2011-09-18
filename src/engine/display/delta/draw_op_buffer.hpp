@@ -18,11 +18,13 @@
 #define HEADER_PINGUS_ENGINE_DISPLAY_DELTA_DRAW_OP_BUFFER_HPP
 
 #include "util/memory_pool.hpp"
+#include "math/quad_tree.hpp"
 
 #include "engine/display/delta/rect_merger.hpp"
+#include "engine/display/delta/draw_op.hpp"
 #include "engine/display/sdl_framebuffer.hpp"
 
-int calculate_area(const std::vector<Rect>& rects)
+inline int calculate_area(const std::vector<Rect>& rects)
 {
   int area = 0;
   for(std::vector<Rect>::const_iterator i = rects.begin(); i != rects.end(); ++i)
@@ -41,163 +43,26 @@ private:
   MemoryPool<DrawOp> mempool;
 
 public:
-  DrawOpBuffer() :
-    draw_ops(),
-    mempool()
-  {
-  }
+  DrawOpBuffer();
+  ~DrawOpBuffer();
 
-  ~DrawOpBuffer()
-  {
-  }
+  MemoryPool<DrawOp>& get_mempool();
+  void clear();
+  void add(DrawOp* op);
 
-  MemoryPool<DrawOp>& get_mempool() 
-  {
-    return mempool;
-  }
-  
-  void clear() 
-  {
-    draw_ops.clear();
-    mempool.clear();
-  }
-
-  bool has_op(DrawOp* op) const
-  {
-    // FIXME: This is a slow brute-force approach, a hashmap or
-    // something like that could speed things up quite a bit
-    for(DrawOps::const_iterator i = draw_ops.begin(); i != draw_ops.end(); ++i)
-    {
-      if ((*i)->equal(op))
-        return true;
-    }
-    return false;
-  }
+  bool has_op(DrawOp* op) const;
 
   /** Calculate the regions that are different between \a frontbuffer
       and \a backbuffer, results are written to \a changed_regions  */
   void buffer_difference_slow(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer, 
-                              std::vector<Rect>& changed_regions)
-  {
-    // FIXME: This is a very slow brute force approach
-    for(DrawOps::const_iterator i = backbuffer.draw_ops.begin(); i != backbuffer.draw_ops.end(); ++i)
-      if (!frontbuffer.has_op(*i))
-        (*i)->mark_changed_regions(changed_regions);
-
-    for(DrawOps::const_iterator i = frontbuffer.draw_ops.begin(); i != frontbuffer.draw_ops.end(); ++i)
-      if (!backbuffer.has_op(*i))
-        (*i)->mark_changed_regions(changed_regions);
-  }
-
-  bool buffer_equal(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer)
-  {
-    if (frontbuffer.draw_ops.size() != backbuffer.draw_ops.size())
-    {
-      return false;
-    }
-    else
-    {
-      for(DrawOps::size_type i = 0; i < frontbuffer.draw_ops.size(); ++i)
-      {
-        if (!frontbuffer.draw_ops[i]->equal(backbuffer.draw_ops[i]))
-          return false;
-      }
-      return true;
-    }
-  }
+                              std::vector<Rect>& changed_regions);
+  bool buffer_equal(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer);
 
   /** Calculate the regions that are different between \a frontbuffer
       and \a backbuffer, results are written to \a changed_regions  */
   void buffer_difference(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer, 
-                         std::vector<Rect>& changed_regions)
-  {
-    std::vector<DrawOp*> ops;
-    ops.reserve(backbuffer.draw_ops.size() + frontbuffer.draw_ops.size());
-
-    for(DrawOps::const_iterator i = backbuffer.draw_ops.begin(); i != backbuffer.draw_ops.end(); ++i)
-      ops.push_back(*i);
-
-    for(DrawOps::const_iterator i = frontbuffer.draw_ops.begin(); i != frontbuffer.draw_ops.end(); ++i)    
-      ops.push_back(*i);
-
-    std::sort(ops.begin(), ops.end(), ops_id_sorter);
-    
-    for(DrawOps::size_type i = 0; i < ops.size(); ++i)
-    {
-      bool is_equal = false;
-      for(DrawOps::size_type j = i+1; j < ops.size() && ops[i]->id == ops[j]->id; ++j)
-      {
-        if (ops[i]->equal(ops[j]))
-        {
-          is_equal = true;
-          if (j == i+1) // FIXME: This is a bit fishy, since ops_id_sorter() doesn't give a perfect sorting 
-            i = j; 
-          break;
-        }
-      }
-        
-      if (!is_equal)
-        ops[i]->mark_changed_regions(changed_regions);
-    }
-  }
- 
-  void render(SDLFramebuffer& fb, DrawOpBuffer& frontbuffer) 
-  {
-    if (!buffer_equal(frontbuffer, *this))
-    {
-      std::vector<Rect> changed_regions;
-
-      buffer_difference(frontbuffer, *this, changed_regions);
-
-      // Clip things to the screen
-      Size screen_size = fb.get_size();
-      for(std::vector<Rect>::iterator i = changed_regions.begin(); i != changed_regions.end(); ++i)
-      { 
-        // FIXME: It might be a good idea to remove empty rectangles here, so that merge_rectangles() can work smoother
-        i->left = Math::clamp(0, int(i->left), screen_size.width);
-        i->top  = Math::clamp(0, int(i->top),  screen_size.height);
-
-        i->right  = Math::clamp(0, int(i->right),  screen_size.width);
-        i->bottom = Math::clamp(0, int(i->bottom), screen_size.height);
-      }
-
-      if (!changed_regions.empty())
-      {
-        // Merge rectangles
-        std::vector<Rect> update_rects;
-        merge_rectangles(changed_regions, update_rects);
-
-        int area = calculate_area(update_rects);
-
-        if (area < fb.get_size().get_area()*75/100) // FIXME: Random Magic ratio, need benchmarking to find proper value
-        { // Update all regions that need update
-
-          for(std::vector<Rect>::iterator i = update_rects.begin(); i != update_rects.end(); ++i)
-          { 
-            // FIXME: This is a pretty drastic brute force
-            // approach and slows things down when you have many
-            // tiny rectangles (i.e. particle effects)
-            fb.push_cliprect(*i);
-            for(DrawOps::iterator j = draw_ops.begin(); j != draw_ops.end(); ++j)
-              (*j)->render(fb);
-            fb.pop_cliprect();
-          }
-    
-          fb.update_rects(update_rects);
-        }
-        else
-        { // Update the whole screen at once, since we have to many rects
-          for(DrawOps::iterator j = draw_ops.begin(); j != draw_ops.end(); ++j)
-            (*j)->render(fb);
-          fb.flip();
-        }
-      }
-    }
-  }
- 
-  void add(DrawOp* op) {
-    draw_ops.push_back(op);
-  }
+                         std::vector<Rect>& changed_regions);
+  void render(SDLFramebuffer& fb, DrawOpBuffer& frontbuffer);
 };
 
 #endif

@@ -16,6 +16,7 @@
 
 #include "engine/display/delta/draw_op.hpp"
 
+#include "engine/display/delta/clip_draw_op.hpp"
 #include "engine/display/delta/surface_draw_op.hpp"
 #include "engine/display/delta/fill_rect_draw_op.hpp"
 #include "engine/display/delta/draw_rect_draw_op.hpp"
@@ -38,6 +39,20 @@ DrawOp::equal(DrawOp* op) const
       {
         const FillRectDrawOp* lhs = static_cast<const FillRectDrawOp*>(this);
         const FillRectDrawOp* rhs = static_cast<const FillRectDrawOp*>(op);
+        return *lhs == *rhs;
+      }
+
+      case DRAWRECT_DRAWOP:
+      {
+        const DrawRectDrawOp* lhs = static_cast<const DrawRectDrawOp*>(this);
+        const DrawRectDrawOp* rhs = static_cast<const DrawRectDrawOp*>(op);
+        return *lhs == *rhs;
+      }
+
+      case CLIP_DRAWOP:
+      {
+        const ClipDrawOp* lhs = static_cast<const ClipDrawOp*>(this);
+        const ClipDrawOp* rhs = static_cast<const ClipDrawOp*>(op);
         return *lhs == *rhs;
       }
 
@@ -81,6 +96,28 @@ DrawOp::less(DrawOp* rhs) const
           return (rlhs->rect.top < rrhs->rect.top);
         else
           return (rlhs->rect.left < rrhs->rect.left);              
+      }
+
+      case DRAWRECT_DRAWOP:
+      {
+        const DrawRectDrawOp* rlhs = static_cast<const DrawRectDrawOp*>(lhs);
+        const DrawRectDrawOp* rrhs = static_cast<const DrawRectDrawOp*>(rhs);
+              
+        if (rlhs->rect.left == rrhs->rect.left)
+          return (rlhs->rect.top < rrhs->rect.top);
+        else
+          return (rlhs->rect.left < rrhs->rect.left);              
+      }
+
+      case CLIP_DRAWOP:
+      {
+        const ClipDrawOp* rlhs = static_cast<const ClipDrawOp*>(lhs);
+        const ClipDrawOp* rrhs = static_cast<const ClipDrawOp*>(rhs);
+              
+        if (rlhs->m_rect.left == rrhs->m_rect.left)
+          return (rlhs->m_rect.top < rrhs->m_rect.top);
+        else
+          return (rlhs->m_rect.left < rrhs->m_rect.left);              
       }
 
       default:

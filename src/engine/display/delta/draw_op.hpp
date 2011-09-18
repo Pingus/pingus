@@ -21,11 +21,11 @@
 
 #include "engine/display/framebuffer.hpp"
 
-enum DrawOpType { SURFACE_DRAWOP, FILLRECT_DRAWOP };
+enum DrawOpType { SURFACE_DRAWOP, FILLRECT_DRAWOP, DRAWRECT_DRAWOP, CLIP_DRAWOP };
 
 /** Little id creation function that is meant to bring equal objects
     close together when sorting */
-uint32_t make_id(DrawOpType type, int x, int y)
+inline uint32_t make_id(DrawOpType type, int x, int y)
 {
   return
     ((type & (4-1))  << 29) |

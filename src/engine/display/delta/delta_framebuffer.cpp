@@ -18,12 +18,13 @@
 
 #include <algorithm>
 
+#include "engine/display/delta/clip_draw_op.hpp"
 #include "engine/display/delta/draw_op.hpp"
 #include "engine/display/delta/draw_op_buffer.hpp"
 #include "engine/display/delta/draw_rect_draw_op.hpp"
 #include "engine/display/delta/fill_rect_draw_op.hpp"
-#include "engine/display/delta/surface_draw_op.hpp"
 #include "engine/display/delta/rect_merger.hpp"
+#include "engine/display/delta/surface_draw_op.hpp"
 #include "engine/display/sdl_framebuffer.hpp"
 #include "util/memory_pool.hpp"
 
@@ -58,19 +59,19 @@ DeltaFramebuffer::flip()
 void
 DeltaFramebuffer::push_cliprect(const Rect& rect)
 {
-  framebuffer->push_cliprect(rect);
+  backbuffer->add(backbuffer->get_mempool().create<ClipDrawOp>(rect));
 }
 
 void
 DeltaFramebuffer::pop_cliprect()
 {
-  framebuffer->pop_cliprect();
+  backbuffer->add(backbuffer->get_mempool().create<ClipDrawOp>());
 }
 
 void
 DeltaFramebuffer::draw_surface(const FramebufferSurface& src, const Vector2i& pos)
 {
-  backbuffer->add(backbuffer->get_mempool().create<SurfaceDrawOp>(pos , src, Rect(Vector2i(0, 0), src.get_size())));
+  backbuffer->add(backbuffer->get_mempool().create<SurfaceDrawOp>(pos, src, Rect(Vector2i(0, 0), src.get_size())));
 }
 
 void

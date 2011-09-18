@@ -23,10 +23,12 @@ struct DrawRectDrawOp : public DrawOp
   Color color;
   
   DrawRectDrawOp(const Rect& rect_, const Color& color_)
-    : DrawOp(FILLRECT_DRAWOP),
+    : DrawOp(DRAWRECT_DRAWOP),
       rect(rect_),
       color(color_)
-  {}
+  {
+    id = make_id(type, rect.left, rect.top);
+  }
 
   void render(Framebuffer& fb) {
     fb.draw_rect(rect, color);

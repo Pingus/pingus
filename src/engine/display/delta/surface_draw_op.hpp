@@ -25,11 +25,11 @@ struct SurfaceDrawOp : public DrawOp
   
   SurfaceDrawOp(const Vector2i& pos_,
                 const FramebufferSurface& surface_,
-                const Rect& rect_)
-    : DrawOp(SURFACE_DRAWOP),
-      pos(pos_),
-      surface(surface_),
-      rect(rect_)
+                const Rect& rect_) :
+    DrawOp(SURFACE_DRAWOP),
+    pos(pos_),
+    surface(surface_),
+    rect(rect_)
   {
     id = make_id(type, pos.x, pos.y);
   }
