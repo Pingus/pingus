@@ -97,7 +97,16 @@ StringFormat::break_line (const std::string& text_, int width, const Font& font)
     }
   }
   
-  out << UTF8::substr(beg, UTF8::iterator(text, text.end()));
+  std::string word = UTF8::substr(beg, UTF8::iterator(text, text.end()));
+  float word_width = font.get_width(word);
+  if ((line_width + word_width) > width)
+  {
+    out << "\n" << word;
+  }
+  else
+  {
+    out << word;
+  }
 
   return out.str();
 }
