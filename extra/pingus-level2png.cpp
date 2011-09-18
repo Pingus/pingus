@@ -96,7 +96,7 @@ int main(int argc, char** argv)
 
       // create a .sprite file to handle the offset
       std::string outfile = System::cut_file_extension(files[1].get_sys_path()) + ".sprite";
-      Vector2i offset(-rect.left, -rect.top);
+      Vector2i offset(rect.left, rect.top);
 
       std::ostringstream out;
       SExprFileWriter writer(out);
