@@ -24,7 +24,7 @@
 #ifdef HAVE_OPENGL
 #  include "engine/display/opengl/opengl_framebuffer.hpp"
 #endif
-#include "engine/display/delta_framebuffer.hpp"
+#include "engine/display/delta/delta_framebuffer.hpp"
 #include "engine/display/null_framebuffer.hpp"
 
 std::unique_ptr<Framebuffer> Display::framebuffer;

@@ -242,6 +242,7 @@ class Project:
                                            Glob('external/tinygettext/tinygettext/*.cpp') + \
                                            Glob('src/editor/*.cpp') + \
                                            Glob('src/engine/display/*.cpp') + \
+                                           Glob('src/engine/display/delta/*.cpp') + \
                                            Glob('src/engine/gui/*.cpp') + \
                                            Glob('src/engine/input/*.cpp') + \
                                            Glob('src/engine/resource/*.cpp') + \

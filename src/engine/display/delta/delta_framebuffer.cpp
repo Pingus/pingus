@@ -14,7 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "engine/display/delta_framebuffer.hpp"
+#include "engine/display/delta/delta_framebuffer.hpp"
 
 #include <algorithm>
 
@@ -402,10 +402,10 @@ public:
   }
 };
 
-DeltaFramebuffer::DeltaFramebuffer()
-  : framebuffer(new SDLFramebuffer()),
-    frontbuffer(new DrawOpBuffer()),
-    backbuffer(new DrawOpBuffer())
+DeltaFramebuffer::DeltaFramebuffer() :
+  framebuffer(new SDLFramebuffer()),
+  frontbuffer(new DrawOpBuffer()),
+  backbuffer(new DrawOpBuffer())
 {
 }
 
