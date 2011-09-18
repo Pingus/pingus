@@ -76,6 +76,7 @@ FileList::set_directory(const std::string& pathname, const std::string& pattern)
 {
   m_direction = pathname;
   directory = System::opendir(pathname, pattern);
+  directory.push_back(System::DirectoryEntry("..", System::DE_DIRECTORY));
   std::sort(directory.begin(), directory.end(), DirectorySorter());
 
   num_pages = directory.size() / items_per_page();
