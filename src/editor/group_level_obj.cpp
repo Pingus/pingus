@@ -267,8 +267,16 @@ GroupLevelObj::duplicate(const Vector2i& offset) const
   std::shared_ptr<GroupLevelObj> group(new GroupLevelObj);
 
   group->m_name = m_name;
-  group->m_pos = m_pos;
-  group->m_orig_pos = m_orig_pos;
+  group->m_pos = m_pos + offset;
+  group->m_orig_pos = m_orig_pos + offset;
+
+  group->m_overrides    = m_overrides;
+  group->m_repeat       = m_repeat;
+  group->m_owner_id     = m_owner_id;
+  group->m_release_rate = m_release_rate;
+  group->m_direction    = m_direction;
+
+  log_tmp(m_pos << " " << m_orig_pos);
 
   for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
   {
