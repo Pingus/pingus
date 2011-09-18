@@ -110,21 +110,27 @@ Resource::load_thumb_sprite(const std::string& name)
   else
   {
     Surface surface = load_surface(name);
-
-    Size thumb_size;
-    if (surface.get_width() <= 48)
-      thumb_size.width = surface.get_width();
+    if (!surface)
+    {
+      return Sprite();
+    }
     else
-      thumb_size.width = 48;
+    {
+      Size thumb_size;
+      if (surface.get_width() <= 48)
+        thumb_size.width = surface.get_width();
+      else
+        thumb_size.width = 48;
 
-    if (surface.get_height() <= 48)
-      thumb_size.height = surface.get_height();
-    else
-      thumb_size.height = 48;
+      if (surface.get_height() <= 48)
+        thumb_size.height = surface.get_height();
+      else
+        thumb_size.height = 48;
 
-    Sprite sprite(surface.scale(thumb_size.width, thumb_size.height));
-    sprite.set_hotspot(origin_top_left, (48 - sprite.get_width())/2, (48 - sprite.get_height())/2);
-    return sprite;
+      Sprite sprite(surface.scale(thumb_size.width, thumb_size.height));
+      sprite.set_hotspot(origin_top_left, (48 - sprite.get_width())/2, (48 - sprite.get_height())/2);
+      return sprite;
+    }
   }
 }
 
