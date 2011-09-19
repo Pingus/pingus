@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pingus 0.7.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-06 14:58+0200\n"
+"POT-Creation-Date: 2011-09-19 14:14+0200\n"
 "PO-Revision-Date: 2011-01-17 20:07+0000\n"
 "Last-Translator: luojie-dune <Unknown>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -114,151 +114,139 @@ msgstr "等待"
 msgid "Walker"
 msgstr "步行"
 
-#: src/pingus/screens/story_screen.cpp:107
-#: src/pingus/screens/story_screen.cpp:113
+#: src/pingus/screens/story_screen.cpp:106
+#: src/pingus/screens/story_screen.cpp:112
 msgid "skip"
 msgstr "略过"
 
-#: src/pingus/screens/level_menu.cpp:51
+#: src/pingus/screens/level_menu.cpp:50
 #: src/pingus/screens/start_screen.cpp:111
 #: src/pingus/screens/result_screen.cpp:91
 msgid "Abort"
 msgstr "中止"
 
-#: src/pingus/screens/level_menu.cpp:141 src/pingus/screens/pingus_menu.cpp:67
+#: src/pingus/screens/level_menu.cpp:149 src/pingus/screens/pingus_menu.cpp:65
 msgid "Levelsets"
 msgstr "关卡组合"
 
-#: src/pingus/screens/level_menu.cpp:159
+#: src/pingus/screens/level_menu.cpp:164
 msgid "Solved:"
 msgstr "解决："
 
-#: src/pingus/screens/level_menu.cpp:160
+#: src/pingus/screens/level_menu.cpp:165
 msgid "levels"
 msgstr ""
 
-#: src/pingus/screens/level_menu.cpp:170 src/pingus/screens/level_menu.cpp:291
-msgid "Page"
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:265
-msgid "Title"
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:266
-msgid "Status"
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:282
+#: src/pingus/screens/level_menu.cpp:308
 msgid "solved"
 msgstr ""
 
-#: src/pingus/screens/level_menu.cpp:284
+#: src/pingus/screens/level_menu.cpp:310
 msgid "unsolved"
 msgstr ""
 
-#: src/pingus/screens/credits.cpp:87
+#: src/pingus/screens/credits.cpp:86
 msgid "-Idea"
 msgstr "-计画"
 
-#: src/pingus/screens/credits.cpp:91
+#: src/pingus/screens/credits.cpp:90
 msgid "-Maintaining"
 msgstr "-保养"
 
-#: src/pingus/screens/credits.cpp:95
+#: src/pingus/screens/credits.cpp:94
 msgid "-Programming"
 msgstr "-编程"
 
-#: src/pingus/screens/credits.cpp:105
+#: src/pingus/screens/credits.cpp:104
 msgid "-Porting (Win32)"
 msgstr "-移植（Win32）"
 
-#: src/pingus/screens/credits.cpp:114
+#: src/pingus/screens/credits.cpp:113
 msgid "-Porting (MacOSX)"
 msgstr "-移植（MacOSX）"
 
-#: src/pingus/screens/credits.cpp:119
+#: src/pingus/screens/credits.cpp:118
 msgid "-Gfx"
 msgstr "-Gfx"
 
-#: src/pingus/screens/credits.cpp:132
+#: src/pingus/screens/credits.cpp:131
 msgid "-Music"
 msgstr "-音乐"
 
-#: src/pingus/screens/credits.cpp:139
+#: src/pingus/screens/credits.cpp:138
 msgid "-Level Design"
 msgstr "-关卡"
 
-#: src/pingus/screens/credits.cpp:145
+#: src/pingus/screens/credits.cpp:144
 msgid "-Story"
 msgstr "-故事"
 
-#: src/pingus/screens/credits.cpp:149
+#: src/pingus/screens/credits.cpp:148
 msgid "-Translation"
 msgstr "-翻译"
 
-#: src/pingus/screens/credits.cpp:164
+#: src/pingus/screens/credits.cpp:163
 msgid "-Special"
 msgstr "-特别"
 
-#: src/pingus/screens/credits.cpp:165
+#: src/pingus/screens/credits.cpp:164
 msgid "-Thanks to"
 msgstr "-感谢"
 
-#: src/pingus/screens/credits.cpp:209
+#: src/pingus/screens/credits.cpp:208
 msgid "_And a very Special Thanks"
 msgstr "_特别感谢"
 
-#: src/pingus/screens/credits.cpp:210
+#: src/pingus/screens/credits.cpp:209
 msgid "_to all the people who"
 msgstr "_所有那些为"
 
-#: src/pingus/screens/credits.cpp:211
+#: src/pingus/screens/credits.cpp:210
 msgid "_contribute to"
 msgstr "_自由软件作出贡献的"
 
-#: src/pingus/screens/credits.cpp:212
+#: src/pingus/screens/credits.cpp:211
 msgid "_Free Software!"
 msgstr "_人们!"
 
-#: src/pingus/screens/credits.cpp:218
+#: src/pingus/screens/credits.cpp:217
 msgid "_Thank you for"
 msgstr "_谢谢，"
 
-#: src/pingus/screens/credits.cpp:219
+#: src/pingus/screens/credits.cpp:218
 msgid "_playing!"
 msgstr "_大家的游戏!"
 
-#: src/pingus/screens/pingus_menu.cpp:52
+#: src/pingus/screens/pingus_menu.cpp:50
 msgid "Story"
 msgstr "故事"
 
-#: src/pingus/screens/pingus_menu.cpp:53
+#: src/pingus/screens/pingus_menu.cpp:51
 msgid "..:: Start the game ::.."
 msgstr "..:: 游戏开始 ::.."
 
-#: src/pingus/screens/pingus_menu.cpp:57
+#: src/pingus/screens/pingus_menu.cpp:55
 msgid "Editor"
 msgstr "编辑"
 
-#: src/pingus/screens/pingus_menu.cpp:58
+#: src/pingus/screens/pingus_menu.cpp:56
 msgid "..:: Create your own levels ::.."
 msgstr "..:: 创建自己的关卡 ::.."
 
-#: src/pingus/screens/pingus_menu.cpp:62 src/editor/object_selector.cpp:324
+#: src/pingus/screens/pingus_menu.cpp:60 src/editor/object_selector.cpp:173
 #: src/editor/panel.cpp:210
 msgid "Exit"
 msgstr "离开"
 
-#: src/pingus/screens/pingus_menu.cpp:63
+#: src/pingus/screens/pingus_menu.cpp:61
 msgid "..:: Bye, bye ::.."
 msgstr "..:: 再见 ::.."
 
-#: src/pingus/screens/pingus_menu.cpp:68
+#: src/pingus/screens/pingus_menu.cpp:66
 msgid "..:: Play User Built levels ::.."
 msgstr "..:: 玩家自制关卡 ::.."
 
-#: src/pingus/screens/pingus_menu.cpp:79
+#: src/pingus/screens/pingus_menu.cpp:77
 msgid ""
 "..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
 "fullscreen   ::   F12: screenshot ::.."
@@ -266,61 +254,61 @@ msgstr ""
 "..:: Ctrl-g: 鼠标获取  ::  F10: 每秒画面数量  ::  F11: 满屏  ::  F12: 屏幕快"
 "照 ::.."
 
-#: src/pingus/screens/option_menu.cpp:180
+#: src/pingus/screens/option_menu.cpp:179
 msgid "Language:"
 msgstr ""
 
-#: src/pingus/screens/option_menu.cpp:182
+#: src/pingus/screens/option_menu.cpp:181
 msgid "Resolution:"
 msgstr ""
 
-#: src/pingus/screens/option_menu.cpp:183
+#: src/pingus/screens/option_menu.cpp:182
 msgid "Fullscreen:"
 msgstr ""
 
-#: src/pingus/screens/option_menu.cpp:184
+#: src/pingus/screens/option_menu.cpp:183
 msgid "Master Volume:"
 msgstr ""
 
-#: src/pingus/screens/option_menu.cpp:185
+#: src/pingus/screens/option_menu.cpp:184
 msgid "Sound Volume:"
 msgstr ""
 
-#: src/pingus/screens/option_menu.cpp:186
+#: src/pingus/screens/option_menu.cpp:185
 msgid "Music Volume:"
 msgstr ""
 
-#: src/pingus/screens/option_menu.cpp:187
+#: src/pingus/screens/option_menu.cpp:186
 msgid "Autoscrolling:"
 msgstr ""
 
-#: src/pingus/screens/option_menu.cpp:188
+#: src/pingus/screens/option_menu.cpp:187
 msgid "Print FPS:"
 msgstr ""
 
-#: src/pingus/screens/option_menu.cpp:189
+#: src/pingus/screens/option_menu.cpp:188
 msgid "Mouse Grab:"
 msgstr ""
 
-#: src/pingus/screens/option_menu.cpp:190
+#: src/pingus/screens/option_menu.cpp:189
 msgid "Software Cursor:"
 msgstr ""
 
-#: src/pingus/screens/option_menu.cpp:208
+#: src/pingus/screens/option_menu.cpp:207
 msgid "Reset to Defaults:"
 msgstr ""
 
-#: src/pingus/screens/option_menu.cpp:284
+#: src/pingus/screens/option_menu.cpp:283
 msgid "Option Menu"
 msgstr ""
 
-#: src/pingus/screens/option_menu.cpp:286 src/pingus/screens/addon_menu.cpp:50
+#: src/pingus/screens/option_menu.cpp:285 src/pingus/screens/addon_menu.cpp:53
 msgid "Close"
 msgstr "关闭"
 
 #: src/pingus/screens/start_screen.cpp:67
-msgid "Ok"
-msgstr "确定"
+msgid "Play"
+msgstr ""
 
 #: src/pingus/screens/start_screen.cpp:166
 msgid "Number of Pingus: "
@@ -334,11 +322,11 @@ msgstr "挽救数量： "
 msgid "Time: "
 msgstr "时间: "
 
-#: src/pingus/screens/start_screen.cpp:181
+#: src/pingus/screens/start_screen.cpp:178
 msgid "Author: "
 msgstr "作者: "
 
-#: src/pingus/screens/start_screen.cpp:184
+#: src/pingus/screens/start_screen.cpp:181
 msgid "Filename: "
 msgstr "文件名称: "
 
@@ -421,113 +409,119 @@ msgstr "剩下时间： "
 msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
 msgstr "放出:%3d/%d   在外面:%3d   获救:%3d/%d"
 
-#: src/pingus/pingus_main.cpp:212
+#: src/pingus/pingus_main.cpp:210
 msgid "[OPTIONS]... [FILE]"
 msgstr ""
 
-#: src/pingus/pingus_main.cpp:213
+#: src/pingus/pingus_main.cpp:211
 msgid ""
 "Pingus is a puzzle game where you need to guide a bunch of little penguins "
 "around the world."
 msgstr ""
 
-#: src/pingus/pingus_main.cpp:216
+#: src/pingus/pingus_main.cpp:214
 msgid "Displays this help"
 msgstr "显示这个说明"
 
-#: src/pingus/pingus_main.cpp:218
+#: src/pingus/pingus_main.cpp:216
 msgid "Print version number and exit"
 msgstr "打印版本号后退出"
 
-#: src/pingus/pingus_main.cpp:220
+#: src/pingus/pingus_main.cpp:218
 msgid "Display:"
 msgstr "显示:"
 
-#: src/pingus/pingus_main.cpp:222
+#: src/pingus/pingus_main.cpp:220
 msgid "Start in Window Mode"
 msgstr "窗口模式开启"
 
-#: src/pingus/pingus_main.cpp:224
+#: src/pingus/pingus_main.cpp:222
 msgid "Start in Fullscreen"
 msgstr "全屏模式开启"
 
-#: src/pingus/pingus_main.cpp:226
+#: src/pingus/pingus_main.cpp:224
 msgid "Use the given renderer (default: delta)"
 msgstr ""
 
-#: src/pingus/pingus_main.cpp:228
+#: src/pingus/pingus_main.cpp:226
 msgid "Enable software cursor"
 msgstr "启用软件光标"
 
-#: src/pingus/pingus_main.cpp:230
+#: src/pingus/pingus_main.cpp:228
 msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "设置pingus分辨率(缺省: 800x600)"
 
-#: src/pingus/pingus_main.cpp:232
+#: src/pingus/pingus_main.cpp:230
 msgid "Sound:"
 msgstr "声音:"
 
-#: src/pingus/pingus_main.cpp:234
+#: src/pingus/pingus_main.cpp:232
 msgid "Disable sound"
 msgstr "禁用声音"
 
-#: src/pingus/pingus_main.cpp:236
+#: src/pingus/pingus_main.cpp:234
 msgid "Disable music"
 msgstr "禁用音乐"
 
-#: src/pingus/pingus_main.cpp:240
+#: src/pingus/pingus_main.cpp:238
 msgid "Select language to use with Pingus"
 msgstr "选择语言"
 
-#: src/pingus/pingus_main.cpp:242
+#: src/pingus/pingus_main.cpp:240
 msgid "List all available languages"
 msgstr "列出所有可用的语言"
 
-#: src/pingus/pingus_main.cpp:246
+#: src/pingus/pingus_main.cpp:244
 msgid "Loads the level editor"
 msgstr "装入地图编辑器"
 
-#: src/pingus/pingus_main.cpp:248
+#: src/pingus/pingus_main.cpp:246
 msgid "Save the level given level to FILENAME and quit"
 msgstr ""
 
-#: src/pingus/pingus_main.cpp:250
-msgid "Test a font"
-msgstr "测试字体"
-
-#: src/pingus/pingus_main.cpp:252
+#: src/pingus/pingus_main.cpp:248
 msgid "Shows the credits"
 msgstr "显示贡献者"
 
-#: src/pingus/pingus_main.cpp:254
-msgid "Misc Options:"
+#: src/pingus/pingus_main.cpp:250
+#, fuzzy
+msgid "Path Options:"
 msgstr "混合选项："
 
-#: src/pingus/pingus_main.cpp:255 src/pingus/pingus_main.cpp:257
+#: src/pingus/pingus_main.cpp:251 src/pingus/pingus_main.cpp:253
+#: src/pingus/pingus_main.cpp:255
 msgid "PATH"
 msgstr "路径"
 
-#: src/pingus/pingus_main.cpp:256
+#: src/pingus/pingus_main.cpp:252
 msgid "Set the path to load the data files to 'path'"
 msgstr "设置加载数据文件路径至\"路径\""
 
-#: src/pingus/pingus_main.cpp:258
+#: src/pingus/pingus_main.cpp:254
 msgid "Set the path to load and save user files (savegames, etc.) to PATH"
 msgstr ""
 
-#: src/pingus/pingus_main.cpp:261
+#: src/pingus/pingus_main.cpp:256
+msgid "Add an addon path that is searched for datadir content"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:258
+msgid "Misc Options:"
+msgstr "混合选项："
+
+#: src/pingus/pingus_main.cpp:260
 msgid "Disable automatic scrolling"
 msgstr "禁用自动滚动"
 
-#: src/pingus/pingus_main.cpp:263
+#: src/pingus/pingus_main.cpp:262
 msgid "Don't read ~/.pingus/config"
 msgstr "不要读~/.pingus/config"
 
-#: src/pingus/pingus_main.cpp:264
+#: src/pingus/pingus_main.cpp:263
 msgid "FILE"
 msgstr "文件"
 
-#: src/pingus/pingus_main.cpp:265
+#: src/pingus/pingus_main.cpp:264
 msgid ""
 "Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
 "speed up the game on slower machines"
@@ -535,19 +529,19 @@ msgstr ""
 "阅读设置从文件(缺省: ~/.pingus/config) 减少CPU使用,在速度较慢的计算机可使游戏"
 "加快"
 
-#: src/pingus/pingus_main.cpp:268
+#: src/pingus/pingus_main.cpp:267
 msgid "Uses the controller given in FILE"
 msgstr "使用文件里列的控制器"
 
-#: src/pingus/pingus_main.cpp:270
+#: src/pingus/pingus_main.cpp:269
 msgid "Debugging and experimental stuff:"
 msgstr "调试和实验的东西："
 
-#: src/pingus/pingus_main.cpp:272
+#: src/pingus/pingus_main.cpp:271
 msgid "Enables some features, only interesting to programmers"
 msgstr "启用某些功能，只有对编程员有趣"
 
-#: src/pingus/pingus_main.cpp:275
+#: src/pingus/pingus_main.cpp:274
 msgid ""
 "Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
 "actions, sound, resources, gui, input, pathmgr"
@@ -555,27 +549,27 @@ msgstr ""
 "启用调试信息输出，可用选项包含tiles, gametime, actions, sound, resources, "
 "gui, input, pathmgr"
 
-#: src/pingus/pingus_main.cpp:279
+#: src/pingus/pingus_main.cpp:278
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "设置游戏速度(0=最快, >0=变慢)"
 
-#: src/pingus/pingus_main.cpp:281
+#: src/pingus/pingus_main.cpp:280
 msgid "Set the desired game framerate (frames per second)"
 msgstr ""
 
-#: src/pingus/pingus_main.cpp:283
+#: src/pingus/pingus_main.cpp:282
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "设置地图瓷砖尺寸(缺省: 32)"
 
-#: src/pingus/pingus_main.cpp:720
+#: src/pingus/pingus_main.cpp:700
 msgid "Pingus: Out of memory!"
 msgstr "Pingus:内存不足!"
 
-#: src/pingus/pingus_main.cpp:724
+#: src/pingus/pingus_main.cpp:704
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: 标准异常！：\n"
 
-#: src/pingus/pingus_main.cpp:728
+#: src/pingus/pingus_main.cpp:708
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: 发生不明错误！"
 
@@ -599,192 +593,217 @@ msgstr "离开?"
 msgid "Enter?"
 msgstr "进入？"
 
-#: src/pingus/worldmap/worldmap.cpp:354
+#: src/pingus/worldmap/worldmap.cpp:356
 msgid "...walking..."
 msgstr "...步行..."
 
-#: src/engine/display/screenshot.cpp:33
+#: src/engine/display/screenshot.cpp:36
 msgid "Screenshot: Saving screenshot to: "
 msgstr "屏幕画面捕获:把屏幕画面捕获存储至: "
 
-#: src/engine/display/screenshot.cpp:35
+#: src/engine/display/screenshot.cpp:38
 msgid "Screenshot: Screenshot is done."
 msgstr "截图：完成截图。"
 
-#: src/engine/display/screenshot.cpp:110 src/engine/display/screenshot.cpp:138
+#: src/engine/display/screenshot.cpp:122 src/engine/display/screenshot.cpp:150
 msgid "Screenshot: Couldn't write file: "
 msgstr "截图:文件不能写入 "
 
-#: src/editor/object_selector.cpp:315
+#: src/editor/object_selector.cpp:164
 msgid "Entrance"
 msgstr "进入"
 
-#: src/editor/object_selector.cpp:316
+#: src/editor/object_selector.cpp:165
 msgid "Groundpiece (ground)"
 msgstr "地面修补(地面)"
 
-#: src/editor/object_selector.cpp:317
+#: src/editor/object_selector.cpp:166
 msgid "Groundpiece (solid)"
 msgstr "地面修补(固体)"
 
-#: src/editor/object_selector.cpp:318
+#: src/editor/object_selector.cpp:167
 msgid "Groundpiece (bridge)"
 msgstr "地面修补(桥梁)"
 
-#: src/editor/object_selector.cpp:319
+#: src/editor/object_selector.cpp:168
 msgid "Groundpiece (transparent)"
 msgstr "地面修补(透明)"
 
-#: src/editor/object_selector.cpp:320
+#: src/editor/object_selector.cpp:169
 msgid "Groundpiece (remove)"
 msgstr "地面修补(删除)"
 
-#: src/editor/object_selector.cpp:321
+#: src/editor/object_selector.cpp:170
 msgid "Hotspot"
 msgstr "热点"
 
-#: src/editor/object_selector.cpp:322
+#: src/editor/object_selector.cpp:171
 msgid "Background"
 msgstr "后台"
 
-#: src/editor/object_selector.cpp:325
+#: src/editor/object_selector.cpp:174
 msgid "Liquid"
 msgstr "液体"
 
-#: src/editor/object_selector.cpp:326
+#: src/editor/object_selector.cpp:175
 msgid "Trap"
 msgstr "陷阱"
 
-#: src/editor/object_selector.cpp:327
+#: src/editor/object_selector.cpp:176
 msgid "Weather"
 msgstr "天气"
 
-#: src/editor/object_selector.cpp:328
+#: src/editor/object_selector.cpp:177
 msgid "Special Object"
 msgstr "特殊物体"
 
-#: src/editor/object_properties.cpp:81 src/editor/object_properties.cpp:454
+#: src/editor/object_selector.cpp:178
+#, fuzzy
+msgid "Prefab Object"
+msgstr "特殊物体"
+
+#: src/editor/object_properties.cpp:87 src/editor/object_properties.cpp:515
 msgid "Object:"
 msgstr "物体："
 
-#: src/editor/object_properties.cpp:82 src/editor/object_properties.cpp:455
+#: src/editor/object_properties.cpp:88 src/editor/object_properties.cpp:516
 msgid "Nothing selected"
 msgstr "没有东西被选择"
 
-#: src/editor/object_properties.cpp:91
+#: src/editor/object_properties.cpp:97
 msgid "Transparent"
 msgstr "透明"
 
-#: src/editor/object_properties.cpp:92
+#: src/editor/object_properties.cpp:98
 msgid "Solid"
 msgstr "固体"
 
-#: src/editor/object_properties.cpp:93
+#: src/editor/object_properties.cpp:99
 msgid "Ground"
 msgstr "地面"
 
-#: src/editor/object_properties.cpp:94
+#: src/editor/object_properties.cpp:100
 msgid "Bridge"
 msgstr "桥梁"
 
-#: src/editor/object_properties.cpp:95
+#: src/editor/object_properties.cpp:101
 msgid "Water"
 msgstr "水"
 
-#: src/editor/object_properties.cpp:96
+#: src/editor/object_properties.cpp:102
 msgid "Lava"
 msgstr "火山岩"
 
-#: src/editor/object_properties.cpp:97
+#: src/editor/object_properties.cpp:103
 msgid "Remove"
 msgstr "删除"
 
-#: src/editor/object_properties.cpp:102
+#: src/editor/object_properties.cpp:108
 msgid "Direction:"
 msgstr "方向:"
 
-#: src/editor/object_properties.cpp:104
+#: src/editor/object_properties.cpp:110
 msgid "Left"
 msgstr "左"
 
-#: src/editor/object_properties.cpp:105
+#: src/editor/object_properties.cpp:111
 msgid "Misc"
 msgstr "各种杂项"
 
-#: src/editor/object_properties.cpp:106
+#: src/editor/object_properties.cpp:112
 msgid "Right"
 msgstr "右"
 
-#: src/editor/object_properties.cpp:111
+#: src/editor/object_properties.cpp:117
 msgid "ReleaseRate:"
 msgstr "释放频率:"
 
-#: src/editor/object_properties.cpp:128
+#: src/editor/object_properties.cpp:140
 msgid "Para-X:"
 msgstr "Para-X:"
 
-#: src/editor/object_properties.cpp:129
+#: src/editor/object_properties.cpp:141
 msgid "Para-Y:"
 msgstr "Para-Y:"
 
-#: src/editor/object_properties.cpp:137
+#: src/editor/object_properties.cpp:149
 msgid "Scroll-X:"
 msgstr "滚动-X:"
 
-#: src/editor/object_properties.cpp:138
+#: src/editor/object_properties.cpp:150
 msgid "Scroll-Y:"
 msgstr "滚动-Y:"
 
-#: src/editor/object_properties.cpp:146
+#: src/editor/object_properties.cpp:158
 msgid "Owner Id:"
 msgstr "所属者编号："
 
-#: src/editor/object_properties.cpp:150
+#: src/editor/object_properties.cpp:162
 msgid "Z-Pos:"
 msgstr "Z-Pos:"
 
-#: src/editor/object_properties.cpp:157
+#: src/editor/object_properties.cpp:169
 msgid "Color:"
 msgstr "颜色："
 
-#: src/editor/object_properties.cpp:169
+#: src/editor/object_properties.cpp:181
 msgid "Small Stars:"
 msgstr "小星星:"
 
-#: src/editor/object_properties.cpp:172
+#: src/editor/object_properties.cpp:184
 msgid "Middle Stars:"
 msgstr "中等的星星："
 
-#: src/editor/object_properties.cpp:175
+#: src/editor/object_properties.cpp:187
 msgid "Large Stars:"
 msgstr "大的星星："
 
-#: src/editor/object_properties.cpp:183
+#: src/editor/object_properties.cpp:195
 msgid "Repeat:"
 msgstr "重覆:"
 
-#: src/editor/object_properties.cpp:460
+#: src/editor/object_properties.cpp:211
+msgid "Id:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:215
+msgid "Target Id:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:220
+#, fuzzy
+msgid "Height:"
+msgstr "右"
+
+#: src/editor/object_properties.cpp:521
 msgid "Object: [Group]"
 msgstr "物体: [群组]"
 
-#: src/editor/object_properties.cpp:461
+#: src/editor/object_properties.cpp:522
 msgid "Group not supported"
 msgstr "群组未支持"
 
-#: src/editor/object_properties.cpp:466
+#: src/editor/object_properties.cpp:527
 msgid "Object: "
 msgstr "物体: "
 
-#: src/editor/editor_screen.cpp:191
+#: src/editor/editor_screen.cpp:208
+msgid "== Editor Help =="
+msgstr ""
+
+#: src/editor/editor_screen.cpp:226
+#, fuzzy
 msgid ""
 "Select all\n"
 "Clear Selection\n"
 "Raise objects\n"
 "Lower objects\n"
-"Lower objects to bottom\n"
 "Raise objects to top\n"
+"Lower objects to bottom\n"
 "Rotate 90 degree\n"
 "Rotate 270 degree\n"
+"Group selected objects\n"
+"Ungroup selected objects\n"
 msgstr ""
 "选择所有的\n"
 "清除选择\n"
@@ -795,15 +814,16 @@ msgstr ""
 "旋转90度\n"
 "旋转270度\n"
 
-#: src/editor/editor_screen.cpp:213
+#: src/editor/editor_screen.cpp:249
+#, fuzzy
 msgid ""
 "Flip object horizontaly\n"
 "Flip object vertically\n"
 "Delete all marked objects\n"
-"Move objects up\n"
-"Move objects down\n"
-"Move objects left\n"
-"Move objects right\n"
+"Move objects by one pixel\n"
+"Move objects by 32 pixel\n"
+"Toggle background color\n"
+"Increase/lower repeat\n"
 msgstr ""
 "水平地用指头弹物体 \n"
 "纵向地用指头弹物体\n"
@@ -813,7 +833,7 @@ msgstr ""
 "把物体往左移动\n"
 "把物体往右移动\n"
 
-#: src/editor/editor_screen.cpp:225
+#: src/editor/editor_screen.cpp:260
 msgid ""
 "You should name your level files systematically, i.e. by their theme, their "
 "number and your nickname:\n"
@@ -929,47 +949,47 @@ msgstr "物体旋转90度"
 msgid "Display help"
 msgstr "显示说明"
 
-#: src/editor/file_dialog.cpp:61
+#: src/editor/file_dialog.cpp:59
 msgid "Datadir"
 msgstr "数据目录"
 
-#: src/editor/file_dialog.cpp:63
+#: src/editor/file_dialog.cpp:61
 msgid "Userdir"
 msgstr "用户目录"
 
-#: src/editor/file_dialog.cpp:66
+#: src/editor/file_dialog.cpp:64
 msgid "Open"
 msgstr "打开"
 
-#: src/editor/file_dialog.cpp:66
+#: src/editor/file_dialog.cpp:64
 msgid "Save"
 msgstr "存储"
 
-#: src/editor/file_dialog.cpp:69
+#: src/editor/file_dialog.cpp:67
 msgid "Cancel"
 msgstr "取消"
 
-#: src/editor/file_dialog.cpp:80
+#: src/editor/file_dialog.cpp:78
 msgid "Filename:"
 msgstr "文件名称："
 
-#: src/editor/file_dialog.cpp:81
+#: src/editor/file_dialog.cpp:79
 msgid "Pathname:"
 msgstr "路径名称："
 
-#: src/editor/file_dialog.cpp:107
+#: src/editor/file_dialog.cpp:108
 msgid "Open a level"
 msgstr "打开一个关卡"
 
-#: src/editor/file_dialog.cpp:107
+#: src/editor/file_dialog.cpp:108
 msgid "Save your level"
 msgstr "存储你的等级"
 
-#: data/levels/tutorial/basher-tutorial-grumbel.pingus:7
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
 msgid "If the way is blocked, bash away"
 msgstr "道路被阻塞的话, 撞开"
 
-#: data/levels/tutorial/basher-tutorial-grumbel.pingus:8
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus:6
 msgid ""
 "Similar to the Digger action that you already know from previous levels, "
 "there is also an action that allows the Pingus to dig horizontally, as "
@@ -979,11 +999,11 @@ msgstr ""
 "相似已经从先前的等级中知道的挖掘者行动，有一种允许Pingus由水平凿地洞的一个行"
 "动，而这个新的行动被称为破除者。 "
 
-#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:7
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:5
 msgid "Sacrifice a few and save the rest"
 msgstr "为了幸存者而牺牲"
 
-#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:8
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:6
 msgid ""
 "Sometimes no other actions are available, so you have to bomb your way "
 "through the ground. The Pingus can do this by actually self- destructing. "
@@ -993,11 +1013,11 @@ msgstr ""
 "有时没有其它动作可采用，所以你必须利用轰炸地面的方法。Pingus可以经过自我毁灭"
 "这样做。这会杀了他们，但为了拯救大部分的企鹅这是必须做的牺牲。 "
 
-#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:7
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:5
 msgid "Learning to dig"
 msgstr "学习挖掘"
 
-#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:8
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:6
 msgid ""
 "This is your first mission. As always, it's pretty easy. All you have to do "
 "is to give a Pingu the command to dig a hole into the ground so that they "
@@ -1006,11 +1026,11 @@ msgstr ""
 "这是你的第一个任务。总是，轻松简单。你只要有一个Pingu挖一个洞到地面然后他们可"
 "以离开那个范围。只要点选一个Pingu即可完成。 "
 
-#: data/levels/tutorial/floater-tutorial-grumbel.pingus:7
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus:5
 msgid "Float or Die"
 msgstr "飘浮或死掉"
 
-#: data/levels/tutorial/floater-tutorial-grumbel.pingus:8
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus:6
 msgid ""
 "Well done in mission one! Now let's start the next one. This time you will "
 "need to equip your Pingus with a little propeller, so that they can float to "
@@ -1021,11 +1041,11 @@ msgstr ""
 "螺旋桨,这样你可以慢慢的降落地面,如果Pingus从太高的地方跌落,他们就没有办法存"
 "活,所以要张大你的双眼. "
 
-#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:7
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:5
 msgid "Jump for joy"
 msgstr "高兴地跳"
 
-#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:8
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:6
 msgid ""
 "Sometimes a Pingu needs to reach a platform that is far away, but not "
 "reachable by walking. That's when the Jumper comes in handy - it allows the "
@@ -1034,11 +1054,11 @@ msgstr ""
 "有时候一个Pingu需要到达一个遥远的平台，但不能用走路走到。这时候跳虫就会派上用"
 "场-他会让pingu做一个小跳线，使它能够到达平台。 "
 
-#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:7
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:5
 msgid "Miner's heaven"
 msgstr "矿工的天堂"
 
-#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:8
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:6
 msgid ""
 "Another action hits the street - another digging action, this time a "
 "diagonal one. It allows a Pingu to dig diagonally through ground, thus "
@@ -1047,11 +1067,11 @@ msgstr ""
 "另一个行动上台－另外一个挖掘行动，这次是45度角。它让Pingu以45度角挖掘地面，为"
 "跟随的 Pingus 创造一条路径。 这个行动叫做矿工。 "
 
-#: data/levels/tutorial/snow10-grumbel.pingus:7
+#: data/levels/tutorial/snow10-grumbel.pingus:5
 msgid "Panic Island (float/bash)"
 msgstr "恐惧之岛（飞行、破除）"
 
-#: data/levels/tutorial/snow10-grumbel.pingus:8
+#: data/levels/tutorial/snow10-grumbel.pingus:6
 msgid ""
 "While the previous levels have not required much quick action from you, this "
 "one gets a bit trickier. The Pingus are coming out of two entrances in "
@@ -1060,11 +1080,11 @@ msgstr ""
 "先前的等级中没有要求你快速的行动，不过这个等级变得比较狡猾。Pingus正在同时从"
 "两个地方出来，而且你的工作就是聪明地协调这二个小组。 "
 
-#: data/levels/tutorial/snow11-grumbel.pingus:7
+#: data/levels/tutorial/snow11-grumbel.pingus:5
 msgid "Jump'n Bump... and Bash..."
 msgstr "猛烈地跳...然后撞击"
 
-#: data/levels/tutorial/snow11-grumbel.pingus:8
+#: data/levels/tutorial/snow11-grumbel.pingus:6
 msgid ""
 "It's panic time again. The Pingus will not come out very fast, but since "
 "they turn around when they hit walls you will soon have some trouble "
@@ -1075,11 +1095,11 @@ msgstr ""
 "整他们上会有些麻烦。你应该可以救到5只，但如果全都失败的话，请使用暂停模式"
 "（'p')去得到概念吧。 "
 
-#: data/levels/tutorial/snow12-grumbel.pingus:7
+#: data/levels/tutorial/snow12-grumbel.pingus:5
 msgid "Two groups in parallel, coordinate wisely"
 msgstr "两队在同一个平面，聪明地同心协力"
 
-#: data/levels/tutorial/snow12-grumbel.pingus:8
+#: data/levels/tutorial/snow12-grumbel.pingus:6
 msgid ""
 "You have two groups to coordinate this time. No need to panic, since this "
 "level gives you enough time to think your actions through. No more tips this "
@@ -1088,11 +1108,11 @@ msgstr ""
 "你这次有两个小组要去协调。不用慌，从这个等级开始会给你足够的时间去思考你的穿"
 "越行动。这次没有更多的提示、但还是祝你好运！ "
 
-#: data/levels/tutorial/snow14-grumbel.pingus:7
+#: data/levels/tutorial/snow14-grumbel.pingus:5
 msgid "Block'a Rock"
 msgstr "岩石障碍"
 
-#: data/levels/tutorial/snow14-grumbel.pingus:8
+#: data/levels/tutorial/snow14-grumbel.pingus:6
 msgid ""
 "Once again it's time to combine the stuff you have learned in your previous "
 "levels. Blast your way free and make sure you also keep the rest of the "
@@ -1101,11 +1121,11 @@ msgstr ""
 "又到了再次结合你在之前的等级已学到的事情的时候了。尽情使用你的方法并确定其它"
 "休息的Pingus都在你的控制之下。那个阻塞行动将会有所帮助。 "
 
-#: data/levels/tutorial/snow15-grumbel.pingus:7
+#: data/levels/tutorial/snow15-grumbel.pingus:5
 msgid "Climb, Climber,... Boom!"
 msgstr "爬, 攀爬者,...Boom!"
 
-#: data/levels/tutorial/snow15-grumbel.pingus:8
+#: data/levels/tutorial/snow15-grumbel.pingus:6
 msgid ""
 "As you might have already figured out from previous levels, you often have "
 "to combine different actions to get the job done. Due to the lack of a "
@@ -1115,11 +1135,11 @@ msgstr ""
 "你可能已经从先前的等级中了解，你必须时常结合不同的行动去完成工作。由於在这个"
 "等级中少了挖掘者,而轰炸者需要替换，但它如何到达可以轰炸的地方？ "
 
-#: data/levels/tutorial/snow16-grumbel.pingus:7
+#: data/levels/tutorial/snow16-grumbel.pingus:5
 msgid "Bridging gets more complicated..."
 msgstr "桥梁变的更复杂..."
 
-#: data/levels/tutorial/snow16-grumbel.pingus:8
+#: data/levels/tutorial/snow16-grumbel.pingus:6
 msgid ""
 "Once again you have to combine actions carefully and wisely. If you don't "
 "you could end up in the hole just before the exit, so think about how to "
@@ -1128,11 +1148,11 @@ msgstr ""
 "你必须再次小心并聪明地结合行动。如果不这样做你就会在到达出口前在洞中结束，所"
 "以好好想该如何避免。 "
 
-#: data/levels/tutorial/snow17-grumbel.pingus:7
+#: data/levels/tutorial/snow17-grumbel.pingus:5
 msgid "If too high, your Pingu will die..."
 msgstr "如果太高，你的企鹅会死掉..."
 
-#: data/levels/tutorial/snow17-grumbel.pingus:8
+#: data/levels/tutorial/snow17-grumbel.pingus:6
 msgid ""
 "Teamwork is the way to the exit this time. You don't have enough Floaters to "
 "reach the exit, so just send a few and let them prepare the path for the "
@@ -1141,11 +1161,11 @@ msgstr ""
 "合作是这次找到出口的方法。你没有足够的飞行者可以到达出口，所以送一些过去而让"
 "他们为额外的企鹅准备路径。 "
 
-#: data/levels/tutorial/snow19-grumbel.pingus:7
+#: data/levels/tutorial/snow19-grumbel.pingus:5
 msgid "Learn to use the bridge"
 msgstr "学习怎么用桥"
 
-#: data/levels/tutorial/snow19-grumbel.pingus:8
+#: data/levels/tutorial/snow19-grumbel.pingus:6
 msgid ""
 "If no Jumper is at hand and a large hole needs to be passed, a bridge can be "
 "pretty helpful. It takes some time to build, but unlike the jumper action it "
@@ -1154,11 +1174,11 @@ msgstr ""
 "如果没有跳线者在手上并要通过这一个大洞的话，造一座桥也许会相当有帮助。它会花"
 "一些时间去建造，但是不像跳线者的行动，它让其它Pingus也可以到达另一端。 "
 
-#: data/levels/tutorial/snow20-grumbel.pingus:7
+#: data/levels/tutorial/snow20-grumbel.pingus:5
 msgid "Three solutions, it's up to you"
 msgstr "三个选择，自己决定"
 
-#: data/levels/tutorial/snow20-grumbel.pingus:8
+#: data/levels/tutorial/snow20-grumbel.pingus:6
 msgid ""
 "Now that you've learned all the actions, it's time for some more practice. "
 "This level presents you with at least three different ways to solve it. It's "
@@ -1167,11 +1187,11 @@ msgstr ""
 "现在你已学到所有的技能，是该多一些练习的时后了。这一个等级给你至少三种不同的"
 "方法去解决它。你自己决定你该挑选哪一个。 "
 
-#: data/levels/tutorial/snow21-grumbel.pingus:7
+#: data/levels/tutorial/snow21-grumbel.pingus:5
 msgid "Climb, Climber, climb... and build a bridge"
 msgstr "爬,爬,爬...然后建造一座桥"
 
-#: data/levels/tutorial/snow21-grumbel.pingus:8
+#: data/levels/tutorial/snow21-grumbel.pingus:6
 msgid ""
 "Once again you get access to a new action. The Climber action allows a Pingu "
 "to climb up straight walls, thus allowing him to reach stuff that might be "
@@ -1180,11 +1200,11 @@ msgstr ""
 "你再次进入到一个新的行动，攀爬者的行动允许Pingus爬上笔直的墙，而使他能够达到"
 "平常太高或用其它方式不能达到的东西。 "
 
-#: data/levels/tutorial/snow22-grumbel.pingus:7
+#: data/levels/tutorial/snow22-grumbel.pingus:5
 msgid "Entrance high, Exit low"
 msgstr "入口高，出口低"
 
-#: data/levels/tutorial/snow22-grumbel.pingus:8
+#: data/levels/tutorial/snow22-grumbel.pingus:6
 msgid ""
 "If you don't have enough floaters to bring all the Pingus down to the exit - "
 "you have to find other ways to guide them down. You should have learned all "
@@ -1195,11 +1215,11 @@ msgstr ""
 "他们引导下来。 你在先前的等级中应该已经学到这个等级需要的动作，所以这对你应该"
 "不是问题。 "
 
-#: data/levels/tutorial/snow7-grumbel.pingus:7
+#: data/levels/tutorial/snow7-grumbel.pingus:5
 msgid "One must prepare, the rest must follow"
 msgstr "一个必须准备，额外必须跟随"
 
-#: data/levels/tutorial/snow7-grumbel.pingus:8
+#: data/levels/tutorial/snow7-grumbel.pingus:6
 msgid ""
 "Sometimes there are situations where you don't have a Blocker at hand to "
 "coordinate your Pingus. You'll have to find other ways to keep them under "
@@ -1208,12 +1228,12 @@ msgstr ""
 "有时有些情况是你手上没有阻挡物可以协调你的Pingus。你必须再找出一个方法在可以"
 "控制的情况下，让一个Pingu准备可以让大家达到出口的路径。 "
 
-#: data/levels/tutorial/snow8-grumbel.pingus:7
+#: data/levels/tutorial/snow8-grumbel.pingus:5
 msgid "Dig and float, but just don't fall and smash"
 msgstr "挖掘和飘浮，但就是不能落下垮掉"
 
 # 7126: Close, but not yet completely correct.
-#: data/levels/tutorial/snow8-grumbel.pingus:8
+#: data/levels/tutorial/snow8-grumbel.pingus:6
 msgid ""
 "Unlike the first two levels, you have two actions available in this level. "
 "Your job is again simple: select an action at the panel on the left and "
@@ -1223,11 +1243,11 @@ msgstr ""
 "和一开始的二个等级不同，你在这一个等级中可学会二个动作。 你的工作很简单： 在"
 "左边上的仪表板选择一个行动并让Pingus 他们能够到达出口。 确定他们不要死。 "
 
-#: data/levels/tutorial/snow9-grumbel.pingus:7
+#: data/levels/tutorial/snow9-grumbel.pingus:5
 msgid "Dig, bash and other problems"
 msgstr "挖掘,冲击和其它的问题"
 
-#: data/levels/tutorial/snow9-grumbel.pingus:8
+#: data/levels/tutorial/snow9-grumbel.pingus:6
 msgid ""
 "The more levels you master, the more difficult they will get, but don't "
 "panic, as this one is still pretty easy. Just use the stuff that you've "
@@ -1239,11 +1259,11 @@ msgstr ""
 "用你在先前的等级中学到的技能，应该没有太大的问题。如果你认为你已经到达一种不"
 "能解决等极的情况，请点两次右下的 armageddon 钮。 "
 
-#: data/levels/tutorial/solid-tutorial-grumbel.pingus:7
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus:5
 msgid "Solid ground can block the path"
 msgstr "实心的地面可以阻挡通道"
 
-#: data/levels/tutorial/solid-tutorial-grumbel.pingus:8
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus:6
 msgid ""
 "As you have learned in earlier levels your Pingus can dig through basically "
 "any terrain, but there is one material which they can't penetrate: steel. "
@@ -1390,11 +1410,19 @@ msgstr ""
 "但是你的 Pingus 已经快自由了，它们也相信你的能力会让它们再次自由。你将会让它"
 "们从坏人手中再次自由……至少今年。"
 
-#: data/levels/desert/desert1.pingus:7
+#: data/levels/desert/desert1-janne.pingus:5 data/levelsets/desert.levelset:3
+msgid "Desert"
+msgstr ""
+
+#: data/levels/desert/desert1-janne.pingus:6
+msgid "Find your way through the obstacle"
+msgstr ""
+
+#: data/levels/desert/desert1.pingus:5
 msgid "Entering the pyramid"
 msgstr ""
 
-#: data/levels/desert/desert1.pingus:8
+#: data/levels/desert/desert1.pingus:6
 msgid ""
 "After their long and dangerous journey through the desert they finally reach "
 "the large pyramid..."
@@ -1411,26 +1439,23 @@ msgid ""
 "much to high to survive the landing. Can you help them?"
 msgstr ""
 
-#: data/levels/desert/desert3.pingus:7
+#: data/levels/desert/desert3-jings.pingus:5
+msgid "Grand Hall"
+msgstr ""
+
+#: data/levels/desert/desert3-jings.pingus:6
+msgid "The pingus have found themselves in the grand hall."
+msgstr ""
+
+#: data/levels/desert/desert3.pingus:5
 msgid "Pass the pedestal"
 msgstr ""
 
-#: data/levels/desert/desert3.pingus:8
+#: data/levels/desert/desert3.pingus:6
 msgid ""
 "After the Pingus successfully passed the large window room, they are "
 "entering another great hall. A large pedestal is blocking the way to the "
 "entrance."
-msgstr ""
-
-#: data/levels/desert/desert3-tflavel.pingus:7
-msgid "Sandstorm"
-msgstr ""
-
-#: data/levels/desert/desert3-tflavel.pingus:8
-msgid ""
-"Deep inside the pyramid the pingus are surprised to find their way blocked "
-"by a large sand drift - pondering the absence of gravity they continue "
-"relentlessly..."
 msgstr ""
 
 #: data/levels/desert/desert4.pingus:5
@@ -1444,100 +1469,123 @@ msgid ""
 "first?"
 msgstr ""
 
-#: data/levels/desert/desert6-grumbel.pingus:7
+#: data/levels/desert/desert5.pingus:5
+msgid "PLE Level"
+msgstr ""
+
+#: data/levels/desert/desert5.pingus:6
+msgid "This level has no name "
+msgstr ""
+
+#: data/levels/desert/desert5-tflavel.pingus:5
+msgid "Claustrophobia"
+msgstr ""
+
+#: data/levels/desert/desert5-tflavel.pingus:6
+msgid ""
+"Hidden deep below the pyramid the pingus come across a small underground "
+"room, but unfortunatley a large tree root blocks their path..."
+msgstr ""
+
+#: data/levels/desert/desert6-grumbel.pingus:5
 msgid "A bit to the right a bit to left"
 msgstr ""
 
-#: data/levels/desert/desert6-grumbel.pingus:8
+#: data/levels/desert/desert6-grumbel.pingus:6
 msgid "Only the most audacious Pingus will be allowed to continue."
 msgstr ""
 
-#: data/levels/desert/desert7-grumbel.pingus:7
+#: data/levels/desert/desert7-grumbel.pingus:5
 msgid "25 Pingus free and 25 in the box"
 msgstr ""
 
-#: data/levels/desert/desert7-grumbel.pingus:8
+#: data/levels/desert/desert7-grumbel.pingus:6
 msgid ""
 "Okay for the Bridger but what can I do with Digger? You should be save at "
 "least one Pingus trapped in the box above the exit."
 msgstr ""
 
-#: data/levels/desert/desert8-grumbel.pingus:7
+#: data/levels/desert/desert8-grumbel.pingus:5
 msgid "Tunnel Time"
 msgstr ""
 
-#: data/levels/desert/desert8-grumbel.pingus:8
+#: data/levels/desert/desert8-grumbel.pingus:6
 msgid ""
 "Dig a tunnel and you might make it to the exit. Digger and miners and stuff "
 "have to work together."
 msgstr ""
 
-#: data/levels/desert/desertwaste1-grumbel.pingus:7
+#: data/levels/desert/desert-crawl-timpany.pingus:5
+msgid "Crawl space"
+msgstr ""
+
+#: data/levels/desert/desertwaste1-grumbel.pingus:5
 msgid "The Roof"
 msgstr ""
 
-#: data/levels/desert/desertwaste1-grumbel.pingus:8
+#: data/levels/desert/desertwaste1-grumbel.pingus:6
 msgid ""
 "Sometimes the roofs are not good for refuge, sometimes it should be "
 "demolished!"
 msgstr ""
 
-#: data/levels/mysteryIsland/cave1-marcotte.pingus:5
+#: data/levels/desert/indiana-yingwan.pingus:5
+msgid "Pingus Jones and (not really ;) the Last Exit"
+msgstr ""
+
+#: data/levels/desert/indiana-yingwan.pingus:6
+msgid ""
+"Dr. Jones' notebook: (1) the breath of God: only the penitent pingus will "
+"pass; (2) the word of God... in reverse; (3) the path of God: leap from the "
+"head of something like a cat."
+msgstr ""
+
+#: data/levels/mysteryisland/cave1-marcotte.pingus:5
 msgid "Near can mean far"
 msgstr ""
 
-#: data/levels/mysteryIsland/cave1-marcotte.pingus:6
+#: data/levels/mysteryisland/cave1-marcotte.pingus:6
 msgid ""
 "What do you do when you're going in the wrong direction ? Simple : walk into "
 "a wall. But it is easier said than done..."
 msgstr ""
 
-#: data/levels/mysteryIsland/cave level lac.pingus:7
+#: data/levels/mysteryisland/cave-lac.pingus:7
 msgid "Trapped Underground"
 msgstr ""
 
-#: data/levels/mysteryIsland/cave level lac.pingus:8
+#: data/levels/mysteryisland/cave-lac.pingus:8
 msgid ""
 "The penguins escaped the mad scientist, but now they were trapped deep "
 "underground. They had no food or water, so they had to move fast."
 msgstr ""
 
-#: data/levels/mysteryIsland/Copy of rainy1 lac.pingus:7
-msgid "The Final (and suprisingly easy) Challenge"
-msgstr ""
-
-#: data/levels/mysteryIsland/Copy of rainy1 lac.pingus:8
-msgid ""
-"The penguins had reached the end of the island. In the water was a long "
-"tree, perfect for the penguin's needs. Their journey was almost over."
-msgstr ""
-
-#: data/levels/mysteryIsland/emperiment lac.pingus:7
+#: data/levels/mysteryisland/emperiment-lac.pingus:5
 msgid "Experimentation"
 msgstr ""
 
-#: data/levels/mysteryIsland/emperiment lac.pingus:8
+#: data/levels/mysteryisland/emperiment-lac.pingus:6
 msgid ""
 "A mad scientist has captured the penguins and is experimenting on them. How "
 "can the penguins escape the guillotine?"
 msgstr ""
 
-#: data/levels/mysteryIsland/hall of illusion lac.pingus:7
+#: data/levels/mysteryisland/hall-of-illusion-lac.pingus:5
 msgid "Hall of Illusion"
 msgstr ""
 
-#: data/levels/mysteryIsland/hall of illusion lac.pingus:8
+#: data/levels/mysteryisland/hall-of-illusion-lac.pingus:6
 msgid ""
 "The penguins stopped and stood in indecision. What was real and what was "
 "not? Flame lanced from above and a guillotine glittered in the distance. "
 "almost all penguins must survive."
 msgstr ""
 
-#: data/levels/mysteryIsland/lavapit3.pingus:7
+#: data/levels/mysteryisland/lavapit3.pingus:7
 msgid "The Lava Pit"
 msgstr ""
 
-#: data/levels/mysteryIsland/lavapit3.pingus:8
+#: data/levels/mysteryisland/lavapit3.pingus:8
 msgid ""
 "The penguins had defeated the mad scientist, and were walking away from his "
 "destroyed laboratory when a huge hole opened under their feet. The penguins "
@@ -1545,41 +1593,51 @@ msgid ""
 "Luckily, it seemed someone had left some helpful signs."
 msgstr ""
 
-#: data/levels/mysteryIsland/madscientist1 lac.pingus:7
+#: data/levels/mysteryisland/madscientist1-lac.pingus:7
 msgid "At least the experiments are over..."
 msgstr ""
 
-#: data/levels/mysteryIsland/madscientist1 lac.pingus:8
+#: data/levels/mysteryisland/madscientist1-lac.pingus:8
 msgid ""
 "The good news was that the mad scientist had tired of his experiments, the "
 "bad news was that now he was dumping them down a pit. A single floatation "
 "device was all the penguins had. Save as many as possible."
 msgstr ""
 
-#: data/levels/mysteryIsland/multi 1 lac.pingus:7
+#: data/levels/mysteryisland/multi1-lac.pingus:7
 msgid "Ghosting"
 msgstr ""
 
-#: data/levels/mysteryIsland/multi 1 lac.pingus:8
+#: data/levels/mysteryisland/multi1-lac.pingus:8
 msgid ""
 "The penguins came to a long pass. Acid bubbled underneath and it seemed a "
 "climber or two were needed.  Hint: slider can be used to stop the miner "
 "ability."
 msgstr ""
 
-#: data/levels/mysteryIsland/revenge1 lac.pingus:7
-#: data/levels/mysteryIsland/revenge2
+#: data/levels/mysteryisland/rainy1-lac.pingus:7
+msgid "The Final (and suprisingly easy) Challenge"
+msgstr ""
+
+#: data/levels/mysteryisland/rainy1-lac.pingus:8
+msgid ""
+"The penguins had reached the end of the island. In the water was a long "
+"tree, perfect for the penguin's needs. Their journey was almost over."
+msgstr ""
+
+#: data/levels/mysteryisland/revenge1-lac.pingus:7
+#: data/levels/mysteryisland/revenge2-lac.pingus:7
 msgid "Revenge is sweet"
 msgstr ""
 
-#: data/levels/mysteryIsland/revenge1 lac.pingus:8
+#: data/levels/mysteryisland/revenge1-lac.pingus:8
 msgid ""
 "The penguins had escaped the mad scientist but now they wanted revenge. They "
 "intended to destroy the support structures , sending the evil laboratory "
 "crashing down."
 msgstr ""
 
-#: data/levels/mysteryIsland/revenge2 lac.pingus:8
+#: data/levels/mysteryisland/revenge2-lac.pingus:8
 msgid ""
 "The penguins had escaped the mad scientist but now they wanted revenge. They "
 "intended to destroy the support structures , sending the evil laboratory "
@@ -1587,22 +1645,22 @@ msgid ""
 "detect and recapture them if they weren't fast enough."
 msgstr ""
 
-#: data/levels/mysteryIsland/snow2 lac.pingus:7
+#: data/levels/mysteryisland/snow2-lac.pingus:7
 msgid "Winter Wonderland"
 msgstr ""
 
-#: data/levels/mysteryIsland/snow2 lac.pingus:8
+#: data/levels/mysteryisland/snow2-lac.pingus:8
 msgid ""
 "After getting past the lava pit, the penguins walked and walked until they "
 "reached a snowed in exit. That would be relatively easy to tunnel through "
 "but how would it be possible to tunnel through solid metal?"
 msgstr ""
 
-#: data/levels/mysteryIsland/Theend lac.pingus:7
+#: data/levels/mysteryisland/theend-lac.pingus:7
 msgid "The Journey Goes On"
 msgstr ""
 
-#: data/levels/mysteryIsland/Theend lac.pingus:8
+#: data/levels/mysteryisland/theend-lac.pingus:8
 msgid ""
 "And so the penguins continued on their journey, drawing ever closer to the "
 "North Pole. They had escaped the guillotine, defeated the mad scientist and "
@@ -1611,21 +1669,21 @@ msgid ""
 "reaching their goal."
 msgstr ""
 
-#: data/levels/mysteryIsland/use the slide lac.pingus:7
+#: data/levels/mysteryisland/use-the-slide-lac.pingus:7
 msgid "Think fast (literally)"
 msgstr ""
 
-#: data/levels/mysteryIsland/use the slide lac.pingus:8
+#: data/levels/mysteryisland/use-the-slide-lac.pingus:8
 msgid ""
 "This would be simple but for one thing, there are no blockers. All the "
 "penguins must survive."
 msgstr ""
 
-#: data/levels/mysteryIsland/volcano1-grumbel.pingus:7
+#: data/levels/mysteryisland/volcano1-grumbel.pingus:5
 msgid "Shipwrecked"
 msgstr ""
 
-#: data/levels/mysteryIsland/volcano1-grumbel.pingus:8
+#: data/levels/mysteryisland/volcano1-grumbel.pingus:6
 msgid ""
 "The penguins were sailing along happily on their makeshift boat until "
 "suddenly, an island appeared. The penguins were drawn towards it and "
@@ -1731,51 +1789,51 @@ msgstr ""
 msgid "What good is a pick in space? Certainly not to go to the stars."
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign10.pingus:7
+#: data/levels/factorycampaign/factory_campaign10.pingus:5
 #, fuzzy
 msgid "Jump"
 msgstr "弹跳"
 
-#: data/levels/factorycampaign/factory_campaign10.pingus:8
+#: data/levels/factorycampaign/factory_campaign10.pingus:6
 msgid ""
 "All Pingus need is to jump.... Hint: While pausing (press P key) you still "
 "can control Pingus. "
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign11.pingus:7
+#: data/levels/factorycampaign/factory_campaign11.pingus:5
 #, fuzzy
 msgid "Factory"
 msgstr "故事"
 
-#: data/levels/factorycampaign/factory_campaign11.pingus:8
+#: data/levels/factorycampaign/factory_campaign11.pingus:6
 msgid ""
 "Finally you reached the factory. Watch out as there are many dangers. Use "
 "bombers to destroy the basement of the factory. Good luck!"
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign12.pingus:7
+#: data/levels/factorycampaign/factory_campaign12.pingus:5
 msgid "Going back home"
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign12.pingus:8
+#: data/levels/factorycampaign/factory_campaign12.pingus:6
 msgid "Your mission is over. Pingus can go back home, but be careful!"
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign13.pingus:7
+#: data/levels/factorycampaign/factory_campaign13.pingus:5
 msgid "Bonus track"
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign13.pingus:8
+#: data/levels/factorycampaign/factory_campaign13.pingus:6
 msgid ""
 "Pingus are at home, but after the climate change living on the South Pole "
 "became more dangerous. There is one more mission for you."
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign1.pingus:7
+#: data/levels/factorycampaign/factory_campaign1.pingus:5
 msgid "Falling down"
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign1.pingus:8
+#: data/levels/factorycampaign/factory_campaign1.pingus:6
 msgid ""
 "Pingus intelligence reported that a huge factories located in the "
 "subtropical zone might be a reason of a climate change. They decided to go "
@@ -1785,80 +1843,80 @@ msgid ""
 "for the cliff."
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign2.pingus:7
+#: data/levels/factorycampaign/factory_campaign2.pingus:5
 msgid "Destination North"
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign2.pingus:8
+#: data/levels/factorycampaign/factory_campaign2.pingus:6
 msgid ""
 "For now, Pingus are leaving South Pole and moving North. You have to help "
 "them!"
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign3.pingus:7
+#: data/levels/factorycampaign/factory_campaign3.pingus:5
 msgid "The cave"
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign3.pingus:8
+#: data/levels/factorycampaign/factory_campaign3.pingus:6
 msgid ""
 "Pingus on their way came across a huge cave. You have to lead them through. "
 "Remember that sometimes there is more than one way out. Hint: To 'unlock' "
 "blockers you can use bashers and jumpers."
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign4.pingus:7
+#: data/levels/factorycampaign/factory_campaign4.pingus:5
 msgid "Difficulties on the way"
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign4.pingus:8
+#: data/levels/factorycampaign/factory_campaign4.pingus:6
 msgid ""
 "It looks you have encountered serious difficulties. But don't panic, Pingus "
 "are waiting for your orders, they count on you so don't fail! Hint: Miners, "
 "diggers and bashers are very important here!"
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign5.pingus:7
+#: data/levels/factorycampaign/factory_campaign5.pingus:5
 msgid "Four ways out"
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign5.pingus:8
+#: data/levels/factorycampaign/factory_campaign5.pingus:6
 msgid ""
 "It's getting warmer but Pingus are breavely moving North. This time it will "
 "be much easier. There are at least four ways out. Could you find them?"
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign6.pingus:7
+#: data/levels/factorycampaign/factory_campaign6.pingus:5
 msgid "Egypt - So easy"
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign6.pingus:8
+#: data/levels/factorycampaign/factory_campaign6.pingus:6
 msgid "Pingus reached Egypt. Looks easy but is it really so easy. Try out. "
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign7.pingus:7
+#: data/levels/factorycampaign/factory_campaign7.pingus:5
 msgid "Egypt - Oasis"
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign7.pingus:8
+#: data/levels/factorycampaign/factory_campaign7.pingus:6
 msgid ""
 "Last time it was easy. Now it will be a little bit harder. Pingus are "
 "entering oasis. Watch out for the water. "
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign8.pingus:7
+#: data/levels/factorycampaign/factory_campaign8.pingus:5
 msgid "Egypt - The Maze"
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign8.pingus:8
+#: data/levels/factorycampaign/factory_campaign8.pingus:6
 msgid ""
 "You came across a maze. Can you find the way out? Think twice before digging."
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign9.pingus:7
+#: data/levels/factorycampaign/factory_campaign9.pingus:5
 msgid "Egypt - Piramids"
 msgstr ""
 
-#: data/levels/factorycampaign/factory_campaign9.pingus:8
+#: data/levels/factorycampaign/factory_campaign9.pingus:6
 msgid ""
 "The maze led you to the big piramid. Now you have 4 minutes to escape. Hurry "
 "up!"
@@ -2008,10 +2066,6 @@ msgstr ""
 msgid "Escape from alien"
 msgstr ""
 
-#: data/levelsets/desert.levelset:3
-msgid "Desert"
-msgstr ""
-
 #: data/levelsets/desert.levelset:4
 msgid "Getting hot outside..."
 msgstr ""
@@ -2032,10 +2086,16 @@ msgstr "2007年万圣节"
 msgid "Trapped at All Hallows Eve"
 msgstr "万圣节前夕的困惑"
 
-#: data/levelsets/mysteryIsland.levelset:3
+#: data/levelsets/mysteryisland.levelset:3
 msgid "Island of Mystery"
 msgstr ""
 
-#: data/levelsets/mysteryIsland.levelset:4
+#: data/levelsets/mysteryisland.levelset:4
 msgid "Marooned on an Uncharted Isle [by Lachlan McCubbin]"
 msgstr ""
+
+#~ msgid "Ok"
+#~ msgstr "确定"
+
+#~ msgid "Test a font"
+#~ msgstr "测试字体"
