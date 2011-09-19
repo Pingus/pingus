@@ -163,6 +163,18 @@ WorldObjRenderer::process(const FileReader& reader)
     reader.read_vector("position", pos);
     render_surface(ResDescriptor("traps/spike_editor"), pos);
   }
+  else if (reader.get_name() == "switchdoor-switch")
+  {
+    Vector3f pos;
+    reader.read_vector("position", pos);
+    render_surface(ResDescriptor("worldobjs/switchdoor_switch"), pos);
+  }
+  else if (reader.get_name() == "switchdoor-door")
+  {
+    Vector3f pos;
+    reader.read_vector("position", pos);
+    render_surface(ResDescriptor("worldobjs/switchdoor_box"), pos);
+  }
   else if (reader.get_name() == "group")
   {
     FileReader objects = reader.read_section("objects");
