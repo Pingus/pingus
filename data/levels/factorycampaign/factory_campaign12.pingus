@@ -1115,13 +1115,12 @@
         (image "groundpieces/transparent/misc/moos3")
         (modifier "ROT0"))
       (position 979 865 5))
-    (hotspot 
-      (surface 
-        (image "entrances/entrance")
-        (modifier "ROT0"))
-      (position 276 376 100)
-      (speed 0)
-      (parallax 0))
+    (entrance 
+      (type "generic")
+      (position 306 373 50)
+      (owner-id 0)
+      (direction "right")
+      (release-rate 150))
     (liquid 
       (surface 
         (image "liquids/water2")
@@ -1129,11 +1128,12 @@
       (position -50 1140 100)
       (speed 0)
       (repeat 39))
-    (entrance 
-      (type "generic")
-      (position 306 399 110)
-      (owner-id 0)
-      (direction "right")
-      (release-rate 150))))
+    (hotspot 
+      (surface 
+        (image "entrances/industrial_top")
+        (modifier "ROT0"))
+      (position 285 320 100)
+      (speed 0)
+      (parallax 0))))
 
 ;; EOF ;;

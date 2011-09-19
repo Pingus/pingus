@@ -8,7 +8,7 @@
     (number-of-pingus 30)
     (number-to-save 27)
     (time -1)
-    (music "")
+    (music "pingus-4.it")
     (actions 
       (basher 7)
       (blocker 7)
@@ -55,7 +55,7 @@
       (position 1224 650 -1))
     (entrance 
       (type "generic")
-      (position 798 956 -1)
+      (position 810 956 -1)
       (owner-id 0)
       (direction "left")
       (release-rate 150))
@@ -743,6 +743,20 @@
         (image "groundpieces/ground/snow/piece2")
         (modifier "ROT0"))
       (position 409 906 0))
+    (prefab 
+      (name "prefabs/snow_entrance")
+      (position 979 369 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/snow_entrance")
+      (position 414 368 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
     (groundpiece 
       (type "ground")
       (surface 
@@ -815,32 +829,6 @@
         (modifier "ROT0"))
       (position -2 1139 100)
       (speed 0)
-      (repeat 35))
-    (hotspot 
-      (surface 
-        (image "entrances/snow_back")
-        (modifier "ROT0"))
-      (position 352 308 100)
-      (speed 0)
-      (parallax 0))
-    (hotspot 
-      (surface 
-        (image "entrances/snow_back")
-        (modifier "ROT0"))
-      (position 965 332 100)
-      (speed 0)
-      (parallax 0))
-    (entrance 
-      (type "generic")
-      (position 1013 403 110)
-      (owner-id 0)
-      (direction "left")
-      (release-rate 150))
-    (entrance 
-      (type "generic")
-      (position 397 381 110)
-      (owner-id 0)
-      (direction "right")
-      (release-rate 150))))
+      (repeat 35))))
 
 ;; EOF ;;
