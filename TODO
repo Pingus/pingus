@@ -32,26 +32,9 @@ Stuff to do at all times:
 Levels
 ======
 
-Processing: data/levels/xskat/ok/hellmouth13-grumbel.pingus 73/469
-[ERROR] WorldObjFactory::create(): invalid id: 'infobox'
-[ERROR] WorldObjFactory::create(): invalid id: 'infobox'
-[ERROR] WorldObjFactory::create(): invalid id: 'infobox'
---
-Processing: data/levels/wip/stone2.pingus 263/469
-[ERROR] WorldObjFactory::create(): invalid id: 'bumper'
-[ERROR] WorldObjFactory::create(): invalid id: 'bumper'
---
-Processing: data/levels/wip/desert-phil2.pingus 270/469
-[ERROR] WorldObjFactory::create(): invalid id: 'bumper'
---
-Processing: data/levels/test/test6.pingus 283/469
-
-[ERROR] WorldObjFactory::create(): invalid id: 'bumper'
-
 Broken by level editor bug (teleporter are at the wrong position, id removed):
 ==============================================================================
 data/levels/mysteryisland/hall-of-illusion-lac.pingus
-data/levels/mysteryisland/emperiment-lac.pingus
 
 Editor
 ======
@@ -63,8 +46,6 @@ Editor
 * z-pos is not taken into account when raise/lower objects, need to
   sort object list by z-pos
 
-* "new level" leaves the scrolling limits untouched, makes you stuck
-
 * editor must distingush between sprites and surfaces, as align will
   be off when using a Sprite in a Surface context
 
@@ -72,12 +53,6 @@ Editor
   return things installed in ~/.pingus/
 
 * editor/InputBox is not multi-line capable
-
-* no up button in the file dialog
-
-* groups can't be flipped
-
-* selection's can't be flipped, only the individual objects get flipped
 
 * display help text when pressing F1
 
@@ -93,8 +68,6 @@ Roadmap for Pingus 0.8.0:
 [ERROR] Resource::load_surface(): exits/sortie_anim: can't load animated sprite as surface
 [ERROR] Resource::load_surface(): exits/space: can't load animated sprite as surface
 [ERROR] Resource::load_surface(): textures/anim_fire: can't load animated sprite as surface
-
-* add Gimp scripts for packing/unpacking animations
 
 * display keyboard shortcuts in the GUI (a little tricky with remapable keys)
 
