@@ -157,6 +157,12 @@ WorldObjRenderer::process(const FileReader& reader)
     reader.read_vector("position", pos);
     render_sprite(ResDescriptor("entrances/generic"), pos);
   }
+  else if (reader.get_name() == "spike")
+  {
+    Vector3f pos;
+    reader.read_vector("position", pos);
+    render_surface(ResDescriptor("traps/spike_editor"), pos);
+  }
   else if (reader.get_name() == "group")
   {
     FileReader objects = reader.read_section("objects");

@@ -363,6 +363,7 @@ ObjectSelector::create_trap()
   set->add(new FakeExit);
   set->add(new Hammer);
   set->add(new Smasher);
+  set->add(new Spike);
   return set;
 }
 

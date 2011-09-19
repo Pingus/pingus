@@ -194,6 +194,20 @@ struct Guillotine : public ObjectSelectorList::Object
   }
 };
 
+struct Spike : public ObjectSelectorList::Object
+{
+  Spike() :
+    Object(Sprite("traps/spike_editor"),
+           Resource::load_thumb_sprite("traps/spike_editor"))
+  {}
+  
+  LevelObjPtr create(const Vector2i& pos) {
+    LevelObjPtr obj(new GenericLevelObj("spike"));
+    obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
+    return obj;     
+  }
+};
+
 struct FakeExit : public ObjectSelectorList::Object
 {
   FakeExit() :
