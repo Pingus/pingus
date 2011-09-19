@@ -16,6 +16,7 @@
 
 #include "engine/display/screenshot.hpp"
 
+#include <memory>
 #include <assert.h>
 #include <png.h>
 
@@ -43,14 +44,14 @@ Screenshot::make_screenshot()
 void
 Screenshot::save(SDL_Surface* surface, const std::string& filename)
 {
-  std::unique<uint8_t[]> buffer(new uint8_t[surface->w * surface->h * 3]);
+  std::unique_ptr<uint8_t[]> buffer(new uint8_t[surface->w * surface->h * 3]);
 
 #ifdef HAVE_OPENGL
   if(surface->flags & SDL_OPENGL)
   {
     glPixelStorei(GL_PACK_ALIGNMENT, 1);
-    glReadPixels(0, 0, surface->w, surface->h, GL_RGB, GL_UNSIGNED_BYTE, buffer);
-    save_png(filename, buffer, surface->w, surface->h, true);
+    glReadPixels(0, 0, surface->w, surface->h, GL_RGB, GL_UNSIGNED_BYTE, buffer.get());
+    save_png(filename, buffer.get(), surface->w, surface->h, true);
   }
   else
 #endif
@@ -68,7 +69,7 @@ Screenshot::save(SDL_Surface* surface, const std::string& filename)
             int i = (y * surface->w + x);
             SDL_GetRGB(*(reinterpret_cast<uint16_t*>(pixels + y * surface->pitch + x*2)),
                        surface->format, 
-                       buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
+                       buffer.get() + i*3 + 0, buffer.get() + i*3 + 1, buffer.get() + i*3 + 2);
           }
         break;
       }
@@ -82,7 +83,7 @@ Screenshot::save(SDL_Surface* surface, const std::string& filename)
             int i = (y * surface->w + x);
             SDL_GetRGB(*(reinterpret_cast<uint32_t*>(pixels + y * surface->pitch + x*3)),
                        surface->format, 
-                       buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
+                       buffer.get() + i*3 + 0, buffer.get() + i*3 + 1, buffer.get() + i*3 + 2);
           }
         break;
       }
@@ -96,7 +97,7 @@ Screenshot::save(SDL_Surface* surface, const std::string& filename)
             int i = (y * surface->w + x);
             SDL_GetRGB(*(reinterpret_cast<uint32_t*>(pixels + y * surface->pitch + x*4)),
                        surface->format, 
-                       buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
+                       buffer.get() + i*3 + 0, buffer.get() + i*3 + 1, buffer.get() + i*3 + 2);
           }
         break;
       }
@@ -106,7 +107,7 @@ Screenshot::save(SDL_Surface* surface, const std::string& filename)
         break;
     }
 
-    save_png(filename, buffer, surface->w, surface->h);
+    save_png(filename, buffer.get(), surface->w, surface->h);
 
     SDL_UnlockSurface(surface);
   }
