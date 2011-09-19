@@ -1457,9 +1457,9 @@
       (repeat 33))
     (hotspot 
       (surface 
-        (image "entrances/entrance")
+        (image "entrances/industrial_top")
         (modifier "ROT0"))
-      (position 159 430 100)
+      (position 171 449 100)
       (speed 0)
       (parallax 0))
     (entrance 
