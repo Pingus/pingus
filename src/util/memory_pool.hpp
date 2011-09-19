@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_UTIL_MEMORY_POOL_HPP
 
 #include <assert.h>
+#include <stddef.h>
 #include <vector>
 
 /** MemoryPool allows the allocation of small objects on a previous
