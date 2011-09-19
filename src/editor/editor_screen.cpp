@@ -301,6 +301,7 @@ EditorScreen::level_new()
   plf->clear();
   level_properties->set_level(plf.get());
   action_properties->set_level(plf.get());
+  viewport->refresh();
 }
 
 void 
