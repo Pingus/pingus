@@ -75,6 +75,12 @@
         (modifier "ROT0"))
       (position 511 739 -1))
     (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/pillar1")
+        (modifier "ROT0"))
+      (position 755 595 0))
+    (groundpiece 
       (type "bridge")
       (surface 
         (image "groundpieces/bridge/misc/bridge_left")
@@ -169,7 +175,7 @@
       (surface 
         (image "groundpieces/ground/desert/sluggydu")
         (modifier "ROT0"))
-      (position 725 739 0))
+      (position 653 743 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -199,37 +205,31 @@
       (surface 
         (image "groundpieces/ground/desert/pillar1")
         (modifier "ROT0"))
-      (position 945 369 0))
+      (position 1017 294 0))
     (exit 
       (surface 
         (image "exits/desert_tut")
         (modifier "ROT0"))
-      (position 1093 530 0)
+      (position 1129 455 0)
       (owner-id 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/desert/smallbrickpiece")
+        (image "groundpieces/ground/desert/middleprickpiece")
         (modifier "ROT0"))
-      (position 1098 300 0))
+      (position 902 605 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/middleprickpiece")
         (modifier "ROT0"))
-      (position 870 605 0))
+      (position 1051 605 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/middleprickpiece")
         (modifier "ROT0"))
-      (position 1019 605 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/middleprickpiece")
-        (modifier "ROT0"))
-      (position 1169 605 0))
+      (position 1201 605 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -241,19 +241,7 @@
       (surface 
         (image "groundpieces/ground/desert/pillar1")
         (modifier "ROT0"))
-      (position 755 595 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/pillar1")
-        (modifier "ROT0"))
       (position 611 372 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/blobdune")
-        (modifier "ROT0"))
-      (position 1541 744 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -265,7 +253,7 @@
       (surface 
         (image "groundpieces/ground/desert/pillar1")
         (modifier "ROT0"))
-      (position 1420 593 0))
+      (position 1570 593 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -491,21 +479,9 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/desert/smallbrickpiece")
-        (modifier "ROT0"))
-      (position 1022 300 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
         (image "groundpieces/ground/desert/blobdune")
         (modifier "ROT0"))
       (position 1674 743 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/blobdune")
-        (modifier "ROT0"))
-      (position 1469 740 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -530,12 +506,6 @@
         (image "groundpieces/solid/desert/middlebrickpiece")
         (modifier "ROT0"))
       (position 1581 546 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/desert/middlebrickpiece")
-        (modifier "ROT0"))
-      (position 1431 546 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -571,7 +541,7 @@
       (surface 
         (image "groundpieces/ground/desert/middleprickpiece")
         (modifier "ROT0"))
-      (position 1245 530 0))
+      (position 1277 530 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -590,6 +560,12 @@
         (image "groundpieces/ground/desert/bigprickpiece")
         (modifier "ROT0"))
       (position 1876 904 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/blobdune")
+        (modifier "ROT0"))
+      (position 1536 741 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -614,12 +590,6 @@
         (image "groundpieces/bridge/misc/bridge_right")
         (modifier "ROT0"))
       (position 1955 879 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/pillar1")
-        (modifier "ROT0"))
-      (position 1560 385 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -649,7 +619,25 @@
       (surface 
         (image "groundpieces/ground/desert/middleprickpiece")
         (modifier "ROT0"))
-      (position 1095 530 1))
+      (position 1313 455 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/middlebrickpiece")
+        (modifier "ROT0"))
+      (position 1581 471 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/pillar1")
+        (modifier "ROT0"))
+      (position 1201 294 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/middleprickpiece")
+        (modifier "ROT0"))
+      (position 1127 530 1))
     (groundpiece 
       (type "solid")
       (surface 
@@ -677,27 +665,21 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/desert/blobdune")
+        (image "groundpieces/ground/desert/middleprickpiece")
         (modifier "ROT0"))
-      (position 1389 742 1))
+      (position 977 530 1))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/middleprickpiece")
         (modifier "ROT0"))
-      (position 945 530 1))
+      (position 1127 680 1))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/middleprickpiece")
         (modifier "ROT0"))
-      (position 1095 680 1))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/middleprickpiece")
-        (modifier "ROT0"))
-      (position 945 680 1))
+      (position 977 680 1))
     (groundpiece 
       (type "ground")
       (surface 
@@ -710,6 +692,36 @@
         (image "groundpieces/ground/desert/column")
         (modifier "ROT0"))
       (position 1972 747 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/middleprickpiece")
+        (modifier "ROT0"))
+      (position 1088 130 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/middleprickpiece")
+        (modifier "ROT0"))
+      (position 938 130 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/middleprickpiece")
+        (modifier "ROT0"))
+      (position 1163 455 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/middleprickpiece")
+        (modifier "ROT0"))
+      (position 1013 455 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/middleprickpiece")
+        (modifier "ROT0"))
+      (position 863 455 1))
     (groundpiece 
       (type "ground")
       (surface 
@@ -752,12 +764,6 @@
         (image "groundpieces/ground/desert/bigprickpiece")
         (modifier "ROT0"))
       (position 338 123 42))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/bigprickpiece")
-        (modifier "ROT0"))
-      (position 938 150 42))
     (groundpiece 
       (type "ground")
       (surface 

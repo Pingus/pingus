@@ -40,15 +40,15 @@
     (hotspot 
       (surface 
         (image "hotspots/signposts/danger")
-        (modifier "ROT90"))
-      (position 957 405 -20)
+        (modifier "ROT180FLIP"))
+      (position 1031 305 -20)
       (speed 0)
       (parallax 0))
     (hotspot 
       (surface 
         (image "hotspots/signposts/danger")
         (modifier "ROT0"))
-      (position 1541 574 -20)
+      (position 1550 695 -20)
       (speed 0)
       (parallax 0))
     (groundpiece 
@@ -68,7 +68,7 @@
       (surface 
         (image "groundpieces/ground/desert/middleprickpiece")
         (modifier "ROT0"))
-      (position 1155 606 0))
+      (position 1155 605 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -80,13 +80,13 @@
       (surface 
         (image "groundpieces/ground/desert/blobdune")
         (modifier "ROT0"))
-      (position 902 445 0))
+      (position 902 370 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/middleprickpiece")
         (modifier "ROT0"))
-      (position 867 457 0))
+      (position 873 382 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -152,7 +152,7 @@
       (surface 
         (image "groundpieces/solid/desert/middlebrickpiece")
         (modifier "ROT0"))
-      (position 1432 616 0))
+      (position 1436 616 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -170,25 +170,25 @@
       (surface 
         (image "groundpieces/solid/desert/bigbrickpiece")
         (modifier "ROT0"))
-      (position 1313 240 0))
+      (position 1315 160 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/desert/bigbrickpiece")
         (modifier "ROT0"))
-      (position 1014 240 0))
+      (position 1016 160 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/desert/bigbrickpiece")
         (modifier "ROT0"))
-      (position 662 314 0))
+      (position 662 239 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/desert/middlebrickpiece")
         (modifier "ROT0"))
-      (position 867 528 0))
+      (position 873 453 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -218,31 +218,31 @@
       (surface 
         (image "groundpieces/solid/desert/smallbrickpiece")
         (modifier "ROT0"))
-      (position 1387 202 0))
+      (position 1389 122 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/desert/smallbrickpiece")
         (modifier "ROT0"))
-      (position 1088 202 0))
+      (position 1090 122 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/desert/smallbrickpiece")
         (modifier "ROT0"))
-      (position 1163 202 0))
+      (position 1165 122 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/desert/smallbrickpiece")
         (modifier "ROT0"))
-      (position 1537 202 0))
+      (position 1539 122 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/desert/smallbrickpiece")
         (modifier "ROT0"))
-      (position 1238 202 0))
+      (position 1240 122 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -254,13 +254,13 @@
       (surface 
         (image "groundpieces/solid/desert/smallbrickpiece")
         (modifier "ROT0"))
-      (position 1313 202 0))
+      (position 1315 122 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/desert/smallbrickpiece")
         (modifier "ROT0"))
-      (position 1014 202 0))
+      (position 1016 122 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -285,18 +285,12 @@
         (image "groundpieces/solid/desert/smallbrickpiece")
         (modifier "ROT0"))
       (position 646 776 0))
-    (exit 
-      (surface 
-        (image "exits/desert")
-        (modifier "ROT0"))
-      (position 1541 814 0)
-      (owner-id 0))
     (prefab 
       (name "prefabs/desert_entrance")
-      (position 369 359 0)
+      (position 190 152 0)
       (overrides 
         (release-rate 45)
-        (direction "left")
+        (direction "right")
         (owner-id 0)))
     (groundpiece 
       (type "solid")
@@ -351,13 +345,13 @@
       (surface 
         (image "groundpieces/solid/desert/bigbrickpiece")
         (modifier "ROT0"))
-      (position 1704 664 0))
+      (position 1710 664 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/desert/bigbrickpiece")
         (modifier "ROT0"))
-      (position 1649 514 0))
+      (position 1677 514 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -549,79 +543,43 @@
       (surface 
         (image "groundpieces/ground/desert/pillar2")
         (modifier "ROT0"))
-      (position 1025 73 0))
+      (position 1027 -7 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/pillar2")
         (modifier "ROT0"))
-      (position 1089 73 0))
+      (position 1091 -7 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/pillar2")
         (modifier "ROT0"))
-      (position 1153 73 0))
+      (position 1155 -7 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/desert/smallbrickpiece")
         (modifier "ROT0"))
-      (position 1462 202 0))
+      (position 1464 122 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/pillar2")
         (modifier "ROT0"))
-      (position 1433 72 0))
+      (position 1435 -8 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/pillar2")
         (modifier "ROT0"))
-      (position 1561 72 0))
+      (position 1563 -8 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/pillar2")
         (modifier "ROT0"))
-      (position 1497 72 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/pillar2")
-        (modifier "ROT0"))
-      (position 1025 -57 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/pillar2")
-        (modifier "ROT0"))
-      (position 1497 -58 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/pillar2")
-        (modifier "ROT0"))
-      (position 1433 -58 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/pillar2")
-        (modifier "ROT0"))
-      (position 1153 -57 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/pillar2")
-        (modifier "ROT0"))
-      (position 1561 -58 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/pillar2")
-        (modifier "ROT0"))
-      (position 1089 -57 0))
+      (position 1499 -8 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -664,6 +622,37 @@
         (image "groundpieces/ground/desert/pillar2")
         (modifier "ROT0"))
       (position 1815 384 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/middlebrickpiece")
+        (modifier "ROT0"))
+      (position 662 389 0))
+    (exit 
+      (surface 
+        (image "exits/desert_tut")
+        (modifier "ROT0"))
+      (position 1487 817 0)
+      (owner-id 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT90FLIP"))
+      (position 1544 739 0))
+    (liquid 
+      (surface 
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position 1582 750 0)
+      (speed 0)
+      (repeat 2))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT90FLIP"))
+      (position 1586 615 0))
     (liquid 
       (surface 
         (image "liquids/slime")

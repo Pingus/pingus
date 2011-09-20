@@ -63,7 +63,7 @@
       (surface 
         (image "groundpieces/ground/desert/flat")
         (modifier "ROT0"))
-      (position 961 757 0))
+      (position 942 757 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -87,7 +87,7 @@
       (surface 
         (image "groundpieces/ground/desert/flat")
         (modifier "ROT0"))
-      (position 594 651 0))
+      (position 625 651 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -99,7 +99,7 @@
       (surface 
         (image "groundpieces/ground/desert/flat")
         (modifier "ROT0"))
-      (position 754 757 0))
+      (position 762 757 0))
     (groundpiece 
       (type "ground")
       (surface 

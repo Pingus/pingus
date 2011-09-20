@@ -40,6 +40,13 @@
       (position -41 1116 -50)
       (speed 0)
       (repeat 31))
+    (hotspot 
+      (surface 
+        (image "hotspots/signposts/danger")
+        (modifier "ROT0"))
+      (position 788 405 -50)
+      (speed 0)
+      (parallax 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -105,7 +112,7 @@
       (surface 
         (image "groundpieces/ground/jungle/branch5")
         (modifier "ROT0"))
-      (position 669 200 0))
+      (position 683 195 0))
     (groundpiece 
       (type "solid")
       (surface 

@@ -71,7 +71,7 @@
       (surface 
         (image "hotspots/signposts/danger")
         (modifier "ROT0"))
-      (position 451 492 0)
+      (position 451 467 0)
       (speed 0)
       (parallax 0))
     (groundpiece 
@@ -91,13 +91,13 @@
       (surface 
         (image "groundpieces/ground/desert/pillar1")
         (modifier "ROT180"))
-      (position 195 336 0))
+      (position 195 311 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/desert/bigbrickpiece")
         (modifier "ROT90FLIP"))
-      (position 186 537 0))
+      (position 186 512 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -157,7 +157,7 @@
       (surface 
         (image "groundpieces/solid/desert/bigbrickpiece")
         (modifier "ROT90FLIP"))
-      (position 336 536 0))
+      (position 336 511 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -319,16 +319,16 @@
       (surface 
         (image "groundpieces/ground/desert/flatdune")
         (modifier "ROT0"))
-      (position 329 784 0))
+      (position 334 781 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/desert/middlebrickpiece")
         (modifier "ROT0"))
-      (position 186 462 0))
+      (position 186 437 0))
     (prefab 
       (name "prefabs/desert_entrance")
-      (position 399 392 0)
+      (position 399 367 0)
       (overrides 
         (release-rate 250)
         (direction "right")
@@ -362,7 +362,7 @@
       (surface 
         (image "groundpieces/ground/desert/bigdune1")
         (modifier "ROT0"))
-      (position -112 777 0))
+      (position -131 776 0))
     (groundpiece 
       (type "ground")
       (surface 
