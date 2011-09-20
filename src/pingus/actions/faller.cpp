@@ -49,8 +49,14 @@ Faller::~Faller () { }
 void
 Faller::update ()
 {
-  tumbler[pingu->direction].update();
-  faller[pingu->direction].update();
+  if (is_tumbling()) 
+  {
+    tumbler[pingu->direction].update();
+  }
+  else
+  {
+    faller[pingu->direction].update();
+  }
 
   // FIXME: This should be triggered at a later point, when close to
   // FIXME: deadly_velocity or something like that. A translation
