@@ -67,6 +67,8 @@ public:
   DemoSession(const Pathname& pathname);
   ~DemoSession();
 
+  void draw_background(DrawingContext& gc);
+
   /** Pass a delta to the screen */
   void update(float delta);
   void update_demo();

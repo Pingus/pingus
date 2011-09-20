@@ -135,6 +135,29 @@ DemoSession::~DemoSession()
 {
 }
 
+void
+DemoSession::draw_background(DrawingContext& gc)
+{
+  Rect rect = playfield->get_rect();
+  
+  if (rect != Rect(Vector2i(0,0), Size(gc.get_width(), gc.get_height())))
+  { // Draw a black border around the playfield when the playfield is smaller then the screen
+    Color border_color(0, 0, 0);
+    // top
+    gc.draw_fillrect(Rect(0, 0, gc.get_width(), rect.top),
+                     border_color);
+    // bottom
+    gc.draw_fillrect(Rect(0, rect.bottom, gc.get_width(), gc.get_height()),
+                     border_color);
+    // left
+    gc.draw_fillrect(Rect(0, rect.top, rect.left, rect.bottom),
+                     border_color);
+    // right
+    gc.draw_fillrect(Rect(rect.right, rect.top, gc.get_width(), rect.bottom),
+                     border_color);
+  }  
+}
+
 /** Pass a delta to the screen */
 void
 DemoSession::update(float delta)
