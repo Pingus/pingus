@@ -70,49 +70,6 @@ extern "C" {
 
 extern tinygettext::DictionaryManager dictionary_manager;
 
-void
-signal_handler(int signo)
-{
-  switch(signo)
-  {
-    case SIGSEGV:
-      puts("\n,------------------------------------------------------------------------");
-      puts("| segfault_handler: caught a SIGSEGV.");
-      puts("|");
-      puts("| Woops, Pingus just crashed, congratulations you've found a bug.");
-      puts("| Please write a little bug report to <grumbel@gmx.de>, include information");
-      puts("| where exacly the SIGSEGV occurred and how to reproduce it.");
-      puts("| Also try to include a backtrace, you can get it by doing:");
-      puts("|");
-      puts("| $ gdb pingus core");
-      puts("| (gdb) bt");
-      puts("| ...");
-      puts("|");
-      puts("| If that doesn't work, try this:");
-      puts("|");
-      puts("| $ gdb pingus");
-      puts("| (gdb) r");
-      puts("| [play until it crashes again]");
-      puts("| ...");
-      puts("|");
-      puts("'------------------------------------------------------------------------\n");
-      break;
-
-    case SIGINT:
-      puts("\n,------------------------------------------------------------------------");
-      puts("| Warning: Pingus recieved a SIGINT, exiting now.");
-      puts("`------------------------------------------------------------------------\n");
-      break;
-
-    default:
-      std::cout << "signal_handler (): Got unknown signal: " << signo << std::endl;
-      break;
-  }
-  puts ("exit(EXIT_FAILURE);");
-  abort();
-  throw "crash";
-}
-
 PingusMain::PingusMain() :
   cmd_options()
 {
@@ -658,12 +615,6 @@ PingusMain::run(int argc, char** argv)
 
   tinygettext::Log::set_log_info_callback(0);
 
-  // Register the segfault_handler
-#ifndef WIN32
-  signal(SIGSEGV, signal_handler);
-#endif
-  //signal(SIGINT, signal_handler);
-  
   try
   {
     // FIXME force set language using System::get_language() to get it from env
