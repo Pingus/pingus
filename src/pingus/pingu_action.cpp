@@ -278,9 +278,6 @@ PinguAction::get_activation_mode(ActionName::Enum action_name)
 {
   switch(action_name)
   {
-    case ActionName::BOMBER:
-      return COUNTDOWN_TRIGGERED;
-
     case ActionName::CLIMBER:
       return WALL_TRIGGERED;
 
