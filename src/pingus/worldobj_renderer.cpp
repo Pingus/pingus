@@ -140,7 +140,9 @@ WorldObjRenderer::process(const FileReader& reader)
   // FIXME: does not handle liquid
   if (reader.get_name() == "surface-background" ||
       reader.get_name() == "starfield-background" ||
-      reader.get_name() == "solidcolor-background")
+      reader.get_name() == "solidcolor-background" ||
+      reader.get_name() == "snow-generator" ||
+      reader.get_name() == "rain-generator")
   {
     // ignore
   }
