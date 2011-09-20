@@ -134,10 +134,9 @@ Pingu::set_velocity (const Vector3f& velocity_)
 // When you select a function on the button panel and click on a
 // pingu, this action will be called with the action name
 bool
-Pingu::request_set_action(std::shared_ptr<PinguAction> act)
+Pingu::request_set_action(ActionName::Enum action_name)
 {
   bool ret_val = false;
-  assert(act);
 
   if (status == PS_DEAD)
   {
@@ -146,19 +145,18 @@ Pingu::request_set_action(std::shared_ptr<PinguAction> act)
   }
   else
   {
-    switch (act->get_activation_mode()) {
-
+    switch (PinguAction::get_activation_mode(action_name))
+    {
       case INSTANT:
-
-        if (act->get_type() == action->get_type())
+        if (action_name == action->get_type())
         {
           log_debug("Pingu: Already have action");
           ret_val = false;
         }
-        else if (action->change_allowed(act->get_type()))
+        else if (action->change_allowed(action_name))
         {
           log_debug("setting instant action");
-          set_action(act);
+          set_action(action_name);
           ret_val = true;
         }
         else
@@ -169,8 +167,7 @@ Pingu::request_set_action(std::shared_ptr<PinguAction> act)
         break;
 
       case WALL_TRIGGERED:
-
-        if (wall_action && wall_action->get_type() == act->get_type())
+        if (wall_action && wall_action->get_type() == action_name)
         {
           log_debug("Not using wall action, we have already");
           ret_val = false;
@@ -178,14 +175,13 @@ Pingu::request_set_action(std::shared_ptr<PinguAction> act)
         else
         {
           log_debug("Setting wall action");
-          wall_action = act;
+          wall_action = create_action(action_name);
           ret_val = true;
         }
         break;
 
       case FALL_TRIGGERED:
-
-        if (fall_action && fall_action->get_type() == act->get_type())
+        if (fall_action && fall_action->get_type() == action_name)
         {
           log_debug("Not using fall action, we have already");
           ret_val = false;
@@ -193,25 +189,27 @@ Pingu::request_set_action(std::shared_ptr<PinguAction> act)
         else
         {
           log_debug("Setting fall action");
-          fall_action = act;
+          fall_action = create_action(action_name);
           ret_val = true;
         }
         break;
 
       case COUNTDOWN_TRIGGERED:
-
-        if (countdown_action && countdown_action->get_type() == act->get_type())
         {
-          log_debug("Not using countdown action, we have already");
-          ret_val = false;
-          break;
-        }
+          if (countdown_action && countdown_action->get_type() == action_name)
+          {
+            log_debug("Not using countdown action, we have already");
+            ret_val = false;
+            break;
+          }
 
-        log_debug("Setting countdown action");
-        // We set the action and start the countdown
-        action_time = act->activation_time();
-        countdown_action = act;
-        ret_val = true;
+          log_debug("Setting countdown action");
+          // We set the action and start the countdown
+          std::shared_ptr<PinguAction> act = create_action(action_name);
+          action_time = act->activation_time();
+          countdown_action = act;
+          ret_val = true;
+        }
         break;
 
       default:
@@ -222,22 +220,7 @@ Pingu::request_set_action(std::shared_ptr<PinguAction> act)
     }
   }
 
-  if (ret_val) // Action successfull applied
-  {
-    act->on_successfull_apply();
-  }
-  else // Action failed to be set
-  {
-    act->on_failed_apply(this);
-  }
-
   return ret_val;
-}
-
-bool
-Pingu::request_set_action (ActionName::Enum action_name)
-{
-  return request_set_action(create_action(action_name));
 }
 
 void

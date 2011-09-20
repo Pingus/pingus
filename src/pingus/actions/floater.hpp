@@ -33,7 +33,6 @@ public:
   Floater(Pingu* p);
 
   ActionName::Enum get_type() const { return ActionName::FLOATER; }
-  ActionType get_activation_mode() const { return FALL_TRIGGERED; }
 
   void init(void);
 

@@ -19,6 +19,7 @@
 #include "pingus/collision_map.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_enums.hpp"
+#include "pingus/action_name.hpp"
 #include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"
 
@@ -53,12 +54,6 @@ PinguAction::rel_getpixel (int x, int y)
   // FIXME: Inline me
   return WorldObj::get_world()->get_colmap()->getpixel(static_cast<int>(pingu->get_x() + static_cast<float>((x * pingu->direction))),
                                                        static_cast<int>(pingu->get_y() - static_cast<float>(y)));
-}
-
-ActionType
-PinguAction::get_activation_mode () const
-{
-  return INSTANT;
 }
 
 char
@@ -276,6 +271,25 @@ PinguAction::move_with_forces ()
     }
   }
 #endif
+}
+
+ActionType
+PinguAction::get_activation_mode(ActionName::Enum action_name)
+{
+  switch(action_name)
+  {
+    case ActionName::BOMBER:
+      return COUNTDOWN_TRIGGERED;
+
+    case ActionName::CLIMBER:
+      return WALL_TRIGGERED;
+
+    case ActionName::FLOATER:
+      return FALL_TRIGGERED; 
+  
+    default:
+      return INSTANT;
+  }
 }
 
 /* EOF */

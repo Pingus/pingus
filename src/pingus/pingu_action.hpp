@@ -69,9 +69,6 @@ public:
 
   virtual Vector3f get_center_pos() const;
 
-  /// Returns the activation mode
-  virtual ActionType get_activation_mode (void) const;
-
   /** The name of the action, this is used in the CaputreRectangle, so
       it can contain more than just the name */
   virtual std::string get_name () const;
@@ -103,14 +100,11 @@ public:
   /// True if Pingu in specified position would have a collision if it were walking
   bool collision_on_walk (int x, int y);
 
-  /** Called if the action was successfully applied via request_set_action */
-  virtual void on_successfull_apply () { }
-
-  /** Called if the request_set_action failded to apply this action */
-  virtual void on_failed_apply (Pingu*) { }
-
   /** Move Pingu according to the forces applied to it */
   void move_with_forces ();
+
+public:
+  static ActionType get_activation_mode(ActionName::Enum action_name);
 
 private:
   PinguAction (const PinguAction&);

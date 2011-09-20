@@ -38,11 +38,7 @@ Bomber::Bomber (Pingu* p) :
 {
   sprite.load(Direction::LEFT,  "pingus/player" + pingu->get_owner_str() + "/bomber/left");
   sprite.load(Direction::RIGHT, "pingus/player" + pingu->get_owner_str() + "/bomber/right");
-}
 
-void
-Bomber::on_successfull_apply ()
-{
   WorldObj::get_world()->play_sound("ohno", pingu->get_pos ());
 }
 

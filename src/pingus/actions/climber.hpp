@@ -33,7 +33,6 @@ public:
   Climber (Pingu*);
 
   ActionName::Enum get_type () const { return ActionName::CLIMBER; }
-  ActionType get_activation_mode () const { return WALL_TRIGGERED; }
 
   void draw (SceneContext& gc);
 

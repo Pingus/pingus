@@ -80,7 +80,6 @@ private:
   Vector3f velocity;
 
 private:
-  bool request_set_action(std::shared_ptr<PinguAction>);
   void set_action(std::shared_ptr<PinguAction>);
 
   std::shared_ptr<PinguAction> create_action(ActionName::Enum action);
