@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_ENGINE_INPUT_MANAGER_HPP
 #define HEADER_PINGUS_ENGINE_INPUT_MANAGER_HPP
 
+#include <memory>
+
 #include "engine/input/controller_description.hpp"
 #include "engine/input/driver.hpp"
 
@@ -28,16 +30,19 @@ private:
   typedef std::vector<Driver*> Drivers;
   Drivers drivers;
 
-  std::vector<Controller*> controllers;
+  std::vector<ControllerPtr> controllers;
   ControllerDescription desc;
 
 public:
   Manager();
   ~Manager();
 
+  /** Resents events for the current controller state */
+  void refresh();
+
   void update(float delta);
 
-  Controller* create_controller(const Pathname& filename);
+  ControllerPtr create_controller(const Pathname& filename);
 
   Button*   create_button  (const FileReader& reader, Control* parent);
   Axis*     create_axis    (const FileReader& reader, Control* parent);

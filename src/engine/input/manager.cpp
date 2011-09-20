@@ -81,11 +81,11 @@ static std::string get_driver_part(const std::string& fullname)
   }
 }
 
-Controller*
+ControllerPtr
 Manager::create_controller(const Pathname& filename)
 {
-  std::unique_ptr<Controller> controller(new Controller(desc));
-
+  ControllerPtr controller(new Controller(desc));
+  
   FileReader reader = FileReader::parse(filename);
 
   if (reader.get_name() != "pingus-controller")
@@ -178,19 +178,24 @@ Manager::create_controller(const Pathname& filename)
     }
   }
 
-  Controller* ctrl = controller.release();
-  controllers.push_back(ctrl);
-  return ctrl;
+  controllers.push_back(controller);
+  return controller;
+}
+
+void
+Manager::refresh()
+{ 
+  for(auto i = controllers.begin(); i != controllers.end(); ++i)
+    (*i)->refresh();
 }
 
 void
 Manager::update(float delta)
 {
-  for(Drivers::iterator i = drivers.begin(); i != drivers.end(); ++i)
+  for(auto i = drivers.begin(); i != drivers.end(); ++i)
     (*i)->update(delta);
   
-  for(std::vector<Controller*>::iterator i = controllers.begin(); 
-      i != controllers.end(); ++i)
+  for(auto i = controllers.begin(); i != controllers.end(); ++i)
     (*i)->update(delta);
 }
 

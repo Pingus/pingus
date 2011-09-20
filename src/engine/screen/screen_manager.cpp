@@ -149,14 +149,18 @@ ScreenManager::ScreenManager() :
   assert(instance_ == 0);
   instance_ = this;
     
-  input_manager = std::unique_ptr<Input::Manager>(new Input::Manager());
+  input_manager.reset(new Input::Manager());
 
   if (globals::controller_file.empty())
-    input_controller = std::unique_ptr<Input::Controller>(input_manager->create_controller(Pathname("controller/default.scm", 
-                                                                                                  Pathname::DATA_PATH)));
+  {
+    input_controller = input_manager->create_controller(Pathname("controller/default.scm", 
+                                                                 Pathname::DATA_PATH));
+  }
   else
-    input_controller = std::unique_ptr<Input::Controller>(input_manager->create_controller(Pathname(globals::controller_file,
-                                                                                                  Pathname::SYSTEM_PATH)));
+  {
+    input_controller = input_manager->create_controller(Pathname(globals::controller_file,
+                                                                 Pathname::SYSTEM_PATH));
+  }
 
   cursor = Sprite("core/cursors/animcross");
   fps_counter = std::unique_ptr<FPSCounter>(new FPSCounter());
@@ -374,6 +378,8 @@ ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
       
     progress = static_cast<float>(SDL_GetTicks() - last_ticks)/1000.0f * 2.0f;
   }
+
+  input_manager->refresh();
 }
 
 void

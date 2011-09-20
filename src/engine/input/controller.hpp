@@ -17,21 +17,24 @@
 #ifndef HEADER_PINGUS_ENGINE_INPUT_CONTROLLER_HPP
 #define HEADER_PINGUS_ENGINE_INPUT_CONTROLLER_HPP
 
+#include <memory>
+
 #include "engine/input/event.hpp"
 
 namespace Input {
 
 class ControllerDescription;
-
+class Controller;
 class ControllerButton;
 class ControllerAxis;
 class ControllerPointer;
 class ControllerScroller;
 class ControllerKeyboard;
 
+typedef std::shared_ptr<Controller> ControllerPtr;
+
 class Controller
 {
-
 private:
   static Controller* current_;
 public:
@@ -71,7 +74,8 @@ public:
   void add_pointer(int id, ControllerPointer* pointer);
   void add_scroller(int id, ControllerScroller* scroller);
   void add_keyboard(int id, ControllerKeyboard* keyboard);
-  
+
+  void refresh();
   void update(float delta);
 
 private:

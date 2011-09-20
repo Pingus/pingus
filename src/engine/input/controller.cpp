@@ -174,6 +174,30 @@ Controller::get_button(int id)
 }
 
 void
+Controller::refresh()
+{
+  for(auto i = axes.begin(); i != axes.end(); ++i)
+  {
+    if (*i) 
+    {
+      add_axis_event(i - axes.begin(), (*i)->get_pos());
+    }
+  }
+
+  for(auto i = pointers.begin(); i != pointers.end(); ++i)
+  {
+    if (*i) 
+    {
+      add_pointer_event(i - pointers.begin(), (*i)->get_pos().x, (*i)->get_pos().y);
+    }    
+  }
+  
+  // FIXME: not handling buttons, as their state might be out of date (i.e. still pressed)
+
+  // not handling scrollers, as they don't really have state
+}
+
+void
 Controller::update(float delta)
 {
   for(std::vector<ControllerButton*>::iterator i = buttons.begin();
