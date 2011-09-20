@@ -52,7 +52,7 @@ World::World(const PingusLevel& plf) :
   snow_particle_holder(),
   pingus(new PinguHolder(plf)),
   colmap(gfx_map->get_colmap()),
-  gravitational_acceleration(0.25f)
+  gravitational_acceleration(0.2f)
 {
   WorldObj::set_world(this);
 
