@@ -32,7 +32,7 @@
     (entrance 
       (type "generic")
       (position 979 555 0)
-      (owner-id 150)
+      (owner-id 0)
       (direction "misc")
       (release-rate 25))
     (exit 

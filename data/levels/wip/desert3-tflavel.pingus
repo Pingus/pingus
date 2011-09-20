@@ -579,13 +579,13 @@
     (entrance 
       (type "generic")
       (position 329 451 50)
-      (owner-id -1077161416)
+      (owner-id 0)
       (direction "left")
       (release-rate 25))
     (entrance 
       (type "generic")
       (position 1294 210 50)
-      (owner-id 25)
+      (owner-id 0)
       (direction "left")
       (release-rate 45))
     (hotspot 
