@@ -8,7 +8,6 @@
     (number-of-pingus 25)
     (number-to-save 5)
     (time -1)
-    (playable 1)
     (music "pingus-5.it")
     (actions 
       (jumper 80))
@@ -38,7 +37,7 @@
       (surface 
         (image "hotspots/signposts/arrow_northeast")
         (modifier "ROT0"))
-      (position 817.344 572.738 -50)
+      (position 841.344 572.738 -50)
       (speed -1)
       (parallax 1))
     (liquid 
@@ -180,7 +179,7 @@
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
-      (position 748 636 0))
+      (position 772 636 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -192,13 +191,13 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 999 611 0))
+      (position 1030 611 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 935 492 0))
+      (position 979 492 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -216,7 +215,7 @@
       (surface 
         (image "groundpieces/ground/snow/ice1")
         (modifier "ROT0"))
-      (position 734 629 0))
+      (position 751 638 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -229,12 +228,6 @@
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
       (position 1252 613 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/misc/metalplate_horiz")
-        (modifier "ROT0"))
-      (position 1135 493 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -264,7 +257,7 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 786 614 0))
+      (position 810 614 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -288,7 +281,7 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_large")
         (modifier "ROT0"))
-      (position 722 582 0))
+      (position 746 582 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -330,25 +323,19 @@
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
-      (position 995 609 0))
+      (position 1026 609 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
-      (position 1131 490 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/ground/snow/ice2")
-        (modifier "ROT0"))
-      (position 782 612 0))
+      (position 806 612 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/ground/snow/ice1")
         (modifier "ROT0"))
-      (position 718 579 0))
+      (position 742 579 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -359,14 +346,14 @@
       (type "solid")
       (surface 
         (image "groundpieces/ground/snow/ice1")
-        (modifier "ROT0"))
-      (position 739 579 0))
+        (modifier "ROT0FLIP"))
+      (position 756 579 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
-      (position 931 489 0))
+      (position 975 489 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -408,7 +395,7 @@
       (surface 
         (image "groundpieces/ground/snow/ice1")
         (modifier "ROT0"))
-      (position 1017 611 0))
+      (position 1048 611 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -584,18 +571,6 @@
         (modifier "ROT0"))
       (position 1224 581 0))
     (groundpiece 
-      (type "remove")
-      (surface 
-        (image "groundpieces/remove/misc/rect1")
-        (modifier "ROT0"))
-      (position 1112 461 0))
-    (groundpiece 
-      (type "remove")
-      (surface 
-        (image "groundpieces/remove/misc/rect1")
-        (modifier "ROT0"))
-      (position 1176 461 0))
-    (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
@@ -630,25 +605,25 @@
       (surface 
         (image "groundpieces/remove/misc/rect1")
         (modifier "ROT0"))
-      (position 905 459 0))
+      (position 949 459 0))
     (groundpiece 
       (type "remove")
       (surface 
         (image "groundpieces/remove/misc/rect1")
         (modifier "ROT0"))
-      (position 969 459 0))
+      (position 1013 459 0))
     (groundpiece 
       (type "remove")
       (surface 
         (image "groundpieces/remove/misc/rect1")
         (modifier "ROT0"))
-      (position 971 579 0))
+      (position 1002 579 0))
     (groundpiece 
       (type "remove")
       (surface 
         (image "groundpieces/remove/misc/rect1")
         (modifier "ROT0"))
-      (position 1035 579 0))
+      (position 1066 579 0))
     (groundpiece 
       (type "ground")
       (surface 
