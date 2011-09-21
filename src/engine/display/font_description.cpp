@@ -29,7 +29,7 @@ GlyphDescription::GlyphDescription() :
 {  
 }
 
-GlyphDescription::GlyphDescription(FileReader& reader) :
+GlyphDescription::GlyphDescription(const FileReader& reader) :
   image(0), 
   unicode(0), 
   offset(),

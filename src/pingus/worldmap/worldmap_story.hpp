@@ -47,7 +47,7 @@ namespace WorldmapNS {
 class WorldmapStory
 {
 public:
-  WorldmapStory(const FileReader &reader);
+  WorldmapStory(const FileReader& reader);
   ~WorldmapStory() { }
 
   std::string get_title() const { return title; }

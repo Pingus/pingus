@@ -26,7 +26,7 @@
 
 namespace WorldmapNS {
 
-WorldmapStory::WorldmapStory(const FileReader &reader) :
+WorldmapStory::WorldmapStory(const FileReader& reader) :
   title(),
   music(),
   pages()

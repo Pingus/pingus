@@ -58,7 +58,7 @@ public:
   /** @param worldmap is a pointer to the worldmap that holds this
       PathGraph, it is used so that the PathGraph can insert its
       drawables into the world */
-  PathGraph(Worldmap* worldmap, FileReader &reader);
+  PathGraph(Worldmap* worldmap, const FileReader& reader);
 
   ~PathGraph();
 

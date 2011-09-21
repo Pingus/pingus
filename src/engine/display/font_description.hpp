@@ -34,7 +34,7 @@ public:
   Rect     rect;
 
   GlyphDescription();
-  GlyphDescription(FileReader& reader);
+  GlyphDescription(const FileReader& reader);
 };
 
 class GlyphImageDescription

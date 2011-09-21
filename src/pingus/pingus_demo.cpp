@@ -37,7 +37,7 @@ PingusDemo::PingusDemo(const Pathname& pathname) :
   {
     if (lines.front().get_name() == "level")
     {
-      FileReader& reader = lines.front();
+      const FileReader& reader = lines.front();
       if (!reader.read_string("name", m_levelname))
       {
         throw std::runtime_error("(level (name ...)) entry missing in demo file '" + pathname.str() + "'");

@@ -25,7 +25,7 @@
 
 namespace WorldmapNS {
 
-PathGraph::PathGraph(Worldmap* arg_worldmap, FileReader &reader) :
+PathGraph::PathGraph(Worldmap* arg_worldmap, const FileReader& reader) :
   worldmap(arg_worldmap),
   graph(),
   dots(),
