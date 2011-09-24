@@ -129,7 +129,14 @@ public:
     System::Directory directory = System::opendir(path, "*.levelset");
     for(System::Directory::iterator i = directory.begin(); i != directory.end(); ++i)
     {
-      levelsets.push_back(new Levelset(Pathname(path + "/" + i->name, Pathname::SYSTEM_PATH)));
+      try 
+      {
+        levelsets.push_back(new Levelset(Pathname(path + "/" + i->name, Pathname::SYSTEM_PATH)));
+      }
+      catch(const std::exception& err)
+      {
+        log_error(err.what());
+      }
     }
   }
 
