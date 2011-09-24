@@ -38,6 +38,8 @@ public:
   void update (float delta);
   void update_layout() {}
   
+  void set_text(const std::string& text);
+
   void on_pointer_enter();
   void on_pointer_leave();
   void on_primary_button_press(int x, int y);

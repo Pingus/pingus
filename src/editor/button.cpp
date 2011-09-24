@@ -32,6 +32,12 @@ Button::Button(const Rect& rect_, const std::string& text_) :
 }
 
 void
+Button::set_text(const std::string& text_)
+{
+  text = text_;
+}
+
+void
 Button::draw (DrawingContext& gc)
 {
   if (enabled)
