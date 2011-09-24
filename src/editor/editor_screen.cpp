@@ -28,6 +28,7 @@
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/screen/screen_manager.hpp"
+#include "editor/message_box.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "pingus/screens/game_session.hpp"
@@ -48,6 +49,7 @@ EditorScreen::EditorScreen() :
   level_properties(),
   file_load_dialog(),
   file_save_dialog(),
+  m_level_new_msgbox(),
   show_help(false)
 {
   // Create the viewport for the images and data
@@ -96,6 +98,22 @@ EditorScreen::EditorScreen() :
   file_save_dialog->set_directory(".");
   file_save_dialog->hide();
   gui_manager->add(file_save_dialog);
+
+  {
+    Size msg_size(600, 160);
+    std::unique_ptr<MessageBox> msgbox(new MessageBox(Rect(Vector2i((Display::get_width() - msg_size.width)/2,
+                                                                                (Display::get_height() - msg_size.height)/2), 
+                                                                       msg_size)));
+  
+    msgbox->set_title("Create new level");
+    msgbox->set_text("Replace current level with an empty new one?");
+    msgbox->set_ok_text("Replace");
+    msgbox->on_ok.connect(std::bind(&EditorScreen::level_new_without_confirm, this));
+
+    gui_manager->add(m_level_new_msgbox = msgbox.release());
+
+    m_level_new_msgbox->hide();
+  }
 
   viewport->selection_changed.connect(std::bind(&ObjectProperties::set_objects, object_properties, std::placeholders::_1));
   viewport->refresh();
@@ -292,8 +310,8 @@ EditorScreen::update(const Input::Event& event)
   }
 }
 
-void 
-EditorScreen::level_new()
+void
+EditorScreen::level_new_without_confirm()
 {
   // FIXME: dialogs don't update
   level_pathname = Pathname();
@@ -301,7 +319,13 @@ EditorScreen::level_new()
   plf->clear();
   level_properties->set_level(plf.get());
   action_properties->set_level(plf.get());
-  viewport->refresh();
+  viewport->refresh();  
+}
+
+void 
+EditorScreen::level_new()
+{
+  m_level_new_msgbox->show();
 }
 
 void 
@@ -521,6 +545,14 @@ void
 EditorScreen::resize(const Size& size_)
 {
   gui_manager->set_rect(Rect(Vector2i(0, 0), size_));
+
+  {
+    Size msg_size(600, 160);
+    m_level_new_msgbox->set_rect(Rect(Vector2i((Display::get_width()  - msg_size.width)/2,
+                                               (Display::get_height() - msg_size.height)/2), 
+                                      msg_size));
+  }
+
   update_layout();
 }
 

@@ -29,15 +29,16 @@ class Pathname;
 
 namespace Editor {
 
+class ActionProperties;
 class EditorLevel;
 class LevelObj;
+class LevelProperties;
+class MessageBox;
+class Minimap;
+class ObjectProperties;
+class ObjectSelector;
 class Panel;
 class Viewport;
-class ObjectSelector;
-class ObjectProperties;
-class ActionProperties;
-class LevelProperties;
-class Minimap;
 
 /** This class is the screen that contains all of the
     editor objects */
@@ -57,6 +58,8 @@ private:
 
   FileDialog*       file_load_dialog;
   FileDialog*       file_save_dialog;
+
+  MessageBox* m_level_new_msgbox;
   
   bool show_help;
 
@@ -103,6 +106,7 @@ public:
   void load(const Pathname& file);
 
   // Functions accessible from the GUI
+  void level_new_without_confirm();
   void level_new();
   void level_load();
   void level_save();
