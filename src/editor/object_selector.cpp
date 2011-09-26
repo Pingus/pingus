@@ -394,14 +394,11 @@ ObjectSelector::create_prefab()
 {
   std::unique_ptr<ObjectSelectorSet> set(new ObjectSelectorSet(object_list, 48, 48));
 
-  std::string path = Pathname("prefabs", Pathname::DATA_PATH).get_sys_path();
-
-  // FIXME: doesn't recurse down the prefabs/ directory, doesn't
-  // handle ~/.pingus/prefabs/ or other user or modifier directories
-  System::Directory directory = System::opendir(path, "*.prefab");
-  for(System::Directory::iterator i = directory.begin(); i != directory.end(); ++i)
+  // FIXME: doesn't recurse down the prefabs/ directory
+  auto directory = Pathname("prefabs", Pathname::DATA_PATH).opendir("*.prefab");
+  for(auto i = directory.begin(); i != directory.end(); ++i)
   {
-    set->add(new Prefab("prefabs/" + System::cut_file_extension(i->name)));
+    set->add(new Prefab("prefabs/" + System::cut_file_extension(i->get_raw_path())));
   }
 
   return set;

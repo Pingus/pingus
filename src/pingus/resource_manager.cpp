@@ -57,16 +57,16 @@ ResourceManager::add_resources_from_directory(const Pathname& path)
 {
   assert(path.get_type() == Pathname::DATA_PATH);
 
-  std::vector<std::string> files = System::opendir_recursive(path.get_sys_path());
+  auto files = path.opendir_recursive();
   for(auto it = files.begin(); it != files.end(); ++it)
   {
-    if (StringUtil::has_suffix(*it, ".sprite") ||
-        StringUtil::has_suffix(*it, ".png") ||
-        StringUtil::has_suffix(*it, ".jpg"))
+    if (it->has_extension(".sprite") ||
+        it->has_extension(".png") ||
+        it->has_extension(".jpg"))
     {
       // FIXME: ugly hack to remove "data/images/" prefix, need better
       // way to cut stuff away
-      m_resources.insert(System::cut_file_extension(it->substr(12)));
+      m_resources.insert(System::cut_file_extension(it->get_raw_path().substr(12)));
     }
   }
 }

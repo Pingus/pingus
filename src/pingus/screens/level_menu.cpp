@@ -124,14 +124,13 @@ public:
               70 + items_per_page * item_height)
   {
     marker      = Sprite("core/menu/marker");
-   
-    std::string path = Pathname("levelsets", Pathname::DATA_PATH).get_sys_path();
-    System::Directory directory = System::opendir(path, "*.levelset");
-    for(System::Directory::iterator i = directory.begin(); i != directory.end(); ++i)
+      
+    auto directory = Pathname("levelsets", Pathname::DATA_PATH).opendir("*.levelset");
+    for(auto i = directory.begin(); i != directory.end(); ++i)
     {
       try 
       {
-        levelsets.push_back(new Levelset(Pathname(path + "/" + i->name, Pathname::SYSTEM_PATH)));
+        levelsets.push_back(new Levelset(*i));
       }
       catch(const std::exception& err)
       {
