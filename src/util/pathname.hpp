@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_UTIL_PATHNAME_HPP
 
 #include <string>
+#include <vector>
 
 /** Simple class to allow a distinction of paths that refer to the
  *  filesystem and paths that refer to the datadir, it also hides
@@ -27,6 +28,8 @@ class Pathname
 public: 
   /** Generate a temporary filename suitable for temporary files */
   static Pathname tmpfile(const std::string& prefix = "");
+
+  static std::string join(const std::string& lhs, const std::string& rhs);
 
   enum Type { 
     // The given pathname refers to the native file system
@@ -45,6 +48,12 @@ private:
 public:
   Pathname();  
   explicit Pathname(const std::string& pathname, Type type = DATA_PATH);
+
+  std::vector<Pathname> opendir(const std::string& pattern = "*") const;
+  std::vector<Pathname> opendir_recursive() const;
+  void opendir_recursive(std::vector<Pathname>& result) const;
+
+  bool has_extension(const std::string& ext) const;
 
   /** Return the pathname in a form suitable for the native file
       system (i.e. can be passed to ifstream and friends */

@@ -20,6 +20,7 @@
 #include <ostream>
 
 #include "pingus/path_manager.hpp"
+#include "util/string_util.hpp"
 #include "util/system.hpp"
 
 Pathname Pathname::tmpfile(const std::string& prefix)
@@ -28,6 +29,26 @@ Pathname Pathname::tmpfile(const std::string& prefix)
   return Pathname();
 }
 
+std::string
+Pathname::join(const std::string& lhs, const std::string& rhs)
+{
+  if (lhs.empty())
+  {
+    return rhs;
+  }
+  else
+  {
+    if (*lhs.rbegin() == '/')
+    {
+      return lhs + rhs;
+    }
+    else
+    {
+      return lhs + "/" + rhs;
+    }
+  }
+}
+
 Pathname::Pathname() :
   pathname(),
   type(INVALID)
@@ -115,6 +136,106 @@ Pathname::absolute() const
   return !pathname.empty() && pathname[0] == '/';
 }
 
+std::vector<Pathname>
+Pathname::opendir(const std::string& pattern) const
+{
+  switch(get_type())
+  {
+    case Pathname::INVALID:
+      return std::vector<Pathname>();
+
+    case Pathname::DATA_PATH: {
+      // collect all paths
+      std::vector<std::string> paths;
+      {
+        paths.push_back(g_path_manager.get_path());
+        auto lst = g_path_manager.get_paths();
+        paths.insert(paths.end(), lst.begin(), lst.end());
+      }
+
+      std::vector<Pathname> result;
+      for(auto p = paths.begin(); p != paths.end(); ++p)
+      {
+        std::string path = Pathname::join(*p, pathname);
+        System::Directory lst = System::opendir(path, pattern);
+        for(auto it = lst.begin(); it != lst.end(); ++it)
+        {
+          result.push_back(Pathname(Pathname::join(path, it->name), Pathname::SYSTEM_PATH));
+        }
+      }
+      return result;
+    }
+
+    case Pathname::SYSTEM_PATH: {
+      std::vector<Pathname> result;
+      auto lst = System::opendir(pathname, pattern);
+      for(auto it = lst.begin(); it != lst.end(); ++it)
+      {
+        result.push_back(Pathname(it->name, Pathname::SYSTEM_PATH));
+      }
+      return result;
+    }
+  }
+
+  return std::vector<Pathname>();
+}
+
+void
+Pathname::opendir_recursive(std::vector<Pathname>& result) const
+{
+  switch(get_type())
+  {
+    case Pathname::INVALID:
+      break;
+
+    case Pathname::DATA_PATH: {     
+      // collect all paths
+      std::vector<std::string> paths;
+      {
+        paths.push_back(g_path_manager.get_path());
+        auto lst = g_path_manager.get_paths();
+        paths.insert(paths.end(), lst.begin(), lst.end());
+      }
+
+      for(auto p = paths.begin(); p != paths.end(); ++p)
+      {
+        std::string path = Pathname::join(*p, pathname);
+
+        System::Directory lst = System::opendir(path);
+        for(auto it = lst.begin(); it != lst.end(); ++it)
+        {
+          Pathname sub_path(Pathname::join(path, it->name), Pathname::SYSTEM_PATH);
+
+          if (it->type == System::DE_DIRECTORY)
+          {
+            sub_path.opendir_recursive(result);
+          }
+          else
+          {
+            result.push_back(sub_path);
+          }
+        }
+      }
+    }
+
+    case Pathname::SYSTEM_PATH: {
+      auto lst = System::opendir_recursive(pathname);
+      for(auto it = lst.begin(); it != lst.end(); ++it)
+      {
+        result.push_back(Pathname(*it, Pathname::SYSTEM_PATH));
+      }
+    }
+  }
+}
+
+std::vector<Pathname>
+Pathname::opendir_recursive() const
+{
+  std::vector<Pathname> result;
+  opendir_recursive(result);
+  return result;
+}
+
 std::ostream& operator<< (std::ostream& os, const Pathname& p)
 {
   switch(p.get_type())
@@ -132,6 +253,12 @@ std::ostream& operator<< (std::ostream& os, const Pathname& p)
       assert(!"never reached");
   }
   return os;
+}
+
+bool
+Pathname::has_extension(const std::string& ext) const
+{
+  return StringUtil::has_suffix(pathname, ext);
 }
 
 /* EOF */
