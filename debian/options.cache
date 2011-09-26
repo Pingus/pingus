@@ -1,4 +1,0 @@
-CC = 'gcc'
-CXX = 'g++'
-CCFLAGS = ' :CFLAGS: '
-CXXFLAGS = ' :CFLAGS: '
