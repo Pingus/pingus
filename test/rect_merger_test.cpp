@@ -17,7 +17,7 @@
 #include <iostream>
 #include <stdlib.h>
 
-#include "engine/display/rect_merger.hpp"
+#include "engine/display/delta/rect_merger.hpp"
 
 int main(int argc, char** argv)
 {

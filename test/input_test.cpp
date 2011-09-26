@@ -37,7 +37,7 @@ int main()
 
     Input::Manager manager;
 
-    Input::Controller* controller
+    Input::ControllerPtr controller
       = manager.create_controller(Pathname("../data/controller/input2.scm", Pathname::SYSTEM_PATH));
 
     while(true)
