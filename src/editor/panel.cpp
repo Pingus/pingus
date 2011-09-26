@@ -31,9 +31,9 @@ private:
   Vector2i pos;
 
 public:
-  PanelSeparator(const Vector2i& pos_)
-    : sprite("core/editor/separator"),
-      pos(pos_)
+  PanelSeparator(const Vector2i& pos_) :
+    sprite("core/editor/separator"),
+    pos(pos_)
   {
   }
   
@@ -64,21 +64,22 @@ private:
 public:
   PanelButton(EditorScreen* editor_, 
               const Vector2i& pos_, const std::string& name, const std::string& tooltip_, 
-              Callback callback_ = 0)
-    : editor(editor_),
-      button_raised("core/editor/button-raised"),
-      button_pressed("core/editor/button-pressed"),
-      sprite(name),
-      mouse_over(false),
-      mouse_down(false),
-      pos(pos_),
-      tooltip(tooltip_),
-      callback(callback_)
+              Callback callback_ = 0) :
+    editor(editor_),
+    button_raised("core/editor/button-raised"),
+    button_pressed("core/editor/button-pressed"),
+    sprite(name),
+    mouse_over(false),
+    mouse_down(false),
+    pos(pos_),
+    tooltip(tooltip_),
+    callback(callback_)
   {
   }
 
   void draw (DrawingContext& gc)
   {
+    // draw button
     if (mouse_down)
       gc.draw(button_pressed, pos);
     else if (mouse_over)
@@ -86,14 +87,32 @@ public:
 
     gc.draw(sprite, pos + Vector2i(5,5));
 
+    // draw tooltip
     if (mouse_over)
     {
       int t_w = static_cast<int>(Fonts::verdana11.get_width(tooltip));
+
       Rect t_r(pos.x + 17 - t_w/2 - 4, pos.y + 38 - 2, 
                pos.x + 17 + t_w/2 + 4, pos.y + 38 + Fonts::verdana11.get_height() + 4);
+
+      // if the tooltip goes over the screen borders, move it back to
+      // fit on the screen
+      if (t_r.left < 0)
+      {
+        const int off = -t_r.left;
+        t_r.left  += off;
+        t_r.right += off;
+      }
+      else if (t_r.right >= gc.get_width())
+      {
+        const int off = t_r.right - gc.get_width();
+        t_r.left  -= off;
+        t_r.right -= off;
+      }
+
       gc.draw_fillrect(t_r, Color(255, 255, 200), 1000.0f);
       gc.draw_rect(t_r, Color(0,0,0), 1000.0f);
-      gc.print_center(Fonts::verdana11, Vector2i(pos.x + 17, pos.y + 38), tooltip, 1000.0f);
+      gc.print_left(Fonts::verdana11, Vector2i(t_r.left + 3, t_r.top + 1), tooltip, 1000.0f);
     }
   }
 
@@ -149,7 +168,7 @@ Panel::Panel(EditorScreen* editor_) :
 {  
   editor->get_gui_manager()->add(this);
 
-  add_button("core/editor/document-new",  _("    New level"),
+  add_button("core/editor/document-new",  _("New level"), 
              &EditorScreen::level_new);
   add_button("core/editor/document-open", _("Open level..."),
              &EditorScreen::level_load);
