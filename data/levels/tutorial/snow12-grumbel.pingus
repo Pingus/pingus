@@ -8,7 +8,6 @@
     (number-of-pingus 10)
     (number-to-save 6)
     (time -1)
-    (playable 1)
     (music "pingus-4.it")
     (actions 
       (bomber 4)
