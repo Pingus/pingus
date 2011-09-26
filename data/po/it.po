@@ -1482,7 +1482,7 @@ msgstr "Deserto"
 
 #: data/levels/desert/desert1-janne.pingus:6
 msgid "Find your way through the obstacle"
-msgstr ""
+msgstr "Trova la tua via attraverso gli ostacoli"
 
 #: data/levels/desert/desert1.pingus:5
 msgid "Entering the pyramid"
@@ -1512,11 +1512,11 @@ msgstr ""
 
 #: data/levels/desert/desert3-jings.pingus:5
 msgid "Grand Hall"
-msgstr ""
+msgstr "Grande sala"
 
 #: data/levels/desert/desert3-jings.pingus:6
 msgid "The pingus have found themselves in the grand hall."
-msgstr ""
+msgstr "I Pingus si sono trovati nella grande sala."
 
 #: data/levels/desert/desert3.pingus:5
 msgid "Pass the pedestal"
