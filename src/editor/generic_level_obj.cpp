@@ -107,7 +107,7 @@ GenericLevelObj::get_attributes(std::string obj_type)
     return HAS_COLOR | HAS_SPRITE_FAKE;
   else if (obj_type == "starfield-background")
     return HAS_STARFIELD | HAS_SPRITE_FAKE;
-  else if (obj_type == "entrance" || obj_type == "woodthing")
+  else if (obj_type == "entrance")
     return HAS_TYPE | HAS_DIRECTION | HAS_RELEASE_RATE | HAS_OWNER | HAS_SPRITE_FAKE;
   else if (obj_type == "exit")
     return HAS_OWNER | HAS_SPRITE;

@@ -20,6 +20,7 @@
 
 #include "pingus/prefab_file.hpp"
 #include "pingus/worldobjs/conveyor_belt.hpp"
+#include "pingus/worldobjs/entrance.hpp"
 #include "pingus/worldobjs/exit.hpp"
 #include "pingus/worldobjs/fake_exit.hpp"
 #include "pingus/worldobjs/groundpiece.hpp"
@@ -40,7 +41,6 @@
 #include "pingus/worldobjs/switch_door_switch.hpp"
 #include "pingus/worldobjs/teleporter.hpp"
 #include "pingus/worldobjs/teleporter_target.hpp"
-#include "pingus/worldobjs/woodthing.hpp"
 #include "util/log.hpp"
 #include "util/overrride_file_reader.hpp"
 
@@ -182,7 +182,6 @@ WorldObjFactory::instance()
     new WorldObjFactoryImpl<Liquid>("liquid");
     new WorldObjFactoryImpl<Hotspot>("hotspot");
     new WorldObjFactoryImpl<Entrance>("entrance");
-    new WorldObjFactoryImpl<WoodThing>("woodthing");
     new WorldObjFactoryImpl<Exit>("exit");
 
     // traps
