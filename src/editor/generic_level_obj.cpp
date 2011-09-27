@@ -158,7 +158,12 @@ GenericLevelObj::set_res_desc(const ResDescriptor d)
 void
 GenericLevelObj::draw(DrawingContext &gc)
 {
-  if (attribs & HAS_SPRITE || attribs & HAS_SPRITE_FAKE)
+  if (attribs & HAS_COLOR && section_name == "surface-background")
+  {
+    gc.draw(sprite, pos);        
+    gc.draw_fillrect(get_rect(), color, pos.z);
+  }
+  else if (attribs & HAS_SPRITE || attribs & HAS_SPRITE_FAKE)
   {
     if (attribs & HAS_REPEAT)
     {
