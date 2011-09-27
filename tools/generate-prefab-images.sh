@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for i in data/prefabs/*.prefab; do
+for i in data/prefabs/*.prefab data/prefabs/*/*.prefab; do
     OUT="${i##data/}"
     OUT="data/images/${OUT%%.prefab}.png"
     echo "Writing $OUT"
