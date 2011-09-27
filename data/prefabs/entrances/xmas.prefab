@@ -20,7 +20,7 @@
       (speed 0)
       (parallax 0))
     (entrance 
-      (position 1 1 110)
+      (position 0 0 110)
       (owner-id 0)
       (direction "misc")
       (release-rate 150))))
