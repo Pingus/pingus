@@ -804,7 +804,6 @@
         (modifier "ROT0"))
       (position 1869 403 1))
     (entrance 
-      (type "generic")
       (position 279 669 100)
       (owner-id 0)
       (direction "right")

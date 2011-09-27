@@ -54,7 +54,6 @@
         (modifier "ROT180"))
       (position 1224 650 -1))
     (entrance 
-      (type "generic")
       (position 810 956 -1)
       (owner-id 0)
       (direction "left")

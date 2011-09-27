@@ -1857,7 +1857,6 @@ This is a risky trip, but you must take it to find out how to bring them all to 
       (speed 0)
       (repeat 40))
     (entrance 
-      (type "generic")
       (position 1336 438 105)
       (owner-id 0)
       (direction "right")

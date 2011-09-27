@@ -13,7 +13,6 @@
    (parallax 1))
 
   (entrance 
-   (type "generic")
    (position 0 0 0)
    (owner-id 0)
    (direction "misc")

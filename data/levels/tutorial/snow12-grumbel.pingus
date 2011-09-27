@@ -206,7 +206,6 @@
         (modifier "ROT0"))
       (position 732 512 0))
     (entrance 
-      (type "generic")
       (position 665 272 0)
       (owner-id 0)
       (direction "misc")
@@ -224,7 +223,6 @@
         (modifier "ROT0"))
       (position 952 660 0))
     (entrance 
-      (type "generic")
       (position 810.367 273.367 0)
       (owner-id 0)
       (direction "misc")

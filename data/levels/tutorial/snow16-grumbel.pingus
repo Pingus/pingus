@@ -385,7 +385,6 @@
       (position 1367.5 573 0)
       (owner-id 0))
     (entrance 
-      (type "generic")
       (position 592.5 463 0)
       (owner-id 0)
       (direction "right")

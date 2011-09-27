@@ -70,7 +70,6 @@
         (modifier "ROT0"))
       (position 962 436 0))
     (entrance 
-      (type "generic")
       (position 739.5 233 0)
       (owner-id 0)
       (direction "left")

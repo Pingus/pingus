@@ -1061,7 +1061,6 @@
       (speed 0)
       (parallax 0))
     (entrance 
-      (type "generic")
       (position 329 797 50)
       (owner-id 0)
       (direction "misc")

@@ -909,7 +909,6 @@ Yet again the solution is your call... your gray matter is the key to the Pingus
       (speed 0)
       (repeat 31))
     (entrance 
-      (type "generic")
       (position 584 435 1000)
       (owner-id 0)
       (direction "misc")

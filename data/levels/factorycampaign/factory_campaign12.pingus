@@ -1116,7 +1116,6 @@
         (modifier "ROT0"))
       (position 979 865 5))
     (entrance 
-      (type "generic")
       (position 306 373 50)
       (owner-id 0)
       (direction "right")

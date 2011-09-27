@@ -665,7 +665,6 @@
       (speed 0)
       (repeat 35))
     (entrance 
-      (type "generic")
       (position 284 595 50)
       (owner-id 0)
       (direction "right")

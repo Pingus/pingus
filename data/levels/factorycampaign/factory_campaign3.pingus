@@ -34,7 +34,6 @@
       (para-x 0.5)
       (para-y 0.5))
     (entrance 
-      (type "generic")
       (position 316 488 -50)
       (owner-id 0)
       (direction "right")

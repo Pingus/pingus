@@ -1526,7 +1526,6 @@
       (speed 0)
       (repeat 31))
     (entrance 
-      (type "generic")
       (position 848 643 101)
       (owner-id 0)
       (direction "left")

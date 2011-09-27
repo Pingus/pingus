@@ -229,13 +229,11 @@
         (modifier "ROT0"))
       (position 1282 667 0))
     (entrance 
-      (type "generic")
       (position 580 496.5 0)
       (owner-id 0)
       (direction "right")
       (release-rate 158))
     (entrance 
-      (type "generic")
       (position 1335 483.5 0)
       (owner-id 0)
       (direction "left")

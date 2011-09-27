@@ -1460,13 +1460,11 @@
       (speed 0)
       (repeat 31))
     (entrance 
-      (type "generic")
       (position 1406 408 110)
       (owner-id 0)
       (direction "left")
       (release-rate 150))
     (entrance 
-      (type "generic")
       (position 459 382 110)
       (owner-id 0)
       (direction "right")

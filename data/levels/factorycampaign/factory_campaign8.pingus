@@ -748,7 +748,6 @@
         (modifier "ROT0"))
       (position 453 784 2))
     (entrance 
-      (type "generic")
       (position 525 148 100)
       (owner-id 0)
       (direction "misc")
