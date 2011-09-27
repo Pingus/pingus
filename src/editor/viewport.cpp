@@ -570,7 +570,7 @@ Viewport::update(float delta)
 void
 Viewport::refresh()
 {
-  state.set_limit(Rect(Vector2i(0,0), editor->get_level()->get_size()).grow(256));
+  state.set_limit(Rect(Vector2i(0,0), editor->get_level()->get_size()).grow(512));
 }
 
 void
