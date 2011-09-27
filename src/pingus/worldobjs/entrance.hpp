@@ -41,9 +41,6 @@ protected:
   int               release_rate;
   int               owner_id;
 
-  /// The type of the entrance type (woodthing, generic, etc.)
-  std::string type;
-
   Sprite smallmap_symbol;
   Sprite surface;
   int    last_release;

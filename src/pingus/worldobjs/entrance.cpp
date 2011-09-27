@@ -30,13 +30,11 @@ Entrance::Entrance(const FileReader& reader) :
   pos(),
   release_rate(150),
   owner_id(0),
-  type("generic"),
   smallmap_symbol("core/misc/smallmap_entrance"),
   surface(),
   last_release(),
   last_direction(0)
 {
-  reader.read_string("type",         type);
   reader.read_int   ("owner-id",     owner_id);
   reader.read_vector("position",     pos);
   reader.read_int   ("release-rate", release_rate);
