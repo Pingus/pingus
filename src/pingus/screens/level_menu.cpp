@@ -250,6 +250,10 @@ private:
   LevelMenu* level_menu;
   Sprite marker;
   Sprite marker_locked;
+
+  Sprite m_checkbox_marked;
+  Sprite m_checkbox;
+
   Levelset* levelset;
   int current_level;
   int page;
@@ -264,6 +268,8 @@ public:
     level_menu(level_menu_),
     marker(),
     marker_locked(),
+    m_checkbox_marked(),
+    m_checkbox(),
     levelset(0),
     current_level(-1),
     page(0),
@@ -273,6 +279,9 @@ public:
   {
     marker        = Sprite("core/menu/marker2");
     marker_locked = Sprite("core/menu/marker_locked");
+
+    m_checkbox_marked  = Sprite("core/menu/checkbox_marked_small");
+    m_checkbox = Sprite("core/menu/checkbox_small");
   }
 
   void draw(DrawingContext& gc) 
@@ -304,16 +313,17 @@ public:
           gc.draw(marker_locked, Vector2i(20, y));
         else if (i == current_level)
           gc.draw(marker, Vector2i(20, y));
-                        
-        if (globals::maintainer_mode)
-          gc.print_left(Fonts::chalk_small, Vector2i(list_rect.left, y+4), levelset->get_level(i)->plf.get_resname());
-        else
-          gc.print_left(Fonts::chalk_small, Vector2i(list_rect.left, y+4), _(levelset->get_level(i)->plf.get_levelname()));
 
-        if (levelset->get_level(i)->finished)
-          gc.print_right(Fonts::chalk_small, Vector2i(list_rect.right, y+4), _("solved"));
+        if (globals::maintainer_mode)
+          gc.print_left(Fonts::chalk_small, Vector2i(list_rect.left + 40, y+4), levelset->get_level(i)->plf.get_resname());
         else
-          gc.print_right(Fonts::chalk_small, Vector2i(list_rect.right, y+4), _("unsolved"));
+          gc.print_left(Fonts::chalk_small, Vector2i(list_rect.left + 40, y+4), _(levelset->get_level(i)->plf.get_levelname()));
+
+
+        if (levelset->get_level(i)->finished)        
+          gc.draw(m_checkbox_marked, Vector2i(list_rect.left + 0, y));
+        else
+          gc.draw(m_checkbox, Vector2i(list_rect.left + 0, y));
 
         y += item_height;
       }
