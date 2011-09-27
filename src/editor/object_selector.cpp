@@ -362,6 +362,13 @@ ObjectSelector::create_liquid()
     set->add(new Liquid(*i));
   }
 
+  // prefab liquids
+  auto directory = Pathname("prefabs/liquids", Pathname::DATA_PATH).opendir("*.prefab");
+  for(auto i = directory.begin(); i != directory.end(); ++i)
+  {
+    set->add(new Prefab(System::cut_file_extension(i->get_raw_path())));
+  }
+
   return set;
 }
 
@@ -406,7 +413,7 @@ ObjectSelector::create_prefab()
   std::unique_ptr<ObjectSelectorSet> set(new ObjectSelectorSet(object_list, 48, 48));
 
   // FIXME: doesn't recurse down the prefabs/ directory
-  auto directory = Pathname("prefabs", Pathname::DATA_PATH).opendir("*.prefab");
+  auto directory = Pathname("prefabs/misc", Pathname::DATA_PATH).opendir("*.prefab");
   for(auto i = directory.begin(); i != directory.end(); ++i)
   {
     set->add(new Prefab(System::cut_file_extension(i->get_raw_path())));
