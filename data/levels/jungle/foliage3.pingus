@@ -1036,7 +1036,7 @@
       (overrides 
         (repeat 31)))
     (prefab 
-      (name "prefabs/woodthing_entrance")
+      (name "prefabs/entrances/woodthing")
       (position 1107 331 0)
       (overrides 
         (release-rate 25)

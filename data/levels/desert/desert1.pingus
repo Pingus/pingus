@@ -767,7 +767,7 @@
         (modifier "ROT0"))
       (position -90 928 0))
     (prefab 
-      (name "prefabs/desert_entrance")
+      (name "prefabs/entrances/desert")
       (position 433 744 0)
       (overrides 
         (release-rate 100)

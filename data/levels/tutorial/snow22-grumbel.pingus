@@ -435,7 +435,7 @@
         (modifier "ROT0"))
       (position 529 1219 0))
     (prefab 
-      (name "prefabs/snow_entrance")
+      (name "prefabs/entrances/snow")
       (position 605 184 0)
       (overrides 
         (release-rate 150)

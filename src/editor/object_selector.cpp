@@ -315,10 +315,17 @@ ObjectSelector::create_entrance()
   
   set->add(new Entrance());
 
+  // prefab entrances
+  auto directory = Pathname("prefabs/entrances", Pathname::DATA_PATH).opendir("*.prefab");
+  for(auto i = directory.begin(); i != directory.end(); ++i)
+  {
+    set->add(new Prefab(System::cut_file_extension(i->get_raw_path())));
+  }
+
+  // entrance hotspots
   std::vector<std::string> lst = Resource::resmgr.get_section("entrances");
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
   {
-    //sprite.scale(48, 48);
     if (*i != "entrances/generic")
       set->add(new Hotspot(*i, 100));
   }

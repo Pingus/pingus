@@ -766,7 +766,7 @@
         (modifier "ROT0FLIP"))
       (position 617 1041 0))
     (prefab 
-      (name "prefabs/snow_entrance")
+      (name "prefabs/entrances/snow")
       (position 311 506 0)
       (overrides 
         (release-rate 200)

@@ -338,7 +338,7 @@
         (modifier "ROT180FLIP"))
       (position 1016 389 0))
     (prefab 
-      (name "prefabs/desert_entrance")
+      (name "prefabs/entrances/desert")
       (position 560 533 0)
       (overrides 
         (release-rate 50)

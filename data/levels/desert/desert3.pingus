@@ -45,7 +45,7 @@
       (position 1416 906 -47)
       (owner-id 0))
     (prefab 
-      (name "prefabs/desert_entrance")
+      (name "prefabs/entrances/desert")
       (position 329 736 0)
       (overrides 
         (release-rate 75)
