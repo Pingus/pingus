@@ -64,9 +64,11 @@ ResourceManager::add_resources_from_directory(const Pathname& path)
         it->has_extension(".png") ||
         it->has_extension(".jpg"))
     {
-      // FIXME: ugly hack to remove "data/images/" prefix, need better
+      // FIXME: ugly hack to remove "images/" prefix, need better
       // way to cut stuff away
-      m_resources.insert(System::cut_file_extension(it->get_raw_path().substr(12)));
+      std::string resdesc = System::cut_file_extension(it->get_raw_path().substr(7));
+      m_resources.insert(resdesc);
+      log_tmp(resdesc);
     }
   }
 }
@@ -88,7 +90,8 @@ ResourceManager::get_sprite_description_from_file(const std::string& resname)
       // as a path of the form "pingus/blocker/../blocker.png" would
       // fail when "pingus/blocker/" is missing, even so
       // "pingus/blocker.png" exists
-      desc->filename = Pathname(System::normalize_path(System::dirname(filename) + "/" + desc->filename.get_raw_path()),
+      desc->filename = Pathname(System::normalize_path(Pathname::join(System::dirname(filename), 
+                                                                      desc->filename.get_raw_path())),
                                 Pathname::DATA_PATH);
     }
 

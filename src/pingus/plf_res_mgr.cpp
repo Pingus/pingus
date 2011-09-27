@@ -88,7 +88,7 @@ PLFResMgr::load_plf_from_filename(const Pathname& pathname)
   // This should give us the tutorial/, wip/, etc. part of the res_name
   std::string dirname  = System::basename(System::dirname(pathname.get_sys_path()));
 
-  return load_plf_raw(dirname + "/" + res_name.substr(0, res_name.length()-7),
+  return load_plf_raw(Pathname::join(dirname, res_name.substr(0, res_name.length()-7)),
                       pathname);
 }
 

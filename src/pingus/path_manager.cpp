@@ -20,6 +20,7 @@
 
 #include "pingus/globals.hpp"
 #include "util/log.hpp"
+#include "util/pathname.hpp"
 #include "util/system.hpp"
 
 PathManager g_path_manager;
@@ -51,7 +52,7 @@ PathManager::complete(const std::string& relative_path)
 {
   for(auto it = m_paths.rbegin(); it != m_paths.rend(); ++it)
   {
-    std::string absolute_path = *it + "/" + relative_path;
+    std::string absolute_path = Pathname::join(*it, relative_path);
     bool exist = System::exist(absolute_path);
 
     log_debug(absolute_path << ": " << (exist ? "exist" : "missing"));
@@ -62,7 +63,7 @@ PathManager::complete(const std::string& relative_path)
     }
   }
   
-  return m_base_path + "/" + relative_path;
+  return Pathname::join(m_base_path, relative_path);
 }
 
 /* EOF */

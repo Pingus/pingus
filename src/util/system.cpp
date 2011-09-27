@@ -113,7 +113,7 @@ System::opendir(const std::string& pathname, const std::string& pattern)
       if (fnmatch(pattern.c_str(), de->d_name, FNM_PATHNAME) == 0)
       {
         struct stat buf;
-        stat((pathname + "/" + de->d_name).c_str (), &buf);
+        stat((Pathname::join(pathname, de->d_name)).c_str (), &buf);
         
         if (strcmp(de->d_name, "..") != 0 &&
             strcmp(de->d_name, ".") != 0)
@@ -134,7 +134,7 @@ System::opendir(const std::string& pathname, const std::string& pattern)
   }
 #else /* WIN32 */
   WIN32_FIND_DATA coFindData;
-  std::string FindFileDir = pathname + "/" + pattern;
+  std::string FindFileDir = Pathname::join(pathname, pattern);
   HANDLE hFind = FindFirstFile(TEXT(FindFileDir.c_str()),&coFindData);
 
   if (hFind == INVALID_HANDLE_VALUE)
@@ -177,12 +177,12 @@ System::opendir_recursive(const std::string& pathname)
   {
     if (it->type == DE_DIRECTORY)
     {
-      std::vector<std::string> subdir = opendir_recursive(pathname + "/" + it->name);
+      std::vector<std::string> subdir = opendir_recursive(Pathname::join(pathname, it->name));
       lst.insert(lst.end(), subdir.begin(), subdir.end());
     }
     else if (it->type == DE_FILE)
     {
-      lst.push_back(pathname + "/" + it->name);
+      lst.push_back(Pathname::join(pathname, it->name));
     }
   }
   return lst;
@@ -532,7 +532,7 @@ System::realpath(const std::string& pathname)
     drive.assign(cwd, 2);
 #endif
       
-    fullpath = std::string(cwd) + "/" + pathname;
+    fullpath = Pathname::join(std::string(cwd), pathname);
     free(cwd);
   }
 

@@ -17,6 +17,7 @@
 #include "util/pathname.hpp"
 
 #include <assert.h>
+#include <algorithm>
 #include <ostream>
 #include <set>
 
@@ -197,25 +198,21 @@ Pathname::opendir_recursive(std::vector<Pathname>& result) const
         paths.push_back(g_path_manager.get_path());
         auto lst = g_path_manager.get_paths();
         paths.insert(paths.end(), lst.begin(), lst.end());
+
+        // normalize all paths
+        std::transform(paths.begin(), paths.end(), 
+                       paths.begin(), System::normalize_path);
       }
 
       for(auto p = paths.begin(); p != paths.end(); ++p)
       {
         std::string path = Pathname::join(*p, pathname);
 
-        System::Directory lst = System::opendir(path);
+        auto lst = System::opendir_recursive(path);
         for(auto it = lst.begin(); it != lst.end(); ++it)
         {
-          Pathname sub_path(Pathname::join(path, it->name), Pathname::SYSTEM_PATH);
-
-          if (it->type == System::DE_DIRECTORY)
-          {
-            sub_path.opendir_recursive(result);
-          }
-          else
-          {
-            result.push_back(sub_path);
-          }
+          Pathname sub_path(it->substr(p->size()+1), Pathname::DATA_PATH);
+          result.push_back(sub_path);
         }
       }
     }
@@ -235,6 +232,8 @@ Pathname::opendir_recursive() const
 {
   std::vector<Pathname> result;
   opendir_recursive(result);
+  std::sort(result.begin(), result.end());
+  result.erase(std::unique(result.begin(), result.end()), result.end());
   return result;
 }
 
@@ -278,6 +277,12 @@ Pathname::operator<(const Pathname& rhs) const
   {
     return pathname < rhs.pathname;
   }
+}
+
+bool
+Pathname::operator==(const Pathname& rhs) const
+{
+  return type == rhs.type && pathname == rhs.pathname;
 }
 
 /* EOF */

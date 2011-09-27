@@ -115,7 +115,7 @@ FileDialog::load_file(const System::DirectoryEntry& entry)
   if (entry.type == System::DE_DIRECTORY)
   {
     //log_info("Directory: " << entry.name);
-    set_directory(pathname_inputbox->get_text() + "/" + entry.name);
+    set_directory(Pathname::join(pathname_inputbox->get_text(), entry.name));
   }
   else
   {
@@ -159,14 +159,16 @@ FileDialog::on_open()
   {
     if (mode == LOAD)
     {
-      Pathname file(pathname_inputbox->get_text() + "/" + filename_inputbox->get_text(), Pathname::SYSTEM_PATH);
+      Pathname file(Pathname::join(pathname_inputbox->get_text(), filename_inputbox->get_text()),
+                    Pathname::SYSTEM_PATH);
       log_info("Open: " << file);
       editor->load(file);
       hide();
     }
     else if (mode == SAVE) 
     {
-      Pathname file(pathname_inputbox->get_text() + "/" + filename_inputbox->get_text(), Pathname::SYSTEM_PATH);
+      Pathname file(Pathname::join(pathname_inputbox->get_text(), filename_inputbox->get_text()),
+                    Pathname::SYSTEM_PATH);
       log_info("Save: " << file);
       editor->save(file);
       hide();

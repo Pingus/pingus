@@ -78,6 +78,7 @@ public:
   uint64_t mtime() const;
 
   bool operator<(const Pathname& rhs) const;
+  bool operator==(const Pathname& rhs) const;
 };
 
 std::ostream& operator<< (std::ostream& os, const Pathname& p);
