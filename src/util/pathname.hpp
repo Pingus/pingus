@@ -45,13 +45,14 @@ private:
   std::string pathname;
   Type type;
 
+  void opendir_recursive(std::vector<Pathname>& result) const;
+
 public:
   Pathname();  
   explicit Pathname(const std::string& pathname, Type type = DATA_PATH);
 
   std::vector<Pathname> opendir(const std::string& pattern = "*") const;
   std::vector<Pathname> opendir_recursive() const;
-  void opendir_recursive(std::vector<Pathname>& result) const;
 
   bool has_extension(const std::string& ext) const;
 
@@ -75,6 +76,8 @@ public:
   bool exist() const;
 
   uint64_t mtime() const;
+
+  bool operator<(const Pathname& rhs) const;
 };
 
 std::ostream& operator<< (std::ostream& os, const Pathname& p);

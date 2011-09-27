@@ -398,7 +398,7 @@ ObjectSelector::create_prefab()
   auto directory = Pathname("prefabs", Pathname::DATA_PATH).opendir("*.prefab");
   for(auto i = directory.begin(); i != directory.end(); ++i)
   {
-    set->add(new Prefab("prefabs/" + System::cut_file_extension(i->get_raw_path())));
+    set->add(new Prefab(System::cut_file_extension(i->get_raw_path())));
   }
 
   return set;

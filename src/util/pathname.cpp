@@ -18,8 +18,10 @@
 
 #include <assert.h>
 #include <ostream>
+#include <set>
 
 #include "pingus/path_manager.hpp"
+#include "util/log.hpp"
 #include "util/string_util.hpp"
 #include "util/system.hpp"
 
@@ -153,17 +155,17 @@ Pathname::opendir(const std::string& pattern) const
         paths.insert(paths.end(), lst.begin(), lst.end());
       }
 
-      std::vector<Pathname> result;
+      std::set<Pathname> result;
       for(auto p = paths.begin(); p != paths.end(); ++p)
       {
         std::string path = Pathname::join(*p, pathname);
         System::Directory lst = System::opendir(path, pattern);
         for(auto it = lst.begin(); it != lst.end(); ++it)
         {
-          result.push_back(Pathname(Pathname::join(path, it->name), Pathname::SYSTEM_PATH));
+          result.insert(Pathname(Pathname::join(pathname, it->name), Pathname::DATA_PATH));
         }
       }
-      return result;
+      return std::vector<Pathname>(result.begin(), result.end());
     }
 
     case Pathname::SYSTEM_PATH: {
@@ -259,6 +261,23 @@ bool
 Pathname::has_extension(const std::string& ext) const
 {
   return StringUtil::has_suffix(pathname, ext);
+}
+
+bool
+Pathname::operator<(const Pathname& rhs) const
+{
+  if (type < rhs.type)
+  {
+    return true;
+  }
+  else if (type > rhs.type)
+  {
+    return false;
+  }
+  else 
+  {
+    return pathname < rhs.pathname;
+  }
 }
 
 /* EOF */
