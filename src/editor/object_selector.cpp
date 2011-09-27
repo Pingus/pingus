@@ -26,6 +26,7 @@
 #include "editor/object_selector_list_objects.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
+#include "pingus/globals.hpp"
 #include "pingus/resource.hpp"
 #include "util/log.hpp"
 #include "util/system.hpp"
@@ -322,12 +323,15 @@ ObjectSelector::create_entrance()
     set->add(new Prefab(System::cut_file_extension(i->get_raw_path())));
   }
 
-  // entrance hotspots
-  std::vector<std::string> lst = Resource::resmgr.get_section("entrances");
-  for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
+  if (globals::maintainer_mode)
   {
-    if (*i != "entrances/generic")
-      set->add(new Hotspot(*i, 100));
+    // entrance hotspots
+    std::vector<std::string> lst = Resource::resmgr.get_section("entrances");
+    for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
+    {
+      if (*i != "entrances/generic")
+        set->add(new Hotspot(*i, 100));
+    }
   }
 
   return set;
