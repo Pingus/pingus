@@ -68,7 +68,6 @@ ResourceManager::add_resources_from_directory(const Pathname& path)
       // way to cut stuff away
       std::string resdesc = System::cut_file_extension(it->get_raw_path().substr(7));
       m_resources.insert(resdesc);
-      log_tmp(resdesc);
     }
   }
 }

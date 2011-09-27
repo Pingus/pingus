@@ -78,7 +78,6 @@ MessageBox::draw_background(DrawingContext& gc)
 void
 MessageBox::update_layout()
 {
-  log_tmp("MessageBox::update_layout()");
   GUI::GroupComponent::update_layout();
 
   m_cancel_button->set_rect(Rect(Vector2i(rect.get_width() - 4 - 210, rect.get_height() - 4 - 30),
@@ -90,7 +89,6 @@ MessageBox::update_layout()
 void
 MessageBox::on_ok_button()
 {
-  log_tmp("ok button");
   hide();
   on_ok();
 }
@@ -98,7 +96,6 @@ MessageBox::on_ok_button()
 void
 MessageBox::on_cancel_button()
 {
-  log_tmp("cancel button");
   hide();
 }
 

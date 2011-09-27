@@ -276,8 +276,6 @@ GroupLevelObj::duplicate(const Vector2i& offset) const
   group->m_release_rate = m_release_rate;
   group->m_direction    = m_direction;
 
-  log_tmp(m_pos << " " << m_orig_pos);
-
   for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
   {
     group->add_child((*it)->duplicate(offset));
