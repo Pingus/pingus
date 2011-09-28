@@ -142,7 +142,7 @@ StoryScreen::StoryScreen(const FileReader& reader) :
   gui_manager->add(continue_button = new StoryScreenContinueButton(story_comp, 
                                                                    Display::get_width()/2 + 220 + 40, 
                                                                    Display::get_height()/2 + 180 + 32));
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
     gui_manager->add(skip_button     = new StoryScreenSkipButton(story_comp, 
                                                                  Display::get_width() - 4, 
                                                                  Display::get_height() - 26));

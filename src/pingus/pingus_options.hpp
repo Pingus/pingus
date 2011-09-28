@@ -83,7 +83,7 @@ struct PingusOptions
   Value<std::string> config_file;
   Value<std::string> controller;
 
-  Value<bool> maintainer_mode;
+  Value<bool> developer_mode;
   Value<unsigned int> debug;
 
   Value<int>  speed;
@@ -108,7 +108,7 @@ struct PingusOptions
     no_config_file(),
     config_file(),
     controller(),
-    maintainer_mode(),
+    developer_mode(),
     debug(),
     speed(),
     desiredfps(),

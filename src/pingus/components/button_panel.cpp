@@ -73,7 +73,7 @@ ButtonPanel::draw(DrawingContext& gc)
 
     gc.draw(buttons[i].sprite, Vector2i(rect.left + 20, rect.top + 38*i + 16));
 
-    if (globals::maintainer_mode)
+    if (globals::developer_mode)
     {
       std::ostringstream out;
       std::string str = StringUtil::to_string(aholder->get_available(buttons[i].name));

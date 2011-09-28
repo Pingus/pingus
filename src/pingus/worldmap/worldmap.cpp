@@ -170,7 +170,7 @@ Worldmap::on_primary_button_press(int x, int y)
 {
   Vector2f click_pos = gc_state.screen2world(Vector2i(x, y));
 
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
   {
     SExprFileWriter writer(std::cout);
     writer.begin_section("leveldot");
@@ -187,12 +187,12 @@ Worldmap::on_primary_button_press(int x, int y)
   Dot* dot = path_graph->get_dot(click_pos.x, click_pos.y);
   if (dot)
   {
-    if (globals::maintainer_mode)
+    if (globals::developer_mode)
       log_info("Worldmap: Clicked on: " << dot->get_name());
 
     if (path_graph->lookup_node(dot->get_name()) == pingus->get_node())
     {
-      if (globals::maintainer_mode)
+      if (globals::developer_mode)
         log_info("Worldmap: Pingu is on node, issue on_click()");
       dot->on_click();
     }
@@ -202,7 +202,7 @@ Worldmap::on_primary_button_press(int x, int y)
       {
         if (!pingus->walk_to_node(path_graph->lookup_node(dot->get_name())))
         {
-          if (globals::maintainer_mode)
+          if (globals::developer_mode)
             log_info("Worldmap: NO PATH TO NODE FOUND!");
         }
         else
@@ -221,7 +221,7 @@ Worldmap::on_primary_button_press(int x, int y)
 void
 Worldmap::on_secondary_button_press(int x, int y)
 {
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
   {
     Vector3f click_pos = gc_state.screen2world(Vector2i(x, y));
 
@@ -249,7 +249,7 @@ Worldmap::enter_level()
   }
   else
   {
-    if (globals::maintainer_mode)
+    if (globals::developer_mode)
       log_info("Worldmap: Pingus not on level");
   }
 }

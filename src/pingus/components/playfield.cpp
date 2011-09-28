@@ -212,7 +212,7 @@ Playfield::on_pointer_move (int x, int y)
   mouse_pos.x = x;
   mouse_pos.y = y;
 
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
   { // Some fun stuff that lets you draw directly on the level
     Uint8 *keystate = SDL_GetKeyState(NULL);
     if (keystate[SDLK_r])

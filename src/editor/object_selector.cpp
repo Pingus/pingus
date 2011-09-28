@@ -323,7 +323,7 @@ ObjectSelector::create_entrance()
     set->add(new Prefab(System::cut_file_extension(i->get_raw_path())));
   }
 
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
   {
     // entrance hotspots
     std::vector<std::string> lst = Resource::resmgr.get_section("entrances");

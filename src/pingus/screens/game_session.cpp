@@ -335,7 +335,7 @@ GameSession::on_startup ()
 {
   is_finished = false;
 
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
     log_info("Starting Music: " << server->get_plf().get_music());
 
   if (server->get_plf().get_music() == "none" || 

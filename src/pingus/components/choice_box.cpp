@@ -31,7 +31,7 @@ ChoiceBox::ChoiceBox(const Rect& rect_) :
 void
 ChoiceBox::draw(DrawingContext& gc)
 {
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
     gc.draw_rect(rect, Color(0, 255, 255));  
 
   if (!choices.empty())

@@ -40,7 +40,7 @@ TimeDisplay::draw (DrawingContext& gc)
   int  time_value = server->get_plf().get_time() - server->get_world()->get_time();
   std::string time_string;
 
-  if (server->get_plf().get_time() != -1 || globals::maintainer_mode)
+  if (server->get_plf().get_time() != -1 || globals::developer_mode)
   {
     time_string = GameTime::ticks_to_realtime_string(time_value);
     gc.print_right(font, Vector2i(Display::get_width() - 30, 3), time_string, 150);

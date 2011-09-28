@@ -144,8 +144,8 @@ PingusMain::apply_args()
   if (options.controller.is_set())
     globals::controller_file = options.controller.get();
 
-  if (options.maintainer_mode.is_set())
-    globals::maintainer_mode = options.maintainer_mode.get();
+  if (options.developer_mode.is_set())
+    globals::developer_mode = options.developer_mode.get();
 
   if (options.speed.is_set())
     globals::game_speed = options.speed.get();
@@ -224,8 +224,8 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Uses the controller given in FILE"));
 
   argp.add_group(_("Debugging and experimental stuff:"));
-  argp.add_option(334, "maintainer-mode",  "",  
-                  _("Enables some features, only interesting to programmers"));
+  argp.add_option(334, "developer-mode",  "",  
+                  _("Enables some debugging features for developers"));
   argp.add_option('t', "speed", "SPEED",
                   _("Set the game speed (0=fastest, >0=slower)"));
   argp.add_option('k', "fps", "FPS",
@@ -338,9 +338,9 @@ PingusMain::parse_args(int argc, char** argv)
         cmd_options.fullscreen.set(false);
         break;
 
-      case 334: // --maintainer-mode
-        cmd_options.maintainer_mode.set(true);
-        globals::maintainer_mode = true;
+      case 334: // --developer-mode
+        cmd_options.developer_mode.set(true);
+        globals::developer_mode = true;
         break;
 
       case 337:

@@ -151,7 +151,7 @@ LevelDot::draw_hover(DrawingContext& gc)
                     10000);
   }
 
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
   {
     gc.print_center(Fonts::pingus_small,
                     Vector2i(static_cast<int>(pos.x), static_cast<int>(pos.y) - 56),

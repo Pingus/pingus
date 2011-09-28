@@ -24,7 +24,7 @@ bool        print_fps               = false;
 bool        music_enabled           = true;
 bool        sound_enabled           = true;
 int         fast_forward_time_scale = 4;
-bool        maintainer_mode         = false;
+bool        developer_mode         = false;
 std::string demo_file;
 bool        auto_scrolling          = true;
 bool        drag_drop_scrolling     = false;

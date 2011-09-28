@@ -70,7 +70,7 @@ ActionHolder::pop_action (ActionName::Enum name)
   }
   else
   {
-    if (it->second.available > 0 || globals::maintainer_mode)
+    if (it->second.available > 0 || globals::developer_mode)
     {
       it->second.available -= 1;
       it->second.used      += 1;

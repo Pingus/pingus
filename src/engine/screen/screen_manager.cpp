@@ -24,6 +24,7 @@
 #include "engine/input/manager.hpp"
 #include "engine/screen/screen.hpp"
 #include "pingus/fps_counter.hpp"
+#include "pingus/fonts.hpp"
 #include "pingus/globals.hpp"
 
 template<class C>
@@ -220,7 +221,7 @@ ScreenManager::display()
     // previous frame took more than one second
     if (previous_frame_time > 1.0)
     {
-      if (globals::maintainer_mode)
+      if (globals::developer_mode)
         log_warn("ScreenManager: previous frame took longer than 1 second (" << previous_frame_time
                  << " sec.), ignoring and doing frameskip");
     }
@@ -287,8 +288,20 @@ ScreenManager::update(float delta, const std::vector<Input::Event>& events)
   
   // Draw FPS Counter
   if (globals::print_fps)
+  {
     fps_counter->draw();
-  
+    if (globals::developer_mode)
+    {
+      Fonts::pingus_small.render(origin_center, Display::get_width()/2, 35, 
+                                 "Developer Mode", Display::get_framebuffer());
+    }
+  }
+  else if (globals::developer_mode)
+  {
+    Fonts::pingus_small.render(origin_center, Display::get_width()/2, 10, 
+                               "Developer Mode", Display::get_framebuffer());
+  }
+
   Display::flip_display();
 }
 

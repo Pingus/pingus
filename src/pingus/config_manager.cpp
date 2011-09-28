@@ -211,7 +211,7 @@ ConfigManager::save()
 void
 ConfigManager::set_master_volume(int v)
 {
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
     log_info("ConfigManager::set_master_volume: " << v);
 }
 
@@ -224,7 +224,7 @@ ConfigManager::get_master_volume()
 void
 ConfigManager::set_sound_volume(int v)
 {
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
     log_info("ConfigManager::set_sound_volume: " << v);
 }
 
@@ -237,7 +237,7 @@ ConfigManager::get_sound_volume()
 void
 ConfigManager::set_music_volume(int v)
 {
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
     log_info("ConfigManager::set_music_volume: " << v);
 }
 
@@ -250,7 +250,7 @@ ConfigManager::get_music_volume()
 void
 ConfigManager::set_resolution(const Size& size)
 {
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
     log_info("ConfigManager::set_resolution: " << size.width << "x" << size.height);
 
   if (size != get_resolution())
@@ -269,7 +269,7 @@ ConfigManager::get_resolution()
 void
 ConfigManager::set_fullscreen(bool v)
 {
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
     log_info("ConfigManager::set_fullscreen: " << v);
 
   if (v != get_fullscreen())
@@ -290,7 +290,7 @@ ConfigManager::get_fullscreen()
 void
 ConfigManager::set_allow_resize(bool v)
 {
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
     log_info("ConfigManager::set_allow_resize: " << v);
 
   if (v != get_allow_resize())
@@ -308,7 +308,7 @@ ConfigManager::get_allow_resize()
 void
 ConfigManager::set_mouse_grab(bool v)
 {
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
     log_info("ConfigManager::set_mouse_grab: " << v);
 
   if (v != get_mouse_grab())
@@ -327,7 +327,7 @@ ConfigManager::get_mouse_grab()
 void
 ConfigManager::set_print_fps(bool v)
 {
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
     log_info("ConfigManager::set_print_fps: " << v);
 
   if (v != get_print_fps())
@@ -346,7 +346,7 @@ ConfigManager::get_print_fps()
 void
 ConfigManager::set_language(const tinygettext::Language& v)
 {
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
     log_info("ConfigManager::set_language: '" << v << "'");
 
   if (v != get_language())
@@ -365,7 +365,7 @@ ConfigManager::get_language()
 void
 ConfigManager::set_swcursor(bool v)
 {
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
     log_info("ConfigManager::set_swcursor: " << v);
 
   if (v != get_swcursor())
@@ -384,7 +384,7 @@ ConfigManager::get_swcursor()
 void
 ConfigManager::set_autoscroll(bool v)
 {
-  if (globals::maintainer_mode)
+  if (globals::developer_mode)
     log_info("ConfigManager::set_autoscroll: " << v);
 
   if (v != get_autoscroll())
