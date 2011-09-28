@@ -178,7 +178,9 @@ StartScreenComponent::draw(DrawingContext& gc)
                   _("Author: ") + plf.get_author());
 
   if (globals::developer_mode)
-    gc.print_left(Fonts::chalk_small, Vector2i(110, 430), _("Filename: ") + plf.get_resname());
+  {
+    gc.print_center(Fonts::chalk_small, Vector2i(gc.get_width()/2, gc.get_height()-50), plf.get_resname());
+  }
 }
 
 const std::string&
