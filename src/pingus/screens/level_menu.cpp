@@ -249,9 +249,9 @@ class LevelSelector : public GUI::RectComponent
 private:
   LevelMenu* level_menu;
   Sprite marker;
-  Sprite marker_locked;
 
   Sprite m_checkbox_marked;
+  Sprite m_checkbox_locked;
   Sprite m_checkbox;
 
   Levelset* levelset;
@@ -267,8 +267,8 @@ public:
     RectComponent(rect_),
     level_menu(level_menu_),
     marker(),
-    marker_locked(),
     m_checkbox_marked(),
+    m_checkbox_locked(),
     m_checkbox(),
     levelset(0),
     current_level(-1),
@@ -278,9 +278,9 @@ public:
     list_rect(50, 112, 680 - 90, 112 + items_per_page * item_height)
   {
     marker        = Sprite("core/menu/marker2");
-    marker_locked = Sprite("core/menu/marker_locked");
 
-    m_checkbox_marked  = Sprite("core/menu/checkbox_marked_small");
+    m_checkbox_marked = Sprite("core/menu/checkbox_marked_small");
+    m_checkbox_locked = Sprite("core/menu/locked_small");
     m_checkbox = Sprite("core/menu/checkbox_small");
   }
 
@@ -309,21 +309,35 @@ public:
       int y = list_rect.top;
       for(int i = page; i < (page + items_per_page) && i < levelset->get_level_count(); ++i)
       {
-        if (!levelset->get_level(i)->accessible)
-          gc.draw(marker_locked, Vector2i(20, y));
-        else if (i == current_level)
+        // draw background highlight mark
+        if (levelset->get_level(i)->accessible && i == current_level)
+        {
           gc.draw(marker, Vector2i(20, y));
+        }
 
+        // draw levelname
         if (globals::developer_mode)
+        {
           gc.print_left(Fonts::chalk_small, Vector2i(list_rect.left + 40, y+4), levelset->get_level(i)->plf.get_resname());
+        }
         else
+        {
           gc.print_left(Fonts::chalk_small, Vector2i(list_rect.left + 40, y+4), _(levelset->get_level(i)->plf.get_levelname()));
+        }
 
-
-        if (levelset->get_level(i)->finished)        
+        // draw icon
+        if (!levelset->get_level(i)->accessible)
+        {
+          gc.draw(m_checkbox_locked, Vector2i(list_rect.left + 0, y));
+        }
+        else if (levelset->get_level(i)->finished)
+        {
           gc.draw(m_checkbox_marked, Vector2i(list_rect.left + 0, y));
+        }
         else
+        {
           gc.draw(m_checkbox, Vector2i(list_rect.left + 0, y));
+        }
 
         y += item_height;
       }
