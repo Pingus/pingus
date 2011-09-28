@@ -22,53 +22,9 @@
 #include "util/utf8.hpp"
 
 std::string
-StringFormat::normalize(std::string text)
-{
-  std::string::size_type pos = 0;
-  while ((pos = text.find('\t', pos)) != std::string::npos)
-    text.replace(pos, 1, 1, ' ');
-
-  pos = 0;
-  while ((pos = text.find("  ", pos)) != std::string::npos)
-    text.replace(pos, 2, 1, ' ');
-
-  pos = 0;
-  while ((pos = text.find('\n', pos)) != std::string::npos)
-  {
-    if (pos < text.length() && text[pos + 1] == '\n')   // double enter marks paragraph
-    {
-      text.replace(pos, 2, 1, '\n');              // replace the two \n by one
-    }
-    else if (pos < text.length() - 1 && text[pos + 1] == ' ' && text[pos + 2] == '\n')
-    {
-      text.replace(pos, 3, 1, '\n');              // whitespace between the two \n doesn't matter
-    }
-    else
-    {
-      text.replace(pos, 1, 1, ' ');
-      continue;                                   // no \n here anymore, so continue searching
-    }
-
-    if (pos && text[pos - 1] == ' ')
-      text.replace(pos - 1, 2, 1, '\n');                  // no whitespace in front
-
-    if (pos < text.length() && text[pos + 1] == ' ')
-      text.replace(pos, 2, 1, '\n');                      // no whitespace behind
-
-    ++pos;                                                // we don't want to find it again
-  }
-
-  pos = 0;
-  while ((pos = text.find("  ", pos)) != std::string::npos)
-    text.replace(pos, 2, 1, ' ');
-
-  return text;
-}
-
-std::string
 StringFormat::break_line (const std::string& text_, int width, const Font& font)
 {
-  std::string text = StringFormat::normalize(text_);
+  std::string text = text_;
 
   UTF8::iterator beg(text);
   float line_width = 0;
@@ -94,6 +50,10 @@ StringFormat::break_line (const std::string& text_, int width, const Font& font)
       }
           
       beg = it+1;
+    }
+    else if (*it == '\n')
+    {
+      line_width = 0;
     }
   }
   
