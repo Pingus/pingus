@@ -164,6 +164,16 @@ public:
       left <= pos.x && pos.x < right &&
       top  <= pos.y && pos.y < bottom;
   }
+
+  //: Check if rect is inside this
+  bool contains(const Rect& rect) const
+  {
+    return 
+      left   <= rect.left  &&
+      right  >= rect.right &&
+      top    <= rect.top   &&
+      bottom >= rect.bottom;
+  }
         
   //: Returns another Rect containing a rotated version of this one.
   //param hotspot: Vector2i to rotate around.
