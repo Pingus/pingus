@@ -333,13 +333,13 @@ PingusMain::parse_args(int argc, char** argv)
         break;
 
       case 'v':
-        std::cout << "Pingus " << VERSION << std::endl;
-        std::cout << "\n"
+        std::cout <<
+          "Pingus " VERSION "\n"
           "Copyright (C) 1998-2011 Ingo Ruhnke <grumbel@gmail.com>\n"
-          "See the file AUTHORS for a complete list of contributors.\n\n"
-          "There is NO warranty.  You may redistribute this software\n"
-          "under the terms of the GNU General Public License.\n"
-          "For more information about these matters, see the files named COPYING." << std::endl;
+          "See the file AUTHORS for a complete list of contributors.\n"
+          "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are\n"
+          "welcome to redistribute it under certain conditions; see the file COPYING for details."
+                  << std::endl;
         exit(EXIT_SUCCESS);
         break;
           

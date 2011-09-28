@@ -42,7 +42,7 @@ SDLSystem::init_display(const Size& size, bool fullscreen)
 {
   Display::set_video_mode(size, fullscreen);
 
-  SDL_WM_SetCaption("Pingus " VERSION " - SDL Edition", 0 /* icon */);
+  SDL_WM_SetCaption("Pingus " VERSION, 0 /* icon */);
 
   SDL_EnableUNICODE(1);
 

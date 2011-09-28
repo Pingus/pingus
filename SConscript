@@ -107,7 +107,7 @@ class Project:
 
         self.env = Environment(options = self.opts, ENV=os.environ)
         self.env.Append(CXXFLAGS = ["-std=c++0x"])
-        self.env.Append(CPPDEFINES = [('VERSION', '"\\"0.8.0\\""')])
+        self.env.Append(CPPDEFINES = [('VERSION', '"\\"0.7.4\\""')])
         Help(self.opts.GenerateHelpText(self.env))
 
         if os.environ.has_key('PATH'):
