@@ -184,8 +184,7 @@ Viewport::on_primary_button_release(int x_, int y_)
     highlighted_area.normalize();
     for (auto it = get_objects()->begin(); it != get_objects()->end(); ++it)
     {
-      if (highlighted_area.contains(Vector2i(int((*it)->get_rect().left),
-                                             int((*it)->get_rect().top))))
+      if (highlighted_area.contains((*it)->get_rect()))
       {
         selection.insert(*it);
       }
