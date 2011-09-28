@@ -30,6 +30,9 @@ class Logger
 {
 public:
   enum LogLevel {
+    /** Used in set_log_level() to disable all output */
+    kNone,
+
     /** things that shouldn't happen (i.e. a catched exceptions) */
     kError,
 
