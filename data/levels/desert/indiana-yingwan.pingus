@@ -2,8 +2,12 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "Pingus Jones and (not really ;) the Last Exit")
-    (description "Dr. Jones' notebook: (1) the breath of God: only the penitent pingus will pass; (2) the word of God... in reverse; (3) the path of God: leap from the head of something like a cat.")
+    (levelname "Pingus Jones and the Last Exit")
+    (description "Dr. Jones' notebook:
+
+  (1) the breath of God: only the penitent pingus will pass;
+  (2) the word of God... in reverse;
+  (3) the path of God: leap from the head of something like a cat.")
     (author "Ying-Wan Lam <yingwan.lam@yale.edu>")
     (number-of-pingus 50)
     (number-to-save 40)
