@@ -24,6 +24,7 @@
 #include "pingus/screens/game_session.hpp"
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
+#include "util/log.hpp"
 #include "util/string_util.hpp"
 
 TimeDisplay::TimeDisplay (GameSession* c) :
@@ -37,12 +38,16 @@ TimeDisplay::TimeDisplay (GameSession* c) :
 void
 TimeDisplay::draw (DrawingContext& gc)
 {
-  int  time_value = server->get_plf().get_time() - server->get_world()->get_time();
-  std::string time_string;
-
   if (server->get_plf().get_time() != -1 || globals::developer_mode)
   {
-    time_string = GameTime::ticks_to_realtime_string(time_value);
+    int time_value = server->get_world()->get_time();
+    
+    if (server->get_plf().get_time() != -1 && !globals::developer_mode)
+    {
+      time_value = time_value - server->get_plf().get_time();
+    }
+
+    std::string time_string = GameTime::ticks_to_realtime_string(time_value);
     gc.print_right(font, Vector2i(Display::get_width() - 30, 3), time_string, 150);
   }
 }
