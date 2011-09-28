@@ -164,11 +164,18 @@ PingusMain::parse_args(int argc, char** argv)
   argp.add_usage(_("[OPTIONS]... [FILE]"));
   argp.add_doc(_("Pingus is a puzzle game where you need to guide a bunch of little penguins around the world."));
 
+  argp.add_group(_("General Options:"));
   argp.add_option('h', "help", "", 
                   _("Displays this help"));
   argp.add_option('v', "version", "", 
                   _("Print version number and exit"));
-    
+  argp.add_option('V', "verbose", "",
+                  _("Enable info level log output"));
+  argp.add_option('D', "debug", "", 
+                  _("Enable debug level log output"));
+  argp.add_option('Q', "quiet", "", 
+                  _("Disable all log output"));   
+
   argp.add_group(_("Display:"));
   argp.add_option('w', "window", "",
                   _("Start in Window Mode"));
@@ -176,10 +183,12 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Start in Fullscreen"));
   argp.add_option('r', "renderer", "RENDERER",
                   _("Use the given renderer (default: delta)"));
-  argp.add_option(346, "enable-swcursor", "",
-                  _("Enable software cursor"));
   argp.add_option('g', "geometry", "{width}x{height}",  
                   _("Set the resolution for pingus (default: 800x600)"));
+  argp.add_option(346, "enable-swcursor", "",
+                  _("Enable software cursor"));
+  argp.add_option(337, "disable-auto-scrolling", "",
+                  _("Disable automatic scrolling"));
 
   argp.add_group(_("Sound:"));
   argp.add_option('s', "disable-sound", "", 
@@ -196,8 +205,6 @@ PingusMain::parse_args(int argc, char** argv)
   argp.add_group("Modes:");
   argp.add_option('e', "editor", "",
                   _("Loads the level editor"));
-  argp.add_option('S', "save", "FILENAME",
-                  _("Save the level given level to FILENAME and quit"));
   argp.add_option(359, "credits", "",
                   _("Shows the credits"));
 
@@ -208,10 +215,6 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Set the path to load and save user files (savegames, etc.) to PATH"));
   argp.add_option('a', "addon", _("PATH"),
                   _("Add an addon path that is searched for datadir content"));
-
-  argp.add_group(_("Misc Options:"));
-  argp.add_option(337, "disable-auto-scrolling", "",
-                  _("Disable automatic scrolling"));
   argp.add_option(342, "no-cfg-file", "",
                   _("Don't read ~/.pingus/config"));
   argp.add_option(347, "config-file", _("FILE"),
@@ -223,11 +226,6 @@ PingusMain::parse_args(int argc, char** argv)
   argp.add_group(_("Debugging and experimental stuff:"));
   argp.add_option(334, "maintainer-mode",  "",  
                   _("Enables some features, only interesting to programmers"));
-
-  argp.add_option('D', "debug",  "OPTION", 
-                  _("Enable the output of debugging info, possible "
-                    "OPTIONs are tiles, gametime, actions, sound, resources, gui, "
-                    "input, pathmgr"));
   argp.add_option('t', "speed", "SPEED",
                   _("Set the game speed (0=fastest, >0=slower)"));
   argp.add_option('k', "fps", "FPS",
@@ -276,10 +274,6 @@ PingusMain::parse_args(int argc, char** argv)
         }
         break;
 
-      case 359: // --credits
-        cmd_options.credits.set(true);
-        break;
-
       case 'e': // -e, --editor
         cmd_options.editor.set(true);
         break;
@@ -294,10 +288,6 @@ PingusMain::parse_args(int argc, char** argv)
 
       case 's': // -s, --disable-sound
         cmd_options.disable_sound.set(true);
-        break;
-
-      case 'S':
-        cmd_options.save.set(argp.get_argument());
         break;
 
       case 'm': // -m, --disable-music
@@ -374,6 +364,15 @@ PingusMain::parse_args(int argc, char** argv)
         break;
 
       case 'D':
+        g_logger.set_log_level(Logger::kDebug);
+        break;
+
+      case 'V':
+        g_logger.set_log_level(Logger::kInfo);
+        break;
+
+      case 'Q':
+        g_logger.set_log_level(Logger::kNone);
         break;
 
       case 360:
@@ -491,27 +490,7 @@ PingusMain::start_game ()
 {
   ScreenManager screen_manager;
 
-  if (cmd_options.save.is_set())
-  { // Load a level and save it again, useful to convert it in a new format
-    if (!cmd_options.rest.is_set())
-    {
-      std::cout << "Error: level argument required" << std::endl;
-    }
-    else
-    {
-      Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
-      Editor::EditorLevel level;
-      std::cout << "Loading: " << filename.str() << std::endl;
-      level.load_level(filename);
-      std::cout << "Saving:  " << cmd_options.save.get() << std::endl;
-      level.save_level(cmd_options.save.get());
-    }
-  }
-  else if (cmd_options.credits.is_set() && cmd_options.credits.get())
-  { // just show the credits screen
-    screen_manager.push_screen(new Credits());
-  }
-  else if (cmd_options.editor.is_set() && cmd_options.editor.get())
+  if (cmd_options.editor.is_set() && cmd_options.editor.get())
   { // Editor
     Editor::EditorScreen* editor = new Editor::EditorScreen();
     // optionally load a map in the editor if it was given
@@ -552,7 +531,7 @@ PingusMain::start_game ()
 int
 PingusMain::run(int argc, char** argv)
 {
-  g_logger.set_log_level(Logger::kTemp);
+  g_logger.set_log_level(Logger::kWarning);
 
   tinygettext::Log::set_log_info_callback(0);
 

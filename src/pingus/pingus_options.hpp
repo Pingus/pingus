@@ -61,9 +61,7 @@ struct PingusOptions
   // Modes
   Value<bool> list_languages;
   Value<bool> editor;
-  Value<bool> credits;
   Value<bool> font;
-  Value<std::string> save;
 
   // Display
   Value<bool> fullscreen;
@@ -96,9 +94,7 @@ struct PingusOptions
     rest(),
     list_languages(),
     editor(),
-    credits(),
     font(),
-    save(),
     fullscreen(),
     resize(),
     swcursor(),
