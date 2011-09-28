@@ -18,6 +18,7 @@
 #ifndef HEADER_PINGUS_EDITOR_GENERIC_LEVEL_OBJ_HPP
 #define HEADER_PINGUS_EDITOR_GENERIC_LEVEL_OBJ_HPP
 
+#include "engine/display/surface.hpp"
 #include "editor/level_obj.hpp"
 
 namespace Editor {
@@ -29,7 +30,8 @@ class GenericLevelObj : public LevelObj
 protected:
   /** Sprite used to draw this object */
   Sprite sprite;
-  
+  Surface surface;
+
   /** Resource Desciptor of this object */
   ResDescriptor desc;
 

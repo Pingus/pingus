@@ -19,6 +19,7 @@
 #include <stdexcept>
 
 #include "engine/display/drawing_context.hpp"
+#include "pingus/resource.hpp"
 #include "util/log.hpp"
 
 namespace Editor {
@@ -26,6 +27,7 @@ namespace Editor {
 // Default constructor
 GenericLevelObj::GenericLevelObj(std::string obj_name) :
   sprite(),
+  surface(),
   desc(),
   pos(Vector3f(0,0,0)),
   orig_pos(),
@@ -62,6 +64,7 @@ GenericLevelObj::GenericLevelObj(std::string obj_name) :
 GenericLevelObj::GenericLevelObj(const GenericLevelObj& rhs) :
   LevelObj(rhs),
   sprite(rhs.sprite),
+  surface(rhs.surface),
   desc(rhs.desc),
   pos(rhs.pos),
   orig_pos(rhs.orig_pos),
@@ -203,22 +206,24 @@ GenericLevelObj::draw_selection(DrawingContext &gc)
 bool
 GenericLevelObj::is_at(int x, int y)
 {
-  return get_rect().contains(Vector2i(x,y));
-#if 0  
-  // old code
-  if (attribs & HAS_SPRITE || attribs & HAS_SPRITE_FAKE)
+  if (surface)
   {
-    Vector2i offset = sprite.get_offset();
-    return (x > pos.x - offset.x &&
-            x < pos.x - offset.x + sprite.get_width() && 
-            y > pos.y - offset.y && 
-            y < pos.y - offset.y + sprite.get_height());
+    if (get_rect().contains(Vector2i(x,y)))
+    {
+      Vector2i offset = sprite.get_offset();
+      Rect rect = get_rect();
+      Color pixel = surface.get_pixel(x - rect.left, y - rect.top);
+      return pixel.a != 0;
+    }
+    else
+    {
+      return false;
+    }
   }
   else
   {
-    return false;
+    return get_rect().contains(Vector2i(x,y));
   }
-#endif 
 }
 
 void
@@ -245,6 +250,7 @@ GenericLevelObj::refresh_sprite()
   if (attribs & HAS_SPRITE || attribs & HAS_SPRITE_FAKE)
   {
     sprite = Sprite(desc);
+    surface = Resource::load_surface(desc);
   }
 }
 
