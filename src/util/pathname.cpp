@@ -160,10 +160,17 @@ Pathname::opendir(const std::string& pattern) const
       for(auto p = paths.begin(); p != paths.end(); ++p)
       {
         std::string path = Pathname::join(*p, pathname);
-        System::Directory lst = System::opendir(path, pattern);
-        for(auto it = lst.begin(); it != lst.end(); ++it)
+        try
         {
-          result.insert(Pathname(Pathname::join(pathname, it->name), Pathname::DATA_PATH));
+          System::Directory lst = System::opendir(path, pattern);
+          for(auto it = lst.begin(); it != lst.end(); ++it)
+          {
+            result.insert(Pathname(Pathname::join(pathname, it->name), Pathname::DATA_PATH));
+          }
+        }
+        catch(const std::exception& err) 
+        {
+          log_info(err.what());
         }
       }
       return std::vector<Pathname>(result.begin(), result.end());
@@ -171,10 +178,17 @@ Pathname::opendir(const std::string& pattern) const
 
     case Pathname::SYSTEM_PATH: {
       std::vector<Pathname> result;
-      auto lst = System::opendir(pathname, pattern);
-      for(auto it = lst.begin(); it != lst.end(); ++it)
+      try
       {
-        result.push_back(Pathname(it->name, Pathname::SYSTEM_PATH));
+        auto lst = System::opendir(pathname, pattern);
+        for(auto it = lst.begin(); it != lst.end(); ++it)
+        {
+          result.push_back(Pathname(it->name, Pathname::SYSTEM_PATH));
+        }
+      }
+      catch(const std::exception& err)
+      {
+        log_info(err.what());
       }
       return result;
     }
@@ -215,14 +229,16 @@ Pathname::opendir_recursive(std::vector<Pathname>& result) const
           result.push_back(sub_path);
         }
       }
+      break;
     }
-
+      
     case Pathname::SYSTEM_PATH: {
       auto lst = System::opendir_recursive(pathname);
       for(auto it = lst.begin(); it != lst.end(); ++it)
       {
         result.push_back(Pathname(*it, Pathname::SYSTEM_PATH));
       }
+      break;
     }
   }
 }

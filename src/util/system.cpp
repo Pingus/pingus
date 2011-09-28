@@ -45,6 +45,7 @@
 #include "pingus/globals.hpp"
 #include "util/log.hpp"
 #include "util/pathname.hpp"
+#include "util/raise_exception.hpp"
 
 std::string System::userdir;
 std::string System::default_email;
@@ -104,7 +105,7 @@ System::opendir(const std::string& pathname, const std::string& pattern)
 
   if (dp == 0)
   {
-    log_error("System: Couldn't open: " << pathname);
+    raise_exception(std::runtime_error, pathname << ": " << strerror(errno));
   }
   else
   {
@@ -172,18 +173,25 @@ std::vector<std::string>
 System::opendir_recursive(const std::string& pathname)
 {
   std::vector<std::string> lst;
-  Directory dir = opendir(pathname);
-  for(auto it = dir.begin(); it != dir.end(); ++it)
+  try 
   {
-    if (it->type == DE_DIRECTORY)
+    Directory dir = opendir(pathname);
+    for(auto it = dir.begin(); it != dir.end(); ++it)
     {
-      std::vector<std::string> subdir = opendir_recursive(Pathname::join(pathname, it->name));
-      lst.insert(lst.end(), subdir.begin(), subdir.end());
+      if (it->type == DE_DIRECTORY)
+      {
+        std::vector<std::string> subdir = opendir_recursive(Pathname::join(pathname, it->name));
+        lst.insert(lst.end(), subdir.begin(), subdir.end());
+      }
+      else if (it->type == DE_FILE)
+      {
+        lst.push_back(Pathname::join(pathname, it->name));
+      }
     }
-    else if (it->type == DE_FILE)
-    {
-      lst.push_back(Pathname::join(pathname, it->name));
-    }
+  }
+  catch(const std::exception& err)
+  {
+    log_warn(err.what());
   }
   return lst;
 }

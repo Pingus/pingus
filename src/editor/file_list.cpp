@@ -17,6 +17,7 @@
 #include "editor/file_list.hpp"
 
 #include "editor/gui_style.hpp"
+#include "util/log.hpp"
 #include "pingus/fonts.hpp"
 
 namespace Editor {
@@ -75,7 +76,17 @@ void
 FileList::set_directory(const std::string& pathname, const std::string& pattern)
 {
   m_direction = pathname;
-  directory = System::opendir(pathname, pattern);
+
+  try
+  {
+    directory = System::opendir(pathname, pattern);
+  }
+  catch(const std::exception& err)
+  {
+    log_error(err.what());
+    directory.clear();
+  }
+
   directory.push_back(System::DirectoryEntry("..", System::DE_DIRECTORY));
   std::sort(directory.begin(), directory.end(), DirectorySorter());
 
