@@ -176,7 +176,7 @@ PingusMain::parse_args(int argc, char** argv)
   argp.add_option('Q', "quiet", "", 
                   _("Disable all log output"));   
 
-  argp.add_group(_("Display:"));
+  argp.add_group(_("Display Options:"));
   argp.add_option('w', "window", "",
                   _("Start in Window Mode"));
   argp.add_option('f', "fullscreen", "",
@@ -190,7 +190,7 @@ PingusMain::parse_args(int argc, char** argv)
   argp.add_option(337, "disable-auto-scrolling", "",
                   _("Disable automatic scrolling"));
 
-  argp.add_group(_("Sound:"));
+  argp.add_group(_("Sound Options:"));
   argp.add_option('s', "disable-sound", "", 
                   _("Disable sound"));
   argp.add_option('m', "disable-music", "", 
@@ -202,30 +202,27 @@ PingusMain::parse_args(int argc, char** argv)
   argp.add_option(365, "list-languages", "",
                   _("List all available languages"));
 
-  argp.add_group("Modes:");
+  argp.add_group("Editor Options:");
   argp.add_option('e', "editor", "",
                   _("Loads the level editor"));
-  argp.add_option(359, "credits", "",
-                  _("Shows the credits"));
 
-  argp.add_group(_("Path Options:"));
-  argp.add_option('d', "datadir", _("PATH"),
-                  _("Set the path to load the data files to 'path'"));
-  argp.add_option('u', "userdir", _("PATH"),
-                  _("Set the path to load and save user files (savegames, etc.) to PATH"));
-  argp.add_option('a', "addon", _("PATH"),
-                  _("Add an addon path that is searched for datadir content"));
+  argp.add_group(_("Directory Options:"));
+  argp.add_option('d', "datadir", _("DIR"),
+                  _("Load game datafiles from DIR"));
+  argp.add_option('u', "userdir", _("DIR"),
+                  _("Load config files and store savegames in DIR"));
+  argp.add_option('a', "addon", _("DIR"),
+                  _("Load game modifications from DIR"));
   argp.add_option(342, "no-cfg-file", "",
                   _("Don't read ~/.pingus/config"));
   argp.add_option(347, "config-file", _("FILE"),
-                  _("Read config from FILE (default: ~/.pingus/config) reduce CPU usage, "
-                    "might speed up the game on slower machines"));
+                  _("Read config from FILE (default: ~/.pingus/config)"));
   argp.add_option(360, "controller", "FILE",
                   _("Uses the controller given in FILE"));
 
-  argp.add_group(_("Debugging and experimental stuff:"));
+  argp.add_group(_("Debug Options:"));
   argp.add_option(334, "developer-mode",  "",  
-                  _("Enables some debugging features for developers"));
+                  _("Enables some special features for developers"));
   argp.add_option('t', "speed", "SPEED",
                   _("Set the game speed (0=fastest, >0=slower)"));
   argp.add_option('k', "fps", "FPS",
