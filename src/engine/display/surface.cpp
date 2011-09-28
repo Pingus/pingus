@@ -203,7 +203,23 @@ Surface::get_pixel(int x, int y) const
   switch(get_surface()->format->BytesPerPixel)
   {
     case 1:
-      pixel = *p;
+      {
+        pixel = *p;
+
+        if (impl->surface->format->palette)
+        {
+          if (impl->surface->flags & SDL_SRCCOLORKEY &&
+              pixel == impl->surface->format->colorkey)
+          {
+            return Color(0,0,0,0);
+          }
+          else
+          {
+            SDL_Color c = impl->surface->format->palette->colors[pixel];
+            return Color(c.r, c.g, c.b, 255);
+          }
+        }
+      }
       break;
 
     case 2: /* This will cause some problems ... */
