@@ -88,7 +88,7 @@ public:
 
   void draw(DrawingContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_center(Fonts::chalk_normal, Vector2i(x_pos + 55, y_pos - 4), _("Abort"));
+    gc.print_center(Fonts::chalk_normal, Vector2i(x_pos + 55, y_pos - 4), _("Give up"));
   }
 
   void on_click() {
