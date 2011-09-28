@@ -77,7 +77,6 @@ extern std::string controller_file;                 ///< --controller
 extern std::string  global_username;                 ///< The name of the currently logged in user
 extern std::string  global_email;                    ///< The email address of the currently logged in user
 extern std::string  default_language;                ///< The default language, which is used when the env var LANG is not set
-extern unsigned int pingus_debug_flags;              ///< Set some bits in this thing to get debug infos
 
 extern FramebufferType framebuffer_type;
 

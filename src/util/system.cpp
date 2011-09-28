@@ -232,11 +232,8 @@ void
 System::create_dir(std::string directory)
 {
 #ifndef WIN32
-  if (globals::pingus_debug_flags & PINGUS_DEBUG_DIRECTORIES)
-  {
-    log_info("System::create_dir: " << directory);
-  }
-
+  log_info("System::create_dir: " << directory);
+  
   if (!exist(directory))
   {
     if (mkdir(directory.c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) != 0)

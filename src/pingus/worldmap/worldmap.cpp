@@ -170,7 +170,7 @@ Worldmap::on_primary_button_press(int x, int y)
 {
   Vector2f click_pos = gc_state.screen2world(Vector2i(x, y));
 
-  if (globals::pingus_debug_flags & PINGUS_DEBUG_WORLDMAP)
+  if (globals::maintainer_mode)
   {
     SExprFileWriter writer(std::cout);
     writer.begin_section("leveldot");

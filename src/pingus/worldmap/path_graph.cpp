@@ -127,8 +127,7 @@ PathGraph::parse_edges(const FileReader& reader)
       // FIXME: merge this together with the Pingus::distance() stuff in a seperate Path class
       float cost = full_path.length();
 
-      // FIXME: Memory leak
-      if (worldmap && globals::pingus_debug_flags & PINGUS_DEBUG_WORLDMAP)
+      if (worldmap && globals::maintainer_mode)
         worldmap->add_drawable(new PathDrawable(full_path));
 
       // FIXME: No error checking,

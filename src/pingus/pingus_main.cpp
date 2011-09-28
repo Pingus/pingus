@@ -147,9 +147,6 @@ PingusMain::apply_args()
   if (options.maintainer_mode.is_set())
     globals::maintainer_mode = options.maintainer_mode.get();
 
-  if (options.debug.is_set())
-    globals::pingus_debug_flags = options.debug.get();
-
   if (options.speed.is_set())
     globals::game_speed = options.speed.get();
 
@@ -377,62 +374,6 @@ PingusMain::parse_args(int argc, char** argv)
         break;
 
       case 'D':
-        if (argp.get_argument() == "all")
-        {
-          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_ALL);
-        }
-        else if (argp.get_argument() == "actions")
-        {
-          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_ACTIONS);
-        }
-        else if (argp.get_argument() == "sound")
-        {
-          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_SOUND);
-        }
-        else if (argp.get_argument() == "gametime")
-        {
-          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_GAMETIME);
-        }
-        else if (argp.get_argument() == "tiles")
-        {
-          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_TILES);
-        }
-        else if (argp.get_argument() == "loading")
-        {
-          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_LOADING);
-        }
-        else if (argp.get_argument() == "translator")
-        {
-          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_TRANSLATOR);
-        }
-        else if (argp.get_argument() == "resources")
-        {
-          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_RESOURCES);
-        }
-        else if (argp.get_argument() == "gui")
-        {
-          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_GUI);
-        }
-        else if (argp.get_argument() == "input")
-        {
-          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_INPUT);
-        }
-        else if (argp.get_argument() == "worldmap")
-        {
-          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_WORLDMAP);
-        }
-        else if (argp.get_argument() == "pathmgr")
-        {
-          cmd_options.debug.set(cmd_options.debug.get() | PINGUS_DEBUG_PATHMGR);
-        }
-        else
-        {
-          std::cout << "PingusMain: Unhandled debug flag: " << argp.get_argument() << std::endl;
-          exit(EXIT_FAILURE);
-        }
-
-        // Update Pingus debug flags
-        globals::pingus_debug_flags = cmd_options.debug.get();
         break;
 
       case 360:
