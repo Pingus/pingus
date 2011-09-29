@@ -85,16 +85,17 @@ PingusMain::read_rc_file (void)
   if (!cmd_options.no_config_file.is_set() ||
       !cmd_options.no_config_file.get())
   {
-#if 0
-    std::string rcfile;
-
-    if (!cmd_options.config_file.is_set())
-      rcfile = System::get_userdir() + "config";
-    else
-      rcfile = cmd_options.config_file.get();
-
-    config_manager.load(rcfile);
-#endif
+    try
+    {
+      CommandLineOptions options;
+      options.merge(Options::from_file(Pathname(System::get_userdir() + "config", Pathname::SYSTEM_PATH)));
+      options.merge(cmd_options);
+      cmd_options = options;
+    }
+    catch(const std::exception& err)
+    {
+      log_error(err.what());
+    }
   }
 }
 
@@ -102,7 +103,7 @@ void
 PingusMain::apply_args()
 {
   // FIXME: merge cmd_options with stuff read from config file here
-  PingusOptions& options = cmd_options;
+  auto& options = cmd_options;
 
   // Mode toggles
   if (options.list_languages.is_set() &&
@@ -125,9 +126,6 @@ PingusMain::apply_args()
 
   if (options.software_cursor.is_set())
     globals::software_cursor = options.software_cursor.get();
-
-  // FIXME: if (options.geometry.is_set())
-  // FIXME:   config_manager.set_resolution(options.geometry.get());
 
   // Sound
   if (options.disable_music.is_set())
@@ -217,7 +215,7 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Load game modifications from DIR"));
   argp.add_option(342, "no-cfg-file", "",
                   _("Don't read ~/.pingus/config"));
-  argp.add_option(347, "config-file", _("FILE"),
+  argp.add_option('c', "config", _("FILE"),
                   _("Read config from FILE (default: ~/.pingus/config)"));
   argp.add_option(360, "controller", "FILE",
                   _("Uses the controller given in FILE"));
@@ -358,8 +356,8 @@ PingusMain::parse_args(int argc, char** argv)
         cmd_options.software_cursor.set(true);
         break;
 
-      case 347:
-        cmd_options.config_file.set(argp.get_argument());
+      case 'c':
+        cmd_options.merge(Options::from_file(Pathname(argp.get_argument(), Pathname::SYSTEM_PATH)));
         break;
 
       case 'D':
@@ -564,6 +562,11 @@ PingusMain::run(int argc, char** argv)
     
     // start and run the actual game
     start_game();
+
+    // save configuration
+    Pathname cfg_filename(System::get_userdir() + "config", Pathname::SYSTEM_PATH);
+    log_info(cfg_filename);
+    cmd_options.save(cfg_filename);
   }
   catch (const std::bad_alloc&) 
   {

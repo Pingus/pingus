@@ -14,13 +14,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_PINGUS_PINGUS_OPTIONS_HPP
-#define HEADER_PINGUS_PINGUS_PINGUS_OPTIONS_HPP
+#ifndef HEADER_PINGUS_PINGUS_OPTIONS_HPP
+#define HEADER_PINGUS_PINGUS_OPTIONS_HPP
 
 #include <string>
 
 #include "math/size.hpp"
 #include "util/pathname.hpp"
+
+class FileReader;
 
 template<class T>
 class Value
@@ -52,24 +54,34 @@ public:
   bool is_set() const {
     return valid;
   }
+
+  void merge(const Value<T>& rhs)
+  {
+    if (rhs.is_set())
+    {
+      value = rhs.get();
+      valid = true;
+    }
+  }
 };
 
-struct PingusOptions
+struct Options
 {
-  Value<std::string> rest;
-
-  // Modes
-  Value<bool> list_languages;
-  Value<bool> editor;
-  Value<bool> font;
+  static Options from_file_reader(const FileReader& reader);
+  static Options from_file(const Pathname& filename);
 
   // Display
   Value<bool> fullscreen;
-  Value<bool> resize;
+  Value<bool> resizable;
   Value<bool> software_cursor;
+  Value<bool> mouse_grab;
   Value<Size> geometry;
+  Value<Size> fullscreen_resolution;
 
   // Sound
+  Value<int>  master_volume;
+  Value<int>  sound_volume;
+  Value<int>  music_volume;
   Value<bool> disable_sound;
   Value<bool> disable_music;
 
@@ -79,41 +91,66 @@ struct PingusOptions
   Value<std::string> userdir;
 
   Value<bool> auto_scrolling;
-  Value<bool> no_config_file;
-  Value<std::string> config_file;
   Value<std::string> controller;
 
   Value<bool> developer_mode;
-  Value<unsigned int> debug;
 
+  Value<bool>  print_fps;
   Value<int>   speed;
   Value<float> desiredfps;
   Value<int>   tile_size;
 
-  PingusOptions() :
-    rest(),
-    list_languages(),
-    editor(),
-    font(),
+  Options() :
     fullscreen(),
-    resize(),
+    resizable(),
     software_cursor(),
+    mouse_grab(),
     geometry(),
+    fullscreen_resolution(),
+    master_volume(),
+    sound_volume(),
+    music_volume(),
     disable_sound(),
     disable_music(),
     language(),
     datadir(),
     userdir(),
     auto_scrolling(),
-    no_config_file(),
-    config_file(),
     controller(),
     developer_mode(),
-    debug(),
+    print_fps(),
     speed(),
     desiredfps(),
     tile_size()
   {}
+
+  virtual ~Options() {}
+
+  void merge(const Options& rhs);
+
+  virtual void save(const Pathname& filename) const;
+};
+
+struct CommandLineOptions : public Options
+{
+  Value<std::string> rest;
+
+  // Modes
+  Value<bool> list_languages;
+  Value<bool> editor;
+  Value<bool> no_config_file;
+
+  CommandLineOptions() :
+    rest(),
+    list_languages(),
+    editor(),
+    no_config_file()
+  {}
+
+  virtual ~CommandLineOptions() {}
+
+  void merge(const Options& rhs) { Options::merge(rhs); }
+  void merge(const CommandLineOptions& rhs);
 };
 
 #endif

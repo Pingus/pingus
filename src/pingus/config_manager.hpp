@@ -29,12 +29,6 @@ public:
   ConfigManager();
   ~ConfigManager();
 
-  /** Load the configuration file */
-  void load(const std::string& file);
-
-  /** Save the configuration to file */
-  void save();
-
   void set_master_volume(int);
   int  get_master_volume();
   boost::signal<void(int)> on_master_volume_change;

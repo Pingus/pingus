@@ -58,7 +58,7 @@ public:
 
   void on_click() {
     parent->save_language();
-    config_manager.save();
+    //FIXME: config_manager.save();
     parent->close_screen();
     Sound::PingusSound::play_sound("yipee");
   }
