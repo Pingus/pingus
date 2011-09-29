@@ -59,28 +59,30 @@ PingusSoundReal::~PingusSoundReal()
 void
 PingusSoundReal::real_play_sound(const std::string& name, float volume, float panning)
 {
-  if (!globals::sound_enabled)
-    return;
-
-  SoundHandle chunk;
-
-  chunk = SoundResMgr::load(name);
-  if (!chunk)
+  if (globals::sound_enabled && 
+      m_master_volume > 0 && 
+      m_sound_volume > 0)
   {
-    log_error("Can't open sound '" << name << "' -- skipping\n"
-              << "  Mix_Error: " << Mix_GetError());
-    return;
-  }
+    SoundHandle chunk;
 
-  int channel = Mix_PlayChannel(-1, chunk, 0);
-  if (channel != -1)
-  {
-    Mix_Volume(channel, static_cast<int>(MIX_MAX_VOLUME * volume * m_sound_volume * m_master_volume));
-    if (panning != 0.0f)
+    chunk = SoundResMgr::load(name);
+    if (!chunk)
     {
-      Uint8 left  = static_cast<Uint8>((panning < 0.0f) ? 255 : static_cast<Uint8>((panning - 1.0f) * -255));
-      Uint8 right = static_cast<Uint8>((panning > 0.0f) ? 255 : static_cast<Uint8>((panning + 1.0f) * 255));
-      Mix_SetPanning(channel, left, right);
+      log_error("Can't open sound '" << name << "' -- skipping\n"
+                << "  Mix_Error: " << Mix_GetError());
+      return;
+    }
+
+    int channel = Mix_PlayChannel(-1, chunk, 0);
+    if (channel != -1)
+    {
+      Mix_Volume(channel, static_cast<int>(MIX_MAX_VOLUME * volume * m_sound_volume * m_master_volume));
+      if (panning != 0.0f)
+      {
+        Uint8 left  = static_cast<Uint8>((panning < 0.0f) ? 255 : static_cast<Uint8>((panning - 1.0f) * -255));
+        Uint8 right = static_cast<Uint8>((panning > 0.0f) ? 255 : static_cast<Uint8>((panning + 1.0f) * 255));
+        Mix_SetPanning(channel, left, right);
+      }
     }
   }
 }
@@ -97,29 +99,27 @@ PingusSoundReal::real_stop_music ()
 }
 
 void
-PingusSoundReal::real_play_music (const std::string & arg_filename, float volume, bool loop)
+PingusSoundReal::real_play_music(const std::string& filename, float volume, bool loop)
 {
-  std::string filename;
-
-  filename = arg_filename;
-
-  if (!globals::music_enabled)
-    return;
-
-  log_info("PingusSoundReal: Playing music: " << filename);
-
-  real_stop_music();
-
-  music_sample = Mix_LoadMUS(filename.c_str());
-  if (!music_sample)
+  if (globals::music_enabled &&
+      m_master_volume > 0 && 
+      m_music_volume > 0)
   {
-    log_error("Can't load music: " << filename << "' -- skipping\n"
-              << "  Mix_Error: " << Mix_GetError());
-    return;
-  }
+    log_info("PingusSoundReal: Playing music: " << filename);
 
-  Mix_VolumeMusic(static_cast<int>(MIX_MAX_VOLUME * volume * m_music_volume * m_master_volume));
-  Mix_PlayMusic(music_sample, loop ? -1 : 0);
+    real_stop_music();
+
+    music_sample = Mix_LoadMUS(filename.c_str());
+    if (!music_sample)
+    {
+      log_error("Can't load music: " << filename << "' -- skipping\n"
+                << "  Mix_Error: " << Mix_GetError());
+      return;
+    }
+
+    Mix_VolumeMusic(static_cast<int>(MIX_MAX_VOLUME * volume * m_music_volume * m_master_volume));
+    Mix_PlayMusic(music_sample, loop ? -1 : 0);
+  }
 }
 
 void
