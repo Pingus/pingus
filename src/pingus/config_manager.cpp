@@ -81,70 +81,64 @@ ConfigManager::load(const std::string& file)
     return;
   }
 
-  const std::vector<FileReader>& sections = reader.get_sections();
-  for (std::vector<FileReader>::const_iterator i = sections.begin();
-       i != sections.end(); ++i)
+  int int_value;
+  bool bool_value;
+  std::string string_value;
+  Size size_value;
+    
+  if (reader.read_int("master-volume", int_value)) 
   {
-    int int_value;
-    bool bool_value;
-    std::string string_value;
-    Size size_value;
+    set_master_volume(int_value);
+  }
+  
+  if (reader.read_int("sound-volume", int_value))
+  {
+    set_sound_volume(int_value);
+  }
+  
+  if (reader.read_int("music-volume", int_value))
+  {
+    set_music_volume(int_value);
+  }
+  
+  if (reader.read_size("resolution", size_value))
+  {
+    set_resolution(size_value);
+  }
 
-    if (i->get_name() == "master_volume")
-    {
-      i->read_int("value", int_value);
-      set_master_volume(int_value);
-    }
-    else if (i->get_name() == "sound_volume")
-    {
-      i->read_int("value", int_value);
-      set_sound_volume(int_value);
-    }
-    else if (i->get_name() == "music_volume")
-    {
-      i->read_int("value", int_value);
-      set_music_volume(int_value);
-    }
-    else if (i->get_name() == "resolution")
-    {
-      i->read_size("value", size_value);
-      set_resolution(size_value);
-    }
-    else if (i->get_name() == "fullscreen")
-    {
-      i->read_bool("value", bool_value);
-      set_fullscreen(bool_value);
-    }
-    else if (i->get_name() == "allow_resize")
-    {
-      i->read_bool("value", bool_value);
-      set_allow_resize(bool_value);
-    }
-    else if (i->get_name() == "mouse_grab")
-    {
-      i->read_bool("value", bool_value);
-      set_mouse_grab(bool_value);
-    }
-    else if (i->get_name() == "print_fps")
-    {
-      i->read_bool("value", bool_value);
-      set_print_fps(bool_value);
-    }
-    else if (i->get_name() == "language")
-    {
-      i->read_string("value", string_value);
-      set_language(tinygettext::Language::from_spec(string_value));
-    }
-    else if (i->get_name() == "swcursor")
-    {
-      i->read_bool("value", bool_value);
-      set_swcursor(bool_value);
-    }
-    else if (i->get_name() == "autoscroll")
-    {
-      i->read_bool("value", bool_value);
-      set_autoscroll(bool_value);
-    }
+  if (reader.read_bool("fullscreen", bool_value))
+  {
+    set_fullscreen(bool_value);
+  }
+  
+  if (reader.read_bool("allow-resize", bool_value))
+  {
+    set_allow_resize(bool_value);
+  }
+
+  if (reader.read_bool("mouse-grab", bool_value))
+  {
+    set_mouse_grab(bool_value);
+  }
+  
+  if (reader.read_bool("print-fps", bool_value))
+  {
+    set_print_fps(bool_value);
+  }
+  
+  if (reader.read_string("language", string_value))
+  {
+    set_language(tinygettext::Language::from_spec(string_value));
+  }
+  
+  if (reader.read_bool("software-cursor", bool_value))
+  {
+    set_swcursor(bool_value);
+  }
+  
+  if (reader.read_bool("autoscroll", bool_value))
+  {
+    set_autoscroll(bool_value);
   }
 }
 
@@ -159,51 +153,21 @@ ConfigManager::save()
 
   writer.begin_section("pingus-config");
 
-  writer.begin_section("master_volume");
-  writer.write_int("value", get_master_volume());
-  writer.end_section();
-
-  writer.begin_section("sound_volume");
-  writer.write_int("value", get_sound_volume());
-  writer.end_section();
-
-  writer.begin_section("music_volume");
-  writer.write_int("value", get_music_volume());
-  writer.end_section();
-
-  writer.begin_section("resolution");
-  writer.write_size("value", get_resolution());
-  writer.end_section();
-
-  writer.begin_section("fullscreen");
-  writer.write_bool("value", get_fullscreen());
-  writer.end_section();
-
-  writer.begin_section("allow_resize");
-  writer.write_bool("value", get_allow_resize());
-  writer.end_section();
-
-  writer.begin_section("mouse_grab");
-  writer.write_bool("value", get_mouse_grab());
-  writer.end_section();
-
-  writer.begin_section("print_fps");
-  writer.write_bool("value", get_print_fps());
-  writer.end_section();
-
-  writer.begin_section("language");
-  writer.write_string("value", get_language().str());
-  writer.end_section();
-
-  writer.begin_section("swcursor");
-  writer.write_bool("value", get_swcursor());
-  writer.end_section();
-
-  writer.begin_section("autoscroll");
-  writer.write_bool("value", get_autoscroll());
-  writer.end_section();
-
+  writer.write_int("master-volume", get_master_volume());
+  writer.write_int("sound-volume", get_sound_volume());
+  writer.write_int("music-volume", get_music_volume());
+  writer.write_size("resolution", get_resolution());
+  writer.write_bool("fullscreen", get_fullscreen());
+  writer.write_bool("allow-resize", get_allow_resize());
+  writer.write_bool("mouse-grab", get_mouse_grab());
+  writer.write_bool("print-fps", get_print_fps());
+  writer.write_string("language", get_language().str());
+  writer.write_bool("software-cursor", get_swcursor());
+  writer.write_bool("autoscroll", get_autoscroll());
+  
   writer.end_section(); // pingus-config
+
+  out << std::endl;
 
   System::write_file(filename, out.str());
 }
@@ -211,8 +175,7 @@ ConfigManager::save()
 void
 ConfigManager::set_master_volume(int v)
 {
-  if (globals::developer_mode)
-    log_info("ConfigManager::set_master_volume: " << v);
+  log_info("ConfigManager::set_master_volume: " << v);
 }
 
 int
@@ -224,8 +187,7 @@ ConfigManager::get_master_volume()
 void
 ConfigManager::set_sound_volume(int v)
 {
-  if (globals::developer_mode)
-    log_info("ConfigManager::set_sound_volume: " << v);
+  log_info("ConfigManager::set_sound_volume: " << v);
 }
 
 int
@@ -237,8 +199,7 @@ ConfigManager::get_sound_volume()
 void
 ConfigManager::set_music_volume(int v)
 {
-  if (globals::developer_mode)
-    log_info("ConfigManager::set_music_volume: " << v);
+  log_info("ConfigManager::set_music_volume: " << v);
 }
 
 int
@@ -250,8 +211,7 @@ ConfigManager::get_music_volume()
 void
 ConfigManager::set_resolution(const Size& size)
 {
-  if (globals::developer_mode)
-    log_info("ConfigManager::set_resolution: " << size.width << "x" << size.height);
+  log_info("ConfigManager::set_resolution: " << size.width << "x" << size.height);
 
   if (size != get_resolution())
   {
@@ -269,8 +229,7 @@ ConfigManager::get_resolution()
 void
 ConfigManager::set_fullscreen(bool v)
 {
-  if (globals::developer_mode)
-    log_info("ConfigManager::set_fullscreen: " << v);
+  log_info("ConfigManager::set_fullscreen: " << v);
 
   if (v != get_fullscreen())
   {
@@ -290,8 +249,7 @@ ConfigManager::get_fullscreen()
 void
 ConfigManager::set_allow_resize(bool v)
 {
-  if (globals::developer_mode)
-    log_info("ConfigManager::set_allow_resize: " << v);
+  log_info("ConfigManager::set_allow_resize: " << v);
 
   if (v != get_allow_resize())
   {
@@ -308,8 +266,7 @@ ConfigManager::get_allow_resize()
 void
 ConfigManager::set_mouse_grab(bool v)
 {
-  if (globals::developer_mode)
-    log_info("ConfigManager::set_mouse_grab: " << v);
+  log_info("ConfigManager::set_mouse_grab: " << v);
 
   if (v != get_mouse_grab())
   {
@@ -327,8 +284,7 @@ ConfigManager::get_mouse_grab()
 void
 ConfigManager::set_print_fps(bool v)
 {
-  if (globals::developer_mode)
-    log_info("ConfigManager::set_print_fps: " << v);
+  log_info("ConfigManager::set_print_fps: " << v);
 
   if (v != get_print_fps())
   {
@@ -346,8 +302,7 @@ ConfigManager::get_print_fps()
 void
 ConfigManager::set_language(const tinygettext::Language& v)
 {
-  if (globals::developer_mode)
-    log_info("ConfigManager::set_language: '" << v << "'");
+  log_info("ConfigManager::set_language: '" << v << "'");
 
   if (v != get_language())
   {
@@ -365,8 +320,7 @@ ConfigManager::get_language()
 void
 ConfigManager::set_swcursor(bool v)
 {
-  if (globals::developer_mode)
-    log_info("ConfigManager::set_swcursor: " << v);
+  log_info("ConfigManager::set_swcursor: " << v);
 
   if (v != get_swcursor())
   {
@@ -384,8 +338,7 @@ ConfigManager::get_swcursor()
 void
 ConfigManager::set_autoscroll(bool v)
 {
-  if (globals::developer_mode)
-    log_info("ConfigManager::set_autoscroll: " << v);
+  log_info("ConfigManager::set_autoscroll: " << v);
 
   if (v != get_autoscroll())
   {
