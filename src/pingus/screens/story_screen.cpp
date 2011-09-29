@@ -76,7 +76,7 @@ public:
   void on_pointer_enter()
   {
     SurfaceButton::on_pointer_enter();
-    Sound::PingusSound::play_sound ("tick", 0.3f);
+    Sound::PingusSound::play_sound ("tick");
   }
 
   void on_click()
@@ -118,7 +118,7 @@ public:
   void on_pointer_enter()
   {
     SurfaceButton::on_pointer_enter();
-    Sound::PingusSound::play_sound ("tick", 0.3f);
+    Sound::PingusSound::play_sound ("tick");
   }
 
   void on_click()

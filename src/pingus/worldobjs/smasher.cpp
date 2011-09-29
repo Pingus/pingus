@@ -66,7 +66,7 @@ Smasher::update ()
         // SMASH!!! The thing hitten earth and kills the pingus
         downwards = false;
         --count;
-        Sound::PingusSound::play_sound("sounds/tenton.wav", 0.7f);
+        Sound::PingusSound::play_sound("tenton");
 
         for(int i=0; i < 20; ++i)
         {

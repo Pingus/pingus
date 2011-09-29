@@ -59,7 +59,7 @@ RainGenerator::update()
     do_thunder = true;
     thunder_count = 1.0f;
     waiter_count = 1.0f;
-    Sound::PingusSound::play_sound ("sounds/thunder.wav");
+    Sound::PingusSound::play_sound ("thunder");
   }
 
   if (do_thunder)
