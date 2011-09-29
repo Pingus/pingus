@@ -175,7 +175,7 @@ ScreenManager::~ScreenManager()
 void
 ScreenManager::display()
 {
-  show_swcursor(globals::swcursor_enabled);
+  show_software_cursor(globals::software_cursor);
   
   Uint32 last_ticks = SDL_GetTicks();
   float previous_frame_time;
@@ -215,7 +215,7 @@ ScreenManager::display()
       write_events(std::cerr, events);
     }
 
-    if (globals::swcursor_enabled)
+    if (globals::software_cursor)
       cursor.update(previous_frame_time);
 
     // previous frame took more than one second
@@ -283,7 +283,7 @@ ScreenManager::update(float delta, const std::vector<Input::Event>& events)
   display_gc->clear();
   
   // Draw the mouse pointer
-  if (globals::swcursor_enabled)
+  if (globals::software_cursor)
     cursor.render(mouse_pos.x, mouse_pos.y, Display::get_framebuffer());
   
   // Draw FPS Counter
@@ -405,11 +405,11 @@ ScreenManager::resize(const Size& size)
 }
 
 void
-ScreenManager::show_swcursor(bool visible)
+ScreenManager::show_software_cursor(bool visible)
 {
-  globals::swcursor_enabled = visible;
+  globals::software_cursor = visible;
 
-  if (globals::swcursor_enabled)
+  if (globals::software_cursor)
   {
     SDL_ShowCursor(SDL_DISABLE);
   }

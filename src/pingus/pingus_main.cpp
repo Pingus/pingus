@@ -85,6 +85,7 @@ PingusMain::read_rc_file (void)
   if (!cmd_options.no_config_file.is_set() ||
       !cmd_options.no_config_file.get())
   {
+#if 0
     std::string rcfile;
 
     if (!cmd_options.config_file.is_set())
@@ -93,6 +94,7 @@ PingusMain::read_rc_file (void)
       rcfile = cmd_options.config_file.get();
 
     config_manager.load(rcfile);
+#endif
   }
 }
 
@@ -121,8 +123,8 @@ PingusMain::apply_args()
   if (options.fullscreen.is_set())
     globals::fullscreen_enabled = options.fullscreen.get();
 
-  if (options.swcursor.is_set())
-    globals::swcursor_enabled = options.swcursor.get();
+  if (options.software_cursor.is_set())
+    globals::software_cursor = options.software_cursor.get();
 
   // FIXME: if (options.geometry.is_set())
   // FIXME:   config_manager.set_resolution(options.geometry.get());
@@ -185,7 +187,7 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Use the given renderer (default: delta)"));
   argp.add_option('g', "geometry", "{width}x{height}",  
                   _("Set the resolution for pingus (default: 800x600)"));
-  argp.add_option(346, "enable-swcursor", "",
+  argp.add_option(346, "software-cursor", "",
                   _("Enable software cursor"));
   argp.add_option(337, "disable-auto-scrolling", "",
                   _("Disable automatic scrolling"));
@@ -353,7 +355,7 @@ PingusMain::parse_args(int argc, char** argv)
         break;
 
       case 346:
-        cmd_options.swcursor.set(true);
+        cmd_options.software_cursor.set(true);
         break;
 
       case 347:

@@ -85,7 +85,7 @@ public:
   /** Remove all screens */
   void pop_all_screens();
 
-  void show_swcursor(bool v);
+  void show_software_cursor(bool v);
   
   /** @return a pointer to the current Screen */
   ScreenPtr get_current_screen();

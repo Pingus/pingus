@@ -66,7 +66,7 @@ struct PingusOptions
   // Display
   Value<bool> fullscreen;
   Value<bool> resize;
-  Value<bool> swcursor;
+  Value<bool> software_cursor;
   Value<Size> geometry;
 
   // Sound
@@ -86,9 +86,9 @@ struct PingusOptions
   Value<bool> developer_mode;
   Value<unsigned int> debug;
 
-  Value<int>  speed;
+  Value<int>   speed;
   Value<float> desiredfps;
-  Value<int>  tile_size;
+  Value<int>   tile_size;
 
   PingusOptions() :
     rest(),
@@ -97,7 +97,7 @@ struct PingusOptions
     font(),
     fullscreen(),
     resize(),
-    swcursor(),
+    software_cursor(),
     geometry(),
     disable_sound(),
     disable_music(),

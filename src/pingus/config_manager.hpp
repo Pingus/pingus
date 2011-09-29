@@ -47,9 +47,9 @@ public:
   int  get_music_volume();
   boost::signal<void(int)> on_music_volume_change;
 
-  void set_resolution(const Size& size);
-  Size get_resolution();
-  boost::signal<void(Size)> on_resolution_change;
+  void set_fullscreen_resolution(const Size& size);
+  Size get_fullscreen_resolution();
+  boost::signal<void(Size)> on_fullscreen_resolution_change;
 
   void set_fullscreen(bool);
   bool get_fullscreen();
@@ -71,9 +71,9 @@ public:
   tinygettext::Language get_language();
   boost::signal<void(const tinygettext::Language&)> on_language_change;
 
-  void set_swcursor(bool);
-  bool get_swcursor();
-  boost::signal<void(bool)> on_swcursor_change;
+  void set_software_cursor(bool);
+  bool get_software_cursor();
+  boost::signal<void(bool)> on_software_cursor_change;
 
   void set_autoscroll(bool);
   bool get_autoscroll();

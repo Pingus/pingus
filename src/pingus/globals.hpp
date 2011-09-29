@@ -61,7 +61,7 @@ extern bool        sound_enabled;                   ///< -s, --enable-sound
 extern bool        static_graphics;                 ///< Disables scrolling in menu and other places to make delta renderer faster
 extern bool        debug_actions;                   ///< --debug-actions
 extern int         fast_forward_time_scale;         ///< how much faster the game runs in FF mode
-extern bool        developer_mode;                 ///< --developer-mode
+extern bool        developer_mode;                  ///< --developer-mode
 extern std::string demo_file;                       ///<
 extern bool        auto_scrolling;                  ///< --enable-auto-scrolling
 extern bool        drag_drop_scrolling; 
@@ -70,7 +70,7 @@ extern bool        fullscreen_enabled;              ///< --enable-fullscreen
 extern int         default_screen_width;            ///< default screen width
 extern int         default_screen_height;           ///< default screen height
 extern bool        draw_collision_map;              ///<
-extern bool        swcursor_enabled;                ///< --enable-swcursor
+extern bool        software_cursor;                 ///< --enable-swcursor
 
 extern std::string controller_file;                 ///< --controller
 
