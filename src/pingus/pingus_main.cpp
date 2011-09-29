@@ -560,6 +560,8 @@ PingusMain::run(int argc, char** argv)
     Fonts::init();
     Sound::PingusSound::init();
     
+    config_manager.apply(cmd_options);
+
     // start and run the actual game
     start_game();
 

@@ -22,12 +22,16 @@
 #include "math/size.hpp"
 #include "tinygettext/language.hpp"
 
+class Options;
+
 class ConfigManager
 {
 private:
 public:
   ConfigManager();
   ~ConfigManager();
+
+  void apply(const Options& opts);
 
   void set_master_volume(int);
   int  get_master_volume();

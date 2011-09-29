@@ -20,6 +20,7 @@
 #include "engine/screen/screen_manager.hpp"
 #include "lisp/parser.hpp"
 #include "pingus/globals.hpp"
+#include "pingus/options.hpp"
 #include "tinygettext/dictionary_manager.hpp"
 #include "util/log.hpp"
 #include "util/sexpr_file_reader.hpp"
@@ -233,6 +234,45 @@ bool
 ConfigManager::get_autoscroll()
 {
   return globals::auto_scrolling;
+}
+
+void
+ConfigManager::apply(const Options& opts)
+{
+  if (opts.master_volume.is_set())
+    set_master_volume(opts.master_volume.get());
+
+  if (opts.sound_volume.is_set())  
+    set_sound_volume(opts.sound_volume.get());
+
+  if (opts.music_volume.is_set())
+    set_music_volume(opts.music_volume.get());
+  
+  if (opts.fullscreen_resolution.is_set())
+    set_fullscreen_resolution(opts.fullscreen_resolution.get());
+
+  if (opts.fullscreen.is_set())
+    set_fullscreen(opts.fullscreen.get());
+
+  if (opts.resizable.is_set())
+    set_allow_resize(opts.resizable.get());
+
+  if (opts.mouse_grab.is_set())
+    set_mouse_grab(opts.mouse_grab.get());
+
+  if (opts.print_fps.is_set())
+    set_print_fps(opts.print_fps.get());
+
+  if (opts.software_cursor.is_set())
+    set_software_cursor(opts.software_cursor.get());
+
+  if (opts.auto_scrolling.is_set())
+    set_autoscroll(opts.auto_scrolling.get());
+
+  // FIXME: language setting not yet working
+  //void set_language(const tinygettext::Language&);
+  //tinygettext::Language get_language();
+  //boost::signal<void(const tinygettext::Language&)> on_language_change;
 }
 
 /* EOF */
