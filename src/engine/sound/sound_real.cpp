@@ -25,8 +25,11 @@
 
 namespace Sound {
 
-PingusSoundReal::PingusSoundReal ()
-  : music_sample(0)
+PingusSoundReal::PingusSoundReal() :
+  music_sample(0),
+  m_music_volume(1.0f),
+  m_sound_volume(1.0f),
+  m_master_volume(1.0f)
 {
   log_info("Initializing SDL audio");
 
@@ -72,7 +75,7 @@ PingusSoundReal::real_play_sound(const std::string& name, float volume, float pa
   int channel = Mix_PlayChannel(-1, chunk, 0);
   if (channel != -1)
   {
-    Mix_Volume(channel, static_cast<int>(volume * MIX_MAX_VOLUME));
+    Mix_Volume(channel, static_cast<int>(MIX_MAX_VOLUME * volume * m_sound_volume * m_master_volume));
     if (panning != 0.0f)
     {
       Uint8 left  = static_cast<Uint8>((panning < 0.0f) ? 255 : static_cast<Uint8>((panning - 1.0f) * -255));
@@ -115,8 +118,39 @@ PingusSoundReal::real_play_music (const std::string & arg_filename, float volume
     return;
   }
 
-  Mix_VolumeMusic(static_cast<int>(volume * 0.5f * MIX_MAX_VOLUME)); // FIXME: music_volume
+  Mix_VolumeMusic(static_cast<int>(MIX_MAX_VOLUME * volume * m_music_volume * m_master_volume)); // FIXME: music_volume
   Mix_PlayMusic(music_sample, loop ? -1 : 0);
+}
+
+void
+PingusSoundReal::set_sound_volume(float volume)
+{
+  m_sound_volume = volume;
+  apply_volume_changes();
+}
+
+void
+PingusSoundReal::set_music_volume(float volume)
+{
+  m_music_volume = volume;
+  apply_volume_changes();
+}
+
+void
+PingusSoundReal::set_master_volume(float volume)
+{
+  m_master_volume = volume;
+  apply_volume_changes();
+}
+
+void
+PingusSoundReal::apply_volume_changes()
+{
+  int sound_volume = static_cast<int>(MIX_MAX_VOLUME * m_sound_volume * m_master_volume);
+  int music_volume = static_cast<int>(MIX_MAX_VOLUME * m_music_volume * m_master_volume);
+
+  Mix_Volume(-1, sound_volume);
+  Mix_VolumeMusic(music_volume);
 }
 
 } // namespace Sound

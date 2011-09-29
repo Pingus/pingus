@@ -41,6 +41,11 @@ public:
       @param panning  The panning to play the sound with */
   virtual void real_play_sound(const std::string & filename, 
                                float volume, float panning) = 0;
+
+  virtual void set_sound_volume(float volume) = 0;
+  virtual void set_music_volume(float volume) = 0;
+  virtual void set_master_volume(float volume) = 0;
+
 }; // class PingusSoundImpl
 
 }  // namespace Sound

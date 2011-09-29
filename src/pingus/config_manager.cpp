@@ -25,6 +25,7 @@
 #include "util/sexpr_file_reader.hpp"
 #include "util/sexpr_file_writer.hpp"
 #include "util/system.hpp"
+#include "engine/sound/sound.hpp"
 
 extern tinygettext::DictionaryManager dictionary_manager;
 
@@ -176,6 +177,7 @@ void
 ConfigManager::set_master_volume(int v)
 {
   log_info("ConfigManager::set_master_volume: " << v);
+  Sound::PingusSound::set_master_volume(static_cast<float>(v) / 100.0f);
 }
 
 int
@@ -188,6 +190,7 @@ void
 ConfigManager::set_sound_volume(int v)
 {
   log_info("ConfigManager::set_sound_volume: " << v);
+  Sound::PingusSound::set_sound_volume(static_cast<float>(v) / 100.0f);
 }
 
 int
@@ -200,6 +203,7 @@ void
 ConfigManager::set_music_volume(int v)
 {
   log_info("ConfigManager::set_music_volume: " << v);
+  Sound::PingusSound::set_music_volume(static_cast<float>(v) / 100.0f);
 }
 
 int

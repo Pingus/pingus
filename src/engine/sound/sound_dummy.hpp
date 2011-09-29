@@ -30,6 +30,11 @@ public:
   virtual void real_play_sound (const std::string & filename, float volume, float panning);
   virtual void real_play_music (const std::string & filename, float volume, bool loop);
   virtual void real_stop_music();
+
+  virtual void set_sound_volume(float volume) {}
+  virtual void set_music_volume(float volume) {}
+  virtual void set_master_volume(float volume) {}
+
 private:
   PingusSoundDummy (const PingusSoundDummy&);
   PingusSoundDummy& operator= (const PingusSoundDummy&);

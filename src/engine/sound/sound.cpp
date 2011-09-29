@@ -90,6 +90,27 @@ PingusSound::stop_music()
   sound->real_stop_music();
 }
 
+void
+PingusSound::set_sound_volume(float volume)
+{
+  assert(sound);
+  sound->set_sound_volume(volume);
+}
+
+void
+PingusSound::set_music_volume(float volume)
+{
+  assert(sound);
+  sound->set_music_volume(volume);
+}
+
+void
+PingusSound::set_master_volume(float volume)
+{
+  assert(sound);
+  sound->set_master_volume(volume);
+}
+
 } // namespace Sound
 
 /* EOF */

@@ -31,6 +31,10 @@ private:
   /** The current music file */
   Mix_Music* music_sample;
 
+  float m_music_volume;
+  float m_sound_volume;
+  float m_master_volume;
+
 public:
   PingusSoundReal ();
   virtual ~PingusSoundReal ();
@@ -48,6 +52,13 @@ public:
       @param volume   The volume to play the sound at
       @param panning  The panning to play the sound with */
   virtual void real_play_sound(const std::string & filename, float volume, float panning);
+
+  virtual void set_sound_volume(float volume);
+  virtual void set_music_volume(float volume);
+  virtual void set_master_volume(float volume);
+
+private:
+  void apply_volume_changes();
 
 private:
   PingusSoundReal (const PingusSoundReal&);

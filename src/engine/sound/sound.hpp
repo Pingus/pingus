@@ -45,6 +45,10 @@ public:
   static void play_music(const std::string & name, float volume = 1.0f, bool loop = true);
   static void stop_music();
 
+  static void set_sound_volume(float volume);
+  static void set_music_volume(float volume);
+  static void set_master_volume(float volume);
+
 private:
   PingusSound (const PingusSound&);
   PingusSound& operator= (const PingusSound&);
