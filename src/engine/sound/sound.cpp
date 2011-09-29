@@ -111,6 +111,27 @@ PingusSound::set_master_volume(float volume)
   sound->set_master_volume(volume);
 }
 
+float
+PingusSound::get_sound_volume()
+{
+  assert(sound);
+  return sound->get_sound_volume();
+}
+
+float
+PingusSound::get_music_volume()
+{
+  assert(sound);
+  return sound->get_music_volume();
+}
+
+float
+PingusSound::get_master_volume()
+{
+  assert(sound);
+  return sound->get_master_volume();
+}
+
 } // namespace Sound
 
 /* EOF */

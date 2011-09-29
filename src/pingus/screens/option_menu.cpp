@@ -75,7 +75,7 @@ OptionMenu::OptionMenu() :
   y_pos(),
   options(),
   fullscreen_box(),
-  swcursor_box(),
+  software_cursor_box(),
   autoscroll_box(),
   mousegrab_box(),
   printfps_box(),
@@ -153,7 +153,7 @@ OptionMenu::OptionMenu() :
   scroll_box->add_choice("Drag&Drop");
   scroll_box->add_choice("Rubberband");
   
-  swcursor_box      = new CheckBox(Rect());
+  software_cursor_box = new CheckBox(Rect());
   fullscreen_box    = new CheckBox(Rect());
   autoscroll_box    = new CheckBox(Rect());
   mousegrab_box     = new CheckBox(Rect());
@@ -163,7 +163,11 @@ OptionMenu::OptionMenu() :
   sound_volume_box  = new SliderBox(Rect());
   music_volume_box  = new SliderBox(Rect());
 
-  C(swcursor_box->on_change.connect(std::bind(&OptionMenu::on_swcursor_change, this, std::placeholders::_1)));
+  master_volume_box->set_value(config_manager.get_master_volume());
+  sound_volume_box->set_value(config_manager.get_sound_volume());
+  music_volume_box->set_value(config_manager.get_music_volume());
+
+  C(software_cursor_box->on_change.connect(std::bind(&OptionMenu::on_software_cursor_change, this, std::placeholders::_1)));
   C(fullscreen_box->on_change.connect(std::bind(&OptionMenu::on_fullscreen_change, this, std::placeholders::_1)));
   C(autoscroll_box->on_change.connect(std::bind(&OptionMenu::on_autoscroll_change, this, std::placeholders::_1)));
   C(mousegrab_box->on_change.connect(std::bind(&OptionMenu::on_mousegrab_change, this, std::placeholders::_1)));
@@ -186,7 +190,7 @@ OptionMenu::OptionMenu() :
   add_item(_("Autoscrolling:"),   autoscroll_box);
   add_item(_("Print FPS:"),       printfps_box);
   add_item(_("Mouse Grab:"),      mousegrab_box);
-  add_item(_("Software Cursor:"), swcursor_box);
+  add_item(_("Software Cursor:"), software_cursor_box);
 
   // Connect with ConfigManager
   mousegrab_box->set_state(config_manager.get_mouse_grab(), false);
@@ -198,8 +202,8 @@ OptionMenu::OptionMenu() :
   fullscreen_box->set_state(config_manager.get_fullscreen(), false);
   C(config_manager.on_fullscreen_change.connect(std::bind(&CheckBox::set_state, fullscreen_box, std::placeholders::_1, false)));
 
-  swcursor_box->set_state(config_manager.get_swcursor(), false);
-  C(config_manager.on_swcursor_change.connect(std::bind(&CheckBox::set_state, swcursor_box, std::placeholders::_1, false)));
+  software_cursor_box->set_state(config_manager.get_software_cursor(), false);
+  C(config_manager.on_software_cursor_change.connect(std::bind(&CheckBox::set_state, software_cursor_box, std::placeholders::_1, false)));
 
   autoscroll_box->set_state(config_manager.get_autoscroll(), false);
   C(config_manager.on_autoscroll_change.connect(std::bind(&CheckBox::set_state, autoscroll_box, std::placeholders::_1, false)));
@@ -328,9 +332,9 @@ OptionMenu::close_screen()
 }
 
 void
-OptionMenu::on_swcursor_change(bool v)
+OptionMenu::on_software_cursor_change(bool v)
 {
-  config_manager.set_swcursor(v);
+  config_manager.set_software_cursor(v);
 }
 
 void
@@ -389,7 +393,7 @@ OptionMenu::on_resolution_change(const std::string& str)
     Size size_;
     if (sscanf(str.c_str(), "%dx%d", &size_.width, &size_.height) == 2)
     {
-      config_manager.set_resolution(size_); 
+      config_manager.set_fullscreen_resolution(size_); 
     }
   }
 }

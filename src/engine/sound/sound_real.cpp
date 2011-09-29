@@ -118,7 +118,7 @@ PingusSoundReal::real_play_music (const std::string & arg_filename, float volume
     return;
   }
 
-  Mix_VolumeMusic(static_cast<int>(MIX_MAX_VOLUME * volume * m_music_volume * m_master_volume)); // FIXME: music_volume
+  Mix_VolumeMusic(static_cast<int>(MIX_MAX_VOLUME * volume * m_music_volume * m_master_volume));
   Mix_PlayMusic(music_sample, loop ? -1 : 0);
 }
 
@@ -151,6 +151,24 @@ PingusSoundReal::apply_volume_changes()
 
   Mix_Volume(-1, sound_volume);
   Mix_VolumeMusic(music_volume);
+}
+
+float
+PingusSoundReal::get_sound_volume() const
+{
+  return m_sound_volume;
+}
+
+float
+PingusSoundReal::get_music_volume() const
+{
+  return m_music_volume;
+}
+
+float
+PingusSoundReal::get_master_volume() const
+{
+  return m_master_volume;
 }
 
 } // namespace Sound

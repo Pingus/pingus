@@ -52,7 +52,7 @@ private:
   Options options;
 
   CheckBox* fullscreen_box;
-  CheckBox* swcursor_box;
+  CheckBox* software_cursor_box;
   CheckBox* autoscroll_box;
   CheckBox* mousegrab_box;
   CheckBox* printfps_box;
@@ -82,7 +82,7 @@ public:
   void resize(const Size&);
   void close_screen();
 
-  void on_swcursor_change(bool v);
+  void on_software_cursor_change(bool v);
   void on_fullscreen_change(bool v);
   void on_autoscroll_change(bool v);
   void on_fastmode_change(bool v);

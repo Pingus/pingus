@@ -57,6 +57,10 @@ public:
   virtual void set_music_volume(float volume);
   virtual void set_master_volume(float volume);
 
+  virtual float get_sound_volume() const;
+  virtual float get_music_volume() const;
+  virtual float get_master_volume() const;
+
 private:
   void apply_volume_changes();
 

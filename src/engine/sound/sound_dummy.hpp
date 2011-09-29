@@ -23,17 +23,31 @@ namespace Sound {
 
 class PingusSoundDummy : public PingusSoundImpl
 {
+private:
+  float m_master_volume;
+  float m_sound_volume;
+  float m_music_volume;
+
 public:
-  PingusSoundDummy () { }
+  PingusSoundDummy () :
+    m_master_volume(1.0f),
+    m_sound_volume(1.0f),
+    m_music_volume(1.0f)
+  {}
+
   virtual ~PingusSoundDummy () { }
 
-  virtual void real_play_sound (const std::string & filename, float volume, float panning);
-  virtual void real_play_music (const std::string & filename, float volume, bool loop);
-  virtual void real_stop_music();
+  void real_play_sound (const std::string & filename, float volume, float panning);
+  void real_play_music (const std::string & filename, float volume, bool loop);
+  void real_stop_music();
 
-  virtual void set_sound_volume(float volume) {}
-  virtual void set_music_volume(float volume) {}
-  virtual void set_master_volume(float volume) {}
+  void set_sound_volume(float volume) { m_sound_volume = volume; }
+  void set_music_volume(float volume) { m_music_volume = volume;  }
+  void set_master_volume(float volume) { m_master_volume = volume; }
+
+  float get_sound_volume() const { return m_sound_volume; }
+  float get_music_volume() const { return m_music_volume; }
+  float get_master_volume() const { return m_master_volume; }
 
 private:
   PingusSoundDummy (const PingusSoundDummy&);

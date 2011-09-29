@@ -86,4 +86,10 @@ SliderBox::on_pointer_move(int x, int y)
   }
 }
 
+void
+SliderBox::set_value(int v)
+{
+  value = v * 20 / 100; // FIXME: rounding errors
+}
+
 /* EOF */

@@ -46,6 +46,10 @@ public:
   virtual void set_music_volume(float volume) = 0;
   virtual void set_master_volume(float volume) = 0;
 
+  virtual float get_sound_volume() const = 0;
+  virtual float get_music_volume() const = 0;
+  virtual float get_master_volume() const = 0;
+
 }; // class PingusSoundImpl
 
 }  // namespace Sound

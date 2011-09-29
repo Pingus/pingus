@@ -36,6 +36,8 @@ public:
   void on_pointer_move(int x, int y);
   void update_layout() {}
 
+  void set_value(int v);
+
   boost::signal<void (int)> on_change;
 
 private:

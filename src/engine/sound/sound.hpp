@@ -49,6 +49,10 @@ public:
   static void set_music_volume(float volume);
   static void set_master_volume(float volume);
 
+  static float get_sound_volume();
+  static float get_music_volume();
+  static float get_master_volume();
+
 private:
   PingusSound (const PingusSound&);
   PingusSound& operator= (const PingusSound&);
