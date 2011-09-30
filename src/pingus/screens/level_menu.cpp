@@ -318,11 +318,11 @@ public:
         // draw levelname
         if (globals::developer_mode)
         {
-          gc.print_left(Fonts::chalk_small, Vector2i(list_rect.left + 40, y+4), levelset->get_level(i)->plf.get_resname());
+          gc.print_left(Fonts::chalk_normal, Vector2i(list_rect.left + 40, y+4), levelset->get_level(i)->plf.get_resname());
         }
         else
         {
-          gc.print_left(Fonts::chalk_small, Vector2i(list_rect.left + 40, y+4), _(levelset->get_level(i)->plf.get_levelname()));
+          gc.print_left(Fonts::chalk_normal, Vector2i(list_rect.left + 40, y+4), _(levelset->get_level(i)->plf.get_levelname()));
         }
 
         // draw icon
