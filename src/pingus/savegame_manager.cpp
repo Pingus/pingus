@@ -38,47 +38,36 @@ SavegameManager::SavegameManager(const std::string& arg_filename) :
   assert(instance_ == 0);
   instance_ = this;
 
-  std::shared_ptr<lisp::Lisp> sexpr;
-
-  try 
+  if (!System::exist(filename))
   {
-    sexpr = lisp::Parser::parse(filename);
+    log_info(filename << ": savegame file not found");
   }
-  catch (const std::runtime_error& e) 
+  else
   {
-    log_error("SavegameManager: " << e.what());
-    return;
-  }
-
-  if (!sexpr)
-  {
-    std::cerr << "SavegameManager: Couldn't find savegame file '" <<
-      filename << "', starting with an empty one." << std::endl;
-    return;
-  }
-
-  SExprFileReader reader(sexpr->get_list_elem(0));
-  if (reader.get_name() != "pingus-savegame")
-  {
-    log_error("Error: " << filename << ": not a (pingus-savegame) file");
-    return;
-  }
-
-  const std::vector<FileReader>& sections = reader.get_sections();
-  for(std::vector<FileReader>::const_iterator i = sections.begin();
-      i != sections.end(); ++i)
-  {
-    Savegame* savegame = new Savegame(*i);
-    SavegameTable::iterator j = find(savegame->get_filename());
-    if (j != savegames.end())
-    { // overwrite duplicates, shouldn't happen, but harmless
-      log_info("SavegameManager: name collision: " << savegame->get_filename());
-      delete *j;
-      *j = savegame;
+    FileReader reader = FileReader::parse(filename);
+    if (reader.get_name() != "pingus-savegame")
+    {
+      log_error(filename << ": not a (pingus-savegame) file");
     }
     else
     {
-      savegames.push_back(savegame);
+      const std::vector<FileReader>& sections = reader.get_sections();
+      for(std::vector<FileReader>::const_iterator i = sections.begin();
+          i != sections.end(); ++i)
+      {
+        Savegame* savegame = new Savegame(*i);
+        SavegameTable::iterator j = find(savegame->get_filename());
+        if (j != savegames.end())
+        { // overwrite duplicates, shouldn't happen, but harmless
+          log_info("name collision: " << savegame->get_filename());
+          delete *j;
+          *j = savegame;
+        }
+        else
+        {
+          savegames.push_back(savegame);
+        }
+      }
     }
   }
 }

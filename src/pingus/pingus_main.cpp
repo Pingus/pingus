@@ -85,16 +85,25 @@ PingusMain::read_rc_file (void)
   if (!cmd_options.no_config_file.is_set() ||
       !cmd_options.no_config_file.get())
   {
-    try
+    std::string filename = System::get_userdir() + "config";
+
+    if (!System::exist(filename))
     {
-      CommandLineOptions options;
-      options.merge(Options::from_file(Pathname(System::get_userdir() + "config", Pathname::SYSTEM_PATH)));
-      options.merge(cmd_options);
-      cmd_options = options;
+      log_info(filename << ": config file not found");
     }
-    catch(const std::exception& err)
+    else
     {
-      log_error(err.what());
+      try
+      {
+        CommandLineOptions options;
+        options.merge(Options::from_file(Pathname(filename, Pathname::SYSTEM_PATH)));
+        options.merge(cmd_options);
+        cmd_options = options;
+      }
+      catch(const std::exception& err)
+      {
+        log_error(err.what());
+      }
     }
   }
 }
@@ -184,7 +193,7 @@ PingusMain::parse_args(int argc, char** argv)
   argp.add_option('r', "renderer", "RENDERER",
                   _("Use the given renderer (default: delta)"));
   argp.add_option('g', "geometry", "{width}x{height}",  
-                  _("Set the resolution for pingus (default: 800x600)"));
+                  _("Set the window resolution for pingus (default: 800x600)"));
   argp.add_option(346, "software-cursor", "",
                   _("Enable software cursor"));
   argp.add_option(337, "disable-auto-scrolling", "",
