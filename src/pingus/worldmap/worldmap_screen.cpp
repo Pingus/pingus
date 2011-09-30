@@ -245,7 +245,7 @@ WorldmapScreen::~WorldmapScreen ()
 }
 
 void
-WorldmapScreen::load (const std::string& filename)
+WorldmapScreen::load(const Pathname& filename)
 {
   worldmap = std::unique_ptr<Worldmap>(new Worldmap(filename));
         

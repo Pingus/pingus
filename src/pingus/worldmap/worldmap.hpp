@@ -45,9 +45,6 @@ class Worldmap
 private:
   PingusWorldmap worldmap;
 
-  /** name of the file to parse */
-  std::string filename;
-
   typedef std::vector<Drawable*>   ObjectLst;
   typedef std::vector<Drawable*> DrawableLst;
 
@@ -75,14 +72,12 @@ private:
 
 public:
   /** Load the given*/
-  Worldmap(const std::string& filename);
+  Worldmap(const Pathname& filename);
   ~Worldmap();
 
   Pingus* get_pingus() { return pingus; }
 
   void on_startup();
-
-  std::string get_filename() const { return filename; }
 
   bool is_final_map();
 

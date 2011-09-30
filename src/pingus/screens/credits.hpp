@@ -25,6 +25,8 @@
 #include "engine/display/sprite.hpp"
 #include "engine/screen/gui_screen.hpp"
 
+class Pathname;
+
 class Credits : public GUIScreen
 {
 private:
@@ -53,21 +55,21 @@ private:
   std::vector<std::string> credits;
 
 public:
-  Credits ();
-  virtual ~Credits ();
+  Credits(const Pathname& filename);
+  virtual ~Credits();
 
-  void update (float);
-  void draw_background (DrawingContext& gc);
+  void update(float);
+  void draw_background(DrawingContext& gc);
 
-  void on_startup ();
+  void on_startup();
 
-  void on_pause_press ();
-  void on_fast_forward_press ();
-  void on_escape_press ();
+  void on_pause_press();
+  void on_fast_forward_press();
+  void on_escape_press();
 
 private:
-  Credits (const Credits&);
-  Credits& operator= (const Credits&);
+  Credits(const Credits&);
+  Credits& operator=(const Credits&);
 
 };
 

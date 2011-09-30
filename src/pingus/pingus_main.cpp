@@ -24,6 +24,7 @@
 #include "engine/system/sdl_system.hpp"
 #include "pingus/config_manager.hpp"
 #include "pingus/screens/demo_session.hpp"
+#include "pingus/worldmap/worldmap_screen.hpp"
 #include "pingus/screens/pingus_menu.hpp"
 #include "util/log.hpp"
 #include "util/string_util.hpp"
@@ -515,8 +516,21 @@ PingusMain::start_game ()
     }
     else if (StringUtil::has_suffix(cmd_options.rest.get(), ".font"))
     {
-      Pathname file(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
-      screen_manager.push_screen(new FontTestScreen(file)); 
+      Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
+      screen_manager.push_screen(new FontTestScreen(filename)); 
+    }
+    else if (StringUtil::has_suffix(cmd_options.rest.get(), ".credits"))
+    {
+      Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
+      screen_manager.push_screen(new Credits(filename)); 
+    }
+    else if (StringUtil::has_suffix(cmd_options.rest.get(), ".worldmap"))
+    {
+      Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
+
+      std::unique_ptr<WorldmapNS::WorldmapScreen> worldmap_screen(new WorldmapNS::WorldmapScreen());
+      worldmap_screen->load(filename);
+      ScreenManager::instance()->push_screen(worldmap_screen.release());
     }
     else if (StringUtil::has_suffix(cmd_options.rest.get(), ".story"))
     {

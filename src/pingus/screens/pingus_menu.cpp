@@ -86,7 +86,7 @@ PingusMenu::~PingusMenu()
 void
 PingusMenu::show_credits()
 {
-  ScreenManager::instance()->push_screen(new Credits());
+  ScreenManager::instance()->push_screen(new Credits(Pathname("credits/pingus.credits", Pathname::DATA_PATH)));
 }
 
 void
@@ -113,7 +113,7 @@ PingusMenu::do_start(const std::string &filename)
 #endif
   {
     std::unique_ptr<WorldmapNS::WorldmapScreen> worldmap_screen(new WorldmapNS::WorldmapScreen());
-    worldmap_screen->load(filename);
+    worldmap_screen->load(Pathname(filename, Pathname::DATA_PATH));
     ScreenManager::instance()->push_screen(worldmap_screen.release());
   }
 }

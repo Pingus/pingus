@@ -33,9 +33,8 @@ namespace WorldmapNS {
 
 Worldmap* Worldmap::current_ = 0; 
 
-Worldmap::Worldmap(const std::string& arg_filename) :
+Worldmap::Worldmap(const Pathname& filename) :
   worldmap(),
-  filename(arg_filename),
   default_node(),
   final_node(),
   pingus(),
@@ -48,7 +47,7 @@ Worldmap::Worldmap(const std::string& arg_filename) :
 {
   current_ = this;
 
-  worldmap = PingusWorldmap(Pathname(filename, Pathname::DATA_PATH));
+  worldmap = PingusWorldmap(filename);
 
   // Create all objects
   const std::vector<FileReader>& object_reader = worldmap.get_objects();

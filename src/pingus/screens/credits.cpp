@@ -16,6 +16,8 @@
 
 #include "pingus/screens/credits.hpp"
 
+#include <fstream>
+
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
@@ -25,6 +27,7 @@
 #include "pingus/gettext.h"
 #include "pingus/stat_manager.hpp"
 #include "util/log.hpp"
+#include "util/pathname.hpp"
 
 class CreditsOkButton
   : public GUI::SurfaceButton
@@ -58,7 +61,7 @@ private:
   CreditsOkButton & operator=(const CreditsOkButton&);
 };
 
-Credits::Credits() :
+Credits::Credits(const Pathname& filename) :
   scene_context(),
   fast_scrolling(false),
   background("core/menu/wood"),
@@ -82,140 +85,15 @@ Credits::Credits() :
   // character of each string is a special character, which indicates
   // the size of the font or other special stuff. "-" means large
   // font, "_" is a small font and "n" means a newline.
-
-  credits.push_back(_("-Idea"));
-  credits.push_back("_Ingo Ruhnke");
-  credits.push_back("n");
-
-  credits.push_back(_("-Maintaining"));
-  credits.push_back("_Ingo Ruhnke");
-  credits.push_back("n");
-
-  credits.push_back(_("-Programming"));
-  credits.push_back("_David Philippi");
-  credits.push_back("_Gervase Lam");
-  credits.push_back("_Ingo Ruhnke");
-  credits.push_back("_Jason Green");
-  credits.push_back("_Jimmy Salmon");
-  credits.push_back("_Michael Ploujnikov");
-  credits.push_back("_Nehal Mistry");
-  credits.push_back("n");
-
-  credits.push_back(_("-Porting (Win32)"));
-  credits.push_back("_Alberto Curro");
-  credits.push_back("_Björn Christoph Fischer");
-  credits.push_back("_Kenneth Gangstø");
-  credits.push_back("_Michael Käser");
-  credits.push_back("_Neil Mitchell");
-  credits.push_back("_Jason Green");
-  credits.push_back("n");
-
-  credits.push_back(_("-Porting (MacOSX)"));
-  credits.push_back("_Jason Green");
-  credits.push_back("_Sean Heber");
-  credits.push_back("n");
-
-  credits.push_back(_("-Gfx"));
-  credits.push_back("_Alan Tennent");
-  credits.push_back("_Craig Timpany");
-  credits.push_back("_Erik Søe Sørensen");
-  credits.push_back("_Ingo Ruhnke");
-  credits.push_back("_Jarno Elonen");
-  credits.push_back("_Joel Fauche");
-  credits.push_back("_Mark Collinson");
-  credits.push_back("_Michael Mestre");
-  credits.push_back("_Stefan Stiasny");
-  credits.push_back("_Tom Flavel");
-  credits.push_back("n");
-
-  credits.push_back(_("-Music"));
-  credits.push_back("_H. Matthew Smith");
-  credits.push_back("_Joseph Toscano");
-  credits.push_back("_Robbie Ferguson");
-  credits.push_back("_Yuri Sucupira");
-  credits.push_back("n");
-
-  credits.push_back(_("-Level Design"));
-  credits.push_back("_Craig Timpany");
-  credits.push_back("_Ingo Ruhnke");
-  credits.push_back("_Rune Zedeler");
-  credits.push_back("n");
-
-  credits.push_back(_("-Story"));
-  credits.push_back("_Ingo Ruhnke");
-  credits.push_back("n");
-
-  credits.push_back(_("-Translation"));
-  credits.push_back("_Cagri Coltekin");
-  credits.push_back("_David Philippi");
-  credits.push_back("_Giray Devlet");
-  credits.push_back("_Ingo Ruhnke");
-  credits.push_back("_Janne Morén");
-  credits.push_back("_Jarno Elonen");
-  credits.push_back("_Karl Ove Hufthammer");
-  credits.push_back("_Milan Babuskov");
-  credits.push_back("_Philippe Saint-Pierre");
-  credits.push_back("_Ricardo Cruz");
-  credits.push_back("_Skule Solvang");
-  credits.push_back("_Tomas Blaha");
-  credits.push_back("n");
-
-  credits.push_back(_("-Special"));
-  credits.push_back(_("-Thanks to"));
-  credits.push_back("_Adam Gregory");
-  credits.push_back("_Andy Balaam");
-  credits.push_back("_Bernhard Trummer");
-  credits.push_back("_Cagri Coltekin");
-  credits.push_back("_David Fauthoux");
-  credits.push_back("_David Flores");
-  credits.push_back("_David M. Turner");
-  credits.push_back("_Debian");
-  credits.push_back("_Etienne Marcotte");
-  credits.push_back("_Felix Natter");
-  credits.push_back("_Francisco 'Pacho' Ramos");
-  credits.push_back("_Giray Devlet ");
-  credits.push_back("_Giuseppe D'Aqui");
-  credits.push_back("_Henri Manson");
-  credits.push_back("_Jeff Binder");
-  credits.push_back("_Jens Henrik Goebbert");
-  credits.push_back("_Jessica Philippi");
-  credits.push_back("_John August");
-  credits.push_back("_Johnny Taporg");
-  credits.push_back("_Jules Bean");
-  credits.push_back("_Keir Fraser");
-  credits.push_back("_Magnus Norddahl");
-  credits.push_back("_Mattias Andersson");
-  credits.push_back("_Michael Wand");
-  credits.push_back("_Peter Todd");
-  credits.push_back("_Peter van Rossum");
-  credits.push_back("_Richard Stallman");
-  credits.push_back("_Rob Gietema");
-  credits.push_back("_Robert Wittams");
-  credits.push_back("_Robin Hogan");
-  credits.push_back("_Shigeru Miyamoto");
-  credits.push_back("_Stefan Ruhnke");
-  credits.push_back("_SuSE");
-  credits.push_back("_Till Hellweg");
-  credits.push_back("_Tim Yamin");
-  credits.push_back("_Tuomas (Tigert) Kuosmanen");
-  credits.push_back("_Werner Steiner");
-  credits.push_back("n");
-  credits.push_back("n");
-  credits.push_back("n");
-  credits.push_back("n");
-  credits.push_back("n");
-
-  credits.push_back(_("_And a very Special Thanks"));
-  credits.push_back(_("_to all the people who"));
-  credits.push_back(_("_contribute to"));
-  credits.push_back(_("_Free Software!"));
-  credits.push_back("n");
-  credits.push_back("n");
-  credits.push_back("n");
-  credits.push_back("n");
-  credits.push_back("n");
-  credits.push_back(_("_Thank you for"));
-  credits.push_back(_("_playing!"));
+  
+  { // read credit information from filename
+    std::ifstream in(filename.get_sys_path());
+    std::string line;
+    while(std::getline(in, line))
+    {
+      credits.push_back(line);
+    }
+  }
 
   end_offset = -static_cast<float>(Display::get_height())/2 - 50; // screen height + grace time
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)

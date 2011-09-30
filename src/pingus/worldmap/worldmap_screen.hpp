@@ -59,7 +59,7 @@ public:
   WorldmapScreen ();
   ~WorldmapScreen ();
 
-  void load (const std::string& filename);
+  void load(const Pathname& filename);
 
   /** Check if Worldmap manager still needs to run and exit if if
       not */
