@@ -33,7 +33,7 @@ GlobalEvent::GlobalEvent ()
 void
 GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
 {
-  Uint8 *keystate = SDL_GetKeyState(NULL);
+  Uint8* keystate = SDL_GetKeyState(NULL);
 
   switch (event.keysym.sym)
   {
@@ -42,30 +42,38 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
       break;
 
     case SDLK_RETURN:
-      if (!keystate[SDLK_LALT] && !keystate[SDLK_RALT])
-        break;
-      // FALL THROUGH
+      if (keystate[SDLK_LALT] || keystate[SDLK_RALT])
+      {
+        config_manager.set_fullscreen(!config_manager.get_fullscreen());
+      }
+      break;
+
     case SDLK_F11:
       config_manager.set_fullscreen(!config_manager.get_fullscreen());
       break;
 
     case SDLK_F5:
-      if (!dynamic_cast<OptionMenu*>(ScreenManager::instance()->get_current_screen().get()))
-        ScreenManager::instance()->push_screen(new OptionMenu());
+      if (globals::developer_mode)
+      {
+        if (!dynamic_cast<OptionMenu*>(ScreenManager::instance()->get_current_screen().get()))
+          ScreenManager::instance()->push_screen(new OptionMenu());
+      }
       break;
 
     case SDLK_F6:
       if (globals::developer_mode)
+      {
         if (!dynamic_cast<AddOnMenu*>(ScreenManager::instance()->get_current_screen().get()))
           ScreenManager::instance()->push_screen(new AddOnMenu());
+      }
       break;
 
     case SDLK_F12:
-    {
-      std::string filename;
-      filename = Screenshot::make_screenshot();
-    }
-    break;
+      {
+        std::string filename;
+        filename = Screenshot::make_screenshot();
+      }
+      break;
 
     case SDLK_c:
       if (globals::developer_mode)
