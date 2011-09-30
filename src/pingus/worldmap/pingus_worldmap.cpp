@@ -18,6 +18,8 @@
 
 #include <stdexcept>
 
+#include "util/pathname.hpp"
+
 using namespace WorldmapNS;
 
 class PingusWorldmapImpl
@@ -87,8 +89,18 @@ PingusWorldmap::parse_file(const FileReader& reader)
 
     parse_properties(reader.read_section("head"));
 
-    reader.read_section("intro_story", impl->intro_story);
-    reader.read_section("end_story", impl->end_story);
+    std::string intro_story;
+    std::string end_story;
+    
+    if (reader.read_string("intro-story", intro_story))
+    {
+      impl->intro_story = FileReader::parse(Pathname(intro_story, Pathname::DATA_PATH));
+    }
+
+    if (reader.read_string("end-story", end_story))
+    {
+      impl->end_story = FileReader::parse(Pathname(end_story, Pathname::DATA_PATH));
+    }
   }
   else
   {

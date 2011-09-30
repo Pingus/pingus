@@ -60,6 +60,7 @@ extern "C" {
 #include "pingus/screens/credits.hpp"
 #include "pingus/screens/font_test_screen.hpp"
 #include "pingus/screens/start_screen.hpp"
+#include "pingus/screens/story_screen.hpp"
 #include "pingus/stat_manager.hpp"
 #include "pingus/worldobj_factory.hpp"
 
@@ -516,6 +517,11 @@ PingusMain::start_game ()
     {
       Pathname file(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
       screen_manager.push_screen(new FontTestScreen(file)); 
+    }
+    else if (StringUtil::has_suffix(cmd_options.rest.get(), ".story"))
+    {
+      screen_manager.push_screen(new StoryScreen(FileReader::parse(Pathname(cmd_options.rest.get(),
+                                                                            Pathname::SYSTEM_PATH))));
     }
     else
     { // Level file
