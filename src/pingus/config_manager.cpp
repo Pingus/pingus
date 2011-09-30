@@ -105,7 +105,10 @@ ConfigManager::set_fullscreen_resolution(const Size& size)
 
   if (size != get_fullscreen_resolution())
   {
-    Display::set_video_mode(size, globals::fullscreen_enabled);
+    if (globals::fullscreen_enabled)
+    {
+      Display::set_video_mode(size, globals::fullscreen_enabled);
+    }
     on_fullscreen_resolution_change(size);
   }
 
