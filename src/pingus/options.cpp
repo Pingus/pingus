@@ -148,9 +148,9 @@ Options::save(const Pathname& filename) const
   if (print_fps.is_set())
     writer.write_bool("print-fps", print_fps.get());
 
-  // FIXME: if (language.is_set())
-  //  writer.write_string("language", language.get().str.get());
-
+  if (language.is_set())
+    writer.write_string("language", language.get());
+  
   if (software_cursor.is_set())
     writer.write_bool("software-cursor", software_cursor.get());
 

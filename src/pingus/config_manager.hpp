@@ -20,6 +20,7 @@
 #include <boost/signal.hpp>
 
 #include "math/size.hpp"
+#include "pingus/options.hpp"
 #include "tinygettext/language.hpp"
 
 class Options;
@@ -27,11 +28,14 @@ class Options;
 class ConfigManager
 {
 private:
+  Options m_opts;
+
 public:
   ConfigManager();
   ~ConfigManager();
 
   void apply(const Options& opts);
+  Options get_options() const;
 
   void set_master_volume(int);
   int  get_master_volume();

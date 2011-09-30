@@ -33,6 +33,7 @@ extern tinygettext::DictionaryManager dictionary_manager;
 ConfigManager config_manager;
 
 ConfigManager::ConfigManager() :
+  m_opts(),
   on_master_volume_change(),
   on_sound_volume_change(),
   on_music_volume_change(),
@@ -57,6 +58,8 @@ ConfigManager::set_master_volume(int v)
 {
   log_info("ConfigManager::set_master_volume: " << v);
   Sound::PingusSound::set_master_volume(static_cast<float>(v) / 100.0f);
+
+  m_opts.master_volume.set(get_master_volume());
 }
 
 int
@@ -70,6 +73,8 @@ ConfigManager::set_sound_volume(int v)
 {
   log_info("ConfigManager::set_sound_volume: " << v);
   Sound::PingusSound::set_sound_volume(static_cast<float>(v) / 100.0f);
+
+  m_opts.sound_volume.set(get_sound_volume());
 }
 
 int
@@ -83,6 +88,8 @@ ConfigManager::set_music_volume(int v)
 {
   log_info("ConfigManager::set_music_volume: " << v);
   Sound::PingusSound::set_music_volume(static_cast<float>(v) / 100.0f);
+
+  m_opts.music_volume.set(get_music_volume());
 }
 
 int
@@ -101,6 +108,8 @@ ConfigManager::set_fullscreen_resolution(const Size& size)
     Display::set_video_mode(size, globals::fullscreen_enabled);
     on_fullscreen_resolution_change(size);
   }
+
+  m_opts.fullscreen_resolution.set(size);
 }
 
 Size
@@ -121,6 +130,8 @@ ConfigManager::set_fullscreen(bool v)
     Display::set_video_mode(screen_size, globals::fullscreen_enabled);
     on_fullscreen_change(v);
   }
+
+  m_opts.fullscreen.set(v);
 }
 
 bool
@@ -138,6 +149,8 @@ ConfigManager::set_allow_resize(bool v)
   {
     on_allow_resize_change(v);
   }
+
+  m_opts.resizable.set(v);
 }
 
 bool
@@ -156,6 +169,8 @@ ConfigManager::set_mouse_grab(bool v)
     SDL_WM_GrabInput(v ? SDL_GRAB_ON : SDL_GRAB_OFF);
     on_mouse_grab_change(v);
   }
+
+  m_opts.mouse_grab.set(v);
 }
 
 bool
@@ -174,6 +189,8 @@ ConfigManager::set_print_fps(bool v)
     globals::print_fps = v;
     on_print_fps_change(v);
   }
+
+  m_opts.print_fps.set(v);
 }
 
 bool
@@ -192,6 +209,8 @@ ConfigManager::set_language(const tinygettext::Language& v)
     dictionary_manager.set_language(v);
     on_language_change(v);
   }
+
+  m_opts.language.set(v.str());
 }
 
 tinygettext::Language
@@ -210,6 +229,8 @@ ConfigManager::set_software_cursor(bool v)
     ScreenManager::instance()->show_software_cursor(v);
     on_software_cursor_change(v);
   }
+
+  m_opts.software_cursor.set(v);
 }
 
 bool
@@ -228,6 +249,8 @@ ConfigManager::set_autoscroll(bool v)
     globals::auto_scrolling = v;
     on_autoscroll_change(v);
   }
+
+  m_opts.auto_scrolling.set(v);
 }
 
 bool
@@ -236,9 +259,17 @@ ConfigManager::get_autoscroll()
   return globals::auto_scrolling;
 }
 
+Options
+ConfigManager::get_options() const
+{
+  return m_opts;
+}
+
 void
 ConfigManager::apply(const Options& opts)
 {
+  m_opts.merge(opts);
+
   if (opts.master_volume.is_set())
     set_master_volume(opts.master_volume.get());
 
@@ -269,10 +300,8 @@ ConfigManager::apply(const Options& opts)
   if (opts.auto_scrolling.is_set())
     set_autoscroll(opts.auto_scrolling.get());
 
-  // FIXME: language setting not yet working
-  //void set_language(const tinygettext::Language&);
-  //tinygettext::Language get_language();
-  //boost::signal<void(const tinygettext::Language&)> on_language_change;
+  if (opts.language.is_set())
+    set_language(tinygettext::Language::from_env(opts.language.get()));
 }
 
 /* EOF */
