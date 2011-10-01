@@ -21,11 +21,12 @@
 
 #include "editor/editor_level.hpp"
 #include "editor/editor_screen.hpp"
+#include "engine/input/manager.hpp"
 #include "engine/system/sdl_system.hpp"
 #include "pingus/config_manager.hpp"
 #include "pingus/screens/demo_session.hpp"
-#include "pingus/worldmap/worldmap_screen.hpp"
 #include "pingus/screens/pingus_menu.hpp"
+#include "pingus/worldmap/worldmap_screen.hpp"
 #include "util/log.hpp"
 #include "util/string_util.hpp"
 #include "util/system.hpp"
@@ -152,9 +153,6 @@ PingusMain::apply_args()
   if (options.auto_scrolling.is_set())
     globals::auto_scrolling = options.auto_scrolling.get();
   
-  if (options.controller.is_set())
-    globals::controller_file = options.controller.get();
-
   if (options.developer_mode.is_set())
     globals::developer_mode = options.developer_mode.get();
 
@@ -496,7 +494,21 @@ PingusMain::print_greeting_message()
 void
 PingusMain::start_game ()
 {
-  ScreenManager screen_manager;
+  Input::Manager input_manager;
+  Input::ControllerPtr input_controller;
+
+  if (!cmd_options.controller.is_set())
+  {
+    input_controller = input_manager.create_controller(Pathname("controller/default.scm", 
+                                                                Pathname::DATA_PATH));
+  }
+  else
+  {
+    input_controller = input_manager.create_controller(Pathname(cmd_options.controller.get(),
+                                                                Pathname::SYSTEM_PATH));
+  }
+
+  ScreenManager  screen_manager(input_manager, input_controller);
 
   if (cmd_options.editor.is_set() && cmd_options.editor.get())
   { // Editor

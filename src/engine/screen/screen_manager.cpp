@@ -136,9 +136,10 @@ void write_event(std::ostream& out, const Input::Event& event)
 
 ScreenManager* ScreenManager::instance_ = 0;
 
-ScreenManager::ScreenManager() :
-  input_manager(),
-  input_controller(),
+ScreenManager::ScreenManager(Input::Manager& arg_input_manager,
+                             Input::ControllerPtr arg_input_controller) :
+  input_manager(arg_input_manager),
+  input_controller(arg_input_controller),
   display_gc(new DrawingContext()),
   fps_counter(),
   cursor(),
@@ -149,19 +150,6 @@ ScreenManager::ScreenManager() :
 {
   assert(instance_ == 0);
   instance_ = this;
-    
-  input_manager.reset(new Input::Manager());
-
-  if (globals::controller_file.empty())
-  {
-    input_controller = input_manager->create_controller(Pathname("controller/default.scm", 
-                                                                 Pathname::DATA_PATH));
-  }
-  else
-  {
-    input_controller = input_manager->create_controller(Pathname(globals::controller_file,
-                                                                 Pathname::SYSTEM_PATH));
-  }
 
   cursor = Sprite("core/cursors/animcross");
   fps_counter = std::unique_ptr<FPSCounter>(new FPSCounter());
@@ -193,7 +181,7 @@ ScreenManager::display()
 
       // Update InputManager so that SDL_QUIT and stuff can be
       // handled, even if the basic events are taken from record
-      input_manager->update(previous_frame_time);
+      input_manager.update(previous_frame_time);
       input_controller->clear_events();
       read_events(std::cin, events);
     }
@@ -205,7 +193,7 @@ ScreenManager::display()
       last_ticks = ticks;
 
       // Update InputManager and get Events
-      input_manager->update(previous_frame_time);
+      input_manager.update(previous_frame_time);
       input_controller->poll_events(events);
     }
       
@@ -392,7 +380,7 @@ ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
     progress = static_cast<float>(SDL_GetTicks() - last_ticks)/1000.0f * 2.0f;
   }
 
-  input_manager->refresh();
+  input_manager.refresh();
 }
 
 void

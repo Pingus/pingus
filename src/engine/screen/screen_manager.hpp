@@ -43,7 +43,7 @@ private:
   static ScreenManager* instance_;
 
 private:
-  std::unique_ptr<Input::Manager> input_manager;
+  Input::Manager& input_manager;
   Input::ControllerPtr input_controller;
 
   std::unique_ptr<DrawingContext> display_gc;
@@ -62,7 +62,8 @@ private:
   bool playback_input;
 
 public:
-  ScreenManager ();
+  ScreenManager(Input::Manager& input_manager,
+                Input::ControllerPtr arg_input_controller);
   ~ScreenManager();
 
   void resize(const Size& size);

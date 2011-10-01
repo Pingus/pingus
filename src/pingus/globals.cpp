@@ -35,8 +35,6 @@ int         default_screen_height   = 600;
 bool        draw_collision_map      = false;
 bool        software_cursor         = false;
 
-std::string controller_file;
-
 std::string global_username;
 std::string global_email;
 std::string default_language        = "en";
