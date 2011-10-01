@@ -65,12 +65,24 @@ public:
   }
 };
 
+enum FramebufferType
+{
+ DELTA_FRAMEBUFFER, 
+ SDL_FRAMEBUFFER, 
+ NULL_FRAMEBUFFER, 
+ OPENGL_FRAMEBUFFER 
+};
+
+std::string framebuffer_type_to_string(FramebufferType type);
+FramebufferType framebuffer_type_from_string(const std::string& str);
+
 struct Options
 {
   static Options from_file_reader(const FileReader& reader);
   static Options from_file(const Pathname& filename);
 
   // Display
+  Value<FramebufferType> framebuffer_type;
   Value<bool> fullscreen;
   Value<bool> resizable;
   Value<bool> software_cursor;
@@ -91,6 +103,7 @@ struct Options
   Value<std::string> userdir;
 
   Value<bool> auto_scrolling;
+  Value<bool> drag_drop_scrolling;
   Value<std::string> controller;
 
   Value<bool> developer_mode;
@@ -101,6 +114,7 @@ struct Options
   Value<int>   tile_size;
 
   Options() :
+    framebuffer_type(),
     fullscreen(),
     resizable(),
     software_cursor(),
@@ -116,6 +130,7 @@ struct Options
     datadir(),
     userdir(),
     auto_scrolling(),
+    drag_drop_scrolling(),
     controller(),
     developer_mode(),
     print_fps(),

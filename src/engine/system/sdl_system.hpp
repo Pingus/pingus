@@ -19,6 +19,8 @@
 
 #include <SDL.h>
 
+#include "pingus/options.hpp"
+
 class Size;
 
 class SDLSystem
@@ -28,7 +30,7 @@ public:
   SDLSystem();
   ~SDLSystem();
 
-  void init_display(const Size& size, bool fullscreen);
+  void create_window(FramebufferType framebuffer_type, const Size& size, bool fullscreen);
 
 private:
   SDLSystem(const SDLSystem&);

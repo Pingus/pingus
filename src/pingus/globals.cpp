@@ -24,8 +24,7 @@ bool        print_fps               = false;
 bool        music_enabled           = true;
 bool        sound_enabled           = true;
 int         fast_forward_time_scale = 4;
-bool        developer_mode         = false;
-std::string demo_file;
+bool        developer_mode          = false;
 bool        auto_scrolling          = true;
 bool        drag_drop_scrolling     = false;
 int         tile_size               = 32;
@@ -43,8 +42,6 @@ bool        fullscreen_enabled      = false;
 bool        delta_drawing           = false;
 
 bool        static_graphics         = false;
-
-FramebufferType framebuffer_type = SDL_FRAMEBUFFER;
 
 } // namespace globals
 

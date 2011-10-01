@@ -152,6 +152,9 @@ PingusMain::apply_args()
 
   if (options.auto_scrolling.is_set())
     globals::auto_scrolling = options.auto_scrolling.get();
+
+  if (options.drag_drop_scrolling.is_set())
+    globals::drag_drop_scrolling = options.drag_drop_scrolling.get();
   
   if (options.developer_mode.is_set())
     globals::developer_mode = options.developer_mode.get();
@@ -196,8 +199,12 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Set the window resolution for pingus (default: 800x600)"));
   argp.add_option(346, "software-cursor", "",
                   _("Enable software cursor"));
-  argp.add_option(337, "disable-auto-scrolling", "",
+
+  argp.add_group(_("Game Options:"));
+  argp.add_option(337, "no-auto-scrolling", "",
                   _("Disable automatic scrolling"));
+  argp.add_option(338, "drag-drop-scrolling", "",
+                  _("Enable drag'n drop scrolling"));
 
   argp.add_group(_("Sound Options:"));
   argp.add_option('s', "disable-sound", "", 
@@ -247,23 +254,7 @@ PingusMain::parse_args(int argc, char** argv)
     switch (argp.get_key()) 
     {          
       case 'r': // --renderer
-        if (argp.get_argument() == "delta")
-        {
-          globals::framebuffer_type = DELTA_FRAMEBUFFER;
-        }
-        else if (argp.get_argument() == "opengl")
-        {
-          globals::framebuffer_type = OPENGL_FRAMEBUFFER;
-        }
-        else if (argp.get_argument() == "null")
-        {
-          globals::framebuffer_type = NULL_FRAMEBUFFER;
-        }
-        else if (argp.get_argument() == "sdl")
-        {
-          globals::framebuffer_type = SDL_FRAMEBUFFER;
-        }
-        else if (argp.get_argument() == "help")
+        if (argp.get_argument() == "help")
         {
           std::cout << "Available renderers: " << std::endl;
           std::cout << "   delta: Software rendering with dirty-rectangles (default)" << std::endl;
@@ -274,9 +265,12 @@ PingusMain::parse_args(int argc, char** argv)
         }
         else
         {
-          std::cout << "Unknown renderer: " << argp.get_argument()
-                    << " use '--renderer help' to get a list of available renderer" << std::endl;
-          exit(EXIT_FAILURE);
+          cmd_options.framebuffer_type.set(framebuffer_type_from_string(argp.get_argument()));
+
+          //FIXME:
+          //std::cout << "Unknown renderer: " << argp.get_argument()
+          //<< " use '--renderer help' to get a list of available renderer" << std::endl;
+          //exit(EXIT_FAILURE);
         }
         break;
 
@@ -351,6 +345,10 @@ PingusMain::parse_args(int argc, char** argv)
 
       case 337:
         cmd_options.auto_scrolling.set(false);
+        break;
+
+      case 338:
+        cmd_options.drag_drop_scrolling.set(true);
         break;
 
       case 342: // --no-cfg-file
@@ -585,14 +583,20 @@ PingusMain::run(int argc, char** argv)
     
     print_greeting_message();
     
+    FramebufferType fbtype = SDL_FRAMEBUFFER; 
+    if (cmd_options.framebuffer_type.is_set())
+    {
+      fbtype = cmd_options.framebuffer_type.get();
+    }
+
     SDLSystem system;
     if (cmd_options.geometry.is_set())
     {
-      system.init_display(cmd_options.geometry.get(), globals::fullscreen_enabled);
+      system.create_window(fbtype, cmd_options.geometry.get(), globals::fullscreen_enabled);
     }
     else
     {
-      system.init_display(Size(800, 600), globals::fullscreen_enabled);
+      system.create_window(fbtype, Size(800, 600), globals::fullscreen_enabled);
     }
 
     SavegameManager savegame_manager("savegames/savegames.scm");

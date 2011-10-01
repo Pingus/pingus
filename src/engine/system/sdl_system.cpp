@@ -38,9 +38,9 @@ SDLSystem::~SDLSystem()
 }
 
 void
-SDLSystem::init_display(const Size& size, bool fullscreen)
+SDLSystem::create_window(FramebufferType framebuffer_type, const Size& size, bool fullscreen)
 {
-  Display::set_video_mode(size, fullscreen);
+  Display::create_window(framebuffer_type, size, fullscreen);
 
   SDL_WM_SetCaption("Pingus " VERSION, 0 /* icon */);
 

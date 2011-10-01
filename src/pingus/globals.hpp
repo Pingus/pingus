@@ -22,14 +22,6 @@
 
 #include <string>
 
-enum FramebufferType 
-{
- DELTA_FRAMEBUFFER, 
- SDL_FRAMEBUFFER, 
- NULL_FRAMEBUFFER, 
- OPENGL_FRAMEBUFFER 
-};
-
 namespace globals {
 
 extern int         game_speed;                      ///< -t, --set-speed
@@ -43,7 +35,6 @@ extern bool        static_graphics;                 ///< Disables scrolling in m
 extern bool        debug_actions;                   ///< --debug-actions
 extern int         fast_forward_time_scale;         ///< how much faster the game runs in FF mode
 extern bool        developer_mode;                  ///< --developer-mode
-extern std::string demo_file;                       ///<
 extern bool        auto_scrolling;                  ///< --enable-auto-scrolling
 extern bool        drag_drop_scrolling; 
 extern int         tile_size;                       ///< --tile-size
@@ -56,8 +47,6 @@ extern bool        software_cursor;                 ///< --enable-swcursor
 extern std::string  global_username;                 ///< The name of the currently logged in user
 extern std::string  global_email;                    ///< The email address of the currently logged in user
 extern std::string  default_language;                ///< The default language, which is used when the env var LANG is not set
-
-extern FramebufferType framebuffer_type;
 
 } // namespace globals
 

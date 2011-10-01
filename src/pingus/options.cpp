@@ -27,6 +27,53 @@
 #include "util/sexpr_file_writer.hpp"
 #include "util/system.hpp"
 
+std::string framebuffer_type_to_string(FramebufferType type)
+{
+  switch(type)
+  {
+    case DELTA_FRAMEBUFFER:
+      return "delta";
+
+    case SDL_FRAMEBUFFER:
+      return "sdl";
+
+    case NULL_FRAMEBUFFER:
+      return "null";
+
+    case OPENGL_FRAMEBUFFER:
+      return "opengl";
+
+    default:
+      log_error("unknown FramebufferType: " << static_cast<int>(type));
+      return "sdl";
+  }
+}
+
+FramebufferType framebuffer_type_from_string(const std::string& str)
+{
+  if (str == "delta")
+  {
+    return DELTA_FRAMEBUFFER;
+  }
+  else if (str == "sdl")
+  {
+    return SDL_FRAMEBUFFER;
+  }
+  else if (str == "null")
+  {
+    return NULL_FRAMEBUFFER;
+  }
+  else if (str == "opengl")
+  {
+    return OPENGL_FRAMEBUFFER;
+  }
+  else
+  {
+    log_error("unknown FramebufferType '" << str << "', default to 'sdl'");
+    return SDL_FRAMEBUFFER;
+  }
+}
+
 Options
 Options::from_file(const Pathname& filename)
 {
@@ -49,7 +96,14 @@ Options::from_file_reader(const FileReader& reader)
   bool bool_value;
   std::string string_value;
   Size size_value;
-    
+
+  FramebufferType fbtype_value = SDL_FRAMEBUFFER;
+
+  if (reader.read_enum("renderer", fbtype_value, framebuffer_type_from_string))
+  {
+    opts.framebuffer_type.set(fbtype_value);
+  }
+
   if (reader.read_int("master-volume", int_value)) 
   {
     opts.master_volume.set(int_value);
@@ -105,9 +159,14 @@ Options::from_file_reader(const FileReader& reader)
     opts.software_cursor.set(bool_value);
   }
   
-  if (reader.read_bool("autoscroll", bool_value))
+  if (reader.read_bool("auto-scrolling", bool_value))
   {
     opts.auto_scrolling.set(bool_value);
+  }
+
+  if (reader.read_bool("drag-drop-scrolling", bool_value))
+  {
+    opts.drag_drop_scrolling.set(bool_value);
   }
 
   return opts;
@@ -120,6 +179,9 @@ Options::save(const Pathname& filename) const
   SExprFileWriter writer(out);
 
   writer.begin_section("pingus-config");
+
+  if (framebuffer_type.is_set())
+    writer.write_enum("renderer", framebuffer_type.get(), framebuffer_type_to_string);
 
   if (master_volume.is_set())
     writer.write_int("master-volume", master_volume.get());
@@ -155,7 +217,10 @@ Options::save(const Pathname& filename) const
     writer.write_bool("software-cursor", software_cursor.get());
 
   if (auto_scrolling.is_set())
-    writer.write_bool("autoscroll", auto_scrolling.get());
+    writer.write_bool("auto-scrolling", auto_scrolling.get());
+
+  if (drag_drop_scrolling.is_set())
+    writer.write_bool("drag-drop-scrolling", drag_drop_scrolling.get());
   
   writer.end_section(); // pingus-config
 
@@ -168,6 +233,7 @@ void
 Options::merge(const Options& rhs)
 {
   // Display
+  framebuffer_type.merge(rhs.framebuffer_type);
   fullscreen.merge(rhs.fullscreen);
   resizable.merge(rhs.resizable);
   software_cursor.merge(rhs.software_cursor);
@@ -188,6 +254,7 @@ Options::merge(const Options& rhs)
   userdir.merge(rhs.userdir);
 
   auto_scrolling.merge(rhs.auto_scrolling);
+  drag_drop_scrolling.merge(rhs.drag_drop_scrolling);
   controller.merge(rhs.controller);
 
   developer_mode.merge(rhs.developer_mode);

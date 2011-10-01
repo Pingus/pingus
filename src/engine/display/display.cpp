@@ -26,31 +26,32 @@
 #endif
 #include "engine/display/delta/delta_framebuffer.hpp"
 #include "engine/display/null_framebuffer.hpp"
+#include "util/log.hpp"
 
-std::unique_ptr<Framebuffer> Display::framebuffer;
+std::unique_ptr<Framebuffer> Display::s_framebuffer;
 
 void
 Display::flip_display()
 {
-  return framebuffer->flip();
+  return s_framebuffer->flip();
 }
 
 int
 Display::get_width()
 {
-  return framebuffer.get() ? framebuffer->get_size().width : 0;
+  return s_framebuffer.get() ? s_framebuffer->get_size().width : 0;
 }
 
 int
 Display::get_height()
 {
-  return framebuffer.get() ? framebuffer->get_size().height : 0;
+  return s_framebuffer.get() ? s_framebuffer->get_size().height : 0;
 }
 
 Size
 Display::get_size()
 {
-  return framebuffer.get() ? framebuffer->get_size() : Size(0, 0);
+  return s_framebuffer.get() ? s_framebuffer->get_size() : Size(0, 0);
 }
 
 void
@@ -65,64 +66,75 @@ Display::resize(const Size& size_)
   // FIXME: Calling this causes horrible flicker, since the screen
   // goes black on a size change. Seems to be an SDL issue.
   // This call  also shouldn't be part of ScreenManager, but Framebuffer/Display internal
-  Display::set_video_mode(size, globals::fullscreen_enabled);
+  //Display::set_video_mode(size, globals::fullscreen_enabled);
 
   if (ScreenManager::instance())
     ScreenManager::instance()->resize(size);
 }
 
 void
+Display::create_window(FramebufferType framebuffer_type, const Size& size, bool fullscreen)
+{
+  assert(!s_framebuffer.get());
+
+  log_info(framebuffer_type_to_string(framebuffer_type) << " " << size << " " << fullscreen);
+
+  switch (framebuffer_type)
+  {
+    case OPENGL_FRAMEBUFFER:
+#ifdef HAVE_OPENGL
+      s_framebuffer = std::unique_ptr<Framebuffer>(new OpenGLFramebuffer());
+      s_framebuffer->set_video_mode(size, fullscreen);
+#else
+      throw std::runtime_error("OpenGL support was not compiled in");
+#endif
+      break;
+
+    case NULL_FRAMEBUFFER:
+      s_framebuffer = std::unique_ptr<Framebuffer>(new NullFramebuffer());
+      s_framebuffer->set_video_mode(size, fullscreen);
+      break;
+
+    case DELTA_FRAMEBUFFER:
+      globals::static_graphics = true;
+      s_framebuffer = std::unique_ptr<Framebuffer>(new DeltaFramebuffer());
+      s_framebuffer->set_video_mode(size, fullscreen);
+      break;
+
+    case SDL_FRAMEBUFFER:
+      s_framebuffer = std::unique_ptr<Framebuffer>(new SDLFramebuffer());
+      s_framebuffer->set_video_mode(size, fullscreen);
+      break;
+          
+    default:
+      assert(!"Unknown framebuffer_type");
+      break;
+  }
+}
+
+void
 Display::set_video_mode(const Size& size, bool fullscreen)
 {
-  if (!framebuffer.get())
-  {
-    switch (globals::framebuffer_type)
-    {
-      case OPENGL_FRAMEBUFFER:
-#ifdef HAVE_OPENGL
-        framebuffer = std::unique_ptr<Framebuffer>(new OpenGLFramebuffer());
-#else
-        throw std::runtime_error("OpenGL support was not compiled in");
-#endif
-        break;
-
-      case NULL_FRAMEBUFFER:
-        framebuffer = std::unique_ptr<Framebuffer>(new NullFramebuffer());
-        break;
-
-      case DELTA_FRAMEBUFFER:
-        globals::static_graphics = true;
-        framebuffer = std::unique_ptr<Framebuffer>(new DeltaFramebuffer());
-        break;
-
-      case SDL_FRAMEBUFFER:
-        framebuffer = std::unique_ptr<Framebuffer>(new SDLFramebuffer());
-        break;
-          
-      default:
-        assert(!"Unknown framebuffer_type");
-        break;
-    }
-  }
-
   if (fullscreen)
   {
     Size new_size = find_closest_fullscreen_video_mode(size);
-    framebuffer->set_video_mode(new_size, fullscreen);
+    s_framebuffer->set_video_mode(new_size, fullscreen);
   }
   else
   {
-    framebuffer->set_video_mode(size, fullscreen);
+    s_framebuffer->set_video_mode(size, fullscreen);
   }
   
   if (ScreenManager::instance())
-    ScreenManager::instance()->resize(framebuffer->get_size());
+  {
+    ScreenManager::instance()->resize(s_framebuffer->get_size());
+  }
 }
 
 Framebuffer&
 Display::get_framebuffer()
 {
-  return *framebuffer.get(); 
+  return *s_framebuffer.get(); 
 }
 
 Size

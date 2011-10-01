@@ -21,6 +21,7 @@
 #include <vector>
 
 #include "math/size.hpp"
+#include "pingus/options.hpp"
 
 class Vector2i;
 class Rect;
@@ -30,7 +31,7 @@ class Framebuffer;
 class Display
 {
 private:
-  static std::unique_ptr<Framebuffer> framebuffer;
+  static std::unique_ptr<Framebuffer> s_framebuffer;
 
 public:
   static void flip_display();
@@ -39,6 +40,7 @@ public:
   static int  get_height();
   static Size get_size();
 
+  static void create_window(FramebufferType framebuffer_type, const Size& size, bool fullscreen);
   static void set_video_mode(const Size& size, bool fullscreen);
   static void resize(const Size& size);
   
