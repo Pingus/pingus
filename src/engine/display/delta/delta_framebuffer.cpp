@@ -42,10 +42,10 @@ DeltaFramebuffer::create_surface(const Surface& surface)
 }
 
 void
-DeltaFramebuffer::set_video_mode(const Size& size, bool fullscreen)
+DeltaFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable)
 {
   frontbuffer->clear();
-  framebuffer->set_video_mode(size, fullscreen);
+  framebuffer->set_video_mode(size, fullscreen, resizable);
 }
 
 void

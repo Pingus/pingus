@@ -39,7 +39,7 @@ ConfigManager::ConfigManager() :
   on_music_volume_change(),
   on_fullscreen_resolution_change(),
   on_fullscreen_change(),
-  on_allow_resize_change(),
+  on_resizable_change(),
   on_mouse_grab_change(),
   on_print_fps_change(),
   on_language_change(),
@@ -107,7 +107,7 @@ ConfigManager::set_fullscreen_resolution(const Size& size)
   {
     if (globals::fullscreen_enabled)
     {
-      Display::set_video_mode(size, globals::fullscreen_enabled);
+      Display::set_video_mode(size, globals::fullscreen_enabled, false);
     }
     on_fullscreen_resolution_change(size);
   }
@@ -130,7 +130,7 @@ ConfigManager::set_fullscreen(bool v)
   {
     globals::fullscreen_enabled = v;
     Size screen_size = Display::get_size();
-    Display::set_video_mode(screen_size, globals::fullscreen_enabled);
+    Display::set_video_mode(screen_size, globals::fullscreen_enabled, false);
     on_fullscreen_change(v);
   }
 
@@ -144,20 +144,20 @@ ConfigManager::get_fullscreen()
 }
 
 void
-ConfigManager::set_allow_resize(bool v)
+ConfigManager::set_resizable(bool v)
 {
-  log_info("ConfigManager::set_allow_resize: " << v);
+  log_info("ConfigManager::set_resizable: " << v);
 
-  if (v != get_allow_resize())
+  if (v != get_resizable())
   {
-    on_allow_resize_change(v);
+    on_resizable_change(v);
   }
 
   m_opts.resizable.set(v);
 }
 
 bool
-ConfigManager::get_allow_resize()
+ConfigManager::get_resizable()
 {
   return false;
 }
@@ -289,7 +289,7 @@ ConfigManager::apply(const Options& opts)
     set_fullscreen(opts.fullscreen.get());
 
   if (opts.resizable.is_set())
-    set_allow_resize(opts.resizable.get());
+    set_resizable(opts.resizable.get());
 
   if (opts.mouse_grab.is_set())
     set_mouse_grab(opts.mouse_grab.get());

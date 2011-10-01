@@ -73,7 +73,7 @@ Display::resize(const Size& size_)
 }
 
 void
-Display::create_window(FramebufferType framebuffer_type, const Size& size, bool fullscreen)
+Display::create_window(FramebufferType framebuffer_type, const Size& size, bool fullscreen, bool resizable)
 {
   assert(!s_framebuffer.get());
 
@@ -84,7 +84,7 @@ Display::create_window(FramebufferType framebuffer_type, const Size& size, bool 
     case OPENGL_FRAMEBUFFER:
 #ifdef HAVE_OPENGL
       s_framebuffer = std::unique_ptr<Framebuffer>(new OpenGLFramebuffer());
-      s_framebuffer->set_video_mode(size, fullscreen);
+      s_framebuffer->set_video_mode(size, fullscreen, resizable);
 #else
       throw std::runtime_error("OpenGL support was not compiled in");
 #endif
@@ -92,18 +92,18 @@ Display::create_window(FramebufferType framebuffer_type, const Size& size, bool 
 
     case NULL_FRAMEBUFFER:
       s_framebuffer = std::unique_ptr<Framebuffer>(new NullFramebuffer());
-      s_framebuffer->set_video_mode(size, fullscreen);
+      s_framebuffer->set_video_mode(size, fullscreen, resizable);
       break;
 
     case DELTA_FRAMEBUFFER:
       globals::static_graphics = true;
       s_framebuffer = std::unique_ptr<Framebuffer>(new DeltaFramebuffer());
-      s_framebuffer->set_video_mode(size, fullscreen);
+      s_framebuffer->set_video_mode(size, fullscreen, resizable);
       break;
 
     case SDL_FRAMEBUFFER:
       s_framebuffer = std::unique_ptr<Framebuffer>(new SDLFramebuffer());
-      s_framebuffer->set_video_mode(size, fullscreen);
+      s_framebuffer->set_video_mode(size, fullscreen, resizable);
       break;
           
     default:
@@ -113,16 +113,16 @@ Display::create_window(FramebufferType framebuffer_type, const Size& size, bool 
 }
 
 void
-Display::set_video_mode(const Size& size, bool fullscreen)
+Display::set_video_mode(const Size& size, bool fullscreen, bool resizable)
 {
   if (fullscreen)
   {
     Size new_size = find_closest_fullscreen_video_mode(size);
-    s_framebuffer->set_video_mode(new_size, fullscreen);
+    s_framebuffer->set_video_mode(new_size, fullscreen, resizable);
   }
   else
   {
-    s_framebuffer->set_video_mode(size, fullscreen);
+    s_framebuffer->set_video_mode(size, fullscreen, resizable);
   }
   
   if (ScreenManager::instance())

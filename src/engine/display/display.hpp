@@ -40,8 +40,8 @@ public:
   static int  get_height();
   static Size get_size();
 
-  static void create_window(FramebufferType framebuffer_type, const Size& size, bool fullscreen);
-  static void set_video_mode(const Size& size, bool fullscreen);
+  static void create_window(FramebufferType framebuffer_type, const Size& size, bool fullscreen, bool resizable);
+  static void set_video_mode(const Size& size, bool fullscreen, bool resizable);
   static void resize(const Size& size);
   
   static Framebuffer& get_framebuffer();

@@ -34,7 +34,7 @@ public:
 
   FramebufferSurface create_surface(const Surface& surface);
 
-  void set_video_mode(const Size& size, bool fullscreen);
+  void set_video_mode(const Size& size, bool fullscreen, bool resizable);
   void flip();
 
   void push_cliprect(const Rect&);

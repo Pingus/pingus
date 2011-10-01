@@ -48,10 +48,11 @@ NullFramebuffer::create_surface(const Surface& surface)
 }
 
 void
-NullFramebuffer::set_video_mode(const Size& size_, bool fullscreen)
+NullFramebuffer::set_video_mode(const Size& size_, bool fullscreen, bool resizable)
 {
   size = size_;
-  log_info("size: " << size.width << "x" << size.height << " fullscreen: " << fullscreen);
+  log_info("size: " << size.width << "x" << size.height <<
+           " fullscreen: " << fullscreen << " resizable: " << resizable);
 }
 
 void

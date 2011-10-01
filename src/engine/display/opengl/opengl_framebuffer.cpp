@@ -34,7 +34,7 @@ OpenGLFramebuffer::create_surface(const Surface& surface)
 }
 
 void
-OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen)
+OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable)
 {
   int flags = SDL_OPENGL;
   
@@ -42,7 +42,7 @@ OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen)
   {
     flags |= SDL_FULLSCREEN;
   }
-  else
+  else if (resizable)
   {
     flags |= SDL_RESIZABLE;
   }

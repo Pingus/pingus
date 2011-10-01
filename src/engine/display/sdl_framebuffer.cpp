@@ -423,12 +423,18 @@ SDLFramebuffer::get_size() const
 }
 
 void
-SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen)
+SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable)
 {
-  Uint32 flags = SDL_RESIZABLE;
+  Uint32 flags = 0;
 
   if (fullscreen)
+  {
     flags |= SDL_FULLSCREEN;
+  }
+  else if (resizable)
+  {
+    flags |= SDL_RESIZABLE;
+  }
 
   screen = SDL_SetVideoMode(size.width, size.height, 0, flags);
 

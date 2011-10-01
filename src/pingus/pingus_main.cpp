@@ -592,11 +592,13 @@ PingusMain::run(int argc, char** argv)
     SDLSystem system;
     if (cmd_options.geometry.is_set())
     {
-      system.create_window(fbtype, cmd_options.geometry.get(), globals::fullscreen_enabled);
+      system.create_window(fbtype, cmd_options.geometry.get(), globals::fullscreen_enabled,
+                           cmd_options.resizable.is_set() ? cmd_options.resizable.get() : true);
     }
     else
     {
-      system.create_window(fbtype, Size(800, 600), globals::fullscreen_enabled);
+      system.create_window(fbtype, Size(800, 600), globals::fullscreen_enabled,
+                           cmd_options.resizable.is_set() ? cmd_options.resizable.get() : true);
     }
 
     SavegameManager savegame_manager("savegames/savegames.scm");

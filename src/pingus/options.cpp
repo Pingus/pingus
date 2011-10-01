@@ -134,7 +134,7 @@ Options::from_file_reader(const FileReader& reader)
     opts.fullscreen.set(bool_value);
   }
   
-  if (reader.read_bool("allow-resize", bool_value))
+  if (reader.read_bool("resizable", bool_value))
   {
     opts.resizable.set(bool_value);
   }
@@ -202,7 +202,7 @@ Options::save(const Pathname& filename) const
     writer.write_bool("fullscreen", fullscreen.get());
 
   if (resizable.is_set())
-    writer.write_bool("allow-resize", resizable.get());
+    writer.write_bool("resizable", resizable.get());
 
   if (mouse_grab.is_set())
     writer.write_bool("mouse-grab", mouse_grab.get());

@@ -57,9 +57,9 @@ public:
   bool get_fullscreen();
   boost::signal<void(bool)> on_fullscreen_change;
 
-  void set_allow_resize(bool);
-  bool get_allow_resize();
-  boost::signal<void(bool)> on_allow_resize_change;
+  void set_resizable(bool);
+  bool get_resizable();
+  boost::signal<void(bool)> on_resizable_change;
 
   void set_mouse_grab(bool);
   bool get_mouse_grab();
