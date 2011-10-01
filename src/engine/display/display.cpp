@@ -66,7 +66,7 @@ Display::resize(const Size& size_)
   // FIXME: Calling this causes horrible flicker, since the screen
   // goes black on a size change. Seems to be an SDL issue.
   // This call  also shouldn't be part of ScreenManager, but Framebuffer/Display internal
-  //Display::set_video_mode(size, globals::fullscreen_enabled);
+  Display::set_video_mode(size, globals::fullscreen_enabled, true);
 
   if (ScreenManager::instance())
     ScreenManager::instance()->resize(size);
