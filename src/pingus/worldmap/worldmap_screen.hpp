@@ -41,8 +41,6 @@ class WorldmapComponent;
 class WorldmapScreen : public GUIScreen
 {
 private:
-  Sprite levelname_bg;
-
   bool is_init;
   bool exit_worldmap;
 

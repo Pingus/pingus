@@ -120,7 +120,6 @@ WorldmapScreenCloseButton::on_click()
 }
 
 WorldmapScreen::WorldmapScreen() :
-  levelname_bg("core/worldmap/levelname_bg"),
   is_init(false),
   exit_worldmap(false),
   worldmap(),
@@ -189,14 +188,6 @@ WorldmapScreen::update (float delta)
 void
 WorldmapScreen::draw_foreground(DrawingContext& gc)
 {
-  // Draw the levelname
-  gc.draw(levelname_bg,
-          Vector2i(gc.get_width()/2 - levelname_bg.get_width()/2,
-                   gc.get_height() - levelname_bg.get_height()));
-
-  gc.print_center(Fonts::chalk_small, 
-                  Vector2i(gc.get_width()/2, gc.get_height() - 25),
-                  worldmap->get_levelname());
 }
 
 Rect

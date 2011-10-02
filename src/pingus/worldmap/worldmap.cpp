@@ -342,23 +342,6 @@ Worldmap::is_final_map()
   return pingus->get_node() == final_node;
 }
 
-std::string
-Worldmap::get_levelname()
-{
-  if (pingus->get_node() != NoNode)
-  {
-    LevelDot* leveldot = dynamic_cast<LevelDot*>(path_graph->get_dot(pingus->get_node()));
-    if (leveldot)
-      return _(leveldot->get_plf().get_levelname());
-    else 
-      return "---";
-  }
-  else
-  {
-    return _("...walking...");
-  }
-}
-
 int
 Worldmap::get_width()  const
 {

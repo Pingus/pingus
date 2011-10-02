@@ -121,13 +121,13 @@
           (position 1248 676 0))
         (levelname "tutorial/snow22-grumbel"))
       (storydot 
-       (name "Outro Dot")
+       (name "Watch Ending")
        (story "stories/tutorial_outro.story")
        (dot 
         (name "outrodot")
         (position 1496 680 0)))
       (storydot 
-       (name "Intro Dot")
+       (name "Watch Intro")
        (story "stories/tutorial_intro.story")
        (dot 
         (name "introdot")

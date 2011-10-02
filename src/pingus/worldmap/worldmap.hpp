@@ -87,9 +87,6 @@ public:
   /** Enters the level on which the Pingu is currently standing */
   void enter_level();
 
-  /** Return the current levelname for use in GUI */
-  std::string get_levelname();
-
   void add_drawable(Drawable* drawable);
 
   /** @return the shortest path between node1 and node2  */

@@ -118,36 +118,20 @@ LevelDot::accessible()
 void
 LevelDot::draw_hover(DrawingContext& gc)
 {
-  int pos_correction = 0;
-
   if (accessible())
   {
-    int length = Fonts::pingus_small.bounding_rect(0, 0, _(get_plf().get_levelname())).get_width() / 2;
-    int realpos = gc.world_to_screen(Vector2i(static_cast<int>(pos.x), static_cast<int>(pos.y))).x;
-    if (realpos - length < 0)
-      pos_correction = realpos - length;
-    else if (realpos + length > gc.get_width())
-      pos_correction = realpos + length - static_cast<int>(gc.get_width());
-      
     gc.print_center(Fonts::pingus_small,
-                    Vector2i(static_cast<int>(pos.x) - pos_correction,
+                    Vector2i(static_cast<int>(pos.x),
                              static_cast<int>(pos.y) - 44),
                     _(get_plf().get_levelname()), 
                     10000);
   }
   else
-  {
-    int length  = Fonts::pingus_small.bounding_rect(0, 0, _("locked")).get_width() / 2;
-    int realpos = gc.world_to_screen(Vector2i(static_cast<int>(pos.x), static_cast<int>(pos.y))).x;
-    if (realpos - length < 0)
-      pos_correction = realpos - length;
-    else if (realpos + length > gc.get_width())
-      pos_correction = realpos + length - static_cast<int>(gc.get_width());
-        
+  {       
     gc.print_center(Fonts::pingus_small,
-                    Vector2i(static_cast<int>(pos.x) - pos_correction,
-                             static_cast<int>(pos.y) - 30),
-                    _("locked"), 
+                    Vector2i(static_cast<int>(pos.x),
+                             static_cast<int>(pos.y) - 44),
+                    _("???"),
                     10000);
   }
 
