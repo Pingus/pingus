@@ -141,12 +141,16 @@ OptionMenu::OptionMenu() :
   ChoiceBox* language_box = new ChoiceBox(Rect());
   std::set<tinygettext::Language> languages = dictionary_manager.get_languages();
 
+  int idx = 0;
   for (std::set<tinygettext::Language>::iterator i = languages.begin(); i != languages.end(); ++i)
   {
     language_map[i->get_name()] = *i;
     language_box->add_choice(i->get_name());
     if (current_language == *i)
-      language_box->set_current_choice(current_choice);
+    {
+      language_box->set_current_choice(idx);
+    }
+    idx += 1;
   }
 
   ChoiceBox* scroll_box = new ChoiceBox(Rect());
