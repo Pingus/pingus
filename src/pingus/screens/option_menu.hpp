@@ -34,7 +34,8 @@ class SliderBox;
 class OptionMenu : public GUIScreen
 {
 private:
-  Sprite background;
+  Sprite m_background;
+  Sprite m_blackboard;
   GUI::SurfaceButton* ok_button;
   int x_pos;
   int y_pos;

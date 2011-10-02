@@ -26,6 +26,7 @@
 #include "pingus/resource.hpp"
 #include "pingus/screens/credits.hpp"
 #include "pingus/screens/level_menu.hpp"
+#include "pingus/screens/option_menu.hpp"
 #include "pingus/screens/start_screen.hpp"
 #include "pingus/worldmap/worldmap_screen.hpp"
 
@@ -39,33 +40,40 @@ PingusMenu::PingusMenu() :
   start_button(),
   quit_button(),
   editor_button(),
-  contrib_button()
+  contrib_button(),
+  options_button()
 {
   is_init = false;
 
   Size size_(Display::get_width(), Display::get_height());
-     
+  
   start_button = new MenuButton(this, Vector2i(size_.width/2 - 150,
-                                               size_.height/2 + 20),
+                                               size_.height/2 - 20),
                                 _("Story"),
                                 _("..:: Start the game ::.."));
 
   editor_button = new MenuButton(this, Vector2i(size_.width/2 + 150,
-                                                size_.height/2 + 20),
+                                                size_.height/2 - 20),
                                  _("Editor"),
                                  _("..:: Create your own levels ::.."));
 
-  quit_button = new MenuButton(this, Vector2i(size_.width/2 + 150, 
-                                              size_.height/2 + 100),
-                               _("Exit"),
-                               _("..:: Bye, bye ::.."));
+  options_button = new MenuButton(this, Vector2i(size_.width/2 + 150, 
+                                                 size_.height/2 + 50),
+                                  _("Options"),
+                                  _("..:: Configure the game ::.."));
 
   contrib_button = new MenuButton(this, Vector2i(size_.width/2 - 150,
-                                                 size_.height/2 + 100),
+                                                 size_.height/2 + 50),
                                   _("Levelsets"),
                                   _("..:: Play User Built levels ::.."));
 
+  quit_button = new MenuButton(this, Vector2i(size_.width/2, 
+                                              size_.height/2 + 120),
+                               _("Exit"),
+                               _("..:: Bye, bye ::.."));
+
   gui_manager->add(quit_button);
+  gui_manager->add(options_button);
   gui_manager->add(contrib_button);
   gui_manager->add(start_button);
   gui_manager->add(editor_button);
@@ -143,7 +151,7 @@ PingusMenu::draw_background(DrawingContext& gc)
   background->draw(gc);
 
   gc.draw(logo, Vector2i((gc.get_width()/2) - (logo.get_width()/2),
-                         gc.get_height()/2 - 250));
+                         gc.get_height()/2 - 280));
 
   gc.print_left(Fonts::pingus_small, Vector2i(gc.get_width()/2 - 400 + 25, gc.get_height()-140),
                 "Pingus "VERSION" - Copyright (C) 1998-2011 Ingo Ruhnke <grumbel@gmail.com>\n"
@@ -188,7 +196,11 @@ PingusMenu::on_click(MenuButton* button)
   }
   else if (button == contrib_button)
   {
-    ScreenManager::instance()->push_screen(new LevelMenu());
+    ScreenManager::instance()->push_screen(new LevelMenu);
+  }
+  else if (button == options_button)
+  {
+    ScreenManager::instance()->push_screen(new OptionMenu);
   }
 }
 
@@ -253,16 +265,19 @@ PingusMenu::resize(const Size& size_)
   create_background(size);
 
   start_button->set_pos(size.width/2 - 150,
-                        size.height/2 + 20);
+                        size.height/2 - 20);
     
   editor_button->set_pos(size.width/2 + 150,
-                         size.height/2 + 20);
+                         size.height/2 - 20);
 
   contrib_button->set_pos(size.width/2 - 150,
-                          size.height/2 + 100);
-    
+                          size.height/2 + 50);
+  
+  options_button->set_pos(size.width/2 + 150, 
+                          size.height/2 + 50);
+  
   quit_button->set_pos(size.width/2 + 150, 
-                       size.height/2 + 100);
+                       size.height/2 + 120);
 }
 
 /* EOF */

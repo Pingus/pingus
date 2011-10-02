@@ -48,6 +48,7 @@ private:
   MenuButton* quit_button;
   MenuButton* editor_button;
   MenuButton* contrib_button;
+  MenuButton* options_button;
 
   void show_credits();
 

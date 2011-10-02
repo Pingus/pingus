@@ -68,7 +68,8 @@ private:
 };
 
 OptionMenu::OptionMenu() :
-  background(),
+  m_background("core/menu/wood"),
+  m_blackboard("core/menu/blackboard"),
   ok_button(),
   x_pos(),
   y_pos(),
@@ -87,7 +88,6 @@ OptionMenu::OptionMenu() :
   language(),
   language_map()
 {
-  background = Sprite("core/menu/blackboard");
   gui_manager->add(ok_button = new OptionMenuCloseButton(this, 
                                                          Display::get_width()/2 + 245,
                                                          Display::get_height()/2 + 150));
@@ -289,10 +289,13 @@ struct OptionEntry {
 void
 OptionMenu::draw_background(DrawingContext& gc)
 {
-  gc.fill_screen(Color(0, 0, 0));
+  // Paint the background wood panel
+  for(int y = 0; y < gc.get_height(); y += m_background.get_height())
+    for(int x = 0; x < gc.get_width(); x += m_background.get_width())
+      gc.draw(m_background, Vector2i(x, y));
 
   // gc.draw_fillrect(Rect(100, 100, 400, 400), Color(255, 0, 0));
-  gc.draw(background, Vector2i(gc.get_width()/2, gc.get_height()/2));
+  gc.draw(m_blackboard, Vector2i(gc.get_width()/2, gc.get_height()/2));
 
   gc.print_center(Fonts::chalk_large,
                   Vector2i(gc.get_width()/2,
