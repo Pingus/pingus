@@ -82,8 +82,8 @@ OptionMenu::OptionMenu() :
   master_volume_box(),
   sound_volume_box(),
   music_volume_box(),
-  defaults_label(),
-  defaults_box(),
+  //defaults_label(),
+  //defaults_box(),
   connections(),
   language(),
   language_map()
@@ -219,10 +219,12 @@ OptionMenu::OptionMenu() :
   autoscroll_box->set_state(config_manager.get_autoscroll(), false);
   C(config_manager.on_autoscroll_change.connect(std::bind(&CheckBox::set_state, autoscroll_box, std::placeholders::_1, false)));
 
+  /*
   defaults_label = new Label(_("Reset to Defaults:"), Rect(Vector2i(Display::get_width()/2 - 100, Display::get_height()/2 + 160), Size(170, 32)));
   gui_manager->add(defaults_label);
   defaults_box = new CheckBox(Rect(Vector2i(Display::get_width()/2 - 100 + 170, Display::get_height()/2 + 160), Size(32, 32)));
   gui_manager->add(defaults_box);
+  */
 }
 
 void
@@ -324,10 +326,12 @@ OptionMenu::resize(const Size& size_)
 
   if (ok_button)
     ok_button->set_pos(size.width/2 + 245, size.height/2 + 150);
+  /*
   if (defaults_label)
     defaults_label->set_rect(Rect(Vector2i(Display::get_width()/2 - 100, Display::get_height()/2 + 160), Size(170, 32)));
   if (defaults_box)
     defaults_box->set_rect(Rect(Vector2i(Display::get_width()/2 - 100 + 170, Display::get_height()/2 + 160), Size(32, 32)));
+  */
 
   if (options.empty())
     return;
