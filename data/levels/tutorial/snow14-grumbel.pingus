@@ -637,13 +637,6 @@
       (position 778 413 0))
     (hotspot 
       (surface 
-        (image "hotspots/misc/deadly_fall_height")
-        (modifier "ROT0"))
-      (position 1336 392 0)
-      (speed 0)
-      (parallax 0))
-    (hotspot 
-      (surface 
         (image "entrances/snow_front")
         (modifier "ROT0"))
       (position 1160.18 162.638 100)

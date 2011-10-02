@@ -1026,13 +1026,6 @@
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
       (position 254 759 0))
-    (hotspot 
-      (surface 
-        (image "hotspots/misc/deadly_fall_height")
-        (modifier "ROT0"))
-      (position 1212 509 0)
-      (speed 0)
-      (parallax 0))
     (liquid 
       (surface 
         (image "liquids/water2")
