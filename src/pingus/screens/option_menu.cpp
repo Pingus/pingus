@@ -315,6 +315,7 @@ OptionMenu::on_escape_press()
 void
 OptionMenu::resize(const Size& size_)
 {
+  Size old_size = size;
   GUIScreen::resize(size_);
 
   if (ok_button)
@@ -327,8 +328,9 @@ OptionMenu::resize(const Size& size_)
   if (options.empty())
     return;
 
-  int x_diff = 120 + (size.width - 800) / 2;
-  int y_diff = 177 + (size.height - 600) / 2;
+  // FIXME: this drifts due to rounding errors
+  int x_diff = (size.width  - old_size.width) / 2;
+  int y_diff = (size.height - old_size.height) / 2;
 
   Rect rect;
   for(std::vector<Option>::iterator i = options.begin(); i != options.end(); ++i)
