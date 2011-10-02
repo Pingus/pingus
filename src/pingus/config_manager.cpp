@@ -205,7 +205,7 @@ ConfigManager::get_print_fps()
 void
 ConfigManager::set_language(const tinygettext::Language& v)
 {
-  log_info("ConfigManager::set_language: '" << v << "'");
+  log_info("ConfigManager::set_language: '" << v.str() << "'");
 
   if (v != get_language())
   {

@@ -57,7 +57,6 @@ public:
   }
 
   void on_click() {
-    parent->save_language();
     //FIXME: config_manager.save();
     parent->close_screen();
     Sound::PingusSound::play_sound("yipee");
@@ -88,7 +87,7 @@ OptionMenu::OptionMenu() :
   language(),
   language_map()
 {
-  background = Sprite("core/menu/optionmenu");
+  background = Sprite("core/menu/blackboard");
   gui_manager->add(ok_button = new OptionMenuCloseButton(this, 
                                                          Display::get_width()/2 + 245,
                                                          Display::get_height()/2 + 150));
@@ -144,7 +143,8 @@ OptionMenu::OptionMenu() :
 
   for (std::set<tinygettext::Language>::iterator i = languages.begin(); i != languages.end(); ++i)
   {
-    language_box->add_choice(i->str());
+    language_map[i->get_name()] = *i;
+    language_box->add_choice(i->get_name());
     if (current_language == *i)
       language_box->set_current_choice(current_choice);
   }
@@ -152,16 +152,16 @@ OptionMenu::OptionMenu() :
   ChoiceBox* scroll_box = new ChoiceBox(Rect());
   scroll_box->add_choice("Drag&Drop");
   scroll_box->add_choice("Rubberband");
-  
-  software_cursor_box = new CheckBox(Rect());
-  fullscreen_box    = new CheckBox(Rect());
-  autoscroll_box    = new CheckBox(Rect());
-  mousegrab_box     = new CheckBox(Rect());
-  printfps_box      = new CheckBox(Rect());
 
-  master_volume_box = new SliderBox(Rect());
-  sound_volume_box  = new SliderBox(Rect());
-  music_volume_box  = new SliderBox(Rect());
+  software_cursor_box = new CheckBox(Rect());
+  fullscreen_box      = new CheckBox(Rect());
+  autoscroll_box      = new CheckBox(Rect());
+  mousegrab_box       = new CheckBox(Rect());
+  printfps_box        = new CheckBox(Rect());
+
+  master_volume_box = new SliderBox(Rect(), 25);
+  sound_volume_box  = new SliderBox(Rect(), 25);
+  music_volume_box  = new SliderBox(Rect(), 25);
 
   master_volume_box->set_value(config_manager.get_master_volume());
   sound_volume_box->set_value(config_manager.get_sound_volume());
@@ -180,17 +180,24 @@ OptionMenu::OptionMenu() :
   C(language_box->on_change.connect(std::bind(&OptionMenu::on_language_change, this, std::placeholders::_1)));
   C(resolution_box->on_change.connect(std::bind(&OptionMenu::on_resolution_change, this, std::placeholders::_1)));
 
-  add_item(_("Language:"),        language_box);
-  //  add_item(_("Scroll Mode:"),     scroll_box);
+  x_pos = 0;
+  y_pos = 0;
+  add_item(_("Fullscreen"), fullscreen_box);
+  y_pos += 1;
+  add_item(_("Software Cursor"), software_cursor_box);
+  add_item(_("Autoscrolling"), autoscroll_box);
+  add_item(_("Mouse Grab"), mousegrab_box);
+  add_item(_("Print FPS"), printfps_box);
+
+  x_pos = 1;
+  y_pos = 0;
   add_item(_("Resolution:"),      resolution_box);
-  add_item(_("Fullscreen:"),      fullscreen_box);
+  y_pos += 1;
   add_item(_("Master Volume:"),   master_volume_box);
   add_item(_("Sound Volume:"),    sound_volume_box);
   add_item(_("Music Volume:"),    music_volume_box);
-  add_item(_("Autoscrolling:"),   autoscroll_box);
-  add_item(_("Print FPS:"),       printfps_box);
-  add_item(_("Mouse Grab:"),      mousegrab_box);
-  add_item(_("Software Cursor:"), software_cursor_box);
+  y_pos += 1;    
+  add_item(_("Language:"),        language_box);
 
   // Connect with ConfigManager
   mousegrab_box->set_state(config_manager.get_mouse_grab(), false);
@@ -217,42 +224,48 @@ OptionMenu::OptionMenu() :
 void
 OptionMenu::add_item(const std::string& label, GUI::RectComponent* control)
 {
-  int x_offset = (Display::get_width() - 800) / 2;
+  int x_offset = (Display::get_width()  - 800) / 2;
   int y_offset = (Display::get_height() - 600) / 2;
 
-  Label* label_component = new Label(label, Rect(Vector2i(120 + x_pos * 312 + x_offset, 177 + y_pos*32 + y_offset), 
-                                                 Size(140, 32)));
-  gui_manager->add(label_component);
-  gui_manager->add(control);
+  Rect rect(Vector2i(80 + x_offset + x_pos * 320, 
+                     140 + y_offset + y_pos * 32),
+            Size(320, 32));
+
+  Rect left(rect.left, rect.top,
+            rect.right - 180, rect.bottom);
+  Rect right(rect.left + 140, rect.top,
+             rect.right, rect.bottom);
+
+  Label* label_component = new Label(label, Rect());
 
   if (dynamic_cast<ChoiceBox*>(control))
   {
-    control->set_rect(Rect(120 + x_pos * 312 + 140 + x_offset, 177 + y_pos*32 + y_offset,
-                           120 + x_pos * 312 + 256 + x_offset, 177 + y_pos*32 + 32 + y_offset));                             
+    label_component->set_rect(left);
+    control->set_rect(right);
   }
   else if (dynamic_cast<SliderBox*>(control))
   {
-    control->set_rect(Rect(120 + x_pos * 312 + 140 + x_offset, 177 + y_pos*32 + y_offset,
-                           120 + x_pos * 312 + 256 + x_offset, 177 + y_pos*32 + 32 + y_offset));
+    label_component->set_rect(left);
+    control->set_rect(right);
   }
   else if (dynamic_cast<CheckBox*>(control))
   {
-    control->set_rect(Rect(Vector2i(120 + x_pos * 312 + 156 + 32+28+8 + x_offset, 177 + y_pos*32 + y_offset), 
+    control->set_rect(Rect(Vector2i(rect.left, rect.top), 
                            Size(32, 32)));
+    label_component->set_rect(Rect(rect.left + 40,  rect.top,
+                                   rect.right, rect.bottom));
   }
   else
   {
     assert(!"Unhandled control type");
   }
 
+  gui_manager->add(label_component);
+  gui_manager->add(control);
+
   options.push_back(Option(label_component, control));
 
   y_pos += 1;
-  if (y_pos > 5)
-  {
-    y_pos = 0; 
-    x_pos += 1;
-  }
 }
 
 OptionMenu::~OptionMenu()
@@ -279,11 +292,11 @@ OptionMenu::draw_background(DrawingContext& gc)
   gc.fill_screen(Color(0, 0, 0));
 
   // gc.draw_fillrect(Rect(100, 100, 400, 400), Color(255, 0, 0));
-  gc.draw(background, Vector2i(gc.get_width()/2 - background.get_width()/2, gc.get_height()/2 - background.get_height()/2));
+  gc.draw(background, Vector2i(gc.get_width()/2, gc.get_height()/2));
 
   gc.print_center(Fonts::chalk_large,
                   Vector2i(gc.get_width()/2,
-                           gc.get_height()/2 - 210),
+                           gc.get_height()/2 - 240),
                   _("Option Menu"));
 
   gc.print_center(Fonts::chalk_normal, Vector2i(gc.get_width()/2 + 245 + 30, gc.get_height()/2 + 150 - 20), _("Close"));
@@ -311,15 +324,18 @@ OptionMenu::resize(const Size& size_)
   if (options.empty())
     return;
 
-  Rect rect;
-  rect = options.front().label->get_rect();
-  int x_diff = 120 + (size.width - 800) / 2 - rect.left;
-  int y_diff = 177 + (size.height - 600) / 2 - rect.top;
+  int x_diff = 120 + (size.width - 800) / 2;
+  int y_diff = 177 + (size.height - 600) / 2;
 
+  Rect rect;
   for(std::vector<Option>::iterator i = options.begin(); i != options.end(); ++i)
   {
-    rect = (*i).label->get_rect();
-    (*i).label->set_rect(Rect(Vector2i(rect.left + x_diff, rect.top + y_diff), rect.get_size()));
+    if ((*i).label)
+    {
+      rect = (*i).label->get_rect();
+      (*i).label->set_rect(Rect(Vector2i(rect.left + x_diff, rect.top + y_diff), rect.get_size()));
+    }
+
     rect = (*i).control->get_rect();
     (*i).control->set_rect(Rect(Vector2i(rect.left + x_diff, rect.top + y_diff), rect.get_size()));
   }
@@ -383,6 +399,7 @@ void
 OptionMenu::on_language_change(const std::string &str)
 {
   language = str;
+  config_manager.set_language(language_map[language]);
 }
 
 void
@@ -396,12 +413,6 @@ OptionMenu::on_resolution_change(const std::string& str)
       config_manager.set_fullscreen_resolution(size_); 
     }
   }
-}
-
-void
-OptionMenu::save_language()
-{
-  config_manager.set_language(language_map[language]);
 }
 
 /* EOF */

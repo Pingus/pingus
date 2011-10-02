@@ -151,7 +151,7 @@ Options::from_file_reader(const FileReader& reader)
   
   if (reader.read_string("language", string_value))
   {
-    //FIXME: set_language(tinygettext::Language::from_spec(string_value));
+    opts.language.set(string_value);
   }
   
   if (reader.read_bool("software-cursor", bool_value))
