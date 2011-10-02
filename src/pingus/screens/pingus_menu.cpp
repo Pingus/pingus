@@ -233,7 +233,7 @@ PingusMenu::create_background(const Size& size_)
 
   // We only need to scale the background main menu images if the screen 
   // resolution is not default
-  if (w != globals::default_screen_width && 
+  if (w != globals::default_screen_width ||
       h != globals::default_screen_height)
   {
     layer1 = layer1.scale(w, 185 * h / globals::default_screen_height);
@@ -276,7 +276,7 @@ PingusMenu::resize(const Size& size_)
   options_button->set_pos(size.width/2 + 150, 
                           size.height/2 + 50);
   
-  quit_button->set_pos(size.width/2 + 150, 
+  quit_button->set_pos(size.width/2, 
                        size.height/2 + 120);
 }
 
