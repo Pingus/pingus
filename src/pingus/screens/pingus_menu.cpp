@@ -47,22 +47,22 @@ PingusMenu::PingusMenu() :
 
   Size size_(Display::get_width(), Display::get_height());
   
-  start_button = new MenuButton(this, Vector2i(size_.width/2 - 150,
+  start_button = new MenuButton(this, Vector2i(size_.width/2 - 125,
                                                size_.height/2 - 20),
                                 _("Story"),
                                 _("..:: Start the game ::.."));
 
-  editor_button = new MenuButton(this, Vector2i(size_.width/2 + 150,
+  editor_button = new MenuButton(this, Vector2i(size_.width/2 + 125,
                                                 size_.height/2 - 20),
                                  _("Editor"),
                                  _("..:: Create your own levels ::.."));
 
-  options_button = new MenuButton(this, Vector2i(size_.width/2 + 150, 
+  options_button = new MenuButton(this, Vector2i(size_.width/2 + 125, 
                                                  size_.height/2 + 50),
                                   _("Options"),
                                   _("..:: Configure the game ::.."));
 
-  contrib_button = new MenuButton(this, Vector2i(size_.width/2 - 150,
+  contrib_button = new MenuButton(this, Vector2i(size_.width/2 - 125,
                                                  size_.height/2 + 50),
                                   _("Levelsets"),
                                   _("..:: Play User Built levels ::.."));
@@ -264,16 +264,16 @@ PingusMenu::resize(const Size& size_)
   GUIScreen::resize(size_);
   create_background(size);
 
-  start_button->set_pos(size.width/2 - 150,
+  start_button->set_pos(size.width/2 - 125,
                         size.height/2 - 20);
     
-  editor_button->set_pos(size.width/2 + 150,
+  editor_button->set_pos(size.width/2 + 125,
                          size.height/2 - 20);
 
-  contrib_button->set_pos(size.width/2 - 150,
+  contrib_button->set_pos(size.width/2 - 125,
                           size.height/2 + 50);
   
-  options_button->set_pos(size.width/2 + 150, 
+  options_button->set_pos(size.width/2 + 125, 
                           size.height/2 + 50);
   
   quit_button->set_pos(size.width/2, 
