@@ -53,7 +53,12 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
       break;
 
     case SDLK_F5:
-      if (globals::developer_mode)
+      if (!dynamic_cast<OptionMenu*>(ScreenManager::instance()->get_current_screen().get()))
+        ScreenManager::instance()->push_screen(new OptionMenu());
+      break;
+
+    case SDLK_o:
+      if (keystate[SDLK_LCTRL] || keystate[SDLK_RCTRL])
       {
         if (!dynamic_cast<OptionMenu*>(ScreenManager::instance()->get_current_screen().get()))
           ScreenManager::instance()->push_screen(new OptionMenu());
