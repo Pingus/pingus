@@ -45,7 +45,8 @@ ConfigManager::ConfigManager() :
   on_print_fps_change(),
   on_language_change(),
   on_software_cursor_change(),
-  on_autoscroll_change(),
+  on_auto_scrolling_change(),
+  on_drag_drop_scrolling_change(),
   filename()
 {
 }
@@ -256,23 +257,40 @@ ConfigManager::get_software_cursor()
 }
 
 void
-ConfigManager::set_autoscroll(bool v)
+ConfigManager::set_auto_scrolling(bool v)
 {
-  log_info("ConfigManager::set_autoscroll: " << v);
+  log_info("ConfigManager::set_auto_scrolling: " << v);
 
-  if (v != get_autoscroll())
+  if (v != get_auto_scrolling())
   {
     globals::auto_scrolling = v;
-    on_autoscroll_change(v);
+    on_auto_scrolling_change(v);
   }
 
   m_opts.auto_scrolling.set(v);
 }
 
 bool
-ConfigManager::get_autoscroll()
+ConfigManager::get_auto_scrolling()
 {
   return globals::auto_scrolling;
+}
+
+void
+ConfigManager::set_drag_drop_scrolling(bool v)
+{
+  if (globals::drag_drop_scrolling != v)
+  {
+    globals::drag_drop_scrolling = v;
+    m_opts.drag_drop_scrolling.set(v);
+    on_drag_drop_scrolling_change(v);
+  }
+}
+
+bool
+ConfigManager::get_drag_drop_scrolling()
+{
+  return globals::drag_drop_scrolling;
 }
 
 Options
@@ -319,7 +337,7 @@ ConfigManager::apply(const Options& opts)
     set_software_cursor(opts.software_cursor.get());
 
   if (opts.auto_scrolling.is_set())
-    set_autoscroll(opts.auto_scrolling.get());
+    set_auto_scrolling(opts.auto_scrolling.get());
 
   if (opts.language.is_set())
     set_language(tinygettext::Language::from_env(opts.language.get()));

@@ -77,6 +77,7 @@ OptionMenu::OptionMenu() :
   fullscreen_box(),
   software_cursor_box(),
   autoscroll_box(),
+  dragdrop_scroll_box(),
   mousegrab_box(),
   printfps_box(),
   master_volume_box(),
@@ -168,6 +169,7 @@ OptionMenu::OptionMenu() :
   software_cursor_box = new CheckBox(Rect());
   fullscreen_box      = new CheckBox(Rect());
   autoscroll_box      = new CheckBox(Rect());
+  dragdrop_scroll_box = new CheckBox(Rect());
   mousegrab_box       = new CheckBox(Rect());
   printfps_box        = new CheckBox(Rect());
 
@@ -182,6 +184,7 @@ OptionMenu::OptionMenu() :
   C(software_cursor_box->on_change.connect(std::bind(&OptionMenu::on_software_cursor_change, this, std::placeholders::_1)));
   C(fullscreen_box->on_change.connect(std::bind(&OptionMenu::on_fullscreen_change, this, std::placeholders::_1)));
   C(autoscroll_box->on_change.connect(std::bind(&OptionMenu::on_autoscroll_change, this, std::placeholders::_1)));
+  C(dragdrop_scroll_box->on_change.connect(std::bind(&OptionMenu::on_drag_drop_scrolling_change, this, std::placeholders::_1)));
   C(mousegrab_box->on_change.connect(std::bind(&OptionMenu::on_mousegrab_change, this, std::placeholders::_1)));
   C(printfps_box->on_change.connect(std::bind(&OptionMenu::on_printfps_change, this, std::placeholders::_1)));
 
@@ -199,6 +202,7 @@ OptionMenu::OptionMenu() :
   y_pos += 1;
   add_item(_("Software Cursor"), software_cursor_box);
   add_item(_("Autoscrolling"), autoscroll_box);
+  add_item(_("Drag&Drop Scrolling"), dragdrop_scroll_box);
   add_item(_("Mouse Grab"), mousegrab_box);
   add_item(_("Print FPS"), printfps_box);
 
@@ -226,8 +230,11 @@ OptionMenu::OptionMenu() :
   software_cursor_box->set_state(config_manager.get_software_cursor(), false);
   C(config_manager.on_software_cursor_change.connect(std::bind(&CheckBox::set_state, software_cursor_box, std::placeholders::_1, false)));
 
-  autoscroll_box->set_state(config_manager.get_autoscroll(), false);
-  C(config_manager.on_autoscroll_change.connect(std::bind(&CheckBox::set_state, autoscroll_box, std::placeholders::_1, false)));
+  autoscroll_box->set_state(config_manager.get_auto_scrolling(), false);
+  C(config_manager.on_auto_scrolling_change.connect(std::bind(&CheckBox::set_state, autoscroll_box, std::placeholders::_1, false)));
+
+  dragdrop_scroll_box->set_state(config_manager.get_drag_drop_scrolling(), false);
+  C(config_manager.on_drag_drop_scrolling_change.connect(std::bind(&CheckBox::set_state, dragdrop_scroll_box, std::placeholders::_1, false)));
 
   /*
   defaults_label = new Label(_("Reset to Defaults:"), Rect(Vector2i(Display::get_width()/2 - 100, Display::get_height()/2 + 160), Size(170, 32)));
@@ -385,7 +392,13 @@ OptionMenu::on_fullscreen_change(bool v)
 void
 OptionMenu::on_autoscroll_change(bool v)
 {
-  config_manager.set_autoscroll(v);
+  config_manager.set_auto_scrolling(v);
+}
+
+void
+OptionMenu::on_drag_drop_scrolling_change(bool v)
+{
+  config_manager.set_drag_drop_scrolling(v);
 }
 
 void

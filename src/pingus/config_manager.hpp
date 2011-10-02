@@ -81,9 +81,13 @@ public:
   bool get_software_cursor();
   boost::signal<void(bool)> on_software_cursor_change;
 
-  void set_autoscroll(bool);
-  bool get_autoscroll();
-  boost::signal<void(bool)> on_autoscroll_change;
+  void set_auto_scrolling(bool);
+  bool get_auto_scrolling();
+  boost::signal<void(bool)> on_auto_scrolling_change;
+
+  void set_drag_drop_scrolling(bool);
+  bool get_drag_drop_scrolling();
+  boost::signal<void(bool)> on_drag_drop_scrolling_change;
 
 private:
   ConfigManager (const ConfigManager&);

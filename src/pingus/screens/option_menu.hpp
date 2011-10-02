@@ -55,6 +55,7 @@ private:
   CheckBox* fullscreen_box;
   CheckBox* software_cursor_box;
   CheckBox* autoscroll_box;
+  CheckBox* dragdrop_scroll_box;
   CheckBox* mousegrab_box;
   CheckBox* printfps_box;
 
@@ -86,6 +87,7 @@ public:
   void on_software_cursor_change(bool v);
   void on_fullscreen_change(bool v);
   void on_autoscroll_change(bool v);
+  void on_drag_drop_scrolling_change(bool v);
   void on_fastmode_change(bool v);
   void on_mousegrab_change(bool v);
   void on_printfps_change(bool v);
