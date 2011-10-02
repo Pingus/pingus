@@ -134,6 +134,14 @@ OptionMenu::OptionMenu() :
 
   resolution_box->set_current_choice(current_choice);
 
+
+  ChoiceBox* renderer_box = new ChoiceBox(Rect());
+  renderer_box->add_choice("delta");
+  renderer_box->add_choice("sdl");
+  renderer_box->add_choice("opengl");
+  renderer_box->set_current_choice(static_cast<int>(config_manager.get_renderer()));
+
+  
   tinygettext::Language current_language = dictionary_manager.get_language();
   language = current_language;
   n = 0;
@@ -183,6 +191,7 @@ OptionMenu::OptionMenu() :
 
   C(language_box->on_change.connect(std::bind(&OptionMenu::on_language_change, this, std::placeholders::_1)));
   C(resolution_box->on_change.connect(std::bind(&OptionMenu::on_resolution_change, this, std::placeholders::_1)));
+  C(renderer_box->on_change.connect(std::bind(&OptionMenu::on_renderer_change, this, std::placeholders::_1)));
 
   x_pos = 0;
   y_pos = 0;
@@ -195,14 +204,15 @@ OptionMenu::OptionMenu() :
 
   x_pos = 1;
   y_pos = 0;
-  add_item(_("Resolution:"),      resolution_box);
+  add_item(_("Resolution:"),    resolution_box);
+  add_item(_("Renderer:"),      renderer_box);
+  y_pos += 1;
+  add_item(_("Language:"),        language_box);
   y_pos += 1;
   add_item(_("Master Volume:"),   master_volume_box);
   add_item(_("Sound Volume:"),    sound_volume_box);
   add_item(_("Music Volume:"),    music_volume_box);
-  y_pos += 1;    
-  add_item(_("Language:"),        language_box);
-
+  
   // Connect with ConfigManager
   mousegrab_box->set_state(config_manager.get_mouse_grab(), false);
   C(config_manager.on_mouse_grab_change.connect(std::bind(&CheckBox::set_state, mousegrab_box, std::placeholders::_1, false)));
@@ -426,6 +436,12 @@ OptionMenu::on_resolution_change(const std::string& str)
       config_manager.set_fullscreen_resolution(size_); 
     }
   }
+}
+
+void
+OptionMenu::on_renderer_change(const std::string& str)
+{
+  config_manager.set_renderer(framebuffer_type_from_string(str));
 }
 
 /* EOF */

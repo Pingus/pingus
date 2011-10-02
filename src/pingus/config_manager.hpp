@@ -57,6 +57,10 @@ public:
   bool get_fullscreen();
   boost::signal<void(bool)> on_fullscreen_change;
 
+  void set_renderer(FramebufferType type);
+  FramebufferType get_renderer() const;
+  boost::signal<void(FramebufferType)> on_renderer_change;
+
   void set_resizable(bool);
   bool get_resizable();
   boost::signal<void(bool)> on_resizable_change;

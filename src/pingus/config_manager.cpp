@@ -39,6 +39,7 @@ ConfigManager::ConfigManager() :
   on_music_volume_change(),
   on_fullscreen_resolution_change(),
   on_fullscreen_change(),
+  on_renderer_change(),
   on_resizable_change(),
   on_mouse_grab_change(),
   on_print_fps_change(),
@@ -141,6 +142,18 @@ bool
 ConfigManager::get_fullscreen()
 {
   return globals::fullscreen_enabled;
+}
+
+void
+ConfigManager::set_renderer(FramebufferType type)
+{
+  return m_opts.framebuffer_type.set(type);
+}
+
+FramebufferType
+ConfigManager::get_renderer() const
+{
+  return m_opts.framebuffer_type.get();
 }
 
 void
@@ -272,6 +285,11 @@ void
 ConfigManager::apply(const Options& opts)
 {
   m_opts.merge(opts);
+
+  if (m_opts.framebuffer_type.is_set())
+    set_renderer(m_opts.framebuffer_type.get());
+  else
+    set_renderer(SDL_FRAMEBUFFER);
 
   if (opts.master_volume.is_set())
     set_master_volume(opts.master_volume.get());

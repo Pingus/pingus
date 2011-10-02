@@ -96,6 +96,7 @@ public:
 
   void on_language_change(const std::string& str);
   void on_resolution_change(const std::string& str);
+  void on_renderer_change(const std::string& str);
 
   void save_language();
 

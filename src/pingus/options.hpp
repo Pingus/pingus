@@ -69,8 +69,8 @@ enum FramebufferType
 {
  DELTA_FRAMEBUFFER, 
  SDL_FRAMEBUFFER, 
- NULL_FRAMEBUFFER, 
- OPENGL_FRAMEBUFFER 
+ OPENGL_FRAMEBUFFER,
+ NULL_FRAMEBUFFER
 };
 
 std::string framebuffer_type_to_string(FramebufferType type);
