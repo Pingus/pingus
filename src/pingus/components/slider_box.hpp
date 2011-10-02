@@ -24,11 +24,12 @@
 class SliderBox : public GUI::RectComponent
 {
 private:
+  int m_steps;
   int value;
   bool drag_drop;
 
 public:
-  SliderBox(const Rect& rect);
+  SliderBox(const Rect& rect, int steps);
 
   void draw(DrawingContext& gc);
   void on_primary_button_press(int x, int y);

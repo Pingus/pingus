@@ -20,9 +20,10 @@
 #include "pingus/fonts.hpp"
 #include "pingus/globals.hpp"
 
-SliderBox::SliderBox(const Rect& rect_)
+SliderBox::SliderBox(const Rect& rect_, int steps)
   : RectComponent(rect_),
-    value(10),
+    m_steps(steps),
+    value(steps),
     drag_drop(false),
     on_change()
 {
@@ -40,10 +41,10 @@ SliderBox::draw(DrawingContext& gc)
   }
   else
   {
-    for(int i = 0; i < 20; ++i)
+    for(int i = 0; i < m_steps; ++i)
     {
       if (i < value)
-        gc.print_left(Fonts::chalk_normal, Vector2i(rect.left + i*(rect.get_width()-12)/20 + 6, rect.top), "l");
+        gc.print_left(Fonts::chalk_normal, Vector2i(rect.left + i*(rect.get_width()-12)/m_steps + 6, rect.top), "|");
       //gc.print_left(Fonts::chalk_normal, rect.left + i*(rect.get_width()-12)/20 + 6, rect.top, "l");
     }
   }
@@ -77,9 +78,9 @@ SliderBox::on_pointer_move(int x, int y)
 
     x -= rect.left;
   
-    value = 20 * x / (rect.get_width() - 12);
+    value = m_steps * x / (rect.get_width() - 12);
   
-    value = Math::clamp(0, value, 20);
+    value = Math::clamp(0, value, m_steps);
 
     if (value != old_value)
       on_change(value*5); // scale to [0,100]
@@ -89,7 +90,7 @@ SliderBox::on_pointer_move(int x, int y)
 void
 SliderBox::set_value(int v)
 {
-  value = v * 20 / 100; // FIXME: rounding errors
+  value = v * m_steps / 100; // FIXME: rounding errors
 }
 
 /* EOF */
