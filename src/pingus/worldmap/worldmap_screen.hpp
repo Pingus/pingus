@@ -50,9 +50,7 @@ private:
   std::unique_ptr<Worldmap> new_worldmap;
 
   GUI::SurfaceButton* close_button;
-  GUI::SurfaceButton* story_button;
   GUI::SurfaceButton* credits_button;
-  GUI::SurfaceButton* enter_button;
   WorldmapComponent* m_worldmap_component;
 
 public:

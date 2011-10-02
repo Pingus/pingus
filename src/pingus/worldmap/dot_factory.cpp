@@ -19,13 +19,18 @@
 #include <stdexcept>
 
 #include "pingus/worldmap/level_dot.hpp"
+#include "pingus/worldmap/story_dot.hpp"
 
 namespace WorldmapNS {
 
 Dot*
 DotFactory::create(const FileReader& reader)
 {
-  if (reader.get_name() == "leveldot")
+  if (reader.get_name() == "storydot")
+  {
+    return new StoryDot(reader);
+  }
+  else if (reader.get_name() == "leveldot")
   {
     return new LevelDot(reader);
   }

@@ -108,7 +108,7 @@
       (leveldot 
         (dot 
           (name "leveldot_19")
-          (position 1406 687 0))
+          (position 1417 681 0))
         (levelname "tutorial/snow11-grumbel"))
       (leveldot 
         (dot 
@@ -119,8 +119,25 @@
         (dot 
           (name "leveldot_21")
           (position 1248 676 0))
-        (levelname "tutorial/snow22-grumbel")))
+        (levelname "tutorial/snow22-grumbel"))
+      (storydot 
+       (name "Outro Dot")
+       (story "stories/tutorial_outro.story")
+       (dot 
+        (name "outrodot")
+        (position 1496 680 0)))
+      (storydot 
+       (name "Intro Dot")
+       (story "stories/tutorial_intro.story")
+       (dot 
+        (name "introdot")
+        (position 429 760 0))))
     (edges 
+      (edge 
+        (name "egde_0")
+        (source "introdot")
+        (destination "leveldot_1")
+        (positions ))
       (edge 
         (name "egde_1")
         (source "leveldot_1")
@@ -243,7 +260,13 @@
         (name "egde_21")
         (source "leveldot_21")
         (destination "leveldot_18")
-        (positions ))))
+        (positions ))
+      (edge 
+        (name "egde_22")
+        (source "outrodot")
+        (destination "leveldot_19")
+        (positions ))
+))
   (objects 
     (surface 
       (name "background_1")

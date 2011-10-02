@@ -45,22 +45,6 @@ private:
   WorldmapScreenCloseButton & operator=(const WorldmapScreenCloseButton&);
 };
 
-class WorldmapScreenStoryButton
-  : public GUI::SurfaceButton
-{
-private:
-  WorldmapScreen* worldmap_screen;
-public:
-  WorldmapScreenStoryButton(WorldmapScreen* worldmap_screen);
-  void on_click();
-  void draw (DrawingContext& gc);
-  void on_pointer_enter();
-
-private:
-  WorldmapScreenStoryButton(const WorldmapScreenStoryButton&);
-  WorldmapScreenStoryButton & operator=(const WorldmapScreenStoryButton&);
-};
-
 class WorldmapScreenCreditsButton
   : public GUI::SurfaceButton
 {
@@ -75,22 +59,6 @@ public:
 private:
   WorldmapScreenCreditsButton(const WorldmapScreenCreditsButton&);
   WorldmapScreenCreditsButton & operator=(const WorldmapScreenCreditsButton&);
-};
-
-class WorldmapScreenEnterButton
-  : public GUI::SurfaceButton
-{
-private:
-  WorldmapScreen* worldmap_screen;
-public:
-  WorldmapScreenEnterButton(WorldmapScreen* worldmap_screen);
-  void on_click();
-  void draw (DrawingContext& gc);
-  void on_pointer_enter();
-
-private:
-  WorldmapScreenEnterButton(const WorldmapScreenEnterButton&);
-  WorldmapScreenEnterButton & operator=(const WorldmapScreenEnterButton&);
 };
 
 WorldmapScreenCreditsButton::WorldmapScreenCreditsButton(WorldmapScreen* worldmap_screen_) :
@@ -122,35 +90,6 @@ WorldmapScreenCreditsButton::on_click()
   worldmap_screen->show_end_story();
 }
 
-WorldmapScreenStoryButton::WorldmapScreenStoryButton(WorldmapScreen* worldmap_screen_) :
-  GUI::SurfaceButton(0, 0,
-                     "core/worldmap/story_button_normal",
-                     "core/worldmap/story_button_pressed",
-                     "core/worldmap/story_button_hover"),
-  worldmap_screen(worldmap_screen_)
-{
-}
-
-void
-WorldmapScreenStoryButton::on_pointer_enter()
-{
-  SurfaceButton::on_pointer_enter();
-  Sound::PingusSound::play_sound ("tick");
-}
-
-void
-WorldmapScreenStoryButton::draw (DrawingContext& gc)
-{
-  SurfaceButton::draw(gc);
-  gc.print_center(Fonts::chalk_small, Vector2i(59, 2), _("Show Story?"));
-}
-
-void
-WorldmapScreenStoryButton::on_click()
-{
-  worldmap_screen->show_intro_story();
-}
-
 WorldmapScreenCloseButton::WorldmapScreenCloseButton(WorldmapScreen* worldmap_screen_) :
   GUI::SurfaceButton(0, Display::get_height() - 37,
                      "core/worldmap/leave_button_normal",
@@ -179,45 +118,6 @@ WorldmapScreenCloseButton::on_click()
 {
   ScreenManager::instance ()->pop_screen ();
 }
-
-WorldmapScreenEnterButton::WorldmapScreenEnterButton(WorldmapScreen* worldmap_screen_) :
-  GUI::SurfaceButton(Display::get_width() - 119, Display::get_height() - 37,
-                     "core/worldmap/enter_button_normal",
-                     "core/worldmap/enter_button_pressed",
-                     "core/worldmap/enter_button_hover"),
-  worldmap_screen(worldmap_screen_)
-{
-}
-
-void
-WorldmapScreenEnterButton::on_pointer_enter()
-{
-  SurfaceButton::on_pointer_enter();
-  Sound::PingusSound::play_sound ("tick");
-}
-
-void
-WorldmapScreenEnterButton::draw (DrawingContext& gc)
-{
-  if (worldmap_screen->get_worldmap()->get_pingus()->is_walking())
-  {
-    gc.draw(button_surface, Vector2i(x_pos, y_pos));
-  }
-  else
-  {
-    SurfaceButton::draw(gc);
-    gc.print_center(Fonts::chalk_small,
-                    Vector2i(Display::get_width() - 43 - 22,
-                             Display::get_height() - 25),
-                    _("Enter?"));
-  }
-}
-
-void
-WorldmapScreenEnterButton::on_click()
-{
-  worldmap_screen->get_worldmap()->enter_level();
-}
 
 WorldmapScreen::WorldmapScreen() :
   levelname_bg("core/worldmap/levelname_bg"),
@@ -225,10 +125,8 @@ WorldmapScreen::WorldmapScreen() :
   exit_worldmap(false),
   worldmap(),
   new_worldmap(),
-  close_button(0),
-  story_button(0),
-  credits_button(0),
-  enter_button(0),
+  close_button(),
+  credits_button(),
   m_worldmap_component()
 {
   // FIXME: a bit ugly because of the proteced member, but should work
@@ -236,8 +134,6 @@ WorldmapScreen::WorldmapScreen() :
   // FIXME: but that could lead to member function name conflicts
   gui_manager->add(m_worldmap_component = new WorldmapComponent(this));
   gui_manager->add(close_button = new WorldmapScreenCloseButton(this));
-  gui_manager->add(enter_button = new WorldmapScreenEnterButton(this));
-  gui_manager->add(story_button = new WorldmapScreenStoryButton(this));
 }
 
 WorldmapScreen::~WorldmapScreen ()
@@ -328,10 +224,7 @@ void
 WorldmapScreen::resize(const Size& size_)
 {
   GUIScreen::resize(size_);
-
   close_button->set_pos(0, size.height - 37);
-  story_button->set_pos(0, 0);
-  enter_button->set_pos(size.width - 119, size.height - 37);
 }
 
 void

@@ -330,7 +330,10 @@ Worldmap::set_starting_node()
   pingus->set_position(id);
 
   LevelDot* leveldot = dynamic_cast<LevelDot*>(path_graph->get_dot(id));
-  leveldot->unlock();
+  if (leveldot)
+  {
+    leveldot->unlock();
+  }
 }
 
 bool
