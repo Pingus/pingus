@@ -19,11 +19,15 @@
 
 #include <boost/signal.hpp>
 
+#include "engine/display/sprite.hpp"
 #include "engine/gui/rect_component.hpp"
 
 class CheckBox : public GUI::RectComponent
 {
 private:
+  Sprite m_checkbox_marked;
+  Sprite m_checkbox;
+
   bool state;
 
 public:

@@ -22,6 +22,8 @@
 
 CheckBox::CheckBox(const Rect& rect_) :
   RectComponent(rect_),
+  m_checkbox_marked("core/menu/checkbox_marked_small"),
+  m_checkbox("core/menu/checkbox_small"),
   state(false),
   on_change()
 {
@@ -41,8 +43,13 @@ CheckBox::draw(DrawingContext& gc)
     gc.draw_rect(rect, Color(0, 255, 255));
 
   if (state)
-    gc.print_center(Fonts::chalk_normal, Vector2i(rect.left+rect.get_width()/2, rect.top), "X");
-  gc.print_center(Fonts::chalk_normal, Vector2i(rect.left+rect.get_width()/2, rect.top), "[ ]");
+  {
+    gc.draw(m_checkbox_marked, Vector2i(rect.left, rect.top));
+  }
+  else
+  {
+    gc.draw(m_checkbox, Vector2i(rect.left, rect.top));
+  }
 }
 
 void
