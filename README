@@ -48,11 +48,8 @@ IRC
 
 Bug Reports
 
-   Questions about the game and bug reports should go to the
-   pingus-devel lists. If you have a real bug report or want to browse
-   the list of open bug reports you can do that at the Savannah Bug
-   Tracker:
+   Bug reports be submitted to the issue tracker at:
 
-    * http://savannah.nongnu.org/bugs/?group=pingus
+    * http://code.google.com/p/pingus/issues/list
 
 # EOF #
