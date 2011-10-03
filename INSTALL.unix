@@ -104,6 +104,6 @@ Installation:
 As mentioned above, you don't need to install Pingus to run it, if you
 still want to do it, you can do so with:
 
- % ./install.sh DIR
+ % make install PREFIX=/usr
 
 # EOF #
