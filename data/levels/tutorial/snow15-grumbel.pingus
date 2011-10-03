@@ -19,7 +19,7 @@
       (surface 
         (image "textures/happyclouds")
         (modifier "ROT0"))
-      (position 298.5 44 -150)
+      (position 5.5 -27 -150)
       (colori 126 0 0 102)
       (stretch-x #f)
       (stretch-y #t)
@@ -42,6 +42,18 @@
       (position 1290.37 442.335 -50)
       (speed -1)
       (parallax 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/snow/block4")
+        (modifier "ROT0"))
+      (position 1425 565 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/snow/piece9")
+        (modifier "ROT180"))
+      (position 1192 597 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -195,15 +207,15 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/snow/piece9")
-        (modifier "ROT180FLIP"))
-      (position 457 601 0))
+        (image "groundpieces/ground/snow/block4")
+        (modifier "ROT0"))
+      (position 461 571 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece9")
-        (modifier "ROT180"))
-      (position 1192 597 0))
+        (modifier "ROT180FLIP"))
+      (position 457 600 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -263,12 +275,6 @@
         (modifier "ROT0"))
       (position 953 736 0))
     (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/snow/icepiece1")
-        (modifier "ROT0"))
-      (position 1391 540 0))
-    (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/snow/grass2")
@@ -310,12 +316,6 @@
         (image "groundpieces/transparent/snow/grass4")
         (modifier "ROT0"))
       (position 750 551 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/snow/icepiece1")
-        (modifier "ROT0"))
-      (position 489 546 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -628,6 +628,48 @@
         (image "groundpieces/ground/snow/ice1")
         (modifier "ROT0"))
       (position 528 825 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/snow/block3")
+        (modifier "ROT0"))
+      (position 1393 534 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/snow/grass3")
+        (modifier "ROT0FLIP"))
+      (position 1392 601 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/snow/block3")
+        (modifier "ROT0"))
+      (position 461 540 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/snow/plant2")
+        (modifier "ROT0"))
+      (position 483 604 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/snow/plant2")
+        (modifier "ROT0"))
+      (position 460 619 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/snow/plant2")
+        (modifier "ROT0"))
+      (position 1429 605 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/snow/plant2")
+        (modifier "ROT0"))
+      (position 1443 615 0))
     (hotspot 
       (surface 
         (image "entrances/snow_front")
