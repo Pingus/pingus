@@ -199,11 +199,12 @@ OptionMenu::OptionMenu() :
   x_pos = 0;
   y_pos = 0;
   add_item(_("Fullscreen"), fullscreen_box);
+  add_item(_("Mouse Grab"), mousegrab_box);
   y_pos += 1;
   add_item(_("Software Cursor"), software_cursor_box);
   add_item(_("Autoscrolling"), autoscroll_box);
   add_item(_("Drag&Drop Scrolling"), dragdrop_scroll_box);
-  add_item(_("Mouse Grab"), mousegrab_box);
+  y_pos += 1;
   add_item(_("Print FPS"), printfps_box);
 
   x_pos = 1;
@@ -326,6 +327,10 @@ OptionMenu::draw_background(DrawingContext& gc)
                   _("Option Menu"));
 
   gc.print_center(Fonts::chalk_normal, Vector2i(gc.get_width()/2 + 245 + 30, gc.get_height()/2 + 150 - 20), _("Close"));
+
+  gc.print_left(Fonts::chalk_normal, 
+                Vector2i(gc.get_width()/2 - 320, gc.get_height()/2 + 200),
+                _("Some options require a restart of the game to take effect."));
 }
 
 void
