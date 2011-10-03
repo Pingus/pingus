@@ -138,7 +138,7 @@ LevelDot::draw_hover(DrawingContext& gc)
   if (globals::developer_mode)
   {
     gc.print_center(Fonts::pingus_small,
-                    Vector2i(static_cast<int>(pos.x), static_cast<int>(pos.y) - 56),
+                    Vector2i(static_cast<int>(pos.x), static_cast<int>(pos.y) - 70),
                     get_plf().get_resname(), 
                     10000);
   }
