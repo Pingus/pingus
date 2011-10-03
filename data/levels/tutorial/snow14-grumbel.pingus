@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Block'a Rock")
-    (description "Once again it's time to combine the stuff you have learned in your previous levels. Blast your way free and make sure you also keep the rest of the Pingus under control. The Blocker action will be helpful. ")
+    (description "Once again it's time to combine the things you have learned in your previous levels. Blast your way free and make sure you also keep the rest of the Pingus under control. The Blocker action will be helpful.")
     (author "Ingo Ruhnke <grumbel@gmx.de>")
     (number-of-pingus 35)
     (number-to-save 15)
@@ -53,7 +53,7 @@
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
-      (position 1102 697 0))
+      (position 1103 688 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -113,31 +113,31 @@
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
-      (position 1091 988 0))
+      (position 1091 1021 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
-      (position 1030 989 0))
+      (position 1030 1022 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
-      (position 1220 988 0))
+      (position 1220 1021 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
-      (position 1156 988 0))
+      (position 1156 1021 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
-      (position 1274 990 0))
+      (position 1274 1023 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -203,7 +203,7 @@
       (surface 
         (image "groundpieces/ground/snow/way")
         (modifier "ROT270"))
-      (position 1312 839 0))
+      (position 1312 872 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -436,85 +436,85 @@
       (surface 
         (image "groundpieces/ground/snow/block1")
         (modifier "ROT0"))
-      (position 1027 933 0))
+      (position 1027 966 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/block2")
         (modifier "ROT0"))
-      (position 1091 933 0))
+      (position 1091 966 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/block1")
         (modifier "ROT0"))
-      (position 1155 933 0))
+      (position 1155 966 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/block2")
         (modifier "ROT0"))
-      (position 1219 933 0))
+      (position 1219 966 0))
     (exit 
       (surface 
         (image "exits/ice2")
         (modifier "ROT0"))
-      (position 1212.55 934.912 0)
+      (position 1212.55 967.912 0)
       (owner-id 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/block1")
         (modifier "ROT0"))
-      (position 1283 933 0))
+      (position 1283 966 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/way")
         (modifier "ROT0"))
-      (position 1266 837 0))
+      (position 1266 870 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
-      (position 1265 829 0))
+      (position 1265 862 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
-      (position 1292 829 0))
+      (position 1292 862 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
-      (position 1023 930 0))
+      (position 1023 963 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
-      (position 1090 931 0))
+      (position 1090 964 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
-      (position 1153 931 0))
+      (position 1153 964 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
-      (position 1222 931 0))
+      (position 1222 964 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
-      (position 1276 930 0))
+      (position 1276 963 0))
     (groundpiece 
       (type "ground")
       (surface 
