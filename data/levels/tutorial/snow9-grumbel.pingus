@@ -53,7 +53,7 @@
       (surface 
         (image "groundpieces/ground/snow/piece7")
         (modifier "ROT180FLIP"))
-      (position 1336 845 0))
+      (position 1328 845 0))
     (groundpiece 
       (type "ground")
       (surface 
