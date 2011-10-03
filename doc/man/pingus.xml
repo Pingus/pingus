@@ -1,0 +1,293 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+          <!ENTITY % pingusstuff SYSTEM "pingus.ent">
+          %pingusstuff;
+          ]>
+<refentry id="pingus"> 
+  <refmeta>
+    <refentrytitle>
+      <application>pingus</application>
+    </refentrytitle>
+    <manvolnum>6</manvolnum>
+    <refmiscinfo class="version">&pingus_version;</refmiscinfo>
+    <refmiscinfo class="author">&pingus_version;</refmiscinfo>
+    <refmiscinfo class="manual">User Commands</refmiscinfo>
+    <refmiscinfo class="source">pingus</refmiscinfo>
+  </refmeta>
+
+  <refnamediv>
+    <refname>
+      <application>pingus</application>
+    </refname>
+    <refpurpose>
+      A puzzle game where you have to save penguins
+    </refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv>
+    <cmdsynopsis>
+      <command>pingus</command>
+      <arg choice="opt" rep="repeat">OPTION</arg>
+      <arg choice="opt">FILE</arg>   
+    </cmdsynopsis>
+  </refsynopsisdiv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <command>pingus</command>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Options</title>
+    <refsect2>
+      <title>General Options</title>
+
+      <variablelist>
+        <varlistentry>      
+          <term>-h, --help</term>
+          <listitem>
+            <para>Displays this help</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>      
+          <term>-V, --version</term>
+          <listitem>
+            <para>Print version number and exit</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>      
+          <term>-v, --verbose</term> 
+          <listitem>
+            <para>Enable info level log output</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>      
+          <term>-D, --debug</term>
+          <listitem>
+            <para>Enable debug level log output</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>      
+          <term>-Q, --quiet</term>       
+          <listitem>
+            <para>Disable all log output</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsect2>
+
+    <refsect2>
+      <title>Display Options</title>
+      <variablelist>
+        <varlistentry>
+          <term>-w, --window</term>
+          <listitem>
+            <para>Start in Window Mode</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>-f, --fullscreen</term>
+          <listitem>
+            <para>Start in Fullscreen</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>-r, --renderer=RENDERER</term>
+          <listitem>
+            <para>Use the given renderer (default: delta)</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>-g, --geometry={width}x{height}</term>
+          <listitem>
+            <para>Set the window resolution for pingus (default: 800x600)</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>--software-cursor</term>
+          <listitem>
+            <para>Enable software cursor</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsect2>
+
+    <refsect2>
+      <title>Game Options</title>
+      <variablelist>
+        <varlistentry>
+          <term>--no-auto-scrolling</term>
+          <listitem>
+            <para>Disable automatic scrolling</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>--drag-drop-scrolling</term>
+          <listitem>
+            <para>Enable drag'n drop scrolling</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsect2>
+
+    <refsect2>
+      <title>Sound Options</title>
+      <variablelist>
+        <varlistentry>
+          <term>-s, --disable-sound</term>
+          <listitem>
+            <para>Disable sound</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>-m, --disable-music</term>
+          <listitem>
+            <para>Disable music</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsect2>
+
+    <refsect2>
+      <title>Language Options</title>
+      <variablelist>
+
+        <varlistentry>
+          <term>-l, --language=LANG</term>
+          <listitem>
+            <para>Select language to use with Pingus</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>--list-languages</term>
+          <listitem>
+            <para>List all available languages</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsect2>
+
+    <refsect2>
+      <title>Editor Options</title>
+      <variablelist>
+        <varlistentry>
+          <term>-e, --editor</term>
+          <listitem>
+            <para>Loads the level editor</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsect2>
+
+    <refsect2>
+      <title>Directory Options</title>
+      <variablelist>
+        <varlistentry>
+          <term>-d, --datadir=DIR</term>
+          <listitem>
+            <para>Load game datafiles from DIR</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>-u, --userdir=DIR</term>
+          <listitem>
+            <para>Load config files and store savegames in DIR</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>-a, --addon=DIR</term>
+          <listitem>
+            <para>Load game modifications from DIR</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>--no-cfg-file</term>
+          <listitem>
+            <para>Don't read ~/.pingus/config</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>-c, --config=FILE</term>
+          <listitem>
+            <para>Read config from FILE (default: ~/.pingus/config)</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>--controller=FILE</term>
+          <listitem>
+            <para>Uses the controller given in FILE</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsect2>
+
+    <refsect2>
+      <title>Debug Options</title>
+      <variablelist>
+        <varlistentry>
+          <term>--developer-mode</term>
+          <listitem>
+            <para>Enables some special features for developers</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>-t, --speed=SPEED</term>
+          <listitem>
+            <para>Set the game speed (0=fastest, >0=slower)</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>-k, --fps=FPS</term>
+          <listitem>
+            <para>Set the desired game framerate (frames per second)</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>--tile-size=INT</term>
+          <listitem>
+            <para>Set the size of the map tiles (default: 32)</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsect2>
+  </refsect1>
+
+  <refsect1>
+    <title>Copyright</title>
+    <para>
+      Copyright (C) 1998-2011 Ingo Ruhnke <email>grumbel@gmail.com</email>
+      See the file AUTHORS for a complete list of contributors.
+      Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are
+      welcome to redistribute it under certain conditions; see the file COPYING for details.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See also</title>
+    <para>
+      http://pingus.seul.org
+    </para>
+  </refsect1>
+</refentry>
