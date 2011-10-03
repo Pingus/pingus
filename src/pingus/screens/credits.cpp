@@ -210,6 +210,12 @@ Credits::on_fast_forward_press ()
 void
 Credits::on_escape_press ()
 {
+  bool credits_seen = false;   
+  StatManager::instance()->get_bool("credits-seen", credits_seen);
+  if (!credits_seen)
+  {
+    ScreenManager::instance ()->pop_screen ();
+  }
   ScreenManager::instance ()->pop_screen ();
 }
 

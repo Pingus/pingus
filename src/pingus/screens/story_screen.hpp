@@ -39,9 +39,10 @@ private:
   StoryScreenComponent* story_comp;
   GUI::SurfaceButton* continue_button;
   GUI::SurfaceButton* skip_button;
+  bool m_credits;
 
 public:
-  StoryScreen(const FileReader& reader);
+  StoryScreen(const FileReader& reader, bool credits = false);
   ~StoryScreen();
 
   void on_startup();

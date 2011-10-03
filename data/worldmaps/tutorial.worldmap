@@ -123,6 +123,7 @@
       (storydot 
        (name "Watch Ending")
        (story "stories/tutorial_outro.story")
+       (credits #t)
        (dot 
         (name "outrodot")
         (position 1496 680 0)))

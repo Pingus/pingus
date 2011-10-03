@@ -34,6 +34,7 @@ private:
 
   std::string m_name;
   std::string m_story;
+  bool m_credits;
 
 public:
   StoryDot(const FileReader& reader);

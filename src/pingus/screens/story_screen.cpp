@@ -24,6 +24,7 @@
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "pingus/globals.hpp"
+#include "pingus/screens/credits.hpp"
 #include "util/utf8.hpp"
 
 class StoryScreenComponent : public GUI::Component
@@ -41,9 +42,10 @@ private:
   std::vector<StoryPage> pages;
   Sprite page_surface;
   StoryPage  current_page;
+  bool m_credits;
 
 public:
-  StoryScreenComponent (WorldmapNS::WorldmapStory *arg_pages);
+  StoryScreenComponent (WorldmapNS::WorldmapStory *arg_pages, bool credits);
   virtual ~StoryScreenComponent () {}
 
   void draw (DrawingContext& gc);
@@ -131,13 +133,14 @@ private:
   StoryScreenSkipButton & operator=(const StoryScreenSkipButton&);
 };
 
-StoryScreen::StoryScreen(const FileReader& reader) :
+StoryScreen::StoryScreen(const FileReader& reader, bool credits) :
   story(new WorldmapNS::WorldmapStory(reader)),
   story_comp(),
   continue_button(0),
-  skip_button(0)
+  skip_button(0),
+  m_credits(credits)
 {
-  story_comp = new StoryScreenComponent(story.get());
+  story_comp = new StoryScreenComponent(story.get(), m_credits);
   gui_manager->add(story_comp);
   gui_manager->add(continue_button = new StoryScreenContinueButton(story_comp, 
                                                                    Display::get_width()/2 + 220 + 40, 
@@ -152,7 +155,7 @@ StoryScreen::~StoryScreen()
 {
 }
 
-StoryScreenComponent::StoryScreenComponent (WorldmapNS::WorldmapStory *arg_story) :
+StoryScreenComponent::StoryScreenComponent (WorldmapNS::WorldmapStory *arg_story, bool credits) :
   background(),
   blackboard(),
   display_text(),
@@ -161,7 +164,8 @@ StoryScreenComponent::StoryScreenComponent (WorldmapNS::WorldmapStory *arg_story
   story(arg_story),
   pages(),
   page_surface(),
-  current_page()
+  current_page(),
+  m_credits(credits)
 {
   page_displayed_completly = false;
   time_passed  = 0;
@@ -262,37 +266,15 @@ StoryScreenComponent::next_text()
     }
     else
     {
-#if 0 // FIXME: Sat Jul  5 04:17:01 2008    
-      //Out of story pages - figure out which one this was (start or end)
-      std::string which_story = "start";
-
-      //Out of story pages - figure out which one this was (start or end)
-      if (story == WorldmapNS::WorldmapScreen::instance()->get_worldmap()->get_intro_story())
-        which_story = "start";
-      else
-        which_story = "end";
-
-      // Record that player has seen this story.
-      StatManager::instance()->set_bool(WorldmapNS::WorldmapScreen::instance()->get_worldmap()->get_shortname()
-                                        + "-" + which_story + "story-seen", true);
-      bool credits_seen = false;
-      //Check if this is the last worldmap
-      if (which_story == "end" &&
-          WorldmapNS::WorldmapScreen::instance()->get_worldmap()->is_final_map())
+      if (m_credits)
       {
-        // Check if final credits have been seen
-        StatManager::instance()->get_bool("credits-seen", credits_seen);
-        if (!credits_seen)
-          ScreenManager::instance()->replace_screen(new Credits(), true);
-        else
-          ScreenManager::instance()->replace_screen(new WorldmapNS::WorldmapScreen(), true);
+        ScreenManager::instance()->replace_screen
+          (new Credits(Pathname("credits/pingus.credits", Pathname::DATA_PATH)));
       }
       else
       {
-        ScreenManager::instance()->replace_screen(new WorldmapNS::WorldmapScreen(), true);
+        ScreenManager::instance()->pop_screen();
       }
-#endif 
-      ScreenManager::instance()->pop_screen();
     }
   }
 }

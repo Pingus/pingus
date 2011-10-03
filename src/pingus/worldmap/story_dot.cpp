@@ -33,10 +33,12 @@ StoryDot::StoryDot(const FileReader& reader) :
   m_story_dot_highlight("core/worldmap/story_dot_highlight"),
   m_story_dot("core/worldmap/story_dot"),
   m_name(),
-  m_story()
+  m_story(),
+  m_credits(false)
 {
   reader.read_string("name", m_name);
   reader.read_string("story", m_story);
+  reader.read_bool("credits", m_credits);
 }
 
 void
@@ -68,7 +70,7 @@ StoryDot::on_click()
   try 
   {
     FileReader reader = FileReader::parse(Pathname(m_story, Pathname::DATA_PATH));
-    ScreenManager::instance()->push_screen(new StoryScreen(reader));
+    ScreenManager::instance()->push_screen(new StoryScreen(reader, m_credits));
   }
   catch(const std::exception& err)
   {
