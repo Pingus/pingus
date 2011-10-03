@@ -17,7 +17,7 @@
       (surface 
         (image "textures/happyclouds")
         (modifier "ROT0"))
-      (position -49 155 -150)
+      (position -6 -7 -150)
       (colori 0 0 0 75)
       (stretch-x #f)
       (stretch-y #t)
@@ -364,7 +364,7 @@
       (surface 
         (image "groundpieces/ground/snow/piece7")
         (modifier "ROT0FLIP"))
-      (position 260 411 0))
+      (position 259 418 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -383,6 +383,12 @@
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
       (position 1282 612 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/snow/piece7")
+        (modifier "ROT0FLIP"))
+      (position 1316 661 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -406,7 +412,7 @@
       (surface 
         (image "groundpieces/ground/snow/ice1")
         (modifier "ROT0FLIP"))
-      (position 323 424 0))
+      (position 336 434 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -438,7 +444,7 @@
         (modifier "ROT0"))
       (position 389 440 0))
     (groundpiece 
-      (type "ground")
+      (type "solid")
       (surface 
         (image "groundpieces/ground/snow/ice1")
         (modifier "ROT0"))
@@ -514,19 +520,13 @@
       (surface 
         (image "groundpieces/ground/snow/piece7")
         (modifier "ROT0FLIP"))
-      (position 1316 661 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/snow/piece7")
-        (modifier "ROT0FLIP"))
       (position 1414 681 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece9")
         (modifier "ROT180FLIP"))
-      (position 1363 732 0))
+      (position 1370 736 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -546,7 +546,7 @@
         (modifier "ROT0"))
       (position 1402 563 0))
     (groundpiece 
-      (type "ground")
+      (type "solid")
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
@@ -558,7 +558,7 @@
         (modifier "ROT0"))
       (position 1366 576 0))
     (groundpiece 
-      (type "ground")
+      (type "solid")
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
@@ -630,7 +630,7 @@
         (modifier "ROT0"))
       (position 1358 641 0))
     (groundpiece 
-      (type "ground")
+      (type "solid")
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0FLIP"))
@@ -642,22 +642,22 @@
         (modifier "ROT0"))
       (position 382 497 0))
     (groundpiece 
-      (type "ground")
+      (type "solid")
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
       (position 1427 569 0))
     (groundpiece 
-      (type "ground")
+      (type "solid")
       (surface 
         (image "groundpieces/ground/snow/ice2")
         (modifier "ROT0"))
       (position 1396 505 0))
     (groundpiece 
-      (type "ground")
+      (type "solid")
       (surface 
         (image "groundpieces/ground/snow/ice2")
-        (modifier "ROT0FLIP"))
+        (modifier "ROT0"))
       (position 1485 422 0))
     (groundpiece 
       (type "ground")
@@ -742,7 +742,7 @@
       (surface 
         (image "groundpieces/ground/snow/piece7")
         (modifier "ROT0"))
-      (position -75 425 0))
+      (position -54 425 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -785,6 +785,12 @@
         (image "groundpieces/ground/snow/piece7")
         (modifier "ROT0"))
       (position -19 787 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/snow/gpiece1")
+        (modifier "ROT0FLIP"))
+      (position 7 912 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -915,14 +921,8 @@
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/gpiece1")
-        (modifier "ROT0"))
+        (modifier "ROT0FLIP"))
       (position -28 1000 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/snow/gpiece1")
-        (modifier "ROT0"))
-      (position 7 912 0))
     (groundpiece 
       (type "solid")
       (surface 
