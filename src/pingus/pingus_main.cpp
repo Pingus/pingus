@@ -611,11 +611,6 @@ PingusMain::run(int argc, char** argv)
 
     // start and run the actual game
     start_game();
-
-    // save configuration
-    Pathname cfg_filename(System::get_userdir() + "config", Pathname::SYSTEM_PATH);
-    log_info(cfg_filename);
-    config_manager.get_options().save(cfg_filename);
   }
   catch (const std::bad_alloc&) 
   {
