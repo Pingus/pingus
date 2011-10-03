@@ -30,6 +30,7 @@
 #include "pingus/gettext.h"
 #include "tinygettext/dictionary_manager.hpp"
 #include "util/log.hpp"
+#include "util/system.hpp"
 
 #define C(x) connections.push_back(x)
 
@@ -57,14 +58,22 @@ public:
   }
 
   void on_click() {
-    //FIXME: config_manager.save();
-    parent->close_screen();
+    parent->on_escape_press();
     Sound::PingusSound::play_sound("yipee");
   }
 
 private:
   OptionMenuCloseButton(const OptionMenuCloseButton&);
   OptionMenuCloseButton & operator=(const OptionMenuCloseButton&);
+};
+
+struct LanguageSorter
+{
+  bool operator()(const tinygettext::Language& lhs,
+                  const tinygettext::Language& rhs)
+  {
+    return lhs.get_name() < rhs.get_name();
+  }
 };
 
 OptionMenu::OptionMenu() :
@@ -86,8 +95,8 @@ OptionMenu::OptionMenu() :
   //defaults_label(),
   //defaults_box(),
   connections(),
-  language(),
-  language_map()
+  m_language(),
+  m_language_map()
 {
   gui_manager->add(ok_button = new OptionMenuCloseButton(this, 
                                                          Display::get_width()/2 + 245,
@@ -143,23 +152,29 @@ OptionMenu::OptionMenu() :
   renderer_box->set_current_choice(static_cast<int>(config_manager.get_renderer()));
 
   
-  tinygettext::Language current_language = dictionary_manager.get_language();
-  language = current_language;
-  n = 0;
+  m_language = dictionary_manager.get_language();
 
   ChoiceBox* language_box = new ChoiceBox(Rect());
-  std::set<tinygettext::Language> languages = dictionary_manager.get_languages();
-
-  int idx = 0;
-  for (std::set<tinygettext::Language>::iterator i = languages.begin(); i != languages.end(); ++i)
   {
-    language_map[i->get_name()] = *i;
-    language_box->add_choice(i->get_name());
-    if (current_language == *i)
+    std::set<tinygettext::Language> languages = dictionary_manager.get_languages();
+
+    // English is the default language, thus it's not in the list of
+    // languages returned by tinygettext and we have to add it manually
+    languages.insert(tinygettext::Language::from_name("en"));
+
+    std::vector<tinygettext::Language> langs(languages.begin(), languages.end());
+    std::sort(langs.begin(), langs.end(), LanguageSorter());
+
+    for (auto i = langs.begin(); i != langs.end(); ++i)
     {
-      language_box->set_current_choice(idx);
+      m_language_map[i->get_name()] = *i;
+      language_box->add_choice(i->get_name());
+
+      if (m_language == *i)
+      {
+        language_box->set_current_choice(i - langs.begin());
+      }
     }
-    idx += 1;
   }
 
   ChoiceBox* scroll_box = new ChoiceBox(Rect());
@@ -238,10 +253,10 @@ OptionMenu::OptionMenu() :
   C(config_manager.on_drag_drop_scrolling_change.connect(std::bind(&CheckBox::set_state, dragdrop_scroll_box, std::placeholders::_1, false)));
 
   /*
-  defaults_label = new Label(_("Reset to Defaults:"), Rect(Vector2i(Display::get_width()/2 - 100, Display::get_height()/2 + 160), Size(170, 32)));
-  gui_manager->add(defaults_label);
-  defaults_box = new CheckBox(Rect(Vector2i(Display::get_width()/2 - 100 + 170, Display::get_height()/2 + 160), Size(32, 32)));
-  gui_manager->add(defaults_box);
+    defaults_label = new Label(_("Reset to Defaults:"), Rect(Vector2i(Display::get_width()/2 - 100, Display::get_height()/2 + 160), Size(170, 32)));
+    gui_manager->add(defaults_label);
+    defaults_box = new CheckBox(Rect(Vector2i(Display::get_width()/2 - 100 + 170, Display::get_height()/2 + 160), Size(32, 32)));
+    gui_manager->add(defaults_box);
   */
 }
 
@@ -338,6 +353,11 @@ OptionMenu::on_escape_press()
 {
   log_debug("OptionMenu: popping screen");
   ScreenManager::instance()->pop_screen();
+
+  // save configuration
+  Pathname cfg_filename(System::get_userdir() + "config", Pathname::SYSTEM_PATH);
+  log_info("saving configuration: " << cfg_filename);
+  config_manager.get_options().save(cfg_filename);
 }
 
 void
@@ -374,12 +394,6 @@ OptionMenu::resize(const Size& size_)
     rect = (*i).control->get_rect();
     (*i).control->set_rect(Rect(Vector2i(rect.left + x_diff, rect.top + y_diff), rect.get_size()));
   }
-}
-
-void
-OptionMenu::close_screen()
-{
-  ScreenManager::instance()->pop_screen();
 }
 
 void
@@ -439,8 +453,16 @@ OptionMenu::on_music_volume_change(int v)
 void
 OptionMenu::on_language_change(const std::string &str)
 {
-  language = str;
-  config_manager.set_language(language_map[language]);
+  auto it = m_language_map.find(str);
+  if (it == m_language_map.end())
+  {
+    log_error("unknown language: " << str);
+  }
+  else
+  {  
+    m_language = it->second;
+    config_manager.set_language(it->second);
+  }
 }
 
 void

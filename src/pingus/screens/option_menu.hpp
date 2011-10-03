@@ -69,8 +69,8 @@ private:
   typedef std::vector<boost::signals::connection> Connections;
   Connections connections;
 
-  std::string language;
-  std::map<std::string, tinygettext::Language> language_map;
+  tinygettext::Language m_language;
+  std::map<std::string, tinygettext::Language> m_language_map;
 
 public:
   OptionMenu();
