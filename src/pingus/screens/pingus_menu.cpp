@@ -28,7 +28,9 @@
 #include "pingus/screens/level_menu.hpp"
 #include "pingus/screens/option_menu.hpp"
 #include "pingus/screens/start_screen.hpp"
+#include "pingus/screens/story_screen.hpp"
 #include "pingus/worldmap/worldmap_screen.hpp"
+#include "pingus/stat_manager.hpp"
 
 PingusMenu::PingusMenu() :
   is_init(),
@@ -107,22 +109,18 @@ void
 PingusMenu::do_start(const std::string &filename)
 { // Start the story or worldmap mode
   Sound::PingusSound::play_sound ("letsgo");
+  
+  std::unique_ptr<WorldmapNS::WorldmapScreen> worldmap_screen(new WorldmapNS::WorldmapScreen());
+  worldmap_screen->load(Pathname(filename, Pathname::DATA_PATH));
+  ScreenManager::instance()->push_screen(worldmap_screen.release());
 
-#if 0  // FIXME: Fri Jul  4 10:33:01 2008
   bool story_seen = false;
   StatManager::instance()->get_bool("tutorial-startstory-seen", story_seen); // FIXME: Hardcoding tutorial is evil
-        
   if (!story_seen)
   {
-    ScreenManager::instance()->push_screen
-      (new StoryScreen(WorldmapNS::WorldmapScreen::instance()->get_worldmap()->get_intro_story()), true);
-  }
-  else
-#endif
-  {
-    std::unique_ptr<WorldmapNS::WorldmapScreen> worldmap_screen(new WorldmapNS::WorldmapScreen());
-    worldmap_screen->load(Pathname(filename, Pathname::DATA_PATH));
-    ScreenManager::instance()->push_screen(worldmap_screen.release());
+    FileReader reader = FileReader::parse(Pathname("stories/tutorial_intro.story", Pathname::DATA_PATH));
+    ScreenManager::instance()->push_screen(new StoryScreen(reader));
+    StatManager::instance()->set_bool("tutorial-startstory-seen", true);
   }
 }
 
