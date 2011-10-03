@@ -36,6 +36,12 @@
     (groundpiece 
       (type "ground")
       (surface 
+        (image "groundpieces/ground/snow/piece9")
+        (modifier "ROT90"))
+      (position 1008 422 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
         (image "groundpieces/ground/misc/grey_stone6")
         (modifier "ROT0"))
       (position 769 831 0))
@@ -93,12 +99,6 @@
         (image "groundpieces/ground/snow/iceblock1")
         (modifier "ROT0"))
       (position 577 351 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/snow/piece9")
-        (modifier "ROT90"))
-      (position 1008 422 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -212,7 +212,7 @@
       (surface 
         (image "groundpieces/ground/snow/piece9")
         (modifier "ROT90"))
-      (position 956 622 0))
+      (position 950 616 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -812,7 +812,7 @@
       (surface 
         (image "groundpieces/ground/misc/grey_stone6")
         (modifier "ROT0"))
-      (position 569 894 0))
+      (position 576 890 0))
     (groundpiece 
       (type "ground")
       (surface 
