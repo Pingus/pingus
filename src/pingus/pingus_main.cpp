@@ -179,9 +179,9 @@ PingusMain::parse_args(int argc, char** argv)
   argp.add_group(_("General Options:"));
   argp.add_option('h', "help", "", 
                   _("Displays this help"));
-  argp.add_option('v', "version", "", 
+  argp.add_option('V', "version", "", 
                   _("Print version number and exit"));
-  argp.add_option('V', "verbose", "",
+  argp.add_option('v', "verbose", "",
                   _("Enable info level log output"));
   argp.add_option('D', "debug", "", 
                   _("Enable debug level log output"));
@@ -319,7 +319,7 @@ PingusMain::parse_args(int argc, char** argv)
         cmd_options.userdir.set(argp.get_argument());
         break;
 
-      case 'v':
+      case 'V':
         std::cout <<
           "Pingus " VERSION "\n"
           "Copyright (C) 1998-2011 Ingo Ruhnke <grumbel@gmail.com>\n"
@@ -371,7 +371,7 @@ PingusMain::parse_args(int argc, char** argv)
         g_logger.set_log_level(Logger::kDebug);
         break;
 
-      case 'V':
+      case 'v':
         g_logger.set_log_level(Logger::kInfo);
         break;
 
