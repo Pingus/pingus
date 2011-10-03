@@ -484,7 +484,7 @@
       (surface 
         (image "groundpieces/ground/snow/piece10")
         (modifier "ROT0"))
-      (position 533 784 0))
+      (position 527 776 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -496,7 +496,7 @@
       (surface 
         (image "groundpieces/ground/snow/gpiece1")
         (modifier "ROT0"))
-      (position 537 973 0))
+      (position 541 973 0))
     (groundpiece 
       (type "ground")
       (surface 
