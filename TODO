@@ -28,31 +28,26 @@ Stuff to do at all times:
 
 - grep for all the FIXME's and '#if 0' and find those that might be
   important, add what you find to this TODO
-
-Levels
+
+Broken
 ======
 
-Broken by level editor bug (teleporter are at the wrong position, id removed):
-==============================================================================
-data/levels/mysteryisland/hall-of-illusion-lac.pingus
-
+* check that all options work from command line and from config file
+
+* ConfigManager should dump its configuration back down into an Options objects
+
+* English not present in language selection in OptionMenu
+
+* WorldMap story sequences should be died to special Dot objects
+
+
 Editor
 ======
-
-* changing surface-background color doesn't update the surface
 
 * get rid of time completely? maybe not, but don't use it in any of the official levels
 
 * z-pos is not taken into account when raise/lower objects, need to
   sort object list by z-pos
-
-* editor must distingush between sprites and surfaces, as align will
-  be off when using a Sprite in a Surface context
-
-* System::opendir() is not modifier-directory aware, thus will not
-  return things installed in ~/.pingus/
-
-* editor/InputBox is not multi-line capable
 
 * display help text when pressing F1
 
@@ -77,20 +72,13 @@ Roadmap for Pingus 0.8.0:
 
 * add priority to levelsets that can be used to sort them
 
-* make video walkthrough for the whole game (demo files still don't really work)
-
 * give better error message when datadir is not set
 
 * check data/themes/ for any useful stuff
 
-* allow fast forward on worldmap
-
 
 Code Cleanup
 ============
-
-* Editor ObjectSelector is broken, graphics are not clipped (dirty
-  rectangle renderers fault)
 
 * add check for OpenGL
 
@@ -100,12 +88,8 @@ Code Cleanup
 
 * make pingu.hpp use int not float
 
-* pass FileReader by const reference
-
 * namespaces need some cleanup, most names are very ugly and
   capitalized, get rid of namespace unless obsolutely needed
-
-* move resource system into separate subdirectory and then to engine/
 
 
 Cleanup engine/ from pingus/ dependencies
@@ -173,8 +157,6 @@ OLPC Issues
 ===================================
 
 * map middle button to pause
-
-* delta renderer can do no clipping
 
 * add button bar to the demo recorder, so that used action are visible
 
@@ -259,8 +241,6 @@ OLPC Issues
 * the ObjectSelector in the editor is eating CPU cycles like crazy due
   to lack of clipping, minimap is also eating plenty of CPU due to its high object count
 
-* Editor is passing non-normalized rectangles to drawing code -> Crash
-
 * Thumbnail loading is slow (likely .png overhead)
 
 * do not keep software backstore for MapTiles, instead record the list of surfaces needed to generate it
@@ -273,15 +253,11 @@ OLPC Issues
 
 * datasets: core/, base/, add-on/ ?
 
-* repaint tutorial island to 1920x1200
-
 * StatManager and new Config stuff should share code
 
 * reduce the amount of new/delete's
 
 * StartScreen has high CPU usage in delta mode (Diff to blame!)
-
-* Worldmap doesn't properly handle scroll limits (did I break GraphicContext?)
 
 * Remove support for line drawing
 
@@ -442,8 +418,6 @@ Undecided stuff:
 
 * remove SceneContext from Credits, replace with DrawingContext
 
-* story graphics have a missing vertical line (due to age old gimp scaling bug)
- 
 * add drag&drop scrolling
 
 * nuke button is unclean, other buttons not so great either -> repaint
@@ -470,14 +444,6 @@ Medium Important:
 * implement proper tmpfile Support (save tmp levels to ~/.pingus/tmp/
   for backup purpose in case of editor crash or so)
 
-* add yes/no question when creating a new level
-
-* add overwrite warning to file dialog
-
-* add pixel perfect object selection
-
-* add icons to filedialog
-
 * Dialogs: Editor Properties: user name and email
 
 * show an error message if save fails
@@ -488,14 +454,8 @@ Less Important:
 
 * add ability to scale surfaces to the level editor and level format
 
-* make inputbox handle text longer then the rect size as well as
-  multiline text
-
 * keyboard shortcuts need to be implemented with input framework, but
   how without support for keymaps?
-
-* ObjectSelector need to support more object types, missing types:
-  all kinds of traps, weather, special objects
 
 * add type conversion (important to convert groundpieces in hotspots and visa verse)
 
@@ -505,19 +465,13 @@ Less Important:
 
 * write a color select widget (Hue, Saturation.Value)
 
-* object raising doesn't work for group
-
 
 Older Stuff:
 ~~~~~~~~~~~~
 
-* smasher doesn't correctly check the y-coordinate
-
 * seperate colmap and gfx remover surfaces for digger, miner, etc. would be nice
   the current ones don't work very good since the remove path is too smooth
   - keep_trans,alpha blitters would also be very nice (darken the border of a digging path or something like that)
-
-* replace all '9000' time levels with '-1' time or correct time
 
 * fix author in all levels
 
@@ -547,11 +501,6 @@ Older Stuff:
 
 Missing Groundpieces
 ====================
-
-Desert Theme:
- - all bocks need to be available as solid in addition to the
-   non-solid blocks, some level already abuse the non-solid blocks as
-   solid.
 
 Sortie Theme:
  - this theme needs 'normal' groundpieces which can be used to dig
