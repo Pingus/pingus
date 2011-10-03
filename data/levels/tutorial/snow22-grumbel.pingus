@@ -6,7 +6,7 @@
     (description "If you don't have enough floaters to bring all the Pingus down to the exit - you have to find other ways to guide them down. You should have learned all the stuff you need for this level in previous levels, so this shouldn't be too much of a problem for you. ")
     (author "Ingo Ruhnke <grumbel@gmx.de>")
     (number-of-pingus 30)
-    (number-to-save 20)
+    (number-to-save 15)
     (time -1)
     (music "pingus-5.it")
     (actions 
@@ -21,7 +21,7 @@
       (surface 
         (image "textures/clouds2")
         (modifier "ROT0"))
-      (position 414.5 392.5 -150)
+      (position 85.5 158.5 -150)
       (colori 0 0 0 0)
       (stretch-x #f)
       (stretch-y #f)
@@ -34,7 +34,7 @@
       (surface 
         (image "hotspots/signposts/danger")
         (modifier "ROT0"))
-      (position 887 500 -50)
+      (position 887 515 -50)
       (speed 0)
       (parallax 0))
     (hotspot 
@@ -313,121 +313,121 @@
       (surface 
         (image "groundpieces/ground/snow/piece7")
         (modifier "ROT0"))
-      (position 647 295 0))
+      (position 647 270 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece7")
         (modifier "ROT0"))
-      (position 644 357 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/snow/piece7")
-        (modifier "ROT0FLIP"))
-      (position 525 291 0))
+      (position 644 332 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece7")
         (modifier "ROT0FLIP"))
-      (position 538 359 0))
+      (position 525 266 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/snow/piece7")
+        (modifier "ROT0FLIP"))
+      (position 538 334 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece10")
         (modifier "ROT0"))
-      (position 556 293 0))
+      (position 556 268 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece3")
         (modifier "ROT0"))
-      (position 522 291 0))
+      (position 522 266 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece3")
         (modifier "ROT0"))
-      (position 641 292 0))
+      (position 641 267 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece10")
         (modifier "ROT0"))
-      (position 558 542 0))
+      (position 558 557 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece10")
         (modifier "ROT0"))
-      (position 684 542 0))
+      (position 684 557 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece10")
         (modifier "ROT0"))
-      (position 801 544 0))
+      (position 801 559 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece3")
         (modifier "ROT0"))
-      (position 559 541 0))
+      (position 559 556 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece3")
         (modifier "ROT0"))
-      (position 707 541 0))
+      (position 705 556 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece3")
         (modifier "ROT0"))
-      (position 857 541 0))
+      (position 857 556 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece10")
         (modifier "ROT0"))
-      (position 363 657 0))
+      (position 363 672 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece10")
         (modifier "ROT0"))
-      (position 489 657 0))
+      (position 489 672 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece10")
         (modifier "ROT0"))
-      (position 606 659 0))
+      (position 606 674 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece3")
         (modifier "ROT0"))
-      (position 364 656 0))
+      (position 364 671 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece3")
         (modifier "ROT0"))
-      (position 512 656 0))
+      (position 512 671 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece3")
         (modifier "ROT0"))
-      (position 662 656 0))
+      (position 662 671 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/snow/piece2")
         (modifier "ROT0"))
-      (position 738 295 0))
+      (position 738 270 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -436,7 +436,7 @@
       (position 529 1219 0))
     (prefab 
       (name "prefabs/entrances/snow")
-      (position 605 184 0)
+      (position 605 159 0)
       (overrides 
         (release-rate 150)
         (direction "right")
