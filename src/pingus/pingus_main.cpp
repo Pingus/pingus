@@ -232,7 +232,7 @@ PingusMain::parse_args(int argc, char** argv)
   argp.add_option(342, "no-cfg-file", "",
                   _("Don't read ~/.pingus/config"));
   argp.add_option('c', "config", _("FILE"),
-                  _("Read config from FILE (default: ~/.pingus/config)"));
+                  _("Read config options from FILE"));
   argp.add_option(360, "controller", "FILE",
                   _("Uses the controller given in FILE"));
 
