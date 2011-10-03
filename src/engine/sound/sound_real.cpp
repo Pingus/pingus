@@ -117,8 +117,8 @@ PingusSoundReal::real_play_music(const std::string& filename, float volume, bool
       return;
     }
 
-    Mix_VolumeMusic(static_cast<int>(MIX_MAX_VOLUME * volume * m_music_volume * m_master_volume));
     Mix_PlayMusic(music_sample, loop ? -1 : 0);
+    Mix_VolumeMusic(static_cast<int>(MIX_MAX_VOLUME * volume * m_music_volume * m_master_volume));
   }
 }
 
