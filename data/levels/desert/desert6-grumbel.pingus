@@ -4,9 +4,9 @@
     (license "GPLv3+")
     (levelname "A bit to the right a bit to left")
     (description "Only the most audacious Pingus will be allowed to continue.")
-    (author "Ingo Ruhnke <grumbel@gmx.de>,Gabriel Rota <gabriel.rota@gmail.com>")
+    (author "Ingo Ruhnke <grumbel@gmx.de>, Gabriel Rota <gabriel.rota@gmail.com>")
     (number-of-pingus 50)
-    (number-to-save 25)
+    (number-to-save 35)
     (time -1)
     (music "pingus-4.it")
     (actions 
@@ -330,10 +330,10 @@
       (position 1868 588 0))
     (prefab 
       (name "prefabs/entrances/desert")
-      (position 955 200 0)
+      (position 1019 200 0)
       (overrides 
         (release-rate 50)
-        (direction "right")
+        (direction "left")
         (owner-id 0)))
     (exit 
       (surface 
