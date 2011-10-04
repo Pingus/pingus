@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Entering the pyramid")
-    (description "After their long and dangerous journey through the desert they finally reach the large pyramid...")
+    (description "After their long and dangerous journey through the desert the Pingus finally reach the large pyramid, but there is still a pedestal blocking their way.")
     (author "Ingo Ruhnke <grumbel@gmx.de>")
     (number-of-pingus 50)
     (number-to-save 30)
@@ -28,6 +28,24 @@
       (scroll-y 0)
       (para-x 0.5)
       (para-y 0.5))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigdune1")
+        (modifier "ROT0"))
+      (position 893 872 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigdune1")
+        (modifier "ROT0"))
+      (position 503 834 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigdune1")
+        (modifier "ROT0"))
+      (position 297 830 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -147,7 +165,7 @@
       (surface 
         (image "groundpieces/ground/desert/bigdune1")
         (modifier "ROT0"))
-      (position 295 899 0))
+      (position 292 891 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -271,12 +289,6 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/desert/sluggydu")
-        (modifier "ROT0"))
-      (position 566 870 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
         (image "groundpieces/ground/desert/smallbrickpiece")
         (modifier "ROT0"))
       (position 936 754 0))
@@ -375,12 +387,6 @@
       (surface 
         (image "groundpieces/ground/desert/blobdune")
         (modifier "ROT0"))
-      (position 828 891 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/blobdune")
-        (modifier "ROT0"))
       (position 1108 924 0))
     (groundpiece 
       (type "ground")
@@ -393,12 +399,6 @@
       (surface 
         (image "groundpieces/ground/desert/blobdune")
         (modifier "ROT0"))
-      (position 1013 906 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/blobdune")
-        (modifier "ROT0"))
       (position 1092 907 0))
     (groundpiece 
       (type "ground")
@@ -406,12 +406,6 @@
         (image "groundpieces/ground/desert/blobdune")
         (modifier "ROT0"))
       (position 1164 918 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/blobdune")
-        (modifier "ROT0"))
-      (position 951 917 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -429,37 +423,13 @@
       (surface 
         (image "groundpieces/ground/desert/blobdune")
         (modifier "ROT0"))
-      (position 933 898 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/blobdune")
-        (modifier "ROT0"))
       (position 501 892 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/blobdune")
         (modifier "ROT0"))
-      (position 443 912 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/blobdune")
-        (modifier "ROT0"))
       (position 250 941 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/blobdune")
-        (modifier "ROT0"))
-      (position 394 928 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/blobdune")
-        (modifier "ROT0"))
-      (position 533 881 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -562,12 +532,6 @@
         (image "groundpieces/ground/desert/sluggydu")
         (modifier "ROT0"))
       (position 900 1042 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/sluggydu")
-        (modifier "ROT0"))
-      (position 1003 887 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -754,12 +718,6 @@
         (image "groundpieces/ground/desert/bigprickpiece")
         (modifier "ROT0"))
       (position 1858 169 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/sluggydu")
-        (modifier "ROT0"))
-      (position 300 934 0))
     (groundpiece 
       (type "ground")
       (surface 
