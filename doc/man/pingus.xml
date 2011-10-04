@@ -36,8 +36,119 @@
   <refsect1>
     <title>Description</title>
     <para>
-      <command>pingus</command>
+      Pingus is a side-scrolling puzzle game where the player has to
+      guide a group of penguins from the entrance of a level to the
+      exit, in between the path is blocked by numerous obstacles and
+      dangers that the player has to overcome by assigning actions to
+      the penguins.
     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Actions</title>
+    <variablelist>
+      <varlistentry>
+        <term>Basher</term>
+        <listitem>
+          <para>
+            The Basher will to a horizontal dig, leaving behind it a
+            tunnel. It is not able to dig through metal.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>      
+        <term>Blocker</term>
+        <listitem>
+          <para>
+            The Blocker will stop and stay in position, directing
+            other penguins to turn around when they reach him.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Bomber</term>
+        <listitem>
+          <para>
+            The Bomber will blow up on the spot and take a bit of
+            surrounding ground with it.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Bridger</term>
+        <listitem>
+          <para>
+            The Bridger will build a small bridge, useful for crossing
+            small chasm.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Climber</term>
+        <listitem>
+          <para>
+            The Climber actions allows a Pingu to travel upwards a
+            vertical wall. Unlike other actions the climber action is
+            a permanent addition to the Pingus ability.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Digger</term>
+        <listitem>
+          <para>
+            The Digger will dig a hole into the ground. It can't dig
+            through metal.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Floater</term>
+        <listitem>
+          <para>
+            The Floater action will give a penguin a small propeller
+            that lets him gently glide down from great heights that
+            would otherwise be deadly.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Jumper</term>
+        <listitem>
+          <para>
+            The Jumper will let the Pingu do a big leap forward,
+            allowing him to cross chasm and small vertical obstacles.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Miner</term>
+        <listitem>
+          <para>
+            The Miner will dig a diagonal hole into the ground.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Slider</term>
+        <listitem>
+          <para>
+            The Slider will make a tiny leap forward, gliding on its
+            belly for a short while, allowing the Pingu to make it
+            through narrow tunnels.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
   </refsect1>
 
   <refsect1>
@@ -46,7 +157,7 @@
       <title>General Options</title>
 
       <variablelist>
-        <varlistentry>      
+        <varlistentry>
           <term>-h, --help</term>
           <listitem>
             <para>Displays this help</para>
@@ -103,14 +214,57 @@
         <varlistentry>
           <term>-r, --renderer=RENDERER</term>
           <listitem>
-            <para>Use the given renderer (default: delta)</para>
+            <para>
+              Use the given renderer, defaults to sdl. Available renderers are:
+            </para>
+            <variablelist>
+              <varlistentry>
+                <term>sdl</term>
+                <listitem>
+                  <para>A simple software renderer based on SDL, this
+                    is the default and the safest options.</para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>opengl</term>
+                <listitem>
+                  <para>The OpenGL renderer will use hardware
+                    acceleration to render the graphics, it is much
+                    faster then the SDL renderer and recommended when
+                    the hardware supports OpenGL.</para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>delta</term>
+                <listitem>
+                  <para>The delta renderer uses SDL for rendering and
+                    doesn't use hardware acceleration, it will however
+                    try to increase rendering performance by only re
+                    rendering screen elements that have changed. Using
+                    the delta renderer will disable some effects such
+                    as scrolling background to allow maximum
+                    benefits.</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>-g, --geometry={width}x{height}</term>
+          <term>-g, --geometry=WIDTHxHEIGHT</term>
           <listitem>
-            <para>Set the window resolution for pingus (default: 800x600)</para>
+            <para>Set the window resolution for pingus (default:
+              800x600). Note that <option>--geometry</option> only
+              applies to the window resolution, for the fullscreen
+              resolution
+              use <option>--fullscreen-resolution</option></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>-R, --fullscreen-resolution=WIDTHxHEIGHT</term>
+          <listitem>
+            <para>Set the resolution used in fullscreen mode (default: 800x600)</para>
           </listitem>
         </varlistentry>
 
@@ -213,7 +367,11 @@
         <varlistentry>
           <term>-a, --addon=DIR</term>
           <listitem>
-            <para>Load game modifications from DIR</para>
+            <para>Load game modifications from DIR. Files in DIR will
+            be used instead of the files in found in the main datadir
+            of Pingus, thus allowing to modifications, such as sprites
+            replacements, additional levels, etc. to the game, without
+            changing the main data files.</para>
           </listitem>
         </varlistentry>
 
@@ -227,7 +385,7 @@
         <varlistentry>
           <term>-c, --config=FILE</term>
           <listitem>
-            <para>Read config from FILE (default: ~/.pingus/config)</para>
+            <para>Read config from FILE</para>
           </listitem>
         </varlistentry>
 
