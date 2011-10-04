@@ -88,10 +88,21 @@ Credits::Credits(const Pathname& filename) :
   
   { // read credit information from filename
     std::ifstream in(filename.get_sys_path());
-    std::string line;
-    while(std::getline(in, line))
+    if (!in)
     {
-      credits.push_back(line);
+      log_error("couldn't open " << filename);
+      
+      std::ostringstream out;
+      out << "couldn't open " << filename;
+      credits.push_back(out.str());
+    }
+    else
+    {
+      std::string line;
+      while(std::getline(in, line))
+      {
+        credits.push_back(line);
+      }
     }
   }
 
