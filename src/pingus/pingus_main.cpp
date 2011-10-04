@@ -197,6 +197,8 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Use the given renderer (default: delta)"));
   argp.add_option('g', "geometry", "{width}x{height}",  
                   _("Set the window resolution for pingus (default: 800x600)"));
+  argp.add_option('R', "fullscreen-resolution", "{width}x{height}",  
+                  _("Set the resolution used in fullscreen mode (default: 800x600)"));
   argp.add_option(346, "software-cursor", "",
                   _("Enable software cursor"));
 
@@ -304,6 +306,19 @@ PingusMain::parse_args(int argc, char** argv)
           exit(EXIT_FAILURE);
         }
         cmd_options.geometry.set(size);
+      }
+      break;
+
+      case 'R':
+      {
+        Size size; 
+        if (sscanf(argp.get_argument().c_str(), "%dx%d", &size.width, &size.height) != 2)
+        {
+          std::cout << "Resolution std::string is wrong, it should be like: \n"
+                    << "\"640x480\" or \"800x600\"" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        cmd_options.fullscreen_resolution.set(size);
       }
       break;
 
