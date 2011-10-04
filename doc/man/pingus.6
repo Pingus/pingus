@@ -1,0 +1,121 @@
+'\" -*- coding: us-ascii -*-
+.if \n(.g .ds T< \\FC
+.if \n(.g .ds T> \\F[\n[.fam]]
+.de URL
+\\$2 \(la\\$1\(ra\\$3
+..
+.if \n(.g .mso www.tmac
+.TH "pingus " 6 "3 October 2011" 0.7.4 "User Commands"
+.SH NAME
+pingus
+\- A puzzle game where you have to save penguins 
+.SH SYNOPSIS
+'nh
+.fi
+.ad l
+\fBpingus\fR \kx
+.if (\nx>(\n(.l/2)) .nr x (\n(.l/5)
+'in \n(.iu+\nxu
+[OPTION]\&... [FILE]
+'in \n(.iu-\nxu
+.ad b
+'hy
+.SH DESCRIPTION
+\fBpingus\fR
+.SH OPTIONS
+.SS "GENERAL OPTIONS"
+.TP 
+-h, --help
+Displays this help
+.TP 
+-V, --version
+Print version number and exit
+.TP 
+-v, --verbose
+Enable info level log output
+.TP 
+-D, --debug
+Enable debug level log output
+.TP 
+-Q, --quiet
+Disable all log output
+.SS "DISPLAY OPTIONS"
+.TP 
+-w, --window
+Start in Window Mode
+.TP 
+-f, --fullscreen
+Start in Fullscreen
+.TP 
+-r, --renderer=RENDERER
+Use the given renderer (default: delta)
+.TP 
+-g, --geometry={width}x{height}
+Set the window resolution for pingus (default: 800x600)
+.TP 
+--software-cursor
+Enable software cursor
+.SS "GAME OPTIONS"
+.TP 
+--no-auto-scrolling
+Disable automatic scrolling
+.TP 
+--drag-drop-scrolling
+Enable drag'n drop scrolling
+.SS "SOUND OPTIONS"
+.TP 
+-s, --disable-sound
+Disable sound
+.TP 
+-m, --disable-music
+Disable music
+.SS "LANGUAGE OPTIONS"
+.TP 
+-l, --language=LANG
+Select language to use with Pingus
+.TP 
+--list-languages
+List all available languages
+.SS "EDITOR OPTIONS"
+.TP 
+-e, --editor
+Loads the level editor
+.SS "DIRECTORY OPTIONS"
+.TP 
+-d, --datadir=DIR
+Load game datafiles from DIR
+.TP 
+-u, --userdir=DIR
+Load config files and store savegames in DIR
+.TP 
+-a, --addon=DIR
+Load game modifications from DIR
+.TP 
+--no-cfg-file
+Don't read ~/.pingus/config
+.TP 
+-c, --config=FILE
+Read config from FILE (default: ~/.pingus/config)
+.TP 
+--controller=FILE
+Uses the controller given in FILE
+.SS "DEBUG OPTIONS"
+.TP 
+--developer-mode
+Enables some special features for developers
+.TP 
+-t, --speed=SPEED
+Set the game speed (0=fastest, >0=slower)
+.TP 
+-k, --fps=FPS
+Set the desired game framerate (frames per second)
+.TP 
+--tile-size=INT
+Set the size of the map tiles (default: 32)
+.SH COPYRIGHT
+Copyright (C) 1998-2011 Ingo Ruhnke <\*(T<grumbel@gmail.com\*(T>>
+See the file AUTHORS for a complete list of contributors.
+Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are
+welcome to redistribute it under certain conditions; see the file COPYING for details.
+.SH "SEE ALSO"
+http://pingus.seul.org
