@@ -19,8 +19,7 @@ int main(int argc, char** argv)
   g_path_manager.set_path("data");
   Resource::init();
  
-  globals::framebuffer_type = NULL_FRAMEBUFFER;
-  Display::set_video_mode(Size(640, 480),false);
+  Display::create_window(NULL_FRAMEBUFFER, Size(640, 480), false, false);
 
   Fonts::init();
   Sound::PingusSound::init();
