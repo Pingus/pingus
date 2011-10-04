@@ -53,6 +53,7 @@ install-data:
         -name "*.font" -o \
         -name "*.story" -o \
         -name "*.credits" -o \
+        -name "*.prefab" -o \
         -name "*.it" -o \
         -name "*.ogg" -o \
         -name "*.s3m" -o \
