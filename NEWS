@@ -1,4 +1,4 @@
-0.7.3 (??/Jul/2008)
+0.7.4 (??/Oct/2011)
 ===================
 * fixed game not starting when no soundcard is present
 * all halloween and tutorial levels have been converted to a minimum
@@ -17,6 +17,11 @@
 (* forest graphic set got started)
 (* a brand new X-Mas theme along with three new X-Mas levels)
 (* a brand new Easter theme along with four new Easter levels)
+
+
+0.7.3 (18/Mar/2010)
+===================
+* some minimal code changes to make it compilabe with modern compiler
 
 
 0.7.2 (31/Oct/2007)
