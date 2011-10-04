@@ -133,10 +133,21 @@ Enable software cursor
 .SS "GAME OPTIONS"
 .TP 
 --no-auto-scrolling
-Disable automatic scrolling
+Disable automatic scrolling. Automatic scrolling
+will cause the screen to scroll whenever the mouse reaches
+the border of the screen. Automatic scrolling will only be
+active in fullscreen mode or when mouse-grab is
+enabled.
 .TP 
 --drag-drop-scrolling
-Enable drag'n drop scrolling
+Enable drag'n drop scrolling. By default Pingus will
+use a rubber-band scrolling where the scroll speed
+depends on how far away the cursor is from the position
+when the mouse button has been clicked. In drag&drop
+mode scrolling will behave more like in traditional GUI
+applications such as Gimp, where clicking the scroll
+button will 'pick up' the playfield and allow to move it
+around till it is released again.
 .SS "SOUND OPTIONS"
 .TP 
 -s, --disable-sound
