@@ -17,6 +17,7 @@
 DESTDIR = 
 PREFIX  = /usr/local
 DATADIR = $(PREFIX)/share/pingus
+MANDIR  = $(PREFIX)/share/man
 BINDIR  = $(PREFIX)/bin
 
 build/pingus:
@@ -32,7 +33,7 @@ clean:
 	rm -rf build/
 	rm -f pingus
 
-install: install-exec install-data
+install: install-exec install-data install-man
 
 install-exec: build/pingus
 	install -d "$(DESTDIR)$(BINDIR)"
@@ -50,6 +51,8 @@ install-data:
         -name "*.wav" -o \
         -name "*.scm" -o \
         -name "*.font" -o \
+        -name "*.story" -o \
+        -name "*.credits" -o \
         -name "*.it" -o \
         -name "*.ogg" -o \
         -name "*.s3m" -o \
@@ -61,6 +64,9 @@ install-data:
         -name "*.sprite" \
         \) -exec install -D {} $(DESTDIR)$(DATADIR)/{} \;
 
-.PHONY : clean install install-exec install-data
+install-man:
+	install -D doc/man/pingus.6 "$(DESTDIR)$(MANDIR)/man1/pingus.6"
+
+.PHONY : clean install install-exec install-data install-man
 
 # EOF #
