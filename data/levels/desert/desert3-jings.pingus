@@ -68,6 +68,13 @@
       (position 228 904 -40)
       (speed 0)
       (parallax 0))
+    (liquid 
+      (surface 
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position 568 473 -30)
+      (speed 0)
+      (repeat 2))
     (groundpiece 
       (type "ground")
       (surface 
@@ -230,18 +237,6 @@
         (image "groundpieces/ground/desert/middleprickpiece")
         (modifier "ROT0"))
       (position 1201 605 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/pillar1")
-        (modifier "ROT0"))
-      (position 717 372 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/pillar1")
-        (modifier "ROT0"))
-      (position 611 372 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -507,29 +502,23 @@
         (modifier "ROT0"))
       (position 1581 546 0))
     (groundpiece 
-      (type "ground")
+      (type "solid")
       (surface 
-        (image "groundpieces/ground/desert/pillar1")
+        (image "groundpieces/solid/desert/smallbrickpiece")
         (modifier "ROT0"))
-      (position 503 373 0))
+      (position 518 344 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/desert/smallbrickpiece")
         (modifier "ROT0"))
-      (position 514 349 0))
+      (position 666 344 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/desert/smallbrickpiece")
         (modifier "ROT0"))
-      (position 666 349 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/desert/smallbrickpiece")
-        (modifier "ROT0"))
-      (position 590 349 0))
+      (position 592 344 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -632,6 +621,66 @@
         (image "groundpieces/ground/desert/pillar1")
         (modifier "ROT0"))
       (position 1201 294 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT270"))
+      (position 480 458 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT270FLIP"))
+      (position 556 458 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT90FLIP"))
+      (position 518 457 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT90FLIP"))
+      (position 518 381 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT270"))
+      (position 666 459 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT270FLIP"))
+      (position 742 459 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT90FLIP"))
+      (position 704 458 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT90FLIP"))
+      (position 704 382 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT90FLIP"))
+      (position 480 343 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT90"))
+      (position 742 344 0))
     (groundpiece 
       (type "ground")
       (surface 
