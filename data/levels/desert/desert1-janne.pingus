@@ -2,8 +2,8 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "Desert")
-    (description "Find your way through the obstacle")
+    (levelname "Down the valley and up again")
+    (description "There is a large valley between the entrance and the exit. No bridge will be long enough to cross the valley, but can you find a way back up once you lead the Pingus down into the valley?")
     (author "Janne Leppanen")
     (number-of-pingus 20)
     (number-to-save 15)
@@ -430,12 +430,24 @@
       (surface 
         (image "groundpieces/ground/desert/bigdune1")
         (modifier "ROT0"))
-      (position 634 912 0))
+      (position -201 924 0))
     (groundpiece 
-      (type "ground")
+      (type "solid")
       (surface 
-        (image "groundpieces/ground/desert/bigdune1")
+        (image "groundpieces/solid/desert/middlebrickpiece")
         (modifier "ROT0"))
-      (position -201 924 0))))
+      (position 864 830 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 902 792 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/bigbrickpiece")
+        (modifier "ROT0"))
+      (position 784 907 0))))
 
 ;; EOF ;;
