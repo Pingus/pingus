@@ -8,9 +8,9 @@
   (1) the breath of God: only the penitent pingus will pass;
   (2) the word of God... in reverse;
   (3) the path of God: leap from the head of something like a cat.")
-    (author "Ying-Wan Lam <yingwan.lam@yale.edu>")
-    (number-of-pingus 50)
-    (number-to-save 40)
+    (author "Ying-Wan Lam <yingwan.lam@yale.edu>, Ingo Ruhnke <grumbel@gmail.com>")
+    (number-of-pingus 30)
+    (number-to-save 15)
     (time -1)
     (music "")
     (actions 
@@ -19,7 +19,7 @@
       (bomber 10)
       (bridger 6)
       (digger 5)
-      (jumper 50)
+      (jumper 30)
       (miner 5))
     (levelsize 2600 1200))
   (objects 
@@ -36,6 +36,13 @@
       (scroll-y 0)
       (para-x 0.5)
       (para-y 0.5))
+    (hotspot 
+      (surface 
+        (image "hotspots/signposts/danger")
+        (modifier "ROT0"))
+      (position 1726 534 -100)
+      (speed 0)
+      (parallax 0))
     (liquid 
       (surface 
         (image "liquids/lava")
@@ -107,8 +114,8 @@
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/bigsand")
-        (modifier "ROT0"))
-      (position 747 502 0))
+        (modifier "ROT270"))
+      (position 855 492 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -298,7 +305,7 @@
       (surface 
         (image "groundpieces/ground/desert/bigdune1")
         (modifier "ROT0"))
-      (position 723 476 0))
+      (position 703 477 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -310,18 +317,18 @@
       (surface 
         (image "groundpieces/ground/desert/domedune")
         (modifier "ROT90"))
-      (position 1024 485 0))
+      (position 994 487 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/desert/domedune")
         (modifier "ROT90"))
-      (position 1012 588 0))
+      (position 978 582 0))
     (prefab 
       (name "prefabs/entrances/desert")
       (position 382 332 0)
       (overrides 
-        (release-rate 50)
+        (release-rate 100)
         (direction "right")
         (owner-id 0)))
     (groundpiece 
@@ -577,13 +584,6 @@
         (image "groundpieces/ground/desert/bigprickpiece")
         (modifier "ROT0"))
       (position -278 1091 0))
-    (hotspot 
-      (surface 
-        (image "hotspots/signposts/danger")
-        (modifier "ROT0"))
-      (position 1720 534 0)
-      (speed 0)
-      (parallax 0))
     (hotspot 
       (surface 
         (image "hotspots/desert/smallD")
