@@ -38,17 +38,15 @@ Mailing Lists
 IRC
 
    For a quick help you can try the IRC server irc.freenode.net:6667
-   and the channel #pingus, you can find the project maintainer
-   (nick: grumbel) there most of the time. From time to time there
-   will also be IRC Mettings with larger parts of the development
-   team, once such meetings happen, they will get announced in the
-   news section on the Pingus webpage.
+   and the channel #pingus, you can sometimes find the project
+   maintainer (nick: grumbel) there. 
 
      _________________________________________________________________
 
 Bug Reports
 
-   Bug reports be submitted to the issue tracker at:
+   Bug reports, new levels and feature requests can be submitted to
+   the issue tracker at:
 
     * http://code.google.com/p/pingus/issues/list
 
