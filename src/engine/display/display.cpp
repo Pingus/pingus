@@ -17,6 +17,7 @@
 #include "engine/display/display.hpp"
 
 #include <stdexcept>
+#include <algorithm>
 
 #include "engine/display/sdl_framebuffer.hpp"
 #include "engine/screen/screen_manager.hpp"
@@ -176,6 +177,14 @@ Display::find_closest_fullscreen_video_mode(const Size& size)
 
 }
 
+struct SortBySize
+{
+  bool operator()(const Size& lhs, const Size& rhs)
+  {
+    return lhs.get_area() < rhs.get_area();
+  }
+};
+
 std::vector<Size>
 Display::get_fullscreen_video_modes()
 {
@@ -188,25 +197,33 @@ Display::get_fullscreen_video_modes()
   }
   else if(modes == reinterpret_cast<SDL_Rect**>(-1))
   {  // FIXME: Under which OSs is this triggred, if ever?
+    log_warn("falling back to hardcoded list of screen resolutions");
 
     // All resolutions should work, so we fall back to hardcoded defaults
-    video_modes.push_back(Size( 640, 480));
-    video_modes.push_back(Size( 800, 600));
-    video_modes.push_back(Size(1024, 768));
-    video_modes.push_back(Size(1152, 864));
-    video_modes.push_back(Size(1280, 960));
-    video_modes.push_back(Size(1280, 1024));
-    video_modes.push_back(Size(1440, 900));
-    video_modes.push_back(Size(1680, 1050));
-    video_modes.push_back(Size(1600, 1200));
-    video_modes.push_back(Size(1920, 1080));
-    video_modes.push_back(Size(1920, 1200));
+    video_modes.push_back(Size( 640, 480)); // 4:3, VGA
+    video_modes.push_back(Size( 800, 600)); // 4:3, PAL
+    video_modes.push_back(Size(1024, 768)); // Nokia N770, N800
+    video_modes.push_back(Size(1152, 864)); // 4:3, SVGA
+    video_modes.push_back(Size(1280, 720)); // 16:9
+    video_modes.push_back(Size(1280, 800)); // 16:10
+    video_modes.push_back(Size(1280, 960)); // 4:3, XGA
+    video_modes.push_back(Size(1280, 1024)); // 5:4
+    video_modes.push_back(Size(1366,  768)); // ~16:9, Wide XGA
+    video_modes.push_back(Size(1440, 900)); // 16:10
+    video_modes.push_back(Size(1680, 1050)); // 16:10
+    video_modes.push_back(Size(1600, 1200)); // 4:3, UXGA
+    video_modes.push_back(Size(1920, 1080)); // 16:9, HD-TV, 1080p
+    video_modes.push_back(Size(1920, 1200)); // 16:10
   }
   else 
   {
     for(int i = 0; modes[i]; ++i)
+    {
       video_modes.push_back(Size(modes[i]->w,  modes[i]->h));
+    }
   }
+
+  std::sort(video_modes.begin(), video_modes.end(), SortBySize());
 
   return video_modes;
 }
