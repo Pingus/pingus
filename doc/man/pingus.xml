@@ -366,6 +366,15 @@
         </varlistentry>
 
         <varlistentry>
+          <term><keycombo><keycap>S</keycap></keycombo></term>
+          <listitem>
+            <para>
+              Advance the game by a single frame.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
           <term><keycombo><keycap>A</keycap></keycombo></term>
           <listitem>
             <para>
