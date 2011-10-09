@@ -54,6 +54,7 @@ public:
   std::vector<Pathname> opendir(const std::string& pattern = "*") const;
   std::vector<Pathname> opendir_recursive() const;
 
+  /** Check if the pathname has the extension \a ext (i.e. ".png") */
   bool has_extension(const std::string& ext) const;
 
   /** Return the pathname in a form suitable for the native file
