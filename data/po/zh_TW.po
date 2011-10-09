@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pingus 0.7.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-19 14:14+0200\n"
+"POT-Creation-Date: 2011-10-10 00:32+0200\n"
 "PO-Revision-Date: 2011-01-17 19:54+0000\n"
 "Last-Translator: Adolar <Unknown>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -18,650 +18,278 @@ msgstr ""
 "X-Launchpad-Export-Date: 2011-05-05 14:08+0000\n"
 "X-Generator: Launchpad (build 12959)\n"
 
-#: src/pingus/game_time.cpp:29
-msgid "unlimited"
-msgstr "無限"
-
-#: src/pingus/action_name.cpp:27
-msgid "Angel"
-msgstr "天使"
-
-#: src/pingus/action_name.cpp:28
-msgid "Basher"
-msgstr "破除者"
-
-#: src/pingus/action_name.cpp:29
-msgid "Blocker"
-msgstr "阻擋者"
-
-#: src/pingus/action_name.cpp:30
-msgid "Boarder"
-msgstr "滑板者"
-
-#: src/pingus/action_name.cpp:31
-msgid "Bomber"
-msgstr "炸彈客"
-
-#: src/pingus/action_name.cpp:32 src/pingus/actions/bridger.cpp:38
-#: src/pingus/actions/bridger.cpp:196
-msgid "Bridger"
-msgstr "造橋者"
-
-#: src/pingus/action_name.cpp:33
-msgid "Climber"
-msgstr "攀登者"
-
-#: src/pingus/action_name.cpp:34
-msgid "Digger"
-msgstr "挖掘者"
-
-#: src/pingus/action_name.cpp:35
-msgid "Drown"
-msgstr "溺死"
-
-#: src/pingus/action_name.cpp:36
-msgid "Exiter"
-msgstr "出口"
-
-#: src/pingus/action_name.cpp:37
-msgid "Faller"
-msgstr "墜落者"
-
-#: src/pingus/action_name.cpp:38
-msgid "Floater"
-msgstr "飛行者"
-
-#: src/pingus/action_name.cpp:39
-msgid "Jumper"
-msgstr "跳躍者"
-
-#: src/pingus/action_name.cpp:40
-msgid "Laserkill"
-msgstr "終止雷射"
-
-#: src/pingus/action_name.cpp:41
-msgid "Miner"
-msgstr "礦工"
-
-#: src/pingus/action_name.cpp:42
-msgid "Rocketlauncher"
-msgstr "火箭筒"
-
-#: src/pingus/action_name.cpp:43
-msgid "Slider"
-msgstr "滾動者"
-
-#: src/pingus/action_name.cpp:44
-msgid "Smashed"
-msgstr "被..粉碎"
-
-#: src/pingus/action_name.cpp:45
-msgid "Splashed"
-msgstr "濺落"
-
-#: src/pingus/action_name.cpp:46
-msgid "Superman"
-msgstr "超人"
-
-#: src/pingus/action_name.cpp:47
-msgid "Teleported"
-msgstr "瞬間移動"
-
-#: src/pingus/action_name.cpp:48
-msgid "Waiter"
-msgstr "等待者"
-
-#: src/pingus/action_name.cpp:49
-msgid "Walker"
-msgstr "步行者"
-
-#: src/pingus/screens/story_screen.cpp:106
-#: src/pingus/screens/story_screen.cpp:112
-msgid "skip"
-msgstr "略過"
-
-#: src/pingus/screens/level_menu.cpp:50
-#: src/pingus/screens/start_screen.cpp:111
-#: src/pingus/screens/result_screen.cpp:91
-msgid "Abort"
-msgstr "中止"
-
-#: src/pingus/screens/level_menu.cpp:149 src/pingus/screens/pingus_menu.cpp:65
-msgid "Levelsets"
-msgstr "關卡組合"
-
-#: src/pingus/screens/level_menu.cpp:164
-msgid "Solved:"
-msgstr "解決："
-
-#: src/pingus/screens/level_menu.cpp:165
-msgid "levels"
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:308
-msgid "solved"
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:310
-msgid "unsolved"
-msgstr ""
-
-#: src/pingus/screens/credits.cpp:86
-msgid "-Idea"
-msgstr "-計畫"
-
-#: src/pingus/screens/credits.cpp:90
-msgid "-Maintaining"
-msgstr "-保養"
-
-#: src/pingus/screens/credits.cpp:94
-msgid "-Programming"
-msgstr "-程式設計"
-
-#: src/pingus/screens/credits.cpp:104
-msgid "-Porting (Win32)"
-msgstr "-移植（Win32 ）"
-
-#: src/pingus/screens/credits.cpp:113
-msgid "-Porting (MacOSX)"
-msgstr "-移植（ MacOSX ）"
-
-#: src/pingus/screens/credits.cpp:118
-msgid "-Gfx"
-msgstr "- Gfx"
-
-#: src/pingus/screens/credits.cpp:131
-msgid "-Music"
-msgstr "-音樂"
-
-#: src/pingus/screens/credits.cpp:138
-msgid "-Level Design"
-msgstr "-等极設計"
-
-#: src/pingus/screens/credits.cpp:144
-msgid "-Story"
-msgstr "-故事"
-
-#: src/pingus/screens/credits.cpp:148
-msgid "-Translation"
-msgstr "-翻譯"
-
-#: src/pingus/screens/credits.cpp:163
-msgid "-Special"
-msgstr "-Special"
-
-#: src/pingus/screens/credits.cpp:164
-msgid "-Thanks to"
-msgstr "-Thanks to"
-
-#: src/pingus/screens/credits.cpp:208
-msgid "_And a very Special Thanks"
-msgstr "_And a very Special Thanks"
-
-#: src/pingus/screens/credits.cpp:209
-msgid "_to all the people who"
-msgstr "_to all the people who"
-
-#: src/pingus/screens/credits.cpp:210
-msgid "_contribute to"
-msgstr "_contribute to"
-
-#: src/pingus/screens/credits.cpp:211
-msgid "_Free Software!"
-msgstr "_Free Software!"
-
-#: src/pingus/screens/credits.cpp:217
-msgid "_Thank you for"
-msgstr "_Thank you for"
-
-#: src/pingus/screens/credits.cpp:218
-msgid "_playing!"
-msgstr "_playing!"
-
-#: src/pingus/screens/pingus_menu.cpp:50
-msgid "Story"
-msgstr "故事"
-
-#: src/pingus/screens/pingus_menu.cpp:51
-msgid "..:: Start the game ::.."
-msgstr "..:: 遊戲開始 ::.."
-
-#: src/pingus/screens/pingus_menu.cpp:55
-msgid "Editor"
-msgstr "編輯"
-
-#: src/pingus/screens/pingus_menu.cpp:56
-msgid "..:: Create your own levels ::.."
-msgstr "..:: 建立自己的關卡 ::.."
-
-#: src/pingus/screens/pingus_menu.cpp:60 src/editor/object_selector.cpp:173
-#: src/editor/panel.cpp:210
-msgid "Exit"
-msgstr "離開"
-
-#: src/pingus/screens/pingus_menu.cpp:61
-msgid "..:: Bye, bye ::.."
-msgstr "..:: 再見 ::.."
-
-#: src/pingus/screens/pingus_menu.cpp:66
-msgid "..:: Play User Built levels ::.."
-msgstr "..:: 玩家自製關卡 ::.."
-
-#: src/pingus/screens/pingus_menu.cpp:77
-msgid ""
-"..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
-"fullscreen   ::   F12: screenshot ::.."
-msgstr ""
-"..:: Ctrl-g: 滑鼠抓取  ::  F10: 每秒畫面數量  ::  F11: 全螢幕  ::  F12: 螢幕"
-"快照 ::.."
-
-#: src/pingus/screens/option_menu.cpp:179
-msgid "Language:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:181
-msgid "Resolution:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:182
-msgid "Fullscreen:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:183
-msgid "Master Volume:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:184
-msgid "Sound Volume:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:185
-msgid "Music Volume:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:186
-msgid "Autoscrolling:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:187
-msgid "Print FPS:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:188
-msgid "Mouse Grab:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:189
-msgid "Software Cursor:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:207
-msgid "Reset to Defaults:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:283
-msgid "Option Menu"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:285 src/pingus/screens/addon_menu.cpp:53
-msgid "Close"
-msgstr "關閉"
-
-#: src/pingus/screens/start_screen.cpp:67
-msgid "Play"
-msgstr ""
-
-#: src/pingus/screens/start_screen.cpp:166
-msgid "Number of Pingus: "
-msgstr "Pingus數量: "
-
-#: src/pingus/screens/start_screen.cpp:169
-msgid "Number to Save: "
-msgstr "救援數目： "
-
-#: src/pingus/screens/start_screen.cpp:172
-msgid "Time: "
-msgstr "時間: "
-
-#: src/pingus/screens/start_screen.cpp:178
-msgid "Author: "
-msgstr "作者: "
-
-#: src/pingus/screens/start_screen.cpp:181
-msgid "Filename: "
-msgstr "檔案名稱: "
-
-#: src/pingus/screens/result_screen.cpp:126
-msgid "Retry"
-msgstr "重試"
-
-#: src/pingus/screens/result_screen.cpp:183
-msgid "Success!"
-msgstr "成功!"
-
-#: src/pingus/screens/result_screen.cpp:191
-msgid "Failure!"
-msgstr "失敗!"
-
-#: src/pingus/screens/result_screen.cpp:200
-msgid "Perfect! You saved everyone possible - great!"
-msgstr "完美!你救了大家-非常好!"
-
-#: src/pingus/screens/result_screen.cpp:202
-msgid "No-one got killed, pretty good work."
-msgstr "大家都平安，幹的好。"
-
-#: src/pingus/screens/result_screen.cpp:204
-msgid ""
-"You saved exactly what you needed - you made it, but\n"
-"maybe you can do better?"
-msgstr "你確切的拯救了你需要的-你做到了,但也許你可以做的更好?"
-
-#: src/pingus/screens/result_screen.cpp:207
-msgid "Not everybody was saved, but still good work!"
-msgstr "並不是大家都平安無事，但是依然是做的很好！"
-
-#: src/pingus/screens/result_screen.cpp:209
-msgid "What can I say, you made it - congratulations!"
-msgstr "我能說什麼,你做到了-恭喜!"
-
-#: src/pingus/screens/result_screen.cpp:214
-msgid "You killed everybody, not good."
-msgstr "全數陣亡,不好."
-
-#: src/pingus/screens/result_screen.cpp:216
-msgid "No-one got saved - I know you can do better."
-msgstr "一個都沒有被拯救-我知道你可以做的更好"
-
-#: src/pingus/screens/result_screen.cpp:218
-msgid ""
-"You didn't save enough, but you saved a few.  Next\n"
-"time you might do better."
-msgstr ""
-"你並沒有救出足夠的企鵝，但是也救出了一些。\n"
-"下一次一定會更好。"
-
-#: src/pingus/screens/result_screen.cpp:221
-msgid "Only one more and you would have made it - try again!"
-msgstr "只要多一個你就過了 － 再來一次！"
-
-#: src/pingus/screens/result_screen.cpp:223
-msgid "Only a handful more and you would have made it - try again!"
-msgstr "只要多一些你就有過了 － 再來一次！"
-
-#: src/pingus/screens/result_screen.cpp:225
-msgid "Better luck next time!"
-msgstr "下次會更好！"
-
-#: src/pingus/screens/result_screen.cpp:233
-msgid "Saved: "
-msgstr "救援： "
-
-#: src/pingus/screens/result_screen.cpp:237
-msgid "Died: "
-msgstr "死亡： "
-
-#: src/pingus/screens/result_screen.cpp:240
-msgid "Time left: "
-msgstr "剩餘時間： "
-
-#: src/pingus/components/pingus_counter.cpp:43
-#, c-format, boost-format
-msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
-msgstr "放出:%3d/%d   在外面:%3d   獲救:%3d/%d"
-
-#: src/pingus/pingus_main.cpp:210
-msgid "[OPTIONS]... [FILE]"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:211
-msgid ""
-"Pingus is a puzzle game where you need to guide a bunch of little penguins "
-"around the world."
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:214
-msgid "Displays this help"
-msgstr "顯示這個說明"
-
-#: src/pingus/pingus_main.cpp:216
-msgid "Print version number and exit"
-msgstr "列印版本數目後離開"
-
-#: src/pingus/pingus_main.cpp:218
-msgid "Display:"
-msgstr "顯示:"
-
-#: src/pingus/pingus_main.cpp:220
-msgid "Start in Window Mode"
-msgstr "啟動於視窗模式"
-
-#: src/pingus/pingus_main.cpp:222
-msgid "Start in Fullscreen"
-msgstr "啟動於全螢幕模式"
-
-#: src/pingus/pingus_main.cpp:224
-msgid "Use the given renderer (default: delta)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:226
-msgid "Enable software cursor"
-msgstr "啟用軟體游標"
-
-#: src/pingus/pingus_main.cpp:228
-msgid "Set the resolution for pingus (default: 800x600)"
-msgstr "設定pingus解析度(預設: 800x600)"
-
-#: src/pingus/pingus_main.cpp:230
-msgid "Sound:"
-msgstr "聲音:"
-
-#: src/pingus/pingus_main.cpp:232
-msgid "Disable sound"
-msgstr "禁用聲音"
-
-#: src/pingus/pingus_main.cpp:234
-msgid "Disable music"
-msgstr "禁用音樂"
-
-#: src/pingus/pingus_main.cpp:238
-msgid "Select language to use with Pingus"
-msgstr "選擇Pingus使用的語言"
-
-#: src/pingus/pingus_main.cpp:240
-msgid "List all available languages"
-msgstr "列出所有可用的語言"
-
-#: src/pingus/pingus_main.cpp:244
-msgid "Loads the level editor"
-msgstr "載入地圖編輯器"
-
-#: src/pingus/pingus_main.cpp:246
-msgid "Save the level given level to FILENAME and quit"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:248
-msgid "Shows the credits"
-msgstr "顯示貢獻者"
-
-#: src/pingus/pingus_main.cpp:250
-#, fuzzy
-msgid "Path Options:"
-msgstr "混合選項："
-
-#: src/pingus/pingus_main.cpp:251 src/pingus/pingus_main.cpp:253
-#: src/pingus/pingus_main.cpp:255
-msgid "PATH"
-msgstr "路徑"
-
-#: src/pingus/pingus_main.cpp:252
-msgid "Set the path to load the data files to 'path'"
-msgstr "設置加載資料檔案路徑至\"路徑\""
-
-#: src/pingus/pingus_main.cpp:254
-msgid "Set the path to load and save user files (savegames, etc.) to PATH"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:256
-msgid "Add an addon path that is searched for datadir content"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:258
-msgid "Misc Options:"
-msgstr "混合選項："
-
-#: src/pingus/pingus_main.cpp:260
-msgid "Disable automatic scrolling"
-msgstr "禁用自動滾動"
-
-#: src/pingus/pingus_main.cpp:262
-msgid "Don't read ~/.pingus/config"
-msgstr "不要讀~/.pingus/config"
-
-#: src/pingus/pingus_main.cpp:263
-msgid "FILE"
-msgstr "檔案"
-
-#: src/pingus/pingus_main.cpp:264
-msgid ""
-"Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
-"speed up the game on slower machines"
-msgstr ""
-"閱讀設定從檔案(預設: ~/.pingus/config) 減少CPU使用,在速度較慢的電腦可使遊戲加"
-"快"
-
-#: src/pingus/pingus_main.cpp:267
-msgid "Uses the controller given in FILE"
-msgstr "使用檔案裡列的控制器"
-
-#: src/pingus/pingus_main.cpp:269
-msgid "Debugging and experimental stuff:"
-msgstr "調試和實驗的東西："
-
-#: src/pingus/pingus_main.cpp:271
-msgid "Enables some features, only interesting to programmers"
-msgstr "啟用某些功能，只有對程式設計員有趣"
-
-#: src/pingus/pingus_main.cpp:274
-msgid ""
-"Enable the output of debugging info, possible OPTIONs are tiles, gametime, "
-"actions, sound, resources, gui, input, pathmgr"
-msgstr ""
-"啟用調試資訊輸出，可用選項包含tiles, gametime, actions, sound, resources, "
-"gui, input, pathmgr"
-
-#: src/pingus/pingus_main.cpp:278
-msgid "Set the game speed (0=fastest, >0=slower)"
-msgstr "設定遊戲速度(0=最快, >0=變慢)"
-
-#: src/pingus/pingus_main.cpp:280
-msgid "Set the desired game framerate (frames per second)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:282
-msgid "Set the size of the map tiles (default: 32)"
-msgstr "設定地圖瓷磚大小(預設: 32)"
-
-#: src/pingus/pingus_main.cpp:700
-msgid "Pingus: Out of memory!"
-msgstr "Pingus:記憶體不足!"
-
-#: src/pingus/pingus_main.cpp:704
-msgid "Pingus: Standard exception caught!:\n"
-msgstr "Pingus: 標準異常！：\n"
-
-#: src/pingus/pingus_main.cpp:708
-msgid "Pingus: Unknown throw caught!"
-msgstr "Pingus: 發生不明錯誤！"
-
-#: src/pingus/worldmap/level_dot.cpp:140 src/pingus/worldmap/level_dot.cpp:150
-msgid "locked"
-msgstr "鎖定"
-
-#: src/pingus/worldmap/worldmap_screen.cpp:116
-msgid "Show Ending?"
-msgstr "顯示結尾?"
-
-#: src/pingus/worldmap/worldmap_screen.cpp:145
-msgid "Show Story?"
-msgstr "顯示故事？"
-
-#: src/pingus/worldmap/worldmap_screen.cpp:174
-msgid "Leave?"
-msgstr "離開?"
-
-#: src/pingus/worldmap/worldmap_screen.cpp:212
-msgid "Enter?"
-msgstr "進入？"
-
-#: src/pingus/worldmap/worldmap.cpp:356
-msgid "...walking..."
-msgstr "...步行..."
-
-#: src/engine/display/screenshot.cpp:36
+#: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
 msgstr "螢幕畫面擷取:把螢幕畫面擷取儲存至: "
 
-#: src/engine/display/screenshot.cpp:38
+#: src/engine/display/screenshot.cpp:39
 msgid "Screenshot: Screenshot is done."
 msgstr "截圖：完成截圖。"
 
-#: src/engine/display/screenshot.cpp:122 src/engine/display/screenshot.cpp:150
+#: src/engine/display/screenshot.cpp:124 src/engine/display/screenshot.cpp:152
 msgid "Screenshot: Couldn't write file: "
 msgstr "截圖:檔案無法寫入 "
 
-#: src/editor/object_selector.cpp:164
+#: src/editor/editor_screen.cpp:234
+msgid "== Editor Help =="
+msgstr ""
+
+#: src/editor/editor_screen.cpp:252
+#, fuzzy
+msgid ""
+"Select all\n"
+"Clear Selection\n"
+"Raise objects\n"
+"Lower objects\n"
+"Raise objects to top\n"
+"Lower objects to bottom\n"
+"Rotate 90 degree\n"
+"Rotate 270 degree\n"
+"Group selected objects\n"
+"Ungroup selected objects\n"
+msgstr ""
+"選擇所有的\n"
+"清除選擇\n"
+"上升物體\n"
+"降低物體\n"
+"把物體降低到底部\n"
+"將物體上升到頂端\n"
+"旋轉90度\n"
+"旋轉270度\n"
+
+#: src/editor/editor_screen.cpp:275
+#, fuzzy
+msgid ""
+"Flip object horizontaly\n"
+"Flip object vertically\n"
+"Delete all marked objects\n"
+"Move objects by one pixel\n"
+"Move objects by 32 pixel\n"
+"Toggle background color\n"
+"Increase/lower repeat\n"
+msgstr ""
+"水平地用指頭彈物體 \n"
+"垂直地用指頭彈物體\n"
+"刪除所有的顯著物體\n"
+"把物體往上移動\n"
+"把物體往下移動\n"
+"把物體往左移動\n"
+"把物體往右移動\n"
+
+#: src/editor/editor_screen.cpp:286
+msgid ""
+"You should name your level files systematically, i.e. by their theme, their "
+"number and your nickname:\n"
+"\n"
+"     <levelname><number>-<creator>.pingus\n"
+"\n"
+"So if you create a your second level with a stone theme, call it: stone2-"
+"yourname.pingus\n"
+"\n"
+"When you have created a level and want to have it included in the game mail "
+"it to:\n"
+"\n"
+"     pingus-devel@nongnu.org\n"
+"\n"
+"Only levels published under the GPL are allowed into the game. The editor "
+"automatically inserts a reference \n"
+"to the GPL, if you want to have your level under a different license, you "
+"have to change that reference.\n"
+msgstr ""
+"你最好要按照制度地命名你的等級檔案，依照他們的主題、他們的數字和你的暱稱:\n"
+"    <等級名稱><編號>-<創造者>.pingus\n"
+"\n"
+"因此如果你用一個石頭主題創造一個你的第二等級，呼叫它：stone2-你的名字."
+"pingus\n"
+"\n"
+"當你已經創造一個等級並想要讓它包含在遊戲中寄出:\n"
+"    pingus-devel@nongnu.org\n"
+"\n"
+"只有在GPL之下被出版的等极被允許進入遊戲。編輯器自動地插入GPL參考，\n"
+"如果你想要在不同的條件下擁有你的等級，你必須改變那參考。\n"
+
+#: src/editor/file_dialog.cpp:59
+msgid "Datadir"
+msgstr "資料目錄"
+
+#: src/editor/file_dialog.cpp:61
+msgid "Userdir"
+msgstr "使用者目錄"
+
+#: src/editor/file_dialog.cpp:64
+msgid "Open"
+msgstr "開啟"
+
+#: src/editor/file_dialog.cpp:64
+msgid "Save"
+msgstr "儲存"
+
+#: src/editor/file_dialog.cpp:67 src/editor/message_box.cpp:35
+msgid "Cancel"
+msgstr "取消"
+
+#: src/editor/file_dialog.cpp:78
+msgid "Filename:"
+msgstr "檔案名稱："
+
+#: src/editor/file_dialog.cpp:79
+msgid "Pathname:"
+msgstr "路徑名稱："
+
+#: src/editor/file_dialog.cpp:108
+msgid "Open a level"
+msgstr "開啟一個關卡"
+
+#: src/editor/file_dialog.cpp:108
+msgid "Save your level"
+msgstr "儲存你的等級"
+
+#: src/editor/panel.cpp:171
+#, fuzzy
+msgid "New level"
+msgstr "    新的等极"
+
+#: src/editor/panel.cpp:173
+msgid "Open level..."
+msgstr "開啟等极……"
+
+#: src/editor/panel.cpp:175
+msgid "Save level..."
+msgstr "儲存等极……"
+
+#: src/editor/panel.cpp:177
+msgid "Save level as..."
+msgstr "儲存等极為……"
+
+#: src/editor/panel.cpp:180
+msgid "Play level..."
+msgstr "玩這個等极……"
+
+#: src/editor/panel.cpp:183
+msgid "Configure actions"
+msgstr "設定動作"
+
+#: src/editor/panel.cpp:185
+msgid "Configure level"
+msgstr "設定等极"
+
+#: src/editor/panel.cpp:187
+msgid "Display object properties"
+msgstr "顯示物品的特性"
+
+#: src/editor/panel.cpp:189
+msgid "Show object insertion window"
+msgstr "顯示插入物體視窗"
+
+#: src/editor/panel.cpp:191
+msgid "Show minimap"
+msgstr "顯示迷你地圖"
+
+#: src/editor/panel.cpp:194
+msgid "Duplicate the selected objects"
+msgstr "複製所選擇的物品"
+
+#: src/editor/panel.cpp:196
+msgid "Delete the selected objects"
+msgstr "刪除所選擇的物品"
+
+#: src/editor/panel.cpp:199
+msgid "Raise object to top"
+msgstr "提升物品到最高程度"
+
+#: src/editor/panel.cpp:201
+msgid "Raise object"
+msgstr "上升物體"
+
+#: src/editor/panel.cpp:203
+msgid "Lower object"
+msgstr "降低物體"
+
+#: src/editor/panel.cpp:205
+msgid "Lower object to bottom"
+msgstr "降低物體到底部"
+
+#: src/editor/panel.cpp:211
+msgid "Flip object horizontally"
+msgstr "使物體水平地翻轉"
+
+#: src/editor/panel.cpp:213
+msgid "Flip object vertically"
+msgstr "使物體垂直地翻轉"
+
+#: src/editor/panel.cpp:216
+msgid "Rotate object -90 degree"
+msgstr "旋轉物體-90度"
+
+#: src/editor/panel.cpp:218
+msgid "Rotate object 90 degree"
+msgstr "物體旋轉90度"
+
+#: src/editor/panel.cpp:227
+msgid "Display help"
+msgstr "顯示說明"
+
+#: src/editor/panel.cpp:229 src/editor/object_selector.cpp:174
+#: src/pingus/screens/pingus_menu.cpp:74
+msgid "Exit"
+msgstr "離開"
+
+#: src/editor/object_selector.cpp:165
 msgid "Entrance"
 msgstr "進入"
 
-#: src/editor/object_selector.cpp:165
+#: src/editor/object_selector.cpp:166
 msgid "Groundpiece (ground)"
 msgstr "地面修補(地面)"
 
-#: src/editor/object_selector.cpp:166
+#: src/editor/object_selector.cpp:167
 msgid "Groundpiece (solid)"
 msgstr "地面修補(固體)"
 
-#: src/editor/object_selector.cpp:167
+#: src/editor/object_selector.cpp:168
 msgid "Groundpiece (bridge)"
 msgstr "地面修補(橋樑)"
 
-#: src/editor/object_selector.cpp:168
+#: src/editor/object_selector.cpp:169
 msgid "Groundpiece (transparent)"
 msgstr "地面修補(透明)"
 
-#: src/editor/object_selector.cpp:169
+#: src/editor/object_selector.cpp:170
 msgid "Groundpiece (remove)"
 msgstr "地面修補(移除)"
 
-#: src/editor/object_selector.cpp:170
+#: src/editor/object_selector.cpp:171
 msgid "Hotspot"
 msgstr "熱點"
 
-#: src/editor/object_selector.cpp:171
+#: src/editor/object_selector.cpp:172
 msgid "Background"
 msgstr "背景"
 
-#: src/editor/object_selector.cpp:174
+#: src/editor/object_selector.cpp:175
 msgid "Liquid"
 msgstr "液體"
 
-#: src/editor/object_selector.cpp:175
+#: src/editor/object_selector.cpp:176
 msgid "Trap"
 msgstr "陷阱"
 
-#: src/editor/object_selector.cpp:176
+#: src/editor/object_selector.cpp:177
 msgid "Weather"
 msgstr "天氣"
 
-#: src/editor/object_selector.cpp:177
+#: src/editor/object_selector.cpp:178
 msgid "Special Object"
 msgstr "特殊物體"
 
-#: src/editor/object_selector.cpp:178
+#: src/editor/object_selector.cpp:179
 #, fuzzy
 msgid "Prefab Object"
 msgstr "特殊物體"
+
+#: src/editor/message_box.cpp:37
+msgid "Replace"
+msgstr ""
 
 #: src/editor/object_properties.cpp:87 src/editor/object_properties.cpp:515
 msgid "Object:"
@@ -788,203 +416,521 @@ msgstr "群組未支援"
 msgid "Object: "
 msgstr "物體: "
 
-#: src/editor/editor_screen.cpp:208
-msgid "== Editor Help =="
+#: src/pingus/pingus_main.cpp:176
+msgid "[OPTIONS]... [FILE]"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:226
+#: src/pingus/pingus_main.cpp:177
+msgid ""
+"Pingus is a puzzle game where you need to guide a bunch of little penguins "
+"around the world."
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:179
 #, fuzzy
-msgid ""
-"Select all\n"
-"Clear Selection\n"
-"Raise objects\n"
-"Lower objects\n"
-"Raise objects to top\n"
-"Lower objects to bottom\n"
-"Rotate 90 degree\n"
-"Rotate 270 degree\n"
-"Group selected objects\n"
-"Ungroup selected objects\n"
-msgstr ""
-"選擇所有的\n"
-"清除選擇\n"
-"上升物體\n"
-"降低物體\n"
-"把物體降低到底部\n"
-"將物體上升到頂端\n"
-"旋轉90度\n"
-"旋轉270度\n"
+msgid "General Options:"
+msgstr "混合選項："
 
-#: src/editor/editor_screen.cpp:249
+#: src/pingus/pingus_main.cpp:181
+msgid "Displays this help"
+msgstr "顯示這個說明"
+
+#: src/pingus/pingus_main.cpp:183
+msgid "Print version number and exit"
+msgstr "列印版本數目後離開"
+
+#: src/pingus/pingus_main.cpp:185
+msgid "Enable info level log output"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:187
+msgid "Enable debug level log output"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:189
+msgid "Disable all log output"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:191
 #, fuzzy
-msgid ""
-"Flip object horizontaly\n"
-"Flip object vertically\n"
-"Delete all marked objects\n"
-"Move objects by one pixel\n"
-"Move objects by 32 pixel\n"
-"Toggle background color\n"
-"Increase/lower repeat\n"
+msgid "Display Options:"
+msgstr "混合選項："
+
+#: src/pingus/pingus_main.cpp:193
+msgid "Start in Window Mode"
+msgstr "啟動於視窗模式"
+
+#: src/pingus/pingus_main.cpp:195
+msgid "Start in Fullscreen"
+msgstr "啟動於全螢幕模式"
+
+#: src/pingus/pingus_main.cpp:197
+msgid "Use the given renderer (default: delta)"
 msgstr ""
-"水平地用指頭彈物體 \n"
-"垂直地用指頭彈物體\n"
-"刪除所有的顯著物體\n"
-"把物體往上移動\n"
-"把物體往下移動\n"
-"把物體往左移動\n"
-"把物體往右移動\n"
 
-#: src/editor/editor_screen.cpp:260
-msgid ""
-"You should name your level files systematically, i.e. by their theme, their "
-"number and your nickname:\n"
-"\n"
-"     <levelname><number>-<creator>.pingus\n"
-"\n"
-"So if you create a your second level with a stone theme, call it: stone2-"
-"yourname.pingus\n"
-"\n"
-"When you have created a level and want to have it included in the game mail "
-"it to:\n"
-"\n"
-"     pingus-devel@nongnu.org\n"
-"\n"
-"Only levels published under the GPL are allowed into the game. The editor "
-"automatically inserts a reference \n"
-"to the GPL, if you want to have your level under a different license, you "
-"have to change that reference.\n"
+#: src/pingus/pingus_main.cpp:199
+#, fuzzy
+msgid "Set the window resolution for pingus (default: 800x600)"
+msgstr "設定pingus解析度(預設: 800x600)"
+
+#: src/pingus/pingus_main.cpp:201
+#, fuzzy
+msgid "Set the resolution used in fullscreen mode (default: 800x600)"
+msgstr "設定pingus解析度(預設: 800x600)"
+
+#: src/pingus/pingus_main.cpp:203
+msgid "Enable software cursor"
+msgstr "啟用軟體游標"
+
+#: src/pingus/pingus_main.cpp:205
+#, fuzzy
+msgid "Game Options:"
+msgstr "混合選項："
+
+#: src/pingus/pingus_main.cpp:207
+msgid "Disable automatic scrolling"
+msgstr "禁用自動滾動"
+
+#: src/pingus/pingus_main.cpp:209
+#, fuzzy
+msgid "Enable drag'n drop scrolling"
+msgstr "禁用自動滾動"
+
+#: src/pingus/pingus_main.cpp:211
+#, fuzzy
+msgid "Sound Options:"
+msgstr "混合選項："
+
+#: src/pingus/pingus_main.cpp:213
+msgid "Disable sound"
+msgstr "禁用聲音"
+
+#: src/pingus/pingus_main.cpp:215
+msgid "Disable music"
+msgstr "禁用音樂"
+
+#: src/pingus/pingus_main.cpp:219
+msgid "Select language to use with Pingus"
+msgstr "選擇Pingus使用的語言"
+
+#: src/pingus/pingus_main.cpp:221
+msgid "List all available languages"
+msgstr "列出所有可用的語言"
+
+#: src/pingus/pingus_main.cpp:225
+msgid "Loads the level editor"
+msgstr "載入地圖編輯器"
+
+#: src/pingus/pingus_main.cpp:227
+#, fuzzy
+msgid "Directory Options:"
+msgstr "方向:"
+
+#: src/pingus/pingus_main.cpp:228 src/pingus/pingus_main.cpp:230
+#: src/pingus/pingus_main.cpp:232
+msgid "DIR"
 msgstr ""
-"你最好要按照制度地命名你的等級檔案，依照他們的主題、他們的數字和你的暱稱:\n"
-"    <等級名稱><編號>-<創造者>.pingus\n"
-"\n"
-"因此如果你用一個石頭主題創造一個你的第二等級，呼叫它：stone2-你的名字."
-"pingus\n"
-"\n"
-"當你已經創造一個等級並想要讓它包含在遊戲中寄出:\n"
-"    pingus-devel@nongnu.org\n"
-"\n"
-"只有在GPL之下被出版的等极被允許進入遊戲。編輯器自動地插入GPL參考，\n"
-"如果你想要在不同的條件下擁有你的等級，你必須改變那參考。\n"
 
-#: src/editor/panel.cpp:152
-msgid "    New level"
-msgstr "    新的等极"
+#: src/pingus/pingus_main.cpp:229
+msgid "Load game datafiles from DIR"
+msgstr ""
 
-#: src/editor/panel.cpp:154
-msgid "Open level..."
-msgstr "開啟等极……"
+#: src/pingus/pingus_main.cpp:231
+msgid "Load config files and store savegames in DIR"
+msgstr ""
 
-#: src/editor/panel.cpp:156
-msgid "Save level..."
-msgstr "儲存等极……"
+#: src/pingus/pingus_main.cpp:233
+msgid "Load game modifications from DIR"
+msgstr ""
 
-#: src/editor/panel.cpp:158
-msgid "Save level as..."
-msgstr "儲存等极為……"
+#: src/pingus/pingus_main.cpp:235
+msgid "Don't read ~/.pingus/config"
+msgstr "不要讀~/.pingus/config"
 
-#: src/editor/panel.cpp:161
-msgid "Play level..."
-msgstr "玩這個等极……"
+#: src/pingus/pingus_main.cpp:236
+msgid "FILE"
+msgstr "檔案"
 
-#: src/editor/panel.cpp:164
-msgid "Configure actions"
-msgstr "設定動作"
+#: src/pingus/pingus_main.cpp:237
+msgid "Read config options from FILE"
+msgstr ""
 
-#: src/editor/panel.cpp:166
-msgid "Configure level"
-msgstr "設定等极"
+#: src/pingus/pingus_main.cpp:239
+msgid "Uses the controller given in FILE"
+msgstr "使用檔案裡列的控制器"
 
-#: src/editor/panel.cpp:168
-msgid "Display object properties"
-msgstr "顯示物品的特性"
+#: src/pingus/pingus_main.cpp:241
+#, fuzzy
+msgid "Debug Options:"
+msgstr "混合選項："
 
-#: src/editor/panel.cpp:170
-msgid "Show object insertion window"
-msgstr "顯示插入物體視窗"
+#: src/pingus/pingus_main.cpp:243
+#, fuzzy
+msgid "Enables some special features for developers"
+msgstr "啟用某些功能，只有對程式設計員有趣"
 
-#: src/editor/panel.cpp:172
-msgid "Show minimap"
-msgstr "顯示迷你地圖"
+#: src/pingus/pingus_main.cpp:245
+msgid "Set the game speed (0=fastest, >0=slower)"
+msgstr "設定遊戲速度(0=最快, >0=變慢)"
 
-#: src/editor/panel.cpp:175
-msgid "Duplicate the selected objects"
-msgstr "複製所選擇的物品"
+#: src/pingus/pingus_main.cpp:247
+msgid "Set the desired game framerate (frames per second)"
+msgstr ""
 
-#: src/editor/panel.cpp:177
-msgid "Delete the selected objects"
-msgstr "刪除所選擇的物品"
+#: src/pingus/pingus_main.cpp:249
+msgid "Set the size of the map tiles (default: 32)"
+msgstr "設定地圖瓷磚大小(預設: 32)"
 
-#: src/editor/panel.cpp:180
-msgid "Raise object to top"
-msgstr "提升物品到最高程度"
+#: src/pingus/pingus_main.cpp:632
+msgid "Pingus: Out of memory!"
+msgstr "Pingus:記憶體不足!"
 
-#: src/editor/panel.cpp:182
-msgid "Raise object"
-msgstr "上升物體"
+#: src/pingus/pingus_main.cpp:636
+msgid "Pingus: Standard exception caught!:\n"
+msgstr "Pingus: 標準異常！：\n"
 
-#: src/editor/panel.cpp:184
-msgid "Lower object"
-msgstr "降低物體"
+#: src/pingus/pingus_main.cpp:640
+msgid "Pingus: Unknown throw caught!"
+msgstr "Pingus: 發生不明錯誤！"
 
-#: src/editor/panel.cpp:186
-msgid "Lower object to bottom"
-msgstr "降低物體到底部"
+#: src/pingus/game_time.cpp:29
+msgid "unlimited"
+msgstr "無限"
 
-#: src/editor/panel.cpp:192
-msgid "Flip object horizontally"
-msgstr "使物體水平地翻轉"
+#: src/pingus/actions/bridger.cpp:38 src/pingus/actions/bridger.cpp:196
+#: src/pingus/action_name.cpp:32
+msgid "Bridger"
+msgstr "造橋者"
 
-#: src/editor/panel.cpp:194
-msgid "Flip object vertically"
-msgstr "使物體垂直地翻轉"
+#: src/pingus/screens/start_screen.cpp:67
+msgid "Play"
+msgstr ""
 
-#: src/editor/panel.cpp:197
-msgid "Rotate object -90 degree"
-msgstr "旋轉物體-90度"
+#: src/pingus/screens/start_screen.cpp:111
+#: src/pingus/screens/level_menu.cpp:50
+msgid "Back"
+msgstr ""
 
-#: src/editor/panel.cpp:199
-msgid "Rotate object 90 degree"
-msgstr "物體旋轉90度"
+#: src/pingus/screens/start_screen.cpp:166
+msgid "Number of Pingus: "
+msgstr "Pingus數量: "
 
-#: src/editor/panel.cpp:208
-msgid "Display help"
-msgstr "顯示說明"
+#: src/pingus/screens/start_screen.cpp:169
+msgid "Number to Save: "
+msgstr "救援數目： "
 
-#: src/editor/file_dialog.cpp:59
-msgid "Datadir"
-msgstr "資料目錄"
+#: src/pingus/screens/start_screen.cpp:172
+msgid "Time: "
+msgstr "時間: "
 
-#: src/editor/file_dialog.cpp:61
-msgid "Userdir"
-msgstr "使用者目錄"
+#: src/pingus/screens/start_screen.cpp:178
+msgid "Author: "
+msgstr "作者: "
 
-#: src/editor/file_dialog.cpp:64
-msgid "Open"
-msgstr "開啟"
+#: src/pingus/screens/addon_menu.cpp:53 src/pingus/screens/option_menu.cpp:324
+msgid "Close"
+msgstr "關閉"
 
-#: src/editor/file_dialog.cpp:64
-msgid "Save"
-msgstr "儲存"
+#: src/pingus/screens/pingus_menu.cpp:54
+msgid "Story"
+msgstr "故事"
 
-#: src/editor/file_dialog.cpp:67
-msgid "Cancel"
-msgstr "取消"
+#: src/pingus/screens/pingus_menu.cpp:55
+msgid "..:: Start the game ::.."
+msgstr "..:: 遊戲開始 ::.."
 
-#: src/editor/file_dialog.cpp:78
-msgid "Filename:"
-msgstr "檔案名稱："
+#: src/pingus/screens/pingus_menu.cpp:59
+msgid "Editor"
+msgstr "編輯"
 
-#: src/editor/file_dialog.cpp:79
-msgid "Pathname:"
-msgstr "路徑名稱："
+#: src/pingus/screens/pingus_menu.cpp:60
+msgid "..:: Create your own levels ::.."
+msgstr "..:: 建立自己的關卡 ::.."
 
-#: src/editor/file_dialog.cpp:108
-msgid "Open a level"
-msgstr "開啟一個關卡"
+#: src/pingus/screens/pingus_menu.cpp:64
+#, fuzzy
+msgid "Options"
+msgstr "混合選項："
 
-#: src/editor/file_dialog.cpp:108
-msgid "Save your level"
-msgstr "儲存你的等級"
+#: src/pingus/screens/pingus_menu.cpp:65
+#, fuzzy
+msgid "..:: Configure the game ::.."
+msgstr "..:: 遊戲開始 ::.."
+
+#: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:155
+msgid "Levelsets"
+msgstr "關卡組合"
+
+#: src/pingus/screens/pingus_menu.cpp:70
+msgid "..:: Play User Built levels ::.."
+msgstr "..:: 玩家自製關卡 ::.."
+
+#: src/pingus/screens/pingus_menu.cpp:75
+msgid "..:: Bye, bye ::.."
+msgstr "..:: 再見 ::.."
+
+#: src/pingus/screens/pingus_menu.cpp:87
+msgid ""
+"..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
+"fullscreen   ::   F12: screenshot ::.."
+msgstr ""
+"..:: Ctrl-g: 滑鼠抓取  ::  F10: 每秒畫面數量  ::  F11: 全螢幕  ::  F12: 螢幕"
+"快照 ::.."
+
+#: src/pingus/screens/level_menu.cpp:170
+msgid "Solved:"
+msgstr "解決："
+
+#: src/pingus/screens/level_menu.cpp:171
+msgid "levels"
+msgstr ""
+
+#: src/pingus/screens/story_screen.cpp:108
+#: src/pingus/screens/story_screen.cpp:114
+msgid "skip"
+msgstr "略過"
+
+#: src/pingus/screens/option_menu.cpp:196
+#, fuzzy
+msgid "Fullscreen"
+msgstr "啟動於全螢幕模式"
+
+#: src/pingus/screens/option_menu.cpp:197
+msgid "Mouse Grab"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:199
+#, fuzzy
+msgid "Software Cursor"
+msgstr "啟用軟體游標"
+
+#: src/pingus/screens/option_menu.cpp:200
+#, fuzzy
+msgid "Autoscrolling"
+msgstr "禁用自動滾動"
+
+#: src/pingus/screens/option_menu.cpp:201
+msgid "Drag&Drop Scrolling"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:203
+msgid "Print FPS"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:207
+msgid "Resolution:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:208
+msgid "Renderer:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:210
+msgid "Language:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:212
+msgid "Master Volume:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:213
+msgid "Sound Volume:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:214
+msgid "Music Volume:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:322
+msgid "Option Menu"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:328
+msgid "Some options require a restart of the game to take effect."
+msgstr ""
+
+#: src/pingus/screens/result_screen.cpp:91
+msgid "Give up"
+msgstr ""
+
+#: src/pingus/screens/result_screen.cpp:126
+msgid "Retry"
+msgstr "重試"
+
+#: src/pingus/screens/result_screen.cpp:183
+msgid "Success!"
+msgstr "成功!"
+
+#: src/pingus/screens/result_screen.cpp:191
+msgid "Failure!"
+msgstr "失敗!"
+
+#: src/pingus/screens/result_screen.cpp:200
+msgid "Perfect! You saved everyone possible - great!"
+msgstr "完美!你救了大家-非常好!"
+
+#: src/pingus/screens/result_screen.cpp:202
+msgid "No-one got killed, pretty good work."
+msgstr "大家都平安，幹的好。"
+
+#: src/pingus/screens/result_screen.cpp:204
+msgid ""
+"You saved exactly what you needed - you made it, but\n"
+"maybe you can do better?"
+msgstr "你確切的拯救了你需要的-你做到了,但也許你可以做的更好?"
+
+#: src/pingus/screens/result_screen.cpp:207
+msgid "Not everybody was saved, but still good work!"
+msgstr "並不是大家都平安無事，但是依然是做的很好！"
+
+#: src/pingus/screens/result_screen.cpp:209
+msgid "What can I say, you made it - congratulations!"
+msgstr "我能說什麼,你做到了-恭喜!"
+
+#: src/pingus/screens/result_screen.cpp:214
+msgid "You killed everybody, not good."
+msgstr "全數陣亡,不好."
+
+#: src/pingus/screens/result_screen.cpp:216
+msgid "No-one got saved - I know you can do better."
+msgstr "一個都沒有被拯救-我知道你可以做的更好"
+
+#: src/pingus/screens/result_screen.cpp:218
+msgid ""
+"You didn't save enough, but you saved a few.  Next\n"
+"time you might do better."
+msgstr ""
+"你並沒有救出足夠的企鵝，但是也救出了一些。\n"
+"下一次一定會更好。"
+
+#: src/pingus/screens/result_screen.cpp:221
+msgid "Only one more and you would have made it - try again!"
+msgstr "只要多一個你就過了 － 再來一次！"
+
+#: src/pingus/screens/result_screen.cpp:223
+msgid "Only a handful more and you would have made it - try again!"
+msgstr "只要多一些你就有過了 － 再來一次！"
+
+#: src/pingus/screens/result_screen.cpp:225
+msgid "Better luck next time!"
+msgstr "下次會更好！"
+
+#: src/pingus/screens/result_screen.cpp:233
+msgid "Saved: "
+msgstr "救援： "
+
+#: src/pingus/screens/result_screen.cpp:237
+msgid "Died: "
+msgstr "死亡： "
+
+#: src/pingus/screens/result_screen.cpp:240
+msgid "Time left: "
+msgstr "剩餘時間： "
+
+#: src/pingus/action_name.cpp:27
+msgid "Angel"
+msgstr "天使"
+
+#: src/pingus/action_name.cpp:28
+msgid "Basher"
+msgstr "破除者"
+
+#: src/pingus/action_name.cpp:29
+msgid "Blocker"
+msgstr "阻擋者"
+
+#: src/pingus/action_name.cpp:30
+msgid "Boarder"
+msgstr "滑板者"
+
+#: src/pingus/action_name.cpp:31
+msgid "Bomber"
+msgstr "炸彈客"
+
+#: src/pingus/action_name.cpp:33
+msgid "Climber"
+msgstr "攀登者"
+
+#: src/pingus/action_name.cpp:34
+msgid "Digger"
+msgstr "挖掘者"
+
+#: src/pingus/action_name.cpp:35
+msgid "Drown"
+msgstr "溺死"
+
+#: src/pingus/action_name.cpp:36
+msgid "Exiter"
+msgstr "出口"
+
+#: src/pingus/action_name.cpp:37
+msgid "Faller"
+msgstr "墜落者"
+
+#: src/pingus/action_name.cpp:38
+msgid "Floater"
+msgstr "飛行者"
+
+#: src/pingus/action_name.cpp:39
+msgid "Jumper"
+msgstr "跳躍者"
+
+#: src/pingus/action_name.cpp:40
+msgid "Laserkill"
+msgstr "終止雷射"
+
+#: src/pingus/action_name.cpp:41
+msgid "Miner"
+msgstr "礦工"
+
+#: src/pingus/action_name.cpp:42
+msgid "Rocketlauncher"
+msgstr "火箭筒"
+
+#: src/pingus/action_name.cpp:43
+msgid "Slider"
+msgstr "滾動者"
+
+#: src/pingus/action_name.cpp:44
+msgid "Smashed"
+msgstr "被..粉碎"
+
+#: src/pingus/action_name.cpp:45
+msgid "Splashed"
+msgstr "濺落"
+
+#: src/pingus/action_name.cpp:46
+msgid "Superman"
+msgstr "超人"
+
+#: src/pingus/action_name.cpp:47
+msgid "Teleported"
+msgstr "瞬間移動"
+
+#: src/pingus/action_name.cpp:48
+msgid "Waiter"
+msgstr "等待者"
+
+#: src/pingus/action_name.cpp:49
+msgid "Walker"
+msgstr "步行者"
+
+#: src/pingus/components/pingus_counter.cpp:43
+#, c-format, boost-format
+msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
+msgstr "放出:%3d/%d   在外面:%3d   獲救:%3d/%d"
+
+#: src/pingus/worldmap/level_dot.cpp:134
+msgid "???"
+msgstr ""
+
+#: src/pingus/worldmap/worldmap_screen.cpp:84
+msgid "Show Ending?"
+msgstr "顯示結尾?"
+
+#: src/pingus/worldmap/worldmap_screen.cpp:113
+msgid "Leave?"
+msgstr "離開?"
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
 msgid "If the way is blocked, bash away"
@@ -1114,10 +1060,11 @@ msgid "Block'a Rock"
 msgstr "阻擋一個岩石"
 
 #: data/levels/tutorial/snow14-grumbel.pingus:6
+#, fuzzy
 msgid ""
-"Once again it's time to combine the stuff you have learned in your previous "
+"Once again it's time to combine the things you have learned in your previous "
 "levels. Blast your way free and make sure you also keep the rest of the "
-"Pingus under control. The Blocker action will be helpful. "
+"Pingus under control. The Blocker action will be helpful."
 msgstr ""
 "又到了再次結合你在之前的等級已學到的事情的時候了。盡情使用你的方法並確定其他"
 "休息的Pingus都在你的控制之下。那個阻塞行動將會有所幫助。 "
@@ -1230,7 +1177,8 @@ msgstr ""
 "控制的情況下，讓一個Pingu準備可以讓大家達到出口的路徑。 "
 
 #: data/levels/tutorial/snow8-grumbel.pingus:5
-msgid "Dig and float, but just don't fall and smash"
+#, fuzzy
+msgid "Dig and float, just don't fall and smash"
 msgstr "挖掘和飄浮，但就是不能落下垮掉"
 
 # 7126: Close, but not yet completely correct.
@@ -1275,11 +1223,11 @@ msgstr ""
 "的材料：鋼鐵。這些區域在等級地圖上是黑灰色做上記號而且不能夠被破壞。因此，你"
 "一定要找出其它路在周圍。 "
 
-#: data/levels/halloween/halloween1-grumbel.pingus:7
+#: data/levels/halloween/halloween1-grumbel.pingus:5
 msgid "One jump to catch them all"
 msgstr "跳起來接住他們"
 
-#: data/levels/halloween/halloween1-grumbel.pingus:8
+#: data/levels/halloween/halloween1-grumbel.pingus:6
 msgid ""
 "The pingus have found themselves lost on their journey.  What is this "
 "mysterious place?  Smiling pumpkins, giant candlesticks, and some boiling "
@@ -1291,11 +1239,11 @@ msgstr ""
 "臺和下面沸騰的湯…… 這是什麼巫術？ 現在，一個致命的深淵正在他們之前，你的工作"
 "是解救他們。 你能從可怕的命運中解救他們嗎？"
 
-#: data/levels/halloween/halloween2-grumbel.pingus:7
+#: data/levels/halloween/halloween2-grumbel.pingus:5
 msgid "One Thousand and One Jumps"
 msgstr "一千零一次跳躍"
 
-#: data/levels/halloween/halloween2-grumbel.pingus:8
+#: data/levels/halloween/halloween2-grumbel.pingus:6
 msgid ""
 "With the exit so high above and far out of reach for a normal Pingu, what "
 "options are there? Perhaps a jumper can rescue them?  Or will he simply slow "
@@ -1306,11 +1254,11 @@ msgstr ""
 "他們？ 或只是減緩他們的不可避免的結束嗎？ 你的工作是找到答案，但是你夠強解救"
 "他們全部嗎？"
 
-#: data/levels/halloween/halloween3-grumbel.pingus:7
+#: data/levels/halloween/halloween3-grumbel.pingus:5
 msgid "Boom Boom"
 msgstr "Boom Boom"
 
-#: data/levels/halloween/halloween3-grumbel.pingus:8
+#: data/levels/halloween/halloween3-grumbel.pingus:6
 msgid ""
 "You've mastered the last challenge and now face the next. Their path to "
 "salvation seems to be cursed, but by whom? There is no time to think about "
@@ -1319,11 +1267,11 @@ msgid ""
 "sacrifice might be the only option..."
 msgstr ""
 
-#: data/levels/halloween/halloween4-grumbel.pingus:7
+#: data/levels/halloween/halloween4-grumbel.pingus:5
 msgid "Full Circle"
 msgstr "一整圈"
 
-#: data/levels/halloween/halloween4-grumbel.pingus:8
+#: data/levels/halloween/halloween4-grumbel.pingus:6
 msgid ""
 "The exit is so close, yet out of reach. A step in the wrong direction and "
 "the Pingus will fall to a terrible fate. You must do something to help them, "
@@ -1333,11 +1281,11 @@ msgstr ""
 "出口很接近了，但還沒到達。做錯一個步驟就會陷入危險之中。時間不多但你必須救他"
 "們。你必須快點但不能出錯。Pingus需要依靠你！"
 
-#: data/levels/halloween/halloween5-grumbel.pingus:7
+#: data/levels/halloween/halloween5-grumbel.pingus:5
 msgid "Bridgers Nightmare"
 msgstr "造橋者之惡夢"
 
-#: data/levels/halloween/halloween5-grumbel.pingus:8
+#: data/levels/halloween/halloween5-grumbel.pingus:6
 msgid ""
 "Who placed this monstrous wall here?  This terrible blockade separates your "
 "Pingus from the exit. Destruction of its awful construction seems an "
@@ -1356,11 +1304,11 @@ msgstr ""
 "而再一次解決方法需要你…… 你的腦筋是使pingus成功的關鍵，所以不要讓你自己在迷宮"
 "裡困惑或被誤導……"
 
-#: data/levels/halloween/halloween6-grumbel.pingus:7
+#: data/levels/halloween/halloween6-grumbel.pingus:5
 msgid "Locked up by the witch"
 msgstr "被巫婆鎖定"
 
-#: data/levels/halloween/halloween6-grumbel.pingus:8
+#: data/levels/halloween/halloween6-grumbel.pingus:6
 msgid ""
 "Is this a prison? Blocked by solid walls all around, there doesn't seem to "
 "be a way to escape. Salvation seems impossible. But wait... the wall to the "
@@ -1376,11 +1324,11 @@ msgstr ""
 "\n"
 "這是一次危險的旅行，但是你一定要抓住它發現該如何再一次帶著他們全部到自由。"
 
-#: data/levels/halloween/halloween7-grumbel.pingus:7
+#: data/levels/halloween/halloween7-grumbel.pingus:5
 msgid "Splatterfest"
 msgstr "摔爛派對"
 
-#: data/levels/halloween/halloween7-grumbel.pingus:8
+#: data/levels/halloween/halloween7-grumbel.pingus:6
 msgid ""
 "This is by far the deepest pit the Pingus have yet encountered. Building a "
 "bridge across it seems obvious but that won't help since the exit is deep "
@@ -1390,11 +1338,11 @@ msgid ""
 "hidden?"
 msgstr ""
 
-#: data/levels/halloween/halloween8-plouj.pingus:7
+#: data/levels/halloween/halloween8-plouj.pingus:5
 msgid "Staircase Maintenance"
 msgstr "保持梯狀"
 
-#: data/levels/halloween/halloween8-plouj.pingus:8
+#: data/levels/halloween/halloween8-plouj.pingus:6
 msgid ""
 "It seems we are up again against a mighty wall, and it is blocking the exit! "
 "But wait, some good soul has built a staircase around it. It seems, however, "
@@ -1412,12 +1360,19 @@ msgstr ""
 "但是你的 Pingus 已經快自由了，它們也相信你的能力會讓牠們再次自由。你將會讓牠"
 "們從壞人手中再次自由……至少今年。"
 
-#: data/levels/desert/desert1-janne.pingus:5 data/levelsets/desert.levelset:3
-msgid "Desert"
+#: data/levels/desert/desert-crawl-timpany.pingus:5
+msgid "Crawl space"
+msgstr ""
+
+#: data/levels/desert/desert1-janne.pingus:5
+msgid "Down the valley and up again"
 msgstr ""
 
 #: data/levels/desert/desert1-janne.pingus:6
-msgid "Find your way through the obstacle"
+msgid ""
+"There is a large valley between the entrance and the exit. No bridge will be "
+"long enough to cross the valley, but can you find a way back up once you "
+"lead the Pingus down into the valley?"
 msgstr ""
 
 #: data/levels/desert/desert1.pingus:5
@@ -1426,8 +1381,8 @@ msgstr ""
 
 #: data/levels/desert/desert1.pingus:6
 msgid ""
-"After their long and dangerous journey through the desert they finally reach "
-"the large pyramid..."
+"After their long and dangerous journey through the desert the Pingus finally "
+"reach the large pyramid, but there is still a pedestal blocking their way."
 msgstr ""
 
 #: data/levels/desert/desert2.pingus:5
@@ -1471,14 +1426,6 @@ msgid ""
 "first?"
 msgstr ""
 
-#: data/levels/desert/desert5.pingus:5
-msgid "PLE Level"
-msgstr ""
-
-#: data/levels/desert/desert5.pingus:6
-msgid "This level has no name "
-msgstr ""
-
 #: data/levels/desert/desert5-tflavel.pingus:5
 msgid "Claustrophobia"
 msgstr ""
@@ -1487,6 +1434,17 @@ msgstr ""
 msgid ""
 "Hidden deep below the pyramid the pingus come across a small underground "
 "room, but unfortunatley a large tree root blocks their path..."
+msgstr ""
+
+#: data/levels/desert/desert5.pingus:5
+msgid "Catch them at the half way point"
+msgstr ""
+
+#: data/levels/desert/desert5.pingus:6
+msgid ""
+"The Pingus are separated from the exit by large abyss. A simple bridge won't "
+"be enough to catch them savely, unless of course you find the right place to "
+"put it. Can you uncover that spot?"
 msgstr ""
 
 #: data/levels/desert/desert6-grumbel.pingus:5
@@ -1517,10 +1475,6 @@ msgid ""
 "have to work together."
 msgstr ""
 
-#: data/levels/desert/desert-crawl-timpany.pingus:5
-msgid "Crawl space"
-msgstr ""
-
 #: data/levels/desert/desertwaste1-grumbel.pingus:5
 msgid "The Roof"
 msgstr ""
@@ -1528,28 +1482,21 @@ msgstr ""
 #: data/levels/desert/desertwaste1-grumbel.pingus:6
 msgid ""
 "Sometimes the roofs are not good for refuge, sometimes it should be "
-"demolished!"
+"demolished! But be careful if you aren't precise enough, you might lead the "
+"Pingus straight to certain death."
 msgstr ""
 
 #: data/levels/desert/indiana-yingwan.pingus:5
-msgid "Pingus Jones and (not really ;) the Last Exit"
+msgid "Pingus Jones and the Last Exit"
 msgstr ""
 
 #: data/levels/desert/indiana-yingwan.pingus:6
 msgid ""
-"Dr. Jones' notebook: (1) the breath of God: only the penitent pingus will "
-"pass; (2) the word of God... in reverse; (3) the path of God: leap from the "
-"head of something like a cat."
-msgstr ""
-
-#: data/levels/mysteryisland/cave1-marcotte.pingus:5
-msgid "Near can mean far"
-msgstr ""
-
-#: data/levels/mysteryisland/cave1-marcotte.pingus:6
-msgid ""
-"What do you do when you're going in the wrong direction ? Simple : walk into "
-"a wall. But it is easier said than done..."
+"Dr. Jones' notebook:\n"
+"\n"
+"  (1) the breath of God: only the penitent pingus will pass;\n"
+"  (2) the word of God... in reverse;\n"
+"  (3) the path of God: leap from the head of something like a cat."
 msgstr ""
 
 #: data/levels/mysteryisland/cave-lac.pingus:7
@@ -1560,6 +1507,16 @@ msgstr ""
 msgid ""
 "The penguins escaped the mad scientist, but now they were trapped deep "
 "underground. They had no food or water, so they had to move fast."
+msgstr ""
+
+#: data/levels/mysteryisland/cave1-marcotte.pingus:5
+msgid "Near can mean far"
+msgstr ""
+
+#: data/levels/mysteryisland/cave1-marcotte.pingus:6
+msgid ""
+"What do you do when you're going in the wrong direction ? Simple : walk into "
+"a wall. But it is easier said than done..."
 msgstr ""
 
 #: data/levels/mysteryisland/emperiment-lac.pingus:5
@@ -1693,10 +1650,12 @@ msgid ""
 "strange island."
 msgstr ""
 
+#: data/levels/alien/aliens1-grumbel.pingus:5
 #: data/levels/alien/aliens1-phil.pingus:7
 msgid "Escape from Aliens"
 msgstr ""
 
+#: data/levels/alien/aliens1-grumbel.pingus:6
 #: data/levels/alien/aliens1-phil.pingus:8
 msgid ""
 "Aliens invade our starship blocking intrance to the teleporter. Your crew is "
@@ -1757,19 +1716,11 @@ msgstr ""
 msgid "Cooperation in space."
 msgstr ""
 
-#: data/levels/alien/space2.pingus:5
-msgid "Lost in Space"
-msgstr ""
-
-#: data/levels/alien/space2.pingus:6
-msgid "We don't know where we are but we don't leave anybody behind."
-msgstr ""
-
-#: data/levels/alien/space-9-tom.pingus:7
+#: data/levels/alien/space-9-tom.pingus:5
 msgid "Outside In"
 msgstr ""
 
-#: data/levels/alien/space-9-tom.pingus:8
+#: data/levels/alien/space-9-tom.pingus:6
 msgid "Can you help the pingus escape without getting their flippers wet?"
 msgstr ""
 
@@ -1789,6 +1740,28 @@ msgstr ""
 
 #: data/levels/alien/space-tom1.pingus:8
 msgid "What good is a pick in space? Certainly not to go to the stars."
+msgstr ""
+
+#: data/levels/alien/space2.pingus:5
+msgid "Lost in Space"
+msgstr ""
+
+#: data/levels/alien/space2.pingus:6
+msgid "We don't know where we are but we don't leave anybody behind."
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign1.pingus:5
+msgid "Falling down"
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign1.pingus:6
+msgid ""
+"Pingus intelligence reported that a huge factories located in the "
+"subtropical zone might be a reason of a climate change. They decided to go "
+"there and shut down the factories. This will be a long and dangerous "
+"expedition. Pingus and you will have to face many diffuculties on your way. "
+"As the ice is melting, at first you have to build some bridges and watch out "
+"for the cliff."
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:5
@@ -1829,20 +1802,6 @@ msgstr ""
 msgid ""
 "Pingus are at home, but after the climate change living on the South Pole "
 "became more dangerous. There is one more mission for you."
-msgstr ""
-
-#: data/levels/factorycampaign/factory_campaign1.pingus:5
-msgid "Falling down"
-msgstr ""
-
-#: data/levels/factorycampaign/factory_campaign1.pingus:6
-msgid ""
-"Pingus intelligence reported that a huge factories located in the "
-"subtropical zone might be a reason of a climate change. They decided to go "
-"there and shut down the factories. This will be a long and dangerous "
-"expedition. Pingus and you will have to face many diffuculties on your way. "
-"As the ice is melting, at first you have to build some bridges and watch out "
-"for the cliff."
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign2.pingus:5
@@ -1932,15 +1891,11 @@ msgstr "新手教學島"
 msgid "Learn the basics"
 msgstr "學習基礎"
 
-#: data/worldmaps/tutorial.worldmap:15
+#: data/stories/tutorial_intro.story:2
 msgid "The Journey Begins"
 msgstr "開始旅程"
 
-#: data/worldmaps/tutorial.worldmap:81
-msgid "The Journey Continues"
-msgstr "繼續旅程"
-
-#: data/worldmaps/tutorial.worldmap:22
+#: data/stories/tutorial_intro.story:9
 msgid ""
 "For a long time, the Pingus have lived happily in peace on the South Pole "
 "along with all the other animals. Everything was in balance and it seemed "
@@ -1951,7 +1906,7 @@ msgstr ""
 "衡，而且看起來好像沒有東西可以破壞他們的和平。Pingus很快樂而這看起來並不會消"
 "失。"
 
-#: data/worldmaps/tutorial.worldmap:30
+#: data/stories/tutorial_intro.story:17
 msgid ""
 "But then one day, things began to change slowly: the sky got darker and the "
 "earth got warmer. Firstly, they thought this was just a normal fluctuation "
@@ -1961,7 +1916,7 @@ msgstr ""
 "但有一天，事情有了些微的改變： 天空開始變黑而地球開始暖化。 首先，他們認為這"
 "是正常的氣候變化，但事情看來一年比一年便的更糟。"
 
-#: data/worldmaps/tutorial.worldmap:38
+#: data/stories/tutorial_intro.story:25
 msgid ""
 "The snow began to melt away in a few areas and food became an issue. Other "
 "animals tried to leave the region to search for colder areas, but the Pingus "
@@ -1971,7 +1926,7 @@ msgstr ""
 "一些地區的雪開始融化，食物變成了問題。其他動物試著要離開去尋找更冷的地方，但"
 "Pingus知道這是沒有用的： 他們知道他們必須有所作為。"
 
-#: data/worldmaps/tutorial.worldmap:46
+#: data/stories/tutorial_intro.story:33
 msgid ""
 "So the circle of the eldest came together to decide what to do about it. "
 "They decided to send out an expedition around the world to find the cause of "
@@ -1981,7 +1936,7 @@ msgstr ""
 "所以長老團聚在一起決定要怎麼做。 他們決定派出一支遠征隊環繞世界去尋找出暖化的"
 "原因。 這支遠征隊是由幾百名最勇敢的南極Pingus所組成。"
 
-#: data/worldmaps/tutorial.worldmap:54
+#: data/stories/tutorial_intro.story:41
 msgid ""
 "And they picked you to lead them on their journey around the world. Since "
 "the journey will be dangerous and difficult, your first goal is the Island "
@@ -1993,7 +1948,7 @@ msgstr ""
 "一個目標是Mogorok島，也就是大家所知的新手島。根據長老團，這個島總是Pingus進入"
 "世界的第一站。"
 
-#: data/worldmaps/tutorial.worldmap:63
+#: data/stories/tutorial_intro.story:50
 msgid ""
 "The island consists of many areas that are ideal to teach the Pingus their "
 "abilities. The Pingus can learn to build bridges, climb, bash and use many "
@@ -2002,7 +1957,7 @@ msgstr ""
 "這個島可以理想地教導Pingus他們的能力。Pingus 能學習建立橋樑，攀登，猛攻並使用"
 "許多其它技巧，在他們又長又危險的旅途中一定會有用。"
 
-#: data/worldmaps/tutorial.worldmap:70
+#: data/stories/tutorial_intro.story:57
 msgid ""
 "While there, you can practice your abilities in commanding and guiding the "
 "Pingus. You can also get familiar with all the abilities the Pingus provide "
@@ -2012,13 +1967,20 @@ msgstr ""
 "在那裡的時候，你能練習你的能力在指揮和指導Pingus之下。 你也能熟悉所有Pingus "
 "提供的能力並學習征服他們，因為你將需要它們全部在你的環球之旅中。"
 
-#: data/worldmaps/tutorial.worldmap:78
+#: data/stories/tutorial_intro.story:65
+#, fuzzy
 msgid ""
 "Now that you and the Pingus have arrived at Tutorial Island it is time to "
-"take command and begin your mission. Good Luck!"
+"take command and begin your mission.\n"
+"\n"
+"Good Luck!"
 msgstr "既然你和Pingus已經到達教學島那也是該下指令開始任務了。祝好運！"
 
-#: data/worldmaps/tutorial.worldmap:88
+#: data/stories/tutorial_outro.story:2
+msgid "The Journey Continues"
+msgstr "繼續旅程"
+
+#: data/stories/tutorial_outro.story:9
 msgid ""
 "Now after you and the Pingus have learned the basics and practiced a bit it "
 "is time to move on and begin the journey into the world. Since the ice floe "
@@ -2030,7 +1992,7 @@ msgstr ""
 "學島 Pingus沒有去找到其他方法進入較溫暖的氣候，他們必須找到其他去引導他們的旅"
 "程。"
 
-#: data/worldmaps/tutorial.worldmap:97
+#: data/stories/tutorial_outro.story:18
 msgid ""
 "But as the eldest have said, the Tutorial Island provides not only a good "
 "way to practice, but it is also the starting point into the world. After "
@@ -2042,7 +2004,7 @@ msgstr ""
 "Pingus在發現這主要的意義之後，他們在島的最後發現了一棵大樹能夠提供木材可以建"
 "造浮子。"
 
-#: data/worldmaps/tutorial.worldmap:106
+#: data/stories/tutorial_outro.story:27
 msgid ""
 "So the Pingus set out and constructed some large rafts, enough to carry them "
 "all. After also packing a bunch of provisions they were prepared to start "
@@ -2052,20 +2014,19 @@ msgstr ""
 "所以他們開始建造一些大型救生艇足以攜帶他們全部。他們也在包裝食物之後他們準備"
 "開始他們的旅程，離開他們熟悉的地方並進入未知世界的部分。"
 
-#: data/worldmaps/tutorial.worldmap:114
+#: data/stories/tutorial_outro.story:35
+#, fuzzy
 msgid ""
 "So the Pingus sit on their raft, worrying about what's to come and where to "
-"go, while floating into the sunset.  To be continued..."
+"go, while floating into the sunset.\n"
+"\n"
+"To be continued..."
 msgstr ""
 "接著 Pingus坐在他們的救生艇上，煩惱關於將來和該往哪裡去，當太陽下山的時候。  "
 "待續...."
 
-#: data/levelsets/alien.levelset:3
-msgid "Alien by Josh Dye"
-msgstr ""
-
-#: data/levelsets/alien.levelset:4
-msgid "Escape from alien"
+#: data/levelsets/desert.levelset:3
+msgid "Desert"
 msgstr ""
 
 #: data/levelsets/desert.levelset:4
@@ -2088,13 +2049,109 @@ msgstr "2007年萬聖節"
 msgid "Trapped at All Hallows Eve"
 msgstr "被關在所有的萬聖節前夕"
 
-#: data/levelsets/mysteryisland.levelset:3
-msgid "Island of Mystery"
-msgstr ""
+#~ msgid "Abort"
+#~ msgstr "中止"
 
-#: data/levelsets/mysteryisland.levelset:4
-msgid "Marooned on an Uncharted Isle [by Lachlan McCubbin]"
-msgstr ""
+#~ msgid "-Idea"
+#~ msgstr "-計畫"
+
+#~ msgid "-Maintaining"
+#~ msgstr "-保養"
+
+#~ msgid "-Programming"
+#~ msgstr "-程式設計"
+
+#~ msgid "-Porting (Win32)"
+#~ msgstr "-移植（Win32 ）"
+
+#~ msgid "-Porting (MacOSX)"
+#~ msgstr "-移植（ MacOSX ）"
+
+#~ msgid "-Gfx"
+#~ msgstr "- Gfx"
+
+#~ msgid "-Music"
+#~ msgstr "-音樂"
+
+#~ msgid "-Level Design"
+#~ msgstr "-等极設計"
+
+#~ msgid "-Story"
+#~ msgstr "-故事"
+
+#~ msgid "-Translation"
+#~ msgstr "-翻譯"
+
+#~ msgid "-Special"
+#~ msgstr "-Special"
+
+#~ msgid "-Thanks to"
+#~ msgstr "-Thanks to"
+
+#~ msgid "_And a very Special Thanks"
+#~ msgstr "_And a very Special Thanks"
+
+#~ msgid "_to all the people who"
+#~ msgstr "_to all the people who"
+
+#~ msgid "_contribute to"
+#~ msgstr "_contribute to"
+
+#~ msgid "_Free Software!"
+#~ msgstr "_Free Software!"
+
+#~ msgid "_Thank you for"
+#~ msgstr "_Thank you for"
+
+#~ msgid "_playing!"
+#~ msgstr "_playing!"
+
+#~ msgid "Filename: "
+#~ msgstr "檔案名稱: "
+
+#~ msgid "Display:"
+#~ msgstr "顯示:"
+
+#~ msgid "Sound:"
+#~ msgstr "聲音:"
+
+#~ msgid "Shows the credits"
+#~ msgstr "顯示貢獻者"
+
+#~ msgid "PATH"
+#~ msgstr "路徑"
+
+#~ msgid "Set the path to load the data files to 'path'"
+#~ msgstr "設置加載資料檔案路徑至\"路徑\""
+
+#~ msgid ""
+#~ "Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
+#~ "speed up the game on slower machines"
+#~ msgstr ""
+#~ "閱讀設定從檔案(預設: ~/.pingus/config) 減少CPU使用,在速度較慢的電腦可使遊"
+#~ "戲加快"
+
+#~ msgid "Debugging and experimental stuff:"
+#~ msgstr "調試和實驗的東西："
+
+#~ msgid ""
+#~ "Enable the output of debugging info, possible OPTIONs are tiles, "
+#~ "gametime, actions, sound, resources, gui, input, pathmgr"
+#~ msgstr ""
+#~ "啟用調試資訊輸出，可用選項包含tiles, gametime, actions, sound, resources, "
+#~ "gui, input, pathmgr"
+
+#~ msgid "locked"
+#~ msgstr "鎖定"
+
+#~ msgid "Show Story?"
+#~ msgstr "顯示故事？"
+
+#~ msgid "Enter?"
+#~ msgstr "進入？"
+
+#~ msgid "...walking..."
+#~ msgstr "...步行..."
 
 #~ msgid "Ok"
 #~ msgstr "確定"
