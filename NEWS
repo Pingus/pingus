@@ -7,16 +7,19 @@ Pingus 0.7.4 (09/Oct/2011)
   are saved
 * menu getting confused by fast succedding clicks fixed
 * level-demo recording and playback are back (files not compatible between x86 and x86-64)
-* new input-demo recording and playback, that works across all the game 
 * window resize support throughout the whole game
 * dirty-rectangles drawing for improved performance with software rendering
 * OpenGL rendering
 * new blackboard graphic
 * Unicode support
-
-(* forest graphic set got started)
-(* a brand new X-Mas theme along with three new X-Mas levels)
-(* a brand new Easter theme along with four new Easter levels)
+* two new levelsets, "Desert" and "Factory Campaign"
+* added a man-page
+* deadly fall height has been increased
+* support for prefab objects and groups in the editor
+* cleaned up digger, miner and basher paths
+* added an option menu
+* lots of minor bug fixes
+* bitmap fonts have been generated with anti-aliasing
 
 
 Pingus 0.7.3 (18/Mar/2010)
