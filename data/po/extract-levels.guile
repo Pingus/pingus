@@ -4,18 +4,23 @@
 
 (use-modules (ice-9 regex))
 
+;; ---------------------------------------------------------------------
+
 (define level-pattern-list
   '((pingus-level head levelname)
     (pingus-level head description)))
 
-;; FIXME: add (pingus-worldmap (end_story intro_story)  pages page text) support
 (define worldmap-pattern-list
-  '((pingus-worldmap head (name description))
-    (pingus-worldmap (intro_story end_story) title)
-    (pingus-worldmap (intro_story end_story) pages page text)))
+  '((pingus-worldmap head (name description))))
+
+(define story-pattern-list
+  '((pingus-story title)
+    (pingus-story pages page text)))
 
 (define levelset-pattern-list
   '((pingus-levelset (title description))))
+
+;; ---------------------------------------------------------------------
 
 (define (escape-string str)
   (regexp-substitute/global #f "\n" 
@@ -71,12 +76,10 @@
                      (sexpr (list (read port))))
                 (for-each (lambda (pattern)
                             (grep-sexpr print-msg pattern sexpr 0))
-                          (cond ((string-suffix? ".worldmap" file)
-                                 worldmap-pattern-list)
-                                ((string-suffix? ".pingus" file)
-                                 level-pattern-list)
-                                ((string-suffix? ".levelset" file)
-                                 levelset-pattern-list)
+                          (cond ((string-suffix? ".worldmap" file)  worldmap-pattern-list)
+                                ((string-suffix? ".pingus" file)    level-pattern-list)
+                                ((string-suffix? ".levelset" file)  levelset-pattern-list)
+                                ((string-suffix? ".story" file)     story-pattern-list)
                                 (else
                                  (error "Unknown file suffix\n"))))
                 (close-port port)))

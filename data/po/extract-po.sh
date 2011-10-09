@@ -37,6 +37,10 @@ echo -n "Extracting strings from worldmaps... "
 data/po/extract-levels.guile data/worldmaps/tutorial.worldmap >> "${OUT}.tmp"
 echo "done"
 
+echo -n "Extracting strings from stories... "
+data/po/extract-levels.guile data/stories/*.story >> "${OUT}.tmp"
+echo "done"
+
 echo -n "Extracting strings from levelsets... "
 data/po/extract-levels.guile data/levelsets/*.levelset >> "${OUT}.tmp"
 echo "done"
