@@ -5,7 +5,7 @@
 \\$2 \(la\\$1\(ra\\$3
 ..
 .if \n(.g .mso www.tmac
-.TH "pingus " 6 "4 October 2011" 0.7.4 "User Commands"
+.TH "pingus " 6 "9 October 2011" 0.7.4 "User Commands"
 .SH NAME
 pingus
 \- A puzzle game where you have to save penguins 
@@ -26,49 +26,6 @@ guide a group of penguins from the entrance of a level to the
 exit, in between the path is blocked by numerous obstacles and
 dangers that the player has to overcome by assigning actions to
 the penguins.
-.SH ACTIONS
-.TP 
-Basher
-The Basher will to a horizontal dig, leaving behind it a
-tunnel. It is not able to dig through metal.
-.TP 
-Blocker
-The Blocker will stop and stay in position, directing
-other penguins to turn around when they reach him.
-.TP 
-Bomber
-The Bomber will blow up on the spot and take a bit of
-surrounding ground with it.
-.TP 
-Bridger
-The Bridger will build a small bridge, useful for crossing
-small chasm.
-.TP 
-Climber
-The Climber actions allows a Pingu to travel upwards a
-vertical wall. Unlike other actions the climber action is
-a permanent addition to the Pingus ability.
-.TP 
-Digger
-The Digger will dig a hole into the ground. It can't dig
-through metal.
-.TP 
-Floater
-The Floater action will give a penguin a small propeller
-that lets him gently glide down from great heights that
-would otherwise be deadly.
-.TP 
-Jumper
-The Jumper will let the Pingu do a big leap forward,
-allowing him to cross chasm and small vertical obstacles.
-.TP 
-Miner
-The Miner will dig a diagonal hole into the ground.
-.TP 
-Slider
-The Slider will make a tiny leap forward, gliding on its
-belly for a short while, allowing the Pingu to make it
-through narrow tunnels.
 .SH OPTIONS
 .SS "GENERAL OPTIONS"
 .TP 
@@ -202,6 +159,92 @@ Set the desired game framerate (frames per second)
 .TP 
 --tile-size=INT
 Set the size of the map tiles (default: 32)
+.SH "KEYBOARD SHORTCUTS"
+.SS GAMEPLAY
+All gameplay related keyboard shortcuts are configurable via a
+controller config file, see \*(T<\fB\-\-controller\fR\*(T>
+and \*(T<\fIcontroller/default.scm\fR\*(T>.
+.TP 
+Space
+Activate fast-forward mode.
+.TP 
+P
+Pause the game.
+.TP 
+A
+Activate armageddon.
+.TP 
+Escape
+Leave the current screen/level.
+.SS ENGINE
+.TP 
+F10
+Show/hide the FPS counter.
+.TP 
+AltReturn, F11
+Switch to fullscreen/window mode.
+.TP 
+Ctrlg
+Toggle mouse grab, when active, the mouse can not leave the window.
+.TP 
+Ctrlo, F5
+Show the option menu.
+.TP 
+F12
+Make a screenshot. Screenshots are stored
+in \*(T<\fI~/.pingus/screenshots/\fR\*(T>.
+.TP 
+Ctrlm
+Toggle the developer mode, see \*(T<\fB\-\-developer\-mode\fR\*(T>
+.TP 
+c (only in developer-mode)
+Show the collision map overlayed over the regular groundmap.
+.TP 
+k (only in developer-mode)
+Clear the screen for delta mode debugging.
+.SH ACTIONS
+.TP 
+Basher
+The Basher will to a horizontal dig, leaving behind it a
+tunnel. It is not able to dig through metal.
+.TP 
+Blocker
+The Blocker will stop and stay in position, directing
+other penguins to turn around when they reach him.
+.TP 
+Bomber
+The Bomber will blow up on the spot and take a bit of
+surrounding ground with it.
+.TP 
+Bridger
+The Bridger will build a small bridge, useful for crossing
+small chasm.
+.TP 
+Climber
+The Climber actions allows a Pingu to travel upwards a
+vertical wall. Unlike other actions the climber action is
+a permanent addition to the Pingus ability.
+.TP 
+Digger
+The Digger will dig a hole into the ground. It can't dig
+through metal.
+.TP 
+Floater
+The Floater action will give a penguin a small propeller
+that lets him gently glide down from great heights that
+would otherwise be deadly.
+.TP 
+Jumper
+The Jumper will let the Pingu do a big leap forward,
+allowing him to cross chasm and small vertical obstacles.
+.TP 
+Miner
+The Miner will dig a diagonal hole into the ground.
+.TP 
+Slider
+The Slider will make a tiny leap forward, gliding on its
+belly for a short while, allowing the Pingu to make it
+through narrow tunnels.
 .SH COPYRIGHT
 Copyright (C) 1998-2011 Ingo Ruhnke <\*(T<grumbel@gmail.com\*(T>>
 See the file AUTHORS for a complete list of contributors.

@@ -45,113 +45,6 @@
   </refsect1>
 
   <refsect1>
-    <title>Actions</title>
-    <variablelist>
-      <varlistentry>
-        <term>Basher</term>
-        <listitem>
-          <para>
-            The Basher will to a horizontal dig, leaving behind it a
-            tunnel. It is not able to dig through metal.
-          </para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>      
-        <term>Blocker</term>
-        <listitem>
-          <para>
-            The Blocker will stop and stay in position, directing
-            other penguins to turn around when they reach him.
-          </para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>Bomber</term>
-        <listitem>
-          <para>
-            The Bomber will blow up on the spot and take a bit of
-            surrounding ground with it.
-          </para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>Bridger</term>
-        <listitem>
-          <para>
-            The Bridger will build a small bridge, useful for crossing
-            small chasm.
-          </para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>Climber</term>
-        <listitem>
-          <para>
-            The Climber actions allows a Pingu to travel upwards a
-            vertical wall. Unlike other actions the climber action is
-            a permanent addition to the Pingus ability.
-          </para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>Digger</term>
-        <listitem>
-          <para>
-            The Digger will dig a hole into the ground. It can't dig
-            through metal.
-          </para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>Floater</term>
-        <listitem>
-          <para>
-            The Floater action will give a penguin a small propeller
-            that lets him gently glide down from great heights that
-            would otherwise be deadly.
-          </para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>Jumper</term>
-        <listitem>
-          <para>
-            The Jumper will let the Pingu do a big leap forward,
-            allowing him to cross chasm and small vertical obstacles.
-          </para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>Miner</term>
-        <listitem>
-          <para>
-            The Miner will dig a diagonal hole into the ground.
-          </para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>Slider</term>
-        <listitem>
-          <para>
-            The Slider will make a tiny leap forward, gliding on its
-            belly for a short while, allowing the Pingu to make it
-            through narrow tunnels.
-          </para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
-  </refsect1>
-
-  <refsect1>
     <title>Options</title>
     <refsect2>
       <title>General Options</title>
@@ -284,10 +177,10 @@
           <term>--no-auto-scrolling</term>
           <listitem>
             <para>Disable automatic scrolling. Automatic scrolling
-            will cause the screen to scroll whenever the mouse reaches
-            the border of the screen. Automatic scrolling will only be
-            active in fullscreen mode or when mouse-grab is
-            enabled.</para>
+              will cause the screen to scroll whenever the mouse reaches
+              the border of the screen. Automatic scrolling will only be
+              active in fullscreen mode or when mouse-grab is
+              enabled.</para>
           </listitem>
         </varlistentry>
 
@@ -379,10 +272,10 @@
           <term>-a, --addon=DIR</term>
           <listitem>
             <para>Load game modifications from DIR. Files in DIR will
-            be used instead of the files in found in the main datadir
-            of Pingus, thus allowing to modifications, such as sprites
-            replacements, additional levels, etc. to the game, without
-            changing the main data files.</para>
+              be used instead of the files in found in the main datadir
+              of Pingus, thus allowing to modifications, such as sprites
+              replacements, additional levels, etc. to the game, without
+              changing the main data files.</para>
           </listitem>
         </varlistentry>
 
@@ -441,6 +334,256 @@
         </varlistentry>
       </variablelist>
     </refsect2>
+  </refsect1>
+
+
+  <refsect1>
+    <title>Keyboard Shortcuts</title>
+    <refsect2>
+      <title>Gameplay</title>
+      <para>
+        All gameplay related keyboard shortcuts are configurable via a
+        controller config file, see <option>--controller</option>
+        and <filename>controller/default.scm</filename>.
+      </para>
+      <variablelist>
+        <varlistentry>
+          <term><keycombo><keycap>Space</keycap></keycombo></term>
+          <listitem>
+            <para>
+              Activate fast-forward mode.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycombo><keycap>P</keycap></keycombo></term>
+          <listitem>
+            <para>
+              Pause the game.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycombo><keycap>A</keycap></keycombo></term>
+          <listitem>
+            <para>
+              Activate armageddon.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycombo><keycap>Escape</keycap></keycombo></term>
+          <listitem>
+            <para>
+              Leave the current screen/level.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+    <refsect2>
+      <title>Engine</title>
+      <variablelist>
+        <varlistentry>
+          <term><keycombo><keycap>F10</keycap></keycombo></term>
+          <listitem>
+            <para>
+              Show/hide the FPS counter.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycombo><keycap>Alt</keycap> <keycap>Return</keycap></keycombo></term>
+          <term><keycombo><keycap>F11</keycap></keycombo></term>
+          <listitem>
+            <para>
+              Switch to fullscreen/window mode.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycombo><keycap>Ctrl</keycap> <keycap>g</keycap></keycombo></term>
+          <listitem>
+            <para>
+              Toggle mouse grab, when active, the mouse can not leave the window.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycombo><keycap>Ctrl</keycap> <keycap>o</keycap></keycombo></term>
+          <term><keycombo><keycap>F5</keycap></keycombo></term>
+          <listitem>
+            <para>
+              Show the option menu.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <!--
+           <varlistentry>
+             <term><keycombo><keycap>F6</keycap></keycombo></term>
+             <listitem>
+               <para>
+                 Show the AddOn Menu
+               </para>
+             </listitem>
+           </varlistentry>
+           -->
+
+        <varlistentry>
+          <term><keycombo><keycap>F12</keycap></keycombo></term>
+          <listitem>
+            <para>
+              Make a screenshot. Screenshots are stored
+              in <filename>~/.pingus/screenshots/</filename>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycombo><keycap>Ctrl</keycap> <keycap>m</keycap></keycombo></term>
+          <listitem>
+            <para>
+              Toggle the developer mode, see <option>--developer-mode</option>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycombo><keycap>c</keycap></keycombo> (only in developer-mode)</term>
+          <listitem>
+            <para>
+              Show the collision map overlayed over the regular groundmap.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycombo><keycap>k</keycap></keycombo> (only in developer-mode)</term>
+          <listitem>
+            <para>
+              Clear the screen for delta mode debugging.
+            </para>
+          </listitem>
+        </varlistentry>
+        
+      </variablelist>
+    </refsect2>
+  </refsect1>
+
+  <refsect1>
+    <title>Actions</title>
+    <variablelist>
+      <varlistentry>
+        <term>Basher</term>
+        <listitem>
+          <para>
+            The Basher will to a horizontal dig, leaving behind it a
+            tunnel. It is not able to dig through metal.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>      
+        <term>Blocker</term>
+        <listitem>
+          <para>
+            The Blocker will stop and stay in position, directing
+            other penguins to turn around when they reach him.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Bomber</term>
+        <listitem>
+          <para>
+            The Bomber will blow up on the spot and take a bit of
+            surrounding ground with it.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Bridger</term>
+        <listitem>
+          <para>
+            The Bridger will build a small bridge, useful for crossing
+            small chasm.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Climber</term>
+        <listitem>
+          <para>
+            The Climber actions allows a Pingu to travel upwards a
+            vertical wall. Unlike other actions the climber action is
+            a permanent addition to the Pingus ability.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Digger</term>
+        <listitem>
+          <para>
+            The Digger will dig a hole into the ground. It can't dig
+            through metal.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Floater</term>
+        <listitem>
+          <para>
+            The Floater action will give a penguin a small propeller
+            that lets him gently glide down from great heights that
+            would otherwise be deadly.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Jumper</term>
+        <listitem>
+          <para>
+            The Jumper will let the Pingu do a big leap forward,
+            allowing him to cross chasm and small vertical obstacles.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Miner</term>
+        <listitem>
+          <para>
+            The Miner will dig a diagonal hole into the ground.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Slider</term>
+        <listitem>
+          <para>
+            The Slider will make a tiny leap forward, gliding on its
+            belly for a short while, allowing the Pingu to make it
+            through narrow tunnels.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
   </refsect1>
 
   <refsect1>
