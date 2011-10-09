@@ -120,7 +120,7 @@ ConfigManager::set_fullscreen_resolution(const Size& size)
 Size
 ConfigManager::get_fullscreen_resolution()
 {
-  return Display::get_size();
+  return m_opts.fullscreen_resolution.get();
 }
 
 void
