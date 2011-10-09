@@ -1,5 +1,5 @@
-0.7.4 (??/Oct/2011)
-===================
+Pingus 0.7.4 (09/Oct/2011)
+==========================
 * fixed game not starting when no soundcard is present
 * all halloween and tutorial levels have been converted to a minimum
   size 1920x1200 so they can be played in fullscreen without letterboxing
@@ -19,13 +19,13 @@
 (* a brand new Easter theme along with four new Easter levels)
 
 
-0.7.3 (18/Mar/2010)
-===================
+Pingus 0.7.3 (18/Mar/2010)
+==========================
 * some minimal code changes to make it compilabe with modern compiler
 
 
-0.7.2 (31/Oct/2007)
-===================
+Pingus 0.7.2 (31/Oct/2007)
+==========================
 * added support for levelsets
 * added 8 new levels in the form of a halloween levelset
 * added window resize support to the editor (use --allow-resize)
@@ -36,8 +36,8 @@
 * numerous other small bug fixes
 
 
-0.7.1 (23/Sep/2007)
-===================
+Pingus 0.7.1 (23/Sep/2007)
+==========================
 * faster sprite drawing, so more overall fps
 * level editor rewritten from scratch
 * level loading from command line fixed
@@ -48,8 +48,8 @@
   default)
 
 
-0.7.0 (25/Aug/2007)
-===================
+Pingus 0.7.0 (25/Aug/2007)
+==========================
 * switch from ClanLib to SDL 
 * new anti-aliased fonts
 * better support for resolutions larger then 800x600 (see --geometry WxH option)
@@ -62,13 +62,13 @@
 * no new levels or other main features
 
 
-0.6.? (never released)
-======================
+Pingus 0.6.? (never released)
+=============================
 * ClanLib 0.8 support
 
 
-0.6.1 (??/Sep/2003, never released)
-===================================
+Pingus 0.6.1 (??/Sep/2003, never released)
+==========================================
 * scroll wheel support in the editor
 * file ending for level files changed from .xml to .plf
 * level preview render code
@@ -76,8 +76,8 @@
 * umlaut problems fixed
 
 
-0.6.0 (16/Apr/2003)
-===================
+Pingus 0.6.0 (16/Apr/2003)
+==========================
 * one island
 * 22 fully playable tutorial levels
 * story
@@ -88,7 +88,7 @@
 * configurable controller support
 
 
-Release (28/Jul/2001)
+Pingus (28/Jul/2001)
 =====================
 * Added basic multiplayer support
 * XML based level file format
@@ -104,7 +104,7 @@ Release (28/Jul/2001)
 * New objects (switches/doors, teleporter, etc.)
 
 
-Release 0.5.0pre1 (16/Jun/2001)
+Pingus 0.5.0pre1 (16/Jun/2001)
 ===============================
 * Added object grouping in the editor
 * Added multiple backgrounds (paralax scrolling)
@@ -117,7 +117,7 @@ Release 0.5.0pre1 (16/Jun/2001)
 * Added multiplayer support
 
 
-Release 0.4.0 (16/Jul/2000)
+Pingus 0.4.0 (16/Jul/2000)
 ===========================
 * Changed the config file syntax (see doc/config)
 * Changed default resolution to 800x600
@@ -147,7 +147,7 @@ Release 0.4.0 (16/Jul/2000)
 * Software mouse cursor support (disabled at default, buggy)
 
 
-Release 0.3.1 (17/Feb/2000)
+Pingus 0.3.1 (17/Feb/2000)
 ===========================
 * Updated Pingus to use ClanLib 0.3.x
 * ~/.pingus/options is renamed to ~/.pingus/config
@@ -167,7 +167,7 @@ Release 0.3.1 (17/Feb/2000)
 * the source should now be namespace clean
 
 
-Release 0.3.0 (24/Dec/1999)
+Pingus 0.3.0 (24/Dec/1999)
 ===========================
 * lots of compiler warnings are removed
 * a new (better looking) main menu
@@ -184,7 +184,7 @@ Release 0.3.0 (24/Dec/1999)
 * the Level selector is temporary removed
 
 
-Release 0.2.4 (07/Nov/1999)
+Pingus 0.2.4 (07/Nov/1999)
 ===========================
 * a laser trap
 * a guillotine trap
@@ -202,7 +202,7 @@ Release 0.2.4 (07/Nov/1999)
 * A new Armageddon button
 
 
-Release 0.2.3 (01/Oct/1999)
+Pingus 0.2.3 (01/Oct/1999)
 ==========================
 * Some new levels, some older ones removed
 * Some new groundpices
@@ -216,7 +216,7 @@ Release 0.2.3 (01/Oct/1999)
 * Misc fixes which cause throuble with gcc 2.95
 
 
-Release 0.2.2 (10/Sep/1999)
+Pingus 0.2.2 (10/Sep/1999)
 ===========================
 * Armageddon button requires now a double click
 * Fixed the Level Selector a bit (level preview is now available), use
@@ -235,7 +235,7 @@ Release 0.2.2 (10/Sep/1999)
 * Level can now have a time limit
 
 
-Release 0.2.1 (25/Aug/1999)
+Pingus 0.2.1 (25/Aug/1999)
 ===========================
 * Changed the directory layout a bit
 * Added --with-extra-include=DIR and --with-extra-libs=DIR to the
@@ -253,7 +253,7 @@ Release 0.2.1 (25/Aug/1999)
 * Change the look of the Level Selector
 
 
-Release 0.2.0 (11/Aug/1999)
+Pingus 0.2.0 (11/Aug/1999)
 ===========================
 * Added Result window, after finishing a level (not correct working)
 * Added fps printer is back again
@@ -280,6 +280,7 @@ Fixed some bugs in the particle system and added some funnier
 explosions. 
 
 10/Jul/1999
+-=-=-=-=-=-
 Merged PinguData and Pingu. Cleanup of PinguAction.hh. Some more
 internal changes. Seperated all pingu animation to a seperate
 datafile. Improved the buttons, only the active button is animated
@@ -287,36 +288,43 @@ now. ColMap's can now be loaded from a 256 color pcx. Rewrote the plf
 reader and changed the level format of pingus.
 
 07/Jul/1999
+-=-=-=-=-=-
 Moved all pingus images to data/images/pingus/.  Renamed SoundSpecs to
 PingusSound.  Added a man page. The level is now exited automatically
 if no more pingus are present.
 
 06/Jul/1999
+-=-=-=-=-=-
 Fixed a bug, which causes -d to segfault. Changed -d to -p. Added the
 posibility to record and play a demo, try -d ../data/demo/level1.dem.
 
 30/Jun/1999
+-=-=-=-=-=-
 Added a simple file selector for levels. Fixed zooming, the capture
 rectangle works now while zooming.
 Added some GUI components, the level can now be selected from a menu,
 on ESC a nice yes/no box pops up and F1 pressents a nice help screen.
 
 28/Jun/1999
+-=-=-=-=-=-
 Released LinuxTag Special Edition
 It includes three new levels (parsec, linuxtag and worldforge). Fixed
 the zooming and added primitive scrolling backgrounds.
 
 22/Jun/1999
+-=-=-=-=-=-
 Fixed some bugs in 'make install'. Added zoom support. Fixed the
 handling of music files. Added armageddon button, press 'a'.
 Added font support. Added a pingu info display. The bomber shows now a 
 nice count down.
 
-Release 0.0.16 binary - 07/Jun/1999
+
+Pingus 0.0.16 binary - 07/Jun/1999
 ===================================
 Added View class for easier split screening.
 
-Release 0.0.15 - 30/May/1999
+
+Pingus 0.0.15 - 30/May/1999
 ============================
 Added event/message handling code from PenguinPlay.
 `make install' puts pingus now in the correct places, `pingus' to
@@ -371,13 +379,15 @@ Included a time wrapper, presh space. Reimplemented the resource
 management. The objects are now inherit from GameObj. Some Sound
 support is now pressend, but read the data/sound/README first!
 
-Release 0.0.14 - 09/May/1999
-============================
-Included verbose switch, created two new levels to demonstrate the bmp 
-and the spot map.
 
-Release 0.0.13 - 25/Apr/1999
-============================
+Pingus 0.0.14 (09/May/1999)
+===========================
+Included verbose switch, created two new levels to demonstrate the bmp 
+and the spot map
+
+
+Pingus 0.0.13 (25/Apr/1999)
+===========================
 Included pause modus. Hotspot preferences are now read from a
 file. Animated hotspots are possible. Split screen playing is now
 possible, but not perfect (Try 's' while the game is running).
@@ -396,54 +406,67 @@ P133). Included digger action.
 -=-=-=-=-=-
 Put pingus under CVS control.
 
-Release 0.0.10 - 04/Apr/1999
-============================
+
+Pingus 0.0.10 (04/Apr/1999)
+===========================
 The Blocker is back again and this time it works (a bit
 more). Scrolling is improved, Exits and Entrances are now read from
 the level file. Hotspot (foreground/background) are now possible.
 
-Release 0.0.9 - 28/Mar/1999
-===========================
+
+Pingus 0.0.9 (28/Mar/1999)
+==========================
 Now uses getopt_long, instead of getopt. Bomber and Faller should be
 included. 
 
-Release 0.0.8 - 21/Mar/1999
-===========================
+
+Pingus 0.0.8 (21/Mar/1999)
+==========================
 Scrolling is now possible and the entrance and exits are ready. The
 Pingu class is completely rewritten now separated in PinguAction,
 PinguData and Pingu. Most action needs to be reimplemented.
 
-Release 0.0.7 - 14/Mar/1999
-===========================
+
+Pingus 0.0.7 (14/Mar/1999)
+==========================
 Included the gfx which I forgot in 0.0.6. The walker pingu is now
 included. It should compile fine which a ClanLib CVS snapshot
 
-Release 0.0.6 - 07/Mar/1999
-===========================
+
+Pingus 0.0.6 (07/Mar/1999)
+==========================
 More user interactions possible, more bugs and
 more trouble to get it compiled.
 
-Release 0.0.5 - 20/Feb/1999
-===========================
+
+Pingus 0.0.5 (20/Feb/1999)
+==========================
 Simple user interactions now possible. Some
 more command line options (try "pingus -?"). Resolution lowered to
 640x480 for faster display.
 
-Release 0.0.4 - 31/Jan/1999
-===========================
+
+Pingus 0.0.4 (31/Jan/1999)
+==========================
 Not much visible changed. Most changes are intern. The levels are now
 read from a file and command line arguments are accepted.
 
-Release 0.0.3 - 17/Jan/1999
-===========================
+
+Pingus 0.0.3 (17/Jan/1999)
+==========================
 Looks better than 0.0.2 and the drawing routines are more complete but
 it is now extremely slow.
 
-Release 0.0.2 - 03/Jan/1999
-===========================
+
+Pingus 0.0.2 (03/Jan/1999)
+==========================
 It compiles and run, but no user interaction and totally unfinished
 graphics.
 
-Release 0.0.1 - 06/Dec/1998
-===========================
+
+Pingus 0.0.1 (06/Dec/1998)
+==========================
 won't work or compile
+
+
+# EOF #
