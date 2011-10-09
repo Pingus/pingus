@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iostream>
 
 #include "math/color.hpp"
 #include "math/size.hpp"
