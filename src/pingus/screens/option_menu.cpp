@@ -105,45 +105,25 @@ OptionMenu::OptionMenu() :
   x_pos = 0;
   y_pos = 0;
 
-  int resolutions[][2] = {
-    { 640, 480 },   // 4:3, VGA
-    { 768, 576 },   // 4:3, PAL
-    { 800, 480 },   // Nokia N770, N800
-    { 800, 600 },   // 4:3, SVGA
-    { 1024, 768 },  // 4:3, XGA
-    { 1152, 864 },  // 4:3
-    { 1280, 720 },  // 16:9, HD-TV, 720p
-    { 1280, 960 },  // 4:3
-    { 1280, 1024 }, // 5:4
-    { 1366, 768 },  // ~16:9, Wide XGA
-    { 1440, 900, }, // 16:10
-    { 1600, 1200 }, // 4:3, UXGA
-    { 1680, 1050 }, // 16:10, WSXGA
-    { 1920, 1080 }, // 16:9, HD-TV, 1080p
-    { 1920, 1200 }, // 16:10
-    { -1, -1 }
-  };
-  int current_choice = -1;
-  int n;
-
   ChoiceBox* resolution_box = new ChoiceBox(Rect());
-  for (n = 0; resolutions[n][0] != -1; ++n)
   {
-    std::ostringstream ostr;
-    ostr << resolutions[n][0] << "x" << resolutions[n][1];
-    resolution_box->add_choice(ostr.str());
-    if (Display::get_width()  == resolutions[n][0] &&
-        Display::get_height() == resolutions[n][1])
+    std::vector<Size> resolutions = Display::get_fullscreen_video_modes();
+    Size fullscreen = config_manager.get_fullscreen_resolution();
+
+    resolution_box->set_current_choice(resolutions.size()-1);
+    for (auto it = resolutions.begin(); it != resolutions.end(); ++it)
     {
-      current_choice = n;
+      // add resolution to the box
+      std::ostringstream ostr;
+      ostr << it->width << "x" << it->height;
+      resolution_box->add_choice(ostr.str());
+
+      if (fullscreen == *it)
+      {
+        resolution_box->set_current_choice(it - resolutions.begin());
+      }
     }
   }
-  resolution_box->add_choice("Custom");
-  if (current_choice == -1)
-    current_choice = n;
-
-  resolution_box->set_current_choice(current_choice);
-
 
   ChoiceBox* renderer_box = new ChoiceBox(Rect());
   renderer_box->add_choice("delta");
@@ -468,13 +448,14 @@ OptionMenu::on_language_change(const std::string &str)
 void
 OptionMenu::on_resolution_change(const std::string& str)
 {
-  if (str != "Custom")
+  Size size_;
+  if (sscanf(str.c_str(), "%dx%d", &size_.width, &size_.height) != 2)
   {
-    Size size_;
-    if (sscanf(str.c_str(), "%dx%d", &size_.width, &size_.height) == 2)
-    {
-      config_manager.set_fullscreen_resolution(size_); 
-    }
+    log_error("failed to parse: " << str);
+  }
+  else
+  {
+    config_manager.set_fullscreen_resolution(size_); 
   }
 }
 
