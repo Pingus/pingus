@@ -48,6 +48,18 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
       }
       break;
 
+    case SDLK_TAB: // unlock mouse grab if Alt-Tab is pressed to allow the user to change windows
+      if (config_manager.get_mouse_grab())
+      {
+        if (keystate[SDLK_LALT] || keystate[SDLK_RALT])
+        {
+          // FIXME: should suspend the grab till the user clicks the
+          // window again, not completely disable it
+          config_manager.set_mouse_grab(false);
+        }
+      }
+      break;
+
     case SDLK_F11:
       config_manager.set_fullscreen(!config_manager.get_fullscreen());
       break;
