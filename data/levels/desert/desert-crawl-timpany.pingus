@@ -2,9 +2,9 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "Crawl space")
-    (description "")
-    (author "timpany@pingus.cx")
+    (levelname "Crawlspace")
+    (description "The path to the exit is blocked and many small tunnels lead the way, but be careful some of those lead to certain death. Or is there something you can do about that and create a save passage for all the Pingus and lead them savely to the exit?")
+    (author "Craig Timpany <craigtimpany@w3.to>")
     (number-of-pingus 40)
     (number-to-save 30)
     (time -1)
@@ -12,7 +12,7 @@
     (actions 
       (basher 10)
       (bridger 4)
-      (climber 2)
+      (climber 3)
       (digger 10)
       (miner 10))
     (levelsize 1920 1200))
@@ -201,12 +201,6 @@
         (image "groundpieces/solid/desert/bigbrickpiece")
         (modifier "ROT0"))
       (position 530 739 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/desert/bigbrickpiece")
-        (modifier "ROT0"))
-      (position 231 514 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -653,6 +647,42 @@
         (image "groundpieces/solid/desert/smallbrickpiece")
         (modifier "ROT90FLIP"))
       (position 1586 615 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0"))
+      (position 381 514 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/middlebrickpiece")
+        (modifier "ROT0"))
+      (position 231 589 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/middlebrickpiece")
+        (modifier "ROT0"))
+      (position 381 589 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/middlebrickpiece")
+        (modifier "ROT0"))
+      (position 231 514 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0"))
+      (position 456 551 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 381 552 0))
     (liquid 
       (surface 
         (image "liquids/slime")
