@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-10 00:32+0200\n"
-"PO-Revision-Date: 2011-07-09 19:30+0200\n"
+"POT-Creation-Date: 2011-10-10 17:49+0200\n"
+"PO-Revision-Date: 2011-10-10 00:38+0200\n"
 "Last-Translator: Helge Kreutzmann <debian@helgefjell.de>\n"
 "Language-Team: de <debian-l10n-german@lists.debian.org>\n"
 "Language: \n"
@@ -157,7 +157,7 @@ msgstr "Level speichern"
 #: src/editor/panel.cpp:171
 #, fuzzy
 msgid "New level"
-msgstr "     Neuer Level"
+msgstr "Neuer Level"
 
 #: src/editor/panel.cpp:173
 msgid "Open level..."
@@ -295,7 +295,7 @@ msgstr "besonderes Objekt"
 #: src/editor/object_selector.cpp:179
 #, fuzzy
 msgid "Prefab Object"
-msgstr "p - Prefab (Objektgruppe)"
+msgstr "Prefab Objekt"
 
 #: src/editor/message_box.cpp:37
 msgid "Replace"
@@ -412,7 +412,7 @@ msgstr ""
 #: src/editor/object_properties.cpp:220
 #, fuzzy
 msgid "Height:"
-msgstr "Rechts"
+msgstr "Höhe"
 
 #: src/editor/object_properties.cpp:521
 msgid "Object: [Group]"
@@ -429,7 +429,7 @@ msgstr "Objekt: "
 #: src/pingus/pingus_main.cpp:176
 #, fuzzy
 msgid "[OPTIONS]... [FILE]"
-msgstr "[OPTIONEN] ... [LEVEL-DATEI]"
+msgstr "[OPTIONEN] ... [DATEI]"
 
 #: src/pingus/pingus_main.cpp:177
 msgid ""
@@ -1441,7 +1441,15 @@ msgstr ""
 "zumindest für dieses Jahr."
 
 #: data/levels/desert/desert-crawl-timpany.pingus:5
-msgid "Crawl space"
+msgid "Crawlspace"
+msgstr ""
+
+#: data/levels/desert/desert-crawl-timpany.pingus:6
+msgid ""
+"The path to the exit is blocked and many small tunnels lead the way, but be "
+"careful some of those lead to certain death. Or is there something you can "
+"do about that and create a save passage for all the Pingus and lead them "
+"savely to the exit?"
 msgstr ""
 
 #: data/levels/desert/desert1-janne.pingus:5
@@ -1482,7 +1490,10 @@ msgid "Grand Hall"
 msgstr ""
 
 #: data/levels/desert/desert3-jings.pingus:6
-msgid "The pingus have found themselves in the grand hall."
+msgid ""
+"The pingus have found themselves in the grand hall, a hall full of wonder "
+"and treasures. The exit however is high up and won't be easy to reach. Guide "
+"the pingus around the hall and maybe you will find a way."
 msgstr ""
 
 #: data/levels/desert/desert3.pingus:5

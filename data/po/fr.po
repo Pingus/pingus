@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.7.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-10 00:32+0200\n"
+"POT-Creation-Date: 2011-10-10 17:49+0200\n"
 "PO-Revision-Date: 2011-09-18 18:50+0000\n"
 "Language-Team: Launchpad French Translators <lp-l10n-fr@lists.launchpad.net> "
 "Language: \n"
@@ -1434,7 +1434,15 @@ msgstr ""
 "dans ce cauchemar... du moins pour cette année."
 
 #: data/levels/desert/desert-crawl-timpany.pingus:5
-msgid "Crawl space"
+msgid "Crawlspace"
+msgstr ""
+
+#: data/levels/desert/desert-crawl-timpany.pingus:6
+msgid ""
+"The path to the exit is blocked and many small tunnels lead the way, but be "
+"careful some of those lead to certain death. Or is there something you can "
+"do about that and create a save passage for all the Pingus and lead them "
+"savely to the exit?"
 msgstr ""
 
 #: data/levels/desert/desert1-janne.pingus:5
@@ -1481,7 +1489,10 @@ msgid "Grand Hall"
 msgstr ""
 
 #: data/levels/desert/desert3-jings.pingus:6
-msgid "The pingus have found themselves in the grand hall."
+msgid ""
+"The pingus have found themselves in the grand hall, a hall full of wonder "
+"and treasures. The exit however is high up and won't be easy to reach. Guide "
+"the pingus around the hall and maybe you will find a way."
 msgstr ""
 
 #: data/levels/desert/desert3.pingus:5
