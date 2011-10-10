@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Grand Hall")
-    (description "The pingus have found themselves in the grand hall.")
+    (description "The pingus have found themselves in the grand hall, a hall full of wonder and treasures. The exit however is high up and won't be easy to reach. Guide the pingus around the hall and maybe you will find a way.")
     (author "Jings")
     (number-of-pingus 50)
     (number-to-save 50)
