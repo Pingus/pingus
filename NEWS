@@ -1,8 +1,8 @@
-Pingus 0.7.4 (09/Oct/2011)
+Pingus 0.7.4 (10/Oct/2011)
 ==========================
 * fixed game not starting when no soundcard is present
 * all halloween and tutorial levels have been converted to a minimum
-  size 1920x1200 so they can be played in fullscreen without letterboxing
+  size of 1920x1200 so they can be played in fullscreen without letterboxing
 * new --userdir command line switch to set the directory where savegames
   are saved
 * menu getting confused by fast succedding clicks fixed
@@ -12,7 +12,7 @@ Pingus 0.7.4 (09/Oct/2011)
 * OpenGL rendering
 * new blackboard graphic
 * Unicode support
-* two new levelsets, "Desert" and "Factory Campaign"
+* two new levelsets, "Desert" and "Factory Campaign", with 27 new levels
 * added a man-page
 * deadly fall height has been increased
 * support for prefab objects and groups in the editor
