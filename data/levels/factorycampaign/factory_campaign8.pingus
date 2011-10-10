@@ -8,7 +8,7 @@
     (number-of-pingus 20)
     (number-to-save 16)
     (time -1)
-    (music "02-Smoke and Mirrors.ogg")
+    (music "pingus-6.it")
     (actions 
       (blocker 4)
       (bomber 4)

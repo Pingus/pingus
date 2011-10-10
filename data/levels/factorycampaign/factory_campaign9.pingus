@@ -8,7 +8,7 @@
     (number-of-pingus 20)
     (number-to-save 20)
     (time 12000)
-    (music "06-Ozric Echo.ogg")
+    (music "pingus-4.it")
     (actions 
       (basher 3)
       (blocker 3)

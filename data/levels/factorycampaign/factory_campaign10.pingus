@@ -8,7 +8,7 @@
     (number-of-pingus 3)
     (number-to-save 3)
     (time -1)
-    (music "08-Big Country.ogg")
+    (music "pingus-3.it")
     (actions 
       (jumper 30))
     (levelsize 2200 1200))
