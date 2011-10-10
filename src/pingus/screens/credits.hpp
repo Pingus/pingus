@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_SCREENS_CREDITS_HPP
 #define HEADER_PINGUS_PINGUS_SCREENS_CREDITS_HPP
 
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -30,7 +31,7 @@ class Pathname;
 class Credits : public GUIScreen
 {
 private:
-  SceneContext* scene_context;
+  std::unique_ptr<SceneContext> scene_context;
 
   bool fast_scrolling;
   Sprite background;

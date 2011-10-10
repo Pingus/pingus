@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_SCENE_CONTEXT_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_SCENE_CONTEXT_HPP
 
+#include <memory>
+
 #include "engine/display/drawing_context.hpp"
 
 class SceneContextImpl;
@@ -75,7 +77,7 @@ public:
 
   void clear();
 private:
-  SceneContextImpl* impl;
+  std::unique_ptr<SceneContextImpl> impl;
 
   SceneContext (const SceneContext&);
   SceneContext& operator= (const SceneContext&);

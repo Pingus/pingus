@@ -74,7 +74,7 @@ Credits::Credits(const Pathname& filename) :
   offset(),
   credits()
 {
-  scene_context = new SceneContext();
+  scene_context.reset(new SceneContext);
   fast_scrolling = false;
   gui_manager->add(new CreditsOkButton(this));
 
@@ -131,7 +131,6 @@ Credits::Credits(const Pathname& filename) :
 Credits::~Credits ()
 {
   StatManager::instance()->set_bool("credits-seen", true);
-  delete scene_context;
 }
 
 void
@@ -197,7 +196,7 @@ Credits::draw_background (DrawingContext& gc)
         break;
     }
   }
-  gc.draw(new SceneContextDrawingRequest(scene_context, Vector2i(0,0), 100));
+  gc.draw(new SceneContextDrawingRequest(scene_context.get(), Vector2i(0,0), 100));
 }
 
 void

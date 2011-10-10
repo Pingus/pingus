@@ -66,12 +66,12 @@ Worldmap::Worldmap(const Pathname& filename) :
   }
 
   FileReader path_graph_reader = worldmap.get_graph();
-  path_graph = new PathGraph(this, path_graph_reader);
+  path_graph.reset(new PathGraph(this, path_graph_reader));
 
   default_node = path_graph->lookup_node(worldmap.get_default_node());
   final_node   = path_graph->lookup_node(worldmap.get_final_node());
 
-  pingus = new Pingus(path_graph);
+  pingus = new Pingus(path_graph.get());
   set_starting_node();
   add_drawable(pingus);
 
@@ -80,10 +80,10 @@ Worldmap::Worldmap(const Pathname& filename) :
 
 Worldmap::~Worldmap()
 {
-  for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
+  for (auto i = drawables.begin (); i != drawables.end (); ++i)
+  {
     delete (*i);
-  
-  delete path_graph;
+  }
 }
 
 void
@@ -283,7 +283,7 @@ void
 Worldmap::update_locked_nodes()
 {
   // FIXME: This shouldn't be a polling function
-  path_graph->graph.for_each_node(unlock_nodes(path_graph));
+  path_graph->graph.for_each_node(unlock_nodes(path_graph.get()));
 
 #if 0
   bool credits_unlocked = false;

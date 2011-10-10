@@ -85,7 +85,7 @@ public:
   void update(const Input::Event& event);
 
   /** Return the gui_manager */
-  GUI::GUIManager* get_gui_manager() const { return gui_manager; }
+  GUI::GUIManager* get_gui_manager() const { return gui_manager.get(); }
         
   /** Return the viewport */
   Viewport* get_viewport() const { return viewport; }

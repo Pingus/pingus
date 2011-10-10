@@ -21,15 +21,14 @@
 #include "pingus/globals.hpp"
 #include "util/log.hpp"
 
-GUIScreen::GUIScreen()
-  : Screen(Display::get_size()),
-    gui_manager(new GUI::GUIManager())
+GUIScreen::GUIScreen() :
+  Screen(Display::get_size()),
+  gui_manager(new GUI::GUIManager())
 {
 }
 
 GUIScreen::~GUIScreen ()
 {
-  delete gui_manager;
 }
 
 /** Draw this screen */

@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_ENGINE_SCREEN_GUI_SCREEN_HPP
 #define HEADER_PINGUS_ENGINE_SCREEN_GUI_SCREEN_HPP
 
+#include <memory>
+
 #include "engine/screen/screen.hpp"
 
 namespace GUI {
@@ -30,7 +32,7 @@ struct ButtonEvent;
 class GUIScreen : public Screen
 {
 protected:
-  GUI::GUIManager* gui_manager;
+  std::unique_ptr<GUI::GUIManager> gui_manager;
 
 public:
   GUIScreen ();

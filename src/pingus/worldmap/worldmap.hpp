@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDMAP_WORLDMAP_HPP
 #define HEADER_PINGUS_PINGUS_WORLDMAP_WORLDMAP_HPP
 
+#include <memory>
 #include <vector>
 
 #include "engine/display/graphic_context_state.hpp"
@@ -56,7 +57,7 @@ private:
   GraphicContextState gc_state;
 
   /** The graph that represents the path on the map */
-  PathGraph* path_graph;
+  std::unique_ptr<PathGraph> path_graph;
 
   /** A collection of drawable things, allocation and deallocation
       takes place elsewhere these are only references to other

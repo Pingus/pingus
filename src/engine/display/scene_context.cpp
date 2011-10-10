@@ -61,7 +61,6 @@ SceneContext::SceneContext(const Rect& rect) :
 
 SceneContext::~SceneContext()
 {
-  delete impl;
 }
 
 DrawingContext&
