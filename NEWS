@@ -1,3 +1,8 @@
+Pingus 0.7.5 (??/Oct/2011)
+==========================
+* fixed memory leak in OpenGL renderer
+
+
 Pingus 0.7.4 (10/Oct/2011)
 ==========================
 * fixed game not starting when no soundcard is present
