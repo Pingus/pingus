@@ -24,21 +24,24 @@
 class OpenGLFramebufferSurfaceImpl : public FramebufferSurfaceImpl
 {
 private:
-  GLuint handle;
-  Size   size;
-  Size   texture_size;
+  GLuint m_handle;
+  Size   m_size;
+  Size   m_texture_size;
 
 public:
   OpenGLFramebufferSurfaceImpl(SDL_Surface* src);
+  ~OpenGLFramebufferSurfaceImpl();
 
-  int get_width()  const { return size.width;  }
-  int get_height() const { return size.height; }
+  int get_width()  const { return m_size.width;  }
+  int get_height() const { return m_size.height; }
 
-  GLuint get_handle() const { return handle; }
-  Size get_texture_size() const { return texture_size; }
-  Size get_size() const { return size; }
+  GLuint get_handle() const { return m_handle; }
+  Size get_texture_size() const { return m_texture_size; }
+  Size get_size() const { return m_size; }
 
-  Surface to_surface() const;
+private:
+  OpenGLFramebufferSurfaceImpl(const OpenGLFramebufferSurfaceImpl&);
+  OpenGLFramebufferSurfaceImpl& operator=(const OpenGLFramebufferSurfaceImpl&);
 };
 
 #endif

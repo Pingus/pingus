@@ -31,23 +31,23 @@ inline int next_power_of_two(int val)
 } // namespace 
 
 OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src) :
-  handle(),
-  size(src->w, src->h),
-  texture_size()
+  m_handle(),
+  m_size(src->w, src->h),
+  m_texture_size()
 {
-  glGenTextures(1, &handle);
+  glGenTextures(1, &m_handle);
   
-  texture_size.width  = next_power_of_two(src->w);
-  texture_size.height = next_power_of_two(src->h);
+  m_texture_size.width  = next_power_of_two(src->w);
+  m_texture_size.height = next_power_of_two(src->h);
 
   //  Convert the src surface to a format usable for upload to OpenGL
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
   SDL_Surface* convert = SDL_CreateRGBSurface(SDL_SWSURFACE,
-                                              texture_size.width, texture_size.height, 32,
+                                              m_texture_size.width, m_texture_size.height, 32,
                                               0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff);
 #else
   SDL_Surface* convert = SDL_CreateRGBSurface(SDL_SWSURFACE,
-                                              texture_size.width, texture_size.height, 32,
+                                              m_texture_size.width, m_texture_size.height, 32,
                                               0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000);
 #endif
   SDL_SetAlpha(src, 0, 0);
@@ -61,7 +61,7 @@ OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src) :
   else
     assert(!"OpenGLFramebufferSurfaceImpl: Unsupported surface format");
 
-  glBindTexture(GL_TEXTURE_2D, handle);
+  glBindTexture(GL_TEXTURE_2D, m_handle);
   glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
   glPixelStorei(GL_UNPACK_ROW_LENGTH, convert->pitch/convert->format->BytesPerPixel);
@@ -71,8 +71,8 @@ OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src) :
 
   // Upload the surface to a texture
   SDL_LockSurface(convert);
-  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, texture_size.width, texture_size.height, 0
-               , sdl_format, GL_UNSIGNED_BYTE, convert->pixels);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_texture_size.width, m_texture_size.height, 0,
+               sdl_format, GL_UNSIGNED_BYTE, convert->pixels);
   SDL_UnlockSurface(convert);
    
   SDL_FreeSurface(convert);  
@@ -81,10 +81,9 @@ OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src) :
   glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-Surface
-OpenGLFramebufferSurfaceImpl::to_surface() const
+OpenGLFramebufferSurfaceImpl::~OpenGLFramebufferSurfaceImpl()
 {
-  return Surface();
+  glDeleteTextures(1, &m_handle);
 }
 
 /* EOF */
