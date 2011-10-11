@@ -21,7 +21,7 @@
 #include <string>
 #include <stdexcept>
 
-std::string log_pretty_print(const std::string& str);
+#include "util/log.hpp"
 
 #define raise_exception(type, expr) do {  \
   std::ostringstream b42465a70169; \
