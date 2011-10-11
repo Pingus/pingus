@@ -30,13 +30,13 @@ PingusLevel::PingusLevel() :
 }
 
 PingusLevel::PingusLevel(const Pathname& pathname) :
-  impl(new PingusLevelImpl())
+  impl(std::make_shared<PingusLevelImpl>())
 {
   load("", pathname);
 }
 
 PingusLevel::PingusLevel(const std::string& resname, const Pathname& pathname) :
-  impl(new PingusLevelImpl())
+  impl(std::make_shared<PingusLevelImpl>())
 {
   load(resname, pathname);
 }

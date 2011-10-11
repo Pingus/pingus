@@ -451,28 +451,28 @@ Pingu::create_action(ActionName::Enum action_)
 {
   switch(action_)
   {
-    case ActionName::ANGEL:     return std::shared_ptr<PinguAction>(new Angel(this));
-    case ActionName::BASHER:    return std::shared_ptr<PinguAction>(new Basher(this));
-    case ActionName::BLOCKER:   return std::shared_ptr<PinguAction>(new Blocker(this));
-    case ActionName::BOARDER:   return std::shared_ptr<PinguAction>(new Boarder(this));
-    case ActionName::BOMBER:    return std::shared_ptr<PinguAction>(new Bomber(this));
-    case ActionName::BRIDGER:   return std::shared_ptr<PinguAction>(new Bridger(this));
-    case ActionName::CLIMBER:   return std::shared_ptr<PinguAction>(new Climber(this));
-    case ActionName::DIGGER:    return std::shared_ptr<PinguAction>(new Digger(this));
-    case ActionName::DROWN:     return std::shared_ptr<PinguAction>(new Drown(this));
-    case ActionName::EXITER:    return std::shared_ptr<PinguAction>(new Exiter(this));
-    case ActionName::FALLER:    return std::shared_ptr<PinguAction>(new Faller(this));
-    case ActionName::FLOATER:   return std::shared_ptr<PinguAction>(new Floater(this));
-    case ActionName::JUMPER:    return std::shared_ptr<PinguAction>(new Jumper(this));
-    case ActionName::LASERKILL: return std::shared_ptr<PinguAction>(new LaserKill(this));
-    case ActionName::MINER:     return std::shared_ptr<PinguAction>(new Miner(this));
-    case ActionName::ROCKETLAUNCHER: return std::shared_ptr<PinguAction>(new RocketLauncher(this));
-    case ActionName::SLIDER:    return std::shared_ptr<PinguAction>(new Slider(this));
-    case ActionName::SMASHED:   return std::shared_ptr<PinguAction>(new Smashed(this));
-    case ActionName::SPLASHED:  return std::shared_ptr<PinguAction>(new Splashed(this));
-    case ActionName::SUPERMAN:  return std::shared_ptr<PinguAction>(new Superman(this));
-    case ActionName::WAITER:    return std::shared_ptr<PinguAction>(new Waiter(this));
-    case ActionName::WALKER:    return std::shared_ptr<PinguAction>(new Walker(this));
+    case ActionName::ANGEL:     return std::make_shared<Angel>(this);
+    case ActionName::BASHER:    return std::make_shared<Basher>(this);
+    case ActionName::BLOCKER:   return std::make_shared<Blocker>(this);
+    case ActionName::BOARDER:   return std::make_shared<Boarder>(this);
+    case ActionName::BOMBER:    return std::make_shared<Bomber>(this);
+    case ActionName::BRIDGER:   return std::make_shared<Bridger>(this);
+    case ActionName::CLIMBER:   return std::make_shared<Climber>(this);
+    case ActionName::DIGGER:    return std::make_shared<Digger>(this);
+    case ActionName::DROWN:     return std::make_shared<Drown>(this);
+    case ActionName::EXITER:    return std::make_shared<Exiter>(this);
+    case ActionName::FALLER:    return std::make_shared<Faller>(this);
+    case ActionName::FLOATER:   return std::make_shared<Floater>(this);
+    case ActionName::JUMPER:    return std::make_shared<Jumper>(this);
+    case ActionName::LASERKILL: return std::make_shared<LaserKill>(this);
+    case ActionName::MINER:     return std::make_shared<Miner>(this);
+    case ActionName::ROCKETLAUNCHER: return std::make_shared<RocketLauncher>(this);
+    case ActionName::SLIDER:    return std::make_shared<Slider>(this);
+    case ActionName::SMASHED:   return std::make_shared<Smashed>(this);
+    case ActionName::SPLASHED:  return std::make_shared<Splashed>(this);
+    case ActionName::SUPERMAN:  return std::make_shared<Superman>(this);
+    case ActionName::WAITER:    return std::make_shared<Waiter>(this);
+    case ActionName::WALKER:    return std::make_shared<Walker>(this);
     default: assert(!"Invalid action name provied");
   }
 }

@@ -102,7 +102,7 @@ ResourceManager::get_sprite_description_from_file(const std::string& resname)
   path = Pathname(filename, Pathname::DATA_PATH);
   if (path.exist())
   {
-    SpriteDescriptionPtr desc(new SpriteDescription);
+    SpriteDescriptionPtr desc = std::make_shared<SpriteDescription>();
     desc->filename = path;
     return desc;
   }
@@ -112,7 +112,7 @@ ResourceManager::get_sprite_description_from_file(const std::string& resname)
   path = Pathname(filename, Pathname::DATA_PATH);
   if (path.exist())
   {
-    SpriteDescriptionPtr desc(new SpriteDescription);
+    SpriteDescriptionPtr desc = std::make_shared<SpriteDescription>();
     desc->filename = path;
     return desc;
   }
