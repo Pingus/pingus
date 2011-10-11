@@ -26,7 +26,7 @@
 ResourceManager Resource::resmgr;
 
 void
-Resource::init(bool load_obsolete)
+Resource::init()
 {
   resmgr.add_resources_from_directory(Pathname("images", Pathname::DATA_PATH));
 }

@@ -309,11 +309,12 @@ ScreenManager::instance()
 }
 
 void
-ScreenManager::push_screen (Screen* screen)
+ScreenManager::push_screen(Screen* screen)
 { 
   screens.push_back(ScreenPtr(screen));
   screen->on_startup();
 }
+
 void
 ScreenManager::pop_screen()
 {
@@ -334,7 +335,7 @@ ScreenManager::pop_all_screens()
 }
 
 void
-ScreenManager::replace_screen (Screen* screen)
+ScreenManager::replace_screen(Screen* screen)
 {
   screens.back() = ScreenPtr(screen);
 
