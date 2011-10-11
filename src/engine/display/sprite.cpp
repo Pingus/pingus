@@ -32,13 +32,13 @@ Sprite::Sprite(const std::string& name) :
   SpriteDescription* desc = Resource::load_sprite_desc(name);
   if (desc)
   {
-    impl = std::shared_ptr<SpriteImpl>(new SpriteImpl(*desc));
+    impl = std::make_shared<SpriteImpl>(*desc);
   }
   else
   {
     SpriteDescription desc_;
     desc_.filename = Pathname("images/core/misc/404.png", Pathname::DATA_PATH);
-    impl = std::shared_ptr<SpriteImpl>(new SpriteImpl(desc_));
+    impl = std::make_shared<SpriteImpl>(desc_);
   }
 }
 
@@ -48,23 +48,23 @@ Sprite::Sprite(const ResDescriptor& res_desc) :
   SpriteDescription* desc = Resource::load_sprite_desc(res_desc.res_name);
   if (desc)
   {
-    impl = std::shared_ptr<SpriteImpl>(new SpriteImpl(*desc, res_desc.modifier));
+    impl = std::make_shared<SpriteImpl>(*desc, res_desc.modifier);
   }
   else
   {
     SpriteDescription desc_;
     desc_.filename = Pathname("images/core/misc/404.png", Pathname::DATA_PATH);
-    impl = std::shared_ptr<SpriteImpl>(new SpriteImpl(desc_));
-  } 
+    impl = std::make_shared<SpriteImpl>(desc_);
+  }
 }
 
-Sprite::Sprite(const Surface& surface)
-  : impl(new SpriteImpl(surface))
+Sprite::Sprite(const Surface& surface) :
+  impl(std::make_shared<SpriteImpl>(surface))
 {  
 }
 
-Sprite::Sprite(const SpriteDescription& desc, ResourceModifier::Enum mod)
-  : impl(new SpriteImpl(desc, mod))
+Sprite::Sprite(const SpriteDescription& desc, ResourceModifier::Enum mod) :
+  impl(std::make_shared<SpriteImpl>(desc, mod))
 {
 }
 
