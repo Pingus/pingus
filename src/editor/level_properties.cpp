@@ -49,33 +49,33 @@ LevelProperties::LevelProperties(EditorScreen* editor_, const Rect& rect_) :
   height(),
   music()
 {
-  add(new Label   (Rect(Vector2i( 10,  10), Size( 80, 20)), "Author:"));
-  add(author = new Inputbox);
+  create<Label>(Rect(Vector2i( 10,  10), Size( 80, 20)), "Author:");
+  author = create<Inputbox>();
 
-  add(new Label   (Rect(Vector2i( 10,  32), Size( 80, 20)), "Levelname:"));
-  add(levelname = new Inputbox);
+  create<Label>(Rect(Vector2i( 10,  32), Size( 80, 20)), "Levelname:");
+  levelname = create<Inputbox>();
 
-  add(new Label   (Rect(Vector2i( 10,  54), Size( 80, 20)), "Description:"));
-  add(description = new Inputbox);
+  create<Label>(Rect(Vector2i( 10,  54), Size( 80, 20)), "Description:");
+  description = create<Inputbox>();
 
   int y = 116;
-  add(new Label   (Rect(Vector2i( 10,  y), Size( 80, 20)), "Pingus Count:"));
-  add(number_of_pingus = new Inputbox);
+  create<Label>(Rect(Vector2i( 10,  y), Size( 80, 20)), "Pingus Count:");
+  number_of_pingus = create<Inputbox>();
 
-  add(new Label   (Rect(Vector2i( 10,  y+22), Size( 80, 20)), "Pingus to Save:"));
-  add(number_to_save = new Inputbox);
+  create<Label>(Rect(Vector2i( 10,  y+22), Size( 80, 20)), "Pingus to Save:");
+  number_to_save = create<Inputbox>();
 
-  add(new Label   (Rect(Vector2i( 10,  y+44), Size( 80, 20)), "Time:"));
-  add(time = new Inputbox);
+  create<Label>(Rect(Vector2i( 10,  y+44), Size( 80, 20)), "Time:");
+  time = create<Inputbox>();
 
-  add(new Label   (Rect(Vector2i( 10,  y+66), Size( 80, 20)), "Width:"));
-  add(width = new Inputbox);
+  create<Label>(Rect(Vector2i( 10,  y+66), Size( 80, 20)), "Width:");
+  width = create<Inputbox>();
 
-  add(new Label   (Rect(Vector2i( 10,  y+88), Size( 80, 20)), "Height:"));
-  add(height = new Inputbox);
+  create<Label>(Rect(Vector2i( 10,  y+88), Size( 80, 20)), "Height:");
+  height = create<Inputbox>();
 
-  add(new Label   (Rect(Vector2i( 10, y+110), Size( 80, 20)), "Music:"));
-  add(music = new Inputbox);
+  create<Label>(Rect(Vector2i( 10, y+110), Size( 80, 20)), "Music:");
+  music = create<Inputbox>();
 
   author->on_change.connect(std::bind(&LevelProperties::on_author_change, this, std::placeholders::_1));
   levelname->on_change.connect(std::bind(&LevelProperties::on_levelname_change, this, std::placeholders::_1));

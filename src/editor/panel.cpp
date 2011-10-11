@@ -252,25 +252,22 @@ Panel::update (float delta)
 void
 Panel::add_button(const std::string& image, const std::string& tooltip, Callback callback_)
 {
-  PanelButton* comp = new PanelButton(editor, pos, image, tooltip, callback_);
+  PanelButton* comp = editor->get_gui_manager()->create<PanelButton>(editor, pos, image, tooltip, callback_);
   pos.x += comp->get_width();
-  editor->get_gui_manager()->add(comp);
 }
 
 void
 Panel::add_toggle_button(const std::string& image)
 {
-  PanelButton* comp = new PanelButton(editor, pos, image, "");
+  PanelButton* comp = editor->get_gui_manager()->create<PanelButton>(editor, pos, image, "");
   pos.x += comp->get_width();
-  editor->get_gui_manager()->add(comp);
 }
 
 void
 Panel::add_separator()
 {
-  PanelSeparator* comp = new PanelSeparator(pos);
+  PanelSeparator* comp = editor->get_gui_manager()->create<PanelSeparator>(pos);
   pos.x += comp->get_width();
-  editor->get_gui_manager()->add(comp);
 }
 
 } // namespace Editor

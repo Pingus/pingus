@@ -144,8 +144,8 @@ ObjectSelector::ObjectSelector(EditorScreen* editor_, const Rect& rect_) :
   worldobj_set(),
   prefab_set()
 {
-  add(object_list = new ObjectSelectorList(editor, this, 
-                                           Rect(2, 2 + 60 + 2, rect.get_width() - 2, rect.get_height() - 2)));
+  object_list = create<ObjectSelectorList>(editor, this, 
+                                           Rect(2, 2 + 60 + 2, rect.get_width() - 2, rect.get_height() - 2));
 
   gp_ground_set  = create_gp_ground();
   gp_solid_set   = create_gp_solid();
@@ -194,10 +194,10 @@ ObjectSelector::add_button(const std::string& image, const std::string& tooltip,
                            ObjectSelectorSet* set)
 {
   ObjectSelectorButton* button;
-  add(button = new ObjectSelectorButton(object_list,
+  button = create<ObjectSelectorButton>(object_list,
                                         Vector2i(2 + button_pos.x * 30,  
                                                  2 + button_pos.y * 30),
-                                        image, tooltip));
+                                        image, tooltip);
   button->on_click.connect(std::bind(&ObjectSelectorList::set_objects, object_list, set));
 
   button_pos.x += 1;

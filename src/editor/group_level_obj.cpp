@@ -30,7 +30,7 @@ GroupLevelObj::from_prefab(const std::string& name)
   {
     PrefabFile prefab = PrefabFile::from_resource(name);
 
-    std::shared_ptr<GroupLevelObj> group(new GroupLevelObj);
+    std::shared_ptr<GroupLevelObj> group = std::make_shared<GroupLevelObj>();
 
     group->m_name = name;
     for(auto it = prefab.get_objects().begin(); it != prefab.get_objects().end(); ++it)
@@ -264,7 +264,7 @@ GroupLevelObj::set_repeat(const int repeat)
 LevelObjPtr
 GroupLevelObj::duplicate(const Vector2i& offset) const
 {
-  std::shared_ptr<GroupLevelObj> group(new GroupLevelObj);
+  std::shared_ptr<GroupLevelObj> group = std::make_shared<GroupLevelObj>();
 
   group->m_name = m_name;
   group->m_pos = m_pos + offset;

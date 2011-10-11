@@ -67,50 +67,42 @@ EditorScreen::EditorScreen() :
   minimap = new Minimap(this, Rect());
   gui_manager->add(minimap);
 
-  object_properties = new ObjectProperties(this, Rect(Vector2i(), Size(200, 150)));
-  gui_manager->add(object_properties);
+  object_properties = gui_manager->create<ObjectProperties>(this, Rect(Vector2i(), Size(200, 150)));
 
-  action_properties = new ActionProperties(this, Rect());
+  action_properties = gui_manager->create<ActionProperties>(this, Rect());
   action_properties->hide();
-  gui_manager->add(action_properties);
 
-  level_properties = new LevelProperties(this, Rect());
+  level_properties = gui_manager->create<LevelProperties>(this, Rect());
   level_properties->hide();
   level_properties->set_level(plf.get());
   action_properties->set_level(plf.get());
-  gui_manager->add(level_properties);
 
-  object_selector = new ObjectSelector(this, Rect());
-  gui_manager->add(object_selector);
+  object_selector = gui_manager->create<ObjectSelector>(this, Rect());
 
-  file_load_dialog = new FileDialog(this, Rect(Vector2i(50, 50), 
-                                               Size(size.width  - 100, 
-                                                    size.height - 100)), 
-                                    FileDialog::LOAD);
+  file_load_dialog = gui_manager->create<FileDialog>(this, Rect(Vector2i(50, 50), 
+                                                                Size(size.width  - 100, 
+                                                                     size.height - 100)), 
+                                                     FileDialog::LOAD);
   file_load_dialog->set_directory(".");
   file_load_dialog->hide();
-  gui_manager->add(file_load_dialog);
 
-  file_save_dialog = new FileDialog(this, Rect(Vector2i(50, 50), 
-                                               Size(Display::get_width() - 100, 
-                                                    Display::get_height() - 100)), 
-                                    FileDialog::SAVE);
+  file_save_dialog = gui_manager->create<FileDialog>(this, Rect(Vector2i(50, 50), 
+                                                                Size(Display::get_width() - 100, 
+                                                                     Display::get_height() - 100)), 
+                                                     FileDialog::SAVE);
   file_save_dialog->set_directory(".");
   file_save_dialog->hide();
-  gui_manager->add(file_save_dialog);
 
   {
     Size msg_size(600, 160);
-    std::unique_ptr<MessageBox> msgbox(new MessageBox(Rect(Vector2i((Display::get_width() - msg_size.width)/2,
-                                                                                (Display::get_height() - msg_size.height)/2), 
-                                                                       msg_size)));
-  
-    msgbox->set_title("Create new level");
-    msgbox->set_text("Replace current level with an empty new one?");
-    msgbox->set_ok_text("Replace");
-    msgbox->on_ok.connect(std::bind(&EditorScreen::level_new_without_confirm, this));
 
-    gui_manager->add(m_level_new_msgbox = msgbox.release());
+    m_level_new_msgbox = gui_manager->create<MessageBox>(Rect(Vector2i((Display::get_width() - msg_size.width)/2,
+                                                                       (Display::get_height() - msg_size.height)/2), 
+                                                              msg_size));
+    m_level_new_msgbox->set_title("Create new level");
+    m_level_new_msgbox->set_text("Replace current level with an empty new one?");
+    m_level_new_msgbox->set_ok_text("Replace");
+    m_level_new_msgbox->on_ok.connect(std::bind(&EditorScreen::level_new_without_confirm, this));
 
     m_level_new_msgbox->hide();
   }

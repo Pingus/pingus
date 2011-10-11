@@ -69,15 +69,12 @@ void
 ActionProperties::add_action(ActionName::Enum id)
 {
   ActionComponent comp;
-  comp.checkbox = new Checkbox(Rect(Vector2i(10,10 + y_pos), Size(80,20)), ActionName::to_screenname(id));
-  comp.inputbox = new Inputbox(Rect(Vector2i(100,10 + y_pos), Size(40,20)));
+  comp.checkbox = create<Checkbox>(Rect(Vector2i(10,10 + y_pos), Size(80,20)), ActionName::to_screenname(id));
+  comp.inputbox = create<Inputbox>(Rect(Vector2i(100,10 + y_pos), Size(40,20)));
 
   comp.checkbox->set_checked(true);
   comp.inputbox->set_text("20");
- 
-  add(comp.checkbox);
-  add(comp.inputbox);
-  
+   
   action_comps[id] = comp;
 
   comp.checkbox->on_change.connect(std::bind(&ActionProperties::on_checkbox_change, this, std::placeholders::_1, id));

@@ -502,7 +502,7 @@ GenericLevelObj::get_rect() const
 LevelObjPtr
 GenericLevelObj::duplicate(const Vector2i& offset) const
 {
-  std::shared_ptr<GenericLevelObj> obj(new GenericLevelObj(*this));
+  std::shared_ptr<GenericLevelObj> obj = std::make_shared<GenericLevelObj>(*this);
   obj->pos.x += static_cast<float>(offset.x);
   obj->pos.y += static_cast<float>(offset.y);
   return obj;

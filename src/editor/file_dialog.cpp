@@ -41,30 +41,29 @@ FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect_, Mode mode_) :
   pathname_inputbox(),
   filename_inputbox()
 {
-  file_list = new FileList(Rect(4, 30 + 30 + 30,
-                                rect.get_width()-4 - 30, rect.get_height() - 4 - 35));
-  add(file_list);
+  file_list = create<FileList>(Rect(4, 30 + 30 + 30,
+                                    rect.get_width()-4 - 30, rect.get_height() - 4 - 35));
 
   file_list->on_click.connect(std::bind(&FileDialog::load_file, this, std::placeholders::_1));
 
   Rect file_rect = file_list->get_rect();
-  up_button = new Button(Rect(file_rect.right + 2, file_rect.top,
+  up_button = create<Button>(Rect(file_rect.right + 2, file_rect.top,
                               rect.get_width()-4, file_rect.top + file_rect.get_height()/2 - 1),
                          "/\\\n|");
-  down_button = new Button(Rect(file_rect.right + 2, file_rect.top + file_rect.get_height()/2 + 1,
+  down_button = create<Button>(Rect(file_rect.right + 2, file_rect.top + file_rect.get_height()/2 + 1,
                                 rect.get_width()-4, file_rect.bottom),
                            "|\n\\/");
 
-  datadir_button = new Button(Rect(Vector2i(4, rect.get_height() - 4 - 30),
-                                   Size(100, 30)), _("Datadir"));
-  userdir_button = new Button(Rect(Vector2i(4 + 110, rect.get_height() - 4 - 30),
-                                   Size(100, 30)), _("Userdir"));
+  datadir_button = create<Button>(Rect(Vector2i(4, rect.get_height() - 4 - 30),
+                                       Size(100, 30)), _("Datadir"));
+  userdir_button = create<Button>(Rect(Vector2i(4 + 110, rect.get_height() - 4 - 30),
+                                       Size(100, 30)), _("Userdir"));
   
-  open_button = new Button(Rect(Vector2i(rect.get_width() - 104, rect.get_height() - 4 - 30),
-                                Size(100, 30)), mode == LOAD ? _("Open") : _("Save"));
+  open_button = create<Button>(Rect(Vector2i(rect.get_width() - 104, rect.get_height() - 4 - 30),
+                                    Size(100, 30)), mode == LOAD ? _("Open") : _("Save"));
   
-  cancel_button = new Button(Rect(Vector2i(rect.get_width() - 104 - 104, rect.get_height() - 4 - 30),
-                                  Size(100, 30)), _("Cancel"));
+  cancel_button = create<Button>(Rect(Vector2i(rect.get_width() - 104 - 104, rect.get_height() - 4 - 30),
+                                      Size(100, 30)), _("Cancel"));
   
   up_button->on_click.connect(std::bind(&FileDialog::on_up, this));
   down_button->on_click.connect(std::bind(&FileDialog::on_down, this));
@@ -75,23 +74,14 @@ FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect_, Mode mode_) :
   open_button->on_click.connect(std::bind(&FileDialog::on_open, this));
   cancel_button->on_click.connect(std::bind(&FileDialog::on_cancel, this));
 
-  add(filename_label = new Label(Rect(6, 4+30, 4 + 60, 26+30), _("Filename:")));
-  add(pathname_label = new Label(Rect(6, 4+60, 4 + 60, 26+60), _("Pathname:")));
+  filename_label = create<Label>(Rect(6, 4+30, 4 + 60, 26+30), _("Filename:"));
+  pathname_label = create<Label>(Rect(6, 4+60, 4 + 60, 26+60), _("Pathname:"));
   
-  add(filename_inputbox = new Inputbox(Rect(4 + 60, 4+30, rect.get_width()-4, 26+30)));
-  add(pathname_inputbox = new Inputbox(Rect(4 + 60, 4+60, rect.get_width()-4, 26+60)));
+  filename_inputbox = create<Inputbox>(Rect(4 + 60, 4+30, rect.get_width()-4, 26+30));
+  pathname_inputbox = create<Inputbox>(Rect(4 + 60, 4+60, rect.get_width()-4, 26+60));
   
   filename_inputbox->on_enter.connect(std::bind(&FileDialog::on_filename_enter, this));
   pathname_inputbox->on_change.connect(std::bind(&FileDialog::on_pathname_change, this));
-
-  add(up_button);
-  add(down_button);
-
-  add(datadir_button);
-  add(userdir_button);
-
-  add(open_button);
-  add(cancel_button);
 }
 
 FileDialog::~FileDialog()

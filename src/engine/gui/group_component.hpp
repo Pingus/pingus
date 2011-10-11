@@ -70,6 +70,14 @@ public:
   /** \a comp will be deleted by GroupComponent */
   void add(Component* comp);
 
+  template<typename C, typename ...Args>
+  C* create(Args&&... args)
+  {
+    C* c = new C(std::forward<Args>(args)...);
+    add(c);
+    return c;
+  }
+
   void update_layout();
 
   bool is_at(int x, int y);
