@@ -20,8 +20,8 @@
 #include <string>
 #include <vector>
 
-#include <SDL/SDL_keyboard.h>
-#include <SDL/SDL_events.h>
+#include <SDL_keyboard.h>
+#include <SDL_events.h>
 
 namespace Input {
 

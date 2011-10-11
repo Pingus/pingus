@@ -46,6 +46,7 @@
 #include "util/log.hpp"
 #include "util/pathname.hpp"
 #include "util/raise_exception.hpp"
+#include "util/string_util.hpp"
 
 std::string System::userdir;
 std::string System::default_email;
@@ -661,7 +662,7 @@ System::write_file(const std::string& filename, const std::string& content)
 
 #ifdef WIN32
   // FIXME: not save
-  std::ofstream out(pathname);
+  std::ofstream out(filename);
   out.write(content.data(), content.size());
 #else
   // build the filename: "/home/foo/outfile.pngXXXXXX"

@@ -1,0 +1,5 @@
+CacheDir('cache')
+
+SConscript('SConscript.win32', variant_dir='build-win32', duplicate=0)
+
+# EOF #

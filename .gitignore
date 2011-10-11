@@ -2,6 +2,7 @@
 /.sconsign.dblite
 /cache
 /build
+/build-win32
 /config.log
 *~
 *.o

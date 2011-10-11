@@ -17,6 +17,7 @@
 #include "pingus/server.hpp"
 
 #include <fstream>
+#include <time.h>
 
 #include "pingus/goal_manager.hpp"
 #include "pingus/pingu.hpp"
