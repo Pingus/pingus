@@ -11,6 +11,8 @@ Release Checklist:
 
 - remove log_tmp()
 
+- check that 'extra' and 'test' build
+
 Make a release:
 
 VERSION="$(cat VERSION)"
@@ -29,18 +31,14 @@ Stuff to do at all times:
 - grep for all the FIXME's and '#if 0' and find those that might be
   important, add what you find to this TODO
 
-Broken
-======
+Roadmap for 0.7.5
+=================
 
-* check that all options work from command line and from config file
+* halloween levels (5min)
 
-* ConfigManager should dump its configuration back down into an Options objects
+* add option for demo recording to option menu
 
-* English not present in language selection in OptionMenu
-
-* WorldMap story sequences should be died to special Dot objects
-
-
+
 Editor
 ======
 
