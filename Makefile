@@ -39,7 +39,7 @@ install-exec: build/pingus
 	install -d "$(DESTDIR)$(BINDIR)"
 
 	install -D build/pingus "$(DESTDIR)$(BINDIR)/pingus.bin"
-	echo "#!/bin/sh\nexec \"$(BINDIR)/pingus.bin\" --datadir \"$(DATADIR)\"" > "$(DESTDIR)$(BINDIR)/pingus"
+	echo -e "#!/bin/sh\nexec \"$(BINDIR)/pingus.bin\" --datadir \"$(DATADIR)\"" > "$(DESTDIR)$(BINDIR)/pingus"
 	chmod 755 "$(DESTDIR)$(BINDIR)/pingus"
 
 install-data:
