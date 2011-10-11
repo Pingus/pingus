@@ -412,7 +412,7 @@ public:
     {
       if (levelset->get_level(current_level)->accessible)
       {
-        ScreenManager::instance()->push_screen(new StartScreen(levelset->get_level(current_level)->plf));
+        ScreenManager::instance()->push_screen(std::make_shared<StartScreen>(levelset->get_level(current_level)->plf));
       }
     }
   }

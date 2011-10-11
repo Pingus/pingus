@@ -34,7 +34,7 @@
 #include "pingus/world.hpp"
 #include "util/log.hpp"
 
-GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_screen) :
+GameSession::GameSession(const PingusLevel& arg_plf, bool arg_show_result_screen) :
   plf(arg_plf),
   show_result_screen(arg_show_result_screen),
   server(),
@@ -92,7 +92,7 @@ GameSession::GameSession (const PingusLevel& arg_plf, bool arg_show_result_scree
   gui_manager->add(pause_button);
 }
 
-GameSession::~GameSession ()
+GameSession::~GameSession()
 {
 }
 
@@ -124,7 +124,7 @@ GameSession::update_server(float delta)
     }
 
     if (show_result_screen)
-      ScreenManager::instance()->replace_screen(new ResultScreen(result));
+      ScreenManager::instance()->replace_screen(std::make_shared<ResultScreen>(result));
     else
       ScreenManager::instance()->pop_screen();
 

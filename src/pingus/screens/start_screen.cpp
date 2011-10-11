@@ -236,8 +236,7 @@ StartScreen::on_escape_press()
 void
 StartScreen::start_game()
 {
-  GameSession* game_session = new GameSession(plf, true);
-  ScreenManager::instance()->replace_screen(game_session);
+  ScreenManager::instance()->replace_screen(std::make_shared<GameSession>(plf, true));
 }
 
 void

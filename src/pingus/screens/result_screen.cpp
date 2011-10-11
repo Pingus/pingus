@@ -287,7 +287,7 @@ ResultScreen::on_startup()
 void
 ResultScreen::retry_level()
 {
-  ScreenManager::instance()->replace_screen(new GameSession (result.plf, true));
+  ScreenManager::instance()->replace_screen(std::make_shared<GameSession>(result.plf, true));
 }
 
 void

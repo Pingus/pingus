@@ -525,7 +525,7 @@ PingusMain::start_game ()
 
   if (cmd_options.editor.is_set() && cmd_options.editor.get())
   { // Editor
-    Editor::EditorScreen* editor = new Editor::EditorScreen();
+    std::shared_ptr<Editor::EditorScreen> editor = std::make_shared<Editor::EditorScreen>();
     // optionally load a map in the editor if it was given
     if (cmd_options.rest.is_set())
       editor->load(Pathname(cmd_options.rest.get(), Pathname::SYSTEM_PATH));
@@ -537,42 +537,42 @@ PingusMain::start_game ()
     if (StringUtil::has_suffix(cmd_options.rest.get(), ".pingus-demo"))
     { // Demo file
       screen_manager.push_screen
-        (new DemoSession(Pathname(cmd_options.rest.get(), Pathname::SYSTEM_PATH)));
+        (std::make_shared<DemoSession>(Pathname(cmd_options.rest.get(), Pathname::SYSTEM_PATH)));
     }
     else if (StringUtil::has_suffix(cmd_options.rest.get(), ".font"))
     {
       Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
-      screen_manager.push_screen(new FontTestScreen(filename)); 
+      screen_manager.push_screen(std::make_shared<FontTestScreen>(filename)); 
     }
     else if (StringUtil::has_suffix(cmd_options.rest.get(), ".credits"))
     {
       Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
-      screen_manager.push_screen(new Credits(filename)); 
+      screen_manager.push_screen(std::make_shared<Credits>(filename)); 
     }
     else if (StringUtil::has_suffix(cmd_options.rest.get(), ".worldmap"))
     {
       Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
 
-      std::unique_ptr<WorldmapNS::WorldmapScreen> worldmap_screen(new WorldmapNS::WorldmapScreen());
+      std::shared_ptr<WorldmapNS::WorldmapScreen> worldmap_screen = std::make_shared<WorldmapNS::WorldmapScreen>();
       worldmap_screen->load(filename);
-      ScreenManager::instance()->push_screen(worldmap_screen.release());
+      ScreenManager::instance()->push_screen(worldmap_screen);
     }
     else if (StringUtil::has_suffix(cmd_options.rest.get(), ".story"))
     {
-      screen_manager.push_screen(new StoryScreen(FileReader::parse(Pathname(cmd_options.rest.get(),
-                                                                            Pathname::SYSTEM_PATH))));
+      screen_manager.push_screen(std::make_shared<StoryScreen>(FileReader::parse(Pathname(cmd_options.rest.get(),
+                                                                                          Pathname::SYSTEM_PATH))));
     }
     else
     { // Level file
       screen_manager.push_screen
-        (new StartScreen(PLFResMgr::load_plf_from_filename(Pathname(cmd_options.rest.get(),
-                                                                    Pathname::SYSTEM_PATH))));
+        (std::make_shared<StartScreen>(PLFResMgr::load_plf_from_filename(Pathname(cmd_options.rest.get(),
+                                                                                  Pathname::SYSTEM_PATH))));
     }
   }
   else // start a normal game
   {
     log_info("starting normal game");
-    screen_manager.push_screen(new PingusMenu());
+    screen_manager.push_screen(std::make_shared<PingusMenu>());
     log_info("done: starting normal game");
   }
 

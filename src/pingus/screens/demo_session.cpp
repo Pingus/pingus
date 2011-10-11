@@ -259,7 +259,7 @@ DemoSession::on_scroller_move(float x, float y)
 void
 DemoSession::restart()
 {
-  ScreenManager::instance()->replace_screen(new DemoSession(pathname));
+  ScreenManager::instance()->replace_screen(std::make_shared<DemoSession>(pathname));
 }
 
 void

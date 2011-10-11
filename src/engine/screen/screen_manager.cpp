@@ -309,9 +309,9 @@ ScreenManager::instance()
 }
 
 void
-ScreenManager::push_screen(Screen* screen)
+ScreenManager::push_screen(ScreenPtr screen)
 { 
-  screens.push_back(ScreenPtr(screen));
+  screens.push_back(screen);
   screen->on_startup();
 }
 
@@ -335,15 +335,16 @@ ScreenManager::pop_all_screens()
 }
 
 void
-ScreenManager::replace_screen(Screen* screen)
+ScreenManager::replace_screen(ScreenPtr screen)
 {
-  screens.back() = ScreenPtr(screen);
+  screens.back() = screen;
 
   if (screens.back()->get_size() != Display::get_size())
+  {
     screens.back()->resize(Display::get_size());
+  }
 
   screens.back()->on_startup();
-
 }
 
 void

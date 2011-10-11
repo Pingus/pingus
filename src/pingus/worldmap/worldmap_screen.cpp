@@ -202,13 +202,13 @@ WorldmapScreen::get_trans_rect() const
 void
 WorldmapScreen::show_intro_story()
 {
-  ScreenManager::instance()->push_screen(new StoryScreen(worldmap->get_worldmap().get_intro_story()));
+  ScreenManager::instance()->push_screen(std::make_shared<StoryScreen>(worldmap->get_worldmap().get_intro_story()));
 }
 
 void
 WorldmapScreen::show_end_story()
 {
-  ScreenManager::instance()->push_screen(new StoryScreen(worldmap->get_worldmap().get_end_story()));
+  ScreenManager::instance()->push_screen(std::make_shared<StoryScreen>(worldmap->get_worldmap().get_end_story()));
 }
 
 void

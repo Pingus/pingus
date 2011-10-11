@@ -269,7 +269,7 @@ StoryScreenComponent::next_text()
       if (m_credits)
       {
         ScreenManager::instance()->replace_screen
-          (new Credits(Pathname("credits/pingus.credits", Pathname::DATA_PATH)));
+          (std::make_shared<Credits>(Pathname("credits/pingus.credits", Pathname::DATA_PATH)));
       }
       else
       {

@@ -70,7 +70,7 @@ StoryDot::on_click()
   try 
   {
     FileReader reader = FileReader::parse(Pathname(m_story, Pathname::DATA_PATH));
-    ScreenManager::instance()->push_screen(new StoryScreen(reader, m_credits));
+    ScreenManager::instance()->push_screen(std::make_shared<StoryScreen>(reader, m_credits));
   }
   catch(const std::exception& err)
   {

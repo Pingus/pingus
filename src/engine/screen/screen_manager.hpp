@@ -75,10 +75,10 @@ public:
   void update(float delta, const std::vector<Input::Event>& events);
 
   /** Replace the current screen */
-  void replace_screen(Screen*);
+  void replace_screen(ScreenPtr screen);
 
   /** Add a screen on top of another screen */
-  void push_screen(Screen*);
+  void push_screen(ScreenPtr screen);
 
   /** Remove the current screen and fall back to the last one */
   void pop_screen();

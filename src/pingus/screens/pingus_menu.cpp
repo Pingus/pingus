@@ -96,7 +96,8 @@ PingusMenu::~PingusMenu()
 void
 PingusMenu::show_credits()
 {
-  ScreenManager::instance()->push_screen(new Credits(Pathname("credits/pingus.credits", Pathname::DATA_PATH)));
+  ScreenManager::instance()
+    ->push_screen(std::make_shared<Credits>(Pathname("credits/pingus.credits", Pathname::DATA_PATH)));
 }
 
 void
@@ -110,16 +111,16 @@ PingusMenu::do_start(const std::string &filename)
 { // Start the story or worldmap mode
   Sound::PingusSound::play_sound ("letsgo");
   
-  std::unique_ptr<WorldmapNS::WorldmapScreen> worldmap_screen(new WorldmapNS::WorldmapScreen());
+  std::shared_ptr<WorldmapNS::WorldmapScreen> worldmap_screen = std::make_shared<WorldmapNS::WorldmapScreen>();
   worldmap_screen->load(Pathname(filename, Pathname::DATA_PATH));
-  ScreenManager::instance()->push_screen(worldmap_screen.release());
+  ScreenManager::instance()->push_screen(worldmap_screen);
 
   bool story_seen = false;
   StatManager::instance()->get_bool("tutorial-startstory-seen", story_seen); // FIXME: Hardcoding tutorial is evil
   if (!story_seen)
   {
     FileReader reader = FileReader::parse(Pathname("stories/tutorial_intro.story", Pathname::DATA_PATH));
-    ScreenManager::instance()->push_screen(new StoryScreen(reader));
+    ScreenManager::instance()->push_screen(std::make_shared<StoryScreen>(reader));
     StatManager::instance()->set_bool("tutorial-startstory-seen", true);
   }
 }
@@ -128,13 +129,13 @@ void PingusMenu::do_contrib(const std::string &levelfile)
 { // Launch the specified level - don't bother checking for it, it has to exist
   Sound::PingusSound::play_sound ("letsgo");
   ScreenManager::instance()->push_screen
-    (new StartScreen(PLFResMgr::load_plf_from_filename(Pathname(levelfile, Pathname::SYSTEM_PATH))));
+    (std::make_shared<StartScreen>(PLFResMgr::load_plf_from_filename(Pathname(levelfile, Pathname::SYSTEM_PATH))));
 }
 
 void PingusMenu::do_edit()
 {       // Launch the level editor
   Sound::PingusSound::stop_music();
-  ScreenManager::instance()->push_screen (new Editor::EditorScreen());
+  ScreenManager::instance()->push_screen(std::make_shared<Editor::EditorScreen>());
 }
 
 void
@@ -194,11 +195,11 @@ PingusMenu::on_click(MenuButton* button)
   }
   else if (button == contrib_button)
   {
-    ScreenManager::instance()->push_screen(new LevelMenu);
+    ScreenManager::instance()->push_screen(std::make_shared<LevelMenu>());
   }
   else if (button == options_button)
   {
-    ScreenManager::instance()->push_screen(new OptionMenu);
+    ScreenManager::instance()->push_screen(std::make_shared<OptionMenu>());
   }
 }
 

@@ -373,7 +373,7 @@ EditorScreen::level_play()
   Pathname tmp(System::get_userdir() + "backup/editortmpfile.pingus", Pathname::SYSTEM_PATH);
   plf->save_level(tmp.get_sys_path());
   PingusLevel level(tmp);
-  ScreenManager::instance()->push_screen(new GameSession(level, false));
+  ScreenManager::instance()->push_screen(std::make_shared<GameSession>(level, false));
 }
 
 void
