@@ -28,23 +28,27 @@ class SurfaceImpl
 public:
   SDL_Surface* surface;
 
-  SurfaceImpl()
-    : surface(0)
-  {}
+  SurfaceImpl() : 
+    surface()
+  {
+  }
 
   SurfaceImpl(SDL_Surface* surface_) :
     surface(surface_)
-  {}
+  {
+  }
   
   ~SurfaceImpl() 
   {
     if (surface)
+    {
       SDL_FreeSurface(surface);
+    }
   }
 
 private:
   SurfaceImpl(const SurfaceImpl&);
-  SurfaceImpl & operator=(const SurfaceImpl&);
+  SurfaceImpl& operator=(const SurfaceImpl&);
 };
 
 Surface::Surface() :
@@ -282,8 +286,7 @@ Surface::mod(ResourceModifier::Enum modifier)
 Surface
 Surface::scale(int w, int h)
 {
-  return Surface(std::shared_ptr<SurfaceImpl>
-                 (new SurfaceImpl(Blitter::scale_surface(impl->surface, w, h))));
+  return Surface(std::make_shared<SurfaceImpl>(Blitter::scale_surface(impl->surface, w, h)));
 }
 
 Surface
