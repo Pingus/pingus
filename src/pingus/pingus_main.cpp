@@ -476,6 +476,7 @@ PingusMain::print_greeting_message()
     std::cout.put('=');
   std::cout << std::endl;
 
+  std::cout << "userdir:                 " << System::get_userdir() << std::endl;
   std::cout << "datadir:                 " << g_path_manager.get_path() << std::endl;
   std::cout << "language:                " 
             << dictionary_manager.get_language().get_name()
@@ -487,12 +488,12 @@ PingusMain::print_greeting_message()
   if (globals::sound_enabled)
     std::cout << "sound support:           enabled" << std::endl;
   else
-    std::cout << "sound support:          disabled" << std::endl;
+    std::cout << "sound support:           disabled" << std::endl;
 
   if (globals::music_enabled)
     std::cout << "music support:           enabled" << std::endl;
   else
-    std::cout << "music support:          disabled" << std::endl;
+    std::cout << "music support:           disabled" << std::endl;
 
   // FIXME: std::cout << "resolution:              " 
   // FIXME: << config_manager.get_resolution().width << "x"
