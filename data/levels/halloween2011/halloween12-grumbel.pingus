@@ -5,21 +5,20 @@
     (levelname "")
     (description "")
     (author "")
-    (number-of-pingus 50)
+    (number-of-pingus 40)
     (number-to-save 20)
     (time -1)
     (music "")
     (actions 
-      (basher 20)
-      (blocker 20)
-      (bomber 20)
-      (bridger 20)
-      (climber 20)
-      (digger 20)
-      (floater 20)
-      (jumper 20)
-      (miner 20)
-      (slider 20))
+      (basher 5)
+      (blocker 5)
+      (bomber 15)
+      (bridger 4)
+      (climber 40)
+      (digger 5)
+      (floater 5)
+      (jumper 80)
+      (miner 5))
     (levelsize 3000 1600))
   (objects 
     (surface-background 
@@ -37,16 +36,9 @@
       (para-y 0.5))
     (hotspot 
       (surface 
-        (image "hotspots/halloween/sign-right")
-        (modifier "ROT0"))
-      (position 1398 1189 -100)
-      (speed 0)
-      (parallax 0))
-    (hotspot 
-      (surface 
         (image "hotspots/halloween/sign-up")
         (modifier "ROT0"))
-      (position 2460 1196 -100)
+      (position 2442 1192 -100)
       (speed 0)
       (parallax 0))
     (hotspot 
@@ -67,28 +59,40 @@
       (surface 
         (image "hotspots/halloween/sign-right")
         (modifier "ROT0"))
-      (position 1899 1204 -100)
+      (position 818 1199 -100)
       (speed 0)
       (parallax 0))
     (hotspot 
       (surface 
         (image "hotspots/halloween/sign-right")
         (modifier "ROT0"))
-      (position 818 1199 -100)
+      (position 1840 1202 -100)
       (speed 0)
       (parallax 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/halloween/tree1")
+        (image "groundpieces/ground/halloween/ground2")
         (modifier "ROT0"))
-      (position 2042 743 0))
+      (position 2477 1245 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/halloween/tree3")
+        (image "groundpieces/ground/halloween/ground4")
         (modifier "ROT0"))
-      (position 959 1126 0))
+      (position 970 1185 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground4")
+        (modifier "ROT0FLIP"))
+      (position 922 1187 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/tree1")
+        (modifier "ROT180FLIP"))
+      (position 1584 476 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -101,36 +105,6 @@
         (image "groundpieces/ground/halloween/ground2")
         (modifier "ROT180FLIP"))
       (position 2426 413 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground5")
-        (modifier "ROT0"))
-      (position 1438 1294 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground5")
-        (modifier "ROT0"))
-      (position 1436 1407 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground5")
-        (modifier "ROT0"))
-      (position 1344 1407 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground5")
-        (modifier "ROT0"))
-      (position 1346 1294 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground1")
-        (modifier "ROT0"))
-      (position 1318 1486 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -207,7 +181,7 @@
       (name "prefabs/entrances/halloween")
       (position 676 1069 0)
       (overrides 
-        (release-rate 50)
+        (release-rate 250)
         (direction "right")
         (owner-id 0)))
     (groundpiece 
@@ -384,32 +358,30 @@
         (image "groundpieces/ground/halloween/ground2")
         (modifier "ROT0"))
       (position 2024 853 0))
-    (group 
-      (objects 
-        (groundpiece 
-          (type "ground")
-          (surface 
-            (image "groundpieces/ground/halloween/ground2")
-            (modifier "ROT0"))
-          (position 2216 1245 0))
-        (groundpiece 
-          (type "ground")
-          (surface 
-            (image "groundpieces/ground/halloween/ground2")
-            (modifier "ROT0"))
-          (position 2381 1245 0))
-        (groundpiece 
-          (type "ground")
-          (surface 
-            (image "groundpieces/ground/halloween/ground6")
-            (modifier "ROT0"))
-          (position 2343 1245 0))
-        (groundpiece 
-          (type "ground")
-          (surface 
-            (image "groundpieces/ground/halloween/ground6")
-            (modifier "ROT0FLIP"))
-          (position 2277 1245 0))))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground2")
+        (modifier "ROT0"))
+      (position 2216 1245 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground2")
+        (modifier "ROT0"))
+      (position 2381 1245 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground6")
+        (modifier "ROT0"))
+      (position 2307 1244 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground6")
+        (modifier "ROT0FLIP"))
+      (position 2229 1253 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -421,19 +393,19 @@
       (surface 
         (image "groundpieces/ground/halloween/ground1")
         (modifier "ROT0"))
-      (position 2435 1468 0))
+      (position 2422 1481 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/ground6")
         (modifier "ROT0FLIP"))
-      (position 2346 1299 0))
+      (position 2336 1313 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/ground5")
         (modifier "ROT0"))
-      (position 2448 1395 0))
+      (position 2372 1381 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -476,12 +448,6 @@
         (image "groundpieces/ground/halloween/ground1")
         (modifier "ROT0"))
       (position 2546 1056 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground6")
-        (modifier "ROT0"))
-      (position 2490 1203 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -1311,113 +1277,15 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/halloween/ground1")
-        (modifier "ROT0"))
-      (position 1817 1500 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground5")
-        (modifier "ROT0"))
-      (position 1845 1308 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground5")
-        (modifier "ROT0"))
-      (position 1843 1421 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground5")
-        (modifier "ROT0"))
-      (position 1935 1421 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground5")
-        (modifier "ROT0"))
-      (position 1883 1422 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground5")
-        (modifier "ROT0"))
-      (position 1937 1308 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground5")
-        (modifier "ROT0"))
-      (position 1885 1309 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground5")
-        (modifier "ROT0"))
-      (position 1384 1408 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground5")
-        (modifier "ROT0"))
-      (position 1386 1295 0))
-    (group 
-      (objects 
-        (groundpiece 
-          (type "ground")
-          (surface 
-            (image "groundpieces/ground/halloween/ground2")
-            (modifier "ROT0"))
-          (position 1257 1226 0))
-        (groundpiece 
-          (type "ground")
-          (surface 
-            (image "groundpieces/ground/halloween/ground2")
-            (modifier "ROT0"))
-          (position 1422 1226 0))
-        (groundpiece 
-          (type "ground")
-          (surface 
-            (image "groundpieces/ground/halloween/ground6")
-            (modifier "ROT0"))
-          (position 1384 1226 0))
-        (groundpiece 
-          (type "ground")
-          (surface 
-            (image "groundpieces/ground/halloween/ground6")
-            (modifier "ROT0FLIP"))
-          (position 1318 1226 0))))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground2")
-        (modifier "ROT0"))
-      (position 1758 1236 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground2")
-        (modifier "ROT0"))
-      (position 1916 1237 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground6")
-        (modifier "ROT0"))
-      (position 1888 1240 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground6")
-        (modifier "ROT0FLIP"))
-      (position 1809 1237 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
         (image "groundpieces/ground/halloween/ground2")
         (modifier "ROT0"))
       (position 1383 319 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/tree2")
+        (modifier "ROT0"))
+      (position 1390 209 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -1429,10 +1297,176 @@
       (position -2 1602 0)
       (overrides 
         (repeat 48)))
-    (entrance 
-      (position 2346 1125 110)
-      (owner-id 0)
-      (direction "right")
-      (release-rate 150))))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground1")
+        (modifier "ROT0"))
+      (position 1769 1498 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground5")
+        (modifier "ROT0"))
+      (position 1797 1306 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground5")
+        (modifier "ROT0"))
+      (position 1795 1419 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground5")
+        (modifier "ROT0"))
+      (position 1887 1419 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground5")
+        (modifier "ROT0"))
+      (position 1835 1420 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground5")
+        (modifier "ROT0"))
+      (position 1889 1306 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground5")
+        (modifier "ROT0"))
+      (position 1837 1307 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground2")
+        (modifier "ROT0"))
+      (position 1697 1234 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground2")
+        (modifier "ROT0"))
+      (position 1915 1235 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground6")
+        (modifier "ROT0"))
+      (position 1840 1238 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground6")
+        (modifier "ROT0FLIP"))
+      (position 1761 1235 0))
+    (group 
+      (objects 
+        (hotspot 
+          (surface 
+            (image "hotspots/halloween/sign-right")
+            (modifier "ROT0"))
+          (position 1377 1188 -100)
+          (speed 0)
+          (parallax 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/halloween/ground5")
+            (modifier "ROT0"))
+          (position 1417 1293 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/halloween/ground5")
+            (modifier "ROT0"))
+          (position 1415 1406 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/halloween/ground5")
+            (modifier "ROT0"))
+          (position 1323 1406 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/halloween/ground5")
+            (modifier "ROT0"))
+          (position 1325 1293 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/halloween/ground1")
+            (modifier "ROT0"))
+          (position 1297 1485 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/halloween/ground5")
+            (modifier "ROT0"))
+          (position 1363 1407 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/halloween/ground5")
+            (modifier "ROT0"))
+          (position 1365 1294 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/halloween/ground2")
+            (modifier "ROT0"))
+          (position 1236 1225 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/halloween/ground2")
+            (modifier "ROT0"))
+          (position 1433 1225 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/halloween/ground6")
+            (modifier "ROT0"))
+          (position 1363 1225 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/halloween/ground6")
+            (modifier "ROT0FLIP"))
+          (position 1297 1225 0))))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground2")
+        (modifier "ROT0"))
+      (position 2152 1245 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground6")
+        (modifier "ROT0FLIP"))
+      (position 2392 1266 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground5")
+        (modifier "ROT0"))
+      (position 2373 1496 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground1")
+        (modifier "ROT0"))
+      (position 2385 1383 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_large")
+        (modifier "ROT0"))
+      (position 2543 1230 0))))
 
 ;; EOF ;;
