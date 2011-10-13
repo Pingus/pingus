@@ -2,24 +2,20 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "")
-    (description "")
+    (levelname "Reach that Switch")
+    (description "The path to the exit is straight, flat and simple, but wait a solid door blocking the way? How can the pingus open it? Is that a switch there on the hill to the right? Might that be the solution to opening the door and freeing the pingus? But how can they reach the switch?")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 20)
     (time -1)
     (music "")
     (actions 
-      (basher 20)
-      (blocker 20)
-      (bomber 20)
-      (bridger 20)
-      (climber 20)
-      (digger 20)
-      (floater 20)
-      (jumper 20)
-      (miner 20)
-      (slider 20))
+      (basher 2)
+      (blocker 2)
+      (bomber 5)
+      (bridger 5)
+      (climber 15)
+      (jumper 15))
     (levelsize 3200 1200))
   (objects 
     (surface-background 
@@ -45,9 +41,9 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/halloween/tree3")
-        (modifier "ROT0"))
-      (position 1906 586 0))
+        (image "groundpieces/ground/halloween/tree1")
+        (modifier "ROT0FLIP"))
+      (position 1933 580 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -654,7 +650,7 @@
       (surface 
         (image "groundpieces/ground/halloween/ground1")
         (modifier "ROT0"))
-      (position 2341 372 0))
+      (position 2345 367 0))
     (groundpiece 
       (type "ground")
       (surface 
