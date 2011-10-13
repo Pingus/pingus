@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Group Coordination")
     (description "Three groups are on their way to the exit, none of them can make it alone, so lets them help each other out.")
-    (author "")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 20)
     (time -1)
