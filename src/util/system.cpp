@@ -509,41 +509,50 @@ System::realpath(const std::string& pathname)
 {
   std::string fullpath;
   std::string drive;
-  
+
+#ifdef WIN32
+  if (pathname.size() > 2 && pathname[1] == ':' && pathname[2] == '/')
+  {
+    // absolute path on Win32
+    drive = pathname.substr(0, 2);
+    fullpath = pathname.substr(2);
+  }
+#else
   if (pathname.size() > 0 && pathname[0] == '/')
   {
-    fullpath = pathname;
-  }
-#ifdef WIN32
-  else if (pathname.size() > 2 && pathname[1] == ':' && pathname[2] == '/')
-  {
-    drive = pathname.substr(0, 2);
+    // absolute path on Linux
     fullpath = pathname;
   }
 #endif
   else
   {
+    // relative path
     char* cwd = getcwd(NULL, 0);
     if (!cwd)
     {
       log_error("System::realpath: Error: couldn't getcwd()");
       return pathname;
     }
-#ifdef WIN32
-    for (char *p = cwd; *p; ++p)
+    else
     {
-      if (*p == '\\')
-        *p = '/';
-    }
-    drive.assign(cwd, 2);
+#ifdef WIN32
+      // unify directory separator to '/'
+      for (char *p = cwd; *p; ++p)
+      {
+        if (*p == '\\')
+          *p = '/';
+      }
+      drive.assign(cwd, 2);
+      fullpath = Pathname::join(std::string(cwd+2), pathname);
+#else
+      fullpath = Pathname::join(std::string(cwd), pathname);
 #endif
-      
-    fullpath = Pathname::join(std::string(cwd), pathname);
-    free(cwd);
+      free(cwd);
+    }
   }
 
 #ifdef WIN32  
-  return drive + "/" + normalize_path(fullpath);
+  return drive + normalize_path(fullpath);
 #else
   return normalize_path(fullpath);
 #endif
