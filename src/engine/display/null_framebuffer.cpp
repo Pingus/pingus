@@ -30,9 +30,11 @@ public:
   int get_width()  const { return size.width; }
   int get_height() const { return size.height; }
 };
-
+
 NullFramebuffer::NullFramebuffer() :
-  size()
+  m_size(),
+  m_fullscreen(false),
+  m_resizable(false)
 {
 }
 
@@ -48,11 +50,26 @@ NullFramebuffer::create_surface(const Surface& surface)
 }
 
 void
-NullFramebuffer::set_video_mode(const Size& size_, bool fullscreen, bool resizable)
+NullFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable)
 {
-  size = size_;
-  log_info("size: " << size.width << "x" << size.height <<
-           " fullscreen: " << fullscreen << " resizable: " << resizable);
+  m_size = size;
+  m_fullscreen = fullscreen;
+  m_resizable  = resizable;
+
+  log_info("size: " << m_size.width << "x" << m_size.height <<
+           " fullscreen: " << m_fullscreen << " resizable: " << m_resizable);
+}
+
+bool
+NullFramebuffer::is_fullscreen() const
+{
+  return m_fullscreen;
+}
+
+bool
+NullFramebuffer::is_resizable() const
+{
+  return m_resizable;
 }
 
 void
@@ -98,7 +115,7 @@ NullFramebuffer::fill_rect(const Rect& rect, const Color& color)
 Size
 NullFramebuffer::get_size() const
 {
-  return size;
+  return m_size;
 }
 
 /* EOF */

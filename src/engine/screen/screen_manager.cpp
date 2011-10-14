@@ -266,13 +266,13 @@ ScreenManager::update(float delta, const std::vector<Input::Event>& events)
   get_current_screen()->draw(*display_gc);
   
   // Render the DrawingContext to the screen
-  display_gc->render(Display::get_framebuffer(), Rect(Vector2i(0,0), Size(Display::get_width(),
-                                                                          Display::get_height())));
+  display_gc->render(*Display::get_framebuffer(), Rect(Vector2i(0,0), Size(Display::get_width(),
+                                                                           Display::get_height())));
   display_gc->clear();
   
   // Draw the mouse pointer
   if (globals::software_cursor)
-    cursor.render(mouse_pos.x, mouse_pos.y, Display::get_framebuffer());
+    cursor.render(mouse_pos.x, mouse_pos.y, *Display::get_framebuffer());
   
   // Draw FPS Counter
   if (globals::print_fps)
@@ -281,13 +281,13 @@ ScreenManager::update(float delta, const std::vector<Input::Event>& events)
     if (globals::developer_mode)
     {
       Fonts::pingus_small.render(origin_center, Display::get_width()/2, 60, 
-                                 "Developer Mode", Display::get_framebuffer());
+                                 "Developer Mode", *Display::get_framebuffer());
     }
   }
   else if (globals::developer_mode)
   {
     Fonts::pingus_small.render(origin_center, Display::get_width()/2, 35, 
-                               "Developer Mode", Display::get_framebuffer());
+                               "Developer Mode", *Display::get_framebuffer());
   }
 
   Display::flip_display();
@@ -355,7 +355,7 @@ ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
   
   Uint32 last_ticks = SDL_GetTicks();
   float progress = 0.0f;
-  Framebuffer& fb = Display::get_framebuffer();
+  Framebuffer& fb = *Display::get_framebuffer();
   while (progress <= 1.0f)
   {
     int border_x = static_cast<int>(static_cast<float>(Display::get_width()/2)  * (1.0f - progress));
@@ -371,7 +371,7 @@ ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
                                Display::get_height() - 2*border_y)));
 
     new_screen->draw(*display_gc);
-    display_gc->render(Display::get_framebuffer(), Rect(Vector2i(0,0), Size(Display::get_width(),
+    display_gc->render(*Display::get_framebuffer(), Rect(Vector2i(0,0), Size(Display::get_width(),
                                                                             Display::get_height())));
     display_gc->clear();
       

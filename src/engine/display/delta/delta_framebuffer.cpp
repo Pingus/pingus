@@ -48,6 +48,18 @@ DeltaFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizab
   framebuffer->set_video_mode(size, fullscreen, resizable);
 }
 
+bool
+DeltaFramebuffer::is_fullscreen() const
+{
+  return framebuffer->is_fullscreen();
+}
+
+bool
+DeltaFramebuffer::is_resizable() const
+{
+  return framebuffer->is_resizable();
+}
+
 void
 DeltaFramebuffer::flip()
 {

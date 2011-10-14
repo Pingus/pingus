@@ -135,7 +135,7 @@ void clip(int& i, int min, int max)
 }
 
 } // namespace
-
+
 SDLFramebuffer::SDLFramebuffer() :
   screen(0),
   cliprect_stack()
@@ -443,6 +443,18 @@ SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable
     log_error("Unable to set video mode: " << SDL_GetError());
     exit(1);
   }
+}
+
+bool
+SDLFramebuffer::is_fullscreen() const
+{
+  return screen->flags | SDL_FULLSCREEN;
+}
+
+bool
+SDLFramebuffer::is_resizable() const
+{
+  return screen->flags | SDL_RESIZABLE;
 }
 
 void

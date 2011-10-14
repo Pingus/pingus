@@ -23,7 +23,7 @@
 
 OpenGLFramebuffer::OpenGLFramebuffer() :
   screen(),
-  cliprect_stack()
+  cliprect_stack()  
 {
 }
 
@@ -77,6 +77,18 @@ OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resiza
 
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
+}
+
+bool
+OpenGLFramebuffer::is_fullscreen() const
+{
+  return screen->flags | SDL_FULLSCREEN;
+}
+
+bool
+OpenGLFramebuffer::is_resizable() const
+{
+  return screen->flags | SDL_RESIZABLE;
 }
 
 void

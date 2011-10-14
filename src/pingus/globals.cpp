@@ -38,7 +38,6 @@ std::string global_username;
 std::string global_email;
 std::string default_language        = "en";
 
-bool        fullscreen_enabled      = false;
 bool        delta_drawing           = false;
 
 bool        static_graphics         = false;

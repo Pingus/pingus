@@ -139,7 +139,7 @@ Playfield::update(float delta)
     }
   }
 
-  if (globals::auto_scrolling && (globals::fullscreen_enabled || SDL_WM_GrabInput(SDL_GRAB_QUERY) == SDL_GRAB_ON))
+  if (globals::auto_scrolling && (Display::is_fullscreen() || SDL_WM_GrabInput(SDL_GRAB_QUERY) == SDL_GRAB_ON))
   {
     scroll_speed = static_cast<int>(800 * delta);
     

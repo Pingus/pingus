@@ -131,10 +131,6 @@ PingusMain::apply_args()
 
     exit(EXIT_SUCCESS);
   }
-  
-  // Display
-  if (options.fullscreen.is_set())
-    globals::fullscreen_enabled = options.fullscreen.get();
 
   if (options.software_cursor.is_set())
     globals::software_cursor = options.software_cursor.get();
@@ -495,12 +491,16 @@ PingusMain::print_greeting_message()
   else
     std::cout << "music support:           disabled" << std::endl;
 
-  // FIXME: std::cout << "resolution:              " 
-  // FIXME: << config_manager.get_resolution().width << "x"
-  // FIXME:            << config_manager.get_resolution().height << std::endl;
-  std::cout << "fullscreen:              "
-            << (globals::fullscreen_enabled ? " enabled" : "disabled")
-            << std::endl;
+  std::cout << "fullscreen:              ";
+  if (config_manager.get_fullscreen())
+  {
+    std::cout << config_manager.get_fullscreen_resolution().width << "x"
+              << config_manager.get_fullscreen_resolution().height << std::endl;
+  }
+  else
+  {
+    std::cout << "disabled" << std::endl;
+  }
 
   std::cout << std::endl;
 }
@@ -608,13 +608,17 @@ PingusMain::run(int argc, char** argv)
     SDLSystem system;
     if (cmd_options.geometry.is_set())
     {
-      system.create_window(fbtype, cmd_options.geometry.get(), globals::fullscreen_enabled,
-                           cmd_options.resizable.is_set() ? cmd_options.resizable.get() : true);
+      system.create_window(fbtype, 
+                           cmd_options.geometry.get(),
+                           cmd_options.fullscreen.is_set() ? cmd_options.fullscreen.get() : false,
+                           cmd_options.resizable.is_set()  ? cmd_options.resizable.get()  : true);
     }
     else
     {
-      system.create_window(fbtype, Size(800, 600), globals::fullscreen_enabled,
-                           cmd_options.resizable.is_set() ? cmd_options.resizable.get() : true);
+      system.create_window(fbtype,
+                           Size(800, 600), 
+                           cmd_options.fullscreen.is_set() ? cmd_options.fullscreen.get() : false,
+                           cmd_options.resizable.is_set()  ? cmd_options.resizable.get()  : true);
     }
 
     SavegameManager savegame_manager("savegames/savegames.scm");

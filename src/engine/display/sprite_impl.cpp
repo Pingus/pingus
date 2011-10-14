@@ -37,7 +37,7 @@ FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceMo
     if (!surface) assert(!"Surface Couldn't find 404");
   }
 
-  return Display::get_framebuffer().create_surface(surface);
+  return Display::get_framebuffer()->create_surface(surface);
 }
 
 SpriteImpl::SpriteImpl() :
@@ -90,7 +90,7 @@ SpriteImpl::SpriteImpl(const SpriteDescription& desc, ResourceModifier::Enum mod
 
 SpriteImpl::SpriteImpl(const Surface& surface) :
   filename(),
-  framebuffer_surface(Display::get_framebuffer().create_surface(surface)),
+  framebuffer_surface(Display::get_framebuffer()->create_surface(surface)),
   offset(0,0),
   frame_pos(0,0),
   frame_size(surface.get_width(), surface.get_height()),

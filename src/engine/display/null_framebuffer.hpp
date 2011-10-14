@@ -23,7 +23,9 @@
 class NullFramebuffer : public Framebuffer
 {
 private:
-  Size size;
+  Size m_size;
+  bool m_fullscreen;
+  bool m_resizable;
 
 public:
   NullFramebuffer();
@@ -32,6 +34,8 @@ public:
   FramebufferSurface create_surface(const Surface& surface);
 
   void set_video_mode(const Size& size, bool fullscreen, bool resizable);
+  bool is_fullscreen() const;
+  bool is_resizable() const;
   void flip();
 
   void push_cliprect(const Rect&);

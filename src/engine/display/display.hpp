@@ -43,8 +43,11 @@ public:
   static void create_window(FramebufferType framebuffer_type, const Size& size, bool fullscreen, bool resizable);
   static void set_video_mode(const Size& size, bool fullscreen, bool resizable);
   static void resize(const Size& size);
+
+  static bool is_fullscreen();
+  static bool is_resizable();
   
-  static Framebuffer& get_framebuffer();
+  static Framebuffer* get_framebuffer();
 
   static Size find_closest_fullscreen_video_mode(const Size& size);
   static std::vector<Size> get_fullscreen_video_modes();

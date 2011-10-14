@@ -65,7 +65,7 @@ ConfigManager::set_master_volume(int v)
 }
 
 int
-ConfigManager::get_master_volume()
+ConfigManager::get_master_volume() const
 {
   return static_cast<int>(Sound::PingusSound::get_master_volume() * 100);
 }
@@ -80,7 +80,7 @@ ConfigManager::set_sound_volume(int v)
 }
 
 int
-ConfigManager::get_sound_volume()
+ConfigManager::get_sound_volume() const
 {
   return static_cast<int>(Sound::PingusSound::get_sound_volume() * 100);
 }
@@ -95,7 +95,7 @@ ConfigManager::set_music_volume(int v)
 }
 
 int
-ConfigManager::get_music_volume()
+ConfigManager::get_music_volume() const
 {
   return static_cast<int>(Sound::PingusSound::get_music_volume() * 100);
 }
@@ -107,9 +107,9 @@ ConfigManager::set_fullscreen_resolution(const Size& size)
 
   if (size != get_fullscreen_resolution())
   {
-    if (globals::fullscreen_enabled)
+    if (Display::is_fullscreen())
     {
-      Display::set_video_mode(size, globals::fullscreen_enabled, false);
+      Display::set_video_mode(size, Display::is_fullscreen(), false);
     }
     on_fullscreen_resolution_change(size);
   }
@@ -118,7 +118,7 @@ ConfigManager::set_fullscreen_resolution(const Size& size)
 }
 
 Size
-ConfigManager::get_fullscreen_resolution()
+ConfigManager::get_fullscreen_resolution() const
 {
   return m_opts.fullscreen_resolution.get();
 }
@@ -130,9 +130,7 @@ ConfigManager::set_fullscreen(bool v)
 
   if (v != get_fullscreen())
   {
-    globals::fullscreen_enabled = v;
-    Size screen_size = Display::get_size();
-    Display::set_video_mode(screen_size, globals::fullscreen_enabled, false);
+    Display::set_video_mode(Display::get_size(), Display::is_fullscreen(), false);
     on_fullscreen_change(v);
   }
 
@@ -140,9 +138,9 @@ ConfigManager::set_fullscreen(bool v)
 }
 
 bool
-ConfigManager::get_fullscreen()
+ConfigManager::get_fullscreen() const
 {
-  return globals::fullscreen_enabled;
+  return m_opts.fullscreen.get();
 }
 
 void
@@ -171,9 +169,9 @@ ConfigManager::set_resizable(bool v)
 }
 
 bool
-ConfigManager::get_resizable()
+ConfigManager::get_resizable() const
 {
-  return false;
+  return m_opts.resizable.get();
 }
 
 void
@@ -191,7 +189,7 @@ ConfigManager::set_mouse_grab(bool v)
 }
 
 bool
-ConfigManager::get_mouse_grab()
+ConfigManager::get_mouse_grab() const
 {
   return (SDL_WM_GrabInput(SDL_GRAB_QUERY) == SDL_GRAB_ON);
 }
@@ -211,7 +209,7 @@ ConfigManager::set_print_fps(bool v)
 }
 
 bool
-ConfigManager::get_print_fps()
+ConfigManager::get_print_fps() const
 {
   return globals::print_fps;
 }
@@ -231,7 +229,7 @@ ConfigManager::set_language(const tinygettext::Language& v)
 }
 
 tinygettext::Language
-ConfigManager::get_language()
+ConfigManager::get_language() const
 {
   return dictionary_manager.get_language();
 }
@@ -251,7 +249,7 @@ ConfigManager::set_software_cursor(bool v)
 }
 
 bool
-ConfigManager::get_software_cursor()
+ConfigManager::get_software_cursor() const
 {
   return globals::software_cursor;
 }
@@ -271,7 +269,7 @@ ConfigManager::set_auto_scrolling(bool v)
 }
 
 bool
-ConfigManager::get_auto_scrolling()
+ConfigManager::get_auto_scrolling() const
 {
   return globals::auto_scrolling;
 }
@@ -288,11 +286,11 @@ ConfigManager::set_drag_drop_scrolling(bool v)
 }
 
 bool
-ConfigManager::get_drag_drop_scrolling()
+ConfigManager::get_drag_drop_scrolling() const
 {
   return globals::drag_drop_scrolling;
 }
-
+
 Options
 ConfigManager::get_options() const
 {
