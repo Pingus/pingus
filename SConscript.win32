@@ -1,7 +1,7 @@
 env = Environment(PATH="/home/ingo/projects/mingw32/run/bin:$PATH",
                   PKG_CONFIG_LIBDIR="/home/ingo/projects/mingw32/run/lib/pkgconfig:/home/ingo/projects/mingw32/run/opt/gtk/lib/pkgconfig",
                   CXXFLAGS=["-O3", "-s", "-std=c++0x"],
-                  CPPDEFINES=['HAVE_SDL'],
+                  CPPDEFINES=['HAVE_SDL', ('HAVE_OPENGL', 1)],
                   PROGSUFFIX = '.exe',
                   CXX='i586-mingw32msvc-c++',
                   AR='i586-mingw32msvc-ar',
@@ -19,7 +19,8 @@ env = Environment(PATH="/home/ingo/projects/mingw32/run/bin:$PATH",
                               '/home/ingo/projects/mingw32/run/opt/SDL_image-1.2.10/lib',
                               '/home/ingo/projects/mingw32/run/opt/SDL_mixer-1.2.11/lib',
                               '/home/ingo/projects/mingw32/run/opt/gtk/lib' ],
-                  LIBS = [ 'mingw32', 'SDLmain', "SDL", "SDL_mixer", "SDL_image", "boost_signals", "png"])
+                  LIBS = [ 'mingw32', 'SDLmain', "SDL", "SDL_mixer", "SDL_image", "boost_signals", "png",
+                           'opengl32', 'glu32' ])
 
 pingus_sources = \
                Glob('external/tinygettext/tinygettext/*.cpp') + \
@@ -27,6 +28,7 @@ pingus_sources = \
                Glob('src/editor/*.cpp') + \
                Glob('src/engine/display/*.cpp') + \
                Glob('src/engine/display/delta/*.cpp') + \
+               Glob('src/engine/display/opengl/*.cpp') + \
                Glob('src/engine/gui/*.cpp') + \
                Glob('src/engine/input/*.cpp') + \
                Glob('src/engine/resource/*.cpp') + \
@@ -49,6 +51,6 @@ pingus_sources = \
 
 env.Append(CPPDEFINES=[('VERSION', '"\\"0.7.4\\""'), 'WIN32'])
 env.Append(CPPPATH=['external/tinygettext'])
-env.Program("pingus-win32", pingus_sources)
+env.Program("pingus", pingus_sources)
 
 # EOF #
