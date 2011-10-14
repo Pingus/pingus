@@ -55,6 +55,12 @@
     (groundpiece 
       (type "ground")
       (surface 
+        (image "groundpieces/ground/halloween/ground5")
+        (modifier "ROT0FLIP"))
+      (position 989 2035 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
         (image "groundpieces/ground/halloween/ground4")
         (modifier "ROT0"))
       (position 915 548 0))
@@ -432,18 +438,6 @@
         (image "groundpieces/ground/halloween/ground5")
         (modifier "ROT0"))
       (position 1211 2184 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground5")
-        (modifier "ROT0"))
-      (position 1005 2186 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground5")
-        (modifier "ROT0"))
-      (position 954 2043 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -934,14 +928,14 @@
       (surface 
         (image "exits/halloween")
         (modifier "ROT0"))
-      (position 1074 2033 0)
+      (position 1138 2033 0)
       (owner-id 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/ground1")
         (modifier "ROT0"))
-      (position 967 2042 0))
+      (position 996 2047 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -953,13 +947,13 @@
       (surface 
         (image "groundpieces/ground/halloween/ground2")
         (modifier "ROT0"))
-      (position 939 2028 0))
+      (position 977 2027 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/ground5")
         (modifier "ROT0"))
-      (position 1006 2297 0))
+      (position 1037 2264 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -1417,11 +1411,6 @@
       (surface 
         (image "groundpieces/ground/halloween/ground6")
         (modifier "ROT90FLIP"))
-      (position 1685 2198 0))
-    (entrance 
-      (position 1172 1296 110)
-      (owner-id 0)
-      (direction "left")
-      (release-rate 150))))
+      (position 1685 2198 0))))
 
 ;; EOF ;;
