@@ -2,8 +2,8 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "")
-    (description "")
+    (levelname "Round and Round")
+    (description "Trapped in an enternal loop one brave pingu has to break out and go on a journey in search for the exit, but he musten be to happy once he found it, as there is still one last challenge he must solve before being allowed to enter it, otherwise all his friends might perish and die.")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 45)

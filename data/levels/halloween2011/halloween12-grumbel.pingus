@@ -2,8 +2,8 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "")
-    (description "")
+    (levelname "Red Herring Cave")
+    (description "The exit is right above with a few friendly arrows pointing the way. But can anything you find in a cave be trusted?")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 40)
     (number-to-save 20)
