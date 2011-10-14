@@ -82,13 +82,13 @@ OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resiza
 bool
 OpenGLFramebuffer::is_fullscreen() const
 {
-  return screen->flags | SDL_FULLSCREEN;
+  return screen->flags & SDL_FULLSCREEN;
 }
 
 bool
 OpenGLFramebuffer::is_resizable() const
 {
-  return screen->flags | SDL_RESIZABLE;
+  return screen->flags & SDL_RESIZABLE;
 }
 
 void

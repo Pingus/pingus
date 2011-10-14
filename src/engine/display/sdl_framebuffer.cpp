@@ -448,13 +448,13 @@ SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable
 bool
 SDLFramebuffer::is_fullscreen() const
 {
-  return screen->flags | SDL_FULLSCREEN;
+  return screen->flags & SDL_FULLSCREEN;
 }
 
 bool
 SDLFramebuffer::is_resizable() const
 {
-  return screen->flags | SDL_RESIZABLE;
+  return screen->flags & SDL_RESIZABLE;
 }
 
 void
