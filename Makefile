@@ -27,11 +27,11 @@ build/pingus:
 	ln -fs build/pingus
 
 clean:
-	scons -c
 	rm -rf .sconf_temp/
 	rm -f .sconsign.dblite
 	rm -rf build/
 	rm -f pingus
+	scons -c
 
 install: install-exec install-data install-man
 
