@@ -11,7 +11,8 @@
     (pingus-level head description)))
 
 (define worldmap-pattern-list
-  '((pingus-worldmap head (name description))))
+  '((pingus-worldmap head (name description))
+    (pingus-worldmap graph nodes storydot name)))
 
 (define story-pattern-list
   '((pingus-story title)
