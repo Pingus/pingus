@@ -8,7 +8,7 @@
     (number-of-pingus 40)
     (number-to-save 30)
     (time -1)
-    (music "")
+    (music "gd-matth.it")
     (actions 
       (basher 10)
       (bridger 4)
