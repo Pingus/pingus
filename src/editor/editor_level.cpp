@@ -22,7 +22,7 @@
 #include "editor/level_obj.hpp"
 #include "editor/level_obj_factory.hpp"
 #include "editor/generic_level_obj.hpp"
-#include "editor/level_impl.hpp"
+#include "editor/level_data.hpp"
 #include "pingus/pingus_level.hpp"
 #include "pingus/prefab_file.hpp"
 #include "util/log.hpp"
@@ -31,6 +31,57 @@
 
 namespace Editor {
 
+class LevelImpl
+{
+public:
+  // Set defaults in constructor
+  LevelImpl() :
+    resname(),
+    levelname(),
+    description(),
+    ambient_light(255, 255, 255),
+    size(),
+    number_of_pingus(),
+    number_to_save(),
+    actions(),
+    time(),
+    author(),
+    music(),
+    objects()
+  {
+    // Do nothing
+  }
+
+  /** Destructor */
+  ~LevelImpl()
+  {
+  }
+                   
+  std::string resname;
+
+  std::string levelname;
+  std::string description;
+
+  Color    ambient_light;
+  Size     size;
+
+  int number_of_pingus;
+  int number_to_save;
+
+  std::map<std::string, int> actions;
+
+  int time;
+  
+  std::string author;
+  std::string music;
+
+  EditorLevel::Objects objects;
+
+private:
+  LevelImpl (const LevelImpl&);
+  LevelImpl& operator= (const LevelImpl&);
+};
+
 static bool LevelObjSort(const LevelObjPtr& a, const LevelObjPtr& b)
 {
   return (a->get_pos().z < b->get_pos().z);
@@ -38,7 +89,7 @@ static bool LevelObjSort(const LevelObjPtr& a, const LevelObjPtr& b)
 
 // Default constructor
 EditorLevel::EditorLevel() :
-  impl(new LevelImpl())
+  impl(new LevelImpl)
 {
   set_impl_defaults();
 }

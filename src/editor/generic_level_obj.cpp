@@ -210,7 +210,6 @@ GenericLevelObj::is_at(int x, int y)
   {
     if (get_rect().contains(Vector2i(x,y)))
     {
-      Vector2i offset = sprite.get_offset();
       Rect rect = get_rect();
       Color pixel = surface.get_pixel(x - rect.left, y - rect.top);
       return pixel.a != 0;

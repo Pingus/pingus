@@ -26,7 +26,6 @@ class DrawingContext;
 namespace Editor {
 
 class LevelObj;
-class LevelImpl;
 class EditorScreen;
 class ObjectSelector;
 class ObjectSelectorSet;

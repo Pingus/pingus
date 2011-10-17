@@ -23,8 +23,6 @@ class FileReader;
 
 namespace Editor {
 
-class LevelImpl;
-
 class LevelObjFactory
 {
 private:

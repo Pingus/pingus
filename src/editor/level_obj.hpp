@@ -29,8 +29,6 @@ class DrawingContext;
 
 namespace Editor {
 
-class LevelImpl;
-
 const unsigned HAS_TYPE =         1 << 0;
 const unsigned HAS_SPEED =        1 << 1;
 const unsigned HAS_PARALLAX =     1 << 2;
