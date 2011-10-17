@@ -90,6 +90,8 @@ public:
   /** Return the viewport */
   Viewport* get_viewport() const { return viewport; }
 
+  void set_level(std::unique_ptr<EditorLevel> level);
+
   /** Return a pointer to the current level */
   EditorLevel* get_level() const { return plf.get(); }
   

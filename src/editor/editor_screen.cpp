@@ -164,6 +164,18 @@ EditorScreen::save(const Pathname& file)
   }
 }
 
+void
+EditorScreen::set_level(std::unique_ptr<EditorLevel> level)
+{
+  viewport->clear_selection();
+
+  plf = std::move(level);
+
+  level_properties->set_level(plf.get());
+  action_properties->set_level(plf.get());
+  viewport->refresh();   
+}
+
 // Load a new level
 void 
 EditorScreen::load(const Pathname& file)
@@ -175,20 +187,12 @@ EditorScreen::load(const Pathname& file)
     if (System::get_file_extension(filename) == "prefab")
     {
       level_pathname = file;
-      viewport->clear_selection();
-      plf = EditorLevel::from_prefab_file(level_pathname);
-      level_properties->set_level(plf.get());
-      action_properties->set_level(plf.get());
-      viewport->refresh();   
+      set_level(EditorLevel::from_prefab_file(level_pathname));
     }
     else
     {
       level_pathname = file;
-      viewport->clear_selection();
-      plf = EditorLevel::from_level_file(level_pathname);
-      level_properties->set_level(plf.get());
-      action_properties->set_level(plf.get());
-      viewport->refresh();
+      set_level(EditorLevel::from_level_file(level_pathname));
     }
   }
   catch(const std::exception& err)
@@ -315,11 +319,7 @@ EditorScreen::level_new_without_confirm()
 {
   // FIXME: dialogs don't update
   level_pathname = Pathname();
-  viewport->clear_selection();
-  plf.reset(new EditorLevel);
-  level_properties->set_level(plf.get());
-  action_properties->set_level(plf.get());
-  viewport->refresh();
+  set_level(std::unique_ptr<EditorLevel>(new EditorLevel));
 }
 
 void 
