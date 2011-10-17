@@ -90,7 +90,88 @@ private:
   LevelImpl (const LevelImpl&);
   LevelImpl& operator= (const LevelImpl&);
 };
+
+std::unique_ptr<EditorLevel>
+EditorLevel::from_level_file(const Pathname& pathname)
+{
+  log_info(pathname.str());
 
+  // Load the level from the file - we don't care what it's res_name is.
+  PingusLevel plf(pathname);
+
+  std::unique_ptr<EditorLevel> level(new EditorLevel);
+        
+  // Assign all of the level information to our LevelImpl
+  level->impl->levelname        = plf.get_levelname();
+  level->impl->description      = plf.get_description();
+  level->impl->ambient_light    = plf.get_ambient_light();
+  level->impl->size             = plf.get_size();
+  level->impl->number_of_pingus = plf.get_number_of_pingus();
+  level->impl->number_to_save   = plf.get_number_to_save();
+  level->impl->actions          = plf.get_actions();
+  level->impl->time             = plf.get_time();
+  level->impl->author           = plf.get_author();
+  level->impl->music            = plf.get_music();
+  
+  // remove obsolete "none" tag
+  if (level->impl->music == "none")
+  {
+    level->impl->music = "";
+  }
+
+  // Get the objects
+  std::vector<FileReader> objs = plf.get_objects();
+  for (std::vector<FileReader>::const_iterator i = objs.begin(); i != objs.end(); i++)
+  {
+    LevelObjPtr obj = LevelObjFactory::create(*i);
+    if (obj)
+    {
+      level->add_object(obj);
+    }
+  }
+
+  level->sort();
+
+  return level;
+}
+
+std::unique_ptr<EditorLevel>
+EditorLevel::from_prefab_file(const Pathname& pathname)
+{
+  log_info(pathname.str());
+
+  // Load the level from the file - we don't care what it's res_name is.
+  PrefabFile prefab = PrefabFile::from_path(pathname);
+
+  std::unique_ptr<EditorLevel> level(new EditorLevel);
+
+  // FIMXE: there would be better way to handle prefab size, but it's
+  // probably not worth the effort
+  level->impl->size.width  = 1920;
+  level->impl->size.height = 1200;
+
+  // FIXME: overrides are getting ignored
+
+  // Get the objects
+  const std::vector<FileReader>& objs = prefab.get_objects();
+  for (auto i = objs.begin(); i != objs.end(); i++)
+  {
+    LevelObjPtr obj = LevelObjFactory::create(*i);
+    if (obj)
+    {
+      // move origin of the level to the center of it
+      obj->set_pos(obj->get_pos() + Vector3f(static_cast<float>(level->impl->size.width)/2.0f, 
+                                             static_cast<float>(level->impl->size.height)/2.0f));
+
+      level->add_object(obj);
+    }
+  }
+
+  level->sort(); 
+
+  return level;
+}
+
 static bool LevelObjSort(const LevelObjPtr& a, const LevelObjPtr& b)
 {
   return (a->get_pos().z < b->get_pos().z);
@@ -102,13 +183,6 @@ EditorLevel::EditorLevel() :
 {
 }
 
-void
-EditorLevel::clear() 
-{
-  impl.reset(new LevelImpl);
-}
-
-// Default Destructor
 EditorLevel::~EditorLevel()
 {
 }
@@ -208,87 +282,6 @@ EditorLevel::save_level(const std::string& filename)
         
   // Write the file
   System::write_file(filename, out_file.str());
-}
-
-void
-EditorLevel::load_prefab(const Pathname& pathname)
-{
-  log_info("EditorLevel::load_level: " << pathname.str());
-
-  // Get a new level implementation with default settings. It is a
-  // good idea to set the level defaults first, in case the level file
-  // doesn't set everything.
-  clear();
-
-  // Load the level from the file - we don't care what it's res_name is.
-  PrefabFile prefab = PrefabFile::from_path(pathname);
-
-  // FIMXE: there would be better way to handle prefab size, but it's
-  // probably not worth the effort
-  impl->size.width  = 1920;
-  impl->size.height = 1200;
-
-  // FIXME: overrides are getting ignored
-
-  // Get the objects
-  const std::vector<FileReader>& objs = prefab.get_objects();
-  for (auto i = objs.begin(); i != objs.end(); i++)
-  {
-    LevelObjPtr obj = LevelObjFactory::create(*i);
-    if (obj)
-    {
-      // move origin of the level to the center of it
-      obj->set_pos(obj->get_pos() + Vector3f(static_cast<float>(impl->size.width)/2.0f, 
-                                             static_cast<float>(impl->size.height)/2.0f));
-
-      add_object(obj);
-    }
-  }
-
-  sort(); 
-}
-
-// Load an existing level from a file
-void
-EditorLevel::load_level(const Pathname& pathname)
-{
-  log_info("EditorLevel::load_level: " << pathname.str());
-
-  // Get a new level implementation with default settings. It is a
-  // good idea to set the level defaults first, in case the level file
-  // doesn't set everything.
-  clear();
-
-  // Load the level from the file - we don't care what it's res_name is.
-  PingusLevel level(pathname);
-        
-  // Assign all of the level information to our LevelImpl
-  impl->levelname        = level.get_levelname();
-  impl->description      = level.get_description();
-  impl->ambient_light    = level.get_ambient_light();
-  impl->size             = level.get_size();
-  impl->number_of_pingus = level.get_number_of_pingus();
-  impl->number_to_save   = level.get_number_to_save();
-  impl->actions          = level.get_actions();
-  impl->time             = level.get_time();
-  impl->author           = level.get_author();
-  impl->music            = level.get_music();
-        
-  if (impl->music == "none")
-    impl->music = "";
-
-  // Get the objects
-  std::vector<FileReader> objs = level.get_objects();
-  for (std::vector<FileReader>::const_iterator i = objs.begin(); i != objs.end(); i++)
-  {
-    LevelObjPtr obj = LevelObjFactory::create(*i);
-    if (obj)
-    {
-      add_object(obj);
-    }
-  }
-
-  sort();
 }
 
 void

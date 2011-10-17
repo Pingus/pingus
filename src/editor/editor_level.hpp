@@ -37,24 +37,18 @@ class LevelObj;
 class EditorLevel
 {
 public:
+  static std::unique_ptr<EditorLevel> from_level_file(const Pathname& pathname);
+  static std::unique_ptr<EditorLevel> from_prefab_file(const Pathname& pathname);
+
+public:
   typedef std::list<LevelObjPtr> Objects;
 
-  /** Construct new blank level */
   EditorLevel();
-
-  /** Destructor */
   ~EditorLevel();
-
-  /** get a new implementation with default settings */
-  void clear();
 
   /** Save the level to a file.  Returns true if successful */
   void save_level(const std::string& filename);
   void save_prefab(const std::string& filename);
-
-  /** Load an existing level from a file */
-  void load_level(const Pathname& pathname);
-  void load_prefab(const Pathname& pathname);
 
   Size get_size() const;
   void set_size(const Size& s);
