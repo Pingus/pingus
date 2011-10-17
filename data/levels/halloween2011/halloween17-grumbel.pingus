@@ -6,7 +6,7 @@
     (description "The pingus, released together, will soon be split up by a few meter of solid metal. Yet even with that separation between them, they have to coordinate wisely to reach the exit so far below.")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 20)
-    (number-to-save 12)
+    (number-to-save 10)
     (time -1)
     (music "")
     (actions 
@@ -202,108 +202,106 @@
       (position 674 1154 0))
     (group 
       (objects 
-        (group 
-          (objects 
-            (groundpiece 
-              (type "ground")
-              (surface 
-                (image "groundpieces/ground/misc/wood2")
-                (modifier "ROT0"))
-              (position 612 345 0))
-            (groundpiece 
-              (type "ground")
-              (surface 
-                (image "groundpieces/ground/misc/wood2")
-                (modifier "ROT0"))
-              (position 612 473 0))))
-        (group 
-          (objects 
-            (groundpiece 
-              (type "ground")
-              (surface 
-                (image "groundpieces/ground/misc/wood2")
-                (modifier "ROT0"))
-              (position 1336 345 0))
-            (groundpiece 
-              (type "ground")
-              (surface 
-                (image "groundpieces/ground/misc/wood2")
-                (modifier "ROT0"))
-              (position 1336 473 0))))
-        (group 
-          (objects 
-            (groundpiece 
-              (type "ground")
-              (surface 
-                (image "groundpieces/ground/misc/wood1")
-                (modifier "ROT0"))
-              (position 595 325 0))
-            (groundpiece 
-              (type "ground")
-              (surface 
-                (image "groundpieces/ground/misc/wood1")
-                (modifier "ROT0"))
-              (position 659 325 0))
-            (groundpiece 
-              (type "ground")
-              (surface 
-                (image "groundpieces/ground/misc/wood1")
-                (modifier "ROT0"))
-              (position 787 325 0))
-            (groundpiece 
-              (type "ground")
-              (surface 
-                (image "groundpieces/ground/misc/wood1")
-                (modifier "ROT0"))
-              (position 723 325 0))
-            (groundpiece 
-              (type "ground")
-              (surface 
-                (image "groundpieces/ground/misc/wood1")
-                (modifier "ROT0"))
-              (position 1043 325 0))
-            (groundpiece 
-              (type "ground")
-              (surface 
-                (image "groundpieces/ground/misc/wood1")
-                (modifier "ROT0"))
-              (position 979 325 0))
-            (groundpiece 
-              (type "ground")
-              (surface 
-                (image "groundpieces/ground/misc/wood1")
-                (modifier "ROT0"))
-              (position 915 325 0))
-            (groundpiece 
-              (type "ground")
-              (surface 
-                (image "groundpieces/ground/misc/wood1")
-                (modifier "ROT0"))
-              (position 851 325 0))
-            (groundpiece 
-              (type "ground")
-              (surface 
-                (image "groundpieces/ground/misc/wood1")
-                (modifier "ROT0"))
-              (position 1235 325 0))
-            (groundpiece 
-              (type "ground")
-              (surface 
-                (image "groundpieces/ground/misc/wood1")
-                (modifier "ROT0"))
-              (position 1171 325 0))
-            (groundpiece 
-              (type "ground")
-              (surface 
-                (image "groundpieces/ground/misc/wood1")
-                (modifier "ROT0"))
-              (position 1107 325 0))
-            (groundpiece 
-              (type "ground")
-              (surface 
-                (image "groundpieces/ground/misc/wood1")
-                (modifier "ROT0"))
-              (position 1299 325 0))))))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/misc/wood2")
+            (modifier "ROT0"))
+          (position 595 345 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/misc/wood2")
+            (modifier "ROT0"))
+          (position 595 473 0))))
+    (group 
+      (objects 
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/misc/wood2")
+            (modifier "ROT0"))
+          (position 1351 345 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/misc/wood2")
+            (modifier "ROT0"))
+          (position 1351 473 0))))
+    (group 
+      (objects 
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/misc/wood1")
+            (modifier "ROT0"))
+          (position 595 325 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/misc/wood1")
+            (modifier "ROT0"))
+          (position 659 325 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/misc/wood1")
+            (modifier "ROT0"))
+          (position 787 325 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/misc/wood1")
+            (modifier "ROT0"))
+          (position 723 325 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/misc/wood1")
+            (modifier "ROT0"))
+          (position 1043 325 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/misc/wood1")
+            (modifier "ROT0"))
+          (position 979 325 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/misc/wood1")
+            (modifier "ROT0"))
+          (position 915 325 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/misc/wood1")
+            (modifier "ROT0"))
+          (position 851 325 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/misc/wood1")
+            (modifier "ROT0"))
+          (position 1235 325 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/misc/wood1")
+            (modifier "ROT0"))
+          (position 1171 325 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/misc/wood1")
+            (modifier "ROT0"))
+          (position 1107 325 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/misc/wood1")
+            (modifier "ROT0"))
+          (position 1299 325 0))))
     (groundpiece 
       (type "ground")
       (surface 
@@ -339,7 +337,7 @@
       (surface 
         (image "groundpieces/ground/halloween/ground4")
         (modifier "ROT0"))
-      (position 1036 798 0))
+      (position 1038 798 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -763,13 +761,13 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_large")
         (modifier "ROT0"))
-      (position 1020 721 0))
+      (position 1020 722 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1020 690 0))
+      (position 1020 691 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -799,6 +797,12 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 924 274 0))))
+      (position 924 274 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 1084 754 0))))
 
 ;; EOF ;;

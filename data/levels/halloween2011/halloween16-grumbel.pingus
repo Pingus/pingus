@@ -12,9 +12,9 @@
     (actions 
       (blocker 6)
       (bomber 6)
-      (bridger 6)
+      (bridger 7)
       (digger 2)
-      (jumper 5)
+      (jumper 8)
       (miner 2))
     (levelsize 2700 1200))
   (objects 
@@ -31,6 +31,12 @@
       (scroll-y 0)
       (para-x 0.5)
       (para-y 0.5))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/gravestone3")
+        (modifier "ROT0"))
+      (position 1561 685 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -870,14 +876,14 @@
       (name "prefabs/entrances/halloween")
       (position 434 585 0)
       (overrides 
-        (release-rate 50)
+        (release-rate 250)
         (direction "right")
         (owner-id 0)))
     (prefab 
       (name "prefabs/entrances/halloween")
       (position 2262 586 0)
       (overrides 
-        (release-rate 50)
+        (release-rate 250)
         (direction "left")
         (owner-id 0)))
     (groundpiece 
