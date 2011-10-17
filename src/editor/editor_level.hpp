@@ -45,13 +45,6 @@ public:
   /** Destructor */
   ~EditorLevel();
 
-  /** get a new, blank level implementation without any valid settings */
-  void clear_impl();
-
-  /** Set valid default level implementation settings, assuming an
-      existing implementation */
-  void set_impl_defaults();
-
   /** get a new implementation with default settings */
   void clear();
 

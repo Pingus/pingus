@@ -22,7 +22,6 @@
 #include "editor/level_obj.hpp"
 #include "editor/level_obj_factory.hpp"
 #include "editor/generic_level_obj.hpp"
-#include "editor/level_data.hpp"
 #include "pingus/pingus_level.hpp"
 #include "pingus/prefab_file.hpp"
 #include "util/log.hpp"
@@ -40,16 +39,26 @@ public:
     levelname(),
     description(),
     ambient_light(255, 255, 255),
-    size(),
-    number_of_pingus(),
-    number_to_save(),
-    actions(),
-    time(),
+    size(1920, 1200),
+    number_of_pingus(50),
+    number_to_save(20),
+    actions({
+        { "basher",   20 },
+        { "blocker",  20 },
+        { "bomber",   20 },
+        { "bridger",  20 },
+        { "climber",  20 },
+        { "digger",   20 },
+        { "floater",  20 },
+        { "jumper",   20 },
+        { "miner",    20 },
+        { "slider",   20 }
+      }),
+    time(-1),
     author(),
     music(),
     objects()
   {
-    // Do nothing
   }
 
   /** Destructor */
@@ -91,51 +100,12 @@ static bool LevelObjSort(const LevelObjPtr& a, const LevelObjPtr& b)
 EditorLevel::EditorLevel() :
   impl(new LevelImpl)
 {
-  set_impl_defaults();
 }
 
-/** simply replace the current level implementation with a new blank
-    one */
 void
-EditorLevel::clear_impl()
+EditorLevel::clear() 
 {
   impl.reset(new LevelImpl);
-}
-
-/** assuming we have a valid implementation, set default values */
-void
-EditorLevel::set_impl_defaults()
-{
-  impl->levelname   = "";
-  impl->description = "";
-  impl->author = "";
-  impl->music   = "";
-
-  impl->ambient_light = Color(255,255,255);
-  impl->size = Size(1920, 1200);
-
-  impl->number_of_pingus = 50;
-  impl->number_to_save   = 20;
-  
-  impl->actions.clear();
-  impl->actions["basher"]  = 20;
-  impl->actions["blocker"] = 20;
-  impl->actions["bomber"]  = 20;
-  impl->actions["bridger"] = 20;
-  impl->actions["climber"] = 20;
-  impl->actions["digger"]  = 20;
-  impl->actions["floater"] = 20;
-  impl->actions["jumper"]  = 20;
-  impl->actions["miner"]   = 20;
-  impl->actions["slider"]  = 20;
-  
-  impl->time = -1;
-}
-
-void
-EditorLevel::clear() {
-  clear_impl();
-  set_impl_defaults();
 }
 
 // Default Destructor
