@@ -51,7 +51,7 @@ pingus_sources = \
                Glob('src/util/*.cpp') + \
                Glob('src/win32/*.cpp')
 
-env.Append(CPPDEFINES = [('VERSION', '"\\"%s\\""' % package_version)])
+env.Append(CPPDEFINES = ['WIN32', ('VERSION', '"\\"%s\\""' % package_version)])
 env.Append(CPPPATH=['external/tinygettext'])
 env.Program("pingus", pingus_sources)
 
