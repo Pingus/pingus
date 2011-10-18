@@ -17,7 +17,7 @@
       (climber 40)
       (digger 5)
       (floater 5)
-      (jumper 80)
+      (jumper 60)
       (miner 5))
     (levelsize 3000 1600))
   (objects 

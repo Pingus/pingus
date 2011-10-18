@@ -13,8 +13,8 @@
       (blocker 5)
       (bomber 5)
       (bridger 10)
-      (climber 5)
-      (jumper 6)
+      (climber 4)
+      (jumper 8)
       (slider 5))
     (levelsize 2600 1900))
   (objects 
@@ -45,6 +45,18 @@
       (position 734 781 -50)
       (speed 0)
       (parallax 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/gravestone5")
+        (modifier "ROT0"))
+      (position 480 1010 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground2")
+        (modifier "ROT0"))
+      (position 320 879 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -1054,12 +1066,6 @@
         (image "groundpieces/ground/halloween/ground1")
         (modifier "ROT0"))
       (position 1007 -21 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/halloween/ground2")
-        (modifier "ROT0"))
-      (position 345 884 0))
     (groundpiece 
       (type "ground")
       (surface 
