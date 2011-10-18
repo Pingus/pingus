@@ -19,6 +19,8 @@
 
 import sys, os
 import SCons.Util
+
+Import('package_version')
 
 def CheckSDLLib(context, sdllib):
     """
@@ -107,18 +109,11 @@ class Project:
 
         self.env = Environment(options = self.opts, ENV=os.environ)
         self.env.Append(CXXFLAGS = ["-std=c++0x"])
-        self.env.Append(CPPDEFINES = [('VERSION', '"\\"0.7.4\\""')])
+        self.env.Append(CPPDEFINES = [('VERSION', '"\\"%s\\""' % package_version)])
+        self.env.Append(CPPPATH = ['src/'])
+        
         Help(self.opts.GenerateHelpText(self.env))
-
-        if os.environ.has_key('PATH'):
-            self.env['ENV']['PATH'] = os.environ['PATH']
-        if os.environ.has_key('HOME'):
-            self.env['ENV']['HOME'] = os.environ['HOME']
-
-        if os.environ.has_key('PKG_CONFIG_PATH'):
-            self.env['ENV']['PKG_CONFIG_PATH'] = os.environ['PKG_CONFIG_PATH']
-
-        self.env.Append(CPPPATH = ['.', 'src/'])
+                
 
         self.conf = self.env.Configure(custom_tests = {
             'CheckMyProgram' : CheckMyProgram,

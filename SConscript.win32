@@ -1,3 +1,5 @@
+Import('package_version')
+
 env = Environment(PATH="/home/ingo/projects/mingw32/run/bin:$PATH",
                   PKG_CONFIG_LIBDIR="/home/ingo/projects/mingw32/run/lib/pkgconfig:/home/ingo/projects/mingw32/run/opt/gtk/lib/pkgconfig",
                   CXXFLAGS=["-O3", "-s", "-std=c++0x"],
@@ -49,7 +51,7 @@ pingus_sources = \
                Glob('src/util/*.cpp') + \
                Glob('src/win32/*.cpp')
 
-env.Append(CPPDEFINES=[('VERSION', '"\\"0.7.4\\""'), 'WIN32'])
+env.Append(CPPDEFINES = [('VERSION', '"\\"%s\\""' % package_version)])
 env.Append(CPPPATH=['external/tinygettext'])
 env.Program("pingus", pingus_sources)
 
