@@ -39,7 +39,6 @@ std::string to_screenname(Enum action)
     case JUMPER         : return _("Jumper");
     case LASERKILL      : return _("Laserkill");
     case MINER          : return _("Miner");
-    case ROCKETLAUNCHER : return _("Rocketlauncher");
     case SLIDER         : return _("Slider");
     case SMASHED        : return _("Smashed");
     case SPLASHED       : return _("Splashed");
@@ -70,7 +69,6 @@ std::string to_string(Enum action)
     case JUMPER         : return "jumper";
     case LASERKILL      : return "laserkill";
     case MINER          : return "miner";
-    case ROCKETLAUNCHER : return "rocketlauncher";
     case SLIDER         : return "slider";
     case SMASHED        : return "smashed";
     case SPLASHED       : return "splashed";
@@ -99,7 +97,6 @@ Enum from_string(const std::string& action)
   if (action == "jumper")         return JUMPER;
   if (action == "laserkill")      return LASERKILL;
   if (action == "miner")          return MINER;
-  if (action == "rocketlauncher") return ROCKETLAUNCHER;
   if (action == "slider")         return SLIDER;
   if (action == "smashed")        return SMASHED;
   if (action == "splashed")       return SPLASHED;

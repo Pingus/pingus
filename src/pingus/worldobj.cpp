@@ -56,29 +56,8 @@ WorldObj::update()
 }
 
 void
-WorldObj::draw_offset(int /*x*/, int /*y*/, float /*s*/)
-{
-  // do nothing
-  log_error("WorldObj::draw_offset(): not implemented, probally a bug: "
-            << typeid(*this).name ());
-}
-
-void
 WorldObj::draw_smallmap(SmallMap* smallmap)
 {
-}
-
-void
-WorldObj::draw (SceneContext& gc)
-{
-  // FIXME: I need some docu on the meaning of get_x_offset() and co.
-  log_error("WorldObj:draw(SceneContext): Using compat-wrapper: "
-            << typeid(*this).name ());
-#if 0 // FIXME:
-  draw_offset (static_cast<int>(gc.get_x_offset () + gc.get_width ()/2),
-               static_cast<int>(gc.get_y_offset () + gc.get_height ()/2),
-               gc.get_zoom ());
-#endif
 }
 
 /* EOF */

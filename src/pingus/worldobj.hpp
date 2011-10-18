@@ -66,17 +66,8 @@ public:
   virtual void set_pos(const Vector3f& p) = 0;
   virtual Vector3f get_pos() const = 0;
 
-  /** Draws this WorldObject on the screen with the specified offset. If not
-   *  overloaded, this method does nothing.
-   *  (XXX: What are the bounds of this offset?)
-   *  @param x the $x$-coordinate of this object
-   *  @param y the $y$-coordinate of this object
-   *  @param s the scalar by with the object is zoomed (1.0 is default)
-   */
-  virtual void draw_offset (int x, int y, float s = 1.0);
-
   /** Draw the WorldObj to the given SceneContext */
-  virtual void draw(SceneContext& gc);
+  virtual void draw(SceneContext& gc) = 0;
   virtual void draw_smallmap(SmallMap* smallmap);
 
   /** Draws the objects collision map to the main collision map, draws
