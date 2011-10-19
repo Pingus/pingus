@@ -27,11 +27,11 @@ int main(int argc, char** argv)
     {
       std::cout << "Processing: " << argv[i] << " " << i << "/" << (argc-1) << std::endl;
       Pathname filename(argv[i], Pathname::SYSTEM_PATH);
-      Editor::EditorLevel level;
+
       std::cout << "Loading: " << filename.str() << std::endl;
-      level.load_level(filename);
+      std::unique_ptr<Editor::EditorLevel> level = Editor::EditorLevel::from_level_file(filename);
       std::cout << "Saving:  " << argv[i] << std::endl;
-      level.save_level(argv[i]);
+      level->save_level(argv[i]);
     }
     catch(const std::exception& err)
     {
