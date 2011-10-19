@@ -5,7 +5,7 @@
 \\$2 \(la\\$1\(ra\\$3
 ..
 .if \n(.g .mso www.tmac
-.TH "pingus " 6 "9 October 2011" 0.7.4 "User Commands"
+.TH "pingus " 6 "19 October 2011" 0.7.5 "User Commands"
 .SH NAME
 pingus
 \- A puzzle game where you have to save penguins 
@@ -248,6 +248,109 @@ Slider
 The Slider will make a tiny leap forward, gliding on its
 belly for a short while, allowing the Pingu to make it
 through narrow tunnels.
+.SH "LEVEL EDITOR"
+Pingus comes with a build in level editor. The level editor can
+currently be used to edit level files (*.pingus) as well as
+prefabricated objects (*.prefabs). Worldmaps (*.worldmap) can
+currently not be edited with the editor.
+.PP
+All Pingus data files, except the sound and images, are raw text
+files and can be edited in a text editor if the editor isn't
+sufficient.
+.PP
+If you want to submit a level to be included in the next release
+follow the following naming convention:
+.PP
+\*(T<\fI{theme}{number}\-{nickname}.pingus\fR\*(T>
+.PP
+Do not use space or uppercase in the levelname and keep the
+levelname simple (i.e. \*(T<\fIsnow1\-grumbel.pingus\fR\*(T>
+not
+\*(T<\fIpingus\-go\-on\-a\-long\-journey\-in\-snowland\-grumbel.pingus\fR\*(T>).
+The filename should not reflect the actual level title, it
+simply should be unique and not conflict with other peoples
+levels. If you plan on building a whole levelset, name the levels after the
+levelset.
+.PP
+To submit a level send it to <\*(T<pingus\-devel@nongnu.org\*(T>>.
+.SS PREFABS
+A prefab, short for prefabricated object, is a group of
+objects that have been combined into a new single object. A
+classic case of a prefab would for example be a snowman, it is
+build out of multiple smaller snowball objects and then saved
+as prefab to allow easy reuse in multiple levels. Unlike
+simple object groups, prefab are saved as reference in the
+level, thus if the prefab is updated, all levels will see the
+change. Like object groups prefabs can be ungrouped to break
+them back down to individual objects if individual editing is
+needed, they are seizing to be prefabs at that point and
+changes to the .prefab file will no longer be reflected in the
+level.
+.PP
+Prefabs behave pretty much like regular levels, to create a
+prefab simply start a new level and insert the objects as
+usual, unlike regular levels the level size is ignored and
+thus you have to place your object around the center of the
+levels, marked by a cross, to have the prefab function
+properly. To save a prefab as prefab instead of level you have
+to append .prefab suffix to the filename.
+.PP
+Thumbnail generation for prefabs is currently done offline
+with the script
+\*(T<\fI\&./tools/generate\-prefab\-images.sh\fR\*(T>
+available from the Pingus source tree.
+.SS "UI QUIRCKS"
+The Pingus level editor is best used with a combination of
+mouse and keyboard, all essential functions have keyboard
+shortcuts.
+.PP
+Unlike more traditional GUIs, the Pingus editor lacks
+scrollbars, so to move around the level or the object list on
+the right simply use the middle or right mouse button and
+drag&drop the list around.
+.PP
+Objects from the object list can be inserted into the level by
+drag&dropping them over to the level.
+.SS "KEYBOARD SHORTCUTS"
+.TP 
+\fBDelete\fR, \fBBackspace\fR
+Delete all currently selected objects
+.TP 
+\fBA\fR
+Select or unselect all objects
+.TP 
+\fBD\fR
+Duplicate the currently selected objects
+.TP 
+\fBI\fR, \fBK\fR, \fBJ\fR, \fBL\fR
+Move the current selection by one pixel, if
+\fBShift\fR is held, move it by 32 pixel.
+.TP 
+\fBPageUp\fR, \fBPageDown\fR
+Raise or lower an object
+.TP 
+ShiftPageUp, ShiftPageDown
+Raise or lower an object to the top or bottom
+.TP 
+\fBR\fR, ShiftR
+Rotate an objects 90 degrees, if \fBShift\fR
+is held rotate it the other way around
+.TP 
+\fBF\fR, ShiftV
+Flip an object horizontally
+.TP 
+\fBV\fR, ShiftF
+Flip an object vertically
+.TP 
+\fBB\fR, ShiftB
+Toggle the background color to make it easier to see
+small pixel errors. If shift is hold the color will be
+toggled in the opposite direction.
+.TP 
+\fB+\fR, \fB=\fR, \fB-\fR
+Increase/decrease the repeat value of selected objects,
+this will only have an effect on objects having an
+repeat value (switchdoors, liquids, ...).
 .SH COPYRIGHT
 Copyright (C) 1998-2011 Ingo Ruhnke <\*(T<grumbel@gmail.com\*(T>>
 See the file AUTHORS for a complete list of contributors.

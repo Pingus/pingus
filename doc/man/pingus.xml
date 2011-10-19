@@ -1,9 +1,9 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
-          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-          <!ENTITY % pingusstuff SYSTEM "pingus.ent">
-          %pingusstuff;
-          ]>
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY % pingusstuff SYSTEM "pingus.ent">
+%pingusstuff;
+]>
 <refentry id="pingus"> 
   <refmeta>
     <refentrytitle>
@@ -115,28 +115,28 @@
                 <term>sdl</term>
                 <listitem>
                   <para>A simple software renderer based on SDL, this
-                    is the default and the safest options.</para>
+                  is the default and the safest options.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
                 <term>opengl</term>
                 <listitem>
                   <para>The OpenGL renderer will use hardware
-                    acceleration to render the graphics, it is much
-                    faster then the SDL renderer and recommended when
-                    the hardware supports OpenGL.</para>
+                  acceleration to render the graphics, it is much
+                  faster then the SDL renderer and recommended when
+                  the hardware supports OpenGL.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
                 <term>delta</term>
                 <listitem>
                   <para>The delta renderer uses SDL for rendering and
-                    doesn't use hardware acceleration, it will however
-                    try to increase rendering performance by only re
-                    rendering screen elements that have changed. Using
-                    the delta renderer will disable some effects such
-                    as scrolling background to allow maximum
-                    benefits.</para>
+                  doesn't use hardware acceleration, it will however
+                  try to increase rendering performance by only re
+                  rendering screen elements that have changed. Using
+                  the delta renderer will disable some effects such
+                  as scrolling background to allow maximum
+                  benefits.</para>
                 </listitem>
               </varlistentry>
             </variablelist>
@@ -147,10 +147,10 @@
           <term>-g, --geometry=WIDTHxHEIGHT</term>
           <listitem>
             <para>Set the window resolution for pingus (default:
-              800x600). Note that <option>--geometry</option> only
-              applies to the window resolution, for the fullscreen
-              resolution
-              use <option>--fullscreen-resolution</option></para>
+            800x600). Note that <option>--geometry</option> only
+            applies to the window resolution, for the fullscreen
+            resolution
+            use <option>--fullscreen-resolution</option></para>
           </listitem>
         </varlistentry>
 
@@ -177,10 +177,10 @@
           <term>--no-auto-scrolling</term>
           <listitem>
             <para>Disable automatic scrolling. Automatic scrolling
-              will cause the screen to scroll whenever the mouse reaches
-              the border of the screen. Automatic scrolling will only be
-              active in fullscreen mode or when mouse-grab is
-              enabled.</para>
+            will cause the screen to scroll whenever the mouse reaches
+            the border of the screen. Automatic scrolling will only be
+            active in fullscreen mode or when mouse-grab is
+            enabled.</para>
           </listitem>
         </varlistentry>
 
@@ -188,13 +188,13 @@
           <term>--drag-drop-scrolling</term>
           <listitem>
             <para>Enable drag'n drop scrolling. By default Pingus will
-              use a rubber-band scrolling where the scroll speed
-              depends on how far away the cursor is from the position
-              when the mouse button has been clicked. In drag&amp;drop
-              mode scrolling will behave more like in traditional GUI
-              applications such as Gimp, where clicking the scroll
-              button will 'pick up' the playfield and allow to move it
-              around till it is released again.</para>
+            use a rubber-band scrolling where the scroll speed
+            depends on how far away the cursor is from the position
+            when the mouse button has been clicked. In drag&amp;drop
+            mode scrolling will behave more like in traditional GUI
+            applications such as Gimp, where clicking the scroll
+            button will 'pick up' the playfield and allow to move it
+            around till it is released again.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -272,10 +272,10 @@
           <term>-a, --addon=DIR</term>
           <listitem>
             <para>Load game modifications from DIR. Files in DIR will
-              be used instead of the files in found in the main datadir
-              of Pingus, thus allowing to modifications, such as sprites
-              replacements, additional levels, etc. to the game, without
-              changing the main data files.</para>
+            be used instead of the files in found in the main datadir
+            of Pingus, thus allowing to modifications, such as sprites
+            replacements, additional levels, etc. to the game, without
+            changing the main data files.</para>
           </listitem>
         </varlistentry>
 
@@ -437,15 +437,15 @@
         </varlistentry>
 
         <!--
-           <varlistentry>
-             <term><keycombo><keycap>F6</keycap></keycombo></term>
-             <listitem>
-               <para>
-                 Show the AddOn Menu
-               </para>
-             </listitem>
-           </varlistentry>
-           -->
+            <varlistentry>
+            <term><keycombo><keycap>F6</keycap></keycombo></term>
+            <listitem>
+            <para>
+            Show the AddOn Menu
+            </para>
+            </listitem>
+            </varlistentry>
+        -->
 
         <varlistentry>
           <term><keycombo><keycap>F12</keycap></keycombo></term>
@@ -593,6 +593,213 @@
         </listitem>
       </varlistentry>
     </variablelist>
+  </refsect1>
+
+  <refsect1>
+    <title>Level Editor</title>
+    <para>
+      Pingus comes with a build in level editor. The level editor can
+      currently be used to edit level files (*.pingus) as well as
+      prefabricated objects (*.prefabs). Worldmaps (*.worldmap) can
+      currently not be edited with the editor.
+    </para>
+    <para>
+      All Pingus data files, except the sound and images, are raw text
+      files and can be edited in a text editor if the editor isn't
+      sufficient.
+    </para>
+    <para>
+      If you want to submit a level to be included in the next release
+      follow the following naming convention:
+    </para>
+    <para>
+      <filename><replaceable>{theme}</replaceable><replaceable>{number}</replaceable>-<replaceable>{nickname}</replaceable>.pingus</filename>
+    </para>
+    <para>
+      Do not use space or uppercase in the levelname and keep the
+      levelname simple (i.e. <filename>snow1-grumbel.pingus</filename>
+      not
+      <filename>pingus-go-on-a-long-journey-in-snowland-grumbel.pingus</filename>).
+      The filename should not reflect the actual level title, it
+      simply should be unique and not conflict with other peoples
+      levels. If you plan on building a whole levelset, name the
+      levels after the levelset.
+    </para>
+    <para>
+      To submit a level send it to <email>pingus-devel@nongnu.org</email>.
+    </para>
+
+    <refsect2>
+      <title>Prefabs</title>
+      <para>
+        A prefab, short for prefabricated object, is a group of
+        objects that have been combined into a new single object. A
+        classic case of a prefab would for example be a snowman, it is
+        build out of multiple smaller snowball objects and then saved
+        as prefab to allow easy reuse in multiple levels. Unlike
+        simple object groups, prefab are saved as reference in the
+        level, thus if the prefab is updated, all levels will see the
+        change. Like object groups prefabs can be ungrouped to break
+        them back down to individual objects if individual editing is
+        needed, they are seizing to be prefabs at that point and
+        changes to the .prefab file will no longer be reflected in the
+        level.
+      </para>
+      <para>
+        Prefabs behave pretty much like regular levels, to create a
+        prefab simply start a new level and insert the objects as
+        usual, unlike regular levels the level size is ignored and
+        thus you have to place your object around the center of the
+        levels, marked by a cross, to have the prefab function
+        properly. To save a prefab as prefab instead of level you have
+        to append .prefab suffix to the filename.
+      </para>
+      <para>
+        Thumbnail generation for prefabs is currently done offline
+        with the script
+        <filename>./tools/generate-prefab-images.sh</filename>
+        available from the Pingus source tree.
+      </para>
+    </refsect2>
+    <refsect2>
+      <title>UI Quircks</title>
+      <para>
+        The Pingus level editor is best used with a combination of
+        mouse and keyboard, all essential functions have keyboard
+        shortcuts.
+      </para>
+      <para>
+        Unlike more traditional GUIs, the Pingus editor lacks
+        scrollbars, so to move around the level or the object list on
+        the right simply use the middle or right mouse button and
+        drag&amp;drop the list around.
+      </para>
+      <para>
+        Objects from the object list can be inserted into the level by
+        drag&amp;dropping them over to the level.
+      </para>
+    </refsect2>
+    <refsect2>
+      <title>Keyboard Shortcuts</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><keycap>Delete</keycap></term>
+          <term><keycap>Backspace</keycap></term>
+          <listitem>
+            <para>
+              Delete all currently selected objects
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycap>A</keycap></term>
+          <listitem>
+            <para>
+              Select or unselect all objects
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycap>D</keycap></term>
+          <listitem>
+            <para>
+              Duplicate the currently selected objects
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycap>I</keycap>, <keycap>K</keycap>, <keycap>J</keycap>, <keycap>L</keycap></term>
+          <!-- <term><keycap>C</keycap>, <keycap>H</keycap>, <keycap>T</keycap>, <keycap>N</keycap></term> -->
+          <listitem>
+            <para>
+              Move the current selection by one pixel, if
+              <keycap>Shift</keycap> is held, move it by 32 pixel.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycap>PageUp</keycap></term>
+          <term><keycap>PageDown</keycap></term>
+          <listitem>
+            <para>
+              Raise or lower an object
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycombo><keycap>Shift</keycap> <keycap>PageUp</keycap></keycombo></term>
+          <term><keycombo><keycap>Shift</keycap> <keycap>PageDown</keycap></keycombo></term>
+          <listitem>
+            <para>
+              Raise or lower an object to the top or bottom
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycap>R</keycap></term>
+          <term><keycombo><keycap>Shift</keycap> <keycap>R</keycap></keycombo></term>
+          <listitem>
+            <para>
+              Rotate an objects 90 degrees, if <keycap>Shift</keycap>
+              is held rotate it the other way around
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycap>F</keycap></term>
+          <term><keycombo><keycap>Shift</keycap> <keycap>V</keycap></keycombo></term>
+          <listitem>
+            <para>
+              Flip an object horizontally
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycap>V</keycap></term>
+          <term><keycombo><keycap>Shift</keycap> <keycap>F</keycap></keycombo></term>
+          <listitem>
+            <para>
+              Flip an object vertically
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycap>B</keycap></term>
+          <term><keycombo><keycap>Shift</keycap><keycap>B</keycap></keycombo></term>
+          <listitem>
+            <para>
+              Toggle the background color to make it easier to see
+              small pixel errors. If shift is hold the color will be
+              toggled in the opposite direction.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><keycap>+</keycap></term>
+          <term><keycap>=</keycap></term>
+          <term><keycap>-</keycap></term>
+          <listitem>
+            <para>
+              Increase/decrease the repeat value of selected objects,
+              this will only have an effect on objects having an
+              repeat value (switchdoors, liquids, ...).
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
   </refsect1>
 
   <refsect1>
