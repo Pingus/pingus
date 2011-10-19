@@ -32,6 +32,12 @@
       (para-x 0.5)
       (para-y 0.5))
     (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground5")
+        (modifier "ROT0"))
+      (position 1228 970 0))
+    (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/misc/moos3")

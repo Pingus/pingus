@@ -2771,19 +2771,19 @@
       (surface 
         (image "groundpieces/transparent/misc/moos6")
         (modifier "ROT0"))
-      (position 1592 1013 0))
+      (position 1592 1010 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/misc/moos6")
         (modifier "ROT0"))
-      (position 1537 1008 0))
+      (position 1547 1009 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/misc/moos6")
-        (modifier "ROT0"))
-      (position 1491 1008 0))
+        (modifier "ROT0FLIP"))
+      (position 1491 1011 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -2873,7 +2873,7 @@
       (surface 
         (image "groundpieces/transparent/misc/moos6")
         (modifier "ROT0"))
-      (position 1444 1011 0))
+      (position 1444 1015 0))
     (groundpiece 
       (type "transparent")
       (surface 
