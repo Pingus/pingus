@@ -993,7 +993,7 @@
       (surface 
         (image "groundpieces/ground/halloween/ground3")
         (modifier "ROT0"))
-      (position 1113 1100 0))
+      (position 1107 1091 0))
     (groundpiece 
       (type "ground")
       (surface 

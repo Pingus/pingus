@@ -70,6 +70,12 @@
       (speed 0)
       (parallax 0))
     (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground2")
+        (modifier "ROT0"))
+      (position 1825 1234 0))
+    (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/halloween/spiderweb1")
@@ -701,13 +707,13 @@
       (surface 
         (image "groundpieces/ground/halloween/ground1")
         (modifier "ROT0"))
-      (position 2575 441 0))
+      (position 2575 445 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/ground1")
         (modifier "ROT0"))
-      (position 2561 588 0))
+      (position 2559 587 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -755,19 +761,19 @@
       (surface 
         (image "groundpieces/ground/halloween/ground1")
         (modifier "ROT0"))
-      (position 2878 777 0))
+      (position 2882 733 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/ground1")
         (modifier "ROT0"))
-      (position 2886 605 0))
+      (position 2890 572 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/ground1")
         (modifier "ROT0"))
-      (position 2880 430 0))
+      (position 2888 411 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -797,13 +803,13 @@
       (surface 
         (image "groundpieces/ground/halloween/ground1")
         (modifier "ROT0"))
-      (position 2819 1021 0))
+      (position 2829 1013 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/ground1")
         (modifier "ROT0"))
-      (position 2914 894 0))
+      (position 2898 871 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -1107,7 +1113,7 @@
       (surface 
         (image "groundpieces/ground/halloween/ground1")
         (modifier "ROT0"))
-      (position 2895 259 0))
+      (position 2892 242 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -1281,7 +1287,7 @@
       (surface 
         (image "groundpieces/ground/halloween/ground1")
         (modifier "ROT0"))
-      (position 266 485 0))
+      (position 266 483 0))
     (groundpiece 
       (type "ground")
       (surface 

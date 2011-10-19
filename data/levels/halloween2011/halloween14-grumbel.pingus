@@ -48,6 +48,12 @@
     (groundpiece 
       (type "ground")
       (surface 
+        (image "groundpieces/ground/halloween/ground1")
+        (modifier "ROT0"))
+      (position -115 709 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
         (image "groundpieces/ground/halloween/ground4")
         (modifier "ROT0"))
       (position 1550 1128 0))
@@ -1305,7 +1311,7 @@
       (surface 
         (image "groundpieces/ground/halloween/ground1")
         (modifier "ROT0"))
-      (position -1 688 0))
+      (position 18 685 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -3085,7 +3091,7 @@
       (surface 
         (image "groundpieces/ground/halloween/ground2")
         (modifier "ROT0"))
-      (position 370 1677 0))
+      (position 371 1678 0))
     (groundpiece 
       (type "transparent")
       (surface 
