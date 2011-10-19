@@ -19,6 +19,7 @@
 
 #include <memory>
 
+#include "engine/display/sprite.hpp"
 #include "pingus/groundtype.hpp"
 
 class CollisionMask;
@@ -45,6 +46,9 @@ private:
 
   /** A array of uchar, each uchar represents a pixel on the map. */
   std::unique_ptr<uint8_t[]> colmap;
+
+  Sprite m_colmap_sprite;
+  unsigned int m_colmap_sprite_serial;
 
 public:
   /** Init the colmap from a given area of memory.

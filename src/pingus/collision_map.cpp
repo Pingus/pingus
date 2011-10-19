@@ -20,11 +20,13 @@
 #include "engine/display/sprite.hpp"
 #include "pingus/collision_mask.hpp"
 
-CollisionMap::CollisionMap(int w, int h)
-  : serial(0),
-    width(w),
-    height(h),
-    colmap(new unsigned char[width * height])
+CollisionMap::CollisionMap(int w, int h) :
+  serial(0),
+  width(w),
+  height(h),
+  colmap(new unsigned char[width * height]),
+  m_colmap_sprite(),
+  m_colmap_sprite_serial()
 {
   // Clear the colmap
   memset(colmap.get(), Groundtype::GP_NOTHING, sizeof(unsigned char) * width * height);
@@ -150,57 +152,63 @@ CollisionMap::put(const CollisionMask& mask, int sur_x, int sur_y, Groundtype::G
 void
 CollisionMap::draw(DrawingContext& gc)
 {
-  Surface canvas(width, height);
-  unsigned char* buffer;
-
-  canvas.lock();
-  buffer = static_cast<unsigned char*>(canvas.get_data());
-
-  const int red   = 0;
-  const int green = 1;
-  const int blue  = 2;
-  const int alpha = 3;
-
-  uint8_t trans = 220;
-
-  for(int i = 0; i < (width * height); ++i)
+  if (serial != m_colmap_sprite_serial || !m_colmap_sprite)
   {
-    switch(colmap[i])
+    m_colmap_sprite_serial = serial;
+
+    Surface canvas(width, height);
+    unsigned char* buffer;
+
+    canvas.lock();
+    buffer = static_cast<unsigned char*>(canvas.get_data());
+
+    const int red   = 0;
+    const int green = 1;
+    const int blue  = 2;
+    const int alpha = 3;
+
+    uint8_t trans = 220;
+
+    for(int i = 0; i < (width * height); ++i)
     {
-      case Groundtype::GP_NOTHING:
-        buffer[i * 4 + red  ] =   0;
-        buffer[i * 4 + green] =   0;
-        buffer[i * 4 + blue ] =   0;
-        buffer[i * 4 + alpha] =   0;
-        break;
+      switch(colmap[i])
+      {
+        case Groundtype::GP_NOTHING:
+          buffer[i * 4 + red  ] =   0;
+          buffer[i * 4 + green] =   0;
+          buffer[i * 4 + blue ] =   0;
+          buffer[i * 4 + alpha] =   0;
+          break;
 
-      case Groundtype::GP_SOLID:
-        buffer[i * 4 + red  ] = 100;
-        buffer[i * 4 + green] = 100;
-        buffer[i * 4 + blue ] = 100;
-        buffer[i * 4 + alpha] = trans;
-        break;
+        case Groundtype::GP_SOLID:
+          buffer[i * 4 + red  ] = 100;
+          buffer[i * 4 + green] = 100;
+          buffer[i * 4 + blue ] = 100;
+          buffer[i * 4 + alpha] = trans;
+          break;
 
-      case Groundtype::GP_BRIDGE:
-        buffer[i * 4 + red  ] = 200;
-        buffer[i * 4 + green] =   0;
-        buffer[i * 4 + blue ] =   0;
-        buffer[i * 4 + alpha] = trans;
-        break;
+        case Groundtype::GP_BRIDGE:
+          buffer[i * 4 + red  ] = 200;
+          buffer[i * 4 + green] =   0;
+          buffer[i * 4 + blue ] =   0;
+          buffer[i * 4 + alpha] = trans;
+          break;
 
-      default:
-        buffer[i * 4 + red  ] = 200;
-        buffer[i * 4 + green] = 200;
-        buffer[i * 4 + blue ] = 200;
-        buffer[i * 4 + alpha] = trans;
-        break;
+        default:
+          buffer[i * 4 + red  ] = 200;
+          buffer[i * 4 + green] = 200;
+          buffer[i * 4 + blue ] = 200;
+          buffer[i * 4 + alpha] = trans;
+          break;
+      }
     }
+
+    canvas.unlock();
+
+    m_colmap_sprite = Sprite(canvas);
   }
-
-  canvas.unlock();
-
-  Sprite sprite(canvas);
-  gc.draw(sprite, Vector2i(0, 0), 1000);
+  
+  gc.draw(m_colmap_sprite, Vector2i(0, 0), 1000);
 }
 
 unsigned
