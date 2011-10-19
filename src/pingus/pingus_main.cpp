@@ -605,20 +605,31 @@ PingusMain::run(int argc, char** argv)
       fbtype = cmd_options.framebuffer_type.get();
     }
 
-    SDLSystem system;
+    Size screen_size(800, 600);
     if (cmd_options.geometry.is_set())
     {
-      system.create_window(fbtype, 
-                           cmd_options.geometry.get(),
-                           cmd_options.fullscreen.is_set() ? cmd_options.fullscreen.get() : false,
-                           cmd_options.resizable.is_set()  ? cmd_options.resizable.get()  : true);
+      screen_size = cmd_options.geometry.get();
     }
-    else
+
+    bool fullscreen = cmd_options.fullscreen.is_set() ? cmd_options.fullscreen.get() : false;
+    bool resizable  = cmd_options.resizable.is_set()  ? cmd_options.resizable.get()  : true;
+
+    SDLSystem system;
+    try
     {
-      system.create_window(fbtype,
-                           Size(800, 600), 
-                           cmd_options.fullscreen.is_set() ? cmd_options.fullscreen.get() : false,
-                           cmd_options.resizable.is_set()  ? cmd_options.resizable.get()  : true);
+      system.create_window(fbtype, screen_size, fullscreen, resizable);
+    }
+    catch(const std::exception& err)
+    {
+      if (fbtype == SDL_FRAMEBUFFER)
+      {
+        throw;
+      }
+      else
+      {
+        log_error("couldn't create window, falling back to SDL: " << err.what());
+        system.create_window(SDL_FRAMEBUFFER, screen_size, fullscreen, resizable);
+      }
     }
 
     SavegameManager savegame_manager("savegames/savegames.scm");
