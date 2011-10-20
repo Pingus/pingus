@@ -3,6 +3,8 @@
  (title "Playable")
  (description "")
  (image  "levelsets/xmas")
+ (developer-only #t)
+ (locked #f)
  (levels 
 (level (filename "playable/alle"))
 (level (filename "playable/avaritia-cbrucher"))
@@ -45,7 +47,6 @@
 (level (filename "playable/Lev4"))
 (level (filename "playable/level13"))
 (level (filename "playable/level9"))
-(level (filename "playable/lonely"))
 (level (filename "playable/longway"))
 (level (filename "playable/mauern"))
 (level (filename "playable/miner-tutorial-grumbel"))

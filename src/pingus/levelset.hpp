@@ -42,6 +42,7 @@ public:
 private:
   std::string m_title;
   std::string m_description;
+  bool m_developer_only;
   Sprite m_sprite;
   int  m_completion;
   std::vector<Level*> m_levels;
@@ -60,8 +61,10 @@ public:
   void set_title(const std::string& title);
   void set_description(const std::string& description);
   void set_image(const std::string& image);
+  void set_developer_only(bool developer_only);
   void add_level(const std::string& resname, bool accessible = false);
 
+  bool get_developer_only() const;
   std::string get_title() const;
   std::string get_description() const;
   Sprite get_image() const;

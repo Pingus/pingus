@@ -20,6 +20,7 @@
 
 #include "math/math.hpp"
 #include "pingus/plf_res_mgr.hpp"
+#include "pingus/globals.hpp"
 #include "pingus/savegame_manager.hpp"
 #include "util/log.hpp"
 #include "util/raise_exception.hpp"
@@ -67,7 +68,7 @@ Levelset::from_file(const Pathname& pathname)
     std::unique_ptr<Levelset> levelset(new Levelset);
 
     std::string tmp;
-    if (reader.read_string("title",       tmp))
+    if (reader.read_string("title", tmp))
     {
       levelset->set_title(tmp);
     }
@@ -82,19 +83,32 @@ Levelset::from_file(const Pathname& pathname)
       levelset->set_image(tmp);
     }
 
-    FileReader level_reader = reader.read_section("levels");
-    std::vector<FileReader> sections = level_reader.get_sections();
-    for(std::vector<FileReader>::iterator i = sections.begin(); i != sections.end(); ++i)
+    bool tmp_bool;
+    if (reader.read_bool("developer-only", tmp_bool))
     {
-      if (i->get_name() == "level")
+      levelset->set_developer_only(tmp_bool);
+    }
+
+    bool locked = true;
+    reader.read_bool("locked", locked);
+
+    // skip level loading when levels won't be used
+    if (!levelset->get_developer_only() || globals::developer_mode)
+    {
+      FileReader level_reader = reader.read_section("levels");
+      std::vector<FileReader> sections = level_reader.get_sections();
+      for(std::vector<FileReader>::iterator i = sections.begin(); i != sections.end(); ++i)
       {
-        if (!i->read_string("filename", tmp))
+        if (i->get_name() == "level")
         {
-          log_error("Levelset: " << pathname.str() << " is missing filename tag");
-        }
-        else
-        {
-          levelset->add_level(tmp);
+          if (!i->read_string("filename", tmp))
+          {
+            log_error("Levelset: " << pathname.str() << " is missing filename tag");
+          }
+          else
+          {
+            levelset->add_level(tmp, !locked);
+          }
         }
       }
     }
@@ -108,6 +122,7 @@ Levelset::from_file(const Pathname& pathname)
 Levelset::Levelset() :
   m_title(),
   m_description(),
+  m_developer_only(false),
   m_sprite(),
   m_completion(0),
   m_levels()
@@ -138,6 +153,12 @@ void
 Levelset::set_image(const std::string& image)
 {
   m_sprite = Sprite(image);
+}
+
+void
+Levelset::set_developer_only(bool developer_only)
+{
+  m_developer_only = developer_only;
 }
 
 void
@@ -198,6 +219,12 @@ Sprite
 Levelset::get_image() const
 {
   return m_sprite;
+}
+
+bool
+Levelset::get_developer_only() const
+{
+  return m_developer_only;
 }
 
 void

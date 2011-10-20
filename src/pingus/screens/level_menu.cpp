@@ -130,7 +130,11 @@ public:
     {
       try 
       {
-        levelsets.push_back(Levelset::from_file(*i).release());
+        std::unique_ptr<Levelset> levelset = Levelset::from_file(*i);
+        if (!levelset->get_developer_only() || globals::developer_mode)
+        {
+          levelsets.push_back(levelset.release());
+        }
       }
       catch(const std::exception& err)
       {

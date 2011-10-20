@@ -3,6 +3,7 @@
  (title "Alien by Josh Dye")
  (description "Escape from alien")
  (image  "levelsets/alien")
+ (developer-only #t)
  (levels 
   (level (filename "alien/aliens1-phil"))
   (level (filename "alien/aliens2-phil"))

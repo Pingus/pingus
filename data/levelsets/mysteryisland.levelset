@@ -3,6 +3,8 @@
  (title "Island of Mystery")
  (description "Marooned on an Uncharted Isle [by Lachlan McCubbin]")
  (image "levelsets/mysteryisland")
+ (developer-only #t)
+ (locked #f)
  (levels
   (level (filename "mysteryisland/volcano1-grumbel"))
   (level (filename "mysteryisland/multi1-lac"))
