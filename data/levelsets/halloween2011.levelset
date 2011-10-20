@@ -13,6 +13,7 @@
   (level (filename "halloween2011/halloween16-grumbel"))
   (level (filename "halloween2011/halloween17-grumbel"))
   (level (filename "halloween2011/halloween18-grumbel"))
+  (level (filename "halloween2011/halloween19-rz"))
   ))
 
 ;; EOF ;;

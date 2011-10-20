@@ -36,6 +36,24 @@
     (groundpiece 
       (type "transparent")
       (surface 
+        (image "groundpieces/transparent/misc/moos3")
+        (modifier "ROT0"))
+      (position 379 1047 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos3")
+        (modifier "ROT0"))
+      (position 2003 1061 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/ground4")
+        (modifier "ROT180FLIP"))
+      (position 1365 362 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
         (image "groundpieces/transparent/misc/weed1")
         (modifier "ROT0FLIP"))
       (position 495 151 0))
@@ -282,6 +300,12 @@
     (groundpiece 
       (type "transparent")
       (surface 
+        (image "groundpieces/transparent/misc/moos3")
+        (modifier "ROT0FLIP"))
+      (position 426 1043 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
         (image "groundpieces/transparent/misc/weed1")
         (modifier "ROT0FLIP"))
       (position 357 1062 0))
@@ -369,12 +393,6 @@
         (image "groundpieces/transparent/misc/weed1")
         (modifier "ROT0"))
       (position 1013 398 0))
-    (groundpiece 
-      (type "transparent")
-      (surface 
-        (image "groundpieces/transparent/misc/weed1")
-        (modifier "ROT0"))
-      (position 1425 640 0))
     (group 
       (objects 
         (groundpiece 
@@ -484,13 +502,13 @@
       (surface 
         (image "groundpieces/ground/halloween/ground4")
         (modifier "ROT180"))
-      (position 1348 837 0))
+      (position 1352 837 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/ground4")
         (modifier "ROT180FLIP"))
-      (position 1352 805 0))
+      (position 1357 805 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -502,7 +520,7 @@
       (surface 
         (image "groundpieces/ground/halloween/ground4")
         (modifier "ROT180FLIP"))
-      (position 1365 332 0))
+      (position 1369 332 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -845,7 +863,7 @@
       (surface 
         (image "groundpieces/ground/halloween/ground5")
         (modifier "ROT0"))
-      (position 1360 573 0))
+      (position 1365 573 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -875,7 +893,7 @@
       (surface 
         (image "groundpieces/ground/halloween/ground5")
         (modifier "ROT0"))
-      (position 1364 688 0))
+      (position 1366 688 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -2355,6 +2373,24 @@
       (surface 
         (image "groundpieces/transparent/halloween/kirby3")
         (modifier "ROT0"))
-      (position 419 258 0))))
+      (position 419 258 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos3")
+        (modifier "ROT0"))
+      (position 1995 1071 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos3")
+        (modifier "ROT0FLIP"))
+      (position 2027 1075 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos3")
+        (modifier "ROT0"))
+      (position 397 1041 0))))
 
 ;; EOF ;;
