@@ -16,8 +16,11 @@
 
 #include "engine/system/sdl_system.hpp"
 
+#include <SDL_image.h>
+
 #include "engine/display/display.hpp"
 #include "math/size.hpp"
+#include "util/pathname.hpp"
 #include "util/log.hpp"
 
 SDLSystem::SDLSystem()
@@ -40,9 +43,10 @@ SDLSystem::~SDLSystem()
 void
 SDLSystem::create_window(FramebufferType framebuffer_type, const Size& size, bool fullscreen, bool resizable)
 {
-  Display::create_window(framebuffer_type, size, fullscreen, resizable);
+  SDL_WM_SetCaption("Pingus " VERSION, "Pingus " VERSION);
+  SDL_WM_SetIcon(IMG_Load(Pathname("images/icon.png", Pathname::DATA_PATH).get_sys_path().c_str()), 0);
 
-  SDL_WM_SetCaption("Pingus " VERSION, 0 /* icon */);
+  Display::create_window(framebuffer_type, size, fullscreen, resizable);
 
   SDL_EnableUNICODE(1);
 
