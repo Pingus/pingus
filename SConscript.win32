@@ -21,6 +21,7 @@ env = Environment(PATH="/home/ingo/projects/mingw32/run/bin:$PATH",
                               '/home/ingo/projects/mingw32/run/opt/SDL_image-1.2.10/lib',
                               '/home/ingo/projects/mingw32/run/opt/SDL_mixer-1.2.11/lib',
                               '/home/ingo/projects/mingw32/run/opt/gtk/lib' ],
+                  LINKFLAGS = [ '-mwindows' ],
                   LIBS = [ 'mingw32', 'SDLmain', "SDL", "SDL_mixer", "SDL_image", "boost_signals", "png",
                            'opengl32', 'glu32' ])
 
@@ -51,8 +52,11 @@ pingus_sources = \
                Glob('src/util/*.cpp') + \
                Glob('src/win32/*.cpp')
 
+pingus_res = Command('src/win32/pingus.o', 'src/win32/pingus.rc',
+                     'i586-mingw32msvc-windres $SOURCE $TARGET')
+
 env.Append(CPPDEFINES = ['WIN32', ('VERSION', '"\\"%s\\""' % package_version)])
 env.Append(CPPPATH=['external/tinygettext'])
-env.Program("pingus", pingus_sources)
+env.Program("pingus", pingus_sources + pingus_res)
 
 # EOF #
