@@ -599,20 +599,31 @@ PingusMain::run(int argc, char** argv)
     
     print_greeting_message();
     
+    // init the display
     FramebufferType fbtype = SDL_FRAMEBUFFER; 
     if (cmd_options.framebuffer_type.is_set())
     {
       fbtype = cmd_options.framebuffer_type.get();
     }
 
-    Size screen_size(800, 600);
-    if (cmd_options.geometry.is_set())
-    {
-      screen_size = cmd_options.geometry.get();
-    }
-
     bool fullscreen = cmd_options.fullscreen.is_set() ? cmd_options.fullscreen.get() : false;
     bool resizable  = cmd_options.resizable.is_set()  ? cmd_options.resizable.get()  : true;
+
+    Size screen_size(800, 600);
+    if (fullscreen)
+    {
+      if (cmd_options.fullscreen_resolution.is_set())
+      {
+        screen_size = cmd_options.fullscreen_resolution.get();
+      }
+    }
+    else
+    {
+      if (cmd_options.geometry.is_set())
+      {
+        screen_size = cmd_options.geometry.get();
+      }
+    }
 
     SDLSystem system;
     try
@@ -629,11 +640,15 @@ PingusMain::run(int argc, char** argv)
       {
         log_error("couldn't create window, falling back to SDL: " << err.what());
         system.create_window(SDL_FRAMEBUFFER, screen_size, fullscreen, resizable);
+        config_manager.set_renderer(SDL_FRAMEBUFFER);
       }
     }
 
+    // init other components
     SavegameManager savegame_manager("savegames/savegames.scm");
     StatManager stat_manager("savegames/variables.scm");
+
+    // FIXME: turn these into RAII 
     Resource::init();
     Fonts::init();
     Sound::PingusSound::init();
