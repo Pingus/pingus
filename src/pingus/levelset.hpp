@@ -40,15 +40,27 @@ public:
   };
 
 private:
-  std::string title;
-  std::string description;
-  Sprite image;
-  int  completion;
-  std::vector<Level*> levels;
+  std::string m_title;
+  std::string m_description;
+  Sprite m_sprite;
+  int  m_completion;
+  std::vector<Level*> m_levels;
 
 public:
-  Levelset(const Pathname& pathname);
+  static std::unique_ptr<Levelset> from_file(const Pathname& pathname);
+  static std::unique_ptr<Levelset> from_directory(const std::string& title, 
+                                                  const std::string& description, 
+                                                  const std::string& image,
+                                                  const Pathname& pathname);
+
+public:
+  Levelset();
   ~Levelset();
+
+  void set_title(const std::string& title);
+  void set_description(const std::string& description);
+  void set_image(const std::string& image);
+  void add_level(const std::string& resname, bool accessible = false);
 
   std::string get_title() const;
   std::string get_description() const;

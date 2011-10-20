@@ -24,12 +24,38 @@
 #include "util/log.hpp"
 #include "util/raise_exception.hpp"
 
-Levelset::Levelset(const Pathname& pathname) :
-  title(),
-  description(),
-  image(),
-  completion(0),
-  levels()
+std::unique_ptr<Levelset>
+Levelset::from_directory(const std::string& title, 
+                         const std::string& description, 
+                         const std::string& image, 
+                         const Pathname& pathname)
+{
+  std::unique_ptr<Levelset> levelset(new Levelset);
+  
+  levelset->set_title(title);
+  levelset->set_description(description);
+  levelset->set_image(image);
+
+  std::vector<Pathname> files = pathname.opendir_recursive();
+  for(auto it = files.begin(); it != files.end(); ++it)
+  {
+    if (it->has_extension(".pingus"))
+    {
+      std::string resname = it->get_raw_path();
+
+      // FIXME: we need the resname, not the filename, so we do some
+      // ugly mess, cutting away "levels/" and the ".pingus" suffix
+      resname = resname.substr(7, resname.size() - 7 - 7);
+
+      levelset->add_level(resname, true);
+    }
+  }
+
+  return levelset;
+}
+
+std::unique_ptr<Levelset>
+Levelset::from_file(const Pathname& pathname)
 {
   FileReader reader = FileReader::parse(pathname);
   if (reader.get_name() != "pingus-levelset")
@@ -38,11 +64,23 @@ Levelset::Levelset(const Pathname& pathname) :
   }
   else
   {
-    reader.read_string("title",       title);
-    reader.read_string("description", description);
-    std::string image_str;
-    if (reader.read_string("image", image_str))
-      this->image = Sprite(image_str);
+    std::unique_ptr<Levelset> levelset(new Levelset);
+
+    std::string tmp;
+    if (reader.read_string("title",       tmp))
+    {
+      levelset->set_title(tmp);
+    }
+
+    if (reader.read_string("description", tmp))
+    {
+      levelset->set_description(tmp);
+    }
+
+    if (reader.read_string("image", tmp))
+    {
+      levelset->set_image(tmp);
+    }
 
     FileReader level_reader = reader.read_section("levels");
     std::vector<FileReader> sections = level_reader.get_sections();
@@ -50,60 +88,96 @@ Levelset::Levelset(const Pathname& pathname) :
     {
       if (i->get_name() == "level")
       {
-        std::unique_ptr<Level> level(new Level);
-
-        if (!i->read_string("filename", level->resname))
+        if (!i->read_string("filename", tmp))
         {
           log_error("Levelset: " << pathname.str() << " is missing filename tag");
         }
         else
         {
-          try 
-          {
-            level->plf        = PLFResMgr::load_plf(level->resname);
-                  
-            level->accessible = false;
-            level->finished   = false;
-                      
-            levels.push_back(level.release());
-          }
-          catch(const std::exception& err)
-          {
-            log_error("failed to load: " << level->resname << ": " << err.what());
-          }
+          levelset->add_level(tmp);
         }
       }
     }
-  }
 
-  refresh();
+    levelset->refresh();
+
+    return levelset;
+  }
+}
+
+Levelset::Levelset() :
+  m_title(),
+  m_description(),
+  m_sprite(),
+  m_completion(0),
+  m_levels()
+{  
 }
 
 Levelset::~Levelset()
 {
-  for(std::vector<Level*>::iterator i = levels.begin(); i != levels.end(); ++i)
+  for(std::vector<Level*>::iterator i = m_levels.begin(); i != m_levels.end(); ++i)
   {
     delete *i;
+  }
+}
+
+void
+Levelset::set_title(const std::string& title)
+{
+  m_title = title;
+}
+
+void
+Levelset::set_description(const std::string& description)
+{
+  m_description = description;
+}
+
+void
+Levelset::set_image(const std::string& image)
+{
+  m_sprite = Sprite(image);
+}
+
+void
+Levelset::add_level(const std::string& resname, bool accessible)
+{
+  try 
+  {
+    std::unique_ptr<Level> level(new Level);
+
+    level->resname    = resname;
+    level->plf        = PLFResMgr::load_plf(level->resname);
+                  
+    level->accessible = accessible;
+    level->finished   = false;
+                      
+    m_levels.push_back(level.release());
+  }
+  catch(const std::exception& err)
+  {
+    log_error("failed to load: " << resname << ": " << err.what());
   }
 }
 
 std::string
 Levelset::get_title() const
 {
-  return title;
+  return m_title;
 }
 
 std::string
 Levelset::get_description() const
 {
-  return description;
+  return m_description;
 }
 
 Levelset::Level*
 Levelset::get_level(int num) const
 {
-  if (num >= 0 && num < int(levels.size()))
-    return levels[num];
+  if (num >= 0 && num < int(m_levels.size()))
+    return m_levels[num];
   else
     return 0;
 }
@@ -111,25 +185,25 @@ Levelset::get_level(int num) const
 int
 Levelset::get_level_count() const
 {
-  return levels.size();
+  return m_levels.size();
 }
 
 int
 Levelset::get_completion()  const
 {
-  return completion;
+  return m_completion;
 }
 
 Sprite
 Levelset::get_image() const
 {
-  return image;
+  return m_sprite;
 }
 
 void
 Levelset::refresh()
 {
-  for(std::vector<Level*>::iterator i = levels.begin(); i != levels.end(); ++i)
+  for(std::vector<Level*>::iterator i = m_levels.begin(); i != m_levels.end(); ++i)
   {
     Savegame* savegame = SavegameManager::instance()->get((*i)->resname);
 
@@ -141,31 +215,31 @@ Levelset::refresh()
   }
 
   // unlock the next level
-  if (!levels.empty())
+  if (!m_levels.empty())
   {
-    levels[0]->accessible = true; 
-    for(std::vector<Level*>::size_type i = 0; i < levels.size()-1; ++i)
+    m_levels[0]->accessible = true; 
+    for(std::vector<Level*>::size_type i = 0; i < m_levels.size()-1; ++i)
     {
-      if (levels[i]->finished)
+      if (m_levels[i]->finished)
       {
-        levels[i+1]->accessible = true;
+        m_levels[i+1]->accessible = true;
       }
     }
   }
 
   // update completion count
-  completion = 0;
-  for(std::vector<Level*>::iterator i = levels.begin(); i != levels.end(); ++i)
+  m_completion = 0;
+  for(std::vector<Level*>::iterator i = m_levels.begin(); i != m_levels.end(); ++i)
   {
     if ((*i)->finished)
     {
-      completion += 1;
+      m_completion += 1;
     }
   }
 
-  if (!levels.empty())
+  if (!m_levels.empty())
   {
-    completion = Math::clamp(0, completion * 100 / int(levels.size()), 100);
+    m_completion = Math::clamp(0, m_completion * 100 / int(m_levels.size()), 100);
   }
 }
 

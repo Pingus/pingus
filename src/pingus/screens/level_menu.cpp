@@ -130,12 +130,20 @@ public:
     {
       try 
       {
-        levelsets.push_back(new Levelset(*i));
+        levelsets.push_back(Levelset::from_file(*i).release());
       }
       catch(const std::exception& err)
       {
         log_error(err.what());
       }
+    }
+
+    if (globals::developer_mode)
+    {
+      levelsets.push_back(Levelset::from_directory(_("Under Construction"),
+                                                   _("Untested, unpolished and broken levels"),
+                                                   "levelsets/underconstruction",
+                                                   Pathname("levels", Pathname::DATA_PATH)).release());
     }
   }
 
