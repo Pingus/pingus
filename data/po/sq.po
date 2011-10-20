@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: pingus\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-10-20 08:23+0200\n"
-"PO-Revision-Date: 2011-05-05 13:17+0000\n"
+"PO-Revision-Date: 2011-09-18 18:50+0000\n"
 "Last-Translator: Dashamir Hoxha <Unknown>\n"
 "Language-Team: Albanian <sq@li.org>\n"
 "Language: sq\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-05-05 14:08+0000\n"
-"X-Generator: Launchpad (build 12959)\n"
+"X-Launchpad-Export-Date: 2011-10-20 15:40+0000\n"
+"X-Generator: Launchpad (build 14165)\n"
 
 #: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
@@ -169,9 +169,8 @@ msgid "Special Object"
 msgstr ""
 
 #: src/editor/object_selector.cpp:179
-#, fuzzy
 msgid "Prefab Object"
-msgstr "Objekti:"
+msgstr ""
 
 #: src/editor/message_box.cpp:35 src/editor/file_dialog.cpp:66
 msgid "Cancel"
@@ -372,9 +371,8 @@ msgid "Target Id:"
 msgstr ""
 
 #: src/editor/object_properties.cpp:220
-#, fuzzy
 msgid "Height:"
-msgstr "Djathtas"
+msgstr ""
 
 #: src/editor/object_properties.cpp:521
 msgid "Object: [Group]"
@@ -475,9 +473,8 @@ msgid "..:: Create your own levels ::.."
 msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:64
-#, fuzzy
 msgid "Options"
-msgstr "Menu opsioni"
+msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:65
 msgid "..:: Configure the game ::.."
@@ -485,7 +482,7 @@ msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:163
 msgid "Levelsets"
-msgstr ""
+msgstr "Nivele vështirësie"
 
 #: src/pingus/screens/pingus_menu.cpp:70
 msgid "..:: Play User Built levels ::.."
@@ -516,11 +513,11 @@ msgstr ""
 
 #: src/pingus/screens/level_menu.cpp:178
 msgid "Solved:"
-msgstr ""
+msgstr "U zgjidh:"
 
 #: src/pingus/screens/level_menu.cpp:179
 msgid "levels"
-msgstr ""
+msgstr "Nivelet"
 
 #: src/pingus/screens/story_screen.cpp:108
 #: src/pingus/screens/story_screen.cpp:114
@@ -658,9 +655,8 @@ msgid "Disable all log output"
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:187
-#, fuzzy
 msgid "Display Options:"
-msgstr "Monitori:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:189
 msgid "Start in Window Mode"
@@ -723,9 +719,8 @@ msgid "Loads the level editor"
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:223
-#, fuzzy
 msgid "Directory Options:"
-msgstr "Drejtimi:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:224 src/pingus/pingus_main.cpp:226
 #: src/pingus/pingus_main.cpp:228
@@ -806,7 +801,7 @@ msgstr ""
 
 #: src/pingus/action_name.cpp:27
 msgid "Angel"
-msgstr ""
+msgstr "Engjëll"
 
 #: src/pingus/action_name.cpp:28
 msgid "Basher"
@@ -830,35 +825,35 @@ msgstr ""
 
 #: src/pingus/action_name.cpp:34
 msgid "Digger"
-msgstr ""
+msgstr "Gërmues"
 
 #: src/pingus/action_name.cpp:35
 msgid "Drown"
-msgstr ""
+msgstr "I mbytur"
 
 #: src/pingus/action_name.cpp:36
 msgid "Exiter"
-msgstr ""
+msgstr "Nxjerrës"
 
 #: src/pingus/action_name.cpp:37
 msgid "Faller"
-msgstr ""
+msgstr "Rrëzues"
 
 #: src/pingus/action_name.cpp:38
 msgid "Floater"
-msgstr ""
+msgstr "Notues"
 
 #: src/pingus/action_name.cpp:39
 msgid "Jumper"
-msgstr ""
+msgstr "Kapërcyes"
 
 #: src/pingus/action_name.cpp:40
 msgid "Laserkill"
-msgstr ""
+msgstr "Vret me lazër"
 
 #: src/pingus/action_name.cpp:41
 msgid "Miner"
-msgstr ""
+msgstr "Minator"
 
 #: src/pingus/action_name.cpp:42
 msgid "Slider"
@@ -866,7 +861,7 @@ msgstr "Rrëshqitës"
 
 #: src/pingus/action_name.cpp:43
 msgid "Smashed"
-msgstr ""
+msgstr "Zgërlaqur"
 
 #: src/pingus/action_name.cpp:44
 msgid "Splashed"
@@ -874,19 +869,19 @@ msgstr ""
 
 #: src/pingus/action_name.cpp:45
 msgid "Superman"
-msgstr ""
+msgstr "Superman"
 
 #: src/pingus/action_name.cpp:46
 msgid "Teleported"
-msgstr ""
+msgstr "i Tele-Transportuar"
 
 #: src/pingus/action_name.cpp:47
 msgid "Waiter"
-msgstr ""
+msgstr "Kamarier"
 
 #: src/pingus/action_name.cpp:48
 msgid "Walker"
-msgstr ""
+msgstr "Këmbësor"
 
 #: src/pingus/game_time.cpp:29
 msgid "unlimited"
@@ -2066,3 +2061,12 @@ msgstr ""
 
 #~ msgid "Sandstorm"
 #~ msgstr "Stuhi rëre"
+
+#~ msgid "Display:"
+#~ msgstr "Monitori:"
+
+#~ msgid "Rocketlauncher"
+#~ msgstr "Lëshues rakete"
+
+#~ msgid "-Translation"
+#~ msgstr "-Përkthim"

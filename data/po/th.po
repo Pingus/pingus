@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pingus\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-10-20 08:23+0200\n"
-"PO-Revision-Date: 2011-05-03 04:36+0000\n"
+"PO-Revision-Date: 2011-09-18 18:50+0000\n"
 "Last-Translator: Seksan Neramitthanasombat <Unknown>\n"
 "Language-Team: Thai <th@li.org>\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-05-05 14:08+0000\n"
-"X-Generator: Launchpad (build 12959)\n"
+"X-Launchpad-Export-Date: 2011-10-20 15:40+0000\n"
+"X-Generator: Launchpad (build 14165)\n"
 
 #: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
@@ -31,9 +31,8 @@ msgid "Screenshot: Couldn't write file: "
 msgstr ""
 
 #: src/editor/panel.cpp:171
-#, fuzzy
 msgid "New level"
-msgstr "ระดับ"
+msgstr ""
 
 #: src/editor/panel.cpp:173
 msgid "Open level..."
@@ -397,33 +396,28 @@ msgid "Bridger"
 msgstr "ตัวสร้างสะพาน"
 
 #: src/pingus/screens/option_menu.cpp:206
-#, fuzzy
 msgid "Fullscreen"
-msgstr "เต็มจอ"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:207
-#, fuzzy
 msgid "Mouse Grab"
-msgstr "จับเมาส์"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:209
-#, fuzzy
 msgid "Software Cursor"
-msgstr "เคอร์เซอร์ของซอฟต์แวร์"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:210
-#, fuzzy
 msgid "Autoscrolling"
-msgstr "เลื่อนอัตโนมัติ"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:211
 msgid "Drag&Drop Scrolling"
 msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:213
-#, fuzzy
 msgid "Print FPS"
-msgstr "พิมพ์ FPS"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:217
 msgid "Resolution:"
@@ -482,9 +476,8 @@ msgid "Options"
 msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:65
-#, fuzzy
 msgid "..:: Configure the game ::.."
-msgstr "..:: เริ่มเกม ::.."
+msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:163
 msgid "Levelsets"
@@ -1772,9 +1765,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:5
-#, fuzzy
 msgid "Jump"
-msgstr "ผู้กระโดด"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:6
 msgid ""
@@ -1783,9 +1775,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:5
-#, fuzzy
 msgid "Factory"
-msgstr "เรื่องราว"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:6
 msgid ""
@@ -2118,3 +2109,18 @@ msgstr ""
 
 #~ msgid "Status"
 #~ msgstr "สถานะ"
+
+#~ msgid "Software Cursor:"
+#~ msgstr "เคอร์เซอร์ของซอฟต์แวร์"
+
+#~ msgid "Mouse Grab:"
+#~ msgstr "จับเมาส์"
+
+#~ msgid "Print FPS:"
+#~ msgstr "พิมพ์ FPS"
+
+#~ msgid "Fullscreen:"
+#~ msgstr "เต็มจอ"
+
+#~ msgid "Autoscrolling:"
+#~ msgstr "เลื่อนอัตโนมัติ"

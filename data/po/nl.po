@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Pingus 0.7.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-10-20 08:23+0200\n"
-"PO-Revision-Date: 2011-03-29 09:53+0000\n"
+"PO-Revision-Date: 2011-09-18 18:50+0000\n"
 "Last-Translator: Jordy van Heeswijk <Unknown>\n"
 "Language-Team: Bas Wijnen <wijnen@debian.org>, Martijn Santen "
 "<martijn@jomarsoft.nl>, Giray Devlet <giray@devlet.cc>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-05-05 14:08+0000\n"
-"X-Generator: Launchpad (build 12959)\n"
+"X-Launchpad-Export-Date: 2011-10-20 15:40+0000\n"
+"X-Generator: Launchpad (build 14165)\n"
 
 #: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
@@ -35,9 +35,8 @@ msgid "Screenshot: Couldn't write file: "
 msgstr "Schermafdruk: Kon bestand niet opslaan: "
 
 #: src/editor/panel.cpp:171
-#, fuzzy
 msgid "New level"
-msgstr "    Nieuw level"
+msgstr ""
 
 #: src/editor/panel.cpp:173
 msgid "Open level..."
@@ -173,9 +172,8 @@ msgid "Special Object"
 msgstr "Bijzonder object"
 
 #: src/editor/object_selector.cpp:179
-#, fuzzy
 msgid "Prefab Object"
-msgstr "Bijzonder object"
+msgstr ""
 
 #: src/editor/message_box.cpp:35 src/editor/file_dialog.cpp:66
 msgid "Cancel"
@@ -190,7 +188,6 @@ msgid "== Editor Help =="
 msgstr ""
 
 #: src/editor/editor_screen.cpp:248
-#, fuzzy
 msgid ""
 "Select all\n"
 "Clear Selection\n"
@@ -203,17 +200,8 @@ msgid ""
 "Group selected objects\n"
 "Ungroup selected objects\n"
 msgstr ""
-"Alles selecteren\n"
-"Selectie wissen\n"
-"Objecten naar voren\n"
-"Objecten naar achteren\n"
-"Objecten naar achtergrond\n"
-"Objecten naar voorgrond\n"
-"90 graden draaien\n"
-"270 graden draaien\n"
 
 #: src/editor/editor_screen.cpp:271
-#, fuzzy
 msgid ""
 "Flip object horizontaly\n"
 "Flip object vertically\n"
@@ -223,13 +211,6 @@ msgid ""
 "Toggle background color\n"
 "Increase/lower repeat\n"
 msgstr ""
-"Object horizontaal spiegelen\n"
-"Object verticaal spiegelen\n"
-"Alle gemarkeerde objecten verwijderen\n"
-"Objecten naar boven verplaatsen\n"
-"Objecten naar onderen verplaatsen\n"
-"Objecten naar links verplaatsen\n"
-"Objecten naar rechts verplaatsen\n"
 
 #: src/editor/editor_screen.cpp:282
 msgid ""
@@ -409,9 +390,8 @@ msgid "Target Id:"
 msgstr ""
 
 #: src/editor/object_properties.cpp:220
-#, fuzzy
 msgid "Height:"
-msgstr "Rechts"
+msgstr ""
 
 #: src/editor/object_properties.cpp:521
 msgid "Object: [Group]"
@@ -436,33 +416,28 @@ msgid "Bridger"
 msgstr "Bruggenbouwer"
 
 #: src/pingus/screens/option_menu.cpp:206
-#, fuzzy
 msgid "Fullscreen"
-msgstr "Volledig scherm:"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:207
-#, fuzzy
 msgid "Mouse Grab"
-msgstr "Muis vasthouden:"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:209
-#, fuzzy
 msgid "Software Cursor"
-msgstr "Softwarecursor"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:210
-#, fuzzy
 msgid "Autoscrolling"
-msgstr "Automatisch scrollen"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:211
 msgid "Drag&Drop Scrolling"
 msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:213
-#, fuzzy
 msgid "Print FPS"
-msgstr "FPS weergeven:"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:217
 msgid "Resolution:"
@@ -517,14 +492,12 @@ msgid "..:: Create your own levels ::.."
 msgstr "..:: Maak je eigen levels ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:64
-#, fuzzy
 msgid "Options"
-msgstr "Overige opties:"
+msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:65
-#, fuzzy
 msgid "..:: Configure the game ::.."
-msgstr "..:: Start het spel ::.."
+msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:163
 msgid "Levelsets"
@@ -685,9 +658,8 @@ msgstr ""
 "moet leiden."
 
 #: src/pingus/pingus_main.cpp:175
-#, fuzzy
 msgid "General Options:"
-msgstr "Overige opties:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:177
 msgid "Displays this help"
@@ -710,9 +682,8 @@ msgid "Disable all log output"
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:187
-#, fuzzy
 msgid "Display Options:"
-msgstr "Overige opties:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:189
 msgid "Start in Window Mode"
@@ -727,37 +698,32 @@ msgid "Use the given renderer (default: delta)"
 msgstr "De opgegeven renderer gebruiken (standaard: delta)"
 
 #: src/pingus/pingus_main.cpp:195
-#, fuzzy
 msgid "Set the window resolution for pingus (default: 800x600)"
-msgstr "Resolutie voor Pingus instellen (standaard: 800×600)"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:197
-#, fuzzy
 msgid "Set the resolution used in fullscreen mode (default: 800x600)"
-msgstr "Resolutie voor Pingus instellen (standaard: 800×600)"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:199
 msgid "Enable software cursor"
 msgstr "Softwarecursor inschakelen"
 
 #: src/pingus/pingus_main.cpp:201
-#, fuzzy
 msgid "Game Options:"
-msgstr "Overige opties:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:203
 msgid "Disable automatic scrolling"
 msgstr "Automatisch scrollen uitschakelen"
 
 #: src/pingus/pingus_main.cpp:205
-#, fuzzy
 msgid "Enable drag'n drop scrolling"
-msgstr "Automatisch scrollen uitschakelen"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:207
-#, fuzzy
 msgid "Sound Options:"
-msgstr "Overige opties:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:209
 msgid "Disable sound"
@@ -780,9 +746,8 @@ msgid "Loads the level editor"
 msgstr "De leveleditor starten"
 
 #: src/pingus/pingus_main.cpp:223
-#, fuzzy
 msgid "Directory Options:"
-msgstr "Richting:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:224 src/pingus/pingus_main.cpp:226
 #: src/pingus/pingus_main.cpp:228
@@ -818,14 +783,12 @@ msgid "Uses the controller given in FILE"
 msgstr "De controller, opgegeven in BESTAND, gebruiken"
 
 #: src/pingus/pingus_main.cpp:237
-#, fuzzy
 msgid "Debug Options:"
-msgstr "Overige opties:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:239
-#, fuzzy
 msgid "Enables some special features for developers"
-msgstr "Schakelt enkele features in, alleen interessant voor programmeurs"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:241
 msgid "Set the game speed (0=fastest, >0=slower)"
@@ -1092,15 +1055,11 @@ msgid "Block'a Rock"
 msgstr "Blokkeer een keer"
 
 #: data/levels/tutorial/snow14-grumbel.pingus:6
-#, fuzzy
 msgid ""
 "Once again it's time to combine the things you have learned in your previous "
 "levels. Blast your way free and make sure you also keep the rest of the "
 "Pingus under control. The Blocker action will be helpful."
 msgstr ""
-"Het is weer tijd om dat wat je geleerd hebt in de voorgaande levels te "
-"combineren. Beuk je een weg naar de vrijheid en zorg ervoor dat je ook de "
-"andere Pingus onder controle houdt. De blokkeeractie zal handig zijn. "
 
 #: data/levels/tutorial/snow15-grumbel.pingus:5
 msgid "Climb, Climber,... Boom!"
@@ -1219,9 +1178,8 @@ msgstr ""
 "controle te krijgen, terwijl één het pad baant voor de rest. "
 
 #: data/levels/tutorial/snow8-grumbel.pingus:5
-#, fuzzy
 msgid "Dig and float, just don't fall and smash"
-msgstr "Graaf en zweef, maar val niet te pletter"
+msgstr ""
 
 #: data/levels/tutorial/snow8-grumbel.pingus:6
 msgid ""
@@ -1476,9 +1434,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:5
-#, fuzzy
 msgid "Traps, Dangers and other Problems"
-msgstr "Graven, slopen en andere problemen"
+msgstr ""
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:6
 msgid ""
@@ -1512,9 +1469,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/halloween2011/halloween17-grumbel.pingus:5
-#, fuzzy
 msgid "Island of Doom"
-msgstr "Eiland der Mysteries"
+msgstr ""
 
 #: data/levels/halloween2011/halloween17-grumbel.pingus:6
 msgid ""
@@ -1524,9 +1480,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/halloween2011/halloween18-grumbel.pingus:5
-#, fuzzy
 msgid "Tower of Death"
-msgstr "Object naar achteren"
+msgstr ""
 
 #: data/levels/halloween2011/halloween18-grumbel.pingus:6
 msgid ""
@@ -1535,9 +1490,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/halloween2011/halloween19-rz.pingus:5
-#, fuzzy
 msgid "The Ones"
-msgstr "De Lavaput"
+msgstr ""
 
 #: data/levels/halloween2011/halloween19-rz.pingus:6
 msgid ""
@@ -1573,13 +1527,10 @@ msgid "Entering the pyramid"
 msgstr "De piramide in"
 
 #: data/levels/desert/desert1.pingus:6
-#, fuzzy
 msgid ""
 "After their long and dangerous journey through the desert the Pingus finally "
 "reach the large pyramid, but there is still a pedestal blocking their way."
 msgstr ""
-"Na hun lange en gevaarlijke reis door de woestijn bereiken ze eindelijk de "
-"grote piramide..."
 
 #: data/levels/desert/desert2.pingus:5
 msgid "The window room"
@@ -1692,13 +1643,11 @@ msgid "The Roof"
 msgstr "Het dak"
 
 #: data/levels/desert/desertwaste1-grumbel.pingus:6
-#, fuzzy
 msgid ""
 "Sometimes the roofs are not good for refuge, sometimes it should be "
 "demolished! But be careful if you aren't precise enough, you might lead the "
 "Pingus straight to certain death."
 msgstr ""
-"Soms zijn daken geen goed toevluchtsoord, soms moeten ze worden gesloopt!"
 
 #: data/levels/desert/indiana-yingwan.pingus:5
 msgid "Pingus Jones and the Last Exit"
@@ -2039,9 +1988,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:5
-#, fuzzy
 msgid "Jump"
-msgstr "Springer"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:6
 msgid ""
@@ -2050,9 +1998,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:5
-#, fuzzy
 msgid "Factory"
-msgstr "Verhaal"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:6
 msgid ""
@@ -2089,9 +2036,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign3.pingus:5
-#, fuzzy
 msgid "The cave"
-msgstr "De Lavaput"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign3.pingus:6
 msgid ""
@@ -2167,9 +2113,8 @@ msgid "Learn the basics"
 msgstr "Leer het spel kennen"
 
 #: data/worldmaps/tutorial.worldmap:124
-#, fuzzy
 msgid "Watch Ending"
-msgstr "Einde laten zien?"
+msgstr ""
 
 #: data/worldmaps/tutorial.worldmap:131
 msgid "Watch Intro"
@@ -2264,15 +2209,12 @@ msgstr ""
 "alle mogelijkheden nodig zult hebben tijdens jullie reis over de wereld."
 
 #: data/stories/tutorial_intro.story:65
-#, fuzzy
 msgid ""
 "Now that you and the Pingus have arrived at Tutorial Island it is time to "
 "take command and begin your mission.\n"
 "\n"
 "Good Luck!"
 msgstr ""
-"Nu jij en de Pingus zijn aangekomen op Oefeneiland, is de tijd gekomen om de "
-"leiding te nemen en je missie te starten. Veel succes!"
 
 #: data/stories/tutorial_outro.story:2
 msgid "The Journey Continues"
@@ -2318,16 +2260,12 @@ msgstr ""
 "thuisland te verlaten en de onbekende delen van de wereld te betreden."
 
 #: data/stories/tutorial_outro.story:35
-#, fuzzy
 msgid ""
 "So the Pingus sit on their raft, worrying about what's to come and where to "
 "go, while floating into the sunset.\n"
 "\n"
 "To be continued..."
 msgstr ""
-"Dus de Pingus zitten op hun vlot, en maken zich zorgen over wat er gaat "
-"komen en waar ze naartoe moeten gaan, terwijl ze afdrijven richting de "
-"ondergaande zon. Wordt vervolgd..."
 
 #: data/levelsets/desert.levelset:3
 msgid "Desert"
@@ -2354,14 +2292,12 @@ msgid "Trapped at All Hallows Eve"
 msgstr "Gevangen in halloween"
 
 #: data/levelsets/halloween2011.levelset:3
-#, fuzzy
 msgid "Halloween 2011"
-msgstr "Halloween 2007"
+msgstr ""
 
 #: data/levelsets/halloween2011.levelset:4
-#, fuzzy
 msgid "Going Underground"
-msgstr "Gevangen onder de grond"
+msgstr ""
 
 #~ msgid "Rocketlauncher"
 #~ msgstr "Raketwerper"
@@ -2522,3 +2458,109 @@ msgstr "Gevangen onder de grond"
 #~ "Diep in de piramide ontdekken de Pingus tot hun verrassing dat een "
 #~ "zandstroom hun de weg verspert - de afwezigheid van zwaartekracht "
 #~ "overpeinzend gaan ze onverschrokken verder..."
+
+#~ msgid "Dig and float, but just don't fall and smash"
+#~ msgstr "Graaf en zweef, maar val niet te pletter"
+
+#~ msgid "    New level"
+#~ msgstr "    Nieuw level"
+
+#~ msgid ""
+#~ "Flip object horizontaly\n"
+#~ "Flip object vertically\n"
+#~ "Delete all marked objects\n"
+#~ "Move objects up\n"
+#~ "Move objects down\n"
+#~ "Move objects left\n"
+#~ "Move objects right\n"
+#~ msgstr ""
+#~ "Object horizontaal spiegelen\n"
+#~ "Object verticaal spiegelen\n"
+#~ "Alle gemarkeerde objecten verwijderen\n"
+#~ "Objecten naar boven verplaatsen\n"
+#~ "Objecten naar onderen verplaatsen\n"
+#~ "Objecten naar links verplaatsen\n"
+#~ "Objecten naar rechts verplaatsen\n"
+
+#~ msgid ""
+#~ "Select all\n"
+#~ "Clear Selection\n"
+#~ "Raise objects\n"
+#~ "Lower objects\n"
+#~ "Lower objects to bottom\n"
+#~ "Raise objects to top\n"
+#~ "Rotate 90 degree\n"
+#~ "Rotate 270 degree\n"
+#~ msgstr ""
+#~ "Alles selecteren\n"
+#~ "Selectie wissen\n"
+#~ "Objecten naar voren\n"
+#~ "Objecten naar achteren\n"
+#~ "Objecten naar achtergrond\n"
+#~ "Objecten naar voorgrond\n"
+#~ "90 graden draaien\n"
+#~ "270 graden draaien\n"
+
+#~ msgid "Mouse Grab:"
+#~ msgstr "Muis vasthouden:"
+
+#~ msgid "Software Cursor:"
+#~ msgstr "Softwarecursor"
+
+#~ msgid "Print FPS:"
+#~ msgstr "FPS weergeven:"
+
+#~ msgid "Fullscreen:"
+#~ msgstr "Volledig scherm:"
+
+#~ msgid "Autoscrolling:"
+#~ msgstr "Automatisch scrollen"
+
+#~ msgid "Misc Options:"
+#~ msgstr "Overige opties:"
+
+#~ msgid "Enables some features, only interesting to programmers"
+#~ msgstr "Schakelt enkele features in, alleen interessant voor programmeurs"
+
+#~ msgid ""
+#~ "After their long and dangerous journey through the desert they finally "
+#~ "reach the large pyramid..."
+#~ msgstr ""
+#~ "Na hun lange en gevaarlijke reis door de woestijn bereiken ze eindelijk "
+#~ "de grote piramide..."
+
+#~ msgid ""
+#~ "Sometimes the roofs are not good for refuge, sometimes it should be "
+#~ "demolished!"
+#~ msgstr ""
+#~ "Soms zijn daken geen goed toevluchtsoord, soms moeten ze worden gesloopt!"
+
+#~ msgid "Set the resolution for pingus (default: 800x600)"
+#~ msgstr "Resolutie voor Pingus instellen (standaard: 800×600)"
+
+#~ msgid ""
+#~ "Once again it's time to combine the stuff you have learned in your "
+#~ "previous levels. Blast your way free and make sure you also keep the rest "
+#~ "of the Pingus under control. The Blocker action will be helpful. "
+#~ msgstr ""
+#~ "Het is weer tijd om dat wat je geleerd hebt in de voorgaande levels te "
+#~ "combineren. Beuk je een weg naar de vrijheid en zorg ervoor dat je ook de "
+#~ "andere Pingus onder controle houdt. De blokkeeractie zal handig zijn. "
+
+#~ msgid ""
+#~ "Now that you and the Pingus have arrived at Tutorial Island it is time to "
+#~ "take command and begin your mission. Good Luck!"
+#~ msgstr ""
+#~ "Nu jij en de Pingus zijn aangekomen op Oefeneiland, is de tijd gekomen om "
+#~ "de leiding te nemen en je missie te starten. Veel succes!"
+
+#~ msgid ""
+#~ "So the Pingus sit on their raft, worrying about what's to come and where "
+#~ "to go, while floating into the sunset.  To be continued..."
+#~ msgstr ""
+#~ "Dus de Pingus zitten op hun vlot, en maken zich zorgen over wat er gaat "
+#~ "komen en waar ze naartoe moeten gaan, terwijl ze afdrijven richting de "
+#~ "ondergaande zon. Wordt vervolgd..."
+
+#~ msgid "Island of Mystery"
+#~ msgstr "Eiland der Mysteries"

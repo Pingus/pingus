@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: Pingus Hungarian translation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-10-20 08:23+0200\n"
-"PO-Revision-Date: 2011-01-17 20:01+0000\n"
-"Last-Translator: Zoltan Faludi <Unknown>\n"
+"PO-Revision-Date: 2011-10-20 12:31+0000\n"
+"Last-Translator: Gabriel Rota <gabriel.rota@gmail.com>\n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-05-05 14:08+0000\n"
-"X-Generator: Launchpad (build 12959)\n"
+"X-Launchpad-Export-Date: 2011-10-20 15:40+0000\n"
+"X-Generator: Launchpad (build 14165)\n"
 
 #: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
@@ -26,9 +26,8 @@ msgid "Screenshot: Couldn't write file: "
 msgstr "Képernyőmentés: Nem sikerült írni a fájlba: "
 
 #: src/editor/panel.cpp:171
-#, fuzzy
 msgid "New level"
-msgstr "    Új pálya"
+msgstr ""
 
 #: src/editor/panel.cpp:173
 msgid "Open level..."
@@ -164,9 +163,8 @@ msgid "Special Object"
 msgstr "Speciális objektumok"
 
 #: src/editor/object_selector.cpp:179
-#, fuzzy
 msgid "Prefab Object"
-msgstr "Speciális objektumok"
+msgstr ""
 
 #: src/editor/message_box.cpp:35 src/editor/file_dialog.cpp:66
 msgid "Cancel"
@@ -181,7 +179,6 @@ msgid "== Editor Help =="
 msgstr ""
 
 #: src/editor/editor_screen.cpp:248
-#, fuzzy
 msgid ""
 "Select all\n"
 "Clear Selection\n"
@@ -194,17 +191,8 @@ msgid ""
 "Group selected objects\n"
 "Ungroup selected objects\n"
 msgstr ""
-"Minden kijelölése\n"
-"Kijelölés megszüntetése\n"
-"Objektum följebb helyezése\n"
-"Objektum lejjeb helyezése\n"
-"Objektum legalulra helyezése\n"
-"Objektum legfölülre helyezése\n"
-"Elforgatás 90 fokkal\n"
-"Elforgatás 270 fokkal\n"
 
 #: src/editor/editor_screen.cpp:271
-#, fuzzy
 msgid ""
 "Flip object horizontaly\n"
 "Flip object vertically\n"
@@ -214,13 +202,6 @@ msgid ""
 "Toggle background color\n"
 "Increase/lower repeat\n"
 msgstr ""
-"Objektum vízszintes tükrözése\n"
-"Objektum függőleges tükrözése\n"
-"Minden kijelölt objektum törlése\n"
-"Objektum följebb helyezése\n"
-"Objektum lejjebb helyezése\n"
-"Objektum balrább helyezése\n"
-"Objektum jobbrább helyezése\n"
 
 #: src/editor/editor_screen.cpp:282
 msgid ""
@@ -402,9 +383,8 @@ msgid "Target Id:"
 msgstr ""
 
 #: src/editor/object_properties.cpp:220
-#, fuzzy
 msgid "Height:"
-msgstr "Jobb"
+msgstr ""
 
 #: src/editor/object_properties.cpp:521
 msgid "Object: [Group]"
@@ -429,24 +409,20 @@ msgid "Bridger"
 msgstr "Hídépítő"
 
 #: src/pingus/screens/option_menu.cpp:206
-#, fuzzy
 msgid "Fullscreen"
-msgstr "Teljes képernyő:"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:207
-#, fuzzy
 msgid "Mouse Grab"
-msgstr "Egér elfogás:"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:209
-#, fuzzy
 msgid "Software Cursor"
-msgstr "Szoftver kurzor:"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:210
-#, fuzzy
 msgid "Autoscrolling"
-msgstr "Automatikus görgetés:"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:211
 msgid "Drag&Drop Scrolling"
@@ -509,14 +485,12 @@ msgid "..:: Create your own levels ::.."
 msgstr "..:: Saját pályák készítése ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:64
-#, fuzzy
 msgid "Options"
-msgstr "Egyéb opciók:"
+msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:65
-#, fuzzy
 msgid "..:: Configure the game ::.."
-msgstr "..:: Játék indítása ::.."
+msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:163
 msgid "Levelsets"
@@ -675,9 +649,8 @@ msgid ""
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:175
-#, fuzzy
 msgid "General Options:"
-msgstr "Egyéb opciók:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:177
 msgid "Displays this help"
@@ -700,9 +673,8 @@ msgid "Disable all log output"
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:187
-#, fuzzy
 msgid "Display Options:"
-msgstr "Egyéb opciók:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:189
 msgid "Start in Window Mode"
@@ -717,37 +689,32 @@ msgid "Use the given renderer (default: delta)"
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:195
-#, fuzzy
 msgid "Set the window resolution for pingus (default: 800x600)"
-msgstr "Pingus felbontásának beállítása (alapértelmezett: 800x600)"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:197
-#, fuzzy
 msgid "Set the resolution used in fullscreen mode (default: 800x600)"
-msgstr "Pingus felbontásának beállítása (alapértelmezett: 800x600)"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:199
 msgid "Enable software cursor"
 msgstr "Szoftveres kurzor engedélyezése"
 
 #: src/pingus/pingus_main.cpp:201
-#, fuzzy
 msgid "Game Options:"
-msgstr "Egyéb opciók:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:203
 msgid "Disable automatic scrolling"
 msgstr "Automatikus görgetés letiltása"
 
 #: src/pingus/pingus_main.cpp:205
-#, fuzzy
 msgid "Enable drag'n drop scrolling"
-msgstr "Automatikus görgetés letiltása"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:207
-#, fuzzy
 msgid "Sound Options:"
-msgstr "Egyéb opciók:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:209
 msgid "Disable sound"
@@ -770,9 +737,8 @@ msgid "Loads the level editor"
 msgstr "Betölti a pályaszerkesztőt"
 
 #: src/pingus/pingus_main.cpp:223
-#, fuzzy
 msgid "Directory Options:"
-msgstr "Irány"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:224 src/pingus/pingus_main.cpp:226
 #: src/pingus/pingus_main.cpp:228
@@ -808,14 +774,12 @@ msgid "Uses the controller given in FILE"
 msgstr "FÁJLban megadot controller használata"
 
 #: src/pingus/pingus_main.cpp:237
-#, fuzzy
 msgid "Debug Options:"
-msgstr "Egyéb opciók:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:239
-#, fuzzy
 msgid "Enables some special features for developers"
-msgstr "Néhány funkció engedélyezése, mely csak a fejlesztőknek érdekes"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:241
 msgid "Set the game speed (0=fastest, >0=slower)"
@@ -1081,15 +1045,11 @@ msgid "Block'a Rock"
 msgstr "Blokkolj és bombázz"
 
 #: data/levels/tutorial/snow14-grumbel.pingus:6
-#, fuzzy
 msgid ""
 "Once again it's time to combine the things you have learned in your previous "
 "levels. Blast your way free and make sure you also keep the rest of the "
 "Pingus under control. The Blocker action will be helpful."
 msgstr ""
-"Mégegyszer kombinálnod kell au előző pályákon megtanult tudást. Robbantsd "
-"szabaddé az utat, miközben figyelj oda a többi Pingura. A blokkoló utasítás "
-"hasznos lessz. "
 
 #: data/levels/tutorial/snow15-grumbel.pingus:5
 msgid "Climb, Climber,... Boom!"
@@ -1208,9 +1168,8 @@ msgstr ""
 "őket, még egy Pingu előkészíti az utat. "
 
 #: data/levels/tutorial/snow8-grumbel.pingus:5
-#, fuzzy
 msgid "Dig and float, just don't fall and smash"
-msgstr "Ásás és repülés, de nem esés és kilapulás"
+msgstr ""
 
 #: data/levels/tutorial/snow8-grumbel.pingus:6
 msgid ""
@@ -1462,9 +1421,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:5
-#, fuzzy
 msgid "Traps, Dangers and other Problems"
-msgstr "Kétféle ásás, meg egyéb problémák"
+msgstr ""
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:6
 msgid ""
@@ -1509,9 +1467,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/halloween2011/halloween18-grumbel.pingus:5
-#, fuzzy
 msgid "Tower of Death"
-msgstr "Objektum lejjeb helyezése"
+msgstr ""
 
 #: data/levels/halloween2011/halloween18-grumbel.pingus:6
 msgid ""
@@ -1943,9 +1900,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:5
-#, fuzzy
 msgid "Jump"
-msgstr "Ugró"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:6
 msgid ""
@@ -1954,9 +1910,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:5
-#, fuzzy
 msgid "Factory"
-msgstr "Történet"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:6
 msgid ""
@@ -2070,9 +2025,8 @@ msgid "Learn the basics"
 msgstr "Az alapok megtanulása"
 
 #: data/worldmaps/tutorial.worldmap:124
-#, fuzzy
 msgid "Watch Ending"
-msgstr "Befejezés megmutatása?"
+msgstr ""
 
 #: data/worldmaps/tutorial.worldmap:131
 msgid "Watch Intro"
@@ -2161,15 +2115,12 @@ msgstr ""
 "erre szükség lessz a Föld körüli utazásuk során."
 
 #: data/stories/tutorial_intro.story:65
-#, fuzzy
 msgid ""
 "Now that you and the Pingus have arrived at Tutorial Island it is time to "
 "take command and begin your mission.\n"
 "\n"
 "Good Luck!"
 msgstr ""
-"Te és a Pinguk megérkeztek az Oktatói szigetre, így itt az idő, hogy kezedbe "
-"vedd az irányítást, és elkezd a küldetést. Sok szerencsét!"
 
 #: data/stories/tutorial_outro.story:2
 msgid "The Journey Continues"
@@ -2215,15 +2166,12 @@ msgstr ""
 "Föld ismeretlen részeire."
 
 #: data/stories/tutorial_outro.story:35
-#, fuzzy
 msgid ""
 "So the Pingus sit on their raft, worrying about what's to come and where to "
 "go, while floating into the sunset.\n"
 "\n"
 "To be continued..."
 msgstr ""
-"Tehát a Pinguk felültek a tutajaikra, azon aggódva mi fog történni, és hogy "
-"hova mennek, miközben sodródtak a naplementében.  Folytatása következik...."
 
 #: data/levelsets/desert.levelset:3
 msgid "Desert"
@@ -2250,9 +2198,8 @@ msgid "Trapped at All Hallows Eve"
 msgstr "Elfogva Halloween éjszakáján"
 
 #: data/levelsets/halloween2011.levelset:3
-#, fuzzy
 msgid "Halloween 2011"
-msgstr "Halloween 2007"
+msgstr ""
 
 #: data/levelsets/halloween2011.levelset:4
 msgid "Going Underground"
@@ -2400,3 +2347,90 @@ msgstr ""
 
 #~ msgid "Merry Christmas and a Happy New Year"
 #~ msgstr "Kellemes Karácsonyt és Boldog Új Évet"
+
+#~ msgid "Set the resolution for pingus (default: 800x600)"
+#~ msgstr "Pingus felbontásának beállítása (alapértelmezett: 800x600)"
+
+#~ msgid "Misc Options:"
+#~ msgstr "Egyéb opciók:"
+
+#~ msgid "Enables some features, only interesting to programmers"
+#~ msgstr "Néhány funkció engedélyezése, mely csak a fejlesztőknek érdekes"
+
+#~ msgid ""
+#~ "Select all\n"
+#~ "Clear Selection\n"
+#~ "Raise objects\n"
+#~ "Lower objects\n"
+#~ "Lower objects to bottom\n"
+#~ "Raise objects to top\n"
+#~ "Rotate 90 degree\n"
+#~ "Rotate 270 degree\n"
+#~ msgstr ""
+#~ "Minden kijelölése\n"
+#~ "Kijelölés megszüntetése\n"
+#~ "Objektum följebb helyezése\n"
+#~ "Objektum lejjeb helyezése\n"
+#~ "Objektum legalulra helyezése\n"
+#~ "Objektum legfölülre helyezése\n"
+#~ "Elforgatás 90 fokkal\n"
+#~ "Elforgatás 270 fokkal\n"
+
+#~ msgid ""
+#~ "Flip object horizontaly\n"
+#~ "Flip object vertically\n"
+#~ "Delete all marked objects\n"
+#~ "Move objects up\n"
+#~ "Move objects down\n"
+#~ "Move objects left\n"
+#~ "Move objects right\n"
+#~ msgstr ""
+#~ "Objektum vízszintes tükrözése\n"
+#~ "Objektum függőleges tükrözése\n"
+#~ "Minden kijelölt objektum törlése\n"
+#~ "Objektum följebb helyezése\n"
+#~ "Objektum lejjebb helyezése\n"
+#~ "Objektum balrább helyezése\n"
+#~ "Objektum jobbrább helyezése\n"
+
+#~ msgid "    New level"
+#~ msgstr "    Új pálya"
+
+#~ msgid ""
+#~ "Once again it's time to combine the stuff you have learned in your "
+#~ "previous levels. Blast your way free and make sure you also keep the rest "
+#~ "of the Pingus under control. The Blocker action will be helpful. "
+#~ msgstr ""
+#~ "Mégegyszer kombinálnod kell au előző pályákon megtanult tudást. Robbantsd "
+#~ "szabaddé az utat, miközben figyelj oda a többi Pingura. A blokkoló "
+#~ "utasítás hasznos lessz. "
+
+#~ msgid "Dig and float, but just don't fall and smash"
+#~ msgstr "Ásás és repülés, de nem esés és kilapulás"
+
+#~ msgid ""
+#~ "Now that you and the Pingus have arrived at Tutorial Island it is time to "
+#~ "take command and begin your mission. Good Luck!"
+#~ msgstr ""
+#~ "Te és a Pinguk megérkeztek az Oktatói szigetre, így itt az idő, hogy "
+#~ "kezedbe vedd az irányítást, és elkezd a küldetést. Sok szerencsét!"
+
+#~ msgid ""
+#~ "So the Pingus sit on their raft, worrying about what's to come and where "
+#~ "to go, while floating into the sunset.  To be continued..."
+#~ msgstr ""
+#~ "Tehát a Pinguk felültek a tutajaikra, azon aggódva mi fog történni, és "
+#~ "hogy hova mennek, miközben sodródtak a naplementében.  Folytatása "
+#~ "következik...."
+
+#~ msgid "Fullscreen:"
+#~ msgstr "Teljes képernyő:"
+
+#~ msgid "Software Cursor:"
+#~ msgstr "Szoftver kurzor:"
+
+#~ msgid "Mouse Grab:"
+#~ msgstr "Egér elfogás:"
+
+#~ msgid "Autoscrolling:"
+#~ msgstr "Automatikus görgetés:"

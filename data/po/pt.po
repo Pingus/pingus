@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-10-20 08:23+0200\n"
-"PO-Revision-Date: 2011-03-13 04:23+0000\n"
+"PO-Revision-Date: 2011-09-18 18:50+0000\n"
 "Last-Translator: Ricardo Cruz <rpmcruz@alunos.dcc.fc.up.pt>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-05-05 14:08+0000\n"
-"X-Generator: Launchpad (build 12959)\n"
+"X-Launchpad-Export-Date: 2011-10-20 15:40+0000\n"
+"X-Generator: Launchpad (build 14165)\n"
 
 #: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
@@ -31,9 +31,8 @@ msgid "Screenshot: Couldn't write file: "
 msgstr "Instântaneo: Não consegui escrever ficheiro: "
 
 #: src/editor/panel.cpp:171
-#, fuzzy
 msgid "New level"
-msgstr "    Novo nível"
+msgstr ""
 
 #: src/editor/panel.cpp:173
 msgid "Open level..."
@@ -169,9 +168,8 @@ msgid "Special Object"
 msgstr "Objecto Especial"
 
 #: src/editor/object_selector.cpp:179
-#, fuzzy
 msgid "Prefab Object"
-msgstr "Objecto Especial"
+msgstr ""
 
 #: src/editor/message_box.cpp:35 src/editor/file_dialog.cpp:66
 msgid "Cancel"
@@ -186,7 +184,6 @@ msgid "== Editor Help =="
 msgstr ""
 
 #: src/editor/editor_screen.cpp:248
-#, fuzzy
 msgid ""
 "Select all\n"
 "Clear Selection\n"
@@ -199,17 +196,8 @@ msgid ""
 "Group selected objects\n"
 "Ungroup selected objects\n"
 msgstr ""
-"Seleciona tudo\n"
-"Des-seleciona tudo\n"
-"Eleva objectos\n"
-"Baixa objectos\n"
-"Baixa objectos para o fundo\n"
-"Eleva objectos para o topo\n"
-"Roda 90 graus\n"
-"Roda 270 graus\n"
 
 #: src/editor/editor_screen.cpp:271
-#, fuzzy
 msgid ""
 "Flip object horizontaly\n"
 "Flip object vertically\n"
@@ -219,13 +207,6 @@ msgid ""
 "Toggle background color\n"
 "Increase/lower repeat\n"
 msgstr ""
-"Vira objecto na horizontal\n"
-"Vira objecto na vertical\n"
-"Remove todos os objectos marcados\n"
-"Move objectos para cima\n"
-"Move objectos para baixo\n"
-"Move objectos para a esquerda\n"
-"Move objectos para a direita\n"
 
 #: src/editor/editor_screen.cpp:282
 msgid ""
@@ -406,9 +387,8 @@ msgid "Target Id:"
 msgstr ""
 
 #: src/editor/object_properties.cpp:220
-#, fuzzy
 msgid "Height:"
-msgstr "Direita"
+msgstr ""
 
 #: src/editor/object_properties.cpp:521
 msgid "Object: [Group]"
@@ -433,23 +413,20 @@ msgid "Bridger"
 msgstr "Construtor"
 
 #: src/pingus/screens/option_menu.cpp:206
-#, fuzzy
 msgid "Fullscreen"
-msgstr "Arranca ocupando todo o ecrã"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:207
 msgid "Mouse Grab"
 msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:209
-#, fuzzy
 msgid "Software Cursor"
-msgstr "Activa cursor por software"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:210
-#, fuzzy
 msgid "Autoscrolling"
-msgstr "Desactiva deslocamento automático"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:211
 msgid "Drag&Drop Scrolling"
@@ -512,14 +489,12 @@ msgid "..:: Create your own levels ::.."
 msgstr "..:: Cria os teus próprios níveis ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:64
-#, fuzzy
 msgid "Options"
-msgstr "Várias Opções:"
+msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:65
-#, fuzzy
 msgid "..:: Configure the game ::.."
-msgstr "..:: Inicia o jogo ::.."
+msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:163
 msgid "Levelsets"
@@ -678,9 +653,8 @@ msgid ""
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:175
-#, fuzzy
 msgid "General Options:"
-msgstr "Várias Opções:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:177
 msgid "Displays this help"
@@ -703,9 +677,8 @@ msgid "Disable all log output"
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:187
-#, fuzzy
 msgid "Display Options:"
-msgstr "Várias Opções:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:189
 msgid "Start in Window Mode"
@@ -720,37 +693,32 @@ msgid "Use the given renderer (default: delta)"
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:195
-#, fuzzy
 msgid "Set the window resolution for pingus (default: 800x600)"
-msgstr "Configuar a resolução do Pingus (omissão: 800x600)"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:197
-#, fuzzy
 msgid "Set the resolution used in fullscreen mode (default: 800x600)"
-msgstr "Configuar a resolução do Pingus (omissão: 800x600)"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:199
 msgid "Enable software cursor"
 msgstr "Activa cursor por software"
 
 #: src/pingus/pingus_main.cpp:201
-#, fuzzy
 msgid "Game Options:"
-msgstr "Várias Opções:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:203
 msgid "Disable automatic scrolling"
 msgstr "Desactiva deslocamento automático"
 
 #: src/pingus/pingus_main.cpp:205
-#, fuzzy
 msgid "Enable drag'n drop scrolling"
-msgstr "Desactiva deslocamento automático"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:207
-#, fuzzy
 msgid "Sound Options:"
-msgstr "Várias Opções:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:209
 msgid "Disable sound"
@@ -773,9 +741,8 @@ msgid "Loads the level editor"
 msgstr "Lançar o editor de níveis"
 
 #: src/pingus/pingus_main.cpp:223
-#, fuzzy
 msgid "Directory Options:"
-msgstr "Direcção:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:224 src/pingus/pingus_main.cpp:226
 #: src/pingus/pingus_main.cpp:228
@@ -811,14 +778,12 @@ msgid "Uses the controller given in FILE"
 msgstr "Usa o controlador especificado em FICHEIRO"
 
 #: src/pingus/pingus_main.cpp:237
-#, fuzzy
 msgid "Debug Options:"
-msgstr "Várias Opções:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:239
-#, fuzzy
 msgid "Enables some special features for developers"
-msgstr "Activa algumas características, só interessa a programadores"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:241
 msgid "Set the game speed (0=fastest, >0=slower)"
@@ -1087,16 +1052,11 @@ msgid "Block'a Rock"
 msgstr "Destrói a Rocha"
 
 #: data/levels/tutorial/snow14-grumbel.pingus:6
-#, fuzzy
 msgid ""
 "Once again it's time to combine the things you have learned in your previous "
 "levels. Blast your way free and make sure you also keep the rest of the "
 "Pingus under control. The Blocker action will be helpful."
 msgstr ""
-"Mais uma vez, é altura de combinares tudo o que aprendeste nos níveis "
-"passados. Destrói a passagem e assegura-te que manténs, ao mesmo tempo, os "
-"restantes Pingus debaixo de olho. A acção dos Bloqueadores ser-te-á "
-"certamente útil. "
 
 #: data/levels/tutorial/snow15-grumbel.pingus:5
 msgid "Climb, Climber,... Boom!"
@@ -1216,9 +1176,8 @@ msgstr ""
 "apenas um prepara o caminho para os outros. "
 
 #: data/levels/tutorial/snow8-grumbel.pingus:5
-#, fuzzy
 msgid "Dig and float, just don't fall and smash"
-msgstr "Escava e flutua, mas não caias nem sejas esmagado"
+msgstr ""
 
 #: data/levels/tutorial/snow8-grumbel.pingus:6
 msgid ""
@@ -1461,9 +1420,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:5
-#, fuzzy
 msgid "Traps, Dangers and other Problems"
-msgstr "Escavar, perfurar e outros problemas"
+msgstr ""
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:6
 msgid ""
@@ -1508,9 +1466,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/halloween2011/halloween18-grumbel.pingus:5
-#, fuzzy
 msgid "Tower of Death"
-msgstr "Baixa objecto"
+msgstr ""
 
 #: data/levels/halloween2011/halloween18-grumbel.pingus:6
 msgid ""
@@ -1942,9 +1899,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:5
-#, fuzzy
 msgid "Jump"
-msgstr "Saltante"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:6
 msgid ""
@@ -1953,9 +1909,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:5
-#, fuzzy
 msgid "Factory"
-msgstr "Jogar"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:6
 msgid ""
@@ -2069,9 +2024,8 @@ msgid "Learn the basics"
 msgstr "Aprendes os básicos"
 
 #: data/worldmaps/tutorial.worldmap:124
-#, fuzzy
 msgid "Watch Ending"
-msgstr "Ver o Final?"
+msgstr ""
 
 #: data/worldmaps/tutorial.worldmap:131
 msgid "Watch Intro"
@@ -2167,15 +2121,12 @@ msgstr ""
 "para os guiares por essa viagem à volta do mundo."
 
 #: data/stories/tutorial_intro.story:65
-#, fuzzy
 msgid ""
 "Now that you and the Pingus have arrived at Tutorial Island it is time to "
 "take command and begin your mission.\n"
 "\n"
 "Good Luck!"
 msgstr ""
-"Agora que tu e os Pingus chegaram à Ilha Tutorial é altura de tomares o "
-"comando e dares início à tua missão. Boa Sorte!"
 
 #: data/stories/tutorial_outro.story:2
 msgid "The Journey Continues"
@@ -2221,15 +2172,12 @@ msgstr ""
 "sua jornada, abandonar o seu lar e entrar nas zonas virgens do mundo."
 
 #: data/stories/tutorial_outro.story:35
-#, fuzzy
 msgid ""
 "So the Pingus sit on their raft, worrying about what's to come and where to "
 "go, while floating into the sunset.\n"
 "\n"
 "To be continued..."
 msgstr ""
-"Então os Pingus fizeram-se ao mar, preocupando-se com o que viria e para "
-"onde iriam, enquanto navegavam ao sabor do pôr-do-sol. Continua..."
 
 #: data/levelsets/desert.levelset:3
 msgid "Desert"
@@ -2256,9 +2204,8 @@ msgid "Trapped at All Hallows Eve"
 msgstr "Presos na Véspera Consagrada"
 
 #: data/levelsets/halloween2011.levelset:3
-#, fuzzy
 msgid "Halloween 2011"
-msgstr "Dia das Bruxas 2007"
+msgstr ""
 
 #: data/levelsets/halloween2011.levelset:4
 msgid "Going Underground"
@@ -2376,3 +2323,78 @@ msgstr ""
 
 #~ msgid "Test a font"
 #~ msgstr "Testar um tipo de letra"
+
+#~ msgid "Set the resolution for pingus (default: 800x600)"
+#~ msgstr "Configuar a resolução do Pingus (omissão: 800x600)"
+
+#~ msgid ""
+#~ "Once again it's time to combine the stuff you have learned in your "
+#~ "previous levels. Blast your way free and make sure you also keep the rest "
+#~ "of the Pingus under control. The Blocker action will be helpful. "
+#~ msgstr ""
+#~ "Mais uma vez, é altura de combinares tudo o que aprendeste nos níveis "
+#~ "passados. Destrói a passagem e assegura-te que manténs, ao mesmo tempo, "
+#~ "os restantes Pingus debaixo de olho. A acção dos Bloqueadores ser-te-á "
+#~ "certamente útil. "
+
+#~ msgid ""
+#~ "Select all\n"
+#~ "Clear Selection\n"
+#~ "Raise objects\n"
+#~ "Lower objects\n"
+#~ "Lower objects to bottom\n"
+#~ "Raise objects to top\n"
+#~ "Rotate 90 degree\n"
+#~ "Rotate 270 degree\n"
+#~ msgstr ""
+#~ "Seleciona tudo\n"
+#~ "Des-seleciona tudo\n"
+#~ "Eleva objectos\n"
+#~ "Baixa objectos\n"
+#~ "Baixa objectos para o fundo\n"
+#~ "Eleva objectos para o topo\n"
+#~ "Roda 90 graus\n"
+#~ "Roda 270 graus\n"
+
+#~ msgid ""
+#~ "Flip object horizontaly\n"
+#~ "Flip object vertically\n"
+#~ "Delete all marked objects\n"
+#~ "Move objects up\n"
+#~ "Move objects down\n"
+#~ "Move objects left\n"
+#~ "Move objects right\n"
+#~ msgstr ""
+#~ "Vira objecto na horizontal\n"
+#~ "Vira objecto na vertical\n"
+#~ "Remove todos os objectos marcados\n"
+#~ "Move objectos para cima\n"
+#~ "Move objectos para baixo\n"
+#~ "Move objectos para a esquerda\n"
+#~ "Move objectos para a direita\n"
+
+#~ msgid "    New level"
+#~ msgstr "    Novo nível"
+
+#~ msgid "Misc Options:"
+#~ msgstr "Várias Opções:"
+
+#~ msgid "Enables some features, only interesting to programmers"
+#~ msgstr "Activa algumas características, só interessa a programadores"
+
+#~ msgid "Dig and float, but just don't fall and smash"
+#~ msgstr "Escava e flutua, mas não caias nem sejas esmagado"
+
+#~ msgid ""
+#~ "Now that you and the Pingus have arrived at Tutorial Island it is time to "
+#~ "take command and begin your mission. Good Luck!"
+#~ msgstr ""
+#~ "Agora que tu e os Pingus chegaram à Ilha Tutorial é altura de tomares o "
+#~ "comando e dares início à tua missão. Boa Sorte!"
+
+#~ msgid ""
+#~ "So the Pingus sit on their raft, worrying about what's to come and where "
+#~ "to go, while floating into the sunset.  To be continued..."
+#~ msgstr ""
+#~ "Então os Pingus fizeram-se ao mar, preocupando-se com o que viria e para "
+#~ "onde iriam, enquanto navegavam ao sabor do pôr-do-sol. Continua..."

@@ -15,15 +15,15 @@ msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-10-20 08:23+0200\n"
-"PO-Revision-Date: 2011-01-17 16:50+0000\n"
+"PO-Revision-Date: 2011-09-18 18:50+0000\n"
 "Last-Translator: Tomáš Bláha\n"
 "Language-Team: czech\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-05-05 14:08+0000\n"
-"X-Generator: Launchpad (build 12959)\n"
+"X-Launchpad-Export-Date: 2011-10-20 15:41+0000\n"
+"X-Generator: Launchpad (build 14165)\n"
 
 #: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
@@ -38,9 +38,8 @@ msgid "Screenshot: Couldn't write file: "
 msgstr "Screenshot: Nemohu zapsat do souboru: "
 
 #: src/editor/panel.cpp:171
-#, fuzzy
 msgid "New level"
-msgstr "    Nová úroveň"
+msgstr ""
 
 #: src/editor/panel.cpp:173
 msgid "Open level..."
@@ -176,9 +175,8 @@ msgid "Special Object"
 msgstr "Zvláštní objekt"
 
 #: src/editor/object_selector.cpp:179
-#, fuzzy
 msgid "Prefab Object"
-msgstr "Zvláštní objekt"
+msgstr ""
 
 #: src/editor/message_box.cpp:35 src/editor/file_dialog.cpp:66
 msgid "Cancel"
@@ -193,7 +191,6 @@ msgid "== Editor Help =="
 msgstr ""
 
 #: src/editor/editor_screen.cpp:248
-#, fuzzy
 msgid ""
 "Select all\n"
 "Clear Selection\n"
@@ -206,17 +203,8 @@ msgid ""
 "Group selected objects\n"
 "Ungroup selected objects\n"
 msgstr ""
-"Vybrat vše\n"
-"Zrušit výběr\n"
-"Vyzdvihnout objekty\n"
-"Zatlačit objekty\n"
-"Zatlačit objekty dospod\n"
-"Vyzdvihnout objekty na povrch\n"
-"Otočit o 90 stupňů\n"
-"Otočit o 270 stupňů\n"
 
 #: src/editor/editor_screen.cpp:271
-#, fuzzy
 msgid ""
 "Flip object horizontaly\n"
 "Flip object vertically\n"
@@ -226,13 +214,6 @@ msgid ""
 "Toggle background color\n"
 "Increase/lower repeat\n"
 msgstr ""
-"Převrátit objekt horizontálně\n"
-"Převrátit object vertically\n"
-"Smazat všechny vyznačené objekty\n"
-"Posunout objekty nahoru\n"
-"Posunout objekty dolu\n"
-"Posunout objekty vlevo\n"
-"Posunout objekty vpravo\n"
 
 #: src/editor/editor_screen.cpp:282
 msgid ""
@@ -413,9 +394,8 @@ msgid "Target Id:"
 msgstr ""
 
 #: src/editor/object_properties.cpp:220
-#, fuzzy
 msgid "Height:"
-msgstr "Vpravo"
+msgstr ""
 
 #: src/editor/object_properties.cpp:521
 msgid "Object: [Group]"
@@ -440,23 +420,20 @@ msgid "Bridger"
 msgstr "Mostař"
 
 #: src/pingus/screens/option_menu.cpp:206
-#, fuzzy
 msgid "Fullscreen"
-msgstr "Spustí přes celou obrazovku."
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:207
 msgid "Mouse Grab"
 msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:209
-#, fuzzy
 msgid "Software Cursor"
-msgstr "Zapne softwarový kursor."
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:210
-#, fuzzy
 msgid "Autoscrolling"
-msgstr "Vypne automatický posuv."
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:211
 msgid "Drag&Drop Scrolling"
@@ -519,14 +496,12 @@ msgid "..:: Create your own levels ::.."
 msgstr "..:: Vytvořit vlastní úroveň ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:64
-#, fuzzy
 msgid "Options"
-msgstr "Různá nastavení:"
+msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:65
-#, fuzzy
 msgid "..:: Configure the game ::.."
-msgstr "..:: Spustit hru ::.."
+msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:163
 msgid "Levelsets"
@@ -685,9 +660,8 @@ msgid ""
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:175
-#, fuzzy
 msgid "General Options:"
-msgstr "Různá nastavení:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:177
 msgid "Displays this help"
@@ -710,9 +684,8 @@ msgid "Disable all log output"
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:187
-#, fuzzy
 msgid "Display Options:"
-msgstr "Různá nastavení:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:189
 msgid "Start in Window Mode"
@@ -727,37 +700,32 @@ msgid "Use the given renderer (default: delta)"
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:195
-#, fuzzy
 msgid "Set the window resolution for pingus (default: 800x600)"
-msgstr "Nastaví rozlišení. (výchozí: 800x600)"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:197
-#, fuzzy
 msgid "Set the resolution used in fullscreen mode (default: 800x600)"
-msgstr "Nastaví rozlišení. (výchozí: 800x600)"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:199
 msgid "Enable software cursor"
 msgstr "Zapne softwarový kursor."
 
 #: src/pingus/pingus_main.cpp:201
-#, fuzzy
 msgid "Game Options:"
-msgstr "Různá nastavení:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:203
 msgid "Disable automatic scrolling"
 msgstr "Vypne automatický posuv."
 
 #: src/pingus/pingus_main.cpp:205
-#, fuzzy
 msgid "Enable drag'n drop scrolling"
-msgstr "Vypne automatický posuv."
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:207
-#, fuzzy
 msgid "Sound Options:"
-msgstr "Různá nastavení:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:209
 msgid "Disable sound"
@@ -780,9 +748,8 @@ msgid "Loads the level editor"
 msgstr "Spustí editor úrovní."
 
 #: src/pingus/pingus_main.cpp:223
-#, fuzzy
 msgid "Directory Options:"
-msgstr "Směr:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:224 src/pingus/pingus_main.cpp:226
 #: src/pingus/pingus_main.cpp:228
@@ -818,14 +785,12 @@ msgid "Uses the controller given in FILE"
 msgstr "Použije ovladač ze zadaného souboru."
 
 #: src/pingus/pingus_main.cpp:237
-#, fuzzy
 msgid "Debug Options:"
-msgstr "Různá nastavení:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:239
-#, fuzzy
 msgid "Enables some special features for developers"
-msgstr "Zapne některé vlastnosti potřebné jen pro programátory."
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:241
 msgid "Set the game speed (0=fastest, >0=slower)"
@@ -1090,15 +1055,11 @@ msgid "Block'a Rock"
 msgstr "Blokování"
 
 #: data/levels/tutorial/snow14-grumbel.pingus:6
-#, fuzzy
 msgid ""
 "Once again it's time to combine the things you have learned in your previous "
 "levels. Blast your way free and make sure you also keep the rest of the "
 "Pingus under control. The Blocker action will be helpful."
 msgstr ""
-"A máme tu znovu příležitost zkombinovat znalosti, které jsi zatím získal. "
-"Uvolni si cestu k cíli a zároveň dávej pozor i na ostatní pingy. Pomůže ti "
-"nová akce - zablokování cesty. "
 
 #: data/levels/tutorial/snow15-grumbel.pingus:5
 msgid "Climb, Climber,... Boom!"
@@ -1215,9 +1176,8 @@ msgstr ""
 "připraví cestu. "
 
 #: data/levels/tutorial/snow8-grumbel.pingus:5
-#, fuzzy
 msgid "Dig and float, just don't fall and smash"
-msgstr "Kopej a skákej, ale hlavně nespadni"
+msgstr ""
 
 #: data/levels/tutorial/snow8-grumbel.pingus:6
 msgid ""
@@ -1422,9 +1382,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:5
-#, fuzzy
 msgid "Traps, Dangers and other Problems"
-msgstr "Kopání, hrabání a další problémy"
+msgstr ""
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:6
 msgid ""
@@ -1469,9 +1428,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/halloween2011/halloween18-grumbel.pingus:5
-#, fuzzy
 msgid "Tower of Death"
-msgstr "Zatlačit objekt"
+msgstr ""
 
 #: data/levels/halloween2011/halloween18-grumbel.pingus:6
 msgid ""
@@ -1903,9 +1861,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:5
-#, fuzzy
 msgid "Jump"
-msgstr "Skokan"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:6
 msgid ""
@@ -1914,9 +1871,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:5
-#, fuzzy
 msgid "Factory"
-msgstr "Příběh"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:6
 msgid ""
@@ -2030,9 +1986,8 @@ msgid "Learn the basics"
 msgstr "Nauč se základy"
 
 #: data/worldmaps/tutorial.worldmap:124
-#, fuzzy
 msgid "Watch Ending"
-msgstr "Ukázat konec?"
+msgstr ""
 
 #: data/worldmaps/tutorial.worldmap:131
 msgid "Watch Intro"
@@ -2128,17 +2083,12 @@ msgstr ""
 "potřebovat."
 
 #: data/stories/tutorial_intro.story:65
-#, fuzzy
 msgid ""
 "Now that you and the Pingus have arrived at Tutorial Island it is time to "
 "take command and begin your mission.\n"
 "\n"
 "Good Luck!"
 msgstr ""
-"Nyní, když jsi se svou partou dorazil na výukový ostrov,\n"
-"je čas začít a převzít velení mise.\n"
-"\n"
-"                                                   Hodně štěstí!"
 
 #: data/stories/tutorial_outro.story:2
 msgid "The Journey Continues"
@@ -2183,17 +2133,12 @@ msgstr ""
 "pouť do neznámých oblatí světa."
 
 #: data/stories/tutorial_outro.story:35
-#, fuzzy
 msgid ""
 "So the Pingus sit on their raft, worrying about what's to come and where to "
 "go, while floating into the sunset.\n"
 "\n"
 "To be continued..."
 msgstr ""
-"Jak tak seděli na svých vorech, přemýšleli, co je čeká a odplouvali\n"
-"do západu slunce.\n"
-"\n"
-"Bude mít pokračování..."
 
 #: data/levelsets/desert.levelset:3
 msgid "Desert"
@@ -2339,3 +2284,81 @@ msgstr ""
 
 #~ msgid "Test a font"
 #~ msgstr "Otestuje font."
+
+#~ msgid "Set the resolution for pingus (default: 800x600)"
+#~ msgstr "Nastaví rozlišení. (výchozí: 800x600)"
+
+#~ msgid "Misc Options:"
+#~ msgstr "Různá nastavení:"
+
+#~ msgid "Enables some features, only interesting to programmers"
+#~ msgstr "Zapne některé vlastnosti potřebné jen pro programátory."
+
+#~ msgid ""
+#~ "Select all\n"
+#~ "Clear Selection\n"
+#~ "Raise objects\n"
+#~ "Lower objects\n"
+#~ "Lower objects to bottom\n"
+#~ "Raise objects to top\n"
+#~ "Rotate 90 degree\n"
+#~ "Rotate 270 degree\n"
+#~ msgstr ""
+#~ "Vybrat vše\n"
+#~ "Zrušit výběr\n"
+#~ "Vyzdvihnout objekty\n"
+#~ "Zatlačit objekty\n"
+#~ "Zatlačit objekty dospod\n"
+#~ "Vyzdvihnout objekty na povrch\n"
+#~ "Otočit o 90 stupňů\n"
+#~ "Otočit o 270 stupňů\n"
+
+#~ msgid ""
+#~ "Flip object horizontaly\n"
+#~ "Flip object vertically\n"
+#~ "Delete all marked objects\n"
+#~ "Move objects up\n"
+#~ "Move objects down\n"
+#~ "Move objects left\n"
+#~ "Move objects right\n"
+#~ msgstr ""
+#~ "Převrátit objekt horizontálně\n"
+#~ "Převrátit object vertically\n"
+#~ "Smazat všechny vyznačené objekty\n"
+#~ "Posunout objekty nahoru\n"
+#~ "Posunout objekty dolu\n"
+#~ "Posunout objekty vlevo\n"
+#~ "Posunout objekty vpravo\n"
+
+#~ msgid "    New level"
+#~ msgstr "    Nová úroveň"
+
+#~ msgid ""
+#~ "Once again it's time to combine the stuff you have learned in your "
+#~ "previous levels. Blast your way free and make sure you also keep the rest "
+#~ "of the Pingus under control. The Blocker action will be helpful. "
+#~ msgstr ""
+#~ "A máme tu znovu příležitost zkombinovat znalosti, které jsi zatím získal. "
+#~ "Uvolni si cestu k cíli a zároveň dávej pozor i na ostatní pingy. Pomůže "
+#~ "ti nová akce - zablokování cesty. "
+
+#~ msgid "Dig and float, but just don't fall and smash"
+#~ msgstr "Kopej a skákej, ale hlavně nespadni"
+
+#~ msgid ""
+#~ "Now that you and the Pingus have arrived at Tutorial Island it is time to "
+#~ "take command and begin your mission. Good Luck!"
+#~ msgstr ""
+#~ "Nyní, když jsi se svou partou dorazil na výukový ostrov,\n"
+#~ "je čas začít a převzít velení mise.\n"
+#~ "\n"
+#~ "                                                   Hodně štěstí!"
+
+#~ msgid ""
+#~ "So the Pingus sit on their raft, worrying about what's to come and where "
+#~ "to go, while floating into the sunset.  To be continued..."
+#~ msgstr ""
+#~ "Jak tak seděli na svých vorech, přemýšleli, co je čeká a odplouvali\n"
+#~ "do západu slunce.\n"
+#~ "\n"
+#~ "Bude mít pokračování..."

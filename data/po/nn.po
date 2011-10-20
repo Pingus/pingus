@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-10-20 08:23+0200\n"
-"PO-Revision-Date: 2011-01-17 16:50+0000\n"
+"PO-Revision-Date: 2011-09-18 18:50+0000\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-05-05 14:08+0000\n"
-"X-Generator: Launchpad (build 12959)\n"
+"X-Launchpad-Export-Date: 2011-10-20 15:40+0000\n"
+"X-Generator: Launchpad (build 14165)\n"
 
 #: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
@@ -396,23 +396,20 @@ msgid "Bridger"
 msgstr "Brubyggjar"
 
 #: src/pingus/screens/option_menu.cpp:206
-#, fuzzy
 msgid "Fullscreen"
-msgstr "Start i fullskjermsmodus."
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:207
 msgid "Mouse Grab"
 msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:209
-#, fuzzy
 msgid "Software Cursor"
-msgstr "Bruk programvarebasert muspeikar."
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:210
-#, fuzzy
 msgid "Autoscrolling"
-msgstr "Slå av automatisk rulling."
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:211
 msgid "Drag&Drop Scrolling"
@@ -479,9 +476,8 @@ msgid "Options"
 msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:65
-#, fuzzy
 msgid "..:: Configure the game ::.."
-msgstr "..:: Start spelet ::.."
+msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:163
 msgid "Levelsets"
@@ -662,9 +658,8 @@ msgid "Disable all log output"
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:187
-#, fuzzy
 msgid "Display Options:"
-msgstr "Viser denne hjelpeteksten."
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:189
 msgid "Start in Window Mode"
@@ -679,14 +674,12 @@ msgid "Use the given renderer (default: delta)"
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:195
-#, fuzzy
 msgid "Set the window resolution for pingus (default: 800x600)"
-msgstr "Vel oppløysing for pingus (standard: 800x600)."
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:197
-#, fuzzy
 msgid "Set the resolution used in fullscreen mode (default: 800x600)"
-msgstr "Vel oppløysing for pingus (standard: 800x600)."
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:199
 msgid "Enable software cursor"
@@ -701,14 +694,12 @@ msgid "Disable automatic scrolling"
 msgstr "Slå av automatisk rulling."
 
 #: src/pingus/pingus_main.cpp:205
-#, fuzzy
 msgid "Enable drag'n drop scrolling"
-msgstr "Slå av automatisk rulling."
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:207
-#, fuzzy
 msgid "Sound Options:"
-msgstr "Lyd:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:209
 msgid "Disable sound"
@@ -772,9 +763,8 @@ msgid "Debug Options:"
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:239
-#, fuzzy
 msgid "Enables some special features for developers"
-msgstr "Slå på nokre funksjonar som berre er interessante for programmerarar."
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:241
 msgid "Set the game speed (0=fastest, >0=slower)"
@@ -1037,15 +1027,11 @@ msgid "Block'a Rock"
 msgstr "Blokker og spreng"
 
 #: data/levels/tutorial/snow14-grumbel.pingus:6
-#, fuzzy
 msgid ""
 "Once again it's time to combine the things you have learned in your previous "
 "levels. Blast your way free and make sure you also keep the rest of the "
 "Pingus under control. The Blocker action will be helpful."
 msgstr ""
-"Atter ein gang får du sjansen til å kombinera det du har lært på tidlegare "
-"brett. Spreng deg veg, og sjå til at du samtidig held kontrollen på resten "
-"av pingusane. Blokkaren kan vera nyttig her. "
 
 #: data/levels/tutorial/snow15-grumbel.pingus:5
 msgid "Climb, Climber,... Boom!"
@@ -1161,9 +1147,8 @@ msgstr ""
 "vegen, mens dei andre ventar. "
 
 #: data/levels/tutorial/snow8-grumbel.pingus:5
-#, fuzzy
 msgid "Dig and float, just don't fall and smash"
-msgstr "Grav og svev, men ikkje fell og døy"
+msgstr ""
 
 #: data/levels/tutorial/snow8-grumbel.pingus:6
 msgid ""
@@ -1368,9 +1353,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:5
-#, fuzzy
 msgid "Traps, Dangers and other Problems"
-msgstr "Grav, knus og andre problem"
+msgstr ""
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:6
 msgid ""
@@ -1848,9 +1832,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:5
-#, fuzzy
 msgid "Jump"
-msgstr "Hoppar"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:6
 msgid ""
@@ -1859,9 +1842,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:5
-#, fuzzy
 msgid "Factory"
-msgstr "Bakgrunnshistorie"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:6
 msgid ""
@@ -1975,9 +1957,8 @@ msgid "Learn the basics"
 msgstr "Lær det grunnleggjande"
 
 #: data/worldmaps/tutorial.worldmap:124
-#, fuzzy
 msgid "Watch Ending"
-msgstr "Vis slutten?"
+msgstr ""
 
 #: data/worldmaps/tutorial.worldmap:131
 msgid "Watch Intro"
@@ -2069,15 +2050,12 @@ msgstr ""
 "heilt sikkert til å trenga dette på ferda ut i verda."
 
 #: data/stories/tutorial_intro.story:65
-#, fuzzy
 msgid ""
 "Now that you and the Pingus have arrived at Tutorial Island it is time to "
 "take command and begin your mission.\n"
 "\n"
 "Good Luck!"
 msgstr ""
-"No som du og pingusane er komne fram til opplæringsøya, er det på tide å ta "
-"kommandoen og ta fatt på oppdraget. Lykke til!"
 
 #: data/stories/tutorial_outro.story:2
 msgid "The Journey Continues"
@@ -2121,16 +2099,12 @@ msgstr ""
 "på den lange og farlege ferda mot ukjende strøk."
 
 #: data/stories/tutorial_outro.story:35
-#, fuzzy
 msgid ""
 "So the Pingus sit on their raft, worrying about what's to come and where to "
 "go, while floating into the sunset.\n"
 "\n"
 "To be continued..."
 msgstr ""
-"Så no sit pingusane der på flåten sin, og uroar seg for kva som er i vente, "
-"og kor dei skal dra, mens dei sakte flyt inn i solnedgangen. Framhald "
-"følgjer ..."
 
 #: data/levelsets/desert.levelset:3
 msgid "Desert"
@@ -2263,3 +2237,40 @@ msgstr ""
 
 #~ msgid "Test a font"
 #~ msgstr "Test ei skrift."
+
+#~ msgid "Set the resolution for pingus (default: 800x600)"
+#~ msgstr "Vel oppløysing for pingus (standard: 800x600)."
+
+#~ msgid "Sound:"
+#~ msgstr "Lyd:"
+
+#~ msgid "Enables some features, only interesting to programmers"
+#~ msgstr ""
+#~ "Slå på nokre funksjonar som berre er interessante for programmerarar."
+
+#~ msgid ""
+#~ "Once again it's time to combine the stuff you have learned in your "
+#~ "previous levels. Blast your way free and make sure you also keep the rest "
+#~ "of the Pingus under control. The Blocker action will be helpful. "
+#~ msgstr ""
+#~ "Atter ein gang får du sjansen til å kombinera det du har lært på "
+#~ "tidlegare brett. Spreng deg veg, og sjå til at du samtidig held "
+#~ "kontrollen på resten av pingusane. Blokkaren kan vera nyttig her. "
+
+#~ msgid "Dig and float, but just don't fall and smash"
+#~ msgstr "Grav og svev, men ikkje fell og døy"
+
+#~ msgid ""
+#~ "Now that you and the Pingus have arrived at Tutorial Island it is time to "
+#~ "take command and begin your mission. Good Luck!"
+#~ msgstr ""
+#~ "No som du og pingusane er komne fram til opplæringsøya, er det på tide å "
+#~ "ta kommandoen og ta fatt på oppdraget. Lykke til!"
+
+#~ msgid ""
+#~ "So the Pingus sit on their raft, worrying about what's to come and where "
+#~ "to go, while floating into the sunset.  To be continued..."
+#~ msgstr ""
+#~ "Så no sit pingusane der på flåten sin, og uroar seg for kva som er i "
+#~ "vente, og kor dei skal dra, mens dei sakte flyt inn i solnedgangen. "
+#~ "Framhald følgjer ..."

@@ -12,15 +12,15 @@ msgstr ""
 "Project-Id-Version: fi\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-10-20 08:23+0200\n"
-"PO-Revision-Date: 2011-03-13 04:21+0000\n"
+"PO-Revision-Date: 2011-09-18 18:50+0000\n"
 "Last-Translator: Risto H. Kurppa <risto@kurppa.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-05-05 14:08+0000\n"
-"X-Generator: Launchpad (build 12959)\n"
+"X-Launchpad-Export-Date: 2011-10-20 15:40+0000\n"
+"X-Generator: Launchpad (build 14165)\n"
 
 #: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
@@ -35,9 +35,8 @@ msgid "Screenshot: Couldn't write file: "
 msgstr "Ruutukaappaus: Tiedostoon ei voitu kirjoittaa: "
 
 #: src/editor/panel.cpp:171
-#, fuzzy
 msgid "New level"
-msgstr "    Uusi kenttä"
+msgstr ""
 
 #: src/editor/panel.cpp:173
 msgid "Open level..."
@@ -173,9 +172,8 @@ msgid "Special Object"
 msgstr "Erityiset"
 
 #: src/editor/object_selector.cpp:179
-#, fuzzy
 msgid "Prefab Object"
-msgstr "Erityiset"
+msgstr ""
 
 #: src/editor/message_box.cpp:35 src/editor/file_dialog.cpp:66
 msgid "Cancel"
@@ -392,9 +390,8 @@ msgid "Target Id:"
 msgstr ""
 
 #: src/editor/object_properties.cpp:220
-#, fuzzy
 msgid "Height:"
-msgstr "Oikea"
+msgstr ""
 
 #: src/editor/object_properties.cpp:521
 msgid "Object: [Group]"
@@ -419,23 +416,20 @@ msgid "Bridger"
 msgstr "Siltaaja"
 
 #: src/pingus/screens/option_menu.cpp:206
-#, fuzzy
 msgid "Fullscreen"
-msgstr "Käynnistä koko ruudulla"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:207
 msgid "Mouse Grab"
 msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:209
-#, fuzzy
 msgid "Software Cursor"
-msgstr "Ota käyttöön ohjelmallinen osoitin"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:210
-#, fuzzy
 msgid "Autoscrolling"
-msgstr "Poista automaattinen vieritys käytöstä"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:211
 msgid "Drag&Drop Scrolling"
@@ -502,9 +496,8 @@ msgid "Options"
 msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:65
-#, fuzzy
 msgid "..:: Configure the game ::.."
-msgstr "..:: Aloita peli ::.."
+msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:163
 msgid "Levelsets"
@@ -674,7 +667,7 @@ msgstr "Näytä tämä ohje"
 
 #: src/pingus/pingus_main.cpp:179
 msgid "Print version number and exit"
-msgstr ""
+msgstr "Tulosta versiotiedot ja poistu"
 
 #: src/pingus/pingus_main.cpp:181
 msgid "Enable info level log output"
@@ -689,9 +682,8 @@ msgid "Disable all log output"
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:187
-#, fuzzy
 msgid "Display Options:"
-msgstr "Näyttö:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:189
 msgid "Start in Window Mode"
@@ -706,14 +698,12 @@ msgid "Use the given renderer (default: delta)"
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:195
-#, fuzzy
 msgid "Set the window resolution for pingus (default: 800x600)"
-msgstr "Aseta näytön tarkkuus (oletusarvo: 800x600)"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:197
-#, fuzzy
 msgid "Set the resolution used in fullscreen mode (default: 800x600)"
-msgstr "Aseta näytön tarkkuus (oletusarvo: 800x600)"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:199
 msgid "Enable software cursor"
@@ -728,14 +718,12 @@ msgid "Disable automatic scrolling"
 msgstr "Poista automaattinen vieritys käytöstä"
 
 #: src/pingus/pingus_main.cpp:205
-#, fuzzy
 msgid "Enable drag'n drop scrolling"
-msgstr "Poista automaattinen vieritys käytöstä"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:207
-#, fuzzy
 msgid "Sound Options:"
-msgstr "Äänet:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:209
 msgid "Disable sound"
@@ -1066,15 +1054,11 @@ msgid "Block'a Rock"
 msgstr "Stop'n Roll"
 
 #: data/levels/tutorial/snow14-grumbel.pingus:6
-#, fuzzy
 msgid ""
 "Once again it's time to combine the things you have learned in your previous "
 "levels. Blast your way free and make sure you also keep the rest of the "
 "Pingus under control. The Blocker action will be helpful."
 msgstr ""
-"Jälleen on aika yhdistellä edellisissä kentissä opittua. Räjäytä tie auki "
-"mutta varmista samalla, että loput pingut pysyvät hallinnassa. Pysäyttäjistä "
-"on apua. "
 
 #: data/levels/tutorial/snow15-grumbel.pingus:5
 msgid "Climb, Climber,... Boom!"
@@ -1193,9 +1177,8 @@ msgstr ""
 "raivaamassa tietä muille. "
 
 #: data/levels/tutorial/snow8-grumbel.pingus:5
-#, fuzzy
 msgid "Dig and float, just don't fall and smash"
-msgstr "Kaiva ja leiju, älä putoa ja liiskaannu"
+msgstr ""
 
 #: data/levels/tutorial/snow8-grumbel.pingus:6
 msgid ""
@@ -1274,7 +1257,7 @@ msgstr ""
 
 #: data/levels/halloween/halloween3-grumbel.pingus:5
 msgid "Boom Boom"
-msgstr ""
+msgstr "Pum pum"
 
 #: data/levels/halloween/halloween3-grumbel.pingus:6
 msgid ""
@@ -1424,9 +1407,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:5
-#, fuzzy
 msgid "Traps, Dangers and other Problems"
-msgstr "Kaivamista, murskausta ja muuta mukavaa"
+msgstr ""
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:6
 msgid ""
@@ -1471,9 +1453,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/halloween2011/halloween18-grumbel.pingus:5
-#, fuzzy
 msgid "Tower of Death"
-msgstr "Laske"
+msgstr ""
 
 #: data/levels/halloween2011/halloween18-grumbel.pingus:6
 msgid ""
@@ -1905,9 +1886,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:5
-#, fuzzy
 msgid "Jump"
-msgstr "Hyppääjä"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:6
 msgid ""
@@ -1916,9 +1896,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:5
-#, fuzzy
 msgid "Factory"
-msgstr "Tarina"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:6
 msgid ""
@@ -2032,9 +2011,8 @@ msgid "Learn the basics"
 msgstr "Opettele perusasiat"
 
 #: data/worldmaps/tutorial.worldmap:124
-#, fuzzy
 msgid "Watch Ending"
-msgstr "Näytä lopetus?"
+msgstr ""
 
 #: data/worldmaps/tutorial.worldmap:131
 msgid "Watch Intro"
@@ -2129,17 +2107,12 @@ msgstr ""
 "valmistaudu huolella."
 
 #: data/stories/tutorial_intro.story:65
-#, fuzzy
 msgid ""
 "Now that you and the Pingus have arrived at Tutorial Island it is time to "
 "take command and begin your mission.\n"
 "\n"
 "Good Luck!"
 msgstr ""
-"Nyt kun pingut ovat saapuneet Harjoitussaarelle, sinun on aika\n"
-"ottaa ohjat käsiisi ja aloittaa tehtävä.\n"
-"\n"
-"Onnea matkaan!"
 
 #: data/stories/tutorial_outro.story:2
 msgid "The Journey Continues"
@@ -2204,9 +2177,8 @@ msgid "Trapped at All Hallows Eve"
 msgstr ""
 
 #: data/levelsets/halloween2011.levelset:3
-#, fuzzy
 msgid "Halloween 2011"
-msgstr "Halloween 2007"
+msgstr ""
 
 #: data/levelsets/halloween2011.levelset:4
 msgid "Going Underground"
@@ -2302,3 +2274,39 @@ msgstr ""
 
 #~ msgid "Test a font"
 #~ msgstr "Kokeile kirjaisinta"
+
+#~ msgid "Sound:"
+#~ msgstr "Äänet:"
+
+#~ msgid ""
+#~ "Once again it's time to combine the stuff you have learned in your "
+#~ "previous levels. Blast your way free and make sure you also keep the rest "
+#~ "of the Pingus under control. The Blocker action will be helpful. "
+#~ msgstr ""
+#~ "Jälleen on aika yhdistellä edellisissä kentissä opittua. Räjäytä tie auki "
+#~ "mutta varmista samalla, että loput pingut pysyvät hallinnassa. "
+#~ "Pysäyttäjistä on apua. "
+
+#~ msgid "Dig and float, but just don't fall and smash"
+#~ msgstr "Kaiva ja leiju, älä putoa ja liiskaannu"
+
+#~ msgid "    New level"
+#~ msgstr "    Uusi kenttä"
+
+#~ msgid "Display:"
+#~ msgstr "Näyttö:"
+
+#~ msgid "Set the resolution for pingus (default: 800x600)"
+#~ msgstr "Aseta näytön tarkkuus (oletusarvo: 800x600)"
+
+#~ msgid ""
+#~ "Now that you and the Pingus have arrived at Tutorial Island it is time to "
+#~ "take command and begin your mission. Good Luck!"
+#~ msgstr ""
+#~ "Nyt kun pingut ovat saapuneet Harjoitussaarelle, sinun on aika\n"
+#~ "ottaa ohjat käsiisi ja aloittaa tehtävä.\n"
+#~ "\n"
+#~ "Onnea matkaan!"
+
+#~ msgid "Title"
+#~ msgstr "Otsikko"

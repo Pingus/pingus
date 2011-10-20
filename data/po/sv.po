@@ -15,15 +15,15 @@ msgstr ""
 "uppdaterad från och med Pingus version 0.7.2 av Juno.\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-10-20 08:23+0200\n"
-"PO-Revision-Date: 2011-03-13 04:12+0000\n"
+"PO-Revision-Date: 2011-09-18 18:50+0000\n"
 "Last-Translator: shazbot99 <Unknown>\n"
 "Language-Team: sv <Jan Morens epostadress - jan.moren@lucs.lu.se>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-05-05 14:08+0000\n"
-"X-Generator: Launchpad (build 12959)\n"
+"X-Launchpad-Export-Date: 2011-10-20 15:40+0000\n"
+"X-Generator: Launchpad (build 14165)\n"
 "X-Poedit-Country: SWEDEN\n"
 "X-Poedit-Language: Swedish\n"
 
@@ -40,9 +40,8 @@ msgid "Screenshot: Couldn't write file: "
 msgstr "Skärmdump: Kunde inte skriva till fil: "
 
 #: src/editor/panel.cpp:171
-#, fuzzy
 msgid "New level"
-msgstr "    F5 - läs in en bana"
+msgstr ""
 
 #: src/editor/panel.cpp:173
 msgid "Open level..."
@@ -178,9 +177,8 @@ msgid "Special Object"
 msgstr "-Specialobjekt"
 
 #: src/editor/object_selector.cpp:179
-#, fuzzy
 msgid "Prefab Object"
-msgstr "-Specialobjekt"
+msgstr ""
 
 #: src/editor/message_box.cpp:35 src/editor/file_dialog.cpp:66
 msgid "Cancel"
@@ -195,7 +193,6 @@ msgid "== Editor Help =="
 msgstr ""
 
 #: src/editor/editor_screen.cpp:248
-#, fuzzy
 msgid ""
 "Select all\n"
 "Clear Selection\n"
@@ -208,17 +205,8 @@ msgid ""
 "Group selected objects\n"
 "Ungroup selected objects\n"
 msgstr ""
-"Välja alla\n"
-"Rensa valt alternativ\n"
-"Höj objekt\n"
-"Sänk objekt\n"
-"Sänk objekt till botten\n"
-"Höj objekt till toppen\n"
-"Rotera 90 grader\n"
-"Rotera 270 grader\n"
 
 #: src/editor/editor_screen.cpp:271
-#, fuzzy
 msgid ""
 "Flip object horizontaly\n"
 "Flip object vertically\n"
@@ -228,13 +216,6 @@ msgid ""
 "Toggle background color\n"
 "Increase/lower repeat\n"
 msgstr ""
-"Flippa objekt horisontellt\n"
-"Flippa objekt vertikalt\n"
-"Radera alla markerade objekt\n"
-"Flytta objekt uppåt\n"
-"Flytta objekt nedåt\n"
-"Flytta objekt till vänster\n"
-"Flytta objekt till höger\n"
 
 #: src/editor/editor_screen.cpp:282
 msgid ""
@@ -416,9 +397,8 @@ msgid "Target Id:"
 msgstr ""
 
 #: src/editor/object_properties.cpp:220
-#, fuzzy
 msgid "Height:"
-msgstr "Höger"
+msgstr ""
 
 #: src/editor/object_properties.cpp:521
 msgid "Object: [Group]"
@@ -443,23 +423,20 @@ msgid "Bridger"
 msgstr "Byggare"
 
 #: src/pingus/screens/option_menu.cpp:206
-#, fuzzy
 msgid "Fullscreen"
-msgstr "Starta i fullskärm"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:207
 msgid "Mouse Grab"
 msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:209
-#, fuzzy
 msgid "Software Cursor"
-msgstr "Aktivera mjukvarupekare"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:210
-#, fuzzy
 msgid "Autoscrolling"
-msgstr "Avaktivera automatisk skärmrullning"
+msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:211
 msgid "Drag&Drop Scrolling"
@@ -526,9 +503,8 @@ msgid "Options"
 msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:65
-#, fuzzy
 msgid "..:: Configure the game ::.."
-msgstr "..:: Starta spelet ::.."
+msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:163
 msgid "Levelsets"
@@ -711,9 +687,8 @@ msgid "Disable all log output"
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:187
-#, fuzzy
 msgid "Display Options:"
-msgstr "Skärm:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:189
 msgid "Start in Window Mode"
@@ -728,14 +703,12 @@ msgid "Use the given renderer (default: delta)"
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:195
-#, fuzzy
 msgid "Set the window resolution for pingus (default: 800x600)"
-msgstr "Sätt upplösningen för pingus (standard: 800x600)"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:197
-#, fuzzy
 msgid "Set the resolution used in fullscreen mode (default: 800x600)"
-msgstr "Sätt upplösningen för pingus (standard: 800x600)"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:199
 msgid "Enable software cursor"
@@ -750,14 +723,12 @@ msgid "Disable automatic scrolling"
 msgstr "Avaktivera automatisk skärmrullning"
 
 #: src/pingus/pingus_main.cpp:205
-#, fuzzy
 msgid "Enable drag'n drop scrolling"
-msgstr "Avaktivera automatisk skärmrullning"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:207
-#, fuzzy
 msgid "Sound Options:"
-msgstr "Ljud:"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:209
 msgid "Disable sound"
@@ -821,9 +792,8 @@ msgid "Debug Options:"
 msgstr ""
 
 #: src/pingus/pingus_main.cpp:239
-#, fuzzy
 msgid "Enables some special features for developers"
-msgstr "Aktiverar vissa egenskaper, bara intressant för programmerare"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:241
 msgid "Set the game speed (0=fastest, >0=slower)"
@@ -1089,15 +1059,11 @@ msgid "Block'a Rock"
 msgstr "Block'a Rock"
 
 #: data/levels/tutorial/snow14-grumbel.pingus:6
-#, fuzzy
 msgid ""
 "Once again it's time to combine the things you have learned in your previous "
 "levels. Blast your way free and make sure you also keep the rest of the "
 "Pingus under control. The Blocker action will be helpful."
 msgstr ""
-"Återigen är det dags att kombinera allt det du lärt dig från föregående "
-"banor. Spräng dig fram och se till att också behålla resten av Pingus under "
-"kontroll. Blockaren kommer bli bra att ha. "
 
 #: data/levels/tutorial/snow15-grumbel.pingus:5
 msgid "Climb, Climber,... Boom!"
@@ -1216,9 +1182,8 @@ msgstr ""
 "dem under kontroll medan en enda Pingu förbereder vägen för de andra. "
 
 #: data/levels/tutorial/snow8-grumbel.pingus:5
-#, fuzzy
 msgid "Dig and float, just don't fall and smash"
-msgstr "Gräv och sväva, undvik att ramla och krossas"
+msgstr ""
 
 #: data/levels/tutorial/snow8-grumbel.pingus:6
 msgid ""
@@ -1456,9 +1421,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:5
-#, fuzzy
 msgid "Traps, Dangers and other Problems"
-msgstr "Gräv, banka och andra problem"
+msgstr ""
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:6
 msgid ""
@@ -1503,9 +1467,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/halloween2011/halloween18-grumbel.pingus:5
-#, fuzzy
 msgid "Tower of Death"
-msgstr "Sänk objekt"
+msgstr ""
 
 #: data/levels/halloween2011/halloween18-grumbel.pingus:6
 msgid ""
@@ -1937,9 +1900,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:5
-#, fuzzy
 msgid "Jump"
-msgstr "Hoppare"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:6
 msgid ""
@@ -1948,9 +1910,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:5
-#, fuzzy
 msgid "Factory"
-msgstr "Berättelse"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:6
 msgid ""
@@ -2064,9 +2025,8 @@ msgid "Learn the basics"
 msgstr "Lär dig grunderna"
 
 #: data/worldmaps/tutorial.worldmap:124
-#, fuzzy
 msgid "Watch Ending"
-msgstr "Visa slut?"
+msgstr ""
 
 #: data/worldmaps/tutorial.worldmap:131
 msgid "Watch Intro"
@@ -2159,15 +2119,12 @@ msgstr ""
 "behärska dem, då ni kommer behöva dem alla under er färd runt världen."
 
 #: data/stories/tutorial_intro.story:65
-#, fuzzy
 msgid ""
 "Now that you and the Pingus have arrived at Tutorial Island it is time to "
 "take command and begin your mission.\n"
 "\n"
 "Good Luck!"
 msgstr ""
-"Nu när du och Pingus har anlänt till Övningsön är det dags att ta kommandot "
-"och påbörja ert uppdrag. Lycka till!"
 
 #: data/stories/tutorial_outro.story:2
 msgid "The Journey Continues"
@@ -2212,15 +2169,12 @@ msgstr ""
 "delarna av världen."
 
 #: data/stories/tutorial_outro.story:35
-#, fuzzy
 msgid ""
 "So the Pingus sit on their raft, worrying about what's to come and where to "
 "go, while floating into the sunset.\n"
 "\n"
 "To be continued..."
 msgstr ""
-"Pingus sitter på sin flotte och oroar sig för vad som komma skall och vart "
-"de ska, medan de flyter in i solnedgången. Fortsättning följer..."
 
 #: data/levelsets/desert.levelset:3
 msgid "Desert"
@@ -2247,9 +2201,8 @@ msgid "Trapped at All Hallows Eve"
 msgstr "Fångad på allhelgonaafton"
 
 #: data/levelsets/halloween2011.levelset:3
-#, fuzzy
 msgid "Halloween 2011"
-msgstr "Allhelgonaafton 2007"
+msgstr ""
 
 #: data/levelsets/halloween2011.levelset:4
 msgid "Going Underground"
@@ -2354,3 +2307,80 @@ msgstr ""
 
 #~ msgid "Test a font"
 #~ msgstr "Testa en font"
+
+#~ msgid "Set the resolution for pingus (default: 800x600)"
+#~ msgstr "Sätt upplösningen för pingus (standard: 800x600)"
+
+#~ msgid "Sound:"
+#~ msgstr "Ljud:"
+
+#~ msgid ""
+#~ "Select all\n"
+#~ "Clear Selection\n"
+#~ "Raise objects\n"
+#~ "Lower objects\n"
+#~ "Lower objects to bottom\n"
+#~ "Raise objects to top\n"
+#~ "Rotate 90 degree\n"
+#~ "Rotate 270 degree\n"
+#~ msgstr ""
+#~ "Välja alla\n"
+#~ "Rensa valt alternativ\n"
+#~ "Höj objekt\n"
+#~ "Sänk objekt\n"
+#~ "Sänk objekt till botten\n"
+#~ "Höj objekt till toppen\n"
+#~ "Rotera 90 grader\n"
+#~ "Rotera 270 grader\n"
+
+#~ msgid ""
+#~ "Flip object horizontaly\n"
+#~ "Flip object vertically\n"
+#~ "Delete all marked objects\n"
+#~ "Move objects up\n"
+#~ "Move objects down\n"
+#~ "Move objects left\n"
+#~ "Move objects right\n"
+#~ msgstr ""
+#~ "Flippa objekt horisontellt\n"
+#~ "Flippa objekt vertikalt\n"
+#~ "Radera alla markerade objekt\n"
+#~ "Flytta objekt uppåt\n"
+#~ "Flytta objekt nedåt\n"
+#~ "Flytta objekt till vänster\n"
+#~ "Flytta objekt till höger\n"
+
+#~ msgid "    New level"
+#~ msgstr "    F5 - läs in en bana"
+
+#~ msgid "Display:"
+#~ msgstr "Skärm:"
+
+#~ msgid "Enables some features, only interesting to programmers"
+#~ msgstr "Aktiverar vissa egenskaper, bara intressant för programmerare"
+
+#~ msgid ""
+#~ "Once again it's time to combine the stuff you have learned in your "
+#~ "previous levels. Blast your way free and make sure you also keep the rest "
+#~ "of the Pingus under control. The Blocker action will be helpful. "
+#~ msgstr ""
+#~ "Återigen är det dags att kombinera allt det du lärt dig från föregående "
+#~ "banor. Spräng dig fram och se till att också behålla resten av Pingus "
+#~ "under kontroll. Blockaren kommer bli bra att ha. "
+
+#~ msgid "Dig and float, but just don't fall and smash"
+#~ msgstr "Gräv och sväva, undvik att ramla och krossas"
+
+#~ msgid ""
+#~ "Now that you and the Pingus have arrived at Tutorial Island it is time to "
+#~ "take command and begin your mission. Good Luck!"
+#~ msgstr ""
+#~ "Nu när du och Pingus har anlänt till Övningsön är det dags att ta "
+#~ "kommandot och påbörja ert uppdrag. Lycka till!"
+
+#~ msgid ""
+#~ "So the Pingus sit on their raft, worrying about what's to come and where "
+#~ "to go, while floating into the sunset.  To be continued..."
+#~ msgstr ""
+#~ "Pingus sitter på sin flotte och oroar sig för vad som komma skall och "
+#~ "vart de ska, medan de flyter in i solnedgången. Fortsättning följer..."

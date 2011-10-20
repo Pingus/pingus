@@ -1,16 +1,17 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Italian translation for pingus
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the pingus package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-30 08:01+0100\n"
-"PO-Revision-Date: 2011-09-18 19:49+0000\n"
-"Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Project-Id-Version: pingus\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2009-01-30 08:10+0100\n"
+"PO-Revision-Date: 2011-10-10 13:36+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Italian <it@li.org>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,37 +21,37 @@ msgstr ""
 
 #: helloworld.cpp:7
 msgid "Short Hello World"
-msgstr "kurzes Hallo Welt"
+msgstr "Piccolo Ciao Mondo"
 
 #: helloworld.cpp:8 helloworld.cpp:14
 msgid "Hello World"
 msgid_plural "Hello Worlds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ciao Mondo"
+msgstr[1] "Ciao Mondi"
 
 #: helloworld.cpp:10 helloworld.cpp:16
 msgctxt ""
 msgid "Hello World"
 msgid_plural "Hello Worlds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ciao Mondo"
+msgstr[1] "Ciao Mondi"
 
 #: helloworld.cpp:11 helloworld.cpp:17
 msgctxt "console"
 msgid "Hello World"
 msgid_plural "Hello Worlds"
-msgstr[0] "Hallo Welt (singular) in der Console"
-msgstr[1] "Hallo Welt (plural) in der Console"
+msgstr[0] "Ciao Mondo"
+msgstr[1] "Ciao Mondi"
 
 #: helloworld.cpp:13
 msgid "gui"
 msgid_plural "Hello World"
-msgstr[0] "Hallo Welt (singular)"
-msgstr[1] "Hallo Welt (plural)"
+msgstr[0] "gui"
+msgstr[1] "Ciao mondi"
 
 #: helloworld.cpp:18
 msgctxt "gui"
 msgid "Hello World"
 msgid_plural "Hello Worlds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ciao Mondo"
+msgstr[1] "Ciao Mondi"
