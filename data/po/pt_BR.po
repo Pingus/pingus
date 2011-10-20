@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-10 17:49+0200\n"
+"POT-Creation-Date: 2011-10-20 08:23+0200\n"
 "PO-Revision-Date: 2011-03-13 04:24+0000\n"
 "Last-Translator: Ralph <Unknown>\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -30,125 +30,6 @@ msgstr "Screenshot: foto da tela tirada."
 #: src/engine/display/screenshot.cpp:124 src/engine/display/screenshot.cpp:152
 msgid "Screenshot: Couldn't write file: "
 msgstr "Screenshot: Não consegui gravar o arquivo: "
-
-#: src/editor/editor_screen.cpp:234
-msgid "== Editor Help =="
-msgstr ""
-
-#: src/editor/editor_screen.cpp:252
-#, fuzzy
-msgid ""
-"Select all\n"
-"Clear Selection\n"
-"Raise objects\n"
-"Lower objects\n"
-"Raise objects to top\n"
-"Lower objects to bottom\n"
-"Rotate 90 degree\n"
-"Rotate 270 degree\n"
-"Group selected objects\n"
-"Ungroup selected objects\n"
-msgstr ""
-"Seleciona tudo\n"
-"Limpa a seleção\n"
-"Sobe objetos\n"
-"Desce objetos\n"
-"Desce objetos para o fundo\n"
-"Sobe objetos para o topo\n"
-"Gira 90 graus\n"
-"Gira 270 graus\n"
-
-#: src/editor/editor_screen.cpp:275
-#, fuzzy
-msgid ""
-"Flip object horizontaly\n"
-"Flip object vertically\n"
-"Delete all marked objects\n"
-"Move objects by one pixel\n"
-"Move objects by 32 pixel\n"
-"Toggle background color\n"
-"Increase/lower repeat\n"
-msgstr ""
-"Inverte objeto horizontalmente\n"
-"Inverte objeto verticalmente\n"
-"Apaga todos os objetos marcados\n"
-"Move objetos para cima\n"
-"Move objetos para baixo\n"
-"Move objetos pra esquerda\n"
-"Move objects pra direita\n"
-
-#: src/editor/editor_screen.cpp:286
-msgid ""
-"You should name your level files systematically, i.e. by their theme, their "
-"number and your nickname:\n"
-"\n"
-"     <levelname><number>-<creator>.pingus\n"
-"\n"
-"So if you create a your second level with a stone theme, call it: stone2-"
-"yourname.pingus\n"
-"\n"
-"When you have created a level and want to have it included in the game mail "
-"it to:\n"
-"\n"
-"     pingus-devel@nongnu.org\n"
-"\n"
-"Only levels published under the GPL are allowed into the game. The editor "
-"automatically inserts a reference \n"
-"to the GPL, if you want to have your level under a different license, you "
-"have to change that reference.\n"
-msgstr ""
-"Você deve batizar seus arquivos de nível de forma sistemática. i.e., pelo "
-"nome do tema, o número e seu apelido:\n"
-"\n"
-"     <nomedonível><número>-<criador>.pingus\n"
-"\n"
-"Então, se você criar um segundo nível cujo tema é rochas, chame de: rochas2-"
-"seunome.pingus\n"
-"\n"
-"Quando você quiser que um nível criado por você seja incluído no jogo, mande "
-"para:\n"
-"\n"
-"     pingus-devel@nongnu.org\n"
-"\n"
-"Apenas níveis publicados sob a GPL podem ser publicados no jogo. O editor "
-"insere automaticamente uma referência para a GPL. Se você quer que seu nível "
-"tenha uma licença diferente, tem que mudar esta referência.\n"
-
-#: src/editor/file_dialog.cpp:59
-msgid "Datadir"
-msgstr "Pasta de dados"
-
-#: src/editor/file_dialog.cpp:61
-msgid "Userdir"
-msgstr "Pasta do usuário"
-
-#: src/editor/file_dialog.cpp:64
-msgid "Open"
-msgstr "Abrir"
-
-#: src/editor/file_dialog.cpp:64
-msgid "Save"
-msgstr "Salvar"
-
-#: src/editor/file_dialog.cpp:67 src/editor/message_box.cpp:35
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: src/editor/file_dialog.cpp:78
-msgid "Filename:"
-msgstr "Nome do Arquivo:"
-
-#: src/editor/file_dialog.cpp:79
-msgid "Pathname:"
-msgstr "Caminho:"
-
-#: src/editor/file_dialog.cpp:108
-msgid "Open a level"
-msgstr "Abrir um nível"
-
-#: src/editor/file_dialog.cpp:108
-msgid "Save your level"
-msgstr "Gravar seu nível"
 
 #: src/editor/panel.cpp:171
 #, fuzzy
@@ -293,9 +174,128 @@ msgstr "Objetos Especiais"
 msgid "Prefab Object"
 msgstr "Objetos Especiais"
 
+#: src/editor/message_box.cpp:35 src/editor/file_dialog.cpp:66
+msgid "Cancel"
+msgstr "Cancelar"
+
 #: src/editor/message_box.cpp:37
 msgid "Replace"
 msgstr ""
+
+#: src/editor/editor_screen.cpp:230
+msgid "== Editor Help =="
+msgstr ""
+
+#: src/editor/editor_screen.cpp:248
+#, fuzzy
+msgid ""
+"Select all\n"
+"Clear Selection\n"
+"Raise objects\n"
+"Lower objects\n"
+"Raise objects to top\n"
+"Lower objects to bottom\n"
+"Rotate 90 degree\n"
+"Rotate 270 degree\n"
+"Group selected objects\n"
+"Ungroup selected objects\n"
+msgstr ""
+"Seleciona tudo\n"
+"Limpa a seleção\n"
+"Sobe objetos\n"
+"Desce objetos\n"
+"Desce objetos para o fundo\n"
+"Sobe objetos para o topo\n"
+"Gira 90 graus\n"
+"Gira 270 graus\n"
+
+#: src/editor/editor_screen.cpp:271
+#, fuzzy
+msgid ""
+"Flip object horizontaly\n"
+"Flip object vertically\n"
+"Delete all marked objects\n"
+"Move objects by one pixel\n"
+"Move objects by 32 pixel\n"
+"Toggle background color\n"
+"Increase/lower repeat\n"
+msgstr ""
+"Inverte objeto horizontalmente\n"
+"Inverte objeto verticalmente\n"
+"Apaga todos os objetos marcados\n"
+"Move objetos para cima\n"
+"Move objetos para baixo\n"
+"Move objetos pra esquerda\n"
+"Move objects pra direita\n"
+
+#: src/editor/editor_screen.cpp:282
+msgid ""
+"You should name your level files systematically, i.e. by their theme, their "
+"number and your nickname:\n"
+"\n"
+"     <levelname><number>-<creator>.pingus\n"
+"\n"
+"So if you create a your second level with a stone theme, call it: stone2-"
+"yourname.pingus\n"
+"\n"
+"When you have created a level and want to have it included in the game mail "
+"it to:\n"
+"\n"
+"     pingus-devel@nongnu.org\n"
+"\n"
+"Only levels published under the GPL are allowed into the game. The editor "
+"automatically inserts a reference \n"
+"to the GPL, if you want to have your level under a different license, you "
+"have to change that reference.\n"
+msgstr ""
+"Você deve batizar seus arquivos de nível de forma sistemática. i.e., pelo "
+"nome do tema, o número e seu apelido:\n"
+"\n"
+"     <nomedonível><número>-<criador>.pingus\n"
+"\n"
+"Então, se você criar um segundo nível cujo tema é rochas, chame de: rochas2-"
+"seunome.pingus\n"
+"\n"
+"Quando você quiser que um nível criado por você seja incluído no jogo, mande "
+"para:\n"
+"\n"
+"     pingus-devel@nongnu.org\n"
+"\n"
+"Apenas níveis publicados sob a GPL podem ser publicados no jogo. O editor "
+"insere automaticamente uma referência para a GPL. Se você quer que seu nível "
+"tenha uma licença diferente, tem que mudar esta referência.\n"
+
+#: src/editor/file_dialog.cpp:58
+msgid "Datadir"
+msgstr "Pasta de dados"
+
+#: src/editor/file_dialog.cpp:60
+msgid "Userdir"
+msgstr "Pasta do usuário"
+
+#: src/editor/file_dialog.cpp:63
+msgid "Open"
+msgstr "Abrir"
+
+#: src/editor/file_dialog.cpp:63
+msgid "Save"
+msgstr "Salvar"
+
+#: src/editor/file_dialog.cpp:77
+msgid "Filename:"
+msgstr "Nome do Arquivo:"
+
+#: src/editor/file_dialog.cpp:78
+msgid "Pathname:"
+msgstr "Caminho:"
+
+#: src/editor/file_dialog.cpp:98
+msgid "Open a level"
+msgstr "Abrir um nível"
+
+#: src/editor/file_dialog.cpp:98
+msgid "Save your level"
+msgstr "Gravar seu nível"
 
 #: src/editor/object_properties.cpp:87 src/editor/object_properties.cpp:515
 msgid "Object:"
@@ -422,220 +422,78 @@ msgstr "Grupo não suportado"
 msgid "Object: "
 msgstr "Objeto: "
 
-#: src/pingus/pingus_main.cpp:176
-msgid "[OPTIONS]... [FILE]"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:177
-msgid ""
-"Pingus is a puzzle game where you need to guide a bunch of little penguins "
-"around the world."
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:179
-#, fuzzy
-msgid "General Options:"
-msgstr "Opções Diversas:"
-
-#: src/pingus/pingus_main.cpp:181
-msgid "Displays this help"
-msgstr "Mostra esta ajuda"
-
-#: src/pingus/pingus_main.cpp:183
-msgid "Print version number and exit"
-msgstr "Mostra o número da versão e sai"
-
-#: src/pingus/pingus_main.cpp:185
-msgid "Enable info level log output"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:187
-msgid "Enable debug level log output"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:189
-msgid "Disable all log output"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:191
-#, fuzzy
-msgid "Display Options:"
-msgstr "Opções Diversas:"
-
-#: src/pingus/pingus_main.cpp:193
-msgid "Start in Window Mode"
-msgstr "Não executa em tela cheia"
-
-#: src/pingus/pingus_main.cpp:195
-msgid "Start in Fullscreen"
-msgstr "Executa em tela cheia"
-
-#: src/pingus/pingus_main.cpp:197
-msgid "Use the given renderer (default: delta)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:199
-#, fuzzy
-msgid "Set the window resolution for pingus (default: 800x600)"
-msgstr "Ajustar a resolução do Pingus (padrão: 800x600)"
-
-#: src/pingus/pingus_main.cpp:201
-#, fuzzy
-msgid "Set the resolution used in fullscreen mode (default: 800x600)"
-msgstr "Ajustar a resolução do Pingus (padrão: 800x600)"
-
-#: src/pingus/pingus_main.cpp:203
-msgid "Enable software cursor"
-msgstr "Habilita cursor por software"
-
-#: src/pingus/pingus_main.cpp:205
-#, fuzzy
-msgid "Game Options:"
-msgstr "Opções Diversas:"
-
-#: src/pingus/pingus_main.cpp:207
-msgid "Disable automatic scrolling"
-msgstr "Desativa rolagem automática"
-
-#: src/pingus/pingus_main.cpp:209
-#, fuzzy
-msgid "Enable drag'n drop scrolling"
-msgstr "Desativa rolagem automática"
-
-#: src/pingus/pingus_main.cpp:211
-#, fuzzy
-msgid "Sound Options:"
-msgstr "Opções Diversas:"
-
-#: src/pingus/pingus_main.cpp:213
-msgid "Disable sound"
-msgstr "Desativa o som"
-
-#: src/pingus/pingus_main.cpp:215
-msgid "Disable music"
-msgstr "Desativa a música"
-
-#: src/pingus/pingus_main.cpp:219
-msgid "Select language to use with Pingus"
-msgstr "Seleciona o idioma para usar no Pingus"
-
-#: src/pingus/pingus_main.cpp:221
-msgid "List all available languages"
-msgstr "Listar todos os idiomas disponíveis"
-
-#: src/pingus/pingus_main.cpp:225
-msgid "Loads the level editor"
-msgstr "Lança o editor de níveis"
-
-#: src/pingus/pingus_main.cpp:227
-#, fuzzy
-msgid "Directory Options:"
-msgstr "Direção:"
-
-#: src/pingus/pingus_main.cpp:228 src/pingus/pingus_main.cpp:230
-#: src/pingus/pingus_main.cpp:232
-msgid "DIR"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:229
-msgid "Load game datafiles from DIR"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:231
-msgid "Load config files and store savegames in DIR"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:233
-msgid "Load game modifications from DIR"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:235
-msgid "Don't read ~/.pingus/config"
-msgstr "Não lê ~/.pingus/config"
-
-#: src/pingus/pingus_main.cpp:236
-msgid "FILE"
-msgstr "ARQUIVO"
-
-#: src/pingus/pingus_main.cpp:237
-msgid "Read config options from FILE"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:239
-msgid "Uses the controller given in FILE"
-msgstr "Usa o controlador especificado em ARQUIVO"
-
-#: src/pingus/pingus_main.cpp:241
-#, fuzzy
-msgid "Debug Options:"
-msgstr "Opções Diversas:"
-
-#: src/pingus/pingus_main.cpp:243
-#, fuzzy
-msgid "Enables some special features for developers"
-msgstr "Ativa algumas características, só interessa a programadores"
-
-#: src/pingus/pingus_main.cpp:245
-msgid "Set the game speed (0=fastest, >0=slower)"
-msgstr "Especifica a velocidade do jogo (0=o mais rápido, >0=mais lento)"
-
-#: src/pingus/pingus_main.cpp:247
-msgid "Set the desired game framerate (frames per second)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:249
-msgid "Set the size of the map tiles (default: 32)"
-msgstr "Especifica o tamanho dos ladrilhos (padrão: 32)"
-
-#: src/pingus/pingus_main.cpp:632
-msgid "Pingus: Out of memory!"
-msgstr "Pingus: Sem memória!"
-
-#: src/pingus/pingus_main.cpp:636
-msgid "Pingus: Standard exception caught!:\n"
-msgstr "Pingus: Exceção padrão encontrada!:\n"
-
-#: src/pingus/pingus_main.cpp:640
-msgid "Pingus: Unknown throw caught!"
-msgstr "Pingus: throw desconhecido apanhado!"
-
-#: src/pingus/game_time.cpp:29
-msgid "unlimited"
-msgstr "ilimitado"
+#: src/pingus/components/pingus_counter.cpp:43
+#, c-format, boost-format
+msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
+msgstr "Soltos:%3d/%d   Fora:%3d   Salvos:%3d/%d"
 
 #: src/pingus/actions/bridger.cpp:38 src/pingus/actions/bridger.cpp:196
 #: src/pingus/action_name.cpp:32
 msgid "Bridger"
 msgstr "Faz-pontes"
 
-#: src/pingus/screens/start_screen.cpp:67
-msgid "Play"
+#: src/pingus/screens/option_menu.cpp:206
+#, fuzzy
+msgid "Fullscreen"
+msgstr "Executa em tela cheia"
+
+#: src/pingus/screens/option_menu.cpp:207
+msgid "Mouse Grab"
 msgstr ""
 
-#: src/pingus/screens/start_screen.cpp:111
-#: src/pingus/screens/level_menu.cpp:50
-msgid "Back"
+#: src/pingus/screens/option_menu.cpp:209
+#, fuzzy
+msgid "Software Cursor"
+msgstr "Habilita cursor por software"
+
+#: src/pingus/screens/option_menu.cpp:210
+#, fuzzy
+msgid "Autoscrolling"
+msgstr "Desativa rolagem automática"
+
+#: src/pingus/screens/option_menu.cpp:211
+msgid "Drag&Drop Scrolling"
 msgstr ""
 
-#: src/pingus/screens/start_screen.cpp:166
-msgid "Number of Pingus: "
-msgstr "Número de Pingus: "
+#: src/pingus/screens/option_menu.cpp:213
+msgid "Print FPS"
+msgstr ""
 
-#: src/pingus/screens/start_screen.cpp:169
-msgid "Number to Save: "
-msgstr "Número a Salvar: "
+#: src/pingus/screens/option_menu.cpp:217
+msgid "Resolution:"
+msgstr ""
 
-#: src/pingus/screens/start_screen.cpp:172
-msgid "Time: "
-msgstr "Tempo: "
+#: src/pingus/screens/option_menu.cpp:218
+msgid "Renderer:"
+msgstr ""
 
-#: src/pingus/screens/start_screen.cpp:178
-msgid "Author: "
-msgstr "Autor: "
+#: src/pingus/screens/option_menu.cpp:220
+msgid "Language:"
+msgstr ""
 
-#: src/pingus/screens/addon_menu.cpp:53 src/pingus/screens/option_menu.cpp:324
+#: src/pingus/screens/option_menu.cpp:222
+msgid "Master Volume:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:223
+msgid "Sound Volume:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:224
+msgid "Music Volume:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:332
+msgid "Option Menu"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:334 src/pingus/screens/addon_menu.cpp:53
 msgid "Close"
 msgstr "Fechar"
+
+#: src/pingus/screens/option_menu.cpp:338
+msgid "Some options require a restart of the game to take effect."
+msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:54
 msgid "Story"
@@ -663,7 +521,7 @@ msgstr "Opções Diversas:"
 msgid "..:: Configure the game ::.."
 msgstr "..:: Iniciar o jogo ::.."
 
-#: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:155
+#: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:163
 msgid "Levelsets"
 msgstr "Outros Níveis"
 
@@ -683,11 +541,24 @@ msgstr ""
 "..:: Ctrl-g: arrastar com mouse  ::  F10: conta qps  ::  F11: toda a "
 "tela  ::  F12: foto da tela ::.."
 
-#: src/pingus/screens/level_menu.cpp:170
+#: src/pingus/screens/level_menu.cpp:50
+#: src/pingus/screens/start_screen.cpp:111
+msgid "Back"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:143
+msgid "Under Construction"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:144
+msgid "Untested, unpolished and broken levels"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:178
 msgid "Solved:"
 msgstr "Feitos:"
 
-#: src/pingus/screens/level_menu.cpp:171
+#: src/pingus/screens/level_menu.cpp:179
 msgid "levels"
 msgstr ""
 
@@ -695,65 +566,6 @@ msgstr ""
 #: src/pingus/screens/story_screen.cpp:114
 msgid "skip"
 msgstr "pular"
-
-#: src/pingus/screens/option_menu.cpp:196
-#, fuzzy
-msgid "Fullscreen"
-msgstr "Executa em tela cheia"
-
-#: src/pingus/screens/option_menu.cpp:197
-msgid "Mouse Grab"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:199
-#, fuzzy
-msgid "Software Cursor"
-msgstr "Habilita cursor por software"
-
-#: src/pingus/screens/option_menu.cpp:200
-#, fuzzy
-msgid "Autoscrolling"
-msgstr "Desativa rolagem automática"
-
-#: src/pingus/screens/option_menu.cpp:201
-msgid "Drag&Drop Scrolling"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:203
-msgid "Print FPS"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:207
-msgid "Resolution:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:208
-msgid "Renderer:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:210
-msgid "Language:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:212
-msgid "Master Volume:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:213
-msgid "Sound Volume:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:214
-msgid "Music Volume:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:322
-msgid "Option Menu"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:328
-msgid "Some options require a restart of the game to take effect."
-msgstr ""
 
 #: src/pingus/screens/result_screen.cpp:91
 msgid "Give up"
@@ -835,6 +647,215 @@ msgstr "Mortos: "
 msgid "Time left: "
 msgstr "Tempo restante: "
 
+#: src/pingus/screens/start_screen.cpp:67
+msgid "Play"
+msgstr ""
+
+#: src/pingus/screens/start_screen.cpp:166
+msgid "Number of Pingus: "
+msgstr "Número de Pingus: "
+
+#: src/pingus/screens/start_screen.cpp:169
+msgid "Number to Save: "
+msgstr "Número a Salvar: "
+
+#: src/pingus/screens/start_screen.cpp:172
+msgid "Time: "
+msgstr "Tempo: "
+
+#: src/pingus/screens/start_screen.cpp:178
+msgid "Author: "
+msgstr "Autor: "
+
+#: src/pingus/pingus_main.cpp:172
+msgid "[OPTIONS]... [FILE]"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:173
+msgid ""
+"Pingus is a puzzle game where you need to guide a bunch of little penguins "
+"around the world."
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:175
+#, fuzzy
+msgid "General Options:"
+msgstr "Opções Diversas:"
+
+#: src/pingus/pingus_main.cpp:177
+msgid "Displays this help"
+msgstr "Mostra esta ajuda"
+
+#: src/pingus/pingus_main.cpp:179
+msgid "Print version number and exit"
+msgstr "Mostra o número da versão e sai"
+
+#: src/pingus/pingus_main.cpp:181
+msgid "Enable info level log output"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:183
+msgid "Enable debug level log output"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:185
+msgid "Disable all log output"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:187
+#, fuzzy
+msgid "Display Options:"
+msgstr "Opções Diversas:"
+
+#: src/pingus/pingus_main.cpp:189
+msgid "Start in Window Mode"
+msgstr "Não executa em tela cheia"
+
+#: src/pingus/pingus_main.cpp:191
+msgid "Start in Fullscreen"
+msgstr "Executa em tela cheia"
+
+#: src/pingus/pingus_main.cpp:193
+msgid "Use the given renderer (default: delta)"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:195
+#, fuzzy
+msgid "Set the window resolution for pingus (default: 800x600)"
+msgstr "Ajustar a resolução do Pingus (padrão: 800x600)"
+
+#: src/pingus/pingus_main.cpp:197
+#, fuzzy
+msgid "Set the resolution used in fullscreen mode (default: 800x600)"
+msgstr "Ajustar a resolução do Pingus (padrão: 800x600)"
+
+#: src/pingus/pingus_main.cpp:199
+msgid "Enable software cursor"
+msgstr "Habilita cursor por software"
+
+#: src/pingus/pingus_main.cpp:201
+#, fuzzy
+msgid "Game Options:"
+msgstr "Opções Diversas:"
+
+#: src/pingus/pingus_main.cpp:203
+msgid "Disable automatic scrolling"
+msgstr "Desativa rolagem automática"
+
+#: src/pingus/pingus_main.cpp:205
+#, fuzzy
+msgid "Enable drag'n drop scrolling"
+msgstr "Desativa rolagem automática"
+
+#: src/pingus/pingus_main.cpp:207
+#, fuzzy
+msgid "Sound Options:"
+msgstr "Opções Diversas:"
+
+#: src/pingus/pingus_main.cpp:209
+msgid "Disable sound"
+msgstr "Desativa o som"
+
+#: src/pingus/pingus_main.cpp:211
+msgid "Disable music"
+msgstr "Desativa a música"
+
+#: src/pingus/pingus_main.cpp:215
+msgid "Select language to use with Pingus"
+msgstr "Seleciona o idioma para usar no Pingus"
+
+#: src/pingus/pingus_main.cpp:217
+msgid "List all available languages"
+msgstr "Listar todos os idiomas disponíveis"
+
+#: src/pingus/pingus_main.cpp:221
+msgid "Loads the level editor"
+msgstr "Lança o editor de níveis"
+
+#: src/pingus/pingus_main.cpp:223
+#, fuzzy
+msgid "Directory Options:"
+msgstr "Direção:"
+
+#: src/pingus/pingus_main.cpp:224 src/pingus/pingus_main.cpp:226
+#: src/pingus/pingus_main.cpp:228
+msgid "DIR"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:225
+msgid "Load game datafiles from DIR"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:227
+msgid "Load config files and store savegames in DIR"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:229
+msgid "Load game modifications from DIR"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:231
+msgid "Don't read ~/.pingus/config"
+msgstr "Não lê ~/.pingus/config"
+
+#: src/pingus/pingus_main.cpp:232
+msgid "FILE"
+msgstr "ARQUIVO"
+
+#: src/pingus/pingus_main.cpp:233
+msgid "Read config options from FILE"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:235
+msgid "Uses the controller given in FILE"
+msgstr "Usa o controlador especificado em ARQUIVO"
+
+#: src/pingus/pingus_main.cpp:237
+#, fuzzy
+msgid "Debug Options:"
+msgstr "Opções Diversas:"
+
+#: src/pingus/pingus_main.cpp:239
+#, fuzzy
+msgid "Enables some special features for developers"
+msgstr "Ativa algumas características, só interessa a programadores"
+
+#: src/pingus/pingus_main.cpp:241
+msgid "Set the game speed (0=fastest, >0=slower)"
+msgstr "Especifica a velocidade do jogo (0=o mais rápido, >0=mais lento)"
+
+#: src/pingus/pingus_main.cpp:243
+msgid "Set the desired game framerate (frames per second)"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:245
+msgid "Set the size of the map tiles (default: 32)"
+msgstr "Especifica o tamanho dos ladrilhos (padrão: 32)"
+
+#: src/pingus/pingus_main.cpp:663
+msgid "Pingus: Out of memory!"
+msgstr "Pingus: Sem memória!"
+
+#: src/pingus/pingus_main.cpp:667
+msgid "Pingus: Standard exception caught!:\n"
+msgstr "Pingus: Exceção padrão encontrada!:\n"
+
+#: src/pingus/pingus_main.cpp:671
+msgid "Pingus: Unknown throw caught!"
+msgstr "Pingus: throw desconhecido apanhado!"
+
+#: src/pingus/worldmap/worldmap_screen.cpp:84
+msgid "Show Ending?"
+msgstr "Mostrar Final?"
+
+#: src/pingus/worldmap/worldmap_screen.cpp:113
+msgid "Leave?"
+msgstr "Abandonar?"
+
+#: src/pingus/worldmap/level_dot.cpp:134
+msgid "???"
+msgstr ""
+
 #: src/pingus/action_name.cpp:27
 msgid "Angel"
 msgstr "Anjo"
@@ -892,53 +913,36 @@ msgid "Miner"
 msgstr "Mineiro"
 
 #: src/pingus/action_name.cpp:42
-msgid "Rocketlauncher"
-msgstr "Lançador de foguetes"
-
-#: src/pingus/action_name.cpp:43
 msgid "Slider"
 msgstr "Deslizador"
 
-#: src/pingus/action_name.cpp:44
+#: src/pingus/action_name.cpp:43
 msgid "Smashed"
 msgstr "Esmagado"
 
-#: src/pingus/action_name.cpp:45
+#: src/pingus/action_name.cpp:44
 msgid "Splashed"
 msgstr "Esborrachado"
 
-#: src/pingus/action_name.cpp:46
+#: src/pingus/action_name.cpp:45
 msgid "Superman"
 msgstr "Super-homem"
 
-#: src/pingus/action_name.cpp:47
+#: src/pingus/action_name.cpp:46
 msgid "Teleported"
 msgstr "Teleportado"
 
-#: src/pingus/action_name.cpp:48
+#: src/pingus/action_name.cpp:47
 msgid "Waiter"
 msgstr "Esperando"
 
-#: src/pingus/action_name.cpp:49
+#: src/pingus/action_name.cpp:48
 msgid "Walker"
 msgstr "Andando"
 
-#: src/pingus/components/pingus_counter.cpp:43
-#, c-format, boost-format
-msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
-msgstr "Soltos:%3d/%d   Fora:%3d   Salvos:%3d/%d"
-
-#: src/pingus/worldmap/level_dot.cpp:134
-msgid "???"
-msgstr ""
-
-#: src/pingus/worldmap/worldmap_screen.cpp:84
-msgid "Show Ending?"
-msgstr "Mostrar Final?"
-
-#: src/pingus/worldmap/worldmap_screen.cpp:113
-msgid "Leave?"
-msgstr "Abandonar?"
+#: src/pingus/game_time.cpp:29
+msgid "unlimited"
+msgstr "ilimitado"
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
 msgid "If the way is blocked, bash away"
@@ -1421,6 +1425,118 @@ msgstr ""
 "terá libertado eles de uma vez por todas do malvado que os colocou neste "
 "pesadelo... ao menos neste ano."
 
+#: data/levels/halloween2011/halloween10-grumbel.pingus:5
+msgid "Down Into The Cave"
+msgstr ""
+
+#: data/levels/halloween2011/halloween10-grumbel.pingus:6
+msgid ""
+"The exit is far below and the pingus are separated by it by quite a few "
+"meters. The path down is riddled with gulfs, so jumping will be the primary "
+"tool to get down there. But be careful, the last few steps require some "
+"extra cleverness."
+msgstr ""
+
+#: data/levels/halloween2011/halloween11-grumbel.pingus:5
+msgid "Round and Round"
+msgstr ""
+
+#: data/levels/halloween2011/halloween11-grumbel.pingus:6
+msgid ""
+"Trapped in an enternal loop one brave pingu has to break out and go on a "
+"journey in search for the exit, but he musten be to happy once he found it, "
+"as there is still one last challenge he must solve before being allowed to "
+"enter it, otherwise all his friends might perish and die."
+msgstr ""
+
+#: data/levels/halloween2011/halloween12-grumbel.pingus:5
+msgid "Red Herring Cave"
+msgstr ""
+
+#: data/levels/halloween2011/halloween12-grumbel.pingus:6
+msgid ""
+"The exit is right above with a few friendly arrows pointing the way. But can "
+"anything you find in a cave be trusted?"
+msgstr ""
+
+#: data/levels/halloween2011/halloween13-grumbel.pingus:5
+msgid "Group Coordination"
+msgstr ""
+
+#: data/levels/halloween2011/halloween13-grumbel.pingus:6
+msgid ""
+"Three groups are on their way to the exit, none of them can make it alone, "
+"so lets them help each other out."
+msgstr ""
+
+#: data/levels/halloween2011/halloween14-grumbel.pingus:5
+#, fuzzy
+msgid "Traps, Dangers and other Problems"
+msgstr "Escavar, perfurar e outros problemas"
+
+#: data/levels/halloween2011/halloween14-grumbel.pingus:6
+msgid ""
+"The path to the exit lays below, shimmering through the planks. But the fall "
+"is to high, deadly for sure. Can one pingu alone make it's way through the "
+"dangerous traps and secure the path to the exit?"
+msgstr ""
+
+#: data/levels/halloween2011/halloween15-grumbel.pingus:5
+msgid "Reach that Switch"
+msgstr ""
+
+#: data/levels/halloween2011/halloween15-grumbel.pingus:6
+msgid ""
+"The path to the exit is straight, flat and simple, but wait a solid door "
+"blocking the way? How can the pingus open it? Is that a switch there on the "
+"hill to the right? Might that be the solution to opening the door and "
+"freeing the pingus? But how can they reach the switch?"
+msgstr ""
+
+#: data/levels/halloween2011/halloween16-grumbel.pingus:5
+msgid "The Collapsed Column"
+msgstr ""
+
+#: data/levels/halloween2011/halloween16-grumbel.pingus:6
+msgid ""
+"High up obove the green slime the pingus are moving from column to column, "
+"getting closer to the exit with each step, but wait, there is a second group "
+"of penguins, stuck on their column, as the next one has collapsed. Can you "
+"find a way aronud the abyss?"
+msgstr ""
+
+#: data/levels/halloween2011/halloween17-grumbel.pingus:5
+msgid "Island of Doom"
+msgstr ""
+
+#: data/levels/halloween2011/halloween17-grumbel.pingus:6
+msgid ""
+"The pingus, released together, will soon be split up by a few meter of solid "
+"metal. Yet even with that separation between them, they have to coordinate "
+"wisely to reach the exit so far below."
+msgstr ""
+
+#: data/levels/halloween2011/halloween18-grumbel.pingus:5
+#, fuzzy
+msgid "Tower of Death"
+msgstr "Desce objeto"
+
+#: data/levels/halloween2011/halloween18-grumbel.pingus:6
+msgid ""
+"The pingus are at the top of the tower, the way down isn't long, but high. "
+"How shall they overcome that distance?"
+msgstr ""
+
+#: data/levels/halloween2011/halloween19-rz.pingus:5
+msgid "The Ones"
+msgstr ""
+
+#: data/levels/halloween2011/halloween19-rz.pingus:6
+msgid ""
+"During their way through the volcano, the pingus stumbles upon the number "
+"11, cut out in stone."
+msgstr ""
+
 #: data/levels/desert/desert-crawl-timpany.pingus:5
 msgid "Crawlspace"
 msgstr ""
@@ -1722,12 +1838,10 @@ msgid ""
 "strange island."
 msgstr ""
 
-#: data/levels/alien/aliens1-grumbel.pingus:5
 #: data/levels/alien/aliens1-phil.pingus:7
 msgid "Escape from Aliens"
 msgstr ""
 
-#: data/levels/alien/aliens1-grumbel.pingus:6
 #: data/levels/alien/aliens1-phil.pingus:8
 msgid ""
 "Aliens invade our starship blocking intrance to the teleporter. Your crew is "
@@ -1963,6 +2077,15 @@ msgstr "Ilha Tutorial"
 msgid "Learn the basics"
 msgstr "Aprenda o básico"
 
+#: data/worldmaps/tutorial.worldmap:124
+#, fuzzy
+msgid "Watch Ending"
+msgstr "Mostrar Final?"
+
+#: data/worldmaps/tutorial.worldmap:131
+msgid "Watch Intro"
+msgstr ""
+
 #: data/stories/tutorial_intro.story:2
 msgid "The Journey Begins"
 msgstr "A Aventura Começa"
@@ -2140,6 +2263,18 @@ msgstr "Dia das Bruxas 2007"
 #: data/levelsets/halloween.levelset:4
 msgid "Trapped at All Hallows Eve"
 msgstr "Presos no Dia das Bruxas"
+
+#: data/levelsets/halloween2011.levelset:3
+#, fuzzy
+msgid "Halloween 2011"
+msgstr "Dia das Bruxas 2007"
+
+#: data/levelsets/halloween2011.levelset:4
+msgid "Going Underground"
+msgstr ""
+
+#~ msgid "Rocketlauncher"
+#~ msgstr "Lançador de foguetes"
 
 #~ msgid "Abort"
 #~ msgstr "Cancelar"
