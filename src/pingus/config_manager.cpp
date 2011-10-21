@@ -109,7 +109,9 @@ ConfigManager::set_fullscreen_resolution(const Size& size)
   {
     if (Display::is_fullscreen())
     {
+#ifndef WIN32
       Display::set_video_mode(size, Display::is_fullscreen(), false);
+#endif
     }
     on_fullscreen_resolution_change(size);
   }
@@ -130,7 +132,9 @@ ConfigManager::set_fullscreen(bool v)
 
   if (v != get_fullscreen())
   {
+#ifndef WIN32
     Display::set_video_mode(Display::get_size(), Display::is_fullscreen(), false);
+#endif
     on_fullscreen_change(v);
   }
 
