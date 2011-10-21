@@ -5,7 +5,7 @@
 \\$2 \(la\\$1\(ra\\$3
 ..
 .if \n(.g .mso www.tmac
-.TH "pingus " 6 "19 October 2011" 0.7.5 "User Commands"
+.TH "pingus " 6 "21 October 2011" 0.7.5 "User Commands"
 .SH NAME
 pingus
 \- A puzzle game where you have to save penguins 
@@ -165,16 +165,19 @@ All gameplay related keyboard shortcuts are configurable via a
 controller config file, see \*(T<\fB\-\-controller\fR\*(T>
 and \*(T<\fIcontroller/default.scm\fR\*(T>.
 .TP 
-Space
-Activate fast-forward mode.
+W, A, S, D
+Scroll in the level
 .TP 
-P
+Space
+Hold to ast-forward
+.TP 
+P, R
 Pause the game.
 .TP 
-S
+S, F
 Advance the game by a single frame.
 .TP 
-A
+Backspace
 Activate armageddon.
 .TP 
 Escape
@@ -269,8 +272,8 @@ not
 \*(T<\fIpingus\-go\-on\-a\-long\-journey\-in\-snowland\-grumbel.pingus\fR\*(T>).
 The filename should not reflect the actual level title, it
 simply should be unique and not conflict with other peoples
-levels. If you plan on building a whole levelset, name the levels after the
-levelset.
+levels. If you plan on building a whole levelset, name the
+levels after the levelset.
 .PP
 To submit a level send it to <\*(T<pingus\-devel@nongnu.org\*(T>>.
 .SS PREFABS

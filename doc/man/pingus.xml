@@ -348,16 +348,27 @@
       </para>
       <variablelist>
         <varlistentry>
+          <term><keycombo><keycap>W</keycap></keycombo></term>
+          <term><keycombo><keycap>A</keycap></keycombo></term>
+          <term><keycombo><keycap>S</keycap></keycombo></term>
+          <term><keycombo><keycap>D</keycap></keycombo></term>
+          <listitem>
+            <para>Scroll in the level</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
           <term><keycombo><keycap>Space</keycap></keycombo></term>
           <listitem>
             <para>
-              Activate fast-forward mode.
+              Hold to ast-forward
             </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term><keycombo><keycap>P</keycap></keycombo></term>
+          <term><keycombo><keycap>R</keycap></keycombo></term>
           <listitem>
             <para>
               Pause the game.
@@ -367,6 +378,7 @@
 
         <varlistentry>
           <term><keycombo><keycap>S</keycap></keycombo></term>
+          <term><keycombo><keycap>F</keycap></keycombo></term>
           <listitem>
             <para>
               Advance the game by a single frame.
@@ -375,7 +387,7 @@
         </varlistentry>
 
         <varlistentry>
-          <term><keycombo><keycap>A</keycap></keycombo></term>
+          <term><keycombo><keycap>Backspace</keycap></keycombo></term>
           <listitem>
             <para>
               Activate armageddon.
