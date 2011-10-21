@@ -39,7 +39,7 @@ SDLDriver::SDLDriver() :
     string2key[key_name] = static_cast<SDLKey>(i);
     
     // FIXME: Make the keynames somewhere user visible so that users can use them
-    // log_info("Key: '" << key_name << "'");
+    log_debug("Key: '" << key_name << "'");
   }
 }
 
