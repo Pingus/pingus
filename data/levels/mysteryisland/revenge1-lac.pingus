@@ -13,7 +13,7 @@
     (difficulty 0)
     (playable 1)
     (comment "")
-    (music "none")
+    (music "pingus-5.it")
     (actions 
       (blocker 6)
       (bomber 6)

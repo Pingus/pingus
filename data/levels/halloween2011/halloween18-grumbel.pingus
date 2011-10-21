@@ -8,7 +8,7 @@
     (number-of-pingus 50)
     (number-to-save 50)
     (time -1)
-    (music "")
+    (music "sorcerer.it")
     (actions 
       (digger 50)
       (jumper 20))
