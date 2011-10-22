@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Shipwrecked")
-    (description "The penguins were sailing along happily on their makeshift boat until suddenly, an island appeared. The penguins were drawn towards it and crashed, destroying their boat. Now they must find their way acoss this strange island.")
+    (description "The penguins were sailing along happily on their makeshift boat until suddenly an island appeared. The penguins were drawn towards it and crashed, destroying their boat. Now they must find their way across this strange island.")
     (author "Ingo Ruhnke <grumbel@gmx.de>")
     (number-of-pingus 20)
     (number-to-save 20)

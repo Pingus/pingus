@@ -3,7 +3,7 @@
   (version 2)
   (head 
     (levelname "Alien's nest")
-    (description "Pingus invade the nest. Take care of jaws What's the matrix above ?")
+    (description "Pingus invade the nest. Take care of jaws. What's the matrix above?")
     (author "Philippe Descamps <pwrdesc@free.fr>")
     (number-of-pingus 50)
     (number-to-save 45)

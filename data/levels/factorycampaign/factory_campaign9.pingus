@@ -2,8 +2,8 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "Egypt - Piramids")
-    (description "The maze led you to the big piramid. Now you have 4 minutes to escape. Hurry up!")
+    (levelname "Egypt - Pyramids")
+    (description "The maze led you to the big pyramids. Now you have 4 minutes to escape. Hurry up!")
     (author "Filip")
     (number-of-pingus 20)
     (number-to-save 20)

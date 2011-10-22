@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Hall of Illusion")
-    (description "The penguins stopped and stood in indecision. What was real and what was not? Flame lanced from above and a guillotine glittered in the distance. almost all penguins must survive.")
+    (description "The penguins stopped and stood in indecision. What was real and what was not? Flame lanced from above and a guillotine glittered in the distance. Almost all penguins must survive.")
     (author "lac")
     (number-of-pingus 25)
     (number-to-save 24)

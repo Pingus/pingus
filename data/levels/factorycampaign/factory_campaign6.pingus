@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Egypt - So easy")
-    (description "Pingus reached Egypt. Looks easy but is it really so easy. Try out. ")
+    (description "Pingus reached Egypt. Looks easy but is it really so easy. Try out.")
     (author "Filip")
     (number-of-pingus 20)
     (number-to-save 18)

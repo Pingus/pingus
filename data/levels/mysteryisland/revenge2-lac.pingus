@@ -5,7 +5,7 @@
   (version 2)
   (head 
     (levelname "Revenge is sweet")
-    (description "The penguins had escaped the mad scientist but now they wanted revenge. They intended to destroy the support structures , sending the evil laboratory crashing down. They had to move fast though, because the mad scientist would detect and recapture them if they weren't fast enough.")
+    (description "The penguins had escaped the mad scientist but now they wanted revenge. They intended to destroy the support structures, sending the evil laboratory crashing down. They had to move fast though, because the mad scientist would detect and recapture them if they weren't fast enough.")
     (author "lac")
     (number-of-pingus 60)
     (number-to-save 50)

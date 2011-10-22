@@ -5,7 +5,7 @@
   (version 2)
   (head 
     (levelname "Fourth dimension")
-    (description "The defenses of the aliens get stronger. Now you have to jump in the fourth dimension to win !")
+    (description "The defenses of the aliens get stronger. Now you have to jump in the fourth dimension to win!")
     (author "Philippe Descamps <pwrdesc@free.fr>,Gabriel Rota <gabriel.rota@gmail.com>")
     (number-of-pingus 100)
     (number-to-save 99)

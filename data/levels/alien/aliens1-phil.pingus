@@ -5,7 +5,7 @@
   (version 2)
   (head 
     (levelname "Escape from Aliens")
-    (description "Aliens invade our starship blocking intrance to the teleporter. Your crew is well trained, like you they don't panic.")
+    (description "Aliens invade our starship blocking entrance to the teleporter. Your crew is well trained, like you they don't panic.")
     (author "Philippe Descamps <pwrdesc@free.fr>")
     (number-of-pingus 100)
     (number-to-save 50)

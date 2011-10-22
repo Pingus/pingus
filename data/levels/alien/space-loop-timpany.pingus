@@ -3,7 +3,7 @@
   (version 2)
   (head 
     (levelname "Endless Loop")
-    (description "To the right and left Pingus certain death and 50 to save! You can help them get out of this mess?")
+    (description "To the right and to the left the Pingus will face certain death and you have to save 50. Can you help them get out of this mess?")
     (author "Timpany, Gabriel Rota <gabriel.rota@gmail.com>")
     (number-of-pingus 75)
     (number-to-save 50)

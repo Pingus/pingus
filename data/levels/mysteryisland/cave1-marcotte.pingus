@@ -3,7 +3,7 @@
   (version 2)
   (head 
     (levelname "Near can mean far")
-    (description "What do you do when you're going in the wrong direction ? Simple : walk into "
+    (description "What do you do when you're going in the wrong direction ? Simple: walk into "
                  "a wall. But it is easier said than done...")
     (author "Etienne Marcotte <marcotte_moi@yahoo.com>")
     (number-of-pingus 40)

@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Egypt - Oasis")
-    (description "Last time it was easy. Now it will be a little bit harder. Pingus are entering oasis. Watch out for the water. ")
+    (description "Last time it was easy. Now it will be a little bit harder. Pingus are entering oasis. Watch out for the water.")
     (author "Filip")
     (number-of-pingus 50)
     (number-to-save 40)

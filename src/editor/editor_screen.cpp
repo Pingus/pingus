@@ -282,7 +282,7 @@ EditorScreen::draw(DrawingContext& gc)
                   _("You should name your level files systematically, i.e. by their theme, "
                     "their number and your nickname:\n\n"
                     "     <levelname><number>-<creator>.pingus\n\n"
-                    "So if you create a your second level with a stone theme, call it: "
+                    "So if you create your second level with a stone theme, call it: "
                     "stone2-yourname.pingus\n\n"
                     "When you have created a level and want to have it included "
                     "in the game mail it to:\n\n"
