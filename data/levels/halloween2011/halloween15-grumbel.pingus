@@ -164,7 +164,7 @@
       (surface 
         (image "groundpieces/transparent/halloween/gravestone2")
         (modifier "ROT0"))
-      (position 1568 696 0))
+      (position 1568 679 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -536,7 +536,7 @@
       (surface 
         (image "groundpieces/ground/halloween/ground3")
         (modifier "ROT180"))
-      (position 1588 736 0))
+      (position 1590 718 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -560,7 +560,7 @@
       (surface 
         (image "groundpieces/ground/halloween/ground2")
         (modifier "ROT0"))
-      (position 1508 723 0))
+      (position 1508 706 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -572,13 +572,13 @@
       (surface 
         (image "groundpieces/ground/halloween/ground6")
         (modifier "ROT0FLIP"))
-      (position 1258 546 0))
+      (position 1478 719 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/ground6")
         (modifier "ROT0FLIP"))
-      (position 1461 728 0))
+      (position 1258 546 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -1112,12 +1112,6 @@
     (groundpiece 
       (type "solid")
       (surface 
-        (image "groundpieces/solid/misc/metalplate_large")
-        (modifier "ROT0"))
-      (position 1446 768 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
       (position 1390 986 0))
@@ -1181,12 +1175,6 @@
         (image "groundpieces/solid/misc/metalplate_large")
         (modifier "ROT0"))
       (position 2172 455 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/misc/metalplate_large")
-        (modifier "ROT0"))
-      (position 2172 391 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -1283,13 +1271,13 @@
       (surface 
         (image "groundpieces/transparent/misc/moos6")
         (modifier "ROT0"))
-      (position 1542 724 0))
+      (position 1510 706 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/misc/moos6")
         (modifier "ROT0"))
-      (position 1583 724 0))
+      (position 1584 707 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -1470,8 +1458,8 @@
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/misc/moos6")
-        (modifier "ROT0"))
-      (position 2278 389 0))
+        (modifier "ROT0FLIP"))
+      (position 2278 388 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -1537,7 +1525,7 @@
       (surface 
         (image "groundpieces/transparent/misc/moos4")
         (modifier "ROT0"))
-      (position 1559 777 0))
+      (position 1531 768 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -1783,7 +1771,7 @@
       (surface 
         (image "groundpieces/transparent/misc/moos5")
         (modifier "ROT0"))
-      (position 1591 797 0))
+      (position 1603 782 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -2133,13 +2121,13 @@
       (surface 
         (image "groundpieces/transparent/halloween/gravestone3")
         (modifier "ROT0"))
-      (position 1610 700 0))
+      (position 1610 683 0))
     (groundpiece 
       (type "transparent")
       (surface 
         (image "groundpieces/transparent/halloween/candle1")
         (modifier "ROT0"))
-      (position 1578 668 0))
+      (position 1580 651 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -2289,13 +2277,13 @@
       (surface 
         (image "groundpieces/transparent/misc/moos6")
         (modifier "ROT0"))
-      (position 2176 391 0))
+      (position 2223 388 0))
     (groundpiece 
-      (type "transparent")
+      (type "solid")
       (surface 
-        (image "groundpieces/transparent/misc/moos6")
+        (image "groundpieces/solid/misc/metalplate_large")
         (modifier "ROT0"))
-      (position 2223 389 0))
+      (position 2172 391 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -2307,6 +2295,18 @@
       (surface 
         (image "groundpieces/transparent/misc/moos4")
         (modifier "ROT0"))
-      (position 2389 392 0))))
+      (position 2389 392 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_large")
+        (modifier "ROT0"))
+      (position 1446 768 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/moos6")
+        (modifier "ROT0"))
+      (position 1552 707 0))))
 
 ;; EOF ;;
