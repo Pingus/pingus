@@ -110,7 +110,7 @@ OptionMenu::OptionMenu() :
     std::vector<Size> resolutions = Display::get_fullscreen_video_modes();
     Size fullscreen = config_manager.get_fullscreen_resolution();
 
-    resolution_box->set_current_choice(resolutions.size()-1);
+    int choice = resolutions.size()-1;
     for (auto it = resolutions.begin(); it != resolutions.end(); ++it)
     {
       // add resolution to the box
@@ -120,9 +120,11 @@ OptionMenu::OptionMenu() :
 
       if (fullscreen == *it)
       {
-        resolution_box->set_current_choice(it - resolutions.begin());
+        choice = it - resolutions.begin();
       }
     }
+
+    resolution_box->set_current_choice(choice);
   }
 
   ChoiceBox* renderer_box = new ChoiceBox(Rect());
