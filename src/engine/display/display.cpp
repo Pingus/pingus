@@ -90,7 +90,7 @@ Display::create_window(FramebufferType framebuffer_type, const Size& size, bool 
 {
   assert(!s_framebuffer.get());
 
-  log_info(framebuffer_type_to_string(framebuffer_type) << " " << size << " " << fullscreen);
+  log_info(framebuffer_type_to_string(framebuffer_type) << " " << size << " " << (fullscreen?"fullscreen":"window"));
 
   switch (framebuffer_type)
   {

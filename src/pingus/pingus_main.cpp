@@ -190,7 +190,7 @@ PingusMain::parse_args(int argc, char** argv)
   argp.add_option('f', "fullscreen", "",
                   _("Start in Fullscreen"));
   argp.add_option('r', "renderer", "RENDERER",
-                  _("Use the given renderer (default: delta)"));
+                  _("Use the given renderer (default: sdl)"));
   argp.add_option('g', "geometry", "{width}x{height}",  
                   _("Set the window resolution for pingus (default: 800x600)"));
   argp.add_option('R', "fullscreen-resolution", "{width}x{height}",  
@@ -255,7 +255,7 @@ PingusMain::parse_args(int argc, char** argv)
         if (argp.get_argument() == "help")
         {
           std::cout << "Available renderers: " << std::endl;
-          std::cout << "   delta: Software rendering with dirty-rectangles (default)" << std::endl;
+          std::cout << "   delta: Software rendering with dirty-rectangles" << std::endl;
           std::cout << "     sdl: Software rendering" << std::endl;
           std::cout << "  opengl: Hardware accelerated graphics" << std::endl;
           std::cout << "    null: No rendering at all, for debugging" << std::endl;
@@ -492,10 +492,10 @@ PingusMain::print_greeting_message()
     std::cout << "music support:           disabled" << std::endl;
 
   std::cout << "fullscreen:              ";
-  if (config_manager.get_fullscreen())
+  if (cmd_options.fullscreen.is_set() && cmd_options.fullscreen.get())
   {
-    std::cout << config_manager.get_fullscreen_resolution().width << "x"
-              << config_manager.get_fullscreen_resolution().height << std::endl;
+    std::cout << cmd_options.fullscreen_resolution.get().width << "x"
+              << cmd_options.fullscreen_resolution.get().height << std::endl;
   }
   else
   {
