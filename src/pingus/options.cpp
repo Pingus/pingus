@@ -148,7 +148,12 @@ Options::from_file_reader(const FileReader& reader)
   {
     opts.mouse_grab.set(bool_value);
   }
-  
+
+  if (reader.read_string("controller", string_value))
+  {
+    opts.controller.set(string_value);
+  }
+
   if (reader.read_string("language", string_value))
   {
     opts.language.set(string_value);
@@ -209,6 +214,9 @@ Options::save(const Pathname& filename) const
 
   if (print_fps.is_set())
     writer.write_bool("print-fps", print_fps.get());
+
+  if (controller.is_set())
+    writer.write_string("controller", controller.get());
 
   if (language.is_set())
     writer.write_string("language", language.get());
