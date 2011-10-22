@@ -122,6 +122,20 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
       }
       break;
 
+    case SDLK_KP_PLUS:
+      globals::game_speed -= 5;
+      if (globals::game_speed < 5)
+        globals::game_speed = 5;
+      break;
+
+    case SDLK_KP_MINUS:
+      globals::game_speed += 5;
+      break;
+
+    case SDLK_KP_ENTER:
+      globals::game_speed = 20;
+      break;
+
     default:
       // console << "GlobalEvent: Unknown key pressed: " << key.id;
       break;
