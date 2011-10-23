@@ -64,12 +64,12 @@
         (dot 
           (name "leveldot_10")
           (position 1114 629 0))
-        (levelname "tutorial/solid-tutorial-grumbel"))
+        (levelname "tutorial/snow14-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_11")
           (position 972 675 5000))
-        (levelname "tutorial/snow14-grumbel"))
+        (levelname "tutorial/solid-tutorial-grumbel"))
       (leveldot 
         (dot 
           (name "leveldot_12")
