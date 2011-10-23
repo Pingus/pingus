@@ -306,7 +306,7 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_small")
         (modifier "ROT0"))
-      (position 1093 641 0))
+      (position 1093 642 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -354,7 +354,7 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_small")
         (modifier "ROT0"))
-      (position 844 737 0))
+      (position 844 738 0))
     (entrance 
       (position 981.357 398.143 0)
       (owner-id 0)
