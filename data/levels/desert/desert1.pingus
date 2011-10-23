@@ -135,7 +135,7 @@
       (surface 
         (image "groundpieces/ground/desert/bigsand")
         (modifier "ROT0"))
-      (position 746 847 0))
+      (position 746 853 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -243,12 +243,6 @@
       (surface 
         (image "groundpieces/ground/desert/sluggydu")
         (modifier "ROT0"))
-      (position 747 839 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/sluggydu")
-        (modifier "ROT0"))
       (position 1576 883 0))
     (groundpiece 
       (type "ground")
@@ -315,12 +309,6 @@
       (surface 
         (image "groundpieces/ground/desert/sluggydu")
         (modifier "ROT0"))
-      (position 833.387 833.26 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/desert/sluggydu")
-        (modifier "ROT0"))
       (position 1626 893 0))
     (groundpiece 
       (type "ground")
@@ -333,7 +321,7 @@
       (surface 
         (image "groundpieces/ground/desert/sluggydu")
         (modifier "ROT0"))
-      (position 868 854 0))
+      (position 837 850 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -361,12 +349,6 @@
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/desert/sluggydu")
-        (modifier "ROT0"))
-      (position 926 840 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
         (image "groundpieces/ground/desert/blobdune")
         (modifier "ROT0"))
       (position 1793 890 0))
@@ -381,7 +363,7 @@
       (surface 
         (image "groundpieces/ground/desert/blobdune")
         (modifier "ROT0"))
-      (position 1041 857 0))
+      (position 983 846 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -417,7 +399,7 @@
       (surface 
         (image "groundpieces/ground/desert/blobdune")
         (modifier "ROT0"))
-      (position 880 914 0))
+      (position 933 841 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -730,6 +712,24 @@
       (overrides 
         (release-rate 100)
         (direction "right")
-        (owner-id 0)))))
+        (owner-id 0)))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/blobdune")
+        (modifier "ROT0"))
+      (position 830 839 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/blobdune")
+        (modifier "ROT0"))
+      (position 788 837 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/blobdune")
+        (modifier "ROT0"))
+      (position 734 836 0))))
 
 ;; EOF ;;
