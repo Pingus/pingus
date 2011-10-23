@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "The Collapsed Column")
-    (description "High up obove the green slime the pingus are moving from column to column, getting closer to the exit with each step, but wait, there is a second group of penguins, stuck on their column, as the next one has collapsed. Can you find a way aronud the abyss?")
+    (description "High up above the green slime the pingus are moving from column to column, getting closer to the exit with each step, but wait, there is a second group of pingus, they are stuck. The column next to them has collapsed making getting to the exit impossible. Can you find a way around the abyss?")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 40)
     (number-to-save 30)

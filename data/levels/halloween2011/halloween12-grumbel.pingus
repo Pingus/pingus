@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Red Herring Cave")
-    (description "The exit is right above with a few friendly arrows pointing the way. But can anything you find in a cave be trusted?")
+    (description "The exit is right above the pingus heads, with a few friendly arrows pointing the way. With jumpers around the solution should be obvious. But wait, can anything you find in a dark cave be trusted or is there some more going on which might slip your view? Thinking outside the box might be required.")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 40)
     (number-to-save 20)

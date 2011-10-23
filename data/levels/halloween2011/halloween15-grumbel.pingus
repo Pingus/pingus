@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Reach that Switch")
-    (description "The path to the exit is straight, flat and simple, but wait a solid door blocking the way? How can the pingus open it? Is that a switch there on the hill to the right? Might that be the solution to opening the door and freeing the pingus? But how can they reach the switch?")
+    (description "The path to the exit is straight, flat and simple, but wait a solid door blocking the way? How can the pingus open it? Is that a switch there on the hill to the right? Might that be the solution to opening the door and freeing the pingus? But how can they reach that switch?")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 40)

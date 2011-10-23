@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Island of Doom")
-    (description "The pingus, released together, will soon be split up by a few meter of solid metal. Yet even with that separation between them, they have to coordinate wisely to reach the exit so far below.")
+    (description "The pingus are released close together, but split up by a solid metal column with seemingly no way to join them back up. The journey will be dangerous and some height has be crossed with the exit hidden below. With some cleverness it should be possible to join those two groups back together.")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 20)
     (number-to-save 12)

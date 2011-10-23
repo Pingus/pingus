@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Tower of Death")
-    (description "The pingus are at the top of the tower, the way down isn't long, but high. How shall they overcome that distance?")
+    (description "The pingus are at the top of the tower, with no stairway around. The exit is deep down, hidden at the foot of the tower. How shall they make it down all that height with no floaters sight? A few well placed diggers should be enough to get the job done, but wait, no, their direction isn't quite right. You have to give them directions or it will be their doom.")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 48)

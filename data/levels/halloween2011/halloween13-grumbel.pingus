@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Group Coordination")
-    (description "Three groups are on their way to the exit, none of them can make it alone, so lets them help each other out.")
+    (description "Three groups are on their way to the exit, one of them trapped right above it, but locked into a box. None of them can make it alone, coordinate them wisely and everybody should be able to make it safely to the exit. ")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 45)
