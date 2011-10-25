@@ -1,11 +1,11 @@
-Pingus 0.7.5 (23/Oct/2011)
+Pingus 0.7.5 (25/Oct/2011)
 ==========================
 * fixed memory leak in OpenGL renderer
 * added support for Win32 cross-compilation with mingw32
 * added gamespeed adjustments via KPPlus, KPMinus, KPEnter
 * added single-stepping the game with 'S'
 * added better application icon
-* added access to all levelsets in developer-mode
+* added access to all levelsets in developer-mode (Ctrl-m)
 * added 10 new Halloween levels
 
 
