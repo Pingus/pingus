@@ -2,7 +2,7 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "The cave")
+    (levelname "The Cave")
     (description "Pingus on their way came across a huge cave. You have to lead them through. Remember that sometimes there is more than one way out. Hint: To 'unlock' blockers you can use bashers and jumpers.")
     (author "Filip	")
     (number-of-pingus 20)

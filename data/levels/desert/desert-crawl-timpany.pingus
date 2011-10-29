@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Crawlspace")
-    (description "The path to the exit is blocked and many small tunnels lead the way, but be careful some of those lead to certain death. Or is there something you can do about that and create a save passage for all the Pingus and lead them savely to the exit?")
+    (description "The path to the exit is blocked and many small tunnels lead the way, but be careful some of those lead to certain death. Or is there something you can do about that and create a save passage for all the Pingus and lead them safely to the exit?")
     (author "Craig Timpany <craigtimpany@w3.to>")
     (number-of-pingus 40)
     (number-to-save 30)

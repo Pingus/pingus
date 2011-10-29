@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Traps, Dangers and other Problems")
-    (description "The path to the exit lays below, shimmering through the planks. But the fall is to high, deadly for sure. Can one pingu alone make it's way through the dangerous traps and secure the path to the exit?")
+    (description "The path to the exit lays below, shimmering through the planks. But the fall is too high, deadly for sure. Can one pingu alone make it's way through the dangerous traps and secure the path to the exit?")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 45)
