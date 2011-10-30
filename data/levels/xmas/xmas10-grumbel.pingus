@@ -10,16 +10,12 @@
     (time -1)
     (music "")
     (actions 
-      (basher 20)
-      (blocker 20)
-      (bomber 20)
-      (bridger 20)
-      (climber 20)
-      (digger 20)
-      (floater 20)
+      (basher 6)
+      (blocker 6)
+      (bomber 10)
+      (bridger 15)
       (jumper 20)
-      (miner 20)
-      (slider 20))
+      (miner 4))
     (levelsize 2300 1200))
   (objects 
     (surface-background 
@@ -35,6 +31,24 @@
       (scroll-y 0)
       (para-x 0.5)
       (para-y 0.5))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/ground3")
+        (modifier "ROT0"))
+      (position 1158 631 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/ground3")
+        (modifier "ROT0"))
+      (position 1086 624 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/ground3")
+        (modifier "ROT0"))
+      (position 1096 581 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -88,13 +102,13 @@
       (surface 
         (image "groundpieces/ground/xmas/ground1")
         (modifier "ROT0"))
-      (position 1263 203 0))
+      (position 1256 199 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/xmas/ground2")
         (modifier "ROT0"))
-      (position 1231 207 0))
+      (position 1220 206 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -184,7 +198,7 @@
       (surface 
         (image "groundpieces/ground/xmas/ground2")
         (modifier "ROT0"))
-      (position 637 676 0))
+      (position 637 665 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -299,26 +313,24 @@
         (image "groundpieces/ground/xmas/ground3")
         (modifier "ROT0"))
       (position 1666 953 0))
-    (group 
-      (objects 
-        (groundpiece 
-          (type "ground")
-          (surface 
-            (image "groundpieces/ground/xmas/ground3")
-            (modifier "ROT0"))
-          (position 1163 580 0))
-        (groundpiece 
-          (type "ground")
-          (surface 
-            (image "groundpieces/ground/xmas/ground3")
-            (modifier "ROT0"))
-          (position 1291 583 0))
-        (groundpiece 
-          (type "ground")
-          (surface 
-            (image "groundpieces/ground/xmas/ground3")
-            (modifier "ROT0"))
-          (position 1227 619 0))))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/ground3")
+        (modifier "ROT0"))
+      (position 1163 580 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/ground3")
+        (modifier "ROT0"))
+      (position 1291 583 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/ground3")
+        (modifier "ROT0"))
+      (position 1227 619 0))
     (group 
       (objects 
         (groundpiece 
@@ -451,7 +463,7 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1086 392 0))
+      (position 1086 456 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -473,21 +485,9 @@
     (groundpiece 
       (type "solid")
       (surface 
-        (image "groundpieces/solid/misc/metalplate_horiz")
-        (modifier "ROT0"))
-      (position 1310 360 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/misc/metalplate_horiz")
-        (modifier "ROT0"))
-      (position 1278 328 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
         (image "groundpieces/solid/misc/metalplate_small")
         (modifier "ROT0"))
-      (position 1342 328 0))
+      (position 1278 328 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -499,7 +499,7 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_small")
         (modifier "ROT0"))
-      (position 1342 264 0))
+      (position 1342 200 0))
     (prefab 
       (name "prefabs/liquids/water")
       (position -2 1202 0)
@@ -630,6 +630,42 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 766 392 0))))
+      (position 766 392 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_large")
+        (modifier "ROT0"))
+      (position 1310 328 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_large")
+        (modifier "ROT0"))
+      (position 1086 392 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_large")
+        (modifier "ROT0"))
+      (position 1085 488 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_large")
+        (modifier "ROT0"))
+      (position 1085 584 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 1086 552 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_large")
+        (modifier "ROT0"))
+      (position 1310 232 0))))
 
 ;; EOF ;;
