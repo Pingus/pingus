@@ -94,17 +94,17 @@ int main(int argc, char** argv)
     for(auto it = files.begin(); it != files.end(); ++it)
     {
       const Pathname& path = *it;
-      Levelset levelset(path);
+      std::unique_ptr<Levelset> levelset = Levelset::from_file(path);
 
       if (mode == 0)
       {
         std::cout << "filename      : " << path << std::endl;
-        std::cout << "title         : " << levelset.get_title() << std::endl;
-        std::cout << "description   : " << levelset.get_description() << std::endl;
+        std::cout << "title         : " << levelset->get_title() << std::endl;
+        std::cout << "description   : " << levelset->get_description() << std::endl;
         std::cout << "levels        : " << std::endl;
-        for(int i = 0; i < levelset.get_level_count(); ++i)
+        for(int i = 0; i < levelset->get_level_count(); ++i)
         {
-          std::cout << "  " << levelset.get_level(i)->resname << std::endl;
+          std::cout << "  " << levelset->get_level(i)->resname << std::endl;
         }
         std::cout << std::endl;
       }
@@ -117,19 +117,19 @@ int main(int argc, char** argv)
 
         if (mode & kTitle)
         {
-          std::cout << levelset.get_title() << std::endl;
+          std::cout << levelset->get_title() << std::endl;
         }
 
         if (mode & kDescription)
         {
-          std::cout << levelset.get_description() << std::endl;
+          std::cout << levelset->get_description() << std::endl;
         }
 
         if (mode & kLevels)
         {
-          for(int i = 0; i < levelset.get_level_count(); ++i)
+          for(int i = 0; i < levelset->get_level_count(); ++i)
           {
-            std::cout << "  " << levelset.get_level(i)->resname << std::endl;
+            std::cout << "  " << levelset->get_level(i)->resname << std::endl;
           }
           std::cout << std::endl;
         }
