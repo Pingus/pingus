@@ -16,7 +16,8 @@ int main(int argc, char** argv)
     kDescription = (1<<3),
     kMusic       = (1<<4),
     kFilename    = (1<<5),
-    kSize        = (1<<6)
+    kSize        = (1<<6),
+    kActions     = (1<<7)
   };
 
   unsigned int mode = 0;
@@ -32,6 +33,7 @@ int main(int argc, char** argv)
   argp.add_option('c', "checksum", "", "Display checksum of the level");
   argp.add_option('d', "description", "", "Display description of the level");
   argp.add_option('m', "music", "", "Display music of the level");
+  argp.add_option('A', "actions", "", "Display actions");
   argp.add_option('f', "filename", "", "Display filename of the level");
 
   argp.parse_args(argc, argv);
@@ -48,6 +50,10 @@ int main(int argc, char** argv)
 
       case 'a':
         mode |= kAuthor;
+        break;
+
+      case 'A':
+        mode |= kActions;
         break;
 
       case 'n':
@@ -144,6 +150,16 @@ int main(int argc, char** argv)
         if (mode & kMusic)
         {
           std::cout << plf.get_music() << std::endl;
+        }
+
+        if (mode & kActions)
+        {
+          auto actions = plf.get_actions();
+          for(auto action = actions.begin(); action != actions.end(); ++action)
+          {
+            std::cout << action->first << ":" << action->second << " ";
+          }
+          std::cout << std::endl;
         }
       }
     }
