@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Down Into The Cave")
-    (description "The exit is far below and the pingus are separated by it by quite a distance. The path down is riddled with gulfs, so jumping and bridging will be the primary tool to get down there. But be careful, the last few steps require some extra cleverness.")
+    (description "The exit is far below and the pingus are separated from it by quite a distance. The path down is riddled with gulfs, so jumping and bridging will be the primary tool to get down there. But be careful, the last few steps require some extra cleverness.")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 35)
