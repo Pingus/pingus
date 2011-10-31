@@ -14,8 +14,8 @@
       (blocker 2)
       (bomber 2)
       (bridger 5)
-      (climber 1)
-      (digger 1)
+      (climber 2)
+      (digger 2)
       (jumper 20))
     (levelsize 3000 1200))
   (objects 

@@ -12,7 +12,7 @@
     (actions 
       (blocker 5)
       (bomber 5)
-      (bridger 5)
+      (bridger 7)
       (climber 30)
       (floater 5)
       (jumper 5))
