@@ -205,7 +205,7 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
   {
     raise_exception(std::runtime_error, 
                     "SpotMap::put_alpha_surface: Image has wrong color depth: " 
-                    << sprovider.get_surface()->format->BitsPerPixel);
+                    << static_cast<int>(sprovider.get_surface()->format->BitsPerPixel));
   }
 
   int swidth  = sprovider.get_width();
