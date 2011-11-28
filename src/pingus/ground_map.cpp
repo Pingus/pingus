@@ -203,9 +203,9 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
 {
   if (sprovider.get_surface()->format->BitsPerPixel != 8)
   {
-    raise_exception(std::runtime_error, 
-                    "SpotMap::put_alpha_surface: Image has wrong color depth: " 
-                    << static_cast<int>(sprovider.get_surface()->format->BitsPerPixel));
+    log_error("Image has wrong color depth: " 
+              << static_cast<int>(sprovider.get_surface()->format->BitsPerPixel));
+    return;
   }
 
   int swidth  = sprovider.get_width();
