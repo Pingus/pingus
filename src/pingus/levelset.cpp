@@ -61,7 +61,7 @@ Levelset::from_file(const Pathname& pathname)
   FileReader reader = FileReader::parse(pathname);
   if (reader.get_name() != "pingus-levelset")
   {
-    throw std::runtime_error("Error: " + pathname.str() + ": not a 'pingus-levelset' file");
+    raise_exception(std::runtime_error, "Error: " << pathname.str() << ": not a 'pingus-levelset' file");
   }
   else
   {

@@ -21,6 +21,7 @@
 #include "util/file_reader.hpp"
 #include "util/pathname.hpp"
 #include "util/log.hpp"
+#include "util/raise_exception.hpp"
 
 PingusDemo::PingusDemo(const Pathname& pathname) :
   m_levelname(),
@@ -31,7 +32,7 @@ PingusDemo::PingusDemo(const Pathname& pathname) :
 
   if (lines.empty())
   {
-    throw std::runtime_error("'" + pathname.str() + "', demo file is empty");
+    raise_exception(std::runtime_error, "'" << pathname.str() << "', demo file is empty");
   }
   else
   {
@@ -40,7 +41,7 @@ PingusDemo::PingusDemo(const Pathname& pathname) :
       const FileReader& reader = lines.front();
       if (!reader.read_string("name", m_levelname))
       {
-        throw std::runtime_error("(level (name ...)) entry missing in demo file '" + pathname.str() + "'");
+        raise_exception(std::runtime_error, "(level (name ...)) entry missing in demo file '" << pathname.str() << "'");
       }
 
       reader.read_string("checksum", m_checksum);

@@ -19,6 +19,7 @@
 #include <stdexcept>
 
 #include "util/file_reader.hpp"
+#include "util/raise_exception.hpp"
 
 GlyphDescription::GlyphDescription() :
   image(0), 
@@ -58,7 +59,7 @@ FontDescription::FontDescription(const Pathname& pathname_) :
 
   if (reader.get_name() != "pingus-font")
   {
-    throw std::runtime_error("FontDescription: not a pingus-font file");
+    raise_exception(std::runtime_error, "FontDescription: not a pingus-font file");
   }
   else
   {

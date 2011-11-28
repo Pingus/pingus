@@ -21,6 +21,7 @@
 #include "engine/input/driver_factory.hpp"
 #include "util/log.hpp"
 #include "util/pathname.hpp"
+#include "util/raise_exception.hpp"
 #include "util/string_util.hpp"
 
 namespace Input {
@@ -90,7 +91,8 @@ Manager::create_controller(const Pathname& filename)
 
   if (reader.get_name() != "pingus-controller")
   {
-    throw std::runtime_error("Controller: invalid config file '" + filename.str() + "'");
+    raise_exception(std::runtime_error, 
+                    "Controller: invalid config file '" << filename.str() << "'");
   }
   else
   {
@@ -172,8 +174,8 @@ Manager::create_controller(const Pathname& filename)
       }
       else
       {
-        throw std::runtime_error(std::string("Manager: Unkown Element in Controller Config: ") 
-                                 + i->get_name());
+        raise_exception(std::runtime_error, "Manager: Unkown Element in Controller Config: "
+                        << i->get_name());
       }
     }
   }

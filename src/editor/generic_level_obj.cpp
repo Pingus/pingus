@@ -21,6 +21,7 @@
 #include "engine/display/drawing_context.hpp"
 #include "pingus/resource.hpp"
 #include "util/log.hpp"
+#include "util/raise_exception.hpp"
 
 namespace Editor {
 
@@ -144,9 +145,7 @@ GenericLevelObj::get_attributes(std::string obj_type)
     return HAS_SPRITE_FAKE | HAS_TARGET_ID;
   else
   {
-    std::ostringstream out;
-    out << "unknown object type: '" << obj_type << "'";
-    throw std::runtime_error(out.str());
+    raise_exception(std::runtime_error, "unknown object type: '" << obj_type << "'");
   }
 }
 

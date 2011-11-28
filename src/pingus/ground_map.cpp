@@ -20,6 +20,7 @@
 
 #include "engine/display/scene_context.hpp"
 #include "pingus/collision_map.hpp"
+#include "util/raise_exception.hpp"
 
 class MapTile
 {
@@ -202,8 +203,9 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
 {
   if (sprovider.get_surface()->format->BitsPerPixel != 8)
   {
-    throw std::runtime_error(std::string("SpotMap::put_alpha_surface: Image has wrong color depth: " 
-                                         + sprovider.get_surface()->format->BitsPerPixel));
+    raise_exception(std::runtime_error, 
+                    "SpotMap::put_alpha_surface: Image has wrong color depth: " 
+                    << sprovider.get_surface()->format->BitsPerPixel);
   }
 
   int swidth  = sprovider.get_width();

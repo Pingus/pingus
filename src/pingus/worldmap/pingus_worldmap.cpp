@@ -19,6 +19,7 @@
 #include <stdexcept>
 
 #include "util/pathname.hpp"
+#include "util/raise_exception.hpp"
 
 using namespace WorldmapNS;
 
@@ -82,7 +83,7 @@ PingusWorldmap::parse_file(const FileReader& reader)
   {
     if (!reader.read_section("graph", impl->path_graph))
     {
-      throw std::runtime_error("Worldmap: " + impl->filename + " is missed 'graph' section");
+      raise_exception(std::runtime_error, "Worldmap: " << impl->filename << " is missed 'graph' section");
     }
 
     impl->objects = reader.read_section("objects").get_sections();
@@ -104,7 +105,7 @@ PingusWorldmap::parse_file(const FileReader& reader)
   }
   else
   {
-    throw std::runtime_error("Worldmap:" + impl->filename + ": not a Worldmap file");
+    raise_exception(std::runtime_error, "Worldmap:" << impl->filename << ": not a Worldmap file");
   }
 }
 

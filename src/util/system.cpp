@@ -247,7 +247,7 @@ System::create_dir(std::string directory)
   {
     if (mkdir(directory.c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) != 0)
     {
-      throw std::runtime_error("System::create_dir: " + directory + ": " + strerror(errno));
+      raise_exception(std::runtime_error, "System::create_dir: " << directory << ": " << strerror(errno));
     }
     else
     {
@@ -263,12 +263,14 @@ System::create_dir(std::string directory)
     }
     else if (dwError == ERROR_PATH_NOT_FOUND)
     {
-      throw std::runtime_error("CreateDirectory: " + directory +
-                               ": One or more intermediate directories do not exist; this function will only create the final directory in the path.");
+      raise_exception(std::runtime_error, 
+                      "CreateDirectory: " << directory <<
+                      ": One or more intermediate directories do not exist; this function will only create the final directory in the path.");
     }
     else
     {
-      throw std::runtime_error("CreateDirectory: " + directory + ": failed with error " + StringUtil::to_string(dwError));
+      raise_exception(std::runtime_error, 
+                      "CreateDirectory: " << directory << ": failed with error " << StringUtil::to_string(dwError));
     }
   }
   else
@@ -306,7 +308,7 @@ System::find_userdir()
   }
   else
   {
-    throw std::runtime_error("Environment variable $HOME not set, fix that and start again.");
+    raise_exception(std::runtime_error, "Environment variable $HOME not set, fix that and start again.");
   }
 #endif
 }
@@ -467,7 +469,7 @@ System::checksum(std::string filename)
 
     if (bytes_read != 4096 && !feof(in))
     {
-      throw std::runtime_error("System:checksum: file read error");
+      raise_exception(std::runtime_error, "System:checksum: file read error");
     }
 
     for (size_t i=0; i < bytes_read; ++i)
@@ -685,41 +687,31 @@ System::write_file(const std::string& filename, const std::string& content)
   umask(old_mask);
   if (fd < 0)
   {
-    std::ostringstream out;
-    out << tmpfile.get() << ": " << strerror(errno);
-    throw std::runtime_error(out.str());
+    raise_exception(std::runtime_error, tmpfile.get() << ": " << strerror(errno));
   }
 
   // write the data to the temporary file
   if (write(fd, content.data(), content.size()) < 0)
   {
-    std::ostringstream out;
-    out << tmpfile.get() << ": " << strerror(errno);
-    throw std::runtime_error(out.str());
+    raise_exception(std::runtime_error, tmpfile.get() << ": " << strerror(errno));
   }
 
   if (close(fd) < 0)
   {
-    std::ostringstream out;
-    out << tmpfile.get() << ": " << strerror(errno);
-    throw std::runtime_error(out.str());
+    raise_exception(std::runtime_error, tmpfile.get() << ": " << strerror(errno));
   }
 
   // rename the temporary file to it's final location
   if (rename(tmpfile.get(), filename.c_str()) < 0)
   {
-    std::ostringstream out;
-    out << tmpfile.get() << ": " << strerror(errno);
-    throw std::runtime_error(out.str());
+    raise_exception(std::runtime_error, tmpfile.get() << ": " << strerror(errno));
   }
 
   // adjust permissions to normal default permissions, as mkstemp
   // might not honor umask
   if (chmod(filename.c_str(), ~old_mask & 0666) < 0)
   {
-    std::ostringstream out;
-    out << tmpfile.get() << ": " << strerror(errno);
-    throw std::runtime_error(out.str());    
+    raise_exception(std::runtime_error, tmpfile.get() << ": " << strerror(errno));
   }
 #endif
 }

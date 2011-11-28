@@ -22,6 +22,7 @@
 #include "pingus/world.hpp"
 #include "util/file_reader.hpp"
 #include "util/log.hpp"
+#include "util/raise_exception.hpp"
 
 ServerEvent::ServerEvent() :
   type(PINGU_ACTION_EVENT),
@@ -75,8 +76,7 @@ ServerEvent::ServerEvent(const FileReader& reader) :
   }
   else
   {
-    throw std::runtime_error(std::string("ServerEvent: Parse error: Unknown event: ")
-                             + reader.get_name());
+    raise_exception(std::runtime_error, "ServerEvent: Parse error: Unknown event: " << reader.get_name());
   }
 }
 

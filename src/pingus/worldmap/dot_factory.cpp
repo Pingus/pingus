@@ -20,6 +20,7 @@
 
 #include "pingus/worldmap/level_dot.hpp"
 #include "pingus/worldmap/story_dot.hpp"
+#include "util/raise_exception.hpp"
 
 namespace WorldmapNS {
 
@@ -34,11 +35,11 @@ DotFactory::create(const FileReader& reader)
   {
     return new LevelDot(reader);
   }
-  else if (reader.get_name() == "tubedot")
+  else
   {
-    throw std::runtime_error("DotFactory: unknown tag: ");
+    raise_exception(std::runtime_error, "DotFactory: unknown tag: " <<  reader.get_name());
+    return 0;
   }
-  return 0;
 }
 
 } // namespace WorldmapNS

@@ -34,6 +34,8 @@
 #include <stdexcept>
 #include <stdio.h>
 
+#include "util/raise_exception.hpp"
+
 #ifdef WIN32
 #define snprintf _snprintf
 #endif
@@ -104,7 +106,8 @@ void CommandLine_Generic::parse_args(int argc, char** argv)
               {            
                 if (i == argc - 1) 
                 {
-                  throw std::runtime_error("option '" + std::string(argv[i]) + "' requires an argument");
+                  raise_exception(std::runtime_error, 
+                                  "option '" << std::string(argv[i]) << "' requires an argument");
                 }
                 else 
                 {
@@ -116,7 +119,7 @@ void CommandLine_Generic::parse_args(int argc, char** argv)
           }
           else
           {
-            throw std::runtime_error("unrecognized option '" + std::string(argv[i]) + "'");
+            raise_exception(std::runtime_error, "unrecognized option '" << std::string(argv[i]) << "'");
           }
         }
       } 
@@ -143,7 +146,7 @@ void CommandLine_Generic::parse_args(int argc, char** argv)
                 if (i == argc - 1 || *(p+1) != '\0') 
                 {
                   // No more arguments
-                  throw std::runtime_error("option requires an argument -- " + std::string(1, *p));
+                  raise_exception(std::runtime_error, "option requires an argument -- " << std::string(1, *p));
                 }
                 else
                 {
@@ -154,7 +157,7 @@ void CommandLine_Generic::parse_args(int argc, char** argv)
             } 
             else 
             {
-              throw std::runtime_error("invalid option -- " + std::string(1, *p));
+              raise_exception(std::runtime_error, "invalid option -- " << std::string(1, *p));
             }
             ++p; 
           }

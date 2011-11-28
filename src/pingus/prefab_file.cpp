@@ -20,6 +20,7 @@
 
 #include "util/file_reader.hpp"
 #include "util/log.hpp"
+#include "util/raise_exception.hpp"
 #include "util/system.hpp"
 
 PrefabFile
@@ -29,7 +30,7 @@ PrefabFile::from_path(const Pathname& filename)
 
   if (reader.get_name() != "pingus-prefab")
   {
-    throw std::runtime_error("Error: " + filename.str() + ": not a 'pingus-prefab' file");
+    raise_exception(std::runtime_error, "Error: " << filename.str() << ": not a 'pingus-prefab' file");
   }
   else
   {
@@ -39,7 +40,7 @@ PrefabFile::from_path(const Pathname& filename)
     FileReader objects;
     if (!reader.read_section("objects", objects) || objects.get_sections().empty())
     {
-      throw std::runtime_error("Error: " + filename.str() + ": empty prefab file");
+      raise_exception(std::runtime_error, "Error: " << filename.str() << ": empty prefab file");
     }
     else
     {

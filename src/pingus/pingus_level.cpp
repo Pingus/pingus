@@ -22,6 +22,7 @@
 #include "pingus/pingus_level_impl.hpp"
 #include "util/log.hpp"
 #include "util/pathname.hpp"
+#include "util/raise_exception.hpp"
 #include "util/system.hpp"
 
 PingusLevel::PingusLevel() :
@@ -58,7 +59,7 @@ PingusLevel::load(const std::string& resname,
 
   if (reader.get_name() != "pingus-level")
   {
-    throw std::runtime_error("Error: " + pathname.str() + ": not a 'pingus-level' file");
+    raise_exception(std::runtime_error, "Error: " << pathname.str() << ": not a 'pingus-level' file");
   }
   else
   {
@@ -71,7 +72,7 @@ PingusLevel::load(const std::string& resname,
     FileReader head;
     if (!reader.read_section("head", head))
     {
-      throw std::runtime_error("Error: (head) section not found in '" + pathname.str() + "'");
+      raise_exception(std::runtime_error, "Error: (head) section not found in '" << pathname.str() << "'");
     }
     else
     {
@@ -102,7 +103,8 @@ PingusLevel::load(const std::string& resname,
       }
       else
       {
-        throw std::runtime_error("Error: (pingus-level head actions) not found in '" + pathname.str() + "'"); 
+        raise_exception(std::runtime_error, 
+                        "Error: (pingus-level head actions) not found in '" << pathname.str() << "'"); 
       }
     }
       

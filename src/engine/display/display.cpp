@@ -99,7 +99,7 @@ Display::create_window(FramebufferType framebuffer_type, const Size& size, bool 
       s_framebuffer = std::unique_ptr<Framebuffer>(new OpenGLFramebuffer());
       s_framebuffer->set_video_mode(size, fullscreen, resizable);
 #else
-      throw std::runtime_error("OpenGL support was not compiled in");
+      raise_exception(std::runtime_error, "OpenGL support was not compiled in");
 #endif
       break;
 

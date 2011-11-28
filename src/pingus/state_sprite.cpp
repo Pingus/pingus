@@ -19,6 +19,8 @@
 #include <sstream>
 #include <stdexcept>
 
+#include "util/raise_exception.hpp"
+
 StateSprite::StateSprite() :
   sprites()
 {
@@ -59,9 +61,7 @@ StateSprite::operator[](int state)
   }
   else
   {
-    std::ostringstream out;
-    out << "StateSprite error: state " << state << " not available";
-    throw std::runtime_error(out.str());
+    raise_exception(std::runtime_error, "StateSprite error: state " << state << " not available");
   }
 }
 
