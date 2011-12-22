@@ -6,9 +6,17 @@
  (developer-only #t)
  (locked #f)
  (levels 
-  (level (filename "xmas/xmas1-grumbel"))
-  (level (filename "xmas/xmas2-grumbel"))
-  (level (filename "xmas/xmas3-grumbel"))
+  (level (filename "xmas/xmas01-grumbel"))
+  (level (filename "xmas/xmas02-grumbel"))
+  (level (filename "xmas/xmas03-grumbel"))
+  (level (filename "xmas/xmas04-grumbel"))
+  (level (filename "xmas/xmas05-grumbel"))
+
+  (level (filename "xmas/xmas06-grumbel"))
+  (level (filename "xmas/xmas07-grumbel"))
+  (level (filename "xmas/xmas08-grumbel"))
+  (level (filename "xmas/xmas09-grumbel"))
+  (level (filename "xmas/xmas10-grumbel"))
   ))
 
 ;; EOF ;;
