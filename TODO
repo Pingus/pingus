@@ -69,8 +69,6 @@ Roadmap for Pingus 0.8.0:
 
 * climber right animation is the wrong way around
 
-* write a man-page
-
 * add priority to levelsets that can be used to sort them
 
 * give better error message when datadir is not set
@@ -142,14 +140,14 @@ OLPC Issues
 
 * music does make things very slow and then just stops working
 
-* cursor and icons are to small
+* cursor and icons are too small
 
 * maybe bigger font
 
 * 1920x1200 vs 1200x900 -> height 900 close to 1200, do magic so that
   we don't have vertical scrolling for small levels
 
-* editor refreshes to much
+* editor refreshes too much
 
 * doesn't have FXX keys in non-fullscreen mode
 
