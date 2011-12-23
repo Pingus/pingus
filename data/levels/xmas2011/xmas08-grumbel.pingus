@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Ice Block Blockage")
     (description "")
-    (author "")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 30)
     (number-to-save 25)
     (time -1)

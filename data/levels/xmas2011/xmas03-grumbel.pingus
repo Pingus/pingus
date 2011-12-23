@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "If only penguins could fly")
     (description "none")
-    (author "none")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 20)
     (number-to-save 14)
     (time -1)

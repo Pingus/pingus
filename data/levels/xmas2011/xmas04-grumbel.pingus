@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Stairway to Heaven")
     (description "")
-    (author "")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 40)
     (time -1)

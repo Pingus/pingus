@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Bomb and Double Catch")
     (description "none")
-    (author "none")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 15)
     (number-to-save 12)
     (time -1)
