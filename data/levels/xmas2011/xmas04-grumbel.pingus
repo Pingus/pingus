@@ -109,20 +109,18 @@
         (image "groundpieces/ground/xmas/ground3")
         (modifier "ROT0"))
       (position 1023 855 0))
-    (group 
-      (objects 
-        (groundpiece 
-          (type "transparent")
-          (surface 
-            (image "groundpieces/transparent/xmas/candystick3")
-            (modifier "ROT90"))
-          (position 1371 830 0))
-        (groundpiece 
-          (type "transparent")
-          (surface 
-            (image "groundpieces/transparent/xmas/candystick3")
-            (modifier "ROT90"))
-          (position 1461 830 0))))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/xmas/candystick3")
+        (modifier "ROT90"))
+      (position 1371 830 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/xmas/candystick3")
+        (modifier "ROT90"))
+      (position 1461 830 0))
     (groundpiece 
       (type "transparent")
       (surface 
