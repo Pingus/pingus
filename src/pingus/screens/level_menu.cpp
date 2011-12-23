@@ -95,6 +95,14 @@ private:
   LevelScrollButton & operator=(const LevelScrollButton&);
 };
 
+struct LevelsetPrioritySorter
+{
+  bool operator()(Levelset* lhs, Levelset* rhs) const
+  {
+    return lhs->get_priority() > rhs->get_priority();
+  }
+};
+
 class LevelsetSelector : public GUI::RectComponent
 {
 private:
@@ -149,6 +157,8 @@ public:
                                                    "levelsets/underconstruction",
                                                    Pathname("levels", Pathname::DATA_PATH)).release());
     }
+
+    std::sort(levelsets.begin(), levelsets.end(), LevelsetPrioritySorter());
   }
 
   ~LevelsetSelector() 

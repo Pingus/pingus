@@ -3,6 +3,7 @@
  (title "Factory Campaign")
  (description "Pingus expedition")
  (image "levelsets/factory")
+ (priority 3)
  (levels
   (level (filename "factorycampaign/factory_campaign1"))
   (level (filename "factorycampaign/factory_campaign2"))

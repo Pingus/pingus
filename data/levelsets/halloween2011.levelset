@@ -2,6 +2,7 @@
  (title "Halloween 2011")
  (description "Going Underground")
  (image  "levelsets/halloween2011")
+ (priority 4)
  (levels 
   (level (filename "halloween2011/halloween10-grumbel"))
   (level (filename "halloween2011/halloween13-grumbel"))

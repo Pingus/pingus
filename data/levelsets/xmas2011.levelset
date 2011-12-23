@@ -4,6 +4,7 @@
  (description "Merry Christmas and a Happy New Year")
  (image  "levelsets/xmas")
  (developer-only #f)
+ (priority 5)
  (locked #f)
  (levels 
   (level (filename "xmas2011/xmas01-grumbel"))

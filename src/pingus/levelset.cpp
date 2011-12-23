@@ -89,6 +89,12 @@ Levelset::from_file(const Pathname& pathname)
       levelset->set_developer_only(tmp_bool);
     }
 
+    float tmp_float;
+    if (reader.read_float("priority", tmp_float))
+    {
+      levelset->set_priority(tmp_float);
+    }
+
     bool locked = true;
     reader.read_bool("locked", locked);
 
@@ -123,6 +129,7 @@ Levelset::Levelset() :
   m_title(),
   m_description(),
   m_developer_only(false),
+  m_priority(0),
   m_sprite(),
   m_completion(0),
   m_levels()
@@ -159,6 +166,12 @@ void
 Levelset::set_developer_only(bool developer_only)
 {
   m_developer_only = developer_only;
+}
+
+void
+Levelset::set_priority(float priority)
+{
+  m_priority = priority;
 }
 
 void
@@ -225,6 +238,12 @@ bool
 Levelset::get_developer_only() const
 {
   return m_developer_only;
+}
+
+float
+Levelset::get_priority() const
+{
+  return m_priority;
 }
 
 void
