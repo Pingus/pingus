@@ -2,7 +2,7 @@
 (pingus-levelset
  (title "Xmas 2011")
  (description "Merry Christmas and a Happy New Year")
- (image  "levelsets/xmas")
+ (image  "levelsets/xmas2011")
  (developer-only #f)
  (priority 5)
  (locked #f)
