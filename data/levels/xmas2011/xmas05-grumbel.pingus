@@ -8,7 +8,7 @@
     (number-of-pingus 50)
     (number-to-save 40)
     (time -1)
-    (music "")
+    (music "pingus-4.it")
     (actions 
       (basher 2)
       (blocker 2)
@@ -2117,6 +2117,8 @@
       (surface 
         (image "groundpieces/transparent/xmas/icicle3")
         (modifier "ROT0"))
-      (position 2250 540 0))))
+      (position 2250 540 0))
+    (snow-generator 
+      (position 207 451 200))))
 
 ;; EOF ;;
