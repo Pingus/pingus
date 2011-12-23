@@ -2,7 +2,7 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "none")
+    (levelname "Bomb and Double Catch")
     (description "none")
     (author "none")
     (number-of-pingus 15)

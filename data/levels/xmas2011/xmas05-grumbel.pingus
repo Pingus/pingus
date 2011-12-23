@@ -2,7 +2,7 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "")
+    (levelname "Misdirection Everywhere")
     (description "")
     (author "")
     (number-of-pingus 50)

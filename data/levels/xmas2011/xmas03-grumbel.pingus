@@ -2,7 +2,7 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "none")
+    (levelname "If only penguins could fly")
     (description "none")
     (author "none")
     (number-of-pingus 20)
