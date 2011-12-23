@@ -33,6 +33,24 @@
       (para-x 0.5)
       (para-y 0.5))
     (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/candystick2")
+        (modifier "ROT0"))
+      (position 1752 441 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/candystick1")
+        (modifier "ROT0"))
+      (position 1888 415 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/ground3")
+        (modifier "ROT0"))
+      (position 268 990 0))
+    (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/xmas/ground3")
@@ -45,37 +63,37 @@
           (surface 
             (image "groundpieces/ground/xmas/tree")
             (modifier "ROT0"))
-          (position 213 39 0))
+          (position 198 39 0))
         (groundpiece 
           (type "transparent")
           (surface 
             (image "groundpieces/transparent/xmas/ball2")
             (modifier "ROT0"))
-          (position 252 198 0))
+          (position 237 198 0))
         (groundpiece 
           (type "transparent")
           (surface 
             (image "groundpieces/transparent/xmas/ball3")
             (modifier "ROT0"))
-          (position 311 183 0))
+          (position 296 183 0))
         (groundpiece 
           (type "transparent")
           (surface 
             (image "groundpieces/transparent/xmas/ball4")
             (modifier "ROT0"))
-          (position 271 145 0))
+          (position 256 145 0))
         (groundpiece 
           (type "transparent")
           (surface 
             (image "groundpieces/transparent/xmas/ball2")
             (modifier "ROT0"))
-          (position 296 113 0))
+          (position 281 113 0))
         (groundpiece 
           (type "transparent")
           (surface 
             (image "groundpieces/transparent/xmas/ball1")
             (modifier "ROT0"))
-          (position 278 81 0))))
+          (position 263 81 0))))
     (group 
       (objects 
         (groundpiece 
@@ -1245,7 +1263,7 @@
       (surface 
         (image "groundpieces/transparent/xmas/green2")
         (modifier "ROT0"))
-      (position 286 273 0))
+      (position 296 274 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -1425,7 +1443,7 @@
       (surface 
         (image "groundpieces/transparent/xmas/icicle2")
         (modifier "ROT0FLIP"))
-      (position 376 1024 0))
+      (position 321 1051 0))
     (groundpiece 
       (type "transparent")
       (surface 
@@ -1439,19 +1457,19 @@
           (surface 
             (image "groundpieces/transparent/xmas/present3")
             (modifier "ROT0"))
-          (position 171 234 0))
+          (position 162 232 0))
         (groundpiece 
           (type "transparent")
           (surface 
             (image "groundpieces/transparent/xmas/present2")
             (modifier "ROT0"))
-          (position 173 265 0))
+          (position 164 263 0))
         (groundpiece 
           (type "transparent")
           (surface 
             (image "groundpieces/transparent/xmas/present1")
             (modifier "ROT0"))
-          (position 144 258 0))))
+          (position 135 256 0))))
     (group 
       (objects 
         (groundpiece 
@@ -1495,6 +1513,24 @@
       (surface 
         (image "groundpieces/transparent/xmas/green2")
         (modifier "ROT0"))
-      (position 370 352 0))))
+      (position 370 352 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snow2")
+        (modifier "ROT0"))
+      (position 272 985 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/present3")
+        (modifier "ROT0"))
+      (position 341 932 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/present1")
+        (modifier "ROT0"))
+      (position 289 954 0))))
 
 ;; EOF ;;
