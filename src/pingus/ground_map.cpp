@@ -20,7 +20,7 @@
 
 #include "engine/display/scene_context.hpp"
 #include "pingus/collision_map.hpp"
-#include "util/raise_exception.hpp"
+#include "util/log.hpp"
 
 class MapTile
 {
