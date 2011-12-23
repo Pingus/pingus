@@ -1031,7 +1031,7 @@
       (position 1064 2294 0)
       (owner-id 0))
     (prefab 
-      (name "prefabs/liquid")
+      (name "prefabs/liquids/water")
       (position -2 2532 0)
       (overrides 
         (repeat 31)))
