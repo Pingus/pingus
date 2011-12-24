@@ -1,3 +1,10 @@
+Pingus 0.7.6 (24/Dec/2011)
+==========================
+* added new SVG icons for Pingus
+* added 10 new xmas themed levels
+* added ability to sort levelsets by priority
+
+
 Pingus 0.7.5 (25/Oct/2011)
 ==========================
 * fixed memory leak in OpenGL renderer
