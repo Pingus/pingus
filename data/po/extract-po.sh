@@ -32,6 +32,7 @@ data/po/extract-levels.guile data/levels/desert/*.pingus >> "${OUT}.tmp"
 data/po/extract-levels.guile data/levels/mysteryisland/*.pingus >> "${OUT}.tmp"
 data/po/extract-levels.guile data/levels/alien/*.pingus >> "${OUT}.tmp"
 data/po/extract-levels.guile data/levels/factorycampaign/*.pingus >> "${OUT}.tmp"
+data/po/extract-levels.guile data/levels/xmas2011/*.pingus >> "${OUT}.tmp"
 echo "done"
 
 echo -n "Extracting strings from worldmaps... "
