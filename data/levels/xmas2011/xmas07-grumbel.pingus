@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "No Way to Stop")
-    (description "")
+    (description "Here you don't have much time to waste. The path to the exit is clear and straight, but you don't have the time to prepare it. Can you find a way to leap ahead?")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 20)
     (number-to-save 20)

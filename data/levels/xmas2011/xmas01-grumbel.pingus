@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Bomb and Double Catch")
-    (description "none")
+    (description "Here you might have some time to relax. The path isn't complicated and a bit of bombing and catching of Pingus should bring you to the end without much trouble, but don't relax to much, your resources are limited, so be careful when using them.")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 15)
     (number-to-save 12)

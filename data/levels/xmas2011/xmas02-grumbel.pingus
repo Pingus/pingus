@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Up, Up and Away")
-    (description "none")
+    (description "The exit is in a weird spot here, straight above. A bridge won't get you there, but your toolset allows an alternative way. Can you figure it out?")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 15)
     (number-to-save 10)

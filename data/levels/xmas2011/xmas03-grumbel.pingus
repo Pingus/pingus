@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "If only penguins could fly")
-    (description "none")
+    (description "Bridges are kind of rare around here, so don't waste any. That aside, you shouldn't have to much trouble here, everything to do here you should have learned, but you might have to use all that knowledge at once.")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 20)
     (number-to-save 14)

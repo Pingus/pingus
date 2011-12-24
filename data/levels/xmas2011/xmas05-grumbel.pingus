@@ -3,7 +3,9 @@
   (head 
     (license "GPLv3+")
     (levelname "Misdirection Everywhere")
-    (description "")
+    (description "The last level for this Xmas. Looks a little complicated, right? Don't worry with all you have learned so far, you should be able to even solve this.
+
+Good Luck & a Merry Xmas 2011")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 40)

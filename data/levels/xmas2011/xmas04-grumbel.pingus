@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Stairway to Heaven")
-    (description "")
+    (description "Here things start to get a little complicated. Getting up to the exit is hard enough with a single Pingu, but with all of them? Impossible! But wait, who says they have to come the same way?")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 40)
