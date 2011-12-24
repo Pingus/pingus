@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-25 17:22+0200\n"
+"POT-Creation-Date: 2011-12-24 22:39+0100\n"
 "PO-Revision-Date: 2011-09-18 18:50+0000\n"
 "Last-Translator: Milan Babuskov <mbabuskov@yahoo.com>\n"
 "Language-Team: <mbabuskov@yahoo.com>\n"
@@ -615,7 +615,7 @@ msgstr ""
 msgid "..:: Configure the game ::.."
 msgstr ""
 
-#: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:167
+#: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:177
 msgid "Levelsets"
 msgstr ""
 
@@ -633,19 +633,19 @@ msgid ""
 "fullscreen   ::   F12: screenshot ::.."
 msgstr ""
 
-#: src/pingus/screens/level_menu.cpp:147
+#: src/pingus/screens/level_menu.cpp:155
 msgid "Under Construction"
 msgstr ""
 
-#: src/pingus/screens/level_menu.cpp:148
+#: src/pingus/screens/level_menu.cpp:156
 msgid "Untested, unpolished and broken levels"
 msgstr ""
 
-#: src/pingus/screens/level_menu.cpp:182
+#: src/pingus/screens/level_menu.cpp:192
 msgid "Solved:"
 msgstr ""
 
-#: src/pingus/screens/level_menu.cpp:183
+#: src/pingus/screens/level_menu.cpp:193
 msgid "levels"
 msgstr ""
 
@@ -1318,7 +1318,7 @@ msgstr ""
 
 #: data/levels/halloween2011/halloween10-grumbel.pingus:6
 msgid ""
-"The exit is far below and the pingus are separated by it by quite a "
+"The exit is far below and the pingus are separated from it by quite a "
 "distance. The path down is riddled with gulfs, so jumping and bridging will "
 "be the primary tool to get down there. But be careful, the last few steps "
 "require some extra cleverness."
@@ -1331,9 +1331,9 @@ msgstr ""
 #: data/levels/halloween2011/halloween11-grumbel.pingus:6
 msgid ""
 "Trapped in an eternal loop one brave pingu has to break out and go on a "
-"journey in search for the exit, but he mustn't be to happy once he found it, "
-"as there is still one last challenge he must solve before being allowed to "
-"enter it, otherwise all his friends might perish."
+"journey in search for the exit, but he mustn't be too happy once he found "
+"it, as there is still one last challenge he must solve before being allowed "
+"to enter it, otherwise all his friends might perish."
 msgstr ""
 
 #: data/levels/halloween2011/halloween12-grumbel.pingus:5
@@ -1367,7 +1367,7 @@ msgstr ""
 #: data/levels/halloween2011/halloween14-grumbel.pingus:6
 msgid ""
 "The path to the exit lays below, shimmering through the planks. But the fall "
-"is to high, deadly for sure. Can one pingu alone make it's way through the "
+"is too high, deadly for sure. Can one pingu alone make it's way through the "
 "dangerous traps and secure the path to the exit?"
 msgstr ""
 
@@ -1441,7 +1441,7 @@ msgid ""
 "The path to the exit is blocked and many small tunnels lead the way, but be "
 "careful some of those lead to certain death. Or is there something you can "
 "do about that and create a save passage for all the Pingus and lead them "
-"savely to the exit?"
+"safely to the exit?"
 msgstr ""
 
 #: data/levels/desert/desert1-janne.pingus:5
@@ -1473,7 +1473,7 @@ msgstr ""
 msgid ""
 "After the Pingus have entered the pyramid, they reach a large room with a "
 "large window. The only problem they have is that the entrance to the room is "
-"much to high to survive the landing. Can you help them?"
+"much too high to survive the landing. Can you help them?"
 msgstr ""
 
 #: data/levels/desert/desert3-jings.pingus:5
@@ -1526,7 +1526,7 @@ msgstr ""
 #: data/levels/desert/desert5.pingus:6
 msgid ""
 "The Pingus are separated from the exit by large abyss. A simple bridge won't "
-"be enough to catch them savely, unless of course you find the right place to "
+"be enough to catch them safely, unless of course you find the right place to "
 "put it. Can you uncover that spot?"
 msgstr ""
 
@@ -1901,7 +1901,7 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign3.pingus:5
-msgid "The cave"
+msgid "The Cave"
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign3.pingus:6
@@ -1928,7 +1928,7 @@ msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign5.pingus:6
 msgid ""
-"It's getting warmer but Pingus are breavely moving North. This time it will "
+"It's getting warmer but Pingus are bravely moving North. This time it will "
 "be much easier. There are at least four ways out. Could you find them?"
 msgstr ""
 
@@ -1937,7 +1937,7 @@ msgid "Egypt - So easy"
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign6.pingus:6
-msgid "Pingus reached Egypt. Looks easy but is it really so easy. Try out."
+msgid "Pingus reached Egypt. Looks easy, but is it really so easy? Try it out."
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign7.pingus:5
@@ -1967,6 +1967,117 @@ msgstr ""
 msgid ""
 "The maze led you to the big pyramids. Now you have 4 minutes to escape. "
 "Hurry up!"
+msgstr ""
+
+#: data/levels/xmas2011/xmas01-grumbel.pingus:5
+msgid "Bomb and Double Catch"
+msgstr ""
+
+#: data/levels/xmas2011/xmas01-grumbel.pingus:6
+msgid ""
+"Here you might have some time to relax. The path isn't complicated and a bit "
+"of bombing and catching of Pingus should bring you to the end without much "
+"trouble, but don't relax to much, your resources are limited, so be careful "
+"when using them."
+msgstr ""
+
+#: data/levels/xmas2011/xmas02-grumbel.pingus:5
+msgid "Up, Up and Away"
+msgstr ""
+
+#: data/levels/xmas2011/xmas02-grumbel.pingus:6
+msgid ""
+"The exit is in a weird spot here, straight above. A bridge won't get you "
+"there, but your toolset allows an alternative way. Can you figure it out?"
+msgstr ""
+
+#: data/levels/xmas2011/xmas03-grumbel.pingus:5
+msgid "If only penguins could fly"
+msgstr ""
+
+#: data/levels/xmas2011/xmas03-grumbel.pingus:6
+msgid ""
+"Bridges are kind of rare around here, so don't waste any. That aside, you "
+"shouldn't have to much trouble here, everything to do here you should have "
+"learned, but you might have to use all that knowledge at once."
+msgstr ""
+
+#: data/levels/xmas2011/xmas04-grumbel.pingus:5
+msgid "Stairway to Heaven"
+msgstr ""
+
+#: data/levels/xmas2011/xmas04-grumbel.pingus:6
+msgid ""
+"Here things start to get a little complicated. Getting up to the exit is "
+"hard enough with a single Pingu, but with all of them? Impossible! But wait, "
+"who says they have to come the same way?"
+msgstr ""
+
+#: data/levels/xmas2011/xmas05-grumbel.pingus:5
+msgid "Misdirection Everywhere"
+msgstr ""
+
+#: data/levels/xmas2011/xmas05-grumbel.pingus:6
+msgid ""
+"The last level for this Xmas. Looks a little complicated, right? Don't worry "
+"with all you have learned so far, you should be able to even solve this.\n"
+"\n"
+"Good Luck & a Merry Xmas 2011"
+msgstr ""
+
+#: data/levels/xmas2011/xmas06-grumbel.pingus:5
+msgid "The Big Jump"
+msgstr ""
+
+#: data/levels/xmas2011/xmas06-grumbel.pingus:6
+msgid ""
+"Going in and out of the abyss with all Pingus isn't an option here, but a "
+"small group preparing the path or the others should get you across."
+msgstr ""
+
+#: data/levels/xmas2011/xmas07-grumbel.pingus:5
+msgid "No Way to Stop"
+msgstr ""
+
+#: data/levels/xmas2011/xmas07-grumbel.pingus:6
+msgid ""
+"Here you don't have much time to waste. The path to the exit is clear and "
+"straight, but you don't have the time to prepare it. Can you find a way to "
+"leap ahead?"
+msgstr ""
+
+#: data/levels/xmas2011/xmas08-grumbel.pingus:5
+#, fuzzy
+msgid "Ice Block Blockage"
+msgstr "Blok i stena"
+
+#: data/levels/xmas2011/xmas08-grumbel.pingus:6
+msgid ""
+"What's this? A gigantic ice block straight in the path? Where did that come "
+"from? No time wondering about things like that. The Pingus need to get to "
+"the exist and it's your job to find a way around the block."
+msgstr ""
+
+#: data/levels/xmas2011/xmas09-grumbel.pingus:5
+msgid "The Impossible Bridge"
+msgstr ""
+
+#: data/levels/xmas2011/xmas09-grumbel.pingus:6
+msgid ""
+"Two groups of Pingus separated by a deep byss, joining them by a bridge "
+"seems impossible, but wise coordination of the two groups and a brave leap "
+"should let you make it to the exit."
+msgstr ""
+
+#: data/levels/xmas2011/xmas10-grumbel.pingus:5
+msgid "Spiraling Away"
+msgstr ""
+
+#: data/levels/xmas2011/xmas10-grumbel.pingus:6
+msgid ""
+"The exit is straight below, but the path is blocked by solid steal with no "
+"way through. But the Pingus have a versatile toolset at hand, can you use it "
+"to find a way around and make it to the exit?"
 msgstr ""
 
 #: data/worldmaps/tutorial.worldmap:4
@@ -2167,11 +2278,11 @@ msgstr ""
 msgid "Trapped in a video game"
 msgstr ""
 
-#: data/levelsets/xmas.levelset:3
-msgid "X-Mas 2007"
+#: data/levelsets/xmas2011.levelset:3
+msgid "Xmas 2011"
 msgstr ""
 
-#: data/levelsets/xmas.levelset:4
+#: data/levelsets/xmas2011.levelset:4
 msgid "Merry Christmas and a Happy New Year"
 msgstr ""
 
