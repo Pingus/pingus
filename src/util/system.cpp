@@ -299,6 +299,18 @@ System::find_userdir()
 
   return tmpstr;
 
+#elif __APPLE__
+	char* homedir = getenv("HOME");
+	
+	if (homedir)
+	{
+		return std::string(homedir) + "/Library/Application Support/pingus/";
+	}
+	else
+	{
+		raise_exception(std::runtime_error, "Environment variable $HOME not set, fix that and start again.");
+	}
+	
 #else /* !WIN32 */
   char* homedir = getenv("HOME");
 
