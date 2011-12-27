@@ -23,7 +23,8 @@ int main(int argc, char** argv)
       if (surface->flags & SDL_SRCCOLORKEY)
         std::cout << " colorkey";
 
-      std::cout << " bpp" << static_cast<int>(surface->format->BitsPerPixel);
+      std::cout << " bitsPerPixel:" << static_cast<int>(surface->format->BitsPerPixel);
+      std::cout << " bytesPerPixel:" << static_cast<int>(surface->format->BytesPerPixel);
 
       std::cout << std::endl;
     }
