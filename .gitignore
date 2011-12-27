@@ -1,8 +1,11 @@
+.DS_Store
+.*.swp
 /.sconf_temp
 /.sconsign.dblite
 /cache
 /build
 /build-win32
+/build-win32.old
 /config.log
 *~
 *.o
@@ -10,5 +13,7 @@
 /pingus-neutral
 /pingus-nice
 /pingus
+/Pingus.app
+/Pingus-*.dmg
 /doc/man/pingus.html/index.html
 /doc/man/pingus.html/index.orig.html

@@ -1,0 +1,81 @@
+# this Makefile assumes that you have used macports to install all the depemdencies.
+
+# that is were macports is installed by default
+PORTSDIR = /opt/local
+CPPPATH = $(PORTSDIR)/include
+LIBPATH = $(PORTSDIR)/lib
+# note that the default compoler on OS X 10.5 is gcc-4.0.1, which can't handle -std=c++0x
+# you can set this simply to "gcc" and "g++" if your default compiler is gcc-4.4 of higher.
+CC = $(PORTSDIR)/bin/gcc-mp-4.4
+CXX = $(PORTSDIR)/bin/g++-mp-4.4
+# the default (BSD) "install" does not support the -D flag, so we're using macports GNU variant
+INSTALL = ginstall
+
+# the portable application bundle
+BUNDLE = Pingus.app
+
+# the volume name for the package (the filename ,*.dmg, will include the VERSION)
+# NOTE: currently an initial size of 100M is used. This has to be increased as needed!
+PACKAGE = Pingus
+
+build/pingus:
+	mkdir -p build
+	scons CPPPATH=$(CPPPATH) LIBPATH=$(LIBPATH) CXX=$(CXX) CC=$(CC)
+	ln -fs build/pingus
+
+build/pingus.icns: data/images/icons/pingus-icon.png
+	mkdir -p build
+	makeicns -in $< -out $@
+
+bundle: install-exec install-data install-icon
+
+create-app-bundle: build/pingus.icns
+	mkdir -p $(BUNDLE)/Contents/MacOS
+	mkdir -p $(BUNDLE)/Contents/Resources
+	mkdir -p $(BUNDLE)/Contents/bin
+	mkdir -p $(BUNDLE)/Contents/lib
+	mkdir -p $(BUNDLE)/Contents/data
+	echo "APPL" > $(BUNDLE)/Contents/PkgInfo
+	echo "#!/bin/bash\nbase=\$${0/MacOS\\/[Pp]ingus/}\nlang=`defaults read .GlobalPreferences AppleLanguages | tr -d [:space:] | cut -c2-3`\nexec \$$base/bin/pingus --language=\$$lang --datadir \"\$$base/data\"" > $(BUNDLE)/Contents/MacOS/pingus
+	chmod 755 $(BUNDLE)/Contents/MacOS/pingus
+
+install-icon: create-app-bundle build/pingus
+	install build/pingus.icns $(BUNDLE)/Contents/Resources
+	echo "<plist version=\"1.0\"><dict><key>CFBundleIconFile</key><string>pingus.icns</string></dict></plist>" > $(BUNDLE)/Contents/Info.plist
+
+install-exec: create-app-bundle build/pingus
+	install build/pingus $(BUNDLE)/Contents/bin
+	dylibbundler -b -x $(BUNDLE)/Contents/bin/pingus -od -d $(BUNDLE)/Contents/lib/ -p @executable_path/../lib/
+
+install-data:
+	find data \
+        -type f -a  \( \
+        -name "*.png" -o \
+        -name "*.jpg" -o \
+        -name "*.wav" -o \
+        -name "*.scm" -o \
+        -name "*.font" -o \
+        -name "*.story" -o \
+        -name "*.credits" -o \
+        -name "*.prefab" -o \
+        -name "*.it" -o \
+        -name "*.ogg" -o \
+        -name "*.s3m" -o \
+        -name "*.po" -o \
+        -name "*.worldmap" -o \
+        -name "*.res" -o \
+        -name "*.pingus" -o \
+        -name "*.levelset" -o \
+        -name "*.sprite" \
+        \) -exec  $(INSTALL) -D {} $(BUNDLE)/Contents/{} \;
+
+package: bundle
+	hdiutil create -size 100M -fs HFS+J -volname $(PACKAGE) $(PACKAGE)-tmp.dmg
+	hdiutil attach $(PACKAGE)-tmp.dmg -readwrite -mount required
+	cp -R -p $(BUNDLE) /Volumes/$(PACKAGE)/
+	cp README /Volumes/$(PACKAGE)
+	cp NEWS /Volumes/$(PACKAGE)
+	hdiutil detach /Volumes/$(PACKAGE) -force
+	hdiutil convert $(PACKAGE)-tmp.dmg -format UDZO -imagekey zlib-level=9 -o $(PACKAGE)-`cat VERSION`.dmg
+	rm $(PACKAGE)-tmp.dmg
+
