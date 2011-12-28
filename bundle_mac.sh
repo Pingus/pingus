@@ -14,4 +14,4 @@ echo "* Copying data files"
 cp -r ./data/* ./Pingus.app/Contents/Resources/
 
 echo "* Bunling dependencies"
-dylibbundler -od -b -x ./Pingus.app/Contents/MacOS/lincity-ng -d ./Pingus.app/Contents/libs/
+dylibbundler -od -b -x ./Pingus.app/Contents/MacOS/pingus -d ./Pingus.app/Contents/libs/
