@@ -201,7 +201,9 @@ void
 GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
                              int x_pos, int y_pos, int real_x_arg, int real_y_arg)
 {
-  if (sprovider.get_surface()->format->BitsPerPixel != 8)
+  if (sprovider.get_surface()->format->BitsPerPixel != 8  &&
+      sprovider.get_surface()->format->BitsPerPixel != 24 &&
+      sprovider.get_surface()->format->BitsPerPixel != 32)
   {
     log_error("Image has wrong color depth: " 
               << static_cast<int>(sprovider.get_surface()->format->BitsPerPixel));
@@ -229,7 +231,27 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
   Uint8* target_buf = static_cast<Uint8*>(provider.get_data());
   Uint8* source_buf = static_cast<Uint8*>(sprovider.get_data());
 
-  if (sprovider.get_surface()->flags & SDL_SRCCOLORKEY)
+  if (sprovider.get_surface()->format->BitsPerPixel == 32)
+  {
+    for (int y = start_y; y < end_y; ++y)
+    {
+      Uint8* tptr = target_buf + tpitch*(y+y_pos) + 4*(x_pos + start_x);
+      Uint8* sptr = source_buf + spitch*y + 4*start_x;
+
+      for (int x = start_x; x < end_x; ++x)
+      { 
+        if (sptr[3] == 255 && 
+            colmap->getpixel(real_x_arg+x, real_y_arg+y) != Groundtype::GP_SOLID)
+        {
+          tptr[3] = 0;
+        }
+
+        tptr += 4;
+        sptr += 4;
+      }
+    }
+  }
+  else if (sprovider.get_surface()->flags & SDL_SRCCOLORKEY)
   {
     Uint32 colorkey = sprovider.get_surface()->format->colorkey;
 
@@ -251,11 +273,11 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
     }
   }
   else
-  {
+  { 
+    // opaque source surface, so we can use the same code for 24bpp and indexed
     for (int y = start_y; y < end_y; ++y)
     {
       Uint8* tptr = target_buf + tpitch*(y+y_pos) + 4*(x_pos + start_x);
-      Uint8* sptr = source_buf + spitch*y + start_x;
 
       for (int x = start_x; x < end_x; ++x)
       { 
@@ -265,7 +287,6 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
         }
               
         tptr += 4;
-        sptr += 1;
       }
     }
   }
