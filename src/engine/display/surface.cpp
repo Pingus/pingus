@@ -142,23 +142,38 @@ Surface::blit(Surface src, int x_pos, int y_pos)
     int tpitch  = get_pitch();
     uint8_t* tdata = get_data();
 
-    int spitch  = src.get_pitch();
+    int spitch = src.get_pitch();
     uint8_t* sdata = src.get_data();
+
+    const uint32_t srmask = src.get_surface()->format->Rmask;
+    const uint32_t sgmask = src.get_surface()->format->Gmask;
+    const uint32_t sbmask = src.get_surface()->format->Bmask;
+    const uint32_t samask = src.get_surface()->format->Amask;
+
+    const uint8_t srshift = src.get_surface()->format->Rshift;
+    const uint8_t sgshift = src.get_surface()->format->Gshift;
+    const uint8_t sbshift = src.get_surface()->format->Bshift;
+    const uint8_t sashift = src.get_surface()->format->Ashift;
 
     for(int y = start_y; y < end_y; ++y)
     {
-      uint8_t* tptr = tdata + tpitch * (y + y_pos) + 4 * (x_pos + start_x);
-      uint8_t* sptr = sdata + spitch * y + 4 * start_x;
+      uint8_t*  tptr = tdata + tpitch * (y + y_pos) + 4 * (x_pos + start_x);
+      uint32_t* sptr = reinterpret_cast<uint32_t*>(sdata + spitch * y + 4 * start_x);
 
       for(int x = start_x; x < end_x; ++x)
       {
-        if (sptr[3] == 255)
+        const uint8_t red   = static_cast<uint8_t>((*sptr & srmask) >> srshift);
+        const uint8_t green = static_cast<uint8_t>((*sptr & sgmask) >> sgshift);
+        const uint8_t blue  = static_cast<uint8_t>((*sptr & sbmask) >> sbshift);
+        const uint8_t alpha = static_cast<uint8_t>((*sptr & samask) >> sashift);
+
+        if (alpha == 255)
         {
           // opaque blit
-          tptr[0] = sptr[0];
-          tptr[1] = sptr[1];
-          tptr[2] = sptr[2];
-          tptr[3] = sptr[3];
+          tptr[0] = red;
+          tptr[1] = green;
+          tptr[2] = blue;
+          tptr[3] = alpha;
         }
         else if (sptr[3] == 0)
         {
@@ -167,7 +182,7 @@ Surface::blit(Surface src, int x_pos, int y_pos)
         else
         { 
           // alpha blend
-          uint8_t outa = static_cast<uint8_t>((sptr[3] + (tptr[3] * (255 - sptr[3])) / 255));
+          uint8_t outa = static_cast<uint8_t>((alpha + (tptr[3] * (255 - alpha)) / 255));
 
           if (outa == 0)
           {
@@ -178,16 +193,16 @@ Surface::blit(Surface src, int x_pos, int y_pos)
           }
           else
           {
-            tptr[0] = static_cast<uint8_t>(((sptr[0] * sptr[3] + tptr[0] * tptr[3] * (255 - sptr[3]) / 255) / outa));
-            tptr[1] = static_cast<uint8_t>(((sptr[1] * sptr[3] + tptr[1] * tptr[3] * (255 - sptr[3]) / 255) / outa));
-            tptr[2] = static_cast<uint8_t>(((sptr[2] * sptr[3] + tptr[2] * tptr[3] * (255 - sptr[3]) / 255) / outa));
+            tptr[0] = static_cast<uint8_t>(((red   * alpha + tptr[0] * tptr[3] * (255 - alpha) / 255) / outa));
+            tptr[1] = static_cast<uint8_t>(((green * alpha + tptr[1] * tptr[3] * (255 - alpha) / 255) / outa));
+            tptr[2] = static_cast<uint8_t>(((blue  * alpha + tptr[2] * tptr[3] * (255 - alpha) / 255) / outa));
 
             tptr[3] = outa;
           }
         }
 
         tptr += 4;
-        sptr += 4;
+        sptr += 1;
       }
     }
 
