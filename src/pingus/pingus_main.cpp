@@ -434,8 +434,12 @@ PingusMain::parse_args(int argc, char** argv)
 // private helper to check if a file exists
 static bool file_exists(char *filename)
 {
-  struct stat buffer ;
-  return stat( filename, &buffer );
+	struct stat buf;
+    if (stat(filename, &buf) != -1)
+    {
+        return true;
+    }
+    return false;
 }
 #endif
 
@@ -457,7 +461,7 @@ PingusMain::init_path_finder()
 #if defined(__APPLE__)
     char path[PATH_MAX];
     getcwd(path, PATH_MAX);
-    if (file_exists(strcat(path,"data")))
+    if (file_exists(strcat(path,"/data/images/fonts/chalk-40px.font")))
     {
       g_path_manager.set_path("data"); // assume game is run from source dir
     }
