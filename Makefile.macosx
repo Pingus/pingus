@@ -32,23 +32,19 @@ bundle: install-exec install-data install-icon
 create-app-bundle: build/pingus.icns
 	mkdir -p $(BUNDLE)/Contents/MacOS
 	mkdir -p $(BUNDLE)/Contents/Resources
-	mkdir -p $(BUNDLE)/Contents/bin
-	mkdir -p $(BUNDLE)/Contents/lib
-	mkdir -p $(BUNDLE)/Contents/data
+	mkdir -p $(BUNDLE)/Contents/libs
 	echo "APPL" > $(BUNDLE)/Contents/PkgInfo
-	echo "#!/bin/bash\nbase=\$${0/MacOS\\/[Pp]ingus/}\nlang=`defaults read .GlobalPreferences AppleLanguages | tr -d [:space:] | cut -c2-3`\nexec \$$base/bin/pingus --language=\$$lang --datadir \"\$$base/data\"" > $(BUNDLE)/Contents/MacOS/pingus
-	chmod 755 $(BUNDLE)/Contents/MacOS/pingus
 
 install-icon: create-app-bundle build/pingus
 	install build/pingus.icns $(BUNDLE)/Contents/Resources
 	echo "<plist version=\"1.0\"><dict><key>CFBundleIconFile</key><string>pingus.icns</string></dict></plist>" > $(BUNDLE)/Contents/Info.plist
 
 install-exec: create-app-bundle build/pingus
-	install build/pingus $(BUNDLE)/Contents/bin
-	dylibbundler -b -x $(BUNDLE)/Contents/bin/pingus -od -d $(BUNDLE)/Contents/lib/ -p @executable_path/../lib/
+	install build/pingus $(BUNDLE)/Contents/MacOS
+	dylibbundler -b -x $(BUNDLE)/Contents/MacOS/pingus -od -d $(BUNDLE)/Contents/libs/
 
 install-data:
-	find data \
+	for file in `( cd data ; find . \
         -type f -a  \( \
         -name "*.png" -o \
         -name "*.jpg" -o \
@@ -67,7 +63,7 @@ install-data:
         -name "*.pingus" -o \
         -name "*.levelset" -o \
         -name "*.sprite" \
-        \) -exec  $(INSTALL) -D {} $(BUNDLE)/Contents/{} \;
+        \) )`; do  $(INSTALL) -D data/$$file $(BUNDLE)/Contents/Resources/$$file; done
 
 package: bundle
 	hdiutil create -size 100M -fs HFS+J -volname $(PACKAGE) $(PACKAGE)-tmp.dmg

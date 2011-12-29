@@ -23,6 +23,11 @@
 #include <stdexcept>
 #include <string.h>
 
+#ifdef __APPLE__
+#include <CoreFoundation/CFLocale.h>
+#include <CoreFoundation/CFString.h>
+#endif
+
 #ifndef WIN32
 #  include <dirent.h>
 #  include <fcntl.h>
@@ -444,7 +449,23 @@ System::get_language()
 
   if (lang.empty() || lang == "C")
   {
+#ifndef __APPLE__
     return globals::default_language;
+#else /* on Mac OS X we get "C" if launched using Finder, so we ask the OS for the language */
+    /* Note: this is used as last resort to allow the use of LANG when starting via Terminal */
+    CFArrayRef preferred_languages = CFLocaleCopyPreferredLanguages();
+    //CFShow(preferred_languages);
+    CFStringRef language = (CFStringRef)CFArrayGetValueAtIndex(preferred_languages, 0 /* most important language */);
+    //CFShow(language);
+    CFRelease(preferred_languages);
+    CFStringRef substring = CFStringCreateWithSubstring(NULL, language, CFRangeMake(0, 2));
+    CFRelease(language);
+    char buff[3];
+    CFStringGetCString(substring, buff, 3, kCFStringEncodingUTF8);
+    CFRelease(substring);
+    lang = buff;
+    return lang;
+#endif
   }
   else
   {

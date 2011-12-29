@@ -431,11 +431,12 @@ PingusMain::parse_args(int argc, char** argv)
 }
 
 #if defined(__APPLE__)
-	int fexist( char *filename ) {
-	  struct stat buffer ;
-	  if ( stat( filename, &buffer ) ) return 1 ;
-	  return 0 ;
-	}
+// private helper to check if a file exists
+static bool file_exists(char *filename)
+{
+  struct stat buffer ;
+  return stat( filename, &buffer );
+}
 #endif
 
 // Get all filenames and directories
@@ -454,23 +455,23 @@ PingusMain::init_path_finder()
   else
   { // do magic to guess the datadir
 #if defined(__APPLE__)
-	char path[PATH_MAX];
+    char path[PATH_MAX];
     getcwd(path, PATH_MAX);
-    char resource_path[PATH_MAX];
-    CFURLRef ref = CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle());
-    if (!ref || !CFURLGetFileSystemRepresentation(ref, true, (UInt8*)resource_path, PATH_MAX))
-    {
-      std::cout << "Error: Couldn't get Resources path.\n" << std::endl;
-      exit(EXIT_FAILURE);
-    }
-    if (fexist(strcat(path,"data")))
+    if (file_exists(strcat(path,"data")))
     {
       g_path_manager.set_path("data"); // assume game is run from source dir
     }
     else
     {
-    	CFRelease(ref);
-    	g_path_manager.set_path(resource_path);
+      char resource_path[PATH_MAX];
+      CFURLRef ref = CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle());
+      if (!ref || !CFURLGetFileSystemRepresentation(ref, true, (UInt8*)resource_path, PATH_MAX))
+      {
+        std::cout << "Error: Couldn't get Resources path.\n" << std::endl;
+        exit(EXIT_FAILURE);
+      }
+      CFRelease(ref);
+      g_path_manager.set_path(resource_path);
     }
 #else
     g_path_manager.set_path("data"); // assume game is run from source dir

@@ -8,6 +8,8 @@ The following guide assumes that you use macports to install the requirements.
 You can also do this the hard way by finding/compiling the stuff yourself,
 but if you're capable of doing so you won't need this guide anyway.
 
+See http://code.google.com/p/pingus/wiki/MacOS_X_Compiling if you are adventurous or do not want to us macports.
+
 This guide was written on OS X 10.5 "Leopard", where XCode brings gcc-4.0.
 Since that's too old gcc-4.4 is installed using macports and also referenced
 in the Makefile.macosx. If you have a recent compiler, just skip these parts
