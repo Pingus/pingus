@@ -112,7 +112,7 @@ Surface::~Surface()
 }
 
 void
-Surface::blit(const Surface& src, int x, int y)
+Surface::blit(Surface src, int x_pos, int y_pos)
 {
   if (!get_surface())
   {
@@ -122,12 +122,84 @@ Surface::blit(const Surface& src, int x, int y)
   {
     log_error("trying to blit with an empty surface");
   }
+  else if (get_surface()->format->BytesPerPixel == 4 &&
+           src.get_surface()->format->BytesPerPixel == 4)
+  { 
+    // RGBA to RGBA blit
+    int start_x = std::max(0, -x_pos);
+    int start_y = std::max(0, -y_pos);
+
+    int end_x = std::min(src.get_width(),  get_width()  - x_pos);
+    int end_y = std::min(src.get_height(), get_height() - y_pos);
+
+    // empty blit range
+    if (end_x - start_x <= 0 || end_y - start_y <= 0)
+      return;
+
+    lock();
+    src.lock();
+
+    int tpitch  = get_pitch();
+    uint8_t* tdata = get_data();
+
+    int spitch  = src.get_pitch();
+    uint8_t* sdata = src.get_data();
+
+    for(int y = start_y; y < end_y; ++y)
+    {
+      uint8_t* tptr = tdata + tpitch * (y + y_pos) + 4 * (x_pos + start_x);
+      uint8_t* sptr = sdata + spitch * y + 4 * start_x;
+
+      for(int x = start_x; x < end_x; ++x)
+      {
+        if (sptr[3] == 255)
+        {
+          // opaque blit
+          tptr[0] = sptr[0];
+          tptr[1] = sptr[1];
+          tptr[2] = sptr[2];
+          tptr[3] = sptr[3];
+        }
+        else if (sptr[3] == 0)
+        {
+          // do nothing
+        }
+        else
+        { 
+          // alpha blend
+          uint8_t outa = static_cast<uint8_t>((sptr[3] + (tptr[3] * (255 - sptr[3])) / 255));
+
+          if (outa == 0)
+          {
+            tptr[0] = 0;
+            tptr[1] = 0;
+            tptr[2] = 0;
+            tptr[3] = 0;
+          }
+          else
+          {
+            tptr[0] = static_cast<uint8_t>(((sptr[0] * sptr[3] + tptr[0] * tptr[3] * (255 - sptr[3]) / 255) / outa));
+            tptr[1] = static_cast<uint8_t>(((sptr[1] * sptr[3] + tptr[1] * tptr[3] * (255 - sptr[3]) / 255) / outa));
+            tptr[2] = static_cast<uint8_t>(((sptr[2] * sptr[3] + tptr[2] * tptr[3] * (255 - sptr[3]) / 255) / outa));
+
+            tptr[3] = outa;
+          }
+        }
+
+        tptr += 4;
+        sptr += 4;
+      }
+    }
+
+    src.unlock();
+    unlock();
+  }
   else
   {
     SDL_Rect dstrect;
 
-    dstrect.x = static_cast<Sint16>(x);
-    dstrect.y = static_cast<Sint16>(y);
+    dstrect.x = static_cast<Sint16>(x_pos);
+    dstrect.y = static_cast<Sint16>(y_pos);
 
     SDL_BlitSurface(src.get_surface(), NULL, get_surface(), &dstrect);
   }
