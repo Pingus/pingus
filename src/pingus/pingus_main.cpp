@@ -35,6 +35,9 @@
 /* Can't use the include, some type names conflict.
    #include <CoreFoundation/CoreFoundation.h>
 */
+#include <unistd.h>
+#include <strings.h>
+#include <SYS/stat.h>
 extern "C" {
   typedef unsigned char UInt8;
   typedef void* CFTypeRef;
@@ -427,6 +430,14 @@ PingusMain::parse_args(int argc, char** argv)
   }
 }
 
+#if defined(__APPLE__)
+	int fexist( char *filename ) {
+	  struct stat buffer ;
+	  if ( stat( filename, &buffer ) ) return 1 ;
+	  return 0 ;
+	}
+#endif
+
 // Get all filenames and directories
 void
 PingusMain::init_path_finder()
@@ -443,6 +454,8 @@ PingusMain::init_path_finder()
   else
   { // do magic to guess the datadir
 #if defined(__APPLE__)
+	char path[PATH_MAX];
+    getcwd(path, PATH_MAX);
     char resource_path[PATH_MAX];
     CFURLRef ref = CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle());
     if (!ref || !CFURLGetFileSystemRepresentation(ref, true, (UInt8*)resource_path, PATH_MAX))
@@ -450,8 +463,15 @@ PingusMain::init_path_finder()
       std::cout << "Error: Couldn't get Resources path.\n" << std::endl;
       exit(EXIT_FAILURE);
     }
-    CFRelease(ref);
-    g_path_manager.set_path(resource_path);
+    if (fexist(strcat(path,"data")))
+    {
+      g_path_manager.set_path("data"); // assume game is run from source dir
+    }
+    else
+    {
+    	CFRelease(ref);
+    	g_path_manager.set_path(resource_path);
+    }
 #else
     g_path_manager.set_path("data"); // assume game is run from source dir
 #endif
