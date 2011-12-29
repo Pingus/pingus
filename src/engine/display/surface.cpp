@@ -123,8 +123,9 @@ Surface::blit(Surface src, int x_pos, int y_pos)
     log_error("trying to blit with an empty surface");
   }
   else if (get_surface()->format->BytesPerPixel == 4 &&
-           src.get_surface()->format->BytesPerPixel == 4)
-  { 
+           src.get_surface()->format->BytesPerPixel == 4 &&
+           src.get_surface()->format->Amask)
+  {
     // RGBA to RGBA blit
     int start_x = std::max(0, -x_pos);
     int start_y = std::max(0, -y_pos);
