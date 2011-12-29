@@ -1,14 +1,13 @@
 (pingus-level 
-  (version 2)
+  (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "Blitter Test")
-    (description "This level tests how the blitter react to different formats, on the left four different formats are shown on a white background, on the right the same four formats blitted on transparency.")
+    (levelname "")
+    (description "")
     (author "")
     (number-of-pingus 50)
     (number-to-save 20)
     (time -1)
-    (playable 1)
     (music "")
     (actions 
       (basher 20)
@@ -21,117 +20,112 @@
       (jumper 20)
       (miner 20)
       (slider 20))
-    (levelsize 1920 1200))
+    (levelsize 800 600))
   (objects 
-    (starfield-background 
-      (position 202 910 -1000)
-      (small-stars 500)
-      (middle-stars 250)
-      (large-stars 125))
-    (solidcolor-background 
-      (position 318 734 -1000)
-      (color 0 0 0 1))
+    (surface-background 
+      (surface 
+        (image "textures/cyanspace")
+        (modifier "ROT0"))
+      (position 71 5 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/test/block1")
+        (image "groundpieces/ground/desert/bigprickpiece")
         (modifier "ROT0"))
-      (position 341 328 0))
+      (position 401 231 0))
     (groundpiece 
       (type "ground")
       (surface 
-        (image "groundpieces/ground/test/block1")
+        (image "groundpieces/ground/desert/bigprickpiece")
         (modifier "ROT0"))
-      (position 597 328 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/block1")
-        (modifier "ROT0"))
-      (position 597 456 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/block1")
-        (modifier "ROT0"))
-      (position 341 456 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/block1")
-        (modifier "ROT0"))
-      (position 597 584 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/block1")
-        (modifier "ROT0"))
-      (position 597 712 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/block1")
-        (modifier "ROT0"))
-      (position 341 712 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/block1")
-        (modifier "ROT0"))
-      (position 341 584 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/bpp24")
-        (modifier "ROT0"))
-      (position 408 386 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/bpp32")
-        (modifier "ROT0"))
-      (position 642 387 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/bpp8")
-        (modifier "ROT0"))
-      (position 390 666 0))
+      (position 101 231 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/test/bpp8-colorkey")
         (modifier "ROT0"))
-      (position 640 656 0))
+      (position 254 179 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/test/bpp24")
         (modifier "ROT0"))
-      (position 948 371 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/test/block1")
-        (modifier "ROT90"))
-      (position 1262 306 0))
+      (position 377 168 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/test/bpp32")
         (modifier "ROT0"))
-      (position 1182 372 0))
+      (position 137 185 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/test/bpp8")
         (modifier "ROT0"))
-      (position 930 651 0))
+      (position 515 165 0))
     (groundpiece 
       (type "ground")
       (surface 
+        (image "groundpieces/ground/desert/bigprickpiece")
+        (modifier "ROT0"))
+      (position 101 381 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/bigprickpiece")
+        (modifier "ROT0"))
+      (position 401 381 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/ground/test/bpp24")
+        (modifier "ROT0"))
+      (position 377 371 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/ground/test/bpp32")
+        (modifier "ROT0"))
+      (position 137 388 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
         (image "groundpieces/ground/test/bpp8-colorkey")
         (modifier "ROT0"))
-      (position 1180 641 0))))
+      (position 254 382 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/ground/test/bpp8")
+        (modifier "ROT0"))
+      (position 515 368 0))
+    (entrance 
+      (position 440 80 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 150))
+    (entrance 
+      (position 314 93 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 150))
+    (entrance 
+      (position 196 78 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 150))
+    (entrance 
+      (position 565 88 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 150))))
 
 ;; EOF ;;
