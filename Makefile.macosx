@@ -17,6 +17,8 @@ BUNDLE = Pingus.app
 # the volume name for the package (the filename ,*.dmg, will include the VERSION)
 # NOTE: currently an initial size of 100M is used. This has to be increased as needed!
 PACKAGE = Pingus
+# these files are, beside the bundle, added to the package
+PACKAGEDOCS = README NEWS COPYING AUTHORS
 
 build/pingus:
 	mkdir -p build
@@ -69,8 +71,7 @@ package: bundle
 	hdiutil create -size 100M -fs HFS+J -volname $(PACKAGE) $(PACKAGE)-tmp.dmg
 	hdiutil attach $(PACKAGE)-tmp.dmg -readwrite -mount required
 	cp -R -p $(BUNDLE) /Volumes/$(PACKAGE)/
-	cp README /Volumes/$(PACKAGE)
-	cp NEWS /Volumes/$(PACKAGE)
+	cp $(PACKAGEDOCS) /Volumes/$(PACKAGE)
 	hdiutil detach /Volumes/$(PACKAGE) -force
 	./SLA-dmg.sh COPYING Pingus-tmp.dmg
 	hdiutil convert $(PACKAGE)-tmp.dmg -format UDZO -imagekey zlib-level=9 -o $(PACKAGE)-`cat VERSION`.dmg
