@@ -72,6 +72,7 @@ package: bundle
 	cp README /Volumes/$(PACKAGE)
 	cp NEWS /Volumes/$(PACKAGE)
 	hdiutil detach /Volumes/$(PACKAGE) -force
+	./SLA-dmg.sh COPYING Pingus-tmp.dmg
 	hdiutil convert $(PACKAGE)-tmp.dmg -format UDZO -imagekey zlib-level=9 -o $(PACKAGE)-`cat VERSION`.dmg
 	rm $(PACKAGE)-tmp.dmg
 

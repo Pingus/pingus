@@ -26,5 +26,6 @@ echo "* Creating DMG"
 	cp COPYING /Volumes/Pingus
 	cp NEWS /Volumes/Pingus
 	hdiutil detach /Volumes/Pingus -force
-	hdiutil convert Pingus-tmp.dmg -format UDZO -imagekey zlib-level=9 -o Pingus-`cat VERSION`.dmg
+	./SLA-dmg.sh COPYING Pingus-tmp.dmg
+	hdiutil convert Pingus-tmp.dmg -format UDBZ -o Pingus-`cat VERSION`.dmg
 	rm Pingus-tmp.dmg
