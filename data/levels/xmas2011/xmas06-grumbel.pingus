@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "The Big Jump")
-    (description "Going in and out of the abyss with all Pingus isn't an option here, but a small group preparing the path or the others should get you across.")
+    (description "Going in and out of the abyss with all Pingus isn't an option here, but a small group preparing the path for the others should get you across.")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 40)
