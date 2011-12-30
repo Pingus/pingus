@@ -12,15 +12,15 @@ msgstr ""
 "Project-Id-Version: fi\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-12-24 22:39+0100\n"
-"PO-Revision-Date: 2011-09-18 18:50+0000\n"
-"Last-Translator: Risto H. Kurppa <risto@kurppa.fi>\n"
+"PO-Revision-Date: 2011-12-25 06:21+0000\n"
+"Last-Translator: Tuomas Lähteenmäki <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-20 15:40+0000\n"
-"X-Generator: Launchpad (build 14165)\n"
+"X-Launchpad-Export-Date: 2011-12-29 20:12+0000\n"
+"X-Generator: Launchpad (build 14560)\n"
 
 #: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
@@ -36,7 +36,7 @@ msgstr "Ruutukaappaus: Tiedostoon ei voitu kirjoittaa: "
 
 #: src/editor/editor_screen.cpp:230
 msgid "== Editor Help =="
-msgstr ""
+msgstr "== Muokkaajan ohje =="
 
 #: src/editor/editor_screen.cpp:248
 msgid ""
@@ -64,7 +64,6 @@ msgid ""
 msgstr ""
 
 #: src/editor/editor_screen.cpp:282
-#, fuzzy
 msgid ""
 "You should name your level files systematically, i.e. by their theme, their "
 "number and your nickname:\n"
@@ -84,30 +83,14 @@ msgid ""
 "to the GPL, if you want to have your level under a different license, you "
 "have to change that reference.\n"
 msgstr ""
-"Kenttätiedostot tulisi nimetä säännönmukaisesti riippuen kentän kentän "
-"nimestä, numerosta ja nimimerkistäsi seuraavasti:\n"
-"\n"
-"     <kentän nimi><numero>-<tekijä>.pingus\n"
-"\n"
-"Joten jos kenttäsi on kivi-teeman toinen osa, tiedostonimen tulisi olla "
-"kivi2-nimesi.pingus\n"
-"\n"
-"Kun oelt saanut kenttäsi valmiiksi ja haluat sen päätyvän Pingusiin, lähetä "
-"kenttä sähköpostilla osoitteeseen\n"
-"\n"
-"     pingus-devel@nongnu.org\n"
-"\n"
-"Vain GPL-lisenssin alaiset kentät voidaan lisätä peliin. Oletuksena "
-"kenttätyökalu tekee kaikista kentistä GPL-lisensoituja. Jos haluat käyttää "
-"eri lisenssiä, se tulee asettaa erikseen.\n"
 
 #: src/editor/file_dialog.cpp:58
 msgid "Datadir"
-msgstr ""
+msgstr "Datadir"
 
 #: src/editor/file_dialog.cpp:60
 msgid "Userdir"
-msgstr ""
+msgstr "Userdir"
 
 #: src/editor/file_dialog.cpp:63
 msgid "Open"
@@ -127,7 +110,7 @@ msgstr "Tiedostonimi:"
 
 #: src/editor/file_dialog.cpp:78
 msgid "Pathname:"
-msgstr ""
+msgstr "Polku:"
 
 #: src/editor/file_dialog.cpp:98
 msgid "Open a level"
@@ -139,7 +122,7 @@ msgstr "Tallenna kenttä"
 
 #: src/editor/panel.cpp:171
 msgid "New level"
-msgstr ""
+msgstr "Uusi taso"
 
 #: src/editor/panel.cpp:173
 msgid "Open level..."
@@ -163,7 +146,7 @@ msgstr "Aseta toiminnot"
 
 #: src/editor/panel.cpp:185
 msgid "Configure level"
-msgstr ""
+msgstr "Määritä taso"
 
 #: src/editor/panel.cpp:187
 msgid "Display object properties"
@@ -183,23 +166,23 @@ msgstr "Monista kohde (d)"
 
 #: src/editor/panel.cpp:196
 msgid "Delete the selected objects"
-msgstr "Delete - poista valittu kohde"
+msgstr "Poista - poista valittu kohde"
 
 #: src/editor/panel.cpp:199
 msgid "Raise object to top"
-msgstr "Tuo päälimmäiseksi"
+msgstr "Nosta objekti ylimmäiseksi"
 
 #: src/editor/panel.cpp:201
 msgid "Raise object"
-msgstr "Nosta"
+msgstr "Nosta objektit"
 
 #: src/editor/panel.cpp:203
 msgid "Lower object"
-msgstr "Laske"
+msgstr "Laske objekti"
 
 #: src/editor/panel.cpp:205
 msgid "Lower object to bottom"
-msgstr "Vie alimmaiseksi"
+msgstr "Laske objekti alimmaiseksi"
 
 #: src/editor/panel.cpp:211
 msgid "Flip object horizontally"
@@ -219,7 +202,7 @@ msgstr "Käännä kohdetta 90 astetta"
 
 #: src/editor/panel.cpp:227
 msgid "Display help"
-msgstr ""
+msgstr "Näytä ohje"
 
 #: src/editor/panel.cpp:229 src/editor/object_selector.cpp:174
 #: src/pingus/screens/pingus_menu.cpp:74
@@ -252,7 +235,7 @@ msgstr "r - Maapala ('poista')"
 
 #: src/editor/object_selector.cpp:171
 msgid "Hotspot"
-msgstr ""
+msgstr "Langaton verkkopiste"
 
 #: src/editor/object_selector.cpp:172
 msgid "Background"
@@ -272,7 +255,7 @@ msgstr "Sää"
 
 #: src/editor/object_selector.cpp:178
 msgid "Special Object"
-msgstr "Erityiset"
+msgstr "Erityiset objektit"
 
 #: src/editor/object_selector.cpp:179
 msgid "Prefab Object"
@@ -280,15 +263,15 @@ msgstr ""
 
 #: src/editor/message_box.cpp:37
 msgid "Replace"
-msgstr ""
+msgstr "Korvaa"
 
 #: src/editor/object_properties.cpp:87 src/editor/object_properties.cpp:515
 msgid "Object:"
-msgstr "Kohde:"
+msgstr "Objekti:"
 
 #: src/editor/object_properties.cpp:88 src/editor/object_properties.cpp:516
 msgid "Nothing selected"
-msgstr "Ei valintaa"
+msgstr "Ei valittu"
 
 #: src/editor/object_properties.cpp:97
 msgid "Transparent"
@@ -320,7 +303,7 @@ msgstr "Poista"
 
 #: src/editor/object_properties.cpp:108
 msgid "Direction:"
-msgstr ""
+msgstr "Suunta:"
 
 #: src/editor/object_properties.cpp:110
 msgid "Left"
@@ -336,31 +319,31 @@ msgstr "Oikea"
 
 #: src/editor/object_properties.cpp:117
 msgid "ReleaseRate:"
-msgstr ""
+msgstr "Vapautumisnopeus:"
 
 #: src/editor/object_properties.cpp:140
 msgid "Para-X:"
-msgstr ""
+msgstr "Para-X:"
 
 #: src/editor/object_properties.cpp:141
 msgid "Para-Y:"
-msgstr ""
+msgstr "Para-Y:"
 
 #: src/editor/object_properties.cpp:149
 msgid "Scroll-X:"
-msgstr ""
+msgstr "Scroll-X:"
 
 #: src/editor/object_properties.cpp:150
 msgid "Scroll-Y:"
-msgstr ""
+msgstr "Scroll-Y:"
 
 #: src/editor/object_properties.cpp:158
 msgid "Owner Id:"
-msgstr ""
+msgstr "Omistajan Id:"
 
 #: src/editor/object_properties.cpp:162
 msgid "Z-Pos:"
-msgstr ""
+msgstr "Z-Pos:"
 
 #: src/editor/object_properties.cpp:169
 msgid "Color:"
@@ -384,31 +367,31 @@ msgstr "Toista:"
 
 #: src/editor/object_properties.cpp:211
 msgid "Id:"
-msgstr ""
+msgstr "Id:"
 
 #: src/editor/object_properties.cpp:215
 msgid "Target Id:"
-msgstr ""
+msgstr "Kohteen id:"
 
 #: src/editor/object_properties.cpp:220
 msgid "Height:"
-msgstr ""
+msgstr "Korkeus:"
 
 #: src/editor/object_properties.cpp:521
 msgid "Object: [Group]"
-msgstr ""
+msgstr "Objekti: [Ryhmä]"
 
 #: src/editor/object_properties.cpp:522
 msgid "Group not supported"
-msgstr ""
+msgstr "Ryhmää ei tueta"
 
 #: src/editor/object_properties.cpp:527
 msgid "Object: "
-msgstr ""
+msgstr "Objekti: "
 
 #: src/pingus/pingus_main.cpp:172
 msgid "[OPTIONS]... [FILE]"
-msgstr ""
+msgstr "[ASETUKSET]...[TIEDOSTO]"
 
 #: src/pingus/pingus_main.cpp:173
 msgid ""
@@ -418,7 +401,7 @@ msgstr ""
 
 #: src/pingus/pingus_main.cpp:175
 msgid "General Options:"
-msgstr ""
+msgstr "Yleisasetukset"
 
 #: src/pingus/pingus_main.cpp:177
 msgid "Displays this help"
@@ -442,7 +425,7 @@ msgstr ""
 
 #: src/pingus/pingus_main.cpp:187
 msgid "Display Options:"
-msgstr ""
+msgstr "Näyttöasetukset:"
 
 #: src/pingus/pingus_main.cpp:189
 msgid "Start in Window Mode"
@@ -502,7 +485,7 @@ msgstr "Listaa kaikki käytettävissä olevat kielet"
 
 #: src/pingus/pingus_main.cpp:221
 msgid "Loads the level editor"
-msgstr ""
+msgstr "Lataa kenttämuokkaimen"
 
 #: src/pingus/pingus_main.cpp:223
 msgid "Directory Options:"
@@ -527,11 +510,11 @@ msgstr ""
 
 #: src/pingus/pingus_main.cpp:231
 msgid "Don't read ~/.pingus/config"
-msgstr "Älä lue tiedostoa ~/.pingus/config:a"
+msgstr "Älä lue tiedostoa ~/.pingus/config"
 
 #: src/pingus/pingus_main.cpp:232
 msgid "FILE"
-msgstr ""
+msgstr "TIEDOSTO"
 
 #: src/pingus/pingus_main.cpp:233
 msgid "Read config options from FILE"
@@ -641,7 +624,7 @@ msgstr "Kenttäpaketit"
 
 #: src/pingus/screens/pingus_menu.cpp:70
 msgid "..:: Play User Built levels ::.."
-msgstr ""
+msgstr "..:: Palaa käyttäjän rakentamilla tasoilla ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:75
 msgid "..:: Bye, bye ::.."
@@ -665,11 +648,11 @@ msgstr ""
 
 #: src/pingus/screens/level_menu.cpp:192
 msgid "Solved:"
-msgstr ""
+msgstr "Ratkaistu:"
 
 #: src/pingus/screens/level_menu.cpp:193
 msgid "levels"
-msgstr ""
+msgstr "tasot:"
 
 #: src/pingus/screens/story_screen.cpp:108
 #: src/pingus/screens/story_screen.cpp:114
@@ -1611,7 +1594,7 @@ msgstr ""
 
 #: data/levels/desert/desertwaste1-grumbel.pingus:5
 msgid "The Roof"
-msgstr ""
+msgstr "Katto"
 
 #: data/levels/desert/desertwaste1-grumbel.pingus:6
 msgid ""
@@ -1721,7 +1704,7 @@ msgstr ""
 #: data/levels/mysteryisland/revenge1-lac.pingus:7
 #: data/levels/mysteryisland/revenge2-lac.pingus:7
 msgid "Revenge is sweet"
-msgstr ""
+msgstr "Kosto on suloinen"
 
 #: data/levels/mysteryisland/revenge1-lac.pingus:8
 msgid ""
@@ -1751,7 +1734,7 @@ msgstr ""
 
 #: data/levels/mysteryisland/theend-lac.pingus:7
 msgid "The Journey Goes On"
-msgstr ""
+msgstr "Matka jatkuu"
 
 #: data/levels/mysteryisland/theend-lac.pingus:8
 msgid ""
@@ -1764,7 +1747,7 @@ msgstr ""
 
 #: data/levels/mysteryisland/use-the-slide-lac.pingus:7
 msgid "Think fast (literally)"
-msgstr ""
+msgstr "Ajattele nopeasti (kirjaimellisesti)"
 
 #: data/levels/mysteryisland/use-the-slide-lac.pingus:8
 msgid ""
@@ -2098,9 +2081,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/xmas2011/xmas08-grumbel.pingus:5
-#, fuzzy
 msgid "Ice Block Blockage"
-msgstr "Stop'n Roll"
+msgstr ""
 
 #: data/levels/xmas2011/xmas08-grumbel.pingus:6
 msgid ""
@@ -2299,7 +2281,7 @@ msgstr ""
 
 #: data/levelsets/desert.levelset:3
 msgid "Desert"
-msgstr ""
+msgstr "Aavikko"
 
 #: data/levelsets/desert.levelset:4
 msgid "Getting hot outside..."
@@ -2491,3 +2473,66 @@ msgstr ""
 
 #~ msgid "Title"
 #~ msgstr "Otsikko"
+
+#~ msgid ""
+#~ "You should name your level files systematically, i.e. by their theme, "
+#~ "their number and your nickname:\n"
+#~ "\n"
+#~ "     <levelname><number>-<creator>.pingus\n"
+#~ "\n"
+#~ "So if you create a your second level with a stone theme, call it: stone2-"
+#~ "yourname.pingus\n"
+#~ "\n"
+#~ "When you have created a level and want to have it included in the game "
+#~ "mail it to:\n"
+#~ "\n"
+#~ "     pingus-devel@nongnu.org\n"
+#~ "\n"
+#~ "Only levels published under the GPL are allowed into the game. The editor "
+#~ "automatically inserts a reference \n"
+#~ "to the GPL, if you want to have your level under a different license, you "
+#~ "have to change that reference.\n"
+#~ msgstr ""
+#~ "Kenttätiedostot tulisi nimetä säännönmukaisesti riippuen kentän kentän "
+#~ "nimestä, numerosta ja nimimerkistäsi seuraavasti:\n"
+#~ "\n"
+#~ "     <kentän nimi><numero>-<tekijä>.pingus\n"
+#~ "\n"
+#~ "Joten jos kenttäsi on kivi-teeman toinen osa, tiedostonimen tulisi olla "
+#~ "kivi2-nimesi.pingus\n"
+#~ "\n"
+#~ "Kun oelt saanut kenttäsi valmiiksi ja haluat sen päätyvän Pingusiin, "
+#~ "lähetä kenttä sähköpostilla osoitteeseen\n"
+#~ "\n"
+#~ "     pingus-devel@nongnu.org\n"
+#~ "\n"
+#~ "Vain GPL-lisenssin alaiset kentät voidaan lisätä peliin. Oletuksena "
+#~ "kenttätyökalu tekee kaikista kentistä GPL-lisensoituja. Jos haluat "
+#~ "käyttää eri lisenssiä, se tulee asettaa erikseen.\n"
+
+#~ msgid "Enables some features, only interesting to programmers"
+#~ msgstr "Ottaa joitakin kehittäjiä kiinnostavia ominaisuuksia käyttöön"
+
+#~ msgid "Sandstorm"
+#~ msgstr "Hiekkamyrsky"
+
+#~ msgid "Save the level given level to FILENAME and quit"
+#~ msgstr "Tallenna kenttä antaen sille TIEDOSTONIMI ja lopeta"
+
+#~ msgid "Status"
+#~ msgstr "Asema"
+
+#~ msgid "unsolved"
+#~ msgstr "ratkaisematon"
+
+#~ msgid "solved"
+#~ msgstr "ratkaistu"
+
+#~ msgid "Shows the credits"
+#~ msgstr "Näyttää lopputekstit"
+
+#~ msgid "PATH"
+#~ msgstr "POLKU"
+
+#~ msgid "Misc Options:"
+#~ msgstr "Muut vaihtoehdot"

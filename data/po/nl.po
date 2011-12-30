@@ -19,8 +19,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-20 15:40+0000\n"
-"X-Generator: Launchpad (build 14165)\n"
+"X-Launchpad-Export-Date: 2011-12-29 20:12+0000\n"
+"X-Generator: Launchpad (build 14560)\n"
 
 #: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
@@ -64,7 +64,6 @@ msgid ""
 msgstr ""
 
 #: src/editor/editor_screen.cpp:282
-#, fuzzy
 msgid ""
 "You should name your level files systematically, i.e. by their theme, their "
 "number and your nickname:\n"
@@ -84,22 +83,6 @@ msgid ""
 "to the GPL, if you want to have your level under a different license, you "
 "have to change that reference.\n"
 msgstr ""
-"Geef je levels systematische namen, bijv. naar hun thema, hun nummer en je "
-"eigen (gebruikers)naam:\n"
-"\n"
-"     <levelnaam><nummerl>-<maker>.pingus\n"
-"\n"
-"Dus als je een tweede level met een stenenthema maakt, noem je het: steen2-"
-"jenaam.pingus\n"
-"\n"
-"Als je je level in het spel wilt laten opnemen, stuur het dan (in het "
-"Engels) naar:\n"
-"\n"
-"pingus-devel@nongnu.org\n"
-"\n"
-"Alleen levels die onder de GPL-licentie zijn uitgegeven worden toegelaten. "
-"De leveleditor voegt automatisch een verwijzing naar de GPL toe. Als je een "
-"andere licentie wilt gebruiken, moet je die verwijzing aanpassen.\n"
 
 #: src/editor/file_dialog.cpp:58
 msgid "Datadir"
@@ -455,9 +438,8 @@ msgid "Start in Fullscreen"
 msgstr "In volledig scherm starten"
 
 #: src/pingus/pingus_main.cpp:193
-#, fuzzy
 msgid "Use the given renderer (default: sdl)"
-msgstr "De opgegeven renderer gebruiken (standaard: delta)"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:195
 msgid "Set the window resolution for pingus (default: 800x600)"
@@ -1549,15 +1531,11 @@ msgid "The window room"
 msgstr "De vensterkamer"
 
 #: data/levels/desert/desert2.pingus:6
-#, fuzzy
 msgid ""
 "After the Pingus have entered the pyramid, they reach a large room with a "
 "large window. The only problem they have is that the entrance to the room is "
 "much too high to survive the landing. Can you help them?"
 msgstr ""
-"Nadat de Pingus de piramide binnen zijn gegaan, bereiken ze een grote kamer "
-"met een groot raam. Het enige probleem dat ze hebben is dat de ingang van de "
-"kamer veel te hoog is om de landing te overleven. Kun jij ze helpen?"
 
 #: data/levels/desert/desert3-jings.pingus:5
 msgid "Grand Hall"
@@ -1629,13 +1607,10 @@ msgid "25 Pingus free and 25 in the box"
 msgstr "25 Pingus vrij en 25 in de doos"
 
 #: data/levels/desert/desert7-grumbel.pingus:6
-#, fuzzy
 msgid ""
 "Okay for the Bridger but what can I do with Digger? You should save at least "
 "one Pingu trapped in the box above the exit."
 msgstr ""
-"De Bruggenbouwer is duidelijk, maar wat moet ik met de Graver? Je moet op "
-"zijn minst één Pingu redden die in de doos boven de uitgang gevangen zit."
 
 #: data/levels/desert/desert8-grumbel.pingus:5
 msgid "Tunnel Time"
@@ -1691,13 +1666,10 @@ msgid "Near can mean far"
 msgstr "Dichtbij kan ver weg zijn"
 
 #: data/levels/mysteryisland/cave1-marcotte.pingus:6
-#, fuzzy
 msgid ""
 "What do you do when you're going in the wrong direction ? Simple: walk into "
 "a wall. But it is easier said than done..."
 msgstr ""
-"Wat doe je als je de verkeerde kant op gaat? Simpel: loop tegen een muur "
-"aan. Maar dat is makkelijker gezegd dan gedaan..."
 
 #: data/levels/mysteryisland/emperiment-lac.pingus:5
 msgid "Experimentation"
@@ -1716,15 +1688,11 @@ msgid "Hall of Illusion"
 msgstr "Hal der Illusies"
 
 #: data/levels/mysteryisland/hall-of-illusion-lac.pingus:6
-#, fuzzy
 msgid ""
 "The penguins stopped and stood in indecision. What was real and what was "
 "not? Flame lanced from above and a guillotine glittered in the distance. "
 "Almost all penguins must survive."
 msgstr ""
-"De Pingus staan stil, besluiteloos. Wat is er echt, en wat niet? Vlammen "
-"snijden van boven en een guillotine glinstert in de verte. Bijna alle Pingus "
-"moeten het overleven."
 
 #: data/levels/mysteryisland/lavapit3.pingus:7
 msgid "The Lava Pit"
@@ -1788,28 +1756,19 @@ msgid "Revenge is sweet"
 msgstr "Wraak is zoet"
 
 #: data/levels/mysteryisland/revenge1-lac.pingus:8
-#, fuzzy
 msgid ""
 "The penguins had escaped the mad scientist but now they wanted revenge. They "
 "intended to destroy the support structures, sending the evil laboratory "
 "crashing down."
 msgstr ""
-"De Pingus zijn ontsnapt aan de gestoorde wetenschapper, maar nu willen ze "
-"wraak. Ze zijn van plan de fundamenten te slopen, en zo het kwaadaardige "
-"laboratorium in te laten storten."
 
 #: data/levels/mysteryisland/revenge2-lac.pingus:8
-#, fuzzy
 msgid ""
 "The penguins had escaped the mad scientist but now they wanted revenge. They "
 "intended to destroy the support structures, sending the evil laboratory "
 "crashing down. They had to move fast though, because the mad scientist would "
 "detect and recapture them if they weren't fast enough."
 msgstr ""
-"De Pingus zijn ontsnapt aan de gestoorde wetenschapper, maar nu willen ze "
-"wraak. Ze zijn van plan de fundamenten te slopen, en zo het kwaadaardige "
-"laboratorium in te laten storten. Ze moeten wel snel zijn, want anders komt "
-"de gestoorde wetenschapper erachter en neemt hij ze weer gevangen."
 
 #: data/levels/mysteryisland/snow2-lac.pingus:7
 msgid "Winter Wonderland"
@@ -1860,17 +1819,12 @@ msgid "Shipwrecked"
 msgstr "Gestrand"
 
 #: data/levels/mysteryisland/volcano1-grumbel.pingus:6
-#, fuzzy
 msgid ""
 "The penguins were sailing along happily on their makeshift boat until "
 "suddenly an island appeared. The penguins were drawn towards it and crashed, "
 "destroying their boat. Now they must find their way across this strange "
 "island."
 msgstr ""
-"De Pingus waren lekker aan het zeilen op hun provisorische boot toen er "
-"opeens een eiland opdoemde. De Pingus dreven ernaartoe en strandden, waarbij "
-"hun boot vernietigd werd. Nu moeten ze zich een weg banen door dit vreemde "
-"eiland."
 
 #: data/levels/alien/aliens1-grumbel.pingus:5
 #: data/levels/alien/aliens1-phil.pingus:7
@@ -1887,14 +1841,10 @@ msgstr ""
 "paniek."
 
 #: data/levels/alien/aliens1-phil.pingus:8
-#, fuzzy
 msgid ""
 "Aliens invade our starship blocking entrance to the teleporter. Your crew is "
 "well trained, like you they don't panic."
 msgstr ""
-"Ruimtewezens dringen ons ruimteschip binnen en versperren de weg naar de "
-"teleporter. Jouw bemanning is goed getraind, en raakt net als jij niet in "
-"paniek."
 
 #: data/levels/alien/aliens2-phil.pingus:7
 msgid "Escape from Aliens 2"
@@ -1911,11 +1861,8 @@ msgid "Alien's nest"
 msgstr "Nest van de ruimtewezens"
 
 #: data/levels/alien/aliens4-phil.pingus:6
-#, fuzzy
 msgid "Pingus invade the nest. Take care of jaws. What's the matrix above?"
 msgstr ""
-"De Pingus dringen het nest binnen. Pas op voor de kaken. Wat is die matrix "
-"daarboven?"
 
 #: data/levels/alien/aliens5-phil.pingus:5
 msgid "Matrix of the death"
@@ -1947,13 +1894,10 @@ msgid "Fourth dimension"
 msgstr "Vierde dimensie"
 
 #: data/levels/alien/aliens7-phil.pingus:8
-#, fuzzy
 msgid ""
 "The defenses of the aliens get stronger. Now you have to jump in the fourth "
 "dimension to win!"
 msgstr ""
-"De verdediging van de ruimtewezens wordt sterker. Nu moet je de vierde "
-"dimensie inspringen om te winnen!"
 
 #: data/levels/alien/space-11-rz+eriksoe.pingus:5
 msgid "Set your watches"
@@ -1977,13 +1921,10 @@ msgid "Endless Loop"
 msgstr "Oneindige lus"
 
 #: data/levels/alien/space-loop-timpany.pingus:6
-#, fuzzy
 msgid ""
 "To the right and to the left the Pingus will face certain death and you have "
 "to save 50. Can you help them get out of this mess?"
 msgstr ""
-"Rechts en links van de Pingus een zekere dood en 50 te redden! Kun jij ze "
-"uit de penarie helpen?"
 
 #: data/levels/alien/space-tom1.pingus:7
 msgid "Up up in the space"
@@ -2066,9 +2007,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign3.pingus:5
-#, fuzzy
 msgid "The Cave"
-msgstr "De Lavaput"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign3.pingus:6
 msgid ""
@@ -2213,9 +2153,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/xmas2011/xmas08-grumbel.pingus:5
-#, fuzzy
 msgid "Ice Block Blockage"
-msgstr "Blokkeer een keer"
+msgstr ""
 
 #: data/levels/xmas2011/xmas08-grumbel.pingus:6
 msgid ""
@@ -2755,3 +2694,126 @@ msgstr ""
 #~ "Dus de Pingus zitten op hun vlot, en maken zich zorgen over wat er gaat "
 #~ "komen en waar ze naartoe moeten gaan, terwijl ze afdrijven richting de "
 #~ "ondergaande zon. Wordt vervolgd..."
+
+#~ msgid "Use the given renderer (default: delta)"
+#~ msgstr "De opgegeven renderer gebruiken (standaard: delta)"
+
+#~ msgid ""
+#~ "After the Pingus have entered the pyramid, they reach a large room with a "
+#~ "large window. The only problem they have is that the entrance to the room "
+#~ "is much to high to survive the landing. Can you help them?"
+#~ msgstr ""
+#~ "Nadat de Pingus de piramide binnen zijn gegaan, bereiken ze een grote "
+#~ "kamer met een groot raam. Het enige probleem dat ze hebben is dat de "
+#~ "ingang van de kamer veel te hoog is om de landing te overleven. Kun jij "
+#~ "ze helpen?"
+
+#~ msgid ""
+#~ "Okay for the Bridger but what can I do with Digger? You should be save at "
+#~ "least one Pingus trapped in the box above the exit."
+#~ msgstr ""
+#~ "De Bruggenbouwer is duidelijk, maar wat moet ik met de Graver? Je moet op "
+#~ "zijn minst één Pingu redden die in de doos boven de uitgang gevangen zit."
+
+#~ msgid ""
+#~ "What do you do when you're going in the wrong direction ? Simple : walk "
+#~ "into a wall. But it is easier said than done..."
+#~ msgstr ""
+#~ "Wat doe je als je de verkeerde kant op gaat? Simpel: loop tegen een muur "
+#~ "aan. Maar dat is makkelijker gezegd dan gedaan..."
+
+#~ msgid ""
+#~ "The penguins had escaped the mad scientist but now they wanted revenge. "
+#~ "They intended to destroy the support structures , sending the evil "
+#~ "laboratory crashing down."
+#~ msgstr ""
+#~ "De Pingus zijn ontsnapt aan de gestoorde wetenschapper, maar nu willen ze "
+#~ "wraak. Ze zijn van plan de fundamenten te slopen, en zo het kwaadaardige "
+#~ "laboratorium in te laten storten."
+
+#~ msgid ""
+#~ "The penguins had escaped the mad scientist but now they wanted revenge. "
+#~ "They intended to destroy the support structures , sending the evil "
+#~ "laboratory crashing down. They had to move fast though, because the mad "
+#~ "scientist would detect and recapture them if they weren't fast enough."
+#~ msgstr ""
+#~ "De Pingus zijn ontsnapt aan de gestoorde wetenschapper, maar nu willen ze "
+#~ "wraak. Ze zijn van plan de fundamenten te slopen, en zo het kwaadaardige "
+#~ "laboratorium in te laten storten. Ze moeten wel snel zijn, want anders "
+#~ "komt de gestoorde wetenschapper erachter en neemt hij ze weer gevangen."
+
+#~ msgid ""
+#~ "The penguins were sailing along happily on their makeshift boat until "
+#~ "suddenly, an island appeared. The penguins were drawn towards it and "
+#~ "crashed, destroying their boat. Now they must find their way acoss this "
+#~ "strange island."
+#~ msgstr ""
+#~ "De Pingus waren lekker aan het zeilen op hun provisorische boot toen er "
+#~ "opeens een eiland opdoemde. De Pingus dreven ernaartoe en strandden, "
+#~ "waarbij hun boot vernietigd werd. Nu moeten ze zich een weg banen door "
+#~ "dit vreemde eiland."
+
+#~ msgid ""
+#~ "You should name your level files systematically, i.e. by their theme, "
+#~ "their number and your nickname:\n"
+#~ "\n"
+#~ "     <levelname><number>-<creator>.pingus\n"
+#~ "\n"
+#~ "So if you create a your second level with a stone theme, call it: stone2-"
+#~ "yourname.pingus\n"
+#~ "\n"
+#~ "When you have created a level and want to have it included in the game "
+#~ "mail it to:\n"
+#~ "\n"
+#~ "     pingus-devel@nongnu.org\n"
+#~ "\n"
+#~ "Only levels published under the GPL are allowed into the game. The editor "
+#~ "automatically inserts a reference \n"
+#~ "to the GPL, if you want to have your level under a different license, you "
+#~ "have to change that reference.\n"
+#~ msgstr ""
+#~ "Geef je levels systematische namen, bijv. naar hun thema, hun nummer en "
+#~ "je eigen (gebruikers)naam:\n"
+#~ "\n"
+#~ "     <levelnaam><nummerl>-<maker>.pingus\n"
+#~ "\n"
+#~ "Dus als je een tweede level met een stenenthema maakt, noem je het: "
+#~ "steen2-jenaam.pingus\n"
+#~ "\n"
+#~ "Als je je level in het spel wilt laten opnemen, stuur het dan (in het "
+#~ "Engels) naar:\n"
+#~ "\n"
+#~ "pingus-devel@nongnu.org\n"
+#~ "\n"
+#~ "Alleen levels die onder de GPL-licentie zijn uitgegeven worden "
+#~ "toegelaten. De leveleditor voegt automatisch een verwijzing naar de GPL "
+#~ "toe. Als je een andere licentie wilt gebruiken, moet je die verwijzing "
+#~ "aanpassen.\n"
+
+#~ msgid ""
+#~ "To the right and left Pingus certain death and 50 to save! You can help "
+#~ "them get out of this mess?"
+#~ msgstr ""
+#~ "Rechts en links van de Pingus een zekere dood en 50 te redden! Kun jij ze "
+#~ "uit de penarie helpen?"
+
+#~ msgid ""
+#~ "The defenses of the aliens get stronger. Now you have to jump in the "
+#~ "fourth dimension to win !"
+#~ msgstr ""
+#~ "De verdediging van de ruimtewezens wordt sterker. Nu moet je de vierde "
+#~ "dimensie inspringen om te winnen!"
+
+#~ msgid ""
+#~ "The penguins stopped and stood in indecision. What was real and what was "
+#~ "not? Flame lanced from above and a guillotine glittered in the distance. "
+#~ "almost all penguins must survive."
+#~ msgstr ""
+#~ "De Pingus staan stil, besluiteloos. Wat is er echt, en wat niet? Vlammen "
+#~ "snijden van boven en een guillotine glinstert in de verte. Bijna alle "
+#~ "Pingus moeten het overleven."
+
+#~ msgid "Pingus invade the nest. Take care of jaws What's the matrix above ?"
+#~ msgstr ""
+#~ "De Pingus dringen het nest binnen. Pas op voor de kaken. Wat is die "
+#~ "matrix daarboven?"

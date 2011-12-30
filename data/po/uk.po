@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pingus\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-12-24 22:39+0100\n"
-"PO-Revision-Date: 2011-10-17 16:58+0000\n"
+"PO-Revision-Date: 2011-10-23 13:34+0000\n"
 "Last-Translator: Сергій Дубик <dubyk@library.lviv.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-20 15:40+0000\n"
-"X-Generator: Launchpad (build 14165)\n"
+"X-Launchpad-Export-Date: 2011-12-29 20:12+0000\n"
+"X-Generator: Launchpad (build 14560)\n"
 
 #: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
@@ -527,7 +527,7 @@ msgstr ""
 
 #: src/pingus/pingus_main.cpp:231
 msgid "Don't read ~/.pingus/config"
-msgstr ""
+msgstr "Не читати ~/.pingus/config"
 
 #: src/pingus/pingus_main.cpp:232
 msgid "FILE"
@@ -543,7 +543,7 @@ msgstr ""
 
 #: src/pingus/pingus_main.cpp:237
 msgid "Debug Options:"
-msgstr ""
+msgstr "Параметри відлагодження:"
 
 #: src/pingus/pingus_main.cpp:239
 msgid "Enables some special features for developers"
@@ -593,7 +593,7 @@ msgstr ""
 
 #: src/pingus/screens/start_screen.cpp:166
 msgid "Number of Pingus: "
-msgstr ""
+msgstr "Кількість Пінґусів: "
 
 #: src/pingus/screens/start_screen.cpp:169
 msgid "Number to Save: "
@@ -601,23 +601,23 @@ msgstr ""
 
 #: src/pingus/screens/start_screen.cpp:172
 msgid "Time: "
-msgstr ""
+msgstr "Час: "
 
 #: src/pingus/screens/start_screen.cpp:178
 msgid "Author: "
-msgstr ""
+msgstr "Автор: "
 
 #: src/pingus/screens/addon_menu.cpp:53 src/pingus/screens/option_menu.cpp:336
 msgid "Close"
-msgstr ""
+msgstr "Зачинити"
 
 #: src/pingus/screens/pingus_menu.cpp:54
 msgid "Story"
-msgstr ""
+msgstr "Історія"
 
 #: src/pingus/screens/pingus_menu.cpp:55
 msgid "..:: Start the game ::.."
-msgstr ""
+msgstr "..:: Почати гру ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:59
 msgid "Editor"
@@ -625,15 +625,15 @@ msgstr "Редактор"
 
 #: src/pingus/screens/pingus_menu.cpp:60
 msgid "..:: Create your own levels ::.."
-msgstr ""
+msgstr "..:: Створити Ваші власні рівні ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:64
 msgid "Options"
-msgstr ""
+msgstr "Параметри"
 
 #: src/pingus/screens/pingus_menu.cpp:65
 msgid "..:: Configure the game ::.."
-msgstr ""
+msgstr "..:: Налаштувати гру ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:177
 msgid "Levelsets"
@@ -652,14 +652,16 @@ msgid ""
 "..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
 "fullscreen   ::   F12: screenshot ::.."
 msgstr ""
+"..:: Ctrl-g: захват миші   ::   F10: лічильник кадрів на секунду   ::   F11: "
+"повноекранний режим   ::   F12: знимок екрану ::.."
 
 #: src/pingus/screens/level_menu.cpp:155
 msgid "Under Construction"
-msgstr ""
+msgstr "Ще у розробці"
 
 #: src/pingus/screens/level_menu.cpp:156
 msgid "Untested, unpolished and broken levels"
-msgstr ""
+msgstr "Неперевірені, неналагоджені та зламані рівні"
 
 #: src/pingus/screens/level_menu.cpp:192
 msgid "Solved:"
@@ -667,12 +669,12 @@ msgstr ""
 
 #: src/pingus/screens/level_menu.cpp:193
 msgid "levels"
-msgstr ""
+msgstr "рівні"
 
 #: src/pingus/screens/story_screen.cpp:108
 #: src/pingus/screens/story_screen.cpp:114
 msgid "skip"
-msgstr ""
+msgstr "пропустити"
 
 #: src/pingus/screens/option_menu.cpp:208
 msgid "Fullscreen"
@@ -720,31 +722,31 @@ msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:226
 msgid "Music Volume:"
-msgstr ""
+msgstr "Гучність музики:"
 
 #: src/pingus/screens/option_menu.cpp:334
 msgid "Option Menu"
-msgstr ""
+msgstr "Меню параметрів"
 
 #: src/pingus/screens/option_menu.cpp:340
 msgid "Some options require a restart of the game to take effect."
-msgstr ""
+msgstr "Деякі параметри потребують перезапуску гри для набуття чинності."
 
 #: src/pingus/screens/result_screen.cpp:91
 msgid "Give up"
-msgstr ""
+msgstr "Здатися"
 
 #: src/pingus/screens/result_screen.cpp:126
 msgid "Retry"
-msgstr ""
+msgstr "Спробувати знову"
 
 #: src/pingus/screens/result_screen.cpp:183
 msgid "Success!"
-msgstr ""
+msgstr "Успішно!"
 
 #: src/pingus/screens/result_screen.cpp:191
 msgid "Failure!"
-msgstr ""
+msgstr "Невдача!"
 
 #: src/pingus/screens/result_screen.cpp:200
 msgid "Perfect! You saved everyone possible - great!"
@@ -752,7 +754,7 @@ msgstr ""
 
 #: src/pingus/screens/result_screen.cpp:202
 msgid "No-one got killed, pretty good work."
-msgstr ""
+msgstr "Ніхто не загинув, дуже хороша робота."
 
 #: src/pingus/screens/result_screen.cpp:204
 msgid ""
@@ -766,15 +768,15 @@ msgstr ""
 
 #: src/pingus/screens/result_screen.cpp:209
 msgid "What can I say, you made it - congratulations!"
-msgstr ""
+msgstr "Що я можу сказати: Ви зробили це — вітаю!"
 
 #: src/pingus/screens/result_screen.cpp:214
 msgid "You killed everybody, not good."
-msgstr ""
+msgstr "Ви вбили усіх, це недобре."
 
 #: src/pingus/screens/result_screen.cpp:216
 msgid "No-one got saved - I know you can do better."
-msgstr ""
+msgstr "Ніхто не врятувався — я знаю, що Ви можете краще."
 
 #: src/pingus/screens/result_screen.cpp:218
 msgid ""
@@ -792,67 +794,67 @@ msgstr ""
 
 #: src/pingus/screens/result_screen.cpp:225
 msgid "Better luck next time!"
-msgstr ""
+msgstr "Вдачі наступного разу!"
 
 #: src/pingus/screens/result_screen.cpp:233
 msgid "Saved: "
-msgstr ""
+msgstr "Спаслися: "
 
 #: src/pingus/screens/result_screen.cpp:237
 msgid "Died: "
-msgstr ""
+msgstr "Загинули: "
 
 #: src/pingus/screens/result_screen.cpp:240
 msgid "Time left: "
-msgstr ""
+msgstr "Залишилось часу: "
 
 #: src/pingus/action_name.cpp:27
 msgid "Angel"
-msgstr ""
+msgstr "Енжел"
 
 #: src/pingus/action_name.cpp:28
 msgid "Basher"
-msgstr ""
+msgstr "Вбивця"
 
 #: src/pingus/action_name.cpp:29
 msgid "Blocker"
-msgstr ""
+msgstr "Блокатор"
 
 #: src/pingus/action_name.cpp:30
 msgid "Boarder"
-msgstr ""
+msgstr "Пансіонер"
 
 #: src/pingus/action_name.cpp:31
 msgid "Bomber"
-msgstr ""
+msgstr "Бомбардувальник"
 
 #: src/pingus/action_name.cpp:33
 msgid "Climber"
-msgstr ""
+msgstr "Альпініст"
 
 #: src/pingus/action_name.cpp:34
 msgid "Digger"
-msgstr ""
+msgstr "Копач"
 
 #: src/pingus/action_name.cpp:35
 msgid "Drown"
-msgstr ""
+msgstr "Занурювач"
 
 #: src/pingus/action_name.cpp:36
 msgid "Exiter"
-msgstr ""
+msgstr "Збудник"
 
 #: src/pingus/action_name.cpp:37
 msgid "Faller"
-msgstr ""
+msgstr "Лунь"
 
 #: src/pingus/action_name.cpp:38
 msgid "Floater"
-msgstr ""
+msgstr "Плотар"
 
 #: src/pingus/action_name.cpp:39
 msgid "Jumper"
-msgstr ""
+msgstr "Стрибун"
 
 #: src/pingus/action_name.cpp:40
 msgid "Laserkill"
@@ -860,35 +862,35 @@ msgstr ""
 
 #: src/pingus/action_name.cpp:41
 msgid "Miner"
-msgstr ""
+msgstr "Гірник"
 
 #: src/pingus/action_name.cpp:42
 msgid "Slider"
-msgstr ""
+msgstr "Повзунок"
 
 #: src/pingus/action_name.cpp:43
 msgid "Smashed"
-msgstr ""
+msgstr "Ламач"
 
 #: src/pingus/action_name.cpp:44
 msgid "Splashed"
-msgstr ""
+msgstr "Хлюпун"
 
 #: src/pingus/action_name.cpp:45
 msgid "Superman"
-msgstr ""
+msgstr "Супермен"
 
 #: src/pingus/action_name.cpp:46
 msgid "Teleported"
-msgstr ""
+msgstr "Телепортер"
 
 #: src/pingus/action_name.cpp:47
 msgid "Waiter"
-msgstr ""
+msgstr "Офіціант"
 
 #: src/pingus/action_name.cpp:48
 msgid "Walker"
-msgstr ""
+msgstr "Ходун"
 
 #: src/pingus/components/pingus_counter.cpp:43
 #, c-format, boost-format
@@ -897,7 +899,7 @@ msgstr ""
 
 #: src/pingus/worldmap/level_dot.cpp:134
 msgid "???"
-msgstr ""
+msgstr "???"
 
 #: src/pingus/worldmap/worldmap_screen.cpp:84
 msgid "Show Ending?"
@@ -905,11 +907,11 @@ msgstr ""
 
 #: src/pingus/worldmap/worldmap_screen.cpp:113
 msgid "Leave?"
-msgstr ""
+msgstr "Залишити?"
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
 msgid "If the way is blocked, bash away"
-msgstr ""
+msgstr "Якщо шлях заблокований, рвати геть"
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:6
 msgid ""
@@ -944,7 +946,7 @@ msgstr ""
 
 #: data/levels/tutorial/floater-tutorial-grumbel.pingus:5
 msgid "Float or Die"
-msgstr ""
+msgstr "Плисти чи померти"
 
 #: data/levels/tutorial/floater-tutorial-grumbel.pingus:6
 msgid ""
@@ -956,7 +958,7 @@ msgstr ""
 
 #: data/levels/tutorial/jumper-tutorial-grumbel.pingus:5
 msgid "Jump for joy"
-msgstr ""
+msgstr "Стрибати від радості"
 
 #: data/levels/tutorial/jumper-tutorial-grumbel.pingus:6
 msgid ""
@@ -967,7 +969,7 @@ msgstr ""
 
 #: data/levels/tutorial/miner-tutorial2-grumbel.pingus:5
 msgid "Miner's heaven"
-msgstr ""
+msgstr "Небеса шахтаря"
 
 #: data/levels/tutorial/miner-tutorial2-grumbel.pingus:6
 msgid ""
@@ -1046,7 +1048,7 @@ msgstr ""
 
 #: data/levels/tutorial/snow17-grumbel.pingus:5
 msgid "If too high, your Pingu will die..."
-msgstr ""
+msgstr "Якщо занадто високо, твій Пінґа помре…"
 
 #: data/levels/tutorial/snow17-grumbel.pingus:6
 msgid ""
@@ -1057,7 +1059,7 @@ msgstr ""
 
 #: data/levels/tutorial/snow19-grumbel.pingus:5
 msgid "Learn to use the bridge"
-msgstr ""
+msgstr "Навчитеся використовувати міст"
 
 #: data/levels/tutorial/snow19-grumbel.pingus:6
 msgid ""
@@ -1068,7 +1070,7 @@ msgstr ""
 
 #: data/levels/tutorial/snow20-grumbel.pingus:5
 msgid "Three solutions, it's up to you"
-msgstr ""
+msgstr "Три рішення, це залежить від вас"
 
 #: data/levels/tutorial/snow20-grumbel.pingus:6
 msgid ""
@@ -1090,7 +1092,7 @@ msgstr ""
 
 #: data/levels/tutorial/snow22-grumbel.pingus:5
 msgid "Entrance high, Exit low"
-msgstr ""
+msgstr "Вхід високий, низький вихід"
 
 #: data/levels/tutorial/snow22-grumbel.pingus:6
 msgid ""
@@ -1150,7 +1152,7 @@ msgstr ""
 
 #: data/levels/halloween/halloween1-grumbel.pingus:5
 msgid "One jump to catch them all"
-msgstr ""
+msgstr "Один стрибок, щоб зловити їх усіх"
 
 #: data/levels/halloween/halloween1-grumbel.pingus:6
 msgid ""
@@ -1188,7 +1190,7 @@ msgstr ""
 
 #: data/levels/halloween/halloween4-grumbel.pingus:5
 msgid "Full Circle"
-msgstr ""
+msgstr "Повне коло"
 
 #: data/levels/halloween/halloween4-grumbel.pingus:6
 msgid ""
@@ -1217,7 +1219,7 @@ msgstr ""
 
 #: data/levels/halloween/halloween6-grumbel.pingus:5
 msgid "Locked up by the witch"
-msgstr ""
+msgstr "Замкнено відьмою"
 
 #: data/levels/halloween/halloween6-grumbel.pingus:6
 msgid ""
@@ -1263,7 +1265,7 @@ msgstr ""
 
 #: data/levels/halloween2011/halloween10-grumbel.pingus:5
 msgid "Down Into The Cave"
-msgstr ""
+msgstr "Спускаємося в печеру"
 
 #: data/levels/halloween2011/halloween10-grumbel.pingus:6
 msgid ""
@@ -1311,7 +1313,7 @@ msgstr ""
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:5
 msgid "Traps, Dangers and other Problems"
-msgstr ""
+msgstr "Пастки, небезпеки та інші проблеми"
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:6
 msgid ""
@@ -1346,7 +1348,7 @@ msgstr ""
 
 #: data/levels/halloween2011/halloween17-grumbel.pingus:5
 msgid "Island of Doom"
-msgstr ""
+msgstr "Острів Долі"
 
 #: data/levels/halloween2011/halloween17-grumbel.pingus:6
 msgid ""
@@ -1358,7 +1360,7 @@ msgstr ""
 
 #: data/levels/halloween2011/halloween18-grumbel.pingus:5
 msgid "Tower of Death"
-msgstr ""
+msgstr "Вежа смерті"
 
 #: data/levels/halloween2011/halloween18-grumbel.pingus:6
 msgid ""
@@ -1395,7 +1397,7 @@ msgstr ""
 
 #: data/levels/desert/desert1-janne.pingus:5
 msgid "Down the valley and up again"
-msgstr ""
+msgstr "Вниз в долину і знову догори"
 
 #: data/levels/desert/desert1-janne.pingus:6
 msgid ""
@@ -1406,7 +1408,7 @@ msgstr ""
 
 #: data/levels/desert/desert1.pingus:5
 msgid "Entering the pyramid"
-msgstr ""
+msgstr "Вхід у піраміду"
 
 #: data/levels/desert/desert1.pingus:6
 msgid ""
@@ -1416,7 +1418,7 @@ msgstr ""
 
 #: data/levels/desert/desert2.pingus:5
 msgid "The window room"
-msgstr ""
+msgstr "Кімната з вікнами"
 
 #: data/levels/desert/desert2.pingus:6
 msgid ""
@@ -1427,7 +1429,7 @@ msgstr ""
 
 #: data/levels/desert/desert3-jings.pingus:5
 msgid "Grand Hall"
-msgstr ""
+msgstr "Великий зал"
 
 #: data/levels/desert/desert3-jings.pingus:6
 msgid ""
@@ -1449,7 +1451,7 @@ msgstr ""
 
 #: data/levels/desert/desert4.pingus:5
 msgid "The excavation of the pyramid"
-msgstr ""
+msgstr "Розкопки піраміди"
 
 #: data/levels/desert/desert4.pingus:6
 msgid ""
@@ -1460,7 +1462,7 @@ msgstr ""
 
 #: data/levels/desert/desert5-tflavel.pingus:5
 msgid "Claustrophobia"
-msgstr ""
+msgstr "Клаустрофобія"
 
 #: data/levels/desert/desert5-tflavel.pingus:6
 msgid ""
@@ -1470,7 +1472,7 @@ msgstr ""
 
 #: data/levels/desert/desert5.pingus:5
 msgid "Catch them at the half way point"
-msgstr ""
+msgstr "Спіймати їх в точці на півдорозі"
 
 #: data/levels/desert/desert5.pingus:6
 msgid ""
@@ -1481,11 +1483,11 @@ msgstr ""
 
 #: data/levels/desert/desert6-grumbel.pingus:5
 msgid "A bit to the right a bit to left"
-msgstr ""
+msgstr "Трохи вправо і трохи наліво"
 
 #: data/levels/desert/desert6-grumbel.pingus:6
 msgid "Only the most audacious Pingus will be allowed to continue."
-msgstr ""
+msgstr "Лише найсміливішим Пінґусам буде дозволено продовжити."
 
 #: data/levels/desert/desert7-grumbel.pingus:5
 msgid "25 Pingus free and 25 in the box"
@@ -1499,7 +1501,7 @@ msgstr ""
 
 #: data/levels/desert/desert8-grumbel.pingus:5
 msgid "Tunnel Time"
-msgstr ""
+msgstr "Тунель часу"
 
 #: data/levels/desert/desert8-grumbel.pingus:6
 msgid ""
@@ -1509,7 +1511,7 @@ msgstr ""
 
 #: data/levels/desert/desertwaste1-grumbel.pingus:5
 msgid "The Roof"
-msgstr ""
+msgstr "Дахи"
 
 #: data/levels/desert/desertwaste1-grumbel.pingus:6
 msgid ""
@@ -1543,7 +1545,7 @@ msgstr ""
 
 #: data/levels/mysteryisland/cave1-marcotte.pingus:5
 msgid "Near can mean far"
-msgstr ""
+msgstr "Близько може означати далеко"
 
 #: data/levels/mysteryisland/cave1-marcotte.pingus:6
 msgid ""
@@ -1553,17 +1555,19 @@ msgstr ""
 
 #: data/levels/mysteryisland/emperiment-lac.pingus:5
 msgid "Experimentation"
-msgstr ""
+msgstr "Експериментування"
 
 #: data/levels/mysteryisland/emperiment-lac.pingus:6
 msgid ""
 "A mad scientist has captured the penguins and is experimenting on them. How "
 "can the penguins escape the guillotine?"
 msgstr ""
+"Божевільний вчений захопив пінгвінів і проводить над ними експерименти. Як "
+"пінгвінам уникнути гільйотини?"
 
 #: data/levels/mysteryisland/hall-of-illusion-lac.pingus:5
 msgid "Hall of Illusion"
-msgstr ""
+msgstr "Зала ілюзій"
 
 #: data/levels/mysteryisland/hall-of-illusion-lac.pingus:6
 msgid ""
@@ -1619,7 +1623,7 @@ msgstr ""
 #: data/levels/mysteryisland/revenge1-lac.pingus:7
 #: data/levels/mysteryisland/revenge2-lac.pingus:7
 msgid "Revenge is sweet"
-msgstr ""
+msgstr "Помста солодка"
 
 #: data/levels/mysteryisland/revenge1-lac.pingus:8
 msgid ""
@@ -2233,3 +2237,26 @@ msgstr ""
 #: data/levelsets/xmas2011.levelset:4
 msgid "Merry Christmas and a Happy New Year"
 msgstr ""
+
+#~ msgid "Use the given renderer (default: delta)"
+#~ msgstr "Використання даного засобу візуалізації (типово: delta)"
+
+#~ msgid ""
+#~ "The penguins had escaped the mad scientist but now they wanted revenge. "
+#~ "They intended to destroy the support structures , sending the evil "
+#~ "laboratory crashing down."
+#~ msgstr ""
+#~ "Пінгвіни втекли від божевільного вченого, але тепер вони жадають помсти. "
+#~ "Вони мають намір зруйнувати підтримуючі конструкції, щоб диявольська "
+#~ "лабораторія завалилася."
+
+#~ msgid ""
+#~ "The penguins had escaped the mad scientist but now they wanted revenge. "
+#~ "They intended to destroy the support structures , sending the evil "
+#~ "laboratory crashing down. They had to move fast though, because the mad "
+#~ "scientist would detect and recapture them if they weren't fast enough."
+#~ msgstr ""
+#~ "Пінгвіни втекли від божевільного вченого, але тепер вони жадають помсти. "
+#~ "Вони мають намір зруйнувати підтримуючі конструкції, щоб диявольська "
+#~ "лабораторія завалилася. Їм потрібно рухатися досить швидко, інакше "
+#~ "божевільний учений виявить їх і знову спіймає."

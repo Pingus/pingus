@@ -3,27 +3,27 @@
 # translation of pingus.po to czech
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR Ingo Ruhnke
-# Tomáš Bláha, 2003, 2004, 2007, 2011
-# 
+# Tomáš Bláha, 2003, 2004, 2007
+#
 # #-#-#-#-#  cs.po (PACKAGE VERSION)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-12-24 22:39+0100\n"
-"PO-Revision-Date: 2011-01-17 16:50+0000\n"
-"Last-Translator: Tomáš Bláha\n"
+"PO-Revision-Date: 2011-12-28 12:03+0000\n"
+"Last-Translator: Gabriel Rota <gabriel.rota@gmail.com>\n"
 "Language-Team: czech\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-05-05 14:08+0000\n"
-"X-Generator: Launchpad (build 12959)\n"
+"X-Launchpad-Export-Date: 2011-12-29 20:12+0000\n"
+"X-Generator: Launchpad (build 14560)\n"
 
 #: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
@@ -84,7 +84,6 @@ msgstr ""
 "Zvýšit/snížit opakování\n"
 
 #: src/editor/editor_screen.cpp:282
-#, fuzzy
 msgid ""
 "You should name your level files systematically, i.e. by their theme, their "
 "number and your nickname:\n"
@@ -104,23 +103,6 @@ msgid ""
 "to the GPL, if you want to have your level under a different license, you "
 "have to change that reference.\n"
 msgstr ""
-"Měl byste pojmenovávat soubory úrovní systematicky, tedy podle jejich "
-"tématu, čísla a své přezdívky:\n"
-"\n"
-"     <název úrovně><číslo>-<tvůrce>.pingus\n"
-"\n"
-"Takže až vytvoříte druhou úroveň s kamenným tématem, nazvěte ji: stone2-"
-"jméno.pingus\n"
-"\n"
-"Pokud vytvoříte úroveň a chtěl byste ji mít zařazenou do hry, pošlete ji "
-"mailem na:\n"
-"\n"
-"     pingus-devel@nongnu.org\n"
-"\n"
-"Pouze úrovně publikované pod GPL jsou přijímány k zařazení. Editor "
-"automaticky vkládá odkaz na GPL, \n"
-"takže pokud chcete mít úroveň pod jinou licencí, měl byste tento odkaz "
-"změnit.\n"
 
 #: src/editor/file_dialog.cpp:58
 msgid "Datadir"
@@ -476,9 +458,8 @@ msgid "Start in Fullscreen"
 msgstr "Spustí přes celou obrazovku."
 
 #: src/pingus/pingus_main.cpp:193
-#, fuzzy
 msgid "Use the given renderer (default: sdl)"
-msgstr "Použít zadaný vykreslovač (výchozí: delta)"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:195
 msgid "Set the window resolution for pingus (default: 800x600)"
@@ -1409,33 +1390,24 @@ msgid "Down Into The Cave"
 msgstr "Hluboko do jeskyně"
 
 #: data/levels/halloween2011/halloween10-grumbel.pingus:6
-#, fuzzy
 msgid ""
 "The exit is far below and the pingus are separated from it by quite a "
 "distance. The path down is riddled with gulfs, so jumping and bridging will "
 "be the primary tool to get down there. But be careful, the last few steps "
 "require some extra cleverness."
 msgstr ""
-"Východ je hluboko a pingy od něj dělí několik metrů. Cesta dolů je lemovaná "
-"propastmi, takže skoky tu budou primárním způsobem, jak se dolů dostat. Ale "
-"buď opatrný, několik posledních kroků si vyžádá ještě trochu chytrosti navíc."
 
 #: data/levels/halloween2011/halloween11-grumbel.pingus:5
 msgid "Round and Round"
 msgstr "Dokolečka dokola"
 
 #: data/levels/halloween2011/halloween11-grumbel.pingus:6
-#, fuzzy
 msgid ""
 "Trapped in an eternal loop one brave pingu has to break out and go on a "
 "journey in search for the exit, but he mustn't be too happy once he found "
 "it, as there is still one last challenge he must solve before being allowed "
 "to enter it, otherwise all his friends might perish."
 msgstr ""
-"Zatímco jsou chyceni v nekonečné smyčce, musí se jeden odvážný pingu "
-"osvobodit a vydat se na cestu k nalezení východu. Ale jakmile ho najde, "
-"nesmí do něj radostně zamířit, protože ještě má před sebou jednu výzvu k "
-"vyřešní, jinak by všichni jeho kamarádi vzali za své a umřeli."
 
 #: data/levels/halloween2011/halloween12-grumbel.pingus:5
 msgid "Red Herring Cave"
@@ -1466,49 +1438,35 @@ msgid "Traps, Dangers and other Problems"
 msgstr "Pasti, nebezpečí a další problémy"
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:6
-#, fuzzy
 msgid ""
 "The path to the exit lays below, shimmering through the planks. But the fall "
 "is too high, deadly for sure. Can one pingu alone make it's way through the "
 "dangerous traps and secure the path to the exit?"
 msgstr ""
-"Cesta k východu leží dole, proplétá se mezi plaňkami. Ale pád by to byl "
-"dlouhý a jistě smrtelný. Mohl by jeden pingu sám překonat nebezpečné pasti a "
-"zabezpečit cestu k východu?"
 
 #: data/levels/halloween2011/halloween15-grumbel.pingus:5
 msgid "Reach that Switch"
 msgstr "Dosáhnout tak na spínač"
 
 #: data/levels/halloween2011/halloween15-grumbel.pingus:6
-#, fuzzy
 msgid ""
 "The path to the exit is straight, flat and simple, but wait a solid door "
 "blocking the way? How can the pingus open it? Is that a switch there on the "
 "hill to the right? Might that be the solution to opening the door and "
 "freeing the pingus? But how can they reach that switch?"
 msgstr ""
-"Cesta k východu je rovná, plochá a prostá, ale očekával jsi pevné dveře "
-"blokující cestu? Jak je mohou pingové otevřít? Není na tom kopci napravo "
-"nějaký spínač? Mohl by ten být řešením k otevření dveří a osvobození pingů? "
-"Ale jak se k tomu spínači mohou dostat?"
 
 #: data/levels/halloween2011/halloween16-grumbel.pingus:5
 msgid "The Collapsed Column"
 msgstr "Zřícený sloup"
 
 #: data/levels/halloween2011/halloween16-grumbel.pingus:6
-#, fuzzy
 msgid ""
 "High up above the green slime the pingus are moving from column to column, "
 "getting closer to the exit with each step, but wait, there is a second group "
 "of pingus, they are stuck. The column next to them has collapsed making "
 "getting to the exit impossible. Can you find a way around the abyss?"
 msgstr ""
-"Vysoko nad zeleným slizem se pingové pohybují ze sloupu na sloup a s každým "
-"krokem se postupně dostávají blíže k východu, ale počkat, je tu i druhá "
-"skupina tučnáků zaseknutá na svém sloupu, protože ten vedlejší se propadl. "
-"Najdeš jim cestu přes propast?"
 
 #: data/levels/halloween2011/halloween17-grumbel.pingus:5
 msgid "Island of Doom"
@@ -1552,17 +1510,12 @@ msgid "Crawlspace"
 msgstr "Průlez"
 
 #: data/levels/desert/desert-crawl-timpany.pingus:6
-#, fuzzy
 msgid ""
 "The path to the exit is blocked and many small tunnels lead the way, but be "
 "careful some of those lead to certain death. Or is there something you can "
 "do about that and create a save passage for all the Pingus and lead them "
 "safely to the exit?"
 msgstr ""
-"Cesta k východu je přehražena a i když mnoho malých tunelů určuje cestu, "
-"musíš být opatrný, protože některé z nich znamenají rychlou smrt. Můžeš s "
-"tím snad něco udělat a vytvořit bezpečný koridor pro všechny pingy a dovést "
-"je bezpečně do východu?"
 
 #: data/levels/desert/desert1-janne.pingus:5
 msgid "Down the valley and up again"
@@ -1595,15 +1548,11 @@ msgid "The window room"
 msgstr "Okenní sál"
 
 #: data/levels/desert/desert2.pingus:6
-#, fuzzy
 msgid ""
 "After the Pingus have entered the pyramid, they reach a large room with a "
 "large window. The only problem they have is that the entrance to the room is "
 "much too high to survive the landing. Can you help them?"
 msgstr ""
-"Po té, co pingové vstoupili do pyramidy, dorazili do velkého sálu s velikým "
-"oknem. Jediný problém, který mají, je s vchodem umístěným tak vysoko, že "
-"nedokáží bezpečně seskočit dolů. Pmůžeš jim?"
 
 #: data/levels/desert/desert3-jings.pingus:5
 msgid "Grand Hall"
@@ -1661,15 +1610,11 @@ msgid "Catch them at the half way point"
 msgstr "Zachyť je v půli"
 
 #: data/levels/desert/desert5.pingus:6
-#, fuzzy
 msgid ""
 "The Pingus are separated from the exit by large abyss. A simple bridge won't "
 "be enough to catch them safely, unless of course you find the right place to "
 "put it. Can you uncover that spot?"
 msgstr ""
-"Pingy odděluje od východu velká propast. Prostý most nebude dostatečný pro "
-"bezpečné zachycení, pokud ovšem nenajdeš to správné místo, kde ho postavit. "
-"Odhalíš to místo?"
 
 #: data/levels/desert/desert6-grumbel.pingus:5
 msgid "A bit to the right a bit to left"
@@ -1684,13 +1629,10 @@ msgid "25 Pingus free and 25 in the box"
 msgstr "25 pingů volných a 25 v krabici"
 
 #: data/levels/desert/desert7-grumbel.pingus:6
-#, fuzzy
 msgid ""
 "Okay for the Bridger but what can I do with Digger? You should save at least "
 "one Pingu trapped in the box above the exit."
 msgstr ""
-"Mostař je OK, ale co si počít s kopáčem? Měl bys zachránit alespoň jednoho "
-"pinga uvězněného v krabici nad východem."
 
 #: data/levels/desert/desert8-grumbel.pingus:5
 msgid "Tunnel Time"
@@ -1752,13 +1694,10 @@ msgid "Near can mean far"
 msgstr "Blízko je někdy daleko"
 
 #: data/levels/mysteryisland/cave1-marcotte.pingus:6
-#, fuzzy
 msgid ""
 "What do you do when you're going in the wrong direction ? Simple: walk into "
 "a wall. But it is easier said than done..."
 msgstr ""
-"Co uděláš, když jdeš špatným směrem? To je jednoduché, dojdeš ke zdi. Ale to "
-"snáz řekne, než udělá..."
 
 #: data/levels/mysteryisland/emperiment-lac.pingus:5
 msgid "Experimentation"
@@ -1777,15 +1716,11 @@ msgid "Hall of Illusion"
 msgstr "Síň iluzí"
 
 #: data/levels/mysteryisland/hall-of-illusion-lac.pingus:6
-#, fuzzy
 msgid ""
 "The penguins stopped and stood in indecision. What was real and what was "
 "not? Flame lanced from above and a guillotine glittered in the distance. "
 "Almost all penguins must survive."
 msgstr ""
-"Pingové se zastavili a zůstávají na pochybách - co byla skutečnost a co ne? "
-"Ohně šlehající z výšky a gilotina se leskne v dáli. Skoro všichni musejí "
-"přežít."
 
 #: data/levels/mysteryisland/lavapit3.pingus:7
 msgid "The Lava Pit"
@@ -1849,27 +1784,19 @@ msgid "Revenge is sweet"
 msgstr "Pomsta bude sladká"
 
 #: data/levels/mysteryisland/revenge1-lac.pingus:8
-#, fuzzy
 msgid ""
 "The penguins had escaped the mad scientist but now they wanted revenge. They "
 "intended to destroy the support structures, sending the evil laboratory "
 "crashing down."
 msgstr ""
-"Tučnáci unikli ze spárů šileného vědce a teď touží po pomstě. Rozhodli se "
-"narušit podpůrné struktury a tím přivést zlou laboratoř ke zřícení."
 
 #: data/levels/mysteryisland/revenge2-lac.pingus:8
-#, fuzzy
 msgid ""
 "The penguins had escaped the mad scientist but now they wanted revenge. They "
 "intended to destroy the support structures, sending the evil laboratory "
 "crashing down. They had to move fast though, because the mad scientist would "
 "detect and recapture them if they weren't fast enough."
 msgstr ""
-"Tučnáci unikli ze spárů šileného vědce a teď touží po pomstě. Rozhodli se "
-"narušit podpůrné struktury a tím přivést zlou laboratoř ke zřícení. Musejí "
-"se pohybovat dost rychle, protože pokud by se loudali, šílený vědec by si "
-"jich mohl všimnout a znovu je zajmout."
 
 #: data/levels/mysteryisland/snow2-lac.pingus:7
 msgid "Winter Wonderland"
@@ -1920,16 +1847,12 @@ msgid "Shipwrecked"
 msgstr "Vrak lodi"
 
 #: data/levels/mysteryisland/volcano1-grumbel.pingus:6
-#, fuzzy
 msgid ""
 "The penguins were sailing along happily on their makeshift boat until "
 "suddenly an island appeared. The penguins were drawn towards it and crashed, "
 "destroying their boat. Now they must find their way across this strange "
 "island."
 msgstr ""
-"Tučnáci pluli kolem na své provizorní lodi, když tu se náhle objevil ostrov. "
-"Tučnáci byli nahnáni na mělčinu a ztroskotali. Teď musejí najít cestu napříč "
-"tímto podivným ostrovem."
 
 #: data/levels/alien/aliens1-grumbel.pingus:5
 #: data/levels/alien/aliens1-phil.pingus:7
@@ -1945,13 +1868,10 @@ msgstr ""
 "je dobře vytrénovaná a stejně tak i ty, takže nepropadej panice."
 
 #: data/levels/alien/aliens1-phil.pingus:8
-#, fuzzy
 msgid ""
 "Aliens invade our starship blocking entrance to the teleporter. Your crew is "
 "well trained, like you they don't panic."
 msgstr ""
-"Mimozemšťané přepadli naší loď a zablokovali vstup do teleportu. Tvá posádka "
-"je dobře vytrénovaná a stejně tak i ty, takže nepropadej panice."
 
 #: data/levels/alien/aliens2-phil.pingus:7
 msgid "Escape from Aliens 2"
@@ -1967,11 +1887,8 @@ msgid "Alien's nest"
 msgstr "Mimozemské hnízdo"
 
 #: data/levels/alien/aliens4-phil.pingus:6
-#, fuzzy
 msgid "Pingus invade the nest. Take care of jaws. What's the matrix above?"
 msgstr ""
-"Pingové vpadli do hnízda. Dej si pozor na tesáky a co je zač ta matrice nad "
-"hlavou?"
 
 #: data/levels/alien/aliens5-phil.pingus:5
 msgid "Matrix of the death"
@@ -2002,13 +1919,10 @@ msgid "Fourth dimension"
 msgstr "Čtvrtý rozměr"
 
 #: data/levels/alien/aliens7-phil.pingus:8
-#, fuzzy
 msgid ""
 "The defenses of the aliens get stronger. Now you have to jump in the fourth "
 "dimension to win!"
 msgstr ""
-"Odpor mimozemšťanů se stává silnějším. Teď musíš skočit do čtvrtého rozměru, "
-"abys vyhrál!"
 
 #: data/levels/alien/space-11-rz+eriksoe.pingus:5
 msgid "Set your watches"
@@ -2031,13 +1945,10 @@ msgid "Endless Loop"
 msgstr "Nekonečná smyčka"
 
 #: data/levels/alien/space-loop-timpany.pingus:6
-#, fuzzy
 msgid ""
 "To the right and to the left the Pingus will face certain death and you have "
 "to save 50. Can you help them get out of this mess?"
 msgstr ""
-"Nalevo i napravo číhá jistá smrt a máš jich padesát zachránit! Pomůžeš jim "
-"dostat se z téhle šlamastyky?"
 
 #: data/levels/alien/space-tom1.pingus:7
 msgid "Up up in the space"
@@ -2060,7 +1971,6 @@ msgid "Falling down"
 msgstr "Volný pád"
 
 #: data/levels/factorycampaign/factory_campaign1.pingus:6
-#, fuzzy
 msgid ""
 "Pingus intelligence reported that a huge factory located in the subtropical "
 "zone might be a reason of a climate change. They decided to go there and "
@@ -2069,11 +1979,6 @@ msgid ""
 "is melting, at first you have to build some bridges and watch out for the "
 "cliff."
 msgstr ""
-"Průzkumníci zjistili, že velké továrny nacházející se v subtropické oblasti "
-"by mohly stát za klimatickými změnami. Rozhodli se tam vypravit a továrny "
-"odstavit. Bude to dlouhá a nebezpečná expedice. Spolu s pingy budeš po cestě "
-"čelit mnoha obtížím. Jak led taje, budeš muset zbudovat nejprve několik "
-"mostů a pohlídat si útesy."
 
 #: data/levels/factorycampaign/factory_campaign10.pingus:5
 msgid "Jump"
@@ -2131,9 +2036,8 @@ msgstr ""
 "Pingové opouštějí jižní pól a přesunují se směrem na sever. Musíš jim pomoci!"
 
 #: data/levels/factorycampaign/factory_campaign3.pingus:5
-#, fuzzy
 msgid "The Cave"
-msgstr "Jeskyně"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign3.pingus:6
 msgid ""
@@ -2164,38 +2068,28 @@ msgid "Four ways out"
 msgstr "Čtyři cesty ven"
 
 #: data/levels/factorycampaign/factory_campaign5.pingus:6
-#, fuzzy
 msgid ""
 "It's getting warmer but Pingus are bravely moving North. This time it will "
 "be much easier. There are at least four ways out. Could you find them?"
 msgstr ""
-"Postupně se otepluje, ale pingové odvážně postupují na sever. Tentokrát to "
-"bude mnohem snažší, dokonce máš na výběr z nejméně čtyřech různých cest. "
-"Dokážeš je najít?"
 
 #: data/levels/factorycampaign/factory_campaign6.pingus:5
 msgid "Egypt - So easy"
 msgstr "Egypt - Tak snadné"
 
 #: data/levels/factorycampaign/factory_campaign6.pingus:6
-#, fuzzy
 msgid "Pingus reached Egypt. Looks easy, but is it really so easy? Try it out."
 msgstr ""
-"Pingové dosáhli Egypta. Vypadá to jednoduše, ale je tomu opravdu tak? "
-"Vyzkoušej."
 
 #: data/levels/factorycampaign/factory_campaign7.pingus:5
 msgid "Egypt - Oasis"
 msgstr "Egypt - Oáza"
 
 #: data/levels/factorycampaign/factory_campaign7.pingus:6
-#, fuzzy
 msgid ""
 "Last time it was easy. Now it will be a little bit harder. Pingus are "
 "entering oasis. Watch out for the water."
 msgstr ""
-"Posledně to bylo snadné. Teď to bude o trochu těžší. Pingové přišli k oáze. "
-"Dávej si pozor na vodu. "
 
 #: data/levels/factorycampaign/factory_campaign8.pingus:5
 msgid "Egypt - The Maze"
@@ -2209,18 +2103,14 @@ msgstr ""
 "začneš kopat."
 
 #: data/levels/factorycampaign/factory_campaign9.pingus:5
-#, fuzzy
 msgid "Egypt - Pyramids"
-msgstr "Egypt - Pyramidy"
+msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign9.pingus:6
-#, fuzzy
 msgid ""
 "The maze led you to the big pyramids. Now you have 4 minutes to escape. "
 "Hurry up!"
 msgstr ""
-"Bludiště tě přivedlo do velké pyramidy. Na únik máš jen čtyři minuty. Pospěš "
-"si!"
 
 #: data/levels/xmas2011/xmas01-grumbel.pingus:5
 msgid "Bomb and Double Catch"
@@ -2300,9 +2190,8 @@ msgid ""
 msgstr ""
 
 #: data/levels/xmas2011/xmas08-grumbel.pingus:5
-#, fuzzy
 msgid "Ice Block Blockage"
-msgstr "Koukni a blokni"
+msgstr ""
 
 #: data/levels/xmas2011/xmas08-grumbel.pingus:6
 msgid ""
@@ -2505,9 +2394,8 @@ msgid "Alien by Josh Dye"
 msgstr ""
 
 #: data/levelsets/alien.levelset:4
-#, fuzzy
 msgid "Escape from alien"
-msgstr "Útěk od mimozemšťanů"
+msgstr ""
 
 #: data/levelsets/crystal.levelset:3
 msgid "Crystal"
@@ -2562,9 +2450,8 @@ msgid "Jungle"
 msgstr ""
 
 #: data/levelsets/mysteryisland.levelset:3
-#, fuzzy
 msgid "Island of Mystery"
-msgstr "Ostrov zkázy"
+msgstr ""
 
 #: data/levelsets/mysteryisland.levelset:4
 msgid "Marooned on an Uncharted Isle [by Lachlan McCubbin]"
@@ -2586,41 +2473,41 @@ msgstr ""
 msgid "Merry Christmas and a Happy New Year"
 msgstr ""
 
-#~ msgid ""
-#~ "The exit is right above with a few friendly arrows pointing the way. But "
-#~ "can anything you find in a cave be trusted?"
-#~ msgstr ""
-#~ "Východ je přímo nad tebou a přátelské šipky ukazují cestu. Ale můžeš "
-#~ "vůbec věřit něčemu ukrytému v jeskyni?"
+msgid ""
+"The exit is right above with a few friendly arrows pointing the way. But can "
+"anything you find in a cave be trusted?"
+msgstr ""
+"Východ je přímo nad tebou a přátelské šipky ukazují cestu. Ale můžeš vůbec "
+"věřit něčemu ukrytému v jeskyni?"
 
-#~ msgid ""
-#~ "Three groups are on their way to the exit, none of them can make it "
-#~ "alone, so lets them help each other out."
-#~ msgstr ""
-#~ "Tři skupiny jsou na cestě k východu, žádná z nich to ale nezvládne sama "
-#~ "od sebe, takže jim pomoz."
+msgid ""
+"Three groups are on their way to the exit, none of them can make it alone, "
+"so lets them help each other out."
+msgstr ""
+"Tři skupiny jsou na cestě k východu, žádná z nich to ale nezvládne sama od "
+"sebe, takže jim pomoz."
 
-#~ msgid ""
-#~ "The pingus, released together, will soon be split up by a few meter of "
-#~ "solid metal. Yet even with that separation between them, they have to "
-#~ "coordinate wisely to reach the exit so far below."
-#~ msgstr ""
-#~ "Společně uvolnění pingové budou ihned rozděleni několika metry pevného "
-#~ "kovu. Ale i přes tuto separaci mezi nimy se musejí modře zkoordinovat, "
-#~ "aby dosáhli východu hluboko pod nimy."
+msgid ""
+"The pingus, released together, will soon be split up by a few meter of solid "
+"metal. Yet even with that separation between them, they have to coordinate "
+"wisely to reach the exit so far below."
+msgstr ""
+"Společně uvolnění pingové budou ihned rozděleni několika metry pevného kovu. "
+"Ale i přes tuto separaci mezi nimy se musejí modře zkoordinovat, aby dosáhli "
+"východu hluboko pod nimy."
 
-#~ msgid ""
-#~ "The pingus are at the top of the tower, the way down isn't long, but "
-#~ "high. How shall they overcome that distance?"
-#~ msgstr ""
-#~ "Pingové jsou na vrcholu věže. Cesta dolů není sice dlouhá, ale zatraceně "
-#~ "vysoká. Jak mají tu výšku překonat?"
+msgid ""
+"The pingus are at the top of the tower, the way down isn't long, but high. "
+"How shall they overcome that distance?"
+msgstr ""
+"Pingové jsou na vrcholu věže. Cesta dolů není sice dlouhá, ale zatraceně "
+"vysoká. Jak mají tu výšku překonat?"
 
-#~ msgid ""
-#~ "During their way through the volcano, the pingus stumbles upon the number "
-#~ "11, cut out in stone."
-#~ msgstr ""
-#~ "Během své cesty skrz vulkán pingové zakopli o číslo 11 vytesané z kamene. "
+msgid ""
+"During their way through the volcano, the pingus stumbles upon the number "
+"11, cut out in stone."
+msgstr ""
+"Během své cesty skrz vulkán pingové zakopli o číslo 11 vytesané z kamene. "
 
 #~ msgid ""
 #~ "After the Pingus successfully passed the large window room, they are "
@@ -2683,3 +2570,337 @@ msgstr ""
 
 #~ msgid "_playing!"
 #~ msgstr "_že jste si zahráli!"
+
+#~ msgid "Display:"
+#~ msgstr "Zobrazení:"
+
+#~ msgid "Set the resolution for pingus (default: 800x600)"
+#~ msgstr "Nastaví rozlišení. (výchozí: 800x600)"
+
+#~ msgid "Sound:"
+#~ msgstr "Zvuk:"
+
+#~ msgid "Test a font"
+#~ msgstr "Otestuje font."
+
+#~ msgid "Shows the credits"
+#~ msgstr "Spustí závěrečné titulky."
+
+#~ msgid "Misc Options:"
+#~ msgstr "Různá nastavení:"
+
+#~ msgid "PATH"
+#~ msgstr "CESTA"
+
+#~ msgid "Set the path to load the data files to 'path'"
+#~ msgstr "Nastaví cestu k datovým souborům."
+
+#~ msgid ""
+#~ "Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
+#~ "speed up the game on slower machines"
+#~ msgstr ""
+#~ "Načte konfiguraci ze souboru (výchozí: ~/.pingus/config) redukujezatížení "
+#~ "CPU, což může urychlit hru na pomalejších strojích."
+
+#~ msgid "Debugging and experimental stuff:"
+#~ msgstr "Ladicí a experimentální volby:"
+
+#~ msgid "Enables some features, only interesting to programmers"
+#~ msgstr "Zapne některé vlastnosti potřebné jen pro programátory."
+
+#~ msgid ""
+#~ "Enable the output of debugging info, possible OPTIONs are tiles, "
+#~ "gametime, actions, sound, resources, gui, input, pathmgr"
+#~ msgstr ""
+#~ "Zapne výstup ladicích hlášek, možná nastavení jsou: tiles, gametime, "
+#~ "actions, sound, resources, gui, input, pathmgr"
+
+#~ msgid "Ok"
+#~ msgstr "Ok"
+
+#~ msgid "Abort"
+#~ msgstr "Zrušit"
+
+#~ msgid "Filename: "
+#~ msgstr "Jméno souboru: "
+
+#~ msgid "Rocketlauncher"
+#~ msgstr "Rakeťák"
+
+#~ msgid ""
+#~ "Select all\n"
+#~ "Clear Selection\n"
+#~ "Raise objects\n"
+#~ "Lower objects\n"
+#~ "Lower objects to bottom\n"
+#~ "Raise objects to top\n"
+#~ "Rotate 90 degree\n"
+#~ "Rotate 270 degree\n"
+#~ msgstr ""
+#~ "Vybrat vše\n"
+#~ "Zrušit výběr\n"
+#~ "Vyzdvihnout objekty\n"
+#~ "Zatlačit objekty\n"
+#~ "Zatlačit objekty dospod\n"
+#~ "Vyzdvihnout objekty na povrch\n"
+#~ "Otočit o 90 stupňů\n"
+#~ "Otočit o 270 stupňů\n"
+
+#~ msgid ""
+#~ "Flip object horizontaly\n"
+#~ "Flip object vertically\n"
+#~ "Delete all marked objects\n"
+#~ "Move objects up\n"
+#~ "Move objects down\n"
+#~ "Move objects left\n"
+#~ "Move objects right\n"
+#~ msgstr ""
+#~ "Převrátit objekt horizontálně\n"
+#~ "Převrátit object vertically\n"
+#~ "Smazat všechny vyznačené objekty\n"
+#~ "Posunout objekty nahoru\n"
+#~ "Posunout objekty dolu\n"
+#~ "Posunout objekty vlevo\n"
+#~ "Posunout objekty vpravo\n"
+
+#~ msgid ""
+#~ "You should name your level files systematically, i.e. by their theme, "
+#~ "their number and your nickname:\n"
+#~ "\n"
+#~ "     <levelname><number>-<creator>.pingus\n"
+#~ "\n"
+#~ "So if you create a your second level with a stone theme, call it: stone2-"
+#~ "yourname.pingus\n"
+#~ "\n"
+#~ "When you have created a level and want to have it included in the game "
+#~ "mail it to:\n"
+#~ "\n"
+#~ "     pingus-devel@nongnu.org\n"
+#~ "\n"
+#~ "Only levels published under the GPL are allowed into the game. The editor "
+#~ "automatically inserts a reference \n"
+#~ "to the GPL, if you want to have your level under a different license, you "
+#~ "have to change that reference.\n"
+#~ msgstr ""
+#~ "Měl byste pojmenovávat soubory úrovní systematicky, tedy podle jejich "
+#~ "tématu, čísla a své přezdívky:\n"
+#~ "\n"
+#~ "     <název úrovně><číslo>-<tvůrce>.pingus\n"
+#~ "\n"
+#~ "Takže až vytvoříte druhou úroveň s kamenným tématem, nazvěte ji: stone2-"
+#~ "jméno.pingus\n"
+#~ "\n"
+#~ "Pokud vytvoříte úroveň a chtěl byste ji mít zařazenou do hry, pošlete ji "
+#~ "mailem na:\n"
+#~ "\n"
+#~ "     pingus-devel@nongnu.org\n"
+#~ "\n"
+#~ "Pouze úrovně publikované pod GPL jsou přijímány k zařazení. Editor "
+#~ "automaticky vkládá odkaz na GPL, \n"
+#~ "takže pokud chcete mít úroveň pod jinou licencí, měl byste tento odkaz "
+#~ "změnit.\n"
+
+#~ msgid "    New level"
+#~ msgstr "    Nová úroveň"
+
+#~ msgid "Show Story?"
+#~ msgstr "Ukázat příběh?"
+
+#~ msgid "Enter?"
+#~ msgstr "Vstoupit?"
+
+#~ msgid "...walking..."
+#~ msgstr "...jdu..."
+
+#~ msgid "locked"
+#~ msgstr "zamknuto"
+
+#~ msgid ""
+#~ "Once again it's time to combine the stuff you have learned in your "
+#~ "previous levels. Blast your way free and make sure you also keep the rest "
+#~ "of the Pingus under control. The Blocker action will be helpful. "
+#~ msgstr ""
+#~ "A máme tu znovu příležitost zkombinovat znalosti, které jsi zatím získal. "
+#~ "Uvolni si cestu k cíli a zároveň dávej pozor i na ostatní pingy. Pomůže "
+#~ "ti nová akce - zablokování cesty. "
+
+#~ msgid "Dig and float, but just don't fall and smash"
+#~ msgstr "Kopej a skákej, ale hlavně nespadni"
+
+#~ msgid ""
+#~ "Now that you and the Pingus have arrived at Tutorial Island it is time to "
+#~ "take command and begin your mission. Good Luck!"
+#~ msgstr ""
+#~ "Nyní, když jsi se svou partou dorazil na výukový ostrov,\n"
+#~ "je čas začít a převzít velení mise.\n"
+#~ "\n"
+#~ "                                                   Hodně štěstí!"
+
+#~ msgid ""
+#~ "So the Pingus sit on their raft, worrying about what's to come and where "
+#~ "to go, while floating into the sunset.  To be continued..."
+#~ msgstr ""
+#~ "Jak tak seděli na svých vorech, přemýšleli, co je čeká a odplouvali\n"
+#~ "do západu slunce.\n"
+#~ "\n"
+#~ "Bude mít pokračování..."
+
+#~ msgid "Use the given renderer (default: delta)"
+#~ msgstr "Použít zadaný vykreslovač (výchozí: delta)"
+
+#~ msgid ""
+#~ "The path to the exit lays below, shimmering through the planks. But the "
+#~ "fall is to high, deadly for sure. Can one pingu alone make it's way "
+#~ "through the dangerous traps and secure the path to the exit?"
+#~ msgstr ""
+#~ "Cesta k východu leží dole, proplétá se mezi plaňkami. Ale pád by to byl "
+#~ "dlouhý a jistě smrtelný. Mohl by jeden pingu sám překonat nebezpečné "
+#~ "pasti a zabezpečit cestu k východu?"
+
+#~ msgid ""
+#~ "The path to the exit is blocked and many small tunnels lead the way, but "
+#~ "be careful some of those lead to certain death. Or is there something you "
+#~ "can do about that and create a save passage for all the Pingus and lead "
+#~ "them savely to the exit?"
+#~ msgstr ""
+#~ "Cesta k východu je přehražena a i když mnoho malých tunelů určuje cestu, "
+#~ "musíš být opatrný, protože některé z nich znamenají rychlou smrt. Můžeš s "
+#~ "tím snad něco udělat a vytvořit bezpečný koridor pro všechny pingy a "
+#~ "dovést je bezpečně do východu?"
+
+#~ msgid ""
+#~ "After the Pingus have entered the pyramid, they reach a large room with a "
+#~ "large window. The only problem they have is that the entrance to the room "
+#~ "is much to high to survive the landing. Can you help them?"
+#~ msgstr ""
+#~ "Po té, co pingové vstoupili do pyramidy, dorazili do velkého sálu s "
+#~ "velikým oknem. Jediný problém, který mají, je s vchodem umístěným tak "
+#~ "vysoko, že nedokáží bezpečně seskočit dolů. Pmůžeš jim?"
+
+#~ msgid ""
+#~ "The Pingus are separated from the exit by large abyss. A simple bridge "
+#~ "won't be enough to catch them savely, unless of course you find the right "
+#~ "place to put it. Can you uncover that spot?"
+#~ msgstr ""
+#~ "Pingy odděluje od východu velká propast. Prostý most nebude dostatečný "
+#~ "pro bezpečné zachycení, pokud ovšem nenajdeš to správné místo, kde ho "
+#~ "postavit. Odhalíš to místo?"
+
+#~ msgid ""
+#~ "Okay for the Bridger but what can I do with Digger? You should be save at "
+#~ "least one Pingus trapped in the box above the exit."
+#~ msgstr ""
+#~ "Mostař je OK, ale co si počít s kopáčem? Měl bys zachránit alespoň "
+#~ "jednoho pinga uvězněného v krabici nad východem."
+
+#~ msgid ""
+#~ "What do you do when you're going in the wrong direction ? Simple : walk "
+#~ "into a wall. But it is easier said than done..."
+#~ msgstr ""
+#~ "Co uděláš, když jdeš špatným směrem? To je jednoduché, dojdeš ke zdi. Ale "
+#~ "to snáz řekne, než udělá..."
+
+#~ msgid ""
+#~ "The penguins stopped and stood in indecision. What was real and what was "
+#~ "not? Flame lanced from above and a guillotine glittered in the distance. "
+#~ "almost all penguins must survive."
+#~ msgstr ""
+#~ "Pingové se zastavili a zůstávají na pochybách - co byla skutečnost a co "
+#~ "ne? Ohně šlehající z výšky a gilotina se leskne v dáli. Skoro všichni "
+#~ "musejí přežít."
+
+#~ msgid ""
+#~ "The penguins had escaped the mad scientist but now they wanted revenge. "
+#~ "They intended to destroy the support structures , sending the evil "
+#~ "laboratory crashing down."
+#~ msgstr ""
+#~ "Tučnáci unikli ze spárů šileného vědce a teď touží po pomstě. Rozhodli se "
+#~ "narušit podpůrné struktury a tím přivést zlou laboratoř ke zřícení."
+
+#~ msgid ""
+#~ "The penguins had escaped the mad scientist but now they wanted revenge. "
+#~ "They intended to destroy the support structures , sending the evil "
+#~ "laboratory crashing down. They had to move fast though, because the mad "
+#~ "scientist would detect and recapture them if they weren't fast enough."
+#~ msgstr ""
+#~ "Tučnáci unikli ze spárů šileného vědce a teď touží po pomstě. Rozhodli se "
+#~ "narušit podpůrné struktury a tím přivést zlou laboratoř ke zřícení. "
+#~ "Musejí se pohybovat dost rychle, protože pokud by se loudali, šílený "
+#~ "vědec by si jich mohl všimnout a znovu je zajmout."
+
+#~ msgid ""
+#~ "The penguins were sailing along happily on their makeshift boat until "
+#~ "suddenly, an island appeared. The penguins were drawn towards it and "
+#~ "crashed, destroying their boat. Now they must find their way acoss this "
+#~ "strange island."
+#~ msgstr ""
+#~ "Tučnáci pluli kolem na své provizorní lodi, když tu se náhle objevil "
+#~ "ostrov. Tučnáci byli nahnáni na mělčinu a ztroskotali. Teď musejí najít "
+#~ "cestu napříč tímto podivným ostrovem."
+
+#~ msgid "Pingus invade the nest. Take care of jaws What's the matrix above ?"
+#~ msgstr ""
+#~ "Pingové vpadli do hnízda. Dej si pozor na tesáky a co je zač ta matrice "
+#~ "nad hlavou?"
+
+#~ msgid ""
+#~ "The defenses of the aliens get stronger. Now you have to jump in the "
+#~ "fourth dimension to win !"
+#~ msgstr ""
+#~ "Odpor mimozemšťanů se stává silnějším. Teď musíš skočit do čtvrtého "
+#~ "rozměru, abys vyhrál!"
+
+#~ msgid ""
+#~ "To the right and left Pingus certain death and 50 to save! You can help "
+#~ "them get out of this mess?"
+#~ msgstr ""
+#~ "Nalevo i napravo číhá jistá smrt a máš jich padesát zachránit! Pomůžeš "
+#~ "jim dostat se z téhle šlamastyky?"
+
+#~ msgid ""
+#~ "Pingus intelligence reported that a huge factories located in the "
+#~ "subtropical zone might be a reason of a climate change. They decided to "
+#~ "go there and shut down the factories. This will be a long and dangerous "
+#~ "expedition. Pingus and you will have to face many diffuculties on your "
+#~ "way. As the ice is melting, at first you have to build some bridges and "
+#~ "watch out for the cliff."
+#~ msgstr ""
+#~ "Průzkumníci zjistili, že velké továrny nacházející se v subtropické "
+#~ "oblasti by mohly stát za klimatickými změnami. Rozhodli se tam vypravit a "
+#~ "továrny odstavit. Bude to dlouhá a nebezpečná expedice. Spolu s pingy "
+#~ "budeš po cestě čelit mnoha obtížím. Jak led taje, budeš muset zbudovat "
+#~ "nejprve několik mostů a pohlídat si útesy."
+
+#~ msgid "The cave"
+#~ msgstr "Jeskyně"
+
+#~ msgid ""
+#~ "It's getting warmer but Pingus are breavely moving North. This time it "
+#~ "will be much easier. There are at least four ways out. Could you find "
+#~ "them?"
+#~ msgstr ""
+#~ "Postupně se otepluje, ale pingové odvážně postupují na sever. Tentokrát "
+#~ "to bude mnohem snažší, dokonce máš na výběr z nejméně čtyřech různých "
+#~ "cest. Dokážeš je najít?"
+
+#~ msgid "Pingus reached Egypt. Looks easy but is it really so easy. Try out. "
+#~ msgstr ""
+#~ "Pingové dosáhli Egypta. Vypadá to jednoduše, ale je tomu opravdu tak? "
+#~ "Vyzkoušej. "
+
+#~ msgid ""
+#~ "Last time it was easy. Now it will be a little bit harder. Pingus are "
+#~ "entering oasis. Watch out for the water. "
+#~ msgstr ""
+#~ "Posledně to bylo snadné. Teď to bude o trochu těžší. Pingové přišli k "
+#~ "oáze. Dávej si pozor na vodu. "
+
+#~ msgid "Egypt - Piramids"
+#~ msgstr "Egypt - Pyramidy"
+
+#~ msgid ""
+#~ "The maze led you to the big piramid. Now you have 4 minutes to escape. "
+#~ "Hurry up!"
+#~ msgstr ""
+#~ "Bludiště tě přivedlo do velké pyramidy. Na únik máš jen čtyři minuty. "
+#~ "Pospěš si!"
