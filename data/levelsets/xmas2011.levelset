@@ -5,7 +5,7 @@
  (image  "levelsets/xmas2011")
  (developer-only #f)
  (priority 5)
- (locked #f)
+ (locked #t)
  (levels 
   (level (filename "xmas2011/xmas09-grumbel"))
   (level (filename "xmas2011/xmas06-grumbel"))
