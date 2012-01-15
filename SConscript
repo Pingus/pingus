@@ -149,7 +149,7 @@ class Project:
                                                      'src/engine/display/opengl/opengl_framebuffer.cpp' ],
                                  CPPDEFINES = [('HAVE_OPENGL', 1)])
             if sys.platform == "darwin":
-                self.conf.env.Append(LINKFLAGS = [ '-framework', 'OpenGL' ])
+                self.conf.env.Append(LINKFLAGS = [ '-framework', 'OpenGL', '-framework', 'Cocoa' ])
             else:
                 self.conf.env.Append(LIBS = ['GL'])
 
