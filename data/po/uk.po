@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pingus\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-12-24 22:39+0100\n"
-"PO-Revision-Date: 2011-10-23 13:34+0000\n"
+"PO-Revision-Date: 2012-01-13 09:43+0000\n"
 "Last-Translator: Сергій Дубик <dubyk@library.lviv.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-12-29 20:12+0000\n"
-"X-Generator: Launchpad (build 14560)\n"
+"X-Launchpad-Export-Date: 2012-02-18 08:21+0000\n"
+"X-Generator: Launchpad (build 14814)\n"
 
 #: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
@@ -224,7 +224,7 @@ msgstr "Вихід"
 
 #: src/editor/object_selector.cpp:165
 msgid "Entrance"
-msgstr ""
+msgstr "Вхід"
 
 #: src/editor/object_selector.cpp:166
 msgid "Groundpiece (ground)"
@@ -248,7 +248,7 @@ msgstr ""
 
 #: src/editor/object_selector.cpp:171
 msgid "Hotspot"
-msgstr ""
+msgstr "Гаряча точка"
 
 #: src/editor/object_selector.cpp:172
 msgid "Background"
@@ -256,11 +256,11 @@ msgstr "Тло"
 
 #: src/editor/object_selector.cpp:175
 msgid "Liquid"
-msgstr ""
+msgstr "Рідина"
 
 #: src/editor/object_selector.cpp:176
 msgid "Trap"
-msgstr ""
+msgstr "Пастка"
 
 #: src/editor/object_selector.cpp:177
 msgid "Weather"
@@ -452,7 +452,7 @@ msgstr "Запуск у повноекранному режимі"
 
 #: src/pingus/pingus_main.cpp:193
 msgid "Use the given renderer (default: sdl)"
-msgstr ""
+msgstr "Використовувати даний засіб візуалізації (за замовчунням: SDL)"
 
 #: src/pingus/pingus_main.cpp:195
 msgid "Set the window resolution for pingus (default: 800x600)"
@@ -535,7 +535,7 @@ msgstr "ФАЙЛ"
 
 #: src/pingus/pingus_main.cpp:233
 msgid "Read config options from FILE"
-msgstr ""
+msgstr "Читання параметрів налаштування з ФАЙЛУ"
 
 #: src/pingus/pingus_main.cpp:235
 msgid "Uses the controller given in FILE"
@@ -589,7 +589,7 @@ msgstr "Пуск"
 #: src/pingus/screens/start_screen.cpp:111
 #: src/pingus/screens/level_menu.cpp:50
 msgid "Back"
-msgstr ""
+msgstr "Назад"
 
 #: src/pingus/screens/start_screen.cpp:166
 msgid "Number of Pingus: "
@@ -637,7 +637,7 @@ msgstr "..:: Налаштувати гру ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:177
 msgid "Levelsets"
-msgstr ""
+msgstr "Збірка рівнів"
 
 #: src/pingus/screens/pingus_menu.cpp:70
 msgid "..:: Play User Built levels ::.."
@@ -645,7 +645,7 @@ msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:75
 msgid "..:: Bye, bye ::.."
-msgstr ""
+msgstr "..:: До побачення :: .."
 
 #: src/pingus/screens/pingus_menu.cpp:87
 msgid ""
@@ -678,7 +678,7 @@ msgstr "пропустити"
 
 #: src/pingus/screens/option_menu.cpp:208
 msgid "Fullscreen"
-msgstr ""
+msgstr "Повноекранний режим"
 
 #: src/pingus/screens/option_menu.cpp:209
 msgid "Mouse Grab"
@@ -686,11 +686,11 @@ msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:211
 msgid "Software Cursor"
-msgstr ""
+msgstr "Програмний курсор"
 
 #: src/pingus/screens/option_menu.cpp:212
 msgid "Autoscrolling"
-msgstr ""
+msgstr "Автопрокрутка"
 
 #: src/pingus/screens/option_menu.cpp:213
 msgid "Drag&Drop Scrolling"
@@ -698,27 +698,27 @@ msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:215
 msgid "Print FPS"
-msgstr ""
+msgstr "Вивід кад/с"
 
 #: src/pingus/screens/option_menu.cpp:219
 msgid "Resolution:"
-msgstr ""
+msgstr "Роздільна здатність:"
 
 #: src/pingus/screens/option_menu.cpp:220
 msgid "Renderer:"
-msgstr ""
+msgstr "Промальовник:"
 
 #: src/pingus/screens/option_menu.cpp:222
 msgid "Language:"
-msgstr ""
+msgstr "Мова:"
 
 #: src/pingus/screens/option_menu.cpp:224
 msgid "Master Volume:"
-msgstr ""
+msgstr "Загальна гучність:"
 
 #: src/pingus/screens/option_menu.cpp:225
 msgid "Sound Volume:"
-msgstr ""
+msgstr "Гучність звуків:"
 
 #: src/pingus/screens/option_menu.cpp:226
 msgid "Music Volume:"
@@ -750,7 +750,7 @@ msgstr "Невдача!"
 
 #: src/pingus/screens/result_screen.cpp:200
 msgid "Perfect! You saved everyone possible - great!"
-msgstr ""
+msgstr "Відмінно! Ви врятували усіх — чудово!"
 
 #: src/pingus/screens/result_screen.cpp:202
 msgid "No-one got killed, pretty good work."
@@ -935,7 +935,7 @@ msgstr ""
 
 #: data/levels/tutorial/digger-tutorial2-grumbel.pingus:5
 msgid "Learning to dig"
-msgstr ""
+msgstr "Навчання копати"
 
 #: data/levels/tutorial/digger-tutorial2-grumbel.pingus:6
 msgid ""
@@ -1003,7 +1003,7 @@ msgstr ""
 
 #: data/levels/tutorial/snow12-grumbel.pingus:5
 msgid "Two groups in parallel, coordinate wisely"
-msgstr ""
+msgstr "Дві групи паралельно, координувати з розумом"
 
 #: data/levels/tutorial/snow12-grumbel.pingus:6
 msgid ""
@@ -1037,7 +1037,7 @@ msgstr ""
 
 #: data/levels/tutorial/snow16-grumbel.pingus:5
 msgid "Bridging gets more complicated..."
-msgstr ""
+msgstr "Подолання стає більш складним…"
 
 #: data/levels/tutorial/snow16-grumbel.pingus:6
 msgid ""

@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-12-29 20:12+0000\n"
-"X-Generator: Launchpad (build 14560)\n"
+"X-Launchpad-Export-Date: 2012-02-18 08:20+0000\n"
+"X-Generator: Launchpad (build 14814)\n"
 
 #: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
@@ -890,7 +890,7 @@ msgstr "Pokazać zakończenie?"
 
 #: src/pingus/worldmap/worldmap_screen.cpp:113
 msgid "Leave?"
-msgstr ""
+msgstr "Opuścić?"
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
 msgid "If the way is blocked, bash away"
@@ -2301,3 +2301,51 @@ msgstr ""
 
 #~ msgid "Use the given renderer (default: delta)"
 #~ msgstr "Korzystaj z podanego rendera (domyślnie: delta)"
+
+#~ msgid "-Porting (Win32)"
+#~ msgstr "-Przenoszenie (Win32)"
+
+#~ msgid "-Programming"
+#~ msgstr "-Programowanie"
+
+#~ msgid "-Idea"
+#~ msgstr "-Pomysł"
+
+#~ msgid "-Maintaining"
+#~ msgstr "-Utrzymanie"
+
+#~ msgid "locked"
+#~ msgstr "zablokowany"
+
+#~ msgid "-Porting (MacOSX)"
+#~ msgstr "-Przenoszenie (MacOSX)"
+
+#~ msgid "_to all the people who"
+#~ msgstr "_do wszystkich ludzi którzy"
+
+#~ msgid "-Gfx"
+#~ msgstr "-Gfx"
+
+#~ msgid "-Music"
+#~ msgstr "-Muzyka"
+
+#~ msgid "-Level Design"
+#~ msgstr "-Design Poziomu"
+
+#~ msgid "-Thanks to"
+#~ msgstr "-Podziękowania dla"
+
+#~ msgid "-Translation"
+#~ msgstr "-Tłumaczenie"
+
+#~ msgid "_Free Software!"
+#~ msgstr "-Wolne Oprogramowanie!"
+
+#~ msgid "_And a very Special Thanks"
+#~ msgstr "_oraz bardzo Specjalne Podziękowania"
+
+#~ msgid "_playing!"
+#~ msgstr "_gramy!"
+
+#~ msgid "_Thank you for"
+#~ msgstr "_Dziękuje ci"
