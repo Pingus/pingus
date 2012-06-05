@@ -85,41 +85,14 @@ List of needed additional ru characters not provided by the base font, generated
  % ./substractchars.py characters.txt out > characters-ru.txt
 
 
-verdana11.font
-==============
-
-Simple screen font for use in the editor.
-
- % ./fontgen  generate /usr/share/fonts/truetype/arphic/ukai.ttc 11 0 256 5000 "$(cat characters-ru.txt)"
- % mv /tmp/out.pgm verdana11-ru.pgm
- % mv /tmp/out.font verdana11-ru.font
-
-chalk-16px.font
-===============
-
- % ./fontgen  generate /usr/share/fonts/truetype/arphic/ukai.ttc 16 0 512 5000 "$(cat characters-ru.txt)"
-
-
-chalk-20px.font
-===============
-
- % ./fontgen  generate /usr/share/fonts/truetype/arphic/ukai.ttc 20 0 512 5000 "$(cat characters-ru.txt)"
-
-
 chalk-40px.font
 ===============
 
  % ./fontgen  generate /usr/share/fonts/truetype/arphic/ukai.ttc 40 0 1024 5000 "$(cat characters-ru.txt)"
  % mv /tmp/out.pgm chalk-ru-40px.pgm
- % convert -transparent white chalk-ru-40px.pgm chalk-ru-40px.png
+ % make chalk-ru-40px.png with GIMP add alpha, select white, del, revert selection, del, fill white, blur, save as png
  % mv /tmp/out.font chalk-ru-40px.font
+ add image filename and glyphs section to chalk-ru-40px.font; set (advance 40) to (advance 22)
 
-
-pingus-small-20px.font
-======================
-
-A green font with a 1px black border around it.
-
- % ./fontgen  generate /usr/share/fonts/truetype/arphic/ukai.ttc 20 1 512 5000 "$(cat characters-ru.txt)"
 
 # EOF #

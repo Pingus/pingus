@@ -1310,7 +1310,7 @@
     (glyph (unicode 1091) (offset 10 -20) (advance 22) (rect 540 0 560 23)) ;; у
     (glyph (unicode 1088) (offset 10 -20) (advance 22) (rect 560 0 580 23)) ;; р
     (glyph (unicode 1081) (offset 10 -24) (advance 22) (rect 580 0 598 22)) ;; й
-    (glyph (unicode 1076) (offset 11 -20) (advance 16) (rect 598 0 614 20)) ;; д
+    (glyph (unicode 1076) (offset 11 -20) (advance 22) (rect 598 0 614 20)) ;; д
     (glyph (unicode 1094) (offset 10 -20) (advance 22) (rect 614 0 632 20)) ;; ц
     (glyph (unicode 1097) (offset 9 -20) (advance 22) (rect 632 0 653 20)) ;; щ
     (glyph (unicode 1099) (offset 8 -20) (advance 22) (rect 653 0 674 18)) ;; ы
