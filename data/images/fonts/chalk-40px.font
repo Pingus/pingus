@@ -1,6 +1,6 @@
 (pingus-font
  (size 40)
- (glyph-count 533)
+ (glyph-count 588)
  (images
   (image
    (filename "images/fonts/chalk-40px.png")
@@ -1279,6 +1279,65 @@
     (glyph (unicode 19968) (offset 3 -20) (advance 40) (rect 168 889 203 897)) ;; 一
     (glyph (unicode 65293) (offset 6 -17) (advance 40) (rect 203 889 232 892)) ;; －
     ))
+  (image
+   (filename "images/fonts/chalk-ru-40px.png")
+   (glyphs 
+    (glyph (unicode 1092) (offset 10 -28) (advance 22) (rect 0 0 21 31)) ;; ф
+    (glyph (unicode 1044) (offset 9 -28) (advance 22) (rect 21 0 42 29)) ;; Д
+    (glyph (unicode 1062) (offset 9 -28) (advance 22) (rect 42 0 64 29)) ;; Ц
+    (glyph (unicode 1055) (offset 8 -28) (advance 22) (rect 64 0 88 26)) ;; П
+    (glyph (unicode 1073) (offset 11 -28) (advance 22) (rect 88 0 106 26)) ;; б
+    (glyph (unicode 1040) (offset 9 -28) (advance 22) (rect 106 0 128 26)) ;; А
+    (glyph (unicode 1071) (offset 9 -28) (advance 22) (rect 128 0 149 26)) ;; Я
+    (glyph (unicode 1069) (offset 10 -28) (advance 22) (rect 149 0 167 26)) ;; Э
+    (glyph (unicode 1064) (offset 6 -28) (advance 22) (rect 167 0 194 26)) ;; Ш
+    (glyph (unicode 1063) (offset 9 -28) (advance 22) (rect 194 0 214 26)) ;; Ч
+    (glyph (unicode 1060) (offset 10 -28) (advance 22) (rect 214 0 234 26)) ;; Ф
+    (glyph (unicode 1059) (offset 10 -28) (advance 22) (rect 234 0 254 26)) ;; У
+    (glyph (unicode 1057) (offset 7 -28) (advance 22) (rect 254 0 276 26)) ;; С
+    (glyph (unicode 1056) (offset 9 -28) (advance 22) (rect 276 0 298 26)) ;; Р
+    (glyph (unicode 1054) (offset 9 -28) (advance 22) (rect 298 0 320 26)) ;; О
+    (glyph (unicode 1053) (offset 9 -28) (advance 22) (rect 320 0 342 26)) ;; Н
+    (glyph (unicode 1052) (offset 6 -28) (advance 22) (rect 342 0 370 26)) ;; М
+    (glyph (unicode 1051) (offset 7 -28) (advance 22) (rect 370 0 393 26)) ;; Л
+    (glyph (unicode 1050) (offset 8 -28) (advance 22) (rect 393 0 414 26)) ;; К
+    (glyph (unicode 1048) (offset 7 -28) (advance 22) (rect 414 0 437 26)) ;; И
+    (glyph (unicode 1047) (offset 10 -28) (advance 22) (rect 437 0 455 26)) ;; З
+    (glyph (unicode 1046) (offset 7 -28) (advance 22) (rect 455 0 482 26)) ;; Ж
+    (glyph (unicode 1043) (offset 10 -28) (advance 22) (rect 482 0 502 26)) ;; Г
+    (glyph (unicode 1042) (offset 10 -28) (advance 22) (rect 502 0 522 26)) ;; В
+    (glyph (unicode 1105) (offset 11 -26) (advance 22) (rect 522 0 540 24)) ;; ё
+    (glyph (unicode 1091) (offset 10 -20) (advance 22) (rect 540 0 560 23)) ;; у
+    (glyph (unicode 1088) (offset 10 -20) (advance 22) (rect 560 0 580 23)) ;; р
+    (glyph (unicode 1081) (offset 10 -24) (advance 22) (rect 580 0 598 22)) ;; й
+    (glyph (unicode 1076) (offset 11 -20) (advance 16) (rect 598 0 614 20)) ;; д
+    (glyph (unicode 1094) (offset 10 -20) (advance 22) (rect 614 0 632 20)) ;; ц
+    (glyph (unicode 1097) (offset 9 -20) (advance 22) (rect 632 0 653 20)) ;; щ
+    (glyph (unicode 1099) (offset 8 -20) (advance 22) (rect 653 0 674 18)) ;; ы
+    (glyph (unicode 1093) (offset 12 -20) (advance 22) (rect 674 0 691 18)) ;; х
+    (glyph (unicode 1095) (offset 11 -20) (advance 22) (rect 691 0 707 18)) ;; ч
+    (glyph (unicode 1096) (offset 9 -20) (advance 22) (rect 707 0 728 18)) ;; ш
+    (glyph (unicode 1098) (offset 10 -20) (advance 22) (rect 728 0 746 18)) ;; ъ
+    (glyph (unicode 1090) (offset 11 -20) (advance 22) (rect 746 0 764 18)) ;; т
+    (glyph (unicode 1100) (offset 12 -20) (advance 22) (rect 764 0 779 18)) ;; ь
+    (glyph (unicode 1101) (offset 12 -20) (advance 22) (rect 779 0 793 18)) ;; э
+    (glyph (unicode 1102) (offset 8 -20) (advance 22) (rect 793 0 815 18)) ;; ю
+    (glyph (unicode 1103) (offset 11 -20) (advance 22) (rect 815 0 832 18)) ;; я
+    (glyph (unicode 1072) (offset 11 -20) (advance 22) (rect 832 0 850 18)) ;; а
+    (glyph (unicode 1074) (offset 11 -20) (advance 22) (rect 850 0 868 18)) ;; в
+    (glyph (unicode 1075) (offset 11 -20) (advance 22) (rect 868 0 886 18)) ;; г
+    (glyph (unicode 1089) (offset 11 -20) (advance 22) (rect 886 0 904 18)) ;; с
+    (glyph (unicode 1087) (offset 11 -20) (advance 22) (rect 904 0 922 18)) ;; п
+    (glyph (unicode 1086) (offset 11 -20) (advance 22) (rect 922 0 940 18)) ;; о
+    (glyph (unicode 1085) (offset 11 -20) (advance 22) (rect 940 0 958 18)) ;; н
+    (glyph (unicode 1084) (offset 10 -20) (advance 22) (rect 958 0 979 18)) ;; м
+    (glyph (unicode 1083) (offset 10 -20) (advance 22) (rect 979 0 997 18)) ;; л
+    (glyph (unicode 1082) (offset 10 -20) (advance 22) (rect 997 0 1014 18)) ;; к
+    (glyph (unicode 1080) (offset 10 -20) (advance 22) (rect 0 31 18 49)) ;; и
+    (glyph (unicode 1079) (offset 12 -20) (advance 22) (rect 18 31 32 49)) ;; з
+    (glyph (unicode 1078) (offset 11 -20) (advance 22) (rect 32 31 50 49)) ;; ж
+    (glyph (unicode 1077) (offset 11 -20) (advance 22) (rect 50 31 68 49)) ;; е
+   ))
   ))
 ;; EOF ;;
 
