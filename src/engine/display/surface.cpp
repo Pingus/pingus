@@ -18,10 +18,12 @@
 
 #include <SDL_image.h>
 #include <boost/format.hpp>
+#include <stdexcept>
 
 #include "engine/display/blitter.hpp"
 #include "math/rect.hpp"
 #include "util/log.hpp"
+#include "util/raise_exception.hpp"
 
 class SurfaceImpl
 {
@@ -65,14 +67,18 @@ Surface::Surface(const Pathname& pathname) :
   impl()
 {
   SDL_Surface* surface = IMG_Load(pathname.get_sys_path().c_str());
-  if (surface)
+  if (!surface)
   {
-    impl = std::shared_ptr<SurfaceImpl>(new SurfaceImpl(surface));
+    raise_exception(std::runtime_error, "couldn't load: " << pathname);
+  }
+  else
+  {
+    impl.reset(new SurfaceImpl(surface));
   }
 }
 
-Surface::Surface(int width, int height, SDL_Palette* palette, int colorkey)
-  : impl(new SurfaceImpl())
+Surface::Surface(int width, int height, SDL_Palette* palette, int colorkey) :
+  impl(new SurfaceImpl)
 {
   if (colorkey == -1)
   {

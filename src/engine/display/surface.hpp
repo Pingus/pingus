@@ -34,8 +34,6 @@ class Surface
 public:
   Surface();
 
-  Surface(std::shared_ptr<SurfaceImpl> impl);
-
   Surface(const Pathname& name);
 
   /** Create an empty RGBA Surface */
@@ -80,7 +78,9 @@ public:
 
   void print(std::ostream& out);
 
-protected:
+private:
+  Surface(std::shared_ptr<SurfaceImpl> impl);
+
   std::shared_ptr<SurfaceImpl> impl;
 };
 

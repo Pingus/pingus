@@ -24,20 +24,22 @@
 FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceModifier::Enum modifier)
 {
   // FIXME: Implement proper cache 
-  Surface surface(filename);
-  if (modifier != ResourceModifier::ROT0)
+  try
   {
-    surface = surface.mod(modifier);
+    Surface surface(filename);
+    if (modifier != ResourceModifier::ROT0)
+    {
+      surface = surface.mod(modifier);
+    }
+    return Display::get_framebuffer()->create_surface(surface);
   }
-
-  if (!surface)
+  catch(const std::exception& err)
   {
-    log_error("couldn't load '" << filename << "'");
-    surface = Surface(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
-    if (!surface) assert(!"Surface Couldn't find 404");
+    // return a dummy surface for cases where the image file can't be found
+    log_error(err.what());
+    Surface surface(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
+    return Display::get_framebuffer()->create_surface(surface);
   }
-
-  return Display::get_framebuffer()->create_surface(surface);
 }
 
 SpriteImpl::SpriteImpl() :

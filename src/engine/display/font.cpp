@@ -49,13 +49,14 @@ public:
     // Copyh Unicode -> Glyph mapping 
     for(std::vector<GlyphImageDescription>::size_type j = 0; j < desc.images.size(); ++j)
     {
-      framebuffer_surfaces.push_back(Display::get_framebuffer()->create_surface(Surface(desc.images[j].pathname)));
-
-      if (!framebuffer_surfaces.back())
+      Surface surface(desc.images[j].pathname);
+      if (!surface)
       {
         log_info("IMG: " << desc.images[j].pathname.str());
         assert(false);
       }
+
+      framebuffer_surfaces.push_back(Display::get_framebuffer()->create_surface(surface));
 
       for(std::vector<GlyphDescription>::const_iterator i = desc.images[j].glyphs.begin();
           i != desc.images[j].glyphs.end();

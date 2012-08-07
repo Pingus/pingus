@@ -149,14 +149,7 @@ SDLFramebuffer::~SDLFramebuffer()
 FramebufferSurface
 SDLFramebuffer::create_surface(const Surface& surface)
 {
-  if (surface)
-  {
-    return FramebufferSurface(new SDLFramebufferSurfaceImpl(surface.get_surface()));
-  }
-  else
-  {
-    return FramebufferSurface();
-  }
+  return FramebufferSurface(new SDLFramebufferSurfaceImpl(surface.get_surface()));
 }
 
 void
