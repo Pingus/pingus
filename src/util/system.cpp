@@ -317,16 +317,39 @@ System::find_userdir()
 	}
 	
 #else /* !WIN32 */
-  char* homedir = getenv("HOME");
+  // If ~/.pingus/ exist, use that for backward compatibility reasons,
+  // if it does not, use $XDG_CONFIG_HOME, see:
+  // http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 
-  if (homedir)
+  { // check for ~/.pingus/
+    char* homedir = getenv("HOME");
+    if (homedir && strcmp(homedir, "") != 0)
+    {
+      std::string old_pingus_config_dir = std::string(homedir) + "/.pingus/";
+      if (exist(old_pingus_config_dir))
+      {
+        return old_pingus_config_dir;
+      }
+    }
+  }
+  
+  char* config_dir = getenv("XDG_CONFIG_HOME");
+  if (!config_dir || strcmp(config_dir, "") == 0)
   {
-    return std::string(homedir) + "/.pingus/";
+    char* homedir = getenv("HOME");
+    if (homedir && strcmp(homedir, "") != 0)
+    {
+      return std::string(homedir) + "/.config/pingus/";
+    }
+    else
+    {
+      raise_exception(std::runtime_error, "can't find userdir as neither $HOME nor $XDG_CONFIG_HOME is set");      
+    }
   }
   else
   {
-    raise_exception(std::runtime_error, "Environment variable $HOME not set, fix that and start again.");
-  }
+    return std::string(config_dir) + "/pingus/";
+  }  
 #endif
 }
 
