@@ -1,0 +1,2706 @@
+# Translation of pingus to Scottish Gaelic
+# This file is distributed under the same license as the pingus package.
+# GunChleoc <fios@foramnagaidhlig.net>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Pingus 0.7.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-12-24 22:39+0100\n"
+"PO-Revision-Date: 2012-09-16 15:20+0100\n"
+"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
+"Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
+"Language: gd\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=nplurals=4; plural=(n==1 || n==11) ? 0 : "
+"(n==2 || n==12) ? 1 : (n > 2 && n < 20) ? 2 : 3;\n"
+"X-Generator: Virtaal 0.7.0\n"
+"X-Launchpad-Export-Date: 2011-10-20 15:40+0000\n"
+
+#: src/engine/display/screenshot.cpp:37
+msgid "Screenshot: Saving screenshot to: "
+msgstr "tGlacadh-sgrìn: sàbhail dealbh an sgrìn mar: "
+
+#: src/engine/display/screenshot.cpp:39
+msgid "Screenshot: Screenshot is done."
+msgstr "Glacadh-sgrìn: chaidh dealbh an sgrìn a shàbhaladh."
+
+#: src/engine/display/screenshot.cpp:124 src/engine/display/screenshot.cpp:152
+msgid "Screenshot: Couldn't write file: "
+msgstr "Glacadh-sgrìn: cha do chabh am faidhle a shàbhaladh: "
+
+#: src/editor/editor_screen.cpp:230
+msgid "== Editor Help =="
+msgstr "== Cobhair an deasaiche =="
+
+#: src/editor/editor_screen.cpp:248
+msgid ""
+"Select all\n"
+"Clear Selection\n"
+"Raise objects\n"
+"Lower objects\n"
+"Raise objects to top\n"
+"Lower objects to bottom\n"
+"Rotate 90 degree\n"
+"Rotate 270 degree\n"
+"Group selected objects\n"
+"Ungroup selected objects\n"
+msgstr ""
+"Tagh a h-uile\n"
+"Falamhaich an taghadhF\n"
+"Àrdaich oibseactan\n"
+"Ìslich oibseactan\n"
+"Àrdaich oibseactan gu bàrr\n"
+"Àrdaich oibseactan gu bonn\n"
+"Tionndaidh 90 puing\n"
+"Tionndaidh 270 puing\n"
+"Buidhnich na h-oibseactan air an taghadh\n"
+"Neo-bhuidhnich na h-oibseactan air an taghadh"
+
+#: src/editor/editor_screen.cpp:271
+msgid ""
+"Flip object horizontaly\n"
+"Flip object vertically\n"
+"Delete all marked objects\n"
+"Move objects by one pixel\n"
+"Move objects by 32 pixel\n"
+"Toggle background color\n"
+"Increase/lower repeat\n"
+msgstr ""
+"Flip oibseact gu còmhnard\n"
+"Flip oibseact gu h-inghearach\n"
+"Sguab às dhan fheadhainn chomharraichte uile\n"
+"Gluais oibseact le aon phiogsail\n"
+"Gluais oibseact le 32 phiogsail\n"
+"Toglaich dath a' chùlaibh\n"
+"Meudaich/Lùghdaich ath-dhèanamh"
+
+# FIXME Original s/a your/your/
+#: src/editor/editor_screen.cpp:282
+msgid ""
+"You should name your level files systematically, i.e. by their theme, their "
+"number and your nickname:\n"
+"\n"
+"     <levelname><number>-<creator>.pingus\n"
+"\n"
+"So if you create your second level with a stone theme, call it: stone2-"
+"yourname.pingus\n"
+"\n"
+"When you have created a level and want to have it included in the game mail "
+"it to:\n"
+"\n"
+"     pingus-devel@nongnu.org\n"
+"\n"
+"Only levels published under the GPL are allowed into the game. The editor "
+"automatically inserts a reference \n"
+"to the GPL, if you want to have your level under a different license, you "
+"have to change that reference.\n"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:58
+msgid "Datadir"
+msgstr "Pasgan dàta"
+
+#: src/editor/file_dialog.cpp:60
+msgid "Userdir"
+msgstr "Pasg. cleachd."
+
+#: src/editor/file_dialog.cpp:63
+msgid "Open"
+msgstr "Fosgail"
+
+#: src/editor/file_dialog.cpp:63
+msgid "Save"
+msgstr "Sàbhail"
+
+#: src/editor/file_dialog.cpp:66 src/editor/message_box.cpp:35
+msgid "Cancel"
+msgstr "Sguir dheth"
+
+#: src/editor/file_dialog.cpp:77
+msgid "Filename:"
+msgstr "Faidhle:"
+
+#: src/editor/file_dialog.cpp:78
+msgid "Pathname:"
+msgstr "Pasgan:"
+
+#: src/editor/file_dialog.cpp:98
+msgid "Open a level"
+msgstr "Fosgail leibheil"
+
+#: src/editor/file_dialog.cpp:98
+msgid "Save your level"
+msgstr "Sàbhail leibheil"
+
+#: src/editor/panel.cpp:171
+msgid "New level"
+msgstr "Leibheil ùr"
+
+#: src/editor/panel.cpp:173
+msgid "Open level..."
+msgstr "Fosgail leibheil..."
+
+#: src/editor/panel.cpp:175
+msgid "Save level..."
+msgstr "Sàbhail leibheil..."
+
+#: src/editor/panel.cpp:177
+msgid "Save level as..."
+msgstr "Sàbhail leibheil mar..."
+
+#: src/editor/panel.cpp:180
+msgid "Play level..."
+msgstr "Cluich leibheil..."
+
+#: src/editor/panel.cpp:183
+msgid "Configure actions"
+msgstr "Rèitich gnìomhan"
+
+#: src/editor/panel.cpp:185
+msgid "Configure level"
+msgstr "Rèitich leibheil"
+
+#: src/editor/panel.cpp:187
+msgid "Display object properties"
+msgstr "Seall feartan an oibseict"
+
+#: src/editor/panel.cpp:189
+msgid "Show object insertion window"
+msgstr "Seall uinneag gus oibseactan a chur ris"
+
+#: src/editor/panel.cpp:191
+msgid "Show minimap"
+msgstr "Seall meanbh-mhapa"
+
+#: src/editor/panel.cpp:194
+msgid "Duplicate the selected objects"
+msgstr "Dèan lethbhreac dhe na h-oibseactan air an taghadh"
+
+#: src/editor/panel.cpp:196
+msgid "Delete the selected objects"
+msgstr "Sguab às dha na h-oibseactan air an taghadh"
+
+#: src/editor/panel.cpp:199
+msgid "Raise object to top"
+msgstr "Àrdaich oibseact gu bàrr"
+
+#: src/editor/panel.cpp:201
+msgid "Raise object"
+msgstr "Àrdaich oibseact"
+
+#: src/editor/panel.cpp:203
+msgid "Lower object"
+msgstr "Ìslich oibseact"
+
+#: src/editor/panel.cpp:205
+msgid "Lower object to bottom"
+msgstr "Ìslich oibseact gu bonn"
+
+#: src/editor/panel.cpp:211
+msgid "Flip object horizontally"
+msgstr "Flip oibseact gu còmhnard"
+
+#: src/editor/panel.cpp:213
+msgid "Flip object vertically"
+msgstr "Flip oibseact gu h-inghearach"
+
+#: src/editor/panel.cpp:216
+msgid "Rotate object -90 degree"
+msgstr "Tionndaidh an oibceact -90 puing"
+
+#: src/editor/panel.cpp:218
+msgid "Rotate object 90 degree"
+msgstr "Tionndaidh an oibceact 90 puing"
+
+#: src/editor/panel.cpp:227
+msgid "Display help"
+msgstr "Seall Cobhair"
+
+#: src/editor/panel.cpp:229 src/editor/object_selector.cpp:174
+#: src/pingus/screens/pingus_menu.cpp:74
+msgid "Exit"
+msgstr "Fàg an-seo"
+
+#: src/editor/object_selector.cpp:165
+msgid "Entrance"
+msgstr "Inntrigeadh"
+
+#: src/editor/object_selector.cpp:166
+msgid "Groundpiece (ground)"
+msgstr "Pìos an làir (làr)"
+
+#: src/editor/object_selector.cpp:167
+msgid "Groundpiece (solid)"
+msgstr "Pìos an làir (cruaidh)"
+
+#: src/editor/object_selector.cpp:168
+msgid "Groundpiece (bridge)"
+msgstr "Pìos an làir (drochaid)"
+
+#: src/editor/object_selector.cpp:169
+msgid "Groundpiece (transparent)"
+msgstr "Pìos an làir (so-dhrùidhteach)"
+
+#: src/editor/object_selector.cpp:170
+msgid "Groundpiece (remove)"
+msgstr "Pìos an làir (thoir air falbh)"
+
+#: src/editor/object_selector.cpp:171
+msgid "Hotspot"
+msgstr "Àite àiridh"
+
+#: src/editor/object_selector.cpp:172
+msgid "Background"
+msgstr "Cùlaibh"
+
+#: src/editor/object_selector.cpp:175
+msgid "Liquid"
+msgstr "Uisge"
+
+#: src/editor/object_selector.cpp:176
+msgid "Trap"
+msgstr "Ribe"
+
+#: src/editor/object_selector.cpp:177
+msgid "Weather"
+msgstr "Sìde"
+
+#: src/editor/object_selector.cpp:178
+msgid "Special Object"
+msgstr "Oibseact sònraichte"
+
+#: src/editor/object_selector.cpp:179
+msgid "Prefab Object"
+msgstr "Gnàth-oibseact"
+
+#: src/editor/message_box.cpp:37
+msgid "Replace"
+msgstr "Cuir na àite"
+
+#: src/editor/object_properties.cpp:87 src/editor/object_properties.cpp:515
+msgid "Object:"
+msgstr "Oibseact:"
+
+#: src/editor/object_properties.cpp:88 src/editor/object_properties.cpp:516
+msgid "Nothing selected"
+msgstr "Chan eil dad comharraichte"
+
+#: src/editor/object_properties.cpp:97
+msgid "Transparent"
+msgstr "So-dhrùidhteach"
+
+#: src/editor/object_properties.cpp:98
+msgid "Solid"
+msgstr "Cruaidh"
+
+#: src/editor/object_properties.cpp:99
+msgid "Ground"
+msgstr "Làr"
+
+#: src/editor/object_properties.cpp:100
+msgid "Bridge"
+msgstr "Drochaid"
+
+#: src/editor/object_properties.cpp:101
+msgid "Water"
+msgstr "Uisge"
+
+#: src/editor/object_properties.cpp:102
+msgid "Lava"
+msgstr "Làbha"
+
+#: src/editor/object_properties.cpp:103
+msgid "Remove"
+msgstr "Thoir air falbh"
+
+#: src/editor/object_properties.cpp:108
+msgid "Direction:"
+msgstr "Comhair:"
+
+#: src/editor/object_properties.cpp:110
+msgid "Left"
+msgstr "Clì"
+
+#: src/editor/object_properties.cpp:111
+msgid "Misc"
+msgstr "Measgaichte"
+
+#: src/editor/object_properties.cpp:112
+msgid "Right"
+msgstr "Deas"
+
+#: src/editor/object_properties.cpp:117
+msgid "ReleaseRate:"
+msgstr "Tric. sgaoil."
+
+#: src/editor/object_properties.cpp:140
+msgid "Para-X:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:141
+msgid "Para-Y:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:149
+msgid "Scroll-X:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:150
+msgid "Scroll-Y:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:158
+msgid "Owner Id:"
+msgstr "ID cò leis:"
+
+#: src/editor/object_properties.cpp:162
+msgid "Z-Pos:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:169
+msgid "Color:"
+msgstr "Dath:"
+
+#: src/editor/object_properties.cpp:181
+msgid "Small Stars:"
+msgstr "Rionnagan (beag):"
+
+#: src/editor/object_properties.cpp:184
+msgid "Middle Stars:"
+msgstr "Rionnagan (meadhanach):"
+
+#: src/editor/object_properties.cpp:187
+msgid "Large Stars:"
+msgstr "Rionnagan (mòr):"
+
+#: src/editor/object_properties.cpp:195
+msgid "Repeat:"
+msgstr "Ath-dhèanamh:"
+
+#: src/editor/object_properties.cpp:211
+msgid "Id:"
+msgstr "ID:"
+
+#: src/editor/object_properties.cpp:215
+msgid "Target Id:"
+msgstr "ID amais:"
+
+#: src/editor/object_properties.cpp:220
+msgid "Height:"
+msgstr "Àirde:"
+
+#: src/editor/object_properties.cpp:521
+msgid "Object: [Group]"
+msgstr "Oibseact: [Buidheann]"
+
+#: src/editor/object_properties.cpp:522
+msgid "Group not supported"
+msgstr "Cha tèid taic a chur ri buidheann"
+
+#: src/editor/object_properties.cpp:527
+msgid "Object: "
+msgstr "Oibseact: "
+
+#: src/pingus/pingus_main.cpp:172
+msgid "[OPTIONS]... [FILE]"
+msgstr "[ROGHAINNEAN] ... [FAIDHLE]"
+
+#: src/pingus/pingus_main.cpp:173
+msgid ""
+"Pingus is a puzzle game where you need to guide a bunch of little penguins "
+"around the world."
+msgstr ""
+"'S e geama toimhseachain a tha ann am Pingus far an stiùirich thu buidheann "
+"dhe chinn-fhionn mun cuairt a' chruinne-cè."
+
+#: src/pingus/pingus_main.cpp:175
+msgid "General Options:"
+msgstr "Roghainnean coitcheann:"
+
+#: src/pingus/pingus_main.cpp:177
+msgid "Displays this help"
+msgstr "Seall a' chobhair seo"
+
+#: src/pingus/pingus_main.cpp:179
+msgid "Print version number and exit"
+msgstr "Clò-bhuail àireamh an tionndaidh is fàg an-seo"
+
+#: src/pingus/pingus_main.cpp:181
+msgid "Enable info level log output"
+msgstr "Cuir info level log output an comas"
+
+#: src/pingus/pingus_main.cpp:183
+msgid "Enable debug level log output"
+msgstr "Cuir debug level log output an comas"
+
+#: src/pingus/pingus_main.cpp:185
+msgid "Disable all log output"
+msgstr "Cuir a h-uile log output à comas"
+
+#: src/pingus/pingus_main.cpp:187
+msgid "Display Options:"
+msgstr "Roghainnean an t-seallaidh:"
+
+#: src/pingus/pingus_main.cpp:189
+msgid "Start in Window Mode"
+msgstr "Tòisich Pingus ann an uinneag"
+
+#: src/pingus/pingus_main.cpp:191
+msgid "Start in Fullscreen"
+msgstr "Tòisich Pingus làn-sgrìn"
+
+#: src/pingus/pingus_main.cpp:193
+#, fuzzy
+msgid "Use the given renderer (default: sdl)"
+msgstr "Cleachd an reandaraiche a chaidh a thoirt dhut (Bun-taghadh: sdl)"
+
+#: src/pingus/pingus_main.cpp:195
+msgid "Set the window resolution for pingus (default: 800x600)"
+msgstr ""
+"Suidhich dùmhlachd-bhreacaidh na h-uinneige airson Pingus (Bun-taghadh: "
+"800x600)"
+
+#: src/pingus/pingus_main.cpp:197
+msgid "Set the resolution used in fullscreen mode (default: 800x600)"
+msgstr ""
+"Suidhich dùmhlachd-bhreacaidh la làn-sgrìn airson Pingus (Bun-taghadh: "
+"800x600)"
+
+#: src/pingus/pingus_main.cpp:199
+msgid "Enable software cursor"
+msgstr "Cuir cùrsair bathar-buig air"
+
+#: src/pingus/pingus_main.cpp:201
+msgid "Game Options:"
+msgstr "Roghainnean geama:"
+
+#: src/pingus/pingus_main.cpp:203
+msgid "Disable automatic scrolling"
+msgstr "Cuir fèin-sgroladh à comas"
+
+#: src/pingus/pingus_main.cpp:205
+msgid "Enable drag'n drop scrolling"
+msgstr "Cuir sgroladh slaod is leig às an comas"
+
+#: src/pingus/pingus_main.cpp:207
+msgid "Sound Options:"
+msgstr "Roghainnean fuaime:"
+
+#: src/pingus/pingus_main.cpp:209
+msgid "Disable sound"
+msgstr "Cuir fuaim à comas"
+
+#: src/pingus/pingus_main.cpp:211
+msgid "Disable music"
+msgstr "Cuir ceòl à comas"
+
+#: src/pingus/pingus_main.cpp:215
+msgid "Select language to use with Pingus"
+msgstr "Tagh an cànan a chleachdas tu le Pingus"
+
+#: src/pingus/pingus_main.cpp:217
+msgid "List all available languages"
+msgstr "Dèan liosta dhen a h-uile cànan a tha rim faighinn"
+
+#: src/pingus/pingus_main.cpp:221
+msgid "Loads the level editor"
+msgstr "A' luchdadh deasaiche nan leibheil"
+
+#: src/pingus/pingus_main.cpp:223
+msgid "Directory Options:"
+msgstr "Roghainnean a' phasgain:"
+
+#: src/pingus/pingus_main.cpp:224 src/pingus/pingus_main.cpp:226
+#: src/pingus/pingus_main.cpp:228
+msgid "DIR"
+msgstr "PASGAN"
+
+#: src/pingus/pingus_main.cpp:225
+msgid "Load game datafiles from DIR"
+msgstr "Luchdaich faidhlichean dàta a' gheama o DIR"
+
+#: src/pingus/pingus_main.cpp:227
+msgid "Load config files and store savegames in DIR"
+msgstr "Luchdaich faidhlichean rèiteachaidh is sàbhail savegames ann an DIR"
+
+#: src/pingus/pingus_main.cpp:229
+msgid "Load game modifications from DIR"
+msgstr "Luchdaich modifications a' gheama o DIR"
+
+#: src/pingus/pingus_main.cpp:231
+msgid "Don't read ~/.pingus/config"
+msgstr "Na leugh ~/.pingus/config"
+
+#: src/pingus/pingus_main.cpp:232
+msgid "FILE"
+msgstr "FAIDHLE"
+
+#: src/pingus/pingus_main.cpp:233
+msgid "Read config options from FILE"
+msgstr "Leugh roghainnean rèiteachaidh o FAIDHLE"
+
+#: src/pingus/pingus_main.cpp:235
+msgid "Uses the controller given in FILE"
+msgstr "Cleachdaich an t-uidheam-smachd ann an FAIDHLE"
+
+#: src/pingus/pingus_main.cpp:237
+msgid "Debug Options:"
+msgstr "Roghainnean dì-bhugachaidh:"
+
+#: src/pingus/pingus_main.cpp:239
+msgid "Enables some special features for developers"
+msgstr "Cuiridh seo feartan sònraichte dha leasaichearan an comas"
+
+#: src/pingus/pingus_main.cpp:241
+msgid "Set the game speed (0=fastest, >0=slower)"
+msgstr "Suidhich astar a' gheama (0=as luaithe, >0=nas slaodaiche)"
+
+#: src/pingus/pingus_main.cpp:243
+msgid "Set the desired game framerate (frames per second)"
+msgstr "Suidhich astar frèama a' gheama (frèama san diog)"
+
+#: src/pingus/pingus_main.cpp:245
+msgid "Set the size of the map tiles (default: 32)"
+msgstr "Suidhich meud nan leacagan (Bun-taghadh: 32)"
+
+#: src/pingus/pingus_main.cpp:663
+msgid "Pingus: Out of memory!"
+msgstr "Pingus: Gun chuimhne air fhàgail"
+
+#: src/pingus/pingus_main.cpp:667
+msgid "Pingus: Standard exception caught!:\n"
+msgstr "\n"
+
+#: src/pingus/pingus_main.cpp:671
+msgid "Pingus: Unknown throw caught!"
+msgstr ""
+
+#: src/pingus/game_time.cpp:29
+msgid "unlimited"
+msgstr "gun chrìch"
+
+#: src/pingus/actions/bridger.cpp:38 src/pingus/actions/bridger.cpp:196
+#: src/pingus/action_name.cpp:32
+msgid "Bridger"
+msgstr "Drochaidaiche"
+
+#: src/pingus/screens/start_screen.cpp:67
+msgid "Play"
+msgstr "Cluich"
+
+#: src/pingus/screens/start_screen.cpp:111
+#: src/pingus/screens/level_menu.cpp:50
+msgid "Back"
+msgstr "Air ais"
+
+#: src/pingus/screens/start_screen.cpp:166
+msgid "Number of Pingus: "
+msgstr "Àireamh nan ceann-fionn: "
+
+#: src/pingus/screens/start_screen.cpp:169
+msgid "Number to Save: "
+msgstr "Cinn-fhionn rin sàbhaladh: "
+
+#: src/pingus/screens/start_screen.cpp:172
+msgid "Time: "
+msgstr "ùine: "
+
+#: src/pingus/screens/start_screen.cpp:178
+msgid "Author: "
+msgstr "Ùghdar: "
+
+#: src/pingus/screens/addon_menu.cpp:53 src/pingus/screens/option_menu.cpp:336
+msgid "Close"
+msgstr "Dùin"
+
+#: src/pingus/screens/pingus_menu.cpp:54
+msgid "Story"
+msgstr "Sgeulachd"
+
+#: src/pingus/screens/pingus_menu.cpp:55
+msgid "..:: Start the game ::.."
+msgstr "..:: Tòisich an geama ::.."
+
+#: src/pingus/screens/pingus_menu.cpp:59
+msgid "Editor"
+msgstr "Deasaiche"
+
+#: src/pingus/screens/pingus_menu.cpp:60
+msgid "..:: Create your own levels ::.."
+msgstr "..:: Cruthaich an leibheil agad fhèin ::.."
+
+#: src/pingus/screens/pingus_menu.cpp:64
+msgid "Options"
+msgstr "Roghainnean"
+
+#: src/pingus/screens/pingus_menu.cpp:65
+msgid "..:: Configure the game ::.."
+msgstr "..:: Rèitich an geama ::.."
+
+#: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:177
+msgid "Levelsets"
+msgstr "Leibheilean"
+
+#: src/pingus/screens/pingus_menu.cpp:70
+msgid "..:: Play User Built levels ::.."
+msgstr "..:: Cluich leibheilean aig cluicheadairean ::.."
+
+#: src/pingus/screens/pingus_menu.cpp:75
+msgid "..:: Bye, bye ::.."
+msgstr "..:: Mar sin leat ::.."
+
+#: src/pingus/screens/pingus_menu.cpp:87
+msgid ""
+"..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
+"fullscreen   ::   F12: screenshot ::.."
+msgstr ""
+"..:: Ctrl-g: Greim luchaig   ::   F10: cunntair fps   ::   F11: làn-sgrìn   "
+"::   F12: glacadh-sgrìn ::.."
+
+#: src/pingus/screens/level_menu.cpp:155
+msgid "Under Construction"
+msgstr "Ga thogail"
+
+#: src/pingus/screens/level_menu.cpp:156
+msgid "Untested, unpolished and broken levels"
+msgstr "Gun deuchainn, gun ghleus is leibheilean briste"
+
+#: src/pingus/screens/level_menu.cpp:192
+msgid "Solved:"
+msgstr "Air fhuasgladh:"
+
+#: src/pingus/screens/level_menu.cpp:193
+msgid "levels"
+msgstr "leibheilean"
+
+#: src/pingus/screens/story_screen.cpp:108
+#: src/pingus/screens/story_screen.cpp:114
+msgid "skip"
+msgstr "seachnaich"
+
+#: src/pingus/screens/option_menu.cpp:208
+msgid "Fullscreen"
+msgstr "Làn-sgrìn"
+
+#: src/pingus/screens/option_menu.cpp:209
+msgid "Mouse Grab"
+msgstr "Greim luchaig"
+
+#: src/pingus/screens/option_menu.cpp:211
+msgid "Software Cursor"
+msgstr "Cùrsair bathar-buig"
+
+#: src/pingus/screens/option_menu.cpp:212
+msgid "Autoscrolling"
+msgstr "Fèin-sgroladh"
+
+#: src/pingus/screens/option_menu.cpp:213
+msgid "Drag&Drop Scrolling"
+msgstr "Scroladh slaod is leig às"
+
+#: src/pingus/screens/option_menu.cpp:215
+msgid "Print FPS"
+msgstr "Seall FPS"
+
+#: src/pingus/screens/option_menu.cpp:219
+msgid "Resolution:"
+msgstr "Breacadh-sgrìn:"
+
+#: src/pingus/screens/option_menu.cpp:220
+msgid "Renderer:"
+msgstr "Reandaraiche:"
+
+#: src/pingus/screens/option_menu.cpp:222
+msgid "Language:"
+msgstr "Cànan:"
+
+#: src/pingus/screens/option_menu.cpp:224
+msgid "Master Volume:"
+msgstr "Prìomh fhuaim:"
+
+#: src/pingus/screens/option_menu.cpp:225
+msgid "Sound Volume:"
+msgstr "Fuaim fhogharan:"
+
+#: src/pingus/screens/option_menu.cpp:226
+msgid "Music Volume:"
+msgstr "Fuaim ciùil:"
+
+#: src/pingus/screens/option_menu.cpp:334
+msgid "Option Menu"
+msgstr "Clàr-taice nan roghainnean"
+
+#: src/pingus/screens/option_menu.cpp:340
+msgid "Some options require a restart of the game to take effect."
+msgstr "Gus a h-uile roghainnean a chur an comas, ath-thòisich an geama"
+
+#: src/pingus/screens/result_screen.cpp:91
+msgid "Give up"
+msgstr "Gèill"
+
+#: src/pingus/screens/result_screen.cpp:126
+msgid "Retry"
+msgstr "Feuch a-rithist"
+
+#: src/pingus/screens/result_screen.cpp:183
+msgid "Success!"
+msgstr "Buaidh!"
+
+#: src/pingus/screens/result_screen.cpp:191
+msgid "Failure!"
+msgstr "Dh'fhàilig thu!"
+
+#: src/pingus/screens/result_screen.cpp:200
+msgid "Perfect! You saved everyone possible - great!"
+msgstr "Foirfe! Shàbhail thu a h-uile gin dhiubh!"
+
+#: src/pingus/screens/result_screen.cpp:202
+msgid "No-one got killed, pretty good work."
+msgstr "Cha deach gin a mharbhadh, glè mhath."
+
+#: src/pingus/screens/result_screen.cpp:204
+msgid ""
+"You saved exactly what you needed - you made it, but\n"
+"maybe you can do better?"
+msgstr ""
+"Cha do shàbhail thu ach na bha a dhìth. Rinn thu a' chùis air,\n"
+"ach 's mathaid gum feuch thu ri dèanamh nas fhearr?"
+
+#: src/pingus/screens/result_screen.cpp:207
+msgid "Not everybody was saved, but still good work!"
+msgstr ""
+"Cha deach leat a h-uile gin dhiubh a shàbhaladh, ach rinn thu gu math co-"
+"dhiù!"
+
+#: src/pingus/screens/result_screen.cpp:209
+msgid "What can I say, you made it - congratulations!"
+msgstr "Dè as urrainn dhomh ràdh, rinn thu a' chùis air. Meal do naidheachd!!"
+
+#: src/pingus/screens/result_screen.cpp:214
+msgid "You killed everybody, not good."
+msgstr "Obh obh, mharbh thu a h-uile gin diubh."
+
+#: src/pingus/screens/result_screen.cpp:216
+msgid "No-one got saved - I know you can do better."
+msgstr ""
+"Cha deach gin a shàbhaladh - 's urrainn dhut dèanamh nas fhearr gun teagamh."
+
+#: src/pingus/screens/result_screen.cpp:218
+msgid ""
+"You didn't save enough, but you saved a few.  Next\n"
+"time you might do better."
+msgstr ""
+"Cha do shàbhail thu gu leòr, ach co-dhiù cuid dhiubh.\n"
+"Nì thu nas fhearr an ath thuras le cinnt."
+
+#: src/pingus/screens/result_screen.cpp:221
+msgid "Only one more and you would have made it - try again!"
+msgstr "Cha robh ach aon a dhìth ort - feuch ris a-rithist!"
+
+#: src/pingus/screens/result_screen.cpp:223
+msgid "Only a handful more and you would have made it - try again!"
+msgstr "Cha robh ach cuid a dhìth airson buannachd - feuch ris a-rithist!"
+
+#: src/pingus/screens/result_screen.cpp:225
+msgid "Better luck next time!"
+msgstr "Gun tèid nas fhearr let an ath thuras!"
+
+#: src/pingus/screens/result_screen.cpp:233
+msgid "Saved: "
+msgstr "Sàbhailte: "
+
+#: src/pingus/screens/result_screen.cpp:237
+msgid "Died: "
+msgstr "Marbh: "
+
+#: src/pingus/screens/result_screen.cpp:240
+msgid "Time left: "
+msgstr "Ùine air fhàgail: "
+
+#: src/pingus/action_name.cpp:27
+msgid "Angel"
+msgstr "Aingeal"
+
+#: src/pingus/action_name.cpp:28
+msgid "Basher"
+msgstr "Slacair"
+
+#: src/pingus/action_name.cpp:29
+msgid "Blocker"
+msgstr "Bacadair"
+
+#: src/pingus/action_name.cpp:30
+msgid "Boarder"
+msgstr "Bòrdaiche"
+
+#: src/pingus/action_name.cpp:31
+msgid "Bomber"
+msgstr "Bomadair"
+
+#: src/pingus/action_name.cpp:33
+msgid "Climber"
+msgstr "Sreapadair"
+
+#: src/pingus/action_name.cpp:34
+msgid "Digger"
+msgstr "Cladhaichear"
+
+#: src/pingus/action_name.cpp:35
+msgid "Drown"
+msgstr "Bàthadh"
+
+#: src/pingus/action_name.cpp:36
+msgid "Exiter"
+msgstr "Fàgaiche"
+
+#: src/pingus/action_name.cpp:37
+msgid "Faller"
+msgstr "A' tuiteam"
+
+#: src/pingus/action_name.cpp:38
+msgid "Floater"
+msgstr "Fleòdragan"
+
+#: src/pingus/action_name.cpp:39
+msgid "Jumper"
+msgstr "Leumadair"
+
+#: src/pingus/action_name.cpp:40
+msgid "Laserkill"
+msgstr "Murtair-Leusair"
+
+#: src/pingus/action_name.cpp:41
+msgid "Miner"
+msgstr "Mèinnear"
+
+#: src/pingus/action_name.cpp:42
+msgid "Slider"
+msgstr "Sleamhnaiche"
+
+#: src/pingus/action_name.cpp:43
+msgid "Smashed"
+msgstr "Air smùideadh"
+
+#: src/pingus/action_name.cpp:44
+msgid "Splashed"
+msgstr "Air stealladh"
+
+#: src/pingus/action_name.cpp:45
+msgid "Superman"
+msgstr "Superman"
+
+#: src/pingus/action_name.cpp:46
+msgid "Teleported"
+msgstr "Air tele-phortadh"
+
+#: src/pingus/action_name.cpp:47
+msgid "Waiter"
+msgstr "A' feitheamh"
+
+#: src/pingus/action_name.cpp:48
+msgid "Walker"
+msgstr "Coisiche"
+
+#: src/pingus/components/pingus_counter.cpp:43
+#, c-format, boost-format
+msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
+msgstr "Fa sgaoil: %3d/%d A-muigh: %3d Sàbhailte: %3d/%d"
+
+#: src/pingus/worldmap/level_dot.cpp:134
+msgid "???"
+msgstr "???"
+
+#: src/pingus/worldmap/worldmap_screen.cpp:84
+msgid "Show Ending?"
+msgstr "Seall crìoch?"
+
+#: src/pingus/worldmap/worldmap_screen.cpp:113
+msgid "Leave?"
+msgstr "Fàg"
+
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
+msgid "If the way is blocked, bash away"
+msgstr "Ma tha an t-slighe bacte, thoir slac air"
+
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus:6
+msgid ""
+"Similar to the Digger action that you already know from previous levels, "
+"there is also an action that allows the Pingus to dig horizontally, as "
+"opposed to the vertical dig ability the Digger action provides. This new "
+"action is called Basher. "
+msgstr ""
+"Coltach ris a' Chladhaichear a chunnaic thu roimhe, tha gnìomh cladhaich "
+"eile ann. Co-dhiù, cha chladhaich thu gu h-inghearach ach seach gu còmhnard "
+"leis. 'S e Slacair a tha air a' ghnìomh ùr seo. "
+
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:5
+msgid "Sacrifice a few and save the rest"
+msgstr "Ìobair cuid is sàbhail an còrr"
+
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:6
+msgid ""
+"Sometimes no other actions are available, so you have to bomb your way "
+"through the ground. The Pingus can do this by actually self- destructing. "
+"This will kill them, but it is sometimes necessary to sacrifice a few to "
+"save the rest. "
+msgstr ""
+"Aig amannan, chan eil fuasgladh agad ach toll a dhèanamh san làr le boma. 'S "
+"urrainn dha cheann-fionn seo a dhèanamh ma thèid e na Bhomadair. Gheibh e "
+"bàs gu mì-fhortanach, ach sàbhailidh an ìobairt seo càch. "
+
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:5
+msgid "Learning to dig"
+msgstr "Ionnsaich cladhach"
+
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:6
+msgid ""
+"This is your first mission. As always, it's pretty easy. All you have to do "
+"is to give a Pingu the command to dig a hole into the ground so that they "
+"can reach the exit. This can be accomplished simply by clicking on a Pingu. "
+msgstr ""
+"Seo a' chiad mhisean agad. Mar as abhaist, tha e furasta gu leòr. Cha leig "
+"thu leas ach òrdugh a thoirt dha cheann-fhionn ach an cladhaich e toll san "
+"làr gus an ruig a h-uile ceann-fionn an doras a-mach. Gus seo a dhèanamh, "
+"dèan briogadh air ceann-fionn. "
+
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus:5
+msgid "Float or Die"
+msgstr "Bidh nad fhleòdragan no faigh bàs"
+
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus:6
+msgid ""
+"Well done in mission one! Now let's start the next one. This time you will "
+"need to equip your Pingus with a little propeller, so that they can float to "
+"the ground smoothly. If Pingus fall too far, they will not be able to "
+"survive the fall, so keep your eyes open! "
+msgstr ""
+"Nach math a rinn thu sa chiad mhisean! Nise, tòisicheamaid leis an ath "
+"fhear. An turas seo, feumaidh tu fleòdragain a dhèanamh dhe na cinn-fhionn "
+"is uidheam itealaich beag a chur uapa ach an tuit iad gu slaodach. Ma "
+"thuiteas ceann-fionn ro ìosal, gheibh e bàs. Cùm do shùilean a-mach!"
+
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:5
+msgid "Jump for joy"
+msgstr "Leum le toileachas"
+
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:6
+msgid ""
+"Sometimes a Pingu needs to reach a platform that is far away, but not "
+"reachable by walking. That's when the Jumper comes in handy - it allows the "
+"Pingu to make a small jump and so enables him to reach the platform. "
+msgstr ""
+"Air amannan, feumaidh ceann-fionn àrd-ùrlar a ruigsinn a tha fad air falbh "
+"is gha ghabh e ruigsinn le coiseachd. Bidh an Leumadair feumail san "
+"t-suidheachadh seo - 's urrainn dhan cheann-fhionn leum beag a ghabhail is "
+"an àrd-ùrlar ruigsinn. "
+
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:5
+msgid "Miner's heaven"
+msgstr "Neamh a' mhèinneir"
+
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:6
+msgid ""
+"Another action hits the street - another digging action, this time a "
+"diagonal one. It allows a Pingu to dig diagonally through ground, thus "
+"creating a path for following Pingus. The action is called Miner. "
+msgstr ""
+"Tha gnìomh eile a' togail ceann, is 's e gnìomh cladhaich a tha ann "
+"a-rithist, gu trastanach an turas seo. Leigidh e le ceann-fionn cladhach "
+"tron làr gu trastanach is slighe dhan fheadhainn às a dhèidh a chruthachadh. "
+"'S e Mèinnear a tha air a' ghnìomh seo. "
+
+#: data/levels/tutorial/snow10-grumbel.pingus:5
+msgid "Panic Island (float/bash)"
+msgstr "Eilean na maoime (nad fhleòdragan/slac)"
+
+#: data/levels/tutorial/snow10-grumbel.pingus:6
+msgid ""
+"While the previous levels have not required much quick action from you, this "
+"one gets a bit trickier. The Pingus are coming out of two entrances in "
+"parallel and it is your job to coordinate the two groups wisely. "
+msgstr ""
+"Cha deach gluasadan luatha iarraidh ort sna leibheilean roimhe, ach fàsaidh "
+"e beagan nas dorra a-nis. Thig na cinn-fhionn a-mach à dà inntrigidh aig an "
+"aon àm is feumaidh tu an dà bhuidheann a cho-òrdanachadh gu cùramach. "
+
+#: data/levels/tutorial/snow11-grumbel.pingus:5
+msgid "Jump'n Bump... and Bash..."
+msgstr "Leum... is slac..."
+
+#: data/levels/tutorial/snow11-grumbel.pingus:6
+msgid ""
+"It's panic time again. The Pingus will not come out very fast, but since "
+"they turn around when they hit walls you will soon have some trouble "
+"coordinating them all. Since you only need to save 5 it should be doable, "
+"but if all else fails use the pause-mode ('p') to get an overview again. "
+msgstr ""
+"Tha na cinn-fhionn fo uallach a-rithist. Cha tig iad a-mach uabhasach luath, "
+"ach air sgàth 's gun till iad air cois-cheum nuair a bhuaileas iad ri "
+"balla, chan fhada gus am bi duilgheadasan agad an co-òrdanachadh. Bu chòir "
+"dhut a' chùis a dhèanamh air on nach eil agad ri sàbhaladh ach 5, ach mur "
+"eil fuasgladh eile ann, cleachd am modh stadaidh (»p«) ach am faigh thu "
+"foir-shealladh a-rithist."
+
+#: data/levels/tutorial/snow12-grumbel.pingus:5
+msgid "Two groups in parallel, coordinate wisely"
+msgstr "Dà bhuidheann, co-òrdanaich gu glic"
+
+#: data/levels/tutorial/snow12-grumbel.pingus:6
+msgid ""
+"You have two groups to coordinate this time. No need to panic, since this "
+"level gives you enough time to think your actions through. No more tips this "
+"time, but good luck! "
+msgstr ""
+"Tha dà bhuidheann agad rin co-òrdanachadh a-nis. Air do shocair co-dhiù, "
+"bidh dàil smaoineachaidh gu leòr agad san leibheil seo. Chan fhaigh thu "
+"comhairle a bharrachd an turas seo, ach guma math a thèid leat! "
+
+#: data/levels/tutorial/snow14-grumbel.pingus:5
+msgid "Block'a Rock"
+msgstr "Bac is bomaich"
+
+#: data/levels/tutorial/snow14-grumbel.pingus:6
+msgid ""
+"Once again it's time to combine the things you have learned in your previous "
+"levels. Blast your way free and make sure you also keep the rest of the "
+"Pingus under control. The Blocker action will be helpful."
+msgstr ""
+"Thàinig an t-àm a-rithist gus na dh'ionnsaich thu roimhe a chur ri chèile. "
+"Bomaich gus am bi slighe shaor agad is dèan cinnteach gun cùm thu smachd air "
+"na cinn-fhionn eile. Bidh am Bacadair cuideachail."
+
+#: data/levels/tutorial/snow15-grumbel.pingus:5
+msgid "Climb, Climber,... Boom!"
+msgstr "Sreap, sreapadair... bùm!"
+
+#: data/levels/tutorial/snow15-grumbel.pingus:6
+msgid ""
+"As you might have already figured out from previous levels, you often have "
+"to combine different actions to get the job done. Due to the lack of a "
+"Digger action in this level the Bomber needs to jump in, but how can it "
+"reach the place to bomb? "
+msgstr ""
+"Mar a mhothaicheadh tu sna leibheilean roimhe, feumaidh tu gnìomhan eadar-"
+"dhealaichte a chur ri chèile gu tric ach an ruig thu an ceann-uidhe. On a "
+"tha Cladhaichear a dhìth ort, feumaidh tu Bomadair a chleachdadh, ach ciamar "
+"a ruigeas e an àite far a bheil e a dhìth?"
+
+#: data/levels/tutorial/snow16-grumbel.pingus:5
+msgid "Bridging gets more complicated..."
+msgstr "Fàsaidh togail dhrochaidean nas duilghe..."
+
+#: data/levels/tutorial/snow16-grumbel.pingus:6
+msgid ""
+"Once again you have to combine actions carefully and wisely. If you don't "
+"you could end up in the hole just before the exit, so think about how to "
+"avoid that. "
+msgstr ""
+"Feumaidh tu na gnìomhan a chur ri chèile gu cùramach glic a-rithist, air neo "
+"thèid do ghlacadh san toll faisg air an doras a-mach. Smaoinich air ciamar "
+"a sheachnas tu seo."
+
+#: data/levels/tutorial/snow17-grumbel.pingus:5
+msgid "If too high, your Pingu will die..."
+msgstr "Ro àrd is gheibh an ceann-fionn bàs..."
+
+#: data/levels/tutorial/snow17-grumbel.pingus:6
+msgid ""
+"Teamwork is the way to the exit this time. You don't have enough Floaters to "
+"reach the exit, so just send a few and let them prepare the path for the "
+"rest. "
+msgstr ""
+"Feumaidh na cinn-fhionn obair mar sgioba an turas seo. Chan eil Fleòdragain "
+"gu leòr agad gus an doras a-mach a ruigsinn, mar sin cuir cuid dhiubh a-null "
+"gus an rathad ullachadh dha chàch."
+
+#: data/levels/tutorial/snow19-grumbel.pingus:5
+msgid "Learn to use the bridge"
+msgstr "Ionnsaich togail dhrochaidean"
+
+#: data/levels/tutorial/snow19-grumbel.pingus:6
+msgid ""
+"If no Jumper is at hand and a large hole needs to be passed, a bridge can be "
+"pretty helpful. It takes some time to build, but unlike the jumper action it "
+"allows following Pingus to reach the other end too. "
+msgstr ""
+"Ma tha agad ri faighinn thairis air toll mhòr is Leumadair a dhìth ort, "
+"faodaidh Drochaid a bhith air leth feumail. Bheir e ùine tè a thogail, ach "
+"eu-choltach ris an Leumadair faodaidh an còrr dhe na cinn-fhionn a "
+"cleachdadh gus an taobh thall a ruigsinn."
+
+#: data/levels/tutorial/snow20-grumbel.pingus:5
+msgid "Three solutions, it's up to you"
+msgstr "Trì fuasglaidhean, tha e suas riut fhèin"
+
+#: data/levels/tutorial/snow20-grumbel.pingus:6
+msgid ""
+"Now that you've learned all the actions, it's time for some more practice. "
+"This level presents you with at least three different ways to solve it. It's "
+"up to you which one you pick. "
+msgstr ""
+"On a tha thu air a h-uile gnìomh ionnsachadh, 's e an cleachdadh a nì "
+"bòidheach! Tha air a char as lugha trì dòighean ann gus an leibeil seo "
+"fhuasgladh. Tha e suas riut fhèin dè an t-slighe a thaghas tu. "
+
+#: data/levels/tutorial/snow21-grumbel.pingus:5
+msgid "Climb, Climber, climb... and build a bridge"
+msgstr "A shreapadair, sreap... is tog drochaid"
+
+#: data/levels/tutorial/snow21-grumbel.pingus:6
+msgid ""
+"Once again you get access to a new action. The Climber action allows a Pingu "
+"to climb up straight walls, thus allowing him to reach stuff that might be "
+"too high to reach by other means. "
+msgstr ""
+"Seo gnìomh ùr eile dhut. Ma tha e na Shreapadair, 's urrainn do cheann-fionn "
+"ballaichean inghearach a shreap is faighinn dha dh'àiteachan àrda nach "
+"gabhadh ruigsinn air dòighean eile."
+
+#: data/levels/tutorial/snow22-grumbel.pingus:5
+msgid "Entrance high, Exit low"
+msgstr "Inntrigidh àrd, doras a-mach ìosal"
+
+#: data/levels/tutorial/snow22-grumbel.pingus:6
+msgid ""
+"If you don't have enough floaters to bring all the Pingus down to the exit - "
+"you have to find other ways to guide them down. You should have learned all "
+"the stuff you need for this level in previous levels, so this shouldn't be "
+"too much of a problem for you. "
+msgstr ""
+"Mur eil Fleòdragain gu leòr agad ach am faigh a h-uile ceann-fionn sìos dhan "
+"doras a-mach, feumaidh tu dòighean eile a lorg gus an stiùireadh. Cha bhi a "
+"dhìth ort san leibheil seo ach na dh'ionnsaich thu sna leibheilean roimhe. "
+"Cha bu chòir dha a bhith na thrioblaid mhòr dhut. "
+
+#: data/levels/tutorial/snow7-grumbel.pingus:5
+msgid "One must prepare, the rest must follow"
+msgstr "Ullaichidh aonar is leanaidh an còrr"
+
+#: data/levels/tutorial/snow7-grumbel.pingus:6
+msgid ""
+"Sometimes there are situations where you don't have a Blocker at hand to "
+"coordinate your Pingus. You'll have to find other ways to keep them under "
+"control while a single one prepares the path for the rest. "
+msgstr ""
+"Aig amannan, cha bhi Bacadair faisg air làimh gus na cinn-fhionn a "
+"cho-òrdanachadh. Mar sin, feumaidh tu dòighean eile a lorg gus smachd a "
+"chumail orra fhad 's an ullaich aonan an t-slighe dha chàch. "
+
+#: data/levels/tutorial/snow8-grumbel.pingus:5
+msgid "Dig and float, just don't fall and smash"
+msgstr "Cladhach is fleòdragan, na tuit is bàsaich"
+
+#: data/levels/tutorial/snow8-grumbel.pingus:6
+msgid ""
+"Unlike the first two levels, you have two actions available in this level. "
+"Your job is again simple: select an action at the panel on the left and "
+"apply it to the Pingus so that they will be able to reach the exit. Make "
+"sure that not too many of them die. "
+msgstr ""
+"Eu-choltach ris a' chiad dà leibheil, tha dà ghnìomh agad san leibheil seo. "
+"A-rithist, tha na dh'fheumas tu dèanamh simplidh: tagh gnìomh san leòsan "
+"chlì is dèan briogadh air na cinn-fhionn ach an ruig iad an doras a-mach. "
+"Dèan cinnteach nach fhaigh cus dhiubh bàs. "
+
+#: data/levels/tutorial/snow9-grumbel.pingus:5
+msgid "Dig, bash and other problems"
+msgstr "Cladhach, slacadh is trioblaidean eile"
+
+#: data/levels/tutorial/snow9-grumbel.pingus:6
+msgid ""
+"The more levels you master, the more difficult they will get, but don't "
+"panic, as this one is still pretty easy. Just use the stuff that you've "
+"learned in the previous levels and you shouldn't have many problems. If you "
+"think you've reached a situation from which you can no longer solve the "
+"level, double click the armageddon button at the lower right. "
+msgstr ""
+"Mar as adhartaiche a thèid thu, 's ann nas duilghe a thionndaidheas e. Co-"
+"dhiù, air do shocair, tha an leibheil seo reusanta furasta fhathast. Bu "
+"chòir dhut a bhith ceart gu leòr fhad 's a chleachdas tu na dh'ionnsaich thu "
+"gu ruige seo. Ma tha thu den bheachd nach gabh an leibheil fhuasgladh "
+"tuilleadh, dèan briogadh dùbailte air pùtan Armagedon san oisean deas gu "
+"h-ìosal. "
+
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus:5
+msgid "Solid ground can block the path"
+msgstr "Faodaidh làr cruaidh a bhith san rathad"
+
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus:6
+msgid ""
+"As you have learned in earlier levels your Pingus can dig through basically "
+"any terrain, but there is one material which they can't penetrate: steel. "
+"These regions are marked dark grey on the level map and cannot be destroyed, "
+"so you must find a way around them. "
+msgstr ""
+"Mar a dh'ionnsaich thu sna leibheilean roimhe, 's urrainn dha cheann-fionn "
+"cladhach tro cha mhòr a h-uile rud. Co-dhiù, tha aon stuth ann nach fhaigh e "
+"troimhe: stàilinn. Tha dath dubh-ghlas air na raointean seo air mapa an "
+"leibheil is cha ghabh an sgrios. Mar sin, lorg slighe timcheall orra. "
+
+#: data/levels/halloween/halloween1-grumbel.pingus:5
+msgid "One jump to catch them all"
+msgstr "Chan e ach leum gus a h-uile a shàbhaladh"
+
+#: data/levels/halloween/halloween1-grumbel.pingus:6
+msgid ""
+"The pingus have found themselves lost on their journey.  What is this "
+"mysterious place?  Smiling pumpkins, giant candlesticks, and some boiling "
+"soup below... what wizardry is this? Now, facing a deadly abyss right in "
+"front of them it's your job to save them. Can you save them from a terrible "
+"fate?"
+msgstr ""
+"Mhothaich na cinn-fhionn gun do chaill iad an t-slighe. Dè an t-àite neònach "
+"a tha seo? Peapagan le fiamh-ghàire orra, coinnlean ana-mhòr, is brot a' "
+"bruich fodhpa... dè an draoidheachd a tha seo? Nise gu bheil aibheis "
+"bhàsmhor romhpa, 's ann leatsa a tha an t-uallach airson an sàbhaladh. An "
+"urrainn dhut an sàbhaladh o dhàn uabhasach?"
+
+#: data/levels/halloween/halloween2-grumbel.pingus:5
+msgid "One Thousand and One Jumps"
+msgstr "Leum is mìle"
+
+#: data/levels/halloween/halloween2-grumbel.pingus:6
+msgid ""
+"With the exit so high above and far out of reach for a normal Pingu, what "
+"options are there? Perhaps a jumper can rescue them?  Or will he simply slow "
+"their inevitable demise? It's your job to find out, but are you good enough "
+"to save them all?"
+msgstr ""
+"On a tha an doras a-mach cho àrd is cho fad air falbh 's nach ruig ceann-"
+"fionn àbhaisteach e, dè a ghabhas dèanamh? 'S dòcha gun sàbhail leumadair "
+"iad? Air neo nach dèan e ach dàil a chuir air a' bhàs do-sheachanta? Tha an "
+"t-uallach airson seo fhaighinn a-mach leatsa, ach a bheil thu math gu leòr "
+"gus an sàbhaladh uile?"
+
+#: data/levels/halloween/halloween3-grumbel.pingus:5
+msgid "Boom Boom"
+msgstr "Bùm bùm"
+
+#: data/levels/halloween/halloween3-grumbel.pingus:6
+msgid ""
+"You've mastered the last challenge and now face the next. Their path to "
+"salvation seems to be cursed, but by whom? There is no time to think about "
+"it, since the next deadly challenge already awaits the Pingus. Two mighty "
+"roots block the way, but without a basher at hand to bash them away, "
+"sacrifice might be the only option..."
+msgstr ""
+"Rinn thu a' chùis air an dùbhlan mu dheireadh is tha an t-ath fhear romhad "
+"a-nis. A rèir coltais, tha an t-slighe dhan t-sàbhaladh fo mhallachd, ach cò "
+"leis? Chan eil ùine agad gus smaoineachadh air, oir tha an t-ath dhùbhlan "
+"bàsmhor ro na cinn-fhionn mu thràth. Tha dà fhreumh neartmhor san rathad is "
+"chan eil slacair agad gus an toirt air falbh. Dh'fhaodadh ìobairt a bhith "
+"san fhuasgladh mu dheireadh..."
+
+#: data/levels/halloween/halloween4-grumbel.pingus:5
+msgid "Full Circle"
+msgstr "Cearcall slàn"
+
+#: data/levels/halloween/halloween4-grumbel.pingus:6
+msgid ""
+"The exit is so close, yet out of reach. A step in the wrong direction and "
+"the Pingus will fall to a terrible fate. You must do something to help them, "
+"but is there enough time? You have to hurry and can't allow yourself any "
+"mistakes. The Pingus are counting on you!"
+msgstr ""
+"Tha an doras a-mach cho faisg, ach cha ghabh e ruigsinn. Ma ghabhas tu ceum "
+"san rathad cheàrr, fulaingidh na cinn-fhionn dàn uabhasach. Feumaidh tu "
+"rudeigin a dhèanamh gus an cuideachadh, ach a bheil ùine gu leòr agad? Greas "
+"ort is na dèan mearachd. Tha na cinn-fhionn a' crochadh ort!"
+
+#: data/levels/halloween/halloween5-grumbel.pingus:5
+msgid "Bridgers Nightmare"
+msgstr "Trom-laighe an drochaidiche"
+
+#: data/levels/halloween/halloween5-grumbel.pingus:6
+msgid ""
+"Who placed this monstrous wall here?  This terrible blockade separates your "
+"Pingus from the exit. Destruction of its awful construction seems an "
+"impossibility, but perhaps the bridger can come to the rescue?  Can they "
+"build their bridges high enough to guide the group yet again safely to the "
+"exit? Or is somebody playing evil mind tricks with you?\n"
+"\n"
+"Yet again the solution is your call... your gray matter is the key to the "
+"Pingus' success, so don't let yourself get confused and misguided from the "
+"true path."
+msgstr ""
+"Cò thog balla fiamharach an-seo? Cumaidh an cnap-starra uabhasach seo na "
+"cinn-fhionn agad air falbh on doras a-mach. Cha chreideadh tu gun gabhadh an "
+"togalach grannda seo a sgrios, ach is dòcha gun toir na drochaidaichean "
+"faochadh dhuinn? An urrainn dhaibh na drochaidean a thogail àrd gu leòr ach "
+"am faigh am buidheann dhan doras a-mach gu sàbhailte? No an e mealladh an "
+"deamhain a tha seo?\n"
+"\n"
+"A-rithist, tha am fuasgladh a' crochadh ortsa... Is d' eanchainn iuchair an "
+"t-soirbheachais dha na cinn-fhionn, mar sin dèan cinnteach nach eil bruadair "
+"nad cheann 's nach caill thu an t-slighe cheart."
+
+#: data/levels/halloween/halloween6-grumbel.pingus:5
+msgid "Locked up by the witch"
+msgstr "Air an glasadh leis a' bhana-bhuidseach"
+
+#: data/levels/halloween/halloween6-grumbel.pingus:6
+msgid ""
+"Is this a prison? Blocked by solid walls all around, there doesn't seem to "
+"be a way to escape. Salvation seems impossible. But wait... the wall to the "
+"right seems weak... perhaps this is a way to escape? Or is it a false path "
+"that will lead to the Pingus' doom?\n"
+"\n"
+"This is a risky trip, but you must take it to find out how to bring them all "
+"to freedom once again."
+msgstr ""
+"An e toll dubh a tha seo? Tha ballachan cruaidh mun cuairt oirnn is chan eil "
+"slighe a-mach ri faicinn. Cha shaoileadh tu gum biodh sàbhaladh ann. Ach "
+"fuirich ort... tha coltas rudeigin lag aig balla an taoibh dheis... an e "
+"fuasgladh a tha ann? Air neo mealladh a bheir bàs air na cinn-fhionn?\n"
+"\n"
+"'S e rathad cunnartach a tha seo, ach feumaidh tu a ghabhail gus faighinn "
+"a-mach ciamar bheir thu iad uile dhan t-saorsa turas eile."
+
+#: data/levels/halloween/halloween7-grumbel.pingus:5
+msgid "Splatterfest"
+msgstr "Fèis steallaidh"
+
+#: data/levels/halloween/halloween7-grumbel.pingus:6
+msgid ""
+"This is by far the deepest pit the Pingus have yet encountered. Building a "
+"bridge across it seems obvious but that won't help since the exit is deep "
+"down in the pit itself. Pingus who try to go down the pit will just end up "
+"splattered all over the ground. You have two groups of Pingus at your "
+"disposal, can you make them work together to reach even an exit this well "
+"hidden?"
+msgstr ""
+"Seo an sloc as doimhne a chunnaic na cinn-fhionn roimhe riamh. Bhiodh e "
+"follaiseach drochaid a thogail dhan taobh thall, ach chan obraich seo on a "
+"tha an doras a-mach ro ìosal san t-sloc. Cha tèid cinn-fhionn a dh'fheuchas "
+"ri leum sìos ach stealladh air a bhonn. Co-dhiù, tha dà bhuidheann dhe "
+"chinn-fhionn agad. An urrainn dhut toirt orra obair còmhla ach an ruig iad "
+"doras a-mach a tha cho falaichte?"
+
+#: data/levels/halloween/halloween8-plouj.pingus:5
+msgid "Staircase Maintenance"
+msgstr "Càradh staidhrichean"
+
+#: data/levels/halloween/halloween8-plouj.pingus:6
+msgid ""
+"It seems we are up again against a mighty wall, and it is blocking the exit! "
+"But wait, some good soul has built a staircase around it. It seems, however, "
+"that the poor fool's efforts didn't last long, as the staircase is destroyed "
+"and full of holes. Can you fix it and make it over the wall? Yet of course "
+"you know that the right solution might not be the obvious one. But your "
+"Pingus are almost free, and they trust in your skill to guide them to safety "
+"once more. Succeed and you will have freed them once and for all from "
+"whatever evildoer that placed them in this nightmare... at least for this "
+"year."
+msgstr ""
+"A rèir coltais, tha sinn air beulaibh balla treun a-rithist, is bacaidh e an "
+"doras a-mach! Ach fuirich ort, thog cuideigin coibhneil staidhre. Cha do "
+"mhair a shàr-obair fada ge-tà, oir chaidh an staidhre a sgrios is i làn "
+"tuill. An urrainn dhut a càradh is faighinn thar a' bhalla? Gu nàdarra, tha "
+"fios agad nach eil am fuasgladh as fhasa an-còmhnaidh am fear ceart. Ach tha "
+"na cinn-fhionn agad cha mhòr saor is tha earbsa aca sna comasan agad gus an "
+"sàbhaladh turas eile. Ma shoirbhicheas leat, bidh iad sàbhailte on eucorach "
+"a thug an trom-laighe seo orra gu sìorraidh bràth... uill, fad bliadhna co-"
+"dhiù."
+
+#: data/levels/halloween2011/halloween10-grumbel.pingus:5
+msgid "Down Into The Cave"
+msgstr "Sìos dhan uaigh"
+
+#: data/levels/halloween2011/halloween10-grumbel.pingus:6
+msgid ""
+"The exit is far below and the pingus are separated from it by quite a "
+"distance. The path down is riddled with gulfs, so jumping and bridging will "
+"be the primary tool to get down there. But be careful, the last few steps "
+"require some extra cleverness."
+msgstr ""
+"Tha an doras a-mach fada shìos is astar math eadar e is na cinn-fhionn. Tha "
+"slocan a' cnàmhadh an t-slighe, is mar sin 's e leum is drochaidean am "
+"prìomh ghnìomh agad gus faighinn shìos. Ach thoir an aire, feumaidh tu a "
+"bhith glic dha-rìribh leis na ceuman mu dheireadh."
+
+#: data/levels/halloween2011/halloween11-grumbel.pingus:5
+msgid "Round and Round"
+msgstr "Mun cuairt is mun cuairt"
+
+#: data/levels/halloween2011/halloween11-grumbel.pingus:6
+msgid ""
+"Trapped in an eternal loop one brave pingu has to break out and go on a "
+"journey in search for the exit, but he mustn't be too happy once he found "
+"it, as there is still one last challenge he must solve before being allowed "
+"to enter it, otherwise all his friends might perish."
+msgstr ""
+"Glacte ann an lùb a-muigh, feumaidh ceann-fionn calma briseadh a-mach is "
+"siubhal air tòir an dorais a-mach. Chan fhaod e a bhith ro thoilichte nuair "
+"a lorgas e e on a tha aon dùbhlan eile aige ri fhuasgladh mus fhaod e dol "
+"troimhe, air neo gheibheadh a h-uile caraidean aige bàs."
+
+#: data/levels/halloween2011/halloween12-grumbel.pingus:5
+msgid "Red Herring Cave"
+msgstr "An uamh mheallta"
+
+#: data/levels/halloween2011/halloween12-grumbel.pingus:6
+msgid ""
+"The exit is right above the pingus heads, with a few friendly arrows "
+"pointing the way. With jumpers around the solution should be obvious. But "
+"wait, can anything you find in a dark cave be trusted or is there some more "
+"going on which might slip your view? Thinking outside the box might be "
+"required."
+msgstr ""
+"Tha an doras a-mach dìreach os cionn nan cinn-fhionn, le saighead càirdeil "
+"no dhà a' comharrachadh na slighe.Tha e follaiseach gum faigh thu air leis "
+"na leumadairean a th' agad. Ach fuirich ort, am bu chòir dhut earbsa a chur "
+"ann an rud sam bith ann an uamh dorcha, no a bheil rudeigin neo-aithnichte "
+"falaichte o do shùil? Feumaidh tu am puicean-eich a thoirt dheth, 's dòcha."
+
+#: data/levels/halloween2011/halloween13-grumbel.pingus:5
+msgid "Group Coordination"
+msgstr "Co-òrdanachadh buidhne"
+
+#: data/levels/halloween2011/halloween13-grumbel.pingus:6
+msgid ""
+"Three groups are on their way to the exit, one of them trapped right above "
+"it, but locked into a box. None of them can make it alone, coordinate them "
+"wisely and everybody should be able to make it safely to the exit. "
+msgstr ""
+"Tha trì buidhnean air an t-slighe ach aonan dhiubh glacte ann am bogsa "
+"dìreach os cionn an dorais a-mach. Cha tèid le buidheann sam bith às aonais "
+"càch, co-òrdanaich iad gu glic is bu chòir dhan a h-uile gin dhiubh faighinn "
+"a-mach gu sàbhailte."
+
+#: data/levels/halloween2011/halloween14-grumbel.pingus:5
+msgid "Traps, Dangers and other Problems"
+msgstr "Ribean, cunnartan is trioblaidean eile"
+
+#: data/levels/halloween2011/halloween14-grumbel.pingus:6
+msgid ""
+"The path to the exit lays below, shimmering through the planks. But the fall "
+"is too high, deadly for sure. Can one pingu alone make it's way through the "
+"dangerous traps and secure the path to the exit?"
+msgstr ""
+"Tha an t-slighe dhan doras a-mach fodhad is a' deàrrsadh tro na dèilean. Ach "
+"bhiodh an tuiteam ro àrd is bàsmhor gun teagamh. An urrainn dha cheann-"
+"fionn slighe a lorg tro na ribean chunnartach is an t-slighe a-mach a "
+"dhèanamh tèarainte?"
+
+#: data/levels/halloween2011/halloween15-grumbel.pingus:5
+msgid "Reach that Switch"
+msgstr "Faigh air an t-suidse"
+
+#: data/levels/halloween2011/halloween15-grumbel.pingus:6
+msgid ""
+"The path to the exit is straight, flat and simple, but wait a solid door "
+"blocking the way? How can the pingus open it? Is that a switch there on the "
+"hill to the right? Might that be the solution to opening the door and "
+"freeing the pingus? But how can they reach that switch?"
+msgstr ""
+"Tha an t-slighe dhan doras a-mach dìreach, rèidh is simplidh, ach fuirich "
+"ort, dè mu dheidhinn an dorais chruaidh air an rathad? Ciamar a thèid leis "
+"na cinn-fhionn fhosgladh? An e suidse a tha seo air a' chnocan taobh deas? "
+"Saoil an e am fuasgladh a th' ann gus an doras fhosgladh is na cinn-fhionn a "
+"shaorachadh? Ach ciamar a gheibh iad air an t-suidse?"
+
+#: data/levels/halloween2011/halloween16-grumbel.pingus:5
+msgid "The Collapsed Column"
+msgstr "An colbh na sprùilleach"
+
+#: data/levels/halloween2011/halloween16-grumbel.pingus:6
+msgid ""
+"High up above the green slime the pingus are moving from column to column, "
+"getting closer to the exit with each step, but wait, there is a second group "
+"of pingus, they are stuck. The column next to them has collapsed making "
+"getting to the exit impossible. Can you find a way around the abyss?"
+msgstr ""
+"Gu h-àrd os cionn an t-snàimh uaine, tha na cinn-fhionn a' gluasad o cholbh "
+"gu colbh, a' faighinn nas dlùithe air an doras a-mach leis gach ceum. Ach "
+"fuirich ort, tha buidheann eile dhe chinn-fhionn ann is iadsan glacte. Thuit "
+"an colbh rin taobh na sprùilleach, a' bacadh an t-slighe dhan doras a-mach. "
+"An lorg thu slighe timcheall air an aibheis?"
+
+#: data/levels/halloween2011/halloween17-grumbel.pingus:5
+msgid "Island of Doom"
+msgstr "Eilean an damnachaidh"
+
+#: data/levels/halloween2011/halloween17-grumbel.pingus:6
+msgid ""
+"The pingus are released close together, but split up by a solid metal column "
+"with seemingly no way to join them back up. The journey will be dangerous "
+"and some height has be crossed with the exit hidden below. With some "
+"cleverness it should be possible to join those two groups back together."
+msgstr ""
+"Tha na cinn-fhionn gan sgaoileadh faisg air a chèile, ach le colbh meatailt "
+"eadarra is a rèir coltais gun dòigh an aonachadh. Bidh an triall cunnartach "
+"is feumaidh iad dol tarsaing àirde leis an doras a-mach falaichte air bhonn. "
+"Le beagan gliocais, thèid leat an dà bhuidheann aonachadh ri chèile."
+
+#: data/levels/halloween2011/halloween18-grumbel.pingus:5
+msgid "Tower of Death"
+msgstr "Tùr a' bhàis"
+
+#: data/levels/halloween2011/halloween18-grumbel.pingus:6
+msgid ""
+"The pingus are at the top of the tower, with no stairway around. The exit is "
+"deep down, hidden at the foot of the tower. How shall they make it down all "
+"that height with no floaters sight? A few well placed diggers should be "
+"enough to get the job done, but wait, no, their direction isn't quite right. "
+"You have to give them directions or it will be their doom."
+msgstr ""
+"Tha na cinn-fhionn air mullach tùir aig nach eil staidhre. Tha an doras "
+"a-mach falaichte gu domhainn aig bonn an tùir. Ciamar a gheibh iad sìos às "
+"aonais fleòdragain? 'S dòcha gun dèan cladhaiche no dhà air an àite cheart "
+"a' chùis, ach fuirich ort, chan eil an comhair aca buileach ceart. Feumaidh "
+"tu an stiùireadh no gheibh iad bàs."
+
+#: data/levels/halloween2011/halloween19-rz.pingus:5
+msgid "The Ones"
+msgstr "Na colbhan"
+
+#: data/levels/halloween2011/halloween19-rz.pingus:6
+msgid ""
+"This is the last stage the pingus have to pass during this Halloween. Two "
+"oddly familiar column are in the way. What do they mean? The two groups of "
+"pingus have to work together to make it down the columns to the exit far "
+"below."
+msgstr ""
+"Seo an ceum mu dheireadh a dh'fheumas na cinn-fhionn a ghabhail air an "
+"Oidhche Shamhna seo. Tha dà cholbh àraidh air an rathad is tu a' "
+"faireachdainn gun aithnicheadh tu iad. Dè as ciall dhaibh? Feumaidh an dà "
+"bhuidheann dhe chinn-fhionn obair còmhla gus faighinn sìos nan colbh is an "
+"doras a-mach fada shìos a ruigsinn."
+
+#: data/levels/desert/desert-crawl-timpany.pingus:5
+msgid "Crawlspace"
+msgstr "Air do chràgan is air do ghlùinean"
+
+#: data/levels/desert/desert-crawl-timpany.pingus:6
+msgid ""
+"The path to the exit is blocked and many small tunnels lead the way, but be "
+"careful some of those lead to certain death. Or is there something you can "
+"do about that and create a save passage for all the Pingus and lead them "
+"safely to the exit?"
+msgstr ""
+"Tha an t-slighe dhan doras a-mach bacte is tha iomadh tunail beag nan "
+"rathaidean dhut, ach thoir an aire gun toir cuid dhiubh dhan bhàs thu. No a "
+"bheil rudeigin ann am b' urrainn dhut dèanamh an aghaidh sin is slighe "
+"sàbhailte a chruthachadh dha na cinn-fhionn ach am faigh iad a-mach?"
+
+#: data/levels/desert/desert1-janne.pingus:5
+msgid "Down the valley and up again"
+msgstr "Sìos dhan ghleann is suas a-rithist"
+
+#: data/levels/desert/desert1-janne.pingus:6
+msgid ""
+"There is a large valley between the entrance and the exit. No bridge will be "
+"long enough to cross the valley, but can you find a way back up once you "
+"lead the Pingus down into the valley?"
+msgstr ""
+"Tha gleann mhòr eadar an inntrigeadh is an doras a-mach. Chan eil drochaid "
+"fon ghrèin a bhiodh fada gu leòr gus faighinn thar na glinne, ach 's mathaid "
+"gum faigh thu lorg air slighe suas an dèidh nan ceann-fionn a stiùireadh "
+"sìos dhan ghleann."
+
+#: data/levels/desert/desert1.pingus:5
+msgid "Entering the pyramid"
+msgstr "A-steach dhan phioramaid"
+
+#: data/levels/desert/desert1.pingus:6
+msgid ""
+"After their long and dangerous journey through the desert the Pingus finally "
+"reach the large pyramid, but there is still a pedestal blocking their way."
+msgstr ""
+"An dèidh triall fada is cunnartach tron fhàsach, ràinig na cinn-fhionn am "
+"pioramaid mòr mu dheireadh thall..."
+
+#: data/levels/desert/desert2.pingus:5
+msgid "The window room"
+msgstr "Seòmar nan uinneagan"
+
+#: data/levels/desert/desert2.pingus:6
+#, fuzzy
+msgid ""
+"After the Pingus have entered the pyramid, they reach a large room with a "
+"large window. The only problem they have is that the entrance to the room is "
+"much too high to survive the landing. Can you help them?"
+msgstr ""
+"Chaidh na cinn-fhionn a-steach dhan phioramaid is ràinig iad seòmar mòr le "
+"uinneag mhòr. Chan eil ach aon duilgheadas aca; 's e gu bheil inntrigidh "
+"dhan t-seòmar fada ro àrd gus leum is mairsinn beò. An toir thu cuideachadh "
+"dhaibh?"
+
+#: data/levels/desert/desert3-jings.pingus:5
+msgid "Grand Hall"
+msgstr "An talla mhòr"
+
+#: data/levels/desert/desert3-jings.pingus:6
+msgid ""
+"The pingus have found themselves in the grand hall, a hall full of wonder "
+"and treasures. The exit however is high up and won't be easy to reach. Guide "
+"the pingus around the hall and maybe you will find a way."
+msgstr ""
+"Ràinig na cinn-fhionn am prìomh thalla a tha làn ionghnaidh is saoibhreis. "
+"Ach tha an doras a-mach glè àrd is doirbh a ruigsinn. Stiùirich na cinn-"
+"fhionn timcheall an talla ach an lorg thu slighe."
+
+#: data/levels/desert/desert3.pingus:5
+msgid "Pass the pedestal"
+msgstr "Thairis air an t-sorch"
+
+#: data/levels/desert/desert3.pingus:6
+msgid ""
+"A large pedestal is blocking the way to the exit and there aren't enough "
+"bashers available to dig it away. Can you find a way to make it past the "
+"pedestal?"
+msgstr ""
+"Tha sorch mòr a' bacadh an rathad dhan doras a-mach is chan eil slacairean "
+"gu leòr agad gus cuidhteas fhaighinn dheth. Am faigh thu lorg air slighe "
+"timcheall air?"
+
+#: data/levels/desert/desert4.pingus:5
+msgid "The excavation of the pyramid"
+msgstr "An cladhach aig a' phioramaid"
+
+#: data/levels/desert/desert4.pingus:6
+msgid ""
+"The excavations are open to reach the pyramid for his redeeming content. "
+"Some excavations, however, is best done with two competitors. Who comes "
+"first?"
+msgstr ""
+"Tha an cladhach àrc-eòlais fosgailte gus an t-saibhreas luachmhor aig a' "
+"phioramaid a ruigsinn. Co-dhiù, aig amannan tha e nas fheàrr ma thèid dithis "
+"a' feuchainn ri chèile. Cò thig an toiseach?"
+
+#: data/levels/desert/desert5-tflavel.pingus:5
+msgid "Claustrophobia"
+msgstr "Fuath-dùinteachd"
+
+#: data/levels/desert/desert5-tflavel.pingus:6
+msgid ""
+"Hidden deep below the pyramid the pingus come across a small underground "
+"room, but unfortunatley a large tree root blocks their path..."
+msgstr ""
+"Gu domhain fon phioramaid, thachair na cinn-fhionn ri seòmar beag falaichte "
+"on talamh, ach gu mì-fhortanach tha freumh mòr craoibhe a' bacadh an "
+"t-slighe..."
+
+#: data/levels/desert/desert5.pingus:5
+msgid "Catch them at the half way point"
+msgstr "Beir orra letheach slighe"
+
+#: data/levels/desert/desert5.pingus:6
+msgid ""
+"The Pingus are separated from the exit by large abyss. A simple bridge won't "
+"be enough to catch them safely, unless of course you find the right place to "
+"put it. Can you uncover that spot?"
+msgstr ""
+"Chaidh na cinn-fhionn a sgaradh on doras a-mach le aibheis mhòr. Cha dèan "
+"drochaid simplidh a' chùis gus beir orra gu sàbhailte. Uill, mura tog thu "
+"air an àite cheart i co-dhiù. Am faigh thu lorg air an àite seo?"
+
+#: data/levels/desert/desert6-grumbel.pingus:5
+msgid "A bit to the right a bit to left"
+msgstr "Beagan gu deas, beagan gu clì"
+
+#: data/levels/desert/desert6-grumbel.pingus:6
+msgid "Only the most audacious Pingus will be allowed to continue."
+msgstr "Cha mhair ach na cinn-fhionn as calma."
+
+#: data/levels/desert/desert7-grumbel.pingus:5
+msgid "25 Pingus free and 25 in the box"
+msgstr "25 cinn-fhionn fa sgaoil is 25 sa bhogsa"
+
+# FIXME Fehler im Original: s/be save/save/
+# FIXME Fehler im Original: s/one Pingus/one Pingu/
+#: data/levels/desert/desert7-grumbel.pingus:6
+#, fuzzy
+msgid ""
+"Okay for the Bridger but what can I do with Digger? You should save at least "
+"one Pingu trapped in the box above the exit."
+msgstr ""
+"Tha seo ceart gu leòr dhan drochaidaiche, ach dè nì mi leis a' chladhaiche? "
+"Bu chòir dhut co-dhiù aon dhe na cinn-fhionn glacte sa bhogsa os cionn an "
+"dorais a-mach a shàbhaladh."
+
+#: data/levels/desert/desert8-grumbel.pingus:5
+msgid "Tunnel Time"
+msgstr "Àm an tunail"
+
+#: data/levels/desert/desert8-grumbel.pingus:6
+msgid ""
+"Dig a tunnel and you might make it to the exit. Digger and miners and stuff "
+"have to work together."
+msgstr ""
+"Cladhaich tunail feuch an ruig thu an doras a-mach. Feumaidh na cladhaichean "
+"is na mèinnearan is an stuth obair còmhla."
+
+#: data/levels/desert/desertwaste1-grumbel.pingus:5
+msgid "The Roof"
+msgstr "Am mullach"
+
+#: data/levels/desert/desertwaste1-grumbel.pingus:6
+msgid ""
+"Sometimes the roofs are not good for refuge, sometimes it should be "
+"demolished! But be careful if you aren't precise enough, you might lead the "
+"Pingus straight to certain death."
+msgstr ""
+"Aig amannan, chan e tèarmainn matha a tha sna mullaichean is feumaidh tu "
+"cuidhteas fhaighinn dhiubh! Ach thoir an aire gun obraich thu gu eagarra ach "
+"nach fhaigh na cinn-fhionn bàs."
+
+#: data/levels/desert/indiana-yingwan.pingus:5
+msgid "Pingus Jones and the Last Exit"
+msgstr "Pingus Jones and the Last Exit"
+
+#: data/levels/desert/indiana-yingwan.pingus:6
+msgid ""
+"Dr. Jones' notebook:\n"
+"\n"
+"  (1) the breath of God: only the penitent pingus will pass;\n"
+"  (2) the word of God... in reverse;\n"
+"  (3) the path of God: leap from the head of something like a cat."
+msgstr ""
+"On leabhar-nòtaichean aig Dr. Jones:\n"
+"\n"
+"  (1) anail Dhè: chan fhaigh seachad ach na h-aithrich;\n"
+"  (2) facal Dhè... contrarra;\n"
+"  (3) slighe Dhè: leum o cheann aig rudeigin coltach ri cat."
+
+#: data/levels/mysteryisland/cave-lac.pingus:7
+msgid "Trapped Underground"
+msgstr "Glacte fon talamh"
+
+#: data/levels/mysteryisland/cave-lac.pingus:8
+msgid ""
+"The penguins escaped the mad scientist, but now they were trapped deep "
+"underground. They had no food or water, so they had to move fast."
+msgstr ""
+"Theich na cinn-fhionn on eòlaiche shaobh, ach tha iad glacte aig bonn na "
+"talmhainn a-nis. Chan eil biadh no uisge aca is feumaidh iad a bhith luath."
+
+#: data/levels/mysteryisland/cave1-marcotte.pingus:5
+msgid "Near can mean far"
+msgstr "An e fad air falbh as ciall air faisg?"
+
+# FIXME s/Simple :/Simple:/
+#: data/levels/mysteryisland/cave1-marcotte.pingus:6
+#, fuzzy
+msgid ""
+"What do you do when you're going in the wrong direction ? Simple: walk into "
+"a wall. But it is easier said than done..."
+msgstr ""
+"Dè nì thu ma tha thu a' dol air an rathad cheàrr? Furasta: Coisich ri balla. "
+"Ach, as fhasa ràdh na cur an gnìomh..."
+
+#: data/levels/mysteryisland/emperiment-lac.pingus:5
+msgid "Experimentation"
+msgstr "Deuchainnean"
+
+#: data/levels/mysteryisland/emperiment-lac.pingus:6
+msgid ""
+"A mad scientist has captured the penguins and is experimenting on them. How "
+"can the penguins escape the guillotine?"
+msgstr ""
+"Ghlac eòlaiche saobh na cinn-fhionn gus deuchainnean a dhèanamh orra. Ciamar "
+"a theicheas na cinn-fhionn on Ghuillotine?"
+
+#: data/levels/mysteryisland/hall-of-illusion-lac.pingus:5
+msgid "Hall of Illusion"
+msgstr "Talla nam mealladh"
+
+# FIXME: s/almost/Almost/
+#: data/levels/mysteryisland/hall-of-illusion-lac.pingus:6
+#, fuzzy
+msgid ""
+"The penguins stopped and stood in indecision. What was real and what was "
+"not? Flame lanced from above and a guillotine glittered in the distance. "
+"Almost all penguins must survive."
+msgstr ""
+"Stad na cinn-fhionn gus coimhead timcheall orra gu mì-chinnteach. Dè tha "
+"fìor is dè nach eil? Tha lasairean-teine a' sgal on mhullach is "
+"Guillotinichean a' deàrrsach fad air falbh. Feumaidh cha mhòr a h-uile "
+"ceann-fionn mairsinn beò."
+
+#: data/levels/mysteryisland/lavapit3.pingus:7
+msgid "The Lava Pit"
+msgstr "Sloc an làbha"
+
+#: data/levels/mysteryisland/lavapit3.pingus:8
+msgid ""
+"The penguins had defeated the mad scientist, and were walking away from his "
+"destroyed laboratory when a huge hole opened under their feet. The penguins "
+"fell into an underground cave and the only way out was across the lava pit. "
+"Luckily, it seemed someone had left some helpful signs."
+msgstr ""
+"Bha na cinn-fhionn air buaidh a thoirt air an eòlaiche shaobh is a' ruith "
+"a-mach às an deuchainn-lann aige nuair an do dh'fhosgail toll mor fon casan. "
+"Thuit na cinn-fhionn dha uamh fon talamh is cha robh slighe a-mach ann ach "
+"thar sluic làbha. Gu fortanach, dh'fhàg cuideigin sanasan is coltas "
+"cuideachail orra."
+
+#: data/levels/mysteryisland/madscientist1-lac.pingus:7
+msgid "At least the experiments are over..."
+msgstr "Tha na deuchainnean seachad co-dhiù..."
+
+#: data/levels/mysteryisland/madscientist1-lac.pingus:8
+msgid ""
+"The good news was that the mad scientist had tired of his experiments, the "
+"bad news was that now he was dumping them down a pit. A single floatation "
+"device was all the penguins had. Save as many as possible."
+msgstr ""
+"'S e an naidheachd math a bh' ann gun do dh'fhàs an t-eòlaiche saobh seachd "
+"searbh dhe na deuchainnean, ach air an làimh eile dè rinn e ach na cinn-"
+"fhionn a thilgeil sìos sloc. Cha robh ach aon fhleòdragan aig na cinn-"
+"fhionn. Sàbhail am meud as urrainn dhut."
+
+#: data/levels/mysteryisland/multi1-lac.pingus:7
+msgid "Ghosting"
+msgstr "Taibhsean"
+
+#: data/levels/mysteryisland/multi1-lac.pingus:8
+msgid ""
+"The penguins came to a long pass. Acid bubbled underneath and it seemed a "
+"climber or two were needed.  Hint: slider can be used to stop the miner "
+"ability."
+msgstr ""
+"Ràinig na cinn-fhionn bealach fada. Bha searbhag a' plubadaich fodhpa is a "
+"rèir coltais bha sreapadair no dithis a dhìth orra. Gliocas: Cuiridh tu stad "
+"air a' mhèinnear le sleamhnaiche."
+
+#: data/levels/mysteryisland/rainy1-lac.pingus:7
+msgid "The Final (and suprisingly easy) Challenge"
+msgstr "An dùbhlan mu dheireadh (furasta, an e?)"
+
+#: data/levels/mysteryisland/rainy1-lac.pingus:8
+msgid ""
+"The penguins had reached the end of the island. In the water was a long "
+"tree, perfect for the penguin's needs. Their journey was almost over."
+msgstr ""
+"Ràinig na cinn-fhionn taobh thall an eilein. Bha craobh fhada san uisge, "
+"foirfe airson feumalachdan nan ceann-fionn. Tha an triall aca cha mhòr "
+"seachad."
+
+#: data/levels/mysteryisland/revenge1-lac.pingus:7
+#: data/levels/mysteryisland/revenge2-lac.pingus:7
+msgid "Revenge is sweet"
+msgstr "Nach milis an dìoghaltas"
+
+# FIXME: s/structures ,/structures,/
+#: data/levels/mysteryisland/revenge1-lac.pingus:8
+#, fuzzy
+msgid ""
+"The penguins had escaped the mad scientist but now they wanted revenge. They "
+"intended to destroy the support structures, sending the evil laboratory "
+"crashing down."
+msgstr ""
+"Theich na cinn-fhionn on eòlaiche shaobh, ach a-nis tha iad ri dìoghaltas. "
+"Chuir iad romhpa na structaran-taice a sgrios ach an tuit an deuchainn-lann "
+"olc."
+
+# FIXME: s/structures ,/structures,/
+#: data/levels/mysteryisland/revenge2-lac.pingus:8
+#, fuzzy
+msgid ""
+"The penguins had escaped the mad scientist but now they wanted revenge. They "
+"intended to destroy the support structures, sending the evil laboratory "
+"crashing down. They had to move fast though, because the mad scientist would "
+"detect and recapture them if they weren't fast enough."
+msgstr ""
+"Theich na cinn-fhionn on eòlaiche shaobh, ach a-nis tha iad ri dìoghaltas. "
+"Chuir iad romhpa na structaran-taice a sgrios ach an tuit an deuchainn-lann "
+"olc. Feumaidh iad gluasad gu luath co-dhiù oir aithnicheadh is ghlacadh an "
+"t-eòlaiche saobh iad a-rithist mura robh iad luath gu leòr."
+
+#: data/levels/mysteryisland/snow2-lac.pingus:7
+msgid "Winter Wonderland"
+msgstr "Saoghal mìorbhaileach a' gheamhraidh"
+
+#: data/levels/mysteryisland/snow2-lac.pingus:8
+msgid ""
+"After getting past the lava pit, the penguins walked and walked until they "
+"reached a snowed in exit. That would be relatively easy to tunnel through "
+"but how would it be possible to tunnel through solid metal?"
+msgstr ""
+"An dèidh faighinn thairis air an t-sloc làbha, ruith is ruith na cinn-fhionn "
+"gus an do lorg iad doras a-mach làn sneachda. B' urrainn dhaibh tunail a "
+"dhèanamh troimhe gu furasta, ach ciamar a nì iad seo tro meatailt chruaidh?"
+
+#: data/levels/mysteryisland/theend-lac.pingus:7
+msgid "The Journey Goes On"
+msgstr "Leanaidh an triall"
+
+#: data/levels/mysteryisland/theend-lac.pingus:8
+msgid ""
+"And so the penguins continued on their journey, drawing ever closer to the "
+"North Pole. They had escaped the guillotine, defeated the mad scientist and "
+"got a new boat. And so this chapter in their voyage was over, but there "
+"would be other obstacles. Nothing  would stop the determined penguins from "
+"reaching their goal."
+msgstr ""
+"Mar sin, lean triall nan cinn-fhionn na b' fhaisge air A' Phòla a Tuath. Bha "
+"iad air teicheadh on Ghuillotine is làmh an uachdair fhaighinn air an "
+"eòlaiche shaobh is fhuair iad bàta ùr. Le seo, bha an caibideil seo dhen "
+"triall seachad, ach bhiodh cnapan-starra eile romhpa fhathast. Cha robh nì "
+"fon ghrèin a chuireadh casg air na cinn-fhionn is ruigeadh iad an ceann-"
+"uidhe aca."
+
+#: data/levels/mysteryisland/use-the-slide-lac.pingus:7
+msgid "Think fast (literally)"
+msgstr "Smaoinich gu luath (gu litireil)"
+
+#: data/levels/mysteryisland/use-the-slide-lac.pingus:8
+msgid ""
+"This would be simple but for one thing, there are no blockers. All the "
+"penguins must survive."
+msgstr ""
+"Bhiodh seo furasta nan robh bacadairean ann. Feumaidh a h-uile ceann-fionn "
+"mairsinn beò."
+
+#: data/levels/mysteryisland/volcano1-grumbel.pingus:5
+msgid "Shipwrecked"
+msgstr "Long-bhriseadh"
+
+# FIXME: s/suddenly,/suddenly/
+# FIXME: s/acoss/across/
+#: data/levels/mysteryisland/volcano1-grumbel.pingus:6
+#, fuzzy
+msgid ""
+"The penguins were sailing along happily on their makeshift boat until "
+"suddenly an island appeared. The penguins were drawn towards it and crashed, "
+"destroying their boat. Now they must find their way across this strange "
+"island."
+msgstr ""
+"Bha na cinn-fhionn a' seòladh gu toilichte air an fhath-bhàta aca gus an do "
+"nochd eilean gu h-obann. Chaidh na cinn-fhionn a tharraing dha is "
+"dh'fhulaing iad aoidion. Feumaidh iad slighe thar an eilein a lorg a-nis."
+
+#: data/levels/alien/aliens1-grumbel.pingus:5
+#: data/levels/alien/aliens1-phil.pingus:7
+msgid "Escape from Aliens"
+msgstr "Teicheadh o na h-os-talmhaichean"
+
+# FIXME s/intrance/entrance/
+#: data/levels/alien/aliens1-grumbel.pingus:6
+msgid ""
+"Aliens invade our starship blocking intrance to the teleporter. Your crew is "
+"well trained, like you they don't panic."
+msgstr ""
+"Tha os-talmhaichean a' briseadh a-steach dhan t-soidheach-fhanais agad is a' "
+"bacadh inntrigeadh dhan tele-phortair. Tha do sgioba air a thrèanadh gu "
+"math mar a tha thusa is gun bhreisleach a' tighinn oirbh."
+
+# FIXME s/intrance/entrance/
+#: data/levels/alien/aliens1-phil.pingus:8
+#, fuzzy
+msgid ""
+"Aliens invade our starship blocking entrance to the teleporter. Your crew is "
+"well trained, like you they don't panic."
+msgstr ""
+"Tha os-talmhaichean a' briseadh a-steach dhan t-soidheach-fhanais agad is a' "
+"bacadh inntrigeadh dhan tele-phortair. Tha do sgioba air a thrèanadh gu "
+"math mar a tha thusa is gun bhreisleach."
+
+#: data/levels/alien/aliens2-phil.pingus:7
+msgid "Escape from Aliens 2"
+msgstr "Teicheadh o na h-os-talmhaichean 2"
+
+#: data/levels/alien/aliens2-phil.pingus:8
+msgid "Aliens are now closest making your escape harder. You must dig it up."
+msgstr ""
+"Tha na h-os-talmhaichean nas fhaisge a-nis is tha e nas dorra teicheadh. "
+"Feumaidh tu cladhach suas."
+
+#: data/levels/alien/aliens4-phil.pingus:5
+msgid "Alien's nest"
+msgstr "Nead nan os-talmhaichean"
+
+# FIXME s/jaws/jaws./
+# FIXME s/above ?/above?/
+#: data/levels/alien/aliens4-phil.pingus:6
+msgid "Pingus invade the nest. Take care of jaws. What's the matrix above?"
+msgstr ""
+"Tha na cinn-fhionn a' briseadh a-steach dhan nead. Thoir an aire air na "
+"peirceallan. Dè th' ann sa mheatraigs ud shuas?"
+
+#: data/levels/alien/aliens5-phil.pingus:5
+msgid "Matrix of the death"
+msgstr "Meatraigs a' bhàis"
+
+#: data/levels/alien/aliens5-phil.pingus:6
+msgid ""
+"Take a piece of paper. Now pingus have to enter the matrix of the death. "
+"This is a maze, bad ways are protect by jaws."
+msgstr ""
+"Gabh pìos pàipeir. Feumaidh na cinn-fhionn briseadh a-steach dha mheatraigs "
+"a' bhàis. 'S e cuartan a th' ann is thèid na droch shlighean an dìon le "
+"peirceallan."
+
+#: data/levels/alien/aliens6-phil.pingus:7
+msgid "Spy's pingus in the matrix of the death"
+msgstr "Brathadairean ann am meatraigs a' bhàis"
+
+#: data/levels/alien/aliens6-phil.pingus:8
+msgid ""
+"Spy's pingus have marked the location of jaws in the matrix of the death. "
+"Many died to gain that information :..( Perhaps this help. Perhaps..."
+msgstr ""
+"Chomharraich brathadairean nan ceann-fionn na h-àiteachan le peirceallan ann "
+"am meatraigs a' bhàis. Dh'fhulaing grunn dhiubh am bàs gus am fiosrachadh "
+"seo a thoirt dhut :..( 'S dòcha gum bi seo na chobhair dhut. 'S dòcha..."
+
+#: data/levels/alien/aliens7-phil.pingus:7
+msgid "Fourth dimension"
+msgstr "An ceathramh dimeinsean"
+
+# FIXME: s/win !/win!/
+#: data/levels/alien/aliens7-phil.pingus:8
+msgid ""
+"The defenses of the aliens get stronger. Now you have to jump in the fourth "
+"dimension to win!"
+msgstr ""
+"Tha dìon nan os-talmhaichean a' fàs nas fheàrr. Feumaidh tu leum dhan "
+"chòigeamh dimeinsean a-nis gus buadhachadh!"
+
+#: data/levels/alien/space-11-rz+eriksoe.pingus:5
+msgid "Set your watches"
+msgstr "Atharraichaibh ur uaireadairean"
+
+#: data/levels/alien/space-11-rz+eriksoe.pingus:6
+msgid "Cooperation in space."
+msgstr "Co-obrachadh san fhànas"
+
+#: data/levels/alien/space-9-tom.pingus:5
+msgid "Outside In"
+msgstr "A-muigh a-staigh"
+
+#: data/levels/alien/space-9-tom.pingus:6
+msgid "Can you help the pingus escape without getting their flippers wet?"
+msgstr ""
+"An urrainn dhut taic a thoirt dha na cinn-fhion ach an teich iad gun "
+"fhliuchadh air an sgiathan?"
+
+#: data/levels/alien/space-loop-timpany.pingus:5
+msgid "Endless Loop"
+msgstr "Lùb gun chrìch"
+
+# FIXME Phrasing
+#: data/levels/alien/space-loop-timpany.pingus:6
+#, fuzzy
+msgid ""
+"To the right and to the left the Pingus will face certain death and you have "
+"to save 50. Can you help them get out of this mess?"
+msgstr ""
+"Tha am bàs cinnteach a feitheamh air na cinn-fhionn gu deas is clì, ach "
+"feumaidh tu 50 dhiubh a shàbhaladh! An toir thu cuideachadh dhaibh ach am "
+"faigh tèarnadh on trioblaid seo?"
+
+#: data/levels/alien/space-tom1.pingus:7
+msgid "Up up in the space"
+msgstr "Suas, suas san fhànas"
+
+#: data/levels/alien/space-tom1.pingus:8
+msgid "What good is a pick in space? Certainly not to go to the stars."
+msgstr ""
+"Dè as math air pìoc san fhanais? Gu cinnteach, cha chleachd thu i gus "
+"siubhal dha na rionnagan."
+
+#: data/levels/alien/space2.pingus:5
+msgid "Lost in Space"
+msgstr "Caillte san fhànas"
+
+#: data/levels/alien/space2.pingus:6
+msgid "We don't know where we are but we don't leave anybody behind."
+msgstr "Chan eil fios againn càite a bheil sinn, ach chan fhàg sinn duine."
+
+#: data/levels/factorycampaign/factory_campaign1.pingus:5
+msgid "Falling down"
+msgstr "Tuiteam sìos"
+
+# FIXME: s/factories/factory/
+# FIXME: s/diffuculties/difficulties/
+#: data/levels/factorycampaign/factory_campaign1.pingus:6
+#, fuzzy
+msgid ""
+"Pingus intelligence reported that a huge factory located in the subtropical "
+"zone might be a reason of a climate change. They decided to go there and "
+"shut down the factories. This will be a long and dangerous expedition. "
+"Pingus and you will have to face many difficulties on your way. As the ice "
+"is melting, at first you have to build some bridges and watch out for the "
+"cliff."
+msgstr ""
+"Fhuair na seirbhisean dìomhair a-mach gur dòcha gur e factaraidh san raon "
+"fo-thropaigeach adhbhar luaisgeachd na gnàth-shìde. Chuir na cinn-fhionn "
+"romhpa siubhal dhan fhactaraidh ud is a chur dheth. 'S e triall fada is "
+"cunnartach a bhios ann. Tha iomadh duilgheadas romhad is ro na cinn-fhionn "
+"air an rathad. On a tha an deigh a' leaghadh, feumaidh iad corra drochaid a "
+"thogail an toiseach is aire a thoirt air an stac."
+
+#: data/levels/factorycampaign/factory_campaign10.pingus:5
+msgid "Jump"
+msgstr "Leum"
+
+#: data/levels/factorycampaign/factory_campaign10.pingus:6
+msgid ""
+"All Pingus need is to jump.... Hint: While pausing (press P key) you still "
+"can control Pingus. "
+msgstr ""
+"Cha leig na cinn-fhionn leas ach leum.... Gliocas: 's urrainn dhut fhathast "
+"na cinn-fhionn a' stiùireadh fhad 's a bhios an geama na stad (brùth air an "
+"iuchar P). "
+
+#: data/levels/factorycampaign/factory_campaign11.pingus:5
+msgid "Factory"
+msgstr "Factaraidh"
+
+#: data/levels/factorycampaign/factory_campaign11.pingus:6
+msgid ""
+"Finally you reached the factory. Watch out as there are many dangers. Use "
+"bombers to destroy the basement of the factory. Good luck!"
+msgstr ""
+"Ràinig thu am factaraidh mu dheireadh thall. Thoir an aire gu bheil iomadh "
+"cunnart ann. Cleachd bomadairean gus an làr ìosal dhen fhactaraidh a sgrios. "
+"Guma math a thèid leat!"
+
+#: data/levels/factorycampaign/factory_campaign12.pingus:5
+msgid "Going back home"
+msgstr "Tilleadh dhachaigh"
+
+#: data/levels/factorycampaign/factory_campaign12.pingus:6
+msgid "Your mission is over. Pingus can go back home, but be careful!"
+msgstr ""
+"Tha am misean agad coileanta. Faodaidh na cinn-fhionn tilleadh dhachaigh, "
+"ach bi faiceallach!"
+
+#: data/levels/factorycampaign/factory_campaign13.pingus:5
+msgid "Bonus track"
+msgstr "Tè eile"
+
+#: data/levels/factorycampaign/factory_campaign13.pingus:6
+msgid ""
+"Pingus are at home, but after the climate change living on the South Pole "
+"became more dangerous. There is one more mission for you."
+msgstr ""
+"Thill na cinn-fhionn dhachaigh, ach air sàilleibh luaisgeachd na gnàth-shìde "
+"dh'fhàs a' bheatha air A' Phola a Deas na bu chunnartaiche. Seo misean a "
+"bharrachd dhut ri choileanadh!"
+
+#: data/levels/factorycampaign/factory_campaign2.pingus:5
+msgid "Destination North"
+msgstr "Ceann-uidhe gu tuath"
+
+#: data/levels/factorycampaign/factory_campaign2.pingus:6
+msgid ""
+"For now, Pingus are leaving South Pole and moving North. You have to help "
+"them!"
+msgstr ""
+"Tha na cinn-fhionn a' fàgail A' Phola a Deas is a' siubhal gu tuath. "
+"Feumaidh tu an cuideachadh!"
+
+#: data/levels/factorycampaign/factory_campaign3.pingus:5
+#, fuzzy
+msgid "The Cave"
+msgstr "An uamh"
+
+#: data/levels/factorycampaign/factory_campaign3.pingus:6
+msgid ""
+"Pingus on their way came across a huge cave. You have to lead them through. "
+"Remember that sometimes there is more than one way out. Hint: To 'unlock' "
+"blockers you can use bashers and jumpers."
+msgstr ""
+"Thachair na cinn-fhionn air uamh air an t-slighe. Feumaidh tu an stiùireadh "
+"troimhpe. Cùm d' aire air gum faod barrachd na aon slighe a-mach a bhith "
+"ann. Gliocas: 'S urrainn dhut slacair no leumadair a chleachdadh gus "
+"bacadair a \"shaorachadh\"."
+
+#: data/levels/factorycampaign/factory_campaign4.pingus:5
+msgid "Difficulties on the way"
+msgstr "Trioblaidean air an rathad"
+
+#: data/levels/factorycampaign/factory_campaign4.pingus:6
+msgid ""
+"It looks you have encountered serious difficulties. But don't panic, Pingus "
+"are waiting for your orders, they count on you so don't fail! Hint: Miners, "
+"diggers and bashers are very important here!"
+msgstr ""
+"Tha trioblaid mhòr agad a rèir coltais. Ach gabh air do shocair, tha na "
+"cinn-fhionn a' feitheamh ri d' òrduighean is a' crochadh ort, chan fhad tu "
+"fàiligeadh! Gliocas: Tha mèinnearan, cladhaichean is slacairean glè "
+"chudromach an-seo!"
+
+#: data/levels/factorycampaign/factory_campaign5.pingus:5
+msgid "Four ways out"
+msgstr "Ceithir slighean a-mach"
+
+#: data/levels/factorycampaign/factory_campaign5.pingus:6
+#, fuzzy
+msgid ""
+"It's getting warmer but Pingus are bravely moving North. This time it will "
+"be much easier. There are at least four ways out. Could you find them?"
+msgstr ""
+"Tha e a' fàs nas blàithe, ach tha na cinn-fhionn a' siubhal gu tuath gu "
+"calma. Bidh e mòran nas fhasa an turas seo. Tha co-dhiù ceithir dòighean ann "
+"gus faighinn a-mach. An lorg thu iad?"
+
+#: data/levels/factorycampaign/factory_campaign6.pingus:5
+msgid "Egypt - So easy"
+msgstr "An Èipheit - Cho furasta"
+
+# FIXME: s/out. "/out."
+#: data/levels/factorycampaign/factory_campaign6.pingus:6
+#, fuzzy
+msgid "Pingus reached Egypt. Looks easy, but is it really so easy? Try it out."
+msgstr ""
+"Ràinig na cinn-fhionn an Èipheit. Tha coltas furasta air, ach a bheil e cho "
+"furasta sin? Feuch e. "
+
+#: data/levels/factorycampaign/factory_campaign7.pingus:5
+msgid "Egypt - Oasis"
+msgstr "An Èipheit - Innis-fhàsaich"
+
+# FIXME: s/water. "/water."
+#: data/levels/factorycampaign/factory_campaign7.pingus:6
+#, fuzzy
+msgid ""
+"Last time it was easy. Now it will be a little bit harder. Pingus are "
+"entering oasis. Watch out for the water."
+msgstr ""
+"Bha an turas roimhe furasta. Co-dhiù, fàsaidh e beagan nas dorra a-nis. Tha "
+"na cinn-fhionn a' dol a-steach dhan innis-fhàsaich. Thoir an aire air an "
+"uisge."
+
+#: data/levels/factorycampaign/factory_campaign8.pingus:5
+msgid "Egypt - The Maze"
+msgstr "An Èipheit - An cuartan"
+
+#: data/levels/factorycampaign/factory_campaign8.pingus:6
+msgid ""
+"You came across a maze. Can you find the way out? Think twice before digging."
+msgstr ""
+"Ràinig thu cuartan. An lorg thu an t-slighe a-mach? Smaoinich gu cùramach "
+"mus cladhaicheas tu."
+
+# FIXME s/Piramids/Pyramids/
+#: data/levels/factorycampaign/factory_campaign9.pingus:5
+#, fuzzy
+msgid "Egypt - Pyramids"
+msgstr "An Èipheit - Pioramaidean"
+
+# FIXME: s/priamid/pyramdi/
+#: data/levels/factorycampaign/factory_campaign9.pingus:6
+#, fuzzy
+msgid ""
+"The maze led you to the big pyramids. Now you have 4 minutes to escape. "
+"Hurry up!"
+msgstr ""
+"Thug an cuartan dhan phioramaid mhòr thu. Chan eil agad ach ceithir "
+"mionaidean gus faighinn a-mach. Greas ort!"
+
+#: data/levels/xmas2011/xmas01-grumbel.pingus:5
+msgid "Bomb and Double Catch"
+msgstr "Boma is beir"
+
+#: data/levels/xmas2011/xmas01-grumbel.pingus:6
+msgid ""
+"Here you might have some time to relax. The path isn't complicated and a bit "
+"of bombing and catching of Pingus should bring you to the end without much "
+"trouble, but don't relax to much, your resources are limited, so be careful "
+"when using them."
+msgstr ""
+"'S dòcha gum faigh thu greis gus d' anail a leigeil an-seo. Chan eil an "
+"t-slighe toinnte is bu chòir dhut an ceann-uidhe a ruigsinn gun trioblaidean "
+"mòra le boma no dhà is beagan beirsinn. Ach thoir an aire co-dhiù, chan eil "
+"stòrasan gun chrìoch agad is feumaidh tu a bhith faiceallach nuair a "
+"chleachdas tu iad."
+
+#: data/levels/xmas2011/xmas02-grumbel.pingus:5
+msgid "Up, Up and Away"
+msgstr "Suas, suas is a-mach"
+
+#: data/levels/xmas2011/xmas02-grumbel.pingus:6
+msgid ""
+"The exit is in a weird spot here, straight above. A bridge won't get you "
+"there, but your toolset allows an alternative way. Can you figure it out?"
+msgstr ""
+"Tha an doras a-muigh ann an àite neònach an-seo, dìreach os do chionn. Cha "
+"toir drochaid an-siud thu, ach tha acainnean eile agad. An lorg thu "
+"fuasgladh?"
+
+#: data/levels/xmas2011/xmas03-grumbel.pingus:5
+msgid "If only penguins could fly"
+msgstr "Gum biodh sgiathaich aig cinn-fhionn"
+
+#: data/levels/xmas2011/xmas03-grumbel.pingus:6
+msgid ""
+"Bridges are kind of rare around here, so don't waste any. That aside, you "
+"shouldn't have to much trouble here, everything to do here you should have "
+"learned, but you might have to use all that knowledge at once."
+msgstr ""
+"Tha drochaidean caran gann an-seo is chan fhaod thu an caitheamh. Cha bu "
+"chòir cus trioblaid a bhith agad a thuilleadh air seo. Thathar an dùil gu "
+"bheil thu air a h-uile rud a tha a dhìth ort ionnsachadh, ach is dòcha gum "
+"feum thu an t-eòlas agad uile a chleachdadh aig an aon àm."
+
+#: data/levels/xmas2011/xmas04-grumbel.pingus:5
+msgid "Stairway to Heaven"
+msgstr "Staidhre dhan neamh"
+
+#: data/levels/xmas2011/xmas04-grumbel.pingus:6
+msgid ""
+"Here things start to get a little complicated. Getting up to the exit is "
+"hard enough with a single Pingu, but with all of them? Impossible! But wait, "
+"who says they have to come the same way?"
+msgstr ""
+"Tha cùisean a' fàs nas toinnte an-seo. Tha e doirbh gu leòr an doras a-mach "
+"shuas a ruigsinn le aon cheann-fionn, ach dè mu dheidhinn a h-uile gin "
+"dhiubh? Ach fuirich ort, a bheil e riatanach gun gabh iad uile an aon "
+"slighe?"
+
+#: data/levels/xmas2011/xmas05-grumbel.pingus:5
+msgid "Misdirection Everywhere"
+msgstr "Mealladh sa h-uile àite"
+
+#: data/levels/xmas2011/xmas05-grumbel.pingus:6
+msgid ""
+"The last level for this Xmas. Looks a little complicated, right? Don't worry "
+"with all you have learned so far, you should be able to even solve this.\n"
+"\n"
+"Good Luck & a Merry Xmas 2011"
+msgstr ""
+"Seo an leibheil mu dheireadh na Nollaige seo. Tha coltas beagan toinnte air, "
+"nach eil? Na gabh dragh, bu chòir dhut a' chùis a dhèanamh air leis a "
+"h-uile rud a dh'ionnsaich thu.\n"
+"\n"
+"Guma math a thèid leat is Nollaig chridheil 2011 dhut!"
+
+#: data/levels/xmas2011/xmas06-grumbel.pingus:5
+msgid "The Big Jump"
+msgstr "An leum mòr"
+
+#: data/levels/xmas2011/xmas06-grumbel.pingus:6
+msgid ""
+"Going in and out of the abyss with all Pingus isn't an option here, but a "
+"small group preparing the path or the others should get you across."
+msgstr ""
+"Cha ghabh a h-uile ceann-fionn a thoirt a-steach is a-mach às an aibheis "
+"seo, ach gheibh thu thairis oirre ma dh'ullaicheas cuid dhiubh an t-slighe."
+
+#: data/levels/xmas2011/xmas07-grumbel.pingus:5
+msgid "No Way to Stop"
+msgstr "Cha ghabh stad"
+
+#: data/levels/xmas2011/xmas07-grumbel.pingus:6
+msgid ""
+"Here you don't have much time to waste. The path to the exit is clear and "
+"straight, but you don't have the time to prepare it. Can you find a way to "
+"leap ahead?"
+msgstr ""
+"Chan eil mòran ùine agad ri caitheamh an-seo. Tha an t-slighe dhan doras "
+"a-mach soilleir is dìreach, ach chan eil ùine gu leòr agad gus a "
+"h-ullachadh. An lorg thu dòigh gus leum air adhart?"
+
+#: data/levels/xmas2011/xmas08-grumbel.pingus:5
+#, fuzzy
+msgid "Ice Block Blockage"
+msgstr "Bloca deighe san rathad"
+
+#: data/levels/xmas2011/xmas08-grumbel.pingus:6
+msgid ""
+"What's this? A gigantic ice block straight in the path? Where did that come "
+"from? No time wondering about things like that. The Pingus need to get to "
+"the exist and it's your job to find a way around the block."
+msgstr ""
+"Dè tha seo? Cùis-uamhais de bhloca deighe dìreach san rathad? Cò às a "
+"thàinig e? Chan eil ùine ann gus cnuasadh air. Feumaidh na cinn-fhionn an "
+"doras a-mach a ruigsinn is 's e an t-uallach agadsa a th' ann slighe "
+"timcheall air a' bhloca a lorg."
+
+#: data/levels/xmas2011/xmas09-grumbel.pingus:5
+msgid "The Impossible Bridge"
+msgstr "An drochaid do-chreidsinneach"
+
+#: data/levels/xmas2011/xmas09-grumbel.pingus:6
+msgid ""
+"Two groups of Pingus separated by a deep byss, joining them by a bridge "
+"seems impossible, but wise coordination of the two groups and a brave leap "
+"should let you make it to the exit."
+msgstr ""
+"Tha dà bhuidheann dhe cheann-fionn air an sgaradh le aibheis. Shaoileadh tu "
+"nach gabhadh an aonachadh le drochaid, ach le co-òrdanachadh glic is leum "
+"dàna bu chòir iad faighinn a-mach."
+
+#: data/levels/xmas2011/xmas10-grumbel.pingus:5
+msgid "Spiraling Away"
+msgstr "Snìomh a-mach"
+
+#: data/levels/xmas2011/xmas10-grumbel.pingus:6
+msgid ""
+"The exit is straight below, but the path is blocked by solid steal with no "
+"way through. But the Pingus have a versatile toolset at hand, can you use it "
+"to find a way around and make it to the exit?"
+msgstr ""
+"Tha an doras a-mach dìreach shìos, ach tha an t-slighe bacte le stàlainn "
+"cruaidh is gun slighe troimhe. Ach tha acainnean iol-chomasach aig na cinn-"
+"fhionn, an cleachd thu iad gus slighe timcheall air a lorg is faighinn dhan "
+"doras a-mach?"
+
+#: data/worldmaps/tutorial.worldmap:4
+msgid "Tutorial Island"
+msgstr "Eilean an oideachaidh"
+
+#: data/worldmaps/tutorial.worldmap:6
+msgid "Learn the basics"
+msgstr "Ionnsaich na sgilean bunasach"
+
+#: data/worldmaps/tutorial.worldmap:124
+msgid "Watch Ending"
+msgstr "Seall air a' chrioch"
+
+#: data/worldmaps/tutorial.worldmap:131
+msgid "Watch Intro"
+msgstr "Seall air an sgeulachd"
+
+#: data/stories/tutorial_intro.story:2
+msgid "The Journey Begins"
+msgstr "Tha an triall a' tòiseachadh"
+
+#: data/stories/tutorial_intro.story:9
+msgid ""
+"For a long time, the Pingus have lived happily in peace on the South Pole "
+"along with all the other animals. Everything was in balance and it seemed "
+"like nothing could disrupt their peace.  The Pingus were happy and it seemed "
+"like this could never end."
+msgstr ""
+"Bho chionn fhada, bhiodh na cinn-fhionn a' fuireach gu socair sìtheil air A' "
+"Phòla a Deas còmhla ris na beathaichean eile uile. Bhiodh mèidh air a "
+"h-uile nì is cha ghabhadh e creidsinn gun rachadh an t-sìth aca a bhriseadh. "
+"Bha na cinn-fhionn toilichte is a rèir coltais cha tigeadh seo gu crìch gu "
+"bràth tuilleadh."
+
+#: data/stories/tutorial_intro.story:17
+msgid ""
+"But then one day, things began to change slowly: the sky got darker and the "
+"earth got warmer. Firstly, they thought this was just a normal fluctuation "
+"in the world's climate, but things seemed to get worse and worse with every "
+"year."
+msgstr ""
+"Ach, latha a bha seo, thòisich na cùisean air atharrachadh mean air mhean. "
+"Dh'fhàs na speuran na bu duirche is an talamh na bu bhlàithe. An toiseach, "
+"bha iad den bheachd nach e ach luaisgeachd àbhaisteach na gnàth-shìde a bha "
+"ann, ach dh'fhàs e na bu mhiosa gach bliadhna."
+
+#: data/stories/tutorial_intro.story:25
+msgid ""
+"The snow began to melt away in a few areas and food became an issue. Other "
+"animals tried to leave the region to search for colder areas, but the Pingus "
+"knew that this wouldn't help: they knew that they had to do something about "
+"it."
+msgstr ""
+"Thòisich an sneachda a leaghadh an-siud 's an-seo is dh'fhàs e na bu dorra "
+"biadh a lorg. Dh'fhàg cuid dhe na h-ainmhidhean an àite an tòir raointean a "
+"bu fhuaire. Co-dhiù, bha fios aig na cinn-fhionn nach biodh seo a' "
+"cuideachadh is gun robh aca ri rudeigin a dhèanamh an aghaidh an "
+"duilgheadais seo."
+
+#: data/stories/tutorial_intro.story:33
+msgid ""
+"So the circle of the eldest came together to decide what to do about it. "
+"They decided to send out an expedition around the world to find the cause of "
+"this warming. The expedition consisted of hundreds of the bravest Pingus on "
+"the South Pole."
+msgstr ""
+"Chruinnich na seanairean is seanmhairean gus co-dhùnadh a thoirt air dè a "
+"ghabhadh dèanamh. Thug iad romhpa buidheann a chur a-null air triall gus "
+"faighinn a-mach carson a bha an saoghal a' fàs na bu bhlàithe. Dh'fhalbh "
+"ceudan dhe na cinn-fhionn a bu chalma a bha air A' Phòla a Deas."
+
+#: data/stories/tutorial_intro.story:41
+msgid ""
+"And they picked you to lead them on their journey around the world. Since "
+"the journey will be dangerous and difficult, your first goal is the Island "
+"of Mogorok, also known as the Tutorial Island. According to the eldest, this "
+"island has always been the first stop of Pingus that were sent out into the "
+"world."
+msgstr ""
+"Agus is tusa an ceann-cinnidh a thagh iad gus an stiùireadh timcheall air an "
+"t-saoghal, oir bidh an triall cunnartach is doirbh. 'S e Eilean Mhogoroc a "
+"tha sa chiad cheann-uidhe agad, air a bheil Tutorial Island (Eilean an "
+"Oideachaidh) cuideachd. A rèir an t-seanchais, 's e seo an t-eilean far an "
+"rachadh cinn-fhionn an toiseach nuair a chaidh an cur a-null dhan t-saoghal."
+
+#: data/stories/tutorial_intro.story:50
+msgid ""
+"The island consists of many areas that are ideal to teach the Pingus their "
+"abilities. The Pingus can learn to build bridges, climb, bash and use many "
+"other talents which they will need on their long and dangerous journey."
+msgstr ""
+"Tha an t-eilean dèanta dhe raointean eadar-dhealaichte a bhios foirfe gus na "
+"comasan aig na cinn-fhionn a thrèanadh. 'S urrainn dhaibh na tàlantan aca a "
+"leithid togail dhrochaidean, sreap, cladhach is eile a thrèanadh an-siud, "
+"oir bidh iad feumach orra gun teagamh air an triall fhada is doirbh a tha "
+"romhpa."
+
+#: data/stories/tutorial_intro.story:57
+msgid ""
+"While there, you can practice your abilities in commanding and guiding the "
+"Pingus. You can also get familiar with all the abilities the Pingus provide "
+"and learn to master them, since you will need all of them on your journey "
+"around the world."
+msgstr ""
+"Aig an aon àm, 's urrainn dhut fhèin trèanadh ach am bi thu comasach air na "
+"cinn-fhionn a stiùireadh is a bhith nad cheann-cinnidh. Cuideachd, gheibh "
+"thu eòlas air na comasan a bheil aig na cinn-fhionn. Gun teagamh, bidh iad "
+"uile a dhìth ort air an triall timcheall air an t-saoghal."
+
+#: data/stories/tutorial_intro.story:65
+msgid ""
+"Now that you and the Pingus have arrived at Tutorial Island it is time to "
+"take command and begin your mission.\n"
+"\n"
+"Good Luck!"
+msgstr ""
+"Nise, on a ruig thu Eilean an Oideachaidh còmhla ris na cinn-fhionn, nach "
+"gabh thu ùghdarras is nach tòisich thu leis a' mhisean agad?\n"
+"\n"
+"Guma math a thèid leat!"
+
+#: data/stories/tutorial_outro.story:2
+msgid "The Journey Continues"
+msgstr "Leanaidh an triall"
+
+#: data/stories/tutorial_outro.story:9
+msgid ""
+"Now after you and the Pingus have learned the basics and practiced a bit it "
+"is time to move on and begin the journey into the world. Since the ice floe "
+"with which the Pingus traveled to the Tutorial Island isn't going to hold on "
+"the whole way into the warmer climates the Pingus have to find something "
+"else to guide them on their journey."
+msgstr ""
+"Nise gu bheil thusa is na cinn-fhionn air na comasan bunasach ionnsachadh is "
+"beagan cleachdaidh fhaighinn, thàinig an t-àm gus falbh is siubhal dhan "
+"t-saoghal a-muigh. On nach mair an clàr-deighe air an do ràinig na cinn-"
+"fhionn Eilean an Oideachaidh gus an ruig iad na raoinntean as blàithe, "
+"feumaidh iad rudeigin eile a lorg air an siubhail iad."
+
+#: data/stories/tutorial_outro.story:18
+msgid ""
+"But as the eldest have said, the Tutorial Island provides not only a good "
+"way to practice, but it is also the starting point into the world. After "
+"some searching the Pingus discovered the meaning of this, and they found the "
+"large tree at the end of the island which gave them wood to construct a "
+"float."
+msgstr ""
+"Co-dhiù, mar a dh'innseas an seanchas dhuinn, chan ann a-mhàin gur e àite "
+"trèanaidh air leth a tha ann an Eilean an Oideachaidh, ach seach a' chiad "
+"cheum dhan t-saoghal a-muigh cuideachd. An dèidh dhaibh sireadh greis fhada, "
+"mhothaich na cinn-fhionn gun robh an fhìrinn san t-seanchais nuair a lorg "
+"iad a' chraobh mhòr ceann thall an eilein a thug maide gu leòr dhaibh gus "
+"slaod a thogail."
+
+#: data/stories/tutorial_outro.story:27
+msgid ""
+"So the Pingus set out and constructed some large rafts, enough to carry them "
+"all. After also packing a bunch of provisions they were prepared to start "
+"their journey and leave their familiar ground and enter the unknown parts of "
+"the world."
+msgstr ""
+"Agus 's e seo na rinn iad. Thug na cinn-fhionn slaodan gu leòr a bheireadh a "
+"h-uile gin diubh. An dèidh biadh a dhèanamh gus a thoirt leotha, bha iad "
+"ullaichte airson an triall aca mu dheireadh thall, is dh'fhàg iad àiteachan "
+"an eòlais gus falbh dhan aineolas."
+
+#: data/stories/tutorial_outro.story:35
+msgid ""
+"So the Pingus sit on their raft, worrying about what's to come and where to "
+"go, while floating into the sunset.\n"
+"\n"
+"To be continued..."
+msgstr ""
+"Mar sin, tha na cinn-fhionn nan seasamh air an t-slaod, làn uallaich mun àm "
+"is mu na h-àiteachan a tha romhpa, a' siubhal a dh'ionnsaigh dol fodha na "
+"grèine.\n"
+"\n"
+"Cumaidh iad orra..."
+
+#: data/levelsets/alien.levelset:3
+msgid "Alien by Josh Dye"
+msgstr "Creutairean-fànais le Josh Dye"
+
+#: data/levelsets/alien.levelset:4
+msgid "Escape from alien"
+msgstr "Teicheadh on chreutair-fhànais"
+
+#: data/levelsets/crystal.levelset:3
+msgid "Crystal"
+msgstr "Criostal"
+
+#: data/levelsets/crystal.levelset:4
+msgid "Crystaline sparkling full of danger"
+msgstr "Criostal lainnireach làn cunnairt"
+
+#: data/levelsets/desert.levelset:3
+msgid "Desert"
+msgstr "Am fàsach"
+
+#: data/levelsets/desert.levelset:4
+msgid "Getting hot outside..."
+msgstr "Tha e teth a-muigh..."
+
+#: data/levelsets/factory.levelset:3
+msgid "Factory Campaign"
+msgstr "Iomairt an fhactaraidh"
+
+#: data/levelsets/factory.levelset:4
+msgid "Pingus expedition"
+msgstr "Triall nan ceann-fionn"
+
+#: data/levelsets/halloween.levelset:3
+msgid "Halloween 2007"
+msgstr "Oidhche Shamhna 2007"
+
+#: data/levelsets/halloween.levelset:4
+msgid "Trapped at All Hallows Eve"
+msgstr "Glacte air Oidhche Shamhna"
+
+#: data/levelsets/halloween2011.levelset:2
+msgid "Halloween 2011"
+msgstr "Oidhche Shamhna 2011"
+
+#: data/levelsets/halloween2011.levelset:3
+msgid "Going Underground"
+msgstr "Fon talamh"
+
+#: data/levelsets/hellmouth.levelset:3
+msgid "Hellmouth"
+msgstr "Beul na h-iuthairne"
+
+#: data/levelsets/hellmouth.levelset:4
+msgid "A cave full of slime..."
+msgstr "Uamh làn eabair"
+
+#: data/levelsets/jungle.levelset:3
+msgid "Jungle"
+msgstr "Dlùth-choille"
+
+#: data/levelsets/mysteryisland.levelset:3
+msgid "Island of Mystery"
+msgstr "Eilean na dìomhaireachd"
+
+#: data/levelsets/mysteryisland.levelset:4
+msgid "Marooned on an Uncharted Isle [by Lachlan McCubbin]"
+msgstr "Air eilean uaigneach [le Lachlan McCubbin]"
+
+#: data/levelsets/pacman.levelset:3
+msgid "Pac-Man"
+msgstr "Pac-Man"
+
+#: data/levelsets/pacman.levelset:4
+msgid "Trapped in a video game"
+msgstr "Glacte ann an geama coimpiutair"
+
+#: data/levelsets/xmas2011.levelset:3
+#, fuzzy
+msgid "Xmas 2011"
+msgstr "Nollaig 2011"
+
+#: data/levelsets/xmas2011.levelset:4
+msgid "Merry Christmas and a Happy New Year"
+msgstr "Nollaig chridheil is bliadhna mhath ùr"

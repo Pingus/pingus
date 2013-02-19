@@ -26,6 +26,13 @@ echo "* Creating DMG"
 	cp COPYING /Volumes/Pingus
 	cp NEWS /Volumes/Pingus
 	hdiutil detach /Volumes/Pingus -force
-	./SLA-dmg.sh COPYING Pingus-tmp.dmg
+read -p "Do you run OSX 10.6 or eaarlier? (y/n)" RESPONSE
+	if [ "$RESPONSE" = y ] ; then
+		./SLA-dmg.sh COPYING Pingus-tmp.dmg
+	elif [ "$RESPONSE" = n ] ; then
+		./licenseDMG.py Pingus-tmp.dmg COPYING
+	else
+		echo "You did not make a valid selection!"
+	fi
 	hdiutil convert Pingus-tmp.dmg -format UDBZ -o Pingus-`cat VERSION`.dmg
 	rm Pingus-tmp.dmg
