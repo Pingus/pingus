@@ -1,80 +1,74 @@
-# #-#-#-#-#  no.po (0.6.0)  #-#-#-#-#
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Ingo Ruhnke
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-# #-#-#-#-#  no.po (PACKAGE VERSION)  #-#-#-#-#
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Japanese translation for pingus
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the pingus package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.6.0\n"
+"Project-Id-Version: pingus\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-02-13 03:15+0100\n"
-"PO-Revision-Date: 2011-09-18 18:50+0000\n"
-"Last-Translator: Skule Solvang <sk-so@online.no>\n"
-"Language-Team: no <sk-so@online.no>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-04-17 16:24+0000\n"
+"Last-Translator: YannUbuntu <yannubuntu@gmail.com>\n"
+"Language-Team: Japanese <ja@li.org>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-10 19:40+0000\n"
+"X-Launchpad-Export-Date: 2013-02-10 19:39+0000\n"
 "X-Generator: Launchpad (build 16482)\n"
 
 #: src/editor/object_properties.cpp:87 src/editor/object_properties.cpp:515
 msgid "Object:"
-msgstr ""
+msgstr "オブジェクト:"
 
 #: src/editor/object_properties.cpp:88 src/editor/object_properties.cpp:516
 msgid "Nothing selected"
-msgstr ""
+msgstr "何も選択されていません"
 
 #: src/editor/object_properties.cpp:97
 msgid "Transparent"
-msgstr ""
+msgstr "透明"
 
 #: src/editor/object_properties.cpp:98
 msgid "Solid"
-msgstr ""
+msgstr "ソリッド"
 
 #: src/editor/object_properties.cpp:99
 msgid "Ground"
-msgstr ""
+msgstr "地面"
 
 #: src/editor/object_properties.cpp:100
 msgid "Bridge"
-msgstr ""
+msgstr "橋"
 
 #: src/editor/object_properties.cpp:101
 msgid "Water"
-msgstr ""
+msgstr "水"
 
 #: src/editor/object_properties.cpp:102
 msgid "Lava"
-msgstr ""
+msgstr "溶岩"
 
 #: src/editor/object_properties.cpp:103
 msgid "Remove"
-msgstr ""
+msgstr "削除"
 
 #: src/editor/object_properties.cpp:108
 msgid "Direction:"
-msgstr ""
+msgstr "方向:"
 
 #: src/editor/object_properties.cpp:110
 msgid "Left"
-msgstr ""
+msgstr "左"
 
 #: src/editor/object_properties.cpp:111
 msgid "Misc"
-msgstr ""
+msgstr "他"
 
 #: src/editor/object_properties.cpp:112
 msgid "Right"
-msgstr ""
+msgstr "右"
 
 #: src/editor/object_properties.cpp:117
 msgid "ReleaseRate:"
@@ -106,7 +100,7 @@ msgstr ""
 
 #: src/editor/object_properties.cpp:169
 msgid "Color:"
-msgstr ""
+msgstr "色:"
 
 #: src/editor/object_properties.cpp:181
 msgid "Small Stars:"
@@ -122,11 +116,11 @@ msgstr ""
 
 #: src/editor/object_properties.cpp:195
 msgid "Repeat:"
-msgstr ""
+msgstr "反復:"
 
 #: src/editor/object_properties.cpp:211
 msgid "Id:"
-msgstr ""
+msgstr "Id:"
 
 #: src/editor/object_properties.cpp:215
 msgid "Target Id:"
@@ -134,7 +128,7 @@ msgstr ""
 
 #: src/editor/object_properties.cpp:220 src/editor/level_properties.cpp:74
 msgid "Height:"
-msgstr ""
+msgstr "高さ:"
 
 #: src/editor/object_properties.cpp:521
 msgid "Object: [Group]"
@@ -170,7 +164,7 @@ msgstr ""
 
 #: src/editor/panel.cpp:183
 msgid "Configure actions"
-msgstr ""
+msgstr "アクションの設定"
 
 #: src/editor/panel.cpp:185
 msgid "Configure level"
@@ -230,12 +224,12 @@ msgstr ""
 
 #: src/editor/panel.cpp:227
 msgid "Display help"
-msgstr ""
+msgstr "ヘルプを表示"
 
 #: src/editor/panel.cpp:229 src/editor/object_selector.cpp:174
 #: src/pingus/screens/pingus_menu.cpp:74
 msgid "Exit"
-msgstr "Avslutt"
+msgstr "出口"
 
 #: src/editor/file_dialog.cpp:58
 msgid "Datadir"
@@ -247,23 +241,23 @@ msgstr ""
 
 #: src/editor/file_dialog.cpp:63
 msgid "Open"
-msgstr ""
+msgstr "開く"
 
 #: src/editor/file_dialog.cpp:63
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: src/editor/file_dialog.cpp:66 src/editor/message_box.cpp:35
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
 #: src/editor/file_dialog.cpp:77
 msgid "Filename:"
-msgstr ""
+msgstr "ファイル名:"
 
 #: src/editor/file_dialog.cpp:78
 msgid "Pathname:"
-msgstr ""
+msgstr "パス名:"
 
 #: src/editor/file_dialog.cpp:98
 msgid "Open a level"
@@ -276,16 +270,17 @@ msgstr ""
 #: src/editor/level_properties.cpp:52
 #, fuzzy
 msgid "Author:"
-msgstr "Forfatter: "
+msgstr "作者: "
 
 #: src/editor/level_properties.cpp:55
 #, fuzzy
 msgid "Levelname:"
-msgstr "Nivåsett"
+msgstr "ファイル名:"
 
 #: src/editor/level_properties.cpp:58
+#, fuzzy
 msgid "Description:"
-msgstr ""
+msgstr "方向:"
 
 #: src/editor/level_properties.cpp:62
 msgid "Pingus Count:"
@@ -294,21 +289,20 @@ msgstr ""
 #: src/editor/level_properties.cpp:65
 #, fuzzy
 msgid "Pingus to Save:"
-msgstr "Antall å redde: "
+msgstr "保存数： "
 
 #: src/editor/level_properties.cpp:68
 #, fuzzy
 msgid "Time:"
-msgstr "Tid: "
+msgstr "時間: "
 
 #: src/editor/level_properties.cpp:71
 msgid "Width:"
 msgstr ""
 
 #: src/editor/level_properties.cpp:77
-#, fuzzy
 msgid "Music:"
-msgstr "-Musikk"
+msgstr ""
 
 #: src/editor/editor_screen.cpp:230
 msgid "== Editor Help =="
@@ -362,11 +356,11 @@ msgstr ""
 
 #: src/editor/message_box.cpp:37
 msgid "Replace"
-msgstr ""
+msgstr "置換"
 
 #: src/editor/object_selector.cpp:165
 msgid "Entrance"
-msgstr ""
+msgstr "入口"
 
 #: src/editor/object_selector.cpp:166
 msgid "Groundpiece (ground)"
@@ -390,23 +384,23 @@ msgstr ""
 
 #: src/editor/object_selector.cpp:171
 msgid "Hotspot"
-msgstr ""
+msgstr "ホットスポット"
 
 #: src/editor/object_selector.cpp:172
 msgid "Background"
-msgstr ""
+msgstr "背景"
 
 #: src/editor/object_selector.cpp:175
 msgid "Liquid"
-msgstr ""
+msgstr "液体"
 
 #: src/editor/object_selector.cpp:176
 msgid "Trap"
-msgstr ""
+msgstr "トラップ"
 
 #: src/editor/object_selector.cpp:177
 msgid "Weather"
-msgstr ""
+msgstr "天気"
 
 #: src/editor/object_selector.cpp:178
 msgid "Special Object"
@@ -423,130 +417,130 @@ msgstr ""
 
 #: src/pingus/action_name.cpp:27
 msgid "Angel"
-msgstr "Vinkel"
+msgstr "天使"
 
 #: src/pingus/action_name.cpp:28
 msgid "Basher"
-msgstr "Basher"
+msgstr "バッシャー"
 
 #: src/pingus/action_name.cpp:29
 msgid "Blocker"
-msgstr "Blocker"
+msgstr "ブロッカー"
 
 #: src/pingus/action_name.cpp:30
 msgid "Boarder"
-msgstr "Boarder"
+msgstr "ボーダー"
 
 #: src/pingus/action_name.cpp:31
 msgid "Bomber"
-msgstr "Bomber"
+msgstr "爆撃機"
 
 #: src/pingus/action_name.cpp:32 src/pingus/actions/bridger.cpp:38
 #: src/pingus/actions/bridger.cpp:196
 msgid "Bridger"
-msgstr "Bridger"
+msgstr ""
 
 #: src/pingus/action_name.cpp:33
 msgid "Climber"
-msgstr "Climber"
+msgstr "クライマー"
 
 #: src/pingus/action_name.cpp:34
 msgid "Digger"
-msgstr "Digger"
+msgstr "掘る人"
 
 #: src/pingus/action_name.cpp:35
 msgid "Drown"
-msgstr "Drown"
+msgstr "溺れ死ぬ"
 
 #: src/pingus/action_name.cpp:36
 msgid "Exiter"
-msgstr "Exiter"
+msgstr ""
 
 #: src/pingus/action_name.cpp:37
 msgid "Faller"
-msgstr "Faller"
+msgstr "転倒"
 
 #: src/pingus/action_name.cpp:38
 msgid "Floater"
-msgstr "Floater"
+msgstr "フローター"
 
 #: src/pingus/action_name.cpp:39
 msgid "Jumper"
-msgstr "Jumper"
+msgstr "ジャンパー"
 
 #: src/pingus/action_name.cpp:40
 msgid "Laserkill"
-msgstr "Laserkill"
+msgstr "レーザーキル"
 
 #: src/pingus/action_name.cpp:41
 msgid "Miner"
-msgstr "Miner"
+msgstr "鉱夫"
 
 #: src/pingus/action_name.cpp:42
 msgid "Slider"
-msgstr "Slider"
+msgstr "スライダー"
 
 #: src/pingus/action_name.cpp:43
 msgid "Smashed"
-msgstr "Smashed"
+msgstr "壊した"
 
 #: src/pingus/action_name.cpp:44
 msgid "Splashed"
-msgstr "Splashed"
+msgstr "撥ねした"
 
 #: src/pingus/action_name.cpp:45
 msgid "Superman"
-msgstr "Superman"
+msgstr "スーパーマン"
 
 #: src/pingus/action_name.cpp:46
 msgid "Teleported"
-msgstr "Teleported"
+msgstr "テレポートした"
 
 #: src/pingus/action_name.cpp:47
 msgid "Waiter"
-msgstr "Waiter"
+msgstr "松人"
 
 #: src/pingus/action_name.cpp:48
 msgid "Walker"
-msgstr "Walker"
+msgstr "歩く人"
 
 #: src/pingus/screens/story_screen.cpp:108
 #: src/pingus/screens/story_screen.cpp:114
 msgid "skip"
-msgstr "hopp over"
+msgstr "スキップ"
 
 #: src/pingus/screens/start_screen.cpp:67
 msgid "Play"
-msgstr ""
+msgstr "プレイ"
 
 #: src/pingus/screens/start_screen.cpp:111
 #: src/pingus/screens/level_menu.cpp:50
 msgid "Back"
-msgstr ""
+msgstr "もどる"
 
 #: src/pingus/screens/start_screen.cpp:166
 msgid "Number of Pingus: "
-msgstr "Antall Pinguer: "
+msgstr "Pingusの数： "
 
 #: src/pingus/screens/start_screen.cpp:169
 msgid "Number to Save: "
-msgstr "Antall å redde: "
+msgstr "保存数： "
 
 #: src/pingus/screens/start_screen.cpp:172
 msgid "Time: "
-msgstr "Tid: "
+msgstr "時間: "
 
 #: src/pingus/screens/start_screen.cpp:178
 msgid "Author: "
-msgstr "Forfatter: "
+msgstr "作者: "
 
 #: src/pingus/screens/addon_menu.cpp:53 src/pingus/screens/option_menu.cpp:336
 msgid "Close"
-msgstr ""
+msgstr "閉じる"
 
 #: src/pingus/screens/option_menu.cpp:208
 msgid "Fullscreen"
-msgstr ""
+msgstr "フルスクリーン"
 
 #: src/pingus/screens/option_menu.cpp:209
 msgid "Mouse Grab"
@@ -558,7 +552,7 @@ msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:212
 msgid "Autoscrolling"
-msgstr ""
+msgstr "自動スクロール"
 
 #: src/pingus/screens/option_menu.cpp:213
 msgid "Drag&Drop Scrolling"
@@ -570,7 +564,7 @@ msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:219
 msgid "Resolution:"
-msgstr ""
+msgstr "画面解像度:"
 
 #: src/pingus/screens/option_menu.cpp:220
 msgid "Renderer:"
@@ -578,7 +572,7 @@ msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:222
 msgid "Language:"
-msgstr ""
+msgstr "言語："
 
 #: src/pingus/screens/option_menu.cpp:224
 msgid "Master Volume:"
@@ -594,7 +588,7 @@ msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:334
 msgid "Option Menu"
-msgstr ""
+msgstr "オプション・メニュー"
 
 #: src/pingus/screens/option_menu.cpp:340
 msgid "Some options require a restart of the game to take effect."
@@ -602,39 +596,39 @@ msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:54
 msgid "Story"
-msgstr "Bakgrunnshistorie"
+msgstr "ストーリー"
 
 #: src/pingus/screens/pingus_menu.cpp:55
 msgid "..:: Start the game ::.."
-msgstr "..:: Start spillet ::.."
+msgstr "..:: ゲームをスタート ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:59
 msgid "Editor"
-msgstr ""
+msgstr "エディター"
 
 #: src/pingus/screens/pingus_menu.cpp:60
 msgid "..:: Create your own levels ::.."
-msgstr ""
+msgstr "..:: 自身のレベルを作成 ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:64
 msgid "Options"
-msgstr ""
+msgstr "オプション"
 
 #: src/pingus/screens/pingus_menu.cpp:65
 msgid "..:: Configure the game ::.."
-msgstr ""
+msgstr "..:: ゲームを構成 ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:177
 msgid "Levelsets"
-msgstr "Nivåsett"
+msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:70
 msgid "..:: Play User Built levels ::.."
-msgstr ""
+msgstr "..:: ユーザ我作ったレベルをプレー ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:75
 msgid "..:: Bye, bye ::.."
-msgstr "..:: Ha-det ::.."
+msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:87
 msgid ""
@@ -644,83 +638,83 @@ msgstr ""
 
 #: src/pingus/screens/result_screen.cpp:91
 msgid "Give up"
-msgstr ""
+msgstr "ギブアップ"
 
 #: src/pingus/screens/result_screen.cpp:126
 msgid "Retry"
-msgstr "Prøv på nytt"
+msgstr "再試行"
 
 #: src/pingus/screens/result_screen.cpp:183
 msgid "Success!"
-msgstr "Suksess!"
+msgstr "成功しました!"
 
 #: src/pingus/screens/result_screen.cpp:191
 msgid "Failure!"
-msgstr "Feilet!"
+msgstr "失敗しました！"
 
 #: src/pingus/screens/result_screen.cpp:200
 msgid "Perfect! You saved everyone possible - great!"
-msgstr "Perfekt! Du reddet alle mulige - flott!"
+msgstr "パーフェクト！皆を救った。すばらしい！"
 
 #: src/pingus/screens/result_screen.cpp:202
 msgid "No-one got killed, pretty good work."
-msgstr "Ingen ble drept, ganske bra jobb."
+msgstr "誰も殺されてしまった。 仕事良い。"
 
 #: src/pingus/screens/result_screen.cpp:204
 msgid ""
 "You saved exactly what you needed - you made it, but\n"
 "maybe you can do better?"
 msgstr ""
-"Du reddet akkurat så mange som du trengte - du klarte det, men\n"
-"kanskje du kan klare bedre?"
+"正確に必要とされたものを保存されました。\n"
+"たぶん、あなたはもっと良いことができますか？"
 
 #: src/pingus/screens/result_screen.cpp:207
 msgid "Not everybody was saved, but still good work!"
-msgstr "Ikke alle ble reddet, men fortsatt bra gjort!"
+msgstr "皆を救されませんでしたがまだ良い仕事！"
 
 #: src/pingus/screens/result_screen.cpp:209
 msgid "What can I say, you made it - congratulations!"
-msgstr "Hva kan jeg si, du klarte det - gratulerer!"
+msgstr "あなたは成功しました。 おめでとう！"
 
 #: src/pingus/screens/result_screen.cpp:214
 msgid "You killed everybody, not good."
-msgstr "Du drepte alle, ikke bra."
+msgstr "あなたは誰を殺した。 良くない。"
 
 #: src/pingus/screens/result_screen.cpp:216
 msgid "No-one got saved - I know you can do better."
-msgstr "Ingen ble reddet - Jeg vet du kan bedre."
+msgstr "誰も保存されませんしまった。 あなたはもっとうまくできる。"
 
 #: src/pingus/screens/result_screen.cpp:218
 msgid ""
 "You didn't save enough, but you saved a few.  Next\n"
 "time you might do better."
 msgstr ""
-"Du reddet ikke nok, men du reddet et par.  Du kan\n"
-"kanskje gjøre det bedre neste gang."
+"十分に保存されませんでした。しかし、いくつか保存されます。\n"
+"次回はもっと良いかもしれません。"
 
 #: src/pingus/screens/result_screen.cpp:221
 msgid "Only one more and you would have made it - try again!"
-msgstr "Bare en til og du ville klart det - prøv igjen!"
+msgstr "唯一のもう一匹で、成功していただろう。 もう一度試してください！"
 
 #: src/pingus/screens/result_screen.cpp:223
 msgid "Only a handful more and you would have made it - try again!"
-msgstr "Bare noen få til og du ville klart det - prøv igjen!"
+msgstr "唯一のもう一握りで、成功していただろう。 もう一度試してください！"
 
 #: src/pingus/screens/result_screen.cpp:225
 msgid "Better luck next time!"
-msgstr "Lykke til neste gang!"
+msgstr "良い運は次回！"
 
 #: src/pingus/screens/result_screen.cpp:233
 msgid "Saved: "
-msgstr "Reddet: "
+msgstr "保存した： "
 
 #: src/pingus/screens/result_screen.cpp:237
 msgid "Died: "
-msgstr "Døde: "
+msgstr "死亡した： "
 
 #: src/pingus/screens/result_screen.cpp:240
 msgid "Time left: "
-msgstr "Tid igjen: "
+msgstr "残り時間： "
 
 #: src/pingus/screens/level_menu.cpp:155
 msgid "Under Construction"
@@ -732,23 +726,23 @@ msgstr ""
 
 #: src/pingus/screens/level_menu.cpp:192
 msgid "Solved:"
-msgstr "Løst:"
+msgstr ""
 
 #: src/pingus/screens/level_menu.cpp:193
 msgid "levels"
-msgstr "nivå"
+msgstr "レベル"
 
 #: src/pingus/worldmap/level_dot.cpp:134
 msgid "???"
-msgstr ""
+msgstr "???"
 
 #: src/pingus/worldmap/worldmap_screen.cpp:84
 msgid "Show Ending?"
-msgstr "Vis slutten?"
+msgstr ""
 
 #: src/pingus/worldmap/worldmap_screen.cpp:113
 msgid "Leave?"
-msgstr "Gå ut?"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:175
 msgid "[OPTIONS]... [FILE]"
@@ -758,19 +752,19 @@ msgstr ""
 msgid ""
 "Pingus is a puzzle game where you need to guide a bunch of little penguins "
 "around the world."
-msgstr ""
+msgstr "Pingusは、小さなペンギンの束を世界中に導くパズルゲームです。"
 
 #: src/pingus/pingus_main.cpp:178
 msgid "General Options:"
-msgstr ""
+msgstr "全般の設定:"
 
 #: src/pingus/pingus_main.cpp:180
 msgid "Displays this help"
-msgstr "Viser denne hjelpen"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:182
 msgid "Print version number and exit"
-msgstr "Vis versjonsnummeret og avslutt."
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:184
 msgid "Enable info level log output"
@@ -790,11 +784,11 @@ msgstr ""
 
 #: src/pingus/pingus_main.cpp:192
 msgid "Start in Window Mode"
-msgstr "Start i Vindu Modus"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:194
 msgid "Start in Fullscreen"
-msgstr "Start i Fullskjerm"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:196
 msgid "Use the given renderer (default: sdl)"
@@ -810,7 +804,7 @@ msgstr ""
 
 #: src/pingus/pingus_main.cpp:202
 msgid "Enable software cursor"
-msgstr "Aktiver programvare peker"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:204
 msgid "Game Options:"
@@ -818,7 +812,7 @@ msgstr ""
 
 #: src/pingus/pingus_main.cpp:206
 msgid "Disable automatic scrolling"
-msgstr "Deaktiver automatisk rulling"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:208
 msgid "Enable drag'n drop scrolling"
@@ -830,11 +824,11 @@ msgstr ""
 
 #: src/pingus/pingus_main.cpp:212
 msgid "Disable sound"
-msgstr "Deaktiver lyd"
+msgstr "サウンドを無効にする"
 
 #: src/pingus/pingus_main.cpp:214
 msgid "Disable music"
-msgstr "Deaktiver musikk"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:218
 msgid "Select language to use with Pingus"
@@ -855,7 +849,7 @@ msgstr ""
 #: src/pingus/pingus_main.cpp:227 src/pingus/pingus_main.cpp:229
 #: src/pingus/pingus_main.cpp:231
 msgid "DIR"
-msgstr ""
+msgstr "DIR"
 
 #: src/pingus/pingus_main.cpp:228
 msgid "Load game datafiles from DIR"
@@ -871,7 +865,7 @@ msgstr ""
 
 #: src/pingus/pingus_main.cpp:234
 msgid "Don't read ~/.pingus/config"
-msgstr "Ikke les ~/.pingus/config"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:235
 msgid "FILE"
@@ -883,7 +877,7 @@ msgstr ""
 
 #: src/pingus/pingus_main.cpp:238
 msgid "Uses the controller given in FILE"
-msgstr "Bruker kontrolleren gitt i FIL"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:240
 msgid "Debug Options:"
@@ -895,7 +889,7 @@ msgstr ""
 
 #: src/pingus/pingus_main.cpp:244
 msgid "Set the game speed (0=fastest, >0=slower)"
-msgstr "Set spillfart (0=raskest, >0=senere"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:246
 msgid "Set the desired game framerate (frames per second)"
@@ -903,39 +897,39 @@ msgstr ""
 
 #: src/pingus/pingus_main.cpp:248
 msgid "Set the size of the map tiles (default: 32)"
-msgstr "Set størrelsen på kartflisene (standard: 32)"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:688
 msgid "Pingus: Out of memory!"
-msgstr "Pingus: Ikke nok minne!"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:692
 msgid "Pingus: Standard exception caught!:\n"
-msgstr "Pingus: Fikk standard unntak!:\n"
+msgstr ""
 
 #: src/pingus/pingus_main.cpp:696
 msgid "Pingus: Unknown throw caught!"
-msgstr "Pingus: Fikk ukjent kast!"
+msgstr ""
 
 #: src/pingus/game_time.cpp:29
 msgid "unlimited"
-msgstr "uendelig"
+msgstr "制限なし"
 
 #: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
-msgstr "Skjermbilde: Lagrer skjermbilde til: "
+msgstr ""
 
 #: src/engine/display/screenshot.cpp:39
 msgid "Screenshot: Screenshot is done."
-msgstr "Skjermbilde: Ferdig med skjermbilde."
+msgstr ""
 
 #: src/engine/display/screenshot.cpp:124 src/engine/display/screenshot.cpp:152
 msgid "Screenshot: Couldn't write file: "
-msgstr "Skjermbilde: Kunne ikke skrive fil: "
+msgstr ""
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
 msgid "If the way is blocked, bash away"
-msgstr "Hvis veien er blokkert, slå i vei"
+msgstr ""
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:6
 msgid ""
@@ -944,14 +938,10 @@ msgid ""
 "opposed to the vertical dig ability the Digger action provides. This new "
 "action is called Basher. "
 msgstr ""
-"I likhet med Digger handlingen du allerede kjenner fra tidligere brett, "
-"finnes det også en handling som lar Pingusene grave horisontalt, i "
-"motsetning til den vertikale gravingen en Digger gir deg. Denne nye "
-"handlingen kalles Basher. "
 
 #: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:5
 msgid "Sacrifice a few and save the rest"
-msgstr "Ofre noen få og redd resten"
+msgstr ""
 
 #: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:6
 msgid ""
@@ -960,14 +950,10 @@ msgid ""
 "This will kill them, but it is sometimes necessary to sacrifice a few to "
 "save the rest. "
 msgstr ""
-"Noen ganger er ikke noen andre handlinger tilgjengelige, så du må bombe deg "
-"vei gjennom bakken. Pingusene kan gjøre dette ved å selvdestruere. Dette vil "
-"ta livet av dem, men noen ganger er det nødvendig å ofre noen for å redde "
-"resten. "
 
 #: data/levels/tutorial/digger-tutorial2-grumbel.pingus:5
 msgid "Learning to dig"
-msgstr "Lær å grave"
+msgstr ""
 
 #: data/levels/tutorial/digger-tutorial2-grumbel.pingus:6
 msgid ""
@@ -975,13 +961,10 @@ msgid ""
 "is to give a Pingu the command to dig a hole into the ground so that they "
 "can reach the exit. This can be accomplished simply by clicking on a Pingu. "
 msgstr ""
-"Dette er ditt første oppdrag. Som alltid er det ganske enkelt. Alt du "
-"trenger å gjøre er å gi en Pingu ordre om å grave et hull i bakken så du kan "
-"nå utgangen. Dette kan gjøres bare ved å klikke på en Pingu. "
 
 #: data/levels/tutorial/floater-tutorial-grumbel.pingus:5
 msgid "Float or Die"
-msgstr "Flyt eller dø"
+msgstr ""
 
 #: data/levels/tutorial/floater-tutorial-grumbel.pingus:6
 msgid ""
@@ -990,14 +973,10 @@ msgid ""
 "the ground smoothly. If Pingus fall too far, they will not be able to "
 "survive the fall, so keep your eyes open! "
 msgstr ""
-"Godt gjort i oppdrag en! La oss nå starte på det neste. Denne gangen trenger "
-"du å utstyre Pingusene dine med en liten propell, så de kan flyte fint til "
-"bakken. Hvis Pinguser faller for langt vil de ikke overleve fallet, så hold "
-"øynene åpne! "
 
 #: data/levels/tutorial/jumper-tutorial-grumbel.pingus:5
 msgid "Jump for joy"
-msgstr "Hopp av glede"
+msgstr ""
 
 #: data/levels/tutorial/jumper-tutorial-grumbel.pingus:6
 msgid ""
@@ -1005,13 +984,10 @@ msgid ""
 "reachable by walking. That's when the Jumper comes in handy - it allows the "
 "Pingu to make a small jump and so enables him to reach the platform. "
 msgstr ""
-"Noen ganger trenger en Pingu å nå en plattform som er langt borte, men ikke "
-"kan nås ved å gå. Det er da en Jumper er hendig - den tillater Pingusen å "
-"gjøre et lite hopp som gjør at den kan nå plattformen. "
 
 #: data/levels/tutorial/miner-tutorial2-grumbel.pingus:5
 msgid "Miner's heaven"
-msgstr "Gruvearbeiderens himmel"
+msgstr ""
 
 #: data/levels/tutorial/miner-tutorial2-grumbel.pingus:6
 msgid ""
@@ -1019,13 +995,10 @@ msgid ""
 "diagonal one. It allows a Pingu to dig diagonally through ground, thus "
 "creating a path for following Pingus. The action is called Miner. "
 msgstr ""
-"En ny handling ser dagens lys - en ny grave handling, denne gangen en "
-"diagonal en. Den lar en Pingu grave diagonalt gjennom bakken, slik at den "
-"lager en vei for Pingusene som kommer etter. Handlingen kalles Miner. "
 
 #: data/levels/tutorial/snow10-grumbel.pingus:5
 msgid "Panic Island (float/bash)"
-msgstr "Panikkøya (flyt/slå)"
+msgstr ""
 
 #: data/levels/tutorial/snow10-grumbel.pingus:6
 msgid ""
@@ -1033,13 +1006,10 @@ msgid ""
 "one gets a bit trickier. The Pingus are coming out of two entrances in "
 "parallel and it is your job to coordinate the two groups wisely. "
 msgstr ""
-"De tidligere brettene har ikke krevd mye rask handling av deg, men dette "
-"blir litt vanskeligere. Pingusene kommer ut av to innganger i parallel og "
-"det er din jobb å koordinere de to gruppene på en fornuftig måte. "
 
 #: data/levels/tutorial/snow11-grumbel.pingus:5
 msgid "Jump'n Bump... and Bash..."
-msgstr "Hopp, sprett... og slå..."
+msgstr ""
 
 #: data/levels/tutorial/snow11-grumbel.pingus:6
 msgid ""
@@ -1048,14 +1018,10 @@ msgid ""
 "coordinating them all. Since you only need to save 5 it should be doable, "
 "but if all else fails use the pause-mode ('p') to get an overview again. "
 msgstr ""
-"Det er panikktid igjen. Pingusene kommer ikke ut særlig fort, men siden de "
-"snur når de treffer vegger vil du snart få problemer med å koordinere alle. "
-"Siden du kun trenger å redde 5 burde det la seg gjøre, men hvis alt annet "
-"feiler bruk pause-modusen ('p') for å få oversikten igjen. "
 
 #: data/levels/tutorial/snow12-grumbel.pingus:5
 msgid "Two groups in parallel, coordinate wisely"
-msgstr "To grupper i parallel, koordiner smart"
+msgstr ""
 
 #: data/levels/tutorial/snow12-grumbel.pingus:6
 msgid ""
@@ -1063,13 +1029,10 @@ msgid ""
 "level gives you enough time to think your actions through. No more tips this "
 "time, but good luck! "
 msgstr ""
-"Du har to grupper å koordinere denne gangen. Ingen grunn til panikk, siden "
-"dette brettet gir deg nok tid til å tenke gjennom handlingene dine. Ingen "
-"flere tips denne gangen, men lykke til! "
 
 #: data/levels/tutorial/snow14-grumbel.pingus:5
 msgid "Block'a Rock"
-msgstr "Blokk og spreng"
+msgstr ""
 
 #: data/levels/tutorial/snow14-grumbel.pingus:6
 msgid ""
@@ -1080,7 +1043,7 @@ msgstr ""
 
 #: data/levels/tutorial/snow15-grumbel.pingus:5
 msgid "Climb, Climber,... Boom!"
-msgstr "Klatre, klatrer,... Boom!"
+msgstr ""
 
 #: data/levels/tutorial/snow15-grumbel.pingus:6
 msgid ""
@@ -1089,14 +1052,10 @@ msgid ""
 "Digger action in this level the Bomber needs to jump in, but how can it "
 "reach the place to bomb? "
 msgstr ""
-"Som du kan ha skjønt fra tidligere brett, trenger du ofte å kombinere "
-"forskjellige handlinger for å få jobben gjort. Siden det mangler en Digger "
-"handling i dette brettet må en Bomber trå til, men hvordan kan den nå "
-"plassen som skal bombes? "
 
 #: data/levels/tutorial/snow16-grumbel.pingus:5
 msgid "Bridging gets more complicated..."
-msgstr "Brobygging blir mer komplisert..."
+msgstr ""
 
 #: data/levels/tutorial/snow16-grumbel.pingus:6
 msgid ""
@@ -1104,12 +1063,10 @@ msgid ""
 "you could end up in the hole just before the exit, so think about how to "
 "avoid that. "
 msgstr ""
-"Nok en gang må du kombinere handlinger nøye og klokt. Hvis ikke kan du ende "
-"opp i hullet rett før utgangen, så tenk på hvordan du kan unngå det. "
 
 #: data/levels/tutorial/snow17-grumbel.pingus:5
 msgid "If too high, your Pingu will die..."
-msgstr "For høyt, og Pingusene dine vil dø..."
+msgstr ""
 
 #: data/levels/tutorial/snow17-grumbel.pingus:6
 msgid ""
@@ -1117,12 +1074,10 @@ msgid ""
 "reach the exit, so just send a few and let them prepare the path for the "
 "rest. "
 msgstr ""
-"Samarbeid er veien til utgangen denne gangen. Du har ikke nok Floatere til å "
-"nå utgangen, så du må sende noen få og la dem klargjøre veien for resten. "
 
 #: data/levels/tutorial/snow19-grumbel.pingus:5
 msgid "Learn to use the bridge"
-msgstr "Lær og bruke broen"
+msgstr ""
 
 #: data/levels/tutorial/snow19-grumbel.pingus:6
 msgid ""
@@ -1130,14 +1085,10 @@ msgid ""
 "pretty helpful. It takes some time to build, but unlike the jumper action it "
 "allows following Pingus to reach the other end too. "
 msgstr ""
-"Hvis du ikke har en Jumper tilgjengelig og du trenger å passere et stort "
-"hull, kan en bro være ganske hjelpsom. Den tar litt tid å bygge, men i "
-"forhold til Jumper handlingen tillater den også de følgende Pingusene å nå "
-"den andre enden. "
 
 #: data/levels/tutorial/snow20-grumbel.pingus:5
 msgid "Three solutions, it's up to you"
-msgstr "Tre løsninger, det er opp til deg"
+msgstr ""
 
 #: data/levels/tutorial/snow20-grumbel.pingus:6
 msgid ""
@@ -1145,12 +1096,10 @@ msgid ""
 "This level presents you with at least three different ways to solve it. It's "
 "up to you which one you pick. "
 msgstr ""
-"Nå som du har lært alle handlingene er det på tide å øve litt mer. Det er "
-"minst tre måter å løse dette brettet på. Hvilken du velger er opp til deg. "
 
 #: data/levels/tutorial/snow21-grumbel.pingus:5
 msgid "Climb, Climber, climb... and build a bridge"
-msgstr "Klatre, klatrer, klatre... og bygg en bro"
+msgstr ""
 
 #: data/levels/tutorial/snow21-grumbel.pingus:6
 msgid ""
@@ -1158,13 +1107,10 @@ msgid ""
 "to climb up straight walls, thus allowing him to reach stuff that might be "
 "too high to reach by other means. "
 msgstr ""
-"Atter en gang for du tilgang til en ny handling. Climber handlingen gir en "
-"Pingus muligheten til å klatre opp loddrette vegger, noe som gir han tilgang "
-"til ting som kan være for høyt oppe til å nå på andre vis. "
 
 #: data/levels/tutorial/snow22-grumbel.pingus:5
 msgid "Entrance high, Exit low"
-msgstr "Inngang høyt, utgang lavt"
+msgstr ""
 
 #: data/levels/tutorial/snow22-grumbel.pingus:6
 msgid ""
@@ -1173,14 +1119,10 @@ msgid ""
 "the stuff you need for this level in previous levels, so this shouldn't be "
 "too much of a problem for you. "
 msgstr ""
-"Hvis du ikke har nok floatere til å få alle pingusene til utgangen - må du "
-"finne en annen måte å få dem ned på. Du skulle nå ha lært alt du trenger til "
-"dette brettet i de foregående brettene, så dette skulle ikke være et for "
-"stort problem for deg. "
 
 #: data/levels/tutorial/snow7-grumbel.pingus:5
 msgid "One must prepare, the rest must follow"
-msgstr "En må gjøre det klart, resten må følge etter"
+msgstr ""
 
 #: data/levels/tutorial/snow7-grumbel.pingus:6
 msgid ""
@@ -1188,9 +1130,6 @@ msgid ""
 "coordinate your Pingus. You'll have to find other ways to keep them under "
 "control while a single one prepares the path for the rest. "
 msgstr ""
-"Noen ganger er det situasjoner der du ikke har en Blocker tilgjengelig til å "
-"koordinere Pingusene dine. Du må finne andre måter å kontrollere dem mens en "
-"enkelt klargjør veien for de andre. "
 
 #: data/levels/tutorial/snow8-grumbel.pingus:5
 msgid "Dig and float, just don't fall and smash"
@@ -1203,14 +1142,10 @@ msgid ""
 "apply it to the Pingus so that they will be able to reach the exit. Make "
 "sure that not too many of them die. "
 msgstr ""
-"I motsetning til de to første brettene har du to handlinger å bruke i dette "
-"brettet. Igjen er det en enkel jobb: velg en handling til venstre og bruk "
-"den på Pingusene så de kan komme seg til utgangen. Sørg bare for at ikke så "
-"mange av dem dør. "
 
 #: data/levels/tutorial/snow9-grumbel.pingus:5
 msgid "Dig, bash and other problems"
-msgstr "Grav, slå og andre problemer"
+msgstr ""
 
 #: data/levels/tutorial/snow9-grumbel.pingus:6
 msgid ""
@@ -1220,14 +1155,10 @@ msgid ""
 "think you've reached a situation from which you can no longer solve the "
 "level, double click the armageddon button at the lower right. "
 msgstr ""
-"Jo flere brett du klarer, jo vanskeligere vil de bli, men ingen grunn til "
-"panikk, da dette fortsatt er ganske enkelt. Bare bruk de tingene du har lært "
-"og det vil gå greit. Hvis du tror du er kommet til et punkt hvor du ikke "
-"kommer videre, dobbeltklikk på armageddon knappen nederst til høyre. "
 
 #: data/levels/tutorial/solid-tutorial-grumbel.pingus:5
 msgid "Solid ground can block the path"
-msgstr "Fast grunn kan blokkere veien"
+msgstr ""
 
 #: data/levels/tutorial/solid-tutorial-grumbel.pingus:6
 msgid ""
@@ -1236,10 +1167,6 @@ msgid ""
 "These regions are marked dark grey on the level map and cannot be destroyed, "
 "so you must find a way around them. "
 msgstr ""
-"Som du har lært i tidligere brett kan Pingusene dine grave gjennom nesten "
-"hvilket som helst terreng, men det er et materiale de ikke kan komme "
-"gjennom: stål. Disse områdene er merket mørk grå på kartet og kan ikke bli "
-"ødelagt, så du må finne en vei utenom. "
 
 #: data/levels/halloween/halloween1-grumbel.pingus:5
 msgid "One jump to catch them all"
@@ -2132,7 +2059,7 @@ msgstr ""
 
 #: data/stories/tutorial_intro.story:2
 msgid "The Journey Begins"
-msgstr "Ferden begynner"
+msgstr ""
 
 #: data/stories/tutorial_intro.story:9
 msgid ""
@@ -2200,7 +2127,7 @@ msgstr ""
 
 #: data/stories/tutorial_outro.story:2
 msgid "The Journey Continues"
-msgstr "Ferden fortsetter"
+msgstr ""
 
 #: data/stories/tutorial_outro.story:9
 msgid ""
@@ -2323,105 +2250,3 @@ msgstr ""
 #: data/levelsets/xmas2011.levelset:4
 msgid "Merry Christmas and a Happy New Year"
 msgstr ""
-
-#~ msgid "Rocketlauncher"
-#~ msgstr "Rocketlauncher"
-
-#~ msgid "Abort"
-#~ msgstr "Avbryt"
-
-#~ msgid "-Idea"
-#~ msgstr "-Idé"
-
-#~ msgid "-Maintaining"
-#~ msgstr "-Vedlikehold"
-
-#~ msgid "-Programming"
-#~ msgstr "-Programmering"
-
-#~ msgid "-Porting (Win32)"
-#~ msgstr "-Porting (Win32)"
-
-#~ msgid "-Gfx"
-#~ msgstr "-Grafikk"
-
-#~ msgid "-Level Design"
-#~ msgstr "-Brett Design"
-
-#~ msgid "-Story"
-#~ msgstr "-Historie"
-
-#~ msgid "-Translation"
-#~ msgstr "-Oversetting"
-
-#~ msgid "-Special"
-#~ msgstr "-Spesielt"
-
-#~ msgid "-Thanks to"
-#~ msgstr "-Takk til"
-
-#~ msgid "_And a very Special Thanks"
-#~ msgstr "_Og en veldig spesiell takk"
-
-#~ msgid "_to all the people who"
-#~ msgstr "_til alle folkene som"
-
-#~ msgid "_contribute to"
-#~ msgstr "_bidrar til"
-
-#~ msgid "_Free Software!"
-#~ msgstr "_Åpen programvare!"
-
-#~ msgid "_Thank you for"
-#~ msgstr "_Takk for at"
-
-#~ msgid "_playing!"
-#~ msgstr "_du spiller!"
-
-#~ msgid "Filename: "
-#~ msgstr "Filnavn: "
-
-#~ msgid "Debugging and experimental stuff:"
-#~ msgstr "Avlusing og eksperimentelle ting"
-
-#~ msgid "locked"
-#~ msgstr "låst"
-
-#~ msgid "Show Story?"
-#~ msgstr "Vis historien?"
-
-#~ msgid "...walking..."
-#~ msgstr "...går..."
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-#~ msgid "Set the resolution for pingus (default: 800x600)"
-#~ msgstr "Velg oppløsning for pingus (standard: 800x600)"
-
-#~ msgid "Sound:"
-#~ msgstr "Lyd:"
-
-#~ msgid ""
-#~ "Once again it's time to combine the stuff you have learned in your "
-#~ "previous levels. Blast your way free and make sure you also keep the rest "
-#~ "of the Pingus under control. The Blocker action will be helpful. "
-#~ msgstr ""
-#~ "Atter en gang er det tid for å kombinere tingene du har lært i de forrige "
-#~ "brettene. Spreng deg vei og sørg for at du også holder resten av "
-#~ "Pingusene under kontroll. Blocker handlingen vil være hjelpsom· "
-
-#~ msgid "Dig and float, but just don't fall and smash"
-#~ msgstr "Grav og flyt, bare ikke dett og knus"
-
-#~ msgid "Status"
-#~ msgstr "Status"
-
-#~ msgid "Title"
-#~ msgstr "Tittel"
-
-#~ msgid "unsolved"
-#~ msgstr "uløst"
-
-#~ msgid "solved"
-#~ msgstr "løst"

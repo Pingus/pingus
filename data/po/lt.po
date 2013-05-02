@@ -6,134 +6,161 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pingus\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-12-24 22:39+0100\n"
-"PO-Revision-Date: 2012-02-17 11:23+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-02-13 03:15+0100\n"
+"PO-Revision-Date: 2012-03-07 22:09+0000\n"
 "Last-Translator: Mantas Kriaučiūnas <mantas@akl.lt>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-02-18 08:21+0000\n"
-"X-Generator: Launchpad (build 14814)\n"
+"X-Launchpad-Export-Date: 2013-02-10 19:40+0000\n"
+"X-Generator: Launchpad (build 16482)\n"
 
-#: src/engine/display/screenshot.cpp:37
-msgid "Screenshot: Saving screenshot to: "
+#: src/editor/object_properties.cpp:87 src/editor/object_properties.cpp:515
+msgid "Object:"
+msgstr "Objektas:"
+
+#: src/editor/object_properties.cpp:88 src/editor/object_properties.cpp:516
+msgid "Nothing selected"
+msgstr "Nieko nepasirinkta"
+
+#: src/editor/object_properties.cpp:97
+msgid "Transparent"
+msgstr "Permatomas"
+
+#: src/editor/object_properties.cpp:98
+msgid "Solid"
+msgstr "Kietas"
+
+#: src/editor/object_properties.cpp:99
+msgid "Ground"
 msgstr ""
 
-#: src/engine/display/screenshot.cpp:39
-msgid "Screenshot: Screenshot is done."
+#: src/editor/object_properties.cpp:100
+msgid "Bridge"
+msgstr "Tiltas"
+
+#: src/editor/object_properties.cpp:101
+msgid "Water"
+msgstr "Vanduo"
+
+#: src/editor/object_properties.cpp:102
+msgid "Lava"
 msgstr ""
 
-#: src/engine/display/screenshot.cpp:124 src/engine/display/screenshot.cpp:152
-msgid "Screenshot: Couldn't write file: "
+#: src/editor/object_properties.cpp:103
+msgid "Remove"
+msgstr "Pašalinti"
+
+#: src/editor/object_properties.cpp:108
+msgid "Direction:"
+msgstr "Kryptis:"
+
+#: src/editor/object_properties.cpp:110
+msgid "Left"
+msgstr "Kairė"
+
+#: src/editor/object_properties.cpp:111
+msgid "Misc"
+msgstr "Kiti"
+
+#: src/editor/object_properties.cpp:112
+msgid "Right"
+msgstr "Dešinė"
+
+#: src/editor/object_properties.cpp:117
+msgid "ReleaseRate:"
+msgstr "Išleidimo greitis:"
+
+#: src/editor/object_properties.cpp:140
+msgid "Para-X:"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:230
-msgid "== Editor Help =="
+#: src/editor/object_properties.cpp:141
+msgid "Para-Y:"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:248
-msgid ""
-"Select all\n"
-"Clear Selection\n"
-"Raise objects\n"
-"Lower objects\n"
-"Raise objects to top\n"
-"Lower objects to bottom\n"
-"Rotate 90 degree\n"
-"Rotate 270 degree\n"
-"Group selected objects\n"
-"Ungroup selected objects\n"
+#: src/editor/object_properties.cpp:149
+msgid "Scroll-X:"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:271
-msgid ""
-"Flip object horizontaly\n"
-"Flip object vertically\n"
-"Delete all marked objects\n"
-"Move objects by one pixel\n"
-"Move objects by 32 pixel\n"
-"Toggle background color\n"
-"Increase/lower repeat\n"
+#: src/editor/object_properties.cpp:150
+msgid "Scroll-Y:"
 msgstr ""
 
-#: src/editor/editor_screen.cpp:282
-msgid ""
-"You should name your level files systematically, i.e. by their theme, their "
-"number and your nickname:\n"
-"\n"
-"     <levelname><number>-<creator>.pingus\n"
-"\n"
-"So if you create your second level with a stone theme, call it: stone2-"
-"yourname.pingus\n"
-"\n"
-"When you have created a level and want to have it included in the game mail "
-"it to:\n"
-"\n"
-"     pingus-devel@nongnu.org\n"
-"\n"
-"Only levels published under the GPL are allowed into the game. The editor "
-"automatically inserts a reference \n"
-"to the GPL, if you want to have your level under a different license, you "
-"have to change that reference.\n"
+#: src/editor/object_properties.cpp:158
+msgid "Owner Id:"
 msgstr ""
 
-#: src/editor/file_dialog.cpp:58
-msgid "Datadir"
+#: src/editor/object_properties.cpp:162
+msgid "Z-Pos:"
 msgstr ""
 
-#: src/editor/file_dialog.cpp:60
-msgid "Userdir"
+#: src/editor/object_properties.cpp:169
+msgid "Color:"
+msgstr "Spalva:"
+
+#: src/editor/object_properties.cpp:181
+msgid "Small Stars:"
 msgstr ""
 
-#: src/editor/file_dialog.cpp:63
-msgid "Open"
-msgstr "Atverti"
-
-#: src/editor/file_dialog.cpp:63
-msgid "Save"
-msgstr "Įrašyti"
-
-#: src/editor/file_dialog.cpp:66 src/editor/message_box.cpp:35
-msgid "Cancel"
-msgstr "Atsisakyti"
-
-#: src/editor/file_dialog.cpp:77
-msgid "Filename:"
-msgstr "Failo pavadinimas:"
-
-#: src/editor/file_dialog.cpp:78
-msgid "Pathname:"
+#: src/editor/object_properties.cpp:184
+msgid "Middle Stars:"
 msgstr ""
 
-#: src/editor/file_dialog.cpp:98
-msgid "Open a level"
+#: src/editor/object_properties.cpp:187
+msgid "Large Stars:"
 msgstr ""
 
-#: src/editor/file_dialog.cpp:98
-msgid "Save your level"
+#: src/editor/object_properties.cpp:195
+msgid "Repeat:"
+msgstr "Kartoti:"
+
+#: src/editor/object_properties.cpp:211
+msgid "Id:"
 msgstr ""
+
+#: src/editor/object_properties.cpp:215
+msgid "Target Id:"
+msgstr ""
+
+#: src/editor/object_properties.cpp:220 src/editor/level_properties.cpp:74
+msgid "Height:"
+msgstr "Aukštis:"
+
+#: src/editor/object_properties.cpp:521
+msgid "Object: [Group]"
+msgstr ""
+
+#: src/editor/object_properties.cpp:522
+msgid "Group not supported"
+msgstr ""
+
+#: src/editor/object_properties.cpp:527
+msgid "Object: "
+msgstr "Objektas: "
 
 #: src/editor/panel.cpp:171
 msgid "New level"
-msgstr ""
+msgstr "Naujas žaidimo lygis"
 
 #: src/editor/panel.cpp:173
 msgid "Open level..."
-msgstr ""
+msgstr "Atverti žaidimo lygį..."
 
 #: src/editor/panel.cpp:175
 msgid "Save level..."
-msgstr ""
+msgstr "Įrašyti jūsų kuriamą lygį..."
 
 #: src/editor/panel.cpp:177
 msgid "Save level as..."
-msgstr ""
+msgstr "Įrašyti žaidimo lygį kaip..."
 
 #: src/editor/panel.cpp:180
 msgid "Play level..."
-msgstr ""
+msgstr "Žaisti kuriamą lygį..."
 
 #: src/editor/panel.cpp:183
 msgid "Configure actions"
@@ -141,7 +168,7 @@ msgstr "Konfigūruoti veiksmus"
 
 #: src/editor/panel.cpp:185
 msgid "Configure level"
-msgstr ""
+msgstr "Kuriamo žaidimo lygio nustatymai"
 
 #: src/editor/panel.cpp:187
 msgid "Display object properties"
@@ -202,7 +229,136 @@ msgstr "Rodyti pagalbą"
 #: src/editor/panel.cpp:229 src/editor/object_selector.cpp:174
 #: src/pingus/screens/pingus_menu.cpp:74
 msgid "Exit"
-msgstr "Išeiti"
+msgstr "Išėjimas"
+
+#: src/editor/file_dialog.cpp:58
+msgid "Datadir"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:60
+msgid "Userdir"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:63
+msgid "Open"
+msgstr "Atverti"
+
+#: src/editor/file_dialog.cpp:63
+msgid "Save"
+msgstr "Įrašyti"
+
+#: src/editor/file_dialog.cpp:66 src/editor/message_box.cpp:35
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+#: src/editor/file_dialog.cpp:77
+msgid "Filename:"
+msgstr "Failo pavadinimas:"
+
+#: src/editor/file_dialog.cpp:78
+msgid "Pathname:"
+msgstr ""
+
+#: src/editor/file_dialog.cpp:98
+msgid "Open a level"
+msgstr "Atverti žaidimo lygį"
+
+#: src/editor/file_dialog.cpp:98
+msgid "Save your level"
+msgstr "Įrašyti jūsų kuriamą lygį"
+
+#: src/editor/level_properties.cpp:52
+#, fuzzy
+msgid "Author:"
+msgstr "Autorius: "
+
+#: src/editor/level_properties.cpp:55
+#, fuzzy
+msgid "Levelname:"
+msgstr "Failo pavadinimas:"
+
+#: src/editor/level_properties.cpp:58
+#, fuzzy
+msgid "Description:"
+msgstr "Kryptis:"
+
+#: src/editor/level_properties.cpp:62
+#, fuzzy
+msgid "Pingus Count:"
+msgstr "Pingvinų ekspedicija"
+
+#: src/editor/level_properties.cpp:65
+#, fuzzy
+msgid "Pingus to Save:"
+msgstr "Reikia išgelbėti: "
+
+#: src/editor/level_properties.cpp:68
+#, fuzzy
+msgid "Time:"
+msgstr "Laikas: "
+
+#: src/editor/level_properties.cpp:71
+msgid "Width:"
+msgstr ""
+
+#: src/editor/level_properties.cpp:77
+#, fuzzy
+msgid "Music:"
+msgstr "Muzikos garsumas:"
+
+#: src/editor/editor_screen.cpp:230
+msgid "== Editor Help =="
+msgstr ""
+
+#: src/editor/editor_screen.cpp:248
+msgid ""
+"Select all\n"
+"Clear Selection\n"
+"Raise objects\n"
+"Lower objects\n"
+"Raise objects to top\n"
+"Lower objects to bottom\n"
+"Rotate 90 degree\n"
+"Rotate 270 degree\n"
+"Group selected objects\n"
+"Ungroup selected objects\n"
+msgstr ""
+
+#: src/editor/editor_screen.cpp:271
+msgid ""
+"Flip object horizontaly\n"
+"Flip object vertically\n"
+"Delete all marked objects\n"
+"Move objects by one pixel\n"
+"Move objects by 32 pixel\n"
+"Toggle background color\n"
+"Increase/lower repeat\n"
+msgstr ""
+
+#: src/editor/editor_screen.cpp:282
+msgid ""
+"You should name your level files systematically, i.e. by their theme, their "
+"number and your nickname:\n"
+"\n"
+"     <levelname><number>-<creator>.pingus\n"
+"\n"
+"So if you create your second level with a stone theme, call it: stone2-"
+"yourname.pingus\n"
+"\n"
+"When you have created a level and want to have it included in the game mail "
+"it to:\n"
+"\n"
+"     pingus-devel@nongnu.org\n"
+"\n"
+"Only levels published under the GPL are allowed into the game. The editor "
+"automatically inserts a reference \n"
+"to the GPL, if you want to have your level under a different license, you "
+"have to change that reference.\n"
+msgstr ""
+
+#: src/editor/message_box.cpp:37
+msgid "Replace"
+msgstr "Pakeisti"
 
 #: src/editor/object_selector.cpp:165
 msgid "Entrance"
@@ -238,7 +394,7 @@ msgstr "Fonas"
 
 #: src/editor/object_selector.cpp:175
 msgid "Liquid"
-msgstr ""
+msgstr "Skystas"
 
 #: src/editor/object_selector.cpp:176
 msgid "Trap"
@@ -246,7 +402,7 @@ msgstr ""
 
 #: src/editor/object_selector.cpp:177
 msgid "Weather"
-msgstr ""
+msgstr "Orai"
 
 #: src/editor/object_selector.cpp:178
 msgid "Special Object"
@@ -256,312 +412,104 @@ msgstr ""
 msgid "Prefab Object"
 msgstr ""
 
-#: src/editor/message_box.cpp:37
-msgid "Replace"
+#: src/pingus/components/pingus_counter.cpp:43
+#, c-format, boost-format
+msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
+msgstr "Išėjo:%3d/%d   Keliauja:%3d   Atėjo:%3d/%d"
+
+#: src/pingus/action_name.cpp:27
+msgid "Angel"
+msgstr "Angelas"
+
+#: src/pingus/action_name.cpp:28
+msgid "Basher"
+msgstr "Rausėjas"
+
+#: src/pingus/action_name.cpp:29
+msgid "Blocker"
 msgstr ""
 
-#: src/editor/object_properties.cpp:87 src/editor/object_properties.cpp:515
-msgid "Object:"
-msgstr "Objektas:"
-
-#: src/editor/object_properties.cpp:88 src/editor/object_properties.cpp:516
-msgid "Nothing selected"
-msgstr "Nieko nepasirinkta"
-
-#: src/editor/object_properties.cpp:97
-msgid "Transparent"
-msgstr "Permatomas"
-
-#: src/editor/object_properties.cpp:98
-msgid "Solid"
+#: src/pingus/action_name.cpp:30
+msgid "Boarder"
 msgstr ""
 
-#: src/editor/object_properties.cpp:99
-msgid "Ground"
-msgstr ""
-
-#: src/editor/object_properties.cpp:100
-msgid "Bridge"
-msgstr "Tiltas"
-
-#: src/editor/object_properties.cpp:101
-msgid "Water"
-msgstr "Vanduo"
-
-#: src/editor/object_properties.cpp:102
-msgid "Lava"
-msgstr ""
-
-#: src/editor/object_properties.cpp:103
-msgid "Remove"
-msgstr "Pašalinti"
-
-#: src/editor/object_properties.cpp:108
-msgid "Direction:"
-msgstr "Kryptis:"
-
-#: src/editor/object_properties.cpp:110
-msgid "Left"
-msgstr ""
-
-#: src/editor/object_properties.cpp:111
-msgid "Misc"
-msgstr ""
-
-#: src/editor/object_properties.cpp:112
-msgid "Right"
-msgstr ""
-
-#: src/editor/object_properties.cpp:117
-msgid "ReleaseRate:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:140
-msgid "Para-X:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:141
-msgid "Para-Y:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:149
-msgid "Scroll-X:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:150
-msgid "Scroll-Y:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:158
-msgid "Owner Id:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:162
-msgid "Z-Pos:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:169
-msgid "Color:"
-msgstr "Spalva:"
-
-#: src/editor/object_properties.cpp:181
-msgid "Small Stars:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:184
-msgid "Middle Stars:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:187
-msgid "Large Stars:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:195
-msgid "Repeat:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:211
-msgid "Id:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:215
-msgid "Target Id:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:220
-msgid "Height:"
-msgstr "Aukštis:"
-
-#: src/editor/object_properties.cpp:521
-msgid "Object: [Group]"
-msgstr ""
-
-#: src/editor/object_properties.cpp:522
-msgid "Group not supported"
-msgstr ""
-
-#: src/editor/object_properties.cpp:527
-msgid "Object: "
-msgstr "Objektas: "
-
-#: src/pingus/pingus_main.cpp:172
-msgid "[OPTIONS]... [FILE]"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:173
-msgid ""
-"Pingus is a puzzle game where you need to guide a bunch of little penguins "
-"around the world."
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:175
-msgid "General Options:"
-msgstr "Bendri nustatymai"
-
-#: src/pingus/pingus_main.cpp:177
-msgid "Displays this help"
-msgstr "Rodyti šią pagalbą"
-
-#: src/pingus/pingus_main.cpp:179
-msgid "Print version number and exit"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:181
-msgid "Enable info level log output"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:183
-msgid "Enable debug level log output"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:185
-msgid "Disable all log output"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:187
-msgid "Display Options:"
-msgstr "Vaizdo nustatymai:"
-
-#: src/pingus/pingus_main.cpp:189
-msgid "Start in Window Mode"
-msgstr "Paleisti atskirame lange"
-
-#: src/pingus/pingus_main.cpp:191
-msgid "Start in Fullscreen"
-msgstr "Paleisti visame ekrane"
-
-#: src/pingus/pingus_main.cpp:193
-msgid "Use the given renderer (default: sdl)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:195
-msgid "Set the window resolution for pingus (default: 800x600)"
-msgstr ""
-"Nustatyti Pingus žaidimo lango dydį (raišką, standartinė: 800x600 taškų)"
-
-#: src/pingus/pingus_main.cpp:197
-msgid "Set the resolution used in fullscreen mode (default: 800x600)"
-msgstr ""
-"Nustatyti Pingus žaidimo ekrano raišką veikiant visame ekrane (įprastai "
-"būna: 800x600 taškų)"
-
-#: src/pingus/pingus_main.cpp:199
-msgid "Enable software cursor"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:201
-msgid "Game Options:"
-msgstr "Žaidimo nustatymai:"
-
-#: src/pingus/pingus_main.cpp:203
-msgid "Disable automatic scrolling"
-msgstr "Išjungti automatinį ekrano slankiojimą"
-
-#: src/pingus/pingus_main.cpp:205
-msgid "Enable drag'n drop scrolling"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:207
-msgid "Sound Options:"
-msgstr "Garso nustatymai:"
-
-#: src/pingus/pingus_main.cpp:209
-msgid "Disable sound"
-msgstr "Išjungti garsą"
-
-#: src/pingus/pingus_main.cpp:211
-msgid "Disable music"
-msgstr "Išjungti muziką"
-
-#: src/pingus/pingus_main.cpp:215
-msgid "Select language to use with Pingus"
-msgstr "Nustatyti Pingus sąsajos kalbą"
-
-#: src/pingus/pingus_main.cpp:217
-msgid "List all available languages"
-msgstr "Rodyti visas galimas kalbas"
-
-#: src/pingus/pingus_main.cpp:221
-msgid "Loads the level editor"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:223
-msgid "Directory Options:"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:224 src/pingus/pingus_main.cpp:226
-#: src/pingus/pingus_main.cpp:228
-msgid "DIR"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:225
-msgid "Load game datafiles from DIR"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:227
-msgid "Load config files and store savegames in DIR"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:229
-msgid "Load game modifications from DIR"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:231
-msgid "Don't read ~/.pingus/config"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:232
-msgid "FILE"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:233
-msgid "Read config options from FILE"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:235
-msgid "Uses the controller given in FILE"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:237
-msgid "Debug Options:"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:239
-msgid "Enables some special features for developers"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:241
-msgid "Set the game speed (0=fastest, >0=slower)"
-msgstr "Nustatyti žaidimo greitį (0=greičiausiai, >0=lėčiau)"
-
-#: src/pingus/pingus_main.cpp:243
-msgid "Set the desired game framerate (frames per second)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:245
-msgid "Set the size of the map tiles (default: 32)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:663
-msgid "Pingus: Out of memory!"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:667
-msgid "Pingus: Standard exception caught!:\n"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:671
-msgid "Pingus: Unknown throw caught!"
-msgstr ""
-
-#: src/pingus/game_time.cpp:29
-msgid "unlimited"
-msgstr ""
-
-#: src/pingus/actions/bridger.cpp:38 src/pingus/actions/bridger.cpp:196
-#: src/pingus/action_name.cpp:32
+#: src/pingus/action_name.cpp:31
+msgid "Bomber"
+msgstr "Bombarduotojas"
+
+#: src/pingus/action_name.cpp:32 src/pingus/actions/bridger.cpp:38
+#: src/pingus/actions/bridger.cpp:196
 msgid "Bridger"
 msgstr "Statytojas"
+
+#: src/pingus/action_name.cpp:33
+msgid "Climber"
+msgstr "Laipiotojas"
+
+#: src/pingus/action_name.cpp:34
+msgid "Digger"
+msgstr "Gręžėjas"
+
+#: src/pingus/action_name.cpp:35
+msgid "Drown"
+msgstr ""
+
+#: src/pingus/action_name.cpp:36
+msgid "Exiter"
+msgstr ""
+
+#: src/pingus/action_name.cpp:37
+msgid "Faller"
+msgstr "Krintatysis"
+
+#: src/pingus/action_name.cpp:38
+msgid "Floater"
+msgstr "Skraidūnas"
+
+#: src/pingus/action_name.cpp:39
+msgid "Jumper"
+msgstr "Šoklys"
+
+#: src/pingus/action_name.cpp:40
+msgid "Laserkill"
+msgstr ""
+
+#: src/pingus/action_name.cpp:41
+msgid "Miner"
+msgstr "Kasėjas"
+
+#: src/pingus/action_name.cpp:42
+msgid "Slider"
+msgstr "Šliaužikas"
+
+#: src/pingus/action_name.cpp:43
+msgid "Smashed"
+msgstr ""
+
+#: src/pingus/action_name.cpp:44
+msgid "Splashed"
+msgstr ""
+
+#: src/pingus/action_name.cpp:45
+msgid "Superman"
+msgstr ""
+
+#: src/pingus/action_name.cpp:46
+msgid "Teleported"
+msgstr ""
+
+#: src/pingus/action_name.cpp:47
+msgid "Waiter"
+msgstr ""
+
+#: src/pingus/action_name.cpp:48
+msgid "Walker"
+msgstr "Keliautojas"
+
+#: src/pingus/screens/story_screen.cpp:108
+#: src/pingus/screens/story_screen.cpp:114
+msgid "skip"
+msgstr "praleisti"
 
 #: src/pingus/screens/start_screen.cpp:67
 msgid "Play"
@@ -592,76 +540,13 @@ msgstr "Autorius: "
 msgid "Close"
 msgstr "Užverti"
 
-#: src/pingus/screens/pingus_menu.cpp:54
-msgid "Story"
-msgstr "Istorija"
-
-#: src/pingus/screens/pingus_menu.cpp:55
-msgid "..:: Start the game ::.."
-msgstr "..:: Pradėti žaidimą ::.."
-
-#: src/pingus/screens/pingus_menu.cpp:59
-msgid "Editor"
-msgstr "Redagavimo įrankis"
-
-#: src/pingus/screens/pingus_menu.cpp:60
-msgid "..:: Create your own levels ::.."
-msgstr ""
-
-#: src/pingus/screens/pingus_menu.cpp:64
-msgid "Options"
-msgstr "Nustatymai"
-
-#: src/pingus/screens/pingus_menu.cpp:65
-msgid "..:: Configure the game ::.."
-msgstr "..:: Žaidimo nustatymai ::.."
-
-#: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:177
-msgid "Levelsets"
-msgstr ""
-
-#: src/pingus/screens/pingus_menu.cpp:70
-msgid "..:: Play User Built levels ::.."
-msgstr ""
-
-#: src/pingus/screens/pingus_menu.cpp:75
-msgid "..:: Bye, bye ::.."
-msgstr ""
-
-#: src/pingus/screens/pingus_menu.cpp:87
-msgid ""
-"..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: fullscreen   ::  "
-" F12: screenshot ::.."
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:155
-msgid "Under Construction"
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:156
-msgid "Untested, unpolished and broken levels"
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:192
-msgid "Solved:"
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:193
-msgid "levels"
-msgstr ""
-
-#: src/pingus/screens/story_screen.cpp:108
-#: src/pingus/screens/story_screen.cpp:114
-msgid "skip"
-msgstr "praleisti"
-
 #: src/pingus/screens/option_menu.cpp:208
 msgid "Fullscreen"
 msgstr "Visame ekrane"
 
 #: src/pingus/screens/option_menu.cpp:209
 msgid "Mouse Grab"
-msgstr ""
+msgstr "Kursorius žaidimo lange"
 
 #: src/pingus/screens/option_menu.cpp:211
 msgid "Software Cursor"
@@ -677,7 +562,7 @@ msgstr ""
 
 #: src/pingus/screens/option_menu.cpp:215
 msgid "Print FPS"
-msgstr ""
+msgstr "Rodyti kadrų dažnį"
 
 #: src/pingus/screens/option_menu.cpp:219
 msgid "Resolution:"
@@ -693,11 +578,11 @@ msgstr "Kalba:"
 
 #: src/pingus/screens/option_menu.cpp:224
 msgid "Master Volume:"
-msgstr "Pagrindinis garsumas:"
+msgstr "Pagr. garsumas:"
 
 #: src/pingus/screens/option_menu.cpp:225
 msgid "Sound Volume:"
-msgstr ""
+msgstr "Garsų stiprumas"
 
 #: src/pingus/screens/option_menu.cpp:226
 msgid "Music Volume:"
@@ -709,11 +594,55 @@ msgstr "Nustatymų meniu"
 
 #: src/pingus/screens/option_menu.cpp:340
 msgid "Some options require a restart of the game to take effect."
+msgstr "Kai kurie nustatymai įsigalios tik paleidus žaidimą iš naujo."
+
+#: src/pingus/screens/pingus_menu.cpp:54
+msgid "Story"
+msgstr "Pradžia"
+
+#: src/pingus/screens/pingus_menu.cpp:55
+msgid "..:: Start the game ::.."
+msgstr "..:: Pradėti žaidimą ::.."
+
+#: src/pingus/screens/pingus_menu.cpp:59
+msgid "Editor"
+msgstr "Kūrimo įrankis"
+
+#: src/pingus/screens/pingus_menu.cpp:60
+msgid "..:: Create your own levels ::.."
 msgstr ""
+
+#: src/pingus/screens/pingus_menu.cpp:64
+msgid "Options"
+msgstr "Nustatymai"
+
+#: src/pingus/screens/pingus_menu.cpp:65
+msgid "..:: Configure the game ::.."
+msgstr "..:: Žaidimo nustatymai ::.."
+
+#: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:177
+msgid "Levelsets"
+msgstr "Žaidimų serijos"
+
+#: src/pingus/screens/pingus_menu.cpp:70
+msgid "..:: Play User Built levels ::.."
+msgstr ""
+
+#: src/pingus/screens/pingus_menu.cpp:75
+msgid "..:: Bye, bye ::.."
+msgstr ""
+
+#: src/pingus/screens/pingus_menu.cpp:87
+msgid ""
+"..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
+"fullscreen   ::   F12: screenshot ::.."
+msgstr ""
+"..:: Ctrl-g: pelės ribojimas  ::  F10: kadrų skaitiklis  ::  F11: visame "
+"ekrane  ::  F12: nuotrauka ::.."
 
 #: src/pingus/screens/result_screen.cpp:91
 msgid "Give up"
-msgstr ""
+msgstr "Baigti"
 
 #: src/pingus/screens/result_screen.cpp:126
 msgid "Retry"
@@ -729,7 +658,7 @@ msgstr "Nepavyko!"
 
 #: src/pingus/screens/result_screen.cpp:200
 msgid "Perfect! You saved everyone possible - great!"
-msgstr ""
+msgstr "Puiku! Jūs išsaugojote visus pingvinus - nuostabu!"
 
 #: src/pingus/screens/result_screen.cpp:202
 msgid "No-one got killed, pretty good work."
@@ -768,6 +697,7 @@ msgstr ""
 #: src/pingus/screens/result_screen.cpp:221
 msgid "Only one more and you would have made it - try again!"
 msgstr ""
+"Padėk pasiekti tikslą dar vienam ir užduotis bus įvykdyta - bandyk vėl!"
 
 #: src/pingus/screens/result_screen.cpp:223
 msgid "Only a handful more and you would have made it - try again!"
@@ -789,93 +719,20 @@ msgstr "Nepasiekė tikslo: "
 msgid "Time left: "
 msgstr "Liko laiko: "
 
-#: src/pingus/action_name.cpp:27
-msgid "Angel"
+#: src/pingus/screens/level_menu.cpp:155
+msgid "Under Construction"
 msgstr ""
 
-#: src/pingus/action_name.cpp:28
-msgid "Basher"
-msgstr "Rausėjas"
-
-#: src/pingus/action_name.cpp:29
-msgid "Blocker"
+#: src/pingus/screens/level_menu.cpp:156
+msgid "Untested, unpolished and broken levels"
 msgstr ""
 
-#: src/pingus/action_name.cpp:30
-msgid "Boarder"
-msgstr ""
+#: src/pingus/screens/level_menu.cpp:192
+msgid "Solved:"
+msgstr "Įveikta:"
 
-#: src/pingus/action_name.cpp:31
-msgid "Bomber"
-msgstr "Bombarduotojas"
-
-#: src/pingus/action_name.cpp:33
-msgid "Climber"
-msgstr "Laipiotojas"
-
-#: src/pingus/action_name.cpp:34
-msgid "Digger"
-msgstr "Gręžėjas"
-
-#: src/pingus/action_name.cpp:35
-msgid "Drown"
-msgstr ""
-
-#: src/pingus/action_name.cpp:36
-msgid "Exiter"
-msgstr ""
-
-#: src/pingus/action_name.cpp:37
-msgid "Faller"
-msgstr ""
-
-#: src/pingus/action_name.cpp:38
-msgid "Floater"
-msgstr "Skraidūnas"
-
-#: src/pingus/action_name.cpp:39
-msgid "Jumper"
-msgstr "Šoklys"
-
-#: src/pingus/action_name.cpp:40
-msgid "Laserkill"
-msgstr ""
-
-#: src/pingus/action_name.cpp:41
-msgid "Miner"
-msgstr "Kasėjas"
-
-#: src/pingus/action_name.cpp:42
-msgid "Slider"
-msgstr ""
-
-#: src/pingus/action_name.cpp:43
-msgid "Smashed"
-msgstr ""
-
-#: src/pingus/action_name.cpp:44
-msgid "Splashed"
-msgstr ""
-
-#: src/pingus/action_name.cpp:45
-msgid "Superman"
-msgstr ""
-
-#: src/pingus/action_name.cpp:46
-msgid "Teleported"
-msgstr ""
-
-#: src/pingus/action_name.cpp:47
-msgid "Waiter"
-msgstr ""
-
-#: src/pingus/action_name.cpp:48
-msgid "Walker"
-msgstr "Keliautojas"
-
-#: src/pingus/components/pingus_counter.cpp:43
-#, boost-format, c-format
-msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
+#: src/pingus/screens/level_menu.cpp:193
+msgid "levels"
 msgstr ""
 
 #: src/pingus/worldmap/level_dot.cpp:134
@@ -888,6 +745,192 @@ msgstr ""
 
 #: src/pingus/worldmap/worldmap_screen.cpp:113
 msgid "Leave?"
+msgstr "Išeiti"
+
+#: src/pingus/pingus_main.cpp:175
+msgid "[OPTIONS]... [FILE]"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:176
+msgid ""
+"Pingus is a puzzle game where you need to guide a bunch of little penguins "
+"around the world."
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:178
+msgid "General Options:"
+msgstr "Bendri nustatymai"
+
+#: src/pingus/pingus_main.cpp:180
+msgid "Displays this help"
+msgstr "Rodyti šią pagalbą"
+
+#: src/pingus/pingus_main.cpp:182
+msgid "Print version number and exit"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:184
+msgid "Enable info level log output"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:186
+msgid "Enable debug level log output"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:188
+msgid "Disable all log output"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:190
+msgid "Display Options:"
+msgstr "Vaizdo nustatymai:"
+
+#: src/pingus/pingus_main.cpp:192
+msgid "Start in Window Mode"
+msgstr "Paleisti atskirame lange"
+
+#: src/pingus/pingus_main.cpp:194
+msgid "Start in Fullscreen"
+msgstr "Paleisti visame ekrane"
+
+#: src/pingus/pingus_main.cpp:196
+msgid "Use the given renderer (default: sdl)"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:198
+msgid "Set the window resolution for pingus (default: 800x600)"
+msgstr ""
+"Nustatyti Pingus žaidimo lango dydį (raišką, standartinė: 800x600 taškų)"
+
+#: src/pingus/pingus_main.cpp:200
+msgid "Set the resolution used in fullscreen mode (default: 800x600)"
+msgstr ""
+"Nustatyti Pingus žaidimo ekrano raišką veikiant visame ekrane (įprastai "
+"būna: 800x600 taškų)"
+
+#: src/pingus/pingus_main.cpp:202
+msgid "Enable software cursor"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:204
+msgid "Game Options:"
+msgstr "Žaidimo nustatymai:"
+
+#: src/pingus/pingus_main.cpp:206
+msgid "Disable automatic scrolling"
+msgstr "Išjungti automatinį ekrano slankiojimą"
+
+#: src/pingus/pingus_main.cpp:208
+msgid "Enable drag'n drop scrolling"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:210
+msgid "Sound Options:"
+msgstr "Garso nustatymai:"
+
+#: src/pingus/pingus_main.cpp:212
+msgid "Disable sound"
+msgstr "Išjungti garsą"
+
+#: src/pingus/pingus_main.cpp:214
+msgid "Disable music"
+msgstr "Išjungti muziką"
+
+#: src/pingus/pingus_main.cpp:218
+msgid "Select language to use with Pingus"
+msgstr "Nustatyti Pingus sąsajos kalbą"
+
+#: src/pingus/pingus_main.cpp:220
+msgid "List all available languages"
+msgstr "Rodyti visas galimas kalbas"
+
+#: src/pingus/pingus_main.cpp:224
+msgid "Loads the level editor"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:226
+msgid "Directory Options:"
+msgstr "Aplankų nustatymai:"
+
+#: src/pingus/pingus_main.cpp:227 src/pingus/pingus_main.cpp:229
+#: src/pingus/pingus_main.cpp:231
+msgid "DIR"
+msgstr "APLANKAS"
+
+#: src/pingus/pingus_main.cpp:228
+msgid "Load game datafiles from DIR"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:230
+msgid "Load config files and store savegames in DIR"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:232
+msgid "Load game modifications from DIR"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:234
+msgid "Don't read ~/.pingus/config"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:235
+msgid "FILE"
+msgstr "FAILAS"
+
+#: src/pingus/pingus_main.cpp:236
+msgid "Read config options from FILE"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:238
+msgid "Uses the controller given in FILE"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:240
+msgid "Debug Options:"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:242
+msgid "Enables some special features for developers"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:244
+msgid "Set the game speed (0=fastest, >0=slower)"
+msgstr "Nustatyti žaidimo greitį (0=greičiausiai, >0=lėčiau)"
+
+#: src/pingus/pingus_main.cpp:246
+msgid "Set the desired game framerate (frames per second)"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:248
+msgid "Set the size of the map tiles (default: 32)"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:688
+msgid "Pingus: Out of memory!"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:692
+msgid "Pingus: Standard exception caught!:\n"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:696
+msgid "Pingus: Unknown throw caught!"
+msgstr ""
+
+#: src/pingus/game_time.cpp:29
+msgid "unlimited"
+msgstr ""
+
+#: src/engine/display/screenshot.cpp:37
+msgid "Screenshot: Saving screenshot to: "
+msgstr ""
+
+#: src/engine/display/screenshot.cpp:39
+msgid "Screenshot: Screenshot is done."
+msgstr ""
+
+#: src/engine/display/screenshot.cpp:124 src/engine/display/screenshot.cpp:152
+msgid "Screenshot: Couldn't write file: "
 msgstr ""
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
@@ -1250,7 +1293,7 @@ msgstr ""
 
 #: data/levels/halloween2011/halloween10-grumbel.pingus:5
 msgid "Down Into The Cave"
-msgstr ""
+msgstr "Žemyn į urvą"
 
 #: data/levels/halloween2011/halloween10-grumbel.pingus:6
 msgid ""
@@ -1368,18 +1411,6 @@ msgid ""
 "below."
 msgstr ""
 
-#: data/levels/desert/desert-crawl-timpany.pingus:5
-msgid "Crawlspace"
-msgstr ""
-
-#: data/levels/desert/desert-crawl-timpany.pingus:6
-msgid ""
-"The path to the exit is blocked and many small tunnels lead the way, but be "
-"careful some of those lead to certain death. Or is there something you can "
-"do about that and create a save passage for all the Pingus and lead them "
-"safely to the exit?"
-msgstr ""
-
 #: data/levels/desert/desert1-janne.pingus:5
 msgid "Down the valley and up again"
 msgstr ""
@@ -1445,16 +1476,6 @@ msgid ""
 "first?"
 msgstr ""
 
-#: data/levels/desert/desert5-tflavel.pingus:5
-msgid "Claustrophobia"
-msgstr ""
-
-#: data/levels/desert/desert5-tflavel.pingus:6
-msgid ""
-"Hidden deep below the pyramid the pingus come across a small underground "
-"room, but unfortunatley a large tree root blocks their path..."
-msgstr ""
-
 #: data/levels/desert/desert5.pingus:5
 msgid "Catch them at the half way point"
 msgstr ""
@@ -1464,6 +1485,16 @@ msgid ""
 "The Pingus are separated from the exit by large abyss. A simple bridge won't "
 "be enough to catch them safely, unless of course you find the right place to "
 "put it. Can you uncover that spot?"
+msgstr ""
+
+#: data/levels/desert/desert5-tflavel.pingus:5
+msgid "Claustrophobia"
+msgstr ""
+
+#: data/levels/desert/desert5-tflavel.pingus:6
+msgid ""
+"Hidden deep below the pyramid the pingus come across a small underground "
+"room, but unfortunatley a large tree root blocks their path..."
 msgstr ""
 
 #: data/levels/desert/desert6-grumbel.pingus:5
@@ -1494,6 +1525,18 @@ msgid ""
 "have to work together."
 msgstr ""
 
+#: data/levels/desert/desert-crawl-timpany.pingus:5
+msgid "Crawlspace"
+msgstr ""
+
+#: data/levels/desert/desert-crawl-timpany.pingus:6
+msgid ""
+"The path to the exit is blocked and many small tunnels lead the way, but be "
+"careful some of those lead to certain death. Or is there something you can "
+"do about that and create a save passage for all the Pingus and lead them "
+"safely to the exit?"
+msgstr ""
+
 #: data/levels/desert/desertwaste1-grumbel.pingus:5
 msgid "The Roof"
 msgstr ""
@@ -1518,16 +1561,6 @@ msgid ""
 "  (3) the path of God: leap from the head of something like a cat."
 msgstr ""
 
-#: data/levels/mysteryisland/cave-lac.pingus:7
-msgid "Trapped Underground"
-msgstr ""
-
-#: data/levels/mysteryisland/cave-lac.pingus:8
-msgid ""
-"The penguins escaped the mad scientist, but now they were trapped deep "
-"underground. They had no food or water, so they had to move fast."
-msgstr ""
-
 #: data/levels/mysteryisland/cave1-marcotte.pingus:5
 msgid "Near can mean far"
 msgstr ""
@@ -1536,6 +1569,16 @@ msgstr ""
 msgid ""
 "What do you do when you're going in the wrong direction ? Simple: walk into "
 "a wall. But it is easier said than done..."
+msgstr ""
+
+#: data/levels/mysteryisland/cave-lac.pingus:7
+msgid "Trapped Underground"
+msgstr ""
+
+#: data/levels/mysteryisland/cave-lac.pingus:8
+msgid ""
+"The penguins escaped the mad scientist, but now they were trapped deep "
+"underground. They had no food or water, so they had to move fast."
 msgstr ""
 
 #: data/levels/mysteryisland/emperiment-lac.pingus:5
@@ -1669,15 +1712,8 @@ msgid ""
 "island."
 msgstr ""
 
-#: data/levels/alien/aliens1-grumbel.pingus:5
 #: data/levels/alien/aliens1-phil.pingus:7
 msgid "Escape from Aliens"
-msgstr ""
-
-#: data/levels/alien/aliens1-grumbel.pingus:6
-msgid ""
-"Aliens invade our starship blocking intrance to the teleporter. Your crew is "
-"well trained, like you they don't panic."
 msgstr ""
 
 #: data/levels/alien/aliens1-phil.pingus:8
@@ -1740,6 +1776,14 @@ msgstr ""
 msgid "Cooperation in space."
 msgstr ""
 
+#: data/levels/alien/space2.pingus:5
+msgid "Lost in Space"
+msgstr ""
+
+#: data/levels/alien/space2.pingus:6
+msgid "We don't know where we are but we don't leave anybody behind."
+msgstr ""
+
 #: data/levels/alien/space-9-tom.pingus:5
 msgid "Outside In"
 msgstr ""
@@ -1766,28 +1810,6 @@ msgstr ""
 msgid "What good is a pick in space? Certainly not to go to the stars."
 msgstr ""
 
-#: data/levels/alien/space2.pingus:5
-msgid "Lost in Space"
-msgstr ""
-
-#: data/levels/alien/space2.pingus:6
-msgid "We don't know where we are but we don't leave anybody behind."
-msgstr ""
-
-#: data/levels/factorycampaign/factory_campaign1.pingus:5
-msgid "Falling down"
-msgstr ""
-
-#: data/levels/factorycampaign/factory_campaign1.pingus:6
-msgid ""
-"Pingus intelligence reported that a huge factory located in the subtropical "
-"zone might be a reason of a climate change. They decided to go there and "
-"shut down the factories. This will be a long and dangerous expedition. "
-"Pingus and you will have to face many difficulties on your way. As the ice "
-"is melting, at first you have to build some bridges and watch out for the "
-"cliff."
-msgstr ""
-
 #: data/levels/factorycampaign/factory_campaign10.pingus:5
 msgid "Jump"
 msgstr ""
@@ -1800,7 +1822,7 @@ msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:5
 msgid "Factory"
-msgstr ""
+msgstr "Gamykla"
 
 #: data/levels/factorycampaign/factory_campaign11.pingus:6
 msgid ""
@@ -1826,6 +1848,20 @@ msgid ""
 "became more dangerous. There is one more mission for you."
 msgstr ""
 
+#: data/levels/factorycampaign/factory_campaign1.pingus:5
+msgid "Falling down"
+msgstr ""
+
+#: data/levels/factorycampaign/factory_campaign1.pingus:6
+msgid ""
+"Pingus intelligence reported that a huge factory located in the subtropical "
+"zone might be a reason of a climate change. They decided to go there and "
+"shut down the factories. This will be a long and dangerous expedition. "
+"Pingus and you will have to face many difficulties on your way. As the ice "
+"is melting, at first you have to build some bridges and watch out for the "
+"cliff."
+msgstr ""
+
 #: data/levels/factorycampaign/factory_campaign2.pingus:5
 msgid "Destination North"
 msgstr ""
@@ -1838,7 +1874,7 @@ msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign3.pingus:5
 msgid "The Cave"
-msgstr ""
+msgstr "Ola"
 
 #: data/levels/factorycampaign/factory_campaign3.pingus:6
 msgid ""
@@ -1870,12 +1906,13 @@ msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign6.pingus:5
 msgid "Egypt - So easy"
-msgstr ""
+msgstr "Egiptas - bus nesunku"
 
 #: data/levels/factorycampaign/factory_campaign6.pingus:6
-msgid ""
-"Pingus reached Egypt. Looks easy, but is it really so easy? Try it out."
+msgid "Pingus reached Egypt. Looks easy, but is it really so easy? Try it out."
 msgstr ""
+"Pingvinai atkeliavo į Egiptą. Atrodo bus paprasta, bet ar tikrai? "
+"Pabandykite."
 
 #: data/levels/factorycampaign/factory_campaign7.pingus:5
 msgid "Egypt - Oasis"
@@ -1889,7 +1926,7 @@ msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign8.pingus:5
 msgid "Egypt - The Maze"
-msgstr ""
+msgstr "Egiptas - Labirintas"
 
 #: data/levels/factorycampaign/factory_campaign8.pingus:6
 msgid ""
@@ -1969,7 +2006,7 @@ msgstr "Didysis šuolis"
 #: data/levels/xmas2011/xmas06-grumbel.pingus:6
 msgid ""
 "Going in and out of the abyss with all Pingus isn't an option here, but a "
-"small group preparing the path or the others should get you across."
+"small group preparing the path for the others should get you across."
 msgstr ""
 
 #: data/levels/xmas2011/xmas07-grumbel.pingus:5
@@ -2189,21 +2226,17 @@ msgstr "Dykuma"
 msgid "Getting hot outside..."
 msgstr ""
 
+#: data/levelsets/eyeland.levelset:2
+msgid "Eye Land"
+msgstr ""
+
 #: data/levelsets/factory.levelset:3
 msgid "Factory Campaign"
-msgstr ""
+msgstr "Misija Fabrikas"
 
 #: data/levelsets/factory.levelset:4
 msgid "Pingus expedition"
 msgstr "Pingvinų ekspedicija"
-
-#: data/levelsets/halloween.levelset:3
-msgid "Halloween 2007"
-msgstr ""
-
-#: data/levelsets/halloween.levelset:4
-msgid "Trapped at All Hallows Eve"
-msgstr ""
 
 #: data/levelsets/halloween2011.levelset:2
 msgid "Halloween 2011"
@@ -2211,6 +2244,14 @@ msgstr ""
 
 #: data/levelsets/halloween2011.levelset:3
 msgid "Going Underground"
+msgstr ""
+
+#: data/levelsets/halloween.levelset:3
+msgid "Halloween 2007"
+msgstr ""
+
+#: data/levelsets/halloween.levelset:4
+msgid "Trapped at All Hallows Eve"
 msgstr ""
 
 #: data/levelsets/hellmouth.levelset:3
@@ -2243,7 +2284,7 @@ msgstr ""
 
 #: data/levelsets/xmas2011.levelset:3
 msgid "Xmas 2011"
-msgstr ""
+msgstr "Kalėdos 2011"
 
 #: data/levelsets/xmas2011.levelset:4
 msgid "Merry Christmas and a Happy New Year"

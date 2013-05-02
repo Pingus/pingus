@@ -7,259 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pingus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-24 22:39+0100\n"
-"PO-Revision-Date: 2011-09-18 18:50+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-02-13 03:15+0100\n"
+"PO-Revision-Date: 2012-06-07 12:13+0000\n"
+"Last-Translator: Aleksey Kabanov <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-02-18 08:20+0000\n"
-"X-Generator: Launchpad (build 14814)\n"
-
-#: src/engine/display/screenshot.cpp:37
-msgid "Screenshot: Saving screenshot to: "
-msgstr ""
-
-#: src/engine/display/screenshot.cpp:39
-msgid "Screenshot: Screenshot is done."
-msgstr ""
-
-#: src/engine/display/screenshot.cpp:124 src/engine/display/screenshot.cpp:152
-msgid "Screenshot: Couldn't write file: "
-msgstr ""
-
-#: src/editor/editor_screen.cpp:230
-msgid "== Editor Help =="
-msgstr ""
-
-#: src/editor/editor_screen.cpp:248
-msgid ""
-"Select all\n"
-"Clear Selection\n"
-"Raise objects\n"
-"Lower objects\n"
-"Raise objects to top\n"
-"Lower objects to bottom\n"
-"Rotate 90 degree\n"
-"Rotate 270 degree\n"
-"Group selected objects\n"
-"Ungroup selected objects\n"
-msgstr ""
-
-#: src/editor/editor_screen.cpp:271
-msgid ""
-"Flip object horizontaly\n"
-"Flip object vertically\n"
-"Delete all marked objects\n"
-"Move objects by one pixel\n"
-"Move objects by 32 pixel\n"
-"Toggle background color\n"
-"Increase/lower repeat\n"
-msgstr ""
-
-#: src/editor/editor_screen.cpp:282
-msgid ""
-"You should name your level files systematically, i.e. by their theme, their "
-"number and your nickname:\n"
-"\n"
-"     <levelname><number>-<creator>.pingus\n"
-"\n"
-"So if you create your second level with a stone theme, call it: stone2-"
-"yourname.pingus\n"
-"\n"
-"When you have created a level and want to have it included in the game mail "
-"it to:\n"
-"\n"
-"     pingus-devel@nongnu.org\n"
-"\n"
-"Only levels published under the GPL are allowed into the game. The editor "
-"automatically inserts a reference \n"
-"to the GPL, if you want to have your level under a different license, you "
-"have to change that reference.\n"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:58
-msgid "Datadir"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:60
-msgid "Userdir"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:63
-msgid "Open"
-msgstr "Открыть"
-
-#: src/editor/file_dialog.cpp:63
-msgid "Save"
-msgstr "Сохранить"
-
-#: src/editor/file_dialog.cpp:66 src/editor/message_box.cpp:35
-msgid "Cancel"
-msgstr "Отменить"
-
-#: src/editor/file_dialog.cpp:77
-msgid "Filename:"
-msgstr "Имя файла:"
-
-#: src/editor/file_dialog.cpp:78
-msgid "Pathname:"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:98
-msgid "Open a level"
-msgstr "Открыть уровень"
-
-#: src/editor/file_dialog.cpp:98
-msgid "Save your level"
-msgstr "Сохранить ваш уровень"
-
-#: src/editor/panel.cpp:171
-msgid "New level"
-msgstr ""
-
-#: src/editor/panel.cpp:173
-msgid "Open level..."
-msgstr "Открыть уровень..."
-
-#: src/editor/panel.cpp:175
-msgid "Save level..."
-msgstr "Сохранить уровень..."
-
-#: src/editor/panel.cpp:177
-msgid "Save level as..."
-msgstr "Сохранить уровень как..."
-
-#: src/editor/panel.cpp:180
-msgid "Play level..."
-msgstr ""
-
-#: src/editor/panel.cpp:183
-msgid "Configure actions"
-msgstr ""
-
-#: src/editor/panel.cpp:185
-msgid "Configure level"
-msgstr ""
-
-#: src/editor/panel.cpp:187
-msgid "Display object properties"
-msgstr ""
-
-#: src/editor/panel.cpp:189
-msgid "Show object insertion window"
-msgstr ""
-
-#: src/editor/panel.cpp:191
-msgid "Show minimap"
-msgstr ""
-
-#: src/editor/panel.cpp:194
-msgid "Duplicate the selected objects"
-msgstr "Дублировать выбранные объекты"
-
-#: src/editor/panel.cpp:196
-msgid "Delete the selected objects"
-msgstr "Удалить выбранные объекты"
-
-#: src/editor/panel.cpp:199
-msgid "Raise object to top"
-msgstr ""
-
-#: src/editor/panel.cpp:201
-msgid "Raise object"
-msgstr ""
-
-#: src/editor/panel.cpp:203
-msgid "Lower object"
-msgstr ""
-
-#: src/editor/panel.cpp:205
-msgid "Lower object to bottom"
-msgstr ""
-
-#: src/editor/panel.cpp:211
-msgid "Flip object horizontally"
-msgstr "Перевернуть объект по горизонтали"
-
-#: src/editor/panel.cpp:213
-msgid "Flip object vertically"
-msgstr "Перевернуть объект по вертикали"
-
-#: src/editor/panel.cpp:216
-msgid "Rotate object -90 degree"
-msgstr "Повернуть объект на -90°"
-
-#: src/editor/panel.cpp:218
-msgid "Rotate object 90 degree"
-msgstr "Повернуть объект на 90°"
-
-#: src/editor/panel.cpp:227
-msgid "Display help"
-msgstr "Показать справку"
-
-#: src/editor/panel.cpp:229 src/editor/object_selector.cpp:174
-#: src/pingus/screens/pingus_menu.cpp:74
-msgid "Exit"
-msgstr "Выход"
-
-#: src/editor/object_selector.cpp:165
-msgid "Entrance"
-msgstr ""
-
-#: src/editor/object_selector.cpp:166
-msgid "Groundpiece (ground)"
-msgstr ""
-
-#: src/editor/object_selector.cpp:167
-msgid "Groundpiece (solid)"
-msgstr ""
-
-#: src/editor/object_selector.cpp:168
-msgid "Groundpiece (bridge)"
-msgstr ""
-
-#: src/editor/object_selector.cpp:169
-msgid "Groundpiece (transparent)"
-msgstr ""
-
-#: src/editor/object_selector.cpp:170
-msgid "Groundpiece (remove)"
-msgstr ""
-
-#: src/editor/object_selector.cpp:171
-msgid "Hotspot"
-msgstr ""
-
-#: src/editor/object_selector.cpp:172
-msgid "Background"
-msgstr "Фон"
-
-#: src/editor/object_selector.cpp:175
-msgid "Liquid"
-msgstr "Жидкость"
-
-#: src/editor/object_selector.cpp:176
-msgid "Trap"
-msgstr "Ловушка"
-
-#: src/editor/object_selector.cpp:177
-msgid "Weather"
-msgstr "Погода"
-
-#: src/editor/object_selector.cpp:178
-msgid "Special Object"
-msgstr "Спецобъект"
-
-#: src/editor/object_selector.cpp:179
-msgid "Prefab Object"
-msgstr ""
-
-#: src/editor/message_box.cpp:37
-msgid "Replace"
-msgstr ""
+"X-Launchpad-Export-Date: 2013-02-10 19:40+0000\n"
+"X-Generator: Launchpad (build 16482)\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-Language: Russian\n"
 
 #: src/editor/object_properties.cpp:87 src/editor/object_properties.cpp:515
 msgid "Object:"
@@ -303,15 +62,15 @@ msgstr "Направление:"
 
 #: src/editor/object_properties.cpp:110
 msgid "Left"
-msgstr ""
+msgstr "Влево"
 
 #: src/editor/object_properties.cpp:111
 msgid "Misc"
-msgstr ""
+msgstr "Разное"
 
 #: src/editor/object_properties.cpp:112
 msgid "Right"
-msgstr ""
+msgstr "Вправо"
 
 #: src/editor/object_properties.cpp:117
 msgid "ReleaseRate:"
@@ -339,7 +98,7 @@ msgstr ""
 
 #: src/editor/object_properties.cpp:162
 msgid "Z-Pos:"
-msgstr ""
+msgstr "Высота (Z):"
 
 #: src/editor/object_properties.cpp:169
 msgid "Color:"
@@ -347,15 +106,15 @@ msgstr "Цвет:"
 
 #: src/editor/object_properties.cpp:181
 msgid "Small Stars:"
-msgstr ""
+msgstr "Малые звёзды:"
 
 #: src/editor/object_properties.cpp:184
 msgid "Middle Stars:"
-msgstr ""
+msgstr "Средние звёзды:"
 
 #: src/editor/object_properties.cpp:187
 msgid "Large Stars:"
-msgstr ""
+msgstr "Большие звёзды:"
 
 #: src/editor/object_properties.cpp:195
 msgid "Repeat:"
@@ -369,9 +128,9 @@ msgstr ""
 msgid "Target Id:"
 msgstr ""
 
-#: src/editor/object_properties.cpp:220
+#: src/editor/object_properties.cpp:220 src/editor/level_properties.cpp:74
 msgid "Height:"
-msgstr ""
+msgstr "Высота:"
 
 #: src/editor/object_properties.cpp:521
 msgid "Object: [Group]"
@@ -379,415 +138,322 @@ msgstr ""
 
 #: src/editor/object_properties.cpp:522
 msgid "Group not supported"
-msgstr ""
+msgstr "Группа не поддерживается"
 
 #: src/editor/object_properties.cpp:527
 msgid "Object: "
+msgstr "Объект: "
+
+#: src/editor/panel.cpp:171
+msgid "New level"
+msgstr "Новый уровень"
+
+#: src/editor/panel.cpp:173
+msgid "Open level..."
+msgstr "Открыть уровень..."
+
+#: src/editor/panel.cpp:175
+msgid "Save level..."
+msgstr "Сохранить уровень..."
+
+#: src/editor/panel.cpp:177
+msgid "Save level as..."
+msgstr "Сохранить уровень как..."
+
+#: src/editor/panel.cpp:180
+msgid "Play level..."
+msgstr "Воспроизвести уровень..."
+
+#: src/editor/panel.cpp:183
+msgid "Configure actions"
+msgstr "Настроить действия"
+
+#: src/editor/panel.cpp:185
+msgid "Configure level"
+msgstr "Настроить уровень"
+
+#: src/editor/panel.cpp:187
+msgid "Display object properties"
+msgstr "Показывать свойства объекта"
+
+#: src/editor/panel.cpp:189
+msgid "Show object insertion window"
+msgstr "Показывать окно вставки объектов"
+
+#: src/editor/panel.cpp:191
+msgid "Show minimap"
+msgstr "Показывать мини-карту"
+
+#: src/editor/panel.cpp:194
+msgid "Duplicate the selected objects"
+msgstr "Дублировать выбранные объекты"
+
+#: src/editor/panel.cpp:196
+msgid "Delete the selected objects"
+msgstr "Удалить выбранные объекты"
+
+#: src/editor/panel.cpp:199
+msgid "Raise object to top"
+msgstr "Поднять объект на самый верх"
+
+#: src/editor/panel.cpp:201
+msgid "Raise object"
+msgstr "Поднять объект"
+
+#: src/editor/panel.cpp:203
+msgid "Lower object"
+msgstr "Опустить объект"
+
+#: src/editor/panel.cpp:205
+msgid "Lower object to bottom"
+msgstr "Опустить объект в самый низ"
+
+#: src/editor/panel.cpp:211
+msgid "Flip object horizontally"
+msgstr "Перевернуть объект по горизонтали"
+
+#: src/editor/panel.cpp:213
+msgid "Flip object vertically"
+msgstr "Перевернуть объект по вертикали"
+
+#: src/editor/panel.cpp:216
+msgid "Rotate object -90 degree"
+msgstr "Повернуть объект на -90°"
+
+#: src/editor/panel.cpp:218
+msgid "Rotate object 90 degree"
+msgstr "Повернуть объект на 90°"
+
+#: src/editor/panel.cpp:227
+msgid "Display help"
+msgstr "Показать справку"
+
+#: src/editor/panel.cpp:229 src/editor/object_selector.cpp:174
+#: src/pingus/screens/pingus_menu.cpp:74
+msgid "Exit"
+msgstr "Выход"
+
+#: src/editor/file_dialog.cpp:58
+msgid "Datadir"
+msgstr "Каталог данных"
+
+#: src/editor/file_dialog.cpp:60
+msgid "Userdir"
+msgstr "Каталог пользователя"
+
+#: src/editor/file_dialog.cpp:63
+msgid "Open"
+msgstr "Открыть"
+
+#: src/editor/file_dialog.cpp:63
+msgid "Save"
+msgstr "Сохранить"
+
+#: src/editor/file_dialog.cpp:66 src/editor/message_box.cpp:35
+msgid "Cancel"
+msgstr "Отменить"
+
+#: src/editor/file_dialog.cpp:77
+msgid "Filename:"
+msgstr "Имя файла:"
+
+#: src/editor/file_dialog.cpp:78
+msgid "Pathname:"
 msgstr ""
 
-#: src/pingus/pingus_main.cpp:172
-msgid "[OPTIONS]... [FILE]"
-msgstr ""
+#: src/editor/file_dialog.cpp:98
+msgid "Open a level"
+msgstr "Открыть уровень"
 
-#: src/pingus/pingus_main.cpp:173
-msgid ""
-"Pingus is a puzzle game where you need to guide a bunch of little penguins "
-"around the world."
-msgstr ""
+#: src/editor/file_dialog.cpp:98
+msgid "Save your level"
+msgstr "Сохранить ваш уровень"
 
-#: src/pingus/pingus_main.cpp:175
-msgid "General Options:"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:177
-msgid "Displays this help"
-msgstr "Показать эту справку"
-
-#: src/pingus/pingus_main.cpp:179
-msgid "Print version number and exit"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:181
-msgid "Enable info level log output"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:183
-msgid "Enable debug level log output"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:185
-msgid "Disable all log output"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:187
-msgid "Display Options:"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:189
-msgid "Start in Window Mode"
-msgstr "Запуск в оконном режиме"
-
-#: src/pingus/pingus_main.cpp:191
-msgid "Start in Fullscreen"
-msgstr "Запуск в полноэкранном режиме"
-
-#: src/pingus/pingus_main.cpp:193
-msgid "Use the given renderer (default: sdl)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:195
-msgid "Set the window resolution for pingus (default: 800x600)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:197
-msgid "Set the resolution used in fullscreen mode (default: 800x600)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:199
-msgid "Enable software cursor"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:201
-msgid "Game Options:"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:203
-msgid "Disable automatic scrolling"
-msgstr "Отключить автоматическую прокрутку"
-
-#: src/pingus/pingus_main.cpp:205
-msgid "Enable drag'n drop scrolling"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:207
-msgid "Sound Options:"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:209
-msgid "Disable sound"
-msgstr "Отключить звуки"
-
-#: src/pingus/pingus_main.cpp:211
-msgid "Disable music"
-msgstr "Отключить музыку"
-
-#: src/pingus/pingus_main.cpp:215
-msgid "Select language to use with Pingus"
-msgstr "Выберите язык для использования в Pingus"
-
-#: src/pingus/pingus_main.cpp:217
-msgid "List all available languages"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:221
-msgid "Loads the level editor"
-msgstr "Загружает редактор уровней"
-
-#: src/pingus/pingus_main.cpp:223
-msgid "Directory Options:"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:224 src/pingus/pingus_main.cpp:226
-#: src/pingus/pingus_main.cpp:228
-msgid "DIR"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:225
-msgid "Load game datafiles from DIR"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:227
-msgid "Load config files and store savegames in DIR"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:229
-msgid "Load game modifications from DIR"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:231
-msgid "Don't read ~/.pingus/config"
-msgstr "Не читать ~/.pingus/config"
-
-#: src/pingus/pingus_main.cpp:232
-msgid "FILE"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:233
-msgid "Read config options from FILE"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:235
-msgid "Uses the controller given in FILE"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:237
-msgid "Debug Options:"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:239
-msgid "Enables some special features for developers"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:241
-msgid "Set the game speed (0=fastest, >0=slower)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:243
-msgid "Set the desired game framerate (frames per second)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:245
-msgid "Set the size of the map tiles (default: 32)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:663
-msgid "Pingus: Out of memory!"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:667
-msgid "Pingus: Standard exception caught!:\n"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:671
-msgid "Pingus: Unknown throw caught!"
-msgstr ""
-
-#: src/pingus/game_time.cpp:29
-msgid "unlimited"
-msgstr ""
-
-#: src/pingus/actions/bridger.cpp:38 src/pingus/actions/bridger.cpp:196
-#: src/pingus/action_name.cpp:32
-msgid "Bridger"
-msgstr ""
-
-#: src/pingus/screens/start_screen.cpp:67
-msgid "Play"
-msgstr ""
-
-#: src/pingus/screens/start_screen.cpp:111
-#: src/pingus/screens/level_menu.cpp:50
-msgid "Back"
-msgstr ""
-
-#: src/pingus/screens/start_screen.cpp:166
-msgid "Number of Pingus: "
-msgstr ""
-
-#: src/pingus/screens/start_screen.cpp:169
-msgid "Number to Save: "
-msgstr ""
-
-#: src/pingus/screens/start_screen.cpp:172
-msgid "Time: "
-msgstr "Время: "
-
-#: src/pingus/screens/start_screen.cpp:178
-msgid "Author: "
+#: src/editor/level_properties.cpp:52
+#, fuzzy
+msgid "Author:"
 msgstr "Автор: "
 
-#: src/pingus/screens/addon_menu.cpp:53 src/pingus/screens/option_menu.cpp:336
-msgid "Close"
-msgstr "Закрыть"
+#: src/editor/level_properties.cpp:55
+#, fuzzy
+msgid "Levelname:"
+msgstr "Имя файла:"
 
-#: src/pingus/screens/pingus_menu.cpp:54
-msgid "Story"
+#: src/editor/level_properties.cpp:58
+#, fuzzy
+msgid "Description:"
+msgstr "Направление:"
+
+#: src/editor/level_properties.cpp:62
+msgid "Pingus Count:"
 msgstr ""
 
-#: src/pingus/screens/pingus_menu.cpp:55
-msgid "..:: Start the game ::.."
-msgstr "..:: Начать игру ::.."
-
-#: src/pingus/screens/pingus_menu.cpp:59
-msgid "Editor"
-msgstr "Редактор"
-
-#: src/pingus/screens/pingus_menu.cpp:60
-msgid "..:: Create your own levels ::.."
-msgstr "..:: Создать ваши собственные уровни ::.."
-
-#: src/pingus/screens/pingus_menu.cpp:64
-msgid "Options"
+#: src/editor/level_properties.cpp:65
+msgid "Pingus to Save:"
 msgstr ""
 
-#: src/pingus/screens/pingus_menu.cpp:65
-msgid "..:: Configure the game ::.."
+#: src/editor/level_properties.cpp:68
+#, fuzzy
+msgid "Time:"
+msgstr "Время: "
+
+#: src/editor/level_properties.cpp:71
+msgid "Width:"
 msgstr ""
 
-#: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:177
-msgid "Levelsets"
-msgstr ""
-
-#: src/pingus/screens/pingus_menu.cpp:70
-msgid "..:: Play User Built levels ::.."
-msgstr ""
-
-#: src/pingus/screens/pingus_menu.cpp:75
-msgid "..:: Bye, bye ::.."
-msgstr ""
-
-#: src/pingus/screens/pingus_menu.cpp:87
-msgid ""
-"..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
-"fullscreen   ::   F12: screenshot ::.."
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:155
-msgid "Under Construction"
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:156
-msgid "Untested, unpolished and broken levels"
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:192
-msgid "Solved:"
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:193
-msgid "levels"
-msgstr ""
-
-#: src/pingus/screens/story_screen.cpp:108
-#: src/pingus/screens/story_screen.cpp:114
-msgid "skip"
-msgstr "пропустить"
-
-#: src/pingus/screens/option_menu.cpp:208
-msgid "Fullscreen"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:209
-msgid "Mouse Grab"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:211
-msgid "Software Cursor"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:212
-msgid "Autoscrolling"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:213
-msgid "Drag&Drop Scrolling"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:215
-msgid "Print FPS"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:219
-msgid "Resolution:"
-msgstr "Разрешение:"
-
-#: src/pingus/screens/option_menu.cpp:220
-msgid "Renderer:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:222
-msgid "Language:"
-msgstr "Язык:"
-
-#: src/pingus/screens/option_menu.cpp:224
-msgid "Master Volume:"
-msgstr "Общая громкость:"
-
-#: src/pingus/screens/option_menu.cpp:225
-msgid "Sound Volume:"
-msgstr "Громкость звуков:"
-
-#: src/pingus/screens/option_menu.cpp:226
-msgid "Music Volume:"
+#: src/editor/level_properties.cpp:77
+#, fuzzy
+msgid "Music:"
 msgstr "Громкость музыки:"
 
-#: src/pingus/screens/option_menu.cpp:334
-msgid "Option Menu"
-msgstr ""
+#: src/editor/editor_screen.cpp:230
+msgid "== Editor Help =="
+msgstr "== Справка по редактору =="
 
-#: src/pingus/screens/option_menu.cpp:340
-msgid "Some options require a restart of the game to take effect."
-msgstr ""
-
-#: src/pingus/screens/result_screen.cpp:91
-msgid "Give up"
-msgstr ""
-
-#: src/pingus/screens/result_screen.cpp:126
-msgid "Retry"
-msgstr "Повторить"
-
-#: src/pingus/screens/result_screen.cpp:183
-msgid "Success!"
-msgstr "Успех!"
-
-#: src/pingus/screens/result_screen.cpp:191
-msgid "Failure!"
-msgstr "Неудача!"
-
-#: src/pingus/screens/result_screen.cpp:200
-msgid "Perfect! You saved everyone possible - great!"
-msgstr ""
-
-#: src/pingus/screens/result_screen.cpp:202
-msgid "No-one got killed, pretty good work."
-msgstr "Никто не погиб, очень хорошая работа."
-
-#: src/pingus/screens/result_screen.cpp:204
+#: src/editor/editor_screen.cpp:248
 msgid ""
-"You saved exactly what you needed - you made it, but\n"
-"maybe you can do better?"
+"Select all\n"
+"Clear Selection\n"
+"Raise objects\n"
+"Lower objects\n"
+"Raise objects to top\n"
+"Lower objects to bottom\n"
+"Rotate 90 degree\n"
+"Rotate 270 degree\n"
+"Group selected objects\n"
+"Ungroup selected objects\n"
 msgstr ""
+"Выделить все\n"
+"Очистить выделение\n"
+"Поднять объекты\n"
+"Опустить объекты\n"
+"Поднять на самый верх\n"
+"Опустить в самый низ\n"
+"Повернуть на 90°\n"
+"Повернуть на 270°\n"
+"Сгруппировать выделенные объекты\n"
+"Разгруппировать выделенные объекты\n"
 
-#: src/pingus/screens/result_screen.cpp:207
-msgid "Not everybody was saved, but still good work!"
-msgstr ""
-
-#: src/pingus/screens/result_screen.cpp:209
-msgid "What can I say, you made it - congratulations!"
-msgstr "Что я могу сказать: вы сделали это — поздравляю!"
-
-#: src/pingus/screens/result_screen.cpp:214
-msgid "You killed everybody, not good."
-msgstr "Вы убили всех, это нехорошо."
-
-#: src/pingus/screens/result_screen.cpp:216
-msgid "No-one got saved - I know you can do better."
-msgstr "Никто не спасся — я знаю, что вы можете лучше."
-
-#: src/pingus/screens/result_screen.cpp:218
+#: src/editor/editor_screen.cpp:271
 msgid ""
-"You didn't save enough, but you saved a few.  Next\n"
-"time you might do better."
+"Flip object horizontaly\n"
+"Flip object vertically\n"
+"Delete all marked objects\n"
+"Move objects by one pixel\n"
+"Move objects by 32 pixel\n"
+"Toggle background color\n"
+"Increase/lower repeat\n"
+msgstr ""
+"Перевернуть по горизонтали\n"
+"Перевернуть по вертикали\n"
+"Удалить помеченные объекты\n"
+"Переместить на 1 пиксел\n"
+"Переместить на 32 пиксела\n"
+"Переключить цвет фона\n"
+"Ускорить/замедлить повтор\n"
+
+#: src/editor/editor_screen.cpp:282
+msgid ""
+"You should name your level files systematically, i.e. by their theme, their "
+"number and your nickname:\n"
+"\n"
+"     <levelname><number>-<creator>.pingus\n"
+"\n"
+"So if you create your second level with a stone theme, call it: stone2-"
+"yourname.pingus\n"
+"\n"
+"When you have created a level and want to have it included in the game mail "
+"it to:\n"
+"\n"
+"     pingus-devel@nongnu.org\n"
+"\n"
+"Only levels published under the GPL are allowed into the game. The editor "
+"automatically inserts a reference \n"
+"to the GPL, if you want to have your level under a different license, you "
+"have to change that reference.\n"
+msgstr ""
+"Именовать файлы уровней следует систематически, указывая их тему, номер и "
+"ваш псевдоним:\n"
+"\n"
+"     <название_уровня><номер>-<создатель>.pingus\n"
+"\n"
+"Например, если вы создаёте второй уровень с темой stone, назовите его: "
+"stone2-ваше_имя.pingus\n"
+"\n"
+"Чтобы созданный вами уровень был включён в игру, отправьте его электронной "
+"почтой по адресу:\n"
+"\n"
+"     pingus-devel@nongnu.org\n"
+"\n"
+"В игру включаются только уровни, опубликованные под GPL. Редактор "
+"автоматически вставляет\n"
+"ссылку на GPL. Чтобы опубликовать уровень под другой лицензией, можете "
+"изменить эту ссылку.\n"
+
+#: src/editor/message_box.cpp:37
+msgid "Replace"
 msgstr ""
 
-#: src/pingus/screens/result_screen.cpp:221
-msgid "Only one more and you would have made it - try again!"
+#: src/editor/object_selector.cpp:165
+msgid "Entrance"
+msgstr "Вход"
+
+#: src/editor/object_selector.cpp:166
+msgid "Groundpiece (ground)"
+msgstr "Суша (земля)"
+
+#: src/editor/object_selector.cpp:167
+msgid "Groundpiece (solid)"
+msgstr "Суша (твёрдая)"
+
+#: src/editor/object_selector.cpp:168
+msgid "Groundpiece (bridge)"
+msgstr "Суша (мост)"
+
+#: src/editor/object_selector.cpp:169
+msgid "Groundpiece (transparent)"
+msgstr "Суша (прозрачная)"
+
+#: src/editor/object_selector.cpp:170
+msgid "Groundpiece (remove)"
+msgstr "Суша (удалить)"
+
+#: src/editor/object_selector.cpp:171
+msgid "Hotspot"
+msgstr "Горячая точка"
+
+#: src/editor/object_selector.cpp:172
+msgid "Background"
+msgstr "Фон"
+
+#: src/editor/object_selector.cpp:175
+msgid "Liquid"
+msgstr "Жидкость"
+
+#: src/editor/object_selector.cpp:176
+msgid "Trap"
+msgstr "Ловушка"
+
+#: src/editor/object_selector.cpp:177
+msgid "Weather"
+msgstr "Погода"
+
+#: src/editor/object_selector.cpp:178
+msgid "Special Object"
+msgstr "Спецобъект"
+
+#: src/editor/object_selector.cpp:179
+msgid "Prefab Object"
+msgstr "Заготовки объектов"
+
+#: src/pingus/components/pingus_counter.cpp:43
+#, c-format, boost-format
+msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
 msgstr ""
-
-#: src/pingus/screens/result_screen.cpp:223
-msgid "Only a handful more and you would have made it - try again!"
-msgstr ""
-
-#: src/pingus/screens/result_screen.cpp:225
-msgid "Better luck next time!"
-msgstr "Удачи в следующий раз!"
-
-#: src/pingus/screens/result_screen.cpp:233
-msgid "Saved: "
-msgstr "Спаслись: "
-
-#: src/pingus/screens/result_screen.cpp:237
-msgid "Died: "
-msgstr "Погибли: "
-
-#: src/pingus/screens/result_screen.cpp:240
-msgid "Time left: "
-msgstr "Осталось времени: "
 
 #: src/pingus/action_name.cpp:27
 msgid "Angel"
-msgstr ""
+msgstr "Ангел"
 
 #: src/pingus/action_name.cpp:28
 msgid "Basher"
@@ -799,23 +465,28 @@ msgstr ""
 
 #: src/pingus/action_name.cpp:30
 msgid "Boarder"
-msgstr ""
+msgstr "Абордажник"
 
 #: src/pingus/action_name.cpp:31
 msgid "Bomber"
 msgstr ""
 
+#: src/pingus/action_name.cpp:32 src/pingus/actions/bridger.cpp:38
+#: src/pingus/actions/bridger.cpp:196
+msgid "Bridger"
+msgstr ""
+
 #: src/pingus/action_name.cpp:33
 msgid "Climber"
-msgstr ""
+msgstr "Альпинист"
 
 #: src/pingus/action_name.cpp:34
 msgid "Digger"
-msgstr ""
+msgstr "Землекоп"
 
 #: src/pingus/action_name.cpp:35
 msgid "Drown"
-msgstr ""
+msgstr "Тонуть"
 
 #: src/pingus/action_name.cpp:36
 msgid "Exiter"
@@ -869,10 +540,231 @@ msgstr ""
 msgid "Walker"
 msgstr ""
 
-#: src/pingus/components/pingus_counter.cpp:43
-#, c-format, boost-format
-msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
+#: src/pingus/screens/story_screen.cpp:108
+#: src/pingus/screens/story_screen.cpp:114
+msgid "skip"
+msgstr "пропустить"
+
+#: src/pingus/screens/start_screen.cpp:67
+msgid "Play"
 msgstr ""
+
+#: src/pingus/screens/start_screen.cpp:111
+#: src/pingus/screens/level_menu.cpp:50
+msgid "Back"
+msgstr ""
+
+#: src/pingus/screens/start_screen.cpp:166
+msgid "Number of Pingus: "
+msgstr ""
+
+#: src/pingus/screens/start_screen.cpp:169
+msgid "Number to Save: "
+msgstr ""
+
+#: src/pingus/screens/start_screen.cpp:172
+msgid "Time: "
+msgstr "Время: "
+
+#: src/pingus/screens/start_screen.cpp:178
+msgid "Author: "
+msgstr "Автор: "
+
+#: src/pingus/screens/addon_menu.cpp:53 src/pingus/screens/option_menu.cpp:336
+msgid "Close"
+msgstr "Закрыть"
+
+#: src/pingus/screens/option_menu.cpp:208
+msgid "Fullscreen"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:209
+msgid "Mouse Grab"
+msgstr "Захват мыши"
+
+#: src/pingus/screens/option_menu.cpp:211
+msgid "Software Cursor"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:212
+msgid "Autoscrolling"
+msgstr "Автопрокрутка"
+
+#: src/pingus/screens/option_menu.cpp:213
+msgid "Drag&Drop Scrolling"
+msgstr "Прокрутка перетаскиванием"
+
+#: src/pingus/screens/option_menu.cpp:215
+msgid "Print FPS"
+msgstr "Показывать FPS"
+
+#: src/pingus/screens/option_menu.cpp:219
+msgid "Resolution:"
+msgstr "Разрешение:"
+
+#: src/pingus/screens/option_menu.cpp:220
+msgid "Renderer:"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:222
+msgid "Language:"
+msgstr "Язык:"
+
+#: src/pingus/screens/option_menu.cpp:224
+msgid "Master Volume:"
+msgstr "Общая громкость:"
+
+#: src/pingus/screens/option_menu.cpp:225
+msgid "Sound Volume:"
+msgstr "Громкость звуков:"
+
+#: src/pingus/screens/option_menu.cpp:226
+msgid "Music Volume:"
+msgstr "Громкость музыки:"
+
+#: src/pingus/screens/option_menu.cpp:334
+msgid "Option Menu"
+msgstr ""
+
+#: src/pingus/screens/option_menu.cpp:340
+msgid "Some options require a restart of the game to take effect."
+msgstr "Для вступления в силу некоторых настроек требуется перезапустить игру."
+
+#: src/pingus/screens/pingus_menu.cpp:54
+msgid "Story"
+msgstr "История"
+
+#: src/pingus/screens/pingus_menu.cpp:55
+msgid "..:: Start the game ::.."
+msgstr "..:: Начать игру ::.."
+
+#: src/pingus/screens/pingus_menu.cpp:59
+msgid "Editor"
+msgstr "Редактор"
+
+#: src/pingus/screens/pingus_menu.cpp:60
+msgid "..:: Create your own levels ::.."
+msgstr "..:: Создать ваши собственные уровни ::.."
+
+#: src/pingus/screens/pingus_menu.cpp:64
+msgid "Options"
+msgstr "Настройки"
+
+#: src/pingus/screens/pingus_menu.cpp:65
+msgid "..:: Configure the game ::.."
+msgstr "..:: Настроить игру ::.."
+
+#: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:177
+msgid "Levelsets"
+msgstr "Наборы уровней"
+
+#: src/pingus/screens/pingus_menu.cpp:70
+msgid "..:: Play User Built levels ::.."
+msgstr "..::Играть в созданные уровни::.."
+
+#: src/pingus/screens/pingus_menu.cpp:75
+msgid "..:: Bye, bye ::.."
+msgstr "..:: До свидания! ::.."
+
+#: src/pingus/screens/pingus_menu.cpp:87
+msgid ""
+"..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
+"fullscreen   ::   F12: screenshot ::.."
+msgstr ""
+"..:: Ctrl-g: захват мыши   ::   F10: счётчик fps   ::   F11: во весь "
+"экран   ::   F12: снимок экрана ::.."
+
+#: src/pingus/screens/result_screen.cpp:91
+msgid "Give up"
+msgstr ""
+
+#: src/pingus/screens/result_screen.cpp:126
+msgid "Retry"
+msgstr "Повторить"
+
+#: src/pingus/screens/result_screen.cpp:183
+msgid "Success!"
+msgstr "Успех!"
+
+#: src/pingus/screens/result_screen.cpp:191
+msgid "Failure!"
+msgstr "Неудача!"
+
+#: src/pingus/screens/result_screen.cpp:200
+msgid "Perfect! You saved everyone possible - great!"
+msgstr "Превосходно! Вы спасли всех, кого возможно — замечательно!"
+
+#: src/pingus/screens/result_screen.cpp:202
+msgid "No-one got killed, pretty good work."
+msgstr "Никто не погиб, очень хорошая работа."
+
+#: src/pingus/screens/result_screen.cpp:204
+msgid ""
+"You saved exactly what you needed - you made it, but\n"
+"maybe you can do better?"
+msgstr ""
+
+#: src/pingus/screens/result_screen.cpp:207
+msgid "Not everybody was saved, but still good work!"
+msgstr "Спасены не все, но всё равно — хорошая работа!"
+
+#: src/pingus/screens/result_screen.cpp:209
+msgid "What can I say, you made it - congratulations!"
+msgstr "Что я могу сказать: вы сделали это — поздравляю!"
+
+#: src/pingus/screens/result_screen.cpp:214
+msgid "You killed everybody, not good."
+msgstr "Вы убили всех, это нехорошо."
+
+#: src/pingus/screens/result_screen.cpp:216
+msgid "No-one got saved - I know you can do better."
+msgstr "Никто не спасся — я знаю, что вы можете лучше."
+
+#: src/pingus/screens/result_screen.cpp:218
+msgid ""
+"You didn't save enough, but you saved a few.  Next\n"
+"time you might do better."
+msgstr ""
+
+#: src/pingus/screens/result_screen.cpp:221
+msgid "Only one more and you would have made it - try again!"
+msgstr ""
+
+#: src/pingus/screens/result_screen.cpp:223
+msgid "Only a handful more and you would have made it - try again!"
+msgstr ""
+
+#: src/pingus/screens/result_screen.cpp:225
+msgid "Better luck next time!"
+msgstr "Удачи в следующий раз!"
+
+#: src/pingus/screens/result_screen.cpp:233
+msgid "Saved: "
+msgstr "Спаслись: "
+
+#: src/pingus/screens/result_screen.cpp:237
+msgid "Died: "
+msgstr "Погибли: "
+
+#: src/pingus/screens/result_screen.cpp:240
+msgid "Time left: "
+msgstr "Осталось времени: "
+
+#: src/pingus/screens/level_menu.cpp:155
+msgid "Under Construction"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:156
+msgid "Untested, unpolished and broken levels"
+msgstr ""
+
+#: src/pingus/screens/level_menu.cpp:192
+msgid "Solved:"
+msgstr "Решено:"
+
+#: src/pingus/screens/level_menu.cpp:193
+msgid "levels"
+msgstr "уровни"
 
 #: src/pingus/worldmap/level_dot.cpp:134
 msgid "???"
@@ -884,7 +776,192 @@ msgstr ""
 
 #: src/pingus/worldmap/worldmap_screen.cpp:113
 msgid "Leave?"
+msgstr "Выйти?"
+
+#: src/pingus/pingus_main.cpp:175
+msgid "[OPTIONS]... [FILE]"
+msgstr "[ОПЦИИ]... [ФАЙЛ]"
+
+#: src/pingus/pingus_main.cpp:176
+msgid ""
+"Pingus is a puzzle game where you need to guide a bunch of little penguins "
+"around the world."
 msgstr ""
+"Pingus — головоломка, в которой нужно провести стаю маленьких пингвинов "
+"вокруг земного шара."
+
+#: src/pingus/pingus_main.cpp:178
+msgid "General Options:"
+msgstr "Основные параметры:"
+
+#: src/pingus/pingus_main.cpp:180
+msgid "Displays this help"
+msgstr "Показать эту справку"
+
+#: src/pingus/pingus_main.cpp:182
+msgid "Print version number and exit"
+msgstr "Показать номер версии и выйти"
+
+#: src/pingus/pingus_main.cpp:184
+msgid "Enable info level log output"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:186
+msgid "Enable debug level log output"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:188
+msgid "Disable all log output"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:190
+msgid "Display Options:"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:192
+msgid "Start in Window Mode"
+msgstr "Запуск в оконном режиме"
+
+#: src/pingus/pingus_main.cpp:194
+msgid "Start in Fullscreen"
+msgstr "Запуск в полноэкранном режиме"
+
+#: src/pingus/pingus_main.cpp:196
+msgid "Use the given renderer (default: sdl)"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:198
+msgid "Set the window resolution for pingus (default: 800x600)"
+msgstr "Задать разрешение окна для pingus (по умолчанию: 800x600)"
+
+#: src/pingus/pingus_main.cpp:200
+msgid "Set the resolution used in fullscreen mode (default: 800x600)"
+msgstr "Задать разрешение для полноэкранного режима (по умолчанию: 800x600)"
+
+#: src/pingus/pingus_main.cpp:202
+msgid "Enable software cursor"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:204
+msgid "Game Options:"
+msgstr "Параметры игры:"
+
+#: src/pingus/pingus_main.cpp:206
+msgid "Disable automatic scrolling"
+msgstr "Отключить автоматическую прокрутку"
+
+#: src/pingus/pingus_main.cpp:208
+msgid "Enable drag'n drop scrolling"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:210
+msgid "Sound Options:"
+msgstr "Параметры звука:"
+
+#: src/pingus/pingus_main.cpp:212
+msgid "Disable sound"
+msgstr "Отключить звуки"
+
+#: src/pingus/pingus_main.cpp:214
+msgid "Disable music"
+msgstr "Отключить музыку"
+
+#: src/pingus/pingus_main.cpp:218
+msgid "Select language to use with Pingus"
+msgstr "Выберите язык для использования в Pingus"
+
+#: src/pingus/pingus_main.cpp:220
+msgid "List all available languages"
+msgstr "Список всех доступных языков"
+
+#: src/pingus/pingus_main.cpp:224
+msgid "Loads the level editor"
+msgstr "Загружает редактор уровней"
+
+#: src/pingus/pingus_main.cpp:226
+msgid "Directory Options:"
+msgstr "Параметры каталогов:"
+
+#: src/pingus/pingus_main.cpp:227 src/pingus/pingus_main.cpp:229
+#: src/pingus/pingus_main.cpp:231
+msgid "DIR"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:228
+msgid "Load game datafiles from DIR"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:230
+msgid "Load config files and store savegames in DIR"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:232
+msgid "Load game modifications from DIR"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:234
+msgid "Don't read ~/.pingus/config"
+msgstr "Не читать ~/.pingus/config"
+
+#: src/pingus/pingus_main.cpp:235
+msgid "FILE"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:236
+msgid "Read config options from FILE"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:238
+msgid "Uses the controller given in FILE"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:240
+msgid "Debug Options:"
+msgstr "Параметры отладки:"
+
+#: src/pingus/pingus_main.cpp:242
+msgid "Enables some special features for developers"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:244
+msgid "Set the game speed (0=fastest, >0=slower)"
+msgstr "Задать скорость игры (0=самая быстрая, >0=медленнее)"
+
+#: src/pingus/pingus_main.cpp:246
+msgid "Set the desired game framerate (frames per second)"
+msgstr "Задать частоту кадров (кадры в секунду)"
+
+#: src/pingus/pingus_main.cpp:248
+msgid "Set the size of the map tiles (default: 32)"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:688
+msgid "Pingus: Out of memory!"
+msgstr "Pingus: не хватает памяти!"
+
+#: src/pingus/pingus_main.cpp:692
+msgid "Pingus: Standard exception caught!:\n"
+msgstr ""
+
+#: src/pingus/pingus_main.cpp:696
+msgid "Pingus: Unknown throw caught!"
+msgstr ""
+
+#: src/pingus/game_time.cpp:29
+msgid "unlimited"
+msgstr "без ограничений"
+
+#: src/engine/display/screenshot.cpp:37
+msgid "Screenshot: Saving screenshot to: "
+msgstr "Снимок экрана: сохранение снимка в: "
+
+#: src/engine/display/screenshot.cpp:39
+msgid "Screenshot: Screenshot is done."
+msgstr "Снимок экрана: снимок сделан."
+
+#: src/engine/display/screenshot.cpp:124 src/engine/display/screenshot.cpp:152
+msgid "Screenshot: Couldn't write file: "
+msgstr "Снимок экрана: не удалось записать файл: "
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
 msgid "If the way is blocked, bash away"
@@ -900,7 +977,7 @@ msgstr ""
 
 #: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:5
 msgid "Sacrifice a few and save the rest"
-msgstr ""
+msgstr "Пожертвуйте несколькими и спасите остальных"
 
 #: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:6
 msgid ""
@@ -909,10 +986,13 @@ msgid ""
 "This will kill them, but it is sometimes necessary to sacrifice a few to "
 "save the rest. "
 msgstr ""
+"Иногда недоступны никакие другие действия, кроме как пробиться через землю с "
+"помощью бомб. Пингусы могут делать это весьма саморазрушительно. Это убьёт "
+"их, но иногда необходимо пожертвовать несколькими, чтобы спасти остальных. "
 
 #: data/levels/tutorial/digger-tutorial2-grumbel.pingus:5
 msgid "Learning to dig"
-msgstr ""
+msgstr "Учимся копать"
 
 #: data/levels/tutorial/digger-tutorial2-grumbel.pingus:6
 msgid ""
@@ -920,10 +1000,13 @@ msgid ""
 "is to give a Pingu the command to dig a hole into the ground so that they "
 "can reach the exit. This can be accomplished simply by clicking on a Pingu. "
 msgstr ""
+"Это ваша первая миссия. Как всегда, она очень простая. Всё, что нужно "
+"сделать — это дать пингвину команду копать яму в земле, чтобы достичь "
+"выхода. Для этого просто щёлкните на пингвине. "
 
 #: data/levels/tutorial/floater-tutorial-grumbel.pingus:5
 msgid "Float or Die"
-msgstr ""
+msgstr "Лети или умри"
 
 #: data/levels/tutorial/floater-tutorial-grumbel.pingus:6
 msgid ""
@@ -932,6 +1015,10 @@ msgid ""
 "the ground smoothly. If Pingus fall too far, they will not be able to "
 "survive the fall, so keep your eyes open! "
 msgstr ""
+"Миссия 1 успешно пройдена! Давайте начнём следующую. На этот раз нужно "
+"оснастить пингвина небольшим пропеллером, чтобы он мог плавно спуститься на "
+"землю. Если Пингус упадёт слишком далеко, он погибнет, так что будьте "
+"внимательны! "
 
 #: data/levels/tutorial/jumper-tutorial-grumbel.pingus:5
 msgid "Jump for joy"
@@ -946,7 +1033,7 @@ msgstr ""
 
 #: data/levels/tutorial/miner-tutorial2-grumbel.pingus:5
 msgid "Miner's heaven"
-msgstr ""
+msgstr "Рай для шахтёра"
 
 #: data/levels/tutorial/miner-tutorial2-grumbel.pingus:6
 msgid ""
@@ -1014,7 +1101,7 @@ msgstr ""
 
 #: data/levels/tutorial/snow16-grumbel.pingus:5
 msgid "Bridging gets more complicated..."
-msgstr ""
+msgstr "Строительство мостов усложняется..."
 
 #: data/levels/tutorial/snow16-grumbel.pingus:6
 msgid ""
@@ -1022,6 +1109,8 @@ msgid ""
 "you could end up in the hole just before the exit, so think about how to "
 "avoid that. "
 msgstr ""
+"И снова вам нужно осторожно и мудро комбинировать действия. Иначе вы можете "
+"оказаться в яме прямо перед выходом. Подумайте, как её избежать. "
 
 #: data/levels/tutorial/snow17-grumbel.pingus:5
 msgid "If too high, your Pingu will die..."
@@ -1036,7 +1125,7 @@ msgstr ""
 
 #: data/levels/tutorial/snow19-grumbel.pingus:5
 msgid "Learn to use the bridge"
-msgstr ""
+msgstr "Учимся использовать мост"
 
 #: data/levels/tutorial/snow19-grumbel.pingus:6
 msgid ""
@@ -1047,7 +1136,7 @@ msgstr ""
 
 #: data/levels/tutorial/snow20-grumbel.pingus:5
 msgid "Three solutions, it's up to you"
-msgstr ""
+msgstr "Три решения — выбор за вами"
 
 #: data/levels/tutorial/snow20-grumbel.pingus:6
 msgid ""
@@ -1055,6 +1144,9 @@ msgid ""
 "This level presents you with at least three different ways to solve it. It's "
 "up to you which one you pick. "
 msgstr ""
+"Теперь, когда вы освоили все действия, самое время немного попрактиковаться. "
+"Этот уровень можно пройти как минимум тремя различными способами. Какой "
+"использовать — решать вам. "
 
 #: data/levels/tutorial/snow21-grumbel.pingus:5
 msgid "Climb, Climber, climb... and build a bridge"
@@ -1360,18 +1452,6 @@ msgid ""
 "below."
 msgstr ""
 
-#: data/levels/desert/desert-crawl-timpany.pingus:5
-msgid "Crawlspace"
-msgstr ""
-
-#: data/levels/desert/desert-crawl-timpany.pingus:6
-msgid ""
-"The path to the exit is blocked and many small tunnels lead the way, but be "
-"careful some of those lead to certain death. Or is there something you can "
-"do about that and create a save passage for all the Pingus and lead them "
-"safely to the exit?"
-msgstr ""
-
 #: data/levels/desert/desert1-janne.pingus:5
 msgid "Down the valley and up again"
 msgstr ""
@@ -1395,7 +1475,7 @@ msgstr ""
 
 #: data/levels/desert/desert2.pingus:5
 msgid "The window room"
-msgstr ""
+msgstr "Комната с окном"
 
 #: data/levels/desert/desert2.pingus:6
 msgid ""
@@ -1403,6 +1483,9 @@ msgid ""
 "large window. The only problem they have is that the entrance to the room is "
 "much too high to survive the landing. Can you help them?"
 msgstr ""
+"Войдя в пирамиду, Пингусы дошли до большой комнаты с большим окном. "
+"Единственная проблема: вход в комнату расположен слишком высоко, чтобы "
+"выжить при приземлении. Сможете ли вы помочь им?"
 
 #: data/levels/desert/desert3-jings.pingus:5
 msgid "Grand Hall"
@@ -1437,16 +1520,6 @@ msgid ""
 "first?"
 msgstr ""
 
-#: data/levels/desert/desert5-tflavel.pingus:5
-msgid "Claustrophobia"
-msgstr ""
-
-#: data/levels/desert/desert5-tflavel.pingus:6
-msgid ""
-"Hidden deep below the pyramid the pingus come across a small underground "
-"room, but unfortunatley a large tree root blocks their path..."
-msgstr ""
-
 #: data/levels/desert/desert5.pingus:5
 msgid "Catch them at the half way point"
 msgstr ""
@@ -1458,13 +1531,25 @@ msgid ""
 "put it. Can you uncover that spot?"
 msgstr ""
 
+#: data/levels/desert/desert5-tflavel.pingus:5
+msgid "Claustrophobia"
+msgstr "Клаустрофобия"
+
+#: data/levels/desert/desert5-tflavel.pingus:6
+msgid ""
+"Hidden deep below the pyramid the pingus come across a small underground "
+"room, but unfortunatley a large tree root blocks their path..."
+msgstr ""
+"Глубоко под пирамидой Пингусы собираются пройти маленькую поземную комнату, "
+"но корень огромного дерева закрывает им дорогу..."
+
 #: data/levels/desert/desert6-grumbel.pingus:5
 msgid "A bit to the right a bit to left"
-msgstr ""
+msgstr "Шаг вправо, шаг влево"
 
 #: data/levels/desert/desert6-grumbel.pingus:6
 msgid "Only the most audacious Pingus will be allowed to continue."
-msgstr ""
+msgstr "Только самые бесстрашные Пингусы смогут пройти."
 
 #: data/levels/desert/desert7-grumbel.pingus:5
 msgid "25 Pingus free and 25 in the box"
@@ -1486,6 +1571,18 @@ msgid ""
 "have to work together."
 msgstr ""
 
+#: data/levels/desert/desert-crawl-timpany.pingus:5
+msgid "Crawlspace"
+msgstr ""
+
+#: data/levels/desert/desert-crawl-timpany.pingus:6
+msgid ""
+"The path to the exit is blocked and many small tunnels lead the way, but be "
+"careful some of those lead to certain death. Or is there something you can "
+"do about that and create a save passage for all the Pingus and lead them "
+"safely to the exit?"
+msgstr ""
+
 #: data/levels/desert/desertwaste1-grumbel.pingus:5
 msgid "The Roof"
 msgstr ""
@@ -1499,7 +1596,7 @@ msgstr ""
 
 #: data/levels/desert/indiana-yingwan.pingus:5
 msgid "Pingus Jones and the Last Exit"
-msgstr ""
+msgstr "Пингус Джонс и последний выход"
 
 #: data/levels/desert/indiana-yingwan.pingus:6
 msgid ""
@@ -1508,6 +1605,21 @@ msgid ""
 "  (1) the breath of God: only the penitent pingus will pass;\n"
 "  (2) the word of God... in reverse;\n"
 "  (3) the path of God: leap from the head of something like a cat."
+msgstr ""
+"Из записок доктора Джонса:\n"
+"\n"
+"  (1) дыхание Бога: только раскаявшийся Пингус может пройти;\n"
+"  (2) слово Бога... в обратном порядке;\n"
+"  (3) путь Бога: прыгнув с головы чего-то вроде кошки."
+
+#: data/levels/mysteryisland/cave1-marcotte.pingus:5
+msgid "Near can mean far"
+msgstr ""
+
+#: data/levels/mysteryisland/cave1-marcotte.pingus:6
+msgid ""
+"What do you do when you're going in the wrong direction ? Simple: walk into "
+"a wall. But it is easier said than done..."
 msgstr ""
 
 #: data/levels/mysteryisland/cave-lac.pingus:7
@@ -1518,16 +1630,6 @@ msgstr ""
 msgid ""
 "The penguins escaped the mad scientist, but now they were trapped deep "
 "underground. They had no food or water, so they had to move fast."
-msgstr ""
-
-#: data/levels/mysteryisland/cave1-marcotte.pingus:5
-msgid "Near can mean far"
-msgstr ""
-
-#: data/levels/mysteryisland/cave1-marcotte.pingus:6
-msgid ""
-"What do you do when you're going in the wrong direction ? Simple: walk into "
-"a wall. But it is easier said than done..."
 msgstr ""
 
 #: data/levels/mysteryisland/emperiment-lac.pingus:5
@@ -1544,7 +1646,7 @@ msgstr ""
 
 #: data/levels/mysteryisland/hall-of-illusion-lac.pingus:5
 msgid "Hall of Illusion"
-msgstr ""
+msgstr "Зал иллюзий"
 
 #: data/levels/mysteryisland/hall-of-illusion-lac.pingus:6
 msgid ""
@@ -1608,6 +1710,9 @@ msgid ""
 "intended to destroy the support structures, sending the evil laboratory "
 "crashing down."
 msgstr ""
+"Пингвины убежали от сумасшедшего учёного, но теперь они жаждут мести. Они "
+"собираются уничтожить поддерживающие структуры, чтобы дьявольская "
+"лаборатория обрушилась."
 
 #: data/levels/mysteryisland/revenge2-lac.pingus:8
 msgid ""
@@ -1616,6 +1721,10 @@ msgid ""
 "crashing down. They had to move fast though, because the mad scientist would "
 "detect and recapture them if they weren't fast enough."
 msgstr ""
+"Пингвины убежали от сумасшедшего учёного, но теперь они жаждут мести. Они "
+"собираются уничтожить поддерживающие структуры, чтобы дьявольская "
+"лаборатория обрушилась. Это нужно сделать быстро, иначе сумасшедший учёный "
+"обнаружит и снова захватит их."
 
 #: data/levels/mysteryisland/snow2-lac.pingus:7
 msgid "Winter Wonderland"
@@ -1653,7 +1762,7 @@ msgstr ""
 
 #: data/levels/mysteryisland/volcano1-grumbel.pingus:5
 msgid "Shipwrecked"
-msgstr ""
+msgstr "Кораблекрушение"
 
 #: data/levels/mysteryisland/volcano1-grumbel.pingus:6
 msgid ""
@@ -1663,15 +1772,8 @@ msgid ""
 "island."
 msgstr ""
 
-#: data/levels/alien/aliens1-grumbel.pingus:5
 #: data/levels/alien/aliens1-phil.pingus:7
 msgid "Escape from Aliens"
-msgstr ""
-
-#: data/levels/alien/aliens1-grumbel.pingus:6
-msgid ""
-"Aliens invade our starship blocking intrance to the teleporter. Your crew is "
-"well trained, like you they don't panic."
 msgstr ""
 
 #: data/levels/alien/aliens1-phil.pingus:8
@@ -1734,6 +1836,14 @@ msgstr ""
 msgid "Cooperation in space."
 msgstr ""
 
+#: data/levels/alien/space2.pingus:5
+msgid "Lost in Space"
+msgstr "Затерянные в пространстве"
+
+#: data/levels/alien/space2.pingus:6
+msgid "We don't know where we are but we don't leave anybody behind."
+msgstr "Мы не знаем, где мы, но мы не должны никого здесь оставить."
+
 #: data/levels/alien/space-9-tom.pingus:5
 msgid "Outside In"
 msgstr ""
@@ -1760,28 +1870,6 @@ msgstr ""
 msgid "What good is a pick in space? Certainly not to go to the stars."
 msgstr ""
 
-#: data/levels/alien/space2.pingus:5
-msgid "Lost in Space"
-msgstr ""
-
-#: data/levels/alien/space2.pingus:6
-msgid "We don't know where we are but we don't leave anybody behind."
-msgstr ""
-
-#: data/levels/factorycampaign/factory_campaign1.pingus:5
-msgid "Falling down"
-msgstr ""
-
-#: data/levels/factorycampaign/factory_campaign1.pingus:6
-msgid ""
-"Pingus intelligence reported that a huge factory located in the subtropical "
-"zone might be a reason of a climate change. They decided to go there and "
-"shut down the factories. This will be a long and dangerous expedition. "
-"Pingus and you will have to face many difficulties on your way. As the ice "
-"is melting, at first you have to build some bridges and watch out for the "
-"cliff."
-msgstr ""
-
 #: data/levels/factorycampaign/factory_campaign10.pingus:5
 msgid "Jump"
 msgstr ""
@@ -1804,31 +1892,54 @@ msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign12.pingus:5
 msgid "Going back home"
-msgstr ""
+msgstr "Возвращение домой"
 
 #: data/levels/factorycampaign/factory_campaign12.pingus:6
 msgid "Your mission is over. Pingus can go back home, but be careful!"
 msgstr ""
+"Ваша миссия завершена. Пингусы могут возвращаться домой, но будьте осторожны!"
 
 #: data/levels/factorycampaign/factory_campaign13.pingus:5
 msgid "Bonus track"
-msgstr ""
+msgstr "Призовой уровень"
 
 #: data/levels/factorycampaign/factory_campaign13.pingus:6
 msgid ""
 "Pingus are at home, but after the climate change living on the South Pole "
 "became more dangerous. There is one more mission for you."
 msgstr ""
+"Пингусы дома, но климат меняется, и жить на Южном полюсе становится опаснее. "
+"Это ещё одна миссия для вас."
+
+#: data/levels/factorycampaign/factory_campaign1.pingus:5
+msgid "Falling down"
+msgstr "Падение"
+
+#: data/levels/factorycampaign/factory_campaign1.pingus:6
+msgid ""
+"Pingus intelligence reported that a huge factory located in the subtropical "
+"zone might be a reason of a climate change. They decided to go there and "
+"shut down the factories. This will be a long and dangerous expedition. "
+"Pingus and you will have to face many difficulties on your way. As the ice "
+"is melting, at first you have to build some bridges and watch out for the "
+"cliff."
+msgstr ""
+"Разведка Пингусов сообщила, что причиной изменения климата может быть "
+"огромная фабрика, расположенная в субтропиках. Они решили пойти туда и "
+"закрыть фабрику. Это долгая и опасная экспедиция. Пингусам и вам придётся "
+"встретиться со множеством трудностей на своём пути. Лёд тает, поэтому "
+"сначала нужно построить несколько мостов. Опасайтесь скалы."
 
 #: data/levels/factorycampaign/factory_campaign2.pingus:5
 msgid "Destination North"
-msgstr ""
+msgstr "Назначение — север"
 
 #: data/levels/factorycampaign/factory_campaign2.pingus:6
 msgid ""
 "For now, Pingus are leaving South Pole and moving North. You have to help "
 "them!"
 msgstr ""
+"Пингусы покинули Южный полюс и двигаются на север. Вы должны помочь им!"
 
 #: data/levels/factorycampaign/factory_campaign3.pingus:5
 msgid "The Cave"
@@ -1854,50 +1965,60 @@ msgstr ""
 
 #: data/levels/factorycampaign/factory_campaign5.pingus:5
 msgid "Four ways out"
-msgstr ""
+msgstr "Четыре пути наружу"
 
 #: data/levels/factorycampaign/factory_campaign5.pingus:6
 msgid ""
 "It's getting warmer but Pingus are bravely moving North. This time it will "
 "be much easier. There are at least four ways out. Could you find them?"
 msgstr ""
+"Становится теплее, но Пингусы смело идут на север. На этот раз будет намного "
+"проще. Существует по крайней мере четыре пути наружу. Сможете найти их?"
 
 #: data/levels/factorycampaign/factory_campaign6.pingus:5
 msgid "Egypt - So easy"
-msgstr ""
+msgstr "Египет — так просто!"
 
 #: data/levels/factorycampaign/factory_campaign6.pingus:6
 msgid "Pingus reached Egypt. Looks easy, but is it really so easy? Try it out."
 msgstr ""
+"Пингусы дошли до Египта. Выглядит просто, но так ли это на самом деле? "
+"Попробуйте."
 
 #: data/levels/factorycampaign/factory_campaign7.pingus:5
 msgid "Egypt - Oasis"
-msgstr ""
+msgstr "Египет — оазис"
 
 #: data/levels/factorycampaign/factory_campaign7.pingus:6
 msgid ""
 "Last time it was easy. Now it will be a little bit harder. Pingus are "
 "entering oasis. Watch out for the water."
 msgstr ""
+"В прошлый раз было просто, теперь будет немного сложнее. Пингусы входят в "
+"оазис. Остерегайтесь воды!"
 
 #: data/levels/factorycampaign/factory_campaign8.pingus:5
 msgid "Egypt - The Maze"
-msgstr ""
+msgstr "Египет — лабиринт"
 
 #: data/levels/factorycampaign/factory_campaign8.pingus:6
 msgid ""
 "You came across a maze. Can you find the way out? Think twice before digging."
 msgstr ""
+"Вы в лабиринте. Сможете ли вы найти выход? Подумайте дважды, прежде чем "
+"копать."
 
 #: data/levels/factorycampaign/factory_campaign9.pingus:5
 msgid "Egypt - Pyramids"
-msgstr ""
+msgstr "Египет — пирамиды"
 
 #: data/levels/factorycampaign/factory_campaign9.pingus:6
 msgid ""
 "The maze led you to the big pyramids. Now you have 4 minutes to escape. "
 "Hurry up!"
 msgstr ""
+"Лабиринт привёл вас к большим пирамидам. У вас 4 минуты, чтобы выйти отсюда. "
+"Торопитесь!"
 
 #: data/levels/xmas2011/xmas01-grumbel.pingus:5
 msgid "Bomb and Double Catch"
@@ -1962,7 +2083,7 @@ msgstr ""
 #: data/levels/xmas2011/xmas06-grumbel.pingus:6
 msgid ""
 "Going in and out of the abyss with all Pingus isn't an option here, but a "
-"small group preparing the path or the others should get you across."
+"small group preparing the path for the others should get you across."
 msgstr ""
 
 #: data/levels/xmas2011/xmas07-grumbel.pingus:5
@@ -1978,7 +2099,7 @@ msgstr ""
 
 #: data/levels/xmas2011/xmas08-grumbel.pingus:5
 msgid "Ice Block Blockage"
-msgstr ""
+msgstr "Ледяное препятствие"
 
 #: data/levels/xmas2011/xmas08-grumbel.pingus:6
 msgid ""
@@ -1986,10 +2107,13 @@ msgid ""
 "from? No time wondering about things like that. The Pingus need to get to "
 "the exist and it's your job to find a way around the block."
 msgstr ""
+"Что это? Гигантская глыба льда прямо на пути? Откуда она взялась? Но "
+"размышлять об этом нет времени. Пингусам нужно дойти до выхода, и ваша "
+"задача — найти путь в обход глыбы."
 
 #: data/levels/xmas2011/xmas09-grumbel.pingus:5
 msgid "The Impossible Bridge"
-msgstr ""
+msgstr "Невероятный мост"
 
 #: data/levels/xmas2011/xmas09-grumbel.pingus:6
 msgid ""
@@ -1997,6 +2121,9 @@ msgid ""
 "seems impossible, but wise coordination of the two groups and a brave leap "
 "should let you make it to the exit."
 msgstr ""
+"Две группы Пингусов разделены глубокой пропастью. Кажется, что построить "
+"мост невозможно, но мудрая координация двух групп и отважный прыжок должны "
+"помочь им дойти до выхода."
 
 #: data/levels/xmas2011/xmas10-grumbel.pingus:5
 msgid "Spiraling Away"
@@ -2011,7 +2138,7 @@ msgstr ""
 
 #: data/worldmaps/tutorial.worldmap:4
 msgid "Tutorial Island"
-msgstr ""
+msgstr "Учебный остров"
 
 #: data/worldmaps/tutorial.worldmap:6
 msgid "Learn the basics"
@@ -2019,11 +2146,11 @@ msgstr ""
 
 #: data/worldmaps/tutorial.worldmap:124
 msgid "Watch Ending"
-msgstr ""
+msgstr "Показать окончание"
 
 #: data/worldmaps/tutorial.worldmap:131
 msgid "Watch Intro"
-msgstr ""
+msgstr "Показать вступление"
 
 #: data/stories/tutorial_intro.story:2
 msgid "The Journey Begins"
@@ -2036,6 +2163,10 @@ msgid ""
 "like nothing could disrupt their peace.  The Pingus were happy and it seemed "
 "like this could never end."
 msgstr ""
+"Долгое время Пингусы, вместе с другими животными, мирно и счастливо жили на "
+"Южном полюсе. Всё вокруг было в равновесии и, казалось, ничто не может "
+"нарушить их мирную жизнь. Пингусы были счастливы и думали, что это никогда "
+"не закончится."
 
 #: data/stories/tutorial_intro.story:17
 msgid ""
@@ -2044,6 +2175,9 @@ msgid ""
 "in the world's climate, but things seemed to get worse and worse with every "
 "year."
 msgstr ""
+"Но однажды всё начало медленно изменяться: небо стало темнее, а земля — "
+"теплее. Сначала они думали, что это обычные колебания мирового климата, но с "
+"каждым годом становилось всё хуже и хуже."
 
 #: data/stories/tutorial_intro.story:25
 msgid ""
@@ -2052,6 +2186,9 @@ msgid ""
 "knew that this wouldn't help: they knew that they had to do something about "
 "it."
 msgstr ""
+"Снег в нескольких областях начал таять и добывать пищу стало проблемой. "
+"Другие животные попытались покинуть дом в поиске более холодных областей, но "
+"Пингусы знали, что это не поможет: им придётся что-то делать."
 
 #: data/stories/tutorial_intro.story:33
 msgid ""
@@ -2060,6 +2197,9 @@ msgid ""
 "this warming. The expedition consisted of hundreds of the bravest Pingus on "
 "the South Pole."
 msgstr ""
+"Был собран круг старейшин, чтобы решить, что следует предпринять. Они решили "
+"отправить экспедицию вокруг земного шара, чтобы найти причину потепления. "
+"Экспедиция состояла из сотен самых смелых Пингусов на Южном полюсе."
 
 #: data/stories/tutorial_intro.story:41
 msgid ""
@@ -2069,6 +2209,11 @@ msgid ""
 "island has always been the first stop of Pingus that were sent out into the "
 "world."
 msgstr ""
+"И они выбрали вас своим лидером в путешествии вокруг Земли. Поскольку "
+"путешествие будет опасным и трудным, ваша первая цель — остров Могорок, "
+"известный также под названием «Учебный остров». По словам старейшин, этот "
+"остров всегда был первой остановкой для Пингусов, отправляющихся в "
+"странствия."
 
 #: data/stories/tutorial_intro.story:50
 msgid ""
@@ -2092,6 +2237,10 @@ msgid ""
 "\n"
 "Good Luck!"
 msgstr ""
+"Теперь, когда вы с Пингусами прибыли на Учебный остров, для вас пришло время "
+"взять командование в свои руки и начать вашу миссию.\n"
+"\n"
+"Удачи!"
 
 #: data/stories/tutorial_outro.story:2
 msgid "The Journey Continues"
@@ -2114,6 +2263,10 @@ msgid ""
 "large tree at the end of the island which gave them wood to construct a "
 "float."
 msgstr ""
+"Но, как говорят старейшины, Учебный остров — не только хорошее место для "
+"тренировки, но ещё и отправная точка во внешний мир. После недолгих поисков "
+"Пингусы поняли значение их слов и нашли на краю острова большое дерево, из "
+"древесины которого можно изготовить плот."
 
 #: data/stories/tutorial_outro.story:27
 msgid ""
@@ -2122,6 +2275,9 @@ msgid ""
 "their journey and leave their familiar ground and enter the unknown parts of "
 "the world."
 msgstr ""
+"Пингусы изготовили несколько больших плотов, способных уместить их всех. Они "
+"запаслись провизией и готовы начать путешествие, покинуть родную землю и "
+"вступить в незнакомые области мира."
 
 #: data/stories/tutorial_outro.story:35
 msgid ""
@@ -2155,6 +2311,10 @@ msgstr "Пустыня"
 msgid "Getting hot outside..."
 msgstr "Снаружи становится жарко..."
 
+#: data/levelsets/eyeland.levelset:2
+msgid "Eye Land"
+msgstr ""
+
 #: data/levelsets/factory.levelset:3
 msgid "Factory Campaign"
 msgstr ""
@@ -2163,33 +2323,33 @@ msgstr ""
 msgid "Pingus expedition"
 msgstr ""
 
-#: data/levelsets/halloween.levelset:3
-msgid "Halloween 2007"
-msgstr ""
-
-#: data/levelsets/halloween.levelset:4
-msgid "Trapped at All Hallows Eve"
-msgstr ""
-
 #: data/levelsets/halloween2011.levelset:2
 msgid "Halloween 2011"
-msgstr ""
+msgstr "Хэллоуин 2011"
 
 #: data/levelsets/halloween2011.levelset:3
 msgid "Going Underground"
-msgstr ""
+msgstr "Спускаемся под землю"
+
+#: data/levelsets/halloween.levelset:3
+msgid "Halloween 2007"
+msgstr "Хэллоуин 2007"
+
+#: data/levelsets/halloween.levelset:4
+msgid "Trapped at All Hallows Eve"
+msgstr "В ловушке в канун Дня всех святых"
 
 #: data/levelsets/hellmouth.levelset:3
 msgid "Hellmouth"
-msgstr ""
+msgstr "Адская пасть"
 
 #: data/levelsets/hellmouth.levelset:4
 msgid "A cave full of slime..."
-msgstr ""
+msgstr "Пещера, полная слизи..."
 
 #: data/levelsets/jungle.levelset:3
 msgid "Jungle"
-msgstr ""
+msgstr "Джунгли"
 
 #: data/levelsets/mysteryisland.levelset:3
 msgid "Island of Mystery"
@@ -2209,11 +2369,11 @@ msgstr ""
 
 #: data/levelsets/xmas2011.levelset:3
 msgid "Xmas 2011"
-msgstr ""
+msgstr "Рождество 2011"
 
 #: data/levelsets/xmas2011.levelset:4
 msgid "Merry Christmas and a Happy New Year"
-msgstr ""
+msgstr "Весёлого рождества и счастливого Нового года!"
 
 #~ msgid "Fullscreen:"
 #~ msgstr "Полный экран:"

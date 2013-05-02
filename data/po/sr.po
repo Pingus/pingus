@@ -2,38 +2,314 @@
 # Translation of Pingus to Serbian.
 # Prevod Pingusa na Srpski.
 # Copyright (C) 2003. Ingo Ruhnke
-# This file is distributed under the same license as the PACKAGE package.
-#
+# This file is distributed under the same license as the pingus package.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-24 22:39+0100\n"
-"PO-Revision-Date: 2011-09-18 18:50+0000\n"
-"Last-Translator: Milan Babuskov <mbabuskov@yahoo.com>\n"
-"Language-Team: <mbabuskov@yahoo.com>\n"
-"Language: \n"
+"POT-Creation-Date: 2013-02-13 03:15+0100\n"
+"PO-Revision-Date: 2012-11-08 14:57+0000\n"
+"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"Language-Team: Serbian translators\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-02-18 08:20+0000\n"
-"X-Generator: Launchpad (build 14814)\n"
+"X-Launchpad-Export-Date: 2013-02-10 19:40+0000\n"
+"X-Generator: Launchpad (build 16482)\n"
 
-#: src/engine/display/screenshot.cpp:37
-msgid "Screenshot: Saving screenshot to: "
-msgstr "Snimak ekrana: Snimam snimak u: "
+#: src/editor/object_properties.cpp:87 src/editor/object_properties.cpp:515
+msgid "Object:"
+msgstr "Објекат:"
 
-#: src/engine/display/screenshot.cpp:39
-msgid "Screenshot: Screenshot is done."
-msgstr "Snimak ekrana: snimak napravljen."
+#: src/editor/object_properties.cpp:88 src/editor/object_properties.cpp:516
+msgid "Nothing selected"
+msgstr "Ништа није изабрано"
 
-#: src/engine/display/screenshot.cpp:124 src/engine/display/screenshot.cpp:152
-msgid "Screenshot: Couldn't write file: "
-msgstr "Snimak ekrana: Nije moguće snimiti fajl: "
+#: src/editor/object_properties.cpp:97
+msgid "Transparent"
+msgstr "Провидно"
+
+#: src/editor/object_properties.cpp:98
+msgid "Solid"
+msgstr "Испуњено"
+
+#: src/editor/object_properties.cpp:99
+msgid "Ground"
+msgstr "Земља"
+
+#: src/editor/object_properties.cpp:100
+msgid "Bridge"
+msgstr "Мост"
+
+#: src/editor/object_properties.cpp:101
+msgid "Water"
+msgstr "Вода"
+
+#: src/editor/object_properties.cpp:102
+msgid "Lava"
+msgstr "Лава"
+
+#: src/editor/object_properties.cpp:103
+msgid "Remove"
+msgstr "Уклони"
+
+#: src/editor/object_properties.cpp:108
+msgid "Direction:"
+msgstr "Правац:"
+
+#: src/editor/object_properties.cpp:110
+msgid "Left"
+msgstr "Лево"
+
+#: src/editor/object_properties.cpp:111
+msgid "Misc"
+msgstr "Разно"
+
+#: src/editor/object_properties.cpp:112
+msgid "Right"
+msgstr "Десно"
+
+#: src/editor/object_properties.cpp:117
+msgid "ReleaseRate:"
+msgstr "Проток отпуштања:"
+
+#: src/editor/object_properties.cpp:140
+msgid "Para-X:"
+msgstr "Пара-X:"
+
+#: src/editor/object_properties.cpp:141
+msgid "Para-Y:"
+msgstr "Пара-Y:"
+
+#: src/editor/object_properties.cpp:149
+msgid "Scroll-X:"
+msgstr "Помери-X:"
+
+#: src/editor/object_properties.cpp:150
+msgid "Scroll-Y:"
+msgstr "Помери-Y:"
+
+#: src/editor/object_properties.cpp:158
+msgid "Owner Id:"
+msgstr "Власник:"
+
+#: src/editor/object_properties.cpp:162
+msgid "Z-Pos:"
+msgstr "Z-Положај:"
+
+#: src/editor/object_properties.cpp:169
+msgid "Color:"
+msgstr "Боја:"
+
+#: src/editor/object_properties.cpp:181
+msgid "Small Stars:"
+msgstr "Мале звезде:"
+
+#: src/editor/object_properties.cpp:184
+msgid "Middle Stars:"
+msgstr "Средње звезде:"
+
+#: src/editor/object_properties.cpp:187
+msgid "Large Stars:"
+msgstr "Велике звезде:"
+
+#: src/editor/object_properties.cpp:195
+msgid "Repeat:"
+msgstr "Понови:"
+
+#: src/editor/object_properties.cpp:211
+msgid "Id:"
+msgstr "Иб:"
+
+#: src/editor/object_properties.cpp:215
+msgid "Target Id:"
+msgstr "Одредиште:"
+
+#: src/editor/object_properties.cpp:220 src/editor/level_properties.cpp:74
+msgid "Height:"
+msgstr "Висина:"
+
+#: src/editor/object_properties.cpp:521
+msgid "Object: [Group]"
+msgstr "Објекат: [Група]"
+
+#: src/editor/object_properties.cpp:522
+msgid "Group not supported"
+msgstr "Група није подржана"
+
+#: src/editor/object_properties.cpp:527
+msgid "Object: "
+msgstr "Објекат: "
+
+#: src/editor/panel.cpp:171
+msgid "New level"
+msgstr "Нови ниво"
+
+#: src/editor/panel.cpp:173
+msgid "Open level..."
+msgstr "Отвори ниво..."
+
+#: src/editor/panel.cpp:175
+msgid "Save level..."
+msgstr "Сачувај ниво..."
+
+#: src/editor/panel.cpp:177
+msgid "Save level as..."
+msgstr "Сачувај ниво као..."
+
+#: src/editor/panel.cpp:180
+msgid "Play level..."
+msgstr "Играј ниво..."
+
+#: src/editor/panel.cpp:183
+msgid "Configure actions"
+msgstr "Подеси радње"
+
+#: src/editor/panel.cpp:185
+msgid "Configure level"
+msgstr "Подесите ниво"
+
+#: src/editor/panel.cpp:187
+msgid "Display object properties"
+msgstr "Прикажите својства објекта"
+
+#: src/editor/panel.cpp:189
+msgid "Show object insertion window"
+msgstr "Прикажите прозор за уметање објекта"
+
+#: src/editor/panel.cpp:191
+msgid "Show minimap"
+msgstr "Прикажите малу карту"
+
+#: src/editor/panel.cpp:194
+msgid "Duplicate the selected objects"
+msgstr "Удвостручите изабране објекте"
+
+#: src/editor/panel.cpp:196
+msgid "Delete the selected objects"
+msgstr "Избришите изабране објекте"
+
+#: src/editor/panel.cpp:199
+msgid "Raise object to top"
+msgstr "Издигните објекат изнад осталих"
+
+#: src/editor/panel.cpp:201
+msgid "Raise object"
+msgstr "Издигните објекат"
+
+#: src/editor/panel.cpp:203
+msgid "Lower object"
+msgstr "Спустите објекат"
+
+#: src/editor/panel.cpp:205
+msgid "Lower object to bottom"
+msgstr "Спустите објекат на дно"
+
+#: src/editor/panel.cpp:211
+msgid "Flip object horizontally"
+msgstr "Изврните објекат водоравно"
+
+#: src/editor/panel.cpp:213
+msgid "Flip object vertically"
+msgstr "Изврните објекат усправно"
+
+#: src/editor/panel.cpp:216
+msgid "Rotate object -90 degree"
+msgstr "Заокрените објекат за -90 степени"
+
+#: src/editor/panel.cpp:218
+msgid "Rotate object 90 degree"
+msgstr "Заокрените објекат за 90 степени"
+
+#: src/editor/panel.cpp:227
+msgid "Display help"
+msgstr "Прикажите помоћ"
+
+#: src/editor/panel.cpp:229 src/editor/object_selector.cpp:174
+#: src/pingus/screens/pingus_menu.cpp:74
+msgid "Exit"
+msgstr "Изађите"
+
+#: src/editor/file_dialog.cpp:58
+msgid "Datadir"
+msgstr "Фасцикла података"
+
+#: src/editor/file_dialog.cpp:60
+msgid "Userdir"
+msgstr "Фасцикла корисника"
+
+#: src/editor/file_dialog.cpp:63
+msgid "Open"
+msgstr "Отвори"
+
+#: src/editor/file_dialog.cpp:63
+msgid "Save"
+msgstr "Сачувај"
+
+#: src/editor/file_dialog.cpp:66 src/editor/message_box.cpp:35
+msgid "Cancel"
+msgstr "Откажи"
+
+#: src/editor/file_dialog.cpp:77
+msgid "Filename:"
+msgstr "Назив датотеке:"
+
+#: src/editor/file_dialog.cpp:78
+msgid "Pathname:"
+msgstr "Назив путање:"
+
+#: src/editor/file_dialog.cpp:98
+msgid "Open a level"
+msgstr "Отворите ниво"
+
+#: src/editor/file_dialog.cpp:98
+msgid "Save your level"
+msgstr "Сачувајте ваш ниво"
+
+#: src/editor/level_properties.cpp:52
+#, fuzzy
+msgid "Author:"
+msgstr "Аутор: "
+
+#: src/editor/level_properties.cpp:55
+#, fuzzy
+msgid "Levelname:"
+msgstr "Назив датотеке:"
+
+#: src/editor/level_properties.cpp:58
+#, fuzzy
+msgid "Description:"
+msgstr "Правац:"
+
+#: src/editor/level_properties.cpp:62
+#, fuzzy
+msgid "Pingus Count:"
+msgstr "Експедиција Пингвинаца"
+
+#: src/editor/level_properties.cpp:65
+#, fuzzy
+msgid "Pingus to Save:"
+msgstr "За спашавање: "
+
+#: src/editor/level_properties.cpp:68
+#, fuzzy
+msgid "Time:"
+msgstr "Време: "
+
+#: src/editor/level_properties.cpp:71
+msgid "Width:"
+msgstr ""
+
+#: src/editor/level_properties.cpp:77
+#, fuzzy
+msgid "Music:"
+msgstr "-Muzika"
 
 #: src/editor/editor_screen.cpp:230
 msgid "== Editor Help =="
-msgstr ""
+msgstr "== Помоћ уређивача =="
 
 #: src/editor/editor_screen.cpp:248
 msgid ""
@@ -48,6 +324,16 @@ msgid ""
 "Group selected objects\n"
 "Ungroup selected objects\n"
 msgstr ""
+"Изабери све\n"
+"Очисти избор\n"
+"Издигни објекте\n"
+"Спусти објекте\n"
+"Издигни објекте на врх\n"
+"Спусти објекте на дно\n"
+"Заокрени за 90 степени\n"
+"Заокрени за 270 степени\n"
+"Групиши изабране објекте\n"
+"Разгрупиши изабране објкте\n"
 
 #: src/editor/editor_screen.cpp:271
 msgid ""
@@ -59,6 +345,13 @@ msgid ""
 "Toggle background color\n"
 "Increase/lower repeat\n"
 msgstr ""
+"Преврни објекат водоравно\n"
+"Преврни објекат усправно\n"
+"Обриши све означене објекте\n"
+"Помери објекте за једну тачкицу\n"
+"Помери објекте за 32 тачкице\n"
+"Промени боју позадине\n"
+"Повећај/смањи понављање\n"
 
 #: src/editor/editor_screen.cpp:282
 msgid ""
@@ -80,820 +373,604 @@ msgid ""
 "to the GPL, if you want to have your level under a different license, you "
 "have to change that reference.\n"
 msgstr ""
-
-#: src/editor/file_dialog.cpp:58
-msgid "Datadir"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:60
-msgid "Userdir"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:63
-msgid "Open"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:63
-msgid "Save"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:66 src/editor/message_box.cpp:35
-msgid "Cancel"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:77
-msgid "Filename:"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:78
-msgid "Pathname:"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:98
-msgid "Open a level"
-msgstr ""
-
-#: src/editor/file_dialog.cpp:98
-msgid "Save your level"
-msgstr ""
-
-#: src/editor/panel.cpp:171
-msgid "New level"
-msgstr ""
-
-#: src/editor/panel.cpp:173
-msgid "Open level..."
-msgstr ""
-
-#: src/editor/panel.cpp:175
-msgid "Save level..."
-msgstr ""
-
-#: src/editor/panel.cpp:177
-msgid "Save level as..."
-msgstr ""
-
-#: src/editor/panel.cpp:180
-msgid "Play level..."
-msgstr ""
-
-#: src/editor/panel.cpp:183
-msgid "Configure actions"
-msgstr ""
-
-#: src/editor/panel.cpp:185
-msgid "Configure level"
-msgstr ""
-
-#: src/editor/panel.cpp:187
-msgid "Display object properties"
-msgstr ""
-
-#: src/editor/panel.cpp:189
-msgid "Show object insertion window"
-msgstr ""
-
-#: src/editor/panel.cpp:191
-msgid "Show minimap"
-msgstr ""
-
-#: src/editor/panel.cpp:194
-msgid "Duplicate the selected objects"
-msgstr ""
-
-#: src/editor/panel.cpp:196
-msgid "Delete the selected objects"
-msgstr ""
-
-#: src/editor/panel.cpp:199
-msgid "Raise object to top"
-msgstr ""
-
-#: src/editor/panel.cpp:201
-msgid "Raise object"
-msgstr ""
-
-#: src/editor/panel.cpp:203
-msgid "Lower object"
-msgstr ""
-
-#: src/editor/panel.cpp:205
-msgid "Lower object to bottom"
-msgstr ""
-
-#: src/editor/panel.cpp:211
-msgid "Flip object horizontally"
-msgstr ""
-
-#: src/editor/panel.cpp:213
-msgid "Flip object vertically"
-msgstr ""
-
-#: src/editor/panel.cpp:216
-msgid "Rotate object -90 degree"
-msgstr ""
-
-#: src/editor/panel.cpp:218
-msgid "Rotate object 90 degree"
-msgstr ""
-
-#: src/editor/panel.cpp:227
-msgid "Display help"
-msgstr ""
-
-#: src/editor/panel.cpp:229 src/editor/object_selector.cpp:174
-#: src/pingus/screens/pingus_menu.cpp:74
-msgid "Exit"
-msgstr "Izlaz"
-
-#: src/editor/object_selector.cpp:165
-msgid "Entrance"
-msgstr ""
-
-#: src/editor/object_selector.cpp:166
-msgid "Groundpiece (ground)"
-msgstr ""
-
-#: src/editor/object_selector.cpp:167
-msgid "Groundpiece (solid)"
-msgstr ""
-
-#: src/editor/object_selector.cpp:168
-msgid "Groundpiece (bridge)"
-msgstr ""
-
-#: src/editor/object_selector.cpp:169
-msgid "Groundpiece (transparent)"
-msgstr ""
-
-#: src/editor/object_selector.cpp:170
-msgid "Groundpiece (remove)"
-msgstr ""
-
-#: src/editor/object_selector.cpp:171
-msgid "Hotspot"
-msgstr ""
-
-#: src/editor/object_selector.cpp:172
-msgid "Background"
-msgstr ""
-
-#: src/editor/object_selector.cpp:175
-msgid "Liquid"
-msgstr ""
-
-#: src/editor/object_selector.cpp:176
-msgid "Trap"
-msgstr ""
-
-#: src/editor/object_selector.cpp:177
-msgid "Weather"
-msgstr ""
-
-#: src/editor/object_selector.cpp:178
-msgid "Special Object"
-msgstr ""
-
-#: src/editor/object_selector.cpp:179
-msgid "Prefab Object"
-msgstr ""
+"Треба да именујете датотеке ваших нивоа систематски, тј. према називу, броју "
+"и вашем надимку:\n"
+"\n"
+"     <ниво><број>-<творац>.pingus\n"
+"\n"
+"Значи ако направите ваш други ниво са темом камена, назовите га: камен2-"
+"вашеиме.pingus\n"
+"\n"
+"Када направите ниво и желите да буде укључен у игру пошаљите га ел. поштом "
+"на:\n"
+"\n"
+"     pingus-devel@nongnu.org\n"
+"\n"
+"Само нивои објављени под ОЈЛ су допуштени у игри. Уређивач самостално умеће "
+"упуте \n"
+"на ОЈЛ, ако желите да ваш ниво буде под другом лиценцом, морате да измените "
+"ту упуту.\n"
 
 #: src/editor/message_box.cpp:37
 msgid "Replace"
-msgstr ""
-
-#: src/editor/object_properties.cpp:87 src/editor/object_properties.cpp:515
-msgid "Object:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:88 src/editor/object_properties.cpp:516
-msgid "Nothing selected"
-msgstr ""
-
-#: src/editor/object_properties.cpp:97
-msgid "Transparent"
-msgstr ""
-
-#: src/editor/object_properties.cpp:98
-msgid "Solid"
-msgstr ""
-
-#: src/editor/object_properties.cpp:99
-msgid "Ground"
-msgstr ""
-
-#: src/editor/object_properties.cpp:100
-msgid "Bridge"
-msgstr ""
-
-#: src/editor/object_properties.cpp:101
-msgid "Water"
-msgstr ""
-
-#: src/editor/object_properties.cpp:102
-msgid "Lava"
-msgstr ""
-
-#: src/editor/object_properties.cpp:103
-msgid "Remove"
-msgstr ""
-
-#: src/editor/object_properties.cpp:108
-msgid "Direction:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:110
-msgid "Left"
-msgstr ""
-
-#: src/editor/object_properties.cpp:111
-msgid "Misc"
-msgstr ""
-
-#: src/editor/object_properties.cpp:112
-msgid "Right"
-msgstr ""
-
-#: src/editor/object_properties.cpp:117
-msgid "ReleaseRate:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:140
-msgid "Para-X:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:141
-msgid "Para-Y:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:149
-msgid "Scroll-X:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:150
-msgid "Scroll-Y:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:158
-msgid "Owner Id:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:162
-msgid "Z-Pos:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:169
-msgid "Color:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:181
-msgid "Small Stars:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:184
-msgid "Middle Stars:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:187
-msgid "Large Stars:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:195
-msgid "Repeat:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:211
-msgid "Id:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:215
-msgid "Target Id:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:220
-msgid "Height:"
-msgstr ""
-
-#: src/editor/object_properties.cpp:521
-msgid "Object: [Group]"
-msgstr ""
-
-#: src/editor/object_properties.cpp:522
-msgid "Group not supported"
-msgstr ""
-
-#: src/editor/object_properties.cpp:527
-msgid "Object: "
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:172
-msgid "[OPTIONS]... [FILE]"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:173
-msgid ""
-"Pingus is a puzzle game where you need to guide a bunch of little penguins "
-"around the world."
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:175
-msgid "General Options:"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:177
-msgid "Displays this help"
-msgstr "Prikai ovu pomoć"
-
-#: src/pingus/pingus_main.cpp:179
-msgid "Print version number and exit"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:181
-msgid "Enable info level log output"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:183
-msgid "Enable debug level log output"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:185
-msgid "Disable all log output"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:187
-msgid "Display Options:"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:189
-msgid "Start in Window Mode"
-msgstr "Pokreni u prozoru"
-
-#: src/pingus/pingus_main.cpp:191
-msgid "Start in Fullscreen"
-msgstr "Pokreni preko celog ekrana"
-
-#: src/pingus/pingus_main.cpp:193
-msgid "Use the given renderer (default: sdl)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:195
-msgid "Set the window resolution for pingus (default: 800x600)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:197
-msgid "Set the resolution used in fullscreen mode (default: 800x600)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:199
-msgid "Enable software cursor"
-msgstr "Omogući softverski kursor"
-
-#: src/pingus/pingus_main.cpp:201
-msgid "Game Options:"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:203
-msgid "Disable automatic scrolling"
-msgstr "Onemogući automatsko skrolovanje"
-
-#: src/pingus/pingus_main.cpp:205
-msgid "Enable drag'n drop scrolling"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:207
-msgid "Sound Options:"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:209
-msgid "Disable sound"
-msgstr "Onemogući zvuk"
-
-#: src/pingus/pingus_main.cpp:211
-msgid "Disable music"
-msgstr "Onemogući muziku"
-
-#: src/pingus/pingus_main.cpp:215
-msgid "Select language to use with Pingus"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:217
-msgid "List all available languages"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:221
-msgid "Loads the level editor"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:223
-msgid "Directory Options:"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:224 src/pingus/pingus_main.cpp:226
-#: src/pingus/pingus_main.cpp:228
-msgid "DIR"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:225
-msgid "Load game datafiles from DIR"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:227
-msgid "Load config files and store savegames in DIR"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:229
-msgid "Load game modifications from DIR"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:231
-msgid "Don't read ~/.pingus/config"
-msgstr "Ne čitaj ~/.pingus/config"
-
-#: src/pingus/pingus_main.cpp:232
-msgid "FILE"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:233
-msgid "Read config options from FILE"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:235
-msgid "Uses the controller given in FILE"
-msgstr "Koristi kontroler iz FAJLA"
-
-#: src/pingus/pingus_main.cpp:237
-msgid "Debug Options:"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:239
-msgid "Enables some special features for developers"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:241
-msgid "Set the game speed (0=fastest, >0=slower)"
-msgstr "Podesi brzinu igre (0=najbrze, >0=sporije)"
-
-#: src/pingus/pingus_main.cpp:243
-msgid "Set the desired game framerate (frames per second)"
-msgstr ""
-
-#: src/pingus/pingus_main.cpp:245
-msgid "Set the size of the map tiles (default: 32)"
-msgstr "Podesi velicinu polja mape (osnovna: 32)"
-
-#: src/pingus/pingus_main.cpp:663
-msgid "Pingus: Out of memory!"
-msgstr "Pingus: Nema memorije!"
-
-#: src/pingus/pingus_main.cpp:667
-msgid "Pingus: Standard exception caught!:\n"
-msgstr "Pingus: Uhvaćen standardan izuzetak!:\n"
-
-#: src/pingus/pingus_main.cpp:671
-msgid "Pingus: Unknown throw caught!"
-msgstr "Pingus: Uhvaćen nepoznat throw!"
-
-#: src/pingus/game_time.cpp:29
-msgid "unlimited"
-msgstr "neograničeno"
-
-#: src/pingus/actions/bridger.cpp:38 src/pingus/actions/bridger.cpp:196
-#: src/pingus/action_name.cpp:32
+msgstr "Замени"
+
+#: src/editor/object_selector.cpp:165
+msgid "Entrance"
+msgstr "Улаз"
+
+#: src/editor/object_selector.cpp:166
+msgid "Groundpiece (ground)"
+msgstr "Градивни састојак (земља)"
+
+#: src/editor/object_selector.cpp:167
+msgid "Groundpiece (solid)"
+msgstr "Градивни састојак (челик)"
+
+#: src/editor/object_selector.cpp:168
+msgid "Groundpiece (bridge)"
+msgstr "Градивни састојак (мост)"
+
+#: src/editor/object_selector.cpp:169
+msgid "Groundpiece (transparent)"
+msgstr "Градивни састојак (провидност)"
+
+#: src/editor/object_selector.cpp:170
+msgid "Groundpiece (remove)"
+msgstr "Градивни састојак (уклони)"
+
+#: src/editor/object_selector.cpp:171
+msgid "Hotspot"
+msgstr "Врућа тачка"
+
+#: src/editor/object_selector.cpp:172
+msgid "Background"
+msgstr "Позадина"
+
+#: src/editor/object_selector.cpp:175
+msgid "Liquid"
+msgstr "Течност"
+
+#: src/editor/object_selector.cpp:176
+msgid "Trap"
+msgstr "Клопка"
+
+#: src/editor/object_selector.cpp:177
+msgid "Weather"
+msgstr "Временске прилике"
+
+#: src/editor/object_selector.cpp:178
+msgid "Special Object"
+msgstr "Посебан објекат"
+
+#: src/editor/object_selector.cpp:179
+msgid "Prefab Object"
+msgstr "Припремљен објекат"
+
+#: src/pingus/components/pingus_counter.cpp:43
+#, c-format, boost-format
+msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
+msgstr "Отпуштених:%3d/%d   Напољу:%3d   Сачуваних:%3d/%d"
+
+#: src/pingus/action_name.cpp:27
+msgid "Angel"
+msgstr "Анђелак"
+
+#: src/pingus/action_name.cpp:28
+msgid "Basher"
+msgstr "Глодач"
+
+#: src/pingus/action_name.cpp:29
+msgid "Blocker"
+msgstr "Заустављач"
+
+#: src/pingus/action_name.cpp:30
+msgid "Boarder"
+msgstr "Скејтер"
+
+#: src/pingus/action_name.cpp:31
+msgid "Bomber"
+msgstr "Самоубица"
+
+#: src/pingus/action_name.cpp:32 src/pingus/actions/bridger.cpp:38
+#: src/pingus/actions/bridger.cpp:196
 msgid "Bridger"
-msgstr "Neimar"
+msgstr "Неимар"
+
+#: src/pingus/action_name.cpp:33
+msgid "Climber"
+msgstr "Пењач"
+
+#: src/pingus/action_name.cpp:34
+msgid "Digger"
+msgstr "Копач"
+
+#: src/pingus/action_name.cpp:35
+msgid "Drown"
+msgstr "Дављеник"
+
+#: src/pingus/action_name.cpp:36
+msgid "Exiter"
+msgstr "Излазник"
+
+#: src/pingus/action_name.cpp:37
+msgid "Faller"
+msgstr "Падач"
+
+#: src/pingus/action_name.cpp:38
+msgid "Floater"
+msgstr "Падобранац"
+
+#: src/pingus/action_name.cpp:39
+msgid "Jumper"
+msgstr "Скакач"
+
+#: src/pingus/action_name.cpp:40
+msgid "Laserkill"
+msgstr "Жртва ласера"
+
+#: src/pingus/action_name.cpp:41
+msgid "Miner"
+msgstr "Рудар"
+
+#: src/pingus/action_name.cpp:42
+msgid "Slider"
+msgstr "Клизач"
+
+#: src/pingus/action_name.cpp:43
+msgid "Smashed"
+msgstr "Смрскан"
+
+#: src/pingus/action_name.cpp:44
+msgid "Splashed"
+msgstr "Згњечен"
+
+#: src/pingus/action_name.cpp:45
+msgid "Superman"
+msgstr "Супермен"
+
+#: src/pingus/action_name.cpp:46
+msgid "Teleported"
+msgstr "Телепортован"
+
+#: src/pingus/action_name.cpp:47
+msgid "Waiter"
+msgstr "Чекач"
+
+#: src/pingus/action_name.cpp:48
+msgid "Walker"
+msgstr "Ходач"
+
+#: src/pingus/screens/story_screen.cpp:108
+#: src/pingus/screens/story_screen.cpp:114
+msgid "skip"
+msgstr "прескочи"
 
 #: src/pingus/screens/start_screen.cpp:67
 msgid "Play"
-msgstr ""
+msgstr "Играј"
 
 #: src/pingus/screens/start_screen.cpp:111
 #: src/pingus/screens/level_menu.cpp:50
 msgid "Back"
-msgstr ""
+msgstr "Назад"
 
 #: src/pingus/screens/start_screen.cpp:166
 msgid "Number of Pingus: "
-msgstr "Broj Pingusa: "
+msgstr "Број Пингвинаца: "
 
 #: src/pingus/screens/start_screen.cpp:169
 msgid "Number to Save: "
-msgstr "Spasiti: "
+msgstr "За спашавање: "
 
 #: src/pingus/screens/start_screen.cpp:172
 msgid "Time: "
-msgstr "Vreme: "
+msgstr "Време: "
 
 #: src/pingus/screens/start_screen.cpp:178
 msgid "Author: "
-msgstr "Autor: "
+msgstr "Аутор: "
 
 #: src/pingus/screens/addon_menu.cpp:53 src/pingus/screens/option_menu.cpp:336
 msgid "Close"
-msgstr ""
+msgstr "Затвори"
+
+#: src/pingus/screens/option_menu.cpp:208
+msgid "Fullscreen"
+msgstr "Преко целог екана"
+
+#: src/pingus/screens/option_menu.cpp:209
+msgid "Mouse Grab"
+msgstr "Хватај миша"
+
+#: src/pingus/screens/option_menu.cpp:211
+msgid "Software Cursor"
+msgstr "Софтверски курсор"
+
+#: src/pingus/screens/option_menu.cpp:212
+msgid "Autoscrolling"
+msgstr "Самостално померање"
+
+#: src/pingus/screens/option_menu.cpp:213
+msgid "Drag&Drop Scrolling"
+msgstr "Померање превлачењем и убацивањем"
+
+#: src/pingus/screens/option_menu.cpp:215
+msgid "Print FPS"
+msgstr "Штампај ФПС"
+
+#: src/pingus/screens/option_menu.cpp:219
+msgid "Resolution:"
+msgstr "Резолуција:"
+
+#: src/pingus/screens/option_menu.cpp:220
+msgid "Renderer:"
+msgstr "Исцртавач:"
+
+#: src/pingus/screens/option_menu.cpp:222
+msgid "Language:"
+msgstr "Језик:"
+
+#: src/pingus/screens/option_menu.cpp:224
+msgid "Master Volume:"
+msgstr "Главни звук:"
+
+#: src/pingus/screens/option_menu.cpp:225
+msgid "Sound Volume:"
+msgstr "Јачина звука:"
+
+#: src/pingus/screens/option_menu.cpp:226
+msgid "Music Volume:"
+msgstr "Јачина музике:"
+
+#: src/pingus/screens/option_menu.cpp:334
+msgid "Option Menu"
+msgstr "Изборник опција"
+
+#: src/pingus/screens/option_menu.cpp:340
+msgid "Some options require a restart of the game to take effect."
+msgstr "Неке опције захтевају поновно покретање игре да би ступили на снагу."
 
 #: src/pingus/screens/pingus_menu.cpp:54
 msgid "Story"
-msgstr ""
+msgstr "Прича"
 
 #: src/pingus/screens/pingus_menu.cpp:55
 msgid "..:: Start the game ::.."
-msgstr "..:: Pokreni igru ::.."
+msgstr "..:: Покрени игру ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:59
 msgid "Editor"
-msgstr ""
+msgstr "Уређивач"
 
 #: src/pingus/screens/pingus_menu.cpp:60
 msgid "..:: Create your own levels ::.."
-msgstr ""
+msgstr "..:: Направите ваше личне нивое ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:64
 msgid "Options"
-msgstr ""
+msgstr "Опције"
 
 #: src/pingus/screens/pingus_menu.cpp:65
 msgid "..:: Configure the game ::.."
-msgstr ""
+msgstr "..:: Подесите игру ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:177
 msgid "Levelsets"
-msgstr ""
+msgstr "Подешавања нивоа"
 
 #: src/pingus/screens/pingus_menu.cpp:70
 msgid "..:: Play User Built levels ::.."
-msgstr ""
+msgstr "..:: Играјте корисничке нивое ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:75
 msgid "..:: Bye, bye ::.."
-msgstr "..:: Vidimo se ::.."
+msgstr "..:: Видимо се ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:87
 msgid ""
 "..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: "
 "fullscreen   ::   F12: screenshot ::.."
 msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:155
-msgid "Under Construction"
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:156
-msgid "Untested, unpolished and broken levels"
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:192
-msgid "Solved:"
-msgstr ""
-
-#: src/pingus/screens/level_menu.cpp:193
-msgid "levels"
-msgstr ""
-
-#: src/pingus/screens/story_screen.cpp:108
-#: src/pingus/screens/story_screen.cpp:114
-msgid "skip"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:208
-msgid "Fullscreen"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:209
-msgid "Mouse Grab"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:211
-msgid "Software Cursor"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:212
-msgid "Autoscrolling"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:213
-msgid "Drag&Drop Scrolling"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:215
-msgid "Print FPS"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:219
-msgid "Resolution:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:220
-msgid "Renderer:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:222
-msgid "Language:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:224
-msgid "Master Volume:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:225
-msgid "Sound Volume:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:226
-msgid "Music Volume:"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:334
-msgid "Option Menu"
-msgstr ""
-
-#: src/pingus/screens/option_menu.cpp:340
-msgid "Some options require a restart of the game to take effect."
-msgstr ""
+"..:: Ктрл-г: хвата миша   ::   F10: фпс бројач   ::   F11: преко целог "
+"екрана   ::   F12: снимак екрана ::.."
 
 #: src/pingus/screens/result_screen.cpp:91
 msgid "Give up"
-msgstr ""
+msgstr "Одустајем"
 
 #: src/pingus/screens/result_screen.cpp:126
 msgid "Retry"
-msgstr "Pokuaj ponovo"
+msgstr "Покушај поново"
 
 #: src/pingus/screens/result_screen.cpp:183
 msgid "Success!"
-msgstr "Uspeh!"
+msgstr "Успели сте!"
 
 #: src/pingus/screens/result_screen.cpp:191
 msgid "Failure!"
-msgstr "Neuspeh!"
+msgstr "Нисте успели!"
 
 #: src/pingus/screens/result_screen.cpp:200
 msgid "Perfect! You saved everyone possible - great!"
-msgstr "Savreno! Spaeni su svi mogući, sjajno!"
+msgstr "Савршено! Спасили сте их све — сјајно!"
 
 #: src/pingus/screens/result_screen.cpp:202
 msgid "No-one got killed, pretty good work."
-msgstr "Niko nije zaginuo, prilično dobro urađeno"
+msgstr "Нико није погинуо, прилично добро одрађено."
 
 #: src/pingus/screens/result_screen.cpp:204
 msgid ""
 "You saved exactly what you needed - you made it, but\n"
 "maybe you can do better?"
 msgstr ""
-"Spaeno je koliko je i trebalo, svaka čast, ali\n"
-"moda moe jo bolje?"
+"Спасили сте их тачно онолико колико вам треба — успели сте,\n"
+"али можда можете и боље?"
 
 #: src/pingus/screens/result_screen.cpp:207
 msgid "Not everybody was saved, but still good work!"
-msgstr "Nisu svi mogli biti spaeni, ali ipak dobro urađeno!"
+msgstr "Нисте их све спасили, али још увек добро одрађено!"
 
 #: src/pingus/screens/result_screen.cpp:209
 msgid "What can I say, you made it - congratulations!"
-msgstr "ta da kaem, uspeno obavljeno, čestitam!"
+msgstr "Шта да вам кажем, успели сте — честитам!"
 
 #: src/pingus/screens/result_screen.cpp:214
 msgid "You killed everybody, not good."
-msgstr "Sve si ih pobio, ne valja."
+msgstr "Све сте их побили, ово не мирише на добро."
 
 #: src/pingus/screens/result_screen.cpp:216
 msgid "No-one got saved - I know you can do better."
-msgstr "Niko nije spaen, znam da moe bolje."
+msgstr "Нисте спасили ниједног — Али ја знам да можете и боље."
 
 #: src/pingus/screens/result_screen.cpp:218
 msgid ""
 "You didn't save enough, but you saved a few.  Next\n"
 "time you might do better."
 msgstr ""
-"Nisi spasao dovoljno, ali si spasao nekoliko, moda\n"
-"će sledeći put biti bolje."
+"Нисте их спасили довољно, али сте барем неколико њих спасили.\n"
+"Следећег пута ће бити боље."
 
 #: src/pingus/screens/result_screen.cpp:221
 msgid "Only one more and you would have made it - try again!"
-msgstr "Samo jos jedan i uspeo bi, probaj ponovo!"
+msgstr "Само још једног и успели бисте — покушајте поново!"
 
 #: src/pingus/screens/result_screen.cpp:223
 msgid "Only a handful more and you would have made it - try again!"
-msgstr "Samo jos nekoliko i uspeo bi, probaj ponovo!"
+msgstr "Само још њих неколико и успели бисте — покушајте поново!"
 
 #: src/pingus/screens/result_screen.cpp:225
 msgid "Better luck next time!"
-msgstr "Vie sreće sledeći put!"
+msgstr "Више среће следећи пут!"
 
 #: src/pingus/screens/result_screen.cpp:233
 msgid "Saved: "
-msgstr "Spaeno: "
+msgstr "Спашених: "
 
 #: src/pingus/screens/result_screen.cpp:237
 msgid "Died: "
-msgstr "Umrlo: "
+msgstr "Умрлих: "
 
 #: src/pingus/screens/result_screen.cpp:240
 msgid "Time left: "
-msgstr "Preostalo vreme: "
+msgstr "Преостало време: "
 
-#: src/pingus/action_name.cpp:27
-msgid "Angel"
-msgstr "Anđeo"
+#: src/pingus/screens/level_menu.cpp:155
+msgid "Under Construction"
+msgstr "У изградњи"
 
-#: src/pingus/action_name.cpp:28
-msgid "Basher"
-msgstr "Glodač"
+#: src/pingus/screens/level_menu.cpp:156
+msgid "Untested, unpolished and broken levels"
+msgstr "Неиспробани, недотерани и оштећени нивои"
 
-#: src/pingus/action_name.cpp:29
-msgid "Blocker"
-msgstr "Bloker"
+#: src/pingus/screens/level_menu.cpp:192
+msgid "Solved:"
+msgstr "Решених:"
 
-#: src/pingus/action_name.cpp:30
-msgid "Boarder"
-msgstr "Skejter"
-
-#: src/pingus/action_name.cpp:31
-msgid "Bomber"
-msgstr "Samoubica"
-
-#: src/pingus/action_name.cpp:33
-msgid "Climber"
-msgstr "Penjač"
-
-#: src/pingus/action_name.cpp:34
-msgid "Digger"
-msgstr "Kopač"
-
-#: src/pingus/action_name.cpp:35
-msgid "Drown"
-msgstr "Davljenik"
-
-#: src/pingus/action_name.cpp:36
-msgid "Exiter"
-msgstr "Izlaznik"
-
-#: src/pingus/action_name.cpp:37
-msgid "Faller"
-msgstr "Padač"
-
-#: src/pingus/action_name.cpp:38
-msgid "Floater"
-msgstr "Padobranac"
-
-#: src/pingus/action_name.cpp:39
-msgid "Jumper"
-msgstr "Skakač"
-
-#: src/pingus/action_name.cpp:40
-msgid "Laserkill"
-msgstr "rtva lasera"
-
-#: src/pingus/action_name.cpp:41
-msgid "Miner"
-msgstr "Rudar"
-
-#: src/pingus/action_name.cpp:42
-msgid "Slider"
-msgstr "Klizač"
-
-#: src/pingus/action_name.cpp:43
-msgid "Smashed"
-msgstr "Smrskan"
-
-#: src/pingus/action_name.cpp:44
-msgid "Splashed"
-msgstr "Zgnječen"
-
-#: src/pingus/action_name.cpp:45
-msgid "Superman"
-msgstr "Supermen"
-
-#: src/pingus/action_name.cpp:46
-msgid "Teleported"
-msgstr "Teleportovan"
-
-#: src/pingus/action_name.cpp:47
-msgid "Waiter"
-msgstr "Čekač"
-
-#: src/pingus/action_name.cpp:48
-msgid "Walker"
-msgstr "Hodač"
-
-#: src/pingus/components/pingus_counter.cpp:43
-#, c-format, boost-format
-msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
-msgstr ""
+#: src/pingus/screens/level_menu.cpp:193
+msgid "levels"
+msgstr "нивои"
 
 #: src/pingus/worldmap/level_dot.cpp:134
 msgid "???"
-msgstr ""
+msgstr "???"
 
 #: src/pingus/worldmap/worldmap_screen.cpp:84
 msgid "Show Ending?"
-msgstr "Prikazi kraj?"
+msgstr "Да прикажем крај?"
 
 #: src/pingus/worldmap/worldmap_screen.cpp:113
 msgid "Leave?"
-msgstr "Napusti?"
+msgstr "Да напустим?"
+
+#: src/pingus/pingus_main.cpp:175
+msgid "[OPTIONS]... [FILE]"
+msgstr "[ОПЦИЈЕ]... [ДАТОТЕКА]"
+
+#: src/pingus/pingus_main.cpp:176
+msgid ""
+"Pingus is a puzzle game where you need to guide a bunch of little penguins "
+"around the world."
+msgstr ""
+"Пингвинци је игра слагалица у којој треба да водите групу малих пингвинаца "
+"по свету."
+
+#: src/pingus/pingus_main.cpp:178
+msgid "General Options:"
+msgstr "Опште опције:"
+
+#: src/pingus/pingus_main.cpp:180
+msgid "Displays this help"
+msgstr "Приказује ову помоћ"
+
+#: src/pingus/pingus_main.cpp:182
+msgid "Print version number and exit"
+msgstr "Исписује број издања и излази"
+
+#: src/pingus/pingus_main.cpp:184
+msgid "Enable info level log output"
+msgstr "Укључује излаз дневника нивоа података"
+
+#: src/pingus/pingus_main.cpp:186
+msgid "Enable debug level log output"
+msgstr "Укључује излаз дневника нивоа прочишћавања"
+
+#: src/pingus/pingus_main.cpp:188
+msgid "Disable all log output"
+msgstr "Искључује све излазе дневника"
+
+#: src/pingus/pingus_main.cpp:190
+msgid "Display Options:"
+msgstr "Опције приказа:"
+
+#: src/pingus/pingus_main.cpp:192
+msgid "Start in Window Mode"
+msgstr "Покреће се у режиму прозора"
+
+#: src/pingus/pingus_main.cpp:194
+msgid "Start in Fullscreen"
+msgstr "Покреће се преко целог екрана"
+
+#: src/pingus/pingus_main.cpp:196
+msgid "Use the given renderer (default: sdl)"
+msgstr "Користи датог исцртавача (основни: sdl)"
+
+#: src/pingus/pingus_main.cpp:198
+msgid "Set the window resolution for pingus (default: 800x600)"
+msgstr "Подешава резолуцију прозора (основна: 800х600)"
+
+#: src/pingus/pingus_main.cpp:200
+msgid "Set the resolution used in fullscreen mode (default: 800x600)"
+msgstr "Подешава резолуцију у режиму преко целог екрана (основна: 800x600)"
+
+#: src/pingus/pingus_main.cpp:202
+msgid "Enable software cursor"
+msgstr "Укључује софтверски курсор"
+
+#: src/pingus/pingus_main.cpp:204
+msgid "Game Options:"
+msgstr "Опције игре:"
+
+#: src/pingus/pingus_main.cpp:206
+msgid "Disable automatic scrolling"
+msgstr "Искључује самостално померање"
+
+#: src/pingus/pingus_main.cpp:208
+msgid "Enable drag'n drop scrolling"
+msgstr "Укључује померање превлачењем и убацивањем"
+
+#: src/pingus/pingus_main.cpp:210
+msgid "Sound Options:"
+msgstr "Опције звука:"
+
+#: src/pingus/pingus_main.cpp:212
+msgid "Disable sound"
+msgstr "Искључује звук"
+
+#: src/pingus/pingus_main.cpp:214
+msgid "Disable music"
+msgstr "Искључује музику"
+
+#: src/pingus/pingus_main.cpp:218
+msgid "Select language to use with Pingus"
+msgstr "Бира језик за коришћење са Пингвинцима"
+
+#: src/pingus/pingus_main.cpp:220
+msgid "List all available languages"
+msgstr "Исписује све доступне језике"
+
+#: src/pingus/pingus_main.cpp:224
+msgid "Loads the level editor"
+msgstr "Учитава уређивача нивоа"
+
+#: src/pingus/pingus_main.cpp:226
+msgid "Directory Options:"
+msgstr "Опције директоријума:"
+
+#: src/pingus/pingus_main.cpp:227 src/pingus/pingus_main.cpp:229
+#: src/pingus/pingus_main.cpp:231
+msgid "DIR"
+msgstr "ДИР"
+
+#: src/pingus/pingus_main.cpp:228
+msgid "Load game datafiles from DIR"
+msgstr "Учитава датотеке података игре из ДИР-а"
+
+#: src/pingus/pingus_main.cpp:230
+msgid "Load config files and store savegames in DIR"
+msgstr "Учитава датотеке подешавања и чува сачуване игре у ДИР-у"
+
+#: src/pingus/pingus_main.cpp:232
+msgid "Load game modifications from DIR"
+msgstr "Учитава измене игре из ДИР-а"
+
+#: src/pingus/pingus_main.cpp:234
+msgid "Don't read ~/.pingus/config"
+msgstr "Не чита „~/.pingus/config“"
+
+#: src/pingus/pingus_main.cpp:235
+msgid "FILE"
+msgstr "ДАТОТЕКА"
+
+#: src/pingus/pingus_main.cpp:236
+msgid "Read config options from FILE"
+msgstr "Чита опције подешавања из ДАТОТЕКЕ"
+
+#: src/pingus/pingus_main.cpp:238
+msgid "Uses the controller given in FILE"
+msgstr "Користи управљача датог у ДАТОТЕЦИ"
+
+#: src/pingus/pingus_main.cpp:240
+msgid "Debug Options:"
+msgstr "Опције прочишћавање:"
+
+#: src/pingus/pingus_main.cpp:242
+msgid "Enables some special features for developers"
+msgstr "Укључује неке посебне функције за програмере"
+
+#: src/pingus/pingus_main.cpp:244
+msgid "Set the game speed (0=fastest, >0=slower)"
+msgstr "Подешава брзину игре (0=најбрже, >0=спорије)"
+
+#: src/pingus/pingus_main.cpp:246
+msgid "Set the desired game framerate (frames per second)"
+msgstr "Подешава жељени проток кадрова игре (кадрова у секунди)"
+
+#: src/pingus/pingus_main.cpp:248
+msgid "Set the size of the map tiles (default: 32)"
+msgstr "Подешава величину поља карте (основна: 32)"
+
+#: src/pingus/pingus_main.cpp:688
+msgid "Pingus: Out of memory!"
+msgstr "Пингвинци: Нема више меморије!"
+
+#: src/pingus/pingus_main.cpp:692
+msgid "Pingus: Standard exception caught!:\n"
+msgstr "Пингвинци: Ухваћен је уобичајени изузетак!:\n"
+
+#: src/pingus/pingus_main.cpp:696
+msgid "Pingus: Unknown throw caught!"
+msgstr "Пингвинци: Ухваћен је непознат хитац!"
+
+#: src/pingus/game_time.cpp:29
+msgid "unlimited"
+msgstr "неограничено"
+
+#: src/engine/display/screenshot.cpp:37
+msgid "Screenshot: Saving screenshot to: "
+msgstr "Снимак екрана: Чувам снимак екрана у: "
+
+#: src/engine/display/screenshot.cpp:39
+msgid "Screenshot: Screenshot is done."
+msgstr "Снимак екрана: Снимак екрана је направљен."
+
+#: src/engine/display/screenshot.cpp:124 src/engine/display/screenshot.cpp:152
+msgid "Screenshot: Couldn't write file: "
+msgstr "Снимак екрана: Не могу да запишем датотеку: "
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
 msgid "If the way is blocked, bash away"
-msgstr "Ako je put blokiran, prokopaj tunel"
+msgstr "Ако је пут блокиран, прокопајте тунел"
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:6
 msgid ""
@@ -902,13 +979,13 @@ msgid ""
 "opposed to the vertical dig ability the Digger action provides. This new "
 "action is called Basher. "
 msgstr ""
-"Slicno kopanju na dole iz prethodnih nivoa postoji akcija koja omogucava "
-"Pingusima da kopaju horizontalno, umesto vertikalnog kopanja pomocu akcije "
-"Kopac. Ova nova uloga Pingusa se zove Glodac. "
+"Слично копању на доле из претходних нивоа, овде постоји радња која омогућава "
+"Пингвинцима да копају водоравно, супротно способности копања усправно коју "
+"обезбеђује радња копача. Ова нова радња се зове глодање. "
 
 #: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:5
 msgid "Sacrifice a few and save the rest"
-msgstr "Zrtvuj nekoliko da spases ostale"
+msgstr "Жртвујте неколико да спасете остале"
 
 #: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:6
 msgid ""
@@ -917,14 +994,14 @@ msgid ""
 "This will kill them, but it is sometimes necessary to sacrifice a few to "
 "save the rest. "
 msgstr ""
-"Ponekad, ako nema na raspolaganju drugih akcija, moguce je probiti zemljiste "
-"eksplozijama. Pingusi mogu to da rade tako sto ce sami sebe unistiti. Iako "
-"ih to ubija, ponekad je neophodno da se zrtvuje nekoliko Pingusa da bi se "
-"ostali spasili. "
+"Понекад нема других радњи на располагању, зато ћете морати бомбама да "
+"прокрчите пут кроз земљу. Пингвинци могу ово да ураде такозваним "
+"самоуништавањем. Ово ће их убити, али некада је неопходно жртвовати неколико "
+"за спас осталих. "
 
 #: data/levels/tutorial/digger-tutorial2-grumbel.pingus:5
 msgid "Learning to dig"
-msgstr "Ucimo kopanje"
+msgstr "Учимо да копамо"
 
 #: data/levels/tutorial/digger-tutorial2-grumbel.pingus:6
 msgid ""
@@ -932,13 +1009,13 @@ msgid ""
 "is to give a Pingu the command to dig a hole into the ground so that they "
 "can reach the exit. This can be accomplished simply by clicking on a Pingu. "
 msgstr ""
-"Ovo je tvoj prvi zadatak. Kao takav, prilicno je lak. Sve sto treba da "
-"uradis je da naredis Pingusima da iskopaju rupu u zemlji da bi mogli da "
-"dodju do izlaza. Naredjenja se izdaju "
+"Ово је ваш први задатак. Као увек, поприлично је лаган. Све што треба да "
+"урадите је да наредите Пингвинцу да ископа рупу у земљи да би стигли до "
+"излаза. Ово може бити извршено једноставним кликом на Пингвинца. "
 
 #: data/levels/tutorial/floater-tutorial-grumbel.pingus:5
 msgid "Float or Die"
-msgstr "Lebdi ili umri"
+msgstr "Лебди или умри"
 
 #: data/levels/tutorial/floater-tutorial-grumbel.pingus:6
 msgid ""
@@ -947,14 +1024,14 @@ msgid ""
 "the ground smoothly. If Pingus fall too far, they will not be able to "
 "survive the fall, so keep your eyes open! "
 msgstr ""
-"Bravo za prvi zadatak, a sada zapocinjemo sledeci. Ovog puta treba da "
-"opremis Pinguse sa malim propelerom, da bi mogli da lebde i lagano se spuste "
-"na zemlju. Ako padnu predaleko, nece uspeti da prezive pad. Zato obrati "
-"paznju! "
+"Одлично одрађен први задатак! А сада да започнемо следећи. Овај пут треба да "
+"опремите ваше Пингвинце малим пропелером, да би могли меко да се спусте на "
+"земљу. Ако Пингвинци падну предалеко, неће бити у могућности да преживе пад, "
+"зато обратите пажњу! "
 
 #: data/levels/tutorial/jumper-tutorial-grumbel.pingus:5
 msgid "Jump for joy"
-msgstr "Skok za uzivanje"
+msgstr "Скок за уживање"
 
 #: data/levels/tutorial/jumper-tutorial-grumbel.pingus:6
 msgid ""
@@ -962,13 +1039,14 @@ msgid ""
 "reachable by walking. That's when the Jumper comes in handy - it allows the "
 "Pingu to make a small jump and so enables him to reach the platform. "
 msgstr ""
-"Ponekad Pingus treba da dosegne platformu koja je jako daleko, i nije moguce "
-"hodati do nje. Tada dobro dodje akcija Skakac, koja omogucava Pingusu da "
-"napravi mali skok i dosegne platformu. "
+"Понекад Пингвинац мора да стигне до платформе која је поприлично далеко, али "
+"није доступна ходањем. То је тренутак када на сцену ступа скакач — који "
+"омогућава Пингвинцу да направи мали скок и да на тај начин стигне до "
+"платформе. "
 
 #: data/levels/tutorial/miner-tutorial2-grumbel.pingus:5
 msgid "Miner's heaven"
-msgstr "Rudarski raj"
+msgstr "Рударски рај"
 
 #: data/levels/tutorial/miner-tutorial2-grumbel.pingus:6
 msgid ""
@@ -976,13 +1054,14 @@ msgid ""
 "diagonal one. It allows a Pingu to dig diagonally through ground, thus "
 "creating a path for following Pingus. The action is called Miner. "
 msgstr ""
-"Ucimo jos jednu akciju koja obuhvata kopanje. Ovog puta se radi o kopanju "
-"ukoso, cime omogucavamo Pingusu da dijagonalno kopa kroz zemljiste i stvara "
-"put za ostale. Ova akcija se zove Rudar. "
+"Упознајемо се са још једном радњом — још једна радња копања, овог пута се "
+"ради о копању укосо. Ова радња омогућава Пингвинцу да копа укосо кроз земљу, "
+"и да на тај начин прокрчује пут осталим Пингвинцима. Ова радња се назива "
+"рударењем. "
 
 #: data/levels/tutorial/snow10-grumbel.pingus:5
 msgid "Panic Island (float/bash)"
-msgstr "Ostrvo panike (lebdi/glodaj)"
+msgstr "Острво панике (лебди/глођи)"
 
 #: data/levels/tutorial/snow10-grumbel.pingus:6
 msgid ""
@@ -990,13 +1069,13 @@ msgid ""
 "one gets a bit trickier. The Pingus are coming out of two entrances in "
 "parallel and it is your job to coordinate the two groups wisely. "
 msgstr ""
-"Dok prethodni nivoi nisu zahtevali puno brze akcije od tebe, ovaj je malo "
-"komplikovaniji. Pingusi dolaze iz dva paralelna ulaza i ti treba da "
-"istovremeno mudro koordiniras obe grupe. "
+"Док претходни нивои нису од вас захтевали претерано брзе радње, овај постаје "
+"мало замршенији. Пингвинци излазе напоље из два пролаза истовремено а ваш "
+"задатак је да њима мудро управљате. "
 
 #: data/levels/tutorial/snow11-grumbel.pingus:5
 msgid "Jump'n Bump... and Bash..."
-msgstr "Skakutanje... i glodanje..."
+msgstr "Скакутање... и глодање..."
 
 #: data/levels/tutorial/snow11-grumbel.pingus:6
 msgid ""
@@ -1005,14 +1084,14 @@ msgid ""
 "coordinating them all. Since you only need to save 5 it should be doable, "
 "but if all else fails use the pause-mode ('p') to get an overview again. "
 msgstr ""
-"Ponovo je vreme za paniku. Pingusi nece brzo ulaziti, ali posto se kod "
-"zidova okrecu, ubrzo ce biti tesko koordinirati ih sve. Posto je potrebno "
-"spasiti samo 3, trebalo bi da je izvodljivo. Ako ne uspe iz prve koristite "
-"pauzu (taster 'p') da bolje sagledate nivo. "
+"Поново је време за панику. Пингвинци неће излазити напоље сувише брзо, али "
+"пошто се окрећу када ударе о зидове ускоро ћете имати потешкоћа у њиховом "
+"управљању. Како морате да спасите само 5 ово би требало да је изводљиво, али "
+"ако сви остали попадају користите режим паузе („п“) да боље сагледате ниво. "
 
 #: data/levels/tutorial/snow12-grumbel.pingus:5
 msgid "Two groups in parallel, coordinate wisely"
-msgstr "Dve grupe istovremeno, budi mudar"
+msgstr "Две групе истовремено, буди мудар"
 
 #: data/levels/tutorial/snow12-grumbel.pingus:6
 msgid ""
@@ -1020,13 +1099,13 @@ msgid ""
 "level gives you enough time to think your actions through. No more tips this "
 "time, but good luck! "
 msgstr ""
-"Ovog puta treba koordinirati dve grupe, ali bez panike, jer ovaj nivo daje "
-"dovoljno vremena da se razmisli o potrebnim akcijama. Nema vise sta da se "
-"doda, osim: Srecno! "
+"Овог пута треба да управљате двема групама. Нема места паници, јер овај ниво "
+"вам даје довољно времена да размислите о потребним радњама. Нема више шта да "
+"се дода, али ипак срећно! "
 
 #: data/levels/tutorial/snow14-grumbel.pingus:5
 msgid "Block'a Rock"
-msgstr "Blok i stena"
+msgstr "Блок и стена"
 
 #: data/levels/tutorial/snow14-grumbel.pingus:6
 msgid ""
@@ -1034,10 +1113,14 @@ msgid ""
 "levels. Blast your way free and make sure you also keep the rest of the "
 "Pingus under control. The Blocker action will be helpful."
 msgstr ""
+"Још једном је дошло време да искомбинујете ствари које сте научили у "
+"претходним нивоима. Прокрчите себи пут до слободе и уверите се такође да "
+"држите под контролом остале Пингвинце. Радња заустављача ће вам бити од "
+"користи."
 
 #: data/levels/tutorial/snow15-grumbel.pingus:5
 msgid "Climb, Climber,... Boom!"
-msgstr "Penjanje, pentranje,... Bum!"
+msgstr "Пењање, пентрање,... бум!"
 
 #: data/levels/tutorial/snow15-grumbel.pingus:6
 msgid ""
@@ -1046,14 +1129,14 @@ msgid ""
 "Digger action in this level the Bomber needs to jump in, but how can it "
 "reach the place to bomb? "
 msgstr ""
-"Kao sto si do sada mogao ukapirati iz prethodnih nivoa cesto moras da "
-"kombinujes razlicite akcije da bi obavio zadatak. Zbog nedostatka akcije "
-"Kopanja na ovom nivou Samoubica mora da obavi posao. Pitanje je kako ga "
-"dovesti da mesta za eksploziju? "
+"Као што сте можда открили из претходних нивоа, често морате да комбинујете "
+"различите радње да бисте обавили задатак. Због недостатка радње копања на "
+"овом нивоу самоубица мора да ускочи, али остаје проблем како га довести до "
+"места за експлозију? "
 
 #: data/levels/tutorial/snow16-grumbel.pingus:5
 msgid "Bridging gets more complicated..."
-msgstr "Mostogradnja se komplikuje..."
+msgstr "Мостоградња се компликује..."
 
 #: data/levels/tutorial/snow16-grumbel.pingus:6
 msgid ""
@@ -1061,12 +1144,13 @@ msgid ""
 "you could end up in the hole just before the exit, so think about how to "
 "avoid that. "
 msgstr ""
-"Jos jednom se akcije moraju mudro i pazljivo kombinovati, jer bi bez toga "
-"zacas zavrsili u rupi pre izlaza, zato smisli kako da to izbegnes. "
+"Још једном морате пажљиво и мудро да комбинујете радње. Ако не урадите тако "
+"зачас можете да завршите у понору баш пред самим излазом, зато размислите о "
+"томе како да избегнете ово. "
 
 #: data/levels/tutorial/snow17-grumbel.pingus:5
 msgid "If too high, your Pingu will die..."
-msgstr "Ko visoko leti, nisko pada..."
+msgstr "Ко високо лети, ниско пада..."
 
 #: data/levels/tutorial/snow17-grumbel.pingus:6
 msgid ""
@@ -1074,13 +1158,13 @@ msgid ""
 "reach the exit, so just send a few and let them prepare the path for the "
 "rest. "
 msgstr ""
-"Ovog puta je potreban timski rad da bi se doslo do izlaza. Nema dovoljno "
-"Padobranaca da bi svi dosli do izlaza, tako da je potrebno poslati nekoliko "
-"njih, koji moraju pripremiti stazu za ostale. "
+"Овог пута је тимски рад пут до излаза. Немате довољно падобранаца да "
+"стигнете до излаза, зато пошаљите само њих неколико да прокрче пут за "
+"остале. "
 
 #: data/levels/tutorial/snow19-grumbel.pingus:5
 msgid "Learn to use the bridge"
-msgstr "Nauci da koristis most"
+msgstr "Научи да користиш мост"
 
 #: data/levels/tutorial/snow19-grumbel.pingus:6
 msgid ""
@@ -1088,13 +1172,14 @@ msgid ""
 "pretty helpful. It takes some time to build, but unlike the jumper action it "
 "allows following Pingus to reach the other end too. "
 msgstr ""
-"Ako nema na raspolaganju Skakaca a treba preci preko velike rupe, onda je "
-"most vrlo korisna stvar. Potrebno je malo vremena da se most izgradi, ali "
-"svi Pingusi koji slede mogu da ga koriste, za razliku o skakanja. "
+"Ако на располагању нема скакача а потребно је премостити велику јаругу, онда "
+"је мост у овој прилици врло корисна ствар. Потребно је мало више времена за "
+"његову изградњу, али за разлику од радње скакања омогућава осталим "
+"Пингвинцима да такође дођу до друге стране. "
 
 #: data/levels/tutorial/snow20-grumbel.pingus:5
 msgid "Three solutions, it's up to you"
-msgstr "Tri resenja, pa ti vidi"
+msgstr "Три решења, на вама је да одлучите"
 
 #: data/levels/tutorial/snow20-grumbel.pingus:6
 msgid ""
@@ -1102,12 +1187,13 @@ msgid ""
 "This level presents you with at least three different ways to solve it. It's "
 "up to you which one you pick. "
 msgstr ""
-"Sada kada su naucene sve akcije, vreme je za malo vezbe ovi nivoi nude bar "
-"tri razlicite mogucnosti za resavanje, pa izaberi onu koja ti se svidja. "
+"Сада када сте научили све радње, време је за мало вежбања. Овај ниво вам "
+"нуди барем три различита начина за решавање. На вама је да одлучите који "
+"ћете да изаберете. "
 
 #: data/levels/tutorial/snow21-grumbel.pingus:5
 msgid "Climb, Climber, climb... and build a bridge"
-msgstr "Penjanje, pentranje... i mostogradnja"
+msgstr "Пењање, пентрање, пењање... и мостоградња"
 
 #: data/levels/tutorial/snow21-grumbel.pingus:6
 msgid ""
@@ -1115,13 +1201,13 @@ msgid ""
 "to climb up straight walls, thus allowing him to reach stuff that might be "
 "too high to reach by other means. "
 msgstr ""
-"Jos jednom je dobijen pristup novoj akciji. Akcija: Penjac omogucava Pingusu "
-"da se penje uz prave vertikalne zidove, i na taj nacin dodje tamo gde inace "
-"nikako ne bi mogao doci, jer je previsoko. "
+"Још једном сте задобили приступ новој радњи. Радња пењача омогућава "
+"Пингвинцу да се пентра уз равне усправне зидове, и да тако досегне ствари "
+"које би могле бити превише високе за друга средства. "
 
 #: data/levels/tutorial/snow22-grumbel.pingus:5
 msgid "Entrance high, Exit low"
-msgstr "Ulaz visoko, izlaz nisko"
+msgstr "Висок улаз, низак излаз"
 
 #: data/levels/tutorial/snow22-grumbel.pingus:6
 msgid ""
@@ -1130,14 +1216,14 @@ msgid ""
 "the stuff you need for this level in previous levels, so this shouldn't be "
 "too much of a problem for you. "
 msgstr ""
-"Ako nema dovoljno padobranaca da bi se svi Pingusi spustili dole do izlaza, "
-"potrebno je pronaci drugi nacin. Sve sto je potrebno koristiti na ovom nivou "
-"je vec nauceno ranije tako da ovo ne bi trebalo da bude velik problem za "
-"tebe. "
+"Ако немате довољно пропелера да пребаците све Пингвинце доле до излаза — "
+"морате да пронађете друге начине да их одведете до доле. На претходним "
+"нивоима треба да сте научили све што вам је потребно за овај ниво, тако да "
+"ово не треба да вам представља неки велики проблем. "
 
 #: data/levels/tutorial/snow7-grumbel.pingus:5
 msgid "One must prepare, the rest must follow"
-msgstr "Jedan priprema, ostali ga prate"
+msgstr "Један припрема, остали га прате"
 
 #: data/levels/tutorial/snow7-grumbel.pingus:6
 msgid ""
@@ -1145,13 +1231,13 @@ msgid ""
 "coordinate your Pingus. You'll have to find other ways to keep them under "
 "control while a single one prepares the path for the rest. "
 msgstr ""
-"Ponekad postoje situacije kada nemas na raspolaganju blokere koji bi "
-"koordinirali Pinguse, pa moras pronaci druge nacine da ih drzis pod "
-"kontrolom, dok jedan pravi put za ostale. "
+"Деси се понекад да немате заустављаче при руци да бисте управљали "
+"Пингвинцима. Зато морате да пронађете друге начине да бисте их држали под "
+"контролом док један од њих не припреми пут за остале. "
 
 #: data/levels/tutorial/snow8-grumbel.pingus:5
 msgid "Dig and float, just don't fall and smash"
-msgstr ""
+msgstr "Копај и лебди, пази да не паднеш и да се разбијеш"
 
 #: data/levels/tutorial/snow8-grumbel.pingus:6
 msgid ""
@@ -1160,14 +1246,14 @@ msgid ""
 "apply it to the Pingus so that they will be able to reach the exit. Make "
 "sure that not too many of them die. "
 msgstr ""
-"Za razliku od prethodna dva nivoa, ovde imas na raspolaganju dve akcije. "
-"Tvoj posao je opet jednostavan: izaberi akciju na panelu levo i izdaj "
-"naredjenja Pingusima kako bi oni dosli do izlaza. Postaraj se da ne umre "
-"previse njih. "
+"За разлику од прва два нивоа, на овом нивоу имате на располагању две радње. "
+"Још једном ваш посао је једноставан: изаберите радњу са панела на левој "
+"страни и примените је на Пингвинце да би били у могућности да стигну до "
+"излаза. Постарајте се да не изгине њих превише. "
 
 #: data/levels/tutorial/snow9-grumbel.pingus:5
 msgid "Dig, bash and other problems"
-msgstr "Kopanje, glodanje i drugi problemi"
+msgstr "Копање, глодање и други проблеми"
 
 #: data/levels/tutorial/snow9-grumbel.pingus:6
 msgid ""
@@ -1177,15 +1263,15 @@ msgid ""
 "think you've reached a situation from which you can no longer solve the "
 "level, double click the armageddon button at the lower right. "
 msgstr ""
-"Nivoi ce postajati sve tezi sto ih vise prelazis, ali nemoj vec da pravis "
-"paniku jer ovaj je prilicno lak. Treba samo da koristis stvari naucene na "
-"prethodnim nivoima i ne bi trebalo da imas puno problema Ako mislis da se "
-"nalazis u situaciji da vise nisi u stanju da resis novi, pritisni dupli-klik "
-"misem na dugme armageddon u donjem delu ekrana. "
+"Што више нивоа савладате, то ће они постајати све тежи, али мирно и "
+"сталожено, јер овај ниво је још увек поприлично лаган. Једноставно користите "
+"ствари које сте научили на претходним нивоима и сигурно нећете имати већих "
+"неприлика. Ако мислите да сте запали у ситуацију из које више не можете да "
+"решите ниво, двапут кликните на дугме армагедон у доњем десном делу екрана. "
 
 #: data/levels/tutorial/solid-tutorial-grumbel.pingus:5
 msgid "Solid ground can block the path"
-msgstr "Cvrsto zemljiste moze blokirati put"
+msgstr "Чврсто земљиште може блокирати пут"
 
 #: data/levels/tutorial/solid-tutorial-grumbel.pingus:6
 msgid ""
@@ -1194,14 +1280,14 @@ msgid ""
 "These regions are marked dark grey on the level map and cannot be destroyed, "
 "so you must find a way around them. "
 msgstr ""
-"I ranijim nivoima smo naucili da Pingusi mogu prakticno kopati kroz bilo "
-"koje zemljiste, ali postoji nesto sto ne mogu prokopati. To su celicni "
-"objekti. Oni su oznaceni tamno sivom bojom na mapi nivoa i ne mogu biti "
-"unisteni, vec treba pronaci nacin da se zaobidju. "
+"Као што сте научили на претходним нивоима ваши Пингвинци могу да копају "
+"практично кроз свако земљиште, али постоји један материјал кроз који не могу "
+"да продру: а то је челик. На карти нивоа ови предели су означени тамно сивом "
+"бојом и не могу бити уништени, зато морате да пронађете пут заобилазећи их. "
 
 #: data/levels/halloween/halloween1-grumbel.pingus:5
 msgid "One jump to catch them all"
-msgstr ""
+msgstr "Један скок да их све похватате"
 
 #: data/levels/halloween/halloween1-grumbel.pingus:6
 msgid ""
@@ -1211,10 +1297,14 @@ msgid ""
 "front of them it's your job to save them. Can you save them from a terrible "
 "fate?"
 msgstr ""
+"Пингвинци су се загубили приликом свог путовања.  Које је ово тајновито "
+"место?  Насмејане бундеве, џиновски свећњаци, и испод се крчка супица... "
+"каква ли је ово чаролија? Сада, када се налазе на ивици смртоносне провалије "
+"на вама је да их спасите. Да ли можете да их спасите судбине страшне?"
 
 #: data/levels/halloween/halloween2-grumbel.pingus:5
 msgid "One Thousand and One Jumps"
-msgstr ""
+msgstr "Једна хиљада и један скок"
 
 #: data/levels/halloween/halloween2-grumbel.pingus:6
 msgid ""
@@ -1223,10 +1313,14 @@ msgid ""
 "their inevitable demise? It's your job to find out, but are you good enough "
 "to save them all?"
 msgstr ""
+"Са излазом који је тамо горе високо и тако недосежан за обичног Пингвинца, "
+"какве могућности им преостају? Можда би скакач могао да их спасе?  Или ће "
+"једноставно успорити њихову неизбежну пропаст? На вама остаје да то дознате, "
+"а да ли сте довољно добри да их спасите све?"
 
 #: data/levels/halloween/halloween3-grumbel.pingus:5
 msgid "Boom Boom"
-msgstr ""
+msgstr "Бум бум"
 
 #: data/levels/halloween/halloween3-grumbel.pingus:6
 msgid ""
@@ -1236,10 +1330,15 @@ msgid ""
 "roots block the way, but without a basher at hand to bash them away, "
 "sacrifice might be the only option..."
 msgstr ""
+"Савладали сте последњи изазов и сада се суочавате са следећим. Као да је "
+"неко проклео њихов пут ка спасењу, али од ко? Нема се времена да се размишља "
+"о томе, јер следећи смртоносни изазов већ чека на Пингвинце. Два моћна "
+"корена блокирају им пут, али без глодача при руци да им прокрчи пут, "
+"жртвовање је једино што им преостаје..."
 
 #: data/levels/halloween/halloween4-grumbel.pingus:5
 msgid "Full Circle"
-msgstr ""
+msgstr "Пун круг"
 
 #: data/levels/halloween/halloween4-grumbel.pingus:6
 msgid ""
@@ -1248,10 +1347,14 @@ msgid ""
 "but is there enough time? You have to hurry and can't allow yourself any "
 "mistakes. The Pingus are counting on you!"
 msgstr ""
+"Излаз је тако близу, а ипак ван домашаја. Корак у погрешном правцу и "
+"Пингвинце ће задесити страшна судбина. Морате да урадите нешто да им "
+"помогне, али да ли има довољно времена? Морате да пожурите и не можете себи "
+"дозволити никакве грешке. Пингвинци рачунају на вас!"
 
 #: data/levels/halloween/halloween5-grumbel.pingus:5
 msgid "Bridgers Nightmare"
-msgstr ""
+msgstr "Ноћна мора мостоградитеља"
 
 #: data/levels/halloween/halloween5-grumbel.pingus:6
 msgid ""
@@ -1265,10 +1368,19 @@ msgid ""
 "Pingus' success, so don't let yourself get confused and misguided from the "
 "true path."
 msgstr ""
+"Ко је овде поставио овај монструозни зид? Ова страшна препрека одваја ваше "
+"Пингвинце од излаза. Уништавање ове ужасне грађевине изгледа немогуће, али "
+"можда неимар може доћи у помоћ? Могу ли они да изграде своје мостове довољно "
+"високим како би групу још једном одвели безбедно до излаза? Или се то неко "
+"игра са вама?\n"
+"\n"
+"Још једном решење је у вашим рукама... ваша сива маса је кључ ка успеху "
+"Пингвинаца, тако да не дозволите себи да се збуните и да скренете са правог "
+"пута."
 
 #: data/levels/halloween/halloween6-grumbel.pingus:5
 msgid "Locked up by the witch"
-msgstr ""
+msgstr "Вештица их је заробила"
 
 #: data/levels/halloween/halloween6-grumbel.pingus:6
 msgid ""
@@ -1280,10 +1392,17 @@ msgid ""
 "This is a risky trip, but you must take it to find out how to bring them all "
 "to freedom once again."
 msgstr ""
+"Да ли је ово затвор? Свуда унаоколо се налазе чврсти зидови, и изгледа да не "
+"постоји начин за бекство. Спасење изгледа немогуће. Али сачекајте... зид са "
+"десне страни изгледа слаб... можда је то пут ка слободи? Или је и то лажни "
+"пут који ће одвести Пингвинце ка уништењу?\n"
+"\n"
+"Ово је ризично путовање, али на вама је још једном да им помогнете да "
+"пронађу пут ка слободи."
 
 #: data/levels/halloween/halloween7-grumbel.pingus:5
 msgid "Splatterfest"
-msgstr ""
+msgstr "Размазивање"
 
 #: data/levels/halloween/halloween7-grumbel.pingus:6
 msgid ""
@@ -1294,10 +1413,16 @@ msgid ""
 "disposal, can you make them work together to reach even an exit this well "
 "hidden?"
 msgstr ""
+"Ово је за сада најдубља јама на коју су Пингвинци до сада наишли. Изградња "
+"моста преко ње изгледа очигледна, али то неће помоћи јер излаз је доле "
+"далеко у јами самој. Пингвинци који покушају да се спусте у јаму ће "
+"једноставно завршити размазани на земљи. На располагању имате две групе "
+"Пингвинаца, да ли можете да их натерате да раде заједно како би стигли барем "
+"до једног од излаза који је одлично скривен?"
 
 #: data/levels/halloween/halloween8-plouj.pingus:5
 msgid "Staircase Maintenance"
-msgstr ""
+msgstr "Одржавање степеништа"
 
 #: data/levels/halloween/halloween8-plouj.pingus:6
 msgid ""
@@ -1311,10 +1436,18 @@ msgid ""
 "whatever evildoer that placed them in this nightmare... at least for this "
 "year."
 msgstr ""
+"Изгледа да смо опет против моћног зида, који блокира излаз! Али чекајте, "
+"нека добра душа је изградила степенице око њега. Чини се, међутим, да напор "
+"јадничка није дуго трајао, јер степениште је дотрајало и пуно рупа. Да ли "
+"можете да га поправите и да га изградите преко зида? Још једном наравно, "
+"знате да право решење не може бити очигледно. Али ваши Пингвинци су скоро "
+"слободни, а они верују у ваше вештине које ће их још једном довести до "
+"слободе. Постигните успех и ослободићете их једном за свагда од злочинца "
+"који их је довео у овај кошмар... бар за ову годину."
 
 #: data/levels/halloween2011/halloween10-grumbel.pingus:5
 msgid "Down Into The Cave"
-msgstr ""
+msgstr "Доле низ пећину"
 
 #: data/levels/halloween2011/halloween10-grumbel.pingus:6
 msgid ""
@@ -1323,10 +1456,14 @@ msgid ""
 "be the primary tool to get down there. But be careful, the last few steps "
 "require some extra cleverness."
 msgstr ""
+"Излаз је далеко испод и пингвинце од њега одваја по прилична раздаљина. Пут "
+"на доле је препун залива, зато ће скакање и премошћавање бити основна "
+"средства како би се стигло тамо доле. Али будите опрезни, последњих неколико "
+"корака захтевају додатну оштроумност."
 
 #: data/levels/halloween2011/halloween11-grumbel.pingus:5
 msgid "Round and Round"
-msgstr ""
+msgstr "У круг до бесвести"
 
 #: data/levels/halloween2011/halloween11-grumbel.pingus:6
 msgid ""
@@ -1335,10 +1472,15 @@ msgid ""
 "it, as there is still one last challenge he must solve before being allowed "
 "to enter it, otherwise all his friends might perish."
 msgstr ""
+"Заробљен у вечитом понављању један храбар пингвинац мора да се пробије "
+"напоље и да оде на путовање у потрази за излазом, али неће бити превише "
+"срећан када га буде нашао, јер још увек постоји један последњи изазов који "
+"мора да реши пре него што му буде дозвољено да уђе, у супротном сви његови "
+"пријатељи могу настрадати."
 
 #: data/levels/halloween2011/halloween12-grumbel.pingus:5
 msgid "Red Herring Cave"
-msgstr ""
+msgstr "Пећина црвене харинге"
 
 #: data/levels/halloween2011/halloween12-grumbel.pingus:6
 msgid ""
@@ -1348,10 +1490,15 @@ msgid ""
 "going on which might slip your view? Thinking outside the box might be "
 "required."
 msgstr ""
+"Излаз је управо изнад глава пингвинаца, са неколико пријатељских стрелица "
+"које указују на пут. Са скакачима решење би требало да буде очигледно. Али "
+"тренутак, можете ли веровати нечему што сте пронашли у мрачној пећини или ту "
+"има још нечега што је промакло вашем погледу? Размишљање ван оквира може "
+"бити потребно."
 
 #: data/levels/halloween2011/halloween13-grumbel.pingus:5
 msgid "Group Coordination"
-msgstr ""
+msgstr "Управљање групама"
 
 #: data/levels/halloween2011/halloween13-grumbel.pingus:6
 msgid ""
@@ -1359,10 +1506,14 @@ msgid ""
 "it, but locked into a box. None of them can make it alone, coordinate them "
 "wisely and everybody should be able to make it safely to the exit. "
 msgstr ""
+"Три групе се налазе на путу ка излазу, једна од њих је заробљена управо пред "
+"самим излазом, али је закључана у кутији. Ниједна од ових група не може "
+"успети сама, руководите их мудро и сви треба да буду у стању да безбедно "
+"стигну до излаза. "
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:5
 msgid "Traps, Dangers and other Problems"
-msgstr ""
+msgstr "Клопке, опасности и остале неприлике"
 
 #: data/levels/halloween2011/halloween14-grumbel.pingus:6
 msgid ""
@@ -1370,10 +1521,13 @@ msgid ""
 "is too high, deadly for sure. Can one pingu alone make it's way through the "
 "dangerous traps and secure the path to the exit?"
 msgstr ""
+"Пут ка излазу се налази испод, светлуцајући кроз даске. Али пад је превисок, "
+"сигурно смртоносан. Може ли један пингвинац сам да прокрчи пут кроз опасне "
+"замке и да обезбеди пут ка излазу?"
 
 #: data/levels/halloween2011/halloween15-grumbel.pingus:5
 msgid "Reach that Switch"
-msgstr ""
+msgstr "Досегните прекидач"
 
 #: data/levels/halloween2011/halloween15-grumbel.pingus:6
 msgid ""
@@ -1382,10 +1536,14 @@ msgid ""
 "hill to the right? Might that be the solution to opening the door and "
 "freeing the pingus? But how can they reach that switch?"
 msgstr ""
+"Пут ка излазу је прав, раван и једноставан, али чврста врата закрчују пут? "
+"Како ће пингвинци да их отворе? Да ли је то прекидач тамо на брду са десне "
+"стране? Може ли то да буде решење за отварање врата и ослобађање пингвинаца? "
+"Али како могу да стигну до прекидача?"
 
 #: data/levels/halloween2011/halloween16-grumbel.pingus:5
 msgid "The Collapsed Column"
-msgstr ""
+msgstr "Оборени стуб"
 
 #: data/levels/halloween2011/halloween16-grumbel.pingus:6
 msgid ""
@@ -1394,10 +1552,14 @@ msgid ""
 "of pingus, they are stuck. The column next to them has collapsed making "
 "getting to the exit impossible. Can you find a way around the abyss?"
 msgstr ""
+"Високо изнад зеленог блата пингвинци се крећу од стуба до стуба, "
+"приближавајући се излазу сваким кораком, али чекајте, тамо је још једна "
+"група пингвинаца, али они су се заглавили. Стуб поред њих је пао учинивши "
+"немогућим стизање до излаза. Да ли можете да пронађете пут око провалије?"
 
 #: data/levels/halloween2011/halloween17-grumbel.pingus:5
 msgid "Island of Doom"
-msgstr ""
+msgstr "Острво пропасти"
 
 #: data/levels/halloween2011/halloween17-grumbel.pingus:6
 msgid ""
@@ -1406,10 +1568,14 @@ msgid ""
 "and some height has be crossed with the exit hidden below. With some "
 "cleverness it should be possible to join those two groups back together."
 msgstr ""
+"Пингвинци су пуштени заједно, али су растављени чврстим металним стубом и "
+"изгледа да није могуће поново их саставити. Путовање ће бити опасно и треба "
+"прећи преко неке висине са излазом скривеним испод. Уз мало памети "
+"састављање ове две групе би требало да буде могуће."
 
 #: data/levels/halloween2011/halloween18-grumbel.pingus:5
 msgid "Tower of Death"
-msgstr ""
+msgstr "Кула смрти"
 
 #: data/levels/halloween2011/halloween18-grumbel.pingus:6
 msgid ""
@@ -1419,10 +1585,15 @@ msgid ""
 "enough to get the job done, but wait, no, their direction isn't quite right. "
 "You have to give them directions or it will be their doom."
 msgstr ""
+"Пингвинци су на врху куле, без степеништа. Излаз је дубоко доле, скривен у "
+"подножју куле. Како ће пребродити сву ту висину без падобранаца? Неколико "
+"добро постављених копача би требали да одраде посао, али чекајте, не, њихов "
+"правац није онај прави. Ви морате да им дате упутства или ће то бити њихова "
+"пропаст."
 
 #: data/levels/halloween2011/halloween19-rz.pingus:5
 msgid "The Ones"
-msgstr ""
+msgstr "Једини"
 
 #: data/levels/halloween2011/halloween19-rz.pingus:6
 msgid ""
@@ -1431,10 +1602,154 @@ msgid ""
 "pingus have to work together to make it down the columns to the exit far "
 "below."
 msgstr ""
+"Ово је последња фаза кроз коју пингвинци морају да прођу током ове Ноћи "
+"вештица. Два чудновато позната стуба су на путу. Шта ли они значе? Две групе "
+"пингвинаца морају да раде заједно да би оборили стубове ка излазу који је "
+"далеко испод."
+
+#: data/levels/desert/desert1-janne.pingus:5
+msgid "Down the valley and up again"
+msgstr "Низ долину и опет горе"
+
+#: data/levels/desert/desert1-janne.pingus:6
+msgid ""
+"There is a large valley between the entrance and the exit. No bridge will be "
+"long enough to cross the valley, but can you find a way back up once you "
+"lead the Pingus down into the valley?"
+msgstr ""
+"Између улаза и излаза простире се широка долина. Ниједан мост неће бити "
+"довољно дуг за премошћавање ове раздаљине, али да ли можете да пронађете пут "
+"до горе када их једном будете спустили у долину?"
+
+#: data/levels/desert/desert1.pingus:5
+msgid "Entering the pyramid"
+msgstr "Улазак у пирамиду"
+
+#: data/levels/desert/desert1.pingus:6
+msgid ""
+"After their long and dangerous journey through the desert the Pingus finally "
+"reach the large pyramid, but there is still a pedestal blocking their way."
+msgstr ""
+"Након дугог и опасног путовања кроз пустињу Пингвинци су најзад стигли до "
+"велике пирамиде, али само још подножје стуба им стоји на путу."
+
+#: data/levels/desert/desert2.pingus:5
+msgid "The window room"
+msgstr "Соба са прозором"
+
+#: data/levels/desert/desert2.pingus:6
+msgid ""
+"After the Pingus have entered the pyramid, they reach a large room with a "
+"large window. The only problem they have is that the entrance to the room is "
+"much too high to survive the landing. Can you help them?"
+msgstr ""
+"Након што су Пингвинци ушли у пирамиду, стигли су у велику собу са великим "
+"прозором. Једини проблем је у томе што је улаз у просторију сувише високо да "
+"би преживели слетање. Да ли можете да им помогнете?"
+
+#: data/levels/desert/desert3-jings.pingus:5
+msgid "Grand Hall"
+msgstr "Велика дворана"
+
+#: data/levels/desert/desert3-jings.pingus:6
+msgid ""
+"The pingus have found themselves in the grand hall, a hall full of wonder "
+"and treasures. The exit however is high up and won't be easy to reach. Guide "
+"the pingus around the hall and maybe you will find a way."
+msgstr ""
+"Пингвинци су се нашли у великој дворани, дворани пуној чудеса и блага. "
+"Међутим, излаз се налази високо горе, и неће бити лако стићи до њега. Водите "
+"пингвинце око дворане и можда ћете наћи начин."
+
+#: data/levels/desert/desert3.pingus:5
+msgid "Pass the pedestal"
+msgstr "Прођите постоље"
+
+#: data/levels/desert/desert3.pingus:6
+msgid ""
+"A large pedestal is blocking the way to the exit and there aren't enough "
+"bashers available to dig it away. Can you find a way to make it past the "
+"pedestal?"
+msgstr ""
+"Велико постоље блокира пут ка излазу и нема довољно глодача на располагању "
+"за његово прокопавање. Да ли можете да пронађете начин на који ће проћи "
+"постоље?"
+
+#: data/levels/desert/desert4.pingus:5
+msgid "The excavation of the pyramid"
+msgstr "Ископавање пирамиде"
+
+#: data/levels/desert/desert4.pingus:6
+msgid ""
+"The excavations are open to reach the pyramid for his redeeming content. "
+"Some excavations, however, is best done with two competitors. Who comes "
+"first?"
+msgstr ""
+"Ископавања су отворене за стизање до пирамиде зарад њеног садржаја "
+"откупнине. Нека ископавања, међутим, најбоље је одрадити са два такмичара. "
+"Ко стиже први?"
+
+#: data/levels/desert/desert5.pingus:5
+msgid "Catch them at the half way point"
+msgstr "Похватајте их на пола пута"
+
+#: data/levels/desert/desert5.pingus:6
+msgid ""
+"The Pingus are separated from the exit by large abyss. A simple bridge won't "
+"be enough to catch them safely, unless of course you find the right place to "
+"put it. Can you uncover that spot?"
+msgstr ""
+"Пингвинце од излаза дели широка провалија. Једноставан мост неће бити "
+"довољан за њихово безбедно хватање, наравно осим ако не пронађете право "
+"место за његово постављање. Да ли можете да откријете ту тачку?"
+
+#: data/levels/desert/desert5-tflavel.pingus:5
+msgid "Claustrophobia"
+msgstr "Страх од затвореног простора"
+
+#: data/levels/desert/desert5-tflavel.pingus:6
+msgid ""
+"Hidden deep below the pyramid the pingus come across a small underground "
+"room, but unfortunatley a large tree root blocks their path..."
+msgstr ""
+"Скривени дубоко испод пирамиде пингвинци пролазе кроз малу подземну собу, "
+"али нажалост широко корење дрвета им стоји на путу..."
+
+#: data/levels/desert/desert6-grumbel.pingus:5
+msgid "A bit to the right a bit to left"
+msgstr "Мало десно мало лево"
+
+#: data/levels/desert/desert6-grumbel.pingus:6
+msgid "Only the most audacious Pingus will be allowed to continue."
+msgstr "Само најодважнијим Пингвинцима ће бити допуштено да наставе."
+
+#: data/levels/desert/desert7-grumbel.pingus:5
+msgid "25 Pingus free and 25 in the box"
+msgstr "25 Пингвинка је слободно и 25 их је у кутији"
+
+#: data/levels/desert/desert7-grumbel.pingus:6
+msgid ""
+"Okay for the Bridger but what can I do with Digger? You should save at least "
+"one Pingu trapped in the box above the exit."
+msgstr ""
+"У реду за неимара али шта да урадим са копачем? Треба да спасете барем "
+"једног пингвинка заробљеног у кутији изнад излаза."
+
+#: data/levels/desert/desert8-grumbel.pingus:5
+msgid "Tunnel Time"
+msgstr "Време тунела"
+
+#: data/levels/desert/desert8-grumbel.pingus:6
+msgid ""
+"Dig a tunnel and you might make it to the exit. Digger and miners and stuff "
+"have to work together."
+msgstr ""
+"Прокопајте тунел и можда ћете стићи до излаза. Копач и самоубица морају да "
+"раде заједно."
 
 #: data/levels/desert/desert-crawl-timpany.pingus:5
 msgid "Crawlspace"
-msgstr ""
+msgstr "Простор за пузање"
 
 #: data/levels/desert/desert-crawl-timpany.pingus:6
 msgid ""
@@ -1443,124 +1758,14 @@ msgid ""
 "do about that and create a save passage for all the Pingus and lead them "
 "safely to the exit?"
 msgstr ""
-
-#: data/levels/desert/desert1-janne.pingus:5
-msgid "Down the valley and up again"
-msgstr ""
-
-#: data/levels/desert/desert1-janne.pingus:6
-msgid ""
-"There is a large valley between the entrance and the exit. No bridge will be "
-"long enough to cross the valley, but can you find a way back up once you "
-"lead the Pingus down into the valley?"
-msgstr ""
-
-#: data/levels/desert/desert1.pingus:5
-msgid "Entering the pyramid"
-msgstr ""
-
-#: data/levels/desert/desert1.pingus:6
-msgid ""
-"After their long and dangerous journey through the desert the Pingus finally "
-"reach the large pyramid, but there is still a pedestal blocking their way."
-msgstr ""
-
-#: data/levels/desert/desert2.pingus:5
-msgid "The window room"
-msgstr ""
-
-#: data/levels/desert/desert2.pingus:6
-msgid ""
-"After the Pingus have entered the pyramid, they reach a large room with a "
-"large window. The only problem they have is that the entrance to the room is "
-"much too high to survive the landing. Can you help them?"
-msgstr ""
-
-#: data/levels/desert/desert3-jings.pingus:5
-msgid "Grand Hall"
-msgstr ""
-
-#: data/levels/desert/desert3-jings.pingus:6
-msgid ""
-"The pingus have found themselves in the grand hall, a hall full of wonder "
-"and treasures. The exit however is high up and won't be easy to reach. Guide "
-"the pingus around the hall and maybe you will find a way."
-msgstr ""
-
-#: data/levels/desert/desert3.pingus:5
-msgid "Pass the pedestal"
-msgstr ""
-
-#: data/levels/desert/desert3.pingus:6
-msgid ""
-"A large pedestal is blocking the way to the exit and there aren't enough "
-"bashers available to dig it away. Can you find a way to make it past the "
-"pedestal?"
-msgstr ""
-
-#: data/levels/desert/desert4.pingus:5
-msgid "The excavation of the pyramid"
-msgstr ""
-
-#: data/levels/desert/desert4.pingus:6
-msgid ""
-"The excavations are open to reach the pyramid for his redeeming content. "
-"Some excavations, however, is best done with two competitors. Who comes "
-"first?"
-msgstr ""
-
-#: data/levels/desert/desert5-tflavel.pingus:5
-msgid "Claustrophobia"
-msgstr ""
-
-#: data/levels/desert/desert5-tflavel.pingus:6
-msgid ""
-"Hidden deep below the pyramid the pingus come across a small underground "
-"room, but unfortunatley a large tree root blocks their path..."
-msgstr ""
-
-#: data/levels/desert/desert5.pingus:5
-msgid "Catch them at the half way point"
-msgstr ""
-
-#: data/levels/desert/desert5.pingus:6
-msgid ""
-"The Pingus are separated from the exit by large abyss. A simple bridge won't "
-"be enough to catch them safely, unless of course you find the right place to "
-"put it. Can you uncover that spot?"
-msgstr ""
-
-#: data/levels/desert/desert6-grumbel.pingus:5
-msgid "A bit to the right a bit to left"
-msgstr ""
-
-#: data/levels/desert/desert6-grumbel.pingus:6
-msgid "Only the most audacious Pingus will be allowed to continue."
-msgstr ""
-
-#: data/levels/desert/desert7-grumbel.pingus:5
-msgid "25 Pingus free and 25 in the box"
-msgstr ""
-
-#: data/levels/desert/desert7-grumbel.pingus:6
-msgid ""
-"Okay for the Bridger but what can I do with Digger? You should save at least "
-"one Pingu trapped in the box above the exit."
-msgstr ""
-
-#: data/levels/desert/desert8-grumbel.pingus:5
-msgid "Tunnel Time"
-msgstr ""
-
-#: data/levels/desert/desert8-grumbel.pingus:6
-msgid ""
-"Dig a tunnel and you might make it to the exit. Digger and miners and stuff "
-"have to work together."
-msgstr ""
+"Пут ка излазу је закрчен и многи мали тунели представљају пут, али будите "
+"опрезни јер неки од њих воде у сигурну смрт. Или постоји нешто што можете да "
+"урадите и да обезбедите пролаз за све Пингвинце и да их безбедно доведете до "
+"излаза?"
 
 #: data/levels/desert/desertwaste1-grumbel.pingus:5
 msgid "The Roof"
-msgstr ""
+msgstr "На крову"
 
 #: data/levels/desert/desertwaste1-grumbel.pingus:6
 msgid ""
@@ -1568,10 +1773,13 @@ msgid ""
 "demolished! But be careful if you aren't precise enough, you might lead the "
 "Pingus straight to certain death."
 msgstr ""
+"Понекад кровови нису баш добри за уточиште, понекад их треба срушити! Али "
+"будите опрезни, ако нисте довољно прецизни, можете одвести Пингвинце право у "
+"сигурну смрт."
 
 #: data/levels/desert/indiana-yingwan.pingus:5
 msgid "Pingus Jones and the Last Exit"
-msgstr ""
+msgstr "Пингвинко Јован и последњи излаз"
 
 #: data/levels/desert/indiana-yingwan.pingus:6
 msgid ""
@@ -1581,40 +1789,51 @@ msgid ""
 "  (2) the word of God... in reverse;\n"
 "  (3) the path of God: leap from the head of something like a cat."
 msgstr ""
-
-#: data/levels/mysteryisland/cave-lac.pingus:7
-msgid "Trapped Underground"
-msgstr ""
-
-#: data/levels/mysteryisland/cave-lac.pingus:8
-msgid ""
-"The penguins escaped the mad scientist, but now they were trapped deep "
-"underground. They had no food or water, so they had to move fast."
-msgstr ""
+"Бележница Др. Јована:\n"
+"\n"
+"  (1) дах Божји: само пингвинко покајник ће проћи;\n"
+"  (2) реч Божја... у супротном;\n"
+"  (3) пут Божји: скочите са главе нечега као мачка."
 
 #: data/levels/mysteryisland/cave1-marcotte.pingus:5
 msgid "Near can mean far"
-msgstr ""
+msgstr "Близу може да значи страх"
 
 #: data/levels/mysteryisland/cave1-marcotte.pingus:6
 msgid ""
 "What do you do when you're going in the wrong direction ? Simple: walk into "
 "a wall. But it is easier said than done..."
 msgstr ""
+"Шта ћете да урадите ако идете у погрешном правцу ? Једноставно: ући у зид. "
+"Али то је лакше рећи него урадити..."
+
+#: data/levels/mysteryisland/cave-lac.pingus:7
+msgid "Trapped Underground"
+msgstr "Заробљени у подземљу"
+
+#: data/levels/mysteryisland/cave-lac.pingus:8
+msgid ""
+"The penguins escaped the mad scientist, but now they were trapped deep "
+"underground. They had no food or water, so they had to move fast."
+msgstr ""
+"Пингвинци су побегли од лудог научника, али сада су заробљени дубоко под "
+"земљом. Немају ни хране ни воде, зато морају брзо да се крећу."
 
 #: data/levels/mysteryisland/emperiment-lac.pingus:5
 msgid "Experimentation"
-msgstr ""
+msgstr "Експериментисање"
 
 #: data/levels/mysteryisland/emperiment-lac.pingus:6
 msgid ""
 "A mad scientist has captured the penguins and is experimenting on them. How "
 "can the penguins escape the guillotine?"
 msgstr ""
+"Луди научник је заробио пингвинце и врши огледе над њима. Како пингвинци "
+"могу да утекну гиљотини?"
 
 #: data/levels/mysteryisland/hall-of-illusion-lac.pingus:5
 msgid "Hall of Illusion"
-msgstr ""
+msgstr "Дворана илузије"
 
 #: data/levels/mysteryisland/hall-of-illusion-lac.pingus:6
 msgid ""
@@ -1622,10 +1841,13 @@ msgid ""
 "not? Flame lanced from above and a guillotine glittered in the distance. "
 "Almost all penguins must survive."
 msgstr ""
+"Пингвинци су се зауставили и стоје у неодлучности. Шта је стварно, а шта "
+"није? Пламен који пржи одозго и гиљотина која светлуца у даљини. Скоро сви "
+"пингвинци морају да преживе."
 
 #: data/levels/mysteryisland/lavapit3.pingus:7
 msgid "The Lava Pit"
-msgstr ""
+msgstr "Јама са лавом"
 
 #: data/levels/mysteryisland/lavapit3.pingus:8
 msgid ""
@@ -1634,10 +1856,14 @@ msgid ""
 "fell into an underground cave and the only way out was across the lava pit. "
 "Luckily, it seemed someone had left some helpful signs."
 msgstr ""
+"Пингвинци су поразили лудог научника, а отишли су из његове уништене "
+"лабораторије када се под њиховим ногама отворила огромна рупа. Пингвинци су "
+"упали у подземну пећину и једини излаз беше преко јаме са лавом. На срећу, "
+"изгледа да је неко оставио неке корисне знаке."
 
 #: data/levels/mysteryisland/madscientist1-lac.pingus:7
 msgid "At least the experiments are over..."
-msgstr ""
+msgstr "Барем су огледи завршени..."
 
 #: data/levels/mysteryisland/madscientist1-lac.pingus:8
 msgid ""
@@ -1645,10 +1871,13 @@ msgid ""
 "bad news was that now he was dumping them down a pit. A single floatation "
 "device was all the penguins had. Save as many as possible."
 msgstr ""
+"Добра вест је да је луди научник уморан од својих експеримената, лоша вест "
+"је да их он сада избацује низ јаму. Један пропелер је све оно што пингвинци "
+"имају. Спасите их што је могуће више."
 
 #: data/levels/mysteryisland/multi1-lac.pingus:7
 msgid "Ghosting"
-msgstr ""
+msgstr "Духови"
 
 #: data/levels/mysteryisland/multi1-lac.pingus:8
 msgid ""
@@ -1656,21 +1885,26 @@ msgid ""
 "climber or two were needed.  Hint: slider can be used to stop the miner "
 "ability."
 msgstr ""
+"Пингвинци су стигли до дугог пролаза. Испод кључа киселина и чини се да је "
+"потребан један пењач или два.  Савет: клизач може бити употребљен за "
+"заустављање способности рудара."
 
 #: data/levels/mysteryisland/rainy1-lac.pingus:7
 msgid "The Final (and suprisingly easy) Challenge"
-msgstr ""
+msgstr "Последњи (и изненађујуће лак) изазов"
 
 #: data/levels/mysteryisland/rainy1-lac.pingus:8
 msgid ""
 "The penguins had reached the end of the island. In the water was a long "
 "tree, perfect for the penguin's needs. Their journey was almost over."
 msgstr ""
+"Пингвинци су стигли до краја острва. У води се налази дуго дрво, баш онакво "
+"какво је потребно пингвинцима. Њихово путовање само што се није завршило."
 
 #: data/levels/mysteryisland/revenge1-lac.pingus:7
 #: data/levels/mysteryisland/revenge2-lac.pingus:7
 msgid "Revenge is sweet"
-msgstr ""
+msgstr "Освета је слатка"
 
 #: data/levels/mysteryisland/revenge1-lac.pingus:8
 msgid ""
@@ -1678,6 +1912,8 @@ msgid ""
 "intended to destroy the support structures, sending the evil laboratory "
 "crashing down."
 msgstr ""
+"Пингвинци су утекли лудом научнику али сада желе да му се освете. Намеравају "
+"да униште структуре подршке, рушењем зле лабораторије."
 
 #: data/levels/mysteryisland/revenge2-lac.pingus:8
 msgid ""
@@ -1686,10 +1922,14 @@ msgid ""
 "crashing down. They had to move fast though, because the mad scientist would "
 "detect and recapture them if they weren't fast enough."
 msgstr ""
+"Пингвинци су утекли лудом научнику, али сада желе освету. Намеравају да "
+"униште структуре подршке, проузрокујући рушење зле лабораторије. Такође "
+"морају да се крећу брзо, јер ће луди научник да их открије и поново да их "
+"похвата ако нису довољно брзи."
 
 #: data/levels/mysteryisland/snow2-lac.pingus:7
 msgid "Winter Wonderland"
-msgstr ""
+msgstr "Зимска земља чудеса"
 
 #: data/levels/mysteryisland/snow2-lac.pingus:8
 msgid ""
@@ -1697,10 +1937,13 @@ msgid ""
 "reached a snowed in exit. That would be relatively easy to tunnel through "
 "but how would it be possible to tunnel through solid metal?"
 msgstr ""
+"Након што су прошли јаму са лавом, пингвинци су ишли и ишли све док нису "
+"стигли до снега на излазу. Кроз снег ће бити релативно лако прокопати тунел "
+"али како је могуће прокопати тунел кроз чврсти метал?"
 
 #: data/levels/mysteryisland/theend-lac.pingus:7
 msgid "The Journey Goes On"
-msgstr ""
+msgstr "Путовање се наставља"
 
 #: data/levels/mysteryisland/theend-lac.pingus:8
 msgid ""
@@ -1710,20 +1953,27 @@ msgid ""
 "would be other obstacles. Nothing  would stop the determined penguins from "
 "reaching their goal."
 msgstr ""
+"И тако су пингвинци наставили своје путовање, све више се приближавајући "
+"Северном полу. Избегли су гиљотину, победили лудог научника и добили нови "
+"брод. И тако је ово поглавље на њиховом путовању било завршено, али биће ту "
+"и других препрека. Ништа неће зауставити одлучне Пингвинце од достизања свог "
+"циља."
 
 #: data/levels/mysteryisland/use-the-slide-lac.pingus:7
 msgid "Think fast (literally)"
-msgstr ""
+msgstr "Мислите брзо (дословно)"
 
 #: data/levels/mysteryisland/use-the-slide-lac.pingus:8
 msgid ""
 "This would be simple but for one thing, there are no blockers. All the "
 "penguins must survive."
 msgstr ""
+"Ово треба да буде једноставно али за једну ствар, нема заустављача. Сви "
+"пингвинци морају да преживе."
 
 #: data/levels/mysteryisland/volcano1-grumbel.pingus:5
 msgid "Shipwrecked"
-msgstr ""
+msgstr "Уништени брод"
 
 #: data/levels/mysteryisland/volcano1-grumbel.pingus:6
 msgid ""
@@ -1732,115 +1982,167 @@ msgid ""
 "destroying their boat. Now they must find their way across this strange "
 "island."
 msgstr ""
+"Пингвинци су пловили срећно на свом импровизованом броду све док се изненада "
+"није појавило острво. Пингвинци су се нашли пред њим и слупали су се, "
+"уништивши брод. Сада морају да пронађу свој пут преко овог чудног острва."
 
-#: data/levels/alien/aliens1-grumbel.pingus:5
 #: data/levels/alien/aliens1-phil.pingus:7
 msgid "Escape from Aliens"
-msgstr ""
-
-#: data/levels/alien/aliens1-grumbel.pingus:6
-msgid ""
-"Aliens invade our starship blocking intrance to the teleporter. Your crew is "
-"well trained, like you they don't panic."
-msgstr ""
+msgstr "Утекни ванземаљцима"
 
 #: data/levels/alien/aliens1-phil.pingus:8
 msgid ""
 "Aliens invade our starship blocking entrance to the teleporter. Your crew is "
 "well trained, like you they don't panic."
 msgstr ""
+"Ванземаљци су заузели наш свемирски брод закрчујући улаз у телепортер. Ваша "
+"посада је одлично увежбана, баш као и ви и они не паниче."
 
 #: data/levels/alien/aliens2-phil.pingus:7
 msgid "Escape from Aliens 2"
-msgstr ""
+msgstr "Утекни ванземаљцима 2"
 
 #: data/levels/alien/aliens2-phil.pingus:8
 msgid "Aliens are now closest making your escape harder. You must dig it up."
-msgstr ""
+msgstr "Ванземаљци су сада ближи отежавајући ваш бег. Морате да га прокопате."
 
 #: data/levels/alien/aliens4-phil.pingus:5
 msgid "Alien's nest"
-msgstr ""
+msgstr "Гнездо ванземаљаца"
 
 #: data/levels/alien/aliens4-phil.pingus:6
 msgid "Pingus invade the nest. Take care of jaws. What's the matrix above?"
-msgstr ""
+msgstr "Пингвинци су заузели гнездо. Пазите се чељусти. Шта је горња матрица?"
 
 #: data/levels/alien/aliens5-phil.pingus:5
 msgid "Matrix of the death"
-msgstr ""
+msgstr "Матрица смрти"
 
 #: data/levels/alien/aliens5-phil.pingus:6
 msgid ""
 "Take a piece of paper. Now pingus have to enter the matrix of the death. "
 "This is a maze, bad ways are protect by jaws."
 msgstr ""
+"Узмите парче папира. Сада пингвинци морају да уђу у матрицу смрти. То је "
+"лавиринт, лоши путеви су заштићени чељустима."
 
 #: data/levels/alien/aliens6-phil.pingus:7
 msgid "Spy's pingus in the matrix of the death"
-msgstr ""
+msgstr "Пингвинци шпијуни у матрици смрти"
 
 #: data/levels/alien/aliens6-phil.pingus:8
 msgid ""
 "Spy's pingus have marked the location of jaws in the matrix of the death. "
 "Many died to gain that information :..( Perhaps this help. Perhaps..."
 msgstr ""
+"Пингвинци шпијуни су обележили место чељусти у матрици смрти. Многи су умрли "
+"зарад те информације :..( Можда ово помогне. Можда..."
 
 #: data/levels/alien/aliens7-phil.pingus:7
 msgid "Fourth dimension"
-msgstr ""
+msgstr "Четврта димензија"
 
 #: data/levels/alien/aliens7-phil.pingus:8
 msgid ""
 "The defenses of the aliens get stronger. Now you have to jump in the fourth "
 "dimension to win!"
 msgstr ""
+"Одбране ванземаљаца постају јаче. Сад морате да се пребаците у четврту "
+"димензију да бисте победили!"
 
 #: data/levels/alien/space-11-rz+eriksoe.pingus:5
 msgid "Set your watches"
-msgstr ""
+msgstr "Подесите ваше сатове"
 
 #: data/levels/alien/space-11-rz+eriksoe.pingus:6
 msgid "Cooperation in space."
-msgstr ""
+msgstr "Сарадња у свемиру."
+
+#: data/levels/alien/space2.pingus:5
+msgid "Lost in Space"
+msgstr "Изгубљени у свемиру"
+
+#: data/levels/alien/space2.pingus:6
+msgid "We don't know where we are but we don't leave anybody behind."
+msgstr "Не знамо где смо али никога не остављамо."
 
 #: data/levels/alien/space-9-tom.pingus:5
 msgid "Outside In"
-msgstr ""
+msgstr "Изван унутра"
 
 #: data/levels/alien/space-9-tom.pingus:6
 msgid "Can you help the pingus escape without getting their flippers wet?"
 msgstr ""
+"Да ли можете да помогнете пингвинцима да побегну а да не сквасе своја пераја?"
 
 #: data/levels/alien/space-loop-timpany.pingus:5
 msgid "Endless Loop"
-msgstr ""
+msgstr "Бесконачна петља"
 
 #: data/levels/alien/space-loop-timpany.pingus:6
 msgid ""
 "To the right and to the left the Pingus will face certain death and you have "
 "to save 50. Can you help them get out of this mess?"
 msgstr ""
+"Како са десна тако и са лева Пингвинци ће се суочити са сигурном смрћу а ви "
+"морате да спасите 50. Да ли можете да им помогнете да изађу из ове збрке?"
 
 #: data/levels/alien/space-tom1.pingus:7
 msgid "Up up in the space"
-msgstr ""
+msgstr "Што дубље у свемиру"
 
 #: data/levels/alien/space-tom1.pingus:8
 msgid "What good is a pick in space? Certainly not to go to the stars."
-msgstr ""
+msgstr "Шта је добар избор у свемиру? Свакако да се не иде ка звездама."
 
-#: data/levels/alien/space2.pingus:5
-msgid "Lost in Space"
-msgstr ""
+#: data/levels/factorycampaign/factory_campaign10.pingus:5
+msgid "Jump"
+msgstr "Скок"
 
-#: data/levels/alien/space2.pingus:6
-msgid "We don't know where we are but we don't leave anybody behind."
+#: data/levels/factorycampaign/factory_campaign10.pingus:6
+msgid ""
+"All Pingus need is to jump.... Hint: While pausing (press P key) you still "
+"can control Pingus. "
 msgstr ""
+"Све што Пингвинцима треба јесте скок... Савет: За време паузе (притисните "
+"тастер П) још увек можете да управљате Пингвинцима. "
+
+#: data/levels/factorycampaign/factory_campaign11.pingus:5
+msgid "Factory"
+msgstr "Фабрика"
+
+#: data/levels/factorycampaign/factory_campaign11.pingus:6
+msgid ""
+"Finally you reached the factory. Watch out as there are many dangers. Use "
+"bombers to destroy the basement of the factory. Good luck!"
+msgstr ""
+"Најзад сте стигли до фабрике. Чувајте се многих опасности. Користите бомбаше "
+"да уништите темељ фабрике. Нека вас срећа прати!"
+
+#: data/levels/factorycampaign/factory_campaign12.pingus:5
+msgid "Going back home"
+msgstr "Повратак кући"
+
+#: data/levels/factorycampaign/factory_campaign12.pingus:6
+msgid "Your mission is over. Pingus can go back home, but be careful!"
+msgstr ""
+"Ваша мисија је завршена. Пингвинци могу да се врате кући, али будите пажљиви!"
+
+#: data/levels/factorycampaign/factory_campaign13.pingus:5
+msgid "Bonus track"
+msgstr "Додатна стаза"
+
+#: data/levels/factorycampaign/factory_campaign13.pingus:6
+msgid ""
+"Pingus are at home, but after the climate change living on the South Pole "
+"became more dangerous. There is one more mission for you."
+msgstr ""
+"Пингвинци су код куће, али након климатских промена живот на јужном полу је "
+"постао опаснији. Остаје вам још једна мисија."
 
 #: data/levels/factorycampaign/factory_campaign1.pingus:5
 msgid "Falling down"
-msgstr ""
+msgstr "Пропадање"
 
 #: data/levels/factorycampaign/factory_campaign1.pingus:6
 msgid ""
@@ -1851,58 +2153,28 @@ msgid ""
 "is melting, at first you have to build some bridges and watch out for the "
 "cliff."
 msgstr ""
-
-#: data/levels/factorycampaign/factory_campaign10.pingus:5
-msgid "Jump"
-msgstr ""
-
-#: data/levels/factorycampaign/factory_campaign10.pingus:6
-msgid ""
-"All Pingus need is to jump.... Hint: While pausing (press P key) you still "
-"can control Pingus. "
-msgstr ""
-
-#: data/levels/factorycampaign/factory_campaign11.pingus:5
-msgid "Factory"
-msgstr ""
-
-#: data/levels/factorycampaign/factory_campaign11.pingus:6
-msgid ""
-"Finally you reached the factory. Watch out as there are many dangers. Use "
-"bombers to destroy the basement of the factory. Good luck!"
-msgstr ""
-
-#: data/levels/factorycampaign/factory_campaign12.pingus:5
-msgid "Going back home"
-msgstr ""
-
-#: data/levels/factorycampaign/factory_campaign12.pingus:6
-msgid "Your mission is over. Pingus can go back home, but be careful!"
-msgstr ""
-
-#: data/levels/factorycampaign/factory_campaign13.pingus:5
-msgid "Bonus track"
-msgstr ""
-
-#: data/levels/factorycampaign/factory_campaign13.pingus:6
-msgid ""
-"Pingus are at home, but after the climate change living on the South Pole "
-"became more dangerous. There is one more mission for you."
-msgstr ""
+"Обавештајна служба Пингвинаца је известила да би огромна фабрика која се "
+"налази у суптропској зони могла бити разлог климатских промена. Одлучили су "
+"да оду тамо и да угасе фабрике. Ово ће бити дуга и опасна експедиција. "
+"Пингвинци и ви ћете морати да се суочите са многим потешкоћама на путу. Како "
+"се лед топи, као прво морате да изградите неколико мостова и да пазите на "
+"литицу."
 
 #: data/levels/factorycampaign/factory_campaign2.pingus:5
 msgid "Destination North"
-msgstr ""
+msgstr "Одредиште север"
 
 #: data/levels/factorycampaign/factory_campaign2.pingus:6
 msgid ""
 "For now, Pingus are leaving South Pole and moving North. You have to help "
 "them!"
 msgstr ""
+"За сада, Пингвинци напуштају јужни пол и селе се на север. Ви морате да им "
+"помогнете!"
 
 #: data/levels/factorycampaign/factory_campaign3.pingus:5
 msgid "The Cave"
-msgstr ""
+msgstr "Пећина"
 
 #: data/levels/factorycampaign/factory_campaign3.pingus:6
 msgid ""
@@ -1910,10 +2182,13 @@ msgid ""
 "Remember that sometimes there is more than one way out. Hint: To 'unlock' "
 "blockers you can use bashers and jumpers."
 msgstr ""
+"Пингвинци су на свом путу наишли на огромну пећину. Ви морате да их водите "
+"кроз њу. Сетите се да понекад има више од једног излаза. Савет: Да "
+"„откључате“ заустављаче можете да користите глодаче и скакаче."
 
 #: data/levels/factorycampaign/factory_campaign4.pingus:5
 msgid "Difficulties on the way"
-msgstr ""
+msgstr "Потешкоће на путу"
 
 #: data/levels/factorycampaign/factory_campaign4.pingus:6
 msgid ""
@@ -1921,57 +2196,69 @@ msgid ""
 "are waiting for your orders, they count on you so don't fail! Hint: Miners, "
 "diggers and bashers are very important here!"
 msgstr ""
+"Изгледа да сте наишли на озбиљне потешкоће. Али не узрујавајте се, Пингвинци "
+"чекају на ваша наређења, рачунајући на вас, зато немојте да погрешите! "
+"Савет: Рудари, копачи и глодачи су овде веома важни!"
 
 #: data/levels/factorycampaign/factory_campaign5.pingus:5
 msgid "Four ways out"
-msgstr ""
+msgstr "Четири излаза"
 
 #: data/levels/factorycampaign/factory_campaign5.pingus:6
 msgid ""
 "It's getting warmer but Pingus are bravely moving North. This time it will "
 "be much easier. There are at least four ways out. Could you find them?"
 msgstr ""
+"Постаје све топлије али Пингвинци се храбро селе на север. Овог пута ће бити "
+"много лакше. Постоје најмање четири излаза. Да ли можете да их пронађете?"
 
 #: data/levels/factorycampaign/factory_campaign6.pingus:5
 msgid "Egypt - So easy"
-msgstr ""
+msgstr "Египат — Тако је лако"
 
 #: data/levels/factorycampaign/factory_campaign6.pingus:6
 msgid "Pingus reached Egypt. Looks easy, but is it really so easy? Try it out."
 msgstr ""
+"Пингвинци су стигли у Египат. Изгледа лако, али да ли је стварно тако лако? "
+"Сазнајте."
 
 #: data/levels/factorycampaign/factory_campaign7.pingus:5
 msgid "Egypt - Oasis"
-msgstr ""
+msgstr "Египат — Оаза"
 
 #: data/levels/factorycampaign/factory_campaign7.pingus:6
 msgid ""
 "Last time it was easy. Now it will be a little bit harder. Pingus are "
 "entering oasis. Watch out for the water."
 msgstr ""
+"Последњи пут је било лако. Сада ће бити малко теже. Пингвинци улазе у оазу. "
+"Пронађите воду."
 
 #: data/levels/factorycampaign/factory_campaign8.pingus:5
 msgid "Egypt - The Maze"
-msgstr ""
+msgstr "Египат — Лавиринт"
 
 #: data/levels/factorycampaign/factory_campaign8.pingus:6
 msgid ""
 "You came across a maze. Can you find the way out? Think twice before digging."
 msgstr ""
+"Пролазите кроз лавиринт. Да ли можете да пронађете излаз? Размислите двапут "
+"пре копања."
 
 #: data/levels/factorycampaign/factory_campaign9.pingus:5
 msgid "Egypt - Pyramids"
-msgstr ""
+msgstr "Египат — Пирамиде"
 
 #: data/levels/factorycampaign/factory_campaign9.pingus:6
 msgid ""
 "The maze led you to the big pyramids. Now you have 4 minutes to escape. "
 "Hurry up!"
 msgstr ""
+"Лавиринт вас је довео до пирамида. Остају вам 4 минута да утекнете. Пожурите!"
 
 #: data/levels/xmas2011/xmas01-grumbel.pingus:5
 msgid "Bomb and Double Catch"
-msgstr ""
+msgstr "Бомбардовање и двоструко хватање"
 
 #: data/levels/xmas2011/xmas01-grumbel.pingus:6
 msgid ""
@@ -1980,20 +2267,27 @@ msgid ""
 "trouble, but don't relax to much, your resources are limited, so be careful "
 "when using them."
 msgstr ""
+"Овде можда имате мало времена за опуштање. Путања није замршена и мало "
+"бомбардовања и хватања Пингвинаца треба да вас доведе до краја, без много "
+"проблема, али не опуштајте се превише, ваши извори су ограничени, зато "
+"будите опрезни када их користите."
 
 #: data/levels/xmas2011/xmas02-grumbel.pingus:5
 msgid "Up, Up and Away"
-msgstr ""
+msgstr "Високо горе је спас"
 
 #: data/levels/xmas2011/xmas02-grumbel.pingus:6
 msgid ""
 "The exit is in a weird spot here, straight above. A bridge won't get you "
 "there, but your toolset allows an alternative way. Can you figure it out?"
 msgstr ""
+"Излаз је овде на чудном месту, управо горе. Мост вас неће довести до тамо, "
+"али ваш комплет алата вам омогућава један други пут. Можете ли да га "
+"откријете?"
 
 #: data/levels/xmas2011/xmas03-grumbel.pingus:5
 msgid "If only penguins could fly"
-msgstr ""
+msgstr "Кад би пингвинци могли да лете"
 
 #: data/levels/xmas2011/xmas03-grumbel.pingus:6
 msgid ""
@@ -2001,10 +2295,13 @@ msgid ""
 "shouldn't have to much trouble here, everything to do here you should have "
 "learned, but you might have to use all that knowledge at once."
 msgstr ""
+"Мостови су овде реткост, зато немојте изгубити ни један. Ово на страну, не "
+"би требало да имате много невоља овде, све што се овде ради треба да сте "
+"научили, али можда ћете морати одједном да искористите све то знање."
 
 #: data/levels/xmas2011/xmas04-grumbel.pingus:5
 msgid "Stairway to Heaven"
-msgstr ""
+msgstr "Степенице до раја"
 
 #: data/levels/xmas2011/xmas04-grumbel.pingus:6
 msgid ""
@@ -2012,10 +2309,13 @@ msgid ""
 "hard enough with a single Pingu, but with all of them? Impossible! But wait, "
 "who says they have to come the same way?"
 msgstr ""
+"Овде ствари почињу мало да се компликују. Стићи до излаза је довољно тешко "
+"са једним Пингвинком, али са свима њима? Немогуће! Али чекајте, ко каже да "
+"морају да стигну истим путем?"
 
 #: data/levels/xmas2011/xmas05-grumbel.pingus:5
 msgid "Misdirection Everywhere"
-msgstr ""
+msgstr "Грешака свуда"
 
 #: data/levels/xmas2011/xmas05-grumbel.pingus:6
 msgid ""
@@ -2024,20 +2324,28 @@ msgid ""
 "\n"
 "Good Luck & a Merry Xmas 2011"
 msgstr ""
+"Последњи ниво за овај Божић. Изгледа мало компликовано, зар не? Не брините, "
+"уз све што сте до сада научили, треба да будете у стању чак и ово да "
+"решите.\n"
+"\n"
+"Срећно и Срећан Божић 2011"
 
 #: data/levels/xmas2011/xmas06-grumbel.pingus:5
 msgid "The Big Jump"
-msgstr ""
+msgstr "Велики скок"
 
 #: data/levels/xmas2011/xmas06-grumbel.pingus:6
+#, fuzzy
 msgid ""
 "Going in and out of the abyss with all Pingus isn't an option here, but a "
-"small group preparing the path or the others should get you across."
+"small group preparing the path for the others should get you across."
 msgstr ""
+"Спустити се у и изаћи из провалије са свим Пингвинцима овде није баш најбоље "
+"решење, већ мала група која ће припремити пут за остале који ће прећи преко."
 
 #: data/levels/xmas2011/xmas07-grumbel.pingus:5
 msgid "No Way to Stop"
-msgstr ""
+msgstr "Без застајкивања"
 
 #: data/levels/xmas2011/xmas07-grumbel.pingus:6
 msgid ""
@@ -2045,10 +2353,13 @@ msgid ""
 "straight, but you don't have the time to prepare it. Can you find a way to "
 "leap ahead?"
 msgstr ""
+"Овде немате много времена за губљење. Пут ка излазу је јасан и прав, али "
+"немате времена да га припремите. Да ли можете да пронађете начин да скочите "
+"напред?"
 
 #: data/levels/xmas2011/xmas08-grumbel.pingus:5
 msgid "Ice Block Blockage"
-msgstr ""
+msgstr "Ледени брег на путу"
 
 #: data/levels/xmas2011/xmas08-grumbel.pingus:6
 msgid ""
@@ -2056,10 +2367,13 @@ msgid ""
 "from? No time wondering about things like that. The Pingus need to get to "
 "the exist and it's your job to find a way around the block."
 msgstr ""
+"Шта је ово? Џиновски ледени брег на путу? Одакле ли се само створио? Нема "
+"времена за размишљање о таквим стварима. Пингвинци морају да стигну до "
+"излаза а ваш задатак је да пронађете пут око леденог брега."
 
 #: data/levels/xmas2011/xmas09-grumbel.pingus:5
 msgid "The Impossible Bridge"
-msgstr ""
+msgstr "Немогући мост"
 
 #: data/levels/xmas2011/xmas09-grumbel.pingus:6
 msgid ""
@@ -2067,10 +2381,13 @@ msgid ""
 "seems impossible, but wise coordination of the two groups and a brave leap "
 "should let you make it to the exit."
 msgstr ""
+"Две групе Пингвинаца су одвојене дубоком провалијом, њихово здруживање "
+"мостом изгледа немогуће, али мудро руковођење две групе и храбар скок треба "
+"да вам допусте да их доведете до излаза."
 
 #: data/levels/xmas2011/xmas10-grumbel.pingus:5
 msgid "Spiraling Away"
-msgstr ""
+msgstr "Заобилажење препреке"
 
 #: data/levels/xmas2011/xmas10-grumbel.pingus:6
 msgid ""
@@ -2078,26 +2395,29 @@ msgid ""
 "way through. But the Pingus have a versatile toolset at hand, can you use it "
 "to find a way around and make it to the exit?"
 msgstr ""
+"Излаз је управо доле, али пут је закрчен тврдим челиком без пролаза. Али "
+"Пингвинци имају разноврстан скуп алата при руци, можете ли да га искористите "
+"да пронађете заобилазни пут и да га прокрчите до излаза?"
 
 #: data/worldmaps/tutorial.worldmap:4
 msgid "Tutorial Island"
-msgstr ""
+msgstr "Острво увежбавања"
 
 #: data/worldmaps/tutorial.worldmap:6
 msgid "Learn the basics"
-msgstr ""
+msgstr "Научите основе"
 
 #: data/worldmaps/tutorial.worldmap:124
 msgid "Watch Ending"
-msgstr ""
+msgstr "Погледајте крај"
 
 #: data/worldmaps/tutorial.worldmap:131
 msgid "Watch Intro"
-msgstr ""
+msgstr "Погледајте увод"
 
 #: data/stories/tutorial_intro.story:2
 msgid "The Journey Begins"
-msgstr "Putovanje pocinje"
+msgstr "Путовање почиње"
 
 #: data/stories/tutorial_intro.story:9
 msgid ""
@@ -2106,6 +2426,10 @@ msgid ""
 "like nothing could disrupt their peace.  The Pingus were happy and it seemed "
 "like this could never end."
 msgstr ""
+"Дуго времена, Пингвинци су живели срећно и у миру на Јужном полу заједно са "
+"свим осталим животињама. Све је било у равнотежи и изгледало је као да ништа "
+"не може да поремети њихов мир. Пингвинци су били срећни и чинило се да овоме "
+"никада неће бити краја."
 
 #: data/stories/tutorial_intro.story:17
 msgid ""
@@ -2114,6 +2438,9 @@ msgid ""
 "in the world's climate, but things seemed to get worse and worse with every "
 "year."
 msgstr ""
+"Али онда, једног дана, ствари су почеле полако да се мењају: небо је постало "
+"тамније а земља је постала топлија. Испрва, помислили су да је то само "
+"уобичајен ток светске климе, али ствари су се погоршавале из године у годину."
 
 #: data/stories/tutorial_intro.story:25
 msgid ""
@@ -2122,6 +2449,10 @@ msgid ""
 "knew that this wouldn't help: they knew that they had to do something about "
 "it."
 msgstr ""
+"Снег је почео да се топи у неколико области а храна је постала проблем. "
+"Остале животиње су покушале да напусте предео да би потражиле хладније "
+"области, али Пингвинци су знали да им то неће помоћи: знали су да морају да "
+"ураде нешто по том питању."
 
 #: data/stories/tutorial_intro.story:33
 msgid ""
@@ -2130,6 +2461,10 @@ msgid ""
 "this warming. The expedition consisted of hundreds of the bravest Pingus on "
 "the South Pole."
 msgstr ""
+"Дакле, круг најстаријих се окупио да би одлучили шта да ураде поводом тога. "
+"Одлучили су да пошаљу експедицију у свет да пронађе узрок овог загревања. "
+"Експедиција се састојала од неколико стотина најхрабријих Пингвинаца са "
+"Јужног пола."
 
 #: data/stories/tutorial_intro.story:41
 msgid ""
@@ -2139,6 +2474,10 @@ msgid ""
 "island has always been the first stop of Pingus that were sent out into the "
 "world."
 msgstr ""
+"Они су изабрали вас да их водите на њиховом путовању око света. Пошто ће "
+"путовање бити опасно и тешко, ваш први циљ је острво Могорок, такође познато "
+"као острво увежбавања. Према најстаријима, ово острво је одувек било прва "
+"станица Пингвинцима које су слали у свет."
 
 #: data/stories/tutorial_intro.story:50
 msgid ""
@@ -2146,6 +2485,10 @@ msgid ""
 "abilities. The Pingus can learn to build bridges, climb, bash and use many "
 "other talents which they will need on their long and dangerous journey."
 msgstr ""
+"Острво се састоји од многих области које су идеалне за учење Пингвинаца "
+"њиховим способностима. Пингвинци могу да науче да граде мостове, да се пењу, "
+"да прокопавају и да користе многе друге таленте који ће им требати на "
+"њиховом дугом и опасном путовању."
 
 #: data/stories/tutorial_intro.story:57
 msgid ""
@@ -2154,6 +2497,10 @@ msgid ""
 "and learn to master them, since you will need all of them on your journey "
 "around the world."
 msgstr ""
+"Док сте тамо, можете да увежбавате ваше способности у командовању и вођењу "
+"Пингвинаца. Такође можете да се упознате са свим способностима које "
+"Пингвинци а пружају и да научите да владате њима, јер ће вам све оне бити "
+"потребне на вашем путу око света."
 
 #: data/stories/tutorial_intro.story:65
 msgid ""
@@ -2162,10 +2509,14 @@ msgid ""
 "\n"
 "Good Luck!"
 msgstr ""
+"Сада када сте ви и Пингвинци стигли на острво увежбавања време је да "
+"преузмете кормило и да започнете вашу мисију.\n"
+"\n"
+"Срећно!"
 
 #: data/stories/tutorial_outro.story:2
 msgid "The Journey Continues"
-msgstr "Putovanje se nastavlja"
+msgstr "Путовање се наставља"
 
 #: data/stories/tutorial_outro.story:9
 msgid ""
@@ -2175,6 +2526,10 @@ msgid ""
 "the whole way into the warmer climates the Pingus have to find something "
 "else to guide them on their journey."
 msgstr ""
+"Сада након што сте ви и Пингвинци научили основе и мало се увежбали време је "
+"да кренете даље и да започнете путовање по свету. Пошто санта леда којом су "
+"Пингвинци допутовали на острво увежбавања неће издржати целим путем у "
+"топлијим поднебљима Пингвинци морају да пронађу неко друго превозно средство."
 
 #: data/stories/tutorial_outro.story:18
 msgid ""
@@ -2184,6 +2539,10 @@ msgid ""
 "large tree at the end of the island which gave them wood to construct a "
 "float."
 msgstr ""
+"Али, као што је рекао најстарији, острво увежбавања не пружа само добар "
+"начин за вежбање, већ је такође и полазна тачка у свет. Након дужег "
+"претраживања Пингвинци су открили смисао овога, и пронашли су велико дрво на "
+"крају острва које им је дало дрва за изградњу пловног објекта."
 
 #: data/stories/tutorial_outro.story:27
 msgid ""
@@ -2192,6 +2551,10 @@ msgid ""
 "their journey and leave their familiar ground and enter the unknown parts of "
 "the world."
 msgstr ""
+"Тако да су Пингвинци прионули на посао и изградили неколико великих "
+"сплавова, довољних за све њих. Након што су такође запаковали потребних "
+"живежи били су спремни да започну путовање и да напусте своју родну земљу и "
+"да зађу у непознате делове света."
 
 #: data/stories/tutorial_outro.story:35
 msgid ""
@@ -2200,90 +2563,105 @@ msgid ""
 "\n"
 "To be continued..."
 msgstr ""
+"Затим су се Пингвинци укрцали на сплав, питајући се шта ли их све очекује и "
+"где треба да иду, док су лагано отплутавали у залазак сунца.\n"
+"\n"
+"Наставиће се..."
 
 #: data/levelsets/alien.levelset:3
 msgid "Alien by Josh Dye"
-msgstr ""
+msgstr "Ванземаљце је припремио Џош Дај"
 
 #: data/levelsets/alien.levelset:4
 msgid "Escape from alien"
-msgstr ""
+msgstr "Утекните ванземаљцима"
 
 #: data/levelsets/crystal.levelset:3
 msgid "Crystal"
-msgstr ""
+msgstr "Кристал"
 
 #: data/levelsets/crystal.levelset:4
 msgid "Crystaline sparkling full of danger"
-msgstr ""
+msgstr "Кристални сјај пун опасности"
 
 #: data/levelsets/desert.levelset:3
 msgid "Desert"
-msgstr ""
+msgstr "Пустиња"
 
 #: data/levelsets/desert.levelset:4
 msgid "Getting hot outside..."
+msgstr "Вани постаје вруће..."
+
+#: data/levelsets/eyeland.levelset:2
+msgid "Eye Land"
 msgstr ""
 
 #: data/levelsets/factory.levelset:3
 msgid "Factory Campaign"
-msgstr ""
+msgstr "Мисија фабрике"
 
 #: data/levelsets/factory.levelset:4
 msgid "Pingus expedition"
-msgstr ""
-
-#: data/levelsets/halloween.levelset:3
-msgid "Halloween 2007"
-msgstr ""
-
-#: data/levelsets/halloween.levelset:4
-msgid "Trapped at All Hallows Eve"
-msgstr ""
+msgstr "Експедиција Пингвинаца"
 
 #: data/levelsets/halloween2011.levelset:2
 msgid "Halloween 2011"
-msgstr ""
+msgstr "Ноћ вештица 2011"
 
 #: data/levelsets/halloween2011.levelset:3
 msgid "Going Underground"
-msgstr ""
+msgstr "Спуштање у подземље"
+
+#: data/levelsets/halloween.levelset:3
+msgid "Halloween 2007"
+msgstr "Ноћ вештица 2007"
+
+#: data/levelsets/halloween.levelset:4
+msgid "Trapped at All Hallows Eve"
+msgstr "Заробљени у вече пред Ноћ вештица"
 
 #: data/levelsets/hellmouth.levelset:3
 msgid "Hellmouth"
-msgstr ""
+msgstr "Врата пакла"
 
 #: data/levelsets/hellmouth.levelset:4
 msgid "A cave full of slime..."
-msgstr ""
+msgstr "Пећина пуна муља..."
 
 #: data/levelsets/jungle.levelset:3
 msgid "Jungle"
-msgstr ""
+msgstr "Џунгла"
 
 #: data/levelsets/mysteryisland.levelset:3
 msgid "Island of Mystery"
-msgstr ""
+msgstr "Острво мистерије"
 
 #: data/levelsets/mysteryisland.levelset:4
 msgid "Marooned on an Uncharted Isle [by Lachlan McCubbin]"
-msgstr ""
+msgstr "Остављени на неистраженом острву [приредио Лашлан МекКјубин]"
 
 #: data/levelsets/pacman.levelset:3
 msgid "Pac-Man"
-msgstr ""
+msgstr "Пак-ман"
 
 #: data/levelsets/pacman.levelset:4
 msgid "Trapped in a video game"
-msgstr ""
+msgstr "Заробљени у видео игри"
 
 #: data/levelsets/xmas2011.levelset:3
 msgid "Xmas 2011"
-msgstr ""
+msgstr "Божић 2011"
 
 #: data/levelsets/xmas2011.levelset:4
 msgid "Merry Christmas and a Happy New Year"
-msgstr ""
+msgstr "Срећан Божић и Срећна Нова Година"
+
+#~ msgid ""
+#~ "Aliens invade our starship blocking intrance to the teleporter. Your crew "
+#~ "is well trained, like you they don't panic."
+#~ msgstr ""
+#~ "Ванземаљци су заузели наш свемирски брод закрчујући улаз у телепортер. "
+#~ "Ваша посада је одлично увежбана, баш као и ви и они не паниче."
 
 #~ msgid "Rocketlauncher"
 #~ msgstr "Lanser raketa"
@@ -2305,9 +2683,6 @@ msgstr ""
 
 #~ msgid "-Gfx"
 #~ msgstr "-Grafika"
-
-#~ msgid "-Music"
-#~ msgstr "-Muzika"
 
 #~ msgid "-Level Design"
 #~ msgstr "-Dizajn nivoa"
