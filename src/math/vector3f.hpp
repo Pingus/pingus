@@ -88,7 +88,7 @@ public:
   {
     float f = Math::sqrt(x * x + y * y + z * z);
 
-    if (f)
+    if (f != 0.0f)
     {
       x /= f;
       y /= f;

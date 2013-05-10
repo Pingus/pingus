@@ -168,7 +168,7 @@ public:
 
   Size get_size(const std::string& text) const
   {
-    return Size(get_width(text), get_height());
+    return Size(static_cast<int>(get_width(text)), get_height());
   }
 
   Rect bounding_rect(int x, int y, const std::string& str) const
