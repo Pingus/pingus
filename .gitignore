@@ -7,6 +7,7 @@
 /build-win32
 /build-win32.old
 /config.log
+/old
 *~
 *.o
 /pingus-evil
