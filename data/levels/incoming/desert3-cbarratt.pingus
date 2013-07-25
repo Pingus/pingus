@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Inside the pyramid")
     (description "A level that involves lots of bridge bulding and takes a little bit of thinking.")
-    (author "Cameron")
+    (author "Cameron Barratt")
     (number-of-pingus 30)
     (number-to-save 21)
     (time -1)

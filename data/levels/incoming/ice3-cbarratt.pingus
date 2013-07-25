@@ -2,9 +2,9 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "")
+    (levelname "Ice")
     (description "")
-    (author "")
+    (author "Cameron Barratt")
     (number-of-pingus 50)
     (number-to-save 20)
     (time -1)
