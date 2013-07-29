@@ -12,12 +12,12 @@
     (actions 
       (basher 1)
       (blocker 1)
-      (bomber 2)
+      (bomber 1)
       (bridger 1)
       (climber 1)
-      (digger 1)
       (floater 1)
-      (jumper 1))
+      (jumper 1)
+      (miner 1))
     (levelsize 1920 1200))
   (objects 
     (surface-background 
@@ -88,7 +88,7 @@
       (surface 
         (image "groundpieces/ground/desert/blobdune")
         (modifier "ROT0"))
-      (position 573 467 0))
+      (position 572 467 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -100,7 +100,7 @@
       (surface 
         (image "groundpieces/ground/desert/sluggydu")
         (modifier "ROT0"))
-      (position 967 434 0))
+      (position 1059 436 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -112,13 +112,13 @@
       (surface 
         (image "groundpieces/ground/jungle/branch5")
         (modifier "ROT0"))
-      (position 683 195 0))
+      (position 676 186 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/desert/bigbrickpiece")
         (modifier "ROT0"))
-      (position 357 336 0))
+      (position 343 336 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -136,7 +136,7 @@
       (surface 
         (image "groundpieces/ground/desert/blobdune")
         (modifier "ROT0"))
-      (position 1079 423 0))
+      (position 1116 424 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -396,6 +396,12 @@
         (release-rate 35)
         (direction "left")
         (owner-id 0)))
+    (groundpiece
+      (type "remove")
+      (surface
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+        (position 899 414 0))
     (liquid 
       (surface 
         (image "liquids/slime")
