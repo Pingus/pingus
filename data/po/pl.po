@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: pingus\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-13 14:47+0200\n"
-"PO-Revision-Date: 2013-07-28 16:04+0200\n"
+"PO-Revision-Date: 2013-07-30 13:07+0200\n"
 "Last-Translator: Marcin Kocur <marcin2006@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -2610,7 +2610,7 @@ msgstr "Święta Bożego Narodzenia 2011"
 
 #: data/levelsets/xmas2011.levelset:4
 msgid "Merry Christmas and a Happy New Year"
-msgstr "Wesołych Świąt Bożego Narodzenia i Szczęśliwego Nowego Roku"
+msgstr "Wesołych Świąt i szczęśliwego Nowego Roku"
 
 #~ msgid "Abort"
 #~ msgstr "Przerwij"
