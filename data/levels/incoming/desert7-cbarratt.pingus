@@ -639,6 +639,18 @@
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
       (position 439 658 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 531 403 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 499 402 0))
     (entrance 
       (position 530 278 110)
       (owner-id 0)
@@ -646,3 +658,4 @@
       (release-rate 150))))
 
 ;; EOF ;;
+
