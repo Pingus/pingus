@@ -1,0 +1,690 @@
+(pingus-level 
+  (version 3)
+  (head 
+    (license "GPLv3+")
+    (levelname "PINGUS freefall")
+    (description "A fun pingus level (Tip : give them floaters near the bottom)")
+    (author "Cameron Barratt")
+    (number-of-pingus 2000)
+    (number-to-save 20)
+    (time -1)
+    (music "")
+    (actions 
+      (floater 40))
+    (levelsize 1920 10000))
+  (objects 
+    (surface-background 
+      (surface 
+        (image "textures/bluestars")
+        (modifier "ROT0"))
+      (position 98 123 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri1")
+        (modifier "ROT0"))
+      (position -4 9845 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_large")
+        (modifier "ROT0"))
+      (position -5 9784 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri1")
+        (modifier "ROT0"))
+      (position 193 9845 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri1")
+        (modifier "ROT0"))
+      (position 391 9845 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri1")
+        (modifier "ROT0"))
+      (position 589 9844 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri1")
+        (modifier "ROT0"))
+      (position 787 9843 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri1")
+        (modifier "ROT0"))
+      (position 982 9843 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri1")
+        (modifier "ROT0"))
+      (position 1178 9843 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri1")
+        (modifier "ROT0"))
+      (position 1376 9843 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri1")
+        (modifier "ROT0"))
+      (position 1574 9843 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri1")
+        (modifier "ROT0"))
+      (position 1771 9842 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_large")
+        (modifier "ROT0"))
+      (position 1856 9779 0))
+    (exit 
+      (surface 
+        (image "exits/industrial")
+        (modifier "ROT0"))
+      (position 133 9844 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/industrial")
+        (modifier "ROT0"))
+      (position 623 9847 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/industrial")
+        (modifier "ROT0"))
+      (position 1278 9850 0)
+      (owner-id 0))
+    (entrance 
+      (position 365 554 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 366 566 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 368 577 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 368 591 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 368 606 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 368 620 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 368 636 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 370 654 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 384 520 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 397 521 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 412 521 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 431 530 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 438 548 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 441 568 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 438 583 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 423 586 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 407 585 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 390 590 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 379 587 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 363 522 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 361 546 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 365 573 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 513 511 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 512 550 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 512 561 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 514 589 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 514 573 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 514 608 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 517 623 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 518 654 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 518 640 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 518 671 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 603 670 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 604 654 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 605 638 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 602 619 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 607 603 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 609 584 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 609 563 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 607 543 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 608 522 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 622 526 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 640 539 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 370 672 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 371 686 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 657 554 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 672 571 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 688 582 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 702 596 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 712 612 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 729 628 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 746 644 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 765 660 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 765 510 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 768 529 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 770 555 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 772 574 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 774 593 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 772 614 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 770 639 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 859 506 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 852 533 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 853 556 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 849 580 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 854 608 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 851 633 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 927 662 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 897 659 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 870 653 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 879 491 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 911 496 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 933 496 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 952 507 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 963 533 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 953 645 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 951 664 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 963 555 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 968 618 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 982 616 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1074 541 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1071 513 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1072 490 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 941 617 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1075 561 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1078 590 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1081 612 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1082 643 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1108 652 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1139 656 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1169 659 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1190 646 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1191 617 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1193 590 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1193 566 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1193 543 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1193 519 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1192 495 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1193 480 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1361 486 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1323 494 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1305 507 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1339 488 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1353 574 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1299 531 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1387 489 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1309 552 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1329 565 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1375 579 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1379 600 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1377 623 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1358 638 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1335 644 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1306 646 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))
+    (entrance 
+      (position 1291 645 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 30))))
+
+;; EOF ;;
