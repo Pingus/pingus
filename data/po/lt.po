@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pingus\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-02-13 03:15+0100\n"
-"PO-Revision-Date: 2012-03-07 22:09+0000\n"
+"PO-Revision-Date: 2013-08-28 07:35+0000\n"
 "Last-Translator: Mantas Kriaučiūnas <mantas@akl.lt>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-10 19:40+0000\n"
-"X-Generator: Launchpad (build 16482)\n"
+"X-Launchpad-Export-Date: 2013-08-28 09:28+0000\n"
+"X-Generator: Launchpad (build 16738)\n"
 
 #: src/editor/object_properties.cpp:87 src/editor/object_properties.cpp:515
 msgid "Object:"
@@ -48,7 +48,7 @@ msgstr "Vanduo"
 
 #: src/editor/object_properties.cpp:102
 msgid "Lava"
-msgstr ""
+msgstr "Lava"
 
 #: src/editor/object_properties.cpp:103
 msgid "Remove"
@@ -268,43 +268,36 @@ msgid "Save your level"
 msgstr "Įrašyti jūsų kuriamą lygį"
 
 #: src/editor/level_properties.cpp:52
-#, fuzzy
 msgid "Author:"
-msgstr "Autorius: "
+msgstr ""
 
 #: src/editor/level_properties.cpp:55
-#, fuzzy
 msgid "Levelname:"
-msgstr "Failo pavadinimas:"
+msgstr ""
 
 #: src/editor/level_properties.cpp:58
-#, fuzzy
 msgid "Description:"
-msgstr "Kryptis:"
+msgstr ""
 
 #: src/editor/level_properties.cpp:62
-#, fuzzy
 msgid "Pingus Count:"
-msgstr "Pingvinų ekspedicija"
+msgstr ""
 
 #: src/editor/level_properties.cpp:65
-#, fuzzy
 msgid "Pingus to Save:"
-msgstr "Reikia išgelbėti: "
+msgstr ""
 
 #: src/editor/level_properties.cpp:68
-#, fuzzy
 msgid "Time:"
-msgstr "Laikas: "
+msgstr ""
 
 #: src/editor/level_properties.cpp:71
 msgid "Width:"
 msgstr ""
 
 #: src/editor/level_properties.cpp:77
-#, fuzzy
 msgid "Music:"
-msgstr "Muzikos garsumas:"
+msgstr ""
 
 #: src/editor/editor_screen.cpp:230
 msgid "== Editor Help =="
@@ -427,7 +420,7 @@ msgstr "Rausėjas"
 
 #: src/pingus/action_name.cpp:29
 msgid "Blocker"
-msgstr ""
+msgstr "Stabdytojas"
 
 #: src/pingus/action_name.cpp:30
 msgid "Boarder"
@@ -630,7 +623,7 @@ msgstr ""
 
 #: src/pingus/screens/pingus_menu.cpp:75
 msgid "..:: Bye, bye ::.."
-msgstr ""
+msgstr "..:: Ate, ate ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:87
 msgid ""
@@ -669,6 +662,8 @@ msgid ""
 "You saved exactly what you needed - you made it, but\n"
 "maybe you can do better?"
 msgstr ""
+"Jūs išsaugojote tiksliai tiek pingvinų, kiek reikėjo - užduotis įvykdyta,\n"
+"bet gal jūs galite ir geriau?"
 
 #: src/pingus/screens/result_screen.cpp:207
 msgid "Not everybody was saved, but still good work!"
@@ -676,7 +671,7 @@ msgstr "Ne visi pingvinai pasiekė tikslą, bet Jūs užduotį įvykdėte!"
 
 #: src/pingus/screens/result_screen.cpp:209
 msgid "What can I say, you made it - congratulations!"
-msgstr ""
+msgstr "Jūs įvykdėte užduotį - sveikinu!"
 
 #: src/pingus/screens/result_screen.cpp:214
 msgid "You killed everybody, not good."
@@ -919,7 +914,7 @@ msgstr ""
 
 #: src/pingus/game_time.cpp:29
 msgid "unlimited"
-msgstr ""
+msgstr "neribotas"
 
 #: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
@@ -935,7 +930,7 @@ msgstr ""
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
 msgid "If the way is blocked, bash away"
-msgstr ""
+msgstr "Jei praėjimas užstatytas - rauskite"
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:6
 msgid ""
@@ -1230,7 +1225,7 @@ msgstr ""
 
 #: data/levels/halloween/halloween5-grumbel.pingus:5
 msgid "Bridgers Nightmare"
-msgstr ""
+msgstr "Tiltų statytojo košmaras"
 
 #: data/levels/halloween/halloween5-grumbel.pingus:6
 msgid ""
@@ -2033,7 +2028,7 @@ msgstr ""
 
 #: data/levels/xmas2011/xmas09-grumbel.pingus:5
 msgid "The Impossible Bridge"
-msgstr ""
+msgstr "(Ne)įmanomas tiltas"
 
 #: data/levels/xmas2011/xmas09-grumbel.pingus:6
 msgid ""
