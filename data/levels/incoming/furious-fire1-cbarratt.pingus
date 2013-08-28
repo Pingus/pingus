@@ -2,7 +2,7 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "Furious Fire")
+    (levelname "Furious fire level")
     (description "")
     (author "Cameron Barratt")
     (number-of-pingus 50)
@@ -21,449 +21,7 @@
       (surface 
         (image "textures/anim_fire")
         (modifier "ROT0"))
-      (position 96 94 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 159 99 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 223 99 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 350 99 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 414 101 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 477 101 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 541 102 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 605 100 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 668 98 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 731 93 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 794 96 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 858 92 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 920 97 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 984 95 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 1042 98 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 1106 94 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 1166 93 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 1229 87 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 1289 90 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 1352 90 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 1416 89 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 1480 91 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 1544 90 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 1607 90 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 1671 90 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 1733 87 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 1792 90 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/flamebg")
-        (modifier "ROT0"))
-      (position 1605 671 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/flamebg")
-        (modifier "ROT0"))
-      (position 1350 673 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/flamebg")
-        (modifier "ROT0"))
-      (position 1096 674 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/flamebg")
-        (modifier "ROT0"))
-      (position 842 674 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/flamebg")
-        (modifier "ROT0"))
-      (position 588 675 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/flamebg")
-        (modifier "ROT0"))
-      (position 334 675 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/flamebg")
-        (modifier "ROT0"))
-      (position 87 676 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/anim_fire")
-        (modifier "ROT0"))
-      (position 287 98 -1000)
+      (position -286 36 -1000)
       (colori 0 0 0 0)
       (stretch-x #f)
       (stretch-y #f)
@@ -484,7 +42,7 @@
       (surface 
         (image "groundpieces/ground/forest/ground3")
         (modifier "ROT0"))
-      (position 1689 239 0))
+      (position 1690 239 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -504,13 +62,13 @@
         (modifier "ROT0"))
       (position 1172 181 0))
     (spike 
-      (position 1850 215 0))
+      (position 1853 212 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/forest/ground1")
         (modifier "ROT0"))
-      (position 1805 129 0))
+      (position 1804 131 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -522,37 +80,13 @@
       (surface 
         (image "groundpieces/solid/industrial/joint3")
         (modifier "ROT0"))
-      (position 1070 192 0))
+      (position 1072 193 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/industrial/joint3")
         (modifier "ROT0"))
-      (position 1016 192 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/industrial/joint3")
-        (modifier "ROT0"))
-      (position 1147 498 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/industrial/joint3")
-        (modifier "ROT0"))
-      (position 1094 498 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/industrial/joint3")
-        (modifier "ROT0"))
-      (position 1039 497 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/industrial/joint3")
-        (modifier "ROT0"))
-      (position 986 497 0))
+      (position 1020 193 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -569,30 +103,11 @@
     (groundpiece 
       (type "solid")
       (surface 
-        (image "groundpieces/solid/industrial/joint3")
-        (modifier "ROT0"))
-      (position 932 498 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/industrial/joint3")
-        (modifier "ROT0"))
-      (position 877 499 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
         (image "groundpieces/solid/industrial/steel5")
         (modifier "ROT0"))
       (position 650 440 0))
     (laser_exit 
-      (position 1126 435 0))
-    (hotspot 
-      (surface 
-        (image "hotspots/signposts/arrow_west")
-        (modifier "ROT0"))
-      (position 870 455 0)
-      (speed 0)
-      (parallax 0))
+      (position 1128 439 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -647,12 +162,6 @@
         (image "groundpieces/solid/industrial/screw")
         (modifier "ROT0"))
       (position 597 452 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/industrial/screw")
-        (modifier "ROT0"))
-      (position 866 510 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -779,24 +288,18 @@
         (image "groundpieces/bridge/misc/bridge_right")
         (modifier "ROT0"))
       (position 1143 772 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/forest/ground3")
-        (modifier "ROT0"))
-      (position 1368 814 0))
     (hotspot 
       (surface 
         (image "hotspots/space/engine")
         (modifier "ROT0"))
-      (position 1431 433 0)
+      (position 1431 429 0)
       (speed 0)
       (parallax 0))
     (hotspot 
       (surface 
         (image "hotspots/space/engine")
         (modifier "ROT0"))
-      (position 1843 430 0)
+      (position 1837 436 0)
       (speed 0)
       (parallax 0))
     (hotspot 
@@ -810,7 +313,7 @@
       (surface 
         (image "hotspots/space/engine")
         (modifier "ROT0"))
-      (position 1259 316 0)
+      (position 1263 307 0)
       (speed 0)
       (parallax 0))
     (hotspot 
@@ -824,14 +327,14 @@
       (surface 
         (image "hotspots/space/engine")
         (modifier "ROT0"))
-      (position 266 705 0)
+      (position 265 704 0)
       (speed 0)
       (parallax 0))
     (hotspot 
       (surface 
         (image "hotspots/space/engine")
         (modifier "ROT0"))
-      (position 626 774 0)
+      (position 627 799 0)
       (speed 0)
       (parallax 0))
     (hotspot 
@@ -853,37 +356,37 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1842 406 0))
+      (position 1842 404 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1779 408 0))
+      (position 1778 404 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1716 407 0))
+      (position 1715 404 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1652 407 0))
+      (position 1652 404 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1587 406 0))
+      (position 1588 404 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1523 405 0))
+      (position 1525 404 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -895,61 +398,61 @@
       (surface 
         (image "groundpieces/ground/halloween/stairs")
         (modifier "ROT0"))
-      (position 1517 794 0))
+      (position 1521 778 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/stairs")
         (modifier "ROT0"))
-      (position 1538 771 0))
+      (position 1544 756 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/stairs")
         (modifier "ROT0"))
-      (position 1560 748 0))
+      (position 1563 737 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/stairs")
         (modifier "ROT0"))
-      (position 1582 725 0))
+      (position 1586 713 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/stairs")
         (modifier "ROT0"))
-      (position 1605 701 0))
+      (position 1609 690 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/stairs")
         (modifier "ROT0"))
-      (position 1628 677 0))
+      (position 1630 668 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/stairs")
         (modifier "ROT0"))
-      (position 1651 653 0))
+      (position 1652 647 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/stairs")
         (modifier "ROT0"))
-      (position 1674 629 0))
+      (position 1672 626 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/stairs")
         (modifier "ROT0"))
-      (position 1695 605 0))
+      (position 1695 603 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/halloween/stairs")
         (modifier "ROT0"))
-      (position 1717 581 0))
+      (position 1717 580 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -968,70 +471,36 @@
         (image "groundpieces/solid/desert/leftsmallbrick")
         (modifier "ROT0"))
       (position 1595 495 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/industrial/joint3")
-        (modifier "ROT0"))
-      (position 1546 497 0))
     (exit 
       (surface 
         (image "exits/stone")
         (modifier "ROT0"))
-      (position 1570 500 0)
+      (position 1565 502 0)
       (owner-id 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_vert")
         (modifier "ROT0"))
-      (position 1645 531 0))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1584 495 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1582 520 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1521 496 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1522 519 0)
-      (speed 0)
-      (repeat 1))
+      (position 1651 527 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_vert")
         (modifier "ROT0"))
-      (position 1499 523 0))
+      (position 1492 521 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1583 581 0))
+      (position 1556 585 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1518 581 0))
+      (position 1492 585 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -1055,373 +524,79 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1057 702 0))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1466 638 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1402 637 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1337 637 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1273 638 0)
-      (speed 0)
-      (repeat 1))
+      (position 1055 701 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1244 702 0))
+      (position 1245 701 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1182 702 0))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1209 639 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1145 639 0)
-      (speed 0)
-      (repeat 1))
+      (position 1181 701 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1119 704 0))
+      (position 1118 701 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1371 733 0))
+      (position 1372 701 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 1308 732 0))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1341 659 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1343 667 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1084 640 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1020 640 0)
-      (speed 0)
-      (repeat 1))
+      (position 1309 701 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 996 702 0))
+      (position 992 701 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 932 701 0))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 81 1092 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 145 1093 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 208 1092 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 272 1091 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 334 1092 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 397 1093 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 459 1093 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 524 1093 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 588 1092 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 650 1092 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 714 1092 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 775 1093 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 837 1093 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 899 1092 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 963 1093 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 901 1114 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1028 1092 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1090 1092 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1064 1113 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1152 1093 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1216 1094 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1278 1095 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1341 1097 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1405 1097 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1470 1096 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1532 1097 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1595 1097 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1657 1097 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1721 1096 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1784 1094 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1847 1094 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 957 640 0)
-      (speed 0)
-      (repeat 1))
+      (position 928 700 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_vert")
         (modifier "ROT0"))
-      (position 927 642 0))
+      (position 928 637 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/industrial/joint3")
         (modifier "ROT0"))
-      (position 872 197 0))
+      (position 870 195 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/misc/brick1")
         (modifier "ROT0"))
-      (position 985 192 0))
+      (position 989 192 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/misc/brick1")
         (modifier "ROT0"))
-      (position 954 192 0))
+      (position 958 192 0))
     (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/misc/brick1")
         (modifier "ROT0"))
-      (position 922 192 0))
+      (position 927 192 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -1435,11 +610,11 @@
         (modifier "ROT0"))
       (position 859 205 0))
     (spike 
-      (position 706 207 0))
+      (position 705 202 0))
     (spike 
-      (position 805 326 0))
+      (position 805 324 0))
     (spike 
-      (position 780 319 0))
+      (position 779 316 0))
     (groundpiece 
       (type "bridge")
       (surface 
@@ -1451,7 +626,7 @@
       (surface 
         (image "groundpieces/bridge/misc/bridge_right")
         (modifier "ROT0"))
-      (position 688 226 0))
+      (position 680 228 0))
     (groundpiece 
       (type "bridge")
       (surface 
@@ -1492,7 +667,7 @@
       (surface 
         (image "hotspots/space/engine")
         (modifier "ROT0"))
-      (position 1005 231 0)
+      (position 1003 235 0)
       (speed 0)
       (parallax 0))
     (hotspot 
@@ -1502,84 +677,36 @@
       (position 593 482 0)
       (speed 0)
       (parallax 0))
-    (hotspot 
-      (surface 
-        (image "hotspots/space/engine")
-        (modifier "ROT0"))
-      (position 1090 536 0)
-      (speed 0)
-      (parallax 0))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 1113 619 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 741 635 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 803 634 0)
-      (speed 0)
-      (repeat 1))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_vert")
         (modifier "ROT0"))
-      (position 864 645 0))
+      (position 865 638 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 802 691 0))
+      (position 832 700 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 742 691 0))
+      (position 768 700 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 681 679 0))
+      (position 704 700 0))
     (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT0"))
-      (position 578 646 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/misc/metalplate_horiz")
-        (modifier "ROT0"))
-      (position 621 674 0))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 683 636 0)
-      (speed 0)
-      (repeat 1))
-    (liquid 
-      (surface 
-        (image "liquids/lava")
-        (modifier "ROT0"))
-      (position 638 610 0)
-      (speed 0)
-      (repeat 1))
+      (position 640 700 0))
     (hotspot 
       (surface 
         (image "hotspots/space/engine")
@@ -1605,28 +732,28 @@
       (surface 
         (image "hotspots/space/engine")
         (modifier "ROT0"))
-      (position 1093 -45 0)
+      (position 1067 48 0)
       (speed 0)
       (parallax 0))
     (hotspot 
       (surface 
         (image "hotspots/space/engine")
         (modifier "ROT0"))
-      (position 1309 -65 0)
+      (position 1357 58 0)
       (speed 0)
       (parallax 0))
     (hotspot 
       (surface 
         (image "hotspots/space/engine")
         (modifier "ROT0"))
-      (position 1515 -1 0)
+      (position 1593 110 0)
       (speed 0)
       (parallax 0))
     (hotspot 
       (surface 
         (image "hotspots/space/engine")
         (modifier "ROT0"))
-      (position 1655 -18 0)
+      (position 1772 -29 0)
       (speed 0)
       (parallax 0))
     (groundpiece 
@@ -1650,12 +777,6 @@
     (groundpiece 
       (type "solid")
       (surface 
-        (image "groundpieces/solid/industrial/weld1")
-        (modifier "ROT0"))
-      (position 1719 537 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
         (image "groundpieces/solid/industrial/weld2")
         (modifier "ROT0"))
       (position 1845 557 0))
@@ -1672,18 +793,6 @@
         (modifier "ROT0"))
       (position 1033 471 0))
     (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/misc/metalplate_small")
-        (modifier "ROT0"))
-      (position 1311 702 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/misc/metalplate_small")
-        (modifier "ROT0"))
-      (position 1405 700 0))
-    (groundpiece 
       (type "ground")
       (surface 
         (image "groundpieces/ground/forest/ground2")
@@ -1695,7 +804,417 @@
       (overrides 
         (release-rate 50)
         (direction "misc")
-        (owner-id 0)))))
+        (owner-id 0)))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/screw")
+        (modifier "ROT0"))
+      (position 1114 202 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/screw")
+        (modifier "ROT0"))
+      (position 1062 204 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 1168 302 0)
+      (speed 0)
+      (parallax 0))
+    (liquid 
+      (surface 
+        (image "liquids/lava")
+        (modifier "ROT0"))
+      (position 1524 521 0)
+      (speed 0)
+      (repeat 2))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/brick1")
+        (modifier "ROT0"))
+      (position 1563 500 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/brick1")
+        (modifier "ROT0"))
+      (position 1534 500 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/screw")
+        (modifier "ROT0"))
+      (position 1543 589 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 1618 585 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/screw")
+        (modifier "ROT0"))
+      (position 1605 589 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/screw")
+        (modifier "ROT0"))
+      (position 1654 576 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/screw")
+        (modifier "ROT0"))
+      (position 1495 574 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/halloween/stairs")
+        (modifier "ROT0"))
+      (position 1497 802 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/forest/ground3")
+        (modifier "ROT0"))
+      (position 1365 819 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/screw")
+        (modifier "ROT0"))
+      (position 932 689 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/screw")
+        (modifier "ROT0"))
+      (position 1536 690 0))
+    (liquid 
+      (surface 
+        (image "liquids/lava")
+        (modifier "ROT0"))
+      (position 958 638 0)
+      (speed 0)
+      (repeat 9))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 640 668 0))
+    (liquid 
+      (surface 
+        (image "liquids/lava")
+        (modifier "ROT0"))
+      (position 672 636 0)
+      (speed 0)
+      (repeat 3))
+    (liquid 
+      (surface 
+        (image "liquids/lava")
+        (modifier "ROT0"))
+      (position 2 1133 0)
+      (speed 0)
+      (repeat 30))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 1682 557 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 1713 544 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/screw")
+        (modifier "ROT0"))
+      (position 1702 555 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 4 1039 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 148 1039 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 351 1038 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 568 1036 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 746 1020 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 1212 1023 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 1372 1023 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 1516 1017 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 1743 1014 0)
+      (speed 0)
+      (parallax 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 1777 985 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 1549 986 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 1406 993 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 1243 993 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 1075 991 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 915 994 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 780 990 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 601 1006 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 385 1007 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 183 1008 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 37 1009 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 125 673 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 298 680 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 663 778 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/screw")
+        (modifier "ROT0"))
+      (position 668 782 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 628 459 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 1200 273 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 1296 279 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 1401 298 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 1210 50 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 9 -21 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 567 281 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 1123 539 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 970 537 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 741 512 0)
+      (speed 0)
+      (parallax 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 775 488 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 1090 597 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 868 499 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/screw")
+        (modifier "ROT0"))
+      (position 868 510 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1010 499 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/screw")
+        (modifier "ROT0"))
+      (position 1009 510 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel1")
+        (modifier "ROT0"))
+      (position 1147 499 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/screw")
+        (modifier "ROT0"))
+      (position 1150 508 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 846 235 0)
+      (speed 0)
+      (parallax 0))))
 
 ;; EOF ;;
-
