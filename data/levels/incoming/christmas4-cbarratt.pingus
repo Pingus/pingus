@@ -3,12 +3,13 @@
   (head 
     (license "GPLv3+")
     (levelname "Christmas")
-    (description "")
+    (description "Finally the pingus cross the desert and after many days of traveling they reach a land of snow , they have been
+travling for so long that it is christmas")
     (author "Cameron Barratt")
     (number-of-pingus 50)
     (number-to-save 40)
     (time -1)
-    (music "")
+    (music "pingus-1.it")
     (actions 
       (basher 2)
       (blocker 6)
@@ -23,124 +24,7 @@
       (surface 
         (image "textures/bluestars")
         (modifier "ROT0"))
-      (position -2 0 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/bluestars")
-        (modifier "ROT0"))
-      (position 397 -1 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/bluestars")
-        (modifier "ROT0"))
-      (position 793 -3 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/bluestars")
-        (modifier "ROT0"))
-      (position 1195 7 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/bluestars")
-        (modifier "ROT0"))
-      (position 1588 -5 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/bluestars")
-        (modifier "ROT0"))
-      (position -5 597 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/bluestars")
-        (modifier "ROT0"))
-      (position 391 595 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/bluestars")
-        (modifier "ROT0"))
-      (position 788 599 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/bluestars")
-        (modifier "ROT0"))
-      (position 1182 594 -1000)
-      (colori 0 0 0 0)
-      (stretch-x #f)
-      (stretch-y #f)
-      (keep-aspect #f)
-      (scroll-x 0)
-      (scroll-y 0)
-      (para-x 0.5)
-      (para-y 0.5))
-    (surface-background 
-      (surface 
-        (image "textures/bluestars")
-        (modifier "ROT0"))
-      (position 1581 591 -1000)
+      (position -425 -165 -1000)
       (colori 0 0 0 0)
       (stretch-x #f)
       (stretch-y #f)
@@ -2033,13 +1917,9 @@
       (speed 0)
       (repeat 1))
     (snow-generator 
-      (position 526 37 0))
-    (snow-generator 
       (position 1479 68 0))
     (snow-generator 
-      (position 850 70 0))
-    (snow-generator 
-      (position 78 89 0))
+      (position -55 22 0))
     (groundpiece 
       (type "ground")
       (surface 
@@ -2396,4 +2276,3 @@
       (position 1657 390 0))))
 
 ;; EOF ;;
-

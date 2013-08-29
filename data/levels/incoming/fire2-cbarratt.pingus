@@ -2,10 +2,11 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "")
-    (description "")
-    (author "")
-    (number-of-pingus 50)
+    (levelname "Firey furnaces")
+    (description "The pingus come to a place in the building were there are fiery furnaces and they got excied because they saw 
+they button that switched of the smoke")
+    (author "Cameron Barratt")
+    (number-of-pingus 25)
     (number-to-save 20)
     (time -1)
     (music "")
@@ -1871,12 +1872,6 @@
         (image "groundpieces/solid/industrial/screw")
         (modifier "ROT0"))
       (position 1129 1083 0))
-    (groundpiece 
-      (type "solid")
-      (surface 
-        (image "groundpieces/solid/industrial/screw")
-        (modifier "ROT0"))
-      (position 1004 1121 0))
     (hotspot 
       (surface 
         (image "hotspots/space/engine")
@@ -1888,7 +1883,7 @@
       (surface 
         (image "liquids/lava")
         (modifier "ROT0"))
-      (position 0 1136 0)
+      (position 0 1137 0)
       (speed 0)
       (repeat 30))
     (groundpiece 
@@ -2635,6 +2630,61 @@
       (surface 
         (image "groundpieces/ground/industrial/pipe3")
         (modifier "ROT0"))
-      (position 861 196 0))))
+      (position 861 196 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/ordina/cable2")
+        (modifier "ROT0"))
+      (position 1004 1036 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/ordina/cable2")
+        (modifier "ROT0FLIP"))
+      (position 1069 1037 0))
+    (switchdoor-switch 
+      (position 921 1092 0)
+      (target-id "232"))
+    (switchdoor-door 
+      (position 1058 1013 0)
+      (id "232")
+      (height 21))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 1096 1091 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 988 1098 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/screw")
+        (modifier "ROT0"))
+      (position 1100 1096 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/screw")
+        (modifier "ROT0"))
+      (position 991 1099 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 1047 1092 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/screw")
+        (modifier "ROT0"))
+      (position 1051 1097 0))))
 
 ;; EOF ;;

@@ -3,12 +3,12 @@
   (head 
     (license "GPLv3+")
     (levelname "Furious fire level")
-    (description "")
+    (description "The pingus enter the building producing smoke to try stop it")
     (author "Cameron Barratt")
     (number-of-pingus 50)
     (number-to-save 25)
     (time -1)
-    (music "")
+    (music "pingus-9.it")
     (actions 
       (blocker 6)
       (bomber 2)

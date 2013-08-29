@@ -2,24 +2,19 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "")
-    (description "")
-    (author "")
+    (levelname "Double trouble")
+    (description "The pingus got separated and it would be enough trouble if they had not got seperated but now it is double trouble.")
+    (author "Cameon Barratt")
     (number-of-pingus 50)
-    (number-to-save 20)
+    (number-to-save 45)
     (time -1)
-    (music "")
+    (music "pingus-3.it")
     (actions 
-      (basher 20)
-      (blocker 20)
-      (bomber 20)
-      (bridger 20)
-      (climber 20)
-      (digger 20)
-      (floater 20)
-      (jumper 20)
-      (miner 20)
-      (slider 20))
+      (basher 5)
+      (blocker 2)
+      (bomber 4)
+      (bridger 15)
+      (digger 2))
     (levelsize 1920 1200))
   (objects 
     (surface-background 
@@ -684,15 +679,74 @@
       (speed 0)
       (parallax 0))
     (spike 
-      (position 238 392 0))
+      (position 237 401 0))
     (spike 
-      (position 208 391 0))
-    (hotspot 
+      (position 207 399 0))
+    (groundpiece 
+      (type "solid")
       (surface 
-        (image "hotspots/misc/deadly_fall_height")
+        (image "groundpieces/solid/misc/metalplate_vert")
         (modifier "ROT0"))
-      (position 1397 663 0)
-      (speed 1000)
-      (parallax 0))))
+      (position 1229 986 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 1229 924 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 1229 861 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 1230 799 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 1169 799 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 1106 800 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 1044 801 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 859 983 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 858 920 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 857 856 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 857 794 0))))
 
 ;; EOF ;;

@@ -2,13 +2,14 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "")
-    (description "")
-    (author "")
+    (levelname "Christmas is nearly over")
+    (description "Christmas is nearly over and the pingus can see that they are geting 
+closer to ther smoke")
+    (author "Cameron Barratt")
     (number-of-pingus 50)
     (number-to-save 20)
     (time -1)
-    (music "")
+    (music "pingus-3.it")
     (actions 
       (blocker 2)
       (bridger 5)

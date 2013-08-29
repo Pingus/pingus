@@ -2,13 +2,13 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "")
-    (description "")
-    (author "")
+    (levelname "The no hope slippey slope")
+    (description "The pingus come to a slippey slope were they have no hope because they have no blockers so how will they stop before they drown.")
+    (author "Cameron Barratt")
     (number-of-pingus 50)
     (number-to-save 40)
     (time -1)
-    (music "")
+    (music "pingus-4.it")
     (actions 
       (bomber 3)
       (jumper 1)
@@ -658,4 +658,3 @@
       (release-rate 150))))
 
 ;; EOF ;;
-

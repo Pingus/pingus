@@ -2,13 +2,13 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "Desert")
-    (description "")
-    (author "Cameron")
+    (levelname "Something in  the way")
+    (description "The pingus were going on the way when they stumbled across a few blocks in they path.")
+    (author "Cameron Barratt")
     (number-of-pingus 50)
     (number-to-save 50)
     (time -1)
-    (music "")
+    (music "pingus-7.it")
     (actions 
       (miner 2)
       (slider 2))

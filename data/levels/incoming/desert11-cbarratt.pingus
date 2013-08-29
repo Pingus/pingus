@@ -2,13 +2,13 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "Desert 11 confusion")
-    (description "")
-    (author "Cameron")
+    (levelname "Desert confusion")
+    (description "The pingus come to a room that is confusing begin to think their journey has come to an end,but maybe you may help")
+    (author "Cameron Barratt")
     (number-of-pingus 50)
     (number-to-save 40)
     (time -1)
-    (music "")
+    (music "pingus-3.it")
     (actions 
       (basher 1)
       (blocker 1)
@@ -1590,11 +1590,6 @@
       (surface 
         (image "groundpieces/solid/misc/metalplate_small")
         (modifier "ROT0"))
-      (position 1601 495 0))
-    (entrance 
-      (position 970 645 110)
-      (owner-id 0)
-      (direction "misc")
-      (release-rate 150))))
+      (position 1601 495 0))))
 
 ;; EOF ;;

@@ -8,7 +8,7 @@
     (number-of-pingus 2000)
     (number-to-save 20)
     (time -1)
-    (music "")
+    (music "pingus-4.it")
     (actions 
       (floater 40))
     (levelsize 1920 10000))

@@ -2,13 +2,13 @@
   (version 3)
   (head 
     (license "GPLv3+")
-    (levelname "Desert 9")
-    (description "")
+    (levelname "The bridge")
+    (description "There is a  old desert bridge near that the pingus can not get up by themselvesbut maby")
     (author "Cameron ")
     (number-of-pingus 50)
     (number-to-save 48)
     (time -1)
-    (music "")
+    (music "pingus-2.it")
     (actions 
       (basher 7)
       (bomber 2)
@@ -412,7 +412,7 @@
       (surface 
         (image "groundpieces/ground/desert/smallbrickpiece")
         (modifier "ROT0"))
-      (position 459 707 0))
+      (position 455 706 0))
     (groundpiece 
       (type "solid")
       (surface 
