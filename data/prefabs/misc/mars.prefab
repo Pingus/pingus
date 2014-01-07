@@ -1,0 +1,29 @@
+(pingus-prefab 
+  (version 3)
+  (objects 
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/real/real9")
+        (modifier "ROT0"))
+      (position -45 -23 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/real/real9")
+        (modifier "ROT270"))
+      (position -24 -34 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/ground/real/real9")
+        (modifier "ROT180"))
+      (position -33 -51 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/ground/real/real9")
+        (modifier "ROT90"))
+      (position -52 -44 0))))
+
+;; EOF ;;

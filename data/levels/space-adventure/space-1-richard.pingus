@@ -1,0 +1,330 @@
+(pingus-level 
+  (version 3)
+  (head 
+    (license "GPLv3+")
+    (levelname "Spaceship Duo")
+    (description "Just when the spaceship flew out of the Earth's atmosphere, something was wrong with it. Two Pingu were sent to open up all the gates in the spaceship so that it would be roomier for the Pingu.repair them, The two Pingu were assigned certain tasks to do in order to complete this, and if not done in the correct order, they will be screwed. [self-made level]")
+    (author "Richard Qian <richWiki101@gmail.com>")
+    (number-of-pingus 2)
+    (number-to-save 2)
+    (time -1)
+    (music "Yoshi's_Story/ystory_battle.mid")
+    (actions 
+      (basher 1)
+      (climber 2)
+      (jumper 2)
+      (miner 1))
+    (levelsize 1000 1000))
+  (objects 
+    (surface-background 
+      (surface 
+        (image "textures/bluestars")
+        (modifier "ROT0"))
+      (position 600 1 -1000)
+      (colori 0 0 0 150)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0.25)
+      (para-x 0.5)
+      (para-y 0.5))
+    (switchdoor-switch 
+      (position 753 486 -1)
+      (target-id "id81138"))
+    (switchdoor-switch 
+      (position 242 459 -1)
+      (target-id "id16475"))
+    (switchdoor-switch 
+      (position 650 625 -1)
+      (target-id "id71932"))
+    (switchdoor-switch 
+      (position 682 593 -1)
+      (target-id "id60204"))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/brick4")
+        (modifier "ROT0"))
+      (position 669 433 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/space/diagonalr")
+        (modifier "ROT0"))
+      (position 210 569 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/brick5")
+        (modifier "ROT90"))
+      (position 602 479 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/space/block1")
+        (modifier "ROT0"))
+      (position 545 526 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/space/diagonal")
+        (modifier "ROT0"))
+      (position 666 569 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/smallsolid")
+        (modifier "ROT0"))
+      (position 744 526 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/space/diagonal")
+        (modifier "ROT0"))
+      (position 734 501 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/crystal/smallsolid")
+        (modifier "ROT0"))
+      (position 733 430 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/space/diagonalr")
+        (modifier "ROT0"))
+      (position 733 433 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT90"))
+      (position 701 462 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT90"))
+      (position 701 398 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/space/diagonalr")
+        (modifier "ROT0"))
+      (position 665 365 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/space/diagonal")
+        (modifier "ROT0"))
+      (position 211 365 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/pipe")
+        (modifier "ROT0"))
+      (position 181 479 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/space/diagonal")
+        (modifier "ROT0"))
+      (position 143 433 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/crystal/smallsolid")
+        (modifier "ROT0"))
+      (position 210 511 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/space/diagonalr")
+        (modifier "ROT0"))
+      (position 142 501 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/space/diagonal")
+        (modifier "ROT0"))
+      (position 279 297 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/space/diagonalr")
+        (modifier "ROT0"))
+      (position 597 297 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT0"))
+      (position 372 297 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT0"))
+      (position 436 297 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT0"))
+      (position 500 297 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT0"))
+      (position 564 297 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/space/diagonal")
+        (modifier "ROT0"))
+      (position 597 637 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/space/diagonalr")
+        (modifier "ROT0"))
+      (position 278 637 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT0"))
+      (position 500 673 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT0"))
+      (position 372 673 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT0"))
+      (position 564 673 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT0"))
+      (position 436 673 0))
+    (prefab 
+      (name "prefabs/entrances/space")
+      (position 501 470 0)
+      (overrides 
+        (release-rate 25)
+        (direction "misc")
+        (owner-id 0)))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/space/block1")
+        (modifier "ROT0"))
+      (position 401 479 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 498 673 0)
+      (owner-id 0))
+    (switchdoor-door 
+      (position 401 540 0)
+      (id "id16475")
+      (height 39))
+    (switchdoor-door 
+      (position 282 402 0)
+      (id "id30293")
+      (height 31))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/pipe")
+        (modifier "ROT0"))
+      (position 300 479 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/ground/misc/bridge2")
+        (modifier "ROT0"))
+      (position 603 457 0))
+    (switchdoor-door 
+      (position 356 329 0)
+      (id "id81138")
+      (height 45))
+    (switchdoor-switch 
+      (position 371 289 0)
+      (target-id "id30293"))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/industrial/weld4")
+        (modifier "ROT0"))
+      (position 367 289 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/brick4")
+        (modifier "ROT180FLIP"))
+      (position 669 448 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/ground/misc/bridge2")
+        (modifier "ROT0"))
+      (position 652 433 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/signposts/arrow_northeast")
+        (modifier "ROT0"))
+      (position 329 604 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 591 703 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 309 703 0)
+      (speed 0)
+      (parallax 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/jube1")
+        (modifier "ROT0"))
+      (position 475 262 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/industrial/weld1")
+        (modifier "ROT0FLIP"))
+      (position 419 617 0))
+    (switchdoor-door 
+      (position 420 624 0)
+      (id "id71932")
+      (height 11))
+    (switchdoor-door 
+      (position 602 621 0)
+      (id "id60204")
+      (height 12))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/ground/misc/brick1")
+        (modifier "ROT90"))
+      (position 370 297 0))))
+
+;; EOF ;;
