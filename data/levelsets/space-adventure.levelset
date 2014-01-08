@@ -1,8 +1,9 @@
 ;; -*- scheme -*-
 (pingus-levelset
  (title "Space adventure")
- (description "by Richard Qian")
+ (description "Going beyond planet Earth and familiar lands")
  (image  "levelsets/space-adventure")
+ (locked #f)
  (levels 
   (level (filename "space-adventure/mountain-1-richard"))
   (level (filename "space-adventure/mountain-2-richard"))
