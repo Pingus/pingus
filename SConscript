@@ -187,9 +187,8 @@ class Project:
                                                      'src/engine/input/xinput/xinput_device.cpp'])
             
     def configure_boost(self):
-        if not self.conf.CheckLibWithHeader('boost_signals', 'boost/signals.hpp', 'c++'):
-            if not self.conf.CheckLibWithHeader('boost_signals-mt', 'boost/signals.hpp', 'c++'):
-                self.fatal_error += "  * library 'boost_signals' not found\n"
+        if not self.conf.CheckHeader('boost/signals2.hpp', '<>', 'c++'):
+            self.fatal_error += "  * library 'boost_signals2' not found\n"
 
     def configure_png(self):
         if self.conf.CheckMyProgram('pkg-config'):

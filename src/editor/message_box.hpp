@@ -45,7 +45,7 @@ public:
   void on_cancel_button();
 
 public:
-  boost::signal<void()> on_ok;
+  boost::signals2::signal<void()> on_ok;
 
 private:
   MessageBox(const MessageBox&);
