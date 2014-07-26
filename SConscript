@@ -22,26 +22,6 @@ import SCons.Util
 
 Import('package_version')
 
-def CheckSDLLib(context, sdllib):
-    """
-    On some platforms, SDL does this ugly redefine-main thing, that can
-    interact badly with CheckLibWithHeader.
-    """
-    lib = "SDL_%s" % sdllib
-    context.Message('Checking for %s...' % lib)
-    text = """
-#include "SDL.h"
-#include "%s.h"
-int main(int argc, char* argv[]) { return 0; }
-""" % lib
-    context.AppendLIBS(lib)
-    if context.BuildProg(text, ".cpp"):
-        context.Result("failed")
-        return False
-    else:
-        context.Result("ok")
-        return True
-
 def CheckIconv(context):
     context.Message('Check how to call iconv...')
     text = """
@@ -117,7 +97,6 @@ class Project:
 
         self.conf = self.env.Configure(custom_tests = {
             'CheckMyProgram' : CheckMyProgram,
-            'CheckSDLLib': CheckSDLLib,
             'CheckIconv': CheckIconv,
             })
         self.fatal_error = ""
@@ -198,13 +177,11 @@ class Project:
                 self.fatal_error += "  * library 'png' not found\n"
 
     def configure_sdl(self):
-        if self.conf.CheckMyProgram('sdl-config'):
-            self.conf.env.ParseConfig("sdl-config  --cflags --libs | sed 's/-I/-isystem/g'")
-            for sdllib in ['image', 'mixer']:
-                if not self.conf.CheckSDLLib(sdllib):
-                    self.fatal_error += "  * SDL library '%s' not found\n" % sdllib
+        if self.conf.CheckMyProgram('pkg-config'):
+            self.conf.env.ParseConfig("pkg-config --cflags --libs sdl2 SDL2_image SDL2_mixer | sed 's/-I/-isystem/g'")
         else:
             if sys.platform == 'darwin':
+                # FIXME: This is old SDL1 code
                 # self.conf.env.StaticLibrary("sdlmain", ["src/macosx/SDLmain.m"], [ 'SDL' ])
                 self.conf.env.Append(optional_sources = [ "src/macosx/SDLmain.m" ])
                 self.conf.env.Append(LINKFLAGS = [ '-framework', 'SDL',
