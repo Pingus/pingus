@@ -171,7 +171,10 @@ SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Vector2i& 
   dstrect.w = surface.get_width();
   dstrect.h = surface.get_height();
 
+  // FIXME: push render state
+  SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
   SDL_RenderCopy(m_renderer, texture, nullptr, &dstrect);
+  // FIXME: pop render state
 }
 
 void
@@ -192,17 +195,20 @@ SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Rect& srcr
   sdlsrcrect.w = static_cast<Uint16>(srcrect.get_width());
   sdlsrcrect.h = static_cast<Uint16>(srcrect.get_height());
 
+  // FIXME: push render state
+  SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
   SDL_RenderCopy(m_renderer, texture, &sdlsrcrect, &dstrect);
+  // FIXME: pop render state
 }
 
 void
 SDLFramebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color)
 {
-  SDL_SetRenderDrawColor(m_renderer,
-                         color.r, color.b, color.g, color.a);
-  SDL_RenderDrawLine(m_renderer, 
-                     pos1.x, pos1.y,
-                     pos2.x, pos2.y);
+  // FIXME: push render state
+  SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
+  SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
+  SDL_RenderDrawLine(m_renderer, pos1.x, pos1.y, pos2.x, pos2.y);
+  // FIXME: pop render state
 }
 
 void
@@ -217,8 +223,11 @@ SDLFramebuffer::draw_rect(const Rect& rect_, const Color& color)
   sdl_rect.w = rect.get_width();
   sdl_rect.h = rect.get_height();
 
-  SDL_SetRenderDrawColor(m_renderer, color.r, color.b, color.g, color.a);
+  // FIXME: push render state
+  SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
+  SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
   SDL_RenderDrawRect(m_renderer, &sdl_rect);
+  // FIXME: pop render state
 }
 
 void
@@ -233,7 +242,8 @@ SDLFramebuffer::fill_rect(const Rect& rect_, const Color& color)
   sdl_rect.w = rect.get_width();
   sdl_rect.h = rect.get_height();
 
-  SDL_SetRenderDrawColor(m_renderer, color.r, color.b, color.g, color.a);
+  SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
+  SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
   SDL_RenderFillRect(m_renderer, &sdl_rect);
 }
 
