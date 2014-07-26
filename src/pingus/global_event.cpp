@@ -33,8 +33,6 @@ GlobalEvent::GlobalEvent ()
 void
 GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
 {
-  const Uint8* keystate = SDL_GetKeyboardState(nullptr);
-
   switch (event.keysym.sym)
   {
     case SDLK_F10:
@@ -42,7 +40,7 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
       break;
 
     case SDLK_RETURN:
-      if (keystate[SDLK_LALT] || keystate[SDLK_RALT])
+      if (event.keysym.mod & KMOD_ALT)
       {
         config_manager.set_fullscreen(!config_manager.get_fullscreen());
       }
@@ -51,7 +49,7 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
     case SDLK_TAB: // unlock mouse grab if Alt-Tab is pressed to allow the user to change windows
       if (config_manager.get_mouse_grab())
       {
-        if (keystate[SDLK_LALT] || keystate[SDLK_RALT])
+        if (event.keysym.mod & KMOD_ALT)
         {
           // FIXME: should suspend the grab till the user clicks the
           // window again, not completely disable it
@@ -70,7 +68,7 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
       break;
 
     case SDLK_o:
-      if (keystate[SDLK_LCTRL] || keystate[SDLK_RCTRL])
+      if (event.keysym.mod & KMOD_CTRL)
       {
         if (!dynamic_cast<OptionMenu*>(ScreenManager::instance()->get_current_screen().get()))
           ScreenManager::instance()->push_screen(std::make_shared<OptionMenu>());
@@ -110,7 +108,7 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
       break;
 
     case SDLK_m:
-      if (keystate[SDLK_LCTRL] || keystate[SDLK_RCTRL])
+      if (event.keysym.mod & KMOD_CTRL)
       {
         log_info("Developer Mode: %1%", globals::developer_mode);
         globals::developer_mode = !globals::developer_mode;
@@ -118,7 +116,7 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
       break;
 
     case SDLK_g:
-      if (keystate[SDLK_LCTRL] || keystate[SDLK_RCTRL])
+      if (event.keysym.mod & KMOD_CTRL)
       {
         config_manager.set_mouse_grab(!config_manager.get_mouse_grab());
       }
