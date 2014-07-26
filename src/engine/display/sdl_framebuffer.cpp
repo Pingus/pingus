@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+//  
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -137,7 +137,10 @@ void clip(int& i, int min, int max)
 } // namespace
 
 SDLFramebuffer::SDLFramebuffer() :
-  screen(0),
+  m_window(nullptr),
+  m_renderer(nullptr),
+  m_screen(nullptr),
+  m_texture(nullptr),
   cliprect_stack()
 {
 }
@@ -155,6 +158,7 @@ SDLFramebuffer::create_surface(const Surface& surface)
 void
 SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Vector2i& pos)
 {
+#ifdef OLD_SDL1
   SDLFramebufferSurfaceImpl* impl = dynamic_cast<SDLFramebufferSurfaceImpl*>(surface.get_impl());
   SDL_Surface* src = impl->get_surface();
 
@@ -162,14 +166,16 @@ SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Vector2i& 
   dstrect.x = static_cast<Sint16>(pos.x);
   dstrect.y = static_cast<Sint16>(pos.y);
   dstrect.w = 0;
-  dstrect.h = 0;
+  dstrect.h = 0;  
 
   SDL_BlitSurface(src, NULL, screen, &dstrect);
+#endif
 }
 
 void
 SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Rect& srcrect, const Vector2i& pos)
 {
+#ifdef OLD_SDL1
   SDLFramebufferSurfaceImpl* impl = dynamic_cast<SDLFramebufferSurfaceImpl*>(surface.get_impl());
   SDL_Surface* src = impl->get_surface();
 
@@ -177,7 +183,7 @@ SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Rect& srcr
   dstrect.x = static_cast<Sint16>(pos.x);
   dstrect.y = static_cast<Sint16>(pos.y);
   dstrect.w = 0;
-  dstrect.h = 0;
+  dstrect.h = 0;  
 
   SDL_Rect sdlsrcrect;
   sdlsrcrect.x = static_cast<Sint16>(srcrect.left);
@@ -186,11 +192,13 @@ SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Rect& srcr
   sdlsrcrect.h = static_cast<Uint16>(srcrect.get_height());
 
   SDL_BlitSurface(src, &sdlsrcrect, screen, &dstrect);
+#endif
 }
 
 void
 SDLFramebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color)
 {
+#ifdef OLD_SDL1
   int x, y, xlen, ylen, incr;
   int sx = pos1.x;
   int sy = pos1.y;
@@ -320,6 +328,7 @@ SDLFramebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Colo
     }
     SDL_UnlockSurface(screen);
   }
+#endif
 }
 
 void
@@ -337,9 +346,10 @@ SDLFramebuffer::draw_rect(const Rect& rect_, const Color& color)
 void
 SDLFramebuffer::fill_rect(const Rect& rect_, const Color& color)
 {
+#ifdef OLD_SDL1
   Rect rect = rect_;
   rect.normalize();
-
+    
   if (color.a == 255)
   {
     SDL_Rect srcrect;
@@ -349,7 +359,7 @@ SDLFramebuffer::fill_rect(const Rect& rect_, const Color& color)
     srcrect.w = static_cast<Uint16>(rect.get_width());
     srcrect.h = static_cast<Uint16>(rect.get_height());
 
-    SDL_FillRect(screen, &srcrect, SDL_MapRGB(screen->format, color.r, color.g, color.b));
+    SDL_FillRect(m_screen, &srcrect, SDL_MapRGB(screen->format, color.r, color.g, color.b));
   }
   else if (color.a != 0)
   {
@@ -357,7 +367,7 @@ SDLFramebuffer::fill_rect(const Rect& rect_, const Color& color)
     int clipx1, clipx2, clipy1, clipy2;
     SDL_Rect cliprect;
 
-    SDL_GetClipRect(screen, &cliprect);
+    SDL_GetClipRect(m_screen, &cliprect);
     clipx1 = cliprect.x;
     clipx2 = cliprect.x + cliprect.w - 1;
     clipy1 = cliprect.y;
@@ -383,12 +393,15 @@ SDLFramebuffer::fill_rect(const Rect& rect_, const Color& color)
     }
     SDL_UnlockSurface(screen);
   }
+#endif
 }
 
 void
 SDLFramebuffer::flip()
 {
+#ifdef OLD_SDL1
   SDL_Flip(screen);
+#endif
 }
 
 void
@@ -406,13 +419,17 @@ SDLFramebuffer::update_rects(const std::vector<Rect>& rects)
     sdl_rects.push_back(sdl_rect);
   }
 
-  SDL_UpdateRects(screen, static_cast<int>(sdl_rects.size()), const_cast<SDL_Rect*>(&*sdl_rects.begin()));
+#ifdef OLD_SDL1
+  SDL_UpdateRects(m_screen, static_cast<int>(sdl_rects.size()), const_cast<SDL_Rect*>(&*sdl_rects.begin()));
+#endif
 }
 
 Size
 SDLFramebuffer::get_size() const
 {
-  return Size(screen->w, screen->h);
+  Size s;
+  SDL_GetWindowSize(m_window, &s.width, &s.height);
+  return s;
 }
 
 void
@@ -422,32 +439,46 @@ SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable
 
   if (fullscreen)
   {
-    flags |= SDL_FULLSCREEN;
+    flags |= SDL_WINDOW_FULLSCREEN;
   }
   else if (resizable)
   {
-    flags |= SDL_RESIZABLE;
+    flags |= SDL_WINDOW_RESIZABLE;
   }
 
-  screen = SDL_SetVideoMode(size.width, size.height, 0, flags);
-
-  if (screen == NULL)
+  m_window = SDL_CreateWindow("Pingus",
+                              SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+                              size.width, size.height,
+                              flags);
+  if(m_window == 0)
   {
-    log_error("Unable to set video mode: %1%", SDL_GetError());
-    exit(1);
+    std::ostringstream msg;
+    msg << "Couldn't set video mode (" << size.width << "x" << size.height << "): " << SDL_GetError();
+    throw std::runtime_error(msg.str());
   }
+
+  m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
+  m_screen = SDL_CreateRGBSurface(0, size.width, size.height, 32,
+                                  0x00FF0000,
+                                  0x0000FF00,
+                                  0x000000FF,
+                                  0xFF000000);
+  m_texture = SDL_CreateTexture(m_renderer,
+                                SDL_PIXELFORMAT_ARGB8888,
+                                SDL_TEXTUREACCESS_STREAMING,
+                                size.width, size.height);
 }
 
 bool
 SDLFramebuffer::is_fullscreen() const
 {
-  return screen->flags & SDL_FULLSCREEN;
+  return SDL_GetWindowFlags(m_window) & SDL_WINDOW_FULLSCREEN;
 }
 
 bool
 SDLFramebuffer::is_resizable() const
 {
-  return screen->flags & SDL_RESIZABLE;
+  return SDL_GetWindowFlags(m_window) & SDL_WINDOW_RESIZABLE;
 }
 
 void
@@ -463,9 +494,9 @@ SDLFramebuffer::push_cliprect(const Rect& rect)
   {
     sdl_rect = Intersection(&cliprect_stack.back(), &sdl_rect);
   }
-
+  
   cliprect_stack.push_back(sdl_rect);
-  SDL_SetClipRect(screen, &cliprect_stack.back());
+  SDL_SetClipRect(m_screen, &cliprect_stack.back());
 }
 
 void
@@ -473,9 +504,9 @@ SDLFramebuffer::pop_cliprect()
 {
   cliprect_stack.pop_back();
   if (cliprect_stack.empty())
-    SDL_SetClipRect(screen, NULL);
+    SDL_SetClipRect(m_screen, NULL);
   else
-    SDL_SetClipRect(screen, &cliprect_stack.back());
+    SDL_SetClipRect(m_screen, &cliprect_stack.back());
 }
 
 /* EOF */

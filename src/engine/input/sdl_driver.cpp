@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+//  
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -33,19 +33,21 @@ SDLDriver::SDLDriver() :
   string2key(),
   joystick_handles()
 {
-  for (int i = 0; i < SDLK_LAST; ++i)
+#ifdef OLD_SDL1
+  for (int i = 0; i < SDLK_LAST; ++i) 
   {
     char* key_name = SDL_GetKeyName(static_cast<SDLKey>(i));
     string2key[key_name] = static_cast<SDLKey>(i);
-
+    
     // FIXME: Make the keynames somewhere user visible so that users can use them
     log_debug("Key: '%1%'", key_name);
   }
+#endif
 }
 
 SDLDriver::~SDLDriver()
 {
-
+  
 }
 
 Keyboard*
@@ -64,12 +66,12 @@ SDLDriver::create_button(const FileReader& reader, Control* parent)
 
     reader.read_int("device", binding.device);
     reader.read_int("button", binding.button);
-
+      
     if (open_joystick(binding.device))
     {
       binding.binding = new Button(parent);
       joystick_button_bindings.push_back(binding);
-
+      
       return binding.binding;
     }
     else
@@ -90,20 +92,20 @@ SDLDriver::create_button(const FileReader& reader, Control* parent)
   else if (reader.get_name() == "sdl:keyboard-button")
   {
     std::string key;
-    if (reader.read_string("key", key))
+    if (reader.read_string("key", key)) 
     {
       String2Key::iterator i = string2key.find(key);
-      if (i != string2key.end())
+      if (i != string2key.end()) 
       {
         KeyboardButtonBinding binding;
-
+      
         binding.key = i->second;
         binding.binding = new Button(parent);
         keyboard_button_bindings.push_back(binding);
 
         return binding.binding;
       }
-      else
+      else 
       {
         log_error("couldn't find keysym for key '%1%'", key);
         return 0;
@@ -130,12 +132,12 @@ SDLDriver::create_axis(const FileReader& reader, Control* parent)
 
     reader.read_int("device", binding.device);
     reader.read_int("axis",   binding.axis);
-
+      
     if (open_joystick(binding.device))
     {
       binding.binding = new Axis(parent);
       joystick_axis_bindings.push_back(binding);
-
+      
       return binding.binding;
     }
     else
@@ -185,7 +187,7 @@ SDLDriver::create_pointer(const FileReader& reader, Control* parent)
   }
 }
 
-bool
+bool 
 SDLDriver::open_joystick(int device)
 {
   JoystickHandles::iterator i = joystick_handles.find(device);
@@ -228,13 +230,15 @@ SDLDriver::update(float delta)
         for(std::vector<PointerBinding>::iterator i = pointer_bindings.begin();
             i != pointer_bindings.end(); ++i)
         {
-          i->binding->set_pos(Vector2f(event.motion.x, event.motion.y));
+          i->binding->set_pos(Vector2f(static_cast<float>(event.motion.x), 
+                                       static_cast<float>(event.motion.y)));
         }
 
         for(std::vector<ScrollerBinding>::iterator i = scroller_bindings.begin();
             i != scroller_bindings.end(); ++i)
         {
-          i->binding->set_delta(Vector2f(event.motion.xrel, event.motion.yrel));
+          i->binding->set_delta(Vector2f(static_cast<float>(event.motion.xrel),
+                                         static_cast<float>(event.motion.yrel)));
         }
         break;
 
@@ -253,11 +257,19 @@ SDLDriver::update(float delta)
         }
         break;
 
-      case SDL_VIDEORESIZE:
-        Display::resize(Size(event.resize.w, event.resize.h));
+      case SDL_WINDOWEVENT:
+        switch(event.window.event)
+        {
+          case SDL_WINDOWEVENT_RESIZED:
+            Display::resize(Size(event.window.data1, event.window.data2));
+            break;
+            
+          default:
+            break;
+        }
         break;
 
-      case SDL_KEYDOWN:
+      case SDL_KEYDOWN:          
       case SDL_KEYUP:
         // keyboard events
         if (keyboard_binding)
@@ -267,7 +279,7 @@ SDLDriver::update(float delta)
         if (event.key.state == SDL_PRESSED)
           global_event.on_button_press(event.key);
         else
-          global_event.on_button_release(event.key);
+          global_event.on_button_release(event.key);            
 
         // game button events
         for(std::vector<KeyboardButtonBinding>::iterator i = keyboard_button_bindings.begin();
@@ -285,14 +297,14 @@ SDLDriver::update(float delta)
 
       case SDL_JOYAXISMOTION:
         for(std::vector<JoystickAxisBinding>::iterator i = joystick_axis_bindings.begin();
-            i != joystick_axis_bindings.end(); ++i)
+            i != joystick_axis_bindings.end(); ++i)            
         {
           if (event.jaxis.which == i->device &&
               event.jaxis.axis  == i->axis)
             i->binding->set_state(static_cast<float>(event.jaxis.value) / 32767.0f);
         }
         break;
-
+            
       case SDL_JOYBUTTONDOWN:
       case SDL_JOYBUTTONUP:
         for(std::vector<JoystickButtonBinding>::iterator i = joystick_button_bindings.begin();
@@ -305,7 +317,7 @@ SDLDriver::update(float delta)
           }
         }
         break;
-
+            
       default:
         // FIXME: Do something with other events
         break;

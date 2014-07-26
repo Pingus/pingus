@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+//  
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -55,7 +55,7 @@ private:
   struct KeyboardButtonBinding {
     Button* binding;
 
-    SDLKey key;
+    SDL_Keycode key;
   };
 
   struct ScrollerBinding {
@@ -74,12 +74,12 @@ private:
   std::vector<JoystickAxisBinding>   joystick_axis_bindings;
   Keyboard* keyboard_binding;
 
-  typedef std::map<std::string, SDLKey> String2Key;
+  typedef std::map<std::string, SDL_Keycode> String2Key;
   String2Key string2key;
 
   typedef std::map<int, SDL_Joystick*> JoystickHandles;
   JoystickHandles joystick_handles;
-
+ 
 public:
   SDLDriver();
   ~SDLDriver();

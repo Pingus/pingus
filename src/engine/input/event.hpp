@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+//  
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -25,23 +25,23 @@
 
 namespace Input {
 
-enum EventType { BUTTON_EVENT_TYPE,
-                 POINTER_EVENT_TYPE,
-                 AXIS_EVENT_TYPE,
-                 SCROLLER_EVENT_TYPE,
+enum EventType { BUTTON_EVENT_TYPE, 
+                 POINTER_EVENT_TYPE, 
+                 AXIS_EVENT_TYPE, 
+                 SCROLLER_EVENT_TYPE, 
                  KEYBOARD_EVENT_TYPE };
 
-enum EventName {
+enum EventName { 
   // Buttons
-  PRIMARY_BUTTON,
+  PRIMARY_BUTTON, 
   SECONDARY_BUTTON,
   PAUSE_BUTTON,
   FAST_FORWARD_BUTTON,
   SINGLE_STEP_BUTTON,
-  ARMAGEDDON_BUTTON,
-  ESCAPE_BUTTON,
+  ARMAGEDDON_BUTTON, 
+  ESCAPE_BUTTON, 
 
-  ACTION_1_BUTTON,
+  ACTION_1_BUTTON, 
   ACTION_2_BUTTON,
   ACTION_3_BUTTON,
   ACTION_4_BUTTON,
@@ -49,15 +49,15 @@ enum EventName {
   ACTION_6_BUTTON,
   ACTION_7_BUTTON,
   ACTION_8_BUTTON,
-  ACTION_9_BUTTON,
+  ACTION_9_BUTTON, 
   ACTION_10_BUTTON,
-
+                  
   ACTION_UP_BUTTON,
-  ACTION_DOWN_BUTTON,
-
+  ACTION_DOWN_BUTTON, 
+                 
   // Pointer
   STANDARD_POINTER,
-
+  
   // Scroller
   STANDARD_SCROLLER,
 
@@ -98,7 +98,7 @@ struct ScrollEvent
 struct KeyboardEvent
 {
   bool state;
-  SDL_keysym keysym;
+  SDL_Keysym keysym;
 };
 
 struct Event
@@ -165,11 +165,11 @@ inline Event makeScrollerEvent(EventName name, float x_delta, float y_delta)
 inline Event makeKeyboardEvent(const SDL_KeyboardEvent& ev)
 {
   Event event;
-
+  
   event.type = KEYBOARD_EVENT_TYPE;
   event.keyboard.state  = ev.state;
   event.keyboard.keysym = ev.keysym;
-
+  
   return event;
 }
 

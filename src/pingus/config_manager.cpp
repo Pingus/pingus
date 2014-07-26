@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+//  
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -185,7 +185,7 @@ ConfigManager::set_mouse_grab(bool v)
 
   if (v != get_mouse_grab())
   {
-    SDL_WM_GrabInput(v ? SDL_GRAB_ON : SDL_GRAB_OFF);
+    SDL_SetWindowGrab(SDL_GL_GetCurrentWindow(), static_cast<SDL_bool>(v));
     on_mouse_grab_change(v);
   }
 
@@ -195,7 +195,7 @@ ConfigManager::set_mouse_grab(bool v)
 bool
 ConfigManager::get_mouse_grab() const
 {
-  return (SDL_WM_GrabInput(SDL_GRAB_QUERY) == SDL_GRAB_ON);
+  return SDL_GetWindowGrab(SDL_GL_GetCurrentWindow());
 }
 
 void
@@ -314,12 +314,12 @@ ConfigManager::apply(const Options& opts)
   if (opts.master_volume.is_set())
     set_master_volume(opts.master_volume.get());
 
-  if (opts.sound_volume.is_set())
+  if (opts.sound_volume.is_set())  
     set_sound_volume(opts.sound_volume.get());
 
   if (opts.music_volume.is_set())
     set_music_volume(opts.music_volume.get());
-
+  
   if (opts.fullscreen_resolution.is_set())
     set_fullscreen_resolution(opts.fullscreen_resolution.get());
 

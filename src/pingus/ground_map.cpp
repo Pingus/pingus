@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+//  
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -28,13 +28,13 @@ private:
   Sprite   sprite;
   Surface  surface;
   bool sprite_needs_update;
-
+  
 public:
   MapTile();
   ~MapTile();
 
-  void remove(Surface, int x, int y, int real_x, int real_y, GroundMap*);
-  void put(Surface, int x, int y);
+  void remove(Surface, int x, int y, int real_x, int real_y, GroundMap*);  
+  void put(Surface, int x, int y);  
 
   const Sprite& get_sprite();
 };
@@ -51,7 +51,7 @@ MapTile::~MapTile()
 }
 
 void
-MapTile::remove(Surface src, int x, int y,
+MapTile::remove(Surface src, int x, int y, 
                 int real_x, int real_y, GroundMap* parent)
 {
   if (surface)
@@ -66,13 +66,13 @@ MapTile::put(Surface src, int x, int y)
 {
   if (!surface)
     surface = Surface(globals::tile_size, globals::tile_size);
-
+  
   surface.blit(src, x, y);
   sprite_needs_update = true;
 }
 
 const Sprite&
-MapTile::get_sprite()
+MapTile::get_sprite() 
 {
   if (sprite_needs_update)
   {
@@ -81,14 +81,14 @@ MapTile::get_sprite()
   }
   else
   {
-    return sprite;
+    return sprite; 
   }
 }
 
 GroundMap::GroundMap(int width_, int height_) :
   colmap(),
   tiles(),
-  width(width_),
+  width(width_), 
   height(height_),
   tile_width(),
   tile_height()
@@ -105,7 +105,7 @@ GroundMap::GroundMap(int width_, int height_) :
     tile_width += 1;
 
   if ((height % globals::tile_size) != 0)
-    tile_height += 1;
+    tile_height += 1; 
 
   // Allocating tile map
   tiles.resize(tile_width * tile_height);
@@ -191,7 +191,7 @@ GroundMap::remove(Surface sprovider, int x, int y)
   for(int ix = start_x; ix <= end_x; ++ix)
     for(int iy = start_y; iy <= end_y; ++iy)
     {
-      get_tile(ix, iy)->remove(sprovider,
+      get_tile(ix, iy)->remove(sprovider, 
                                x - (ix * globals::tile_size),
                                y - (iy * globals::tile_size), x, y, this);
     }
@@ -201,11 +201,12 @@ void
 GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
                              int x_pos, int y_pos, int real_x_arg, int real_y_arg)
 {
+#ifdef OLD_SDL1
   if (sprovider.get_surface()->format->BitsPerPixel != 8  &&
       sprovider.get_surface()->format->BitsPerPixel != 24 &&
       sprovider.get_surface()->format->BitsPerPixel != 32)
   {
-    log_error("Image has wrong color depth: %1%",
+    log_error("Image has wrong color depth: %1%", 
               static_cast<int>(sprovider.get_surface()->format->BitsPerPixel));
     return;
   }
@@ -239,8 +240,8 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
       Uint8* sptr = source_buf + spitch*y + 4*start_x;
 
       for (int x = start_x; x < end_x; ++x)
-      {
-        if (sptr[3] == 255 &&
+      { 
+        if (sptr[3] == 255 && 
             colmap->getpixel(real_x_arg+x, real_y_arg+y) != Groundtype::GP_SOLID)
         {
           tptr[3] = 0;
@@ -261,7 +262,7 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
       Uint8* sptr = source_buf + spitch*y + start_x;
 
       for (int x = start_x; x < end_x; ++x)
-      {
+      { 
         if (*sptr != colorkey && colmap->getpixel(real_x_arg+x, real_y_arg+y) != Groundtype::GP_SOLID)
         {
           tptr[3] = 0;
@@ -273,26 +274,27 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
     }
   }
   else
-  {
+  { 
     // opaque source surface, so we can use the same code for 24bpp and indexed
     for (int y = start_y; y < end_y; ++y)
     {
       Uint8* tptr = target_buf + tpitch*(y+y_pos) + 4*(x_pos + start_x);
 
       for (int x = start_x; x < end_x; ++x)
-      {
+      { 
         if (colmap->getpixel(real_x_arg+x, real_y_arg+y) != Groundtype::GP_SOLID)
         {
           tptr[3] = 0;
         }
-
+              
         tptr += 4;
       }
     }
   }
-
+  
   sprovider.unlock();
   provider.unlock();
+#endif
 }
 
 void

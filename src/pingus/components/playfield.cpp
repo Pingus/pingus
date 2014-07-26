@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+//  
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -41,8 +41,8 @@ Playfield::Playfield(Server* server_, GameSession* session_, const Rect& rect_) 
 {
   mouse_scrolling    = false;
 
-  state.set_limit(Rect(Vector2i(0, 0),
-                       Size(server->get_world()->get_width(),
+  state.set_limit(Rect(Vector2i(0, 0), 
+                       Size(server->get_world()->get_width(), 
                             server->get_world()->get_height())));
 
   // FIXME: Temporary workaround till start-pos is integrated a bit more properly
@@ -86,7 +86,7 @@ Playfield::draw(DrawingContext& gc)
     gc.draw_line(mouse_pos, scroll_center - Vector2i(15, 0),
                  Color(255, 255, 0));
 
-    gc.draw_line(mouse_pos, scroll_center,
+    gc.draw_line(mouse_pos, scroll_center, 
                  Color(255, 0, 0));
   }
   gc.pop_modelview();
@@ -133,16 +133,17 @@ Playfield::update(float delta)
       state.set_pos(old_state_pos + (scroll_center - mouse_pos));
     }
     else
-    {
+    { 
       state.set_pos(Vector2i(state.get_pos().x - static_cast<int>(static_cast<float>(scroll_center.x - mouse_pos.x) * 0.2f),
                              state.get_pos().y - static_cast<int>(static_cast<float>(scroll_center.y - mouse_pos.y) * 0.2f)));
     }
   }
 
+#ifdef OLD_SDL1
   if (globals::auto_scrolling && (Display::is_fullscreen() || SDL_WM_GrabInput(SDL_GRAB_QUERY) == SDL_GRAB_ON))
   {
     scroll_speed = static_cast<int>(800 * delta);
-
+    
     if (mouse_pos.x < 10)
     {
       state.set_pos(state.get_pos() - Vector2i(scroll_speed, 0));
@@ -158,9 +159,10 @@ Playfield::update(float delta)
     }
     else if (mouse_pos.y > Display::get_height() - 10)
     {
-      state.set_pos(state.get_pos() + Vector2i(0, scroll_speed));
+      state.set_pos(state.get_pos() + Vector2i(0, scroll_speed));        
     }
   }
+#endif
 }
 
 void
@@ -173,7 +175,7 @@ Playfield::on_primary_button_press(int x, int y)
   {
     current_pingu = current_pingu_find(state.screen2world(Vector2i(x,y)));
 
-    if (current_pingu)
+    if (current_pingu) 
     {
       server->send_pingu_action_event(current_pingu, session->get_action_name());
     }
@@ -214,21 +216,22 @@ Playfield::on_pointer_move (int x, int y)
 
   if (globals::developer_mode)
   { // Some fun stuff that lets you draw directly on the level
+#ifdef OLD_SDL1
     Uint8 *keystate = SDL_GetKeyState(NULL);
     if (keystate[SDLK_DELETE])
     {
       CollisionMask mask("other/bash_radius_gfx");
       Vector2i p = state.screen2world(mouse_pos);
       server->get_world()->remove(mask,
-                                  p.x - mask.get_width()/2,
+                                  p.x - mask.get_width()/2, 
                                   p.y - mask.get_height()/2);
     }
     else if (keystate[SDLK_INSERT])
     {
       CollisionMask mask("other/bash_radius_gfx");
       Vector2i p = state.screen2world(mouse_pos);
-      server->get_world()->put(mask,
-                               p.x - mask.get_width()/2,
+      server->get_world()->put(mask, 
+                               p.x - mask.get_width()/2, 
                                p.y - mask.get_height()/2,
                                Groundtype::GP_GROUND);
     }
@@ -236,18 +239,19 @@ Playfield::on_pointer_move (int x, int y)
     {
       CollisionMask mask("other/bash_radius_gfx");
       Vector2i p = state.screen2world(mouse_pos);
-      server->get_world()->put(mask,
-                               p.x - mask.get_width()/2,
+      server->get_world()->put(mask, 
+                               p.x - mask.get_width()/2, 
                                p.y - mask.get_height()/2,
                                Groundtype::GP_BRIDGE);
     }
+#endif
   }
 }
 
 Vector2i
 Playfield::get_pos() const
 {
-  return Vector2i(static_cast<int>(state.get_pos().x),
+  return Vector2i(static_cast<int>(state.get_pos().x), 
                   static_cast<int>(state.get_pos().y));
 }
 
@@ -264,7 +268,7 @@ Playfield::scroll (int x, int y)
 }
 
 void
-Playfield::update_layout()
+Playfield::update_layout() 
 {
   state.set_size(rect.get_width(), rect.get_height());
   scene_context->set_rect(rect);

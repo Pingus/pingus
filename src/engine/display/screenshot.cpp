@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+//  
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -34,8 +34,11 @@ std::string
 Screenshot::make_screenshot()
 {
   std::string filename = get_filename();
+
   log_info("Screenshot: Saving screenshot to: %1%", filename);
+#ifdef OLD_SDL1
   save(SDL_GetVideoSurface(), filename);
+#endif
   log_info("Screenshot: Screenshot is done.");
 
   return filename;
@@ -47,7 +50,7 @@ Screenshot::save(SDL_Surface* surface, const std::string& filename)
   std::unique_ptr<uint8_t[]> buffer(new uint8_t[surface->w * surface->h * 3]);
 
 #ifdef HAVE_OPENGL
-  if(surface->flags & SDL_OPENGL)
+  if(surface->flags & SDL_WINDOW_OPENGL)
   {
     glPixelStorei(GL_PACK_ALIGNMENT, 1);
     glReadPixels(0, 0, surface->w, surface->h, GL_RGB, GL_UNSIGNED_BYTE, buffer.get());
@@ -68,7 +71,7 @@ Screenshot::save(SDL_Surface* surface, const std::string& filename)
           {
             int i = (y * surface->w + x);
             SDL_GetRGB(*(reinterpret_cast<uint16_t*>(pixels + y * surface->pitch + x*2)),
-                       surface->format,
+                       surface->format, 
                        buffer.get() + i*3 + 0, buffer.get() + i*3 + 1, buffer.get() + i*3 + 2);
           }
         break;
@@ -82,7 +85,7 @@ Screenshot::save(SDL_Surface* surface, const std::string& filename)
           {
             int i = (y * surface->w + x);
             SDL_GetRGB(*(reinterpret_cast<uint32_t*>(pixels + y * surface->pitch + x*3)),
-                       surface->format,
+                       surface->format, 
                        buffer.get() + i*3 + 0, buffer.get() + i*3 + 1, buffer.get() + i*3 + 2);
           }
         break;
@@ -96,7 +99,7 @@ Screenshot::save(SDL_Surface* surface, const std::string& filename)
           {
             int i = (y * surface->w + x);
             SDL_GetRGB(*(reinterpret_cast<uint32_t*>(pixels + y * surface->pitch + x*4)),
-                       surface->format,
+                       surface->format, 
                        buffer.get() + i*3 + 0, buffer.get() + i*3 + 1, buffer.get() + i*3 + 2);
           }
         break;

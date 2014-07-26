@@ -25,14 +25,14 @@
 
 SDLSystem::SDLSystem()
 {
-  if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) != 0)
+  if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) != 0) 
   {
     log_error("Unable to initialize SDL: %1%", SDL_GetError());
     exit(1);
   }
   else
   {
-    atexit(SDL_Quit);
+    atexit(SDL_Quit); 
   }
 }
 
@@ -43,14 +43,11 @@ SDLSystem::~SDLSystem()
 void
 SDLSystem::create_window(FramebufferType framebuffer_type, const Size& size, bool fullscreen, bool resizable)
 {
+#ifdef OLD_SDL1
   SDL_WM_SetCaption("Pingus " VERSION, "Pingus " VERSION);
   SDL_WM_SetIcon(IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str()), 0);
-
+#endif
   Display::create_window(framebuffer_type, size, fullscreen, resizable);
-
-  SDL_EnableUNICODE(1);
-
-  SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
 }
 
 /* EOF */

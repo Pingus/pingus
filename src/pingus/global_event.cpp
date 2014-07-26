@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+//  
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -33,7 +33,7 @@ GlobalEvent::GlobalEvent ()
 void
 GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
 {
-  Uint8* keystate = SDL_GetKeyState(NULL);
+  const Uint8* keystate = SDL_GetKeyboardState(nullptr);
 
   switch (event.keysym.sym)
   {
@@ -100,10 +100,12 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
     case SDLK_k:
       if (globals::developer_mode)
       {
+#ifdef OLD_SDL1
         log_info("Low level screen clear triggered");
         SDL_Surface* screen = SDL_GetVideoSurface();
         SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 255, 255, 0));
         SDL_Flip(screen);
+#endif
       }
       break;
 

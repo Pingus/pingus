@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+//  
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -118,7 +118,7 @@ Display::create_window(FramebufferType framebuffer_type, const Size& size, bool 
       s_framebuffer = std::unique_ptr<Framebuffer>(new SDLFramebuffer());
       s_framebuffer->set_video_mode(size, fullscreen, resizable);
       break;
-
+          
     default:
       assert(!"Unknown framebuffer_type");
       break;
@@ -137,7 +137,7 @@ Display::set_video_mode(const Size& size, bool fullscreen, bool resizable)
   {
     s_framebuffer->set_video_mode(size, fullscreen, resizable);
   }
-
+  
   if (ScreenManager::instance())
   {
     ScreenManager::instance()->resize(s_framebuffer->get_size());
@@ -147,32 +147,33 @@ Display::set_video_mode(const Size& size, bool fullscreen, bool resizable)
 Framebuffer*
 Display::get_framebuffer()
 {
-  return s_framebuffer.get();
+  return s_framebuffer.get(); 
 }
 
 Size
 Display::find_closest_fullscreen_video_mode(const Size& size)
 {
-  SDL_Rect** modes = SDL_ListModes(NULL, SDL_FULLSCREEN);
+#ifdef OLD_SDL1
+  SDL_Rect** modes = SDL_ListModes(NULL, SDL_WINDOW_FULLSCREEN);
 
   if (modes == static_cast<SDL_Rect**>(0))
   { // No resolutions at all available, bad
     return size;
   }
   else if(modes == reinterpret_cast<SDL_Rect**>(-1))
-  {
+  {  
     return size;
   }
-  else
+  else 
   {
     // FIXME: This might not work that well with different aspect ratios
     int distance = -1;
     Size best_fit = size;
-
+      
     for(int i = 0; modes[i]; ++i)
     {
       int this_distance = abs(size.width - modes[i]->w) + abs(size.height - modes[i]->h);
-
+          
       if (distance == -1 || distance > this_distance)
       {
         distance = this_distance;
@@ -184,7 +185,9 @@ Display::find_closest_fullscreen_video_mode(const Size& size)
 
     return best_fit;
   }
-
+#else
+  return Size(800, 600);
+#endif
 }
 
 struct SortBySize
@@ -198,12 +201,13 @@ struct SortBySize
 std::vector<Size>
 Display::get_fullscreen_video_modes()
 {
-  std::vector<Size> video_modes;
+#ifdef OLD_SDL1
+  std::vector<Size> video_modes;  
   SDL_Rect** modes = SDL_ListModes(NULL, SDL_FULLSCREEN);
 
   if (modes == reinterpret_cast<SDL_Rect**>(0))
   { // No resolutions at all available, bad
-
+      
   }
   else if(modes == reinterpret_cast<SDL_Rect**>(-1))
   {  // FIXME: Under which OSs is this triggred, if ever?
@@ -225,7 +229,7 @@ Display::get_fullscreen_video_modes()
     video_modes.push_back(Size(1920, 1080)); // 16:9, HD-TV, 1080p
     video_modes.push_back(Size(1920, 1200)); // 16:10
   }
-  else
+  else 
   {
     for(int i = 0; modes[i]; ++i)
     {
@@ -236,6 +240,9 @@ Display::get_fullscreen_video_modes()
   std::sort(video_modes.begin(), video_modes.end(), SortBySize());
 
   return video_modes;
+#else
+  return std::vector<Size>{{800, 600}};
+#endif
 }
 
 /* EOF */

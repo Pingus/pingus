@@ -6,12 +6,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+//  
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -85,7 +85,7 @@ Viewport::on_secondary_button_press(int x_, int y_)
 
   if (current_action == NOTHING)
   {
-    drag_screen_pos = mouse_screen_pos;
+    drag_screen_pos = mouse_screen_pos;  
     current_action = SCROLLING;
   }
 }
@@ -109,14 +109,14 @@ Viewport::on_secondary_button_click(int x_, int y_)
 }
 
 // Select 1 or more LevelObjs, or drag them.
-void
+void 
 Viewport::on_primary_button_press(int x_, int y_)
 {
-  Uint8* keystate = SDL_GetKeyState(NULL);
+  const Uint8* keystate = SDL_GetKeyboardState(nullptr);
 
   mouse_world_pos  = screen2world(x_, y_);
   mouse_screen_pos = Vector2i(x_, y_);
-
+  
   if (current_action == NOTHING)
   {
     LevelObjPtr obj = editor->get_level()->object_at(mouse_world_pos.x, mouse_world_pos.y);
@@ -149,7 +149,7 @@ Viewport::on_primary_button_press(int x_, int y_)
         }
       }
 
-      for (auto it = selection.begin(); it != selection.end(); ++it)
+      for (auto it = selection.begin(); it != selection.end(); ++it) 
       {
         (*it)->set_orig_pos((*it)->get_pos());
       }
@@ -173,7 +173,7 @@ Viewport::on_primary_button_press(int x_, int y_)
   }
 }
 
-void
+void 
 Viewport::on_primary_button_release(int x_, int y_)
 {
   mouse_world_pos = screen2world(x_, y_);
@@ -207,14 +207,14 @@ Viewport::on_pointer_move(int x_, int y_)
 {
   mouse_world_pos = screen2world(x_, y_);
   mouse_screen_pos = Vector2i(x_, y_);
-
+  
   switch(current_action)
   {
     case HIGHLIGHTING:
       highlighted_area.right  = mouse_world_pos.x;
       highlighted_area.bottom = mouse_world_pos.y;
       break;
-
+        
     case DRAGGING:
       {
         float new_x, new_y;
@@ -243,7 +243,7 @@ Viewport::on_pointer_move(int x_, int y_)
 
     case SCROLLING:
       break;
-
+        
     case NOTHING:
       break;
   }
@@ -305,7 +305,7 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
           clear_selection();
           selection_changed(selection);
         }
-        else
+        else 
         {
           clear_selection();
           selection.insert(get_objects()->begin(), get_objects()->end());
@@ -360,12 +360,12 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
         rotate_90_selected_objects();
       }
       break;
-
+            
     case SDLK_DELETE:
     case SDLK_BACKSPACE:
       delete_selected_objects();
       break;
-
+             
     case SDLK_d:
       duplicate_selected_objects();
       break;
@@ -373,7 +373,7 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
     case SDLK_f:
       if (ev.keysym.mod & KMOD_SHIFT)
       {
-        vflip_selected_objects();
+        vflip_selected_objects();       
       }
       else
       {
@@ -391,7 +391,7 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
         vflip_selected_objects();
       }
       break;
-
+            
     case SDLK_c: // dvorak-up
     case SDLK_i: // up
       if (ev.keysym.mod & KMOD_SHIFT)
@@ -408,7 +408,7 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
     case SDLK_k: // down
       if (ev.keysym.mod & KMOD_SHIFT)
       {
-        move_objects(Vector2i(0, keyboard_movement_distance));
+        move_objects(Vector2i(0, keyboard_movement_distance));       
       }
       else
       {
@@ -476,7 +476,7 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
       }
       selection_changed(selection);
       break;
-
+      
     default:
       log_debug("Viewport::on_key_pressed: %1%", ev.keysym.sym);
       break;
@@ -499,14 +499,14 @@ Viewport::draw(DrawingContext &gc)
     drawing_context->draw_line(center - Vector2i(16, 0), center + Vector2i(16, 0), Color(155,155,155), 5000.0f);
     drawing_context->draw_line(center - Vector2i(0, 16), center + Vector2i(0, 16), Color(155,155,155), 5000.0f);
   }
-
+  
   // Level border
   drawing_context->draw_rect(Rect(Vector2i(0,0), editor->get_level()->get_size()), Color(255,255,255), 5000.0f);
   drawing_context->draw_rect(Rect(Vector2i(0,0), editor->get_level()->get_size()).grow(1), Color(0,0,0), 5000.0f);
 
   // Safe area
   drawing_context->draw_rect(Rect(Vector2i(0,0), editor->get_level()->get_size()).grow(-100), Color(155,155,155), 5000.0f);
-
+        
   // Draw the level objects
   for (auto it = get_objects()->begin(); it != get_objects()->end(); ++it)
   {
@@ -525,7 +525,7 @@ Viewport::draw(DrawingContext &gc)
     drawing_context->draw_fillrect(highlighted_area, Color(155,200,255, 100), 1000.0f);
     drawing_context->draw_rect(highlighted_area, Color(155,200,255), 1000.0f);
   }
-
+  
   state.pop(*drawing_context);
   gc.draw(*drawing_context, -150);
 }
@@ -545,7 +545,7 @@ Viewport::update(float delta)
     state.set_pos(Vector2i(state.get_pos().x + static_cast<int>(static_cast<float>(mouse_screen_pos.x - drag_screen_pos.x) * 5.0f * delta),
                            state.get_pos().y + static_cast<int>(static_cast<float>(mouse_screen_pos.y - drag_screen_pos.y) * 5.0f * delta)));
   }
-
+  
   // Autoscroll if necessary
   if (autoscroll)
   {
@@ -583,10 +583,10 @@ Viewport::duplicate_selected_objects()
       get_objects()->push_back(clone);
     }
   }
-
+  
   clear_selection();
   selection = new_selection;
-  selection_changed(selection);
+  selection_changed(selection);  
 }
 
 void
@@ -594,8 +594,8 @@ Viewport::delete_selected_objects()
 {
   for(auto i = selection.begin(); i != selection.end(); ++i)
     (*i)->remove();
-
-  (*get_objects()).erase(std::remove_if((*get_objects()).begin(), (*get_objects()).end(),
+  
+  (*get_objects()).erase(std::remove_if((*get_objects()).begin(), (*get_objects()).end(), 
                                         std::bind(&LevelObj::is_removed, std::placeholders::_1)),
                          (*get_objects()).end());
 
@@ -609,7 +609,7 @@ Viewport::hflip_selected_objects()
   for(auto i = selection.begin(); i != selection.end(); ++i)
   {
     (*i)->set_modifier(ResourceModifier::horizontal_flip((*i)->get_modifier()));
-  }
+  }  
 }
 
 void
@@ -674,7 +674,7 @@ void
 Viewport::lower_objects_to_bottom()
 {
   for(auto i = selection.begin(); i != selection.end(); ++i)
-    editor->get_level()->lower_object_to_bottom(*i);
+    editor->get_level()->lower_object_to_bottom(*i); 
 }
 
 void
@@ -775,7 +775,7 @@ Viewport::update_layout()
 void
 Viewport::clear_selection()
 {
-  selection.clear();
+  selection.clear(); 
 }
 
 void
@@ -783,7 +783,7 @@ Viewport::move_objects(const Vector2i& offset)
 {
   for (auto it = selection.begin(); it != selection.end(); ++it)
   {
-    Vector3f p = (*it)->get_pos();
+    Vector3f p = (*it)->get_pos(); 
     (*it)->set_pos(Vector3f(p.x + static_cast<float>(offset.x),
                             p.y + static_cast<float>(offset.y),
                             p.z));

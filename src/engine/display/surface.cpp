@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+//  
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -30,7 +30,7 @@ class SurfaceImpl
 public:
   SDL_Surface* surface;
 
-  SurfaceImpl() :
+  SurfaceImpl() : 
     surface()
   {
   }
@@ -39,8 +39,8 @@ public:
     surface(surface_)
   {
   }
-
-  ~SurfaceImpl()
+  
+  ~SurfaceImpl() 
   {
     if (surface)
     {
@@ -87,18 +87,22 @@ Surface::Surface(int width, int height, SDL_Palette* palette, int colorkey) :
   }
   else
   {
+#ifdef OLD_SDL1
     impl->surface = SDL_CreateRGBSurface(SDL_SWSURFACE | SDL_SRCCOLORKEY, width, height, 8,
                                          0, 0, 0 ,0);
     SDL_SetColorKey(impl->surface, SDL_SRCCOLORKEY, colorkey);
+#endif
   }
 
+#ifdef OLD_SDL1
   SDL_SetColors(impl->surface, palette->colors, 0, palette->ncolors);
+#endif
 }
 
 Surface::Surface(int width, int height) :
   impl(new SurfaceImpl())
 {
-  impl->surface = SDL_CreateRGBSurface(SDL_SWSURFACE | SDL_SRCALPHA, width, height, 32,
+  impl->surface = SDL_CreateRGBSurface(0, width, height, 32,
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
                                        0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff
 #else
@@ -187,7 +191,7 @@ Surface::blit(Surface src, int x_pos, int y_pos)
           // do nothing
         }
         else
-        {
+        { 
           // alpha blend
           uint8_t outa = static_cast<uint8_t>((alpha + (tptr[3] * (255 - alpha)) / 255));
 
@@ -281,7 +285,7 @@ Surface::get_pitch() const
     return 0;
 }
 
-SDL_Surface*
+SDL_Surface* 
 Surface::get_surface() const
 {
   return impl ? impl->surface : 0;
@@ -295,6 +299,7 @@ Surface::operator bool() const
 Color
 Surface::get_pixel(int x, int y) const
 {
+#ifdef OLD_SDL1
   Uint8 *p = static_cast<Uint8 *>(get_surface()->pixels) + y * get_surface()->pitch + x * get_surface()->format->BytesPerPixel;
   Uint32 pixel;
 
@@ -335,11 +340,14 @@ Surface::get_pixel(int x, int y) const
     default:
       pixel = 0;       /* shouldn't happen, but avoids warnings */
       break;
-  }
+  } 
 
   Color color;
   SDL_GetRGBA(pixel, get_surface()->format, &color.r, &color.g, &color.b, &color.a);
   return color;
+#else
+  return Color();
+#endif
 }
 
 Surface
@@ -386,7 +394,8 @@ Surface::scale(int w, int h)
 Surface
 Surface::clone() const
 {
-  SDL_Surface* new_surface = Blitter::create_surface_from_format(impl->surface,
+#ifdef OLD_SDL1
+  SDL_Surface* new_surface = Blitter::create_surface_from_format(impl->surface, 
                                                                  impl->surface->w, impl->surface->h);
   if (impl->surface->flags & SDL_SRCALPHA)
   {
@@ -399,8 +408,11 @@ Surface::clone() const
   {
     SDL_BlitSurface(impl->surface, NULL, new_surface, NULL);
   }
-
+ 
   return Surface(std::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface)));
+#else
+  return Surface();
+#endif
 }
 
 Surface
@@ -413,22 +425,22 @@ Surface::subsection(const Rect& rect) const
 
   SDL_Surface* new_surface
     = Blitter::create_surface_from_format(impl->surface,
-                                          rect.get_width(),
+                                          rect.get_width(), 
                                           rect.get_height());
 
-  SDL_LockSurface(impl->surface);
+  SDL_LockSurface(impl->surface); 
   SDL_LockSurface(new_surface);
   for(int y = 0; y < new_surface->h; ++y)
   {
-    memcpy(static_cast<uint8_t*>(new_surface->pixels)
+    memcpy(static_cast<uint8_t*>(new_surface->pixels) 
            + (y * new_surface->pitch),
            static_cast<uint8_t*>(impl->surface->pixels)
-           + (impl->surface->pitch * (y + rect.top))
+           + (impl->surface->pitch * (y + rect.top)) 
            + rect.left * impl->surface->format->BytesPerPixel,
            new_surface->pitch);
   }
-  SDL_UnlockSurface(new_surface);
-  SDL_UnlockSurface(impl->surface);
+  SDL_UnlockSurface(new_surface);  
+  SDL_UnlockSurface(impl->surface); 
 
   return Surface(std::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface)));
 }
@@ -487,7 +499,9 @@ Surface
 Surface::convert_to_rgba() const
 {
   SDL_Surface* surface = Blitter::create_surface_rgba(impl->surface->w, impl->surface->h);
+#ifdef OLD_SDL1
   SDL_SetAlpha(impl->surface, 0, 0);
+#endif
   SDL_BlitSurface(impl->surface, NULL, surface, NULL);
   return Surface(surface);
 }
@@ -496,7 +510,9 @@ Surface
 Surface::convert_to_rgb() const
 {
   SDL_Surface* surface = Blitter::create_surface_rgb(impl->surface->w, impl->surface->h);
+#ifdef OLD_SDL1
   SDL_SetAlpha(impl->surface, 0, 0);
+#endif
   SDL_BlitSurface(impl->surface, NULL, surface, NULL);
   return Surface(surface);
 }
@@ -504,7 +520,11 @@ Surface::convert_to_rgb() const
 bool
 Surface::has_colorkey() const
 {
+#ifdef OLD_SDL1
   return impl->surface->flags & SDL_SRCCOLORKEY;
+#else
+  return false;
+#endif
 }
 
 bool
@@ -516,6 +536,7 @@ Surface::is_indexed() const
 void
 Surface::print(std::ostream& out)
 {
+#ifdef OLD_SDL1
   out << boost::format("Pointer: 0x%p\n"
                        "Rmask:   0x%08x\n"
                        "Gmask:   0x%08x\n"
@@ -557,6 +578,7 @@ Surface::print(std::ostream& out)
     out << std::endl;
     SDL_UnlockSurface(impl->surface);
   }
+#endif
 }
 
 /* EOF */
