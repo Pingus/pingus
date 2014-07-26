@@ -207,7 +207,7 @@ next:
         if (pedantic)
           warning("leading whitespace before string");
 
-      get_string_line(out, i);
+      get_string_line(out, static_cast<unsigned int>(i));
       goto next;
     }
     else if (isspace(current_line[i]))
