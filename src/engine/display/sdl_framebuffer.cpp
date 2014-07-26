@@ -147,6 +147,10 @@ SDLFramebuffer::SDLFramebuffer() :
 
 SDLFramebuffer::~SDLFramebuffer()
 {
+  SDL_DestroyTexture(m_texture);
+  SDL_FreeSurface(m_screen);
+  SDL_DestroyRenderer(m_renderer);
+  SDL_DestroyWindow(m_window);
 }
 
 FramebufferSurface
@@ -317,7 +321,7 @@ SDLFramebuffer::push_cliprect(const Rect& rect)
   }
   
   cliprect_stack.push_back(sdl_rect);
-  SDL_SetClipRect(m_screen, &cliprect_stack.back());
+  SDL_RenderSetClipRect(m_renderer, &cliprect_stack.back());
 }
 
 void
@@ -325,9 +329,9 @@ SDLFramebuffer::pop_cliprect()
 {
   cliprect_stack.pop_back();
   if (cliprect_stack.empty())
-    SDL_SetClipRect(m_screen, NULL);
+    SDL_RenderSetClipRect(m_renderer, NULL);
   else
-    SDL_SetClipRect(m_screen, &cliprect_stack.back());
+    SDL_RenderSetClipRect(m_renderer, &cliprect_stack.back());
 }
 
 /* EOF */
