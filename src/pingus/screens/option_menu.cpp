@@ -110,7 +110,7 @@ OptionMenu::OptionMenu() :
     std::vector<Size> resolutions = Display::get_fullscreen_video_modes();
     Size fullscreen = config_manager.get_fullscreen_resolution();
 
-    int choice = resolutions.size()-1;
+    int choice = static_cast<int>(resolutions.size()) - 1;
     for (auto it = resolutions.begin(); it != resolutions.end(); ++it)
     {
       // add resolution to the box
@@ -120,7 +120,7 @@ OptionMenu::OptionMenu() :
 
       if (fullscreen == *it)
       {
-        choice = it - resolutions.begin();
+        choice = static_cast<int>(it - resolutions.begin());
       }
     }
 
@@ -164,7 +164,7 @@ OptionMenu::OptionMenu() :
 
       if (m_language == *i)
       {
-        language_box->set_current_choice(i - langs.begin());
+        language_box->set_current_choice(static_cast<int>(i - langs.begin()));
       }
     }
   }

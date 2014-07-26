@@ -70,7 +70,7 @@ inline void draw_pixel32(SDL_Surface* screen, int x, int y, const Color& c)
 
     dp1 = ((((dp1 - color) * alpha) >> 8) + color) & 0x00FF00FF;
     dp2 = ((((dp2 - sp2) * alpha) >> 8) + sp2) & 0x00FF00FF;
-    *p = (dp1 | (dp2 << 8));
+    *p = static_cast<Uint32>(dp1 | (dp2 << 8));
   } else {
     (static_cast<Uint32*>(screen->pixels))[x + y * screen->w] = color;
   }
@@ -406,7 +406,7 @@ SDLFramebuffer::update_rects(const std::vector<Rect>& rects)
     sdl_rects.push_back(sdl_rect);
   }
 
-  SDL_UpdateRects(screen, sdl_rects.size(), const_cast<SDL_Rect*>(&*sdl_rects.begin()));
+  SDL_UpdateRects(screen, static_cast<int>(sdl_rects.size()), const_cast<SDL_Rect*>(&*sdl_rects.begin()));
 }
 
 Size

@@ -192,7 +192,7 @@ EvdevDevice::get_relative_index_by_code(int code)
 {
   for(std::vector<Relative>::size_type i = 0; i != relatives.size(); ++i)
     if (relatives[i].code == code)
-      return i;
+      return static_cast<int>(i);
   return -1;
 }
 
@@ -201,7 +201,7 @@ EvdevDevice::get_key_index_by_code(int code)
 {
   for(std::vector<Key>::size_type i = 0; i != keys.size(); ++i)
     if (keys[i].code == code)
-      return i;
+      return static_cast<int>(i);
   return -1;
 }
 
@@ -210,7 +210,7 @@ EvdevDevice::get_absolute_index_by_code(int code)
 {
   for(std::vector<Absolute>::size_type i = 0; i != absolutes.size(); ++i)
     if (absolutes[i].code == code)
-      return i;
+      return static_cast<int>(i);
   return -1;
 }
 

@@ -219,7 +219,7 @@ Levelset::get_level(int num) const
 int
 Levelset::get_level_count() const
 {
-  return m_levels.size();
+  return static_cast<int>(m_levels.size());
 }
 
 int

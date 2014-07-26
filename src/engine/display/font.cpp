@@ -67,7 +67,7 @@ public:
           if (glyphs[i->unicode] == 0)
           {
             glyphs[i->unicode] = new GlyphDescription(*i);
-            glyphs[i->unicode]->image = framebuffer_surfaces.size()-1;
+            glyphs[i->unicode]->image = static_cast<int>(framebuffer_surfaces.size()) - 1;
           }
           else
           {

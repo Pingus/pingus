@@ -47,7 +47,7 @@ ObjectSelectorSet::get_width() const
 int
 ObjectSelectorSet::get_height() const
 {
-  return (objects.size() / get_width()) + ((objects.size() % get_width() > 0) ? 1 : 0);
+  return (static_cast<int>(objects.size()) / get_width()) + ((static_cast<int>(objects.size()) % get_width() > 0) ? 1 : 0);
 }
 
 } // namespace Editor

@@ -35,7 +35,7 @@ private:
   Chunks chunks;
   
   size_t chunk_size;
-  int    next_free;
+  size_t next_free;
   
   char* allocate(size_t size) 
   {

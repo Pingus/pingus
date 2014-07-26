@@ -69,7 +69,7 @@ ChoiceBox::on_primary_button_press(int x, int y)
     {
       current_choice -= 1;
       if (current_choice < 0)
-        current_choice = choices.size()-1;
+        current_choice = static_cast<int>(choices.size()) - 1;
       //current_choice = 0;
     }
       

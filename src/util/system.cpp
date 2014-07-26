@@ -65,7 +65,7 @@ System::DirectoryEntry::DirectoryEntry(const std::string& n, FileType t)
 std::string
 System::cut_file_extension(const std::string& filename)
 {
-  for(int i = filename.size()-1; i >= 0; --i)
+  for(int i = static_cast<int>(filename.size()) - 1; i >= 0; --i)
   {
     if (filename[i] == '.')
     {
@@ -83,7 +83,7 @@ System::cut_file_extension(const std::string& filename)
 std::string
 System::get_file_extension(const std::string& filename)
 {
-  for(int i = filename.size()-1; i >= 0; --i)
+  for(int i = static_cast<int>(filename.size()) - 1; i >= 0; --i)
   {
     if (filename[i] == '.')
     {

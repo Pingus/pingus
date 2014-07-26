@@ -59,8 +59,8 @@ ObjectSelectorList::draw(DrawingContext& parent_gc)
 
     for(Objects::const_iterator i = set->get_objects().begin(); i != set->get_objects().end(); ++i)
     {
-      int x = (i - set->get_objects().begin()) % 5;
-      int y = (i - set->get_objects().begin()) / 5;
+      int x = static_cast<int>(i - set->get_objects().begin()) % 5;
+      int y = static_cast<int>(i - set->get_objects().begin()) / 5;
 
       gc.draw((*i)->thumbnail, Vector2i(x * 48, y * 48));
 
@@ -180,7 +180,8 @@ ObjectSelectorList::on_pointer_move (int x, int y)
   mouse_pos = Vector2i(x - rect.left, y - rect.top);
 
   int width = 5;
-  int height = (set->get_objects().size() / width) + ((set->get_objects().size() % width > 0) ? 1 : 0);
+  int height = (static_cast<int>(set->get_objects().size()) / width) +
+    ((static_cast<int>(set->get_objects().size()) % width > 0) ? 1 : 0);
 
   if (mode != OBJECT_DRAG)
   {
@@ -220,7 +221,8 @@ ObjectSelectorList::scroll(float y)
 
     // FIXME: move this to a separate function
     int width = 5;
-    int height = (set->get_objects().size() / width) + ((set->get_objects().size() % width > 0) ? 1 : 0);
+    int height = (static_cast<int>(set->get_objects().size()) / width) +
+      ((static_cast<int>(set->get_objects().size()) % width > 0) ? 1 : 0);
     offset = Math::clamp(Math::min(static_cast<float>(rect.get_height()) - (static_cast<float>(height) * 48.0f),
                                    0.0f), offset, 0.0f);
   }

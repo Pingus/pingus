@@ -38,8 +38,8 @@ ButtonPanel::ButtonPanel(Server* s, const Vector2i& pos) :
 
   std::vector<ActionName::Enum> actions = aholder->get_available_actions();
 
-  set_rect(Rect(Vector2i(pos.x, pos.y - (actions.size() * 38)/2),
-                Size(60, actions.size() * 38)));
+  set_rect(Rect(Vector2i(pos.x, pos.y - (static_cast<int>(actions.size()) * 38)/2),
+                Size(60, static_cast<int>(actions.size()) * 38)));
 
   // Sort the action so that they always have the same order in the panel
   std::sort(actions.begin(), actions.end());
@@ -67,11 +67,11 @@ ButtonPanel::draw(DrawingContext& gc)
   for(std::vector<ActionButton>::size_type i = 0; i < buttons.size(); ++i)
   {
     if (current_button == i)
-      gc.draw(highlight, Vector2i(rect.left, rect.top + 38*i));
+      gc.draw(highlight, Vector2i(rect.left, rect.top + 38*static_cast<int>(i)));
     else
-      gc.draw(background, Vector2i(rect.left, rect.top + 38*i));
+      gc.draw(background, Vector2i(rect.left, rect.top + 38*static_cast<int>(i)));
 
-    gc.draw(buttons[i].sprite, Vector2i(rect.left + 20, rect.top + 38*i + 16));
+    gc.draw(buttons[i].sprite, Vector2i(rect.left + 20, rect.top + 38*static_cast<int>(i) + 16));
 
     if (globals::developer_mode)
     {
@@ -80,17 +80,17 @@ ButtonPanel::draw(DrawingContext& gc)
       out << aholder->get_available(buttons[i].name) 
           << " / "
           << aholder->get_used(buttons[i].name);
-      gc.print_left(Fonts::pingus_small, Vector2i(rect.left + 46, rect.top + 5 + 38*i), out.str());
+      gc.print_left(Fonts::pingus_small, Vector2i(rect.left + 46, rect.top + 5 + 38*static_cast<int>(i)), out.str());
     }
     else
     {
       std::string str = StringUtil::to_string(aholder->get_available(buttons[i].name));
-      gc.print_center(Fonts::pingus_small, Vector2i(rect.left + 46, rect.top + 5 + 38*i), str);
+      gc.print_center(Fonts::pingus_small, Vector2i(rect.left + 46, rect.top + 5 + 38*static_cast<int>(i)), str);
     }
 
     if (show_tip && tip_button == i)
     {
-      gc.print_left(Fonts::pingus_small, Vector2i(rect.left + 65, rect.top + 5 + 38*i), 
+      gc.print_left(Fonts::pingus_small, Vector2i(rect.left + 65, rect.top + 5 + 38*static_cast<int>(i)), 
                     ActionName::to_screenname(buttons[i].name));
     }
   }
@@ -171,8 +171,8 @@ ButtonPanel::on_pointer_move(int x, int y)
 void
 ButtonPanel::set_pos(const Vector2i& pos)
 {
-  set_rect(Rect(Vector2i(pos.x, pos.y - (buttons.size() * 38)/2),
-                Size(60, buttons.size() * 38)));
+  set_rect(Rect(Vector2i(pos.x, pos.y - (static_cast<int>(buttons.size()) * 38)/2),
+                Size(60, static_cast<int>(buttons.size()) * 38)));
 }
 
 /* EOF */

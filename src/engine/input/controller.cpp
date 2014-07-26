@@ -180,7 +180,7 @@ Controller::refresh()
   {
     if (*i) 
     {
-      add_axis_event(i - axes.begin(), (*i)->get_pos());
+      add_axis_event(static_cast<int>(i - axes.begin()), (*i)->get_pos());
     }
   }
 
@@ -188,7 +188,7 @@ Controller::refresh()
   {
     if (*i) 
     {
-      add_pointer_event(i - pointers.begin(), (*i)->get_pos().x, (*i)->get_pos().y);
+      add_pointer_event(static_cast<int>(i - pointers.begin()), (*i)->get_pos().x, (*i)->get_pos().y);
     }    
   }
   

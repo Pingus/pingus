@@ -45,7 +45,7 @@ FileList::update_layout()
   hspace = rect.get_width()/2;
   vspace = 20;
 
-  num_pages = directory.size() / items_per_page();
+  num_pages = static_cast<int>(directory.size()) / items_per_page();
   if ((directory.size() % items_per_page()) != 0 || num_pages == 0)
     num_pages += 1;
   
@@ -90,7 +90,7 @@ FileList::set_directory(const std::string& pathname, const std::string& pattern)
   directory.push_back(System::DirectoryEntry("..", System::DE_DIRECTORY));
   std::sort(directory.begin(), directory.end(), DirectorySorter());
 
-  num_pages = directory.size() / items_per_page();
+  num_pages = static_cast<int>(directory.size()) / items_per_page();
   if ((directory.size() % items_per_page()) != 0 || num_pages == 0)
     num_pages += 1;
 
@@ -104,7 +104,7 @@ FileList::draw(DrawingContext& gc)
 
   int end = (page+1) * items_per_page();
   if (end > int(directory.size()))
-    end = directory.size();
+    end = static_cast<int>(directory.size());
 
   int x = rect.left;
   int y = rect.top;

@@ -60,7 +60,7 @@ Combobox::is_at(int x, int y)
 {
   if (drop_down)
     return Rect(Vector2i(rect.left, rect.top + get_box_offset()),
-                Size(rect.get_width(), rect.get_height() * (item_list.size()))).contains(Vector2i(x,y));
+                Size(rect.get_width(), rect.get_height() * static_cast<int>(item_list.size()))).contains(Vector2i(x,y));
   else
     return RectComponent::is_at(x,y);
 }
@@ -88,7 +88,7 @@ Combobox::on_primary_button_press(int x, int y)
     list_rect = Rect(Vector2i(rect.left, 
                               rect.top + get_box_offset()),
                      Size(rect.get_width(),
-                          rect.get_height() * item_list.size()));
+                          rect.get_height() * static_cast<int>(item_list.size())));
 
     on_pointer_move(x,y);
   }
