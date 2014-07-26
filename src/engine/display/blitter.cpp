@@ -32,7 +32,7 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
 
   bpp = surface->format->BytesPerPixel;
   if (bpp == 1) {
-    SDL_Color pal[256];
+    SDL_Palette* pal = SDL_AllocPalette(256);
 #ifdef OLD_SDL1
     Uint32 ckey;
     int useckey = 0;
@@ -48,7 +48,7 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
     new_pixels = static_cast<unsigned char*>(new_surface->pixels);
     new_pitch  = new_surface->pitch;
 
-    memcpy(pal, surface->format->palette->colors, sizeof(SDL_Color) * 256);
+    memcpy(pal->colors, surface->format->palette->colors, sizeof(SDL_Color) * 256);
 #ifdef OLD_SDL1
     ckey = surface->format->colorkey;
 #endif
@@ -64,8 +64,8 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
     SDL_UnlockSurface(surface);
     SDL_UnlockSurface(new_surface);
 
+    SDL_SetSurfacePalette(new_surface, pal);
 #ifdef OLD_SDL1
-    SDL_SetPalette(new_surface, SDL_LOGPAL | SDL_PHYSPAL, pal, 0, 256);
     if (useckey) {
       SDL_SetColorKey(new_surface, SDL_SRCCOLORKEY | SDL_RLEACCEL, ckey);
     }
@@ -75,7 +75,7 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
     float fx, fy, fz;
     unsigned char *p1, *p2, *p3, *p4;
 
-    new_surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, surface->format->BitsPerPixel,
+    new_surface = SDL_CreateRGBSurface(0, width, height, surface->format->BitsPerPixel,
                                        surface->format->Rmask, surface->format->Gmask, surface->format->Bmask, surface->format->Amask);
 
     SDL_LockSurface(surface);
@@ -220,7 +220,7 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
 
 #ifdef OLD_SDL1
   if (surface->flags & SDL_SRCALPHA)
-    SDL_SetAlpha(new_surface, SDL_SRCALPHA, surface->format->alpha);
+    SDL_SetSurfaceAlphaMod(new_surface, SDL_SRCALPHA, surface->format->alpha);
 
   if (surface->format->palette)
     SDL_SetPalette(new_surface, SDL_LOGPAL, surface->format->palette->colors, 

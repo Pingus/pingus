@@ -33,16 +33,14 @@ SDLDriver::SDLDriver() :
   string2key(),
   joystick_handles()
 {
-#ifdef OLD_SDL1
-  for (int i = 0; i < SDLK_LAST; ++i) 
+  for (int i = 0; i < SDL_NUM_SCANCODES; ++i) 
   {
-    char* key_name = SDL_GetKeyName(static_cast<SDLKey>(i));
-    string2key[key_name] = static_cast<SDLKey>(i);
+    const char* key_name = SDL_GetKeyName(static_cast<SDL_Keycode>(i));
+    string2key[key_name] = static_cast<SDL_Keycode>(i);
     
     // FIXME: Make the keynames somewhere user visible so that users can use them
     log_debug("Key: '%1%'", key_name);
   }
-#endif
 }
 
 SDLDriver::~SDLDriver()

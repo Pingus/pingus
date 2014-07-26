@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+//  
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -49,7 +49,7 @@ public:
     speed_button = s;
   }
 
-  void update(Control* )
+  void update(Control* ) 
   {
     //log_error("event");
   }
@@ -62,7 +62,7 @@ public:
 
     Vector2f new_pos = pos;
     float c_speed = speed;
-
+    
     if (speed_button && speed_button->get_state() == BUTTON_PRESSED)
     {
       c_speed *= 5.0f;
@@ -114,7 +114,7 @@ public:
     speed_button = s;
   }
 
-  void update(Control* )
+  void update(Control* ) 
   {
     //log_error("event");
   }
@@ -127,7 +127,7 @@ public:
     if (speed_button) speed_button->update(delta_);
 
     float    c_speed = speed;
-
+    
     if (speed_button && speed_button->get_state() == BUTTON_PRESSED)
     {
       c_speed *= 5.0f;
@@ -151,7 +151,7 @@ private:
   Button* down;
   Button* left;
   Button* right;
-  float speed;
+  float speed; 
 
 public:
   ButtonScroller(Control* parent_) :
@@ -177,30 +177,30 @@ public:
     right = right_;
   }
 
-  void update(Control* )
+  void update(Control* ) 
   {
   }
 
   void update(float delta_t)
   {
-    up->update(delta_t);
-    down->update(delta_t);
-    left->update(delta_t);
-    right->update(delta_t);
+    if (up) up->update(delta_t);
+    if (down) down->update(delta_t);
+    if (left) left->update(delta_t);
+    if (right) right->update(delta_t);
 
     delta.x = delta.y = 0.0f;
-
-    if (left->get_state() == BUTTON_PRESSED)
+    
+    if (left && left->get_state() == BUTTON_PRESSED)
       delta.x += speed * delta_t;
 
-    if (right->get_state() == BUTTON_PRESSED)
+    if (right && right->get_state() == BUTTON_PRESSED)
       delta.x += -speed * delta_t;
 
-    if (up->get_state() == BUTTON_PRESSED)
+    if (up && up->get_state() == BUTTON_PRESSED)
       delta.y += speed * delta_t;
 
-    if (down->get_state() == BUTTON_PRESSED)
-      delta.y += -speed * delta_t;
+    if (down && down->get_state() == BUTTON_PRESSED)
+      delta.y += -speed * delta_t;       
 
     notify_parent();
   }
@@ -225,7 +225,7 @@ CoreDriver::create_axis(const FileReader& reader, Control* parent)
 Scroller*
 CoreDriver::create_scroller(const FileReader& reader, Control* parent)
 {
-  if (reader.get_name() == "core:axis-scroller")
+  if (reader.get_name() == "core:axis-scroller") 
   {
     AxisScroller* axis = new AxisScroller(parent);
 
@@ -236,13 +236,13 @@ CoreDriver::create_scroller(const FileReader& reader, Control* parent)
       delete axis;
       return 0;
     }
-
+    
     FileReader y_reader;
     if (!reader.read_section("y-axis", y_reader))
     {
       log_error("CoreDriver: Couldn't find y-axis");
       delete axis;
-      return 0;
+      return 0;       
     }
 
     Axis* x_axis = manager->create_axis(x_reader.get_sections().front(), axis);
@@ -300,7 +300,7 @@ CoreDriver::create_scroller(const FileReader& reader, Control* parent)
       delete scroller;
       return 0;
     }
-
+      
     // FIXME: Add more error checking
     Button* up_button    = manager->create_button(up_reader.get_sections().front(),    scroller);
     Button* down_button  = manager->create_button(down_reader.get_sections().front(),  scroller);
@@ -313,7 +313,7 @@ CoreDriver::create_scroller(const FileReader& reader, Control* parent)
                     right_button);
     return scroller;
   }
-  else
+  else 
   {
     return 0;
   }
@@ -322,7 +322,7 @@ CoreDriver::create_scroller(const FileReader& reader, Control* parent)
 Pointer*
 CoreDriver::create_pointer(const FileReader& reader, Control* parent)
 {
-  if (reader.get_name() == "core:axis-pointer")
+  if (reader.get_name() == "core:axis-pointer") 
   {
     AxisPointer* axis = new AxisPointer(parent);
 
@@ -333,13 +333,13 @@ CoreDriver::create_pointer(const FileReader& reader, Control* parent)
       delete axis;
       return 0;
     }
-
+    
     FileReader y_reader;
     if (!reader.read_section("y-axis", y_reader))
     {
       log_error("CoreDriver: Couldn't find y-axis");
       delete axis;
-      return 0;
+      return 0;       
     }
 
     Axis* x_axis = manager->create_axis(x_reader.get_sections().front(), axis);
@@ -361,8 +361,8 @@ CoreDriver::create_pointer(const FileReader& reader, Control* parent)
     {
       return 0;
     }
-  }
-  else
+  } 
+  else 
   {
     return 0;
   }

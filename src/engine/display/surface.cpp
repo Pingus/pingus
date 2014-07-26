@@ -82,21 +82,17 @@ Surface::Surface(int width, int height, SDL_Palette* palette, int colorkey) :
 {
   if (colorkey == -1)
   {
-    impl->surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 8,
+    impl->surface = SDL_CreateRGBSurface(0, width, height, 8,
                                          0, 0, 0 ,0);
   }
   else
   {
-#ifdef OLD_SDL1
-    impl->surface = SDL_CreateRGBSurface(SDL_SWSURFACE | SDL_SRCCOLORKEY, width, height, 8,
+    impl->surface = SDL_CreateRGBSurface(0, width, height, 8, 
                                          0, 0, 0 ,0);
-    SDL_SetColorKey(impl->surface, SDL_SRCCOLORKEY, colorkey);
-#endif
+    SDL_SetColorKey(impl->surface, SDL_TRUE, colorkey);
   }
 
-#ifdef OLD_SDL1
-  SDL_SetColors(impl->surface, palette->colors, 0, palette->ncolors);
-#endif
+  SDL_SetSurfacePalette(impl->surface, palette);
 }
 
 Surface::Surface(int width, int height) :
@@ -394,25 +390,17 @@ Surface::scale(int w, int h)
 Surface
 Surface::clone() const
 {
-#ifdef OLD_SDL1
   SDL_Surface* new_surface = Blitter::create_surface_from_format(impl->surface, 
                                                                  impl->surface->w, impl->surface->h);
-  if (impl->surface->flags & SDL_SRCALPHA)
-  {
-    Uint8 alpha = impl->surface->format->alpha;
-    SDL_SetAlpha(impl->surface, 0, 0);
-    SDL_BlitSurface(impl->surface, NULL, new_surface, NULL);
-    SDL_SetAlpha(impl->surface, SDL_SRCALPHA, alpha);
-  }
-  else
-  {
-    SDL_BlitSurface(impl->surface, NULL, new_surface, NULL);
-  }
- 
+  SDL_BlendMode blend_mode;
+  SDL_GetSurfaceBlendMode(impl->surface, &blend_mode);
+
+  SDL_SetSurfaceBlendMode(impl->surface, SDL_BLENDMODE_NONE);
+  SDL_BlitSurface(impl->surface, NULL, new_surface, NULL);
+
+  SDL_SetSurfaceBlendMode(impl->surface, blend_mode);
+
   return Surface(std::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface)));
-#else
-  return Surface();
-#endif
 }
 
 Surface
@@ -499,9 +487,6 @@ Surface
 Surface::convert_to_rgba() const
 {
   SDL_Surface* surface = Blitter::create_surface_rgba(impl->surface->w, impl->surface->h);
-#ifdef OLD_SDL1
-  SDL_SetAlpha(impl->surface, 0, 0);
-#endif
   SDL_BlitSurface(impl->surface, NULL, surface, NULL);
   return Surface(surface);
 }
@@ -510,9 +495,6 @@ Surface
 Surface::convert_to_rgb() const
 {
   SDL_Surface* surface = Blitter::create_surface_rgb(impl->surface->w, impl->surface->h);
-#ifdef OLD_SDL1
-  SDL_SetAlpha(impl->surface, 0, 0);
-#endif
   SDL_BlitSurface(impl->surface, NULL, surface, NULL);
   return Surface(surface);
 }

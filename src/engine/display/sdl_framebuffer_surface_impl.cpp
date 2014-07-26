@@ -16,20 +16,16 @@
 
 #include "engine/display/sdl_framebuffer_surface_impl.hpp"
 
-SDLFramebufferSurfaceImpl::SDLFramebufferSurfaceImpl(SDL_Surface* src) :
-  surface()
+SDLFramebufferSurfaceImpl::SDLFramebufferSurfaceImpl(SDL_Renderer* renderer, SDL_Surface* src) :
+  m_texture(SDL_CreateTextureFromSurface(renderer, src)),
+  m_width(src->w),
+  m_height(src->h)
 {
-#ifdef OLD_SDL1
-  if (src->format->Amask != 0 || (src->flags & SDL_SRCCOLORKEY))
-    surface = SDL_DisplayFormatAlpha(src);
-  else
-    surface = SDL_DisplayFormat(src);
-#endif
 }
 
 SDLFramebufferSurfaceImpl::~SDLFramebufferSurfaceImpl()
 {
-  SDL_FreeSurface(surface);
+  SDL_DestroyTexture(m_texture);
 }
 
 /* EOF */
