@@ -7,10 +7,10 @@
 
   (standard-scroller
    (core:button-scroller
-    (up    (sdl:keyboard-button (key "up")))
-    (down  (sdl:keyboard-button (key "down")))
-    (left  (sdl:keyboard-button (key "left")))
-    (right (sdl:keyboard-button (key "right")))))
+    (up    (sdl:keyboard-button (key "Up")))
+    (down  (sdl:keyboard-button (key "Down")))
+    (left  (sdl:keyboard-button (key "Left")))
+    (right (sdl:keyboard-button (key "Right")))))
 
   (primary-button
     (sdl:mouse-button (button 1)))
@@ -20,26 +20,26 @@
     (sdl:mouse-button (button 3)))
 
   (pause-button
-   (sdl:keyboard-button (key "p")))
+   (sdl:keyboard-button (key "P")))
 
   (fast-forward-button
-   (sdl:keyboard-button (key "f"))
-   (sdl:keyboard-button (key "space")))
+   (sdl:keyboard-button (key "F"))
+   (sdl:keyboard-button (key "Space")))
 
   (single-step-button
-   (sdl:keyboard-button (key "s")))
+   (sdl:keyboard-button (key "S")))
 
   (armageddon-button
-   (sdl:keyboard-button (key "a")))
+   (sdl:keyboard-button (key "A")))
 
   (escape-button
-   (sdl:keyboard-button (key "escape")))
+   (sdl:keyboard-button (key "Escape")))
 
   (action-up-button
    (sdl:mouse-button (button 4)))
-  
+
   (action-down-button
-   (sdl:keyboard-button (key "tab"))
+   (sdl:keyboard-button (key "Tab"))
    (sdl:mouse-button (button 5)))
 
   (action-1-button  (sdl:keyboard-button (key "1")))

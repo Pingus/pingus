@@ -245,9 +245,12 @@ GameSession::update(const Input::Event& event)
     case Input::KEYBOARD_EVENT_TYPE:
       break;
 
+    case Input::TEXT_INPUT_EVENT_TYPE:
+      break;
+
     default:
       // unhandled event
-      log_info("GameSession::process_events (): unhandled event: %1%", event.type);
+      log_info("unhandled event: %1%", event.type);
       break;
   }
 }
