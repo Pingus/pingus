@@ -18,6 +18,7 @@
 #include "editor/editor_level.hpp"
 
 #include <algorithm>
+#include <sstream>
 
 #include "editor/level_obj.hpp"
 #include "editor/level_obj_factory.hpp"

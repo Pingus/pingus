@@ -230,10 +230,13 @@ class Project:
         self.conf.CheckLib('iconv')
 
     def build(self):
-        self.env.Append(CPPPATH = ['.', 'src/', 'external/tinygettext/'])
+        self.env.Append(CPPPATH = ['.', 'src/',
+                                   'external/tinygettext/',
+                                   'external/logmich/include/'])
 
         libpingus = self.env.StaticLibrary('pingus',
                                            Glob('external/tinygettext/tinygettext/*.cpp') + \
+                                           Glob('external/logmich/src/*.cpp') + \
                                            Glob('src/editor/*.cpp') + \
                                            Glob('src/engine/display/*.cpp') + \
                                            Glob('src/engine/display/delta/*.cpp') + \
