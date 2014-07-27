@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+//  
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -35,6 +35,8 @@ public:
   virtual ~Framebuffer() {}
 
   virtual FramebufferSurface create_surface(const Surface& surface) =0;
+
+  virtual Surface make_screenshot() const =0;
 
   virtual void set_video_mode(const Size& size, bool fullscreen, bool resizable) =0;
   virtual bool is_fullscreen() const =0;

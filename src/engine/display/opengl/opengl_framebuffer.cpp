@@ -40,6 +40,22 @@ OpenGLFramebuffer::create_surface(const Surface& surface)
   return FramebufferSurface(new OpenGLFramebufferSurfaceImpl(surface.get_surface()));
 }
 
+Surface
+OpenGLFramebuffer::make_screenshot() const
+{
+  Size size = get_size();
+
+  glPixelStorei(GL_PACK_ALIGNMENT, 1);
+  std::unique_ptr<uint8_t[]> buffer(new uint8_t[size.width * size.height * 4]);
+  glReadPixels(0, 0, size.width, size.height, GL_RGBA, GL_UNSIGNED_BYTE, buffer.get());
+
+  Surface screenshot(size.width, size.height);
+#ifdef OLD_SDL1
+  // insert code
+#endif
+  return screenshot;
+}
+
 void
 OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable)
 {

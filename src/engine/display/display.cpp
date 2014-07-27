@@ -22,9 +22,7 @@
 #include "engine/display/sdl_framebuffer.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "pingus/globals.hpp"
-#ifdef HAVE_OPENGL
-#  include "engine/display/opengl/opengl_framebuffer.hpp"
-#endif
+#include "engine/display/opengl/opengl_framebuffer.hpp"
 #include "engine/display/delta/delta_framebuffer.hpp"
 #include "engine/display/null_framebuffer.hpp"
 #include "util/log.hpp"
@@ -95,12 +93,8 @@ Display::create_window(FramebufferType framebuffer_type, const Size& size, bool 
   switch (framebuffer_type)
   {
     case OPENGL_FRAMEBUFFER:
-#ifdef HAVE_OPENGL
       s_framebuffer = std::unique_ptr<Framebuffer>(new OpenGLFramebuffer());
       s_framebuffer->set_video_mode(size, fullscreen, resizable);
-#else
-      raise_exception(std::runtime_error, "OpenGL support was not compiled in");
-#endif
       break;
 
     case NULL_FRAMEBUFFER:

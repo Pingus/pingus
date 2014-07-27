@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -57,6 +57,23 @@ SDLFramebuffer::create_surface(const Surface& surface)
   return FramebufferSurface(new SDLFramebufferSurfaceImpl(m_renderer, surface.get_surface()));
 }
 
+Surface
+SDLFramebuffer::make_screenshot() const
+{
+  Size size = get_size();
+  Surface screenshot(size.width, size.height);
+  int ret = SDL_RenderReadPixels(m_renderer, nullptr,
+                                 SDL_PIXELFORMAT_RGBX8888,
+                                 screenshot.get_data(),
+                                 screenshot.get_pitch());
+  if (ret != 0)
+  {
+    log_error("%1%", SDL_GetError());
+  }
+
+  return screenshot;
+}
+
 void
 SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Vector2i& pos)
 {
@@ -85,7 +102,7 @@ SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Rect& srcr
   dstrect.x = static_cast<Sint16>(pos.x);
   dstrect.y = static_cast<Sint16>(pos.y);
   dstrect.w = srcrect.get_width();
-  dstrect.h = srcrect.get_height();  
+  dstrect.h = srcrect.get_height();
 
   SDL_Rect sdlsrcrect;
   sdlsrcrect.x = static_cast<Sint16>(srcrect.left);
@@ -236,7 +253,7 @@ SDLFramebuffer::push_cliprect(const Rect& rect)
   {
     sdl_rect = Intersection(&cliprect_stack.back(), &sdl_rect);
   }
-  
+
   cliprect_stack.push_back(sdl_rect);
   SDL_RenderSetClipRect(m_renderer, &cliprect_stack.back());
 }

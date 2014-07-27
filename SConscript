@@ -125,8 +125,7 @@ class Project:
         else:
             self.reports += "  * OpenGL support: enabled\n"
             self.conf.env.Append(optional_sources = ['src/engine/display/opengl/opengl_framebuffer_surface_impl.cpp',
-                                                     'src/engine/display/opengl/opengl_framebuffer.cpp' ],
-                                 CPPDEFINES = [('HAVE_OPENGL', 1)])
+                                                     'src/engine/display/opengl/opengl_framebuffer.cpp' ])
             if sys.platform == "darwin":
                 self.conf.env.Append(LINKFLAGS = [ '-framework', 'OpenGL', '-framework', 'Cocoa' ])
             else:

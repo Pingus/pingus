@@ -32,6 +32,8 @@ public:
 
   FramebufferSurface create_surface(const Surface& surface);
 
+  Surface make_screenshot() const override;
+
   void set_video_mode(const Size& size, bool fullscreen, bool resizable);
   bool is_fullscreen() const;
   bool is_resizable() const;
