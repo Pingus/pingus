@@ -83,6 +83,12 @@ Display::is_resizable()
   return s_framebuffer->is_resizable();
 }
 
+bool
+Display::has_grab()
+{
+  return s_framebuffer->has_grab();
+}
+
 void
 Display::create_window(FramebufferType framebuffer_type, const Size& size, bool fullscreen, bool resizable)
 {

@@ -30,28 +30,29 @@ public:
   SDLFramebuffer();
   ~SDLFramebuffer();
 
-  FramebufferSurface create_surface(const Surface& surface);
+  FramebufferSurface create_surface(const Surface& surface) override;
 
   Surface make_screenshot() const override;
 
-  void set_video_mode(const Size& size, bool fullscreen, bool resizable);
-  bool is_fullscreen() const;
-  bool is_resizable() const;
-  void flip();
+  void set_video_mode(const Size& size, bool fullscreen, bool resizable) override;
+  bool is_fullscreen() const override;
+  bool is_resizable() const override;
+  bool has_grab() const override;
+  void flip() override;
   void update_rects(const std::vector<Rect>& rects);
 
-  void push_cliprect(const Rect&);
-  void pop_cliprect();
+  void push_cliprect(const Rect&) override;
+  void pop_cliprect() override;
 
-  void draw_surface(const FramebufferSurface& src, const Vector2i& pos);
-  void draw_surface(const FramebufferSurface& src, const Rect& srcrect, const Vector2i& pos);
+  void draw_surface(const FramebufferSurface& src, const Vector2i& pos) override;
+  void draw_surface(const FramebufferSurface& src, const Rect& srcrect, const Vector2i& pos) override;
 
-  void draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color);
+  void draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color) override;
 
-  void draw_rect(const Rect& rect, const Color& color);
-  void fill_rect(const Rect& rect, const Color& color);
+  void draw_rect(const Rect& rect, const Color& color) override;
+  void fill_rect(const Rect& rect, const Color& color) override;
 
-  Size get_size() const;
+  Size get_size() const override;
 
 private:
   SDLFramebuffer (const SDLFramebuffer&);

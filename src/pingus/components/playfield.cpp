@@ -139,8 +139,7 @@ Playfield::update(float delta)
     }
   }
 
-#ifdef OLD_SDL1
-  if (globals::auto_scrolling && (Display::is_fullscreen() || SDL_WM_GrabInput(SDL_GRAB_QUERY) == SDL_GRAB_ON))
+  if (globals::auto_scrolling && (Display::is_fullscreen() || Display::has_grab()))
   {
     scroll_speed = static_cast<int>(800 * delta);
     
@@ -162,7 +161,6 @@ Playfield::update(float delta)
       state.set_pos(state.get_pos() + Vector2i(0, scroll_speed));        
     }
   }
-#endif
 }
 
 void

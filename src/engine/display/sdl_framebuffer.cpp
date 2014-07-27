@@ -248,6 +248,12 @@ SDLFramebuffer::is_resizable() const
   return SDL_GetWindowFlags(m_window) & SDL_WINDOW_RESIZABLE;
 }
 
+bool
+SDLFramebuffer::has_grab() const
+{
+  return SDL_GetWindowGrab(m_window);
+}
+
 void
 SDLFramebuffer::push_cliprect(const Rect& rect)
 {
