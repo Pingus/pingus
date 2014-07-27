@@ -101,9 +101,9 @@ Screenshot::save_png(const std::string& filename, uint8_t* buffer, int width, in
     {
       for(int x = 0; x < width; ++x)
       {
-        row[3*x + 0] = (buffer + y * pitch)[4*x + 3];
-        row[3*x + 1] = (buffer + y * pitch)[4*x + 2];
-        row[3*x + 2] = (buffer + y * pitch)[4*x + 1];
+        row[3*x + 0] = (buffer + y * pitch)[4*x + 0];
+        row[3*x + 1] = (buffer + y * pitch)[4*x + 1];
+        row[3*x + 2] = (buffer + y * pitch)[4*x + 2];
       }
       png_write_row(png_ptr, row.get());
     }

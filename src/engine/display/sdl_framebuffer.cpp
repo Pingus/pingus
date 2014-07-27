@@ -70,7 +70,7 @@ SDLFramebuffer::make_screenshot() const
   {
     Surface screenshot(size.width, size.height);
     int ret = SDL_RenderReadPixels(m_renderer, nullptr,
-                                   SDL_PIXELFORMAT_RGBX8888,
+                                   SDL_PIXELFORMAT_ABGR8888,
                                    screenshot.get_data(),
                                    screenshot.get_pitch());
     if (ret != 0)
