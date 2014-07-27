@@ -60,18 +60,26 @@ SDLFramebuffer::create_surface(const Surface& surface)
 Surface
 SDLFramebuffer::make_screenshot() const
 {
-  Size size = get_size();
-  Surface screenshot(size.width, size.height);
-  int ret = SDL_RenderReadPixels(m_renderer, nullptr,
-                                 SDL_PIXELFORMAT_RGBX8888,
-                                 screenshot.get_data(),
-                                 screenshot.get_pitch());
-  if (ret != 0)
+  Size size;
+  if (SDL_GetRendererOutputSize(m_renderer, &size.width, &size.height) != 0)
   {
-    log_error("%1%", SDL_GetError());
+    log_error("SDL_GetRenderOutputSize failed: %1%", SDL_GetError());
+    return Surface();
   }
+  else
+  {
+    Surface screenshot(size.width, size.height);
+    int ret = SDL_RenderReadPixels(m_renderer, nullptr,
+                                   SDL_PIXELFORMAT_RGBX8888,
+                                   screenshot.get_data(),
+                                   screenshot.get_pitch());
+    if (ret != 0)
+    {
+      log_error("%1%", SDL_GetError());
+    }
 
-  return screenshot;
+    return screenshot;
+  }
 }
 
 void
