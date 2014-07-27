@@ -73,14 +73,14 @@ CollisionMask::init_colmap(const Surface& surf, const std::string& surface_res)
 
   if (sdl_surface->format->palette)
   {
-#ifdef OLD_SDL1
     uint8_t* source = static_cast<uint8_t*>(sdl_surface->pixels);
-    if (sdl_surface->flags & SDL_SRCCOLORKEY)
+    Uint32 colorkey;
+    if (SDL_GetColorKey(sdl_surface, &colorkey) == 0)
     { // surface with transparent areas
       for(int y = 0; y < height; ++y)
         for(int x = 0; x < width; ++x)
         {
-          if (source[y*pitch + x] == sdl_surface->format->colorkey)
+          if (source[y*pitch + x] == colorkey)
             buffer[y*width + x] = 0;
           else
             buffer[y*width + x] = 1;
@@ -90,7 +90,6 @@ CollisionMask::init_colmap(const Surface& surf, const std::string& surface_res)
     { // completly opaque surface
       memset(buffer.get(), 1, width*height);
     }
-#endif
   }
   else if (sdl_surface->format->BitsPerPixel == 24)
   {

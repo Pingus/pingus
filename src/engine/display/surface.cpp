@@ -295,7 +295,6 @@ Surface::operator bool() const
 Color
 Surface::get_pixel(int x, int y) const
 {
-#ifdef OLD_SDL1
   Uint8 *p = static_cast<Uint8 *>(get_surface()->pixels) + y * get_surface()->pitch + x * get_surface()->format->BytesPerPixel;
   Uint32 pixel;
 
@@ -307,8 +306,9 @@ Surface::get_pixel(int x, int y) const
 
         if (impl->surface->format->palette)
         {
-          if (impl->surface->flags & SDL_SRCCOLORKEY &&
-              pixel == impl->surface->format->colorkey)
+          Uint32 colorkey;
+          if (SDL_GetColorKey(impl->surface, &colorkey) == 0 &&
+              pixel == colorkey)
           {
             return Color(0,0,0,0);
           }
@@ -341,9 +341,6 @@ Surface::get_pixel(int x, int y) const
   Color color;
   SDL_GetRGBA(pixel, get_surface()->format, &color.r, &color.g, &color.b, &color.a);
   return color;
-#else
-  return Color();
-#endif
 }
 
 Surface
@@ -502,11 +499,8 @@ Surface::convert_to_rgb() const
 bool
 Surface::has_colorkey() const
 {
-#ifdef OLD_SDL1
-  return impl->surface->flags & SDL_SRCCOLORKEY;
-#else
-  return false;
-#endif
+  Uint32 colorkey;
+  return SDL_GetColorKey(impl->surface, &colorkey) == 0;
 }
 
 bool
@@ -518,7 +512,6 @@ Surface::is_indexed() const
 void
 Surface::print(std::ostream& out)
 {
-#ifdef OLD_SDL1
   out << boost::format("Pointer: 0x%p\n"
                        "Rmask:   0x%08x\n"
                        "Gmask:   0x%08x\n"
@@ -534,18 +527,28 @@ Surface::print(std::ostream& out)
     % impl->surface->format->Bmask
     % impl->surface->format->Amask
     % impl->surface->flags
-    % ((impl->surface->flags & SDL_HWSURFACE) ? "HWSURFACE " : "")
-    % ((impl->surface->flags & SDL_SWSURFACE) ? "SWSURFACE " : "")
-    % ((impl->surface->flags & SDL_SRCCOLORKEY) ? "SRCCOLORKEY " : "")
-    % ((impl->surface->flags & SDL_SRCALPHA) ? "SRCALPHA " : "")
     % impl->surface->format->palette
     % static_cast<int>(impl->surface->format->BitsPerPixel);
 
-  if (impl->surface->flags & SDL_SRCCOLORKEY)
-    out << "Colorkey: " << static_cast<int>(impl->surface->format->colorkey) << std::endl;
+  Uint32 colorkey;
+  if (SDL_GetColorKey(impl->surface, &colorkey) == 0)
+  {
+    out << "Colorkey: " << boost::format("0x%08x") % colorkey << std::endl;
+  }
+  else
+  {
+    out << "Colorkey: <none>" << std::endl;
+  }
 
-  if (impl->surface->flags & SDL_SRCALPHA)
-    out << "Alpha: " << static_cast<int>(impl->surface->format->alpha) << std::endl;
+  Uint8 alpha;
+  if (SDL_GetSurfaceAlphaMod(impl->surface, &alpha) == 0)
+  {
+    out << "Alpha: " << static_cast<int>(alpha) << std::endl;
+  }
+  else
+  {
+    out << "Alpha: <none>" << std::endl;
+  }
 
   if (0)
   {
@@ -560,7 +563,6 @@ Surface::print(std::ostream& out)
     out << std::endl;
     SDL_UnlockSurface(impl->surface);
   }
-#endif
 }
 
 /* EOF */

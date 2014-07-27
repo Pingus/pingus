@@ -201,7 +201,6 @@ void
 GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
                              int x_pos, int y_pos, int real_x_arg, int real_y_arg)
 {
-#ifdef OLD_SDL1
   if (sprovider.get_surface()->format->BitsPerPixel != 8  &&
       sprovider.get_surface()->format->BitsPerPixel != 24 &&
       sprovider.get_surface()->format->BitsPerPixel != 32)
@@ -231,7 +230,7 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
 
   Uint8* target_buf = static_cast<Uint8*>(provider.get_data());
   Uint8* source_buf = static_cast<Uint8*>(sprovider.get_data());
-
+  Uint32 colorkey;
   if (sprovider.get_surface()->format->BitsPerPixel == 32)
   {
     for (int y = start_y; y < end_y; ++y)
@@ -252,10 +251,8 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
       }
     }
   }
-  else if (sprovider.get_surface()->flags & SDL_SRCCOLORKEY)
+  else if (SDL_GetColorKey(sprovider.get_surface(), &colorkey) == 0)
   {
-    Uint32 colorkey = sprovider.get_surface()->format->colorkey;
-
     for (int y = start_y; y < end_y; ++y)
     {
       Uint8* tptr = target_buf + tpitch*(y+y_pos) + 4*(x_pos + start_x);
@@ -294,7 +291,6 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
   
   sprovider.unlock();
   provider.unlock();
-#endif
 }
 
 void
