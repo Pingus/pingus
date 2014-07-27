@@ -17,6 +17,7 @@
 #include "engine/display/opengl/opengl_framebuffer.hpp"
 
 #include <SDL.h>
+#include <SDL_image.h>
 #include <sstream>
 #include <stdexcept>
 
@@ -53,7 +54,7 @@ OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resiza
     flags |= SDL_WINDOW_RESIZABLE;
   }
 
-  m_window = SDL_CreateWindow("Pingus",
+  m_window = SDL_CreateWindow("Pingus " VERSION,
                               SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                               size.width, size.height,
                               flags);
@@ -63,6 +64,7 @@ OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resiza
     msg << "Couldn't set video mode (" << size.width << "x" << size.height << "): " << SDL_GetError();
     throw std::runtime_error(msg.str());
   }
+  SDL_SetWindowIcon(m_window, IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str()));
 
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);

@@ -16,6 +16,8 @@
 
 #include "engine/display/sdl_framebuffer.hpp"
 
+#include <SDL_image.h>
+
 #include "engine/display/sdl_framebuffer_surface_impl.hpp"
 #include "util/log.hpp"
 
@@ -281,7 +283,7 @@ SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable
     flags |= SDL_WINDOW_RESIZABLE;
   }
 
-  m_window = SDL_CreateWindow("Pingus",
+  m_window = SDL_CreateWindow("Pingus " VERSION,
                               SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                               size.width, size.height,
                               flags);
@@ -291,6 +293,7 @@ SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable
     msg << "Couldn't set video mode (" << size.width << "x" << size.height << "): " << SDL_GetError();
     throw std::runtime_error(msg.str());
   }
+  SDL_SetWindowIcon(m_window, IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str()));
 
   m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
   m_screen = SDL_CreateRGBSurface(0, size.width, size.height, 32,
