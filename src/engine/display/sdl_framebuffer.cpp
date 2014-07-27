@@ -272,39 +272,56 @@ SDLFramebuffer::get_size() const
 void
 SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable)
 {
-  Uint32 flags = 0;
-
-  if (fullscreen)
+  if (m_window)
   {
-    flags |= SDL_WINDOW_FULLSCREEN;
+    if (!fullscreen)
+    {
+      SDL_SetWindowSize(m_window, size.width, size.height);
+      SDL_SetWindowFullscreen(m_window, 0);
+    }
+    else
+    {
+      SDL_SetWindowSize(m_window, size.width, size.height);
+      SDL_SetWindowDisplayMode(m_window, nullptr);
+      SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN);
+    }
   }
-  else if (resizable)
+  else
   {
-    flags |= SDL_WINDOW_RESIZABLE;
-  }
+    Uint32 flags = 0;
 
-  m_window = SDL_CreateWindow("Pingus " VERSION,
-                              SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                              size.width, size.height,
-                              flags);
-  if(m_window == 0)
-  {
-    std::ostringstream msg;
-    msg << "Couldn't set video mode (" << size.width << "x" << size.height << "): " << SDL_GetError();
-    throw std::runtime_error(msg.str());
-  }
-  SDL_SetWindowIcon(m_window, IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str()));
+    if (fullscreen)
+    {
+      flags |= SDL_WINDOW_FULLSCREEN;
+    }
+    else if (resizable)
+    {
+      flags |= SDL_WINDOW_RESIZABLE;
+    }
 
-  m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
-  m_screen = SDL_CreateRGBSurface(0, size.width, size.height, 32,
-                                  0x00FF0000,
-                                  0x0000FF00,
-                                  0x000000FF,
-                                  0xFF000000);
-  m_texture = SDL_CreateTexture(m_renderer,
-                                SDL_PIXELFORMAT_ARGB8888,
-                                SDL_TEXTUREACCESS_STREAMING,
-                                size.width, size.height);
+    m_window = SDL_CreateWindow("Pingus " VERSION,
+                                SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+                                size.width, size.height,
+                                flags);
+    if(m_window == 0)
+    {
+      std::ostringstream msg;
+      msg << "Couldn't set video mode (" << size.width << "x" << size.height << "): " << SDL_GetError();
+      throw std::runtime_error(msg.str());
+    }
+    SDL_SetWindowIcon(m_window, IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str()));
+
+    m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
+    m_screen = SDL_CreateRGBSurface(0, size.width, size.height, 32,
+                                    0x00FF0000,
+                                    0x0000FF00,
+                                    0x000000FF,
+                                    0xFF000000);
+    m_texture = SDL_CreateTexture(m_renderer,
+                                  SDL_PIXELFORMAT_ARGB8888,
+                                  SDL_TEXTUREACCESS_STREAMING,
+                                  size.width, size.height);
+  }
 }
 
 bool
