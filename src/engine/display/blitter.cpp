@@ -218,17 +218,24 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
                                                   surface->format->Bmask,
                                                   surface->format->Amask);
 
-#ifdef OLD_SDL1
-  if (surface->flags & SDL_SRCALPHA)
-    SDL_SetSurfaceAlphaMod(new_surface, SDL_SRCALPHA, surface->format->alpha);
+  Uint8 alpha;
+  if (SDL_GetSurfaceAlphaMod(surface, &alpha) == 0)
+    SDL_SetSurfaceAlphaMod(new_surface, alpha);
+
+  SDL_BlendMode blend_mode;
+  if (SDL_GetSurfaceBlendMode(surface, &blend_mode) == 0)
+    SDL_SetSurfaceBlendMode(new_surface, blend_mode);
+
+  Uint8 r, g, b;
+  if (SDL_GetSurfaceColorMod(surface, &r, &g, &b) == 0)
+    SDL_SetSurfaceColorMod(new_surface, r, g, b);
 
   if (surface->format->palette)
-    SDL_SetPalette(new_surface, SDL_LOGPAL, surface->format->palette->colors, 
-                   0, surface->format->palette->ncolors);
+    SDL_SetSurfacePalette(new_surface, surface->format->palette);
 
-  if (surface->flags & SDL_SRCCOLORKEY)
-    SDL_SetColorKey(new_surface, SDL_SRCCOLORKEY, surface->format->colorkey);
-#endif
+  Uint32 colorkey;
+  if (SDL_GetColorKey(surface, &colorkey) == 0)
+    SDL_SetColorKey(new_surface, SDL_TRUE, colorkey);
 
   return new_surface;
 }
