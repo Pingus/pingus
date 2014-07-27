@@ -17,6 +17,7 @@
 #include "engine/display/sdl_framebuffer.hpp"
 
 #include <SDL_image.h>
+#include <sstream>
 
 #include "engine/display/sdl_framebuffer_surface_impl.hpp"
 #include "util/log.hpp"
