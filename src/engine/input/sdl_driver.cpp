@@ -33,9 +33,9 @@ SDLDriver::SDLDriver() :
   string2key(),
   joystick_handles()
 {
-  for (int i = 0; i < SDL_NUM_SCANCODES; ++i) 
+  for (int i = 0; i < SDL_NUM_SCANCODES; ++i)
   {
-    const char* key_name = SDL_GetKeyName(static_cast<SDL_Keycode>(i));
+    const char* key_name = SDL_GetScancodeName(static_cast<SDL_Scancode>(i));
     string2key[key_name] = static_cast<SDL_Keycode>(i);
     
     // FIXME: Make the keynames somewhere user visible so that users can use them
