@@ -35,7 +35,7 @@ int main(int argc, char** argv)
     }
     catch(const std::exception& err)
     {
-      log_error(argv[i] << ": exception catched: " << err.what());
+      log_error("%1%: exception catched: %2%", argv[i], err.what());
     }
   }
 

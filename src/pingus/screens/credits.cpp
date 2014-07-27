@@ -17,6 +17,7 @@
 #include "pingus/screens/credits.hpp"
 
 #include <fstream>
+#include <sstream>
 
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
@@ -90,7 +91,7 @@ Credits::Credits(const Pathname& filename) :
     std::ifstream in(filename.get_sys_path());
     if (!in)
     {
-      log_error("couldn't open " << filename);
+      log_error("couldn't open %1%", filename);
       
       std::ostringstream out;
       out << "couldn't open " << filename;
@@ -121,7 +122,7 @@ Credits::Credits(const Pathname& filename) :
         end_offset += 50;
         break;
       default:
-        log_error("Credits: Syntax error: Unknown format: '" << (*i)[0] << "'");
+        log_error("Credits: Syntax error: Unknown format: '%1%'", (*i)[0]);
         break;
     }
   }
@@ -192,7 +193,7 @@ Credits::draw_background (DrawingContext& gc)
         yof += 50;
         break;
       default:
-        log_error("Credits: Syntax error: Unknown format: '" << (*i)[0] << "'");
+        log_error("Credits: Syntax error: Unknown format: '%1%'", (*i)[0]);
         break;
     }
   }

@@ -95,7 +95,7 @@ PingusMain::read_rc_file (void)
 
     if (!System::exist(filename))
     {
-      log_info(filename << ": config file not found");
+      log_info("%1%: config file not found", filename);
     }
     else
     {
@@ -108,7 +108,7 @@ PingusMain::read_rc_file (void)
       }
       catch(const std::exception& err)
       {
-        log_error(err.what());
+        log_error("%1%", err.what());
       }
     }
   }
@@ -382,15 +382,15 @@ PingusMain::parse_args(int argc, char** argv)
         break;
 
       case 'D':
-        g_logger.set_log_level(Logger::kDebug);
+        logmich::set_log_level(logmich::kDebug);
         break;
 
       case 'v':
-        g_logger.set_log_level(Logger::kInfo);
+        logmich::set_log_level(logmich::kInfo);
         break;
 
       case 'Q':
-        g_logger.set_log_level(Logger::kNone);
+        logmich::set_log_level(logmich::kNone);
         break;
 
       case 360:
@@ -608,7 +608,7 @@ PingusMain::start_game ()
 int
 PingusMain::run(int argc, char** argv)
 {
-  g_logger.set_log_level(Logger::kWarning);
+  logmich::set_log_level(logmich::kWarning);
 
   tinygettext::Log::set_log_info_callback(0);
 
@@ -663,7 +663,7 @@ PingusMain::run(int argc, char** argv)
       }
       else
       {
-        log_error("couldn't create window, falling back to SDL: " << err.what());
+        log_error("couldn't create window, falling back to SDL: %1%", err.what());
         system.create_window(SDL_FRAMEBUFFER, screen_size, fullscreen, resizable);
         config_manager.set_renderer(SDL_FRAMEBUFFER);
       }

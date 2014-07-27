@@ -16,6 +16,8 @@
 
 #include "pingus/savegame_manager.hpp"
 
+#include <sstream>
+
 #include "lisp/parser.hpp"
 #include "util/log.hpp"
 #include "util/sexpr_file_reader.hpp"
@@ -40,14 +42,14 @@ SavegameManager::SavegameManager(const std::string& arg_filename) :
 
   if (!System::exist(filename))
   {
-    log_info(filename << ": savegame file not found");
+    log_info("%1%: savegame file not found", filename);
   }
   else
   {
     FileReader reader = FileReader::parse(filename);
     if (reader.get_name() != "pingus-savegame")
     {
-      log_error(filename << ": not a (pingus-savegame) file");
+      log_error("%1%: not a (pingus-savegame) file", filename);
     }
     else
     {
@@ -59,7 +61,7 @@ SavegameManager::SavegameManager(const std::string& arg_filename) :
         SavegameTable::iterator j = find(savegame->get_filename());
         if (j != savegames.end())
         { // overwrite duplicates, shouldn't happen, but harmless
-          log_info("name collision: " << savegame->get_filename());
+          log_info("name collision: %1%", savegame->get_filename());
           delete *j;
           *j = savegame;
         }

@@ -90,7 +90,7 @@ Display::create_window(FramebufferType framebuffer_type, const Size& size, bool 
 {
   assert(!s_framebuffer.get());
 
-  log_info(framebuffer_type_to_string(framebuffer_type) << " " << size << " " << (fullscreen?"fullscreen":"window"));
+  log_info("%1% %2% %3%", framebuffer_type_to_string(framebuffer_type), size, (fullscreen?"fullscreen":"window"));
 
   switch (framebuffer_type)
   {
@@ -173,8 +173,6 @@ Display::find_closest_fullscreen_video_mode(const Size& size)
     {
       int this_distance = abs(size.width - modes[i]->w) + abs(size.height - modes[i]->h);
           
-      // log_info("Mode: " << size << " -> " << modes[i]->w << "x" << modes[i]->h << " " << this_distance);
-
       if (distance == -1 || distance > this_distance)
       {
         distance = this_distance;

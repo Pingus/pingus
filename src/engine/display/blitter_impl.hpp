@@ -158,7 +158,7 @@ Surface modify(Surface source)
   }
   else
   {
-    log_error("unhandled BytesPerPixel: " << bpp);
+    log_error("unhandled BytesPerPixel: %1%", bpp);
   }
      
   source.unlock();

@@ -147,7 +147,7 @@ System::opendir(const std::string& pathname, const std::string& pattern)
   if (hFind == INVALID_HANDLE_VALUE)
   {
     if (GetLastError() != ERROR_FILE_NOT_FOUND)
-      log_error("System: Couldn't open: " << pathname);
+      log_error("System: Couldn't open: %1%", pathname);
   }
   else
   {
@@ -197,7 +197,7 @@ System::opendir_recursive(const std::string& pathname)
   }
   catch(const std::exception& err)
   {
-    log_warn(err.what());
+    log_warn("%1%", err.what());
   }
   return lst;
 }
@@ -246,7 +246,7 @@ void
 System::create_dir(std::string directory)
 {
 #ifndef WIN32
-  log_info("System::create_dir: " << directory);
+  log_info("System::create_dir: %1%", directory);
   
   if (!exist(directory))
   {
@@ -256,7 +256,7 @@ System::create_dir(std::string directory)
     }
     else
     {
-      log_info("Successfully created: " << directory);
+      log_info("Successfully created: %1%", directory);
     }
   }
 #else
@@ -280,7 +280,7 @@ System::create_dir(std::string directory)
   }
   else
   {
-    log_info("Successfully created: " << directory);
+    log_info("Successfully created: %1%", directory);
   }
 #endif
 }
@@ -515,7 +515,7 @@ System::checksum(std::string filename)
 
   if (!in)
   {
-    log_error("System::checksum: Couldn't open file: " << filename);
+    log_error("System::checksum: Couldn't open file: %1%", filename);
     return "";
   }
 
@@ -725,7 +725,7 @@ System::normalize_path(const std::string& path)
 void
 System::write_file(const std::string& filename, const std::string& content)
 {
-  log_debug("writing " << filename);
+  log_debug("writing %1%", filename);
 
 #ifdef WIN32
   // FIXME: not save

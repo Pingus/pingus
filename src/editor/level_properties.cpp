@@ -167,7 +167,7 @@ LevelProperties::on_number_to_save_change(const std::string& str)
   }
   else
   {
-    log_error("LevelProperties::on_number_to_save_change: '" << str << "' not an integer");
+    log_error("LevelProperties::on_number_to_save_change: '%1%' not an integer", str);
   }
   
 }
@@ -182,7 +182,7 @@ LevelProperties::on_number_of_pingus_change(const std::string& str)
   }
   else
   {
-    log_error("LevelProperties::on_number_of_pingus_change: '" << str << "' not an integer");
+    log_error("LevelProperties::on_number_of_pingus_change: '%1%' not an integer", str);
   }
 }
 

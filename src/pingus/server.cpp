@@ -53,13 +53,12 @@ static std::unique_ptr<std::ostream> get_demostream(const PingusLevel& plf)
   
   if (!(*out.get()))
   {
-    log_error("DemoRecorder: Error: Couldn't write DemoFile '" << filename
-             << "', demo recording will be disabled");
+    log_error("DemoRecorder: Error: Couldn't write DemoFile '%1%', demo recording will be disabled", filename);
     return std::unique_ptr<std::ostream>();
   }
   else
   {
-    log_info("DemoRecorder: Writing demo to: " << filename);
+    log_info("DemoRecorder: Writing demo to: %1%", filename);
 
     // Write file header
     SExprFileWriter writer(*out);

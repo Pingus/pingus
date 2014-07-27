@@ -105,7 +105,7 @@ int main(int argc, char** argv)
       writer.write_vector2i("offset", offset);
       writer.end_section();
       out << std::endl;
-      log_info("writing: " << outfile);
+      log_info("writing: %1%", outfile);
       System::write_file(outfile, out.str());
     }
     else

@@ -151,7 +151,7 @@ FileDialog::on_open()
     {
       Pathname file(Pathname::join(pathname_inputbox->get_text(), filename_inputbox->get_text()),
                     Pathname::SYSTEM_PATH);
-      log_info("Open: " << file);
+      log_info("Open: %1%", file);
       editor->load(file);
       hide();
     }
@@ -159,7 +159,7 @@ FileDialog::on_open()
     {
       Pathname file(Pathname::join(pathname_inputbox->get_text(), filename_inputbox->get_text()),
                     Pathname::SYSTEM_PATH);
-      log_info("Save: " << file);
+      log_info("Save: %1%", file);
       editor->save(file);
       hide();
     }

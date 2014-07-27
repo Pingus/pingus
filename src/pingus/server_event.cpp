@@ -172,14 +172,14 @@ ServerEvent::send(Server* server)
         if (pos.x != pingu->get_pos().x ||
             pos.y != pingu->get_pos().y)
         {
-          log_error("DemoFile inconsistent with world, pingu " << pingu_id << " is at the wrong position");
+          log_error("DemoFile inconsistent with world, pingu %1% is at the wrong position", pingu_id);
         }
 
         server->send_pingu_action_event(pingu, pingu_action);
       }
       else
       {
-        log_error("DemoFile inconsistent with world, pingu " << pingu_id << " missing");
+        log_error("DemoFile inconsistent with world, pingu %1% missing", pingu_id);
       }
     }
     break;

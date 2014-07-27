@@ -38,7 +38,7 @@ PingusSound::init (PingusSoundImpl* s)
       try {
         PingusSound::init (new PingusSoundReal ());
       } catch (const std::exception& err) {
-        log_error("Sound Error: " << err.what());
+        log_error("Sound Error: %1%", err.what());
         log_error("Sound will be disabled");
         PingusSound::init (new PingusSoundDummy ());
       }

@@ -93,7 +93,6 @@ Pingus::update_walk (float delta)
 {
   float velocity = 70.0f;
 
-  // log_info("Updating Walk: " << edge_path_position << "/" << edge_path_length);
   // Update the edge_path_position
   edge_path_position += velocity * delta;
 

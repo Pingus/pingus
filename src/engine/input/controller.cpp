@@ -230,28 +230,24 @@ Controller::add_button(int id, ControllerButton* button)
 void
 Controller::add_axis_event(int id, float pos)
 {
-  // log_info("Controller::axis_event: id=" << id << " " << pos);
   events.push_back(makeAxisEvent(static_cast<EventName>(id), pos));
 }
 
 void
 Controller::add_button_event(int id, ButtonState state)
 {
-  // log_info("Controller::button_event: id=" << id << " " << state);
   events.push_back(makeButtonEvent(static_cast<EventName>(id), state));
 }
 
 void
 Controller::add_pointer_event(int id, float x, float y)
 {
-  // log_info("Controller::pointer_event: id=" << id << " " << x << ", " << y);
   events.push_back(makePointerEvent(static_cast<EventName>(id), x, y));
 }
 
 void
 Controller::add_scroller_event(int id, float xrel, float yrel)
 {
-  // log_info("Controller::scroller_event: id=" << id << " " << xrel << ", " << yrel);
   events.push_back(makeScrollerEvent(static_cast<EventName>(id), xrel, yrel));
 }
 

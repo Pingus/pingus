@@ -62,7 +62,7 @@ EvdevDriver::get_device(const std::string& device_filename)
     devices.push_back(device);
     return device;
   } catch (std::exception& err) {
-    log_error("EvdevDriver: " << err.what());
+    log_error("EvdevDriver: %1%", err.what());
     return 0;
   }
 }

@@ -236,7 +236,7 @@ WorldObjFactory::create(const FileReader& reader)
 
   if (it == factories.end())
   {
-    log_error("invalid id: '" << reader.get_name() << "'");
+    log_error("invalid id: '%1%'", reader.get_name());
     return std::vector<WorldObj*>();
   }
   else

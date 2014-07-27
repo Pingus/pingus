@@ -110,7 +110,7 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
     case SDLK_m:
       if (keystate[SDLK_LCTRL] || keystate[SDLK_RCTRL])
       {
-        log_info("Developer Mode: " << globals::developer_mode);
+        log_info("Developer Mode: %1%", globals::developer_mode);
         globals::developer_mode = !globals::developer_mode;
       }
       break;

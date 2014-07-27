@@ -31,7 +31,7 @@ SpriteDescription::from_file(const Pathname& path)
     
   if (!reader.read_path("image",  desc->filename))
   {
-    log_error(reader.get_name() << " 'image' missing");
+    log_error("'image' missing for %1%", reader.get_name());
   }    
 
   desc->filename = Pathname(desc->filename.get_raw_path(), Pathname::DATA_PATH); // FIXME: Hack

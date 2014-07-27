@@ -83,7 +83,7 @@ StatManager::load(const std::string& filename)
   }
   if (!sexpr)
   {
-    log_error("couldn't find savegame file '" << filename << "', starting with an empty one.");
+    log_error("couldn't find savegame file '%1%', starting with an empty one.", filename);
     return;
   }
 

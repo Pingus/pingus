@@ -203,7 +203,7 @@ WorldObjRenderer::process(const FileReader& reader)
   }
   else
   {
-    log_error("unknown object type: " << reader.get_name());
+    log_error("unknown object type: %1%", reader.get_name());
   }
 }
 
@@ -216,7 +216,7 @@ WorldObjRenderer::process_object_with_surface(const FileReader& reader)
   if (!(reader.read_vector("position", pos) &&
         reader.read_desc("surface", desc)))
   {
-    log_error("object (" << reader.get_name() << ") does not have 'position' and 'surface'");
+    log_error("object (%1%) does not have 'position' and 'surface'", reader.get_name());
   }
   else
   {

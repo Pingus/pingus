@@ -88,7 +88,7 @@ GUIScreen::update (const Input::Event& event)
     break;
 
     default:
-      log_error("unhandled event type: " << event.type);
+      log_error("unhandled event type: %1%", event.type);
       break;
   }
 }
@@ -128,7 +128,7 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
         on_action_down_press();
         break;
       default:
-        log_debug("unhandled event: " << event.name);
+        log_debug("unhandled event: %1%", event.name);
         break;
     }
   }
@@ -164,13 +164,13 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
         on_action_down_release();
         break;
       default:
-        log_debug("unhandled event: " << event.name);
+        log_debug("unhandled event: %1%", event.name);
         break;
     }
   }
   else
   {
-    log_error("got unknown event.state: " << event.state);
+    log_error("got unknown event.state: %1%", event.state);
   }
 }
 

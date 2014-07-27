@@ -210,8 +210,7 @@ ScreenManager::display()
     if (previous_frame_time > 1.0)
     {
       if (globals::developer_mode)
-        log_warn("ScreenManager: previous frame took longer than 1 second (" << previous_frame_time
-                 << " sec.), ignoring and doing frameskip");
+        log_warn("ScreenManager: previous frame took longer than 1 second (%1% sec.), ignoring and doing frameskip", previous_frame_time);
     }
     else
     {  
@@ -224,7 +223,6 @@ ScreenManager::display()
       // achieve <desired_fps> frames per second
       if (current_frame_time < 1.0f / globals::desired_fps) {
         Uint32 sleep_time = static_cast<Uint32>(1000 *((1.0f / globals::desired_fps) - current_frame_time));
-        // log_debug("Sleep: " << sleep_time);
         SDL_Delay(sleep_time);
       }
     }

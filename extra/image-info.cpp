@@ -12,7 +12,7 @@ int main(int argc, char** argv)
     SDL_Surface* surface = IMG_Load(argv[i]);
     if (!surface)
     {
-      log_error("failed to load: " << argv[i]);
+      log_error("failed to load: %1%", argv[i]);
     }
     else
     {

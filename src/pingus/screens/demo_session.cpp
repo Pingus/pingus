@@ -95,9 +95,8 @@ DemoSession::DemoSession(const Pathname& pathname_) :
 
   if (plf.get_checksum() != demo->get_checksum())
   {
-    log_warn("checksum missmatch between demo (" 
-             << demo->get_checksum() << ") and level (" 
-             << plf.get_checksum() << ")");
+    log_warn("checksum missmatch between demo (%1%) and level (%2%)",
+             demo->get_checksum(), plf.get_checksum());
   }
 
   server   = std::unique_ptr<Server>(new Server(plf, false));
@@ -211,7 +210,7 @@ DemoSession::update_demo()
   // Check for unexpected things (might happen if the demo file is broken)
   if (!events.empty() && events.back().time_stamp < server->get_time())
   {
-    log_info("DemoPlayer Bug: We missed a timestamp: " << events.back().time_stamp);
+    log_info("DemoPlayer Bug: We missed a timestamp: %1%", events.back().time_stamp);
   }
 }
 
@@ -235,7 +234,7 @@ void
 DemoSession::on_fast_forward_press()
 {
   if (0)
-    log_info("Fast Forward Pressed: " << events.size() << " " << server->get_time());
+    log_info("Fast Forward Pressed: %1% %2%", events.size(), server->get_time());
 
   fast_forward = !fast_forward;
 }

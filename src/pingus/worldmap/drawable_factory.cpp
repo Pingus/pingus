@@ -30,7 +30,7 @@ DrawableFactory::create(const FileReader& reader)
   }
   else
   {
-    log_error("can't create " << reader.get_name());
+    log_error("can't create %1%", reader.get_name());
     return 0;
   }
 }
