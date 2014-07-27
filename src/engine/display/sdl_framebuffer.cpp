@@ -24,99 +24,6 @@
 
 namespace {
 
-typedef void (*draw_pixel_func)(SDL_Surface* screen, int, int, const Color&);
-
-inline void draw_pixel16(SDL_Surface* screen, int x, int y, const Color& c)
-{
-  Uint32 color = SDL_MapRGBA(screen->format, c.r, c.g, c.b, c.a);
-
-  if (c.a < 255) {
-    Uint16 *p;
-    unsigned long dp;
-    uint8_t alpha;
-
-    // Loses precision for speed
-    alpha = static_cast<uint8_t>((255 - c.a) >> 3);
-
-    p = &(static_cast<Uint16 *>(screen->pixels))[x + y * screen->w];
-    color = (((color << 16) | color) & 0x07E0F81F);
-    dp = *p;
-    dp = ((dp << 16) | dp) & 0x07E0F81F;
-    dp = ((((dp - color) * alpha) >> 5) + color) & 0x07E0F81F;
-    *p = static_cast<Uint16>((dp >> 16) | dp);
-  } else {
-    static_cast<Uint16*>(screen->pixels)[x + y * screen->w] = static_cast<Uint16>(color);
-  }
-}
-
-inline void draw_pixel32(SDL_Surface* screen, int x, int y, const Color& c)
-{
-  Uint32 color = SDL_MapRGBA(screen->format, c.r, c.g, c.b, c.a);
-
-  if (c.a < 255) {
-    Uint32 *p;
-    unsigned long sp2;
-    unsigned long dp1;
-    unsigned long dp2;
-    unsigned char alpha;
-
-    alpha = static_cast<unsigned char>(255 - c.a);
-
-    p = &(static_cast<Uint32*>(screen->pixels))[x + y * screen->w];
-
-    sp2 = (color & 0xFF00FF00) >> 8;
-    color &= 0x00FF00FF;
-
-    dp1 = *p;
-    dp2 = (dp1 & 0xFF00FF00) >> 8;
-    dp1 &= 0x00FF00FF;
-
-    dp1 = ((((dp1 - color) * alpha) >> 8) + color) & 0x00FF00FF;
-    dp2 = ((((dp2 - sp2) * alpha) >> 8) + sp2) & 0x00FF00FF;
-    *p = static_cast<Uint32>(dp1 | (dp2 << 8));
-  } else {
-    (static_cast<Uint32*>(screen->pixels))[x + y * screen->w] = color;
-  }
-}
-
-draw_pixel_func get_draw_pixel(SDL_Surface* screen)
-{
-  switch (screen->format->BitsPerPixel)
-  {
-    case 16:
-      return draw_pixel16;
-    case 32:
-      return draw_pixel32;
-  }
-  return NULL;
-}
-
-void draw_vline(SDL_Surface* screen, int x, int y, int length, const Color& color)
-{
-  draw_pixel_func draw_pixel = get_draw_pixel(screen);
-  if (!draw_pixel)
-    return;
-
-  SDL_LockSurface(screen);
-  for (int i = 0; i < length; ++i) {
-    draw_pixel(screen, x, y + i, color);
-  }
-  SDL_UnlockSurface(screen);
-}
-
-void draw_hline(SDL_Surface* screen, int x, int y, int length, const Color& color)
-{
-  draw_pixel_func draw_pixel = get_draw_pixel(screen);
-  if (!draw_pixel)
-    return;
-
-  SDL_LockSurface(screen);
-  for (int i = 0; i < length; ++i) {
-    draw_pixel(screen, x + i, y, color);
-  }
-  SDL_UnlockSurface(screen);
-}
-
 SDL_Rect Intersection(SDL_Rect* r1, SDL_Rect* r2)
 {
   SDL_Rect rect;
@@ -129,29 +36,17 @@ SDL_Rect Intersection(SDL_Rect* r1, SDL_Rect* r2)
   return rect;
 }
 
-void clip(int& i, int min, int max)
-{
-  if (i < min)
-    i = min;
-  else if (i > max)
-    i = max;
-}
-
 } // namespace
 
 SDLFramebuffer::SDLFramebuffer() :
   m_window(nullptr),
   m_renderer(nullptr),
-  m_screen(nullptr),
-  m_texture(nullptr),
   cliprect_stack()
 {
 }
 
 SDLFramebuffer::~SDLFramebuffer()
 {
-  SDL_DestroyTexture(m_texture);
-  SDL_FreeSurface(m_screen);
   SDL_DestroyRenderer(m_renderer);
   SDL_DestroyWindow(m_window);
 }
@@ -313,15 +208,6 @@ SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable
     SDL_SetWindowIcon(m_window, IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str()));
 
     m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
-    m_screen = SDL_CreateRGBSurface(0, size.width, size.height, 32,
-                                    0x00FF0000,
-                                    0x0000FF00,
-                                    0x000000FF,
-                                    0xFF000000);
-    m_texture = SDL_CreateTexture(m_renderer,
-                                  SDL_PIXELFORMAT_ARGB8888,
-                                  SDL_TEXTUREACCESS_STREAMING,
-                                  size.width, size.height);
   }
 }
 
