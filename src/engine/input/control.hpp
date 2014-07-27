@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+//  
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -27,20 +27,20 @@
 
 namespace Input {
 
-class Control
+class Control 
 {
 private:
   Control* parent;
-
-public:
-  Control(Control* parent_)
+  
+public: 
+  Control(Control* parent_) 
     : parent(parent_)
   {}
 
   virtual ~Control() {
   }
 
-  virtual void notify_parent()
+  virtual void notify_parent() 
   {
     if (parent)
     {
@@ -54,7 +54,7 @@ public:
 
   virtual void update(float delta) {
   }
-
+  
   virtual void update(Control* ctrl) {
     log_warn("Control:update() not handled");
   }
@@ -64,7 +64,7 @@ private:
   Control & operator=(const Control&);
 };
 
-class Button : public Control
+class Button : public Control 
 {
 protected:
   ButtonState state;
@@ -73,13 +73,13 @@ public:
   Button(Control* parent_) :
     Control(parent_),
     state(BUTTON_RELEASED)
-  {}
+  {}  
 
   bool get_state() const { return state; }
 
-  virtual void set_state(ButtonState new_state)
+  virtual void set_state(ButtonState new_state) 
   {
-    if (new_state != state)
+    if (new_state != state) 
     {
       state = new_state;
       notify_parent();
@@ -87,12 +87,12 @@ public:
   }
 };
 
-class ButtonGroup : public Button
+class ButtonGroup : public Button 
 {
 private:
   std::vector<Button*> buttons;
-
-public:
+  
+public: 
   ButtonGroup(Control* parent_) :
     Button(parent_),
     buttons()
@@ -117,7 +117,7 @@ public:
   {
     ButtonState new_state = BUTTON_RELEASED;
 
-    for(std::vector<Button*>::iterator i = buttons.begin();
+    for(std::vector<Button*>::iterator i = buttons.begin(); 
         i != buttons.end(); ++i)
     {
       if ((*i)->get_state() == BUTTON_PRESSED)
@@ -154,7 +154,7 @@ private:
   ControllerButton & operator=(const ControllerButton&);
 };
 
-class Axis : public Control
+class Axis : public Control 
 {
 protected:
   float pos;
@@ -186,7 +186,7 @@ public:
   }
 };
 
-class Pointer : public Control
+class Pointer : public Control 
 {
 protected:
   Vector2f pos;
@@ -200,7 +200,7 @@ public:
   Vector2f get_pos() const { return pos; }
 
   void set_pos(const Vector2f& new_pos) {
-    if (pos != new_pos)
+    if (pos != new_pos) 
     {
       pos = new_pos;
       notify_parent();
@@ -208,11 +208,11 @@ public:
   }
 };
 
-class Scroller : public Control
+class Scroller : public Control 
 {
 protected:
   Vector2f delta;
-
+  
 public:
   Scroller(Control* parent_) :
     Control(parent_),
@@ -222,7 +222,7 @@ public:
   Vector2f get_delta() const { return delta; }
 
   void set_delta(const Vector2f& new_delta) {
-    if (delta != new_delta)
+    if (delta != new_delta) 
     {
       delta = new_delta;
       notify_parent();
@@ -255,10 +255,10 @@ public:
       (*i)->update(delta);
   }
 
-  void update(Control* ctrl)
+  void update(Control* ctrl) 
   {
     float new_pos = 0;
-
+    
     for(std::vector<Axis*>::iterator i = axes.begin(); i != axes.end(); ++i)
     {
       new_pos += (*i)->get_pos();
@@ -270,14 +270,14 @@ public:
   }
 };
 
-class ControllerAxis : public AxisGroup
+class ControllerAxis : public AxisGroup 
 {
 private:
   Controller* controller;
   int id;
 
 public:
-  ControllerAxis(Controller* controller_, int id_)
+  ControllerAxis(Controller* controller_, int id_) 
     : AxisGroup(0),
       controller(controller_),
       id(id_)
@@ -292,7 +292,7 @@ private:
   ControllerAxis & operator=(const ControllerAxis&);
 };
 
-class PointerGroup : public Pointer
+class PointerGroup : public Pointer 
 {
 private:
   std::vector<Pointer*> pointer;
@@ -352,7 +352,7 @@ private:
   ControllerPointer & operator=(const ControllerPointer&);
 };
 
-class ScrollerGroup : public Scroller
+class ScrollerGroup : public Scroller 
 {
 private:
   std::vector<Scroller*> scrollers;
@@ -415,7 +415,7 @@ private:
 class Keyboard : public Control
 {
 protected:
-  SDL_KeyboardEvent m_ev;
+  SDL_Event m_ev;
 
 public:
   Keyboard(Control* parent_) :
@@ -423,8 +423,8 @@ public:
     m_ev()
   {}
 
-  void send_char(const SDL_KeyboardEvent& ev) { m_ev = ev; notify_parent(); }
-  SDL_KeyboardEvent get_ev() { return m_ev; }
+  void send_event(const SDL_Event& ev) { m_ev = ev; notify_parent(); }
+  SDL_Event get_ev() { return m_ev; }
 
 private:
   Keyboard(const Keyboard&);
@@ -474,9 +474,23 @@ public:
     controller(controller_),
     id(id_)
   {}
-
+  
   virtual void notify_parent() {
-    controller->add_keyboard_event(m_ev);
+    switch(m_ev.type)
+    {
+      case SDL_KEYUP:
+      case SDL_KEYDOWN:
+        controller->add_keyboard_event(m_ev.key);
+        break;
+
+      case SDL_TEXTINPUT:
+        controller->add_text_input_event(m_ev.text);
+        break;
+        
+      default:
+        log_error("unexpected SDL_Event: %1%", m_ev.type);
+        break;
+    }
   }
 
 private:

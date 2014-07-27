@@ -29,7 +29,8 @@ enum EventType { BUTTON_EVENT_TYPE,
                  POINTER_EVENT_TYPE, 
                  AXIS_EVENT_TYPE, 
                  SCROLLER_EVENT_TYPE, 
-                 KEYBOARD_EVENT_TYPE };
+                 KEYBOARD_EVENT_TYPE, 
+                 TEXT_INPUT_EVENT_TYPE };
 
 enum EventName { 
   // Buttons
@@ -101,16 +102,22 @@ struct KeyboardEvent
   SDL_Keysym keysym;
 };
 
+struct TextInputEvent
+{
+  char text[sizeof(SDL_TextInputEvent::text)];
+};
+
 struct Event
 {
   EventType type;
 
   union {
-    ButtonEvent   button;
-    PointerEvent  pointer;
-    AxisEvent     axis;
-    ScrollEvent   scroll;
+    ButtonEvent button;
+    PointerEvent pointer;
+    AxisEvent axis;
+    ScrollEvent scroll;
     KeyboardEvent keyboard;
+    TextInputEvent text;
   };
 };
 
@@ -169,6 +176,16 @@ inline Event makeKeyboardEvent(const SDL_KeyboardEvent& ev)
   event.type = KEYBOARD_EVENT_TYPE;
   event.keyboard.state  = ev.state;
   event.keyboard.keysym = ev.keysym;
+  
+  return event;
+}
+
+inline Event makeTextInputEvent(const SDL_TextInputEvent& ev)
+{
+  Event event;
+  
+  event.type = TEXT_INPUT_EVENT_TYPE;
+  memcpy(event.text.text, ev.text, sizeof(SDL_TextInputEvent::text));
   
   return event;
 }

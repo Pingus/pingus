@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+//  
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -41,11 +41,11 @@ private:
       component that got the press gets moves and release events */
   Component* primary_pressed_comp;
   Component* secondary_pressed_comp;
-
+  
 public:
   GroupComponent(const Rect& rect, bool clip = true);
-  virtual ~GroupComponent();
-
+  virtual ~GroupComponent();  
+        
   void draw(DrawingContext& gc);
   virtual void draw_background(DrawingContext& gc) {}
 
@@ -53,14 +53,16 @@ public:
 
   void on_primary_button_press(int x, int y);
   void on_primary_button_release(int x, int y);
-
+ 
   void on_secondary_button_press(int x, int y);
   void on_secondary_button_release(int x, int y);
-
+  
   void on_primary_button_click(int x, int y) {}
   void on_secondary_button_click(int x, int y) {}
 
   void on_key_pressed(const Input::KeyboardEvent& ev);
+
+  void on_text_input(const Input::TextInputEvent& ev);
 
   void on_pointer_enter();
   void on_pointer_leave();

@@ -71,16 +71,13 @@ Inputbox::on_key_pressed(const Input::KeyboardEvent& ev)
     on_change(text);
     on_enter(text);
   }
-  else
-  { 
-#ifdef OLD_SDL1
-    if (ev.keysym.unicode)
-    {
-      text += UTF8::encode_utf8(ev.keysym.unicode);
-      on_change(text);
-    }
-#endif
-  }
+}
+
+void
+Inputbox::on_text_input(const Input::TextInputEvent& ev)
+{
+  text += ev.text;
+  on_change(text);
 }
 
 } // namespace Editor

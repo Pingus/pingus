@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+//  
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -47,7 +47,7 @@ private:
   std::vector<ControllerPointer*>  pointers;
   std::vector<ControllerScroller*> scrollers;
   std::vector<ControllerKeyboard*> keyboards;
-
+  
   std::vector<Event> events;
 
 public:
@@ -56,7 +56,7 @@ public:
 
   Controller(const ControllerDescription& desc);
   ~Controller();
-
+  
   ControllerAxis*     get_axis(int id);
   ControllerButton*   get_button(int id);
   ControllerPointer*  get_pointer(int id);
@@ -68,9 +68,10 @@ public:
   void add_pointer_event(int id, float x, float y);
   void add_scroller_event(int id, float xrel, float yrel);
   void add_keyboard_event(const SDL_KeyboardEvent& ev);
+  void add_text_input_event(const SDL_TextInputEvent& ev);
 
   void add_axis(int id, ControllerAxis* axis);
-  void add_button(int id, ControllerButton* button);
+  void add_button(int id, ControllerButton* button); 
   void add_pointer(int id, ControllerPointer* pointer);
   void add_scroller(int id, ControllerScroller* scroller);
   void add_keyboard(int id, ControllerKeyboard* keyboard);
@@ -85,6 +86,6 @@ private:
 
 } // namespace Input
 
-#endif
+#endif 
 
 /* EOF */

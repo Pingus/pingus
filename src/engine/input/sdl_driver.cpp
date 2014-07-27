@@ -240,6 +240,22 @@ SDLDriver::update(float delta)
         }
         break;
 
+      case SDL_MOUSEWHEEL:
+        log_error("mousewheel not implemented: %1% %2%", event.wheel.which, event.wheel.x, event.wheel.y);
+        break;
+
+      case SDL_TEXTINPUT:
+        if (keyboard_binding)
+        {
+          keyboard_binding->send_event(event);
+        }
+        break;
+
+      case SDL_TEXTEDITING:
+        log_error("textediting not implemented: %1% %2% '%3%'",
+                  event.edit.start, event.edit.length, event.edit.text);
+        break;
+
       case SDL_MOUSEBUTTONDOWN:
       case SDL_MOUSEBUTTONUP:
         for(std::vector<MouseButtonBinding>::iterator i = mouse_button_bindings.begin();
@@ -271,7 +287,7 @@ SDLDriver::update(float delta)
       case SDL_KEYUP:
         // keyboard events
         if (keyboard_binding)
-          keyboard_binding->send_char(event.key);
+          keyboard_binding->send_event(event);
 
         // global event hacks
         if (event.key.state == SDL_PRESSED)
