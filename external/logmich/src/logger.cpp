@@ -86,6 +86,7 @@ Logger::append(std::ostream& out,
 {
   switch(level)
   {
+    case kNone:    out << "[NONE "; break;
     case kError:   out << "[ERROR "; break;
     case kWarning: out << "[WARN "; break;
     case kInfo:    out << "[INFO "; break;

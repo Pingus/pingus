@@ -42,6 +42,9 @@ std::string log_pretty_print(const std::string& str);
 
 enum LogLevel
 {
+  /** Used in set_log_level() to disable all output */
+  kNone,
+
   /** things that shouldn't happen (i.e. a catched exceptions) */
   kError,
 
