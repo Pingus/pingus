@@ -202,8 +202,16 @@ SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable
     }
     else
     {
-      SDL_SetWindowSize(m_window, size.width, size.height);
-      SDL_SetWindowDisplayMode(m_window, nullptr);
+      SDL_DisplayMode mode;
+      mode.w = size.width;
+      mode.h = size.height;
+      mode.refresh_rate = 0;
+      mode.driverdata = nullptr;
+
+      if (SDL_SetWindowDisplayMode(m_window, &mode) != 0)
+      {
+        log_error("failed to set display mode: %1%", SDL_GetError());
+      }
       SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN);
     }
   }

@@ -19,6 +19,7 @@
 
 #include <memory>
 #include <vector>
+#include <SDL.h>
 
 #include "math/size.hpp"
 #include "pingus/options.hpp"
@@ -51,7 +52,7 @@ public:
   static Framebuffer* get_framebuffer();
 
   static Size find_closest_fullscreen_video_mode(const Size& size);
-  static std::vector<Size> get_fullscreen_video_modes();
+  static std::vector<SDL_DisplayMode> get_fullscreen_video_modes();
 
 private:
   Display ();
