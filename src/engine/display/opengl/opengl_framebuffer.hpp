@@ -23,6 +23,7 @@ class OpenGLFramebuffer : public Framebuffer
 {
 private:
   SDL_Window* m_window;
+  SDL_GLContext m_glcontext;
   std::vector<Rect> cliprect_stack;
 
 public:
