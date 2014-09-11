@@ -1,0 +1,2024 @@
+(pingus-level 
+  (version 3)
+  (head 
+    (license "GPLv3+")
+    (levelname "Sliding into Home")
+    (description "In their haste, not only did the Pingus leave through different portals (instead of on their raft), they have stumbled into a trap.  Now they are all imprisoned.  Can they find their way out of this one?")
+    (author "Crowdus -- sdc")
+    (number-of-pingus 8)
+    (number-to-save 8)
+    (time -1)
+    (music "pingus-2.it")
+    (actions 
+      (slider 13))
+    (levelsize 1920 1200))
+  (objects 
+    (surface-background 
+      (surface 
+        (image "textures/fond1")
+        (modifier "ROT0"))
+      (position 2 -400 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (surface-background 
+      (surface 
+        (image "textures/clouds3")
+        (modifier "ROT0"))
+      (position -27 -503 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld4")
+        (modifier "ROT0FLIP"))
+      (position 991 540 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 998 541 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT0"))
+      (position 1123 413 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/rock/granit5")
+        (modifier "ROT0"))
+      (position 1068 517 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 991 525 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT0FLIP"))
+      (position 1116 577 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT0"))
+      (position 1168 580 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT90FLIP"))
+      (position 1446 879 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 1237 814 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 962 587 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 1658 666 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 1627 666 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT90"))
+      (position 301 618 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT90"))
+      (position 320 516 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 536 592 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT90"))
+      (position 530 499 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 349 464 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 323 651 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 419 697 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 1698 440 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 1016 465 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit4")
+        (modifier "ROT0"))
+      (position 674 867 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1296 1148 0))
+    (liquid 
+      (surface 
+        (image "liquids/water2")
+        (modifier "ROT0"))
+      (position 1307 1119 0)
+      (speed 0)
+      (repeat 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 1456 1090 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 1038 805 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit4")
+        (modifier "ROT0"))
+      (position 1078 837 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 1033 812 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 675 401 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270FLIP"))
+      (position 58 599 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270FLIP"))
+      (position 105 605 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position -12 771 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 20 803 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 52 835 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position -14 769 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 146 929 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 114 897 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 82 865 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 50 833 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 18 801 0)
+      (owner-id 0))
+    (prefab 
+      (name "prefabs/entrances/sortie")
+      (position 1238 223 0)
+      (overrides 
+        (release-rate 200)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/sortie")
+      (position 966 223 0)
+      (overrides 
+        (release-rate 200)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/sortie")
+      (position 1511 223 0)
+      (overrides 
+        (release-rate 200)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/sortie")
+      (position 419 224 0)
+      (overrides 
+        (release-rate 200)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/sortie")
+      (position 147 224 0)
+      (overrides 
+        (release-rate 200)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/sortie")
+      (position 692 222 0)
+      (overrides 
+        (release-rate 60)
+        (direction "right")
+        (owner-id 0)))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 915 357 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 913 404 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 50 832 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 82 864 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 114 896 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 146 928 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 178 960 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 210 992 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 242 1024 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 274 1056 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 306 1088 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 338 1120 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 370 1152 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 402 1184 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 434 1216 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 466 1248 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 498 1280 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 82 867 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 114 899 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 146 931 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 178 963 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 210 995 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 242 1027 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 274 1059 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 306 1091 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 338 1123 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 370 1155 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 402 1187 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 434 1219 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 466 1251 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 498 1283 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position -3 866 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 29 898 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 61 930 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 93 962 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 125 994 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 157 1026 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 189 1058 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 221 1090 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 253 1122 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 285 1154 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 317 1186 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 349 1218 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 381 1250 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 413 1282 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position -25 931 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 7 963 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 39 995 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 71 1027 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 103 1059 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 135 1091 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 167 1123 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 199 1155 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 231 1187 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 263 1219 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 295 1251 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 327 1283 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position -12 1035 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 20 1067 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 52 1099 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 84 1131 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 116 1163 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 148 1195 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 180 1227 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 212 1259 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 244 1291 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position -31 1102 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 1 1134 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 33 1166 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 65 1198 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 97 1230 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 129 1262 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 161 1294 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position -21 1202 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 11 1234 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 43 1266 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 75 1298 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position -44 1267 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position -12 1299 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 530 1315 0)
+      (owner-id 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 45 642 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 77 674 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 109 706 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 141 738 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 173 770 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 205 802 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 237 834 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 269 866 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 301 898 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 333 930 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 365 962 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 397 994 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 429 1026 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 461 1058 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 493 1090 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 525 1122 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 557 1154 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 589 1186 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT270"))
+      (position 621 1218 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit3")
+        (modifier "ROT270"))
+      (position -100 538 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit3")
+        (modifier "ROT270"))
+      (position 49 534 0))
+    (switchdoor-door 
+      (position 997 349 0)
+      (id "id5")
+      (height 15))
+    (switchdoor-door 
+      (position 733 344 0)
+      (id "")
+      (height 13))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 651 352 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 649 399 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 378 397 0))
+    (switchdoor-door 
+      (position 462 342 0)
+      (id "id6")
+      (height 15))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 380 350 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 106 353 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 104 400 0))
+    (switchdoor-door 
+      (position 188 345 0)
+      (id "id9")
+      (height 15))
+    (switchdoor-door 
+      (position 1274 349 0)
+      (id "id11")
+      (height 15))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1192 357 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1190 404 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1460 413 0))
+    (switchdoor-door 
+      (position 1544 358 0)
+      (id "id1")
+      (height 15))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1462 366 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT90"))
+      (position 658 404 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit1")
+        (modifier "ROT0"))
+      (position 826 567 0))
+    (switchdoor-switch 
+      (position 1088 525 0)
+      (target-id "id5"))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit2")
+        (modifier "ROT0"))
+      (position 972 805 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit1")
+        (modifier "ROT0"))
+      (position 1050 689 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit4")
+        (modifier "ROT0"))
+      (position 1047 811 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit3")
+        (modifier "ROT0"))
+      (position 1154 814 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT90"))
+      (position 1322 757 0))
+    (switchdoor-switch 
+      (position 1446 775 0)
+      (target-id "id6"))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT0"))
+      (position 1248 1029 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit3")
+        (modifier "ROT90FLIP"))
+      (position 1138 1153 0))
+    (switchdoor-switch 
+      (position 1216 1125 0)
+      (target-id "id9"))
+    (prefab 
+      (name "prefabs/liquids/water")
+      (position 1315 1199 0)
+      (overrides 
+        (repeat 15)))
+    (liquid 
+      (surface 
+        (image "liquids/water2")
+        (modifier "ROT0"))
+      (position 1308 1136 0)
+      (speed 0)
+      (repeat 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 1429 1090 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT90"))
+      (position 1429 1091 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1429 1089 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1524 1041 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1429 1033 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1524 1027 0))
+    (exit 
+      (surface 
+        (image "exits/ice")
+        (modifier "ROT0"))
+      (position 1479 1150 0)
+      (owner-id 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 1441 1150 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1328 1185 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1394 1149 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT180FLIP"))
+      (position 1298 1127 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT180FLIP"))
+      (position 1293 1118 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT180FLIP"))
+      (position 1292 1106 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT180FLIP"))
+      (position 1291 1096 0))
+    (liquid 
+      (surface 
+        (image "liquids/water2")
+        (modifier "ROT0"))
+      (position 1371 1118 0)
+      (speed 0)
+      (repeat 1))
+    (liquid 
+      (surface 
+        (image "liquids/water2")
+        (modifier "ROT0"))
+      (position 1435 1118 0)
+      (speed 0)
+      (repeat 1))
+    (liquid 
+      (surface 
+        (image "liquids/water2")
+        (modifier "ROT0"))
+      (position 1498 1118 0)
+      (speed 0)
+      (repeat 1))
+    (prefab 
+      (name "prefabs/liquids/slime")
+      (position 227 1224 0)
+      (overrides 
+        (repeat 15)))
+    (prefab 
+      (name "prefabs/liquids/slime")
+      (position -732 1224 0)
+      (overrides 
+        (repeat 15)))
+    (switchdoor-door 
+      (position 1165 1100 0)
+      (id "id10")
+      (height 15))
+    (switchdoor-switch 
+      (position 642 1120 0)
+      (target-id "id10"))
+    (exit 
+      (surface 
+        (image "exits/ice")
+        (modifier "ROT0"))
+      (position 1126 1173 0)
+      (owner-id 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 1094 1171 0))
+    (liquid 
+      (surface 
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position 1096 1144 0)
+      (speed 0)
+      (repeat 1))
+    (liquid 
+      (surface 
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position 1032 1146 0)
+      (speed 0)
+      (repeat 1))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 661 1171 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 724 1171 0))
+    (exit 
+      (surface 
+        (image "exits/ice")
+        (modifier "ROT0"))
+      (position 777 1171 0)
+      (owner-id 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 742 1171 0))
+    (liquid 
+      (surface 
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position 770 1141 0)
+      (speed 0)
+      (repeat 1))
+    (liquid 
+      (surface 
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position 707 1142 0)
+      (speed 0)
+      (repeat 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 649 890 0))
+    (exit 
+      (surface 
+        (image "exits/ice")
+        (modifier "ROT0"))
+      (position 682 890 0)
+      (owner-id 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT90"))
+      (position 626 891 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 634 890 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT0"))
+      (position 619 753 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT90"))
+      (position 685 835 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit2")
+        (modifier "ROT0"))
+      (position 624 891 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 990 414 0))
+    (exit 
+      (surface 
+        (image "exits/ice")
+        (modifier "ROT0"))
+      (position 1053 465 0)
+      (owner-id 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 994 464 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1096 412 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 1009 471 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 1054 471 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld7")
+        (modifier "ROT0"))
+      (position 1274 426 0))
+    (switchdoor-switch 
+      (position 1311 386 0)
+      (target-id "id1"))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1326 452 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1556 414 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1648 415 0))
+    (switchdoor-switch 
+      (position 1728 379 0)
+      (target-id "id2"))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld2")
+        (modifier "ROT0"))
+      (position 1324 428 0))
+    (switchdoor-door 
+      (position 1407 393 0)
+      (id "id2")
+      (height 15))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT90"))
+      (position 1672 440 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld7")
+        (modifier "ROT0"))
+      (position 1723 441 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT180"))
+      (position 1773 420 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld7")
+        (modifier "ROT0"))
+      (position 1681 441 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT90"))
+      (position 1648 455 0))
+    (switchdoor-switch 
+      (position 1580 431 0)
+      (target-id "id4"))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT90"))
+      (position 1624 460 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld2")
+        (modifier "ROT270"))
+      (position 1601 464 0))
+    (switchdoor-door 
+      (position 1597 417 0)
+      (id "id3")
+      (height 12))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT90"))
+      (position 1674 454 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld2")
+        (modifier "ROT270"))
+      (position 1580 467 0))
+    (switchdoor-door 
+      (position 1483 460 0)
+      (id "id4")
+      (height 30))
+    (switchdoor-switch 
+      (position 1423 414 0)
+      (target-id "id3"))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1405 452 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1514 582 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1664 538 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1437 562 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld7")
+        (modifier "ROT0"))
+      (position 1613 605 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1527 521 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1744 635 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0"))
+      (position 1525 492 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld1")
+        (modifier "ROT0"))
+      (position 1576 669 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld2")
+        (modifier "ROT0"))
+      (position 1524 513 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1471 620 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1585 544 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0"))
+      (position 477 462 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 454 414 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0"))
+      (position 544 467 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 440 513 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0"))
+      (position 548 560 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0"))
+      (position 473 558 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0"))
+      (position 472 648 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 428 601 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0"))
+      (position 379 696 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 359 633 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0"))
+      (position 320 665 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0FLIP"))
+      (position 317 645 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 313 566 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0"))
+      (position 351 607 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0FLIP"))
+      (position 299 563 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0"))
+      (position 302 583 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 371 537 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0FLIP"))
+      (position 318 461 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0"))
+      (position 321 481 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 386 446 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0"))
+      (position 367 506 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0FLIP"))
+      (position 428 622 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0FLIP"))
+      (position 439 528 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 618 645 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 637 696 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 619 694 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT90"))
+      (position 614 699 0))
+    (exit 
+      (surface 
+        (image "exits/ice")
+        (modifier "ROT0"))
+      (position 674 696 0)
+      (owner-id 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 717 643 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT90"))
+      (position 530 592 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0"))
+      (position 543 657 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT90"))
+      (position 531 685 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT90"))
+      (position 319 702 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 687 538 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 721 644 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 712 439 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0"))
+      (position 780 424 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld7")
+        (modifier "ROT0"))
+      (position 1637 666 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1409 596 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1427 558 0))
+    (switchdoor-door 
+      (position 1658 608 0)
+      (id "id")
+      (height 13))
+    (switchdoor-switch 
+      (position 1675 626 0)
+      (target-id "id7"))
+    (switchdoor-door 
+      (position 1567 589 0)
+      (id "id7")
+      (height 45))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld7")
+        (modifier "ROT0"))
+      (position 1585 667 0))
+    (iceblock 
+      (position 1632 790 0)
+      (repeat 1))
+    (iceblock 
+      (position 1656 790 0)
+      (repeat 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 1834 895 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1808 844 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 1827 901 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1914 842 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1812 894 0))
+    (exit 
+      (surface 
+        (image "exits/ice")
+        (modifier "ROT0"))
+      (position 1868 895 0)
+      (owner-id 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 1872 901 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 1550 854 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1524 803 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1528 853 0))
+    (exit 
+      (surface 
+        (image "exits/ice")
+        (modifier "ROT0"))
+      (position 1584 854 0)
+      (owner-id 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 1588 860 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 1543 860 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1636 802 0))
+    (iceblock 
+      (position 1678 790 0)
+      (repeat 1))
+    (iceblock 
+      (position 1702 790 0)
+      (repeat 1))
+    (iceblock 
+      (position 1771 790 0)
+      (repeat 1))
+    (iceblock 
+      (position 1795 790 0)
+      (repeat 1))
+    (iceblock 
+      (position 1725 790 0)
+      (repeat 1))
+    (iceblock 
+      (position 1749 790 0)
+      (repeat 1))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1499 737 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1704 718 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1820 753 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0FLIP"))
+      (position 1704 694 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1498 686 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1500 637 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1539 763 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0"))
+      (position 1913 732 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld7")
+        (modifier "ROT0"))
+      (position 1802 720 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld1")
+        (modifier "ROT0"))
+      (position 1537 744 0))
+    (switchdoor-door 
+      (position 1626 697 0)
+      (id "id8")
+      (height 15))
+    (switchdoor-switch 
+      (position 1897 716 0)
+      (target-id "id8"))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1915 791 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1523 753 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1808 828 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0"))
+      (position 1850 806 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld7")
+        (modifier "ROT0"))
+      (position 1592 856 0))
+    (switchdoor-switch 
+      (position 428 684 0)
+      (target-id "id11"))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT180"))
+      (position 949 601 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit5")
+        (modifier "ROT0FLIP"))
+      (position 1315 811 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT90"))
+      (position 1057 563 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT90"))
+      (position 1038 562 0))))
+
+;; EOF ;;

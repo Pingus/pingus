@@ -1,0 +1,22 @@
+;; -*- scheme -*-
+(pingus-levelset
+ (title "The Eight Pingus")
+ (description "Eight Pingus get separated from the others.")
+ (image  "levelsets/mysteryisland")
+ (levels 
+  (level (filename "crowdus/crowdus012sdc"))  ;; The Eight Pingus
+  (level (filename "crowdus/crowdus001sdc"))  ;; Which Exit?
+  (level (filename "crowdus/crowdus005sdc"))  ;; Time, Ain't on Our Side
+  (level (filename "crowdus/crowdus024sdc"))  ;; Slipping Through the Cracks
+  (level (filename "crowdus/crowdus014sdc"))  ;; Connect Four
+  (level (filename "crowdus/crowdus006sdc"))  ;; The Stone Dragon
+  (level (filename "crowdus/crowdus018sdc"))  ;; Rabbit Hole
+  (level (filename "crowdus/crowdus015sdc"))  ;; Jump Around
+  (level (filename "crowdus/crowdus007Asdc")) ;; The Little One Stops to ...
+  (level (filename "crowdus/crowdus022sdc"))  ;; Sliding into Home
+  (level (filename "crowdus/crowdus003Asdc")) ;; So Happy Together
+  (level (filename "crowdus/crowdus021sdc"))  ;; Digging a Hole
+  (level (filename "crowdus/crowdus013sdc"))  ;; The End
+  ))
+
+;; EOF ;;

@@ -1,0 +1,497 @@
+(pingus-level 
+  (version 3)
+  (head 
+    (license "GPLv3+")
+    (levelname "Rabbit Hole")
+    (description "Finally, the Eight Pingus are together again.  However, here, they are in danger of falling forever if they are not careful.
+
+Hints: 1) Don't leave gaps when bridging. 3) Really take care and keep careful track of the first two Pingus (labelling is useful).")
+    (author "Crowdus -- sdc")
+    (number-of-pingus 8)
+    (number-to-save 8)
+    (time -1)
+    (music "pingus-7.it")
+    (actions 
+      (bridger 3)
+      (climber 1)
+      (floater 1)
+      (jumper 2))
+    (levelsize 1920 1200))
+  (objects 
+    (surface-background 
+      (surface 
+        (image "textures/sortiebgred")
+        (modifier "ROT0"))
+      (position 454 -606 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/flat")
+        (modifier "ROT270"))
+      (position 1948 812 0))
+    (teleporter-target 
+      (position 1323 34 0)
+      (id "idG"))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 979 545 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 931 551 0))
+    (teleporter-target 
+      (position 395 613 0)
+      (id "idD"))
+    (teleporter 
+      (position 1724 443 0)
+      (target-id "idD"))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 389 635 0))
+    (teleporter 
+      (position 998 774 0)
+      (target-id "id1"))
+    (teleporter-target 
+      (position 134 973 0)
+      (id "id1"))
+    (switchdoor-switch 
+      (position 1479 70 0)
+      (target-id "id306096271"))
+    (switchdoor-door 
+      (position 172 99 0)
+      (id "id306096271")
+      (height 15))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 675 135 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 115 111 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 116 160 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 73 95 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld7")
+        (modifier "ROT270"))
+      (position 115 68 0))
+    (teleporter 
+      (position 138 161 0)
+      (target-id "id1875969377"))
+    (teleporter-target 
+      (position 968 554 0)
+      (id "id1875969377"))
+    (exit 
+      (surface 
+        (image "exits/stone")
+        (modifier "ROT0"))
+      (position 957 600 0)
+      (owner-id 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 920 600 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld7")
+        (modifier "ROT0"))
+      (position 931 548 0))
+    (prefab 
+      (name "prefabs/entrances/desert")
+      (position 959 415 0)
+      (overrides 
+        (release-rate 200)
+        (direction "right")
+        (owner-id 0)))
+    (teleporter 
+      (position 1266 738 0)
+      (target-id "idA"))
+    (teleporter-target 
+      (position 1207 491 0)
+      (id "idA"))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 1215 505 0))
+    (teleporter 
+      (position 1213 600 0)
+      (target-id "idB"))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 1514 907 0))
+    (teleporter-target 
+      (position 1523 863 0)
+      (id "idB"))
+    (teleporter-target 
+      (position 1720 335 0)
+      (id "idC"))
+    (teleporter 
+      (position 1523 1201 0)
+      (target-id "idC"))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 1716 350 0))
+    (teleporter-target 
+      (position 510 419 0)
+      (id "idE"))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 505 462 0))
+    (teleporter 
+      (position 399 831 0)
+      (target-id "idE"))
+    (teleporter 
+      (position 513 622 0)
+      (target-id "idF"))
+    (teleporter-target 
+      (position 1344 598 0)
+      (id "idF"))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 1340 650 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 1319 97 0))
+    (teleporter 
+      (position 1351 875 0)
+      (target-id "idG"))
+    (iceblock 
+      (position 1313 126 0)
+      (repeat 1))
+    (teleporter 
+      (position 1605 275 0)
+      (target-id "id8"))
+    (teleporter-target 
+      (position 964 530 0)
+      (id "id8"))
+    (teleporter 
+      (position 134 1098 0)
+      (target-id "id2"))
+    (teleporter-target 
+      (position 1340 247 0)
+      (id "id2"))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 1334 272 0))
+    (teleporter 
+      (position 1346 418 0)
+      (target-id "id3"))
+    (teleporter-target 
+      (position 675 51 0)
+      (id "id3"))
+    (iceblock 
+      (position 246 189 0)
+      (repeat 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 255 159 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 258 977 0))
+    (teleporter-target 
+      (position 266 831 0)
+      (id "id4"))
+    (teleporter 
+      (position 675 222 0)
+      (target-id "id4"))
+    (teleporter 
+      (position 268 1186 0)
+      (target-id "id5"))
+    (teleporter-target 
+      (position 1301 978 0)
+      (id "id5"))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 1297 1011 0))
+    (teleporter 
+      (position 1305 1213 0)
+      (target-id "id6"))
+    (teleporter-target 
+      (position 891 173 0)
+      (id "id6"))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 888 193 0))
+    (teleporter 
+      (position 898 312 0)
+      (target-id "id7"))
+    (teleporter-target 
+      (position 1870 499 0)
+      (id "id7"))
+    (iceblock 
+      (position 1860 579 0)
+      (repeat 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 1866 552 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/middlebrickpiece")
+        (modifier "ROT180"))
+      (position 1921 563 0))
+    (teleporter 
+      (position 1874 690 0)
+      (target-id "id8"))
+    (teleporter 
+      (position 1886 690 0)
+      (target-id "id8"))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/middlebrickpiece")
+        (modifier "ROT90"))
+      (position 1919 621 0))
+    (teleporter 
+      (position 1918 576 0)
+      (target-id "id9"))
+    (teleporter 
+      (position 1910 771 0)
+      (target-id "id14"))
+    (teleporter-target 
+      (position 253 142 0)
+      (id "id14"))
+    (teleporter-target 
+      (position 550 224 0)
+      (id "id9"))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld7")
+        (modifier "ROT0"))
+      (position 546 263 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT180FLIP"))
+      (position 536 250 0))
+    (teleporter 
+      (position 243 381 0)
+      (target-id "id8"))
+    (switchdoor-switch 
+      (position 155 120 0)
+      (target-id "idZ"))
+    (switchdoor-door 
+      (position 585 205 0)
+      (id "idZ")
+      (height 15))
+    (teleporter 
+      (position 544 387 0)
+      (target-id "id10"))
+    (teleporter-target 
+      (position 1439 722 0)
+      (id "id10"))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 1433 741 0))
+    (teleporter 
+      (position 1431 997 0)
+      (target-id "id11"))
+    (teleporter-target 
+      (position 1689 687 0)
+      (id "id11"))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 1684 707 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 430 538 0))
+    (teleporter-target 
+      (position 439 520 0)
+      (id "id12"))
+    (teleporter 
+      (position 1684 864 0)
+      (target-id "id12"))
+    (teleporter 
+      (position 440 728 0)
+      (target-id "id13"))
+    (teleporter-target 
+      (position 1113 272 0)
+      (id "id13"))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 1106 355 0))
+    (teleporter 
+      (position 1116 445 0)
+      (target-id "id8"))
+    (teleporter 
+      (position 597 467 0)
+      (target-id "id14"))
+    (teleporter 
+      (position 254 381 0)
+      (target-id "id8"))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 695 766 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 544 874 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 909 905 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 685 583 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 1733 1018 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 1833 851 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 1157 806 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 671 954 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 185 567 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 376 250 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 147 330 0))
+    (teleporter 
+      (position 1904 771 0)
+      (target-id "id14"))
+    (teleporter 
+      (position 1899 772 0)
+      (target-id "id14"))
+    (teleporter 
+      (position 1893 774 0)
+      (target-id "id14"))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 940 526 0))
+    (teleporter 
+      (position 601 323 0)
+      (target-id "id10"))
+    (teleporter 
+      (position 1441 997 0)
+      (target-id "id11"))
+    (teleporter 
+      (position 1693 863 0)
+      (target-id "id12"))))
+
+;; EOF ;;

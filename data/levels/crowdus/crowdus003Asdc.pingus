@@ -1,0 +1,5095 @@
+(pingus-level 
+  (version 3)
+  (head 
+    (license "GPLv3+")
+    (levelname "So Happy Together")
+    (description "The Pingus are transported to a new island.  They find they are separated once again, and once again they must work together to escape.  However, this is something they are quite accustomed to by now.  Each Pingu must do their part ... well, except the little one, naturally.")
+    (author "Crowdus -- sdc")
+    (number-of-pingus 8)
+    (number-to-save 8)
+    (time -1)
+    (music "pingus-6.it")
+    (actions 
+      (basher 15)
+      (blocker 1)
+      (bomber 1)
+      (bridger 20)
+      (climber 1)
+      (digger 7)
+      (floater 2)
+      (jumper 5)
+      (miner 7)
+      (slider 10))
+    (levelsize 1920 1200))
+  (objects 
+    (surface-background 
+      (surface 
+        (image "textures/bwsortiebg")
+        (modifier "ROT0"))
+      (position 388 261 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1196 1040 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1389 997 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1411 848 0))
+    (liquid 
+      (surface 
+        (image "liquids/lava")
+        (modifier "ROT0"))
+      (position 1710 303 0)
+      (speed 0)
+      (repeat 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/hexcrystal")
+        (modifier "ROT0"))
+      (position 1567 567 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/hexcrystal")
+        (modifier "ROT0"))
+      (position 1651 517 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 360 1067 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1123 150 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1024 149 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1125 81 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1029 81 0))
+    (prefab 
+      (name "prefabs/entrances/eastern")
+      (position 940 920 0)
+      (overrides 
+        (release-rate 50)
+        (direction "right")
+        (owner-id 0)))
+    (exit 
+      (surface 
+        (image "exits/crystal")
+        (modifier "ROT0"))
+      (position 1792 1068 0)
+      (owner-id 0))
+    (rain-generator 
+      (position 1376 1213 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT0"))
+      (position 1728 1067 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT0"))
+      (position 1792 1067 0))
+    (liquid 
+      (surface 
+        (image "liquids/water4")
+        (modifier "ROT0"))
+      (position 1856 1035 0)
+      (speed 0)
+      (repeat 1))
+    (prefab 
+      (name "prefabs/entrances/eastern")
+      (position 969 74 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/liquids/water")
+      (position 1047 1153 0)
+      (overrides 
+        (repeat 15)))
+    (prefab 
+      (name "prefabs/liquids/water")
+      (position 91 1153 0)
+      (overrides 
+        (repeat 15)))
+    (prefab 
+      (name "prefabs/liquids/water")
+      (position -29 1151 0)
+      (overrides 
+        (repeat 15)))
+    (prefab 
+      (name "prefabs/liquids/water")
+      (position 95 1209 0)
+      (overrides 
+        (repeat 15)))
+    (prefab 
+      (name "prefabs/liquids/water")
+      (position -25 1207 0)
+      (overrides 
+        (repeat 15)))
+    (prefab 
+      (name "prefabs/liquids/water")
+      (position 1051 1209 0)
+      (overrides 
+        (repeat 15)))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/smallsolid")
+        (modifier "ROT0"))
+      (position 1637 1068 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1593 1005 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1541 1002 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1479 995 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT90"))
+      (position 1020 36 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT90"))
+      (position 1012 -27 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT90"))
+      (position 1011 115 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT90"))
+      (position 1011 178 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1043 116 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1051 35 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1104 116 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1115 35 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1043 -28 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1106 -29 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1170 -29 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1415 1004 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1352 1004 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1289 1003 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1227 1002 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1038 1001 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1164 1002 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1101 1001 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 912 1000 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 975 1001 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 839 990 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 785 1000 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position -17 986 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 945 1001 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1448 996 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1259 999 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1322 1004 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1074 996 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 819 985 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1133 999 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1196 990 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1008 997 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1009 937 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1134 938 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 883 936 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1197 939 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1 930 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 316 932 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1260 939 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1323 939 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1072 937 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 820 936 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 946 936 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1449 940 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1542 940 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1479 939 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1386 940 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 441 871 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 253 869 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 316 869 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1009 874 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1386 877 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT90"))
+      (position 378 870 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1260 876 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1072 874 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1479 876 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1134 875 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1197 876 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1 867 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 820 873 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 946 873 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1449 877 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1009 810 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1260 812 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1323 812 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1072 810 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 441 807 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 253 805 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 316 805 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1386 813 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 378 806 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 567 807 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1479 812 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 504 807 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 883 809 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1197 812 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1 803 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 819 808 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 946 809 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1449 813 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1448 750 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 628 744 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1008 747 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1259 749 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1322 749 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1071 747 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 440 744 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 252 742 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 315 742 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1385 750 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 377 743 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 566 744 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1478 749 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 503 744 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1133 748 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 882 746 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1196 749 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 0 740 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 819 746 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 945 746 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1449 688 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 630 683 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1009 685 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1260 687 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1323 687 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1072 685 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 441 682 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 253 680 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 316 680 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1386 688 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 378 681 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 567 682 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1479 687 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 504 682 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1134 686 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 883 684 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1197 687 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1 678 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 819 683 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 946 684 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 315 627 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1385 635 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 377 628 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 566 629 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 692 630 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 503 629 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1133 633 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 882 631 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1196 634 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 0 625 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 819 631 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 945 631 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1448 635 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 629 630 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1008 632 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1259 634 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1322 634 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1071 632 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 440 629 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 252 627 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 315 564 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1385 572 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 377 565 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 566 566 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1483 504 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 692 567 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 503 566 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1133 570 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 882 568 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1196 571 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 0 562 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 819 568 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 945 568 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1448 571 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 629 567 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1008 569 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1259 571 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1322 571 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1071 569 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 440 566 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 252 564 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 315 501 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1385 509 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 377 502 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 566 503 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 692 504 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 503 503 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1133 507 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 882 505 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1196 508 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 0 499 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 819 505 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 945 505 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1448 509 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 629 504 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1008 506 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1259 508 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1322 508 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1071 506 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 440 503 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 252 501 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 378 438 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 567 439 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 693 440 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 504 439 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1134 443 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 883 441 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1197 444 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 316 437 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1386 445 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1 435 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 819 442 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 946 441 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1449 445 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 630 440 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1009 442 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1260 444 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1323 444 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1072 442 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 441 439 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 253 437 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 377 372 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 566 373 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1478 381 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 692 374 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 503 373 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 882 375 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1196 378 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 315 371 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1385 379 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 0 369 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 819 375 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 945 375 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1448 379 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 629 374 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1259 378 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1322 378 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 440 373 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 252 371 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 377 308 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 566 309 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1479 318 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 692 310 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 503 309 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1196 314 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 315 307 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1385 315 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 0 305 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 945 311 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1448 315 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 629 310 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1008 312 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1259 314 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1322 314 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 440 309 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 252 307 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 377 245 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 566 246 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1478 251 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 693 246 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 503 246 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1133 250 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 873 249 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1196 251 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 315 244 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1385 252 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 0 242 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 945 248 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 756 247 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1448 252 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1604 252 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 629 247 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1008 249 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1259 251 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1322 251 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1071 249 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1541 252 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 440 246 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 252 244 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 0 179 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 945 185 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 756 184 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1459 184 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1604 189 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 629 184 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1008 186 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1259 188 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1322 188 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1071 186 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1541 189 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 440 183 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 254 181 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 377 182 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 566 183 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 692 184 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 503 183 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1133 187 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 873 205 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1196 188 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 315 181 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1385 189 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 0 118 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 945 124 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 756 123 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1450 86 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1605 132 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 629 123 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1008 125 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1259 127 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1322 127 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1071 125 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1541 128 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 440 122 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 263 130 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 383 122 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 566 122 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1485 123 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 692 123 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 503 122 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1133 126 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1196 127 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 326 130 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1385 128 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 0 58 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 819 64 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 945 64 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 756 63 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1448 68 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1604 68 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1008 65 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1259 67 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1322 67 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1071 65 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1541 68 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1478 67 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1133 66 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 882 64 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1196 67 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1385 68 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 36 0 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 818 1 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 944 1 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 755 0 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1447 5 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1603 5 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1007 2 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1258 4 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1321 4 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1070 2 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1540 5 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 439 -1 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 251 -3 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 551 -2 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1477 4 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 695 -2 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 502 -1 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1132 3 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 881 1 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1195 4 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1384 5 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 2 0 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 818 -37 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 944 -37 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 755 -38 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1447 -33 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1603 -33 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 680 -4 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1007 -36 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1258 -34 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1321 -34 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1070 -36 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1540 -33 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 439 -39 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 251 -41 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 376 -40 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 565 -39 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1477 -34 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 691 -38 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 502 -39 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1132 -35 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 881 -37 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1195 -34 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 314 -41 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 91 -3 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1384 -33 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 43 140 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 988 146 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1665 -32 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 671 146 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1051 147 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1302 149 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1365 149 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1114 147 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1584 150 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 483 144 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 295 142 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 420 143 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1521 149 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 735 145 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1176 148 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 925 146 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1239 149 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 358 142 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1428 150 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1008 1038 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1133 1039 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 870 1036 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1 1031 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 48 1033 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1577 1034 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1259 1040 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1322 1040 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1071 1038 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 811 1036 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 945 1037 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1448 1039 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1541 1037 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1479 1037 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1385 1041 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect2")
+        (modifier "ROT0"))
+      (position 1320 144 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1304 112 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1720 -32 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1876 -32 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1813 -32 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1750 -33 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1657 -32 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1938 -31 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1725 29 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1881 29 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1818 29 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1755 28 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1662 29 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1943 30 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1726 90 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1882 90 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1819 90 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1758 89 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1663 90 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1731 153 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1888 154 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1824 153 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1761 152 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1668 154 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 2243 350 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1733 218 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1889 218 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1509 308 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 376 401 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 565 402 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 691 403 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 502 402 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1132 406 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 881 404 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1195 407 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 314 400 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1384 408 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position -1 398 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 819 403 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 944 404 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1447 408 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 628 403 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1258 407 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1321 407 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1070 405 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 439 402 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 251 400 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 918 -3 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 961 -2 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 919 99 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 963 100 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 921 206 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 964 207 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 922 318 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 923 425 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 922 534 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 923 644 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 966 645 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 967 756 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 924 755 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 968 867 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 925 866 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 969 978 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 926 977 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 971 988 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 929 988 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/smallsolid")
+        (modifier "ROT0"))
+      (position 1717 1067 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit3")
+        (modifier "ROT0"))
+      (position 1274 929 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit3")
+        (modifier "ROT0"))
+      (position 1275 774 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1135 812 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit3")
+        (modifier "ROT0"))
+      (position 1275 617 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit3")
+        (modifier "ROT0"))
+      (position 1272 466 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit3")
+        (modifier "ROT0"))
+      (position 1276 303 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit2")
+        (modifier "ROT0"))
+      (position 1260 -46 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit5")
+        (modifier "ROT0"))
+      (position 1214 11 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT90"))
+      (position 1283 117 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit4")
+        (modifier "ROT0"))
+      (position 1260 47 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit3")
+        (modifier "ROT0"))
+      (position 1275 153 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/smallsolid")
+        (modifier "ROT0"))
+      (position 1383 849 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/smallsolid")
+        (modifier "ROT0"))
+      (position 1390 849 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 1484 857 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz2")
+        (modifier "ROT0"))
+      (position 1526 912 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz2")
+        (modifier "ROT0"))
+      (position 1576 979 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT270FLIP"))
+      (position 1652 485 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz2")
+        (modifier "ROT0"))
+      (position 1526 912 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect2")
+        (modifier "ROT0"))
+      (position 1703 522 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect2")
+        (modifier "ROT0"))
+      (position 1716 526 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 2012 408 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 1997 258 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 1998 346 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 1853 273 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 1869 273 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 2078 454 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 1817 101 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 1851 100 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 1782 100 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 1731 100 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 1370 151 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit5")
+        (modifier "ROT180"))
+      (position 1817 197 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit5")
+        (modifier "ROT180"))
+      (position 1707 197 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 1854 213 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 1781 212 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_small")
+        (modifier "ROT0"))
+      (position 1748 212 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit2")
+        (modifier "ROT0"))
+      (position 1598 216 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit3")
+        (modifier "ROT90"))
+      (position 1466 214 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 1559 212 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT180FLIP"))
+      (position 1430 212 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 898 786 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 897 723 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 898 661 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 900 599 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 897 545 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 897 482 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 898 418 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 902 204 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 898 375 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 899 999 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 900 936 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 899 1037 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 914 860 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 850 875 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 946 857 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz2")
+        (modifier "ROT0"))
+      (position 876 71 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/platform2")
+        (modifier "ROT0"))
+      (position 860 1 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/platform2")
+        (modifier "ROT0"))
+      (position 860 -32 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 1685 212 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 1621 212 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 1497 212 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 1433 212 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 1207 126 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 1144 125 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 1081 125 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 1018 125 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 1015 125 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect2")
+        (modifier "ROT0"))
+      (position 1014 110 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 1265 126 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/pipe")
+        (modifier "ROT0"))
+      (position 1186 145 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/pipe")
+        (modifier "ROT0"))
+      (position 1085 145 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/pipe")
+        (modifier "ROT0"))
+      (position 1015 145 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 1702 99 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/pipe")
+        (modifier "ROT0"))
+      (position 1129 93 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/pipe")
+        (modifier "ROT0"))
+      (position 1163 93 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/smallsolid")
+        (modifier "ROT0"))
+      (position 1702 148 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 1220 273 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 1169 273 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri1")
+        (modifier "ROT0"))
+      (position 1054 384 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 1199 395 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 1150 395 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 1220 383 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 1220 448 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/column")
+        (modifier "ROT0"))
+      (position 1124 353 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 1123 290 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1007 405 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1008 376 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 965 319 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 966 426 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT0"))
+      (position 1022 942 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT0"))
+      (position 1255 729 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 964 537 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT270FLIP"))
+      (position 1020 868 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT270FLIP"))
+      (position 1009 859 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0"))
+      (position 1114 344 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0"))
+      (position 1109 354 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0"))
+      (position 1110 333 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0"))
+      (position 1116 319 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0"))
+      (position 1112 313 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 1156 508 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 1093 508 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/smallsolid")
+        (modifier "ROT0"))
+      (position 1016 543 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld1")
+        (modifier "ROT180FLIP"))
+      (position 1009 537 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT0"))
+      (position 1013 557 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect2")
+        (modifier "ROT0"))
+      (position 1046 530 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect2")
+        (modifier "ROT0"))
+      (position 1046 515 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect2")
+        (modifier "ROT0"))
+      (position 1034 529 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect2")
+        (modifier "ROT0"))
+      (position 1035 516 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 810 832 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 839 814 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit3")
+        (modifier "ROT270"))
+      (position 786 736 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit3")
+        (modifier "ROT0"))
+      (position 789 831 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 900 972 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 712 855 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 781 735 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 781 798 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 840 981 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 639 892 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 567 928 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 494 963 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 423 998 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 354 1031 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 285 1063 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/middlebrickpiece")
+        (modifier "ROT0"))
+      (position 499 1022 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/middlebrickpiece")
+        (modifier "ROT0"))
+      (position 632 1022 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 494 1000 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/middlebrickpiece")
+        (modifier "ROT0"))
+      (position 569 966 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 641 930 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 428 1037 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/smallbrickpiece")
+        (modifier "ROT0"))
+      (position 429 1064 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/middlebrickpiece")
+        (modifier "ROT90"))
+      (position 714 893 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 781 1011 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 780 925 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 780 861 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 780 981 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_vert")
+        (modifier "ROT0"))
+      (position 781 1036 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 359 914 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 484 854 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz2")
+        (modifier "ROT0"))
+      (position 289 934 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz2")
+        (modifier "ROT0"))
+      (position 430 898 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz2")
+        (modifier "ROT0"))
+      (position 554 834 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 249 906 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/flat")
+        (modifier "ROT0"))
+      (position 744 728 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 717 717 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 315 -3 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 378 -2 0))
+    (prefab 
+      (name "prefabs/entrances/eastern")
+      (position 186 68 0)
+      (overrides 
+        (release-rate 50)
+        (direction "right")
+        (owner-id 0)))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 696 59 0))
+    (prefab 
+      (name "prefabs/entrances/eastern")
+      (position 650 54 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri2")
+        (modifier "ROT0"))
+      (position 413 40 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri2")
+        (modifier "ROT0"))
+      (position 253 40 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 52 56 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 43 96 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/platform2")
+        (modifier "ROT0"))
+      (position 254 154 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_large")
+        (modifier "ROT0"))
+      (position 546 35 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_large")
+        (modifier "ROT0"))
+      (position 546 -28 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 596 123 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 498 123 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 408 123 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 309 132 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 264 133 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld1")
+        (modifier "ROT0"))
+      (position 406 123 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 221 79 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 59 53 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 34 113 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/pipeend")
+        (modifier "ROT0"))
+      (position 166 658 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/block")
+        (modifier "ROT0"))
+      (position 153 641 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/block")
+        (modifier "ROT0"))
+      (position 184 641 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 109 1034 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 135 1034 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position -19 984 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 45 1003 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 54 985 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 50 968 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/platform")
+        (modifier "ROT0"))
+      (position 15 58 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/block")
+        (modifier "ROT0"))
+      (position 253 150 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/block")
+        (modifier "ROT0"))
+      (position 253 142 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 56 953 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 112 940 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 113 899 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 114 846 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 114 793 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 115 688 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 114 740 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 116 582 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 116 635 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 118 326 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 120 237 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 117 485 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 116 537 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 119 274 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 118 379 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 118 432 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/smallsolid")
+        (modifier "ROT0"))
+      (position 108 230 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 57 939 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 58 917 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 55 899 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 57 878 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 51 855 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 55 838 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 55 825 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 54 765 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 50 781 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 56 804 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 55 577 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 55 713 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 58 731 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 56 752 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 55 651 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 56 616 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 51 668 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 51 593 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 57 692 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 54 638 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 62 474 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 60 359 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 59 547 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 59 420 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 60 495 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 61 534 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 55 563 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 56 450 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 56 375 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 63 513 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 61 398 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 60 433 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 58 274 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 65 329 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 57 314 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 61 345 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 49 243 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 40 260 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 69 295 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 43 230 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT180"))
+      (position 57 178 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/column")
+        (modifier "ROT0"))
+      (position 36 167 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 672 685 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 610 799 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 691 73 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld5")
+        (modifier "ROT180"))
+      (position 690 49 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 255 1094 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 325 939 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/platform")
+        (modifier "ROT180"))
+      (position 285 932 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld1")
+        (modifier "ROT180FLIP"))
+      (position 248 1087 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/easter/flower2")
+        (modifier "ROT0"))
+      (position 818 356 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/platform2")
+        (modifier "ROT0"))
+      (position 240 334 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 114 855 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 154 865 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect2")
+        (modifier "ROT0"))
+      (position 128 854 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect2")
+        (modifier "ROT0"))
+      (position 132 861 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/pipe")
+        (modifier "ROT0"))
+      (position 596 312 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/pipe")
+        (modifier "ROT0"))
+      (position 495 311 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/pipe")
+        (modifier "ROT0"))
+      (position 394 311 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/pipe")
+        (modifier "ROT0"))
+      (position 294 311 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/pipe")
+        (modifier "ROT0"))
+      (position 251 310 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 257 299 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/pipe")
+        (modifier "ROT0"))
+      (position 656 313 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 873 312 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 902 247 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 902 310 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/pipeend")
+        (modifier "ROT0"))
+      (position 924 354 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/pipeend")
+        (modifier "ROT0"))
+      (position 880 354 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 852 104 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 786 118 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/desert/leftsmallbrick")
+        (modifier "ROT0FLIP"))
+      (position 891 168 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 895 171 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 954 168 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 414 131 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 413 150 0))
+    (liquid 
+      (surface 
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position 477 135 0)
+      (speed 0)
+      (repeat 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 607 144 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 478 131 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 474 161 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 543 143 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/kirby4")
+        (modifier "ROT0"))
+      (position 403 176 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect2")
+        (modifier "ROT0"))
+      (position 1029 110 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/hexcrystal")
+        (modifier "ROT0"))
+      (position 1653 414 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/hexcrystal")
+        (modifier "ROT0"))
+      (position 1624 464 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/hexcrystal")
+        (modifier "ROT0"))
+      (position 1681 465 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/hexcrystal")
+        (modifier "ROT0"))
+      (position 1595 516 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/hexcrystal")
+        (modifier "ROT0"))
+      (position 1708 517 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/hexcrystal")
+        (modifier "ROT0"))
+      (position 1625 568 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/hexcrystal")
+        (modifier "ROT0"))
+      (position 1735 567 0))
+    (prefab 
+      (name "prefabs/liquids/water")
+      (position 1543 735 0)
+      (overrides 
+        (repeat 15)))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/hexcrystal")
+        (modifier "ROT0"))
+      (position 1682 569 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT90"))
+      (position 1676 534 0))
+    (liquid 
+      (surface 
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position 1675 529 0)
+      (speed 0)
+      (repeat 1))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT90"))
+      (position 1675 481 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/platform")
+        (modifier "ROT180"))
+      (position 1679 367 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/column1")
+        (modifier "ROT0"))
+      (position 1748 480 0))
+    (liquid 
+      (surface 
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position 1739 528 0)
+      (speed 0)
+      (repeat 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 1656 433 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 1719 431 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz2")
+        (modifier "ROT0"))
+      (position 1734 427 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz2")
+        (modifier "ROT0"))
+      (position 1656 453 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 1737 451 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz2")
+        (modifier "ROT0"))
+      (position 1749 454 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 1645 456 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1456 442 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1518 477 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 1495 411 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/rock/granit6")
+        (modifier "ROT0"))
+      (position 1529 288 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz2")
+        (modifier "ROT0"))
+      (position 1476 471 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz2")
+        (modifier "ROT0"))
+      (position 1460 536 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/tesselate")
+        (modifier "ROT0"))
+      (position 1481 630 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 1459 619 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/skinnycrystal")
+        (modifier "ROT270"))
+      (position 1634 367 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT90"))
+      (position 1781 388 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT90"))
+      (position 1774 366 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT90"))
+      (position 1781 364 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT90FLIP"))
+      (position 1676 387 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT90FLIP"))
+      (position 1686 366 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT90FLIP"))
+      (position 1676 365 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT90"))
+      (position 1806 366 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT90"))
+      (position 1644 365 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect2")
+        (modifier "ROT0"))
+      (position 1838 396 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect2")
+        (modifier "ROT0"))
+      (position 1627 392 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 1708 367 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz2")
+        (modifier "ROT0"))
+      (position 1680 368 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 1714 388 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz2")
+        (modifier "ROT0"))
+      (position 1686 392 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 1718 411 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz2")
+        (modifier "ROT0"))
+      (position 1680 411 0))
+    (prefab 
+      (name "prefabs/liquids/water")
+      (position 1543 770 0)
+      (overrides 
+        (repeat 15)))
+    (prefab 
+      (name "prefabs/liquids/water")
+      (position 1542 825 0)
+      (overrides 
+        (repeat 15)))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT90"))
+      (position 1435 418 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT270"))
+      (position 1434 418 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect2")
+        (modifier "ROT0"))
+      (position 1445 462 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect2")
+        (modifier "ROT0"))
+      (position 1434 461 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/smallsolid")
+        (modifier "ROT0"))
+      (position 1462 709 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/easter/flower2")
+        (modifier "ROT0"))
+      (position 1038 522 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/candle1")
+        (modifier "ROT0"))
+      (position 1469 448 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT270FLIP"))
+      (position 1623 487 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect2")
+        (modifier "ROT0"))
+      (position 1611 528 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/flat")
+        (modifier "ROT0"))
+      (position 1625 536 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect2")
+        (modifier "ROT0"))
+      (position 1428 461 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/gravestone1")
+        (modifier "ROT0"))
+      (position 1429 440 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT90"))
+      (position 1429 418 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT270"))
+      (position 1428 418 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/halloween/gravestone1")
+        (modifier "ROT0"))
+      (position 1435 440 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/smallsolid")
+        (modifier "ROT0"))
+      (position 1372 213 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 1481 484 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz2")
+        (modifier "ROT0"))
+      (position 1516 491 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 1496 516 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 1478 535 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/horiz")
+        (modifier "ROT0"))
+      (position 1464 557 0))
+    (entrance 
+      (position 1817 144 110)
+      (owner-id 0)
+      (direction "left")
+      (release-rate 150))
+    (entrance 
+      (position 1224 310 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 150))
+    (entrance 
+      (position 1189 468 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 150))
+    (entrance 
+      (position 1740 526 110)
+      (owner-id 0)
+      (direction "left")
+      (release-rate 150))))
+
+;; EOF ;;
