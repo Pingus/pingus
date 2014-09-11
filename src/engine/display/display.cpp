@@ -62,9 +62,6 @@ Display::resize(const Size& size_)
   if (size.width  < 640) size.width  = 640;
   if (size.height < 480) size.height = 480;
 
-  // FIXME: Calling this causes horrible flicker, since the screen
-  // goes black on a size change. Seems to be an SDL issue.
-  // This call  also shouldn't be part of ScreenManager, but Framebuffer/Display internal
   Display::set_video_mode(size, is_fullscreen(), true);
 
   if (ScreenManager::instance())

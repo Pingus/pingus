@@ -42,10 +42,16 @@ Roadmap for 0.8.0
 * finish/test SDL2 port
 
   - OpenGL renderer is broken
+    -> resize doesn't work
   - Delta renderer is broken
-  - some sound effects are broken
-  - fade-in/out is glitchy
+    -> doesn't work correctly at all, can't use SDLFramebuffer any
+       more due to Renderer
+    -> see SDL_GetWindowSurface()
+           SDL_UpdateWindowSurfaceRects()
+  - some sound effects are broken -> convert to other format bit-depth, etc.
+  - fade-in/out is glitchy -> rewrite with SDL_SetRenderTarget()
   - fullscreen doesn't work
+  - add GameController support
 
 
 Roadmap for 0.7.5

@@ -72,7 +72,17 @@ OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resiza
 {
   if (m_window)
   {
-    log_error("video mode switching not implemented");
+    SDL_SetWindowSize(m_window, size.width, size.height);
+
+    log_error("video mode switching not implemented: %1%x%2%", size.width, size.height);
+    glViewport(0, 0, size.width, size.height);
+
+    glMatrixMode(GL_PROJECTION);
+    glOrtho(0, size.width, size.height, 0, -1, 1);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glClearColor(1.0, 1.0, 0.0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   }
   else
   {
