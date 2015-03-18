@@ -238,7 +238,7 @@ SDLDriver::update(float delta)
         break;
 
       case SDL_MOUSEWHEEL:
-        log_error("mousewheel not implemented: %1% %2%", event.wheel.which, event.wheel.x, event.wheel.y);
+        log_error("mousewheel not implemented: %1% %2% %3%", event.wheel.which, event.wheel.x, event.wheel.y);
         break;
 
       case SDL_TEXTINPUT:
