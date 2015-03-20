@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -33,11 +33,11 @@ private:
 
   typedef std::vector<char*> Chunks;
   Chunks chunks;
-  
+
   size_t chunk_size;
   size_t next_free;
-  
-  char* allocate(size_t size) 
+
+  char* allocate(size_t size)
   {
     assert(size <= chunk_size);
 
@@ -48,13 +48,13 @@ private:
       chunks.push_back(chunk);
       next_free = 0;
     }
-    
+
     char* ptr = chunks.back() + next_free;
     next_free += size;
     return ptr;
   }
-  
-  T* keep(T* t) 
+
+  T* keep(T* t)
   {
     objects.push_back(t);
     return t;
@@ -68,7 +68,7 @@ public:
     next_free(0)
   {}
 
-  ~MemoryPool() 
+  ~MemoryPool()
   {
     clear();
   }
@@ -90,15 +90,15 @@ public:
     next_free = 0;
   }
 
-  template<class C> 
+  template<class C>
   T* create() { return keep(new (allocate(sizeof(C))) C()); }
   template<class C, class Arg1>
   T* create(const Arg1& arg1) { return keep(new (allocate(sizeof(C))) C(arg1)); }
-  template<class C, class Arg1, class Arg2> 
+  template<class C, class Arg1, class Arg2>
   T* create(const Arg1& arg1, const Arg2& arg2) { return keep(new (allocate(sizeof(C))) C(arg1, arg2)); }
-  template<class C, class Arg1, class Arg2, class Arg3> 
+  template<class C, class Arg1, class Arg2, class Arg3>
   T* create(const Arg1& arg1, const Arg2& arg2, const Arg3& arg3) { return keep(new (allocate(sizeof(C))) C(arg1, arg2, arg3)); }
-  template<class C, class Arg1, class Arg2, class Arg3, class Arg4> 
+  template<class C, class Arg1, class Arg2, class Arg3, class Arg4>
   T* create(const Arg1& arg1, const Arg2& arg2, const Arg3& arg3, const Arg4& arg4) { return keep(new (allocate(sizeof(C))) C(arg1, arg2, arg3, arg4)); }
 
 private:

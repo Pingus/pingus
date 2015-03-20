@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -31,14 +31,14 @@ Faller::Faller (Pingu* p) :
   faller(),
   tumbler()
 {
-  faller.load(Direction::LEFT,  Sprite("pingus/player" + 
+  faller.load(Direction::LEFT,  Sprite("pingus/player" +
                                        pingu->get_owner_str() + "/faller/left"));
-  faller.load(Direction::RIGHT, Sprite("pingus/player" + 
+  faller.load(Direction::RIGHT, Sprite("pingus/player" +
                                        pingu->get_owner_str() + "/faller/right"));
 
   tumbler.load(Direction::LEFT,  Sprite("pingus/player" +
                                         pingu->get_owner_str() + "/tumbler/left"));
-  tumbler.load(Direction::RIGHT, Sprite("pingus/player" + 
+  tumbler.load(Direction::RIGHT, Sprite("pingus/player" +
                                         pingu->get_owner_str() + "/tumbler/right"));
 
   // FIXME: add sprites for jumping here: if x_vel > y_vel, use them
@@ -49,7 +49,7 @@ Faller::~Faller () { }
 void
 Faller::update ()
 {
-  if (is_tumbling()) 
+  if (is_tumbling())
   {
     tumbler[pingu->direction].update();
   }
@@ -84,7 +84,7 @@ Faller::update ()
   // If the Pingu collided with something...
   if (collided)
   {
-    if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING && 
+    if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING &&
         rel_getpixel(0, -2) == Groundtype::GP_NOTHING &&
         rel_getpixel(0, -3) == Groundtype::GP_NOTHING &&
         rel_getpixel(1, 0)  != Groundtype::GP_NOTHING &&
@@ -161,7 +161,7 @@ bool
 Faller::change_allowed (ActionName::Enum new_action)
 {
   return
-    new_action == ActionName::FLOATER || 
+    new_action == ActionName::FLOATER ||
     new_action == ActionName::CLIMBER ||
     new_action == ActionName::BOMBER;
 }

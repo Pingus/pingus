@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -299,7 +299,7 @@ World::get_worldobj(const std::string& id)
 {
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
   {
-    if ((*obj)->get_id() == id) 
+    if ((*obj)->get_id() == id)
       return *obj;
   }
   return 0;
@@ -312,7 +312,7 @@ World::get_start_pos(int player_id)
   Vector2i pos;
   int num_entrances = 0;
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
-  {  
+  {
     WorldObjs::Entrance* entrance = dynamic_cast<WorldObjs::Entrance*>(*obj);
     if (entrance && entrance->get_owner_id() == player_id)
     {

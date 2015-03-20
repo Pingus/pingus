@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -26,13 +26,13 @@
 #include "util/raise_exception.hpp"
 
 std::unique_ptr<Levelset>
-Levelset::from_directory(const std::string& title, 
-                         const std::string& description, 
-                         const std::string& image, 
+Levelset::from_directory(const std::string& title,
+                         const std::string& description,
+                         const std::string& image,
                          const Pathname& pathname)
 {
   std::unique_ptr<Levelset> levelset(new Levelset);
-  
+
   levelset->set_title(title);
   levelset->set_description(description);
   levelset->set_image(image);
@@ -133,7 +133,7 @@ Levelset::Levelset() :
   m_sprite(),
   m_completion(0),
   m_levels()
-{  
+{
 }
 
 Levelset::~Levelset()
@@ -177,16 +177,16 @@ Levelset::set_priority(float priority)
 void
 Levelset::add_level(const std::string& resname, bool accessible)
 {
-  try 
+  try
   {
     std::unique_ptr<Level> level(new Level);
 
     level->resname    = resname;
     level->plf        = PLFResMgr::load_plf(level->resname);
-                  
+
     level->accessible = accessible;
     level->finished   = false;
-                      
+
     m_levels.push_back(level.release());
   }
   catch(const std::exception& err)
@@ -263,7 +263,7 @@ Levelset::refresh()
   // unlock the next level
   if (!m_levels.empty())
   {
-    m_levels[0]->accessible = true; 
+    m_levels[0]->accessible = true;
     for(std::vector<Level*>::size_type i = 0; i < m_levels.size()-1; ++i)
     {
       if (m_levels[i]->finished)

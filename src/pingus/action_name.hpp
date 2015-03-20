@@ -25,7 +25,7 @@ namespace ActionName {
     in the buttonpanel, so if the order in the buttonpanel is not what
     it should be it needs to be changed here. */
 enum Enum
-{ 
+{
   ANGEL,
   BASHER,
   BLOCKER,

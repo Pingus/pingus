@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -36,7 +36,7 @@ extern bool        debug_actions;                   ///< --debug-actions
 extern int         fast_forward_time_scale;         ///< how much faster the game runs in FF mode
 extern bool        developer_mode;                  ///< --developer-mode
 extern bool        auto_scrolling;                  ///< --enable-auto-scrolling
-extern bool        drag_drop_scrolling; 
+extern bool        drag_drop_scrolling;
 extern int         tile_size;                       ///< --tile-size
 extern int         default_screen_width;            ///< default screen width
 extern int         default_screen_height;           ///< default screen height

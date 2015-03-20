@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -120,7 +120,7 @@ private:
 public:
   LevelsetSelector(LevelMenu* level_menu_, const Rect& rect_) :
     RectComponent(rect_),
-    level_menu(level_menu_), 
+    level_menu(level_menu_),
     levelsets(),
     current_levelset(),
     marker(),
@@ -132,11 +132,11 @@ public:
               70 + items_per_page * item_height)
   {
     marker      = Sprite("core/menu/marker");
-      
+
     auto directory = Pathname("levelsets", Pathname::DATA_PATH).opendir("*.levelset");
     for(auto i = directory.begin(); i != directory.end(); ++i)
     {
-      try 
+      try
       {
         std::unique_ptr<Levelset> levelset = Levelset::from_file(*i);
         if (!levelset->get_developer_only() || globals::developer_mode)
@@ -161,14 +161,14 @@ public:
     std::sort(levelsets.begin(), levelsets.end(), LevelsetPrioritySorter());
   }
 
-  ~LevelsetSelector() 
+  ~LevelsetSelector()
   {
     for(Levelsets::iterator i = levelsets.begin(); i != levelsets.end(); ++i)
     {
       delete *i;
     }
   }
-  
+
   void draw(DrawingContext& gc)
   {
     gc.push_modelview();
@@ -194,8 +194,8 @@ public:
 
       y += item_height;
     }
-    
-    //int total_pages = static_cast<int>(levelsets.size());; 
+
+    //int total_pages = static_cast<int>(levelsets.size());;
     //gc.print_center(Fonts::chalk_normal, Vector2i(rect.get_width()/2, 360),
     //                (boost::format("%1% %2%/%3%") % _("Page") % (page+1) % total_pages).str());
 
@@ -227,7 +227,7 @@ public:
   {
     x -= rect.left;
     y -= rect.top;
-    
+
     if (!list_rect.contains(Vector2i(x, y)))
     {
       current_levelset = NULL;
@@ -306,7 +306,7 @@ public:
     m_checkbox = Sprite("core/menu/checkbox_small");
   }
 
-  void draw(DrawingContext& gc) 
+  void draw(DrawingContext& gc)
   {
     gc.push_modelview();
     gc.translate(rect.left, rect.top);
@@ -321,7 +321,7 @@ public:
     if (levelset)
     {
       levelset->refresh(); // should be better placed in on_startup() or so
-        
+
       //gc.draw_fillrect(Rect(Vector2i(0,0), Size(rect.get_width(), rect.get_height())),
       //                 Color(255, 255, 0, 100));
 
@@ -476,7 +476,7 @@ LevelMenu::LevelMenu() :
                                                        "core/menu/arrow_down",
                                                        std::bind(&LevelMenu::next_page, this)));
 
-  gui_manager->add(abort_button = new LevelMenuAbortButton(this, 
+  gui_manager->add(abort_button = new LevelMenuAbortButton(this,
                                                            Display::get_width()/2 - 300,
                                                            Display::get_height()/2 + 144));
 
@@ -505,7 +505,7 @@ LevelMenu::on_escape_press()
   if (level_selector->is_visible())
   {
     levelset_selector->show();
-    level_selector->hide();           
+    level_selector->hide();
   }
   else
   {
@@ -538,7 +538,7 @@ LevelMenu::next_page()
   if (level_selector->is_visible())
     level_selector->next_page();
   else
-    levelset_selector->next_page();  
+    levelset_selector->next_page();
 }
 
 void
@@ -562,7 +562,7 @@ LevelMenu::set_levelset(Levelset* levelset)
   else
   {
     levelset_selector->show();
-    level_selector->hide();      
+    level_selector->hide();
   }
 }
 

@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -70,7 +70,7 @@ Pathname::get_sys_path() const
   {
     case SYSTEM_PATH:
       return pathname;
-        
+
     case DATA_PATH:
       return g_path_manager.complete(pathname);
 
@@ -86,7 +86,7 @@ Pathname::get_sys_path() const
 std::string
 Pathname::get_raw_path() const
 {
-  return pathname; 
+  return pathname;
 }
 
 Pathname::Type
@@ -119,7 +119,7 @@ Pathname::str() const
   switch(type)
   {
     case Pathname::INVALID:
-      return "invalid://" + pathname; 
+      return "invalid://" + pathname;
 
     case Pathname::DATA_PATH:
       return "datadir://" + pathname;
@@ -127,7 +127,7 @@ Pathname::str() const
     case Pathname::SYSTEM_PATH:
       return "system://" + pathname;
 
-    default: 
+    default:
       assert(!"never reached");
   }
   return std::string();
@@ -168,7 +168,7 @@ Pathname::opendir(const std::string& pattern) const
             result.insert(Pathname(Pathname::join(pathname, it->name), Pathname::DATA_PATH));
           }
         }
-        catch(const std::exception& err) 
+        catch(const std::exception& err)
         {
           log_info("%1%", err.what());
         }
@@ -205,7 +205,7 @@ Pathname::opendir_recursive(std::vector<Pathname>& result) const
     case Pathname::INVALID:
       break;
 
-    case Pathname::DATA_PATH: {     
+    case Pathname::DATA_PATH: {
       // collect all paths
       std::vector<std::string> paths;
       {
@@ -214,7 +214,7 @@ Pathname::opendir_recursive(std::vector<Pathname>& result) const
         paths.insert(paths.end(), lst.begin(), lst.end());
 
         // normalize all paths
-        std::transform(paths.begin(), paths.end(), 
+        std::transform(paths.begin(), paths.end(),
                        paths.begin(), System::normalize_path);
       }
 
@@ -231,7 +231,7 @@ Pathname::opendir_recursive(std::vector<Pathname>& result) const
       }
       break;
     }
-      
+
     case Pathname::SYSTEM_PATH: {
       auto lst = System::opendir_recursive(pathname);
       for(auto it = lst.begin(); it != lst.end(); ++it)
@@ -266,7 +266,7 @@ std::ostream& operator<< (std::ostream& os, const Pathname& p)
     case Pathname::SYSTEM_PATH:
       return os << "system://" << p.get_raw_path();
 
-    default: 
+    default:
       assert(!"never reached");
   }
   return os;
@@ -289,7 +289,7 @@ Pathname::operator<(const Pathname& rhs) const
   {
     return false;
   }
-  else 
+  else
   {
     return pathname < rhs.pathname;
   }

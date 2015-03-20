@@ -26,7 +26,7 @@ namespace Editor {
 std::shared_ptr<GroupLevelObj>
 GroupLevelObj::from_prefab(const std::string& name)
 {
-  try 
+  try
   {
     PrefabFile prefab = PrefabFile::from_resource(name);
 
@@ -73,13 +73,13 @@ GroupLevelObj::~GroupLevelObj()
 std::string
 GroupLevelObj::get_section_name() const
 {
-  if (is_prefab()) 
+  if (is_prefab())
   {
-    return "prefab"; 
+    return "prefab";
   }
   else
   {
-    return "group"; 
+    return "group";
   }
 }
 
@@ -158,7 +158,7 @@ GroupLevelObj::draw(DrawingContext& gc)
   for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
   {
     (*it)->draw(gc);
-  }  
+  }
 }
 
 void
@@ -213,13 +213,13 @@ GroupLevelObj::is_at(int x, int y)
   {
     if ((*it)->is_at(x, y))
       return true;
-  } 
+  }
   return false;
 }
 
 void
 GroupLevelObj::set_release_rate(const int r)
-{ 
+{
   m_release_rate = r;
 
   for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
@@ -236,18 +236,18 @@ GroupLevelObj::set_owner(const int owner)
   for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
   {
     (*it)->set_owner(m_owner_id);
-  } 
+  }
 }
 
 void
 GroupLevelObj::set_direction(const std::string direction)
-{ 
+{
   m_direction = direction;
 
   for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
   {
     (*it)->set_direction(m_direction);
-  }  
+  }
 }
 
 void
@@ -258,7 +258,7 @@ GroupLevelObj::set_repeat(const int repeat)
   for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
   {
     (*it)->set_repeat(m_repeat);
-  } 
+  }
 }
 
 LevelObjPtr

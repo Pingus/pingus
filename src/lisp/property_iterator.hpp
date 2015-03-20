@@ -11,7 +11,7 @@ struct ListEntry {
   ListEntry(const std::shared_ptr<lisp::Lisp> lisp)
     : lisp(lisp), used(false)
   {}
-  
+
   const std::shared_ptr<lisp::Lisp> lisp;
   bool used;
 };
@@ -49,12 +49,12 @@ public:
         return true;
     } while(true);
   }
-  
+
   const std::string& item() const
   {
     return current_item;
   }
-  
+
 private:
   friend class Properties;
 
@@ -62,7 +62,7 @@ private:
     : i(begin), end(end)
   {
   }
-    
+
   PropertyMap::iterator i;
   PropertyMap::iterator end;
   std::string current_item;

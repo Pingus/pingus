@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -86,13 +86,13 @@ Credits::Credits(const Pathname& filename) :
   // character of each string is a special character, which indicates
   // the size of the font or other special stuff. "-" means large
   // font, "_" is a small font and "n" means a newline.
-  
+
   { // read credit information from filename
     std::ifstream in(filename.get_sys_path());
     if (!in)
     {
       log_error("couldn't open %1%", filename);
-      
+
       std::ostringstream out;
       out << "couldn't open " << filename;
       credits.push_back(out.str());
@@ -170,7 +170,7 @@ Credits::draw_background (DrawingContext& gc)
   gc.draw(blackboard, Vector2i(gc.get_width()/2, gc.get_height()/2));
 
   gc.draw(pingu, Vector2i(gc.get_width()/2, gc.get_height()/2 - 20));
-    
+
   yof = 0;
 
   scene_context->clear();
@@ -221,7 +221,7 @@ Credits::on_fast_forward_press ()
 void
 Credits::on_escape_press ()
 {
-  bool credits_seen = false;   
+  bool credits_seen = false;
   StatManager::instance()->get_bool("credits-seen", credits_seen);
   if (!credits_seen)
   {

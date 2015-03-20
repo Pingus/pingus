@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -40,7 +40,7 @@ FileList::FileList(const Rect& rect_) :
 }
 
 void
-FileList::update_layout() 
+FileList::update_layout()
 {
   hspace = rect.get_width()/2;
   vspace = 20;
@@ -48,7 +48,7 @@ FileList::update_layout()
   num_pages = static_cast<int>(directory.size()) / items_per_page();
   if ((directory.size() % items_per_page()) != 0 || num_pages == 0)
     num_pages += 1;
-  
+
   if (page >= num_pages)
     page = num_pages-1;
 }
@@ -124,7 +124,7 @@ FileList::draw(DrawingContext& gc)
       else
         gc.draw_rect(Rect(x, y, x + hspace, y + vspace), Color(0, 0, 255));
     }
-      
+
     gc.print_left(Fonts::verdana11, Vector2i(x + 4, y + 3),
                   ((i->type == System::DE_DIRECTORY) ? "[DIR]  " : "[FILE] ") + i->name);
 
@@ -165,7 +165,7 @@ FileList::on_pointer_move (int x, int y)
     + Math::clamp(0, x / hspace, rect.get_width() / hspace - 1) * (rect.get_height()/vspace);
 
   current_item += page * items_per_page();
-  
+
   if (current_item < 0 || current_item >= int(directory.size()))
     current_item = -1;
 }

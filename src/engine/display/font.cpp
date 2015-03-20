@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -33,7 +33,7 @@ public:
   float  char_spacing;
   float  vertical_spacing;
   int    size;
-  
+
   FontImpl(const FontDescription& desc) :
     framebuffer_surfaces(),
     glyphs(),
@@ -43,10 +43,10 @@ public:
     size(desc.size)
   {
     vertical_spacing = static_cast<float>(size) * desc.vertical_spacing;
-   
+
     glyphs.resize(65536, 0); // 16bit ought to be enough for everybody
 
-    // Copyh Unicode -> Glyph mapping 
+    // Copyh Unicode -> Glyph mapping
     for(std::vector<GlyphImageDescription>::size_type j = 0; j < desc.images.size(); ++j)
     {
       Surface surface(desc.images[j].pathname);
@@ -72,7 +72,7 @@ public:
           else
           {
             log_warn("unicode collision on %1%", i->unicode);
-          }            
+          }
         }
         else
         {
@@ -109,7 +109,7 @@ public:
 
     float dstx = float(x - offset.x);
     float dsty = float(y - offset.y);
-    
+
     UTF8::iterator i(text);
     while(i.next())
     {
@@ -146,7 +146,7 @@ public:
   {
     float width = 0.0f;
     float last_width = 0;
-    
+
     UTF8::iterator i(text);
     while(i.next())
     {
@@ -198,7 +198,7 @@ void
 Font::render(Origin origin, int x, int y, const std::string& text, Framebuffer& fb)
 {
   if (impl)
-    impl->render(origin, x,y,text, fb); 
+    impl->render(origin, x,y,text, fb);
 }
 
 int
@@ -216,7 +216,7 @@ Font::get_width(uint32_t unicode) const
   if (impl)
     return impl->get_width(unicode);
   else
-    return 0; 
+    return 0;
 }
 
 float
@@ -225,7 +225,7 @@ Font::get_width(const std::string& text) const
   if (impl)
     return impl->get_width(text);
   else
-    return 0;  
+    return 0;
 }
 
 Size
@@ -234,7 +234,7 @@ Font::get_size(const std::string& str) const
   if (impl)
     return impl->get_size(str);
   else
-    return Size(); 
+    return Size();
 }
 
 Rect

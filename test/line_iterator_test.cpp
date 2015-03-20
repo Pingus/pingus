@@ -28,7 +28,7 @@ void test(const std::string& str)
   LineIterator it(str);
   while(it.next())
     std::cout << "\"" << it.get() << "\" " << std::flush;
-    
+
   std::cout << std::endl;
   std::cout << std::endl;
 }

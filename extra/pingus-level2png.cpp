@@ -33,8 +33,8 @@ int main(int argc, char** argv)
 
   while (argp.next())
   {
-    switch (argp.get_key()) 
-    {          
+    switch (argp.get_key())
+    {
       case 'h':
         argp.print_help();
         exit(EXIT_SUCCESS);
@@ -53,7 +53,7 @@ int main(int argc, char** argv)
         break;
     }
   }
-  
+
   if (files.size() != 2)
   {
     argp.print_help();
@@ -67,7 +67,7 @@ int main(int argc, char** argv)
     // render all the objects
     WorldObjRenderer renderer;
     Size size;
-    
+
     if (System::get_file_extension(files[0].get_raw_path()) == "prefab")
     {
       PrefabFile prefab = PrefabFile::from_path(files[0]);
@@ -86,9 +86,9 @@ int main(int argc, char** argv)
     if (crop)
     {
       Rect rect = renderer.get_clip_rect();
-      
+
       out_surface = Surface(rect.get_width(), rect.get_height());
-      
+
       // FIXME: alpha doesn't work, as the PNG saver can't handle that
       out_surface.fill(Color(255, 255, 255, 255));
 

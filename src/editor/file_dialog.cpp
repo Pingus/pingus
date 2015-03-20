@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -58,13 +58,13 @@ FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect_, Mode mode_) :
                                        Size(100, 30)), _("Datadir"));
   userdir_button = create<Button>(Rect(Vector2i(4 + 110, rect.get_height() - 4 - 30),
                                        Size(100, 30)), _("Userdir"));
-  
+
   open_button = create<Button>(Rect(Vector2i(rect.get_width() - 104, rect.get_height() - 4 - 30),
                                     Size(100, 30)), mode == LOAD ? _("Open") : _("Save"));
-  
+
   cancel_button = create<Button>(Rect(Vector2i(rect.get_width() - 104 - 104, rect.get_height() - 4 - 30),
                                       Size(100, 30)), _("Cancel"));
-  
+
   up_button->on_click.connect(std::bind(&FileDialog::on_up, this));
   down_button->on_click.connect(std::bind(&FileDialog::on_down, this));
 
@@ -76,10 +76,10 @@ FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect_, Mode mode_) :
 
   filename_label = create<Label>(Rect(6, 4+30, 4 + 60, 26+30), _("Filename:"));
   pathname_label = create<Label>(Rect(6, 4+60, 4 + 60, 26+60), _("Pathname:"));
-  
+
   filename_inputbox = create<Inputbox>(Rect(4 + 60, 4+30, rect.get_width()-4, 26+30));
   pathname_inputbox = create<Inputbox>(Rect(4 + 60, 4+60, rect.get_width()-4, 26+60));
-  
+
   filename_inputbox->on_enter.connect(std::bind(&FileDialog::on_filename_enter, this));
   pathname_inputbox->on_enter.connect(std::bind(&FileDialog::on_pathname_change, this));
 }
@@ -91,13 +91,13 @@ FileDialog::~FileDialog()
 void
 FileDialog::draw_background(DrawingContext& gc)
 {
-  // Window border and title 
+  // Window border and title
   GUIStyle::draw_raised_box(gc, Rect(0,0,rect.get_width(), rect.get_height()));
   gc.draw_fillrect(Rect(4,4,rect.get_width()-4, 30), Color(77,130,180));
-  gc.print_center(Fonts::pingus_small, Vector2i(rect.get_width()/2, 2), 
+  gc.print_center(Fonts::pingus_small, Vector2i(rect.get_width()/2, 2),
                   mode == LOAD ? _("Open a level") : _("Save your level"));
 }
-  
+
 void
 FileDialog::load_file(const System::DirectoryEntry& entry)
 { // called when somebody clicks a file
@@ -110,7 +110,7 @@ FileDialog::load_file(const System::DirectoryEntry& entry)
   else
   {
     filename_inputbox->set_text(entry.name);
-  }  
+  }
 }
 
 void
@@ -155,7 +155,7 @@ FileDialog::on_open()
       editor->load(file);
       hide();
     }
-    else if (mode == SAVE) 
+    else if (mode == SAVE)
     {
       Pathname file(Pathname::join(pathname_inputbox->get_text(), filename_inputbox->get_text()),
                     Pathname::SYSTEM_PATH);
@@ -187,18 +187,18 @@ FileDialog::update_layout()
 
   file_list->set_rect(Rect(4, 30 + 30 + 30,
                            rect.get_width()-4 - 30, rect.get_height() - 4 - 35));
-  
+
   Rect file_rect = file_list->get_rect();
 
   up_button->set_rect(Rect(file_rect.right + 2, file_rect.top,
                            rect.get_width()-4, file_rect.top + file_rect.get_height()/2 - 1));
-                     
+
   down_button->set_rect(Rect(file_rect.right + 2, file_rect.top + file_rect.get_height()/2 + 1,
                              rect.get_width()-4, file_rect.bottom));
-  
+
   open_button->set_rect(Rect(Vector2i(rect.get_width() - 104, rect.get_height() - 4 - 30),
                              Size(100, 30)));
-  
+
   cancel_button->set_rect(Rect(Vector2i(rect.get_width() - 104 - 104, rect.get_height() - 4 - 30),
                                Size(100, 30)));
 
@@ -211,13 +211,13 @@ FileDialog::update_layout()
 
 void
 FileDialog::on_userdir()
-{ 
+{
   set_directory(System::get_userdir() + "levels/");
 }
 
 void
 FileDialog::on_datadir()
-{ 
+{
   set_directory(Pathname("levels/", Pathname::DATA_PATH).get_sys_path());
 }
 
@@ -250,7 +250,7 @@ FileDialog::update_button_state()
   else
     down_button->disable();
 }
-  
+
 } // namespace Editor
 
 /* EOF */

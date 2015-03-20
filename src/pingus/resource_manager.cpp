@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -89,7 +89,7 @@ ResourceManager::get_sprite_description_from_file(const std::string& resname)
       // as a path of the form "pingus/blocker/../blocker.png" would
       // fail when "pingus/blocker/" is missing, even so
       // "pingus/blocker.png" exists
-      desc->filename = Pathname(System::normalize_path(Pathname::join(System::dirname(filename), 
+      desc->filename = Pathname(System::normalize_path(Pathname::join(System::dirname(filename),
                                                                       desc->filename.get_raw_path())),
                                 Pathname::DATA_PATH);
     }
@@ -121,7 +121,7 @@ ResourceManager::get_sprite_description_from_file(const std::string& resname)
   return SpriteDescriptionPtr();
 }
 
-SpriteDescription* 
+SpriteDescription*
 ResourceManager::get_sprite_description(const std::string& name)
 {
   auto i = m_cache.find(name);
@@ -141,7 +141,7 @@ ResourceManager::get_sprite_description(const std::string& name)
     {
       return 0;
     }
-  }  
+  }
 }
 
 /* EOF */

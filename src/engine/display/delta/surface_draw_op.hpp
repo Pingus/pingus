@@ -22,7 +22,7 @@ struct SurfaceDrawOp : public DrawOp
   Vector2i           pos;
   FramebufferSurface surface;
   Rect               rect;
-  
+
   SurfaceDrawOp(const Vector2i& pos_,
                 const FramebufferSurface& surface_,
                 const Rect& rect_) :
@@ -37,13 +37,13 @@ struct SurfaceDrawOp : public DrawOp
   void render(Framebuffer& fb) {
     fb.draw_surface(surface, rect, pos);
   }
-  
+
   void mark_changed_regions(std::vector<Rect>& update_rects) const {
     update_rects.push_back(Rect(pos, rect.get_size()));
   }
 
   bool operator==(const SurfaceDrawOp& rhs) const {
-    return 
+    return
       pos     == rhs.pos &&
       surface == rhs.surface &&
       rect    == rhs.rect;

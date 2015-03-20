@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -153,7 +153,7 @@ ResultScreenComponent::ResultScreenComponent(Result arg_result) :
   background("core/menu/wood"),
   blackboard("core/menu/blackboard"),
   time_str()
-{   
+{
   if (result.max_time == -1)
     time_str = "-";
   else
@@ -170,14 +170,14 @@ ResultScreenComponent::draw(DrawingContext& gc)
 
   gc.draw(blackboard, Vector2i(gc.get_width()/2, gc.get_height()/2));
 
-  gc.print_center(Fonts::chalk_large, 
-                  Vector2i(gc.get_width()/2, 
+  gc.print_center(Fonts::chalk_large,
+                  Vector2i(gc.get_width()/2,
                            Display::get_height()/2 - 200),
                   _(result.plf.get_levelname()));
 
   if (result.success())
   {
-    gc.print_center(Fonts::chalk_large, 
+    gc.print_center(Fonts::chalk_large,
                     Vector2i(gc.get_width()/2,
                              Display::get_height()/2 - 140),
                     _("Success!"));
@@ -186,7 +186,7 @@ ResultScreenComponent::draw(DrawingContext& gc)
   }
   else
   {
-    gc.print_center(Fonts::chalk_large, 
+    gc.print_center(Fonts::chalk_large,
                     Vector2i(gc.get_width()/2, Display::get_height()/2 - 140),
                     _("Failure!"));
     /*gc.print_center(Fonts::pingus_normal, gc.get_width()/2, gc.get_height()-30,
@@ -254,7 +254,7 @@ ResultScreen::ResultScreen(Result arg_result) :
 
   if (result.success())
   {
-    gui_manager->add(ok_button = new ResultScreenOkButton(this, 
+    gui_manager->add(ok_button = new ResultScreenOkButton(this,
                                                           Display::get_width()/2 + 245,
                                                           Display::get_height()/2 + 150));
   }
@@ -328,7 +328,7 @@ ResultScreen::resize(const Size& size_)
   if (abort_button)
     abort_button->set_pos(size.width/2 - 300, size.height/2 + 200);
 
-  if (retry_button)  
+  if (retry_button)
     retry_button->set_pos(size.width/2 + 245, size.height/2 + 150);
 }
 

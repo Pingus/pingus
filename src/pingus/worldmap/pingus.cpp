@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -67,7 +67,7 @@ Pingus::draw (DrawingContext& gc)
   {
     // FIXME: Replace the sprite and add up/down here
     float direction = get_direction();
-      
+
     if (direction >= 0 && direction < 180)
       gc.draw(sprite[Direction::RIGHT], pos + Vector3f(0, 0, 10));
     else
@@ -83,7 +83,7 @@ Pingus::update (float delta)
     sprite[Direction::RIGHT].update(delta);
   else
     sprite[Direction::LEFT].update(delta);
-  
+
   if (is_walking())
     update_walk(delta);
 }

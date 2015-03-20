@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -86,12 +86,12 @@ ControllerPtr
 Manager::create_controller(const Pathname& filename)
 {
   ControllerPtr controller(new Controller(desc));
-  
+
   FileReader reader = FileReader::parse(filename);
 
   if (reader.get_name() != "pingus-controller")
   {
-    raise_exception(std::runtime_error, 
+    raise_exception(std::runtime_error,
                     "Controller: invalid config file '" << filename.str() << "'");
   }
   else
@@ -131,7 +131,7 @@ Manager::create_controller(const Pathname& filename)
 
       }
       else if (StringUtil::has_suffix(i->get_name(), "button"))
-      {             
+      {
         const std::vector<FileReader>& buttons = i->get_sections();
         for(std::vector<FileReader>::const_iterator j = buttons.begin(); j != buttons.end(); ++j)
         {
@@ -170,7 +170,7 @@ Manager::create_controller(const Pathname& filename)
             ctrl_keyboard->add_keyboard(keyboard);
           else
             log_error("Manager: keyboard: Couldn't create keyboard %1%", j->get_name());
-        }              
+        }
       }
       else
       {
@@ -186,7 +186,7 @@ Manager::create_controller(const Pathname& filename)
 
 void
 Manager::refresh()
-{ 
+{
   for(auto i = controllers.begin(); i != controllers.end(); ++i)
     (*i)->refresh();
 }
@@ -196,7 +196,7 @@ Manager::update(float delta)
 {
   for(auto i = drivers.begin(); i != drivers.end(); ++i)
     (*i)->update(delta);
-  
+
   for(auto i = controllers.begin(); i != controllers.end(); ++i)
     (*i)->update(delta);
 }
@@ -245,7 +245,7 @@ Button*
 Manager::create_button(const FileReader& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
-                  
+
   Driver* drv = load_driver(driver);
   if (drv)
   {
@@ -262,7 +262,7 @@ Axis*
 Manager::create_axis(const FileReader& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
-                  
+
   Driver* drv = load_driver(driver);
   if (drv)
   {
@@ -279,7 +279,7 @@ Pointer*
 Manager::create_pointer(const FileReader& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
-                  
+
   Driver* drv = load_driver(driver);
   if (drv)
   {
@@ -296,7 +296,7 @@ Scroller*
 Manager::create_scroller(const FileReader& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
-                  
+
   Driver* drv = load_driver(driver);
   if (drv)
   {
@@ -313,7 +313,7 @@ Keyboard*
 Manager::create_keyboard(const FileReader& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
-                  
+
   Driver* drv = load_driver(driver);
   if (drv)
   {
@@ -323,7 +323,7 @@ Manager::create_keyboard(const FileReader& reader, Control* parent)
   {
     log_error("couldn't find driver: '%1%'", driver);
     return 0;
-  }  
+  }
 }
 
 } // namespace Input

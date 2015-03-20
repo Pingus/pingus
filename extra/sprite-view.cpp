@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 {
   g_path_manager.set_path("data");
   Resource::init();
- 
+
   Display::create_window(OPENGL_FRAMEBUFFER, Size(800, 600), false, false);
 
   Fonts::init();

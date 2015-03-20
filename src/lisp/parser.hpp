@@ -39,9 +39,9 @@ private:
   friend class ParseError;
 
   Parser();
-  
+
   std::shared_ptr<Lisp> parse();
-  
+
   std::string filename;
   Lexer* lexer;
   Lexer::TokenType token;

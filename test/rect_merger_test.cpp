@@ -24,7 +24,7 @@ int main(int argc, char** argv)
   int t = 1216020230; // 20
   //1216032809 // 20
   //int t = time(NULL);
-  //int t = 1216035347; 
+  //int t = 1216035347;
 
   srand(t);
 
@@ -61,10 +61,10 @@ int main(int argc, char** argv)
   rects_in.push_back(Rect(530, 281, 562, 313));
   rects_in.push_back(Rect(249, 280, 281, 312));
   rects_in.push_back(Rect(4, 112, 36, 144));
-                                        
+
   merge_rectangles(rects_in, rects_out);
-  
-  if (1) // print results as SVG 
+
+  if (1) // print results as SVG
     {
       std::cout << "<?xml version='1.0' standalone='no'?>\n"
                 << "<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' "
@@ -74,14 +74,14 @@ int main(int argc, char** argv)
 
       std::cout << "<g>" << std::endl;
       for(std::vector<Rect>::iterator i = rects_in.begin(); i != rects_in.end(); ++i)
-        std::cout << "  <rect fill='blue' style='fill-opacity:0.5' x='" << i->left << "' y='" << i->top 
+        std::cout << "  <rect fill='blue' style='fill-opacity:0.5' x='" << i->left << "' y='" << i->top
                   << "' width='" << i->get_width() << "' height='" << i->get_height() << "' />" << std::endl;
       std::cout << "</g>" << std::endl;
       std::cout << std::endl;
 
-      std::cout << "<g>" << std::endl;  
+      std::cout << "<g>" << std::endl;
       for(std::vector<Rect>::iterator i = rects_out.begin(); i != rects_out.end(); ++i)
-        std::cout << "  <rect fill='yellow' stroke='black' style='fill-opacity:0.5;stroke-width:1px' x='" << i->left << "' y='" << i->top 
+        std::cout << "  <rect fill='yellow' stroke='black' style='fill-opacity:0.5;stroke-width:1px' x='" << i->left << "' y='" << i->top
                   << "' width='" << i->get_width() << "' height='" << i->get_height() << "' />" << std::endl;
       std::cout << "</g>" << std::endl;
       std::cout << "</svg>" << std::endl;
@@ -107,8 +107,8 @@ int main(int argc, char** argv)
       for(std::vector<Mark>::const_iterator j = i->marks.begin(); j != i->marks.end(); ++j)
         {
           std::cout << ((j->type == Mark::START_MARK) ? "'(" : "')")
-                      << j->pos 
-                      << "' ";          
+                      << j->pos
+                      << "' ";
         }
       std::cout << std::endl;
     }
@@ -121,7 +121,7 @@ int main(int argc, char** argv)
         for(std::vector<Mark>::iterator mark_it = i->marks.begin(); mark_it != i->marks.end(); ++mark_it)
           {
             std::cout << ((mark_it->type == Mark::START_MARK) ? "'(" : "')")
-                      << mark_it->pos 
+                      << mark_it->pos
                       << "' ";
           }
         std::cout << std::endl;

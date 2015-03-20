@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -42,13 +42,13 @@ XInputDriver::xinput_is_present()
 {
   XExtensionVersion* version = XGetExtensionVersion(sys.info.x11.display, INAME);
 
-  if (version && (version != (XExtensionVersion*)NoSuchExtension)) 
+  if (version && (version != (XExtensionVersion*)NoSuchExtension))
   {
     Bool present = version->present;
     XFree(version);
     return present;
-  } 
-  else 
+  }
+  else
   {
     return False;
   }
@@ -65,14 +65,14 @@ XInputDriver::setup_xinput()
   {
     int num_devices;
     XDeviceInfo* info = XListInputDevices(sys.info.x11.display, &num_devices);
-    for(int i = 0; i < num_devices; ++i) 
+    for(int i = 0; i < num_devices; ++i)
     {
       pout(PINGUS_DEBUG_INPUT) << "XInputDriver: Device name='" << info[i].name << "'" << std::endl;
       // FIXME: Xinput isn't necesarrily a mouse, could be anything
       //if (info[i].use == IsXExtensionDevice)
       // {
       devices.push_back(new XInputDevice(this, &info[i]));
-      // } 
+      // }
     }
     XFreeDeviceList(info);
   }
@@ -96,9 +96,9 @@ XInputDriver::find_device_info(Display *display,
   Bool is_id = True;
   XID  id = 0;
 
-  for(int i = 0; i < len; ++i) 
+  for(int i = 0; i < len; ++i)
   {
-    if (!isdigit(name[i])) 
+    if (!isdigit(name[i]))
     {
       is_id = False;
       break;
@@ -111,7 +111,7 @@ XInputDriver::find_device_info(Display *display,
 
   x_devices = XListInputDevices(display, &num_devices);
 
-  for(int i = 0; i < num_devices; ++i) 
+  for(int i = 0; i < num_devices; ++i)
   {
     if ((!only_extended || (x_devices[i].use == IsXExtensionDevice)) &&
         ((!is_id && strcmp(x_devices[i].name, name) == 0) ||

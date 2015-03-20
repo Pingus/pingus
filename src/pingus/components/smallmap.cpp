@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -24,7 +24,7 @@
 #include "pingus/world.hpp"
 
 SmallMap::SmallMap(Server* server_, Playfield* playfield_, const Rect& rect_) :
-  RectComponent(rect_), 
+  RectComponent(rect_),
   server(server_),
   playfield(playfield_),
   exit_sur(),
@@ -33,7 +33,7 @@ SmallMap::SmallMap(Server* server_, Playfield* playfield_, const Rect& rect_) :
   scroll_mode(),
   has_focus(),
   gc_ptr(0)
-{ 
+{
   image = std::unique_ptr<SmallMapImage>(new SmallMapImage(server, rect.get_width(), rect.get_height()));
 
   scroll_mode = false;
@@ -51,7 +51,7 @@ SmallMap::draw(DrawingContext& gc)
   gc_ptr = &gc;
 
   World* const& world  = server->get_world();
-  
+
   Vector2i of = playfield->get_pos();
   Rect view_rect;
 
@@ -78,7 +78,7 @@ SmallMap::draw(DrawingContext& gc)
     view_rect.top    = rect.top;
     view_rect.bottom = rect.top + rect.get_height();
   }
-  
+
   gc.draw(image->get_surface(), Vector2i(rect.left, rect.top));
   gc.draw_rect(view_rect, Color(0, 255, 0));
 
@@ -88,9 +88,9 @@ SmallMap::draw(DrawingContext& gc)
   PinguHolder* pingus = world->get_pingus();
   for(PinguIter i = pingus->begin(); i != pingus->end(); ++i)
   {
-    int x = static_cast<int>(static_cast<float>(rect.left) + ((*i)->get_x() * static_cast<float>(rect.get_width()) 
+    int x = static_cast<int>(static_cast<float>(rect.left) + ((*i)->get_x() * static_cast<float>(rect.get_width())
                                                               / static_cast<float>(world->get_width())));
-    int y = static_cast<int>(static_cast<float>(rect.top)  + ((*i)->get_y() * static_cast<float>(rect.get_height()) 
+    int y = static_cast<int>(static_cast<float>(rect.top)  + ((*i)->get_y() * static_cast<float>(rect.get_height())
                                                               / static_cast<float>(world->get_height())));
 
     gc.draw_line(Vector2i(x, y), Vector2i(x, y-2), Color(255, 255, 0));

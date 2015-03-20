@@ -21,7 +21,7 @@ struct FillRectDrawOp : public DrawOp
 {
   Rect  rect;
   Color color;
-  
+
   FillRectDrawOp(const Rect& rect_, const Color& color_)
     : DrawOp(FILLRECT_DRAWOP),
       rect(rect_),
@@ -33,13 +33,13 @@ struct FillRectDrawOp : public DrawOp
   void render(Framebuffer& fb) {
     fb.fill_rect(rect, color);
   }
-  
+
   void mark_changed_regions(std::vector<Rect>& update_rects) const {
     update_rects.push_back(rect);
   }
 
   bool operator==(const FillRectDrawOp& rhs) const {
-    return 
+    return
       rect  == rhs.rect &&
       color == rhs.color;
   }

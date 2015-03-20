@@ -92,7 +92,7 @@ WorldObjRenderer::get_clip_rect() const
       rect.right  = std::max(img.right,  rect.right);
       rect.bottom = std::max(img.bottom, rect.bottom);
     }
-    
+
     return rect;
   }
 }
@@ -104,7 +104,7 @@ WorldObjRenderer::render_sprite(const ResDescriptor& desc,
   Surface surface = Resource::load_surface(desc);
 
   // FIXME: hack, should take that info from the resource file
-  blit_surface(surface, 
+  blit_surface(surface,
                static_cast<int>(pos.x) - surface.get_width()/2,
                static_cast<int>(pos.y) - surface.get_height());
 }
@@ -117,7 +117,7 @@ WorldObjRenderer::render_surface(const ResDescriptor& desc,
   Surface surface = Resource::load_surface(desc);
   for(int i = 0; i < repeat; ++i)
   {
-    blit_surface(surface, 
+    blit_surface(surface,
                  static_cast<int>(pos.x) + surface.get_width()*i,
                  static_cast<int>(pos.y));
   }
@@ -212,7 +212,7 @@ WorldObjRenderer::process_object_with_surface(const FileReader& reader)
 {
   Vector3f pos;
   ResDescriptor desc;
-    
+
   if (!(reader.read_vector("position", pos) &&
         reader.read_desc("surface", desc)))
   {

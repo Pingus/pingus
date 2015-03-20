@@ -6,12 +6,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -66,7 +66,7 @@ public:
   ~LevelImpl()
   {
   }
-                   
+
   std::string resname;
 
   std::string levelname;
@@ -81,7 +81,7 @@ public:
   std::map<std::string, int> actions;
 
   int time;
-  
+
   std::string author;
   std::string music;
 
@@ -101,7 +101,7 @@ EditorLevel::from_level_file(const Pathname& pathname)
   PingusLevel plf(pathname);
 
   std::unique_ptr<EditorLevel> level(new EditorLevel);
-        
+
   // Assign all of the level information to our LevelImpl
   level->impl->levelname        = plf.get_levelname();
   level->impl->description      = plf.get_description();
@@ -113,7 +113,7 @@ EditorLevel::from_level_file(const Pathname& pathname)
   level->impl->time             = plf.get_time();
   level->impl->author           = plf.get_author();
   level->impl->music            = plf.get_music();
-  
+
   // remove obsolete "none" tag
   if (level->impl->music == "none")
   {
@@ -161,14 +161,14 @@ EditorLevel::from_prefab_file(const Pathname& pathname)
     if (obj)
     {
       // move origin of the level to the center of it
-      obj->set_pos(obj->get_pos() + Vector3f(static_cast<float>(level->impl->size.width)/2.0f, 
+      obj->set_pos(obj->get_pos() + Vector3f(static_cast<float>(level->impl->size.width)/2.0f,
                                              static_cast<float>(level->impl->size.height)/2.0f));
 
       level->add_object(obj);
     }
   }
 
-  level->sort(); 
+  level->sort();
 
   return level;
 }
@@ -205,11 +205,11 @@ EditorLevel::save_prefab(const std::string& filename)
   std::ostringstream out_file;
 
   SExprFileWriter fw(out_file);
-        
+
   // Write header
   fw.begin_section("pingus-prefab");
   fw.write_int("version", 3);
- 
+
   Vector3f level_center(static_cast<float>(get_size().width)/2.0f,
                         static_cast<float>(get_size().height)/2.0f);
 
@@ -226,7 +226,7 @@ EditorLevel::save_prefab(const std::string& filename)
   fw.end_section();     // pingus-prefab
 
   out_file << "\n\n;; EOF ;;" << std::endl;
-        
+
   // Write the file
   System::write_file(filename, out_file.str());
 }
@@ -243,7 +243,7 @@ EditorLevel::save_level(const std::string& filename)
   std::ostringstream out_file;
 
   SExprFileWriter fw(out_file);
-        
+
   // Write header
   fw.begin_section("pingus-level");
   fw.write_int("version", 3);
@@ -256,7 +256,7 @@ EditorLevel::save_level(const std::string& filename)
   fw.write_int("number-to-save", impl->number_to_save);
   fw.write_int("time", impl->time);
   fw.write_string("music", impl->music);
-        
+
   // Write the list of actions to the file
   fw.begin_section("actions");
   for (auto i = impl->actions.begin(); i != impl->actions.end(); i++)
@@ -280,7 +280,7 @@ EditorLevel::save_level(const std::string& filename)
   fw.end_section();     // pingus-level
 
   out_file << "\n\n;; EOF ;;" << std::endl;
-        
+
   // Write the file
   System::write_file(filename, out_file.str());
 }
@@ -488,7 +488,7 @@ EditorLevel::lower_object(LevelObjPtr obj)
       impl->objects.insert(--(j.base()), obj);
     }
   }
-}  
+}
 
 EditorLevel::Objects*
 EditorLevel::get_objects()
@@ -496,7 +496,7 @@ EditorLevel::get_objects()
   return &(impl->objects);
 }
 
-void 
+void
 EditorLevel::add_object(LevelObjPtr obj)
 {
   impl->objects.push_back(obj);

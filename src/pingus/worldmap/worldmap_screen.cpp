@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -32,7 +32,7 @@ namespace WorldmapNS {
 class WorldmapScreenCloseButton
   : public GUI::SurfaceButton
 {
-private: 
+private:
   WorldmapScreen* worldmap_screen;
 public:
   WorldmapScreenCloseButton(WorldmapScreen* worldmap_screen);
@@ -143,7 +143,7 @@ void
 WorldmapScreen::load(const Pathname& filename)
 {
   worldmap = std::unique_ptr<Worldmap>(new Worldmap(filename));
-        
+
   bool credits_unlocked = false;
   //StatManager::instance()->get_bool(worldmap->get_short_name() + "-endstory-seen", credits_unlocked);
   if (credits_unlocked)
@@ -194,7 +194,7 @@ Rect
 WorldmapScreen::get_trans_rect() const
 {
   return Rect(Vector2i(Math::max((Display::get_width()  - worldmap->get_width())/2,  0),
-                       Math::max((Display::get_height() - worldmap->get_height())/2, 0)), 
+                       Math::max((Display::get_height() - worldmap->get_height())/2, 0)),
               Size(Math::min(Display::get_width(),  worldmap->get_width()),
                    Math::min(Display::get_height(), worldmap->get_height())));
 }

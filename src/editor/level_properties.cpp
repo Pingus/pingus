@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -28,7 +28,7 @@
 
 /*
   Level Properties:
-  Levelname, Description, Author, 
+  Levelname, Description, Author,
   Number of Pingus, Time, Pingus to Save,
   Width, Height, (could be handled elsewhere)
   Playable (unneeded)
@@ -169,7 +169,7 @@ LevelProperties::on_number_to_save_change(const std::string& str)
   {
     log_error("LevelProperties::on_number_to_save_change: '%1%' not an integer", str);
   }
-  
+
 }
 
 void
@@ -194,7 +194,7 @@ LevelProperties::on_time_change(const std::string& str)
 
 void
 LevelProperties::on_music_change(const std::string& str)
-{ 
+{
   level->set_music(str);
 }
 
@@ -203,19 +203,19 @@ LevelProperties::update_layout()
 {
   GroupComponent::update_layout();
 
-  int w = rect.get_width() - 120; 
+  int w = rect.get_width() - 120;
   author->set_rect(Rect(Vector2i(110,  10), Size(  w, 20)));
   levelname->set_rect(Rect(Vector2i(110,  32), Size(  w, 20)));
   description->set_rect(Rect(Vector2i(110,  54), Size(  w, 20*3)));
-  
+
   int y = 116;
   number_of_pingus->set_rect(Rect(Vector2i(110,  y), Size(  w, 20)));
-  number_to_save->set_rect(Rect(Vector2i(110,  y+22), Size(  w, 20))); 
+  number_to_save->set_rect(Rect(Vector2i(110,  y+22), Size(  w, 20)));
 
   time->set_rect(Rect(Vector2i(110,  y+44), Size(  w, 20)));
   width->set_rect(Rect(Vector2i(110,  y+66), Size(  w, 20)));
   height->set_rect(Rect(Vector2i(110,  y+88), Size(  w, 20)));
-  
+
   music->set_rect(Rect(Vector2i(110, y+110), Size(  w, 20)));
 }
 

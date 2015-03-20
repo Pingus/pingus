@@ -24,7 +24,7 @@ namespace Editor {
 
 LevelObjPtr
 LevelObjFactory::create(const FileReader& reader)
-{    
+{
   if (reader.get_name() == "group")
   {
     std::shared_ptr<GroupLevelObj> group = std::make_shared<GroupLevelObj>();
@@ -42,7 +42,7 @@ LevelObjFactory::create(const FileReader& reader)
     return group;
   }
   if (reader.get_name() == "prefab")
-  {  
+  {
     std::string name;
     reader.read_string("name", name);
 
@@ -98,12 +98,12 @@ LevelObjFactory::create(const FileReader& reader)
       obj->set_res_desc(desc);
     }
     if (attribs & HAS_TYPE)
-    {   
+    {
       reader.read_string("type", tmp_str);
       obj->set_type(tmp_str);
     }
     if (attribs & HAS_GPTYPE)
-    {   
+    {
       reader.read_string("type", tmp_str);
       obj->set_ground_type(tmp_str);
     }

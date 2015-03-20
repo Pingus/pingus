@@ -9,7 +9,7 @@
 int main(int argc, char** argv)
 {
   std::vector<Pathname> files;
-  enum { 
+  enum {
     kAuthor      = (1<<0),
     kName        = (1<<1),
     kChecksum    = (1<<2),
@@ -41,8 +41,8 @@ int main(int argc, char** argv)
 
   while (argp.next())
   {
-    switch (argp.get_key()) 
-    {          
+    switch (argp.get_key())
+    {
       case 'h':
         argp.print_help();
         exit(EXIT_SUCCESS);
@@ -79,7 +79,7 @@ int main(int argc, char** argv)
       case 's':
         mode |= kSize;
         break;
-        
+
       case CommandLine::REST_ARG:
         files.push_back(Pathname(argp.get_argument(), Pathname::SYSTEM_PATH));
         break;
@@ -106,10 +106,10 @@ int main(int argc, char** argv)
         std::cout << "description   : " << plf.get_description() << std::endl;
         std::cout << "author        : " << plf.get_author() << std::endl;
         std::cout << "music         : " << plf.get_music() << std::endl;
-        std::cout << "ambient light : " 
+        std::cout << "ambient light : "
                   << static_cast<int>(plf.get_ambient_light().r) << " "
-                  << static_cast<int>(plf.get_ambient_light().g) << " " 
-                  << static_cast<int>(plf.get_ambient_light().b) << " " 
+                  << static_cast<int>(plf.get_ambient_light().g) << " "
+                  << static_cast<int>(plf.get_ambient_light().b) << " "
                   << static_cast<int>(plf.get_ambient_light().a)
                   << std::endl;
         std::cout << "objects       : " << plf.get_objects().size() << std::endl;

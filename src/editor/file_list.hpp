@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -39,16 +39,16 @@ private:
   int click_item;
   int page;
   int num_pages;
-  
+
 public:
   FileList(const Rect& rect);
 
   void draw (DrawingContext& gc);
   void update (float delta);
-  
+
   void update_layout();
   std::string get_direction() const { return m_direction; }
-  void set_directory(const std::string& pathname, const std::string& pattern = "*"); 
+  void set_directory(const std::string& pathname, const std::string& pattern = "*");
 
   void on_pointer_move (int x, int y);
 

@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -73,7 +73,7 @@ Combobox::on_primary_button_press(int x, int y)
     // Determine which item was selected, if any, and set the current item to it.
     drop_down = false;
     ungrab();
-      
+
     if (hover_item != -1)
     {
       current_item = hover_item;
@@ -85,7 +85,7 @@ Combobox::on_primary_button_press(int x, int y)
     drop_down = true;
     grab();
 
-    list_rect = Rect(Vector2i(rect.left, 
+    list_rect = Rect(Vector2i(rect.left,
                               rect.top + get_box_offset()),
                      Size(rect.get_width(),
                           rect.get_height() * static_cast<int>(item_list.size())));
@@ -104,8 +104,8 @@ Combobox::draw(DrawingContext &gc)
 
     if (current_item != -1)
     {
-      gc.print_left(Fonts::verdana11, 
-                    Vector2i(rect.left + 5, 
+      gc.print_left(Fonts::verdana11,
+                    Vector2i(rect.left + 5,
                              rect.top + rect.get_height()/2 - Fonts::verdana11.get_height()/2),
                     item_list[current_item].label);
     }
@@ -122,8 +122,8 @@ Combobox::draw(DrawingContext &gc)
                               Size(rect.get_width(), rect.get_height())),
                          Color(150,200,255), 95);
 
-      gc.print_left(Fonts::verdana11, 
-                    Vector2i(list_rect.left + 5, 
+      gc.print_left(Fonts::verdana11,
+                    Vector2i(list_rect.left + 5,
                              list_rect.top + i * rect.get_height() + rect.get_height()/2 - Fonts::verdana11.get_height()/2),
                     item_list[i].label, 100);
     }
@@ -151,7 +151,7 @@ Combobox::set_selected_item(int id)
       current_item = i;
       return true;
     }
-  return false;  
+  return false;
 }
 
 void
@@ -171,6 +171,6 @@ Combobox::on_pointer_move(int x, int y)
   }
 }
 
-} // namespace Editor 
+} // namespace Editor
 
 /* EOF */

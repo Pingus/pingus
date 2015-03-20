@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -70,13 +70,13 @@ Minimap::draw(DrawingContext& gc)
       color = Color(255,255,0);
     else if (attr & HAS_GPTYPE) // groundpiece
       color = Color(0,255,0);
-    else if (attr & HAS_REPEAT) 
+    else if (attr & HAS_REPEAT)
       color = Color(0,0,255); // liquid
     else // hotspot, background, etc.
       color = Color(255,0,0);
 
-    Color bg_color(static_cast<uint8_t>(3 * color.r / 4), 
-                   static_cast<uint8_t>(3 * color.g / 4), 
+    Color bg_color(static_cast<uint8_t>(3 * color.r / 4),
+                   static_cast<uint8_t>(3 * color.g / 4),
                    static_cast<uint8_t>(3 * color.b / 4));
 
     dc.draw_fillrect(r, bg_color, (*i)->get_pos().z);
@@ -95,14 +95,14 @@ Minimap::draw(DrawingContext& gc)
                  viewport_rect.get_height() * minimap_rect.get_height() / levelsize.height));
   dc.draw_fillrect(view, Color(255, 255, 0, 150), 1000000.0f);
   dc.draw_rect(view, Color(255, 255, 0), 1000000.0f);
-  
+
   gc.draw(dc);
 }
 
 void
 Minimap::update (float delta)
 {
-  
+
 }
 
 void

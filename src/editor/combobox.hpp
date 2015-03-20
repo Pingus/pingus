@@ -6,12 +6,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -24,7 +24,7 @@
 #include "engine/gui/rect_component.hpp"
 
 namespace Editor {
-      
+
 /** A ComboItems holds a specific item in a Combobox (string, id, etc.) */
 class ComboItem
 {
@@ -81,13 +81,13 @@ public:
   /** Gets emmited when a button is pressed and released over the
       same component */
   void on_primary_button_press(int x, int y);
-  
+
   void on_pointer_move(int x, int y);
-  
+
   int get_box_offset();
-  
+
   void update_layout() {}
-  
+
   boost::signals2::signal<void (const ComboItem&)> on_select;
 
 private:
@@ -97,7 +97,7 @@ private:
 
 };
 
-} // namespace Editor 
+} // namespace Editor
 
 #endif
 

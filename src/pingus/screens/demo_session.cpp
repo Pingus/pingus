@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -39,9 +39,9 @@ private:
   Sprite highlight;
   std::function<void(void)> callback;
   std::function<bool(void)> highlight_func;
-  
+
 public:
-  BButton(int x, int y, const std::string& name, 
+  BButton(int x, int y, const std::string& name,
           std::function<void (void)> callback_,
           std::function<bool(void)> highlight_func_ = &false_func) :
     SurfaceButton(x, y, name, name + "-pressed", name + "-hover"),
@@ -50,7 +50,7 @@ public:
     highlight_func(highlight_func_)
   {}
 
-  virtual void draw (DrawingContext& gc) 
+  virtual void draw (DrawingContext& gc)
   {
 
     if (highlight_func())
@@ -87,7 +87,7 @@ DemoSession::DemoSession(const Pathname& pathname_) :
   demo = std::unique_ptr<PingusDemo>(new PingusDemo(pathname));
 
   events = demo->get_events();
-  // Reverse the vector so that we can use pop_back()  
+  // Reverse the vector so that we can use pop_back()
   std::reverse(events.begin(), events.end());
 
   // Create server
@@ -111,7 +111,7 @@ DemoSession::DemoSession(const Pathname& pathname_) :
 
   playfield = new Playfield(server.get(), 0,
                             Rect(Vector2i(Math::max((size.width  - world_width)/2,  0),
-                                          Math::max((size.height - world_height)/2, 0)), 
+                                          Math::max((size.height - world_height)/2, 0)),
                                  Size(Math::min(size.width,  world_width),
                                       Math::min(size.height, world_height))));
 
@@ -138,7 +138,7 @@ void
 DemoSession::draw_background(DrawingContext& gc)
 {
   Rect rect = playfield->get_rect();
-  
+
   if (rect != Rect(Vector2i(0,0), Size(gc.get_width(), gc.get_height())))
   { // Draw a black border around the playfield when the playfield is smaller then the screen
     Color border_color(0, 0, 0);
@@ -154,7 +154,7 @@ DemoSession::draw_background(DrawingContext& gc)
     // right
     gc.draw_fillrect(Rect(rect.right, rect.top, gc.get_width(), rect.bottom),
                      border_color);
-  }  
+  }
 }
 
 /** Pass a delta to the screen */
@@ -206,7 +206,7 @@ DemoSession::update_demo()
     event.send(server.get());
     events.pop_back();
   }
-  
+
   // Check for unexpected things (might happen if the demo file is broken)
   if (!events.empty() && events.back().time_stamp < server->get_time())
   {
@@ -222,7 +222,7 @@ DemoSession::on_pause_press()
     for(std::vector<ServerEvent>::iterator i = events.begin(); i != events.end(); ++i)
     {
       std::cout << "Event: ";
-      i->write(std::cout);      
+      i->write(std::cout);
     }
   }
 
@@ -270,7 +270,7 @@ DemoSession::resize(const Size& size_)
   int world_height = server->get_world()->get_height();
 
   playfield->set_rect(Rect(Vector2i(Math::max((size.width  - world_width)/2,  0),
-                                    Math::max((size.height - world_height)/2, 0)), 
+                                    Math::max((size.height - world_height)/2, 0)),
                            Size(Math::min(size.width,  world_width),
                                 Math::min(size.height, world_height))));
 

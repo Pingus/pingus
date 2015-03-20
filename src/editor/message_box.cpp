@@ -61,14 +61,14 @@ MessageBox::set_ok_text(const std::string& text)
 void
 MessageBox::draw_background(DrawingContext& gc)
 {
-  // Window border and title 
+  // Window border and title
   GUIStyle::draw_raised_box(gc, Rect(0,0,rect.get_width(), rect.get_height()));
   gc.draw_fillrect(Rect(4,4,rect.get_width()-4, 30), Color(77,130,180));
-  gc.print_center(Fonts::pingus_small, Vector2i(rect.get_width()/2, 2), 
+  gc.print_center(Fonts::pingus_small, Vector2i(rect.get_width()/2, 2),
                   m_title);
 
   // main text
-  gc.print_center(Fonts::verdana11, Vector2i(rect.get_width()/2, 42), 
+  gc.print_center(Fonts::verdana11, Vector2i(rect.get_width()/2, 42),
                   m_text);
 }
 

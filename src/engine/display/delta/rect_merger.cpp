@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -29,19 +29,19 @@ struct Mark {
 };
 
 // [top, bottom[
-struct Row 
+struct Row
 {
   int top;
   int bottom;
   std::vector<Mark> marks;
-  
+
   Row() :
     top(),
     bottom(),
     marks()
   {}
 };
- 
+
 bool rect_y_sorter(const Rect& lhs, const Rect& rhs)
 {
   return lhs.top < rhs.top;
@@ -79,7 +79,7 @@ void print_rows(std::ostream& out, const std::vector<Row>& rows)
     for(std::vector<Mark>::const_iterator mark_it = i->marks.begin(); mark_it != i->marks.end(); ++mark_it)
     {
       out << ((mark_it->type == Mark::START_MARK) ? "'(" : "')")
-          << mark_it->pos 
+          << mark_it->pos
           << ((mark_it->type == Mark::START_MARK) ? "(' " : ")' ");
     }
     out << std::endl;
@@ -115,7 +115,7 @@ void generate_rows(const std::vector<Rect>& rects, std::vector<Row>& rows_out)
     marks.push_back(Mark(Mark::END_MARK,   i->bottom));
   }
   std::sort(marks.begin(), marks.end(), mark_sorter);
-  
+
   assert(!marks.empty());
   assert(marks.front().type == Mark::START_MARK);
   assert(marks.back().type  == Mark::END_MARK);
@@ -124,15 +124,15 @@ void generate_rows(const std::vector<Rect>& rects, std::vector<Row>& rows_out)
   std::vector<Mark>::const_iterator start = marks.begin();
   for(std::vector<Mark>::const_iterator i = marks.begin()+1; i != marks.end(); ++i)
   { // FIXME: This will generate empty rows (harmless, but not pretty)
-      
+
     if (i->pos != start->pos)
     {
       Row row;
       row.top    = start->pos;
       row.bottom = i->pos;
-            
+
       rows_out.push_back(row);
-            
+
       start = i;
     }
   }
@@ -158,9 +158,9 @@ void split_rectangles(const std::vector<Rect>& rects, std::vector<Row>& rows)
       Mark start(Mark::START_MARK, rect->left);
       Mark end  (Mark::END_MARK,   rect->right);
 
-      for(std::vector<Row>::iterator this_row = row; 
+      for(std::vector<Row>::iterator this_row = row;
           this_row != rows.end() && (this_row->bottom <= (rect->bottom));
-          ++this_row)       
+          ++this_row)
       { // go over all rows that this rect overlaps with
         this_row->marks.push_back(start);
         this_row->marks.push_back(end);
@@ -177,7 +177,7 @@ void split_rectangles(const std::vector<Rect>& rects, std::vector<Row>& rows)
     list of rectangles which are written to \a rects_out
 
     @param[in]  rows       List of rows used to generate rects_out
-    @param[out] rects_out  Empty vector into which the newly generated rects are added 
+    @param[out] rects_out  Empty vector into which the newly generated rects are added
 */
 void generate_rectangles(const std::vector<Row>& rows, std::vector<Rect>& rects_out)
 {
@@ -194,7 +194,7 @@ void generate_rectangles(const std::vector<Row>& rows, std::vector<Rect>& rects_
         if (marks.front().type != Mark::START_MARK)
         {
           for(std::vector<Mark>::const_iterator mark_it = marks.begin(); mark_it != marks.end(); )
-            log_error("%1% %2%", 
+            log_error("%1% %2%",
                       (mark_it->type == Mark::START_MARK) ? "'(" : "')",
                       mark_it->pos);
           assert(!"False");
@@ -212,15 +212,15 @@ void generate_rectangles(const std::vector<Row>& rows, std::vector<Rect>& rects_
 
         if (parenthesis_count == 0)
         {
-          if ((mark_it+1) != marks.end() && 
+          if ((mark_it+1) != marks.end() &&
               (mark_it+1)->type == Mark::START_MARK &&
               (mark_it+1)->pos  == mark_it->pos)
-          { 
+          {
             parenthesis_count += 1;
           }
           else
           {
-            rects_out.push_back(Rect(start,        i->top, 
+            rects_out.push_back(Rect(start,        i->top,
                                      mark_it->pos, i->bottom));
             ++mark_it;
             if (mark_it != marks.end())
@@ -237,16 +237,16 @@ void generate_rectangles(const std::vector<Row>& rows, std::vector<Rect>& rects_
 }
 
 /** Takes a list of rectangles and merges non overlapping vertically
-    adjacent rectangles that have the same left and right borders 
+    adjacent rectangles that have the same left and right borders
 
     @param[in]  rects     List of rectangles to be merged, must be sorted with rect_xy_sorter
     @param[out] rects_out Empty vector into which the newly merged rects are added
 */
 void merge_vertical_rectangles(const std::vector<Rect>& rects, std::vector<Rect>& rects_out)
-{  
+{
   //assert(__gnu_cxx::is_sorted(rects.begin(), rects.end(), rect_xy_sorter));
   assert(!rects.empty());
-  
+
   Rect rect = rects.front();
   for(std::vector<Rect>::const_iterator i = rects.begin()+1; i != rects.end(); ++i)
   {

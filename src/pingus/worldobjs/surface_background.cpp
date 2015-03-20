@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -129,7 +129,7 @@ SurfaceBackground::update()
   if (!bg_sprite || globals::static_graphics)
     return;
 
-  if (scroll_x) 
+  if (scroll_x)
   {
     scroll_ox += scroll_x;
 
@@ -139,7 +139,7 @@ SurfaceBackground::update()
       scroll_ox += static_cast<float>(bg_sprite.get_width());
   }
 
-  if (scroll_y) 
+  if (scroll_y)
   {
     scroll_oy += scroll_y;
 
@@ -155,7 +155,7 @@ SurfaceBackground::draw (SceneContext& gc)
 {
   if (!bg_sprite)
     return;
-  
+
   Vector2i offset = gc.color().world_to_screen(Vector2i(0,0));
 
   offset.x -= gc.color().get_rect().left;

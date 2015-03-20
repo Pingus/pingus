@@ -60,7 +60,7 @@ class CommandLine_Generic;
 //- <p>program -f FILENAME</p>
 //-
 //- <p>Concatenating short arguments is also supported, so that:</p>
-//- 
+//-
 //- <p>program -f -a -b FILENAME</p>
 //-
 //- <p>is equivalent to:</p>
@@ -70,7 +70,7 @@ class CommandLine_Generic;
 //- <p>Non-option arguments (aka rest arguments) are supported as well:</p>
 //-
 //- <p>program SOMEFILE SOMEOTHERFILE ...</p>
-//- 
+//-
 //- <p>To avoid ambiguity when a filename starts with '-' CommandLine stops
 //- parsing arguments after the first encounter of a '--', so in</p>
 //-
@@ -113,11 +113,11 @@ public:
   //: Adds extra documentation to the help output, should only be
   //: used at the beginning or at the end, to
   void add_doc(const std::string& doc);
-        
+
   //: Starts a new group of options, the grouptopic gets printed
   //: above the group of options in the print_help() output
   void add_group(const std::string& grouptopic);
-  
+
   //: Adds a option to the parser
   //param key: a letter for a short-option or a numeric value
   //param key: larger than 255 that identifies the option
@@ -133,11 +133,11 @@ public:
   //param visible: than would only clutter the help output
   void add_option(
     int key,
-    const std::string& long_option, 
+    const std::string& long_option,
     const std::string& argument,
     const std::string& help,
     bool visible = true);
-        
+
   //: Parse the options arcording to the options added with
   //: add_option(), result of the parsing is accessible via
   //: next() and get_key()/get_argument()

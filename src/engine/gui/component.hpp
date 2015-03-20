@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -41,7 +41,7 @@ public:
 
   virtual void set_focus(bool val) { focus = val; }
   virtual void set_mouse_over(bool val) { mouse_over = val; }
-        
+
   virtual bool has_mouse_over() const { return mouse_over; }
   virtual bool has_focus() const { return focus; }
 
@@ -80,10 +80,10 @@ public:
   /** Emitted when the pointer moved, x and y are the new pointer
       coordinates */
   virtual void on_pointer_move (int x, int y) {}
-        
+
   virtual void on_scroller_move (float x, float y) {}
 
-  /** Emitted whenever a keyboard character is pressed.  Only certain 
+  /** Emitted whenever a keyboard character is pressed.  Only certain
       components should implement this */
   virtual void on_key_pressed(const Input::KeyboardEvent& ev) {}
 

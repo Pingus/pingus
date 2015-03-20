@@ -24,17 +24,17 @@
 bool
 DrawOp::equal(DrawOp* op) const
 {
-  if (type == op->type) 
+  if (type == op->type)
   {
     switch(type)
     {
-      case SURFACE_DRAWOP:              
+      case SURFACE_DRAWOP:
       {
         const SurfaceDrawOp* lhs = static_cast<const SurfaceDrawOp*>(this);
         const SurfaceDrawOp* rhs = static_cast<const SurfaceDrawOp*>(op);
         return *lhs == *rhs;
       }
-              
+
       case FILLRECT_DRAWOP:
       {
         const FillRectDrawOp* lhs = static_cast<const FillRectDrawOp*>(this);
@@ -71,16 +71,16 @@ bool
 DrawOp::less(DrawOp* rhs) const
 {
   const DrawOp* lhs = this;
-  
+
   if (lhs->type == rhs->type)
   {
     switch(lhs->type)
     {
-      case SURFACE_DRAWOP:                        
+      case SURFACE_DRAWOP:
       {
         const SurfaceDrawOp* slhs = static_cast<const SurfaceDrawOp*>(lhs);
         const SurfaceDrawOp* srhs = static_cast<const SurfaceDrawOp*>(rhs);
-              
+
         if (slhs->pos.x == srhs->pos.x)
           return (slhs->pos.y < srhs->pos.y);
         else
@@ -91,33 +91,33 @@ DrawOp::less(DrawOp* rhs) const
       {
         const FillRectDrawOp* rlhs = static_cast<const FillRectDrawOp*>(lhs);
         const FillRectDrawOp* rrhs = static_cast<const FillRectDrawOp*>(rhs);
-              
+
         if (rlhs->rect.left == rrhs->rect.left)
           return (rlhs->rect.top < rrhs->rect.top);
         else
-          return (rlhs->rect.left < rrhs->rect.left);              
+          return (rlhs->rect.left < rrhs->rect.left);
       }
 
       case DRAWRECT_DRAWOP:
       {
         const DrawRectDrawOp* rlhs = static_cast<const DrawRectDrawOp*>(lhs);
         const DrawRectDrawOp* rrhs = static_cast<const DrawRectDrawOp*>(rhs);
-              
+
         if (rlhs->rect.left == rrhs->rect.left)
           return (rlhs->rect.top < rrhs->rect.top);
         else
-          return (rlhs->rect.left < rrhs->rect.left);              
+          return (rlhs->rect.left < rrhs->rect.left);
       }
 
       case CLIP_DRAWOP:
       {
         const ClipDrawOp* rlhs = static_cast<const ClipDrawOp*>(lhs);
         const ClipDrawOp* rrhs = static_cast<const ClipDrawOp*>(rhs);
-              
+
         if (rlhs->m_rect.left == rrhs->m_rect.left)
           return (rlhs->m_rect.top < rrhs->m_rect.top);
         else
-          return (rlhs->m_rect.left < rrhs->m_rect.left);              
+          return (rlhs->m_rect.left < rrhs->m_rect.left);
       }
 
       default:

@@ -34,10 +34,10 @@ private:
 
   std::vector<DrawOp> m_draw_op;
   std::vector<Vector2i> m_translate_stack;
- 
+
 public:
   WorldObjRenderer();
-  
+
   Rect get_clip_rect() const;
   void process(const std::vector<FileReader>& readers);
   void process(const FileReader& reader);

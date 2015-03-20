@@ -1,17 +1,17 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2008 Matthias Braun <matze@braunis.de>, 
+//  Copyright (C) 2008 Matthias Braun <matze@braunis.de>,
 //                     Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -28,16 +28,16 @@ public:
   {
   private:
     const std::string* text;
-    
+
     /** Position of the next Unicode character after \a chr */
     std::string::size_type pos;
-    
+
     /** Position of \a chr */
     std::string::size_type idx;
 
     /** Current Unicode character */
     uint32_t chr;
-  
+
   public:
     /** Create a UTF8 iterator, note that \a text is stored as
         pointer, thus it must remain valid for the lifetime of the
@@ -48,15 +48,15 @@ public:
     bool next();
     iterator operator+(int n);
     uint32_t operator*() const;
-    
+
     /** Returns the starting position of the current character */
     std::string::size_type get_index() const { return idx; }
 
     const std::string& get_string() const { return *text; }
   };
 
-  /** 
-   * Returns the number of characters in a UTF-8 string 
+  /**
+   * Returns the number of characters in a UTF-8 string
    */
   static std::string::size_type length(const std::string& str);
 
@@ -64,8 +64,8 @@ public:
   static std::string substr(const std::string& text, std::string::size_type pos, std::string::size_type n);
   static std::string::const_iterator advance(std::string::const_iterator it, std::string::size_type n = 1);
 
-  /** 
-   * return true if a linebreak is allowed after this character 
+  /**
+   * return true if a linebreak is allowed after this character
    */
   static bool is_linebreak_character(uint32_t unicode);
 

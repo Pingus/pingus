@@ -21,7 +21,7 @@
 
 #ifdef HAVE_CWIID
 #  include "engine/input/wiimote/wiimote_driver.hpp"
-#endif 
+#endif
 
 #ifdef HAVE_XINPUT
 #  include "engine/input/xinput/xinput_driver.hpp"
@@ -40,39 +40,39 @@ namespace Input {
 Driver*
 DriverFactory::create(const std::string& name, Manager* manager)
 {
-  if (name == "sdl") 
+  if (name == "sdl")
   {
     return new SDLDriver;
   }
-  else if (name == "core") 
+  else if (name == "core")
   {
     return new CoreDriver(manager);
   }
 #ifdef HAVE_LINUXUSBMOUSE
-  else if (name == "usbmouse") 
+  else if (name == "usbmouse")
   {
     return new USBMouseDriver();
-  } 
+  }
 #endif
 #ifdef HAVE_LINUXEVDEV
-  else if (name == "evdev") 
+  else if (name == "evdev")
   {
     return new EvdevDriver();
   }
 #endif
 #ifdef HAVE_XINPUT
-  else if (name == "xinput") 
+  else if (name == "xinput")
   {
     return new XInputDriver();
-  } 
+  }
 #endif
 #ifdef HAVE_CWIID
-  else if (name == "wiimote") 
+  else if (name == "wiimote")
   {
     return new WiimoteDriver();
-  } 
+  }
 #endif
-  else 
+  else
   {
     return 0;
   }

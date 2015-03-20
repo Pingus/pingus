@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -162,7 +162,7 @@ SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Vector2i& 
   dstrect.x = static_cast<Sint16>(pos.x);
   dstrect.y = static_cast<Sint16>(pos.y);
   dstrect.w = 0;
-  dstrect.h = 0;  
+  dstrect.h = 0;
 
   SDL_BlitSurface(src, NULL, screen, &dstrect);
 }
@@ -177,7 +177,7 @@ SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Rect& srcr
   dstrect.x = static_cast<Sint16>(pos.x);
   dstrect.y = static_cast<Sint16>(pos.y);
   dstrect.w = 0;
-  dstrect.h = 0;  
+  dstrect.h = 0;
 
   SDL_Rect sdlsrcrect;
   sdlsrcrect.x = static_cast<Sint16>(srcrect.left);
@@ -339,7 +339,7 @@ SDLFramebuffer::fill_rect(const Rect& rect_, const Color& color)
 {
   Rect rect = rect_;
   rect.normalize();
-    
+
   if (color.a == 255)
   {
     SDL_Rect srcrect;
@@ -431,7 +431,7 @@ SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable
 
   screen = SDL_SetVideoMode(size.width, size.height, 0, flags);
 
-  if (screen == NULL) 
+  if (screen == NULL)
   {
     log_error("Unable to set video mode: %1%", SDL_GetError());
     exit(1);
@@ -463,7 +463,7 @@ SDLFramebuffer::push_cliprect(const Rect& rect)
   {
     sdl_rect = Intersection(&cliprect_stack.back(), &sdl_rect);
   }
-  
+
   cliprect_stack.push_back(sdl_rect);
   SDL_SetClipRect(screen, &cliprect_stack.back());
 }

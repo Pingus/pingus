@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -58,8 +58,8 @@ PingusSoundReal::~PingusSoundReal()
 void
 PingusSoundReal::real_play_sound(const std::string& name, float volume, float panning)
 {
-  if (globals::sound_enabled && 
-      m_master_volume > 0 && 
+  if (globals::sound_enabled &&
+      m_master_volume > 0 &&
       m_sound_volume > 0)
   {
     SoundHandle chunk;
@@ -100,7 +100,7 @@ void
 PingusSoundReal::real_play_music(const std::string& filename, float volume, bool loop)
 {
   if (globals::music_enabled &&
-      m_master_volume > 0 && 
+      m_master_volume > 0 &&
       m_music_volume > 0)
   {
     log_info("PingusSoundReal: Playing music: %1%", filename);

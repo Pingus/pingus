@@ -30,7 +30,7 @@ public:
   std::function<Data()> loader;
 
   ResourceImpl(const std::function<Data()>& loader_) :
-    data(), 
+    data(),
     loader(loader_)
   {}
 };

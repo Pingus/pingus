@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -56,7 +56,7 @@ private:
 
   Label*    keep_aspect_label;
   Checkbox* keep_aspect_checkbox;
-  
+
   Label*    para_x_label;
   Inputbox* para_x_inputbox;
 
@@ -80,7 +80,7 @@ private:
   Inputbox* color_g_inputbox;
   Inputbox* color_b_inputbox;
   Inputbox* color_a_inputbox;
-  
+
   Label*    small_stars_label;
   Inputbox* small_stars_inputbox;
 
@@ -112,7 +112,7 @@ private:
 public:
   ObjectProperties(EditorScreen* editor, const Rect& rect);
   ~ObjectProperties();
-  
+
   void set_object(LevelObjPtr obj);
   void draw_background(DrawingContext& gc);
   void update_layout();
@@ -152,7 +152,7 @@ public:
 
   void on_id_change(const std::string& str);
   void on_target_id_change(const std::string& str);
-  
+
   void on_height_change(const std::string& str);
 
   void on_flip_horizontal();

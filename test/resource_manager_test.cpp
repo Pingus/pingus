@@ -14,7 +14,7 @@ public:
     m_key(key)
   {}
 
-  Sprite operator()() 
+  Sprite operator()()
   {
     return Sprite(m_key);
   }

@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -60,7 +60,7 @@ GameSession::GameSession(const PingusLevel& arg_plf, bool arg_show_result_screen
   log_debug("GameSession");
 
   // -- Client stuff
-  
+
   // These object will get deleted by the gui_manager
   button_panel = new ButtonPanel(get_server(), Vector2i(0, (size.height - 150)/2));
 
@@ -69,7 +69,7 @@ GameSession::GameSession(const PingusLevel& arg_plf, bool arg_show_result_screen
 
   playfield    = new Playfield(get_server(), this,
                                Rect(Vector2i(Math::max((Display::get_width()  - world_width)/2,  0),
-                                             Math::max((Display::get_height() - world_height)/2, 0)), 
+                                             Math::max((Display::get_height() - world_height)/2, 0)),
                                     Size(Math::min(Display::get_width(),  world_width),
                                          Math::min(Display::get_height(), world_height))));
 
@@ -172,7 +172,7 @@ void
 GameSession::draw_background (DrawingContext& gc)
 {
   Rect rect = playfield->get_rect();
-  
+
   if (rect != Rect(Vector2i(0,0), Size(Display::get_width(), Display::get_height())))
   { // Draw a black border around the playfield when the playfield is smaller then the screen
     Color border_color(0, 0, 0);
@@ -345,7 +345,7 @@ GameSession::on_startup ()
   if (globals::developer_mode)
     log_info("Starting Music: %1%", server->get_plf().get_music());
 
-  if (server->get_plf().get_music() == "none" || 
+  if (server->get_plf().get_music() == "none" ||
       server->get_plf().get_music().empty())
   {
     Sound::PingusSound::stop_music();
@@ -401,9 +401,9 @@ GameSession::resize(const Size& size_)
 
   int world_width  = server->get_world()->get_width();
   int world_height = server->get_world()->get_height();
-  
+
   playfield->set_rect(Rect(Vector2i(Math::max((size.width  - world_width)/2,  0),
-                                    Math::max((size.height - world_height)/2, 0)), 
+                                    Math::max((size.height - world_height)/2, 0)),
                            Size(Math::min(size.width,  world_width),
                                 Math::min(size.height, world_height))));
 

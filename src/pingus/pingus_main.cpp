@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -71,7 +71,7 @@ extern "C" {
 
 #if _MSC_VER >= 1400
 // Disable stupid deprecation warnings
-#pragma warning( disable : 4996 ) 
+#pragma warning( disable : 4996 )
 #endif
 
 extern tinygettext::DictionaryManager dictionary_manager;
@@ -130,7 +130,7 @@ PingusMain::apply_args()
     for (std::set<tinygettext::Language>::iterator i = lst.begin(); i != lst.end(); ++i)
       std::cout << i->get_name() << " (" << i->str() << ")" << std::endl;
 
-    std::cout << "\nLanguages can be used via:\n\n    pingus --language de\n" << std::endl; 
+    std::cout << "\nLanguages can be used via:\n\n    pingus --language de\n" << std::endl;
 
     exit(EXIT_SUCCESS);
   }
@@ -154,7 +154,7 @@ PingusMain::apply_args()
 
   if (options.drag_drop_scrolling.is_set())
     globals::drag_drop_scrolling = options.drag_drop_scrolling.get();
-  
+
   if (options.developer_mode.is_set())
     globals::developer_mode = options.developer_mode.get();
 
@@ -176,16 +176,16 @@ PingusMain::parse_args(int argc, char** argv)
   argp.add_doc(_("Pingus is a puzzle game where you need to guide a bunch of little penguins around the world."));
 
   argp.add_group(_("General Options:"));
-  argp.add_option('h', "help", "", 
+  argp.add_option('h', "help", "",
                   _("Displays this help"));
-  argp.add_option('V', "version", "", 
+  argp.add_option('V', "version", "",
                   _("Print version number and exit"));
   argp.add_option('v', "verbose", "",
                   _("Enable info level log output"));
-  argp.add_option('D', "debug", "", 
+  argp.add_option('D', "debug", "",
                   _("Enable debug level log output"));
-  argp.add_option('Q', "quiet", "", 
-                  _("Disable all log output"));   
+  argp.add_option('Q', "quiet", "",
+                  _("Disable all log output"));
 
   argp.add_group(_("Display Options:"));
   argp.add_option('w', "window", "",
@@ -194,9 +194,9 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Start in Fullscreen"));
   argp.add_option('r', "renderer", "RENDERER",
                   _("Use the given renderer (default: sdl)"));
-  argp.add_option('g', "geometry", "{width}x{height}",  
+  argp.add_option('g', "geometry", "{width}x{height}",
                   _("Set the window resolution for pingus (default: 800x600)"));
-  argp.add_option('R', "fullscreen-resolution", "{width}x{height}",  
+  argp.add_option('R', "fullscreen-resolution", "{width}x{height}",
                   _("Set the resolution used in fullscreen mode (default: 800x600)"));
   argp.add_option(346, "software-cursor", "",
                   _("Enable software cursor"));
@@ -208,9 +208,9 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Enable drag'n drop scrolling"));
 
   argp.add_group(_("Sound Options:"));
-  argp.add_option('s', "disable-sound", "", 
+  argp.add_option('s', "disable-sound", "",
                   _("Disable sound"));
-  argp.add_option('m', "disable-music", "", 
+  argp.add_option('m', "disable-music", "",
                   _("Disable music"));
 
   argp.add_group("Language Options:");
@@ -238,7 +238,7 @@ PingusMain::parse_args(int argc, char** argv)
                   _("Uses the controller given in FILE"));
 
   argp.add_group(_("Debug Options:"));
-  argp.add_option(334, "developer-mode",  "",  
+  argp.add_option(334, "developer-mode",  "",
                   _("Enables some special features for developers"));
   argp.add_option('t', "speed", "SPEED",
                   _("Set the game speed (0=fastest, >0=slower)"));
@@ -252,8 +252,8 @@ PingusMain::parse_args(int argc, char** argv)
 
   while (argp.next())
   {
-    switch (argp.get_key()) 
-    {          
+    switch (argp.get_key())
+    {
       case 'r': // --renderer
         if (argp.get_argument() == "help")
         {
@@ -280,7 +280,7 @@ PingusMain::parse_args(int argc, char** argv)
         break;
 
       case 't': // -t, --set-speed
-        cmd_options.speed.set(StringUtil::to<int>(argp.get_argument()));  
+        cmd_options.speed.set(StringUtil::to<int>(argp.get_argument()));
         break;
 
       case 'k': // -k, --set-fps
@@ -294,10 +294,10 @@ PingusMain::parse_args(int argc, char** argv)
       case 'm': // -m, --disable-music
         cmd_options.disable_music.set(true);
         break;
-            
+
       case 'g':
       {
-        Size size; 
+        Size size;
         if (sscanf(argp.get_argument().c_str(), "%dx%d", &size.width, &size.height) != 2)
         {
           std::cout << "Resolution std::string is wrong, it should be like: \n"
@@ -310,7 +310,7 @@ PingusMain::parse_args(int argc, char** argv)
 
       case 'R':
       {
-        Size size; 
+        Size size;
         if (sscanf(argp.get_argument().c_str(), "%dx%d", &size.width, &size.height) != 2)
         {
           std::cout << "Resolution std::string is wrong, it should be like: \n"
@@ -343,11 +343,11 @@ PingusMain::parse_args(int argc, char** argv)
                   << std::endl;
         exit(EXIT_SUCCESS);
         break;
-          
+
       case 'f': // --fullscreen
         cmd_options.fullscreen.set(true);
         break;
-          
+
       case 'w': // --window
         cmd_options.fullscreen.set(false);
         break;
@@ -366,7 +366,7 @@ PingusMain::parse_args(int argc, char** argv)
         break;
 
       case 342: // --no-cfg-file
-        cmd_options.no_config_file.set(true); 
+        cmd_options.no_config_file.set(true);
         break;
 
       case 344:
@@ -499,10 +499,10 @@ PingusMain::print_greeting_message()
 
   std::cout << "userdir:                 " << System::get_userdir() << std::endl;
   std::cout << "datadir:                 " << g_path_manager.get_path() << std::endl;
-  std::cout << "language:                " 
+  std::cout << "language:                "
             << dictionary_manager.get_language().get_name()
             << " ("
-            << dictionary_manager.get_language().str() 
+            << dictionary_manager.get_language().str()
             << ")"
             << std::endl;
 
@@ -538,7 +538,7 @@ PingusMain::start_game ()
 
   if (!cmd_options.controller.is_set())
   {
-    input_controller = input_manager.create_controller(Pathname("controller/default.scm", 
+    input_controller = input_manager.create_controller(Pathname("controller/default.scm",
                                                                 Pathname::DATA_PATH));
   }
   else
@@ -568,12 +568,12 @@ PingusMain::start_game ()
     else if (StringUtil::has_suffix(cmd_options.rest.get(), ".font"))
     {
       Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
-      screen_manager.push_screen(std::make_shared<FontTestScreen>(filename)); 
+      screen_manager.push_screen(std::make_shared<FontTestScreen>(filename));
     }
     else if (StringUtil::has_suffix(cmd_options.rest.get(), ".credits"))
     {
       Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
-      screen_manager.push_screen(std::make_shared<Credits>(filename)); 
+      screen_manager.push_screen(std::make_shared<Credits>(filename));
     }
     else if (StringUtil::has_suffix(cmd_options.rest.get(), ".worldmap"))
     {
@@ -616,16 +616,16 @@ PingusMain::run(int argc, char** argv)
   {
     // FIXME force set language using System::get_language() to get it from env
     dictionary_manager.set_language(tinygettext::Language::from_env(System::get_language()));
-    
+
     parse_args(argc, argv); // here language and po dir isn't set, no traslation in command line
     init_path_finder(); // here init language path
     read_rc_file(); // here set language if ~/.pingus/config exist and language value is set
     apply_args(); // here set language if arg -l is specified
-    
+
     print_greeting_message();
-    
+
     // init the display
-    FramebufferType fbtype = SDL_FRAMEBUFFER; 
+    FramebufferType fbtype = SDL_FRAMEBUFFER;
     if (cmd_options.framebuffer_type.is_set())
     {
       fbtype = cmd_options.framebuffer_type.get();
@@ -673,25 +673,25 @@ PingusMain::run(int argc, char** argv)
     SavegameManager savegame_manager("savegames/savegames.scm");
     StatManager stat_manager("savegames/variables.scm");
 
-    // FIXME: turn these into RAII 
+    // FIXME: turn these into RAII
     Resource::init();
     Fonts::init();
     Sound::PingusSound::init();
-    
+
     config_manager.apply(cmd_options);
 
     // start and run the actual game
     start_game();
   }
-  catch (const std::bad_alloc&) 
+  catch (const std::bad_alloc&)
   {
     std::cout << _("Pingus: Out of memory!") << std::endl;
   }
-  catch (const std::exception& a) 
+  catch (const std::exception& a)
   {
     std::cout << _("Pingus: Standard exception caught!:\n") << a.what() << std::endl;
   }
-  catch (...) 
+  catch (...)
   {
     std::cout << _("Pingus: Unknown throw caught!") << std::endl;
   }

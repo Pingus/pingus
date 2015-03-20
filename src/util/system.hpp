@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -52,10 +52,10 @@ public:
       pattern. "." and ".." are removed from the output. */
   static Directory opendir(const std::string& pathname, const std::string& pattern = "*");
   static std::vector<std::string> opendir_recursive(const std::string& pathname);
-    
+
   static std::string get_file_extension(const std::string& filename);
   static std::string cut_file_extension(const std::string& filename);
-  
+
   /** Check if a file is avaiblable (no checking for permissens is currently performed)
       @param filename The name of the file
       @return True, if the file exist, false otherwise */

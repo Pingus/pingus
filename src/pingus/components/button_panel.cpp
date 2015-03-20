@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -77,7 +77,7 @@ ButtonPanel::draw(DrawingContext& gc)
     {
       std::ostringstream out;
       std::string str = StringUtil::to_string(aholder->get_available(buttons[i].name));
-      out << aholder->get_available(buttons[i].name) 
+      out << aholder->get_available(buttons[i].name)
           << " / "
           << aholder->get_used(buttons[i].name);
       gc.print_left(Fonts::pingus_small, Vector2i(rect.left + 46, rect.top + 5 + 38*static_cast<int>(i)), out.str());
@@ -90,7 +90,7 @@ ButtonPanel::draw(DrawingContext& gc)
 
     if (show_tip && tip_button == i)
     {
-      gc.print_left(Fonts::pingus_small, Vector2i(rect.left + 65, rect.top + 5 + 38*static_cast<int>(i)), 
+      gc.print_left(Fonts::pingus_small, Vector2i(rect.left + 65, rect.top + 5 + 38*static_cast<int>(i)),
                     ActionName::to_screenname(buttons[i].name));
     }
   }

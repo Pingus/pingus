@@ -6,12 +6,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -35,9 +35,9 @@ Miner::Miner (Pingu* p) :
   sprite(),
   delay_count(0)
 {
-  sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
+  sprite.load(Direction::LEFT,  Sprite("pingus/player" +
                                        pingu->get_owner_str() + "/miner/left"));
-  sprite.load(Direction::RIGHT, Sprite("pingus/player" + 
+  sprite.load(Direction::RIGHT, Sprite("pingus/player" +
                                        pingu->get_owner_str() + "/miner/right"));
 }
 
@@ -47,7 +47,7 @@ Miner::update ()
   sprite[pingu->direction].update();
 
   delay_count += 1;
-  
+
   if (delay_count % 4 == 0)
   {
     if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING)
@@ -56,9 +56,9 @@ Miner::update ()
       mine(true);
       pingu->set_action(ActionName::WALKER);
     }
-    else if (rel_getpixel(0, -1) == Groundtype::GP_SOLID || 
+    else if (rel_getpixel(0, -1) == Groundtype::GP_SOLID ||
              rel_getpixel(0, pingu_height) == Groundtype::GP_SOLID)
-    {  
+    {
       // stop mining when hitting solid ground
       if (rel_getpixel(0, -1) == Groundtype::GP_SOLID)
         Sound::PingusSound::play_sound("chink");

@@ -35,7 +35,7 @@ public:
     TOKEN_TRUE,
     TOKEN_FALSE
   };
-    
+
   Lexer(std::istream& stream);
   ~Lexer();
 
@@ -44,15 +44,15 @@ public:
   { return token_string; }
   int getLineNumber() const
   { return linenumber; }
-    
+
 private:
   enum {
     MAX_TOKEN_LENGTH = 16384,
     BUFFER_SIZE = 1024
   };
-    
+
   inline void nextChar();
-    
+
   std::istream& stream;
   bool eof;
   int linenumber;

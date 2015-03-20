@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -121,7 +121,7 @@ System::opendir(const std::string& pathname, const std::string& pattern)
       {
         struct stat buf;
         stat((Pathname::join(pathname, de->d_name)).c_str (), &buf);
-        
+
         if (strcmp(de->d_name, "..") != 0 &&
             strcmp(de->d_name, ".") != 0)
         {
@@ -179,7 +179,7 @@ std::vector<std::string>
 System::opendir_recursive(const std::string& pathname)
 {
   std::vector<std::string> lst;
-  try 
+  try
   {
     Directory dir = opendir(pathname);
     for(auto it = dir.begin(); it != dir.end(); ++it)
@@ -247,7 +247,7 @@ System::create_dir(std::string directory)
 {
 #ifndef WIN32
   log_info("System::create_dir: %1%", directory);
-  
+
   if (!exist(directory))
   {
     if (mkdir(directory.c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) != 0)
@@ -268,13 +268,13 @@ System::create_dir(std::string directory)
     }
     else if (dwError == ERROR_PATH_NOT_FOUND)
     {
-      raise_exception(std::runtime_error, 
+      raise_exception(std::runtime_error,
                       "CreateDirectory: " << directory <<
                       ": One or more intermediate directories do not exist; this function will only create the final directory in the path.");
     }
     else
     {
-      raise_exception(std::runtime_error, 
+      raise_exception(std::runtime_error,
                       "CreateDirectory: " << directory << ": failed with error " << StringUtil::to_string(dwError));
     }
   }
@@ -306,7 +306,7 @@ System::find_userdir()
 
 #elif __APPLE__
 	char* homedir = getenv("HOME");
-	
+
 	if (homedir)
 	{
 		return std::string(homedir) + "/Library/Application Support/pingus/";
@@ -315,7 +315,7 @@ System::find_userdir()
 	{
 		raise_exception(std::runtime_error, "Environment variable $HOME not set, fix that and start again.");
 	}
-	
+
 #else /* !WIN32 */
   // If ~/.pingus/ exist, use that for backward compatibility reasons,
   // if it does not, use $XDG_CONFIG_HOME, see:
@@ -332,7 +332,7 @@ System::find_userdir()
       }
     }
   }
-  
+
   char* config_dir = getenv("XDG_CONFIG_HOME");
   if (!config_dir || strcmp(config_dir, "") == 0)
   {
@@ -343,13 +343,13 @@ System::find_userdir()
     }
     else
     {
-      raise_exception(std::runtime_error, "can't find userdir as neither $HOME nor $XDG_CONFIG_HOME is set");      
+      raise_exception(std::runtime_error, "can't find userdir as neither $HOME nor $XDG_CONFIG_HOME is set");
     }
   }
   else
   {
     return std::string(config_dir) + "/pingus/";
-  }  
+  }
 #endif
 }
 
@@ -505,7 +505,7 @@ System::checksum(const Pathname& pathname)
 /** Read file and create a checksum and return it */
 std::string
 System::checksum(std::string filename)
-{ // FIXME: Replace sys with SHA1 or MD5 or so 
+{ // FIXME: Replace sys with SHA1 or MD5 or so
   FILE* in;
   size_t bytes_read;
   char buffer[4096];
@@ -534,7 +534,7 @@ System::checksum(std::string filename)
   while (bytes_read != 0);
 
   fclose (in);
-  
+
   std::ostringstream str;
   str << checksum;
   return str.str();
@@ -609,7 +609,7 @@ System::realpath(const std::string& pathname)
     }
   }
 
-#ifdef WIN32  
+#ifdef WIN32
   return drive + normalize_path(fullpath);
 #else
   return normalize_path(fullpath);
@@ -676,7 +676,7 @@ System::normalize_path(const std::string& path)
     {
       if (*i == '/')
       {
-        std::string dir(last_slash, i); 
+        std::string dir(last_slash, i);
 
         handle_directory(dir, skip, result);
 

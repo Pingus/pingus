@@ -24,7 +24,7 @@
 
 #include "math/rect.hpp"
 
-/** 
+/**
     +----+----+
     | nw | ne |
     |----+----+
@@ -40,7 +40,7 @@ private:
     C    data;
 
     Object() :
-      rect(), 
+      rect(),
       data()
     {}
   };
@@ -64,9 +64,9 @@ public:
     m_center(bounding_rect.get_center()),
     m_items(),
     m_depth(depth),
-    m_nw(), 
+    m_nw(),
     m_ne(),
-    m_sw(), 
+    m_sw(),
     m_se()
   {
   }
@@ -151,20 +151,20 @@ public:
   void get_items_at(const Rectf& rect, std::vector<C>& out_items) const
   {
     // If rect overlaps with the given quadrant, recursivly check the quadrant
-    if (m_nw.get() && 
+    if (m_nw.get() &&
         rect.left < m_center.x &&
         rect.top  < m_center.y)
     {
       m_nw->get_items_at(rect, out_items);
     }
-    
-    if (m_ne.get() && 
+
+    if (m_ne.get() &&
         rect.right > m_center.x &&
         rect.top   < m_center.y)
     {
       m_ne->get_items_at(rect, out_items);
     }
-    
+
     if (m_sw.get() &&
         rect.left   < m_center.x &&
         rect.bottom > m_center.y)
@@ -191,12 +191,12 @@ public:
 };
 
 template<class C>
-class QuadTree 
+class QuadTree
 {
 private:
   std::unique_ptr<QuadTreeNode<C> > m_main_node;
 
-public: 
+public:
   QuadTree(const Rectf& bounding_rect) :
     m_main_node(new QuadTreeNode<C>(0, bounding_rect))
   {

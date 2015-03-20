@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -70,28 +70,28 @@ FontTestScreen::draw(DrawingContext& gc)
                   std::string(1, char(i)));
     // print the index number
     gc.print_left(reference,
-                  Vector2i(x, 
+                  Vector2i(x,
                            y + font.get_height()),
                   StringUtil::to_string(i));
-      
+
     if (font.get_width(char(i)))
     {
-      gc.draw_rect(Rect(x, y, 
-                        x+font.get_height(), 
-                        y+font.get_height()), 
+      gc.draw_rect(Rect(x, y,
+                        x+font.get_height(),
+                        y+font.get_height()),
                    Color(0,0,255));
-      gc.draw_rect(Rect(x, y, 
-                        x + static_cast<int>(font.get_width(char(i))), 
-                        y + font.get_height()), 
+      gc.draw_rect(Rect(x, y,
+                        x + static_cast<int>(font.get_width(char(i))),
+                        y + font.get_height()),
                    Color(255,0,255));
       gc.print_left(font, Vector2i(x, y),
                     std::string(1, char(i)));
     }
     else
     {
-      gc.draw_rect(Rect(x, y, 
-                        x+font.get_height(), 
-                        y+font.get_height()), 
+      gc.draw_rect(Rect(x, y,
+                        x+font.get_height(),
+                        y+font.get_height()),
                    Color(255,0,0));
     }
   }
@@ -108,15 +108,15 @@ FontTestScreen::update(const Input::Event& event)
           event.button.name == Input::PRIMARY_BUTTON)
         dark = !dark;
       break;
-            
+
     case Input::SCROLLER_EVENT_TYPE:
       scroll.x += static_cast<int>(event.scroll.x_delta);
       scroll.y += static_cast<int>(event.scroll.y_delta);
       break;
-          
+
     default:
       break;
   }
-} 
+}
 
 /* EOF */

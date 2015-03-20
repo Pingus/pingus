@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -41,10 +41,10 @@ WorldmapStory::WorldmapStory(const FileReader& reader) :
   ResDescriptor desc;
   std::string text;
   std::string page_name;
-                
+
   // Read each page into the pages vector
   const std::vector<FileReader>& childs = all_pages.get_sections();
-  for(std::vector<FileReader>::const_iterator i = childs.begin(); 
+  for(std::vector<FileReader>::const_iterator i = childs.begin();
       i != childs.end(); ++i)
   {
     page_name = i->get_name();

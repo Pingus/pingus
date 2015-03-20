@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -32,12 +32,12 @@ private:
   bool valid;
 
 public:
-  Value() 
+  Value()
     : value(T()),
       valid(false)
   {}
 
-  Value(const T& v) 
+  Value(const T& v)
     : value(v),
       valid(true)
   {}
@@ -45,7 +45,7 @@ public:
   const T& get() const {
     return value;
   }
-  
+
   void set(const T& v) {
     value = v;
     valid = true;
@@ -67,8 +67,8 @@ public:
 
 enum FramebufferType
 {
- DELTA_FRAMEBUFFER, 
- SDL_FRAMEBUFFER, 
+ DELTA_FRAMEBUFFER,
+ SDL_FRAMEBUFFER,
  OPENGL_FRAMEBUFFER,
  NULL_FRAMEBUFFER
 };

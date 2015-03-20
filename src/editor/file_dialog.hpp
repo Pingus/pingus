@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -29,7 +29,7 @@ class Label;
 
 class FileDialog : public GUI::GroupComponent
 {
-public: 
+public:
   enum Mode { LOAD, SAVE };
 private:
   EditorScreen* editor;
@@ -53,7 +53,7 @@ private:
 public:
   FileDialog(EditorScreen* editor, const Rect& rect, Mode mode);
   ~FileDialog();
-  
+
   void draw_background(DrawingContext& gc);
   void update_layout();
 
@@ -66,7 +66,7 @@ private:
 
   void on_up();
   void on_down();
-  
+
   void on_datadir();
   void on_userdir();
 

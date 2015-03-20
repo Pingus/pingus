@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -25,22 +25,22 @@
  *  path_manager from the rest of the code. */
 class Pathname
 {
-public: 
+public:
   /** Generate a temporary filename suitable for temporary files */
   static Pathname tmpfile(const std::string& prefix = "");
 
   static std::string join(const std::string& lhs, const std::string& rhs);
 
-  enum Type { 
+  enum Type {
     // The given pathname refers to the native file system
-    SYSTEM_PATH, 
+    SYSTEM_PATH,
 
     // The given pathname refers to a file in the datadir
     DATA_PATH,
 
     INVALID
   };
-  
+
 private:
   std::string pathname;
   Type type;
@@ -48,7 +48,7 @@ private:
   void opendir_recursive(std::vector<Pathname>& result) const;
 
 public:
-  Pathname();  
+  Pathname();
   explicit Pathname(const std::string& pathname, Type type = DATA_PATH);
 
   std::vector<Pathname> opendir(const std::string& pattern = "*") const;
@@ -60,7 +60,7 @@ public:
   /** Return the pathname in a form suitable for the native file
       system (i.e. can be passed to ifstream and friends */
   std::string get_sys_path() const;
-  
+
   /** Return the pathname as is */
   std::string get_raw_path() const;
 
@@ -73,7 +73,7 @@ public:
   bool absolute() const;
 
   bool empty() const;
-  
+
   bool exist() const;
 
   uint64_t mtime() const;

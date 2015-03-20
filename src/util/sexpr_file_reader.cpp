@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -27,12 +27,12 @@ class SExprFileReaderImpl: public FileReaderImpl
 public:
   std::shared_ptr<lisp::Lisp> sexpr;
 
-  SExprFileReaderImpl(std::shared_ptr<lisp::Lisp> sexpr_) 
+  SExprFileReaderImpl(std::shared_ptr<lisp::Lisp> sexpr_)
     : sexpr(sexpr_)
   {
     assert(sexpr->get_type() == lisp::Lisp::TYPE_LIST &&
            sexpr->get_list_size() >= 1);
-    
+
     for(size_t i = 1; i < sexpr->get_list_size(); ++i)
     { // iterate over subsections
       sexpr->get_list_elem(i);
@@ -44,12 +44,12 @@ public:
     // FIXME: Do we have to free the lisp pointer here or outside of the code?
   }
 
-  std::string get_name() const 
+  std::string get_name() const
   {
     return sexpr->get_list_elem(0)->get_symbol();
   }
 
-  bool read_int   (const char* name, int& v) const 
+  bool read_int   (const char* name, int& v) const
   {
     std::shared_ptr<lisp::Lisp> item = get_subsection_item(name);
     if (item && item->get_type() == lisp::Lisp::TYPE_INT)
@@ -60,7 +60,7 @@ public:
     return false;
   }
 
-  bool read_float (const char* name, float& v) const 
+  bool read_float (const char* name, float& v) const
   {
     std::shared_ptr<lisp::Lisp> item = get_subsection_item(name);
     if (item)
@@ -83,7 +83,7 @@ public:
     return false;
   }
 
-  bool read_bool  (const char* name, bool& v) const 
+  bool read_bool  (const char* name, bool& v) const
   {
     std::shared_ptr<lisp::Lisp> item = get_subsection_item(name);
     if (item && item->get_type() == lisp::Lisp::TYPE_BOOL)
@@ -99,7 +99,7 @@ public:
     return false;
   }
 
-  bool read_string(const char* name, std::string& v) const 
+  bool read_string(const char* name, std::string& v) const
   {
     std::shared_ptr<lisp::Lisp> sub = get_subsection(name);
     if (sub)
@@ -131,7 +131,7 @@ public:
                    sub->get_list_elem(2)->get_float(),
                    sub->get_list_elem(3)->get_float());
       return true;
-    }    
+    }
     return false;
   }
 
@@ -143,7 +143,7 @@ public:
       v.width  = sub->get_list_elem(1)->get_int();
       v.height = sub->get_list_elem(2)->get_int();
       return true;
-    }    
+    }
     return false;
   }
 
@@ -155,7 +155,7 @@ public:
       v.x = sub->get_list_elem(1)->get_int();
       v.y = sub->get_list_elem(2)->get_int();
       return true;
-    }    
+    }
     return false;
   }
 
@@ -169,10 +169,10 @@ public:
       rect.right  = sub->get_list_elem(3)->get_int();
       rect.bottom = sub->get_list_elem(4)->get_int();
       return true;
-    }    
+    }
     return false;
   }
-  
+
   bool read_colorf(const char* name, Color& v) const
   {
     std::shared_ptr<lisp::Lisp> sub = get_subsection(name);
@@ -201,7 +201,7 @@ public:
     return false;
   }
 
-  bool read_desc  (const char* name, ResDescriptor& v) const 
+  bool read_desc  (const char* name, ResDescriptor& v) const
   {
     std::shared_ptr<lisp::Lisp> sub = get_subsection(name);
     if (sub)
@@ -214,7 +214,7 @@ public:
     return false;
   }
 
-  bool read_section(const char* name, FileReader& v) const 
+  bool read_section(const char* name, FileReader& v) const
   {
     std::shared_ptr<lisp::Lisp> cur = get_subsection(name);
     if (cur)
@@ -225,7 +225,7 @@ public:
     return false;
   }
 
-  std::vector<FileReader> get_sections() const 
+  std::vector<FileReader> get_sections() const
   {
     std::vector<FileReader> lst;
     for(size_t i = 1; i < sexpr->get_list_size(); ++i)
@@ -235,7 +235,7 @@ public:
     return lst;
   }
 
-  std::vector<std::string> get_section_names() const 
+  std::vector<std::string> get_section_names() const
   {
     std::vector<std::string> lst;
 
@@ -268,7 +268,7 @@ private:
         return sub;
     }
     return std::shared_ptr<lisp::Lisp>();
-  } 
+  }
 
 };
 

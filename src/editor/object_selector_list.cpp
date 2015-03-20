@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -37,7 +37,7 @@ ObjectSelectorList::ObjectSelectorList(EditorScreen* editor_, ObjectSelector* ob
   current_object(-1),
   drag_object(-1),
   set(0)
-{  
+{
 }
 
 ObjectSelectorList::~ObjectSelectorList()
@@ -64,22 +64,22 @@ ObjectSelectorList::draw(DrawingContext& parent_gc)
 
       gc.draw((*i)->thumbnail, Vector2i(x * 48, y * 48));
 
-      gc.draw_rect(Rect(x * 48,      y * 48, 
-                        x * 48 + 48, y * 48 + 48), 
+      gc.draw_rect(Rect(x * 48,      y * 48,
+                        x * 48 + 48, y * 48 + 48),
                    Color(155,155,155));
 
       if (has_mouse_over() && current_object != -1 && (i - set->get_objects().begin()) == current_object)
       {
-        gc.draw_fillrect(Rect(x * 48,      y * 48, 
-                              x * 48 + 48, y * 48 + 48), 
+        gc.draw_fillrect(Rect(x * 48,      y * 48,
+                              x * 48 + 48, y * 48 + 48),
                          Color(255,255,255, 100));
 
-        gc.draw_rect(Rect(x * 48,      y * 48, 
-                          x * 48 + 48, y * 48 + 48), 
+        gc.draw_rect(Rect(x * 48,      y * 48,
+                          x * 48 + 48, y * 48 + 48),
                      Color(255,255,255));
       }
     }
-  
+
     gc.pop_modelview();
   }
   parent_gc.draw(gc);
@@ -90,7 +90,7 @@ ObjectSelectorList::draw(DrawingContext& parent_gc)
     parent_gc.draw(sprite,
                    real_mouse_pos
                    - Vector2i(sprite.get_width()/2, sprite.get_height()/2)
-                   + sprite.get_offset(), 
+                   + sprite.get_offset(),
                    2000.0f);
   }
 }
@@ -115,13 +115,13 @@ ObjectSelectorList::on_primary_button_release (int x, int y)
   if (mode == OBJECT_DRAG)
   {
     mode = NOTHING;
-      
+
     if (current_object != -1)
     {
       // FIXME: Should check if the current mouse over component
       // is the Viewport, else no drag should take place, this
       // checks if the current mouse_over_comp is the
-      // ObjectSelector, which is good enough but not perfect 
+      // ObjectSelector, which is good enough but not perfect
       if (!object_selector->get_rect().contains(Vector2i(x + object_selector->get_rect().left,
                                                          y + object_selector->get_rect().top)))
       {
@@ -163,7 +163,7 @@ ObjectSelectorList::on_secondary_button_press (int x, int y)
 
 void
 ObjectSelectorList::on_secondary_button_release (int x, int y)
-{  
+{
   if (!set) return;
 
   if (mode == SCROLLING)

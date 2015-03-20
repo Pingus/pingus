@@ -39,7 +39,7 @@ class DrawOpBuffer
 private:
   typedef std::vector<DrawOp*> DrawOps;
   DrawOps draw_ops;
-  
+
   MemoryPool<DrawOp> mempool;
 
 public:
@@ -54,13 +54,13 @@ public:
 
   /** Calculate the regions that are different between \a frontbuffer
       and \a backbuffer, results are written to \a changed_regions  */
-  void buffer_difference_slow(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer, 
+  void buffer_difference_slow(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer,
                               std::vector<Rect>& changed_regions);
   bool buffer_equal(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer);
 
   /** Calculate the regions that are different between \a frontbuffer
       and \a backbuffer, results are written to \a changed_regions  */
-  void buffer_difference(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer, 
+  void buffer_difference(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer,
                          std::vector<Rect>& changed_regions);
   void render(SDLFramebuffer& fb, DrawOpBuffer& frontbuffer);
 };

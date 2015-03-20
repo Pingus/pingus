@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -48,10 +48,10 @@ SliderBox::draw(DrawingContext& gc)
       //gc.print_left(Fonts::chalk_normal, rect.left + i*(rect.get_width()-12)/20 + 6, rect.top, "l");
     }
   }
-  
-  gc.print_left(Fonts::chalk_normal, Vector2i(rect.left, rect.top), 
+
+  gc.print_left(Fonts::chalk_normal, Vector2i(rect.left, rect.top),
                 "[");
-  gc.print_right(Fonts::chalk_normal, Vector2i(rect.right, rect.top), 
+  gc.print_right(Fonts::chalk_normal, Vector2i(rect.right, rect.top),
                  "]");
 }
 
@@ -77,9 +77,9 @@ SliderBox::on_pointer_move(int x, int y)
     int old_value = value;
 
     x -= rect.left;
-  
+
     value = m_steps * x / (rect.get_width() - 12);
-  
+
     value = Math::clamp(0, value, m_steps);
 
     if (value != old_value)

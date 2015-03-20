@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -45,7 +45,7 @@ private:
   bool   mouse_over;
   bool   mouse_down;
   std::string tooltip;
-  
+
 public:
   boost::signals2::signal<void()> on_click;
 
@@ -76,7 +76,7 @@ public:
     if (mouse_over)
     {
       int t_w = static_cast<int>(Fonts::verdana11.get_width(tooltip));
-      Rect t_r(rect.left + 17 - t_w/2 - 4, rect.top + 38 - 2, 
+      Rect t_r(rect.left + 17 - t_w/2 - 4, rect.top + 38 - 2,
                rect.left + 17 + t_w/2 + 4, rect.top + 38 + Fonts::verdana11.get_height() + 4);
       gc.draw_fillrect(t_r, Color(255, 255, 200), 1000.0f);
       gc.draw_rect(t_r, Color(0,0,0), 1000.0f);
@@ -85,34 +85,34 @@ public:
   }
 
   /** Emmitted when pointer enters the region of the component */
-  void on_pointer_enter() 
+  void on_pointer_enter()
   {
     mouse_over = true;
   }
 
   /** Emmitted when pointer leaves the region of the component */
-  void on_pointer_leave() 
+  void on_pointer_leave()
   {
     mouse_over = false;
   }
-  
-  void on_primary_button_press (int x, int y) 
+
+  void on_primary_button_press (int x, int y)
   {
     mouse_down = true;
   }
 
-  void on_primary_button_release (int x, int y) 
-  { 
+  void on_primary_button_release (int x, int y)
+  {
     mouse_down = false;
     if (mouse_over)
       on_click();
   }
-  
+
   void update (float delta)
   {
     sprite.update();
   }
-  
+
   int get_width() const {
     return 30;
   }
@@ -144,7 +144,7 @@ ObjectSelector::ObjectSelector(EditorScreen* editor_, const Rect& rect_) :
   worldobj_set(),
   prefab_set()
 {
-  object_list = create<ObjectSelectorList>(editor, this, 
+  object_list = create<ObjectSelectorList>(editor, this,
                                            Rect(2, 2 + 60 + 2, rect.get_width() - 2, rect.get_height() - 2));
 
   gp_ground_set  = create_gp_ground();
@@ -190,12 +190,12 @@ ObjectSelector::draw_background(DrawingContext& parent_gc)
 }
 
 void
-ObjectSelector::add_button(const std::string& image, const std::string& tooltip, 
+ObjectSelector::add_button(const std::string& image, const std::string& tooltip,
                            ObjectSelectorSet* set)
 {
   ObjectSelectorButton* button;
   button = create<ObjectSelectorButton>(object_list,
-                                        Vector2i(2 + button_pos.x * 30,  
+                                        Vector2i(2 + button_pos.x * 30,
                                                  2 + button_pos.y * 30),
                                         image, tooltip);
   button->on_click.connect(std::bind(&ObjectSelectorList::set_objects, object_list, set));
@@ -233,7 +233,7 @@ ObjectSelector::create_objects(const std::string& prefix)
     set->add(new ObjectSelectorList::Object(Sprite(*i),
                                             Resource::load_thumb_sprite(*i)));
   }
-  
+
   return set;
 }
 
@@ -290,7 +290,7 @@ ObjectSelector::create_hotspot()
   std::vector<std::string> lst = Resource::resmgr.get_section("hotspots");
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
     set->add(new Hotspot(*i));
-  
+
   return set;
 }
 
@@ -298,7 +298,7 @@ std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_background()
 {
   std::unique_ptr<ObjectSelectorSet> set(new ObjectSelectorSet(object_list, 48, 48));
-  
+
   set->add(new SolidColorBackground());
   set->add(new StarfieldBackground());
 
@@ -313,7 +313,7 @@ std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_entrance()
 {
   std::unique_ptr<ObjectSelectorSet> set(new ObjectSelectorSet(object_list, 48, 48));
-  
+
   set->add(new Entrance());
 
   // prefab entrances
@@ -347,7 +347,7 @@ ObjectSelector::create_exit()
   {
     set->add(new Exit(*i));
   }
- 
+
   return set;
 }
 
@@ -426,7 +426,7 @@ void
 ObjectSelector::update_layout()
 {
   GroupComponent::update_layout();
-  object_list->set_rect(Rect(2, 2 + 60 + 2, rect.get_width() - 2, rect.get_height() - 2)); 
+  object_list->set_rect(Rect(2, 2 + 60 + 2, rect.get_width() - 2, rect.get_height() - 2));
 }
 
 } // namespace Editor

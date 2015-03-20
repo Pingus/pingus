@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -34,15 +34,15 @@ public:
     description(),
     ambient_light(255, 255, 255, 255),
     size(),
-    number_of_pingus(0), 
+    number_of_pingus(0),
     number_to_save(0),
     actions(),
-    time(0), 
+    time(0),
     author(),
     music(),
     objects()
   {}
-                    
+
   std::string resname;
 
   std::string checksum;
@@ -59,12 +59,12 @@ public:
   std::map<std::string, int> actions;
 
   int time;
-  
+
   std::string author;
   std::string music;
 
   std::vector<FileReader> objects;
-}; 
+};
 
 #endif
 

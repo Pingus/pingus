@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -36,7 +36,7 @@ PathGraph::PathGraph(Worldmap* arg_worldmap, const FileReader& reader) :
 {
   parse_nodes(reader.read_section("nodes"));
   parse_edges(reader.read_section("edges"));
-  
+
   init_cache();
 }
 
@@ -58,7 +58,7 @@ PathGraph::parse_nodes(const FileReader& reader)
 {
   const std::vector<FileReader>& childs = reader.get_sections();
 
-  for(std::vector<FileReader>::const_iterator i = childs.begin(); 
+  for(std::vector<FileReader>::const_iterator i = childs.begin();
       i != childs.end(); ++i)
   {
     Dot* dot = DotFactory::create(*i);
@@ -89,7 +89,7 @@ PathGraph::parse_edges(const FileReader& reader)
 {
   const std::vector<FileReader>& childs = reader.get_sections();
 
-  for(std::vector<FileReader>::const_iterator i = childs.begin(); 
+  for(std::vector<FileReader>::const_iterator i = childs.begin();
       i != childs.end(); ++i)
   {
     if (i->get_name() == "edge")
@@ -101,13 +101,13 @@ PathGraph::parse_edges(const FileReader& reader)
       i->read_string("name",   name);
       i->read_string("source", source);
       i->read_string("destination", destination);
-          
+
       // FIXME: add path-data parsing here
       Path* path = new Path();
-          
+
       const std::vector<FileReader>& childs2 = reader.read_section("positions").get_sections();
-          
-      for(std::vector<FileReader>::const_iterator j = childs2.begin(); 
+
+      for(std::vector<FileReader>::const_iterator j = childs2.begin();
           j != childs2.end(); ++j)
       {
         if (j->get_name() == "position")

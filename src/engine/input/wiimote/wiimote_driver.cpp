@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -51,7 +51,7 @@ WiimoteDriver::update(float delta)
       pout(PINGUS_DEBUG_INPUT) << "WiimoteDriver: (wiimote:button (button "
                                << event.button.button << ")) => "
                                << event.button.down << std::endl;
-                  
+
       for (std::vector<ButtonBinding>::const_iterator j = button_bindings.begin();
            j != button_bindings.end();
            ++j)
@@ -65,7 +65,7 @@ WiimoteDriver::update(float delta)
     else if (event.type == WiimoteEvent::WIIMOTE_AXIS_EVENT)
     {
       pout(PINGUS_DEBUG_INPUT) << "WiimoteDriver: (wiimote:axis (axis "
-                               << event.axis.axis << ")) => " 
+                               << event.axis.axis << ")) => "
                                << event.axis.pos
                                << std::endl; // Fixme: should output string
 
@@ -84,12 +84,12 @@ WiimoteDriver::update(float delta)
       if (event.acc.accelerometer == 0)
       {
         if (0)
-          printf("%d - %6.3f %6.3f %6.3f\n",  
+          printf("%d - %6.3f %6.3f %6.3f\n",
                  event.acc.accelerometer,
                  event.acc.x,
                  event.acc.y,
                  event.acc.z);
-                 
+
         float roll = atan(event.acc.x/event.acc.z);
         if (event.acc.z <= 0.0) {
           roll += M_PI * ((event.acc.x > 0.0) ? 1 : -1);
@@ -113,7 +113,7 @@ WiimoteDriver::update(float delta)
 }
 
 Button*
-WiimoteDriver::create_button(const FileReader& reader, Control* parent) 
+WiimoteDriver::create_button(const FileReader& reader, Control* parent)
 {
   std::string button;
   if (reader.get_name() == "wiimote:button")
@@ -126,7 +126,7 @@ WiimoteDriver::create_button(const FileReader& reader, Control* parent)
     else
     {
       int button_id = Wiimote::str2id(StringUtil::to_lower(button));
-          
+
       if (button_id == Wiimote::UNKNOWN)
       {
         std::cout << "Error: WiimoteDriver: unknown button: " << button << std::endl;
@@ -148,7 +148,7 @@ WiimoteDriver::create_button(const FileReader& reader, Control* parent)
 }
 
 Axis*
-WiimoteDriver::create_axis(const FileReader& reader, Control* parent) 
+WiimoteDriver::create_axis(const FileReader& reader, Control* parent)
 {
   std::string axis;
   if (reader.get_name() == "wiimote:axis")
@@ -187,15 +187,15 @@ WiimoteDriver::create_axis(const FileReader& reader, Control* parent)
 }
 
 Scroller*
-WiimoteDriver::create_scroller(const FileReader& reader, Control* parent) 
+WiimoteDriver::create_scroller(const FileReader& reader, Control* parent)
 {
-  return 0; 
+  return 0;
 }
 
 Pointer*
 WiimoteDriver::create_pointer (const FileReader& reader, Control* parent)
 {
-  return 0; 
+  return 0;
 }
 
 } // namespace Input

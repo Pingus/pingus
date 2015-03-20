@@ -51,7 +51,7 @@ Origin string2origin(const std::string& str)
     return origin_bottom_center;
   else if (str == "bottom_right")
     return origin_bottom_right;
-  else 
+  else
     return origin_top_left;
 }
 

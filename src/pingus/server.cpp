@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -50,7 +50,7 @@ static std::unique_ptr<std::ostream> get_demostream(const PingusLevel& plf)
   std::string filename = System::get_userdir() + "demos/" + flat_levelname + "-" + get_date_string() + ".pingus-demo";
 
   std::unique_ptr<std::ofstream> out(new std::ofstream(filename.c_str()));
-  
+
   if (!(*out.get()))
   {
     log_error("DemoRecorder: Error: Couldn't write DemoFile '%1%', demo recording will be disabled", filename);
@@ -86,7 +86,7 @@ Server::Server(const PingusLevel& arg_plf, bool record_demo) :
 
 Server::~Server ()
 {
-  if (demostream.get()) // FIXME: Any better place to put this? 
+  if (demostream.get()) // FIXME: Any better place to put this?
     (*demostream) << "(end (time " << get_time() << "))" << std::endl;
 }
 

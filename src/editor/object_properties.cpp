@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -86,10 +86,10 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
 {
   type_label = create<Label>(Rect(Vector2i(4, 4), Size(120, 20)), _("Object:"));
   mesg_label = create<Label>(Rect(Vector2i(10, 0), Size(180, 20)), _("Nothing selected"));
-    
+
   Rect label_rect(10,0, 80, 20);
   Rect box_rect(80,0, 190, 20);
-  
+
   // Groundpiece Type
   gptype_label = create<Label>(label_rect, "GPType:");
   gptype_type = create<Combobox>(box_rect);
@@ -104,7 +104,7 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
   gptype_type->set_selected_item(Groundtype::GP_GROUND);
 
   gptype_type->on_select.connect(std::bind(&ObjectProperties::on_gptype_change, this, std::placeholders::_1));
-  
+
   entrance_direction_label = create<Label>(label_rect, _("Direction:"));
   entrance_direction = create<Combobox>(box_rect);
   entrance_direction->add(0, _("Left"));
@@ -113,18 +113,18 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
   entrance_direction->set_selected_item(0);
 
   entrance_direction->on_select.connect(std::bind(&ObjectProperties::on_entrance_direction_change, this, std::placeholders::_1));
-  
+
   release_rate_label = create<Label>(label_rect, _("ReleaseRate:"));
   release_rate_inputbox = create<Inputbox>(box_rect);
 
   release_rate_inputbox->on_change.connect(std::bind(&ObjectProperties::on_release_rate_change, this, std::placeholders::_1));
-  
+
   // Background Stretch
   stretch_label = create<Label>(label_rect, "Stretch:");
-  stretch_x_checkbox = create<Checkbox>(Rect(Vector2i(box_rect.left, box_rect.top), 
+  stretch_x_checkbox = create<Checkbox>(Rect(Vector2i(box_rect.left, box_rect.top),
                                              Size(box_rect.get_width()/2, box_rect.get_height())),
                                         "X");
-  stretch_y_checkbox = create<Checkbox>(Rect(Vector2i(box_rect.left+box_rect.get_width()/2, box_rect.top), 
+  stretch_y_checkbox = create<Checkbox>(Rect(Vector2i(box_rect.left+box_rect.get_width()/2, box_rect.top),
                                              Size(box_rect.get_width()/2, box_rect.get_height())),
                                         "Y");
 
@@ -132,11 +132,11 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
   stretch_y_checkbox->on_change.connect(std::bind(&ObjectProperties::on_stretch_y_change, this, std::placeholders::_1));
 
   keep_aspect_label = create<Label>(label_rect, "Aspect:");
-  keep_aspect_checkbox = create<Checkbox>(Rect(Vector2i(box_rect.left, box_rect.top), 
+  keep_aspect_checkbox = create<Checkbox>(Rect(Vector2i(box_rect.left, box_rect.top),
                                                Size(box_rect.get_width(), box_rect.get_height())),
                                           "keep");
   keep_aspect_checkbox->on_change.connect(std::bind(&ObjectProperties::on_keep_aspect_change, this, std::placeholders::_1));
- 
+
   para_x_label = create<Label>(label_rect, _("Para-X:"));
   para_y_label = create<Label>(label_rect, _("Para-Y:"));
 
@@ -145,7 +145,7 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
 
   para_x_inputbox->on_change.connect(std::bind(&ObjectProperties::on_para_x_change, this, std::placeholders::_1));
   para_y_inputbox->on_change.connect(std::bind(&ObjectProperties::on_para_y_change, this, std::placeholders::_1));
-  
+
   scroll_x_label = create<Label>(label_rect, _("Scroll-X:"));
   scroll_y_label = create<Label>(label_rect, _("Scroll-Y:"));
 
@@ -154,16 +154,16 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
 
   scroll_x_inputbox->on_change.connect(std::bind(&ObjectProperties::on_scroll_x_change, this, std::placeholders::_1));
   scroll_y_inputbox->on_change.connect(std::bind(&ObjectProperties::on_scroll_y_change, this, std::placeholders::_1));
-  
+
   owner_label = create<Label>(label_rect, _("Owner Id:"));
   owner_inputbox = create<Inputbox>(box_rect);
   owner_inputbox->on_change.connect(std::bind(&ObjectProperties::on_owner_change, this, std::placeholders::_1));
-  
+
   pos_z_label = create<Label>(label_rect, _("Z-Pos:"));
   pos_z_inputbox = create<Inputbox>(box_rect);
   pos_z_inputbox->on_change.connect(std::bind(&ObjectProperties::on_pos_z_change, this, std::placeholders::_1));
   // ___________________________________________________________________
-  //  
+  //
   Size color_s(box_rect.get_width()/4, box_rect.get_height());
 
   color_label = create<Label>(label_rect, _("Color:"));
@@ -239,9 +239,9 @@ void
 ObjectProperties::place(GUI::RectComponent* comp)
 {
   Rect crect = comp->get_rect();
-  comp->set_rect(Rect(crect.left, 
-                      y_pos, 
-                      crect.right, 
+  comp->set_rect(Rect(crect.left,
+                      y_pos,
+                      crect.right,
                       y_pos + crect.get_height()));
   comp->show();
 }
@@ -252,14 +252,14 @@ ObjectProperties::place(GUI::RectComponent* comp1, GUI::RectComponent* comp2)
   Rect rect1 = comp1->get_rect();
   Rect rect2 = comp2->get_rect();
 
-  comp1->set_rect(Rect(rect1.left, 
-                       y_pos, 
-                       rect1.right, 
+  comp1->set_rect(Rect(rect1.left,
+                       y_pos,
+                       rect1.right,
                        y_pos + rect1.get_height()));
 
-  comp2->set_rect(Rect(rect2.left, 
-                       y_pos, 
-                       rect2.right, 
+  comp2->set_rect(Rect(rect2.left,
+                       y_pos,
+                       rect2.right,
                        y_pos + rect2.get_height()));
 
   comp1->show();
@@ -272,16 +272,16 @@ void
 ObjectProperties::hide_all()
 {
   y_pos = 30;
-      
+
   // Hide everything
   mesg_label->hide();
 
   gptype_label->hide();
   gptype_type->hide();
-  
+
   entrance_direction_label->hide();
   entrance_direction->hide();
- 
+
   release_rate_label->hide();
   release_rate_inputbox->hide();
 
@@ -294,13 +294,13 @@ ObjectProperties::hide_all()
 
   para_x_label->hide();
   para_x_inputbox->hide();
- 
+
   para_y_label->hide();
   para_y_inputbox->hide();
 
   scroll_x_label->hide();
   scroll_x_inputbox->hide();
- 
+
   scroll_y_label->hide();
   scroll_y_inputbox->hide();
 
@@ -355,7 +355,7 @@ ObjectProperties::set_object(LevelObjPtr obj)
       gptype_type->set_selected_item(Groundtype::string_to_type(obj->get_ground_type()));
       place(gptype_label, gptype_type);
     }
-      
+
     if (attr & HAS_DIRECTION)
     {
       if (obj->get_direction() == "left")
@@ -369,27 +369,27 @@ ObjectProperties::set_object(LevelObjPtr obj)
 
       place(entrance_direction_label, entrance_direction);
     }
-      
+
     if (attr & HAS_SPEED)
     { // obsolete in large part, since sprites have their own speed
     }
-      
+
     if (attr & HAS_PARALLAX)
     { // used for hotspot
     }
-        
+
     if (attr & HAS_REPEAT)
-    { 
+    {
       repeat_inputbox->set_text(StringUtil::to_string(obj->get_repeat()));
       place(repeat_label, repeat_inputbox);
     }
-        
+
     if (attr & HAS_OWNER)
     {
       owner_inputbox->set_text(StringUtil::to_string(obj->get_owner()));
       place(owner_label, owner_inputbox);
     }
-        
+
     if (attr & HAS_COLOR)
     {
       color_r_inputbox->set_text(StringUtil::to_string(static_cast<int>(obj->get_color().r)));
@@ -408,7 +408,7 @@ ObjectProperties::set_object(LevelObjPtr obj)
     if (attr & HAS_SCROLL)
     {
       scroll_x_inputbox->set_text(StringUtil::to_string(obj->get_scroll_x()));
-      scroll_y_inputbox->set_text(StringUtil::to_string(obj->get_scroll_y()));          
+      scroll_y_inputbox->set_text(StringUtil::to_string(obj->get_scroll_y()));
 
       place(scroll_x_label, scroll_x_inputbox);
       place(scroll_y_label, scroll_y_inputbox);
@@ -631,7 +631,7 @@ ObjectProperties::on_color_r_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
-    Color color = (*i)->get_color(); 
+    Color color = (*i)->get_color();
     color.r = static_cast<char>(StringUtil::to<int>(str));
     (*i)->set_color(color);
   }
@@ -642,7 +642,7 @@ ObjectProperties::on_color_g_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
-    Color color = (*i)->get_color(); 
+    Color color = (*i)->get_color();
     color.g = static_cast<uint8_t>(StringUtil::to<int>(str));
     (*i)->set_color(color);
   }
@@ -653,7 +653,7 @@ ObjectProperties::on_color_b_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
-    Color color = (*i)->get_color(); 
+    Color color = (*i)->get_color();
     color.b = static_cast<uint8_t>(StringUtil::to<int>(str));
     (*i)->set_color(color);
   }
@@ -663,8 +663,8 @@ void
 ObjectProperties::on_color_a_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
-  { 
-    Color color = (*i)->get_color(); 
+  {
+    Color color = (*i)->get_color();
     color.a = static_cast<uint8_t>(StringUtil::to<int>(str));
     (*i)->set_color(color);
   }
@@ -694,7 +694,7 @@ ObjectProperties::on_large_stars_change(const std::string& str)
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
     (*i)->set_large_stars(StringUtil::to<int>(str));
-  }  
+  }
 }
 
 void

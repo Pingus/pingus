@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -23,7 +23,7 @@
 
 OpenGLFramebuffer::OpenGLFramebuffer() :
   screen(),
-  cliprect_stack()  
+  cliprect_stack()
 {
 }
 
@@ -37,7 +37,7 @@ void
 OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable)
 {
   int flags = SDL_OPENGL;
-  
+
   if (fullscreen)
   {
     flags |= SDL_FULLSCREEN;
@@ -47,10 +47,10 @@ OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resiza
     flags |= SDL_RESIZABLE;
   }
 
-  int bpp = 0; // auto-detect 
+  int bpp = 0; // auto-detect
   screen = SDL_SetVideoMode(size.width, size.height, bpp, flags);
 
-  if(screen == 0) 
+  if(screen == 0)
   {
     std::ostringstream msg;
     msg << "Couldn't set video mode (" << size.width << "x" << size.height
@@ -96,7 +96,7 @@ OpenGLFramebuffer::flip()
 {
   SDL_GL_SwapBuffers();
 }
-  
+
 void
 OpenGLFramebuffer::push_cliprect(const Rect& rect)
 {
@@ -109,15 +109,15 @@ OpenGLFramebuffer::push_cliprect(const Rect& rect)
   }
   else
   {
-    cliprect_stack.push_back(Rect(Math::max(cliprect_stack.back().left,   rect.left), 
-                                  Math::max(cliprect_stack.back().top,    rect.top), 
-                                  Math::min(cliprect_stack.back().right,  rect.right), 
+    cliprect_stack.push_back(Rect(Math::max(cliprect_stack.back().left,   rect.left),
+                                  Math::max(cliprect_stack.back().top,    rect.top),
+                                  Math::min(cliprect_stack.back().right,  rect.right),
                                   Math::min(cliprect_stack.back().bottom, rect.bottom)));
   }
 
   glScissor(cliprect_stack.back().left,
-            screen->h - cliprect_stack.back().bottom, 
-            cliprect_stack.back().get_width(), 
+            screen->h - cliprect_stack.back().bottom,
+            cliprect_stack.back().get_width(),
             cliprect_stack.back().get_height());
 }
 
@@ -133,7 +133,7 @@ OpenGLFramebuffer::pop_cliprect()
   else
   {
     const Rect& rect = cliprect_stack.back();
-    glScissor(rect.left,        rect.top, 
+    glScissor(rect.left,        rect.top,
               rect.get_width(), rect.get_height());
   }
 }
@@ -148,9 +148,9 @@ void
 OpenGLFramebuffer::draw_surface(const FramebufferSurface& src, const Rect& srcrect, const Vector2i& pos)
 {
   const OpenGLFramebufferSurfaceImpl* texture = static_cast<OpenGLFramebufferSurfaceImpl*>(src.get_impl());
-  
+
   glBindTexture(GL_TEXTURE_2D, texture->get_handle());
-  
+
   int vertices[] = {
     pos.x,                     pos.y,
     pos.x+srcrect.get_width(), pos.y,
@@ -158,18 +158,18 @@ OpenGLFramebuffer::draw_surface(const FramebufferSurface& src, const Rect& srcre
     pos.x,                     pos.y+srcrect.get_height(),
   };
   glVertexPointer(2, GL_INT, 0, vertices);
-  
+
   float uvs[] = {
-    static_cast<float>(srcrect.left)   / static_cast<float>(texture->get_texture_size().width), 
+    static_cast<float>(srcrect.left)   / static_cast<float>(texture->get_texture_size().width),
     static_cast<float>(srcrect.top)    / static_cast<float>(texture->get_texture_size().height),
 
-    static_cast<float>(srcrect.right)  / static_cast<float>(texture->get_texture_size().width), 
+    static_cast<float>(srcrect.right)  / static_cast<float>(texture->get_texture_size().width),
     static_cast<float>(srcrect.top)    / static_cast<float>(texture->get_texture_size().height),
 
-    static_cast<float>(srcrect.right)  / static_cast<float>(texture->get_texture_size().width), 
+    static_cast<float>(srcrect.right)  / static_cast<float>(texture->get_texture_size().width),
     static_cast<float>(srcrect.bottom) / static_cast<float>(texture->get_texture_size().height),
 
-    static_cast<float>(srcrect.left)   / static_cast<float>(texture->get_texture_size().width), 
+    static_cast<float>(srcrect.left)   / static_cast<float>(texture->get_texture_size().width),
     static_cast<float>(srcrect.bottom) / static_cast<float>(texture->get_texture_size().height)
   };
 

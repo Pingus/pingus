@@ -23,14 +23,14 @@
 
 namespace resource {
 
-template<typename Key, 
+template<typename Key,
          typename Data,
          typename Loader>
 class ResourceManager
 {
 private:
   std::map<Key, Resource<Data> > m_resources;
-  
+
 public:
   ResourceManager() :
     m_resources()

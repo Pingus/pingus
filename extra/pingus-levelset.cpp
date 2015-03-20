@@ -22,7 +22,7 @@
 int main(int argc, char** argv)
 {
   std::vector<Pathname> files;
-  enum { 
+  enum {
     kTitle       = (1<<0),
     kDescription = (1<<1),
     kLevels      = (1<<2),
@@ -46,8 +46,8 @@ int main(int argc, char** argv)
 
   while (argp.next())
   {
-    switch (argp.get_key()) 
-    {          
+    switch (argp.get_key())
+    {
       case 'h':
         argp.print_help();
         exit(EXIT_SUCCESS);

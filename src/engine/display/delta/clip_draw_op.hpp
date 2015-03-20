@@ -40,7 +40,7 @@ public:
 
   ~ClipDrawOp() {}
 
-  void render(Framebuffer& fb) 
+  void render(Framebuffer& fb)
   {
     if (m_push)
     {
@@ -57,7 +57,7 @@ public:
   }
 
   bool operator==(const ClipDrawOp& rhs) const {
-    return 
+    return
       m_rect == rhs.m_rect &&
       m_push == rhs.m_push;
   }

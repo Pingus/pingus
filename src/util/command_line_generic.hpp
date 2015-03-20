@@ -43,7 +43,7 @@ private:
 
   std::string programm;
 
-  struct Option 
+  struct Option
   {
     int key;
     std::string help;
@@ -59,7 +59,7 @@ private:
       visible()
     {}
   };
-  
+
   typedef std::vector<Option> Options;
   Options options;
 
@@ -84,7 +84,7 @@ private:
     USAGE     = -5
   };
 
-public:  
+public:
   CommandLine_Generic();
 
   void set_help_indent(int i) { help_indent = i; }
@@ -92,16 +92,16 @@ public:
   void add_usage(const std::string& usage);
   void add_doc(const std::string& doc);
   void add_group(const std::string& grouptopic);
-  
+
   void add_option(int key,
-                  const std::string& long_option, 
+                  const std::string& long_option,
                   const std::string& argument,
                   const std::string& help,
                   bool visible = true);
 
   void parse_args(int argc, char** argv);
   void print_help();
-  
+
   bool next();
   int get_key();
   std::string get_argument();

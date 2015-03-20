@@ -104,16 +104,16 @@ Options::from_file_reader(const FileReader& reader)
     opts.framebuffer_type.set(fbtype_value);
   }
 
-  if (reader.read_int("master-volume", int_value)) 
+  if (reader.read_int("master-volume", int_value))
   {
     opts.master_volume.set(int_value);
   }
-  
+
   if (reader.read_int("sound-volume", int_value))
   {
     opts.sound_volume.set(int_value);
   }
-  
+
   if (reader.read_int("music-volume", int_value))
   {
     opts.music_volume.set(int_value);
@@ -123,7 +123,7 @@ Options::from_file_reader(const FileReader& reader)
   {
     opts.geometry.set(size_value);
   }
-  
+
   if (reader.read_size("fullscreen-resolution", size_value))
   {
     opts.fullscreen_resolution.set(size_value);
@@ -133,7 +133,7 @@ Options::from_file_reader(const FileReader& reader)
   {
     opts.fullscreen.set(bool_value);
   }
-  
+
   if (reader.read_bool("resizable", bool_value))
   {
     opts.resizable.set(bool_value);
@@ -143,7 +143,7 @@ Options::from_file_reader(const FileReader& reader)
   {
     opts.mouse_grab.set(bool_value);
   }
-  
+
   if (reader.read_bool("print-fps", bool_value))
   {
     opts.mouse_grab.set(bool_value);
@@ -158,12 +158,12 @@ Options::from_file_reader(const FileReader& reader)
   {
     opts.language.set(string_value);
   }
-  
+
   if (reader.read_bool("software-cursor", bool_value))
   {
     opts.software_cursor.set(bool_value);
   }
-  
+
   if (reader.read_bool("auto-scrolling", bool_value))
   {
     opts.auto_scrolling.set(bool_value);
@@ -220,7 +220,7 @@ Options::save(const Pathname& filename) const
 
   if (language.is_set())
     writer.write_string("language", language.get());
-  
+
   if (software_cursor.is_set())
     writer.write_bool("software-cursor", software_cursor.get());
 
@@ -229,7 +229,7 @@ Options::save(const Pathname& filename) const
 
   if (drag_drop_scrolling.is_set())
     writer.write_bool("drag-drop-scrolling", drag_drop_scrolling.get());
-  
+
   writer.end_section(); // pingus-config
 
   out << std::endl;

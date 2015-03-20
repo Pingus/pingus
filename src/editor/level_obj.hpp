@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -107,7 +107,7 @@ public:
 
   /** Retrive the objects scroll value in the y direction */
   virtual float get_scroll_y() const = 0;
-  
+
   /** Returns the parallax speed multiplier in the x direction */
   virtual float get_para_x() const = 0;
 
@@ -141,7 +141,7 @@ public:
 
   virtual void set_pos_z(float z) = 0;
   virtual float get_pos_z() const = 0;
-        
+
   /** Original position of the objects before being dragged around */
   virtual void set_orig_pos(const Vector3f p) = 0;
 
@@ -220,7 +220,7 @@ public:
 
   /** Call when the sprite needs to be reloaded */
   virtual void refresh_sprite() = 0;
-  
+
   /** Draws the sprite with the modifier applied */
   virtual void draw(DrawingContext &gc) = 0;
 
@@ -242,8 +242,8 @@ public:
 
   virtual LevelObjPtr duplicate(const Vector2i& offset) const = 0;
 };
-  
-} // namespace Editor 
+
+} // namespace Editor
 
 #endif
 

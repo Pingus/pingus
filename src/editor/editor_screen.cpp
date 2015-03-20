@@ -6,12 +6,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -54,10 +54,10 @@ EditorScreen::EditorScreen() :
 {
   // Create the viewport for the images and data
   viewport = new Viewport(this, Rect(0, 38,
-                                     size.width - 244, 
+                                     size.width - 244,
                                      size.height));
   gui_manager->add(viewport);
-        
+
   // Create the panel for the buttons
   panel = new Panel(this);
 
@@ -79,16 +79,16 @@ EditorScreen::EditorScreen() :
 
   object_selector = gui_manager->create<ObjectSelector>(this, Rect());
 
-  file_load_dialog = gui_manager->create<FileDialog>(this, Rect(Vector2i(50, 50), 
-                                                                Size(size.width  - 100, 
-                                                                     size.height - 100)), 
+  file_load_dialog = gui_manager->create<FileDialog>(this, Rect(Vector2i(50, 50),
+                                                                Size(size.width  - 100,
+                                                                     size.height - 100)),
                                                      FileDialog::LOAD);
   file_load_dialog->set_directory(".");
   file_load_dialog->hide();
 
-  file_save_dialog = gui_manager->create<FileDialog>(this, Rect(Vector2i(50, 50), 
-                                                                Size(Display::get_width() - 100, 
-                                                                     Display::get_height() - 100)), 
+  file_save_dialog = gui_manager->create<FileDialog>(this, Rect(Vector2i(50, 50),
+                                                                Size(Display::get_width() - 100,
+                                                                     Display::get_height() - 100)),
                                                      FileDialog::SAVE);
   file_save_dialog->set_directory(".");
   file_save_dialog->hide();
@@ -97,7 +97,7 @@ EditorScreen::EditorScreen() :
     Size msg_size(600, 160);
 
     m_level_new_msgbox = gui_manager->create<MessageBox>(Rect(Vector2i((Display::get_width() - msg_size.width)/2,
-                                                                       (Display::get_height() - msg_size.height)/2), 
+                                                                       (Display::get_height() - msg_size.height)/2),
                                                               msg_size));
     m_level_new_msgbox->set_title("Create new level");
     m_level_new_msgbox->set_text("Replace current level with an empty new one?");
@@ -145,7 +145,7 @@ EditorScreen::on_action_down_press()
 }
 
 // Save the current level
-void 
+void
 EditorScreen::save(const Pathname& file)
 {
   std::string filename = file.get_sys_path();
@@ -173,14 +173,14 @@ EditorScreen::set_level(std::unique_ptr<EditorLevel> level)
 
   level_properties->set_level(plf.get());
   action_properties->set_level(plf.get());
-  viewport->refresh();   
+  viewport->refresh();
 }
 
 // Load a new level
-void 
+void
 EditorScreen::load(const Pathname& file)
 {
-  try 
+  try
   {
     std::string filename = file.get_sys_path();
 
@@ -209,7 +209,7 @@ EditorScreen::draw(DrawingContext& gc)
   // Black out screen
   //gc.fill_screen(Color(255,0,255)); // FIXME: Could be removed for added speed
   gui_manager->draw(gc);
-  
+
   if (show_help)
   {
     Size size_(640, 400);
@@ -218,12 +218,12 @@ EditorScreen::draw(DrawingContext& gc)
                           gc.get_width()/2  + size_.width/2 + 2,
                           gc.get_height()/2 + size_.height/2 + 2),
                      Color(0,0,0));
-    gc.draw_fillrect(Rect(gc.get_width()/2  - size_.width/2, 
+    gc.draw_fillrect(Rect(gc.get_width()/2  - size_.width/2,
                           gc.get_height()/2 - size_.height/2,
-                          gc.get_width()/2  + size_.width/2, 
+                          gc.get_width()/2  + size_.width/2,
                           gc.get_height()/2 + size_.height/2),
                      Color(255,255,255));
-      
+
     gc.print_center(Fonts::verdana11,
                     Vector2i(gc.get_width()/2,
                              gc.get_height()/2 - size_.height/2 + 12),
@@ -322,22 +322,22 @@ EditorScreen::level_new_without_confirm()
   set_level(std::unique_ptr<EditorLevel>(new EditorLevel));
 }
 
-void 
+void
 EditorScreen::level_new()
 {
   m_level_new_msgbox->show();
 }
 
-void 
+void
 EditorScreen::level_load()
 {
   if (file_load_dialog->is_visible())
     file_load_dialog->hide();
-  else 
+  else
     file_load_dialog->show();
 }
 
-void 
+void
 EditorScreen::level_save()
 {
   if (level_pathname.empty())
@@ -346,16 +346,16 @@ EditorScreen::level_save()
   }
   else
   {
-    save(level_pathname); 
+    save(level_pathname);
   }
 }
 
-void 
+void
 EditorScreen::level_save_as()
 {
   if (file_save_dialog->is_visible())
     file_save_dialog->hide();
-  else 
+  else
     file_save_dialog->show();
 }
 
@@ -374,66 +374,66 @@ EditorScreen::objects_duplicate()
   viewport->duplicate_selected_objects();
 }
 
-void 
+void
 EditorScreen::objects_delete()
 {
   viewport->delete_selected_objects();
 }
 
-void 
+void
 EditorScreen::objects_raise_to_top()
 {
   viewport->raise_objects_to_top();
 }
 
-void 
+void
 EditorScreen::objects_raise()
 {
   viewport->raise_objects();
 }
 
-void 
+void
 EditorScreen::objects_lower()
 {
   viewport->lower_objects();
 }
 
-void 
+void
 EditorScreen::objects_lower_to_bottom()
 {
   viewport->lower_objects_to_bottom();
 }
 
-void 
+void
 EditorScreen::objects_flip_vertical()
 {
   viewport->vflip_selected_objects();
 }
 
-void 
+void
 EditorScreen::objects_flip_horizontal()
 {
   viewport->hflip_selected_objects();
 }
 
-void 
+void
 EditorScreen::objects_rotate_left()
 {
   viewport->rotate_270_selected_objects();
 }
 
-void 
+void
 EditorScreen::objects_rotate_right()
 {
   viewport->rotate_90_selected_objects();
 }
 
-void 
+void
 EditorScreen::toggle_grid_snap()
 {
-  log_info("not implemented"); 
+  log_info("not implemented");
 }
- 
+
 void
 EditorScreen::toggle_minimap()
 {
@@ -445,18 +445,18 @@ EditorScreen::toggle_minimap()
   update_layout();
 }
 
-void 
+void
 EditorScreen::toggle_object_selector()
 {
   if (object_selector->is_visible())
     object_selector->hide();
   else
     object_selector->show();
-  
+
   update_layout();
 }
 
-void 
+void
 EditorScreen::toggle_help()
 {
   show_help = !show_help;
@@ -502,7 +502,7 @@ EditorScreen::toggle_level_properties()
 void
 EditorScreen::exit()
 {
-  ScreenManager::instance()->pop_screen();  
+  ScreenManager::instance()->pop_screen();
 }
 
 void
@@ -521,23 +521,23 @@ EditorScreen::update_layout()
   if (object_selector->is_visible())
   {
     viewport->set_rect(Rect(0, 38, size_.width - 244, size_.height));
-    level_properties->set_rect(Rect(Vector2i(0,38), Size(size_.width-244, 258))); 
+    level_properties->set_rect(Rect(Vector2i(0,38), Size(size_.width-244, 258)));
   }
   else
   {
     viewport->set_rect(Rect(0, 38, size_.width, size_.height));
-    level_properties->set_rect(Rect(Vector2i(0,38), Size(size_.width, 258))); 
+    level_properties->set_rect(Rect(Vector2i(0,38), Size(size_.width, 258)));
   }
 
   action_properties->set_rect(Rect(Vector2i(0, 38), Size(150, 240)));
 
-  object_properties->set_rect(Rect(Vector2i(0, size_.height - object_properties->get_rect().get_height()), 
+  object_properties->set_rect(Rect(Vector2i(0, size_.height - object_properties->get_rect().get_height()),
                                    Size(object_properties->get_rect().get_width(),
                                         object_properties->get_rect().get_height())));
-  
-  file_load_dialog->set_rect(Rect(Vector2i(50, 50), Size(size_.width  - 100, 
+
+  file_load_dialog->set_rect(Rect(Vector2i(50, 50), Size(size_.width  - 100,
                                                          size_.height - 100)));
-  file_save_dialog->set_rect(Rect(Vector2i(50, 50), Size(size_.width  - 100, 
+  file_save_dialog->set_rect(Rect(Vector2i(50, 50), Size(size_.width  - 100,
                                                          size_.height - 100)));
 }
 
@@ -549,14 +549,14 @@ EditorScreen::resize(const Size& size_)
   {
     Size msg_size(600, 160);
     m_level_new_msgbox->set_rect(Rect(Vector2i((Display::get_width()  - msg_size.width)/2,
-                                               (Display::get_height() - msg_size.height)/2), 
+                                               (Display::get_height() - msg_size.height)/2),
                                       msg_size));
   }
 
   update_layout();
 }
 
-} // namespace Editor 
+} // namespace Editor
 
 /* EOF */
 

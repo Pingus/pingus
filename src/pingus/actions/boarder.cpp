@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -27,9 +27,9 @@ Boarder::Boarder (Pingu* p) :
   speed(0.0),
   sprite()
 {
-  sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
+  sprite.load(Direction::LEFT,  Sprite("pingus/player" +
                                        pingu->get_owner_str() + "/boarder/left"));
-  sprite.load(Direction::RIGHT, Sprite("pingus/player" + 
+  sprite.load(Direction::RIGHT, Sprite("pingus/player" +
                                        pingu->get_owner_str() + "/boarder/right"));
 }
 
@@ -52,7 +52,7 @@ Boarder::update ()
     while (new_pos.x != pingu->get_pos().x)
     {
       Vector3f old_pos = pingu->get_pos();
-      pingu->set_pos(Vector3f(old_pos.x + (old_pos.x < new_pos.x) ? 1.0f : -1.0f, 
+      pingu->set_pos(Vector3f(old_pos.x + (old_pos.x < new_pos.x) ? 1.0f : -1.0f,
                               old_pos.y, old_pos.z));
 
       if (pingu->rel_getpixel (1, 0))

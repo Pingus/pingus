@@ -70,8 +70,8 @@ void CommandLine::add_group(const std::string& grouptopic)
 }
 
 void CommandLine::add_option(
-  int key, 
-  const std::string& long_option, 
+  int key,
+  const std::string& long_option,
   const std::string& argument,
   const std::string& help,
   bool visible)

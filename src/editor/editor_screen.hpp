@@ -6,12 +6,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -47,7 +47,7 @@ class EditorScreen : public GUIScreen
 private:
   std::unique_ptr<EditorLevel> plf;
   Pathname level_pathname;
-  
+
   Panel* panel;
   Viewport*   viewport;
   ObjectSelector*   object_selector;
@@ -60,7 +60,7 @@ private:
   FileDialog*       file_save_dialog;
 
   MessageBox* m_level_new_msgbox;
-  
+
   bool show_help;
 
 public:
@@ -86,7 +86,7 @@ public:
 
   /** Return the gui_manager */
   GUI::GUIManager* get_gui_manager() const { return gui_manager.get(); }
-        
+
   /** Return the viewport */
   Viewport* get_viewport() const { return viewport; }
 
@@ -94,7 +94,7 @@ public:
 
   /** Return a pointer to the current level */
   EditorLevel* get_level() const { return plf.get(); }
-  
+
   /** Show a file dialog box */
   void show_file_dialog(bool for_loading);
 
@@ -151,7 +151,7 @@ private:
   EditorScreen& operator= (const EditorScreen&);
 };
 
-} // namespace Editor 
+} // namespace Editor
 
 #endif
 

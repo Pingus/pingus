@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -26,7 +26,7 @@ namespace Editor {
 
 /*
  *
- * ActionDialog: 
+ * ActionDialog:
  * [active] [Actionname] [count]
  *
  */
@@ -62,7 +62,7 @@ ActionProperties::draw_background(DrawingContext& gc)
 void
 ActionProperties::update (float delta)
 {
-  
+
 }
 
 void
@@ -74,7 +74,7 @@ ActionProperties::add_action(ActionName::Enum id)
 
   comp.checkbox->set_checked(true);
   comp.inputbox->set_text("20");
-   
+
   action_comps[id] = comp;
 
   comp.checkbox->on_change.connect(std::bind(&ActionProperties::on_checkbox_change, this, std::placeholders::_1, id));
@@ -111,7 +111,7 @@ ActionProperties::on_checkbox_change(bool t, ActionName::Enum id)
 {
   if (t)
   {
-    level->set_action(ActionName::to_string(id), 
+    level->set_action(ActionName::to_string(id),
                       StringUtil::to<int>(action_comps[id].inputbox->get_text()));
   }
   else

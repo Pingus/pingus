@@ -28,14 +28,14 @@ DrawOpBuffer::~DrawOpBuffer()
 {
 }
 
-MemoryPool<DrawOp>& 
-DrawOpBuffer::get_mempool() 
+MemoryPool<DrawOp>&
+DrawOpBuffer::get_mempool()
 {
   return mempool;
 }
-  
+
 void
-DrawOpBuffer::clear() 
+DrawOpBuffer::clear()
 {
   draw_ops.clear();
   mempool.clear();
@@ -63,7 +63,7 @@ DrawOpBuffer::has_op(DrawOp* op) const
 /** Calculate the regions that are different between \a frontbuffer
     and \a backbuffer, results are written to \a changed_regions  */
 void
-DrawOpBuffer::buffer_difference_slow(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer, 
+DrawOpBuffer::buffer_difference_slow(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer,
                                      std::vector<Rect>& changed_regions)
 {
   // FIXME: This is a very slow brute force approach
@@ -97,7 +97,7 @@ DrawOpBuffer::buffer_equal(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& 
 /** Calculate the regions that are different between \a frontbuffer
     and \a backbuffer, results are written to \a changed_regions  */
 void
-DrawOpBuffer::buffer_difference(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer, 
+DrawOpBuffer::buffer_difference(const DrawOpBuffer& frontbuffer, const DrawOpBuffer& backbuffer,
                                 std::vector<Rect>& changed_regions)
 {
   std::vector<DrawOp*> ops;
@@ -106,11 +106,11 @@ DrawOpBuffer::buffer_difference(const DrawOpBuffer& frontbuffer, const DrawOpBuf
   for(DrawOps::const_iterator i = backbuffer.draw_ops.begin(); i != backbuffer.draw_ops.end(); ++i)
     ops.push_back(*i);
 
-  for(DrawOps::const_iterator i = frontbuffer.draw_ops.begin(); i != frontbuffer.draw_ops.end(); ++i)    
+  for(DrawOps::const_iterator i = frontbuffer.draw_ops.begin(); i != frontbuffer.draw_ops.end(); ++i)
     ops.push_back(*i);
 
   std::sort(ops.begin(), ops.end(), ops_id_sorter);
-    
+
   for(DrawOps::size_type i = 0; i < ops.size(); ++i)
   {
     bool is_equal = false;
@@ -119,17 +119,17 @@ DrawOpBuffer::buffer_difference(const DrawOpBuffer& frontbuffer, const DrawOpBuf
       if (ops[i]->equal(ops[j]))
       {
         is_equal = true;
-        if (j == i+1) // FIXME: This is a bit fishy, since ops_id_sorter() doesn't give a perfect sorting 
-          i = j; 
+        if (j == i+1) // FIXME: This is a bit fishy, since ops_id_sorter() doesn't give a perfect sorting
+          i = j;
         break;
       }
     }
-        
+
     if (!is_equal)
       ops[i]->mark_changed_regions(changed_regions);
   }
 }
- 
+
 void
 DrawOpBuffer::render(SDLFramebuffer& fb, DrawOpBuffer& frontbuffer)
 {
@@ -142,7 +142,7 @@ DrawOpBuffer::render(SDLFramebuffer& fb, DrawOpBuffer& frontbuffer)
     // Clip things to the screen
     Size screen_size = fb.get_size();
     for(std::vector<Rect>::iterator i = changed_regions.begin(); i != changed_regions.end(); ++i)
-    { 
+    {
       // FIXME: It might be a good idea to remove empty rectangles here, so that merge_rectangles() can work smoother
       i->left = Math::clamp(0, int(i->left), screen_size.width);
       i->top  = Math::clamp(0, int(i->top),  screen_size.height);
@@ -163,7 +163,7 @@ DrawOpBuffer::render(SDLFramebuffer& fb, DrawOpBuffer& frontbuffer)
       { // Update all regions that need update
 
         for(std::vector<Rect>::iterator i = update_rects.begin(); i != update_rects.end(); ++i)
-        { 
+        {
           // draw things
           fb.push_cliprect(*i);
           for(DrawOps::iterator j = draw_ops.begin(); j != draw_ops.end(); ++j)
@@ -172,7 +172,7 @@ DrawOpBuffer::render(SDLFramebuffer& fb, DrawOpBuffer& frontbuffer)
           }
           fb.pop_cliprect();
         }
-    
+
         fb.update_rects(update_rects);
       }
       else

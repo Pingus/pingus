@@ -18,7 +18,7 @@ int main(int argc, char** argv)
 {
   g_path_manager.set_path("data");
   Resource::init();
- 
+
   Display::create_window(NULL_FRAMEBUFFER, Size(640, 480), false, false);
 
   Fonts::init();
@@ -26,7 +26,7 @@ int main(int argc, char** argv)
 
   for(int i = 1; i < argc; ++i)
   {
-    try 
+    try
     {
       std::cout << "Processing: " << argv[i] << " " << i << "/" << (argc-1) << std::endl;
       PingusLevel plf(Pathname(argv[i], Pathname::SYSTEM_PATH));

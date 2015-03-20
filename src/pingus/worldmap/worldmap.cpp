@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -31,7 +31,7 @@
 
 namespace WorldmapNS {
 
-Worldmap* Worldmap::current_ = 0; 
+Worldmap* Worldmap::current_ = 0;
 
 Worldmap::Worldmap(const Pathname& filename) :
   worldmap(),
@@ -89,7 +89,7 @@ Worldmap::~Worldmap()
 void
 Worldmap::draw(DrawingContext& gc)
 {
-  Vector2i pingu_pos(static_cast<int>(pingus->get_pos().x), 
+  Vector2i pingu_pos(static_cast<int>(pingus->get_pos().x),
                      static_cast<int>(pingus->get_pos().y));
   int min, max;
   int width  = worldmap.get_width();
@@ -121,9 +121,9 @@ Worldmap::draw(DrawingContext& gc)
 
   gc_state.set_size(gc.get_width(), gc.get_height());
   gc_state.set_pos(Vector2i(pingu_pos.x, pingu_pos.y));
-        
+
   gc_state.push(gc);
-  
+
   for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
     (*i)->draw(gc);
 
@@ -131,7 +131,7 @@ Worldmap::draw(DrawingContext& gc)
   Dot* dot = path_graph->get_dot(mpos.x, mpos.y);
   if (dot)
     dot->draw_hover(gc);
-  
+
   gc_state.pop(gc);
 }
 
@@ -326,7 +326,7 @@ Worldmap::set_starting_node()
   }
   else
     id = default_node;
-                
+
   pingus->set_position(id);
 
   LevelDot* leveldot = dynamic_cast<LevelDot*>(path_graph->get_dot(id));

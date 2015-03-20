@@ -149,7 +149,7 @@ GenericLevelObj::get_attributes(std::string obj_type)
   }
 }
 
-void 
+void
 GenericLevelObj::set_res_desc(const ResDescriptor d)
 {
   desc = d;
@@ -162,7 +162,7 @@ GenericLevelObj::draw(DrawingContext &gc)
 {
   if (attribs & HAS_COLOR && section_name == "surface-background")
   {
-    gc.draw(sprite, pos);        
+    gc.draw(sprite, pos);
     gc.draw_fillrect(get_rect(), color, pos.z);
   }
   else if (attribs & HAS_SPRITE || attribs & HAS_SPRITE_FAKE)
@@ -191,7 +191,7 @@ GenericLevelObj::draw(DrawingContext &gc)
     else
     {
       gc.draw(sprite, pos);
-    }  
+    }
   }
 }
 
@@ -226,19 +226,19 @@ GenericLevelObj::is_at(int x, int y)
 
 void
 GenericLevelObj::set_stretch_x(const bool s)
-{ 
+{
   stretch_x = s;
 }
 
 void
 GenericLevelObj::set_stretch_y(const bool s)
-{ 
+{
   stretch_y = s;
 }
 
 void
 GenericLevelObj::set_keep_aspect(const bool a)
-{ 
+{
   keep_aspect = a;
 }
 
@@ -266,7 +266,7 @@ GenericLevelObj::set_modifier(ResourceModifier::Enum modifier)
   if (attribs & CAN_ROTATE)
   {
     desc.modifier = modifier;
-    refresh_sprite();  
+    refresh_sprite();
   }
 }
 
@@ -299,7 +299,7 @@ GenericLevelObj::write_properties(FileWriter &fw)
   }
 
   fw.write_vector("position", pos);
-      
+
   if (attribs_ & HAS_SPEED)
     fw.write_int("speed", speed);
   if (attribs_ & HAS_PARALLAX)
@@ -353,7 +353,7 @@ GenericLevelObj::write_properties(FileWriter &fw)
 
   // Writes any extra properties that may be necessary (virtual function)
   write_extra_properties(fw);
-      
+
   fw.end_section();     // object's section_name
 }
 
@@ -440,13 +440,13 @@ GenericLevelObj::load_generic_surface()
   }
   else if (section_name == "iceblock")
   {
-    desc.res_name = "worldobjs/iceblock";    
+    desc.res_name = "worldobjs/iceblock";
     desc.modifier = ResourceModifier::ROT0;
     sprite = Sprite(desc);
   }
   else if (section_name == "conveyorbelt")
   {
-    desc.res_name = "worldobjs/conveyorbelt_middle";    
+    desc.res_name = "worldobjs/conveyorbelt_middle";
     desc.modifier = ResourceModifier::ROT0;
     sprite = Sprite(desc);
   }
@@ -454,7 +454,7 @@ GenericLevelObj::load_generic_surface()
   {
     desc.res_name = "worldobjs/switchdoor_box";
     desc.modifier = ResourceModifier::ROT0;
-    sprite = Sprite(desc);   
+    sprite = Sprite(desc);
   }
   else if (section_name == "switchdoor-switch")
   {
@@ -506,6 +506,6 @@ GenericLevelObj::duplicate(const Vector2i& offset) const
   return obj;
 }
 
-} // namespace Editor 
+} // namespace Editor
 
 /* EOF */

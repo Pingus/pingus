@@ -34,9 +34,9 @@ private:
   FileReader m_overrides;
 
 private:
-  PrefabFile(const std::string& filename, const std::vector<FileReader>& objects, 
+  PrefabFile(const std::string& filename, const std::vector<FileReader>& objects,
              const FileReader& overrides);
-  
+
 public:
   const std::vector<FileReader>& get_objects() const;
   FileReader get_overrides() const;

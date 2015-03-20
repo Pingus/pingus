@@ -55,7 +55,7 @@ StoryDot::draw_hover(DrawingContext& gc)
   gc.print_center(Fonts::pingus_small,
                   Vector2i(static_cast<int>(pos.x),
                            static_cast<int>(pos.y) - 44),
-                  _(m_name), 
+                  _(m_name),
                   10000);
 }
 
@@ -67,7 +67,7 @@ StoryDot::update(float delta)
 void
 StoryDot::on_click()
 {
-  try 
+  try
   {
     FileReader reader = FileReader::parse(Pathname(m_story, Pathname::DATA_PATH));
     ScreenManager::instance()->push_screen(std::make_shared<StoryScreen>(reader, m_credits));

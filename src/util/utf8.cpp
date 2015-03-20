@@ -1,17 +1,17 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2008 Matthias Braun <matze@braunis.de>, 
+//  Copyright (C) 2008 Matthias Braun <matze@braunis.de>,
 //                     Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -30,7 +30,7 @@ UTF8::is_linebreak_character(uint32_t unicode)
   if (unicode == ' ' || unicode >= 0x3400)
   {
     return true;
-  } 
+  }
   else
   {
     return false;
@@ -42,7 +42,7 @@ UTF8::length(const std::string& str)
 {
   // Not checking for valid UTF-8 sequences should be ok, since
   // incorrect ones are a character too.
-  std::string::size_type len = 0;  
+  std::string::size_type len = 0;
   for(std::string::const_iterator i = str.begin(); i != str.end(); ++i)
   {
     unsigned char c = *i;
@@ -51,14 +51,14 @@ UTF8::length(const std::string& str)
       len += 1;
     }
   }
-  
+
   return len;
 }
 
 std::string
 UTF8::substr(const iterator& first, const iterator& last)
 {
-  return first.get_string().substr(first.get_index(), 
+  return first.get_string().substr(first.get_index(),
                                    last.get_index() - first.get_index());
 }
 
@@ -67,7 +67,7 @@ UTF8::substr(const std::string& text, std::string::size_type pos, std::string::s
 {
   std::string::const_iterator beg_it = UTF8::advance(text.begin(), pos);
   std::string::const_iterator end_it = UTF8::advance(beg_it, n);
-  
+
   return std::string(beg_it, end_it);
 }
 
@@ -101,14 +101,14 @@ UTF8::advance(std::string::const_iterator it, std::string::size_type n)
       it += 1;
     }
   }
-  
+
   return it;
 }
 /**
  * returns true if this byte matches a bitmask of 10xx.xxxx, i.e. it is the 2nd, 3rd or 4th byte of a multibyte utf8 string
  */
 bool
-UTF8::has_multibyte_mark(unsigned char c) 
+UTF8::has_multibyte_mark(unsigned char c)
 {
   return ((c & 0300) == 0200);
 }
@@ -136,14 +136,14 @@ UTF8::decode_utf8(const std::string& text, size_t& p)
   {
     throw std::runtime_error("Malformed utf-8 sequence");
   }
-  else if ((c1 & 0200) == 0000) 
+  else if ((c1 & 0200) == 0000)
   {
     // 0xxx.xxxx: 1 byte sequence
     p+=1;
 
     return c1;
   }
-  else if ((c1 & 0340) == 0300) 
+  else if ((c1 & 0340) == 0300)
   {
     // 110x.xxxx: 2 byte sequence
     if(p+1 >= text.size()) throw std::range_error("Malformed utf-8 sequence");
@@ -153,7 +153,7 @@ UTF8::decode_utf8(const std::string& text, size_t& p)
 
     return (c1 & 0037) << 6 | (c2 & 0077);
   }
-  else if ((c1 & 0360) == 0340) 
+  else if ((c1 & 0360) == 0340)
   {
     // 1110.xxxx: 3 byte sequence
     if(p+2 >= text.size()) throw std::range_error("Malformed utf-8 sequence");
@@ -165,7 +165,7 @@ UTF8::decode_utf8(const std::string& text, size_t& p)
 
     return (c1 & 0017) << 12 | (c2 & 0077) << 6 | (c3 & 0077);
   }
-  else if ((c1 & 0370) == 0360) 
+  else if ((c1 & 0370) == 0360)
   {
     // 1111.0xxx: 4 byte sequence
     if(p+3 >= text.size()) throw std::range_error("Malformed utf-8 sequence");
@@ -193,7 +193,7 @@ UTF8::encode_utf8(uint32_t unicode)
   {
     result += static_cast<uint8_t>(unicode);
   }
-  else if (unicode < 0x800) 
+  else if (unicode < 0x800)
   {
     result += static_cast<uint8_t>((unicode >> 6) | 0xc0);
     result += static_cast<uint8_t>((unicode & 0x3f) | 0x80);
@@ -242,12 +242,12 @@ UTF8::iterator::operator+(int n)
 bool
 UTF8::iterator::next()
 {
-  try 
+  try
   {
     idx = pos;
     chr = decode_utf8(*text, pos);
-  } 
-  catch (std::exception) 
+  }
+  catch (std::exception)
   {
     log_error("Malformed utf-8 sequence beginning with %1% found ", *(reinterpret_cast<const uint32_t*>(text->c_str() + pos)));
     chr = INVALID_UTF8_SEQUENCE;
@@ -258,7 +258,7 @@ UTF8::iterator::next()
 }
 
 uint32_t
-UTF8::iterator::operator*() const 
+UTF8::iterator::operator*() const
 {
   return chr;
 }

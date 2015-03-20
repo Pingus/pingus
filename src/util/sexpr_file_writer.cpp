@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -21,7 +21,7 @@
 #include "util/pathname.hpp"
 
 SExprFileWriter::SExprFileWriter(std::ostream& out_) :
-  out(&out_), 
+  out(&out_),
   level(0)
 {
 }
@@ -69,9 +69,9 @@ void
 SExprFileWriter::write_colorf(const char* name, const Color& color)
 {
   (*out) << "\n" << indent() << "(" << name << " "
-         << static_cast<float>(color.r)/255.0f << " " 
+         << static_cast<float>(color.r)/255.0f << " "
          << static_cast<float>(color.g)/255.0f << " "
-         << static_cast<float>(color.b)/255.0f << " " 
+         << static_cast<float>(color.b)/255.0f << " "
          << static_cast<float>(color.a)/255.0f << ")";
 }
 
@@ -79,9 +79,9 @@ void
 SExprFileWriter::write_colori(const char* name, const Color& color)
 {
   (*out) << "\n" << indent() << "(" << name << " "
-         << static_cast<int>(color.r) << " " 
+         << static_cast<int>(color.r) << " "
          << static_cast<int>(color.g) << " "
-         << static_cast<int>(color.b) << " " 
+         << static_cast<int>(color.b) << " "
          << static_cast<int>(color.a) << ")";
 }
 
@@ -99,7 +99,7 @@ SExprFileWriter::write_string(const char* name, const std::string& value)
   std::string::size_type pos;
 
   std::map<std::string, std::string> replacements;
-        
+
   replacements["\""] = "\\\"";
   replacements["\\"] = "\\\\";
 
@@ -112,7 +112,7 @@ SExprFileWriter::write_string(const char* name, const std::string& value)
       new_value.replace(pos, 1, i->second);
     }
   }
-        
+
   (*out) << "\n" << indent() << "(" << name << " \"" << new_value << "\")";
 }
 

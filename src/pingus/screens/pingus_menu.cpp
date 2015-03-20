@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -48,7 +48,7 @@ PingusMenu::PingusMenu() :
   is_init = false;
 
   Size size_(Display::get_width(), Display::get_height());
-  
+
   start_button = new MenuButton(this, Vector2i(size_.width/2 - 125,
                                                size_.height/2 - 20),
                                 _("Story"),
@@ -59,7 +59,7 @@ PingusMenu::PingusMenu() :
                                  _("Editor"),
                                  _("..:: Create your own levels ::.."));
 
-  options_button = new MenuButton(this, Vector2i(size_.width/2 + 125, 
+  options_button = new MenuButton(this, Vector2i(size_.width/2 + 125,
                                                  size_.height/2 + 50),
                                   _("Options"),
                                   _("..:: Configure the game ::.."));
@@ -69,7 +69,7 @@ PingusMenu::PingusMenu() :
                                   _("Levelsets"),
                                   _("..:: Play User Built levels ::.."));
 
-  quit_button = new MenuButton(this, Vector2i(size_.width/2, 
+  quit_button = new MenuButton(this, Vector2i(size_.width/2,
                                               size_.height/2 + 120),
                                _("Exit"),
                                _("..:: Bye, bye ::.."));
@@ -110,7 +110,7 @@ void
 PingusMenu::do_start(const std::string &filename)
 { // Start the story or worldmap mode
   Sound::PingusSound::play_sound ("letsgo");
-  
+
   std::shared_ptr<WorldmapNS::WorldmapScreen> worldmap_screen = std::make_shared<WorldmapNS::WorldmapScreen>();
   worldmap_screen->load(Pathname(filename, Pathname::DATA_PATH));
   ScreenManager::instance()->push_screen(worldmap_screen);
@@ -164,14 +164,14 @@ PingusMenu::draw_background(DrawingContext& gc)
                         Display::get_height ()),
                    Color(0, 0, 0, 255));
 
-  gc.print_center(Fonts::pingus_small, 
+  gc.print_center(Fonts::pingus_small,
                   Vector2i(gc.get_width() / 2,
                            gc.get_height() - Fonts::pingus_small.get_height() - 8),
                   help);
 
   if (0) // display hint
   {
-    gc.print_center(Fonts::pingus_small, 
+    gc.print_center(Fonts::pingus_small,
                     Vector2i(gc.get_width() / 2,
                              gc.get_height() - Fonts::pingus_small.get_height()),
                     hint);
@@ -230,7 +230,7 @@ PingusMenu::create_background(const Size& size_)
   int w = size_.width;
   int h = size_.height;
 
-  // We only need to scale the background main menu images if the screen 
+  // We only need to scale the background main menu images if the screen
   // resolution is not default
   if (w != globals::default_screen_width ||
       h != globals::default_screen_height)
@@ -240,7 +240,7 @@ PingusMenu::create_background(const Size& size_)
     layer3 = layer3.scale(w, 306 * h / globals::default_screen_height);
     layer4 = layer4.scale(w, 171 * h / globals::default_screen_height);
     layer5 = layer5.scale(302 * w / globals::default_screen_width, 104 * h / globals::default_screen_height);
-      
+
     background->add_layer(Sprite(layer1), 0, 0, 12, 0);
     background->add_layer(Sprite(layer2), 0, 150 * static_cast<float>(h) / static_cast<float>(globals::default_screen_height), 25, 0);
     background->add_layer(Sprite(layer3), 0, 200 * static_cast<float>(h) / static_cast<float>(globals::default_screen_height), 50, 0);
@@ -265,17 +265,17 @@ PingusMenu::resize(const Size& size_)
 
   start_button->set_pos(size.width/2 - 125,
                         size.height/2 - 20);
-    
+
   editor_button->set_pos(size.width/2 + 125,
                          size.height/2 - 20);
 
   contrib_button->set_pos(size.width/2 - 125,
                           size.height/2 + 50);
-  
-  options_button->set_pos(size.width/2 + 125, 
+
+  options_button->set_pos(size.width/2 + 125,
                           size.height/2 + 50);
-  
-  quit_button->set_pos(size.width/2, 
+
+  quit_button->set_pos(size.width/2,
                        size.height/2 + 120);
 }
 

@@ -28,11 +28,11 @@ SpriteDescription::from_file(const Pathname& path)
   reader.read_vector2i("offset", desc->offset);
 
   reader.read_enum("origin", desc->origin, string2origin);
-    
+
   if (!reader.read_path("image",  desc->filename))
   {
     log_error("'image' missing for %1%", reader.get_name());
-  }    
+  }
 
   desc->filename = Pathname(desc->filename.get_raw_path(), Pathname::DATA_PATH); // FIXME: Hack
   reader.read_size("array", desc->array);

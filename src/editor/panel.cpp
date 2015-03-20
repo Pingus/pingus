@@ -5,19 +5,19 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "editor/panel.hpp"
 
 #include "editor/editor_screen.hpp"
-#include "engine/display/display.hpp" 
+#include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
@@ -36,12 +36,12 @@ public:
     pos(pos_)
   {
   }
-  
+
   void draw (DrawingContext& gc)
   {
     gc.draw(sprite, pos);
-  } 
-  
+  }
+
   int get_width() const { return sprite.get_width(); }
 };
 
@@ -62,8 +62,8 @@ private:
   Callback callback;
 
 public:
-  PanelButton(EditorScreen* editor_, 
-              const Vector2i& pos_, const std::string& name, const std::string& tooltip_, 
+  PanelButton(EditorScreen* editor_,
+              const Vector2i& pos_, const std::string& name, const std::string& tooltip_,
               Callback callback_ = 0) :
     editor(editor_),
     button_raised("core/editor/button-raised"),
@@ -92,7 +92,7 @@ public:
     {
       int t_w = static_cast<int>(Fonts::verdana11.get_width(tooltip));
 
-      Rect t_r(pos.x + 17 - t_w/2 - 4, pos.y + 38 - 2, 
+      Rect t_r(pos.x + 17 - t_w/2 - 4, pos.y + 38 - 2,
                pos.x + 17 + t_w/2 + 4, pos.y + 38 + Fonts::verdana11.get_height() + 4);
 
       // if the tooltip goes over the screen borders, move it back to
@@ -117,29 +117,29 @@ public:
   }
 
   /** Emmitted when pointer enters the region of the component */
-  void on_pointer_enter () 
+  void on_pointer_enter ()
   {
     mouse_over = true;
   }
 
   /** Emmitted when pointer leaves the region of the component */
-  void on_pointer_leave () 
+  void on_pointer_leave ()
   {
     mouse_over = false;
   }
-  
-  void on_primary_button_press (int x, int y) 
+
+  void on_primary_button_press (int x, int y)
   {
     mouse_down = true;
   }
 
-  void on_primary_button_release (int x, int y) 
-  { 
+  void on_primary_button_release (int x, int y)
+  {
     mouse_down = false;
     if (mouse_over && callback)
       ((*editor).*callback)();
   }
-  
+
   bool is_at(int x, int y)
   {
     return (pos.x <= x && pos.x + 34 > x &&
@@ -150,7 +150,7 @@ public:
   {
     sprite.update();
   }
-  
+
   int get_width() const {
     return 34;
   }
@@ -165,68 +165,68 @@ Panel::Panel(EditorScreen* editor_) :
   logo("core/editor/logo"),
   pos(2,2),
   callback()
-{  
+{
   editor->get_gui_manager()->add(this);
 
-  add_button("core/editor/document-new",  _("New level"), 
+  add_button("core/editor/document-new",  _("New level"),
              &EditorScreen::level_new);
   add_button("core/editor/document-open", _("Open level..."),
              &EditorScreen::level_load);
-  add_button("core/editor/document-save", _("Save level..."), 
+  add_button("core/editor/document-save", _("Save level..."),
              &EditorScreen::level_save);
-  add_button("core/editor/document-save-as", _("Save level as..."), 
+  add_button("core/editor/document-save-as", _("Save level as..."),
              &EditorScreen::level_save_as);
   add_separator();
-  add_button("core/editor/play", _("Play level..."), 
+  add_button("core/editor/play", _("Play level..."),
              &EditorScreen::level_play);
   add_separator();
-  add_button("core/editor/actions", _("Configure actions"), 
+  add_button("core/editor/actions", _("Configure actions"),
              &EditorScreen::toggle_action_properties);
-  add_button("core/editor/document-properties", _("Configure level"), 
+  add_button("core/editor/document-properties", _("Configure level"),
              &EditorScreen::toggle_level_properties);
-  add_button("core/editor/object-properties", _("Display object properties"), 
+  add_button("core/editor/object-properties", _("Display object properties"),
              &EditorScreen::toggle_object_properties);
-  add_button("core/editor/objects", _("Show object insertion window"), 
+  add_button("core/editor/objects", _("Show object insertion window"),
              &EditorScreen::toggle_object_selector);
-  add_button("core/editor/minimap", _("Show minimap"), 
+  add_button("core/editor/minimap", _("Show minimap"),
              &EditorScreen::toggle_minimap);
   add_separator();
-  add_button("core/editor/copy", _("Duplicate the selected objects") + " (D)",  
+  add_button("core/editor/copy", _("Duplicate the selected objects") + " (D)",
              &EditorScreen::objects_duplicate);
-  add_button("core/editor/delete", _("Delete the selected objects") + " (Delete)",  
+  add_button("core/editor/delete", _("Delete the selected objects") + " (Delete)",
              &EditorScreen::objects_delete);
   add_separator();
-  add_button("core/editor/object-top",    _("Raise object to top") + " (Shift+])", 
+  add_button("core/editor/object-top",    _("Raise object to top") + " (Shift+])",
              &EditorScreen::objects_raise_to_top);
-  add_button("core/editor/object-up",     _("Raise object") + " (])", 
+  add_button("core/editor/object-up",     _("Raise object") + " (])",
              &EditorScreen::objects_raise);
-  add_button("core/editor/object-down",   _("Lower object") + " ([)", 
+  add_button("core/editor/object-down",   _("Lower object") + " ([)",
              &EditorScreen::objects_lower);
-  add_button("core/editor/object-bottom", _("Lower object to bottom") + " (Shift+[)", 
+  add_button("core/editor/object-bottom", _("Lower object to bottom") + " (Shift+[)",
              &EditorScreen::objects_lower_to_bottom);
 
   if (0)
   { // rotate and flip are now in the object properties
     add_separator();
-    add_button("core/editor/object-flip-horizontal", _("Flip object horizontally") + " (F)", 
+    add_button("core/editor/object-flip-horizontal", _("Flip object horizontally") + " (F)",
                &EditorScreen::objects_flip_horizontal);
-    add_button("core/editor/object-flip-vertical", _("Flip object vertically") + " (Shift+F)", 
+    add_button("core/editor/object-flip-vertical", _("Flip object vertically") + " (Shift+F)",
                &EditorScreen::objects_flip_vertical);
     add_separator();
-    add_button("core/editor/object-rotate-left",  _("Rotate object -90 degree") + " (Shift+R)", 
+    add_button("core/editor/object-rotate-left",  _("Rotate object -90 degree") + " (Shift+R)",
                &EditorScreen::objects_rotate_left);
-    add_button("core/editor/object-rotate-right", _("Rotate object 90 degree") + " (R)", 
+    add_button("core/editor/object-rotate-right", _("Rotate object 90 degree") + " (R)",
                &EditorScreen::objects_rotate_right);
   }
 
   // add_separator();
-  //add_button("core/editor/snap-grid", "Snap objects to grid", 
+  //add_button("core/editor/snap-grid", "Snap objects to grid",
   //             &EditorScreen::toggle_grid_snap);
   // add_separator();
   add_separator();
-  add_button("core/editor/help", _("Display help"), 
+  add_button("core/editor/help", _("Display help"),
              &EditorScreen::toggle_help);
-  add_button("core/editor/exit", _("Exit"), 
+  add_button("core/editor/exit", _("Exit"),
              &EditorScreen::exit);
 }
 
@@ -246,7 +246,7 @@ Panel::draw (DrawingContext& gc)
 void
 Panel::update (float delta)
 {
-  
+
 }
 
 void

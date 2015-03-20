@@ -113,7 +113,7 @@ public:
 
   /** Retrive the objects scroll value in the y direction */
   float get_scroll_y() const { return 0; }
-  
+
   /** Returns the parallax speed multiplier in the x direction */
   float get_para_x() const { return 0; }
 
@@ -136,7 +136,7 @@ public:
 
   void set_pos_z(float z) { }
   float get_pos_z() const { return 0.0f; }
-        
+
   /** Original position of the objects before being dragged around */
   void set_orig_pos(const Vector3f p) { m_orig_pos = p; }
 
@@ -211,7 +211,7 @@ public:
 
   /** Call when the sprite needs to be reloaded */
   void refresh_sprite() { }
-  
+
   /** Returns true if the mouse is hovering over this object */
   bool is_at (int x, int y);
 

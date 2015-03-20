@@ -20,7 +20,7 @@
 
 struct Thing {
   int i;
-  
+
   Thing(int i_) : i(i_) {
     std::cout << "Constructing thing: " << i << std::endl;
   }
@@ -36,7 +36,7 @@ int main()
   pool.create<Thing>(5);
   pool.create<Thing>(3);
   pool.create<Thing>(2);
-  
+
   return 0;
 }
 

@@ -90,10 +90,10 @@ protected:
 
   /** Optional color field for certain objects */
   Color color;
-        
+
   /** Optional translation origin of the sprite */
   Origin origin;
-  
+
   int small_stars;
   int middle_stars;
   int large_stars;
@@ -188,8 +188,8 @@ public:
   void set_pos(const Vector3f p);
 
   void set_pos_z(float z);
-  float get_pos_z() const; 
-        
+  float get_pos_z() const;
+
   /** Original position of the objects before being dragged around */
   void set_orig_pos(const Vector3f p) { orig_pos = p; }
 
@@ -296,8 +296,8 @@ private:
 
   /** Write any additional properties to the file for this type */
   virtual void write_extra_properties(FileWriter& fw) { }
-        
-  /** Sets a position vector of where the sprite is located based 
+
+  /** Sets a position vector of where the sprite is located based
       on the "translation origin" specified in the sprite file. */
   void set_translated_pos();
 
@@ -305,7 +305,7 @@ private:
   GenericLevelObj & operator=(const GenericLevelObj&);
 };
 
-} // namespace Editor 
+} // namespace Editor
 
 #endif
 

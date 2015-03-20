@@ -6,12 +6,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -36,11 +36,11 @@ class EditorScreen;
 class ContextMenu;
 
 /** This class is where the actual level graphics will display in the
-    level editor.  Objects can be added, deleted, moved, modified, etc. 
+    level editor.  Objects can be added, deleted, moved, modified, etc.
     inside of the Viewport */
-class Viewport : public GUI::RectComponent 
+class Viewport : public GUI::RectComponent
 {
-private:        
+private:
   GraphicContextState state;
   std::unique_ptr<DrawingContext> drawing_context;
 
@@ -57,7 +57,7 @@ private:
   /** Where the mouse started dragging from */
   Vector2i drag_world_pos;
   Vector2i drag_screen_pos;
-  
+
   /** The currently selected LevelObjs */
   Selection selection;
 
@@ -99,7 +99,7 @@ public:
 
   /** Refresh the list of objects (do when loading or creating a new level) */
   void refresh();
-        
+
   /** Turns the "snap-to-grid" option on or off */
   void set_snap_to(bool s) { snap_to = s; }
 

@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -21,7 +21,7 @@
 class GraphicContextStateImpl
 {
 public:
-  Rect rect; 
+  Rect rect;
   Vector2i offset;
 
   bool have_limit;
@@ -45,9 +45,9 @@ GraphicContextState::GraphicContextState()
 
 GraphicContextState::GraphicContextState(int w, int h)
   : impl(new GraphicContextStateImpl())
-{  
+{
   impl->rect       = Rect(Vector2i(0,0), Size(w, h));
-  impl->offset     = Vector2i(0,0); 
+  impl->offset     = Vector2i(0,0);
   impl->have_limit = false;
 }
 
@@ -55,8 +55,8 @@ GraphicContextState::GraphicContextState(const Rect& rect)
   : impl(new GraphicContextStateImpl())
 {
   impl->rect       = rect;
-  impl->offset     = Vector2i(0,0); 
-  impl->have_limit = false;  
+  impl->offset     = Vector2i(0,0);
+  impl->have_limit = false;
 }
 
 void
@@ -162,20 +162,20 @@ GraphicContextState::screen2world(const Vector2i& pos_) const
                pos_.y - impl->rect.top);
 
   return pos
-    - Vector2i(impl->rect.left, impl->rect.top) 
+    - Vector2i(impl->rect.left, impl->rect.top)
     - impl->offset;
 }
 
 int
-GraphicContextState::get_width()  const 
+GraphicContextState::get_width()  const
 {
-  return impl->rect.get_width(); 
+  return impl->rect.get_width();
 }
 
 int
-GraphicContextState::get_height() const 
-{ 
-  return impl->rect.get_height(); 
+GraphicContextState::get_height() const
+{
+  return impl->rect.get_height();
 }
 
 /* EOF */

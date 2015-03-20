@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -157,14 +157,14 @@ XInputDevice::on_xevent(XEvent &event)
     if (axis[i].pos != old_axis[i].pos)
     {
       //           CL_InputEvent ie;
-          
+
       //           ie.id           = i;
       //           ie.type         = CL_InputEvent::axis_moved;
       //           ie.device       = CL_InputDevice(this);
       //           ie.mouse_pos    = CL_Point(0, 0);
       //           ie.axis_pos     = get_axis(i);
       //           ie.repeat_count = false;
-          
+
       //           sig_axis_move(ie);
     }
   }
@@ -189,17 +189,17 @@ XInputDevice::register_events(Display* dpy,
 
   device = XOpenDevice(dpy, info->id);
 
-  if (!device) 
+  if (!device)
   {
     fprintf(stderr, "unable to open device %s\n", dev_name);
     return 0;
   }
 
-  if (device->num_classes > 0) 
+  if (device->num_classes > 0)
   {
-    for (ip = device->classes, i=0; i<info->num_classes; ip++, i++) 
+    for (ip = device->classes, i=0; i<info->num_classes; ip++, i++)
     {
-      switch (ip->input_class) 
+      switch (ip->input_class)
       {
         case KeyClass:
           DeviceKeyPress  (device, key_press_type,   event_list[number]); number++;
@@ -260,14 +260,14 @@ XInputDevice::get_info(XDeviceInfo* info)
 
   XAnyClassPtr any = (XAnyClassPtr)(info->inputclassinfo);
   std::cout << "Info->num_classes: " << info->num_classes << std::endl;
-  for (int i = 0; i < info->num_classes; ++i) 
+  for (int i = 0; i < info->num_classes; ++i)
   {
-    switch (any->c_class) 
+    switch (any->c_class)
     {
       case KeyClass:
       {
         XKeyInfoPtr k = (XKeyInfoPtr)any;
-  
+
         printf("\tNum_keys is %d\n", k->num_keys);
         printf("\tMin_keycode is %d\n", k->min_keycode);
         printf("\tMax_keycode is %d\n", k->max_keycode);

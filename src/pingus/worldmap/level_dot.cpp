@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -38,7 +38,7 @@ LevelDot::LevelDot(const FileReader& reader) :
   plf()
 {
   std::string resname;
-  reader.read_string("levelname", resname); 
+  reader.read_string("levelname", resname);
 
   plf = PLFResMgr::load_plf(resname);
 }
@@ -123,11 +123,11 @@ LevelDot::draw_hover(DrawingContext& gc)
     gc.print_center(Fonts::pingus_small,
                     Vector2i(static_cast<int>(pos.x),
                              static_cast<int>(pos.y) - 44),
-                    _(get_plf().get_levelname()), 
+                    _(get_plf().get_levelname()),
                     10000);
   }
   else
-  {       
+  {
     gc.print_center(Fonts::pingus_small,
                     Vector2i(static_cast<int>(pos.x),
                              static_cast<int>(pos.y) - 44),
@@ -139,7 +139,7 @@ LevelDot::draw_hover(DrawingContext& gc)
   {
     gc.print_center(Fonts::pingus_small,
                     Vector2i(static_cast<int>(pos.x), static_cast<int>(pos.y) - 70),
-                    get_plf().get_resname(), 
+                    get_plf().get_resname(),
                     10000);
   }
 }

@@ -76,7 +76,7 @@ PrefabFile::get_objects() const
 FileReader
 PrefabFile::get_overrides() const
 {
-  return m_overrides; 
+  return m_overrides;
 }
 
 /* EOF */

@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -41,7 +41,7 @@ private:
 public:
   FontDrawingRequest(Font font_, Origin origin_, const Vector2i& pos_, const std::string& text_, float z_)
     : DrawingRequest(pos_, z_),
-      font(font_), 
+      font(font_),
       origin(origin_),
       text(text_)
   {
@@ -79,7 +79,7 @@ private:
   Color color;
 
 public:
-  FillScreenDrawingRequest(const Color& color_) 
+  FillScreenDrawingRequest(const Color& color_)
     : DrawingRequest(Vector2i(0, 0), -1000.0f),
       color(color_)
   {
@@ -99,8 +99,8 @@ private:
   Color    color;
 
 public:
-  LineDrawingRequest(const Vector2i& pos1_, 
-                     const Vector2i& pos2_, 
+  LineDrawingRequest(const Vector2i& pos1_,
+                     const Vector2i& pos2_,
                      const Color&  color_,
                      float z_)
     : DrawingRequest(Vector2i(0, 0), z_),
@@ -123,27 +123,27 @@ private:
   Rect  d_rect;
   Color color;
   bool  filled;
-  
+
 public:
   RectDrawingRequest(const Rect& rect_, const Color& color_, bool filled_, float z_)
     : DrawingRequest(Vector2i(0, 0), z_),
       d_rect(rect_), color(color_), filled(filled_)
   {}
-  
+
   void render(Framebuffer& fb, const Rect& rect)
   {
     if (filled)
     {
-      fb.fill_rect(Rect(Vector2i(d_rect.left + rect.left, 
+      fb.fill_rect(Rect(Vector2i(d_rect.left + rect.left,
                                  d_rect.top  + rect.top),
-                        d_rect.get_size()), 
+                        d_rect.get_size()),
                    color);
     }
     else
     {
-      fb.draw_rect(Rect(Vector2i(d_rect.left + rect.left, 
+      fb.draw_rect(Rect(Vector2i(d_rect.left + rect.left,
                                  d_rect.top  + rect.top),
-                        d_rect.get_size()), 
+                        d_rect.get_size()),
                    color);
     }
   }
@@ -153,13 +153,13 @@ class DrawingContextDrawingRequest : public DrawingRequest
 {
 private:
   DrawingContext& dc;
-  
+
 public:
   DrawingContextDrawingRequest(DrawingContext& dc_, float z_)
     : DrawingRequest(Vector2i(0,0), z_),
       dc(dc_)
   {}
-  
+
   virtual ~DrawingContextDrawingRequest()
   {
   }
@@ -189,7 +189,7 @@ DrawingContext::DrawingContext() :
 
 DrawingContext::~DrawingContext()
 {
-  if (drawingrequests.size() > 0) 
+  if (drawingrequests.size() > 0)
     clear();
 }
 
@@ -201,11 +201,11 @@ DrawingContext::render(Framebuffer& fb, const Rect& parent_rect)
                  Math::min(rect.right  + parent_rect.left, parent_rect.right),
                  Math::min(rect.bottom + parent_rect.top,  parent_rect.bottom));
 
-  if (do_clipping) 
+  if (do_clipping)
     fb.push_cliprect(this_rect);
 
   std::stable_sort(drawingrequests.begin(), drawingrequests.end(), DrawingRequestsSorter());
-  
+
   if (0)
   {
     log_info("<<<<<<<<<<<<<<");
@@ -219,7 +219,7 @@ DrawingContext::render(Framebuffer& fb, const Rect& parent_rect)
     (*i)->render(fb, this_rect); // FIXME: Should we clip size against parent rect?
   }
 
-  if (do_clipping) 
+  if (do_clipping)
     fb.pop_cliprect();
 }
 
@@ -271,20 +271,20 @@ DrawingContext::draw_line(const Vector2i& pos1, const Vector2i& pos2,
 void
 DrawingContext::draw_fillrect(const Rect& rect_, const Color& color_, float z_)
 {
-  draw(new RectDrawingRequest(Rect(int(rect_.left + translate_stack.back().x), 
-                                   int(rect_.top + translate_stack.back().y), 
-                                   int(rect_.right + translate_stack.back().x), 
+  draw(new RectDrawingRequest(Rect(int(rect_.left + translate_stack.back().x),
+                                   int(rect_.top + translate_stack.back().y),
+                                   int(rect_.right + translate_stack.back().x),
                                    int(rect_.bottom + translate_stack.back().y)),
                               color_,
                               true,
-                              z_));  
+                              z_));
 }
 
 void
 DrawingContext::draw_rect(const Rect& rect_, const Color& color_, float z_)
 {
   draw(new RectDrawingRequest(Rect(int(rect_.left   + translate_stack.back().x),
-                                   int(rect_.top    + translate_stack.back().y), 
+                                   int(rect_.top    + translate_stack.back().y),
                                    int(rect_.right  + translate_stack.back().x),
                                    int(rect_.bottom + translate_stack.back().y)),
                               color_,
@@ -354,13 +354,13 @@ DrawingContext::get_width() const
 int
 DrawingContext::get_height() const
 {
-  return rect.get_height();  
+  return rect.get_height();
 }
 
 void
 DrawingContext::print_left(const Font& font_, const Vector2i& pos, const std::string& str, float z)
 {
-  draw(new FontDrawingRequest(font_, 
+  draw(new FontDrawingRequest(font_,
                               origin_top_left,
                               pos + translate_stack.back(),
                               str,
@@ -370,7 +370,7 @@ DrawingContext::print_left(const Font& font_, const Vector2i& pos, const std::st
 void
 DrawingContext::print_center(const Font& font_, const Vector2i& pos, const std::string& str, float z)
 {
-  draw(new FontDrawingRequest(font_, 
+  draw(new FontDrawingRequest(font_,
                               origin_top_center,
                               pos + translate_stack.back(),
                               str,
@@ -380,7 +380,7 @@ DrawingContext::print_center(const Font& font_, const Vector2i& pos, const std::
 void
 DrawingContext::print_right(const Font& font_, const Vector2i& pos, const std::string& str, float z)
 {
-  draw(new FontDrawingRequest(font_, 
+  draw(new FontDrawingRequest(font_,
                               origin_top_right,
                               pos + translate_stack.back(),
                               str,
@@ -390,14 +390,14 @@ DrawingContext::print_right(const Font& font_, const Vector2i& pos, const std::s
 Vector2i
 DrawingContext::screen_to_world(const Vector2i pos)
 {
-  return pos - Vector2i(int(translate_stack.back().x + rect.left), 
+  return pos - Vector2i(int(translate_stack.back().x + rect.left),
                         int(translate_stack.back().y + rect.top));
 }
 
 Vector2i
 DrawingContext::world_to_screen(const Vector2i pos)
 {
-  return pos + Vector2i(int(translate_stack.back().x + rect.left), 
+  return pos + Vector2i(int(translate_stack.back().x + rect.left),
                         int(translate_stack.back().y + rect.top));
 }
 

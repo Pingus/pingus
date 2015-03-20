@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -47,7 +47,7 @@ EvdevDevice::EvdevDevice(const std::string& filename) :
     throw std::runtime_error(filename + ": " + std::string(strerror(errno)));
   }
 
-  if (ioctl(fd, EVIOCGVERSION, &version)) 
+  if (ioctl(fd, EVIOCGVERSION, &version))
   {
     throw std::runtime_error("Error: EvdevDevice: Couldn't get version for " + filename);
   }
@@ -74,23 +74,23 @@ EvdevDevice::EvdevDevice(const std::string& filename) :
 
     for (int i = 0; i < EV_MAX; i++)
     {
-      if (test_bit(i, bit[0])) 
+      if (test_bit(i, bit[0]))
       {
         //printf("  Event type %d (%s)\n", i, events[i] ? events[i] : "?");
-                                
+
         if (!i) continue;
 
         ioctl(fd, EVIOCGBIT(i, KEY_MAX), bit[i]);
-        for (int j = 0; j < KEY_MAX; j++) 
+        for (int j = 0; j < KEY_MAX; j++)
         {
-          if (test_bit(j, bit[i])) 
+          if (test_bit(j, bit[i]))
           {
-            if (i == EV_KEY) 
-            { 
+            if (i == EV_KEY)
+            {
               keys.push_back(Key(j));
-            } 
+            }
             else if (i == EV_ABS)
-            { 
+            {
               // FIXME: Some Linuxes don't have these struct
               struct input_absinfo absinfo;
               ioctl(fd, EVIOCGABS(j), &absinfo);
@@ -99,7 +99,7 @@ EvdevDevice::EvdevDevice(const std::string& filename) :
               // absinfo.fuzz = values in which range can be considered the same (jitter)
               absolutes.push_back(Absolute(j, absinfo.minimum, absinfo.maximum, absinfo.value));
             }
-            else if (i == EV_REL) 
+            else if (i == EV_REL)
             {
               relatives.push_back(Relative(j));
             }
@@ -123,8 +123,8 @@ EvdevDevice::process_absolute(struct input_event& ev)
     absolutes[axis_index].pos = ev.value;
 
 #if 0
-    CL_InputEvent e; 
-                                        
+    CL_InputEvent e;
+
     e.device   = CL_InputDevice(this);
     e.type     = CL_InputEvent::axis_moved;
     e.id       = axis_index;
@@ -143,7 +143,7 @@ EvdevDevice::process_relative(struct input_event& ev)
 
   relatives[idx].pos += ev.value;
 
-  for(std::vector<Scroller*>::iterator i = relatives[idx].bindings.begin(); 
+  for(std::vector<Scroller*>::iterator i = relatives[idx].bindings.begin();
       i != relatives[idx].bindings.end(); ++i)
   {
     if (relatives[idx].binding_axis == 0)
@@ -168,8 +168,8 @@ EvdevDevice::process_key(struct input_event& ev)
   }
 
 #if 0
-  CL_InputEvent e; 
-                        
+  CL_InputEvent e;
+
   e.device = CL_InputDevice(this);
   e.id     = button_index;
   e.repeat_count = 0;
@@ -183,7 +183,7 @@ EvdevDevice::process_key(struct input_event& ev)
   {
     e.type = CL_InputEvent::released;
     sig_key_up(e);
-  }               
+  }
 #endif
 }
 
@@ -243,12 +243,12 @@ EvdevDevice::update(float delta)
 
         default:
 #if 0
-          if (ev[i].type == EV_SYN) 
+          if (ev[i].type == EV_SYN)
           {
             printf("Event: time %ld.%06ld, -------------- %s ------------\n",
                    ev[i].time.tv_sec, ev[i].time.tv_usec, ev[i].code ? "Config Sync" : "Report Sync" );
           }
-          else if (ev[i].type == EV_MSC && (ev[i].code == MSC_RAW || ev[i].code == MSC_SCAN)) 
+          else if (ev[i].type == EV_MSC && (ev[i].code == MSC_RAW || ev[i].code == MSC_SCAN))
           {
             printf("Event: time %ld.%06ld, type %d (%s), code %d (%s), value %02x\n",
                    ev[i].time.tv_sec, ev[i].time.tv_usec, ev[i].type,
@@ -256,8 +256,8 @@ EvdevDevice::update(float delta)
                    ev[i].code,
                    names[ev[i].type] ? (names[ev[i].type][ev[i].code] ? names[ev[i].type][ev[i].code] : "?") : "?",
                    ev[i].value);
-          } 
-          else 
+          }
+          else
           {
             printf("Event: time %ld.%06ld, type %d (%s), code %d (%s), value %d\n",
                    ev[i].time.tv_sec, ev[i].time.tv_usec, ev[i].type,
@@ -265,8 +265,8 @@ EvdevDevice::update(float delta)
                    ev[i].code,
                    names[ev[i].type] ? (names[ev[i].type][ev[i].code] ? names[ev[i].type][ev[i].code] : "?") : "?",
                    ev[i].value);
-          }     
-#endif                  
+          }
+#endif
           break;
       }
     }
@@ -290,7 +290,7 @@ EvdevDevice::create_scroller(Control* parent, int x, int y)
     else if (relatives[i].code == y)
     {
       relatives[i].binding_axis = 1;
-      relatives[i].bindings.push_back(scroller);          
+      relatives[i].bindings.push_back(scroller);
       have_y = true;
     }
   }

@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -23,7 +23,7 @@
 
 FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceModifier::Enum modifier)
 {
-  // FIXME: Implement proper cache 
+  // FIXME: Implement proper cache
   try
   {
     Surface surface(filename);
@@ -87,7 +87,7 @@ SpriteImpl::SpriteImpl(const SpriteDescription& desc, ResourceModifier::Enum mod
   loop_last_cycle = false;
 
   offset = calc_origin(desc.origin, frame_size) - desc.offset;
-    
+
 }
 
 SpriteImpl::SpriteImpl(const Surface& surface) :
@@ -138,7 +138,7 @@ SpriteImpl::update(float delta)
   }
 }
 
-void 
+void
 SpriteImpl::render(int x, int y, Framebuffer& fb)
 {
   fb.draw_surface(framebuffer_surface,

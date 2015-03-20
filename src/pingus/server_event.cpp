@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -72,7 +72,7 @@ ServerEvent::ServerEvent(const FileReader& reader) :
 
     reader.read_enum("action", pingu_action, &ActionName::from_string);
 
-      
+
   }
   else
   {
@@ -114,7 +114,7 @@ ServerEvent::make_finish_event(int t)
   ServerEvent event;
   event.type       = FINISH_EVENT;
   event.time_stamp = t;
-  return event; 
+  return event;
 }
 
 ServerEvent
@@ -123,7 +123,7 @@ ServerEvent::make_end_event(int t)
   ServerEvent event;
   event.type       = END_EVENT;
   event.time_stamp = t;
-  return event; 
+  return event;
 }
 
 ServerEvent
@@ -157,7 +157,7 @@ ServerEvent::send(Server* server)
       break;
 
     case FINISH_EVENT:
-      server->send_finish_event();      
+      server->send_finish_event();
       break;
 
     case END_EVENT:

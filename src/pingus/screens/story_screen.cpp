@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -93,7 +93,7 @@ private:
 
 class StoryScreenSkipButton : public GUI::SurfaceButton
 {
-private: 
+private:
   StoryScreenComponent* story_comp;
 
 public:
@@ -108,10 +108,10 @@ public:
     gc.print_right(Fonts::chalk_small, Vector2i(x_pos, y_pos), _("skip"));
   }
 
-  bool is_at(int x, int y) 
+  bool is_at(int x, int y)
   {
     return
-      x > x_pos - static_cast<int>(Fonts::chalk_small.get_width(_("skip"))) && 
+      x > x_pos - static_cast<int>(Fonts::chalk_small.get_width(_("skip"))) &&
       x < x_pos &&
       y > y_pos &&
       y < y_pos + static_cast<int>(Fonts::chalk_small.get_height());
@@ -142,12 +142,12 @@ StoryScreen::StoryScreen(const FileReader& reader, bool credits) :
 {
   story_comp = new StoryScreenComponent(story.get(), m_credits);
   gui_manager->add(story_comp);
-  gui_manager->add(continue_button = new StoryScreenContinueButton(story_comp, 
-                                                                   Display::get_width()/2 + 220 + 40, 
+  gui_manager->add(continue_button = new StoryScreenContinueButton(story_comp,
+                                                                   Display::get_width()/2 + 220 + 40,
                                                                    Display::get_height()/2 + 180 + 32));
   if (globals::developer_mode)
-    gui_manager->add(skip_button     = new StoryScreenSkipButton(story_comp, 
-                                                                 Display::get_width() - 4, 
+    gui_manager->add(skip_button     = new StoryScreenSkipButton(story_comp,
+                                                                 Display::get_width() - 4,
                                                                  Display::get_height() - 26));
 }
 
@@ -188,8 +188,8 @@ StoryScreenComponent::draw (DrawingContext& gc)
 
   gc.draw(blackboard, Vector2i(gc.get_width()/2, gc.get_height()/2));
 
-  gc.print_center(Fonts::chalk_large, 
-                  Vector2i(gc.get_width()/2, gc.get_height()/2 - 200), 
+  gc.print_center(Fonts::chalk_large,
+                  Vector2i(gc.get_width()/2, gc.get_height()/2 - 200),
                   story->get_title());
   gc.draw(page_surface, Vector2i(gc.get_width()/2, gc.get_height()/2 - 65));
 
@@ -208,9 +208,9 @@ StoryScreenComponent::update(float delta)
   {
     std::string::size_type len = static_cast<std::string::size_type>(20.0f * time_passed);
     std::string::size_type text_len = UTF8::length(current_page.text);
-      
+
     display_text = UTF8::substr(current_page.text, 0, Math::min(text_len, len));
-       
+
     if (text_len < len)
     {
       page_displayed_completly = true;
@@ -284,10 +284,10 @@ StoryScreen::resize(const Size& size_)
 {
   GUIScreen::resize(size_);
 
-  continue_button->set_pos(size.width/2 + 220 + 40, 
+  continue_button->set_pos(size.width/2 + 220 + 40,
                            size.height/2 + 180 +32);
   if (skip_button)
-    skip_button->set_pos(size.width  - 4, 
+    skip_button->set_pos(size.width  - 4,
                          size.height - 26);
 }
 

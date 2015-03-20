@@ -24,7 +24,7 @@
 
 int main()
 {
-  try 
+  try
   {
     if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) < 0)
     {
@@ -52,11 +52,11 @@ int main()
       }
 
       manager.update(0.033f);
-      
+
       SDL_Flip(screen);
     }
   }
-  catch (std::exception& err) 
+  catch (std::exception& err)
   {
     std::cout << "Exception: " << err.what() << std::endl;
   }

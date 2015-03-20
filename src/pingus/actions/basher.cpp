@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -37,9 +37,9 @@ Basher::Basher (Pingu* p) :
 {
   assert(bash_radius.get_width() % 2 == 0);
 
-  sprite.load(Direction::LEFT,  Sprite("pingus/player" + 
+  sprite.load(Direction::LEFT,  Sprite("pingus/player" +
                                        pingu->get_owner_str() + "/basher/left"));
-  sprite.load(Direction::RIGHT, Sprite("pingus/player" + 
+  sprite.load(Direction::RIGHT, Sprite("pingus/player" +
                                        pingu->get_owner_str() + "/basher/right"));
 
   bash_reach = bash_radius.get_width();
@@ -97,7 +97,7 @@ Basher::update ()
         if (basher_c % 2 == 0)
           bash();
       }
-      else if (static_cast<float>(sprite[pingu->direction].get_current_frame()) // FIXME: Game logic must be separate from Sprite 
+      else if (static_cast<float>(sprite[pingu->direction].get_current_frame()) // FIXME: Game logic must be separate from Sprite
                / static_cast<float>(sprite[pingu->direction].get_frame_count()) > 0.6f)
       { // FIXME: EVIL! Engine must not relay on graphic
         pingu->set_action(ActionName::WALKER);
