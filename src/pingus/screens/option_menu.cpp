@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -98,7 +98,7 @@ OptionMenu::OptionMenu() :
   m_language(),
   m_language_map()
 {
-  gui_manager->add(ok_button = new OptionMenuCloseButton(this, 
+  gui_manager->add(ok_button = new OptionMenuCloseButton(this,
                                                          Display::get_width()/2 + 245,
                                                          Display::get_height()/2 + 150));
 
@@ -141,7 +141,7 @@ OptionMenu::OptionMenu() :
     case OPENGL_FRAMEBUFFER: renderer_box->set_current_choice(2); break;
     default: assert(!"unknown renderer type");
   }
-  
+
   m_language = dictionary_manager.get_language();
 
   ChoiceBox* language_box = new ChoiceBox(Rect());
@@ -222,7 +222,7 @@ OptionMenu::OptionMenu() :
   add_item(_("Master Volume:"),   master_volume_box);
   add_item(_("Sound Volume:"),    sound_volume_box);
   add_item(_("Music Volume:"),    music_volume_box);
-  
+
   // Connect with ConfigManager
   mousegrab_box->set_state(config_manager.get_mouse_grab(), false);
   C(config_manager.on_mouse_grab_change.connect(std::bind(&CheckBox::set_state, mousegrab_box, std::placeholders::_1, false)));
@@ -256,7 +256,7 @@ OptionMenu::add_item(const std::string& label, GUI::RectComponent* control)
   int x_offset = (Display::get_width()  - 800) / 2;
   int y_offset = (Display::get_height() - 600) / 2;
 
-  Rect rect(Vector2i(80 + x_offset + x_pos * 320, 
+  Rect rect(Vector2i(80 + x_offset + x_pos * 320,
                      140 + y_offset + y_pos * 32),
             Size(320, 32));
 
@@ -279,7 +279,7 @@ OptionMenu::add_item(const std::string& label, GUI::RectComponent* control)
   }
   else if (dynamic_cast<CheckBox*>(control))
   {
-    control->set_rect(Rect(Vector2i(rect.left, rect.top), 
+    control->set_rect(Rect(Vector2i(rect.left, rect.top),
                            Size(32, 32)));
     label_component->set_rect(Rect(rect.left + 40,  rect.top,
                                    rect.right, rect.bottom));
@@ -304,13 +304,13 @@ OptionMenu::~OptionMenu()
     (*i).disconnect();
   }
 }
-  
+
 struct OptionEntry {
   OptionEntry(const std::string& left_,
               const std::string& right_)
     : left(left_), right(right_)
   {}
-  
+
   std::string left;
   std::string right;
 };
@@ -333,7 +333,7 @@ OptionMenu::draw_background(DrawingContext& gc)
 
   gc.print_center(Fonts::chalk_normal, Vector2i(gc.get_width()/2 + 245 + 30, gc.get_height()/2 + 150 - 20), _("Close"));
 
-  gc.print_left(Fonts::chalk_normal, 
+  gc.print_left(Fonts::chalk_normal,
                 Vector2i(gc.get_width()/2 - 320, gc.get_height()/2 + 200),
                 _("Some options require a restart of the game to take effect."));
 }
@@ -449,7 +449,7 @@ OptionMenu::on_language_change(const std::string &str)
     log_error("unknown language: %1%", str);
   }
   else
-  {  
+  {
     m_language = it->second;
     config_manager.set_language(it->second);
   }
@@ -470,7 +470,7 @@ OptionMenu::on_resolution_change(const std::string& str)
     // FIXME: ignoring refresh rate here
 #endif
 
-    config_manager.set_fullscreen_resolution(size_); 
+    config_manager.set_fullscreen_resolution(size_);
   }
 }
 

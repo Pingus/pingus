@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -37,7 +37,7 @@ GroupComponent::~GroupComponent()
     delete *i;
   }
 }
-        
+
 void
 GroupComponent::draw (DrawingContext& parent_gc)
 {
@@ -50,7 +50,7 @@ GroupComponent::draw (DrawingContext& parent_gc)
     if ((*i)->is_visible())
       (*i)->draw(drawing_context);
   }
-  
+
   parent_gc.draw(drawing_context);
 }
 
@@ -79,13 +79,13 @@ GroupComponent::on_primary_button_press (int x, int y)
   {
     grabbed_comp->on_primary_button_press(mouse_pos.x, mouse_pos.y);
   }
-  else 
+  else
   {
     Component* comp = component_at(mouse_pos);
     if (comp)
     {
       comp->on_primary_button_press(mouse_pos.x, mouse_pos.y);
-      
+
       if (focused_comp)
         focused_comp->set_focus(false);
 
@@ -108,10 +108,10 @@ GroupComponent::on_primary_button_release (int x, int y)
   {
     grabbed_comp->on_primary_button_release(mouse_pos.x, mouse_pos.y);
   }
-  else 
+  else
   {
     Component* comp = component_at(mouse_pos);
-      
+
     if (primary_pressed_comp)
     {
       primary_pressed_comp->on_primary_button_release(mouse_pos.x, mouse_pos.y);
@@ -128,7 +128,7 @@ GroupComponent::on_primary_button_release (int x, int y)
     }
   }
 }
-  
+
 void
 GroupComponent::on_secondary_button_press (int x, int y)
 {
@@ -138,7 +138,7 @@ GroupComponent::on_secondary_button_press (int x, int y)
   {
     grabbed_comp->on_secondary_button_press(mouse_pos.x, mouse_pos.y);
   }
-  else 
+  else
   {
     Component* comp = component_at(mouse_pos);
     if (comp)
@@ -155,7 +155,7 @@ GroupComponent::on_secondary_button_release(int x, int y)
   Vector2i mouse_pos = drawing_context.screen_to_world(Vector2i(x, y));
 
   Component* comp = component_at(mouse_pos);
-  
+
   if (grabbed_comp)
   {
     grabbed_comp->on_secondary_button_release(mouse_pos.x, mouse_pos.y);
@@ -163,10 +163,10 @@ GroupComponent::on_secondary_button_release(int x, int y)
   else if (secondary_pressed_comp)
   {
     secondary_pressed_comp->on_secondary_button_release(mouse_pos.x, mouse_pos.y);
-      
+
     if (comp == secondary_pressed_comp)
       secondary_pressed_comp->on_secondary_button_click(mouse_pos.x, mouse_pos.y);
-      
+
     secondary_pressed_comp = 0;
   }
   else
@@ -195,7 +195,7 @@ GroupComponent::on_text_input(const Input::TextInputEvent& ev)
   else if (focused_comp)
     focused_comp->on_text_input(ev);
   else if (mouse_over_comp)
-    mouse_over_comp->on_text_input(ev); 
+    mouse_over_comp->on_text_input(ev);
 }
 
 void
@@ -220,7 +220,7 @@ GroupComponent::on_pointer_move(int x, int y)
     Component* comp = component_at(mouse_pos);
     if (comp)
     {
-      comp->on_pointer_move(mouse_pos.x, mouse_pos.y); 
+      comp->on_pointer_move(mouse_pos.x, mouse_pos.y);
     }
 
     if (comp != mouse_over_comp)
@@ -230,7 +230,7 @@ GroupComponent::on_pointer_move(int x, int y)
         mouse_over_comp->set_mouse_over(false);
         mouse_over_comp->on_pointer_leave();
       }
-      
+
       if (comp)
       {
         comp->set_mouse_over(true);
@@ -269,7 +269,7 @@ GroupComponent::update_layout()
 void
 GroupComponent::on_pointer_enter()
 {
-  
+
 }
 
 void
@@ -282,7 +282,7 @@ GroupComponent::on_pointer_leave()
       mouse_over_comp->set_mouse_over(false);
       mouse_over_comp->on_pointer_leave();
     }
-    mouse_over_comp = 0; 
+    mouse_over_comp = 0;
   }
 }
 

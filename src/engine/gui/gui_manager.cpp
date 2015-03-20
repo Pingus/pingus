@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -22,7 +22,7 @@
 
 using namespace Input;
 
-namespace GUI { 
+namespace GUI {
 
 GUIManager::GUIManager ()
   : GroupComponent(Rect(0, 0, Display::get_width(), Display::get_height()), false),
@@ -82,7 +82,7 @@ GUIManager::update(const Input::Event& event)
     case Input::TEXT_INPUT_EVENT_TYPE:
       on_text_input(event.text);
       break;
-        
+
     case Input::KEYBOARD_EVENT_TYPE:
       if (event.keyboard.state)
       {

@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -115,7 +115,7 @@ Display::create_window(FramebufferType framebuffer_type, const Size& size, bool 
       s_framebuffer = std::unique_ptr<Framebuffer>(new SDLFramebuffer());
       s_framebuffer->set_video_mode(size, fullscreen, resizable);
       break;
-          
+
     default:
       assert(!"Unknown framebuffer_type");
       break;
@@ -134,7 +134,7 @@ Display::set_video_mode(const Size& size, bool fullscreen, bool resizable)
   {
     s_framebuffer->set_video_mode(size, fullscreen, resizable);
   }
-  
+
   if (ScreenManager::instance())
   {
     ScreenManager::instance()->resize(s_framebuffer->get_size());
@@ -144,7 +144,7 @@ Display::set_video_mode(const Size& size, bool fullscreen, bool resizable)
 Framebuffer*
 Display::get_framebuffer()
 {
-  return s_framebuffer.get(); 
+  return s_framebuffer.get();
 }
 
 Size
@@ -152,7 +152,7 @@ Display::find_closest_fullscreen_video_mode(const Size& size)
 {
   SDL_DisplayMode target;
   SDL_DisplayMode closest;
- 
+
   target.w = size.width;
   target.h = size.height;
   target.format = 0;  // don't care
@@ -181,8 +181,8 @@ Display::get_fullscreen_video_modes()
   for(int display = 0; display < num_displays; ++display)
   {
     int num_modes = SDL_GetNumDisplayModes(display);
-    
-    for (int i = 0; i < num_modes; ++i) 
+
+    for (int i = 0; i < num_modes; ++i)
     {
       SDL_DisplayMode mode;
       if (SDL_GetDisplayMode(display, i, &mode) != 0)

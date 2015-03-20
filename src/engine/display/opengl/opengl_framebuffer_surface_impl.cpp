@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -28,7 +28,7 @@ inline int next_power_of_two(int val)
   return result;
 }
 
-} // namespace 
+} // namespace
 
 OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src) :
   m_handle(),
@@ -36,7 +36,7 @@ OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src) :
   m_texture_size()
 {
   glGenTextures(1, &m_handle);
-  
+
   m_texture_size.width  = next_power_of_two(src->w);
   m_texture_size.height = next_power_of_two(src->h);
 
@@ -52,7 +52,7 @@ OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src) :
 #endif
   //SDL_SetSurfaceAlphaMod(src, 0);
   SDL_BlitSurface(src, 0, convert, 0);
-  
+
   GLenum sdl_format;
   if(convert->format->BytesPerPixel == 3)
     sdl_format = GL_RGB;
@@ -74,8 +74,8 @@ OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src) :
   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_texture_size.width, m_texture_size.height, 0,
                sdl_format, GL_UNSIGNED_BYTE, convert->pixels);
   SDL_UnlockSurface(convert);
-   
-  SDL_FreeSurface(convert);  
+
+  SDL_FreeSurface(convert);
 
   // Unbind the texture
   glBindTexture(GL_TEXTURE_2D, 0);

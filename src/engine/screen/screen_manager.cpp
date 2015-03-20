@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -42,7 +42,7 @@ void read(std::istream& out, C& value)
 void write_events(std::ostream& out, const std::vector<Input::Event>& events)
 {
   write(out, events.size());
-  for(std::vector<Input::Event>::const_iterator i = events.begin(); 
+  for(std::vector<Input::Event>::const_iterator i = events.begin();
       i != events.end();
       ++i)
   {
@@ -88,7 +88,7 @@ void read_event(std::istream& out, Input::Event& event)
       read(out, event.scroll.x_delta);
       read(out, event.scroll.y_delta);
       break;
-        
+
     case Input::KEYBOARD_EVENT_TYPE:
       read(out, event.keyboard);
       break;
@@ -124,7 +124,7 @@ void write_event(std::ostream& out, const Input::Event& event)
       write(out, event.scroll.x_delta);
       write(out, event.scroll.y_delta);
       break;
-        
+
     case Input::KEYBOARD_EVENT_TYPE:
       write(out, event.keyboard);
       break;
@@ -164,7 +164,7 @@ void
 ScreenManager::display()
 {
   show_software_cursor(globals::software_cursor);
-  
+
   Uint32 last_ticks = SDL_GetTicks();
   float previous_frame_time;
   std::vector<Input::Event> events;
@@ -172,7 +172,7 @@ ScreenManager::display()
   while (!screens.empty())
   {
     events.clear();
-      
+
     // Get time and update Input::Events
     if (playback_input)
     {
@@ -196,7 +196,7 @@ ScreenManager::display()
       input_manager.update(previous_frame_time);
       input_controller->poll_events(events);
     }
-      
+
     if (record_input)
     {
       write(std::cerr, previous_frame_time);
@@ -213,9 +213,9 @@ ScreenManager::display()
         log_warn("ScreenManager: previous frame took longer than 1 second (%1% sec.), ignoring and doing frameskip", previous_frame_time);
     }
     else
-    {  
+    {
       update(previous_frame_time, events);
-      
+
       // cap the framerate at the desired value
       // figure out how long this frame took
       float current_frame_time = float(SDL_GetTicks() - last_ticks) / 1000.0f;
@@ -228,7 +228,7 @@ ScreenManager::display()
     }
   }
 }
- 
+
 void
 ScreenManager::update(float delta, const std::vector<Input::Event>& events)
 {
@@ -242,7 +242,7 @@ ScreenManager::update(float delta, const std::vector<Input::Event>& events)
   {
     if (i->type == Input::POINTER_EVENT_TYPE && i->pointer.name == Input::STANDARD_POINTER)
       mouse_pos = Vector2i(static_cast<int>(i->pointer.x),
-                           static_cast<int>(i->pointer.y)); 
+                           static_cast<int>(i->pointer.y));
 
     last_screen->update(*i);
 
@@ -262,29 +262,29 @@ ScreenManager::update(float delta, const std::vector<Input::Event>& events)
 
   // Draw screen to DrawingContext
   get_current_screen()->draw(*display_gc);
-  
+
   // Render the DrawingContext to the screen
   display_gc->render(*Display::get_framebuffer(), Rect(Vector2i(0,0), Size(Display::get_width(),
                                                                            Display::get_height())));
   display_gc->clear();
-  
+
   // Draw the mouse pointer
   if (globals::software_cursor)
     cursor.render(mouse_pos.x, mouse_pos.y, *Display::get_framebuffer());
-  
+
   // Draw FPS Counter
   if (globals::print_fps)
   {
     fps_counter->draw();
     if (globals::developer_mode)
     {
-      Fonts::pingus_small.render(origin_center, Display::get_width()/2, 60, 
+      Fonts::pingus_small.render(origin_center, Display::get_width()/2, 60,
                                  "Developer Mode", *Display::get_framebuffer());
     }
   }
   else if (globals::developer_mode)
   {
-    Fonts::pingus_small.render(origin_center, Display::get_width()/2, 35, 
+    Fonts::pingus_small.render(origin_center, Display::get_width()/2, 35,
                                "Developer Mode", *Display::get_framebuffer());
   }
 
@@ -308,7 +308,7 @@ ScreenManager::instance()
 
 void
 ScreenManager::push_screen(ScreenPtr screen)
-{ 
+{
   screens.push_back(screen);
   screen->on_startup();
 }
@@ -350,7 +350,7 @@ ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
 {
   if (!old_screen.get() || !new_screen.get())
     return;
-  
+
   Uint32 last_ticks = SDL_GetTicks();
   float progress = 0.0f;
   Framebuffer& fb = *Display::get_framebuffer();
@@ -363,20 +363,20 @@ ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
     display_gc->render(fb, Rect(Vector2i(0,0), Size(Display::get_width(),
                                                     Display::get_height())));
     display_gc->clear();
-      
+
     fb.push_cliprect(Rect(Vector2i(0 + border_x, 0 + border_y),
-                          Size(Display::get_width()  - 2*border_x, 
+                          Size(Display::get_width()  - 2*border_x,
                                Display::get_height() - 2*border_y)));
 
     new_screen->draw(*display_gc);
     display_gc->render(*Display::get_framebuffer(), Rect(Vector2i(0,0), Size(Display::get_width(),
                                                                             Display::get_height())));
     display_gc->clear();
-      
+
     fb.pop_cliprect();
     fb.flip();
     display_gc->clear();
-      
+
     progress = static_cast<float>(SDL_GetTicks() - last_ticks)/1000.0f * 2.0f;
     SDL_Delay(1000);
   }

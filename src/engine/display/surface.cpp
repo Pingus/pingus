@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -30,7 +30,7 @@ class SurfaceImpl
 public:
   SDL_Surface* surface;
 
-  SurfaceImpl() : 
+  SurfaceImpl() :
     surface()
   {
   }
@@ -39,8 +39,8 @@ public:
     surface(surface_)
   {
   }
-  
-  ~SurfaceImpl() 
+
+  ~SurfaceImpl()
   {
     if (surface)
     {
@@ -87,7 +87,7 @@ Surface::Surface(int width, int height, SDL_Palette* palette, int colorkey) :
   }
   else
   {
-    impl->surface = SDL_CreateRGBSurface(0, width, height, 8, 
+    impl->surface = SDL_CreateRGBSurface(0, width, height, 8,
                                          0, 0, 0 ,0);
     SDL_SetColorKey(impl->surface, SDL_TRUE, colorkey);
   }
@@ -187,7 +187,7 @@ Surface::blit(Surface src, int x_pos, int y_pos)
           // do nothing
         }
         else
-        { 
+        {
           // alpha blend
           uint8_t outa = static_cast<uint8_t>((alpha + (tptr[3] * (255 - alpha)) / 255));
 
@@ -281,7 +281,7 @@ Surface::get_pitch() const
     return 0;
 }
 
-SDL_Surface* 
+SDL_Surface*
 Surface::get_surface() const
 {
   return impl ? impl->surface : 0;
@@ -336,7 +336,7 @@ Surface::get_pixel(int x, int y) const
     default:
       pixel = 0;       /* shouldn't happen, but avoids warnings */
       break;
-  } 
+  }
 
   Color color;
   SDL_GetRGBA(pixel, get_surface()->format, &color.r, &color.g, &color.b, &color.a);
@@ -387,7 +387,7 @@ Surface::scale(int w, int h)
 Surface
 Surface::clone() const
 {
-  SDL_Surface* new_surface = Blitter::create_surface_from_format(impl->surface, 
+  SDL_Surface* new_surface = Blitter::create_surface_from_format(impl->surface,
                                                                  impl->surface->w, impl->surface->h);
   SDL_BlendMode blend_mode;
   SDL_GetSurfaceBlendMode(impl->surface, &blend_mode);
@@ -410,22 +410,22 @@ Surface::subsection(const Rect& rect) const
 
   SDL_Surface* new_surface
     = Blitter::create_surface_from_format(impl->surface,
-                                          rect.get_width(), 
+                                          rect.get_width(),
                                           rect.get_height());
 
-  SDL_LockSurface(impl->surface); 
+  SDL_LockSurface(impl->surface);
   SDL_LockSurface(new_surface);
   for(int y = 0; y < new_surface->h; ++y)
   {
-    memcpy(static_cast<uint8_t*>(new_surface->pixels) 
+    memcpy(static_cast<uint8_t*>(new_surface->pixels)
            + (y * new_surface->pitch),
            static_cast<uint8_t*>(impl->surface->pixels)
-           + (impl->surface->pitch * (y + rect.top)) 
+           + (impl->surface->pitch * (y + rect.top))
            + rect.left * impl->surface->format->BytesPerPixel,
            new_surface->pitch);
   }
-  SDL_UnlockSurface(new_surface);  
-  SDL_UnlockSurface(impl->surface); 
+  SDL_UnlockSurface(new_surface);
+  SDL_UnlockSurface(impl->surface);
 
   return Surface(std::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface)));
 }

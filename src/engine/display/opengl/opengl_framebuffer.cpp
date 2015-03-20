@@ -97,7 +97,7 @@ OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resiza
       flags |= SDL_WINDOW_RESIZABLE;
     }
 
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1); 
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
     SDL_GL_SetAttribute(SDL_GL_RED_SIZE,     8);
     SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE,   8);

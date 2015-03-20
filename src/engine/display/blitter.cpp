@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -62,7 +62,7 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
     SDL_UnlockSurface(new_surface);
 
     SDL_SetSurfacePalette(new_surface, pal);
-    if (useckey) 
+    if (useckey)
     {
       SDL_SetColorKey(new_surface, SDL_TRUE, ckey);
       SDL_SetSurfaceRLE(new_surface, SDL_TRUE);
@@ -209,7 +209,7 @@ SDL_Surface*
 Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
 {
   SDL_Surface* new_surface = SDL_CreateRGBSurface(0, w, h,
-                                                  surface->format->BitsPerPixel, 
+                                                  surface->format->BitsPerPixel,
                                                   surface->format->Rmask,
                                                   surface->format->Gmask,
                                                   surface->format->Bmask,

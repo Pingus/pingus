@@ -25,14 +25,14 @@
 
 SDLSystem::SDLSystem()
 {
-  if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) != 0) 
+  if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) != 0)
   {
     log_error("Unable to initialize SDL: %1%", SDL_GetError());
     exit(1);
   }
   else
   {
-    atexit(SDL_Quit); 
+    atexit(SDL_Quit);
   }
 }
 

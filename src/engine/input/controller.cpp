@@ -5,12 +5,12 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -21,7 +21,7 @@ namespace Input {
 
 Controller* Controller::current_ = 0;
 
-Controller* 
+Controller*
 Controller::current()
 {
   return current_;
@@ -35,7 +35,7 @@ Controller::Controller(const ControllerDescription& desc) :
   keyboards(),
   events()
 {
-  current_ = this; 
+  current_ = this;
 
   const std::vector<int>& button_lst = desc.get_buttons();
   for(std::vector<int>::const_iterator i = button_lst.begin(); i != button_lst.end(); ++i)
@@ -93,7 +93,7 @@ Controller::~Controller()
 }
 
 ControllerScroller*
-Controller::get_scroller(int id) 
+Controller::get_scroller(int id)
 {
   if (id >= 0 && id < int(scrollers.size()))
     return scrollers[id];
@@ -102,17 +102,17 @@ Controller::get_scroller(int id)
 }
 
 void
-Controller::add_scroller(int id, ControllerScroller* scroller) 
+Controller::add_scroller(int id, ControllerScroller* scroller)
 {
   if (int(scrollers.size())-1 < id)
     scrollers.resize(id+1);
-   
+
   assert(scrollers[id] == 0);
   scrollers[id] = scroller;
 }
-  
+
 ControllerPointer*
-Controller::get_pointer(int id) 
+Controller::get_pointer(int id)
 {
   if (id >= 0 && id < int(pointers.size()))
     return pointers[id];
@@ -130,44 +130,44 @@ Controller::get_keyboard(int id)
 }
 
 void
-Controller::add_keyboard(int id, ControllerKeyboard* keyboard) 
+Controller::add_keyboard(int id, ControllerKeyboard* keyboard)
 {
   if (int(keyboards.size())-1 < id)
     keyboards.resize(id+1);
-   
+
   assert(keyboards[id] == 0);
   keyboards[id] = keyboard;
 }
 
 void
-Controller::add_pointer(int id, ControllerPointer* pointer) 
+Controller::add_pointer(int id, ControllerPointer* pointer)
 {
   if (int(pointers.size())-1 < id)
     pointers.resize(id+1);
-   
+
   assert(pointers[id] == 0);
   pointers[id] = pointer;
 }
-  
+
 ControllerAxis*
-Controller::get_axis(int id) 
+Controller::get_axis(int id)
 {
   assert(id >= 0 && id < int(axes.size()));
   return axes[id];
 }
 
 void
-Controller::add_axis(int id, ControllerAxis* axis) 
+Controller::add_axis(int id, ControllerAxis* axis)
 {
   if (int(axes.size())-1 < id)
     axes.resize(id+1);
-   
+
   assert(axes[id] == 0);
   axes[id] = axis;
 }
-  
+
 ControllerButton*
-Controller::get_button(int id) 
+Controller::get_button(int id)
 {
   assert(id >= 0 && id < int(buttons.size()));
   return buttons[id];
@@ -178,7 +178,7 @@ Controller::refresh()
 {
   for(auto i = axes.begin(); i != axes.end(); ++i)
   {
-    if (*i) 
+    if (*i)
     {
       add_axis_event(static_cast<int>(i - axes.begin()), (*i)->get_pos());
     }
@@ -186,12 +186,12 @@ Controller::refresh()
 
   for(auto i = pointers.begin(); i != pointers.end(); ++i)
   {
-    if (*i) 
+    if (*i)
     {
       add_pointer_event(static_cast<int>(i - pointers.begin()), (*i)->get_pos().x, (*i)->get_pos().y);
-    }    
+    }
   }
-  
+
   // FIXME: not handling buttons, as their state might be out of date (i.e. still pressed)
 
   // not handling scrollers, as they don't really have state
@@ -218,11 +218,11 @@ Controller::update(float delta)
 }
 
 void
-Controller::add_button(int id, ControllerButton* button) 
+Controller::add_button(int id, ControllerButton* button)
 {
   if (int(buttons.size())-1 < id)
     buttons.resize(id+1);
-   
+
   assert(buttons[id] == 0);
   buttons[id] = button;
 }
@@ -272,7 +272,7 @@ Controller::clear_events()
 void
 Controller::poll_events(std::vector<Event>& out_events)
 {
-  for(std::vector<Event>::iterator i = events.begin(); i != events.end(); ++i)  
+  for(std::vector<Event>::iterator i = events.begin(); i != events.end(); ++i)
     out_events.push_back(*i);
 
   events.clear();
