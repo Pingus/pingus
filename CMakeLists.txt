@@ -86,14 +86,55 @@ target_link_libraries(pingus
   ${PNG_LIBRARIES}
   ${OPENGL_LIBRARIES})
 
-# # build test and utils
-# for filename in Glob("test/*_test.cpp", strings=True):
-#     self.env.Alias('test', self.env.Program(filename[:-4], [filename, libpingus]))
-# for filename in Glob("test/*_util.cpp", strings=True):
-#     self.env.Alias('test', self.env.Program(filename[:-4], [filename, libpingus]))
+file(GLOB PINGUS_TEST_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+  test/*_test.cpp)
+foreach(TEST_SOURCE ${PINGUS_TEST_SOURCES_CXX})
+  string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" TEST_EXE ${TEST_SOURCE})
+  add_executable(${TEST_EXE} ${TEST_SOURCE})
+  set_target_properties(${TEST_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "test/")
+  target_link_libraries(${TEST_EXE}
+    libpingus
+    logmich
+    tinygettext
+    ${SDL2_LIBRARIES}
+    ${SDL2IMAGE_LIBRARIES}
+    ${SDL2MIXER_LIBRARIES}
+    ${PNG_LIBRARIES}
+    ${OPENGL_LIBRARIES})
+endforeach(TEST_SOURCE)
 
-# # build extra stuff
-# for filename in Glob("extra/*.cpp", strings=True):
-#     self.env.Alias('extra', self.env.Program(filename[:-4], [filename, libpingus]))
+file(GLOB PINGUS_UTIL_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+  test/*_util.cpp)
+foreach(UTIL_SOURCE ${PINGUS_UTIL_SOURCES_CXX})
+  string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" UTIL_EXE ${UTIL_SOURCE})
+  add_executable(${UTIL_EXE} ${UTIL_SOURCE})
+  set_target_properties(${UTIL_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "test/")
+  target_link_libraries(${UTIL_EXE}
+    libpingus
+    logmich
+    tinygettext
+    ${SDL2_LIBRARIES}
+    ${SDL2IMAGE_LIBRARIES}
+    ${SDL2MIXER_LIBRARIES}
+    ${PNG_LIBRARIES}
+    ${OPENGL_LIBRARIES})
+endforeach(UTIL_SOURCE)
+
+file(GLOB PINGUS_EXTRA_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+  extra/*.cpp)
+foreach(EXTRA_SOURCE ${PINGUS_EXTRA_SOURCES_CXX})
+  string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" EXTRA_EXE ${EXTRA_SOURCE})
+  add_executable(${EXTRA_EXE} ${EXTRA_SOURCE})
+  set_target_properties(${EXTRA_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "extra/")
+  target_link_libraries(${EXTRA_EXE}
+    libpingus
+    logmich
+    tinygettext
+    ${SDL2_LIBRARIES}
+    ${SDL2IMAGE_LIBRARIES}
+    ${SDL2MIXER_LIBRARIES}
+    ${PNG_LIBRARIES}
+    ${OPENGL_LIBRARIES})
+endforeach(EXTRA_SOURCE)
 
 # EOF #
