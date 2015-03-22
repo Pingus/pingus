@@ -54,9 +54,7 @@ class Project:
     def configure(self):
         self.configure_begin()
         self.configure_opengl()
-        self.configure_linuxevdev()
         self.configure_wiimote()
-        self.configure_xinput()
         self.configure_boost()
         self.configure_png()
         self.configure_sdl()
@@ -81,8 +79,6 @@ class Project:
         self.opts.Add('LINKFLAGS',  'Linker Compiler flags', [])
 
         self.opts.Add(BoolVariable('with_opengl',        'Build with OpenGL support', True))
-        self.opts.Add(BoolVariable('with_xinput',        'Build with Xinput support', False))
-        self.opts.Add(BoolVariable('with_linuxevdev',    'Build with Linux evdev support',  sys.platform == "linux2"))
         self.opts.Add(BoolVariable('with_wiimote',       'Build with Wiimote support', False))
         self.opts.Add(BoolVariable('ignore_errors',      'Ignore any fatal configuration errors', False))
         self.opts.Add('optional_sources', 'Additional source files', [])
@@ -131,15 +127,6 @@ class Project:
             else:
                 self.conf.env.Append(LIBS = ['GL'])
 
-    def configure_linuxevdev(self):
-        if not self.env['with_linuxevdev']:
-            self.reports += "  * Linux evdev support: disabled\n"
-        else:
-            self.reports += "  * Linux evdev support: ok\n"
-            self.conf.env.Append(CPPDEFINES = [('HAVE_LINUXEVDEV', 1)])
-            self.conf.env.Append(optional_sources = ['src/engine/input/evdev/evdev_driver.cpp',
-                                                     'src/engine/input/evdev/evdev_device.cpp'])
-
     def configure_wiimote(self):
         if not self.env['with_wiimote']:
             self.reports += "  * Wiimote support: disabled\n"
@@ -151,18 +138,6 @@ class Project:
                                                      'src/engine/input/wiimote/wiimote.cpp'])
         else:
             self.reports += "  * Wiimote support: no (libcwiid or cwiid.h not found)\n"
-
-    def configure_xinput(self):
-        if not self.env['with_xinput']:
-            self.reports += "  * XInput support: disabled\n"
-        elif not self.conf.CheckLibWithHeader('Xi', 'X11/extensions/XInput.h', 'c++'):
-            self.reports += "  * XInput support: no (library Xi not found)\n" ## FIXME: Need to set a define
-        else:
-            self.reports += "  * XInput support: yes\n"
-            self.conf.env.Append(CPPDEFINES = [('HAVE_XINPUT', 1)])
-            self.conf.env.Append(LIBS = ['Xi'])
-            self.conf.env.Append(optional_sources = ['src/engine/input/xinput/xinput_driver.cpp',
-                                                     'src/engine/input/xinput/xinput_device.cpp'])
 
     def configure_boost(self):
         if not self.conf.CheckHeader('boost/signals2.hpp', '<>', 'c++'):
