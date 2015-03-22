@@ -21,8 +21,11 @@ int main(int argc, char** argv)
       if (surface->format->palette)
         std::cout << " palette";
 
-      if (surface->flags & SDL_SRCCOLORKEY)
-        std::cout << " colorkey";
+      Uint32 colorkey;
+      if (SDL_GetColorKey(surface, &colorkey) == 0)
+      {
+        std::cout << " colorkey:" << colorkey;
+      }
 
       std::cout << " bitsPerPixel:"  << static_cast<int>(surface->format->BitsPerPixel);
       std::cout << " bytesPerPixel:" << static_cast<int>(surface->format->BytesPerPixel);

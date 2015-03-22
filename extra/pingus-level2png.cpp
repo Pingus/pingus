@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 
 #include "engine/display/surface.hpp"
 #include "math/color.hpp"
@@ -118,8 +119,8 @@ int main(int argc, char** argv)
       renderer.blit(out_surface);
     }
 
-    Screenshot::save(out_surface.get_surface(), files[1].get_sys_path());
-
+    Screenshot::save_png(files[1].get_sys_path(), out_surface.get_data(),
+                         out_surface.get_width(), out_surface.get_height(), out_surface.get_pitch());
     Resource::deinit();
   }
 

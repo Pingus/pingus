@@ -21,24 +21,18 @@
 #include "util/pathname.hpp"
 #include "engine/input/manager.hpp"
 #include "engine/input/controller.hpp"
+#include "engine/system/sdl_system.hpp"
 
 int main()
 {
   try
   {
-    if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) < 0)
-    {
-      std::cerr << "Unable to init SDL: " << SDL_GetError() << std::endl;
-      exit(1);
-    }
-    atexit(SDL_Quit);
-
-    SDL_Surface* screen = SDL_SetVideoMode(640, 480, 0, 0);
+    SDLSystem sdl_system;
 
     Input::Manager manager;
 
     Input::ControllerPtr controller
-      = manager.create_controller(Pathname("../data/controller/input2.scm", Pathname::SYSTEM_PATH));
+      = manager.create_controller(Pathname("../data/controller/default.scm", Pathname::SYSTEM_PATH));
 
     while(true)
     {
@@ -52,8 +46,6 @@ int main()
       }
 
       manager.update(0.033f);
-
-      SDL_Flip(screen);
     }
   }
   catch (std::exception& err)
