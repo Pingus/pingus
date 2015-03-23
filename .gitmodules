@@ -1,0 +1,6 @@
+[submodule "external/logmich"]
+	path = external/logmich
+	url = https://github.com/logmich/logmich.git
+[submodule "external/tinygettext"]
+	path = external/tinygettext
+	url = https://github.com/tinygettext/tinygettext.git
