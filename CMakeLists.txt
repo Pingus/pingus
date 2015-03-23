@@ -26,8 +26,6 @@ pkg_search_module(SDL2MIXER REQUIRED SDL2_mixer>=2.0.0)
 pkg_search_module(PNG REQUIRED libpng)
 
 file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-  external/tinygettext/tinygettext/*.cpp
-  external/logmich/src/*.cpp
   src/editor/*.cpp
   src/engine/display/*.cpp
   src/engine/display/delta/*.cpp
@@ -51,7 +49,10 @@ file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/pingus/worldobjs/*.cpp
   src/util/*.cpp)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Wextra -Wshadow -Wno-unused-parameter")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -Wall -Wextra -Wnon-virtual-dtor -Weffc++")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wconversion -Wold-style-cast -Werror -Wshadow -Wcast-qual")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Winit-self -Wno-unused-parameter")
 
 include_directories(
   ${SDL2_INCLUDE_DIRS}
@@ -59,19 +60,40 @@ include_directories(
 
 include_directories(
   src/
-  external/tinygettext/
+  external/tinygettext/include/
   external/logmich/include/)
+
+file(GLOB TINYGETTEXT_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+  external/tinygettext/src/*.cpp)
+add_library(tinygettext STATIC ${TINYGETTEXT_SOURCES_CXX})
+
+file(GLOB LOGMICH_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+  external/logmich/src/*.cpp)
+add_library(logmich STATIC ${LOGMICH_SOURCES_CXX})
 
 add_library(libpingus STATIC ${PINGUS_SOURCES_CXX})
 set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
 target_compile_definitions(libpingus PUBLIC -DVERSION="0.8.0")
 
 add_executable(pingus src/main.cpp)
-target_link_libraries(pingus libpingus
+target_link_libraries(pingus
+  libpingus
+  logmich
+  tinygettext
   ${SDL2_LIBRARIES}
   ${SDL2IMAGE_LIBRARIES}
   ${SDL2MIXER_LIBRARIES}
   ${PNG_LIBRARIES}
   ${OPENGL_LIBRARIES})
+
+# # build test and utils
+# for filename in Glob("test/*_test.cpp", strings=True):
+#     self.env.Alias('test', self.env.Program(filename[:-4], [filename, libpingus]))
+# for filename in Glob("test/*_util.cpp", strings=True):
+#     self.env.Alias('test', self.env.Program(filename[:-4], [filename, libpingus]))
+
+# # build extra stuff
+# for filename in Glob("extra/*.cpp", strings=True):
+#     self.env.Alias('extra', self.env.Program(filename[:-4], [filename, libpingus]))
 
 # EOF #
