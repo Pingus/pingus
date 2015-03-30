@@ -425,7 +425,7 @@ ObjectProperties::set_object(LevelObjPtr obj)
 
     if (attr & HAS_STRETCH)
     {
-      stretch_x_checkbox->set_checked(obj->get_stretch_y());
+      stretch_x_checkbox->set_checked(obj->get_stretch_x());
       stretch_y_checkbox->set_checked(obj->get_stretch_y());
 
       place(stretch_label);
