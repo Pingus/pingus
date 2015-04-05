@@ -36,6 +36,7 @@
 #  include <sys/types.h>
 #  include <unistd.h>
 #  include <errno.h>
+#  include <boost/filesystem.hpp>
 #else /* WIN32 */
 #  include <windows.h>
 #  include <direct.h>
@@ -246,11 +247,14 @@ void
 System::create_dir(std::string directory)
 {
 #ifndef WIN32
-  log_info("System::create_dir: %1%", directory);
-
   if (!exist(directory))
   {
-    if (mkdir(directory.c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) != 0)
+    std::string::iterator end = directory.end() - 1;
+    if(*end == '/') {
+      directory.erase(end);
+    }
+    log_info("System::create_dir: %1", directory);
+    if (!boost::filesystem::create_directories(directory.c_str()))
     {
       raise_exception(std::runtime_error, "System::create_dir: " << directory << ": " << strerror(errno));
     }
@@ -361,11 +365,8 @@ System::init_directories()
 
   std::string statdir  = get_userdir();
 
-  create_dir(statdir);
-
   // FIXME: We need a better seperation between user created levels,
   // FIXME: third party levels and levels from the base distri
-  create_dir(statdir + "levels/");
   create_dir(statdir + "levels/dist");
   create_dir(statdir + "themes/");
 

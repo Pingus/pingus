@@ -5,14 +5,16 @@ Requirements:
 -------------
 To compile Pingus you need:
 
- g++           - http://gcc.gnu.org/
- SDL           - http://libsdl.org/
+ g++              - http://gcc.gnu.org/
+ SDL              - http://libsdl.org/
  SDL_mixer
  SDL_image
- boost         - http://www.boost.org
- boost-signals - http://www.boost.org
- libpng        - http://libpng.org/
- scons         - http://scons.org/
+ boost            - http://www.boost.org
+ boost-signals    - http://www.boost.org
+ boost-system     - http://www.boost.org
+ boost-filesystem - http://www.boost.org
+ libpng           - http://libpng.org/
+ scons            - http://scons.org/
 
 In most cases you will find all of these in your distribution and
 there shouln't be a need to compile anything manually.
@@ -26,6 +28,8 @@ In Ubuntu you can install everything by typing:
      libsdl-image1.2-dev \
      libboost-dev \
      libboost-signals-dev \
+     libboost-system-dev \
+     libboost-filesystem-dev \
      libpng12-dev \
      scons
 

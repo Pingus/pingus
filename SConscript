@@ -189,6 +189,10 @@ class Project:
     def configure_boost(self):
         if not self.conf.CheckLibWithHeader('boost_signals', 'boost/signals2.hpp', 'c++'):
             self.fatal_error += "  * library 'boost_signals2' not found\n"
+        if not self.conf.CheckLib('boost_system', '', '', 'c++'):
+            self.fatal_error += "  * library 'boost_system' not found\n"
+        if not self.conf.CheckLibWithHeader('boost_filesystem', 'boost/filesystem.hpp', 'c++'):
+            self.fatal_error += "  * library 'boost_filesystem' not found\n"
 
     def configure_png(self):
         if self.conf.CheckMyProgram('pkg-config'):
