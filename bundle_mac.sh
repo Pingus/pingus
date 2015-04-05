@@ -26,7 +26,7 @@ echo "* Creating DMG"
 	cp COPYING /Volumes/Pingus
 	cp NEWS /Volumes/Pingus
 	hdiutil detach /Volumes/Pingus -force
-read -p "Do you run OSX 10.6 or eaarlier? (y/n)" RESPONSE
+read -p "Do you run OSX 10.6 or earlier? (y/n)" RESPONSE
 	if [ "$RESPONSE" = y ] ; then
 		./SLA-dmg.sh COPYING Pingus-tmp.dmg
 	elif [ "$RESPONSE" = n ] ; then
