@@ -182,7 +182,7 @@ class Project:
         else:
             self.reports += "  * XInput support: yes\n"
             self.conf.env.Append(CPPDEFINES = [('HAVE_XINPUT', 1)])
-            self.conf.env.Append(LIBS = ['Xi'])
+            self.conf.env.Append(LIBS = ['X11', 'Xi'])
             self.conf.env.Append(optional_sources = ['src/engine/input/xinput/xinput_driver.cpp',
                                                      'src/engine/input/xinput/xinput_device.cpp'])
 

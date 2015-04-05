@@ -17,7 +17,6 @@
 #include "engine/input/xinput/xinput_driver.hpp"
 
 #include "engine/input/xinput/xinput_device.hpp"
-#include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 
 namespace Input {
@@ -67,7 +66,7 @@ XInputDriver::setup_xinput()
     XDeviceInfo* info = XListInputDevices(sys.info.x11.display, &num_devices);
     for(int i = 0; i < num_devices; ++i)
     {
-      pout(PINGUS_DEBUG_INPUT) << "XInputDriver: Device name='" << info[i].name << "'" << std::endl;
+      log_debug("XInputDriver: Device name='%1'", info[i].name);
       // FIXME: Xinput isn't necesarrily a mouse, could be anything
       //if (info[i].use == IsXExtensionDevice)
       // {
