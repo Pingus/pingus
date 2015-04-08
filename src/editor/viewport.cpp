@@ -198,6 +198,7 @@ Viewport::on_primary_button_release(int x_, int y_)
     {
       (*it)->set_orig_pos((*it)->get_pos());
     }
+    selection_changed(selection);
   }
   current_action = NOTHING;
 }
@@ -238,6 +239,7 @@ Viewport::on_pointer_move(int x_, int y_)
           }
           (*it)->set_pos(Vector3f(new_x, new_y, orig_pos.z));
         }
+        selection_changed(selection);
       }
       break;
 
@@ -788,6 +790,7 @@ Viewport::move_objects(const Vector2i& offset)
                             p.y + static_cast<float>(offset.y),
                             p.z));
   }
+  selection_changed(selection);
 }
 
 Vector2i
