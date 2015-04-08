@@ -471,6 +471,30 @@ GenericLevelObj::set_pos(Vector3f p)
 }
 
 void
+GenericLevelObj::set_pos_x(float x)
+{
+  pos.x = x;
+}
+
+float
+GenericLevelObj::get_pos_x() const
+{
+  return pos.x;
+}
+
+void
+GenericLevelObj::set_pos_y(float y)
+{
+  pos.y = y;
+}
+
+float
+GenericLevelObj::get_pos_y() const
+{
+  return pos.y;
+}
+
+void
 GenericLevelObj::set_pos_z(float z)
 {
   pos.z = z;

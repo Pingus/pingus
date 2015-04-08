@@ -72,6 +72,12 @@ private:
   Label*    owner_label;
   Inputbox* owner_inputbox;
 
+  Label*    pos_x_label;
+  Inputbox* pos_x_inputbox;
+
+  Label*    pos_y_label;
+  Inputbox* pos_y_inputbox;
+
   Label*    pos_z_label;
   Inputbox* pos_z_inputbox;
 
@@ -137,6 +143,8 @@ public:
   void on_scroll_x_change(const std::string& str);
   void on_scroll_y_change(const std::string& str);
   void on_release_rate_change(const std::string& str);
+  void on_pos_x_change(const std::string& str);
+  void on_pos_y_change(const std::string& str);
   void on_pos_z_change(const std::string& str);
 
   void on_color_r_change(const std::string& str);
