@@ -21,6 +21,32 @@
 #include "gettext.h"
 #include "pingus/globals.hpp"
 
+int
+GameTime::seconds_to_ticks(int seconds)
+{
+  if (seconds < 0)
+  {
+    return seconds;
+  }
+  else
+  {
+    return seconds * 1000 / globals::game_speed;
+  }
+}
+
+int
+GameTime::ticks_to_seconds(int ticks)
+{
+  if (ticks < 0)
+  {
+    return ticks;
+  }
+  else
+  {
+    return ticks * globals::game_speed / 1000;
+  }
+}
+
 std::string
 GameTime::ticks_to_realtime_string(int ticks)
 {
@@ -33,7 +59,7 @@ GameTime::ticks_to_realtime_string(int ticks)
     const int time_str_size = 20;
     char time_str[time_str_size];
 
-    int total_seconds = ticks * globals::game_speed / 1000;
+    int total_seconds = ticks_to_seconds(ticks);
     int seconds       = total_seconds % 60;
     int minutes       = total_seconds / 60;
 

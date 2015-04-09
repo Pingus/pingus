@@ -28,6 +28,8 @@ class GameTime
 public:
   /** Convert time given in ticks, into a string of Minutes:Seconds */
   static std::string ticks_to_realtime_string(int ticks);
+  static int seconds_to_ticks(int seconds);
+  static int ticks_to_seconds(int ticks);
 };
 
 #endif
