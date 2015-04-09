@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Ice Block Blockage")
-    (description "What's this? A gigantic ice block straight in the path? Where did that come from? No time wondering about things like that. The Pingus need to get to the exist and it's your job to find a way around the block.")
+    (description "What's this? A gigantic ice block straight in the path? Where did that come from? No time wondering about things like that. The Pingus need to get to the exit and it's your job to find a way around the block.")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 30)
     (number-to-save 25)
