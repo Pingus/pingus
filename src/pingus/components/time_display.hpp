@@ -31,7 +31,6 @@ class TimeDisplay : public GUI::Component
 private:
   Server*   server;
   Font   font;
-  Sprite infinity_symbol;
 
 public:
   TimeDisplay(GameSession* c);
