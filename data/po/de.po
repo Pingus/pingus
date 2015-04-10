@@ -3793,7 +3793,7 @@ msgstr "Frohe Weihnachten und ein frohes neues Jahr"
 #~ msgstr "Die Höhle"
 
 #~ msgid ""
-#~ "It's getting warmer but Pingus are breavely moving North. This time it "
+#~ "It's getting warmer but Pingus are bravely moving North. This time it "
 #~ "will be much easier. There are at least four ways out. Could you find "
 #~ "them?"
 #~ msgstr ""
