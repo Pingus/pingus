@@ -27,6 +27,7 @@
 #include "editor/viewport.hpp"
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
+#include "engine/sound/sound.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "editor/message_box.hpp"
 #include "pingus/fonts.hpp"
@@ -116,6 +117,12 @@ EditorScreen::EditorScreen() :
 // Destructor
 EditorScreen::~EditorScreen()
 {
+}
+
+void
+EditorScreen::on_startup ()
+{
+  Sound::PingusSound::stop_music();
 }
 
 // Close the current screen
