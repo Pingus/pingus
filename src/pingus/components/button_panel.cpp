@@ -109,7 +109,12 @@ ButtonPanel::update (float delta)
 ActionName::Enum
 ButtonPanel::get_action_name()
 {
-  return buttons[current_button].name;
+  if (!buttons.empty())
+  {
+    return buttons[current_button].name;
+  }
+  // No actions available
+  return ActionName::WALKER;
 }
 
 void
@@ -128,13 +133,19 @@ ButtonPanel::set_button(int n)
 void
 ButtonPanel::next_action()
 {
-  current_button = (current_button + 1 + int(buttons.size())) % int(buttons.size());
+  if (!buttons.empty())
+  {
+    current_button = (current_button + 1 + int(buttons.size())) % int(buttons.size());
+  }
 }
 
 void
 ButtonPanel::previous_action()
 {
-  current_button = (current_button - 1 + int(buttons.size())) % int(buttons.size());
+  if (!buttons.empty())
+  {
+    current_button = (current_button - 1 + int(buttons.size())) % int(buttons.size());
+  }
 }
 
 void
