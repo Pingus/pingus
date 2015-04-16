@@ -221,23 +221,6 @@ ObjectSelector::scroll_down()
 }
 
 std::unique_ptr<ObjectSelectorSet>
-ObjectSelector::create_objects(const std::string& prefix)
-{
-  auto set = util::make_unique<ObjectSelectorSet>(object_list, 48, 48);
-
-  // FIXME: Simple debugging aid, needs to be replaced with custom code for the object types
-  std::vector<std::string> lst = Resource::resmgr.get_section(prefix);
-  for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
-  {
-    // need to reset the align to top/left
-    set->add(util::make_unique<ObjectSelectorList::Object>(Sprite(*i),
-                                                          Resource::load_thumb_sprite(*i)));
-  }
-
-  return set;
-}
-
-std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_groundpiece(const std::string& prefix, const std::string& type)
 {
   auto set = util::make_unique<ObjectSelectorSet>(object_list, 48, 48);

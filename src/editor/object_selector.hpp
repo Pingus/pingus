@@ -62,7 +62,6 @@ public:
   void scroll_down();
 
 private:
-  std::unique_ptr<ObjectSelectorSet> create_objects(const std::string& prefix);
   std::unique_ptr<ObjectSelectorSet> create_groundpiece(const std::string& prefix, const std::string& type);
   std::unique_ptr<ObjectSelectorSet> create_gp_ground();
   std::unique_ptr<ObjectSelectorSet> create_gp_solid();
