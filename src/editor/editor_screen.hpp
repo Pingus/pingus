@@ -132,8 +132,6 @@ public:
   void objects_rotate_left();
   void objects_rotate_right();
 
-  void toggle_grid_snap();
-
   void toggle_object_selector();
 
   void toggle_object_properties();

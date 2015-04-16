@@ -217,10 +217,6 @@ Panel::Panel(EditorScreen* editor_) :
                &EditorScreen::objects_rotate_right);
   }
 
-  // add_separator();
-  //add_button("core/editor/snap-grid", "Snap objects to grid",
-  //             &EditorScreen::toggle_grid_snap);
-  // add_separator();
   add_separator();
   add_button("core/editor/help", _("Display help"),
              &EditorScreen::toggle_help);
