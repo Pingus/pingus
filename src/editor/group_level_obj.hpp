@@ -53,7 +53,6 @@ public:
   bool is_prefab() const { return !m_name.empty(); }
 
   void add_child(LevelObjPtr);
-  void remove_child(LevelObjPtr);
 
   void draw(DrawingContext& gc);
   void draw_selection(DrawingContext &gc);
