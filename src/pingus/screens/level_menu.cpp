@@ -386,14 +386,6 @@ public:
     current_level = -1;
   }
 
-  int get_current_level(int x, int y)
-  {
-    int cl = current_level = y / 32 + page;
-    if (cl < 0 || cl >= levelset->get_level_count())
-      cl = -1;
-    return cl;
-  }
-
   void on_pointer_move(int x, int y)
   {
     x -= rect.left;
