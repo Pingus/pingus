@@ -15,8 +15,6 @@ emit_msgid(const std::string& str)
 
 int main(int argc, char** argv)
 {
-  std::vector<Pathname> files;
-
   for(int i = 1; i < argc; ++i)
   {
     Pathname filename(argv[i], Pathname::SYSTEM_PATH);
