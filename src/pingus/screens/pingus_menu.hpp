@@ -66,8 +66,6 @@ public:
   void set_hint(const std::string& str);
 
   /// Load all images and other stuff for the menu
-  void do_contrib(const std::string&);
-
   void on_escape_press ();
   void draw_background(DrawingContext& gc);
 
