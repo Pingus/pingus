@@ -567,9 +567,9 @@ std::string
 System::realpath(const std::string& pathname)
 {
   std::string fullpath;
-  std::string drive;
 
 #ifdef WIN32
+  std::string drive;
   if (pathname.size() > 2 && pathname[1] == ':' && pathname[2] == '/')
   {
     // absolute path on Win32
