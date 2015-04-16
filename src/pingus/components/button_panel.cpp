@@ -76,7 +76,6 @@ ButtonPanel::draw(DrawingContext& gc)
     if (globals::developer_mode)
     {
       std::ostringstream out;
-      std::string str = StringUtil::to_string(aholder->get_available(buttons[i].name));
       out << aholder->get_available(buttons[i].name)
           << " / "
           << aholder->get_used(buttons[i].name);
