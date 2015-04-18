@@ -33,10 +33,6 @@ private:
 public:
   static StatManager* instance();
 
-  /** Returns the resource name of a worldmap - strips out everything except after
-      the last '/' in the full path + filename, and converts periods to dashes */
-  static std::string get_resname(const std::string& filename);
-
 public:
   StatManager(const std::string& filename);
   ~StatManager();

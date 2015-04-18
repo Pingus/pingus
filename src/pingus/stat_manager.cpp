@@ -31,22 +31,6 @@ StatManager::instance()
   return instance_;
 }
 
-std::string
-StatManager::get_resname(const std::string& filename)
-{
-  std::string::size_type pos;
-  std::string str;
-  pos = filename.rfind("/");
-  pos++;
-  str = filename.substr(pos);
-  pos = 0;
-  while ((pos = str.find('.', pos)) != std::string::npos)
-  {
-    str.replace(pos, 1, 1, '-');
-  }
-  return str;
-}
-
 StatManager::StatManager(const std::string& arg_filename)
   : statfilename(System::get_userdir() + arg_filename),
     stats()
