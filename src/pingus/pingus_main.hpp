@@ -32,7 +32,6 @@ public:
 
   virtual int run(int argc, char** argv);
 
-  void on_exit_press();
 private:
   /** After all subsystems have been inited, the screen will get
       setup, the game (the menu or a level, depending on
