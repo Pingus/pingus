@@ -386,12 +386,6 @@ Pingu::set_direction (Direction d)
   direction = d;
 }
 
-bool
-Pingu::is_alive (void)
-{
-  return (status != PS_DEAD && status != PS_EXITED);
-}
-
 std::string
 Pingu::get_name()
 {

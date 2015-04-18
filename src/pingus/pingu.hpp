@@ -122,9 +122,6 @@ public:
   /** Checks if this action allows to be overwritten with the given new action */
   bool change_allowed (ActionName::Enum new_action);
 
-  /// Check if the pingu is still alive
-  bool is_alive (void);
-
   /// Return the status of the pingu
   PinguStatus get_status (void) const;
 
