@@ -37,9 +37,6 @@ public:
   /** Get the resulting position vector */
   Vector3f get_pos() const;
 
-  /** Get the move vector remaining after a collision */
-  Vector3f remaining() const;
-
   /** Get whether object stopped moving because it collided with something */
   bool collided() const;
 
@@ -49,9 +46,6 @@ protected:
 
   /** Position of the object to move */
   Vector3f pos;
-
-  /** Move vector remaining after a collision */
-  Vector3f remaining_move;
 
   /** Flag to denote whether object has had a collision */
   bool collision;
