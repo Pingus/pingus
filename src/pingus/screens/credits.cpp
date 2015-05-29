@@ -75,9 +75,9 @@ Credits::Credits(const Pathname& filename) :
   offset(),
   credits()
 {
-  scene_context.reset(new SceneContext);
+  scene_context = std::make_unique<SceneContext>();
   fast_scrolling = false;
-  gui_manager->add(new CreditsOkButton(this));
+  gui_manager->add(std::make_unique<CreditsOkButton>(this));
 
   font       = Fonts::chalk_normal;
   font_small = Fonts::chalk_large;

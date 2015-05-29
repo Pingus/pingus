@@ -140,15 +140,16 @@ StoryScreen::StoryScreen(const FileReader& reader, bool credits) :
   skip_button(0),
   m_credits(credits)
 {
-  story_comp = new StoryScreenComponent(story.get(), m_credits);
-  gui_manager->add(story_comp);
-  gui_manager->add(continue_button = new StoryScreenContinueButton(story_comp,
+  story_comp = gui_manager->create<StoryScreenComponent>(story.get(), m_credits);
+  continue_button = gui_manager->create<StoryScreenContinueButton>(story_comp,
                                                                    Display::get_width()/2 + 220 + 40,
-                                                                   Display::get_height()/2 + 180 + 32));
+                                                                   Display::get_height()/2 + 180 + 32);
   if (globals::developer_mode)
-    gui_manager->add(skip_button     = new StoryScreenSkipButton(story_comp,
-                                                                 Display::get_width() - 4,
-                                                                 Display::get_height() - 26));
+  {
+    skip_button = gui_manager->create<StoryScreenSkipButton>(story_comp,
+                                                             Display::get_width() - 4,
+                                                             Display::get_height() - 26);
+  }
 }
 
 StoryScreen::~StoryScreen()

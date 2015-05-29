@@ -49,36 +49,35 @@ PingusMenu::PingusMenu() :
 
   Size size_(Display::get_width(), Display::get_height());
 
-  start_button = new MenuButton(this, Vector2i(size_.width/2 - 125,
-                                               size_.height/2 - 20),
-                                _("Story"),
-                                _("..:: Start the game ::.."));
+  start_button = gui_manager->create<MenuButton>(
+    this, Vector2i(size_.width/2 - 125,
+                   size_.height/2 - 20),
+    _("Story"),
+    _("..:: Start the game ::.."));
 
-  editor_button = new MenuButton(this, Vector2i(size_.width/2 + 125,
-                                                size_.height/2 - 20),
-                                 _("Editor"),
-                                 _("..:: Create your own levels ::.."));
+  editor_button = gui_manager->create<MenuButton>(
+    this, Vector2i(size_.width/2 + 125,
+                   size_.height/2 - 20),
+    _("Editor"),
+    _("..:: Create your own levels ::.."));
 
-  options_button = new MenuButton(this, Vector2i(size_.width/2 + 125,
-                                                 size_.height/2 + 50),
-                                  _("Options"),
-                                  _("..:: Configure the game ::.."));
+  options_button = gui_manager->create<MenuButton>(
+    this, Vector2i(size_.width/2 + 125,
+                   size_.height/2 + 50),
+    _("Options"),
+    _("..:: Configure the game ::.."));
 
-  contrib_button = new MenuButton(this, Vector2i(size_.width/2 - 125,
-                                                 size_.height/2 + 50),
-                                  _("Levelsets"),
-                                  _("..:: Play User Built levels ::.."));
+  contrib_button = gui_manager->create<MenuButton>(
+    this, Vector2i(size_.width/2 - 125,
+                   size_.height/2 + 50),
+    _("Levelsets"),
+    _("..:: Play User Built levels ::.."));
 
-  quit_button = new MenuButton(this, Vector2i(size_.width/2,
-                                              size_.height/2 + 120),
-                               _("Exit"),
-                               _("..:: Bye, bye ::.."));
-
-  gui_manager->add(quit_button);
-  gui_manager->add(options_button);
-  gui_manager->add(contrib_button);
-  gui_manager->add(start_button);
-  gui_manager->add(editor_button);
+  quit_button = gui_manager->create<MenuButton>(
+    this, Vector2i(size_.width/2,
+                   size_.height/2 + 120),
+    _("Exit"),
+    _("..:: Bye, bye ::.."));
 
   logo = Sprite("core/misc/logo");
 

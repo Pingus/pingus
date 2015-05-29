@@ -98,14 +98,14 @@ OptionMenu::OptionMenu() :
   m_language(),
   m_language_map()
 {
-  gui_manager->add(ok_button = new OptionMenuCloseButton(this,
+  ok_button = gui_manager->create<OptionMenuCloseButton>(this,
                                                          Display::get_width()/2 + 245,
-                                                         Display::get_height()/2 + 150));
+                                                         Display::get_height()/2 + 150);
 
   x_pos = 0;
   y_pos = 0;
 
-  ChoiceBox* resolution_box = new ChoiceBox(Rect());
+  auto resolution_box = std::make_unique<ChoiceBox>(Rect());
   {
     std::vector<SDL_DisplayMode> resolutions = Display::get_fullscreen_video_modes();
     Size fullscreen = config_manager.get_fullscreen_resolution();
@@ -129,7 +129,7 @@ OptionMenu::OptionMenu() :
     resolution_box->set_current_choice(choice);
   }
 
-  ChoiceBox* renderer_box = new ChoiceBox(Rect());
+  auto renderer_box = std::make_unique<ChoiceBox>(Rect());
   renderer_box->add_choice("sdl");
   renderer_box->add_choice("delta");
   renderer_box->add_choice("opengl");
@@ -144,7 +144,7 @@ OptionMenu::OptionMenu() :
 
   m_language = dictionary_manager.get_language();
 
-  ChoiceBox* language_box = new ChoiceBox(Rect());
+  auto language_box = std::make_unique<ChoiceBox>(Rect());
   {
     std::set<tinygettext::Language> languages = dictionary_manager.get_languages();
 
@@ -167,7 +167,7 @@ OptionMenu::OptionMenu() :
     }
   }
 
-  ChoiceBox* scroll_box = new ChoiceBox(Rect());
+  auto scroll_box = std::make_unique<ChoiceBox>(Rect());
   scroll_box->add_choice("Drag&Drop");
   scroll_box->add_choice("Rubberband");
 
@@ -203,25 +203,25 @@ OptionMenu::OptionMenu() :
 
   x_pos = 0;
   y_pos = 0;
-  add_item(_("Fullscreen"), fullscreen_box);
-  add_item(_("Mouse Grab"), mousegrab_box);
+  add_item(_("Fullscreen"), std::unique_ptr<GUI::RectComponent>(fullscreen_box));
+  add_item(_("Mouse Grab"), std::unique_ptr<GUI::RectComponent>(mousegrab_box));
   y_pos += 1;
-  add_item(_("Software Cursor"), software_cursor_box);
-  add_item(_("Autoscrolling"), autoscroll_box);
-  add_item(_("Drag&Drop Scrolling"), dragdrop_scroll_box);
+  add_item(_("Software Cursor"), std::unique_ptr<GUI::RectComponent>(software_cursor_box));
+  add_item(_("Autoscrolling"), std::unique_ptr<GUI::RectComponent>(autoscroll_box));
+  add_item(_("Drag&Drop Scrolling"), std::unique_ptr<GUI::RectComponent>(dragdrop_scroll_box));
   y_pos += 1;
-  add_item(_("Print FPS"), printfps_box);
+  add_item(_("Print FPS"), std::unique_ptr<GUI::RectComponent>(printfps_box));
 
   x_pos = 1;
   y_pos = 0;
-  add_item(_("Resolution:"),    resolution_box);
-  add_item(_("Renderer:"),      renderer_box);
+  add_item(_("Resolution:"), std::move(resolution_box));
+  add_item(_("Renderer:"), std::move(renderer_box));
   y_pos += 1;
-  add_item(_("Language:"),        language_box);
+  add_item(_("Language:"), std::move(language_box));
   y_pos += 1;
-  add_item(_("Master Volume:"),   master_volume_box);
-  add_item(_("Sound Volume:"),    sound_volume_box);
-  add_item(_("Music Volume:"),    music_volume_box);
+  add_item(_("Master Volume:"), std::unique_ptr<GUI::RectComponent>(master_volume_box));
+  add_item(_("Sound Volume:"), std::unique_ptr<GUI::RectComponent>(sound_volume_box));
+  add_item(_("Music Volume:"), std::unique_ptr<GUI::RectComponent>(music_volume_box));
 
   // Connect with ConfigManager
   mousegrab_box->set_state(config_manager.get_mouse_grab(), false);
@@ -251,7 +251,7 @@ OptionMenu::OptionMenu() :
 }
 
 void
-OptionMenu::add_item(const std::string& label, GUI::RectComponent* control)
+OptionMenu::add_item(const std::string& label, std::unique_ptr<GUI::RectComponent> control)
 {
   int x_offset = (Display::get_width()  - 800) / 2;
   int y_offset = (Display::get_height() - 600) / 2;
@@ -265,19 +265,19 @@ OptionMenu::add_item(const std::string& label, GUI::RectComponent* control)
   Rect right(rect.left + 140, rect.top,
              rect.right, rect.bottom);
 
-  Label* label_component = new Label(label, Rect());
+  auto label_component = std::make_unique<Label>(label, Rect());
 
-  if (dynamic_cast<ChoiceBox*>(control))
+  if (dynamic_cast<ChoiceBox*>(control.get()))
   {
     label_component->set_rect(left);
     control->set_rect(right);
   }
-  else if (dynamic_cast<SliderBox*>(control))
+  else if (dynamic_cast<SliderBox*>(control.get()))
   {
     label_component->set_rect(left);
     control->set_rect(right);
   }
-  else if (dynamic_cast<CheckBox*>(control))
+  else if (dynamic_cast<CheckBox*>(control.get()))
   {
     control->set_rect(Rect(Vector2i(rect.left, rect.top),
                            Size(32, 32)));
@@ -289,10 +289,10 @@ OptionMenu::add_item(const std::string& label, GUI::RectComponent* control)
     assert(!"Unhandled control type");
   }
 
-  gui_manager->add(label_component);
-  gui_manager->add(control);
+  options.push_back(Option(label_component.get(), control.get()));
 
-  options.push_back(Option(label_component, control));
+  gui_manager->add(std::move(label_component));
+  gui_manager->add(std::move(control));
 
   y_pos += 1;
 }

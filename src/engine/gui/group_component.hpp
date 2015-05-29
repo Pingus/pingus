@@ -20,22 +20,24 @@
 #include "engine/display/drawing_context.hpp"
 #include "engine/gui/rect_component.hpp"
 
+#include <memory>
+
 namespace GUI {
 
 class GroupComponent : public RectComponent
 {
 private:
-  typedef std::vector<Component*> Components;
-  Components     children;
+  typedef std::vector<std::unique_ptr<Component> > Components;
+  Components children;
   DrawingContext drawing_context;
 
   /** Used to detect enter/leave events */
-  Component*     mouse_over_comp;
+  Component* mouse_over_comp;
 
   /** Used to decide where keyboard events should go */
-  Component*     focused_comp;
+  Component* focused_comp;
 
-  Component*     grabbed_comp;
+  Component* grabbed_comp;
 
   /** Used to do a mouse grab, as long as a button is pressed, the
       component that got the press gets moves and release events */
@@ -69,15 +71,15 @@ public:
 
   void on_pointer_move(int x, int y);
 
-  /** \a comp will be deleted by GroupComponent */
-  void add(Component* comp);
+  void add(std::unique_ptr<Component> comp);
 
   template<typename C, typename ...Args>
   C* create(Args&&... args)
   {
-    C* c = new C(std::forward<Args>(args)...);
-    add(c);
-    return c;
+    auto c = std::make_unique<C>(std::forward<Args>(args)...);
+    C* result = c.get();
+    add(std::move(c));
+    return result;
   }
 
   void update_layout();

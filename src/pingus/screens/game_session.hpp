@@ -32,7 +32,6 @@ struct Event;
 class ButtonPanel;
 class PingusCounter;
 class Playfield;
-class TimeDisplay;
 class SmallMap;
 class ArmageddonButton;
 class ForwardButton;
@@ -60,7 +59,6 @@ private:
   ButtonPanel*   button_panel;
   PingusCounter* pcounter;
   Playfield*     playfield;
-  TimeDisplay*   time_display;
   SmallMap*      small_map;
 
   ArmageddonButton* armageddon_button;

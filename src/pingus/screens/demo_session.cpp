@@ -102,32 +102,29 @@ DemoSession::DemoSession(const Pathname& pathname_) :
   server   = std::unique_ptr<Server>(new Server(plf, false));
 
   // Create GUI
-  pcounter = new PingusCounter(server.get());
-  gui_manager->add(pcounter);
-  gui_manager->add(new ButtonPanel(server.get(), Vector2i(0, (size.height - 100)/2)));
+  pcounter = gui_manager->create<PingusCounter>(server.get());
+  gui_manager->create<ButtonPanel>(server.get(), Vector2i(0, (size.height - 100)/2));
 
   int world_width  = server->get_world()->get_width();
   int world_height = server->get_world()->get_height();
 
-  playfield = new Playfield(server.get(), 0,
-                            Rect(Vector2i(Math::max((size.width  - world_width)/2,  0),
-                                          Math::max((size.height - world_height)/2, 0)),
-                                 Size(Math::min(size.width,  world_width),
-                                      Math::min(size.height, world_height))));
+  playfield = gui_manager->create<Playfield>(
+    server.get(), nullptr,
+    Rect(Vector2i(Math::max((size.width  - world_width)/2,  0),
+                  Math::max((size.height - world_height)/2, 0)),
+         Size(Math::min(size.width,  world_width),
+              Math::min(size.height, world_height))));
 
-  gui_manager->add(playfield);
+  gui_manager->create<SmallMap>(server.get(), playfield, Rect(Vector2i(5, size.height - 105), Size(175, 100)));
 
-  small_map    = new SmallMap(server.get(), playfield, Rect(Vector2i(5, size.height - 105), Size(175, 100)));
-  gui_manager->add(small_map);
-
-  gui_manager->add(fastforward_button= new BButton(32+50, 32, "core/demo/fastforward",
-                                                   std::bind(&DemoSession::on_fast_forward_press, this),
-                                                   std::bind(&DemoSession::is_fast_forward, this)));
-  gui_manager->add(pause_button =new BButton(32,  32, "core/demo/pause",
-                                             std::bind(&DemoSession::on_pause_press, this),
-                                             std::bind(&DemoSession::is_pause, this)));
-  gui_manager->add(restart_button = new BButton(size.width - 32 - 48, 32, "core/demo/reload",
-                                                std::bind(&DemoSession::restart, this)));
+  fastforward_button = gui_manager->create<BButton>(32+50, 32, "core/demo/fastforward",
+                                                    std::bind(&DemoSession::on_fast_forward_press, this),
+                                                    std::bind(&DemoSession::is_fast_forward, this));
+  pause_button = gui_manager->create<BButton>(32,  32, "core/demo/pause",
+                                              std::bind(&DemoSession::on_pause_press, this),
+                                              std::bind(&DemoSession::is_pause, this));
+  restart_button = gui_manager->create<BButton>(size.width - 32 - 48, 32, "core/demo/reload",
+                                                std::bind(&DemoSession::restart, this));
 }
 
 DemoSession::~DemoSession()

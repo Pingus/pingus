@@ -79,7 +79,7 @@ public:
   void draw_background (DrawingContext& gc);
   void on_escape_press ();
 
-  void add_item(const std::string& label, GUI::RectComponent* control);
+  void add_item(const std::string& label, std::unique_ptr<GUI::RectComponent> control);
 
   void resize(const Size&);
   void close_screen();

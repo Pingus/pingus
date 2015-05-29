@@ -204,10 +204,9 @@ StartScreen::StartScreen(const PingusLevel& arg_plf) :
   abort_button(),
   ok_button()
 {
-  StartScreenComponent* comp = new StartScreenComponent(plf);
-  gui_manager->add(comp);
-  gui_manager->add(ok_button = new StartScreenOkButton(this));
-  gui_manager->add(abort_button = new StartScreenAbortButton(this));
+  gui_manager->create<StartScreenComponent>(plf);
+  ok_button = gui_manager->create<StartScreenOkButton>(this);
+  abort_button = gui_manager->create<StartScreenAbortButton>(this);
 }
 
 StartScreen::~StartScreen()

@@ -460,25 +460,22 @@ LevelMenu::LevelMenu() :
 {
   ok_button  = Sprite("core/start/ok");
 
-  levelset_selector = new LevelsetSelector(this, Rect());
-  level_selector    = new LevelSelector(this, Rect());
+  levelset_selector = gui_manager->create<LevelsetSelector>(this, Rect());
+  level_selector = gui_manager->create<LevelSelector>(this, Rect());
 
-  gui_manager->add(levelset_selector);
-  gui_manager->add(level_selector);
-
-  gui_manager->add(prev_button = new LevelScrollButton(Display::get_width()/2  + 280,
+  prev_button = gui_manager->create<LevelScrollButton>(Display::get_width()/2  + 280,
                                                        Display::get_height()/2 - 150,
                                                        "core/menu/arrow_up",
-                                                       std::bind(&LevelMenu::prev_page, this)));
+                                                       std::bind(&LevelMenu::prev_page, this));
 
-  gui_manager->add(next_button = new LevelScrollButton(Display::get_width()/2  + 280,
+  next_button = gui_manager->create<LevelScrollButton>(Display::get_width()/2  + 280,
                                                        Display::get_height()/2 + 70,
                                                        "core/menu/arrow_down",
-                                                       std::bind(&LevelMenu::next_page, this)));
+                                                       std::bind(&LevelMenu::next_page, this));
 
-  gui_manager->add(abort_button = new LevelMenuAbortButton(this,
+  abort_button = gui_manager->create<LevelMenuAbortButton>(this,
                                                            Display::get_width()/2 - 300,
-                                                           Display::get_height()/2 + 144));
+                                                           Display::get_height()/2 + 144);
 
   level_selector->hide();
   resize(Display::get_size());
