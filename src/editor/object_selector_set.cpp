@@ -28,14 +28,12 @@ ObjectSelectorSet::ObjectSelectorSet(ObjectSelectorList* list_, int thumb_w, int
 
 ObjectSelectorSet::~ObjectSelectorSet()
 {
-  for(Objects::iterator i = objects.begin(); i != objects.end(); ++i)
-    delete (*i);
 }
 
 void
-ObjectSelectorSet::add(ObjectSelectorList::Object* obj)
+ObjectSelectorSet::add(std::unique_ptr<ObjectSelectorList::Object> obj)
 {
-  objects.push_back(obj);
+  objects.push_back(std::move(obj));
 }
 
 int

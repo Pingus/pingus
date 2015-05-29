@@ -60,8 +60,6 @@ private:
   enum Mode { NOTHING, SCROLLING, OBJECT_DRAG };
   Mode mode;
 
-  typedef std::vector<Object*> Objects;
-
   int current_object;
   int drag_object;
 
