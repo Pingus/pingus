@@ -61,21 +61,22 @@ PathGraph::parse_nodes(const FileReader& reader)
   for(std::vector<FileReader>::const_iterator i = childs.begin();
       i != childs.end(); ++i)
   {
-    Dot* dot = DotFactory::create(*i);
+    std::unique_ptr<Dot> dot = DotFactory::create(*i);
     if (dot)
     {
       // add the dot to the pathfinding
-      NodeId id = graph.add_node(dot);
+      NodeId id = graph.add_node(dot.get());
 
       //log_info("Adding to lookup table: " << dot->get_name());
       node_lookup[dot->get_name()] = id;
 
+      // FIXME: should be use this for freeing the stuff?
+      dots.push_back(dot.get());
+
       // add the dot to the list of drawables
       if (worldmap)
-        worldmap->add_drawable(dot);
+        worldmap->add_drawable(std::move(dot));
 
-      // FIXME: should be use this for freeing the stuff?
-      dots.push_back(dot);
     }
     else
     {
@@ -129,7 +130,7 @@ PathGraph::parse_edges(const FileReader& reader)
       float cost = full_path.length();
 
       if (worldmap && globals::developer_mode)
-        worldmap->add_drawable(new PathDrawable(full_path));
+        worldmap->add_drawable(std::make_unique<PathDrawable>(full_path));
 
       // FIXME: No error checking,
       EdgeId id1 = graph.add_edge(path, // FIXME: Memory leak!

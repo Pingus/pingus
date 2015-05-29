@@ -46,7 +46,7 @@ private:
   float m_priority;
   Sprite m_sprite;
   int  m_completion;
-  std::vector<Level*> m_levels;
+  std::vector<std::unique_ptr<Level> > m_levels;
 
 public:
   static std::unique_ptr<Levelset> from_file(const Pathname& pathname);

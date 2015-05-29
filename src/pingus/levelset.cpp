@@ -31,7 +31,7 @@ Levelset::from_directory(const std::string& title,
                          const std::string& image,
                          const Pathname& pathname)
 {
-  std::unique_ptr<Levelset> levelset(new Levelset);
+  auto levelset = std::make_unique<Levelset>();
 
   levelset->set_title(title);
   levelset->set_description(description);
@@ -65,7 +65,7 @@ Levelset::from_file(const Pathname& pathname)
   }
   else
   {
-    std::unique_ptr<Levelset> levelset(new Levelset);
+    auto levelset = std::make_unique<Levelset>();
 
     std::string tmp;
     if (reader.read_string("title", tmp))
@@ -138,10 +138,6 @@ Levelset::Levelset() :
 
 Levelset::~Levelset()
 {
-  for(std::vector<Level*>::iterator i = m_levels.begin(); i != m_levels.end(); ++i)
-  {
-    delete *i;
-  }
 }
 
 void
@@ -179,7 +175,7 @@ Levelset::add_level(const std::string& resname, bool accessible)
 {
   try
   {
-    std::unique_ptr<Level> level(new Level);
+    auto level = std::unique_ptr<Level>();
 
     level->resname    = resname;
     level->plf        = PLFResMgr::load_plf(level->resname);
@@ -187,7 +183,7 @@ Levelset::add_level(const std::string& resname, bool accessible)
     level->accessible = accessible;
     level->finished   = false;
 
-    m_levels.push_back(level.release());
+    m_levels.push_back(std::move(level));
   }
   catch(const std::exception& err)
   {
@@ -211,9 +207,13 @@ Levelset::Level*
 Levelset::get_level(int num) const
 {
   if (num >= 0 && num < int(m_levels.size()))
-    return m_levels[num];
+  {
+    return m_levels[num].get();
+  }
   else
+  {
     return 0;
+  }
 }
 
 int
@@ -249,14 +249,14 @@ Levelset::get_priority() const
 void
 Levelset::refresh()
 {
-  for(std::vector<Level*>::iterator i = m_levels.begin(); i != m_levels.end(); ++i)
+  for(auto it = m_levels.begin(); it != m_levels.end(); ++it)
   {
-    Savegame* savegame = SavegameManager::instance()->get((*i)->resname);
+    Savegame* savegame = SavegameManager::instance()->get((*it)->resname);
 
     if (savegame)
     {
-      (*i)->accessible = (savegame->get_status() != Savegame::NONE);
-      (*i)->finished   = (savegame->get_status() == Savegame::FINISHED);
+      (*it)->accessible = (savegame->get_status() != Savegame::NONE);
+      (*it)->finished   = (savegame->get_status() == Savegame::FINISHED);
     }
   }
 
@@ -264,7 +264,7 @@ Levelset::refresh()
   if (!m_levels.empty())
   {
     m_levels[0]->accessible = true;
-    for(std::vector<Level*>::size_type i = 0; i < m_levels.size()-1; ++i)
+    for(size_t i = 0; i < m_levels.size()-1; ++i)
     {
       if (m_levels[i]->finished)
       {
@@ -275,9 +275,9 @@ Levelset::refresh()
 
   // update completion count
   m_completion = 0;
-  for(std::vector<Level*>::iterator i = m_levels.begin(); i != m_levels.end(); ++i)
+  for(auto it = m_levels.begin(); it != m_levels.end(); ++it)
   {
-    if ((*i)->finished)
+    if ((*it)->finished)
     {
       m_completion += 1;
     }

@@ -23,7 +23,7 @@ class SavegameManager
 {
 private:
   static SavegameManager* instance_;
-  typedef std::vector<Savegame*> SavegameTable;
+  typedef std::vector<std::unique_ptr<Savegame> > SavegameTable;
 
   std::string   filename;
   SavegameTable savegames;
