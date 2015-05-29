@@ -6,19 +6,18 @@ Requirements
 
 To compile Pingus you need:
 
- g++           - http://gcc.gnu.org/
- SDL           - http://libsdl.org/
- SDL_mixer
- SDL_image
- boost         - http://www.boost.org
- boost-signals - http://www.boost.org
- libpng        - http://libpng.org/
- scons         - http://scons.org/
+* [g++](http://gcc.gnu.org/)
+* [SDL2](http://libsdl.org/)
+* [SDL2_mixer](https://www.libsdl.org/projects/SDL_image/)
+* [SDL2_image](https://www.libsdl.org/projects/SDL_mixer/)
+* [boost](http://www.boost.org)
+* [libpng](http://libpng.org/)
+* [cmake](http://cmake.org/)
 
 In most cases you will find all of these in your distribution and
 there shouln't be a need to compile anything manually.
 
-In Ubuntu you can install everything by typing:
+In Ubuntu 15.04 you can install everything by typing:
 
     sudo apt-get install \
      g++ \
@@ -31,46 +30,41 @@ In Ubuntu you can install everything by typing:
      cmake
 
 
-In Fedora 7, 8 and 9 (and most likely later versions) you can install
-everything by typing:
-
-    su -c 'yum install \
-      gcc-c++ \
-      SDL-devel \
-      SDL_image-devel \
-      SDL_mixer-devel \
-      boost-devel \
-      libpng-devel \
-      glibc-common \
-      scons'
-
-
 Compilation
 -----------
 
-Once all libraries are in place, you can compile Pingus with just:
+Pingus uses git submodules for some parts of the code. To initialize
+those you can either run (when cloning the repository):
 
-    make
+    git clone --recursive https://github.com/Pingus/pingus.git
 
-or
+Or run the following on an existing clone:
+
+    git submodule update --init --recursive
+
+To compile the code:
 
     mkdir -p build
-    scons src
-    scons
+    cd build
+    cmake ..
+    make
 
 If you need to change the compiler or other build variables you can do
-so with:
+so with in the `cmake` step, e.g.:
 
-    scons configure CXX="ccache g++" CPPPATH=/your/custom/path with_wiimote=True
-    scons
+    cmake .. -DCMAKE_BUILD_TYPE=Debug
 
-A full list of variables is available via:
+The following variables are available:
 
-    scons -h
+* `-DCMAKE_BUILD_TYPE=Release`
+* `-DCMAKE_BUILD_TYPE=Debug`
+* `-DBUILD_TESTS=ON`
+* `-DCMAKE_INSTALL_PREFIX:PATH=/usr`
 
 
-Running:
---------
+Running
+-------
+
 Once the compilation is successful you can run Pingus directly from
 the top level directory of the source tree via:
 
@@ -100,10 +94,17 @@ And used with:
     build/pingus --language de
 
 
-Installation:
--------------
+Installation
+------------
+
 As mentioned above, you don't need to install Pingus to run it, if you
 still want to do it, you can do so with:
 
-    make install PREFIX=/usr
+    make install
+
+The `DESTDIR` and `PREFIX` can be configured as follows:
+
+    make install DESTDIR=/tmp/pingus
+
+    cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/usr
 
