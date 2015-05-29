@@ -35,11 +35,11 @@ public:
   std::string get_name() const { return "core"; }
   void update(float delta) {}
 
-  Button*   create_button  (const FileReader& reader, Control* parent);
-  Axis*     create_axis    (const FileReader& reader, Control* parent);
-  Scroller* create_scroller(const FileReader& reader, Control* parent);
-  Pointer*  create_pointer (const FileReader& reader, Control* parent);
-  Keyboard* create_keyboard(const FileReader& reader, Control* parent);
+  std::unique_ptr<Button> create_button(const FileReader& reader, Control* parent);
+  std::unique_ptr<Axis> create_axis(const FileReader& reader, Control* parent);
+  std::unique_ptr<Scroller> create_scroller(const FileReader& reader, Control* parent);
+  std::unique_ptr<Pointer> create_pointer (const FileReader& reader, Control* parent);
+  std::unique_ptr<Keyboard> create_keyboard(const FileReader& reader, Control* parent);
 
 private:
   CoreDriver(const CoreDriver&);

@@ -25,15 +25,15 @@ namespace Input {
 class AxisPointer : public Pointer
 {
 private:
-  Axis* x_axis;
-  Axis* y_axis;
-  Button* speed_button;
+  std::unique_ptr<Axis> x_axis;
+  std::unique_ptr<Axis> y_axis;
+  std::unique_ptr<Button> speed_button;
   float speed;
 
 public:
   AxisPointer(Control* parent_) :
     Pointer(parent_),
-    x_axis(0), y_axis(0), speed_button(0),
+    x_axis(), y_axis(), speed_button(),
     speed(400.0f)
   {
   }
@@ -42,11 +42,11 @@ public:
   {
   }
 
-  void setup(Axis* x, Axis* y, Button* s = 0)
+  void setup(std::unique_ptr<Axis> x, std::unique_ptr<Axis> y, std::unique_ptr<Button> s = {})
   {
-    x_axis = x;
-    y_axis = y;
-    speed_button = s;
+    x_axis = std::move(x);
+    y_axis = std::move(y);
+    speed_button = std::move(s);
   }
 
   void update(Control* )
@@ -90,15 +90,15 @@ private:
 class AxisScroller : public Scroller
 {
 private:
-  Axis* x_axis;
-  Axis* y_axis;
-  Button* speed_button;
+  std::unique_ptr<Axis> x_axis;
+  std::unique_ptr<Axis> y_axis;
+  std::unique_ptr<Button> speed_button;
   float speed;
 
 public:
   AxisScroller(Control* parent_) :
     Scroller(parent_),
-    x_axis(0), y_axis(0), speed_button(0),
+    x_axis(), y_axis(), speed_button(),
     speed(800.0f)
   {
   }
@@ -107,11 +107,11 @@ public:
   {
   }
 
-  void setup(Axis* x, Axis* y, Button* s = 0)
+  void setup(std::unique_ptr<Axis> x, std::unique_ptr<Axis> y, std::unique_ptr<Button> s = {})
   {
-    x_axis = x;
-    y_axis = y;
-    speed_button = s;
+    x_axis = std::move(x);
+    y_axis = std::move(y);
+    speed_button = std::move(s);
   }
 
   void update(Control* )
@@ -147,34 +147,33 @@ private:
 class ButtonScroller : public Scroller
 {
 private:
-  Button* up;
-  Button* down;
-  Button* left;
-  Button* right;
+  std::unique_ptr<Button> up;
+  std::unique_ptr<Button> down;
+  std::unique_ptr<Button> left;
+  std::unique_ptr<Button> right;
   float speed;
 
 public:
   ButtonScroller(Control* parent_) :
     Scroller(parent_),
-    up(0), down(0), left(0), right(0),
+    up(), down(), left(), right(),
     speed(800.0f)
   {
   }
 
   ~ButtonScroller()
   {
-    delete up;
-    delete down;
-    delete left;
-    delete right;
   }
 
-  void setup(Button* up_, Button* down_, Button* left_, Button* right_)
+  void setup(std::unique_ptr<Button> up_,
+             std::unique_ptr<Button> down_,
+             std::unique_ptr<Button> left_,
+             std::unique_ptr<Button> right_)
   {
-    up    = up_;
-    down  = down_;
-    left  = left_;
-    right = right_;
+    up = std::move(up_);
+    down = std::move(down_);
+    left = std::move(left_);
+    right = std::move(right_);
   }
 
   void update(Control* )
@@ -210,168 +209,160 @@ private:
   ButtonScroller & operator=(const ButtonScroller&);
 };
 
-Button*
+std::unique_ptr<Button>
 CoreDriver::create_button(const FileReader& reader, Control* parent)
 {
-  return 0;
+  return {};
 }
 
-Axis*
+std::unique_ptr<Axis>
 CoreDriver::create_axis(const FileReader& reader, Control* parent)
 {
-  return 0;
+  return {};
 }
 
-Scroller*
+std::unique_ptr<Scroller>
 CoreDriver::create_scroller(const FileReader& reader, Control* parent)
 {
   if (reader.get_name() == "core:axis-scroller")
   {
-    AxisScroller* axis = new AxisScroller(parent);
+    auto axis = std::make_unique<AxisScroller>(parent);
 
     FileReader x_reader;
     if (!reader.read_section("x-axis", x_reader))
     {
       log_error("CoreDriver: Couldn't find x-axis");
-      delete axis;
-      return 0;
+      return {};
     }
 
     FileReader y_reader;
     if (!reader.read_section("y-axis", y_reader))
     {
       log_error("CoreDriver: Couldn't find y-axis");
-      delete axis;
-      return 0;
+      return {};
     }
 
-    Axis* x_axis = manager->create_axis(x_reader.get_sections().front(), axis);
-    Axis* y_axis = manager->create_axis(y_reader.get_sections().front(), axis);
+    std::unique_ptr<Axis> x_axis = manager->create_axis(x_reader.get_sections().front(), axis.get());
+    std::unique_ptr<Axis> y_axis = manager->create_axis(y_reader.get_sections().front(), axis.get());
 
-    Button* button = 0;
+    std::unique_ptr<Button> button;
     FileReader button_reader;
     if (reader.read_section("button", button_reader))
     {
-      button = manager->create_button(button_reader.get_sections().front(), axis);
+      button = manager->create_button(button_reader.get_sections().front(), axis.get());
     }
 
     if (x_axis && y_axis)
     {
-      axis->setup(x_axis, y_axis, button);
-      return axis;
+      axis->setup(std::move(x_axis), std::move(y_axis), std::move(button));
+      return std::move(axis);
     }
     else
     {
-      return 0;
+      return {};
     }
   }
   else if (reader.get_name() == "core:button-scroller")
   {
-    ButtonScroller* scroller = new ButtonScroller(parent);
+    auto scroller = std::make_unique<ButtonScroller>(parent);
 
     FileReader left_reader;
     if (!reader.read_section("left", left_reader))
     {
       log_error("CoreDriver: core:button-scroller: Couldn't find 'left'");
-      delete scroller;
-      return 0;
+      return {};
     }
 
     FileReader right_reader;
     if (!reader.read_section("right", right_reader))
     {
       log_error("CoreDriver: core:button-scroller: Couldn't find 'right'");
-      delete scroller;
-      return 0;
+      return {};
     }
 
     FileReader up_reader;
     if (!reader.read_section("up", up_reader))
     {
       log_error("CoreDriver: core:button-scroller: Couldn't find 'up'");
-      delete scroller;
-      return 0;
+      return {};
     }
 
     FileReader down_reader;
     if (!reader.read_section("down", down_reader))
     {
       log_error("CoreDriver: core:button-scroller: Couldn't find 'down'");
-      delete scroller;
-      return 0;
+      return {};
     }
 
     // FIXME: Add more error checking
-    Button* up_button    = manager->create_button(up_reader.get_sections().front(),    scroller);
-    Button* down_button  = manager->create_button(down_reader.get_sections().front(),  scroller);
-    Button* left_button  = manager->create_button(left_reader.get_sections().front(),  scroller);
-    Button* right_button = manager->create_button(right_reader.get_sections().front(), scroller);
+    auto up_button = manager->create_button(up_reader.get_sections().front(), scroller.get());
+    auto down_button = manager->create_button(down_reader.get_sections().front(), scroller.get());
+    auto left_button = manager->create_button(left_reader.get_sections().front(), scroller.get());
+    auto right_button = manager->create_button(right_reader.get_sections().front(), scroller.get());
 
-    scroller->setup(up_button,
-                    down_button,
-                    left_button,
-                    right_button);
-    return scroller;
+    scroller->setup(std::move(up_button),
+                    std::move(down_button),
+                    std::move(left_button),
+                    std::move(right_button));
+    return std::move(scroller);
   }
   else
   {
-    return 0;
+    return {};
   }
 }
 
-Pointer*
+std::unique_ptr<Pointer>
 CoreDriver::create_pointer(const FileReader& reader, Control* parent)
 {
   if (reader.get_name() == "core:axis-pointer")
   {
-    AxisPointer* axis = new AxisPointer(parent);
+    auto axis = std::make_unique<AxisPointer>(parent);
 
     FileReader x_reader;
     if (!reader.read_section("x-axis", x_reader))
     {
       log_error("CoreDriver: Couldn't find x-axis");
-      delete axis;
-      return 0;
+      return {};
     }
 
     FileReader y_reader;
     if (!reader.read_section("y-axis", y_reader))
     {
       log_error("CoreDriver: Couldn't find y-axis");
-      delete axis;
-      return 0;
+      return {};
     }
 
-    Axis* x_axis = manager->create_axis(x_reader.get_sections().front(), axis);
-    Axis* y_axis = manager->create_axis(y_reader.get_sections().front(), axis);
+    std::unique_ptr<Axis> x_axis = manager->create_axis(x_reader.get_sections().front(), axis.get());
+    std::unique_ptr<Axis> y_axis = manager->create_axis(y_reader.get_sections().front(), axis.get());
 
-    Button* button = 0;
+    std::unique_ptr<Button> button;
     FileReader button_reader;
     if (reader.read_section("button", button_reader))
     {
-      button = manager->create_button(button_reader.get_sections().front(), axis);
+      button = manager->create_button(button_reader.get_sections().front(), axis.get());
     }
 
     if (x_axis && y_axis)
     {
-      axis->setup(x_axis, y_axis, button);
-      return axis;
+      axis->setup(std::move(x_axis), std::move(y_axis), std::move(button));
+      return std::move(axis);
     }
     else
     {
-      return 0;
+      return {};
     }
   }
   else
   {
-    return 0;
+    return {};
   }
 }
 
-Keyboard*
+std::unique_ptr<Keyboard>
 CoreDriver::create_keyboard(const FileReader& reader, Control* parent)
 {
-  return 0;
+  return {};
 }
 
 } // namespace Input

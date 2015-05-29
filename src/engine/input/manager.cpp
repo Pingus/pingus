@@ -63,7 +63,7 @@ Manager::Manager() :
 
 Manager::~Manager()
 {
-  for(Drivers::iterator i = drivers.begin(); i != drivers.end(); ++i)
+  for(auto i = drivers.begin(); i != drivers.end(); ++i)
   {
     delete *i;
   }
@@ -107,11 +107,15 @@ Manager::create_controller(const Pathname& filename)
         {
           int id = desc.get_definition(i->get_name()).id;
           ControllerPointer* ctrl_pointer = controller->get_pointer(id);
-          Pointer* pointer = create_pointer(*j, ctrl_pointer);
+          auto pointer = create_pointer(*j, ctrl_pointer);
           if (pointer)
-            ctrl_pointer->add_pointer(pointer);
+          {
+            ctrl_pointer->add_pointer(std::move(pointer));
+          }
           else
+          {
             log_error("Manager: pointer: Couldn't create pointer %1%", j->get_name());
+          }
         }
 
       }
@@ -122,11 +126,15 @@ Manager::create_controller(const Pathname& filename)
         {
           int id = desc.get_definition(i->get_name()).id;
           ControllerScroller* ctrl_scroller = controller->get_scroller(id);
-          Scroller* scroller = create_scroller(*j, ctrl_scroller);
+          auto scroller = create_scroller(*j, ctrl_scroller);
           if (scroller)
-            ctrl_scroller->add_scroller(scroller);
+          {
+            ctrl_scroller->add_scroller(std::move(scroller));
+          }
           else
+          {
             log_error("Manager: scroller: Couldn't create scroller %1%", j->get_name());
+          }
         }
 
       }
@@ -137,9 +145,9 @@ Manager::create_controller(const Pathname& filename)
         {
           int id = desc.get_definition(i->get_name()).id;
           ControllerButton* ctrl_button = controller->get_button(id);
-          Button* button = create_button(*j, ctrl_button);
+          auto button = create_button(*j, ctrl_button);
           if (button)
-            ctrl_button->add_button(button);
+            ctrl_button->add_button(std::move(button));
           else
             log_error("Manager: button: Couldn't create button %1%", j->get_name());
         }
@@ -151,9 +159,9 @@ Manager::create_controller(const Pathname& filename)
         {
           int id = desc.get_definition(i->get_name()).id;
           ControllerAxis* ctrl_axis = controller->get_axis(id);
-          Axis* axis = create_axis(*j, ctrl_axis);
+          auto axis = create_axis(*j, ctrl_axis);
           if (axis)
-            ctrl_axis->add_axis(axis);
+            ctrl_axis->add_axis(std::move(axis));
           else
             log_error("Manager: axis: Couldn't create axis %1%", j->get_name());
         }
@@ -165,9 +173,9 @@ Manager::create_controller(const Pathname& filename)
         {
           int id = desc.get_definition(i->get_name()).id;
           ControllerKeyboard* ctrl_keyboard = controller->get_keyboard(id);
-          Keyboard* keyboard = create_keyboard(*j, ctrl_keyboard);
+          std::unique_ptr<Keyboard> keyboard = create_keyboard(*j, ctrl_keyboard);
           if (keyboard)
-            ctrl_keyboard->add_keyboard(keyboard);
+            ctrl_keyboard->add_keyboard(std::move(keyboard));
           else
             log_error("Manager: keyboard: Couldn't create keyboard %1%", j->get_name());
         }
@@ -204,7 +212,7 @@ Manager::update(float delta)
 Driver*
 Manager::get_driver(const std::string& name)
 {
-  for(Drivers::iterator i = drivers.begin(); i != drivers.end(); ++i)
+  for(auto i = drivers.begin(); i != drivers.end(); ++i)
   {
     if ((*i)->get_name() == name)
     {
@@ -241,7 +249,7 @@ Manager::load_driver(const std::string& name)
   }
 }
 
-Button*
+std::unique_ptr<Button>
 Manager::create_button(const FileReader& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
@@ -254,11 +262,11 @@ Manager::create_button(const FileReader& reader, Control* parent)
   else
   {
     log_error("couldn't find driver: '%1%'", driver);
-    return 0;
+    return {};
   }
 }
 
-Axis*
+std::unique_ptr<Axis>
 Manager::create_axis(const FileReader& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
@@ -271,11 +279,11 @@ Manager::create_axis(const FileReader& reader, Control* parent)
   else
   {
     log_error("couldn't find driver: '%1%'", driver);
-    return 0;
+    return {};
   }
 }
 
-Pointer*
+std::unique_ptr<Pointer>
 Manager::create_pointer(const FileReader& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
@@ -288,11 +296,11 @@ Manager::create_pointer(const FileReader& reader, Control* parent)
   else
   {
     log_error("couldn't find driver: '%1%'", driver);
-    return 0;
+    return {};
   }
 }
 
-Scroller*
+std::unique_ptr<Scroller>
 Manager::create_scroller(const FileReader& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
@@ -305,11 +313,11 @@ Manager::create_scroller(const FileReader& reader, Control* parent)
   else
   {
     log_error("couldn't find driver: '%1%'", driver);
-    return 0;
+    return {};
   }
 }
 
-Keyboard*
+std::unique_ptr<Keyboard>
 Manager::create_keyboard(const FileReader& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
@@ -322,7 +330,7 @@ Manager::create_keyboard(const FileReader& reader, Control* parent)
   else
   {
     log_error("couldn't find driver: '%1%'", driver);
-    return 0;
+    return {};
   }
 }
 

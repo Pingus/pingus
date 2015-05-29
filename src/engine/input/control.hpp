@@ -90,7 +90,7 @@ public:
 class ButtonGroup : public Button
 {
 private:
-  std::vector<Button*> buttons;
+  std::vector<std::unique_ptr<Button> > buttons;
 
 public:
   ButtonGroup(Control* parent_) :
@@ -100,16 +100,14 @@ public:
 
   ~ButtonGroup()
   {
-    for(std::vector<Button*>::iterator i = buttons.begin(); i != buttons.end(); ++i)
-      delete *i;
   }
 
-  void add_button(Button* button_) {
-    buttons.push_back(button_);
+  void add_button(std::unique_ptr<Button> button_) {
+    buttons.push_back(std::move(button_));
   }
 
   void update(float delta) {
-    for(std::vector<Button*>::iterator i = buttons.begin(); i != buttons.end(); ++i)
+    for(auto i = buttons.begin(); i != buttons.end(); ++i)
       (*i)->update(delta);
   }
 
@@ -117,7 +115,7 @@ public:
   {
     ButtonState new_state = BUTTON_RELEASED;
 
-    for(std::vector<Button*>::iterator i = buttons.begin();
+    for(auto i = buttons.begin();
         i != buttons.end(); ++i)
     {
       if ((*i)->get_state() == BUTTON_PRESSED)
@@ -232,7 +230,7 @@ public:
 
 class AxisGroup : public Axis {
 private:
-  std::vector<Axis*> axes;
+  std::vector<std::unique_ptr<Axis> > axes;
 
 public:
   AxisGroup(Control* parent_) :
@@ -242,16 +240,14 @@ public:
 
   ~AxisGroup()
   {
-    for(std::vector<Axis*>::iterator i = axes.begin(); i != axes.end(); ++i)
-      delete *i;
   }
 
-  void add_axis(Axis* axis) {
-    axes.push_back(axis);
+  void add_axis(std::unique_ptr<Axis> axis) {
+    axes.push_back(std::move(axis));
   }
 
   void update(float delta) {
-    for(std::vector<Axis*>::iterator i = axes.begin(); i != axes.end(); ++i)
+    for(auto i = axes.begin(); i != axes.end(); ++i)
       (*i)->update(delta);
   }
 
@@ -259,7 +255,7 @@ public:
   {
     float new_pos = 0;
 
-    for(std::vector<Axis*>::iterator i = axes.begin(); i != axes.end(); ++i)
+    for(auto i = axes.begin(); i != axes.end(); ++i)
     {
       new_pos += (*i)->get_pos();
     }
@@ -295,7 +291,7 @@ private:
 class PointerGroup : public Pointer
 {
 private:
-  std::vector<Pointer*> pointer;
+  std::vector<std::unique_ptr<Pointer> > pointer;
 
 public:
   PointerGroup(Control* parent_) :
@@ -305,8 +301,6 @@ public:
 
   ~PointerGroup()
   {
-    for(std::vector<Pointer*>::iterator i = pointer.begin(); i != pointer.end(); ++i)
-      delete *i;
   }
 
   void update(Control* p) {
@@ -321,12 +315,12 @@ public:
   }
 
   void update(float delta) {
-    for(std::vector<Pointer*>::iterator i = pointer.begin(); i != pointer.end(); ++i)
+    for(auto i = pointer.begin(); i != pointer.end(); ++i)
       (*i)->update(delta);
   }
 
-  void add_pointer(Pointer* p) {
-    pointer.push_back(p);
+  void add_pointer(std::unique_ptr<Pointer> p) {
+    pointer.push_back(std::move(p));
   }
 };
 
@@ -355,7 +349,7 @@ private:
 class ScrollerGroup : public Scroller
 {
 private:
-  std::vector<Scroller*> scrollers;
+  std::vector<std::unique_ptr<Scroller> > scrollers;
 
 public:
   ScrollerGroup(Control* parent_) :
@@ -365,12 +359,10 @@ public:
 
   ~ScrollerGroup()
   {
-    for(std::vector<Scroller*>::iterator i = scrollers.begin(); i != scrollers.end(); ++i)
-      delete *i;
   }
 
   void update(float delta_) {
-    for(std::vector<Scroller*>::iterator i = scrollers.begin(); i != scrollers.end(); ++i)
+    for(auto i = scrollers.begin(); i != scrollers.end(); ++i)
       (*i)->update(delta_);
   }
 
@@ -381,8 +373,8 @@ public:
     notify_parent();
   }
 
-  void add_scroller(Scroller* p) {
-    scrollers.push_back(p);
+  void add_scroller(std::unique_ptr<Scroller> p) {
+    scrollers.push_back(std::move(p));
   }
 
 private:
@@ -434,7 +426,7 @@ private:
 class KeyboardGroup : public Keyboard
 {
 private:
-  std::vector<Keyboard*> keyboards;
+  std::vector<std::unique_ptr<Keyboard> > keyboards;
 
 public:
   KeyboardGroup(Control* parent_) :
@@ -444,8 +436,6 @@ public:
 
   ~KeyboardGroup()
   {
-    for(std::vector<Keyboard*>::iterator i = keyboards.begin(); i != keyboards.end(); ++i)
-      delete *i;
   }
 
   void update(float delta) {
@@ -456,9 +446,9 @@ public:
     notify_parent();
   }
 
-  void add_keyboard(Keyboard* keyboard)
+  void add_keyboard(std::unique_ptr<Keyboard> keyboard)
   {
-    keyboards.push_back(keyboard);
+    keyboards.push_back(std::move(keyboard));
   }
 };
 
