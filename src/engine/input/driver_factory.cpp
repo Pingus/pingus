@@ -37,39 +37,39 @@
 
 namespace Input {
 
-Driver*
+std::unique_ptr<Driver>
 DriverFactory::create(const std::string& name, Manager* manager)
 {
   if (name == "sdl")
   {
-    return new SDLDriver;
+    return std::make_unique<SDLDriver>();
   }
   else if (name == "core")
   {
-    return new CoreDriver(manager);
+    return std::make_unique<CoreDriver>(manager);
   }
 #ifdef HAVE_LINUXUSBMOUSE
   else if (name == "usbmouse")
   {
-    return new USBMouseDriver();
+    return std::make_unique<USBMouseDriver>();
   }
 #endif
 #ifdef HAVE_LINUXEVDEV
   else if (name == "evdev")
   {
-    return new EvdevDriver();
+    return std::make_unique<EvdevDriver>();
   }
 #endif
 #ifdef HAVE_XINPUT
   else if (name == "xinput")
   {
-    return new XInputDriver();
+    return std::make_unique<XInputDriver>();
   }
 #endif
 #ifdef HAVE_CWIID
   else if (name == "wiimote")
   {
-    return new WiimoteDriver();
+    return std::make_unique<WiimoteDriver>();
   }
 #endif
   else

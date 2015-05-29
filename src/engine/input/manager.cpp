@@ -63,10 +63,6 @@ Manager::Manager() :
 
 Manager::~Manager()
 {
-  for(auto i = drivers.begin(); i != drivers.end(); ++i)
-  {
-    delete *i;
-  }
 }
 
 static std::string get_driver_part(const std::string& fullname)
@@ -216,7 +212,7 @@ Manager::get_driver(const std::string& name)
   {
     if ((*i)->get_name() == name)
     {
-      return *i;
+      return i->get();
     }
   }
   return 0;
@@ -225,17 +221,16 @@ Manager::get_driver(const std::string& name)
 Driver*
 Manager::load_driver(const std::string& name)
 {
-  Driver* driver = get_driver(name);
-
-  if (driver)
+  Driver* driver_p = get_driver(name);
+  if (driver_p)
   {
-    return driver;
+    return driver_p;
   }
   else
   {
     log_info("loading driver '%1%'", name);
 
-    driver = DriverFactory::create(name, this);
+    auto driver = DriverFactory::create(name, this);
     if (!driver)
     {
       log_error("unknown driver: %1%", name);
@@ -243,8 +238,8 @@ Manager::load_driver(const std::string& name)
     }
     else
     {
-      drivers.push_back(driver);
-      return driver;
+      drivers.push_back(std::move(driver));
+      return drivers.back().get();
     }
   }
 }

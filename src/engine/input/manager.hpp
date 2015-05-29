@@ -27,7 +27,7 @@ namespace Input {
 class Manager
 {
 private:
-  typedef std::vector<Driver*> Drivers;
+  typedef std::vector<std::unique_ptr<Driver> > Drivers;
   Drivers drivers;
 
   std::vector<ControllerPtr> controllers;
