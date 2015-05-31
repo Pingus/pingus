@@ -17,11 +17,20 @@
 #ifndef HEADER_PINGUS_UTIL_JSON_FILE_WRITER_HPP
 #define HEADER_PINGUS_UTIL_JSON_FILE_WRITER_HPP
 
-class JsonFileWriter : public FileWriter
+#include <json/json.h>
+#include <iosfwd>
+
+#include "util/file_writer.hpp"
+
+class JsonFileWriter final : public FileWriter
 {
 private:
+  std::ostream& m_out;
+  std::vector<Json::Value> m_stack;
+
 public:
-  JsonFileWriter();
+  JsonFileWriter(std::ostream& out);
+  virtual ~JsonFileWriter();
 
   void begin_collection(const char* name) override;
   void end_collection() override;
@@ -39,6 +48,9 @@ public:
   void write_size(const char* name, const Size&) override;
   void write_vector2i(const char* name, const Vector2i&) override;
   void write_path(const char* name, const Pathname&) override;
+
+private:
+  void flush();
 
 private:
   JsonFileWriter(const JsonFileWriter&) = delete;
