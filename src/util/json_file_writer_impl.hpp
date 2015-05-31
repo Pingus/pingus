@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_UTIL_JSON_FILE_WRITER_HPP
 #define HEADER_PINGUS_UTIL_JSON_FILE_WRITER_HPP
 
+#include <functional>
 #include <json/json.h>
 #include <iosfwd>
 
@@ -26,7 +27,11 @@ class JsonFileWriterImpl final : public FileWriterImpl
 {
 private:
   std::ostream& m_out;
-  std::vector<Json::Value> m_stack;
+  Json::Value m_root;
+
+  // jsoncpp does copy-by-value, even for arrays and objects, so we
+  // have to use std::reference_wrapper<> instead of just Json::Value
+  std::vector<std::reference_wrapper<Json::Value> > m_stack;
 
 public:
   JsonFileWriterImpl(std::ostream& out);

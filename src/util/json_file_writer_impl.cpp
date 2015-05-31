@@ -16,6 +16,7 @@
 
 #include "json_file_writer_impl.hpp"
 
+#include <sstream>
 #include <ostream>
 #include <assert.h>
 
@@ -26,26 +27,25 @@
 
 JsonFileWriterImpl::JsonFileWriterImpl(std::ostream& out) :
   m_out(out),
+  m_root(Json::objectValue),
   m_stack()
 {
-  // the root element is always a mapping
-  Json::Value mapping(Json::objectValue);
-  m_stack.push_back(mapping);
+  // the root element is always an anonymous mapping
+  m_stack.push_back(m_root);
 }
 
 JsonFileWriterImpl::~JsonFileWriterImpl()
 {
+  assert(m_stack.size() == 1);
 }
 
 void
 JsonFileWriterImpl::begin_collection(const char* name)
 {
   assert(!m_stack.empty());
-  assert(m_stack.back().type() == Json::objectValue);
+  assert(m_stack.back().get().type() == Json::objectValue);
 
-  Json::Value child(Json::arrayValue);
-  m_stack.back()[name] = child;
-  m_stack.push_back(child);
+  m_stack.push_back((m_stack.back().get()[name] = Json::Value(Json::arrayValue)));
 }
 
 void
@@ -60,19 +60,14 @@ JsonFileWriterImpl::begin_mapping(const char* name)
 {
   assert(!m_stack.empty());
 
-  if (m_stack.back().type() == Json::objectValue)
+  if (m_stack.back().get().type() == Json::objectValue)
   {
-    Json::Value child(Json::objectValue);
-    m_stack.back()[name] = child;
-    m_stack.push_back(child);
+    m_stack.push_back((m_stack.back().get()[name] = Json::Value(Json::objectValue)));
   }
-  else if (m_stack.back().type() == Json::arrayValue)
+  else if (m_stack.back().get().type() == Json::arrayValue)
   {
-    Json::Value parent(Json::objectValue);
-    Json::Value child(Json::objectValue);
-    parent[name] = child;
-    m_stack.back()[name] = parent;
-    m_stack.push_back(child);
+    m_stack.back().get().append(Json::Value(Json::objectValue));
+    m_stack.push_back(m_stack.back().get()[m_stack.back().get().size()-1][name] = Json::Value(Json::objectValue));
   }
   else
   {
@@ -84,78 +79,76 @@ void
 JsonFileWriterImpl::end_mapping()
 {
   assert(!m_stack.empty());
+  m_stack.pop_back();
 
   if (m_stack.size() == 1)
   {
     flush();
-    m_stack.pop_back();
   }
-
-  m_stack.pop_back();
 }
 
 void
 JsonFileWriterImpl::write_int(const char* name, int value)
 {
   assert(!m_stack.empty());
-  assert(m_stack.back().type() == Json::objectValue);
+  assert(m_stack.back().get().type() == Json::objectValue);
 
-  m_stack.back()[name] = Json::Value(value);
+  m_stack.back().get()[name] = Json::Value(value);
 }
 
 void
 JsonFileWriterImpl::write_float(const char* name, float value)
 {
   assert(!m_stack.empty());
-  assert(m_stack.back().type() == Json::objectValue);
+  assert(m_stack.back().get().type() == Json::objectValue);
 
-  m_stack.back()[name] = Json::Value(value);
+  m_stack.back().get()[name] = Json::Value(value);
 }
 
 void
 JsonFileWriterImpl::write_colorf(const char* name, const Color& value)
 {
   assert(!m_stack.empty());
-  assert(m_stack.back().type() == Json::objectValue);
+  assert(m_stack.back().get().type() == Json::objectValue);
 
   Json::Value array(Json::arrayValue);
-  array[0] = Json::Value(value.r / 255.0f);
-  array[1] = Json::Value(value.g / 255.0f);
-  array[2] = Json::Value(value.b / 255.0f);
-  array[3] = Json::Value(value.a / 255.0f);
-  m_stack.back()[name] = array;
+  array.append(Json::Value(value.r / 255.0f));
+  array.append(Json::Value(value.g / 255.0f));
+  array.append(Json::Value(value.b / 255.0f));
+  array.append(Json::Value(value.a / 255.0f));
+  m_stack.back().get()[name] = array;
 }
 
 void
 JsonFileWriterImpl::write_colori(const char* name, const Color& value)
 {
   assert(!m_stack.empty());
-  assert(m_stack.back().type() == Json::objectValue);
+  assert(m_stack.back().get().type() == Json::objectValue);
 
   Json::Value array(Json::arrayValue);
-  array[0] = Json::Value(value.r);
-  array[1] = Json::Value(value.g);
-  array[2] = Json::Value(value.b);
-  array[3] = Json::Value(value.a);
-  m_stack.back()[name] = array;
+  array.append(Json::Value(value.r));
+  array.append(Json::Value(value.g));
+  array.append(Json::Value(value.b));
+  array.append(Json::Value(value.a));
+  m_stack.back().get()[name] = array;
 }
 
 void
 JsonFileWriterImpl::write_bool(const char* name, bool value)
 {
   assert(!m_stack.empty());
-  assert(m_stack.back().type() == Json::objectValue);
+  assert(m_stack.back().get().type() == Json::objectValue);
 
-  m_stack.back()[name] = Json::Value(value);
+  m_stack.back().get()[name] = Json::Value(value);
 }
 
 void
 JsonFileWriterImpl::write_string(const char* name, const std::string& value)
 {
   assert(!m_stack.empty());
-  assert(m_stack.back().type() == Json::objectValue);
+  assert(m_stack.back().get().type() == Json::objectValue);
 
-  m_stack.back()[name] = Json::Value(value);
+  m_stack.back().get()[name] = Json::Value(value);
 }
 
 void
@@ -167,24 +160,24 @@ void
 JsonFileWriterImpl::write_size(const char* name, const Size& value)
 {
   assert(!m_stack.empty());
-  assert(m_stack.back().type() == Json::objectValue);
+  assert(m_stack.back().get().type() == Json::objectValue);
 
   Json::Value array(Json::arrayValue);
-  array[0] = Json::Value(value.width);
-  array[1] = Json::Value(value.height);
-  m_stack.back()[name] = array;
+  array.append(Json::Value(value.width));
+  array.append(Json::Value(value.height));
+  m_stack.back().get()[name] = array;
 }
 
 void
 JsonFileWriterImpl::write_vector2i(const char* name, const Vector2i& value)
 {
   assert(!m_stack.empty());
-  assert(m_stack.back().type() == Json::objectValue);
+  assert(m_stack.back().get().type() == Json::objectValue);
 
   Json::Value array(Json::arrayValue);
-  array[0] = Json::Value(value.x);
-  array[1] = Json::Value(value.y);
-  m_stack.back()[name] = array;
+  array.append(Json::Value(value.x));
+  array.append(Json::Value(value.y));
+  m_stack.back().get()[name] = array;
 }
 
 void
@@ -193,12 +186,39 @@ JsonFileWriterImpl::write_path(const char* name, const Pathname& value)
   write_string(name, value.get_raw_path());
 }
 
+namespace {
+
+void strip_trailing_whitespace(std::ostream& out, std::istream& in)
+{
+  std::string line;
+  while(std::getline(in, line))
+  {
+    const auto p = line.find_last_not_of(' ');
+    if (p == std::string::npos)
+    {
+      if (line.empty())
+      {
+        out << line << '\n';
+      }
+    }
+    else
+    {
+      out.write(line.data(), p + 1);
+      out << '\n';
+    }
+  }
+}
+
+} // namespace
+
 void
 JsonFileWriterImpl::flush()
 {
-  assert(!m_stack.empty());
+  assert(m_stack.size() == 1);
+  std::stringstream out;
   Json::StyledStreamWriter writer("  ");
-  writer.write(m_out, m_stack.back());
+  writer.write(out, m_stack.back());
+  strip_trailing_whitespace(m_out, out);
 }
 
 /* EOF */
