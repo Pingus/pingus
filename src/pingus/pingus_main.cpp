@@ -434,12 +434,12 @@ PingusMain::parse_args(int argc, char** argv)
 // private helper to check if a file exists
 static bool file_exists(char *filename)
 {
-	struct stat buf;
-    if (stat(filename, &buf) != -1)
-    {
-        return true;
-    }
-    return false;
+  struct stat buf;
+  if (stat(filename, &buf) != -1)
+  {
+    return true;
+  }
+  return false;
 }
 #endif
 

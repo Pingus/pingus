@@ -118,7 +118,7 @@ WorldmapScreenCloseButton::on_click()
 {
   ScreenManager::instance ()->pop_screen ();
 }
-
+
 WorldmapScreen::WorldmapScreen() :
   is_init(false),
   exit_worldmap(false),

@@ -51,7 +51,7 @@ Pathname::join(const std::string& lhs, const std::string& rhs)
     }
   }
 }
-
+
 Pathname::Pathname() :
   pathname(),
   type(INVALID)

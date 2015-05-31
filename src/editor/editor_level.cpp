@@ -91,7 +91,7 @@ private:
   LevelImpl (const LevelImpl&);
   LevelImpl& operator= (const LevelImpl&);
 };
-
+
 std::unique_ptr<EditorLevel>
 EditorLevel::from_level_file(const Pathname& pathname)
 {
@@ -172,7 +172,7 @@ EditorLevel::from_prefab_file(const Pathname& pathname)
 
   return level;
 }
-
+
 static bool LevelObjSort(const LevelObjPtr& a, const LevelObjPtr& b)
 {
   return (a->get_pos().z < b->get_pos().z);

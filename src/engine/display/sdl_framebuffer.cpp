@@ -37,7 +37,7 @@ SDL_Rect Intersection(SDL_Rect* r1, SDL_Rect* r2)
 }
 
 } // namespace
-
+
 SDLFramebuffer::SDLFramebuffer() :
   m_window(nullptr),
   m_renderer(nullptr),

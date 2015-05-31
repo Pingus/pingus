@@ -272,7 +272,7 @@ PinguAction::move_with_forces ()
   }
 #endif
 }
-
+
 ActionType
 PinguAction::get_activation_mode(ActionName::Enum action_name)
 {

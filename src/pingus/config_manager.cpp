@@ -290,7 +290,7 @@ ConfigManager::get_drag_drop_scrolling() const
 {
   return globals::drag_drop_scrolling;
 }
-
+
 Options
 ConfigManager::get_options() const
 {

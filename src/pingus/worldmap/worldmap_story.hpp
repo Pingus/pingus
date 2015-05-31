@@ -21,7 +21,7 @@
 #include <vector>
 
 #include "pingus/res_descriptor.hpp"
-
+
 class FileReader;
 
 class StoryPage

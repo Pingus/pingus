@@ -124,7 +124,7 @@ Levelset::from_file(const Pathname& pathname)
     return levelset;
   }
 }
-
+
 Levelset::Levelset() :
   m_title(),
   m_description(),

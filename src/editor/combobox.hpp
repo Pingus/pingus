@@ -24,7 +24,7 @@
 #include "engine/gui/rect_component.hpp"
 
 namespace Editor {
-
+
 /** A ComboItems holds a specific item in a Combobox (string, id, etc.) */
 class ComboItem
 {

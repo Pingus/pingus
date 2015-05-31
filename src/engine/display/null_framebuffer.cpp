@@ -30,7 +30,7 @@ public:
   int get_width()  const { return size.width; }
   int get_height() const { return size.height; }
 };
-
+
 NullFramebuffer::NullFramebuffer() :
   m_size(),
   m_fullscreen(false),

@@ -250,7 +250,7 @@ FileDialog::update_button_state()
   else
     down_button->disable();
 }
-
+
 } // namespace Editor
 
 /* EOF */

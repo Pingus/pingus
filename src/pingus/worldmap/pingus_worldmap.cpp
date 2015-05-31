@@ -75,7 +75,7 @@ PingusWorldmap::PingusWorldmap(const Pathname& pathname) :
 {
   parse_file(FileReader::parse(pathname));
 }
-
+
 void
 PingusWorldmap::parse_file(const FileReader& reader)
 {
