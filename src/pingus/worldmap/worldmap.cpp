@@ -41,7 +41,6 @@ Worldmap::Worldmap(const Pathname& filename) :
   gc_state(),
   path_graph(),
   drawables(),
-  objects(),
   mouse_x(0),
   mouse_y(0)
 {
@@ -53,11 +52,10 @@ Worldmap::Worldmap(const Pathname& filename) :
   const std::vector<FileReader>& object_reader = worldmap.get_objects();
   for(std::vector<FileReader>::const_iterator i = object_reader.begin(); i != object_reader.end(); ++i)
   {
-    Drawable* drawable = DrawableFactory::create(*i);
+    std::unique_ptr<Drawable> drawable = DrawableFactory::create(*i);
     if (drawable)
     {
-      objects.push_back(drawable);
-      drawables.push_back(drawable);
+      drawables.push_back(std::move(drawable));
     }
     else
     {
@@ -71,19 +69,16 @@ Worldmap::Worldmap(const Pathname& filename) :
   default_node = path_graph->lookup_node(worldmap.get_default_node());
   final_node   = path_graph->lookup_node(worldmap.get_final_node());
 
-  pingus = new Pingus(path_graph.get());
+  auto pingus_up = std::make_unique<Pingus>(path_graph.get());
+  pingus = pingus_up.get();
   set_starting_node();
-  add_drawable(pingus);
+  add_drawable(std::move(pingus_up));
 
   gc_state.set_limit(Rect(Vector2i(0, 0), Size(worldmap.get_width(), worldmap.get_height())));
 }
 
 Worldmap::~Worldmap()
 {
-  for (auto i = drawables.begin (); i != drawables.end (); ++i)
-  {
-    delete (*i);
-  }
 }
 
 void
@@ -124,8 +119,10 @@ Worldmap::draw(DrawingContext& gc)
 
   gc_state.push(gc);
 
-  for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
+  for (auto i = drawables.begin (); i != drawables.end (); ++i)
+  {
     (*i)->draw(gc);
+  }
 
   Vector2f mpos = gc_state.screen2world(Vector2i(mouse_x, mouse_y));
   Dot* dot = path_graph->get_dot(mpos.x, mpos.y);
@@ -138,7 +135,7 @@ Worldmap::draw(DrawingContext& gc)
 void
 Worldmap::update(float delta)
 {
-  for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
+  for (auto i = drawables.begin (); i != drawables.end (); ++i)
   {
     (*i)->update (delta);
   }
@@ -152,9 +149,9 @@ Worldmap::on_startup()
 }
 
 void
-Worldmap::add_drawable(Drawable* drawable)
+Worldmap::add_drawable(std::unique_ptr<Drawable> drawable)
 {
-  drawables.push_back(drawable);
+  drawables.push_back(std::move(drawable));
 }
 
 void

@@ -27,7 +27,7 @@ class FontImpl
 {
 public:
   std::vector<FramebufferSurface> framebuffer_surfaces;
-  typedef std::vector<GlyphDescription*> Glyphs;
+  typedef std::vector<std::unique_ptr<GlyphDescription> > Glyphs;
   Glyphs glyphs;
   int    space_length;
   float  char_spacing;
@@ -44,7 +44,7 @@ public:
   {
     vertical_spacing = static_cast<float>(size) * desc.vertical_spacing;
 
-    glyphs.resize(65536, 0); // 16bit ought to be enough for everybody
+    glyphs.resize(65536); // 16bit ought to be enough for everybody
 
     // Copyh Unicode -> Glyph mapping
     for(std::vector<GlyphImageDescription>::size_type j = 0; j < desc.images.size(); ++j)
@@ -58,15 +58,13 @@ public:
 
       framebuffer_surfaces.push_back(Display::get_framebuffer()->create_surface(surface));
 
-      for(std::vector<GlyphDescription>::const_iterator i = desc.images[j].glyphs.begin();
-          i != desc.images[j].glyphs.end();
-          ++i)
+      for(auto i = desc.images[j].glyphs.begin(); i != desc.images[j].glyphs.end(); ++i)
       {
         if (i->unicode < glyphs.size())
         {
           if (glyphs[i->unicode] == 0)
           {
-            glyphs[i->unicode] = new GlyphDescription(*i);
+            glyphs[i->unicode] = std::make_unique<GlyphDescription>(*i);
             glyphs[i->unicode]->image = static_cast<int>(framebuffer_surfaces.size()) - 1;
           }
           else
@@ -84,10 +82,6 @@ public:
 
   ~FontImpl()
   {
-    for(Glyphs::iterator i = glyphs.begin(); i != glyphs.end(); ++i)
-    {
-      delete *i;
-    }
   }
 
   void render(Origin origin, int x, int y_, const std::string& text, Framebuffer& fb)

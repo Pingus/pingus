@@ -166,8 +166,6 @@ Panel::Panel(EditorScreen* editor_) :
   pos(2,2),
   callback()
 {
-  editor->get_gui_manager()->add(this);
-
   add_button("core/editor/document-new",  _("New level"),
              &EditorScreen::level_new);
   add_button("core/editor/document-open", _("Open level..."),

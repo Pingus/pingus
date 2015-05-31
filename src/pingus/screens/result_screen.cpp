@@ -247,25 +247,24 @@ ResultScreen::ResultScreen(Result arg_result) :
   abort_button(),
   retry_button()
 {
-  ResultScreenComponent* comp = new ResultScreenComponent(result);
-  gui_manager->add(comp);
+  gui_manager->create<ResultScreenComponent>(result);
 
   ok_button = abort_button = retry_button = 0;
 
   if (result.success())
   {
-    gui_manager->add(ok_button = new ResultScreenOkButton(this,
+    ok_button = gui_manager->create<ResultScreenOkButton>(this,
                                                           Display::get_width()/2 + 245,
-                                                          Display::get_height()/2 + 150));
+                                                          Display::get_height()/2 + 150);
   }
   else
   {
-    gui_manager->add(abort_button = new ResultScreenAbortButton(this,
+    abort_button = gui_manager->create<ResultScreenAbortButton>(this,
                                                                 Display::get_width()/2 - 300,
-                                                                Display::get_height()/2 + 200));
-    gui_manager->add(retry_button = new ResultScreenRetryButton(this,
+                                                                Display::get_height()/2 + 200);
+    retry_button = gui_manager->create<ResultScreenRetryButton>(this,
                                                                 Display::get_width()/2 + 245,
-                                                                Display::get_height()/2 + 150));
+                                                                Display::get_height()/2 + 150);
   }
 
   //gui_manager->add(new GUI::SurfaceButton(500, 500, cancel_desc, cancel_desc, cancel_desc), true);

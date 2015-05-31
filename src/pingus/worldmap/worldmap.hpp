@@ -46,9 +46,6 @@ class Worldmap
 private:
   PingusWorldmap worldmap;
 
-  typedef std::vector<Drawable*>   ObjectLst;
-  typedef std::vector<Drawable*> DrawableLst;
-
   NodeId default_node;
   NodeId final_node;
 
@@ -59,14 +56,8 @@ private:
   /** The graph that represents the path on the map */
   std::unique_ptr<PathGraph> path_graph;
 
-  /** A collection of drawable things, allocation and deallocation
-      takes place elsewhere these are only references to other
-      objects */
-  DrawableLst drawables;
-
-  /** A collection of drawables loaded from the xml file, this list
-      gets deleted at the end */
-  ObjectLst objects;
+  /** A collection of drawable things */
+  std::vector<std::unique_ptr<Drawable> > drawables;
 
   int mouse_x;
   int mouse_y;
@@ -88,7 +79,7 @@ public:
   /** Enters the level on which the Pingu is currently standing */
   void enter_level();
 
-  void add_drawable(Drawable* drawable);
+  void add_drawable(std::unique_ptr<Drawable> drawable);
 
   /** @return the shortest path between node1 and node2  */
   std::vector<EdgeId> find_path (NodeId node1, NodeId node2);

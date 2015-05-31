@@ -39,12 +39,11 @@ GameSession::GameSession(const PingusLevel& arg_plf, bool arg_show_result_screen
   show_result_screen(arg_show_result_screen),
   server(),
   world_delay(),
-  is_finished  (false),
-  button_panel (0),
-  pcounter     (0),
-  playfield    (0),
-  time_display (0),
-  small_map    (0),
+  is_finished(false),
+  button_panel(),
+  pcounter(),
+  playfield(),
+  small_map(),
   armageddon_button(),
   forward_button(),
   pause_button(),
@@ -59,37 +58,25 @@ GameSession::GameSession(const PingusLevel& arg_plf, bool arg_show_result_screen
 
   log_debug("GameSession");
 
-  // -- Client stuff
-
-  // These object will get deleted by the gui_manager
-  button_panel = new ButtonPanel(get_server(), Vector2i(0, (size.height - 150)/2));
-
   int world_width  = server->get_world()->get_width();
   int world_height = server->get_world()->get_height();
 
-  playfield    = new Playfield(get_server(), this,
-                               Rect(Vector2i(Math::max((Display::get_width()  - world_width)/2,  0),
-                                             Math::max((Display::get_height() - world_height)/2, 0)),
-                                    Size(Math::min(Display::get_width(),  world_width),
-                                         Math::min(Display::get_height(), world_height))));
+  playfield = gui_manager->create<Playfield>(
+    get_server(), this,
+    Rect(Vector2i(Math::max((Display::get_width()  - world_width)/2,  0),
+                  Math::max((Display::get_height() - world_height)/2, 0)),
+         Size(Math::min(Display::get_width(),  world_width),
+              Math::min(Display::get_height(), world_height))));
 
-  pcounter     = new PingusCounter(get_server());
-  small_map    = new SmallMap(get_server(), playfield, Rect(Vector2i(5, size.height - 105), Size(175, 100)));
-  time_display = new TimeDisplay(this);
+  pcounter = gui_manager->create<PingusCounter>(get_server());
+  small_map = gui_manager->create<SmallMap>(get_server(), playfield, Rect(Vector2i(5, size.height - 105), Size(175, 100)));
 
-  gui_manager->add(playfield);
-  gui_manager->add(button_panel);
-  gui_manager->add(pcounter);
-  gui_manager->add(small_map);
-  gui_manager->add(time_display);
+  button_panel = gui_manager->create<ButtonPanel>(get_server(), Vector2i(0, (size.height - 150)/2));
+  gui_manager->create<TimeDisplay>(this);
 
-  armageddon_button = new ArmageddonButton(get_server(), Display::get_width() - 40, Display::get_height() - 62);
-  forward_button    = new ForwardButton(this, Display::get_width() - 40 * 2, Display::get_height() - 62);
-  pause_button      = new PauseButton(this, Display::get_width() - 40 * 3, Display::get_height() - 62);
-
-  gui_manager->add(armageddon_button);
-  gui_manager->add(forward_button);
-  gui_manager->add(pause_button);
+  armageddon_button = gui_manager->create<ArmageddonButton>(get_server(), Display::get_width() - 40, Display::get_height() - 62);
+  forward_button = gui_manager->create<ForwardButton>(this, Display::get_width() - 40 * 2, Display::get_height() - 62);
+  pause_button = gui_manager->create<PauseButton>(this, Display::get_width() - 40 * 3, Display::get_height() - 62);
 }
 
 GameSession::~GameSession()

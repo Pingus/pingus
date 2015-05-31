@@ -32,10 +32,6 @@ GroupComponent::GroupComponent(const Rect& rect_, bool clip_) :
 
 GroupComponent::~GroupComponent()
 {
-  for(Components::iterator i = children.begin(); i != children.end(); ++i)
-  {
-    delete *i;
-  }
 }
 
 void
@@ -243,21 +239,21 @@ GroupComponent::on_pointer_move(int x, int y)
 }
 
 Component*
-GroupComponent::component_at (const Vector2i& pos)
+GroupComponent::component_at(const Vector2i& pos)
 {
   for(Components::reverse_iterator i = children.rbegin(); i != children.rend(); ++i)
   {
     if ((*i)->is_visible() && (*i)->is_at(pos.x, pos.y))
-      return *i;
+      return i->get();
   }
   return 0;
 }
 
 void
-GroupComponent::add(Component* comp)
+GroupComponent::add(std::unique_ptr<Component> comp)
 {
   comp->set_parent(this);
-  children.push_back(comp);
+  children.push_back(std::move(comp));
 }
 
 void

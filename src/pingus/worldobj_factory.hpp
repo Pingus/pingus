@@ -30,20 +30,20 @@ class WorldObjAbstractFactory;
 class WorldObjFactory
 {
 private:
-  std::map<std::string, WorldObjAbstractFactory*> factories;
+  std::map<std::string, std::unique_ptr<WorldObjAbstractFactory> > factories;
 
-  static WorldObjFactory* instance_;
+  static std::unique_ptr<WorldObjFactory> instance_;
 
   WorldObjFactory ();
   void free_factories();
 
 public:
   /** Return the singleton instance */
-  static WorldObjFactory* instance ();
+  static WorldObjFactory& instance();
   static void deinit();
   /** Register a factory for object creation */
   void register_factory(const std::string& id,
-                        WorldObjAbstractFactory* factory);
+                        std::unique_ptr<WorldObjAbstractFactory> factory);
 
   /** Create a WorldObj type from a given piece of xml, use the
       'type' property for determinating the object type. */

@@ -46,16 +46,13 @@
 
 using namespace WorldObjs;
 
-WorldObjFactory* WorldObjFactory::instance_ = 0;
+std::unique_ptr<WorldObjFactory> WorldObjFactory::instance_;
 
 /** WorldObjAbstractFactory, interface for creating factories */
 class WorldObjAbstractFactory
 {
 public:
-  WorldObjAbstractFactory (const std::string& id) {
-    WorldObjFactory::instance ()->register_factory (id, this);
-  }
-
+  WorldObjAbstractFactory() {}
   virtual ~WorldObjAbstractFactory() {}
 
   virtual std::vector<WorldObj*> create(const FileReader& reader) =0;
@@ -65,14 +62,11 @@ private:
   WorldObjAbstractFactory& operator= (const WorldObjAbstractFactory&);
 };
 
-/** Template to create factories, usage:
-    new WorldObjFactoryImpl<"liquid", Liquid>; */
 template<class T>
 class WorldObjFactoryImpl : public WorldObjAbstractFactory
 {
 public:
-  WorldObjFactoryImpl (const std::string& id)
-    : WorldObjAbstractFactory (id) {}
+  WorldObjFactoryImpl() {}
 
   std::vector<WorldObj*> create(const FileReader& reader) {
     std::vector<WorldObj*> lst;
@@ -88,10 +82,7 @@ private:
 class WorldObjGroupFactory : public WorldObjAbstractFactory
 {
 public:
-  WorldObjGroupFactory (const std::string& id) :
-    WorldObjAbstractFactory(id)
-  {}
-
+  WorldObjGroupFactory() {}
   virtual ~WorldObjGroupFactory() {}
 
   virtual std::vector<WorldObj*> create(const FileReader& reader) {
@@ -101,7 +92,7 @@ public:
     std::vector<FileReader> sections = objects.get_sections();
     for(auto it = sections.begin(); it != sections.end(); ++it)
     {
-      std::vector<WorldObj*> objs = WorldObjFactory::instance()->create(*it);
+      std::vector<WorldObj*> objs = WorldObjFactory::instance().create(*it);
       for(auto obj = objs.begin(); obj != objs.end(); ++obj)
       {
         if (*obj)
@@ -121,13 +112,11 @@ private:
 class WorldObjPrefabFactory : public WorldObjAbstractFactory
 {
 public:
-  WorldObjPrefabFactory (const std::string& id) :
-    WorldObjAbstractFactory(id)
-  {}
-
+  WorldObjPrefabFactory() {}
   virtual ~WorldObjPrefabFactory() {}
 
-  virtual std::vector<WorldObj*> create(const FileReader& reader) {
+  virtual std::vector<WorldObj*> create(const FileReader& reader)
+  {
     std::string name;
     reader.read_string("name", name);
 
@@ -144,7 +133,7 @@ public:
     {
       OverrideFileReader override_reader(*it, overrides);
 
-      std::vector<WorldObj*> objs = WorldObjFactory::instance()->create(override_reader);
+      std::vector<WorldObj*> objs = WorldObjFactory::instance().create(override_reader);
       for(auto obj = objs.begin(); obj != objs.end(); ++obj)
       {
         if (*obj)
@@ -168,71 +157,66 @@ WorldObjFactory::WorldObjFactory() :
   // Register all WorldObj's
 }
 
-WorldObjFactory*
+WorldObjFactory&
 WorldObjFactory::instance()
 {
-  if ( ! instance_)
+  if (!instance_)
   {
-    instance_ = new WorldObjFactory ();
+    instance_ = std::unique_ptr<WorldObjFactory>(new WorldObjFactory);
 
     // Registring Factories
-    new WorldObjGroupFactory("group");
-    new WorldObjPrefabFactory("prefab");
+    instance_->register_factory("group", std::make_unique<WorldObjGroupFactory>());
+    instance_->register_factory("prefab", std::make_unique<WorldObjPrefabFactory>());
 
-    new WorldObjFactoryImpl<Liquid>("liquid");
-    new WorldObjFactoryImpl<Hotspot>("hotspot");
-    new WorldObjFactoryImpl<Entrance>("entrance");
-    new WorldObjFactoryImpl<Exit>("exit");
+    instance_->register_factory("liquid", std::make_unique<WorldObjFactoryImpl<Liquid> >());
+    instance_->register_factory("hotspot", std::make_unique<WorldObjFactoryImpl<Hotspot> >());
+    instance_->register_factory("entrance", std::make_unique<WorldObjFactoryImpl<Entrance> >());
+    instance_->register_factory("exit", std::make_unique<WorldObjFactoryImpl<Exit> >());
 
     // traps
-    new WorldObjFactoryImpl<FakeExit>("fake_exit");
-    new WorldObjFactoryImpl<Guillotine>("guillotine");
-    new WorldObjFactoryImpl<Hammer>("hammer");
-    new WorldObjFactoryImpl<LaserExit>("laser_exit");
-    new WorldObjFactoryImpl<Smasher>("smasher");
-    new WorldObjFactoryImpl<Spike>("spike");
+    instance_->register_factory("fake_exit", std::make_unique<WorldObjFactoryImpl<FakeExit> >());
+    instance_->register_factory("guillotine", std::make_unique<WorldObjFactoryImpl<Guillotine> >());
+    instance_->register_factory("hammer", std::make_unique<WorldObjFactoryImpl<Hammer> >());
+    instance_->register_factory("laser_exit", std::make_unique<WorldObjFactoryImpl<LaserExit> >());
+    instance_->register_factory("smasher", std::make_unique<WorldObjFactoryImpl<Smasher> >());
+    instance_->register_factory("spike", std::make_unique<WorldObjFactoryImpl<Spike> >());
 
     // Special Objects
-    new WorldObjFactoryImpl<SwitchDoorSwitch>("switchdoor-switch");
-    new WorldObjFactoryImpl<SwitchDoorDoor>("switchdoor-door");
-    new WorldObjFactoryImpl<IceBlock>("iceblock");
-    new WorldObjFactoryImpl<ConveyorBelt>("conveyorbelt");
-    new WorldObjFactoryImpl<Teleporter>("teleporter");
-    new WorldObjFactoryImpl<TeleporterTarget>("teleporter-target");
+    instance_->register_factory("switchdoor-switch", std::make_unique<WorldObjFactoryImpl<SwitchDoorSwitch> >());
+    instance_->register_factory("switchdoor-door", std::make_unique<WorldObjFactoryImpl<SwitchDoorDoor> >());
+    instance_->register_factory("iceblock", std::make_unique<WorldObjFactoryImpl<IceBlock> >());
+    instance_->register_factory("conveyorbelt", std::make_unique<WorldObjFactoryImpl<ConveyorBelt> >());
+    instance_->register_factory("teleporter", std::make_unique<WorldObjFactoryImpl<Teleporter> >());
+    instance_->register_factory("teleporter-target", std::make_unique<WorldObjFactoryImpl<TeleporterTarget> >());
 
     // Backgrounds
-    new WorldObjFactoryImpl<SurfaceBackground>("surface-background");
-    new WorldObjFactoryImpl<StarfieldBackground>("starfield-background");
-    new WorldObjFactoryImpl<SolidColorBackground>("solidcolor-background");
+    instance_->register_factory("surface-background", std::make_unique<WorldObjFactoryImpl<SurfaceBackground> >());
+    instance_->register_factory("starfield-background", std::make_unique<WorldObjFactoryImpl<StarfieldBackground> >());
+    instance_->register_factory("solidcolor-background", std::make_unique<WorldObjFactoryImpl<SolidColorBackground> >());
 
     // Weather
-    new WorldObjFactoryImpl<SnowGenerator>("snow-generator");
-    new WorldObjFactoryImpl<RainGenerator>("rain-generator");
+    instance_->register_factory("snow-generator", std::make_unique<WorldObjFactoryImpl<SnowGenerator> >());
+    instance_->register_factory("rain-generator", std::make_unique<WorldObjFactoryImpl<RainGenerator> >());
     // Weather-Backward compability
-    new WorldObjFactoryImpl<SnowGenerator>("snow");
-    new WorldObjFactoryImpl<RainGenerator>("rain");
+    instance_->register_factory("snow", std::make_unique<WorldObjFactoryImpl<SnowGenerator> >());
+    instance_->register_factory("rain", std::make_unique<WorldObjFactoryImpl<RainGenerator> >());
 
     // Groundpieces
-    new WorldObjFactoryImpl<Groundpiece>("groundpiece");
+    instance_->register_factory("groundpiece", std::make_unique<WorldObjFactoryImpl<Groundpiece> >());
   }
 
-  return instance_;
+  return *instance_;
 }
 
 void WorldObjFactory::deinit()
 {
-  if (instance_)
-  {
-    instance_->free_factories();
-    delete instance_;
-    instance_ = 0;
-  }
+  instance_ = {};
 }
 
 std::vector<WorldObj*>
 WorldObjFactory::create(const FileReader& reader)
 {
-  std::map<std::string, WorldObjAbstractFactory*>::iterator it = factories.find(reader.get_name());
+  auto it = factories.find(reader.get_name());
 
   if (it == factories.end())
   {
@@ -246,19 +230,10 @@ WorldObjFactory::create(const FileReader& reader)
 }
 
 void
-WorldObjFactory::register_factory (const std::string& id,
-                                   WorldObjAbstractFactory* factory)
+WorldObjFactory::register_factory(const std::string& id,
+                                  std::unique_ptr<WorldObjAbstractFactory> factory)
 {
-  factories[id] = factory;
-}
-
-void
-WorldObjFactory::free_factories()
-{
-  for (std::map<std::string, WorldObjAbstractFactory*>::iterator i = factories.begin(); i != factories.end(); ++i)
-  {
-    delete i->second;
-  }
+  factories[id] = std::move(factory);
 }
 
 /* EOF */

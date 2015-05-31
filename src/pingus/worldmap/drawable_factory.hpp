@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDMAP_DRAWABLE_FACTORY_HPP
 #define HEADER_PINGUS_PINGUS_WORLDMAP_DRAWABLE_FACTORY_HPP
 
+#include <memory>
+
 #include "pingus/worldmap/drawable.hpp"
 
 namespace WorldmapNS {
@@ -26,7 +28,7 @@ class DrawableFactory
 private:
   public:
   /** Create a new drawable */
-  static Drawable* create(const FileReader& reader);
+  static std::unique_ptr<Drawable> create(const FileReader& reader);
 private:
   DrawableFactory (const DrawableFactory&);
   DrawableFactory& operator= (const DrawableFactory&);

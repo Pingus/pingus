@@ -21,17 +21,17 @@
 
 namespace WorldmapNS {
 
-Drawable*
+std::unique_ptr<Drawable>
 DrawableFactory::create(const FileReader& reader)
 {
   if (reader.get_name() == "surface")
   {
-    return new SpriteDrawable(reader);
+    return std::make_unique<SpriteDrawable>(reader);
   }
   else
   {
     log_error("can't create %1%", reader.get_name());
-    return 0;
+    return {};
   }
 }
 

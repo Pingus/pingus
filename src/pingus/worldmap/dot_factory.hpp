@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDMAP_DOT_FACTORY_HPP
 #define HEADER_PINGUS_PINGUS_WORLDMAP_DOT_FACTORY_HPP
 
+#include <memory>
+
 #include "util/file_reader.hpp"
 
 namespace WorldmapNS {
@@ -28,7 +30,7 @@ class DotFactory
 private:
 public:
   /** Create a Dot from a given piece of XML */
-  static Dot* create(const FileReader& reader);
+  static std::unique_ptr<Dot> create(const FileReader& reader);
 private:
   DotFactory (const DotFactory&);
   DotFactory& operator= (const DotFactory&);

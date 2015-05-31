@@ -95,19 +95,11 @@ private:
   LevelScrollButton & operator=(const LevelScrollButton&);
 };
 
-struct LevelsetPrioritySorter
-{
-  bool operator()(Levelset* lhs, Levelset* rhs) const
-  {
-    return lhs->get_priority() > rhs->get_priority();
-  }
-};
-
 class LevelsetSelector : public GUI::RectComponent
 {
 private:
   LevelMenu* level_menu;
-  typedef std::vector<Levelset*> Levelsets;
+  typedef std::vector<std::unique_ptr<Levelset> > Levelsets;
   Levelsets levelsets;
   Levelset* current_levelset;
   Sprite marker;
@@ -141,7 +133,7 @@ public:
         std::unique_ptr<Levelset> levelset = Levelset::from_file(*i);
         if (!levelset->get_developer_only() || globals::developer_mode)
         {
-          levelsets.push_back(levelset.release());
+          levelsets.push_back(std::move(levelset));
         }
       }
       catch(const std::exception& err)
@@ -155,18 +147,17 @@ public:
       levelsets.push_back(Levelset::from_directory(_("Under Construction"),
                                                    _("Untested, unpolished and broken levels"),
                                                    "levelsets/underconstruction",
-                                                   Pathname("levels", Pathname::DATA_PATH)).release());
+                                                   Pathname("levels", Pathname::DATA_PATH)));
     }
 
-    std::sort(levelsets.begin(), levelsets.end(), LevelsetPrioritySorter());
+    std::sort(levelsets.begin(), levelsets.end(),
+              [](const auto& lhs, const auto& rhs) {
+                return lhs->get_priority() > rhs->get_priority();
+              });
   }
 
   ~LevelsetSelector()
   {
-    for(Levelsets::iterator i = levelsets.begin(); i != levelsets.end(); ++i)
-    {
-      delete *i;
-    }
   }
 
   void draw(DrawingContext& gc)
@@ -179,7 +170,7 @@ public:
     int y = list_rect.top;
     for(int i = page; (i < (page+items_per_page)) && (i < int(levelsets.size())); ++i)
     {
-      Levelset* levelset = levelsets[i];
+      Levelset* levelset = levelsets[i].get();
 
       if (levelset == current_levelset)
         gc.draw(marker, Vector2i(15, y - 5));
@@ -242,7 +233,7 @@ public:
         int i = y / item_height + page;
 
         if (i >= 0 && i < static_cast<int>(levelsets.size()))
-          current_levelset = levelsets[i];
+          current_levelset = levelsets[i].get();
         else
           current_levelset = NULL;
       }
@@ -460,25 +451,22 @@ LevelMenu::LevelMenu() :
 {
   ok_button  = Sprite("core/start/ok");
 
-  levelset_selector = new LevelsetSelector(this, Rect());
-  level_selector    = new LevelSelector(this, Rect());
+  levelset_selector = gui_manager->create<LevelsetSelector>(this, Rect());
+  level_selector = gui_manager->create<LevelSelector>(this, Rect());
 
-  gui_manager->add(levelset_selector);
-  gui_manager->add(level_selector);
-
-  gui_manager->add(prev_button = new LevelScrollButton(Display::get_width()/2  + 280,
+  prev_button = gui_manager->create<LevelScrollButton>(Display::get_width()/2  + 280,
                                                        Display::get_height()/2 - 150,
                                                        "core/menu/arrow_up",
-                                                       std::bind(&LevelMenu::prev_page, this)));
+                                                       std::bind(&LevelMenu::prev_page, this));
 
-  gui_manager->add(next_button = new LevelScrollButton(Display::get_width()/2  + 280,
+  next_button = gui_manager->create<LevelScrollButton>(Display::get_width()/2  + 280,
                                                        Display::get_height()/2 + 70,
                                                        "core/menu/arrow_down",
-                                                       std::bind(&LevelMenu::next_page, this)));
+                                                       std::bind(&LevelMenu::next_page, this));
 
-  gui_manager->add(abort_button = new LevelMenuAbortButton(this,
+  abort_button = gui_manager->create<LevelMenuAbortButton>(this,
                                                            Display::get_width()/2 - 300,
-                                                           Display::get_height()/2 + 144));
+                                                           Display::get_height()/2 + 144);
 
   level_selector->hide();
   resize(Display::get_size());

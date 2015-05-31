@@ -38,139 +38,119 @@ Controller::Controller(const ControllerDescription& desc) :
   current_ = this;
 
   const std::vector<int>& button_lst = desc.get_buttons();
-  for(std::vector<int>::const_iterator i = button_lst.begin(); i != button_lst.end(); ++i)
+  for(auto i = button_lst.begin(); i != button_lst.end(); ++i)
   {
-    add_button(*i, new ControllerButton(this, *i));
+    add_button(*i, std::make_unique<ControllerButton>(this, *i));
   }
 
   const std::vector<int>& axis_lst = desc.get_axes();
-  for(std::vector<int>::const_iterator i = axis_lst.begin(); i != axis_lst.end(); ++i)
+  for(auto i = axis_lst.begin(); i != axis_lst.end(); ++i)
   {
-    add_axis(*i, new ControllerAxis(this, *i));
+    add_axis(*i, std::make_unique<ControllerAxis>(this, *i));
   }
 
   const std::vector<int>& pointer_lst = desc.get_pointers();
-  for(std::vector<int>::const_iterator i = pointer_lst.begin(); i != pointer_lst.end(); ++i)
+  for(auto i = pointer_lst.begin(); i != pointer_lst.end(); ++i)
   {
-    add_pointer(*i, new ControllerPointer(this, *i));
+    add_pointer(*i, std::make_unique<ControllerPointer>(this, *i));
   }
 
   const std::vector<int>& scroller_lst = desc.get_scrollers();
-  for(std::vector<int>::const_iterator i = scroller_lst.begin(); i != scroller_lst.end(); ++i)
+  for(auto i = scroller_lst.begin(); i != scroller_lst.end(); ++i)
   {
-    add_scroller(*i, new ControllerScroller(this, *i));
+    add_scroller(*i, std::make_unique<ControllerScroller>(this, *i));
   }
 
   const std::vector<int>& keyboard_lst = desc.get_keyboards();
-  for(std::vector<int>::const_iterator i = keyboard_lst.begin(); i != keyboard_lst.end(); ++i)
+  for(auto i = keyboard_lst.begin(); i != keyboard_lst.end(); ++i)
   {
-    add_keyboard(*i, new ControllerKeyboard(this, *i));
+    add_keyboard(*i, std::make_unique<ControllerKeyboard>(this, *i));
   }
 }
 
 Controller::~Controller()
 {
-  for(std::vector<ControllerButton*>::iterator i = buttons.begin(); i != buttons.end(); ++i)
-  {
-    delete *i;
-  }
-  for(std::vector<ControllerAxis*>::iterator i = axes.begin(); i != axes.end(); ++i)
-  {
-    delete *i;
-  }
-  for(std::vector<ControllerPointer*>::iterator i = pointers.begin(); i != pointers.end(); ++i)
-  {
-    delete *i;
-  }
-  for(std::vector<ControllerScroller*>::iterator i = scrollers.begin(); i != scrollers.end(); ++i)
-  {
-    delete *i;
-  }
-  for(std::vector<ControllerKeyboard*>::iterator i = keyboards.begin(); i != keyboards.end(); ++i)
-  {
-    delete *i;
-  }
 }
 
 ControllerScroller*
 Controller::get_scroller(int id)
 {
   if (id >= 0 && id < int(scrollers.size()))
-    return scrollers[id];
+    return scrollers[id].get();
   else
-    return 0;
+    return nullptr;
 }
 
 void
-Controller::add_scroller(int id, ControllerScroller* scroller)
+Controller::add_scroller(int id, std::unique_ptr<ControllerScroller> scroller)
 {
   if (int(scrollers.size())-1 < id)
     scrollers.resize(id+1);
 
   assert(scrollers[id] == 0);
-  scrollers[id] = scroller;
+  scrollers[id] = std::move(scroller);
 }
 
 ControllerPointer*
 Controller::get_pointer(int id)
 {
   if (id >= 0 && id < int(pointers.size()))
-    return pointers[id];
+    return pointers[id].get();
   else
-    return 0;
+    return nullptr;
 }
 
 ControllerKeyboard*
 Controller::get_keyboard(int id)
 {
   if (id >= 0 && id < int(keyboards.size()))
-    return keyboards[id];
+    return keyboards[id].get();
   else
-    return 0;
+    return nullptr;
 }
 
 void
-Controller::add_keyboard(int id, ControllerKeyboard* keyboard)
+Controller::add_keyboard(int id, std::unique_ptr<ControllerKeyboard> keyboard)
 {
   if (int(keyboards.size())-1 < id)
     keyboards.resize(id+1);
 
   assert(keyboards[id] == 0);
-  keyboards[id] = keyboard;
+  keyboards[id] = std::move(keyboard);
 }
 
 void
-Controller::add_pointer(int id, ControllerPointer* pointer)
+Controller::add_pointer(int id, std::unique_ptr<ControllerPointer> pointer)
 {
   if (int(pointers.size())-1 < id)
     pointers.resize(id+1);
 
   assert(pointers[id] == 0);
-  pointers[id] = pointer;
+  pointers[id] = std::move(pointer);
 }
 
 ControllerAxis*
 Controller::get_axis(int id)
 {
   assert(id >= 0 && id < int(axes.size()));
-  return axes[id];
+  return axes[id].get();
 }
 
 void
-Controller::add_axis(int id, ControllerAxis* axis)
+Controller::add_axis(int id, std::unique_ptr<ControllerAxis> axis)
 {
   if (int(axes.size())-1 < id)
     axes.resize(id+1);
 
   assert(axes[id] == 0);
-  axes[id] = axis;
+  axes[id] = std::move(axis);
 }
 
 ControllerButton*
 Controller::get_button(int id)
 {
   assert(id >= 0 && id < int(buttons.size()));
-  return buttons[id];
+  return buttons[id].get();
 }
 
 void
@@ -200,31 +180,27 @@ Controller::refresh()
 void
 Controller::update(float delta)
 {
-  for(std::vector<ControllerButton*>::iterator i = buttons.begin();
-      i != buttons.end(); ++i)
+  for(auto i = buttons.begin(); i != buttons.end(); ++i)
     if (*i) (*i)->update(delta);
 
-  for(std::vector<ControllerAxis*>::iterator i = axes.begin();
-      i != axes.end(); ++i)
+  for(auto i = axes.begin(); i != axes.end(); ++i)
     if (*i) (*i)->update(delta);
 
-  for(std::vector<ControllerPointer*>::iterator i = pointers.begin();
-      i != pointers.end(); ++i)
+  for(auto i = pointers.begin(); i != pointers.end(); ++i)
     if (*i) (*i)->update(delta);
 
-  for(std::vector<ControllerScroller*>::iterator i = scrollers.begin();
-      i != scrollers.end(); ++i)
+  for(auto i = scrollers.begin(); i != scrollers.end(); ++i)
     if (*i) (*i)->update(delta);
 }
 
 void
-Controller::add_button(int id, ControllerButton* button)
+Controller::add_button(int id, std::unique_ptr<ControllerButton> button)
 {
   if (int(buttons.size())-1 < id)
     buttons.resize(id+1);
 
   assert(buttons[id] == 0);
-  buttons[id] = button;
+  buttons[id] = std::move(button);
 }
 
 void

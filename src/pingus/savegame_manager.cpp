@@ -57,17 +57,17 @@ SavegameManager::SavegameManager(const std::string& arg_filename) :
       for(std::vector<FileReader>::const_iterator i = sections.begin();
           i != sections.end(); ++i)
       {
-        Savegame* savegame = new Savegame(*i);
+        auto savegame = std::make_unique<Savegame>(*i);
         SavegameTable::iterator j = find(savegame->get_filename());
         if (j != savegames.end())
-        { // overwrite duplicates, shouldn't happen, but harmless
+        {
+          // overwrite duplicates, shouldn't happen, but harmless
           log_info("name collision: %1%", savegame->get_filename());
-          delete *j;
-          *j = savegame;
+          *j = std::move(savegame);
         }
         else
         {
-          savegames.push_back(savegame);
+          savegames.push_back(std::move(savegame));
         }
       }
     }
@@ -76,9 +76,7 @@ SavegameManager::SavegameManager(const std::string& arg_filename) :
 
 SavegameManager::~SavegameManager()
 {
-  for (SavegameTable::iterator i =  savegames.begin(); i !=  savegames.end (); ++i)
-    delete *i;
-
+  savegames.clear();
   instance_ = 0;
 }
 
@@ -89,29 +87,31 @@ SavegameManager::get(const std::string& filename_)
   if (i == savegames.end())
     return 0;
   else
-    return *i;
+    return (*i).get();
 }
 
 void
 SavegameManager::store(Savegame& arg_savegame)
 {
-  Savegame* savegame = new Savegame(arg_savegame);
+  auto savegame = std::make_unique<Savegame>(arg_savegame);
   SavegameTable::iterator i = find(savegame->get_filename());
   if (i == savegames.end())
-  { // don't know anything about the savegame
-    savegames.push_back(savegame);
+  {
+    // don't know anything about the savegame
+    savegames.push_back(std::move(savegame));
   }
   else
-  { // already have such a savegame
-    if ((*i)->get_status() == Savegame::FINISHED
-        && savegame->get_status() == Savegame::ACCESSIBLE)
-    { // saved savegame is better then new game
-      delete savegame;
+  {
+    // already have such a savegame
+    if ((*i)->get_status() == Savegame::FINISHED &&
+        savegame->get_status() == Savegame::ACCESSIBLE)
+    {
+      // saved savegame is better then new game
     }
     else
-    { // new game is better or equal, save it
-      delete *i;
-      *i = savegame;
+    {
+      // new game is better or equal, save it
+      *i = std::move(savegame);
     }
   }
 

@@ -30,7 +30,7 @@ private:
   ObjectSelectorList* list;
   Size thumb_size;
 
-  typedef std::vector<ObjectSelectorList::Object*> Objects;
+  typedef std::vector<std::unique_ptr<ObjectSelectorList::Object> > Objects;
   Objects objects;
 
   /** Used to record the scroll offset of the set */
@@ -40,7 +40,7 @@ public:
   ObjectSelectorSet(ObjectSelectorList* list, int thumb_w, int thumb_h);
   ~ObjectSelectorSet();
 
-  void add(ObjectSelectorList::Object* obj);
+  void add(std::unique_ptr<ObjectSelectorList::Object> obj);
 
   int get_width() const;
   int get_height() const;

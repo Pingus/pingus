@@ -26,39 +26,38 @@
 
 namespace Sound {
 
-PingusSoundImpl * PingusSound::sound;
+std::unique_ptr<PingusSoundImpl> PingusSound::sound;
 
 void
-PingusSound::init (PingusSoundImpl* s)
+PingusSound::init(std::unique_ptr<PingusSoundImpl> s)
 {
-  if (s == 0)
+  if (!s)
   {
     if (globals::sound_enabled || globals::music_enabled)
     {
       try {
-        PingusSound::init (new PingusSoundReal ());
+        PingusSound::init(std::make_unique<PingusSoundReal>());
       } catch (const std::exception& err) {
         log_error("Sound Error: %1%", err.what());
         log_error("Sound will be disabled");
-        PingusSound::init (new PingusSoundDummy ());
+        PingusSound::init(std::make_unique<PingusSoundDummy>());
       }
     }
     else
     {
-      PingusSound::init (new PingusSoundDummy ());
+      PingusSound::init(std::make_unique<PingusSoundDummy>());
     }
   }
   else
   {
-    sound = s;
+    sound = std::move(s);
   }
 }
 
 void
 PingusSound::deinit ()
 {
-  delete sound;
-  sound = 0;
+  sound = {};
 }
 
 /** Load a sound file and play it immediately.

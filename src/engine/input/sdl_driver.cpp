@@ -45,13 +45,15 @@ SDLDriver::~SDLDriver()
 
 }
 
-Keyboard*
+std::unique_ptr<Keyboard>
 SDLDriver::create_keyboard(const FileReader& reader, Control* parent)
 {
-  return (keyboard_binding = new Keyboard(parent));
+  auto keyboard = std::make_unique<Keyboard>(parent);
+  keyboard_binding = keyboard.get();
+  return std::move(keyboard);
 }
 
-Button*
+std::unique_ptr<Button>
 SDLDriver::create_button(const FileReader& reader, Control* parent)
 {
   //log_info("SDL: " << reader.get_name());
@@ -64,25 +66,27 @@ SDLDriver::create_button(const FileReader& reader, Control* parent)
 
     if (open_joystick(binding.device))
     {
-      binding.binding = new Button(parent);
+      auto button = std::make_unique<Button>(parent);
+      binding.binding = button.get();
       joystick_button_bindings.push_back(binding);
 
-      return binding.binding;
+      return std::move(button);
     }
     else
     {
-      return 0;
+      return {};
     }
   }
   else if (reader.get_name() == "sdl:mouse-button")
   {
-    MouseButtonBinding binding;
+    auto button = std::make_unique<Button>(parent);
 
+    MouseButtonBinding binding;
     reader.read_int("button", binding.button);
-    binding.binding = new Button(parent);
+    binding.binding = button.get();
     mouse_button_bindings.push_back(binding);
 
-    return binding.binding;
+    return std::move(button);
   }
   else if (reader.get_name() == "sdl:keyboard-button")
   {
@@ -92,13 +96,14 @@ SDLDriver::create_button(const FileReader& reader, Control* parent)
       SDL_Keycode key = SDL_GetKeyFromName(key_str.c_str());
       if (key != SDLK_UNKNOWN)
       {
-        KeyboardButtonBinding binding;
+        auto button = std::make_unique<Button>(parent);
 
+        KeyboardButtonBinding binding;
         binding.key = key;
-        binding.binding = new Button(parent);
+        binding.binding = button.get();
         keyboard_button_bindings.push_back(binding);
 
-        return binding.binding;
+        return std::move(button);
       }
       else
       {
@@ -118,7 +123,7 @@ SDLDriver::create_button(const FileReader& reader, Control* parent)
   }
 }
 
-Axis*
+std::unique_ptr<Axis>
 SDLDriver::create_axis(const FileReader& reader, Control* parent)
 {
   if (reader.get_name() == "sdl:joystick-axis")
@@ -130,62 +135,66 @@ SDLDriver::create_axis(const FileReader& reader, Control* parent)
 
     if (open_joystick(binding.device))
     {
-      binding.binding = new Axis(parent);
+      auto axis = std::make_unique<Axis>(parent);
+
+      binding.binding = axis.get();
       joystick_axis_bindings.push_back(binding);
 
-      return binding.binding;
+      return std::move(axis);
     }
     else
     {
-      return 0;
+      return {};
     }
   }
   else
   {
-    return 0;
+    return {};
   }
 }
 
-Scroller*
+std::unique_ptr<Scroller>
 SDLDriver::create_scroller(const FileReader& reader, Control* parent)
 {
   if (reader.get_name() == "sdl:mouse-scroller")
   {
-    ScrollerBinding binding;
+    auto scroller = std::make_unique<Scroller>(parent);
 
-    binding.binding = new Scroller(parent);
+    ScrollerBinding binding;
+    binding.binding = scroller.get();
     scroller_bindings.push_back(binding);
 
-    return binding.binding;
+    return std::move(scroller);
   }
   else
   {
-    return 0;
+    return {};
   }
 }
 
-Pointer*
+std::unique_ptr<Pointer>
 SDLDriver::create_pointer(const FileReader& reader, Control* parent)
 {
   if (reader.get_name() == "sdl:mouse-pointer")
   {
-    PointerBinding binding;
+    auto pointer = std::make_unique<Pointer>(parent);
 
-    binding.binding = new Pointer(parent);
+    PointerBinding binding;
+    binding.binding = pointer.get();
     pointer_bindings.push_back(binding);
 
-    return binding.binding;
+    return std::move(pointer);
   }
   else
   {
-    return 0;
+    return {};
   }
 }
 
 bool
 SDLDriver::open_joystick(int device)
 {
-  JoystickHandles::iterator i = joystick_handles.find(device);
+  auto i = joystick_handles.find(device);
   if (i == joystick_handles.end())
   {
     SDL_Joystick* joy = SDL_JoystickOpen(device);
@@ -222,14 +231,14 @@ SDLDriver::update(float delta)
         break;
 
       case SDL_MOUSEMOTION:
-        for(std::vector<PointerBinding>::iterator i = pointer_bindings.begin();
+        for(auto i = pointer_bindings.begin();
             i != pointer_bindings.end(); ++i)
         {
           i->binding->set_pos(Vector2f(static_cast<float>(event.motion.x),
                                        static_cast<float>(event.motion.y)));
         }
 
-        for(std::vector<ScrollerBinding>::iterator i = scroller_bindings.begin();
+        for(auto i = scroller_bindings.begin();
             i != scroller_bindings.end(); ++i)
         {
           i->binding->set_delta(Vector2f(static_cast<float>(event.motion.xrel),
@@ -255,7 +264,7 @@ SDLDriver::update(float delta)
 
       case SDL_MOUSEBUTTONDOWN:
       case SDL_MOUSEBUTTONUP:
-        for(std::vector<MouseButtonBinding>::iterator i = mouse_button_bindings.begin();
+        for(auto i = mouse_button_bindings.begin();
             i != mouse_button_bindings.end(); ++i)
         {
           if (event.button.button == (*i).button)
@@ -293,7 +302,7 @@ SDLDriver::update(float delta)
           global_event.on_button_release(event.key);
 
         // game button events
-        for(std::vector<KeyboardButtonBinding>::iterator i = keyboard_button_bindings.begin();
+        for(auto i = keyboard_button_bindings.begin();
             i != keyboard_button_bindings.end(); ++i)
         {
           if (event.key.keysym.sym == i->key)
@@ -307,7 +316,7 @@ SDLDriver::update(float delta)
         break;
 
       case SDL_JOYAXISMOTION:
-        for(std::vector<JoystickAxisBinding>::iterator i = joystick_axis_bindings.begin();
+        for(auto i = joystick_axis_bindings.begin();
             i != joystick_axis_bindings.end(); ++i)
         {
           if (event.jaxis.which == i->device &&
@@ -318,7 +327,7 @@ SDLDriver::update(float delta)
 
       case SDL_JOYBUTTONDOWN:
       case SDL_JOYBUTTONUP:
-        for(std::vector<JoystickButtonBinding>::iterator i = joystick_button_bindings.begin();
+        for(auto i = joystick_button_bindings.begin();
             i != joystick_button_bindings.end(); ++i)
         {
           if (event.jbutton.which  == i->device &&

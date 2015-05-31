@@ -17,7 +17,10 @@
 #ifndef HEADER_PINGUS_ENGINE_SOUND_SOUND_HPP
 #define HEADER_PINGUS_ENGINE_SOUND_SOUND_HPP
 
+#include <memory>
 #include <string>
+
+#include "engine/sound/sound_impl.hpp"
 
 namespace Sound {
 
@@ -26,14 +29,14 @@ class PingusSoundImpl;
 class PingusSound
 {
 private:
-  static PingusSoundImpl* sound;
+  static std::unique_ptr<PingusSoundImpl> sound;
 
 public:
   PingusSound  () { }
   ~PingusSound () { }
 
-  static void init (PingusSoundImpl* s = 0);
-  static void deinit ();
+  static void init(std::unique_ptr<PingusSoundImpl> s = {});
+  static void deinit();
 
   /** Load a sound file and play it immediately.
 
