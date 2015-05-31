@@ -19,7 +19,7 @@
 #include "lisp/parser.hpp"
 #include "util/log.hpp"
 #include "util/sexpr_file_reader.hpp"
-#include "util/sexpr_file_writer.hpp"
+#include "util/file_writer.hpp"
 #include "util/string_util.hpp"
 #include "util/system.hpp"
 
@@ -112,7 +112,7 @@ void
 StatManager::save(const std::string& filename)
 {
   std::ostringstream out;
-  SExprFileWriter writer(out);
+  FileWriter writer(out);
 
   writer.begin_mapping("pingus-stats");
 

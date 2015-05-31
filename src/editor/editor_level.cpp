@@ -27,7 +27,7 @@
 #include "pingus/prefab_file.hpp"
 #include "util/log.hpp"
 #include "util/system.hpp"
-#include "util/sexpr_file_writer.hpp"
+#include "util/file_writer.hpp"
 
 namespace Editor {
 
@@ -204,7 +204,7 @@ EditorLevel::save_prefab(const std::string& filename)
   // Create new file (overwrite existing file)
   std::ostringstream out_file;
 
-  SExprFileWriter fw(out_file);
+  FileWriter fw(out_file);
 
   // Write header
   fw.begin_mapping("pingus-prefab");
@@ -242,7 +242,7 @@ EditorLevel::save_level(const std::string& filename)
   // Create new file (overwrite existing file)
   std::ostringstream out_file;
 
-  SExprFileWriter fw(out_file);
+  FileWriter fw(out_file);
 
   // Write header
   fw.begin_mapping("pingus-level");

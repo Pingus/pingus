@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "json_file_writer.hpp"
+#include "json_file_writer_impl.hpp"
 
 #include <ostream>
 #include <assert.h>
@@ -24,7 +24,7 @@
 #include "math/vector2i.hpp"
 #include "util/pathname.hpp"
 
-JsonFileWriter::JsonFileWriter(std::ostream& out) :
+JsonFileWriterImpl::JsonFileWriterImpl(std::ostream& out) :
   m_out(out),
   m_stack()
 {
@@ -33,12 +33,12 @@ JsonFileWriter::JsonFileWriter(std::ostream& out) :
   m_stack.push_back(mapping);
 }
 
-JsonFileWriter::~JsonFileWriter()
+JsonFileWriterImpl::~JsonFileWriterImpl()
 {
 }
 
 void
-JsonFileWriter::begin_collection(const char* name)
+JsonFileWriterImpl::begin_collection(const char* name)
 {
   assert(!m_stack.empty());
   assert(m_stack.back().type() == Json::objectValue);
@@ -49,14 +49,14 @@ JsonFileWriter::begin_collection(const char* name)
 }
 
 void
-JsonFileWriter::end_collection()
+JsonFileWriterImpl::end_collection()
 {
   assert(!m_stack.empty());
   m_stack.pop_back();
 }
 
 void
-JsonFileWriter::begin_mapping(const char* name)
+JsonFileWriterImpl::begin_mapping(const char* name)
 {
   assert(!m_stack.empty());
 
@@ -81,7 +81,7 @@ JsonFileWriter::begin_mapping(const char* name)
 }
 
 void
-JsonFileWriter::end_mapping()
+JsonFileWriterImpl::end_mapping()
 {
   assert(!m_stack.empty());
 
@@ -95,7 +95,7 @@ JsonFileWriter::end_mapping()
 }
 
 void
-JsonFileWriter::write_int(const char* name, int value)
+JsonFileWriterImpl::write_int(const char* name, int value)
 {
   assert(!m_stack.empty());
   assert(m_stack.back().type() == Json::objectValue);
@@ -104,7 +104,7 @@ JsonFileWriter::write_int(const char* name, int value)
 }
 
 void
-JsonFileWriter::write_float(const char* name, float value)
+JsonFileWriterImpl::write_float(const char* name, float value)
 {
   assert(!m_stack.empty());
   assert(m_stack.back().type() == Json::objectValue);
@@ -113,7 +113,7 @@ JsonFileWriter::write_float(const char* name, float value)
 }
 
 void
-JsonFileWriter::write_colorf(const char* name, const Color& value)
+JsonFileWriterImpl::write_colorf(const char* name, const Color& value)
 {
   assert(!m_stack.empty());
   assert(m_stack.back().type() == Json::objectValue);
@@ -127,7 +127,7 @@ JsonFileWriter::write_colorf(const char* name, const Color& value)
 }
 
 void
-JsonFileWriter::write_colori(const char* name, const Color& value)
+JsonFileWriterImpl::write_colori(const char* name, const Color& value)
 {
   assert(!m_stack.empty());
   assert(m_stack.back().type() == Json::objectValue);
@@ -141,7 +141,7 @@ JsonFileWriter::write_colori(const char* name, const Color& value)
 }
 
 void
-JsonFileWriter::write_bool(const char* name, bool value)
+JsonFileWriterImpl::write_bool(const char* name, bool value)
 {
   assert(!m_stack.empty());
   assert(m_stack.back().type() == Json::objectValue);
@@ -150,7 +150,7 @@ JsonFileWriter::write_bool(const char* name, bool value)
 }
 
 void
-JsonFileWriter::write_string(const char* name, const std::string& value)
+JsonFileWriterImpl::write_string(const char* name, const std::string& value)
 {
   assert(!m_stack.empty());
   assert(m_stack.back().type() == Json::objectValue);
@@ -159,12 +159,12 @@ JsonFileWriter::write_string(const char* name, const std::string& value)
 }
 
 void
-JsonFileWriter::write_vector(const char* name, const Vector3f& value)
+JsonFileWriterImpl::write_vector(const char* name, const Vector3f& value)
 {
 }
 
 void
-JsonFileWriter::write_size(const char* name, const Size& value)
+JsonFileWriterImpl::write_size(const char* name, const Size& value)
 {
   assert(!m_stack.empty());
   assert(m_stack.back().type() == Json::objectValue);
@@ -176,7 +176,7 @@ JsonFileWriter::write_size(const char* name, const Size& value)
 }
 
 void
-JsonFileWriter::write_vector2i(const char* name, const Vector2i& value)
+JsonFileWriterImpl::write_vector2i(const char* name, const Vector2i& value)
 {
   assert(!m_stack.empty());
   assert(m_stack.back().type() == Json::objectValue);
@@ -188,13 +188,13 @@ JsonFileWriter::write_vector2i(const char* name, const Vector2i& value)
 }
 
 void
-JsonFileWriter::write_path(const char* name, const Pathname& value)
+JsonFileWriterImpl::write_path(const char* name, const Pathname& value)
 {
   write_string(name, value.get_raw_path());
 }
 
 void
-JsonFileWriter::flush()
+JsonFileWriterImpl::flush()
 {
   assert(!m_stack.empty());
   Json::StyledStreamWriter writer("  ");

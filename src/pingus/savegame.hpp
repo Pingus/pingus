@@ -21,7 +21,7 @@
 
 #include "util/file_reader.hpp"
 
-class SExprFileWriter;
+class FileWriter;
 
 /** The Savegame class holds savegame informations for a single
     level */
@@ -53,7 +53,7 @@ public:
            S_Status arg_status, int arg_time, int arg_saved_pingus);
 
   void read_sexpr(const FileReader& node);
-  void write_sexpr(SExprFileWriter& xml);
+  void write_sexpr(FileWriter& xml);
 
   std::string get_filename() const { return filename; }
 

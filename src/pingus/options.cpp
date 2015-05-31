@@ -23,8 +23,8 @@
 #include "util/log.hpp"
 #include "util/pathname.hpp"
 #include "util/raise_exception.hpp"
-#include "util/sexpr_file_reader.hpp"
-#include "util/sexpr_file_writer.hpp"
+#include "util/file_reader.hpp"
+#include "util/file_writer.hpp"
 #include "util/system.hpp"
 
 std::string framebuffer_type_to_string(FramebufferType type)
@@ -181,7 +181,7 @@ void
 Options::save(const Pathname& filename) const
 {
   std::ostringstream out;
-  SExprFileWriter writer(out);
+  FileWriter writer(out);
 
   writer.begin_mapping("pingus-config");
 

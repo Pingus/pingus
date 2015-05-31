@@ -18,43 +18,48 @@
 #define HEADER_PINGUS_UTIL_FILE_WRITER_HPP
 
 #include <string>
+#include <memory>
 
 class Vector2i;
 class Vector3f;
 class Size;
 class Color;
 class Pathname;
+class FileWriterImpl;
 
-/** Interface to write out name/value pairs out of some kind of file or
-    structure */
-class FileWriter
+class FileWriter final
 {
 private:
 public:
-  virtual ~FileWriter() {}
+  FileWriter(std::ostream& out);
+  FileWriter(std::unique_ptr<FileWriterImpl> impl);
+  ~FileWriter();
 
-  virtual void begin_collection(const char* name) = 0;
-  virtual void end_collection() = 0;
+  void begin_collection(const char* name);
+  void end_collection();
 
-  virtual void begin_mapping(const char* name) = 0;
-  virtual void end_mapping() = 0;
+  void begin_mapping(const char* name);
+  void end_mapping();
 
-  virtual void write_int    (const char* name, int) = 0;
-  virtual void write_float  (const char* name, float) = 0;
-  virtual void write_colorf (const char* name, const Color&) = 0;
-  virtual void write_colori (const char* name, const Color&) = 0;
-  virtual void write_bool   (const char* name, bool) = 0;
-  virtual void write_string (const char* name, const std::string&) = 0;
-  virtual void write_vector (const char* name, const Vector3f&) = 0;
-  virtual void write_size   (const char* name, const Size&) = 0;
-  virtual void write_vector2i(const char* name, const Vector2i&) = 0;
-  virtual void write_path   (const char* name, const Pathname&) = 0;
+  void write_int(const char* name, int);
+  void write_float(const char* name, float);
+  void write_colorf(const char* name, const Color&);
+  void write_colori(const char* name, const Color&);
+  void write_bool(const char* name, bool);
+  void write_string(const char* name, const std::string&);
+  void write_vector(const char* name, const Vector3f&);
+  void write_size(const char* name, const Size&);
+  void write_vector2i(const char* name, const Vector2i&);
+  void write_path(const char* name, const Pathname&);
 
   template<class E, class T>
-  void write_enum  (const char* name, E& value, T string2enum) const
+  void write_enum(const char* name, E& value, T string2enum)
   {
     write_string(name, string2enum(value));
   }
+
+private:
+  std::unique_ptr<FileWriterImpl> m_impl;
 };
 
 #endif

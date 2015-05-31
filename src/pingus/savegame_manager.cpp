@@ -20,8 +20,8 @@
 
 #include "lisp/parser.hpp"
 #include "util/log.hpp"
-#include "util/sexpr_file_reader.hpp"
-#include "util/sexpr_file_writer.hpp"
+#include "util/file_reader.hpp"
+#include "util/file_writer.hpp"
 #include "util/system.hpp"
 
 SavegameManager* SavegameManager::instance_ = 0;
@@ -135,7 +135,7 @@ void
 SavegameManager::flush()
 {
   std::ostringstream out;
-  SExprFileWriter writer(out);
+  FileWriter writer(out);
 
   writer.begin_mapping("pingus-savegame");
 
