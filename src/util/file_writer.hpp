@@ -32,19 +32,22 @@ private:
 public:
   virtual ~FileWriter() {}
 
-  virtual void begin_section (const char* name) =0;
-  virtual void end_section () =0;
+  virtual void begin_collection(const char* name) = 0;
+  virtual void end_collection() = 0;
 
-  virtual void write_int    (const char* name, int) =0;
-  virtual void write_float  (const char* name, float) =0;
-  virtual void write_colorf (const char* name, const Color&) =0;
-  virtual void write_colori (const char* name, const Color&) =0;
-  virtual void write_bool   (const char* name, bool) =0;
-  virtual void write_string (const char* name, const std::string&) =0;
-  virtual void write_vector (const char* name, const Vector3f&) =0;
-  virtual void write_size   (const char* name, const Size&) =0;
-  virtual void write_vector2i(const char* name, const Vector2i&) =0;
-  virtual void write_path   (const char* name, const Pathname&) =0;
+  virtual void begin_mapping(const char* name) = 0;
+  virtual void end_mapping() = 0;
+
+  virtual void write_int    (const char* name, int) = 0;
+  virtual void write_float  (const char* name, float) = 0;
+  virtual void write_colorf (const char* name, const Color&) = 0;
+  virtual void write_colori (const char* name, const Color&) = 0;
+  virtual void write_bool   (const char* name, bool) = 0;
+  virtual void write_string (const char* name, const std::string&) = 0;
+  virtual void write_vector (const char* name, const Vector3f&) = 0;
+  virtual void write_size   (const char* name, const Size&) = 0;
+  virtual void write_vector2i(const char* name, const Vector2i&) = 0;
+  virtual void write_path   (const char* name, const Pathname&) = 0;
 
   template<class E, class T>
   void write_enum  (const char* name, E& value, T string2enum) const

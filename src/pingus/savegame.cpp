@@ -81,12 +81,12 @@ Savegame::Savegame(const std::string& filename_,
 void
 Savegame::write_sexpr(SExprFileWriter& writer)
 {
-  writer.begin_section("level");
+  writer.begin_mapping("level");
   writer.write_string ("filename", filename);
   writer.write_enum   ("status",   status, status_to_string);
   writer.write_int    ("time",     needed_time);
   writer.write_int    ("saved-pingus", saved_pingus);
-  writer.end_section();
+  writer.end_mapping();
 }
 
 void

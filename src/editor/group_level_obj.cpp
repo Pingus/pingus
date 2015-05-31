@@ -128,27 +128,27 @@ GroupLevelObj::write_properties(FileWriter& writer)
 {
   if (m_name.empty())
   {
-    writer.begin_section("group");
-    writer.begin_section("objects");
+    writer.begin_mapping("group");
+    writer.begin_collection("objects");
     for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
     {
       (*it)->write_properties(writer);
     }
-    writer.end_section();
-    writer.end_section();
+    writer.end_collection();
+    writer.end_mapping();
   }
   else
   {
-    writer.begin_section("prefab");
+    writer.begin_mapping("prefab");
     writer.write_string("name", m_name);
     writer.write_vector("position", m_pos);
-    writer.begin_section("overrides");
+    writer.begin_mapping("overrides");
     if (m_overrides & HAS_REPEAT)       writer.write_int("repeat", m_repeat);
     if (m_overrides & HAS_RELEASE_RATE) writer.write_int("release-rate", m_release_rate);
     if (m_overrides & HAS_DIRECTION)    writer.write_string("direction", m_direction);
     if (m_overrides & HAS_OWNER)        writer.write_int("owner-id", m_owner_id);
-    writer.end_section();
-    writer.end_section();
+    writer.end_mapping();
+    writer.end_mapping();
   }
 }
 

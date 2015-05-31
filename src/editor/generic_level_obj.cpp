@@ -280,7 +280,7 @@ GenericLevelObj::get_modifier() const
 void
 GenericLevelObj::write_properties(FileWriter &fw)
 {
-  fw.begin_section(section_name.c_str());
+  fw.begin_mapping(section_name.c_str());
 
   const unsigned attribs_ = get_attributes(section_name);
 
@@ -292,10 +292,10 @@ GenericLevelObj::write_properties(FileWriter &fw)
 
   if (attribs_ & HAS_SPRITE)
   {
-    fw.begin_section("surface");
+    fw.begin_mapping("surface");
     fw.write_string("image", desc.res_name);
     fw.write_string("modifier", ResourceModifier::to_string(desc.modifier));
-    fw.end_section();   // surface
+    fw.end_mapping();   // surface
   }
 
   fw.write_vector("position", pos);
@@ -354,7 +354,7 @@ GenericLevelObj::write_properties(FileWriter &fw)
   // Writes any extra properties that may be necessary (virtual function)
   write_extra_properties(fw);
 
-  fw.end_section();     // object's section_name
+  fw.end_mapping();     // object's section_name
 }
 
 void

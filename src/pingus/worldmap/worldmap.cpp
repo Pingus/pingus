@@ -169,13 +169,13 @@ Worldmap::on_primary_button_press(int x, int y)
   if (globals::developer_mode)
   {
     SExprFileWriter writer(std::cout);
-    writer.begin_section("leveldot");
+    writer.begin_mapping("leveldot");
     writer.write_string("levelname", "");
-    writer.begin_section("dot");
+    writer.begin_mapping("dot");
     writer.write_string("name", "leveldot_X");
     writer.write_vector("position", click_pos);
-    writer.end_section();
-    writer.end_section();
+    writer.end_mapping();
+    writer.end_mapping();
     std::cout << std::endl;
     std::cout << std::endl;
   }

@@ -207,23 +207,23 @@ EditorLevel::save_prefab(const std::string& filename)
   SExprFileWriter fw(out_file);
 
   // Write header
-  fw.begin_section("pingus-prefab");
+  fw.begin_mapping("pingus-prefab");
   fw.write_int("version", 3);
 
   Vector3f level_center(static_cast<float>(get_size().width)/2.0f,
                         static_cast<float>(get_size().height)/2.0f);
 
   // Write the objects
-  fw.begin_section("objects");
+  fw.begin_collection("objects");
   for (auto it = impl->objects.begin(); it != impl->objects.end(); ++it)
   {
     LevelObjPtr obj = (*it)->duplicate(Vector2i(static_cast<int>(-level_center.x),
                                                 static_cast<int>(-level_center.y)));
     obj->write_properties(fw);
   }
-  fw.end_section();     // objects
+  fw.end_collection();     // objects
 
-  fw.end_section();     // pingus-prefab
+  fw.end_mapping();     // pingus-prefab
 
   out_file << "\n\n;; EOF ;;" << std::endl;
 
@@ -245,9 +245,9 @@ EditorLevel::save_level(const std::string& filename)
   SExprFileWriter fw(out_file);
 
   // Write header
-  fw.begin_section("pingus-level");
+  fw.begin_mapping("pingus-level");
   fw.write_int("version", 3);
-  fw.begin_section("head");
+  fw.begin_mapping("head");
   fw.write_string("license", "GPLv3+");
   fw.write_string("levelname", impl->levelname);
   fw.write_string("description", impl->description);
@@ -258,26 +258,26 @@ EditorLevel::save_level(const std::string& filename)
   fw.write_string("music", impl->music);
 
   // Write the list of actions to the file
-  fw.begin_section("actions");
+  fw.begin_mapping("actions");
   for (auto i = impl->actions.begin(); i != impl->actions.end(); i++)
   {
     if (i->second > 0)
       fw.write_int(i->first.c_str(), i->second);
   }
-  fw.end_section();     // actions
+  fw.end_mapping();     // actions
 
   fw.write_size("levelsize", impl->size);
-  fw.end_section();     // head
+  fw.end_mapping();     // head
 
   // Write the objects
-  fw.begin_section("objects");
+  fw.begin_collection("objects");
   for (auto it = impl->objects.begin(); it != impl->objects.end(); ++it)
   {
     (*it)->write_properties(fw);
   }
-  fw.end_section();     // objects
+  fw.end_collection();     // objects
 
-  fw.end_section();     // pingus-level
+  fw.end_mapping();     // pingus-level
 
   out_file << "\n\n;; EOF ;;" << std::endl;
 

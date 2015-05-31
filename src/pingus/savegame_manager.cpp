@@ -137,14 +137,14 @@ SavegameManager::flush()
   std::ostringstream out;
   SExprFileWriter writer(out);
 
-  writer.begin_section("pingus-savegame");
+  writer.begin_mapping("pingus-savegame");
 
   for(SavegameTable::iterator i = savegames.begin(); i != savegames.end(); ++i)
   {
     (*i)->write_sexpr(writer);
   }
 
-  writer.end_section(); // pingus-savegame
+  writer.end_mapping(); // pingus-savegame
 
   System::write_file(filename, out.str());
 }

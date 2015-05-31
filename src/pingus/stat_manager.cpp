@@ -114,7 +114,7 @@ StatManager::save(const std::string& filename)
   std::ostringstream out;
   SExprFileWriter writer(out);
 
-  writer.begin_section("pingus-stats");
+  writer.begin_mapping("pingus-stats");
 
   for (Table::iterator i = stats.begin(); i != stats.end(); ++i)
   {
@@ -122,7 +122,7 @@ StatManager::save(const std::string& filename)
       writer.write_string(i->first.c_str(), i->second);
   }
 
-  writer.end_section();
+  writer.end_mapping();
 
   System::write_file(filename, out.str());
 }
