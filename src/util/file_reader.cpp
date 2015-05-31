@@ -21,6 +21,43 @@
 #include "util/pathname.hpp"
 #include "util/sexpr_file_reader.hpp"
 
+FileReader
+FileReader::parse(const std::string& filename)
+{
+  std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(filename);
+  if (sexpr)
+  {
+    return SExprFileReader(sexpr->get_list_elem(0));
+  }
+  else
+  {
+    return FileReader();
+  }
+}
+
+FileReader
+FileReader::parse(const Pathname& pathname)
+{
+  return FileReader::parse(pathname.get_sys_path());
+}
+
+std::vector<FileReader>
+FileReader::parse_many(const Pathname& pathname)
+{
+  std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(pathname.get_sys_path());
+  if (sexpr)
+  {
+    std::vector<FileReader> sections;
+    for(size_t i = 0; i < sexpr->get_list_size(); ++i)
+      sections.push_back(SExprFileReader(sexpr->get_list_elem(i)));
+    return sections;
+  }
+  else
+  {
+    return std::vector<FileReader>();
+  }
+}
+
 FileReader::FileReader(std::shared_ptr<FileReaderImpl> impl_) :
   impl(impl_)
 {
@@ -198,43 +235,6 @@ FileReader::read_section(const char* name)   const
   FileReader reader;
   read_section(name, reader);
   return reader;
-}
-
-FileReader
-FileReader::parse(const std::string& filename)
-{
-  std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(filename);
-  if (sexpr)
-  {
-    return SExprFileReader(sexpr->get_list_elem(0));
-  }
-  else
-  {
-    return FileReader();
-  }
-}
-
-FileReader
-FileReader::parse(const Pathname& pathname)
-{
-  return FileReader::parse(pathname.get_sys_path());
-}
-
-std::vector<FileReader>
-FileReader::parse_many(const Pathname& pathname)
-{
-  std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(pathname.get_sys_path());
-  if (sexpr)
-  {
-    std::vector<FileReader> sections;
-    for(size_t i = 0; i < sexpr->get_list_size(); ++i)
-      sections.push_back(SExprFileReader(sexpr->get_list_elem(i)));
-    return sections;
-  }
-  else
-  {
-    return std::vector<FileReader>();
-  }
 }
 
 /* EOF */

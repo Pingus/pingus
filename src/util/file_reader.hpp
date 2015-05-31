@@ -35,6 +35,14 @@ class Pathname;
 class FileReader
 {
 public:
+  static FileReader parse(const std::string& filename);
+  static FileReader parse(const Pathname& pathname);
+
+  /** Reads multiple trees from a file, for use with files that don't
+      contain a root element */
+  static std::vector<FileReader> parse_many(const Pathname& pathname);
+
+public:
   FileReader(std::shared_ptr<FileReaderImpl> impl_);
   FileReader();
   virtual ~FileReader() {}
@@ -74,13 +82,6 @@ public:
   std::vector<std::string> get_section_names() const;
   std::vector<FileReader>  get_sections() const;
   int  get_num_sections() const;
-
-  static FileReader parse(const std::string& filename);
-  static FileReader parse(const Pathname& pathname);
-
-  /** Reads multiple trees from a file, for use with files that don't
-      contain a root element */
-  static std::vector<FileReader> parse_many(const Pathname& pathname);
 
 private:
   std::shared_ptr<FileReaderImpl> impl;
