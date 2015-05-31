@@ -19,6 +19,7 @@
 
 #include <string>
 
+class Vector2i;
 class Vector3f;
 class Size;
 class Color;
