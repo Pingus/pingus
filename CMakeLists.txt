@@ -24,6 +24,7 @@ pkg_search_module(SDL2 REQUIRED sdl2)
 pkg_search_module(SDL2IMAGE REQUIRED SDL2_image>=2.0.0)
 pkg_search_module(SDL2MIXER REQUIRED SDL2_mixer>=2.0.0)
 pkg_search_module(PNG REQUIRED libpng)
+pkg_search_module(JSONCPP REQUIRED jsoncpp)
 
 file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/editor/*.cpp
@@ -74,6 +75,17 @@ add_library(logmich STATIC ${LOGMICH_SOURCES_CXX})
 add_library(libpingus STATIC ${PINGUS_SOURCES_CXX})
 set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
 target_compile_definitions(libpingus PUBLIC -DVERSION="0.8.0")
+target_link_libraries(libpingus PUBLIC
+  logmich
+  tinygettext
+  ${SDL2_LIBRARIES}
+  ${SDL2IMAGE_LIBRARIES}
+  ${SDL2MIXER_LIBRARIES}
+  ${PNG_LIBRARIES}
+  ${JSONCPP_LIBRARIES}
+  ${OPENGL_LIBRARIES})
+target_include_directories(libpingus SYSTEM PUBLIC
+    ${JSONCPP_INCLUDE_DIRS})
 
 add_executable(pingus src/main.cpp)
 target_link_libraries(pingus
@@ -84,6 +96,7 @@ target_link_libraries(pingus
   ${SDL2IMAGE_LIBRARIES}
   ${SDL2MIXER_LIBRARIES}
   ${PNG_LIBRARIES}
+  ${JSONCPP_LIBRARIES}
   ${OPENGL_LIBRARIES})
 
 file(GLOB PINGUS_TEST_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
@@ -100,6 +113,7 @@ foreach(TEST_SOURCE ${PINGUS_TEST_SOURCES_CXX})
     ${SDL2IMAGE_LIBRARIES}
     ${SDL2MIXER_LIBRARIES}
     ${PNG_LIBRARIES}
+    ${JSONCPP_LIBRARIES}
     ${OPENGL_LIBRARIES})
 endforeach(TEST_SOURCE)
 
@@ -117,6 +131,7 @@ foreach(UTIL_SOURCE ${PINGUS_UTIL_SOURCES_CXX})
     ${SDL2IMAGE_LIBRARIES}
     ${SDL2MIXER_LIBRARIES}
     ${PNG_LIBRARIES}
+    ${JSONCPP_LIBRARIES}
     ${OPENGL_LIBRARIES})
 endforeach(UTIL_SOURCE)
 
@@ -134,6 +149,7 @@ foreach(EXTRA_SOURCE ${PINGUS_EXTRA_SOURCES_CXX})
     ${SDL2IMAGE_LIBRARIES}
     ${SDL2MIXER_LIBRARIES}
     ${PNG_LIBRARIES}
+    ${JSONCPP_LIBRARIES}
     ${OPENGL_LIBRARIES})
 endforeach(EXTRA_SOURCE)
 
