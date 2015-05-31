@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -139,7 +139,7 @@ Playfield::update(float delta)
     }
   }
 
-  if (globals::auto_scrolling && (Display::is_fullscreen() || SDL_WM_GrabInput(SDL_GRAB_QUERY) == SDL_GRAB_ON))
+  if (globals::auto_scrolling && (Display::is_fullscreen() || Display::has_grab()))
   {
     scroll_speed = static_cast<int>(800 * delta);
 
@@ -214,8 +214,8 @@ Playfield::on_pointer_move (int x, int y)
 
   if (globals::developer_mode)
   { // Some fun stuff that lets you draw directly on the level
-    Uint8 *keystate = SDL_GetKeyState(NULL);
-    if (keystate[SDLK_DELETE])
+    const Uint8* keystate = SDL_GetKeyboardState(nullptr);
+    if (keystate[SDL_SCANCODE_DELETE])
     {
       CollisionMask mask("other/bash_radius_gfx");
       Vector2i p = state.screen2world(mouse_pos);
@@ -223,7 +223,7 @@ Playfield::on_pointer_move (int x, int y)
                                   p.x - mask.get_width()/2,
                                   p.y - mask.get_height()/2);
     }
-    else if (keystate[SDLK_INSERT])
+    else if (keystate[SDL_SCANCODE_INSERT])
     {
       CollisionMask mask("other/bash_radius_gfx");
       Vector2i p = state.screen2world(mouse_pos);
@@ -232,7 +232,7 @@ Playfield::on_pointer_move (int x, int y)
                                p.y - mask.get_height()/2,
                                Groundtype::GP_GROUND);
     }
-    else if (keystate[SDLK_HOME])
+    else if (keystate[SDL_SCANCODE_HOME])
     {
       CollisionMask mask("other/bash_radius_gfx");
       Vector2i p = state.screen2world(mouse_pos);

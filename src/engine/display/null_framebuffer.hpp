@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2008 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2008 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -32,6 +32,8 @@ public:
   ~NullFramebuffer();
 
   FramebufferSurface create_surface(const Surface& surface);
+
+  Surface make_screenshot() const override { return Surface(); }
 
   void set_video_mode(const Size& size, bool fullscreen, bool resizable);
   bool is_fullscreen() const;

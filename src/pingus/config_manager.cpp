@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -109,9 +109,7 @@ ConfigManager::set_fullscreen_resolution(const Size& size)
   {
     if (Display::is_fullscreen())
     {
-#ifndef WIN32
       Display::set_video_mode(size, Display::is_fullscreen(), false);
-#endif
     }
     on_fullscreen_resolution_change(size);
   }
@@ -132,9 +130,7 @@ ConfigManager::set_fullscreen(bool v)
 
   if (v != get_fullscreen())
   {
-#ifndef WIN32
-    Display::set_video_mode(Display::get_size(), Display::is_fullscreen(), false);
-#endif
+    Display::set_video_mode(Display::get_size(), v, false);
     on_fullscreen_change(v);
   }
 
@@ -185,7 +181,7 @@ ConfigManager::set_mouse_grab(bool v)
 
   if (v != get_mouse_grab())
   {
-    SDL_WM_GrabInput(v ? SDL_GRAB_ON : SDL_GRAB_OFF);
+    SDL_SetWindowGrab(SDL_GL_GetCurrentWindow(), static_cast<SDL_bool>(v));
     on_mouse_grab_change(v);
   }
 
@@ -195,7 +191,7 @@ ConfigManager::set_mouse_grab(bool v)
 bool
 ConfigManager::get_mouse_grab() const
 {
-  return (SDL_WM_GrabInput(SDL_GRAB_QUERY) == SDL_GRAB_ON);
+  return SDL_GetWindowGrab(SDL_GL_GetCurrentWindow());
 }
 
 void

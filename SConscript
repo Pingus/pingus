@@ -22,26 +22,6 @@ import SCons.Util
 
 Import('package_version')
 
-def CheckSDLLib(context, sdllib):
-    """
-    On some platforms, SDL does this ugly redefine-main thing, that can
-    interact badly with CheckLibWithHeader.
-    """
-    lib = "SDL_%s" % sdllib
-    context.Message('Checking for %s...' % lib)
-    text = """
-#include "SDL.h"
-#include "%s.h"
-int main(int argc, char* argv[]) { return 0; }
-""" % lib
-    context.AppendLIBS(lib)
-    if context.BuildProg(text, ".cpp"):
-        context.Result("failed")
-        return False
-    else:
-        context.Result("ok")
-        return True
-
 def CheckIconv(context):
     context.Message('Check how to call iconv...')
     text = """
@@ -74,9 +54,7 @@ class Project:
     def configure(self):
         self.configure_begin()
         self.configure_opengl()
-        self.configure_linuxevdev()
         self.configure_wiimote()
-        self.configure_xinput()
         self.configure_boost()
         self.configure_png()
         self.configure_sdl()
@@ -101,8 +79,6 @@ class Project:
         self.opts.Add('LINKFLAGS',  'Linker Compiler flags', [])
 
         self.opts.Add(BoolVariable('with_opengl',        'Build with OpenGL support', True))
-        self.opts.Add(BoolVariable('with_xinput',        'Build with Xinput support', False))
-        self.opts.Add(BoolVariable('with_linuxevdev',    'Build with Linux evdev support',  sys.platform == "linux2"))
         self.opts.Add(BoolVariable('with_wiimote',       'Build with Wiimote support', False))
         self.opts.Add(BoolVariable('ignore_errors',      'Ignore any fatal configuration errors', False))
         self.opts.Add('optional_sources', 'Additional source files', [])
@@ -117,7 +93,6 @@ class Project:
 
         self.conf = self.env.Configure(custom_tests = {
             'CheckMyProgram' : CheckMyProgram,
-            'CheckSDLLib': CheckSDLLib,
             'CheckIconv': CheckIconv,
             })
         self.fatal_error = ""
@@ -146,21 +121,11 @@ class Project:
         else:
             self.reports += "  * OpenGL support: enabled\n"
             self.conf.env.Append(optional_sources = ['src/engine/display/opengl/opengl_framebuffer_surface_impl.cpp',
-                                                     'src/engine/display/opengl/opengl_framebuffer.cpp' ],
-                                 CPPDEFINES = [('HAVE_OPENGL', 1)])
+                                                     'src/engine/display/opengl/opengl_framebuffer.cpp' ])
             if sys.platform == "darwin":
                 self.conf.env.Append(LINKFLAGS = [ '-framework', 'OpenGL', '-framework', 'Cocoa' ])
             else:
                 self.conf.env.Append(LIBS = ['GL'])
-
-    def configure_linuxevdev(self):
-        if not self.env['with_linuxevdev']:
-            self.reports += "  * Linux evdev support: disabled\n"
-        else:
-            self.reports += "  * Linux evdev support: ok\n"
-            self.conf.env.Append(CPPDEFINES = [('HAVE_LINUXEVDEV', 1)])
-            self.conf.env.Append(optional_sources = ['src/engine/input/evdev/evdev_driver.cpp',
-                                                     'src/engine/input/evdev/evdev_device.cpp'])
 
     def configure_wiimote(self):
         if not self.env['with_wiimote']:
@@ -174,18 +139,6 @@ class Project:
         else:
             self.reports += "  * Wiimote support: no (libcwiid or cwiid.h not found)\n"
 
-    def configure_xinput(self):
-        if not self.env['with_xinput']:
-            self.reports += "  * XInput support: disabled\n"
-        elif not self.conf.CheckLibWithHeader('Xi', 'X11/extensions/XInput.h', 'c++'):
-            self.reports += "  * XInput support: no (library Xi not found)\n" ## FIXME: Need to set a define
-        else:
-            self.reports += "  * XInput support: yes\n"
-            self.conf.env.Append(CPPDEFINES = [('HAVE_XINPUT', 1)])
-            self.conf.env.Append(LIBS = ['Xi'])
-            self.conf.env.Append(optional_sources = ['src/engine/input/xinput/xinput_driver.cpp',
-                                                     'src/engine/input/xinput/xinput_device.cpp'])
-
     def configure_boost(self):
         if not self.conf.CheckHeader('boost/signals2.hpp', '<>', 'c++'):
             self.fatal_error += "  * library 'boost_signals2' not found\n"
@@ -198,13 +151,11 @@ class Project:
                 self.fatal_error += "  * library 'png' not found\n"
 
     def configure_sdl(self):
-        if self.conf.CheckMyProgram('sdl-config'):
-            self.conf.env.ParseConfig("sdl-config  --cflags --libs | sed 's/-I/-isystem/g'")
-            for sdllib in ['image', 'mixer']:
-                if not self.conf.CheckSDLLib(sdllib):
-                    self.fatal_error += "  * SDL library '%s' not found\n" % sdllib
+        if self.conf.CheckMyProgram('pkg-config'):
+            self.conf.env.ParseConfig("pkg-config --cflags --libs sdl2 SDL2_image SDL2_mixer | sed 's/-I/-isystem/g'")
         else:
             if sys.platform == 'darwin':
+                # FIXME: This is old SDL1 code
                 # self.conf.env.StaticLibrary("sdlmain", ["src/macosx/SDLmain.m"], [ 'SDL' ])
                 self.conf.env.Append(optional_sources = [ "src/macosx/SDLmain.m" ])
                 self.conf.env.Append(LINKFLAGS = [ '-framework', 'SDL',

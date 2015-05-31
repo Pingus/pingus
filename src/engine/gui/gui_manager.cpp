@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -77,6 +77,10 @@ GUIManager::update(const Input::Event& event)
     case Input::AXIS_EVENT_TYPE:
       // AxisEvents can be ignored in the GUI, they are handled elsewhere
       log_debug("GUIManager: AxisEvent: %1%", event.axis.dir);
+      break;
+
+    case Input::TEXT_INPUT_EVENT_TYPE:
+      on_text_input(event.text);
       break;
 
     case Input::KEYBOARD_EVENT_TYPE:

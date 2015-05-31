@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -185,6 +185,17 @@ GroupComponent::on_key_pressed(const Input::KeyboardEvent& ev)
     focused_comp->on_key_pressed(ev);
   else if (mouse_over_comp)
     mouse_over_comp->on_key_pressed(ev);
+}
+
+void
+GroupComponent::on_text_input(const Input::TextInputEvent& ev)
+{
+  if (grabbed_comp)
+    grabbed_comp->on_text_input(ev);
+  else if (focused_comp)
+    focused_comp->on_text_input(ev);
+  else if (mouse_over_comp)
+    mouse_over_comp->on_text_input(ev);
 }
 
 void

@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -55,7 +55,7 @@ private:
   struct KeyboardButtonBinding {
     Button* binding;
 
-    SDLKey key;
+    SDL_Keycode key;
   };
 
   struct ScrollerBinding {
@@ -73,9 +73,6 @@ private:
   std::vector<JoystickButtonBinding> joystick_button_bindings;
   std::vector<JoystickAxisBinding>   joystick_axis_bindings;
   Keyboard* keyboard_binding;
-
-  typedef std::map<std::string, SDLKey> String2Key;
-  String2Key string2key;
 
   typedef std::map<int, SDL_Joystick*> JoystickHandles;
   JoystickHandles joystick_handles;

@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -71,14 +71,13 @@ Inputbox::on_key_pressed(const Input::KeyboardEvent& ev)
     on_change(text);
     on_enter(text);
   }
-  else
-  {
-    if (ev.keysym.unicode)
-    {
-      text += UTF8::encode_utf8(ev.keysym.unicode);
-      on_change(text);
-    }
-  }
+}
+
+void
+Inputbox::on_text_input(const Input::TextInputEvent& ev)
+{
+  text += ev.text;
+  on_change(text);
 }
 
 } // namespace Editor

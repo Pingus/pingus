@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -255,6 +255,12 @@ void
 Controller::add_keyboard_event(const SDL_KeyboardEvent& ev)
 {
   events.push_back(makeKeyboardEvent(ev));
+}
+
+void
+Controller::add_text_input_event(const SDL_TextInputEvent& ev)
+{
+  events.push_back(makeTextInputEvent(ev));
 }
 
 void

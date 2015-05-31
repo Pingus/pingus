@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2008 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2008 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -22,16 +22,18 @@
 class SDLFramebufferSurfaceImpl : public FramebufferSurfaceImpl
 {
 private:
-  SDL_Surface* surface;
+  SDL_Texture* m_texture;
+  int m_width;
+  int m_height;
 
 public:
-  SDLFramebufferSurfaceImpl(SDL_Surface* src);
+  SDLFramebufferSurfaceImpl(SDL_Renderer* renderer, SDL_Surface* src);
   ~SDLFramebufferSurfaceImpl();
 
-  int get_width()  const { return surface->w; }
-  int get_height() const { return surface->h; }
+  int get_width()  const { return m_width;; }
+  int get_height() const { return m_height; }
 
-  SDL_Surface* get_surface() const { return surface; }
+  SDL_Texture* get_texture() const { return m_texture; }
 
 private:
   SDLFramebufferSurfaceImpl(const SDLFramebufferSurfaceImpl&);

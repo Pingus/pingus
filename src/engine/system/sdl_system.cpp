@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1998-2011 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 1998-2011 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -43,14 +43,7 @@ SDLSystem::~SDLSystem()
 void
 SDLSystem::create_window(FramebufferType framebuffer_type, const Size& size, bool fullscreen, bool resizable)
 {
-  SDL_WM_SetCaption("Pingus " VERSION, "Pingus " VERSION);
-  SDL_WM_SetIcon(IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str()), 0);
-
   Display::create_window(framebuffer_type, size, fullscreen, resizable);
-
-  SDL_EnableUNICODE(1);
-
-  SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
 }
 
 /* EOF */

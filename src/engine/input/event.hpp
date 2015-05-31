@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -29,7 +29,8 @@ enum EventType { BUTTON_EVENT_TYPE,
                  POINTER_EVENT_TYPE,
                  AXIS_EVENT_TYPE,
                  SCROLLER_EVENT_TYPE,
-                 KEYBOARD_EVENT_TYPE };
+                 KEYBOARD_EVENT_TYPE,
+                 TEXT_INPUT_EVENT_TYPE };
 
 enum EventName {
   // Buttons
@@ -98,7 +99,12 @@ struct ScrollEvent
 struct KeyboardEvent
 {
   bool state;
-  SDL_keysym keysym;
+  SDL_Keysym keysym;
+};
+
+struct TextInputEvent
+{
+  char text[sizeof(SDL_TextInputEvent::text)];
 };
 
 struct Event
@@ -106,11 +112,12 @@ struct Event
   EventType type;
 
   union {
-    ButtonEvent   button;
-    PointerEvent  pointer;
-    AxisEvent     axis;
-    ScrollEvent   scroll;
+    ButtonEvent button;
+    PointerEvent pointer;
+    AxisEvent axis;
+    ScrollEvent scroll;
     KeyboardEvent keyboard;
+    TextInputEvent text;
   };
 };
 
@@ -169,6 +176,16 @@ inline Event makeKeyboardEvent(const SDL_KeyboardEvent& ev)
   event.type = KEYBOARD_EVENT_TYPE;
   event.keyboard.state  = ev.state;
   event.keyboard.keysym = ev.keysym;
+
+  return event;
+}
+
+inline Event makeTextInputEvent(const SDL_TextInputEvent& ev)
+{
+  Event event;
+
+  event.type = TEXT_INPUT_EVENT_TYPE;
+  memcpy(event.text.text, ev.text, sizeof(SDL_TextInputEvent::text));
 
   return event;
 }

@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -82,23 +82,23 @@ Surface::Surface(int width, int height, SDL_Palette* palette, int colorkey) :
 {
   if (colorkey == -1)
   {
-    impl->surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 8,
+    impl->surface = SDL_CreateRGBSurface(0, width, height, 8,
                                          0, 0, 0 ,0);
   }
   else
   {
-    impl->surface = SDL_CreateRGBSurface(SDL_SWSURFACE | SDL_SRCCOLORKEY, width, height, 8,
+    impl->surface = SDL_CreateRGBSurface(0, width, height, 8,
                                          0, 0, 0 ,0);
-    SDL_SetColorKey(impl->surface, SDL_SRCCOLORKEY, colorkey);
+    SDL_SetColorKey(impl->surface, SDL_TRUE, colorkey);
   }
 
-  SDL_SetColors(impl->surface, palette->colors, 0, palette->ncolors);
+  SDL_SetSurfacePalette(impl->surface, palette);
 }
 
 Surface::Surface(int width, int height) :
   impl(new SurfaceImpl())
 {
-  impl->surface = SDL_CreateRGBSurface(SDL_SWSURFACE | SDL_SRCALPHA, width, height, 32,
+  impl->surface = SDL_CreateRGBSurface(0, width, height, 32,
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
                                        0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff
 #else
@@ -306,8 +306,9 @@ Surface::get_pixel(int x, int y) const
 
         if (impl->surface->format->palette)
         {
-          if (impl->surface->flags & SDL_SRCCOLORKEY &&
-              pixel == impl->surface->format->colorkey)
+          Uint32 colorkey;
+          if (SDL_GetColorKey(impl->surface, &colorkey) == 0 &&
+              pixel == colorkey)
           {
             return Color(0,0,0,0);
           }
@@ -388,17 +389,13 @@ Surface::clone() const
 {
   SDL_Surface* new_surface = Blitter::create_surface_from_format(impl->surface,
                                                                  impl->surface->w, impl->surface->h);
-  if (impl->surface->flags & SDL_SRCALPHA)
-  {
-    Uint8 alpha = impl->surface->format->alpha;
-    SDL_SetAlpha(impl->surface, 0, 0);
-    SDL_BlitSurface(impl->surface, NULL, new_surface, NULL);
-    SDL_SetAlpha(impl->surface, SDL_SRCALPHA, alpha);
-  }
-  else
-  {
-    SDL_BlitSurface(impl->surface, NULL, new_surface, NULL);
-  }
+  SDL_BlendMode blend_mode;
+  SDL_GetSurfaceBlendMode(impl->surface, &blend_mode);
+
+  SDL_SetSurfaceBlendMode(impl->surface, SDL_BLENDMODE_NONE);
+  SDL_BlitSurface(impl->surface, NULL, new_surface, NULL);
+
+  SDL_SetSurfaceBlendMode(impl->surface, blend_mode);
 
   return Surface(std::shared_ptr<SurfaceImpl>(new SurfaceImpl(new_surface)));
 }
@@ -487,7 +484,6 @@ Surface
 Surface::convert_to_rgba() const
 {
   SDL_Surface* surface = Blitter::create_surface_rgba(impl->surface->w, impl->surface->h);
-  SDL_SetAlpha(impl->surface, 0, 0);
   SDL_BlitSurface(impl->surface, NULL, surface, NULL);
   return Surface(surface);
 }
@@ -496,7 +492,6 @@ Surface
 Surface::convert_to_rgb() const
 {
   SDL_Surface* surface = Blitter::create_surface_rgb(impl->surface->w, impl->surface->h);
-  SDL_SetAlpha(impl->surface, 0, 0);
   SDL_BlitSurface(impl->surface, NULL, surface, NULL);
   return Surface(surface);
 }
@@ -504,7 +499,8 @@ Surface::convert_to_rgb() const
 bool
 Surface::has_colorkey() const
 {
-  return impl->surface->flags & SDL_SRCCOLORKEY;
+  Uint32 colorkey;
+  return SDL_GetColorKey(impl->surface, &colorkey) == 0;
 }
 
 bool
@@ -531,18 +527,28 @@ Surface::print(std::ostream& out)
     % impl->surface->format->Bmask
     % impl->surface->format->Amask
     % impl->surface->flags
-    % ((impl->surface->flags & SDL_HWSURFACE) ? "HWSURFACE " : "")
-    % ((impl->surface->flags & SDL_SWSURFACE) ? "SWSURFACE " : "")
-    % ((impl->surface->flags & SDL_SRCCOLORKEY) ? "SRCCOLORKEY " : "")
-    % ((impl->surface->flags & SDL_SRCALPHA) ? "SRCALPHA " : "")
     % impl->surface->format->palette
     % static_cast<int>(impl->surface->format->BitsPerPixel);
 
-  if (impl->surface->flags & SDL_SRCCOLORKEY)
-    out << "Colorkey: " << static_cast<int>(impl->surface->format->colorkey) << std::endl;
+  Uint32 colorkey;
+  if (SDL_GetColorKey(impl->surface, &colorkey) == 0)
+  {
+    out << "Colorkey: " << boost::format("0x%08x") % colorkey << std::endl;
+  }
+  else
+  {
+    out << "Colorkey: <none>" << std::endl;
+  }
 
-  if (impl->surface->flags & SDL_SRCALPHA)
-    out << "Alpha: " << static_cast<int>(impl->surface->format->alpha) << std::endl;
+  Uint8 alpha;
+  if (SDL_GetSurfaceAlphaMod(impl->surface, &alpha) == 0)
+  {
+    out << "Alpha: " << static_cast<int>(alpha) << std::endl;
+  }
+  else
+  {
+    out << "Alpha: <none>" << std::endl;
+  }
 
   if (0)
   {

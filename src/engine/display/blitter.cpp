@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -32,12 +32,14 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
 
   bpp = surface->format->BytesPerPixel;
   if (bpp == 1) {
-    SDL_Color pal[256];
-    Uint32 ckey;
-    int useckey;
+    SDL_Palette* pal = SDL_AllocPalette(256);
 
-    useckey = surface->flags & SDL_SRCCOLORKEY;
-    new_surface = SDL_CreateRGBSurface(SDL_SWSURFACE | (useckey ? SDL_SRCCOLORKEY : 0), width, height, 8, 0, 0, 0, 0);
+    Uint32 ckey;
+    int useckey = 0;
+
+    useckey = SDL_GetColorKey(surface, &ckey) == 0;
+
+    new_surface = SDL_CreateRGBSurface(0, width, height, 8, 0, 0, 0, 0);
 
     SDL_LockSurface(surface);
     SDL_LockSurface(new_surface);
@@ -46,8 +48,7 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
     new_pixels = static_cast<unsigned char*>(new_surface->pixels);
     new_pitch  = new_surface->pitch;
 
-    memcpy(pal, surface->format->palette->colors, sizeof(SDL_Color) * 256);
-    ckey = surface->format->colorkey;
+    memcpy(pal->colors, surface->format->palette->colors, sizeof(SDL_Color) * 256);
 
     for (i = 0; i < height; ++i) {
       x = i * new_pitch;
@@ -60,16 +61,18 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
     SDL_UnlockSurface(surface);
     SDL_UnlockSurface(new_surface);
 
-    SDL_SetPalette(new_surface, SDL_LOGPAL | SDL_PHYSPAL, pal, 0, 256);
-    if (useckey) {
-      SDL_SetColorKey(new_surface, SDL_SRCCOLORKEY | SDL_RLEACCEL, ckey);
+    SDL_SetSurfacePalette(new_surface, pal);
+    if (useckey)
+    {
+      SDL_SetColorKey(new_surface, SDL_TRUE, ckey);
+      SDL_SetSurfaceRLE(new_surface, SDL_TRUE);
     }
   } else {
     int ix, iy;
     float fx, fy, fz;
     unsigned char *p1, *p2, *p3, *p4;
 
-    new_surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, surface->format->BitsPerPixel,
+    new_surface = SDL_CreateRGBSurface(0, width, height, surface->format->BitsPerPixel,
                                        surface->format->Rmask, surface->format->Gmask, surface->format->Bmask, surface->format->Amask);
 
     SDL_LockSurface(surface);
@@ -181,7 +184,7 @@ Blitter::rotate_270_flip (Surface sur)
 SDL_Surface*
 Blitter::create_surface_rgba(int w, int h)
 {
-  return SDL_CreateRGBSurface(SDL_SWSURFACE | SDL_SRCALPHA, w, h, 32,
+  return SDL_CreateRGBSurface(0, w, h, 32,
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
                               0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff
 #else
@@ -193,7 +196,7 @@ Blitter::create_surface_rgba(int w, int h)
 SDL_Surface*
 Blitter::create_surface_rgb(int w, int h)
 {
-  return SDL_CreateRGBSurface(SDL_SWSURFACE, w, h, 24,
+  return SDL_CreateRGBSurface(0, w, h, 24,
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
                               0xff000000, 0x00ff0000, 0x0000ff00, 0x00000000
 #else
@@ -205,35 +208,31 @@ Blitter::create_surface_rgb(int w, int h)
 SDL_Surface*
 Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
 {
-  Uint32 flags = 0;
-  if (surface->flags & SDL_SWSURFACE)
-    flags |= SDL_SWSURFACE;
-
-  if (surface->flags & SDL_HWSURFACE)
-    flags |= SDL_HWSURFACE;
-
-  if (surface->flags & SDL_SRCCOLORKEY)
-    flags |= SDL_SRCCOLORKEY;
-
-  if (surface->flags & SDL_SRCALPHA)
-    flags |= SDL_SRCALPHA;
-
-  SDL_Surface* new_surface = SDL_CreateRGBSurface(flags, w, h,
+  SDL_Surface* new_surface = SDL_CreateRGBSurface(0, w, h,
                                                   surface->format->BitsPerPixel,
                                                   surface->format->Rmask,
                                                   surface->format->Gmask,
                                                   surface->format->Bmask,
                                                   surface->format->Amask);
 
-  if (surface->flags & SDL_SRCALPHA)
-    SDL_SetAlpha(new_surface, SDL_SRCALPHA, surface->format->alpha);
+  Uint8 alpha;
+  if (SDL_GetSurfaceAlphaMod(surface, &alpha) == 0)
+    SDL_SetSurfaceAlphaMod(new_surface, alpha);
+
+  SDL_BlendMode blend_mode;
+  if (SDL_GetSurfaceBlendMode(surface, &blend_mode) == 0)
+    SDL_SetSurfaceBlendMode(new_surface, blend_mode);
+
+  Uint8 r, g, b;
+  if (SDL_GetSurfaceColorMod(surface, &r, &g, &b) == 0)
+    SDL_SetSurfaceColorMod(new_surface, r, g, b);
 
   if (surface->format->palette)
-    SDL_SetPalette(new_surface, SDL_LOGPAL, surface->format->palette->colors,
-                   0, surface->format->palette->ncolors);
+    SDL_SetSurfacePalette(new_surface, surface->format->palette);
 
-  if (surface->flags & SDL_SRCCOLORKEY)
-    SDL_SetColorKey(new_surface, SDL_SRCCOLORKEY, surface->format->colorkey);
+  Uint32 colorkey;
+  if (SDL_GetColorKey(surface, &colorkey) == 0)
+    SDL_SetColorKey(new_surface, SDL_TRUE, colorkey);
 
   return new_surface;
 }

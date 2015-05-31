@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2008 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2008 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -16,15 +16,25 @@
 
 #include "engine/display/opengl/opengl_framebuffer.hpp"
 
+#include <SDL.h>
+#include <SDL_image.h>
 #include <sstream>
 #include <stdexcept>
 
 #include "engine/display/opengl/opengl_framebuffer_surface_impl.hpp"
+#include "util/raise_exception.hpp"
 
 OpenGLFramebuffer::OpenGLFramebuffer() :
-  screen(),
+  m_window(),
+  m_glcontext(),
   cliprect_stack()
 {
+}
+
+OpenGLFramebuffer::~OpenGLFramebuffer()
+{
+  SDL_GL_DeleteContext(m_glcontext);
+  SDL_DestroyWindow(m_window);
 }
 
 FramebufferSurface
@@ -33,68 +43,129 @@ OpenGLFramebuffer::create_surface(const Surface& surface)
   return FramebufferSurface(new OpenGLFramebufferSurfaceImpl(surface.get_surface()));
 }
 
+Surface
+OpenGLFramebuffer::make_screenshot() const
+{
+  Size size = get_size();
+
+  glPixelStorei(GL_PACK_ALIGNMENT, 1);
+  std::unique_ptr<uint8_t[]> buffer(new uint8_t[size.width * size.height * 4]);
+  glReadPixels(0, 0, size.width, size.height, GL_RGB, GL_UNSIGNED_BYTE, buffer.get());
+
+  Surface screenshot(size.width, size.height);
+  uint8_t* op = screenshot.get_data();
+  int pitch = screenshot.get_pitch();
+  for(int y = 0; y < size.height; ++y)
+  {
+    for(int x = 0; x < size.height; ++x)
+    {
+      op[y * pitch + 4*x + 0] = buffer[4 * size.width + 3*x + 0];
+      op[y * pitch + 4*x + 1] = buffer[4 * size.width + 3*x + 1];
+      op[y * pitch + 4*x + 2] = buffer[4 * size.width + 3*x + 2];
+    }
+  }
+  return screenshot;
+}
+
 void
 OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable)
 {
-  int flags = SDL_OPENGL;
-
-  if (fullscreen)
+  if (m_window)
   {
-    flags |= SDL_FULLSCREEN;
+    SDL_SetWindowSize(m_window, size.width, size.height);
+
+    log_error("video mode switching not implemented: %1%x%2%", size.width, size.height);
+    glViewport(0, 0, size.width, size.height);
+
+    glMatrixMode(GL_PROJECTION);
+    glOrtho(0, size.width, size.height, 0, -1, 1);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glClearColor(1.0, 1.0, 0.0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   }
-  else if (resizable)
+  else
   {
-    flags |= SDL_RESIZABLE;
+    int flags = SDL_WINDOW_OPENGL;
+
+    if (fullscreen)
+    {
+      flags |= SDL_WINDOW_FULLSCREEN;
+    }
+    else if (resizable)
+    {
+      flags |= SDL_WINDOW_RESIZABLE;
+    }
+
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+
+    SDL_GL_SetAttribute(SDL_GL_RED_SIZE,     8);
+    SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE,   8);
+    SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE,    8);
+    SDL_GL_SetAttribute(SDL_GL_BUFFER_SIZE, 32);
+
+    SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
+
+    if (false) // anti-aliasing
+    {
+      SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1); // boolean value, either it's enabled or not
+      SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 2); // 0, 2, or 4 for number of samples
+    }
+
+    m_window = SDL_CreateWindow("Pingus " VERSION,
+                                SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+                                size.width, size.height,
+                                flags);
+    if (!m_window)
+    {
+      raise_error("Couldn't set video mode (" << size.width << "x" << size.height << "): " << SDL_GetError());
+    }
+    SDL_SetWindowIcon(m_window, IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str()));
+
+    m_glcontext = SDL_GL_CreateContext(m_window);
+    if (!m_glcontext)
+    {
+      raise_error("couldn't create GL context: " << SDL_GetError());
+    }
+
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+    // setup opengl state and transform
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_CULL_FACE);
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    glViewport(0, 0, size.width, size.height);
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+
+    glOrtho(0, size.width, size.height, 0, -1, 1);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
   }
-
-  int bpp = 0; // auto-detect
-  screen = SDL_SetVideoMode(size.width, size.height, bpp, flags);
-
-  if(screen == 0)
-  {
-    std::ostringstream msg;
-    msg << "Couldn't set video mode (" << size.width << "x" << size.height
-        << "-" << bpp << "bpp): " << SDL_GetError();
-    throw std::runtime_error(msg.str());
-  }
-
-  glEnableClientState(GL_VERTEX_ARRAY);
-  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-
-  // setup opengl state and transform
-  glDisable(GL_DEPTH_TEST);
-  glDisable(GL_CULL_FACE);
-  glEnable(GL_TEXTURE_2D);
-  glEnable(GL_BLEND);
-  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-  glViewport(0, 0, size.width, size.height);
-
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-
-  glOrtho(0, size.width, size.height, 0, -1, 1);
-
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();
 }
 
 bool
 OpenGLFramebuffer::is_fullscreen() const
 {
-  return screen->flags & SDL_FULLSCREEN;
+  return SDL_GetWindowFlags(m_window) & SDL_WINDOW_FULLSCREEN;
 }
 
 bool
 OpenGLFramebuffer::is_resizable() const
 {
-  return screen->flags & SDL_RESIZABLE;
+  return SDL_GetWindowFlags(m_window) & SDL_WINDOW_RESIZABLE;
 }
 
 void
 OpenGLFramebuffer::flip()
 {
-  SDL_GL_SwapBuffers();
+  SDL_GL_SwapWindow(m_window);
 }
 
 void
@@ -116,7 +187,7 @@ OpenGLFramebuffer::push_cliprect(const Rect& rect)
   }
 
   glScissor(cliprect_stack.back().left,
-            screen->h - cliprect_stack.back().bottom,
+            get_size().height - cliprect_stack.back().bottom,
             cliprect_stack.back().get_width(),
             cliprect_stack.back().get_height());
 }
@@ -247,7 +318,9 @@ OpenGLFramebuffer::fill_rect(const Rect& rect, const Color& color)
 Size
 OpenGLFramebuffer::get_size() const
 {
-  return Size(screen->w, screen->h);
+  Size s;
+  SDL_GetWindowSize(m_window, &s.width, &s.height);
+  return s;
 }
 
 /* EOF */

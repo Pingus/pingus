@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -30,14 +30,11 @@ SDLDriver::SDLDriver() :
   joystick_button_bindings(),
   joystick_axis_bindings(),
   keyboard_binding(0),
-  string2key(),
   joystick_handles()
 {
-  for (int i = 0; i < SDLK_LAST; ++i)
+  for (int i = 0; i < SDL_NUM_SCANCODES; ++i)
   {
-    char* key_name = SDL_GetKeyName(static_cast<SDLKey>(i));
-    string2key[key_name] = static_cast<SDLKey>(i);
-
+    const char* key_name = SDL_GetScancodeName(static_cast<SDL_Scancode>(i));
     // FIXME: Make the keynames somewhere user visible so that users can use them
     log_debug("Key: '%1%'", key_name);
   }
@@ -89,15 +86,15 @@ SDLDriver::create_button(const FileReader& reader, Control* parent)
   }
   else if (reader.get_name() == "sdl:keyboard-button")
   {
-    std::string key;
-    if (reader.read_string("key", key))
+    std::string key_str;
+    if (reader.read_string("key", key_str))
     {
-      String2Key::iterator i = string2key.find(key);
-      if (i != string2key.end())
+      SDL_Keycode key = SDL_GetKeyFromName(key_str.c_str());
+      if (key != SDLK_UNKNOWN)
       {
         KeyboardButtonBinding binding;
 
-        binding.key = i->second;
+        binding.key = key;
         binding.binding = new Button(parent);
         keyboard_button_bindings.push_back(binding);
 
@@ -105,7 +102,7 @@ SDLDriver::create_button(const FileReader& reader, Control* parent)
       }
       else
       {
-        log_error("couldn't find keysym for key '%1%'", key);
+        log_error("couldn't find keycode for key '%1%'", key_str);
         return 0;
       }
     }
@@ -228,14 +225,32 @@ SDLDriver::update(float delta)
         for(std::vector<PointerBinding>::iterator i = pointer_bindings.begin();
             i != pointer_bindings.end(); ++i)
         {
-          i->binding->set_pos(Vector2f(event.motion.x, event.motion.y));
+          i->binding->set_pos(Vector2f(static_cast<float>(event.motion.x),
+                                       static_cast<float>(event.motion.y)));
         }
 
         for(std::vector<ScrollerBinding>::iterator i = scroller_bindings.begin();
             i != scroller_bindings.end(); ++i)
         {
-          i->binding->set_delta(Vector2f(event.motion.xrel, event.motion.yrel));
+          i->binding->set_delta(Vector2f(static_cast<float>(event.motion.xrel),
+                                         static_cast<float>(event.motion.yrel)));
         }
+        break;
+
+      case SDL_MOUSEWHEEL:
+        log_error("mousewheel not implemented: %1% %2% %3%", event.wheel.which, event.wheel.x, event.wheel.y);
+        break;
+
+      case SDL_TEXTINPUT:
+        if (keyboard_binding)
+        {
+          keyboard_binding->send_event(event);
+        }
+        break;
+
+      case SDL_TEXTEDITING:
+        log_error("textediting not implemented: %1% %2% '%3%'",
+                  event.edit.start, event.edit.length, event.edit.text);
         break;
 
       case SDL_MOUSEBUTTONDOWN:
@@ -253,15 +268,23 @@ SDLDriver::update(float delta)
         }
         break;
 
-      case SDL_VIDEORESIZE:
-        Display::resize(Size(event.resize.w, event.resize.h));
+      case SDL_WINDOWEVENT:
+        switch(event.window.event)
+        {
+          case SDL_WINDOWEVENT_RESIZED:
+            Display::resize(Size(event.window.data1, event.window.data2));
+            break;
+
+          default:
+            break;
+        }
         break;
 
       case SDL_KEYDOWN:
       case SDL_KEYUP:
         // keyboard events
         if (keyboard_binding)
-          keyboard_binding->send_char(event.key);
+          keyboard_binding->send_event(event);
 
         // global event hacks
         if (event.key.state == SDL_PRESSED)

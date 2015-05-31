@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -86,6 +86,8 @@ public:
   /** Emitted whenever a keyboard character is pressed.  Only certain
       components should implement this */
   virtual void on_key_pressed(const Input::KeyboardEvent& ev) {}
+
+  virtual void on_text_input(const Input::TextInputEvent& ev) {}
 
   GroupComponent* get_parent() const;
   void set_parent(GroupComponent* p);

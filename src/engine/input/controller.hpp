@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -68,6 +68,7 @@ public:
   void add_pointer_event(int id, float x, float y);
   void add_scroller_event(int id, float xrel, float yrel);
   void add_keyboard_event(const SDL_KeyboardEvent& ev);
+  void add_text_input_event(const SDL_TextInputEvent& ev);
 
   void add_axis(int id, ControllerAxis* axis);
   void add_button(int id, ControllerButton* button);

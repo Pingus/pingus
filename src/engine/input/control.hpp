@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -415,7 +415,7 @@ private:
 class Keyboard : public Control
 {
 protected:
-  SDL_KeyboardEvent m_ev;
+  SDL_Event m_ev;
 
 public:
   Keyboard(Control* parent_) :
@@ -423,8 +423,8 @@ public:
     m_ev()
   {}
 
-  void send_char(const SDL_KeyboardEvent& ev) { m_ev = ev; notify_parent(); }
-  SDL_KeyboardEvent get_ev() { return m_ev; }
+  void send_event(const SDL_Event& ev) { m_ev = ev; notify_parent(); }
+  SDL_Event get_ev() { return m_ev; }
 
 private:
   Keyboard(const Keyboard&);
@@ -476,7 +476,21 @@ public:
   {}
 
   virtual void notify_parent() {
-    controller->add_keyboard_event(m_ev);
+    switch(m_ev.type)
+    {
+      case SDL_KEYUP:
+      case SDL_KEYDOWN:
+        controller->add_keyboard_event(m_ev.key);
+        break;
+
+      case SDL_TEXTINPUT:
+        controller->add_text_input_event(m_ev.text);
+        break;
+
+      default:
+        log_error("unexpected SDL_Event: %1%", m_ev.type);
+        break;
+    }
   }
 
 private:

@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -30,11 +30,9 @@ private:
 
 public:
   static std::string make_screenshot();
-  static void save(SDL_Surface* surface, const std::string& filename);
 
-  /** buffer must be RGB and width*height*3 large */
-  static void save_ppm(const std::string& filename, uint8_t* buffer, int width, int height);
-  static void save_png(const std::string& filename, uint8_t* buffer, int width, int height, bool flipvertically = false);
+  /** buffer must be RGBX and width*height*4 large */
+  static void save_png(const std::string& filename, uint8_t* buffer, int width, int height, int pitch);
 
 private:
   Screenshot();

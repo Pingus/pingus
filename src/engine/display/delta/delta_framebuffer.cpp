@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2008 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2008 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -39,6 +39,12 @@ FramebufferSurface
 DeltaFramebuffer::create_surface(const Surface& surface)
 {
   return framebuffer->create_surface(surface);
+}
+
+Surface
+DeltaFramebuffer::make_screenshot() const
+{
+  return framebuffer->make_screenshot();
 }
 
 void

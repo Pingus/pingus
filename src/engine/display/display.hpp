@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -19,6 +19,7 @@
 
 #include <memory>
 #include <vector>
+#include <SDL.h>
 
 #include "math/size.hpp"
 #include "pingus/options.hpp"
@@ -46,11 +47,12 @@ public:
 
   static bool is_fullscreen();
   static bool is_resizable();
+  static bool has_grab();
 
   static Framebuffer* get_framebuffer();
 
   static Size find_closest_fullscreen_video_mode(const Size& size);
-  static std::vector<Size> get_fullscreen_video_modes();
+  static std::vector<SDL_DisplayMode> get_fullscreen_video_modes();
 
 private:
   Display ();

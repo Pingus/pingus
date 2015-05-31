@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -230,7 +230,7 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
 
   Uint8* target_buf = static_cast<Uint8*>(provider.get_data());
   Uint8* source_buf = static_cast<Uint8*>(sprovider.get_data());
-
+  Uint32 colorkey;
   if (sprovider.get_surface()->format->BitsPerPixel == 32)
   {
     for (int y = start_y; y < end_y; ++y)
@@ -251,10 +251,8 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
       }
     }
   }
-  else if (sprovider.get_surface()->flags & SDL_SRCCOLORKEY)
+  else if (SDL_GetColorKey(sprovider.get_surface(), &colorkey) == 0)
   {
-    Uint32 colorkey = sprovider.get_surface()->format->colorkey;
-
     for (int y = start_y; y < end_y; ++y)
     {
       Uint8* tptr = target_buf + tpitch*(y+y_pos) + 4*(x_pos + start_x);

@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -107,7 +107,7 @@ OptionMenu::OptionMenu() :
 
   ChoiceBox* resolution_box = new ChoiceBox(Rect());
   {
-    std::vector<Size> resolutions = Display::get_fullscreen_video_modes();
+    std::vector<SDL_DisplayMode> resolutions = Display::get_fullscreen_video_modes();
     Size fullscreen = config_manager.get_fullscreen_resolution();
 
     int choice = static_cast<int>(resolutions.size()) - 1;
@@ -115,10 +115,12 @@ OptionMenu::OptionMenu() :
     {
       // add resolution to the box
       std::ostringstream ostr;
-      ostr << it->width << "x" << it->height;
+      ostr << it->w << "x" << it->h << "@" << it->refresh_rate;
       resolution_box->add_choice(ostr.str());
 
-      if (fullscreen == *it)
+      // FIXME: ignoring refresh_rate
+      if (fullscreen.width == it->w &&
+          fullscreen.height == it->h)
       {
         choice = static_cast<int>(it - resolutions.begin());
       }
@@ -130,17 +132,13 @@ OptionMenu::OptionMenu() :
   ChoiceBox* renderer_box = new ChoiceBox(Rect());
   renderer_box->add_choice("sdl");
   renderer_box->add_choice("delta");
-#ifdef HAVE_OPENGL
   renderer_box->add_choice("opengl");
-#endif
 
   switch(config_manager.get_renderer())
   {
     case SDL_FRAMEBUFFER:    renderer_box->set_current_choice(0); break;
     case DELTA_FRAMEBUFFER:  renderer_box->set_current_choice(1); break;
-#ifdef HAVE_OPENGL
     case OPENGL_FRAMEBUFFER: renderer_box->set_current_choice(2); break;
-#endif
     default: assert(!"unknown renderer type");
   }
 
@@ -461,12 +459,17 @@ void
 OptionMenu::on_resolution_change(const std::string& str)
 {
   Size size_;
-  if (sscanf(str.c_str(), "%dx%d", &size_.width, &size_.height) != 2)
+  int refresh_rate;
+  if (sscanf(str.c_str(), "%dx%d@%d", &size_.width, &size_.height, &refresh_rate) != 3)
   {
     log_error("failed to parse: %1%", str);
   }
   else
   {
+#ifdef OLD_SDL1
+    // FIXME: ignoring refresh rate here
+#endif
+
     config_manager.set_fullscreen_resolution(size_);
   }
 }
