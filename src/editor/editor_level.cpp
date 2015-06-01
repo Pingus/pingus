@@ -277,8 +277,6 @@ EditorLevel::save_level(const std::string& filename)
 
   fw.end_object();     // pingus-level
 
-  out_file << "\n\n;; EOF ;;" << std::endl;
-
   // Write the file
   System::write_file(filename, out_file.str());
 }
