@@ -23,6 +23,7 @@
 #include "math/color.hpp"
 #include "math/size.hpp"
 #include "math/vector2i.hpp"
+#include "math/vector3f.hpp"
 #include "util/pathname.hpp"
 
 JsonFileWriterImpl::JsonFileWriterImpl(std::ostream& out) :
@@ -168,6 +169,14 @@ JsonFileWriterImpl::write_string(const char* name, const std::string& value)
 void
 JsonFileWriterImpl::write_vector(const char* name, const Vector3f& value)
 {
+  assert(!m_stack.empty());
+  assert(m_stack.back().get().type() == Json::objectValue);
+
+  Json::Value array(Json::arrayValue);
+  array.append(Json::Value(value.x));
+  array.append(Json::Value(value.y));
+  array.append(Json::Value(value.z));
+  m_stack.back().get()[name] = array;
 }
 
 void
@@ -230,9 +239,17 @@ JsonFileWriterImpl::flush()
 {
   assert(m_stack.size() == 1);
   std::stringstream out;
-  Json::StyledStreamWriter writer("  ");
-  writer.write(out, m_stack.back());
-  strip_trailing_whitespace(m_out, out);
+  if (false)
+  {
+    Json::StyledStreamWriter writer("  ");
+    writer.write(out, m_stack.back());
+    strip_trailing_whitespace(m_out, out);
+  }
+  else
+  {
+    Json::FastWriter writer;
+    m_out << writer.write(m_stack.back());
+  }
 }
 
 /* EOF */
