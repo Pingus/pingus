@@ -203,7 +203,7 @@ JsonPrettyFileWriterImpl::write_bool(const char* name, bool value)
 
   write_indent();
   write_quoted_string(name);
-  m_out << ": " << value;
+  m_out << ": " << (value ? "true" : "false");
   write_separator();
 }
 
