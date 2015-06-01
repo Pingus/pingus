@@ -225,8 +225,6 @@ EditorLevel::save_prefab(const std::string& filename)
 
   fw.end_object();     // pingus-prefab
 
-  out_file << "\n\n;; EOF ;;" << std::endl;
-
   // Write the file
   System::write_file(filename, out_file.str());
 }
