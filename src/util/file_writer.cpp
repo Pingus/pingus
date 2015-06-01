@@ -17,9 +17,11 @@
 #include "util/file_writer.hpp"
 
 #include "util/sexpr_file_writer_impl.hpp"
+#include "util/json_file_writer_impl.hpp"
 
 FileWriter::FileWriter(std::ostream& out) :
-  m_impl(std::make_unique<SExprFileWriterImpl>(out))
+  //m_impl(std::make_unique<SExprFileWriterImpl>(out))
+  m_impl(std::make_unique<JsonFileWriterImpl>(out))
 {
 }
 
@@ -42,6 +44,18 @@ void
 FileWriter::end_collection()
 {
   m_impl->end_collection();
+}
+
+void
+FileWriter::begin_object(const char* type)
+{
+  m_impl->begin_object(type);
+}
+
+void
+FileWriter::end_object()
+{
+  m_impl->end_object();
 }
 
 void

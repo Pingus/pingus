@@ -128,18 +128,18 @@ GroupLevelObj::write_properties(FileWriter& writer)
 {
   if (m_name.empty())
   {
-    writer.begin_mapping("group");
+    writer.begin_object("group");
     writer.begin_collection("objects");
     for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
     {
       (*it)->write_properties(writer);
     }
     writer.end_collection();
-    writer.end_mapping();
+    writer.end_object();
   }
   else
   {
-    writer.begin_mapping("prefab");
+    writer.begin_object("prefab");
     writer.write_string("name", m_name);
     writer.write_vector("position", m_pos);
     writer.begin_mapping("overrides");
@@ -148,7 +148,7 @@ GroupLevelObj::write_properties(FileWriter& writer)
     if (m_overrides & HAS_DIRECTION)    writer.write_string("direction", m_direction);
     if (m_overrides & HAS_OWNER)        writer.write_int("owner-id", m_owner_id);
     writer.end_mapping();
-    writer.end_mapping();
+    writer.end_object();
   }
 }
 

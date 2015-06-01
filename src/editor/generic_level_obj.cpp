@@ -280,7 +280,7 @@ GenericLevelObj::get_modifier() const
 void
 GenericLevelObj::write_properties(FileWriter &fw)
 {
-  fw.begin_mapping(section_name.c_str());
+  fw.begin_object(section_name.c_str());
 
   const unsigned attribs_ = get_attributes(section_name);
 
@@ -354,7 +354,7 @@ GenericLevelObj::write_properties(FileWriter &fw)
   // Writes any extra properties that may be necessary (virtual function)
   write_extra_properties(fw);
 
-  fw.end_mapping();     // object's section_name
+  fw.end_object(); // object's section_name
 }
 
 void

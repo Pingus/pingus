@@ -101,7 +101,7 @@ StatManager::save(const std::string& filename)
   std::ostringstream out;
   FileWriter writer(out);
 
-  writer.begin_mapping("pingus-stats");
+  writer.begin_object("pingus-stats");
 
   for (Table::iterator i = stats.begin(); i != stats.end(); ++i)
   {
@@ -109,7 +109,7 @@ StatManager::save(const std::string& filename)
       writer.write_string(i->first.c_str(), i->second);
   }
 
-  writer.end_mapping();
+  writer.end_object();
 
   System::write_file(filename, out.str());
 }

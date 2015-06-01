@@ -40,6 +40,9 @@ public:
   void begin_collection(const char* name) override;
   void end_collection() override;
 
+  void begin_object(const char* type) override;
+  void end_object() override;
+
   void begin_mapping(const char* name) override;
   void end_mapping() override;
 

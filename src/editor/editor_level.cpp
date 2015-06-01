@@ -207,7 +207,7 @@ EditorLevel::save_prefab(const std::string& filename)
   FileWriter fw(out_file);
 
   // Write header
-  fw.begin_mapping("pingus-prefab");
+  fw.begin_object("pingus-prefab");
   fw.write_int("version", 3);
 
   Vector3f level_center(static_cast<float>(get_size().width)/2.0f,
@@ -223,7 +223,7 @@ EditorLevel::save_prefab(const std::string& filename)
   }
   fw.end_collection();     // objects
 
-  fw.end_mapping();     // pingus-prefab
+  fw.end_object();     // pingus-prefab
 
   out_file << "\n\n;; EOF ;;" << std::endl;
 
@@ -245,7 +245,7 @@ EditorLevel::save_level(const std::string& filename)
   FileWriter fw(out_file);
 
   // Write header
-  fw.begin_mapping("pingus-level");
+  fw.begin_object("pingus-level");
   fw.write_int("version", 3);
   fw.begin_mapping("head");
   fw.write_string("license", "GPLv3+");
@@ -277,7 +277,7 @@ EditorLevel::save_level(const std::string& filename)
   }
   fw.end_collection();     // objects
 
-  fw.end_mapping();     // pingus-level
+  fw.end_object();     // pingus-level
 
   out_file << "\n\n;; EOF ;;" << std::endl;
 

@@ -39,6 +39,9 @@ public:
   virtual void begin_collection(const char* name) override;
   virtual void end_collection() override;
 
+  virtual void begin_object(const char* type) override;
+  virtual void end_object() override;
+
   virtual void begin_mapping(const char* name) override;
   virtual void end_mapping() override;
 

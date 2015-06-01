@@ -56,6 +56,20 @@ JsonFileWriterImpl::end_collection()
 }
 
 void
+JsonFileWriterImpl::begin_object(const char* type)
+{
+  // FIXME: hack
+  begin_mapping(type);
+}
+
+void
+JsonFileWriterImpl::end_object()
+{
+  // FIXME: hack
+  end_mapping();
+}
+
+void
 JsonFileWriterImpl::begin_mapping(const char* name)
 {
   assert(!m_stack.empty());

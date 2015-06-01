@@ -35,12 +35,20 @@ public:
   FileWriter(std::unique_ptr<FileWriterImpl> impl);
   ~FileWriter();
 
+  /** collections contain an ordered sequence of objects */
   void begin_collection(const char* name);
   void end_collection();
 
+  /** write an object into a collection, objects start a mapping for
+      object properties */
+  void begin_object(const char* type);
+  void end_object();
+
+  /** mappings contain name/value pairs */
   void begin_mapping(const char* name);
   void end_mapping();
 
+  /** write a name/value pair inside a mapping */
   void write_int(const char* name, int);
   void write_float(const char* name, float);
   void write_colorf(const char* name, const Color&);

@@ -183,7 +183,7 @@ Options::save(const Pathname& filename) const
   std::ostringstream out;
   FileWriter writer(out);
 
-  writer.begin_mapping("pingus-config");
+  writer.begin_object("pingus-config");
 
   if (framebuffer_type.is_set())
     writer.write_enum("renderer", framebuffer_type.get(), framebuffer_type_to_string);
@@ -230,7 +230,7 @@ Options::save(const Pathname& filename) const
   if (drag_drop_scrolling.is_set())
     writer.write_bool("drag-drop-scrolling", drag_drop_scrolling.get());
 
-  writer.end_mapping(); // pingus-config
+  writer.end_object(); // pingus-config
 
   out << std::endl;
 

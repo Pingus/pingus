@@ -36,6 +36,9 @@ public:
   virtual void begin_collection(const char* name) = 0;
   virtual void end_collection() = 0;
 
+  virtual void begin_object(const char* type) = 0;
+  virtual void end_object() = 0;
+
   virtual void begin_mapping(const char* name) = 0;
   virtual void end_mapping() = 0;
 

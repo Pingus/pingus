@@ -49,6 +49,18 @@ SExprFileWriterImpl::end_collection()
 }
 
 void
+SExprFileWriterImpl::begin_object(const char* type)
+{
+  begin_mapping(type);
+}
+
+void
+SExprFileWriterImpl::end_object()
+{
+  end_mapping();
+}
+
+void
 SExprFileWriterImpl::begin_mapping(const char* name)
 {
   if (level != 0)
