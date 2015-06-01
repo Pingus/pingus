@@ -74,24 +74,38 @@ JsonPrettyFileWriterImpl::begin_object(const char* type)
 {
   assert(m_context.back() == Context::Collection);
 
+  if (m_depth != 0)
+  {
+    write_indent();
+  }
+
+  m_out << "{";
+  m_depth += 1;
   write_indent();
-  m_out << "{ ";
   write_quoted_string(type);
   m_out << ": {";
 
   m_context.push_back(Context::Mapping);
   m_write_seperator.push_back(false);
-  m_depth += 2;
+  m_depth += 1;
 }
 
 void
 JsonPrettyFileWriterImpl::end_object()
 {
   m_write_seperator.back() = false;
-  m_depth -= 2;
+  m_depth -= 1;
 
   write_indent();
-  m_out << "} }";
+  m_out << "}";
+  m_depth -= 1;
+  write_indent();
+  m_out << "}";
+
+  if (m_depth == 0)
+  {
+    m_out << "\n";
+  }
 
   m_context.pop_back();
   m_write_seperator.pop_back();
@@ -255,12 +269,12 @@ JsonPrettyFileWriterImpl::write_indent()
 {
   if (m_write_seperator.back())
   {
-    m_out.write(",\n;", 2);
+    m_out.write(",\n", 2);
     m_write_seperator.back() = false;
   }
   else
   {
-    m_out.write("\n;", 1);
+    m_out.write("\n", 1);
   }
 
   for(int i = 0; i < m_depth; ++i)
