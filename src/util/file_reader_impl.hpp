@@ -20,10 +20,11 @@
 #include <string>
 #include <vector>
 
-class Size;
 class Color;
-class Vector3f;
+class Rect;
+class Size;
 class Vector2i;
+class Vector3f;
 
 class FileReader;
 class ResDescriptor;

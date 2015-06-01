@@ -22,7 +22,6 @@
 #include "lisp/parser.hpp"
 #include "pingus/globals.hpp"
 #include "util/log.hpp"
-#include "util/sexpr_file_reader.hpp"
 #include "util/string_util.hpp"
 #include "util/system.hpp"
 

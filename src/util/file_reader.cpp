@@ -19,7 +19,7 @@
 #include "lisp/parser.hpp"
 #include "util/file_reader_impl.hpp"
 #include "util/pathname.hpp"
-#include "util/sexpr_file_reader.hpp"
+#include "util/sexpr_file_reader_impl.hpp"
 
 FileReader
 FileReader::parse(const std::string& filename)
@@ -27,7 +27,7 @@ FileReader::parse(const std::string& filename)
   std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(filename);
   if (sexpr)
   {
-    return SExprFileReader(sexpr->get_list_elem(0));
+    return FileReader(std::make_shared<SExprFileReaderImpl>(sexpr->get_list_elem(0)));
   }
   else
   {
@@ -49,7 +49,10 @@ FileReader::parse_many(const Pathname& pathname)
   {
     std::vector<FileReader> sections;
     for(size_t i = 0; i < sexpr->get_list_size(); ++i)
-      sections.push_back(SExprFileReader(sexpr->get_list_elem(i)));
+    {
+      sections.push_back(FileReader(std::make_shared<SExprFileReaderImpl>(sexpr->get_list_elem(i))));
+    }
+
     return sections;
   }
   else
