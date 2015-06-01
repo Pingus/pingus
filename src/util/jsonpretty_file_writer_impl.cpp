@@ -45,7 +45,7 @@ JsonPrettyFileWriterImpl::begin_collection(const char* name)
 
   write_indent();
   write_quoted_string(name);
-  m_out << ": [\n";
+  m_out << ": [";
 
   m_context.push_back(Context::Collection);
   m_write_seperator.push_back(false);
@@ -91,7 +91,7 @@ JsonPrettyFileWriterImpl::end_object()
   m_depth -= 2;
 
   write_indent();
-  m_out << "}";
+  m_out << "} }";
 
   m_context.pop_back();
   m_write_seperator.pop_back();
@@ -160,7 +160,10 @@ JsonPrettyFileWriterImpl::write_colorf(const char* name, const Color& value)
   write_indent();
   write_quoted_string(name);
   m_out << ": [ "
-        << value.r << ", " << value.g << ", " << value.b << ", " << value.g;
+        << value.r << ", "
+        << value.g << ", "
+        << value.b << ", "
+        << value.g << " ]";
   write_separator();
 }
 
@@ -175,8 +178,7 @@ JsonPrettyFileWriterImpl::write_colori(const char* name, const Color& value)
         << static_cast<int>(value.r) << ", "
         << static_cast<int>(value.g) << ", "
         << static_cast<int>(value.b) << ", "
-        << static_cast<int>(value.g)
-        << " ]\n";
+        << static_cast<int>(value.g) << " ]";
   write_separator();
 }
 
