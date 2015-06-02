@@ -40,11 +40,11 @@ public:
   std::string default_node;
   std::string final_node;
 
-  FileReader intro_story;
-  FileReader end_story;
-  FileReader path_graph;
+  ReaderObject intro_story;
+  ReaderObject end_story;
+  ReaderMapping path_graph;
 
-  std::vector<FileReader> objects;
+  std::vector<ReaderObject> objects;
 
   PingusWorldmapImpl() :
     filename(),
@@ -77,18 +77,24 @@ PingusWorldmap::PingusWorldmap(const Pathname& pathname) :
 }
 
 void
-PingusWorldmap::parse_file(const FileReader& reader)
+PingusWorldmap::parse_file(const ReaderObject& reader_object)
 {
-  if (reader.get_name() == "pingus-worldmap")
+  if (reader_object.get_name() != "pingus-worldmap")
   {
-    if (!reader.read_section("graph", impl->path_graph))
+    raise_exception(std::runtime_error, "Worldmap:" << impl->filename << ": not a Worldmap file");
+  }
+  else
+  {
+    ReaderMapping reader = reader_object.get_mapping();
+
+    if (!reader.read_mapping("graph", impl->path_graph))
     {
       raise_exception(std::runtime_error, "Worldmap: " << impl->filename << " is missed 'graph' section");
     }
 
-    impl->objects = reader.read_section("objects").get_sections();
+    impl->objects = reader.read_collection("objects").get_objects();
 
-    parse_properties(reader.read_section("head"));
+    parse_properties(reader.read_mapping("head"));
 
     std::string intro_story;
     std::string end_story;
@@ -103,14 +109,10 @@ PingusWorldmap::parse_file(const FileReader& reader)
       impl->end_story = FileReader::parse(Pathname(end_story, Pathname::DATA_PATH));
     }
   }
-  else
-  {
-    raise_exception(std::runtime_error, "Worldmap:" << impl->filename << ": not a Worldmap file");
-  }
 }
 
 void
-PingusWorldmap::parse_properties(const FileReader& reader)
+PingusWorldmap::parse_properties(const ReaderMapping& reader)
 {
   reader.read_string("music",  impl->music);
   reader.read_string("author", impl->author);
@@ -184,25 +186,25 @@ PingusWorldmap::get_final_node() const
   return impl->final_node;
 }
 
-FileReader
+ReaderMapping
 PingusWorldmap::get_graph() const
 {
   return impl->path_graph;
 }
 
-const std::vector<FileReader>&
+const std::vector<ReaderObject>&
 PingusWorldmap::get_objects() const
 {
   return impl->objects;
 }
 
-FileReader
+ReaderObject
 PingusWorldmap::get_intro_story() const
 {
   return impl->intro_story;
 }
 
-FileReader
+ReaderObject
 PingusWorldmap::get_end_story() const
 {
   return impl->end_story;

@@ -77,18 +77,18 @@ FramebufferType framebuffer_type_from_string(const std::string& str)
 Options
 Options::from_file(const Pathname& filename)
 {
-  FileReader reader = FileReader::parse(filename);
+  ReaderObject reader = FileReader::parse(filename);
 
   if (reader.get_name() != "pingus-config")
   {
     raise_exception(std::runtime_error, "Error: " << filename << ": not a (pingus-config) file");
   }
 
-  return from_file_reader(reader);
+  return from_file_reader(reader.get_mapping());
 }
 
 Options
-Options::from_file_reader(const FileReader& reader)
+Options::from_file_reader(const ReaderMapping& reader)
 {
   Options opts;
 

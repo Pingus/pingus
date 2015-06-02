@@ -55,7 +55,7 @@ public:
   WorldObjAbstractFactory() {}
   virtual ~WorldObjAbstractFactory() {}
 
-  virtual std::vector<WorldObj*> create(const FileReader& reader) =0;
+  virtual std::vector<WorldObj*> create(const ReaderMapping& reader) = 0;
 
 private:
   WorldObjAbstractFactory (const WorldObjAbstractFactory&);
@@ -68,7 +68,7 @@ class WorldObjFactoryImpl : public WorldObjAbstractFactory
 public:
   WorldObjFactoryImpl() {}
 
-  std::vector<WorldObj*> create(const FileReader& reader) {
+  std::vector<WorldObj*> create(const ReaderMapping& reader) {
     std::vector<WorldObj*> lst;
     lst.push_back(new T(reader));
     return lst;
@@ -85,11 +85,13 @@ public:
   WorldObjGroupFactory() {}
   virtual ~WorldObjGroupFactory() {}
 
-  virtual std::vector<WorldObj*> create(const FileReader& reader) {
+  virtual std::vector<WorldObj*> create(const ReaderMapping& reader)
+  {
     std::vector<WorldObj*> group;
 
-    FileReader objects = reader.read_section("objects");
-    std::vector<FileReader> sections = objects.get_sections();
+    ReaderCollection collection;
+    reader.read_collection("objects", collection);
+    std::vector<ReaderObject> sections = collection.get_objects();
     for(auto it = sections.begin(); it != sections.end(); ++it)
     {
       std::vector<WorldObj*> objs = WorldObjFactory::instance().create(*it);
@@ -115,7 +117,7 @@ public:
   WorldObjPrefabFactory() {}
   virtual ~WorldObjPrefabFactory() {}
 
-  virtual std::vector<WorldObj*> create(const FileReader& reader)
+  virtual std::vector<WorldObj*> create(const ReaderMapping& reader)
   {
     std::string name;
     reader.read_string("name", name);
@@ -124,14 +126,15 @@ public:
     reader.read_vector("position", pos);
 
     PrefabFile prefab = PrefabFile::from_resource(name);
-    FileReader overrides;
-    reader.read_section("overrides", overrides);
+    ReaderMapping overrides;
+    reader.read_mapping("overrides", overrides);
 
     std::vector<WorldObj*> group;
-    const std::vector<FileReader>& objects = prefab.get_objects();
+    std::vector<ReaderObject> objects = prefab.get_objects();
     for(auto it = objects.begin(); it != objects.end(); ++it)
     {
-      OverrideFileReader override_reader(*it, overrides);
+#if 0
+      ReaderMapping override_reader = make_override_mapping(it->get_mapping(), overrides);
 
       std::vector<WorldObj*> objs = WorldObjFactory::instance().create(override_reader);
       for(auto obj = objs.begin(); obj != objs.end(); ++obj)
@@ -142,6 +145,7 @@ public:
           group.push_back(*obj);
         }
       }
+#endif
     }
     return group;
   }
@@ -214,7 +218,7 @@ void WorldObjFactory::deinit()
 }
 
 std::vector<WorldObj*>
-WorldObjFactory::create(const FileReader& reader)
+WorldObjFactory::create(const ReaderObject& reader)
 {
   auto it = factories.find(reader.get_name());
 
@@ -225,7 +229,7 @@ WorldObjFactory::create(const FileReader& reader)
   }
   else
   {
-    return it->second->create(reader);
+    return it->second->create(reader.get_mapping());
   }
 }
 

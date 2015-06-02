@@ -30,7 +30,7 @@ GlyphDescription::GlyphDescription() :
 {
 }
 
-GlyphDescription::GlyphDescription(const FileReader& reader) :
+GlyphDescription::GlyphDescription(const ReaderMapping& reader) :
   image(0),
   unicode(0),
   offset(),
@@ -40,9 +40,9 @@ GlyphDescription::GlyphDescription(const FileReader& reader) :
   int lazy = 0; // FIXME: implement read_uint32
   reader.read_int("unicode", lazy);
   unicode = lazy;
-  reader.read_vector2i("offset",  offset);
+  reader.read_vector2i("offset", offset);
   reader.read_int("advance", advance);
-  reader.read_rect("rect",   rect);
+  reader.read_rect("rect", rect);
 }
 
 FontDescription::FontDescription(const Pathname& pathname_) :
@@ -55,35 +55,46 @@ FontDescription::FontDescription(const Pathname& pathname_) :
   char_spacing     = 1.0f;
   vertical_spacing = 1.0f;
 
-  FileReader reader = FileReader::parse(pathname);
+  ReaderObject reader_object = FileReader::parse(pathname);
 
-  if (reader.get_name() != "pingus-font")
+  if (reader_object.get_name() != "pingus-font")
   {
     raise_exception(std::runtime_error, "FontDescription: not a pingus-font file");
   }
   else
   {
-    reader.read_float("char-spacing",     char_spacing);
+    ReaderMapping reader = reader_object.get_mapping();
+
+    reader.read_float("char-spacing", char_spacing);
     reader.read_float("vertical-spacing", vertical_spacing);
-    reader.read_int("size",               size);
+    reader.read_int("size", size);
 
-    FileReader images_reader;
-    if (reader.read_section("images", images_reader))
+    ReaderCollection images_reader;
+    if (reader.read_collection("images", images_reader))
     {
-      std::vector<FileReader> images_lst = images_reader.get_sections();
+      auto images_lst = images_reader.get_objects();
 
-      for(std::vector<FileReader>::iterator i = images_lst.begin(); i != images_lst.end(); ++i)
+      for(auto i = images_lst.begin(); i != images_lst.end(); ++i)
       {
-        GlyphImageDescription image_desc;
-        i->read_path("filename",             image_desc.pathname);
+        ReaderMapping mapping = i->get_mapping();
 
-        FileReader glyph_section;
-        if (i->read_section("glyphs", glyph_section))
+        GlyphImageDescription image_desc;
+        mapping.read_path("filename", image_desc.pathname);
+
+        ReaderCollection glyph_collection;
+        if (reader.read_collection("glyphs", glyph_collection))
         {
-          std::vector<FileReader> glyph_reader = glyph_section.get_sections();
-          for(std::vector<FileReader>::iterator j = glyph_reader.begin(); j != glyph_reader.end(); ++j)
+          std::vector<ReaderObject> glyph_reader = glyph_collection.get_objects();
+          for(auto j = glyph_reader.begin(); j != glyph_reader.end(); ++j)
           {
-            image_desc.glyphs.push_back(GlyphDescription(*j));
+            if (j->get_name() == "glyph")
+            {
+              image_desc.glyphs.push_back(GlyphDescription(j->get_mapping()));
+            }
+            else
+            {
+              log_warn("unknown tag: %1%", j->get_name());
+            }
           }
         }
         images.push_back(image_desc);

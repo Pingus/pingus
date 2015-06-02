@@ -30,16 +30,17 @@ public:
 
 private:
   std::string m_name;
-  std::vector<FileReader> m_objects;
-  FileReader m_overrides;
+  std::vector<ReaderObject> m_objects;
+  ReaderMapping m_overrides;
 
 private:
-  PrefabFile(const std::string& filename, const std::vector<FileReader>& objects,
-             const FileReader& overrides);
+  PrefabFile(const std::string& filename,
+             const std::vector<ReaderObject>& objects,
+             const ReaderMapping& overrides);
 
 public:
-  const std::vector<FileReader>& get_objects() const;
-  FileReader get_overrides() const;
+  std::vector<ReaderObject> get_objects() const;
+  ReaderMapping get_overrides() const;
 };
 
 #endif

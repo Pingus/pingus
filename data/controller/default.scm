@@ -1,9 +1,10 @@
 (pingus-controller
- (standard-keyboard
-  (sdl:keyboard))
+ (controls
+  (standard-keyboard
+   (sdl:keyboard))
 
   (standard-pointer
-    (sdl:mouse-pointer))
+   (sdl:mouse-pointer))
 
   (standard-scroller
    (core:button-scroller
@@ -13,11 +14,11 @@
     (right (sdl:keyboard-button (key "Right")))))
 
   (primary-button
-    (sdl:mouse-button (button 1)))
+   (sdl:mouse-button (button 1)))
 
   (secondary-button
-    (sdl:mouse-button (button 2))
-    (sdl:mouse-button (button 3)))
+   (sdl:mouse-button (button 2))
+   (sdl:mouse-button (button 3)))
 
   (pause-button
    (sdl:keyboard-button (key "P")))
@@ -52,6 +53,6 @@
   (action-8-button  (sdl:keyboard-button (key "8")))
   (action-9-button  (sdl:keyboard-button (key "9")))
   (action-10-button (sdl:keyboard-button (key "0")))
-  )
+  ))
 
 ;; EOF ;;

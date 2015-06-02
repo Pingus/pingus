@@ -22,7 +22,7 @@
 
 #include "pingus/res_descriptor.hpp"
 
-class FileReader;
+class ReaderMapping;
 
 class StoryPage
 {
@@ -47,7 +47,7 @@ namespace WorldmapNS {
 class WorldmapStory
 {
 public:
-  WorldmapStory(const FileReader& reader);
+  WorldmapStory(const ReaderMapping& reader);
   ~WorldmapStory() { }
 
   std::string get_title() const { return title; }

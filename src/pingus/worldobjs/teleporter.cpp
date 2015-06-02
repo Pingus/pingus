@@ -25,7 +25,7 @@
 
 namespace WorldObjs {
 
-Teleporter::Teleporter(const FileReader& reader) :
+Teleporter::Teleporter(const ReaderMapping& reader) :
   pos(),
   sprite("worldobjs/teleporter"),
   target_id(),

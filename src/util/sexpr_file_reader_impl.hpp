@@ -20,6 +20,7 @@
 #include "lisp/lisp.hpp"
 #include "util/file_reader_impl.hpp"
 
+#if 0
 class SExprFileReaderImpl final: public FileReaderImpl
 {
 private:
@@ -50,6 +51,7 @@ private:
   std::shared_ptr<lisp::Lisp> get_subsection_item(const char* name) const;
   std::shared_ptr<lisp::Lisp> get_subsection(const char* name) const;
 };
+#endif
 
 #endif
 

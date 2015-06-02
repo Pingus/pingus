@@ -23,6 +23,7 @@
 #include "util/file_reader_impl.hpp"
 #include "util/file_reader.hpp"
 
+#if 0
 SExprFileReaderImpl::SExprFileReaderImpl(std::shared_ptr<lisp::Lisp> sexpr_)
   : sexpr(sexpr_)
 {
@@ -281,5 +282,6 @@ SExprFileReaderImpl::get_subsection(const char* name) const
   }
   return std::shared_ptr<lisp::Lisp>();
 }
+#endif
 
 /* EOF */

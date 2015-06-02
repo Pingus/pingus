@@ -34,7 +34,7 @@ private:
   Vector3f pos;
 
 public:
-  Hotspot(const FileReader& reader);
+  Hotspot(const ReaderMapping& reader);
   ~Hotspot();
 
   void  draw(SceneContext& gc);

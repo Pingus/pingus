@@ -35,7 +35,7 @@ private:
   Sprite smallmap_symbol;
 
 public:
-  Exit(const FileReader& reader);
+  Exit(const ReaderMapping& reader);
   ~Exit();
 
   void  on_startup ();

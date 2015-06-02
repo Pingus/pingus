@@ -55,22 +55,24 @@ PingusLevel::load(const std::string& resname,
   impl->checksum = System::checksum(pathname);
 
   impl->resname = resname;
-  FileReader reader = FileReader::parse(pathname);
+  ReaderObject reader_object = FileReader::parse(pathname);
 
-  if (reader.get_name() != "pingus-level")
+  if (reader_object.get_name() != "pingus-level")
   {
     raise_exception(std::runtime_error, "Error: " << pathname.str() << ": not a 'pingus-level' file");
   }
   else
   {
+    ReaderMapping reader = reader_object.get_mapping();
+
     int version;
     if (reader.read_int("version", version))
       log_info("Levelfile Version: %1%", version);
     else
       log_info("Unknown Levelfile Version: %1%", version);
 
-    FileReader head;
-    if (!reader.read_section("head", head))
+    ReaderMapping head;
+    if (!reader.read_mapping("head", head))
     {
       raise_exception(std::runtime_error, "Error: (head) section not found in '" << pathname.str() << "'");
     }
@@ -89,10 +91,10 @@ PingusLevel::load(const std::string& resname,
 
       log_info("Size: %1%x%2%", impl->size.width, impl->size.height);
 
-      FileReader actions;
-      if (head.read_section("actions", actions))
+      ReaderMapping actions;
+      if (head.read_mapping("actions", actions))
       {
-        std::vector<std::string> lst = actions.get_section_names();
+        std::vector<std::string> lst = actions.get_keys();
         for(std::vector<std::string>::iterator i = lst.begin(); i != lst.end(); ++i)
         {
           int count = 0;
@@ -108,11 +110,11 @@ PingusLevel::load(const std::string& resname,
       }
     }
 
-    FileReader objects;
-    if (reader.read_section("objects", objects))
+    ReaderCollection collection;
+    if (reader.read_collection("objects", collection))
     {
-      std::vector<FileReader> object_lst = objects.get_sections();
-      for(std::vector<FileReader>::iterator i = object_lst.begin(); i != object_lst.end(); ++i)
+      std::vector<ReaderObject> object_lst = collection.get_objects();
+      for(auto i = object_lst.begin(); i != object_lst.end(); ++i)
       {
         impl->objects.push_back(*i);
       }
@@ -174,7 +176,7 @@ PingusLevel::get_music() const
   return impl->music;
 }
 
-const std::vector<FileReader>&
+const std::vector<ReaderObject>&
 PingusLevel::get_objects() const
 {
   return impl->objects;

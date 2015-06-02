@@ -63,7 +63,7 @@ public:
   std::string author;
   std::string music;
 
-  std::vector<FileReader> objects;
+  std::vector<ReaderObject> objects;
 };
 
 #endif

@@ -29,7 +29,7 @@ private:
   float waiter_count;
 
 public:
-  RainGenerator(const FileReader& reader);
+  RainGenerator(const ReaderMapping& reader);
   ~RainGenerator();
 
   void update ();

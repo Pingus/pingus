@@ -28,7 +28,7 @@ class PingusWorldmap
 public:
   PingusWorldmap();
   PingusWorldmap(const Pathname& pathname);
-  PingusWorldmap(const FileReader& reader);
+  PingusWorldmap(const ReaderMapping& reader);
 
   std::string get_name() const;
   std::string get_short_name() const;
@@ -42,15 +42,15 @@ public:
   std::string get_default_node() const;
   std::string get_final_node() const;
 
-  FileReader get_intro_story() const;
-  FileReader get_end_story() const;
+  ReaderObject get_intro_story() const;
+  ReaderObject get_end_story() const;
 
-  FileReader get_graph() const;
-  const std::vector<FileReader>& get_objects() const;
+  ReaderMapping get_graph() const;
+  const std::vector<ReaderObject>& get_objects() const;
 
 private:
-  void parse_file(const FileReader& reader);
-  void parse_properties(const FileReader& reader);
+  void parse_file(const ReaderObject& reader);
+  void parse_properties(const ReaderMapping& reader);
 
 protected:
   std::shared_ptr<PingusWorldmapImpl> impl;

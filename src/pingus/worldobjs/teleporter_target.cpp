@@ -20,7 +20,7 @@
 
 namespace WorldObjs {
 
-TeleporterTarget::TeleporterTarget(const FileReader& reader) :
+TeleporterTarget::TeleporterTarget(const ReaderMapping& reader) :
   WorldObj(reader),
   pos(),
   sprite("worldobjs/teleportertarget")

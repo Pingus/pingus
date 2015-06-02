@@ -58,7 +58,7 @@ Savegame::Savegame() :
 {
 }
 
-Savegame::Savegame(const FileReader& reader) :
+Savegame::Savegame(const ReaderMapping& reader) :
   filename(),
   status(),
   needed_time(),
@@ -90,12 +90,12 @@ Savegame::write_sexpr(FileWriter& writer)
 }
 
 void
-Savegame::read_sexpr(const FileReader& reader)
+Savegame::read_sexpr(const ReaderMapping& reader)
 {
   reader.read_string ("filename", filename);
-  reader.read_enum   ("status",   status, string_to_status);
-  reader.read_int    ("time",     needed_time);
-  reader.read_int    ("saved-pingus", saved_pingus);
+  reader.read_enum("status", status, string_to_status);
+  reader.read_int("time", needed_time);
+  reader.read_int("saved-pingus", saved_pingus);
 }
 
 /* EOF */

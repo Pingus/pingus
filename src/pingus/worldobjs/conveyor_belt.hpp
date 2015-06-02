@@ -39,7 +39,7 @@ private:
   float  counter;
 
 public:
-  ConveyorBelt(const FileReader& reader);
+  ConveyorBelt(const ReaderMapping& reader);
 
   void draw (SceneContext& gc);
   void on_startup ();

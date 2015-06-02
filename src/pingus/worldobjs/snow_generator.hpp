@@ -31,7 +31,7 @@ private:
   float intensity;
 
 public:
-  SnowGenerator(const FileReader& reader);
+  SnowGenerator(const ReaderMapping& reader);
   ~SnowGenerator ();
 
   /** fill the screen with snow flocks */

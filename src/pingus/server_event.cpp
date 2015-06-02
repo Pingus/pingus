@@ -33,29 +33,30 @@ ServerEvent::ServerEvent() :
 {
 }
 
-ServerEvent::ServerEvent(const FileReader& reader) :
+ServerEvent::ServerEvent(const ReaderObject& reader_object) :
   type(PINGU_ACTION_EVENT),
   time_stamp(0),
   pingu_id(0),
   pos(),
   pingu_action(ActionName::WALKER)
 {
-  if (reader.get_name() == "armageddon")
+  ReaderMapping reader = reader_object.get_mapping();
+  if (reader_object.get_name() == "armageddon")
   {
     type = ARMAGEDDON_EVENT;
     reader.read_int("time", time_stamp);
   }
-  else if (reader.get_name() == "end")
+  else if (reader_object.get_name() == "end")
   {
     type = END_EVENT;
     reader.read_int("time", time_stamp);
   }
-  else if (reader.get_name() == "finish")
+  else if (reader_object.get_name() == "finish")
   {
     type = FINISH_EVENT;
     reader.read_int("time", time_stamp);
   }
-  else if (reader.get_name() == "pingu-action")
+  else if (reader_object.get_name() == "pingu-action")
   {
     std::string raw_x;
     std::string raw_y;
@@ -71,12 +72,10 @@ ServerEvent::ServerEvent(const FileReader& reader) :
       pos.y = Math::string2float(raw_y);
 
     reader.read_enum("action", pingu_action, &ActionName::from_string);
-
-
   }
   else
   {
-    raise_exception(std::runtime_error, "ServerEvent: Parse error: Unknown event: " << reader.get_name());
+    raise_exception(std::runtime_error, "ServerEvent: Parse error: Unknown event: " << reader_object.get_name());
   }
 }
 

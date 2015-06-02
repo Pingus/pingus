@@ -121,8 +121,8 @@ EditorLevel::from_level_file(const Pathname& pathname)
   }
 
   // Get the objects
-  std::vector<FileReader> objs = plf.get_objects();
-  for (std::vector<FileReader>::const_iterator i = objs.begin(); i != objs.end(); i++)
+  auto objs = plf.get_objects();
+  for (auto i = objs.begin(); i != objs.end(); i++)
   {
     LevelObjPtr obj = LevelObjFactory::create(*i);
     if (obj)
@@ -154,7 +154,7 @@ EditorLevel::from_prefab_file(const Pathname& pathname)
   // FIXME: overrides are getting ignored
 
   // Get the objects
-  const std::vector<FileReader>& objs = prefab.get_objects();
+  auto objs = prefab.get_objects();
   for (auto i = objs.begin(); i != objs.end(); i++)
   {
     LevelObjPtr obj = LevelObjFactory::create(*i);

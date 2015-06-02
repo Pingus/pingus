@@ -83,23 +83,33 @@ Manager::create_controller(const Pathname& filename)
 {
   ControllerPtr controller(new Controller(desc));
 
-  FileReader reader = FileReader::parse(filename);
+  ReaderObject reader_object = FileReader::parse(filename);
 
-  if (reader.get_name() != "pingus-controller")
+  if (reader_object.get_name() != "pingus-controller")
   {
     raise_exception(std::runtime_error,
                     "Controller: invalid config file '" << filename.str() << "'");
   }
   else
   {
-    const std::vector<FileReader>& sections = reader.get_sections();
-    for (std::vector<FileReader>::const_iterator i = sections.begin();
-         i != sections.end(); ++i)
+    ReaderMapping reader = reader_object.get_mapping();
+
+    ReaderCollection reader_collection;
+    if (!reader.read_collection("controls", reader_collection))
+    {
+      log_warn("%1%: 'controls' section missing", filename);
+    }
+
+    auto reader_objects = reader_collection.get_objects();
+    for (auto i = reader_objects.begin(); i != reader_objects.end(); ++i)
     {
       if (StringUtil::has_suffix(i->get_name(), "pointer"))
       {
-        const std::vector<FileReader>& pointers = i->get_sections();
-        for(std::vector<FileReader>::const_iterator j = pointers.begin(); j != pointers.end(); ++j)
+        ReaderMapping mapping = i->get_mapping();
+        ReaderCollection collection;
+        mapping.read_collection("children", collection);
+        auto pointers = collection.get_objects();
+        for(auto j = pointers.begin(); j != pointers.end(); ++j)
         {
           int id = desc.get_definition(i->get_name()).id;
           ControllerPointer* ctrl_pointer = controller->get_pointer(id);
@@ -117,8 +127,11 @@ Manager::create_controller(const Pathname& filename)
       }
       else if (StringUtil::has_suffix(i->get_name(), "scroller"))
       {
-        const std::vector<FileReader>& scrollers = i->get_sections();
-        for(std::vector<FileReader>::const_iterator j = scrollers.begin(); j != scrollers.end(); ++j)
+        ReaderMapping mapping = i->get_mapping();
+        ReaderCollection collection;
+        mapping.read_collection("children", collection);
+        auto scrollers = collection.get_objects();
+        for(auto j = scrollers.begin(); j != scrollers.end(); ++j)
         {
           int id = desc.get_definition(i->get_name()).id;
           ControllerScroller* ctrl_scroller = controller->get_scroller(id);
@@ -136,8 +149,11 @@ Manager::create_controller(const Pathname& filename)
       }
       else if (StringUtil::has_suffix(i->get_name(), "button"))
       {
-        const std::vector<FileReader>& buttons = i->get_sections();
-        for(std::vector<FileReader>::const_iterator j = buttons.begin(); j != buttons.end(); ++j)
+        ReaderMapping mapping = i->get_mapping();
+        ReaderCollection collection;
+        mapping.read_collection("children", collection);
+        auto buttons = collection.get_objects();
+        for(auto j = buttons.begin(); j != buttons.end(); ++j)
         {
           int id = desc.get_definition(i->get_name()).id;
           ControllerButton* ctrl_button = controller->get_button(id);
@@ -150,8 +166,11 @@ Manager::create_controller(const Pathname& filename)
       }
       else if (StringUtil::has_suffix(i->get_name(), "axis"))
       {
-        const std::vector<FileReader>& axes = i->get_sections();
-        for(std::vector<FileReader>::const_iterator j = axes.begin(); j != axes.end(); ++j)
+        ReaderMapping mapping = i->get_mapping();
+        ReaderCollection collection;
+        mapping.read_collection("children", collection);
+        auto axes = collection.get_objects();
+        for(auto j = axes.begin(); j != axes.end(); ++j)
         {
           int id = desc.get_definition(i->get_name()).id;
           ControllerAxis* ctrl_axis = controller->get_axis(id);
@@ -164,8 +183,11 @@ Manager::create_controller(const Pathname& filename)
       }
       else if (StringUtil::has_suffix(i->get_name(), "keyboard"))
       {
-        const std::vector<FileReader>& keyboards = i->get_sections();
-        for(std::vector<FileReader>::const_iterator j = keyboards.begin(); j != keyboards.end(); ++j)
+        ReaderMapping mapping = i->get_mapping();
+        ReaderCollection collection;
+        mapping.read_collection("children", collection);
+        auto keyboards = collection.get_objects();
+        for(auto j = keyboards.begin(); j != keyboards.end(); ++j)
         {
           int id = desc.get_definition(i->get_name()).id;
           ControllerKeyboard* ctrl_keyboard = controller->get_keyboard(id);
@@ -245,7 +267,7 @@ Manager::load_driver(const std::string& name)
 }
 
 std::unique_ptr<Button>
-Manager::create_button(const FileReader& reader, Control* parent)
+Manager::create_button(const ReaderObject& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 
@@ -262,7 +284,7 @@ Manager::create_button(const FileReader& reader, Control* parent)
 }
 
 std::unique_ptr<Axis>
-Manager::create_axis(const FileReader& reader, Control* parent)
+Manager::create_axis(const ReaderObject& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 
@@ -279,7 +301,7 @@ Manager::create_axis(const FileReader& reader, Control* parent)
 }
 
 std::unique_ptr<Pointer>
-Manager::create_pointer(const FileReader& reader, Control* parent)
+Manager::create_pointer(const ReaderObject& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 
@@ -296,7 +318,7 @@ Manager::create_pointer(const FileReader& reader, Control* parent)
 }
 
 std::unique_ptr<Scroller>
-Manager::create_scroller(const FileReader& reader, Control* parent)
+Manager::create_scroller(const ReaderObject& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 
@@ -313,7 +335,7 @@ Manager::create_scroller(const FileReader& reader, Control* parent)
 }
 
 std::unique_ptr<Keyboard>
-Manager::create_keyboard(const FileReader& reader, Control* parent)
+Manager::create_keyboard(const ReaderObject& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 

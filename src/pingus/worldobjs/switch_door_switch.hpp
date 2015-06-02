@@ -38,7 +38,7 @@ private:
   SwitchDoorDoor* m_door;
 
 public:
-  SwitchDoorSwitch(const FileReader& reader);
+  SwitchDoorSwitch(const ReaderMapping& reader);
 
   void on_startup();
   void draw (SceneContext& gc);

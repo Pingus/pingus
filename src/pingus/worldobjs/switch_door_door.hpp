@@ -45,7 +45,7 @@ private:
   int current_door_height;
 
 public:
-  SwitchDoorDoor(const FileReader& reader);
+  SwitchDoorDoor(const ReaderMapping& reader);
 
   void on_startup();
   void draw (SceneContext& gc);

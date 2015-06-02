@@ -22,7 +22,6 @@
 #include "util/file_reader.hpp"
 
 class Pathname;
-class FileReader;
 class PingusLevelImpl;
 
 /** This class represents a Pingus Level, its metadata and its body
@@ -74,7 +73,7 @@ public:
   const Color& get_ambient_light() const;
 
   /** Returns the body of this file */
-  const std::vector<FileReader>& get_objects() const;
+  const std::vector<ReaderObject>& get_objects() const;
 
   /** Return the 'resource name' of the level ('snow22-grumbel', etc. ) */
   const std::string get_resname() const;

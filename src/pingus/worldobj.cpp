@@ -26,7 +26,7 @@ WorldObj::set_world(World* arg_world)
   world = arg_world;
 }
 
-WorldObj::WorldObj(const FileReader& reader) :
+WorldObj::WorldObj(const ReaderMapping& reader) :
   id()
 {
   reader.read_string("id", id);

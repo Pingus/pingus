@@ -27,50 +27,74 @@ class Vector2i;
 class Rect;
 
 class ResDescriptor;
-class FileReaderImpl;
 class Pathname;
 
-/** Interface to read name/value pairs out of some kind of file or
-    structure */
-class FileReader
+class ReaderObject;
+class ReaderMapping;
+class ReaderCollection;
+
+class ReaderObjectImpl;
+class ReaderMappingImpl;
+class ReaderCollectionImpl;
+
+class ReaderObject final
 {
 public:
-  static FileReader parse(const std::string& filename);
-  static FileReader parse(const Pathname& pathname);
+  ReaderObject();
+  ReaderObject(std::shared_ptr<ReaderObjectImpl> impl);
 
-  /** Reads multiple trees from a file, for use with files that don't
-      contain a root element */
-  static std::vector<FileReader> parse_many(const Pathname& pathname);
-
-public:
-  FileReader(std::shared_ptr<FileReaderImpl> impl_);
-  FileReader();
-  virtual ~FileReader() {}
-
-  /** Name of the current section, ie. in the case of
-      <groundpiece><pos>...</groundpiece> it would be 'groundpiece' */
   std::string get_name() const;
+  ReaderMapping get_mapping() const;
 
-  bool read_int   (const char* name, int&)           const;
-  bool read_float (const char* name, float&)         const;
-  bool read_bool  (const char* name, bool&)          const;
-  bool read_string(const char* name, std::string&)   const;
-  bool read_path  (const char* name, Pathname&)      const;
-  bool read_vector(const char* name, Vector3f&)      const;
-  bool read_vector2i(const char* name, Vector2i&)    const;
-  bool read_rect(const char* name, Rect&)    const;
-  bool read_size  (const char* name, Size&)          const;
-  bool read_colorf(const char* name, Color&)         const;
-  bool read_colori(const char* name, Color&)         const;
-  bool read_desc  (const char* name, ResDescriptor&) const;
-  bool read_section(const char* name, FileReader&)   const;
-  FileReader read_section(const char* name)   const;
+private:
+  std::shared_ptr<ReaderObjectImpl> m_impl;
+};
+
+class ReaderCollection final
+{
+public:
+  ReaderCollection();
+
+  std::vector<ReaderObject>  get_objects() const;
+
+private:
+  std::shared_ptr<ReaderCollectionImpl> m_impl;
+};
+
+class ReaderMapping final
+{
+public:
+  ReaderMapping();
+  ReaderMapping(std::shared_ptr<ReaderMappingImpl> impl);
+
+  std::vector<std::string> get_keys() const;
+
+  bool read_int(const char* key, int& value) const;
+  bool read_float(const char* key, float& value) const;
+  bool read_bool(const char* key, bool& value) const;
+  bool read_string(const char* key, std::string& value) const;
+  bool read_path(const char* key, Pathname& value) const;
+  bool read_vector(const char* key, Vector3f& value) const;
+  bool read_vector2i(const char* key, Vector2i& value) const;
+  bool read_rect(const char* key, Rect& value) const;
+  bool read_size(const char* key, Size& value) const;
+  bool read_colorf(const char* key, Color& value) const;
+  bool read_colori(const char* key, Color& value) const;
+  bool read_desc(const char* key, ResDescriptor& value) const;
+
+  bool read_mapping(const char* key, ReaderMapping&) const;
+  bool read_collection(const char* key, ReaderCollection&) const;
+  bool read_object(const char* key, ReaderObject&) const;
+
+  ReaderMapping read_mapping(const char* key) const;
+  ReaderCollection read_collection(const char* key) const;
+  ReaderObject read_object(const char* key) const;
 
   template<class E, class T>
-  bool read_enum  (const char* name, E& value, T enum2string) const
+  bool read_enum (const char* key, E& value, T enum2string) const
   {
     std::string str;
-    if (read_string(name, str))
+    if(read_string(key, str))
     {
       value = enum2string(str);
       return true;
@@ -79,12 +103,22 @@ public:
     return false;
   }
 
-  std::vector<std::string> get_section_names() const;
-  std::vector<FileReader>  get_sections() const;
-  int  get_num_sections() const;
+private:
+  std::shared_ptr<ReaderMappingImpl> m_impl;
+};
+
+class FileReader final
+{
+public:
+  static ReaderObject parse(const std::string& filename);
+  static ReaderObject parse(const Pathname& pathname);
+
+  /** Reads multiple trees from a file, for use with files that don't
+      contain a root element */
+  static std::vector<ReaderObject> parse_many(const Pathname& pathname);
 
 private:
-  std::shared_ptr<FileReaderImpl> impl;
+  FileReader() = delete;
 };
 
 #endif

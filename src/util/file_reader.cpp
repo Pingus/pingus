@@ -21,29 +21,207 @@
 #include "util/pathname.hpp"
 #include "util/sexpr_file_reader_impl.hpp"
 
-FileReader
+ReaderMapping::ReaderMapping(std::shared_ptr<ReaderMappingImpl> impl_) :
+  m_impl(impl_)
+{
+}
+
+ReaderMapping::ReaderMapping() :
+  m_impl()
+{
+}
+
+std::string
+ReaderObject::get_name() const
+{
+  if (m_impl)
+    return m_impl->get_name();
+  else
+    return "";
+}
+
+bool
+ReaderMapping::read_int(const char* key, int& value) const
+{
+  if (m_impl)
+    return m_impl->read_int(key, value);
+  else
+    return false;
+}
+
+bool
+ReaderMapping::read_float (const char* key, float& value) const
+{
+  if (m_impl)
+    return m_impl->read_float(key, value);
+  else
+    return false;
+}
+
+bool
+ReaderMapping::read_bool  (const char* key, bool& value) const
+{
+  if (m_impl)
+    return m_impl->read_bool(key, value);
+  else
+    return false;
+}
+
+bool
+ReaderMapping::read_string(const char* key, std::string& value) const
+{
+  if (m_impl)
+    return m_impl->read_string(key, value);
+  else
+    return false;
+}
+
+bool
+ReaderMapping::read_path(const char* key, Pathname& value) const
+{
+  if (m_impl)
+  {
+    std::string filename;
+    if (m_impl->read_string(key, filename))
+    {
+      value = Pathname(filename, Pathname::DATA_PATH);
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+  else
+  {
+    return false;
+  }
+}
+
+bool
+ReaderMapping::read_vector(const char* key, Vector3f& value) const
+{
+  if (m_impl)
+    return m_impl->read_vector(key, value);
+  else
+    return false;
+}
+
+bool
+ReaderMapping::read_colorf(const char* key, Color& value) const
+{
+  if (m_impl)
+    return m_impl->read_colorf(key, value);
+  else
+    return false;
+}
+
+bool
+ReaderMapping::read_colori(const char* key, Color& value) const
+{
+  if (m_impl)
+    return m_impl->read_colori(key, value);
+  else
+    return false;
+}
+
+bool
+ReaderMapping::read_desc(const char* key, ResDescriptor& desc) const
+{
+  if (m_impl)
+    return m_impl->read_desc(key, desc);
+  else
+    return false;
+}
+
+bool
+ReaderMapping::read_size  (const char* key, Size& value) const
+{
+  if (m_impl)
+    return m_impl->read_size(key, value);
+  else
+    return false;
+}
+
+bool
+ReaderMapping::read_vector2i(const char* key, Vector2i& value) const
+{
+  if (m_impl)
+    return m_impl->read_vector2i(key, value);
+  else
+    return false;
+}
+
+bool
+ReaderMapping::read_rect(const char* key, Rect& value)    const
+{
+  if (m_impl)
+    return m_impl->read_rect(key, value);
+  else
+    return false;
+}
+
+bool
+ReaderMapping::read_object(const char* key, ReaderObject& object) const
+{
+  if (m_impl)
+    return m_impl->read_object(key, object);
+  else
+    return false;
+}
+
+bool
+ReaderMapping::read_mapping(const char* key, ReaderMapping& mapping) const
+{
+  if (m_impl)
+    return m_impl->read_mapping(key, mapping);
+  else
+    return false;
+}
+
+bool
+ReaderMapping::read_collection(const char* key, ReaderCollection& collection) const
+{
+  if (m_impl)
+    return m_impl->read_collection(key, collection);
+  else
+    return false;
+}
+
+std::vector<std::string>
+ReaderMapping::get_keys() const
+{
+  if (m_impl)
+    return m_impl->get_keys();
+  else
+    return {};
+}
+
+ReaderObject
 FileReader::parse(const std::string& filename)
 {
   std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(filename);
   if (sexpr)
   {
-    return FileReader(std::make_shared<SExprFileReaderImpl>(sexpr->get_list_elem(0)));
+    return ReaderObject(); // FIXME:FileReader(std::make_shared<SExprFileReaderImpl>(sexpr->get_list_elem(0)));
   }
   else
   {
-    return FileReader();
+    return ReaderObject();
   }
 }
 
-FileReader
+ReaderObject
 FileReader::parse(const Pathname& pathname)
 {
-  return FileReader::parse(pathname.get_sys_path());
+  return ReaderObject(); // FIXME: FileReader::parse(pathname.get_sys_path());
 }
 
-std::vector<FileReader>
+std::vector<ReaderObject>
 FileReader::parse_many(const Pathname& pathname)
 {
+  return {};
+#if 0
   std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(pathname.get_sys_path());
   if (sexpr)
   {
@@ -59,185 +237,7 @@ FileReader::parse_many(const Pathname& pathname)
   {
     return std::vector<FileReader>();
   }
-}
-
-FileReader::FileReader(std::shared_ptr<FileReaderImpl> impl_) :
-  impl(impl_)
-{
-}
-
-FileReader::FileReader() :
-  impl()
-{
-}
-
-std::string
-FileReader::get_name() const
-{
-  if (impl.get())
-    return impl->get_name();
-  else
-    return "";
-}
-
-bool
-FileReader::read_int(const char* name, int& value) const
-{
-  if (impl.get())
-    return impl->read_int(name, value);
-  else
-    return false;
-}
-
-bool
-FileReader::read_float (const char* name, float& value) const
-{
-  if (impl.get())
-    return impl->read_float(name, value);
-  else
-    return false;
-}
-
-bool
-FileReader::read_bool  (const char* name, bool& value) const
-{
-  if (impl.get())
-    return impl->read_bool(name, value);
-  else
-    return false;
-}
-
-bool
-FileReader::read_string(const char* name, std::string& value) const
-{
-  if (impl.get())
-    return impl->read_string(name, value);
-  else
-    return false;
-}
-
-bool
-FileReader::read_path(const char* name, Pathname& value) const
-{
-  if (impl.get())
-  {
-    std::string filename;
-    if (impl->read_string(name, filename))
-    {
-      value = Pathname(filename, Pathname::DATA_PATH);
-      return true;
-    }
-    else
-    {
-      return false;
-    }
-  }
-  else
-    return false;
-}
-
-bool
-FileReader::read_vector(const char* name, Vector3f& value) const
-{
-  if (impl.get())
-    return impl->read_vector(name, value);
-  else
-    return false;
-}
-
-bool
-FileReader::read_colorf(const char* name, Color& value) const
-{
-  if (impl.get())
-    return impl->read_colorf(name, value);
-  else
-    return false;
-}
-
-bool
-FileReader::read_colori(const char* name, Color& value) const
-{
-  if (impl.get())
-    return impl->read_colori(name, value);
-  else
-    return false;
-}
-
-bool
-FileReader::read_desc(const char* name, ResDescriptor& desc) const
-{
-  if (impl.get())
-    return impl->read_desc(name, desc);
-  else
-    return false;
-}
-
-bool
-FileReader::read_size  (const char* name, Size& value) const
-{
-  if (impl.get())
-    return impl->read_size(name, value);
-  else
-    return false;
-}
-
-bool
-FileReader::read_vector2i(const char* name, Vector2i& value) const
-{
-  if (impl.get())
-    return impl->read_vector2i(name, value);
-  else
-    return false;
-}
-
-bool
-FileReader::read_rect(const char* name, Rect& value)    const
-{
-  if (impl.get())
-    return impl->read_rect(name, value);
-  else
-    return false;
-}
-
-bool
-FileReader::read_section(const char* name, FileReader& reader) const
-{
-  if (impl.get())
-    return impl->read_section(name, reader);
-  else
-    return false;
-}
-
-std::vector<std::string>
-FileReader::get_section_names() const
-{
-  if (impl.get())
-    return impl->get_section_names();
-  else
-    return std::vector<std::string>();
-}
-
-std::vector<FileReader>
-FileReader::get_sections() const
-{
-  if (impl.get())
-    return impl->get_sections();
-  else
-    return std::vector<FileReader>();
-}
-
-int
-FileReader::get_num_sections() const
-{
-  return int(impl->get_sections().size());
-}
-
-FileReader
-FileReader::read_section(const char* name)   const
-{
-  FileReader reader;
-  read_section(name, reader);
-  return reader;
+#endif
 }
 
 /* EOF */

@@ -58,13 +58,14 @@ Levelset::from_directory(const std::string& title,
 std::unique_ptr<Levelset>
 Levelset::from_file(const Pathname& pathname)
 {
-  FileReader reader = FileReader::parse(pathname);
-  if (reader.get_name() != "pingus-levelset")
+  ReaderObject reader_object = FileReader::parse(pathname);
+  if (reader_object.get_name() != "pingus-levelset")
   {
     raise_exception(std::runtime_error, "Error: " << pathname.str() << ": not a 'pingus-levelset' file");
   }
   else
   {
+    ReaderMapping reader = reader_object.get_mapping();
     auto levelset = std::make_unique<Levelset>();
 
     std::string tmp;
@@ -101,13 +102,16 @@ Levelset::from_file(const Pathname& pathname)
     // skip level loading when levels won't be used
     if (!levelset->get_developer_only() || globals::developer_mode)
     {
-      FileReader level_reader = reader.read_section("levels");
-      std::vector<FileReader> sections = level_reader.get_sections();
-      for(std::vector<FileReader>::iterator i = sections.begin(); i != sections.end(); ++i)
+      ReaderCollection level_reader;
+      reader.read_collection("levels", level_reader);
+      std::vector<ReaderObject> sections = level_reader.get_objects();
+      for(auto i = sections.begin(); i != sections.end(); ++i)
       {
         if (i->get_name() == "level")
         {
-          if (!i->read_string("filename", tmp))
+          ReaderMapping mapping = i->get_mapping();
+
+          if (!mapping.read_string("filename", tmp))
           {
             log_error("Levelset: %1% is missing filename tag", pathname.str());
           }

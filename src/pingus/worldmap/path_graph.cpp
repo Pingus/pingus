@@ -26,7 +26,7 @@
 
 namespace WorldmapNS {
 
-PathGraph::PathGraph(Worldmap* arg_worldmap, const FileReader& reader) :
+PathGraph::PathGraph(Worldmap* arg_worldmap, const ReaderMapping& reader) :
   worldmap(arg_worldmap),
   graph(),
   dots(),
@@ -34,8 +34,13 @@ PathGraph::PathGraph(Worldmap* arg_worldmap, const FileReader& reader) :
   node_lookup(),
   edge_lookup()
 {
-  parse_nodes(reader.read_section("nodes"));
-  parse_edges(reader.read_section("edges"));
+  ReaderCollection nodes_collection;
+  reader.read_collection("nodes", nodes_collection);
+  parse_nodes(nodes_collection);
+
+  ReaderCollection edges_collection;
+  reader.read_collection("edges", edges_collection);
+  parse_edges(edges_collection);
 
   init_cache();
 }
@@ -54,12 +59,10 @@ PathGraph::~PathGraph()
 }
 
 void
-PathGraph::parse_nodes(const FileReader& reader)
+PathGraph::parse_nodes(const ReaderCollection& collection)
 {
-  const std::vector<FileReader>& childs = reader.get_sections();
-
-  for(std::vector<FileReader>::const_iterator i = childs.begin();
-      i != childs.end(); ++i)
+  std::vector<ReaderObject> childs = collection.get_objects();
+  for(auto i = childs.begin(); i != childs.end(); ++i)
   {
     std::unique_ptr<Dot> dot = DotFactory::create(*i);
     if (dot)
@@ -86,37 +89,40 @@ PathGraph::parse_nodes(const FileReader& reader)
 }
 
 void
-PathGraph::parse_edges(const FileReader& reader)
+PathGraph::parse_edges(const ReaderCollection& collection)
 {
-  const std::vector<FileReader>& childs = reader.get_sections();
+  std::vector<ReaderObject> childs = collection.get_objects();
 
-  for(std::vector<FileReader>::const_iterator i = childs.begin();
-      i != childs.end(); ++i)
+  for(auto i = childs.begin(); i != childs.end(); ++i)
   {
     if (i->get_name() == "edge")
     {
+      ReaderMapping reader = i->get_mapping();
+
       std::string name;
       std::string source;
       std::string destination;
 
-      i->read_string("name",   name);
-      i->read_string("source", source);
-      i->read_string("destination", destination);
+      reader.read_string("name",   name);
+      reader.read_string("source", source);
+      reader.read_string("destination", destination);
 
       // FIXME: add path-data parsing here
       Path* path = new Path();
 
-      const std::vector<FileReader>& childs2 = reader.read_section("positions").get_sections();
-
-      for(std::vector<FileReader>::const_iterator j = childs2.begin();
-          j != childs2.end(); ++j)
+      ReaderCollection positions;
+      reader.read_collection("positions", positions);
+      const std::vector<ReaderObject>& childs2 = positions.get_objects();
+      for(auto j = childs2.begin(); j != childs2.end(); ++j)
       {
         if (j->get_name() == "position")
         {
+          ReaderMapping pos_reader = i->get_mapping();
+
           Vector3f pos;
-          j->read_float("x", pos.x);
-          j->read_float("y", pos.y);
-          j->read_float("z", pos.z);
+          pos_reader.read_float("x", pos.x);
+          pos_reader.read_float("y", pos.y);
+          pos_reader.read_float("z", pos.z);
           path->push_back(pos);
         }
       }

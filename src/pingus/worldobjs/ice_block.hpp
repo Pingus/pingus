@@ -43,7 +43,7 @@ private:
   CollisionMask block_sur_cmap;
 
 public:
-  IceBlock(const FileReader& reader);
+  IceBlock(const ReaderMapping& reader);
 
   float get_z_pos () const { return pos.z; }
   void set_pos(const Vector3f& p) { pos = p; }

@@ -24,7 +24,7 @@
 
 namespace WorldObjs {
 
-SwitchDoorDoor::SwitchDoorDoor(const FileReader& reader) :
+SwitchDoorDoor::SwitchDoorDoor(const ReaderMapping& reader) :
   WorldObj(reader),
   door_pos(),
   door_height(),

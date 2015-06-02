@@ -23,7 +23,7 @@
 
 namespace WorldObjs {
 
-Hammer::Hammer(const FileReader& reader) :
+Hammer::Hammer(const ReaderMapping& reader) :
   sprite("traps/hammer"),
   pos(),
   m_down(true),

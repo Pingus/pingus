@@ -28,8 +28,8 @@
 
 namespace WorldmapNS {
 
-StoryDot::StoryDot(const FileReader& reader) :
-  Dot(reader.read_section("dot")),
+StoryDot::StoryDot(const ReaderMapping& reader) :
+  Dot(reader.read_mapping("dot")),
   m_story_dot_highlight("core/worldmap/story_dot_highlight"),
   m_story_dot("core/worldmap/story_dot"),
   m_name(),
@@ -69,8 +69,8 @@ StoryDot::on_click()
 {
   try
   {
-    FileReader reader = FileReader::parse(Pathname(m_story, Pathname::DATA_PATH));
-    ScreenManager::instance()->push_screen(std::make_shared<StoryScreen>(reader, m_credits));
+    ReaderObject reader = FileReader::parse(Pathname(m_story, Pathname::DATA_PATH));
+    ScreenManager::instance()->push_screen(std::make_shared<StoryScreen>(reader.get_mapping(), m_credits));
   }
   catch(const std::exception& err)
   {

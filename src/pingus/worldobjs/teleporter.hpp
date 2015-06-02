@@ -33,7 +33,7 @@ private:
   TeleporterTarget* target;
 
 public:
-  Teleporter(const FileReader& reader);
+  Teleporter(const ReaderMapping& reader);
 
   void  draw(SceneContext& gc);
   void  update();
