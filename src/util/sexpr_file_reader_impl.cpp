@@ -26,6 +26,10 @@
 SExprReaderObjectImpl::SExprReaderObjectImpl(std::shared_ptr<lisp::Lisp> sexpr) :
   m_sexpr(sexpr)
 {
+  // Expects data in the format:
+  // (objectname
+  //   (property1 45)
+  //   (property2 45))
 }
 
 SExprReaderObjectImpl::~SExprReaderObjectImpl()
@@ -71,6 +75,11 @@ SExprReaderMappingImpl::SExprReaderMappingImpl(std::shared_ptr<lisp::Lisp> sexpr
 {
   assert(m_sexpr->get_type() == lisp::Lisp::TYPE_LIST &&
          m_sexpr->get_list_size() >= 1);
+  // Expects data in this format:
+  // (objectname
+  //   (property1 45)
+  //   (property2 45))
+  // 'objectname' is ignored
 }
 
 SExprReaderMappingImpl::~SExprReaderMappingImpl()
@@ -100,7 +109,10 @@ SExprReaderMappingImpl::read_int(const char* name, int& v) const
     v = item->get_int();
     return true;
   }
-  return false;
+  else
+  {
+    return false;
+  }
 }
 
 bool
@@ -124,7 +136,10 @@ SExprReaderMappingImpl::read_float(const char* name, float& v) const
       return false;
     }
   }
-  return false;
+  else
+  {
+    return false;
+  }
 }
 
 bool
@@ -141,7 +156,10 @@ SExprReaderMappingImpl::read_bool(const char* name, bool& v) const
     v = item->get_int();
     return true;
   }
-  return false;
+  else
+  {
+    return false;
+  }
 }
 
 bool
@@ -165,7 +183,10 @@ SExprReaderMappingImpl::read_string(const char* name, std::string& v) const
     }
     return true;
   }
-  return false;
+  else
+  {
+    return false;
+  }
 }
 
 bool
@@ -179,7 +200,10 @@ SExprReaderMappingImpl::read_vector(const char* name, Vector3f& v) const
                  sub->get_list_elem(3)->get_float());
     return true;
   }
-  return false;
+  else
+  {
+    return false;
+  }
 }
 
 bool
@@ -192,7 +216,10 @@ SExprReaderMappingImpl::read_size(const char* name, Size& v) const
     v.height = sub->get_list_elem(2)->get_int();
     return true;
   }
-  return false;
+  else
+  {
+    return false;
+  }
 }
 
 bool
@@ -205,7 +232,10 @@ SExprReaderMappingImpl::read_vector2i(const char* name, Vector2i& v) const
     v.y = sub->get_list_elem(2)->get_int();
     return true;
   }
-  return false;
+  else
+  {
+    return false;
+  }
 }
 
 bool
@@ -220,7 +250,10 @@ SExprReaderMappingImpl::read_rect(const char* name, Rect& rect) const
     rect.bottom = sub->get_list_elem(4)->get_int();
     return true;
   }
-  return false;
+  else
+  {
+    return false;
+  }
 }
 
 bool
@@ -235,7 +268,10 @@ SExprReaderMappingImpl::read_colorf(const char* name, Color& v) const
               static_cast<char>(sub->get_list_elem(4)->get_float() * 255));
     return true;
   }
-  return false;
+  else
+  {
+    return false;
+  }
 }
 
 bool
@@ -250,7 +286,10 @@ SExprReaderMappingImpl::read_colori(const char* name, Color& v) const
               static_cast<char>(sub->get_list_elem(4)->get_int()));
     return true;
   }
-  return false;
+  else
+  {
+    return false;
+  }
 }
 
 bool
@@ -264,7 +303,10 @@ SExprReaderMappingImpl::read_desc(const char* name, ResDescriptor& v) const
     reader.read_enum("modifier", v.modifier, &ResourceModifier::from_string);
     return true;
   }
-  return false;
+  else
+  {
+    return false;
+  }
 }
 
 bool

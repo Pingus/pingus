@@ -31,6 +31,11 @@ ReaderMapping::ReaderMapping() :
 {
 }
 
+ReaderCollection::ReaderCollection(std::shared_ptr<ReaderCollectionImpl> impl) :
+  m_impl(impl)
+{
+}
+
 ReaderCollection::ReaderCollection() :
   m_impl()
 {
@@ -43,6 +48,11 @@ ReaderCollection::get_objects() const
     return m_impl->get_objects();
   else
     return {};
+}
+
+ReaderObject::ReaderObject(std::shared_ptr<ReaderObjectImpl> impl) :
+  m_impl(impl)
+{
 }
 
 ReaderObject::ReaderObject() :
@@ -269,12 +279,26 @@ ReaderMapping::get_keys() const
 }
 
 ReaderObject
+FileReader::parse(std::istream& stream)
+{
+  std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(stream, "<stream>");
+  if (sexpr)
+  {
+    return ReaderObject(std::make_shared<SExprReaderObjectImpl>(sexpr->get_list_elem(0)));
+  }
+  else
+  {
+    return ReaderObject();
+  }
+}
+
+ReaderObject
 FileReader::parse(const std::string& filename)
 {
   std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(filename);
   if (sexpr)
   {
-    return ReaderObject(); // FIXME:FileReader(std::make_shared<SExprFileReaderImpl>(sexpr->get_list_elem(0)));
+    return ReaderObject(std::make_shared<SExprReaderObjectImpl>(sexpr->get_list_elem(0)));
   }
   else
   {
@@ -285,7 +309,7 @@ FileReader::parse(const std::string& filename)
 ReaderObject
 FileReader::parse(const Pathname& pathname)
 {
-  return ReaderObject(); // FIXME: FileReader::parse(pathname.get_sys_path());
+  return FileReader::parse(pathname.get_sys_path());
 }
 
 std::vector<ReaderObject>

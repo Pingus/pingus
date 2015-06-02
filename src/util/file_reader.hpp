@@ -111,6 +111,7 @@ private:
 class FileReader final
 {
 public:
+  static ReaderObject parse(std::istream& stream);
   static ReaderObject parse(const std::string& filename);
   static ReaderObject parse(const Pathname& pathname);
 
