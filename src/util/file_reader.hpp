@@ -54,8 +54,9 @@ class ReaderCollection final
 {
 public:
   ReaderCollection();
+  ReaderCollection(std::shared_ptr<ReaderCollectionImpl> impl);
 
-  std::vector<ReaderObject>  get_objects() const;
+  std::vector<ReaderObject> get_objects() const;
 
 private:
   std::shared_ptr<ReaderCollectionImpl> m_impl;

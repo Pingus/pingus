@@ -20,38 +20,62 @@
 #include "lisp/lisp.hpp"
 #include "util/file_reader_impl.hpp"
 
-#if 0
-class SExprFileReaderImpl final: public FileReaderImpl
+class SExprReaderObjectImpl : public ReaderObjectImpl
 {
-private:
-  std::shared_ptr<lisp::Lisp> sexpr;
-
 public:
-  SExprFileReaderImpl(std::shared_ptr<lisp::Lisp> sexpr_);
-  ~SExprFileReaderImpl();
+  SExprReaderObjectImpl(std::shared_ptr<lisp::Lisp> sexpr);
+  virtual ~SExprReaderObjectImpl();
 
-  std::string get_name() const;
+  std::string get_name() const override;
+  ReaderMapping get_mapping() const override;
 
-  bool read_int   (const char* name, int& v) const;
-  bool read_float (const char* name, float& v) const;
-  bool read_bool  (const char* name, bool& v) const;
-  bool read_string(const char* name, std::string& v) const;
-  bool read_vector(const char* name, Vector3f& v) const;
-  bool read_size(const char* name, Size& v) const;
-  bool read_vector2i(const char* name, Vector2i& v) const;
-  bool read_rect(const char* name, Rect& rect) const;
-  bool read_colorf(const char* name, Color& v) const;
-  bool read_colori(const char* name, Color& v) const;
-  bool read_desc  (const char* name, ResDescriptor& v) const;
-  bool read_section(const char* name, FileReader& v) const;
-  std::vector<FileReader> get_sections() const;
-  std::vector<std::string> get_section_names() const;
+private:
+  std::shared_ptr<lisp::Lisp> m_sexpr;
+};
+
+class SExprReaderCollectionImpl : public ReaderCollectionImpl
+{
+public:
+  SExprReaderCollectionImpl(std::shared_ptr<lisp::Lisp> sexpr);
+  virtual ~SExprReaderCollectionImpl();
+
+  std::vector<ReaderObject> get_objects() const override;
+
+private:
+  std::shared_ptr<lisp::Lisp> m_sexpr;
+};
+
+class SExprReaderMappingImpl : public ReaderMappingImpl
+{
+public:
+  SExprReaderMappingImpl(std::shared_ptr<lisp::Lisp> sexpr);
+  virtual ~SExprReaderMappingImpl();
+
+  std::vector<std::string> get_keys() const override;
+
+  bool read_int(const char* key, int&) const override;
+  bool read_float(const char* key, float&) const override;
+  bool read_bool(const char* key, bool&) const override;
+  bool read_string(const char* key, std::string&) const override;
+  bool read_vector(const char* key, Vector3f&) const override;
+  bool read_size(const char* key, Size&) const override;
+  bool read_vector2i(const char* key, Vector2i&) const override;
+  bool read_rect(const char* key, Rect&) const override;
+  bool read_colorf(const char* key, Color&) const override;
+  bool read_colori(const char* key, Color&) const override;
+  bool read_desc(const char* key, ResDescriptor&) const override;
+
+  bool read_mapping(const char* key, ReaderMapping&) const override;
+  bool read_collection(const char* key, ReaderCollection&) const override;
+  bool read_object(const char* key, ReaderObject&) const override;
 
 private:
   std::shared_ptr<lisp::Lisp> get_subsection_item(const char* name) const;
   std::shared_ptr<lisp::Lisp> get_subsection(const char* name) const;
+
+private:
+  std::shared_ptr<lisp::Lisp> m_sexpr;
 };
-#endif
 
 #endif
 

@@ -23,32 +23,76 @@
 #include "util/file_reader_impl.hpp"
 #include "util/file_reader.hpp"
 
-#if 0
-SExprFileReaderImpl::SExprFileReaderImpl(std::shared_ptr<lisp::Lisp> sexpr_)
-  : sexpr(sexpr_)
+SExprReaderObjectImpl::SExprReaderObjectImpl(std::shared_ptr<lisp::Lisp> sexpr) :
+  m_sexpr(sexpr)
 {
-  assert(sexpr->get_type() == lisp::Lisp::TYPE_LIST &&
-         sexpr->get_list_size() >= 1);
-
-  for(size_t i = 1; i < sexpr->get_list_size(); ++i)
-  { // iterate over subsections
-    sexpr->get_list_elem(i);
-  }
 }
 
-SExprFileReaderImpl::~SExprFileReaderImpl()
+SExprReaderObjectImpl::~SExprReaderObjectImpl()
 {
-  // FIXME: Do we have to free the lisp pointer here or outside of the code?
 }
 
 std::string
-SExprFileReaderImpl::get_name() const
+SExprReaderObjectImpl::get_name() const
 {
-  return sexpr->get_list_elem(0)->get_symbol();
+  return m_sexpr->get_list_elem(0)->get_symbol();
+}
+
+ReaderMapping
+SExprReaderObjectImpl::get_mapping() const
+{
+  return ReaderMapping(std::make_shared<SExprReaderMappingImpl>(m_sexpr));
+}
+
+
+SExprReaderCollectionImpl::SExprReaderCollectionImpl(std::shared_ptr<lisp::Lisp> sexpr) :
+  m_sexpr(sexpr)
+{
+}
+
+SExprReaderCollectionImpl::~SExprReaderCollectionImpl()
+{
+}
+
+std::vector<ReaderObject>
+SExprReaderCollectionImpl::get_objects() const
+{
+  std::vector<ReaderObject> lst;
+  for(size_t i = 1; i < m_sexpr->get_list_size(); ++i)
+  {
+    lst.push_back(ReaderObject(std::make_shared<SExprReaderObjectImpl>(m_sexpr->get_list_elem(i))));
+  }
+  return lst;
+}
+
+
+SExprReaderMappingImpl::SExprReaderMappingImpl(std::shared_ptr<lisp::Lisp> sexpr) :
+  m_sexpr(sexpr)
+{
+  assert(m_sexpr->get_type() == lisp::Lisp::TYPE_LIST &&
+         m_sexpr->get_list_size() >= 1);
+}
+
+SExprReaderMappingImpl::~SExprReaderMappingImpl()
+{
+}
+
+std::vector<std::string>
+SExprReaderMappingImpl::get_keys() const
+{
+  std::vector<std::string> lst;
+
+  for(size_t i = 1; i < m_sexpr->get_list_size(); ++i)
+  {
+    std::shared_ptr<lisp::Lisp> sub = m_sexpr->get_list_elem(i);
+    lst.push_back(sub->get_list_elem(0)->get_symbol());
+  }
+
+  return lst;
 }
 
 bool
-SExprFileReaderImpl::read_int(const char* name, int& v) const
+SExprReaderMappingImpl::read_int(const char* name, int& v) const
 {
   std::shared_ptr<lisp::Lisp> item = get_subsection_item(name);
   if (item && item->get_type() == lisp::Lisp::TYPE_INT)
@@ -60,7 +104,7 @@ SExprFileReaderImpl::read_int(const char* name, int& v) const
 }
 
 bool
-SExprFileReaderImpl::read_float(const char* name, float& v) const
+SExprReaderMappingImpl::read_float(const char* name, float& v) const
 {
   std::shared_ptr<lisp::Lisp> item = get_subsection_item(name);
   if (item)
@@ -84,7 +128,7 @@ SExprFileReaderImpl::read_float(const char* name, float& v) const
 }
 
 bool
-SExprFileReaderImpl::read_bool(const char* name, bool& v) const
+SExprReaderMappingImpl::read_bool(const char* name, bool& v) const
 {
   std::shared_ptr<lisp::Lisp> item = get_subsection_item(name);
   if (item && item->get_type() == lisp::Lisp::TYPE_BOOL)
@@ -101,7 +145,7 @@ SExprFileReaderImpl::read_bool(const char* name, bool& v) const
 }
 
 bool
-SExprFileReaderImpl::read_string(const char* name, std::string& v) const
+SExprReaderMappingImpl::read_string(const char* name, std::string& v) const
 {
   std::shared_ptr<lisp::Lisp> sub = get_subsection(name);
   if (sub)
@@ -125,7 +169,7 @@ SExprFileReaderImpl::read_string(const char* name, std::string& v) const
 }
 
 bool
-SExprFileReaderImpl::read_vector(const char* name, Vector3f& v) const
+SExprReaderMappingImpl::read_vector(const char* name, Vector3f& v) const
 {
   std::shared_ptr<lisp::Lisp> sub = get_subsection(name);
   if (sub && sub->get_list_size() == 4)
@@ -139,7 +183,7 @@ SExprFileReaderImpl::read_vector(const char* name, Vector3f& v) const
 }
 
 bool
-SExprFileReaderImpl::read_size(const char* name, Size& v) const
+SExprReaderMappingImpl::read_size(const char* name, Size& v) const
 {
   std::shared_ptr<lisp::Lisp> sub = get_subsection(name);
   if (sub && sub->get_list_size() == 3)
@@ -152,7 +196,7 @@ SExprFileReaderImpl::read_size(const char* name, Size& v) const
 }
 
 bool
-SExprFileReaderImpl::read_vector2i(const char* name, Vector2i& v) const
+SExprReaderMappingImpl::read_vector2i(const char* name, Vector2i& v) const
 {
   std::shared_ptr<lisp::Lisp> sub = get_subsection(name);
   if (sub && sub->get_list_size() == 3)
@@ -165,7 +209,7 @@ SExprFileReaderImpl::read_vector2i(const char* name, Vector2i& v) const
 }
 
 bool
-SExprFileReaderImpl::read_rect(const char* name, Rect& rect) const
+SExprReaderMappingImpl::read_rect(const char* name, Rect& rect) const
 {
   std::shared_ptr<lisp::Lisp> sub = get_subsection(name);
   if (sub && sub->get_list_size() == 5)
@@ -180,7 +224,7 @@ SExprFileReaderImpl::read_rect(const char* name, Rect& rect) const
 }
 
 bool
-SExprFileReaderImpl::read_colorf(const char* name, Color& v) const
+SExprReaderMappingImpl::read_colorf(const char* name, Color& v) const
 {
   std::shared_ptr<lisp::Lisp> sub = get_subsection(name);
   if (sub && sub->get_list_size() == 5)
@@ -195,7 +239,7 @@ SExprFileReaderImpl::read_colorf(const char* name, Color& v) const
 }
 
 bool
-SExprFileReaderImpl::read_colori(const char* name, Color& v) const
+SExprReaderMappingImpl::read_colori(const char* name, Color& v) const
 {
   std::shared_ptr<lisp::Lisp> sub = get_subsection(name);
   if (sub && sub->get_list_size() == 5)
@@ -210,13 +254,13 @@ SExprFileReaderImpl::read_colori(const char* name, Color& v) const
 }
 
 bool
-SExprFileReaderImpl::read_desc(const char* name, ResDescriptor& v) const
+SExprReaderMappingImpl::read_desc(const char* name, ResDescriptor& v) const
 {
   std::shared_ptr<lisp::Lisp> sub = get_subsection(name);
   if (sub)
   {
-    FileReader reader(std::make_shared<SExprFileReaderImpl>(sub));
-    reader.read_string("image",  v.res_name);
+    auto reader = ReaderMapping(std::make_shared<SExprReaderMappingImpl>(sub));
+    reader.read_string("image", v.res_name);
     reader.read_enum("modifier", v.modifier, &ResourceModifier::from_string);
     return true;
   }
@@ -224,64 +268,76 @@ SExprFileReaderImpl::read_desc(const char* name, ResDescriptor& v) const
 }
 
 bool
-SExprFileReaderImpl::read_section(const char* name, FileReader& v) const
+SExprReaderMappingImpl::read_object(const char* name, ReaderObject& v) const
 {
   std::shared_ptr<lisp::Lisp> cur = get_subsection(name);
   if (cur)
   {
-    v = FileReader(std::make_shared<SExprFileReaderImpl>(cur));
+    v = ReaderObject(std::make_shared<SExprReaderObjectImpl>(cur));
     return true;
   }
-  return false;
+  else
+  {
+    return false;
+  }
 }
 
-std::vector<FileReader>
-SExprFileReaderImpl::get_sections() const
+bool
+SExprReaderMappingImpl::read_collection(const char* name, ReaderCollection& v) const
 {
-  std::vector<FileReader> lst;
-  for(size_t i = 1; i < sexpr->get_list_size(); ++i)
-  { // iterate over subsections
-    lst.push_back(FileReader(std::make_shared<SExprFileReaderImpl>(sexpr->get_list_elem(i))));
+  std::shared_ptr<lisp::Lisp> cur = get_subsection(name);
+  if (cur)
+  {
+    v = ReaderCollection(std::make_shared<SExprReaderCollectionImpl>(cur));
+    return true;
   }
-  return lst;
+  else
+  {
+    return false;
+  }
 }
 
-std::vector<std::string>
-SExprFileReaderImpl::get_section_names() const
+bool
+SExprReaderMappingImpl::read_mapping(const char* name, ReaderMapping& v) const
 {
-  std::vector<std::string> lst;
-
-  for(size_t i = 1; i < sexpr->get_list_size(); ++i)
-  { // iterate over subsections
-    std::shared_ptr<lisp::Lisp> sub = sexpr->get_list_elem(i);
-    lst.push_back(sub->get_list_elem(0)->get_symbol());
+  std::shared_ptr<lisp::Lisp> cur = get_subsection(name);
+  if (cur)
+  {
+    v = ReaderMapping(std::make_shared<SExprReaderMappingImpl>(cur));
+    return true;
   }
-
-  return lst;
+  else
+  {
+    return false;
+  }
 }
 
 std::shared_ptr<lisp::Lisp>
-SExprFileReaderImpl::get_subsection_item(const char* name) const
+SExprReaderMappingImpl::get_subsection_item(const char* name) const
 {
   std::shared_ptr<lisp::Lisp> sub = get_subsection(name);
   if (sub && sub->get_list_size() == 2)
   {
     return sub->get_list_elem(1);
   }
-  return std::shared_ptr<lisp::Lisp>();
+  else
+  {
+    return {};
+  }
 }
 
 std::shared_ptr<lisp::Lisp>
-SExprFileReaderImpl::get_subsection(const char* name) const
+SExprReaderMappingImpl::get_subsection(const char* name) const
 {
-  for(size_t i = 1; i < sexpr->get_list_size(); ++i)
-  { // iterate over subsections
-    std::shared_ptr<lisp::Lisp> sub = sexpr->get_list_elem(i);
+  for(size_t i = 1; i < m_sexpr->get_list_size(); ++i)
+  {
+    std::shared_ptr<lisp::Lisp> sub = m_sexpr->get_list_elem(i);
     if (strcmp(sub->get_list_elem(0)->get_symbol(), name) == 0)
+    {
       return sub;
+    }
   }
-  return std::shared_ptr<lisp::Lisp>();
+  return {};
 }
-#endif
 
 /* EOF */

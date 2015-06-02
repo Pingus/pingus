@@ -31,13 +31,41 @@ ReaderMapping::ReaderMapping() :
 {
 }
 
+ReaderCollection::ReaderCollection() :
+  m_impl()
+{
+}
+
+std::vector<ReaderObject>
+ReaderCollection::get_objects() const
+{
+  if (m_impl)
+    return m_impl->get_objects();
+  else
+    return {};
+}
+
+ReaderObject::ReaderObject() :
+  m_impl()
+{
+}
+
 std::string
 ReaderObject::get_name() const
 {
   if (m_impl)
     return m_impl->get_name();
   else
-    return "";
+    return {};
+}
+
+ReaderMapping
+ReaderObject::get_mapping() const
+{
+  if (m_impl)
+    return m_impl->get_mapping();
+  else
+    return {};
 }
 
 bool
@@ -186,6 +214,49 @@ ReaderMapping::read_collection(const char* key, ReaderCollection& collection) co
     return m_impl->read_collection(key, collection);
   else
     return false;
+}
+
+
+ReaderMapping
+ReaderMapping::read_mapping(const char* key) const
+{
+  if (!m_impl)
+  {
+    return {};
+  }
+  {
+    ReaderMapping result;
+    read_mapping(key, result);
+    return result;
+  }
+}
+
+ReaderCollection
+ReaderMapping::read_collection(const char* key) const
+{
+  if (!m_impl)
+  {
+    return {};
+  }
+  {
+    ReaderCollection result;
+    read_collection(key, result);
+    return result;
+  }
+}
+
+ReaderObject
+ReaderMapping::read_object(const char* key) const
+{
+  if (!m_impl)
+  {
+    return {};
+  }
+  {
+    ReaderObject result;
+    read_object(key, result);
+    return result;
+  }
 }
 
 std::vector<std::string>
