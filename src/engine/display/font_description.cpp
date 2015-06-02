@@ -59,7 +59,7 @@ FontDescription::FontDescription(const Pathname& pathname_) :
 
   if (reader_object.get_name() != "pingus-font")
   {
-    raise_exception(std::runtime_error, "FontDescription: not a pingus-font file");
+    raise_exception(std::runtime_error, pathname << ": not a pingus-font file");
   }
   else
   {
