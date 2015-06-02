@@ -17,8 +17,9 @@
 cmake_minimum_required(VERSION 3.0)
 project(pingus)
 
-include(FindPkgConfig)
-include(FindOpenGL)
+find_package(Threads REQUIRED)
+find_package(PkgConfig REQUIRED)
+find_package(OpenGL REQUIRED)
 
 pkg_search_module(SDL2 REQUIRED sdl2)
 pkg_search_module(SDL2IMAGE REQUIRED SDL2_image>=2.0.0)
@@ -117,5 +118,25 @@ foreach(EXTRA_SOURCE ${PINGUS_EXTRA_SOURCES_CXX})
   set_target_properties(${EXTRA_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "extra/")
   target_link_libraries(${EXTRA_EXE} libpingus)
 endforeach(EXTRA_SOURCE)
+
+if(BUILD_TESTS)
+  # Note: include directories must use the absolute path as otherwise SYSTEM
+  # bugs out and cmake uses -I instead of -isystem
+  add_library(gtest STATIC ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/src/gtest-all.cc)
+  target_include_directories(gtest SYSTEM PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/include/
+    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/)
+
+  add_library(gtest_main STATIC ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/src/gtest_main.cc)
+  target_include_directories(gtest_main SYSTEM PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/include/
+    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/)
+
+  file(GLOB TEST_PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+    tests/*_test.cpp)
+  add_executable(test_pingus ${TEST_PINGUS_SOURCES_CXX})
+  target_include_directories(test_pingus PUBLIC src/ tests/)
+  target_link_libraries(test_pingus libpingus gtest gtest_main ${CMAKE_THREAD_LIBS_INIT})
+endif(BUILD_TESTS)
 
 # EOF #
