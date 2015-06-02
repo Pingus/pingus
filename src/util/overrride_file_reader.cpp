@@ -16,11 +16,11 @@
 
 #include "util/overrride_file_reader.hpp"
 
+#include <set>
+
 #include "util/file_reader.hpp"
 #include "util/file_reader_impl.hpp"
 #include "util/log.hpp"
-
-ReaderMapping make_override_mapping(const ReaderMapping& reader, const ReaderMapping& overrides);
 
 class OverrideReaderMappingImpl : public ReaderMappingImpl
 {
@@ -34,6 +34,18 @@ public:
     m_reader(reader),
     m_overrides(overrides)
   {
+  }
+
+  std::vector<std::string> get_keys() const
+  {
+    std::set<std::string> result;
+
+    auto lst = m_reader.get_keys();
+    result.insert(lst.begin(), lst.end());
+    lst = m_overrides.get_keys();
+    result.insert(lst.begin(), lst.end());
+
+    return std::vector<std::string>(result.begin(), result.end());
   }
 
   bool read_int(const char* name, int& v) const
@@ -172,52 +184,50 @@ public:
     }
   }
 
-  bool read_mapping(const char* name, ReaderMapping& reader) const
+  bool read_mapping(const char* name, ReaderMapping& result) const
   {
-    if (m_overrides.read_mapping(name, reader))
+    ReaderMapping overwrite_result;
+    if (m_overrides.read_mapping(name, overwrite_result))
     {
-      if (m_reader.read_mapping(name, reader))
+      if (m_reader.read_mapping(name, result))
       {
-        reader = make_override_mapping(reader, m_overrides);
+        result = make_override_mapping(result, overwrite_result);
+        return true;
       }
+      else
+      {
+        result = overwrite_result;
+        return true;
+      }
+    }
+    else
+    {
+      return m_reader.read_mapping(name, result);
+    }
+  }
+
+  bool read_collection(const char* key, ReaderCollection& result) const
+  {
+    if (m_overrides.read_collection(key, result))
+    {
       return true;
     }
     else
     {
-      return m_reader.read_mapping(name, reader);
+      return m_reader.read_collection(key, result);
     }
   }
 
-  bool read_collection(const char* key, ReaderCollection&) const
+  bool read_object(const char* key, ReaderObject& result) const
   {
-    // FIXME:
-    return false;
-  }
-
-  bool read_object(const char* key, ReaderObject&) const
-  {
-    // FIXME:
-    return false;
-  }
-
-#if 0
-  std::vector<ReaderMapping> get_sections() const
-  {
-    std::vector<ReaderMapping> lst = m_reader.get_sections();
-    std::vector<ReaderMapping> result;
-
-    for(auto it = lst.begin(); it != lst.end(); ++it)
+    if (m_overrides.read_object(key, result))
     {
-      result.push_back(make_override_mapping(*it, m_overrides));
+      return true;
     }
-
-    return result;
-  }
-#endif
-
-  std::vector<std::string> get_keys() const
-  {
-    return m_reader.get_keys();
+    else
+    {
+      return m_reader.read_object(key, result);
+    }
   }
 };
 

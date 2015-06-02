@@ -133,10 +133,9 @@ public:
     std::vector<ReaderObject> objects = prefab.get_objects();
     for(auto it = objects.begin(); it != objects.end(); ++it)
     {
-#if 0
       ReaderMapping override_reader = make_override_mapping(it->get_mapping(), overrides);
 
-      std::vector<WorldObj*> objs = WorldObjFactory::instance().create(override_reader);
+      std::vector<WorldObj*> objs = WorldObjFactory::instance().create(it->get_name(), override_reader);
       for(auto obj = objs.begin(); obj != objs.end(); ++obj)
       {
         if (*obj)
@@ -145,7 +144,6 @@ public:
           group.push_back(*obj);
         }
       }
-#endif
     }
     return group;
   }
@@ -220,16 +218,22 @@ void WorldObjFactory::deinit()
 std::vector<WorldObj*>
 WorldObjFactory::create(const ReaderObject& reader)
 {
-  auto it = factories.find(reader.get_name());
+  return create(reader.get_name(), reader.get_mapping());
+}
+
+std::vector<WorldObj*>
+WorldObjFactory::create(const std::string& id, const ReaderMapping& reader)
+{
+  auto it = factories.find(id);
 
   if (it == factories.end())
   {
-    log_error("invalid id: '%1%'", reader.get_name());
+    log_error("invalid id: '%1%'", id);
     return std::vector<WorldObj*>();
   }
   else
   {
-    return it->second->create(reader.get_mapping());
+    return it->second->create(reader);
   }
 }
 

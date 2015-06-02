@@ -48,6 +48,7 @@ public:
   /** Create a WorldObj type from a given piece of xml, use the
       'type' property for determinating the object type. */
   std::vector<WorldObj*> create(const ReaderObject& reader);
+  std::vector<WorldObj*> create(const std::string& id, const ReaderMapping& reader);
 
 private:
   WorldObjFactory (const WorldObjFactory&);
