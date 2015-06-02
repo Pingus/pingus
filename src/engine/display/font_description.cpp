@@ -82,7 +82,7 @@ FontDescription::FontDescription(const Pathname& pathname_) :
         mapping.read_path("filename", image_desc.pathname);
 
         ReaderCollection glyph_collection;
-        if (reader.read_collection("glyphs", glyph_collection))
+        if (mapping.read_collection("glyphs", glyph_collection))
         {
           std::vector<ReaderObject> glyph_reader = glyph_collection.get_objects();
           for(auto j = glyph_reader.begin(); j != glyph_reader.end(); ++j)
