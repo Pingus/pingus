@@ -18,52 +18,65 @@
 
 #include "util/file_reader.hpp"
 
-class FileReaderTest : public ::testing::Test
+const char json_doc[] =
+  "(test-document\n"
+  "  (intvalue 5)\n"
+  "  (submap (int 7) (float 9.9))\n"
+  "  (collection (obj1) (obj2) (obj3))\n"
+  "  (object (realthing (prop1 5) (prop2 7)))\n"
+  "  (floatvalue 5.5))";
+
+const char sexpr_doc[] =
+  "{\n"
+  "  \"test-document\": {\n"
+  "    \"intvalue\": 5,\n"
+  "    \"submap\": { \"int\": 7, \"float\": 9.9 },\n"
+  "    \"collection\": [ { \"obj1\": {}}, { \"obj2\": {}}, {\"obj3\": {}} ],\n"
+  "    \"object\": { \"realthing\": { \"prop1\": 5, \"prop2\": 7 } },\n"
+  "    \"floatvalue\": 5.5\n"
+  "  }\n"
+  "}\n";
+
+class FileReaderTest : public ::testing::TestWithParam<std::string>
 {
 public:
   FileReaderTest() :
-    stream("(test-document\n"
-           "  (intvalue 5)\n"
-           "  (submap (int 7) (float 9.9))\n"
-           "  (children (obj1) (obj2) (obj3))\n"
-           "  (object (realthing (prop1 5) (prop2 7)))\n"
-           "  (floatvalue 5.5))"),
     doc(),
     body()
   {}
 
   void SetUp() override
   {
+    std::istringstream stream(GetParam());
     doc = FileReader::parse(stream);
     body = doc.get_mapping();
   }
 
 public:
-  std::istringstream stream;
   ReaderObject doc;
   ReaderMapping body;
 };
 
-TEST_F(FileReaderTest, parse)
+TEST_P(FileReaderTest, parse)
 {
   EXPECT_EQ("test-document", doc.get_name());
 }
 
-TEST_F(FileReaderTest, read_int)
+TEST_P(FileReaderTest, read_int)
 {
   int intvalue;
   ASSERT_TRUE(body.read_int("intvalue", intvalue));
   EXPECT_EQ(5, intvalue);
 }
 
-TEST_F(FileReaderTest, read_float)
+TEST_P(FileReaderTest, read_float)
 {
   float floatvalue;
   ASSERT_TRUE(body.read_float("floatvalue", floatvalue));
   EXPECT_EQ(5.5f, floatvalue);
 }
 
-TEST_F(FileReaderTest, read_mapping)
+TEST_P(FileReaderTest, read_mapping)
 {
   ReaderMapping submap;
   ASSERT_TRUE(body.read_mapping("submap", submap));
@@ -79,10 +92,10 @@ TEST_F(FileReaderTest, read_mapping)
   }
 }
 
-TEST_F(FileReaderTest, read_collection)
+TEST_P(FileReaderTest, read_collection)
 {
   ReaderCollection collection;
-  ASSERT_TRUE(body.read_collection("children", collection));
+  ASSERT_TRUE(body.read_collection("collection", collection));
   EXPECT_EQ(3, collection.get_objects().size());
   auto objs = collection.get_objects();
   std::vector<std::string> result;
@@ -93,7 +106,7 @@ TEST_F(FileReaderTest, read_collection)
   EXPECT_EQ(std::vector<std::string>({"obj1", "obj2", "obj3"}), result);
 }
 
-TEST_F(FileReaderTest, read_object)
+TEST_P(FileReaderTest, read_object)
 {
   ReaderObject object;
   ASSERT_TRUE(body.read_object("object", object));
@@ -106,5 +119,8 @@ TEST_F(FileReaderTest, read_object)
   EXPECT_EQ(5, prop1);
   EXPECT_EQ(7, prop2);
 }
+
+INSTANTIATE_TEST_CASE_P(ParamFileReaderTest, FileReaderTest,
+                        ::testing::Values(sexpr_doc, json_doc));
 
 /* EOF */
