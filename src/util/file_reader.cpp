@@ -16,11 +16,16 @@
 
 #include "util/file_reader.hpp"
 
+#include <fstream>
+#include <json/reader.h>
+
 #include "lisp/parser.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "util/file_reader_impl.hpp"
 #include "util/pathname.hpp"
 #include "util/sexpr_file_reader_impl.hpp"
+#include "util/json_file_reader_impl.hpp"
+#include "util/log.hpp"
 
 ReaderMapping::ReaderMapping(std::shared_ptr<ReaderMappingImpl> impl_) :
   m_impl(impl_)
@@ -289,35 +294,55 @@ ReaderMapping::get_keys() const
 ReaderObject
 FileReader::parse(std::istream& stream)
 {
-  std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(stream, "<stream>");
-  if (sexpr)
+  int c = stream.get();
+  stream.unget();
+  if (c == '{')
   {
-    return ReaderObject(std::make_shared<SExprReaderObjectImpl>(sexpr->get_list_elem(0)));
+    Json::Reader reader;
+    Json::Value root;
+    if (reader.parse(stream, root))
+    {
+      return ReaderObject(std::make_shared<JsonReaderObjectImpl>(root));
+    }
+    else
+    {
+      log_error("json parse error: %1%", reader.getFormattedErrorMessages());
+      return ReaderObject();
+    }
   }
   else
   {
-    return ReaderObject();
+    std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(stream, "<stream>");
+    if (sexpr)
+    {
+      return ReaderObject(std::make_shared<SExprReaderObjectImpl>(sexpr->get_list_elem(0)));
+    }
+    else
+    {
+      log_error("sexpr parse error");
+      return ReaderObject();
+    }
   }
 }
 
 ReaderObject
 FileReader::parse(const std::string& filename)
 {
-  std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(filename);
-  if (sexpr)
+  std::ifstream fin(filename);
+  if (!fin)
   {
-    return ReaderObject(std::make_shared<SExprReaderObjectImpl>(sexpr->get_list_elem(0)));
+    return ReaderObject();
   }
   else
   {
-    return ReaderObject();
+    return parse(fin);
   }
 }
 
 ReaderObject
 FileReader::parse(const Pathname& pathname)
 {
-  return FileReader::parse(pathname.get_sys_path());
+  return parse(pathname.get_sys_path());
 }
 
 std::vector<ReaderObject>
