@@ -310,12 +310,12 @@ SExprReaderMappingImpl::read_desc(const char* name, ResDescriptor& v) const
 }
 
 bool
-SExprReaderMappingImpl::read_object(const char* name, ReaderObject& v) const
+SExprReaderMappingImpl::read_object(const char* key, ReaderObject& value) const
 {
-  std::shared_ptr<lisp::Lisp> cur = get_subsection(name);
+  std::shared_ptr<lisp::Lisp> cur = get_subsection_item(key);
   if (cur)
   {
-    v = ReaderObject(std::make_shared<SExprReaderObjectImpl>(cur));
+    value = ReaderObject(std::make_shared<SExprReaderObjectImpl>(cur));
     return true;
   }
   else
