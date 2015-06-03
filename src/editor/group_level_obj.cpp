@@ -96,7 +96,7 @@ GroupLevelObj::remove_child(LevelObjPtr obj)
 }
 
 void
-GroupLevelObj::set_overrides(const FileReader& reader)
+GroupLevelObj::set_overrides(const ReaderMapping& reader)
 {
   if (reader.read_int("repeat", m_repeat))
   {

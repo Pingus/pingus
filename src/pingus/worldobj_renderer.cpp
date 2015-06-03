@@ -124,7 +124,7 @@ WorldObjRenderer::render_surface(const ResDescriptor& desc,
 }
 
 void
-WorldObjRenderer::process(const std::vector<FileReader>& readers)
+WorldObjRenderer::process(const std::vector<ReaderObject>& readers)
 {
   for(auto it = readers.begin(); it != readers.end(); ++it)
   {
@@ -133,56 +133,63 @@ WorldObjRenderer::process(const std::vector<FileReader>& readers)
 }
 
 void
-WorldObjRenderer::process(const FileReader& reader)
+WorldObjRenderer::process(const ReaderObject& reader_object)
 {
+  ReaderMapping reader = reader_object.get_mapping();
+
   // FIXME: does not handle sprite alignment
   // FIXME: does not handle remove groundpieces
   // FIXME: does not handle liquid
-  if (reader.get_name() == "surface-background" ||
-      reader.get_name() == "starfield-background" ||
-      reader.get_name() == "solidcolor-background" ||
-      reader.get_name() == "snow-generator" ||
-      reader.get_name() == "rain-generator")
+  if (reader_object.get_name() == "surface-background" ||
+      reader_object.get_name() == "starfield-background" ||
+      reader_object.get_name() == "solidcolor-background" ||
+      reader_object.get_name() == "snow-generator" ||
+      reader_object.get_name() == "rain-generator")
   {
     // ignore
   }
-  else if (reader.get_name() == "groundpiece" ||
-           reader.get_name() == "liquid" ||
-           reader.get_name() == "exit" ||
-           reader.get_name() == "hotspot")
+  else if (reader_object.get_name() == "groundpiece" ||
+           reader_object.get_name() == "liquid" ||
+           reader_object.get_name() == "exit" ||
+           reader_object.get_name() == "hotspot")
   {
-    process_object_with_surface(reader);
+    process_object_with_surface(reader_object);
   }
-  else if (reader.get_name() == "entrance")
+  else if (reader_object.get_name() == "entrance")
   {
     Vector3f pos;
     reader.read_vector("position", pos);
     render_sprite(ResDescriptor("entrances/generic"), pos);
   }
-  else if (reader.get_name() == "spike")
+  else if (reader_object.get_name() == "spike")
   {
     Vector3f pos;
     reader.read_vector("position", pos);
     render_surface(ResDescriptor("traps/spike_editor"), pos);
   }
-  else if (reader.get_name() == "switchdoor-switch")
+  else if (reader_object.get_name() == "switchdoor-switch")
   {
     Vector3f pos;
     reader.read_vector("position", pos);
     render_surface(ResDescriptor("worldobjs/switchdoor_switch"), pos);
   }
-  else if (reader.get_name() == "switchdoor-door")
+  else if (reader_object.get_name() == "switchdoor-door")
   {
     Vector3f pos;
     reader.read_vector("position", pos);
     render_surface(ResDescriptor("worldobjs/switchdoor_box"), pos);
   }
-  else if (reader.get_name() == "group")
+  else if (reader_object.get_name() == "group")
   {
-    FileReader objects = reader.read_section("objects");
-    process(objects.get_sections());
+    ReaderCollection collection;
+    reader.read_collection("objects", collection);
+    auto objects = collection.get_objects();
+    for(const auto& obj : objects)
+    {
+      process(obj);
+    }
   }
-  else if (reader.get_name() == "prefab")
+  else if (reader_object.get_name() == "prefab")
   {
     std::string name;
     if (!reader.read_string("name", name))
@@ -203,29 +210,31 @@ WorldObjRenderer::process(const FileReader& reader)
   }
   else
   {
-    log_error("unknown object type: %1%", reader.get_name());
+    log_error("unknown object type: %1%", reader_object.get_name());
   }
 }
 
 void
-WorldObjRenderer::process_object_with_surface(const FileReader& reader)
+WorldObjRenderer::process_object_with_surface(const ReaderObject& reader_object)
 {
+  ReaderMapping reader = reader_object.get_mapping();
+
   Vector3f pos;
   ResDescriptor desc;
 
   if (!(reader.read_vector("position", pos) &&
         reader.read_desc("surface", desc)))
   {
-    log_error("object (%1%) does not have 'position' and 'surface'", reader.get_name());
+    log_error("object (%1%) does not have 'position' and 'surface'", reader_object.get_name());
   }
   else
   {
-    if (reader.get_name() == "exit" ||
-        reader.get_name() == "hotspots")
+    if (reader_object.get_name() == "exit" ||
+        reader_object.get_name() == "hotspots")
     {
       render_sprite(desc, pos);
     }
-    else if (reader.get_name() == "groundpiece")
+    else if (reader_object.get_name() == "groundpiece")
     {
       std::string type;
       reader.read_string("type", type);

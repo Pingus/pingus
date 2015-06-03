@@ -22,11 +22,11 @@
 namespace WorldmapNS {
 
 std::unique_ptr<Drawable>
-DrawableFactory::create(const FileReader& reader)
+DrawableFactory::create(const ReaderObject& reader)
 {
   if (reader.get_name() == "surface")
   {
-    return std::make_unique<SpriteDrawable>(reader);
+    return std::make_unique<SpriteDrawable>(reader.get_mapping());
   }
   else
   {

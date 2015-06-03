@@ -42,7 +42,7 @@ private:
   bool m_credits;
 
 public:
-  StoryScreen(const FileReader& reader, bool credits = false);
+  StoryScreen(const ReaderMapping& reader, bool credits = false);
   ~StoryScreen();
 
   void on_startup();

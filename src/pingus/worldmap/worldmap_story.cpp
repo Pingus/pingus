@@ -27,7 +27,7 @@
 
 namespace WorldmapNS {
 
-WorldmapStory::WorldmapStory(const FileReader& reader) :
+WorldmapStory::WorldmapStory(const ReaderMapping& reader) :
   title(),
   music(),
   pages()
@@ -35,7 +35,8 @@ WorldmapStory::WorldmapStory(const FileReader& reader) :
   reader.read_string("title", title);
   title = _(title);
   reader.read_string("music", music);
-  FileReader all_pages = reader.read_section("pages");
+  ReaderCollection all_pages;
+  reader.read_collection("pages", all_pages);
 
   // Temporary objects
   ResDescriptor desc;
@@ -43,13 +44,13 @@ WorldmapStory::WorldmapStory(const FileReader& reader) :
   std::string page_name;
 
   // Read each page into the pages vector
-  const std::vector<FileReader>& childs = all_pages.get_sections();
-  for(std::vector<FileReader>::const_iterator i = childs.begin();
-      i != childs.end(); ++i)
+  std::vector<ReaderObject> childs = all_pages.get_objects();
+  for(auto i = childs.begin(); i != childs.end(); ++i)
   {
     page_name = i->get_name();
-    i->read_desc("surface", desc);
-    i->read_string("text", text);
+    ReaderMapping mapping = i->get_mapping();
+    mapping.read_desc("surface", desc);
+    mapping.read_string("text", text);
     // Translate the text and break it up.
     text = StringFormat::break_line(_(text), 570, Fonts::chalk_normal);
     pages.push_back(StoryPage(desc, text, page_name));

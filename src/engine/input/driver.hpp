@@ -31,11 +31,11 @@ public:
   virtual std::string get_name() const =0;
   virtual void update(float delta) =0;
 
-  virtual std::unique_ptr<Button> create_button(const FileReader& reader, Control* parent) =0;
-  virtual std::unique_ptr<Axis> create_axis(const FileReader& reader, Control* parent) =0;
-  virtual std::unique_ptr<Scroller> create_scroller(const FileReader& reader, Control* parent) =0;
-  virtual std::unique_ptr<Pointer> create_pointer(const FileReader& reader, Control* parent) =0;
-  virtual std::unique_ptr<Keyboard> create_keyboard(const FileReader& reader, Control* parent) =0;
+  virtual std::unique_ptr<Button> create_button(const ReaderObject& reader, Control* parent) =0;
+  virtual std::unique_ptr<Axis> create_axis(const ReaderObject& reader, Control* parent) =0;
+  virtual std::unique_ptr<Scroller> create_scroller(const ReaderObject& reader, Control* parent) =0;
+  virtual std::unique_ptr<Pointer> create_pointer(const ReaderObject& reader, Control* parent) =0;
+  virtual std::unique_ptr<Keyboard> create_keyboard(const ReaderObject& reader, Control* parent) =0;
 };
 
 } // namespace Input

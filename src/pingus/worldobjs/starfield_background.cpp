@@ -20,7 +20,7 @@
 
 namespace WorldObjs {
 
-StarfieldBackground::StarfieldBackground(const FileReader& reader) :
+StarfieldBackground::StarfieldBackground(const ReaderMapping& reader) :
   small_stars_count(100),
   middle_stars_count(50),
   large_stars_count(25),

@@ -19,7 +19,7 @@
 
 #include "editor/level_obj_ptr.hpp"
 
-class FileReader;
+class ReaderObject;
 
 namespace Editor {
 
@@ -27,7 +27,7 @@ class LevelObjFactory
 {
 private:
 public:
-  static LevelObjPtr create(const FileReader& reader);
+  static LevelObjPtr create(const ReaderObject& reader_object);
 
 private:
   LevelObjFactory(const LevelObjFactory&);

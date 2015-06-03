@@ -19,7 +19,7 @@
 
 namespace WorldmapNS {
 
-Dot::Dot(const FileReader& reader) :
+Dot::Dot(const ReaderMapping& reader) :
   Drawable(),
   pos()
 {

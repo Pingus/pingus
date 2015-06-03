@@ -118,8 +118,8 @@ PingusMenu::do_start(const std::string &filename)
   StatManager::instance()->get_bool("tutorial-startstory-seen", story_seen); // FIXME: Hardcoding tutorial is evil
   if (!story_seen)
   {
-    FileReader reader = FileReader::parse(Pathname("stories/tutorial_intro.story", Pathname::DATA_PATH));
-    ScreenManager::instance()->push_screen(std::make_shared<StoryScreen>(reader));
+    ReaderObject reader = FileReader::parse(Pathname("stories/tutorial_intro.story", Pathname::DATA_PATH));
+    ScreenManager::instance()->push_screen(std::make_shared<StoryScreen>(reader.get_mapping()));
     StatManager::instance()->set_bool("tutorial-startstory-seen", true);
   }
 }

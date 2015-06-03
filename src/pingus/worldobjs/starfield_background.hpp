@@ -39,7 +39,7 @@ private:
   std::vector<StarfieldBackgroundStars*>        stars;
 
 public:
-  StarfieldBackground(const FileReader& reader);
+  StarfieldBackground(const ReaderMapping& reader);
   ~StarfieldBackground();
 
   // FIXME: Make z_pos handling editable via xml

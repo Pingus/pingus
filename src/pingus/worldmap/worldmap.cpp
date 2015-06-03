@@ -48,9 +48,8 @@ Worldmap::Worldmap(const Pathname& filename) :
 
   worldmap = PingusWorldmap(filename);
 
-  // Create all objects
-  const std::vector<FileReader>& object_reader = worldmap.get_objects();
-  for(std::vector<FileReader>::const_iterator i = object_reader.begin(); i != object_reader.end(); ++i)
+  std::vector<ReaderObject> object_reader = worldmap.get_objects();
+  for(auto i = object_reader.begin(); i != object_reader.end(); ++i)
   {
     std::unique_ptr<Drawable> drawable = DrawableFactory::create(*i);
     if (drawable)
@@ -63,7 +62,7 @@ Worldmap::Worldmap(const Pathname& filename) :
     }
   }
 
-  FileReader path_graph_reader = worldmap.get_graph();
+  ReaderMapping path_graph_reader = worldmap.get_graph();
   path_graph.reset(new PathGraph(this, path_graph_reader));
 
   default_node = path_graph->lookup_node(worldmap.get_default_node());

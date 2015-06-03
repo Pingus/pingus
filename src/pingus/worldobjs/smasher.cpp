@@ -28,7 +28,7 @@
 
 namespace WorldObjs {
 
-Smasher::Smasher(const FileReader& reader) :
+Smasher::Smasher(const ReaderMapping& reader) :
   sprite("traps/smasher"),
   pos(),
   smashing(false),

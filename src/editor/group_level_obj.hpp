@@ -21,7 +21,7 @@
 
 #include <list>
 
-class FileReader;
+class ReaderMapping;
 
 namespace Editor {
 
@@ -60,7 +60,7 @@ public:
 
   std::list<LevelObjPtr>& get_objects() { return m_objects; }
 
-  void set_overrides(const FileReader& reader);
+  void set_overrides(const ReaderMapping& reader);
 
 public:
   /** Retrieve the object's position */

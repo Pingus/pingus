@@ -21,7 +21,7 @@
 #include "math/vector3f.hpp"
 #include "util/file_reader.hpp"
 
-class FileReader;
+class ReaderMapping;
 class SceneContext;
 class SmallMap;
 class World;
@@ -50,7 +50,7 @@ private:
 public:
   /** Creates a new WorldObj*/
   WorldObj ();
-  WorldObj(const FileReader& reader);
+  WorldObj(const ReaderMapping& reader);
 
   WorldObj (const WorldObj&) : id() {}
   WorldObj& operator= (const WorldObj&) { return *this; }

@@ -23,7 +23,7 @@
 
 namespace WorldObjs {
 
-SurfaceBackground::SurfaceBackground(const FileReader& reader) :
+SurfaceBackground::SurfaceBackground(const ReaderMapping& reader) :
   para_x(0.5),
   para_y(0.5),
   pos(),

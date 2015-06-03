@@ -37,7 +37,7 @@ private:
   int  m_count;
 
 public:
-  Hammer(const FileReader& reader);
+  Hammer(const ReaderMapping& reader);
 
   float get_z_pos() const;
   void set_pos(const Vector3f& p) { pos = p; }

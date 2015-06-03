@@ -28,8 +28,8 @@
 
 namespace WorldmapNS {
 
-LevelDot::LevelDot(const FileReader& reader) :
-  Dot(reader.read_section("dot")),
+LevelDot::LevelDot(const ReaderMapping& reader) :
+  Dot(reader.read_mapping("dot")),
   green_dot_sur("core/worldmap/dot_green"),
   red_dot_sur("core/worldmap/dot_red"),
   inaccessible_dot_sur("core/worldmap/dot_invalid"),

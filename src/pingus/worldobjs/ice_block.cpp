@@ -24,7 +24,7 @@
 
 namespace WorldObjs {
 
-IceBlock::IceBlock(const FileReader& reader) :
+IceBlock::IceBlock(const ReaderMapping& reader) :
   pos(),
   width(),
   thickness(1.0),

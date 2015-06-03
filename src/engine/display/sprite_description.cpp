@@ -20,18 +20,20 @@
 SpriteDescriptionPtr
 SpriteDescription::from_file(const Pathname& path)
 {
-  FileReader reader = FileReader::parse(path);
+  ReaderObject reader_object = FileReader::parse(path);
+  ReaderMapping reader = reader_object.get_mapping();
+
   SpriteDescriptionPtr desc(new SpriteDescription);
 
-  reader.read_int   ("speed",  desc->speed);
-  reader.read_bool  ("loop",   desc->loop);
+  reader.read_int("speed", desc->speed);
+  reader.read_bool("loop", desc->loop);
   reader.read_vector2i("offset", desc->offset);
 
   reader.read_enum("origin", desc->origin, string2origin);
 
-  if (!reader.read_path("image",  desc->filename))
+  if (!reader.read_path("image", desc->filename))
   {
-    log_error("'image' missing for %1%", reader.get_name());
+    log_error("'image' missing for %1%", reader_object.get_name());
   }
 
   desc->filename = Pathname(desc->filename.get_raw_path(), Pathname::DATA_PATH); // FIXME: Hack

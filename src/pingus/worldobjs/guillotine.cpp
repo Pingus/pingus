@@ -23,7 +23,7 @@
 
 namespace WorldObjs {
 
-Guillotine::Guillotine(const FileReader& reader) :
+Guillotine::Guillotine(const ReaderMapping& reader) :
   sprite_kill_right("traps/guillotinekill/right"),
   sprite_kill_left("traps/guillotinekill/left"),
   sprite_idle("traps/guillotineidle"),

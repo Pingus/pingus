@@ -38,7 +38,7 @@ private:
   Groundtype::GPType gptype;
 
 public:
-  Groundpiece(const FileReader& reader);
+  Groundpiece(const ReaderMapping& reader);
 
   float get_z_pos () const { return pos.z; }
   void set_pos(const Vector3f& p) { pos = p; }
@@ -47,6 +47,7 @@ public:
   void draw (SceneContext&) {}
   void on_startup ();
   bool purge_after_startup () { return true; }
+
 private:
   Groundpiece (const Groundpiece&);
   Groundpiece& operator= (const Groundpiece&);

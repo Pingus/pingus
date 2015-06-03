@@ -25,15 +25,15 @@
 namespace WorldmapNS {
 
 std::unique_ptr<Dot>
-DotFactory::create(const FileReader& reader)
+DotFactory::create(const ReaderObject& reader)
 {
   if (reader.get_name() == "storydot")
   {
-    return std::make_unique<StoryDot>(reader);
+    return std::make_unique<StoryDot>(reader.get_mapping());
   }
   else if (reader.get_name() == "leveldot")
   {
-    return std::make_unique<LevelDot>(reader);
+    return std::make_unique<LevelDot>(reader.get_mapping());
   }
   else
   {

@@ -22,7 +22,7 @@
 #include "math/rect.hpp"
 #include "util/pathname.hpp"
 
-class FileReader;
+class ReaderMapping;
 
 class GlyphDescription
 {
@@ -34,7 +34,7 @@ public:
   Rect     rect;
 
   GlyphDescription();
-  GlyphDescription(const FileReader& reader);
+  GlyphDescription(const ReaderMapping& reader);
 };
 
 class GlyphImageDescription
@@ -55,7 +55,7 @@ public:
 class FontDescription
 {
 public:
-  Pathname    pathname;
+  Pathname pathname;
 
   /** Space between two characters, given in pixel */
   float char_spacing;

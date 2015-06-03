@@ -48,11 +48,11 @@ public:
 
   Savegame();
   ~Savegame() { }
-  Savegame(const FileReader& node);
+  Savegame(const ReaderMapping& node);
   Savegame(const std::string& filename,
            S_Status arg_status, int arg_time, int arg_saved_pingus);
 
-  void read_sexpr(const FileReader& node);
+  void read_sexpr(const ReaderMapping& node);
   void write_sexpr(FileWriter& xml);
 
   std::string get_filename() const { return filename; }

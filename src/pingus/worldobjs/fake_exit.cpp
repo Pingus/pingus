@@ -24,7 +24,7 @@
 
 namespace WorldObjs {
 
-FakeExit::FakeExit(const FileReader& reader) :
+FakeExit::FakeExit(const ReaderMapping& reader) :
   surface("traps/fake_exit"),
   smallmap_symbol("core/misc/smallmap_exit"),
   pos(),

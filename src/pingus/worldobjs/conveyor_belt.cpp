@@ -24,7 +24,7 @@
 
 namespace WorldObjs {
 
-ConveyorBelt::ConveyorBelt(const FileReader& reader) :
+ConveyorBelt::ConveyorBelt(const ReaderMapping& reader) :
   left_sur  (Sprite ("worldobjs/conveyorbelt_left")),
   right_sur (Sprite ("worldobjs/conveyorbelt_right")),
   middle_sur(Sprite ("worldobjs/conveyorbelt_middle")),

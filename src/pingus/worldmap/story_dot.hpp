@@ -22,7 +22,7 @@
 #include "engine/display/sprite.hpp"
 #include "pingus/worldmap/dot.hpp"
 
-class FileReader;
+class ReaderMapping;
 
 namespace WorldmapNS {
 
@@ -37,7 +37,7 @@ private:
   bool m_credits;
 
 public:
-  StoryDot(const FileReader& reader);
+  StoryDot(const ReaderMapping& reader);
 
   void draw(DrawingContext& gc);
   void draw_hover(DrawingContext& gc);

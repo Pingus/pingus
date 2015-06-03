@@ -21,9 +21,9 @@
 #include "util/jsonpretty_file_writer_impl.hpp"
 
 FileWriter::FileWriter(std::ostream& out) :
-  //m_impl(std::make_unique<SExprFileWriterImpl>(out))
+  m_impl(std::make_unique<SExprFileWriterImpl>(out))
   //m_impl(std::make_unique<JsonFileWriterImpl>(out))
-  m_impl(std::make_unique<JsonPrettyFileWriterImpl>(out))
+  //m_impl(std::make_unique<JsonPrettyFileWriterImpl>(out))
 {
 }
 
