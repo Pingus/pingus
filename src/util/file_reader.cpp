@@ -17,6 +17,7 @@
 #include "util/file_reader.hpp"
 
 #include "lisp/parser.hpp"
+#include "pingus/res_descriptor.hpp"
 #include "util/file_reader_impl.hpp"
 #include "util/pathname.hpp"
 #include "util/sexpr_file_reader_impl.hpp"
@@ -164,12 +165,19 @@ ReaderMapping::read_colori(const char* key, Color& value) const
 }
 
 bool
-ReaderMapping::read_desc(const char* key, ResDescriptor& desc) const
+ReaderMapping::read_desc(const char* key, ResDescriptor& value) const
 {
-  if (m_impl)
-    return m_impl->read_desc(key, desc);
+  ReaderMapping reader;
+  if (read_mapping(key, reader))
+  {
+    reader.read_string("image", value.res_name);
+    reader.read_enum("modifier", value.modifier, &ResourceModifier::from_string);
+    return true;
+  }
   else
+  {
     return false;
+  }
 }
 
 bool

@@ -294,23 +294,6 @@ SExprReaderMappingImpl::read_colori(const char* key, Color& value) const
 }
 
 bool
-SExprReaderMappingImpl::read_desc(const char* key, ResDescriptor& value) const
-{
-  std::shared_ptr<lisp::Lisp> sub = get_subsection(key);
-  if (sub)
-  {
-    auto reader = ReaderMapping(std::make_shared<SExprReaderMappingImpl>(sub));
-    reader.read_string("image", value.res_name);
-    reader.read_enum("modifier", value.modifier, &ResourceModifier::from_string);
-    return true;
-  }
-  else
-  {
-    return false;
-  }
-}
-
-bool
 SExprReaderMappingImpl::read_object(const char* key, ReaderObject& value) const
 {
   std::shared_ptr<lisp::Lisp> cur = get_subsection_item(key);

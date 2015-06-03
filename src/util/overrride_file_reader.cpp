@@ -172,18 +172,6 @@ public:
     }
   }
 
-  bool read_desc(const char* name, ResDescriptor& desc) const
-  {
-    if (m_overrides.read_desc(name, desc))
-    {
-      return true;
-    }
-    else
-    {
-      return m_reader.read_desc(name, desc);
-    }
-  }
-
   bool read_mapping(const char* name, ReaderMapping& result) const
   {
     ReaderMapping overwrite_result;

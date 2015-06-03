@@ -66,7 +66,6 @@ public:
   virtual bool read_rect(const char* key, Rect&) const = 0;
   virtual bool read_colorf(const char* key, Color&) const = 0;
   virtual bool read_colori(const char* key, Color&) const = 0;
-  virtual bool read_desc(const char* key, ResDescriptor&) const = 0;
 
   virtual bool read_mapping(const char* key, ReaderMapping&) const = 0;
   virtual bool read_collection(const char* key, ReaderCollection&) const = 0;

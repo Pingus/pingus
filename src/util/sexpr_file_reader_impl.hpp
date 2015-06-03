@@ -63,7 +63,6 @@ public:
   bool read_rect(const char* key, Rect&) const override;
   bool read_colorf(const char* key, Color&) const override;
   bool read_colori(const char* key, Color&) const override;
-  bool read_desc(const char* key, ResDescriptor&) const override;
 
   bool read_mapping(const char* key, ReaderMapping&) const override;
   bool read_collection(const char* key, ReaderCollection&) const override;
