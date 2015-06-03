@@ -26,7 +26,7 @@
 
 namespace WorldObjs {
 
-SwitchDoorSwitch::SwitchDoorSwitch(const FileReader& reader) :
+SwitchDoorSwitch::SwitchDoorSwitch(const ReaderMapping& reader) :
   switch_pos(),
   switch_sur("worldobjs/switchdoor_switch"),
   m_target(),

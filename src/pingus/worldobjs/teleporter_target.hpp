@@ -29,7 +29,7 @@ private:
   Sprite   sprite;
 
 public:
-  TeleporterTarget(const FileReader& reader);
+  TeleporterTarget(const ReaderMapping& reader);
 
   void  draw (SceneContext& gc);
   void  update ();

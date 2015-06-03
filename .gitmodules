@@ -4,3 +4,6 @@
 [submodule "external/tinygettext"]
 	path = external/tinygettext
 	url = https://github.com/tinygettext/tinygettext.git
+[submodule "external/googletest"]
+	path = external/googletest
+	url = http://git.chromium.org/external/googletest.git

@@ -68,7 +68,7 @@ private:
   float scroll_oy;
 
 public:
-  SurfaceBackground(const FileReader& reader);
+  SurfaceBackground(const ReaderMapping& reader);
 
   float get_z_pos () const;
   void set_pos(const Vector3f& p) { }

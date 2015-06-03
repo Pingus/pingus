@@ -23,7 +23,7 @@
 
 namespace WorldObjs {
 
-Spike::Spike (const FileReader& reader) :
+Spike::Spike (const ReaderMapping& reader) :
   surface("traps/spike"),
   pos(),
   killing(false)

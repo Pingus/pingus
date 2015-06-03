@@ -22,7 +22,7 @@
 
 namespace WorldmapNS {
 
-SpriteDrawable::SpriteDrawable(const FileReader& reader) :
+SpriteDrawable::SpriteDrawable(const ReaderMapping& reader) :
   Drawable(reader),
   surface(),
   pos(),

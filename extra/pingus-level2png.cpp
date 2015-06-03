@@ -13,7 +13,7 @@
 #include "util/log.hpp"
 #include "util/pathname.hpp"
 #include "util/system.hpp"
-#include "util/sexpr_file_writer.hpp"
+#include "util/file_writer.hpp"
 #include "pingus/path_manager.hpp"
 #include "pingus/worldobj_renderer.hpp"
 #include "engine/display/screenshot.hpp"
@@ -100,11 +100,11 @@ int main(int argc, char** argv)
       Vector2i offset(rect.left, rect.top);
 
       std::ostringstream out;
-      SExprFileWriter writer(out);
-      writer.begin_section("pingus-sprite");
+      FileWriter writer(out);
+      writer.begin_mapping("pingus-sprite");
       writer.write_string("image", System::cut_file_extension(System::basename(files[0].get_raw_path())) + ".png");
       writer.write_vector2i("offset", offset);
-      writer.end_section();
+      writer.end_mapping();
       out << std::endl;
       log_info("writing: %1%", outfile);
       System::write_file(outfile, out.str());

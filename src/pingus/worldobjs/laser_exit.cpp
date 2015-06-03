@@ -23,7 +23,7 @@
 
 namespace WorldObjs {
 
-LaserExit::LaserExit(const FileReader& reader) :
+LaserExit::LaserExit(const ReaderMapping& reader) :
   surface("traps/laser_exit"),
   pos(),
   killing(false)

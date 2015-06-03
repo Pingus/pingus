@@ -23,15 +23,17 @@
 namespace Editor {
 
 LevelObjPtr
-LevelObjFactory::create(const FileReader& reader)
+LevelObjFactory::create(const ReaderObject& reader_object)
 {
-  if (reader.get_name() == "group")
+  if (reader_object.get_name() == "group")
   {
     std::shared_ptr<GroupLevelObj> group = std::make_shared<GroupLevelObj>();
 
-    FileReader objects = reader.read_section("objects");
-    std::vector<FileReader> sections = objects.get_sections();
-    for(auto it = sections.begin(); it != sections.end(); ++it)
+    ReaderMapping reader = reader_object.get_mapping();
+    ReaderCollection collection;
+    reader.read_collection("objects", collection);
+    std::vector<ReaderObject> objects = collection.get_objects();
+    for(auto it = objects.begin(); it != objects.end(); ++it)
     {
       LevelObjPtr obj = create(*it);
       if (obj)
@@ -41,8 +43,10 @@ LevelObjFactory::create(const FileReader& reader)
     }
     return group;
   }
-  if (reader.get_name() == "prefab")
+  if (reader_object.get_name() == "prefab")
   {
+    ReaderMapping reader = reader_object.get_mapping();
+
     std::string name;
     reader.read_string("name", name);
 
@@ -56,8 +60,8 @@ LevelObjFactory::create(const FileReader& reader)
     }
     else
     {
-      FileReader overrides;
-      if (reader.read_section("overrides", overrides))
+      ReaderMapping overrides;
+      if (reader.read_mapping("overrides", overrides))
         group->set_overrides(overrides);
 
       group->set_orig_pos(p);
@@ -78,13 +82,14 @@ LevelObjFactory::create(const FileReader& reader)
     bool  tmp_bool;
 
     // Create new object
-    LevelObjPtr obj = std::make_shared<GenericLevelObj>(reader.get_name());
+    ReaderMapping reader = reader_object.get_mapping();
+    LevelObjPtr obj = std::make_shared<GenericLevelObj>(reader_object.get_name());
     attribs = obj->get_attribs();
 
     // All objects have a position - get that.
     if (!reader.read_vector("position", p))
     { // Workaround for lack of position for background
-      if (reader.get_name() == "surface-background")
+      if (reader_object.get_name() == "surface-background")
         p = Vector3f(0.f, 0.f, -150.f);
     }
 

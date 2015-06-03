@@ -32,7 +32,7 @@ private:
   Color color;
 
 public:
-  SolidColorBackground(const FileReader& reader);
+  SolidColorBackground(const ReaderMapping& reader);
 
   // FIXME: Make z_position editable
   float get_z_pos () const { return -10; }

@@ -20,7 +20,8 @@
 #include "math/vector3f.hpp"
 #include "pingus/action_name.hpp"
 
-class FileReader;
+class ReaderMapping;
+class ReaderObject;
 class Server;
 
 /** This class represents an event that the Server can recieve from
@@ -54,7 +55,7 @@ public:
   ServerEvent();
 
   /** Construct an server event from an xml subtree */
-  ServerEvent(const FileReader& reader);
+  ServerEvent(const ReaderObject& reader);
 
   void write(std::ostream& out) const;
 

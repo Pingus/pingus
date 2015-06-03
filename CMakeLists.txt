@@ -17,13 +17,15 @@
 cmake_minimum_required(VERSION 3.0)
 project(pingus)
 
-include(FindPkgConfig)
-include(FindOpenGL)
+find_package(Threads REQUIRED)
+find_package(PkgConfig REQUIRED)
+find_package(OpenGL REQUIRED)
 
 pkg_search_module(SDL2 REQUIRED sdl2)
 pkg_search_module(SDL2IMAGE REQUIRED SDL2_image>=2.0.0)
 pkg_search_module(SDL2MIXER REQUIRED SDL2_mixer>=2.0.0)
 pkg_search_module(PNG REQUIRED libpng)
+pkg_search_module(JSONCPP REQUIRED jsoncpp)
 
 file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/editor/*.cpp
@@ -74,17 +76,21 @@ add_library(logmich STATIC ${LOGMICH_SOURCES_CXX})
 add_library(libpingus STATIC ${PINGUS_SOURCES_CXX})
 set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
 target_compile_definitions(libpingus PUBLIC -DVERSION="0.8.0")
-
-add_executable(pingus src/main.cpp)
-target_link_libraries(pingus
-  libpingus
+target_link_libraries(libpingus PUBLIC
   logmich
   tinygettext
   ${SDL2_LIBRARIES}
   ${SDL2IMAGE_LIBRARIES}
   ${SDL2MIXER_LIBRARIES}
   ${PNG_LIBRARIES}
+  ${JSONCPP_LIBRARIES}
   ${OPENGL_LIBRARIES})
+target_include_directories(libpingus SYSTEM PUBLIC
+    ${JSONCPP_INCLUDE_DIRS})
+
+add_executable(pingus src/main.cpp)
+target_link_libraries(pingus
+  libpingus)
 
 file(GLOB PINGUS_TEST_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   test/*_test.cpp)
@@ -92,15 +98,7 @@ foreach(TEST_SOURCE ${PINGUS_TEST_SOURCES_CXX})
   string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" TEST_EXE ${TEST_SOURCE})
   add_executable(${TEST_EXE} ${TEST_SOURCE})
   set_target_properties(${TEST_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "test/")
-  target_link_libraries(${TEST_EXE}
-    libpingus
-    logmich
-    tinygettext
-    ${SDL2_LIBRARIES}
-    ${SDL2IMAGE_LIBRARIES}
-    ${SDL2MIXER_LIBRARIES}
-    ${PNG_LIBRARIES}
-    ${OPENGL_LIBRARIES})
+  target_link_libraries(${TEST_EXE} libpingus)
 endforeach(TEST_SOURCE)
 
 file(GLOB PINGUS_UTIL_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
@@ -109,15 +107,7 @@ foreach(UTIL_SOURCE ${PINGUS_UTIL_SOURCES_CXX})
   string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" UTIL_EXE ${UTIL_SOURCE})
   add_executable(${UTIL_EXE} ${UTIL_SOURCE})
   set_target_properties(${UTIL_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "test/")
-  target_link_libraries(${UTIL_EXE}
-    libpingus
-    logmich
-    tinygettext
-    ${SDL2_LIBRARIES}
-    ${SDL2IMAGE_LIBRARIES}
-    ${SDL2MIXER_LIBRARIES}
-    ${PNG_LIBRARIES}
-    ${OPENGL_LIBRARIES})
+  target_link_libraries(${UTIL_EXE} libpingus)
 endforeach(UTIL_SOURCE)
 
 file(GLOB PINGUS_EXTRA_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
@@ -126,15 +116,27 @@ foreach(EXTRA_SOURCE ${PINGUS_EXTRA_SOURCES_CXX})
   string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" EXTRA_EXE ${EXTRA_SOURCE})
   add_executable(${EXTRA_EXE} ${EXTRA_SOURCE})
   set_target_properties(${EXTRA_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "extra/")
-  target_link_libraries(${EXTRA_EXE}
-    libpingus
-    logmich
-    tinygettext
-    ${SDL2_LIBRARIES}
-    ${SDL2IMAGE_LIBRARIES}
-    ${SDL2MIXER_LIBRARIES}
-    ${PNG_LIBRARIES}
-    ${OPENGL_LIBRARIES})
+  target_link_libraries(${EXTRA_EXE} libpingus)
 endforeach(EXTRA_SOURCE)
+
+if(BUILD_TESTS)
+  # Note: include directories must use the absolute path as otherwise SYSTEM
+  # bugs out and cmake uses -I instead of -isystem
+  add_library(gtest STATIC ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/src/gtest-all.cc)
+  target_include_directories(gtest SYSTEM PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/include/
+    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/)
+
+  add_library(gtest_main STATIC ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/src/gtest_main.cc)
+  target_include_directories(gtest_main SYSTEM PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/include/
+    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/)
+
+  file(GLOB TEST_PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+    tests/*_test.cpp)
+  add_executable(test_pingus ${TEST_PINGUS_SOURCES_CXX})
+  target_include_directories(test_pingus PUBLIC src/ tests/)
+  target_link_libraries(test_pingus libpingus gtest gtest_main ${CMAKE_THREAD_LIBS_INIT})
+endif(BUILD_TESTS)
 
 # EOF #

@@ -39,8 +39,8 @@ public:
   WorldObjRenderer();
 
   Rect get_clip_rect() const;
-  void process(const std::vector<FileReader>& readers);
-  void process(const FileReader& reader);
+  void process(const std::vector<ReaderObject>& readers);
+  void process(const ReaderObject& reader);
   void blit(Surface& out_surface, int off_x = 0, int off_y = 0);
 
   Vector2i get_translate() const;
@@ -56,7 +56,7 @@ private:
                       const Vector3f& pos,
                       int repeat = 1);
 
-  void process_object_with_surface(const FileReader& reader);
+  void process_object_with_surface(const ReaderObject& reader);
 };
 
 #endif

@@ -23,8 +23,6 @@
 #include "pingus/options.hpp"
 #include "tinygettext/dictionary_manager.hpp"
 #include "util/log.hpp"
-#include "util/sexpr_file_reader.hpp"
-#include "util/sexpr_file_writer.hpp"
 #include "util/system.hpp"
 #include "engine/sound/sound.hpp"
 

@@ -49,7 +49,7 @@ public:
   {
   }
 
-  Drawable(const FileReader& reader) :
+  Drawable(const ReaderMapping& reader) :
     name(),
     visible(true)
   {

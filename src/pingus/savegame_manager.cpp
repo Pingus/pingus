@@ -20,8 +20,8 @@
 
 #include "lisp/parser.hpp"
 #include "util/log.hpp"
-#include "util/sexpr_file_reader.hpp"
-#include "util/sexpr_file_writer.hpp"
+#include "util/file_reader.hpp"
+#include "util/file_writer.hpp"
 #include "util/system.hpp"
 
 SavegameManager* SavegameManager::instance_ = 0;
@@ -46,18 +46,19 @@ SavegameManager::SavegameManager(const std::string& arg_filename) :
   }
   else
   {
-    FileReader reader = FileReader::parse(filename);
+    ReaderObject reader = FileReader::parse(filename);
     if (reader.get_name() != "pingus-savegame")
     {
       log_error("%1%: not a (pingus-savegame) file", filename);
     }
     else
     {
-      const std::vector<FileReader>& sections = reader.get_sections();
-      for(std::vector<FileReader>::const_iterator i = sections.begin();
-          i != sections.end(); ++i)
+      ReaderCollection levels_reader;
+      reader.get_mapping().read_collection("levels", levels_reader);
+      auto sections = levels_reader.get_objects();
+      for(auto i = sections.begin(); i != sections.end(); ++i)
       {
-        auto savegame = std::make_unique<Savegame>(*i);
+        auto savegame = std::make_unique<Savegame>(i->get_mapping());
         SavegameTable::iterator j = find(savegame->get_filename());
         if (j != savegames.end())
         {
@@ -135,16 +136,16 @@ void
 SavegameManager::flush()
 {
   std::ostringstream out;
-  SExprFileWriter writer(out);
+  FileWriter writer(out);
 
-  writer.begin_section("pingus-savegame");
+  writer.begin_object("pingus-savegame");
 
   for(SavegameTable::iterator i = savegames.begin(); i != savegames.end(); ++i)
   {
     (*i)->write_sexpr(writer);
   }
 
-  writer.end_section(); // pingus-savegame
+  writer.end_object(); // pingus-savegame
 
   System::write_file(filename, out.str());
 }

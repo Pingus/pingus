@@ -17,15 +17,9 @@
 #ifndef HEADER_PINGUS_UTIL_OVERRIDE_FILE_READER_HPP
 #define HEADER_PINGUS_UTIL_OVERRIDE_FILE_READER_HPP
 
-#include "util/file_reader.hpp"
+#include "util/file_reader_impl.hpp"
 
-/** */
-class OverrideFileReader : public FileReader
-{
-public:
-  OverrideFileReader(const FileReader& reader,
-                     const FileReader& overrides);
-};
+ReaderMapping make_override_mapping(const ReaderMapping& reader, const ReaderMapping& overrides);
 
 #endif
 

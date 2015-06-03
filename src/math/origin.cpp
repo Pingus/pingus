@@ -88,6 +88,7 @@ std::string origin2string(Origin origin)
 
     default:
       assert(!"never reached");
+      return {};
   }
 }
 

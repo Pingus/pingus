@@ -22,7 +22,7 @@
 
 namespace WorldObjs {
 
-Liquid::Liquid(const FileReader& reader) :
+Liquid::Liquid(const ReaderMapping& reader) :
   sur(),
   pos(),
   old_width_handling(false),

@@ -16,10 +16,9 @@
 
 #include "pingus/stat_manager.hpp"
 
-#include "lisp/parser.hpp"
 #include "util/log.hpp"
-#include "util/sexpr_file_reader.hpp"
-#include "util/sexpr_file_writer.hpp"
+#include "util/file_reader.hpp"
+#include "util/file_writer.hpp"
 #include "util/string_util.hpp"
 #include "util/system.hpp"
 
@@ -73,32 +72,21 @@ StatManager::load(const std::string& filename)
     save(filename);
   }
 
-  std::shared_ptr<lisp::Lisp> sexpr;
-  try {
-    sexpr = lisp::Parser::parse(filename);
-  }
-  catch (const std::runtime_error& e) {
-    std::cerr << "SavegameManager: " << e.what() << std::endl;
-    return;
-  }
-  if (!sexpr)
-  {
-    log_error("couldn't find savegame file '%1%', starting with an empty one.", filename);
-    return;
-  }
-
-  SExprFileReader reader(sexpr->get_list_elem(0));
+  ReaderObject reader = FileReader::parse(filename);
   if (reader.get_name() != "pingus-stats")
   {
     std::cerr << "Error: " << filename << ": not a (pingus-stats) file" << std::endl;
     return;
   }
-
-  const std::vector<std::string>& section_names = reader.get_section_names();
-  for(std::vector<std::string>::const_iterator i = section_names.begin();
-      i != section_names.end(); ++i)
+  else
   {
-    reader.read_string(i->c_str(), stats[*i]);
+    ReaderMapping mapping = reader.get_mapping();
+    const std::vector<std::string>& section_names = mapping.get_keys();
+    for(std::vector<std::string>::const_iterator i = section_names.begin();
+        i != section_names.end(); ++i)
+    {
+      mapping.read_string(i->c_str(), stats[*i]);
+    }
   }
 }
 
@@ -112,9 +100,9 @@ void
 StatManager::save(const std::string& filename)
 {
   std::ostringstream out;
-  SExprFileWriter writer(out);
+  FileWriter writer(out);
 
-  writer.begin_section("pingus-stats");
+  writer.begin_object("pingus-stats");
 
   for (Table::iterator i = stats.begin(); i != stats.end(); ++i)
   {
@@ -122,7 +110,7 @@ StatManager::save(const std::string& filename)
       writer.write_string(i->first.c_str(), i->second);
   }
 
-  writer.end_section();
+  writer.end_object();
 
   System::write_file(filename, out.str());
 }

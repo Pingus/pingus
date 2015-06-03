@@ -83,11 +83,9 @@ World::add_object (WorldObj* obj)
 void
 World::init_worldobjs(const PingusLevel& plf)
 {
-  const std::vector<FileReader>& objects = plf.get_objects();
+  const std::vector<ReaderObject>& objects = plf.get_objects();
 
-  for (std::vector<FileReader>::const_iterator i = objects.begin();
-       i != objects.end ();
-       ++i)
+  for (auto i = objects.begin(); i != objects.end (); ++i)
   {
     std::vector<WorldObj*> objs = WorldObjFactory::instance().create(*i);
     for(auto obj = objs.begin(); obj != objs.end(); ++obj)
@@ -105,7 +103,7 @@ World::init_worldobjs(const PingusLevel& plf)
 
   // Drawing all world objs to the colmap, gfx, or what ever the
   // objects want to do
-  for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
+  for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
   {
     (*obj)->on_startup();
   }
@@ -113,7 +111,7 @@ World::init_worldobjs(const PingusLevel& plf)
 
 World::~World()
 {
-  for (WorldObjIter it = world_obj.begin(); it != world_obj.end(); ++it) {
+  for (auto it = world_obj.begin(); it != world_obj.end(); ++it) {
     delete *it;
   }
 }
@@ -125,7 +123,7 @@ World::draw (SceneContext& gc)
 
   gc.light().fill_screen(Color(ambient_light));
 
-  for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
+  for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
   {
     (*obj)->draw(gc);
   }
@@ -136,7 +134,7 @@ World::draw_smallmap(SmallMap* smallmap)
 {
   WorldObj::set_world(this);
 
-  for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
+  for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
   {
     (*obj)->draw_smallmap (smallmap);
   }
@@ -176,7 +174,7 @@ World::update()
   // Let the pingus catch each other and
   // Let the traps catch the pingus and
   // Let the exit catch the pingus
-  for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
+  for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
   {
     // catch_pingu() is now done in relevant update() if WorldObj
     // needs to catch pingus.
@@ -297,7 +295,7 @@ World::remove(const CollisionMask& mask, int x, int y)
 WorldObj*
 World::get_worldobj(const std::string& id)
 {
-  for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
+  for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
   {
     if ((*obj)->get_id() == id)
       return *obj;
@@ -311,7 +309,7 @@ World::get_start_pos(int player_id)
   // FIXME: Workaround for lack of start-pos
   Vector2i pos;
   int num_entrances = 0;
-  for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
+  for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
   {
     WorldObjs::Entrance* entrance = dynamic_cast<WorldObjs::Entrance*>(*obj);
     if (entrance && entrance->get_owner_id() == player_id)

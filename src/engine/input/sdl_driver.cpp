@@ -46,7 +46,7 @@ SDLDriver::~SDLDriver()
 }
 
 std::unique_ptr<Keyboard>
-SDLDriver::create_keyboard(const FileReader& reader, Control* parent)
+SDLDriver::create_keyboard(const ReaderObject& reader_object, Control* parent)
 {
   auto keyboard = std::make_unique<Keyboard>(parent);
   keyboard_binding = keyboard.get();
@@ -54,11 +54,12 @@ SDLDriver::create_keyboard(const FileReader& reader, Control* parent)
 }
 
 std::unique_ptr<Button>
-SDLDriver::create_button(const FileReader& reader, Control* parent)
+SDLDriver::create_button(const ReaderObject& reader_object, Control* parent)
 {
-  //log_info("SDL: " << reader.get_name());
-  if (reader.get_name() == "sdl:joystick-button")
+  //log_info("SDL: " << reader_object.get_name());
+  if (reader_object.get_name() == "sdl:joystick-button")
   {
+    ReaderMapping reader = reader_object.get_mapping();
     JoystickButtonBinding binding;
 
     reader.read_int("device", binding.device);
@@ -77,8 +78,9 @@ SDLDriver::create_button(const FileReader& reader, Control* parent)
       return {};
     }
   }
-  else if (reader.get_name() == "sdl:mouse-button")
+  else if (reader_object.get_name() == "sdl:mouse-button")
   {
+    ReaderMapping reader = reader_object.get_mapping();
     auto button = std::make_unique<Button>(parent);
 
     MouseButtonBinding binding;
@@ -88,8 +90,10 @@ SDLDriver::create_button(const FileReader& reader, Control* parent)
 
     return std::move(button);
   }
-  else if (reader.get_name() == "sdl:keyboard-button")
+  else if (reader_object.get_name() == "sdl:keyboard-button")
   {
+    ReaderMapping reader = reader_object.get_mapping();
+
     std::string key_str;
     if (reader.read_string("key", key_str))
     {
@@ -124,10 +128,12 @@ SDLDriver::create_button(const FileReader& reader, Control* parent)
 }
 
 std::unique_ptr<Axis>
-SDLDriver::create_axis(const FileReader& reader, Control* parent)
+SDLDriver::create_axis(const ReaderObject& reader_object, Control* parent)
 {
-  if (reader.get_name() == "sdl:joystick-axis")
+  if (reader_object.get_name() == "sdl:joystick-axis")
   {
+    ReaderMapping reader = reader_object.get_mapping();
+
     JoystickAxisBinding binding;
 
     reader.read_int("device", binding.device);
@@ -154,9 +160,9 @@ SDLDriver::create_axis(const FileReader& reader, Control* parent)
 }
 
 std::unique_ptr<Scroller>
-SDLDriver::create_scroller(const FileReader& reader, Control* parent)
+SDLDriver::create_scroller(const ReaderObject& reader_object, Control* parent)
 {
-  if (reader.get_name() == "sdl:mouse-scroller")
+  if (reader_object.get_name() == "sdl:mouse-scroller")
   {
     auto scroller = std::make_unique<Scroller>(parent);
 
@@ -173,9 +179,9 @@ SDLDriver::create_scroller(const FileReader& reader, Control* parent)
 }
 
 std::unique_ptr<Pointer>
-SDLDriver::create_pointer(const FileReader& reader, Control* parent)
+SDLDriver::create_pointer(const ReaderObject& reader_object, Control* parent)
 {
-  if (reader.get_name() == "sdl:mouse-pointer")
+  if (reader_object.get_name() == "sdl:mouse-pointer")
   {
     auto pointer = std::make_unique<Pointer>(parent);
 

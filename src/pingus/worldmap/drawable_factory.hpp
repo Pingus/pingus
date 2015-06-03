@@ -28,7 +28,7 @@ class DrawableFactory
 private:
   public:
   /** Create a new drawable */
-  static std::unique_ptr<Drawable> create(const FileReader& reader);
+  static std::unique_ptr<Drawable> create(const ReaderObject& reader);
 private:
   DrawableFactory (const DrawableFactory&);
   DrawableFactory& operator= (const DrawableFactory&);

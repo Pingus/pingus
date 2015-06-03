@@ -65,7 +65,6 @@ private:
   unsigned int armageddon_count;
 
   std::vector<WorldObj*> world_obj;
-  typedef std::vector<WorldObj*>::iterator WorldObjIter;
 
   Particles::PinguParticleHolder* pingu_particle_holder;
   Particles::RainParticleHolder*  rain_particle_holder;

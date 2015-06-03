@@ -13,38 +13,47 @@
 
 int main(int argc, char** argv)
 {
-  g_path_manager.set_path("data");
-  Resource::init();
-
-  Display::create_window(NULL_FRAMEBUFFER, Size(640, 480), false, false);
-
-  Fonts::init();
-  Sound::PingusSound::init();
-
-  for(int i = 1; i < argc; ++i)
+  if (argc < 2)
   {
-    try
-    {
-      std::cout << "Processing: " << argv[i] << " " << i << "/" << (argc-1) << std::endl;
-      Pathname filename(argv[i], Pathname::SYSTEM_PATH);
-
-      std::cout << "Loading: " << filename.str() << std::endl;
-      std::unique_ptr<Editor::EditorLevel> level = Editor::EditorLevel::from_level_file(filename);
-      std::cout << "Saving:  " << argv[i] << std::endl;
-      level->save_level(argv[i]);
-    }
-    catch(const std::exception& err)
-    {
-      log_error("%1%: exception catched: %2%", argv[i], err.what());
-    }
+    std::cerr << "Usage: " << argv[0] << " FILE...\n";
+    std::cerr << "Load a level from file and save it to the same file again.\n"
+              << "Used for converting levels from an old format to a new one.\n";
+    return 1;
   }
+  else
+  {
+    g_path_manager.set_path("data");
+    Resource::init();
 
-  Sound::PingusSound::deinit();
-  Fonts::deinit();
-  Resource::deinit();
+    Display::create_window(NULL_FRAMEBUFFER, Size(640, 480), false, false);
 
-  return 0;
+    Fonts::init();
+    Sound::PingusSound::init();
 
+    for(int i = 1; i < argc; ++i)
+    {
+      try
+      {
+        std::cout << "Processing: " << argv[i] << " " << i << "/" << (argc-1) << std::endl;
+        Pathname filename(argv[i], Pathname::SYSTEM_PATH);
+
+        std::cout << "Loading: " << filename.str() << std::endl;
+        std::unique_ptr<Editor::EditorLevel> level = Editor::EditorLevel::from_level_file(filename);
+        std::cout << "Saving:  " << argv[i] << std::endl;
+        level->save_level(argv[i]);
+      }
+      catch(const std::exception& err)
+      {
+        log_error("%1%: exception catched: %2%", argv[i], err.what());
+      }
+    }
+
+    Sound::PingusSound::deinit();
+    Fonts::deinit();
+    Resource::deinit();
+
+    return 0;
+  }
 }
 
 /* EOF */

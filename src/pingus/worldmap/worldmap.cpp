@@ -26,7 +26,7 @@
 #include "pingus/worldmap/level_dot.hpp"
 #include "pingus/worldmap/pingus.hpp"
 #include "util/log.hpp"
-#include "util/sexpr_file_writer.hpp"
+#include "util/file_writer.hpp"
 #include "util/pathname.hpp"
 
 namespace WorldmapNS {
@@ -48,9 +48,8 @@ Worldmap::Worldmap(const Pathname& filename) :
 
   worldmap = PingusWorldmap(filename);
 
-  // Create all objects
-  const std::vector<FileReader>& object_reader = worldmap.get_objects();
-  for(std::vector<FileReader>::const_iterator i = object_reader.begin(); i != object_reader.end(); ++i)
+  std::vector<ReaderObject> object_reader = worldmap.get_objects();
+  for(auto i = object_reader.begin(); i != object_reader.end(); ++i)
   {
     std::unique_ptr<Drawable> drawable = DrawableFactory::create(*i);
     if (drawable)
@@ -63,7 +62,7 @@ Worldmap::Worldmap(const Pathname& filename) :
     }
   }
 
-  FileReader path_graph_reader = worldmap.get_graph();
+  ReaderMapping path_graph_reader = worldmap.get_graph();
   path_graph.reset(new PathGraph(this, path_graph_reader));
 
   default_node = path_graph->lookup_node(worldmap.get_default_node());
@@ -168,14 +167,14 @@ Worldmap::on_primary_button_press(int x, int y)
 
   if (globals::developer_mode)
   {
-    SExprFileWriter writer(std::cout);
-    writer.begin_section("leveldot");
+    FileWriter writer(std::cout);
+    writer.begin_mapping("leveldot");
     writer.write_string("levelname", "");
-    writer.begin_section("dot");
+    writer.begin_mapping("dot");
     writer.write_string("name", "leveldot_X");
     writer.write_vector("position", click_pos);
-    writer.end_section();
-    writer.end_section();
+    writer.end_mapping();
+    writer.end_mapping();
     std::cout << std::endl;
     std::cout << std::endl;
   }

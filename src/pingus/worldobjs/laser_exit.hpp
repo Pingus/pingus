@@ -38,7 +38,7 @@ private:
   bool killing;
 
 public:
-  LaserExit(const FileReader& reader);
+  LaserExit(const ReaderMapping& reader);
 
   float get_z_pos () const;
   void set_pos(const Vector3f& p) { pos = p; }

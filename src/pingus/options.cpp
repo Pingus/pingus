@@ -23,8 +23,8 @@
 #include "util/log.hpp"
 #include "util/pathname.hpp"
 #include "util/raise_exception.hpp"
-#include "util/sexpr_file_reader.hpp"
-#include "util/sexpr_file_writer.hpp"
+#include "util/file_reader.hpp"
+#include "util/file_writer.hpp"
 #include "util/system.hpp"
 
 std::string framebuffer_type_to_string(FramebufferType type)
@@ -77,18 +77,18 @@ FramebufferType framebuffer_type_from_string(const std::string& str)
 Options
 Options::from_file(const Pathname& filename)
 {
-  FileReader reader = FileReader::parse(filename);
+  ReaderObject reader = FileReader::parse(filename);
 
   if (reader.get_name() != "pingus-config")
   {
     raise_exception(std::runtime_error, "Error: " << filename << ": not a (pingus-config) file");
   }
 
-  return from_file_reader(reader);
+  return from_file_reader(reader.get_mapping());
 }
 
 Options
-Options::from_file_reader(const FileReader& reader)
+Options::from_file_reader(const ReaderMapping& reader)
 {
   Options opts;
 
@@ -181,9 +181,9 @@ void
 Options::save(const Pathname& filename) const
 {
   std::ostringstream out;
-  SExprFileWriter writer(out);
+  FileWriter writer(out);
 
-  writer.begin_section("pingus-config");
+  writer.begin_object("pingus-config");
 
   if (framebuffer_type.is_set())
     writer.write_enum("renderer", framebuffer_type.get(), framebuffer_type_to_string);
@@ -230,7 +230,7 @@ Options::save(const Pathname& filename) const
   if (drag_drop_scrolling.is_set())
     writer.write_bool("drag-drop-scrolling", drag_drop_scrolling.get());
 
-  writer.end_section(); // pingus-config
+  writer.end_object(); // pingus-config
 
   out << std::endl;
 

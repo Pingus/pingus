@@ -14,30 +14,54 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "util/sexpr_file_writer.hpp"
+#include "util/sexpr_file_writer_impl.hpp"
 
 #include <map>
 
 #include "util/pathname.hpp"
 
-SExprFileWriter::SExprFileWriter(std::ostream& out_) :
+SExprFileWriterImpl::SExprFileWriterImpl(std::ostream& out_) :
   out(&out_),
   level(0)
 {
 }
 
-SExprFileWriter::~SExprFileWriter()
+SExprFileWriterImpl::~SExprFileWriterImpl()
 {
 }
 
 std::string
-SExprFileWriter::indent()
+SExprFileWriterImpl::indent()
 {
   return std::string(level*2, ' ');
 }
 
 void
-SExprFileWriter::begin_section(const char* name)
+SExprFileWriterImpl::begin_collection(const char* name)
+{
+  begin_mapping(name);
+}
+
+void
+SExprFileWriterImpl::end_collection()
+{
+  end_mapping();
+}
+
+void
+SExprFileWriterImpl::begin_object(const char* type)
+{
+  begin_mapping(type);
+}
+
+void
+SExprFileWriterImpl::end_object()
+{
+  end_mapping();
+}
+
+void
+SExprFileWriterImpl::begin_mapping(const char* name)
 {
   if (level != 0)
     (*out) << std::endl;
@@ -47,26 +71,26 @@ SExprFileWriter::begin_section(const char* name)
 }
 
 void
-SExprFileWriter::end_section()
+SExprFileWriterImpl::end_mapping()
 {
   --level;
   (*out) << ")";
 }
 
 void
-SExprFileWriter::write_int(const char* name, int value)
+SExprFileWriterImpl::write_int(const char* name, int value)
 {
   (*out) << "\n" << indent() << "(" << name << " " << value << ")";
 }
 
 void
-SExprFileWriter::write_float(const char* name, float value)
+SExprFileWriterImpl::write_float(const char* name, float value)
 {
   (*out) << "\n" << indent() << "(" << name << " " << value << ")";
 }
 
 void
-SExprFileWriter::write_colorf(const char* name, const Color& color)
+SExprFileWriterImpl::write_colorf(const char* name, const Color& color)
 {
   (*out) << "\n" << indent() << "(" << name << " "
          << static_cast<float>(color.r)/255.0f << " "
@@ -76,7 +100,7 @@ SExprFileWriter::write_colorf(const char* name, const Color& color)
 }
 
 void
-SExprFileWriter::write_colori(const char* name, const Color& color)
+SExprFileWriterImpl::write_colori(const char* name, const Color& color)
 {
   (*out) << "\n" << indent() << "(" << name << " "
          << static_cast<int>(color.r) << " "
@@ -86,13 +110,13 @@ SExprFileWriter::write_colori(const char* name, const Color& color)
 }
 
 void
-SExprFileWriter::write_bool(const char* name, bool value)
+SExprFileWriterImpl::write_bool(const char* name, bool value)
 {
   (*out) << "\n" << indent() << "(" << name << " " << (value ? "#t" : "#f") << ")";
 }
 
 void
-SExprFileWriter::write_string(const char* name, const std::string& value)
+SExprFileWriterImpl::write_string(const char* name, const std::string& value)
 {
   // Perform basic XML encoding (turns apostrophes into &apos;, etc.
   std::string new_value = value;
@@ -117,26 +141,26 @@ SExprFileWriter::write_string(const char* name, const std::string& value)
 }
 
 void
-SExprFileWriter::write_vector(const char* name, const Vector3f& value)
+SExprFileWriterImpl::write_vector(const char* name, const Vector3f& value)
 {
   (*out) << "\n" << indent() << "(" << name << " "
          << value.x << " " << value.y << " " << value.z << ")";
 }
 
 void
-SExprFileWriter::write_size(const char* name, const Size& size)
+SExprFileWriterImpl::write_size(const char* name, const Size& size)
 {
   (*out) << "\n" << indent() << "(" << name << " " << size.width << " " << size.height << ")";
 }
 
 void
-SExprFileWriter::write_vector2i(const char* name, const Vector2i& v)
+SExprFileWriterImpl::write_vector2i(const char* name, const Vector2i& v)
 {
   (*out) << "\n" << indent() << "(" << name << " " << v.x << " " << v.y << ")";
 }
 
 void
-SExprFileWriter::write_path(const char* name, const Pathname& path)
+SExprFileWriterImpl::write_path(const char* name, const Pathname& path)
 {
   write_string(name, path.get_raw_path());
 }

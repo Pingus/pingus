@@ -30,7 +30,7 @@ protected:
   Vector3f pos;
 
 public:
-  Dot(const FileReader& reader);
+  Dot(const ReaderMapping& reader);
 
   /** Draw stuff that should be displayed if the mouse is over the dot */
   virtual void draw_hover(DrawingContext& gc) =0;

@@ -22,7 +22,8 @@
 #include "math/size.hpp"
 #include "util/pathname.hpp"
 
-class FileReader;
+class ReaderObject;
+class ReaderMapping;
 
 template<class T>
 class Value
@@ -78,7 +79,7 @@ FramebufferType framebuffer_type_from_string(const std::string& str);
 
 struct Options
 {
-  static Options from_file_reader(const FileReader& reader);
+  static Options from_file_reader(const ReaderMapping& reader);
   static Options from_file(const Pathname& filename);
 
   // Display

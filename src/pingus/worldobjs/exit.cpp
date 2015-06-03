@@ -26,7 +26,7 @@
 
 namespace WorldObjs {
 
-Exit::Exit(const FileReader& reader) :
+Exit::Exit(const ReaderMapping& reader) :
   desc(),
   pos(),
   owner_id(),

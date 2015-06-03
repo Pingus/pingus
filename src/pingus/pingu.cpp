@@ -471,7 +471,7 @@ Pingu::create_action(ActionName::Enum action_)
     case ActionName::SUPERMAN:  return std::make_shared<Superman>(this);
     case ActionName::WAITER:    return std::make_shared<Waiter>(this);
     case ActionName::WALKER:    return std::make_shared<Walker>(this);
-    default: assert(!"Invalid action name provied");
+    default: assert(!"Invalid action name provied"); return {};
   }
 }
 

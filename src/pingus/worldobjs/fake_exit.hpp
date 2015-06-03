@@ -42,7 +42,7 @@ private:
   bool smashing;
 
 public:
-  FakeExit(const FileReader& reader);
+  FakeExit(const ReaderMapping& reader);
 
   float get_z_pos () const;
   void set_pos(const Vector3f& p) { pos = p; }

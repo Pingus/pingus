@@ -47,7 +47,7 @@ protected:
   int    last_direction;
 
 public:
-  Entrance(const FileReader& reader);
+  Entrance(const ReaderMapping& reader);
   ~Entrance();
 
   float get_z_pos () const;

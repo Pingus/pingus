@@ -16,31 +16,40 @@
 
 #include "util/overrride_file_reader.hpp"
 
+#include <set>
+
+#include "util/file_reader.hpp"
 #include "util/file_reader_impl.hpp"
 #include "util/log.hpp"
 
-class OverrideFileReaderImpl : public FileReaderImpl
+class OverrideReaderMappingImpl : public ReaderMappingImpl
 {
 private:
-  FileReader m_reader;
-  FileReader m_overrides;
+  ReaderMapping m_reader;
+  ReaderMapping m_overrides;
 
 public:
-  OverrideFileReaderImpl(const FileReader& reader,
-                         const FileReader& overrides) :
+  OverrideReaderMappingImpl(const ReaderMapping& reader,
+                            const ReaderMapping& overrides) :
     m_reader(reader),
     m_overrides(overrides)
   {
   }
 
-  std::string get_name() const
+  std::vector<std::string> get_keys() const
   {
-    return m_reader.get_name();
+    std::set<std::string> result;
+
+    auto lst = m_reader.get_keys();
+    result.insert(lst.begin(), lst.end());
+    lst = m_overrides.get_keys();
+    result.insert(lst.begin(), lst.end());
+
+    return std::vector<std::string>(result.begin(), result.end());
   }
 
   bool read_int(const char* name, int& v) const
   {
-    std::vector<std::string> lst = get_section_names();
     if (m_overrides.read_int(name, v))
     {
       return true;
@@ -163,58 +172,57 @@ public:
     }
   }
 
-  bool read_desc(const char* name, ResDescriptor& desc) const
+  bool read_mapping(const char* name, ReaderMapping& result) const
   {
-    if (m_overrides.read_desc(name, desc))
+    ReaderMapping overwrite_result;
+    if (m_overrides.read_mapping(name, overwrite_result))
     {
-      return true;
-    }
-    else
-    {
-      return m_reader.read_desc(name, desc);
-    }
-  }
-
-  bool read_section(const char* name, FileReader& reader) const
-  {
-    if (m_overrides.read_section(name, reader))
-    {
-      if (m_reader.read_section(name, reader))
+      if (m_reader.read_mapping(name, result))
       {
-        reader = OverrideFileReader(reader, m_overrides);
+        result = make_override_mapping(result, overwrite_result);
+        return true;
       }
+      else
+      {
+        result = overwrite_result;
+        return true;
+      }
+    }
+    else
+    {
+      return m_reader.read_mapping(name, result);
+    }
+  }
+
+  bool read_collection(const char* key, ReaderCollection& result) const
+  {
+    if (m_overrides.read_collection(key, result))
+    {
       return true;
     }
     else
     {
-      return m_reader.read_section(name, reader);
+      return m_reader.read_collection(key, result);
     }
   }
 
-  std::vector<FileReader> get_sections() const
+  bool read_object(const char* key, ReaderObject& result) const
   {
-    std::vector<FileReader> lst = m_reader.get_sections();
-    std::vector<FileReader> result;
-
-    for(auto it = lst.begin(); it != lst.end(); ++it)
+    if (m_overrides.read_object(key, result))
     {
-      result.push_back(OverrideFileReader(*it, m_overrides));
+      return true;
     }
-
-    return result;
-  }
-
-  std::vector<std::string> get_section_names() const
-  {
-    return m_reader.get_section_names();
+    else
+    {
+      return m_reader.read_object(key, result);
+    }
   }
 };
 
-
-OverrideFileReader::OverrideFileReader(const FileReader& reader,
-                                       const FileReader& overrides) :
-  FileReader(std::shared_ptr<FileReaderImpl>(new OverrideFileReaderImpl(reader, overrides)))
+ReaderMapping
+make_override_mapping(const ReaderMapping& reader, const ReaderMapping& overrides)
 {
+  return ReaderMapping(std::make_shared<OverrideReaderMappingImpl>(reader, overrides));
 }
 
 /* EOF */

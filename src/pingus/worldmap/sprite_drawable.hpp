@@ -34,7 +34,7 @@ private:
   bool       auto_uncover;
 
 public:
-  SpriteDrawable(const FileReader& reader);
+  SpriteDrawable(const ReaderMapping& reader);
 
   void update(float delta);
   void draw(DrawingContext&);

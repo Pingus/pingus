@@ -30,10 +30,11 @@ class DotFactory
 private:
 public:
   /** Create a Dot from a given piece of XML */
-  static std::unique_ptr<Dot> create(const FileReader& reader);
+  static std::unique_ptr<Dot> create(const ReaderObject& reader);
+
 private:
-  DotFactory (const DotFactory&);
-  DotFactory& operator= (const DotFactory&);
+  DotFactory(const DotFactory&) = delete;
+  DotFactory& operator=(const DotFactory&) = delete;
 };
 
 } // namespace WorldmapNS

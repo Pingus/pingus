@@ -33,18 +33,21 @@ int main(int argc, char** argv)
     }
     else if (filename.has_extension(".story"))
     {
-      FileReader reader = FileReader::parse(filename);
+      ReaderObject reader_object = FileReader::parse(filename);
+      ReaderMapping reader = reader_object.get_mapping();
+
       std::string tmp;
       if (reader.read_string("title", tmp))
       {
         emit_msgid(tmp);
       }
 
-      FileReader all_pages = reader.read_section("pages");
-      const auto& childs = all_pages.get_sections();
+      ReaderCollection all_pages = reader.read_collection("pages");
+      const auto& childs = all_pages.get_objects();
       for(auto it = childs.begin(); it != childs.end(); ++it)
       {
-        if (it->read_string("text", tmp))
+        ReaderMapping r = it->get_mapping();
+        if (r.read_string("text", tmp))
         {
           emit_msgid(tmp);
         }

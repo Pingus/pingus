@@ -26,19 +26,21 @@
 PrefabFile
 PrefabFile::from_path(const Pathname& filename)
 {
-  FileReader reader = FileReader::parse(filename);
+  ReaderObject reader_object = FileReader::parse(filename);
 
-  if (reader.get_name() != "pingus-prefab")
+  if (reader_object.get_name() != "pingus-prefab")
   {
     raise_exception(std::runtime_error, "Error: " << filename.str() << ": not a 'pingus-prefab' file");
   }
   else
   {
-    FileReader overrides;
-    reader.read_section("overrides", overrides);
+    ReaderMapping reader = reader_object.get_mapping();
 
-    FileReader objects;
-    if (!reader.read_section("objects", objects) || objects.get_sections().empty())
+    ReaderMapping overrides;
+    reader.read_mapping("overrides", overrides);
+
+    ReaderCollection objects;
+    if (!reader.read_collection("objects", objects) || objects.get_objects().empty())
     {
       raise_exception(std::runtime_error, "Error: " << filename.str() << ": empty prefab file");
     }
@@ -46,7 +48,7 @@ PrefabFile::from_path(const Pathname& filename)
     {
       // FIXME: Hacky way to get the Prefab name
       PrefabFile prefab(System::cut_file_extension(filename.get_raw_path()),
-                        objects.get_sections(), overrides);
+                        objects.get_objects(), overrides);
       return prefab;
     }
   }
@@ -59,21 +61,22 @@ PrefabFile::from_resource(const std::string& name)
   return from_path(filename);
 }
 
-PrefabFile::PrefabFile(const std::string& name, const std::vector<FileReader>& objects,
-                       const FileReader& overrides) :
+PrefabFile::PrefabFile(const std::string& name,
+                       const std::vector<ReaderObject>& objects,
+                       const ReaderMapping& overrides) :
   m_name(name),
   m_objects(objects),
   m_overrides(overrides)
 {
 }
 
-const std::vector<FileReader>&
+std::vector<ReaderObject>
 PrefabFile::get_objects() const
 {
   return m_objects;
 }
 
-FileReader
+ReaderMapping
 PrefabFile::get_overrides() const
 {
   return m_overrides;

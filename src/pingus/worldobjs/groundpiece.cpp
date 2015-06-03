@@ -20,7 +20,7 @@
 
 namespace WorldObjs {
 
-Groundpiece::Groundpiece(const FileReader& reader) :
+Groundpiece::Groundpiece(const ReaderMapping& reader) :
   pos(),
   desc(),
   gptype()

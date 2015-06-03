@@ -20,35 +20,56 @@
 #include <string>
 #include <vector>
 
-class Size;
 class Color;
-class Vector3f;
+class Rect;
+class Size;
 class Vector2i;
+class Vector3f;
 
 class FileReader;
+class ReaderCollection;
+class ReaderMapping;
+class ReaderObject;
 class ResDescriptor;
 
-class FileReaderImpl
+class ReaderObjectImpl
 {
 public:
-  FileReaderImpl() {}
-  virtual ~FileReaderImpl() {}
+  virtual ~ReaderObjectImpl() {}
 
-  virtual std::string get_name()                           const =0;
-  virtual bool read_int   (const char* name, int&)         const =0;
-  virtual bool read_float (const char* name, float&)       const =0;
-  virtual bool read_bool  (const char* name, bool&)        const =0;
-  virtual bool read_string(const char* name, std::string&) const =0;
-  virtual bool read_vector(const char* name, Vector3f&)    const =0;
-  virtual bool read_size  (const char* name, Size&)        const =0;
-  virtual bool read_vector2i(const char* name, Vector2i&)  const =0;
-  virtual bool read_rect  (const char* name, Rect&)        const =0;
-  virtual bool read_colorf(const char* name, Color&)       const =0;
-  virtual bool read_colori(const char* name, Color&)       const =0;
-  virtual bool read_desc  (const char* name, ResDescriptor&) const =0;
-  virtual bool read_section(const char* name, FileReader&)   const =0;
-  virtual std::vector<FileReader> get_sections() const =0;
-  virtual std::vector<std::string> get_section_names() const =0;
+  virtual std::string get_name() const = 0;
+  virtual ReaderMapping get_mapping() const = 0;
+};
+
+class ReaderCollectionImpl
+{
+public:
+  virtual ~ReaderCollectionImpl() {}
+
+  virtual std::vector<ReaderObject> get_objects() const = 0;
+};
+
+class ReaderMappingImpl
+{
+public:
+  virtual ~ReaderMappingImpl() {}
+
+  virtual std::vector<std::string> get_keys() const = 0;
+
+  virtual bool read_int(const char* key, int&) const = 0;
+  virtual bool read_float(const char* key, float&) const = 0;
+  virtual bool read_bool(const char* key, bool&) const = 0;
+  virtual bool read_string(const char* key, std::string&) const = 0;
+  virtual bool read_vector(const char* key, Vector3f&) const = 0;
+  virtual bool read_size(const char* key, Size&) const = 0;
+  virtual bool read_vector2i(const char* key, Vector2i&) const = 0;
+  virtual bool read_rect(const char* key, Rect&) const = 0;
+  virtual bool read_colorf(const char* key, Color&) const = 0;
+  virtual bool read_colori(const char* key, Color&) const = 0;
+
+  virtual bool read_mapping(const char* key, ReaderMapping&) const = 0;
+  virtual bool read_collection(const char* key, ReaderCollection&) const = 0;
+  virtual bool read_object(const char* key, ReaderObject&) const = 0;
 };
 
 #endif

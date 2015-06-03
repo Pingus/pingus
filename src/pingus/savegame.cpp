@@ -16,7 +16,7 @@
 
 #include "pingus/savegame.hpp"
 
-#include "util/sexpr_file_writer.hpp"
+#include "util/file_writer.hpp"
 #include "util/string_util.hpp"
 
 std::string
@@ -58,7 +58,7 @@ Savegame::Savegame() :
 {
 }
 
-Savegame::Savegame(const FileReader& reader) :
+Savegame::Savegame(const ReaderMapping& reader) :
   filename(),
   status(),
   needed_time(),
@@ -79,23 +79,23 @@ Savegame::Savegame(const std::string& filename_,
 }
 
 void
-Savegame::write_sexpr(SExprFileWriter& writer)
+Savegame::write_sexpr(FileWriter& writer)
 {
-  writer.begin_section("level");
+  writer.begin_mapping("level");
   writer.write_string ("filename", filename);
   writer.write_enum   ("status",   status, status_to_string);
   writer.write_int    ("time",     needed_time);
   writer.write_int    ("saved-pingus", saved_pingus);
-  writer.end_section();
+  writer.end_mapping();
 }
 
 void
-Savegame::read_sexpr(const FileReader& reader)
+Savegame::read_sexpr(const ReaderMapping& reader)
 {
   reader.read_string ("filename", filename);
-  reader.read_enum   ("status",   status, string_to_status);
-  reader.read_int    ("time",     needed_time);
-  reader.read_int    ("saved-pingus", saved_pingus);
+  reader.read_enum("status", status, string_to_status);
+  reader.read_int("time", needed_time);
+  reader.read_int("saved-pingus", saved_pingus);
 }
 
 /* EOF */

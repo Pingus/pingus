@@ -22,9 +22,9 @@
 #include "math/color.hpp"
 #include "math/size.hpp"
 #include "math/vector3f.hpp"
-#include "util/file_writer.hpp"
+#include "util/file_writer_impl.hpp"
 
-class SExprFileWriter : public FileWriter
+class SExprFileWriterImpl : public FileWriterImpl
 {
 private:
   /** A reference to the output stream */
@@ -33,22 +33,28 @@ private:
   std::string indent();
 
 public:
-  SExprFileWriter(std::ostream& out_);
-  virtual ~SExprFileWriter();
+  SExprFileWriterImpl(std::ostream& out_);
+  virtual ~SExprFileWriterImpl();
 
-  virtual void begin_section(const char* name);
-  virtual void end_section();
+  virtual void begin_collection(const char* name) override;
+  virtual void end_collection() override;
 
-  virtual void write_int(const char* name, int);
-  virtual void write_float(const char* name, float);
-  virtual void write_colorf(const char* name, const Color&);
-  virtual void write_colori(const char* name, const Color&);
-  virtual void write_bool(const char* name, bool);
-  virtual void write_string(const char* name, const std::string&);
-  virtual void write_vector(const char* name, const Vector3f&);
-  virtual void write_size(const char* name, const Size&);
-  virtual void write_vector2i(const char* name, const Vector2i&);
-  virtual void write_path(const char* name, const Pathname&);
+  virtual void begin_object(const char* type) override;
+  virtual void end_object() override;
+
+  virtual void begin_mapping(const char* name) override;
+  virtual void end_mapping() override;
+
+  virtual void write_int(const char* name, int) override;
+  virtual void write_float(const char* name, float) override;
+  virtual void write_colorf(const char* name, const Color&) override;
+  virtual void write_colori(const char* name, const Color&) override;
+  virtual void write_bool(const char* name, bool) override;
+  virtual void write_string(const char* name, const std::string&) override;
+  virtual void write_vector(const char* name, const Vector3f&) override;
+  virtual void write_size(const char* name, const Size&) override;
+  virtual void write_vector2i(const char* name, const Vector2i&) override;
+  virtual void write_path(const char* name, const Pathname&) override;
 
   template<class E, class F>
   void write_enum(const char* name, E value, F enum2string)
@@ -57,8 +63,8 @@ public:
   }
 
 private:
-  SExprFileWriter(const SExprFileWriter&);
-  SExprFileWriter& operator= (const SExprFileWriter&);
+  SExprFileWriterImpl(const SExprFileWriterImpl&);
+  SExprFileWriterImpl& operator= (const SExprFileWriterImpl&);
 };
 
 #endif
