@@ -18,40 +18,93 @@
 
 #include "util/file_reader.hpp"
 
-TEST(FileReaderTest, reading)
+class FileReaderTest : public ::testing::Test
 {
-  std::istringstream stream("(test-document\n"
-                            "  (intvalue 5)\n"
-                            "  (submap (int 7) (float 9.9))\n"
-                            "  (floatvalue 5.5))");
+public:
+  FileReaderTest() :
+    stream("(test-document\n"
+           "  (intvalue 5)\n"
+           "  (submap (int 7) (float 9.9))\n"
+           "  (children (obj1) (obj2) (obj3))\n"
+           "  (object (realthing (prop1 5) (prop2 7)))\n"
+           "  (floatvalue 5.5))"),
+    doc(),
+    body()
+  {}
 
-  ReaderObject obj = FileReader::parse(stream);
-  EXPECT_EQ("test-document", obj.get_name());
-  ReaderMapping mapping = obj.get_mapping();
+  void SetUp() override
+  {
+    doc = FileReader::parse(stream);
+    body = doc.get_mapping();
+  }
+
+public:
+  std::istringstream stream;
+  ReaderObject doc;
+  ReaderMapping body;
+};
+
+TEST_F(FileReaderTest, parse)
+{
+  EXPECT_EQ("test-document", doc.get_name());
+}
+
+TEST_F(FileReaderTest, read_int)
+{
+  int intvalue;
+  ASSERT_TRUE(body.read_int("intvalue", intvalue));
+  EXPECT_EQ(5, intvalue);
+}
+
+TEST_F(FileReaderTest, read_float)
+{
+  float floatvalue;
+  ASSERT_TRUE(body.read_float("floatvalue", floatvalue));
+  EXPECT_EQ(5.5f, floatvalue);
+}
+
+TEST_F(FileReaderTest, read_mapping)
+{
+  ReaderMapping submap;
+  ASSERT_TRUE(body.read_mapping("submap", submap));
   {
     int intvalue;
-    ASSERT_TRUE(mapping.read_int("intvalue", intvalue));
-    EXPECT_EQ(5, intvalue);
+    ASSERT_TRUE(submap.read_int("int", intvalue));
+    EXPECT_EQ(7, intvalue);
   }
   {
     float floatvalue;
-    ASSERT_TRUE(mapping.read_float("floatvalue", floatvalue));
-    EXPECT_EQ(5.5f, floatvalue);
+    ASSERT_TRUE(submap.read_float("float", floatvalue));
+    EXPECT_EQ(9.9f, floatvalue);
   }
+}
+
+TEST_F(FileReaderTest, read_collection)
+{
+  ReaderCollection collection;
+  ASSERT_TRUE(body.read_collection("children", collection));
+  EXPECT_EQ(3, collection.get_objects().size());
+  auto objs = collection.get_objects();
+  std::vector<std::string> result;
+  for(auto e : objs)
   {
-    ReaderMapping submap;
-    ASSERT_TRUE(mapping.read_mapping("submap", submap));
-    {
-      int intvalue;
-      ASSERT_TRUE(submap.read_int("int", intvalue));
-      EXPECT_EQ(7, intvalue);
-    }
-    {
-      float floatvalue;
-      ASSERT_TRUE(submap.read_float("float", floatvalue));
-      EXPECT_EQ(9.9f, floatvalue);
-    }
+    result.push_back(e.get_name());
   }
+  EXPECT_EQ(std::vector<std::string>({"obj1", "obj2", "obj3"}), result);
+}
+
+TEST_F(FileReaderTest, read_object)
+{
+  ReaderObject object;
+  ASSERT_TRUE(body.read_object("object", object));
+  EXPECT_EQ("realthing", object.get_name());
+  ReaderMapping object_mapping = object.get_mapping();
+  int prop1 = 0;
+  int prop2 = 0;
+  ASSERT_TRUE(object_mapping.read_int("prop1", prop1));
+  ASSERT_TRUE(object_mapping.read_int("prop2", prop2));
+  EXPECT_EQ(5, prop1);
+  EXPECT_EQ(7, prop2);
 }
 
 /* EOF */
