@@ -94,114 +94,113 @@ Manager::create_controller(const Pathname& filename)
   {
     ReaderMapping reader = reader_object.get_mapping();
 
-    ReaderCollection reader_collection;
-    if (!reader.read_collection("controls", reader_collection))
+    ReaderMapping controls_mapping;
+    if (!reader.read_mapping("controls", controls_mapping))
     {
       log_warn("%1%: 'controls' section missing", filename);
     }
-
-    auto reader_objects = reader_collection.get_objects();
-    for (auto i = reader_objects.begin(); i != reader_objects.end(); ++i)
+    else
     {
-      if (StringUtil::has_suffix(i->get_name(), "pointer"))
+      for (const auto& key : controls_mapping.get_keys())
       {
-        ReaderMapping mapping = i->get_mapping();
         ReaderCollection collection;
-        mapping.read_collection("children", collection);
-        auto pointers = collection.get_objects();
-        for(auto j = pointers.begin(); j != pointers.end(); ++j)
+        if (!controls_mapping.read_collection(key.c_str(), collection))
         {
-          int id = desc.get_definition(i->get_name()).id;
-          ControllerPointer* ctrl_pointer = controller->get_pointer(id);
-          auto pointer = create_pointer(*j, ctrl_pointer);
-          if (pointer)
+          log_error("%1%: mapping must contain object at %2%", filename, key);
+        }
+        else
+        {
+          if (StringUtil::has_suffix(key, "pointer"))
           {
-            ctrl_pointer->add_pointer(std::move(pointer));
+            int id = desc.get_definition(key).id;
+            ControllerPointer* ctrl_pointer = controller->get_pointer(id);
+            for(const auto& object : collection.get_objects())
+            {
+              auto pointer = create_pointer(object, ctrl_pointer);
+              if (pointer)
+              {
+                ctrl_pointer->add_pointer(std::move(pointer));
+              }
+              else
+              {
+                log_error("Manager: pointer: Couldn't create pointer %1%", object.get_name());
+              }
+            }
+          }
+          else if (StringUtil::has_suffix(key, "scroller"))
+          {
+            int id = desc.get_definition(key).id;
+            ControllerScroller* ctrl_scroller = controller->get_scroller(id);
+            for(const auto& object : collection.get_objects())
+            {
+              auto scroller = create_scroller(object, ctrl_scroller);
+              if (scroller)
+              {
+                ctrl_scroller->add_scroller(std::move(scroller));
+              }
+              else
+              {
+                log_error("Manager: scroller: Couldn't create scroller %1%", object.get_name());
+              }
+            }
+          }
+          else if (StringUtil::has_suffix(key, "button"))
+          {
+            int id = desc.get_definition(key).id;
+            ControllerButton* ctrl_button = controller->get_button(id);
+            for(const auto& object : collection.get_objects())
+            {
+              auto button = create_button(object, ctrl_button);
+              if (button)
+              {
+                ctrl_button->add_button(std::move(button));
+              }
+              else
+              {
+                log_error("Manager: button: Couldn't create button %1%", object.get_name());
+              }
+            }
+          }
+          else if (StringUtil::has_suffix(key, "axis"))
+          {
+            int id = desc.get_definition(key).id;
+            ControllerAxis* ctrl_axis = controller->get_axis(id);
+            for(const auto& object : collection.get_objects())
+            {
+              auto axis = create_axis(object, ctrl_axis);
+              if (axis)
+              {
+                ctrl_axis->add_axis(std::move(axis));
+              }
+              else
+              {
+                log_error("Manager: axis: Couldn't create axis %1%", object.get_name());
+              }
+            }
+          }
+          else if (StringUtil::has_suffix(key, "keyboard"))
+          {
+            int id = desc.get_definition(key).id;
+            ControllerKeyboard* ctrl_keyboard = controller->get_keyboard(id);
+            for(const auto& object : collection.get_objects())
+            {
+              std::unique_ptr<Keyboard> keyboard = create_keyboard(object, ctrl_keyboard);
+              if (keyboard)
+              {
+                ctrl_keyboard->add_keyboard(std::move(keyboard));
+              }
+              else
+              {
+                log_error("Manager: keyboard: Couldn't create keyboard %1%", object.get_name());
+              }
+            }
           }
           else
           {
-            log_error("Manager: pointer: Couldn't create pointer %1%", j->get_name());
+            raise_exception(std::runtime_error, "Manager: Unkown Element in Controller Config: "
+                            << key);
           }
         }
-
-      }
-      else if (StringUtil::has_suffix(i->get_name(), "scroller"))
-      {
-        ReaderMapping mapping = i->get_mapping();
-        ReaderCollection collection;
-        mapping.read_collection("children", collection);
-        auto scrollers = collection.get_objects();
-        for(auto j = scrollers.begin(); j != scrollers.end(); ++j)
-        {
-          int id = desc.get_definition(i->get_name()).id;
-          ControllerScroller* ctrl_scroller = controller->get_scroller(id);
-          auto scroller = create_scroller(*j, ctrl_scroller);
-          if (scroller)
-          {
-            ctrl_scroller->add_scroller(std::move(scroller));
-          }
-          else
-          {
-            log_error("Manager: scroller: Couldn't create scroller %1%", j->get_name());
-          }
-        }
-
-      }
-      else if (StringUtil::has_suffix(i->get_name(), "button"))
-      {
-        ReaderMapping mapping = i->get_mapping();
-        ReaderCollection collection;
-        mapping.read_collection("children", collection);
-        auto buttons = collection.get_objects();
-        for(auto j = buttons.begin(); j != buttons.end(); ++j)
-        {
-          int id = desc.get_definition(i->get_name()).id;
-          ControllerButton* ctrl_button = controller->get_button(id);
-          auto button = create_button(*j, ctrl_button);
-          if (button)
-            ctrl_button->add_button(std::move(button));
-          else
-            log_error("Manager: button: Couldn't create button %1%", j->get_name());
-        }
-      }
-      else if (StringUtil::has_suffix(i->get_name(), "axis"))
-      {
-        ReaderMapping mapping = i->get_mapping();
-        ReaderCollection collection;
-        mapping.read_collection("children", collection);
-        auto axes = collection.get_objects();
-        for(auto j = axes.begin(); j != axes.end(); ++j)
-        {
-          int id = desc.get_definition(i->get_name()).id;
-          ControllerAxis* ctrl_axis = controller->get_axis(id);
-          auto axis = create_axis(*j, ctrl_axis);
-          if (axis)
-            ctrl_axis->add_axis(std::move(axis));
-          else
-            log_error("Manager: axis: Couldn't create axis %1%", j->get_name());
-        }
-      }
-      else if (StringUtil::has_suffix(i->get_name(), "keyboard"))
-      {
-        ReaderMapping mapping = i->get_mapping();
-        ReaderCollection collection;
-        mapping.read_collection("children", collection);
-        auto keyboards = collection.get_objects();
-        for(auto j = keyboards.begin(); j != keyboards.end(); ++j)
-        {
-          int id = desc.get_definition(i->get_name()).id;
-          ControllerKeyboard* ctrl_keyboard = controller->get_keyboard(id);
-          std::unique_ptr<Keyboard> keyboard = create_keyboard(*j, ctrl_keyboard);
-          if (keyboard)
-            ctrl_keyboard->add_keyboard(std::move(keyboard));
-          else
-            log_error("Manager: keyboard: Couldn't create keyboard %1%", j->get_name());
-        }
-      }
-      else
-      {
-        raise_exception(std::runtime_error, "Manager: Unkown Element in Controller Config: "
-                        << i->get_name());
       }
     }
   }
