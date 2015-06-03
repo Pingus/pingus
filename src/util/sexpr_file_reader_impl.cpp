@@ -20,8 +20,9 @@
 #include "math/rect.hpp"
 #include "math/vector3f.hpp"
 #include "pingus/res_descriptor.hpp"
-#include "util/file_reader_impl.hpp"
 #include "util/file_reader.hpp"
+#include "util/file_reader_impl.hpp"
+#include "util/log.hpp"
 
 SExprReaderObjectImpl::SExprReaderObjectImpl(std::shared_ptr<lisp::Lisp> sexpr) :
   m_sexpr(sexpr)
@@ -358,8 +359,13 @@ std::shared_ptr<lisp::Lisp>
 SExprReaderMappingImpl::get_subsection_item(const char* key) const
 {
   std::shared_ptr<lisp::Lisp> sub = get_subsection(key);
-  if (sub && sub->get_list_size() == 2)
+  if (sub && sub->get_list_size() >= 2)
   {
+    if (sub->get_list_size() > 2)
+    {
+      log_error("invalid items in section: %1%", key);
+    }
+
     return sub->get_list_elem(1);
   }
   else
@@ -371,15 +377,24 @@ SExprReaderMappingImpl::get_subsection_item(const char* key) const
 std::shared_ptr<lisp::Lisp>
 SExprReaderMappingImpl::get_subsection(const char* key) const
 {
+  std::shared_ptr<lisp::Lisp> result;
+  int count = 0;
   for(size_t i = 1; i < m_sexpr->get_list_size(); ++i)
   {
-    std::shared_ptr<lisp::Lisp> sub = m_sexpr->get_list_elem(i);
-    if (strcmp(sub->get_list_elem(0)->get_symbol(), key) == 0)
+    auto sexpr = m_sexpr->get_list_elem(i);
+    if (strcmp(sexpr->get_list_elem(0)->get_symbol(), key) == 0)
     {
-      return sub;
+      count += 1;
+      result = sexpr;
     }
   }
-  return {};
+
+  if (count > 1)
+  {
+    log_error("duplicate key value '%1%'", key);
+  }
+
+  return result;
 }
 
 /* EOF */
