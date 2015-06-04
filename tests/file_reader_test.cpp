@@ -16,6 +16,7 @@
 
 #include <gtest/gtest.h>
 
+#include "math/vector3f.hpp"
 #include "util/file_reader.hpp"
 
 const char json_doc[] =
@@ -24,6 +25,7 @@ const char json_doc[] =
   "  (submap (int 7) (float 9.9))\n"
   "  (collection (obj1) (obj2) (obj3))\n"
   "  (object (realthing (prop1 5) (prop2 7)))\n"
+  "  (vector 1.0 2.0 3.0)\n"
   "  (floatvalue 5.5))";
 
 const char sexpr_doc[] =
@@ -33,6 +35,7 @@ const char sexpr_doc[] =
   "    \"submap\": { \"int\": 7, \"float\": 9.9 },\n"
   "    \"collection\": [ { \"obj1\": {}}, { \"obj2\": {}}, {\"obj3\": {}} ],\n"
   "    \"object\": { \"realthing\": { \"prop1\": 5, \"prop2\": 7 } },\n"
+  "    \"vector\": [ 1.0 2.0 3.0 ],\n"
   "    \"floatvalue\": 5.5\n"
   "  }\n"
   "}\n";
@@ -74,6 +77,15 @@ TEST_P(FileReaderTest, read_float)
   float floatvalue;
   ASSERT_TRUE(body.read_float("floatvalue", floatvalue));
   EXPECT_EQ(5.5f, floatvalue);
+}
+
+TEST_P(FileReaderTest, read_vector)
+{
+  Vector3f v;
+  ASSERT_TRUE(body.read_vector("vector", v));
+  EXPECT_EQ(1.0f, v.x);
+  EXPECT_EQ(2.0f, v.y);
+  EXPECT_EQ(2.0f, v.z);
 }
 
 TEST_P(FileReaderTest, read_mapping)
