@@ -62,6 +62,13 @@ public:
     return Vector3f(mul * x, mul * y, mul * z);
   }
 
+  bool operator==(Vector3f const& rhs) const
+  {
+    return (x == rhs.x &&
+            y == rhs.y &&
+            z == rhs.z);
+  }
+
   Vector3f& operator+= (const Vector3f& add)
   {
     x += add.x;
