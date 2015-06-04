@@ -43,7 +43,7 @@ LevelObjFactory::create(const ReaderObject& reader_object)
     }
     return group;
   }
-  if (reader_object.get_name() == "prefab")
+  else if (reader_object.get_name() == "prefab")
   {
     ReaderMapping reader = reader_object.get_mapping();
 
