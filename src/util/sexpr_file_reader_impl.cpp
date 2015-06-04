@@ -22,6 +22,7 @@
 #include "pingus/res_descriptor.hpp"
 #include "util/file_reader.hpp"
 #include "util/file_reader_impl.hpp"
+#include "util/raise_exception.hpp"
 #include "util/log.hpp"
 
 SExprReaderObjectImpl::SExprReaderObjectImpl(std::shared_ptr<lisp::Lisp> sexpr) :
@@ -40,7 +41,15 @@ SExprReaderObjectImpl::~SExprReaderObjectImpl()
 std::string
 SExprReaderObjectImpl::get_name() const
 {
-  return m_sexpr->get_list_elem(0)->get_symbol();
+  if (m_sexpr->get_list_size() < 1)
+  {
+    raise_exception(std::runtime_error, "invalid syntax");
+    return {};
+  }
+  else
+  {
+    return m_sexpr->get_list_elem(0)->get_symbol();
+  }
 }
 
 ReaderMapping
