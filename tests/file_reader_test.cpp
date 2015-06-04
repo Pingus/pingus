@@ -16,29 +16,10 @@
 
 #include <gtest/gtest.h>
 
+#include <fstream>
+
 #include "math/vector3f.hpp"
 #include "util/file_reader.hpp"
-
-const char json_doc[] =
-  "(test-document\n"
-  "  (intvalue 5)\n"
-  "  (submap (int 7) (float 9.9))\n"
-  "  (collection (obj1) (obj2) (obj3))\n"
-  "  (object (realthing (prop1 5) (prop2 7)))\n"
-  "  (vector 1.0 2.0 3.0)\n"
-  "  (floatvalue 5.5))";
-
-const char sexpr_doc[] =
-  "{\n"
-  "  \"test-document\": {\n"
-  "    \"intvalue\": 5,\n"
-  "    \"submap\": { \"int\": 7, \"float\": 9.9 },\n"
-  "    \"collection\": [ { \"obj1\": {}}, { \"obj2\": {}}, {\"obj3\": {}} ],\n"
-  "    \"object\": { \"realthing\": { \"prop1\": 5, \"prop2\": 7 } },\n"
-  "    \"vector\": [ 1.0 2.0 3.0 ],\n"
-  "    \"floatvalue\": 5.5\n"
-  "  }\n"
-  "}\n";
 
 class FileReaderTest : public ::testing::TestWithParam<std::string>
 {
@@ -50,7 +31,7 @@ public:
 
   void SetUp() override
   {
-    std::istringstream stream(GetParam());
+    std::ifstream stream(GetParam());
     doc = FileReader::parse(stream);
     body = doc.get_mapping();
   }
@@ -85,7 +66,17 @@ TEST_P(FileReaderTest, read_vector)
   ASSERT_TRUE(body.read_vector("vector", v));
   EXPECT_EQ(1.0f, v.x);
   EXPECT_EQ(2.0f, v.y);
-  EXPECT_EQ(2.0f, v.z);
+  EXPECT_EQ(3.0f, v.z);
+}
+
+TEST_P(FileReaderTest, read_vectors)
+{
+  std::vector<Vector3f> vs;
+  ASSERT_TRUE(body.read_vectors("vectors", vs));
+  ASSERT_EQ(3, vs.size());
+  EXPECT_EQ(Vector3f(1, 2, 3), vs[0]);
+  EXPECT_EQ(Vector3f(4, 5, 6), vs[1]);
+  EXPECT_EQ(Vector3f(7, 8, 9), vs[2]);
 }
 
 TEST_P(FileReaderTest, read_mapping)
@@ -133,6 +124,6 @@ TEST_P(FileReaderTest, read_object)
 }
 
 INSTANTIATE_TEST_CASE_P(ParamFileReaderTest, FileReaderTest,
-                        ::testing::Values(sexpr_doc, json_doc));
+                        ::testing::Values("tests/sexpr.scm", "tests/json.json"));
 
 /* EOF */
