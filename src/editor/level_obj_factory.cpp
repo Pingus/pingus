@@ -99,105 +99,170 @@ LevelObjFactory::create(const ReaderObject& reader_object)
     // Get optional attributes based on the attribs value
     if (attribs & HAS_SPRITE)
     {
-      reader.read_desc("surface", desc);
-      obj->set_res_desc(desc);
+      if (reader.read_desc("surface", desc))
+      {
+        obj->set_res_desc(desc);
+      }
     }
+
     if (attribs & HAS_TYPE)
     {
-      reader.read_string("type", tmp_str);
-      obj->set_type(tmp_str);
+      if (reader.read_string("type", tmp_str))
+      {
+        obj->set_type(tmp_str);
+      }
     }
+
     if (attribs & HAS_GPTYPE)
     {
-      reader.read_string("type", tmp_str);
-      obj->set_ground_type(tmp_str);
+      if (reader.read_string("type", tmp_str))
+      {
+        obj->set_ground_type(tmp_str);
+      }
     }
+
     if (attribs & HAS_SPEED)
     {
-      reader.read_int("speed", tmp_int);
-      obj->set_speed(tmp_int);
+      if (reader.read_int("speed", tmp_int))
+      {
+        obj->set_speed(tmp_int);
+      }
     }
+
     if (attribs & HAS_REPEAT)
     {
-      if (!reader.read_int("repeat", tmp_int))
-        reader.read_int("width", tmp_int);
-      obj->set_repeat(tmp_int);
+      if (reader.read_int("repeat", tmp_int) ||
+          reader.read_int("width", tmp_int))
+      {
+        obj->set_repeat(tmp_int);
+      }
     }
+
     if (attribs & HAS_PARALLAX)
     {
-      reader.read_float("parallax", tmp_float);
-      obj->set_parallax(tmp_float);
+      if (reader.read_float("parallax", tmp_float))
+      {
+        obj->set_parallax(tmp_float);
+      }
     }
+
     if (attribs & HAS_OWNER)
     {
-      reader.read_int("owner-id", tmp_int);
-      obj->set_owner(tmp_int);
+      if (reader.read_int("owner-id", tmp_int))
+      {
+        obj->set_owner(tmp_int);
+      }
     }
+
     if (attribs & HAS_DIRECTION)
     {
-      reader.read_string("direction", tmp_str);
-      obj->set_direction(tmp_str);
+      if (reader.read_string("direction", tmp_str))
+      {
+        obj->set_direction(tmp_str);
+      }
     }
+
     if (attribs & HAS_COLOR)
     {
-      if (!reader.read_colori("colori", tmp_color))
-        reader.read_colorf("color", tmp_color);
-      obj->set_color(tmp_color);
+      if (reader.read_colori("colori", tmp_color) ||
+          reader.read_colorf("color", tmp_color))
+      {
+        obj->set_color(tmp_color);
+      }
     }
+
     if (attribs & HAS_SCROLL)
     {
-      reader.read_float("scroll-x", tmp_float);
-      obj->set_scroll_x(tmp_float);
-      reader.read_float("scroll-y", tmp_float);
-      obj->set_scroll_y(tmp_float);
+      if (reader.read_float("scroll-x", tmp_float))
+      {
+        obj->set_scroll_x(tmp_float);
+      }
+
+      if (reader.read_float("scroll-y", tmp_float))
+      {
+        obj->set_scroll_y(tmp_float);
+      }
     }
+
     if (attribs & HAS_STRETCH)
     {
-      reader.read_bool("stretch-x", tmp_bool);
-      obj->set_stretch_x(tmp_bool);
-      reader.read_bool("stretch-y", tmp_bool);
-      obj->set_stretch_y(tmp_bool);
-      reader.read_bool("keep-aspect", tmp_bool);
-      obj->set_keep_aspect(tmp_bool);
+      if (reader.read_bool("stretch-x", tmp_bool))
+      {
+        obj->set_stretch_x(tmp_bool);
+      }
+
+      if (reader.read_bool("stretch-y", tmp_bool))
+      {
+        obj->set_stretch_y(tmp_bool);
+      }
+
+      if (reader.read_bool("keep-aspect", tmp_bool))
+      {
+        obj->set_keep_aspect(tmp_bool);
+      }
     }
+
     if (attribs & HAS_PARA)
     {
-      reader.read_float("para-x", tmp_float);
-      obj->set_para_x(tmp_float);
-      reader.read_float("para-y", tmp_float);
-      obj->set_para_y(tmp_float);
+      if (reader.read_float("para-x", tmp_float))
+      {
+        obj->set_para_x(tmp_float);
+      }
+
+      if (reader.read_float("para-y", tmp_float))
+      {
+        obj->set_para_y(tmp_float);
+      }
     }
+
     if (attribs & HAS_RELEASE_RATE)
     {
-      reader.read_int("release-rate", tmp_int);
-      obj->set_release_rate(tmp_int);
+      if (reader.read_int("release-rate", tmp_int))
+      {
+        obj->set_release_rate(tmp_int);
+      }
     }
+
     if (attribs & HAS_ID)
     {
-      reader.read_string("id", tmp_str);
-      obj->set_id(tmp_str);
+      if (reader.read_string("id", tmp_str))
+      {
+        obj->set_id(tmp_str);
+      }
     }
+
     if (attribs & HAS_TARGET_ID)
     {
-      reader.read_string("target-id", tmp_str);
-      obj->set_target_id(tmp_str);
+      if (reader.read_string("target-id", tmp_str))
+      {
+        obj->set_target_id(tmp_str);
+      }
     }
 
     if (attribs & HAS_STARFIELD)
     {
-      reader.read_int("small-stars", tmp_int);
-      obj->set_small_stars(tmp_int);
+      if (reader.read_int("small-stars", tmp_int))
+      {
+        obj->set_small_stars(tmp_int);
+      }
 
-      reader.read_int("middle-stars", tmp_int);
-      obj->set_middle_stars(tmp_int);
+      if (reader.read_int("middle-stars", tmp_int))
+      {
+        obj->set_middle_stars(tmp_int);
+      }
 
-      reader.read_int("large-stars", tmp_int);
-      obj->set_large_stars(tmp_int);
+      if (reader.read_int("large-stars", tmp_int))
+      {
+        obj->set_large_stars(tmp_int);
+      }
     }
+
     if (attribs & HAS_HEIGHT)
     {
-      reader.read_int("height", tmp_int);
-      obj->set_height(tmp_int);
+      if (reader.read_int("height", tmp_int))
+      {
+        obj->set_height(tmp_int);
+      }
     }
 
     return obj;
