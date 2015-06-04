@@ -174,10 +174,10 @@ JsonPrettyFileWriterImpl::write_colorf(const char* name, const Color& value)
   write_indent();
   write_quoted_string(name);
   m_out << ": [ "
-        << value.r << ", "
-        << value.g << ", "
-        << value.b << ", "
-        << value.g << " ]";
+        << static_cast<float>(value.r) / 255.0f << ", "
+        << static_cast<float>(value.g) / 255.0f << ", "
+        << static_cast<float>(value.b) / 255.0f << ", "
+        << static_cast<float>(value.a) / 255.0f << " ]";
   write_separator();
 }
 
@@ -192,7 +192,7 @@ JsonPrettyFileWriterImpl::write_colori(const char* name, const Color& value)
         << static_cast<int>(value.r) << ", "
         << static_cast<int>(value.g) << ", "
         << static_cast<int>(value.b) << ", "
-        << static_cast<int>(value.g) << " ]";
+        << static_cast<int>(value.a) << " ]";
   write_separator();
 }
 
