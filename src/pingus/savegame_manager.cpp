@@ -49,22 +49,22 @@ SavegameManager::SavegameManager(const std::string& arg_filename) :
     ReaderObject reader = FileReader::parse(filename);
     if (reader.get_name() != "pingus-savegame")
     {
-      log_error("%1%: not a (pingus-savegame) file", filename);
+      log_error("%1%: not a 'pingus-savegame' file", filename);
     }
     else
     {
-      ReaderCollection levels_reader;
-      reader.get_mapping().read_collection("levels", levels_reader);
-      auto sections = levels_reader.get_objects();
-      for(auto i = sections.begin(); i != sections.end(); ++i)
+      ReaderCollection levels_collection;
+      reader.get_mapping().read_collection("levels", levels_collection);
+      for(auto const& level_object : levels_collection.get_objects())
       {
-        auto savegame = std::make_unique<Savegame>(i->get_mapping());
-        SavegameTable::iterator j = find(savegame->get_filename());
-        if (j != savegames.end())
+        auto savegame = std::make_unique<Savegame>(level_object.get_mapping());
+
+        SavegameTable::iterator it = find(savegame->get_filename());
+        if (it != savegames.end())
         {
           // overwrite duplicates, shouldn't happen, but harmless
           log_info("name collision: %1%", savegame->get_filename());
-          *j = std::move(savegame);
+          *it = std::move(savegame);
         }
         else
         {
@@ -92,7 +92,7 @@ SavegameManager::get(const std::string& filename_)
 }
 
 void
-SavegameManager::store(Savegame& arg_savegame)
+SavegameManager::store(Savegame const& arg_savegame)
 {
   auto savegame = std::make_unique<Savegame>(arg_savegame);
   SavegameTable::iterator i = find(savegame->get_filename());
@@ -139,12 +139,12 @@ SavegameManager::flush()
   FileWriter writer(out);
 
   writer.begin_object("pingus-savegame");
-
+  writer.begin_collection("levels");
   for(SavegameTable::iterator i = savegames.begin(); i != savegames.end(); ++i)
   {
     (*i)->write_sexpr(writer);
   }
-
+  writer.end_collection();
   writer.end_object(); // pingus-savegame
 
   System::write_file(filename, out.str());

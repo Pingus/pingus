@@ -37,7 +37,7 @@ public:
 
   Savegame* get(const std::string& filename);
 
-  void store(Savegame&);
+  void store(Savegame const& savegame);
 
   /** Write the current savegames down to file */
   void flush();

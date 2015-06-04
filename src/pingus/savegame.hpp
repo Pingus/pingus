@@ -47,10 +47,10 @@ public:
   static S_Status string_to_status (std::string s);
 
   Savegame();
-  ~Savegame() { }
   Savegame(const ReaderMapping& node);
   Savegame(const std::string& filename,
            S_Status arg_status, int arg_time, int arg_saved_pingus);
+  ~Savegame();
 
   void read_sexpr(const ReaderMapping& node);
   void write_sexpr(FileWriter& xml);

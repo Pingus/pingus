@@ -64,17 +64,24 @@ Savegame::Savegame(const ReaderMapping& reader) :
   needed_time(),
   saved_pingus()
 {
-  read_sexpr(reader);
+  reader.read_string("filename", filename);
+  reader.read_enum("status", status, string_to_status);
+  reader.read_int("time", needed_time);
+  reader.read_int("saved-pingus", saved_pingus);
 }
 
 Savegame::Savegame(const std::string& filename_,
                    S_Status status_,
-                   int      time_,
-                   int      saved_pingus_)
-  : filename(filename_),
-    status(status_),
-    needed_time(time_),
-    saved_pingus(saved_pingus_)
+                   int time_,
+                   int saved_pingus_) :
+  filename(filename_),
+  status(status_),
+  needed_time(time_),
+  saved_pingus(saved_pingus_)
+{
+}
+
+Savegame::~Savegame()
 {
 }
 
@@ -82,20 +89,11 @@ void
 Savegame::write_sexpr(FileWriter& writer)
 {
   writer.begin_mapping("level");
-  writer.write_string ("filename", filename);
-  writer.write_enum   ("status",   status, status_to_string);
-  writer.write_int    ("time",     needed_time);
-  writer.write_int    ("saved-pingus", saved_pingus);
+  writer.write_string("filename", filename);
+  writer.write_enum("status", status, status_to_string);
+  writer.write_int("time", needed_time);
+  writer.write_int("saved-pingus", saved_pingus);
   writer.end_mapping();
-}
-
-void
-Savegame::read_sexpr(const ReaderMapping& reader)
-{
-  reader.read_string ("filename", filename);
-  reader.read_enum("status", status, string_to_status);
-  reader.read_int("time", needed_time);
-  reader.read_int("saved-pingus", saved_pingus);
 }
 
 /* EOF */
