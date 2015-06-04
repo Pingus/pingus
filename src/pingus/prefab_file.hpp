@@ -39,8 +39,8 @@ private:
              const ReaderMapping& overrides);
 
 public:
-  std::vector<ReaderObject> get_objects() const;
-  ReaderMapping get_overrides() const;
+  std::vector<ReaderObject> const& get_objects() const;
+  ReaderMapping const& get_overrides() const;
 };
 
 #endif

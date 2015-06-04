@@ -70,13 +70,13 @@ PrefabFile::PrefabFile(const std::string& name,
 {
 }
 
-std::vector<ReaderObject>
+std::vector<ReaderObject> const&
 PrefabFile::get_objects() const
 {
   return m_objects;
 }
 
-ReaderMapping
+ReaderMapping const&
 PrefabFile::get_overrides() const
 {
   return m_overrides;
