@@ -112,6 +112,18 @@ public:
     }
   }
 
+  bool read_vectors(const char* name, std::vector<Vector3f>& vec) const
+  {
+    if (m_overrides.read_vectors(name, vec))
+    {
+      return true;
+    }
+    else
+    {
+      return m_reader.read_vectors(name, vec);
+    }
+  }
+
   bool read_size(const char* name, Size& size) const
   {
     if (m_overrides.read_size(name, size))

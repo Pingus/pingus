@@ -197,8 +197,32 @@ SExprReaderMappingImpl::read_vector(const char* key, Vector3f& value) const
   if (sub && sub->get_list_size() == 4)
   {
     value = Vector3f(sub->get_list_elem(1)->get_float(),
-                 sub->get_list_elem(2)->get_float(),
-                 sub->get_list_elem(3)->get_float());
+                     sub->get_list_elem(2)->get_float(),
+                     sub->get_list_elem(3)->get_float());
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
+bool
+SExprReaderMappingImpl::read_vectors(const char* key, std::vector<Vector3f>& values) const
+{
+  std::shared_ptr<lisp::Lisp> sub_lst = get_subsection(key);
+  if (sub_lst)
+  {
+    for(size_t i = 1; i < sub_lst->get_list_size(); ++i)
+    {
+      auto sub = sub_lst->get_list_elem(i);
+      if (sub && sub->get_list_size() == 3)
+      {
+        values.emplace_back(sub->get_list_elem(0)->get_float(),
+                            sub->get_list_elem(1)->get_float(),
+                            sub->get_list_elem(2)->get_float());
+      }
+    }
     return true;
   }
   else

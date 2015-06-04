@@ -167,6 +167,34 @@ JsonReaderMappingImpl::read_string(const char* key, std::string& value) const
 }
 
 bool
+JsonReaderMappingImpl::read_vectors(const char* key, std::vector<Vector3f>& values) const
+{
+  const Json::Value& element = m_json[key];
+  if (element.isArray())
+  {
+    for(Json::ArrayIndex i = 0; i < element.size(); ++i)
+    {
+      const Json::Value& vec = element[i];
+      if (vec.isArray() && vec.size() >= 3)
+      {
+        values.emplace_back(vec[0u].asFloat(),
+                            vec[1u].asFloat(),
+                            vec[2u].asFloat());
+      }
+      else
+      {
+        log_warn("ignoring element of '%1%'", key);
+      }
+    }
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
+bool
 JsonReaderMappingImpl::read_vector(const char* key, Vector3f& value) const
 {
   const Json::Value& element = m_json[key];

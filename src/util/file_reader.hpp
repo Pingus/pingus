@@ -76,6 +76,7 @@ public:
   bool read_string(const char* key, std::string& value) const;
   bool read_path(const char* key, Pathname& value) const;
   bool read_vector(const char* key, Vector3f& value) const;
+  bool read_vectors(const char* key, std::vector<Vector3f>& value) const;
   bool read_vector2i(const char* key, Vector2i& value) const;
   bool read_rect(const char* key, Rect& value) const;
   bool read_size(const char* key, Size& value) const;
