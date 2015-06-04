@@ -29,10 +29,15 @@ class FileWriterImpl;
 
 class FileWriter final
 {
-private:
+public:
+  static FileWriter json(std::ostream& out);
+  static FileWriter fastjson(std::ostream& out);
+  static FileWriter sexpr(std::ostream& out);
+
 public:
   FileWriter(std::ostream& out);
   FileWriter(std::unique_ptr<FileWriterImpl> impl);
+  FileWriter(FileWriter&& other);
   ~FileWriter();
 
   /** collections contain an ordered sequence of objects */

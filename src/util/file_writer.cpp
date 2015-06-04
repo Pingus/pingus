@@ -20,10 +20,26 @@
 #include "util/json_file_writer_impl.hpp"
 #include "util/jsonpretty_file_writer_impl.hpp"
 
+FileWriter
+FileWriter::fastjson(std::ostream& out)
+{
+  return FileWriter(std::make_unique<JsonFileWriterImpl>(out));
+}
+
+FileWriter
+FileWriter::json(std::ostream& out)
+{
+  return FileWriter(std::make_unique<JsonPrettyFileWriterImpl>(out));
+}
+
+FileWriter
+FileWriter::sexpr(std::ostream& out)
+{
+  return FileWriter(std::make_unique<SExprFileWriterImpl>(out));
+}
+
 FileWriter::FileWriter(std::ostream& out) :
   m_impl(std::make_unique<SExprFileWriterImpl>(out))
-  //m_impl(std::make_unique<JsonFileWriterImpl>(out))
-  //m_impl(std::make_unique<JsonPrettyFileWriterImpl>(out))
 {
 }
 
@@ -31,6 +47,8 @@ FileWriter::FileWriter(std::unique_ptr<FileWriterImpl> impl) :
   m_impl(std::move(impl))
 {
 }
+
+FileWriter::FileWriter(FileWriter&& other) = default;
 
 FileWriter::~FileWriter()
 {
