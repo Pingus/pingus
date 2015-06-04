@@ -66,7 +66,7 @@ SExprFileWriterImpl::begin_mapping(const char* name)
   if (level != 0)
     (*out) << std::endl;
 
-  (*out) << indent() << "(" << name << " ";
+  (*out) << indent() << "(" << name;
   ++level;
 }
 
