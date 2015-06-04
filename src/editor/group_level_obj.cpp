@@ -33,9 +33,9 @@ GroupLevelObj::from_prefab(const std::string& name)
     std::shared_ptr<GroupLevelObj> group = std::make_shared<GroupLevelObj>();
 
     group->m_name = name;
-    for(auto it = prefab.get_objects().begin(); it != prefab.get_objects().end(); ++it)
+    for(auto const& obj_desc : prefab.get_objects())
     {
-      LevelObjPtr obj = LevelObjFactory::create(*it);
+      LevelObjPtr obj = LevelObjFactory::create(obj_desc);
       if (obj)
       {
         group->add_child(obj);
