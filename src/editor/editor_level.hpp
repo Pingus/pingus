@@ -27,6 +27,7 @@
 #include "editor/level_obj.hpp"
 
 class Pathname;
+class FileWriter;
 
 namespace Editor {
 
@@ -47,6 +48,7 @@ public:
   ~EditorLevel();
 
   /** Save the level to a file.  Returns true if successful */
+  void save_level(FileWriter& writer);
   void save_level(const std::string& filename);
   void save_prefab(const std::string& filename);
 

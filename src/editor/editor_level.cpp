@@ -229,18 +229,25 @@ EditorLevel::save_prefab(const std::string& filename)
   System::write_file(filename, out_file.str());
 }
 
-// Save the level to a file.  Returns true if successful
 void
 EditorLevel::save_level(const std::string& filename)
 {
-  // Sort the level before saving, so that object order doesn't change
-  // after a save/load cycle (load sort() too)
-  sort();
-
   // Create new file (overwrite existing file)
   std::ostringstream out_file;
 
   FileWriter fw(out_file);
+  save_level(fw);
+
+  // Write the file
+  System::write_file(filename, out_file.str());
+}
+
+void
+EditorLevel::save_level(FileWriter& fw)
+{
+  // Sort the level before saving, so that object order doesn't change
+  // after a save/load cycle (load sort() too)
+  sort();
 
   // Write header
   fw.begin_object("pingus-level");
@@ -276,9 +283,6 @@ EditorLevel::save_level(const std::string& filename)
   fw.end_collection();     // objects
 
   fw.end_object();     // pingus-level
-
-  // Write the file
-  System::write_file(filename, out_file.str());
 }
 
 void
