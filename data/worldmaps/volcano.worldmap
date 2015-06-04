@@ -132,10 +132,10 @@
         (source "leveldot_1")
         (destination "leveldot_2")
         (positions 
-          (position 84 360 0)
-          (position 108 353 0)
-          (position 132 350 0)
-          (position 154 352 0)))
+          (84 360 0)
+          (108 353 0)
+          (132 350 0)
+          (154 352 0)))
       (edge 
         (name "egde_2")
         (source "leveldot_2")
@@ -146,8 +146,8 @@
         (source "leveldot_3")
         (destination "leveldot_4")
         (positions 
-          (position 284 347 0)
-          (position 309 335 0)))
+          (284 347 0)
+          (309 335 0)))
       (edge 
         (name "egde_4")
         (source "leveldot_4")
@@ -183,11 +183,11 @@
         (source "leveldot_10")
         (destination "leveldot_15")
         (positions 
-          (position 377 406 0)
-          (position 401 428 0)
-          (position 423 449 0)
-          (position 468 451 0)
-          (position 494 449 0)))
+          (377 406 0)
+          (401 428 0)
+          (423 449 0)
+          (468 451 0)
+          (494 449 0)))
       (edge 
         (name "egde_9")
         (source "leveldot_3")
@@ -198,22 +198,22 @@
         (source "leveldot_10")
         (destination "leveldot_11")
         (positions 
-          (position 394 377 0)
-          (position 433 375 0)
-          (position 465 377 0)))
+          (394 377 0)
+          (433 375 0)
+          (465 377 0)))
       (edge 
         (name "egde_10")
         (source "leveldot_11")
         (destination "leveldot_12")
         (positions 
-          (position 538 405 0)))
+          (538 405 0)))
       (edge 
         (name "egde_11")
         (source "leveldot_12")
         (destination "leveldot_13")
         (positions 
-          (position 621 398 0)
-          (position 653 392 0)))
+          (621 398 0)
+          (653 392 0)))
       (edge 
         (name "egde_12")
         (source "leveldot_13")
@@ -224,13 +224,13 @@
         (source "leveldot_15")
         (destination "leveldot_16")
         (positions 
-          (position 591 453 0)))
+          (591 453 0)))
       (edge 
         (name "egde_12")
         (source "leveldot_13")
         (destination "leveldot_16")
         (positions 
-          (position 665 419 0)))))
+          (665 419 0)))))
   (objects 
     (surface 
       (name "background_1")
@@ -238,4 +238,6 @@
         (image "worldmaps/volcano/island")
         (modifier "ROT0"))
       (position 0 0 -100))))
+
 ;; EOF ;;
+

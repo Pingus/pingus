@@ -107,23 +107,15 @@ PathGraph::parse_edges(const ReaderCollection& collection)
       reader.read_string("source", source);
       reader.read_string("destination", destination);
 
-      // FIXME: add path-data parsing here
-      Path* path = new Path();
+      auto path = std::make_unique<Path>();
+      auto path2 = std::make_unique<Path>();
 
-      ReaderCollection positions;
-      reader.read_collection("positions", positions);
-      const std::vector<ReaderObject>& childs2 = positions.get_objects();
-      for(auto j = childs2.begin(); j != childs2.end(); ++j)
+      std::vector<Vector3f> positions;
+      if (reader.read_vectors("positions", positions))
       {
-        if (j->get_name() == "position")
+        for(auto const& p : positions)
         {
-          ReaderMapping pos_reader = i->get_mapping();
-
-          Vector3f pos;
-          pos_reader.read_float("x", pos.x);
-          pos_reader.read_float("y", pos.y);
-          pos_reader.read_float("z", pos.z);
-          path->push_back(pos);
+          path->push_back(p);
         }
       }
 
@@ -138,15 +130,15 @@ PathGraph::parse_edges(const ReaderCollection& collection)
       if (worldmap && globals::developer_mode)
         worldmap->add_drawable(std::make_unique<PathDrawable>(full_path));
 
+      path2->reverse_insert(*path);
+
       // FIXME: No error checking,
-      EdgeId id1 = graph.add_edge(path, // FIXME: Memory leak!
+      EdgeId id1 = graph.add_edge(path.release(), // FIXME: Memory leak!
                                   lookup_node(destination), lookup_node(source),
                                   cost /* costs */);
 
-      Path* path2 = new Path();
-      path2->reverse_insert(*path);
       //EdgeId id2 =
-      graph.add_edge(path2, // FIXME: Memory leak!
+      graph.add_edge(path2.release(), // FIXME: Memory leak!
                      lookup_node(source), lookup_node(destination),
                      cost /* costs */);
 
