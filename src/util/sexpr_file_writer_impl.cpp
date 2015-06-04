@@ -75,6 +75,12 @@ SExprFileWriterImpl::end_mapping()
 {
   --level;
   (*out) << ")";
+
+  // insert trailing newline and EOF marker at end of file
+  if (level == 0)
+  {
+    (*out) << "\n\n;; EOF ;;\n";
+  }
 }
 
 void
