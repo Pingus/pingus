@@ -20,6 +20,7 @@ matrix:
   fast_finish: true
 
 env:
+  global:
     - CMAKE_VERSION=3.2.1 SDL2_VERSION=2.0.3 SDL2IMAGE_VERSION=2.0.0
   matrix:
     - BUILD_TYPE="Debug"
