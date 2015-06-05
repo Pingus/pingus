@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Pingus/pingus.svg?branch=develop)](https://travis-ci.org/Pingus/pingus)
+
 Pingus
 ======
 
@@ -41,6 +43,7 @@ IRC
 For a quick help you can try the IRC server irc.freenode.net:6667 and
 the channel #pingus, you can sometimes find the project maintainer
 (nick: grumbel) there.
+
 
 Bug Reports
 -----------
