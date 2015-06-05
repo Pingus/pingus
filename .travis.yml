@@ -1,14 +1,27 @@
-# Travis-CI configuration file for Pingus
+# Pingus - A free Lemmings clone
+# Copyright (C) 2015 Ingo Ruhnke <grumbel@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Build file for https://travis-ci.org/
 #
 # Configuration manual:
 # http://docs.travis-ci.com/user/build-configuration/
 #
-# Heavily borrowed from SuperTuxKart's and SuperTux's travis.yml.
-#
-# SuperTuxKart's travis.yml file can be found here:
+# Based on:
 # https://github.com/supertuxkart/stk-code/blob/master/.travis.yml
-# License: https://github.com/supertuxkart/stk-code/blob/master/COPYING
-#
+# https://github.com/SuperTux/supertux/blob/master/.travis.yml
 
 language: cpp
 
@@ -22,6 +35,9 @@ matrix:
 env:
   global:
     - CMAKE_VERSION=3.2.1 SDL2_VERSION=2.0.3 SDL2IMAGE_VERSION=2.0.0 SDL2MIXER_VERSION=2.0.0
+    # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+    #   via the "travis encrypt" command using the project repo's public key
+    - secure: "CPJBu4r8RDmeP7G78ODyk+A/J3vxEFr4xpQE0zIDtdCHcQmv2NqjM88YVH5pRWK4vtpAFuDEzyw4ZGKwfmwK5zhg2nUubsf47WpQmQa0z9HLasjXATzWwXGggx7mzlKODpkkccBzXHDAqvLKTkKBeXdxwMKFCtSgEM+3MwEwW6g="
   matrix:
     - BUILD_TYPE="Debug"
     - BUILD_TYPE="Release"
@@ -65,3 +81,15 @@ script:
   - cd "build-$BUILD_TYPE"
   - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
   - make VERBOSE=1 -j3
+
+addons:
+  coverity_scan:
+    project:
+      name: "Pingus/pingus"
+      description: "Build submitted via Travis CI"
+    notification_email: grumbel@gmail.com
+    build_command_prepend: "cmake . && make clean"
+    build_command: "make -j 3"
+    branch_pattern: coverity_scan
+
+# EOF #
