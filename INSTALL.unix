@@ -46,6 +46,17 @@ everything by typing:
 
 Compilation:
 ------------
+Pingus uses git submodules for some parts of the code.
+
+To initialize those you can either run (when cloning the repository)
+
+ % git clone --recursive https://github.com/Pingus/pingus.git
+
+when cloning the repository or run the following on an existing clone
+
+ % git submodule init
+ % git submodule update
+
 Once all libraries are in place, you can compile Pingus with just:
 
  % make
@@ -55,6 +66,7 @@ or
  % mkdir -p build
  % scons src
  % scons
+ % ln -fs build/pingus
 
 If you need to change the compiler or other build variables you can do
 so with:
@@ -72,7 +84,6 @@ Running:
 Once the compilation is successful you can run Pingus directly from
 the top level directory of the source tree via:
 
- % cd build
  % ./pingus
 
 There is no need to install Pingus.
