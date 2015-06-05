@@ -26,6 +26,7 @@
 #include "pingus/world.hpp"
 #include "util/log.hpp"
 #include "util/string_util.hpp"
+#include <algorithm>
 
 TimeDisplay::TimeDisplay (GameSession* c) :
   server(c->get_server()),
@@ -38,13 +39,15 @@ TimeDisplay::TimeDisplay (GameSession* c) :
 void
 TimeDisplay::draw (DrawingContext& gc)
 {
-  if (server->get_plf().get_time() != -1 || globals::developer_mode)
+  int level_time = server->get_plf().get_time();
+  if (level_time >= 0 || globals::developer_mode)
   {
+    // get elapsed time from server
     int time_value = server->get_world()->get_time();
 
-    if (server->get_plf().get_time() != -1 && !globals::developer_mode)
+    if (!globals::developer_mode)
     {
-      time_value = time_value - server->get_plf().get_time();
+      time_value = std::max(0, level_time - time_value);
     }
 
     std::string time_string = GameTime::ticks_to_realtime_string(time_value);

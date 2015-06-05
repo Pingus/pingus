@@ -3,7 +3,7 @@
   (head
     (license "GPLv3+")
     (levelname "Spiraling Away")
-    (description "The exit is straight below, but the path is blocked by solid steal with no way through. But the Pingus have a versatile toolset at hand, can you use it to find a way around and make it to the exit?")
+    (description "The exit is straight below, but the path is blocked by solid steel with no way through. But the Pingus have a versatile toolset at hand, can you use it to find a way around and make it to the exit?")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 40)

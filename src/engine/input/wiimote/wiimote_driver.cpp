@@ -17,7 +17,6 @@
 #include "engine/input/wiimote/wiimote_driver.hpp"
 
 #include "engine/input/wiimote/wiimote.hpp"
-#include "pingus/debug.hpp"
 #include "pingus/globals.hpp"
 #include "util/string_util.hpp"
 
@@ -48,9 +47,7 @@ WiimoteDriver::update(float delta)
     WiimoteEvent& event = *i;
     if (event.type == WiimoteEvent::WIIMOTE_BUTTON_EVENT)
     {
-      pout(PINGUS_DEBUG_INPUT) << "WiimoteDriver: (wiimote:button (button "
-                               << event.button.button << ")) => "
-                               << event.button.down << std::endl;
+      log_debug("WiimoteDriver: (wiimote:button (button %1)) => %2", event.button.button, event.button.down);
 
       for (std::vector<ButtonBinding>::const_iterator j = button_bindings.begin();
            j != button_bindings.end();
@@ -64,10 +61,7 @@ WiimoteDriver::update(float delta)
     }
     else if (event.type == WiimoteEvent::WIIMOTE_AXIS_EVENT)
     {
-      pout(PINGUS_DEBUG_INPUT) << "WiimoteDriver: (wiimote:axis (axis "
-                               << event.axis.axis << ")) => "
-                               << event.axis.pos
-                               << std::endl; // Fixme: should output string
+      log_debug("WiimoteDriver: (wiimote:axis (axis %1)) => %2", event.axis.axis, event.axis.pos); // Fixme: should output string
 
       for (std::vector<AxisBinding>::const_iterator j = axis_bindings.begin();
            j != axis_bindings.end(); ++j)

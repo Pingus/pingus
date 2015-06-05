@@ -73,6 +73,7 @@ public:
   void on_secondary_button_press (int x, int y);
   void on_secondary_button_release (int x, int y);
   void on_pointer_move (int x, int y);
+  void on_key_pressed(const Input::KeyboardEvent& ev);
 
   void enable_scroll_mode();
   void do_scrolling();

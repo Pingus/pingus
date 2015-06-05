@@ -24,6 +24,7 @@
 #include "editor/viewport.hpp"
 #include "util/log.hpp"
 #include "util/string_util.hpp"
+#include "pingus/game_time.hpp"
 #include "pingus/gettext.h"
 
 /*
@@ -117,7 +118,7 @@ LevelProperties::set_level(EditorLevel* level_)
   number_of_pingus->set_text(StringUtil::to_string(level->get_number_of_pingus()));
   number_to_save->set_text(StringUtil::to_string(level->get_number_to_save()));
 
-  time->set_text(StringUtil::to_string(level->get_time()));
+  time->set_text(StringUtil::to_string(GameTime::ticks_to_seconds(level->get_time())));
   width->set_text(StringUtil::to_string(level->get_size().width));
   height->set_text(StringUtil::to_string(level->get_size().height));
   music->set_text(level->get_music());
@@ -189,7 +190,7 @@ LevelProperties::on_number_of_pingus_change(const std::string& str)
 void
 LevelProperties::on_time_change(const std::string& str)
 {
-  level->set_time(StringUtil::to<int>(str));
+  level->set_time(GameTime::seconds_to_ticks(StringUtil::to<int>(str)));
 }
 
 void

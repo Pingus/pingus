@@ -82,6 +82,8 @@ FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect_, Mode mode_) :
 
   filename_inputbox->on_enter.connect(std::bind(&FileDialog::on_filename_enter, this));
   pathname_inputbox->on_enter.connect(std::bind(&FileDialog::on_pathname_change, this));
+
+  on_userdir();
 }
 
 FileDialog::~FileDialog()

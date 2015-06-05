@@ -164,6 +164,27 @@ Playfield::update(float delta)
 }
 
 void
+Playfield::on_key_pressed(const Input::KeyboardEvent& ev)
+{
+  if (globals::developer_mode)
+  {
+    bool spawn = ev.keysym.sym == SDLK_l || ev.keysym.sym == SDLK_r;
+    if (spawn)
+    {
+      Vector2i n = state.screen2world(mouse_pos);
+      Vector3f p = Vector3f(n.x,n.y,0);
+      Pingu* pingu = server->get_world()->get_pingus()->create_pingu(p, 0);
+      if (pingu)
+      {
+        Direction d;
+        ev.keysym.sym == SDLK_l ? d.left() : d.right();
+        pingu->set_direction(d);
+      }
+    }
+  }
+}
+
+void
 Playfield::on_primary_button_press(int x, int y)
 {
   x -= rect.left;

@@ -26,6 +26,7 @@
 #include "pingus/config_manager.hpp"
 #include "pingus/screens/demo_session.hpp"
 #include "pingus/screens/pingus_menu.hpp"
+#include "pingus/screens/level_menu.hpp"
 #include "pingus/worldmap/worldmap_screen.hpp"
 #include "util/log.hpp"
 #include "util/string_util.hpp"
@@ -588,6 +589,13 @@ PingusMain::start_game ()
       ReaderObject story_desc = FileReader::parse(Pathname(cmd_options.rest.get(),
                                                            Pathname::SYSTEM_PATH));
       screen_manager.push_screen(std::make_shared<StoryScreen>(story_desc.get_mapping()));
+    }
+    else if (StringUtil::has_suffix(cmd_options.rest.get(), ".levelset"))
+    {
+      std::shared_ptr<LevelMenu> lvlm = std::make_shared<LevelMenu>();
+      std::unique_ptr<Levelset> levelset = Levelset::from_file(Pathname(cmd_options.rest.get(), Pathname::SYSTEM_PATH));
+      lvlm->set_levelset(levelset.release());
+      screen_manager.push_screen(lvlm);
     }
     else
     { // Level file

@@ -27,6 +27,7 @@
 #include "editor/viewport.hpp"
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
+#include "engine/sound/sound.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "editor/message_box.hpp"
 #include "pingus/fonts.hpp"
@@ -81,14 +82,12 @@ EditorScreen::EditorScreen() :
                                                                 Size(size.width  - 100,
                                                                      size.height - 100)),
                                                      FileDialog::LOAD);
-  file_load_dialog->set_directory(".");
   file_load_dialog->hide();
 
   file_save_dialog = gui_manager->create<FileDialog>(this, Rect(Vector2i(50, 50),
                                                                 Size(Display::get_width() - 100,
                                                                      Display::get_height() - 100)),
                                                      FileDialog::SAVE);
-  file_save_dialog->set_directory(".");
   file_save_dialog->hide();
 
   {
@@ -114,6 +113,12 @@ EditorScreen::EditorScreen() :
 // Destructor
 EditorScreen::~EditorScreen()
 {
+}
+
+void
+EditorScreen::on_startup ()
+{
+  Sound::PingusSound::stop_music();
 }
 
 // Close the current screen

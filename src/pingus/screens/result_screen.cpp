@@ -157,7 +157,7 @@ ResultScreenComponent::ResultScreenComponent(Result arg_result) :
   if (result.max_time == -1)
     time_str = "-";
   else
-    time_str = GameTime::ticks_to_realtime_string(result.max_time - result.used_time);
+    time_str = GameTime::ticks_to_realtime_string(std::max(0, result.max_time - result.used_time));
 }
 
 void

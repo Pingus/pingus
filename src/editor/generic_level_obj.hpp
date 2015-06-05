@@ -187,6 +187,12 @@ public:
   /** Set the object's position */
   void set_pos(const Vector3f p);
 
+  void set_pos_x(float x);
+  float get_pos_x() const;
+
+  void set_pos_y(float y);
+  float get_pos_y() const;
+
   void set_pos_z(float z);
   float get_pos_z() const;
 

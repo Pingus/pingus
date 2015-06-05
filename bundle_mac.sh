@@ -5,7 +5,7 @@ rm -rf ./Pingus-`cat VERSION`.dmg
 echo "* Creating skeleton"
 mkdir -p ./Pingus.app/Contents/Resources
 mkdir ./Pingus.app/Contents/MacOS
-cp info.plist ./Pingus.app/Contents/info.plist
+cp Info.plist ./Pingus.app/Contents/Info.plist
 cp ./data/images/icons/pingus-icon.icns ./Pingus.app/Contents/Resources/pingus.icns
 
 echo "* Copying executable"
@@ -26,7 +26,7 @@ echo "* Creating DMG"
 	cp COPYING /Volumes/Pingus
 	cp NEWS /Volumes/Pingus
 	hdiutil detach /Volumes/Pingus -force
-read -p "Do you run OSX 10.6 or eaarlier? (y/n)" RESPONSE
+read -p "Do you run OSX 10.6 or earlier? (y/n)" RESPONSE
 	if [ "$RESPONSE" = y ] ; then
 		./SLA-dmg.sh COPYING Pingus-tmp.dmg
 	elif [ "$RESPONSE" = n ] ; then
