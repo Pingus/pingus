@@ -28,7 +28,7 @@ env:
 
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install build-essential libogg-dev libvorbis-dev libphysfs-dev libglew-dev libopenal-dev libboost-all-dev
+  - sudo apt-get install build-essential libogg-dev libvorbis-dev libphysfs-dev libglew-dev libopenal-dev libboost-all-dev libjsoncpp-dev
 
   # Current gcc that supports C++ 11 features
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
