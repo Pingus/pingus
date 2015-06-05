@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "The Ones")
-    (description "This is the last stage the pingus have to pass during this Halloween. Two oddly familiar column are in the way. What do they mean? The two groups of pingus have to work together to make it down the columns to the exit far below.")
+    (description "This is the last stage the pingus have to pass during this Halloween. Two oddly familiar columns are in the way. What do they mean? The two groups of pingus have to work together to make it down the columns to the exit far below.")
     (author "Rune Zedeler <rz@daimi.au.dk>")
     (number-of-pingus 20)
     (number-to-save 11)

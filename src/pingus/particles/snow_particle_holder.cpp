@@ -45,6 +45,7 @@ SnowParticleHolder::SnowParticle::SnowParticle (int x, int y, bool colliding_) :
     case 5:
     case 6:
       type = SnowParticleHolder::Snow4;
+      break;
     default:
       type = SnowParticleHolder::Snow5;
       break;

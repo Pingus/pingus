@@ -182,13 +182,17 @@ class Project:
         else:
             self.reports += "  * XInput support: yes\n"
             self.conf.env.Append(CPPDEFINES = [('HAVE_XINPUT', 1)])
-            self.conf.env.Append(LIBS = ['Xi'])
+            self.conf.env.Append(LIBS = ['X11', 'Xi'])
             self.conf.env.Append(optional_sources = ['src/engine/input/xinput/xinput_driver.cpp',
                                                      'src/engine/input/xinput/xinput_device.cpp'])
 
     def configure_boost(self):
-        if not self.conf.CheckHeader('boost/signals2.hpp', '<>', 'c++'):
+        if not self.conf.CheckLibWithHeader('boost_signals', 'boost/signals2.hpp', 'c++'):
             self.fatal_error += "  * library 'boost_signals2' not found\n"
+        if not self.conf.CheckLib('boost_system', '', '', 'c++'):
+            self.fatal_error += "  * library 'boost_system' not found\n"
+        if not self.conf.CheckLibWithHeader('boost_filesystem', 'boost/filesystem.hpp', 'c++'):
+            self.fatal_error += "  * library 'boost_filesystem' not found\n"
 
     def configure_png(self):
         if self.conf.CheckMyProgram('pkg-config'):

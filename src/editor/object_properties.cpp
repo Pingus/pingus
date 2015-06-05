@@ -57,6 +57,10 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
   scroll_y_inputbox(),
   owner_label(),
   owner_inputbox(),
+  pos_x_label(),
+  pos_x_inputbox(),
+  pos_y_label(),
+  pos_y_inputbox(),
   pos_z_label(),
   pos_z_inputbox(),
   color_label(),
@@ -158,6 +162,14 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
   owner_label = create<Label>(label_rect, _("Owner Id:"));
   owner_inputbox = create<Inputbox>(box_rect);
   owner_inputbox->on_change.connect(std::bind(&ObjectProperties::on_owner_change, this, std::placeholders::_1));
+
+  pos_x_label = create<Label>(label_rect, _("X-Pos:"));
+  pos_x_inputbox = create<Inputbox>(box_rect);
+  pos_x_inputbox->on_change.connect(std::bind(&ObjectProperties::on_pos_x_change, this, std::placeholders::_1));
+
+  pos_y_label = create<Label>(label_rect, _("Y-Pos:"));
+  pos_y_inputbox = create<Inputbox>(box_rect);
+  pos_y_inputbox->on_change.connect(std::bind(&ObjectProperties::on_pos_y_change, this, std::placeholders::_1));
 
   pos_z_label = create<Label>(label_rect, _("Z-Pos:"));
   pos_z_inputbox = create<Inputbox>(box_rect);
@@ -307,6 +319,12 @@ ObjectProperties::hide_all()
   owner_label->hide();
   owner_inputbox->hide();
 
+  pos_x_label->hide();
+  pos_x_inputbox->hide();
+
+  pos_y_label->hide();
+  pos_y_inputbox->hide();
+
   pos_z_label->hide();
   pos_z_inputbox->hide();
 
@@ -425,7 +443,7 @@ ObjectProperties::set_object(LevelObjPtr obj)
 
     if (attr & HAS_STRETCH)
     {
-      stretch_x_checkbox->set_checked(obj->get_stretch_y());
+      stretch_x_checkbox->set_checked(obj->get_stretch_x());
       stretch_y_checkbox->set_checked(obj->get_stretch_y());
 
       place(stretch_label);
@@ -474,8 +492,12 @@ ObjectProperties::set_object(LevelObjPtr obj)
       place(height_label, height_inputbox);
     }
 
-    if (1) // everybody has z-pos
+    if (1) // everybody has x-pos, y-pos and z-pos
     {
+      pos_x_inputbox->set_text(StringUtil::to_string(obj->get_pos_x()));
+      place(pos_x_label, pos_x_inputbox);
+      pos_y_inputbox->set_text(StringUtil::to_string(obj->get_pos_y()));
+      place(pos_y_label, pos_y_inputbox);
       pos_z_inputbox->set_text(StringUtil::to_string(obj->get_pos_z()));
       place(pos_z_label, pos_z_inputbox);
     }
@@ -582,6 +604,20 @@ ObjectProperties::on_owner_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_owner(StringUtil::to<int>(str));
+}
+
+void
+ObjectProperties::on_pos_x_change(const std::string& str)
+{
+  for(auto i = objects.begin(); i != objects.end(); ++i)
+    (*i)->set_pos_x(StringUtil::to<float>(str));
+}
+
+void
+ObjectProperties::on_pos_y_change(const std::string& str)
+{
+  for(auto i = objects.begin(); i != objects.end(); ++i)
+    (*i)->set_pos_y(StringUtil::to<float>(str));
 }
 
 void

@@ -70,6 +70,9 @@ public:
   /** Destructor */
   ~EditorScreen();
 
+  /** Runs when the editor becomes the active screen */
+  void on_startup();
+
   /** Closes the current screen */
   void close_screen();
 
