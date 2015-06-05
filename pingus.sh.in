@@ -1,0 +1,2 @@
+#!/bin/sh
+exec "@CMAKE_INSTALL_FULL_LIBEXECDIR@/pingus" --datadir "@CMAKE_INSTALL_FULL_DATADIR@/pingus" "$@"

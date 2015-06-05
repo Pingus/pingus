@@ -17,6 +17,8 @@
 cmake_minimum_required(VERSION 3.0)
 project(pingus)
 
+include(GNUInstallDirs)
+
 find_package(Threads REQUIRED)
 find_package(PkgConfig REQUIRED)
 find_package(OpenGL REQUIRED)
@@ -26,6 +28,20 @@ pkg_search_module(SDL2IMAGE REQUIRED SDL2_image>=2.0.0)
 pkg_search_module(SDL2MIXER REQUIRED SDL2_mixer>=2.0.0)
 pkg_search_module(PNG REQUIRED libpng)
 pkg_search_module(JSONCPP REQUIRED jsoncpp)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -Wall -Wextra -Wnon-virtual-dtor -Weffc++")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wold-style-cast -Werror -Wshadow -Wcast-qual") # -Wconversion
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Winit-self -Wno-unused-parameter")
+
+include_directories(
+  ${SDL2_INCLUDE_DIRS}
+  ${SDL2IMAGE_INCLUDE_DIRS})
+
+include_directories(
+  src/
+  external/tinygettext/include/
+  external/logmich/include/)
 
 file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/editor/*.cpp
@@ -51,20 +67,6 @@ file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/pingus/worldobjs/*.cpp
   src/util/*.cpp)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -Wall -Wextra -Wnon-virtual-dtor -Weffc++")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wold-style-cast -Werror -Wshadow -Wcast-qual") # -Wconversion
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Winit-self -Wno-unused-parameter")
-
-include_directories(
-  ${SDL2_INCLUDE_DIRS}
-  ${SDL2IMAGE_INCLUDE_DIRS})
-
-include_directories(
-  src/
-  external/tinygettext/include/
-  external/logmich/include/)
-
 file(GLOB TINYGETTEXT_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   external/tinygettext/src/*.cpp)
 add_library(tinygettext STATIC ${TINYGETTEXT_SOURCES_CXX})
@@ -86,9 +88,10 @@ target_link_libraries(libpingus PUBLIC
   ${JSONCPP_LIBRARIES}
   ${OPENGL_LIBRARIES})
 target_include_directories(libpingus SYSTEM PUBLIC
-    ${JSONCPP_INCLUDE_DIRS})
+  ${JSONCPP_INCLUDE_DIRS})
 
 add_executable(pingus src/main.cpp)
+set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
 target_link_libraries(pingus
   libpingus)
 
@@ -138,5 +141,18 @@ if(BUILD_TESTS)
   target_include_directories(test_pingus PUBLIC src/ tests/)
   target_link_libraries(test_pingus libpingus gtest gtest_main ${CMAKE_THREAD_LIBS_INIT})
 endif(BUILD_TESTS)
+
+install(TARGETS pingus
+  RUNTIME DESTINATION ${CMAKE_INSTALL_LIBEXECDIR})
+
+configure_file(
+  ${CMAKE_CURRENT_SOURCE_DIR}/pingus.sh.in
+  ${CMAKE_BINARY_DIR}/pingus.sh)
+
+install(FILES
+  ${CMAKE_BINARY_DIR}/pingus.sh
+  RENAME pingus
+  PERMISSIONS OWNER_EXECUTE OWNER_READ OWNER_WRITE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+  DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 # EOF #
