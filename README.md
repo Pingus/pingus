@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/Pingus/pingus.svg?branch=develop)](https://travis-ci.org/Pingus/pingus)
+[![Coverity Status](https://scan.coverity.com/projects/5286/badge.svg)](https://scan.coverity.com/projects/5286)
 
 Pingus
 ======
