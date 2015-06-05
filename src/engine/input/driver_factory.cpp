@@ -18,6 +18,7 @@
 
 #include "engine/input/core_driver.hpp"
 #include "engine/input/sdl_driver.hpp"
+#include "util/mem.hpp"
 
 #ifdef HAVE_CWIID
 #  include "engine/input/wiimote/wiimote_driver.hpp"
@@ -42,34 +43,34 @@ DriverFactory::create(const std::string& name, Manager* manager)
 {
   if (name == "sdl")
   {
-    return std::make_unique<SDLDriver>();
+    return util::make_unique<SDLDriver>();
   }
   else if (name == "core")
   {
-    return std::make_unique<CoreDriver>(manager);
+    return util::make_unique<CoreDriver>(manager);
   }
 #ifdef HAVE_LINUXUSBMOUSE
   else if (name == "usbmouse")
   {
-    return std::make_unique<USBMouseDriver>();
+    return util::make_unique<USBMouseDriver>();
   }
 #endif
 #ifdef HAVE_LINUXEVDEV
   else if (name == "evdev")
   {
-    return std::make_unique<EvdevDriver>();
+    return util::make_unique<EvdevDriver>();
   }
 #endif
 #ifdef HAVE_XINPUT
   else if (name == "xinput")
   {
-    return std::make_unique<XInputDriver>();
+    return util::make_unique<XInputDriver>();
   }
 #endif
 #ifdef HAVE_CWIID
   else if (name == "wiimote")
   {
-    return std::make_unique<WiimoteDriver>();
+    return util::make_unique<WiimoteDriver>();
   }
 #endif
   else

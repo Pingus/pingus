@@ -15,7 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "engine/input/control.hpp"
+
 #include "engine/input/controller_description.hpp"
+#include "util/mem.hpp"
 
 namespace Input {
 
@@ -40,31 +42,31 @@ Controller::Controller(const ControllerDescription& desc) :
   const std::vector<int>& button_lst = desc.get_buttons();
   for(auto i = button_lst.begin(); i != button_lst.end(); ++i)
   {
-    add_button(*i, std::make_unique<ControllerButton>(this, *i));
+    add_button(*i, util::make_unique<ControllerButton>(this, *i));
   }
 
   const std::vector<int>& axis_lst = desc.get_axes();
   for(auto i = axis_lst.begin(); i != axis_lst.end(); ++i)
   {
-    add_axis(*i, std::make_unique<ControllerAxis>(this, *i));
+    add_axis(*i, util::make_unique<ControllerAxis>(this, *i));
   }
 
   const std::vector<int>& pointer_lst = desc.get_pointers();
   for(auto i = pointer_lst.begin(); i != pointer_lst.end(); ++i)
   {
-    add_pointer(*i, std::make_unique<ControllerPointer>(this, *i));
+    add_pointer(*i, util::make_unique<ControllerPointer>(this, *i));
   }
 
   const std::vector<int>& scroller_lst = desc.get_scrollers();
   for(auto i = scroller_lst.begin(); i != scroller_lst.end(); ++i)
   {
-    add_scroller(*i, std::make_unique<ControllerScroller>(this, *i));
+    add_scroller(*i, util::make_unique<ControllerScroller>(this, *i));
   }
 
   const std::vector<int>& keyboard_lst = desc.get_keyboards();
   for(auto i = keyboard_lst.begin(); i != keyboard_lst.end(); ++i)
   {
-    add_keyboard(*i, std::make_unique<ControllerKeyboard>(this, *i));
+    add_keyboard(*i, util::make_unique<ControllerKeyboard>(this, *i));
   }
 }
 

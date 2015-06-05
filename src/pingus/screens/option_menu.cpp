@@ -105,7 +105,7 @@ OptionMenu::OptionMenu() :
   x_pos = 0;
   y_pos = 0;
 
-  auto resolution_box = std::make_unique<ChoiceBox>(Rect());
+  auto resolution_box = util::make_unique<ChoiceBox>(Rect());
   {
     std::vector<SDL_DisplayMode> resolutions = Display::get_fullscreen_video_modes();
     Size fullscreen = config_manager.get_fullscreen_resolution();
@@ -129,7 +129,7 @@ OptionMenu::OptionMenu() :
     resolution_box->set_current_choice(choice);
   }
 
-  auto renderer_box = std::make_unique<ChoiceBox>(Rect());
+  auto renderer_box = util::make_unique<ChoiceBox>(Rect());
   renderer_box->add_choice("sdl");
   renderer_box->add_choice("delta");
   renderer_box->add_choice("opengl");
@@ -144,7 +144,7 @@ OptionMenu::OptionMenu() :
 
   m_language = dictionary_manager.get_language();
 
-  auto language_box = std::make_unique<ChoiceBox>(Rect());
+  auto language_box = util::make_unique<ChoiceBox>(Rect());
   {
     std::set<tinygettext::Language> languages = dictionary_manager.get_languages();
 
@@ -167,7 +167,7 @@ OptionMenu::OptionMenu() :
     }
   }
 
-  auto scroll_box = std::make_unique<ChoiceBox>(Rect());
+  auto scroll_box = util::make_unique<ChoiceBox>(Rect());
   scroll_box->add_choice("Drag&Drop");
   scroll_box->add_choice("Rubberband");
 
@@ -265,7 +265,7 @@ OptionMenu::add_item(const std::string& label, std::unique_ptr<GUI::RectComponen
   Rect right(rect.left + 140, rect.top,
              rect.right, rect.bottom);
 
-  auto label_component = std::make_unique<Label>(label, Rect());
+  auto label_component = util::make_unique<Label>(label, Rect());
 
   if (dynamic_cast<ChoiceBox*>(control.get()))
   {

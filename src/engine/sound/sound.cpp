@@ -23,6 +23,7 @@
 #include "pingus/globals.hpp"
 #include "pingus/path_manager.hpp"
 #include "util/log.hpp"
+#include "util/mem.hpp"
 
 namespace Sound {
 
@@ -36,16 +37,16 @@ PingusSound::init(std::unique_ptr<PingusSoundImpl> s)
     if (globals::sound_enabled || globals::music_enabled)
     {
       try {
-        PingusSound::init(std::make_unique<PingusSoundReal>());
+        PingusSound::init(util::make_unique<PingusSoundReal>());
       } catch (const std::exception& err) {
         log_error("Sound Error: %1%", err.what());
         log_error("Sound will be disabled");
-        PingusSound::init(std::make_unique<PingusSoundDummy>());
+        PingusSound::init(util::make_unique<PingusSoundDummy>());
       }
     }
     else
     {
-      PingusSound::init(std::make_unique<PingusSoundDummy>());
+      PingusSound::init(util::make_unique<PingusSoundDummy>());
     }
   }
   else

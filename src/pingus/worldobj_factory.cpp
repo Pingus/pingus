@@ -43,6 +43,7 @@
 #include "pingus/worldobjs/teleporter_target.hpp"
 #include "util/log.hpp"
 #include "util/overrride_file_reader.hpp"
+#include "util/mem.hpp"
 
 using namespace WorldObjs;
 
@@ -167,44 +168,44 @@ WorldObjFactory::instance()
     instance_ = std::unique_ptr<WorldObjFactory>(new WorldObjFactory);
 
     // Registring Factories
-    instance_->register_factory("group", std::make_unique<WorldObjGroupFactory>());
-    instance_->register_factory("prefab", std::make_unique<WorldObjPrefabFactory>());
+    instance_->register_factory("group", util::make_unique<WorldObjGroupFactory>());
+    instance_->register_factory("prefab", util::make_unique<WorldObjPrefabFactory>());
 
-    instance_->register_factory("liquid", std::make_unique<WorldObjFactoryImpl<Liquid> >());
-    instance_->register_factory("hotspot", std::make_unique<WorldObjFactoryImpl<Hotspot> >());
-    instance_->register_factory("entrance", std::make_unique<WorldObjFactoryImpl<Entrance> >());
-    instance_->register_factory("exit", std::make_unique<WorldObjFactoryImpl<Exit> >());
+    instance_->register_factory("liquid", util::make_unique<WorldObjFactoryImpl<Liquid> >());
+    instance_->register_factory("hotspot", util::make_unique<WorldObjFactoryImpl<Hotspot> >());
+    instance_->register_factory("entrance", util::make_unique<WorldObjFactoryImpl<Entrance> >());
+    instance_->register_factory("exit", util::make_unique<WorldObjFactoryImpl<Exit> >());
 
     // traps
-    instance_->register_factory("fake_exit", std::make_unique<WorldObjFactoryImpl<FakeExit> >());
-    instance_->register_factory("guillotine", std::make_unique<WorldObjFactoryImpl<Guillotine> >());
-    instance_->register_factory("hammer", std::make_unique<WorldObjFactoryImpl<Hammer> >());
-    instance_->register_factory("laser_exit", std::make_unique<WorldObjFactoryImpl<LaserExit> >());
-    instance_->register_factory("smasher", std::make_unique<WorldObjFactoryImpl<Smasher> >());
-    instance_->register_factory("spike", std::make_unique<WorldObjFactoryImpl<Spike> >());
+    instance_->register_factory("fake_exit", util::make_unique<WorldObjFactoryImpl<FakeExit> >());
+    instance_->register_factory("guillotine", util::make_unique<WorldObjFactoryImpl<Guillotine> >());
+    instance_->register_factory("hammer", util::make_unique<WorldObjFactoryImpl<Hammer> >());
+    instance_->register_factory("laser_exit", util::make_unique<WorldObjFactoryImpl<LaserExit> >());
+    instance_->register_factory("smasher", util::make_unique<WorldObjFactoryImpl<Smasher> >());
+    instance_->register_factory("spike", util::make_unique<WorldObjFactoryImpl<Spike> >());
 
     // Special Objects
-    instance_->register_factory("switchdoor-switch", std::make_unique<WorldObjFactoryImpl<SwitchDoorSwitch> >());
-    instance_->register_factory("switchdoor-door", std::make_unique<WorldObjFactoryImpl<SwitchDoorDoor> >());
-    instance_->register_factory("iceblock", std::make_unique<WorldObjFactoryImpl<IceBlock> >());
-    instance_->register_factory("conveyorbelt", std::make_unique<WorldObjFactoryImpl<ConveyorBelt> >());
-    instance_->register_factory("teleporter", std::make_unique<WorldObjFactoryImpl<Teleporter> >());
-    instance_->register_factory("teleporter-target", std::make_unique<WorldObjFactoryImpl<TeleporterTarget> >());
+    instance_->register_factory("switchdoor-switch", util::make_unique<WorldObjFactoryImpl<SwitchDoorSwitch> >());
+    instance_->register_factory("switchdoor-door", util::make_unique<WorldObjFactoryImpl<SwitchDoorDoor> >());
+    instance_->register_factory("iceblock", util::make_unique<WorldObjFactoryImpl<IceBlock> >());
+    instance_->register_factory("conveyorbelt", util::make_unique<WorldObjFactoryImpl<ConveyorBelt> >());
+    instance_->register_factory("teleporter", util::make_unique<WorldObjFactoryImpl<Teleporter> >());
+    instance_->register_factory("teleporter-target", util::make_unique<WorldObjFactoryImpl<TeleporterTarget> >());
 
     // Backgrounds
-    instance_->register_factory("surface-background", std::make_unique<WorldObjFactoryImpl<SurfaceBackground> >());
-    instance_->register_factory("starfield-background", std::make_unique<WorldObjFactoryImpl<StarfieldBackground> >());
-    instance_->register_factory("solidcolor-background", std::make_unique<WorldObjFactoryImpl<SolidColorBackground> >());
+    instance_->register_factory("surface-background", util::make_unique<WorldObjFactoryImpl<SurfaceBackground> >());
+    instance_->register_factory("starfield-background", util::make_unique<WorldObjFactoryImpl<StarfieldBackground> >());
+    instance_->register_factory("solidcolor-background", util::make_unique<WorldObjFactoryImpl<SolidColorBackground> >());
 
     // Weather
-    instance_->register_factory("snow-generator", std::make_unique<WorldObjFactoryImpl<SnowGenerator> >());
-    instance_->register_factory("rain-generator", std::make_unique<WorldObjFactoryImpl<RainGenerator> >());
+    instance_->register_factory("snow-generator", util::make_unique<WorldObjFactoryImpl<SnowGenerator> >());
+    instance_->register_factory("rain-generator", util::make_unique<WorldObjFactoryImpl<RainGenerator> >());
     // Weather-Backward compability
-    instance_->register_factory("snow", std::make_unique<WorldObjFactoryImpl<SnowGenerator> >());
-    instance_->register_factory("rain", std::make_unique<WorldObjFactoryImpl<RainGenerator> >());
+    instance_->register_factory("snow", util::make_unique<WorldObjFactoryImpl<SnowGenerator> >());
+    instance_->register_factory("rain", util::make_unique<WorldObjFactoryImpl<RainGenerator> >());
 
     // Groundpieces
-    instance_->register_factory("groundpiece", std::make_unique<WorldObjFactoryImpl<Groundpiece> >());
+    instance_->register_factory("groundpiece", util::make_unique<WorldObjFactoryImpl<Groundpiece> >());
   }
 
   return *instance_;

@@ -19,6 +19,7 @@
 #include "engine/display/display.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "pingus/global_event.hpp"
+#include "util/mem.hpp"
 
 namespace Input {
 
@@ -48,7 +49,7 @@ SDLDriver::~SDLDriver()
 std::unique_ptr<Keyboard>
 SDLDriver::create_keyboard(const ReaderObject& reader_object, Control* parent)
 {
-  auto keyboard = std::make_unique<Keyboard>(parent);
+  auto keyboard = util::make_unique<Keyboard>(parent);
   keyboard_binding = keyboard.get();
   return std::move(keyboard);
 }
@@ -67,7 +68,7 @@ SDLDriver::create_button(const ReaderObject& reader_object, Control* parent)
 
     if (open_joystick(binding.device))
     {
-      auto button = std::make_unique<Button>(parent);
+      auto button = util::make_unique<Button>(parent);
       binding.binding = button.get();
       joystick_button_bindings.push_back(binding);
 
@@ -81,7 +82,7 @@ SDLDriver::create_button(const ReaderObject& reader_object, Control* parent)
   else if (reader_object.get_name() == "sdl:mouse-button")
   {
     ReaderMapping reader = reader_object.get_mapping();
-    auto button = std::make_unique<Button>(parent);
+    auto button = util::make_unique<Button>(parent);
 
     MouseButtonBinding binding;
     reader.read_int("button", binding.button);
@@ -100,7 +101,7 @@ SDLDriver::create_button(const ReaderObject& reader_object, Control* parent)
       SDL_Keycode key = SDL_GetKeyFromName(key_str.c_str());
       if (key != SDLK_UNKNOWN)
       {
-        auto button = std::make_unique<Button>(parent);
+        auto button = util::make_unique<Button>(parent);
 
         KeyboardButtonBinding binding;
         binding.key = key;
@@ -141,7 +142,7 @@ SDLDriver::create_axis(const ReaderObject& reader_object, Control* parent)
 
     if (open_joystick(binding.device))
     {
-      auto axis = std::make_unique<Axis>(parent);
+      auto axis = util::make_unique<Axis>(parent);
 
       binding.binding = axis.get();
       joystick_axis_bindings.push_back(binding);
@@ -164,7 +165,7 @@ SDLDriver::create_scroller(const ReaderObject& reader_object, Control* parent)
 {
   if (reader_object.get_name() == "sdl:mouse-scroller")
   {
-    auto scroller = std::make_unique<Scroller>(parent);
+    auto scroller = util::make_unique<Scroller>(parent);
 
     ScrollerBinding binding;
     binding.binding = scroller.get();
@@ -183,7 +184,7 @@ SDLDriver::create_pointer(const ReaderObject& reader_object, Control* parent)
 {
   if (reader_object.get_name() == "sdl:mouse-pointer")
   {
-    auto pointer = std::make_unique<Pointer>(parent);
+    auto pointer = util::make_unique<Pointer>(parent);
 
     PointerBinding binding;
     binding.binding = pointer.get();

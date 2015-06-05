@@ -23,6 +23,7 @@
 #include "util/file_reader.hpp"
 #include "util/file_writer.hpp"
 #include "util/system.hpp"
+#include "util/mem.hpp"
 
 SavegameManager* SavegameManager::instance_ = 0;
 
@@ -57,7 +58,7 @@ SavegameManager::SavegameManager(const std::string& arg_filename) :
       reader.get_mapping().read_collection("levels", levels_collection);
       for(auto const& level_object : levels_collection.get_objects())
       {
-        auto savegame = std::make_unique<Savegame>(level_object.get_mapping());
+        auto savegame = util::make_unique<Savegame>(level_object.get_mapping());
 
         SavegameTable::iterator it = find(savegame->get_filename());
         if (it != savegames.end())
@@ -94,7 +95,7 @@ SavegameManager::get(const std::string& filename_)
 void
 SavegameManager::store(Savegame const& arg_savegame)
 {
-  auto savegame = std::make_unique<Savegame>(arg_savegame);
+  auto savegame = util::make_unique<Savegame>(arg_savegame);
   SavegameTable::iterator i = find(savegame->get_filename());
   if (i == savegames.end())
   {

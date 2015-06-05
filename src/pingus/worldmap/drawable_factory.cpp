@@ -18,6 +18,7 @@
 
 #include "pingus/worldmap/sprite_drawable.hpp"
 #include "util/log.hpp"
+#include "util/mem.hpp"
 
 namespace WorldmapNS {
 
@@ -26,7 +27,7 @@ DrawableFactory::create(const ReaderObject& reader)
 {
   if (reader.get_name() == "surface")
   {
-    return std::make_unique<SpriteDrawable>(reader.get_mapping());
+    return util::make_unique<SpriteDrawable>(reader.get_mapping());
   }
   else
   {

@@ -19,6 +19,7 @@
 
 #include "engine/display/drawing_context.hpp"
 #include "engine/gui/rect_component.hpp"
+#include "util/mem.hpp"
 
 #include <memory>
 
@@ -76,7 +77,7 @@ public:
   template<typename C, typename ...Args>
   C* create(Args&&... args)
   {
-    auto c = std::make_unique<C>(std::forward<Args>(args)...);
+    auto c = util::make_unique<C>(std::forward<Args>(args)...);
     C* result = c.get();
     add(std::move(c));
     return result;

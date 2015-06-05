@@ -19,27 +19,28 @@
 #include "util/sexpr_file_writer_impl.hpp"
 #include "util/json_file_writer_impl.hpp"
 #include "util/jsonpretty_file_writer_impl.hpp"
+#include "util/mem.hpp"
 
 FileWriter
 FileWriter::fastjson(std::ostream& out)
 {
-  return FileWriter(std::make_unique<JsonFileWriterImpl>(out));
+  return FileWriter(util::make_unique<JsonFileWriterImpl>(out));
 }
 
 FileWriter
 FileWriter::json(std::ostream& out)
 {
-  return FileWriter(std::make_unique<JsonPrettyFileWriterImpl>(out));
+  return FileWriter(util::make_unique<JsonPrettyFileWriterImpl>(out));
 }
 
 FileWriter
 FileWriter::sexpr(std::ostream& out)
 {
-  return FileWriter(std::make_unique<SExprFileWriterImpl>(out));
+  return FileWriter(util::make_unique<SExprFileWriterImpl>(out));
 }
 
 FileWriter::FileWriter(std::ostream& out) :
-  m_impl(std::make_unique<SExprFileWriterImpl>(out))
+  m_impl(util::make_unique<SExprFileWriterImpl>(out))
 {
 }
 

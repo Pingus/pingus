@@ -24,6 +24,7 @@
 #include "pingus/savegame_manager.hpp"
 #include "util/log.hpp"
 #include "util/raise_exception.hpp"
+#include "util/mem.hpp"
 
 std::unique_ptr<Levelset>
 Levelset::from_directory(const std::string& title,
@@ -31,7 +32,7 @@ Levelset::from_directory(const std::string& title,
                          const std::string& image,
                          const Pathname& pathname)
 {
-  auto levelset = std::make_unique<Levelset>();
+  auto levelset = util::make_unique<Levelset>();
 
   levelset->set_title(title);
   levelset->set_description(description);
@@ -66,7 +67,7 @@ Levelset::from_file(const Pathname& pathname)
   else
   {
     ReaderMapping reader = reader_object.get_mapping();
-    auto levelset = std::make_unique<Levelset>();
+    auto levelset = util::make_unique<Levelset>();
 
     std::string tmp;
     if (reader.read_string("title", tmp))
@@ -179,7 +180,7 @@ Levelset::add_level(const std::string& resname, bool accessible)
 {
   try
   {
-    auto level = std::make_unique<Level>();
+    auto level = util::make_unique<Level>();
 
     level->resname    = resname;
     level->plf        = PLFResMgr::load_plf(level->resname);
