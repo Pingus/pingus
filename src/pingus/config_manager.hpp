@@ -23,7 +23,7 @@
 #include "pingus/options.hpp"
 #include "tinygettext/language.hpp"
 
-class Options;
+struct Options;
 
 class ConfigManager
 {

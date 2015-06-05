@@ -191,25 +191,25 @@ UTF8::encode_utf8(uint32_t unicode)
   std::string result;
   if (unicode < 0x80)
   {
-    result += static_cast<uint8_t>(unicode);
+    result += static_cast<char>(unicode);
   }
   else if (unicode < 0x800)
   {
-    result += static_cast<uint8_t>((unicode >> 6) | 0xc0);
-    result += static_cast<uint8_t>((unicode & 0x3f) | 0x80);
+    result += static_cast<char>((unicode >> 6) | 0xc0);
+    result += static_cast<char>((unicode & 0x3f) | 0x80);
   }
   else if (unicode < 0x10000)
   {
-    result += static_cast<uint8_t>((unicode  >> 12) | 0xe0);
-    result += static_cast<uint8_t>(((unicode >> 6) & 0x3f) | 0x80);
-    result += static_cast<uint8_t>((unicode & 0x3f) | 0x80);
+    result += static_cast<char>((unicode  >> 12) | 0xe0);
+    result += static_cast<char>(((unicode >> 6) & 0x3f) | 0x80);
+    result += static_cast<char>((unicode & 0x3f) | 0x80);
   }
   else
   {
-    result += static_cast<uint8_t>((unicode  >> 18) | 0xf0);
-    result += static_cast<uint8_t>(((unicode >> 12) & 0x3f) | 0x80);
-    result += static_cast<uint8_t>(((unicode >>  6) & 0x3f) | 0x80);
-    result += static_cast<uint8_t>((unicode & 0x3f) | 0x80);
+    result += static_cast<char>((unicode  >> 18) | 0xf0);
+    result += static_cast<char>(((unicode >> 12) & 0x3f) | 0x80);
+    result += static_cast<char>(((unicode >>  6) & 0x3f) | 0x80);
+    result += static_cast<char>((unicode & 0x3f) | 0x80);
   }
   return result;
 }

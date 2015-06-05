@@ -145,12 +145,14 @@ Combobox::get_box_offset()
 bool
 Combobox::set_selected_item(int id)
 {
-  for(int i = 0; i < int(item_list.size()); ++i)
+  for(size_t i = 0; i < item_list.size(); ++i)
+  {
     if (item_list[i].id == id)
     {
       current_item = i;
       return true;
     }
+  }
   return false;
 }
 

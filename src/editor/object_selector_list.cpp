@@ -132,9 +132,9 @@ ObjectSelectorList::on_primary_button_release (int x, int y)
         p -= Vector2i(set->get_objects()[current_object]->sprite.get_width()/2,
                       set->get_objects()[current_object]->sprite.get_height()/2);
 
-        p += set->get_objects()[current_object]->sprite.get_offset();
+        p += set->get_objects()[static_cast<size_t>(current_object)]->sprite.get_offset();
 
-        LevelObjPtr obj = set->get_objects()[current_object]->create(p);
+        LevelObjPtr obj = set->get_objects()[static_cast<size_t>(current_object)]->create(p);
         if (obj)
         {
           editor->get_level()->add_object(obj);

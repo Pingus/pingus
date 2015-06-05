@@ -39,9 +39,6 @@ private:
 
   int width;
 
-  /** Number of miliseconds between frames */
-  int speed;
-
 public:
   Liquid(const ReaderMapping& reader);
 

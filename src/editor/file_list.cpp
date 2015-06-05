@@ -150,7 +150,7 @@ FileList::on_primary_button_release (int x, int y)
   on_pointer_move(x,y);
   if (click_item == current_item && current_item != -1)
   {
-    on_click(directory[current_item]);
+    on_click(directory[static_cast<size_t>(current_item)]);
   }
   click_item = -1;
 }

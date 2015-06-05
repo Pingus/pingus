@@ -632,7 +632,7 @@ ObjectProperties::on_color_r_change(const std::string& str)
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
     Color color = (*i)->get_color();
-    color.r = static_cast<char>(StringUtil::to<int>(str));
+    color.r = static_cast<uint8_t>(StringUtil::to<int>(str));
     (*i)->set_color(color);
   }
 }

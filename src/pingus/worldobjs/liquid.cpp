@@ -26,8 +26,7 @@ Liquid::Liquid(const ReaderMapping& reader) :
   sur(),
   pos(),
   old_width_handling(false),
-  width(0),
-  speed()
+  width(0)
 {
   ResDescriptor desc;
 
