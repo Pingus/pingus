@@ -82,6 +82,9 @@ script:
   - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
   - make VERBOSE=1 -j3
 
+# The branch coverity_scan is used to trigger the start of a coverity
+# scan, merge the latest development version into and push it to start
+# the scan.
 addons:
   coverity_scan:
     project:
