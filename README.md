@@ -5,12 +5,11 @@ Introduction
 ------------
 
 Pingus is a free Lemmings(tm) clone for GNU/Linux, Win32 and other
-operating systems supported by SDL. It is covered under the GPL, check
+operating systems supported by SDL2. It is covered under the GPL, check
 the file COPYING, for more information.
 
-See INSTALL for generic install instructions, INSTALL.unix for
-instructions on how to compile and run Pingus from source on GNU/Linux
-and INSTALL.Win32 for Windows.
+See `INSTALL.linux.md` for instructions on how to compile and run Pingus
+from source on GNU/Linux and `INSTALL.macosx.md` for MacOSX.
 
 Information about the game, new versions and additional documentation
 can be found at the Pingus webpage:

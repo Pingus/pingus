@@ -1,8 +1,9 @@
 Pingus Installation Guide for GNU/Linux
 =======================================
 
-Requirements:
--------------
+Requirements
+------------
+
 To compile Pingus you need:
 
  g++           - http://gcc.gnu.org/
@@ -17,23 +18,23 @@ To compile Pingus you need:
 In most cases you will find all of these in your distribution and
 there shouln't be a need to compile anything manually.
 
-In Ubuntu you can install everything by typing: 
+In Ubuntu you can install everything by typing:
 
- % sudo apt-get install \
+    sudo apt-get install \
      g++ \
-     libsdl1.2-dev \
-     libsdl-mixer1.2-dev \
-     libsdl-image1.2-dev \
+     libsdl2-dev \
+     libsdl2-mixer-dev \
+     libsdl2-image-dev \
      libboost-dev \
      libboost-signals-dev \
      libpng12-dev \
-     scons
+     cmake
 
 
 In Fedora 7, 8 and 9 (and most likely later versions) you can install
 everything by typing:
 
- % su -c 'yum install \
+    su -c 'yum install \
       gcc-c++ \
       SDL-devel \
       SDL_image-devel \
@@ -44,27 +45,28 @@ everything by typing:
       scons'
 
 
-Compilation:
-------------
+Compilation
+-----------
+
 Once all libraries are in place, you can compile Pingus with just:
 
- % make
+    make
 
 or
 
- % mkdir -p build
- % scons src
- % scons
+    mkdir -p build
+    scons src
+    scons
 
 If you need to change the compiler or other build variables you can do
 so with:
 
- % scons configure CXX="ccache g++" CPPPATH=/your/custom/path with_wiimote=True
- % scons
+    scons configure CXX="ccache g++" CPPPATH=/your/custom/path with_wiimote=True
+    scons
 
 A full list of variables is available via:
 
- % scons -h
+    scons -h
 
 
 Running:
@@ -72,31 +74,30 @@ Running:
 Once the compilation is successful you can run Pingus directly from
 the top level directory of the source tree via:
 
- % cd build
- % ./pingus
+    build/pingus
 
 There is no need to install Pingus.
 
 If you have a slow machine, starting Pingus with:
 
- % ./pingus -g 640x480 --frame-skip 3
+    build/pingus -g 640x480 --frame-skip 3
 
 Might lead to a better playable game. If you want to run Pingus in a
 larger resolution, you can do so with:
 
- % ./pingus -g 1024x768
+    build//pingus -g 1024x768
 
 Fullscreen support is available via:
 
- % ./pingus --fullscreen
+    build/pingus --fullscreen
 
 Available languages can be listed with:
 
- % ./pingus --list-languages
+    build/pingus --list-languages
 
 And used with:
 
- % ./pingus --language de
+    build/pingus --language de
 
 
 Installation:
@@ -104,6 +105,5 @@ Installation:
 As mentioned above, you don't need to install Pingus to run it, if you
 still want to do it, you can do so with:
 
- % make install PREFIX=/usr
+    make install PREFIX=/usr
 
-# EOF #
