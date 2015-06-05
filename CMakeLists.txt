@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 cmake_minimum_required(VERSION 3.0)
-project(pingus)
+project(pingus VERSION 0.8.0)
 
 include(GNUInstallDirs)
 
@@ -154,5 +154,13 @@ install(FILES
   RENAME pingus
   PERMISSIONS OWNER_EXECUTE OWNER_READ OWNER_WRITE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
   DESTINATION ${CMAKE_INSTALL_BINDIR})
+
+install(DIRECTORY data/ DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}
+  PATTERN "*~" EXCLUDE)
+
+install(FILES
+  ${CMAKE_CURRENT_SOURCE_DIR}/doc/man/pingus.6
+  DESTINATION ${CMAKE_INSTALL_MANDIR}/man6)
+
 
 # EOF #
