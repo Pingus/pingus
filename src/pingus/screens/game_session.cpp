@@ -42,7 +42,6 @@ GameSession::GameSession(const PingusLevel& arg_plf, bool arg_show_result_screen
   button_panel(),
   pcounter(),
   playfield(),
-  time_display(),
   small_map(),
   armageddon_button(),
   forward_button(),
