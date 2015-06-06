@@ -22,6 +22,7 @@ include(GNUInstallDirs)
 find_package(Threads REQUIRED)
 find_package(PkgConfig REQUIRED)
 find_package(OpenGL REQUIRED)
+find_package(Boost COMPONENTS system filesystem signals REQUIRED)
 
 pkg_search_module(SDL2 REQUIRED sdl2)
 pkg_search_module(SDL2IMAGE REQUIRED SDL2_image>=2.0.0)
@@ -33,10 +34,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -Wall -Wextra -Wnon-virtual-dtor -Weffc++")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wold-style-cast -Werror -Wshadow -Wcast-qual") # -Wconversion
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Winit-self -Wno-unused-parameter")
-
-include_directories(
-  ${SDL2_INCLUDE_DIRS}
-  ${SDL2IMAGE_INCLUDE_DIRS})
 
 include_directories(
   src/
@@ -77,10 +74,15 @@ add_library(logmich STATIC ${LOGMICH_SOURCES_CXX})
 
 add_library(libpingus STATIC ${PINGUS_SOURCES_CXX})
 set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
+target_include_directories(libpingus PUBLIC
+  ${SDL2_INCLUDE_DIRS}
+  ${SDL2IMAGE_INCLUDE_DIRS}
+  ${Boost_INCLUDE_DIRS})
 target_compile_definitions(libpingus PUBLIC -DVERSION="0.8.0")
 target_link_libraries(libpingus PUBLIC
   logmich
   tinygettext
+  ${Boost_LIBRARIES}
   ${SDL2_LIBRARIES}
   ${SDL2IMAGE_LIBRARIES}
   ${SDL2MIXER_LIBRARIES}
