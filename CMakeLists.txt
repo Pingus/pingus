@@ -101,37 +101,38 @@ target_include_directories(libpingus SYSTEM PUBLIC
 
 add_executable(pingus src/main.cpp)
 set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
-target_link_libraries(pingus
-  libpingus)
+target_link_libraries(pingus libpingus)
 
-file(GLOB PINGUS_TEST_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-  test/*_test.cpp)
-foreach(TEST_SOURCE ${PINGUS_TEST_SOURCES_CXX})
-  string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" TEST_EXE ${TEST_SOURCE})
-  add_executable(${TEST_EXE} ${TEST_SOURCE})
-  set_target_properties(${TEST_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "test/")
-  target_link_libraries(${TEST_EXE} libpingus)
-endforeach(TEST_SOURCE)
-
-file(GLOB PINGUS_UTIL_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-  test/*_util.cpp)
-foreach(UTIL_SOURCE ${PINGUS_UTIL_SOURCES_CXX})
-  string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" UTIL_EXE ${UTIL_SOURCE})
-  add_executable(${UTIL_EXE} ${UTIL_SOURCE})
-  set_target_properties(${UTIL_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "test/")
-  target_link_libraries(${UTIL_EXE} libpingus)
-endforeach(UTIL_SOURCE)
-
-file(GLOB PINGUS_EXTRA_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-  extra/*.cpp)
-foreach(EXTRA_SOURCE ${PINGUS_EXTRA_SOURCES_CXX})
-  string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" EXTRA_EXE ${EXTRA_SOURCE})
-  add_executable(${EXTRA_EXE} ${EXTRA_SOURCE})
-  set_target_properties(${EXTRA_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "extra/")
-  target_link_libraries(${EXTRA_EXE} libpingus)
-endforeach(EXTRA_SOURCE)
+if(BUILD_EXTRA)
+  file(GLOB PINGUS_EXTRA_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+    extra/*.cpp)
+  foreach(EXTRA_SOURCE ${PINGUS_EXTRA_SOURCES_CXX})
+    string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" EXTRA_EXE ${EXTRA_SOURCE})
+    add_executable(${EXTRA_EXE} ${EXTRA_SOURCE})
+    set_target_properties(${EXTRA_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "extra/")
+    target_link_libraries(${EXTRA_EXE} libpingus)
+  endforeach(EXTRA_SOURCE)
+endif()
 
 if(BUILD_TESTS)
+  file(GLOB PINGUS_TEST_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+    test/*_test.cpp)
+  foreach(TEST_SOURCE ${PINGUS_TEST_SOURCES_CXX})
+    string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" TEST_EXE ${TEST_SOURCE})
+    add_executable(${TEST_EXE} ${TEST_SOURCE})
+    set_target_properties(${TEST_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "test/")
+    target_link_libraries(${TEST_EXE} libpingus)
+  endforeach(TEST_SOURCE)
+
+  file(GLOB PINGUS_UTIL_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+    test/*_util.cpp)
+  foreach(UTIL_SOURCE ${PINGUS_UTIL_SOURCES_CXX})
+    string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" UTIL_EXE ${UTIL_SOURCE})
+    add_executable(${UTIL_EXE} ${UTIL_SOURCE})
+    set_target_properties(${UTIL_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "test/")
+    target_link_libraries(${UTIL_EXE} libpingus)
+  endforeach(UTIL_SOURCE)
+
   # Note: include directories must use the absolute path as otherwise SYSTEM
   # bugs out and cmake uses -I instead of -isystem
   add_library(gtest STATIC ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/src/gtest-all.cc)
