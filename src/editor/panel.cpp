@@ -203,20 +203,6 @@ Panel::Panel(EditorScreen* editor_) :
   add_button("core/editor/object-bottom", _("Lower object to bottom") + " (Shift+[)",
              &EditorScreen::objects_lower_to_bottom);
 
-  if (0)
-  { // rotate and flip are now in the object properties
-    add_separator();
-    add_button("core/editor/object-flip-horizontal", _("Flip object horizontally") + " (F)",
-               &EditorScreen::objects_flip_horizontal);
-    add_button("core/editor/object-flip-vertical", _("Flip object vertically") + " (Shift+F)",
-               &EditorScreen::objects_flip_vertical);
-    add_separator();
-    add_button("core/editor/object-rotate-left",  _("Rotate object -90 degree") + " (Shift+R)",
-               &EditorScreen::objects_rotate_left);
-    add_button("core/editor/object-rotate-right", _("Rotate object 90 degree") + " (R)",
-               &EditorScreen::objects_rotate_right);
-  }
-
   add_separator();
   add_button("core/editor/help", _("Display help"),
              &EditorScreen::toggle_help);
