@@ -64,5 +64,5 @@
         (modifier "ROT270FLIP"))
       (position 531 261 0))
     (solidcolor-background 
-      (color 0 0 0 1))))
+      (color 0 1.0 0 1))))
 ;; EOF ;;
