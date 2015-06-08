@@ -247,7 +247,7 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
 
   if (surface->format->palette)
   {
-    if (surface->format->palette->colors <= new_surface->format->palette->colors)
+    if (surface->format->palette->ncolors <= new_surface->format->palette->ncolors)
     {
       // An SDL_Surface loaded from file can have a palette with very
       // few colors, SDL_SetSurfacePalette() however expects the
@@ -265,7 +265,9 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
     }
     else
     {
-      log_error("target palette smaller then source palette");
+      log_error("target palette smaller then source palette: src:%1% > tgt:%2%",
+                surface->format->palette->ncolors,
+                new_surface->format->palette->ncolors);
     }
   }
 
