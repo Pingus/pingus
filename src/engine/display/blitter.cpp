@@ -247,14 +247,25 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
 
   if (surface->format->palette)
   {
-    if (SDL_SetSurfacePalette(new_surface, surface->format->palette) < 0)
+    if (surface->format->palette->colors <= new_surface->format->palette->colors)
     {
-      log_error("SDL_SetSurfacePalette failed: %1%", SDL_GetError());
-
-      // FIXME: not sure why this is necessary
+      // An SDL_Surface loaded from file can have a palette with very
+      // few colors, SDL_SetSurfacePalette() however expects the
+      // number of colors to match the bits per pixel:
+      //
+      // if (palette && palette->ncolors != (1 << format->BitsPerPixel)) {
+      //   return SDL_SetError("SDL_SetPixelFormatPalette() passed a palette that doesn't match the format");
+      // }
+      //
+      // As a result, we are not using SDL_SetSurfacePalette() here,
+      // but a manual memcpy().
       memcpy(new_surface->format->palette->colors,
              surface->format->palette->colors,
-             new_surface->format->palette->ncolors * sizeof(SDL_Color));
+             surface->format->palette->ncolors * sizeof(SDL_Color));
+    }
+    else
+    {
+      log_error("target palette smaller then source palette");
     }
   }
 
