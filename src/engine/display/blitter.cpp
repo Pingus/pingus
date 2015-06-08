@@ -217,22 +217,56 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
 
   Uint8 alpha;
   if (SDL_GetSurfaceAlphaMod(surface, &alpha) == 0)
+  {
     SDL_SetSurfaceAlphaMod(new_surface, alpha);
+  }
+  else
+  {
+    log_error("SDL_GetSurfaceAlphaMod failed: %1%", SDL_GetError());
+  }
 
   SDL_BlendMode blend_mode;
   if (SDL_GetSurfaceBlendMode(surface, &blend_mode) == 0)
+  {
     SDL_SetSurfaceBlendMode(new_surface, blend_mode);
+  }
+  else
+  {
+    log_error("SDL_GetSurfaceBlendMode failed: %1%", SDL_GetError());
+  }
 
   Uint8 r, g, b;
   if (SDL_GetSurfaceColorMod(surface, &r, &g, &b) == 0)
+  {
     SDL_SetSurfaceColorMod(new_surface, r, g, b);
+  }
+  else
+  {
+    log_error("SDL_GetSurfaceColorMod failed: %1%", SDL_GetError());
+  }
 
   if (surface->format->palette)
-    SDL_SetSurfacePalette(new_surface, surface->format->palette);
+  {
+    if (SDL_SetSurfacePalette(new_surface, surface->format->palette) < 0)
+    {
+      log_error("SDL_SetSurfacePalette failed: %1%", SDL_GetError());
+
+      // FIXME: not sure why this is necessary
+      memcpy(new_surface->format->palette->colors,
+             surface->format->palette->colors,
+             new_surface->format->palette->ncolors * sizeof(SDL_Color));
+    }
+  }
 
   Uint32 colorkey;
   if (SDL_GetColorKey(surface, &colorkey) == 0)
+  {
     SDL_SetColorKey(new_surface, SDL_TRUE, colorkey);
+  }
+  else
+  {
+    log_error("SDL_GetColorKey failed: %1%", SDL_GetError());
+  }
 
   return new_surface;
 }
