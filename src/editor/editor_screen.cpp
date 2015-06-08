@@ -59,7 +59,7 @@ EditorScreen::EditorScreen() :
                                                       size.height));
 
   // Create the panel for the buttons
-  panel = gui_manager->create<Panel>(this);
+  panel = gui_manager->create<Panel>(this, Rect(0, 0, size.width, 38));
 
   //rect(Vector2i(Display::get_width() - 244 + 2,  38 + 3 + 62),
   //      Size(240, Display::get_height() - (600 - 495))),

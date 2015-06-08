@@ -17,6 +17,7 @@
 #include "editor/panel.hpp"
 
 #include "editor/editor_screen.hpp"
+#include "editor/gui_style.hpp"
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "pingus/fonts.hpp"
@@ -160,7 +161,8 @@ private:
   PanelButton & operator=(const PanelButton&);
 };
 
-Panel::Panel(EditorScreen* editor_) :
+Panel::Panel(EditorScreen* editor_, const Rect& rect_) :
+  GroupComponent(rect_),
   editor(editor_),
   logo("core/editor/logo"),
   pos(2,2),
@@ -215,12 +217,9 @@ Panel::~Panel()
 }
 
 void
-Panel::draw (DrawingContext& gc)
+Panel::draw_background(DrawingContext& gc)
 {
-  // FIXME: Could use draw_line
-  gc.draw_fillrect(Rect(0, 0, Display::get_width(), 38),   Color(255, 255, 255));
-  gc.draw_fillrect(Rect(1, 1, Display::get_width(), 38),   Color(169, 157, 140));
-  gc.draw_fillrect(Rect(1, 1, Display::get_width()-1, 37), Color(237, 233, 227));
+  GUIStyle::draw_raised_box(gc, rect);
 }
 
 void
@@ -232,21 +231,21 @@ Panel::update (float delta)
 void
 Panel::add_button(const std::string& image, const std::string& tooltip, Callback callback_)
 {
-  PanelButton* comp = editor->get_gui_manager()->create<PanelButton>(editor, pos, image, tooltip, callback_);
+  PanelButton* comp = create<PanelButton>(editor, pos, image, tooltip, callback_);
   pos.x += comp->get_width();
 }
 
 void
 Panel::add_toggle_button(const std::string& image)
 {
-  PanelButton* comp = editor->get_gui_manager()->create<PanelButton>(editor, pos, image, "");
+  PanelButton* comp = create<PanelButton>(editor, pos, image, "");
   pos.x += comp->get_width();
 }
 
 void
 Panel::add_separator()
 {
-  PanelSeparator* comp = editor->get_gui_manager()->create<PanelSeparator>(pos);
+  PanelSeparator* comp = create<PanelSeparator>(pos);
   pos.x += comp->get_width();
 }
 

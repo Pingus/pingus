@@ -20,12 +20,13 @@
 
 #include "engine/display/sprite.hpp"
 #include "engine/gui/component.hpp"
+#include "engine/gui/group_component.hpp"
 
 namespace Editor {
 
 class EditorScreen;
 
-class Panel : public GUI::Component
+class Panel : public GUI::GroupComponent
 {
 private:
   EditorScreen* editor;
@@ -36,11 +37,11 @@ private:
   Callback callback;
 
 public:
-  Panel(EditorScreen* e);
+  Panel(EditorScreen* e, const Rect& rect_);
   ~Panel();
 
-  void draw (DrawingContext& gc);
-  void update (float delta);
+  void draw_background(DrawingContext& gc);
+  void update(float delta);
 
   void add_button(const std::string& image, const std::string& tooltip = "", Callback callback = 0);
   void add_toggle_button(const std::string& image);
