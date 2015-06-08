@@ -270,13 +270,18 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
   }
 
   Uint32 colorkey;
-  if (SDL_GetColorKey(surface, &colorkey) == 0)
+  int ret = SDL_GetColorKey(surface, &colorkey);
+  if (ret == -1)
   {
-    SDL_SetColorKey(new_surface, SDL_TRUE, colorkey);
+    // no colorkey
+  }
+  else if (ret < 0)
+  {
+    log_error("SDL_GetColorKey failed: %1%", SDL_GetError());
   }
   else
   {
-    log_error("SDL_GetColorKey failed: %1%", SDL_GetError());
+    SDL_SetColorKey(new_surface, SDL_TRUE, colorkey);
   }
 
   return new_surface;
