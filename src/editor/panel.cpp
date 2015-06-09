@@ -162,7 +162,7 @@ private:
 };
 
 Panel::Panel(EditorScreen* editor_, const Rect& rect_) :
-  GroupComponent(rect_),
+  GroupComponent(rect_, false),
   editor(editor_),
   logo("core/editor/logo"),
   pos(2,2),
