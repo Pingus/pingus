@@ -508,6 +508,7 @@ EditorScreen::update_layout()
   Size size_(gui_manager->get_rect().get_width(),
              gui_manager->get_rect().get_height());
 
+  panel->set_rect(Rect(0, 0, size_.width, 38));
   minimap->set_rect(Rect(Vector2i(size_.width-244, size_.height-183), Size(244, 183)));
 
   if (minimap->is_visible())
