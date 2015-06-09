@@ -7,3 +7,6 @@
 [submodule "external/googletest"]
 	path = external/googletest
 	url = http://git.chromium.org/external/googletest.git
+[submodule "external/uitest"]
+	path = external/uitest
+	url = https://github.com/Grumbel/uitest.git
