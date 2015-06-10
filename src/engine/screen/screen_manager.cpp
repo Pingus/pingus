@@ -356,29 +356,37 @@ ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
   Framebuffer& fb = *Display::get_framebuffer();
   while (progress <= 1.0f)
   {
-    int border_x = static_cast<int>(static_cast<float>(Display::get_width()/2)  * (1.0f - progress));
-    int border_y = static_cast<int>(static_cast<float>(Display::get_height()/2) * (1.0f - progress));
+    float p = progress; //0.5f + progress * 0.1f;
+    int border_x = static_cast<int>(static_cast<float>(Display::get_width()/2)  * (1.0f - p));
+    int border_y = static_cast<int>(static_cast<float>(Display::get_height()/2) * (1.0f - p));
 
     old_screen->draw(*display_gc);
     display_gc->render(fb, Rect(Vector2i(0,0), Size(Display::get_width(),
                                                     Display::get_height())));
     display_gc->clear();
 
-    fb.push_cliprect(Rect(Vector2i(0 + border_x, 0 + border_y),
-                          Size(Display::get_width()  - 2*border_x,
-                               Display::get_height() - 2*border_y)));
+    Size clip_size(Display::get_width()  - 2*border_x,
+                   Display::get_height() - 2*border_y);
 
-    new_screen->draw(*display_gc);
-    display_gc->render(*Display::get_framebuffer(), Rect(Vector2i(0,0), Size(Display::get_width(),
-                                                                            Display::get_height())));
-    display_gc->clear();
+    if (clip_size != Size(0, 0))
+    {
+      // skip drawing the second screen when the cliprect
+      fb.push_cliprect(Rect(Vector2i(0 + border_x, 0 + border_y),
+                            clip_size));
 
-    fb.pop_cliprect();
+      new_screen->draw(*display_gc);
+      display_gc->render(*Display::get_framebuffer(), Rect(Vector2i(0,0), Size(Display::get_width(),
+                                                                               Display::get_height())));
+      display_gc->clear();
+
+      fb.pop_cliprect();
+    }
+
     fb.flip();
     display_gc->clear();
 
     progress = static_cast<float>(SDL_GetTicks() - last_ticks)/1000.0f * 2.0f;
-    SDL_Delay(1000);
+    SDL_Delay(10);
   }
 
   input_manager.refresh();
