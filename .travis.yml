@@ -81,7 +81,7 @@ script:
   - cd "build-$BUILD_TYPE"
   - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DWARNINGS=ON -DWERROR=ON -DBUILD_TESTS=ON -DBUILD_EXTRA=ON
   - make VERBOSE=1 -j3
-  - (cd .. && build/test_pingus)
+  - (cd .. && build-${BUILD_TYPE}/test_pingus)
 
 # The branch coverity_scan is used to trigger the start of a coverity
 # scan, merge the latest development version into and push it to start
