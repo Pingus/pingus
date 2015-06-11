@@ -70,7 +70,7 @@ System::cut_file_extension(const std::string& filename)
   {
     if (filename[static_cast<size_t>(i)] == '.')
     {
-      return filename.substr(0, i);
+      return filename.substr(0, static_cast<size_t>(i));
     }
     else if (filename[static_cast<size_t>(i)] == '/')
     {
@@ -88,7 +88,7 @@ System::get_file_extension(const std::string& filename)
   {
     if (filename[static_cast<size_t>(i)] == '.')
     {
-      return filename.substr(i+1);
+      return filename.substr(static_cast<size_t>(i+1));
     }
     else if (filename[static_cast<size_t>(i)] == '/')
     {
@@ -548,7 +548,7 @@ System::get_mtime(const std::string& filename)
 
   struct stat stat_buf;
   if (stat(filename.c_str(), &stat_buf) == 0)
-    return stat_buf.st_mtime;
+    return static_cast<uint64_t>(stat_buf.st_mtime);
   else
     return 0;
 

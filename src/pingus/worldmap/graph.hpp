@@ -148,14 +148,14 @@ public:
   Edge<EdgeType>& resolve_edge (const EdgeId& node)
   {
     // FIXME: No error handling
-    return edges[node];
+    return edges[static_cast<size_t>(node)];
   }
 
   /** Translates a NodeId into the corresponding Node */
   Node<NodeType>& resolve_node (const NodeId& node)
   {
     // FIXME: No error handling
-    return nodes[node];
+    return nodes[static_cast<size_t>(node)];
   }
 
   Edge<EdgeType>& resolve_edge(const NodeId& source, const NodeId& destination)

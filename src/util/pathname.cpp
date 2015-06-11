@@ -28,7 +28,7 @@
 
 Pathname Pathname::tmpfile(const std::string& prefix)
 {
-  assert(!"Unimplemented");
+  assert(false && "unimplemented");
   return Pathname();
 }
 

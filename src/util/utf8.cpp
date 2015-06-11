@@ -225,7 +225,7 @@ UTF8::iterator::iterator(const std::string& text_)
 
 UTF8::iterator::iterator(const std::string& text_, const std::string::iterator it)
   : text(&text_),
-    pos(it - text->begin()),
+    pos(static_cast<size_t>(it - text->begin())),
     idx(pos),
     chr(INVALID_UTF8_SEQUENCE)
 {

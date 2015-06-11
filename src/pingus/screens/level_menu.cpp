@@ -170,7 +170,7 @@ public:
     int y = list_rect.top;
     for(int i = page; (i < (page+items_per_page)) && (i < int(levelsets.size())); ++i)
     {
-      Levelset* levelset = levelsets[i].get();
+      Levelset* levelset = levelsets[static_cast<size_t>(i)].get();
 
       if (levelset == current_levelset)
         gc.draw(marker, Vector2i(15, y - 5));
@@ -233,7 +233,7 @@ public:
         int i = y / item_height + page;
 
         if (i >= 0 && i < static_cast<int>(levelsets.size()))
-          current_levelset = levelsets[i].get();
+          current_levelset = levelsets[static_cast<size_t>(i)].get();
         else
           current_levelset = NULL;
       }

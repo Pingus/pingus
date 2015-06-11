@@ -159,12 +159,12 @@ PathGraph::parse_edges(const ReaderCollection& collection)
 PathfinderResult
 PathGraph::get_path(NodeId start_id, NodeId end_id)
 {
-  Pathfinder<Dot*,Path*>*& pfinder = pathfinder_cache[start_id];
+  Pathfinder<Dot*,Path*>*& pfinder = pathfinder_cache[static_cast<size_t>(start_id)];
 
   if (!pfinder)
   {
     pfinder = new Pathfinder<Dot*, Path*>(graph, start_id);
-    pathfinder_cache[start_id] = pfinder;
+    pathfinder_cache[static_cast<size_t>(start_id)] = pfinder;
   }
 
   return pfinder->get_result(end_id);
@@ -263,7 +263,7 @@ void
 PathGraph::init_cache()
 {
   // Init the pathfinder cache
-  pathfinder_cache.resize(graph.max_node_handler_value());
+  pathfinder_cache.resize(static_cast<size_t>(graph.max_node_handler_value()));
   for(PFinderCache::iterator i = pathfinder_cache.begin();
       i != pathfinder_cache.end(); ++i)
     *i = 0;

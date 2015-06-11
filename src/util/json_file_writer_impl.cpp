@@ -226,7 +226,7 @@ void strip_trailing_whitespace(std::ostream& out, std::istream& in)
     }
     else
     {
-      out.write(line.data(), p + 1);
+      out.write(line.data(), static_cast<std::streamsize>(p + 1));
       out << '\n';
     }
   }

@@ -58,10 +58,10 @@ FontTestScreen::draw(DrawingContext& gc)
   gc.push_modelview();
   gc.translate(scroll.x, scroll.y);
 
-  for(int i = 0; i < 256; ++i)
+  for(uint32_t i = 0; i < 256; ++i)
   {
-    int x = 64 + (i%20)*(font.get_height() + 24);
-    int y = 64 + (i/20)*(font.get_height() + reference.get_height()*3);
+    int x = 64 + (static_cast<int>(i) % 20)*(font.get_height() + 24);
+    int y = 64 + (static_cast<int>(i) / 20)*(font.get_height() + reference.get_height() * 3);
 
     // print the actual character
     gc.print_left(reference,
@@ -74,18 +74,18 @@ FontTestScreen::draw(DrawingContext& gc)
                            y + font.get_height()),
                   StringUtil::to_string(i));
 
-    if (font.get_width(char(i)))
+    if (font.get_width(i) > 0.0f)
     {
       gc.draw_rect(Rect(x, y,
                         x+font.get_height(),
                         y+font.get_height()),
                    Color(0,0,255));
       gc.draw_rect(Rect(x, y,
-                        x + static_cast<int>(font.get_width(char(i))),
+                        x + static_cast<int>(font.get_width(i)),
                         y + font.get_height()),
                    Color(255,0,255));
       gc.print_left(font, Vector2i(x, y),
-                    std::string(1, char(i)));
+                    std::string(1, static_cast<char>(i)));
     }
     else
     {

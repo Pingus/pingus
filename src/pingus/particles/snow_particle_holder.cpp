@@ -137,7 +137,7 @@ SnowParticleHolder::draw (SceneContext& gc)
         gc.color().draw(snow5, it->pos);
         break;
       default:
-        assert(!"Invalid Snow-Type");
+        assert(false && "Invalid Snow-Type");
     }
   }
 }

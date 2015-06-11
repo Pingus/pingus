@@ -66,7 +66,7 @@ private:
     bool operator()(NodeId a, NodeId b)
     {
       //log_info("Coast: " << pathfinder.stat_graph[a].cost << " " << pathfinder.stat_graph[b].cost);
-      return pathfinder.stat_graph[a].cost > pathfinder.stat_graph[b].cost;
+      return pathfinder.stat_graph[static_cast<size_t>(a)].cost > pathfinder.stat_graph[static_cast<size_t>(b)].cost;
     }
   };
 
@@ -85,8 +85,8 @@ public:
     open_nodes(CostComp(*this)),
     stat_graph()
   {
-    stat_graph.resize (graph.max_node_handler_value());
-    push_to_open (start);
+    stat_graph.resize(static_cast<size_t>(graph.max_node_handler_value()));
+    push_to_open(start);
 
     while (!open_nodes.empty())
     {
@@ -99,21 +99,21 @@ public:
            ++e)
       {
         NodeId child_node = graph.resolve_edge(*e).destination;
-        NodeStat& stat = stat_graph[child_node];
-        float new_cost = stat_graph[current].cost + graph.resolve_edge(*e).cost;
+        NodeStat& stat = stat_graph[static_cast<size_t>(child_node)];
+        float new_cost = stat_graph[static_cast<size_t>(current)].cost + graph.resolve_edge(*e).cost;
 
-        if  (stat.status == NodeStat::OPEN
-             && stat.cost <= new_cost)
+        if (stat.status == NodeStat::OPEN
+            && stat.cost <= new_cost)
         {
           // do nothing, already now a better path
         }
         else
         {
-          stat_graph[child_node].parent = current;
-          stat_graph[child_node].cost   = new_cost;
+          stat_graph[static_cast<size_t>(child_node)].parent = current;
+          stat_graph[static_cast<size_t>(child_node)].cost   = new_cost;
 
-          if (!is_open (child_node))
-            push_to_open (child_node);
+          if (!is_open(child_node))
+            push_to_open(child_node);
         }
       }
     }
@@ -122,7 +122,7 @@ public:
 
   /** The nodes to walk to reach end is returned in reverse order! so
       you have to handle the vector like a stack with .back() == .top() */
-  std::vector<NodeId> get_path (NodeId end)
+  std::vector<NodeId> get_path(NodeId end)
   {
     std::vector<NodeId> path;
     NodeId handle = end;
@@ -142,7 +142,7 @@ public:
       }
       else
       {
-        handle = stat_graph[handle].parent;
+        handle = stat_graph[static_cast<size_t>(handle)].parent;
       }
     }
     while (1);
@@ -151,7 +151,7 @@ public:
   /** @return the cost of the path to node */
   float get_cost(NodeId node)
   {
-    return stat_graph[node].cost;
+    return stat_graph[static_cast<size_t>(node)].cost;
   }
 
   PathfinderResult get_result(NodeId node)
@@ -165,7 +165,7 @@ public:
   void push_to_open (NodeId handle)
   {
     open_nodes.push (handle);
-    stat_graph[handle].status = NodeStat::OPEN;
+    stat_graph[static_cast<size_t>(handle)].status = NodeStat::OPEN;
   }
 
   bool is_open (NodeId handle)

@@ -129,7 +129,7 @@ SurfaceBackground::update()
   if (!bg_sprite || globals::static_graphics)
     return;
 
-  if (scroll_x)
+  if (scroll_x != 0.0f)
   {
     scroll_ox += scroll_x;
 
@@ -139,7 +139,7 @@ SurfaceBackground::update()
       scroll_ox += static_cast<float>(bg_sprite.get_width());
   }
 
-  if (scroll_y)
+  if (scroll_y != 0.0f)
   {
     scroll_oy += scroll_y;
 
