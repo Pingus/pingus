@@ -6,7 +6,7 @@
 	url = https://github.com/tinygettext/tinygettext.git
 [submodule "external/googletest"]
 	path = external/googletest
-	url = http://git.chromium.org/external/googletest.git
+	url = https://chromium.googlesource.com/external/googletest
 [submodule "external/uitest"]
 	path = external/uitest
 	url = https://github.com/Grumbel/uitest.git
