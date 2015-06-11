@@ -41,7 +41,7 @@ PinguHolder::create_pingu (const Vector3f& pos, int owner_id)
   {
     // We use all_pingus.size() as pingu_id, so that id == array
     // index
-    Pingu* pingu = new Pingu (static_cast<int>(all_pingus.size()), pos, owner_id);
+    Pingu* pingu = new Pingu(static_cast<unsigned int>(all_pingus.size()), pos, owner_id);
 
     // This list will deleted
     all_pingus.push_back (pingu);

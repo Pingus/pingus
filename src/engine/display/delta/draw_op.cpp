@@ -57,7 +57,7 @@ DrawOp::equal(DrawOp* op) const
       }
 
       default:
-        assert(!"Never reached");
+        assert(false && "Never reached");
         return false;
     }
   }
@@ -121,7 +121,7 @@ DrawOp::less(DrawOp* rhs) const
       }
 
       default:
-        assert(!"Never reached");
+        assert(false && "Never reached");
         return false;
     }
   }

@@ -90,20 +90,20 @@ Screenshot::save_png(const std::string& filename, uint8_t* buffer, int width, in
   // set up the output control if you are using standard C streams
   png_init_io(png_ptr, fp);
 
-  png_set_IHDR(png_ptr, info_ptr, width, height, 8,
+  png_set_IHDR(png_ptr, info_ptr, static_cast<png_uint_32>(width), static_cast<png_uint_32>(height), 8,
                PNG_COLOR_TYPE_RGB, PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT,
                PNG_FILTER_TYPE_DEFAULT);
 
   png_write_info(png_ptr, info_ptr);
   {
-    std::unique_ptr<uint8_t[]> row{ new uint8_t[width * 3] };
-    for (int y = 0; y < height; ++y)
+    std::unique_ptr<uint8_t[]> row{ new uint8_t[static_cast<size_t>(width * 3)] };
+    for(size_t y = 0; y < static_cast<size_t>(height); ++y)
     {
-      for(int x = 0; x < width; ++x)
+      for(size_t x = 0; x < static_cast<size_t>(width); ++x)
       {
-        row[3*x + 0] = (buffer + y * pitch)[4*x + 0];
-        row[3*x + 1] = (buffer + y * pitch)[4*x + 1];
-        row[3*x + 2] = (buffer + y * pitch)[4*x + 2];
+        row[3*x + 0] = (buffer + y * static_cast<size_t>(pitch))[4*x + 0];
+        row[3*x + 1] = (buffer + y * static_cast<size_t>(pitch))[4*x + 1];
+        row[3*x + 2] = (buffer + y * static_cast<size_t>(pitch))[4*x + 2];
       }
       png_write_row(png_ptr, row.get());
     }

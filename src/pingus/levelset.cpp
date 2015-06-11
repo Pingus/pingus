@@ -213,7 +213,7 @@ Levelset::get_level(int num) const
 {
   if (num >= 0 && num < int(m_levels.size()))
   {
-    return m_levels[num].get();
+    return m_levels[static_cast<size_t>(num)].get();
   }
   else
   {

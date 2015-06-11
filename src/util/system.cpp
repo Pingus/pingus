@@ -68,11 +68,11 @@ System::cut_file_extension(const std::string& filename)
 {
   for(int i = static_cast<int>(filename.size()) - 1; i >= 0; --i)
   {
-    if (filename[i] == '.')
+    if (filename[static_cast<size_t>(i)] == '.')
     {
       return filename.substr(0, i);
     }
-    else if (filename[i] == '/')
+    else if (filename[static_cast<size_t>(i)] == '/')
     {
       return filename;
     }
@@ -86,11 +86,11 @@ System::get_file_extension(const std::string& filename)
 {
   for(int i = static_cast<int>(filename.size()) - 1; i >= 0; --i)
   {
-    if (filename[i] == '.')
+    if (filename[static_cast<size_t>(i)] == '.')
     {
       return filename.substr(i+1);
     }
-    else if (filename[i] == '/')
+    else if (filename[static_cast<size_t>(i)] == '/')
     {
       return std::string();
     }
@@ -234,7 +234,7 @@ System::dirname (std::string filename)
     }
   }
 
-  return filename.substr(0, i);
+  return filename.substr(0, static_cast<size_t>(i));
 }
 
 bool

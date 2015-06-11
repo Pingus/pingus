@@ -78,7 +78,7 @@ Pathname::get_sys_path() const
       return "";
 
     default:
-      assert(!"Never reached");
+      assert(false && "Never reached");
   }
   return "";
 }
@@ -128,7 +128,7 @@ Pathname::str() const
       return "system://" + pathname;
 
     default:
-      assert(!"never reached");
+      assert(false && "never reached");
   }
   return std::string();
 }
@@ -267,7 +267,7 @@ std::ostream& operator<< (std::ostream& os, const Pathname& p)
       return os << "system://" << p.get_raw_path();
 
     default:
-      assert(!"never reached");
+      assert(false && "never reached");
   }
   return os;
 }

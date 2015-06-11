@@ -121,7 +121,7 @@ ButtonPanel::set_button(int n)
 {
   if (n >= 0 || n < static_cast<int>(buttons.size()-1))
   {
-    current_button = n;
+    current_button = static_cast<size_t>(n);
   }
   else
   {
@@ -134,7 +134,7 @@ ButtonPanel::next_action()
 {
   if (!buttons.empty())
   {
-    current_button = (current_button + 1 + int(buttons.size())) % int(buttons.size());
+    current_button = (current_button + 1 + buttons.size()) % buttons.size();
   }
 }
 
@@ -143,7 +143,7 @@ ButtonPanel::previous_action()
 {
   if (!buttons.empty())
   {
-    current_button = (current_button - 1 + int(buttons.size())) % int(buttons.size());
+    current_button = (current_button - 1 + buttons.size()) % buttons.size();
   }
 }
 
@@ -151,7 +151,7 @@ void
 ButtonPanel::on_primary_button_press(int x, int y)
 {
   int action = (y - rect.top) / 38;
-  current_button = Math::clamp(0, action, int(buttons.size()-1));
+  current_button = static_cast<size_t>(Math::clamp(0, action, int(buttons.size() - 1)));
 }
 
 void
@@ -175,7 +175,7 @@ void
 ButtonPanel::on_pointer_move(int x, int y)
 {
   int action = (y - rect.top) / 38;
-  tip_button = Math::clamp(0, action, int(buttons.size()-1));
+  tip_button = static_cast<size_t>(Math::clamp(0, action, int(buttons.size()-1)));
 }
 
 void

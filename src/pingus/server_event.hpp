@@ -45,7 +45,7 @@ public:
   // stuff for pingu_action_event
 
   /** Id of the pingu which should get the actions */
-  int pingu_id;
+  unsigned int pingu_id;
 
   Vector3f pos;
 
@@ -78,7 +78,7 @@ public:
 
   /** The pingu action event is triggered whenever the user applies an
       action to a Pingu */
-  static ServerEvent make_pingu_action_event(int t, int id, const Vector3f& pos, ActionName::Enum action);
+  static ServerEvent make_pingu_action_event(int t, unsigned int id, const Vector3f& pos, ActionName::Enum action);
 };
 
 #endif

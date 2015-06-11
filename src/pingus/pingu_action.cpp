@@ -59,7 +59,7 @@ PinguAction::rel_getpixel (int x, int y)
 char
 PinguAction::get_persistent_char ()
 {
-  assert(!"This is not a persitent action!");
+  assert(false && "This is not a persitent action!");
   return '-';
 }
 

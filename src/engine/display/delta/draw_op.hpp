@@ -28,9 +28,10 @@ enum DrawOpType { SURFACE_DRAWOP, FILLRECT_DRAWOP, DRAWRECT_DRAWOP, CLIP_DRAWOP 
 inline uint32_t make_id(DrawOpType type, int x, int y)
 {
   return
-    ((type & (4-1))  << 29) |
-    ((y & (32768-1)) << 15) |
-    ((x & (32768-1)) << 0);
+    static_cast<uint32_t>(
+      ((type & (4-1))  << 29) |
+      ((y & (32768-1)) << 15) |
+      ((x & (32768-1)) << 0));
 }
 
 struct DrawOp

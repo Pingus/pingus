@@ -197,7 +197,7 @@ void generate_rectangles(const std::vector<Row>& rows, std::vector<Rect>& rects_
             log_error("%1% %2%",
                       (mark_it->type == Mark::START_MARK) ? "'(" : "')",
                       mark_it->pos);
-          assert(!"False");
+          assert(false && "False");
         }
       }
 

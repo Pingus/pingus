@@ -55,7 +55,7 @@ PinguParticleHolder::add_particle (int x, int y)
   }
 
   // allocate space for all remaining particles at once
-  particles.reserve(particles.size() + 50 - i);
+  particles.reserve(particles.size() + 50 - static_cast<size_t>(i));
 
   // create remaining entries
   for (; i < 50; ++i)

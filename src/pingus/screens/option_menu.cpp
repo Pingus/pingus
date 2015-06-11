@@ -139,7 +139,7 @@ OptionMenu::OptionMenu() :
     case SDL_FRAMEBUFFER:    renderer_box->set_current_choice(0); break;
     case DELTA_FRAMEBUFFER:  renderer_box->set_current_choice(1); break;
     case OPENGL_FRAMEBUFFER: renderer_box->set_current_choice(2); break;
-    default: assert(!"unknown renderer type");
+    default: assert(false && "unknown renderer type");
   }
 
   m_language = dictionary_manager.get_language();
@@ -286,7 +286,7 @@ OptionMenu::add_item(const std::string& label, std::unique_ptr<GUI::RectComponen
   }
   else
   {
-    assert(!"Unhandled control type");
+    assert(false && "Unhandled control type");
   }
 
   options.push_back(Option(label_component.get(), control.get()));

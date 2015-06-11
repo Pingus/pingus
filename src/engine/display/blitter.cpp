@@ -261,7 +261,7 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
       // but a manual memcpy().
       memcpy(new_surface->format->palette->colors,
              surface->format->palette->colors,
-             surface->format->palette->ncolors * sizeof(SDL_Color));
+             static_cast<size_t>(surface->format->palette->ncolors) * sizeof(SDL_Color));
     }
     else
     {

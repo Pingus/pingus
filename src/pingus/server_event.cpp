@@ -63,7 +63,9 @@ ServerEvent::ServerEvent(const ReaderObject& reader_object) :
 
     type = PINGU_ACTION_EVENT;
     reader.read_int ("time",   time_stamp);
-    reader.read_int ("id",     pingu_id);
+    int pingu_id_tmp;
+    reader.read_int ("id", pingu_id_tmp);
+    pingu_id = static_cast<unsigned int>(pingu_id_tmp);
 
     if (reader.read_string("raw-x", raw_x))
       pos.x = Math::string2float(raw_x);
@@ -103,7 +105,7 @@ ServerEvent::write(std::ostream& out) const
       break;
 
     default:
-      assert(!"Unknown type");
+      assert(false && "Unknown type");
   }
 }
 
@@ -135,7 +137,7 @@ ServerEvent::make_armageddon_event(int t)
 }
 
 ServerEvent
-ServerEvent::make_pingu_action_event(int t, int id, const Vector3f& pos, ActionName::Enum action)
+ServerEvent::make_pingu_action_event(int t, unsigned int id, const Vector3f& pos, ActionName::Enum action)
 {
   ServerEvent event;
   event.type         = PINGU_ACTION_EVENT;
@@ -184,7 +186,7 @@ ServerEvent::send(Server* server)
     break;
 
     default:
-      assert(!"Unknown type");
+      assert(false && "Unknown type");
   }
 }
 

@@ -49,19 +49,19 @@ OpenGLFramebuffer::make_screenshot() const
   Size size = get_size();
 
   glPixelStorei(GL_PACK_ALIGNMENT, 1);
-  std::unique_ptr<uint8_t[]> buffer(new uint8_t[size.width * size.height * 4]);
+  std::unique_ptr<uint8_t[]> buffer(new uint8_t[static_cast<size_t>(size.width * size.height * 4)]);
   glReadPixels(0, 0, size.width, size.height, GL_RGB, GL_UNSIGNED_BYTE, buffer.get());
 
   Surface screenshot(size.width, size.height);
   uint8_t* op = screenshot.get_data();
-  int pitch = screenshot.get_pitch();
-  for(int y = 0; y < size.height; ++y)
+  size_t pitch = static_cast<size_t>(screenshot.get_pitch());
+  for(size_t y = 0; y < static_cast<size_t>(size.height); ++y)
   {
-    for(int x = 0; x < size.height; ++x)
+    for(size_t x = 0; x < static_cast<size_t>(size.height); ++x)
     {
-      op[y * pitch + 4*x + 0] = buffer[4 * size.width + 3*x + 0];
-      op[y * pitch + 4*x + 1] = buffer[4 * size.width + 3*x + 1];
-      op[y * pitch + 4*x + 2] = buffer[4 * size.width + 3*x + 2];
+      op[y * pitch + 4*x + 0] = buffer[4 * static_cast<size_t>(size.width) + 3*x + 0];
+      op[y * pitch + 4*x + 1] = buffer[4 * static_cast<size_t>(size.width) + 3*x + 1];
+      op[y * pitch + 4*x + 2] = buffer[4 * static_cast<size_t>(size.width) + 3*x + 2];
     }
   }
   return screenshot;
@@ -86,7 +86,7 @@ OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resiza
   }
   else
   {
-    int flags = SDL_WINDOW_OPENGL;
+    Uint32 flags = SDL_WINDOW_OPENGL;
 
     if (fullscreen)
     {

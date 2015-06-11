@@ -65,7 +65,7 @@ FPSCounter::update_fps_counter()
 
   if (start_time + 1000 < current_time)
   {
-    current_fps = fps_count * 1000 / (current_time - start_time);
+    current_fps = fps_count * 1000 / static_cast<int>(current_time - start_time);
 
     fps_count = 0;
     start_time = SDL_GetTicks();

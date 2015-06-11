@@ -77,7 +77,7 @@ Combobox::on_primary_button_press(int x, int y)
     if (hover_item != -1)
     {
       current_item = hover_item;
-      on_select(item_list[current_item]);
+      on_select(item_list[static_cast<size_t>(current_item)]);
     }
   }
   else
@@ -107,7 +107,7 @@ Combobox::draw(DrawingContext &gc)
       gc.print_left(Fonts::verdana11,
                     Vector2i(rect.left + 5,
                              rect.top + rect.get_height()/2 - Fonts::verdana11.get_height()/2),
-                    item_list[current_item].label);
+                    item_list[static_cast<size_t>(current_item)].label);
     }
   }
 
@@ -125,7 +125,7 @@ Combobox::draw(DrawingContext &gc)
       gc.print_left(Fonts::verdana11,
                     Vector2i(list_rect.left + 5,
                              list_rect.top + i * rect.get_height() + rect.get_height()/2 - Fonts::verdana11.get_height()/2),
-                    item_list[i].label, 100);
+                    item_list[static_cast<size_t>(i)].label, 100);
     }
 
     gc.draw_rect(list_rect, Color(0,0,0), 100);
@@ -147,7 +147,7 @@ Combobox::set_selected_item(int id)
 {
   for(int i = 0; i < static_cast<int>(item_list.size()); ++i)
   {
-    if (item_list[i].id == id)
+    if (item_list[static_cast<size_t>(i)].id == id)
     {
       current_item = i;
       return true;

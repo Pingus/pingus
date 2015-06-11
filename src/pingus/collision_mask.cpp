@@ -66,7 +66,7 @@ CollisionMask::init_colmap(const Surface& surf, const std::string& surface_res)
   width  = surf.get_width();
   height = surf.get_height();
 
-  buffer.reset(new uint8_t[width * height]);
+  buffer.reset(new uint8_t[static_cast<size_t>(width * height)]);
 
   SDL_Surface* sdl_surface = surf.get_surface();
   SDL_LockSurface(sdl_surface);
@@ -81,20 +81,20 @@ CollisionMask::init_colmap(const Surface& surf, const std::string& surface_res)
         for(int x = 0; x < width; ++x)
         {
           if (source[y*pitch + x] == colorkey)
-            buffer[y*width + x] = 0;
+            buffer[static_cast<size_t>(y*width + x)] = 0;
           else
-            buffer[y*width + x] = 1;
+            buffer[static_cast<size_t>(y*width + x)] = 1;
         }
     }
     else
     { // completly opaque surface
-      memset(buffer.get(), 1, width*height);
+      memset(buffer.get(), 1, static_cast<size_t>(width * height));
     }
   }
   else if (sdl_surface->format->BitsPerPixel == 24)
   {
     // completly opaque surface
-    memset(buffer.get(), 1, width*height);
+    memset(buffer.get(), 1, static_cast<size_t>(width * height));
   }
   else if (sdl_surface->format->BitsPerPixel == 32)
   {
@@ -103,13 +103,13 @@ CollisionMask::init_colmap(const Surface& surf, const std::string& surface_res)
     {
       for(int x = 0; x < width; ++x)
       {
-        buffer[y*width + x] = (source[y*pitch + 4*x + 3] == 255);
+        buffer[static_cast<size_t>(y * width + x)] = (source[static_cast<size_t>(y * pitch + 4*x + 3)] == 255);
       }
     }
   }
   else
   {
-    memset(buffer.get(), 0, width*height);
+    memset(buffer.get(), 0, static_cast<size_t>(width * height));
 
     log_error("unsupported image format:\n"
               "  File: %s\n"

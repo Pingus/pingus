@@ -53,7 +53,7 @@
 using namespace Actions;
 
 // Init a pingu at the given position while falling
-Pingu::Pingu (int arg_id, const Vector3f& arg_pos, int owner) :
+Pingu::Pingu(unsigned int arg_id, const Vector3f& arg_pos, int owner) :
   action(),
   countdown_action(),
   wall_action(),
@@ -465,7 +465,7 @@ Pingu::create_action(ActionName::Enum action_)
     case ActionName::SUPERMAN:  return std::make_shared<Superman>(this);
     case ActionName::WAITER:    return std::make_shared<Waiter>(this);
     case ActionName::WALKER:    return std::make_shared<Walker>(this);
-    default: assert(!"Invalid action name provied"); return {};
+    default: assert(false && "Invalid action name provied"); return {};
   }
 }
 

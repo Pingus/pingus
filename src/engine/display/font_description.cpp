@@ -39,7 +39,7 @@ GlyphDescription::GlyphDescription(const ReaderMapping& reader) :
 {
   int lazy = 0; // FIXME: implement read_uint32
   reader.read_int("unicode", lazy);
-  unicode = lazy;
+  unicode = static_cast<uint32_t>(lazy);
   reader.read_vector2i("offset", offset);
   reader.read_int("advance", advance);
   reader.read_rect("rect", rect);

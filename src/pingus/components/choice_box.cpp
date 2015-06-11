@@ -45,7 +45,7 @@ ChoiceBox::draw(DrawingContext& gc)
       gc.print_right(Fonts::chalk_normal, Vector2i(rect.right, rect.top), ">");
 
       gc.print_center(Fonts::chalk_normal, Vector2i(rect.left + rect.get_width()/2, rect.top),
-                      choices[current_choice]);
+                      choices[static_cast<size_t>(current_choice)]);
     }
   }
 }
@@ -74,7 +74,7 @@ ChoiceBox::on_primary_button_press(int x, int y)
     }
 
     if (last_current_choice != current_choice)
-      on_change(choices[current_choice]);
+      on_change(choices[static_cast<size_t>(current_choice)]);
   }
 }
 

@@ -86,7 +86,7 @@ ObjectSelectorList::draw(DrawingContext& parent_gc)
 
   if (set && mode == OBJECT_DRAG)
   {
-    Sprite sprite = set->get_objects()[current_object]->sprite;
+    Sprite sprite = set->get_objects()[static_cast<size_t>(current_object)]->sprite;
     parent_gc.draw(sprite,
                    real_mouse_pos
                    - Vector2i(sprite.get_width()/2, sprite.get_height()/2)
@@ -129,8 +129,8 @@ ObjectSelectorList::on_primary_button_release (int x, int y)
                                                           y + object_selector->get_rect().top);
 
         // place object with left/top instead of center origin
-        p -= Vector2i(set->get_objects()[current_object]->sprite.get_width()/2,
-                      set->get_objects()[current_object]->sprite.get_height()/2);
+        p -= Vector2i(set->get_objects()[static_cast<size_t>(current_object)]->sprite.get_width()/2,
+                      set->get_objects()[static_cast<size_t>(current_object)]->sprite.get_height()/2);
 
         p += set->get_objects()[static_cast<size_t>(current_object)]->sprite.get_offset();
 

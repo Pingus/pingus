@@ -117,7 +117,7 @@ Display::create_window(FramebufferType framebuffer_type, const Size& size, bool 
       break;
 
     default:
-      assert(!"Unknown framebuffer_type");
+      assert(false && "Unknown framebuffer_type");
       break;
   }
 }

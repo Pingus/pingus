@@ -170,7 +170,7 @@ public:
 
   bool is_open (NodeId handle)
   {
-    return stat_graph[handle].status == NodeStat::OPEN;
+    return stat_graph[static_cast<size_t>(handle)].status == NodeStat::OPEN;
   }
 
 private:

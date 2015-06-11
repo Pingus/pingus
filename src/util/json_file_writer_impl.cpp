@@ -86,7 +86,7 @@ JsonFileWriterImpl::begin_mapping(const char* name)
   }
   else
   {
-    assert(!"never reached");
+    assert(false && "never reached");
   }
 }
 

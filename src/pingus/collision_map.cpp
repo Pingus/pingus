@@ -24,12 +24,12 @@ CollisionMap::CollisionMap(int w, int h) :
   serial(0),
   width(w),
   height(h),
-  colmap(new unsigned char[width * height]),
+  colmap(new unsigned char[static_cast<size_t>(width * height)]),
   m_colmap_sprite(),
   m_colmap_sprite_serial()
 {
   // Clear the colmap
-  memset(colmap.get(), Groundtype::GP_NOTHING, sizeof(unsigned char) * width * height);
+  memset(colmap.get(), Groundtype::GP_NOTHING, sizeof(unsigned char) * static_cast<size_t>(width * height));
 }
 
 CollisionMap::~CollisionMap()
@@ -40,7 +40,7 @@ int
 CollisionMap::getpixel(int x, int y)
 {
   if (x >= 0 && x < width && y >= 0 && y < height) {
-    return colmap[x+y*width];
+    return colmap[static_cast<size_t>(x+y*width)];
   } else {
     return Groundtype::GP_OUTOFSCREEN;
   }
@@ -49,7 +49,7 @@ CollisionMap::getpixel(int x, int y)
 int
 CollisionMap::getpixel_fast(int x, int y)
 {
-  return colmap[x+y*width];
+  return colmap[static_cast<size_t>(x+y*width)];
 }
 
 unsigned char*
@@ -90,7 +90,7 @@ CollisionMap::remove(const CollisionMask& mask, int x_pos, int y_pos)
     {
       if (buffer[y*swidth + x])
       {
-        uint8_t& pixel = colmap[(y+y_pos)*width + (x+x_pos)];
+        uint8_t& pixel = colmap[static_cast<size_t>((y+y_pos)*width + (x+x_pos))];
         if (pixel != Groundtype::GP_SOLID)
           pixel = Groundtype::GP_NOTHING;
       }
@@ -106,7 +106,7 @@ CollisionMap::put(int x, int y, Groundtype::GPType p)
   if (x >= 0 && x < width
       && y >= 0 && y < height)
   {
-    colmap[x+y*width] = p;
+    colmap[static_cast<size_t>(x+y*width)] = p;
   }
 }
 
@@ -171,7 +171,7 @@ CollisionMap::draw(DrawingContext& gc)
 
     for(int i = 0; i < (width * height); ++i)
     {
-      switch(colmap[i])
+      switch(colmap[static_cast<size_t>(i)])
       {
         case Groundtype::GP_NOTHING:
           buffer[i * 4 + red  ] =   0;

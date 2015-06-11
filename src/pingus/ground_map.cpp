@@ -108,7 +108,7 @@ GroundMap::GroundMap(int width_, int height_) :
     tile_height += 1;
 
   // Allocating tile map
-  tiles.resize(tile_width * tile_height);
+  tiles.resize(static_cast<size_t>(tile_width * tile_height));
   for(auto i = tiles.begin(); i != tiles.end(); ++i)
   {
     i->reset(new MapTile());
@@ -321,7 +321,7 @@ GroundMap::get_colmap(void)
 MapTile*
 GroundMap::get_tile(int x, int y)
 {
-  return tiles[y*tile_width + x].get();
+  return tiles[static_cast<size_t>(y * tile_width + x)].get();
 }
 
 /* EOF */

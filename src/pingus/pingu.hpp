@@ -93,7 +93,7 @@ public:
       @param arg_id The uniq id of the pingu
       @param pos The start position of the pingu
       @param owner The owner id of the pingu (used for multiplayer) */
-  Pingu (int arg_id, const Vector3f& pos, int owner);
+  Pingu(unsigned int arg_id, const Vector3f& pos, int owner);
 
   /** Destruct the pingu... */
   ~Pingu ();

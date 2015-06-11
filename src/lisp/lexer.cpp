@@ -58,7 +58,7 @@ Lexer::nextChar()
     if(eof)
       throw EOFException();
     stream.read(buffer, BUFFER_SIZE);
-    size_t bytes_read = stream.gcount();
+    std::streamsize bytes_read = stream.gcount();
 
     c = buffer;
     bufend = buffer + bytes_read;

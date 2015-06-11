@@ -94,7 +94,7 @@ void read_event(std::istream& out, Input::Event& event)
       break;
 
     default:
-      assert(!"Unknown Event type");
+      assert(false && "Unknown Event type");
   }
 }
 
@@ -130,7 +130,7 @@ void write_event(std::ostream& out, const Input::Event& event)
       break;
 
     default:
-      assert(!"Unknown Event type");
+      assert(false && "Unknown Event type");
   }
 }
 

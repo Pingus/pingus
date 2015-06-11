@@ -89,7 +89,7 @@ Surface::Surface(int width, int height, SDL_Palette* palette, int colorkey) :
   {
     impl->surface = SDL_CreateRGBSurface(0, width, height, 8,
                                          0, 0, 0 ,0);
-    SDL_SetColorKey(impl->surface, SDL_TRUE, colorkey);
+    SDL_SetColorKey(impl->surface, SDL_TRUE, static_cast<Uint32>(colorkey));
   }
 
   SDL_SetSurfacePalette(impl->surface, palette);
@@ -326,7 +326,7 @@ Surface::get_pixel(int x, int y) const
       break;
 
     case 3:
-      pixel = p[0] | p[1] << 8 | p[2] << 16;
+      pixel = static_cast<Uint32>(p[0] | p[1] << 8 | p[2] << 16);
       break;
 
     case 4:
@@ -422,7 +422,7 @@ Surface::subsection(const Rect& rect) const
            static_cast<uint8_t*>(impl->surface->pixels)
            + (impl->surface->pitch * (y + rect.top))
            + rect.left * impl->surface->format->BytesPerPixel,
-           new_surface->pitch);
+           static_cast<size_t>(new_surface->pitch));
   }
   SDL_UnlockSurface(new_surface);
   SDL_UnlockSurface(impl->surface);

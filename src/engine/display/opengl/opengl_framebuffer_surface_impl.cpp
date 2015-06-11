@@ -59,7 +59,7 @@ OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src) :
   else if(convert->format->BytesPerPixel == 4)
     sdl_format = GL_RGBA;
   else
-    assert(!"OpenGLFramebufferSurfaceImpl: Unsupported surface format");
+    assert(false && "OpenGLFramebufferSurfaceImpl: Unsupported surface format");
 
   glBindTexture(GL_TEXTURE_2D, m_handle);
   glPixelStorei(GL_UNPACK_ALIGNMENT, 1);

@@ -52,7 +52,7 @@ GoalManager::is_finished()
       }
 
     default:
-      assert(!"GoalManager: unknown goal state");
+      assert(false && "GoalManager: unknown goal state");
       return false;
   }
 }

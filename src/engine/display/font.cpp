@@ -113,7 +113,7 @@ public:
       if (unicode < glyphs.size() && glyphs[unicode])
       {
         const GlyphDescription& glyph = *glyphs[unicode];
-        fb.draw_surface(framebuffer_surfaces[glyph.image],
+        fb.draw_surface(framebuffer_surfaces[static_cast<size_t>(glyph.image)],
                         glyph.rect, Vector2i(static_cast<int>(dstx), static_cast<int>(dsty)) + glyph.offset);
         dstx += static_cast<float>(glyph.advance) + char_spacing;
       }
