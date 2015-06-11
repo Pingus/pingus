@@ -141,7 +141,7 @@ int main(int argc, char** argv)
           break;
 
         default:
-          assert(!"never reached");
+          assert(false && "never reached");
           break;
       }
     }

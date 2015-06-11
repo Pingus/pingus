@@ -21,7 +21,7 @@
 
 int main(int argc, char** argv)
 {
-  int t = 1216020230; // 20
+  unsigned int t = 1216020230; // 20
   //1216032809 // 20
   //int t = time(NULL);
   //int t = 1216035347;
