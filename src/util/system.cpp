@@ -297,7 +297,7 @@ System::find_userdir()
   char* appdata  = getenv("APPDATA");
   if (appdata)
   {
-    tmpstr = std::string(appdata) + "/Pingus/";
+    tmpstr = std::string(appdata) + "/Pingus-0.8/";
     for (size_t pos = tmpstr.find('\\', 0); pos != std::string::npos; pos = tmpstr.find('\\', 0))
       tmpstr[pos] = '/';
   }
@@ -313,7 +313,7 @@ System::find_userdir()
 
   if (homedir)
   {
-    return std::string(homedir) + "/Library/Application Support/pingus/";
+    return std::string(homedir) + "/Library/Application Support/pingus-0.8/";
   }
   else
   {
@@ -325,6 +325,8 @@ System::find_userdir()
   // if it does not, use $XDG_CONFIG_HOME, see:
   // http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 
+#if 0
+  // FIXME: insert code here to handle backward compatibilty with 0.7.x releases
   { // check for ~/.pingus/
     char* homedir = getenv("HOME");
     if (homedir && strcmp(homedir, "") != 0)
@@ -336,6 +338,7 @@ System::find_userdir()
       }
     }
   }
+#endif
 
   char* config_dir = getenv("XDG_CONFIG_HOME");
   if (!config_dir || strcmp(config_dir, "") == 0)
@@ -343,7 +346,7 @@ System::find_userdir()
     char* homedir = getenv("HOME");
     if (homedir && strcmp(homedir, "") != 0)
     {
-      return std::string(homedir) + "/.config/pingus/";
+      return std::string(homedir) + "/.config/pingus-0.8/";
     }
     else
     {
@@ -352,7 +355,7 @@ System::find_userdir()
   }
   else
   {
-    return std::string(config_dir) + "/pingus/";
+    return std::string(config_dir) + "/pingus-0.8/";
   }
 #endif
 }
