@@ -6,7 +6,7 @@
     (description "Is this a prison? Blocked by solid walls all around, there doesn't seem to be a way to escape. Salvation seems impossible. But wait... the wall to the right seems weak... perhaps this is a way to escape? Or is it a false path that will lead to the Pingus' doom?
 
 This is a risky trip, but you must take it to find out how to bring them all to freedom once again.")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 40)
     (number-to-save 35)
     (time -1)

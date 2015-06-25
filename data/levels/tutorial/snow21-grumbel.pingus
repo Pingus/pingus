@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Climb, Climber, climb... and build a bridge")
     (description "Once again you get access to a new action. The Climber action allows a Pingu to climb up straight walls, thus allowing him to reach stuff that might be too high to reach by other means. ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 10)
     (number-to-save 5)
     (time -1)

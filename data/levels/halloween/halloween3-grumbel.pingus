@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Boom Boom")
     (description "You've mastered the last challenge and now face the next. Their path to salvation seems to be cursed, but by whom? There is no time to think about it, since the next deadly challenge already awaits the Pingus. Two mighty roots block the way, but without a basher at hand to bash them away, sacrifice might be the only option...")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 40)
     (number-to-save 30)
     (time -1)

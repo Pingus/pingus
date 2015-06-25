@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "The window room")
     (description "After the Pingus have entered the pyramid, they reach a large room with a large window. The only problem they have is that the entrance to the room is much too high to survive the landing. Can you help them?")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 40)
     (time -1)

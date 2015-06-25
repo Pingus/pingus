@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Dig, bash and other problems")
     (description "The more levels you master, the more difficult they will get, but don't panic, as this one is still pretty easy. Just use the stuff that you've learned in the previous levels and you shouldn't have many problems. If you think you've reached a situation from which you can no longer solve the level, double click the armageddon button at the lower right. ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 15)
     (number-to-save 10)
     (time -1)

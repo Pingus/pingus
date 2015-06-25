@@ -4,7 +4,7 @@
   (head 
     (levelname "Being somewhere - Part 2")
     (description "Once again, two troops of Pingus which you have to coordinate.")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 100)
     (number-to-save 60)
     (time -1)

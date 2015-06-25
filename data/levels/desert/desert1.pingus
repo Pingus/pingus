@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Entering the pyramid")
     (description "After their long and dangerous journey through the desert the Pingus finally reach the large pyramid, but there is still a pedestal blocking their way.")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 30)
     (time -1)

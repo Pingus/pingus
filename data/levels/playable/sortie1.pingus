@@ -4,7 +4,7 @@
   (head 
     (levelname "Being somewhere - Part 1")
     (description "Only the one who can coordinate the Pingus will survive.")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 100)
     (number-to-save 50)
     (time 10000)

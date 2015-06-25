@@ -4,7 +4,7 @@
   (head 
     (levelname "So close, yet so far")
     (description )
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 45)
     (time 5000)

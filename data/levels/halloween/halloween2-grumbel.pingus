@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "One Thousand and One Jumps")
     (description "With the exit so high above and far out of reach for a normal Pingu, what options are there? Perhaps a jumper can rescue them?  Or will he simply slow their inevitable demise? It's your job to find out, but are you good enough to save them all?")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 15)
     (number-to-save 1)
     (time -1)

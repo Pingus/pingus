@@ -4,7 +4,7 @@
   (head 
     (levelname "Lost in Space")
     (description "We don't know where we are but we don't leave anybody behind.")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 30)
     (number-to-save 15)
     (time -1)

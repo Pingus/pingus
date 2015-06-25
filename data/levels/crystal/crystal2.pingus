@@ -6,7 +6,7 @@
     (description "This is one of the first levels with an animated background. More animated "
                  "backgrounds might follow later. ")
     (playable 1)
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 30)
     (time -1)

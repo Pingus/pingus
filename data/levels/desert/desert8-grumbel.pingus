@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Tunnel Time")
     (description "Dig a tunnel and you might make it to the exit. Digger and miners and stuff have to work together.")
-    (author "Ingo Ruhnke <grumbel@gmx.de>,<gabriel.rota@gmail.com>,Giuseppe Porciello <big_moviola@hotmail.com>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>,<gabriel.rota@gmail.com>,Giuseppe Porciello <big_moviola@hotmail.com>")
     (number-of-pingus 50)
     (number-to-save 40)
     (time -1)

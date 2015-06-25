@@ -4,7 +4,7 @@
   (head 
     (levelname "Rotation Test")
     (description "Display the same groundpiece in all 8 possible rotations.")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 25)
     (time -1)

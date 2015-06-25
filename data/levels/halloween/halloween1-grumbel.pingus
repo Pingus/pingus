@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "One jump to catch them all")
     (description "The pingus have found themselves lost on their journey.  What is this mysterious place?  Smiling pumpkins, giant candlesticks, and some boiling soup below... what wizardry is this? Now, facing a deadly abyss right in front of them it's your job to save them. Can you save them from a terrible fate?")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 35)
     (number-to-save 30)
     (time -1)

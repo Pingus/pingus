@@ -4,7 +4,7 @@
   (head 
     (levelname "Cliffs in the ice")
     (description )
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 120)
     (number-to-save 80)
     (time 8000)

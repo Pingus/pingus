@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Catch them at the half way point")
     (description "The Pingus are separated from the exit by large abyss. A simple bridge won't be enough to catch them safely, unless of course you find the right place to put it. Can you uncover that spot?")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 30)
     (number-to-save 20)
     (time -1)

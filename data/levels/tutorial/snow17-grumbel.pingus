@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "If too high, your Pingu will die...")
     (description "Teamwork is the way to the exit this time. You don't have enough Floaters to reach the exit, so just send a few and let them prepare the path for the rest. ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 15)
     (number-to-save 8)
     (time -1)

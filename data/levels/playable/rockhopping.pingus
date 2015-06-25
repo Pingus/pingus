@@ -4,7 +4,7 @@
   (head 
     (levelname "Rockhoppin'")
     (description "Pingus rocks, doesn't it? ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 28)
     (time -1)

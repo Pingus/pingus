@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Entrance high, Exit low")
     (description "If you don't have enough floaters to bring all the Pingus down to the exit - you have to find other ways to guide them down. You should have learned all the stuff you need for this level in previous levels, so this shouldn't be too much of a problem for you. ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 30)
     (number-to-save 15)
     (time -1)

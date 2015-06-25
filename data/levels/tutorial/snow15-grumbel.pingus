@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Climb, Climber,... Boom!")
     (description "As you might have already figured out from previous levels, you often have to combine different actions to get the job done. Due to the lack of a Digger action in this level the Bomber needs to jump in, but how can it reach the place to bomb? ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 30)
     (number-to-save 16)
     (time -1)

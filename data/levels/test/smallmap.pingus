@@ -4,7 +4,7 @@
   (head 
     (levelname "Small map test")
     (description "Platzangst...")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 100)
     (number-to-save 50)
     (time -1)

@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Dig and float, just don't fall and smash")
     (description "Unlike the first two levels, you have two actions available in this level. Your job is again simple: select an action at the panel on the left and apply it to the Pingus so that they will be able to reach the exit. Make sure that not too many of them die. ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 20)
     (number-to-save 10)
     (time -1)

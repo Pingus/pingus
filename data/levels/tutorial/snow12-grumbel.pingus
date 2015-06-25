@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Two groups in parallel, coordinate wisely")
     (description "You have two groups to coordinate this time. No need to panic, since this level gives you enough time to think your actions through. No more tips this time, but good luck! ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 10)
     (number-to-save 6)
     (time -1)

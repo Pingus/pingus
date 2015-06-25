@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Pass the pedestal")
     (description "A large pedestal is blocking the way to the exit and there aren't enough bashers available to dig it away. Can you find a way to make it past the pedestal?")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 30)
     (number-to-save 30)
     (time -1)

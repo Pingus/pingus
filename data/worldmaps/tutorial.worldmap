@@ -6,7 +6,7 @@
     (description "Learn the basics")
     (music "pingus-1.it")
     (author "Ingo Ruhnke")
-    (email "grumbel@gmx.de")
+    (email "grumbel@gmail.com")
     (width 1920)
     (height 1200)
     (default-node "leveldot_1")

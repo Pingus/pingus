@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "The Roof")
     (description "Sometimes the roofs are not good for refuge, sometimes it should be demolished! But be careful if you aren't precise enough, you might lead the Pingus straight to certain death.")
-    (author "Ingo Ruhnke <grumbel@gmx.de>, Giuseppe Porciello <big_moviola@hotmail.com>, <gabriel.rota@gmail.com>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>, Giuseppe Porciello <big_moviola@hotmail.com>, <gabriel.rota@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 40)
     (time -1)

@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Fall and splash test")
     (description "Do not enter if you don't like splashing penguins... ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 10000)
     (number-to-save 0)
     (time -1)

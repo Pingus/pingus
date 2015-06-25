@@ -4,7 +4,7 @@
   (head 
     (levelname "Hardest the fall be")
     (description "build on the edge")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 10)
     (number-to-save 10)
     (time 3000)

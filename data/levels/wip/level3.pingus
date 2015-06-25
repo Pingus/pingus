@@ -5,7 +5,7 @@
     (levelname "Pipe Panic in Penguin World")
     (description "This level shows a simple pipe-system which can be created with just a few "
                  "pipe-tiles.")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 100)
     (number-to-save 50)
     (time -1)

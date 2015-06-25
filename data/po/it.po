@@ -2816,7 +2816,7 @@ msgstr "Merry Christmas and a Happy New Year"
 #~ "bug."
 
 #~ msgid ""
-#~ "| Please write a little bug report to <grumbel@gmx.de>, include "
+#~ "| Please write a little bug report to <grumbel@gmail.com>, include "
 #~ "informations"
 #~ msgstr ""
 #~ "| Per favore, scrivi un piccolo bug-report a <pingus-devel@nongnu.org>, "

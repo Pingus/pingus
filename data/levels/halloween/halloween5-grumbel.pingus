@@ -6,7 +6,7 @@
     (description "Who placed this monstrous wall here?  This terrible blockade separates your Pingus from the exit. Destruction of its awful construction seems an impossibility, but perhaps the bridger can come to the rescue?  Can they build their bridges high enough to guide the group yet again safely to the exit? Or is somebody playing evil mind tricks with you?
 
 Yet again the solution is your call... your gray matter is the key to the Pingus' success, so don't let yourself get confused and misguided from the true path.")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 40)
     (number-to-save 30)
     (time -1)
