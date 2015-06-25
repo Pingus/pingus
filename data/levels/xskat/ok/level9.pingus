@@ -4,7 +4,7 @@
   (head 
     (levelname "Teleporter, Spikes and other fun stuff")
     (description )
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 30)
     (time -1)

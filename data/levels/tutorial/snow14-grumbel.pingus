@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Block'a Rock")
     (description "Once again it's time to combine the things you have learned in your previous levels. Blast your way free and make sure you also keep the rest of the Pingus under control. The Blocker action will be helpful.")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 35)
     (number-to-save 15)
     (time -1)

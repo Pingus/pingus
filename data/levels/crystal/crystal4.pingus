@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Crystal Snakes")
     (description "After the last levels, this one looks pretty easy, but things are not always what they seem to be...")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 100)
     (number-to-save 50)
     (time -1)

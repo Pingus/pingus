@@ -6,7 +6,7 @@
     (description "This level is currently not working correctly due to some missing features "
                  "in ClanLib (alpha/put_target()). To get an idea how this level should look "
                  "like load it into the editor (small1.plf) ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 100)
     (number-to-save 50)
     (time -1)

@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Panic Island (float/bash)")
     (description "While the previous levels have not required much quick action from you, this one gets a bit trickier. The Pingus are coming out of two entrances in parallel and it is your job to coordinate the two groups wisely. ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 40)
     (number-to-save 25)
     (time -1)

@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Jump for joy")
     (description "Sometimes a Pingu needs to reach a platform that is far away, but not reachable by walking. That's when the Jumper comes in handy - it allows the Pingu to make a small jump and so enables him to reach the platform. ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 25)
     (number-to-save 5)
     (time -1)

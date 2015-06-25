@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Learn to use the bridge")
     (description "If no Jumper is at hand and a large hole needs to be passed, a bridge can be pretty helpful. It takes some time to build, but unlike the jumper action it allows following Pingus to reach the other end too. ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 15)
     (number-to-save 5)
     (time -1)

@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Splatterfest")
     (description "This is by far the deepest pit the Pingus have yet encountered. Building a bridge across it seems obvious but that won't help since the exit is deep down in the pit itself. Pingus who try to go down the pit will just end up splattered all over the ground. You have two groups of Pingus at your disposal, can you make them work together to reach even an exit this well hidden?")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 40)
     (number-to-save 30)
     (time -1)

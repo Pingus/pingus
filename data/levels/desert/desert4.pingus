@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "The excavation of the pyramid")
     (description "The excavations are open to reach the pyramid for his redeeming content. Some excavations, however, is best done with two competitors. Who comes first?")
-    (author "Ingo Ruhnke <grumbel@gmx.de>,<gabriel.rota@gmail.com>,Giuseppe Porciello <big_moviola@hotmail.com>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>,<gabriel.rota@gmail.com>,Giuseppe Porciello <big_moviola@hotmail.com>")
     (number-of-pingus 30)
     (number-to-save 20)
     (time -1)

@@ -3,7 +3,7 @@
   (version 2)
   (head 
     (levelname "Red stone castle")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 100)
     (number-to-save 0)
     (time -1)

@@ -5,7 +5,7 @@
     (levelname "Tutorial 5 - Danger in Space")
     (description "If there is no action left to dig through a barrier, there is only a last "
                  "hope... the bomber")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 30)
     (number-to-save 10)
     (time -1)

@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Miner's heaven")
     (description "Another action hits the street - another digging action, this time a diagonal one. It allows a Pingu to dig diagonally through ground, thus creating a path for following Pingus. The action is called Miner. ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 20)
     (number-to-save 10)
     (time -1)

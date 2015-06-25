@@ -6,7 +6,7 @@
     (description "Be careful, it's hot!")
     (music "gd-myla.it")
     (author "Ingo Ruhnke")
-    (email "grumbel@gmx.de")
+    (email "grumbel@gmail.com")
     (width 800)
     (height 600)
     (default-node "leveldot_1")

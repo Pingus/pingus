@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "A bit to the right a bit to left")
     (description "Only the most audacious Pingus will be allowed to continue.")
-    (author "Ingo Ruhnke <grumbel@gmx.de>, Gabriel Rota <gabriel.rota@gmail.com>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>, Gabriel Rota <gabriel.rota@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 35)
     (time -1)

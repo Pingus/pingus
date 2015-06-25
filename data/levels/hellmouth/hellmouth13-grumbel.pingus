@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Unreachable exit in slime")
     (description "The pingus seems to be in hell, surounded by lava and the exit unreachable. When they all hold together they might be able to escape.")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 100)
     (number-to-save 90)
     (time -1)

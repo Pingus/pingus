@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Jump'n Bump... and Bash...")
     (description "It's panic time again. The Pingus will not come out very fast, but since they turn around when they hit walls you will soon have some trouble coordinating them all. Since you only need to save 5 it should be doable, but if all else fails use the pause-mode ('p') to get an overview again. ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 10)
     (number-to-save 5)
     (time -1)

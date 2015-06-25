@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "EditorDefaultValue: Please give me a name...")
     (description "EditorDefaultValue: ...and a short description")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 20)
     (number-to-save 15)
     (time -1)

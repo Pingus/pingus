@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Full Circle")
     (description "The exit is so close, yet out of reach. A step in the wrong direction and the Pingus will fall to a terrible fate. You must do something to help them, but is there enough time? You have to hurry and can't allow yourself any mistakes. The Pingus are counting on you!")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 20)
     (number-to-save 5)
     (time -1)

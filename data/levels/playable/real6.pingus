@@ -5,7 +5,7 @@
     (levelname "Smashing Zone - DejaVu")
     (description "Hm, this looks exactly the same as the last time, but someone seems to have "
                  "blocked the way to the exit...")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 100)
     (number-to-save 50)
     (time -1)

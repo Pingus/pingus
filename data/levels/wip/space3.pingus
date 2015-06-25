@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Danger at Space Station 6")
     (description "After passing some checkpoints the Pingus finally reach Space Station 6, but the danger has no end...")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 100)
     (number-to-save 50)
     (time -1)

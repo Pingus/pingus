@@ -1,7 +1,7 @@
 # #-#-#-#-#  tr.po (Pingus 0.5.0)  #-#-#-#-#
 # Pingus - Serbest Lemmings Benzeri Program
-# Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
-# Ingo Ruhnke <grumbel@gmx.de>, 2000
+# Copyright (C) 2000 Ingo Ruhnke <grumbel@gmail.com>
+# Ingo Ruhnke <grumbel@gmail.com>, 2000
 #
 msgid ""
 msgstr ""

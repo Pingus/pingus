@@ -4,7 +4,7 @@
   (head 
     (levelname "Tutorial 1 - Dig into the ground")
     (description "Use the digger action to dig a hole into the ground to reach the exit.")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 20)
     (number-to-save 10)
     (time 5000)

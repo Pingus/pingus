@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "If the way is blocked, bash away")
     (description "Similar to the Digger action that you already know from previous levels, there is also an action that allows the Pingus to dig horizontally, as opposed to the vertical dig ability the Digger action provides. This new action is called Basher. ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 20)
     (number-to-save 10)
     (time -1)

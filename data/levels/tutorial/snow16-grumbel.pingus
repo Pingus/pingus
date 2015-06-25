@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Bridging gets more complicated...")
     (description "Once again you have to combine actions carefully and wisely. If you don't you could end up in the hole just before the exit, so think about how to avoid that. ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 25)
     (number-to-save 15)
     (time -1)

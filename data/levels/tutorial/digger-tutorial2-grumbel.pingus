@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "Learning to dig")
     (description "This is your first mission. As always, it's pretty easy. All you have to do is to give a Pingu the command to dig a hole into the ground so that they can reach the exit. This can be accomplished simply by clicking on a Pingu. ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 10)
     (number-to-save 5)
     (time -1)

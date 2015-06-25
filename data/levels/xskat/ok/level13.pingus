@@ -4,7 +4,7 @@
   (head 
     (levelname "Crystals in a cave")
     (description "The exit is too low for a jump, what's the work around?")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 60)
     (number-to-save 45)
     (time 15000)

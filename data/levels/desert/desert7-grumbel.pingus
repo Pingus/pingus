@@ -4,7 +4,7 @@
     (license "GPLv3+")
     (levelname "25 Pingus free and 25 in the box")
     (description "Okay for the Bridger but what can I do with Digger? You should save at least one Pingu trapped in the box above the exit.")
-    (author "Ingo Ruhnke <grumbel@gmx.de>,Gabriel Rota <gabriel.rota@gmail.com>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>,Gabriel Rota <gabriel.rota@gmail.com>")
     (number-of-pingus 50)
     (number-to-save 35)
     (time -1)

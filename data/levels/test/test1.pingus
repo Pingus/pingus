@@ -5,7 +5,7 @@
     (levelname "Lets see how good a pingu can walk")
     (description "Developers only... ;-) Testing if the hard line breaks work...<breaking> "
                  "Looks good... ")
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 100)
     (number-to-save 10)
     (time 4500)

@@ -1,6 +1,6 @@
 ##  -*- python -*-
 ##  Pingus - A free Lemmings clone
-##  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>,
+##  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmail.com>,
 ##                     Francois Beerten
 ##
 ##  This program is free software; you can redistribute it and/or

@@ -4,7 +4,7 @@
   (head 
     (levelname "Two exits, it's up to you")
     (description )
-    (author "Ingo Ruhnke <grumbel@gmx.de>")
+    (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 100)
     (number-to-save 0)
     (time -1)
