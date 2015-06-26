@@ -30,8 +30,8 @@ static inline bool property_get(const Lisp* lisp, T& val)
   if(lisp->get_list_size() != 2)
     return false;
 
-  const Lisp* el = lisp->get_list_elem(1);
-  return get(el, val);
+  std::shared_ptr<Lisp> el = lisp->get_list_elem(1);
+  return get(el.get(), val);
 }
 
 static inline bool property_get(const Lisp* lisp, const Lisp*& val)
