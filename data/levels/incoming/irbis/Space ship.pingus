@@ -1,0 +1,744 @@
+(pingus-level 
+  (version 3)
+  (head 
+    (license "GPLv3+")
+    (levelname "Spaceship")
+    (description "")
+    (author "Garlik")
+    (number-of-pingus 1)
+    (number-to-save 1)
+    (time 2150)
+    (music "gd-myla.it")
+    (actions 
+      (jumper 10))
+    (levelsize 2000 1000))
+  (objects 
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1028 445 -1000))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1029 448 -1000))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1083 400 -1000))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1129 410 -1000))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1184 384 -1000))
+    (surface-background 
+      (surface 
+        (image "textures/bluestars")
+        (modifier "ROT0"))
+      (position 489 696 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #t)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x -25)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1065 506 -1000))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1141 508 -1000))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1213 472 -1000))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 378 399 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 439 401 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 559 467 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 403 487 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 479 459 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 514 380 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 587 390 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 652 400 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 622 491 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 706 471 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 838 468 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 733 385 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 808 398 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 945 400 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 878 388 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 889 489 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 770 470 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 975 430 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 961 538 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 931 546 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1025 375 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1277 400 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1295 481 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1297 545 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1344 392 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1399 421 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1390 512 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1477 455 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1539 461 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1610 470 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1670 460 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/crystal/diagcrystal")
+        (modifier "ROT0"))
+      (position 1694 469 -1))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/squaresolid")
+        (modifier "ROT0"))
+      (position 1144 584 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/squaresolid")
+        (modifier "ROT0"))
+      (position 1208 584 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/crystal/squaresolid")
+        (modifier "ROT0"))
+      (position 1080 584 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/way")
+        (modifier "ROT0"))
+      (position 1299 549 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/tower1")
+        (modifier "ROT0"))
+      (position 341 410 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/block1")
+        (modifier "ROT0"))
+      (position 414 644 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/block1")
+        (modifier "ROT0"))
+      (position 473 361 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/diagonalr")
+        (modifier "ROT90FLIP"))
+      (position 405 520 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/block1")
+        (modifier "ROT0"))
+      (position 272 361 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/diagonalr")
+        (modifier "ROT0"))
+      (position 206 293 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/diagonalr")
+        (modifier "ROT0"))
+      (position 138 225 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/diagonalr")
+        (modifier "ROT0"))
+      (position 347 576 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/block1")
+        (modifier "ROT0"))
+      (position 63 164 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock3")
+        (modifier "ROT0"))
+      (position 31 180 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/block1")
+        (modifier "ROT0"))
+      (position 674 361 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/block1")
+        (modifier "ROT0"))
+      (position 674 584 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/block1")
+        (modifier "ROT0"))
+      (position 875 361 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/way")
+        (modifier "ROT0"))
+      (position 1076 581 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/block1")
+        (modifier "ROT0"))
+      (position 1076 645 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/block1")
+        (modifier "ROT0"))
+      (position 1076 361 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/way")
+        (modifier "ROT0"))
+      (position 1177 581 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock3")
+        (modifier "ROT0"))
+      (position 1161 581 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/block1")
+        (modifier "ROT0"))
+      (position 875 645 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/block1")
+        (modifier "ROT0"))
+      (position 1277 645 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock3")
+        (modifier "ROT0"))
+      (position 843 645 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock1")
+        (modifier "ROT0"))
+      (position 811 645 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock3")
+        (modifier "ROT0"))
+      (position 1048 613 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock1")
+        (modifier "ROT0"))
+      (position 1048 581 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock3")
+        (modifier "ROT0"))
+      (position 875 613 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock1")
+        (modifier "ROT0"))
+      (position 875 581 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock3")
+        (modifier "ROT0"))
+      (position 1272 613 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock1")
+        (modifier "ROT0"))
+      (position 1272 581 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/diagonal")
+        (modifier "ROT0"))
+      (position 1420 577 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/diagonalr")
+        (modifier "ROT270"))
+      (position 1478 577 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/block1")
+        (modifier "ROT0"))
+      (position 473 585 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock3")
+        (modifier "ROT0"))
+      (position 615 645 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock1")
+        (modifier "ROT0"))
+      (position 647 645 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/way")
+        (modifier "ROT0"))
+      (position 679 671 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/way")
+        (modifier "ROT0"))
+      (position 711 671 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/block1")
+        (modifier "ROT0"))
+      (position 1277 361 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/diagonalr")
+        (modifier "ROT0"))
+      (position 1420 422 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/diagonal")
+        (modifier "ROT90"))
+      (position 1477 364 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/block1")
+        (modifier "ROT0"))
+      (position 1546 577 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/block1")
+        (modifier "ROT0"))
+      (position 1545 429 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/diagonal")
+        (modifier "ROT270"))
+      (position 1746 432 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/diagonalr")
+        (modifier "ROT270"))
+      (position 1747 511 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/tower1")
+        (modifier "ROT90"))
+      (position 1814 501 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 1672 577 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 550 585 0)
+      (owner-id 1))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock2")
+        (modifier "ROT0"))
+      (position 696 552 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock2")
+        (modifier "ROT0"))
+      (position 696 454 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock2")
+        (modifier "ROT0"))
+      (position 696 422 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock2")
+        (modifier "ROT0"))
+      (position 875 549 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock2")
+        (modifier "ROT0"))
+      (position 907 613 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock2")
+        (modifier "ROT0"))
+      (position 1016 581 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock2")
+        (modifier "ROT0"))
+      (position 1129 549 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock2")
+        (modifier "ROT0"))
+      (position 1193 549 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock2")
+        (modifier "ROT0"))
+      (position 1272 549 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock2")
+        (modifier "ROT0"))
+      (position 1272 517 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock2")
+        (modifier "ROT0"))
+      (position 1272 422 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock2")
+        (modifier "ROT0"))
+      (position 1388 613 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock2")
+        (modifier "ROT0"))
+      (position 1388 581 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock2")
+        (modifier "ROT0"))
+      (position 1388 549 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock2")
+        (modifier "ROT0"))
+      (position 1388 517 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock2")
+        (modifier "ROT0"))
+      (position 1388 422 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock2")
+        (modifier "ROT0"))
+      (position 1487 545 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock2")
+        (modifier "ROT0"))
+      (position 1519 545 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smalltower")
+        (modifier "ROT0"))
+      (position 1866 301 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smalltower")
+        (modifier "ROT0"))
+      (position 1866 565 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock3")
+        (modifier "ROT0"))
+      (position 1853 269 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock3")
+        (modifier "ROT0"))
+      (position 1853 765 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/diagonalr")
+        (modifier "ROT0"))
+      (position 879 293 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/diagonalr")
+        (modifier "ROT0"))
+      (position 811 225 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/diagonalr")
+        (modifier "ROT0"))
+      (position 1009 293 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/diagonalr")
+        (modifier "ROT0"))
+      (position 941 225 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/block1")
+        (modifier "ROT0"))
+      (position 798 164 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/space/smallblock3")
+        (modifier "ROT0"))
+      (position 264 179 0))
+    (liquid 
+      (surface 
+        (image "liquids/lava")
+        (modifier "ROT0"))
+      (position 1080 582 0)
+      (speed 0)
+      (repeat 3))
+    (entrance 
+      (position 555 576 110)
+      (owner-id 0)
+      (direction "right")
+      (release-rate 150))))
+
+;; EOF ;;

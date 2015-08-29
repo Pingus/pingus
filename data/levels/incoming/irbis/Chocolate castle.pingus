@@ -1,0 +1,1743 @@
+(pingus-level 
+  (version 3)
+  (head 
+    (license "GPLv3+")
+    (levelname "")
+    (description "")
+    (author "")
+    (number-of-pingus 30)
+    (number-to-save 25)
+    (time -1)
+    (music "candy landy-1.it")
+    (actions 
+      (basher 30)
+      (blocker 20)
+      (bomber 5)
+      (bridger 2)
+      (climber 15)
+      (jumper 15))
+    (levelsize 2000 1200))
+  (objects 
+    (surface-background 
+      (surface 
+        (image "textures/cyanspace")
+        (modifier "ROT0"))
+      (position -436 579 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (liquid 
+      (surface 
+        (image "liquids/swater")
+        (modifier "ROT0"))
+      (position 1411 323 -1)
+      (speed 0)
+      (repeat 2))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 1503 1072 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 1137 -6 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 998 176 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 937 176 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestub")
+        (modifier "ROT90"))
+      (position 1325 178 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 1332 178 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 1927 1078 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 1927 1139 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90FLIP"))
+      (position 1009 799 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT270"))
+      (position 1009 601 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 1189 816 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 583 802 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0FLIP"))
+      (position 412 741 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0FLIP"))
+      (position 412 802 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestub")
+        (modifier "ROT90"))
+      (position 842 1120 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 849 1120 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestub")
+        (modifier "ROT90"))
+      (position 831 1128 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 838 1128 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canetop")
+        (modifier "ROT0FLIP"))
+      (position 1015 1036 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canetop")
+        (modifier "ROT0"))
+      (position 1112 1037 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 676 1141 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 498 1173 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 1732 534 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 1533 372 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canetop")
+        (modifier "ROT0"))
+      (position 1442 789 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canetop")
+        (modifier "ROT0FLIP"))
+      (position 1344 791 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 1449 1139 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 1293 1139 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbar")
+        (modifier "ROT0"))
+      (position 1219 1102 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canetop")
+        (modifier "ROT0FLIP"))
+      (position 1226 126 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbar")
+        (modifier "ROT0FLIP"))
+      (position 87 1069 0))
+    (exit 
+      (surface 
+        (image "exits/easter")
+        (modifier "ROT0"))
+      (position 169 1070 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/easter")
+        (modifier "ROT0"))
+      (position 1738 285 0)
+      (owner-id 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 378 1136 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 378 1072 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position -14 1072 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canetop")
+        (modifier "ROT0FLIP"))
+      (position 442 1019 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0FLIP"))
+      (position 442 1091 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0FLIP"))
+      (position 442 1152 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canetop")
+        (modifier "ROT180FLIP"))
+      (position 492 1058 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT180FLIP"))
+      (position 592 997 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT180FLIP"))
+      (position 592 936 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT180FLIP"))
+      (position 592 875 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbar")
+        (modifier "ROT0"))
+      (position 411 829 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbar")
+        (modifier "ROT0"))
+      (position 1550 284 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1795 323 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1731 323 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1667 323 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1603 323 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1539 323 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 607 1136 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topleft")
+        (modifier "ROT0"))
+      (position 543 1136 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topright")
+        (modifier "ROT0"))
+      (position 457 1136 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 607 1072 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 607 1008 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbar")
+        (modifier "ROT0"))
+      (position 1551 478 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1603 451 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT90"))
+      (position 1539 451 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1667 451 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1731 451 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1795 451 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1907 323 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1907 451 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 735 1136 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topright")
+        (modifier "ROT0"))
+      (position 671 1136 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 799 1136 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topleft")
+        (modifier "ROT0"))
+      (position 863 1072 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowright")
+        (modifier "ROT0"))
+      (position 863 1136 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position -14 1008 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 314 1136 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 50 1072 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowright")
+        (modifier "ROT0"))
+      (position 114 1136 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 50 1136 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position -14 1136 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/ground/test/test7")
+        (modifier "ROT180FLIP"))
+      (position 500 1047 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topright")
+        (modifier "ROT0"))
+      (position 991 1072 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 991 1136 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1055 1136 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowright")
+        (modifier "ROT0"))
+      (position 1119 1136 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topleft")
+        (modifier "ROT0"))
+      (position 1183 1072 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 1183 1136 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1247 1072 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowright")
+        (modifier "ROT0"))
+      (position 1311 1072 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1311 1008 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1311 944 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1311 880 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1311 816 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topright")
+        (modifier "ROT0"))
+      (position 1311 752 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topleft")
+        (modifier "ROT0"))
+      (position 1247 752 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 1247 816 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1375 1008 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowright")
+        (modifier "ROT0"))
+      (position 927 1072 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topleft")
+        (modifier "ROT0"))
+      (position 1907 899 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1843 1027 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1907 1027 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1907 963 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1835 997 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1835 967 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1835 937 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1835 907 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1835 877 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1835 847 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1835 817 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1835 787 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1835 757 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1835 727 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1835 697 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1835 667 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 1907 835 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1971 1027 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topright")
+        (modifier "ROT0"))
+      (position 1971 963 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1971 835 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1971 899 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1907 771 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topright")
+        (modifier "ROT0"))
+      (position 1971 771 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1907 707 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowright")
+        (modifier "ROT0"))
+      (position 1907 643 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1771 904 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1771 840 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1771 776 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topleft")
+        (modifier "ROT0"))
+      (position 1771 712 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topright")
+        (modifier "ROT0"))
+      (position 1771 584 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1707 904 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topleft")
+        (modifier "ROT0"))
+      (position 1707 840 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1707 776 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1707 584 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1707 712 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1707 648 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1643 904 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1579 904 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topright")
+        (modifier "ROT0"))
+      (position 1579 840 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1515 840 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 1515 904 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1907 579 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1907 515 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 1971 643 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1971 579 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topright")
+        (modifier "ROT0"))
+      (position 1971 515 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1971 451 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowright")
+        (modifier "ROT0"))
+      (position 1971 387 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1971 323 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topright")
+        (modifier "ROT0"))
+      (position 1475 451 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1411 451 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 1347 451 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1475 515 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1539 515 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1347 323 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 1411 372 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 1472 372 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0FLIP"))
+      (position 1226 198 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1283 323 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topleft")
+        (modifier "ROT0"))
+      (position 1283 451 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1411 515 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1347 515 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 1283 515 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1175 786 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1175 756 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1175 726 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1175 696 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1175 666 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1175 636 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1175 606 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1175 576 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1175 546 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1175 516 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1175 486 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1175 456 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT90"))
+      (position 1615 845 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT90"))
+      (position 1511 455 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 607 944 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 607 880 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/signposts/arrow_southwest")
+        (modifier "ROT0"))
+      (position 521 788 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/signposts/arrow_southeast")
+        (modifier "ROT0"))
+      (position 458 789 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/signposts/basher")
+        (modifier "ROT0"))
+      (position 554 786 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/signposts/basher")
+        (modifier "ROT0FLIP"))
+      (position 426 789 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/signposts/nogo")
+        (modifier "ROT0"))
+      (position 489 788 0)
+      (speed 0)
+      (parallax 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canetop")
+        (modifier "ROT0"))
+      (position 483 669 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canetop")
+        (modifier "ROT0FLIP"))
+      (position 412 669 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 583 741 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 471 719 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0FLIP"))
+      (position 29 947 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0FLIP"))
+      (position 29 886 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canetop")
+        (modifier "ROT0FLIP"))
+      (position 29 814 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 1128 816 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1111 816 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topright")
+        (modifier "ROT0"))
+      (position 1111 752 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1247 624 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topright")
+        (modifier "ROT0"))
+      (position 1247 560 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1111 624 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topleft")
+        (modifier "ROT0"))
+      (position 1111 560 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 1111 496 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 378 912 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topleft")
+        (modifier "ROT0"))
+      (position 314 912 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowright")
+        (modifier "ROT0"))
+      (position 442 912 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 442 848 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 378 848 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1111 880 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topleft")
+        (modifier "ROT0"))
+      (position 1047 816 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 1047 880 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 1047 752 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1047 688 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1047 624 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1047 560 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1047 496 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1047 432 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canetop")
+        (modifier "ROT270"))
+      (position 937 601 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canetop")
+        (modifier "ROT90FLIP"))
+      (position 937 699 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canetop")
+        (modifier "ROT270FLIP"))
+      (position 869 652 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT270FLIP"))
+      (position 808 652 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canetop")
+        (modifier "ROT90"))
+      (position 869 750 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 808 850 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 744 673 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 744 737 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 744 801 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowright")
+        (modifier "ROT0"))
+      (position 744 865 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 680 865 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topleft")
+        (modifier "ROT0"))
+      (position 680 801 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 680 673 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topleft")
+        (modifier "ROT0"))
+      (position 744 609 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1219 323 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1667 387 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1907 387 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topright")
+        (modifier "ROT0"))
+      (position 1283 259 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1219 259 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topleft")
+        (modifier "ROT0"))
+      (position 1155 259 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1835 637 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT90"))
+      (position 1807 589 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 1643 584 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topright")
+        (modifier "ROT0"))
+      (position 1439 1008 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 1393 178 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 1454 178 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 1515 178 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 1576 178 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 1637 178 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 1698 178 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT90"))
+      (position 1759 178 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestub")
+        (modifier "ROT90FLIP"))
+      (position 1820 178 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 1910 201 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canetop")
+        (modifier "ROT0"))
+      (position 1810 129 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 1910 262 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1971 259 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1971 195 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 1971 131 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1971 67 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topleft")
+        (modifier "ROT0"))
+      (position 1971 3 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1779 1027 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT90"))
+      (position 1319 263 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1047 368 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1047 304 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1047 240 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1047 176 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 975 146 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 975 116 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 975 86 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 975 56 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 975 26 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 911 176 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 911 112 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topleft")
+        (modifier "ROT0"))
+      (position 911 48 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1047 48 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1047 -16 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 911 -16 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 847 48 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 847 -16 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 847 112 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1111 48 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 1201 -6 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowright")
+        (modifier "ROT0"))
+      (position 1175 48 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1715 1027 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1651 1027 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1587 1027 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topleft")
+        (modifier "ROT0"))
+      (position 1523 1027 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestub")
+        (modifier "ROT90"))
+      (position 1496 1072 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1651 1091 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowright")
+        (modifier "ROT0"))
+      (position 1715 1091 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 1651 1155 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1715 1155 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-lowleft")
+        (modifier "ROT0"))
+      (position 1155 323 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc-topright")
+        (modifier "ROT0"))
+      (position 1111 432 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/chocbloc")
+        (modifier "ROT0"))
+      (position 1111 688 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT90"))
+      (position 1148 438 0))
+    (entrance 
+      (position 1738 285 110)
+      (owner-id 1)
+      (direction "left")
+      (release-rate 100))
+    (entrance 
+      (position 170 1070 110)
+      (owner-id 0)
+      (direction "right")
+      (release-rate 100))))
+
+;; EOF ;;

@@ -1,0 +1,440 @@
+(pingus-level 
+  (version 3)
+  (head 
+    (license "GPLv3+")
+    (levelname "Pillars for you")
+    (description "")
+    (author "Garlik")
+    (number-of-pingus 2)
+    (number-to-save 2)
+    (time -1)
+    (music "pingus-6.it")
+    (actions 
+      (basher 3)
+      (bridger 35))
+    (levelsize 2000 1000))
+  (objects 
+    (surface-background 
+      (surface 
+        (image "textures/lunartile")
+        (modifier "ROT0"))
+      (position -275 114 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (liquid 
+      (surface 
+        (image "liquids/water2")
+        (modifier "ROT0"))
+      (position 897 947 -100)
+      (speed 0)
+      (repeat 5))
+    (liquid 
+      (surface 
+        (image "liquids/water2")
+        (modifier "ROT0"))
+      (position 1759 944 -100)
+      (speed 0)
+      (repeat 4))
+    (liquid 
+      (surface 
+        (image "liquids/water2")
+        (modifier "ROT0"))
+      (position 906 866 -100)
+      (speed 0)
+      (repeat 11))
+    (switchdoor-switch 
+      (position 93 436 -1)
+      (target-id "id1"))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/industrial/pipe_ul")
+        (modifier "ROT0"))
+      (position 654 800 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/industrial/pipe1")
+        (modifier "ROT0"))
+      (position 686 801 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/industrial/pipe1")
+        (modifier "ROT0"))
+      (position 718 801 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/industrial/pipe1")
+        (modifier "ROT0"))
+      (position 750 801 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/industrial/pipe_ur")
+        (modifier "ROT0"))
+      (position 782 800 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/industrial/pipe2")
+        (modifier "ROT0"))
+      (position 791 832 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/industrial/pipe2")
+        (modifier "ROT0"))
+      (position 791 864 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/industrial/pipe2")
+        (modifier "ROT0"))
+      (position 791 896 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/industrial/pipe2")
+        (modifier "ROT0"))
+      (position 791 928 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/industrial/pipe2")
+        (modifier "ROT0"))
+      (position 791 960 -1))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/industrial/pipe2")
+        (modifier "ROT0"))
+      (position 791 992 -1))
+    (switchdoor-door 
+      (position 1371 675 -1)
+      (id "id1")
+      (height 60))
+    (switchdoor-door 
+      (position 1498 675 -1)
+      (id "id1")
+      (height 57))
+    (exit 
+      (surface 
+        (image "exits/stone")
+        (modifier "ROT0"))
+      (position 1444 849 -1)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/stone")
+        (modifier "ROT0"))
+      (position 48 445 -1)
+      (owner-id 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/stone1")
+        (modifier "ROT180FLIP"))
+      (position 888 852 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/grey_stone2")
+        (modifier "ROT0"))
+      (position -42 805 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/grey_stone5")
+        (modifier "ROT0"))
+      (position -9 936 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/grey_stone6")
+        (modifier "ROT0"))
+      (position 30 821 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/pfosten")
+        (modifier "ROT180FLIP"))
+      (position -10 641 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/pfosten")
+        (modifier "ROT0"))
+      (position -10 442 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/ground/misc/pfosten")
+        (modifier "ROT180FLIP"))
+      (position 302 841 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/misc/stoneblock6")
+        (modifier "ROT0"))
+      (position 904 536 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/stoneblock3")
+        (modifier "ROT0"))
+      (position 391 582 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/stoneblock5")
+        (modifier "ROT0"))
+      (position 397 518 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/stoneblock3")
+        (modifier "ROT0"))
+      (position 406 454 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 731 866 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 768 848 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/grey_stone4")
+        (modifier "ROT0"))
+      (position 895 897 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/grey_stone5")
+        (modifier "ROT0"))
+      (position 1067 912 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/grey_stone1")
+        (modifier "ROT0"))
+      (position 1204 909 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/grey_stone1")
+        (modifier "ROT0"))
+      (position 1322 915 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/grey_stone6")
+        (modifier "ROT0"))
+      (position 1376 901 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/grey_stone1")
+        (modifier "ROT0"))
+      (position 1442 912 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/grey_stone5")
+        (modifier "ROT0"))
+      (position 1196 951 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/grey_stone4")
+        (modifier "ROT0"))
+      (position 1493 963 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/grey_stone3")
+        (modifier "ROT0"))
+      (position 1537 885 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/grey_stone2")
+        (modifier "ROT0"))
+      (position 1621 808 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/grey_stone3")
+        (modifier "ROT0"))
+      (position 1661 956 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/stoneblock6")
+        (modifier "ROT0"))
+      (position 903 664 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/grey_stone4")
+        (modifier "ROT0"))
+      (position 997 808 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/stoneblock2")
+        (modifier "ROT0"))
+      (position 1136 620 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/misc/stoneblock1")
+        (modifier "ROT0"))
+      (position 1147 748 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/stone1")
+        (modifier "ROT0"))
+      (position 1266 785 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/stone1")
+        (modifier "ROT180"))
+      (position 1270 805 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/grey_stone1")
+        (modifier "ROT0"))
+      (position 1356 847 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/misc/stoneblock6")
+        (modifier "ROT0"))
+      (position 871 600 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 1371 643 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 1452 643 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/rivet")
+        (modifier "ROT0"))
+      (position 875 636 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/rivet")
+        (modifier "ROT0"))
+      (position 907 604 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/rivet")
+        (modifier "ROT0"))
+      (position 939 540 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/rivet")
+        (modifier "ROT0"))
+      (position 907 572 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/stoneblock2")
+        (modifier "ROT0"))
+      (position 1124 684 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/grey_stone3")
+        (modifier "ROT0"))
+      (position 1379 845 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/misc/metalplate_horiz")
+        (modifier "ROT0"))
+      (position 1411 611 0))
+    (liquid 
+      (surface 
+        (image "liquids/water2")
+        (modifier "ROT0"))
+      (position 1823 944 0)
+      (speed 0)
+      (repeat 3))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/pfosten")
+        (modifier "ROT0"))
+      (position 370 863 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/pfosten")
+        (modifier "ROT0"))
+      (position 585 891 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/pfosten")
+        (modifier "ROT0"))
+      (position 799 723 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/pfosten")
+        (modifier "ROT180FLIP"))
+      (position 799 922 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/grey_stone1")
+        (modifier "ROT0"))
+      (position -34 783 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/misc/pfosten")
+        (modifier "ROT0"))
+      (position 302 642 1))
+    (entrance 
+      (position 667 855 110)
+      (owner-id 0)
+      (direction "right")
+      (release-rate 150))
+    (entrance 
+      (position 667 855 110)
+      (owner-id 1)
+      (direction "left")
+      (release-rate 150))))
+
+;; EOF ;;

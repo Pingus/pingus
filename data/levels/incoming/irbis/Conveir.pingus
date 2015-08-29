@@ -1,0 +1,1411 @@
+(pingus-level 
+  (version 3)
+  (head 
+    (license "GPLv3+")
+    (levelname "")
+    (description "")
+    (author "Garlik")
+    (number-of-pingus 51)
+    (number-to-save 51)
+    (time -1)
+    (music "City-1.it")
+    (actions 
+      (basher 1000)
+      (blocker 1000)
+      (bomber 1000)
+      (bridger 1000)
+      (climber 1000)
+      (digger 1000)
+      (floater 1000)
+      (jumper 1000)
+      (miner 1000)
+      (slider 1000))
+    (levelsize 2000 600))
+  (objects 
+    (surface-background 
+      (surface 
+        (image "textures/enchantedjungle")
+        (modifier "ROT0"))
+      (position -333 114 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x -1)
+      (scroll-y -0.5)
+      (para-x 0.5)
+      (para-y 0.5))
+    (hotspot 
+      (surface 
+        (image "entrances/wood_bottom")
+        (modifier "ROT0"))
+      (position 1221 287 -100)
+      (speed 0)
+      (parallax 0))
+    (conveyorbelt 
+      (position 1199 389 -1)
+      (speed 2)
+      (repeat 50))
+    (teleporter 
+      (position 478 373 -1)
+      (target-id "id4"))
+    (teleporter 
+      (position 225 358 -1)
+      (target-id "id3"))
+    (teleporter 
+      (position 445 164 -1)
+      (target-id "id3"))
+    (teleporter 
+      (position 371 532 -1)
+      (target-id "id5"))
+    (teleporter 
+      (position 539 583 -1)
+      (target-id "id6"))
+    (exit 
+      (surface 
+        (image "exits/stone")
+        (modifier "ROT0"))
+      (position 1525 389 -1)
+      (owner-id 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 601 137 0))
+    (conveyorbelt 
+      (position 1199 389 0)
+      (speed 2)
+      (repeat 50))
+    (conveyorbelt 
+      (position 1199 389 0)
+      (speed 2)
+      (repeat 50))
+    (conveyorbelt 
+      (position 1199 389 0)
+      (speed 2)
+      (repeat 50))
+    (conveyorbelt 
+      (position 1199 389 0)
+      (speed 2)
+      (repeat 50))
+    (conveyorbelt 
+      (position 1199 389 0)
+      (speed 2)
+      (repeat 50))
+    (conveyorbelt 
+      (position 1199 389 0)
+      (speed 2)
+      (repeat 50))
+    (conveyorbelt 
+      (position 1199 389 0)
+      (speed 2)
+      (repeat 50))
+    (conveyorbelt 
+      (position 1199 389 0)
+      (speed 2)
+      (repeat 50))
+    (conveyorbelt 
+      (position 1199 389 0)
+      (speed 2)
+      (repeat 50))
+    (conveyorbelt 
+      (position 1199 389 0)
+      (speed 2)
+      (repeat 50))
+    (conveyorbelt 
+      (position 1199 389 0)
+      (speed 2)
+      (repeat 50))
+    (conveyorbelt 
+      (position 1199 389 0)
+      (speed 2)
+      (repeat 50))
+    (conveyorbelt 
+      (position 1199 389 0)
+      (speed 2)
+      (repeat 50))
+    (conveyorbelt 
+      (position 1199 389 0)
+      (speed 2)
+      (repeat 50))
+    (conveyorbelt 
+      (position 1199 389 0)
+      (speed 2)
+      (repeat 50))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri1")
+        (modifier "ROT0"))
+      (position 1198 389 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri3")
+        (modifier "ROT0"))
+      (position 1396 389 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri5")
+        (modifier "ROT0"))
+      (position 1594 389 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri1")
+        (modifier "ROT0"))
+      (position 1693 389 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri5")
+        (modifier "ROT0"))
+      (position 1891 389 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 1154 292 0))
+    (teleporter 
+      (position 1463 397 0)
+      (target-id "id1"))
+    (teleporter-target 
+      (position 1425 353 0)
+      (id "id2"))
+    (teleporter-target 
+      (position 1625 348 0)
+      (id "id1"))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 1990 307 0))
+    (teleporter 
+      (position 1587 397 0)
+      (target-id "id2"))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/space/grid2")
+        (modifier "ROT0FLIP"))
+      (position 1198 338 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/space/grid2")
+        (modifier "ROT0"))
+      (position 1939 338 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone2")
+        (modifier "ROT0"))
+      (position 274 141 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone3")
+        (modifier "ROT0"))
+      (position 338 141 0))
+    (teleporter-target 
+      (position 338 272 0)
+      (id "id3"))
+    (teleporter-target 
+      (position 153 212 0)
+      (id "id4"))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch6")
+        (modifier "ROT0"))
+      (position 241 -128 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch3")
+        (modifier "ROT0"))
+      (position 300 -145 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone4")
+        (modifier "ROT0"))
+      (position 402 141 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone2")
+        (modifier "ROT0"))
+      (position 392 345 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone3")
+        (modifier "ROT0"))
+      (position 392 409 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone4")
+        (modifier "ROT0"))
+      (position 266 345 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone5")
+        (modifier "ROT0"))
+      (position 266 409 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone3")
+        (modifier "ROT0"))
+      (position 456 360 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone3")
+        (modifier "ROT0"))
+      (position 202 345 0))
+    (teleporter-target 
+      (position 586 239 0)
+      (id "id5"))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone3")
+        (modifier "ROT0"))
+      (position 334 519 0))
+    (teleporter-target 
+      (position 1144 66 0)
+      (id "id6"))
+    (group 
+      (objects 
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 343 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 343 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 343 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 343 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 343 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 343 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 343 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 343 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 343 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 343 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 343 0)
+              (speed 2)
+              (repeat 20))))
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 329 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 329 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 329 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 329 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 329 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 329 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 329 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 329 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 329 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 329 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 329 0)
+              (speed 2)
+              (repeat 20))))
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 315 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 315 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 315 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 315 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 315 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 315 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 315 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 315 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 315 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 315 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 315 0)
+              (speed 2)
+              (repeat 20))))
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 301 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 301 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 301 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 301 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 301 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 301 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 301 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 301 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 301 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 301 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 301 0)
+              (speed 2)
+              (repeat 20))))
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 287 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 287 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 287 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 287 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 287 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 287 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 287 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 287 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 287 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 287 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 287 0)
+              (speed 2)
+              (repeat 20))))))
+    (group 
+      (objects 
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 413 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 413 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 413 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 413 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 413 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 413 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 413 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 413 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 413 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 413 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 413 0)
+              (speed 2)
+              (repeat 20))))
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 399 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 399 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 399 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 399 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 399 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 399 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 399 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 399 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 399 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 399 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 399 0)
+              (speed 2)
+              (repeat 20))))
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 385 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 385 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 385 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 385 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 385 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 385 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 385 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 385 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 385 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 385 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 385 0)
+              (speed 2)
+              (repeat 20))))
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 371 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 371 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 371 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 371 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 371 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 371 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 371 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 371 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 371 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 371 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 371 0)
+              (speed 2)
+              (repeat 20))))
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 357 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 357 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 357 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 357 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 357 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 357 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 357 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 357 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 357 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 357 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 357 0)
+              (speed 2)
+              (repeat 20))))))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/forest/ground3")
+        (modifier "ROT0"))
+      (position 656 202 0))
+    (group 
+      (objects 
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 483 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 483 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 483 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 483 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 483 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 483 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 483 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 483 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 483 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 483 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 483 0)
+              (speed 2)
+              (repeat 20))))
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 469 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 469 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 469 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 469 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 469 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 469 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 469 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 469 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 469 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 469 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 469 0)
+              (speed 2)
+              (repeat 20))))
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 455 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 455 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 455 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 455 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 455 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 455 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 455 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 455 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 455 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 455 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 455 0)
+              (speed 2)
+              (repeat 20))))
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 441 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 441 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 441 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 441 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 441 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 441 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 441 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 441 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 441 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 441 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 441 0)
+              (speed 2)
+              (repeat 20))))
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 427 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 427 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 427 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 427 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 427 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 427 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 427 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 427 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 427 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 427 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 427 0)
+              (speed 2)
+              (repeat 20))))))
+    (group 
+      (objects 
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 553 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 553 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 553 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 553 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 553 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 553 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 553 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 553 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 553 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 553 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 553 0)
+              (speed 2)
+              (repeat 20))))
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 539 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 539 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 539 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 539 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 539 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 539 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 539 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 539 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 539 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 539 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 539 0)
+              (speed 2)
+              (repeat 20))))
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 525 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 525 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 525 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 525 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 525 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 525 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 525 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 525 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 525 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 525 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 525 0)
+              (speed 2)
+              (repeat 20))))
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 511 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 511 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 511 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 511 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 511 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 511 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 511 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 511 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 511 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 511 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 511 0)
+              (speed 2)
+              (repeat 20))))
+        (group 
+          (objects 
+            (conveyorbelt 
+              (position 683 497 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 497 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 497 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 497 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 497 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 497 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 497 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 497 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 497 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 497 0)
+              (speed 2)
+              (repeat 20))
+            (conveyorbelt 
+              (position 683 497 0)
+              (speed 2)
+              (repeat 20))))))
+    (exit 
+      (surface 
+        (image "exits/stone")
+        (modifier "ROT0"))
+      (position 1250 567 0)
+      (owner-id 1))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/joint2")
+        (modifier "ROT0"))
+      (position 1014 121 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/joint2")
+        (modifier "ROT0"))
+      (position 601 121 0))
+    (exit 
+      (surface 
+        (image "exits/stone")
+        (modifier "ROT0"))
+      (position 689 85 0)
+      (owner-id 2))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri1")
+        (modifier "ROT0"))
+      (position 1096 567 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/forest/ground3")
+        (modifier "ROT0"))
+      (position 662 377 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/ground/forest/ground3")
+        (modifier "ROT0"))
+      (position 656 202 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/ground/forest/ground3")
+        (modifier "ROT0"))
+      (position 662 377 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/forest/ground3")
+        (modifier "ROT0"))
+      (position 815 378 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/forest/ground3")
+        (modifier "ROT0"))
+      (position 809 199 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/ground/forest/ground3")
+        (modifier "ROT0"))
+      (position 815 378 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/ground/forest/ground3")
+        (modifier "ROT0"))
+      (position 809 199 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri5")
+        (modifier "ROT0"))
+      (position 799 567 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri2")
+        (modifier "ROT0"))
+      (position 898 567 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 1014 415 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 1014 276 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/joint2")
+        (modifier "ROT0"))
+      (position 1014 399 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 1014 137 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/joint2")
+        (modifier "ROT0"))
+      (position 1014 260 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri2")
+        (modifier "ROT0"))
+      (position 898 85 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri5")
+        (modifier "ROT0"))
+      (position 898 23 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 601 415 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri2")
+        (modifier "ROT0"))
+      (position 601 567 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/greybri2")
+        (modifier "ROT0"))
+      (position 601 85 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 689 570 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 601 275 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/joint2")
+        (modifier "ROT0"))
+      (position 601 260 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/joint2")
+        (modifier "ROT0"))
+      (position 601 399 0))
+    (hotspot 
+      (surface 
+        (image "entrances/wood_top")
+        (modifier "ROT0"))
+      (position 1221 287 100)
+      (speed 0)
+      (parallax 0))
+    (entrance 
+      (position 1270 325 110)
+      (owner-id 0)
+      (direction "right")
+      (release-rate 1))
+    (entrance 
+      (position 360 13 110)
+      (owner-id 1)
+      (direction "left")
+      (release-rate 1000))
+    (entrance 
+      (position 741 565 110)
+      (owner-id 2)
+      (direction "right")
+      (release-rate 1))))
+
+;; EOF ;;
