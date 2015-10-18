@@ -18,7 +18,6 @@
 
 #include "engine/display/display.hpp"
 #include "engine/screen/screen_manager.hpp"
-#include "lisp/parser.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/options.hpp"
 #include "tinygettext/dictionary_manager.hpp"

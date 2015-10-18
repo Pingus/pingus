@@ -18,7 +18,6 @@
 
 #include <sstream>
 
-#include "lisp/parser.hpp"
 #include "util/log.hpp"
 #include "util/file_reader.hpp"
 #include "util/file_writer.hpp"

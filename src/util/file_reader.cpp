@@ -18,8 +18,8 @@
 
 #include <fstream>
 #include <json/reader.h>
+#include <sexp/parser.hpp>
 
-#include "lisp/parser.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "util/file_reader_impl.hpp"
 #include "util/pathname.hpp"
@@ -321,14 +321,14 @@ FileReader::parse(std::istream& stream)
   }
   else
   {
-    std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(stream, "<stream>");
-    if (sexpr)
+    try
     {
-      return ReaderObject(std::make_shared<SExprReaderObjectImpl>(sexpr->get_list_elem(0)));
+      auto sx = sexp::Parser::from_stream(stream);
+      return ReaderObject(std::make_shared<SExprReaderObjectImpl>(std::move(sx)));
     }
-    else
+    catch(std::exception const& err)
     {
-      log_error("sexpr parse error");
+      log_error("sexp parse error: %1%", err.what());
       return ReaderObject();
     }
   }

@@ -17,38 +17,39 @@
 #ifndef HEADER_PINGUS_UTIL_SEXPR_FILE_READER_HPP
 #define HEADER_PINGUS_UTIL_SEXPR_FILE_READER_HPP
 
-#include "lisp/lisp.hpp"
+#include <sexp/value.hpp>
+
 #include "util/file_reader_impl.hpp"
 
 class SExprReaderObjectImpl : public ReaderObjectImpl
 {
 public:
-  SExprReaderObjectImpl(std::shared_ptr<lisp::Lisp> sexpr);
+  SExprReaderObjectImpl(sexp::Value const& sx);
   virtual ~SExprReaderObjectImpl();
 
   std::string get_name() const override;
   ReaderMapping get_mapping() const override;
 
 private:
-  std::shared_ptr<lisp::Lisp> m_sexpr;
+  sexp::Value m_sx;
 };
 
 class SExprReaderCollectionImpl : public ReaderCollectionImpl
 {
 public:
-  SExprReaderCollectionImpl(std::shared_ptr<lisp::Lisp> sexpr);
+  SExprReaderCollectionImpl(sexp::Value const& m_sx);
   virtual ~SExprReaderCollectionImpl();
 
   std::vector<ReaderObject> get_objects() const override;
 
 private:
-  std::shared_ptr<lisp::Lisp> m_sexpr;
+  sexp::Value m_sx;
 };
 
 class SExprReaderMappingImpl : public ReaderMappingImpl
 {
 public:
-  SExprReaderMappingImpl(std::shared_ptr<lisp::Lisp> sexpr);
+  SExprReaderMappingImpl(sexp::Value const& m_sx);
   virtual ~SExprReaderMappingImpl();
 
   std::vector<std::string> get_keys() const override;
@@ -70,11 +71,11 @@ public:
   bool read_object(const char* key, ReaderObject&) const override;
 
 private:
-  std::shared_ptr<lisp::Lisp> get_subsection_item(const char* name) const;
-  std::shared_ptr<lisp::Lisp> get_subsection(const char* name) const;
+  sexp::Value const* get_subsection_item(const char* name) const;
+  sexp::Value const* get_subsection(const char* name) const;
 
 private:
-  std::shared_ptr<lisp::Lisp> m_sexpr;
+  sexp::Value m_sx;
 };
 
 #endif

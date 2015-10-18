@@ -19,7 +19,6 @@
 #include <algorithm>
 
 #include "engine/display/sprite_description.hpp"
-#include "lisp/parser.hpp"
 #include "pingus/globals.hpp"
 #include "util/log.hpp"
 #include "util/string_util.hpp"

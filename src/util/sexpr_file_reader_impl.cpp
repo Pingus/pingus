@@ -16,6 +16,9 @@
 
 #include "util/sexpr_file_reader_impl.hpp"
 
+#include <sexp/util.hpp>
+#include <sexp/io.hpp>
+
 #include "math/color.hpp"
 #include "math/rect.hpp"
 #include "math/vector3f.hpp"
@@ -25,8 +28,8 @@
 #include "util/raise_exception.hpp"
 #include "util/log.hpp"
 
-SExprReaderObjectImpl::SExprReaderObjectImpl(std::shared_ptr<lisp::Lisp> sexpr) :
-  m_sexpr(sexpr)
+SExprReaderObjectImpl::SExprReaderObjectImpl(sexp::Value const& sx) :
+  m_sx(sx) // FIXME: all this copying is unnecessary
 {
   // Expects data in the format:
   // (objectname
@@ -41,26 +44,26 @@ SExprReaderObjectImpl::~SExprReaderObjectImpl()
 std::string
 SExprReaderObjectImpl::get_name() const
 {
-  if (m_sexpr->get_list_size() < 1)
+  if (sexp::list_length(m_sx) < 1)
   {
     raise_exception(std::runtime_error, "invalid syntax");
     return {};
   }
   else
   {
-    return m_sexpr->get_list_elem(0)->get_symbol();
+    return m_sx.get_car().as_string();
   }
 }
 
 ReaderMapping
 SExprReaderObjectImpl::get_mapping() const
 {
-  return ReaderMapping(std::make_shared<SExprReaderMappingImpl>(m_sexpr));
+  return ReaderMapping(std::make_shared<SExprReaderMappingImpl>(m_sx.get_cdr()));
 }
 
 
-SExprReaderCollectionImpl::SExprReaderCollectionImpl(std::shared_ptr<lisp::Lisp> sexpr) :
-  m_sexpr(sexpr)
+SExprReaderCollectionImpl::SExprReaderCollectionImpl(sexp::Value const& sx) :
+  m_sx(sx)
 {
 }
 
@@ -72,19 +75,18 @@ std::vector<ReaderObject>
 SExprReaderCollectionImpl::get_objects() const
 {
   std::vector<ReaderObject> lst;
-  for(size_t i = 1; i < m_sexpr->get_list_size(); ++i)
+  for(auto const& cur : sexp::ListAdapter(m_sx))
   {
-    lst.push_back(ReaderObject(std::make_shared<SExprReaderObjectImpl>(m_sexpr->get_list_elem(i))));
+    lst.push_back(ReaderObject(std::make_shared<SExprReaderObjectImpl>(cur)));
   }
   return lst;
 }
 
 
-SExprReaderMappingImpl::SExprReaderMappingImpl(std::shared_ptr<lisp::Lisp> sexpr) :
-  m_sexpr(sexpr)
+SExprReaderMappingImpl::SExprReaderMappingImpl(sexp::Value const& sx) :
+  m_sx(sx)
 {
-  assert(m_sexpr->get_type() == lisp::Lisp::TYPE_LIST &&
-         m_sexpr->get_list_size() >= 1);
+  assert(sexp::is_list(m_sx) && sexp::list_length(m_sx) >= 1);
   // Expects data in this format:
   // (objectname
   //   (property1 45)
@@ -101,10 +103,10 @@ SExprReaderMappingImpl::get_keys() const
 {
   std::vector<std::string> lst;
 
-  for(size_t i = 1; i < m_sexpr->get_list_size(); ++i)
+  for(auto const& cur : sexp::ListAdapter(m_sx))
   {
-    std::shared_ptr<lisp::Lisp> sub = m_sexpr->get_list_elem(i);
-    lst.push_back(sub->get_list_elem(0)->get_symbol());
+    // assert if (cur.is_cons())
+    lst.push_back(cur.get_car().as_string());
   }
 
   return lst;
@@ -113,10 +115,10 @@ SExprReaderMappingImpl::get_keys() const
 bool
 SExprReaderMappingImpl::read_int(const char* key, int& value) const
 {
-  std::shared_ptr<lisp::Lisp> item = get_subsection_item(key);
-  if (item && item->get_type() == lisp::Lisp::TYPE_INT)
+  sexp::Value const* item = get_subsection_item(key);
+  if (item && item->is_integer())
   {
-    value = item->get_int();
+    value = item->as_int();
     return true;
   }
   else
@@ -128,17 +130,17 @@ SExprReaderMappingImpl::read_int(const char* key, int& value) const
 bool
 SExprReaderMappingImpl::read_float(const char* key, float& value) const
 {
-  std::shared_ptr<lisp::Lisp> item = get_subsection_item(key);
+  sexp::Value const* item = get_subsection_item(key);
   if (item)
   {
-    if (item->get_type() == lisp::Lisp::TYPE_FLOAT)
+    if (item->is_real())
     {
-      value = item->get_float();
+      value = item->as_float();
       return true;
     }
-    else if (item->get_type() == lisp::Lisp::TYPE_INT)
+    else if (item->is_integer())
     {
-      value = static_cast<float>(item->get_int());
+      value = static_cast<float>(item->as_int());
       return true;
     }
     else
@@ -155,15 +157,15 @@ SExprReaderMappingImpl::read_float(const char* key, float& value) const
 bool
 SExprReaderMappingImpl::read_bool(const char* key, bool& value) const
 {
-  std::shared_ptr<lisp::Lisp> item = get_subsection_item(key);
-  if (item && item->get_type() == lisp::Lisp::TYPE_BOOL)
+  sexp::Value const* item = get_subsection_item(key);
+  if (item && item->is_boolean())
   {
-    value = item->get_bool();
+    value = item->as_bool();
     return true;
   }
-  else if (item && item->get_type() == lisp::Lisp::TYPE_INT)
+  else if (item && item->is_integer())
   {
-    value = item->get_int();
+    value = item->as_int();
     return true;
   }
   else
@@ -175,20 +177,19 @@ SExprReaderMappingImpl::read_bool(const char* key, bool& value) const
 bool
 SExprReaderMappingImpl::read_string(const char* key, std::string& value) const
 {
-  std::shared_ptr<lisp::Lisp> sub = get_subsection(key);
+  sexp::Value const* sub = get_subsection(key);
   if (sub)
   {
     value = "";
-    for(size_t i = 1; i < sub->get_list_size(); ++i)
+    for(auto const& item : sexp::ListAdapter(*sub))
     {
-      std::shared_ptr<lisp::Lisp> item = sub->get_list_elem(i);
-      if (item->get_type() == lisp::Lisp::TYPE_STRING)
+      if (item.is_string())
       {
-        value += item->get_string();
+        value += item.as_string();
       }
-      else if (item->get_type() == lisp::Lisp::TYPE_SYMBOL)
+      else if (item.is_symbol())
       {
-        value += item->get_symbol();
+        value += item.as_string();
       }
     }
     return true;
@@ -202,12 +203,12 @@ SExprReaderMappingImpl::read_string(const char* key, std::string& value) const
 bool
 SExprReaderMappingImpl::read_vector(const char* key, Vector3f& value) const
 {
-  std::shared_ptr<lisp::Lisp> sub = get_subsection(key);
-  if (sub && sub->get_list_size() == 4)
+  sexp::Value const* sub = get_subsection(key);
+  if (sub && sexp::list_length(*sub) == 3)
   {
-    value = Vector3f(sub->get_list_elem(1)->get_float(),
-                     sub->get_list_elem(2)->get_float(),
-                     sub->get_list_elem(3)->get_float());
+    value = Vector3f(sexp::list_ref(*sub, 0).as_float(),
+                     sexp::list_ref(*sub, 1).as_float(),
+                     sexp::list_ref(*sub, 2).as_float());
     return true;
   }
   else
@@ -219,17 +220,16 @@ SExprReaderMappingImpl::read_vector(const char* key, Vector3f& value) const
 bool
 SExprReaderMappingImpl::read_vectors(const char* key, std::vector<Vector3f>& values) const
 {
-  std::shared_ptr<lisp::Lisp> sub_lst = get_subsection(key);
+  sexp::Value const* sub_lst = get_subsection(key);
   if (sub_lst)
   {
-    for(size_t i = 1; i < sub_lst->get_list_size(); ++i)
+    for(auto const& sub : sexp::ListAdapter(*sub_lst))
     {
-      auto sub = sub_lst->get_list_elem(i);
-      if (sub && sub->get_list_size() == 3)
+      if (sexp::list_length(sub) == 3)
       {
-        values.emplace_back(sub->get_list_elem(0)->get_float(),
-                            sub->get_list_elem(1)->get_float(),
-                            sub->get_list_elem(2)->get_float());
+        values.emplace_back(sexp::list_ref(sub, 0).as_float(),
+                            sexp::list_ref(sub, 1).as_float(),
+                            sexp::list_ref(sub, 2).as_float());
       }
     }
     return true;
@@ -243,11 +243,11 @@ SExprReaderMappingImpl::read_vectors(const char* key, std::vector<Vector3f>& val
 bool
 SExprReaderMappingImpl::read_size(const char* key, Size& value) const
 {
-  std::shared_ptr<lisp::Lisp> sub = get_subsection(key);
-  if (sub && sub->get_list_size() == 3)
+  sexp::Value const* sub = get_subsection(key);
+  if (sub && sexp::list_length(*sub) == 2)
   {
-    value.width  = sub->get_list_elem(1)->get_int();
-    value.height = sub->get_list_elem(2)->get_int();
+    value.width  = sexp::list_ref(*sub, 0).as_int();
+    value.height = sexp::list_ref(*sub, 1).as_int();
     return true;
   }
   else
@@ -259,11 +259,11 @@ SExprReaderMappingImpl::read_size(const char* key, Size& value) const
 bool
 SExprReaderMappingImpl::read_vector2i(const char* key, Vector2i& value) const
 {
-  std::shared_ptr<lisp::Lisp> sub = get_subsection(key);
-  if (sub && sub->get_list_size() == 3)
+  sexp::Value const* sub = get_subsection(key);
+  if (sub && sexp::list_length(*sub) == 2)
   {
-    value.x = sub->get_list_elem(1)->get_int();
-    value.y = sub->get_list_elem(2)->get_int();
+    value.x = sexp::list_ref(*sub, 0).as_int();
+    value.y = sexp::list_ref(*sub, 1).as_int();
     return true;
   }
   else
@@ -275,13 +275,13 @@ SExprReaderMappingImpl::read_vector2i(const char* key, Vector2i& value) const
 bool
 SExprReaderMappingImpl::read_rect(const char* key, Rect& rect) const
 {
-  std::shared_ptr<lisp::Lisp> sub = get_subsection(key);
-  if (sub && sub->get_list_size() == 5)
+  sexp::Value const* sub = get_subsection(key);
+  if (sub && sexp::list_length(*sub) == 4)
   {
-    rect.left   = sub->get_list_elem(1)->get_int();
-    rect.top    = sub->get_list_elem(2)->get_int();
-    rect.right  = sub->get_list_elem(3)->get_int();
-    rect.bottom = sub->get_list_elem(4)->get_int();
+    rect.left   = sexp::list_ref(*sub, 0).as_int();
+    rect.top    = sexp::list_ref(*sub, 1).as_int();
+    rect.right  = sexp::list_ref(*sub, 2).as_int();
+    rect.bottom = sexp::list_ref(*sub, 3).as_int();
     return true;
   }
   else
@@ -293,13 +293,13 @@ SExprReaderMappingImpl::read_rect(const char* key, Rect& rect) const
 bool
 SExprReaderMappingImpl::read_colorf(const char* key, Color& value) const
 {
-  std::shared_ptr<lisp::Lisp> sub = get_subsection(key);
-  if (sub && sub->get_list_size() == 5)
+  sexp::Value const* sub = get_subsection(key);
+  if (sub && sexp::list_length(*sub) == 4)
   {
-    value = Color(static_cast<uint8_t>(sub->get_list_elem(1)->get_float() * 255),
-                  static_cast<uint8_t>(sub->get_list_elem(2)->get_float() * 255),
-                  static_cast<uint8_t>(sub->get_list_elem(3)->get_float() * 255),
-                  static_cast<uint8_t>(sub->get_list_elem(4)->get_float() * 255));
+    value = Color(static_cast<uint8_t>(sexp::list_ref(*sub, 0).as_float() * 255),
+                  static_cast<uint8_t>(sexp::list_ref(*sub, 1).as_float() * 255),
+                  static_cast<uint8_t>(sexp::list_ref(*sub, 2).as_float() * 255),
+                  static_cast<uint8_t>(sexp::list_ref(*sub, 3).as_float() * 255));
     return true;
   }
   else
@@ -311,13 +311,13 @@ SExprReaderMappingImpl::read_colorf(const char* key, Color& value) const
 bool
 SExprReaderMappingImpl::read_colori(const char* key, Color& value) const
 {
-  std::shared_ptr<lisp::Lisp> sub = get_subsection(key);
-  if (sub && sub->get_list_size() == 5)
+  sexp::Value const* sub = get_subsection(key);
+  if (sub && sexp::list_length(*sub) == 4)
   {
-    value = Color(static_cast<uint8_t>(sub->get_list_elem(1)->get_int()),
-                  static_cast<uint8_t>(sub->get_list_elem(2)->get_int()),
-                  static_cast<uint8_t>(sub->get_list_elem(3)->get_int()),
-                  static_cast<uint8_t>(sub->get_list_elem(4)->get_int()));
+    value = Color(static_cast<uint8_t>(sexp::list_ref(*sub, 0).as_int()),
+                  static_cast<uint8_t>(sexp::list_ref(*sub, 1).as_int()),
+                  static_cast<uint8_t>(sexp::list_ref(*sub, 2).as_int()),
+                  static_cast<uint8_t>(sexp::list_ref(*sub, 3).as_int()));
     return true;
   }
   else
@@ -329,10 +329,10 @@ SExprReaderMappingImpl::read_colori(const char* key, Color& value) const
 bool
 SExprReaderMappingImpl::read_object(const char* key, ReaderObject& value) const
 {
-  std::shared_ptr<lisp::Lisp> cur = get_subsection_item(key);
+  sexp::Value const* cur = get_subsection_item(key);
   if (cur)
   {
-    value = ReaderObject(std::make_shared<SExprReaderObjectImpl>(cur));
+    value = ReaderObject(std::make_shared<SExprReaderObjectImpl>(*cur));
     return true;
   }
   else
@@ -344,10 +344,10 @@ SExprReaderMappingImpl::read_object(const char* key, ReaderObject& value) const
 bool
 SExprReaderMappingImpl::read_collection(const char* key, ReaderCollection& value) const
 {
-  std::shared_ptr<lisp::Lisp> cur = get_subsection(key);
+  sexp::Value const* cur = get_subsection(key);
   if (cur)
   {
-    value = ReaderCollection(std::make_shared<SExprReaderCollectionImpl>(cur));
+    value = ReaderCollection(std::make_shared<SExprReaderCollectionImpl>(*cur));
     return true;
   }
   else
@@ -359,10 +359,10 @@ SExprReaderMappingImpl::read_collection(const char* key, ReaderCollection& value
 bool
 SExprReaderMappingImpl::read_mapping(const char* key, ReaderMapping& value) const
 {
-  std::shared_ptr<lisp::Lisp> cur = get_subsection(key);
+  sexp::Value const* cur = get_subsection(key);
   if (cur)
   {
-    value = ReaderMapping(std::make_shared<SExprReaderMappingImpl>(cur));
+    value = ReaderMapping(std::make_shared<SExprReaderMappingImpl>(*cur));
     return true;
   }
   else
@@ -371,37 +371,37 @@ SExprReaderMappingImpl::read_mapping(const char* key, ReaderMapping& value) cons
   }
 }
 
-std::shared_ptr<lisp::Lisp>
+sexp::Value const*
 SExprReaderMappingImpl::get_subsection_item(const char* key) const
 {
-  std::shared_ptr<lisp::Lisp> sub = get_subsection(key);
-  if (sub && sub->get_list_size() >= 2)
+  sexp::Value const* sub = get_subsection(key);
+  if (sub && sexp::list_length(*sub) >= 1)
   {
-    if (sub->get_list_size() > 2)
+    if (sexp::list_length(*sub) > 1)
     {
       log_error("invalid items in section: %1%", key);
     }
 
-    return sub->get_list_elem(1);
+    return &sub->get_car();
   }
   else
   {
-    return {};
+    return nullptr;
   }
 }
 
-std::shared_ptr<lisp::Lisp>
+sexp::Value const*
 SExprReaderMappingImpl::get_subsection(const char* key) const
 {
-  std::shared_ptr<lisp::Lisp> result;
+  sexp::Value const* result = nullptr;
+
   int count = 0;
-  for(size_t i = 1; i < m_sexpr->get_list_size(); ++i)
+  for(auto const& cur : sexp::ListAdapter(m_sx))
   {
-    auto sexpr = m_sexpr->get_list_elem(i);
-    if (strcmp(sexpr->get_list_elem(0)->get_symbol(), key) == 0)
+    if (cur.get_car().as_string() == key)
     {
       count += 1;
-      result = sexpr;
+      result = &cur.get_cdr();
     }
   }
 
