@@ -14,8 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_UTIL_FILE_READER_HPP
-#define HEADER_PINGUS_UTIL_FILE_READER_HPP
+#ifndef HEADER_PINGUS_UTIL__READER_HPP
+#define HEADER_PINGUS_UTIL__READER_HPP
 
 #include <memory>
 #include <vector>
@@ -110,7 +110,7 @@ private:
   std::shared_ptr<ReaderMappingImpl> m_impl;
 };
 
-class FileReader final
+class Reader final
 {
 public:
   static ReaderObject parse(std::istream& stream);
@@ -122,7 +122,7 @@ public:
   static std::vector<ReaderObject> parse_many(const Pathname& pathname);
 
 private:
-  FileReader() = delete;
+  Reader() = delete;
 };
 
 #endif

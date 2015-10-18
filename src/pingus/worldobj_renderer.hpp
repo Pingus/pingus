@@ -21,7 +21,7 @@
 
 #include "engine/display/surface.hpp"
 #include "pingus/resource.hpp"
-#include "util/file_reader.hpp"
+#include "util/reader.hpp"
 
 class WorldObjRenderer
 {

@@ -14,54 +14,54 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "util/sexpr_file_writer_impl.hpp"
+#include "util/sexpr_writer_impl.hpp"
 
 #include <map>
 
 #include "util/pathname.hpp"
 
-SExprFileWriterImpl::SExprFileWriterImpl(std::ostream& out_) :
+SExprWriterImpl::SExprWriterImpl(std::ostream& out_) :
   out(&out_),
   level(0)
 {
 }
 
-SExprFileWriterImpl::~SExprFileWriterImpl()
+SExprWriterImpl::~SExprWriterImpl()
 {
 }
 
 std::string
-SExprFileWriterImpl::indent()
+SExprWriterImpl::indent()
 {
   return std::string(level*2, ' ');
 }
 
 void
-SExprFileWriterImpl::begin_collection(const char* name)
+SExprWriterImpl::begin_collection(const char* name)
 {
   begin_mapping(name);
 }
 
 void
-SExprFileWriterImpl::end_collection()
+SExprWriterImpl::end_collection()
 {
   end_mapping();
 }
 
 void
-SExprFileWriterImpl::begin_object(const char* type)
+SExprWriterImpl::begin_object(const char* type)
 {
   begin_mapping(type);
 }
 
 void
-SExprFileWriterImpl::end_object()
+SExprWriterImpl::end_object()
 {
   end_mapping();
 }
 
 void
-SExprFileWriterImpl::begin_mapping(const char* name)
+SExprWriterImpl::begin_mapping(const char* name)
 {
   if (level != 0)
     (*out) << std::endl;
@@ -71,7 +71,7 @@ SExprFileWriterImpl::begin_mapping(const char* name)
 }
 
 void
-SExprFileWriterImpl::end_mapping()
+SExprWriterImpl::end_mapping()
 {
   --level;
   (*out) << ")";
@@ -84,19 +84,19 @@ SExprFileWriterImpl::end_mapping()
 }
 
 void
-SExprFileWriterImpl::write_int(const char* name, int value)
+SExprWriterImpl::write_int(const char* name, int value)
 {
   (*out) << "\n" << indent() << "(" << name << " " << value << ")";
 }
 
 void
-SExprFileWriterImpl::write_float(const char* name, float value)
+SExprWriterImpl::write_float(const char* name, float value)
 {
   (*out) << "\n" << indent() << "(" << name << " " << value << ")";
 }
 
 void
-SExprFileWriterImpl::write_colorf(const char* name, const Color& color)
+SExprWriterImpl::write_colorf(const char* name, const Color& color)
 {
   (*out) << "\n" << indent() << "(" << name << " "
          << static_cast<float>(color.r)/255.0f << " "
@@ -106,7 +106,7 @@ SExprFileWriterImpl::write_colorf(const char* name, const Color& color)
 }
 
 void
-SExprFileWriterImpl::write_colori(const char* name, const Color& color)
+SExprWriterImpl::write_colori(const char* name, const Color& color)
 {
   (*out) << "\n" << indent() << "(" << name << " "
          << static_cast<int>(color.r) << " "
@@ -116,13 +116,13 @@ SExprFileWriterImpl::write_colori(const char* name, const Color& color)
 }
 
 void
-SExprFileWriterImpl::write_bool(const char* name, bool value)
+SExprWriterImpl::write_bool(const char* name, bool value)
 {
   (*out) << "\n" << indent() << "(" << name << " " << (value ? "#t" : "#f") << ")";
 }
 
 void
-SExprFileWriterImpl::write_string(const char* name, const std::string& value)
+SExprWriterImpl::write_string(const char* name, const std::string& value)
 {
   // Perform basic XML encoding (turns apostrophes into &apos;, etc.
   std::string new_value = value;
@@ -147,26 +147,26 @@ SExprFileWriterImpl::write_string(const char* name, const std::string& value)
 }
 
 void
-SExprFileWriterImpl::write_vector(const char* name, const Vector3f& value)
+SExprWriterImpl::write_vector(const char* name, const Vector3f& value)
 {
   (*out) << "\n" << indent() << "(" << name << " "
          << value.x << " " << value.y << " " << value.z << ")";
 }
 
 void
-SExprFileWriterImpl::write_size(const char* name, const Size& size)
+SExprWriterImpl::write_size(const char* name, const Size& size)
 {
   (*out) << "\n" << indent() << "(" << name << " " << size.width << " " << size.height << ")";
 }
 
 void
-SExprFileWriterImpl::write_vector2i(const char* name, const Vector2i& v)
+SExprWriterImpl::write_vector2i(const char* name, const Vector2i& v)
 {
   (*out) << "\n" << indent() << "(" << name << " " << v.x << " " << v.y << ")";
 }
 
 void
-SExprFileWriterImpl::write_path(const char* name, const Pathname& path)
+SExprWriterImpl::write_path(const char* name, const Pathname& path)
 {
   write_string(name, path.get_raw_path());
 }

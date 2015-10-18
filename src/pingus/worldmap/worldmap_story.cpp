@@ -22,7 +22,7 @@
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "pingus/string_format.hpp"
-#include "util/file_reader.hpp"
+#include "util/reader.hpp"
 #include "util/raise_exception.hpp"
 
 namespace WorldmapNS {

@@ -14,8 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_UTIL_FILE_READER_IMPL_HPP
-#define HEADER_PINGUS_UTIL_FILE_READER_IMPL_HPP
+#ifndef HEADER_PINGUS_UTIL_READER_IMPL_HPP
+#define HEADER_PINGUS_UTIL_READER_IMPL_HPP
 
 #include <string>
 #include <vector>
@@ -26,7 +26,6 @@ class Size;
 class Vector2i;
 class Vector3f;
 
-class FileReader;
 class ReaderCollection;
 class ReaderMapping;
 class ReaderObject;

@@ -21,9 +21,9 @@
 #include <json/json.h>
 #include <iosfwd>
 
-#include "util/file_writer_impl.hpp"
+#include "util/writer_impl.hpp"
 
-class JsonFileWriterImpl final : public FileWriterImpl
+class JsonWriterImpl final : public WriterImpl
 {
 private:
   std::ostream& m_out;
@@ -34,8 +34,8 @@ private:
   std::vector<std::reference_wrapper<Json::Value> > m_stack;
 
 public:
-  JsonFileWriterImpl(std::ostream& out);
-  virtual ~JsonFileWriterImpl();
+  JsonWriterImpl(std::ostream& out);
+  virtual ~JsonWriterImpl();
 
   void begin_collection(const char* name) override;
   void end_collection() override;
@@ -61,8 +61,8 @@ private:
   void flush();
 
 private:
-  JsonFileWriterImpl(const JsonFileWriterImpl&) = delete;
-  JsonFileWriterImpl& operator=(const JsonFileWriterImpl&) = delete;
+  JsonWriterImpl(const JsonWriterImpl&) = delete;
+  JsonWriterImpl& operator=(const JsonWriterImpl&) = delete;
 };
 
 #endif

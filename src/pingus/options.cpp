@@ -19,12 +19,12 @@
 #include <stdexcept>
 
 #include "tinygettext/language.hpp"
-#include "util/file_reader.hpp"
+#include "util/reader.hpp"
 #include "util/log.hpp"
 #include "util/pathname.hpp"
 #include "util/raise_exception.hpp"
-#include "util/file_reader.hpp"
-#include "util/file_writer.hpp"
+#include "util/reader.hpp"
+#include "util/writer.hpp"
 #include "util/system.hpp"
 
 std::string framebuffer_type_to_string(FramebufferType type)
@@ -77,7 +77,7 @@ FramebufferType framebuffer_type_from_string(const std::string& str)
 Options
 Options::from_file(const Pathname& filename)
 {
-  ReaderObject reader = FileReader::parse(filename);
+  ReaderObject reader = Reader::parse(filename);
 
   if (reader.get_name() != "pingus-config")
   {
@@ -181,7 +181,7 @@ void
 Options::save(const Pathname& filename) const
 {
   std::ostringstream out;
-  FileWriter writer(out);
+  Writer writer(out);
 
   writer.begin_object("pingus-config");
 

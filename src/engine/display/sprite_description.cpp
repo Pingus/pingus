@@ -20,7 +20,7 @@
 SpriteDescriptionPtr
 SpriteDescription::from_file(const Pathname& path)
 {
-  ReaderObject reader_object = FileReader::parse(path);
+  ReaderObject reader_object = Reader::parse(path);
   ReaderMapping reader = reader_object.get_mapping();
 
   SpriteDescriptionPtr desc(new SpriteDescription);

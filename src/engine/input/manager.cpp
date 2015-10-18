@@ -83,7 +83,7 @@ Manager::create_controller(const Pathname& filename)
 {
   ControllerPtr controller(new Controller(desc));
 
-  ReaderObject reader_object = FileReader::parse(filename);
+  ReaderObject reader_object = Reader::parse(filename);
 
   if (reader_object.get_name() != "pingus-controller")
   {

@@ -121,21 +121,21 @@ int main(int argc, char** argv)
       {
         case Syntax::JSON:
           {
-            auto writer = FileWriter::json(*stream);
+            auto writer = Writer::json(*stream);
             level->save_level(writer);
           }
           break;
 
         case Syntax::FASTJSON:
           {
-            auto writer = FileWriter::fastjson(*stream);
+            auto writer = Writer::fastjson(*stream);
             level->save_level(writer);
           }
           break;
 
         case Syntax::SEXPR:
           {
-            auto writer = FileWriter::sexpr(*stream);
+            auto writer = Writer::sexpr(*stream);
             level->save_level(writer);
           }
           break;

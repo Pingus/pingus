@@ -14,14 +14,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "util/json_file_reader_impl.hpp"
+#include "util/json_reader_impl.hpp"
 
 #include "math/color.hpp"
 #include "math/rect.hpp"
 #include "math/vector3f.hpp"
 #include "pingus/res_descriptor.hpp"
-#include "util/file_reader.hpp"
-#include "util/file_reader_impl.hpp"
+#include "util/reader.hpp"
+#include "util/reader_impl.hpp"
 #include "util/log.hpp"
 
 namespace {

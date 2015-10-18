@@ -14,10 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_UTIL_JSON_FILE_READER_IMPL_HPP
-#define HEADER_PINGUS_UTIL_JSON_FILE_READER_IMPL_HPP
+#ifndef HEADER_PINGUS_UTIL_JSON_READER_IMPL_HPP
+#define HEADER_PINGUS_UTIL_JSON_READER_IMPL_HPP
 
-#include "util/file_reader_impl.hpp"
+#include "util/reader_impl.hpp"
 
 #include <json/value.h>
 

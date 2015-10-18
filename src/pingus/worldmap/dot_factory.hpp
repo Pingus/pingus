@@ -19,7 +19,7 @@
 
 #include <memory>
 
-#include "util/file_reader.hpp"
+#include "util/reader.hpp"
 
 namespace WorldmapNS {
 

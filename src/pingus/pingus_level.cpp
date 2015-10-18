@@ -55,7 +55,7 @@ PingusLevel::load(const std::string& resname,
   impl->checksum = System::checksum(pathname);
 
   impl->resname = resname;
-  ReaderObject reader_object = FileReader::parse(pathname);
+  ReaderObject reader_object = Reader::parse(pathname);
 
   if (reader_object.get_name() != "pingus-level")
   {

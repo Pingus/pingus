@@ -19,7 +19,7 @@
 
 #include <map>
 
-#include "util/file_reader.hpp"
+#include "util/reader.hpp"
 
 class Pathname;
 class PingusLevelImpl;

@@ -22,7 +22,7 @@
 #include "math/origin.hpp"
 #include "math/size.hpp"
 #include "math/vector2i.hpp"
-#include "util/file_reader.hpp"
+#include "util/reader.hpp"
 #include "util/log.hpp"
 #include "util/pathname.hpp"
 

@@ -21,8 +21,8 @@
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "pingus/screens/story_screen.hpp"
-#include "util/file_reader.hpp"
-#include "util/file_reader.hpp"
+#include "util/reader.hpp"
+#include "util/reader.hpp"
 #include "util/log.hpp"
 #include "util/pathname.hpp"
 
@@ -69,7 +69,7 @@ StoryDot::on_click()
 {
   try
   {
-    ReaderObject reader = FileReader::parse(Pathname(m_story, Pathname::DATA_PATH));
+    ReaderObject reader = Reader::parse(Pathname(m_story, Pathname::DATA_PATH));
     ScreenManager::instance()->push_screen(std::make_shared<StoryScreen>(reader.get_mapping(), m_credits));
   }
   catch(const std::exception& err)

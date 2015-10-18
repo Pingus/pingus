@@ -19,8 +19,8 @@
 #include <sstream>
 
 #include "util/log.hpp"
-#include "util/file_reader.hpp"
-#include "util/file_writer.hpp"
+#include "util/reader.hpp"
+#include "util/writer.hpp"
 #include "util/system.hpp"
 #include "util/mem.hpp"
 
@@ -46,7 +46,7 @@ SavegameManager::SavegameManager(const std::string& arg_filename) :
   }
   else
   {
-    ReaderObject reader = FileReader::parse(filename);
+    ReaderObject reader = Reader::parse(filename);
     if (reader.get_name() != "pingus-savegame")
     {
       log_error("%1%: not a 'pingus-savegame' file", filename);
@@ -136,7 +136,7 @@ void
 SavegameManager::flush()
 {
   std::ostringstream out;
-  FileWriter writer(out);
+  Writer writer(out);
 
   writer.begin_object("pingus-savegame");
   writer.begin_collection("levels");

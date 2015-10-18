@@ -17,8 +17,8 @@
 #include "pingus/stat_manager.hpp"
 
 #include "util/log.hpp"
-#include "util/file_reader.hpp"
-#include "util/file_writer.hpp"
+#include "util/reader.hpp"
+#include "util/writer.hpp"
 #include "util/string_util.hpp"
 #include "util/system.hpp"
 
@@ -56,7 +56,7 @@ StatManager::load(const std::string& filename)
     save(filename);
   }
 
-  ReaderObject reader = FileReader::parse(filename);
+  ReaderObject reader = Reader::parse(filename);
   if (reader.get_name() != "pingus-stats")
   {
     std::cerr << "Error: " << filename << ": not a (pingus-stats) file" << std::endl;
@@ -84,7 +84,7 @@ void
 StatManager::save(const std::string& filename)
 {
   std::ostringstream out;
-  FileWriter writer(out);
+  Writer writer(out);
 
   writer.begin_object("pingus-stats");
 

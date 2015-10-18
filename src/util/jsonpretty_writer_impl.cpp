@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "jsonpretty_file_writer_impl.hpp"
+#include "jsonpretty_writer_impl.hpp"
 
 #include <sstream>
 #include <ostream>
@@ -26,7 +26,7 @@
 #include "math/vector3f.hpp"
 #include "util/pathname.hpp"
 
-JsonPrettyFileWriterImpl::JsonPrettyFileWriterImpl(std::ostream& out) :
+JsonPrettyWriterImpl::JsonPrettyWriterImpl(std::ostream& out) :
   m_out(out),
   m_depth(0),
   m_write_seperator( { false } ),
@@ -34,12 +34,12 @@ JsonPrettyFileWriterImpl::JsonPrettyFileWriterImpl(std::ostream& out) :
 {
 }
 
-JsonPrettyFileWriterImpl::~JsonPrettyFileWriterImpl()
+JsonPrettyWriterImpl::~JsonPrettyWriterImpl()
 {
 }
 
 void
-JsonPrettyFileWriterImpl::begin_collection(const char* name)
+JsonPrettyWriterImpl::begin_collection(const char* name)
 {
   assert(m_context.back() == Context::Mapping);
 
@@ -53,7 +53,7 @@ JsonPrettyFileWriterImpl::begin_collection(const char* name)
 }
 
 void
-JsonPrettyFileWriterImpl::end_collection()
+JsonPrettyWriterImpl::end_collection()
 {
   assert(m_context.back() == Context::Collection);
 
@@ -70,7 +70,7 @@ JsonPrettyFileWriterImpl::end_collection()
 }
 
 void
-JsonPrettyFileWriterImpl::begin_object(const char* type)
+JsonPrettyWriterImpl::begin_object(const char* type)
 {
   assert(m_context.back() == Context::Collection);
 
@@ -91,7 +91,7 @@ JsonPrettyFileWriterImpl::begin_object(const char* type)
 }
 
 void
-JsonPrettyFileWriterImpl::end_object()
+JsonPrettyWriterImpl::end_object()
 {
   m_write_seperator.back() = false;
   m_depth -= 1;
@@ -114,7 +114,7 @@ JsonPrettyFileWriterImpl::end_object()
 }
 
 void
-JsonPrettyFileWriterImpl::begin_mapping(const char* name)
+JsonPrettyWriterImpl::begin_mapping(const char* name)
 {
   assert(m_context.back() == Context::Mapping);
 
@@ -128,7 +128,7 @@ JsonPrettyFileWriterImpl::begin_mapping(const char* name)
 }
 
 void
-JsonPrettyFileWriterImpl::end_mapping()
+JsonPrettyWriterImpl::end_mapping()
 {
   assert(m_context.back() == Context::Mapping);
 
@@ -145,7 +145,7 @@ JsonPrettyFileWriterImpl::end_mapping()
 }
 
 void
-JsonPrettyFileWriterImpl::write_int(const char* name, int value)
+JsonPrettyWriterImpl::write_int(const char* name, int value)
 {
   assert(m_context.back() == Context::Mapping);
 
@@ -156,7 +156,7 @@ JsonPrettyFileWriterImpl::write_int(const char* name, int value)
 }
 
 void
-JsonPrettyFileWriterImpl::write_float(const char* name, float value)
+JsonPrettyWriterImpl::write_float(const char* name, float value)
 {
   assert(m_context.back() == Context::Mapping);
 
@@ -167,7 +167,7 @@ JsonPrettyFileWriterImpl::write_float(const char* name, float value)
 }
 
 void
-JsonPrettyFileWriterImpl::write_colorf(const char* name, const Color& value)
+JsonPrettyWriterImpl::write_colorf(const char* name, const Color& value)
 {
   assert(m_context.back() == Context::Mapping);
 
@@ -182,7 +182,7 @@ JsonPrettyFileWriterImpl::write_colorf(const char* name, const Color& value)
 }
 
 void
-JsonPrettyFileWriterImpl::write_colori(const char* name, const Color& value)
+JsonPrettyWriterImpl::write_colori(const char* name, const Color& value)
 {
   assert(m_context.back() == Context::Mapping);
 
@@ -197,7 +197,7 @@ JsonPrettyFileWriterImpl::write_colori(const char* name, const Color& value)
 }
 
 void
-JsonPrettyFileWriterImpl::write_bool(const char* name, bool value)
+JsonPrettyWriterImpl::write_bool(const char* name, bool value)
 {
   assert(m_context.back() == Context::Mapping);
 
@@ -208,7 +208,7 @@ JsonPrettyFileWriterImpl::write_bool(const char* name, bool value)
 }
 
 void
-JsonPrettyFileWriterImpl::write_string(const char* name, const std::string& value)
+JsonPrettyWriterImpl::write_string(const char* name, const std::string& value)
 {
   assert(m_context.back() == Context::Mapping);
 
@@ -220,7 +220,7 @@ JsonPrettyFileWriterImpl::write_string(const char* name, const std::string& valu
 }
 
 void
-JsonPrettyFileWriterImpl::write_vector(const char* name, const Vector3f& value)
+JsonPrettyWriterImpl::write_vector(const char* name, const Vector3f& value)
 {
   assert(m_context.back() == Context::Mapping);
 
@@ -231,7 +231,7 @@ JsonPrettyFileWriterImpl::write_vector(const char* name, const Vector3f& value)
 }
 
 void
-JsonPrettyFileWriterImpl::write_size(const char* name, const Size& value)
+JsonPrettyWriterImpl::write_size(const char* name, const Size& value)
 {
   assert(m_context.back() == Context::Mapping);
 
@@ -242,7 +242,7 @@ JsonPrettyFileWriterImpl::write_size(const char* name, const Size& value)
 }
 
 void
-JsonPrettyFileWriterImpl::write_vector2i(const char* name, const Vector2i& value)
+JsonPrettyWriterImpl::write_vector2i(const char* name, const Vector2i& value)
 {
   assert(m_context.back() == Context::Mapping);
 
@@ -253,7 +253,7 @@ JsonPrettyFileWriterImpl::write_vector2i(const char* name, const Vector2i& value
 }
 
 void
-JsonPrettyFileWriterImpl::write_path(const char* name, const Pathname& value)
+JsonPrettyWriterImpl::write_path(const char* name, const Pathname& value)
 {
   assert(m_context.back() == Context::Mapping);
 
@@ -265,7 +265,7 @@ JsonPrettyFileWriterImpl::write_path(const char* name, const Pathname& value)
 }
 
 void
-JsonPrettyFileWriterImpl::write_indent()
+JsonPrettyWriterImpl::write_indent()
 {
   if (m_write_seperator.back())
   {
@@ -284,20 +284,20 @@ JsonPrettyFileWriterImpl::write_indent()
 }
 
 void
-JsonPrettyFileWriterImpl::write_separator()
+JsonPrettyWriterImpl::write_separator()
 {
   m_write_seperator.back() = true;
 }
 
 void
-JsonPrettyFileWriterImpl::write_quoted_string(const char* str)
+JsonPrettyWriterImpl::write_quoted_string(const char* str)
 {
   // FIXME: obviously evil
   m_out << '"' << str << '"';
 }
 
 void
-JsonPrettyFileWriterImpl::write_quoted_string(const std::string& str)
+JsonPrettyWriterImpl::write_quoted_string(const std::string& str)
 {
   write_quoted_string(str.c_str());
 }

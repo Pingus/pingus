@@ -20,7 +20,7 @@
 #include <map>
 #include <vector>
 
-#include "util/file_reader.hpp"
+#include "util/reader.hpp"
 
 class WorldObj;
 class WorldObjAbstractFactory;

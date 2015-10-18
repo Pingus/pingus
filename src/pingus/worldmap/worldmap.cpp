@@ -26,7 +26,7 @@
 #include "pingus/worldmap/level_dot.hpp"
 #include "pingus/worldmap/pingus.hpp"
 #include "util/log.hpp"
-#include "util/file_writer.hpp"
+#include "util/writer.hpp"
 #include "util/pathname.hpp"
 #include "util/mem.hpp"
 
@@ -168,7 +168,7 @@ Worldmap::on_primary_button_press(int x, int y)
 
   if (globals::developer_mode)
   {
-    FileWriter writer(std::cout);
+    Writer writer(std::cout);
     writer.begin_mapping("leveldot");
     writer.write_string("levelname", "");
     writer.begin_mapping("dot");

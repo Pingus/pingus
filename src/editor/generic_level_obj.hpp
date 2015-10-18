@@ -267,7 +267,7 @@ public:
   void set_height(const int h) { height = h; }
 
   /** Write basic properties to the file for this type */
-  virtual void write_properties(FileWriter &fw);
+  virtual void write_properties(Writer &fw);
 
   /** Call when the sprite needs to be reloaded */
   void refresh_sprite();
@@ -301,7 +301,7 @@ private:
   void load_generic_surface();
 
   /** Write any additional properties to the file for this type */
-  virtual void write_extra_properties(FileWriter& fw) { }
+  virtual void write_extra_properties(Writer& fw) { }
 
   /** Sets a position vector of where the sprite is located based
       on the "translation origin" specified in the sprite file. */

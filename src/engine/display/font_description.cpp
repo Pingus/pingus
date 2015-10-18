@@ -18,7 +18,7 @@
 
 #include <stdexcept>
 
-#include "util/file_reader.hpp"
+#include "util/reader.hpp"
 #include "util/raise_exception.hpp"
 
 GlyphDescription::GlyphDescription() :
@@ -55,7 +55,7 @@ FontDescription::FontDescription(const Pathname& pathname_) :
   char_spacing     = 1.0f;
   vertical_spacing = 1.0f;
 
-  ReaderObject reader_object = FileReader::parse(pathname);
+  ReaderObject reader_object = Reader::parse(pathname);
 
   if (reader_object.get_name() != "pingus-font")
   {

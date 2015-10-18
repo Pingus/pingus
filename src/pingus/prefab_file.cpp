@@ -18,7 +18,7 @@
 
 #include <stdexcept>
 
-#include "util/file_reader.hpp"
+#include "util/reader.hpp"
 #include "util/log.hpp"
 #include "util/raise_exception.hpp"
 #include "util/system.hpp"
@@ -26,7 +26,7 @@
 PrefabFile
 PrefabFile::from_path(const Pathname& filename)
 {
-  ReaderObject reader_object = FileReader::parse(filename);
+  ReaderObject reader_object = Reader::parse(filename);
 
   if (reader_object.get_name() != "pingus-prefab")
   {

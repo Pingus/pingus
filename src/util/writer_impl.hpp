@@ -27,11 +27,11 @@ class Pathname;
 
 /** Interface to write out name/value pairs out of some kind of file or
     structure */
-class FileWriterImpl
+class WriterImpl
 {
 private:
 public:
-  virtual ~FileWriterImpl() {}
+  virtual ~WriterImpl() {}
 
   virtual void begin_collection(const char* name) = 0;
   virtual void end_collection() = 0;

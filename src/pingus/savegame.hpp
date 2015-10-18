@@ -19,9 +19,9 @@
 
 #include <string>
 
-#include "util/file_reader.hpp"
+#include "util/reader.hpp"
 
-class FileWriter;
+class Writer;
 
 /** The Savegame class holds savegame informations for a single
     level */
@@ -53,7 +53,7 @@ public:
   ~Savegame();
 
   void read_sexpr(const ReaderMapping& node);
-  void write_sexpr(FileWriter& xml);
+  void write_sexpr(Writer& xml);
 
   std::string get_filename() const { return filename; }
 

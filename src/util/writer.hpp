@@ -25,20 +25,20 @@ class Vector3f;
 class Size;
 class Color;
 class Pathname;
-class FileWriterImpl;
+class WriterImpl;
 
-class FileWriter final
+class Writer final
 {
 public:
-  static FileWriter json(std::ostream& out);
-  static FileWriter fastjson(std::ostream& out);
-  static FileWriter sexpr(std::ostream& out);
+  static Writer json(std::ostream& out);
+  static Writer fastjson(std::ostream& out);
+  static Writer sexpr(std::ostream& out);
 
 public:
-  FileWriter(std::ostream& out);
-  FileWriter(std::unique_ptr<FileWriterImpl> impl);
-  FileWriter(FileWriter&& other);
-  ~FileWriter();
+  Writer(std::ostream& out);
+  Writer(std::unique_ptr<WriterImpl> impl);
+  Writer(Writer&& other);
+  ~Writer();
 
   /** collections contain an ordered sequence of objects */
   void begin_collection(const char* name);
@@ -72,7 +72,7 @@ public:
   }
 
 private:
-  std::unique_ptr<FileWriterImpl> m_impl;
+  std::unique_ptr<WriterImpl> m_impl;
 };
 
 #endif

@@ -19,7 +19,7 @@
 #include "pingus/prefab_file.hpp"
 #include "editor/level_obj_factory.hpp"
 #include "util/log.hpp"
-#include "util/file_reader.hpp"
+#include "util/reader.hpp"
 
 namespace Editor {
 
@@ -118,7 +118,7 @@ GroupLevelObj::set_overrides(const ReaderMapping& reader)
 }
 
 void
-GroupLevelObj::write_properties(FileWriter& writer)
+GroupLevelObj::write_properties(Writer& writer)
 {
   if (m_name.empty())
   {

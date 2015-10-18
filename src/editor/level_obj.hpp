@@ -23,7 +23,7 @@
 #include "math/rect.hpp"
 #include "math/vector3f.hpp"
 #include "pingus/res_descriptor.hpp"
-#include "util/file_writer.hpp"
+#include "util/writer.hpp"
 
 class DrawingContext;
 
@@ -222,7 +222,7 @@ public:
   bool is_removed() const { return removed; }
 
   /** Write basic properties to the file for this type */
-  virtual void write_properties(FileWriter &fw) = 0;
+  virtual void write_properties(Writer &fw) = 0;
 
   /** Call when the sprite needs to be reloaded */
   virtual void refresh_sprite() = 0;

@@ -278,7 +278,7 @@ GenericLevelObj::get_modifier() const
 
 // Writes the attributes for the file
 void
-GenericLevelObj::write_properties(FileWriter &fw)
+GenericLevelObj::write_properties(Writer &fw)
 {
   fw.begin_object(section_name.c_str());
 

@@ -586,7 +586,7 @@ PingusMain::start_game ()
     }
     else if (StringUtil::has_suffix(cmd_options.rest.get(), ".story"))
     {
-      ReaderObject story_desc = FileReader::parse(Pathname(cmd_options.rest.get(),
+      ReaderObject story_desc = Reader::parse(Pathname(cmd_options.rest.get(),
                                                            Pathname::SYSTEM_PATH));
       screen_manager.push_screen(std::make_shared<StoryScreen>(story_desc.get_mapping()));
     }

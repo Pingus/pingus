@@ -31,7 +31,7 @@ int main(int argc, char** argv)
     }
     else if (filename.has_extension(".story"))
     {
-      ReaderObject reader_object = FileReader::parse(filename);
+      ReaderObject reader_object = Reader::parse(filename);
       ReaderMapping reader = reader_object.get_mapping();
 
       std::string tmp;

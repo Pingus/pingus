@@ -19,7 +19,7 @@
 
 #include "engine/display/sprite.hpp"
 #include "math/vector3f.hpp"
-#include "util/file_reader.hpp"
+#include "util/reader.hpp"
 
 class ReaderMapping;
 class SceneContext;

@@ -21,9 +21,9 @@
 #include <json/json.h>
 #include <iosfwd>
 
-#include "util/file_writer_impl.hpp"
+#include "util/writer_impl.hpp"
 
-class JsonPrettyFileWriterImpl final : public FileWriterImpl
+class JsonPrettyWriterImpl final : public WriterImpl
 {
 private:
   enum class Context { Mapping, Collection };
@@ -34,8 +34,8 @@ private:
   std::vector<Context> m_context;
 
 public:
-  JsonPrettyFileWriterImpl(std::ostream& out);
-  virtual ~JsonPrettyFileWriterImpl();
+  JsonPrettyWriterImpl(std::ostream& out);
+  virtual ~JsonPrettyWriterImpl();
 
   void begin_collection(const char* name) override;
   void end_collection() override;
@@ -64,8 +64,8 @@ private:
   inline void write_quoted_string(const std::string& str);
 
 private:
-  JsonPrettyFileWriterImpl(const JsonPrettyFileWriterImpl&) = delete;
-  JsonPrettyFileWriterImpl& operator=(const JsonPrettyFileWriterImpl&) = delete;
+  JsonPrettyWriterImpl(const JsonPrettyWriterImpl&) = delete;
+  JsonPrettyWriterImpl& operator=(const JsonPrettyWriterImpl&) = delete;
 };
 
 #endif

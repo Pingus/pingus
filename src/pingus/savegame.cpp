@@ -16,7 +16,7 @@
 
 #include "pingus/savegame.hpp"
 
-#include "util/file_writer.hpp"
+#include "util/writer.hpp"
 #include "util/string_util.hpp"
 
 std::string
@@ -86,7 +86,7 @@ Savegame::~Savegame()
 }
 
 void
-Savegame::write_sexpr(FileWriter& writer)
+Savegame::write_sexpr(Writer& writer)
 {
   writer.begin_mapping("level");
   writer.write_string("filename", filename);

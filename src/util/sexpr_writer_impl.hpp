@@ -22,9 +22,9 @@
 #include "math/color.hpp"
 #include "math/size.hpp"
 #include "math/vector3f.hpp"
-#include "util/file_writer_impl.hpp"
+#include "util/writer_impl.hpp"
 
-class SExprFileWriterImpl : public FileWriterImpl
+class SExprWriterImpl : public WriterImpl
 {
 private:
   /** A reference to the output stream */
@@ -33,8 +33,8 @@ private:
   std::string indent();
 
 public:
-  SExprFileWriterImpl(std::ostream& out_);
-  virtual ~SExprFileWriterImpl();
+  SExprWriterImpl(std::ostream& out_);
+  virtual ~SExprWriterImpl();
 
   virtual void begin_collection(const char* name) override;
   virtual void end_collection() override;
@@ -63,8 +63,8 @@ public:
   }
 
 private:
-  SExprFileWriterImpl(const SExprFileWriterImpl&);
-  SExprFileWriterImpl& operator= (const SExprFileWriterImpl&);
+  SExprWriterImpl(const SExprWriterImpl&);
+  SExprWriterImpl& operator= (const SExprWriterImpl&);
 };
 
 #endif

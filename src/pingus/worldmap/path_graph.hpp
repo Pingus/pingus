@@ -24,7 +24,7 @@
 #include "pingus/worldmap/graph.hpp"
 #include "pingus/worldmap/path.hpp"
 #include "pingus/worldmap/pathfinder.hpp"
-#include "util/file_reader.hpp"
+#include "util/reader.hpp"
 
 namespace WorldmapNS {
 

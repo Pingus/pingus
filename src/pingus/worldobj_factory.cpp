@@ -42,7 +42,7 @@
 #include "pingus/worldobjs/teleporter.hpp"
 #include "pingus/worldobjs/teleporter_target.hpp"
 #include "util/log.hpp"
-#include "util/overrride_file_reader.hpp"
+#include "util/overrride_reader.hpp"
 #include "util/mem.hpp"
 
 using namespace WorldObjs;

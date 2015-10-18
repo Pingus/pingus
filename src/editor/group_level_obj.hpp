@@ -212,7 +212,7 @@ public:
   void set_height(const int h) { }
 
   /** Write basic properties to the file for this type */
-  void write_properties(FileWriter &fw);
+  void write_properties(Writer &fw);
 
   /** Call when the sprite needs to be reloaded */
   void refresh_sprite() { }

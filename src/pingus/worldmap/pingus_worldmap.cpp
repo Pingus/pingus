@@ -73,7 +73,7 @@ PingusWorldmap::PingusWorldmap() :
 PingusWorldmap::PingusWorldmap(const Pathname& pathname) :
   impl(new PingusWorldmapImpl())
 {
-  parse_file(FileReader::parse(pathname));
+  parse_file(Reader::parse(pathname));
 }
 
 void
@@ -101,12 +101,12 @@ PingusWorldmap::parse_file(const ReaderObject& reader_object)
 
     if (reader.read_string("intro-story", intro_story))
     {
-      impl->intro_story = FileReader::parse(Pathname(intro_story, Pathname::DATA_PATH));
+      impl->intro_story = Reader::parse(Pathname(intro_story, Pathname::DATA_PATH));
     }
 
     if (reader.read_string("end-story", end_story))
     {
-      impl->end_story = FileReader::parse(Pathname(end_story, Pathname::DATA_PATH));
+      impl->end_story = Reader::parse(Pathname(end_story, Pathname::DATA_PATH));
     }
   }
 }

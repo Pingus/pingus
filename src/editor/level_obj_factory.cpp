@@ -18,7 +18,7 @@
 
 #include "editor/generic_level_obj.hpp"
 #include "editor/group_level_obj.hpp"
-#include "util/file_reader.hpp"
+#include "util/reader.hpp"
 
 namespace Editor {
 

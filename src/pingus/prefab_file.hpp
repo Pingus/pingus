@@ -19,7 +19,7 @@
 
 #include <vector>
 
-#include "util/file_reader.hpp"
+#include "util/reader.hpp"
 #include "util/pathname.hpp"
 
 class PrefabFile

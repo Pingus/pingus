@@ -19,12 +19,12 @@
 #include <fstream>
 
 #include "math/vector3f.hpp"
-#include "util/file_reader.hpp"
+#include "util/reader.hpp"
 
-class FileReaderTest : public ::testing::TestWithParam<std::string>
+class ReaderTest : public ::testing::TestWithParam<std::string>
 {
 public:
-  FileReaderTest() :
+  ReaderTest() :
     doc(),
     body()
   {}
@@ -32,7 +32,7 @@ public:
   void SetUp() override
   {
     std::ifstream stream(GetParam());
-    doc = FileReader::parse(stream);
+    doc = Reader::parse(stream);
     body = doc.get_mapping();
   }
 
@@ -41,26 +41,26 @@ public:
   ReaderMapping body;
 };
 
-TEST_P(FileReaderTest, parse)
+TEST_P(ReaderTest, parse)
 {
   EXPECT_EQ("test-document", doc.get_name());
 }
 
-TEST_P(FileReaderTest, read_int)
+TEST_P(ReaderTest, read_int)
 {
   int intvalue;
   ASSERT_TRUE(body.read_int("intvalue", intvalue));
   EXPECT_EQ(5, intvalue);
 }
 
-TEST_P(FileReaderTest, read_float)
+TEST_P(ReaderTest, read_float)
 {
   float floatvalue;
   ASSERT_TRUE(body.read_float("floatvalue", floatvalue));
   EXPECT_EQ(5.5f, floatvalue);
 }
 
-TEST_P(FileReaderTest, read_vector)
+TEST_P(ReaderTest, read_vector)
 {
   Vector3f v;
   ASSERT_TRUE(body.read_vector("vector", v));
@@ -69,7 +69,7 @@ TEST_P(FileReaderTest, read_vector)
   EXPECT_EQ(3.0f, v.z);
 }
 
-TEST_P(FileReaderTest, read_vectors)
+TEST_P(ReaderTest, read_vectors)
 {
   std::vector<Vector3f> vs;
   ASSERT_TRUE(body.read_vectors("vectors", vs));
@@ -79,7 +79,7 @@ TEST_P(FileReaderTest, read_vectors)
   EXPECT_EQ(Vector3f(7, 8, 9), vs[2]);
 }
 
-TEST_P(FileReaderTest, read_mapping)
+TEST_P(ReaderTest, read_mapping)
 {
   ReaderMapping submap;
   ASSERT_TRUE(body.read_mapping("submap", submap));
@@ -95,7 +95,7 @@ TEST_P(FileReaderTest, read_mapping)
   }
 }
 
-TEST_P(FileReaderTest, read_collection)
+TEST_P(ReaderTest, read_collection)
 {
   ReaderCollection collection;
   ASSERT_TRUE(body.read_collection("collection", collection));
@@ -109,7 +109,7 @@ TEST_P(FileReaderTest, read_collection)
   EXPECT_EQ(std::vector<std::string>({"obj1", "obj2", "obj3"}), result);
 }
 
-TEST_P(FileReaderTest, read_object)
+TEST_P(ReaderTest, read_object)
 {
   ReaderObject object;
   ASSERT_TRUE(body.read_object("object", object));
@@ -123,7 +123,7 @@ TEST_P(FileReaderTest, read_object)
   EXPECT_EQ(7, prop2);
 }
 
-INSTANTIATE_TEST_CASE_P(ParamFileReaderTest, FileReaderTest,
+INSTANTIATE_TEST_CASE_P(ParamReaderTest, ReaderTest,
                         ::testing::Values("tests/sexpr.scm", "tests/json.json"));
 
 /* EOF */

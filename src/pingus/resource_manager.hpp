@@ -23,7 +23,7 @@
 #include <string>
 #include <vector>
 
-class FileReader;
+class Reader;
 class Pathname;
 class SpriteDescription;
 

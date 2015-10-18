@@ -14,17 +14,17 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "util/file_reader.hpp"
+#include "util/reader.hpp"
 
 #include <fstream>
 #include <json/reader.h>
 #include <sexp/parser.hpp>
 
 #include "pingus/res_descriptor.hpp"
-#include "util/file_reader_impl.hpp"
+#include "util/reader_impl.hpp"
 #include "util/pathname.hpp"
-#include "util/sexpr_file_reader_impl.hpp"
-#include "util/json_file_reader_impl.hpp"
+#include "util/sexpr_reader_impl.hpp"
+#include "util/json_reader_impl.hpp"
 #include "util/log.hpp"
 
 ReaderMapping::ReaderMapping(std::shared_ptr<ReaderMappingImpl> impl_) :
@@ -301,7 +301,7 @@ ReaderMapping::get_keys() const
 }
 
 ReaderObject
-FileReader::parse(std::istream& stream)
+Reader::parse(std::istream& stream)
 {
   int c = stream.get();
   stream.unget();
@@ -335,7 +335,7 @@ FileReader::parse(std::istream& stream)
 }
 
 ReaderObject
-FileReader::parse(const std::string& filename)
+Reader::parse(const std::string& filename)
 {
   std::ifstream fin(filename);
   if (!fin)
@@ -349,30 +349,30 @@ FileReader::parse(const std::string& filename)
 }
 
 ReaderObject
-FileReader::parse(const Pathname& pathname)
+Reader::parse(const Pathname& pathname)
 {
   return parse(pathname.get_sys_path());
 }
 
 std::vector<ReaderObject>
-FileReader::parse_many(const Pathname& pathname)
+Reader::parse_many(const Pathname& pathname)
 {
   return {};
 #if 0
   std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(pathname.get_sys_path());
   if (sexpr)
   {
-    std::vector<FileReader> sections;
+    std::vector<Reader> sections;
     for(size_t i = 0; i < sexpr->get_list_size(); ++i)
     {
-      sections.push_back(FileReader(std::make_shared<SExprFileReaderImpl>(sexpr->get_list_elem(i))));
+      sections.push_back(Reader(std::make_shared<SExprReaderImpl>(sexpr->get_list_elem(i))));
     }
 
     return sections;
   }
   else
   {
-    return std::vector<FileReader>();
+    return std::vector<Reader>();
   }
 #endif
 }
