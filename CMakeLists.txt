@@ -58,7 +58,6 @@ file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/engine/screen/*.cpp
   src/engine/sound/*.cpp
   src/engine/system/*.cpp
-  src/lisp/*.cpp
   src/math/*.cpp
   src/pingus/*.cpp
   src/pingus/actions/*.cpp
