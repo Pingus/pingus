@@ -45,6 +45,7 @@ endif()
 include_directories(
   src/
   external/tinygettext/include/
+  external/sexp-cpp/include/
   external/logmich/include/)
 
 file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
@@ -74,6 +75,10 @@ file(GLOB TINYGETTEXT_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   external/tinygettext/src/*.cpp)
 add_library(tinygettext STATIC ${TINYGETTEXT_SOURCES_CXX})
 
+file(GLOB SEXP_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+  external/sexp-cpp/src/*.cpp)
+add_library(sexp STATIC ${SEXP_SOURCES_CXX})
+
 file(GLOB LOGMICH_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   external/logmich/src/*.cpp)
 add_library(logmich STATIC ${LOGMICH_SOURCES_CXX})
@@ -88,6 +93,7 @@ target_compile_definitions(libpingus PUBLIC -DVERSION="0.8.0")
 target_link_libraries(libpingus PUBLIC
   logmich
   tinygettext
+  sexp
   ${Boost_LIBRARIES}
   ${SDL2_LIBRARIES}
   ${SDL2IMAGE_LIBRARIES}
