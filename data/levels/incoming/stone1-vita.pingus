@@ -1,0 +1,97 @@
+(pingus-level
+  (version 3)
+  (head
+    (license "GPLv3+")
+    (levelname "stone1-vita.pingus")
+    (description "none")
+    (author "vita")
+    (number-of-pingus 50)
+    (number-to-save 20)
+    (time -1)
+    (music "")
+    (actions
+      (jumper 50))
+    (levelsize 2000 1000))
+  (objects
+    (surface-background
+      (surface
+        (image "textures/clouds2")
+        (modifier "ROT0"))
+      (position 402 308 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (groundpiece
+      (type "solid")
+      (surface
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT0"))
+      (position 222 177 0))
+    (groundpiece
+      (type "solid")
+      (surface
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT0"))
+      (position 285 179 0))
+    (groundpiece
+      (type "solid")
+      (surface
+        (image "groundpieces/solid/crystal/smallsolid")
+        (modifier "ROT0"))
+      (position 223 149 0))
+    (groundpiece
+      (type "solid")
+      (surface
+        (image "groundpieces/solid/crystal/rectsolid")
+        (modifier "ROT0"))
+      (position 349 178 0))
+    (groundpiece
+      (type "solid")
+      (surface
+        (image "groundpieces/solid/industrial/steel5")
+        (modifier "ROT0"))
+      (position 397 177 0))
+    (groundpiece
+      (type "solid")
+      (surface
+        (image "groundpieces/solid/industrial/steel4")
+        (modifier "ROT0"))
+      (position 711 170 0))
+    (groundpiece
+      (type "solid")
+      (surface
+        (image "groundpieces/solid/industrial/greybri2")
+        (modifier "ROT0"))
+      (position 935 171 0))
+    (exit
+      (surface
+        (image "exits/sortie")
+        (modifier "ROT0"))
+      (position 971 171 0)
+      (owner-id 0))
+    (liquid
+      (surface
+        (image "liquids/slime")
+        (modifier "ROT0"))
+      (position -4 331 0)
+      (speed 0)
+      (repeat 100))
+    (hotspot
+      (surface
+        (image "entrances/snow_back")
+        (modifier "ROT0"))
+      (position 278 67 100)
+      (speed 0)
+      (parallax 0))
+    (entrance
+      (position 324 125 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 150))))
+
+;; EOF ;;
