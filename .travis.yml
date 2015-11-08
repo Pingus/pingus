@@ -58,19 +58,19 @@ before_install:
   - sudo apt-get install -qq libboost-filesystem1.55-dev libboost-signals1.55-dev libboost-system1.55-dev
 
   # manual boost compile
-  #- wget http://downloads.sourceforge.net/project/boost/boost/1.58.0/boost_1_58_0.tar.gz -O - | tar xz
+  #- wget --no-check-certificate http://downloads.sourceforge.net/project/boost/boost/1.58.0/boost_1_58_0.tar.gz -O - | tar xz
   #- (cd boost_1_58_0/ && ./bootstrap.sh --with-libraries=filesystem,signals,system && ./b2 && ./b2 install)
 
   # CMake
-  - wget http://www.cmake.org/files/v3.2/cmake-$CMAKE_VERSION.tar.gz -O - | tar xz
+  - wget --no-check-certificate http://www.cmake.org/files/v3.2/cmake-$CMAKE_VERSION.tar.gz -O - | tar xz
   - (cd cmake-$CMAKE_VERSION && cmake . && make -j3 && sudo make install)
 
   # SDL dependencies
-  - wget http://libsdl.org/release/SDL2-$SDL2_VERSION.tar.gz -O - | tar xz
+  - wget --no-check-certificate http://libsdl.org/release/SDL2-$SDL2_VERSION.tar.gz -O - | tar xz
   - (cd SDL2-$SDL2_VERSION && ./configure --prefix=/usr && make -j3 && sudo make install)
-  - wget http://www.libsdl.org/projects/SDL_image/release/SDL2_image-$SDL2IMAGE_VERSION.tar.gz -O - | tar xz
+  - wget --no-check-certificate http://www.libsdl.org/projects/SDL_image/release/SDL2_image-$SDL2IMAGE_VERSION.tar.gz -O - | tar xz
   - (cd SDL2_image-$SDL2IMAGE_VERSION && ./configure --prefix=/usr && make -j3 && sudo make install)
-  - wget http://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-$SDL2MIXER_VERSION.tar.gz -O - | tar xz
+  - wget --no-check-certificate http://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-$SDL2MIXER_VERSION.tar.gz -O - | tar xz
   - (cd SDL2_mixer-$SDL2MIXER_VERSION && ./configure --prefix=/usr && make -j3 && sudo make install)
 
 script:
