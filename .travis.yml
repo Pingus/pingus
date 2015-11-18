@@ -63,15 +63,15 @@ before_install:
 
   # CMake
   - wget --no-check-certificate http://www.cmake.org/files/v3.2/cmake-$CMAKE_VERSION.tar.gz -O - | tar xz
-  - (cd cmake-$CMAKE_VERSION && cmake . && make -j3 && sudo make install)
+  - (cd cmake-$CMAKE_VERSION && cmake . && make && sudo make install)
 
   # SDL dependencies
   - wget --no-check-certificate http://libsdl.org/release/SDL2-$SDL2_VERSION.tar.gz -O - | tar xz
-  - (cd SDL2-$SDL2_VERSION && ./configure --prefix=/usr && make -j3 && sudo make install)
+  - (cd SDL2-$SDL2_VERSION && ./configure --prefix=/usr && make && sudo make install)
   - wget --no-check-certificate http://www.libsdl.org/projects/SDL_image/release/SDL2_image-$SDL2IMAGE_VERSION.tar.gz -O - | tar xz
-  - (cd SDL2_image-$SDL2IMAGE_VERSION && ./configure --prefix=/usr && make -j3 && sudo make install)
+  - (cd SDL2_image-$SDL2IMAGE_VERSION && ./configure --prefix=/usr && make && sudo make install)
   - wget --no-check-certificate http://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-$SDL2MIXER_VERSION.tar.gz -O - | tar xz
-  - (cd SDL2_mixer-$SDL2MIXER_VERSION && ./configure --prefix=/usr && make -j3 && sudo make install)
+  - (cd SDL2_mixer-$SDL2MIXER_VERSION && ./configure --prefix=/usr && make && sudo make install)
 
 script:
   # Clean from previous Travis build
@@ -80,7 +80,8 @@ script:
   - mkdir "build-$BUILD_TYPE"
   - cd "build-$BUILD_TYPE"
   - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DWARNINGS=ON -DWERROR=ON -DBUILD_TESTS=ON -DBUILD_EXTRA=ON
-  - make VERBOSE=1 -j3
+  - make VERBOSE=1
+  - make VERBOSE=1 install DESTDIR=/tmp/pingus-${BUILD_TYPE}
   - (cd .. && build-${BUILD_TYPE}/test_pingus)
 
 # The branch coverity_scan is used to trigger the start of a coverity
@@ -93,7 +94,7 @@ addons:
       description: "Build submitted via Travis CI"
     notification_email: grumbel@gmail.com
     build_command_prepend: "cmake . && make clean"
-    build_command: "make -j 3"
+    build_command: "make"
     branch_pattern: coverity_scan
 
 # EOF #
