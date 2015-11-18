@@ -17,6 +17,11 @@
 cmake_minimum_required(VERSION 3.0)
 project(pingus VERSION 0.8.0)
 
+option(WARNINGS "Switch on extra warnings" OFF)
+option(WERROR "Turn warnings into errors" OFF)
+option(BUILD_TESTS "Build test cases" OFF)
+option(BUILD_EXTRA "Build extra stuff" OFF)
+
 include(GNUInstallDirs)
 
 find_package(Threads REQUIRED)
