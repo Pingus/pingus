@@ -150,15 +150,15 @@ if(BUILD_TESTS)
 
   # Note: include directories must use the absolute path as otherwise SYSTEM
   # bugs out and cmake uses -I instead of -isystem
-  add_library(gtest STATIC ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/src/gtest-all.cc)
+  add_library(gtest STATIC ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googletest/src/gtest-all.cc)
   target_include_directories(gtest SYSTEM PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/include/
-    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/)
+    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googletest/include/
+    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googletest/)
 
-  add_library(gtest_main STATIC ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/src/gtest_main.cc)
+  add_library(gtest_main STATIC ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googletest/src/gtest_main.cc)
   target_include_directories(gtest_main SYSTEM PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/include/
-    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/)
+    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googletest/include/
+    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googletest/)
 
   file(GLOB TEST_PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     tests/*_test.cpp)
