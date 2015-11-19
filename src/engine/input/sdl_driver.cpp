@@ -51,7 +51,7 @@ SDLDriver::create_keyboard(const ReaderObject& reader_object, Control* parent)
 {
   auto keyboard = util::make_unique<Keyboard>(parent);
   keyboard_binding = keyboard.get();
-  return std::move(keyboard);
+  return keyboard;
 }
 
 std::unique_ptr<Button>
@@ -72,7 +72,7 @@ SDLDriver::create_button(const ReaderObject& reader_object, Control* parent)
       binding.binding = button.get();
       joystick_button_bindings.push_back(binding);
 
-      return std::move(button);
+      return button;
     }
     else
     {
@@ -89,7 +89,7 @@ SDLDriver::create_button(const ReaderObject& reader_object, Control* parent)
     binding.binding = button.get();
     mouse_button_bindings.push_back(binding);
 
-    return std::move(button);
+    return button;
   }
   else if (reader_object.get_name() == "sdl:keyboard-button")
   {
@@ -108,7 +108,7 @@ SDLDriver::create_button(const ReaderObject& reader_object, Control* parent)
         binding.binding = button.get();
         keyboard_button_bindings.push_back(binding);
 
-        return std::move(button);
+        return button;
       }
       else
       {
@@ -147,7 +147,7 @@ SDLDriver::create_axis(const ReaderObject& reader_object, Control* parent)
       binding.binding = axis.get();
       joystick_axis_bindings.push_back(binding);
 
-      return std::move(axis);
+      return axis;
     }
     else
     {
@@ -171,7 +171,7 @@ SDLDriver::create_scroller(const ReaderObject& reader_object, Control* parent)
     binding.binding = scroller.get();
     scroller_bindings.push_back(binding);
 
-    return std::move(scroller);
+    return scroller;
   }
   else
   {
@@ -190,7 +190,7 @@ SDLDriver::create_pointer(const ReaderObject& reader_object, Control* parent)
     binding.binding = pointer.get();
     pointer_bindings.push_back(binding);
 
-    return std::move(pointer);
+    return pointer;
   }
   else
   {
