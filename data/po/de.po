@@ -66,7 +66,7 @@ msgstr ""
 # FIXME Check: Was ist »repeat«?
 #: src/editor/editor_screen.cpp:271
 msgid ""
-"Flip object horizontaly\n"
+"Flip object horizontally\n"
 "Flip object vertically\n"
 "Delete all marked objects\n"
 "Move objects by one pixel\n"
@@ -1695,11 +1695,10 @@ msgstr ""
 msgid "Claustrophobia"
 msgstr "Klaustrophobie"
 
-# FIXME s/unfortunatley/unfortunately/
 #: data/levels/desert/desert5-tflavel.pingus:6
 msgid ""
 "Hidden deep below the pyramid the pingus come across a small underground "
-"room, but unfortunatley a large tree root blocks their path..."
+"room, but unfortunately a large tree root blocks their path..."
 msgstr ""
 "Tief versteckt in der Pyramide entdecken die Pingus einen kleinen "
 "Untergrundraum, aber unglücklicherweise blockiert eine große Baumwurzel ihren "
@@ -1859,7 +1858,7 @@ msgstr "Wenigstens die Experimente sind vorbei ..."
 #: data/levels/mysteryisland/madscientist1-lac.pingus:8
 msgid ""
 "The good news was that the mad scientist had tired of his experiments, the "
-"bad news was that now he was dumping them down a pit. A single floatation "
+"bad news was that now he was dumping them down a pit. A single flotation "
 "device was all the penguins had. Save as many as possible."
 msgstr ""
 "Die gute Nachricht war, dass der verrückte Wissenschaftler keine Lust mehr "
@@ -1882,7 +1881,7 @@ msgstr ""
 "zum Beenden der Bergmann-Fähigkeit benutzt werden."
 
 #: data/levels/mysteryisland/rainy1-lac.pingus:7
-msgid "The Final (and suprisingly easy) Challenge"
+msgid "The Final (and surprisingly easy) Challenge"
 msgstr "Die letzte (und überraschend einfache) Herausforderung"
 
 #: data/levels/mysteryisland/rainy1-lac.pingus:8
@@ -2111,12 +2110,11 @@ msgstr "Wir wissen nicht, wo wir sind, aber wir lassen keinen zurück."
 msgid "Falling down"
 msgstr "Herunterfallen"
 
-# FIXME: s/factories/factory/
 #: data/levels/factorycampaign/factory_campaign1.pingus:6
 msgid ""
 "Pingus intelligence reported that a huge factory located in the subtropical "
 "zone might be a reason of a climate change. They decided to go there and "
-"shut down the factories. This will be a long and dangerous expedition. "
+"shut down the factory. This will be a long and dangerous expedition. "
 "Pingus and you will have to face many difficulties on your way. As the ice "
 "is melting, at first you have to build some bridges and watch out for the "
 "cliff."
@@ -2352,11 +2350,10 @@ msgstr ""
 msgid "The Big Jump"
 msgstr "Der große Sprung"
 
-# FIXME s/or/for/
 #: data/levels/xmas2011/xmas06-grumbel.pingus:6
 msgid ""
 "Going in and out of the abyss with all Pingus isn't an option here, but a "
-"small group preparing the path or the others should get you across."
+"small group preparing the path for the others should get you across."
 msgstr ""
 "Mit allen Pingus in den Abgrund und wieder hinaus zu gehen ist hier keine "
 "Option, aber eine kleine Gruppe, die den Pfad für die anderen vorbereitet, "
@@ -2394,10 +2391,9 @@ msgstr ""
 msgid "The Impossible Bridge"
 msgstr "Die unmögliche Brücke"
 
-# FIXME s/byss/abyss/
 #: data/levels/xmas2011/xmas09-grumbel.pingus:6
 msgid ""
-"Two groups of Pingus separated by a deep byss, joining them by a bridge "
+"Two groups of Pingus separated by a deep abyss, joining them by a bridge "
 "seems impossible, but wise coordination of the two groups and a brave leap "
 "should let you make it to the exit."
 msgstr ""
@@ -3449,7 +3445,7 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ "Objekte um 270 Grad drehen\n"
 
 #~ msgid ""
-#~ "Flip object horizontaly\n"
+#~ "Flip object horizontally\n"
 #~ "Flip object vertically\n"
 #~ "Delete all marked objects\n"
 #~ "Move objects up\n"

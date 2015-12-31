@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Falling down")
-    (description "Pingus intelligence reported that a huge factory located in the subtropical zone might be a reason of a climate change. They decided to go there and shut down the factories. This will be a long and dangerous expedition. Pingus and you will have to face many difficulties on your way. As the ice is melting, at first you have to build some bridges and watch out for the cliff.")
+    (description "Pingus intelligence reported that a huge factory located in the subtropical zone might be a reason of a climate change. They decided to go there and shut down the factory. This will be a long and dangerous expedition. Pingus and you will have to face many difficulties on your way. As the ice is melting, at first you have to build some bridges and watch out for the cliff.")
     (author "Filip")
     (number-of-pingus 10)
     (number-to-save 10)

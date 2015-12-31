@@ -5,7 +5,7 @@
   (version 2)
   (head 
     (levelname "At least the experiments are over...")
-    (description "The good news was that the mad scientist had tired of his experiments, the bad news was that now he was dumping them down a pit. A single floatation device was all the penguins had. Save as many as possible.")
+    (description "The good news was that the mad scientist had tired of his experiments, the bad news was that now he was dumping them down a pit. A single flotation device was all the penguins had. Save as many as possible.")
     (author "lac")
     (number-of-pingus 50)
     (number-to-save 20)

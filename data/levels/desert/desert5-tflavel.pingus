@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Claustrophobia")
-    (description "Hidden deep below the pyramid the pingus come across a small underground room, but unfortunatley a large tree root blocks their path...")
+    (description "Hidden deep below the pyramid the pingus come across a small underground room, but unfortunately a large tree root blocks their path...")
     (author "Tom Flavel <tomflavel@yahoo.co.uk>")
     (number-of-pingus 30)
     (number-to-save 25)

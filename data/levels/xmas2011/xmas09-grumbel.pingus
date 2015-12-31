@@ -3,7 +3,7 @@
   (head
     (license "GPLv3+")
     (levelname "The Impossible Bridge")
-    (description "Two groups of Pingus separated by a deep byss, joining them by a bridge seems impossible, but wise coordination of the two groups and a brave leap should let you make it to the exit.")
+    (description "Two groups of Pingus separated by a deep abyss, joining them by a bridge seems impossible, but wise coordination of the two groups and a brave leap should let you make it to the exit.")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 40)
     (number-to-save 30)

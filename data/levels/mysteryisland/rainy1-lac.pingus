@@ -4,7 +4,7 @@
 (pingus-level 
   (version 2)
   (head 
-    (levelname "The Final (and suprisingly easy) Challenge")
+    (levelname "The Final (and surprisingly easy) Challenge")
     (description "The penguins had reached the end of the island. In the water was a long tree, perfect for the penguin's needs. Their journey was almost over.")
     (author "lac")
     (number-of-pingus 20)

@@ -271,7 +271,7 @@ EditorScreen::draw(DrawingContext& gc)
                     "=, +, -\n");
 
     gc.print_left(Fonts::verdana11, Vector2i(x + 125, y),
-                  _("Flip object horizontaly\n"
+                  _("Flip object horizontally\n"
                     "Flip object vertically\n"
                     "Delete all marked objects\n"
                     "Move objects by one pixel\n"
