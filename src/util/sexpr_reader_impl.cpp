@@ -86,7 +86,13 @@ SExprReaderCollectionImpl::get_objects() const
 SExprReaderMappingImpl::SExprReaderMappingImpl(sexp::Value const& sx) :
   m_sx(sx)
 {
-  assert(sexp::is_list(m_sx) && sexp::list_length(m_sx) >= 1);
+  if (!sexp::is_list(m_sx))
+  {
+    std::ostringstream msg;
+    msg << "SExprReaderMapping s-expression must be a list: " << sx;
+    throw std::runtime_error(msg.str());
+  }
+
   // Expects data in this format:
   // (objectname
   //   (property1 45)
