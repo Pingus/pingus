@@ -17,6 +17,8 @@
 
 #include "editor/editor_screen.hpp"
 
+#include <sstream>
+
 #include "editor/action_properties.hpp"
 #include "editor/editor_level.hpp"
 #include "editor/level_properties.hpp"
@@ -151,19 +153,31 @@ EditorScreen::on_action_down_press()
 void
 EditorScreen::save(const Pathname& file)
 {
-  std::string filename = file.get_sys_path();
+  try
+  {
+    std::string filename = file.get_sys_path();
 
-  if (System::get_file_extension(filename) == "prefab")
-  {
-    level_pathname = file;
-    log_info("Save to: %1%", file.str());
-    plf->save_prefab(filename);
+    if (System::get_file_extension(filename) == "prefab")
+    {
+      level_pathname = file;
+      log_info("Save to: %1%", file.str());
+      plf->save_prefab(filename);
+    }
+    else
+    {
+      level_pathname = file;
+      log_info("Save to: %1%", file.str());
+      plf->save_level(filename);
+    }
   }
-  else
+  catch(std::exception const& err)
   {
-    level_pathname = file;
-    log_info("Save to: %1%", file.str());
-    plf->save_level(filename);
+    Size msg_size(600, 160);
+    auto msgbox = gui_manager->create<MessageBox>(Rect(Vector2i((Display::get_width() - msg_size.width)/2,
+                                                                (Display::get_height() - msg_size.height)/2),
+                                                       msg_size));
+    msgbox->set_title("Error: level saving failed");
+    msgbox->set_text(err.what());
   }
 }
 
