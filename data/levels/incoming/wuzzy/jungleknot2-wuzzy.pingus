@@ -1,0 +1,206 @@
+(pingus-level 
+  (version 3)
+  (head 
+    (license "GPLv3+")
+    (levelname "Turn around, young pingus!")
+    (description "")
+    (author "Wuzzy")
+    (number-of-pingus 32)
+    (number-to-save 32)
+    (time -1)
+    (music "sorcerer.it")
+    (actions 
+      (basher 1)
+      (bomber 1)
+      (bridger 1)
+      (climber 1)
+      (digger 1)
+      (floater 1)
+      (jumper 1)
+      (miner 1))
+    (levelsize 1920 1200))
+  (objects 
+    (surface-background 
+      (surface 
+        (image "textures/swirljungle")
+        (modifier "ROT0"))
+      (position 836 824 -1000)
+      (colori 0 0 0 127)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.75)
+      (para-y 0.75))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/carabatreesmall")
+        (modifier "ROT0FLIP"))
+      (position 82 278 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/carabatreesmall")
+        (modifier "ROT0"))
+      (position 1077 101 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/carabatreemedium")
+        (modifier "ROT0"))
+      (position 1527 55 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch4")
+        (modifier "ROT0"))
+      (position 1425 277 0))
+    (prefab 
+      (name "prefabs/entrances/eastern")
+      (position 628 624 0)
+      (overrides 
+        (release-rate 50)
+        (direction "right")
+        (owner-id 0)))
+    (exit 
+      (surface 
+        (image "exits/mud")
+        (modifier "ROT0"))
+      (position 362 726 0)
+      (owner-id 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone5")
+        (modifier "ROT0"))
+      (position 266 724 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone2")
+        (modifier "ROT0"))
+      (position 330 724 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone1")
+        (modifier "ROT0"))
+      (position 394 724 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/carabatree")
+        (modifier "ROT0"))
+      (position 1062 839 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/carabatreemedium")
+        (modifier "ROT0"))
+      (position 679 917 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/carabatreesmall")
+        (modifier "ROT0"))
+      (position 1519 1014 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/carabatreemedium")
+        (modifier "ROT0"))
+      (position 203 952 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch3")
+        (modifier "ROT0"))
+      (position -36 388 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch2")
+        (modifier "ROT0"))
+      (position 169 294 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch1")
+        (modifier "ROT0"))
+      (position 476 280 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch1")
+        (modifier "ROT0"))
+      (position 796 274 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/twist")
+        (modifier "ROT0"))
+      (position 458 716 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/twist")
+        (modifier "ROT0"))
+      (position 863 716 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/twist")
+        (modifier "ROT0"))
+      (position 1267 716 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone2")
+        (modifier "ROT0"))
+      (position 1598 721 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone3")
+        (modifier "ROT0"))
+      (position 1662 721 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone5")
+        (modifier "ROT0"))
+      (position 1726 721 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect1")
+        (modifier "ROT0"))
+      (position 1604 689 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch1")
+        (modifier "ROT0"))
+      (position 1122 271 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch5")
+        (modifier "ROT0"))
+      (position 1732 369 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/dia1")
+        (modifier "ROT270FLIP"))
+      (position 146 426 0))
+    (groundpiece 
+      (type "remove")
+      (surface 
+        (image "groundpieces/remove/misc/rect2")
+        (modifier "ROT0"))
+      (position 168 453 0))))
+
+;; EOF ;;

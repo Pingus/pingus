@@ -1,0 +1,184 @@
+(pingus-level 
+  (version 3)
+  (head 
+    (license "GPLv3+")
+    (levelname "Green Compass")
+    (description "")
+    (author "Wuzzy")
+    (number-of-pingus 40)
+    (number-to-save 40)
+    (time -1)
+    (music "sorcerer.it")
+    (actions 
+      (blocker 1)
+      (bridger 50)
+      (digger 1)
+      (jumper 1))
+    (levelsize 2200 1300))
+  (objects 
+    (surface-background 
+      (surface 
+        (image "textures/nightjungle")
+        (modifier "ROT0"))
+      (position 243 -8 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.75)
+      (para-y 0.75))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch6")
+        (modifier "ROT0"))
+      (position 2088 228 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/carabatree")
+        (modifier "ROT0"))
+      (position 910 157 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/carabatree")
+        (modifier "ROT90"))
+      (position 1177 462 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/carabatree")
+        (modifier "ROT180"))
+      (position 958 734 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/carabatree")
+        (modifier "ROT270"))
+      (position 604 511 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone3")
+        (modifier "ROT0"))
+      (position 1003 556 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone4")
+        (modifier "ROT0"))
+      (position 1067 556 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone5")
+        (modifier "ROT0"))
+      (position 1002 619 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone5")
+        (modifier "ROT0"))
+      (position 1066 619 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone2")
+        (modifier "ROT0"))
+      (position 1131 556 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone1")
+        (modifier "ROT0"))
+      (position 1130 620 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone4")
+        (modifier "ROT0"))
+      (position 1067 681 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone2")
+        (modifier "ROT0"))
+      (position 1131 681 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/stone3")
+        (modifier "ROT0"))
+      (position 1003 681 0))
+    (exit 
+      (surface 
+        (image "exits/ordina")
+        (modifier "ROT0"))
+      (position 1047 168 0)
+      (owner-id 0))
+    (prefab 
+      (name "prefabs/entrances/eastern")
+      (position 1170 965 0)
+      (overrides 
+        (release-rate 200)
+        (direction "left")
+        (owner-id 0)))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch3")
+        (modifier "ROT0"))
+      (position 1901 1041 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch3")
+        (modifier "ROT0"))
+      (position 81 -19 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch5")
+        (modifier "ROT0"))
+      (position 1893 -15 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch6")
+        (modifier "ROT0"))
+      (position 2083 714 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch6")
+        (modifier "ROT0"))
+      (position 2082 386 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch6")
+        (modifier "ROT0"))
+      (position 76 238 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch6")
+        (modifier "ROT0"))
+      (position 80 561 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch6")
+        (modifier "ROT0"))
+      (position 79 737 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/jungle/branch5")
+        (modifier "ROT0"))
+      (position 88 1046 0))))
+
+;; EOF ;;
