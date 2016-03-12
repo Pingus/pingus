@@ -1,0 +1,1303 @@
+(pingus-level 
+  (version 3)
+  (head 
+    (license "GPLv3+")
+    (levelname "christmas")
+    (description "Hard.")
+    (author "connor")
+    (number-of-pingus 600)
+    (number-to-save 130)
+    (time -1)
+    (music "")
+    (actions 
+      (basher 38)
+      (bomber 12)
+      (bridger 3)
+      (climber 6)
+      (digger 2)
+      (floater 10)
+      (miner 4)
+      (slider 10))
+    (levelsize 1920 1200))
+  (objects 
+    (starfield-background 
+      (position 341 944 -1000)
+      (small-stars 500)
+      (middle-stars 250)
+      (large-stars 125))
+    (surface-background 
+      (surface 
+        (image "textures/bluestars")
+        (modifier "ROT0"))
+      (position 1522 608 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (surface-background 
+      (surface 
+        (image "textures/bluestars")
+        (modifier "ROT0"))
+      (position 1529 0 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (surface-background 
+      (surface 
+        (image "textures/bluestars")
+        (modifier "ROT0"))
+      (position 1123 1 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (surface-background 
+      (surface 
+        (image "textures/bluestars")
+        (modifier "ROT0"))
+      (position 724 2 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (surface-background 
+      (surface 
+        (image "textures/bluestars")
+        (modifier "ROT0"))
+      (position 727 553 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (surface-background 
+      (surface 
+        (image "textures/bluestars")
+        (modifier "ROT0"))
+      (position 327 594 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (surface-background 
+      (surface 
+        (image "textures/bluestars")
+        (modifier "ROT0"))
+      (position 322 -1 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (surface-background 
+      (surface 
+        (image "textures/bluestars")
+        (modifier "ROT0"))
+      (position -1 3 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (surface-background 
+      (surface 
+        (image "textures/bluestars")
+        (modifier "ROT0"))
+      (position 2 595 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (surface-background 
+      (surface 
+        (image "textures/bluestars")
+        (modifier "ROT0"))
+      (position 1123 602 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 174 302 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/mediumdimwall")
+        (modifier "ROT0"))
+      (position 398 781 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/bigdimwall")
+        (modifier "ROT0"))
+      (position 318 846 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/bigdimwall")
+        (modifier "ROT0"))
+      (position 319 940 0)
+      (speed 0)
+      (parallax 0))
+    (snow-generator 
+      (position 588 105 0))
+    (snow-generator 
+      (position 395 108 0))
+    (snow-generator 
+      (position 320 106 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/mediumdimwall")
+        (modifier "ROT0"))
+      (position 1478 1023 0)
+      (speed 0)
+      (parallax 0))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 248 304 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 326 309 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 1146 925 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/liquids/slime")
+      (position 24 1196 0)
+      (overrides 
+        (repeat 15)))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/smalldimwall")
+        (modifier "ROT0"))
+      (position 544 1087 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/smalldimwall")
+        (modifier "ROT0"))
+      (position 540 1124 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/smalldimwall")
+        (modifier "ROT0"))
+      (position 544 1155 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/mediumdimwall")
+        (modifier "ROT0"))
+      (position 394 1088 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/mediumdimwall")
+        (modifier "ROT0"))
+      (position 391 1127 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/mediumdimwall")
+        (modifier "ROT0"))
+      (position 318 1087 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/mediumdimwall")
+        (modifier "ROT0"))
+      (position 316 1121 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/mediumdimwall")
+        (modifier "ROT0"))
+      (position 171 1086 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/mediumdimwall")
+        (modifier "ROT0"))
+      (position 164 1126 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/mediumdimwall")
+        (modifier "ROT0"))
+      (position 20 1086 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/mediumdimwall")
+        (modifier "ROT0"))
+      (position 103 1088 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/mediumdimwall")
+        (modifier "ROT0"))
+      (position 1 1090 0)
+      (speed 0)
+      (parallax 0))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 648 583 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 408 305 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/joint3")
+        (modifier "ROT0"))
+      (position 66 440 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel1")
+        (modifier "ROT0"))
+      (position -4 441 0))
+    (prefab 
+      (name "prefabs/liquids/slime")
+      (position 958 1201 0)
+      (overrides 
+        (repeat 15)))
+    (snow-generator 
+      (position 522 106 0))
+    (snow-generator 
+      (position 458 113 0))
+    (snow-generator 
+      (position 656 103 0))
+    (snow-generator 
+      (position 721 104 0))
+    (snow-generator 
+      (position 401 168 0))
+    (snow-generator 
+      (position 250 109 0))
+    (snow-generator 
+      (position 180 109 0))
+    (snow-generator 
+      (position 111 111 0))
+    (snow-generator 
+      (position 37 104 0))
+    (snow-generator 
+      (position 4 158 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/halloween/moon")
+        (modifier "ROT0"))
+      (position 934 304 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/desert/mediumdimwall")
+        (modifier "ROT0"))
+      (position 1479 1096 0)
+      (speed 0)
+      (parallax 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/ordina/cpu1")
+        (modifier "ROT0"))
+      (position 694 374 0))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 1509 933 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1618 1029 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 1714 1030 0)
+      (owner-id 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/joint2")
+        (modifier "ROT0"))
+      (position 1331 987 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/joint2")
+        (modifier "ROT0"))
+      (position 1330 939 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 1332 1027 0))
+    (prefab 
+      (name "prefabs/liquids/water")
+      (position 737 1202 0)
+      (overrides 
+        (repeat 15)))
+    (prefab 
+      (name "prefabs/liquids/water")
+      (position 26 1200 0)
+      (overrides 
+        (repeat 15)))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 568 588 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1052 699 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 1876 580 0))
+    (exit 
+      (surface 
+        (image "exits/space")
+        (modifier "ROT0"))
+      (position 1812 700 0)
+      (owner-id 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 912 699 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel1")
+        (modifier "ROT0"))
+      (position 851 699 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1462 1030 0))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 1596 934 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 1671 931 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1322 1032 0))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 1427 929 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1495 699 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1645 699 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1755 697 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/halloween/sign-right")
+        (modifier "ROT0"))
+      (position 1139 997 0)
+      (speed 0)
+      (parallax 0))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 1423 538 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 489 588 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 1630 621 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 730 538 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 902 594 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 1718 615 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 1249 638 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 1340 579 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (hotspot 
+      (surface 
+        (image "hotspots/space/engine")
+        (modifier "ROT0"))
+      (position 1151 69 0)
+      (speed 0)
+      (parallax 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1165 1032 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1017 1033 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 876 1032 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 875 933 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 872 1033 0))
+    (exit 
+      (surface 
+        (image "exits/xmas")
+        (modifier "ROT0"))
+      (position 1272 1032 0)
+      (owner-id 0))
+    (prefab 
+      (name "prefabs/entrances/space")
+      (position 1070 951 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 819 590 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 89 309 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 970 855 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 1049 780 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (prefab 
+      (name "prefabs/entrances/xmas")
+      (position 1231 922 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (hotspot 
+      (surface 
+        (image "hotspots/halloween/sign-left")
+        (modifier "ROT0"))
+      (position 445 657 0)
+      (speed 0)
+      (parallax 0))
+    (teleporter-target 
+      (position 1006 487 0)
+      (id "id1676683595"))
+    (teleporter-target 
+      (position 839 659 0)
+      (id "id1966601360"))
+    (teleporter-target 
+      (position 1070 166 0)
+      (id "id48830857"))
+    (teleporter-target 
+      (position 894 655 0)
+      (id "id959611498"))
+    (rain-generator 
+      (position 868 440 0))
+    (rain-generator 
+      (position 1005 467 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/present1")
+        (modifier "ROT0"))
+      (position 1578 669 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/present1")
+        (modifier "ROT0"))
+      (position 1683 665 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/present2")
+        (modifier "ROT0"))
+      (position 1617 675 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/candystick3")
+        (modifier "ROT0"))
+      (position 901 738 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/candystick3")
+        (modifier "ROT0"))
+      (position 901 830 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/candystick3")
+        (modifier "ROT0"))
+      (position 902 895 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/candystick3")
+        (modifier "ROT0"))
+      (position 903 956 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/candystick3")
+        (modifier "ROT0"))
+      (position 904 1016 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/xmas/candystick3")
+        (modifier "ROT0"))
+      (position 902 1085 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/signposts/arrow_east")
+        (modifier "ROT0"))
+      (position 1638 645 0)
+      (speed 0)
+      (parallax 0))
+    (prefab 
+      (name "prefabs/entrances/snow")
+      (position 1306 929 0)
+      (overrides 
+        (release-rate 50)
+        (direction "misc")
+        (owner-id 0)))
+    (hotspot 
+      (surface 
+        (image "hotspots/misc/deadly_fall_height")
+        (modifier "ROT0"))
+      (position 1817 756 0)
+      (speed 0)
+      (parallax 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 713 699 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 573 699 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 432 699 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 292 700 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 152 700 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 42 576 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 425 319 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 3 314 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/joint3")
+        (modifier "ROT0"))
+      (position 118 441 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/joint3")
+        (modifier "ROT0"))
+      (position 168 442 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 308 444 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/snow/ice1")
+        (modifier "ROT0"))
+      (position 305 436 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/snow/piece2")
+        (modifier "ROT0"))
+      (position 351 433 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/snow/groundice")
+        (modifier "ROT0"))
+      (position 92 443 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/snow/igloo")
+        (modifier "ROT0"))
+      (position 598 360 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snow1")
+        (modifier "ROT0"))
+      (position 257 438 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snow2")
+        (modifier "ROT0"))
+      (position 214 446 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snow2")
+        (modifier "ROT0"))
+      (position 212 464 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snow2")
+        (modifier "ROT0"))
+      (position 211 483 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snow2")
+        (modifier "ROT0"))
+      (position 216 493 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snow2")
+        (modifier "ROT0"))
+      (position 223 504 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 584 414 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snow2")
+        (modifier "ROT0"))
+      (position 228 512 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/ground2")
+        (modifier "ROT0"))
+      (position 271 469 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/ground2")
+        (modifier "ROT0"))
+      (position 193 471 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/ground2")
+        (modifier "ROT0"))
+      (position 920 556 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snowball3")
+        (modifier "ROT0"))
+      (position 1542 998 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snowball3")
+        (modifier "ROT0"))
+      (position 1541 940 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snowball3")
+        (modifier "ROT0"))
+      (position 1540 973 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snowball3")
+        (modifier "ROT0"))
+      (position 1534 912 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 1663 249 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 1662 276 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snowball3")
+        (modifier "ROT0"))
+      (position 1532 887 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/ground2")
+        (modifier "ROT0"))
+      (position 291 493 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/ground2")
+        (modifier "ROT0"))
+      (position 194 495 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 416 642 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 417 583 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 601 641 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 602 582 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 43 699 0))
+    (exit 
+      (surface 
+        (image "exits/ice2")
+        (modifier "ROT0"))
+      (position 127 701 0)
+      (owner-id 0))
+    (exit 
+      (surface 
+        (image "exits/ice2")
+        (modifier "ROT0"))
+      (position 1067 698 0)
+      (owner-id 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 1497 573 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 1168 578 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1273 671 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1199 696 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1328 641 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1382 613 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1440 584 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1491 559 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1545 532 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1541 502 0))
+    (teleporter-target 
+      (position 1528 525 0)
+      (id "id210879723"))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1482 472 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1759 335 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1631 336 0))
+    (exit 
+      (surface 
+        (image "exits/ice2")
+        (modifier "ROT0"))
+      (position 1446 168 0)
+      (owner-id 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1580 338 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1526 365 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1475 389 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1429 448 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1417 443 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_right")
+        (modifier "ROT0"))
+      (position 1421 414 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/industrial/pipe5")
+        (modifier "ROT0"))
+      (position 1509 105 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/industrial/pipe5")
+        (modifier "ROT0"))
+      (position 1508 133 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 1370 7 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1594 533 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1265 446 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 1275 329 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel2")
+        (modifier "ROT0"))
+      (position 1716 413 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1476 164 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld6")
+        (modifier "ROT0"))
+      (position 1380 164 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/xmas/snow2")
+        (modifier "ROT0"))
+      (position 1682 333 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1820 305 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1771 277 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1717 250 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1667 224 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1617 195 0))
+    (groundpiece 
+      (type "bridge")
+      (surface 
+        (image "groundpieces/bridge/misc/bridge_left")
+        (modifier "ROT0"))
+      (position 1558 167 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/weld3")
+        (modifier "ROT0"))
+      (position 1913 286 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/solid/industrial/steel3")
+        (modifier "ROT0"))
+      (position 1347 696 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canetop")
+        (modifier "ROT0"))
+      (position 741 640 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 846 652 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/sweets/canestalk")
+        (modifier "ROT0"))
+      (position 849 592 0))
+    (entrance 
+      (position 656 685 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 150))
+    (entrance 
+      (position 709 621 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 150))
+    (entrance 
+      (position 756 621 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 150))
+    (entrance 
+      (position 1735 960 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 150))
+    (entrance 
+      (position 968 957 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 150))
+    (entrance 
+      (position 1016 963 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 150))
+    (entrance 
+      (position 1035 891 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 150))
+    (entrance 
+      (position 1072 886 110)
+      (owner-id 0)
+      (direction "misc")
+      (release-rate 150))))
+
+;; EOF ;;
