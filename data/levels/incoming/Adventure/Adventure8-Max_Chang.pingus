@@ -1,0 +1,1788 @@
+(pingus-level 
+  (version 3)
+  (head 
+    (license "GPLv3+")
+    (levelname "")
+    (description "")
+    (author "")
+    (number-of-pingus 20)
+    (number-to-save 20)
+    (time -1)
+    (music "")
+    (actions 
+      (basher 20)
+      (blocker 20)
+      (bomber 20)
+      (bridger 20)
+      (climber 20)
+      (digger 20)
+      (floater 20)
+      (jumper 20)
+      (miner 20)
+      (slider 20))
+    (levelsize 900 600))
+  (objects 
+    (surface-background 
+      (surface 
+        (image "textures/clouds2")
+        (modifier "ROT0"))
+      (position -507 50 -1000)
+      (colori 0 0 0 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
+      (scroll-x 0)
+      (scroll-y 0)
+      (para-x 0.5)
+      (para-y 0.5))
+    (iceblock 
+      (position 366 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 391 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 319 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 344 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 270 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 295 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 223 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 248 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 174 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 199 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 127 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 152 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 78 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 103 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 415 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 440 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 366 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 391 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 319 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 344 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 270 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 295 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 799 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 750 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 775 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 703 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 728 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 654 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 679 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 607 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 632 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 558 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 583 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 223 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 248 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 174 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 199 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 127 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 152 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 799 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 750 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 775 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 703 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 728 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 462 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 487 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 78 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 103 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 654 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 679 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 607 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 632 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 558 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 583 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 511 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 536 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 462 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 487 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 415 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 440 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 366 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 391 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 319 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 344 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 270 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 295 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 223 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 248 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 174 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 199 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 127 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 152 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 78 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 103 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 415 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 440 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 366 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 391 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 319 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 344 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 270 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 295 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 799 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 750 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 775 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 511 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 536 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 462 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 487 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 78 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 103 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 654 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 679 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 607 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 632 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 558 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 583 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 511 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 536 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 462 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 487 456 0)
+      (repeat 1))
+    (iceblock 
+      (position 415 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 440 466 0)
+      (repeat 1))
+    (iceblock 
+      (position 511 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 536 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 703 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 728 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 654 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 679 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 607 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 632 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 558 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 583 446 0)
+      (repeat 1))
+    (iceblock 
+      (position 223 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 248 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 174 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 199 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 127 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 152 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 799 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 750 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 775 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 703 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 728 436 0)
+      (repeat 1))
+    (iceblock 
+      (position 511 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 536 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 462 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 487 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 78 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 103 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 654 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 679 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 607 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 632 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 558 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 583 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 511 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 536 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 462 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 487 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 415 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 440 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 366 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 391 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 319 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 344 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 270 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 295 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 223 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 248 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 174 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 199 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 127 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 152 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 78 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 103 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 799 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 750 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 775 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 703 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 728 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 654 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 679 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 607 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 632 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 558 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 583 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 511 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 536 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 462 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 487 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 78 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 103 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 654 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 679 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 607 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 632 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 558 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 583 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 511 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 536 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 462 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 415 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 440 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 366 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 391 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 319 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 344 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 270 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 295 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 799 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 750 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 775 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 703 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 728 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 654 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 679 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 607 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 632 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 558 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 583 426 0)
+      (repeat 1))
+    (iceblock 
+      (position 223 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 248 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 174 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 199 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 127 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 152 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 799 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 750 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 775 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 703 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 728 416 0)
+      (repeat 1))
+    (iceblock 
+      (position 511 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 536 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 462 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 487 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 78 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 103 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 654 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 679 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 607 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 632 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 558 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 583 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 511 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 536 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 462 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 487 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 415 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 440 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 487 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 415 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 440 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 366 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 391 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 319 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 344 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 270 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 295 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 223 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 248 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 174 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 199 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 127 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 152 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 78 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 103 386 0)
+      (repeat 1))
+    (iceblock 
+      (position 415 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 440 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 366 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 391 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 319 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 344 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 270 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 295 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 223 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 248 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 174 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 199 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 127 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 152 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 799 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 750 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 775 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 703 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 728 376 0)
+      (repeat 1))
+    (iceblock 
+      (position 366 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 391 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 319 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 344 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 270 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 295 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 223 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 248 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 174 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 199 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 127 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 152 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 78 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 103 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 415 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 440 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 366 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 391 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 319 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 344 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 270 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 295 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 799 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 750 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 775 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 703 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 728 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 654 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 679 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 607 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 632 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 558 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 583 406 0)
+      (repeat 1))
+    (iceblock 
+      (position 223 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 248 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 174 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 199 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 127 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 152 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 799 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 750 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 775 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 703 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 728 396 0)
+      (repeat 1))
+    (iceblock 
+      (position 799 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 750 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 775 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 703 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 728 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 654 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 679 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 607 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 632 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 558 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 583 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 511 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 536 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 462 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 487 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 799 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 750 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 775 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 703 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 728 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 654 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 679 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 607 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 632 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 558 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 583 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 511 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 536 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 462 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 487 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 415 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 440 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 366 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 391 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 319 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 344 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 270 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 295 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 223 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 248 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 174 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 199 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 127 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 152 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 78 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 103 366 0)
+      (repeat 1))
+    (iceblock 
+      (position 415 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 440 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 366 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 391 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 319 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 344 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 270 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 295 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 223 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 248 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 174 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 199 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 127 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 152 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 558 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 583 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 511 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 536 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 462 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 487 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 415 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 440 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 366 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 391 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 319 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 344 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 270 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 295 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 223 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 248 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 174 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 199 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 127 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 152 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 78 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 103 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 415 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 440 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 366 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 391 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 319 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 344 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 270 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 295 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 223 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 248 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 174 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 199 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 127 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 152 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 78 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 103 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 78 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 103 356 0)
+      (repeat 1))
+    (iceblock 
+      (position 799 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 750 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 775 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 703 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 728 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 654 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 679 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 607 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 632 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 558 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 583 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 511 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 536 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 462 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 487 346 0)
+      (repeat 1))
+    (iceblock 
+      (position 799 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 750 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 775 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 703 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 728 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 654 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 679 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 607 336 0)
+      (repeat 1))
+    (iceblock 
+      (position 632 336 0)
+      (repeat 1))
+    (exit 
+      (surface 
+        (image "exits/ice2")
+        (modifier "ROT0"))
+      (position 463 336 0)
+      (owner-id 0))
+    (snow-generator 
+      (position -139 -44 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/column")
+        (modifier "ROT0"))
+      (position 1809 228 0))
+    (prefab 
+      (name "prefabs/entrances/cloud")
+      (position 353 160 0)
+      (overrides 
+        (release-rate 100)
+        (direction "right")
+        (owner-id 0)))
+    (iceblock 
+      (position 1592 238 0)
+      (repeat 1))
+    (iceblock 
+      (position 1639 238 0)
+      (repeat 1))
+    (iceblock 
+      (position 1614 238 0)
+      (repeat 1))
+    (iceblock 
+      (position 1688 238 0)
+      (repeat 1))
+    (iceblock 
+      (position 1663 238 0)
+      (repeat 1))
+    (iceblock 
+      (position 1735 238 0)
+      (repeat 1))
+    (iceblock 
+      (position 1710 238 0)
+      (repeat 1))
+    (iceblock 
+      (position 1784 238 0)
+      (repeat 1))
+    (iceblock 
+      (position 1759 238 0)
+      (repeat 1))
+    (iceblock 
+      (position 1592 248 0)
+      (repeat 1))
+    (iceblock 
+      (position 1639 248 0)
+      (repeat 1))
+    (iceblock 
+      (position 1614 248 0)
+      (repeat 1))
+    (iceblock 
+      (position 1688 248 0)
+      (repeat 1))
+    (iceblock 
+      (position 1663 248 0)
+      (repeat 1))
+    (iceblock 
+      (position 1735 248 0)
+      (repeat 1))
+    (iceblock 
+      (position 1710 248 0)
+      (repeat 1))
+    (iceblock 
+      (position 1784 248 0)
+      (repeat 1))
+    (iceblock 
+      (position 1759 248 0)
+      (repeat 1))
+    (iceblock 
+      (position 1592 258 0)
+      (repeat 1))
+    (iceblock 
+      (position 1639 258 0)
+      (repeat 1))
+    (iceblock 
+      (position 1614 258 0)
+      (repeat 1))
+    (iceblock 
+      (position 1688 258 0)
+      (repeat 1))
+    (iceblock 
+      (position 1663 258 0)
+      (repeat 1))
+    (iceblock 
+      (position 1735 258 0)
+      (repeat 1))
+    (iceblock 
+      (position 1710 258 0)
+      (repeat 1))
+    (iceblock 
+      (position 1784 258 0)
+      (repeat 1))
+    (iceblock 
+      (position 1759 258 0)
+      (repeat 1))
+    (iceblock 
+      (position 1592 268 0)
+      (repeat 1))
+    (iceblock 
+      (position 1639 268 0)
+      (repeat 1))
+    (iceblock 
+      (position 1614 268 0)
+      (repeat 1))
+    (iceblock 
+      (position 1688 268 0)
+      (repeat 1))
+    (iceblock 
+      (position 1663 268 0)
+      (repeat 1))
+    (iceblock 
+      (position 1735 268 0)
+      (repeat 1))
+    (iceblock 
+      (position 1710 268 0)
+      (repeat 1))
+    (iceblock 
+      (position 1784 268 0)
+      (repeat 1))
+    (iceblock 
+      (position 1759 268 0)
+      (repeat 1))
+    (iceblock 
+      (position 1592 278 0)
+      (repeat 1))
+    (iceblock 
+      (position 1639 278 0)
+      (repeat 1))
+    (iceblock 
+      (position 1614 278 0)
+      (repeat 1))
+    (iceblock 
+      (position 1688 278 0)
+      (repeat 1))
+    (iceblock 
+      (position 1663 278 0)
+      (repeat 1))
+    (iceblock 
+      (position 1735 278 0)
+      (repeat 1))
+    (iceblock 
+      (position 1710 278 0)
+      (repeat 1))
+    (iceblock 
+      (position 1784 278 0)
+      (repeat 1))
+    (iceblock 
+      (position 1759 278 0)
+      (repeat 1))
+    (iceblock 
+      (position 1592 288 0)
+      (repeat 1))
+    (iceblock 
+      (position 1639 288 0)
+      (repeat 1))
+    (iceblock 
+      (position 1614 288 0)
+      (repeat 1))
+    (iceblock 
+      (position 1688 288 0)
+      (repeat 1))
+    (iceblock 
+      (position 1663 288 0)
+      (repeat 1))
+    (iceblock 
+      (position 1735 288 0)
+      (repeat 1))
+    (iceblock 
+      (position 1710 288 0)
+      (repeat 1))
+    (iceblock 
+      (position 1784 288 0)
+      (repeat 1))
+    (iceblock 
+      (position 1759 288 0)
+      (repeat 1))
+    (iceblock 
+      (position 1592 298 0)
+      (repeat 1))
+    (iceblock 
+      (position 1639 298 0)
+      (repeat 1))
+    (iceblock 
+      (position 1614 298 0)
+      (repeat 1))
+    (iceblock 
+      (position 1688 298 0)
+      (repeat 1))
+    (iceblock 
+      (position 1663 298 0)
+      (repeat 1))
+    (iceblock 
+      (position 1735 298 0)
+      (repeat 1))
+    (iceblock 
+      (position 1710 298 0)
+      (repeat 1))
+    (iceblock 
+      (position 1784 298 0)
+      (repeat 1))
+    (iceblock 
+      (position 1759 298 0)
+      (repeat 1))
+    (iceblock 
+      (position 1592 308 0)
+      (repeat 1))
+    (iceblock 
+      (position 1639 308 0)
+      (repeat 1))
+    (iceblock 
+      (position 1614 308 0)
+      (repeat 1))
+    (iceblock 
+      (position 1688 308 0)
+      (repeat 1))
+    (iceblock 
+      (position 1663 308 0)
+      (repeat 1))
+    (iceblock 
+      (position 1735 308 0)
+      (repeat 1))
+    (iceblock 
+      (position 1710 308 0)
+      (repeat 1))
+    (iceblock 
+      (position 1784 308 0)
+      (repeat 1))
+    (iceblock 
+      (position 1759 308 0)
+      (repeat 1))
+    (iceblock 
+      (position 1688 318 0)
+      (repeat 1))
+    (iceblock 
+      (position 1663 318 0)
+      (repeat 1))
+    (iceblock 
+      (position 1735 318 0)
+      (repeat 1))
+    (iceblock 
+      (position 1710 318 0)
+      (repeat 1))
+    (iceblock 
+      (position 1784 318 0)
+      (repeat 1))
+    (iceblock 
+      (position 1759 318 0)
+      (repeat 1))
+    (iceblock 
+      (position 1592 328 0)
+      (repeat 1))
+    (iceblock 
+      (position 1639 328 0)
+      (repeat 1))
+    (iceblock 
+      (position 1614 328 0)
+      (repeat 1))
+    (iceblock 
+      (position 1688 328 0)
+      (repeat 1))
+    (iceblock 
+      (position 1663 328 0)
+      (repeat 1))
+    (iceblock 
+      (position 1735 328 0)
+      (repeat 1))
+    (iceblock 
+      (position 1710 328 0)
+      (repeat 1))
+    (iceblock 
+      (position 1784 328 0)
+      (repeat 1))
+    (iceblock 
+      (position 1759 328 0)
+      (repeat 1))
+    (iceblock 
+      (position 1592 318 0)
+      (repeat 1))
+    (iceblock 
+      (position 1639 318 0)
+      (repeat 1))
+    (iceblock 
+      (position 1614 318 0)
+      (repeat 1))
+    (iceblock 
+      (position 1688 338 0)
+      (repeat 1))
+    (iceblock 
+      (position 1663 338 0)
+      (repeat 1))
+    (iceblock 
+      (position 1735 338 0)
+      (repeat 1))
+    (iceblock 
+      (position 1710 338 0)
+      (repeat 1))
+    (iceblock 
+      (position 1784 338 0)
+      (repeat 1))
+    (iceblock 
+      (position 1759 338 0)
+      (repeat 1))
+    (iceblock 
+      (position 1592 348 0)
+      (repeat 1))
+    (iceblock 
+      (position 1639 348 0)
+      (repeat 1))
+    (iceblock 
+      (position 1614 348 0)
+      (repeat 1))
+    (iceblock 
+      (position 1688 348 0)
+      (repeat 1))
+    (iceblock 
+      (position 1663 348 0)
+      (repeat 1))
+    (iceblock 
+      (position 1735 348 0)
+      (repeat 1))
+    (iceblock 
+      (position 1710 348 0)
+      (repeat 1))
+    (iceblock 
+      (position 1784 348 0)
+      (repeat 1))
+    (iceblock 
+      (position 1759 348 0)
+      (repeat 1))
+    (iceblock 
+      (position 1592 338 0)
+      (repeat 1))
+    (iceblock 
+      (position 1639 338 0)
+      (repeat 1))
+    (iceblock 
+      (position 1614 338 0)
+      (repeat 1))
+    (iceblock 
+      (position 1688 358 0)
+      (repeat 1))
+    (iceblock 
+      (position 1663 358 0)
+      (repeat 1))
+    (iceblock 
+      (position 1735 358 0)
+      (repeat 1))
+    (iceblock 
+      (position 1710 358 0)
+      (repeat 1))
+    (iceblock 
+      (position 1784 358 0)
+      (repeat 1))
+    (iceblock 
+      (position 1759 358 0)
+      (repeat 1))
+    (iceblock 
+      (position 1592 368 0)
+      (repeat 1))
+    (iceblock 
+      (position 1639 368 0)
+      (repeat 1))
+    (iceblock 
+      (position 1614 368 0)
+      (repeat 1))
+    (iceblock 
+      (position 1688 368 0)
+      (repeat 1))
+    (iceblock 
+      (position 1663 368 0)
+      (repeat 1))
+    (iceblock 
+      (position 1735 368 0)
+      (repeat 1))
+    (iceblock 
+      (position 1710 368 0)
+      (repeat 1))
+    (iceblock 
+      (position 1784 368 0)
+      (repeat 1))
+    (iceblock 
+      (position 1759 368 0)
+      (repeat 1))
+    (iceblock 
+      (position 1592 358 0)
+      (repeat 1))
+    (iceblock 
+      (position 1639 358 0)
+      (repeat 1))
+    (iceblock 
+      (position 1614 358 0)
+      (repeat 1))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/column")
+        (modifier "ROT0"))
+      (position 51 410 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/column")
+        (modifier "ROT0"))
+      (position 51 316 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/column")
+        (modifier "ROT0"))
+      (position 816 410 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/column")
+        (modifier "ROT0"))
+      (position 816 221 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/column")
+        (modifier "ROT0"))
+      (position 51 221 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/column")
+        (modifier "ROT0"))
+      (position 51 505 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/column")
+        (modifier "ROT0"))
+      (position 816 505 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/crystal/column")
+        (modifier "ROT0"))
+      (position 816 316 0))))
+
+;; EOF ;;
