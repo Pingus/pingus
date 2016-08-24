@@ -24,6 +24,8 @@
 # https://github.com/SuperTux/supertux/blob/master/.travis.yml
 
 language: cpp
+dist: trusty
+sudo: required
 
 compiler:
   - gcc
@@ -31,53 +33,22 @@ compiler:
 
 matrix:
   fast_finish: true
+  exclude:
+  - compiler: gcc
+    os: osx
+
+os:
+  - linux
+  # - osx
 
 env:
   global:
-    - CMAKE_VERSION=3.2.1 SDL2_VERSION=2.0.3 SDL2IMAGE_VERSION=2.0.0 SDL2MIXER_VERSION=2.0.0
     # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
     #   via the "travis encrypt" command using the project repo's public key
     - secure: "CPJBu4r8RDmeP7G78ODyk+A/J3vxEFr4xpQE0zIDtdCHcQmv2NqjM88YVH5pRWK4vtpAFuDEzyw4ZGKwfmwK5zhg2nUubsf47WpQmQa0z9HLasjXATzWwXGggx7mzlKODpkkccBzXHDAqvLKTkKBeXdxwMKFCtSgEM+3MwEwW6g="
   matrix:
     - BUILD_TYPE="Debug"
     - BUILD_TYPE="Release"
-
-before_install:
-  # gcc that supports C++ 11 features
-  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-
-  # clang repository
-  - sudo add-apt-repository -y "deb http://apt.llvm.org/precise/ llvm-toolchain-precise-3.9 main"
-
-  - wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key | sudo apt-key add -
-
-  # install
-  - sudo apt-get update -qq
-  - sudo apt-get install build-essential libogg-dev libvorbis-dev libphysfs-dev libglew-dev libopenal-dev libjsoncpp-dev clang-3.9 g++-4.9
-
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
-  - if [ "$CXX" == "clang++" ]; then export CXX="clang++-3.9"; fi
-
-  # boost
-  - sudo add-apt-repository -y ppa:boost-latest/ppa
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq libboost-filesystem1.55-dev libboost-signals1.55-dev libboost-system1.55-dev
-
-  # manual boost compile
-  #- wget --no-check-certificate http://downloads.sourceforge.net/project/boost/boost/1.58.0/boost_1_58_0.tar.gz -O - | tar xz
-  #- (cd boost_1_58_0/ && ./bootstrap.sh --with-libraries=filesystem,signals,system && ./b2 && ./b2 install)
-
-  # CMake
-  - wget --no-check-certificate http://www.cmake.org/files/v3.2/cmake-$CMAKE_VERSION.tar.gz -O - | tar xz
-  - (cd cmake-$CMAKE_VERSION && cmake . && make && sudo make install)
-
-  # SDL dependencies
-  - wget --no-check-certificate http://libsdl.org/release/SDL2-$SDL2_VERSION.tar.gz -O - | tar xz
-  - (cd SDL2-$SDL2_VERSION && ./configure --prefix=/usr && make && sudo make install)
-  - wget --no-check-certificate http://www.libsdl.org/projects/SDL_image/release/SDL2_image-$SDL2IMAGE_VERSION.tar.gz -O - | tar xz
-  - (cd SDL2_image-$SDL2IMAGE_VERSION && ./configure --prefix=/usr && make && sudo make install)
-  - wget --no-check-certificate http://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-$SDL2MIXER_VERSION.tar.gz -O - | tar xz
-  - (cd SDL2_mixer-$SDL2MIXER_VERSION && ./configure --prefix=/usr && make && sudo make install)
 
 script:
   # Clean from previous Travis build
@@ -94,6 +65,18 @@ script:
 # scan, merge the latest development version into and push it to start
 # the scan.
 addons:
+  apt:
+    packages:
+    - cmake
+    - build-essential
+    - libc++-dev
+    - libogg-dev
+    - libvorbis-dev
+    - libglew-dev
+    - libopenal-dev
+    - libboost-all-dev
+    - libsdl2-dev
+    - libsdl2-image-dev
   coverity_scan:
     project:
       name: "Pingus/pingus"
