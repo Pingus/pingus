@@ -50,6 +50,10 @@ env:
     - BUILD_TYPE="Debug"
     - BUILD_TYPE="Release"
 
+before_install:
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
+  - if [ "$CXX" == "clang++" ]; then export CXX="clang++-3.9"; fi
+
 script:
   # Clean from previous Travis build
   - git clean -f
@@ -66,7 +70,12 @@ script:
 # the scan.
 addons:
   apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    - llvm-toolchain-precise-3.8
     packages:
+    - clang-3.9
+    - g++-4.9
     - cmake
     - build-essential
     - libc++-dev
