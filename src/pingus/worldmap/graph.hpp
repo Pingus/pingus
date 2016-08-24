@@ -170,7 +170,6 @@ public:
     }
     log_error("couldn't resolve edge: source=%1% destination=%2%", source, destination);
     assert(false);
-    return *(static_cast<Edge<EdgeType>*>(0));
   }
 
   /* FIXME: This might give problems under MSVC, so it could be better to not use it */
