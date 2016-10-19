@@ -1951,7 +1951,7 @@ msgstr ""
 #: data/levels/xmas2011/xmas03-grumbel.pingus:6
 msgid ""
 "Bridges are kind of rare around here, so don't waste any. That aside, you "
-"shouldn't have to much trouble here, everything to do here you should have "
+"shouldn't have too much trouble here, everything to do here you should have "
 "learned, but you might have to use all that knowledge at once."
 msgstr ""
 
