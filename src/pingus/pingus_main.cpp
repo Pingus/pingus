@@ -38,7 +38,7 @@
 */
 #include <unistd.h>
 #include <strings.h>
-#include <SYS/stat.h>
+#include <sys/stat.h>
 extern "C" {
   typedef unsigned char UInt8;
   typedef void* CFTypeRef;
