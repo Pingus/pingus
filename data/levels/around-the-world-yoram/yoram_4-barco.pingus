@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Boat trip")
-    (description "You are now in a boat travelling to your next mission. You have to rescue the captain who got dronk and stuck himself on the very top of the mast (he dropped the key of the door a little lower) and the first engineer in the lower deck (who forgot the key in the engine room, towards the bow) and you all must go to the pilot house to drive the boat safely.
+    (description "You are now in a boat travelling to your next mission. You have to rescue the captain who got drunk and stuck himself on the very top of the mast (he dropped the key of the door a little lower) and the first engineer in the lower deck (who forgot the key in the engine room, towards the bow) and you all must go to the pilot house to drive the boat safely.
 Team work is a must if you want to succeed. Hope you are not afraid of hights nor get sea sick.")
     (author "yoram david")
     (number-of-pingus 3)

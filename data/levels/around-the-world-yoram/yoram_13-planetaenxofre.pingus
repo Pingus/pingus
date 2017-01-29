@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Sulphuric planet")
-    (description "Five pingus have landed on a strange planet - the Sulphurica planet where all have to be saved.")
+    (description "Five pingus have landed on a strange planet - the Sulphurica planet where all have to be saved. Again team work is required and at the end it is crucial that all the pingus gather together for the last step.")
     (author "yoram david")
     (number-of-pingus 5)
     (number-to-save 5)
@@ -11,7 +11,7 @@
     (music "")
     (actions 
       (basher 6)
-      (bridger 22)
+      (bridger 30)
       (digger 2)
       (jumper 20)
       (miner 7))

@@ -35,6 +35,12 @@
       (position 628 456 -1)
       (target-id "teleporte1"))
     (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/space/way")
+        (modifier "ROT0"))
+      (position 789 246 0))
+    (groundpiece 
       (type "solid")
       (surface 
         (image "groundpieces/ground/space/diagonalr")
@@ -122,26 +128,6 @@
         (image "groundpieces/ground/space/block1")
         (modifier "ROT90FLIP"))
       (position 1057 346 0))
-    (group 
-      (objects 
-        (groundpiece 
-          (type "ground")
-          (surface 
-            (image "groundpieces/ground/space/way")
-            (modifier "ROT0"))
-          (position 791 246 0))
-        (groundpiece 
-          (type "remove")
-          (surface 
-            (image "groundpieces/ground/space/diagonal")
-            (modifier "ROT0"))
-          (position 739 210 0))
-        (groundpiece 
-          (type "remove")
-          (surface 
-            (image "groundpieces/ground/space/diagonalr")
-            (modifier "ROT0"))
-          (position 812 208 0))))
     (groundpiece 
       (type "bridge")
       (surface 
@@ -436,7 +422,7 @@
       (surface 
         (image "exits/space")
         (modifier "ROT0"))
-      (position 836 246 0)
+      (position 841 246 0)
       (owner-id 0))
     (groundpiece 
       (type "ground")

@@ -947,7 +947,7 @@ No water to drink. Good news: did you know pingus couls swim?")
       (position 800 690 0)
       (id "teleporte4"))
     (teleporter 
-      (position 445 625 0)
+      (position 447 625 0)
       (target-id "teleporte4"))
     (teleporter 
       (position 446 586 0)
@@ -1068,13 +1068,47 @@ No water to drink. Good news: did you know pingus couls swim?")
       (position 1165 567 0)
       (speed 0)
       (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/signposts/arrow_southeast")
+        (modifier "ROT0"))
+      (position -3 742 0)
+      (speed 0)
+      (parallax 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/signposts/danger")
+        (modifier "ROT0"))
+      (position -4 774 0)
+      (speed 0)
+      (parallax 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/sun")
+        (modifier "ROT0"))
+      (position 955 810 0))
+    (groundpiece 
+      (type "ground")
+      (surface 
+        (image "groundpieces/ground/desert/blobdune")
+        (modifier "ROT90"))
+      (position -29 352 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/signposts/nogo")
+        (modifier "ROT0"))
+      (position 108 664 0)
+      (speed 0)
+      (parallax 0))
+    (groundpiece 
+      (type "transparent")
+      (surface 
+        (image "groundpieces/transparent/misc/black")
+        (modifier "ROT0"))
+      (position -44 574 0))
     (entrance 
       (position 265 70 110)
-      (owner-id 0)
-      (direction "right")
-      (release-rate 150))
-    (entrance 
-      (position 997 866 110)
       (owner-id 0)
       (direction "right")
       (release-rate 150))))

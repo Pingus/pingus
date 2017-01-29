@@ -3,8 +3,8 @@
   (head 
     (license "GPLv3+")
     (levelname "Donw into the cave")
-    (description "You are alone and you have to go down the cave for some reason, is it perhaps the gold attracting you?
-Do not waste your time digging too much gold, at the end we do not take any thing material from this world into the other one.
+    (description "You are alone and you have to go down the cave for some unkown reason, is it perhaps the gold attracting you?
+Do not waste your time digging too much gold, at the end we do not take anything materialistic from this world into the other one.
 One piece of advice: avoid dark places, follow the light.")
     (author "yoram david")
     (number-of-pingus 1)
@@ -233,7 +233,7 @@ One piece of advice: avoid dark places, follow the light.")
       (position 255 222 0))
     (prefab 
       (name "prefabs/entrances/cloud")
-      (position 357 230 0)
+      (position 384 226 0)
       (overrides 
         (release-rate 500)
         (direction "right")
@@ -588,6 +588,35 @@ One piece of advice: avoid dark places, follow the light.")
         (modifier "ROT0"))
       (position 1 558 0)
       (speed 0)
-      (repeat 1))))
+      (repeat 1))
+    (spike 
+      (position 524 248 0))
+    (spike 
+      (position 281 216 0))
+    (spike 
+      (position 327 226 0))
+    (spike 
+      (position 304 217 0))
+    (spike 
+      (position 342 235 0))
+    (spike 
+      (position 367 245 0))
+    (spike 
+      (position 394 246 0))
+    (spike 
+      (position 422 246 0))
+    (spike 
+      (position 447 248 0))
+    (spike 
+      (position 472 247 0))
+    (spike 
+      (position 499 247 0))
+    (hotspot 
+      (surface 
+        (image "hotspots/signposts/danger")
+        (modifier "ROT0"))
+      (position 257 177 0)
+      (speed 0)
+      (parallax 0))))
 
 ;; EOF ;;

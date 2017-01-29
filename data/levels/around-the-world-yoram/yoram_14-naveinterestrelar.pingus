@@ -1688,6 +1688,38 @@
       (position 489 817 0))
     (spike 
       (position 1325 826 0))
+    (group 
+      (objects 
+        (groundpiece 
+          (type "transparent")
+          (surface 
+            (image "groundpieces/transparent/misc/sun")
+            (modifier "ROT0"))
+          (position 1520 298 0))
+        (groundpiece 
+          (type "transparent")
+          (surface 
+            (image "groundpieces/transparent/misc/sun")
+            (modifier "ROT0"))
+          (position 1257 33 0))
+        (groundpiece 
+          (type "transparent")
+          (surface 
+            (image "groundpieces/transparent/misc/sun")
+            (modifier "ROT0"))
+          (position 1326 98 0))
+        (groundpiece 
+          (type "transparent")
+          (surface 
+            (image "groundpieces/transparent/misc/sun")
+            (modifier "ROT0"))
+          (position 1391 167 0))
+        (groundpiece 
+          (type "transparent")
+          (surface 
+            (image "groundpieces/transparent/misc/sun")
+            (modifier "ROT0"))
+          (position 1458 231 0))))
     (teleporter 
       (position 1381 251 0)
       (target-id "linha1esq"))
@@ -1812,7 +1844,7 @@
       (target-id "linha1dir"))
     (teleporter 
       (position 320 398 0)
-      (target-id "linha6dir"))
+      (target-id "linha5dir"))
     (teleporter 
       (position 365 351 0)
       (target-id "linha7esq"))
@@ -1876,38 +1908,6 @@
       (id "linha13esq"))
     (teleporter-target 
       (position 539 688 0)
-      (id "linha11esq"))
-    (group 
-      (objects 
-        (groundpiece 
-          (type "transparent")
-          (surface 
-            (image "groundpieces/transparent/misc/sun")
-            (modifier "ROT0"))
-          (position 1520 298 0))
-        (groundpiece 
-          (type "transparent")
-          (surface 
-            (image "groundpieces/transparent/misc/sun")
-            (modifier "ROT0"))
-          (position 1257 33 0))
-        (groundpiece 
-          (type "transparent")
-          (surface 
-            (image "groundpieces/transparent/misc/sun")
-            (modifier "ROT0"))
-          (position 1326 98 0))
-        (groundpiece 
-          (type "transparent")
-          (surface 
-            (image "groundpieces/transparent/misc/sun")
-            (modifier "ROT0"))
-          (position 1391 167 0))
-        (groundpiece 
-          (type "transparent")
-          (surface 
-            (image "groundpieces/transparent/misc/sun")
-            (modifier "ROT0"))
-          (position 1458 231 0))))))
+      (id "linha11esq"))))
 
 ;; EOF ;;

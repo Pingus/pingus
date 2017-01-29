@@ -14,9 +14,9 @@
     (actions 
       (basher 3)
       (blocker 1)
-      (bridger 7)
+      (bridger 8)
       (jumper 17)
-      (miner 2)
+      (miner 3)
       (slider 4))
     (levelsize 3800 550))
   (objects 

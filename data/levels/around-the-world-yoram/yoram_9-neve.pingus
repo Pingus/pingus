@@ -3,7 +3,8 @@
   (head 
     (license "GPLv3+")
     (levelname "In the snow")
-    (description "This time the penguins are inside an igloo and you must bash your way out.")
+    (description "This time the pingus are inside an igloo and you must bash your way out.
+Good syncronization and timing is required.")
     (author "yoram david")
     (number-of-pingus 3)
     (number-to-save 3)
@@ -14,7 +15,7 @@
       (bridger 10)
       (jumper 75)
       (miner 30)
-      (slider 10))
+      (slider 15))
     (levelsize 1920 1000))
   (objects 
     (surface-background 
@@ -2933,6 +2934,12 @@
             (image "groundpieces/transparent/misc/black")
             (modifier "ROT90"))
           (position 723 -177 0))))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/transparent/xmas/icicle1")
+        (modifier "ROT180"))
+      (position 1197 283 0))
     (groundpiece 
       (type "remove")
       (surface 

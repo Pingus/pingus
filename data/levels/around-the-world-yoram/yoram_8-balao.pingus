@@ -3,11 +3,11 @@
   (head 
     (license "GPLv3+")
     (levelname "Hot air ballon")
-    (description "You left the swamps by air ballon but it has cought fire and you have to escape avoiding the flames.
-    You muust act quick to avoid the ballon hitting the rock.")
+    (description "You left the pyramids of Egypt by air ballon but it has cought fire and you have to escape avoiding the flames.
+    You must act quick to avoid the ballon hitting the rock.")
     (author "yoram david")
-    (number-of-pingus 10)
-    (number-to-save 10)
+    (number-of-pingus 15)
+    (number-to-save 5)
     (time -1)
     (music "")
     (actions 
@@ -625,12 +625,6 @@
         (modifier "ROT180FLIP"))
       (position 608 730 0))
     (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/xmas/snow1")
-        (modifier "ROT0"))
-      (position 506 1231 0))
-    (groundpiece 
       (type "remove")
       (surface 
         (image "groundpieces/remove/misc/rect1")
@@ -660,18 +654,6 @@
         (image "groundpieces/remove/misc/dia1")
         (modifier "ROT180"))
       (position 1229 737 0))
-    (exit 
-      (surface 
-        (image "exits/easter")
-        (modifier "ROT0"))
-      (position 561 1231 0)
-      (owner-id 0))
-    (groundpiece 
-      (type "ground")
-      (surface 
-        (image "groundpieces/ground/xmas/snow1")
-        (modifier "ROT0"))
-      (position 554 1230 0))
     (groundpiece 
       (type "solid")
       (surface 
@@ -1248,26 +1230,24 @@
             (image "groundpieces/ground/desert/smallsand")
             (modifier "ROT90"))
           (position 1090 292 0))))
-    (group 
-      (objects 
-        (groundpiece 
-          (type "solid")
-          (surface 
-            (image "groundpieces/ground/desert/smallsand")
-            (modifier "ROT90"))
-          (position 1051 417 0))
-        (groundpiece 
-          (type "solid")
-          (surface 
-            (image "groundpieces/ground/desert/smallsand")
-            (modifier "ROT90"))
-          (position 1051 357 0))
-        (groundpiece 
-          (type "solid")
-          (surface 
-            (image "groundpieces/ground/desert/smallsand")
-            (modifier "ROT90"))
-          (position 1051 292 0))))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/desert/smallsand")
+        (modifier "ROT90"))
+      (position 1051 417 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/desert/smallsand")
+        (modifier "ROT90"))
+      (position 1051 357 0))
+    (groundpiece 
+      (type "solid")
+      (surface 
+        (image "groundpieces/ground/desert/smallsand")
+        (modifier "ROT90"))
+      (position 1051 292 0))
     (group 
       (objects 
         (groundpiece 
@@ -1857,6 +1837,26 @@
                 (image "groundpieces/ground/space/smalltower")
                 (modifier "ROT90"))
               (position 743 681 0))))))
+    (group 
+      (objects 
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/xmas/snow1")
+            (modifier "ROT0"))
+          (position 517 1235 0))
+        (exit 
+          (surface 
+            (image "exits/easter")
+            (modifier "ROT0"))
+          (position 575 1236 0)
+          (owner-id 0))
+        (groundpiece 
+          (type "ground")
+          (surface 
+            (image "groundpieces/ground/xmas/snow1")
+            (modifier "ROT0"))
+          (position 565 1234 0))))
     (spike 
       (position 1034 178 10))
     (spike 

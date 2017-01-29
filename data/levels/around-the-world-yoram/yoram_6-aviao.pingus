@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Plane trip")
-    (description "You are on a plane to your next mission, unfotunately there is no airport and you have to exit the plane and deploy you parachute for a safe landing.")
+    (description "You are on a plane to your next mission, unfotunately you are low on fuel and there is no airport nearby and you have to exit the plane and deploy you parachute for a safe landing.")
     (author "yoram david")
     (number-of-pingus 14)
     (number-to-save 14)
@@ -1825,7 +1825,7 @@
       (surface 
         (image "groundpieces/solid/crystal/smallsolid")
         (modifier "ROT0"))
-      (position 1091 417 0))
+      (position 1082 416 0))
     (groundpiece 
       (type "solid")
       (surface 
