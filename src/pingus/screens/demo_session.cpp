@@ -18,6 +18,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <functional>
 
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
