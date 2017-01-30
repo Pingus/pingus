@@ -74,7 +74,7 @@ addons:
     - ubuntu-toolchain-r-test
     - llvm-toolchain-precise
     packages:
-    - clang-4.2
+    - clang-.*
     - g++-4.9
     - cmake
     - build-essential
