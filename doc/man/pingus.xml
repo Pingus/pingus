@@ -361,7 +361,7 @@
           <term><keycombo><keycap>Space</keycap></keycombo></term>
           <listitem>
             <para>
-              Hold to ast-forward
+              Hold to fast-forward
             </para>
           </listitem>
         </varlistentry>
@@ -674,7 +674,7 @@
       </para>
     </refsect2>
     <refsect2>
-      <title>UI Quircks</title>
+      <title>UI Quirks</title>
       <para>
         The Pingus level editor is best used with a combination of
         mouse and keyboard, all essential functions have keyboard
