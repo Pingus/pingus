@@ -6,6 +6,7 @@
 # Copyright (C) Harald Brass <brassh@web.de>, 2007.
 # Copyright (C) David Philippi <david@torangan.de>, 2003, 2004, 2007.
 # Copyright (C) Helge Kreutzmann <debian@helgefjell.de>, 2011, 2013.
+# Copyright (C) Markus Enzenberger <markus.enzenberger@gmail.com>, 2017
 # This file is distributed under the same license as the pingus package.
 #
 msgid ""
@@ -13,9 +14,8 @@ msgstr ""
 "Project-Id-Version: Pingus 0.7.6-1.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-12-24 22:39+0100\n"
-"PO-Revision-Date: 2013-08-13 19:21+0200\n"
-"Last-Translator: Helge Kreutzmann <debian@helgefjell.de>\n"
-"Language-Team: de <debian-l10n-german@lists.debian.org>\n"
+"PO-Revision-Date: 2017-09-17 18:11+0200\n"
+"Last-Translator: Markus Enzenberger <markus.enzenberger@gmail.com>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,11 +25,11 @@ msgstr ""
 
 #: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
-msgstr "Screenshot: speichere Bildschirmphoto als: "
+msgstr "Screenshot: speichere Bildschirmfoto als: "
 
 #: src/engine/display/screenshot.cpp:39
 msgid "Screenshot: Screenshot is done."
-msgstr "Screenshot: Bildschirmphoto wurde erstellt."
+msgstr "Screenshot: Bildschirmfoto wurde erstellt."
 
 #: src/engine/display/screenshot.cpp:124 src/engine/display/screenshot.cpp:152
 msgid "Screenshot: Couldn't write file: "
@@ -674,7 +674,7 @@ msgid ""
 "fullscreen   ::   F12: screenshot ::.."
 msgstr ""
 "..:: Strg-g: Maus festhalten   ::   F10: FPS-Zähler   ::   F11: "
-"Vollbild   ::   F12: Bildschirmphoto ::.."
+"Vollbild   ::   F12: Bildschirmfoto ::.."
 
 #: src/pingus/screens/level_menu.cpp:155
 msgid "Under Construction"
@@ -800,7 +800,7 @@ msgstr "Du hast alle getötet, nicht gut."
 
 #: src/pingus/screens/result_screen.cpp:216
 msgid "No-one got saved - I know you can do better."
-msgstr "Keiner wurde gerettet, ich weiss, dass Du es besser kannst."
+msgstr "Keiner wurde gerettet, ich weiß, dass Du es besser kannst."
 
 #: src/pingus/screens/result_screen.cpp:218
 msgid ""
@@ -1072,7 +1072,7 @@ msgid ""
 msgstr ""
 "Diesmal hast Du zwei Gruppen zu koordinieren, aber keine Panik, denn dieser "
 "Level gibt Dir genug Zeit zum Überlegen. Keine weiteren Tipps dieses Mal, "
-"aber Viel Glück! "
+"aber viel Glück! "
 
 #: data/levels/tutorial/snow14-grumbel.pingus:5
 msgid "Block'a Rock"
@@ -1090,7 +1090,7 @@ msgstr ""
 
 #: data/levels/tutorial/snow15-grumbel.pingus:5
 msgid "Climb, Climber,... Boom!"
-msgstr "Kletter, Kletter ... Bumm!"
+msgstr "Kletter, Kletterer, ... Bumm!"
 
 #: data/levels/tutorial/snow15-grumbel.pingus:6
 msgid ""
@@ -1114,7 +1114,7 @@ msgid ""
 "you could end up in the hole just before the exit, so think about how to "
 "avoid that. "
 msgstr ""
-"Und wieder musst Du die Fähigkeiten weise und vorsichtig kombinieren."
+"Und wieder musst Du die Fähigkeiten weise und vorsichtig kombinieren. "
 "Ansonsten könntest Du in dem Loch noch kurz vor dem Ausgang enden. Also "
 "denke nach, wie Du dies vermeiden kannst. "
 
@@ -1163,7 +1163,7 @@ msgstr ""
 
 #: data/levels/tutorial/snow21-grumbel.pingus:5
 msgid "Climb, Climber, climb... and build a bridge"
-msgstr "Kletter, Kletterer, kletter ... und bau' eine Brücke"
+msgstr "Kletter, Kletterer, kletter ... und bau eine Brücke"
 
 #: data/levels/tutorial/snow21-grumbel.pingus:6
 msgid ""
@@ -1186,10 +1186,11 @@ msgid ""
 "the stuff you need for this level in previous levels, so this shouldn't be "
 "too much of a problem for you. "
 msgstr ""
-"Wenn Du nicht genug Schweber hast, um alle Pingus zum Ausgang hinunter zu "
-"bringen, dann musst Du andere Wege finden, sie nach unten zu führen. Alles, "
-"was Du in diesem Level brauchst, solltest Du bereits in vorangegangen Leveln "
-"gelernt haben. Daher sollte dies kein sonderliches Problem darstellen. "
+"Wenn Du nicht genug Schweber hast, um alle Pingus zum Ausgang "
+"hinunterzubringen, dann musst Du andere Wege finden, sie nach unten zu "
+"führen. Alles, was Du in diesem Level brauchst, solltest Du bereits in "
+"vorangegangen Leveln gelernt haben. Daher sollte dies kein sonderliches "
+"Problem darstellen. "
 
 #: data/levels/tutorial/snow7-grumbel.pingus:5
 msgid "One must prepare, the rest must follow"
@@ -1208,7 +1209,7 @@ msgstr ""
 
 #: data/levels/tutorial/snow8-grumbel.pingus:5
 msgid "Dig and float, just don't fall and smash"
-msgstr "Graben und schweben, bloss nicht fallen und zerquetschen"
+msgstr "Graben und schweben, bloß nicht fallen und zerquetschen"
 
 #: data/levels/tutorial/snow8-grumbel.pingus:6
 msgid ""
@@ -1238,7 +1239,7 @@ msgstr ""
 "Level ist noch immer recht einfach. Benutze einfach das Wissen aus den "
 "vorherigen Leveln und es sollte kaum Probleme geben. Wenn Du glaubst, den "
 "Level nicht mehr lösen zu können, klicke doppelt auf den Armageddon-Knopf am "
-"unteren, rechten Rand. "
+"unteren rechten Rand. "
 
 #: data/levels/tutorial/solid-tutorial-grumbel.pingus:5
 msgid "Solid ground can block the path"
@@ -1276,7 +1277,7 @@ msgstr ""
 
 #: data/levels/halloween/halloween2-grumbel.pingus:5
 msgid "One Thousand and One Jumps"
-msgstr "Tausend und ein Sprung"
+msgstr "Tausendundein Sprung"
 
 #: data/levels/halloween/halloween2-grumbel.pingus:6
 msgid ""
@@ -1391,7 +1392,7 @@ msgid ""
 "hidden?"
 msgstr ""
 "Das ist bei weitem der tiefste Schacht, dem die Pingus bislang begegnet "
-"sind. Es erscheint naheliegend, eine Brücke darüber zu bauen, aber das kann "
+"sind. Es erscheint naheliegend, eine Brücke darüberzubauen, aber das kann "
 "nicht funktionieren. Der Ausgang ist tief im Schacht selbst gelegen, aber "
 "wenn Pingus herunterspringen, führt das nur dazu, dass sie zerschmettert am "
 "Boden zurückbleiben. Aber Du hast zwei Gruppen von Pingus zur Verfügung ... "
@@ -1418,7 +1419,7 @@ msgstr ""
 "den Ausgang! Aber warte, eine gute Seele hat ein Treppenhaus gebaut. Es "
 "scheint jedoch, dass das mühsame Werk des armen Narren nicht lange "
 "überdauert hat, denn die Treppe ist zerstört und voller Löcher. Kannst Du "
-"sie instandsetzen und über die Mauer hinweggelangen? Doch natürlich weisst "
+"sie instandsetzen und über die Mauer hinweggelangen? Doch natürlich weißt "
 "Du, dass die naheliegendste Lösung nicht immer die richtige ist. Aber Deine "
 "Pingus sind fast frei, und sie vertrauen auf Dein Geschick, sie nochmals in "
 "Sicherheit zu bringen. Wenn Dir das gelingt, hast Du sie ein für alle Mal "
@@ -1437,9 +1438,10 @@ msgid ""
 "require some extra cleverness."
 msgstr ""
 "Der Ausgang ist tief unten und die Pingus sind davon ganz schön weit weg. Der "
-"Pfad nach unten ist mit Klüften durchlöchert, daher wird Springen und Brücken "
-"bauen das hauptsächliche Werkzeug, um nach unten zu kommen. Sei aber "
-"vorsichtig, die letzten paar Schritte benötigen einige zusätzliche Klugheit."
+"Pfad nach unten ist mit Klüften durchlöchert, daher wird Springen und "
+"Brückenbauen das hauptsächliche Werkzeug sein, um nach unten zu kommen. Sei "
+"aber vorsichtig, die letzten paar Schritte benötigen einige zusätzliche "
+"Klugheit."
 
 #: data/levels/halloween2011/halloween11-grumbel.pingus:5
 msgid "Round and Round"
@@ -1460,7 +1462,7 @@ msgstr ""
 
 #: data/levels/halloween2011/halloween12-grumbel.pingus:5
 msgid "Red Herring Cave"
-msgstr "Rote-Herring-Höhle"
+msgstr "Falsche-Fährten-Höhle"
 
 #: data/levels/halloween2011/halloween12-grumbel.pingus:6
 msgid ""
@@ -1749,7 +1751,7 @@ msgid ""
 "have to work together."
 msgstr ""
 "Grabe einen Tunnel und sie könnten es zum Ausgang schaffen. Lochgräber, "
-"Bergmann und das Material haben zusammenzuarbeiten."
+"Bergmann und das Material müssen zusammenarbeiten."
 
 #: data/levels/desert/desertwaste1-grumbel.pingus:5
 msgid "The Roof"
@@ -1853,7 +1855,7 @@ msgstr ""
 
 #: data/levels/mysteryisland/madscientist1-lac.pingus:7
 msgid "At least the experiments are over..."
-msgstr "Wenigstens die Experimente sind vorbei ..."
+msgstr "Wenigstens sind die Experimente vorbei ..."
 
 #: data/levels/mysteryisland/madscientist1-lac.pingus:8
 msgid ""
@@ -1930,7 +1932,7 @@ msgid ""
 "reached a snowed in exit. That would be relatively easy to tunnel through "
 "but how would it be possible to tunnel through solid metal?"
 msgstr ""
-"Nach dem Passieren der Lavagrube liefen die Pinguine und liefen, bis sie "
+"Nach dem Passieren der Lavagrube liefen und liefen die Pinguine, bis sie "
 "einen verschneiten Ausgang fanden. Da könnten sie recht einfach "
 "durchtunneln, aber wie wäre es möglich, durch massives Metall zu tunneln?"
 
@@ -2147,7 +2149,7 @@ msgid ""
 "Finally you reached the factory. Watch out as there are many dangers. Use "
 "bombers to destroy the basement of the factory. Good luck!"
 msgstr ""
-"Endlich erreichst Du die Fabrik. Pass auf, es gibt viele Gefahren. Verwenden "
+"Endlich erreichst Du die Fabrik. Pass auf, es gibt viele Gefahren. Verwende "
 "die Bomber, um das Erdgeschoss der Fabrik zu zerstören. Viel Erfolg!"
 
 #: data/levels/factorycampaign/factory_campaign12.pingus:5
@@ -2285,7 +2287,7 @@ msgid ""
 msgstr ""
 "Hier könntest Du Dich etwas entspannen. Der Weg ist nicht kompliziert und ein "
 "bisschen Bomben und Fangen von Pingus sollten Dich ohne Probleme bis zum Ende "
-"bringen. Entspanne aber nicht zu sehr, Deine Ressourcen sind begrenzt, pass' "
+"bringen. Entspanne aber nicht zu sehr, Deine Ressourcen sind begrenzt, pass "
 "daher bei deren Benutzung auf."
 
 #: data/levels/xmas2011/xmas02-grumbel.pingus:5
@@ -2312,7 +2314,7 @@ msgid ""
 "learned, but you might have to use all that knowledge at once."
 msgstr ""
 "Brücken gibt es hier nur wenige, verschwende sie daher nicht. Abgesehen "
-"davon, solltest Du hier keine großen Probleme haben, alles notwendige "
+"davon solltest Du hier keine großen Probleme haben, alles notwendige "
 "solltest Du gelernt haben, aber Du musst es jetzt alles auf einmal anwenden."
 
 #: data/levels/xmas2011/xmas04-grumbel.pingus:5
@@ -2584,7 +2586,7 @@ msgid ""
 "\n"
 "To be continued..."
 msgstr ""
-"So sitzen die Pingus auf Ihrem Floss, fragen sich, was kommen mag und wohin es "
+"So sitzen die Pingus auf Ihrem Floß, fragen sich, was kommen mag und wohin es "
 "geht, während sie in den Sonnenuntergang treiben.\n"
 "\n"
 "Fortsetzung folgt ..."
@@ -3135,7 +3137,7 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ msgstr "F11 - fps-Zähler an/aus"
 
 #~ msgid "F12 - make screenshot"
-#~ msgstr "F12 - Bildschirmphoto erstellen"
+#~ msgstr "F12 - Bildschirmfoto erstellen"
 
 #~ msgid "Home - increase object size"
 #~ msgstr "Einfg - Objekt vergrößern"
@@ -3405,7 +3407,7 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ msgstr "Level-Editor starten (experimentell)"
 
 #~ msgid "Screenshot: Couldn't save screenshot"
-#~ msgstr "Screenshot: Bildschirmphoto konnte nicht gespeichert werden"
+#~ msgstr "Screenshot: Bildschirmfoto konnte nicht gespeichert werden"
 
 #~ msgid "WorldMap: File not found: "
 #~ msgstr "Worldmap: Datei nicht gefunden: "
