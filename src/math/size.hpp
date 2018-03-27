@@ -172,7 +172,7 @@ public:
   { return (width == s.width) && (height == s.height); }
 
   //: Size != Size operator (deep compare).
-  bool operator!=(const Size &s) const
+  bool operator!=(const Sizef &s) const
   { return (width != s.width) || (height != s.height); }
 
   //: Size *= Size operator.
