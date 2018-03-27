@@ -90,7 +90,7 @@ SnowParticleHolder::update ()
     it->pos.x += it->velocity.x;
     it->pos.y += it->velocity.y;
 
-    if (it->pos.y > world->get_height())
+    if (it->pos.y > static_cast<float>(world->get_height()))
     {
       it->alive = false;
       continue;

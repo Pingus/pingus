@@ -38,7 +38,7 @@ StringFormat::break_line (const std::string& text_, int width, const Font& font)
 
     if (UTF8::is_linebreak_character(*it))
     {
-      if ((line_width + word_width) > width)
+      if ((line_width + word_width) > static_cast<float>(width))
       {
         out << "\n" << word;
         line_width = word_width;
@@ -59,7 +59,7 @@ StringFormat::break_line (const std::string& text_, int width, const Font& font)
 
   std::string word = UTF8::substr(beg, UTF8::iterator(text, text.end()));
   float word_width = font.get_width(word);
-  if ((line_width + word_width) > width)
+  if ((line_width + word_width) > static_cast<float>(width))
   {
     out << "\n" << word;
   }

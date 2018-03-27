@@ -133,9 +133,9 @@ SurfaceBackground::update()
   {
     scroll_ox += scroll_x;
 
-    if (scroll_ox > bg_sprite.get_width())
+    if (scroll_ox > static_cast<float>(bg_sprite.get_width()))
       scroll_ox -= static_cast<float>(bg_sprite.get_width());
-    else if (-scroll_ox > bg_sprite.get_width())
+    else if (-scroll_ox > static_cast<float>(bg_sprite.get_width()))
       scroll_ox += static_cast<float>(bg_sprite.get_width());
   }
 
@@ -143,9 +143,9 @@ SurfaceBackground::update()
   {
     scroll_oy += scroll_y;
 
-    if (scroll_oy > bg_sprite.get_height())
+    if (scroll_oy > static_cast<float>(bg_sprite.get_height()))
       scroll_oy -= static_cast<float>(bg_sprite.get_height());
-    else if (-scroll_oy > bg_sprite.get_height())
+    else if (-scroll_oy > static_cast<float>(bg_sprite.get_height()))
       scroll_oy += static_cast<float>(bg_sprite.get_height());
   }
 }

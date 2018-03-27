@@ -65,7 +65,7 @@ RainParticleHolder::update ()
 
     if (it->splash)
     {
-      if (it->splash_frame >= rain_splash.get_frame_count())
+      if (static_cast<int>(it->splash_frame) >= rain_splash.get_frame_count())
       {
         it->alive = false;
         continue;
@@ -84,7 +84,7 @@ RainParticleHolder::update ()
       }
       else
       {
-        if (it->pos.y > world->get_height())
+        if (it->pos.y > static_cast<float>(world->get_height()))
         {
           it->alive = false;
           continue;
@@ -104,7 +104,7 @@ RainParticleHolder::draw (SceneContext& gc)
   for (std::vector<RainParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
   {
     // skip dead/invisible particles
-    if (!it->alive || it->pos.x > WorldObj::get_world()->get_width())
+    if (!it->alive || it->pos.x > static_cast<float>(WorldObj::get_world()->get_width()))
       continue;
 
     if (it->splash)

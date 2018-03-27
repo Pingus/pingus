@@ -55,7 +55,7 @@ StarfieldBackgroundStars::update ()
   x_pos += x_add;
   y_pos += y_add;
 
-  if (x_pos > WorldObj::get_world()->get_width())
+  if (x_pos > static_cast<float>(WorldObj::get_world()->get_width()))
   {
     x_pos = float(-globals::tile_size);
     y_pos = float(rand() % WorldObj::get_world()->get_height());

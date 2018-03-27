@@ -38,7 +38,7 @@ Slider::update ()
 {
   sprite[pingu->direction].update();
 
-  for (int i = 0; i < speed && rel_getpixel(1, 0) == Groundtype::GP_NOTHING; ++i)
+  for (int i = 0; static_cast<float>(i) < speed && rel_getpixel(1, 0) == Groundtype::GP_NOTHING; ++i)
   {
     pingu->set_x(pingu->get_x() + static_cast<float>(pingu->direction));
 
