@@ -77,10 +77,10 @@ Smasher::update ()
 
         for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
         {
-          if ((*pingu)->is_inside(static_cast<int>(pos.x + 30),
-                                  static_cast<int>(pos.y + 90),
-                                  static_cast<int>(pos.x + 250),
-                                  static_cast<int>(pos.y + 190)))
+          if ((*pingu)->is_inside(pos.x + 30,
+                                  pos.y + 90,
+                                  pos.x + 250,
+                                  pos.y + 190))
           {
             if ((*pingu)->get_action() != ActionName::SPLASHED)
               (*pingu)->set_action(ActionName::SPLASHED);

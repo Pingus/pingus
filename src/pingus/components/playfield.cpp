@@ -103,9 +103,9 @@ Playfield::current_pingu_find(const Vector2f& pos)
        pingu != server->get_world()->get_pingus()->end();
        ++pingu)
   {
-    if ((*pingu)->is_over(static_cast<int>(pos.x), static_cast<int>(pos.y)))
+    if ((*pingu)->is_over(pos.x, pos.y))
     {
-      dist = (*pingu)->dist(static_cast<int>(pos.x), static_cast<int>(pos.y));
+      dist = (*pingu)->dist(pos.x, pos.y);
 
       if (dist < min_dist)
       {

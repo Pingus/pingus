@@ -277,7 +277,7 @@ Pingu::set_status (PinguStatus s)
 
 // Returns true if the given koordinates are above the pingu
 bool
-Pingu::is_over (int x, int y)
+Pingu::is_over (float x, float y)
 {
   Vector3f center = get_center_pos ();
 
@@ -286,7 +286,7 @@ Pingu::is_over (int x, int y)
 }
 
 bool
-Pingu::is_inside (int x1, int y1, int x2, int y2)
+Pingu::is_inside (float x1, float y1, float x2, float y2)
 {
   assert (x1 < x2);
   assert (y1 < y2);
@@ -298,12 +298,12 @@ Pingu::is_inside (int x1, int y1, int x2, int y2)
 
 // Returns the distance between the Pingu and a given coordinate
 float
-Pingu::dist(int x, int y)
+Pingu::dist(float x, float y)
 {
   Vector3f p = get_center_pos ();
 
-  return Math::sqrt(((p.x - static_cast<float>(x)) * (p.x - static_cast<float>(x)) +
-                     (p.y - static_cast<float>(y)) * (p.y - static_cast<float>(y))));
+  return Math::sqrt(((p.x - x) * (p.x - x) +
+                     (p.y - y) * (p.y - y)));
 }
 
 // Let the pingu do his job (i.e. walk his way)

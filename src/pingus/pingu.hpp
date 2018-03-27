@@ -206,11 +206,11 @@ public:
       configurations, ought to be "0" in single player */
   std::string get_owner_str ();
 
-  bool   is_over (int x, int y);
+  bool   is_over (float x, float y);
 
-  bool   is_inside (int x1, int y1, int x2, int y2);
+  bool   is_inside (float x1, float y1, float x2, float y2);
 
-  float dist (int x, int y);
+  float dist (float x, float y);
 
   /** Return true if the pingu can be caught with the mouse and
       another action can be applied, false otherwise (exiter,

@@ -255,12 +255,12 @@ World::get_pingu (const Vector3f& pos)
   float distance = -1.0;
 
   for (PinguIter i = pingus->begin (); i != pingus->end (); ++i) {
-    if ((*i)->is_over(int(pos.x), int(pos.y)))
+    if ((*i)->is_over(pos.x, pos.y))
     {
-      if (distance == -1.0f || distance >= (*i)->dist(static_cast<int>(pos.x), static_cast<int>(pos.y)))
+      if (distance == -1.0f || distance >= (*i)->dist(pos.x, pos.y))
       {
         current_pingu = (*i);
-        distance = (*i)->dist(static_cast<int>(pos.x), static_cast<int>(pos.y));
+        distance = (*i)->dist(pos.x, pos.y);
       }
     }
   }
