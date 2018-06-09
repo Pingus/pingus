@@ -247,7 +247,7 @@ UTF8::iterator::next()
     idx = pos;
     chr = decode_utf8(*text, pos);
   }
-  catch (std::exception)
+  catch (std::exception&)
   {
     log_error("Malformed utf-8 sequence beginning with %1% found ", *(reinterpret_cast<const uint32_t*>(text->c_str() + pos)));
     chr = INVALID_UTF8_SEQUENCE;
