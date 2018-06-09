@@ -1,0 +1,39 @@
+image: ubuntu:latest
+
+before_script:
+  - apt-get -qq update
+  - apt-get -qq -y install lsb-release
+  - lsb_release -a
+  - apt-get -qq -y install
+    clang-6.0
+    g++-8
+    cmake
+    build-essential
+    libc++-dev
+    libogg-dev
+    libvorbis-dev
+    libglew-dev
+    libopenal-dev
+    libboost-all-dev
+    libsdl2-dev
+    libsdl2-image-dev
+    libsdl2-mixer-dev
+    libjsoncpp-dev
+
+build:gcc:
+  stage: build
+  script:
+    - mkdir build
+    - cd build
+    - CXX=g++ cmake .. -DWARNINGS=ON -DWERROR=ON -DBUILD_TESTS=ON -DBUILD_EXTRA=ON
+    - make
+
+build:clang:
+  stage: build
+  script:
+    - mkdir build
+    - cd build
+    - CXX=clang++-6.0 cmake .. -DWARNINGS=ON -DWERROR=ON -DBUILD_TESTS=ON -DBUILD_EXTRA=ON
+    - make
+
+# EOF #
