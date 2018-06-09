@@ -46,7 +46,7 @@ before_script:
     - mkdir build
     - cd build
     - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DWARNINGS=ON -DWERROR=ON -DBUILD_TESTS=ON -DBUILD_EXTRA=ON
-    - make
+    - make VERBOSE=1
 
 build:gcc:release:
   <<: *build_pingus
