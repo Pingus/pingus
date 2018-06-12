@@ -35,7 +35,7 @@ There are currently two mailing lists available:
 For information on how to subscribe to any of these lists have a look
 at:
 
-* http://pingus.seul.org/contact.html
+* http://pingus.gitlab.io/contact.html
 
 
 IRC
@@ -52,4 +52,4 @@ Bug Reports
 Bug reports, new levels and feature requests can be submitted to the
 issue tracker at:
 
-* https://github.com/Pingus/pingus/issues
+* https://gitlab.com/pingus/pingus/issues

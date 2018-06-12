@@ -36,7 +36,7 @@ Compilation
 Pingus uses git submodules for some parts of the code. To initialize
 those you can either run (when cloning the repository):
 
-    git clone --recursive https://github.com/Pingus/pingus.git
+    git clone --recursive https://gitlab.com/pingus/pingus.git
 
 Or run the following on an existing clone:
 
