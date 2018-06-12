@@ -175,6 +175,12 @@ if(BUILD_TESTS)
   add_executable(test_pingus ${TEST_PINGUS_SOURCES_CXX})
   target_include_directories(test_pingus PUBLIC src/ tests/)
   target_link_libraries(test_pingus libpingus gtest gtest_main ${CMAKE_THREAD_LIBS_INIT})
+
+  # add 'make test' target, use 'make test ARGS="-V"' or 'ctest -V' for verbose
+  enable_testing()
+  add_test(NAME test_pingus
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    COMMAND test_pingus)
 endif(BUILD_TESTS)
 
 install(TARGETS pingus
