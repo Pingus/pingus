@@ -31,8 +31,6 @@ before_script:
     libc++-dev
     libogg-dev
     libvorbis-dev
-    libglew-dev
-    libopenal-dev
     libboost-all-dev
     libsdl2-dev
     libsdl2-image-dev
