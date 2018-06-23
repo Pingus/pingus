@@ -71,4 +71,31 @@ build:clang:debug:
     CXX: clang++-6.0
     BUILD_TYPE: Debug
 
+build:flatpak:
+  stage: build
+  script:
+    - add-apt-repository -y ppa:alexlarsson/flatpak
+    - apt-get -qq update
+    - apt-get -qq -y install flatpak flatpak-builder
+    - flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    - flatpak install -y flathub org.freedesktop.Platform org.freedesktop.Sdk
+    - flatpak-builder --repo=build-flatpak-repo/ build-flatpak/ org.pingus.Pingus.json
+    - flatpak build-bundle build-flatpak-repo/ pingus.flatpak org.pingus.Pingus
+  artifacts:
+    paths:
+      - pingus.flatpak
+      - build-flatpak-repo
+
+pages:
+  stage: deploy
+  dependencies:
+    - build:flatpak
+  script:
+    - mkdir public.tmp/
+    - mv -v build-flatpak-repo public.tmp/flatpakrepo
+    - mv -vi public.tmp public
+  artifacts:
+    paths:
+    - public
+
 # EOF #
