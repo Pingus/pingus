@@ -37,6 +37,7 @@ before_script:
     libsdl2-mixer-dev
     libjsoncpp-dev
     libpng-dev
+    software-properties-common
 
 .build_pingus_template: &build_pingus
   stage: build
