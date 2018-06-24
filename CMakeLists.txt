@@ -203,5 +203,12 @@ install(FILES
   ${CMAKE_CURRENT_SOURCE_DIR}/doc/man/pingus.6
   DESTINATION ${CMAKE_INSTALL_MANDIR}/man6)
 
+install(FILES
+  pingus.desktop
+  DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
+
+install(FILES
+  data/images/icons/pingus.svg
+  DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/scalable/apps)
 
 # EOF #
