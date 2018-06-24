@@ -94,7 +94,7 @@ pages:
   script:
     - mkdir public.tmp/
     - mv -v build-flatpak-repo public.tmp/flatpakrepo
-    - mv -vi public.tmp public
+    - mv -v public.tmp public
   artifacts:
     paths:
     - public
