@@ -87,16 +87,16 @@ build:flatpak:
       - pingus.flatpak
       - build-flatpak-repo
 
-pages:
-  stage: deploy
-  dependencies:
-    - build:flatpak
-  script:
-    - mkdir public.tmp/
-    - mv -v build-flatpak-repo public.tmp/flatpakrepo
-    - mv -v public.tmp public
-  artifacts:
-    paths:
-    - public
+# pages:
+#   stage: deploy
+#   dependencies:
+#     - build:flatpak
+#   script:
+#     - mkdir public.tmp/
+#     - mv -v build-flatpak-repo public.tmp/flatpakrepo
+#     - mv -v public.tmp public
+#   artifacts:
+#     paths:
+#     - public
 
 # EOF #
