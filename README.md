@@ -53,3 +53,12 @@ Bug reports, new levels and feature requests can be submitted to the
 issue tracker at:
 
 * https://gitlab.com/pingus/pingus/issues
+
+
+Nightly Builds
+--------------
+
+Experimental nightly builds for Linux are available via [FlatPak](https://flatpak.org/):
+
+    sudo flatpak remote-add --no-gpg-verify pingus "https://gitlab.com/pingus/pingus/-/jobs/artifacts/master/raw/build-flatpak-repo?job=build:flatpak"
+    sudo flatpak install pingus org.pingus.Pingus
