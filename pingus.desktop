@@ -8,5 +8,4 @@ Type=Application
 Categories=Game;LogicGame;
 StartupNotify=false
 MimeType=application/x-pingus;application/x-pingus-worldmap;application/x-pingus-prefab
-Terminal=false
 Keywords=lemmings;obstacles;traps;penguins;
