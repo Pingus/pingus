@@ -29,8 +29,6 @@ before_script:
     cmake
     build-essential
     libc++-dev
-    libogg-dev
-    libvorbis-dev
     libboost-dev
     libboost-filesystem-dev
     libboost-system-dev
