@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<application>
+  <id>pingus</id>
+  <launchable type="desktop-id">pingus.desktop</launchable>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0+</project_license>
+  <summary>Guide groups of penguins through various obstacles</summary>
+  <description>
+    <p>
+      Pingus is a free Lemmings(tm) clone for GNU/Linux, Win32 and
+      other operating systems supported by SDL2. It is covered under
+      the GPL, check the file COPYING, for more information.
+    </p>
+  </description>
+  <url type="homepage">https://pingus.gitlab.io</url>
+  <screenshots>
+    <screenshot type="default">http://pingus.gitlab.io/images/screen_0.7.0-1.jpg</screenshot>
+    <screenshot>http://pingus.gitlab.io/images/screen_0.7.0-2.jpg</screenshot>
+    <screenshot>http://pingus.gitlab.io/images/screen_0.7.0-3.jpg</screenshot>
+    <screenshot>http://pingus.gitlab.io/images/screen_0.7.0-4.jpg</screenshot>
+    <screenshot>http://pingus.gitlab.io/images/screen_0.7.0-5.jpg</screenshot>
+    <screenshot>http://pingus.gitlab.io/images/screen_0.7.0-6.jpg</screenshot>
+  </screenshots>
+</application>

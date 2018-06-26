@@ -6,6 +6,7 @@
     "command": "pingus",
     "rename-icon": "pingus",
     "rename-desktop-file": "pingus.desktop",
+    "rename-appdata-file": "pingus.appdata.xml",
     "finish-args":
     [
 	"--socket=wayland",
