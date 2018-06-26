@@ -31,7 +31,10 @@ before_script:
     libc++-dev
     libogg-dev
     libvorbis-dev
-    libboost-all-dev
+    libboost-dev
+    libboost-filesystem-dev
+    libboost-system-dev
+    libboost-signals-dev
     libsdl2-dev
     libsdl2-image-dev
     libsdl2-mixer-dev
