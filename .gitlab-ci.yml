@@ -29,6 +29,7 @@ before_script:
     cmake
     build-essential
     desktop-file-utils
+    appstream-util
     libc++-dev
     libboost-dev
     libboost-filesystem-dev
