@@ -27,7 +27,9 @@
                 }
             ],
             "cleanup": [
-                "/include"
+                "/include",
+                "/lib/*.a",
+                "/lib/pkgconfig"
             ]
         },
         {
@@ -45,7 +47,8 @@
                 }
             ],
             "cleanup": [
-                "/include"
+                "/include",
+                "/lib/*.a"
             ]
         },
         {
