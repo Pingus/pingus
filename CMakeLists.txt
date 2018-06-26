@@ -181,6 +181,10 @@ if(BUILD_TESTS)
   add_test(NAME test_pingus
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMAND test_pingus)
+
+  add_test(NAME test_pingus_desktop
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    COMMAND desktop-file-validate pingus.desktop)
 endif(BUILD_TESTS)
 
 install(TARGETS pingus

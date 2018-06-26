@@ -28,6 +28,7 @@ before_script:
     g++-8
     cmake
     build-essential
+    desktop-file-utils
     libc++-dev
     libboost-dev
     libboost-filesystem-dev
