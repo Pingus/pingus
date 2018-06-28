@@ -77,6 +77,8 @@ public:
   void update ();
   void draw (SceneContext& gc);
 
+  bool is_solid_background() const override { return true; }
+
 private:
   SurfaceBackground (const SurfaceBackground&);
   SurfaceBackground& operator= (const SurfaceBackground&);

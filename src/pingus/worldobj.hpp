@@ -84,6 +84,9 @@ public:
    * specifies how much time is passed since the last update
    * delta = 1.0 means that one second of realtime has passed. */
   virtual void update ();
+
+  /** Returns true if the object covers the whole screen */
+  virtual bool is_solid_background() const;
 };
 
 #endif

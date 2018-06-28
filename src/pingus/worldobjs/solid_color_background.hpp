@@ -43,6 +43,8 @@ public:
 
   void draw (SceneContext& gc);
 
+  bool is_solid_background() const override { return true; }
+
 private:
   SolidColorBackground (const SolidColorBackground&);
   SolidColorBackground& operator= (const SolidColorBackground&);
