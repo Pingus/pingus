@@ -259,7 +259,6 @@ PingusMain::parse_args(int argc, char** argv)
         if (argp.get_argument() == "help")
         {
           std::cout << "Available renderers: " << std::endl;
-          std::cout << "   delta: Software rendering with dirty-rectangles" << std::endl;
           std::cout << "     sdl: Software rendering" << std::endl;
           std::cout << "  opengl: Hardware accelerated graphics" << std::endl;
           std::cout << "    null: No rendering at all, for debugging" << std::endl;

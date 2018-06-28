@@ -131,14 +131,12 @@ OptionMenu::OptionMenu() :
 
   auto renderer_box = util::make_unique<ChoiceBox>(Rect());
   renderer_box->add_choice("sdl");
-  renderer_box->add_choice("delta");
   renderer_box->add_choice("opengl");
 
   switch(config_manager.get_renderer())
   {
     case SDL_FRAMEBUFFER:    renderer_box->set_current_choice(0); break;
-    case DELTA_FRAMEBUFFER:  renderer_box->set_current_choice(1); break;
-    case OPENGL_FRAMEBUFFER: renderer_box->set_current_choice(2); break;
+    case OPENGL_FRAMEBUFFER: renderer_box->set_current_choice(1); break;
     default: assert(false && "unknown renderer type");
   }
 

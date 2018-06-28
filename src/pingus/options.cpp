@@ -31,9 +31,6 @@ std::string framebuffer_type_to_string(FramebufferType type)
 {
   switch(type)
   {
-    case DELTA_FRAMEBUFFER:
-      return "delta";
-
     case SDL_FRAMEBUFFER:
       return "sdl";
 
@@ -51,11 +48,7 @@ std::string framebuffer_type_to_string(FramebufferType type)
 
 FramebufferType framebuffer_type_from_string(const std::string& str)
 {
-  if (str == "delta")
-  {
-    return DELTA_FRAMEBUFFER;
-  }
-  else if (str == "sdl")
+  if (str == "sdl")
   {
     return SDL_FRAMEBUFFER;
   }
