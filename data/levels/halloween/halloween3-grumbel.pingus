@@ -47,6 +47,12 @@
     (groundpiece
       (type "ground")
       (surface
+        (image "groundpieces/ground/halloween/ground5")
+        (modifier "ROT0"))
+      (position 1081 334 0))
+    (groundpiece
+      (type "ground")
+      (surface
         (image "groundpieces/ground/halloween/ground1")
         (modifier "ROT0"))
       (position 971 1028 0))
@@ -393,7 +399,7 @@
       (surface
         (image "groundpieces/ground/halloween/ground1")
         (modifier "ROT0"))
-      (position 948 280 0))
+      (position 930 276 0))
     (groundpiece
       (type "ground")
       (surface
@@ -429,7 +435,7 @@
       (surface
         (image "groundpieces/ground/halloween/ground6")
         (modifier "ROT90"))
-      (position 1089 306 0))
+      (position 1093 204 0))
     (groundpiece
       (type "ground")
       (surface
@@ -556,12 +562,6 @@
         (image "groundpieces/ground/halloween/ground2")
         (modifier "ROT180"))
       (position 1002 423 0))
-    (groundpiece
-      (type "ground")
-      (surface
-        (image "groundpieces/ground/halloween/ground6")
-        (modifier "ROT90"))
-      (position 1110 237 0))
     (groundpiece
       (type "ground")
       (surface
@@ -807,7 +807,7 @@
       (surface
         (image "groundpieces/transparent/misc/moos4")
         (modifier "ROT0"))
-      (position 1146 409 0))
+      (position 1138 411 0))
     (groundpiece
       (type "transparent")
       (surface
@@ -1021,12 +1021,6 @@
     (groundpiece
       (type "transparent")
       (surface
-        (image "groundpieces/transparent/misc/moos5")
-        (modifier "ROT0"))
-      (position 1153 328 0))
-    (groundpiece
-      (type "transparent")
-      (surface
         (image "groundpieces/transparent/misc/moos6")
         (modifier "ROT0"))
       (position 1023 459 0))
@@ -1218,8 +1212,15 @@
       (position -45 1141 100)
       (speed 0)
       (repeat 32))
+    (hotspot
+      (surface
+        (image "entrances/halloween")
+        (modifier "ROT0"))
+      (position 1165 376 100)
+      (speed 0)
+      (parallax 0))
     (entrance
-      (position 391 400 110)
+      (position 390 400 110)
       (owner-id 0)
       (direction "right")
       (release-rate 150))
