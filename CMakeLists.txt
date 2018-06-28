@@ -118,6 +118,9 @@ add_executable(pingus src/main.cpp)
 set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
 target_link_libraries(pingus libpingus)
 
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/data
+  DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
 if(BUILD_EXTRA)
   file(GLOB PINGUS_EXTRA_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     extra/*.cpp)
