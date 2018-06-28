@@ -16,6 +16,7 @@
 
 #include "util/reader.hpp"
 
+#include <sstream>
 #include <fstream>
 #include <json/reader.h>
 #include <sexp/parser.hpp>
@@ -298,6 +299,13 @@ ReaderMapping::get_keys() const
     return m_impl->get_keys();
   else
     return {};
+}
+
+ReaderObject
+Reader::parse_string(std::string const& text)
+{
+  std::istringstream in(text);
+  return Reader::parse(in);
 }
 
 ReaderObject

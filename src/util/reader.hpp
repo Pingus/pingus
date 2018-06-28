@@ -116,6 +116,7 @@ public:
   static ReaderObject parse(std::istream& stream);
   static ReaderObject parse(const std::string& filename);
   static ReaderObject parse(const Pathname& pathname);
+  static ReaderObject parse_string(std::string const& text);
 
   /** Reads multiple trees from a file, for use with files that don't
       contain a root element */
