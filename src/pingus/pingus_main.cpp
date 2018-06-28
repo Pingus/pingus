@@ -642,7 +642,7 @@ PingusMain::run(int argc, char** argv)
     bool fullscreen = cmd_options.fullscreen.is_set() ? cmd_options.fullscreen.get() : false;
     bool resizable  = cmd_options.resizable.is_set()  ? cmd_options.resizable.get()  : true;
 
-    Size screen_size(800, 600);
+    Size screen_size(1024, 768);
     if (fullscreen)
     {
       if (cmd_options.fullscreen_resolution.is_set())
