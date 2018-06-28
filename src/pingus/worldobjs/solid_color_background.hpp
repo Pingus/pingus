@@ -26,7 +26,7 @@ class SolidColorBackgroundData;
 
 namespace WorldObjs {
 
-class SolidColorBackground : public WorldObj
+class SolidColorBackground final : public WorldObj
 {
 private:
   Color color;
@@ -35,15 +35,15 @@ public:
   SolidColorBackground(const ReaderMapping& reader);
 
   // FIXME: Make z_position editable
-  float get_z_pos () const { return -10; }
-  void set_pos(const Vector3f& p) {}
-  Vector3f get_pos() const { return Vector3f(); }
+  virtual float get_z_pos() const override { return -10; }
+  virtual void set_pos(const Vector3f& p) override {}
+  virtual Vector3f get_pos() const override { return Vector3f(); }
 
-  void update () {}
+  virtual void update() override {}
 
-  void draw (SceneContext& gc);
+  virtual void draw(SceneContext& gc) override;
 
-  bool is_solid_background() const override { return true; }
+  virtual bool is_solid_background() const override { return true; }
 
 private:
   SolidColorBackground (const SolidColorBackground&);

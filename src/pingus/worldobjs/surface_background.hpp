@@ -27,7 +27,7 @@ class SurfaceBackgroundData;
 
 namespace WorldObjs {
 
-class SurfaceBackground : public WorldObj
+class SurfaceBackground final : public WorldObj
 {
 private:
   float para_x;
@@ -70,14 +70,14 @@ private:
 public:
   SurfaceBackground(const ReaderMapping& reader);
 
-  float get_z_pos () const;
-  void set_pos(const Vector3f& p) { }
-  Vector3f get_pos() const { return Vector3f(); }
+  virtual float get_z_pos() const override;
+  virtual void set_pos(const Vector3f& p) override { }
+  virtual Vector3f get_pos() const override { return Vector3f(); }
 
-  void update ();
-  void draw (SceneContext& gc);
+  virtual void update() override;
+  virtual void draw(SceneContext& gc) override;
 
-  bool is_solid_background() const override { return true; }
+  virtual bool is_solid_background() const override { return true; }
 
 private:
   SurfaceBackground (const SurfaceBackground&);
