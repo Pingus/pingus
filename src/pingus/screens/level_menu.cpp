@@ -430,8 +430,8 @@ private:
 };
 
 LevelMenu::LevelMenu() :
-  x_pos((Display::get_width()  - globals::default_screen_width)/2),
-  y_pos((Display::get_height() - globals::default_screen_height)/2),
+  x_pos((Display::get_width()  - 800)/2),
+  y_pos((Display::get_height() - 600)/2),
   background("core/menu/wood"),
   blackboard("core/menu/blackboard"),
   ok_button(),
@@ -551,8 +551,8 @@ LevelMenu::resize(const Size& size_)
 {
   GUIScreen::resize(size_);
 
-  x_pos = (size.width  - globals::default_screen_width)/2;
-  y_pos = (size.height - globals::default_screen_height)/2;
+  x_pos = (size.width  - 800)/2;
+  y_pos = (size.height - 600)/2;
 
   levelset_selector->set_rect(Rect(Vector2i(x_pos + 60, y_pos + 50), Size(680, 500)));
   level_selector   ->set_rect(Rect(Vector2i(x_pos + 60, y_pos + 50), Size(680, 500)));

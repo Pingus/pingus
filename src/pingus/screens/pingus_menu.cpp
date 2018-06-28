@@ -222,22 +222,24 @@ PingusMenu::create_background(const Size& size_)
   int w = size_.width;
   int h = size_.height;
 
+  Size base(800, 600);
+
   // We only need to scale the background main menu images if the screen
   // resolution is not default
-  if (w != globals::default_screen_width ||
-      h != globals::default_screen_height)
+  if (w != base.width ||
+      h != base.height)
   {
-    layer1 = layer1.scale(w, 185 * h / globals::default_screen_height);
-    layer2 = layer2.scale(w, 362 * h / globals::default_screen_height);
-    layer3 = layer3.scale(w, 306 * h / globals::default_screen_height);
-    layer4 = layer4.scale(w, 171 * h / globals::default_screen_height);
-    layer5 = layer5.scale(302 * w / globals::default_screen_width, 104 * h / globals::default_screen_height);
+    layer1 = layer1.scale(w, 185 * h / base.height);
+    layer2 = layer2.scale(w, 362 * h / base.height);
+    layer3 = layer3.scale(w, 306 * h / base.height);
+    layer4 = layer4.scale(w, 171 * h / base.height);
+    layer5 = layer5.scale(302 * w / base.width, 104 * h / base.height);
 
     background->add_layer(Sprite(layer1), 0, 0, 12, 0);
-    background->add_layer(Sprite(layer2), 0, 150 * static_cast<float>(h) / static_cast<float>(globals::default_screen_height), 25, 0);
-    background->add_layer(Sprite(layer3), 0, 200 * static_cast<float>(h) / static_cast<float>(globals::default_screen_height), 50, 0);
-    background->add_layer(Sprite(layer4), 0, 429 * static_cast<float>(h) / static_cast<float>(globals::default_screen_height), 100, 0);
-    background->add_layer(Sprite(layer5), 0, 500 * static_cast<float>(h) / static_cast<float>(globals::default_screen_height), 200, 0);
+    background->add_layer(Sprite(layer2), 0, 150 * static_cast<float>(h) / static_cast<float>(base.height), 25, 0);
+    background->add_layer(Sprite(layer3), 0, 200 * static_cast<float>(h) / static_cast<float>(base.height), 50, 0);
+    background->add_layer(Sprite(layer4), 0, 429 * static_cast<float>(h) / static_cast<float>(base.height), 100, 0);
+    background->add_layer(Sprite(layer5), 0, 500 * static_cast<float>(h) / static_cast<float>(base.height), 200, 0);
   }
   else
   {

@@ -38,8 +38,6 @@ extern bool        developer_mode;                  ///< --developer-mode
 extern bool        auto_scrolling;                  ///< --enable-auto-scrolling
 extern bool        drag_drop_scrolling;
 extern int         tile_size;                       ///< --tile-size
-extern int         default_screen_width;            ///< default screen width
-extern int         default_screen_height;           ///< default screen height
 extern bool        draw_collision_map;              ///<
 extern bool        software_cursor;                 ///< --enable-swcursor
 
