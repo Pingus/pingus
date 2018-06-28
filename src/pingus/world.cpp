@@ -33,12 +33,6 @@
 #include "pingus/worldobjs/entrance.hpp"
 #include "util/log.hpp"
 
-static
-bool WorldObj_less (WorldObj* a, WorldObj* b)
-{
-  return a->get_z_pos () < b->get_z_pos ();
-}
-
 World::World(const PingusLevel& plf) :
   ambient_light(Color(plf.get_ambient_light())),
   gfx_map(new GroundMap(plf.get_size().width, plf.get_size().height)),
@@ -99,7 +93,11 @@ World::init_worldobjs(const PingusLevel& plf)
 
   world_obj.push_back(pingus);
 
-  std::stable_sort (world_obj.begin (), world_obj.end (), WorldObj_less);
+  std::stable_sort(world_obj.begin(), world_obj.end(),
+                   [](WorldObj* lhs, WorldObj* rhs)
+                   {
+                     return lhs->get_z_pos() < rhs->get_z_pos();
+                   });
 
   // Drawing all world objs to the colmap, gfx, or what ever the
   // objects want to do
