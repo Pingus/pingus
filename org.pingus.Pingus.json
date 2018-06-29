@@ -1,30 +1,31 @@
 {
-    "app-id": "org.pingus.Pingus",
+    "app-id": "org.seul.pingus.Pingus",
     "runtime": "org.freedesktop.Platform",
     "runtime-version": "1.6",
     "sdk": "org.freedesktop.Sdk",
-    "command": "pingus",
     "rename-icon": "pingus",
     "rename-desktop-file": "pingus.desktop",
     "rename-appdata-file": "pingus.appdata.xml",
-    "finish-args":
-    [
-	"--socket=wayland",
-	"--socket=x11",
-	"--share=ipc",
-	"--socket=pulseaudio",
-	"--share=network",
-	"--device=all"
+    "finish-args": [
+        "--device=all",
+        "--share=ipc",
+        "--socket=x11",
+        "--socket=pulseaudio",
+        "--socket=wayland"
     ],
     "modules": [
         {
             "name": "jsoncpp",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DCMAKE_INSTALL_PREFIX:PATH=/app"
+            ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/open-source-parsers/jsoncpp/archive/1.7.5.tar.gz",
-                    "sha256": "4338c6cab8af8dee6cdfd54e6218bd0533785f552c6162bb083f8dd28bf8fbbe"
+                    "url": "https://github.com/open-source-parsers/jsoncpp/archive/1.8.4.tar.gz",
+                    "sha256": "c49deac9e0933bcb7044f08516861a2d560988540b23de2ac1ad443b219afdb6"
                 }
             ],
             "cleanup": [
@@ -54,7 +55,11 @@
         },
         {
             "name": "pingus",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DCMAKE_INSTALL_PREFIX:PATH=/app"
+            ],
             "sources": [
                 {
                     "type": "git",
