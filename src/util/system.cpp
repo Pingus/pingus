@@ -37,6 +37,7 @@
 #  include <unistd.h>
 #  include <errno.h>
 #  include <boost/filesystem.hpp>
+#  include <xdg.h>
 #else /* WIN32 */
 #  include <windows.h>
 #  include <direct.h>
@@ -340,23 +341,7 @@ System::find_userdir()
   }
 #endif
 
-  char* config_dir = getenv("XDG_CONFIG_HOME");
-  if (!config_dir || strcmp(config_dir, "") == 0)
-  {
-    char* homedir = getenv("HOME");
-    if (homedir && strcmp(homedir, "") != 0)
-    {
-      return std::string(homedir) + "/.config/pingus-0.8/";
-    }
-    else
-    {
-      raise_exception(std::runtime_error, "can't find userdir as neither $HOME nor $XDG_CONFIG_HOME is set");
-    }
-  }
-  else
-  {
-    return std::string(config_dir) + "/pingus-0.8/";
-  }
+  return (xdg::config().home() / "pingus-0.8/").string();
 #endif
 }
 
