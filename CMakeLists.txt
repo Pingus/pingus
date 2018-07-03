@@ -56,7 +56,8 @@ include_directories(src/)
 include_directories(SYSTEM
   external/tinygettext/include/
   external/sexp-cpp/include/
-  external/logmich/include/)
+  external/logmich/include/
+  external/xdg/)
 
 file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/editor/*.cpp
@@ -93,6 +94,9 @@ file(GLOB LOGMICH_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   external/logmich/src/*.cpp)
 add_library(logmich STATIC ${LOGMICH_SOURCES_CXX})
 
+add_library(xdg STATIC external/xdg/xdg.cpp)
+target_compile_options(xdg PRIVATE -Wno-effc++)
+
 add_library(libpingus STATIC ${PINGUS_SOURCES_CXX})
 set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
 target_include_directories(libpingus PUBLIC
@@ -104,6 +108,7 @@ target_link_libraries(libpingus PUBLIC
   logmich
   tinygettext
   sexp
+  xdg
   ${Boost_LIBRARIES}
   ${SDL2_LIBRARIES}
   ${SDL2IMAGE_LIBRARIES}
