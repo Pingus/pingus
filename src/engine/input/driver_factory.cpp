@@ -20,18 +20,6 @@
 #include "engine/input/sdl_driver.hpp"
 #include "util/mem.hpp"
 
-#ifdef HAVE_CWIID
-#  include "engine/input/wiimote/wiimote_driver.hpp"
-#endif
-
-#ifdef HAVE_XINPUT
-#  include "engine/input/xinput/xinput_driver.hpp"
-#endif
-
-#ifdef HAVE_LINUXEVDEV
-#  include "engine/input/evdev/evdev_driver.hpp"
-#endif
-
 namespace Input {
 
 std::unique_ptr<Driver>
@@ -45,12 +33,6 @@ DriverFactory::create(const std::string& name, Manager* manager)
   {
     return util::make_unique<CoreDriver>(manager);
   }
-#ifdef HAVE_CWIID
-  else if (name == "wiimote")
-  {
-    return util::make_unique<WiimoteDriver>();
-  }
-#endif
   else
   {
     return 0;
