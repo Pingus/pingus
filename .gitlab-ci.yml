@@ -83,8 +83,8 @@ build:flatpak:
     - apt-get -qq -y install flatpak flatpak-builder
     - flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     - flatpak install -y flathub org.freedesktop.Platform org.freedesktop.Sdk
-    - flatpak-builder --repo=build-flatpak-repo/ build-flatpak/ org.pingus.Pingus.json
-    - flatpak build-bundle build-flatpak-repo/ pingus.flatpak org.pingus.Pingus
+    - flatpak-builder --repo=build-flatpak-repo/ build-flatpak/ org.seul.pingus.Pingus.json
+    - flatpak build-bundle build-flatpak-repo/ pingus.flatpak org.seul.pingus.Pingus.json
   artifacts:
     paths:
       - pingus.flatpak
