@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<application>
-  <id type="desktop">pingus.desktop</id>
-  <name>Pingus</name>
+<!-- Copyright 2018 Ingo Ruhnke <grumbel@gmail.com> -->
+<component type="desktop-application">
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <content_rating type="oars-1.1">
@@ -11,15 +9,27 @@
     <content_attribute id="language-profanity">mild</content_attribute>
     <content_attribute id="language-humor">mild</content_attribute>
   </content_rating>
+  <name>Pingus</name>
   <summary>Guide groups of penguins through various obstacles</summary>
   <description>
     <p>
-      Pingus is a free Lemmings(tm) clone for GNU/Linux, Win32 and
-      other operating systems supported by SDL2. It is covered under
-      the GPL, check the file COPYING, for more information.
+      Pingus is a puzzle game where you need to save all your little penguins
+      using the capabilities provided to you in the current level.
+    </p>
+    <p>
+      The basic game idea is to be like Lemmings game.
+      This versions has some other cool
+      stuff like a world map and some very cool secret levels.
     </p>
   </description>
+  <developer_name>Ingo Ruhnke</developer_name>
+  <update_contact>grumbel@gmail.com</update_contact>
   <url type="homepage">https://pingus.gitlab.io</url>
+  <url type="bugtracker">https://gitlab.com/pingus/pingus/issues</url>
+  <categories>
+    <category>Game</category>
+    <category>LogicGame</category>
+  </categories>
   <screenshots>
     <screenshot type="default">http://pingus.gitlab.io/images/screen_0.7.0-1.jpg</screenshot>
     <screenshot>http://pingus.gitlab.io/images/screen_0.7.0-2.jpg</screenshot>
@@ -27,4 +37,7 @@
     <screenshot>http://pingus.gitlab.io/images/screen_0.7.0-4.jpg</screenshot>
     <screenshot>http://pingus.gitlab.io/images/screen_0.7.0-5.jpg</screenshot>
   </screenshots>
-</application>
+  <releases>
+    <release version="@GIT_REPO_VERSION@" date="@GIT_REPO_DATE@" />
+  </releases>
+</component>
