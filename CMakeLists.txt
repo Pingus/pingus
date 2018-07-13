@@ -37,6 +37,25 @@ pkg_search_module(JSONCPP REQUIRED jsoncpp)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
 
+if (BUILD_TESTS)
+  # add 'make test' target, use 'make test ARGS="-V"' or 'ctest -V' for verbose
+  enable_testing()
+endif(BUILD_TESTS)
+
+find_package(Git)
+if(GIT_FOUND AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
+  execute_process(COMMAND ${GIT_EXECUTABLE} describe --tags --always HEAD
+    OUTPUT_VARIABLE GIT_REPO_VERSION
+    OUTPUT_STRIP_TRAILING_WHITESPACE)
+
+  execute_process(COMMAND ${GIT_EXECUTABLE} log -n 1 --pretty=%cd --date=format:%Y-%m-%d ${GIT_REPO_VERSION}
+    OUTPUT_VARIABLE GIT_REPO_DATE
+    OUTPUT_STRIP_TRAILING_WHITESPACE)
+else()
+  set(GIT_REPO_VERSION "${PROJECT_VERSION}")
+  string(TIMESTAMP GIT_REPO_DATE "%Y-%m-%d")
+endif()
+
 if(WARNINGS)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -Wall -Wextra -Wnon-virtual-dtor -Weffc++")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wold-style-cast -Wshadow -Wcast-qual -Wconversion")
@@ -184,8 +203,6 @@ if(BUILD_TESTS)
   target_include_directories(test_pingus PUBLIC src/ tests/)
   target_link_libraries(test_pingus libpingus gtest gtest_main ${CMAKE_THREAD_LIBS_INIT})
 
-  # add 'make test' target, use 'make test ARGS="-V"' or 'ctest -V' for verbose
-  enable_testing()
   add_test(NAME test_pingus
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMAND test_pingus)
@@ -224,11 +241,17 @@ install(FILES
   DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
 
 install(FILES
-  pingus.appdata.xml
-  DESTINATION ${CMAKE_INSTALL_DATADIR}/metainfo)
-
-install(FILES
   data/images/icons/pingus.svg
   DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/scalable/apps)
+
+configure_file(pingus.appdata.xml.in ${CMAKE_CURRENT_BINARY_DIR}/pingus.appdata.xml)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/pingus.appdata.xml
+  DESTINATION ${CMAKE_INSTALL_DATADIR}/metainfo)
+
+if (BUILD_TESTS)
+  add_test(NAME pingus.appdata.xml
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    COMMAND appstream-util validate-relax ${CMAKE_CURRENT_BINARY_DIR}/pingus.appdata.xml)
+endif(BUILD_TESTS)
 
 # EOF #
