@@ -13,13 +13,16 @@
   <summary>Guide groups of penguins through various obstacles</summary>
   <description>
     <p>
-      Pingus is a puzzle game where you need to save all your little penguins
-      using the capabilities provided to you in the current level.
+      A 2d side scrolling puzzle game where you guide large groups of
+      little penguins through various obstacles and dangers using
+      their numerous talents.
     </p>
     <p>
-      The basic game idea is to be like Lemmings game.
-      This versions has some other cool
-      stuff like a world map and some very cool secret levels.
+      A level editor is included to allow building your own levels and
+      numerous user contributed levels are included as well.
+    </p>
+    <p>
+      The game is heavily inspired by the classic Lemmings.
     </p>
   </description>
   <developer_name>Ingo Ruhnke</developer_name>
