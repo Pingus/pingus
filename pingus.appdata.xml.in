@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2018 Ingo Ruhnke <grumbel@gmail.com> -->
 <component type="desktop-application">
+  <id>org.seul.pingus.Pingus</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <content_rating type="oars-1.1">
