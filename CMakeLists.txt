@@ -210,10 +210,6 @@ if(BUILD_TESTS)
   add_test(NAME test_pingus_desktop
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMAND desktop-file-validate pingus.desktop)
-
-  add_test(NAME test_pingus_appdata
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    COMMAND appstream-util validate-relax pingus.appdata.xml)
 endif(BUILD_TESTS)
 
 install(TARGETS pingus
