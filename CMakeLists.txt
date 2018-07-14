@@ -122,7 +122,7 @@ target_include_directories(libpingus PUBLIC
   ${SDL2_INCLUDE_DIRS}
   ${SDL2IMAGE_INCLUDE_DIRS}
   ${Boost_INCLUDE_DIRS})
-target_compile_definitions(libpingus PUBLIC -DVERSION="0.8.0")
+target_compile_definitions(libpingus PUBLIC -DVERSION="${GIT_REPO_VERSION}")
 target_link_libraries(libpingus PUBLIC
   logmich
   tinygettext
