@@ -134,6 +134,8 @@ void
 World::draw (SceneContext& gc)
 {
   WorldObj::set_world(this);
+  
+  gc.color().fill_screen(Color(0, 0, 0));
 
   gc.light().fill_screen(Color(ambient_light));
 
