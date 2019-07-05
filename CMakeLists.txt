@@ -34,7 +34,7 @@ pkg_search_module(SDL2MIXER REQUIRED SDL2_mixer>=2.0.0)
 pkg_search_module(PNG REQUIRED libpng)
 pkg_search_module(JSONCPP REQUIRED jsoncpp)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 
 if (BUILD_TESTS)
   # add 'make test' target, use 'make test ARGS="-V"' or 'ctest -V' for verbose
