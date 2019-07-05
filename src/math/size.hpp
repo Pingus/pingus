@@ -60,10 +60,8 @@ public:
     : width(width_), height(height_)
   {}
 
-  Size(const Size &s)
-    : width(s.width),
-      height(s.height)
-  {}
+  Size(const Size&) = default;
+  Size& operator=(const Size&) = default;
 
   explicit Size(const Sizef& s);
 

@@ -59,6 +59,9 @@ public:
       bottom(0)
   {}
 
+  Rect(const Rect&) = default;
+  Rect& operator=(const Rect&) = default;
+
   explicit Rect(const Rectf& rect);
 
   Rect(int new_left, int new_top, int new_right, int new_bottom)
@@ -73,13 +76,6 @@ public:
       top(p.y),
       right(left + size.width),
       bottom(top + size.height)
-  {}
-
-  Rect(const Rect &rect)
-    : left(rect.left),
-      top(rect.top),
-      right(rect.right),
-      bottom(rect.bottom)
   {}
 
   Rect grow(int b) const {
