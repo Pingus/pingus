@@ -258,7 +258,7 @@ CoreDriver::create_scroller(const ReaderObject& reader_object, Control* parent)
     if (x_axis && y_axis)
     {
       axis->setup(std::move(x_axis), std::move(y_axis), std::move(button));
-      return std::move(axis);
+      return axis;
     }
     else
     {
@@ -309,7 +309,7 @@ CoreDriver::create_scroller(const ReaderObject& reader_object, Control* parent)
                     std::move(down_button),
                     std::move(left_button),
                     std::move(right_button));
-    return std::move(scroller);
+    return scroller;
   }
   else
   {
@@ -353,7 +353,7 @@ CoreDriver::create_pointer(const ReaderObject& reader_object, Control* parent)
     if (x_axis && y_axis)
     {
       axis->setup(std::move(x_axis), std::move(y_axis), std::move(button));
-      return std::move(axis);
+      return axis;
     }
     else
     {
