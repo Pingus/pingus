@@ -126,12 +126,12 @@ class Project:
     def configure_end(self):
         self.env = self.conf.Finish()
 
-        print "Reports:"
-        print self.reports
+        print("Reports:")
+        print(self.reports)
 
         if not self.fatal_error == "":
-            print "Fatal Errors:"
-            print self.fatal_error
+            print("Fatal Errors:")
+            print(self.fatal_error)
             Exit(1)
 
     def configure_gxx(self):
