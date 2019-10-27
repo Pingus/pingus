@@ -166,7 +166,7 @@ class Project:
                                                      'src/engine/input/xinput/xinput_device.cpp'])
 
     def configure_boost(self):
-        if not self.conf.CheckLibWithHeader('boost_signals', 'boost/signals2.hpp', 'c++'):
+        if not self.conf.CheckHeader('boost/signals2.hpp', '<>', 'c++'):
             self.fatal_error += "  * library 'boost_signals2' not found\n"
         if not self.conf.CheckLib('boost_system', '', '', 'c++'):
             self.fatal_error += "  * library 'boost_system' not found\n"
