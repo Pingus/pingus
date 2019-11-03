@@ -26,6 +26,7 @@ include(GNUInstallDirs)
 
 find_package(Threads REQUIRED)
 find_package(PkgConfig REQUIRED)
+set(OpenGL_GL_PREFERENCE "LEGACY")
 find_package(OpenGL REQUIRED)
 find_package(Boost COMPONENTS REQUIRED)
 pkg_search_module(SDL2 REQUIRED sdl2)
