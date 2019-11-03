@@ -66,6 +66,8 @@ class Project:
     def configure_begin(self):
         self.opts = Variables("custom.py", ARGUMENTS)
         self.opts.Add('BUILD', 'Set the build type', "default")
+        self.opts.Add('BUILD_TESTS', 'Build tests', False)
+        self.opts.Add('BUILD_EXTRA', 'Build tests', True)
         self.opts.Add('CC', 'C Compiler', 'gcc')
         self.opts.Add('CXX', 'C++ Compiler', 'g++')
     #   self.opts.Add('debug', 'Build with debugging options', 0)
@@ -248,17 +250,21 @@ class Project:
         self.env.Default(self.env.Program('pingus', ['src/main.cpp', libpingus]))
 
         # build test and utils
-        for filename in Glob("test/*_test.cpp", strings=True):
-            self.env.Alias('test', self.env.Program(filename[:-4], [filename, libpingus]))
-        for filename in Glob("test/*_util.cpp", strings=True):
-            self.env.Alias('test', self.env.Program(filename[:-4], [filename, libpingus]))
+        if self.env['BUILD_TESTS']:
+            for filename in Glob("test/*_test.cpp", strings=True):
+                self.env.Alias('test', self.env.Program(filename[:-4], [filename, libpingus]))
+            for filename in Glob("test/*_util.cpp", strings=True):
+                self.env.Alias('test', self.env.Program(filename[:-4], [filename, libpingus]))
 
         # build extra stuff
-        for filename in Glob("extra/*.cpp", strings=True):
-            self.env.Alias('extra', self.env.Program(filename[:-4], [filename, libpingus]))
+        if self.env['BUILD_EXTRA']:
+            for filename in Glob("extra/*.cpp", strings=True):
+                self.env.Alias('extra', self.env.Program(filename[:-4], [filename, libpingus]))
+
 
 project = Project()
 project.configure()
 project.build()
+
 
 ## EOF ##
