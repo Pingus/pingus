@@ -84,7 +84,7 @@ class Project:
 
         self.opts.Add(BoolVariable('with_opengl',        'Build with OpenGL support', True))
         self.opts.Add(BoolVariable('with_xinput',        'Build with Xinput support', False))
-        self.opts.Add(BoolVariable('with_linuxevdev',    'Build with Linux evdev support',  sys.platform == "linux2"))
+        self.opts.Add(BoolVariable('with_linuxevdev',    'Build with Linux evdev support',  sys.platform.startswith("linux")))
         self.opts.Add(BoolVariable('with_wiimote',       'Build with Wiimote support', False))
         self.opts.Add(BoolVariable('ignore_errors',      'Ignore any fatal configuration errors', False))
         self.opts.Add('optional_sources', 'Additional source files', [])
