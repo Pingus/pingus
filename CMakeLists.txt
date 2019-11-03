@@ -120,6 +120,7 @@ set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
 target_include_directories(libpingus PUBLIC
   ${SDL2_INCLUDE_DIRS}
   ${SDL2IMAGE_INCLUDE_DIRS}
+  ${SDL2MIXER_INCLUDE_DIRS}
   ${Boost_INCLUDE_DIRS})
 target_compile_definitions(libpingus PUBLIC -DVERSION="${GIT_REPO_VERSION}")
 target_link_libraries(libpingus PUBLIC
