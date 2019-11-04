@@ -315,15 +315,16 @@ Reader::parse(std::istream& stream)
   stream.unget();
   if (c == '{')
   {
-    Json::Reader reader;
+    Json::CharReaderBuilder builder;
+    std::string errs;
     Json::Value root;
-    if (reader.parse(stream, root))
+    if (Json::parseFromStream(builder, stream, &root, &errs))
     {
       return ReaderObject(std::make_shared<JsonReaderObjectImpl>(root));
     }
     else
     {
-      log_error("json parse error: %1%", reader.getFormattedErrorMessages());
+      log_error("json parse error: %1%", errs);
       return ReaderObject();
     }
   }

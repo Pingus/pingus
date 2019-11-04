@@ -241,14 +241,17 @@ JsonWriterImpl::flush()
   std::stringstream out;
   if (false)
   {
-    Json::StyledStreamWriter writer("  ");
-    writer.write(out, m_stack.back());
+    Json::StreamWriterBuilder builder;
+    builder["indentation"] = "   ";
+    std::unique_ptr<Json::StreamWriter> writer(builder.newStreamWriter());
+    writer->write(m_stack.back(), &out);
     strip_trailing_whitespace(m_out, out);
   }
   else
   {
-    Json::FastWriter writer;
-    m_out << writer.write(m_stack.back());
+    Json::StreamWriterBuilder builder;
+    std::unique_ptr<Json::StreamWriter> writer(builder.newStreamWriter());
+    writer->write(m_stack.back(), &m_out);
   }
 }
 
