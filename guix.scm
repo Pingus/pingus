@@ -19,10 +19,13 @@
              (guix git-download)
              (guix licenses)
              (guix packages)
+             (gnu packages audio)
              (gnu packages boost)
+             (gnu packages freedesktop)
              (gnu packages game-development)
              (gnu packages gcc)
              (gnu packages gl)
+             (gnu packages glib)
              (gnu packages image)
              (gnu packages pkg-config)
              (gnu packages python-xyz)
@@ -60,10 +63,15 @@
                                                    )))
    (build-system cmake-build-system)
    (arguments
-    `(#:configure-flags (list "-DBUILD_TESTS=ON"
+    `(#:tests? #f ; network access needed for URL checks
+      #:configure-flags (list "-DBUILD_TESTS=ON"
                               "-DBUILD_EXTRA=ON")))
    (native-inputs `(("pkg-config" ,pkg-config)
+                    ("desktop-file-utils" ,desktop-file-utils)
+                    ("appstream-glib" ,appstream-glib)
                     ("gcc-9" ,gcc-9))) ; needed for <filesystem>
+   (propagated-inputs
+    `(("libmodplug" ,libmodplug))) ; FIXME: needed for sound, but not found by SDL_Mixer
    (inputs `(("sdl2" ,sdl)
              ("sdl2-image" ,sdl2-image)
              ("sdl2-mixer" ,sdl2-mixer)
