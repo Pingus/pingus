@@ -228,7 +228,7 @@ SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable
       flags |= SDL_WINDOW_RESIZABLE;
     }
 
-    m_window = SDL_CreateWindow("Pingus " VERSION,
+    m_window = SDL_CreateWindow("Pingus " PROJECT_VERSION,
                                 SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                                 size.width, size.height,
                                 flags);

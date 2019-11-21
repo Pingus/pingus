@@ -112,7 +112,7 @@ OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resiza
       SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 2); // 0, 2, or 4 for number of samples
     }
 
-    m_window = SDL_CreateWindow("Pingus " VERSION,
+    m_window = SDL_CreateWindow("Pingus " PROJECT_VERSION,
                                 SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                                 size.width, size.height,
                                 flags);

@@ -15,7 +15,7 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 (set! %load-path
-  (cons* "/ipfs/QmaCGPPoTngVcz6kTCVgnkPnVDxUE89A17kiiuY7gcWVi6/guix-cocfree_v0.0.0-44-g80fb507"
+  (cons* "/ipfs/QmeUZkZxWMHKNR4HAGU9G2VRFcyiSFt3JNpuF5RBC9wKZa/guix-cocfree_0.0.0-51-gc2bce55"
          %load-path))
 
 (use-modules (guix build-system cmake)
@@ -39,7 +39,7 @@
   (package
    (name "pingus")
    (version (version-from-source %source-dir))
-   (source (source-from-source %source-dir))
+   (source (source-from-source %source-dir #:version version))
    (build-system cmake-build-system)
    (arguments
     `(#:tests? #f)) ; network access needed for URL checks

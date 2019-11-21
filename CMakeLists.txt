@@ -15,13 +15,16 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 cmake_minimum_required(VERSION 3.0)
-project(pingus VERSION 0.8.0)
+project(pingus)
+
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/mk/cmake)
 
 option(WARNINGS "Switch on extra warnings" OFF)
 option(WERROR "Turn warnings into errors" OFF)
 option(BUILD_TESTS "Build test cases" OFF)
 option(BUILD_EXTRA "Build extra stuff" OFF)
 
+include(GetProjectVersion)
 include(GNUInstallDirs)
 
 find_package(Threads REQUIRED)
@@ -41,20 +44,6 @@ if (BUILD_TESTS)
   # add 'make test' target, use 'make test ARGS="-V"' or 'ctest -V' for verbose
   enable_testing()
 endif(BUILD_TESTS)
-
-find_package(Git)
-if(GIT_FOUND AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
-  execute_process(COMMAND ${GIT_EXECUTABLE} describe --tags --always HEAD
-    OUTPUT_VARIABLE GIT_REPO_VERSION
-    OUTPUT_STRIP_TRAILING_WHITESPACE)
-
-  execute_process(COMMAND ${GIT_EXECUTABLE} log -n 1 --pretty=%cd --date=format:%Y-%m-%d ${GIT_REPO_VERSION}
-    OUTPUT_VARIABLE GIT_REPO_DATE
-    OUTPUT_STRIP_TRAILING_WHITESPACE)
-else()
-  set(GIT_REPO_VERSION "${PROJECT_VERSION}")
-  string(TIMESTAMP GIT_REPO_DATE "%Y-%m-%d")
-endif()
 
 if(WARNINGS)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -Wall -Wextra -Wnon-virtual-dtor -Weffc++")
@@ -123,7 +112,9 @@ target_include_directories(libpingus PUBLIC
   ${SDL2IMAGE_INCLUDE_DIRS}
   ${SDL2MIXER_INCLUDE_DIRS}
   ${Boost_INCLUDE_DIRS})
-target_compile_definitions(libpingus PUBLIC -DVERSION="${GIT_REPO_VERSION}")
+target_compile_definitions(libpingus PUBLIC
+  -DPROJECT_VERSION="${PROJECT_VERSION}"
+  -DPROJECT_NAME="${PROJECT_NAME}")
 target_link_libraries(libpingus PUBLIC
   logmich
   tinygettext

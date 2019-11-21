@@ -335,7 +335,7 @@ PingusMain::parse_args(int argc, char** argv)
 
       case 'V':
         std::cout <<
-          "Pingus " VERSION "\n"
+          "Pingus " PROJECT_VERSION "\n"
           "Copyright (C) 1998-2011 Ingo Ruhnke <grumbel@gmail.com>\n"
           "See the file AUTHORS for a complete list of contributors.\n"
           "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are\n"
@@ -490,7 +490,7 @@ PingusMain::init_path_finder()
 void
 PingusMain::print_greeting_message()
 {
-  std::string greeting = "Welcome to Pingus " VERSION;
+  std::string greeting = "Welcome to Pingus " PROJECT_VERSION;
   greeting += "!";
   std::cout <<  greeting << std::endl;
   for (unsigned int i = 0; i < greeting.length(); ++i)
