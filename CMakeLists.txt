@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.6)
 project(pingus)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/mk/cmake)
@@ -32,11 +32,11 @@ find_package(PkgConfig REQUIRED)
 set(OpenGL_GL_PREFERENCE "LEGACY")
 find_package(OpenGL REQUIRED)
 find_package(Boost COMPONENTS REQUIRED)
-pkg_search_module(SDL2 REQUIRED sdl2)
-pkg_search_module(SDL2IMAGE REQUIRED SDL2_image>=2.0.0)
-pkg_search_module(SDL2MIXER REQUIRED SDL2_mixer>=2.0.0)
-pkg_search_module(PNG REQUIRED libpng)
-pkg_search_module(JSONCPP REQUIRED jsoncpp)
+pkg_search_module(SDL2 REQUIRED sdl2 IMPORTED_TARGET)
+pkg_search_module(SDL2IMAGE REQUIRED SDL2_image>=2.0.0 IMPORTED_TARGET)
+pkg_search_module(SDL2MIXER REQUIRED SDL2_mixer>=2.0.0 IMPORTED_TARGET)
+pkg_search_module(PNG REQUIRED libpng IMPORTED_TARGET)
+pkg_search_module(JSONCPP REQUIRED jsoncpp IMPORTED_TARGET)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 
@@ -120,15 +120,13 @@ target_link_libraries(libpingus PUBLIC
   tinygettext
   sexp
   xdg
-  ${Boost_LIBRARIES}
-  ${SDL2_LIBRARIES}
-  ${SDL2IMAGE_LIBRARIES}
-  ${SDL2MIXER_LIBRARIES}
-  ${PNG_LIBRARIES}
-  ${JSONCPP_LIBRARIES}
-  ${OPENGL_LIBRARIES})
-target_include_directories(libpingus SYSTEM PUBLIC
-  ${JSONCPP_INCLUDE_DIRS})
+  Boost::boost
+  PkgConfig::SDL2
+  PkgConfig::SDL2IMAGE
+  PkgConfig::SDL2MIXER
+  PkgConfig::PNG
+  PkgConfig::JSONCPP
+  OpenGL::GL)
 
 add_executable(pingus src/main.cpp)
 set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
