@@ -7,12 +7,12 @@
 [submodule "external/googletest"]
 	path = external/googletest
 	url = https://github.com/google/googletest
-[submodule "external/uitest"]
-	path = external/uitest
-	url = https://gitlab.com/Grumbel/uitest.git
 [submodule "external/sexp-cpp"]
 	path = external/sexp-cpp
 	url = https://github.com/lispparser/sexp-cpp.git
 [submodule "external/xdgcpp"]
 	path = external/xdgcpp
 	url = https://gitlab.com/grumbel/xdgcpp.git
+[submodule "external/uitest"]
+	path = external/uitest
+	url = https://gitlab.com/Grumbel/uitest.git
