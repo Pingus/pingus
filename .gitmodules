@@ -9,7 +9,7 @@
 	url = https://github.com/google/googletest
 [submodule "external/uitest"]
 	path = external/uitest
-	url = https://github.com/Grumbel/uitest.git
+	url = https://gitlab.com/Grumbel/uitest.git
 [submodule "external/sexp-cpp"]
 	path = external/sexp-cpp
 	url = https://github.com/lispparser/sexp-cpp.git
