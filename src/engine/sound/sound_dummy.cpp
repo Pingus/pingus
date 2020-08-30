@@ -24,13 +24,13 @@ namespace Sound {
 void
 PingusSoundDummy::real_play_sound(const std::string & filename, float /*volume*/, float /*panning*/)
 {
-  log_info("PingusSoundDummy::real_play_sound: %1%", filename);
+  log_info("PingusSoundDummy::real_play_sound: {}", filename);
 }
 
 void
 PingusSoundDummy::real_play_music(const std::string & filename, float /*volume*/, bool /*loop*/)
 {
-  log_info("PingusSoundDummy::real_play_music: %1%", filename);
+  log_info("PingusSoundDummy::real_play_music: {}", filename);
 }
 
 void

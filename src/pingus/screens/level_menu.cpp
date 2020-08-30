@@ -16,6 +16,8 @@
 
 #include "pingus/screens/level_menu.hpp"
 
+#include <fmt/format.h>
+
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
@@ -136,7 +138,7 @@ public:
       }
       catch(const std::exception& err)
       {
-        log_error("%1%", err.what());
+        log_error("{}", err.what());
       }
     }
 
@@ -178,15 +180,15 @@ public:
       gc.print_left(Fonts::chalk_normal, Vector2i(list_rect.left + 105, 15 + y), _(levelset->get_title()));
       gc.print_left(Fonts::chalk_small,  Vector2i(list_rect.left + 105, 40 + y), _(levelset->get_description()));
 
-      gc.print_right(Fonts::chalk_normal, Vector2i(list_rect.right, 15 + y), (boost::format("%1% %2%%%") % _("Solved:") % levelset->get_completion()).str());
-      gc.print_right(Fonts::chalk_small,  Vector2i(list_rect.right, 40 + y), (boost::format("%1% %2%") % levelset->get_level_count() % _("levels")).str());
+      gc.print_right(Fonts::chalk_normal, Vector2i(list_rect.right, 15 + y), fmt::format("{} {}%", _("Solved:"), levelset->get_completion()));
+      gc.print_right(Fonts::chalk_small,  Vector2i(list_rect.right, 40 + y), fmt::format("{} {}", levelset->get_level_count(), _("levels")));
 
       y += item_height;
     }
 
     //int total_pages = static_cast<int>(levelsets.size());;
     //gc.print_center(Fonts::chalk_normal, Vector2i(rect.get_width()/2, 360),
-    //                (boost::format("%1% %2%/%3%") % _("Page") % (page+1) % total_pages).str());
+    //                (boost::format("{} {}/{}") % _("Page") % (page+1) % total_pages).str());
 
     gc.pop_modelview();
   }

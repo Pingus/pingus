@@ -76,7 +76,7 @@ GUIManager::update(const Input::Event& event)
 
     case Input::AXIS_EVENT_TYPE:
       // AxisEvents can be ignored in the GUI, they are handled elsewhere
-      log_debug("GUIManager: AxisEvent: %1%", event.axis.dir);
+      log_debug("GUIManager: AxisEvent: {}", event.axis.dir);
       break;
 
     case Input::TEXT_INPUT_EVENT_TYPE:
@@ -99,7 +99,7 @@ GUIManager::update(const Input::Event& event)
       break;
 
     default:
-      log_warn("unhandled event type %1%", event.type);
+      log_warn("unhandled event type {}", event.type);
       break;
   }
 }

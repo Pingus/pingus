@@ -97,7 +97,7 @@ UTF8::advance(std::string::const_iterator it, std::string::size_type n)
     }
     else
     {
-      log_error("UTF8: malformed UTF-8 sequence: %1%", static_cast<int>(c));
+      log_error("UTF8: malformed UTF-8 sequence: {}", static_cast<int>(c));
       it += 1;
     }
   }
@@ -249,7 +249,7 @@ UTF8::iterator::next()
   }
   catch (std::exception&)
   {
-    log_error("Malformed utf-8 sequence beginning with %1% found ", *(reinterpret_cast<const uint32_t*>(text->c_str() + pos)));
+    log_error("Malformed utf-8 sequence beginning with {} found ", *(reinterpret_cast<const uint32_t*>(text->c_str() + pos)));
     chr = INVALID_UTF8_SEQUENCE;
     ++pos;
   }

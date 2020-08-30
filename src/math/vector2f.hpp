@@ -148,5 +148,23 @@ public:
 
 std::ostream& operator<<(std::ostream& s, const Vector2f& v);
 
+template<>
+struct fmt::formatter<Vector2f>
+{
+  template<typename ParseContext>
+  constexpr auto parse(ParseContext& ctx)
+  {
+    return ctx.begin();
+  }
+
+  template<typename FormatContext>
+  auto format(Vector2f const& v, FormatContext& ctx)
+  {
+    std::ostringstream os;
+    os << v;
+    return fmt::format_to(ctx.out(), os.str());
+  }
+};
+
 #endif
 

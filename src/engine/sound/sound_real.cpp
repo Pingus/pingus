@@ -67,7 +67,7 @@ PingusSoundReal::real_play_sound(const std::string& name, float volume, float pa
     chunk = SoundResMgr::load(name);
     if (!chunk)
     {
-      log_error("Can't open sound '%1%' -- skipping\n  Mix_Error: %2%", name, Mix_GetError());
+      log_error("Can't open sound '{}' -- skipping\n  Mix_Error: {}", name, Mix_GetError());
       return;
     }
 
@@ -103,14 +103,14 @@ PingusSoundReal::real_play_music(const std::string& filename, float volume, bool
       m_master_volume > 0 &&
       m_music_volume > 0)
   {
-    log_info("PingusSoundReal: Playing music: %1%", filename);
+    log_info("PingusSoundReal: Playing music: {}", filename);
 
     real_stop_music();
 
     music_sample = Mix_LoadMUS(filename.c_str());
     if (!music_sample)
     {
-      log_error("Can't load music: %1%' -- skipping\n  Mix_Error: %2%", filename, Mix_GetError());
+      log_error("Can't load music: {}' -- skipping\n  Mix_Error: {}", filename, Mix_GetError());
       return;
     }
 

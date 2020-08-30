@@ -210,7 +210,7 @@ ScreenManager::display()
     if (previous_frame_time > 1.0)
     {
       if (globals::developer_mode)
-        log_warn("ScreenManager: previous frame took longer than 1 second (%1% sec.), ignoring and doing frameskip", previous_frame_time);
+        log_warn("ScreenManager: previous frame took longer than 1 second ({} sec.), ignoring and doing frameskip", previous_frame_time);
     }
     else
     {

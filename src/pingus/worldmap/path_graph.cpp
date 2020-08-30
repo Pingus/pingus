@@ -176,7 +176,7 @@ PathGraph::lookup_edge(const std::string& name)
   std::map<std::string, EdgeId>::iterator i = edge_lookup.find(name);
   if (i == edge_lookup.end())
   {
-    log_info("Couldn't find EdgeId for: %1%", name);
+    log_info("Couldn't find EdgeId for: {}", name);
     return NoEdge;
   }
   else
@@ -191,7 +191,7 @@ PathGraph::lookup_node(const std::string& name)
   std::map<std::string, NodeId>::iterator i = node_lookup.find(name);
   if (i == node_lookup.end())
   {
-    log_info("Couldn't find NodeId for: %1%", name);
+    log_info("Couldn't find NodeId for: {}", name);
     return NoNode;
   }
   else
@@ -211,7 +211,7 @@ PathGraph::lookup_node(EdgeId id)
       return i->first;
     }
   }
-  log_info("PathGraph: Couldn't find id: %1%", id);
+  log_info("PathGraph: Couldn't find id: {}", id);
   return "error_node";
 }
 
@@ -226,7 +226,7 @@ PathGraph::lookup_edge(NodeId id)
       return i->first;
     }
   }
-  log_info("PathGraph: Couldn't find id: %1%", id);
+  log_info("PathGraph: Couldn't find id: {}", id);
   return "error_node";
 }
 

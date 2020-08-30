@@ -45,7 +45,7 @@ NullFramebuffer::~NullFramebuffer()
 FramebufferSurface
 NullFramebuffer::create_surface(const Surface& surface)
 {
-  log_info("creating surface: %1%", surface.get_size());
+  log_info("creating surface: {}", surface.get_size());
   return FramebufferSurface(new NullFramebufferSurfaceImpl(surface.get_size()));
 }
 
@@ -56,7 +56,7 @@ NullFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizabl
   m_fullscreen = fullscreen;
   m_resizable  = resizable;
 
-  log_info("size: %1%x%2% fullscreen: %3% resizable: %4%",
+  log_info("size: {}x{} fullscreen: {} resizable: {}",
            m_size.width, m_size.height,
            m_fullscreen, m_resizable);
 }

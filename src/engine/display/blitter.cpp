@@ -222,7 +222,7 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
   }
   else
   {
-    log_error("SDL_GetSurfaceAlphaMod failed: %1%", SDL_GetError());
+    log_error("SDL_GetSurfaceAlphaMod failed: {}", SDL_GetError());
   }
 
   SDL_BlendMode blend_mode;
@@ -232,7 +232,7 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
   }
   else
   {
-    log_error("SDL_GetSurfaceBlendMode failed: %1%", SDL_GetError());
+    log_error("SDL_GetSurfaceBlendMode failed: {}", SDL_GetError());
   }
 
   Uint8 r, g, b;
@@ -242,7 +242,7 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
   }
   else
   {
-    log_error("SDL_GetSurfaceColorMod failed: %1%", SDL_GetError());
+    log_error("SDL_GetSurfaceColorMod failed: {}", SDL_GetError());
   }
 
   if (surface->format->palette)
@@ -265,7 +265,7 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
     }
     else
     {
-      log_error("target palette smaller then source palette: src:%1% > tgt:%2%",
+      log_error("target palette smaller then source palette: src:{} > tgt:{}",
                 surface->format->palette->ncolors,
                 new_surface->format->palette->ncolors);
     }
@@ -279,7 +279,7 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
   }
   else if (ret < 0)
   {
-    log_error("SDL_GetColorKey failed: %1%", SDL_GetError());
+    log_error("SDL_GetColorKey failed: {}", SDL_GetError());
   }
   else
   {

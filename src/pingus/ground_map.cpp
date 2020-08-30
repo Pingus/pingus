@@ -205,7 +205,7 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
       sprovider.get_surface()->format->BitsPerPixel != 24 &&
       sprovider.get_surface()->format->BitsPerPixel != 32)
   {
-    log_error("Image has wrong color depth: %1%",
+    log_error("Image has wrong color depth: {}",
               static_cast<int>(sprovider.get_surface()->format->BitsPerPixel));
     return;
   }

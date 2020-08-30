@@ -236,7 +236,7 @@ GameSession::update(const Input::Event& event)
 
     default:
       // unhandled event
-      log_info("unhandled event: %1%", event.type);
+      log_info("unhandled event: {}", event.type);
       break;
   }
 }
@@ -311,7 +311,7 @@ void
 GameSession::on_startup ()
 {
   if (globals::developer_mode)
-    log_info("Starting Music: %1%", server->get_plf().get_music());
+    log_info("Starting Music: {}", server->get_plf().get_music());
 
   if (server->get_plf().get_music() == "none" ||
       server->get_plf().get_music().empty())

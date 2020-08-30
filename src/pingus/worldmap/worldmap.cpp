@@ -184,7 +184,7 @@ Worldmap::on_primary_button_press(int x, int y)
   if (dot)
   {
     if (globals::developer_mode)
-      log_info("Worldmap: Clicked on: %1%", dot->get_name());
+      log_info("Worldmap: Clicked on: {}", dot->get_name());
 
     if (path_graph->lookup_node(dot->get_name()) == pingus->get_node())
     {

@@ -48,7 +48,7 @@ GroupLevelObj::from_prefab(const std::string& name)
   }
   catch(const std::exception& err)
   {
-    log_error("%1%", err.what());
+    log_error("{}", err.what());
     return std::shared_ptr<GroupLevelObj>();
   }
 }

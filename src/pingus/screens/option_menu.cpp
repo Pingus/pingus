@@ -344,7 +344,7 @@ OptionMenu::on_escape_press()
 
   // save configuration
   Pathname cfg_filename(System::get_userdir() + "config", Pathname::SYSTEM_PATH);
-  log_info("saving configuration: %1%", cfg_filename);
+  log_info("saving configuration: {}", cfg_filename);
   config_manager.get_options().save(cfg_filename);
 }
 
@@ -444,7 +444,7 @@ OptionMenu::on_language_change(const std::string &str)
   auto it = m_language_map.find(str);
   if (it == m_language_map.end())
   {
-    log_error("unknown language: %1%", str);
+    log_error("unknown language: {}", str);
   }
   else
   {
@@ -460,7 +460,7 @@ OptionMenu::on_resolution_change(const std::string& str)
   int refresh_rate;
   if (sscanf(str.c_str(), "%dx%d@%d", &size_.width, &size_.height, &refresh_rate) != 3)
   {
-    log_error("failed to parse: %1%", str);
+    log_error("failed to parse: {}", str);
   }
   else
   {

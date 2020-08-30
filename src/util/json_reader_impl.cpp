@@ -28,7 +28,7 @@ namespace {
 
 void syntax_error(Json::Value const& value, const char* message)
 {
-  log_error("syntax error: %1%", message);
+  log_error("syntax error: {}", message);
 }
 
 } // namespace
@@ -183,7 +183,7 @@ JsonReaderMappingImpl::read_vectors(const char* key, std::vector<Vector3f>& valu
       }
       else
       {
-        log_warn("ignoring element of '%1%'", key);
+        log_warn("ignoring element of '{}'", key);
       }
     }
     return true;

@@ -19,6 +19,8 @@
 
 #include <string>
 #include <vector>
+#include <sstream>
+#include <fmt/format.h>
 
 /** Simple class to allow a distinction of paths that refer to the
  *  filesystem and paths that refer to the datadir, it also hides
@@ -83,6 +85,24 @@ public:
 };
 
 std::ostream& operator<< (std::ostream& os, const Pathname& p);
+
+template<>
+struct fmt::formatter<Pathname>
+{
+  template<typename ParseContext>
+  constexpr auto parse(ParseContext& ctx)
+  {
+    return ctx.begin();
+  }
+
+  template<typename FormatContext>
+  auto format(Pathname const& v, FormatContext& ctx)
+  {
+    std::ostringstream os;
+    os << v;
+    return fmt::format_to(ctx.out(), os.str());
+  }
+};
 
 #endif
 

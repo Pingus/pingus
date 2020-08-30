@@ -18,6 +18,7 @@
 
 #include <SDL_image.h>
 #include <stdexcept>
+#include <fmt/format.h>
 
 #include "engine/display/blitter.hpp"
 #include "math/rect.hpp"
@@ -372,7 +373,7 @@ Surface::mod(ResourceModifier::Enum modifier)
       return Blitter::rotate_270_flip(*this);
 
     default:
-      log_error("Surface: unhandled modifier: %1%", modifier);
+      log_error("Surface: unhandled modifier: {}", modifier);
       return *this;
   }
 }
@@ -474,7 +475,7 @@ Surface::fill(const Color& color)
     }
     else
     {
-      log_error("unsupported BytesPerPixel format: %1%", impl->surface->format->BytesPerPixel);
+      log_error("unsupported BytesPerPixel format: {}", impl->surface->format->BytesPerPixel);
     }
   }
 }
@@ -511,28 +512,27 @@ Surface::is_indexed() const
 void
 Surface::print(std::ostream& out)
 {
-  out << boost::format("Pointer: 0x%p\n"
-                       "Rmask:   0x%08x\n"
-                       "Gmask:   0x%08x\n"
-                       "Bmask:   0x%08x\n"
-                       "Amask:   0x%08x\n"
-                       "Flags:   0x%08x -> %s%s%s%s\n"
-                       "Palette: 0x%08x\n"
-                       "BitsPerPixel: %d\n"
-    )
-    % impl->surface
-    % impl->surface->format->Rmask
-    % impl->surface->format->Gmask
-    % impl->surface->format->Bmask
-    % impl->surface->format->Amask
-    % impl->surface->flags
-    % impl->surface->format->palette
-    % static_cast<int>(impl->surface->format->BitsPerPixel);
+  out << fmt::format("Pointer: 0x{}\n"
+                     "Rmask:   0x{:08x}\n"
+                     "Gmask:   0x{:08x}\n"
+                     "Bmask:   0x{:08x}\n"
+                     "Amask:   0x{:08x}\n"
+                     "Flags:   0x{:08x} -> {}{}{}{}\n"
+                     "Palette: 0x{:08x}\n"
+                     "BitsPerPixel: {:d}\n",
+                     static_cast<void*>(impl->surface),
+                     impl->surface->format->Rmask,
+                     impl->surface->format->Gmask,
+                     impl->surface->format->Bmask,
+                     impl->surface->format->Amask,
+                     impl->surface->flags,
+                     static_cast<void*>(impl->surface->format->palette),
+                     static_cast<int>(impl->surface->format->BitsPerPixel));
 
   Uint32 colorkey;
   if (SDL_GetColorKey(impl->surface, &colorkey) == 0)
   {
-    out << "Colorkey: " << boost::format("0x%08x") % colorkey << std::endl;
+    out << "Colorkey: " << fmt::format("0x{:08x}", colorkey) << std::endl;
   }
   else
   {
@@ -554,11 +554,11 @@ Surface::print(std::ostream& out)
     SDL_LockSurface(impl->surface);
     Uint8* pixels = static_cast<Uint8*>(impl->surface->pixels);
     for(int i = 0; i < impl->surface->pitch * impl->surface->h; i += 4)
-      out << boost::format("(%3d %3d %3d %3d) ")
-        % static_cast<int>(pixels[i+0])
-        % static_cast<int>(pixels[i+1])
-        % static_cast<int>(pixels[i+2])
-        % static_cast<int>(pixels[i+3]);
+      out << fmt::format("({:3d} {:3d} {:3d} {:3d}) ",
+                         static_cast<int>(pixels[i+0]),
+                         static_cast<int>(pixels[i+1]),
+                         static_cast<int>(pixels[i+2]),
+                         static_cast<int>(pixels[i+3]));
     out << std::endl;
     SDL_UnlockSurface(impl->surface);
   }

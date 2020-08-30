@@ -79,7 +79,7 @@ Resource::load_surface(const ResDescriptor& desc_)
   }
   else
   {
-    log_error("failed to load surface: %1%", desc_.res_name);
+    log_error("failed to load surface: {}", desc_.res_name);
     return Surface(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
   }
 }
@@ -104,7 +104,7 @@ Resource::load_thumb_sprite(const std::string& name)
   Pathname thumb_path("thumbnails/" + name + ".png", Pathname::DATA_PATH);
   if (thumb_path.exist())
   {
-    log_info("Loading thumb from: %1%", thumb_path.str());
+    log_info("Loading thumb from: {}", thumb_path.str());
     return Sprite(thumb_path);
   }
   else

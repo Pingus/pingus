@@ -95,7 +95,7 @@ private:
 std::unique_ptr<EditorLevel>
 EditorLevel::from_level_file(const Pathname& pathname)
 {
-  log_info("%1%", pathname.str());
+  log_info("{}", pathname.str());
 
   // Load the level from the file - we don't care what it's res_name is.
   PingusLevel plf(pathname);
@@ -139,7 +139,7 @@ EditorLevel::from_level_file(const Pathname& pathname)
 std::unique_ptr<EditorLevel>
 EditorLevel::from_prefab_file(const Pathname& pathname)
 {
-  log_info("%1%", pathname.str());
+  log_info("{}", pathname.str());
 
   // Load the level from the file - we don't care what it's res_name is.
   PrefabFile prefab = PrefabFile::from_path(pathname);
@@ -441,7 +441,7 @@ EditorLevel::raise_object(LevelObjPtr obj)
   Objects::iterator i = std::find(impl->objects.begin(), impl->objects.end(), obj);
   if (i == impl->objects.end())
   {
-    log_error("couldn't find object: %1%", obj);
+    log_error("couldn't find object: {}", static_cast<void*>(obj.get()));
   }
   else
   {
@@ -467,7 +467,7 @@ EditorLevel::lower_object(LevelObjPtr obj)
   Objects::reverse_iterator i = std::find(impl->objects.rbegin(), impl->objects.rend(), obj);
   if (i == impl->objects.rend())
   {
-    log_error("couldn't find object: %1%", obj);
+    log_error("couldn't find object: {}", static_cast<void*>(obj.get()));
   }
   else
   {

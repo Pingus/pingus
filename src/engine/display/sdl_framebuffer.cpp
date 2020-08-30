@@ -63,7 +63,7 @@ SDLFramebuffer::make_screenshot() const
   Size size;
   if (SDL_GetRendererOutputSize(m_renderer, &size.width, &size.height) != 0)
   {
-    log_error("SDL_GetRenderOutputSize failed: %1%", SDL_GetError());
+    log_error("SDL_GetRenderOutputSize failed: {}", SDL_GetError());
     return Surface();
   }
   else
@@ -75,7 +75,7 @@ SDLFramebuffer::make_screenshot() const
                                    screenshot.get_pitch());
     if (ret != 0)
     {
-      log_error("%1%", SDL_GetError());
+      log_error("{}", SDL_GetError());
     }
 
     return screenshot;
@@ -210,7 +210,7 @@ SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable
 
       if (SDL_SetWindowDisplayMode(m_window, &mode) != 0)
       {
-        log_error("failed to set display mode: %1%", SDL_GetError());
+        log_error("failed to set display mode: {}", SDL_GetError());
       }
       SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN);
     }

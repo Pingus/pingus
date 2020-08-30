@@ -160,13 +160,13 @@ EditorScreen::save(const Pathname& file)
     if (System::get_file_extension(filename) == "prefab")
     {
       level_pathname = file;
-      log_info("Save to: %1%", file.str());
+      log_info("Save to: {}", file.str());
       plf->save_prefab(filename);
     }
     else
     {
       level_pathname = file;
-      log_info("Save to: %1%", file.str());
+      log_info("Save to: {}", file.str());
       plf->save_level(filename);
     }
   }
@@ -215,7 +215,7 @@ EditorScreen::load(const Pathname& file)
   catch(const std::exception& err)
   {
     // FIXME: show a MessageBox
-    log_error("%1%", err.what());
+    log_error("{}", err.what());
   }
 }
 

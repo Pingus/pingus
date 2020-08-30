@@ -37,7 +37,7 @@ SDLDriver::SDLDriver() :
   {
     const char* key_name = SDL_GetScancodeName(static_cast<SDL_Scancode>(i));
     // FIXME: Make the keynames somewhere user visible so that users can use them
-    log_debug("Key: '%1%'", key_name);
+    log_debug("Key: '{}'", key_name);
   }
 }
 
@@ -112,7 +112,7 @@ SDLDriver::create_button(const ReaderObject& reader_object, Control* parent)
       }
       else
       {
-        log_error("couldn't find keycode for key '%1%'", key_str);
+        log_error("couldn't find keycode for key '{}'", key_str);
         return 0;
       }
     }
@@ -212,7 +212,7 @@ SDLDriver::open_joystick(int device)
     }
     else
     {
-      log_error("couldn't open joystick number %1%", device);
+      log_error("couldn't open joystick number {}", device);
       return false;
     }
   }
@@ -254,7 +254,7 @@ SDLDriver::update(float delta)
         break;
 
       case SDL_MOUSEWHEEL:
-        log_error("mousewheel not implemented: %1% %2% %3%", event.wheel.which, event.wheel.x, event.wheel.y);
+        log_error("mousewheel not implemented: {} {} {}", event.wheel.which, event.wheel.x, event.wheel.y);
         break;
 
       case SDL_TEXTINPUT:
@@ -265,7 +265,7 @@ SDLDriver::update(float delta)
         break;
 
       case SDL_TEXTEDITING:
-        log_error("textediting not implemented: %1% %2% '%3%'",
+        log_error("textediting not implemented: {} {} '{}'",
                   event.edit.start, event.edit.length, event.edit.text);
         break;
 

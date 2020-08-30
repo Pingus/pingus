@@ -97,7 +97,7 @@ Manager::create_controller(const Pathname& filename)
     ReaderMapping controls_mapping;
     if (!reader.read_mapping("controls", controls_mapping))
     {
-      log_warn("%1%: 'controls' section missing", filename);
+      log_warn("{}: 'controls' section missing", filename);
     }
     else
     {
@@ -106,7 +106,7 @@ Manager::create_controller(const Pathname& filename)
         ReaderCollection collection;
         if (!controls_mapping.read_collection(key.c_str(), collection))
         {
-          log_error("%1%: mapping must contain object at %2%", filename, key);
+          log_error("{}: mapping must contain object at {}", filename, key);
         }
         else
         {
@@ -123,7 +123,7 @@ Manager::create_controller(const Pathname& filename)
               }
               else
               {
-                log_error("Manager: pointer: Couldn't create pointer %1%", object.get_name());
+                log_error("Manager: pointer: Couldn't create pointer {}", object.get_name());
               }
             }
           }
@@ -140,7 +140,7 @@ Manager::create_controller(const Pathname& filename)
               }
               else
               {
-                log_error("Manager: scroller: Couldn't create scroller %1%", object.get_name());
+                log_error("Manager: scroller: Couldn't create scroller {}", object.get_name());
               }
             }
           }
@@ -157,7 +157,7 @@ Manager::create_controller(const Pathname& filename)
               }
               else
               {
-                log_error("Manager: button: Couldn't create button %1%", object.get_name());
+                log_error("Manager: button: Couldn't create button {}", object.get_name());
               }
             }
           }
@@ -174,7 +174,7 @@ Manager::create_controller(const Pathname& filename)
               }
               else
               {
-                log_error("Manager: axis: Couldn't create axis %1%", object.get_name());
+                log_error("Manager: axis: Couldn't create axis {}", object.get_name());
               }
             }
           }
@@ -191,7 +191,7 @@ Manager::create_controller(const Pathname& filename)
               }
               else
               {
-                log_error("Manager: keyboard: Couldn't create keyboard %1%", object.get_name());
+                log_error("Manager: keyboard: Couldn't create keyboard {}", object.get_name());
               }
             }
           }
@@ -249,12 +249,12 @@ Manager::load_driver(const std::string& name)
   }
   else
   {
-    log_info("loading driver '%1%'", name);
+    log_info("loading driver '{}'", name);
 
     auto driver = DriverFactory::create(name, this);
     if (!driver)
     {
-      log_error("unknown driver: %1%", name);
+      log_error("unknown driver: {}", name);
       return 0;
     }
     else
@@ -277,7 +277,7 @@ Manager::create_button(const ReaderObject& reader, Control* parent)
   }
   else
   {
-    log_error("couldn't find driver: '%1%'", driver);
+    log_error("couldn't find driver: '{}'", driver);
     return {};
   }
 }
@@ -294,7 +294,7 @@ Manager::create_axis(const ReaderObject& reader, Control* parent)
   }
   else
   {
-    log_error("couldn't find driver: '%1%'", driver);
+    log_error("couldn't find driver: '{}'", driver);
     return {};
   }
 }
@@ -311,7 +311,7 @@ Manager::create_pointer(const ReaderObject& reader, Control* parent)
   }
   else
   {
-    log_error("couldn't find driver: '%1%'", driver);
+    log_error("couldn't find driver: '{}'", driver);
     return {};
   }
 }
@@ -328,7 +328,7 @@ Manager::create_scroller(const ReaderObject& reader, Control* parent)
   }
   else
   {
-    log_error("couldn't find driver: '%1%'", driver);
+    log_error("couldn't find driver: '{}'", driver);
     return {};
   }
 }
@@ -345,7 +345,7 @@ Manager::create_keyboard(const ReaderObject& reader, Control* parent)
   }
   else
   {
-    log_error("couldn't find driver: '%1%'", driver);
+    log_error("couldn't find driver: '{}'", driver);
     return {};
   }
 }

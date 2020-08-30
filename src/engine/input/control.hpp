@@ -478,7 +478,7 @@ public:
         break;
 
       default:
-        log_error("unexpected SDL_Event: %1%", m_ev.type);
+        log_error("unexpected SDL_Event: {}", m_ev.type);
         break;
     }
   }

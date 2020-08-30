@@ -170,7 +170,7 @@ Pathname::opendir(const std::string& pattern) const
         }
         catch(const std::exception& err)
         {
-          log_info("%1%", err.what());
+          log_info("{}", err.what());
         }
       }
       return std::vector<Pathname>(result.begin(), result.end());
@@ -188,7 +188,7 @@ Pathname::opendir(const std::string& pattern) const
       }
       catch(const std::exception& err)
       {
-        log_info("%1%", err.what());
+        log_info("{}", err.what());
       }
       return result;
     }

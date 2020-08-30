@@ -38,7 +38,7 @@ Screenshot::make_screenshot()
   if (screen)
   {
     std::string filename = get_filename();
-    log_info("Screenshot: Saving screenshot to: %1%", filename);
+    log_info("Screenshot: Saving screenshot to: {}", filename);
     save_png(filename, screen.get_data(), screen.get_width(), screen.get_height(), screen.get_pitch());
     log_info("Screenshot: Screenshot is done.");
     return filename;
@@ -60,7 +60,7 @@ Screenshot::save_png(const std::string& filename, uint8_t* buffer, int width, in
   if (fp == NULL)
   {
     perror(filename.c_str());
-    log_info("Screenshot: Couldn't write file: %1%", filename);
+    log_info("Screenshot: Couldn't write file: {}", filename);
     return;
   }
 

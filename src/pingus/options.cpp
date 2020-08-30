@@ -41,7 +41,7 @@ std::string framebuffer_type_to_string(FramebufferType type)
       return "opengl";
 
     default:
-      log_error("unknown FramebufferType: %1%", static_cast<int>(type));
+      log_error("unknown FramebufferType: {}", static_cast<int>(type));
       return "sdl";
   }
 }
@@ -62,7 +62,7 @@ FramebufferType framebuffer_type_from_string(const std::string& str)
   }
   else
   {
-    log_error("unknown FramebufferType '%1%', default to 'sdl'", str);
+    log_error("unknown FramebufferType '{}', default to 'sdl'", str);
     return SDL_FRAMEBUFFER;
   }
 }

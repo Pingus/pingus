@@ -53,7 +53,7 @@ public:
       Surface surface(desc.images[j].pathname);
       if (!surface)
       {
-        log_info("IMG: %1%", desc.images[j].pathname.str());
+        log_info("IMG: {}", desc.images[j].pathname.str());
         assert(false);
       }
 
@@ -70,12 +70,12 @@ public:
           }
           else
           {
-            log_warn("unicode collision on %1%", i->unicode);
+            log_warn("unicode collision on {}", i->unicode);
           }
         }
         else
         {
-          log_warn("unicode out of range: %1%", i->unicode);
+          log_warn("unicode out of range: {}", i->unicode);
         }
       }
     }

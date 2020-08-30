@@ -126,7 +126,7 @@ PinguAction::move_with_forces ()
       // FIXME: quick&dirty way to kill falling pingus
       if (velocity.y > Actions::Faller::deadly_velocity+1)
       {
-        // log_debug("Velocity: %1%", velocity);
+        // log_debug("Velocity: {}", velocity);
         pingu->set_action(Actions::Splashed);
         return;
       }

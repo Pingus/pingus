@@ -229,7 +229,7 @@ WorldObjFactory::create(const std::string& id, const ReaderMapping& reader)
 
   if (it == factories.end())
   {
-    log_error("invalid id: '%1%'", id);
+    log_error("invalid id: '{}'", id);
     return std::vector<WorldObj*>();
   }
   else

@@ -39,7 +39,7 @@ PingusSound::init(std::unique_ptr<PingusSoundImpl> s)
       try {
         PingusSound::init(util::make_unique<PingusSoundReal>());
       } catch (const std::exception& err) {
-        log_error("Sound Error: %1%", err.what());
+        log_error("Sound Error: {}", err.what());
         log_error("Sound will be disabled");
         PingusSound::init(util::make_unique<PingusSoundDummy>());
       }

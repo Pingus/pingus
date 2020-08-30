@@ -478,7 +478,7 @@ Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
       break;
 
     default:
-      log_debug("Viewport::on_key_pressed: %1%", ev.keysym.sym);
+      log_debug("Viewport::on_key_pressed: {}", ev.keysym.sym);
       break;
   }
 }

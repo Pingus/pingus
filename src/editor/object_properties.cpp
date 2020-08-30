@@ -383,7 +383,7 @@ ObjectProperties::set_object(LevelObjPtr obj)
       else if (obj->get_direction() == "right")
         entrance_direction->set_selected_item(2);
       else
-        log_error("unknown direction: %1%", obj->get_direction());
+        log_error("unknown direction: {}", obj->get_direction());
 
       place(entrance_direction_label, entrance_direction);
     }

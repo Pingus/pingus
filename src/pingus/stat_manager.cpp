@@ -16,6 +16,8 @@
 
 #include "pingus/stat_manager.hpp"
 
+#include <assert.h>
+
 #include "util/log.hpp"
 #include "util/reader.hpp"
 #include "util/writer.hpp"

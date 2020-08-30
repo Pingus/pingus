@@ -53,7 +53,7 @@ Entrance::Entrance(const ReaderMapping& reader) :
     direction = MISC;
   else
   {
-    log_error("unknown direction: '%1%'", direction_str);
+    log_error("unknown direction: '{}'", direction_str);
     direction = MISC;
   }
 
@@ -117,7 +117,7 @@ Entrance::create_pingu ()
         break;
 
       default:
-        log_error("warning direction is wrong: %1%", direction);
+        log_error("warning direction is wrong: {}", direction);
         d.right();
         pingu->set_direction(d);
         break;

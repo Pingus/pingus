@@ -27,13 +27,13 @@ PingusLevel
 PLFResMgr::load_plf_raw(const std::string& res_name,
                         const Pathname& pathname)
 {
-  log_info("PLFResMgr: '%1%' -> '%2%'", res_name, pathname.str());
+  log_info("PLFResMgr: '{}' -> '{}'", res_name, pathname.str());
 
   PLFMap::iterator i = plf_map.find(res_name);
 
   if (i == plf_map.end())
   { // Entry not cached, so load it and add it to cache
-    log_info("loading level from DISK: '%1%' -> '%2%'", res_name, pathname.str());
+    log_info("loading level from DISK: '{}' -> '{}'", res_name, pathname.str());
 
     PingusLevel plf(res_name, pathname);
 
@@ -53,7 +53,7 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
     uint64_t current_mtime = pathname.mtime();
     if (current_mtime != i->second.mtime)
     {
-      log_info("PLFResMgr: level changed on DISK, reloading: '%1%' -> '%2%'", res_name, pathname.str());
+      log_info("PLFResMgr: level changed on DISK, reloading: '{}' -> '{}'", res_name, pathname.str());
 
       // Reload the file since it has changed on disk
       PingusLevel plf(res_name, pathname);
@@ -70,7 +70,7 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
     }
     else
     { // File in cache is up to date, everything is all ready, return it
-      log_info("PLFResMgr: Loading level from CACHE: '%1%' -> '%2%'", res_name, pathname.str());
+      log_info("PLFResMgr: Loading level from CACHE: '{}' -> '{}'", res_name, pathname.str());
 
       return i->second.plf;
     }

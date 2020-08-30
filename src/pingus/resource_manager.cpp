@@ -17,6 +17,7 @@
 #include "pingus/resource_manager.hpp"
 
 #include <algorithm>
+#include <assert.h>
 
 #include "engine/display/sprite_description.hpp"
 #include "pingus/globals.hpp"

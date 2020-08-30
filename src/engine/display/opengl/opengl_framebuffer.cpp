@@ -74,7 +74,7 @@ OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resiza
   {
     SDL_SetWindowSize(m_window, size.width, size.height);
 
-    log_error("video mode switching not implemented: %1%x%2%", size.width, size.height);
+    log_error("video mode switching not implemented: {}x{}", size.width, size.height);
     glViewport(0, 0, size.width, size.height);
 
     glMatrixMode(GL_PROJECTION);

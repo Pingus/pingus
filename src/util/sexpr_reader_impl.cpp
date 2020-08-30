@@ -385,7 +385,7 @@ SExprReaderMappingImpl::get_subsection_item(const char* key) const
   {
     if (sexp::list_length(*sub) > 1)
     {
-      log_error("invalid items in section: %1%", key);
+      log_error("invalid items in section: {}", key);
     }
 
     return &sub->get_car();
@@ -413,7 +413,7 @@ SExprReaderMappingImpl::get_subsection(const char* key) const
 
   if (count > 1)
   {
-    log_error("duplicate key value '%1%'", key);
+    log_error("duplicate key value '{}'", key);
   }
 
   return result;

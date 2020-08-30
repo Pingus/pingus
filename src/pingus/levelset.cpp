@@ -114,7 +114,7 @@ Levelset::from_file(const Pathname& pathname)
 
           if (!mapping.read_string("filename", tmp))
           {
-            log_error("Levelset: %1% is missing filename tag", pathname.str());
+            log_error("Levelset: {} is missing filename tag", pathname.str());
           }
           else
           {
@@ -192,7 +192,7 @@ Levelset::add_level(const std::string& resname, bool accessible)
   }
   catch(const std::exception& err)
   {
-    log_error("failed to load: %1%: %2%", resname, err.what());
+    log_error("failed to load: {}: {}", resname, err.what());
   }
 }
 

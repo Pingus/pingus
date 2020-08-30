@@ -324,7 +324,7 @@ Reader::parse(std::istream& stream)
     }
     else
     {
-      log_error("json parse error: %1%", errs);
+      log_error("json parse error: {}", errs);
       return ReaderObject();
     }
   }
@@ -337,7 +337,7 @@ Reader::parse(std::istream& stream)
     }
     catch(std::exception const& err)
     {
-      log_error("sexp parse error: %1%", err.what());
+      log_error("sexp parse error: {}", err.what());
       return ReaderObject();
     }
   }

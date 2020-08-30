@@ -90,7 +90,7 @@ Display::create_window(FramebufferType framebuffer_type, const Size& size, bool 
 {
   assert(!s_framebuffer.get());
 
-  log_info("%1% %2% %3%", framebuffer_type_to_string(framebuffer_type), size, (fullscreen?"fullscreen":"window"));
+  log_info("{} {} {}", framebuffer_type_to_string(framebuffer_type), size, (fullscreen?"fullscreen":"window"));
 
   switch (framebuffer_type)
   {
@@ -154,7 +154,7 @@ Display::find_closest_fullscreen_video_mode(const Size& size)
 
   if (!SDL_GetClosestDisplayMode(0, &target, &closest))
   {
-    log_error("couldn't find video mode matching %1%x%1%", size.width, size.height);
+    log_error("couldn't find video mode matching {}x{}", size.width, size.height);
     return size;
   }
   else
@@ -169,7 +169,7 @@ Display::get_fullscreen_video_modes()
   std::vector<SDL_DisplayMode> video_modes;
 
   int num_displays = SDL_GetNumVideoDisplays();
-  log_info("number of displays: %1%", num_displays);
+  log_info("number of displays: {}", num_displays);
 
   for(int display = 0; display < num_displays; ++display)
   {
@@ -180,11 +180,11 @@ Display::get_fullscreen_video_modes()
       SDL_DisplayMode mode;
       if (SDL_GetDisplayMode(display, i, &mode) != 0)
       {
-        log_error("failed to get display mode: %1%", SDL_GetError());
+        log_error("failed to get display mode: {}", SDL_GetError());
       }
       else
       {
-        log_debug("%1%x%2%@%3% %4%", mode.w, mode.h, mode.refresh_rate, SDL_GetPixelFormatName(mode.format));
+        log_debug("{}x{}@{} {}", mode.w, mode.h, mode.refresh_rate, SDL_GetPixelFormatName(mode.format));
         video_modes.push_back(mode);
       }
     }

@@ -160,7 +160,7 @@ Pingu::request_set_action(ActionName::Enum action_name)
         }
         else
         {
-          log_debug("change from action %1% not allowed", action->get_name());
+          log_debug("change from action {} not allowed", action->get_name());
           ret_val = false;
         }
         break;

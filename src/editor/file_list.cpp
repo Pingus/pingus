@@ -83,7 +83,7 @@ FileList::set_directory(const std::string& pathname, const std::string& pattern)
   }
   catch(const std::exception& err)
   {
-    log_error("%1%", err.what());
+    log_error("{}", err.what());
     directory.clear();
   }
 

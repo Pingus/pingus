@@ -17,6 +17,9 @@
 #ifndef HEADER_PINGUS_MATH_VECTOR2I_HPP
 #define HEADER_PINGUS_MATH_VECTOR2I_HPP
 
+#include <fmt/format.h>
+#include <sstream>
+
 class Vector2f;
 
 class Vector2i
@@ -86,6 +89,24 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& s, const Vector2i& v);
+
+template<>
+struct fmt::formatter<Vector2i>
+{
+  template<typename ParseContext>
+  constexpr auto parse(ParseContext& ctx)
+  {
+    return ctx.begin();
+  }
+
+  template<typename FormatContext>
+  auto format(Vector2i const& v, FormatContext& ctx)
+  {
+    std::ostringstream os;
+    os << v;
+    return fmt::format_to(ctx.out(), os.str());
+  }
+};
 
 #endif
 

@@ -67,9 +67,9 @@ PingusLevel::load(const std::string& resname,
 
     int version;
     if (reader.read_int("version", version))
-      log_info("Levelfile Version: %1%", version);
+      log_info("Levelfile Version: {}", version);
     else
-      log_info("Unknown Levelfile Version: %1%", version);
+      log_info("Unknown Levelfile Version: {}", version);
 
     ReaderMapping head;
     if (!reader.read_mapping("head", head))
@@ -89,7 +89,7 @@ PingusLevel::load(const std::string& resname,
       head.read_colorf("ambient-light",    impl->ambient_light);
       head.read_string("author",           impl->author);
 
-      log_info("Size: %1%x%2%", impl->size.width, impl->size.height);
+      log_info("Size: {}x{}", impl->size.width, impl->size.height);
 
       ReaderMapping actions;
       if (head.read_mapping("actions", actions))
@@ -98,7 +98,7 @@ PingusLevel::load(const std::string& resname,
         for(std::vector<std::string>::iterator i = lst.begin(); i != lst.end(); ++i)
         {
           int count = 0;
-          log_info("Actions: %1%", i->c_str());
+          log_info("Actions: {}", i->c_str());
           if (actions.read_int(i->c_str(), count))
             impl->actions[*i] = count;
         }

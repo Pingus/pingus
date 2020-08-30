@@ -93,7 +93,7 @@ FontDescription::FontDescription(const Pathname& pathname_) :
             }
             else
             {
-              log_warn("unknown tag: %1%", j->get_name());
+              log_warn("unknown tag: {}", j->get_name());
             }
           }
         }

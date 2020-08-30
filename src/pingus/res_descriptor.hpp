@@ -19,6 +19,9 @@
 
 #include "engine/display/resource_modifier.hpp"
 
+#include <fmt/format.h>
+#include <sstream>
+
 /// Resource descriptor, tells were to find a resource.
 class ResDescriptor
 {
@@ -38,6 +41,24 @@ public:
 
 /// Our own function to print out the ResDescriptor
 std::ostream& operator<<(std::ostream& s, const ResDescriptor& desc);
+
+template<>
+struct fmt::formatter<ResDescriptor>
+{
+  template<typename ParseContext>
+  constexpr auto parse(ParseContext& ctx)
+  {
+    return ctx.begin();
+  }
+
+  template<typename FormatContext>
+  auto format(ResDescriptor const& v, FormatContext& ctx)
+  {
+    std::ostringstream os;
+    os << v;
+    return fmt::format_to(ctx.out(), os.str());
+  }
+};
 
 #endif
 

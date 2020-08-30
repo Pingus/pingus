@@ -31,16 +31,16 @@ SoundResMgr::load(const std::string& name)
   {
     std::string filename = g_path_manager.complete("sounds/" + name + ".wav");
     Mix_Chunk* chunk = Mix_LoadWAV(filename.c_str());
-    log_info("SoundResMgr: Loading sound from disk: %1% -> %2%", name, filename);
+    log_info("SoundResMgr: Loading sound from disk: {} -> {}", name, filename);
     if (!chunk)
-      log_info("Error: %1%", Mix_GetError());
+      log_info("Error: {}", Mix_GetError());
 
     sound_map[name] = chunk;
     return chunk;
   }
   else
   {
-    log_info("SoundResMgr: Loading sound from cache: %1%", name);
+    log_info("SoundResMgr: Loading sound from cache: {}", name);
     return i->second;
   }
 
