@@ -17,7 +17,6 @@
 #include "engine/display/surface.hpp"
 
 #include <SDL_image.h>
-#include <boost/format.hpp>
 #include <stdexcept>
 
 #include "engine/display/blitter.hpp"

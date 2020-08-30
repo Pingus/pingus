@@ -10,7 +10,6 @@ To compile Pingus you need:
 * [SDL2](http://libsdl.org/)
 * [SDL2_mixer](https://www.libsdl.org/projects/SDL_image/)
 * [SDL2_image](https://www.libsdl.org/projects/SDL_mixer/)
-* [boost](http://www.boost.org)
 * [libpng](http://libpng.org/)
 * [cmake](http://cmake.org/)
 
@@ -24,8 +23,6 @@ In Ubuntu 15.04 you can install everything by typing:
      libsdl2-dev \
      libsdl2-mixer-dev \
      libsdl2-image-dev \
-     libboost-dev \
-     libboost-signals-dev \
      libpng12-dev \
      cmake
 

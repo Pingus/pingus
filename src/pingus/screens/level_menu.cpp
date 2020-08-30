@@ -16,8 +16,6 @@
 
 #include "pingus/screens/level_menu.hpp"
 
-#include <boost/format.hpp>
-
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"

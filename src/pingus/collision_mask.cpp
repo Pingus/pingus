@@ -16,8 +16,6 @@
 
 #include "pingus/collision_mask.hpp"
 
-#include <boost/format.hpp>
-
 #include "pingus/resource.hpp"
 #include "util/log.hpp"
 

@@ -17,8 +17,6 @@
 
 #include "editor/viewport.hpp"
 
-#include <boost/format.hpp>
-
 #include "editor/editor_level.hpp"
 #include "editor/editor_screen.hpp"
 #include "editor/level_obj.hpp"

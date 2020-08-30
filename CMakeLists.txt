@@ -31,7 +31,6 @@ find_package(Threads REQUIRED)
 find_package(PkgConfig REQUIRED)
 set(OpenGL_GL_PREFERENCE "LEGACY")
 find_package(OpenGL REQUIRED)
-find_package(Boost COMPONENTS REQUIRED)
 pkg_search_module(SDL2 REQUIRED sdl2 IMPORTED_TARGET)
 pkg_search_module(SDL2IMAGE REQUIRED SDL2_image>=2.0.0 IMPORTED_TARGET)
 pkg_search_module(SDL2MIXER REQUIRED SDL2_mixer>=2.0.0 IMPORTED_TARGET)
@@ -111,8 +110,7 @@ set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
 target_include_directories(libpingus PUBLIC
   ${SDL2_INCLUDE_DIRS}
   ${SDL2IMAGE_INCLUDE_DIRS}
-  ${SDL2MIXER_INCLUDE_DIRS}
-  ${Boost_INCLUDE_DIRS})
+  ${SDL2MIXER_INCLUDE_DIRS})
 target_compile_definitions(libpingus PUBLIC
   -DPROJECT_VERSION="${PROJECT_VERSION}"
   -DPROJECT_NAME="${PROJECT_NAME}")
@@ -121,7 +119,6 @@ target_link_libraries(libpingus PUBLIC
   tinygettext
   sexp
   xdgcpp
-  Boost::boost
   PkgConfig::SDL2
   PkgConfig::SDL2IMAGE
   PkgConfig::SDL2MIXER
