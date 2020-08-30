@@ -18,7 +18,7 @@
 #ifndef HEADER_PINGUS_EDITOR_COMBOBOX_HPP
 #define HEADER_PINGUS_EDITOR_COMBOBOX_HPP
 
-#include <boost/signals2.hpp>
+#include <sigc++/signal.h>
 
 #include "engine/display/sprite.hpp"
 #include "engine/gui/rect_component.hpp"
@@ -88,7 +88,7 @@ public:
 
   void update_layout() {}
 
-  boost::signals2::signal<void (const ComboItem&)> on_select;
+  sigc::signal<void (const ComboItem&)> on_select;
 
 private:
   Combobox();

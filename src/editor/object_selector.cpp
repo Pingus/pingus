@@ -16,7 +16,7 @@
 
 #include "editor/object_selector.hpp"
 
-#include <boost/signals2.hpp>
+#include <sigc++/signal.h>
 
 #include "editor/generic_level_obj.hpp"
 #include "editor/gui_style.hpp"
@@ -47,7 +47,7 @@ private:
   std::string tooltip;
 
 public:
-  boost::signals2::signal<void()> on_click;
+  sigc::signal<void()> on_click;
 
 public:
   ObjectSelectorButton(ObjectSelectorList* object_list_,

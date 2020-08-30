@@ -37,6 +37,7 @@ pkg_search_module(SDL2IMAGE REQUIRED SDL2_image>=2.0.0 IMPORTED_TARGET)
 pkg_search_module(SDL2MIXER REQUIRED SDL2_mixer>=2.0.0 IMPORTED_TARGET)
 pkg_search_module(PNG REQUIRED libpng IMPORTED_TARGET)
 pkg_search_module(JSONCPP REQUIRED jsoncpp IMPORTED_TARGET)
+pkg_search_module(SIGCXX REQUIRED sigc++-2.0 IMPORTED_TARGET)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 
@@ -126,6 +127,7 @@ target_link_libraries(libpingus PUBLIC
   PkgConfig::SDL2MIXER
   PkgConfig::PNG
   PkgConfig::JSONCPP
+  PkgConfig::SIGCXX
   OpenGL::GL)
 
 add_executable(pingus src/main.cpp)

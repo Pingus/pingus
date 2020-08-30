@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_EDITOR_INPUTBOX_HPP
 #define HEADER_PINGUS_EDITOR_INPUTBOX_HPP
 
-#include <boost/signals2.hpp>
+#include <sigc++/signal.h>
 
 #include "engine/gui/rect_component.hpp"
 
@@ -41,8 +41,8 @@ public:
 
   void update_layout() {}
 
-  boost::signals2::signal<void (const std::string&)> on_change;
-  boost::signals2::signal<void (const std::string&)> on_enter;
+  sigc::signal<void (const std::string&)> on_change;
+  sigc::signal<void (const std::string&)> on_enter;
 
 private:
   Inputbox (const Inputbox&);

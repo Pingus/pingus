@@ -16,6 +16,8 @@
 
 #include "editor/action_properties.hpp"
 
+#include <functional>
+
 #include "editor/checkbox.hpp"
 #include "editor/editor_level.hpp"
 #include "editor/gui_style.hpp"

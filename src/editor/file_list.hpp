@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_EDITOR_FILE_LIST_HPP
 #define HEADER_PINGUS_EDITOR_FILE_LIST_HPP
 
-#include <boost/signals2.hpp>
+#include <sigc++/signal.h>
 
 #include "engine/display/sprite.hpp"
 #include "engine/gui/rect_component.hpp"
@@ -61,7 +61,7 @@ public:
   bool has_more_next_pages();
   bool has_more_prev_pages();
 
-  boost::signals2::signal<void (const System::DirectoryEntry&)> on_click;
+  sigc::signal<void (const System::DirectoryEntry&)> on_click;
 
 private:
   int items_per_page();

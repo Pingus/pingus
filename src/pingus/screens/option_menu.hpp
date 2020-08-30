@@ -17,9 +17,9 @@
 #ifndef HEADER_PINGUS_PINGUS_SCREENS_OPTION_MENU_HPP
 #define HEADER_PINGUS_PINGUS_SCREENS_OPTION_MENU_HPP
 
-#include <boost/signals2.hpp>
 #include <map>
 #include <vector>
+#include <sigc++/connection.h>
 
 #include "engine/display/sprite.hpp"
 #include "engine/gui/rect_component.hpp"
@@ -66,7 +66,7 @@ private:
   //Label* defaults_label;
   //CheckBox* defaults_box;
 
-  typedef std::vector<boost::signals2::connection> Connections;
+  typedef std::vector<sigc::connection> Connections;
   Connections connections;
 
   tinygettext::Language m_language;
