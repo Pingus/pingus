@@ -13,6 +13,6 @@
 [submodule "external/sexp-cpp"]
 	path = external/sexp-cpp
 	url = https://github.com/lispparser/sexp-cpp.git
-[submodule "external/xdg"]
-	path = external/xdg
-	url = https://gitlab.com/pingus/external/xdg.git
+[submodule "external/xdgcpp"]
+	path = external/xdgcpp
+	url = https://gitlab.com/grumbel/xdgcpp.git
