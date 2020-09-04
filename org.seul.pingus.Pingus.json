@@ -1,7 +1,7 @@
 {
     "app-id": "org.seul.pingus.Pingus",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "1.6",
+    "runtime-version": "20.08",
     "sdk": "org.freedesktop.Sdk",
     "rename-icon": "pingus",
     "rename-desktop-file": "pingus.desktop",
@@ -35,22 +35,37 @@
             ]
         },
         {
-            "name": "boost",
-            "buildsystem": "simple",
-            "build-commands": [
-                "./bootstrap.sh --prefix=/app --with-libraries=system,filesystem,signals",
-                "./b2 install"
-            ],
+            "name": "fmt",
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.bz2",
-                    "sha256": "5721818253e6a0989583192f96782c4a98eb6204965316df9f5ad75819225ca9"
+                    "url": "https://github.com/fmtlib/fmt/archive/6.1.2.tar.gz",
+                    "sha256": "1cafc80701b746085dddf41bd9193e6d35089e1c6ec1940e037fcb9c98f62365"
                 }
             ],
+            "buildsystem": "cmake-ninja",
+            "builddir": "true",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DFMT_TEST=OFF"
+            ],
             "cleanup": [
+                "*.a",
+                "/bin",
                 "/include",
-                "/lib/*.a"
+                "/lib/cmake",
+                "/share"
+            ]
+        },
+        {
+            "name": "sigc++",
+            "config-opts": [ "--disable-documentation" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.9/libsigc++-2.9.3.tar.xz",
+                    "sha256": "0bf9b301ad6198c550986c51150a646df198e8d1d235270c16486b0dda30097f"
+                }
             ]
         },
         {
