@@ -62,14 +62,6 @@ if(WERROR)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
 endif()
 
-include_directories(src/)
-
-include_directories(SYSTEM
-  external/tinygettext/include/
-  external/sexp-cpp/include/
-  external/logmich/include/
-  external/xdgcpp/)
-
 file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/editor/*.cpp
   src/engine/display/*.cpp
@@ -96,24 +88,25 @@ file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
 file(GLOB TINYGETTEXT_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   external/tinygettext/src/*.cpp)
 add_library(tinygettext STATIC ${TINYGETTEXT_SOURCES_CXX})
+target_include_directories(tinygettext SYSTEM PUBLIC external/tinygettext/include/)
 
 file(GLOB SEXP_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   external/sexp-cpp/src/*.cpp)
 add_library(sexp STATIC ${SEXP_SOURCES_CXX})
+target_include_directories(sexp SYSTEM PUBLIC external/sexp-cpp/include/)
 
 file(GLOB LOGMICH_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   external/logmich/src/*.cpp)
 add_library(logmich STATIC ${LOGMICH_SOURCES_CXX})
+target_include_directories(logmich SYSTEM PUBLIC external/logmich/include/)
 
 add_library(xdgcpp STATIC external/xdgcpp/xdg.cpp)
 target_compile_options(xdgcpp PRIVATE -Wno-effc++)
+target_include_directories(xdgcpp SYSTEM PUBLIC external/xdgcpp/)
 
 add_library(libpingus STATIC ${PINGUS_SOURCES_CXX})
 set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
-target_include_directories(libpingus PUBLIC
-  ${SDL2_INCLUDE_DIRS}
-  ${SDL2IMAGE_INCLUDE_DIRS}
-  ${SDL2MIXER_INCLUDE_DIRS})
+target_include_directories(libpingus PUBLIC src/)
 target_compile_definitions(libpingus PUBLIC
   -DPROJECT_VERSION="${PROJECT_VERSION}"
   -DPROJECT_NAME="${PROJECT_NAME}")
