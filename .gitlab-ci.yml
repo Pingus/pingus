@@ -40,6 +40,8 @@ before_script:
     libjsoncpp-dev
     libpng-dev
     software-properties-common
+    flatpak
+    flatpak-builder
 
 .build_pingus_template: &build_pingus
   stage: build
@@ -77,11 +79,8 @@ build:clang:debug:
 build:flatpak:
   stage: build
   script:
-    - add-apt-repository -y ppa:alexlarsson/flatpak
-    - apt-get -qq update
-    - apt-get -qq -y install flatpak flatpak-builder
     - flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    - flatpak install -y flathub org.freedesktop.Platform org.freedesktop.Sdk
+    - flatpak install -y flathub org.freedesktop.Platform//20.08 org.freedesktop.Sdk//20.08
     - flatpak-builder --repo=build-flatpak-repo/ build-flatpak/ org.seul.pingus.Pingus.json
     - flatpak build-bundle build-flatpak-repo/ pingus.flatpak org.seul.pingus.Pingus
   artifacts:
