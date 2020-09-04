@@ -123,7 +123,7 @@ TEST_P(ReaderTest, read_object)
   EXPECT_EQ(7, prop2);
 }
 
-INSTANTIATE_TEST_CASE_P(ParamReaderTest, ReaderTest,
+INSTANTIATE_TEST_SUITE_P(ParamReaderTest, ReaderTest,
                         ::testing::Values("tests/sexpr.scm", "tests/json.json"));
 
 /* EOF */
