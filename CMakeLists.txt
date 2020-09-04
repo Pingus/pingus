@@ -49,17 +49,16 @@ if (BUILD_TESTS)
 endif(BUILD_TESTS)
 
 if(WARNINGS)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -Wall -Wextra -Wnon-virtual-dtor -Weffc++")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wold-style-cast -Wshadow -Wcast-qual -Wconversion")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Winit-self -Wno-unused-parameter")
-
-  # clang++ complains about googletest's INSTANTIATE_TEST_CASE_P() use
-  # of variadic macro arguments, so disable that
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-gnu-zero-variadic-macro-arguments")
+  set(WARNINGS_CXX_FLAGS
+    -Wall -Wextra
+    -pedantic -Wall -Wextra -Wnon-virtual-dtor -Weffc++
+    -Wold-style-cast -Wshadow -Wcast-qual -Wconversion
+    -Winit-self -Wno-unused-parameter)
 endif()
 
 if(WERROR)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+  set(WARNINGS_CXX_FLAGS ${WARNINGS_CXX_FLAGS}
+    -Werror)
 endif()
 
 file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
@@ -107,6 +106,7 @@ target_include_directories(xdgcpp SYSTEM PUBLIC external/xdgcpp/)
 add_library(libpingus STATIC ${PINGUS_SOURCES_CXX})
 set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
 target_include_directories(libpingus PUBLIC src/)
+target_compile_options(libpingus PRIVATE ${WARNINGS_CXX_FLAGS})
 target_compile_definitions(libpingus PUBLIC
   -DPROJECT_VERSION="${PROJECT_VERSION}"
   -DPROJECT_NAME="${PROJECT_NAME}")
@@ -126,6 +126,7 @@ target_link_libraries(libpingus PUBLIC
 
 add_executable(pingus src/main.cpp)
 set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
+target_compile_options(pingus PRIVATE ${WARNINGS_CXX_FLAGS})
 target_link_libraries(pingus libpingus)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/data
@@ -138,6 +139,7 @@ if(BUILD_EXTRA)
     string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" EXTRA_EXE ${EXTRA_SOURCE})
     add_executable(${EXTRA_EXE} ${EXTRA_SOURCE})
     set_target_properties(${EXTRA_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "extra/")
+    target_compile_options(pingus PRIVATE ${WARNINGS_CXX_FLAGS})
     target_link_libraries(${EXTRA_EXE} libpingus)
   endforeach(EXTRA_SOURCE)
 endif()
@@ -159,6 +161,7 @@ if(BUILD_TESTS)
     string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" TEST_EXE ${TEST_SOURCE})
     add_executable(${TEST_EXE} ${TEST_SOURCE})
     set_target_properties(${TEST_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "test/")
+    target_compile_options(${TEST_EXE} PRIVATE ${WARNINGS_CXX_FLAGS})
     target_link_libraries(${TEST_EXE} libpingus)
   endforeach(TEST_SOURCE)
 
@@ -168,6 +171,7 @@ if(BUILD_TESTS)
     string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" UTIL_EXE ${UTIL_SOURCE})
     add_executable(${UTIL_EXE} ${UTIL_SOURCE})
     set_target_properties(${UTIL_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "test/")
+    target_compile_options(${UTIL_EXE} PRIVATE ${WARNINGS_CXX_FLAGS})
     target_link_libraries(${UTIL_EXE} libpingus)
   endforeach(UTIL_SOURCE)
 
@@ -188,6 +192,7 @@ if(BUILD_TESTS)
   add_executable(test_pingus ${TEST_PINGUS_SOURCES_CXX})
   target_include_directories(test_pingus PUBLIC src/ tests/)
   target_link_libraries(test_pingus libpingus gtest gtest_main ${CMAKE_THREAD_LIBS_INIT})
+  target_compile_options(test_pingus PRIVATE ${WARNINGS_CXX_FLAGS})
 
   add_test(NAME test_pingus
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
