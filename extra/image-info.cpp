@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SDL.h>
 #include <SDL_image.h>
+#include <fmt/format.h>
 
 #include "util/log.hpp"
 
@@ -29,10 +30,10 @@ int main(int argc, char** argv)
       std::cout << " bitsPerPixel:"  << static_cast<int>(surface->format->BitsPerPixel);
       std::cout << " bytesPerPixel:" << static_cast<int>(surface->format->BytesPerPixel);
 
-      std::cout << " Rmask:" << boost::format("%08x") % surface->format->Rmask;
-      std::cout << " Gmask:" << boost::format("%08x") % surface->format->Gmask;
-      std::cout << " Bmask:" << boost::format("%08x") % surface->format->Bmask;
-      std::cout << " Amask:" << boost::format("%08x") % surface->format->Amask;
+      std::cout << " Rmask:" << fmt::format("{:08x}", surface->format->Rmask);
+      std::cout << " Gmask:" << fmt::format("{:08x}", surface->format->Gmask);
+      std::cout << " Bmask:" << fmt::format("{:08x}", surface->format->Bmask);
+      std::cout << " Amask:" << fmt::format("{:08x}", surface->format->Amask);
 
       std::cout << " Rshift:" << static_cast<int>(surface->format->Rshift);
       std::cout << " Gshift:" << static_cast<int>(surface->format->Gshift);
