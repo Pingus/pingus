@@ -25,8 +25,8 @@ before_script:
   - apt-get -qq -y install lsb-release
   - lsb_release -a
   - apt-get -qq -y install
-    clang-6.0
-    g++-8
+    clang-10
+    g++-10
     cmake
     build-essential
     desktop-file-utils
@@ -53,25 +53,25 @@ before_script:
 build:gcc:release:
   <<: *build_pingus
   variables:
-    CXX: g++-8
+    CXX: g++-10
     BUILD_TYPE: Release
 
 build:clang:release:
   <<: *build_pingus
   variables:
-    CXX: clang++-6.0
+    CXX: clang++-10
     BUILD_TYPE: Release
 
 build:gcc:debug:
   <<: *build_pingus
   variables:
-    CXX: g++-8
+    CXX: g++-10
     BUILD_TYPE: Debug
 
 build:clang:debug:
   <<: *build_pingus
   variables:
-    CXX: clang++-6.0
+    CXX: clang++-10
     BUILD_TYPE: Debug
 
 build:flatpak:
