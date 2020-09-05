@@ -43,8 +43,6 @@ SoundResMgr::load(const std::string& name)
     log_info("SoundResMgr: Loading sound from cache: {}", name);
     return i->second;
   }
-
-  return nullptr;
 }
 
 void SoundResMgr::free_sound_map()
