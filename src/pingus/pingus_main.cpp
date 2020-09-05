@@ -70,11 +70,6 @@ extern "C" {
 #include "pingus/stat_manager.hpp"
 #include "pingus/worldobj_factory.hpp"
 
-#if _MSC_VER >= 1400
-// Disable stupid deprecation warnings
-#pragma warning( disable : 4996 )
-#endif
-
 extern tinygettext::DictionaryManager dictionary_manager;
 
 PingusMain::PingusMain() :
