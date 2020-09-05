@@ -1,3 +1,4 @@
+---
 # Pingus - A free Lemmings clone
 # Copyright (C) 2018 Ingo Ruhnke <grumbel@gmail.com>
 #
@@ -26,6 +27,7 @@ before_script:
   - lsb_release -a
   - apt-get -qq -y install
     clang-10
+    clang-tidy-10
     g++-10
     cmake
     build-essential
@@ -48,33 +50,51 @@ before_script:
   script:
     - mkdir build
     - cd build
-    - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DWARNINGS=ON -DWERROR=ON -DBUILD_TESTS=ON -DBUILD_EXTRA=ON
+    - cmake ..
+      -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+      -DWARNINGS=ON
+      -DWERROR=ON
+      -DBUILD_TESTS=ON
+      -DBUILD_EXTRA=ON
+      -DCLANG_TIDY=$CLANG_TIDY
+      -DCLANG_TIDY_EXE=/usr/bin/clang-tidy-10
     - make VERBOSE=1
     - make test VERBOSE=1 ARGS="-V"
 
 build:gcc:release:
   <<: *build_pingus
   variables:
-    CXX: g++-10
-    BUILD_TYPE: Release
+    CXX: "g++-10"
+    BUILD_TYPE: "Release"
+    CLANG_TIDY: "OFF"
 
 build:clang:release:
   <<: *build_pingus
   variables:
-    CXX: clang++-10
-    BUILD_TYPE: Release
+    CXX: "clang++-10"
+    BUILD_TYPE: "Release"
+    CLANG_TIDY: "OFF"
 
 build:gcc:debug:
   <<: *build_pingus
   variables:
-    CXX: g++-10
-    BUILD_TYPE: Debug
+    CXX: "g++-10"
+    BUILD_TYPE: "Debug"
+    CLANG_TIDY: "OFF"
 
 build:clang:debug:
   <<: *build_pingus
   variables:
-    CXX: clang++-10
-    BUILD_TYPE: Debug
+    CXX: "clang++-10"
+    BUILD_TYPE: "Debug"
+    CLANG_TIDY: "OFF"
+
+build:clang-tidy:
+  <<: *build_pingus
+  variables:
+    CXX: "clang++-10"
+    BUILD_TYPE: "Debug"
+    CLANG_TIDY: "ON"
 
 build:flatpak:
   stage: build
