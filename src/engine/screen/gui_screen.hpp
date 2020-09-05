@@ -44,7 +44,7 @@ public:
   void draw(DrawingContext& gc) override;
 
   void update_input (const Input::Event& event) override;
-  void update(float) override;
+  void update(float delta) override;
 
   virtual void on_pause_press () {}
   virtual void on_single_step_press () {}

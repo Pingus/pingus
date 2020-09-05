@@ -321,7 +321,7 @@ GroundMap::get_colmap(void)
 MapTile*
 GroundMap::get_tile(int x, int y)
 {
-  return tiles[static_cast<size_t>(y * tile_width + x)].get();
+  return tiles[y * tile_width + x].get();
 }
 
 /* EOF */

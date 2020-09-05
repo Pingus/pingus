@@ -66,7 +66,7 @@ public:
   virtual void clear();
 
   /** Return a pointer to the selected item.  Returns -1 if nothing is selected */
-  int get_selected_item() { return current_item; }
+  int get_selected_item() const { return current_item; }
 
   /** Sets the selected item to the given ComboItem.  Returns false if that item
       doesn't exist */

@@ -137,7 +137,7 @@ public:
   virtual ~LevelObj() { }
 
   /** Set the object's position */
-  virtual void set_pos(const Vector3f p) = 0;
+  virtual void set_pos(const Vector3f& p) = 0;
 
   virtual void set_pos_x(float x) = 0;
   virtual float get_pos_x() const = 0;
@@ -152,10 +152,10 @@ public:
   virtual void set_orig_pos(const Vector3f p) = 0;
 
   /** Set the object's resource name */
-  virtual void set_res_desc(const ResDescriptor d) = 0;
+  virtual void set_res_desc(const ResDescriptor& d) = 0;
 
   /** Set the object's modifier */
-  virtual void set_modifier(const std::string m) = 0;
+  virtual void set_modifier(const std::string& m) = 0;
 
   /** Set the object's modifier */
   virtual void set_modifier(ResourceModifier::Enum modifier) = 0;
@@ -163,54 +163,54 @@ public:
   virtual ResourceModifier::Enum get_modifier() const = 0;
 
   /** Set the object's section header name */
-  virtual void set_section_name(const std::string sn) = 0;
+  virtual void set_section_name(const std::string& sn) = 0;
 
   /** Set the object's type */
-  virtual void set_type(const std::string t) = 0;
+  virtual void set_type(const std::string& t) = 0;
 
-  virtual void set_ground_type(const std::string t) = 0;
+  virtual void set_ground_type(const std::string& t) = 0;
 
   /** Set the object's speed */
-  virtual void set_speed(const int s) = 0;
+  virtual void set_speed(int s) = 0;
 
   /** Set the objects release rate */
-  virtual void set_release_rate(const int r) = 0;
+  virtual void set_release_rate(int r) = 0;
 
   /** Set the object's parallax */
-  virtual void set_parallax(const float para) = 0;
+  virtual void set_parallax(float para) = 0;
 
   /** Set the object's repeat */
-  virtual void set_repeat(const int w) = 0;
+  virtual void set_repeat(int w) = 0;
 
   /** Set the object's owner_id */
-  virtual void set_owner(const int owner) = 0;
+  virtual void set_owner(int owner) = 0;
 
   /** Set the object's scroll rate in the x direction */
-  virtual void set_scroll_x(const float s) = 0;
+  virtual void set_scroll_x(float s) = 0;
 
   /** Set the object's scroll rate in the y direction */
-  virtual void set_scroll_y(const float s) = 0;
+  virtual void set_scroll_y(float s) = 0;
 
   /** Set the objects stretch in the x direction value */
-  virtual void set_stretch_x(const bool s) = 0;
+  virtual void set_stretch_x(bool s) = 0;
 
   /** Set the objects stretch in the y direction value */
   virtual void set_stretch_y(bool s) = 0;
 
   /** Set whether or not the object should maintain it's aspect ratio when stretched */
-  virtual void set_keep_aspect(const bool a) = 0;
+  virtual void set_keep_aspect(bool a) = 0;
 
   /** Set the objects color if applicable */
   virtual void set_color(const Color& c) = 0;
 
   /** Set the object's parallax scroll multiplier in the x direction */
-  virtual void set_para_x(const float p) = 0;
+  virtual void set_para_x(float p) = 0;
 
   /** Set the object's parallax scroll multiplier in the y direction */
-  virtual void set_para_y(const float p) = 0;
+  virtual void set_para_y(float p) = 0;
 
   /** Set the object's direction if applicable */
-  virtual void set_direction(const std::string d) = 0;
+  virtual void set_direction(const std::string& d) = 0;
 
   virtual void set_id(const std::string& t) = 0;
   virtual void set_target_id(const std::string& t) = 0;

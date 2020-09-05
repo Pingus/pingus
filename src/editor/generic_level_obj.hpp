@@ -178,14 +178,14 @@ public:
   /// Operations
 public:
   /** Default Constructor */
-  GenericLevelObj(const std::string obj_name);
+  GenericLevelObj(const std::string& obj_name);
   GenericLevelObj(const GenericLevelObj& rhs);
 
   /** Destructor */
   ~GenericLevelObj() override { }
 
   /** Set the object's position */
-  void set_pos(const Vector3f p) override;
+  void set_pos(const Vector3f& p) override;
 
   void set_pos_x(float x) override;
   float get_pos_x() const override;
@@ -200,10 +200,10 @@ public:
   void set_orig_pos(const Vector3f p) override { orig_pos = p; }
 
   /** Set the object's resource name */
-  void set_res_desc(const ResDescriptor d) override;
+  void set_res_desc(const ResDescriptor& d) override;
 
   /** Set the object's modifier */
-  void set_modifier(const std::string m) override;
+  void set_modifier(const std::string& m) override;
 
   /** Set the object's modifier */
   void set_modifier(ResourceModifier::Enum modifier) override;
@@ -211,60 +211,60 @@ public:
   ResourceModifier::Enum get_modifier() const override;
 
   /** Set the object's section header name */
-  void set_section_name(const std::string sn) override { section_name = sn; }
+  void set_section_name(const std::string& sn) override { section_name = sn; }
 
   /** Set the object's type */
-  void set_type(const std::string t) override { object_type = t; }
+  void set_type(const std::string& t) override { object_type = t; }
 
-  void set_ground_type(const std::string t) override { ground_type = t; }
+  void set_ground_type(const std::string& t) override { ground_type = t; }
 
   /** Set the object's speed */
-  void set_speed(const int s) override { speed = s; }
+  void set_speed(int s) override { speed = s; }
 
   /** Set the objects release rate */
-  void set_release_rate(const int r) override { release_rate = r; }
+  void set_release_rate(int r) override { release_rate = r; }
 
   /** Set the object's parallax */
-  void set_parallax(const float para) override { parallax = para; }
+  void set_parallax(float para) override { parallax = para; }
 
   /** Set the object's repeat */
-  void set_repeat(const int w) override { repeat = w; }
+  void set_repeat(int w) override { repeat = w; }
 
   /** Set the object's owner_id */
-  void set_owner(const int owner) override { owner_id = owner; }
+  void set_owner(int owner) override { owner_id = owner; }
 
   /** Set the object's scroll rate in the x direction */
-  void set_scroll_x(const float s) override { scroll_x = s; }
+  void set_scroll_x(float s) override { scroll_x = s; }
 
   /** Set the object's scroll rate in the y direction */
-  void set_scroll_y(const float s) override { scroll_y = s; }
+  void set_scroll_y(float s) override { scroll_y = s; }
 
   /** Set the objects stretch in the x direction value */
-  void set_stretch_x(const bool s) override;
+  void set_stretch_x(bool s) override;
 
   /** Set the objects stretch in the y direction value */
   void set_stretch_y(bool s) override;
 
   /** Set whether or not the object should maintain it's aspect ratio when stretched */
-  void set_keep_aspect(const bool a) override;
+  void set_keep_aspect(bool a) override;
 
   /** Set the objects color if applicable */
   void set_color(const Color& c) override
   { color = c; }
 
   /** Set the object's parallax scroll multiplier in the x direction */
-  void set_para_x(const float p) override { para_x = p; }
+  void set_para_x(float p) override { para_x = p; }
 
   /** Set the object's parallax scroll multiplier in the y direction */
-  void set_para_y(const float p) override { para_y = p; }
+  void set_para_y(float p) override { para_y = p; }
 
   /** Set the object's direction if applicable */
-  void set_direction(const std::string d) override { direction = d; }
+  void set_direction(const std::string& d) override { direction = d; }
 
   void set_id(const std::string& t) override { id = t; }
   void set_target_id(const std::string& t) override { target_id = t; }
 
-  void set_height(const int h) override { height = h; }
+  void set_height(int h) override { height = h; }
 
   /** Write basic properties to the file for this type */
   void write_properties(Writer &fw) override;

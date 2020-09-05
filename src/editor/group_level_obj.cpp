@@ -165,7 +165,7 @@ GroupLevelObj::draw_selection(DrawingContext& gc)
 }
 
 void
-GroupLevelObj::set_pos(const Vector3f p)
+GroupLevelObj::set_pos(const Vector3f& p)
 {
   Vector3f diff = p - m_pos;
   m_pos = p;
@@ -212,7 +212,7 @@ GroupLevelObj::is_at(int x, int y)
 }
 
 void
-GroupLevelObj::set_release_rate(const int r)
+GroupLevelObj::set_release_rate(int r)
 {
   m_release_rate = r;
 
@@ -223,7 +223,7 @@ GroupLevelObj::set_release_rate(const int r)
 }
 
 void
-GroupLevelObj::set_owner(const int owner)
+GroupLevelObj::set_owner(int owner)
 {
   m_owner_id = owner;
 
@@ -234,7 +234,7 @@ GroupLevelObj::set_owner(const int owner)
 }
 
 void
-GroupLevelObj::set_direction(const std::string direction)
+GroupLevelObj::set_direction(const std::string& direction)
 {
   m_direction = direction;
 
@@ -245,7 +245,7 @@ GroupLevelObj::set_direction(const std::string direction)
 }
 
 void
-GroupLevelObj::set_repeat(const int repeat)
+GroupLevelObj::set_repeat(int repeat)
 {
   m_repeat = repeat;
 

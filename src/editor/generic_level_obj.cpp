@@ -26,7 +26,7 @@
 namespace Editor {
 
 // Default constructor
-GenericLevelObj::GenericLevelObj(std::string obj_name) :
+GenericLevelObj::GenericLevelObj(const std::string& obj_name) :
   sprite(),
   surface(),
   desc(),
@@ -150,7 +150,7 @@ GenericLevelObj::get_attributes(std::string obj_type)
 }
 
 void
-GenericLevelObj::set_res_desc(const ResDescriptor d)
+GenericLevelObj::set_res_desc(const ResDescriptor& d)
 {
   desc = d;
   refresh_sprite();
@@ -254,7 +254,7 @@ GenericLevelObj::refresh_sprite()
 
 // Set the modifier and actually modify the sprite loaded in memory
 void
-GenericLevelObj::set_modifier(const std::string m)
+GenericLevelObj::set_modifier(const std::string& m)
 {
   set_modifier(ResourceModifier::from_string(m));
 }
@@ -465,7 +465,7 @@ GenericLevelObj::load_generic_surface()
 }
 
 void
-GenericLevelObj::set_pos(Vector3f p)
+GenericLevelObj::set_pos(const Vector3f& p)
 {
   pos = p;
 }

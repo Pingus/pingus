@@ -49,7 +49,7 @@ public:
     return !(x == other.x && y == other.y);
   }
 
-  const Vector2f& operator=(const Vector2f& other)
+  Vector2f& operator=(const Vector2f& other)
   {
     x = other.x;
     y = other.y;

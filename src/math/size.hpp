@@ -98,7 +98,7 @@ public:
   { return (width != s.width) || (height != s.height); }
 
   //: Size / int operator.
-  Size operator/(int a)
+  Size operator/(int a) const
   { return Size(width / a, height / a); }
 
   //: Size /= Size operator.

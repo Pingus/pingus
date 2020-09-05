@@ -131,7 +131,7 @@ public:
   /// Operations
 public:
   /** Set the object's position */
-  void set_pos(const Vector3f p) override;
+  void set_pos(const Vector3f& p) override;
 
   void set_pos_x(float x) override { }
   float get_pos_x() const override { return 0.0f; }
@@ -146,10 +146,10 @@ public:
   void set_orig_pos(const Vector3f p) override { m_orig_pos = p; }
 
   /** Set the object's resource name */
-  void set_res_desc(const ResDescriptor d) override { }
+  void set_res_desc(const ResDescriptor& d) override { }
 
   /** Set the object's modifier */
-  void set_modifier(const std::string m) override { }
+  void set_modifier(const std::string& m) override { }
 
   /** Set the object's modifier */
   void set_modifier(ResourceModifier::Enum modifier) override { }
@@ -157,33 +157,33 @@ public:
   ResourceModifier::Enum get_modifier() const override { return ResourceModifier::Enum::ROT0; }
 
   /** Set the object's section header name */
-  void set_section_name(const std::string sn) override { }
+  void set_section_name(const std::string& sn) override { }
 
   /** Set the object's type */
-  void set_type(const std::string t) override { }
+  void set_type(const std::string& t) override { }
 
-  void set_ground_type(const std::string t) override { }
+  void set_ground_type(const std::string& t) override { }
 
   /** Set the object's speed */
-  void set_speed(const int s) override { }
+  void set_speed(int s) override { }
 
   /** Set the objects release rate */
-  void set_release_rate(const int r) override;
+  void set_release_rate(int r) override;
 
   /** Set the object's parallax */
-  void set_parallax(const float para) override { }
+  void set_parallax(float para) override { }
 
   /** Set the object's repeat */
-  void set_repeat(const int w) override;
+  void set_repeat(int w) override;
 
   /** Set the object's owner_id */
-  void set_owner(const int owner) override;
+  void set_owner(int owner) override;
 
   /** Set the object's scroll rate in the x direction */
-  void set_scroll_x(const float s) override { }
+  void set_scroll_x(float s) override { }
 
   /** Set the object's scroll rate in the y direction */
-  void set_scroll_y(const float s) override { }
+  void set_scroll_y(float s) override { }
 
   /** Set the objects stretch in the x direction value */
   void set_stretch_x(const bool s) override { }
@@ -198,18 +198,18 @@ public:
   void set_color(const Color& c) override { }
 
   /** Set the object's parallax scroll multiplier in the x direction */
-  void set_para_x(const float p) override { }
+  void set_para_x(float p) override { }
 
   /** Set the object's parallax scroll multiplier in the y direction */
-  void set_para_y(const float p) override { }
+  void set_para_y(float p) override { }
 
   /** Set the object's direction if applicable */
-  void set_direction(const std::string d) override;
+  void set_direction(const std::string& d) override;
 
   void set_id(const std::string& t) override { }
   void set_target_id(const std::string& t) override { }
 
-  void set_height(const int h) override { }
+  void set_height(int h) override { }
 
   /** Write basic properties to the file for this type */
   void write_properties(Writer &fw) override;

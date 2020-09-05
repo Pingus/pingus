@@ -430,7 +430,7 @@ struct OverlapsWith
     rect(rect_)
   {}
 
-  bool operator()(const LevelObjPtr& obj) {
+  bool operator()(const LevelObjPtr& obj) const {
     return rect.is_overlapped(obj->get_rect());
   }
 };
