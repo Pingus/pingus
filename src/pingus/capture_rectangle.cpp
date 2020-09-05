@@ -26,7 +26,7 @@
 
 CaptureRectangle::CaptureRectangle(GameSession* session_) :
   session(session_),
-  pingu(0),
+  pingu(nullptr),
   action_str(),
   owner_id(0),
   good("game/cursors/capgood"),

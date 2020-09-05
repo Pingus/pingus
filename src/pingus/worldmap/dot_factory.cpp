@@ -39,7 +39,7 @@ DotFactory::create(const ReaderObject& reader)
   else
   {
     raise_exception(std::runtime_error, "DotFactory: unknown tag: " <<  reader.get_name());
-    return 0;
+    return nullptr;
   }
 }
 

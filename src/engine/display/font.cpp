@@ -63,7 +63,7 @@ public:
       {
         if (i->unicode < glyphs.size())
         {
-          if (glyphs[i->unicode] == 0)
+          if (glyphs[i->unicode] == nullptr)
           {
             glyphs[i->unicode] = util::make_unique<GlyphDescription>(*i);
             glyphs[i->unicode]->image = static_cast<int>(framebuffer_surfaces.size()) - 1;

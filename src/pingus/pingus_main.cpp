@@ -618,7 +618,7 @@ PingusMain::run(int argc, char** argv)
 {
   logmich::set_log_level(logmich::kWarning);
 
-  tinygettext::Log::set_log_info_callback(0);
+  tinygettext::Log::set_log_info_callback(nullptr);
 
   try
   {

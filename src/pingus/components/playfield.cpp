@@ -28,7 +28,7 @@ Playfield::Playfield(Server* server_, GameSession* session_, const Rect& rect_) 
   RectComponent(rect_),
   server(server_),
   session(session_),
-  current_pingu(0),
+  current_pingu(nullptr),
   mouse_scrolling(),
   scroll_speed(),
   scroll_center(),
@@ -97,7 +97,7 @@ Playfield::current_pingu_find(const Vector2f& pos)
 {
   float min_dist = 500.0;
   float dist;
-  Pingu* c_pingu = 0;
+  Pingu* c_pingu = nullptr;
 
   for (PinguIter pingu = server->get_world()->get_pingus()->begin();
        pingu != server->get_world()->get_pingus()->end();

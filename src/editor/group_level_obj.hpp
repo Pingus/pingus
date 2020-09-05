@@ -122,8 +122,8 @@ public:
   /** Retrieve the object's direction */
   std::string get_direction() override { return m_direction; }
 
-  std::string get_id() const override { return 0; }
-  std::string get_target_id() const override { return 0; }
+  std::string get_id() const override { return nullptr; }
+  std::string get_target_id() const override { return nullptr; }
 
   int get_height() const override { return 0; }
 

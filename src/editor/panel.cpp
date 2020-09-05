@@ -65,7 +65,7 @@ private:
 public:
   PanelButton(EditorScreen* editor_,
               const Vector2i& pos_, const std::string& name, const std::string& tooltip_,
-              Callback callback_ = 0) :
+              Callback callback_ = nullptr) :
     editor(editor_),
     button_raised("core/editor/button-raised"),
     button_pressed("core/editor/button-pressed"),

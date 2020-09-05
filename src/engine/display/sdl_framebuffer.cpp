@@ -232,7 +232,7 @@ SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable
                                 SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                                 size.width, size.height,
                                 flags);
-    if(m_window == 0)
+    if(m_window == nullptr)
     {
       std::ostringstream msg;
       msg << "Couldn't set video mode (" << size.width << "x" << size.height << "): " << SDL_GetError();
@@ -285,7 +285,7 @@ SDLFramebuffer::pop_cliprect()
 {
   cliprect_stack.pop_back();
   if (cliprect_stack.empty())
-    SDL_RenderSetClipRect(m_renderer, NULL);
+    SDL_RenderSetClipRect(m_renderer, nullptr);
   else
     SDL_RenderSetClipRect(m_renderer, &cliprect_stack.back());
 }

@@ -35,7 +35,7 @@ DriverFactory::create(const std::string& name, Manager* manager)
   }
   else
   {
-    return 0;
+    return nullptr;
   }
 }
 

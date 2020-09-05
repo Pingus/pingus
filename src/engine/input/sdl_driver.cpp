@@ -30,7 +30,7 @@ SDLDriver::SDLDriver() :
   mouse_button_bindings(),
   joystick_button_bindings(),
   joystick_axis_bindings(),
-  keyboard_binding(0),
+  keyboard_binding(nullptr),
   joystick_handles()
 {
   for (int i = 0; i < SDL_NUM_SCANCODES; ++i)
@@ -113,18 +113,18 @@ SDLDriver::create_button(const ReaderObject& reader_object, Control* parent)
       else
       {
         log_error("couldn't find keycode for key '{}'", key_str);
-        return 0;
+        return nullptr;
       }
     }
     else
     {
       log_error("'key' missing");
-      return 0;
+      return nullptr;
     }
   }
   else
   {
-    return 0;
+    return nullptr;
   }
 }
 

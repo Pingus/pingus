@@ -22,11 +22,11 @@ GroupComponent::GroupComponent(const Rect& rect_, bool clip_) :
   RectComponent(rect_),
   children(),
   drawing_context(rect_, clip_),
-  mouse_over_comp(0),
-  focused_comp(0),
-  grabbed_comp(0),
-  primary_pressed_comp(0),
-  secondary_pressed_comp(0)
+  mouse_over_comp(nullptr),
+  focused_comp(nullptr),
+  grabbed_comp(nullptr),
+  primary_pressed_comp(nullptr),
+  secondary_pressed_comp(nullptr)
 {
 }
 
@@ -115,7 +115,7 @@ GroupComponent::on_primary_button_release (int x, int y)
       if (comp == primary_pressed_comp)
         primary_pressed_comp->on_primary_button_click(mouse_pos.x, mouse_pos.y);
 
-      primary_pressed_comp = 0;
+      primary_pressed_comp = nullptr;
     }
     else
     {
@@ -163,7 +163,7 @@ GroupComponent::on_secondary_button_release(int x, int y)
     if (comp == secondary_pressed_comp)
       secondary_pressed_comp->on_secondary_button_click(mouse_pos.x, mouse_pos.y);
 
-    secondary_pressed_comp = 0;
+    secondary_pressed_comp = nullptr;
   }
   else
   {
@@ -246,7 +246,7 @@ GroupComponent::component_at(const Vector2i& pos)
     if ((*i)->is_visible() && (*i)->is_at(pos.x, pos.y))
       return i->get();
   }
-  return 0;
+  return nullptr;
 }
 
 void
@@ -278,7 +278,7 @@ GroupComponent::on_pointer_leave()
       mouse_over_comp->set_mouse_over(false);
       mouse_over_comp->on_pointer_leave();
     }
-    mouse_over_comp = 0;
+    mouse_over_comp = nullptr;
   }
 }
 
@@ -292,7 +292,7 @@ GroupComponent::grab(Component* comp)
 void
 GroupComponent::ungrab(Component* comp)
 {
-  grabbed_comp = 0;
+  grabbed_comp = nullptr;
   Component::ungrab();
 }
 

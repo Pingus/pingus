@@ -57,25 +57,25 @@ Screenshot::save_png(const std::string& filename, uint8_t* buffer, int width, in
   png_infop info_ptr;
 
   fp = fopen(filename.c_str(), "wb");
-  if (fp == NULL)
+  if (fp == nullptr)
   {
     perror(filename.c_str());
     log_info("Screenshot: Couldn't write file: {}", filename);
     return;
   }
 
-  png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
-  if (png_ptr == NULL)
+  png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, nullptr, nullptr, nullptr);
+  if (png_ptr == nullptr)
   {
     fclose(fp);
     return;
   }
 
   info_ptr = png_create_info_struct(png_ptr);
-  if (info_ptr == NULL)
+  if (info_ptr == nullptr)
   {
     fclose(fp);
-    png_destroy_write_struct(&png_ptr, NULL);
+    png_destroy_write_struct(&png_ptr, nullptr);
     return;
   }
 
@@ -139,7 +139,7 @@ Screenshot::get_date()
   char buffer[64];
   time_t curtime;
   struct tm *loctime;
-  curtime = time (NULL);
+  curtime = time (nullptr);
   loctime = localtime(&curtime);
   strftime(buffer, 64, "%Y%m%d-%H%M%S", loctime);
 

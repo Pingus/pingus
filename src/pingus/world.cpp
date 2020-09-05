@@ -265,7 +265,7 @@ World::play_sound(const std::string& name, const Vector3f& pos, float volume)
 Pingu*
 World::get_pingu (const Vector3f& pos)
 {
-  Pingu* current_pingu = 0;
+  Pingu* current_pingu = nullptr;
   float distance = -1.0;
 
   for (PinguIter i = pingus->begin (); i != pingus->end (); ++i) {
@@ -314,7 +314,7 @@ World::get_worldobj(const std::string& id)
     if ((*obj)->get_id() == id)
       return *obj;
   }
-  return 0;
+  return nullptr;
 }
 
 Vector2i

@@ -184,7 +184,7 @@ CommandLine_Generic::Option *CommandLine_Generic::lookup_short_option(char short
     if (i->key == short_option)
       return &(*i);
   }
-  return 0;
+  return nullptr;
 }
 
 CommandLine_Generic::Option *CommandLine_Generic::lookup_long_option(const std::string& long_option)
@@ -194,7 +194,7 @@ CommandLine_Generic::Option *CommandLine_Generic::lookup_long_option(const std::
     if (i->long_option == long_option)
       return &*i;
   }
-  return 0;
+  return nullptr;
 }
 
 void CommandLine_Generic::read_option(int key, const std::string& argument)

@@ -51,7 +51,7 @@ OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src) :
                                               0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000);
 #endif
   //SDL_SetSurfaceAlphaMod(src, 0);
-  SDL_BlitSurface(src, 0, convert, 0);
+  SDL_BlitSurface(src, nullptr, convert, nullptr);
 
   GLenum sdl_format = GL_RGB;
   if(convert->format->BytesPerPixel == 3)

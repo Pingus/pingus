@@ -71,7 +71,7 @@ FramebufferSurface::operator==(const FramebufferSurface& other) const
 
 FramebufferSurface::operator bool() const
 {
-  return impl.get() != 0;
+  return impl.get() != nullptr;
 }
 
 long

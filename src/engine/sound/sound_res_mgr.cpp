@@ -44,7 +44,7 @@ SoundResMgr::load(const std::string& name)
     return i->second;
   }
 
-  return 0;
+  return nullptr;
 }
 
 void SoundResMgr::free_sound_map()

@@ -21,7 +21,7 @@
 
 namespace Input {
 
-Controller* Controller::current_ = 0;
+Controller* Controller::current_ = nullptr;
 
 Controller*
 Controller::current()
@@ -89,7 +89,7 @@ Controller::add_scroller(int id, std::unique_ptr<ControllerScroller> scroller)
   if (int(scrollers.size())-1 < id)
     scrollers.resize(static_cast<size_t>(id+1));
 
-  assert(scrollers[static_cast<size_t>(id)] == 0);
+  assert(scrollers[static_cast<size_t>(id)] == nullptr);
   scrollers[static_cast<size_t>(id)] = std::move(scroller);
 }
 
@@ -117,7 +117,7 @@ Controller::add_keyboard(int id, std::unique_ptr<ControllerKeyboard> keyboard)
   if (int(keyboards.size())-1 < id)
     keyboards.resize(static_cast<size_t>(id+1));
 
-  assert(keyboards[static_cast<size_t>(id)] == 0);
+  assert(keyboards[static_cast<size_t>(id)] == nullptr);
   keyboards[static_cast<size_t>(id)] = std::move(keyboard);
 }
 
@@ -127,7 +127,7 @@ Controller::add_pointer(int id, std::unique_ptr<ControllerPointer> pointer)
   if (int(pointers.size())-1 < id)
     pointers.resize(static_cast<size_t>(id+1));
 
-  assert(pointers[static_cast<size_t>(id)] == 0);
+  assert(pointers[static_cast<size_t>(id)] == nullptr);
   pointers[static_cast<size_t>(id)] = std::move(pointer);
 }
 
@@ -144,7 +144,7 @@ Controller::add_axis(int id, std::unique_ptr<ControllerAxis> axis)
   if (int(axes.size())-1 < id)
     axes.resize(static_cast<size_t>(id+1));
 
-  assert(axes[static_cast<size_t>(id)] == 0);
+  assert(axes[static_cast<size_t>(id)] == nullptr);
   axes[static_cast<size_t>(id)] = std::move(axis);
 }
 
@@ -201,7 +201,7 @@ Controller::add_button(int id, std::unique_ptr<ControllerButton> button)
   if (int(buttons.size())-1 < id)
     buttons.resize(static_cast<size_t>(id+1));
 
-  assert(buttons[static_cast<size_t>(id)] == 0);
+  assert(buttons[static_cast<size_t>(id)] == nullptr);
   buttons[static_cast<size_t>(id)] = std::move(button);
 }
 

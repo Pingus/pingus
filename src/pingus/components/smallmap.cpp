@@ -32,7 +32,7 @@ SmallMap::SmallMap(Server* server_, Playfield* playfield_, const Rect& rect_) :
   image(),
   scroll_mode(),
   has_focus(),
-  gc_ptr(0)
+  gc_ptr(nullptr)
 {
   image = std::unique_ptr<SmallMapImage>(new SmallMapImage(server, rect.get_width(), rect.get_height()));
 
@@ -96,7 +96,7 @@ SmallMap::draw(DrawingContext& gc)
     gc.draw_line(Vector2i(x, y), Vector2i(x, y-2), Color(255, 255, 0));
   }
 
-  gc_ptr = 0;
+  gc_ptr = nullptr;
 }
 
 void

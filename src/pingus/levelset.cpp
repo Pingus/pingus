@@ -217,7 +217,7 @@ Levelset::get_level(int num) const
   }
   else
   {
-    return 0;
+    return nullptr;
   }
 }
 

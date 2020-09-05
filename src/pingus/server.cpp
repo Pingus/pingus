@@ -31,7 +31,7 @@ static std::string get_date_string ()
   char buffer[32];
   time_t curtime;
   struct tm *loctime;
-  curtime = time (NULL);
+  curtime = time (nullptr);
   loctime = localtime(&curtime);
   strftime(buffer, 32, "%Y%m%d-%H%M%S", loctime);
 

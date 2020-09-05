@@ -136,8 +136,8 @@ private:
 StoryScreen::StoryScreen(const ReaderMapping& reader, bool credits) :
   story(new WorldmapNS::WorldmapStory(reader)),
   story_comp(),
-  continue_button(0),
-  skip_button(0),
+  continue_button(nullptr),
+  skip_button(nullptr),
   m_credits(credits)
 {
   story_comp = gui_manager->create<StoryScreenComponent>(story.get(), m_credits);

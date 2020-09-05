@@ -43,9 +43,9 @@ namespace Editor {
 EditorScreen::EditorScreen() :
   plf(new EditorLevel()),
   level_pathname(),
-  panel(0),
-  viewport(0),
-  object_selector(0),
+  panel(nullptr),
+  viewport(nullptr),
+  object_selector(nullptr),
   minimap(),
   object_properties(),
   action_properties(),

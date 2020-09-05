@@ -111,13 +111,13 @@ System::opendir(const std::string& pathname, const std::string& pattern)
 
   dp = ::opendir(pathname.c_str());
 
-  if (dp == 0)
+  if (dp == nullptr)
   {
     raise_exception(std::runtime_error, pathname << ": " << strerror(errno));
   }
   else
   {
-    while ((de = ::readdir(dp)) != 0)
+    while ((de = ::readdir(dp)) != nullptr)
     {
       if (fnmatch(pattern.c_str(), de->d_name, FNM_PATHNAME) == 0)
       {
@@ -441,7 +441,7 @@ System::get_language()
 #ifdef WIN32
   char* lang_c = getenv("LC_MESSAGES");
 #else
-  char* lang_c = setlocale(LC_MESSAGES, NULL);
+  char* lang_c = setlocale(LC_MESSAGES, nullptr);
 #endif
   std::string lang;
 
@@ -574,7 +574,7 @@ System::realpath(const std::string& pathname)
   else
   {
     // relative path
-    char* cwd = getcwd(NULL, 0);
+    char* cwd = getcwd(nullptr, 0);
     if (!cwd)
     {
       log_error("System::realpath: Error: couldn't getcwd()");

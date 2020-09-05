@@ -53,7 +53,7 @@ PinguHolder::create_pingu (const Vector3f& pos, int owner_id)
   }
   else
   {
-    return 0;
+    return nullptr;
   }
 }
 
@@ -128,11 +128,11 @@ PinguHolder::get_pingu(unsigned int id_)
     if (pingu->get_status() == Pingu::PS_ALIVE)
       return pingu;
     else
-      return 0;
+      return nullptr;
   }
   else
   {
-    return 0;
+    return nullptr;
   }
 }
 

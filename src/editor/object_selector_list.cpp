@@ -36,7 +36,7 @@ ObjectSelectorList::ObjectSelectorList(EditorScreen* editor_, ObjectSelector* ob
   mode(NOTHING),
   current_object(-1),
   drag_object(-1),
-  set(0)
+  set(nullptr)
 {
 }
 

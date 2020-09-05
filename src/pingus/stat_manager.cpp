@@ -24,7 +24,7 @@
 #include "util/string_util.hpp"
 #include "util/system.hpp"
 
-StatManager* StatManager::instance_ = 0;
+StatManager* StatManager::instance_ = nullptr;
 
 StatManager*
 StatManager::instance()
@@ -39,14 +39,14 @@ StatManager::StatManager(const std::string& arg_filename)
 {
   load(statfilename);
 
-  assert(instance_ == 0);
+  assert(instance_ == nullptr);
   instance_ = this;
 }
 
 StatManager::~StatManager()
 {
   flush();
-  instance_ = 0;
+  instance_ = nullptr;
 }
 
 void

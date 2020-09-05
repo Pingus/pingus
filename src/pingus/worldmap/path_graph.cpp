@@ -247,7 +247,7 @@ PathGraph::get_dot(float x_pos, float y_pos)
     if (Math::sqrt(x*x + y*y) < 30.0f)
       return *i;
   }
-  return 0;
+  return nullptr;
 }
 
 NodeId

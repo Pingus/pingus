@@ -32,7 +32,7 @@
 
 namespace WorldmapNS {
 
-Worldmap* Worldmap::current_ = 0;
+Worldmap* Worldmap::current_ = nullptr;
 
 Worldmap::Worldmap(const Pathname& filename) :
   worldmap(),

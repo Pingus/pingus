@@ -36,7 +36,7 @@ private:
   bool visible;
 
 public:
-  Component () : parent(0), focus(false), mouse_over(false), visible(true) { }
+  Component () : parent(), focus(false), mouse_over(false), visible(true) { }
   virtual ~Component() {}
 
   virtual void set_focus(bool val) { focus = val; }

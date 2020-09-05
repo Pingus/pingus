@@ -27,7 +27,7 @@ Component::get_parent() const
 void
 Component::set_parent(GroupComponent* p)
 {
-  assert(parent == 0);
+  assert(parent == nullptr);
   parent = p;
 }
 
