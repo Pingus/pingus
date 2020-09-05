@@ -61,7 +61,7 @@ Faller::update ()
   // FIXME: This should be triggered at a later point, when close to
   // FIXME: deadly_velocity or something like that. A translation
   // FIXME: animation for the floater might also help
-  if (pingu->get_velocity().y > 5.0 && pingu->request_fall_action())
+  if (pingu->get_velocity().y > 5.0f && pingu->request_fall_action())
     return;
 
   // Apply gravity

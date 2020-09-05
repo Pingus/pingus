@@ -135,7 +135,7 @@ World::draw (SceneContext& gc)
 {
   WorldObj::set_world(this);
 
-  gc.light().fill_screen(Color(ambient_light));
+  gc.light().fill_screen(ambient_light);
 
   for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
   {

@@ -30,9 +30,9 @@ SDL_Rect Intersection(SDL_Rect* r1, SDL_Rect* r2)
   rect.x = Math::max(r1->x, r2->x);
   rect.y = Math::max(r1->y, r2->y);
   int endx = Math::min(r1->x + r1->w, r2->x + r2->w);
-  rect.w = static_cast<Uint16>(Math::max(static_cast<int>(endx - rect.x), 0));
+  rect.w = static_cast<Uint16>(Math::max(endx - rect.x, 0));
   int endy = Math::min(r1->y + r1->h, r2->y + r2->h);
-  rect.h = static_cast<Uint16>(Math::max(static_cast<int>(endy - rect.y), 0));
+  rect.h = static_cast<Uint16>(Math::max(endy - rect.y, 0));
   return rect;
 }
 

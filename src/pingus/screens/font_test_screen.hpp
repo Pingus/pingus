@@ -34,7 +34,7 @@ public:
   FontTestScreen(const Pathname& fontfile);
 
   void draw(DrawingContext& gc) override;
-  void update(const Input::Event& event) override;
+  void update_input(const Input::Event& event) override;
   void update(float delta) override {}
 
 private:

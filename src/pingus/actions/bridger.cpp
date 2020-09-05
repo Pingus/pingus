@@ -35,7 +35,7 @@ Bridger::Bridger (Pingu* p) :
   brick_r("other/brick_right"),
   bricks(MAX_BRICKS),
   block_build(false),
-  name(_("Bridger") + std::string(" (" + StringUtil::to_string(bricks) + ")"))
+  name(_("Bridger") + (" (" + StringUtil::to_string(bricks) + ")"))
 {
   walk_sprite.load (Direction::LEFT,  Sprite("pingus/player" +
                                              pingu->get_owner_str() + "/bridger_walk/left"));

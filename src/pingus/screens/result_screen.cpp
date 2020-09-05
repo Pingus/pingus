@@ -35,9 +35,9 @@ public:
   Sprite blackboard;
   std::string time_str;
 
-  ResultScreenComponent(Result arg_result);
+  ResultScreenComponent(const Result& arg_result);
   virtual ~ResultScreenComponent() {}
-  void draw(DrawingContext& gc) ;
+  void draw(DrawingContext& gc) override;
 };
 
 class ResultScreenOkButton
@@ -55,13 +55,14 @@ public:
   {
   }
 
-  void on_pointer_enter ()
+  void on_pointer_enter () override
   {
     SurfaceButton::on_pointer_enter();
     Sound::PingusSound::play_sound("tick");
   }
 
-  void on_click() {
+  void on_click() override
+  {
     parent->close_screen();
     Sound::PingusSound::play_sound("yipee");
   }
@@ -86,16 +87,18 @@ public:
   {
   }
 
-  void draw(DrawingContext& gc) {
+  void draw(DrawingContext& gc) override
+  {
     SurfaceButton::draw(gc);
     gc.print_center(Fonts::chalk_normal, Vector2i(x_pos + 55, y_pos - 4), _("Give up"));
   }
 
-  void on_click() {
+  void on_click() override
+  {
     parent->close_screen();
   }
 
-  void on_pointer_enter()
+  void on_pointer_enter() override
   {
     SurfaceButton::on_pointer_enter();
     Sound::PingusSound::play_sound ("tick");
@@ -121,23 +124,25 @@ public:
   {
   }
 
-  void draw (DrawingContext& gc) {
+  void draw (DrawingContext& gc) override
+  {
     SurfaceButton::draw(gc);
     gc.print_center(Fonts::chalk_normal, Vector2i(x_pos + 30, y_pos - 24), _("Retry"));
   }
 
-  bool is_at(int x, int y) {
-    return x > x_pos && x < x_pos + int(button_surface.get_width())
+  bool is_at(int x, int y) override
+  {
+    return x > x_pos && x < x_pos + button_surface.get_width()
       && y > y_pos - 24 &&
-      y < y_pos + int(button_surface.get_height());
+      y < y_pos + button_surface.get_height();
   }
 
-  void on_click()
+  void on_click() override
   {
     parent->retry_level();
   }
 
-  void on_pointer_enter()
+  void on_pointer_enter() override
   {
     SurfaceButton::on_pointer_enter();
     Sound::PingusSound::play_sound ("tick");
@@ -241,7 +246,7 @@ ResultScreenComponent::draw(DrawingContext& gc)
   gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), time_str);
 }
 
-ResultScreen::ResultScreen(Result arg_result) :
+ResultScreen::ResultScreen(const Result& arg_result) :
   result(std::move(arg_result)),
   ok_button(),
   abort_button(),
@@ -249,7 +254,7 @@ ResultScreen::ResultScreen(Result arg_result) :
 {
   gui_manager->create<ResultScreenComponent>(result);
 
-  ok_button = abort_button = retry_button = 0;
+  ok_button = abort_button = retry_button = nullptr;
 
   if (result.success())
   {

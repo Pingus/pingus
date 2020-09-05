@@ -313,9 +313,9 @@ EditorScreen::draw(DrawingContext& gc)
 }
 
 void
-EditorScreen::update(const Input::Event& event)
+EditorScreen::update_input(const Input::Event& event)
 {
-  GUIScreen::update(event);
+  GUIScreen::update_input(event);
 
   switch (event.type)
   {

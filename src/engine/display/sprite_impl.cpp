@@ -21,6 +21,8 @@
 #include "engine/display/sprite_description.hpp"
 #include "util/log.hpp"
 
+namespace {
+
 FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceModifier::Enum modifier)
 {
   // FIXME: Implement proper cache
@@ -41,6 +43,8 @@ FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceMo
     return Display::get_framebuffer()->create_surface(surface);
   }
 }
+
+} // namespace
 
 SpriteImpl::SpriteImpl() :
   filename(),

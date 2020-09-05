@@ -47,7 +47,7 @@ GUIScreen::update(float delta)
 }
 
 void
-GUIScreen::update (const Input::Event& event)
+GUIScreen::update_input(const Input::Event& event)
 {
   // Dispatch the recieved input events
   gui_manager->update(event);

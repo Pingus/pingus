@@ -228,8 +228,8 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
   provider.lock();
   sprovider.lock();
 
-  Uint8* target_buf = static_cast<Uint8*>(provider.get_data());
-  Uint8* source_buf = static_cast<Uint8*>(sprovider.get_data());
+  Uint8* target_buf = provider.get_data();
+  Uint8* source_buf = sprovider.get_data();
   Uint32 colorkey;
   if (sprovider.get_surface()->format->BitsPerPixel == 32)
   {

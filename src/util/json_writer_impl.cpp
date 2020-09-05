@@ -141,10 +141,10 @@ JsonWriterImpl::write_colori(const char* name, const Color& value)
   assert(m_stack.back().get().type() == Json::objectValue);
 
   Json::Value array(Json::arrayValue);
-  array.append(Json::Value(value.r));
-  array.append(Json::Value(value.g));
-  array.append(Json::Value(value.b));
-  array.append(Json::Value(value.a));
+  array.append(Json::Value(static_cast<int>(value.r)));
+  array.append(Json::Value(static_cast<int>(value.g)));
+  array.append(Json::Value(static_cast<int>(value.b)));
+  array.append(Json::Value(static_cast<int>(value.a)));
   m_stack.back().get()[name] = array;
 }
 

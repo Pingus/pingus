@@ -99,7 +99,7 @@ FontTestScreen::draw(DrawingContext& gc)
 }
 
 void
-FontTestScreen::update(const Input::Event& event)
+FontTestScreen::update_input(const Input::Event& event)
 {
   switch (event.type)
   {

@@ -50,7 +50,7 @@ public:
   ~FontDrawingRequest() override {}
 
   void render(Framebuffer& fb, const Rect& rect) override {
-    font.render(origin, static_cast<int>(pos.x + rect.left), static_cast<int>(pos.y + rect.top), text, fb);
+    font.render(origin, pos.x + rect.left, pos.y + rect.top, text, fb);
   }
 };
 
@@ -271,10 +271,10 @@ DrawingContext::draw_line(const Vector2i& pos1, const Vector2i& pos2,
 void
 DrawingContext::draw_fillrect(const Rect& rect_, const Color& color_, float z_)
 {
-  draw(new RectDrawingRequest(Rect(int(rect_.left + translate_stack.back().x),
-                                   int(rect_.top + translate_stack.back().y),
-                                   int(rect_.right + translate_stack.back().x),
-                                   int(rect_.bottom + translate_stack.back().y)),
+  draw(new RectDrawingRequest(Rect(rect_.left + translate_stack.back().x,
+                                   rect_.top + translate_stack.back().y,
+                                   rect_.right + translate_stack.back().x,
+                                   rect_.bottom + translate_stack.back().y),
                               color_,
                               true,
                               z_));
@@ -283,10 +283,10 @@ DrawingContext::draw_fillrect(const Rect& rect_, const Color& color_, float z_)
 void
 DrawingContext::draw_rect(const Rect& rect_, const Color& color_, float z_)
 {
-  draw(new RectDrawingRequest(Rect(int(rect_.left   + translate_stack.back().x),
-                                   int(rect_.top    + translate_stack.back().y),
-                                   int(rect_.right  + translate_stack.back().x),
-                                   int(rect_.bottom + translate_stack.back().y)),
+  draw(new RectDrawingRequest(Rect(rect_.left   + translate_stack.back().x,
+                                   rect_.top    + translate_stack.back().y,
+                                   rect_.right  + translate_stack.back().x,
+                                   rect_.bottom + translate_stack.back().y),
                               color_,
                               false,
                               z_));
@@ -328,9 +328,9 @@ DrawingContext::reset_modelview()
 Rect
 DrawingContext::get_world_clip_rect() const
 {
-  return Rect(Vector2i(static_cast<int>(-translate_stack.back().x),
-                       static_cast<int>(-translate_stack.back().y)),
-              Size(static_cast<int>(get_width()), static_cast<int>(get_height())));
+  return Rect(Vector2i(-translate_stack.back().x,
+                       -translate_stack.back().y),
+              Size(get_width(), get_height()));
 }
 
 void
@@ -390,15 +390,15 @@ DrawingContext::print_right(const Font& font_, const Vector2i& pos, const std::s
 Vector2i
 DrawingContext::screen_to_world(const Vector2i pos)
 {
-  return pos - Vector2i(int(translate_stack.back().x + rect.left),
-                        int(translate_stack.back().y + rect.top));
+  return pos - Vector2i(translate_stack.back().x + rect.left,
+                        translate_stack.back().y + rect.top);
 }
 
 Vector2i
 DrawingContext::world_to_screen(const Vector2i pos)
 {
-  return pos + Vector2i(int(translate_stack.back().x + rect.left),
-                        int(translate_stack.back().y + rect.top));
+  return pos + Vector2i(translate_stack.back().x + rect.left,
+                        translate_stack.back().y + rect.top);
 }
 
 /* EOF */

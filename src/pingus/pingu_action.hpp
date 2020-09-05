@@ -87,7 +87,7 @@ public:
   virtual void  catch_pingu (Pingu*) { /* do nothing */}
 
   /// The time the action needs to get activated (see bomber.cxx)
-  virtual int   activation_time () { return -1; };
+  virtual int   activation_time () { return -1; }
 
   /** Return true if the pingu can be caught with the mouse and
       another action can be applied, false otherwise (exiter,

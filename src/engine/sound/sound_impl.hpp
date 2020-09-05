@@ -24,8 +24,8 @@ namespace Sound {
 class PingusSoundImpl
 {
 public:
-  PingusSoundImpl () { };
-  virtual ~PingusSoundImpl () { };
+  PingusSoundImpl () { }
+  virtual ~PingusSoundImpl () { }
 
   /** Load a music file and play it immediately.
       @param filename The complete filename

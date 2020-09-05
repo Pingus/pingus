@@ -74,7 +74,7 @@ SmallMapImage::update_surface()
 
   canvas.lock();
 
-  cbuffer = static_cast<unsigned char*>(canvas.get_data());
+  cbuffer = canvas.get_data();
 
   int cmap_width  = colmap->get_width();
   int cmap_height = colmap->get_height();

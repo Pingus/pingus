@@ -28,6 +28,8 @@
 #include "pingus/fonts.hpp"
 #include "pingus/globals.hpp"
 
+namespace {
+
 template<class C>
 void write(std::ostream& out, const C& value)
 {
@@ -63,77 +65,7 @@ void read_events(std::istream& out, std::vector<Input::Event>& events)
   }
 }
 
-void read_event(std::istream& out, Input::Event& event)
-{
-  read(out, event.type);
-  switch(event.type)
-  {
-    case Input::BUTTON_EVENT_TYPE:
-      read(out, event.button.name);
-      read(out, event.button.state);
-      break;
-
-    case Input::POINTER_EVENT_TYPE:
-      read(out, event.pointer.name);
-      read(out, event.pointer.x);
-      read(out, event.pointer.y);
-      break;
-
-    case Input::AXIS_EVENT_TYPE:
-      read(out, event.axis.name);
-      read(out, event.axis.dir);
-      break;
-
-    case Input::SCROLLER_EVENT_TYPE:
-      read(out, event.scroll.name);
-      read(out, event.scroll.x_delta);
-      read(out, event.scroll.y_delta);
-      break;
-
-    case Input::KEYBOARD_EVENT_TYPE:
-      read(out, event.keyboard);
-      break;
-
-    default:
-      assert(false && "Unknown Event type");
-  }
-}
-
-void write_event(std::ostream& out, const Input::Event& event)
-{
-  write(out, event.type);
-  switch(event.type)
-  {
-    case Input::BUTTON_EVENT_TYPE:
-      write(out, event.button.name);
-      write(out, event.button.state);
-      break;
-
-    case Input::POINTER_EVENT_TYPE:
-      write(out, event.pointer.name);
-      write(out, event.pointer.x);
-      write(out, event.pointer.y);
-      break;
-
-    case Input::AXIS_EVENT_TYPE:
-      write(out, event.axis.name);
-      write(out, event.axis.dir);
-      break;
-
-    case Input::SCROLLER_EVENT_TYPE:
-      write(out, event.scroll.name);
-      write(out, event.scroll.x_delta);
-      write(out, event.scroll.y_delta);
-      break;
-
-    case Input::KEYBOARD_EVENT_TYPE:
-      write(out, event.keyboard);
-      break;
-
-    default:
-      assert(false && "Unknown Event type");
-  }
-}
+} // namespace
 
 ScreenManager* ScreenManager::instance_ = nullptr;
 
@@ -208,7 +140,7 @@ ScreenManager::display()
       cursor.update(previous_frame_time);
 
     // previous frame took more than one second
-    if (previous_frame_time > 1.0)
+    if (previous_frame_time > 1.0f)
     {
       if (globals::developer_mode)
         log_warn("ScreenManager: previous frame took longer than 1 second ({} sec.), ignoring and doing frameskip", previous_frame_time);
@@ -245,7 +177,7 @@ ScreenManager::update(float delta, const std::vector<Input::Event>& events)
       mouse_pos = Vector2i(static_cast<int>(i->pointer.x),
                            static_cast<int>(i->pointer.y));
 
-    last_screen->update(*i);
+    last_screen->update_input(*i);
 
     if (last_screen != get_current_screen())
     {

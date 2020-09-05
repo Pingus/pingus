@@ -101,8 +101,8 @@ Bomber::update ()
   {
     colmap_exploded = true;
     WorldObj::get_world()->remove(bomber_radius,
-                                  static_cast<int>(static_cast<int>(pingu->get_x()) - (bomber_radius.get_width()/2)),
-                                  static_cast<int>(static_cast<int>(pingu->get_y()) - 16 - (bomber_radius.get_width()/2)));
+                                  static_cast<int>(pingu->get_x()) - (bomber_radius.get_width()/2),
+                                  static_cast<int>(pingu->get_y()) - 16 - (bomber_radius.get_width()/2));
   }
 
   // The pingu explode

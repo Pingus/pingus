@@ -48,12 +48,12 @@ ConveyorBelt::draw (SceneContext& gc)
   gc.color().draw(left_sur, pos);
   for (int i=0; i < width; ++i)
     gc.color().draw(middle_sur,
-                    Vector3f(static_cast<float>(pos.x + static_cast<float>(left_sur.get_width() + i * middle_sur.get_width())),
-                             static_cast<float>(pos.y)));
+                    Vector3f(pos.x + static_cast<float>(left_sur.get_width() + i * middle_sur.get_width()),
+                             pos.y));
 
   gc.color().draw(right_sur,
-                  Vector3f(static_cast<float>(pos.x + static_cast<float>(left_sur.get_width() + width * middle_sur.get_width())),
-                           static_cast<float>(pos.y)));
+                  Vector3f(pos.x + static_cast<float>(left_sur.get_width() + width * middle_sur.get_width()),
+                           pos.y));
 }
 
 void

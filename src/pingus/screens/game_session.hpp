@@ -81,7 +81,7 @@ public:
 
   /** Update all parts of the world */
   void update (float delta) override;
-  void update (const Input::Event& event) override;
+  void update_input(const Input::Event& event) override;
   void draw_background (DrawingContext& gc) override;
 
   ButtonPanel* get_button_panel () { return button_panel; }

@@ -80,7 +80,7 @@ PinguParticleHolder::update ()
 
     if (it->velocity.y > 0)
     {
-      for (tmp_y_add = it->velocity.y; tmp_y_add >= 1.0; --tmp_y_add)
+      for (tmp_y_add = it->velocity.y; tmp_y_add >= 1.0f; --tmp_y_add)
       {
         if (world->get_colmap()->getpixel(static_cast<int>(it->pos.x), static_cast<int>(it->pos.y)))
         {
@@ -95,7 +95,7 @@ PinguParticleHolder::update ()
     }
     else
     {
-      for (tmp_y_add = it->velocity.y; tmp_y_add <= -1.0; ++tmp_y_add)
+      for (tmp_y_add = it->velocity.y; tmp_y_add <= -1.0f; ++tmp_y_add)
       {
         if (world->get_colmap()->getpixel(static_cast<int>(it->pos.x), static_cast<int>(it->pos.y)))
         {
@@ -111,7 +111,7 @@ PinguParticleHolder::update ()
 
     if (it->velocity.x > 0)
     {
-      for (tmp_x_add = it->velocity.x; tmp_x_add >= 1.0; --tmp_x_add)
+      for (tmp_x_add = it->velocity.x; tmp_x_add >= 1.0f; --tmp_x_add)
       {
         if (world->get_colmap()->getpixel(static_cast<int>(it->pos.x), static_cast<int>(it->pos.y)))
         {
@@ -126,7 +126,7 @@ PinguParticleHolder::update ()
     }
     else
     {
-      for (tmp_x_add = it->velocity.x; tmp_x_add <= -1.0; ++tmp_x_add)
+      for (tmp_x_add = it->velocity.x; tmp_x_add <= -1.0f; ++tmp_x_add)
       {
         if (world->get_colmap()->getpixel(static_cast<int>(it->pos.x), static_cast<int>(it->pos.y)))
         {

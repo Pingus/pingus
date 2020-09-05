@@ -185,9 +185,9 @@ GameSession::update(float delta)
 }
 
 void
-GameSession::update(const Input::Event& event)
+GameSession::update_input(const Input::Event& event)
 {
-  GUIScreen::update(event);
+  GUIScreen::update_input(event);
 
   //log_info("Events: " << event.get_type ());
 

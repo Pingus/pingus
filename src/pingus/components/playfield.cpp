@@ -268,8 +268,8 @@ Playfield::on_pointer_move (int x, int y)
 Vector2i
 Playfield::get_pos() const
 {
-  return Vector2i(static_cast<int>(state.get_pos().x),
-                  static_cast<int>(state.get_pos().y));
+  return Vector2i(state.get_pos().x,
+                  state.get_pos().y);
 }
 
 void

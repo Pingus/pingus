@@ -104,20 +104,20 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
         new_pixels[x + 0] = static_cast<unsigned char>(
           (static_cast<float>(p1[0]) * (1 - fy) + static_cast<float>(p2[0]) * fy +
            static_cast<float>(p1[0]) * (1 - fx) + static_cast<float>(p3[0]) * fx +
-           static_cast<float>(p1[0]) * (1 - fz) + static_cast<float>(p4[0]) * fz) / 3.0 + .5);
+           static_cast<float>(p1[0]) * (1 - fz) + static_cast<float>(p4[0]) * fz) / 3.0f + .5f);
         new_pixels[x + 1] = static_cast<unsigned char>(
           (static_cast<float>(p1[1]) * (1 - fy) + static_cast<float>(p2[1]) * fy +
            static_cast<float>(p1[1]) * (1 - fx) + static_cast<float>(p3[1]) * fx +
-           static_cast<float>(p1[1]) * (1 - fz) + static_cast<float>(p4[1]) * fz) / 3.0 + .5);
+           static_cast<float>(p1[1]) * (1 - fz) + static_cast<float>(p4[1]) * fz) / 3.0f + .5f);
         new_pixels[x + 2] = static_cast<unsigned char>(
           (static_cast<float>(p1[2]) * (1 - fy) + static_cast<float>(p2[2]) * fy +
            static_cast<float>(p1[2]) * (1 - fx) + static_cast<float>(p3[2]) * fx +
-           static_cast<float>(p1[2]) * (1 - fz) + static_cast<float>(p4[2]) * fz) / 3.0 + .5);
+           static_cast<float>(p1[2]) * (1 - fz) + static_cast<float>(p4[2]) * fz) / 3.0f + .5f);
         if (bpp == 4) {
           new_pixels[x + 3] = static_cast<unsigned char>(
             (static_cast<float>(p1[3]) * (1 - fy) + static_cast<float>(p2[3]) * fy +
              static_cast<float>(p1[3]) * (1 - fx) + static_cast<float>(p3[3]) * fx +
-             static_cast<float>(p1[3]) * (1 - fz) + static_cast<float>(p4[3]) * fz) / 3.0 + .5);
+             static_cast<float>(p1[3]) * (1 - fz) + static_cast<float>(p4[3]) * fz) / 3.0f + .5f);
         }
         x += bpp;
       }

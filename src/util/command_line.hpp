@@ -33,10 +33,6 @@
 #ifndef HEADER_PINGUS_UTIL_COMMAND_LINE_HPP
 #define HEADER_PINGUS_UTIL_COMMAND_LINE_HPP
 
-#if _MSC_VER > 1000
-#pragma once
-#endif
-
 #include <string>
 #include <vector>
 

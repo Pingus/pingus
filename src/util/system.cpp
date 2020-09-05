@@ -309,7 +309,7 @@ System::find_userdir()
 
   return tmpstr;
 
-#elif __APPLE__
+#elif defined(__APPLE__)
   char* homedir = getenv("HOME");
 
   if (homedir)

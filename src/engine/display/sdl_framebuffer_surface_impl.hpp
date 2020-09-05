@@ -30,7 +30,7 @@ public:
   SDLFramebufferSurfaceImpl(SDL_Renderer* renderer, SDL_Surface* src);
   ~SDLFramebufferSurfaceImpl() override;
 
-  int get_width()  const override { return m_width;; }
+  int get_width()  const override { return m_width; }
   int get_height() const override { return m_height; }
 
   SDL_Texture* get_texture() const { return m_texture; }

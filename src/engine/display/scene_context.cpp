@@ -18,7 +18,9 @@
 
 #include "engine/display/framebuffer.hpp"
 
-#define SCALE_FACTOR 8.0f
+#if 0
+# define SCALE_FACTOR 8.0f
+#endif
 
 class SceneContextImpl
 {

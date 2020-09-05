@@ -62,8 +62,8 @@ Boarder::update ()
         pingu->set_pos(old_pos); // + (pingu->direction * 10);
         ////pingu->pos.y = 10;
 
-        pingu->apply_force(Vector3f(float(speed * static_cast<float>(pingu->direction) * 0.5f),
-                                    -float(speed * static_cast<float>(abs(pingu->direction)) * 0.5f)));
+        pingu->apply_force(Vector3f(speed * static_cast<float>(pingu->direction) * 0.5f,
+                                    -speed * static_cast<float>(abs(pingu->direction)) * 0.5f));
         pingu->set_action(ActionName::WALKER);
         return;
       }

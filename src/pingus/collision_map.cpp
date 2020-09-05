@@ -157,10 +157,9 @@ CollisionMap::draw(DrawingContext& gc)
     m_colmap_sprite_serial = serial;
 
     Surface canvas(width, height);
-    unsigned char* buffer;
 
     canvas.lock();
-    buffer = static_cast<unsigned char*>(canvas.get_data());
+    unsigned char* buffer = canvas.get_data();
 
     const int red   = 0;
     const int green = 1;

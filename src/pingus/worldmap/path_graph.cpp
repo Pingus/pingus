@@ -46,14 +46,9 @@ PathGraph::PathGraph(Worldmap* arg_worldmap, const ReaderMapping& reader) :
   init_cache();
 }
 
-void delete_Path(Edge<Path*> x)
-{
-  delete x.data;
-}
-
 PathGraph::~PathGraph()
 {
-  graph.for_each_edge(delete_Path);
+  graph.for_each_edge([](Edge<Path*> x) { delete x.data; });
   for(PFinderCache::iterator i = pathfinder_cache.begin();
       i != pathfinder_cache.end(); ++i)
     delete *i;
@@ -266,7 +261,7 @@ PathGraph::init_cache()
   pathfinder_cache.resize(static_cast<size_t>(graph.max_node_handler_value()));
   for(PFinderCache::iterator i = pathfinder_cache.begin();
       i != pathfinder_cache.end(); ++i)
-    *i = 0;
+    *i = nullptr;
 }
 
 } // namespace WorldmapNS

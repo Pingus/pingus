@@ -116,10 +116,10 @@ MenuButton::on_pointer_release ()
 bool
 MenuButton::is_at(int x, int y)
 {
-  return (x > x_pos - int(surface_p.get_width()) / 2
-          && x < x_pos + int(surface_p.get_width()) / 2
-          && y > y_pos - int(surface_p.get_height()) / 2
-          && y < y_pos + int(surface_p.get_height()) / 2);
+  return (x > x_pos - surface_p.get_width() / 2
+          && x < x_pos + surface_p.get_width() / 2
+          && y > y_pos - surface_p.get_height() / 2
+          && y < y_pos + surface_p.get_height() / 2);
 }
 
 void

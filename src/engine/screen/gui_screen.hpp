@@ -43,8 +43,8 @@ public:
   virtual void draw_background (DrawingContext&) {}
   void draw(DrawingContext& gc) override;
 
-  void update (const Input::Event& event) override;
-  void update (float) override;
+  void update_input (const Input::Event& event) override;
+  void update(float) override;
 
   virtual void on_pause_press () {}
   virtual void on_single_step_press () {}

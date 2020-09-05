@@ -93,6 +93,9 @@ if(WARNINGS)
       -Wno-double-promotion
       -Wno-unused-private-field
       -Wno-unused-exception-parameter
+      -Wno-unreachable-code
+      -Wno-return-std-move-in-c++11
+      -Wno-format-nonliteral
       )
   endif()
 endif()

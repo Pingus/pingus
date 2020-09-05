@@ -32,7 +32,7 @@ protected:
 
 public:
   DrawingRequest(const Vector2i& pos_, float z_) : pos(pos_), z(z_) {}
-  virtual ~DrawingRequest() {};
+  virtual ~DrawingRequest() {}
 
   /** \a rect is the rectangle that is managed by the parent
       DrawingContext, all calls to fb have to be offset with

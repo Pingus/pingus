@@ -114,7 +114,7 @@ public:
       x > x_pos - static_cast<int>(Fonts::chalk_small.get_width(_("skip"))) &&
       x < x_pos &&
       y > y_pos &&
-      y < y_pos + static_cast<int>(Fonts::chalk_small.get_height());
+      y < y_pos + Fonts::chalk_small.get_height();
   }
 
   void on_pointer_enter() override
