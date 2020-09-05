@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 3.15)
 project(pingus)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/mk/cmake)
@@ -42,6 +42,27 @@ find_package(fmt REQUIRED)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+
+if(CMAKE_VERSION VERSION_GREATER 3.6)
+  if (CLANG_TIDY)
+    find_program(
+      CLANG_TIDY_EXE
+      NAMES "clang-tidy"
+      DOC "Path to clang-tidy executable"
+      )
+
+    if(NOT CLANG_TIDY_EXE)
+      message(FATAL_ERROR "clang-tidy not found.")
+    else()
+      message(STATUS "clang-tidy found: ${CLANG_TIDY_EXE}")
+      if(CLANG_TIDY_FIX)
+        set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}" "-fix")
+      else()
+        set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
+      endif()
+    endif()
+  endif()
+endif()
 
 if (BUILD_TESTS)
   # add 'make test' target, use 'make test ARGS="-V"' or 'ctest -V' for verbose
@@ -84,25 +105,31 @@ file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/pingus/worldobjs/*.cpp
   src/util/*.cpp)
 
+# Build dependencies
 file(GLOB TINYGETTEXT_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   external/tinygettext/src/*.cpp)
 add_library(tinygettext STATIC ${TINYGETTEXT_SOURCES_CXX})
 target_include_directories(tinygettext SYSTEM PUBLIC external/tinygettext/include/)
+set_target_properties(tinygettext PROPERTIES CXX_CLANG_TIDY "")
 
 file(GLOB SEXP_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   external/sexp-cpp/src/*.cpp)
 add_library(sexp STATIC ${SEXP_SOURCES_CXX})
 target_include_directories(sexp SYSTEM PUBLIC external/sexp-cpp/include/)
+set_target_properties(sexp PROPERTIES CXX_CLANG_TIDY "")
 
 file(GLOB LOGMICH_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   external/logmich/src/*.cpp)
 add_library(logmich STATIC ${LOGMICH_SOURCES_CXX})
 target_include_directories(logmich SYSTEM PUBLIC external/logmich/include/)
+set_target_properties(logmich PROPERTIES CXX_CLANG_TIDY "")
 
 add_library(xdgcpp STATIC external/xdgcpp/xdg.cpp)
 target_compile_options(xdgcpp PRIVATE -Wno-effc++)
 target_include_directories(xdgcpp SYSTEM PUBLIC external/xdgcpp/)
+set_target_properties(xdgcpp PROPERTIES CXX_CLANG_TIDY "")
 
+# Build Pingus
 add_library(libpingus STATIC ${PINGUS_SOURCES_CXX})
 set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
 target_include_directories(libpingus PUBLIC src/)
@@ -149,6 +176,7 @@ if(BUILD_TESTS)
   file(GLOB UITEST_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} external/uitest/src/*.cpp)
   add_library(uitest STATIC ${UITEST_SOURCES})
   target_include_directories(uitest SYSTEM PUBLIC external/uitest/include/)
+  set_target_properties(uitest PROPERTIES CXX_CLANG_TIDY "")
 
   # build interactive tests
   file(GLOB UITEST_PINGUS_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} uitest/*_test.cpp)
@@ -181,11 +209,13 @@ if(BUILD_TESTS)
   target_include_directories(gtest SYSTEM PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googletest/include/
     ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googletest/)
+  set_target_properties(gtest PROPERTIES CXX_CLANG_TIDY "")
 
   add_library(gtest_main STATIC ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googletest/src/gtest_main.cc)
   target_include_directories(gtest_main SYSTEM PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googletest/include/
     ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googletest/)
+  set_target_properties(gtest_main PROPERTIES CXX_CLANG_TIDY "")
 
   file(GLOB TEST_PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     tests/*_test.cpp)
