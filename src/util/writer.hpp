@@ -37,7 +37,7 @@ public:
 public:
   Writer(std::ostream& out);
   Writer(std::unique_ptr<WriterImpl> impl);
-  Writer(Writer&& other);
+  Writer(Writer&& other) noexcept = default;
   ~Writer();
 
   /** collections contain an ordered sequence of objects */

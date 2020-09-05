@@ -151,7 +151,7 @@ public:
   void set_velocity (const Vector3f& velocity_);
 
   // Set the pingu in the gives direction
-  void set_direction (Direction d);
+  void set_direction (const Direction& d);
 
   /** Request an action to be set to the pingu, if its a persistent
       action, it will be hold back for later execution, same with a
@@ -189,7 +189,7 @@ public:
   bool need_catch ();
 
   void draw (SceneContext& gc);
-  void apply_force (Vector3f);
+  void apply_force (const Vector3f&);
 
   void update();
 

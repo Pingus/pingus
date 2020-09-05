@@ -60,12 +60,12 @@ public:
   int  get_width();
 
   /** Put the gives surface provider onto the given coordinates */
-  void put(Surface, int x, int y);
+  void put(const Surface&, int x, int y);
 
   /** Remove the gives surface provider onto the given coordinates
       (everything non-transparent that isn't Groundtype::GP_Solid
       is removed from the map) */
-  void remove(Surface, int x, int y);
+  void remove(const Surface&, int x, int y);
 
   float get_z_pos () const { return 0; }
   void set_pos(const Vector3f& p) {}

@@ -30,23 +30,23 @@ public:
   static SDL_Surface* create_surface_from_format(SDL_Surface* surface, int w, int h);
 
   /** Flip a surface horizontal */
-  static Surface flip_horizontal (Surface sur);
+  static Surface flip_horizontal (const Surface& sur);
 
   /** Flip a surface vertical */
-  static Surface flip_vertical (Surface sur);
+  static Surface flip_vertical (const Surface& sur);
 
   /** Rotate a surface 90 degrees */
-  static Surface rotate_90 (Surface sur);
+  static Surface rotate_90 (const Surface& sur);
 
-  static Surface rotate_180 (Surface sur);
+  static Surface rotate_180 (const Surface& sur);
 
-  static Surface rotate_270 (Surface sur);
+  static Surface rotate_270 (const Surface& sur);
 
-  static Surface rotate_90_flip (Surface sur);
+  static Surface rotate_90_flip (const Surface& sur);
 
-  static Surface rotate_180_flip (Surface sur);
+  static Surface rotate_180_flip (const Surface& sur);
 
-  static Surface rotate_270_flip (Surface sur);
+  static Surface rotate_270_flip (const Surface& sur);
 
   /** Creates a new surface with the given width and height and
       stretches the source surface onto it, the caller is responsible

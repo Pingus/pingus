@@ -20,6 +20,7 @@
 #include <fstream>
 #include <json/reader.h>
 #include <sexp/parser.hpp>
+#include <utility>
 
 #include "pingus/res_descriptor.hpp"
 #include "util/reader_impl.hpp"
@@ -29,7 +30,7 @@
 #include "util/log.hpp"
 
 ReaderMapping::ReaderMapping(std::shared_ptr<ReaderMappingImpl> impl_) :
-  m_impl(impl_)
+  m_impl(std::move(impl_))
 {
 }
 
@@ -39,7 +40,7 @@ ReaderMapping::ReaderMapping() :
 }
 
 ReaderCollection::ReaderCollection(std::shared_ptr<ReaderCollectionImpl> impl) :
-  m_impl(impl)
+  m_impl(std::move(impl))
 {
 }
 
@@ -58,7 +59,7 @@ ReaderCollection::get_objects() const
 }
 
 ReaderObject::ReaderObject(std::shared_ptr<ReaderObjectImpl> impl) :
-  m_impl(impl)
+  m_impl(std::move(impl))
 {
 }
 

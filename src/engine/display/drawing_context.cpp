@@ -39,7 +39,7 @@ private:
   std::string text;
 
 public:
-  FontDrawingRequest(Font font_, Origin origin_, const Vector2i& pos_, const std::string& text_, float z_)
+  FontDrawingRequest(const Font& font_, Origin origin_, const Vector2i& pos_, const std::string& text_, float z_)
     : DrawingRequest(pos_, z_),
       font(font_),
       origin(origin_),

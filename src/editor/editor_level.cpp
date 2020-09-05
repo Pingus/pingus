@@ -401,7 +401,7 @@ EditorLevel::set_size(const Size& s)
 }
 
 void
-EditorLevel::raise_object_to_top(LevelObjPtr obj)
+EditorLevel::raise_object_to_top(const LevelObjPtr& obj)
 {
   Objects::iterator it = std::find(impl->objects.begin(), impl->objects.end(), obj);
   if (it != impl->objects.end())
@@ -412,7 +412,7 @@ EditorLevel::raise_object_to_top(LevelObjPtr obj)
 }
 
 void
-EditorLevel::lower_object_to_bottom(LevelObjPtr obj)
+EditorLevel::lower_object_to_bottom(const LevelObjPtr& obj)
 {
   Objects::iterator it = std::find(impl->objects.begin(), impl->objects.end(), obj);
   if (it != impl->objects.end())
@@ -430,13 +430,13 @@ struct OverlapsWith
     rect(rect_)
   {}
 
-  bool operator()(LevelObjPtr obj) {
+  bool operator()(const LevelObjPtr& obj) {
     return rect.is_overlapped(obj->get_rect());
   }
 };
 
 void
-EditorLevel::raise_object(LevelObjPtr obj)
+EditorLevel::raise_object(const LevelObjPtr& obj)
 {
   Objects::iterator i = std::find(impl->objects.begin(), impl->objects.end(), obj);
   if (i == impl->objects.end())
@@ -462,7 +462,7 @@ EditorLevel::raise_object(LevelObjPtr obj)
 }
 
 void
-EditorLevel::lower_object(LevelObjPtr obj)
+EditorLevel::lower_object(const LevelObjPtr& obj)
 {
   Objects::reverse_iterator i = std::find(impl->objects.rbegin(), impl->objects.rend(), obj);
   if (i == impl->objects.rend())
@@ -497,7 +497,7 @@ EditorLevel::get_objects()
 }
 
 void
-EditorLevel::add_object(LevelObjPtr obj)
+EditorLevel::add_object(const LevelObjPtr& obj)
 {
   impl->objects.push_back(obj);
 }

@@ -243,7 +243,7 @@ World::get_gfx_map()
 }
 
 void
-World::play_sound(std::string name, const Vector3f& pos, float volume)
+World::play_sound(const std::string& name, const Vector3f& pos, float volume)
 {
   // FIXME: Stereo is for the moment disabled
   /*

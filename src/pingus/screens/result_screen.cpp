@@ -148,7 +148,7 @@ private:
   ResultScreenRetryButton & operator=(const ResultScreenRetryButton&);
 };
 
-ResultScreenComponent::ResultScreenComponent(Result arg_result) :
+ResultScreenComponent::ResultScreenComponent(const Result& arg_result) :
   result(arg_result),
   background("core/menu/wood"),
   blackboard("core/menu/blackboard"),
@@ -242,7 +242,7 @@ ResultScreenComponent::draw(DrawingContext& gc)
 }
 
 ResultScreen::ResultScreen(Result arg_result) :
-  result(arg_result),
+  result(std::move(arg_result)),
   ok_button(),
   abort_button(),
   retry_button()

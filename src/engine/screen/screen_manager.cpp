@@ -17,6 +17,7 @@
 #include "engine/screen/screen_manager.hpp"
 
 #include <iostream>
+#include <utility>
 
 #include "engine/display/display.hpp"
 #include "engine/display/drawing_context.hpp"
@@ -139,7 +140,7 @@ ScreenManager* ScreenManager::instance_ = 0;
 ScreenManager::ScreenManager(Input::Manager& arg_input_manager,
                              Input::ControllerPtr arg_input_controller) :
   input_manager(arg_input_manager),
-  input_controller(arg_input_controller),
+  input_controller(std::move(arg_input_controller)),
   display_gc(new DrawingContext()),
   fps_counter(),
   cursor(),
@@ -307,7 +308,7 @@ ScreenManager::instance()
 }
 
 void
-ScreenManager::push_screen(ScreenPtr screen)
+ScreenManager::push_screen(const ScreenPtr& screen)
 {
   screens.push_back(screen);
   screen->on_startup();
@@ -335,7 +336,7 @@ ScreenManager::pop_all_screens()
 void
 ScreenManager::replace_screen(ScreenPtr screen)
 {
-  screens.back() = screen;
+  screens.back() = std::move(screen);
 
   if (screens.back()->get_size() != Display::get_size())
   {
@@ -346,7 +347,7 @@ ScreenManager::replace_screen(ScreenPtr screen)
 }
 
 void
-ScreenManager::fade_over(ScreenPtr old_screen, ScreenPtr new_screen)
+ScreenManager::fade_over(const ScreenPtr& old_screen, const ScreenPtr& new_screen)
 {
   if (!old_screen.get() || !new_screen.get())
     return;

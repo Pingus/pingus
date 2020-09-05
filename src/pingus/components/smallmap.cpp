@@ -106,7 +106,7 @@ SmallMap::update (float delta)
 }
 
 void
-SmallMap::draw_sprite(Sprite sprite, Vector3f pos)
+SmallMap::draw_sprite(const Sprite& sprite, const Vector3f& pos)
 {
   World* world = server->get_world();
   float x = static_cast<float>(rect.left) + (pos.x * static_cast<float>(rect.get_width())  / static_cast<float>(world->get_width()));

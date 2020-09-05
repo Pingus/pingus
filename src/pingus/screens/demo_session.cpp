@@ -19,6 +19,7 @@
 #include <algorithm>
 #include <iostream>
 #include <functional>
+#include <utility>
 
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
@@ -47,8 +48,8 @@ public:
           std::function<bool(void)> highlight_func_ = &false_func) :
     SurfaceButton(x, y, name, name + "-pressed", name + "-hover"),
     highlight("core/demo/highlight"),
-    callback(callback_),
-    highlight_func(highlight_func_)
+    callback(std::move(callback_)),
+    highlight_func(std::move(highlight_func_))
   {}
 
   virtual void draw (DrawingContext& gc)

@@ -33,7 +33,7 @@ private:
   GUI::SurfaceButton* retry_button;
 
 public:
-  ResultScreen(Result result);
+  ResultScreen(const Result& result);
   void on_startup();
 
   void on_pause_press();

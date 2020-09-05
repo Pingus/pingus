@@ -26,7 +26,7 @@ LayerManager::~LayerManager()
 }
 
 void
-LayerManager::add_layer(Sprite sprite, float x_o, float y_o, float x_u, float y_u)
+LayerManager::add_layer(const Sprite& sprite, float x_o, float y_o, float x_u, float y_u)
 {
   layers.push_back(Layer(sprite, x_o, y_o, x_u, y_u));
 }

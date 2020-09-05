@@ -17,6 +17,7 @@
 #include "pingus/pingu.hpp"
 
 #include <sstream>
+#include <utility>
 
 #include "engine/display/scene_context.hpp"
 #include "pingus/collision_map.hpp"
@@ -236,7 +237,7 @@ Pingu::set_action(std::shared_ptr<PinguAction> act)
 
   previous_action = action->get_type();
 
-  action = act;
+  action = std::move(act);
 }
 
 bool
@@ -381,7 +382,7 @@ Pingu::need_catch ()
 }
 
 void
-Pingu::set_direction (Direction d)
+Pingu::set_direction (const Direction& d)
 {
   direction = d;
 }
@@ -399,7 +400,7 @@ Pingu::get_action ()
 }
 
 void
-Pingu::apply_force (Vector3f arg_v)
+Pingu::apply_force (const Vector3f& arg_v)
 {
   velocity += arg_v;
   // Moving the pingu on pixel up, so that the force can take effect

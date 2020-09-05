@@ -73,7 +73,7 @@ public:
       @param sprite the Sprite to draw, it will keep its original size
       @param pos the position to draw it in World COs, it will get
       recalculated to screen CO */
-  void draw_sprite(Sprite sprite, Vector3f pos);
+  void draw_sprite(const Sprite& sprite, const Vector3f& pos);
 
 private:
   SmallMap (const SmallMap&);

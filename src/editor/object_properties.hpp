@@ -119,7 +119,7 @@ public:
   ObjectProperties(EditorScreen* editor, const Rect& rect);
   ~ObjectProperties();
 
-  void set_object(LevelObjPtr obj);
+  void set_object(const LevelObjPtr& obj);
   void draw_background(DrawingContext& gc);
   void update_layout();
 

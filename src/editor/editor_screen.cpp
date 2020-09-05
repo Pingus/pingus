@@ -273,8 +273,8 @@ EditorScreen::draw(DrawingContext& gc)
                     "Group selected objects\n"
                     "Ungroup selected objects\n"));
 
-    x = int(gc.get_width()/2 + 12);
-    y = int(gc.get_height()/2) - size_.height/2 + 36;
+    x = gc.get_width() / 2 + 12;
+    y = gc.get_height() / 2 - size_.height / 2 + 36;
     gc.print_center(Fonts::verdana11, Vector2i(x + 50, y),
                     "F\n"
                     "Shift+F\n"

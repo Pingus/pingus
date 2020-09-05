@@ -84,7 +84,7 @@ GroupLevelObj::get_section_name() const
 }
 
 void
-GroupLevelObj::add_child(LevelObjPtr obj)
+GroupLevelObj::add_child(const LevelObjPtr& obj)
 {
   m_objects.push_back(obj);
 }

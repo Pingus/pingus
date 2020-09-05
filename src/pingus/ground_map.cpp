@@ -33,8 +33,8 @@ public:
   MapTile();
   ~MapTile();
 
-  void remove(Surface, int x, int y, int real_x, int real_y, GroundMap*);
-  void put(Surface, int x, int y);
+  void remove(const Surface&, int x, int y, int real_x, int real_y, GroundMap*);
+  void put(const Surface&, int x, int y);
 
   const Sprite& get_sprite();
 };
@@ -51,7 +51,7 @@ MapTile::~MapTile()
 }
 
 void
-MapTile::remove(Surface src, int x, int y,
+MapTile::remove(const Surface& src, int x, int y,
                 int real_x, int real_y, GroundMap* parent)
 {
   if (surface)
@@ -62,7 +62,7 @@ MapTile::remove(Surface src, int x, int y,
 }
 
 void
-MapTile::put(Surface src, int x, int y)
+MapTile::put(const Surface& src, int x, int y)
 {
   if (!surface)
     surface = Surface(globals::tile_size, globals::tile_size);
@@ -178,7 +178,7 @@ GroundMap::get_height(void)
 }
 
 void
-GroundMap::remove(Surface sprovider, int x, int y)
+GroundMap::remove(const Surface& sprovider, int x, int y)
 {
   // Get the start tile and end tile
   int start_x = Math::max(x / globals::tile_size, 0);
@@ -294,7 +294,7 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
 }
 
 void
-GroundMap::put(Surface source, int x, int y)
+GroundMap::put(const Surface& source, int x, int y)
 {
   // Get the start tile and end tile
   int start_x = std::max(0, x / globals::tile_size);

@@ -52,7 +52,7 @@ public:
 
   bool is_prefab() const { return !m_name.empty(); }
 
-  void add_child(LevelObjPtr);
+  void add_child(const LevelObjPtr&);
 
   void draw(DrawingContext& gc);
   void draw_selection(DrawingContext &gc);
@@ -221,7 +221,7 @@ public:
   bool is_at (int x, int y);
 
   /** Returns a number representing which attributes this object possesses */
-  unsigned int get_attributes(std::string obj_type) { return 0; }
+  unsigned int get_attributes(const std::string& obj_type) { return 0; }
 
   Rect get_rect() const;
 

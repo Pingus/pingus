@@ -76,7 +76,7 @@ public:
   LayerManager ();
   ~LayerManager();
 
-  void add_layer (Sprite sur, float x_o, float y_o, float x_u, float y_u);
+  void add_layer (const Sprite& sur, float x_o, float y_o, float x_u, float y_u);
   void draw (DrawingContext& gc);
   void update (float delta);
 

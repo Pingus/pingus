@@ -361,7 +361,7 @@ ObjectProperties::hide_all()
 }
 
 void
-ObjectProperties::set_object(LevelObjPtr obj)
+ObjectProperties::set_object(const LevelObjPtr& obj)
 {
   hide_all();
 

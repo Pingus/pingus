@@ -18,6 +18,8 @@
 
 #include <fmt/format.h>
 
+#include <utility>
+
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
@@ -76,7 +78,7 @@ public:
                          str,
                          str + "_pressed",
                          str + "_hover"),
-      callback(callback_)
+      callback(std::move(callback_))
   {
   }
 

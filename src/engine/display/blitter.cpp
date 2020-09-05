@@ -132,51 +132,51 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
 
 /** Flip a surface horizontal */
 Surface
-Blitter::flip_horizontal (Surface prov)
+Blitter::flip_horizontal (const Surface& prov)
 {
   return BlitterImpl::modify<BlitterImpl::transform_flip>(prov);
 }
 
 /** Flip a surface vertical */
 Surface
-Blitter::flip_vertical (Surface sur)
+Blitter::flip_vertical (const Surface& sur)
 {
   return BlitterImpl::modify<BlitterImpl::transform_rot180_flip>(sur);
 }
 
 /** Rotate a surface 90 degrees */
 Surface
-Blitter::rotate_90 (Surface sur)
+Blitter::rotate_90 (const Surface& sur)
 {
   return BlitterImpl::modify<BlitterImpl::transform_rot90>(sur);
 }
 
 Surface
-Blitter::rotate_180 (Surface sur)
+Blitter::rotate_180 (const Surface& sur)
 {
   return BlitterImpl::modify<BlitterImpl::transform_rot180>(sur);
 }
 
 Surface
-Blitter::rotate_270 (Surface sur)
+Blitter::rotate_270 (const Surface& sur)
 {
   return BlitterImpl::modify<BlitterImpl::transform_rot270>(sur);
 }
 
 Surface
-Blitter::rotate_90_flip (Surface sur)
+Blitter::rotate_90_flip (const Surface& sur)
 {
   return BlitterImpl::modify<BlitterImpl::transform_rot90_flip>(sur);
 }
 
 Surface
-Blitter::rotate_180_flip (Surface sur)
+Blitter::rotate_180_flip (const Surface& sur)
 {
   return BlitterImpl::modify<BlitterImpl::transform_rot180_flip>(sur);
 }
 
 Surface
-Blitter::rotate_270_flip (Surface sur)
+Blitter::rotate_270_flip (const Surface& sur)
 {
   return BlitterImpl::modify<BlitterImpl::transform_rot270_flip>(sur);
 }

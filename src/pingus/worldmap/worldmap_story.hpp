@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_WORLDMAP_WORLDMAP_STORY_HPP
 
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "pingus/res_descriptor.hpp"
@@ -33,7 +34,7 @@ public:
     page_name()
   {}
 
-  StoryPage(ResDescriptor arg_image, std::string arg_text, std::string arg_name = "")
+  StoryPage(const ResDescriptor& arg_image, const std::string& arg_text, const std::string& arg_name = "")
     : image(arg_image), text(arg_text), page_name(arg_name)
   {}
 

@@ -43,7 +43,7 @@ public:
   {
   }
 
-  Drawable(std::string arg_name) :
+  Drawable(const std::string& arg_name):
     name(arg_name),
     visible(true)
   {

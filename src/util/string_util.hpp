@@ -69,7 +69,7 @@ public:
       return false;
   }
 
-  static bool has_prefix(const std::string& str, const std::string prefix)
+  static bool has_prefix(const std::string& str, const std::string& prefix)
   {
     if (str.length() < prefix.length())
       return false;

@@ -49,8 +49,6 @@ Writer::Writer(std::unique_ptr<WriterImpl> impl) :
 {
 }
 
-Writer::Writer(Writer&& other) = default;
-
 Writer::~Writer()
 {
 }

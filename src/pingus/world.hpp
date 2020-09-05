@@ -144,7 +144,7 @@ public:
       going to be ignored) void play_sound (std::string name, const
       @param volume The volume of the sound
   */
-  void play_sound (std::string name, const Vector3f& pos, float volume = 0.5f);
+  void play_sound (const std::string& name, const Vector3f& pos, float volume = 0.5f);
 
   PinguHolder* get_pingus(void);
 

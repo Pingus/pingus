@@ -78,7 +78,7 @@ public:
   void replace_screen(ScreenPtr screen);
 
   /** Add a screen on top of another screen */
-  void push_screen(ScreenPtr screen);
+  void push_screen(const ScreenPtr& screen);
 
   /** Remove the current screen and fall back to the last one */
   void pop_screen();
@@ -93,7 +93,7 @@ public:
 
 private:
   /** FadeOver test*/
-  void fade_over(ScreenPtr old_screen, ScreenPtr new_screen);
+  void fade_over(const ScreenPtr& old_screen, const ScreenPtr& new_screen);
 
 public:
   static ScreenManager* instance();

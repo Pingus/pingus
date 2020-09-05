@@ -81,15 +81,15 @@ public:
   void set_action(const std::string& actionname, int count);
   std::map<std::string, int> get_actions() const;
 
-  void raise_object(LevelObjPtr obj);
-  void lower_object(LevelObjPtr obj);
+  void raise_object(const LevelObjPtr& obj);
+  void lower_object(const LevelObjPtr& obj);
 
-  void raise_object_to_top(LevelObjPtr obj);
-  void lower_object_to_bottom(LevelObjPtr obj);
+  void raise_object_to_top(const LevelObjPtr& obj);
+  void lower_object_to_bottom(const LevelObjPtr& obj);
 
   Objects* get_objects();
 
-  void add_object(LevelObjPtr obj);
+  void add_object(const LevelObjPtr& obj);
   LevelObjPtr object_at (int x, int y);
 
 private:
