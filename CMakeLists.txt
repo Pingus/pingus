@@ -19,13 +19,12 @@ project(pingus)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/mk/cmake)
 
-option(WARNINGS "Switch on extra warnings" OFF)
-option(WERROR "Turn warnings into errors" OFF)
 option(BUILD_TESTS "Build test cases" OFF)
 option(BUILD_EXTRA "Build extra stuff" OFF)
 
 include(GetProjectVersion)
 include(GNUInstallDirs)
+include(MaximumWarnings)
 
 find_package(Threads REQUIRED)
 find_package(PkgConfig REQUIRED)
@@ -68,19 +67,6 @@ if (BUILD_TESTS)
   # add 'make test' target, use 'make test ARGS="-V"' or 'ctest -V' for verbose
   enable_testing()
 endif(BUILD_TESTS)
-
-if(WARNINGS)
-  set(WARNINGS_CXX_FLAGS
-    -Wall -Wextra
-    -pedantic -Wall -Wextra -Wnon-virtual-dtor -Weffc++
-    -Wold-style-cast -Wshadow -Wcast-qual -Wconversion
-    -Winit-self -Wno-unused-parameter)
-endif()
-
-if(WERROR)
-  set(WARNINGS_CXX_FLAGS ${WARNINGS_CXX_FLAGS}
-    -Werror)
-endif()
 
 file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/editor/*.cpp
