@@ -69,7 +69,7 @@ class WorldObjFactoryImpl : public WorldObjAbstractFactory
 public:
   WorldObjFactoryImpl() {}
 
-  std::vector<WorldObj*> create(const ReaderMapping& reader) {
+  std::vector<WorldObj*> create(const ReaderMapping& reader) override {
     std::vector<WorldObj*> lst;
     lst.push_back(new T(reader));
     return lst;
@@ -84,9 +84,9 @@ class WorldObjGroupFactory : public WorldObjAbstractFactory
 {
 public:
   WorldObjGroupFactory() {}
-  virtual ~WorldObjGroupFactory() {}
+  ~WorldObjGroupFactory() override {}
 
-  virtual std::vector<WorldObj*> create(const ReaderMapping& reader)
+  std::vector<WorldObj*> create(const ReaderMapping& reader) override
   {
     std::vector<WorldObj*> group;
 
@@ -116,9 +116,9 @@ class WorldObjPrefabFactory : public WorldObjAbstractFactory
 {
 public:
   WorldObjPrefabFactory() {}
-  virtual ~WorldObjPrefabFactory() {}
+  ~WorldObjPrefabFactory() override {}
 
-  virtual std::vector<WorldObj*> create(const ReaderMapping& reader)
+  std::vector<WorldObj*> create(const ReaderMapping& reader) override
   {
     std::string name;
     reader.read_string("name", name);

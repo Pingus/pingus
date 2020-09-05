@@ -110,69 +110,69 @@ protected:
   /// Retrieve info
 public:
   /** Retrieve the object's position */
-  Vector3f get_pos() const { return pos; }
-  Vector3f get_orig_pos() const { return orig_pos; }
+  Vector3f get_pos() const override { return pos; }
+  Vector3f get_orig_pos() const override { return orig_pos; }
 
   /** Retrieve this object's attribute number */
-  unsigned int get_attribs() const { return attribs; }
+  unsigned int get_attribs() const override { return attribs; }
 
   /** Retrieve the object's resource name */
-  ResDescriptor get_res_desc() const { return desc; }
+  ResDescriptor get_res_desc() const override { return desc; }
 
   /** Retrieve the name of the section header for this object */
-  std::string get_section_name() const { return section_name; }
+  std::string get_section_name() const override { return section_name; }
 
   /** Retrieve the object's type */
-  std::string get_type() const { return object_type; }
+  std::string get_type() const override { return object_type; }
 
-  std::string get_ground_type() const { return ground_type; }
+  std::string get_ground_type() const override { return ground_type; }
 
   /** Retrieve the object's speed */
-  int get_speed() const { return speed; }
+  int get_speed() const override { return speed; }
 
   /** Retrieve the object's release rate (entrances) */
-  int get_release_rate() const { return release_rate; }
+  int get_release_rate() const override { return release_rate; }
 
   /** Retrive the object's parallax (is this even used???) */
-  float get_parallax() const { return parallax; }
+  float get_parallax() const override { return parallax; }
 
   /** Retrieve the object's owner */
-  int get_owner() const { return owner_id; }
+  int get_owner() const override { return owner_id; }
 
   /** Retrieve the object's repeat */
-  int get_repeat() const { return repeat; }
+  int get_repeat() const override { return repeat; }
 
   /** Retrieve the object's color */
-  Color get_color() const { return color; }
+  Color get_color() const override { return color; }
 
   /** Returns true if the object is stretched in the x direction */
-  bool get_stretch_x() const { return stretch_x; }
+  bool get_stretch_x() const override { return stretch_x; }
 
   /** Returns true if the object is stretched in the y direction */
-  bool get_stretch_y() const { return stretch_y; }
+  bool get_stretch_y() const override { return stretch_y; }
 
   /** Returns true if the object is to maintain it's aspect ratio if stretched */
-  bool get_keep_aspect() const { return keep_aspect; }
+  bool get_keep_aspect() const override { return keep_aspect; }
 
   /** Retrive the objects scroll value in the x direction */
-  float get_scroll_x() const { return scroll_x; }
+  float get_scroll_x() const override { return scroll_x; }
 
   /** Retrive the objects scroll value in the y direction */
-  float get_scroll_y() const { return scroll_y; }
+  float get_scroll_y() const override { return scroll_y; }
 
   /** Returns the parallax speed multiplier in the x direction */
-  float get_para_x() const { return para_x; }
+  float get_para_x() const override { return para_x; }
 
   /** Returns the parallax speed multiplier in the y direction */
-  float get_para_y() const { return para_y; }
+  float get_para_y() const override { return para_y; }
 
   /** Retrieve the object's direction */
-  std::string get_direction() { return direction; }
+  std::string get_direction() override { return direction; }
 
-  std::string get_id() const { return id; }
-  std::string get_target_id() const { return target_id; }
+  std::string get_id() const override { return id; }
+  std::string get_target_id() const override { return target_id; }
 
-  int get_height() const { return height; }
+  int get_height() const override { return height; }
 
   /////////////////////////////////////////////////////////
   /// Operations
@@ -182,119 +182,119 @@ public:
   GenericLevelObj(const GenericLevelObj& rhs);
 
   /** Destructor */
-  virtual ~GenericLevelObj() { }
+  ~GenericLevelObj() override { }
 
   /** Set the object's position */
-  void set_pos(const Vector3f p);
+  void set_pos(const Vector3f p) override;
 
-  void set_pos_x(float x);
-  float get_pos_x() const;
+  void set_pos_x(float x) override;
+  float get_pos_x() const override;
 
-  void set_pos_y(float y);
-  float get_pos_y() const;
+  void set_pos_y(float y) override;
+  float get_pos_y() const override;
 
-  void set_pos_z(float z);
-  float get_pos_z() const;
+  void set_pos_z(float z) override;
+  float get_pos_z() const override;
 
   /** Original position of the objects before being dragged around */
-  void set_orig_pos(const Vector3f p) { orig_pos = p; }
+  void set_orig_pos(const Vector3f p) override { orig_pos = p; }
 
   /** Set the object's resource name */
-  void set_res_desc(const ResDescriptor d);
+  void set_res_desc(const ResDescriptor d) override;
 
   /** Set the object's modifier */
-  void set_modifier(const std::string m);
+  void set_modifier(const std::string m) override;
 
   /** Set the object's modifier */
-  void set_modifier(ResourceModifier::Enum modifier);
+  void set_modifier(ResourceModifier::Enum modifier) override;
 
-  ResourceModifier::Enum get_modifier() const;
+  ResourceModifier::Enum get_modifier() const override;
 
   /** Set the object's section header name */
-  void set_section_name(const std::string sn) { section_name = sn; }
+  void set_section_name(const std::string sn) override { section_name = sn; }
 
   /** Set the object's type */
-  void set_type(const std::string t) { object_type = t; }
+  void set_type(const std::string t) override { object_type = t; }
 
-  void set_ground_type(const std::string t) { ground_type = t; }
+  void set_ground_type(const std::string t) override { ground_type = t; }
 
   /** Set the object's speed */
-  void set_speed(const int s) { speed = s; }
+  void set_speed(const int s) override { speed = s; }
 
   /** Set the objects release rate */
-  void set_release_rate(const int r) { release_rate = r; }
+  void set_release_rate(const int r) override { release_rate = r; }
 
   /** Set the object's parallax */
-  void set_parallax(const float para) { parallax = para; }
+  void set_parallax(const float para) override { parallax = para; }
 
   /** Set the object's repeat */
-  void set_repeat(const int w) { repeat = w; }
+  void set_repeat(const int w) override { repeat = w; }
 
   /** Set the object's owner_id */
-  void set_owner(const int owner) { owner_id = owner; }
+  void set_owner(const int owner) override { owner_id = owner; }
 
   /** Set the object's scroll rate in the x direction */
-  void set_scroll_x(const float s) { scroll_x = s; }
+  void set_scroll_x(const float s) override { scroll_x = s; }
 
   /** Set the object's scroll rate in the y direction */
-  void set_scroll_y(const float s) { scroll_y = s; }
+  void set_scroll_y(const float s) override { scroll_y = s; }
 
   /** Set the objects stretch in the x direction value */
-  void set_stretch_x(const bool s);
+  void set_stretch_x(const bool s) override;
 
   /** Set the objects stretch in the y direction value */
-  void set_stretch_y(bool s);
+  void set_stretch_y(bool s) override;
 
   /** Set whether or not the object should maintain it's aspect ratio when stretched */
-  void set_keep_aspect(const bool a);
+  void set_keep_aspect(const bool a) override;
 
   /** Set the objects color if applicable */
-  void set_color(const Color& c)
+  void set_color(const Color& c) override
   { color = c; }
 
   /** Set the object's parallax scroll multiplier in the x direction */
-  void set_para_x(const float p) { para_x = p; }
+  void set_para_x(const float p) override { para_x = p; }
 
   /** Set the object's parallax scroll multiplier in the y direction */
-  void set_para_y(const float p) { para_y = p; }
+  void set_para_y(const float p) override { para_y = p; }
 
   /** Set the object's direction if applicable */
-  void set_direction(const std::string d) { direction = d; }
+  void set_direction(const std::string d) override { direction = d; }
 
-  void set_id(const std::string& t) { id = t; }
-  void set_target_id(const std::string& t) { target_id = t; }
+  void set_id(const std::string& t) override { id = t; }
+  void set_target_id(const std::string& t) override { target_id = t; }
 
-  void set_height(const int h) { height = h; }
+  void set_height(const int h) override { height = h; }
 
   /** Write basic properties to the file for this type */
-  virtual void write_properties(Writer &fw);
+  void write_properties(Writer &fw) override;
 
   /** Call when the sprite needs to be reloaded */
-  void refresh_sprite();
+  void refresh_sprite() override;
 
   /** Draws the sprite with the modifier applied */
-  virtual void draw(DrawingContext &gc);
+  void draw(DrawingContext &gc) override;
 
   /** Draws the sprites selection with the modifier applied */
-  virtual void draw_selection(DrawingContext &gc);
+  void draw_selection(DrawingContext &gc) override;
 
   /** Returns true if the mouse is hovering over this object */
-  virtual bool is_at (int x, int y);
+  bool is_at (int x, int y) override;
 
   /** Returns a number representing which attributes this object possesses */
   unsigned int get_attributes(std::string obj_type);
 
-  Rect get_rect() const;
+  Rect get_rect() const override;
 
-  int get_small_stars() const { return small_stars; }
-  int get_middle_stars() const { return middle_stars; }
-  int get_large_stars() const { return large_stars; }
+  int get_small_stars() const override { return small_stars; }
+  int get_middle_stars() const override { return middle_stars; }
+  int get_large_stars() const override { return large_stars; }
 
-  void set_small_stars(int n)  {   small_stars = n; }
-  void set_middle_stars(int n) {  middle_stars = n; }
-  void set_large_stars(int n)  {   large_stars = n; }
+  void set_small_stars(int n) override  {   small_stars = n; }
+  void set_middle_stars(int n) override {  middle_stars = n; }
+  void set_large_stars(int n) override  {   large_stars = n; }
 
-  LevelObjPtr duplicate(const Vector2i& offset) const;
+  LevelObjPtr duplicate(const Vector2i& offset) const override;
 
 private:
   /** Loads any generic images necessary for objects with HAS_FAKE_SURFACE */

@@ -34,16 +34,16 @@ private:
 
 public:
   ResultScreen(const Result& result);
-  void on_startup();
+  void on_startup() override;
 
-  void on_pause_press();
-  void on_fast_forward_press();
-  void on_escape_press();
+  void on_pause_press() override;
+  void on_fast_forward_press() override;
+  void on_escape_press() override;
 
   void retry_level();
   void close_screen();
 
-  void resize(const Size&);
+  void resize(const Size&) override;
 private:
   ResultScreen (const ResultScreen&);
   ResultScreen& operator= (const ResultScreen&);

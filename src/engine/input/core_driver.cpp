@@ -39,7 +39,7 @@ public:
   {
   }
 
-  ~AxisPointer()
+  ~AxisPointer() override
   {
   }
 
@@ -50,12 +50,12 @@ public:
     speed_button = std::move(s);
   }
 
-  void update(Control* )
+  void update(Control* ) override
   {
     //log_error("event");
   }
 
-  void update(float delta)
+  void update(float delta) override
   {
     x_axis->update(delta);
     y_axis->update(delta);
@@ -104,7 +104,7 @@ public:
   {
   }
 
-  ~AxisScroller()
+  ~AxisScroller() override
   {
   }
 
@@ -115,12 +115,12 @@ public:
     speed_button = std::move(s);
   }
 
-  void update(Control* )
+  void update(Control* ) override
   {
     //log_error("event");
   }
 
-  void update(float delta_)
+  void update(float delta_) override
   {
     x_axis->update(delta_);
     y_axis->update(delta_);
@@ -162,7 +162,7 @@ public:
   {
   }
 
-  ~ButtonScroller()
+  ~ButtonScroller() override
   {
   }
 
@@ -177,11 +177,11 @@ public:
     right = std::move(right_);
   }
 
-  void update(Control* )
+  void update(Control* ) override
   {
   }
 
-  void update(float delta_t)
+  void update(float delta_t) override
   {
     if (up) up->update(delta_t);
     if (down) down->update(delta_t);

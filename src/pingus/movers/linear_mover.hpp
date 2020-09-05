@@ -30,10 +30,10 @@ public:
   LinearMover(World* const world_arg, const Vector3f& pos_arg);
 
   /** Destructor */
-  ~LinearMover();
+  ~LinearMover() override;
 
   /** Updates the position of the object taking into account collisions */
-  void update(const Vector3f& move, const Collider& collision_at);
+  void update(const Vector3f& move, const Collider& collision_at) override;
 };
 
 } // namespace Movers

@@ -25,10 +25,10 @@ private:
 
 public:
   NullFramebufferSurfaceImpl(const Size& size_) : size(size_) {}
-  ~NullFramebufferSurfaceImpl() {}
+  ~NullFramebufferSurfaceImpl() override {}
 
-  int get_width()  const { return size.width; }
-  int get_height() const { return size.height; }
+  int get_width()  const override { return size.width; }
+  int get_height() const override { return size.height; }
 };
 
 NullFramebuffer::NullFramebuffer() :

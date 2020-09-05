@@ -38,7 +38,7 @@ public:
   {
   }
 
-  void draw (DrawingContext& gc)
+  void draw (DrawingContext& gc) override
   {
     gc.draw(sprite, pos);
   }
@@ -78,7 +78,7 @@ public:
   {
   }
 
-  void draw (DrawingContext& gc)
+  void draw (DrawingContext& gc) override
   {
     // draw button
     if (mouse_down)
@@ -118,36 +118,36 @@ public:
   }
 
   /** Emmitted when pointer enters the region of the component */
-  void on_pointer_enter ()
+  void on_pointer_enter () override
   {
     mouse_over = true;
   }
 
   /** Emmitted when pointer leaves the region of the component */
-  void on_pointer_leave ()
+  void on_pointer_leave () override
   {
     mouse_over = false;
   }
 
-  void on_primary_button_press (int x, int y)
+  void on_primary_button_press (int x, int y) override
   {
     mouse_down = true;
   }
 
-  void on_primary_button_release (int x, int y)
+  void on_primary_button_release (int x, int y) override
   {
     mouse_down = false;
     if (mouse_over && callback)
       ((*editor).*callback)();
   }
 
-  bool is_at(int x, int y)
+  bool is_at(int x, int y) override
   {
     return (pos.x <= x && pos.x + 34 > x &&
             pos.y <= y && pos.y + 34 > y);
   }
 
-  void update (float delta)
+  void update (float delta) override
   {
     sprite.update();
   }

@@ -29,7 +29,7 @@ private:
 
 public:
   NullFramebuffer();
-  ~NullFramebuffer();
+  ~NullFramebuffer() override;
 
   FramebufferSurface create_surface(const Surface& surface) override;
 

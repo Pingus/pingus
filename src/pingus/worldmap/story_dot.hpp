@@ -39,15 +39,15 @@ private:
 public:
   StoryDot(const ReaderMapping& reader);
 
-  void draw(DrawingContext& gc);
-  void draw_hover(DrawingContext& gc);
+  void draw(DrawingContext& gc) override;
+  void draw_hover(DrawingContext& gc) override;
 
-  void update(float delta);
-  void on_click();
+  void update(float delta) override;
+  void on_click() override;
 
-  bool finished() { return true; }
-  bool accessible() { return true; }
-  void unlock() {}
+  bool finished() override { return true; }
+  bool accessible() override { return true; }
+  void unlock() override {}
 
 private:
   StoryDot(const StoryDot&);

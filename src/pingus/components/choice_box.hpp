@@ -30,9 +30,9 @@ private:
 public:
   ChoiceBox(const Rect& rect);
 
-  void draw(DrawingContext& gc);
-  void on_primary_button_press(int x, int y);
-  void update_layout() {}
+  void draw(DrawingContext& gc) override;
+  void on_primary_button_press(int x, int y) override;
+  void update_layout() override {}
   void add_choice(const std::string& str);
   void set_current_choice(int choice);
 

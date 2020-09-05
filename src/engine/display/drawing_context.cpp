@@ -47,9 +47,9 @@ public:
   {
   }
 
-  virtual ~FontDrawingRequest() {}
+  ~FontDrawingRequest() override {}
 
-  void render(Framebuffer& fb, const Rect& rect) {
+  void render(Framebuffer& fb, const Rect& rect) override {
     font.render(origin, static_cast<int>(pos.x + rect.left), static_cast<int>(pos.y + rect.top), text, fb);
   }
 };
@@ -66,9 +66,9 @@ public:
   {
   }
 
-  virtual ~SpriteDrawingRequest() {}
+  ~SpriteDrawingRequest() override {}
 
-  void render(Framebuffer& fb, const Rect& rect) {
+  void render(Framebuffer& fb, const Rect& rect) override {
     sprite.render(pos.x + rect.left, pos.y + rect.top, fb);
   }
 };
@@ -84,9 +84,9 @@ public:
       color(color_)
   {
   }
-  virtual ~FillScreenDrawingRequest() {}
+  ~FillScreenDrawingRequest() override {}
 
-  void render(Framebuffer& fb, const Rect& rect) {
+  void render(Framebuffer& fb, const Rect& rect) override {
     fb.fill_rect(rect, color);
   }
 };
@@ -110,7 +110,7 @@ public:
   {
   }
 
-  void render(Framebuffer& fb, const Rect& rect)
+  void render(Framebuffer& fb, const Rect& rect) override
   {
     fb.draw_line(pos1 + Vector2i(rect.left, rect.top),
                  pos2 + Vector2i(rect.left, rect.top), color);
@@ -130,7 +130,7 @@ public:
       d_rect(rect_), color(color_), filled(filled_)
   {}
 
-  void render(Framebuffer& fb, const Rect& rect)
+  void render(Framebuffer& fb, const Rect& rect) override
   {
     if (filled)
     {
@@ -160,11 +160,11 @@ public:
       dc(dc_)
   {}
 
-  virtual ~DrawingContextDrawingRequest()
+  ~DrawingContextDrawingRequest() override
   {
   }
 
-  void render(Framebuffer& fb, const Rect& rect) {
+  void render(Framebuffer& fb, const Rect& rect) override {
     dc.render(fb, rect);
   }
 };

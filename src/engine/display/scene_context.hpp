@@ -90,8 +90,8 @@ private:
 
 public:
   SceneContextDrawingRequest(SceneContext* sc, const Vector2i& pos, float z);
-  virtual ~SceneContextDrawingRequest();
-  void render(Framebuffer& fb, const Rect& render);
+  ~SceneContextDrawingRequest() override;
+  void render(Framebuffer& fb, const Rect& render) override;
 
 private:
   SceneContextDrawingRequest(const SceneContextDrawingRequest&);

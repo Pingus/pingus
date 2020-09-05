@@ -25,7 +25,7 @@ class SExprReaderObjectImpl : public ReaderObjectImpl
 {
 public:
   SExprReaderObjectImpl(sexp::Value const& sx);
-  virtual ~SExprReaderObjectImpl();
+  ~SExprReaderObjectImpl() override;
 
   std::string get_name() const override;
   ReaderMapping get_mapping() const override;
@@ -38,7 +38,7 @@ class SExprReaderCollectionImpl : public ReaderCollectionImpl
 {
 public:
   SExprReaderCollectionImpl(sexp::Value const& m_sx);
-  virtual ~SExprReaderCollectionImpl();
+  ~SExprReaderCollectionImpl() override;
 
   std::vector<ReaderObject> get_objects() const override;
 
@@ -50,7 +50,7 @@ class SExprReaderMappingImpl : public ReaderMappingImpl
 {
 public:
   SExprReaderMappingImpl(sexp::Value const& m_sx);
-  virtual ~SExprReaderMappingImpl();
+  ~SExprReaderMappingImpl() override;
 
   std::vector<std::string> get_keys() const override;
 

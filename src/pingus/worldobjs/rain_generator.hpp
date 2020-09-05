@@ -30,13 +30,13 @@ private:
 
 public:
   RainGenerator(const ReaderMapping& reader);
-  ~RainGenerator();
+  ~RainGenerator() override;
 
-  void update ();
-  void draw (SceneContext& gc);
-  float get_z_pos () const { return 1000; }
-  void set_pos(const Vector3f& p) {}
-  Vector3f get_pos() const { return Vector3f(); }
+  void update () override;
+  void draw (SceneContext& gc) override;
+  float get_z_pos () const override { return 1000; }
+  void set_pos(const Vector3f& p) override {}
+  Vector3f get_pos() const override { return Vector3f(); }
 
 private:
   RainGenerator (const RainGenerator&);

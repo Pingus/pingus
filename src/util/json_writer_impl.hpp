@@ -35,7 +35,7 @@ private:
 
 public:
   JsonWriterImpl(std::ostream& out);
-  virtual ~JsonWriterImpl();
+  ~JsonWriterImpl() override;
 
   void begin_collection(const char* name) override;
   void end_collection() override;

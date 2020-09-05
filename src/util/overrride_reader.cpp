@@ -36,7 +36,7 @@ public:
   {
   }
 
-  std::vector<std::string> get_keys() const
+  std::vector<std::string> get_keys() const override
   {
     std::set<std::string> result;
 
@@ -48,7 +48,7 @@ public:
     return std::vector<std::string>(result.begin(), result.end());
   }
 
-  bool read_int(const char* name, int& v) const
+  bool read_int(const char* name, int& v) const override
   {
     if (m_overrides.read_int(name, v))
     {
@@ -64,7 +64,7 @@ public:
     }
   }
 
-  bool read_float(const char* name, float& v) const
+  bool read_float(const char* name, float& v) const override
   {
     if (m_overrides.read_float(name, v))
     {
@@ -76,7 +76,7 @@ public:
     }
   }
 
-  bool read_bool(const char* name, bool& v) const
+  bool read_bool(const char* name, bool& v) const override
   {
     if (m_overrides.read_bool(name, v))
     {
@@ -88,7 +88,7 @@ public:
     }
   }
 
-  bool read_string(const char* name, std::string& str) const
+  bool read_string(const char* name, std::string& str) const override
   {
     if (m_overrides.read_string(name, str))
     {
@@ -100,7 +100,7 @@ public:
     }
   }
 
-  bool read_vector(const char* name, Vector3f& vec) const
+  bool read_vector(const char* name, Vector3f& vec) const override
   {
     if (m_overrides.read_vector(name, vec))
     {
@@ -112,7 +112,7 @@ public:
     }
   }
 
-  bool read_vectors(const char* name, std::vector<Vector3f>& vec) const
+  bool read_vectors(const char* name, std::vector<Vector3f>& vec) const override
   {
     if (m_overrides.read_vectors(name, vec))
     {
@@ -124,7 +124,7 @@ public:
     }
   }
 
-  bool read_size(const char* name, Size& size) const
+  bool read_size(const char* name, Size& size) const override
   {
     if (m_overrides.read_size(name, size))
     {
@@ -136,7 +136,7 @@ public:
     }
   }
 
-  bool read_vector2i(const char* name, Vector2i& vec) const
+  bool read_vector2i(const char* name, Vector2i& vec) const override
   {
     if (m_overrides.read_vector2i(name, vec))
     {
@@ -148,7 +148,7 @@ public:
     }
   }
 
-  bool read_rect(const char* name, Rect& rect) const
+  bool read_rect(const char* name, Rect& rect) const override
   {
     if (m_overrides.read_rect(name, rect))
     {
@@ -160,7 +160,7 @@ public:
     }
   }
 
-  bool read_colorf(const char* name, Color& color) const
+  bool read_colorf(const char* name, Color& color) const override
   {
     if (m_overrides.read_colorf(name, color))
     {
@@ -172,7 +172,7 @@ public:
     }
   }
 
-  bool read_colori(const char* name, Color& color) const
+  bool read_colori(const char* name, Color& color) const override
   {
     if (m_overrides.read_colori(name, color))
     {
@@ -184,7 +184,7 @@ public:
     }
   }
 
-  bool read_mapping(const char* name, ReaderMapping& result) const
+  bool read_mapping(const char* name, ReaderMapping& result) const override
   {
     ReaderMapping overwrite_result;
     if (m_overrides.read_mapping(name, overwrite_result))
@@ -206,7 +206,7 @@ public:
     }
   }
 
-  bool read_collection(const char* key, ReaderCollection& result) const
+  bool read_collection(const char* key, ReaderCollection& result) const override
   {
     if (m_overrides.read_collection(key, result))
     {
@@ -218,7 +218,7 @@ public:
     }
   }
 
-  bool read_object(const char* key, ReaderObject& result) const
+  bool read_object(const char* key, ReaderObject& result) const override
   {
     if (m_overrides.read_object(key, result))
     {

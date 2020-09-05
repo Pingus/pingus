@@ -55,7 +55,7 @@ private:
 
 public:
   Playfield(Server*, GameSession*, const Rect& rect);
-  virtual ~Playfield();
+  ~Playfield() override;
 
   /** Returns the point onto which the Playfield is currently focused
       (ie. center of the Playfield) in WorldCO */
@@ -65,21 +65,21 @@ public:
 
   void set_viewpoint(int, int);
 
-  void draw(DrawingContext& gc);
-  void update(float delta);
+  void draw(DrawingContext& gc) override;
+  void update(float delta) override;
   Pingu* current_pingu_find(const Vector2f& pos);
 
-  void on_primary_button_press (int x, int y);
-  void on_secondary_button_press (int x, int y);
-  void on_secondary_button_release (int x, int y);
-  void on_pointer_move (int x, int y);
-  void on_key_pressed(const Input::KeyboardEvent& ev);
+  void on_primary_button_press (int x, int y) override;
+  void on_secondary_button_press (int x, int y) override;
+  void on_secondary_button_release (int x, int y) override;
+  void on_pointer_move (int x, int y) override;
+  void on_key_pressed(const Input::KeyboardEvent& ev) override;
 
   void enable_scroll_mode();
   void do_scrolling();
   void disable_scroll_mode();
 
-  void update_layout();
+  void update_layout() override;
 
 private:
   Playfield (const Playfield&);

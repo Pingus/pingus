@@ -51,13 +51,13 @@ public:
   {
   }
 
-  void on_pointer_enter ()
+  void on_pointer_enter () override
   {
     SurfaceButton::on_pointer_enter();
     Sound::PingusSound::play_sound("tick");
   }
 
-  void on_click() {
+  void on_click() override {
     parent->on_escape_press();
     Sound::PingusSound::play_sound("yipee");
   }

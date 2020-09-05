@@ -47,19 +47,19 @@ private:
 
 public:
   LevelMenu();
-  ~LevelMenu();
+  ~LevelMenu() override;
 
-  void draw_background(DrawingContext& gc);
-  void on_escape_press();
-  void on_action_up_press();
-  void on_action_down_press();
+  void draw_background(DrawingContext& gc) override;
+  void on_escape_press() override;
+  void on_action_up_press() override;
+  void on_action_down_press() override;
 
   void set_levelset(Levelset* levelset);
 
   void next_page();
   void prev_page();
 
-  void resize(const Size& size);
+  void resize(const Size& size) override;
 
 private:
   LevelMenu (const LevelMenu&);

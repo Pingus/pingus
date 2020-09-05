@@ -46,10 +46,10 @@ private:
 
 public:
   StoryScreenComponent (WorldmapNS::WorldmapStory *arg_pages, bool credits);
-  virtual ~StoryScreenComponent () {}
+  ~StoryScreenComponent () override {}
 
-  void draw (DrawingContext& gc);
-  void update(float delta);
+  void draw (DrawingContext& gc) override;
+  void update(float delta) override;
 
   void skip_story();
   /** starts to display the next text page */
@@ -75,13 +75,13 @@ public:
   {
   }
 
-  void on_pointer_enter()
+  void on_pointer_enter() override
   {
     SurfaceButton::on_pointer_enter();
     Sound::PingusSound::play_sound ("tick");
   }
 
-  void on_click()
+  void on_click() override
   {
     story_comp->next_text();
   }
@@ -103,12 +103,12 @@ public:
   {
   }
 
-  void draw (DrawingContext& gc)
+  void draw (DrawingContext& gc) override
   {
     gc.print_right(Fonts::chalk_small, Vector2i(x_pos, y_pos), _("skip"));
   }
 
-  bool is_at(int x, int y)
+  bool is_at(int x, int y) override
   {
     return
       x > x_pos - static_cast<int>(Fonts::chalk_small.get_width(_("skip"))) &&
@@ -117,13 +117,13 @@ public:
       y < y_pos + static_cast<int>(Fonts::chalk_small.get_height());
   }
 
-  void on_pointer_enter()
+  void on_pointer_enter() override
   {
     SurfaceButton::on_pointer_enter();
     Sound::PingusSound::play_sound ("tick");
   }
 
-  void on_click()
+  void on_click() override
   {
     story_comp->skip_story();
   }

@@ -43,10 +43,10 @@ private:
 
 public:
   AddOnMenu();
-  ~AddOnMenu();
+  ~AddOnMenu() override;
 
-  void draw_background (DrawingContext& gc);
-  void on_escape_press ();
+  void draw_background (DrawingContext& gc) override;
+  void on_escape_press () override;
 
 private:
   AddOnMenu (const AddOnMenu&);

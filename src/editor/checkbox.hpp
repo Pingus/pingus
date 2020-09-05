@@ -31,14 +31,14 @@ private:
 
 public:
   Checkbox(const Rect& rect, const std::string& label = "");
-  ~Checkbox();
+  ~Checkbox() override;
 
-  void draw(DrawingContext& gc);
-  void update_layout() {}
+  void draw(DrawingContext& gc) override;
+  void update_layout() override {}
 
   void set_checked(bool t);
   bool is_checked() const { return checked; }
-  void on_primary_button_press(int x, int y);
+  void on_primary_button_press(int x, int y) override;
 
   sigc::signal<void (bool)> on_change;
 

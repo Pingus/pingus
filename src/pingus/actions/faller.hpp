@@ -30,14 +30,14 @@ private:
 
 public:
   Faller(Pingu*);
-  virtual ~Faller();
+  ~Faller() override;
 
-  void  draw (SceneContext& gc);
-  void  update();
+  void  draw (SceneContext& gc) override;
+  void  update() override;
 
-  bool change_allowed (ActionName::Enum new_action);
+  bool change_allowed (ActionName::Enum new_action) override;
 
-  ActionName::Enum get_type() const { return ActionName::FALLER; }
+  ActionName::Enum get_type() const override { return ActionName::FALLER; }
   bool is_tumbling () const;
 
 private:

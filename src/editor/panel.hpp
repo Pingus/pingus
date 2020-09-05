@@ -38,10 +38,10 @@ private:
 
 public:
   Panel(EditorScreen* e, const Rect& rect_);
-  ~Panel();
+  ~Panel() override;
 
-  void draw_background(DrawingContext& gc);
-  void update(float delta);
+  void draw_background(DrawingContext& gc) override;
+  void update(float delta) override;
 
   void add_button(const std::string& image, const std::string& tooltip = "", Callback callback = 0);
   void add_toggle_button(const std::string& image);

@@ -70,14 +70,14 @@ private:
 public:
   SurfaceBackground(const ReaderMapping& reader);
 
-  virtual float get_z_pos() const override;
-  virtual void set_pos(const Vector3f& p) override { }
-  virtual Vector3f get_pos() const override { return Vector3f(); }
+  float get_z_pos() const override;
+  void set_pos(const Vector3f& p) override { }
+  Vector3f get_pos() const override { return Vector3f(); }
 
-  virtual void update() override;
-  virtual void draw(SceneContext& gc) override;
+  void update() override;
+  void draw(SceneContext& gc) override;
 
-  virtual bool is_solid_background() const override { return true; }
+  bool is_solid_background() const override { return true; }
 
 private:
   SurfaceBackground (const SurfaceBackground&);

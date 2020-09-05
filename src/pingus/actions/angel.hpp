@@ -32,10 +32,10 @@ private:
 public:
   Angel (Pingu* p);
 
-  ActionName::Enum get_type () const { return ActionName::ANGEL; }
+  ActionName::Enum get_type () const override { return ActionName::ANGEL; }
 
-  void  update ();
-  void  draw (SceneContext& gc);
+  void  update () override;
+  void  draw (SceneContext& gc) override;
 
 private:
   Angel (const Angel&);

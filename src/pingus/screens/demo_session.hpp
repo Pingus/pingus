@@ -65,17 +65,17 @@ private:
 public:
   /** @param filename the complete filename of the demo file */
   DemoSession(const Pathname& pathname);
-  ~DemoSession();
+  ~DemoSession() override;
 
-  void draw_background(DrawingContext& gc);
+  void draw_background(DrawingContext& gc) override;
 
   /** Pass a delta to the screen */
-  void update(float delta);
+  void update(float delta) override;
   void update_demo();
 
-  void on_pause_press ();
-  void on_fast_forward_press ();
-  void on_escape_press ();
+  void on_pause_press () override;
+  void on_fast_forward_press () override;
+  void on_escape_press () override;
 
   void restart();
 
@@ -84,7 +84,7 @@ public:
   bool is_pause() { return pause; }
   bool is_fast_forward() { return fast_forward; }
 
-  void resize(const Size& size);
+  void resize(const Size& size) override;
 
 private:
   DemoSession (const DemoSession&);

@@ -30,14 +30,14 @@ private:
 public:
   Blocker (Pingu* p);
 
-  ActionName::Enum get_type() const { return ActionName::BLOCKER; }
+  ActionName::Enum get_type() const override { return ActionName::BLOCKER; }
 
-  void  draw (SceneContext& gc);
-  void  update();
+  void  draw (SceneContext& gc) override;
+  void  update() override;
 
 private:
   bool  standing_on_ground();
-  void  catch_pingu(Pingu* pingu);
+  void  catch_pingu(Pingu* pingu) override;
 
   Blocker (const Blocker&);
   Blocker& operator= (const Blocker&);

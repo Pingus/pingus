@@ -40,8 +40,8 @@ private:
 
 public:
   StartScreenComponent(const PingusLevel& plf);
-  void draw(DrawingContext& gc);
-  virtual ~StartScreenComponent() {}
+  void draw(DrawingContext& gc) override;
+  ~StartScreenComponent() override {}
 
 private:
   const std::string& format_description(int length);
@@ -62,23 +62,23 @@ public:
   {
   }
 
-  void draw(DrawingContext& gc) {
+  void draw(DrawingContext& gc) override {
     SurfaceButton::draw(gc);
     gc.print_center(Fonts::chalk_normal, Vector2i(x_pos + 30, y_pos - 20), _("Play"));
   }
 
-  bool is_at(int x, int y) {
+  bool is_at(int x, int y) override {
     return x > x_pos && x < x_pos + int(button_surface.get_width())
       && y > y_pos - 20 && y < y_pos + int(button_surface.get_height());
   }
 
-  void on_click()
+  void on_click() override
   {
     Sound::PingusSound::play_sound("yipee");
     parent->start_game();
   }
 
-  void on_pointer_enter()
+  void on_pointer_enter() override
   {
     SurfaceButton::on_pointer_enter();
     Sound::PingusSound::play_sound ("tick");
@@ -106,16 +106,16 @@ public:
   {
   }
 
-  void draw(DrawingContext& gc) {
+  void draw(DrawingContext& gc) override {
     SurfaceButton::draw(gc);
     gc.print_center(Fonts::chalk_normal, Vector2i(x_pos + 55, y_pos), _("Back"));
   }
 
-  void on_click() {
+  void on_click() override {
     parent->cancel_game();
   }
 
-  void on_pointer_enter()
+  void on_pointer_enter() override
   {
     SurfaceButton::on_pointer_enter();
     Sound::PingusSound::play_sound ("tick");

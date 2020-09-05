@@ -30,10 +30,10 @@ private:
 public:
   Slider (Pingu* p);
 
-  ActionName::Enum get_type() const { return ActionName::SLIDER; }
+  ActionName::Enum get_type() const override { return ActionName::SLIDER; }
 
-  void draw (SceneContext& gc);
-  void update();
+  void draw (SceneContext& gc) override;
+  void update() override;
 
 private:
   Slider (const Slider&);

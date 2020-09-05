@@ -36,7 +36,7 @@ public:
     rect(rect_)
   {}
 
-  virtual bool is_at (int x, int y) { return rect.contains(Vector2i(x, y)); }
+  bool is_at (int x, int y) override { return rect.contains(Vector2i(x, y)); }
   virtual void update_layout() {}
 
   void set_rect(const Rect& rect_)

@@ -44,16 +44,16 @@ private:
 public:
   FakeExit(const ReaderMapping& reader);
 
-  float get_z_pos () const;
-  void set_pos(const Vector3f& p) { pos = p; }
-  Vector3f get_pos() const { return pos; }
+  float get_z_pos () const override;
+  void set_pos(const Vector3f& p) override { pos = p; }
+  Vector3f get_pos() const override { return pos; }
 
-  void draw (SceneContext& gc);
+  void draw (SceneContext& gc) override;
 
-  void update ();
+  void update () override;
 
   /** Draws an exit symbol on to the small map. */
-  void draw_smallmap(SmallMap* smallmap);
+  void draw_smallmap(SmallMap* smallmap) override;
 
 private:
   void catch_pingu (Pingu*);

@@ -47,16 +47,16 @@ public:
   {
   }
 
-  void draw(DrawingContext& gc) {
+  void draw(DrawingContext& gc) override {
     SurfaceButton::draw(gc);
     gc.print_center(Fonts::chalk_normal, Vector2i(x_pos + 55, y_pos), _("Back"));
   }
 
-  void on_click() {
+  void on_click() override {
     parent->on_escape_press();
   }
 
-  void on_pointer_enter()
+  void on_pointer_enter() override
   {
     SurfaceButton::on_pointer_enter();
     Sound::PingusSound::play_sound ("tick");
@@ -82,11 +82,11 @@ public:
   {
   }
 
-  void on_click() {
+  void on_click() override {
     callback();
   }
 
-  void on_pointer_enter()
+  void on_pointer_enter() override
   {
     SurfaceButton::on_pointer_enter();
     Sound::PingusSound::play_sound("tick");
@@ -158,11 +158,11 @@ public:
               });
   }
 
-  ~LevelsetSelector()
+  ~LevelsetSelector() override
   {
   }
 
-  void draw(DrawingContext& gc)
+  void draw(DrawingContext& gc) override
   {
     gc.push_modelview();
     gc.translate(rect.left, rect.top);
@@ -211,12 +211,12 @@ public:
       page = 0;
   }
 
-  void on_pointer_leave()
+  void on_pointer_leave() override
   {
     current_levelset = 0;
   }
 
-  void on_pointer_move(int x, int y)
+  void on_pointer_move(int x, int y) override
   {
     x -= rect.left;
     y -= rect.top;
@@ -242,7 +242,7 @@ public:
     }
   }
 
-  void on_primary_button_press (int x, int y)
+  void on_primary_button_press (int x, int y) override
   {
     on_pointer_move(x, y);
 
@@ -252,7 +252,7 @@ public:
     }
   }
 
-  void update_layout() {}
+  void update_layout() override {}
 
 private:
   LevelsetSelector(const LevelsetSelector&);
@@ -299,7 +299,7 @@ public:
     m_checkbox = Sprite("core/menu/checkbox_small");
   }
 
-  void draw(DrawingContext& gc)
+  void draw(DrawingContext& gc) override
   {
     gc.push_modelview();
     gc.translate(rect.left, rect.top);
@@ -383,12 +383,12 @@ public:
     levelset = levelset_;
   }
 
-  void on_pointer_leave()
+  void on_pointer_leave() override
   {
     current_level = -1;
   }
 
-  void on_pointer_move(int x, int y)
+  void on_pointer_move(int x, int y) override
   {
     x -= rect.left;
     y -= rect.top;
@@ -412,7 +412,7 @@ public:
     }
   }
 
-  void on_primary_button_press (int x, int y)
+  void on_primary_button_press (int x, int y) override
   {
     on_pointer_move(x, y);
     if (current_level != -1)
@@ -424,7 +424,7 @@ public:
     }
   }
 
-  void update_layout() {}
+  void update_layout() override {}
 
 private:
   LevelSelector(const LevelSelector&);

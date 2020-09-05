@@ -32,14 +32,14 @@ public:
   Inputbox(const Rect& rect);
   Inputbox();
 
-  void draw(DrawingContext& gc);
+  void draw(DrawingContext& gc) override;
 
   void set_text(const std::string& text);
   std::string get_text() const { return text; }
-  void on_key_pressed(const Input::KeyboardEvent& ev);
-  void on_text_input(const Input::TextInputEvent& ev);
+  void on_key_pressed(const Input::KeyboardEvent& ev) override;
+  void on_text_input(const Input::TextInputEvent& ev) override;
 
-  void update_layout() {}
+  void update_layout() override {}
 
   sigc::signal<void (const std::string&)> on_change;
   sigc::signal<void (const std::string&)> on_enter;

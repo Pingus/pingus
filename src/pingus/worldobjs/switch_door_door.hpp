@@ -47,14 +47,14 @@ private:
 public:
   SwitchDoorDoor(const ReaderMapping& reader);
 
-  void on_startup();
-  void draw (SceneContext& gc);
-  void update ();
+  void on_startup() override;
+  void draw (SceneContext& gc) override;
+  void update () override;
 
   /// The switch and the door should stay above the pingus
-  float get_z_pos() const { return 100; }
-  void set_pos(const Vector3f& p) { door_pos = p; }
-  Vector3f get_pos() const { return door_pos; }
+  float get_z_pos() const override { return 100; }
+  void set_pos(const Vector3f& p) override { door_pos = p; }
+  Vector3f get_pos() const override { return door_pos; }
 
   void open_door();
 

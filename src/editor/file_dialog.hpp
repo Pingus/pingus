@@ -52,10 +52,10 @@ private:
 
 public:
   FileDialog(EditorScreen* editor, const Rect& rect, Mode mode);
-  ~FileDialog();
+  ~FileDialog() override;
 
-  void draw_background(DrawingContext& gc);
-  void update_layout();
+  void draw_background(DrawingContext& gc) override;
+  void update_layout() override;
 
   void load_file(const System::DirectoryEntry& entry);
   void set_directory(const std::string& pathname);

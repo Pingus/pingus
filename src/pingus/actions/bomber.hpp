@@ -41,12 +41,12 @@ private:
 public:
   Bomber (Pingu* p);
 
-  ActionName::Enum get_type() const { return ActionName::BOMBER; }
+  ActionName::Enum get_type() const override { return ActionName::BOMBER; }
 
-  bool change_allowed (ActionName::Enum action) { return false; }
+  bool change_allowed (ActionName::Enum action) override { return false; }
 
-  void draw (SceneContext& gc);
-  void update();
+  void draw (SceneContext& gc) override;
+  void update() override;
 
 private:
   Bomber (const Bomber&);

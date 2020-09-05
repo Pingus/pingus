@@ -32,8 +32,8 @@ private:
 public:
   PathDrawable(const Path& arg_path);
 
-  void draw(DrawingContext& gc);
-  void update(float delta);
+  void draw(DrawingContext& gc) override;
+  void update(float delta) override;
 
 private:
   PathDrawable (const PathDrawable&);

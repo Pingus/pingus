@@ -35,12 +35,12 @@ private:
 
 public:
   Miner (Pingu* p);
-  virtual ~Miner () {}
+  ~Miner () override {}
 
-  ActionName::Enum get_type () const { return ActionName::MINER; }
+  ActionName::Enum get_type () const override { return ActionName::MINER; }
 
-  void draw (SceneContext& gc);
-  void update ();
+  void draw (SceneContext& gc) override;
+  void update () override;
 
 private:
   void mine(bool final);

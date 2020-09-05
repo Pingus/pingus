@@ -34,9 +34,9 @@ private:
 
 public:
   TimeDisplay(GameSession* c);
-  virtual ~TimeDisplay() {}
+  ~TimeDisplay() override {}
 
-  void draw(DrawingContext& gc);
+  void draw(DrawingContext& gc) override;
 
 private:
   TimeDisplay (const TimeDisplay&);

@@ -98,7 +98,7 @@ public:
     buttons()
   {}
 
-  ~ButtonGroup()
+  ~ButtonGroup() override
   {
   }
 
@@ -106,12 +106,12 @@ public:
     buttons.push_back(std::move(button_));
   }
 
-  void update(float delta) {
+  void update(float delta) override {
     for(auto i = buttons.begin(); i != buttons.end(); ++i)
       (*i)->update(delta);
   }
 
-  virtual void update(Control* ctrl)
+  void update(Control* ctrl) override
   {
     ButtonState new_state = BUTTON_RELEASED;
 
@@ -143,7 +143,7 @@ public:
       id(id_)
   {}
 
-  virtual void notify_parent() {
+  void notify_parent() override {
     controller->add_button_event(id, state);
   }
 
@@ -238,7 +238,7 @@ public:
     axes()
   {}
 
-  ~AxisGroup()
+  ~AxisGroup() override
   {
   }
 
@@ -246,12 +246,12 @@ public:
     axes.push_back(std::move(axis));
   }
 
-  void update(float delta) {
+  void update(float delta) override {
     for(auto i = axes.begin(); i != axes.end(); ++i)
       (*i)->update(delta);
   }
 
-  void update(Control* ctrl)
+  void update(Control* ctrl) override
   {
     float new_pos = 0;
 
@@ -279,7 +279,7 @@ public:
       id(id_)
   {}
 
-  virtual void notify_parent() {
+  void notify_parent() override {
     controller->add_axis_event(id, pos);
   }
 
@@ -299,11 +299,11 @@ public:
     pointer()
   {}
 
-  ~PointerGroup()
+  ~PointerGroup() override
   {
   }
 
-  void update(Control* p) {
+  void update(Control* p) override {
     Pointer* pointer_ = dynamic_cast<Pointer*>(p);
     assert(pointer_);
     Vector2f new_pos = pointer_->get_pos();
@@ -314,7 +314,7 @@ public:
     }
   }
 
-  void update(float delta) {
+  void update(float delta) override {
     for(auto i = pointer.begin(); i != pointer.end(); ++i)
       (*i)->update(delta);
   }
@@ -337,7 +337,7 @@ public:
       id(id_)
   {}
 
-  virtual void notify_parent() {
+  void notify_parent() override {
     controller->add_pointer_event(id, pos.x, pos.y);
   }
 
@@ -357,16 +357,16 @@ public:
     scrollers()
   {}
 
-  ~ScrollerGroup()
+  ~ScrollerGroup() override
   {
   }
 
-  void update(float delta_) {
+  void update(float delta_) override {
     for(auto i = scrollers.begin(); i != scrollers.end(); ++i)
       (*i)->update(delta_);
   }
 
-  void update(Control* p) {
+  void update(Control* p) override {
     Scroller* scroller = dynamic_cast<Scroller*>(p);
     assert(scroller);
     delta = scroller->get_delta();
@@ -395,7 +395,7 @@ public:
       id(id_)
   {}
 
-  virtual void notify_parent() {
+  void notify_parent() override {
     controller->add_scroller_event(id, delta.x, delta.y);
   }
 
@@ -434,14 +434,14 @@ public:
     keyboards()
   {}
 
-  ~KeyboardGroup()
+  ~KeyboardGroup() override
   {
   }
 
-  void update(float delta) {
+  void update(float delta) override {
   }
 
-  void update(Control* p) {
+  void update(Control* p) override {
     m_ev = dynamic_cast<Keyboard*>(p)->get_ev();
     notify_parent();
   }
@@ -465,7 +465,7 @@ public:
     id(id_)
   {}
 
-  virtual void notify_parent() {
+  void notify_parent() override {
     switch(m_ev.type)
     {
       case SDL_KEYUP:

@@ -33,12 +33,12 @@ private:
 public:
   Smashed (Pingu*);
 
-  ActionName::Enum get_type () const { return ActionName::SMASHED; }
+  ActionName::Enum get_type () const override { return ActionName::SMASHED; }
 
-  void draw (SceneContext& gc);
-  void update ();
+  void draw (SceneContext& gc) override;
+  void update () override;
 
-  bool catchable () { return false; }
+  bool catchable () override { return false; }
 
 private:
   Smashed (const Smashed&);

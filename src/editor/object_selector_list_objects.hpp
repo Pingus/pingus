@@ -35,7 +35,7 @@ struct Groundpiece : public ObjectSelectorList::Object
     type(type_)
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("groundpiece");
     obj->set_pos(pos);
     obj->set_res_desc(desc);
@@ -51,7 +51,7 @@ struct Entrance : public ObjectSelectorList::Object
              Resource::load_thumb_sprite("entrances/generic"))
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("entrance");
     obj->set_type("generic");
     obj->set_pos(pos);
@@ -73,7 +73,7 @@ struct Exit : public ObjectSelectorList::Object
       desc(name)
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("exit");
     obj->set_pos(pos);
     obj->set_res_desc(desc);
@@ -94,7 +94,7 @@ struct Hotspot : public ObjectSelectorList::Object
       z_pos(z_pos_)
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("hotspot");
     obj->set_pos(pos);
     obj->set_pos_z(static_cast<float>(z_pos));
@@ -114,7 +114,7 @@ struct SurfaceBackground : public ObjectSelectorList::Object
       desc(name)
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("surface-background");
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y), -1000.0f)); // FIXME: Hack, z-pos handling is messed up
     obj->set_para_x(0.5f);
@@ -135,7 +135,7 @@ struct SolidColorBackground : public ObjectSelectorList::Object
              Resource::load_thumb_sprite("core/editor/solidcolorbackground_thumb"))
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("solidcolor-background");
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y), -1000.0f)); // FIXME: Hack, z-pos handling is messed up
     obj->set_color(Color(255, 0, 255));
@@ -150,7 +150,7 @@ struct StarfieldBackground : public ObjectSelectorList::Object
              Resource::load_thumb_sprite("core/editor/starfield_thumb"))
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("starfield-background");
     // FIXME: Hack, z-pos handling is messed up
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y), -1000.0f));
@@ -171,7 +171,7 @@ struct Liquid : public ObjectSelectorList::Object
       desc(name)
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("liquid");
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     obj->set_res_desc(desc);
@@ -187,7 +187,7 @@ struct Guillotine : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("traps/guillotineidle"))
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("guillotine");
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     return obj;
@@ -201,7 +201,7 @@ struct Spike : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("traps/spike_editor"))
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("spike");
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     return obj;
@@ -215,7 +215,7 @@ struct FakeExit : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("traps/fake_exit"))
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("fake_exit");
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     return obj;
@@ -229,7 +229,7 @@ struct LaserExit : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("traps/laser_exit"))
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("laser_exit");
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     return obj;
@@ -243,7 +243,7 @@ struct Smasher : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("traps/smasher"))
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("smasher");
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     return obj;
@@ -257,7 +257,7 @@ struct Hammer : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("traps/hammer"))
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("hammer");
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     return obj;
@@ -271,7 +271,7 @@ struct SnowGenerator : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("core/editor/weather_snow"))
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("snow-generator");
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     return obj;
@@ -285,7 +285,7 @@ struct RainGenerator : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("core/editor/weather_rain"))
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("rain-generator");
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     return obj;
@@ -299,7 +299,7 @@ struct Teleporter : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("worldobjs/teleporter"))
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("teleporter");
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     obj->set_target_id("");
@@ -314,7 +314,7 @@ struct TeleporterTarget : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("worldobjs/teleportertarget"))
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("teleporter-target");
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     obj->set_id("id" + StringUtil::to_string(rand()));
@@ -329,7 +329,7 @@ struct IceBlock : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("worldobjs/iceblock"))
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("iceblock");
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     obj->set_repeat(1);
@@ -344,7 +344,7 @@ struct Conveyorbelt : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("worldobjs/conveyorbelt_middle"))
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("conveyorbelt");
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     obj->set_repeat(1);
@@ -359,7 +359,7 @@ struct SwitchDoorSwitch : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("worldobjs/switchdoor_switch"))
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("switchdoor-switch");
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     obj->set_height(15);
@@ -375,7 +375,7 @@ struct SwitchDoorDoor : public ObjectSelectorList::Object
            Resource::load_thumb_sprite("worldobjs/switchdoor_box"))
   {}
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("switchdoor-door");
     obj->set_pos(Vector3f(static_cast<float>(pos.x), static_cast<float>(pos.y)));
     obj->set_repeat(1);
@@ -397,7 +397,7 @@ public:
   {
   }
 
-  LevelObjPtr create(const Vector2i& pos) {
+  LevelObjPtr create(const Vector2i& pos) override {
     std::shared_ptr<GroupLevelObj> group = GroupLevelObj::from_prefab(m_name);
     if (group)
     {

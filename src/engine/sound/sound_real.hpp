@@ -37,29 +37,29 @@ private:
 
 public:
   PingusSoundReal ();
-  virtual ~PingusSoundReal ();
+  ~PingusSoundReal () override;
 
   /** Load a music file and play it immediately.
       @param filename The complete filename
       @param volume   The volume to play the music with
       @param loop     The music file should loop continuously  */
-  virtual void real_play_music(const std::string & filename, float volume, bool loop);
+  void real_play_music(const std::string & filename, float volume, bool loop) override;
 
-  virtual void real_stop_music();
+  void real_stop_music() override;
 
   /** Load a sound file and play it immediately
       @param filename The complete filename
       @param volume   The volume to play the sound at
       @param panning  The panning to play the sound with */
-  virtual void real_play_sound(const std::string & filename, float volume, float panning);
+  void real_play_sound(const std::string & filename, float volume, float panning) override;
 
-  virtual void set_sound_volume(float volume);
-  virtual void set_music_volume(float volume);
-  virtual void set_master_volume(float volume);
+  void set_sound_volume(float volume) override;
+  void set_music_volume(float volume) override;
+  void set_master_volume(float volume) override;
 
-  virtual float get_sound_volume() const;
-  virtual float get_music_volume() const;
-  virtual float get_master_volume() const;
+  float get_sound_volume() const override;
+  float get_music_volume() const override;
+  float get_master_volume() const override;
 
 private:
   void apply_volume_changes();

@@ -57,16 +57,16 @@ private:
 
 public:
   Credits(const Pathname& filename);
-  virtual ~Credits();
+  ~Credits() override;
 
-  void update(float);
-  void draw_background(DrawingContext& gc);
+  void update(float) override;
+  void draw_background(DrawingContext& gc) override;
 
-  void on_startup();
+  void on_startup() override;
 
-  void on_pause_press();
-  void on_fast_forward_press();
-  void on_escape_press();
+  void on_pause_press() override;
+  void on_fast_forward_press() override;
+  void on_escape_press() override;
 
 private:
   Credits(const Credits&);

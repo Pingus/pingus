@@ -31,11 +31,11 @@ private:
 public:
   SliderBox(const Rect& rect, int steps);
 
-  void draw(DrawingContext& gc);
-  void on_primary_button_press(int x, int y);
-  void on_primary_button_release(int x, int y);
-  void on_pointer_move(int x, int y);
-  void update_layout() {}
+  void draw(DrawingContext& gc) override;
+  void on_primary_button_press(int x, int y) override;
+  void on_primary_button_release(int x, int y) override;
+  void on_pointer_move(int x, int y) override;
+  void update_layout() override {}
 
   void set_value(int v);
 

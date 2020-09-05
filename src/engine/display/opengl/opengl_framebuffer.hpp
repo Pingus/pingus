@@ -28,7 +28,7 @@ private:
 
 public:
   OpenGLFramebuffer();
-  ~OpenGLFramebuffer();
+  ~OpenGLFramebuffer() override;
 
   FramebufferSurface create_surface(const Surface& surface) override;
 

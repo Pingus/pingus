@@ -50,22 +50,22 @@ private:
 
 public:
   PinguHolder(const PingusLevel&);
-  ~PinguHolder();
+  ~PinguHolder() override;
 
   /*@{
     @name overloaded stuff for WorldObj
   */
-  void draw (SceneContext& gc);
+  void draw (SceneContext& gc) override;
 
   /** Update all Pingus (this calls Pingu::update() which then calls
       PinguAction::update()) */
-  void update();
+  void update() override;
 
   /** The z-pos at which the pingus gets draw.
       @return 50 */
-  float get_z_pos() const;
-  void set_pos(const Vector3f& p) { }
-  Vector3f get_pos() const { return Vector3f(); }
+  float get_z_pos() const override;
+  void set_pos(const Vector3f& p) override { }
+  Vector3f get_pos() const override { return Vector3f(); }
   /*@}*/
 
   /** @return the number of pingus that have successfully exit this

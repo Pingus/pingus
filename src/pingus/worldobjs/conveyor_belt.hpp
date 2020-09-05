@@ -41,12 +41,12 @@ private:
 public:
   ConveyorBelt(const ReaderMapping& reader);
 
-  void draw (SceneContext& gc);
-  void on_startup ();
-  void update ();
-  float get_z_pos () const;
-  void set_pos(const Vector3f& p) { pos = p; }
-  Vector3f get_pos() const { return pos; }
+  void draw (SceneContext& gc) override;
+  void on_startup () override;
+  void update () override;
+  float get_z_pos () const override;
+  void set_pos(const Vector3f& p) override { pos = p; }
+  Vector3f get_pos() const override { return pos; }
 
 private:
   ConveyorBelt (const ConveyorBelt&);

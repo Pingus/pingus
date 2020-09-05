@@ -69,7 +69,7 @@ private:
 
 public:
   GameSession(const PingusLevel& arg_plf, bool arg_show_result_screen);
-  ~GameSession ();
+  ~GameSession () override;
 
   /** Pass a delta to the screen */
   void update_server(float delta);
@@ -80,22 +80,22 @@ public:
   bool finished();
 
   /** Update all parts of the world */
-  void update (float delta);
-  void update (const Input::Event& event);
-  void draw_background (DrawingContext& gc);
+  void update (float delta) override;
+  void update (const Input::Event& event) override;
+  void draw_background (DrawingContext& gc) override;
 
   ButtonPanel* get_button_panel () { return button_panel; }
 
   // Overloaded GUIScreen stuff
-  void on_startup ();
+  void on_startup () override;
 
-  void on_pause_press ();
-  void on_single_step_press ();
-  void on_fast_forward_press ();
-  void on_fast_forward_release ();
-  void on_armageddon_press ();
-  void on_escape_press ();
-  void on_action_axis_move (float);
+  void on_pause_press () override;
+  void on_single_step_press () override;
+  void on_fast_forward_press () override;
+  void on_fast_forward_release () override;
+  void on_armageddon_press () override;
+  void on_escape_press () override;
+  void on_action_axis_move (float) override;
 
   ActionName::Enum get_action_name() const;
 
@@ -105,7 +105,7 @@ public:
   void set_pause(bool value);
   bool get_pause() const;
 
-  void resize(const Size&);
+  void resize(const Size&) override;
 
 private:
   void process_scroll_event (const Input::ScrollEvent&);

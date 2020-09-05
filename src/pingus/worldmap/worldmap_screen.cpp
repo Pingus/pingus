@@ -36,9 +36,9 @@ private:
   WorldmapScreen* worldmap_screen;
 public:
   WorldmapScreenCloseButton(WorldmapScreen* worldmap_screen);
-  void on_click();
-  void draw (DrawingContext& gc);
-  void on_pointer_enter();
+  void on_click() override;
+  void draw (DrawingContext& gc) override;
+  void on_pointer_enter() override;
 
 private:
   WorldmapScreenCloseButton(const WorldmapScreenCloseButton&);
@@ -52,9 +52,9 @@ private:
   WorldmapScreen* worldmap_screen;
 public:
   WorldmapScreenCreditsButton(WorldmapScreen* worldmap_screen);
-  void on_click();
-  void draw (DrawingContext& gc);
-  void on_pointer_enter();
+  void on_click() override;
+  void draw (DrawingContext& gc) override;
+  void on_pointer_enter() override;
 
 private:
   WorldmapScreenCreditsButton(const WorldmapScreenCreditsButton&);

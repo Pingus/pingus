@@ -35,15 +35,15 @@ public:
   SolidColorBackground(const ReaderMapping& reader);
 
   // FIXME: Make z_position editable
-  virtual float get_z_pos() const override { return -10; }
-  virtual void set_pos(const Vector3f& p) override {}
-  virtual Vector3f get_pos() const override { return Vector3f(); }
+  float get_z_pos() const override { return -10; }
+  void set_pos(const Vector3f& p) override {}
+  Vector3f get_pos() const override { return Vector3f(); }
 
-  virtual void update() override {}
+  void update() override {}
 
-  virtual void draw(SceneContext& gc) override;
+  void draw(SceneContext& gc) override;
 
-  virtual bool is_solid_background() const override { return true; }
+  bool is_solid_background() const override { return true; }
 
 private:
   SolidColorBackground (const SolidColorBackground&);

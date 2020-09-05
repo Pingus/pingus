@@ -43,12 +43,12 @@ private:
 public:
   Guillotine(const ReaderMapping& reader);
 
-  float get_z_pos() const;
-  void set_pos(const Vector3f& p) { pos = p; }
-  Vector3f get_pos() const { return pos; }
+  float get_z_pos() const override;
+  void set_pos(const Vector3f& p) override { pos = p; }
+  Vector3f get_pos() const override { return pos; }
 
-  void update();
-  void draw(SceneContext& gc);
+  void update() override;
+  void draw(SceneContext& gc) override;
 protected:
   void catch_pingu(Pingu*);
 

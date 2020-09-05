@@ -41,11 +41,11 @@ private:
 
 public:
   ArmageddonButton(Server*, int x, int y);
-  virtual ~ArmageddonButton();
+  ~ArmageddonButton() override;
 
-  void draw(DrawingContext& gc);
-  void update(float);
-  void on_primary_button_click (int x, int y);
+  void draw(DrawingContext& gc) override;
+  void update(float) override;
+  void on_primary_button_click (int x, int y) override;
 
 private:
   ArmageddonButton (const ArmageddonButton&);
@@ -66,11 +66,11 @@ private:
 
 public:
   ForwardButton(GameSession*, int x, int y);
-  virtual ~ForwardButton();
+  ~ForwardButton() override;
 
-  void draw(DrawingContext& gc);
-  void on_primary_button_press (int x, int y);
-  void on_primary_button_release (int x, int y);
+  void draw(DrawingContext& gc) override;
+  void on_primary_button_press (int x, int y) override;
+  void on_primary_button_release (int x, int y) override;
 
 private:
   ForwardButton (const ForwardButton&);
@@ -92,11 +92,11 @@ private:
 
 public:
   PauseButton(GameSession*, int x, int y);
-  virtual ~PauseButton();
+  ~PauseButton() override;
 
-  void draw(DrawingContext& gc);
+  void draw(DrawingContext& gc) override;
 
-  void on_primary_button_click (int x, int y);
+  void on_primary_button_click (int x, int y) override;
 
 private:
   PauseButton (const PauseButton&);

@@ -33,9 +33,9 @@ private:
 public:
   CheckBox(const Rect& rect);
 
-  void draw(DrawingContext& gc);
-  void on_primary_button_press(int x, int y);
-  void update_layout() {}
+  void draw(DrawingContext& gc) override;
+  void on_primary_button_press(int x, int y) override;
+  void update_layout() override {}
 
   void set_state(bool v, bool send_signal);
 

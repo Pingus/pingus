@@ -32,15 +32,15 @@ private:
 public:
   Floater(Pingu* p);
 
-  ActionName::Enum get_type() const { return ActionName::FLOATER; }
+  ActionName::Enum get_type() const override { return ActionName::FLOATER; }
 
   void init(void);
 
-  void draw (SceneContext& gc);
-  void update();
+  void draw (SceneContext& gc) override;
+  void update() override;
 
-  char get_persistent_char () { return 'f'; }
-  bool change_allowed (ActionName::Enum new_action);
+  char get_persistent_char () override { return 'f'; }
+  bool change_allowed (ActionName::Enum new_action) override;
 
 private:
   Floater (const Floater&);

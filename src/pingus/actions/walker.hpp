@@ -33,10 +33,10 @@ private:
 public:
   Walker (Pingu*);
 
-  void draw (SceneContext& gc);
-  void update ();
+  void draw (SceneContext& gc) override;
+  void update () override;
 
-  ActionName::Enum get_type () const { return ActionName::WALKER; }
+  ActionName::Enum get_type () const override { return ActionName::WALKER; }
 
 private:
   Walker (const Walker&);

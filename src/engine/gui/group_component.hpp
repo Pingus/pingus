@@ -47,30 +47,30 @@ private:
 
 public:
   GroupComponent(const Rect& rect, bool clip = true);
-  virtual ~GroupComponent();
+  ~GroupComponent() override;
 
-  void draw(DrawingContext& gc);
+  void draw(DrawingContext& gc) override;
   virtual void draw_background(DrawingContext& gc) {}
 
-  void update(float delta);
+  void update(float delta) override;
 
-  void on_primary_button_press(int x, int y);
-  void on_primary_button_release(int x, int y);
+  void on_primary_button_press(int x, int y) override;
+  void on_primary_button_release(int x, int y) override;
 
-  void on_secondary_button_press(int x, int y);
-  void on_secondary_button_release(int x, int y);
+  void on_secondary_button_press(int x, int y) override;
+  void on_secondary_button_release(int x, int y) override;
 
-  void on_primary_button_click(int x, int y) {}
-  void on_secondary_button_click(int x, int y) {}
+  void on_primary_button_click(int x, int y) override {}
+  void on_secondary_button_click(int x, int y) override {}
 
-  void on_key_pressed(const Input::KeyboardEvent& ev);
+  void on_key_pressed(const Input::KeyboardEvent& ev) override;
 
-  void on_text_input(const Input::TextInputEvent& ev);
+  void on_text_input(const Input::TextInputEvent& ev) override;
 
-  void on_pointer_enter();
-  void on_pointer_leave();
+  void on_pointer_enter() override;
+  void on_pointer_leave() override;
 
-  void on_pointer_move(int x, int y);
+  void on_pointer_move(int x, int y) override;
 
   void add(std::unique_ptr<Component> comp);
 
@@ -83,9 +83,9 @@ public:
     return result;
   }
 
-  void update_layout();
+  void update_layout() override;
 
-  bool is_at(int x, int y);
+  bool is_at(int x, int y) override;
 
   // Causes all input directed to comp
   void grab(Component* comp);

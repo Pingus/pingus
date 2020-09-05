@@ -43,13 +43,13 @@ private:
 
 public:
   StoryScreen(const ReaderMapping& reader, bool credits = false);
-  ~StoryScreen();
+  ~StoryScreen() override;
 
-  void on_startup();
-  void on_fast_forward_press ();
-  void on_escape_press ();
+  void on_startup() override;
+  void on_fast_forward_press () override;
+  void on_escape_press () override;
 
-  void resize(const Size& size);
+  void resize(const Size& size) override;
 
 private:
   StoryScreen (const StoryScreen&);

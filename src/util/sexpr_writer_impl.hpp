@@ -34,27 +34,27 @@ private:
 
 public:
   SExprWriterImpl(std::ostream& out_);
-  virtual ~SExprWriterImpl();
+  ~SExprWriterImpl() override;
 
-  virtual void begin_collection(const char* name) override;
-  virtual void end_collection() override;
+  void begin_collection(const char* name) override;
+  void end_collection() override;
 
-  virtual void begin_object(const char* type) override;
-  virtual void end_object() override;
+  void begin_object(const char* type) override;
+  void end_object() override;
 
-  virtual void begin_mapping(const char* name) override;
-  virtual void end_mapping() override;
+  void begin_mapping(const char* name) override;
+  void end_mapping() override;
 
-  virtual void write_int(const char* name, int) override;
-  virtual void write_float(const char* name, float) override;
-  virtual void write_colorf(const char* name, const Color&) override;
-  virtual void write_colori(const char* name, const Color&) override;
-  virtual void write_bool(const char* name, bool) override;
-  virtual void write_string(const char* name, const std::string&) override;
-  virtual void write_vector(const char* name, const Vector3f&) override;
-  virtual void write_size(const char* name, const Size&) override;
-  virtual void write_vector2i(const char* name, const Vector2i&) override;
-  virtual void write_path(const char* name, const Pathname&) override;
+  void write_int(const char* name, int) override;
+  void write_float(const char* name, float) override;
+  void write_colorf(const char* name, const Color&) override;
+  void write_colori(const char* name, const Color&) override;
+  void write_bool(const char* name, bool) override;
+  void write_string(const char* name, const std::string&) override;
+  void write_vector(const char* name, const Vector3f&) override;
+  void write_size(const char* name, const Size&) override;
+  void write_vector2i(const char* name, const Vector2i&) override;
+  void write_path(const char* name, const Pathname&) override;
 
   template<class E, class F>
   void write_enum(const char* name, E value, F enum2string)

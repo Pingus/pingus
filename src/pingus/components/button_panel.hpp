@@ -52,10 +52,10 @@ private:
 
 public:
   ButtonPanel(Server* s, const Vector2i& pos);
-  virtual ~ButtonPanel();
+  ~ButtonPanel() override;
 
-  void draw(DrawingContext& gc);
-  void update (float delta);
+  void draw(DrawingContext& gc) override;
+  void update (float delta) override;
 
   ActionName::Enum get_action_name();
 
@@ -65,12 +65,12 @@ public:
   void next_action();
   void previous_action();
 
-  void on_primary_button_press(int x, int y);
-  void on_primary_button_release(int x, int y);
+  void on_primary_button_press(int x, int y) override;
+  void on_primary_button_release(int x, int y) override;
 
-  void on_pointer_enter();
-  void on_pointer_leave();
-  void on_pointer_move(int x, int y);
+  void on_pointer_enter() override;
+  void on_pointer_leave() override;
+  void on_pointer_move(int x, int y) override;
 
   void set_pos(const Vector2i& pos);
 

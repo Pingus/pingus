@@ -53,14 +53,14 @@ private:
 
 public:
   WorldmapScreen ();
-  ~WorldmapScreen ();
+  ~WorldmapScreen () override;
 
   void load(const Pathname& filename);
 
   /** Check if Worldmap manager still needs to run and exit if if
       not */
-  void update (float);
-  void draw_foreground(DrawingContext& gc);
+  void update (float) override;
+  void draw_foreground(DrawingContext& gc) override;
 
   /** @defgroup WorldmapScreenBindings Controller bindings of the WorldmapScreen
       @{*/
@@ -69,11 +69,11 @@ public:
       faster. */
   void on_primary_button_press (int x, int y);
 
-  void on_fast_forward_press();
-  void on_fast_forward_release();
+  void on_fast_forward_press() override;
+  void on_fast_forward_release() override;
 
   /** Exit the WorldmapScreen and return to the previous screen */
-  void on_escape_press ();
+  void on_escape_press () override;
   /** @}*/
 
   Worldmap* get_worldmap() { return worldmap.get(); }
@@ -83,10 +83,10 @@ public:
   void show_intro_story();
   void show_end_story();
 
-  void resize(const Size& size);
+  void resize(const Size& size) override;
 private:
   /** Startup Hook of the Screen */
-  void on_startup ();
+  void on_startup () override;
 
   WorldmapScreen (const WorldmapScreen&);
   WorldmapScreen& operator= (const WorldmapScreen&);

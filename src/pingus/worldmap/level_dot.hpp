@@ -37,16 +37,16 @@ private:
 public:
   LevelDot(const ReaderMapping& reader);
 
-  void draw(DrawingContext& gc);
-  void draw_hover(DrawingContext& gc);
+  void draw(DrawingContext& gc) override;
+  void draw_hover(DrawingContext& gc) override;
 
-  void update(float delta);
+  void update(float delta) override;
   PingusLevel get_plf () const { return plf; }
-  void on_click();
+  void on_click() override;
 
-  bool finished();
-  bool accessible();
-  void unlock();
+  bool finished() override;
+  bool accessible() override;
+  void unlock() override;
 
 private:
   LevelDot (const LevelDot&);

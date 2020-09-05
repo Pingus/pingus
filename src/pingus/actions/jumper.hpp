@@ -30,10 +30,10 @@ private:
 public:
   Jumper(Pingu*);
 
-  ActionName::Enum get_type() const { return ActionName::JUMPER; }
+  ActionName::Enum get_type() const override { return ActionName::JUMPER; }
 
-  void  draw (SceneContext& gc);
-  void  update();
+  void  draw (SceneContext& gc) override;
+  void  update() override;
 
 private:
   Jumper (const Jumper&);

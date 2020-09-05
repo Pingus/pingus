@@ -30,16 +30,16 @@ private:
 
 public:
   CoreDriver(Manager* manager_) : manager(manager_) {}
-  virtual ~CoreDriver() {}
+  ~CoreDriver() override {}
 
-  std::string get_name() const { return "core"; }
-  void update(float delta) {}
+  std::string get_name() const override { return "core"; }
+  void update(float delta) override {}
 
-  std::unique_ptr<Button> create_button(const ReaderObject& reader, Control* parent);
-  std::unique_ptr<Axis> create_axis(const ReaderObject& reader, Control* parent);
-  std::unique_ptr<Scroller> create_scroller(const ReaderObject& reader, Control* parent);
-  std::unique_ptr<Pointer> create_pointer (const ReaderObject& reader, Control* parent);
-  std::unique_ptr<Keyboard> create_keyboard(const ReaderObject& reader, Control* parent);
+  std::unique_ptr<Button> create_button(const ReaderObject& reader, Control* parent) override;
+  std::unique_ptr<Axis> create_axis(const ReaderObject& reader, Control* parent) override;
+  std::unique_ptr<Scroller> create_scroller(const ReaderObject& reader, Control* parent) override;
+  std::unique_ptr<Pointer> create_pointer (const ReaderObject& reader, Control* parent) override;
+  std::unique_ptr<Keyboard> create_keyboard(const ReaderObject& reader, Control* parent) override;
 
 private:
   CoreDriver(const CoreDriver&);

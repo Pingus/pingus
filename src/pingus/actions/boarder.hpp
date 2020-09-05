@@ -33,10 +33,10 @@ private:
 public:
   Boarder (Pingu* p);
 
-  ActionName::Enum get_type () const { return ActionName::BOARDER; }
+  ActionName::Enum get_type () const override { return ActionName::BOARDER; }
 
-  void  draw (SceneContext& gc);
-  void  update ();
+  void  draw (SceneContext& gc) override;
+  void  update () override;
 
 private:
   bool on_ground ();

@@ -43,17 +43,17 @@ private:
 public:
   FileList(const Rect& rect);
 
-  void draw (DrawingContext& gc);
-  void update (float delta);
+  void draw (DrawingContext& gc) override;
+  void update (float delta) override;
 
-  void update_layout();
+  void update_layout() override;
   std::string get_direction() const { return m_direction; }
   void set_directory(const std::string& pathname, const std::string& pattern = "*");
 
-  void on_pointer_move (int x, int y);
+  void on_pointer_move (int x, int y) override;
 
-  void on_primary_button_press (int x, int y);
-  void on_primary_button_release (int x, int y);
+  void on_primary_button_press (int x, int y) override;
+  void on_primary_button_release (int x, int y) override;
 
   void next_page();
   void prev_page();

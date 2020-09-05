@@ -31,10 +31,10 @@ private:
 public:
   Exiter(Pingu*);
   void init(void);
-  ActionName::Enum get_type() const { return ActionName::EXITER; }
+  ActionName::Enum get_type() const override { return ActionName::EXITER; }
 
-  void draw (SceneContext& gc);
-  void update();
+  void draw (SceneContext& gc) override;
+  void update() override;
 
 private:
   Exiter (const Exiter&);

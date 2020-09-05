@@ -32,10 +32,10 @@ private:
 public:
   Superman (Pingu*);
 
-  ActionName::Enum get_type () const { return ActionName::SUPERMAN; }
+  ActionName::Enum get_type () const override { return ActionName::SUPERMAN; }
 
-  void draw (SceneContext& gc);
-  void update ();
+  void draw (SceneContext& gc) override;
+  void update () override;
 
 private:
   Superman (const Superman&);

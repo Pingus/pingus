@@ -28,12 +28,12 @@ public:
   PinguCollider(const int height_arg);
 
   /** Destructor */
-  ~PinguCollider();
+  ~PinguCollider() override;
 
   /** Find out if a Pingu at the specified position is colliding with
       something */
   bool operator() (World* const world, Vector3f current_pos,
-                   const Vector3f& step_vector) const;
+                   const Vector3f& step_vector) const override;
 
 private:
   /** Pingu could be on its belly.  Therefore, this is the current height of

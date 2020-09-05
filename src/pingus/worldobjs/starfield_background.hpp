@@ -40,15 +40,15 @@ private:
 
 public:
   StarfieldBackground(const ReaderMapping& reader);
-  ~StarfieldBackground();
+  ~StarfieldBackground() override;
 
   // FIXME: Make z_pos handling editable via xml
-  float get_z_pos() const { return -10; }
-  void set_pos(const Vector3f& p) {}
-  Vector3f get_pos() const { return Vector3f(); }
+  float get_z_pos() const override { return -10; }
+  void set_pos(const Vector3f& p) override {}
+  Vector3f get_pos() const override { return Vector3f(); }
 
-  void update ();
-  void draw (SceneContext& gc);
+  void update () override;
+  void draw (SceneContext& gc) override;
 
 private:
   StarfieldBackground (const StarfieldBackground&);

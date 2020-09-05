@@ -67,23 +67,23 @@ private:
 
 public:
   ObjectSelectorList(EditorScreen* editor_, ObjectSelector* object_selector_, const Rect& rect);
-  ~ObjectSelectorList();
+  ~ObjectSelectorList() override;
 
-  void on_primary_button_press (int x, int y);
-  void on_primary_button_release (int x, int y);
+  void on_primary_button_press (int x, int y) override;
+  void on_primary_button_release (int x, int y) override;
 
-  void on_secondary_button_press (int x, int y);
-  void on_secondary_button_release (int x, int y);
+  void on_secondary_button_press (int x, int y) override;
+  void on_secondary_button_release (int x, int y) override;
 
-  void on_pointer_move (int x, int y);
+  void on_pointer_move (int x, int y) override;
 
-  void draw(DrawingContext& gc);
+  void draw(DrawingContext& gc) override;
 
   void set_objects(ObjectSelectorSet* object_set);
 
   void scroll(float y);
 
-  void update_layout();
+  void update_layout() override;
 private:
   ObjectSelectorList (const ObjectSelectorList&);
   ObjectSelectorList& operator= (const ObjectSelectorList&);

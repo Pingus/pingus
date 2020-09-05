@@ -47,14 +47,14 @@ private:
 public:
   Bridger(Pingu*);
 
-  std::string get_name () const;
-  ActionName::Enum get_type () const { return ActionName::BRIDGER; }
+  std::string get_name () const override;
+  ActionName::Enum get_type () const override { return ActionName::BRIDGER; }
 
-  void   update ();
+  void   update () override;
   void   update_build ();
   void   update_walk ();
 
-  void   draw (SceneContext& gc);
+  void   draw (SceneContext& gc) override;
 
   bool   way_is_free ();
   bool   brick_placement_allowed (void);

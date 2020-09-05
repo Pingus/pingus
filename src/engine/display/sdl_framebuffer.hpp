@@ -28,7 +28,7 @@ private:
 
 public:
   SDLFramebuffer();
-  ~SDLFramebuffer();
+  ~SDLFramebuffer() override;
 
   FramebufferSurface create_surface(const Surface& surface) override;
 

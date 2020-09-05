@@ -25,7 +25,7 @@ class JsonReaderObjectImpl final : public ReaderObjectImpl
 {
 public:
   JsonReaderObjectImpl(Json::Value const& value);
-  virtual ~JsonReaderObjectImpl();
+  ~JsonReaderObjectImpl() override;
 
   std::string get_name() const override;
   ReaderMapping get_mapping() const override;
@@ -38,7 +38,7 @@ class JsonReaderCollectionImpl final : public ReaderCollectionImpl
 {
 public:
   JsonReaderCollectionImpl(Json::Value const& value);
-  virtual ~JsonReaderCollectionImpl();
+  ~JsonReaderCollectionImpl() override;
 
   std::vector<ReaderObject> get_objects() const override;
 
@@ -50,7 +50,7 @@ class JsonReaderMappingImpl final : public ReaderMappingImpl
 {
 public:
   JsonReaderMappingImpl(Json::Value const& value);
-  virtual ~JsonReaderMappingImpl();
+  ~JsonReaderMappingImpl() override;
 
   std::vector<std::string> get_keys() const override;
 

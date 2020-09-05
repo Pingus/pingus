@@ -76,10 +76,10 @@ private:
 
 public:
   Pingus (PathGraph* arg_path);
-  ~Pingus ();
+  ~Pingus () override;
 
-  void draw (DrawingContext& gc);
-  void update (float delta);
+  void draw (DrawingContext& gc) override;
+  void update (float delta) override;
 
   /** @return true if the node is reachable, false otherwise */
   bool walk_to_node (NodeId target);

@@ -117,11 +117,11 @@ private:
 
 public:
   ObjectProperties(EditorScreen* editor, const Rect& rect);
-  ~ObjectProperties();
+  ~ObjectProperties() override;
 
   void set_object(const LevelObjPtr& obj);
-  void draw_background(DrawingContext& gc);
-  void update_layout();
+  void draw_background(DrawingContext& gc) override;
+  void update_layout() override;
 
   void set_objects(const Selection& objs);
 

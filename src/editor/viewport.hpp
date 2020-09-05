@@ -82,20 +82,20 @@ public:
   Viewport(EditorScreen* e, const Rect& rect);
 
   /** Destructor */
-  ~Viewport ();
+  ~Viewport () override;
 
   /** Draws all of the objects in the viewport */
-  void draw(DrawingContext &gc);
+  void draw(DrawingContext &gc) override;
 
   /** Update information about scrolling, etc. */
-  void update(float delta);
+  void update(float delta) override;
 
   /** Returns whether or not the mouse is inside the viewport */
-  bool is_at(int x, int y);
+  bool is_at(int x, int y) override;
 
   /** Emitted when the pointer moved, x and y are the new pointer
       coordinates */
-  void on_pointer_move (int x, int y);
+  void on_pointer_move (int x, int y) override;
 
   /** Refresh the list of objects (do when loading or creating a new level) */
   void refresh();
@@ -107,15 +107,15 @@ public:
   void     set_scroll_pos(const Vector2i& pos);
 
   /// Mouse actions
-  void on_primary_button_press(int x, int y);
-  void on_primary_button_release(int x, int y);
+  void on_primary_button_press(int x, int y) override;
+  void on_primary_button_release(int x, int y) override;
 
-  void on_secondary_button_press(int x, int y);
-  void on_secondary_button_release(int x, int y);
+  void on_secondary_button_press(int x, int y) override;
+  void on_secondary_button_release(int x, int y) override;
 
-  void on_secondary_button_click(int x, int y);
+  void on_secondary_button_click(int x, int y) override;
 
-  void on_key_pressed(const Input::KeyboardEvent& ev);
+  void on_key_pressed(const Input::KeyboardEvent& ev) override;
 
   void delete_selected_objects();
   void duplicate_selected_objects();
@@ -142,7 +142,7 @@ public:
 
   Vector2i screen2world(int x, int y) const;
 
-  void update_layout();
+  void update_layout() override;
 
   EditorLevel::Objects* get_objects();
 

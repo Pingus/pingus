@@ -51,22 +51,22 @@ private:
 
 public:
   SmallMap(Server*, Playfield*, const Rect& rect);
-  virtual ~SmallMap();
+  ~SmallMap() override;
 
   /*{ @name Stuff called from the GUIManager */
-  void on_primary_button_press(int x, int y);
-  void on_primary_button_release(int x, int y);
-  void on_pointer_move(int x, int y);
+  void on_primary_button_press(int x, int y) override;
+  void on_primary_button_release(int x, int y) override;
+  void on_pointer_move(int x, int y) override;
 
   // Events
-  void on_pointer_enter ();
-  void on_pointer_leave ();
+  void on_pointer_enter () override;
+  void on_pointer_leave () override;
 
-  bool is_at (int x, int y);
+  bool is_at (int x, int y) override;
   bool mouse_over();
 
-  void draw(DrawingContext& gc);
-  void update(float delta);
+  void draw(DrawingContext& gc) override;
+  void update(float delta) override;
   /*}*/
 
   /** draws a symbolic sprite onto the smallmap

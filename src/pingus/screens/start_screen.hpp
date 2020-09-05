@@ -33,16 +33,16 @@ private:
 
 public:
   StartScreen(const PingusLevel& plf);
-  ~StartScreen();
+  ~StartScreen() override;
 
   void start_game();
   void cancel_game();
 
-  void on_pause_press();
-  void on_fast_forward_press();
-  void on_escape_press();
+  void on_pause_press() override;
+  void on_fast_forward_press() override;
+  void on_escape_press() override;
 
-  void resize(const Size&);
+  void resize(const Size&) override;
 
 private:
   StartScreen (const StartScreen&);

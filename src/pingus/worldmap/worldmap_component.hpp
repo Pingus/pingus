@@ -37,19 +37,19 @@ private:
 
 public:
   WorldmapComponent(WorldmapScreen* worldmap_screen);
-  ~WorldmapComponent();
+  ~WorldmapComponent() override;
 
-  void on_primary_button_press (int x, int y);
-  void on_secondary_button_press (int x, int y);
-  void on_pointer_move(int x, int y);
+  void on_primary_button_press (int x, int y) override;
+  void on_secondary_button_press (int x, int y) override;
+  void on_pointer_move(int x, int y) override;
 
   void on_fast_forward_press();
   void on_fast_forward_release();
 
-  void draw (DrawingContext& gc);
-  void update (float delta);
+  void draw (DrawingContext& gc) override;
+  void update (float delta) override;
 
-  bool is_at (int, int) { return true; }
+  bool is_at (int, int) override { return true; }
 
 private:
   WorldmapComponent (const WorldmapComponent&);

@@ -74,14 +74,14 @@ private:
 
 public:
   OptionMenu();
-  ~OptionMenu();
+  ~OptionMenu() override;
 
-  void draw_background (DrawingContext& gc);
-  void on_escape_press ();
+  void draw_background (DrawingContext& gc) override;
+  void on_escape_press () override;
 
   void add_item(const std::string& label, std::unique_ptr<GUI::RectComponent> control);
 
-  void resize(const Size&);
+  void resize(const Size&) override;
   void close_screen();
 
   void on_software_cursor_change(bool v);

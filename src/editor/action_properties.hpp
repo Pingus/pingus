@@ -47,10 +47,10 @@ private:
 
 public:
   ActionProperties(EditorScreen* editor, const Rect& rect);
-  ~ActionProperties();
+  ~ActionProperties() override;
 
-  void draw_background(DrawingContext& gc);
-  void update (float delta);
+  void draw_background(DrawingContext& gc) override;
+  void update (float delta) override;
 
   void add_action(ActionName::Enum id);
 

@@ -50,15 +50,15 @@ public:
 
   void add_particle (int x, int y);
 
-  float get_z_pos () const { return 1000.0f; }
-  void set_pos(const Vector3f& p) { }
-  Vector3f get_pos() const { return Vector3f(); }
+  float get_z_pos () const override { return 1000.0f; }
+  void set_pos(const Vector3f& p) override { }
+  Vector3f get_pos() const override { return Vector3f(); }
 
   /// Let the particle move
-  void update ();
+  void update () override;
 
   /// Draw the particle with the correct zoom resize
-  void draw (SceneContext& gc);
+  void draw (SceneContext& gc) override;
 
 private:
   PinguParticleHolder (const PinguParticleHolder&);

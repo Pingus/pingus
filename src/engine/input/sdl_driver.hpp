@@ -77,16 +77,16 @@ private:
 
 public:
   SDLDriver();
-  ~SDLDriver();
+  ~SDLDriver() override;
 
-  std::unique_ptr<Button> create_button(const ReaderObject& reader, Control* parent);
-  std::unique_ptr<Axis> create_axis(const ReaderObject& reader, Control* parent);
-  std::unique_ptr<Scroller> create_scroller(const ReaderObject& reader, Control* parent);
-  std::unique_ptr<Pointer> create_pointer(const ReaderObject& reader, Control* parent);
-  std::unique_ptr<Keyboard> create_keyboard(const ReaderObject& reader, Control* parent);
+  std::unique_ptr<Button> create_button(const ReaderObject& reader, Control* parent) override;
+  std::unique_ptr<Axis> create_axis(const ReaderObject& reader, Control* parent) override;
+  std::unique_ptr<Scroller> create_scroller(const ReaderObject& reader, Control* parent) override;
+  std::unique_ptr<Pointer> create_pointer(const ReaderObject& reader, Control* parent) override;
+  std::unique_ptr<Keyboard> create_keyboard(const ReaderObject& reader, Control* parent) override;
 
-  void update(float delta);
-  std::string get_name() const { return "sdl"; }
+  void update(float delta) override;
+  std::string get_name() const override { return "sdl"; }
 
 private:
   bool open_joystick(int device);

@@ -58,7 +58,7 @@ protected:
 
 public:
   Combobox(const Rect& rect);
-  ~Combobox ();
+  ~Combobox () override;
 
   void add(int id, const std::string& str);
 
@@ -73,20 +73,20 @@ public:
   bool set_selected_item(int id);
 
   /** Draw this Combobox and all of it's items if selected */
-  void draw (DrawingContext& gc);
+  void draw (DrawingContext& gc) override;
 
   /** Tells the gui_manager if the mouse is on top of the Combobox */
-  bool is_at (int x, int y);
+  bool is_at (int x, int y) override;
 
   /** Gets emmited when a button is pressed and released over the
       same component */
-  void on_primary_button_press(int x, int y);
+  void on_primary_button_press(int x, int y) override;
 
-  void on_pointer_move(int x, int y);
+  void on_pointer_move(int x, int y) override;
 
   int get_box_offset();
 
-  void update_layout() {}
+  void update_layout() override {}
 
   sigc::signal<void (const ComboItem&)> on_select;
 

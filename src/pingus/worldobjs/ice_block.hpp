@@ -45,13 +45,13 @@ private:
 public:
   IceBlock(const ReaderMapping& reader);
 
-  float get_z_pos () const { return pos.z; }
-  void set_pos(const Vector3f& p) { pos = p; }
-  Vector3f get_pos() const { return pos; }
+  float get_z_pos () const override { return pos.z; }
+  void set_pos(const Vector3f& p) override { pos = p; }
+  Vector3f get_pos() const override { return pos; }
 
-  void on_startup ();
-  void draw (SceneContext& gc);
-  void update ();
+  void on_startup () override;
+  void draw (SceneContext& gc) override;
+  void update () override;
 
 private:
   IceBlock (const IceBlock&);

@@ -36,8 +36,8 @@ private:
 public:
   SpriteDrawable(const ReaderMapping& reader);
 
-  void update(float delta);
-  void draw(DrawingContext&);
+  void update(float delta) override;
+  void draw(DrawingContext&) override;
 
 private:
   SpriteDrawable (const SpriteDrawable&);

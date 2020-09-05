@@ -42,9 +42,9 @@ private:
 public:
   GUIManager();
   GUIManager(const Rect&);
-  virtual ~GUIManager ();
+  ~GUIManager () override;
 
-  virtual void update(float delta);
+  void update(float delta) override;
   virtual void update(const Input::Event& event);
 
 private:

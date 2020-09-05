@@ -162,7 +162,7 @@ struct CommandLineOptions : public Options
     no_config_file()
   {}
 
-  virtual ~CommandLineOptions() {}
+  ~CommandLineOptions() override {}
 
   void merge(const Options& rhs) { Options::merge(rhs); }
   void merge(const CommandLineOptions& rhs);

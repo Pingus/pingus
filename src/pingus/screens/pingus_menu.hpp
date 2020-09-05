@@ -60,18 +60,18 @@ private:
 
 public:
   PingusMenu();
-  ~PingusMenu();
+  ~PingusMenu() override;
 
   void on_click(MenuButton* button);
   void set_hint(const std::string& str);
 
   /// Load all images and other stuff for the menu
-  void on_escape_press ();
-  void draw_background(DrawingContext& gc);
+  void on_escape_press () override;
+  void draw_background(DrawingContext& gc) override;
 
-  void update(float delta);
+  void update(float delta) override;
 
-  void resize(const Size& size);
+  void resize(const Size& size) override;
 
 private:
   PingusMenu (const PingusMenu&);

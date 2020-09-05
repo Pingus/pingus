@@ -27,8 +27,8 @@ private:
 public:
   Label(const std::string& label, const Rect& rect);
 
-  void draw(DrawingContext& gc);
-  void update_layout() {}
+  void draw(DrawingContext& gc) override;
+  void update_layout() override {}
 
 private:
   Label (const Label&);

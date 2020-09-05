@@ -42,19 +42,19 @@ public:
                  const std::string& button_surface,
                  const std::string& button_pressed_surface,
                  const std::string& button_mouse_over_surface);
-  virtual ~SurfaceButton ();
+  ~SurfaceButton () override;
 
   virtual void set_pos(int x, int y);
 
-  virtual void draw (DrawingContext& gc);
-  virtual bool is_at (int x, int y);
+  void draw (DrawingContext& gc) override;
+  bool is_at (int x, int y) override;
 
-  void on_primary_button_press (int x, int y);
-  void on_primary_button_release (int x, int y);
-  void on_primary_button_click (int x, int y);
+  void on_primary_button_press (int x, int y) override;
+  void on_primary_button_release (int x, int y) override;
+  void on_primary_button_click (int x, int y) override;
 
-  virtual void on_pointer_enter ();
-  virtual void on_pointer_leave ();
+  void on_pointer_enter () override;
+  void on_pointer_leave () override;
 
   virtual void on_click() {}
 

@@ -45,10 +45,10 @@ private:
 
 public:
   LevelProperties(EditorScreen* editor, const Rect& rect);
-  ~LevelProperties();
+  ~LevelProperties() override;
 
-  void draw_background (DrawingContext& gc);
-  void update(float delta);
+  void draw_background (DrawingContext& gc) override;
+  void update(float delta) override;
 
   void set_level(EditorLevel* level);
 
@@ -64,7 +64,7 @@ public:
   void on_height_change(const std::string& str);
   void on_music_change(const std::string& str);
 
-  void update_layout();
+  void update_layout() override;
 
 private:
   LevelProperties (const LevelProperties&);

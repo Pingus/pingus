@@ -35,19 +35,19 @@ public:
     m_music_volume(1.0f)
   {}
 
-  virtual ~PingusSoundDummy () { }
+  ~PingusSoundDummy () override { }
 
-  void real_play_sound (const std::string & filename, float volume, float panning);
-  void real_play_music (const std::string & filename, float volume, bool loop);
-  void real_stop_music();
+  void real_play_sound (const std::string & filename, float volume, float panning) override;
+  void real_play_music (const std::string & filename, float volume, bool loop) override;
+  void real_stop_music() override;
 
-  void set_sound_volume(float volume) { m_sound_volume = volume; }
-  void set_music_volume(float volume) { m_music_volume = volume;  }
-  void set_master_volume(float volume) { m_master_volume = volume; }
+  void set_sound_volume(float volume) override { m_sound_volume = volume; }
+  void set_music_volume(float volume) override { m_music_volume = volume;  }
+  void set_master_volume(float volume) override { m_master_volume = volume; }
 
-  float get_sound_volume() const { return m_sound_volume; }
-  float get_music_volume() const { return m_music_volume; }
-  float get_master_volume() const { return m_master_volume; }
+  float get_sound_volume() const override { return m_sound_volume; }
+  float get_music_volume() const override { return m_music_volume; }
+  float get_master_volume() const override { return m_master_volume; }
 
 private:
   PingusSoundDummy (const PingusSoundDummy&);

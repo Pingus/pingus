@@ -32,15 +32,15 @@ private:
 
 public:
   SnowGenerator(const ReaderMapping& reader);
-  ~SnowGenerator ();
+  ~SnowGenerator () override;
 
   /** fill the screen with snow flocks */
-  void on_startup();
-  void draw(SceneContext&) {}
-  void update();
-  float get_z_pos() const { return 1000; }
-  void set_pos(const Vector3f& p) {}
-  Vector3f get_pos() const { return Vector3f(); }
+  void on_startup() override;
+  void draw(SceneContext&) override {}
+  void update() override;
+  float get_z_pos() const override { return 1000; }
+  void set_pos(const Vector3f& p) override {}
+  Vector3f get_pos() const override { return Vector3f(); }
 
 private:
   SnowGenerator (const SnowGenerator&);

@@ -48,20 +48,20 @@ protected:
 
 public:
   Entrance(const ReaderMapping& reader);
-  ~Entrance();
+  ~Entrance() override;
 
-  float get_z_pos () const;
-  void set_pos(const Vector3f& p) { pos = p; }
-  Vector3f get_pos() const { return pos; }
+  float get_z_pos () const override;
+  void set_pos(const Vector3f& p) override { pos = p; }
+  Vector3f get_pos() const override { return pos; }
 
   virtual bool   pingu_ready ();
   virtual void   create_pingu ();
 
-  virtual void   update ();
+  void   update () override;
 
-  virtual void   draw (SceneContext& gc);
+  void   draw (SceneContext& gc) override;
 
-  void  draw_smallmap(SmallMap* smallmap);
+  void  draw_smallmap(SmallMap* smallmap) override;
 
   int get_owner_id() { return owner_id; }
 private:

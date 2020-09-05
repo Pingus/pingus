@@ -36,18 +36,18 @@ private:
 
 public:
   Exit(const ReaderMapping& reader);
-  ~Exit();
+  ~Exit() override;
 
-  void  on_startup ();
+  void  on_startup () override;
 
-  void  draw (SceneContext& gc);
-  void  draw_smallmap(SmallMap* smallmap);
+  void  draw (SceneContext& gc) override;
+  void  draw_smallmap(SmallMap* smallmap) override;
 
-  void  update ();
+  void  update () override;
 
-  float get_z_pos () const;
-  void set_pos(const Vector3f& p) { pos = p; }
-  Vector3f get_pos() const { return pos; }
+  float get_z_pos () const override;
+  void set_pos(const Vector3f& p) override { pos = p; }
+  Vector3f get_pos() const override { return pos; }
 
 private:
   Exit (const Exit&);

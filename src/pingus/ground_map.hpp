@@ -50,9 +50,9 @@ private:
 
 public:
   GroundMap(int width, int height);
-  virtual ~GroundMap();
+  ~GroundMap() override;
 
-  void draw(SceneContext& gc);
+  void draw(SceneContext& gc) override;
 
   CollisionMap* get_colmap();
 
@@ -67,9 +67,9 @@ public:
       is removed from the map) */
   void remove(const Surface&, int x, int y);
 
-  float get_z_pos () const { return 0; }
-  void set_pos(const Vector3f& p) {}
-  Vector3f get_pos() const { return Vector3f(); }
+  float get_z_pos () const override { return 0; }
+  void set_pos(const Vector3f& p) override {}
+  Vector3f get_pos() const override { return Vector3f(); }
 
   /** Low level version of the remove() call, acts on a single tile
       instead of the complete map-tiles */

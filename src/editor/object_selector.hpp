@@ -53,9 +53,9 @@ private:
 
 public:
   ObjectSelector(EditorScreen* editor, const Rect& rect);
-  ~ObjectSelector();
+  ~ObjectSelector() override;
 
-  void draw_background(DrawingContext& gc);
+  void draw_background(DrawingContext& gc) override;
   void add_button(const std::string& image, const std::string& tooltip, ObjectSelectorSet* set);
 
   void scroll_up();
@@ -78,7 +78,7 @@ private:
   std::unique_ptr<ObjectSelectorSet> create_worldobj();
   std::unique_ptr<ObjectSelectorSet> create_prefab();
 
-  void update_layout();
+  void update_layout() override;
 private:
   ObjectSelector (const ObjectSelector&);
   ObjectSelector& operator= (const ObjectSelector&);

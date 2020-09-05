@@ -68,24 +68,24 @@ public:
   EditorScreen();
 
   /** Destructor */
-  ~EditorScreen();
+  ~EditorScreen() override;
 
   /** Runs when the editor becomes the active screen */
-  void on_startup();
+  void on_startup() override;
 
   /** Closes the current screen */
   void close_screen();
 
   /** Code that runs when the Escape button is pressed */
-  void on_escape_press();
-  void on_action_up_press();
-  void on_action_down_press();
+  void on_escape_press() override;
+  void on_action_up_press() override;
+  void on_action_down_press() override;
 
   /** Draw the items in the screen */
-  void draw (DrawingContext& gc);
+  void draw (DrawingContext& gc) override;
 
   /** Update the GUI objects */
-  void update(const Input::Event& event);
+  void update(const Input::Event& event) override;
 
   /** Return the gui_manager */
   GUI::GUIManager* get_gui_manager() const { return gui_manager.get(); }
@@ -143,7 +143,7 @@ public:
 
   void exit();
 
-  void resize(const Size&);
+  void resize(const Size&) override;
 
   void update_layout();
 

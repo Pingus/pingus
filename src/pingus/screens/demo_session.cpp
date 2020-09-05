@@ -52,7 +52,7 @@ public:
     highlight_func(std::move(highlight_func_))
   {}
 
-  virtual void draw (DrawingContext& gc)
+  void draw (DrawingContext& gc) override
   {
 
     if (highlight_func())
@@ -66,7 +66,7 @@ public:
     }
   }
 
-  void on_click() {
+  void on_click() override {
     callback();
   }
 };

@@ -34,16 +34,16 @@ private:
 
 public:
   Minimap(EditorScreen*, const Rect& );
-  ~Minimap();
+  ~Minimap() override;
 
-  void draw (DrawingContext& gc);
-  void update (float delta);
+  void draw (DrawingContext& gc) override;
+  void update (float delta) override;
 
-  void on_primary_button_press (int x, int y);
-  void on_primary_button_release (int x, int y);
-  void on_pointer_move(int x, int y);
+  void on_primary_button_press (int x, int y) override;
+  void on_primary_button_release (int x, int y) override;
+  void on_pointer_move(int x, int y) override;
 
-  void update_layout();
+  void update_layout() override;
 
 private:
   Minimap(const Minimap&);

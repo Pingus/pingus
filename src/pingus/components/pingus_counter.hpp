@@ -34,9 +34,9 @@ private:
 
 public:
   PingusCounter(Server* s);
-  virtual ~PingusCounter() {}
+  ~PingusCounter() override {}
 
-  void draw(DrawingContext& gc);
+  void draw(DrawingContext& gc) override;
 private:
   PingusCounter (const PingusCounter&);
   PingusCounter& operator= (const PingusCounter&);

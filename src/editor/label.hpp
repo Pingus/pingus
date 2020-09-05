@@ -30,10 +30,10 @@ public:
   Label(const Rect& rect, const std::string& text);
   Label(const std::string& text);
 
-  bool is_at(int, int) { return false; }
-  void draw (DrawingContext& gc);
-  void update (float delta);
-  void update_layout() {}
+  bool is_at(int, int) override { return false; }
+  void draw (DrawingContext& gc) override;
+  void update (float delta) override;
+  void update_layout() override {}
 
   void set_text(const std::string& text_) { text = text_; }
 };

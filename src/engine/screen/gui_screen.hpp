@@ -36,15 +36,15 @@ protected:
 
 public:
   GUIScreen ();
-  virtual ~GUIScreen ();
+  ~GUIScreen () override;
 
   /** Draw this screen */
   virtual void draw_foreground (DrawingContext&) {}
   virtual void draw_background (DrawingContext&) {}
-  virtual void draw(DrawingContext& gc);
+  void draw(DrawingContext& gc) override;
 
-  virtual void update (const Input::Event& event);
-  virtual void update (float);
+  void update (const Input::Event& event) override;
+  void update (float) override;
 
   virtual void on_pause_press () {}
   virtual void on_single_step_press () {}
@@ -64,7 +64,7 @@ public:
 
   virtual void on_action_axis_move (float) {}
 
-  virtual void resize(const Size& size);
+  void resize(const Size& size) override;
 
 private:
   void process_button_event (const Input::ButtonEvent& event);
