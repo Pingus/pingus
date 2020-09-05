@@ -84,11 +84,11 @@ public:
   /** @return true if the node is reachable, false otherwise */
   bool walk_to_node (NodeId target);
 
-  bool is_walking();
+  bool is_walking() const;
 
   /** @return the node on which the pingu is currently standing, 0 is
       returned if the pingu is currently between two nodes */
-  NodeId get_node () {
+  NodeId get_node () const {
     return current_node;
   }
 

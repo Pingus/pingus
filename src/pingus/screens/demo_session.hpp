@@ -81,8 +81,8 @@ public:
 
   void on_scroller_move(float x, float y);
 
-  bool is_pause() { return pause; }
-  bool is_fast_forward() { return fast_forward; }
+  bool is_pause() const { return pause; }
+  bool is_fast_forward() const { return fast_forward; }
 
   void resize(const Size& size) override;
 

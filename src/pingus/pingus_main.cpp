@@ -70,8 +70,6 @@ extern "C" {
 #include "pingus/stat_manager.hpp"
 #include "pingus/worldobj_factory.hpp"
 
-extern tinygettext::DictionaryManager dictionary_manager;
-
 PingusMain::PingusMain() :
   cmd_options()
 {

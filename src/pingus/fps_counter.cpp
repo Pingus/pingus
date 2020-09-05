@@ -22,8 +22,6 @@
 #include "engine/display/display.hpp"
 #include "pingus/fonts.hpp"
 
-FPSCounter fps_counter;
-
 FPSCounter::FPSCounter() :
   odd_frame(),
   fps_string(),

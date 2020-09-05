@@ -197,27 +197,27 @@ World::update()
 }
 
 PinguHolder*
-World::get_pingus()
+World::get_pingus() const
 {
   return pingus;
 }
 
 int
-World::get_width()
+World::get_width() const
 {
   assert(gfx_map);
   return gfx_map->get_width();
 }
 
 int
-World::get_height()
+World::get_height() const
 {
   assert(gfx_map);
   return gfx_map->get_height();
 }
 
 int
-World::get_time()
+World::get_time() const
 {
   return game_time;
 }
@@ -231,13 +231,13 @@ World::armageddon(void)
 }
 
 CollisionMap*
-World::get_colmap()
+World::get_colmap() const
 {
   return colmap;
 }
 
 GroundMap*
-World::get_gfx_map()
+World::get_gfx_map() const
 {
   return gfx_map;
 }
@@ -282,7 +282,7 @@ World::get_pingu (const Vector3f& pos)
   return current_pingu;
 }
 
-float World::get_gravity()
+float World::get_gravity() const
 {
   return gravitational_acceleration;
 }
@@ -318,7 +318,7 @@ World::get_worldobj(const std::string& id)
 }
 
 Vector2i
-World::get_start_pos(int player_id)
+World::get_start_pos(int player_id) const
 {
   // FIXME: Workaround for lack of start-pos
   Vector2i pos;

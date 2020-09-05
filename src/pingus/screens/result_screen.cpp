@@ -36,7 +36,7 @@ public:
   std::string time_str;
 
   ResultScreenComponent(const Result& arg_result);
-  virtual ~ResultScreenComponent() {}
+  ~ResultScreenComponent() override {}
   void draw(DrawingContext& gc) override;
 };
 
@@ -237,7 +237,7 @@ ResultScreenComponent::draw(DrawingContext& gc)
 
   gc.print_left(Fonts::chalk_normal,  Vector2i(left_x,  y), _("Saved: "));
   gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), StringUtil::to_string(result.saved)
-                 + "/" + StringUtil::to_string(result.needed));;
+                 + "/" + StringUtil::to_string(result.needed));
 
   gc.print_left(Fonts::chalk_normal,  Vector2i(left_x,  (y+=30)), _("Died: "));
   gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), StringUtil::to_string(result.killed));
@@ -247,7 +247,7 @@ ResultScreenComponent::draw(DrawingContext& gc)
 }
 
 ResultScreen::ResultScreen(const Result& arg_result) :
-  result(std::move(arg_result)),
+  result(arg_result),
   ok_button(),
   abort_button(),
   retry_button()

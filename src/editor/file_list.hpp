@@ -58,13 +58,13 @@ public:
   void next_page();
   void prev_page();
 
-  bool has_more_next_pages();
-  bool has_more_prev_pages();
+  bool has_more_next_pages() const;
+  bool has_more_prev_pages() const;
 
   sigc::signal<void (const System::DirectoryEntry&)> on_click;
 
 private:
-  int items_per_page();
+  int items_per_page() const;
 
   FileList (const FileList&);
   FileList& operator= (const FileList&);

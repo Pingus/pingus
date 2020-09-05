@@ -22,6 +22,10 @@
 
 #include <string>
 
+#include "tinygettext/dictionary_manager.hpp"
+
+extern tinygettext::DictionaryManager dictionary_manager;
+
 std::string _(const std::string& msg);
 std::string _(const std::string& msg, const std::string& msg_pl, int num);
 

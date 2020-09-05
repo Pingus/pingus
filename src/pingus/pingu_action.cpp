@@ -68,10 +68,7 @@ PinguAction::head_collision_on_walk (int x, int y)
 {
   int pixel = rel_getpixel(x, y + pingu_height);
 
-  if (pixel != Groundtype::GP_NOTHING && !(pixel & Groundtype::GP_BRIDGE))
-    return true;
-
-  return false;
+  return pixel != Groundtype::GP_NOTHING && !(pixel & Groundtype::GP_BRIDGE);
 }
 
 bool

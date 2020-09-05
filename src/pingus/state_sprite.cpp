@@ -33,7 +33,7 @@ StateSprite::load(int state, const std::string& name)
 }
 
 void
-StateSprite::load(int state, Sprite sprite)
+StateSprite::load(int state, const Sprite& sprite)
 {
   sprites[state] = sprite;
 }

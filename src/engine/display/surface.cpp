@@ -59,7 +59,7 @@ Surface::Surface() :
 }
 
 Surface::Surface(std::shared_ptr<SurfaceImpl> impl_) :
-  impl(impl_)
+  impl(std::move(impl_))
 {
 }
 
@@ -228,13 +228,13 @@ Surface::blit(Surface src, int x_pos, int y_pos)
 }
 
 void
-Surface::lock()
+Surface::lock() // NOLINT
 {
   SDL_LockSurface(get_surface());
 }
 
 void
-Surface::unlock()
+Surface::unlock() // NOLINT
 {
   SDL_UnlockSurface(get_surface());
 }

@@ -173,7 +173,7 @@ EditorScreen::save(const Pathname& file)
   catch(std::exception const& err)
   {
     Size msg_size(600, 160);
-    auto msgbox = gui_manager->create<MessageBox>(Rect(Vector2i((Display::get_width() - msg_size.width)/2,
+    auto* msgbox = gui_manager->create<MessageBox>(Rect(Vector2i((Display::get_width() - msg_size.width)/2,
                                                                 (Display::get_height() - msg_size.height)/2),
                                                        msg_size));
     msgbox->set_title("Error: level saving failed");

@@ -87,17 +87,17 @@ void
 Controller::add_scroller(int id, std::unique_ptr<ControllerScroller> scroller)
 {
   if (int(scrollers.size())-1 < id)
-    scrollers.resize(static_cast<size_t>(id+1));
+    scrollers.resize(id+1);
 
-  assert(scrollers[static_cast<size_t>(id)] == nullptr);
-  scrollers[static_cast<size_t>(id)] = std::move(scroller);
+  assert(scrollers[id] == nullptr);
+  scrollers[id] = std::move(scroller);
 }
 
 ControllerPointer*
 Controller::get_pointer(int id)
 {
   if (id >= 0 && id < int(pointers.size()))
-    return pointers[static_cast<size_t>(id)].get();
+    return pointers[id].get();
   else
     return nullptr;
 }
@@ -106,7 +106,7 @@ ControllerKeyboard*
 Controller::get_keyboard(int id)
 {
   if (id >= 0 && id < int(keyboards.size()))
-    return keyboards[static_cast<size_t>(id)].get();
+    return keyboards[id].get();
   else
     return nullptr;
 }
@@ -115,44 +115,44 @@ void
 Controller::add_keyboard(int id, std::unique_ptr<ControllerKeyboard> keyboard)
 {
   if (int(keyboards.size())-1 < id)
-    keyboards.resize(static_cast<size_t>(id+1));
+    keyboards.resize(id+1);
 
-  assert(keyboards[static_cast<size_t>(id)] == nullptr);
-  keyboards[static_cast<size_t>(id)] = std::move(keyboard);
+  assert(keyboards[id] == nullptr);
+  keyboards[id] = std::move(keyboard);
 }
 
 void
 Controller::add_pointer(int id, std::unique_ptr<ControllerPointer> pointer)
 {
   if (int(pointers.size())-1 < id)
-    pointers.resize(static_cast<size_t>(id+1));
+    pointers.resize(id+1);
 
-  assert(pointers[static_cast<size_t>(id)] == nullptr);
-  pointers[static_cast<size_t>(id)] = std::move(pointer);
+  assert(pointers[id] == nullptr);
+  pointers[id] = std::move(pointer);
 }
 
 ControllerAxis*
 Controller::get_axis(int id)
 {
   assert(id >= 0 && id < int(axes.size()));
-  return axes[static_cast<size_t>(id)].get();
+  return axes[id].get();
 }
 
 void
 Controller::add_axis(int id, std::unique_ptr<ControllerAxis> axis)
 {
   if (int(axes.size())-1 < id)
-    axes.resize(static_cast<size_t>(id+1));
+    axes.resize(id + 1);
 
-  assert(axes[static_cast<size_t>(id)] == nullptr);
-  axes[static_cast<size_t>(id)] = std::move(axis);
+  assert(axes[id] == nullptr);
+  axes[id] = std::move(axis);
 }
 
 ControllerButton*
 Controller::get_button(int id)
 {
   assert(id >= 0 && id < int(buttons.size()));
-  return buttons[static_cast<size_t>(id)].get();
+  return buttons[id].get();
 }
 
 void
@@ -199,10 +199,10 @@ void
 Controller::add_button(int id, std::unique_ptr<ControllerButton> button)
 {
   if (int(buttons.size())-1 < id)
-    buttons.resize(static_cast<size_t>(id+1));
+    buttons.resize(id+1);
 
-  assert(buttons[static_cast<size_t>(id)] == nullptr);
-  buttons[static_cast<size_t>(id)] = std::move(button);
+  assert(buttons[id] == nullptr);
+  buttons[id] = std::move(button);
 }
 
 void

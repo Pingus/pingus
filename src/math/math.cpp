@@ -84,7 +84,7 @@ float string2float(const std::string& str)
 {
   assert(str.size() == 2*sizeof(float));
 
-  float value;
+  float value = 0.0f;
   for(size_t i = 0; i < sizeof(float); ++i)
   {
     char& v = reinterpret_cast<char*>(&value)[i];

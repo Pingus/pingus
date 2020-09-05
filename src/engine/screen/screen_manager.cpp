@@ -290,8 +290,8 @@ ScreenManager::fade_over(const ScreenPtr& old_screen, const ScreenPtr& new_scree
   while (progress <= 1.0f)
   {
     float p = progress; //0.5f + progress * 0.1f;
-    int border_x = static_cast<int>(static_cast<float>(Display::get_width()/2)  * (1.0f - p));
-    int border_y = static_cast<int>(static_cast<float>(Display::get_height()/2) * (1.0f - p));
+    int border_x = static_cast<int>(static_cast<float>(Display::get_width()/2)  * (1.0f - p)); // NOLINT
+    int border_y = static_cast<int>(static_cast<float>(Display::get_height()/2) * (1.0f - p)); // NOLINT
 
     old_screen->draw(*display_gc);
     display_gc->render(fb, Rect(Vector2i(0,0), Size(Display::get_width(),

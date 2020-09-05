@@ -20,7 +20,7 @@
 
 namespace Movers {
 
-LinearMover::LinearMover(World* const world_arg, const Vector3f& pos_arg)
+LinearMover::LinearMover(World const* world_arg, const Vector3f& pos_arg)
   : Mover(world_arg, pos_arg)
 {
 }

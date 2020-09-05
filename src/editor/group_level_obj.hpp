@@ -122,8 +122,8 @@ public:
   /** Retrieve the object's direction */
   std::string get_direction() override { return m_direction; }
 
-  std::string get_id() const override { return nullptr; }
-  std::string get_target_id() const override { return nullptr; }
+  std::string get_id() const override { return {}; }
+  std::string get_target_id() const override { return {}; }
 
   int get_height() const override { return 0; }
 
@@ -143,7 +143,7 @@ public:
   float get_pos_z() const override { return 0.0f; }
 
   /** Original position of the objects before being dragged around */
-  void set_orig_pos(const Vector3f p) override { m_orig_pos = p; }
+  void set_orig_pos(const Vector3f& p) override { m_orig_pos = p; }
 
   /** Set the object's resource name */
   void set_res_desc(const ResDescriptor& d) override { }

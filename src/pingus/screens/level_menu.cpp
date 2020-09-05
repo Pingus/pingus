@@ -227,7 +227,7 @@ public:
     }
     else
     {
-      x -= list_rect.left;
+      x -= list_rect.left; // NOLINT
       y -= list_rect.top;
 
       if (!levelsets.empty())
@@ -399,8 +399,8 @@ public:
     }
     else
     {
-      x -= list_rect.left;
-      y -= list_rect.top;
+      x -= list_rect.left; // NOLINT
+      y -= list_rect.top; // NOLINT
 
       current_level = y / item_height + page;
 

@@ -106,7 +106,7 @@ OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resiza
 
     SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
 
-    if (false) // anti-aliasing
+    if ((false)) // anti-aliasing
     {
       SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1); // boolean value, either it's enabled or not
       SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 2); // 0, 2, or 4 for number of samples

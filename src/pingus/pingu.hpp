@@ -133,7 +133,7 @@ public:
   std::string get_name();
 
   /// Returns the unique id of the pingu
-  unsigned int  get_id (void);
+  unsigned int  get_id (void) const;
 
   /// Set the pingu to the given coordinates
   void set_pos (float x, float y);
@@ -178,7 +178,7 @@ public:
       (0, -1) is the pixel under the pingu
       (1, 0)  is the pixel in front of the pingu
   */
-  int  rel_getpixel (int x, int y);
+  int  rel_getpixel (int x, int y) const;
 
   /** Let the pingu catch another pingu, so that an action can be
       applied (i.e. let a blocker change the direction f another
@@ -200,17 +200,17 @@ public:
 
   /** @return The owner_id of the owner, only used in multiplayer
       configurations, ought to be 0 in single player */
-  int get_owner ();
+  int get_owner () const;
 
   /** @return The owner_id as a string. Only used in multiplayer
       configurations, ought to be "0" in single player */
-  std::string get_owner_str ();
+  std::string get_owner_str () const;
 
-  bool   is_over (float x, float y);
+  bool   is_over (float x, float y) const;
 
-  bool   is_inside (float x1, float y1, float x2, float y2);
+  bool   is_inside (float x1, float y1, float x2, float y2) const;
 
-  float dist (float x, float y);
+  float dist (float x, float y) const;
 
   /** Return true if the pingu can be caught with the mouse and
       another action can be applied, false otherwise (exiter,

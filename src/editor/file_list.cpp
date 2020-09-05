@@ -64,10 +64,7 @@ struct DirectorySorter
     }
     else
     {
-      if (lhs.type == System::DE_DIRECTORY)
-        return true;
-      else
-        return false;
+      return lhs.type == System::DE_DIRECTORY;
     }
   }
 };
@@ -192,19 +189,19 @@ FileList::update (float delta)
 }
 
 int
-FileList::items_per_page()
+FileList::items_per_page() const
 {
   return (rect.get_height()/vspace * 2);
 }
 
 bool
-FileList::has_more_next_pages()
+FileList::has_more_next_pages() const
 {
   return (page < num_pages-1);
 }
 
 bool
-FileList::has_more_prev_pages()
+FileList::has_more_prev_pages() const
 {
   return (page > 0);
 }

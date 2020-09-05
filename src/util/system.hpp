@@ -59,11 +59,11 @@ public:
   /** Check if a file is avaiblable (no checking for permissens is currently performed)
       @param filename The name of the file
       @return True, if the file exist, false otherwise */
-  static bool exist(std::string filename);
+  static bool exist(const std::string& filename);
 
   /** Creates directory if it does not already exist.
       @param dir The name of the directory */
-  static void create_dir(std::string dir);
+  static void create_dir(const std::string& dir);
 
   /** Check if all needed directories are available, if not then create
       them. */
@@ -71,11 +71,11 @@ public:
 
   /** Strips directory from filenames
       @param filename The complete filename */
-  static std::string basename(std::string filename);
+  static std::string basename(const std::string& filename);
 
   /** Strips basename from pathnames (see dirname(3))
       @param filename The complete filename */
-  static std::string dirname(std::string filename);
+  static std::string dirname(const std::string& filename);
 
   static std::string find_userdir();
 
@@ -112,7 +112,7 @@ public:
   /** Read a file and generate a checksum and return it. The checksum
       generation is very primitiv and should probably be replaced by CRC
       or md5. */
-  static std::string checksum (std::string filename);
+  static std::string checksum (const std::string& filename);
   static std::string checksum (const Pathname& pathname);
 
   /** Write \a content to the given filename atomically */

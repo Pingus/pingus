@@ -79,7 +79,7 @@ bool rand_bool()
 inline int round (float f)
 {
   if (f >= 0.0f)
-    return int(f + 0.5f);
+    return int(f + 0.5f); // NOLINT
   else
     return int(f - 0.5f);
 }

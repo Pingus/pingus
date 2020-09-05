@@ -52,7 +52,7 @@ StatManager::~StatManager()
 void
 StatManager::load(const std::string& filename)
 {
-  if (!System::exist(filename.c_str()))
+  if (!System::exist(filename))
   {
     // Create empty file
     save(filename);

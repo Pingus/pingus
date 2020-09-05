@@ -186,12 +186,12 @@ StartScreenComponent::draw(DrawingContext& gc)
 const std::string&
 StartScreenComponent::format_description(int length)
 {
-  if (description != "")
+  if (!description.empty())
     return description;
 
   description = _(plf.get_description());
 
-  if (description == "")
+  if (description.empty())
     return description;
 
   description = StringFormat::break_line(description, length, Fonts::chalk_normal);

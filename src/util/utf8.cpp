@@ -27,14 +27,7 @@ static const uint32_t INVALID_UTF8_SEQUENCE = 0xFFFD;
 bool
 UTF8::is_linebreak_character(uint32_t unicode)
 {
-  if (unicode == ' ' || unicode >= 0x3400)
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
+  return unicode == ' ' || unicode >= 0x3400;
 }
 
 std::string::size_type

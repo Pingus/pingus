@@ -158,7 +158,7 @@ WorldmapScreen::on_startup ()
   exit_worldmap = false;
   Sound::PingusSound::stop_music();
 
-  if (worldmap.get())
+  if (worldmap)
     worldmap->on_startup ();
 }
 
@@ -179,7 +179,7 @@ WorldmapScreen::update (float delta)
     ScreenManager::instance ()->pop_screen();
 
   // Check if new worldmap is set and if so, change it
-  if (new_worldmap.get())
+  if (new_worldmap)
   {
     worldmap = std::move(new_worldmap);
   }

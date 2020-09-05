@@ -248,7 +248,7 @@ ObjectProperties::advance()
 }
 
 void
-ObjectProperties::place(GUI::RectComponent* comp)
+ObjectProperties::place(GUI::RectComponent* comp) // NOLINT
 {
   Rect crect = comp->get_rect();
   comp->set_rect(Rect(crect.left,
@@ -259,7 +259,7 @@ ObjectProperties::place(GUI::RectComponent* comp)
 }
 
 void
-ObjectProperties::place(GUI::RectComponent* comp1, GUI::RectComponent* comp2)
+ObjectProperties::place(GUI::RectComponent* comp1, GUI::RectComponent* comp2) // NOLINT
 {
   Rect rect1 = comp1->get_rect();
   Rect rect2 = comp2->get_rect();

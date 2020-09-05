@@ -70,23 +70,23 @@ public:
 
   /** @return the number of pingus that have successfully exit this
       level */
-  int  get_number_of_exited();
+  int  get_number_of_exited() const;
 
   /** @return the number of pingus that got killed */
-  int  get_number_of_killed();
+  int  get_number_of_killed() const;
 
   /** @return the number of pingus that are still alive, this is shown
       in the PingusCounter panel as 'Out'. Exited pingus are *not*
       counted. FIXME: name should be different (out, active?!) */
-  int  get_number_of_alive();
+  int  get_number_of_alive() const;
 
   /** @return the total number of pingus released, this is alive +
       killed + exited */
-  int get_number_of_released();
+  int get_number_of_released() const;
 
   /** @return the maximal number of pingus that will get released in
       this level */
-  int get_number_of_allowed();
+  int get_number_of_allowed() const;
 
   /** @return a reference to a newly create Pingu, the PinguHolder
       will take care of the deletion. The caller *must* not delete the
@@ -99,10 +99,10 @@ public:
 
       @return the pingu with the id, or 0 if none found or pingu is
       dead or exited */
-  Pingu* get_pingu(unsigned int id);
+  Pingu* get_pingu(unsigned int id) const;
 
   /** @return the id of the last pingu + 1 */
-  unsigned int get_end_id();
+  unsigned int get_end_id() const;
 
   // FIXME: Dirty cruft, needs cleanup
   std::list<Pingu*>::iterator  begin () { return pingus.begin (); }

@@ -76,7 +76,7 @@ public:
   const std::vector<ReaderObject>& get_objects() const;
 
   /** Return the 'resource name' of the level ('snow22-grumbel', etc. ) */
-  const std::string get_resname() const;
+  const std::string& get_resname() const;
 
 private:
   void load(const std::string& resname,

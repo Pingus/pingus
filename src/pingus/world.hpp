@@ -101,18 +101,18 @@ public:
   void    armageddon ();
 
   /** @return The absolute height of the world. */
-  int     get_height ();
+  int     get_height () const;
   /** @return The absolute width of the world */
-  int     get_width();
+  int     get_width() const;
 
   /** Returns the time passed since the level was started */
-  int get_time();
+  int get_time() const;
 
   /** @return A pointer to the collision map used in this world */
-  CollisionMap* get_colmap();
+  CollisionMap* get_colmap() const;
 
   /** @return A pointer to the gfx map used in this world */
-  GroundMap* get_gfx_map();
+  GroundMap* get_gfx_map() const;
 
   void put(int x, int y, Groundtype::GPType p = Groundtype::GP_GROUND);
   void put(const CollisionMask&, int x, int y, Groundtype::GPType);
@@ -134,7 +134,7 @@ public:
   Particles::SnowParticleHolder* get_snow_particle_holder () { return snow_particle_holder; }
 
   /** @return true if the world is currently doing an armageddon */
-  bool check_armageddon() { return do_armageddon; }
+  bool check_armageddon() const { return do_armageddon; }
 
   /** Play a sound as if it would have been generated at the given
       position, adjust panning and volume by the position relative to
@@ -146,16 +146,16 @@ public:
   */
   void play_sound (const std::string& name, const Vector3f& pos, float volume = 0.5f);
 
-  PinguHolder* get_pingus(void);
+  PinguHolder* get_pingus(void) const;
 
   /** @return the pingu at the given word coordinates, 0 if none is there */
   Pingu* get_pingu (const Vector3f& pos);
 
   /** Get the acceleration due to gravity in the world */
-  float get_gravity();
+  float get_gravity() const;
 
   /** Returns the start pos for the given player */
-  Vector2i get_start_pos(int player_id);
+  Vector2i get_start_pos(int player_id) const;
 
 private:
   World (const World&);

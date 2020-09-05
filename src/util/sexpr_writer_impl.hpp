@@ -30,7 +30,7 @@ private:
   /** A reference to the output stream */
   std::ostream* out;
   size_t level;
-  std::string indent();
+  std::string indent() const;
 
 public:
   SExprWriterImpl(std::ostream& out_);

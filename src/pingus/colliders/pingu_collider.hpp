@@ -25,14 +25,14 @@ class PinguCollider : public Collider
 {
 public:
   /** Constructor */
-  PinguCollider(const int height_arg);
+  PinguCollider(int height_arg);
 
   /** Destructor */
   ~PinguCollider() override;
 
   /** Find out if a Pingu at the specified position is colliding with
       something */
-  bool operator() (World* const world, Vector3f current_pos,
+  bool operator() (const World* world, const Vector3f& current_pos,
                    const Vector3f& step_vector) const override;
 
 private:

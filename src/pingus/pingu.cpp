@@ -81,7 +81,7 @@ Pingu::~Pingu ()
 }
 
 unsigned int
-Pingu::get_id ()
+Pingu::get_id () const
 {
   return id;
 }
@@ -278,7 +278,7 @@ Pingu::set_status (PinguStatus s)
 
 // Returns true if the given koordinates are above the pingu
 bool
-Pingu::is_over (float x, float y)
+Pingu::is_over (float x, float y) const
 {
   Vector3f center = get_center_pos ();
 
@@ -287,7 +287,7 @@ Pingu::is_over (float x, float y)
 }
 
 bool
-Pingu::is_inside (float x1, float y1, float x2, float y2)
+Pingu::is_inside (float x1, float y1, float x2, float y2) const
 {
   assert (x1 < x2);
   assert (y1 < y2);
@@ -299,7 +299,7 @@ Pingu::is_inside (float x1, float y1, float x2, float y2)
 
 // Returns the distance between the Pingu and a given coordinate
 float
-Pingu::dist(float x, float y)
+Pingu::dist(float x, float y) const
 {
   Vector3f p = get_center_pos ();
 
@@ -360,7 +360,7 @@ Pingu::draw(SceneContext& gc)
 }
 
 int
-Pingu::rel_getpixel(int x, int y)
+Pingu::rel_getpixel(int x, int y) const
 {
   return WorldObj::get_world()->get_colmap()->getpixel(static_cast<int>(pos_x + static_cast<float>(x * direction)),
                                                        static_cast<int>(pos_y - static_cast<float>(y)));
@@ -421,13 +421,13 @@ Pingu::get_center_pos () const
 }
 
 int
-Pingu::get_owner ()
+Pingu::get_owner () const
 {
   return owner_id;
 }
 
 std::string
-Pingu::get_owner_str ()
+Pingu::get_owner_str () const
 {
   std::ostringstream ostr;
   ostr << owner_id;

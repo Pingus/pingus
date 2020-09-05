@@ -51,7 +51,7 @@ static std::unique_ptr<std::ostream> get_demostream(const PingusLevel& plf)
 
   std::unique_ptr<std::ofstream> out(new std::ofstream(filename.c_str()));
 
-  if (!(*out.get()))
+  if (!(*out))
   {
     log_error("DemoRecorder: Error: Couldn't write DemoFile '{}', demo recording will be disabled", filename);
     return std::unique_ptr<std::ostream>();
@@ -86,7 +86,7 @@ Server::Server(const PingusLevel& arg_plf, bool record_demo) :
 
 Server::~Server ()
 {
-  if (demostream.get()) // FIXME: Any better place to put this?
+  if (demostream) // FIXME: Any better place to put this?
     (*demostream) << "(end (time " << get_time() << "))" << std::endl;
 }
 
@@ -128,7 +128,7 @@ Server::send_pingu_action_event (Pingu* pingu, ActionName::Enum action)
 void
 Server::record(const ServerEvent& event)
 {
-  if (demostream.get())
+  if (demostream)
     event.write(*demostream);
 }
 

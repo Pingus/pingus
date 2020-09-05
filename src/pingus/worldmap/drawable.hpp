@@ -58,8 +58,8 @@ public:
 
   virtual ~Drawable() {}
 
-  bool is_visible() { return visible; }
-  std::string get_name() { return name; }
+  bool is_visible() const { return visible; }
+  std::string get_name() const { return name; }
 
   virtual void draw(DrawingContext& gc) =0;
   virtual void update(float delta) =0;

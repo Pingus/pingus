@@ -34,8 +34,6 @@
 
 #define C(x) connections.push_back(x)
 
-extern tinygettext::DictionaryManager dictionary_manager;
-
 class OptionMenuCloseButton
   : public GUI::SurfaceButton
 {

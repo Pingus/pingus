@@ -197,7 +197,7 @@ public:
   float get_pos_z() const override;
 
   /** Original position of the objects before being dragged around */
-  void set_orig_pos(const Vector3f p) override { orig_pos = p; }
+  void set_orig_pos(const Vector3f& p) override { orig_pos = p; }
 
   /** Set the object's resource name */
   void set_res_desc(const ResDescriptor& d) override;
@@ -282,7 +282,7 @@ public:
   bool is_at (int x, int y) override;
 
   /** Returns a number representing which attributes this object possesses */
-  unsigned int get_attributes(std::string obj_type);
+  unsigned int get_attributes(const std::string& obj_type);
 
   Rect get_rect() const override;
 

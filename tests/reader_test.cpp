@@ -102,9 +102,9 @@ TEST_P(ReaderTest, read_collection)
   EXPECT_EQ(3, collection.get_objects().size());
   auto objs = collection.get_objects();
   std::vector<std::string> result;
-  for(auto e : objs)
+  for(auto const& e : objs)
   {
-    result.push_back(e.get_name());
+    result.push_back(e.get_name()); // NOLINT
   }
   EXPECT_EQ(std::vector<std::string>({"obj1", "obj2", "obj3"}), result);
 }

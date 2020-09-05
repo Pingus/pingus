@@ -37,19 +37,19 @@ Display::flip_display()
 int
 Display::get_width()
 {
-  return s_framebuffer.get() ? s_framebuffer->get_size().width : 0;
+  return s_framebuffer ? s_framebuffer->get_size().width : 0;
 }
 
 int
 Display::get_height()
 {
-  return s_framebuffer.get() ? s_framebuffer->get_size().height : 0;
+  return s_framebuffer ? s_framebuffer->get_size().height : 0;
 }
 
 Size
 Display::get_size()
 {
-  return s_framebuffer.get() ? s_framebuffer->get_size() : Size(0, 0);
+  return s_framebuffer ? s_framebuffer->get_size() : Size(0, 0);
 }
 
 void

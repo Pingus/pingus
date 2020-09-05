@@ -63,7 +63,7 @@ public:
 
   void  draw_smallmap(SmallMap* smallmap) override;
 
-  int get_owner_id() { return owner_id; }
+  int get_owner_id() const { return owner_id; }
 private:
   Entrance (const Entrance&);
   Entrance& operator= (const Entrance&);

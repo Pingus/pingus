@@ -37,19 +37,19 @@ CollisionMap::~CollisionMap()
 }
 
 int
-CollisionMap::getpixel(int x, int y)
+CollisionMap::getpixel(int x, int y) const
 {
   if (x >= 0 && x < width && y >= 0 && y < height) {
-    return colmap[static_cast<size_t>(x+y*width)];
+    return colmap[x + y * width];
   } else {
     return Groundtype::GP_OUTOFSCREEN;
   }
 }
 
 int
-CollisionMap::getpixel_fast(int x, int y)
+CollisionMap::getpixel_fast(int x, int y) const
 {
-  return colmap[static_cast<size_t>(x+y*width)];
+  return colmap[x + y * width];
 }
 
 unsigned char*
@@ -59,13 +59,13 @@ CollisionMap::get_data()
 }
 
 int
-CollisionMap::get_height()
+CollisionMap::get_height() const
 {
   return height;
 }
 
 int
-CollisionMap::get_width()
+CollisionMap::get_width() const
 {
   return width;
 }
@@ -90,7 +90,7 @@ CollisionMap::remove(const CollisionMask& mask, int x_pos, int y_pos)
     {
       if (buffer[y*swidth + x])
       {
-        uint8_t& pixel = colmap[static_cast<size_t>((y+y_pos)*width + (x+x_pos))];
+        uint8_t& pixel = colmap[(y+y_pos)*width + (x+x_pos)];
         if (pixel != Groundtype::GP_SOLID)
           pixel = Groundtype::GP_NOTHING;
       }
@@ -106,12 +106,12 @@ CollisionMap::put(int x, int y, Groundtype::GPType p)
   if (x >= 0 && x < width
       && y >= 0 && y < height)
   {
-    colmap[static_cast<size_t>(x+y*width)] = p;
+    colmap[x+y*width] = p;
   }
 }
 
 bool
-CollisionMap::blit_allowed (int x, int y,  Groundtype::GPType gtype)
+CollisionMap::blit_allowed (int x, int y,  Groundtype::GPType gtype) const
 {
   // FIXME: Inline me
   if (gtype == Groundtype::GP_BRIDGE)
@@ -211,7 +211,7 @@ CollisionMap::draw(DrawingContext& gc)
 }
 
 unsigned
-CollisionMap::get_serial()
+CollisionMap::get_serial() const
 {
   return serial;
 }

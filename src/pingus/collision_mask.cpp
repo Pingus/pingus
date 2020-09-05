@@ -79,20 +79,20 @@ CollisionMask::init_colmap(const Surface& surf, const std::string& surface_res)
         for(int x = 0; x < width; ++x)
         {
           if (source[y*pitch + x] == colorkey)
-            buffer[static_cast<size_t>(y*width + x)] = 0;
+            buffer[y*width + x] = 0;
           else
-            buffer[static_cast<size_t>(y*width + x)] = 1;
+            buffer[y*width + x] = 1;
         }
     }
     else
     { // completly opaque surface
-      memset(buffer.get(), 1, static_cast<size_t>(width * height));
+      memset(buffer.get(), 1, width * height);
     }
   }
   else if (sdl_surface->format->BitsPerPixel == 24)
   {
     // completly opaque surface
-    memset(buffer.get(), 1, static_cast<size_t>(width * height));
+    memset(buffer.get(), 1, width * height);
   }
   else if (sdl_surface->format->BitsPerPixel == 32)
   {
@@ -101,13 +101,13 @@ CollisionMask::init_colmap(const Surface& surf, const std::string& surface_res)
     {
       for(int x = 0; x < width; ++x)
       {
-        buffer[static_cast<size_t>(y * width + x)] = (source[static_cast<size_t>(y * pitch + 4*x + 3)] == 255);
+        buffer[y * width + x] = (source[y * pitch + 4*x + 3] == 255);
       }
     }
   }
   else
   {
-    memset(buffer.get(), 0, static_cast<size_t>(width * height));
+    memset(buffer.get(), 0, width * height);
 
     log_error("unsupported image format:\n"
               "  File: %s\n"

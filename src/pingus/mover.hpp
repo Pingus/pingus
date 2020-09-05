@@ -26,7 +26,7 @@ class Mover
 {
 public:
   /** Constructor of abstract class */
-  Mover(World* const world_arg, const Vector3f& pos_arg);
+  Mover(const World* world_arg, const Vector3f& pos_arg);
 
   /** Destructor of abstract class */
   virtual ~Mover() = 0;
@@ -42,7 +42,7 @@ public:
 
 protected:
   /** World in which the object should move */
-  World* const world;
+  const World* world;
 
   /** Position of the object to move */
   Vector3f pos;

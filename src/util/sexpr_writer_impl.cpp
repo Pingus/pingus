@@ -31,7 +31,7 @@ SExprWriterImpl::~SExprWriterImpl()
 }
 
 std::string
-SExprWriterImpl::indent()
+SExprWriterImpl::indent() const
 {
   return std::string(level*2, ' ');
 }

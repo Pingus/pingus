@@ -252,7 +252,7 @@ Pingus::update_edge_path()
 }
 
 bool
-Pingus::is_walking()
+Pingus::is_walking() const
 {
   return current_node == NoNode;
 }

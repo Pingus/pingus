@@ -259,7 +259,7 @@ struct unlock_nodes
   {
   }
 
-  void operator()(Node<Dot*>& node)
+  void operator()(Node<Dot*>& node) const
   {
     if (node.data->finished())
     {

@@ -28,13 +28,13 @@ Collider::~Collider()
 {
 }
 
-bool Collider::operator() (World* const world, Vector3f current_pos,
+bool Collider::operator() (const World* world, const Vector3f& current_pos,
                            const Vector3f& step_vector) const
 {
   return false;
 }
 
-int Collider::getpixel(World* const world, const Vector3f& pos) const
+int Collider::getpixel(const World* world, const Vector3f& pos) const
 {
   return world->get_colmap()->getpixel(static_cast<int>(pos.x),
                                        static_cast<int>(pos.y));

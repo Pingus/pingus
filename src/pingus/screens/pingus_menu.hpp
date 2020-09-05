@@ -27,7 +27,6 @@ namespace GUI {
 class GUIManager;
 } // namespace GUI
 
-class SurfaceButton;
 class GameDelta;
 class LayerManager;
 class MenuButton;

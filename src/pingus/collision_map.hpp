@@ -63,22 +63,22 @@ public:
   unsigned char* get_data();
 
   /** Returns the height of the collision map. */
-  int get_height();
+  int get_height() const;
 
   /** Returns the height of the collision map. */
-  int get_width();
+  int get_width() const;
 
-  int  getpixel(int x, int y);
+  int getpixel(int x, int y) const;
 
   /** Same as getpixel() but without the range check */
-  int  getpixel_fast(int x, int y);
+  int  getpixel_fast(int x, int y) const;
 
   /** @return a number which represents the state of the collision
       map, once it changes the serial changes also */
-  unsigned get_serial();
+  unsigned get_serial() const;
 
   /** Return true if the given GroundType i*/
-  bool blit_allowed (int x, int y,  Groundtype::GPType);
+  bool blit_allowed (int x, int y,  Groundtype::GPType) const;
 
   void put(int x, int y, Groundtype::GPType p = Groundtype::GP_GROUND);
   void put(const CollisionMask& mask, int x, int y, Groundtype::GPType);

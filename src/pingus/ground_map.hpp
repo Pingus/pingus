@@ -56,8 +56,8 @@ public:
 
   CollisionMap* get_colmap();
 
-  int  get_height();
-  int  get_width();
+  int  get_height() const;
+  int  get_width() const;
 
   /** Put the gives surface provider onto the given coordinates */
   void put(const Surface&, int x, int y);

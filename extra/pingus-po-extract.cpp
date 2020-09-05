@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 
 #include "pingus/pingus_level.hpp"
 #include "util/pathname.hpp"
@@ -13,7 +14,7 @@ emit_msgid(const std::string& str)
     << "msgstr \"\"\n" << std::endl;
 }
 
-int main(int argc, char** argv)
+int po_extract_main(int argc, char** argv)
 {
   for(int i = 1; i < argc; ++i)
   {
@@ -58,6 +59,19 @@ int main(int argc, char** argv)
   }
 
   return 0;
+}
+
+int main(int argc, char** argv)
+{
+  try {
+    return po_extract_main(argc, argv);
+  } catch(std::exception const& err) {
+    std::cerr << "error: " << err.what() << std::endl;
+    return EXIT_FAILURE;
+  } catch(...) {
+    std::cerr << "unknown error" << std::endl;
+    return EXIT_FAILURE;
+  }
 }
 
 /* EOF */

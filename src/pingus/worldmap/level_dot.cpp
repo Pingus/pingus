@@ -99,20 +99,14 @@ bool
 LevelDot::finished()
 {
   Savegame* savegame = SavegameManager::instance()->get(plf.get_resname());
-  if (savegame && savegame->get_status() == Savegame::FINISHED)
-    return true;
-  else
-    return false;
+  return savegame && savegame->get_status() == Savegame::FINISHED;
 }
 
 bool
 LevelDot::accessible()
 {
   Savegame* savegame = SavegameManager::instance()->get(plf.get_resname());
-  if (savegame && savegame->get_status() != Savegame::NONE)
-    return true;
-  else
-    return false;
+  return savegame && savegame->get_status() != Savegame::NONE;
 }
 
 void

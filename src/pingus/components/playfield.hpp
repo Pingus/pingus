@@ -28,7 +28,6 @@ class World;
 class Server;
 class GameSession;
 class ButtonPanel;
-class Controller;
 class View;
 
 /** This class encapsulates all the different Views */

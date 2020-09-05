@@ -189,7 +189,7 @@ DrawingContext::DrawingContext() :
 
 DrawingContext::~DrawingContext()
 {
-  if (drawingrequests.size() > 0)
+  if (!drawingrequests.empty())
     clear();
 }
 

@@ -108,7 +108,7 @@ GroundMap::GroundMap(int width_, int height_) :
     tile_height += 1;
 
   // Allocating tile map
-  tiles.resize(static_cast<size_t>(tile_width * tile_height));
+  tiles.resize(tile_width * tile_height);
   for(auto i = tiles.begin(); i != tiles.end(); ++i)
   {
     i->reset(new MapTile());
@@ -151,7 +151,7 @@ GroundMap::draw(SceneContext& gc)
       }
       else
       {
-        if (false)
+        if ((false))
         {
           gc.color().draw_fillrect(Rect(x * globals::tile_size,
                                         y * globals::tile_size,
@@ -165,14 +165,14 @@ GroundMap::draw(SceneContext& gc)
 
 // Returns the width of the map, it is read directly from the *.psm file
 int
-GroundMap::get_width(void)
+GroundMap::get_width() const
 {
   return width;
 }
 
 // Returns the height of the map, it is read directly from the *.psm file
 int
-GroundMap::get_height(void)
+GroundMap::get_height() const
 {
   return height;
 }

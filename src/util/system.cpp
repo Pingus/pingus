@@ -16,12 +16,13 @@
 
 #include "util/system.hpp"
 
-#include <filesystem>
 #include <algorithm>
+#include <filesystem>
 #include <fstream>
 #include <memory>
 #include <sstream>
 #include <stdexcept>
+#include <stdlib.h>
 #include <string.h>
 
 #ifdef __APPLE__
@@ -87,11 +88,11 @@ System::get_file_extension(const std::string& filename)
 {
   for(int i = static_cast<int>(filename.size()) - 1; i >= 0; --i)
   {
-    if (filename[static_cast<size_t>(i)] == '.')
+    if (filename[i] == '.')
     {
-      return filename.substr(static_cast<size_t>(i+1));
+      return filename.substr(i+1);
     }
-    else if (filename[static_cast<size_t>(i)] == '/')
+    else if (filename[i] == '/')
     {
       return std::string();
     }
@@ -206,7 +207,7 @@ System::opendir_recursive(const std::string& pathname)
 
 // Returns the basic filename without the path
 std::string
-System::basename(std::string filename)
+System::basename(const std::string& filename)
 {
   // Should be replaced with STL
   const char* str = filename.c_str();
@@ -223,7 +224,7 @@ System::basename(std::string filename)
 }
 
 std::string
-System::dirname (std::string filename)
+System::dirname (const std::string& filename)
 {
   const char* str = filename.c_str();
   int i;
@@ -239,18 +240,19 @@ System::dirname (std::string filename)
 }
 
 bool
-System::exist(std::string filename)
+System::exist(const std::string& filename)
 {
   return !access(filename.c_str(), F_OK);
 }
 
 void
-System::create_dir(std::string directory)
+System::create_dir(const std::string& directory_)
 {
+  std::string directory = directory_;
 #ifndef WIN32
   if (!exist(directory))
   {
-    std::string::iterator end = directory.end() - 1;
+    auto end = directory.end() - 1;
     if(*end == '/') {
       directory.erase(end);
     }
@@ -493,7 +495,7 @@ System::checksum(const Pathname& pathname)
 
 /** Read file and create a checksum and return it */
 std::string
-System::checksum(std::string filename)
+System::checksum(const std::string& filename)
 { // FIXME: Replace sys with SHA1 or MD5 or so
   FILE* in;
   size_t bytes_read;
@@ -565,7 +567,7 @@ System::realpath(const std::string& pathname)
     fullpath = pathname.substr(2);
   }
 #else
-  if (pathname.size() > 0 && pathname[0] == '/')
+  if (!pathname.empty() && pathname[0] == '/')
   {
     // absolute path on Linux
     fullpath = pathname;
@@ -722,41 +724,41 @@ System::write_file(const std::string& filename, const std::string& content)
   out.write(content.data(), content.size());
 #else
   // build the filename: "/home/foo/outfile.pngXXXXXX"
-  std::unique_ptr<char[]> tmpfile(new char[filename.size()+6+1]);
-  strcpy(tmpfile.get(), filename.c_str());
-  strcpy(tmpfile.get() + filename.size(), "XXXXXX");
+  std::string tmpfile_str = filename + "XXXXXX";
+  std::vector<char> tmpfile(tmpfile_str.begin(), tmpfile_str.end());
+  tmpfile.push_back('\0');
 
   // create a temporary file
   mode_t old_mask = umask(S_IRWXO | S_IRWXG);
-  int fd = mkstemp(tmpfile.get());
+  int fd = mkstemp(tmpfile.data());
   umask(old_mask);
   if (fd < 0)
   {
-    raise_exception(std::runtime_error, tmpfile.get() << ": " << strerror(errno));
+    raise_exception(std::runtime_error, tmpfile.data() << ": " << strerror(errno));
   }
 
   // write the data to the temporary file
   if (write(fd, content.data(), content.size()) < 0)
   {
-    raise_exception(std::runtime_error, tmpfile.get() << ": " << strerror(errno));
+    raise_exception(std::runtime_error, tmpfile.data() << ": " << strerror(errno));
   }
 
   if (close(fd) < 0)
   {
-    raise_exception(std::runtime_error, tmpfile.get() << ": " << strerror(errno));
+    raise_exception(std::runtime_error, tmpfile.data() << ": " << strerror(errno));
   }
 
   // rename the temporary file to it's final location
-  if (rename(tmpfile.get(), filename.c_str()) < 0)
+  if (rename(tmpfile.data(), filename.c_str()) < 0)
   {
-    raise_exception(std::runtime_error, tmpfile.get() << ": " << strerror(errno));
+    raise_exception(std::runtime_error, tmpfile.data() << ": " << strerror(errno));
   }
 
   // adjust permissions to normal default permissions, as mkstemp
   // might not honor umask
   if (chmod(filename.c_str(), ~old_mask & 0666) < 0)
   {
-    raise_exception(std::runtime_error, tmpfile.get() << ": " << strerror(errno));
+    raise_exception(std::runtime_error, tmpfile.data() << ": " << strerror(errno));
   }
 #endif
 }

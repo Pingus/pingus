@@ -97,7 +97,7 @@ GenericLevelObj::GenericLevelObj(const GenericLevelObj& rhs) :
 {}
 
 unsigned int
-GenericLevelObj::get_attributes(std::string obj_type)
+GenericLevelObj::get_attributes(const std::string& obj_type)
 {
   if (obj_type == "groundpiece")
     return HAS_GPTYPE | HAS_SPRITE | CAN_ROTATE;

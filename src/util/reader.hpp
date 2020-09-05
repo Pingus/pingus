@@ -110,7 +110,7 @@ private:
   std::shared_ptr<ReaderMappingImpl> m_impl;
 };
 
-class Reader final
+class Reader final // NOLINT
 {
 public:
   static ReaderObject parse(std::istream& stream);

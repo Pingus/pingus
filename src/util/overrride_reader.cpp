@@ -56,11 +56,7 @@ public:
     }
     else
     {
-      if (m_reader.read_int(name, v))
-      {
-        return true;
-      }
-      return false;
+      return m_reader.read_int(name, v);
     }
   }
 

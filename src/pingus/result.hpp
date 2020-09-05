@@ -53,7 +53,7 @@ struct Result
     needed()
   {}
 
-  bool success() {
+  bool success() const {
     return (saved >= needed);
   }
 };

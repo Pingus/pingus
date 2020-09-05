@@ -127,10 +127,10 @@ JsonWriterImpl::write_colorf(const char* name, const Color& value)
   assert(m_stack.back().get().type() == Json::objectValue);
 
   Json::Value array(Json::arrayValue);
-  array.append(Json::Value(value.r / 255.0f));
-  array.append(Json::Value(value.g / 255.0f));
-  array.append(Json::Value(value.b / 255.0f));
-  array.append(Json::Value(value.a / 255.0f));
+  array.append(Json::Value(static_cast<float>(value.r) / 255.0f));
+  array.append(Json::Value(static_cast<float>(value.g) / 255.0f));
+  array.append(Json::Value(static_cast<float>(value.b) / 255.0f));
+  array.append(Json::Value(static_cast<float>(value.a) / 255.0f));
   m_stack.back().get()[name] = array;
 }
 
@@ -239,7 +239,7 @@ JsonWriterImpl::flush()
 {
   assert(m_stack.size() == 1);
   std::stringstream out;
-  if (false)
+  if ((false))
   {
     Json::StreamWriterBuilder builder;
     builder["indentation"] = "   ";

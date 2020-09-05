@@ -36,7 +36,7 @@ public:
   void update();
 
   void load(int state, const std::string& name);
-  void load(int state, Sprite);
+  void load(int state, const Sprite&);
   Sprite& operator[](int state);
 };
 

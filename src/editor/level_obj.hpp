@@ -149,7 +149,7 @@ public:
   virtual float get_pos_z() const = 0;
 
   /** Original position of the objects before being dragged around */
-  virtual void set_orig_pos(const Vector3f p) = 0;
+  virtual void set_orig_pos(const Vector3f& p) = 0;
 
   /** Set the object's resource name */
   virtual void set_res_desc(const ResDescriptor& d) = 0;
@@ -215,7 +215,7 @@ public:
   virtual void set_id(const std::string& t) = 0;
   virtual void set_target_id(const std::string& t) = 0;
 
-  virtual void set_height(const int h) = 0;
+  virtual void set_height(int h) = 0;
 
   /** Soft delete of the object (needed for Undo action) */
   void remove() { removed = true; }

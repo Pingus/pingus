@@ -24,13 +24,13 @@
 #include "util/pathname.hpp"
 
 class DrawingContext;
-class FileDialog;
 class Pathname;
 
 namespace Editor {
 
 class ActionProperties;
 class EditorLevel;
+class FileDialog;
 class LevelObj;
 class LevelProperties;
 class MessageBox;

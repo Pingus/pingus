@@ -18,14 +18,13 @@
 
 #include "engine/display/display.hpp"
 #include "engine/screen/screen_manager.hpp"
+#include "engine/sound/sound.hpp"
+#include "pingus/gettext.h"
 #include "pingus/globals.hpp"
 #include "pingus/options.hpp"
 #include "tinygettext/dictionary_manager.hpp"
 #include "util/log.hpp"
 #include "util/system.hpp"
-#include "engine/sound/sound.hpp"
-
-extern tinygettext::DictionaryManager dictionary_manager;
 
 ConfigManager config_manager;
 

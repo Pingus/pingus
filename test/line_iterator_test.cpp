@@ -18,6 +18,8 @@
 
 #include "util/line_iterator.hpp"
 
+namespace {
+
 void test(const std::string& str)
 {
   std::cout << "Testing: " << std::endl;
@@ -32,6 +34,8 @@ void test(const std::string& str)
   std::cout << std::endl;
   std::cout << std::endl;
 }
+
+} // namespace
 
 int main()
 {

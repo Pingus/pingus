@@ -29,7 +29,7 @@ PinguCollider::~PinguCollider()
 {
 }
 
-bool PinguCollider::operator() (World* const world, Vector3f current_pos,
+bool PinguCollider::operator() (const World* world, const Vector3f& current_pos,
                                 const Vector3f& step_vector) const
 {
   Vector3f new_pos = current_pos + step_vector;

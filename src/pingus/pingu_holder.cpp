@@ -117,7 +117,7 @@ PinguHolder::update()
 }
 
 Pingu*
-PinguHolder::get_pingu(unsigned int id_)
+PinguHolder::get_pingu(unsigned int id_) const
 {
   if (id_ < all_pingus.size())
   {
@@ -143,37 +143,37 @@ PinguHolder::get_z_pos() const
 }
 
 int
-PinguHolder::get_number_of_exited()
+PinguHolder::get_number_of_exited() const
 {
   return number_of_exited;
 }
 
 int
-PinguHolder::get_number_of_killed()
+PinguHolder::get_number_of_killed() const
 {
   return static_cast<int>(all_pingus.size()) - static_cast<int>(pingus.size()) - get_number_of_exited();
 }
 
 int
-PinguHolder::get_number_of_alive()
+PinguHolder::get_number_of_alive() const
 {
   return static_cast<int>(pingus.size());
 }
 
 int
-PinguHolder::get_number_of_released()
+PinguHolder::get_number_of_released() const
 {
   return static_cast<int>(all_pingus.size());
 }
 
 int
-PinguHolder::get_number_of_allowed()
+PinguHolder::get_number_of_allowed() const
 {
   return number_of_allowed;
 }
 
 unsigned int
-PinguHolder::get_end_id()
+PinguHolder::get_end_id() const
 {
   return static_cast<unsigned int>(all_pingus.size());
 }

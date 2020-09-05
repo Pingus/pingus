@@ -44,13 +44,13 @@ inline std::string raise_log_pretty_print(const std::string& str)
 
 #define raise_exception(type, expr) do {  \
   std::ostringstream b42465a70169; \
-  b42465a70169 << raise_log_pretty_print(__PRETTY_FUNCTION__) << ": " << expr; \
+  b42465a70169 << raise_log_pretty_print(__PRETTY_FUNCTION__) << ": " << expr; /* NOLINT */ \
   throw type(b42465a70169.str()); \
 } while(false)
 
 #define raise_error(expr) do {  \
   std::ostringstream b42465a70169; \
-  b42465a70169 << raise_log_pretty_print(__PRETTY_FUNCTION__) << ": " << expr; \
+  b42465a70169 << raise_log_pretty_print(__PRETTY_FUNCTION__) << ": " << expr; /* NOLINT */ \
   throw std::runtime_error(b42465a70169.str()); \
 } while(false)
 
