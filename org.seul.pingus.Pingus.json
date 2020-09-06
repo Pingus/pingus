@@ -14,60 +14,9 @@
         "--socket=wayland"
     ],
     "modules": [
-        {
-            "name": "jsoncpp",
-            "buildsystem": "cmake-ninja",
-            "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release",
-                "-DCMAKE_INSTALL_PREFIX:PATH=/app"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/open-source-parsers/jsoncpp/archive/1.8.4.tar.gz",
-                    "sha256": "c49deac9e0933bcb7044f08516861a2d560988540b23de2ac1ad443b219afdb6"
-                }
-            ],
-            "cleanup": [
-                "/include",
-                "/lib/*.a",
-                "/lib/pkgconfig"
-            ]
-        },
-        {
-            "name": "fmt",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/fmtlib/fmt/archive/6.1.2.tar.gz",
-                    "sha256": "1cafc80701b746085dddf41bd9193e6d35089e1c6ec1940e037fcb9c98f62365"
-                }
-            ],
-            "buildsystem": "cmake-ninja",
-            "builddir": "true",
-            "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release",
-                "-DFMT_TEST=OFF"
-            ],
-            "cleanup": [
-                "*.a",
-                "/bin",
-                "/include",
-                "/lib/cmake",
-                "/share"
-            ]
-        },
-        {
-            "name": "sigc++",
-            "config-opts": [ "--disable-documentation" ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.9/libsigc++-2.9.3.tar.xz",
-                    "sha256": "0bf9b301ad6198c550986c51150a646df198e8d1d235270c16486b0dda30097f"
-                }
-            ]
-        },
+        "shared-modules/jsoncpp/jsoncpp-1.8.json",
+        "shared-modules/fmt/fmt-6.1.2.json",
+        "shared-modules/sigc++/sigc++-2.9.3.json",
         {
             "name": "pingus",
             "buildsystem": "cmake-ninja",
