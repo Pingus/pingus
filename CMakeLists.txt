@@ -115,6 +115,8 @@ target_compile_options(xdgcpp PRIVATE -Wno-effc++)
 target_include_directories(xdgcpp SYSTEM PUBLIC external/xdgcpp/)
 set_target_properties(xdgcpp PROPERTIES CXX_CLANG_TIDY "")
 
+add_subdirectory(external/argparser/)
+
 # Build Pingus
 add_library(libpingus STATIC ${PINGUS_SOURCES_CXX})
 set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
@@ -124,6 +126,7 @@ target_compile_definitions(libpingus PUBLIC
   -DPROJECT_VERSION="${PROJECT_VERSION}"
   -DPROJECT_NAME="${PROJECT_NAME}")
 target_link_libraries(libpingus PUBLIC
+  argparser
   logmich
   tinygettext
   sexp

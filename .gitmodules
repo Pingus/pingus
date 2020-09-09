@@ -19,3 +19,6 @@
 [submodule "shared-modules"]
 	path = shared-modules
 	url = https://github.com/Grumbel/shared-modules.git
+[submodule "external/argparser"]
+	path = external/argparser
+	url = https://gitlab.com/argparser/argparser.git
