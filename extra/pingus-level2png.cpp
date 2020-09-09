@@ -1,6 +1,8 @@
 #include <iostream>
 #include <sstream>
 
+#include <argparser.hpp>
+
 #include "engine/display/surface.hpp"
 #include "math/color.hpp"
 #include "math/size.hpp"
@@ -9,7 +11,6 @@
 #include "pingus/res_descriptor.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/prefab_file.hpp"
-#include "util/command_line.hpp"
 #include "util/log.hpp"
 #include "util/pathname.hpp"
 #include "util/system.hpp"
@@ -23,18 +24,15 @@ int main(int argc, char** argv)
   std::vector<Pathname> files;
   bool crop = false;
 
-  CommandLine argp;
-  argp.add_usage("[OPTIONS]... LEVELFILE OUTPUTFILE");
+  argparser::ArgParser argp;
+  argp.add_usage(argv[0], "[OPTIONS]... LEVELFILE OUTPUTFILE")
+    .add_option('h', "help",    "", "Displays this help")
+    .add_option('b', "background",  "RRGGBBAA", "Set background color")
+    .add_option('c', "crop", "", "crop output to the actual objects rendered, not levelsize ");
 
-  argp.add_option('h', "help",    "", "Displays this help");
-  argp.add_option('b', "background",  "RRGGBBAA", "Set background color");
-  argp.add_option('c', "crop", "", "crop output to the actual objects rendered, not levelsize ");
-
-  argp.parse_args(argc, argv);
-
-  while (argp.next())
+  for(auto const& opt : argp.parse_args(argc, argv))
   {
-    switch (argp.get_key())
+    switch (opt.key)
     {
       case 'h':
         argp.print_help();
@@ -49,8 +47,8 @@ int main(int argc, char** argv)
         // FIXME: not implemented
         break;
 
-      case CommandLine::REST_ARG:
-        files.push_back(Pathname(argp.get_argument(), Pathname::SYSTEM_PATH));
+      case argparser::ArgumentType::REST:
+        files.push_back(Pathname(opt.argument, Pathname::SYSTEM_PATH));
         break;
     }
   }

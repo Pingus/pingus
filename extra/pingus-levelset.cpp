@@ -1,6 +1,8 @@
 #include <iostream>
 #include <iostream>
 
+#include <argparser.hpp>
+
 #include "engine/display/display.hpp"
 #include "engine/display/screenshot.hpp"
 #include "engine/display/surface.hpp"
@@ -15,7 +17,6 @@
 #include "pingus/resource.hpp"
 #include "pingus/savegame_manager.hpp"
 #include "pingus/stat_manager.hpp"
-#include "util/command_line.hpp"
 #include "util/pathname.hpp"
 #include "util/system.hpp"
 
@@ -31,22 +32,19 @@ int main(int argc, char** argv)
 
   unsigned int mode = 0;
 
-  CommandLine argp;
-  argp.add_usage("[OPTIONS]... [FILE]...");
+  argparser::ArgParser argp;
+  argp.add_usage(argv[0], "[OPTIONS]... [FILE]...")
 
-  argp.add_option('h', "help",    "", "Displays this help");
+    .add_option('h', "help",    "", "Displays this help")
 
-  argp.add_option('t', "title", "", "Display title of the levelset");
-  argp.add_option('d', "description", "", "Display description of the levelset");
-  argp.add_option('l', "levels", "", "Display levels in this levelset");
-  argp.add_option('f', "filename", "", "Display filename of the level");
+    .add_option('t', "title", "", "Display title of the levelset")
+    .add_option('d', "description", "", "Display description of the levelset")
+    .add_option('l', "levels", "", "Display levels in this levelset")
+    .add_option('f', "filename", "", "Display filename of the level");
 
-  argp.parse_args(argc, argv);
-  argp.set_help_indent(20);
-
-  while (argp.next())
+  for(auto const& opt : argp.parse_args(argc, argv))
   {
-    switch (argp.get_key())
+    switch (opt.key)
     {
       case 'h':
         argp.print_help();
@@ -69,8 +67,8 @@ int main(int argc, char** argv)
         mode |= kFilename;
         break;
 
-      case CommandLine::REST_ARG:
-        files.push_back(Pathname(argp.get_argument(), Pathname::SYSTEM_PATH));
+      case argparser::ArgumentType::REST:
+        files.push_back(Pathname(opt.argument, Pathname::SYSTEM_PATH));
         break;
     }
   }

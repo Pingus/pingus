@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 
+#include <argparser.hpp>
+
 #include "editor/editor_level.hpp"
 #include "engine/display/display.hpp"
 #include "engine/display/font.hpp"
@@ -12,7 +14,6 @@
 #include "pingus/resource.hpp"
 #include "util/log.hpp"
 #include "util/raise_exception.hpp"
-#include "util/command_line.hpp"
 
 enum class Syntax { FASTJSON, JSON, SEXPR };
 
@@ -31,28 +32,29 @@ struct ResaveOptions
 
 int main(int argc, char** argv)
 {
-  CommandLine argp;
-  argp.add_usage("FILE...");
-  argp.add_doc("Load a level from file and save it to the same file again.\n"
-               "Used for converting levels from an old format to a new one.\n");
+  argparser::ArgParser argp;
+  argp.add_usage(argv[0], "FILE...")
+    .add_text("Load a level from file and save it to the same file again.\n"
+              "Used for converting levels from an old format to a new one.\n")
+    .add_option('h', "help", "", "Show help text")
+    .add_option('j', "json", "", "Generate JSON syntax")
+    .add_option('f', "fastjson", "", "Generate fast JSON syntax")
+    .add_option('s', "sexpr", "", "Generate SExpression/Lisp syntax")
+    .add_option('S', "stdout", "", "Write output to stdout");
 
-  argp.add_option('h', "help", "", "Show help text");
-  argp.add_option('j', "json", "", "Generate JSON syntax");
-  argp.add_option('f', "fastjson", "", "Generate fast JSON syntax");
-  argp.add_option('s', "sexpr", "", "Generate SExpression/Lisp syntax");
-  argp.add_option('S', "stdout", "", "Write output to stdout");
-  argp.parse_args(argc, argv);
 
-  if (argc == 1)
+  auto const& parsed_opts = argp.parse_args(argc, argv);
+
+  if (parsed_opts.size() == 1)
   {
     argp.print_help();
     return 1;
   }
 
   ResaveOptions opts;
-  while(argp.next())
+  for(auto const& opt : parsed_opts)
   {
-    switch(argp.get_key())
+    switch(opt.key)
     {
       case 'h':
         argp.print_help();
@@ -74,8 +76,8 @@ int main(int argc, char** argv)
         opts.stdout = true;
         break;
 
-      case CommandLine::REST_ARG:
-        opts.files.push_back(argp.get_argument());
+      case argparser::ArgumentType::REST:
+        opts.files.push_back(opt.argument);
         break;
     }
   }

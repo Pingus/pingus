@@ -53,7 +53,7 @@ extern "C" {
 #include "gettext.h"
 #include "tinygettext/dictionary_manager.hpp"
 #include "tinygettext/log.hpp"
-#include "util/command_line.hpp"
+#include <argparser.hpp>
 
 #include "engine/screen/screen_manager.hpp"
 #include "pingus/globals.hpp"
@@ -165,91 +165,89 @@ PingusMain::apply_args()
 void
 PingusMain::parse_args(int argc, char** argv)
 {
-  CommandLine argp;
-  argp.add_usage(_("[OPTIONS]... [FILE]"));
-  argp.add_doc(_("Pingus is a puzzle game where you need to guide a bunch of little penguins around the world."));
+  argparser::ArgParser argp;
 
-  argp.add_group(_("General Options:"));
-  argp.add_option('h', "help", "",
-                  _("Displays this help"));
-  argp.add_option('V', "version", "",
-                  _("Print version number and exit"));
-  argp.add_option('v', "verbose", "",
-                  _("Enable info level log output"));
-  argp.add_option('D', "debug", "",
-                  _("Enable debug level log output"));
-  argp.add_option('Q', "quiet", "",
-                  _("Disable all log output"));
+  argp.add_usage(argv[0], _("[OPTIONS]... [FILE]"))
+    .add_text(_("Pingus is a puzzle game where you need to guide a bunch of little penguins around the world."));
 
-  argp.add_group(_("Display Options:"));
-  argp.add_option('w', "window", "",
-                  _("Start in Window Mode"));
-  argp.add_option('f', "fullscreen", "",
-                  _("Start in Fullscreen"));
-  argp.add_option('r', "renderer", "RENDERER",
-                  _("Use the given renderer (default: sdl)"));
-  argp.add_option('g', "geometry", "{width}x{height}",
-                  _("Set the window resolution for pingus (default: 800x600)"));
-  argp.add_option('R', "fullscreen-resolution", "{width}x{height}",
-                  _("Set the resolution used in fullscreen mode (default: 800x600)"));
-  argp.add_option(346, "software-cursor", "",
-                  _("Enable software cursor"));
+  argp.add_group(_("General Options:"))
+    .add_option('h', "help", "",
+                _("Displays this help"))
+    .add_option('V', "version", "",
+                _("Print version number and exit"))
+    .add_option('v', "verbose", "",
+                _("Enable info level log output"))
+    .add_option('D', "debug", "",
+                _("Enable debug level log output"))
+    .add_option('Q', "quiet", "",
+                _("Disable all log output"));
 
-  argp.add_group(_("Game Options:"));
-  argp.add_option(337, "no-auto-scrolling", "",
-                  _("Disable automatic scrolling"));
-  argp.add_option(338, "drag-drop-scrolling", "",
-                  _("Enable drag'n drop scrolling"));
+  argp.add_group(_("Display Options:"))
+    .add_option('w', "window", "",
+                _("Start in Window Mode"))
+    .add_option('f', "fullscreen", "",
+                _("Start in Fullscreen"))
+    .add_option('r', "renderer", "RENDERER",
+                _("Use the given renderer (default: sdl)"))
+    .add_option('g', "geometry", "WIDTHxHEIGHT",
+                _("Set the window resolution for pingus (default: 800x600)"))
+    .add_option('R', "fullscreen-resolution", "WIDTHxHEIGHT",
+                _("Set the resolution used in fullscreen mode (default: 800x600)"))
+    .add_option(346, {}, "software-cursor", "",
+                _("Enable software cursor"));
 
-  argp.add_group(_("Sound Options:"));
-  argp.add_option('s', "disable-sound", "",
-                  _("Disable sound"));
-  argp.add_option('m', "disable-music", "",
-                  _("Disable music"));
+  argp.add_group(_("Game Options:"))
+    .add_option(337, {}, "no-auto-scrolling", "",
+                _("Disable automatic scrolling"))
+    .add_option(338, {}, "drag-drop-scrolling", "",
+                _("Enable drag'n drop scrolling"));
 
-  argp.add_group("Language Options:");
-  argp.add_option('l', "language", "LANG",
-                  _("Select language to use with Pingus"));
-  argp.add_option(365, "list-languages", "",
-                  _("List all available languages"));
+  argp.add_group(_("Sound Options:"))
+    .add_option('s', "disable-sound", "",
+                _("Disable sound"))
+    .add_option('m', "disable-music", "",
+                _("Disable music"));
 
-  argp.add_group("Editor Options:");
-  argp.add_option('e', "editor", "",
-                  _("Loads the level editor"));
+  argp.add_group("Language Options:")
+    .add_option('l', "language", "LANG",
+                _("Select language to use with Pingus"))
+    .add_option(365, {}, "list-languages", "",
+                _("List all available languages"));
 
-  argp.add_group(_("Directory Options:"));
-  argp.add_option('d', "datadir", _("DIR"),
-                  _("Load game datafiles from DIR"));
-  argp.add_option('u', "userdir", _("DIR"),
-                  _("Load config files and store savegames in DIR"));
-  argp.add_option('a', "addon", _("DIR"),
-                  _("Load game modifications from DIR"));
-  argp.add_option(342, "no-cfg-file", "",
-                  _("Don't read ~/.pingus/config"));
-  argp.add_option('c', "config", _("FILE"),
-                  _("Read config options from FILE"));
-  argp.add_option(360, "controller", "FILE",
-                  _("Uses the controller given in FILE"));
+  argp.add_group("Editor Options:")
+    .add_option('e', "editor", "",
+                _("Loads the level editor"));
 
-  argp.add_group(_("Debug Options:"));
-  argp.add_option(334, "developer-mode",  "",
-                  _("Enables some special features for developers"));
-  argp.add_option('t', "speed", "SPEED",
-                  _("Set the game speed (0=fastest, >0=slower)"));
-  argp.add_option('k', "fps", "FPS",
-                  _("Set the desired game framerate (frames per second)"));
-  argp.add_option(344, "tile-size", "INT",
-                  _("Set the size of the map tiles (default: 32)"));
+  argp.add_group(_("Directory Options:"))
+    .add_option('d', "datadir", _("DIR"),
+                _("Load game datafiles from DIR"))
+    .add_option('u', "userdir", _("DIR"),
+                _("Load config files and store savegames in DIR"))
+    .add_option('a', "addon", _("DIR"),
+                _("Load game modifications from DIR"))
+    .add_option(342, {}, "no-cfg-file", "",
+                _("Don't read ~/.pingus/config"))
+    .add_option('c', "config", _("FILE"),
+                _("Read config options from FILE"))
+    .add_option(360, {}, "controller", "FILE",
+                _("Uses the controller given in FILE"));
 
-  argp.parse_args(argc, argv);
-  argp.set_help_indent(20);
+  argp.add_group(_("Debug Options:"))
+    .add_option(334, {}, "developer-mode",  "",
+                _("Enables some special features for developers"))
+    .add_option('t', "speed", "SPEED",
+                _("Set the game speed (0=fastest, >0=slower)"))
+    .add_option('k', "fps", "FPS",
+                _("Set the desired game framerate (frames per second)"))
+    .add_option(344, {}, "tile-size", "INT",
+                _("Set the size of the map tiles (default: 32)"));
 
-  while (argp.next())
+  for(auto const& opt : argp.parse_args(argc, argv))
   {
-    switch (argp.get_key())
+    switch (opt.key)
     {
       case 'r': // --renderer
-        if (argp.get_argument() == "help")
+        if (opt.argument == "help")
         {
           std::cout << "Available renderers: " << std::endl;
           std::cout << "     sdl: Software rendering" << std::endl;
@@ -259,10 +257,10 @@ PingusMain::parse_args(int argc, char** argv)
         }
         else
         {
-          cmd_options.framebuffer_type.set(framebuffer_type_from_string(argp.get_argument()));
+          cmd_options.framebuffer_type.set(framebuffer_type_from_string(opt.argument));
 
           //FIXME:
-          //std::cout << "Unknown renderer: " << argp.get_argument()
+          //std::cout << "Unknown renderer: " << opt.argument
           //<< " use '--renderer help' to get a list of available renderer" << std::endl;
           //exit(EXIT_FAILURE);
         }
@@ -273,11 +271,11 @@ PingusMain::parse_args(int argc, char** argv)
         break;
 
       case 't': // -t, --set-speed
-        cmd_options.speed.set(StringUtil::to<int>(argp.get_argument()));
+        cmd_options.speed.set(StringUtil::to<int>(opt.argument));
         break;
 
       case 'k': // -k, --set-fps
-        cmd_options.desiredfps.set(StringUtil::to<float>(argp.get_argument()));
+        cmd_options.desiredfps.set(StringUtil::to<float>(opt.argument));
         break;
 
       case 's': // -s, --disable-sound
@@ -289,41 +287,41 @@ PingusMain::parse_args(int argc, char** argv)
         break;
 
       case 'g':
-      {
-        Size size;
-        if (sscanf(argp.get_argument().c_str(), "%dx%d", &size.width, &size.height) != 2)
         {
-          std::cout << "Resolution std::string is wrong, it should be like: \n"
-                    << "\"640x480\" or \"800x600\"" << std::endl;
-          exit(EXIT_FAILURE);
+          Size size;
+          if (sscanf(opt.argument.c_str(), "%dx%d", &size.width, &size.height) != 2)
+          {
+            std::cout << "Resolution std::string is wrong, it should be like: \n"
+                      << "\"640x480\" or \"800x600\"" << std::endl;
+            exit(EXIT_FAILURE);
+          }
+          cmd_options.geometry.set(size);
         }
-        cmd_options.geometry.set(size);
-      }
-      break;
+        break;
 
       case 'R':
-      {
-        Size size;
-        if (sscanf(argp.get_argument().c_str(), "%dx%d", &size.width, &size.height) != 2)
         {
-          std::cout << "Resolution std::string is wrong, it should be like: \n"
-                    << "\"640x480\" or \"800x600\"" << std::endl;
-          exit(EXIT_FAILURE);
+          Size size;
+          if (sscanf(opt.argument.c_str(), "%dx%d", &size.width, &size.height) != 2)
+          {
+            std::cout << "Resolution std::string is wrong, it should be like: \n"
+                      << "\"640x480\" or \"800x600\"" << std::endl;
+            exit(EXIT_FAILURE);
+          }
+          cmd_options.fullscreen_resolution.set(size);
         }
-        cmd_options.fullscreen_resolution.set(size);
-      }
-      break;
+        break;
 
       case 'd': // -d, --datadir
-        cmd_options.datadir.set(argp.get_argument());
+        cmd_options.datadir.set(opt.argument);
         break;
 
       case 'a': // -a, --addon
-        g_path_manager.add_overlay_path(argp.get_argument());
+        g_path_manager.add_overlay_path(opt.argument);
         break;
 
       case 'u': // -u, --userdir
-        cmd_options.userdir.set(argp.get_argument());
+        cmd_options.userdir.set(opt.argument);
         break;
 
       case 'V':
@@ -363,7 +361,7 @@ PingusMain::parse_args(int argc, char** argv)
         break;
 
       case 344:
-        cmd_options.tile_size.set(StringUtil::to<int>(argp.get_argument()));
+        cmd_options.tile_size.set(StringUtil::to<int>(opt.argument));
         break;
 
       case 346:
@@ -371,7 +369,7 @@ PingusMain::parse_args(int argc, char** argv)
         break;
 
       case 'c':
-        cmd_options.merge(Options::from_file(Pathname(argp.get_argument(), Pathname::SYSTEM_PATH)));
+        cmd_options.merge(Options::from_file(Pathname(opt.argument, Pathname::SYSTEM_PATH)));
         break;
 
       case 'D':
@@ -387,11 +385,11 @@ PingusMain::parse_args(int argc, char** argv)
         break;
 
       case 360:
-        cmd_options.controller.set(argp.get_argument());
+        cmd_options.controller.set(opt.argument);
         break;
 
       case 'l': // language
-        cmd_options.language.set(argp.get_argument());
+        cmd_options.language.set(opt.argument);
         break;
 
       case 365: // list-languages
@@ -403,21 +401,21 @@ PingusMain::parse_args(int argc, char** argv)
         exit(EXIT_SUCCESS);
         break;
 
-      case CommandLine::REST_ARG:
+      case argparser::ArgumentType::REST:
         if (!cmd_options.rest.is_set())
         {
-          cmd_options.rest.set(argp.get_argument());
+          cmd_options.rest.set(opt.argument);
         }
         else
         {
-          std::cout << "Wrong argument: '" << argp.get_argument() << "'" << std::endl;
+          std::cout << "Wrong argument: '" << opt.argument << "'" << std::endl;
           std::cout << "You can only give one file argument," << std::endl;
           exit(EXIT_FAILURE);
         }
         break;
 
       default:
-        std::cout << "Error: Got " << argp.get_key() << " " << argp.get_argument() << std::endl;
+        std::cout << "Error: Got " << opt.option << " " << opt.argument << std::endl;
         break;
     }
   }

@@ -1,9 +1,10 @@
 #include <iostream>
 
+#include <argparser.hpp>
+
 #include "math/color.hpp"
 #include "math/size.hpp"
 #include "pingus/pingus_level.hpp"
-#include "util/command_line.hpp"
 #include "util/pathname.hpp"
 
 int main(int argc, char** argv)
@@ -22,26 +23,23 @@ int main(int argc, char** argv)
 
   unsigned int mode = 0;
 
-  CommandLine argp;
-  argp.add_usage("[OPTIONS]... [FILE]...");
+  argparser::ArgParser argp;
+  argp.add_usage(argv[0], "[OPTIONS]... [FILE]...")
 
-  argp.add_option('h', "help",    "", "Displays this help");
+    .add_option('h', "help",    "", "Displays this help")
 
-  argp.add_option('a', "author", "", "Display author name");
-  argp.add_option('n', "name", "", "Display level name");
-  argp.add_option('s', "size", "", "Display level size");
-  argp.add_option('c', "checksum", "", "Display checksum of the level");
-  argp.add_option('d', "description", "", "Display description of the level");
-  argp.add_option('m', "music", "", "Display music of the level");
-  argp.add_option('A', "actions", "", "Display actions");
-  argp.add_option('f', "filename", "", "Display filename of the level");
+    .add_option('a', "author", "", "Display author name")
+    .add_option('n', "name", "", "Display level name")
+    .add_option('s', "size", "", "Display level size")
+    .add_option('c', "checksum", "", "Display checksum of the level")
+    .add_option('d', "description", "", "Display description of the level")
+    .add_option('m', "music", "", "Display music of the level")
+    .add_option('A', "actions", "", "Display actions")
+    .add_option('f', "filename", "", "Display filename of the level");
 
-  argp.parse_args(argc, argv);
-  argp.set_help_indent(20);
-
-  while (argp.next())
+  for(auto const& opt : argp.parse_args(argc, argv))
   {
-    switch (argp.get_key())
+    switch (opt.key)
     {
       case 'h':
         argp.print_help();
@@ -80,8 +78,8 @@ int main(int argc, char** argv)
         mode |= kSize;
         break;
 
-      case CommandLine::REST_ARG:
-        files.push_back(Pathname(argp.get_argument(), Pathname::SYSTEM_PATH));
+      case argparser::ArgumentType::REST:
+        files.push_back(Pathname(opt.argument, Pathname::SYSTEM_PATH));
         break;
     }
   }
