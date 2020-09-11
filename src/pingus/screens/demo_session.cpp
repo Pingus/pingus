@@ -196,7 +196,7 @@ DemoSession::update_demo()
   {
     ServerEvent& event = events.back();
 
-    if (0)
+    if ((false))
     {
       std::cout << "Sending: ";
       event.write(std::cout);
@@ -216,7 +216,7 @@ DemoSession::update_demo()
 void
 DemoSession::on_pause_press()
 {
-  if (0)
+  if ((false))
   {
     for(std::vector<ServerEvent>::iterator i = events.begin(); i != events.end(); ++i)
     {

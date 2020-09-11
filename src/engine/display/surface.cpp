@@ -549,7 +549,7 @@ Surface::print(std::ostream& out)
     out << "Alpha: <none>" << std::endl;
   }
 
-  if (0)
+  if ((false))
   {
     SDL_LockSurface(impl->surface);
     Uint8* pixels = static_cast<Uint8*>(impl->surface->pixels);

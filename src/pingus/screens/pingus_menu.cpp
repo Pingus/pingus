@@ -161,7 +161,7 @@ PingusMenu::draw_background(DrawingContext& gc)
                            gc.get_height() - Fonts::pingus_small.get_height() - 8),
                   help);
 
-  if (0) // display hint
+  if ((false)) // display hint
   {
     gc.print_center(Fonts::pingus_small,
                     Vector2i(gc.get_width() / 2,
