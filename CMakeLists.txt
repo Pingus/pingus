@@ -17,7 +17,7 @@
 cmake_minimum_required(VERSION 3.15)
 project(pingus)
 
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/mk/cmake)
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/external/cmake-modules/)
 
 option(BUILD_TESTS "Build test cases" OFF)
 option(BUILD_EXTRA "Build extra stuff" OFF)
@@ -25,6 +25,7 @@ option(BUILD_EXTRA "Build extra stuff" OFF)
 include(GetProjectVersion)
 include(GNUInstallDirs)
 include(MaximumWarnings)
+include(ClangTidy)
 
 find_package(Threads REQUIRED)
 find_package(PkgConfig REQUIRED)
@@ -41,27 +42,6 @@ find_package(fmt REQUIRED)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
-
-if(CMAKE_VERSION VERSION_GREATER 3.6)
-  if (CLANG_TIDY)
-    find_program(
-      CLANG_TIDY_EXE
-      NAMES "clang-tidy"
-      DOC "Path to clang-tidy executable"
-      )
-
-    if(NOT CLANG_TIDY_EXE)
-      message(FATAL_ERROR "clang-tidy not found.")
-    else()
-      message(STATUS "clang-tidy found: ${CLANG_TIDY_EXE}")
-      if(CLANG_TIDY_FIX)
-        set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}" "-fix")
-      else()
-        set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
-      endif()
-    endif()
-  endif()
-endif()
 
 if (BUILD_TESTS)
   # add 'make test' target, use 'make test ARGS="-V"' or 'ctest -V' for verbose
