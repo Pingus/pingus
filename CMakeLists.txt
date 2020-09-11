@@ -27,7 +27,6 @@ include(GNUInstallDirs)
 include(MaximumWarnings)
 include(ClangTidy)
 
-find_package(Threads REQUIRED)
 find_package(PkgConfig REQUIRED)
 set(OpenGL_GL_PREFERENCE "LEGACY")
 find_package(OpenGL REQUIRED)
@@ -75,7 +74,6 @@ file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
 function(build_dependencies)
   if(BUILD_TESTS)
     set(BUILD_TESTS OFF)
-    add_subdirectory(external/googletest/ EXCLUDE_FROM_ALL)
     add_subdirectory(external/uitest/ EXCLUDE_FROM_ALL)
   endif()
 
@@ -132,6 +130,8 @@ if(BUILD_EXTRA)
 endif()
 
 if(BUILD_TESTS)
+  find_package(GTest REQUIRED)
+
   # build interactive tests
   file(GLOB UITEST_PINGUS_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} uitest/*_test.cpp)
   add_executable(uitest_pingus ${UITEST_PINGUS_SOURCES})
@@ -161,7 +161,7 @@ if(BUILD_TESTS)
     tests/*_test.cpp)
   add_executable(test_pingus ${TEST_PINGUS_SOURCES_CXX})
   target_include_directories(test_pingus PUBLIC src/ tests/)
-  target_link_libraries(test_pingus libpingus gtest gtest_main ${CMAKE_THREAD_LIBS_INIT})
+  target_link_libraries(test_pingus libpingus GTest::GTest GTest::Main ${CMAKE_THREAD_LIBS_INIT})
   target_compile_options(test_pingus PRIVATE ${WARNINGS_CXX_FLAGS})
 
   add_test(NAME test_pingus
