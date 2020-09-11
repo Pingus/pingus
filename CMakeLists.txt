@@ -92,15 +92,21 @@ file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/util/*.cpp)
 
 # Build dependencies
-if(BUILD_TESTS)
-  add_subdirectory(external/googletest/ EXCLUDE_FROM_ALL)
-  add_subdirectory(external/uitest/ EXCLUDE_FROM_ALL)
-endif()
-add_subdirectory(external/tinygettext/ EXCLUDE_FROM_ALL)
-add_subdirectory(external/argparser/ EXCLUDE_FROM_ALL)
-add_subdirectory(external/logmich/ EXCLUDE_FROM_ALL)
-add_subdirectory(external/sexp-cpp/ EXCLUDE_FROM_ALL)
-add_subdirectory(external/xdgcpp/ EXCLUDE_FROM_ALL)
+function(build_dependencies)
+  if(BUILD_TESTS)
+    set(BUILD_TESTS OFF)
+    add_subdirectory(external/googletest/ EXCLUDE_FROM_ALL)
+    add_subdirectory(external/uitest/ EXCLUDE_FROM_ALL)
+  endif()
+
+  set(BUILD_TESTS OFF)
+  add_subdirectory(external/tinygettext/ EXCLUDE_FROM_ALL)
+  add_subdirectory(external/argparser/ EXCLUDE_FROM_ALL)
+  add_subdirectory(external/logmich/ EXCLUDE_FROM_ALL)
+  add_subdirectory(external/sexp-cpp/ EXCLUDE_FROM_ALL)
+  add_subdirectory(external/xdgcpp/ EXCLUDE_FROM_ALL)
+endfunction()
+build_dependencies()
 
 # Build Pingus
 add_library(libpingus STATIC ${PINGUS_SOURCES_CXX})
