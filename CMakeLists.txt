@@ -94,6 +94,7 @@ file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
 # Build dependencies
 if(BUILD_TESTS)
   add_subdirectory(external/googletest/ EXCLUDE_FROM_ALL)
+  add_subdirectory(external/uitest/ EXCLUDE_FROM_ALL)
 endif()
 add_subdirectory(external/tinygettext/ EXCLUDE_FROM_ALL)
 add_subdirectory(external/argparser/ EXCLUDE_FROM_ALL)
@@ -145,16 +146,10 @@ if(BUILD_EXTRA)
 endif()
 
 if(BUILD_TESTS)
-  # build uitest
-  file(GLOB UITEST_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} external/uitest/src/*.cpp)
-  add_library(uitest STATIC ${UITEST_SOURCES})
-  target_include_directories(uitest SYSTEM PUBLIC external/uitest/include/)
-  set_target_properties(uitest PROPERTIES CXX_CLANG_TIDY "")
-
   # build interactive tests
   file(GLOB UITEST_PINGUS_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} uitest/*_test.cpp)
   add_executable(uitest_pingus ${UITEST_PINGUS_SOURCES})
-  target_link_libraries(uitest_pingus uitest libpingus uitest)
+  target_link_libraries(uitest_pingus libpingus uitest uitest_main)
 
   file(GLOB PINGUS_TEST_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     test/*_test.cpp)
