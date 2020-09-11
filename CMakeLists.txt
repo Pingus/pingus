@@ -91,6 +91,10 @@ file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/pingus/worldobjs/*.cpp
   src/util/*.cpp)
 
+if(BUILD_TESTS)
+  add_subdirectory(external/googletest/ EXCLUDE_FROM_ALL)
+endif()
+
 # Build dependencies
 file(GLOB TINYGETTEXT_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   external/tinygettext/src/*.cpp)
@@ -177,10 +181,6 @@ if(BUILD_TESTS)
     target_compile_options(${UTIL_EXE} PRIVATE ${WARNINGS_CXX_FLAGS})
     target_link_libraries(${UTIL_EXE} libpingus)
   endforeach(UTIL_SOURCE)
-
-  if(NOT TARGET gtest)
-    add_subdirectory(external/googletest/ EXCLUDE_FROM_ALL)
-  endif()
 
   file(GLOB TEST_PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     tests/*_test.cpp)
