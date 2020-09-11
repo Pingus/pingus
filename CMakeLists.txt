@@ -98,24 +98,10 @@ add_library(tinygettext STATIC ${TINYGETTEXT_SOURCES_CXX})
 target_include_directories(tinygettext SYSTEM PUBLIC external/tinygettext/include/)
 set_target_properties(tinygettext PROPERTIES CXX_CLANG_TIDY "")
 
-file(GLOB SEXP_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-  external/sexp-cpp/src/*.cpp)
-add_library(sexp STATIC ${SEXP_SOURCES_CXX})
-target_include_directories(sexp SYSTEM PUBLIC external/sexp-cpp/include/)
-set_target_properties(sexp PROPERTIES CXX_CLANG_TIDY "")
-
-file(GLOB LOGMICH_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-  external/logmich/src/*.cpp)
-add_library(logmich STATIC ${LOGMICH_SOURCES_CXX})
-target_include_directories(logmich SYSTEM PUBLIC external/logmich/include/)
-set_target_properties(logmich PROPERTIES CXX_CLANG_TIDY "")
-
-add_library(xdgcpp STATIC external/xdgcpp/xdg.cpp)
-target_compile_options(xdgcpp PRIVATE -Wno-effc++)
-target_include_directories(xdgcpp SYSTEM PUBLIC external/xdgcpp/)
-set_target_properties(xdgcpp PROPERTIES CXX_CLANG_TIDY "")
-
-add_subdirectory(external/argparser/)
+add_subdirectory(external/argparser/ EXCLUDE_FROM_ALL)
+add_subdirectory(external/logmich/ EXCLUDE_FROM_ALL)
+add_subdirectory(external/sexp-cpp/ EXCLUDE_FROM_ALL)
+add_subdirectory(external/xdgcpp/ EXCLUDE_FROM_ALL)
 
 # Build Pingus
 add_library(libpingus STATIC ${PINGUS_SOURCES_CXX})
@@ -192,19 +178,9 @@ if(BUILD_TESTS)
     target_link_libraries(${UTIL_EXE} libpingus)
   endforeach(UTIL_SOURCE)
 
-  # Note: include directories must use the absolute path as otherwise SYSTEM
-  # bugs out and cmake uses -I instead of -isystem
-  add_library(gtest STATIC ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googletest/src/gtest-all.cc)
-  target_include_directories(gtest SYSTEM PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googletest/include/
-    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googletest/)
-  set_target_properties(gtest PROPERTIES CXX_CLANG_TIDY "")
-
-  add_library(gtest_main STATIC ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googletest/src/gtest_main.cc)
-  target_include_directories(gtest_main SYSTEM PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googletest/include/
-    ${CMAKE_CURRENT_SOURCE_DIR}/external/googletest/googletest/)
-  set_target_properties(gtest_main PROPERTIES CXX_CLANG_TIDY "")
+  if(NOT TARGET gtest)
+    add_subdirectory(external/googletest/ EXCLUDE_FROM_ALL)
+  endif()
 
   file(GLOB TEST_PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     tests/*_test.cpp)
