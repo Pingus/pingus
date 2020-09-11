@@ -91,17 +91,11 @@ file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/pingus/worldobjs/*.cpp
   src/util/*.cpp)
 
+# Build dependencies
 if(BUILD_TESTS)
   add_subdirectory(external/googletest/ EXCLUDE_FROM_ALL)
 endif()
-
-# Build dependencies
-file(GLOB TINYGETTEXT_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-  external/tinygettext/src/*.cpp)
-add_library(tinygettext STATIC ${TINYGETTEXT_SOURCES_CXX})
-target_include_directories(tinygettext SYSTEM PUBLIC external/tinygettext/include/)
-set_target_properties(tinygettext PROPERTIES CXX_CLANG_TIDY "")
-
+add_subdirectory(external/tinygettext/ EXCLUDE_FROM_ALL)
 add_subdirectory(external/argparser/ EXCLUDE_FROM_ALL)
 add_subdirectory(external/logmich/ EXCLUDE_FROM_ALL)
 add_subdirectory(external/sexp-cpp/ EXCLUDE_FROM_ALL)
