@@ -78,6 +78,7 @@ function(build_dependencies)
   endif()
 
   set(BUILD_TESTS OFF)
+  set(TINYGETTEXT_WITH_SDL ON)
   add_subdirectory(external/tinygettext/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/argparser/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/logmich/ EXCLUDE_FROM_ALL)
