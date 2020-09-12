@@ -1,12 +1,9 @@
 [submodule "external/logmich"]
 	path = external/logmich
-	url = https://github.com/logmich/logmich.git
+	url = https://gitlab.com/logmich/logmich.git
 [submodule "external/tinygettext"]
 	path = external/tinygettext
 	url = https://github.com/tinygettext/tinygettext.git
-[submodule "external/googletest"]
-	path = external/googletest
-	url = https://github.com/google/googletest
 [submodule "external/sexp-cpp"]
 	path = external/sexp-cpp
 	url = https://gitlab.com/lispparser/sexp-cpp.git
