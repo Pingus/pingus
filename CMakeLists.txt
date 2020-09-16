@@ -81,6 +81,7 @@ function(build_dependencies)
   set(TINYGETTEXT_WITH_SDL ON)
   add_subdirectory(external/tinygettext/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/argparser/ EXCLUDE_FROM_ALL)
+  add_subdirectory(external/geomcpp/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/logmich/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/sexp-cpp/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/xdgcpp/ EXCLUDE_FROM_ALL)
@@ -97,6 +98,7 @@ target_compile_definitions(libpingus PUBLIC
   -DPROJECT_NAME="${PROJECT_NAME}")
 target_link_libraries(libpingus PUBLIC
   argparser
+  geomcpp
   logmich
   tinygettext
   sexp
