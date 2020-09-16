@@ -23,10 +23,11 @@
 
 #include <geom/fwd.hpp>
 
+#include "math/rect.hpp"
+
 class Color;
 class Vector3f;
 class Vector2i;
-class Rect;
 
 class ResDescriptor;
 class Pathname;

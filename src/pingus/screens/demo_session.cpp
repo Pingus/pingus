@@ -112,12 +112,12 @@ DemoSession::DemoSession(const Pathname& pathname_) :
 
   playfield = gui_manager->create<Playfield>(
     server.get(), nullptr,
-    Rect(Vector2i(Math::max((size.width()  - world_width)/2,  0),
+    Rect(geom::ipoint(Math::max((size.width()  - world_width)/2,  0),
                   Math::max((size.height() - world_height)/2, 0)),
          Size(Math::min(size.width(),  world_width),
               Math::min(size.height(), world_height))));
 
-  gui_manager->create<SmallMap>(server.get(), playfield, Rect(Vector2i(5, size.height() - 105), Size(175, 100)));
+  gui_manager->create<SmallMap>(server.get(), playfield, Rect(geom::ipoint(5, size.height() - 105), Size(175, 100)));
 
   fastforward_button = gui_manager->create<BButton>(32+50, 32, "core/demo/fastforward",
                                                     std::bind(&DemoSession::on_fast_forward_press, this),
@@ -138,20 +138,20 @@ DemoSession::draw_background(DrawingContext& gc)
 {
   Rect rect = playfield->get_rect();
 
-  if (rect != Rect(Vector2i(0,0), Size(gc.get_width(), gc.get_height())))
+  if (rect != Rect(geom::ipoint(0,0), Size(gc.get_width(), gc.get_height())))
   { // Draw a black border around the playfield when the playfield is smaller then the screen
     Color border_color(0, 0, 0);
     // top
-    gc.draw_fillrect(Rect(0, 0, gc.get_width(), rect.top),
+    gc.draw_fillrect(Rect(0, 0, gc.get_width(), rect.top()),
                      border_color);
     // bottom
-    gc.draw_fillrect(Rect(0, rect.bottom, gc.get_width(), gc.get_height()),
+    gc.draw_fillrect(Rect(0, rect.bottom(), gc.get_width(), gc.get_height()),
                      border_color);
     // left
-    gc.draw_fillrect(Rect(0, rect.top, rect.left, rect.bottom),
+    gc.draw_fillrect(Rect(0, rect.top(), rect.left(), rect.bottom()),
                      border_color);
     // right
-    gc.draw_fillrect(Rect(rect.right, rect.top, gc.get_width(), rect.bottom),
+    gc.draw_fillrect(Rect(rect.right(), rect.top(), gc.get_width(), rect.bottom()),
                      border_color);
   }
 }
@@ -268,7 +268,7 @@ DemoSession::resize(const Size& size_)
   int world_width  = server->get_world()->get_width();
   int world_height = server->get_world()->get_height();
 
-  playfield->set_rect(Rect(Vector2i(Math::max((size.width()  - world_width)/2,  0),
+  playfield->set_rect(Rect(geom::ipoint(Math::max((size.width()  - world_width)/2,  0),
                                     Math::max((size.height() - world_height)/2, 0)),
                            Size(Math::min(size.width(),  world_width),
                                 Math::min(size.height(), world_height))));
@@ -277,7 +277,7 @@ DemoSession::resize(const Size& size_)
   pause_button->set_pos(32,  32);
   restart_button->set_pos(size.width() - 32 - 48, 32);
 
-  small_map->set_rect(Rect(Vector2i(5, size.height() - 105), Size(175, 100)));
+  small_map->set_rect(Rect(geom::ipoint(5, size.height() - 105), Size(175, 100)));
 }
 
 /* EOF */

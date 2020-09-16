@@ -23,9 +23,9 @@ GUIStyle::draw_raised_box(DrawingContext& gc, const Rect& rect, const Color& col
 {
   // FIXME: Should use draw_line
   gc.draw_fillrect(rect, Color(255, 255, 255));
-  gc.draw_fillrect(Rect(rect.left+border, rect.top+border, rect.right, rect.bottom),
+  gc.draw_fillrect(Rect(rect.left()+border, rect.top()+border, rect.right(), rect.bottom()),
                    Color(169, 157, 140));
-  gc.draw_fillrect(Rect(rect.left+border, rect.top+border, rect.right-border, rect.bottom-border),
+  gc.draw_fillrect(Rect(rect.left()+border, rect.top()+border, rect.right()-border, rect.bottom()-border),
                    color);
 }
 
@@ -35,9 +35,9 @@ GUIStyle::draw_lowered_box(DrawingContext& gc, const Rect& rect, const Color& co
   // FIXME: Should use draw_line
   gc.draw_fillrect(rect,
                    Color(169, 157, 140));
-  gc.draw_fillrect(Rect(rect.left+border, rect.top+border, rect.right, rect.bottom),
+  gc.draw_fillrect(Rect(rect.left()+border, rect.top()+border, rect.right(), rect.bottom()),
                    Color(255, 255, 255));
-  gc.draw_fillrect(Rect(rect.left+border, rect.top+border, rect.right-border, rect.bottom-border),
+  gc.draw_fillrect(Rect(rect.left()+border, rect.top()+border, rect.right()-border, rect.bottom()-border),
                    color);
 }
 

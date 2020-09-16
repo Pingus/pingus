@@ -32,7 +32,7 @@ static const int keyboard_movement_distance = 32;
 // Constructor
 Viewport::Viewport(EditorScreen* e, const Rect& rect_)  :
   RectComponent(rect_),
-  state(rect.get_width(), rect.get_height()),
+  state(rect.width(), rect.height()),
   drawing_context(new DrawingContext(rect)),
   editor(e),
   autoscroll(false),
@@ -159,8 +159,10 @@ Viewport::on_primary_button_press(int x_, int y_)
     else
     {
       current_action = HIGHLIGHTING;
-      highlighted_area.left = highlighted_area.right  = mouse_world_pos.x;
-      highlighted_area.top  = highlighted_area.bottom = mouse_world_pos.y;
+      highlighted_area = Rect(mouse_world_pos.x,
+                              mouse_world_pos.y,
+                              mouse_world_pos.x,
+                              mouse_world_pos.y);
 
       if (!(key_modifier & KMOD_LSHIFT) && !(key_modifier & KMOD_RSHIFT))
       {
@@ -179,10 +181,10 @@ Viewport::on_primary_button_release(int x_, int y_)
 
   if (current_action == HIGHLIGHTING)
   {
-    highlighted_area.normalize();
+    geom::normalize(highlighted_area);
     for (auto it = get_objects()->begin(); it != get_objects()->end(); ++it)
     {
-      if (highlighted_area.contains((*it)->get_rect()))
+      if (geom::contains(highlighted_area, (*it)->get_rect()))
       {
         selection.insert(*it);
       }
@@ -210,8 +212,10 @@ Viewport::on_pointer_move(int x_, int y_)
   switch(current_action)
   {
     case HIGHLIGHTING:
-      highlighted_area.right  = mouse_world_pos.x;
-      highlighted_area.bottom = mouse_world_pos.y;
+      highlighted_area = Rect(highlighted_area.left(),
+                              highlighted_area.top(),
+                              mouse_world_pos.x,
+                              mouse_world_pos.y);
       break;
 
     case DRAGGING:
@@ -501,11 +505,11 @@ Viewport::draw(DrawingContext &gc)
   }
 
   // Level border
-  drawing_context->draw_rect(Rect(Vector2i(0,0), editor->get_level()->get_size()), Color(255,255,255), 5000.0f);
-  drawing_context->draw_rect(Rect(Vector2i(0,0), editor->get_level()->get_size()).grow(1), Color(0,0,0), 5000.0f);
+  drawing_context->draw_rect(Rect(geom::ipoint(0,0), editor->get_level()->get_size()), Color(255,255,255), 5000.0f);
+  drawing_context->draw_rect(geom::grow(Rect(geom::ipoint(0,0), editor->get_level()->get_size()), 1), Color(0,0,0), 5000.0f);
 
   // Safe area
-  drawing_context->draw_rect(Rect(Vector2i(0,0), editor->get_level()->get_size()).grow(-100), Color(155,155,155), 5000.0f);
+  drawing_context->draw_rect(geom::grow(Rect(geom::ipoint(0,0), editor->get_level()->get_size()), -100), Color(155,155,155), 5000.0f);
 
   // Draw the level objects
   for (auto it = get_objects()->begin(); it != get_objects()->end(); ++it)
@@ -534,7 +538,7 @@ Viewport::draw(DrawingContext &gc)
 bool
 Viewport::is_at(int x, int y)
 {
-  return drawing_context->get_rect().contains(Vector2i(x,y));
+  return geom::contains(drawing_context->get_rect(), geom::ipoint(x,y));
 }
 
 void
@@ -567,7 +571,7 @@ Viewport::update(float delta)
 void
 Viewport::refresh()
 {
-  state.set_limit(Rect(Vector2i(0,0), editor->get_level()->get_size()).grow(512));
+  state.set_limit(geom::grow(Rect(geom::ipoint(0,0), editor->get_level()->get_size()), 512));
 }
 
 void
@@ -768,7 +772,7 @@ Viewport::ungroup_selection()
 void
 Viewport::update_layout()
 {
-  state.set_size(rect.get_width(), rect.get_height());
+  state.set_size(rect.width(), rect.height());
   drawing_context->set_rect(rect);
 }
 

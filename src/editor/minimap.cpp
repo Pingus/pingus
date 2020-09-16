@@ -27,7 +27,7 @@ namespace Editor {
 Minimap::Minimap(EditorScreen* editor_, const Rect& rect_)
   : RectComponent(rect_),
     editor(editor_),
-    drawing_context(new DrawingContext(rect.grow(-3))),
+    drawing_context(new DrawingContext(geom::grow(rect, -3))),
     dragging(false)
 {
 }
@@ -45,7 +45,7 @@ Minimap::draw(DrawingContext& gc)
 
   dc.clear();
   Rect minimap_rect = dc.get_rect();
-  dc.draw_fillrect(Rect(Vector2i(0, 0), Size(minimap_rect.get_width(), minimap_rect.get_height())),
+  dc.draw_fillrect(Rect(geom::ipoint(0, 0), Size(minimap_rect.width(), minimap_rect.height())),
                    Color(0,0,0), -100000.0f);
 
   auto& objects = *editor->get_viewport()->get_objects();
@@ -56,11 +56,10 @@ Minimap::draw(DrawingContext& gc)
     Rect r = (*i)->get_rect();
 
     // Translate the object into minimap-co-space
-    r.left  = r.left  * minimap_rect.get_width() / levelsize.width();
-    r.right = r.right * minimap_rect.get_width() / levelsize.width();
-
-    r.top    = r.top    * minimap_rect.get_height() / levelsize.height();
-    r.bottom = r.bottom * minimap_rect.get_height() / levelsize.height();
+    r = Rect(r.left() * minimap_rect.width() / levelsize.width(),
+             r.top() * minimap_rect.height() / levelsize.height(),
+             r.right() * minimap_rect.width() / levelsize.width(),
+             r.bottom() * minimap_rect.height() / levelsize.height());
 
     unsigned attr = (*i)->get_attribs();
 
@@ -86,13 +85,13 @@ Minimap::draw(DrawingContext& gc)
   Vector2f viewport_pos  = editor->get_viewport()->get_scroll_pos();
   Rect     viewport_rect = editor->get_viewport()->get_rect();
 
-  viewport_pos.x -= static_cast<float>(viewport_rect.get_width())  / 2;
-  viewport_pos.y -= static_cast<float>(viewport_rect.get_height()) / 2;
+  viewport_pos.x -= static_cast<float>(viewport_rect.width())  / 2;
+  viewport_pos.y -= static_cast<float>(viewport_rect.height()) / 2;
 
-  Rect view(Vector2i(static_cast<int>(viewport_pos.x * static_cast<float>(minimap_rect.get_width())  / static_cast<float>(levelsize.width())),
-                     static_cast<int>(viewport_pos.y * static_cast<float>(minimap_rect.get_height()) / static_cast<float>(levelsize.height()))),
-            Size(viewport_rect.get_width()  * minimap_rect.get_width() / levelsize.width(),
-                 viewport_rect.get_height() * minimap_rect.get_height() / levelsize.height()));
+  Rect view(Vector2i(static_cast<int>(viewport_pos.x * static_cast<float>(minimap_rect.width())  / static_cast<float>(levelsize.width())),
+                     static_cast<int>(viewport_pos.y * static_cast<float>(minimap_rect.height()) / static_cast<float>(levelsize.height()))),
+            Size(viewport_rect.width()  * minimap_rect.width() / levelsize.width(),
+                 viewport_rect.height() * minimap_rect.height() / levelsize.height()));
   dc.draw_fillrect(view, Color(255, 255, 0, 150), 1000000.0f);
   dc.draw_rect(view, Color(255, 255, 0), 1000000.0f);
 
@@ -113,11 +112,11 @@ Minimap::on_pointer_move(int x, int y)
     Rect minimap_rect = drawing_context->get_rect();
     Size levelsize = editor->get_level()->get_size();
 
-    x -= 3 + rect.left; // take border into account
-    y -= 3 + rect.top;
+    x -= 3 + rect.left(); // take border into account
+    y -= 3 + rect.top();
 
-    x = x * levelsize.width() / minimap_rect.get_width();
-    y = y * levelsize.height() / minimap_rect.get_height();
+    x = x * levelsize.width() / minimap_rect.width();
+    y = y * levelsize.height() / minimap_rect.height();
 
     editor->get_viewport()->set_scroll_pos(Vector2i(x, y));
   }
@@ -140,7 +139,7 @@ Minimap::on_primary_button_release (int x, int y)
 void
 Minimap::update_layout()
 {
-  drawing_context->set_rect(rect.grow(-3));
+  drawing_context->set_rect(geom::grow(rect, -3));
 }
 
 } // namespace Editor

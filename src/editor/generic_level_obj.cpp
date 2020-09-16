@@ -207,10 +207,10 @@ GenericLevelObj::is_at(int x, int y)
 {
   if (surface)
   {
-    if (get_rect().contains(Vector2i(x,y)))
+    if (geom::contains(get_rect(), geom::ipoint(x,y)))
     {
       Rect rect = get_rect();
-      Color pixel = surface.get_pixel(x - rect.left, y - rect.top);
+      Color pixel = surface.get_pixel(x - rect.left(), y - rect.top());
       return pixel.a != 0;
     }
     else
@@ -220,7 +220,7 @@ GenericLevelObj::is_at(int x, int y)
   }
   else
   {
-    return get_rect().contains(Vector2i(x,y));
+    return geom::contains(get_rect(), geom::ipoint(x,y));
   }
 }
 
@@ -511,12 +511,12 @@ GenericLevelObj::get_rect() const
 {
   if (attribs & HAS_REPEAT)
   {
-    return Rect(Vector2i(static_cast<int>(pos.x), static_cast<int>(pos.y)) - sprite.get_offset(),
+    return Rect(geom::ipoint(static_cast<int>(pos.x), static_cast<int>(pos.y)).as_vec() - static_cast<geom::ipoint>(sprite.get_offset()).as_vec(),
                 Size(sprite.get_width() * repeat, sprite.get_height()));
   }
   else
   {
-    return Rect(Vector2i(static_cast<int>(pos.x), static_cast<int>(pos.y)) - sprite.get_offset(),
+    return Rect(geom::ipoint(static_cast<int>(pos.x), static_cast<int>(pos.y)).as_vec() - static_cast<geom::ipoint>(sprite.get_offset()).as_vec(),
                 Size(sprite.get_width(), sprite.get_height()));
   }
 }

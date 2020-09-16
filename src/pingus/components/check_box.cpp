@@ -44,11 +44,11 @@ CheckBox::draw(DrawingContext& gc)
 
   if (state)
   {
-    gc.draw(m_checkbox_marked, Vector2i(rect.left, rect.top));
+    gc.draw(m_checkbox_marked, Vector2i(rect.left(), rect.top()));
   }
   else
   {
-    gc.draw(m_checkbox, Vector2i(rect.left, rect.top));
+    gc.draw(m_checkbox, Vector2i(rect.left(), rect.top()));
   }
 }
 

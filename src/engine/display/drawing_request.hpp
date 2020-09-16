@@ -36,7 +36,7 @@ public:
 
   /** \a rect is the rectangle that is managed by the parent
       DrawingContext, all calls to fb have to be offset with
-      (rect.left,rect.top)  */
+      (rect.left(),rect.top)  */
   virtual void render(Framebuffer& fb, const Rect& rect) = 0;
 
   /** Returns true if the request contains an alpha channel and needs

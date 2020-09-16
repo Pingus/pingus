@@ -42,27 +42,27 @@ FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect_, Mode mode_) :
   filename_inputbox()
 {
   file_list = create<FileList>(Rect(4, 30 + 30 + 30,
-                                    rect.get_width()-4 - 30, rect.get_height() - 4 - 35));
+                                    rect.width()-4 - 30, rect.height() - 4 - 35));
 
   file_list->on_click.connect(std::bind(&FileDialog::load_file, this, std::placeholders::_1));
 
   Rect file_rect = file_list->get_rect();
-  up_button = create<Button>(Rect(file_rect.right + 2, file_rect.top,
-                              rect.get_width()-4, file_rect.top + file_rect.get_height()/2 - 1),
+  up_button = create<Button>(Rect(file_rect.right() + 2, file_rect.top(),
+                              rect.width()-4, file_rect.top() + file_rect.height()/2 - 1),
                          "/\\\n|");
-  down_button = create<Button>(Rect(file_rect.right + 2, file_rect.top + file_rect.get_height()/2 + 1,
-                                rect.get_width()-4, file_rect.bottom),
+  down_button = create<Button>(Rect(file_rect.right() + 2, file_rect.top() + file_rect.height()/2 + 1,
+                                rect.width()-4, file_rect.bottom()),
                            "|\n\\/");
 
-  datadir_button = create<Button>(Rect(Vector2i(4, rect.get_height() - 4 - 30),
+  datadir_button = create<Button>(Rect(geom::ipoint(4, rect.height() - 4 - 30),
                                        Size(100, 30)), _("Datadir"));
-  userdir_button = create<Button>(Rect(Vector2i(4 + 110, rect.get_height() - 4 - 30),
+  userdir_button = create<Button>(Rect(geom::ipoint(4 + 110, rect.height() - 4 - 30),
                                        Size(100, 30)), _("Userdir"));
 
-  open_button = create<Button>(Rect(Vector2i(rect.get_width() - 104, rect.get_height() - 4 - 30),
+  open_button = create<Button>(Rect(geom::ipoint(rect.width() - 104, rect.height() - 4 - 30),
                                     Size(100, 30)), mode == LOAD ? _("Open") : _("Save"));
 
-  cancel_button = create<Button>(Rect(Vector2i(rect.get_width() - 104 - 104, rect.get_height() - 4 - 30),
+  cancel_button = create<Button>(Rect(geom::ipoint(rect.width() - 104 - 104, rect.height() - 4 - 30),
                                       Size(100, 30)), _("Cancel"));
 
   up_button->on_click.connect(std::bind(&FileDialog::on_up, this));
@@ -77,8 +77,8 @@ FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect_, Mode mode_) :
   filename_label = create<Label>(Rect(6, 4+30, 4 + 60, 26+30), _("Filename:"));
   pathname_label = create<Label>(Rect(6, 4+60, 4 + 60, 26+60), _("Pathname:"));
 
-  filename_inputbox = create<Inputbox>(Rect(4 + 60, 4+30, rect.get_width()-4, 26+30));
-  pathname_inputbox = create<Inputbox>(Rect(4 + 60, 4+60, rect.get_width()-4, 26+60));
+  filename_inputbox = create<Inputbox>(Rect(4 + 60, 4+30, rect.width()-4, 26+30));
+  pathname_inputbox = create<Inputbox>(Rect(4 + 60, 4+60, rect.width()-4, 26+60));
 
   filename_inputbox->on_enter.connect(std::bind(&FileDialog::on_filename_enter, this));
   pathname_inputbox->on_enter.connect(std::bind(&FileDialog::on_pathname_change, this));
@@ -94,9 +94,9 @@ void
 FileDialog::draw_background(DrawingContext& gc)
 {
   // Window border and title
-  GUIStyle::draw_raised_box(gc, Rect(0,0,rect.get_width(), rect.get_height()));
-  gc.draw_fillrect(Rect(4,4,rect.get_width()-4, 30), Color(77,130,180));
-  gc.print_center(Fonts::pingus_small, Vector2i(rect.get_width()/2, 2),
+  GUIStyle::draw_raised_box(gc, Rect(0,0,rect.width(), rect.height()));
+  gc.draw_fillrect(Rect(4,4,rect.width()-4, 30), Color(77,130,180));
+  gc.print_center(Fonts::pingus_small, Vector2i(rect.width()/2, 2),
                   mode == LOAD ? _("Open a level") : _("Save your level"));
 }
 
@@ -188,27 +188,27 @@ FileDialog::update_layout()
   GUI::GroupComponent::update_layout();
 
   file_list->set_rect(Rect(4, 30 + 30 + 30,
-                           rect.get_width()-4 - 30, rect.get_height() - 4 - 35));
+                           rect.width()-4 - 30, rect.height() - 4 - 35));
 
   Rect file_rect = file_list->get_rect();
 
-  up_button->set_rect(Rect(file_rect.right + 2, file_rect.top,
-                           rect.get_width()-4, file_rect.top + file_rect.get_height()/2 - 1));
+  up_button->set_rect(Rect(file_rect.right() + 2, file_rect.top(),
+                           rect.width()-4, file_rect.top() + file_rect.height()/2 - 1));
 
-  down_button->set_rect(Rect(file_rect.right + 2, file_rect.top + file_rect.get_height()/2 + 1,
-                             rect.get_width()-4, file_rect.bottom));
+  down_button->set_rect(Rect(file_rect.right() + 2, file_rect.top() + file_rect.height()/2 + 1,
+                             rect.width()-4, file_rect.bottom()));
 
-  open_button->set_rect(Rect(Vector2i(rect.get_width() - 104, rect.get_height() - 4 - 30),
+  open_button->set_rect(Rect(geom::ipoint(rect.width() - 104, rect.height() - 4 - 30),
                              Size(100, 30)));
 
-  cancel_button->set_rect(Rect(Vector2i(rect.get_width() - 104 - 104, rect.get_height() - 4 - 30),
+  cancel_button->set_rect(Rect(geom::ipoint(rect.width() - 104 - 104, rect.height() - 4 - 30),
                                Size(100, 30)));
 
-  filename_inputbox->set_rect(Rect(4 + 60, 4+30, rect.get_width()-4, 26+30));
-  pathname_inputbox->set_rect(Rect(4 + 60, 4+60, rect.get_width()-4, 26+60));
+  filename_inputbox->set_rect(Rect(4 + 60, 4+30, rect.width()-4, 26+30));
+  pathname_inputbox->set_rect(Rect(4 + 60, 4+60, rect.width()-4, 26+60));
 
-  datadir_button->set_rect(Rect(Vector2i(4, rect.get_height() - 4 - 30), Size(100, 30)));
-  userdir_button->set_rect(Rect(Vector2i(4 + 110, rect.get_height() - 4 - 30), Size(100, 30)));
+  datadir_button->set_rect(Rect(geom::ipoint(4, rect.height() - 4 - 30), Size(100, 30)));
+  userdir_button->set_rect(Rect(geom::ipoint(4 + 110, rect.height() - 4 - 30), Size(100, 30)));
 }
 
 void

@@ -22,7 +22,7 @@
 #include "pingus/world.hpp"
 
 ArmageddonButton::ArmageddonButton(Server* s, int x, int y) :
-  RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
+  RectComponent(Rect(geom::ipoint(x, y), Size(38, 60))),
   server(s),
   pressed(),
   press_time(),
@@ -41,7 +41,7 @@ ArmageddonButton::~ArmageddonButton ()
 void
 ArmageddonButton::draw (DrawingContext& gc)
 {
-  Vector2i pos(rect.left, rect.top);
+  Vector2i pos(rect.left(), rect.top());
 
   if (server->get_world()->check_armageddon ())
   {
@@ -92,7 +92,7 @@ ArmageddonButton::on_primary_button_click (int x, int y)
 }
 
 ForwardButton::ForwardButton(GameSession* s, int x, int y) :
-  RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
+  RectComponent(Rect(geom::ipoint(x, y), Size(38, 60))),
   session(s),
   surface(),
   background ("core/buttons/hbuttonbgb"),
@@ -106,7 +106,7 @@ ForwardButton::~ForwardButton () {}
 void
 ForwardButton::draw (DrawingContext& gc)
 {
-  Vector2i pos(rect.left, rect.top);
+  Vector2i pos(rect.left(), rect.top());
 
   if (session->get_fast_forward())
   {
@@ -133,7 +133,7 @@ ForwardButton::on_primary_button_release (int x, int y)
 }
 
 PauseButton::PauseButton(GameSession* s, int x, int y) :
-  RectComponent(Rect(Vector2i(x, y), Size(38, 60))),
+  RectComponent(Rect(geom::ipoint(x, y), Size(38, 60))),
   session(s),
   surface(),
   background ("core/buttons/hbuttonbgb"),
@@ -149,7 +149,7 @@ PauseButton::~PauseButton ()
 void
 PauseButton::draw (DrawingContext& gc)
 {
-  Vector2i pos(rect.left, rect.top);
+  Vector2i pos(rect.left(), rect.top());
 
   if (session->get_pause())
   {

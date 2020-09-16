@@ -425,7 +425,7 @@ struct OverlapsWith
   {}
 
   bool operator()(const LevelObjPtr& obj) const {
-    return rect.is_overlapped(obj->get_rect());
+    return geom::intersects(rect, obj->get_rect());
   }
 };
 

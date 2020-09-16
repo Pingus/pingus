@@ -86,16 +86,16 @@ int main(int argc, char** argv)
     {
       Rect rect = renderer.get_clip_rect();
 
-      out_surface = Surface(rect.get_width(), rect.get_height());
+      out_surface = Surface(rect.width(), rect.height());
 
       // FIXME: alpha doesn't work, as the PNG saver can't handle that
       out_surface.fill(Color(255, 255, 255, 255));
 
-      renderer.blit(out_surface, -rect.left, -rect.top);
+      renderer.blit(out_surface, -rect.left(), -rect.top());
 
       // create a .sprite file to handle the offset
       std::string outfile = System::cut_file_extension(files[1].get_sys_path()) + ".sprite";
-      Vector2i offset(rect.left, rect.top);
+      Vector2i offset(rect.left(), rect.top());
 
       std::ostringstream out;
       Writer writer(out);

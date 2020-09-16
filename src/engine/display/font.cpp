@@ -168,7 +168,7 @@ public:
 
   Rect bounding_rect(int x, int y, const std::string& str) const
   {
-    return Rect(Vector2i(x, y), get_size(str));
+    return Rect(geom::ipoint(x, y), get_size(str));
   }
 };
 

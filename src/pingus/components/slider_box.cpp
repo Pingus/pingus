@@ -37,21 +37,21 @@ SliderBox::draw(DrawingContext& gc)
 
   if (value == 0)
   {
-    gc.print_center(Fonts::chalk_normal, Vector2i(rect.left + rect.get_width()/2, rect.top), "off");
+    gc.print_center(Fonts::chalk_normal, Vector2i(rect.left() + rect.width()/2, rect.top()), "off");
   }
   else
   {
     for(int i = 0; i < m_steps; ++i)
     {
       if (i < value)
-        gc.print_left(Fonts::chalk_normal, Vector2i(rect.left + i*(rect.get_width()-12)/m_steps + 6, rect.top), "|");
-      //gc.print_left(Fonts::chalk_normal, rect.left + i*(rect.get_width()-12)/20 + 6, rect.top, "l");
+        gc.print_left(Fonts::chalk_normal, Vector2i(rect.left() + i*(rect.width()-12)/m_steps + 6, rect.top()), "|");
+      //gc.print_left(Fonts::chalk_normal, rect.left + i*(rect.width()-12)/20 + 6, rect.top, "l");
     }
   }
 
-  gc.print_left(Fonts::chalk_normal, Vector2i(rect.left, rect.top),
+  gc.print_left(Fonts::chalk_normal, Vector2i(rect.left(), rect.top()),
                 "[");
-  gc.print_right(Fonts::chalk_normal, Vector2i(rect.right, rect.top),
+  gc.print_right(Fonts::chalk_normal, Vector2i(rect.right(), rect.top()),
                  "]");
 }
 
@@ -76,9 +76,9 @@ SliderBox::on_pointer_move(int x, int y)
   {
     int old_value = value;
 
-    x -= rect.left;
+    x -= rect.left();
 
-    value = m_steps * x / (rect.get_width() - 12);
+    value = m_steps * x / (rect.width() - 12);
 
     value = Math::clamp(0, value, m_steps);
 

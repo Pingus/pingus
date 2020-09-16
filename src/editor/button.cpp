@@ -51,7 +51,7 @@ Button::draw (DrawingContext& gc)
   }
 
   gc.print_center(Fonts::verdana11,
-                  Vector2i(rect.left + rect.get_width()/2, rect.top + rect.get_height()/2 - 6),
+                  Vector2i(rect.left() + rect.width()/2, rect.top() + rect.height()/2 - 6),
                   text);
 }
 

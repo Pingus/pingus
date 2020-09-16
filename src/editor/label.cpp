@@ -36,7 +36,7 @@ void
 Label::draw (DrawingContext& gc)
 {
   gc.print_left(Fonts::verdana11,
-                Vector2i(rect.left, rect.top + rect.get_height()/2 - Fonts::verdana11.get_height()/2),
+                Vector2i(rect.left(), rect.top() + rect.height()/2 - Fonts::verdana11.get_height()/2),
                 text);
 }
 

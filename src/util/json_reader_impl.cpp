@@ -249,10 +249,10 @@ JsonReaderMappingImpl::read_rect(const char* key, Rect& value) const
   const Json::Value& element = m_json[key];
   if (element.isArray() && element.size() >= 4)
   {
-    value.left = element[0u].asInt();
-    value.top = element[1u].asInt();
-    value.right = element[2u].asInt();
-    value.bottom = element[3u].asInt();
+    value = Rect(element[0u].asInt(),
+                 element[1u].asInt(),
+                 element[2u].asInt(),
+                 element[3u].asInt());
     return true;
   }
   else

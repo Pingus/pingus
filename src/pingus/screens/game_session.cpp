@@ -62,13 +62,13 @@ GameSession::GameSession(const PingusLevel& arg_plf, bool arg_show_result_screen
 
   playfield = gui_manager->create<Playfield>(
     get_server(), this,
-    Rect(Vector2i(Math::max((Display::get_width()  - world_width)/2,  0),
+    Rect(geom::ipoint(Math::max((Display::get_width()  - world_width)/2,  0),
                   Math::max((Display::get_height() - world_height)/2, 0)),
          Size(Math::min(Display::get_width(),  world_width),
               Math::min(Display::get_height(), world_height))));
 
   pcounter = gui_manager->create<PingusCounter>(get_server());
-  small_map = gui_manager->create<SmallMap>(get_server(), playfield, Rect(Vector2i(5, size.height() - 105), Size(175, 100)));
+  small_map = gui_manager->create<SmallMap>(get_server(), playfield, Rect(geom::ipoint(5, size.height() - 105), Size(175, 100)));
 
   button_panel = gui_manager->create<ButtonPanel>(get_server(), Vector2i(0, (size.height() - 150)/2));
   gui_manager->create<TimeDisplay>(this);
@@ -159,20 +159,20 @@ GameSession::draw_background (DrawingContext& gc)
 {
   Rect rect = playfield->get_rect();
 
-  if (rect != Rect(Vector2i(0,0), Size(Display::get_width(), Display::get_height())))
+  if (rect != Rect(geom::ipoint(0,0), Size(Display::get_width(), Display::get_height())))
   { // Draw a black border around the playfield when the playfield is smaller then the screen
     Color border_color(0, 0, 0);
     // top
-    gc.draw_fillrect(Rect(0, 0, Display::get_width(), rect.top),
+    gc.draw_fillrect(Rect(0, 0, Display::get_width(), rect.top()),
                      border_color);
     // bottom
-    gc.draw_fillrect(Rect(0, rect.bottom, Display::get_width(), Display::get_height()),
+    gc.draw_fillrect(Rect(0, rect.bottom(), Display::get_width(), Display::get_height()),
                      border_color);
     // left
-    gc.draw_fillrect(Rect(0, rect.top, rect.left, rect.bottom),
+    gc.draw_fillrect(Rect(0, rect.top(), rect.left(), rect.bottom()),
                      border_color);
     // right
-    gc.draw_fillrect(Rect(rect.right, rect.top, Display::get_width(), rect.bottom),
+    gc.draw_fillrect(Rect(rect.right(), rect.top(), Display::get_width(), rect.bottom()),
                      border_color);
   }
 }
@@ -370,19 +370,19 @@ GameSession::resize(const Size& size_)
   int world_width  = server->get_world()->get_width();
   int world_height = server->get_world()->get_height();
 
-  playfield->set_rect(Rect(Vector2i(Math::max((size.width()  - world_width)/2,  0),
+  playfield->set_rect(Rect(geom::ipoint(Math::max((size.width()  - world_width)/2,  0),
                                     Math::max((size.height() - world_height)/2, 0)),
                            Size(Math::min(size.width(),  world_width),
                                 Math::min(size.height(), world_height))));
 
-  armageddon_button->set_rect(Rect(Vector2i(size.width() - 40, size.height() - 62),
+  armageddon_button->set_rect(Rect(geom::ipoint(size.width() - 40, size.height() - 62),
                                    Size(38, 60)));
-  forward_button->set_rect(Rect(Vector2i(size.width() - 40*2, size.height() - 62),
+  forward_button->set_rect(Rect(geom::ipoint(size.width() - 40*2, size.height() - 62),
                                 Size(38, 60)));
-  pause_button->set_rect(Rect(Vector2i(size.width() - 40*3, size.height() - 62),
+  pause_button->set_rect(Rect(geom::ipoint(size.width() - 40*3, size.height() - 62),
                               Size(38, 60)));
 
-  small_map->set_rect(Rect(Vector2i(5, size.height() - 105), Size(175, 100)));
+  small_map->set_rect(Rect(geom::ipoint(5, size.height() - 105), Size(175, 100)));
 
   button_panel->set_pos(Vector2i(0, (size.height() - 150)/2));
 }

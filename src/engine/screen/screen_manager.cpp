@@ -197,7 +197,7 @@ ScreenManager::update(float delta, const std::vector<Input::Event>& events)
   get_current_screen()->draw(*display_gc);
 
   // Render the DrawingContext to the screen
-  display_gc->render(*Display::get_framebuffer(), Rect(Vector2i(0,0), Size(Display::get_width(),
+  display_gc->render(*Display::get_framebuffer(), Rect(geom::ipoint(0,0), Size(Display::get_width(),
                                                                            Display::get_height())));
   display_gc->clear();
 
@@ -294,7 +294,7 @@ ScreenManager::fade_over(const ScreenPtr& old_screen, const ScreenPtr& new_scree
     int border_y = static_cast<int>(static_cast<float>(Display::get_height()/2) * (1.0f - p)); // NOLINT
 
     old_screen->draw(*display_gc);
-    display_gc->render(fb, Rect(Vector2i(0,0), Size(Display::get_width(),
+    display_gc->render(fb, Rect(geom::ipoint(0,0), Size(Display::get_width(),
                                                     Display::get_height())));
     display_gc->clear();
 
@@ -304,11 +304,11 @@ ScreenManager::fade_over(const ScreenPtr& old_screen, const ScreenPtr& new_scree
     if (clip_size != Size(0, 0))
     {
       // skip drawing the second screen when the cliprect
-      fb.push_cliprect(Rect(Vector2i(0 + border_x, 0 + border_y),
+      fb.push_cliprect(Rect(geom::ipoint(0 + border_x, 0 + border_y),
                             clip_size));
 
       new_screen->draw(*display_gc);
-      display_gc->render(*Display::get_framebuffer(), Rect(Vector2i(0,0), Size(Display::get_width(),
+      display_gc->render(*Display::get_framebuffer(), Rect(geom::ipoint(0,0), Size(Display::get_width(),
                                                                                Display::get_height())));
       display_gc->clear();
 
@@ -328,7 +328,7 @@ ScreenManager::fade_over(const ScreenPtr& old_screen, const ScreenPtr& new_scree
 void
 ScreenManager::resize(const Size& size)
 {
-  display_gc->set_rect(Rect(Vector2i(0, 0), size));
+  display_gc->set_rect(Rect(geom::ipoint(0, 0), size));
 
   // The other screens will get resized when they become the current screen
   get_current_screen()->resize(size);

@@ -98,22 +98,26 @@ public:
 
       // if the tooltip goes over the screen borders, move it back to
       // fit on the screen
-      if (t_r.left < 0)
+      if (t_r.left() < 0)
       {
-        const int off = -t_r.left;
-        t_r.left  += off;
-        t_r.right += off;
+        const int off = -t_r.left();
+        t_r = Rect(t_r.left() + off,
+                   t_r.top(),
+                   t_r.right() + off,
+                   t_r.bottom());
       }
-      else if (t_r.right >= gc.get_width())
+      else if (t_r.right() >= gc.get_width())
       {
-        const int off = t_r.right - gc.get_width();
-        t_r.left  -= off;
-        t_r.right -= off;
+        const int off = t_r.right() - gc.get_width();
+        t_r = Rect(t_r.left() - off,
+                   t_r.top(),
+                   t_r.right() - off,
+                   t_r.bottom());
       }
 
       gc.draw_fillrect(t_r, Color(255, 255, 200), 1000.0f);
       gc.draw_rect(t_r, Color(0,0,0), 1000.0f);
-      gc.print_left(Fonts::verdana11, Vector2i(t_r.left + 3, t_r.top + 1), tooltip, 1000.0f);
+      gc.print_left(Fonts::verdana11, Vector2i(t_r.left() + 3, t_r.top() + 1), tooltip, 1000.0f);
     }
   }
 

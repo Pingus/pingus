@@ -67,20 +67,20 @@ public:
   void draw(DrawingContext& gc) override
   {
     if (mouse_down)
-      gc.draw(button_pressed, Vector2i(rect.left, rect.top));
+      gc.draw(button_pressed, Vector2i(rect.left(), rect.top()));
     else if (mouse_over)
-      gc.draw(button_raised, Vector2i(rect.left, rect.top));
+      gc.draw(button_raised, Vector2i(rect.left(), rect.top()));
 
-    gc.draw(sprite, Vector2i(rect.left + 3, rect.top + 3));
+    gc.draw(sprite, Vector2i(rect.left() + 3, rect.top() + 3));
 
     if (mouse_over)
     {
       int t_w = static_cast<int>(Fonts::verdana11.get_width(tooltip));
-      Rect t_r(rect.left + 17 - t_w/2 - 4, rect.top + 38 - 2,
-               rect.left + 17 + t_w/2 + 4, rect.top + 38 + Fonts::verdana11.get_height() + 4);
+      Rect t_r(rect.left() + 17 - t_w/2 - 4, rect.top() + 38 - 2,
+               rect.left() + 17 + t_w/2 + 4, rect.top() + 38 + Fonts::verdana11.get_height() + 4);
       gc.draw_fillrect(t_r, Color(255, 255, 200), 1000.0f);
       gc.draw_rect(t_r, Color(0,0,0), 1000.0f);
-      gc.print_center(Fonts::verdana11, Vector2i(rect.left + 17, rect.top + 38), tooltip, 1000.0f);
+      gc.print_center(Fonts::verdana11, Vector2i(rect.left() + 17, rect.top() + 38), tooltip, 1000.0f);
     }
   }
 
@@ -145,7 +145,7 @@ ObjectSelector::ObjectSelector(EditorScreen* editor_, const Rect& rect_) :
   prefab_set()
 {
   object_list = create<ObjectSelectorList>(editor, this,
-                                           Rect(2, 2 + 60 + 2, rect.get_width() - 2, rect.get_height() - 2));
+                                           Rect(2, 2 + 60 + 2, rect.width() - 2, rect.height() - 2));
 
   gp_ground_set  = create_gp_ground();
   gp_solid_set   = create_gp_solid();
@@ -186,7 +186,7 @@ ObjectSelector::~ObjectSelector()
 void
 ObjectSelector::draw_background(DrawingContext& parent_gc)
 {
-  GUIStyle::draw_raised_box(parent_gc, Rect(0,0, rect.get_width(), rect.get_height()));
+  GUIStyle::draw_raised_box(parent_gc, Rect(0,0, rect.width(), rect.height()));
 }
 
 void
@@ -409,7 +409,7 @@ void
 ObjectSelector::update_layout()
 {
   GroupComponent::update_layout();
-  object_list->set_rect(Rect(2, 2 + 60 + 2, rect.get_width() - 2, rect.get_height() - 2));
+  object_list->set_rect(Rect(2, 2 + 60 + 2, rect.width() - 2, rect.height() - 2));
 }
 
 } // namespace Editor

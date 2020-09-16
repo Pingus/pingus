@@ -88,8 +88,8 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
   height_inputbox(),
   y_pos()
 {
-  type_label = create<Label>(Rect(Vector2i(4, 4), Size(120, 20)), _("Object:"));
-  mesg_label = create<Label>(Rect(Vector2i(10, 0), Size(180, 20)), _("Nothing selected"));
+  type_label = create<Label>(Rect(geom::ipoint(4, 4), Size(120, 20)), _("Object:"));
+  mesg_label = create<Label>(Rect(geom::ipoint(10, 0), Size(180, 20)), _("Nothing selected"));
 
   Rect label_rect(10,0, 80, 20);
   Rect box_rect(80,0, 190, 20);
@@ -125,19 +125,19 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
 
   // Background Stretch
   stretch_label = create<Label>(label_rect, "Stretch:");
-  stretch_x_checkbox = create<Checkbox>(Rect(Vector2i(box_rect.left, box_rect.top),
-                                             Size(box_rect.get_width()/2, box_rect.get_height())),
+  stretch_x_checkbox = create<Checkbox>(Rect(geom::ipoint(box_rect.left(), box_rect.top()),
+                                             Size(box_rect.width()/2, box_rect.height())),
                                         "X");
-  stretch_y_checkbox = create<Checkbox>(Rect(Vector2i(box_rect.left+box_rect.get_width()/2, box_rect.top),
-                                             Size(box_rect.get_width()/2, box_rect.get_height())),
+  stretch_y_checkbox = create<Checkbox>(Rect(geom::ipoint(box_rect.left()+box_rect.width()/2, box_rect.top()),
+                                             Size(box_rect.width()/2, box_rect.height())),
                                         "Y");
 
   stretch_x_checkbox->on_change.connect(std::bind(&ObjectProperties::on_stretch_x_change, this, std::placeholders::_1));
   stretch_y_checkbox->on_change.connect(std::bind(&ObjectProperties::on_stretch_y_change, this, std::placeholders::_1));
 
   keep_aspect_label = create<Label>(label_rect, "Aspect:");
-  keep_aspect_checkbox = create<Checkbox>(Rect(Vector2i(box_rect.left, box_rect.top),
-                                               Size(box_rect.get_width(), box_rect.get_height())),
+  keep_aspect_checkbox = create<Checkbox>(Rect(geom::ipoint(box_rect.left(), box_rect.top()),
+                                               Size(box_rect.width(), box_rect.height())),
                                           "keep");
   keep_aspect_checkbox->on_change.connect(std::bind(&ObjectProperties::on_keep_aspect_change, this, std::placeholders::_1));
 
@@ -176,13 +176,13 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
   pos_z_inputbox->on_change.connect(std::bind(&ObjectProperties::on_pos_z_change, this, std::placeholders::_1));
   // ___________________________________________________________________
   //
-  Size color_s(box_rect.get_width()/4, box_rect.get_height());
+  Size color_s(box_rect.width()/4, box_rect.height());
 
   color_label = create<Label>(label_rect, _("Color:"));
-  color_r_inputbox = create<Inputbox>(Rect(Vector2i(box_rect.left + 0*color_s.width(), box_rect.top), color_s));
-  color_g_inputbox = create<Inputbox>(Rect(Vector2i(box_rect.left + 1*color_s.width(), box_rect.top), color_s));
-  color_b_inputbox = create<Inputbox>(Rect(Vector2i(box_rect.left + 2*color_s.width(), box_rect.top), color_s));
-  color_a_inputbox = create<Inputbox>(Rect(Vector2i(box_rect.left + 3*color_s.width(), box_rect.top), color_s));
+  color_r_inputbox = create<Inputbox>(Rect(geom::ipoint(box_rect.left() + 0*color_s.width(), box_rect.top()), color_s));
+  color_g_inputbox = create<Inputbox>(Rect(geom::ipoint(box_rect.left() + 1*color_s.width(), box_rect.top()), color_s));
+  color_b_inputbox = create<Inputbox>(Rect(geom::ipoint(box_rect.left() + 2*color_s.width(), box_rect.top()), color_s));
+  color_a_inputbox = create<Inputbox>(Rect(geom::ipoint(box_rect.left() + 3*color_s.width(), box_rect.top()), color_s));
 
   color_r_inputbox->on_change.connect(std::bind(&ObjectProperties::on_color_r_change, this, std::placeholders::_1));
   color_g_inputbox->on_change.connect(std::bind(&ObjectProperties::on_color_g_change, this, std::placeholders::_1));
@@ -209,10 +209,10 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
   repeat_inputbox->on_change.connect(std::bind(&ObjectProperties::on_repeat_change, this, std::placeholders::_1));
   // ___________________________________________________________________
   //
-  flip_horizontal_button = create<Button>(Rect(Vector2i(15+40*0-3, 0), Size(34, 34)), "|");
-  flip_vertical_button   = create<Button>(Rect(Vector2i(15+40*1-3, 0), Size(34, 34)), "--");
-  rotate_270_button      = create<Button>(Rect(Vector2i(15+40*2-3 + 20, 0), Size(34, 34)), "<-.");
-  rotate_90_button       = create<Button>(Rect(Vector2i(15+40*3-3 + 20, 0), Size(34, 34)), ".->");
+  flip_horizontal_button = create<Button>(Rect(geom::ipoint(15+40*0-3, 0), Size(34, 34)), "|");
+  flip_vertical_button   = create<Button>(Rect(geom::ipoint(15+40*1-3, 0), Size(34, 34)), "--");
+  rotate_270_button      = create<Button>(Rect(geom::ipoint(15+40*2-3 + 20, 0), Size(34, 34)), "<-.");
+  rotate_90_button       = create<Button>(Rect(geom::ipoint(15+40*3-3 + 20, 0), Size(34, 34)), ".->");
 
   flip_vertical_button->on_click.connect(std::bind(&ObjectProperties::on_flip_vertical, this));
   flip_horizontal_button->on_click.connect(std::bind(&ObjectProperties::on_flip_horizontal, this));
@@ -251,10 +251,10 @@ void
 ObjectProperties::place(GUI::RectComponent* comp) // NOLINT
 {
   Rect crect = comp->get_rect();
-  comp->set_rect(Rect(crect.left,
+  comp->set_rect(Rect(crect.left(),
                       y_pos,
-                      crect.right,
-                      y_pos + crect.get_height()));
+                      crect.right(),
+                      y_pos + crect.height()));
   comp->show();
 }
 
@@ -264,15 +264,15 @@ ObjectProperties::place(GUI::RectComponent* comp1, GUI::RectComponent* comp2) //
   Rect rect1 = comp1->get_rect();
   Rect rect2 = comp2->get_rect();
 
-  comp1->set_rect(Rect(rect1.left,
+  comp1->set_rect(Rect(rect1.left(),
                        y_pos,
-                       rect1.right,
-                       y_pos + rect1.get_height()));
+                       rect1.right(),
+                       y_pos + rect1.height()));
 
-  comp2->set_rect(Rect(rect2.left,
+  comp2->set_rect(Rect(rect2.left(),
                        y_pos,
-                       rect2.right,
-                       y_pos + rect2.get_height()));
+                       rect2.right(),
+                       y_pos + rect2.height()));
 
   comp1->show();
   comp2->show();
@@ -523,7 +523,7 @@ ObjectProperties::set_object(const LevelObjPtr& obj)
 void
 ObjectProperties::draw_background(DrawingContext& gc)
 {
-  GUIStyle::draw_raised_box(gc, Rect(0,0, rect.get_width(), rect.get_height()));
+  GUIStyle::draw_raised_box(gc, Rect(0,0, rect.width(), rect.height()));
 }
 
 void
@@ -553,7 +553,7 @@ ObjectProperties::set_objects(const Selection& objs)
 void
 ObjectProperties::finalize()
 {
-  set_rect(Rect(rect.left, rect.bottom - y_pos - 10, rect.right, rect.bottom));
+  set_rect(Rect(rect.left(), rect.bottom() - y_pos - 10, rect.right(), rect.bottom()));
 }
 
 void

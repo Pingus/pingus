@@ -43,8 +43,8 @@ Checkbox::draw(DrawingContext& gc)
 
   if (!label.empty())
     gc.print_center(Fonts::verdana11,
-                    Vector2i(rect.left + rect.get_width()/2,
-                             rect.top + rect.get_height()/2 - Fonts::verdana11.get_height()/2),
+                    Vector2i(rect.left() + rect.width()/2,
+                             rect.top() + rect.height()/2 - Fonts::verdana11.get_height()/2),
                     label);
 }
 

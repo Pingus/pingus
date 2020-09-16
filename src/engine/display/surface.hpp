@@ -22,9 +22,9 @@
 #include "engine/display/resource_modifier.hpp"
 #include "math/color.hpp"
 #include "math/size.hpp"
+#include "math/rect.hpp"
 #include "util/pathname.hpp"
 
-class Rect;
 class Pathname;
 class SurfaceImpl;
 

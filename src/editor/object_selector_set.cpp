@@ -39,7 +39,7 @@ ObjectSelectorSet::add(std::unique_ptr<ObjectSelectorList::Object> obj)
 int
 ObjectSelectorSet::get_width() const
 {
-  return list->get_rect().get_width() / thumb_size.width();
+  return list->get_rect().width() / thumb_size.width();
 }
 
 int

@@ -165,11 +165,11 @@ public:
   void draw(DrawingContext& gc) override
   {
     gc.push_modelview();
-    gc.translate(rect.left, rect.top);
+    gc.translate(rect.left(), rect.top());
 
-    gc.print_center(Fonts::chalk_large, Vector2i(rect.get_width()/2, 10), _("Levelsets"));
+    gc.print_center(Fonts::chalk_large, Vector2i(rect.width()/2, 10), _("Levelsets"));
 
-    int y = list_rect.top;
+    int y = list_rect.top();
     for(int i = page; (i < (page+items_per_page)) && (i < int(levelsets.size())); ++i)
     {
       Levelset* levelset = levelsets[static_cast<size_t>(i)].get();
@@ -177,19 +177,19 @@ public:
       if (levelset == current_levelset)
         gc.draw(marker, Vector2i(15, y - 5));
 
-      gc.draw(levelset->get_image(), Vector2i(list_rect.left + 10, y));
+      gc.draw(levelset->get_image(), Vector2i(list_rect.left() + 10, y));
 
-      gc.print_left(Fonts::chalk_normal, Vector2i(list_rect.left + 105, 15 + y), _(levelset->get_title()));
-      gc.print_left(Fonts::chalk_small,  Vector2i(list_rect.left + 105, 40 + y), _(levelset->get_description()));
+      gc.print_left(Fonts::chalk_normal, Vector2i(list_rect.left() + 105, 15 + y), _(levelset->get_title()));
+      gc.print_left(Fonts::chalk_small,  Vector2i(list_rect.left() + 105, 40 + y), _(levelset->get_description()));
 
-      gc.print_right(Fonts::chalk_normal, Vector2i(list_rect.right, 15 + y), fmt::format("{} {}%", _("Solved:"), levelset->get_completion()));
-      gc.print_right(Fonts::chalk_small,  Vector2i(list_rect.right, 40 + y), fmt::format("{} {}", levelset->get_level_count(), _("levels")));
+      gc.print_right(Fonts::chalk_normal, Vector2i(list_rect.right(), 15 + y), fmt::format("{} {}%", _("Solved:"), levelset->get_completion()));
+      gc.print_right(Fonts::chalk_small,  Vector2i(list_rect.right(), 40 + y), fmt::format("{} {}", levelset->get_level_count(), _("levels")));
 
       y += item_height;
     }
 
     //int total_pages = static_cast<int>(levelsets.size());;
-    //gc.print_center(Fonts::chalk_normal, Vector2i(rect.get_width()/2, 360),
+    //gc.print_center(Fonts::chalk_normal, Vector2i(rect.width()/2, 360),
     //                (boost::format("{} {}/{}") % _("Page") % (page+1) % total_pages).str());
 
     gc.pop_modelview();
@@ -218,17 +218,17 @@ public:
 
   void on_pointer_move(int x, int y) override
   {
-    x -= rect.left;
-    y -= rect.top;
+    x -= rect.left();
+    y -= rect.top();
 
-    if (!list_rect.contains(Vector2i(x, y)))
+    if (!geom::contains(list_rect, geom::ipoint(x, y)))
     {
       current_levelset = nullptr;
     }
     else
     {
-      x -= list_rect.left; // NOLINT
-      y -= list_rect.top;
+      x -= list_rect.left();
+      y -= list_rect.top();
 
       if (!levelsets.empty())
       {
@@ -302,26 +302,26 @@ public:
   void draw(DrawingContext& gc) override
   {
     gc.push_modelview();
-    gc.translate(rect.left, rect.top);
+    gc.translate(rect.left(), rect.top());
 
     Sprite sprite = levelset->get_image();
-    gc.draw(sprite, Vector2i(rect.get_width()/2 - sprite.get_width()/2 - 275, 15));
-    gc.draw(sprite, Vector2i(rect.get_width()/2 - sprite.get_width()/2 + 275, 15));
+    gc.draw(sprite, Vector2i(rect.width()/2 - sprite.get_width()/2 - 275, 15));
+    gc.draw(sprite, Vector2i(rect.width()/2 - sprite.get_width()/2 + 275, 15));
 
-    gc.print_center(Fonts::chalk_large, Vector2i(rect.get_width()/2, 10), _(levelset->get_title()));
-    gc.print_center(Fonts::chalk_normal,  Vector2i(rect.get_width()/2, 62), _(levelset->get_description()));
+    gc.print_center(Fonts::chalk_large, Vector2i(rect.width()/2, 10), _(levelset->get_title()));
+    gc.print_center(Fonts::chalk_normal,  Vector2i(rect.width()/2, 62), _(levelset->get_description()));
 
     if (levelset)
     {
       levelset->refresh(); // should be better placed in on_startup() or so
 
-      //gc.draw_fillrect(Rect(Vector2i(0,0), Size(rect.get_width(), rect.get_height())),
+      //gc.draw_fillrect(Rect(geom::ipoint(0,0), Size(rect.width(), rect.height())),
       //                 Color(255, 255, 0, 100));
 
       //gc.print_left(Fonts::chalk_normal,  Vector2i(30, -32), _("Title"));
-      //gc.print_right(Fonts::chalk_normal, Vector2i(rect.get_width() - 30, -32), _("Status"));
+      //gc.print_right(Fonts::chalk_normal, Vector2i(rect.width() - 30, -32), _("Status"));
 
-      int y = list_rect.top;
+      int y = list_rect.top();
       for(int i = page; i < (page + items_per_page) && i < levelset->get_level_count(); ++i)
       {
         // draw background highlight mark
@@ -333,25 +333,25 @@ public:
         // draw levelname
         if (globals::developer_mode)
         {
-          gc.print_left(Fonts::chalk_normal, Vector2i(list_rect.left + 40, y+4), levelset->get_level(i)->plf.get_resname());
+          gc.print_left(Fonts::chalk_normal, Vector2i(list_rect.left() + 40, y+4), levelset->get_level(i)->plf.get_resname());
         }
         else
         {
-          gc.print_left(Fonts::chalk_normal, Vector2i(list_rect.left + 40, y+4), _(levelset->get_level(i)->plf.get_levelname()));
+          gc.print_left(Fonts::chalk_normal, Vector2i(list_rect.left() + 40, y+4), _(levelset->get_level(i)->plf.get_levelname()));
         }
 
         // draw icon
         if (!levelset->get_level(i)->accessible)
         {
-          gc.draw(m_checkbox_locked, Vector2i(list_rect.left + 0, y));
+          gc.draw(m_checkbox_locked, Vector2i(list_rect.left() + 0, y));
         }
         else if (levelset->get_level(i)->finished)
         {
-          gc.draw(m_checkbox_marked, Vector2i(list_rect.left + 0, y));
+          gc.draw(m_checkbox_marked, Vector2i(list_rect.left() + 0, y));
         }
         else
         {
-          gc.draw(m_checkbox, Vector2i(list_rect.left + 0, y));
+          gc.draw(m_checkbox, Vector2i(list_rect.left() + 0, y));
         }
 
         y += item_height;
@@ -390,17 +390,17 @@ public:
 
   void on_pointer_move(int x, int y) override
   {
-    x -= rect.left;
-    y -= rect.top;
+    x -= rect.left();
+    y -= rect.top();
 
-    if (!list_rect.contains(Vector2i(x, y)))
+    if (!geom::contains(list_rect, geom::ipoint(x, y)))
     {
       current_level = -1;
     }
     else
     {
-      x -= list_rect.left; // NOLINT
-      y -= list_rect.top; // NOLINT
+      x -= list_rect.left();
+      y -= list_rect.top();
 
       current_level = y / item_height + page;
 
@@ -556,8 +556,8 @@ LevelMenu::resize(const Size& size_)
   x_pos = (size.width()  - 800)/2;
   y_pos = (size.height() - 600)/2;
 
-  levelset_selector->set_rect(Rect(Vector2i(x_pos + 60, y_pos + 50), Size(680, 500)));
-  level_selector   ->set_rect(Rect(Vector2i(x_pos + 60, y_pos + 50), Size(680, 500)));
+  levelset_selector->set_rect(Rect(geom::ipoint(x_pos + 60, y_pos + 50), Size(680, 500)));
+  level_selector   ->set_rect(Rect(geom::ipoint(x_pos + 60, y_pos + 50), Size(680, 500)));
 
   prev_button->set_pos(size.width()/2  + 280, size.height()/2 - 48 - 12);
   next_button->set_pos(size.width()/2  + 280, size.height()/2 + 12);

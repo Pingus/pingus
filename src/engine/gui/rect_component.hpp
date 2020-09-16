@@ -36,7 +36,7 @@ public:
     rect(rect_)
   {}
 
-  bool is_at (int x, int y) override { return rect.contains(Vector2i(x, y)); }
+  bool is_at (int x, int y) override { return geom::contains(rect, geom::ipoint(x, y)); }
   virtual void update_layout() {}
 
   void set_rect(const Rect& rect_)

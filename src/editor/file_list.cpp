@@ -42,7 +42,7 @@ FileList::FileList(const Rect& rect_) :
 void
 FileList::update_layout()
 {
-  hspace = rect.get_width()/2;
+  hspace = rect.width()/2;
   vspace = 20;
 
   num_pages = static_cast<int>(directory.size()) / items_per_page();
@@ -103,8 +103,8 @@ FileList::draw(DrawingContext& gc)
   if (end > int(directory.size()))
     end = static_cast<int>(directory.size());
 
-  int x = rect.left;
-  int y = rect.top;
+  int x = rect.left();
+  int y = rect.top();
   for(System::Directory::iterator i = directory.begin() + page * items_per_page();
       i != directory.begin() + end; ++i)
   {
@@ -126,9 +126,9 @@ FileList::draw(DrawingContext& gc)
                   ((i->type == System::DE_DIRECTORY) ? "[DIR]  " : "[FILE] ") + i->name);
 
     y += 20;
-    if (y > rect.bottom - vspace)
+    if (y > rect.bottom() - vspace)
     {
-      y = rect.top;
+      y = rect.top();
       x += hspace;
     }
   }
@@ -155,11 +155,11 @@ FileList::on_primary_button_release (int x, int y)
 void
 FileList::on_pointer_move (int x, int y)
 {
-  x = x - rect.left;
-  y = y - rect.top;
+  x = x - rect.left();
+  y = y - rect.top();
 
-  current_item = Math::clamp(0, y / vspace, rect.get_height() / vspace - 1)
-    + Math::clamp(0, x / hspace, rect.get_width() / hspace - 1) * (rect.get_height()/vspace);
+  current_item = Math::clamp(0, y / vspace, rect.height() / vspace - 1)
+    + Math::clamp(0, x / hspace, rect.width() / hspace - 1) * (rect.height()/vspace);
 
   current_item += page * items_per_page();
 
@@ -191,7 +191,7 @@ FileList::update (float delta)
 int
 FileList::items_per_page() const
 {
-  return (rect.get_height()/vspace * 2);
+  return (rect.height()/vspace * 2);
 }
 
 bool

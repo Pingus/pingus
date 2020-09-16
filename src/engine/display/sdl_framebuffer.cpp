@@ -110,14 +110,14 @@ SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Rect& srcr
   SDL_Rect dstrect;
   dstrect.x = static_cast<Sint16>(pos.x);
   dstrect.y = static_cast<Sint16>(pos.y);
-  dstrect.w = srcrect.get_width();
-  dstrect.h = srcrect.get_height();
+  dstrect.w = srcrect.width();
+  dstrect.h = srcrect.height();
 
   SDL_Rect sdlsrcrect;
-  sdlsrcrect.x = static_cast<Sint16>(srcrect.left);
-  sdlsrcrect.y = static_cast<Sint16>(srcrect.top);
-  sdlsrcrect.w = static_cast<Uint16>(srcrect.get_width());
-  sdlsrcrect.h = static_cast<Uint16>(srcrect.get_height());
+  sdlsrcrect.x = static_cast<Sint16>(srcrect.left());
+  sdlsrcrect.y = static_cast<Sint16>(srcrect.top());
+  sdlsrcrect.w = static_cast<Uint16>(srcrect.width());
+  sdlsrcrect.h = static_cast<Uint16>(srcrect.height());
 
   // FIXME: push render state
   SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
@@ -138,14 +138,13 @@ SDLFramebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Colo
 void
 SDLFramebuffer::draw_rect(const Rect& rect_, const Color& color)
 {
-  Rect rect = rect_;
-  rect.normalize();
+  Rect rect = geom::normalize(rect_);
 
   SDL_Rect sdl_rect;
-  sdl_rect.x = rect.left;
-  sdl_rect.y = rect.top;
-  sdl_rect.w = rect.get_width();
-  sdl_rect.h = rect.get_height();
+  sdl_rect.x = rect.left();
+  sdl_rect.y = rect.top();
+  sdl_rect.w = rect.width();
+  sdl_rect.h = rect.height();
 
   // FIXME: push render state
   SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
@@ -157,14 +156,13 @@ SDLFramebuffer::draw_rect(const Rect& rect_, const Color& color)
 void
 SDLFramebuffer::fill_rect(const Rect& rect_, const Color& color)
 {
-  Rect rect = rect_;
-  rect.normalize();
+  Rect rect = geom::normalize(rect_);
 
   SDL_Rect sdl_rect;
-  sdl_rect.x = rect.left;
-  sdl_rect.y = rect.top;
-  sdl_rect.w = rect.get_width();
-  sdl_rect.h = rect.get_height();
+  sdl_rect.x = rect.left();
+  sdl_rect.y = rect.top();
+  sdl_rect.w = rect.width();
+  sdl_rect.h = rect.height();
 
   SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
   SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
@@ -268,10 +266,10 @@ void
 SDLFramebuffer::push_cliprect(const Rect& rect)
 {
   SDL_Rect sdl_rect;
-  sdl_rect.x = static_cast<Sint16>(rect.left);
-  sdl_rect.y = static_cast<Sint16>(rect.top);
-  sdl_rect.w = static_cast<Uint16>(rect.get_width());
-  sdl_rect.h = static_cast<Uint16>(rect.get_height());
+  sdl_rect.x = static_cast<Sint16>(rect.left());
+  sdl_rect.y = static_cast<Sint16>(rect.top());
+  sdl_rect.w = static_cast<Uint16>(rect.width());
+  sdl_rect.h = static_cast<Uint16>(rect.height());
 
   if (!cliprect_stack.empty())
   {

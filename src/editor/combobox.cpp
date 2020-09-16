@@ -59,8 +59,9 @@ bool
 Combobox::is_at(int x, int y)
 {
   if (drop_down)
-    return Rect(Vector2i(rect.left, rect.top + get_box_offset()),
-                Size(rect.get_width(), rect.get_height() * static_cast<int>(item_list.size()))).contains(Vector2i(x,y));
+    return geom::contains(Rect(geom::ipoint(rect.left(), rect.top() + get_box_offset()),
+                               Size(rect.width(), rect.height() * static_cast<int>(item_list.size()))),
+                          geom::ipoint(x,y));
   else
     return RectComponent::is_at(x,y);
 }
@@ -85,10 +86,10 @@ Combobox::on_primary_button_press(int x, int y)
     drop_down = true;
     grab();
 
-    list_rect = Rect(Vector2i(rect.left,
-                              rect.top + get_box_offset()),
-                     Size(rect.get_width(),
-                          rect.get_height() * static_cast<int>(item_list.size())));
+    list_rect = Rect(geom::ipoint(rect.left(),
+                                  rect.top() + get_box_offset()),
+                     Size(rect.width(),
+                          rect.height() * static_cast<int>(item_list.size())));
 
     on_pointer_move(x,y);
   }
@@ -99,14 +100,14 @@ Combobox::draw(DrawingContext &gc)
 {
   { // draw the unopened box
     gc.draw_fillrect(rect, Color(255,255,255));
-    gc.draw(sprite, Vector2i(rect.right - 12, rect.top));
+    gc.draw(sprite, Vector2i(rect.right() - 12, rect.top()));
     gc.draw_rect(rect, Color(0,0,0));
 
     if (current_item != -1)
     {
       gc.print_left(Fonts::verdana11,
-                    Vector2i(rect.left + 5,
-                             rect.top + rect.get_height()/2 - Fonts::verdana11.get_height()/2),
+                    Vector2i(rect.left() + 5,
+                             rect.top() + rect.height()/2 - Fonts::verdana11.get_height()/2),
                     item_list[static_cast<size_t>(current_item)].label);
     }
   }
@@ -118,13 +119,13 @@ Combobox::draw(DrawingContext &gc)
     for (int i = 0; i < int(item_list.size()); ++i)
     {
       if (i == hover_item)
-        gc.draw_fillrect(Rect(Vector2i(rect.left, list_rect.top + rect.get_height()*i),
-                              Size(rect.get_width(), rect.get_height())),
+        gc.draw_fillrect(Rect(geom::ipoint(rect.left(), list_rect.top() + rect.height()*i),
+                              Size(rect.width(), rect.height())),
                          Color(150,200,255), 95);
 
       gc.print_left(Fonts::verdana11,
-                    Vector2i(list_rect.left + 5,
-                             list_rect.top + i * rect.get_height() + rect.get_height()/2 - Fonts::verdana11.get_height()/2),
+                    Vector2i(list_rect.left() + 5,
+                             list_rect.top() + i * rect.height() + rect.height()/2 - Fonts::verdana11.get_height()/2),
                     item_list[static_cast<size_t>(i)].label, 100);
     }
 
@@ -136,10 +137,10 @@ int
 Combobox::get_box_offset()
 {
   // open over the current item
-  //return -(rect.get_height() * current_item);
+  //return -(rect.height() * current_item);
 
   // open to the top
-  return -(rect.get_height() * static_cast<int>(item_list.size()));
+  return -(rect.height() * static_cast<int>(item_list.size()));
 }
 
 bool
@@ -161,9 +162,9 @@ Combobox::on_pointer_move(int x, int y)
 {
   if (drop_down)
   {
-    if (list_rect.contains(Vector2i(x,y)))
+    if (geom::contains(list_rect, geom::ipoint(x,y)))
     {
-      hover_item = (y - list_rect.top) / rect.get_height();
+      hover_item = (y - list_rect.top()) / rect.height();
       hover_item = Math::clamp(0, hover_item, int(item_list.size()-1));
     }
     else

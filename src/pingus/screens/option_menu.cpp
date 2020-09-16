@@ -239,9 +239,9 @@ OptionMenu::OptionMenu() :
   C(config_manager.on_drag_drop_scrolling_change.connect(std::bind(&CheckBox::set_state, dragdrop_scroll_box, std::placeholders::_1, false)));
 
   /*
-    defaults_label = new Label(_("Reset to Defaults:"), Rect(Vector2i(Display::get_width()/2 - 100, Display::get_height()/2 + 160), Size(170, 32)));
+    defaults_label = new Label(_("Reset to Defaults:"), Rect(geom::ipoint(Display::get_width()/2 - 100, Display::get_height()/2 + 160), Size(170, 32)));
     gui_manager->add(defaults_label);
-    defaults_box = new CheckBox(Rect(Vector2i(Display::get_width()/2 - 100 + 170, Display::get_height()/2 + 160), Size(32, 32)));
+    defaults_box = new CheckBox(Rect(geom::ipoint(Display::get_width()/2 - 100 + 170, Display::get_height()/2 + 160), Size(32, 32)));
     gui_manager->add(defaults_box);
   */
 }
@@ -256,10 +256,10 @@ OptionMenu::add_item(const std::string& label, std::unique_ptr<GUI::RectComponen
                      140 + y_offset + y_pos * 32),
             Size(320, 32));
 
-  Rect left(rect.left, rect.top,
-            rect.right - 180, rect.bottom);
-  Rect right(rect.left + 140, rect.top,
-             rect.right, rect.bottom);
+  Rect left(rect.left(), rect.top(),
+            rect.right() - 180, rect.bottom());
+  Rect right(rect.left() + 140, rect.top(),
+             rect.right(), rect.bottom());
 
   auto label_component = util::make_unique<Label>(label, Rect());
 
@@ -275,10 +275,10 @@ OptionMenu::add_item(const std::string& label, std::unique_ptr<GUI::RectComponen
   }
   else if (dynamic_cast<CheckBox*>(control.get()))
   {
-    control->set_rect(Rect(Vector2i(rect.left, rect.top),
+    control->set_rect(Rect(geom::ipoint(rect.left(), rect.top()),
                            Size(32, 32)));
-    label_component->set_rect(Rect(rect.left + 40,  rect.top,
-                                   rect.right, rect.bottom));
+    label_component->set_rect(Rect(rect.left() + 40,  rect.top(),
+                                   rect.right(), rect.bottom()));
   }
   else
   {
@@ -356,9 +356,9 @@ OptionMenu::resize(const Size& size_)
     ok_button->set_pos(size.width()/2 + 245, size.height()/2 + 150);
   /*
   if (defaults_label)
-    defaults_label->set_rect(Rect(Vector2i(Display::get_width()/2 - 100, Display::get_height()/2 + 160), Size(170, 32)));
+    defaults_label->set_rect(Rect(geom::ipoint(Display::get_width()/2 - 100, Display::get_height()/2 + 160), Size(170, 32)));
   if (defaults_box)
-    defaults_box->set_rect(Rect(Vector2i(Display::get_width()/2 - 100 + 170, Display::get_height()/2 + 160), Size(32, 32)));
+    defaults_box->set_rect(Rect(geom::ipoint(Display::get_width()/2 - 100 + 170, Display::get_height()/2 + 160), Size(32, 32)));
   */
 
   if (options.empty())
@@ -374,11 +374,11 @@ OptionMenu::resize(const Size& size_)
     if ((*i).label)
     {
       rect = (*i).label->get_rect();
-      (*i).label->set_rect(Rect(Vector2i(rect.left + x_diff, rect.top + y_diff), rect.get_size()));
+      (*i).label->set_rect(Rect(geom::ipoint(rect.left() + x_diff, rect.top() + y_diff), rect.size()));
     }
 
     rect = (*i).control->get_rect();
-    (*i).control->set_rect(Rect(Vector2i(rect.left + x_diff, rect.top + y_diff), rect.get_size()));
+    (*i).control->set_rect(Rect(geom::ipoint(rect.left() + x_diff, rect.top() + y_diff), rect.size()));
   }
 }
 

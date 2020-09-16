@@ -190,11 +190,10 @@ GroupLevelObj::get_rect() const
     {
       const Rect& rhs = (*it)->get_rect();
 
-      rect.left = std::min(rect.left, rhs.left);
-      rect.top  = std::min(rect.top, rhs.top);
-
-      rect.right  = std::max(rect.right, rhs.right);
-      rect.bottom = std::max(rect.bottom, rhs.bottom);
+      rect = Rect(std::min(rect.left(), rhs.left()),
+                  std::min(rect.top(), rhs.top()),
+                  std::max(rect.right(), rhs.right()),
+                  std::max(rect.bottom(), rhs.bottom()));
     }
     return rect;
   }

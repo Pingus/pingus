@@ -122,11 +122,11 @@ ObjectSelectorList::on_primary_button_release (int x, int y)
       // is the Viewport, else no drag should take place, this
       // checks if the current mouse_over_comp is the
       // ObjectSelector, which is good enough but not perfect
-      if (!object_selector->get_rect().contains(Vector2i(x + object_selector->get_rect().left,
-                                                         y + object_selector->get_rect().top)))
+      if (!geom::contains(object_selector->get_rect(), geom::ipoint(x + object_selector->get_rect().left(),
+                                                                    y + object_selector->get_rect().top())))
       {
-        Vector2i p = editor->get_viewport()->screen2world(x + object_selector->get_rect().left,
-                                                          y + object_selector->get_rect().top);
+        Vector2i p = editor->get_viewport()->screen2world(x + object_selector->get_rect().left(),
+                                                          y + object_selector->get_rect().top());
 
         // place object with left/top instead of center origin
         p -= Vector2i(set->get_objects()[static_cast<size_t>(current_object)]->sprite.get_width()/2,
@@ -177,7 +177,7 @@ ObjectSelectorList::on_pointer_move (int x, int y)
 
   real_mouse_pos = Vector2i(x, y);
 
-  mouse_pos = Vector2i(x - rect.left, y - rect.top);
+  mouse_pos = Vector2i(x - rect.left(), y - rect.top());
 
   int width = 5;
   int height = (static_cast<int>(set->get_objects().size()) / width) +
@@ -208,7 +208,7 @@ ObjectSelectorList::on_pointer_move (int x, int y)
   if (mode == SCROLLING)
   {
     offset = old_offset + static_cast<float>(y - drag_start.y);
-    offset = Math::clamp(Math::min(static_cast<float>(rect.get_height()) - (static_cast<float>(height) * 48.0f), 0.0f), offset, 0.0f);
+    offset = Math::clamp(Math::min(static_cast<float>(rect.height()) - (static_cast<float>(height) * 48.0f), 0.0f), offset, 0.0f);
   }
 }
 
@@ -223,7 +223,7 @@ ObjectSelectorList::scroll(float y)
     int width = 5;
     int height = (static_cast<int>(set->get_objects().size()) / width) +
       ((static_cast<int>(set->get_objects().size()) % width > 0) ? 1 : 0);
-    offset = Math::clamp(Math::min(static_cast<float>(rect.get_height()) - (static_cast<float>(height) * 48.0f),
+    offset = Math::clamp(Math::min(static_cast<float>(rect.height()) - (static_cast<float>(height) * 48.0f),
                                    0.0f), offset, 0.0f);
   }
 }

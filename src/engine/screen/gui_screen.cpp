@@ -184,7 +184,7 @@ void
 GUIScreen::resize(const Size& size_)
 {
   Screen::resize(size_);
-  gui_manager->set_rect(Rect(Vector2i(0, 0), size));
+  gui_manager->set_rect(Rect(geom::ipoint(0, 0), size));
 }
 
 /* EOF */

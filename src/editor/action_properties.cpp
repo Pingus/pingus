@@ -58,7 +58,7 @@ ActionProperties::~ActionProperties()
 void
 ActionProperties::draw_background(DrawingContext& gc)
 {
-  GUIStyle::draw_raised_box(gc, Rect(0,0,rect.get_width(), rect.get_height()));
+  GUIStyle::draw_raised_box(gc, Rect(0,0,rect.width(), rect.height()));
 }
 
 void
@@ -71,8 +71,8 @@ void
 ActionProperties::add_action(ActionName::Enum id)
 {
   ActionComponent comp;
-  comp.checkbox = create<Checkbox>(Rect(Vector2i(10,10 + y_pos), Size(80,20)), ActionName::to_screenname(id));
-  comp.inputbox = create<Inputbox>(Rect(Vector2i(100,10 + y_pos), Size(40,20)));
+  comp.checkbox = create<Checkbox>(Rect(geom::ipoint(10,10 + y_pos), Size(80,20)), ActionName::to_screenname(id));
+  comp.inputbox = create<Inputbox>(Rect(geom::ipoint(100,10 + y_pos), Size(40,20)));
 
   comp.checkbox->set_checked(true);
   comp.inputbox->set_text("20");

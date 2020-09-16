@@ -51,32 +51,32 @@ LevelProperties::LevelProperties(EditorScreen* editor_, const Rect& rect_) :
   height(),
   music()
 {
-  create<Label>(Rect(Vector2i( 10,  10), Size( 80, 20)), _("Author:"));
+  create<Label>(Rect(geom::ipoint( 10,  10), Size( 80, 20)), _("Author:"));
   author = create<Inputbox>();
 
-  create<Label>(Rect(Vector2i( 10,  32), Size( 80, 20)), _("Levelname:"));
+  create<Label>(Rect(geom::ipoint( 10,  32), Size( 80, 20)), _("Levelname:"));
   levelname = create<Inputbox>();
 
-  create<Label>(Rect(Vector2i( 10,  54), Size( 80, 20)), _("Description:"));
+  create<Label>(Rect(geom::ipoint( 10,  54), Size( 80, 20)), _("Description:"));
   description = create<Inputbox>();
 
   int y = 116;
-  create<Label>(Rect(Vector2i( 10,  y), Size( 80, 20)), _("Pingus Count:"));
+  create<Label>(Rect(geom::ipoint( 10,  y), Size( 80, 20)), _("Pingus Count:"));
   number_of_pingus = create<Inputbox>();
 
-  create<Label>(Rect(Vector2i( 10,  y+22), Size( 80, 20)), _("Pingus to Save:"));
+  create<Label>(Rect(geom::ipoint( 10,  y+22), Size( 80, 20)), _("Pingus to Save:"));
   number_to_save = create<Inputbox>();
 
-  create<Label>(Rect(Vector2i( 10,  y+44), Size( 80, 20)), _("Time:"));
+  create<Label>(Rect(geom::ipoint( 10,  y+44), Size( 80, 20)), _("Time:"));
   time = create<Inputbox>();
 
-  create<Label>(Rect(Vector2i( 10,  y+66), Size( 80, 20)), _("Width:"));
+  create<Label>(Rect(geom::ipoint( 10,  y+66), Size( 80, 20)), _("Width:"));
   width = create<Inputbox>();
 
-  create<Label>(Rect(Vector2i( 10,  y+88), Size( 80, 20)), _("Height:"));
+  create<Label>(Rect(geom::ipoint( 10,  y+88), Size( 80, 20)), _("Height:"));
   height = create<Inputbox>();
 
-  create<Label>(Rect(Vector2i( 10, y+110), Size( 80, 20)), _("Music:"));
+  create<Label>(Rect(geom::ipoint( 10, y+110), Size( 80, 20)), _("Music:"));
   music = create<Inputbox>();
 
   author->on_change.connect(std::bind(&LevelProperties::on_author_change, this, std::placeholders::_1));
@@ -99,7 +99,7 @@ LevelProperties::~LevelProperties()
 void
 LevelProperties::draw_background(DrawingContext& gc)
 {
-  GUIStyle::draw_raised_box(gc, Rect(0,0,rect.get_width(), rect.get_height()));
+  GUIStyle::draw_raised_box(gc, Rect(0,0,rect.width(), rect.height()));
 }
 
 void
@@ -204,20 +204,20 @@ LevelProperties::update_layout()
 {
   GroupComponent::update_layout();
 
-  int w = rect.get_width() - 120;
-  author->set_rect(Rect(Vector2i(110,  10), Size(  w, 20)));
-  levelname->set_rect(Rect(Vector2i(110,  32), Size(  w, 20)));
-  description->set_rect(Rect(Vector2i(110,  54), Size(  w, 20*3)));
+  int w = rect.width() - 120;
+  author->set_rect(Rect(geom::ipoint(110,  10), Size(  w, 20)));
+  levelname->set_rect(Rect(geom::ipoint(110,  32), Size(  w, 20)));
+  description->set_rect(Rect(geom::ipoint(110,  54), Size(  w, 20*3)));
 
   int y = 116;
-  number_of_pingus->set_rect(Rect(Vector2i(110,  y), Size(  w, 20)));
-  number_to_save->set_rect(Rect(Vector2i(110,  y+22), Size(  w, 20)));
+  number_of_pingus->set_rect(Rect(geom::ipoint(110,  y), Size(  w, 20)));
+  number_to_save->set_rect(Rect(geom::ipoint(110,  y+22), Size(  w, 20)));
 
-  time->set_rect(Rect(Vector2i(110,  y+44), Size(  w, 20)));
-  width->set_rect(Rect(Vector2i(110,  y+66), Size(  w, 20)));
-  height->set_rect(Rect(Vector2i(110,  y+88), Size(  w, 20)));
+  time->set_rect(Rect(geom::ipoint(110,  y+44), Size(  w, 20)));
+  width->set_rect(Rect(geom::ipoint(110,  y+66), Size(  w, 20)));
+  height->set_rect(Rect(geom::ipoint(110,  y+88), Size(  w, 20)));
 
-  music->set_rect(Rect(Vector2i(110, y+110), Size(  w, 20)));
+  music->set_rect(Rect(geom::ipoint(110, y+110), Size(  w, 20)));
 }
 
 } // namespace Editor

@@ -21,11 +21,11 @@
 #include <vector>
 #include <SDL.h>
 
+#include "math/rect.hpp"
 #include "math/size.hpp"
 #include "pingus/options.hpp"
 
 class Vector2i;
-class Rect;
 class Color;
 class Framebuffer;
 

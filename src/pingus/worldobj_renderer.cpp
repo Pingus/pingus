@@ -76,21 +76,19 @@ WorldObjRenderer::get_clip_rect() const
   }
   else
   {
-    Rect rect;
-
-    rect.left   = m_draw_op.front().pos.x;
-    rect.top    = m_draw_op.front().pos.y;
-    rect.right  = rect.left + m_draw_op.front().surface.get_width();
-    rect.bottom = rect.top + m_draw_op.front().surface.get_height();
+    Rect rect(m_draw_op.front().pos.x,
+              m_draw_op.front().pos.y,
+              rect.left() + m_draw_op.front().surface.get_width(),
+              rect.top() + m_draw_op.front().surface.get_height());
 
     for(auto it = m_draw_op.begin()+1; it != m_draw_op.end(); ++it)
     {
       Rect img(it->pos, it->surface.get_size());
 
-      rect.left   = std::min(img.left,   rect.left);
-      rect.top    = std::min(img.top,    rect.top);
-      rect.right  = std::max(img.right,  rect.right);
-      rect.bottom = std::max(img.bottom, rect.bottom);
+      rect = Rect(std::min(img.left(),   rect.left()),
+                  std::min(img.top(),    rect.top()),
+                  std::max(img.right(),  rect.right()),
+                  std::max(img.bottom(), rect.bottom()));
     }
 
     return rect;

@@ -284,10 +284,10 @@ SExprReaderMappingImpl::read_rect(const char* key, Rect& rect) const
   sexp::Value const* sub = get_subsection(key);
   if (sub && sexp::list_length(*sub) == 4)
   {
-    rect.left   = sexp::list_ref(*sub, 0).as_int();
-    rect.top    = sexp::list_ref(*sub, 1).as_int();
-    rect.right  = sexp::list_ref(*sub, 2).as_int();
-    rect.bottom = sexp::list_ref(*sub, 3).as_int();
+    rect = Rect(sexp::list_ref(*sub, 0).as_int(),
+                sexp::list_ref(*sub, 1).as_int(),
+                sexp::list_ref(*sub, 2).as_int(),
+                sexp::list_ref(*sub, 3).as_int());
     return true;
   }
   else

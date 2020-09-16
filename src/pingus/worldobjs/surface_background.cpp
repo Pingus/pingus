@@ -158,8 +158,8 @@ SurfaceBackground::draw (SceneContext& gc)
 
   Vector2i offset = gc.color().world_to_screen(Vector2i(0,0));
 
-  offset.x -= gc.color().get_rect().left;
-  offset.y -= gc.color().get_rect().top;
+  offset.x -= gc.color().get_rect().left();
+  offset.y -= gc.color().get_rect().top();
 
   int start_x = static_cast<int>((static_cast<float>(offset.x) * para_x) + scroll_ox);
   int start_y = static_cast<int>((static_cast<float>(offset.y) * para_y) + scroll_oy);

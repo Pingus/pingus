@@ -22,8 +22,9 @@
 
 #include <geom/fwd.hpp>
 
+#include "math/rect.hpp"
+
 class Color;
-class Rect;
 class Vector2i;
 class Vector3f;
 

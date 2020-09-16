@@ -50,7 +50,7 @@ public:
   ~FontDrawingRequest() override {}
 
   void render(Framebuffer& fb, const Rect& rect) override {
-    font.render(origin, pos.x + rect.left, pos.y + rect.top, text, fb);
+    font.render(origin, pos.x + rect.left(), pos.y + rect.top(), text, fb);
   }
 };
 
@@ -69,7 +69,7 @@ public:
   ~SpriteDrawingRequest() override {}
 
   void render(Framebuffer& fb, const Rect& rect) override {
-    sprite.render(pos.x + rect.left, pos.y + rect.top, fb);
+    sprite.render(pos.x + rect.left(), pos.y + rect.top(), fb);
   }
 };
 
@@ -112,8 +112,8 @@ public:
 
   void render(Framebuffer& fb, const Rect& rect) override
   {
-    fb.draw_line(pos1 + Vector2i(rect.left, rect.top),
-                 pos2 + Vector2i(rect.left, rect.top), color);
+    fb.draw_line(pos1 + Vector2i(rect.left(), rect.top()),
+                 pos2 + Vector2i(rect.left(), rect.top()), color);
   }
 };
 
@@ -134,16 +134,16 @@ public:
   {
     if (filled)
     {
-      fb.fill_rect(Rect(Vector2i(d_rect.left + rect.left,
-                                 d_rect.top  + rect.top),
-                        d_rect.get_size()),
+      fb.fill_rect(Rect(geom::ipoint(d_rect.left() + rect.left(),
+                                 d_rect.top()  + rect.top()),
+                        d_rect.size()),
                    color);
     }
     else
     {
-      fb.draw_rect(Rect(Vector2i(d_rect.left + rect.left,
-                                 d_rect.top  + rect.top),
-                        d_rect.get_size()),
+      fb.draw_rect(Rect(geom::ipoint(d_rect.left() + rect.left(),
+                                 d_rect.top()  + rect.top()),
+                        d_rect.size()),
                    color);
     }
   }
@@ -196,10 +196,10 @@ DrawingContext::~DrawingContext()
 void
 DrawingContext::render(Framebuffer& fb, const Rect& parent_rect)
 {
-  Rect this_rect(Math::max(rect.left   + parent_rect.left, parent_rect.left),
-                 Math::max(rect.top    + parent_rect.top,  parent_rect.top),
-                 Math::min(rect.right  + parent_rect.left, parent_rect.right),
-                 Math::min(rect.bottom + parent_rect.top,  parent_rect.bottom));
+  Rect this_rect(Math::max(rect.left()   + parent_rect.left(), parent_rect.left()),
+                 Math::max(rect.top()    + parent_rect.top(),  parent_rect.top()),
+                 Math::min(rect.right()  + parent_rect.left(), parent_rect.right()),
+                 Math::min(rect.bottom() + parent_rect.top(),  parent_rect.bottom()));
 
   if (do_clipping)
     fb.push_cliprect(this_rect);
@@ -271,10 +271,10 @@ DrawingContext::draw_line(const Vector2i& pos1, const Vector2i& pos2,
 void
 DrawingContext::draw_fillrect(const Rect& rect_, const Color& color_, float z_)
 {
-  draw(new RectDrawingRequest(Rect(rect_.left + translate_stack.back().x,
-                                   rect_.top + translate_stack.back().y,
-                                   rect_.right + translate_stack.back().x,
-                                   rect_.bottom + translate_stack.back().y),
+  draw(new RectDrawingRequest(Rect(rect_.left() + translate_stack.back().x,
+                                   rect_.top() + translate_stack.back().y,
+                                   rect_.right() + translate_stack.back().x,
+                                   rect_.bottom() + translate_stack.back().y),
                               color_,
                               true,
                               z_));
@@ -283,10 +283,10 @@ DrawingContext::draw_fillrect(const Rect& rect_, const Color& color_, float z_)
 void
 DrawingContext::draw_rect(const Rect& rect_, const Color& color_, float z_)
 {
-  draw(new RectDrawingRequest(Rect(rect_.left   + translate_stack.back().x,
-                                   rect_.top    + translate_stack.back().y,
-                                   rect_.right  + translate_stack.back().x,
-                                   rect_.bottom + translate_stack.back().y),
+  draw(new RectDrawingRequest(Rect(rect_.left()   + translate_stack.back().x,
+                                   rect_.top()    + translate_stack.back().y,
+                                   rect_.right()  + translate_stack.back().x,
+                                   rect_.bottom() + translate_stack.back().y),
                               color_,
                               false,
                               z_));
@@ -328,7 +328,7 @@ DrawingContext::reset_modelview()
 Rect
 DrawingContext::get_world_clip_rect() const
 {
-  return Rect(Vector2i(-translate_stack.back().x,
+  return Rect(geom::ipoint(-translate_stack.back().x,
                        -translate_stack.back().y),
               Size(get_width(), get_height()));
 }
@@ -348,13 +348,13 @@ DrawingContext::get_rect() const
 int
 DrawingContext::get_width() const
 {
-  return rect.get_width();
+  return rect.width();
 }
 
 int
 DrawingContext::get_height() const
 {
-  return rect.get_height();
+  return rect.height();
 }
 
 void
@@ -390,15 +390,15 @@ DrawingContext::print_right(const Font& font_, const Vector2i& pos, const std::s
 Vector2i
 DrawingContext::screen_to_world(const Vector2i& pos)
 {
-  return pos - Vector2i(translate_stack.back().x + rect.left,
-                        translate_stack.back().y + rect.top);
+  return pos - Vector2i(translate_stack.back().x + rect.left(),
+                        translate_stack.back().y + rect.top());
 }
 
 Vector2i
 DrawingContext::world_to_screen(const Vector2i& pos)
 {
-  return pos + Vector2i(translate_stack.back().x + rect.left,
-                        translate_stack.back().y + rect.top);
+  return pos + Vector2i(translate_stack.back().x + rect.left(),
+                        translate_stack.back().y + rect.top());
 }
 
 /* EOF */

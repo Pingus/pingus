@@ -31,10 +31,4 @@
 
 #include <ostream>
 
-std::ostream& operator<<(std::ostream& s, const Rect& rect)
-{
-  return s << "Rect(" << rect.left << ", " << rect.top << ", "
-           << rect.right << ", " << rect.bottom << ")";
-}
-
 /* EOF */

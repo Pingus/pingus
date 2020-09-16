@@ -39,12 +39,12 @@ ChoiceBox::draw(DrawingContext& gc)
     if (current_choice >= 0 && current_choice < int(choices.size()))
     {
       //if (current_choice != 0)
-      gc.print_left(Fonts::chalk_normal,  Vector2i(rect.left, rect.top), "<");
+      gc.print_left(Fonts::chalk_normal,  Vector2i(rect.left(), rect.top()), "<");
 
       //if (current_choice != int(choices.size())-1)
-      gc.print_right(Fonts::chalk_normal, Vector2i(rect.right, rect.top), ">");
+      gc.print_right(Fonts::chalk_normal, Vector2i(rect.right(), rect.top()), ">");
 
-      gc.print_center(Fonts::chalk_normal, Vector2i(rect.left + rect.get_width()/2, rect.top),
+      gc.print_center(Fonts::chalk_normal, Vector2i(rect.left() + rect.width()/2, rect.top()),
                       choices[static_cast<size_t>(current_choice)]);
     }
   }
@@ -56,9 +56,9 @@ ChoiceBox::on_primary_button_press(int x, int y)
   if (!choices.empty())
   {
     int last_current_choice = current_choice;
-    x -= rect.left;
+    x -= rect.left();
 
-    if (x > rect.get_width()/2)
+    if (x > rect.width()/2)
     {
       current_choice += 1;
       if (current_choice >= int(choices.size()))

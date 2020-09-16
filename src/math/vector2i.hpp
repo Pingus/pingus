@@ -88,6 +88,10 @@ public:
   {
     return (other.x != x || other.y != y);
   }
+
+  operator geom::ipoint() const {
+    return geom::ipoint(x, y);
+  }
 };
 
 std::ostream& operator<<(std::ostream& s, const Vector2i& v);

@@ -193,8 +193,8 @@ WorldmapScreen::draw_foreground(DrawingContext& gc)
 Rect
 WorldmapScreen::get_trans_rect() const
 {
-  return Rect(Vector2i(Math::max((Display::get_width()  - worldmap->get_width())/2,  0),
-                       Math::max((Display::get_height() - worldmap->get_height())/2, 0)),
+  return Rect(geom::ipoint(Math::max((Display::get_width()  - worldmap->get_width())/2,  0),
+                          Math::max((Display::get_height() - worldmap->get_height())/2, 0)),
               Size(Math::min(Display::get_width(),  worldmap->get_width()),
                    Math::min(Display::get_height(), worldmap->get_height())));
 }

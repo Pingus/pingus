@@ -403,15 +403,15 @@ Surface::clone() const
 Surface
 Surface::subsection(const Rect& rect) const
 {
-  assert(rect.left  >= 0);
-  assert(rect.top   >= 0);
-  assert(rect.right <= impl->surface->w);
-  assert(rect.top   <= impl->surface->h);
+  assert(rect.left()  >= 0);
+  assert(rect.top()   >= 0);
+  assert(rect.right() <= impl->surface->w);
+  assert(rect.top()   <= impl->surface->h);
 
   SDL_Surface* new_surface
     = Blitter::create_surface_from_format(impl->surface,
-                                          rect.get_width(),
-                                          rect.get_height());
+                                          rect.width(),
+                                          rect.height());
 
   SDL_LockSurface(impl->surface);
   SDL_LockSurface(new_surface);
@@ -420,8 +420,8 @@ Surface::subsection(const Rect& rect) const
     memcpy(static_cast<uint8_t*>(new_surface->pixels)
            + (y * new_surface->pitch),
            static_cast<uint8_t*>(impl->surface->pixels)
-           + (impl->surface->pitch * (y + rect.top))
-           + rect.left * impl->surface->format->BytesPerPixel,
+           + (impl->surface->pitch * (y + rect.top()))
+           + rect.left() * impl->surface->format->BytesPerPixel,
            static_cast<size_t>(new_surface->pitch));
   }
   SDL_UnlockSurface(new_surface);

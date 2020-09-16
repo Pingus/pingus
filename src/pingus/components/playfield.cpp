@@ -33,7 +33,7 @@ Playfield::Playfield(Server* server_, GameSession* session_, const Rect& rect_) 
   scroll_speed(),
   scroll_center(),
   scene_context(new SceneContext(rect_)),
-  state(rect_.get_width(), rect_.get_height()),
+  state(rect_.width(), rect_.height()),
   capture_rectangle(session),
   clipping_rectangles(),
   mouse_pos(),
@@ -41,7 +41,7 @@ Playfield::Playfield(Server* server_, GameSession* session_, const Rect& rect_) 
 {
   mouse_scrolling    = false;
 
-  state.set_limit(Rect(Vector2i(0, 0),
+  state.set_limit(Rect(geom::ipoint(0, 0),
                        Size(server->get_world()->get_width(),
                             server->get_world()->get_height())));
 
@@ -70,7 +70,7 @@ Playfield::draw(DrawingContext& gc)
   gc.draw(new SceneContextDrawingRequest(scene_context.get(), Vector2i(0,0), -10000));
 
   gc.push_modelview();
-  gc.translate(rect.left, rect.top);
+  gc.translate(rect.left(), rect.top());
   // Draw the scrolling band
   if (mouse_scrolling && !globals::drag_drop_scrolling)
   {
@@ -187,8 +187,8 @@ Playfield::on_key_pressed(const Input::KeyboardEvent& ev)
 void
 Playfield::on_primary_button_press(int x, int y)
 {
-  x -= rect.left;
-  y -= rect.top;
+  x -= rect.left();
+  y -= rect.top();
 
   if (session)
   {
@@ -204,8 +204,8 @@ Playfield::on_primary_button_press(int x, int y)
 void
 Playfield::on_secondary_button_press(int x, int y)
 {
-  x -= rect.left;
-  y -= rect.top;
+  x -= rect.left();
+  y -= rect.top();
 
   mouse_scrolling = true;
   scroll_center.x = x;
@@ -217,8 +217,8 @@ Playfield::on_secondary_button_press(int x, int y)
 void
 Playfield::on_secondary_button_release (int x, int y)
 {
-  x -= rect.left; // NOLINT
-  y -= rect.top; // NOLINT
+  x -= rect.left();
+  y -= rect.top();
 
   mouse_scrolling = false;
 }
@@ -226,8 +226,8 @@ Playfield::on_secondary_button_release (int x, int y)
 void
 Playfield::on_pointer_move (int x, int y)
 {
-  x -= rect.left;
-  y -= rect.top;
+  x -= rect.left();
+  y -= rect.top();
 
   // FIXME: useless stuff, but currently the controller doesn't have a state
   mouse_pos.x = x;
@@ -287,7 +287,7 @@ Playfield::scroll (int x, int y)
 void
 Playfield::update_layout()
 {
-  state.set_size(rect.get_width(), rect.get_height());
+  state.set_size(rect.width(), rect.height());
   scene_context->set_rect(rect);
 }
 

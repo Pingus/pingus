@@ -180,16 +180,16 @@ OpenGLFramebuffer::push_cliprect(const Rect& rect)
   }
   else
   {
-    cliprect_stack.push_back(Rect(Math::max(cliprect_stack.back().left,   rect.left),
-                                  Math::max(cliprect_stack.back().top,    rect.top),
-                                  Math::min(cliprect_stack.back().right,  rect.right),
-                                  Math::min(cliprect_stack.back().bottom, rect.bottom)));
+    cliprect_stack.push_back(Rect(Math::max(cliprect_stack.back().left(),   rect.left()),
+                                  Math::max(cliprect_stack.back().top(),    rect.top()),
+                                  Math::min(cliprect_stack.back().right(),  rect.right()),
+                                  Math::min(cliprect_stack.back().bottom(), rect.bottom())));
   }
 
-  glScissor(cliprect_stack.back().left,
-            get_size().height() - cliprect_stack.back().bottom,
-            cliprect_stack.back().get_width(),
-            cliprect_stack.back().get_height());
+  glScissor(cliprect_stack.back().left(),
+            get_size().height() - cliprect_stack.back().bottom(),
+            cliprect_stack.back().width(),
+            cliprect_stack.back().height());
 }
 
 void
@@ -204,8 +204,8 @@ OpenGLFramebuffer::pop_cliprect()
   else
   {
     const Rect& rect = cliprect_stack.back();
-    glScissor(rect.left,        rect.top,
-              rect.get_width(), rect.get_height());
+    glScissor(rect.left(), rect.top(),
+              rect.width(), rect.height());
   }
 }
 
@@ -223,25 +223,25 @@ OpenGLFramebuffer::draw_surface(const FramebufferSurface& src, const Rect& srcre
   glBindTexture(GL_TEXTURE_2D, texture->get_handle());
 
   int vertices[] = {
-    pos.x,                     pos.y,
-    pos.x+srcrect.get_width(), pos.y,
-    pos.x+srcrect.get_width(), pos.y+srcrect.get_height(),
-    pos.x,                     pos.y+srcrect.get_height(),
+    pos.x,                        pos.y,
+    pos.x + srcrect.width(), pos. y,
+    pos.x + srcrect.width(), pos. y + srcrect.height(),
+    pos.x,                        pos.y + srcrect.height(),
   };
   glVertexPointer(2, GL_INT, 0, vertices);
 
   float uvs[] = {
-    static_cast<float>(srcrect.left)   / static_cast<float>(texture->get_texture_size().width()),
-    static_cast<float>(srcrect.top)    / static_cast<float>(texture->get_texture_size().height()),
+    static_cast<float>(srcrect.left())   / static_cast<float>(texture->get_texture_size().width()),
+    static_cast<float>(srcrect.top())    / static_cast<float>(texture->get_texture_size().height()),
 
-    static_cast<float>(srcrect.right)  / static_cast<float>(texture->get_texture_size().width()),
-    static_cast<float>(srcrect.top)    / static_cast<float>(texture->get_texture_size().height()),
+    static_cast<float>(srcrect.right())  / static_cast<float>(texture->get_texture_size().width()),
+    static_cast<float>(srcrect.top())    / static_cast<float>(texture->get_texture_size().height()),
 
-    static_cast<float>(srcrect.right)  / static_cast<float>(texture->get_texture_size().width()),
-    static_cast<float>(srcrect.bottom) / static_cast<float>(texture->get_texture_size().height()),
+    static_cast<float>(srcrect.right())  / static_cast<float>(texture->get_texture_size().width()),
+    static_cast<float>(srcrect.bottom()) / static_cast<float>(texture->get_texture_size().height()),
 
-    static_cast<float>(srcrect.left)   / static_cast<float>(texture->get_texture_size().width()),
-    static_cast<float>(srcrect.bottom) / static_cast<float>(texture->get_texture_size().height())
+    static_cast<float>(srcrect.left())   / static_cast<float>(texture->get_texture_size().width()),
+    static_cast<float>(srcrect.bottom()) / static_cast<float>(texture->get_texture_size().height())
   };
 
   glTexCoordPointer(2, GL_FLOAT, 0, uvs);
@@ -279,10 +279,10 @@ OpenGLFramebuffer::draw_rect(const Rect& rect, const Color& color)
   glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
   int vertices[] = {
-    rect.left,  rect.top,
-    rect.right, rect.top,
-    rect.right, rect.bottom,
-    rect.left,  rect.bottom,
+    rect.left(),  rect.top(),
+    rect.right(), rect.top(),
+    rect.right(), rect.bottom(),
+    rect.left(),  rect.bottom(),
   };
   glVertexPointer(2, GL_INT, 0, vertices);
 
@@ -301,10 +301,10 @@ OpenGLFramebuffer::fill_rect(const Rect& rect, const Color& color)
   glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
   int vertices[] = {
-    rect.left,  rect.top,
-    rect.right, rect.top,
-    rect.right, rect.bottom,
-    rect.left,  rect.bottom,
+    rect.left(),  rect.top(),
+    rect.right(), rect.top(),
+    rect.right(), rect.bottom(),
+    rect.left(),  rect.bottom(),
   };
   glVertexPointer(2, GL_INT, 0, vertices);
 

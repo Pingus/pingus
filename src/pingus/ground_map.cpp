@@ -135,10 +135,10 @@ GroundMap::draw(SceneContext& gc)
     draw_colmap(gc);
 
   // Trying to calc which parts of the tilemap needs to be drawn
-  int start_x = Math::max(0, display.left / globals::tile_size);
-  int start_y = Math::max(0, display.top  / globals::tile_size);
-  int tilemap_width  = display.get_width()  / globals::tile_size + 1;
-  int tilemap_height = display.get_height() / globals::tile_size + 1;
+  int start_x = Math::max(0, display.left() / globals::tile_size);
+  int start_y = Math::max(0, display.top()  / globals::tile_size);
+  int tilemap_width  = display.width()  / globals::tile_size + 1;
+  int tilemap_height = display.height() / globals::tile_size + 1;
 
   // drawing the stuff
   for (int x = start_x; x <= (start_x + tilemap_width) && x < tile_width; ++x)
