@@ -33,30 +33,12 @@
 #ifndef header_origin
 #define header_origin
 
-#include <string>
+#include <geom/origin.hpp>
+#include "math/vector2i.hpp"
 
-#include "math/size.hpp"
-#include "vector2i.hpp"
-
-//: Alignment origins.
-//- !group=Core/Math!
-//- !header=core.h!
-enum Origin
-{
-  origin_top_left,
-  origin_top_center,
-  origin_top_right,
-  origin_center_left,
-  origin_center,
-  origin_center_right,
-  origin_bottom_left,
-  origin_bottom_center,
-  origin_bottom_right
-};
+using Origin = geom::origin;
 
 Origin string2origin(const std::string& str);
 std::string origin2string(Origin origin);
-
-Vector2i calc_origin(Origin origin, const Size& size);
 
 #endif

@@ -120,7 +120,7 @@ Resource::load_thumb_sprite(const std::string& name)
                       std::min(surface.get_height(), 48));
 
       Sprite sprite(surface.scale(thumb_size.width(), thumb_size.height()));
-      sprite.set_hotspot(origin_top_left, (48 - sprite.get_width())/2, (48 - sprite.get_height())/2);
+      sprite.set_hotspot(Origin::TOP_LEFT, (48 - sprite.get_width())/2, (48 - sprite.get_height())/2);
       return sprite;
     }
   }

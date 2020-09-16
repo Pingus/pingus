@@ -34,6 +34,8 @@
 
 #include "math/origin.hpp"
 #include "math/vector2f.hpp"
+#include "math/vector2i.hpp"
+#include "math/size.hpp"
 
 class Rectf;
 
@@ -220,21 +222,6 @@ public:
       bottom = top;
       top = temp;
     }
-  }
-
-  //: Applies an origin and offset pair to this rectangle
-  //param origin: The new origin to adjust to from default upper-left position
-  //param x, y: Offsets applied negatively to each corner of the rectangle
-  void apply_alignment(Origin origin, int x, int y)
-  {
-    Vector2i offset = calc_origin(origin, get_size());
-    offset.x -= x;
-    offset.y -= y;
-
-    left += offset.x;
-    top += offset.y;
-    right += offset.x;
-    bottom += offset.y;
   }
 };
 

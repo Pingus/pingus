@@ -19,6 +19,7 @@
 
 #include <fmt/format.h>
 #include <sstream>
+#include <geom/point.hpp>
 
 class Vector2f;
 
@@ -32,6 +33,7 @@ public:
     : x(0), y(0) {}
 
   explicit Vector2i(const Vector2f& v);
+  Vector2i(const geom::ipoint& v) : x(v.x()), y(v.y()) {}
 
   Vector2i(int x_, int y_)
     : x(x_), y(y_) {}

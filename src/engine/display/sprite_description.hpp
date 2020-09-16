@@ -50,7 +50,7 @@ public:
   SpriteDescription() :
     filename(),
     offset(),
-    origin(origin_top_left),
+    origin(Origin::TOP_LEFT),
     loop(true),
     speed(100),
     array(1, 1),

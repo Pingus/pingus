@@ -34,56 +34,56 @@
 Origin string2origin(const std::string& str)
 {
   if (str == "top_left")
-    return origin_top_left;
+    return Origin::TOP_LEFT;
   else if (str == "top_center")
-    return origin_top_center;
+    return Origin::TOP_CENTER;
   else if (str == "top_right")
-    return origin_top_right;
+    return Origin::TOP_RIGHT;
   else if (str == "center_left")
-    return origin_center_left;
+    return Origin::CENTER_LEFT;
   else if (str == "center")
-    return origin_center;
+    return Origin::CENTER;
   else if (str == "center_right")
-    return origin_center_right;
+    return Origin::CENTER_RIGHT;
   else if (str == "bottom_left")
-    return origin_bottom_left;
+    return Origin::BOTTOM_LEFT;
   else if (str == "bottom_center")
-    return origin_bottom_center;
+    return Origin::BOTTOM_CENTER;
   else if (str == "bottom_right")
-    return origin_bottom_right;
+    return Origin::BOTTOM_RIGHT;
   else
-    return origin_top_left;
+    return Origin::TOP_LEFT;
 }
 
 std::string origin2string(Origin origin)
 {
   switch(origin)
   {
-    case origin_top_left:
+    case Origin::TOP_LEFT:
       return "top_left";
 
-    case origin_top_center:
+    case Origin::TOP_CENTER:
       return "top_center";
 
-    case origin_top_right:
+    case Origin::TOP_RIGHT:
       return "top_right";
 
-    case origin_center_left:
+    case Origin::CENTER_LEFT:
       return "center_left";
 
-    case origin_center:
+    case Origin::CENTER:
       return "center";
 
-    case origin_center_right:
+    case Origin::CENTER_RIGHT:
       return "center_right";
 
-    case origin_bottom_left:
+    case Origin::BOTTOM_LEFT:
       return "bottom_left";
 
-    case origin_bottom_center:
+    case Origin::BOTTOM_CENTER:
       return "bottom_center";
 
-    case origin_bottom_right:
+    case Origin::BOTTOM_RIGHT:
       return "bottom_right";
 
     default:
@@ -92,40 +92,6 @@ std::string origin2string(Origin origin)
   }
 }
 
-Vector2i calc_origin(Origin origin, const Size &size)
-{
-  switch(origin)
-  {
-    case origin_top_left:
-    default:
-      return Vector2i(0, 0);
-      break;
-    case origin_top_center:
-      return Vector2i(size.width() / 2, 0);
-      break;
-    case origin_top_right:
-      return Vector2i(size.width(), 0);
-      break;
-    case origin_center_left:
-      return Vector2i(0, size.height() / 2);
-      break;
-    case origin_center:
-      return Vector2i(size.width() / 2, size.height() / 2);
-      break;
-    case origin_center_right:
-      return Vector2i(size.width(), size.height() / 2);
-      break;
-    case origin_bottom_left:
-      return Vector2i(0, size.height());
-      break;
-    case origin_bottom_center:
-      return Vector2i(size.width() / 2, size.height());
-      break;
-    case origin_bottom_right:
-      return Vector2i(size.width(), size.height());
-      break;
-  }
-}
 
 /* EOF */
 

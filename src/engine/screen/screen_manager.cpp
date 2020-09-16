@@ -211,13 +211,13 @@ ScreenManager::update(float delta, const std::vector<Input::Event>& events)
     fps_counter->draw();
     if (globals::developer_mode)
     {
-      Fonts::pingus_small.render(origin_center, Display::get_width()/2, 60,
+      Fonts::pingus_small.render(Origin::CENTER, Display::get_width()/2, 60,
                                  "Developer Mode", *Display::get_framebuffer());
     }
   }
   else if (globals::developer_mode)
   {
-    Fonts::pingus_small.render(origin_center, Display::get_width()/2, 35,
+    Fonts::pingus_small.render(Origin::CENTER, Display::get_width()/2, 35,
                                "Developer Mode", *Display::get_framebuffer());
   }
 

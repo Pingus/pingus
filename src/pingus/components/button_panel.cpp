@@ -49,7 +49,7 @@ ButtonPanel::ButtonPanel(Server* s, const Vector2i& pos) :
     ActionButton button;
     button.name   = actions[i];
     button.sprite = Sprite("pingus/player0/" + ActionName::to_string(button.name) + "/right");
-    button.sprite.set_hotspot(origin_center, 0, 0);
+    button.sprite.set_hotspot(Origin::CENTER, 0, 0);
     button.sprite.set_play_loop(true);
     buttons.push_back(button);
   }

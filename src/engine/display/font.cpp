@@ -100,7 +100,7 @@ public:
 
   void render_line(Origin origin, int x, int y, const std::string& text, Framebuffer& fb)
   {
-    Vector2i offset = calc_origin(origin, get_size(text));
+    Vector2i offset = geom::anchor_point(get_size(text), origin);
 
     float dstx = float(x - offset.x);
     float dsty = float(y - offset.y);
@@ -186,7 +186,7 @@ void
 Font::render(int x, int y, const std::string& text, Framebuffer& fb)
 {
   if (impl)
-    impl->render(origin_top_left, x,y,text, fb);
+    impl->render(Origin::TOP_LEFT, x,y,text, fb);
 }
 
 void

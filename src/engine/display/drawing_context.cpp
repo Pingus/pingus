@@ -361,7 +361,7 @@ void
 DrawingContext::print_left(const Font& font_, const Vector2i& pos, const std::string& str, float z)
 {
   draw(new FontDrawingRequest(font_,
-                              origin_top_left,
+                              Origin::TOP_LEFT,
                               pos + translate_stack.back(),
                               str,
                               z));
@@ -371,7 +371,7 @@ void
 DrawingContext::print_center(const Font& font_, const Vector2i& pos, const std::string& str, float z)
 {
   draw(new FontDrawingRequest(font_,
-                              origin_top_center,
+                              Origin::TOP_CENTER,
                               pos + translate_stack.back(),
                               str,
                               z));
@@ -381,7 +381,7 @@ void
 DrawingContext::print_right(const Font& font_, const Vector2i& pos, const std::string& str, float z)
 {
   draw(new FontDrawingRequest(font_,
-                              origin_top_right,
+                              Origin::TOP_RIGHT,
                               pos + translate_stack.back(),
                               str,
                               z));

@@ -66,7 +66,7 @@ public:
                 Input::ControllerPtr arg_input_controller);
   ~ScreenManager();
 
-  void resize(const Size& size);
+  void resize(const geom::isize& size);
 
   /** Start the screen manager and let it take control, this will
       not return until the somebody signals a quit() */
