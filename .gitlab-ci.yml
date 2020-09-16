@@ -42,6 +42,7 @@ before_script:
     libjsoncpp-dev
     libpng-dev
     libgtest-dev
+    libglm-dev
     software-properties-common
     flatpak
     flatpak-builder

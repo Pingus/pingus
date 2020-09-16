@@ -37,6 +37,7 @@ pkg_search_module(PNG REQUIRED libpng IMPORTED_TARGET)
 pkg_search_module(JSONCPP REQUIRED jsoncpp IMPORTED_TARGET)
 pkg_search_module(SIGCXX REQUIRED sigc++-2.0 IMPORTED_TARGET)
 find_package(fmt REQUIRED)
+find_package(glm REQUIRED)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -104,6 +105,7 @@ target_link_libraries(libpingus PUBLIC
   sexp
   xdgcpp
   fmt::fmt
+  glm::glm
   PkgConfig::SDL2
   PkgConfig::SDL2IMAGE
   PkgConfig::SDL2MIXER
