@@ -252,8 +252,8 @@ SExprReaderMappingImpl::read_size(const char* key, Size& value) const
   sexp::Value const* sub = get_subsection(key);
   if (sub && sexp::list_length(*sub) == 2)
   {
-    value.width  = sexp::list_ref(*sub, 0).as_int();
-    value.height = sexp::list_ref(*sub, 1).as_int();
+    value = Size(sexp::list_ref(*sub, 0).as_int(),
+                 sexp::list_ref(*sub, 1).as_int());
     return true;
   }
   else

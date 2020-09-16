@@ -105,19 +105,19 @@ DemoSession::DemoSession(const Pathname& pathname_) :
 
   // Create GUI
   pcounter = gui_manager->create<PingusCounter>(server.get());
-  gui_manager->create<ButtonPanel>(server.get(), Vector2i(0, (size.height - 100)/2));
+  gui_manager->create<ButtonPanel>(server.get(), Vector2i(0, (size.height() - 100)/2));
 
   int world_width  = server->get_world()->get_width();
   int world_height = server->get_world()->get_height();
 
   playfield = gui_manager->create<Playfield>(
     server.get(), nullptr,
-    Rect(Vector2i(Math::max((size.width  - world_width)/2,  0),
-                  Math::max((size.height - world_height)/2, 0)),
-         Size(Math::min(size.width,  world_width),
-              Math::min(size.height, world_height))));
+    Rect(Vector2i(Math::max((size.width()  - world_width)/2,  0),
+                  Math::max((size.height() - world_height)/2, 0)),
+         Size(Math::min(size.width(),  world_width),
+              Math::min(size.height(), world_height))));
 
-  gui_manager->create<SmallMap>(server.get(), playfield, Rect(Vector2i(5, size.height - 105), Size(175, 100)));
+  gui_manager->create<SmallMap>(server.get(), playfield, Rect(Vector2i(5, size.height() - 105), Size(175, 100)));
 
   fastforward_button = gui_manager->create<BButton>(32+50, 32, "core/demo/fastforward",
                                                     std::bind(&DemoSession::on_fast_forward_press, this),
@@ -125,7 +125,7 @@ DemoSession::DemoSession(const Pathname& pathname_) :
   pause_button = gui_manager->create<BButton>(32,  32, "core/demo/pause",
                                               std::bind(&DemoSession::on_pause_press, this),
                                               std::bind(&DemoSession::is_pause, this));
-  restart_button = gui_manager->create<BButton>(size.width - 32 - 48, 32, "core/demo/reload",
+  restart_button = gui_manager->create<BButton>(size.width() - 32 - 48, 32, "core/demo/reload",
                                                 std::bind(&DemoSession::restart, this));
 }
 
@@ -268,16 +268,16 @@ DemoSession::resize(const Size& size_)
   int world_width  = server->get_world()->get_width();
   int world_height = server->get_world()->get_height();
 
-  playfield->set_rect(Rect(Vector2i(Math::max((size.width  - world_width)/2,  0),
-                                    Math::max((size.height - world_height)/2, 0)),
-                           Size(Math::min(size.width,  world_width),
-                                Math::min(size.height, world_height))));
+  playfield->set_rect(Rect(Vector2i(Math::max((size.width()  - world_width)/2,  0),
+                                    Math::max((size.height() - world_height)/2, 0)),
+                           Size(Math::min(size.width(),  world_width),
+                                Math::min(size.height(), world_height))));
 
   fastforward_button->set_pos(32+50, 32);
   pause_button->set_pos(32,  32);
-  restart_button->set_pos(size.width - 32 - 48, 32);
+  restart_button->set_pos(size.width() - 32 - 48, 32);
 
-  small_map->set_rect(Rect(Vector2i(5, size.height - 105), Size(175, 100)));
+  small_map->set_rect(Rect(Vector2i(5, size.height() - 105), Size(175, 100)));
 }
 
 /* EOF */

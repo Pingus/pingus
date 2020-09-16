@@ -57,11 +57,11 @@ EditorScreen::EditorScreen() :
 {
   // Create the viewport for the images and data
   viewport = gui_manager->create<Viewport>(this, Rect(0, 38,
-                                                      size.width - 244,
-                                                      size.height));
+                                                      size.width() - 244,
+                                                      size.height()));
 
   // Create the panel for the buttons
-  panel = gui_manager->create<Panel>(this, Rect(0, 0, size.width, 38));
+  panel = gui_manager->create<Panel>(this, Rect(0, 0, size.width(), 38));
 
   //rect(Vector2i(Display::get_width() - 244 + 2,  38 + 3 + 62),
   //      Size(240, Display::get_height() - (600 - 495))),
@@ -81,8 +81,8 @@ EditorScreen::EditorScreen() :
   object_selector = gui_manager->create<ObjectSelector>(this, Rect());
 
   file_load_dialog = gui_manager->create<FileDialog>(this, Rect(Vector2i(50, 50),
-                                                                Size(size.width  - 100,
-                                                                     size.height - 100)),
+                                                                Size(size.width()  - 100,
+                                                                     size.height() - 100)),
                                                      FileDialog::LOAD);
   file_load_dialog->hide();
 
@@ -95,8 +95,8 @@ EditorScreen::EditorScreen() :
   {
     Size msg_size(600, 160);
 
-    m_level_new_msgbox = gui_manager->create<MessageBox>(Rect(Vector2i((Display::get_width() - msg_size.width)/2,
-                                                                       (Display::get_height() - msg_size.height)/2),
+    m_level_new_msgbox = gui_manager->create<MessageBox>(Rect(Vector2i((Display::get_width() - msg_size.width())/2,
+                                                                       (Display::get_height() - msg_size.height())/2),
                                                               msg_size));
     m_level_new_msgbox->set_title("Create new level");
     m_level_new_msgbox->set_text("Replace current level with an empty new one?");
@@ -173,8 +173,8 @@ EditorScreen::save(const Pathname& file)
   catch(std::exception const& err)
   {
     Size msg_size(600, 160);
-    auto* msgbox = gui_manager->create<MessageBox>(Rect(Vector2i((Display::get_width() - msg_size.width)/2,
-                                                                (Display::get_height() - msg_size.height)/2),
+    auto* msgbox = gui_manager->create<MessageBox>(Rect(Vector2i((Display::get_width() - msg_size.width())/2,
+                                                                (Display::get_height() - msg_size.height())/2),
                                                        msg_size));
     msgbox->set_title("Error: level saving failed");
     msgbox->set_text(err.what());
@@ -230,24 +230,24 @@ EditorScreen::draw(DrawingContext& gc)
   if (show_help)
   {
     Size size_(640, 400);
-    gc.draw_fillrect(Rect(gc.get_width()/2  - size_.width/2 - 2,
-                          gc.get_height()/2 - size_.height/2 - 2,
-                          gc.get_width()/2  + size_.width/2 + 2,
-                          gc.get_height()/2 + size_.height/2 + 2),
+    gc.draw_fillrect(Rect(gc.get_width()/2  - size_.width()/2 - 2,
+                          gc.get_height()/2 - size_.height()/2 - 2,
+                          gc.get_width()/2  + size_.width()/2 + 2,
+                          gc.get_height()/2 + size_.height()/2 + 2),
                      Color(0,0,0));
-    gc.draw_fillrect(Rect(gc.get_width()/2  - size_.width/2,
-                          gc.get_height()/2 - size_.height/2,
-                          gc.get_width()/2  + size_.width/2,
-                          gc.get_height()/2 + size_.height/2),
+    gc.draw_fillrect(Rect(gc.get_width()/2  - size_.width()/2,
+                          gc.get_height()/2 - size_.height()/2,
+                          gc.get_width()/2  + size_.width()/2,
+                          gc.get_height()/2 + size_.height()/2),
                      Color(255,255,255));
 
     gc.print_center(Fonts::verdana11,
                     Vector2i(gc.get_width()/2,
-                             gc.get_height()/2 - size_.height/2 + 12),
+                             gc.get_height()/2 - size_.height()/2 + 12),
                     _("== Editor Help =="));
 
-    int x = gc.get_width()/2 - size_.width/2 + 12;
-    int y = gc.get_height()/2 - size_.height/2 + 36;
+    int x = gc.get_width()/2 - size_.width()/2 + 12;
+    int y = gc.get_height()/2 - size_.height()/2 + 36;
     gc.print_center(Fonts::verdana11, Vector2i(x + 75, y),
                     "A\n"
                     "Shift+A\n"
@@ -274,7 +274,7 @@ EditorScreen::draw(DrawingContext& gc)
                     "Ungroup selected objects\n"));
 
     x = gc.get_width() / 2 + 12;
-    y = gc.get_height() / 2 - size_.height / 2 + 36;
+    y = gc.get_height() / 2 - size_.height() / 2 + 36;
     gc.print_center(Fonts::verdana11, Vector2i(x + 50, y),
                     "F\n"
                     "Shift+F\n"
@@ -294,7 +294,7 @@ EditorScreen::draw(DrawingContext& gc)
                     "Increase/lower repeat\n"));
 
     gc.print_left(Fonts::verdana11,
-                  Vector2i(gc.get_width()/2 - size_.width/2 + 12,
+                  Vector2i(gc.get_width()/2 - size_.width()/2 + 12,
                            gc.get_height()/2 - 10),
                   _("You should name your level files systematically, i.e. by their theme, "
                     "their number and your nickname:\n\n"
@@ -522,35 +522,35 @@ EditorScreen::update_layout()
   Size size_(gui_manager->get_rect().get_width(),
              gui_manager->get_rect().get_height());
 
-  panel->set_rect(Rect(0, 0, size_.width, 38));
-  minimap->set_rect(Rect(Vector2i(size_.width-244, size_.height-183), Size(244, 183)));
+  panel->set_rect(Rect(0, 0, size_.width(), 38));
+  minimap->set_rect(Rect(Vector2i(size_.width()-244, size_.height()-183), Size(244, 183)));
 
   if (minimap->is_visible())
-    object_selector->set_rect(Rect(size_.width-244, 38, size_.width, size_.height - 183));
+    object_selector->set_rect(Rect(size_.width()-244, 38, size_.width(), size_.height() - 183));
   else
-    object_selector->set_rect(Rect(size_.width-244, 38, size_.width, size_.height));
+    object_selector->set_rect(Rect(size_.width()-244, 38, size_.width(), size_.height()));
 
   if (object_selector->is_visible())
   {
-    viewport->set_rect(Rect(0, 38, size_.width - 244, size_.height));
-    level_properties->set_rect(Rect(Vector2i(0,38), Size(size_.width-244, 258)));
+    viewport->set_rect(Rect(0, 38, size_.width() - 244, size_.height()));
+    level_properties->set_rect(Rect(Vector2i(0,38), Size(size_.width()-244, 258)));
   }
   else
   {
-    viewport->set_rect(Rect(0, 38, size_.width, size_.height));
-    level_properties->set_rect(Rect(Vector2i(0,38), Size(size_.width, 258)));
+    viewport->set_rect(Rect(0, 38, size_.width(), size_.height()));
+    level_properties->set_rect(Rect(Vector2i(0,38), Size(size_.width(), 258)));
   }
 
   action_properties->set_rect(Rect(Vector2i(0, 38), Size(150, 240)));
 
-  object_properties->set_rect(Rect(Vector2i(0, size_.height - object_properties->get_rect().get_height()),
+  object_properties->set_rect(Rect(Vector2i(0, size_.height() - object_properties->get_rect().get_height()),
                                    Size(object_properties->get_rect().get_width(),
                                         object_properties->get_rect().get_height())));
 
-  file_load_dialog->set_rect(Rect(Vector2i(50, 50), Size(size_.width  - 100,
-                                                         size_.height - 100)));
-  file_save_dialog->set_rect(Rect(Vector2i(50, 50), Size(size_.width  - 100,
-                                                         size_.height - 100)));
+  file_load_dialog->set_rect(Rect(Vector2i(50, 50), Size(size_.width()  - 100,
+                                                         size_.height() - 100)));
+  file_save_dialog->set_rect(Rect(Vector2i(50, 50), Size(size_.width()  - 100,
+                                                         size_.height() - 100)));
 }
 
 void
@@ -560,8 +560,8 @@ EditorScreen::resize(const Size& size_)
 
   {
     Size msg_size(600, 160);
-    m_level_new_msgbox->set_rect(Rect(Vector2i((Display::get_width()  - msg_size.width)/2,
-                                               (Display::get_height() - msg_size.height)/2),
+    m_level_new_msgbox->set_rect(Rect(Vector2i((Display::get_width()  - msg_size.width())/2,
+                                               (Display::get_height() - msg_size.height())/2),
                                       msg_size));
   }
 

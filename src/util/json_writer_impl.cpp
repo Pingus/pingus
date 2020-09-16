@@ -186,8 +186,8 @@ JsonWriterImpl::write_size(const char* name, const Size& value)
   assert(m_stack.back().get().type() == Json::objectValue);
 
   Json::Value array(Json::arrayValue);
-  array.append(Json::Value(value.width));
-  array.append(Json::Value(value.height));
+  array.append(Json::Value(value.width()));
+  array.append(Json::Value(value.height()));
   m_stack.back().get()[name] = array;
 }
 

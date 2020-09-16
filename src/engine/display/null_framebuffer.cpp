@@ -16,6 +16,9 @@
 
 #include "engine/display/null_framebuffer.hpp"
 
+#include <fmt/ostream.h>
+#include <geom/io.hpp>
+
 #include "util/log.hpp"
 
 class NullFramebufferSurfaceImpl : public FramebufferSurfaceImpl
@@ -27,8 +30,8 @@ public:
   NullFramebufferSurfaceImpl(const Size& size_) : size(size_) {}
   ~NullFramebufferSurfaceImpl() override {}
 
-  int get_width()  const override { return size.width; }
-  int get_height() const override { return size.height; }
+  int get_width()  const override { return size.width(); }
+  int get_height() const override { return size.height(); }
 };
 
 NullFramebuffer::NullFramebuffer() :
@@ -57,7 +60,7 @@ NullFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizabl
   m_resizable  = resizable;
 
   log_info("size: {}x{} fullscreen: {} resizable: {}",
-           m_size.width, m_size.height,
+           m_size.width(), m_size.height(),
            m_fullscreen, m_resizable);
 }
 

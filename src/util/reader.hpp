@@ -21,7 +21,8 @@
 #include <vector>
 #include <string>
 
-class Size;
+#include <geom/fwd.hpp>
+
 class Color;
 class Vector3f;
 class Vector2i;
@@ -80,7 +81,7 @@ public:
   bool read_vectors(const char* key, std::vector<Vector3f>& value) const;
   bool read_vector2i(const char* key, Vector2i& value) const;
   bool read_rect(const char* key, Rect& value) const;
-  bool read_size(const char* key, Size& value) const;
+  bool read_size(const char* key, geom::isize& value) const;
   bool read_colorf(const char* key, Color& value) const;
   bool read_colori(const char* key, Color& value) const;
   bool read_desc(const char* key, ResDescriptor& value) const;

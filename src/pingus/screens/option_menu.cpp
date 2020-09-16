@@ -117,8 +117,8 @@ OptionMenu::OptionMenu() :
       resolution_box->add_choice(ostr.str());
 
       // FIXME: ignoring refresh_rate
-      if (fullscreen.width == it->w &&
-          fullscreen.height == it->h)
+      if (fullscreen.width() == it->w &&
+          fullscreen.height() == it->h)
       {
         choice = static_cast<int>(it - resolutions.begin());
       }
@@ -353,7 +353,7 @@ OptionMenu::resize(const Size& size_)
   GUIScreen::resize(size_);
 
   if (ok_button)
-    ok_button->set_pos(size.width/2 + 245, size.height/2 + 150);
+    ok_button->set_pos(size.width()/2 + 245, size.height()/2 + 150);
   /*
   if (defaults_label)
     defaults_label->set_rect(Rect(Vector2i(Display::get_width()/2 - 100, Display::get_height()/2 + 160), Size(170, 32)));
@@ -365,8 +365,8 @@ OptionMenu::resize(const Size& size_)
     return;
 
   // FIXME: this drifts due to rounding errors
-  int x_diff = (size.width  - old_size.width) / 2;
-  int y_diff = (size.height - old_size.height) / 2;
+  int x_diff = (size.width()  - old_size.width()) / 2;
+  int y_diff = (size.height() - old_size.height()) / 2;
 
   Rect rect;
   for(std::vector<Option>::iterator i = options.begin(); i != options.end(); ++i)
@@ -454,9 +454,10 @@ OptionMenu::on_language_change(const std::string &str)
 void
 OptionMenu::on_resolution_change(const std::string& str)
 {
-  Size size_;
+  int w;
+  int h;
   int refresh_rate;
-  if (sscanf(str.c_str(), "%dx%d@%d", &size_.width, &size_.height, &refresh_rate) != 3)
+  if (sscanf(str.c_str(), "%dx%d@%d", &w, &h, &refresh_rate) != 3)
   {
     log_error("failed to parse: {}", str);
   }
@@ -466,7 +467,7 @@ OptionMenu::on_resolution_change(const std::string& str)
     // FIXME: ignoring refresh rate here
 #endif
 
-    config_manager.set_fullscreen_resolution(size_);
+    config_manager.set_fullscreen_resolution(Size(w, h));
   }
 }
 

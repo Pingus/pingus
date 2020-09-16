@@ -99,7 +99,7 @@ ConfigManager::get_music_volume() const
 void
 ConfigManager::set_fullscreen_resolution(const Size& size)
 {
-  log_info("{}x{}", size.width, size.height);
+  log_info("{}x{}", size.width(), size.height());
 
   if (size != get_fullscreen_resolution())
   {

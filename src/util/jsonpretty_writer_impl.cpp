@@ -237,7 +237,7 @@ JsonPrettyWriterImpl::write_size(const char* name, const Size& value)
 
   write_indent();
   write_quoted_string(name);
-  m_out << ": [ " << value.width << ", " << value.height << " ]";
+  m_out << ": [ " << value.width() << ", " << value.height() << " ]";
   write_separator();
 }
 

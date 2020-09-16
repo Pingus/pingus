@@ -288,27 +288,29 @@ PingusMain::parse_args(int argc, char** argv)
 
       case 'g':
         {
-          Size size;
-          if (sscanf(opt.argument.c_str(), "%dx%d", &size.width, &size.height) != 2)
+          int w;
+          int h;
+          if (sscanf(opt.argument.c_str(), "%dx%d", &w, &h) != 2)
           {
             std::cout << "Resolution std::string is wrong, it should be like: \n"
                       << "\"640x480\" or \"800x600\"" << std::endl;
             exit(EXIT_FAILURE);
           }
-          cmd_options.geometry.set(size);
+          cmd_options.geometry.set(Size(w, h));
         }
         break;
 
       case 'R':
         {
-          Size size;
-          if (sscanf(opt.argument.c_str(), "%dx%d", &size.width, &size.height) != 2)
+          int w;
+          int h;
+          if (sscanf(opt.argument.c_str(), "%dx%d", &w, &h) != 2)
           {
             std::cout << "Resolution std::string is wrong, it should be like: \n"
                       << "\"640x480\" or \"800x600\"" << std::endl;
             exit(EXIT_FAILURE);
           }
-          cmd_options.fullscreen_resolution.set(size);
+          cmd_options.fullscreen_resolution.set(Size(w, h));
         }
         break;
 
@@ -510,8 +512,8 @@ PingusMain::print_greeting_message()
   std::cout << "fullscreen:              ";
   if (cmd_options.fullscreen.is_set() && cmd_options.fullscreen.get())
   {
-    std::cout << cmd_options.fullscreen_resolution.get().width << "x"
-              << cmd_options.fullscreen_resolution.get().height << std::endl;
+    std::cout << cmd_options.fullscreen_resolution.get().width() << "x"
+              << cmd_options.fullscreen_resolution.get().height() << std::endl;
   }
   else
   {

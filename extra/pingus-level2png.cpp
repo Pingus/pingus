@@ -109,7 +109,7 @@ int main(int argc, char** argv)
     }
     else
     {
-      out_surface = Surface(size.width, size.height);
+      out_surface = Surface(size.width(), size.height());
 
       // FIXME: alpha doesn't work, as the PNG saver can't handle that
       out_surface.fill(Color(255, 255, 255, 255));

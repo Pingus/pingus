@@ -179,10 +179,10 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
   Size color_s(box_rect.get_width()/4, box_rect.get_height());
 
   color_label = create<Label>(label_rect, _("Color:"));
-  color_r_inputbox = create<Inputbox>(Rect(Vector2i(box_rect.left + 0*color_s.width, box_rect.top), color_s));
-  color_g_inputbox = create<Inputbox>(Rect(Vector2i(box_rect.left + 1*color_s.width, box_rect.top), color_s));
-  color_b_inputbox = create<Inputbox>(Rect(Vector2i(box_rect.left + 2*color_s.width, box_rect.top), color_s));
-  color_a_inputbox = create<Inputbox>(Rect(Vector2i(box_rect.left + 3*color_s.width, box_rect.top), color_s));
+  color_r_inputbox = create<Inputbox>(Rect(Vector2i(box_rect.left + 0*color_s.width(), box_rect.top), color_s));
+  color_g_inputbox = create<Inputbox>(Rect(Vector2i(box_rect.left + 1*color_s.width(), box_rect.top), color_s));
+  color_b_inputbox = create<Inputbox>(Rect(Vector2i(box_rect.left + 2*color_s.width(), box_rect.top), color_s));
+  color_a_inputbox = create<Inputbox>(Rect(Vector2i(box_rect.left + 3*color_s.width(), box_rect.top), color_s));
 
   color_r_inputbox->on_change.connect(std::bind(&ObjectProperties::on_color_r_change, this, std::placeholders::_1));
   color_g_inputbox->on_change.connect(std::bind(&ObjectProperties::on_color_g_change, this, std::placeholders::_1));

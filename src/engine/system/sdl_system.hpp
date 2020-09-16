@@ -18,10 +18,9 @@
 #define HEADER_PINGUS_ENGINE_SYSTEM_SDL_HPP
 
 #include <SDL.h>
+#include <geom/fwd.hpp>
 
 #include "pingus/options.hpp"
-
-class Size;
 
 class SDLSystem
 {

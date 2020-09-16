@@ -37,17 +37,17 @@ OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src) :
 {
   glGenTextures(1, &m_handle);
 
-  m_texture_size.width  = next_power_of_two(src->w);
-  m_texture_size.height = next_power_of_two(src->h);
+  m_texture_size = Size(next_power_of_two(src->w),
+                        next_power_of_two(src->h));
 
   //  Convert the src surface to a format usable for upload to OpenGL
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
   SDL_Surface* convert = SDL_CreateRGBSurface(0,
-                                              m_texture_size.width, m_texture_size.height, 32,
+                                              m_texture_size.width, m_texture_size.height(), 32,
                                               0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff);
 #else
   SDL_Surface* convert = SDL_CreateRGBSurface(0,
-                                              m_texture_size.width, m_texture_size.height, 32,
+                                              m_texture_size.width(), m_texture_size.height(), 32,
                                               0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000);
 #endif
   //SDL_SetSurfaceAlphaMod(src, 0);
@@ -71,7 +71,7 @@ OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src) :
 
   // Upload the surface to a texture
   SDL_LockSurface(convert);
-  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_texture_size.width, m_texture_size.height, 0,
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_texture_size.width(), m_texture_size.height(), 0,
                sdl_format, GL_UNSIGNED_BYTE, convert->pixels);
   SDL_UnlockSurface(convert);
 

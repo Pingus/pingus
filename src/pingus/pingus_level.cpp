@@ -89,7 +89,7 @@ PingusLevel::load(const std::string& resname,
       head.read_colorf("ambient-light",    impl->ambient_light);
       head.read_string("author",           impl->author);
 
-      log_info("Size: {}x{}", impl->size.width, impl->size.height);
+      log_info("Size: {}x{}", impl->size.width(), impl->size.height());
 
       ReaderMapping actions;
       if (head.read_mapping("actions", actions))

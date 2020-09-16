@@ -83,7 +83,7 @@ int
 Sprite::get_width() const
 {
   if (impl.get())
-    return impl->frame_size.width;
+    return impl->frame_size.width();
   else
     return 0;
 }
@@ -92,7 +92,7 @@ int
 Sprite::get_height() const
 {
   if (impl.get())
-    return impl->frame_size.height;
+    return impl->frame_size.height();
   else
     return 0;
 }
@@ -120,7 +120,7 @@ int
 Sprite::get_frame_count() const
 {
   if (impl.get())
-    return (impl->array.width * impl->array.height);
+    return (impl->array.width() * impl->array.height());
   else
     return 0;
 }

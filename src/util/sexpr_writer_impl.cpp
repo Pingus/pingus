@@ -156,7 +156,7 @@ SExprWriterImpl::write_vector(const char* name, const Vector3f& value)
 void
 SExprWriterImpl::write_size(const char* name, const Size& size)
 {
-  (*out) << "\n" << indent() << "(" << name << " " << size.width << " " << size.height << ")";
+  (*out) << "\n" << indent() << "(" << name << " " << size.width() << " " << size.height() << ")";
 }
 
 void

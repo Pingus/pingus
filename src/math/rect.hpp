@@ -74,8 +74,8 @@ public:
   Rect(const Vector2i &p, const Size &size)
     : left(p.x),
       top(p.y),
-      right(left + size.width),
-      bottom(top + size.height)
+      right(left + size.width()),
+      bottom(top + size.height())
   {}
 
   Rect grow(int b) const {
@@ -184,8 +184,8 @@ public:
   //: Sets the size of the rectangle, maintaining top/left position.
   void set_size(const Size &size)
   {
-    right = left + size.width;
-    bottom = top + size.height;
+    right = left + size.width();
+    bottom = top + size.height();
   }
 
   //: Calculates and returns the union of two rectangles.
@@ -275,8 +275,8 @@ public:
   Rectf(const Vector2f &p, const Sizef &size)
     : left(p.x),
       top(p.y),
-      right(left + size.width),
-      bottom(top + size.height)
+      right(left + size.width()),
+      bottom(top + size.height())
   {}
 
   Rectf(const Vector2f& p1, const Vector2f& p2)
@@ -370,8 +370,8 @@ public:
   //: Sets the size of the rectangle, maintaining top/left position.
   void set_size(const Size &size)
   {
-    right  = left + static_cast<float>(size.width);
-    bottom = top  + static_cast<float>(size.height);
+    right  = left + static_cast<float>(size.width());
+    bottom = top  + static_cast<float>(size.height());
   }
 
   //: Calculates and returns the union of two rectangles.

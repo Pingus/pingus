@@ -119,8 +119,8 @@ LevelProperties::set_level(EditorLevel* level_)
   number_to_save->set_text(StringUtil::to_string(level->get_number_to_save()));
 
   time->set_text(StringUtil::to_string(GameTime::ticks_to_seconds(level->get_time())));
-  width->set_text(StringUtil::to_string(level->get_size().width));
-  height->set_text(StringUtil::to_string(level->get_size().height));
+  width->set_text(StringUtil::to_string(level->get_size().width()));
+  height->set_text(StringUtil::to_string(level->get_size().height()));
   music->set_text(level->get_music());
 }
 
@@ -146,7 +146,7 @@ void
 LevelProperties::on_width_change(const std::string& str)
 {
   Size s = level->get_size();
-  level->set_size(Size(StringUtil::to<int>(str), s.height));
+  level->set_size(Size(StringUtil::to<int>(str), s.height()));
   editor->get_viewport()->refresh();
 }
 
@@ -154,7 +154,7 @@ void
 LevelProperties::on_height_change(const std::string& str)
 {
   Size s = level->get_size();
-  level->set_size(Size(s.width, StringUtil::to<int>(str)));
+  level->set_size(Size(s.width(), StringUtil::to<int>(str)));
   editor->get_viewport()->refresh();
 }
 

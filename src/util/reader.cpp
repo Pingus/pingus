@@ -22,6 +22,7 @@
 #include <sexp/parser.hpp>
 #include <utility>
 
+#include "math/size.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "util/reader_impl.hpp"
 #include "util/pathname.hpp"

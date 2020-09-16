@@ -56,11 +56,11 @@ Minimap::draw(DrawingContext& gc)
     Rect r = (*i)->get_rect();
 
     // Translate the object into minimap-co-space
-    r.left  = r.left  * minimap_rect.get_width() / levelsize.width;
-    r.right = r.right * minimap_rect.get_width() / levelsize.width;
+    r.left  = r.left  * minimap_rect.get_width() / levelsize.width();
+    r.right = r.right * minimap_rect.get_width() / levelsize.width();
 
-    r.top    = r.top    * minimap_rect.get_height() / levelsize.height;
-    r.bottom = r.bottom * minimap_rect.get_height() / levelsize.height;
+    r.top    = r.top    * minimap_rect.get_height() / levelsize.height();
+    r.bottom = r.bottom * minimap_rect.get_height() / levelsize.height();
 
     unsigned attr = (*i)->get_attribs();
 
@@ -89,10 +89,10 @@ Minimap::draw(DrawingContext& gc)
   viewport_pos.x -= static_cast<float>(viewport_rect.get_width())  / 2;
   viewport_pos.y -= static_cast<float>(viewport_rect.get_height()) / 2;
 
-  Rect view(Vector2i(static_cast<int>(viewport_pos.x * static_cast<float>(minimap_rect.get_width())  / static_cast<float>(levelsize.width)),
-                     static_cast<int>(viewport_pos.y * static_cast<float>(minimap_rect.get_height()) / static_cast<float>(levelsize.height))),
-            Size(viewport_rect.get_width()  * minimap_rect.get_width() / levelsize.width,
-                 viewport_rect.get_height() * minimap_rect.get_height() / levelsize.height));
+  Rect view(Vector2i(static_cast<int>(viewport_pos.x * static_cast<float>(minimap_rect.get_width())  / static_cast<float>(levelsize.width())),
+                     static_cast<int>(viewport_pos.y * static_cast<float>(minimap_rect.get_height()) / static_cast<float>(levelsize.height()))),
+            Size(viewport_rect.get_width()  * minimap_rect.get_width() / levelsize.width(),
+                 viewport_rect.get_height() * minimap_rect.get_height() / levelsize.height()));
   dc.draw_fillrect(view, Color(255, 255, 0, 150), 1000000.0f);
   dc.draw_rect(view, Color(255, 255, 0), 1000000.0f);
 
@@ -116,8 +116,8 @@ Minimap::on_pointer_move(int x, int y)
     x -= 3 + rect.left; // take border into account
     y -= 3 + rect.top;
 
-    x = x * levelsize.width / minimap_rect.get_width();
-    y = y * levelsize.height / minimap_rect.get_height();
+    x = x * levelsize.width() / minimap_rect.get_width();
+    y = y * levelsize.height() / minimap_rect.get_height();
 
     editor->get_viewport()->set_scroll_pos(Vector2i(x, y));
   }

@@ -148,8 +148,7 @@ EditorLevel::from_prefab_file(const Pathname& pathname)
 
   // FIMXE: there would be better way to handle prefab size, but it's
   // probably not worth the effort
-  level->impl->size.width  = 1920;
-  level->impl->size.height = 1200;
+  level->impl->size = Size(1920, 1200);
 
   // FIXME: overrides are getting ignored
 
@@ -161,8 +160,8 @@ EditorLevel::from_prefab_file(const Pathname& pathname)
     if (obj)
     {
       // move origin of the level to the center of it
-      obj->set_pos(obj->get_pos() + Vector3f(static_cast<float>(level->impl->size.width)/2.0f,
-                                             static_cast<float>(level->impl->size.height)/2.0f));
+      obj->set_pos(obj->get_pos() + Vector3f(static_cast<float>(level->impl->size.width())/2.0f,
+                                             static_cast<float>(level->impl->size.height())/2.0f));
 
       level->add_object(obj);
     }
@@ -210,8 +209,8 @@ EditorLevel::save_prefab(const std::string& filename)
   fw.begin_object("pingus-prefab");
   fw.write_int("version", 3);
 
-  Vector3f level_center(static_cast<float>(get_size().width)/2.0f,
-                        static_cast<float>(get_size().height)/2.0f);
+  Vector3f level_center(static_cast<float>(get_size().width())/2.0f,
+                        static_cast<float>(get_size().height())/2.0f);
 
   // Write the objects
   fw.begin_collection("objects");
@@ -391,13 +390,8 @@ EditorLevel::set_music(const std::string& str)
 void
 EditorLevel::set_size(const Size& s)
 {
-  impl->size = s;
-
-  if (impl->size.width <= 0)
-    impl->size.width = 1;
-
-  if (impl->size.height <= 0)
-    impl->size.height = 1;
+  impl->size = Size(s.width() <= 0 ? 1 : s.width(),
+                    s.height() <= 0 ? 1 : s.height());
 }
 
 void

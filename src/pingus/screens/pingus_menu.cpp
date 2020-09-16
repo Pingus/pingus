@@ -50,32 +50,32 @@ PingusMenu::PingusMenu() :
   Size size_(Display::get_width(), Display::get_height());
 
   start_button = gui_manager->create<MenuButton>(
-    this, Vector2i(size_.width/2 - 125,
-                   size_.height/2 - 20),
+    this, Vector2i(size_.width()/2 - 125,
+                   size_.height()/2 - 20),
     _("Story"),
     _("..:: Start the game ::.."));
 
   editor_button = gui_manager->create<MenuButton>(
-    this, Vector2i(size_.width/2 + 125,
-                   size_.height/2 - 20),
+    this, Vector2i(size_.width()/2 + 125,
+                   size_.height()/2 - 20),
     _("Editor"),
     _("..:: Create your own levels ::.."));
 
   options_button = gui_manager->create<MenuButton>(
-    this, Vector2i(size_.width/2 + 125,
-                   size_.height/2 + 50),
+    this, Vector2i(size_.width()/2 + 125,
+                   size_.height()/2 + 50),
     _("Options"),
     _("..:: Configure the game ::.."));
 
   contrib_button = gui_manager->create<MenuButton>(
-    this, Vector2i(size_.width/2 - 125,
-                   size_.height/2 + 50),
+    this, Vector2i(size_.width()/2 - 125,
+                   size_.height()/2 + 50),
     _("Levelsets"),
     _("..:: Play User Built levels ::.."));
 
   quit_button = gui_manager->create<MenuButton>(
-    this, Vector2i(size_.width/2,
-                   size_.height/2 + 120),
+    this, Vector2i(size_.width()/2,
+                   size_.height()/2 + 120),
     _("Exit"),
     _("..:: Bye, bye ::.."));
 
@@ -219,27 +219,27 @@ PingusMenu::create_background(const Size& size_)
   Surface layer4 = Resource::load_surface("core/menu/layer4");
   Surface layer5 = Resource::load_surface("core/menu/layer5");
 
-  int w = size_.width;
-  int h = size_.height;
+  int w = size_.width();
+  int h = size_.height();
 
   Size base(800, 600);
 
   // We only need to scale the background main menu images if the screen
   // resolution is not default
-  if (w != base.width ||
-      h != base.height)
+  if (w != base.width() ||
+      h != base.height())
   {
-    layer1 = layer1.scale(w, 185 * h / base.height);
-    layer2 = layer2.scale(w, 362 * h / base.height);
-    layer3 = layer3.scale(w, 306 * h / base.height);
-    layer4 = layer4.scale(w, 171 * h / base.height);
-    layer5 = layer5.scale(302 * w / base.width, 104 * h / base.height);
+    layer1 = layer1.scale(w, 185 * h / base.height());
+    layer2 = layer2.scale(w, 362 * h / base.height());
+    layer3 = layer3.scale(w, 306 * h / base.height());
+    layer4 = layer4.scale(w, 171 * h / base.height());
+    layer5 = layer5.scale(302 * w / base.width(), 104 * h / base.height());
 
     background->add_layer(Sprite(layer1), 0, 0, 12, 0);
-    background->add_layer(Sprite(layer2), 0, 150 * static_cast<float>(h) / static_cast<float>(base.height), 25, 0);
-    background->add_layer(Sprite(layer3), 0, 200 * static_cast<float>(h) / static_cast<float>(base.height), 50, 0);
-    background->add_layer(Sprite(layer4), 0, 429 * static_cast<float>(h) / static_cast<float>(base.height), 100, 0);
-    background->add_layer(Sprite(layer5), 0, 500 * static_cast<float>(h) / static_cast<float>(base.height), 200, 0);
+    background->add_layer(Sprite(layer2), 0, 150 * static_cast<float>(h) / static_cast<float>(base.height()), 25, 0);
+    background->add_layer(Sprite(layer3), 0, 200 * static_cast<float>(h) / static_cast<float>(base.height()), 50, 0);
+    background->add_layer(Sprite(layer4), 0, 429 * static_cast<float>(h) / static_cast<float>(base.height()), 100, 0);
+    background->add_layer(Sprite(layer5), 0, 500 * static_cast<float>(h) / static_cast<float>(base.height()), 200, 0);
   }
   else
   {
@@ -257,20 +257,20 @@ PingusMenu::resize(const Size& size_)
   GUIScreen::resize(size_);
   create_background(size);
 
-  start_button->set_pos(size.width/2 - 125,
-                        size.height/2 - 20);
+  start_button->set_pos(size.width()/2 - 125,
+                        size.height()/2 - 20);
 
-  editor_button->set_pos(size.width/2 + 125,
-                         size.height/2 - 20);
+  editor_button->set_pos(size.width()/2 + 125,
+                         size.height()/2 - 20);
 
-  contrib_button->set_pos(size.width/2 - 125,
-                          size.height/2 + 50);
+  contrib_button->set_pos(size.width()/2 - 125,
+                          size.height()/2 + 50);
 
-  options_button->set_pos(size.width/2 + 125,
-                          size.height/2 + 50);
+  options_button->set_pos(size.width()/2 + 125,
+                          size.height()/2 + 50);
 
-  quit_button->set_pos(size.width/2,
-                       size.height/2 + 120);
+  quit_button->set_pos(size.width()/2,
+                       size.height()/2 + 120);
 }
 
 /* EOF */

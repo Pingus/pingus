@@ -101,28 +101,28 @@ Vector2i calc_origin(Origin origin, const Size &size)
       return Vector2i(0, 0);
       break;
     case origin_top_center:
-      return Vector2i(size.width / 2, 0);
+      return Vector2i(size.width() / 2, 0);
       break;
     case origin_top_right:
-      return Vector2i(size.width, 0);
+      return Vector2i(size.width(), 0);
       break;
     case origin_center_left:
-      return Vector2i(0, size.height / 2);
+      return Vector2i(0, size.height() / 2);
       break;
     case origin_center:
-      return Vector2i(size.width / 2, size.height / 2);
+      return Vector2i(size.width() / 2, size.height() / 2);
       break;
     case origin_center_right:
-      return Vector2i(size.width, size.height / 2);
+      return Vector2i(size.width(), size.height() / 2);
       break;
     case origin_bottom_left:
-      return Vector2i(0, size.height);
+      return Vector2i(0, size.height());
       break;
     case origin_bottom_center:
-      return Vector2i(size.width / 2, size.height);
+      return Vector2i(size.width() / 2, size.height());
       break;
     case origin_bottom_right:
-      return Vector2i(size.width, size.height);
+      return Vector2i(size.width(), size.height());
       break;
   }
 }

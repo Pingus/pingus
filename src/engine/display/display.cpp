@@ -18,6 +18,8 @@
 
 #include <stdexcept>
 #include <algorithm>
+#include <fmt/ostream.h>
+#include <geom/io.hpp>
 
 #include "engine/display/sdl_framebuffer.hpp"
 #include "engine/screen/screen_manager.hpp"
@@ -37,13 +39,13 @@ Display::flip_display()
 int
 Display::get_width()
 {
-  return s_framebuffer ? s_framebuffer->get_size().width : 0;
+  return s_framebuffer ? s_framebuffer->get_size().width() : 0;
 }
 
 int
 Display::get_height()
 {
-  return s_framebuffer ? s_framebuffer->get_size().height : 0;
+  return s_framebuffer ? s_framebuffer->get_size().height() : 0;
 }
 
 Size
@@ -55,11 +57,9 @@ Display::get_size()
 void
 Display::resize(const Size& size_)
 {
-  Size size(size_);
-
   // Limit Window size so some reasonable minimum
-  if (size.width  < 640) size.width  = 640;
-  if (size.height < 480) size.height = 480;
+  Size size(size_.width() < 640 ? 640 : size_.width(),
+            size_.height() < 480 ? 480 : size_.height());
 
   Display::set_video_mode(size, is_fullscreen(), true);
 
@@ -146,15 +146,15 @@ Display::find_closest_fullscreen_video_mode(const Size& size)
   SDL_DisplayMode target;
   SDL_DisplayMode closest;
 
-  target.w = size.width;
-  target.h = size.height;
+  target.w = size.width();
+  target.h = size.height();
   target.format = 0;  // don't care
   target.refresh_rate = 0; // don't care
   target.driverdata   = nullptr;
 
   if (!SDL_GetClosestDisplayMode(0, &target, &closest))
   {
-    log_error("couldn't find video mode matching {}x{}", size.width, size.height);
+    log_error("couldn't find video mode matching {}x{}", size.width(), size.height());
     return size;
   }
   else

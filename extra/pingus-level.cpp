@@ -142,7 +142,7 @@ int main(int argc, char** argv)
 
         if (mode & kSize)
         {
-          std::cout << plf.get_size().width << "x" << plf.get_size().height << std::endl;
+          std::cout << plf.get_size().width() << "x" << plf.get_size().height() << std::endl;
         }
 
         if (mode & kMusic)

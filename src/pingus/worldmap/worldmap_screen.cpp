@@ -215,7 +215,7 @@ void
 WorldmapScreen::resize(const Size& size_)
 {
   GUIScreen::resize(size_);
-  close_button->set_pos(0, size.height - 37);
+  close_button->set_pos(0, size.height() - 37);
 }
 
 void

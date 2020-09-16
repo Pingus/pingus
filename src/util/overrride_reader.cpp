@@ -18,6 +18,8 @@
 
 #include <set>
 
+#include <geom/size.hpp>
+
 #include "util/reader.hpp"
 #include "util/reader_impl.hpp"
 #include "util/log.hpp"
@@ -120,7 +122,7 @@ public:
     }
   }
 
-  bool read_size(const char* name, Size& size) const override
+  bool read_size(const char* name, geom::isize& size) const override
   {
     if (m_overrides.read_size(name, size))
     {

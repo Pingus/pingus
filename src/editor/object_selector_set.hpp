@@ -45,8 +45,8 @@ public:
   int get_width() const;
   int get_height() const;
 
-  int get_thumb_width() const  { return thumb_size.width; }
-  int get_thumb_height() const { return thumb_size.height; }
+  int get_thumb_width() const  { return thumb_size.width(); }
+  int get_thumb_height() const { return thumb_size.height(); }
 
   float get_offset() const { return offset; }
   void  set_offset(float o)  { offset = o; }

@@ -327,13 +327,13 @@ ResultScreen::resize(const Size& size_)
   GUIScreen::resize(size_);
 
   if (ok_button)
-    ok_button->set_pos(size.width/2 + 245, size.height/2 + 150);
+    ok_button->set_pos(size.width()/2 + 245, size.height()/2 + 150);
 
   if (abort_button)
-    abort_button->set_pos(size.width/2 - 300, size.height/2 + 200);
+    abort_button->set_pos(size.width()/2 - 300, size.height()/2 + 200);
 
   if (retry_button)
-    retry_button->set_pos(size.width/2 + 245, size.height/2 + 150);
+    retry_button->set_pos(size.width()/2 + 245, size.height()/2 + 150);
 }
 
 /* EOF */

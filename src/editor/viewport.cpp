@@ -494,7 +494,7 @@ Viewport::draw(DrawingContext &gc)
   // Center Cross
   {
     Size size = editor->get_level()->get_size();
-    Vector2i center(size.width / 2, size.height / 2);
+    Vector2i center(size.width() / 2, size.height() / 2);
 
     drawing_context->draw_line(center - Vector2i(16, 0), center + Vector2i(16, 0), Color(155,155,155), 5000.0f);
     drawing_context->draw_line(center - Vector2i(0, 16), center + Vector2i(0, 16), Color(155,155,155), 5000.0f);

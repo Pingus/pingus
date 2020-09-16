@@ -217,8 +217,8 @@ JsonReaderMappingImpl::read_size(const char* key, Size& value) const
   const Json::Value& element = m_json[key];
   if (element.isArray() && element.size() >= 2)
   {
-    value.width = element[0u].asInt();
-    value.height = element[1u].asInt();
+    value = Size(element[0u].asInt(),
+                 element[1u].asInt());
     return true;
   }
   else

@@ -19,6 +19,7 @@
 
 #include <memory>
 #include <vector>
+#include <geom/fwd.hpp>
 
 #include "engine/input/controller.hpp"
 #include "engine/display/sprite.hpp"
@@ -31,7 +32,6 @@ class Controller;
 }
 
 class FPSCounter;
-class Size;
 class DrawingContext;
 class Screen;
 

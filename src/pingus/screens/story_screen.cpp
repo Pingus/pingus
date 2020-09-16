@@ -285,11 +285,11 @@ StoryScreen::resize(const Size& size_)
 {
   GUIScreen::resize(size_);
 
-  continue_button->set_pos(size.width/2 + 220 + 40,
-                           size.height/2 + 180 +32);
+  continue_button->set_pos(size.width()/2 + 220 + 40,
+                           size.height()/2 + 180 +32);
   if (skip_button)
-    skip_button->set_pos(size.width  - 4,
-                         size.height - 26);
+    skip_button->set_pos(size.width()  - 4,
+                         size.height() - 26);
 }
 
 /* EOF */

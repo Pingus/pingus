@@ -49,19 +49,19 @@ OpenGLFramebuffer::make_screenshot() const
   Size size = get_size();
 
   glPixelStorei(GL_PACK_ALIGNMENT, 1);
-  std::unique_ptr<uint8_t[]> buffer(new uint8_t[static_cast<size_t>(size.width * size.height * 4)]);
-  glReadPixels(0, 0, size.width, size.height, GL_RGB, GL_UNSIGNED_BYTE, buffer.get());
+  std::unique_ptr<uint8_t[]> buffer(new uint8_t[static_cast<size_t>(size.width() * size.height() * 4)]);
+  glReadPixels(0, 0, size.width(), size.height(), GL_RGB, GL_UNSIGNED_BYTE, buffer.get());
 
-  Surface screenshot(size.width, size.height);
+  Surface screenshot(size.width(), size.height());
   uint8_t* op = screenshot.get_data();
   size_t pitch = static_cast<size_t>(screenshot.get_pitch());
-  for(size_t y = 0; y < static_cast<size_t>(size.height); ++y)
+  for(size_t y = 0; y < static_cast<size_t>(size.height()); ++y)
   {
-    for(size_t x = 0; x < static_cast<size_t>(size.height); ++x)
+    for(size_t x = 0; x < static_cast<size_t>(size.height()); ++x)
     {
-      op[y * pitch + 4*x + 0] = buffer[4 * static_cast<size_t>(size.width) + 3*x + 0];
-      op[y * pitch + 4*x + 1] = buffer[4 * static_cast<size_t>(size.width) + 3*x + 1];
-      op[y * pitch + 4*x + 2] = buffer[4 * static_cast<size_t>(size.width) + 3*x + 2];
+      op[y * pitch + 4*x + 0] = buffer[4 * static_cast<size_t>(size.width()) + 3*x + 0];
+      op[y * pitch + 4*x + 1] = buffer[4 * static_cast<size_t>(size.width()) + 3*x + 1];
+      op[y * pitch + 4*x + 2] = buffer[4 * static_cast<size_t>(size.width()) + 3*x + 2];
     }
   }
   return screenshot;
@@ -72,13 +72,13 @@ OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resiza
 {
   if (m_window)
   {
-    SDL_SetWindowSize(m_window, size.width, size.height);
+    SDL_SetWindowSize(m_window, size.width(), size.height());
 
-    log_error("video mode switching not implemented: {}x{}", size.width, size.height);
-    glViewport(0, 0, size.width, size.height);
+    log_error("video mode switching not implemented: {}x{}", size.width(), size.height());
+    glViewport(0, 0, size.width(), size.height());
 
     glMatrixMode(GL_PROJECTION);
-    glOrtho(0, size.width, size.height, 0, -1, 1);
+    glOrtho(0, size.width(), size.height(), 0, -1, 1);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glClearColor(1.0, 1.0, 0.0, 1.0);
@@ -114,11 +114,11 @@ OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resiza
 
     m_window = SDL_CreateWindow("Pingus " PROJECT_VERSION,
                                 SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                                size.width, size.height,
+                                size.width(), size.height(),
                                 flags);
     if (!m_window)
     {
-      raise_error("Couldn't set video mode (" << size.width << "x" << size.height << "): " << SDL_GetError());
+      raise_error("Couldn't set video mode (" << size.width() << "x" << size.height() << "): " << SDL_GetError());
     }
     SDL_SetWindowIcon(m_window, IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str()));
 
@@ -138,12 +138,12 @@ OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resiza
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    glViewport(0, 0, size.width, size.height);
+    glViewport(0, 0, size.width(), size.height());
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
-    glOrtho(0, size.width, size.height, 0, -1, 1);
+    glOrtho(0, size.width(), size.height(), 0, -1, 1);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -187,7 +187,7 @@ OpenGLFramebuffer::push_cliprect(const Rect& rect)
   }
 
   glScissor(cliprect_stack.back().left,
-            get_size().height - cliprect_stack.back().bottom,
+            get_size().height() - cliprect_stack.back().bottom,
             cliprect_stack.back().get_width(),
             cliprect_stack.back().get_height());
 }
@@ -231,17 +231,17 @@ OpenGLFramebuffer::draw_surface(const FramebufferSurface& src, const Rect& srcre
   glVertexPointer(2, GL_INT, 0, vertices);
 
   float uvs[] = {
-    static_cast<float>(srcrect.left)   / static_cast<float>(texture->get_texture_size().width),
-    static_cast<float>(srcrect.top)    / static_cast<float>(texture->get_texture_size().height),
+    static_cast<float>(srcrect.left)   / static_cast<float>(texture->get_texture_size().width()),
+    static_cast<float>(srcrect.top)    / static_cast<float>(texture->get_texture_size().height()),
 
-    static_cast<float>(srcrect.right)  / static_cast<float>(texture->get_texture_size().width),
-    static_cast<float>(srcrect.top)    / static_cast<float>(texture->get_texture_size().height),
+    static_cast<float>(srcrect.right)  / static_cast<float>(texture->get_texture_size().width()),
+    static_cast<float>(srcrect.top)    / static_cast<float>(texture->get_texture_size().height()),
 
-    static_cast<float>(srcrect.right)  / static_cast<float>(texture->get_texture_size().width),
-    static_cast<float>(srcrect.bottom) / static_cast<float>(texture->get_texture_size().height),
+    static_cast<float>(srcrect.right)  / static_cast<float>(texture->get_texture_size().width()),
+    static_cast<float>(srcrect.bottom) / static_cast<float>(texture->get_texture_size().height()),
 
-    static_cast<float>(srcrect.left)   / static_cast<float>(texture->get_texture_size().width),
-    static_cast<float>(srcrect.bottom) / static_cast<float>(texture->get_texture_size().height)
+    static_cast<float>(srcrect.left)   / static_cast<float>(texture->get_texture_size().width()),
+    static_cast<float>(srcrect.bottom) / static_cast<float>(texture->get_texture_size().height())
   };
 
   glTexCoordPointer(2, GL_FLOAT, 0, uvs);
@@ -318,9 +318,10 @@ OpenGLFramebuffer::fill_rect(const Rect& rect, const Color& color)
 Size
 OpenGLFramebuffer::get_size() const
 {
-  Size s;
-  SDL_GetWindowSize(m_window, &s.width, &s.height);
-  return s;
+  int w = 0;
+  int h = 0;
+  SDL_GetWindowSize(m_window, &w, &h);
+  return Size(w, h);
 }
 
 /* EOF */

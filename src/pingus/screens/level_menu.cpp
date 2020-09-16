@@ -553,17 +553,17 @@ LevelMenu::resize(const Size& size_)
 {
   GUIScreen::resize(size_);
 
-  x_pos = (size.width  - 800)/2;
-  y_pos = (size.height - 600)/2;
+  x_pos = (size.width()  - 800)/2;
+  y_pos = (size.height() - 600)/2;
 
   levelset_selector->set_rect(Rect(Vector2i(x_pos + 60, y_pos + 50), Size(680, 500)));
   level_selector   ->set_rect(Rect(Vector2i(x_pos + 60, y_pos + 50), Size(680, 500)));
 
-  prev_button->set_pos(size.width/2  + 280, size.height/2 - 48 - 12);
-  next_button->set_pos(size.width/2  + 280, size.height/2 + 12);
+  prev_button->set_pos(size.width()/2  + 280, size.height()/2 - 48 - 12);
+  next_button->set_pos(size.width()/2  + 280, size.height()/2 + 12);
 
-  abort_button->set_pos(size.width /2 - 300,
-                        size.height/2 + 200);
+  abort_button->set_pos(size.width() /2 - 300,
+                        size.height()/2 + 200);
 }
 
 /* EOF */

@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_PINGUS_PINGUS_LEVEL_HPP
 
 #include <map>
-
+#include <geom/fwd.hpp>
 #include "util/reader.hpp"
 
 class Pathname;
@@ -47,7 +47,7 @@ public:
   const std::string& get_description() const;
 
   /** Returns the width of the level */
-  const Size&  get_size() const;
+  const geom::isize&  get_size() const;
 
   /** Returns the number of Pingus, which are going to be released in
       this level. */

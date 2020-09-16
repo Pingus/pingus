@@ -82,8 +82,8 @@ SpriteImpl::SpriteImpl(const SpriteDescription& desc, ResourceModifier::Enum mod
 
   array = desc.array;
 
-  frame_size.width  = (desc.frame_size.width  == -1) ? framebuffer_surface.get_width()/array.width   : desc.frame_size.width;
-  frame_size.height = (desc.frame_size.height == -1) ? framebuffer_surface.get_height()/array.height : desc.frame_size.height;
+  frame_size = Size((desc.frame_size.width()  == -1) ? framebuffer_surface.get_width()/array.width()   : desc.frame_size.width(),
+                    (desc.frame_size.height() == -1) ? framebuffer_surface.get_height()/array.height() : desc.frame_size.height());
 
   frame_delay  = desc.speed;
 
@@ -120,7 +120,7 @@ SpriteImpl::update(float delta)
   if (finished || frame_delay == 0)
     return;
 
-  int total_time = frame_delay * (array.width * array.height);
+  int total_time = frame_delay * (array.width() * array.height());
   tick_count += int(delta * 1000.0f);
   if (tick_count >= total_time)
   {
@@ -146,8 +146,8 @@ void
 SpriteImpl::render(int x, int y, Framebuffer& fb)
 {
   fb.draw_surface(framebuffer_surface,
-                  Rect(frame_pos + Vector2i(frame_size.width  * (frame%array.width),
-                                            frame_size.height * (frame/array.width)),
+                  Rect(frame_pos + Vector2i(frame_size.width()  * (frame%array.width()),
+                                            frame_size.height() * (frame/array.width())),
                        frame_size),
                   Vector2i(x - offset.x, y - offset.y));
 }

@@ -60,15 +60,16 @@ SDLFramebuffer::create_surface(const Surface& surface)
 Surface
 SDLFramebuffer::make_screenshot() const
 {
-  Size size;
-  if (SDL_GetRendererOutputSize(m_renderer, &size.width, &size.height) != 0)
+  int w;
+  int h;
+  if (SDL_GetRendererOutputSize(m_renderer, &w, &h) != 0)
   {
     log_error("SDL_GetRenderOutputSize failed: {}", SDL_GetError());
     return Surface();
   }
   else
   {
-    Surface screenshot(size.width, size.height);
+    Surface screenshot(w, h);
     int ret = SDL_RenderReadPixels(m_renderer, nullptr,
                                    SDL_PIXELFORMAT_ABGR8888,
                                    screenshot.get_data(),
@@ -185,9 +186,10 @@ SDLFramebuffer::update_rects(const std::vector<Rect>& rects)
 Size
 SDLFramebuffer::get_size() const
 {
-  Size s;
-  SDL_GetWindowSize(m_window, &s.width, &s.height);
-  return s;
+  int w;
+  int h;
+  SDL_GetWindowSize(m_window, &w, &h);
+  return Size(w, h);
 }
 
 void
@@ -197,14 +199,14 @@ SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable
   {
     if (!fullscreen)
     {
-      SDL_SetWindowSize(m_window, size.width, size.height);
+      SDL_SetWindowSize(m_window, size.width(), size.height());
       SDL_SetWindowFullscreen(m_window, 0);
     }
     else
     {
       SDL_DisplayMode mode;
-      mode.w = size.width;
-      mode.h = size.height;
+      mode.w = size.width();
+      mode.h = size.height();
       mode.refresh_rate = 0;
       mode.driverdata = nullptr;
 
@@ -230,12 +232,12 @@ SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable
 
     m_window = SDL_CreateWindow("Pingus " PROJECT_VERSION,
                                 SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                                size.width, size.height,
+                                size.width(), size.height(),
                                 flags);
     if(m_window == nullptr)
     {
       std::ostringstream msg;
-      msg << "Couldn't set video mode (" << size.width << "x" << size.height << "): " << SDL_GetError();
+      msg << "Couldn't set video mode (" << size.width() << "x" << size.height() << "): " << SDL_GetError();
       throw std::runtime_error(msg.str());
     }
     SDL_SetWindowIcon(m_window, IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str()));

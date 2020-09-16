@@ -68,9 +68,9 @@ GameSession::GameSession(const PingusLevel& arg_plf, bool arg_show_result_screen
               Math::min(Display::get_height(), world_height))));
 
   pcounter = gui_manager->create<PingusCounter>(get_server());
-  small_map = gui_manager->create<SmallMap>(get_server(), playfield, Rect(Vector2i(5, size.height - 105), Size(175, 100)));
+  small_map = gui_manager->create<SmallMap>(get_server(), playfield, Rect(Vector2i(5, size.height() - 105), Size(175, 100)));
 
-  button_panel = gui_manager->create<ButtonPanel>(get_server(), Vector2i(0, (size.height - 150)/2));
+  button_panel = gui_manager->create<ButtonPanel>(get_server(), Vector2i(0, (size.height() - 150)/2));
   gui_manager->create<TimeDisplay>(this);
 
   armageddon_button = gui_manager->create<ArmageddonButton>(get_server(), Display::get_width() - 40, Display::get_height() - 62);
@@ -370,21 +370,21 @@ GameSession::resize(const Size& size_)
   int world_width  = server->get_world()->get_width();
   int world_height = server->get_world()->get_height();
 
-  playfield->set_rect(Rect(Vector2i(Math::max((size.width  - world_width)/2,  0),
-                                    Math::max((size.height - world_height)/2, 0)),
-                           Size(Math::min(size.width,  world_width),
-                                Math::min(size.height, world_height))));
+  playfield->set_rect(Rect(Vector2i(Math::max((size.width()  - world_width)/2,  0),
+                                    Math::max((size.height() - world_height)/2, 0)),
+                           Size(Math::min(size.width(),  world_width),
+                                Math::min(size.height(), world_height))));
 
-  armageddon_button->set_rect(Rect(Vector2i(size.width - 40, size.height - 62),
+  armageddon_button->set_rect(Rect(Vector2i(size.width() - 40, size.height() - 62),
                                    Size(38, 60)));
-  forward_button->set_rect(Rect(Vector2i(size.width - 40*2, size.height - 62),
+  forward_button->set_rect(Rect(Vector2i(size.width() - 40*2, size.height() - 62),
                                 Size(38, 60)));
-  pause_button->set_rect(Rect(Vector2i(size.width - 40*3, size.height - 62),
+  pause_button->set_rect(Rect(Vector2i(size.width() - 40*3, size.height() - 62),
                               Size(38, 60)));
 
-  small_map->set_rect(Rect(Vector2i(5, size.height - 105), Size(175, 100)));
+  small_map->set_rect(Rect(Vector2i(5, size.height() - 105), Size(175, 100)));
 
-  button_panel->set_pos(Vector2i(0, (size.height - 150)/2));
+  button_panel->set_pos(Vector2i(0, (size.height() - 150)/2));
 }
 
 /* EOF */

@@ -32,8 +32,8 @@ public:
   OpenGLFramebufferSurfaceImpl(SDL_Surface* src);
   ~OpenGLFramebufferSurfaceImpl() override;
 
-  int get_width()  const override { return m_size.width;  }
-  int get_height() const override { return m_size.height; }
+  int get_width()  const override { return m_size.width();  }
+  int get_height() const override { return m_size.height(); }
 
   GLuint get_handle() const { return m_handle; }
   Size get_texture_size() const { return m_texture_size; }

@@ -19,10 +19,10 @@
 
 #include <string>
 #include <memory>
+#include <geom/fwd.hpp>
 
 class Vector2i;
 class Vector3f;
-class Size;
 class Color;
 class Pathname;
 class WriterImpl;
@@ -61,7 +61,7 @@ public:
   void write_bool(const char* name, bool);
   void write_string(const char* name, const std::string&);
   void write_vector(const char* name, const Vector3f&);
-  void write_size(const char* name, const Size&);
+  void write_size(const char* name, const geom::isize&);
   void write_vector2i(const char* name, const Vector2i&);
   void write_path(const char* name, const Pathname&);
 
