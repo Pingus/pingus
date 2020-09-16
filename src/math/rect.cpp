@@ -37,10 +37,4 @@ std::ostream& operator<<(std::ostream& s, const Rect& rect)
            << rect.right << ", " << rect.bottom << ")";
 }
 
-std::ostream& operator<<(std::ostream& s, const Rectf& rect)
-{
-  return s << "Rect(" << rect.left << ", " << rect.top << ", "
-           << rect.right << ", " << rect.bottom << ")";
-}
-
 /* EOF */
