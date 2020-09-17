@@ -29,7 +29,7 @@ RainParticleHolder::RainParticle::RainParticle(int x, int y) :
   use_rain2_surf(false),
   splash_counter(0),
   splash_frame(0),
-  pos(Vector3f(static_cast<float>(x), static_cast<float>(y))),
+  pos(static_cast<float>(x), static_cast<float>(y)),
   xy_mod()
 {
   use_rain2_surf = ((rand() % 3) == 0);
@@ -82,15 +82,15 @@ RainParticleHolder::update ()
     }
     else
     {
-      if ( world->get_colmap()->getpixel(static_cast<int>(it->pos.x()), static_cast<int>(it->pos.y())) != Groundtype::GP_NOTHING
-           && world->get_colmap()->getpixel(static_cast<int>(it->pos.x()), static_cast<int>(it->pos.y())) != Groundtype::GP_OUTOFSCREEN
+      if ( world->get_colmap()->getpixel(static_cast<int>(it->pos.x), static_cast<int>(it->pos.y)) != Groundtype::GP_NOTHING
+           && world->get_colmap()->getpixel(static_cast<int>(it->pos.x), static_cast<int>(it->pos.y)) != Groundtype::GP_OUTOFSCREEN
            && ((rand() % 2) == 0))
       {
         it->splash = true;
       }
       else
       {
-        if (it->pos.y() > static_cast<float>(world->get_height()))
+        if (it->pos.y > static_cast<float>(world->get_height()))
         {
           it->alive = false;
           continue;
@@ -110,21 +110,21 @@ RainParticleHolder::draw (SceneContext& gc)
   for (std::vector<RainParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
   {
     // skip dead/invisible particles
-    if (!it->alive || it->pos.x() > static_cast<float>(WorldObj::get_world()->get_width()))
+    if (!it->alive || it->pos.x > static_cast<float>(WorldObj::get_world()->get_width()))
       continue;
 
     if (it->splash)
     {
       rain_splash.set_frame(static_cast<int>(it->splash_frame));
-      gc.color().draw(rain_splash, it->pos);
+      gc.color().draw(rain_splash, Vector3f(it->pos));
     }
     else
       if (it->use_rain2_surf)
-        gc.color().draw(rain2_surf, Vector2i(static_cast<int>(it->pos.x()),
-                                             static_cast<int>(it->pos.y() - static_cast<float>(rain1_surf.get_height()))));
+        gc.color().draw(rain2_surf, Vector2i(static_cast<int>(it->pos.x),
+                                             static_cast<int>(it->pos.y - static_cast<float>(rain1_surf.get_height()))));
       else
-        gc.color().draw(rain1_surf, Vector2i(static_cast<int>(it->pos.x()),
-                                             static_cast<int>(it->pos.y() - static_cast<float>(rain1_surf.get_height()))));
+        gc.color().draw(rain1_surf, Vector2i(static_cast<int>(it->pos.x),
+                                             static_cast<int>(it->pos.y - static_cast<float>(rain1_surf.get_height()))));
   }
 }
 

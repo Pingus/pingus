@@ -18,6 +18,8 @@
 #define HEADER_PINGUS_PINGUS_PINGU_HPP
 
 #include <memory>
+#define GLM_FORCE_CTOR_INIT
+#include <glm/glm.hpp>
 
 #include "math/vector3f.hpp"
 #include "pingus/direction.hpp"
@@ -77,7 +79,7 @@ private:
   float pos_x;
   float pos_y;
 
-  Vector3f velocity;
+  glm::vec2 velocity;
 
 private:
   void set_action(std::shared_ptr<PinguAction>);
@@ -146,9 +148,8 @@ public:
   /// Set the pingu to the given coordinates
   void set_pos (const Vector3f& arg_pos);
 
-  Vector3f get_velocity () const { return velocity; }
-
-  void set_velocity (const Vector3f& velocity_);
+  glm::vec2 get_velocity () const { return velocity; }
+  void set_velocity (glm::vec2 const& velocity_);
 
   // Set the pingu in the gives direction
   void set_direction (const Direction& d);
@@ -189,7 +190,7 @@ public:
   bool need_catch ();
 
   void draw (SceneContext& gc);
-  void apply_force (const Vector3f&);
+  void apply_force(const glm::vec2&);
 
   void update();
 

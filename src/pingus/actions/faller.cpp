@@ -61,15 +61,14 @@ Faller::update ()
   // FIXME: This should be triggered at a later point, when close to
   // FIXME: deadly_velocity or something like that. A translation
   // FIXME: animation for the floater might also help
-  if (pingu->get_velocity().y() > 5.0f && pingu->request_fall_action())
+  if (pingu->get_velocity().y > 5.0f && pingu->request_fall_action())
     return;
 
   // Apply gravity
-  pingu->set_velocity(pingu->get_velocity()
-                      + Vector3f(0.0f, WorldObj::get_world()->get_gravity()) );
+  pingu->set_velocity(pingu->get_velocity() + glm::vec2(0.0f, WorldObj::get_world()->get_gravity()));
 
-  Vector3f velocity = pingu->get_velocity();
-  Vector3f move = velocity;
+  glm::vec2 velocity = pingu->get_velocity();
+  glm::vec2 move = velocity;
   bool collided;
 
   Movers::LinearMover mover(WorldObj::get_world(), pingu->get_pos());
@@ -91,19 +90,19 @@ Faller::update ()
         rel_getpixel(1, 0)  != Groundtype::GP_BRIDGE)
     {
       // Make Pingu bounce off wall
-      velocity.x = -(velocity.x() / 3.0f);
+      velocity.x = -(velocity.x / 3.0f);
 
       // Make the Pingu face the correct direction.  NB: Pingu may
       // previously have been facing in the opposite direction of its
       // velocity because of an explosion.
-      if (velocity.x() > 0.0f)
+      if (velocity.x > 0.0f)
         pingu->direction.right();
       else
         pingu->direction.left();
 
       pingu->set_velocity(velocity);
     }
-    else if (velocity.y() > 0.0f) // If the Pingu collided into something while moving down...
+    else if (velocity.y > 0.0f) // If the Pingu collided into something while moving down...
     {
       // Ping is on ground/water/something
       if (rel_getpixel(0, -1) == Groundtype::GP_WATER
@@ -112,7 +111,7 @@ Faller::update ()
         pingu->set_action(ActionName::DROWN);
       }
       // Did we stop too fast?
-      else if (Math::abs(pingu->get_velocity().y()) > deadly_velocity)
+      else if (Math::abs(pingu->get_velocity().y) > deadly_velocity)
       {
         //log_info("Pingus splashed: " << pingu->get_velocity().y << " " << deadly_velocity);
         pingu->set_action(ActionName::SPLASHED);
@@ -132,7 +131,7 @@ Faller::update ()
     {
       // Don't make the Pingu go up any further.
       velocity.y = 0;
-      velocity.x = (velocity.x() / 3.0f);
+      velocity.x = (velocity.x / 3.0f);
 
       pingu->set_velocity(velocity);
     }
@@ -153,8 +152,8 @@ bool
 Faller::is_tumbling () const
 {
   // If we are going fast enough to get smashed, start tumbling
-  return (Math::abs(pingu->get_velocity().x()) > deadly_velocity
-          || Math::abs(pingu->get_velocity().y()) > deadly_velocity);
+  return (Math::abs(pingu->get_velocity().x) > deadly_velocity
+          || Math::abs(pingu->get_velocity().y) > deadly_velocity);
 }
 
 bool

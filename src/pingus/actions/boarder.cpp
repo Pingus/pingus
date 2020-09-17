@@ -47,8 +47,9 @@ Boarder::update ()
     }
 
     // Incremental update so that we don't skip pixels
-    Vector3f new_pos = pingu->get_pos();
-    new_pos.x = new_pos.x() + static_cast<float>(pingu->direction) * speed;
+    Vector3f new_pos(pingu->get_pos().x() + static_cast<float>(pingu->direction) * speed,
+                     pingu->get_pos().y());
+
     while (new_pos.x() != pingu->get_pos().x())
     {
       Vector3f old_pos = pingu->get_pos();
@@ -61,8 +62,8 @@ Boarder::update ()
         pingu->set_pos(old_pos); // + (pingu->direction * 10);
         ////pingu->pos.y = 10;
 
-        pingu->apply_force(Vector3f(speed * static_cast<float>(pingu->direction) * 0.5f,
-                                    -speed * static_cast<float>(abs(pingu->direction)) * 0.5f));
+        pingu->apply_force(glm::vec2(speed * static_cast<float>(pingu->direction) * 0.5f,
+                                     -speed * static_cast<float>(abs(pingu->direction)) * 0.5f));
         pingu->set_action(ActionName::WALKER);
         return;
       }
@@ -70,7 +71,7 @@ Boarder::update ()
   }
   else
   {
-    pingu->apply_force (Vector3f(speed * static_cast<float>(pingu->direction), 0));
+    pingu->apply_force (glm::vec2(speed * static_cast<float>(pingu->direction), 0));
     pingu->set_action(ActionName::WALKER);
   }
 }

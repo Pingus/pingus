@@ -56,20 +56,16 @@ ServerEvent::ServerEvent(const ReaderObject& reader_object) :
   }
   else if (reader_object.get_name() == "pingu-action")
   {
-    std::string raw_x;
-    std::string raw_y;
-
     type = PINGU_ACTION_EVENT;
     reader.read_int ("time",   time_stamp);
     int pingu_id_tmp;
     reader.read_int ("id", pingu_id_tmp);
     pingu_id = static_cast<unsigned int>(pingu_id_tmp);
 
-    if (reader.read_string("raw-x", raw_x))
-      pos.x = Math::string2float(raw_x);
-
-    if (reader.read_string("raw-y", raw_y))
-      pos.y = Math::string2float(raw_y);
+    std::string raw_x;
+    std::string raw_y;
+    pos = Vector3f(reader.read_string("raw-x", raw_x) ? Math::string2float(raw_x) : 0.0f,
+                   reader.read_string("raw-y", raw_y) ? Math::string2float(raw_y) : 0.0f);
 
     reader.read_enum("action", pingu_action, &ActionName::from_string);
   }

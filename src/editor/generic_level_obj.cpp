@@ -488,7 +488,7 @@ GenericLevelObj::z_index() const
 void
 GenericLevelObj::set_pos_x(float x)
 {
-  pos.x = x;
+  pos = Vector3f(x, pos.y());
 }
 
 float
@@ -500,7 +500,7 @@ GenericLevelObj::get_pos_x() const
 void
 GenericLevelObj::set_pos_y(float y)
 {
-  pos.y = y;
+  pos = Vector3f(pos.x(), y);
 }
 
 float

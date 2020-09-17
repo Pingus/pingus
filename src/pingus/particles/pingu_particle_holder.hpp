@@ -33,10 +33,10 @@ class PinguParticleHolder : public WorldObj
     int  livetime;
     bool use_frame2;
     /// The current position of the particle
-    Vector3f pos;
+    glm::vec2 pos;
 
     /// The velocity of the particle
-    Vector3f velocity;
+    glm::vec2 velocity;
 
     PinguParticle (int x, int y);
   };

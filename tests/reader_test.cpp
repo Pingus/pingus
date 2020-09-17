@@ -65,8 +65,8 @@ TEST_P(ReaderTest, read_vector)
   Vector3f v;
   float z_index;
   ASSERT_TRUE(body.read_vector("vector", v, z_index));
-  EXPECT_EQ(1.0f, v.x);
-  EXPECT_EQ(2.0f, v.y);
+  EXPECT_EQ(1.0f, v.x());
+  EXPECT_EQ(2.0f, v.y());
   EXPECT_EQ(3.0f, z_index);
 }
 

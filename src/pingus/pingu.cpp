@@ -64,8 +64,8 @@ Pingu::Pingu(unsigned int arg_id, const Vector3f& arg_pos, int owner) :
   action_time(-1),
   owner_id(owner),
   status(PS_ALIVE),
-  pos_x(arg_pos.x),
-  pos_y(arg_pos.y),
+  pos_x(arg_pos.x()),
+  pos_y(arg_pos.y()),
   velocity(0, 0),
   direction()
 {
@@ -120,13 +120,13 @@ Pingu::set_pos (const Vector3f& arg_pos)
 }
 
 void
-Pingu::set_velocity (const Vector3f& velocity_)
+Pingu::set_velocity (glm::vec2 const& velocity_)
 {
   velocity = velocity_;
 
   // crude terminal velocity
-  velocity.x = Math::clamp(-terminal_velocity, velocity.x(), terminal_velocity);
-  velocity.y = Math::clamp(-terminal_velocity, velocity.y(), terminal_velocity);
+  velocity.x = Math::clamp(-terminal_velocity, velocity.x, terminal_velocity);
+  velocity.y = Math::clamp(-terminal_velocity, velocity.y, terminal_velocity);
 }
 
 // Set the action of the pingu (bridger, blocker, bomber, etc.)
@@ -400,12 +400,12 @@ Pingu::get_action ()
 }
 
 void
-Pingu::apply_force (const Vector3f& arg_v)
+Pingu::apply_force (const glm::vec2& arg_v)
 {
   velocity += arg_v;
   // Moving the pingu on pixel up, so that the force can take effect
   // FIXME: this should be handled by a state-machine
-  --pos_y;
+  pos_y -= 1;
 }
 
 Vector3f

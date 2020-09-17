@@ -37,8 +37,8 @@ private:
     bool         alive;
     bool         colliding;
     ParticleType type;
-    Vector3f       pos;
-    Vector3f       velocity;
+    Vector3f     pos;
+    glm::vec2    velocity;
 
     SnowParticle(int x, int y, bool colliding_);
   };

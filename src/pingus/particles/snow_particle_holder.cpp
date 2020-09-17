@@ -27,8 +27,8 @@ SnowParticleHolder::SnowParticle::SnowParticle (int x, int y, bool colliding_) :
   alive(true),
   colliding(colliding_),
   type(SnowParticleHolder::Snow1),
-  pos(Vector3f(static_cast<float>(x),static_cast<float>(y))),
-  velocity(Vector3f(0.0f, 1 + (Math::frand() * 3.5f)))
+  pos(static_cast<float>(x),static_cast<float>(y)),
+  velocity(0.0f, 1 + (Math::frand() * 3.5f))
 {
   switch (rand() % 10)
   {
@@ -87,10 +87,9 @@ SnowParticleHolder::update ()
     // skip dead particles
     if (!it->alive)
       continue;
-    it->pos.x += it->velocity.x();
-    it->pos.y += it->velocity.y();
+    it->pos = Vector3f(it->pos.as_vec() + it->velocity);
 
-    if (it->pos.y > static_cast<float>(world->get_height()))
+    if (it->pos.y() > static_cast<float>(world->get_height()))
     {
       it->alive = false;
       continue;

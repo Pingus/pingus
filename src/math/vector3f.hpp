@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_MATH_VECTOR3F_HPP
 #define HEADER_PINGUS_MATH_VECTOR3F_HPP
 
+#define GLM_FORCE_CTOR_INIT
+#include <glm/glm.hpp>
 #include "math/vector2f.hpp"
 
 class Vector3f
@@ -27,6 +29,7 @@ private:
   //  float z;
 
 public:
+  explicit Vector3f(glm::vec2 const& v) : m_x(v.x), m_y(v.y) {}
   explicit Vector3f (float x_=0, float y_=0 /*, float z_=0*/) : m_x(x_), m_y(y_)/*, z(z_)*/ {}
 
   Vector3f (const Vector3f& old) : m_x(old.m_x), m_y(old.m_y) {}
@@ -124,6 +127,8 @@ public:
     Vector3f c = b - a;
     return a + (c * perc);
   }
+
+  glm::vec2 as_vec() const { return glm::vec2{m_x, m_y}; }
 };
 
 std::ostream& operator<< (std::ostream& os, const Vector3f& v);

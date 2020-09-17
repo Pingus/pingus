@@ -30,15 +30,12 @@ LinearMover::~LinearMover()
 }
 
 void
-LinearMover::update(const Vector3f& move, const Collider& collision_check)
+LinearMover::update(glm::vec2 const& move, const Collider& collision_check)
 {
-  Vector3f step_vector = move;
-
-  // Static cast to stop warning
-  int move_length = static_cast<int>(move.length());
+  int move_length = static_cast<int>(glm::length(move));
 
   // Make the step vector (i.e. change to a unit vector)
-  step_vector.normalize();
+  glm::vec2 step_vector = glm::normalize(move);
 
   collision = false;
 
@@ -47,12 +44,13 @@ LinearMover::update(const Vector3f& move, const Collider& collision_check)
   {
     collision = collision_check(world, pos, step_vector);
 
-    pos += step_vector;
+    pos = Vector3f(pos.as_vec() + step_vector);
   }
 
   // If on a collision pixel, back away from it.
-  if (collision)
-    pos -= step_vector;
+  if (collision) {
+    pos = Vector3f(pos.as_vec() - step_vector);
+  }
 }
 
 } // namespace Movers

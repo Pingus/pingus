@@ -36,7 +36,7 @@ class RainParticleHolder : public WorldObj
     int   splash_counter;
     float splash_frame;
 
-    Vector3f pos;
+    glm::vec2 pos;
     // a modificator for x and y pos
     float xy_mod;
 

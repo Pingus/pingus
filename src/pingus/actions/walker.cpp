@@ -36,7 +36,7 @@ Walker::Walker (Pingu* p) :
   floaterlayer.load(Direction::RIGHT, "other/floaterlayer/right");
 
   // Reset the velocity
-  pingu->set_velocity(Vector3f());
+  pingu->set_velocity(glm::vec2(0, 0));
 }
 
 void

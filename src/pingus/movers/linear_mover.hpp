@@ -33,7 +33,7 @@ public:
   ~LinearMover() override;
 
   /** Updates the position of the object taking into account collisions */
-  void update(const Vector3f& move, const Collider& collision_at) override;
+  void update(glm::vec2 const& move, const Collider& collision_at) override;
 };
 
 } // namespace Movers

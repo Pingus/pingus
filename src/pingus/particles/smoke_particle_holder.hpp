@@ -34,7 +34,7 @@ class SmokeParticleHolder : public WorldObj
     int    livetime;
     bool   use_surf2;
     Vector3f pos;
-    Vector3f velocity;
+    glm::vec2 velocity;
 
     SmokeParticle(float x, float y, float vel_x, float vel_y);
   };

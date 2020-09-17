@@ -24,8 +24,8 @@ SmokeParticleHolder::SmokeParticle::SmokeParticle (float x, float y, float vel_x
   time(),
   livetime(),
   use_surf2(),
-  pos(Vector3f(x,y)),
-  velocity(Vector3f(vel_x, vel_y))
+  pos(x,y),
+  velocity(vel_x, vel_y)
 {
   time = livetime = 25 + (rand() % 10);
   use_surf2 = rand() % 2;
@@ -63,8 +63,7 @@ SmokeParticleHolder::update ()
     if (!it->livetime)
       continue;
 
-    it->pos.x += it->velocity.x();
-    it->pos.y += it->velocity.y();
+    it->pos = Vector3f(it->pos.as_vec() + it->velocity);
 
     --it->livetime;
   }

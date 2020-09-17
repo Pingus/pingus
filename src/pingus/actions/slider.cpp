@@ -48,11 +48,11 @@ Slider::update ()
 
       if (pingu->direction.is_right())
       {
-        pingu->set_velocity(pingu->get_velocity() + Vector3f(speed, 0.0));
+        pingu->set_velocity(pingu->get_velocity() + glm::vec2(speed, 0.0));
       }
       else
       {
-        pingu->set_velocity(pingu->get_velocity() + Vector3f(-speed, 0.0));
+        pingu->set_velocity(pingu->get_velocity() + glm::vec2(-speed, 0.0));
       }
 
       pingu->set_action(ActionName::FALLER);

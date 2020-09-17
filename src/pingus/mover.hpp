@@ -32,7 +32,7 @@ public:
   virtual ~Mover() = 0;
 
   /** Updates the position of the object taking into account collisions */
-  virtual void update(const Vector3f& move, const Collider& collider) = 0;
+  virtual void update(glm::vec2 const& move, const Collider& collider) = 0;
 
   /** Get the resulting position vector */
   Vector3f get_pos() const;

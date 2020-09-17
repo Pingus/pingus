@@ -46,11 +46,11 @@ Jumper::update ()
 
   if (pingu->direction.is_left())
   {
-    pingu->set_velocity(pingu->get_velocity() + Vector3f(-4.58f, -4.58f));
+    pingu->set_velocity(pingu->get_velocity() + glm::vec2(-4.58f, -4.58f));
   }
   else // if (pingu->direction.is_right())
   {
-    pingu->set_velocity(pingu->get_velocity() + Vector3f(4.58f, -4.58f));
+    pingu->set_velocity(pingu->get_velocity() + glm::vec2(4.58f, -4.58f));
   }
 
   // Move the pingu in the air, so that it can start 'falling'

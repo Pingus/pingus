@@ -36,7 +36,7 @@ Floater::update()
 {
   sprite.update ();
 
-  pingu->set_velocity(Vector3f(0.0f, 1.0f));
+  pingu->set_velocity(glm::vec2(0.0f, 1.0f));
 
   if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING)
   {
