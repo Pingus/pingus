@@ -66,16 +66,16 @@ void
 Spike::catch_pingu (Pingu* pingu)
 {
   if (!killing) {
-    if ( pingu->get_pos().x > pos.x + 16 - 5 && pingu->get_pos().x < pos.x + 16 + 5
-         && pingu->get_pos().y > pos.y          && pingu->get_pos().y < pos.y + 32)
+    if ( pingu->get_pos().x() > pos.x() + 16 - 5 && pingu->get_pos().x() < pos.x() + 16 + 5
+         && pingu->get_pos().y() > pos.y()          && pingu->get_pos().y() < pos.y() + 32)
     {
       surface.restart();
       killing = true;
     }
   } else {
     if (surface.get_current_frame() == 3
-        && pingu->get_pos().x > pos.x +16 - 12 && pingu->get_pos().x < pos.x + 16 + 12
-        && pingu->get_pos().y > pos.y          && pingu->get_pos().y < pos.y + 32)
+        && pingu->get_pos().x() > pos.x()  +16 - 12 && pingu->get_pos().x() < pos.x() + 16 + 12
+        && pingu->get_pos().y() > pos.y()          && pingu->get_pos().y() < pos.y() + 32)
     {
       pingu->set_status(Pingu::PS_DEAD);
     }

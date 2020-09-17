@@ -226,7 +226,7 @@ JsonPrettyWriterImpl::write_vector(const char* name, const Vector3f& value, floa
 
   write_indent();
   write_quoted_string(name);
-  m_out << ": [ " << value.x << ", " << value.y << ", " <<  z_index << " ]";
+  m_out << ": [ " << value.x() << ", " << value.y() << ", " <<  z_index << " ]";
   write_separator();
 }
 

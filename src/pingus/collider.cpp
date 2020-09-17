@@ -36,8 +36,8 @@ bool Collider::operator() (const World* world, const Vector3f& current_pos,
 
 int Collider::getpixel(const World* world, const Vector3f& pos) const
 {
-  return world->get_colmap()->getpixel(static_cast<int>(pos.x),
-                                       static_cast<int>(pos.y));
+  return world->get_colmap()->getpixel(static_cast<int>(pos.x()),
+                                       static_cast<int>(pos.y()));
 }
 
 /* EOF */

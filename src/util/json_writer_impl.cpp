@@ -173,8 +173,8 @@ JsonWriterImpl::write_vector(const char* name, const Vector3f& value, float z_in
   assert(m_stack.back().get().type() == Json::objectValue);
 
   Json::Value array(Json::arrayValue);
-  array.append(Json::Value(value.x));
-  array.append(Json::Value(value.y));
+  array.append(Json::Value(value.x()));
+  array.append(Json::Value(value.y()));
   array.append(Json::Value(z_index));
   m_stack.back().get()[name] = array;
 }

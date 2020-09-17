@@ -201,8 +201,8 @@ JsonReaderMappingImpl::read_vector(const char* key, Vector3f& value, float& z_in
   const Json::Value& element = m_json[key];
   if (element.isArray() && element.size() >= 3)
   {
-    value.x = element[0u].asFloat();
-    value.y = element[1u].asFloat();
+    value = Vector3f(element[0u].asFloat(),
+                     element[1u].asFloat());
     z_index = element[2u].asFloat();
     return true;
   }

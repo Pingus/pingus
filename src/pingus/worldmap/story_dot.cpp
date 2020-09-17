@@ -53,8 +53,8 @@ StoryDot::draw_hover(DrawingContext& gc)
   gc.draw (m_story_dot_highlight, pos);
 
   gc.print_center(Fonts::pingus_small,
-                  Vector2i(static_cast<int>(pos.x),
-                           static_cast<int>(pos.y) - 44),
+                  Vector2i(static_cast<int>(pos.x()),
+                           static_cast<int>(pos.y()) - 44),
                   _(m_name),
                   10000);
 }

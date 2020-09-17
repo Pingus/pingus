@@ -71,10 +71,10 @@ SwitchDoorSwitch::update ()
 
       for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
       {
-        if ((*pingu)->get_pos().x > switch_pos.x &&
-            (*pingu)->get_pos().x < switch_pos.x + static_cast<float>(switch_sur.get_width()) &&
-            (*pingu)->get_pos().y > switch_pos.y &&
-            (*pingu)->get_pos().y < switch_pos.y + static_cast<float>(switch_sur.get_height()))
+        if ((*pingu)->get_pos().x() > switch_pos.x() &&
+            (*pingu)->get_pos().x() < switch_pos.x() + static_cast<float>(switch_sur.get_width()) &&
+            (*pingu)->get_pos().y() > switch_pos.y() &&
+            (*pingu)->get_pos().y() < switch_pos.y() + static_cast<float>(switch_sur.get_height()))
         {
           is_triggered = true;
           m_door->open_door();

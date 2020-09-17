@@ -87,8 +87,8 @@ SnowParticleHolder::update ()
     // skip dead particles
     if (!it->alive)
       continue;
-    it->pos.x += it->velocity.x;
-    it->pos.y += it->velocity.y;
+    it->pos.x += it->velocity.x();
+    it->pos.y += it->velocity.y();
 
     if (it->pos.y > static_cast<float>(world->get_height()))
     {
@@ -99,12 +99,12 @@ SnowParticleHolder::update ()
     it->velocity.x += (Math::frand() - 0.5f) / 10;
     if (it->colliding)
     {
-      int pixel = world->get_colmap()->getpixel(static_cast<int>(it->pos.x), static_cast<int>(it->pos.y));
+      int pixel = world->get_colmap()->getpixel(static_cast<int>(it->pos.x()), static_cast<int>(it->pos.y()));
       if ( pixel != Groundtype::GP_NOTHING
            && pixel != Groundtype::GP_WATER
            && pixel != Groundtype::GP_OUTOFSCREEN)
       {
-        world->get_gfx_map()->put(ground.get_surface(), static_cast<int>(it->pos.x - 1), static_cast<int>(it->pos.y - 1));
+        world->get_gfx_map()->put(ground.get_surface(), static_cast<int>(it->pos.x() - 1), static_cast<int>(it->pos.y() - 1));
         it->alive = false;
       }
     }

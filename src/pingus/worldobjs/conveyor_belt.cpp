@@ -49,13 +49,13 @@ ConveyorBelt::draw (SceneContext& gc)
   gc.color().draw(left_sur, pos);
   for (int i=0; i < width; ++i)
     gc.color().draw(middle_sur,
-                    Vector3f(pos.x + static_cast<float>(left_sur.get_width() + i * middle_sur.get_width()),
-                             pos.y),
+                    Vector3f(pos.x() + static_cast<float>(left_sur.get_width() + i * middle_sur.get_width()),
+                             pos.y()),
                     m_z_index);
 
   gc.color().draw(right_sur,
-                  Vector3f(pos.x + static_cast<float>(left_sur.get_width() + width * middle_sur.get_width()),
-                           pos.y),
+                  Vector3f(pos.x() + static_cast<float>(left_sur.get_width() + width * middle_sur.get_width()),
+                           pos.y()),
                   m_z_index);
 }
 
@@ -66,8 +66,8 @@ ConveyorBelt::on_startup ()
 
   for (int i=0; i < (width + 2); ++i)
     world->put(mask,
-               static_cast<int>(pos.x) + (15 * i),
-               static_cast<int>(pos.y),
+               static_cast<int>(pos.x()) + (15 * i),
+               static_cast<int>(pos.y()),
                Groundtype::GP_SOLID);
 }
 
@@ -81,10 +81,10 @@ ConveyorBelt::update ()
   PinguHolder* holder = world->get_pingus();
   for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
   {
-    if (   (*pingu)->get_pos().x > pos.x
-           && (*pingu)->get_pos().x < pos.x + 15 * static_cast<float>(width + 2)
-           && (*pingu)->get_pos().y > pos.y - 2
-           && (*pingu)->get_pos().y < pos.y + 10)
+    if (   (*pingu)->get_pos().x() > pos.x()
+           && (*pingu)->get_pos().x() < pos.x() + 15 * static_cast<float>(width + 2)
+           && (*pingu)->get_pos().y() > pos.y() - 2
+           && (*pingu)->get_pos().y() < pos.y() + 10)
     {
       Vector3f pos_ = (*pingu)->get_pos();
       pos_.x -= speed * 0.025f;

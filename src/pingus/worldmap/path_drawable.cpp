@@ -32,8 +32,8 @@ PathDrawable::draw (DrawingContext& gc)
 
   for(Path::iterator next = prev + 1; next != path.end(); ++next)
   {
-    gc.draw_line(Vector2i(static_cast<int>(prev->x), static_cast<int>(prev->y)),
-                 Vector2i(static_cast<int>(next->x), static_cast<int>(next->y)),
+    gc.draw_line(Vector2i(static_cast<int>(prev->x()), static_cast<int>(prev->y())),
+                 Vector2i(static_cast<int>(next->x()), static_cast<int>(next->y())),
                  Color(255, 255, 255));
     prev = next;
   }

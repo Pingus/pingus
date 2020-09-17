@@ -86,8 +86,8 @@ Guillotine::catch_pingu (Pingu* pingu)
 {
   if (!killing)
   {
-    if (pingu->is_inside (pos.x + 38, pos.y + 90,
-                          pos.x + 42, pos.y + 98))
+    if (pingu->is_inside (pos.x() + 38, pos.y() + 90,
+                          pos.x() + 42, pos.y() + 98))
     {
       killing = true;
       pingu->set_status(Pingu::PS_DEAD);

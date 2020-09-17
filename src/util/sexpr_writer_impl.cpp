@@ -150,7 +150,7 @@ void
 SExprWriterImpl::write_vector(const char* name, const Vector3f& value, float z_index)
 {
   (*out) << "\n" << indent() << "(" << name << " "
-         << value.x << " " << value.y << " " << z_index << ")";
+         << value.x() << " " << value.y() << " " << z_index << ")";
 }
 
 void

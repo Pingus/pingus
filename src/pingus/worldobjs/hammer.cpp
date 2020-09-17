@@ -62,8 +62,8 @@ Hammer::update()
         Pingu* pingu = *pingu_it;
         if (pingu->get_action() != ActionName::SPLASHED)
         {
-          if (pingu->get_x() > pos.x + 55  && pingu->get_x() < pos.x + 77
-              && pingu->get_y() > pos.y + 146 && pingu->get_y() < pos.y + 185)
+          if (pingu->get_x() > pos.x() + 55  && pingu->get_x() < pos.x() + 77
+              && pingu->get_y() > pos.y() + 146 && pingu->get_y() < pos.y() + 185)
             pingu->set_action(ActionName::SPLASHED);
         }
       }

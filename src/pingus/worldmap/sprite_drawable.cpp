@@ -56,8 +56,8 @@ SpriteDrawable::draw(DrawingContext& gc)
       float pingus_z_index = Worldmap::current()->get_pingus()->z_index();
 
       // Pingu is not over the surface
-      if (!(pingus_pos.x > pos.x && pingus_pos.x < pos.x + static_cast<float>(surface.get_width()) &&
-            pingus_pos.y > pos.y && pingus_pos.y < pos.y + static_cast<float>(surface.get_height())))
+      if (!(pingus_pos.x() > pos.x && pingus_pos.x() < pos.x() + static_cast<float>(surface.get_width()) &&
+            pingus_pos.y() > pos.y && pingus_pos.y() < pos.y() + static_cast<float>(surface.get_height())))
       {
         gc.draw(surface, pos, m_z_index);
       }

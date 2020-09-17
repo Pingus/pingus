@@ -49,8 +49,8 @@ LevelDot::draw(DrawingContext& gc)
   Vector2i mpos
     = gc.screen_to_world(Vector2i(Input::Controller::current()->get_pointer(Input::STANDARD_POINTER)->get_pos()));
 
-  float x = static_cast<float>(mpos.x()) - pos.x;
-  float y = static_cast<float>(mpos.y()) - pos.y;
+  float x = static_cast<float>(mpos.x()) - pos.x();
+  float y = static_cast<float>(mpos.y()) - pos.y();
 
   bool highlight = false;
 
@@ -115,16 +115,16 @@ LevelDot::draw_hover(DrawingContext& gc)
   if (accessible())
   {
     gc.print_center(Fonts::pingus_small,
-                    Vector2i(static_cast<int>(pos.x),
-                             static_cast<int>(pos.y) - 44),
+                    Vector2i(static_cast<int>(pos.x()),
+                             static_cast<int>(pos.y()) - 44),
                     _(get_plf().get_levelname()),
                     10000);
   }
   else
   {
     gc.print_center(Fonts::pingus_small,
-                    Vector2i(static_cast<int>(pos.x),
-                             static_cast<int>(pos.y) - 44),
+                    Vector2i(static_cast<int>(pos.x()),
+                             static_cast<int>(pos.y()) - 44),
                     _("???"),
                     10000);
   }
@@ -132,7 +132,7 @@ LevelDot::draw_hover(DrawingContext& gc)
   if (globals::developer_mode)
   {
     gc.print_center(Fonts::pingus_small,
-                    Vector2i(static_cast<int>(pos.x), static_cast<int>(pos.y) - 70),
+                    Vector2i(static_cast<int>(pos.x()), static_cast<int>(pos.y()) - 70),
                     get_plf().get_resname(),
                     10000);
   }

@@ -216,8 +216,8 @@ EditorLevel::save_prefab(const std::string& filename)
   fw.begin_collection("objects");
   for (auto it = impl->objects.begin(); it != impl->objects.end(); ++it)
   {
-    LevelObjPtr obj = (*it)->duplicate(Vector2i(static_cast<int>(-level_center.x),
-                                                static_cast<int>(-level_center.y)));
+    LevelObjPtr obj = (*it)->duplicate(Vector2i(static_cast<int>(-level_center.x()),
+                                                static_cast<int>(-level_center.y())));
     obj->write_properties(fw);
   }
   fw.end_collection();     // objects

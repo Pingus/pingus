@@ -21,97 +21,100 @@
 
 class Vector3f
 {
-public:
-  float x;
-  float y;
+private:
+  float m_x;
+  float m_y;
   //  float z;
 
 public:
-  explicit Vector3f (float x_=0, float y_=0 /*, float z_=0*/) : x(x_), y(y_)/*, z(z_)*/ {}
+  explicit Vector3f (float x_=0, float y_=0 /*, float z_=0*/) : m_x(x_), m_y(y_)/*, z(z_)*/ {}
 
-  Vector3f (const Vector3f& old) : x(old.x), y(old.y) {}
-  Vector3f (const Vector2f& old) : x(old.x()), y(old.y()) {}
-  Vector3f (const Vector2i& old) : x(float(old.x())), y(float(old.y())) {}
+  Vector3f (const Vector3f& old) : m_x(old.m_x), m_y(old.m_y) {}
+  Vector3f (const Vector2f& old) : m_x(old.x()), m_y(old.y()) {}
+  Vector3f (const Vector2i& old) : m_x(float(old.x())), m_y(float(old.y())) {}
   Vector3f& operator= (const Vector3f& old)
   {
     if (this != &old)
     {
-      x = old.x;
-      y = old.y;
+      m_x = old.m_x;
+      m_y = old.m_y;
     }
 
     return *this;
   }
 
+  float x() const { return m_x; }
+  float y() const { return m_y; }
+
   Vector3f operator- () const
   {
-    return Vector3f(-x, -y);
+    return Vector3f(-m_x, -m_y);
   }
 
   Vector3f operator+ (const Vector3f& add) const
   {
-    return Vector3f(x + add.x, y + add.y);
+    return Vector3f(m_x + add.m_x, m_y + add.m_y);
   }
   Vector3f operator- (const Vector3f& sub) const
   {
-    return Vector3f(x - sub.x, y - sub.y);
+    return Vector3f(m_x - sub.m_x, m_y - sub.m_y);
   }
   Vector3f operator* (float mul) const
   {
-    return Vector3f(mul * x, mul * y);
+    return Vector3f(mul * m_x, mul * m_y);
   }
 
   bool operator==(Vector3f const& rhs) const
   {
-    return (x == rhs.x &&
-            y == rhs.y);
+    return (m_x == rhs.m_x &&
+            m_y == rhs.m_y);
   }
 
   Vector3f& operator+= (const Vector3f& add)
   {
-    x += add.x;
-    y += add.y;
+    m_x += add.m_x;
+    m_y += add.m_y;
     return *this;
   }
 
   Vector3f& operator-= (const Vector3f& sub)
   {
-    x -= sub.x;
-    y -= sub.y;
+    m_x -= sub.m_x;
+    m_y -= sub.m_y;
     return *this;
   }
 
 #if 0
   Vector3f& operator*= (float mul)
   {
-    x *= mul;
-    y *= mul;
+    m_x *= mul;
+    m_y *= mul;
     return *this;
   }
 #endif
 
   void normalize ()
   {
-    float f = Math::sqrt(x * x + y * y);
+    float f = Math::sqrt(m_x * m_x + m_y * m_y);
 
     if (f != 0.0f)
     {
-      x /= f;
-      y /= f;
+      m_x /= f;
+      m_y /= f;
     }
   }
 
   float length() const
   {
-    return Math::sqrt(x * x + y * y);
+    return Math::sqrt(m_x * m_x + m_y * m_y);
   }
 
   static float distance2d(const Vector3f& a, const Vector3f& b)
   {
-    float x = b.x - a.x;
-    float y = b.y - a.y;
+    float m_x = b.m_x - a.m_x;
+    float m_y = b.m_y - a.m_y;
 
-    return Math::abs(Math::sqrt((x * x) + (y * y)));
+    return Math::abs(Math::sqrt((m_x * m_x) + (m_y * m_y)));
   }
 
   /** Calculate a position between a and b, relative to the value of

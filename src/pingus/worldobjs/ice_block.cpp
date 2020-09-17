@@ -46,8 +46,8 @@ void
 IceBlock::on_startup ()
 {
   world->put(block_sur_cmap,
-             static_cast<int>(pos.x),
-             static_cast<int>(pos.y),
+             static_cast<int>(pos.x()),
+             static_cast<int>(pos.y()),
              Groundtype::GP_GROUND);
 }
 
@@ -72,8 +72,8 @@ IceBlock::update()
 
   for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
   {
-    if ((*pingu)->get_x() > pos.x     && (*pingu)->get_x() < pos.x + static_cast<float>(block_sur.get_width()) &&
-        (*pingu)->get_y() > pos.y - 4 && (*pingu)->get_y() < pos.y + static_cast<float>(block_sur.get_height()))
+    if ((*pingu)->get_x() > pos.x()     && (*pingu)->get_x() < pos.x() + static_cast<float>(block_sur.get_width()) &&
+        (*pingu)->get_y() > pos.y() - 4 && (*pingu)->get_y() < pos.y() + static_cast<float>(block_sur.get_height()))
     {
       last_contact = world->get_time();
     }
@@ -89,7 +89,7 @@ IceBlock::update()
       is_finished = true;
       thickness = 0;
 
-      world->remove(block_sur_cmap, static_cast<int>(pos.x), static_cast<int>(pos.y));
+      world->remove(block_sur_cmap, static_cast<int>(pos.x()), static_cast<int>(pos.y()));
       return;
     }
   }

@@ -172,9 +172,9 @@ GenericLevelObj::draw(DrawingContext &gc)
   {
     if (attribs & HAS_REPEAT)
     {
-      for(int x = static_cast<int>(pos.x); x < static_cast<int>(pos.x) + sprite.get_width() * repeat; x += sprite.get_width())
+      for(int x = static_cast<int>(pos.x()); x < static_cast<int>(pos.x()) + sprite.get_width() * repeat; x += sprite.get_width())
       {
-        gc.draw(sprite, Vector3f(static_cast<float>(x), pos.y), m_z_index);
+        gc.draw(sprite, Vector3f(static_cast<float>(x), pos.y()), m_z_index);
       }
     }
 #if 0
@@ -494,7 +494,7 @@ GenericLevelObj::set_pos_x(float x)
 float
 GenericLevelObj::get_pos_x() const
 {
-  return pos.x;
+  return pos.x();
 }
 
 void
@@ -506,7 +506,7 @@ GenericLevelObj::set_pos_y(float y)
 float
 GenericLevelObj::get_pos_y() const
 {
-  return pos.y;
+  return pos.y();
 }
 
 Rect
@@ -514,12 +514,12 @@ GenericLevelObj::get_rect() const
 {
   if (attribs & HAS_REPEAT)
   {
-    return Rect(geom::ipoint(static_cast<int>(pos.x), static_cast<int>(pos.y)).as_vec() - sprite.get_offset().as_vec(),
+    return Rect(geom::ipoint(static_cast<int>(pos.x()), static_cast<int>(pos.y())).as_vec() - sprite.get_offset().as_vec(),
                 Size(sprite.get_width() * repeat, sprite.get_height()));
   }
   else
   {
-    return Rect(geom::ipoint(static_cast<int>(pos.x), static_cast<int>(pos.y)).as_vec() - sprite.get_offset().as_vec(),
+    return Rect(geom::ipoint(static_cast<int>(pos.x()), static_cast<int>(pos.y())).as_vec() - sprite.get_offset().as_vec(),
                 Size(sprite.get_width(), sprite.get_height()));
   }
 }

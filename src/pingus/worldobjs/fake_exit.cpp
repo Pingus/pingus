@@ -63,8 +63,8 @@ FakeExit::catch_pingu (Pingu* pingu)
   if (surface.is_finished())
     smashing = false;
 
-  if (   pingu->get_pos().x > pos.x - 7  && pingu->get_pos().x < pos.x + 8
-         && pingu->get_pos().y > pos.y - 56 && pingu->get_pos().y < pos.y)
+  if (   pingu->get_pos().x() > pos.x() - 7  && pingu->get_pos().x() < pos.x() + 8
+         && pingu->get_pos().y() > pos.y - 56 && pingu->get_pos().y() < pos.y())
   {
     if (pingu->get_action() != ActionName::SPLASHED)
     {

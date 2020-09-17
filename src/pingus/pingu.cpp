@@ -115,8 +115,8 @@ Pingu::set_pos (float x, float y)
 void
 Pingu::set_pos (const Vector3f& arg_pos)
 {
-  set_x (arg_pos.x);
-  set_y (arg_pos.y);
+  set_x(arg_pos.x());
+  set_y(arg_pos.y());
 }
 
 void
@@ -125,8 +125,8 @@ Pingu::set_velocity (const Vector3f& velocity_)
   velocity = velocity_;
 
   // crude terminal velocity
-  velocity.x = Math::clamp(-terminal_velocity, velocity.x, terminal_velocity);
-  velocity.y = Math::clamp(-terminal_velocity, velocity.y, terminal_velocity);
+  velocity.x = Math::clamp(-terminal_velocity, velocity.x(), terminal_velocity);
+  velocity.y = Math::clamp(-terminal_velocity, velocity.y(), terminal_velocity);
 }
 
 // Set the action of the pingu (bridger, blocker, bomber, etc.)
@@ -282,8 +282,8 @@ Pingu::is_over (float x, float y) const
 {
   Vector3f center = get_center_pos ();
 
-  return (center.x + 16 > x && center.x - 16 < x &&
-          center.y + 16 > y && center.y - 16 < y);
+  return (center.x() + 16 > x && center.x() - 16 < x &&
+          center.y() + 16 > y && center.y() - 16 < y);
 }
 
 bool
@@ -303,8 +303,8 @@ Pingu::dist(float x, float y) const
 {
   Vector3f p = get_center_pos ();
 
-  return Math::sqrt(((p.x - x) * (p.x - x) +
-                     (p.y - y) * (p.y - y)));
+  return Math::sqrt(((p.x() - x) * (p.x() - x) +
+                     (p.y() - y) * (p.y() - y)));
 }
 
 // Let the pingu do his job (i.e. walk his way)

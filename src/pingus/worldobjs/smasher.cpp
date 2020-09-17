@@ -72,16 +72,16 @@ Smasher::update ()
         for(int i=0; i < 20; ++i)
         {
           world->get_smoke_particle_holder()->
-            add_particle(pos.x + 20 + float(rand() % 260),
-                         pos.y + 180, Math::frand()-0.5f, Math::frand()-0.5f);
+            add_particle(pos.x() + 20 + float(rand() % 260),
+                         pos.y() + 180, Math::frand()-0.5f, Math::frand()-0.5f);
         }
 
         for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
         {
-          if ((*pingu)->is_inside(pos.x + 30,
-                                  pos.y + 90,
-                                  pos.x + 250,
-                                  pos.y + 190))
+          if ((*pingu)->is_inside(pos.x() + 30,
+                                  pos.y() + 90,
+                                  pos.x() + 250,
+                                  pos.y() + 190))
           {
             if ((*pingu)->get_action() != ActionName::SPLASHED)
               (*pingu)->set_action(ActionName::SPLASHED);
@@ -112,8 +112,8 @@ Smasher::on_startup ()
   log_info("Drawing colmap entry");
   CollisionMask buf("traps/smasher_cmap");
   world->put(buf,
-             static_cast<int>(pos.x),
-             static_cast<int>(pos.y),
+             static_cast<int>(pos.x()),
+             static_cast<int>(pos.y()),
              Groundtype::GP_SOLID);
 }
 
@@ -128,12 +128,12 @@ Smasher::catch_pingu (Pingu* pingu)
 {
   // Activate the smasher if a Pingu is under it
   if ((   pingu->direction.is_left()
-          && pingu->get_pos().x > pos.x + 65
-          && pingu->get_pos().x < pos.x + 85)
+          && pingu->get_pos().x() > pos.x() + 65
+          && pingu->get_pos().x() < pos.x() + 85)
       ||
       (   pingu->direction.is_right()
-          && pingu->get_pos().x > pos.x + 190
-          && pingu->get_pos().x < pos.x + 210))
+          && pingu->get_pos().x() > pos.x() + 190
+          && pingu->get_pos().x() < pos.x() + 210))
   {
     if (pingu->get_action() != ActionName::SPLASHED)
     {

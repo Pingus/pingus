@@ -45,14 +45,14 @@ void
 SwitchDoorDoor::on_startup()
 {
   world->get_colmap()->put(door_box_cmap,
-                           static_cast<int>(door_pos.x),
-                           static_cast<int>(door_pos.y),
+                           static_cast<int>(door_pos.x()),
+                           static_cast<int>(door_pos.y()),
                            Groundtype::GP_SOLID);
 
   for (int i=0; i < door_height; ++i)
     world->get_colmap()->put(door_tile_cmap,
-                             static_cast<int>(door_pos.x),
-                             static_cast<int>(door_pos.y)
+                             static_cast<int>(door_pos.x()),
+                             static_cast<int>(door_pos.y())
                              + i * door_tile.get_height()
                              + door_box.get_height(),
                              Groundtype::GP_SOLID);
@@ -63,8 +63,8 @@ SwitchDoorDoor::draw(SceneContext& gc)
 {
   gc.color().draw (door_box, door_pos);
   for (int i = 0; i < current_door_height; ++i)
-    gc.color().draw(door_tile, Vector3f(door_pos.x,
-                                        door_pos.y + static_cast<float>(i * door_tile.get_height() + door_box.get_height())));
+    gc.color().draw(door_tile, Vector3f(door_pos.x(),
+                                        door_pos.y() + static_cast<float>(i * door_tile.get_height() + door_box.get_height())));
 }
 
 void
@@ -82,13 +82,13 @@ SwitchDoorDoor::update ()
       if (current_door_height + 10 < door_height)
       {
         world->get_colmap()->put(door_box_cmap,
-                                 static_cast<int>(door_pos.x),
-                                 static_cast<int>(door_pos.y),
+                                 static_cast<int>(door_pos.x()),
+                                 static_cast<int>(door_pos.y()),
                                  Groundtype::GP_NOTHING);
         for (int i=0; i < door_height; ++i)
           world->get_colmap()->put(door_tile_cmap,
-                                   static_cast<int>(door_pos.x),
-                                   static_cast<int>(door_pos.y) + i * door_tile.get_height()
+                                   static_cast<int>(door_pos.x()),
+                                   static_cast<int>(door_pos.y()) + i * door_tile.get_height()
                                    + door_box.get_height(),
                                    Groundtype::GP_NOTHING);
       }

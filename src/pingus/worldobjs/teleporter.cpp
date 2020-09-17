@@ -74,10 +74,10 @@ Teleporter::update ()
     PinguHolder* holder = world->get_pingus();
     for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
     {
-      if (   (*pingu)->get_x() > pos.x - 3  && (*pingu)->get_x() < pos.x + 3
-             && (*pingu)->get_y() > pos.y - 52 && (*pingu)->get_y() < pos.y)
+      if (   (*pingu)->get_x() > pos.x() - 3  && (*pingu)->get_x() < pos.x() + 3
+             && (*pingu)->get_y() > pos.y() - 52 && (*pingu)->get_y() < pos.y())
       {
-        (*pingu)->set_pos(target->get_pos().x, target->get_pos().y);
+        (*pingu)->set_pos(target->get_pos().x(), target->get_pos().y());
         target->teleporter_used();
         sprite.restart();
       }

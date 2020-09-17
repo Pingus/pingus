@@ -96,8 +96,8 @@ ServerEvent::write(std::ostream& out) const
       out << "(pingu-action "
           << "(time " << time_stamp << ") "
           << "(id " << pingu_id << ") "
-          << "(raw-x \"" << Math::float2string(pos.x) << "\") "
-          << "(raw-y \"" << Math::float2string(pos.y) << "\") "
+          << "(raw-x \"" << Math::float2string(pos.x()) << "\") "
+          << "(raw-y \"" << Math::float2string(pos.y()) << "\") "
           << "(action \"" << ActionName::to_string(pingu_action) << "\"))"
           << std::endl;
       break;
@@ -168,8 +168,8 @@ ServerEvent::send(Server* server)
       Pingu* pingu = server->get_world()->get_pingus()->get_pingu(pingu_id);
       if (pingu)
       {
-        if (pos.x != pingu->get_pos().x ||
-            pos.y != pingu->get_pos().y)
+        if (pos.x() != pingu->get_pos().x() ||
+            pos.y() != pingu->get_pos().y())
         {
           log_error("DemoFile inconsistent with world, pingu {} is at the wrong position", pingu_id);
         }

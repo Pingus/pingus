@@ -67,8 +67,8 @@ CaptureRectangle::draw(SceneContext& sc)
     }
 
     sc.color().print_center(font,
-                            Vector2i(static_cast<int>(pingu->get_center_pos().x),
-                                     static_cast<int>(pingu->get_center_pos().y - 46)),
+                            Vector2i(static_cast<int>(pingu->get_center_pos().x()),
+                                     static_cast<int>(pingu->get_center_pos().y() - 46)),
                             action_str,
                             1000);
   }

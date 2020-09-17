@@ -255,8 +255,8 @@ DrawingContext::draw(const Sprite& sprite, const Vector2i& pos, float z)
 void
 DrawingContext::draw(const Sprite& sprite, const Vector3f& pos, float z_index)
 {
-  draw(new SpriteDrawingRequest(sprite, Vector2i(translate_stack.back().x() + static_cast<int>(pos.x),
-                                                 translate_stack.back().y() + static_cast<int>(pos.y)),
+  draw(new SpriteDrawingRequest(sprite, Vector2i(translate_stack.back().x() + static_cast<int>(pos.x()),
+                                                 translate_stack.back().y() + static_cast<int>(pos.y())),
                                 z_index));
 }
 

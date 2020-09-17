@@ -37,15 +37,15 @@ bool PinguCollider::operator() (const World* world, const Vector3f& current_pos,
   bool falling = false;
   bool collided = false;
 
-  if (step_vector.y > 0.0f)
+  if (step_vector.y() > 0.0f)
     falling = true;
 
   // If the Pingu is going to move sideways to the next pixel...
-  if (static_cast<int>(new_pos.x) != static_cast<int>(current_pos.x))
+  if (static_cast<int>(new_pos.x()) != static_cast<int>(current_pos.x()))
   {
-    float top_of_pingu = new_pos.y - static_cast<float>(height);
+    float top_of_pingu = new_pos.y() - static_cast<float>(height);
 
-    for (; new_pos.y >= top_of_pingu; --new_pos.y)
+    for (; new_pos.y() >= top_of_pingu; --new_pos.y)
     {
       pixel = getpixel(world, new_pos);
 
@@ -63,7 +63,7 @@ bool PinguCollider::operator() (const World* world, const Vector3f& current_pos,
   // If the Pingu is not falling...
   else if (!falling)
   {
-    pixel = getpixel(world, Vector3f(new_pos.x, new_pos.y - static_cast<float>(height)));
+    pixel = getpixel(world, Vector3f(new_pos.x(), new_pos.y() - static_cast<float>(height)));
 
     // If the top of the Pingu has hit something except a bridge...
     if (pixel != Groundtype::GP_NOTHING && pixel != Groundtype::GP_BRIDGE)

@@ -103,8 +103,8 @@ WorldObjRenderer::render_sprite(const ResDescriptor& desc,
 
   // FIXME: hack, should take that info from the resource file
   blit_surface(surface,
-               static_cast<int>(pos.x) - surface.get_width()/2,
-               static_cast<int>(pos.y) - surface.get_height());
+               static_cast<int>(pos.x()) - surface.get_width()/2,
+               static_cast<int>(pos.y()) - surface.get_height());
 }
 
 void
@@ -117,8 +117,8 @@ WorldObjRenderer::render_surface(const ResDescriptor& desc,
   for(int i = 0; i < repeat; ++i)
   {
     blit_surface(surface,
-                 static_cast<int>(pos.x) + surface.get_width()*i,
-                 static_cast<int>(pos.y));
+                 static_cast<int>(pos.x()) + surface.get_width()*i,
+                 static_cast<int>(pos.y()));
   }
 }
 
@@ -206,8 +206,8 @@ WorldObjRenderer::process(const ReaderObject& reader_object)
       Vector3f position;
       float z_index = 0.0f;
       reader.read_vector("position", position, z_index);
-      push_translate(static_cast<int>(position.x),
-                     static_cast<int>(position.y));
+      push_translate(static_cast<int>(position.x()),
+                     static_cast<int>(position.y()));
       process(prefab.get_objects());
       pop_translate();
     }

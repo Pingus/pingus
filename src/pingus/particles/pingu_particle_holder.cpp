@@ -78,11 +78,11 @@ PinguParticleHolder::update ()
     // Simulated gravity
     it->velocity.y += WorldObj::get_world()->get_gravity();
 
-    if (it->velocity.y > 0)
+    if (it->velocity.y() > 0)
     {
-      for (tmp_y_add = it->velocity.y; tmp_y_add >= 1.0f; --tmp_y_add)
+      for (tmp_y_add = it->velocity.y(); tmp_y_add >= 1.0f; --tmp_y_add)
       {
-        if (world->get_colmap()->getpixel(static_cast<int>(it->pos.x), static_cast<int>(it->pos.y)))
+        if (world->get_colmap()->getpixel(static_cast<int>(it->pos.x()), static_cast<int>(it->pos.y())))
         {
           it->velocity.y *= -y_collision_decrease;
           tmp_y_add = -tmp_y_add;
@@ -95,9 +95,9 @@ PinguParticleHolder::update ()
     }
     else
     {
-      for (tmp_y_add = it->velocity.y; tmp_y_add <= -1.0f; ++tmp_y_add)
+      for (tmp_y_add = it->velocity.y(); tmp_y_add <= -1.0f; ++tmp_y_add)
       {
-        if (world->get_colmap()->getpixel(static_cast<int>(it->pos.x), static_cast<int>(it->pos.y)))
+        if (world->get_colmap()->getpixel(static_cast<int>(it->pos.x()), static_cast<int>(it->pos.y())))
         {
           it->velocity.y *= -y_collision_decrease;
           tmp_y_add = -tmp_y_add;
@@ -109,15 +109,15 @@ PinguParticleHolder::update ()
       it->pos.y += tmp_y_add;
     }
 
-    if (it->velocity.x > 0)
+    if (it->velocity.x() > 0)
     {
-      for (tmp_x_add = it->velocity.x; tmp_x_add >= 1.0f; --tmp_x_add)
+      for (tmp_x_add = it->velocity.x(); tmp_x_add >= 1.0f; --tmp_x_add)
       {
-        if (world->get_colmap()->getpixel(static_cast<int>(it->pos.x), static_cast<int>(it->pos.y)))
+        if (world->get_colmap()->getpixel(static_cast<int>(it->pos.x()), static_cast<int>(it->pos.y())))
         {
           it->velocity.x *= -x_collision_decrease;
           tmp_x_add = -tmp_x_add;
-          --it->pos.x;
+          --it->pos.x();
           break;
         }
         ++it->pos.x;
@@ -126,9 +126,9 @@ PinguParticleHolder::update ()
     }
     else
     {
-      for (tmp_x_add = it->velocity.x; tmp_x_add <= -1.0f; ++tmp_x_add)
+      for (tmp_x_add = it->velocity.x(); tmp_x_add <= -1.0f; ++tmp_x_add)
       {
-        if (world->get_colmap()->getpixel(static_cast<int>(it->pos.x), static_cast<int>(it->pos.y)))
+        if (world->get_colmap()->getpixel(static_cast<int>(it->pos.x()), static_cast<int>(it->pos.y())))
         {
           it->velocity.x *= -x_collision_decrease;
           tmp_x_add = -tmp_x_add;

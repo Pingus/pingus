@@ -78,7 +78,7 @@ Bomber::update ()
 
   // If the Bomber hasn't 'exploded' yet and it has hit the ground too quickly
   if (sprite[pingu->direction].get_current_frame () <= 9 && rel_getpixel(0, -1) != Groundtype::GP_NOTHING
-      && velocity.y > deadly_velocity)
+      && velocity.y() > deadly_velocity)
   {
     pingu->set_action(ActionName::SPLASHED);
     return;

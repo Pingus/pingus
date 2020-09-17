@@ -41,9 +41,9 @@ Groundpiece::on_startup ()
 
   // FIXME: overdrawing of bridges and similar things aren't handled here
   if (gptype == Groundtype::GP_REMOVE)
-    get_world()->remove(mask, static_cast<int>(pos.x), static_cast<int>(pos.y));
+    get_world()->remove(mask, static_cast<int>(pos.x()), static_cast<int>(pos.y()));
   else
-    get_world()->put(mask, static_cast<int>(pos.x), static_cast<int>(pos.y), gptype);
+    get_world()->put(mask, static_cast<int>(pos.x()), static_cast<int>(pos.y()), gptype);
 }
 
 } // namespace WorldObjs

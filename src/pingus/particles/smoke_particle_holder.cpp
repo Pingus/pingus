@@ -63,8 +63,8 @@ SmokeParticleHolder::update ()
     if (!it->livetime)
       continue;
 
-    it->pos.x += it->velocity.x;
-    it->pos.y += it->velocity.y;
+    it->pos.x += it->velocity.x();
+    it->pos.y += it->velocity.y();
 
     --it->livetime;
   }

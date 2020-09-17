@@ -84,8 +84,8 @@ Worldmap::~Worldmap()
 void
 Worldmap::draw(DrawingContext& gc)
 {
-  Vector2i pingu_pos(static_cast<int>(pingus->get_pos().x),
-                     static_cast<int>(pingus->get_pos().y));
+  Vector2i pingu_pos(static_cast<int>(pingus->get_pos().x()),
+                     static_cast<int>(pingus->get_pos().y()));
   int min, max;
   int width  = worldmap.get_width();
   int height = worldmap.get_height();
@@ -224,7 +224,7 @@ Worldmap::on_secondary_button_press(int x, int y)
   {
     Vector3f click_pos = gc_state.screen2world(Vector2i(x, y));
 
-    Dot* dot = path_graph->get_dot(click_pos.x, click_pos.y);
+    Dot* dot = path_graph->get_dot(click_pos.x(), click_pos.y());
     if (dot)
     { // FIXME: Dot NodeID missmatch...
       NodeId id = path_graph->get_id(dot);

@@ -163,30 +163,30 @@ PinguAction::move_with_forces ()
   int x_inc = 0;
   int y_inc = 0;
 
-  if (Math::abs(resultant_force.x) > Math::abs(resultant_force.y))
+  if (Math::abs(resultant_force.x()) > Math::abs(resultant_force.y))
   {
     // Initialise so that we move in whole pixels in x direction and
     // 'fractions' of a pixel in y direction.
-    denominator = static_cast<int>(Math::abs(resultant_force.x));
+    denominator = static_cast<int>(Math::abs(resultant_force.x()));
     x_inc = denominator;
-    y_inc = static_cast<int>(Math::abs(resultant_force.y));
+    y_inc = static_cast<int>(Math::abs(resultant_force.y()));
   }
   else
   {
     // Initialise so that we move in whole pixels in y direction and
     // 'fractions' of a pixel in x direction.
-    denominator = static_cast<int>(Math::abs(resultant_force.y));
-    x_inc = static_cast<int>(Math::abs(resultant_force.x));
+    denominator = static_cast<int>(Math::abs(resultant_force.y()));
+    x_inc = static_cast<int>(Math::abs(resultant_force.x()));
     y_inc = denominator;
   }
 
   Vector3f force_counter = resultant_force;
 
   // Keep moving the Pingu until there is only a fraction left
-  while (   force_counter.x <= -1
-            || force_counter.x >=  1
-            || force_counter.y <= -1
-            || force_counter.y >=  1)
+  while (   force_counter.x() <= -1
+            || force_counter.x() >=  1
+            || force_counter.y() <= -1
+            || force_counter.y() >=  1)
   {
     x_numerator += x_inc;
 
@@ -200,8 +200,8 @@ PinguAction::move_with_forces ()
       if (collision_on_walk(1, 0))
       {
         // Make the Pingu reflect off the wall
-        force_counter.x = -(force_counter.x);
-        resultant_force.x = -(resultant_force.x/3);
+        force_counter.x = -(force_counter.x());
+        resultant_force.x = -(resultant_force.x()/3);
 
         pingu->set_velocity(resultant_force);
 
@@ -224,14 +224,14 @@ PinguAction::move_with_forces ()
       y_numerator -= denominator;
 
       // Move the Pingu depending on what the direction of the force is
-      if (force_counter.y >= 1)
+      if (force_counter.y() >= 1)
       {
         // If there is something below the Pingu
         if (rel_getpixel(0, -1) != Groundtype::GP_NOTHING)
         {
           // FIXME: this shouldn't be really here, but its a
           // FIXME: quick&dirty way to kill falling pingus
-          if (resultant_force.y >= deadly_velocity)
+          if (resultant_force.y() >= deadly_velocity)
           {
             pingu->set_action(ActionName::SPLASHED);
             return;
@@ -247,7 +247,7 @@ PinguAction::move_with_forces ()
           force_counter.y--;
         }
       }
-      else if (force_counter.y <= -1)
+      else if (force_counter.y() <= -1)
       {
         // If there is something in the way above the Pingu
         if (head_collision_on_walk(0, 1))

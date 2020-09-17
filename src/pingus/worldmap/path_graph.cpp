@@ -238,8 +238,8 @@ PathGraph::get_dot(float x_pos, float y_pos)
 {
   for(std::vector<Dot*>::iterator i = dots.begin(); i != dots.end(); ++i)
   {
-    float x = x_pos - (*i)->get_pos().x;
-    float y = y_pos - (*i)->get_pos().y;
+    float x = x_pos - (*i)->get_pos().x();
+    float y = y_pos - (*i)->get_pos().y();
 
     if (Math::sqrt(x*x + y*y) < 30.0f)
       return *i;

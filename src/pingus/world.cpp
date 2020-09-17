@@ -269,12 +269,12 @@ World::get_pingu (const Vector3f& pos)
   float distance = -1.0;
 
   for (PinguIter i = pingus->begin (); i != pingus->end (); ++i) {
-    if ((*i)->is_over(pos.x, pos.y))
+    if ((*i)->is_over(pos.x(), pos.y()))
     {
-      if (distance == -1.0f || distance >= (*i)->dist(pos.x, pos.y))
+      if (distance == -1.0f || distance >= (*i)->dist(pos.x(), pos.y()))
       {
         current_pingu = (*i);
-        distance = (*i)->dist(pos.x, pos.y);
+        distance = (*i)->dist(pos.x(), pos.y());
       }
     }
   }
@@ -328,8 +328,8 @@ World::get_start_pos(int player_id) const
     WorldObjs::Entrance* entrance = dynamic_cast<WorldObjs::Entrance*>(*obj);
     if (entrance && entrance->get_owner_id() == player_id)
     {
-      pos += geom::ioffset(static_cast<int>(entrance->get_pos().x),
-                           static_cast<int>(entrance->get_pos().y));
+      pos += geom::ioffset(static_cast<int>(entrance->get_pos().x()),
+                           static_cast<int>(entrance->get_pos().y()));
       num_entrances += 1;
     }
   }
