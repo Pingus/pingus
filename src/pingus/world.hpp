@@ -23,8 +23,8 @@
 #include "math/vector2i.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/groundtype.hpp"
+#include "math/vector3f.hpp"
 
-class Vector3f;
 class GroundMap;
 class PinguHolder;
 class PingusLevel;

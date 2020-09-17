@@ -167,11 +167,11 @@ GroupLevelObj::draw_selection(DrawingContext& gc)
 void
 GroupLevelObj::set_pos(const Vector3f& p)
 {
-  Vector3f diff = p - m_pos;
+  Vector3f diff = p.as_vec() - m_pos.as_vec();
   m_pos = p;
   for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
   {
-    (*it)->set_pos((*it)->get_pos() + diff);
+    (*it)->set_pos((*it)->get_pos().as_vec() + diff.as_vec());
   }
 }
 
@@ -260,8 +260,8 @@ GroupLevelObj::duplicate(const Vector2i& offset) const
   std::shared_ptr<GroupLevelObj> group = std::make_shared<GroupLevelObj>();
 
   group->m_name = m_name;
-  group->m_pos = m_pos + offset;
-  group->m_orig_pos = m_orig_pos + offset;
+  group->m_pos = Vector3f(m_pos.as_vec() + Vector3f(offset).as_vec());
+  group->m_orig_pos = m_orig_pos + geom::foffset(geom::ioffset(offset.x(), offset.y()));
 
   group->m_overrides    = m_overrides;
   group->m_repeat       = m_repeat;

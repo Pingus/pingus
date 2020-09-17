@@ -37,7 +37,7 @@ struct Groundpiece : public ObjectSelectorList::Object
 
   LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("groundpiece");
-    obj->set_pos(pos);
+    obj->set_pos(Vector3f(pos));
     obj->set_res_desc(desc);
     obj->set_ground_type(type);
     return obj;
@@ -54,7 +54,7 @@ struct Entrance : public ObjectSelectorList::Object
   LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("entrance");
     obj->set_type("generic");
-    obj->set_pos(pos);
+    obj->set_pos(Vector3f(pos));
     obj->set_z_index(110);
     obj->set_direction("misc");
     obj->set_release_rate(150);
@@ -75,7 +75,7 @@ struct Exit : public ObjectSelectorList::Object
 
   LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("exit");
-    obj->set_pos(pos);
+    obj->set_pos(Vector3f(pos));
     obj->set_res_desc(desc);
     // obj->set_para();
     return obj;
@@ -96,7 +96,7 @@ struct Hotspot : public ObjectSelectorList::Object
 
   LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("hotspot");
-    obj->set_pos(pos);
+    obj->set_pos(Vector3f(pos));
     obj->set_z_index(static_cast<float>(z_pos));
     obj->set_res_desc(desc);
     // obj->set_para();
@@ -220,7 +220,7 @@ struct FakeExit : public ObjectSelectorList::Object
 
   LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("fake_exit");
-    obj->set_pos(pos);
+    obj->set_pos(Vector3f(pos));
     return obj;
   }
 };
@@ -234,7 +234,7 @@ struct LaserExit : public ObjectSelectorList::Object
 
   LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("laser_exit");
-    obj->set_pos(pos);
+    obj->set_pos(Vector3f(pos));
     return obj;
   }
 };
@@ -276,7 +276,7 @@ struct SnowGenerator : public ObjectSelectorList::Object
 
   LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("snow-generator");
-    obj->set_pos(pos);
+    obj->set_pos(Vector3f(pos));
     return obj;
   }
 };
@@ -290,7 +290,7 @@ struct RainGenerator : public ObjectSelectorList::Object
 
   LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("rain-generator");
-    obj->set_pos(pos);
+    obj->set_pos(Vector3f(pos));
     return obj;
   }
 };
@@ -304,7 +304,7 @@ struct Teleporter : public ObjectSelectorList::Object
 
   LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("teleporter");
-    obj->set_pos(pos);
+    obj->set_pos(Vector3f(pos));
     obj->set_target_id("");
     return obj;
   }

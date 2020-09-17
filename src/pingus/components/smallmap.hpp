@@ -19,10 +19,10 @@
 
 #include "engine/display/sprite.hpp"
 #include "engine/gui/rect_component.hpp"
+#include "math/vector3f.hpp"
 
 class Playfield;
 class Server;
-class Vector3f;
 class SmallMapImage;
 
 /** This is the map that appears in the corner of the screen */

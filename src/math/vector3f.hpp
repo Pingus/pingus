@@ -17,120 +17,13 @@
 #ifndef HEADER_PINGUS_MATH_VECTOR3F_HPP
 #define HEADER_PINGUS_MATH_VECTOR3F_HPP
 
-#include <glm/glm.hpp>
-#include "math/vector2f.hpp"
+#include <geom/point.hpp>
+#include <geom/io.hpp>
 
-class Vector3f
-{
-private:
-  float m_x;
-  float m_y;
-  //  float z;
+#include "math/math.hpp"
+#include "vector2i.hpp"
 
-public:
-  explicit Vector3f(glm::vec2 const& v) : m_x(v.x), m_y(v.y) {}
-  explicit Vector3f (float x_=0, float y_=0 /*, float z_=0*/) : m_x(x_), m_y(y_)/*, z(z_)*/ {}
-
-  Vector3f (const Vector3f& old) : m_x(old.m_x), m_y(old.m_y) {}
-  Vector3f (const Vector2f& old) : m_x(old.x()), m_y(old.y()) {}
-  Vector3f (const Vector2i& old) : m_x(float(old.x())), m_y(float(old.y())) {}
-  Vector3f& operator= (const Vector3f& old)
-  {
-    if (this != &old)
-    {
-      m_x = old.m_x;
-      m_y = old.m_y;
-    }
-
-    return *this;
-  }
-
-  float x() const { return m_x; }
-  float y() const { return m_y; }
-
-  Vector3f operator- () const
-  {
-    return Vector3f(-m_x, -m_y);
-  }
-
-  Vector3f operator+ (const Vector3f& add) const
-  {
-    return Vector3f(m_x + add.m_x, m_y + add.m_y);
-  }
-  Vector3f operator- (const Vector3f& sub) const
-  {
-    return Vector3f(m_x - sub.m_x, m_y - sub.m_y);
-  }
-  Vector3f operator* (float mul) const
-  {
-    return Vector3f(mul * m_x, mul * m_y);
-  }
-
-  bool operator==(Vector3f const& rhs) const
-  {
-    return (m_x == rhs.m_x &&
-            m_y == rhs.m_y);
-  }
-
-  Vector3f& operator+= (const Vector3f& add)
-  {
-    m_x += add.m_x;
-    m_y += add.m_y;
-    return *this;
-  }
-
-  Vector3f& operator-= (const Vector3f& sub)
-  {
-    m_x -= sub.m_x;
-    m_y -= sub.m_y;
-    return *this;
-  }
-
-#if 0
-  Vector3f& operator*= (float mul)
-  {
-    m_x *= mul;
-    m_y *= mul;
-    return *this;
-  }
-#endif
-
-  void normalize ()
-  {
-    float f = Math::sqrt(m_x * m_x + m_y * m_y);
-
-    if (f != 0.0f)
-    {
-      m_x /= f;
-      m_y /= f;
-    }
-  }
-
-  float length() const
-  {
-    return Math::sqrt(m_x * m_x + m_y * m_y);
-  }
-
-  static float distance2d(const Vector3f& a, const Vector3f& b)
-  {
-    float m_x = b.m_x - a.m_x;
-    float m_y = b.m_y - a.m_y;
-
-    return Math::abs(Math::sqrt((m_x * m_x) + (m_y * m_y)));
-  }
-
-  /** Calculate a position between a and b, relative to the value of
-      \a perc (perc == 0 -> a, perc == 1.0 -> b) */
-  static Vector3f interpolate(const Vector3f& a, const Vector3f& b, float perc)
-  {
-    Vector3f c = b - a;
-    return a + (c * perc);
-  }
-
-  glm::vec2 as_vec() const { return glm::vec2{m_x, m_y}; }
-};
-
-std::ostream& operator<< (std::ostream& os, const Vector3f& v);
+using Vector3f = geom::fpoint;
 
 #endif
 

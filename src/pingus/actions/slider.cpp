@@ -71,7 +71,7 @@ Slider::update ()
 void
 Slider::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos() + Vector3f(0, -2));
+  gc.color().draw(sprite[pingu->direction], pingu->get_pos() + geom::foffset(0, -2));
 }
 
 } // namespace Actions

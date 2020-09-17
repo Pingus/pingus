@@ -160,8 +160,8 @@ EditorLevel::from_prefab_file(const Pathname& pathname)
     if (obj)
     {
       // move origin of the level to the center of it
-      obj->set_pos(obj->get_pos() + Vector3f(static_cast<float>(level->impl->size.width())/2.0f,
-                                             static_cast<float>(level->impl->size.height())/2.0f));
+      obj->set_pos(obj->get_pos() + geom::foffset(static_cast<float>(level->impl->size.width())/2.0f,
+                                                  static_cast<float>(level->impl->size.height())/2.0f));
 
       level->add_object(obj);
     }

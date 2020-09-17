@@ -18,9 +18,4 @@
 
 #include <ostream>
 
-std::ostream& operator<<(std::ostream& os, const Vector3f& v)
-{
-  return os << "Vector3f(" << v.x() << ", " << v.y() << ")";
-}
-
 /* EOF */

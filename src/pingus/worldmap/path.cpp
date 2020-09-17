@@ -59,7 +59,7 @@ Path::calc_length()
     Vec::iterator prev = vec.begin();
     for(Vec::iterator next = prev + 1; next != vec.end(); ++next)
     {
-      length_ += Vector3f ::distance2d(*prev, *next);
+      length_ += geom::distance(*prev, *next);
       prev = next;
     }
     return length_;
@@ -77,7 +77,7 @@ Path::at(float vec_position)
   float comp_length = 0.0f;
   while (next != vec.end())
   {
-    float length_ = Vector3f::distance2d(*current, *next);
+    float length_ = geom::distance(*current, *next);
 
     // The pingu is between current and next
     if (comp_length + length_ > vec_position)
@@ -85,7 +85,7 @@ Path::at(float vec_position)
       float perc = (vec_position - comp_length) // length to walk from current node
         / length_;
 
-      return Vector3f::interpolate(*current, *next, perc);
+      return geom::interpolate(*current, *next, perc);
     }
 
     comp_length += length_;

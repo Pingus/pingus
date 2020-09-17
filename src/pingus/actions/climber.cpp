@@ -39,11 +39,11 @@ Climber::get_center_pos() const
 {
   if (pingu->direction.is_left())
   {
-    return pingu->get_pos() + Vector3f(16, 0);
+    return pingu->get_pos() + geom::foffset(16, 0);
   }
   else
   {
-    return pingu->get_pos() + Vector3f(-16, 0);
+    return pingu->get_pos() + geom::foffset(-16, 0);
   }
 }
 

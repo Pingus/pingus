@@ -20,8 +20,8 @@
 #include <string>
 
 #include <geom/fwd.hpp>
+#include "math/vector3f.hpp"
 
-class Vector3f;
 class Color;
 class Pathname;
 

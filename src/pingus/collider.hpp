@@ -18,8 +18,8 @@
 #define HEADER_PINGUS_PINGUS_COLLIDER_HPP
 
 #include <glm/glm.hpp>
+#include "math/vector3f.hpp"
 
-class Vector3f;
 class World;
 
 class Collider

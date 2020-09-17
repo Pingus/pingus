@@ -528,7 +528,7 @@ LevelObjPtr
 GenericLevelObj::duplicate(const Vector2i& offset) const
 {
   std::shared_ptr<GenericLevelObj> obj = std::make_shared<GenericLevelObj>(*this);
-  obj->pos += Vector3f(static_cast<float>(offset.x()), static_cast<float>(offset.y()));
+  obj->pos += geom::foffset(geom::ioffset(offset.x(), offset.y()));
   return obj;
 }
 

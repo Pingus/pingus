@@ -142,7 +142,7 @@ public:
       {
         if (*obj)
         {
-          (*obj)->set_pos((*obj)->get_pos() + pos);
+          (*obj)->set_pos((*obj)->get_pos() + geom::foffset(pos.x(), pos.y()));
           (*obj)->set_z_index(z_index);
           group.push_back(*obj);
         }

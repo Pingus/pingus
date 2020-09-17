@@ -222,7 +222,7 @@ Worldmap::on_secondary_button_press(int x, int y)
 {
   if (globals::developer_mode)
   {
-    Vector3f click_pos = gc_state.screen2world(Vector2i(x, y));
+    Vector3f click_pos(gc_state.screen2world(Vector2i(x, y)));
 
     Dot* dot = path_graph->get_dot(click_pos.x(), click_pos.y());
     if (dot)

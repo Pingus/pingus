@@ -20,9 +20,9 @@
 #include <list>
 
 #include "pingus/worldobj.hpp"
+#include "math/vector3f.hpp"
 
 class PingusLevel;
-class Vector3f;
 class Pingu;
 
 typedef std::list<Pingu*>::iterator PinguIter;

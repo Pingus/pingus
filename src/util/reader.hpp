@@ -24,9 +24,9 @@
 #include <geom/fwd.hpp>
 
 #include "math/rect.hpp"
+#include "math/vector3f.hpp"
 
 class Color;
-class Vector3f;
 
 class ResDescriptor;
 class Pathname;

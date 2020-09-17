@@ -64,7 +64,7 @@ void
 Exit::draw (SceneContext& gc)
 {
   gc.color().draw(sprite, pos);
-  gc.color().draw(flag, pos + Vector3f(40, 0));
+  gc.color().draw(flag, pos + geom::foffset(40, 0));
 }
 
 void
