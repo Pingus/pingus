@@ -28,6 +28,7 @@ class SpriteDrawable : public Drawable
 private:
   Sprite surface;
   Vector3f  pos;
+  float m_z_index;
   /** If set to true the surface will disappear if the pingu gets
       covered by it, so that the Pingu can travel into caves and other
       things, while the roof will disapear */

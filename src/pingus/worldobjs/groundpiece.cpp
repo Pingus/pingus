@@ -22,10 +22,11 @@ namespace WorldObjs {
 
 Groundpiece::Groundpiece(const ReaderMapping& reader) :
   pos(),
+  m_z_index(0.0f),
   desc(),
   gptype()
 {
-  reader.read_vector("position", pos);
+  reader.read_vector("position", pos, m_z_index);
   reader.read_desc  ("surface",  desc);
 
   gptype = Groundtype::GP_GROUND;

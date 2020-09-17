@@ -143,9 +143,9 @@ void
 Faller::draw (SceneContext& gc)
 {
   if (is_tumbling()) {
-    gc.color().draw(tumbler[pingu->direction], pingu->get_pos ());
+    gc.color().draw(tumbler[pingu->direction], pingu->get_pos());
   } else {
-    gc.color().draw(faller[pingu->direction], pingu->get_pos ());
+    gc.color().draw(faller[pingu->direction], pingu->get_pos());
   }
 }
 

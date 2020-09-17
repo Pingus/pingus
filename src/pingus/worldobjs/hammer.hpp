@@ -33,13 +33,15 @@ class Hammer : public WorldObj
 private:
   Sprite sprite;
   Vector3f pos;
+  float m_z_index;
   bool m_down;
   int  m_count;
 
 public:
   Hammer(const ReaderMapping& reader);
 
-  float get_z_pos() const override;
+  float z_index() const override;
+  void set_z_index(float z_index) override { m_z_index = z_index; }
   void set_pos(const Vector3f& p) override { pos = p; }
   Vector3f get_pos() const override { return pos; }
 

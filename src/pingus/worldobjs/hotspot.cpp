@@ -24,11 +24,12 @@ namespace WorldObjs {
 Hotspot::Hotspot(const ReaderMapping& reader) :
   sprite(),
   para(),
-  pos()
+  pos(),
+  m_z_index(0.0f)
 {
   ResDescriptor desc;
 
-  reader.read_vector("position", pos);
+  reader.read_vector("position", pos, m_z_index);
   reader.read_desc("surface", desc);
   reader.read_float("parallax", para);
 
@@ -49,13 +50,13 @@ void
 Hotspot::draw (SceneContext& gc)
 {
   // FIXME: para support doesnn't work correctly
-  gc.color().draw (sprite, pos);
+  gc.color().draw (sprite, pos, m_z_index);
 }
 
 float
-Hotspot::get_z_pos () const
+Hotspot::z_index () const
 {
-  return pos.z;
+  return m_z_index;
 }
 
 } // namespace WorldObjs

@@ -35,6 +35,7 @@ private:
 
   /** Position of the background, only the z_pos is really used. */
   Vector3f pos;
+  float m_z_index;
 
   /** The amount of pixel the background is scrolled each frame in x
       direction. */
@@ -70,7 +71,8 @@ private:
 public:
   SurfaceBackground(const ReaderMapping& reader);
 
-  float get_z_pos() const override;
+  float z_index() const override;
+  void set_z_index(float z_index) override { m_z_index = z_index; }
   void set_pos(const Vector3f& p) override { }
   Vector3f get_pos() const override { return Vector3f(); }
 

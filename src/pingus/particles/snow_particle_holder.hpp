@@ -60,7 +60,8 @@ public:
 
   void add_particle (int x, int y, bool colliding = false);
 
-  float get_z_pos () const override { return 1000.0f; }
+  void set_z_index(float z_index) override {}
+  float z_index () const override { return 1000.0f; }
   void set_pos(const Vector3f& p) override {}
   Vector3f get_pos() const override { return Vector3f(); }
 

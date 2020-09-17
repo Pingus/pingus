@@ -78,8 +78,8 @@ Minimap::draw(DrawingContext& gc)
                    static_cast<uint8_t>(3 * color.g / 4),
                    static_cast<uint8_t>(3 * color.b / 4));
 
-    dc.draw_fillrect(r, bg_color, (*i)->get_pos().z);
-    dc.draw_rect(r, color, (*i)->get_pos().z);
+    dc.draw_fillrect(r, bg_color, (*i)->z_index());
+    dc.draw_rect(r, color, (*i)->z_index());
   }
 
   Vector2f viewport_pos(editor->get_viewport()->get_scroll_pos());

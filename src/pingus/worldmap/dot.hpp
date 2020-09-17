@@ -28,6 +28,7 @@ class Dot : public Drawable
 {
 protected:
   Vector3f pos;
+  float m_z_index;
 
 public:
   Dot(const ReaderMapping& reader);
@@ -36,6 +37,7 @@ public:
   virtual void draw_hover(DrawingContext& gc) =0;
 
   Vector3f get_pos() { return pos; }
+  float z_index() const { return m_z_index; }
 
   virtual void on_click() =0;
 

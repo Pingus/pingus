@@ -98,27 +98,27 @@ public:
     }
   }
 
-  bool read_vector(const char* name, Vector3f& vec) const override
+  bool read_vector(const char* name, Vector3f& vec, float& z_index) const override
   {
-    if (m_overrides.read_vector(name, vec))
+    if (m_overrides.read_vector(name, vec, z_index))
     {
       return true;
     }
     else
     {
-      return m_reader.read_vector(name, vec);
+      return m_reader.read_vector(name, vec, z_index);
     }
   }
 
-  bool read_vectors(const char* name, std::vector<Vector3f>& vec) const override
+  bool read_vectors(const char* name, std::vector<Vector3f>& vec, std::vector<float>& z_indexes) const override
   {
-    if (m_overrides.read_vectors(name, vec))
+    if (m_overrides.read_vectors(name, vec, z_indexes))
     {
       return true;
     }
     else
     {
-      return m_reader.read_vectors(name, vec);
+      return m_reader.read_vectors(name, vec, z_indexes);
     }
   }
 

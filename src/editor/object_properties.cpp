@@ -498,7 +498,7 @@ ObjectProperties::set_object(const LevelObjPtr& obj)
       place(pos_x_label, pos_x_inputbox);
       pos_y_inputbox->set_text(StringUtil::to_string(obj->get_pos_y()));
       place(pos_y_label, pos_y_inputbox);
-      pos_z_inputbox->set_text(StringUtil::to_string(obj->get_pos_z()));
+      pos_z_inputbox->set_text(StringUtil::to_string(obj->z_index()));
       place(pos_z_label, pos_z_inputbox);
     }
 
@@ -623,7 +623,7 @@ void
 ObjectProperties::on_pos_z_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_pos_z(StringUtil::to<float>(str));
+    (*i)->set_z_index(StringUtil::to<float>(str));
 }
 
 void

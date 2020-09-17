@@ -28,13 +28,14 @@ namespace WorldObjs {
 
 SwitchDoorSwitch::SwitchDoorSwitch(const ReaderMapping& reader) :
   switch_pos(),
+  m_z_index(),
   switch_sur("worldobjs/switchdoor_switch"),
   m_target(),
   is_triggered(false),
   m_door()
 {
   reader.read_string("target-id", m_target);
-  reader.read_vector("position", switch_pos);
+  reader.read_vector("position", switch_pos, m_z_index);
 }
 
 void

@@ -146,19 +146,19 @@ ReaderMapping::read_path(const char* key, Pathname& value) const
 }
 
 bool
-ReaderMapping::read_vector(const char* key, Vector3f& value) const
+ReaderMapping::read_vector(const char* key, Vector3f& value, float& z_index) const
 {
   if (m_impl)
-    return m_impl->read_vector(key, value);
+    return m_impl->read_vector(key, value, z_index);
   else
     return false;
 }
 
 bool
-ReaderMapping::read_vectors(const char* key, std::vector<Vector3f>& value) const
+ReaderMapping::read_vectors(const char* key, std::vector<Vector3f>& value, std::vector<float>& z_indexes) const
 {
   if (m_impl)
-    return m_impl->read_vectors(key, value);
+    return m_impl->read_vectors(key, value, z_indexes);
   else
     return false;
 }

@@ -29,11 +29,12 @@ ConveyorBelt::ConveyorBelt(const ReaderMapping& reader) :
   right_sur (Sprite ("worldobjs/conveyorbelt_right")),
   middle_sur(Sprite ("worldobjs/conveyorbelt_middle")),
   pos(),
+  m_z_index(0.0f),
   width(),
   speed(),
   counter()
 {
-  reader.read_vector("position", pos);
+  reader.read_vector("position", pos, m_z_index);
   if (!reader.read_int   ("repeat",    width))
   {
     log_warn("old 'width' tag used");
@@ -49,11 +50,13 @@ ConveyorBelt::draw (SceneContext& gc)
   for (int i=0; i < width; ++i)
     gc.color().draw(middle_sur,
                     Vector3f(pos.x + static_cast<float>(left_sur.get_width() + i * middle_sur.get_width()),
-                             pos.y));
+                             pos.y),
+                    m_z_index);
 
   gc.color().draw(right_sur,
                   Vector3f(pos.x + static_cast<float>(left_sur.get_width() + width * middle_sur.get_width()),
-                           pos.y));
+                           pos.y),
+                  m_z_index);
 }
 
 void
@@ -91,9 +94,9 @@ ConveyorBelt::update ()
 }
 
 float
-ConveyorBelt::get_z_pos () const
+ConveyorBelt::z_index () const
 {
-  return pos.z;
+  return m_z_index;
 }
 
 } // namespace WorldObjs

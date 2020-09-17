@@ -33,6 +33,7 @@ private:
   Sprite sur;
 
   Vector3f pos;
+  float m_z_index;
 
   /** Cause to interpret the width in pixels instead of tiles */
   bool old_width_handling;
@@ -42,7 +43,8 @@ private:
 public:
   Liquid(const ReaderMapping& reader);
 
-  float get_z_pos () const override;
+  float z_index () const override;
+  void set_z_index(float z_index) override { m_z_index = z_index; }
   void set_pos(const Vector3f& p) override { pos = p; }
   Vector3f get_pos() const override { return pos; }
 

@@ -107,8 +107,10 @@ PathGraph::parse_edges(const ReaderCollection& collection)
       auto path2 = util::make_unique<Path>();
 
       std::vector<Vector3f> positions;
-      if (reader.read_vectors("positions", positions))
+      std::vector<float> z_indexes;
+      if (reader.read_vectors("positions", positions, z_indexes))
       {
+        // FIXME: do something with z_indexes
         for(auto const& p : positions)
         {
           path->push_back(p);

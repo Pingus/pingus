@@ -63,7 +63,8 @@ public:
 
   /** The z-pos at which the pingus gets draw.
       @return 50 */
-  float get_z_pos() const override;
+  float z_index() const override;
+  void set_z_index(float) override {}
   void set_pos(const Vector3f& p) override { }
   Vector3f get_pos() const override { return Vector3f(); }
   /*@}*/

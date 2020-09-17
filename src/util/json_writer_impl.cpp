@@ -167,7 +167,7 @@ JsonWriterImpl::write_string(const char* name, const std::string& value)
 }
 
 void
-JsonWriterImpl::write_vector(const char* name, const Vector3f& value)
+JsonWriterImpl::write_vector(const char* name, const Vector3f& value, float z_index)
 {
   assert(!m_stack.empty());
   assert(m_stack.back().get().type() == Json::objectValue);
@@ -175,7 +175,7 @@ JsonWriterImpl::write_vector(const char* name, const Vector3f& value)
   Json::Value array(Json::arrayValue);
   array.append(Json::Value(value.x));
   array.append(Json::Value(value.y));
-  array.append(Json::Value(value.z));
+  array.append(Json::Value(z_index));
   m_stack.back().get()[name] = array;
 }
 

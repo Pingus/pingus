@@ -26,15 +26,16 @@ namespace WorldObjs {
 Spike::Spike (const ReaderMapping& reader) :
   surface("traps/spike"),
   pos(),
+  m_z_index(0.0f),
   killing(false)
 {
-  reader.read_vector("position", pos);
+  reader.read_vector("position", pos, m_z_index);
 }
 
 float
-Spike::get_z_pos () const
+Spike::z_index () const
 {
-  return pos.z;
+  return m_z_index;
 }
 
 void

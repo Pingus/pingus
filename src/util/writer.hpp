@@ -59,7 +59,7 @@ public:
   void write_colori(const char* name, const Color&);
   void write_bool(const char* name, bool);
   void write_string(const char* name, const std::string&);
-  void write_vector(const char* name, const Vector3f&);
+  void write_vector(const char* name, const Vector3f&, float);
   void write_size(const char* name, const geom::isize&);
   void write_vector2i(const char* name, const geom::ipoint&);
   void write_path(const char* name, const Pathname&);

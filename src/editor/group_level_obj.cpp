@@ -135,7 +135,7 @@ GroupLevelObj::write_properties(Writer& writer)
   {
     writer.begin_object("prefab");
     writer.write_string("name", m_name);
-    writer.write_vector("position", m_pos);
+    writer.write_vector("position", m_pos, z_index());
     writer.begin_mapping("overrides");
     if (m_overrides & HAS_REPEAT)       writer.write_int("repeat", m_repeat);
     if (m_overrides & HAS_RELEASE_RATE) writer.write_int("release-rate", m_release_rate);

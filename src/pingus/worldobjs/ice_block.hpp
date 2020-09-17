@@ -32,6 +32,7 @@ class IceBlock : public WorldObj
 private:
   /// The upper/left position  of the iceblock's
   Vector3f pos;
+  float m_z_index;
 
   /** The number of iceblocks, only complete blocks are supported */
   int width;
@@ -45,7 +46,8 @@ private:
 public:
   IceBlock(const ReaderMapping& reader);
 
-  float get_z_pos () const override { return pos.z; }
+  float z_index () const override { return m_z_index; }
+  void set_z_index(float z_index) override { m_z_index = z_index; }
   void set_pos(const Vector3f& p) override { pos = p; }
   Vector3f get_pos() const override { return pos; }
 

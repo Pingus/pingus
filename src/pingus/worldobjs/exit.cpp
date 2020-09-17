@@ -29,12 +29,13 @@ namespace WorldObjs {
 Exit::Exit(const ReaderMapping& reader) :
   desc(),
   pos(),
+  m_z_index(0.0f),
   owner_id(),
   sprite(),
   flag(),
   smallmap_symbol("core/misc/smallmap_exit")
 {
-  reader.read_vector("position", pos);
+  reader.read_vector("position", pos, m_z_index);
   reader.read_desc  ("surface",  desc);
   reader.read_int   ("owner-id", owner_id);
 
@@ -102,9 +103,9 @@ Exit::update ()
 }
 
 float
-Exit::get_z_pos () const
+Exit::z_index () const
 {
-  return pos.z;
+  return m_z_index;
 }
 
 } // namespace WorldObjs

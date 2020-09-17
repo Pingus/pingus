@@ -31,19 +31,20 @@ namespace WorldObjs {
 Smasher::Smasher(const ReaderMapping& reader) :
   sprite("traps/smasher"),
   pos(),
+  m_z_index(0.0f),
   smashing(false),
   downwards(false),
   count(0)
 {
   assert(sprite.get_frame_count() == 6);
 
-  reader.read_vector("position", pos);
+  reader.read_vector("position", pos, m_z_index);
 }
 
 float
-Smasher::get_z_pos () const
+Smasher::z_index () const
 {
-  return pos.z;
+  return m_z_index;
 }
 
 void

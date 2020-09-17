@@ -27,6 +27,7 @@ SurfaceBackground::SurfaceBackground(const ReaderMapping& reader) :
   para_x(0.5),
   para_y(0.5),
   pos(),
+  m_z_index(0.0f),
   scroll_x(0.0),
   scroll_y(0.0),
   color(0,0,0,0),
@@ -37,8 +38,10 @@ SurfaceBackground::SurfaceBackground(const ReaderMapping& reader) :
   scroll_ox(0),
   scroll_oy(0)
 {
-  if (!reader.read_vector("position", pos))
-    pos = Vector3f(0.f, 0.f, -150.f);
+  if (!reader.read_vector("position", pos, m_z_index)) {
+    pos = Vector3f(0.f, 0.f);
+    m_z_index = -150.f;
+  }
 
   ResDescriptor desc;
 
@@ -116,9 +119,9 @@ SurfaceBackground::SurfaceBackground(const ReaderMapping& reader) :
 }
 
 float
-SurfaceBackground::get_z_pos () const
+SurfaceBackground::z_index () const
 {
-  return pos.z;
+  return m_z_index;
 }
 
 void
@@ -178,7 +181,7 @@ SurfaceBackground::draw (SceneContext& gc)
         x < world->get_width();
         x += bg_sprite.get_width())
     {
-      gc.color().draw(bg_sprite, Vector2i(x - offset.x(), y - offset.y()), pos.z);
+      gc.color().draw(bg_sprite, Vector2i(x - offset.x(), y - offset.y()), m_z_index);
     }
   }
 }

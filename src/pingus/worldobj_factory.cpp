@@ -124,7 +124,8 @@ public:
     reader.read_string("name", name);
 
     Vector3f pos;
-    reader.read_vector("position", pos);
+    float z_index = 0.0f;
+    reader.read_vector("position", pos, z_index);
 
     PrefabFile prefab = PrefabFile::from_resource(name);
     ReaderMapping overrides;
@@ -142,6 +143,7 @@ public:
         if (*obj)
         {
           (*obj)->set_pos((*obj)->get_pos() + pos);
+          (*obj)->set_z_index(z_index);
           group.push_back(*obj);
         }
       }

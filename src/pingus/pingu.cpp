@@ -66,7 +66,7 @@ Pingu::Pingu(unsigned int arg_id, const Vector3f& arg_pos, int owner) :
   status(PS_ALIVE),
   pos_x(arg_pos.x),
   pos_y(arg_pos.y),
-  velocity(0, 0, 0),
+  velocity(0, 0),
   direction()
 {
   direction.left ();
@@ -411,7 +411,7 @@ Pingu::apply_force (const Vector3f& arg_v)
 Vector3f
 Pingu::get_pos () const
 {
-  return Vector3f(pos_x, pos_y, 0);
+  return Vector3f(pos_x, pos_y);
 }
 
 Vector3f

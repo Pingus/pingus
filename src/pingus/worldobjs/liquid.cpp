@@ -25,12 +25,13 @@ namespace WorldObjs {
 Liquid::Liquid(const ReaderMapping& reader) :
   sur(),
   pos(),
+  m_z_index(0.0f),
   old_width_handling(false),
   width(0)
 {
   ResDescriptor desc;
 
-  reader.read_vector("position", pos);
+  reader.read_vector("position", pos, m_z_index);
   reader.read_desc  ("surface",  desc);
   reader.read_int   ("repeat",   width);
 
@@ -41,9 +42,9 @@ Liquid::Liquid(const ReaderMapping& reader) :
 }
 
 float
-Liquid::get_z_pos () const
+Liquid::z_index () const
 {
-  return pos.z;
+  return m_z_index;
 }
 
 void

@@ -24,21 +24,20 @@ class Vector3f
 public:
   float x;
   float y;
-  float z;
+  //  float z;
 
 public:
-  explicit Vector3f (float x_=0, float y_=0, float z_=0) : x(x_), y(y_), z(z_) {}
+  explicit Vector3f (float x_=0, float y_=0 /*, float z_=0*/) : x(x_), y(y_)/*, z(z_)*/ {}
 
-  Vector3f (const Vector3f& old) : x(old.x), y(old.y), z(old.z) {}
-  Vector3f (const Vector2f& old) : x(old.x()), y(old.y()), z(0) {}
-  Vector3f (const Vector2i& old) : x(float(old.x())), y(float(old.y())), z(0) {}
+  Vector3f (const Vector3f& old) : x(old.x), y(old.y) {}
+  Vector3f (const Vector2f& old) : x(old.x()), y(old.y()) {}
+  Vector3f (const Vector2i& old) : x(float(old.x())), y(float(old.y())) {}
   Vector3f& operator= (const Vector3f& old)
   {
     if (this != &old)
     {
       x = old.x;
       y = old.y;
-      z = old.z;
     }
 
     return *this;
@@ -46,34 +45,32 @@ public:
 
   Vector3f operator- () const
   {
-    return Vector3f(-x, -y, -z);
+    return Vector3f(-x, -y);
   }
 
   Vector3f operator+ (const Vector3f& add) const
   {
-    return Vector3f(x + add.x, y + add.y, z + add.z);
+    return Vector3f(x + add.x, y + add.y);
   }
   Vector3f operator- (const Vector3f& sub) const
   {
-    return Vector3f(x - sub.x, y - sub.y, z - sub.z);
+    return Vector3f(x - sub.x, y - sub.y);
   }
   Vector3f operator* (float mul) const
   {
-    return Vector3f(mul * x, mul * y, mul * z);
+    return Vector3f(mul * x, mul * y);
   }
 
   bool operator==(Vector3f const& rhs) const
   {
     return (x == rhs.x &&
-            y == rhs.y &&
-            z == rhs.z);
+            y == rhs.y);
   }
 
   Vector3f& operator+= (const Vector3f& add)
   {
     x += add.x;
     y += add.y;
-    z += add.z;
     return *this;
   }
 
@@ -81,7 +78,6 @@ public:
   {
     x -= sub.x;
     y -= sub.y;
-    z -= sub.z;
     return *this;
   }
 
@@ -90,26 +86,24 @@ public:
   {
     x *= mul;
     y *= mul;
-    z *= mul;
     return *this;
   }
 #endif
 
   void normalize ()
   {
-    float f = Math::sqrt(x * x + y * y + z * z);
+    float f = Math::sqrt(x * x + y * y);
 
     if (f != 0.0f)
     {
       x /= f;
       y /= f;
-      z /= f;
     }
   }
 
   float length() const
   {
-    return Math::sqrt(x * x + y * y + z * z);
+    return Math::sqrt(x * x + y * y);
   }
 
   static float distance2d(const Vector3f& a, const Vector3f& b)

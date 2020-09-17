@@ -53,8 +53,7 @@ Boarder::update ()
     {
       Vector3f old_pos = pingu->get_pos();
       pingu->set_pos(Vector3f(old_pos.x + ((old_pos.x < new_pos.x) ? 1.0f : -1.0f),
-                              old_pos.y,
-                              old_pos.z));
+                              old_pos.y));
 
       if (pingu->rel_getpixel (1, 0))
       {

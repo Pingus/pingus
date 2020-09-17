@@ -174,7 +174,7 @@ EditorLevel::from_prefab_file(const Pathname& pathname)
 
 static bool LevelObjSort(const LevelObjPtr& a, const LevelObjPtr& b)
 {
-  return (a->get_pos().z < b->get_pos().z);
+  return a->z_index() < b->z_index();
 }
 
 // Default constructor

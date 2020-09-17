@@ -26,13 +26,14 @@ SpriteDrawable::SpriteDrawable(const ReaderMapping& reader) :
   Drawable(reader),
   surface(),
   pos(),
+  m_z_index(0.0f),
   auto_uncover()
 {
   auto_uncover = false;
   ResDescriptor desc;
 
   reader.read_desc  ("surface", desc);
-  reader.read_vector("position", pos);
+  reader.read_vector("position", pos, m_z_index);
   reader.read_bool  ("auto-uncover", auto_uncover);
 
   surface = Sprite(desc);
@@ -52,20 +53,22 @@ SpriteDrawable::draw(DrawingContext& gc)
     if (auto_uncover)
     {
       Vector3f pingus_pos = Worldmap::current()->get_pingus()->get_pos();
+      float pingus_z_index = Worldmap::current()->get_pingus()->z_index();
+
       // Pingu is not over the surface
       if (!(pingus_pos.x > pos.x && pingus_pos.x < pos.x + static_cast<float>(surface.get_width()) &&
             pingus_pos.y > pos.y && pingus_pos.y < pos.y + static_cast<float>(surface.get_height())))
       {
-        gc.draw(surface, pos);
+        gc.draw(surface, pos, m_z_index);
       }
-      else if (pingus_pos.z > pos.z + 1000)
+      else if (pingus_z_index > m_z_index + 1000)
       { // FIXME: Hack for the 0.6.0 release/tutorial world remove later
-        gc.draw(surface, pos);
+        gc.draw(surface, pos, m_z_index);
       }
     }
     else
     {
-      gc.draw(surface, pos);
+      gc.draw(surface, pos, m_z_index);
     }
   }
 }

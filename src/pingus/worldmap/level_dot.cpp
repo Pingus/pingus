@@ -65,21 +65,21 @@ LevelDot::draw(DrawingContext& gc)
     if (savegame->get_status() == Savegame::FINISHED)
       if (highlight)
       {
-        gc.draw (highlight_green_dot_sur, pos);
+        gc.draw(highlight_green_dot_sur, pos, m_z_index);
       }
       else
       {
-        gc.draw (green_dot_sur, pos);
+        gc.draw(green_dot_sur, pos, m_z_index);
       }
     else
       if (highlight)
-        gc.draw (highlight_red_dot_sur, pos);
+        gc.draw(highlight_red_dot_sur, pos, m_z_index);
       else
-        gc.draw (red_dot_sur, pos);
+        gc.draw(red_dot_sur, pos, m_z_index);
   }
   else
   {
-    gc.draw (inaccessible_dot_sur, pos);
+    gc.draw(inaccessible_dot_sur, pos, m_z_index);
   }
 }
 

@@ -220,13 +220,13 @@ JsonPrettyWriterImpl::write_string(const char* name, const std::string& value)
 }
 
 void
-JsonPrettyWriterImpl::write_vector(const char* name, const Vector3f& value)
+JsonPrettyWriterImpl::write_vector(const char* name, const Vector3f& value, float z_index)
 {
   assert(m_context.back() == Context::Mapping);
 
   write_indent();
   write_quoted_string(name);
-  m_out << ": [ " << value.x << ", " << value.y << ", " << value.z << " ]";
+  m_out << ": [ " << value.x << ", " << value.y << ", " <<  z_index << " ]";
   write_separator();
 }
 

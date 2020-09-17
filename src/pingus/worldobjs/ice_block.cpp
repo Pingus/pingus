@@ -26,6 +26,7 @@ namespace WorldObjs {
 
 IceBlock::IceBlock(const ReaderMapping& reader) :
   pos(),
+  m_z_index(0.0f),
   width(),
   thickness(1.0),
   is_finished(false),
@@ -33,7 +34,7 @@ IceBlock::IceBlock(const ReaderMapping& reader) :
   block_sur("worldobjs/iceblock"),
   block_sur_cmap("worldobjs/iceblock_cmap")
 {
-  reader.read_vector("position", pos);
+  reader.read_vector("position", pos, m_z_index);
   if (!reader.read_int("repeat", width))
   {
     log_warn("old 'width' tag used");

@@ -27,18 +27,19 @@ namespace WorldObjs {
 
 Teleporter::Teleporter(const ReaderMapping& reader) :
   pos(),
+  m_z_index(0.0f),
   sprite("worldobjs/teleporter"),
   target_id(),
   target()
 {
-  reader.read_vector("position", pos);
+  reader.read_vector("position", pos, m_z_index);
   reader.read_string("target-id", target_id);
 }
 
 float
-Teleporter::get_z_pos () const
+Teleporter::z_index () const
 {
-  return pos.z;
+  return m_z_index;
 }
 
 void

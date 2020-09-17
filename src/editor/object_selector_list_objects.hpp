@@ -55,7 +55,7 @@ struct Entrance : public ObjectSelectorList::Object
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("entrance");
     obj->set_type("generic");
     obj->set_pos(pos);
-    obj->set_pos_z(110);
+    obj->set_z_index(110);
     obj->set_direction("misc");
     obj->set_release_rate(150);
     obj->set_owner(0);
@@ -97,7 +97,7 @@ struct Hotspot : public ObjectSelectorList::Object
   LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("hotspot");
     obj->set_pos(pos);
-    obj->set_pos_z(static_cast<float>(z_pos));
+    obj->set_z_index(static_cast<float>(z_pos));
     obj->set_res_desc(desc);
     // obj->set_para();
     return obj;
@@ -116,7 +116,8 @@ struct SurfaceBackground : public ObjectSelectorList::Object
 
   LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("surface-background");
-    obj->set_pos(Vector3f(static_cast<float>(pos.x()), static_cast<float>(pos.y()), -1000.0f)); // FIXME: Hack, z-pos handling is messed up
+    obj->set_pos(Vector3f(static_cast<float>(pos.x()), static_cast<float>(pos.y())));
+    obj->set_z_index(-1000.0f); // FIXME: Hack, z-pos handling is messed up
     obj->set_para_x(0.5f);
     obj->set_para_y(0.5f);
     obj->set_scroll_x(0.0f);
@@ -137,7 +138,8 @@ struct SolidColorBackground : public ObjectSelectorList::Object
 
   LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("solidcolor-background");
-    obj->set_pos(Vector3f(static_cast<float>(pos.x()), static_cast<float>(pos.y()), -1000.0f)); // FIXME: Hack, z-pos handling is messed up
+    obj->set_pos(Vector3f(static_cast<float>(pos.x()), static_cast<float>(pos.y())));
+    obj->set_z_index(-1000.0f); // FIXME: Hack, z-pos handling is messed up
     obj->set_color(Color(255, 0, 255));
     return obj;
   }
@@ -153,7 +155,8 @@ struct StarfieldBackground : public ObjectSelectorList::Object
   LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("starfield-background");
     // FIXME: Hack, z-pos handling is messed up
-    obj->set_pos(Vector3f(static_cast<float>(pos.x()), static_cast<float>(pos.y()), -1000.0f));
+    obj->set_pos(Vector3f(static_cast<float>(pos.x()), static_cast<float>(pos.y())));
+    obj->set_z_index(-1000.0f);
     obj->set_small_stars(500);
     obj->set_middle_stars(250);
     obj->set_large_stars(125);

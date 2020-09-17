@@ -167,7 +167,8 @@ JsonReaderMappingImpl::read_string(const char* key, std::string& value) const
 }
 
 bool
-JsonReaderMappingImpl::read_vectors(const char* key, std::vector<Vector3f>& values) const
+JsonReaderMappingImpl::read_vectors(const char* key, std::vector<Vector3f>& values,
+                                    std::vector<float>& z_indexes) const
 {
   const Json::Value& element = m_json[key];
   if (element.isArray())
@@ -178,8 +179,8 @@ JsonReaderMappingImpl::read_vectors(const char* key, std::vector<Vector3f>& valu
       if (vec.isArray() && vec.size() >= 3)
       {
         values.emplace_back(vec[0u].asFloat(),
-                            vec[1u].asFloat(),
-                            vec[2u].asFloat());
+                            vec[1u].asFloat());
+        z_indexes.emplace_back(vec[2u].asFloat());
       }
       else
       {
@@ -195,14 +196,14 @@ JsonReaderMappingImpl::read_vectors(const char* key, std::vector<Vector3f>& valu
 }
 
 bool
-JsonReaderMappingImpl::read_vector(const char* key, Vector3f& value) const
+JsonReaderMappingImpl::read_vector(const char* key, Vector3f& value, float& z_index) const
 {
   const Json::Value& element = m_json[key];
   if (element.isArray() && element.size() >= 3)
   {
     value.x = element[0u].asFloat();
     value.y = element[1u].asFloat();
-    value.z = element[2u].asFloat();
+    z_index = element[2u].asFloat();
     return true;
   }
   else

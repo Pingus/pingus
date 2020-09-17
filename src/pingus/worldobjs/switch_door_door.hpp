@@ -28,6 +28,7 @@ class SwitchDoorDoor : public WorldObj
 private:
   /// The upper/middle pos of the door
   Vector3f door_pos;
+  float m_z_index;
 
   // The height of the door in graphic tiles
   int door_height;
@@ -52,7 +53,8 @@ public:
   void update () override;
 
   /// The switch and the door should stay above the pingus
-  float get_z_pos() const override { return 100; }
+  float z_index() const override { return 100; }
+  void set_z_index(float z_index) override { m_z_index = z_index; }
   void set_pos(const Vector3f& p) override { door_pos = p; }
   Vector3f get_pos() const override { return door_pos; }
 

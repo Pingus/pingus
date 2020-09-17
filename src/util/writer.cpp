@@ -127,9 +127,9 @@ Writer::write_string(const char* name, const std::string& value)
 }
 
 void
-Writer::write_vector(const char* name, const Vector3f& value)
+Writer::write_vector(const char* name, const Vector3f& value, float z_index)
 {
-  m_impl->write_vector(name, value);
+  m_impl->write_vector(name, value, z_index);
 }
 
 void

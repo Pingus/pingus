@@ -96,7 +96,8 @@ WorldObjRenderer::get_clip_rect() const
 
 void
 WorldObjRenderer::render_sprite(const ResDescriptor& desc,
-                                const Vector3f& pos)
+                                const Vector3f& pos,
+                                float z_index)
 {
   Surface surface = Resource::load_surface(desc);
 
@@ -109,6 +110,7 @@ WorldObjRenderer::render_sprite(const ResDescriptor& desc,
 void
 WorldObjRenderer::render_surface(const ResDescriptor& desc,
                                  const Vector3f& pos,
+                                 float z_index,
                                  int repeat)
 {
   Surface surface = Resource::load_surface(desc);
@@ -155,26 +157,30 @@ WorldObjRenderer::process(const ReaderObject& reader_object)
   else if (reader_object.get_name() == "entrance")
   {
     Vector3f pos;
-    reader.read_vector("position", pos);
-    render_sprite(ResDescriptor("entrances/generic"), pos);
+    float z_index = 0.0f;
+    reader.read_vector("position", pos, z_index);
+    render_sprite(ResDescriptor("entrances/generic"), pos, z_index);
   }
   else if (reader_object.get_name() == "spike")
   {
     Vector3f pos;
-    reader.read_vector("position", pos);
-    render_surface(ResDescriptor("traps/spike_editor"), pos);
+    float z_index = 0.0f;
+    reader.read_vector("position", pos, z_index);
+    render_surface(ResDescriptor("traps/spike_editor"), pos, z_index);
   }
   else if (reader_object.get_name() == "switchdoor-switch")
   {
     Vector3f pos;
-    reader.read_vector("position", pos);
-    render_surface(ResDescriptor("worldobjs/switchdoor_switch"), pos);
+    float z_index = 0.0f;
+    reader.read_vector("position", pos, z_index);
+    render_surface(ResDescriptor("worldobjs/switchdoor_switch"), pos, z_index);
   }
   else if (reader_object.get_name() == "switchdoor-door")
   {
     Vector3f pos;
-    reader.read_vector("position", pos);
-    render_surface(ResDescriptor("worldobjs/switchdoor_box"), pos);
+    float z_index = 0.0f;
+    reader.read_vector("position", pos, z_index);
+    render_surface(ResDescriptor("worldobjs/switchdoor_box"), pos, z_index);
   }
   else if (reader_object.get_name() == "group")
   {
@@ -198,7 +204,8 @@ WorldObjRenderer::process(const ReaderObject& reader_object)
       PrefabFile prefab = PrefabFile::from_resource(name);
 
       Vector3f position;
-      reader.read_vector("position", position);
+      float z_index = 0.0f;
+      reader.read_vector("position", position, z_index);
       push_translate(static_cast<int>(position.x),
                      static_cast<int>(position.y));
       process(prefab.get_objects());
@@ -217,9 +224,10 @@ WorldObjRenderer::process_object_with_surface(const ReaderObject& reader_object)
   ReaderMapping reader = reader_object.get_mapping();
 
   Vector3f pos;
+  float z_index = 0.0f;
   ResDescriptor desc;
 
-  if (!(reader.read_vector("position", pos) &&
+  if (!(reader.read_vector("position", pos, z_index) &&
         reader.read_desc("surface", desc)))
   {
     log_error("object ({}) does not have 'position' and 'surface'", reader_object.get_name());
@@ -229,7 +237,7 @@ WorldObjRenderer::process_object_with_surface(const ReaderObject& reader_object)
     if (reader_object.get_name() == "exit" ||
         reader_object.get_name() == "hotspots")
     {
-      render_sprite(desc, pos);
+      render_sprite(desc, pos, z_index);
     }
     else if (reader_object.get_name() == "groundpiece")
     {
@@ -238,11 +246,11 @@ WorldObjRenderer::process_object_with_surface(const ReaderObject& reader_object)
       if (type == "remove")
       {
         // FIXME: don't have blit_remove()
-        render_surface(desc, pos);
+        render_surface(desc, pos, z_index);
       }
       else
       {
-        render_surface(desc, pos);
+        render_surface(desc, pos, z_index);
       }
     }
     else
@@ -250,7 +258,7 @@ WorldObjRenderer::process_object_with_surface(const ReaderObject& reader_object)
       int repeat = 1;
       reader.read_int("repeat", repeat);
 
-      render_surface(desc, pos, repeat);
+      render_surface(desc, pos, z_index, repeat);
     }
   }
 }

@@ -207,14 +207,14 @@ SExprReaderMappingImpl::read_string(const char* key, std::string& value) const
 }
 
 bool
-SExprReaderMappingImpl::read_vector(const char* key, Vector3f& value) const
+SExprReaderMappingImpl::read_vector(const char* key, Vector3f& value, float& z_index) const
 {
   sexp::Value const* sub = get_subsection(key);
   if (sub && sexp::list_length(*sub) == 3)
   {
     value = Vector3f(sexp::list_ref(*sub, 0).as_float(),
-                     sexp::list_ref(*sub, 1).as_float(),
-                     sexp::list_ref(*sub, 2).as_float());
+                     sexp::list_ref(*sub, 1).as_float());
+    z_index = sexp::list_ref(*sub, 2).as_float();
     return true;
   }
   else
@@ -224,7 +224,7 @@ SExprReaderMappingImpl::read_vector(const char* key, Vector3f& value) const
 }
 
 bool
-SExprReaderMappingImpl::read_vectors(const char* key, std::vector<Vector3f>& values) const
+SExprReaderMappingImpl::read_vectors(const char* key, std::vector<Vector3f>& values, std::vector<float>& z_indexes) const
 {
   sexp::Value const* sub_lst = get_subsection(key);
   if (sub_lst)
@@ -234,8 +234,8 @@ SExprReaderMappingImpl::read_vectors(const char* key, std::vector<Vector3f>& val
       if (sexp::list_length(sub) == 3)
       {
         values.emplace_back(sexp::list_ref(sub, 0).as_float(),
-                            sexp::list_ref(sub, 1).as_float(),
-                            sexp::list_ref(sub, 2).as_float());
+                            sexp::list_ref(sub, 1).as_float());
+        z_indexes.emplace_back(sexp::list_ref(sub, 2).as_float());
       }
     }
     return true;

@@ -28,6 +28,7 @@ namespace WorldObjs {
 Entrance::Entrance(const ReaderMapping& reader) :
   direction(MISC),
   pos(),
+  m_z_index(0.0f),
   release_rate(150),
   owner_id(0),
   smallmap_symbol("core/misc/smallmap_entrance"),
@@ -36,7 +37,7 @@ Entrance::Entrance(const ReaderMapping& reader) :
   last_direction(0)
 {
   reader.read_int   ("owner-id",     owner_id);
-  reader.read_vector("position",     pos);
+  reader.read_vector("position",     pos, m_z_index);
   reader.read_int   ("release-rate", release_rate);
 
   // Set default owner ID to 0
@@ -65,9 +66,9 @@ Entrance::~Entrance ()
 }
 
 float
-Entrance::get_z_pos () const
+Entrance::z_index () const
 {
-  return pos.z;
+  return m_z_index;
 }
 
 bool

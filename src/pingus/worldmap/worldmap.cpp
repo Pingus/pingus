@@ -176,7 +176,7 @@ Worldmap::on_primary_button_press(int x, int y)
     writer.write_string("levelname", "");
     writer.begin_mapping("dot");
     writer.write_string("name", "leveldot_X");
-    writer.write_vector("position", click_pos);
+    writer.write_vector("position", click_pos, 0.0f);
     writer.end_mapping();
     writer.end_mapping();
     std::cout << std::endl;

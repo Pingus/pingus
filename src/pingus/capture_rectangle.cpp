@@ -49,21 +49,21 @@ CaptureRectangle::draw(SceneContext& sc)
     // Draw the capture rectangle
     if (session && pingu->change_allowed(session->get_action_name()))
     {
-      sc.color().draw(good, pingu->get_center_pos() + Vector3f(0, 0, 1000));
+      sc.color().draw(good, pingu->get_center_pos() + Vector3f(0, 0), 1000);
     }
     else
     {
-      sc.color().draw(bad, pingu->get_center_pos() + Vector3f(0, 0, 1000));
+      sc.color().draw(bad, pingu->get_center_pos() + Vector3f(0, 0), 1000);
     }
 
     // Paint the direction arrow
     if (pingu->direction.is_left())
     {
-      sc.color().draw(arrow_left, pingu->get_center_pos() + Vector3f(0, 2, 1000));
+      sc.color().draw(arrow_left, pingu->get_center_pos() + Vector3f(0, 2), 1000);
     }
     else
     {
-      sc.color().draw(arrow_right, pingu->get_center_pos() + Vector3f(0, 2, 1000));
+      sc.color().draw(arrow_right, pingu->get_center_pos() + Vector3f(0, 2), 1000);
     }
 
     sc.color().print_center(font,

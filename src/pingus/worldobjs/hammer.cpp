@@ -26,16 +26,17 @@ namespace WorldObjs {
 Hammer::Hammer(const ReaderMapping& reader) :
   sprite("traps/hammer"),
   pos(),
+  m_z_index(0.0f),
   m_down(true),
   m_count(0)
 {
-  reader.read_vector("position", pos);
+  reader.read_vector("position", pos, m_z_index);
 }
 
 float
-Hammer::get_z_pos() const
+Hammer::z_index() const
 {
-  return pos.z;
+  return m_z_index;
 }
 
 void

@@ -139,14 +139,14 @@ public:
   /** Set the object's position */
   virtual void set_pos(const Vector3f& p) = 0;
 
+  virtual float z_index() const = 0;
+  virtual void set_z_index(float z_index) = 0;
+
   virtual void set_pos_x(float x) = 0;
   virtual float get_pos_x() const = 0;
 
   virtual void set_pos_y(float y) = 0;
   virtual float get_pos_y() const = 0;
-
-  virtual void set_pos_z(float z) = 0;
-  virtual float get_pos_z() const = 0;
 
   /** Original position of the objects before being dragged around */
   virtual void set_orig_pos(const Vector3f& p) = 0;

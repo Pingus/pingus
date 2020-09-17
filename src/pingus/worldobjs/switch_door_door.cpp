@@ -27,6 +27,7 @@ namespace WorldObjs {
 SwitchDoorDoor::SwitchDoorDoor(const ReaderMapping& reader) :
   WorldObj(reader),
   door_pos(),
+  m_z_index(0.0f),
   door_height(),
   door_box     ("worldobjs/switchdoor_box"),
   door_box_cmap("worldobjs/switchdoor_box"),
@@ -35,7 +36,7 @@ SwitchDoorDoor::SwitchDoorDoor(const ReaderMapping& reader) :
   is_opening(false),
   current_door_height()
 {
-  reader.read_vector("position", door_pos);
+  reader.read_vector("position", door_pos, m_z_index);
   reader.read_int("height", door_height);
   current_door_height = door_height;
 }

@@ -51,7 +51,8 @@ LevelObjFactory::create(const ReaderObject& reader_object)
     reader.read_string("name", name);
 
     Vector3f p;
-    reader.read_vector("position", p);
+    float z_index = 0.0f;
+    reader.read_vector("position", p, z_index);
 
     std::shared_ptr<GroupLevelObj> group = GroupLevelObj::from_prefab(name);
     if (!group)
@@ -66,6 +67,8 @@ LevelObjFactory::create(const ReaderObject& reader_object)
 
       group->set_orig_pos(p);
       group->set_pos(p);
+      group->set_z_index(z_index);
+
       return group;
     }
   }
@@ -74,6 +77,7 @@ LevelObjFactory::create(const ReaderObject& reader_object)
     // Temporary objects
     unsigned attribs;
     Vector3f p;
+    float z_index = 0.0f;
     Color    tmp_color;
     ResDescriptor desc;
     std::string   tmp_str;
@@ -87,14 +91,17 @@ LevelObjFactory::create(const ReaderObject& reader_object)
     attribs = obj->get_attribs();
 
     // All objects have a position - get that.
-    if (!reader.read_vector("position", p))
+    if (!reader.read_vector("position", p, z_index))
     { // Workaround for lack of position for background
-      if (reader_object.get_name() == "surface-background")
-        p = Vector3f(0.f, 0.f, -150.f);
+      if (reader_object.get_name() == "surface-background") {
+        p = Vector3f(0.f, 0.f);
+        z_index = -150.f;
+      }
     }
 
     obj->set_orig_pos(p);
     obj->set_pos(p);
+    obj->set_z_index(z_index);
 
     // Get optional attributes based on the attribs value
     if (attribs & HAS_SPRITE)

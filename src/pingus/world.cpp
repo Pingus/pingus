@@ -112,7 +112,7 @@ World::init_worldobjs(const PingusLevel& plf)
   std::stable_sort(world_obj.begin(), world_obj.end(),
                    [](WorldObj* lhs, WorldObj* rhs)
                    {
-                     return lhs->get_z_pos() < rhs->get_z_pos();
+                     return lhs->z_index() < rhs->z_index();
                    });
 
   // Drawing all world objs to the colmap, gfx, or what ever the

@@ -23,15 +23,16 @@ namespace WorldObjs {
 TeleporterTarget::TeleporterTarget(const ReaderMapping& reader) :
   WorldObj(reader),
   pos(),
+  m_z_index(0.0f),
   sprite("worldobjs/teleportertarget")
 {
-  reader.read_vector("position", pos);
+  reader.read_vector("position", pos, m_z_index);
 }
 
 float
-TeleporterTarget::get_z_pos () const
+TeleporterTarget::z_index () const
 {
-  return pos.z;
+  return m_z_index;
 }
 
 void

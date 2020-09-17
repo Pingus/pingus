@@ -23,11 +23,17 @@
 
 namespace Particles {
 
-RainParticleHolder::RainParticle::RainParticle(int x, int y)
-  : alive(true), splash(false), use_rain2_surf(false), splash_counter(0), splash_frame(0), pos(Vector3f(static_cast<float>(x), static_cast<float>(y)))
+RainParticleHolder::RainParticle::RainParticle(int x, int y) :
+  alive(true),
+  splash(false),
+  use_rain2_surf(false),
+  splash_counter(0),
+  splash_frame(0),
+  pos(Vector3f(static_cast<float>(x), static_cast<float>(y))),
+  xy_mod()
 {
   use_rain2_surf = ((rand() % 3) == 0);
-  pos.z = 1.0f + Math::frand() * 3.0f;
+  xy_mod = 1.0f + Math::frand() * 3.0f;
 }
 
 RainParticleHolder::RainParticleHolder () :
@@ -90,8 +96,8 @@ RainParticleHolder::update ()
           continue;
         }
 
-        it->pos.x -= 5  * it->pos.z;
-        it->pos.y += 16 * it->pos.z;
+        it->pos.x -= 5  * it->xy_mod;
+        it->pos.y += 16 * it->xy_mod;
       }
     }
   }

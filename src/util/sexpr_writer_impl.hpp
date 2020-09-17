@@ -51,7 +51,7 @@ public:
   void write_colori(const char* name, const Color&) override;
   void write_bool(const char* name, bool) override;
   void write_string(const char* name, const std::string&) override;
-  void write_vector(const char* name, const Vector3f&) override;
+  void write_vector(const char* name, const Vector3f&, float) override;
   void write_size(const char* name, const Size&) override;
   void write_vector2i(const char* name, const Vector2i&) override;
   void write_path(const char* name, const Pathname&) override;

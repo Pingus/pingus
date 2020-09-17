@@ -69,6 +69,7 @@ private:
 
   /** Current position of the pingu, only for caching purpose */
   Vector3f pos;
+  float m_z_index;
 
   /** The position the pingu had before his current position, used to
       calculate its current direction */
@@ -97,6 +98,7 @@ public:
 
   /** return the current position in world coordinates */
   Vector3f get_pos() const { return pos; }
+  float z_index() const { return m_z_index; }
 
 private:
   /** Calculate the direction in which the pingu is heading, return

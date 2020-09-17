@@ -51,9 +51,11 @@ private:
   void blit_surface(const Surface& surface, int x, int y);
 
   void render_sprite(const ResDescriptor& desc,
-                     const Vector3f& pos);
+                     const Vector3f& pos,
+                     float z_index);
   void render_surface(const ResDescriptor& desc,
                       const Vector3f& pos,
+                      float z_index,
                       int repeat = 1);
 
   void process_object_with_surface(const ReaderObject& reader);

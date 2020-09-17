@@ -137,7 +137,7 @@ PinguHolder::get_pingu(unsigned int id_) const
 }
 
 float
-PinguHolder::get_z_pos() const
+PinguHolder::z_index() const
 {
   return 50;
 }

@@ -63,20 +63,25 @@ TEST_P(ReaderTest, read_float)
 TEST_P(ReaderTest, read_vector)
 {
   Vector3f v;
-  ASSERT_TRUE(body.read_vector("vector", v));
+  float z_index;
+  ASSERT_TRUE(body.read_vector("vector", v, z_index));
   EXPECT_EQ(1.0f, v.x);
   EXPECT_EQ(2.0f, v.y);
-  EXPECT_EQ(3.0f, v.z);
+  EXPECT_EQ(3.0f, z_index);
 }
 
 TEST_P(ReaderTest, read_vectors)
 {
   std::vector<Vector3f> vs;
-  ASSERT_TRUE(body.read_vectors("vectors", vs));
+  std::vector<float> zs;
+  ASSERT_TRUE(body.read_vectors("vectors", vs, zs));
   ASSERT_EQ(3, vs.size());
-  EXPECT_EQ(Vector3f(1, 2, 3), vs[0]);
-  EXPECT_EQ(Vector3f(4, 5, 6), vs[1]);
-  EXPECT_EQ(Vector3f(7, 8, 9), vs[2]);
+  EXPECT_EQ(Vector3f(1, 2), vs[0]);
+  EXPECT_EQ(Vector3f(4, 5), vs[1]);
+  EXPECT_EQ(Vector3f(7, 8), vs[2]);
+  EXPECT_EQ(3, zs[0]);
+  EXPECT_EQ(6, zs[1]);
+  EXPECT_EQ(9, zs[2]);
 }
 
 TEST_P(ReaderTest, read_mapping)

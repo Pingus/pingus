@@ -139,8 +139,8 @@ public:
   void set_pos_y(float y) override { }
   float get_pos_y() const override { return 0.0f; }
 
-  void set_pos_z(float z) override { }
-  float get_pos_z() const override { return 0.0f; }
+  void set_z_index(float z) override { }
+  float z_index() const override { return 0.0f; }
 
   /** Original position of the objects before being dragged around */
   void set_orig_pos(const Vector3f& p) override { m_orig_pos = p; }

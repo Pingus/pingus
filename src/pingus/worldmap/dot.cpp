@@ -21,9 +21,10 @@ namespace WorldmapNS {
 
 Dot::Dot(const ReaderMapping& reader) :
   Drawable(),
-  pos()
+  pos(),
+  m_z_index(0.0f)
 {
-  reader.read_vector("position", pos);
+  reader.read_vector("position", pos, m_z_index);
   reader.read_string("name",     name);
 
   assert(!name.empty());

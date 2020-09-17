@@ -36,8 +36,9 @@ class RainParticleHolder : public WorldObj
     int   splash_counter;
     float splash_frame;
 
-    // pos.z contains a modificator for x and y pos
     Vector3f pos;
+    // a modificator for x and y pos
+    float xy_mod;
 
     RainParticle(int x, int y);
   };
@@ -54,7 +55,8 @@ public:
 
   void add_particle(int x, int y);
 
-  float get_z_pos () const override { return 1000.0f; }
+  void set_z_index(float z_index) override {}
+  float z_index () const override { return 1000.0f; }
   void set_pos(const Vector3f& p) override { }
   Vector3f get_pos() const override { return Vector3f(); }
 

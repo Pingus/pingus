@@ -28,7 +28,7 @@
 struct DrawingRequestsSorter
 {
   bool operator()(DrawingRequest* a, DrawingRequest* b) {
-    return a->get_z_pos() < b->get_z_pos();
+    return a->z_index() < b->z_index();
   }
 };
 
@@ -211,12 +211,12 @@ DrawingContext::render(Framebuffer& fb, const Rect& parent_rect)
   {
     log_info("<<<<<<<<<<<<<<");
     for(DrawingRequests::iterator i = drawingrequests.begin(); i != drawingrequests.end(); ++i)
-      log_info("{}", (*i)->get_z_pos());
+      log_info("{}", (*i)->z_index());
     log_info(">>>>>>>>>>>>>>");
   }
   for(DrawingRequests::iterator i = drawingrequests.begin(); i != drawingrequests.end(); ++i)
   {
-    //log_info("{}", this << ": " << (*i)->get_z_pos());
+    //log_info("{}", this << ": " << (*i)->z_index());
     (*i)->render(fb, this_rect); // FIXME: Should we clip size against parent rect?
   }
 
@@ -253,11 +253,11 @@ DrawingContext::draw(const Sprite& sprite, const Vector2i& pos, float z)
 }
 
 void
-DrawingContext::draw(const Sprite& sprite, const Vector3f& pos)
+DrawingContext::draw(const Sprite& sprite, const Vector3f& pos, float z_index)
 {
   draw(new SpriteDrawingRequest(sprite, Vector2i(translate_stack.back().x() + static_cast<int>(pos.x),
                                                  translate_stack.back().y() + static_cast<int>(pos.y)),
-                                pos.z));
+                                z_index));
 }
 
 void

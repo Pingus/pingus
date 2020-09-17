@@ -36,6 +36,7 @@ Pingus::Pingus (PathGraph* arg_path) :
   edge_path(),
   edge_path_position(),
   pos(),
+  m_z_index(0.0f),
   last_pos()
 {
   sprite.load(Direction::LEFT,  Sprite("core/worldmap/pingus/left"));
@@ -56,7 +57,7 @@ Pingus::draw (DrawingContext& gc)
   // standing one
   if (final_target_node != NoNode && current_node == NoNode)
   {
-    gc.draw(arrow, path->get_dot(final_target_node)->get_pos() + Vector3f(0, 0, 10));
+    gc.draw(arrow, path->get_dot(final_target_node)->get_pos() + Vector3f(0, 0), 10);
   }
 
   if (!is_walking())
@@ -69,9 +70,9 @@ Pingus::draw (DrawingContext& gc)
     float direction = get_direction();
 
     if (direction >= 0 && direction < 180)
-      gc.draw(sprite[Direction::RIGHT], pos + Vector3f(0, 0, 10));
+      gc.draw(sprite[Direction::RIGHT], pos + Vector3f(0, 0), 10);
     else
-      gc.draw(sprite[Direction::LEFT], pos + Vector3f(0, 0, 10));
+      gc.draw(sprite[Direction::LEFT], pos + Vector3f(0, 0), 10);
   }
 }
 

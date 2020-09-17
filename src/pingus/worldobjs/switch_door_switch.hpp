@@ -32,6 +32,7 @@ class SwitchDoorSwitch : public WorldObj
 private:
   /// The bottom/middle pos of the switch
   Vector3f switch_pos;
+  float m_z_index;
   Sprite switch_sur;
   std::string m_target;
   bool is_triggered;
@@ -45,7 +46,8 @@ public:
   void update () override;
 
   /// The switch and the door should stay above the pingus
-  float get_z_pos() const override { return 100; }
+  float z_index() const override { return 100; }
+  void set_z_index(float z_index) override { }
   void set_pos(const Vector3f& p) override { switch_pos = p; }
   Vector3f get_pos() const override { return switch_pos; }
 

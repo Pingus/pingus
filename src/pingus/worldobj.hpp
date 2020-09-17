@@ -61,7 +61,8 @@ public:
   std::string get_id() const { return id; }
 
   /** Returns the $z$-position of this object. */
-  virtual float get_z_pos () const =0;
+  virtual float z_index() const =0;
+  virtual void set_z_index(float z_index) =0;
 
   virtual void set_pos(const Vector3f& p) = 0;
   virtual Vector3f get_pos() const = 0;

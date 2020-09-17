@@ -196,7 +196,7 @@ public:
   /** Indicate if the pingu's speed is above the deadly velocity */
   //bool is_tumbling () const;
 
-  float get_z_pos () const { return 0; }
+  float z_index () const { return 0; }
 
   /** @return The owner_id of the owner, only used in multiplayer
       configurations, ought to be 0 in single player */

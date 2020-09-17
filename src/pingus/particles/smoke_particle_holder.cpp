@@ -65,7 +65,6 @@ SmokeParticleHolder::update ()
 
     it->pos.x += it->velocity.x;
     it->pos.y += it->velocity.y;
-    it->pos.z = get_z_pos();
 
     --it->livetime;
   }

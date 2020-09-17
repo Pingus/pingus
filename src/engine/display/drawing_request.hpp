@@ -44,7 +44,7 @@ public:
   virtual bool has_alpha() { return true; }
 
   /** Returns the position at which the request should be drawn */
-  virtual float get_z_pos() { return z; }
+  virtual float z_index() { return z; }
 
 private:
   DrawingRequest (const DrawingRequest&);

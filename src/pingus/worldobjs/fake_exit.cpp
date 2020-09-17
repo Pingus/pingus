@@ -28,15 +28,16 @@ FakeExit::FakeExit(const ReaderMapping& reader) :
   surface("traps/fake_exit"),
   smallmap_symbol("core/misc/smallmap_exit"),
   pos(),
+  m_z_index(0.0f),
   smashing(false)
 {
-  reader.read_vector("position", pos);
+  reader.read_vector("position", pos, m_z_index);
 }
 
 float
-FakeExit::get_z_pos () const
+FakeExit::z_index () const
 {
-  return pos.z;
+  return m_z_index;
 }
 
 void

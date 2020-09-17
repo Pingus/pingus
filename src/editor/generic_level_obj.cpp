@@ -31,8 +31,9 @@ GenericLevelObj::GenericLevelObj(const std::string& obj_name) :
   sprite(),
   surface(),
   desc(),
-  pos(Vector3f(0,0,0)),
+  pos(Vector3f(0,0)),
   orig_pos(),
+  m_z_index(0.0f),
   section_name(obj_name),
   object_type(),
   ground_type(),
@@ -70,6 +71,7 @@ GenericLevelObj::GenericLevelObj(const GenericLevelObj& rhs) :
   desc(rhs.desc),
   pos(rhs.pos),
   orig_pos(rhs.orig_pos),
+  m_z_index(0.0f),
   section_name(rhs.section_name),
   object_type(rhs.object_type),
   ground_type(rhs.ground_type),
@@ -163,8 +165,8 @@ GenericLevelObj::draw(DrawingContext &gc)
 {
   if (attribs & HAS_COLOR && section_name == "surface-background")
   {
-    gc.draw(sprite, pos);
-    gc.draw_fillrect(get_rect(), color, pos.z);
+    gc.draw(sprite, pos, m_z_index);
+    gc.draw_fillrect(get_rect(), color, m_z_index);
   }
   else if (attribs & HAS_SPRITE || attribs & HAS_SPRITE_FAKE)
   {
@@ -172,7 +174,7 @@ GenericLevelObj::draw(DrawingContext &gc)
     {
       for(int x = static_cast<int>(pos.x); x < static_cast<int>(pos.x) + sprite.get_width() * repeat; x += sprite.get_width())
       {
-        gc.draw(sprite, Vector3f(static_cast<float>(x), pos.y, pos.z));
+        gc.draw(sprite, Vector3f(static_cast<float>(x), pos.y), m_z_index);
       }
     }
 #if 0
@@ -181,17 +183,17 @@ GenericLevelObj::draw(DrawingContext &gc)
       // Surface Background - tile it
       for (int x = 0; x < level->size.width; x += sprite.get_width())
         for (int y = 0; y < level->size.height; y += sprite.get_height())
-          gc.draw(sprite, Vector3f((float)x, (float)y, pos.z));
+          gc.draw(sprite, Vector3f((float)x, (float)y, m_z_index));
     }
 #endif
     else if (attribs & HAS_COLOR && section_name == "solidcolor-background")
     { // FIXME: Should we have the object type in non-string form?
-      gc.draw_fillrect(get_rect(), color, pos.z);
+      gc.draw_fillrect(get_rect(), color, m_z_index);
       gc.draw(sprite, pos);
     }
     else
     {
-      gc.draw(sprite, pos);
+      gc.draw(sprite, pos, m_z_index);
     }
   }
 }
@@ -199,8 +201,8 @@ GenericLevelObj::draw(DrawingContext &gc)
 void
 GenericLevelObj::draw_selection(DrawingContext &gc)
 {
-  gc.draw_fillrect(get_rect(), Color(255,0,0,50), pos.z);
-  gc.draw_rect(get_rect(), Color(255,0,0), pos.z);
+  gc.draw_fillrect(get_rect(), Color(255,0,0,50), m_z_index);
+  gc.draw_rect(get_rect(), Color(255,0,0), m_z_index);
 }
 
 bool
@@ -299,7 +301,7 @@ GenericLevelObj::write_properties(Writer &fw)
     fw.end_mapping();   // surface
   }
 
-  fw.write_vector("position", pos);
+  fw.write_vector("position", pos, z_index());
 
   if (attribs_ & HAS_SPEED)
     fw.write_int("speed", speed);
@@ -472,6 +474,18 @@ GenericLevelObj::set_pos(const Vector3f& p)
 }
 
 void
+GenericLevelObj::set_z_index(float z_index)
+{
+  m_z_index = z_index;
+}
+
+float
+GenericLevelObj::z_index() const
+{
+  return m_z_index;
+}
+
+void
 GenericLevelObj::set_pos_x(float x)
 {
   pos.x = x;
@@ -493,18 +507,6 @@ float
 GenericLevelObj::get_pos_y() const
 {
   return pos.y;
-}
-
-void
-GenericLevelObj::set_pos_z(float z)
-{
-  pos.z = z;
-}
-
-float
-GenericLevelObj::get_pos_z() const
-{
-  return pos.z;
 }
 
 Rect

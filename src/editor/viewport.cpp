@@ -237,7 +237,7 @@ Viewport::on_pointer_move(int x_, int y_)
             new_x = x_offset + orig_pos.x;
             new_y = y_offset + orig_pos.y;
           }
-          (*it)->set_pos(Vector3f(new_x, new_y, orig_pos.z));
+          (*it)->set_pos(Vector3f(new_x, new_y));
         }
         selection_changed(selection);
       }
@@ -686,7 +686,7 @@ Viewport::raise_objects_z_pos()
 {
   for(auto i = selection.begin(); i != selection.end(); ++i)
   {
-    (*i)->set_pos_z((*i)->get_pos_z() + 10.0f);
+    (*i)->set_z_index((*i)->z_index() + 10.0f);
   }
   selection_changed(selection);
 }
@@ -696,7 +696,7 @@ Viewport::lower_objects_z_pos()
 {
   for(auto i = selection.begin(); i != selection.end(); ++i)
   {
-    (*i)->set_pos_z((*i)->get_pos_z() - 10.0f);
+    (*i)->set_z_index((*i)->z_index() - 10.0f);
   }
   selection_changed(selection);
 }
@@ -789,8 +789,7 @@ Viewport::move_objects(const Vector2i& offset)
   {
     Vector3f p = (*it)->get_pos();
     (*it)->set_pos(Vector3f(p.x + static_cast<float>(offset.x()),
-                            p.y + static_cast<float>(offset.y()),
-                            p.z));
+                            p.y + static_cast<float>(offset.y())));
   }
   selection_changed(selection);
 }

@@ -41,6 +41,9 @@ protected:
   /** Location of this object before moving it around */
   Vector3f orig_pos;
 
+  /** Objects position in the drawing order stack */
+  float m_z_index;
+
   /** Name of the section header for this object (hotspot, groundpiece, etc.) */
   std::string section_name;
 
@@ -187,14 +190,14 @@ public:
   /** Set the object's position */
   void set_pos(const Vector3f& p) override;
 
+  float z_index() const override;
+  void set_z_index(float z_index) override;
+
   void set_pos_x(float x) override;
   float get_pos_x() const override;
 
   void set_pos_y(float y) override;
   float get_pos_y() const override;
-
-  void set_pos_z(float z) override;
-  float get_pos_z() const override;
 
   /** Original position of the objects before being dragged around */
   void set_orig_pos(const Vector3f& p) override { orig_pos = p; }

@@ -26,15 +26,16 @@ namespace WorldObjs {
 LaserExit::LaserExit(const ReaderMapping& reader) :
   surface("traps/laser_exit"),
   pos(),
+  m_z_index(0.0f),
   killing(false)
 {
-  reader.read_vector("position", pos);
+  reader.read_vector("position", pos, m_z_index);
 }
 
 float
-LaserExit::get_z_pos () const
+LaserExit::z_index () const
 {
-  return pos.z;
+  return m_z_index;
 }
 
 void

@@ -28,10 +28,11 @@ Guillotine::Guillotine(const ReaderMapping& reader) :
   sprite_kill_left("traps/guillotinekill/left"),
   sprite_idle("traps/guillotineidle"),
   pos(),
+  m_z_index(0.0f),
   direction(),
   killing(false)
 {
-  reader.read_vector("position", pos);
+  reader.read_vector("position", pos, m_z_index);
 
   sprite_kill_right.set_play_loop(false);
   sprite_kill_left.set_play_loop(false);
@@ -52,9 +53,9 @@ Guillotine::draw (SceneContext& gc)
 }
 
 float
-Guillotine::get_z_pos () const
+Guillotine::z_index () const
 {
-  return pos.z;
+  return m_z_index;
 }
 
 void
