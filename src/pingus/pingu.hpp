@@ -18,7 +18,6 @@
 #define HEADER_PINGUS_PINGUS_PINGU_HPP
 
 #include <memory>
-#define GLM_FORCE_CTOR_INIT
 #include <glm/glm.hpp>
 
 #include "math/vector3f.hpp"

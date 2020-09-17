@@ -1,5 +1,5 @@
 // Pingus - A free Lemmings clone
-// Copyright (C) 1999 Ingo Ruhnke <grumbel@gmail.com>
+// Copyright (C) 1998-2015 Ingo Ruhnke <grumbel@gmail.com>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,33 +14,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_PINGUS_COLLIDER_HPP
-#define HEADER_PINGUS_PINGUS_COLLIDER_HPP
+#include <gtest/gtest.h>
 
 #include <glm/glm.hpp>
 
-class Vector3f;
-class World;
-
-class Collider
+TEST(glm_test, test)
 {
-public:
-  /** Constructor for abstract class */
-  Collider();
-
-  /** Destructor for abstract class */
-  virtual ~Collider() = 0;
-
-  /** Find out if object will collide with something */
-  virtual bool operator() (const World* world, const Vector3f& current_pos,
-                           glm::vec2 const& step_vector) const = 0;
-
-protected:
-  /** Get the Collision Map pixel at the specified position in the specified
-      world */
-  int getpixel(const World* world, const Vector3f& pos) const;
-};
-
-#endif
+  EXPECT_EQ(glm::vec2(12, 23) + glm::vec2(45, 67), glm::vec2(57, 90));
+}
 
 /* EOF */

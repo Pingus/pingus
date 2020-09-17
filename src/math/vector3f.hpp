@@ -17,7 +17,6 @@
 #ifndef HEADER_PINGUS_MATH_VECTOR3F_HPP
 #define HEADER_PINGUS_MATH_VECTOR3F_HPP
 
-#define GLM_FORCE_CTOR_INIT
 #include <glm/glm.hpp>
 #include "math/vector2f.hpp"
 
