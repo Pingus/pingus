@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_ENGINE_DISPLAY_DRAWING_CONTEXT_HPP
 
 #include <vector>
+#include <geom/offset.hpp>
 
 #include "engine/display/drawing_request.hpp"
 #include "math/color.hpp"
@@ -39,7 +40,7 @@ private:
   typedef std::vector<DrawingRequest*> DrawingRequests;
   DrawingRequests drawingrequests;
 
-  std::vector<Vector2i> translate_stack;
+  std::vector<geom::ioffset> translate_stack;
 
   /** The rectangle that the DrawingContext uses on the screen */
   Rect rect;

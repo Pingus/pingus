@@ -198,8 +198,8 @@ JsonWriterImpl::write_vector2i(const char* name, const Vector2i& value)
   assert(m_stack.back().get().type() == Json::objectValue);
 
   Json::Value array(Json::arrayValue);
-  array.append(Json::Value(value.x));
-  array.append(Json::Value(value.y));
+  array.append(Json::Value(value.x()));
+  array.append(Json::Value(value.y()));
   m_stack.back().get()[name] = array;
 }
 

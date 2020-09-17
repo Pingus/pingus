@@ -17,6 +17,7 @@
 #include "editor/generic_level_obj.hpp"
 
 #include <stdexcept>
+#include <geom/offset.hpp>
 
 #include "engine/display/drawing_context.hpp"
 #include "pingus/resource.hpp"
@@ -511,12 +512,12 @@ GenericLevelObj::get_rect() const
 {
   if (attribs & HAS_REPEAT)
   {
-    return Rect(geom::ipoint(static_cast<int>(pos.x), static_cast<int>(pos.y)).as_vec() - static_cast<geom::ipoint>(sprite.get_offset()).as_vec(),
+    return Rect(geom::ipoint(static_cast<int>(pos.x), static_cast<int>(pos.y)).as_vec() - sprite.get_offset().as_vec(),
                 Size(sprite.get_width() * repeat, sprite.get_height()));
   }
   else
   {
-    return Rect(geom::ipoint(static_cast<int>(pos.x), static_cast<int>(pos.y)).as_vec() - static_cast<geom::ipoint>(sprite.get_offset()).as_vec(),
+    return Rect(geom::ipoint(static_cast<int>(pos.x), static_cast<int>(pos.y)).as_vec() - sprite.get_offset().as_vec(),
                 Size(sprite.get_width(), sprite.get_height()));
   }
 }
@@ -525,8 +526,7 @@ LevelObjPtr
 GenericLevelObj::duplicate(const Vector2i& offset) const
 {
   std::shared_ptr<GenericLevelObj> obj = std::make_shared<GenericLevelObj>(*this);
-  obj->pos.x += static_cast<float>(offset.x);
-  obj->pos.y += static_cast<float>(offset.y);
+  obj->pos += Vector3f(static_cast<float>(offset.x()), static_cast<float>(offset.y()));
   return obj;
 }
 

@@ -31,7 +31,7 @@ WorldObjRenderer::blit(Surface& out_surface, int off_x, int off_y)
 {
   for(auto it = m_draw_op.begin(); it != m_draw_op.end(); ++it)
   {
-    out_surface.blit(it->surface, it->pos.x + off_x, it->pos.y + off_y);
+    out_surface.blit(it->surface, it->pos.x() + off_x, it->pos.y() + off_y);
   }
 }
 
@@ -39,7 +39,7 @@ void
 WorldObjRenderer::blit_surface(const Surface& surface, int x, int y)
 {
   Vector2i offset = get_translate();
-  m_draw_op.push_back(DrawOp{surface, Vector2i(x + offset.x, y + offset.y)});
+  m_draw_op.push_back(DrawOp{surface, Vector2i(x + offset.x(), y + offset.y())});
 }
 
 Vector2i
@@ -57,7 +57,7 @@ void
 WorldObjRenderer::push_translate(int x, int y)
 {
   Vector2i offset = get_translate();
-  m_translate_stack.push_back(Vector2i(x + offset.x, y + offset.y));
+  m_translate_stack.push_back(Vector2i(x + offset.x(), y + offset.y()));
 }
 
 void
@@ -76,10 +76,9 @@ WorldObjRenderer::get_clip_rect() const
   }
   else
   {
-    Rect rect(m_draw_op.front().pos.x,
-              m_draw_op.front().pos.y,
-              rect.left() + m_draw_op.front().surface.get_width(),
-              rect.top() + m_draw_op.front().surface.get_height());
+    Rect rect(m_draw_op.front().pos,
+              geom::isize(m_draw_op.front().surface.get_width(),
+                          m_draw_op.front().surface.get_height()));
 
     for(auto it = m_draw_op.begin()+1; it != m_draw_op.end(); ++it)
     {

@@ -27,7 +27,6 @@
 
 class Color;
 class Vector3f;
-class Vector2i;
 
 class ResDescriptor;
 class Pathname;

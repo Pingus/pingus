@@ -338,7 +338,7 @@ public:
   {}
 
   void notify_parent() override {
-    controller->add_pointer_event(id, pos.x, pos.y);
+    controller->add_pointer_event(id, pos.x(), pos.y());
   }
 
 private:
@@ -396,7 +396,7 @@ public:
   {}
 
   void notify_parent() override {
-    controller->add_scroller_event(id, delta.x, delta.y);
+    controller->add_scroller_event(id, delta.x(), delta.y());
   }
 
 private:

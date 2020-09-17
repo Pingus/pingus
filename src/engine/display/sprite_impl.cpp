@@ -90,7 +90,7 @@ SpriteImpl::SpriteImpl(const SpriteDescription& desc, ResourceModifier::Enum mod
   loop = desc.loop;
   loop_last_cycle = false;
 
-  offset = Vector2i(geom::anchor_point(frame_size, desc.origin)) - desc.offset;
+  offset = geom::anchor_point(frame_size, desc.origin).as_vec() - desc.offset.as_vec();
 
 }
 
@@ -146,10 +146,10 @@ void
 SpriteImpl::render(int x, int y, Framebuffer& fb)
 {
   fb.draw_surface(framebuffer_surface,
-                  Rect(frame_pos + Vector2i(frame_size.width()  * (frame%array.width()),
-                                            frame_size.height() * (frame/array.width())),
+                  Rect(frame_pos + geom::ioffset(frame_size.width()  * (frame%array.width()),
+                                                 frame_size.height() * (frame/array.width())),
                        frame_size),
-                  Vector2i(x - offset.x, y - offset.y));
+                  Vector2i(x - offset.x(), y - offset.y()));
 }
 
 void

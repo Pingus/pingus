@@ -22,7 +22,7 @@ class GraphicContextStateImpl
 {
 public:
   Rect rect;
-  Vector2i offset;
+  geom::ioffset offset;
 
   bool have_limit;
   Rect limit;
@@ -39,7 +39,7 @@ GraphicContextState::GraphicContextState()
   : impl(new GraphicContextStateImpl())
 {
   impl->rect       = Rect(geom::ipoint(0,0), Size(Display::get_width(), Display::get_height()));
-  impl->offset     = Vector2i(0,0);
+  impl->offset     = geom::ioffset(0,0);
   impl->have_limit = false;
 }
 
@@ -47,7 +47,7 @@ GraphicContextState::GraphicContextState(int w, int h)
   : impl(new GraphicContextStateImpl())
 {
   impl->rect       = Rect(geom::ipoint(0,0), Size(w, h));
-  impl->offset     = Vector2i(0,0);
+  impl->offset     = geom::ioffset(0,0);
   impl->have_limit = false;
 }
 
@@ -55,7 +55,7 @@ GraphicContextState::GraphicContextState(const Rect& rect)
   : impl(new GraphicContextStateImpl())
 {
   impl->rect       = rect;
-  impl->offset     = Vector2i(0,0);
+  impl->offset     = geom::ioffset(0,0);
   impl->have_limit = false;
 }
 
@@ -84,7 +84,7 @@ GraphicContextState::push(DrawingContext& gc)
   gc.push_modelview();
 
   gc.translate(impl->rect.left(), impl->rect.top());
-  gc.translate(impl->offset.x,  impl->offset.y);
+  gc.translate(impl->offset.x(),  impl->offset.y());
 }
 
 void
@@ -93,7 +93,7 @@ GraphicContextState::push(SceneContext& gc)
   gc.push_modelview();
 
   gc.translate(impl->rect.left(), impl->rect.top());
-  gc.translate(impl->offset.x,  impl->offset.y);
+  gc.translate(impl->offset.x(),  impl->offset.y());
 }
 
 void
@@ -111,39 +111,46 @@ GraphicContextState::pop (DrawingContext& gc)
 Rect
 GraphicContextState::get_clip_rect()
 {
-  return Rect(-impl->offset, impl->rect.size());
+  return Rect(geom::ipoint(0, 0) - impl->offset, impl->rect.size());
 }
 
 void
 GraphicContextState::set_pos(const Vector2i& pos)
 {
-  impl->offset.x = -pos.x + (get_width()/2);
-  impl->offset.y = -pos.y + (get_height()/2);
+  impl->offset = geom::ioffset(-pos.x() + (get_width()/2),
+                               -pos.y() + (get_height()/2));
 
   if (impl->have_limit)
   {
-    if (-impl->offset.x < impl->limit.left())
+    if (-impl->offset.x() < impl->limit.left())
     {
-      impl->offset.x = -(impl->limit.left());
+      impl->offset = geom::ioffset(-(impl->limit.left()),
+                                   impl->offset.y());
     }
-    else if (-impl->offset.x + get_width() > impl->limit.right())
+    else if (-impl->offset.x() + get_width() > impl->limit.right())
     {
       if (impl->limit.right() - impl->limit.left() > get_width())
-        impl->offset.x = -(impl->limit.right() - get_width());
+        impl->offset = geom::ioffset(-(impl->limit.right() - get_width()),
+                                     impl->offset.y());
       else
-        impl->offset.x = -(impl->limit.left());
+        impl->offset = geom::ioffset(-(impl->limit.left()),
+                                     impl->offset.y());
     }
 
-    if (-impl->offset.y < impl->limit.top())
+    if (-impl->offset.y() < impl->limit.top())
     {
-      impl->offset.y = -(impl->limit.top());
+      impl->offset = geom::ioffset(impl->offset.x(),
+                                   -(impl->limit.top()));
     }
-    else if (-impl->offset.y + get_height() > impl->limit.bottom())
+    else if (-impl->offset.y() + get_height() > impl->limit.bottom())
     {
-      if (impl->limit.bottom() - impl->limit.top() > get_height())
-        impl->offset.y = -(impl->limit.bottom() - get_height());
-      else
-        impl->offset.y = -(impl->limit.top());
+      if (impl->limit.bottom() - impl->limit.top() > get_height()) {
+        impl->offset = geom::ioffset(impl->offset.x(),
+                                     -(impl->limit.bottom() - get_height()));
+      } else {
+        impl->offset = geom::ioffset(impl->offset.x(),
+                                     -(impl->limit.top()));
+      }
     }
   }
 }
@@ -151,18 +158,18 @@ GraphicContextState::set_pos(const Vector2i& pos)
 Vector2i
 GraphicContextState::get_pos() const
 {
-  return Vector2i(-impl->offset.x + (get_width()/2),
-                  -impl->offset.y + (get_height()/2));
+  return Vector2i(-impl->offset.x() + (get_width()/2),
+                  -impl->offset.y() + (get_height()/2));
 }
 
 Vector2i
 GraphicContextState::screen2world(const Vector2i& pos_) const
 {
-  Vector2i pos(pos_.x - impl->rect.left(),
-               pos_.y - impl->rect.top());
+  Vector2i pos(pos_.x() - impl->rect.left(),
+               pos_.y() - impl->rect.top());
 
   return pos
-    - Vector2i(impl->rect.left(), impl->rect.top())
+    - geom::ioffset(impl->rect.left(), impl->rect.top())
     - impl->offset;
 }
 

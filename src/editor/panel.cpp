@@ -86,15 +86,15 @@ public:
     else if (mouse_over)
       gc.draw(button_raised, pos);
 
-    gc.draw(sprite, pos + Vector2i(5,5));
+    gc.draw(sprite, pos.as_vec() + Vector2i(5,5).as_vec());
 
     // draw tooltip
     if (mouse_over)
     {
       int t_w = static_cast<int>(Fonts::verdana11.get_width(tooltip));
 
-      Rect t_r(pos.x + 17 - t_w/2 - 4, pos.y + 38 - 2,
-               pos.x + 17 + t_w/2 + 4, pos.y + 38 + Fonts::verdana11.get_height() + 4);
+      Rect t_r(pos.x() + 17 - t_w/2 - 4, pos.y() + 38 - 2,
+               pos.x() + 17 + t_w/2 + 4, pos.y() + 38 + Fonts::verdana11.get_height() + 4);
 
       // if the tooltip goes over the screen borders, move it back to
       // fit on the screen
@@ -147,8 +147,8 @@ public:
 
   bool is_at(int x, int y) override
   {
-    return (pos.x <= x && pos.x + 34 > x &&
-            pos.y <= y && pos.y + 34 > y);
+    return (pos.x() <= x && pos.x() + 34 > x &&
+            pos.y() <= y && pos.y() + 34 > y);
   }
 
   void update (float delta) override
@@ -236,21 +236,21 @@ void
 Panel::add_button(const std::string& image, const std::string& tooltip, Callback callback_)
 {
   PanelButton* comp = create<PanelButton>(editor, pos, image, tooltip, callback_);
-  pos.x += comp->get_width();
+  pos += geom::ioffset(comp->get_width(), 0);
 }
 
 void
 Panel::add_toggle_button(const std::string& image)
 {
   PanelButton* comp = create<PanelButton>(editor, pos, image, "");
-  pos.x += comp->get_width();
+  pos += geom::ioffset(comp->get_width(), 0);
 }
 
 void
 Panel::add_separator()
 {
   PanelSeparator* comp = create<PanelSeparator>(pos);
-  pos.x += comp->get_width();
+  pos += geom::ioffset(comp->get_width(), 0);
 }
 
 } // namespace Editor

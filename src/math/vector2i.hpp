@@ -21,6 +21,9 @@
 #include <sstream>
 #include <geom/point.hpp>
 
+using Vector2i = geom::ipoint;
+
+#if 0
 class Vector2f;
 
 class Vector2i
@@ -113,6 +116,7 @@ struct fmt::formatter<Vector2i>
     return fmt::format_to(ctx.out(), os.str());
   }
 };
+#endif
 
 #endif
 

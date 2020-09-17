@@ -188,7 +188,7 @@ Sprite::set_hotspot(Origin origin, int x, int y)
   if (impl.get())
   {
     // FIXME: offset and other stuff should be member of the Sprite, not the SpriteImpl
-    impl->offset = Vector2i(geom::anchor_point(impl->frame_size, origin)) - Vector2i(x, y);
+    impl->offset = geom::anchor_point(impl->frame_size, origin) - geom::ioffset(x, y);
   }
 }
 

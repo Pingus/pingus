@@ -21,7 +21,6 @@
 #include <memory>
 #include <geom/fwd.hpp>
 
-class Vector2i;
 class Vector3f;
 class Color;
 class Pathname;
@@ -62,7 +61,7 @@ public:
   void write_string(const char* name, const std::string&);
   void write_vector(const char* name, const Vector3f&);
   void write_size(const char* name, const geom::isize&);
-  void write_vector2i(const char* name, const Vector2i&);
+  void write_vector2i(const char* name, const geom::ipoint&);
   void write_path(const char* name, const Pathname&);
 
   template<class E, class T>

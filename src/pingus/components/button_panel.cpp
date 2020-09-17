@@ -38,7 +38,7 @@ ButtonPanel::ButtonPanel(Server* s, const Vector2i& pos) :
 
   std::vector<ActionName::Enum> actions = aholder->get_available_actions();
 
-  set_rect(Rect(geom::ipoint(pos.x, pos.y - (static_cast<int>(actions.size()) * 38)/2),
+  set_rect(Rect(geom::ipoint(pos.x(), pos.y() - (static_cast<int>(actions.size()) * 38)/2),
                 Size(60, static_cast<int>(actions.size()) * 38)));
 
   // Sort the action so that they always have the same order in the panel
@@ -181,7 +181,7 @@ ButtonPanel::on_pointer_move(int x, int y)
 void
 ButtonPanel::set_pos(const Vector2i& pos)
 {
-  set_rect(Rect(geom::ipoint(pos.x, pos.y - (static_cast<int>(buttons.size()) * 38)/2),
+  set_rect(Rect(geom::ipoint(pos.x(), pos.y() - (static_cast<int>(buttons.size()) * 38)/2),
                 Size(60, static_cast<int>(buttons.size()) * 38)));
 }
 

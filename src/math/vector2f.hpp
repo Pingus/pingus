@@ -18,8 +18,15 @@
 #ifndef SUPERTUX_VECTOR_H
 #define SUPERTUX_VECTOR_H
 
+#include <geom/point.hpp>
+#include <geom/io.hpp>
+
 #include "math/math.hpp"
 #include "vector2i.hpp"
+
+using Vector2f = geom::fpoint;
+
+#if 0
 
 /** Simple two dimensional vector. */
 class Vector2f
@@ -32,8 +39,8 @@ public:
     : x(other.x), y(other.y)
   { }
   Vector2f(const Vector2i& other)
-    : x(static_cast<float>(other.x)),
-      y(static_cast<float>(other.y))
+    : x(static_cast<float>(other.x())),
+      y(static_cast<float>(other.y()))
   {}
   Vector2f()
     : x(0), y(0)
@@ -165,6 +172,7 @@ struct fmt::formatter<Vector2f>
     return fmt::format_to(ctx.out(), os.str());
   }
 };
+#endif
 
 #endif
 

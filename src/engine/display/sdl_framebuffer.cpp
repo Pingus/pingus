@@ -90,8 +90,8 @@ SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Vector2i& 
   SDL_Texture* texture = impl->get_texture();
 
   SDL_Rect dstrect;
-  dstrect.x = static_cast<Sint16>(pos.x);
-  dstrect.y = static_cast<Sint16>(pos.y);
+  dstrect.x = static_cast<Sint16>(pos.x());
+  dstrect.y = static_cast<Sint16>(pos.y());
   dstrect.w = surface.get_width();
   dstrect.h = surface.get_height();
 
@@ -108,8 +108,8 @@ SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Rect& srcr
   SDL_Texture* texture = impl->get_texture();
 
   SDL_Rect dstrect;
-  dstrect.x = static_cast<Sint16>(pos.x);
-  dstrect.y = static_cast<Sint16>(pos.y);
+  dstrect.x = static_cast<Sint16>(pos.x());
+  dstrect.y = static_cast<Sint16>(pos.y());
   dstrect.w = srcrect.width();
   dstrect.h = srcrect.height();
 
@@ -131,7 +131,7 @@ SDLFramebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Colo
   // FIXME: push render state
   SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
   SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
-  SDL_RenderDrawLine(m_renderer, pos1.x, pos1.y, pos2.x, pos2.y);
+  SDL_RenderDrawLine(m_renderer, pos1.x(), pos1.y(), pos2.x(), pos2.y());
   // FIXME: pop render state
 }
 

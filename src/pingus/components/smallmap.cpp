@@ -56,8 +56,8 @@ SmallMap::draw(DrawingContext& gc)
 
   int const rwidth = gc.get_width() * rect.width()  / world->get_width();
   int const rheight = gc.get_height() * rect.height() / world->get_height();
-  int const rleft = rect.left() + (of.x * rect.width()  / world->get_width()) - rwidth/2;
-  int const rright = rect.top() + (of.y * rect.height() / world->get_height()) - rheight/2;
+  int const rleft = rect.left() + (of.x() * rect.width()  / world->get_width()) - rwidth/2;
+  int const rright = rect.top() + (of.y() * rect.height() / world->get_height()) - rheight/2;
 
   Rect const view_rect(geom::ipoint(std::max(rleft, rect.left()),
                                     std::max(rright, rect.top())),

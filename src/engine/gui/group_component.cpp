@@ -73,14 +73,14 @@ GroupComponent::on_primary_button_press (int x, int y)
 
   if (grabbed_comp)
   {
-    grabbed_comp->on_primary_button_press(mouse_pos.x, mouse_pos.y);
+    grabbed_comp->on_primary_button_press(mouse_pos.x(), mouse_pos.y());
   }
   else
   {
     Component* comp = component_at(mouse_pos);
     if (comp)
     {
-      comp->on_primary_button_press(mouse_pos.x, mouse_pos.y);
+      comp->on_primary_button_press(mouse_pos.x(), mouse_pos.y());
 
       if (focused_comp)
         focused_comp->set_focus(false);
@@ -102,7 +102,7 @@ GroupComponent::on_primary_button_release (int x, int y)
 
   if (grabbed_comp)
   {
-    grabbed_comp->on_primary_button_release(mouse_pos.x, mouse_pos.y);
+    grabbed_comp->on_primary_button_release(mouse_pos.x(), mouse_pos.y());
   }
   else
   {
@@ -110,17 +110,17 @@ GroupComponent::on_primary_button_release (int x, int y)
 
     if (primary_pressed_comp)
     {
-      primary_pressed_comp->on_primary_button_release(mouse_pos.x, mouse_pos.y);
+      primary_pressed_comp->on_primary_button_release(mouse_pos.x(), mouse_pos.y());
 
       if (comp == primary_pressed_comp)
-        primary_pressed_comp->on_primary_button_click(mouse_pos.x, mouse_pos.y);
+        primary_pressed_comp->on_primary_button_click(mouse_pos.x(), mouse_pos.y());
 
       primary_pressed_comp = nullptr;
     }
     else
     {
       if (comp)
-        comp->on_primary_button_release(mouse_pos.x, mouse_pos.y);
+        comp->on_primary_button_release(mouse_pos.x(), mouse_pos.y());
     }
   }
 }
@@ -132,13 +132,13 @@ GroupComponent::on_secondary_button_press (int x, int y)
 
   if (grabbed_comp)
   {
-    grabbed_comp->on_secondary_button_press(mouse_pos.x, mouse_pos.y);
+    grabbed_comp->on_secondary_button_press(mouse_pos.x(), mouse_pos.y());
   }
   else
   {
     Component* comp = component_at(mouse_pos);
     if (comp)
-      comp->on_secondary_button_press(mouse_pos.x, mouse_pos.y);
+      comp->on_secondary_button_press(mouse_pos.x(), mouse_pos.y());
 
     if (!primary_pressed_comp)
       secondary_pressed_comp = comp;
@@ -154,21 +154,21 @@ GroupComponent::on_secondary_button_release(int x, int y)
 
   if (grabbed_comp)
   {
-    grabbed_comp->on_secondary_button_release(mouse_pos.x, mouse_pos.y);
+    grabbed_comp->on_secondary_button_release(mouse_pos.x(), mouse_pos.y());
   }
   else if (secondary_pressed_comp)
   {
-    secondary_pressed_comp->on_secondary_button_release(mouse_pos.x, mouse_pos.y);
+    secondary_pressed_comp->on_secondary_button_release(mouse_pos.x(), mouse_pos.y());
 
     if (comp == secondary_pressed_comp)
-      secondary_pressed_comp->on_secondary_button_click(mouse_pos.x, mouse_pos.y);
+      secondary_pressed_comp->on_secondary_button_click(mouse_pos.x(), mouse_pos.y());
 
     secondary_pressed_comp = nullptr;
   }
   else
   {
     if (comp)
-      comp->on_secondary_button_release(mouse_pos.x, mouse_pos.y);
+      comp->on_secondary_button_release(mouse_pos.x(), mouse_pos.y());
   }
 }
 
@@ -201,22 +201,22 @@ GroupComponent::on_pointer_move(int x, int y)
 
   if (grabbed_comp)
   {
-    grabbed_comp->on_pointer_move(mouse_pos.x, mouse_pos.y);
+    grabbed_comp->on_pointer_move(mouse_pos.x(), mouse_pos.y());
   }
   else if (primary_pressed_comp)
   {
-    primary_pressed_comp->on_pointer_move(mouse_pos.x, mouse_pos.y);
+    primary_pressed_comp->on_pointer_move(mouse_pos.x(), mouse_pos.y());
   }
   else if (secondary_pressed_comp)
   {
-    secondary_pressed_comp->on_pointer_move(mouse_pos.x, mouse_pos.y);
+    secondary_pressed_comp->on_pointer_move(mouse_pos.x(), mouse_pos.y());
   }
   else
   {
     Component* comp = component_at(mouse_pos);
     if (comp)
     {
-      comp->on_pointer_move(mouse_pos.x, mouse_pos.y);
+      comp->on_pointer_move(mouse_pos.x(), mouse_pos.y());
     }
 
     if (comp != mouse_over_comp)
@@ -243,7 +243,7 @@ GroupComponent::component_at(const Vector2i& pos)
 {
   for(Components::reverse_iterator i = children.rbegin(); i != children.rend(); ++i)
   {
-    if ((*i)->is_visible() && (*i)->is_at(pos.x, pos.y))
+    if ((*i)->is_visible() && (*i)->is_at(pos.x(), pos.y()))
       return i->get();
   }
   return nullptr;

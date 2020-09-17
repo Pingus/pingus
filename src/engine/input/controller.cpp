@@ -170,7 +170,7 @@ Controller::refresh()
   {
     if (*i)
     {
-      add_pointer_event(static_cast<int>(i - pointers.begin()), (*i)->get_pos().x, (*i)->get_pos().y);
+      add_pointer_event(static_cast<int>(i - pointers.begin()), (*i)->get_pos().x(), (*i)->get_pos().y());
     }
   }
 

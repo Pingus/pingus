@@ -102,8 +102,8 @@ public:
   {
     Vector2i offset = geom::anchor_point(get_size(text), origin);
 
-    float dstx = float(x - offset.x);
-    float dsty = float(y - offset.y);
+    float dstx = float(x - offset.x());
+    float dsty = float(y - offset.y());
 
     UTF8::iterator i(text);
     while(i.next())
@@ -114,7 +114,7 @@ public:
       {
         const GlyphDescription& glyph = *glyphs[unicode];
         fb.draw_surface(framebuffer_surfaces[static_cast<size_t>(glyph.image)],
-                        glyph.rect, Vector2i(static_cast<int>(dstx), static_cast<int>(dsty)) + glyph.offset);
+                        glyph.rect, Vector2i(static_cast<int>(dstx), static_cast<int>(dsty)) + geom::ioffset(glyph.offset.as_vec()));
         dstx += static_cast<float>(glyph.advance) + char_spacing;
       }
       else

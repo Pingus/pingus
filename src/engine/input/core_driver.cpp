@@ -69,12 +69,12 @@ public:
       c_speed *= 5.0f;
     }
 
-    new_pos.x += x_axis->get_pos() * c_speed * delta;
-    new_pos.y += y_axis->get_pos() * c_speed * delta;
+    new_pos += geom::foffset(x_axis->get_pos() * c_speed * delta,
+                             y_axis->get_pos() * c_speed * delta);
 
     // FIXME: shouldn't depend on Display
-    new_pos.x = Math::clamp(0.0f, new_pos.x, static_cast<float>(Display::get_width()));
-    new_pos.y = Math::clamp(0.0f, new_pos.y, static_cast<float>(Display::get_height()));
+    new_pos = Vector2f(Math::clamp(0.0f, new_pos.x(), static_cast<float>(Display::get_width())),
+                       Math::clamp(0.0f, new_pos.y(), static_cast<float>(Display::get_height())));
 
     if (new_pos != pos)
     {
@@ -134,8 +134,8 @@ public:
       c_speed *= 5.0f;
     }
 
-    this->delta.x = -x_axis->get_pos() * c_speed * delta_;
-    this->delta.y = y_axis->get_pos() * c_speed * delta_;
+    this->delta = {-x_axis->get_pos() * c_speed * delta_,
+      y_axis->get_pos() * c_speed * delta_};
 
     notify_parent();
   }
@@ -188,19 +188,22 @@ public:
     if (left) left->update(delta_t);
     if (right) right->update(delta_t);
 
-    delta.x = delta.y = 0.0f;
+    float delta_x = 0.0f;
+    float delta_y = 0.0f;
 
     if (left && left->get_state() == BUTTON_PRESSED)
-      delta.x += speed * delta_t;
+      delta_x += speed * delta_t;
 
     if (right && right->get_state() == BUTTON_PRESSED)
-      delta.x += -speed * delta_t;
+      delta_x += -speed * delta_t;
 
     if (up && up->get_state() == BUTTON_PRESSED)
-      delta.y += speed * delta_t;
+      delta_y += speed * delta_t;
 
     if (down && down->get_state() == BUTTON_PRESSED)
-      delta.y += -speed * delta_t;
+      delta_y += -speed * delta_t;
+
+    delta = Vector2f(delta_x, delta_y);
 
     notify_parent();
   }

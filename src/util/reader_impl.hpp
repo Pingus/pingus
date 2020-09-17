@@ -25,7 +25,6 @@
 #include "math/rect.hpp"
 
 class Color;
-class Vector2i;
 class Vector3f;
 
 class ReaderCollection;

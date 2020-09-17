@@ -203,7 +203,7 @@ ScreenManager::update(float delta, const std::vector<Input::Event>& events)
 
   // Draw the mouse pointer
   if (globals::software_cursor)
-    cursor.render(mouse_pos.x, mouse_pos.y, *Display::get_framebuffer());
+    cursor.render(mouse_pos.x(), mouse_pos.y(), *Display::get_framebuffer());
 
   // Draw FPS Counter
   if (globals::print_fps)

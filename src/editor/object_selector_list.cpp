@@ -89,8 +89,8 @@ ObjectSelectorList::draw(DrawingContext& parent_gc)
     Sprite sprite = set->get_objects()[static_cast<size_t>(current_object)]->sprite;
     parent_gc.draw(sprite,
                    real_mouse_pos
-                   - Vector2i(sprite.get_width()/2, sprite.get_height()/2)
-                   + sprite.get_offset(),
+                   - geom::ioffset(sprite.get_width()/2, sprite.get_height()/2)
+                   + geom::ioffset(sprite.get_offset().as_vec()),
                    2000.0f);
   }
 }
@@ -129,10 +129,10 @@ ObjectSelectorList::on_primary_button_release (int x, int y)
                                                           y + object_selector->get_rect().top());
 
         // place object with left/top instead of center origin
-        p -= Vector2i(set->get_objects()[static_cast<size_t>(current_object)]->sprite.get_width()/2,
-                      set->get_objects()[static_cast<size_t>(current_object)]->sprite.get_height()/2);
+        p -= geom::ioffset(set->get_objects()[static_cast<size_t>(current_object)]->sprite.get_width()/2,
+                           set->get_objects()[static_cast<size_t>(current_object)]->sprite.get_height()/2);
 
-        p += set->get_objects()[static_cast<size_t>(current_object)]->sprite.get_offset();
+        p += geom::ioffset(set->get_objects()[static_cast<size_t>(current_object)]->sprite.get_offset().as_vec());
 
         LevelObjPtr obj = set->get_objects()[static_cast<size_t>(current_object)]->create(p);
         if (obj)
@@ -187,8 +187,8 @@ ObjectSelectorList::on_pointer_move (int x, int y)
   {
     if (!set->get_objects().empty())
     {
-      int obj_x = Math::clamp(0, mouse_pos.x / 48, width - 1);
-      int obj_y = (mouse_pos.y - static_cast<int>(offset)) / 48;
+      int obj_x = Math::clamp(0, mouse_pos.x() / 48, width - 1);
+      int obj_y = (mouse_pos.y() - static_cast<int>(offset)) / 48;
 
       current_object = (obj_y * 5) + obj_x;
 
@@ -207,7 +207,7 @@ ObjectSelectorList::on_pointer_move (int x, int y)
 
   if (mode == SCROLLING)
   {
-    offset = old_offset + static_cast<float>(y - drag_start.y);
+    offset = old_offset + static_cast<float>(y - drag_start.y());
     offset = Math::clamp(Math::min(static_cast<float>(rect.height()) - (static_cast<float>(height) * 48.0f), 0.0f), offset, 0.0f);
   }
 }

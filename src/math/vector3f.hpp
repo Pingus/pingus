@@ -30,8 +30,8 @@ public:
   explicit Vector3f (float x_=0, float y_=0, float z_=0) : x(x_), y(y_), z(z_) {}
 
   Vector3f (const Vector3f& old) : x(old.x), y(old.y), z(old.z) {}
-  Vector3f (const Vector2f& old) : x(old.x), y(old.y), z(0) {}
-  Vector3f (const Vector2i& old) : x(float(old.x)), y(float(old.y)), z(0) {}
+  Vector3f (const Vector2f& old) : x(old.x()), y(old.y()), z(0) {}
+  Vector3f (const Vector2i& old) : x(float(old.x())), y(float(old.y())), z(0) {}
   Vector3f& operator= (const Vector3f& old)
   {
     if (this != &old)

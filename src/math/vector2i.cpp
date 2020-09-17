@@ -14,18 +14,4 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "vector2f.hpp"
-
-#include <ostream>
-
-Vector2i::Vector2i(const Vector2f& v)
-  : x(int(v.x)), y(int(v.y))
-{}
-
-std::ostream& operator<<(std::ostream& s, const Vector2i& v)
-{
-  s << "Vector2i(" << v.x << ", " << v.y << ")";
-  return s;
-}
-
 /* EOF */

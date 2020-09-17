@@ -56,7 +56,7 @@ FontTestScreen::draw(DrawingContext& gc)
   gc.print_left(Fonts::chalk_large, Vector2i(10, 10), "Pingus - Font Test");
 
   gc.push_modelview();
-  gc.translate(scroll.x, scroll.y);
+  gc.translate(scroll.x(), scroll.y());
 
   for(uint32_t i = 0; i < 256; ++i)
   {
@@ -110,8 +110,8 @@ FontTestScreen::update_input(const Input::Event& event)
       break;
 
     case Input::SCROLLER_EVENT_TYPE:
-      scroll.x += static_cast<int>(event.scroll.x_delta);
-      scroll.y += static_cast<int>(event.scroll.y_delta);
+      scroll += geom::ioffset(static_cast<int>(event.scroll.x_delta),
+                              static_cast<int>(event.scroll.y_delta));
       break;
 
     default:

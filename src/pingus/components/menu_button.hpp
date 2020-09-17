@@ -24,7 +24,6 @@
 #include "engine/gui/component.hpp"
 
 class PingusMenu;
-class Vector2i;
 
 /** Framework for menu buttons */
 class MenuButton : public GUI::Component

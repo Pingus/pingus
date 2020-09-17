@@ -195,16 +195,15 @@ ObjectSelector::add_button(const std::string& image, const std::string& tooltip,
 {
   ObjectSelectorButton* button;
   button = create<ObjectSelectorButton>(object_list,
-                                        Vector2i(2 + button_pos.x * 30,
-                                                 2 + button_pos.y * 30),
+                                        Vector2i(2 + button_pos.x() * 30,
+                                                 2 + button_pos.y() * 30),
                                         image, tooltip);
   button->on_click.connect(std::bind(&ObjectSelectorList::set_objects, object_list, set));
 
-  button_pos.x += 1;
-  if (button_pos.x > 7)
+  button_pos += geom::ioffset(1, 0);
+  if (button_pos.x() > 7)
   {
-    button_pos.x  = 0;
-    button_pos.y += 1;
+    button_pos = Vector2i(0, button_pos.y() + 1);
   }
 }
 

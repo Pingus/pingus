@@ -233,8 +233,8 @@ JsonReaderMappingImpl::read_vector2i(const char* key, Vector2i& value) const
   const Json::Value& element = m_json[key];
   if (element.isArray() && element.size() >= 2)
   {
-    value.x = element[0u].asInt();
-    value.y = element[1u].asInt();
+    value = Vector2i(element[0u].asInt(),
+                     element[1u].asInt());
     return true;
   }
   else

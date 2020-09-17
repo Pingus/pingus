@@ -25,7 +25,6 @@
 #include "math/size.hpp"
 #include "pingus/options.hpp"
 
-class Vector2i;
 class Color;
 class Framebuffer;
 

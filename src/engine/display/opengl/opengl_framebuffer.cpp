@@ -223,10 +223,10 @@ OpenGLFramebuffer::draw_surface(const FramebufferSurface& src, const Rect& srcre
   glBindTexture(GL_TEXTURE_2D, texture->get_handle());
 
   int vertices[] = {
-    pos.x,                        pos.y,
-    pos.x + srcrect.width(), pos. y,
-    pos.x + srcrect.width(), pos. y + srcrect.height(),
-    pos.x,                        pos.y + srcrect.height(),
+    pos.x(),                        pos.y(),
+    pos.x() + srcrect.width(),      pos.y(),
+    pos.x() + srcrect.width(),      pos.y() + srcrect.height(),
+    pos.x(),                        pos.y() + srcrect.height(),
   };
   glVertexPointer(2, GL_INT, 0, vertices);
 
@@ -259,8 +259,8 @@ OpenGLFramebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const C
   glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
   int vertices[] = {
-    pos1.x, pos1.y,
-    pos2.x, pos2.y,
+    pos1.x(), pos1.y(),
+    pos2.x(), pos2.y(),
   };
   glVertexPointer(2, GL_INT, 0, vertices);
 

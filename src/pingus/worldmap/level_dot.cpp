@@ -49,8 +49,8 @@ LevelDot::draw(DrawingContext& gc)
   Vector2i mpos
     = gc.screen_to_world(Vector2i(Input::Controller::current()->get_pointer(Input::STANDARD_POINTER)->get_pos()));
 
-  float x = static_cast<float>(mpos.x) - pos.x;
-  float y = static_cast<float>(mpos.y) - pos.y;
+  float x = static_cast<float>(mpos.x()) - pos.x;
+  float y = static_cast<float>(mpos.y()) - pos.y;
 
   bool highlight = false;
 

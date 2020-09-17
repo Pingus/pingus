@@ -268,8 +268,8 @@ SExprReaderMappingImpl::read_vector2i(const char* key, Vector2i& value) const
   sexp::Value const* sub = get_subsection(key);
   if (sub && sexp::list_length(*sub) == 2)
   {
-    value.x = sexp::list_ref(*sub, 0).as_int();
-    value.y = sexp::list_ref(*sub, 1).as_int();
+    value = Vector2i(sexp::list_ref(*sub, 0).as_int(),
+                     sexp::list_ref(*sub, 1).as_int());
     return true;
   }
   else

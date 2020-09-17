@@ -328,17 +328,16 @@ World::get_start_pos(int player_id) const
     WorldObjs::Entrance* entrance = dynamic_cast<WorldObjs::Entrance*>(*obj);
     if (entrance && entrance->get_owner_id() == player_id)
     {
-      pos += Vector2i(static_cast<int>(entrance->get_pos().x),
-                      static_cast<int>(entrance->get_pos().y));
+      pos += geom::ioffset(static_cast<int>(entrance->get_pos().x),
+                           static_cast<int>(entrance->get_pos().y));
       num_entrances += 1;
     }
   }
 
   if (num_entrances > 0)
   {
-    pos.x /= num_entrances;
-    pos.y /= num_entrances;
-    pos.y += 100;
+    pos = Vector2i(pos.x() / num_entrances,
+                   pos.y() / num_entrances + 100);
   }
 
   return pos;

@@ -162,7 +162,7 @@ SExprWriterImpl::write_size(const char* name, const Size& size)
 void
 SExprWriterImpl::write_vector2i(const char* name, const Vector2i& v)
 {
-  (*out) << "\n" << indent() << "(" << name << " " << v.x << " " << v.y << ")";
+  (*out) << "\n" << indent() << "(" << name << " " << v.x() << " " << v.y() << ")";
 }
 
 void

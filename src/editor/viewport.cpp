@@ -117,7 +117,7 @@ Viewport::on_primary_button_press(int x_, int y_)
 
   if (current_action == NOTHING)
   {
-    LevelObjPtr obj = editor->get_level()->object_at(mouse_world_pos.x, mouse_world_pos.y);
+    LevelObjPtr obj = editor->get_level()->object_at(mouse_world_pos.x(), mouse_world_pos.y());
 
     if (obj)
     {
@@ -159,10 +159,10 @@ Viewport::on_primary_button_press(int x_, int y_)
     else
     {
       current_action = HIGHLIGHTING;
-      highlighted_area = Rect(mouse_world_pos.x,
-                              mouse_world_pos.y,
-                              mouse_world_pos.x,
-                              mouse_world_pos.y);
+      highlighted_area = Rect(mouse_world_pos.x(),
+                              mouse_world_pos.y(),
+                              mouse_world_pos.x(),
+                              mouse_world_pos.y());
 
       if (!(key_modifier & KMOD_LSHIFT) && !(key_modifier & KMOD_RSHIFT))
       {
@@ -212,10 +212,8 @@ Viewport::on_pointer_move(int x_, int y_)
   switch(current_action)
   {
     case HIGHLIGHTING:
-      highlighted_area = Rect(highlighted_area.left(),
-                              highlighted_area.top(),
-                              mouse_world_pos.x,
-                              mouse_world_pos.y);
+      highlighted_area = Rect(highlighted_area.topleft(),
+                              mouse_world_pos);
       break;
 
     case DRAGGING:
@@ -225,8 +223,8 @@ Viewport::on_pointer_move(int x_, int y_)
         for (auto it = selection.begin(); it != selection.end(); ++it)
         {
           Vector3f orig_pos((*it)->get_orig_pos());
-          float x_offset = static_cast<float>(mouse_world_pos.x - drag_world_pos.x);
-          float y_offset = static_cast<float>(mouse_world_pos.y - drag_world_pos.y);
+          float x_offset = static_cast<float>(mouse_world_pos.x() - drag_world_pos.x());
+          float y_offset = static_cast<float>(mouse_world_pos.y() - drag_world_pos.y());
 
           if (snap_to)
           {
@@ -500,8 +498,10 @@ Viewport::draw(DrawingContext &gc)
     Size size = editor->get_level()->get_size();
     Vector2i center(size.width() / 2, size.height() / 2);
 
-    drawing_context->draw_line(center - Vector2i(16, 0), center + Vector2i(16, 0), Color(155,155,155), 5000.0f);
-    drawing_context->draw_line(center - Vector2i(0, 16), center + Vector2i(0, 16), Color(155,155,155), 5000.0f);
+    drawing_context->draw_line(center - geom::ioffset(16, 0),
+                               center + geom::ioffset(16, 0), Color(155,155,155), 5000.0f);
+    drawing_context->draw_line(center - geom::ioffset(0, 16),
+                               center + geom::ioffset(0, 16), Color(155,155,155), 5000.0f);
   }
 
   // Level border
@@ -546,8 +546,8 @@ Viewport::update(float delta)
 {
   if (current_action == SCROLLING)
   {
-    state.set_pos(Vector2i(state.get_pos().x + static_cast<int>(static_cast<float>(mouse_screen_pos.x - drag_screen_pos.x) * 5.0f * delta),
-                           state.get_pos().y + static_cast<int>(static_cast<float>(mouse_screen_pos.y - drag_screen_pos.y) * 5.0f * delta)));
+    state.set_pos(Vector2i(state.get_pos().x() + static_cast<int>(static_cast<float>(mouse_screen_pos.x() - drag_screen_pos.x()) * 5.0f * delta),
+                           state.get_pos().y() + static_cast<int>(static_cast<float>(mouse_screen_pos.y() - drag_screen_pos.y()) * 5.0f * delta)));
   }
 
   // Autoscroll if necessary
@@ -556,14 +556,14 @@ Viewport::update(float delta)
     const int autoscroll_border = 10;
     if (autoscroll)
     {
-      if (mouse_screen_pos.x < autoscroll_border)
-        state.set_pos(state.get_pos() - Vector2i(5, 0));
-      else if (Display::get_width() - mouse_screen_pos.x < autoscroll_border)
-        state.set_pos(state.get_pos() + Vector2i(5, 0));
-      else if (mouse_screen_pos.y < autoscroll_border)
-        state.set_pos(state.get_pos() - Vector2i(0, 5));
-      else if (Display::get_height() - mouse_screen_pos.y < autoscroll_border)
-        state.set_pos(state.get_pos() + Vector2i(0, 5));
+      if (mouse_screen_pos.x() < autoscroll_border)
+        state.set_pos(state.get_pos() - geom::ioffset(5, 0));
+      else if (Display::get_width() - mouse_screen_pos.x() < autoscroll_border)
+        state.set_pos(state.get_pos() + geom::ioffset(5, 0));
+      else if (mouse_screen_pos.y() < autoscroll_border)
+        state.set_pos(state.get_pos() - geom::ioffset(0, 5));
+      else if (Display::get_height() - mouse_screen_pos.y() < autoscroll_border)
+        state.set_pos(state.get_pos() + geom::ioffset(0, 5));
     }
   }
 }
@@ -788,8 +788,8 @@ Viewport::move_objects(const Vector2i& offset)
   for (auto it = selection.begin(); it != selection.end(); ++it)
   {
     Vector3f p = (*it)->get_pos();
-    (*it)->set_pos(Vector3f(p.x + static_cast<float>(offset.x),
-                            p.y + static_cast<float>(offset.y),
+    (*it)->set_pos(Vector3f(p.x + static_cast<float>(offset.x()),
+                            p.y + static_cast<float>(offset.y()),
                             p.z));
   }
   selection_changed(selection);

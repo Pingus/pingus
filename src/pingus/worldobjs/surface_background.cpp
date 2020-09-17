@@ -158,11 +158,11 @@ SurfaceBackground::draw (SceneContext& gc)
 
   Vector2i offset = gc.color().world_to_screen(Vector2i(0,0));
 
-  offset.x -= gc.color().get_rect().left();
-  offset.y -= gc.color().get_rect().top();
+  offset -= geom::ioffset(gc.color().get_rect().left(),
+                          gc.color().get_rect().top());
 
-  int start_x = static_cast<int>((static_cast<float>(offset.x) * para_x) + scroll_ox);
-  int start_y = static_cast<int>((static_cast<float>(offset.y) * para_y) + scroll_oy);
+  int start_x = static_cast<int>((static_cast<float>(offset.x()) * para_x) + scroll_ox);
+  int start_y = static_cast<int>((static_cast<float>(offset.y()) * para_y) + scroll_oy);
 
   if (start_x > 0)
     start_x = (start_x % bg_sprite.get_width()) - bg_sprite.get_width();
@@ -178,7 +178,7 @@ SurfaceBackground::draw (SceneContext& gc)
         x < world->get_width();
         x += bg_sprite.get_width())
     {
-      gc.color().draw(bg_sprite, Vector2i(x - offset.x, y - offset.y), pos.z);
+      gc.color().draw(bg_sprite, Vector2i(x - offset.x(), y - offset.y()), pos.z);
     }
   }
 }

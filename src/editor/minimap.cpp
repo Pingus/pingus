@@ -82,14 +82,14 @@ Minimap::draw(DrawingContext& gc)
     dc.draw_rect(r, color, (*i)->get_pos().z);
   }
 
-  Vector2f viewport_pos  = editor->get_viewport()->get_scroll_pos();
+  Vector2f viewport_pos(editor->get_viewport()->get_scroll_pos());
   Rect     viewport_rect = editor->get_viewport()->get_rect();
 
-  viewport_pos.x -= static_cast<float>(viewport_rect.width())  / 2;
-  viewport_pos.y -= static_cast<float>(viewport_rect.height()) / 2;
+  viewport_pos = viewport_pos - geom::foffset(static_cast<float>(viewport_rect.width())  / 2,
+                                              static_cast<float>(viewport_rect.height()) / 2);
 
-  Rect view(Vector2i(static_cast<int>(viewport_pos.x * static_cast<float>(minimap_rect.width())  / static_cast<float>(levelsize.width())),
-                     static_cast<int>(viewport_pos.y * static_cast<float>(minimap_rect.height()) / static_cast<float>(levelsize.height()))),
+  Rect view(Vector2i(static_cast<int>(viewport_pos.x() * static_cast<float>(minimap_rect.width())  / static_cast<float>(levelsize.width())),
+                     static_cast<int>(viewport_pos.y() * static_cast<float>(minimap_rect.height()) / static_cast<float>(levelsize.height()))),
             Size(viewport_rect.width()  * minimap_rect.width() / levelsize.width(),
                  viewport_rect.height() * minimap_rect.height() / levelsize.height()));
   dc.draw_fillrect(view, Color(255, 255, 0, 150), 1000000.0f);

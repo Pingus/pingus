@@ -42,8 +42,8 @@ MenuButton::MenuButton(PingusMenu* menu_,
   text = text_;
   desc  = desc_;
 
-  x_pos = pos_.x;
-  y_pos = pos_.y;
+  x_pos = pos_.x();
+  y_pos = pos_.y();
 
   font       = Fonts::pingus_small;
   font_large = Fonts::chalk_large;

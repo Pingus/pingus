@@ -74,16 +74,16 @@ Playfield::draw(DrawingContext& gc)
   // Draw the scrolling band
   if (mouse_scrolling && !globals::drag_drop_scrolling)
   {
-    gc.draw_line(mouse_pos, scroll_center - Vector2i(0, 15),
+    gc.draw_line(mouse_pos, scroll_center - geom::ioffset(0, 15),
                  Color(0, 255, 0));
 
-    gc.draw_line(mouse_pos, scroll_center + Vector2i(0, 15),
+    gc.draw_line(mouse_pos, scroll_center + geom::ioffset(0, 15),
                  Color(0, 0, 255));
 
-    gc.draw_line(mouse_pos, scroll_center + Vector2i(15, 0),
+    gc.draw_line(mouse_pos, scroll_center + geom::ioffset(15, 0),
                  Color(0, 255, 255));
 
-    gc.draw_line(mouse_pos, scroll_center - Vector2i(15, 0),
+    gc.draw_line(mouse_pos, scroll_center - geom::ioffset(15, 0),
                  Color(255, 255, 0));
 
     gc.draw_line(mouse_pos, scroll_center,
@@ -103,9 +103,9 @@ Playfield::current_pingu_find(const Vector2f& pos)
        pingu != server->get_world()->get_pingus()->end();
        ++pingu)
   {
-    if ((*pingu)->is_over(pos.x, pos.y))
+    if ((*pingu)->is_over(pos.x(), pos.y()))
     {
-      dist = (*pingu)->dist(pos.x, pos.y);
+      dist = (*pingu)->dist(pos.x(), pos.y());
 
       if (dist < min_dist)
       {
@@ -123,19 +123,19 @@ Playfield::update(float delta)
   // FIXME: This should be delta dependant
   if (!mouse_scrolling)
   {
-    current_pingu = current_pingu_find(state.screen2world(mouse_pos));
+    current_pingu = current_pingu_find(Vector2f(state.screen2world(mouse_pos)));
     capture_rectangle.set_pingu(current_pingu);
   }
   else
   {
     if (globals::drag_drop_scrolling)
     {
-      state.set_pos(old_state_pos + (scroll_center - mouse_pos));
+      state.set_pos(old_state_pos.as_vec() + (scroll_center.as_vec() - mouse_pos.as_vec()));
     }
     else
     {
-      state.set_pos(Vector2i(state.get_pos().x - static_cast<int>(static_cast<float>(scroll_center.x - mouse_pos.x) * 0.2f),
-                             state.get_pos().y - static_cast<int>(static_cast<float>(scroll_center.y - mouse_pos.y) * 0.2f)));
+      state.set_pos(Vector2i(state.get_pos().x() - static_cast<int>(static_cast<float>(scroll_center.x() - mouse_pos.x()) * 0.2f),
+                             state.get_pos().y() - static_cast<int>(static_cast<float>(scroll_center.y() - mouse_pos.y()) * 0.2f)));
     }
   }
 
@@ -143,22 +143,22 @@ Playfield::update(float delta)
   {
     scroll_speed = static_cast<int>(800 * delta);
 
-    if (mouse_pos.x < 10)
+    if (mouse_pos.x() < 10)
     {
-      state.set_pos(state.get_pos() - Vector2i(scroll_speed, 0));
+      state.set_pos(state.get_pos() - geom::ioffset(scroll_speed, 0));
     }
-    else if (mouse_pos.x > Display::get_width() - 10)
+    else if (mouse_pos.x() > Display::get_width() - 10)
     {
-      state.set_pos(state.get_pos() + Vector2i(scroll_speed, 0));
+      state.set_pos(state.get_pos() + geom::ioffset(scroll_speed, 0));
     }
 
-    if (mouse_pos.y < 10)
+    if (mouse_pos.y() < 10)
     {
-      state.set_pos(state.get_pos() - Vector2i(0, scroll_speed));
+      state.set_pos(state.get_pos() - geom::ioffset(0, scroll_speed));
     }
-    else if (mouse_pos.y > Display::get_height() - 10)
+    else if (mouse_pos.y() > Display::get_height() - 10)
     {
-      state.set_pos(state.get_pos() + Vector2i(0, scroll_speed));
+      state.set_pos(state.get_pos() + geom::ioffset(0, scroll_speed));
     }
   }
 }
@@ -172,7 +172,7 @@ Playfield::on_key_pressed(const Input::KeyboardEvent& ev)
     if (spawn)
     {
       Vector2i n = state.screen2world(mouse_pos);
-      Vector3f p(static_cast<float>(n.x), static_cast<float>(n.y), 0.0f);
+      Vector3f p(static_cast<float>(n.x()), static_cast<float>(n.y()), 0.0f);
       Pingu* pingu = server->get_world()->get_pingus()->create_pingu(p, 0);
       if (pingu)
       {
@@ -192,7 +192,7 @@ Playfield::on_primary_button_press(int x, int y)
 
   if (session)
   {
-    current_pingu = current_pingu_find(state.screen2world(Vector2i(x,y)));
+    current_pingu = current_pingu_find(Vector2f(state.screen2world(Vector2i(x,y))));
 
     if (current_pingu)
     {
@@ -208,8 +208,7 @@ Playfield::on_secondary_button_press(int x, int y)
   y -= rect.top();
 
   mouse_scrolling = true;
-  scroll_center.x = x;
-  scroll_center.y = y;
+  scroll_center = Vector2i(x, y);
 
   old_state_pos = state.get_pos();
 }
@@ -217,8 +216,8 @@ Playfield::on_secondary_button_press(int x, int y)
 void
 Playfield::on_secondary_button_release (int x, int y)
 {
-  x -= rect.left();
-  y -= rect.top();
+  // x -= rect.left();
+  // y -= rect.top();
 
   mouse_scrolling = false;
 }
@@ -230,8 +229,7 @@ Playfield::on_pointer_move (int x, int y)
   y -= rect.top();
 
   // FIXME: useless stuff, but currently the controller doesn't have a state
-  mouse_pos.x = x;
-  mouse_pos.y = y;
+  mouse_pos = Vector2i(x, y);
 
   if (globals::developer_mode)
   { // Some fun stuff that lets you draw directly on the level
@@ -241,16 +239,16 @@ Playfield::on_pointer_move (int x, int y)
       CollisionMask mask("other/bash_radius_gfx");
       Vector2i p = state.screen2world(mouse_pos);
       server->get_world()->remove(mask,
-                                  p.x - mask.get_width()/2,
-                                  p.y - mask.get_height()/2);
+                                  p.x() - mask.get_width()/2,
+                                  p.y() - mask.get_height()/2);
     }
     else if (keystate[SDL_SCANCODE_INSERT])
     {
       CollisionMask mask("other/bash_radius_gfx");
       Vector2i p = state.screen2world(mouse_pos);
       server->get_world()->put(mask,
-                               p.x - mask.get_width()/2,
-                               p.y - mask.get_height()/2,
+                               p.x() - mask.get_width()/2,
+                               p.y() - mask.get_height()/2,
                                Groundtype::GP_GROUND);
     }
     else if (keystate[SDL_SCANCODE_HOME])
@@ -258,8 +256,8 @@ Playfield::on_pointer_move (int x, int y)
       CollisionMask mask("other/bash_radius_gfx");
       Vector2i p = state.screen2world(mouse_pos);
       server->get_world()->put(mask,
-                               p.x - mask.get_width()/2,
-                               p.y - mask.get_height()/2,
+                               p.x() - mask.get_width()/2,
+                               p.y() - mask.get_height()/2,
                                Groundtype::GP_BRIDGE);
     }
   }
@@ -268,8 +266,8 @@ Playfield::on_pointer_move (int x, int y)
 Vector2i
 Playfield::get_pos() const
 {
-  return Vector2i(state.get_pos().x,
-                  state.get_pos().y);
+  return Vector2i(state.get_pos().x(),
+                  state.get_pos().y());
 }
 
 void
@@ -281,7 +279,7 @@ Playfield::set_viewpoint(int x, int y)
 void
 Playfield::scroll (int x, int y)
 {
-  state.set_pos(state.get_pos() + Vector2i(x, y));
+  state.set_pos(state.get_pos() + geom::ioffset(x, y));
 }
 
 void

@@ -100,7 +100,8 @@ Worldmap::draw(DrawingContext& gc)
     min = width - gc.get_width()/2;
     max = gc.get_width()/2;
   }
-  pingu_pos.x = Math::clamp(min, pingu_pos.x, max);
+  pingu_pos = Vector2i(Math::clamp(min, pingu_pos.x(), max),
+                       pingu_pos.y());
 
   if (height >= gc.get_height())
   {
@@ -112,10 +113,12 @@ Worldmap::draw(DrawingContext& gc)
     min = height - gc.get_height()/2;
     max = gc.get_height()/2;
   }
-  pingu_pos.y = Math::clamp(min, pingu_pos.y, max);
+
+  pingu_pos = Vector2i(pingu_pos.x(),
+                       Math::clamp(min, pingu_pos.y(), max));
 
   gc_state.set_size(gc.get_width(), gc.get_height());
-  gc_state.set_pos(Vector2i(pingu_pos.x, pingu_pos.y));
+  gc_state.set_pos(Vector2i(pingu_pos.x(), pingu_pos.y()));
 
   gc_state.push(gc);
 
@@ -124,8 +127,8 @@ Worldmap::draw(DrawingContext& gc)
     (*i)->draw(gc);
   }
 
-  Vector2f mpos = gc_state.screen2world(Vector2i(mouse_x, mouse_y));
-  Dot* dot = path_graph->get_dot(mpos.x, mpos.y);
+  Vector2f mpos = Vector2f(gc_state.screen2world(Vector2i(mouse_x, mouse_y)));
+  Dot* dot = path_graph->get_dot(mpos.x(), mpos.y());
   if (dot)
     dot->draw_hover(gc);
 
@@ -164,7 +167,7 @@ Worldmap::on_pointer_move(int x, int y)
 void
 Worldmap::on_primary_button_press(int x, int y)
 {
-  Vector2f click_pos = gc_state.screen2world(Vector2i(x, y));
+  Vector2f click_pos = Vector2f(gc_state.screen2world(Vector2i(x, y)));
 
   if (globals::developer_mode)
   {
@@ -180,7 +183,7 @@ Worldmap::on_primary_button_press(int x, int y)
     std::cout << std::endl;
   }
 
-  Dot* dot = path_graph->get_dot(click_pos.x, click_pos.y);
+  Dot* dot = path_graph->get_dot(click_pos.x(), click_pos.y());
   if (dot)
   {
     if (globals::developer_mode)
