@@ -16,7 +16,7 @@
 
 #include "pingus/mover.hpp"
 
-Mover::Mover(const World* world_arg, const Vector3f& pos_arg)
+Mover::Mover(const World* world_arg, const Vector2f& pos_arg)
   : world(world_arg),
     pos(pos_arg),
     collision(false)
@@ -27,7 +27,7 @@ Mover::~Mover ()
 {
 }
 
-Vector3f Mover::get_pos() const
+Vector2f Mover::get_pos() const
 {
   return pos;
 }

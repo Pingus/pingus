@@ -6,7 +6,7 @@
 #include "engine/display/surface.hpp"
 #include "math/color.hpp"
 #include "math/size.hpp"
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/pingus_level.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/resource.hpp"

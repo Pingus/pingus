@@ -64,7 +64,7 @@ ServerEvent::ServerEvent(const ReaderObject& reader_object) :
 
     std::string raw_x;
     std::string raw_y;
-    pos = Vector3f(reader.read_string("raw-x", raw_x) ? Math::string2float(raw_x) : 0.0f,
+    pos = Vector2f(reader.read_string("raw-x", raw_x) ? Math::string2float(raw_x) : 0.0f,
                    reader.read_string("raw-y", raw_y) ? Math::string2float(raw_y) : 0.0f);
 
     reader.read_enum("action", pingu_action, &ActionName::from_string);
@@ -131,7 +131,7 @@ ServerEvent::make_armageddon_event(int t)
 }
 
 ServerEvent
-ServerEvent::make_pingu_action_event(int t, unsigned int id, const Vector3f& pos, ActionName::Enum action)
+ServerEvent::make_pingu_action_event(int t, unsigned int id, const Vector2f& pos, ActionName::Enum action)
 {
   ServerEvent event;
   event.type         = PINGU_ACTION_EVENT;

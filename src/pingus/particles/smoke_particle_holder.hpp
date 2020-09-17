@@ -20,7 +20,7 @@
 #include <vector>
 
 #include "engine/display/sprite.hpp"
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/worldobj.hpp"
 
 class SceneContext;
@@ -33,7 +33,7 @@ class SmokeParticleHolder : public WorldObj
     int    time;
     int    livetime;
     bool   use_surf2;
-    Vector3f pos;
+    Vector2f pos;
     glm::vec2 velocity;
 
     SmokeParticle(float x, float y, float vel_x, float vel_y);
@@ -52,8 +52,8 @@ public:
 
   void set_z_index(float z_index) override {}
   float z_index () const override { return 1000.0f; }
-  void set_pos(const Vector3f& p) override {}
-  Vector3f get_pos() const override { return Vector3f(); }
+  void set_pos(const Vector2f& p) override {}
+  Vector2f get_pos() const override { return Vector2f(); }
 
   /// Let the particle move
   void update () override;

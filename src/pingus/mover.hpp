@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_MOVER_HPP
 #define HEADER_PINGUS_PINGUS_MOVER_HPP
 
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 
 class Collider;
 class World;
@@ -26,7 +26,7 @@ class Mover
 {
 public:
   /** Constructor of abstract class */
-  Mover(const World* world_arg, const Vector3f& pos_arg);
+  Mover(const World* world_arg, const Vector2f& pos_arg);
 
   /** Destructor of abstract class */
   virtual ~Mover() = 0;
@@ -35,7 +35,7 @@ public:
   virtual void update(glm::vec2 const& move, const Collider& collider) = 0;
 
   /** Get the resulting position vector */
-  Vector3f get_pos() const;
+  Vector2f get_pos() const;
 
   /** Get whether object stopped moving because it collided with something */
   bool collided() const;
@@ -45,7 +45,7 @@ protected:
   const World* world;
 
   /** Position of the object to move */
-  Vector3f pos;
+  Vector2f pos;
 
   /** Flag to denote whether object has had a collision */
   bool collision;

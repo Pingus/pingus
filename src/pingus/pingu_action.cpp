@@ -40,7 +40,7 @@ PinguAction::need_catch ()
   return false;
 }
 
-Vector3f
+Vector2f
 PinguAction::get_center_pos() const
 {
   return pingu->get_pos() + geom::foffset(0, -16);
@@ -104,10 +104,10 @@ PinguAction::move_with_forces ()
   pingu->set_velocity(pingu->get_velocity() + glm::vec2(0.0f, 1.0f));
 
 #if 0 // New Code
-  Vector3f pos        = pingu->get_pos();
-  Vector3f target_pos = pos + pingu->get_velocity();
-  Vector3f dir        = target_pos - pingu->get_pos();
-  Vector3f velocity   = pingu->get_velocity();
+  Vector2f pos        = pingu->get_pos();
+  Vector2f target_pos = pos + pingu->get_velocity();
+  Vector2f dir        = target_pos - pingu->get_pos();
+  Vector2f velocity   = pingu->get_velocity();
 
   float length = dir.length();
   dir.normalize();
@@ -130,7 +130,7 @@ PinguAction::move_with_forces ()
       else
       {
         // Make it so that the Pingu won't go down any further.
-        pingu->set_velocity(Vector3f(0, 0));
+        pingu->set_velocity(Vector2f(0, 0));
         return;
       }
     }

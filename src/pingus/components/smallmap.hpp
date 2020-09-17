@@ -19,7 +19,7 @@
 
 #include "engine/display/sprite.hpp"
 #include "engine/gui/rect_component.hpp"
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 
 class Playfield;
 class Server;
@@ -73,7 +73,7 @@ public:
       @param sprite the Sprite to draw, it will keep its original size
       @param pos the position to draw it in World COs, it will get
       recalculated to screen CO */
-  void draw_sprite(const Sprite& sprite, const Vector3f& pos);
+  void draw_sprite(const Sprite& sprite, const Vector2f& pos);
 
 private:
   SmallMap (const SmallMap&);

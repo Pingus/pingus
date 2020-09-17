@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_SERVER_EVENT_HPP
 #define HEADER_PINGUS_PINGUS_SERVER_EVENT_HPP
 
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/action_name.hpp"
 
 class ReaderMapping;
@@ -47,7 +47,7 @@ public:
   /** Id of the pingu which should get the actions */
   unsigned int pingu_id;
 
-  Vector3f pos;
+  Vector2f pos;
 
   /** action name */
   ActionName::Enum pingu_action;
@@ -78,7 +78,7 @@ public:
 
   /** The pingu action event is triggered whenever the user applies an
       action to a Pingu */
-  static ServerEvent make_pingu_action_event(int t, unsigned int id, const Vector3f& pos, ActionName::Enum action);
+  static ServerEvent make_pingu_action_event(int t, unsigned int id, const Vector2f& pos, ActionName::Enum action);
 };
 
 #endif

@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDOBJS_LIQUID_HPP
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_LIQUID_HPP
 
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/worldobj.hpp"
 
@@ -32,7 +32,7 @@ class Liquid : public WorldObj
 private:
   Sprite sur;
 
-  Vector3f pos;
+  Vector2f pos;
   float m_z_index;
 
   /** Cause to interpret the width in pixels instead of tiles */
@@ -45,8 +45,8 @@ public:
 
   float z_index () const override;
   void set_z_index(float z_index) override { m_z_index = z_index; }
-  void set_pos(const Vector3f& p) override { pos = p; }
-  Vector3f get_pos() const override { return pos; }
+  void set_pos(const Vector2f& p) override { pos = p; }
+  Vector2f get_pos() const override { return pos; }
 
   void  on_startup() override;
   void  draw(SceneContext& gc) override;

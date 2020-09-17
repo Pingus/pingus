@@ -41,7 +41,7 @@ public:
   char get_persistent_char () override { return 'c'; }
   bool change_allowed(ActionName::Enum new_action) override;
 
-  Vector3f get_center_pos() const override;
+  Vector2f get_center_pos() const override;
 
 private:
   Climber (const Climber&);

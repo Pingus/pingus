@@ -52,7 +52,7 @@ SpriteDrawable::draw(DrawingContext& gc)
   {
     if (auto_uncover)
     {
-      Vector3f pingus_pos = Worldmap::current()->get_pingus()->get_pos();
+      Vector2f pingus_pos = Worldmap::current()->get_pingus()->get_pos();
       float pingus_z_index = Worldmap::current()->get_pingus()->z_index();
 
       // Pingu is not over the surface

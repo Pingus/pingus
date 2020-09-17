@@ -20,7 +20,7 @@
 #include <map>
 #include <vector>
 
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/worldmap/graph.hpp"
 #include "pingus/worldmap/path.hpp"
 #include "pingus/worldmap/pathfinder.hpp"

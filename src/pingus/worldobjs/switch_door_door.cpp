@@ -63,7 +63,7 @@ SwitchDoorDoor::draw(SceneContext& gc)
 {
   gc.color().draw (door_box, door_pos);
   for (int i = 0; i < current_door_height; ++i)
-    gc.color().draw(door_tile, Vector3f(door_pos.x(),
+    gc.color().draw(door_tile, Vector2f(door_pos.x(),
                                         door_pos.y() + static_cast<float>(i * door_tile.get_height() + door_box.get_height())));
 }
 

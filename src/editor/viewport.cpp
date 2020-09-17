@@ -222,7 +222,7 @@ Viewport::on_pointer_move(int x_, int y_)
 
         for (auto it = selection.begin(); it != selection.end(); ++it)
         {
-          Vector3f orig_pos((*it)->get_orig_pos());
+          Vector2f orig_pos((*it)->get_orig_pos());
           float x_offset = static_cast<float>(mouse_world_pos.x() - drag_world_pos.x());
           float y_offset = static_cast<float>(mouse_world_pos.y() - drag_world_pos.y());
 
@@ -237,7 +237,7 @@ Viewport::on_pointer_move(int x_, int y_)
             new_x = x_offset + orig_pos.x();
             new_y = y_offset + orig_pos.y();
           }
-          (*it)->set_pos(Vector3f(new_x, new_y));
+          (*it)->set_pos(Vector2f(new_x, new_y));
         }
         selection_changed(selection);
       }
@@ -787,8 +787,8 @@ Viewport::move_objects(const Vector2i& offset)
 {
   for (auto it = selection.begin(); it != selection.end(); ++it)
   {
-    Vector3f p = (*it)->get_pos();
-    (*it)->set_pos(Vector3f(p.x() + static_cast<float>(offset.x()),
+    Vector2f p = (*it)->get_pos();
+    (*it)->set_pos(Vector2f(p.x() + static_cast<float>(offset.x()),
                             p.y() + static_cast<float>(offset.y())));
   }
   selection_changed(selection);

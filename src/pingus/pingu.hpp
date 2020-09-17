@@ -20,7 +20,7 @@
 #include <memory>
 #include <glm/glm.hpp>
 
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/direction.hpp"
 #include "pingus/action_name.hpp"
 
@@ -94,7 +94,7 @@ public:
       @param arg_id The uniq id of the pingu
       @param pos The start position of the pingu
       @param owner The owner id of the pingu (used for multiplayer) */
-  Pingu(unsigned int arg_id, const Vector3f& pos, int owner);
+  Pingu(unsigned int arg_id, const Vector2f& pos, int owner);
 
   /** Destruct the pingu... */
   ~Pingu ();
@@ -102,11 +102,11 @@ public:
   /** Return the logical pingus position, this is the position which
       is used for collision detection to the ground (the pingus
       feet) */
-  Vector3f get_pos () const;
+  Vector2f get_pos () const;
 
   /** Returns the visible position of the pingu, the graphical center
       of the pingu. */
-  Vector3f get_center_pos () const;
+  Vector2f get_center_pos () const;
 
   /** Returns the x position of the pingu
    * For backward comp. only
@@ -145,7 +145,7 @@ public:
   void set_y (float y);
 
   /// Set the pingu to the given coordinates
-  void set_pos (const Vector3f& arg_pos);
+  void set_pos (const Vector2f& arg_pos);
 
   glm::vec2 get_velocity () const { return velocity; }
   void set_velocity (glm::vec2 const& velocity_);

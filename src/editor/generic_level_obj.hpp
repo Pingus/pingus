@@ -36,10 +36,10 @@ protected:
   ResDescriptor desc;
 
   /** Location of this object in the World */
-  Vector3f pos;
+  Vector2f pos;
 
   /** Location of this object before moving it around */
-  Vector3f orig_pos;
+  Vector2f orig_pos;
 
   /** Objects position in the drawing order stack */
   float m_z_index;
@@ -113,8 +113,8 @@ protected:
   /// Retrieve info
 public:
   /** Retrieve the object's position */
-  Vector3f get_pos() const override { return pos; }
-  Vector3f get_orig_pos() const override { return orig_pos; }
+  Vector2f get_pos() const override { return pos; }
+  Vector2f get_orig_pos() const override { return orig_pos; }
 
   /** Retrieve this object's attribute number */
   unsigned int get_attribs() const override { return attribs; }
@@ -188,7 +188,7 @@ public:
   ~GenericLevelObj() override { }
 
   /** Set the object's position */
-  void set_pos(const Vector3f& p) override;
+  void set_pos(const Vector2f& p) override;
 
   float z_index() const override;
   void set_z_index(float z_index) override;
@@ -200,7 +200,7 @@ public:
   float get_pos_y() const override;
 
   /** Original position of the objects before being dragged around */
-  void set_orig_pos(const Vector3f& p) override { orig_pos = p; }
+  void set_orig_pos(const Vector2f& p) override { orig_pos = p; }
 
   /** Set the object's resource name */
   void set_res_desc(const ResDescriptor& d) override;

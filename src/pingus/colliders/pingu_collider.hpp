@@ -32,7 +32,7 @@ public:
 
   /** Find out if a Pingu at the specified position is colliding with
       something */
-  bool operator() (const World* world, const Vector3f& current_pos,
+  bool operator() (const World* world, const Vector2f& current_pos,
                    const glm::vec2& step_vector) const override;
 
 private:

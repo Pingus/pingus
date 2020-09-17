@@ -172,7 +172,7 @@ Playfield::on_key_pressed(const Input::KeyboardEvent& ev)
     if (spawn)
     {
       Vector2i n = state.screen2world(mouse_pos);
-      Vector3f p(static_cast<float>(n.x()), static_cast<float>(n.y()));
+      Vector2f p(static_cast<float>(n.x()), static_cast<float>(n.y()));
       Pingu* pingu = server->get_world()->get_pingus()->create_pingu(p, 0);
       if (pingu)
       {

@@ -18,7 +18,7 @@
 
 #include "math/color.hpp"
 #include "math/rect.hpp"
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "util/reader.hpp"
 #include "util/reader_impl.hpp"
@@ -167,7 +167,7 @@ JsonReaderMappingImpl::read_string(const char* key, std::string& value) const
 }
 
 bool
-JsonReaderMappingImpl::read_vectors(const char* key, std::vector<Vector3f>& values,
+JsonReaderMappingImpl::read_vectors(const char* key, std::vector<Vector2f>& values,
                                     std::vector<float>& z_indexes) const
 {
   const Json::Value& element = m_json[key];
@@ -196,12 +196,12 @@ JsonReaderMappingImpl::read_vectors(const char* key, std::vector<Vector3f>& valu
 }
 
 bool
-JsonReaderMappingImpl::read_vector(const char* key, Vector3f& value, float& z_index) const
+JsonReaderMappingImpl::read_vector(const char* key, Vector2f& value, float& z_index) const
 {
   const Json::Value& element = m_json[key];
   if (element.isArray() && element.size() >= 3)
   {
-    value = Vector3f(element[0u].asFloat(),
+    value = Vector2f(element[0u].asFloat(),
                      element[1u].asFloat());
     z_index = element[2u].asFloat();
     return true;

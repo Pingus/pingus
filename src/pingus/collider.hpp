@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_PINGUS_COLLIDER_HPP
 
 #include <glm/glm.hpp>
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 
 class World;
 
@@ -32,13 +32,13 @@ public:
   virtual ~Collider() = 0;
 
   /** Find out if object will collide with something */
-  virtual bool operator() (const World* world, const Vector3f& current_pos,
+  virtual bool operator() (const World* world, const Vector2f& current_pos,
                            glm::vec2 const& step_vector) const = 0;
 
 protected:
   /** Get the Collision Map pixel at the specified position in the specified
       world */
-  int getpixel(const World* world, const Vector3f& pos) const;
+  int getpixel(const World* world, const Vector2f& pos) const;
 };
 
 #endif

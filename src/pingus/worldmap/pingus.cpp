@@ -213,7 +213,7 @@ Pingus::walk_to_node (NodeId target)
   }
 }
 
-Vector3f
+Vector2f
 Pingus::calc_pos ()
 {
   if (current_node != NoNode) // pingu stands still

@@ -23,7 +23,7 @@
 #include "math/color.hpp"
 #include "math/size.hpp"
 #include "math/vector2i.hpp"
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "util/pathname.hpp"
 
 JsonWriterImpl::JsonWriterImpl(std::ostream& out) :
@@ -167,7 +167,7 @@ JsonWriterImpl::write_string(const char* name, const std::string& value)
 }
 
 void
-JsonWriterImpl::write_vector(const char* name, const Vector3f& value, float z_index)
+JsonWriterImpl::write_vector(const char* name, const Vector2f& value, float z_index)
 {
   assert(!m_stack.empty());
   assert(m_stack.back().get().type() == Json::objectValue);

@@ -91,13 +91,13 @@ SmallMap::update (float delta)
 }
 
 void
-SmallMap::draw_sprite(const Sprite& sprite, const Vector3f& pos)
+SmallMap::draw_sprite(const Sprite& sprite, const Vector2f& pos)
 {
   World* world = server->get_world();
   float x = static_cast<float>(rect.left()) + (pos.x() * static_cast<float>(rect.width())  / static_cast<float>(world->get_width()));
   float y = static_cast<float>(rect.top())  + (pos.y() * static_cast<float>(rect.height()) / static_cast<float>(world->get_height()));
 
-  gc_ptr->draw(sprite, Vector3f(x, y));
+  gc_ptr->draw(sprite, Vector2f(x, y));
 }
 
 bool

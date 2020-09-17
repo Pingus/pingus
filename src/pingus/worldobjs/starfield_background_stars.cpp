@@ -65,7 +65,7 @@ StarfieldBackgroundStars::update ()
 void
 StarfieldBackgroundStars::draw (SceneContext& gc)
 {
-  gc.color().draw(sur, Vector3f (x_pos, y_pos));
+  gc.color().draw(sur, Vector2f (x_pos, y_pos));
 }
 
 } // namespace WorldObjs

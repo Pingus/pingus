@@ -20,7 +20,7 @@
 #include <string>
 
 #include <geom/fwd.hpp>
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 
 class Color;
 class Pathname;
@@ -48,7 +48,7 @@ public:
   virtual void write_colori (const char* name, const Color&) = 0;
   virtual void write_bool   (const char* name, bool) = 0;
   virtual void write_string (const char* name, const std::string&) = 0;
-  virtual void write_vector (const char* name, const Vector3f&, float) = 0;
+  virtual void write_vector (const char* name, const Vector2f&, float) = 0;
   virtual void write_size   (const char* name, const geom::isize&) = 0;
   virtual void write_vector2i(const char* name, const geom::ipoint&) = 0;
   virtual void write_path   (const char* name, const Pathname&) = 0;

@@ -106,7 +106,7 @@ PathGraph::parse_edges(const ReaderCollection& collection)
       auto path = util::make_unique<Path>();
       auto path2 = util::make_unique<Path>();
 
-      std::vector<Vector3f> positions;
+      std::vector<Vector2f> positions;
       std::vector<float> z_indexes;
       if (reader.read_vectors("positions", positions, z_indexes))
       {

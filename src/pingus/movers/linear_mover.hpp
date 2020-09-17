@@ -27,7 +27,7 @@ class LinearMover : public Mover
 {
 public:
   /** Constructor */
-  LinearMover(World const* world_arg, const Vector3f& pos_arg);
+  LinearMover(World const* world_arg, const Vector2f& pos_arg);
 
   /** Destructor */
   ~LinearMover() override;

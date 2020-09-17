@@ -16,7 +16,7 @@
 
 #include "pingus/collider.hpp"
 
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/collision_map.hpp"
 #include "pingus/world.hpp"
 
@@ -28,13 +28,13 @@ Collider::~Collider()
 {
 }
 
-bool Collider::operator() (const World* world, const Vector3f& current_pos,
+bool Collider::operator() (const World* world, const Vector2f& current_pos,
                             glm::vec2 const& step_vector) const
 {
   return false;
 }
 
-int Collider::getpixel(const World* world, const Vector3f& pos) const
+int Collider::getpixel(const World* world, const Vector2f& pos) const
 {
   return world->get_colmap()->getpixel(static_cast<int>(pos.x()),
                                        static_cast<int>(pos.y()));

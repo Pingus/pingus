@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_PINGUS_WORLDOBJ_HPP
 
 #include "engine/display/sprite.hpp"
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "util/reader.hpp"
 
 class ReaderMapping;
@@ -64,8 +64,8 @@ public:
   virtual float z_index() const =0;
   virtual void set_z_index(float z_index) =0;
 
-  virtual void set_pos(const Vector3f& p) = 0;
-  virtual Vector3f get_pos() const = 0;
+  virtual void set_pos(const Vector2f& p) = 0;
+  virtual Vector2f get_pos() const = 0;
 
   /** Draw the WorldObj to the given SceneContext */
   virtual void draw(SceneContext& gc) = 0;

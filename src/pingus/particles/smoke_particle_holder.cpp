@@ -63,7 +63,7 @@ SmokeParticleHolder::update ()
     if (!it->livetime)
       continue;
 
-    it->pos = Vector3f(it->pos.as_vec() + it->velocity);
+    it->pos = Vector2f(it->pos.as_vec() + it->velocity);
 
     --it->livetime;
   }

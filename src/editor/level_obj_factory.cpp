@@ -50,7 +50,7 @@ LevelObjFactory::create(const ReaderObject& reader_object)
     std::string name;
     reader.read_string("name", name);
 
-    Vector3f p;
+    Vector2f p;
     float z_index = 0.0f;
     reader.read_vector("position", p, z_index);
 
@@ -76,7 +76,7 @@ LevelObjFactory::create(const ReaderObject& reader_object)
   {
     // Temporary objects
     unsigned attribs;
-    Vector3f p;
+    Vector2f p;
     float z_index = 0.0f;
     Color    tmp_color;
     ResDescriptor desc;
@@ -94,7 +94,7 @@ LevelObjFactory::create(const ReaderObject& reader_object)
     if (!reader.read_vector("position", p, z_index))
     { // Workaround for lack of position for background
       if (reader_object.get_name() == "surface-background") {
-        p = Vector3f(0.f, 0.f);
+        p = Vector2f(0.f, 0.f);
         z_index = -150.f;
       }
     }

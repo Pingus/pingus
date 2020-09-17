@@ -21,7 +21,7 @@
 #include "engine/display/sprite.hpp"
 #include "math/color.hpp"
 #include "math/rect.hpp"
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "util/writer.hpp"
 
@@ -58,8 +58,8 @@ private:
 
 public:
   /** Retrieve the object's position */
-  virtual Vector3f get_pos() const = 0;
-  virtual Vector3f get_orig_pos() const = 0;
+  virtual Vector2f get_pos() const = 0;
+  virtual Vector2f get_orig_pos() const = 0;
 
   /** Retrieve this object's attribute number */
   virtual unsigned int get_attribs() const = 0;
@@ -137,7 +137,7 @@ public:
   virtual ~LevelObj() { }
 
   /** Set the object's position */
-  virtual void set_pos(const Vector3f& p) = 0;
+  virtual void set_pos(const Vector2f& p) = 0;
 
   virtual float z_index() const = 0;
   virtual void set_z_index(float z_index) = 0;
@@ -149,7 +149,7 @@ public:
   virtual float get_pos_y() const = 0;
 
   /** Original position of the objects before being dragged around */
-  virtual void set_orig_pos(const Vector3f& p) = 0;
+  virtual void set_orig_pos(const Vector2f& p) = 0;
 
   /** Set the object's resource name */
   virtual void set_res_desc(const ResDescriptor& d) = 0;

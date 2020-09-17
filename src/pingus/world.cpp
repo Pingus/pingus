@@ -243,11 +243,11 @@ World::get_gfx_map() const
 }
 
 void
-World::play_sound(const std::string& name, const Vector3f& pos, float volume)
+World::play_sound(const std::string& name, const Vector2f& pos, float volume)
 {
   // FIXME: Stereo is for the moment disabled
   /*
-    Vector3f center = view->get_center();
+    Vector2f center = view->get_center();
     float panning = pos.x - center.x;
     panning /= view->get_width()/2;
 
@@ -263,7 +263,7 @@ World::play_sound(const std::string& name, const Vector3f& pos, float volume)
 }
 
 Pingu*
-World::get_pingu (const Vector3f& pos)
+World::get_pingu (const Vector2f& pos)
 {
   Pingu* current_pingu = nullptr;
   float distance = -1.0;

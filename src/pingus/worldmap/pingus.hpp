@@ -68,12 +68,12 @@ private:
   float edge_path_position;
 
   /** Current position of the pingu, only for caching purpose */
-  Vector3f pos;
+  Vector2f pos;
   float m_z_index;
 
   /** The position the pingu had before his current position, used to
       calculate its current direction */
-  Vector3f last_pos;
+  Vector2f last_pos;
 
 public:
   Pingus (PathGraph* arg_path);
@@ -97,7 +97,7 @@ public:
   void set_position (NodeId node);
 
   /** return the current position in world coordinates */
-  Vector3f get_pos() const { return pos; }
+  Vector2f get_pos() const { return pos; }
   float z_index() const { return m_z_index; }
 
 private:
@@ -106,7 +106,7 @@ private:
   float get_direction() const;
 
   /** calculate the position of the pingu */
-  Vector3f calc_pos ();
+  Vector2f calc_pos ();
 
   void  update_walk (float delta);
 
@@ -114,7 +114,7 @@ private:
 
   float calc_edge_path_length();
 
-  Vector3f interpolate(const Vector3f& a, const Vector3f& b, float perc);
+  Vector2f interpolate(const Vector2f& a, const Vector2f& b, float perc);
 
   Pingus (const Pingus&);
   Pingus& operator= (const Pingus&);

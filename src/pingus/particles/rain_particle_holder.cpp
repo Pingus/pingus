@@ -116,7 +116,7 @@ RainParticleHolder::draw (SceneContext& gc)
     if (it->splash)
     {
       rain_splash.set_frame(static_cast<int>(it->splash_frame));
-      gc.color().draw(rain_splash, Vector3f(it->pos));
+      gc.color().draw(rain_splash, Vector2f(it->pos));
     }
     else
       if (it->use_rain2_surf)

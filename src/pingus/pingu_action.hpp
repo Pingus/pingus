@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_PINGU_ACTION_HPP
 #define HEADER_PINGUS_PINGUS_PINGU_ACTION_HPP
 
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/action_name.hpp"
 
 class ActionHolder;
@@ -67,7 +67,7 @@ public:
   /** Draws the action */
   virtual void draw (SceneContext& gc) =0;
 
-  virtual Vector3f get_center_pos() const;
+  virtual Vector2f get_center_pos() const;
 
   /** The name of the action, this is used in the CaputreRectangle, so
       it can contain more than just the name */

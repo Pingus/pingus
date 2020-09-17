@@ -69,12 +69,12 @@ Bridger::draw(SceneContext& gc)
   switch (mode)
   {
     case B_BUILDING:
-      gc.color().draw(build_sprite[pingu->direction], Vector3f(pingu->get_pos().x() - static_cast<float>(x_offset * pingu->direction),
+      gc.color().draw(build_sprite[pingu->direction], Vector2f(pingu->get_pos().x() - static_cast<float>(x_offset * pingu->direction),
                                                                pingu->get_pos().y() + static_cast<float>(y_offset)));
       break;
 
     case B_WALKING:
-      gc.color().draw(walk_sprite[pingu->direction], Vector3f(pingu->get_pos().x() - static_cast<float>(x_offset * pingu->direction),
+      gc.color().draw(walk_sprite[pingu->direction], Vector2f(pingu->get_pos().x() - static_cast<float>(x_offset * pingu->direction),
                                                               pingu->get_pos().y() + static_cast<float>(y_offset)));
       break;
   }

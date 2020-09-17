@@ -154,7 +154,7 @@ PinguParticleHolder::draw (SceneContext& gc)
     if (!it->livetime)
       continue;
 
-    gc.color().draw(surface, Vector3f(it->pos));
+    gc.color().draw(surface, Vector2f(it->pos));
   }
 }
 

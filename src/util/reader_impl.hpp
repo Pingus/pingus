@@ -23,7 +23,7 @@
 #include <geom/fwd.hpp>
 
 #include "math/rect.hpp"
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 
 class Color;
 
@@ -60,8 +60,8 @@ public:
   virtual bool read_float(const char* key, float&) const = 0;
   virtual bool read_bool(const char* key, bool&) const = 0;
   virtual bool read_string(const char* key, std::string&) const = 0;
-  virtual bool read_vector(const char* key, Vector3f&, float& z_index) const = 0;
-  virtual bool read_vectors(const char* key, std::vector<Vector3f>&, std::vector<float>& ) const = 0;
+  virtual bool read_vector(const char* key, Vector2f&, float& z_index) const = 0;
+  virtual bool read_vectors(const char* key, std::vector<Vector2f>&, std::vector<float>& ) const = 0;
   virtual bool read_size(const char* key, geom::isize&) const = 0;
   virtual bool read_vector2i(const char* key, Vector2i&) const = 0;
   virtual bool read_rect(const char* key, Rect&) const = 0;

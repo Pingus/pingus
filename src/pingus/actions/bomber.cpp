@@ -47,7 +47,7 @@ Bomber::draw (SceneContext& gc)
 {
   if (sprite[pingu->direction].get_current_frame() >= 13 && !gfx_exploded)
   {
-    gc.color().draw (explo_surf, Vector3f(pingu->get_x () - 32, pingu->get_y () - 48));
+    gc.color().draw (explo_surf, Vector2f(pingu->get_x () - 32, pingu->get_y () - 48));
     gfx_exploded = true;
   }
 

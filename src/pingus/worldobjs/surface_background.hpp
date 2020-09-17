@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDOBJS_SURFACE_BACKGROUND_HPP
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_SURFACE_BACKGROUND_HPP
 
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "math/color.hpp"
 #include "pingus/worldobj.hpp"
 
@@ -34,7 +34,7 @@ private:
   float para_y;
 
   /** Position of the background, only the z_pos is really used. */
-  Vector3f pos;
+  Vector2f pos;
   float m_z_index;
 
   /** The amount of pixel the background is scrolled each frame in x
@@ -73,8 +73,8 @@ public:
 
   float z_index() const override;
   void set_z_index(float z_index) override { m_z_index = z_index; }
-  void set_pos(const Vector3f& p) override { }
-  Vector3f get_pos() const override { return Vector3f(); }
+  void set_pos(const Vector2f& p) override { }
+  Vector2f get_pos() const override { return Vector2f(); }
 
   void update() override;
   void draw(SceneContext& gc) override;

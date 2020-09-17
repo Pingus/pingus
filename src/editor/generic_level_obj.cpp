@@ -31,7 +31,7 @@ GenericLevelObj::GenericLevelObj(const std::string& obj_name) :
   sprite(),
   surface(),
   desc(),
-  pos(Vector3f(0,0)),
+  pos(Vector2f(0,0)),
   orig_pos(),
   m_z_index(0.0f),
   section_name(obj_name),
@@ -174,7 +174,7 @@ GenericLevelObj::draw(DrawingContext &gc)
     {
       for(int x = static_cast<int>(pos.x()); x < static_cast<int>(pos.x()) + sprite.get_width() * repeat; x += sprite.get_width())
       {
-        gc.draw(sprite, Vector3f(static_cast<float>(x), pos.y()), m_z_index);
+        gc.draw(sprite, Vector2f(static_cast<float>(x), pos.y()), m_z_index);
       }
     }
 #if 0
@@ -183,7 +183,7 @@ GenericLevelObj::draw(DrawingContext &gc)
       // Surface Background - tile it
       for (int x = 0; x < level->size.width; x += sprite.get_width())
         for (int y = 0; y < level->size.height; y += sprite.get_height())
-          gc.draw(sprite, Vector3f((float)x, (float)y, m_z_index));
+          gc.draw(sprite, Vector2f((float)x, (float)y, m_z_index));
     }
 #endif
     else if (attribs & HAS_COLOR && section_name == "solidcolor-background")
@@ -468,7 +468,7 @@ GenericLevelObj::load_generic_surface()
 }
 
 void
-GenericLevelObj::set_pos(const Vector3f& p)
+GenericLevelObj::set_pos(const Vector2f& p)
 {
   pos = p;
 }
@@ -488,7 +488,7 @@ GenericLevelObj::z_index() const
 void
 GenericLevelObj::set_pos_x(float x)
 {
-  pos = Vector3f(x, pos.y());
+  pos = Vector2f(x, pos.y());
 }
 
 float
@@ -500,7 +500,7 @@ GenericLevelObj::get_pos_x() const
 void
 GenericLevelObj::set_pos_y(float y)
 {
-  pos = Vector3f(pos.x(), y);
+  pos = Vector2f(pos.x(), y);
 }
 
 float

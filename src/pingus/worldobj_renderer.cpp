@@ -17,7 +17,7 @@
 #include "pingus/worldobj_renderer.hpp"
 
 #include "pingus/prefab_file.hpp"
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "util/log.hpp"
 
 WorldObjRenderer::WorldObjRenderer() :
@@ -96,7 +96,7 @@ WorldObjRenderer::get_clip_rect() const
 
 void
 WorldObjRenderer::render_sprite(const ResDescriptor& desc,
-                                const Vector3f& pos,
+                                const Vector2f& pos,
                                 float z_index)
 {
   Surface surface = Resource::load_surface(desc);
@@ -109,7 +109,7 @@ WorldObjRenderer::render_sprite(const ResDescriptor& desc,
 
 void
 WorldObjRenderer::render_surface(const ResDescriptor& desc,
-                                 const Vector3f& pos,
+                                 const Vector2f& pos,
                                  float z_index,
                                  int repeat)
 {
@@ -156,28 +156,28 @@ WorldObjRenderer::process(const ReaderObject& reader_object)
   }
   else if (reader_object.get_name() == "entrance")
   {
-    Vector3f pos;
+    Vector2f pos;
     float z_index = 0.0f;
     reader.read_vector("position", pos, z_index);
     render_sprite(ResDescriptor("entrances/generic"), pos, z_index);
   }
   else if (reader_object.get_name() == "spike")
   {
-    Vector3f pos;
+    Vector2f pos;
     float z_index = 0.0f;
     reader.read_vector("position", pos, z_index);
     render_surface(ResDescriptor("traps/spike_editor"), pos, z_index);
   }
   else if (reader_object.get_name() == "switchdoor-switch")
   {
-    Vector3f pos;
+    Vector2f pos;
     float z_index = 0.0f;
     reader.read_vector("position", pos, z_index);
     render_surface(ResDescriptor("worldobjs/switchdoor_switch"), pos, z_index);
   }
   else if (reader_object.get_name() == "switchdoor-door")
   {
-    Vector3f pos;
+    Vector2f pos;
     float z_index = 0.0f;
     reader.read_vector("position", pos, z_index);
     render_surface(ResDescriptor("worldobjs/switchdoor_box"), pos, z_index);
@@ -203,7 +203,7 @@ WorldObjRenderer::process(const ReaderObject& reader_object)
     {
       PrefabFile prefab = PrefabFile::from_resource(name);
 
-      Vector3f position;
+      Vector2f position;
       float z_index = 0.0f;
       reader.read_vector("position", position, z_index);
       push_translate(static_cast<int>(position.x()),
@@ -223,7 +223,7 @@ WorldObjRenderer::process_object_with_surface(const ReaderObject& reader_object)
 {
   ReaderMapping reader = reader_object.get_mapping();
 
-  Vector3f pos;
+  Vector2f pos;
   float z_index = 0.0f;
   ResDescriptor desc;
 

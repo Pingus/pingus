@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDOBJS_CONVEYOR_BELT_HPP
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_CONVEYOR_BELT_HPP
 
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/worldobj.hpp"
 
 namespace WorldObjsData {
@@ -33,7 +33,7 @@ private:
   Sprite right_sur;
   Sprite middle_sur;
 
-  Vector3f pos;
+  Vector2f pos;
   float m_z_index;
   int    width;
   float  speed;
@@ -47,8 +47,8 @@ public:
   void update () override;
   float z_index () const override;
   void set_z_index(float z_index) override { m_z_index = z_index; }
-  void set_pos(const Vector3f& p) override { pos = p; }
-  Vector3f get_pos() const override { return pos; }
+  void set_pos(const Vector2f& p) override { pos = p; }
+  Vector2f get_pos() const override { return pos; }
 
 private:
   ConveyorBelt (const ConveyorBelt&);

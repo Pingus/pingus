@@ -36,8 +36,8 @@ private:
   std::string m_name;
 
   std::list<LevelObjPtr> m_objects;
-  Vector3f m_pos;
-  Vector3f m_orig_pos;
+  Vector2f m_pos;
+  Vector2f m_orig_pos;
 
   // properties
   unsigned int m_overrides;
@@ -63,8 +63,8 @@ public:
 
 public:
   /** Retrieve the object's position */
-  Vector3f get_pos() const override { return m_pos; }
-  Vector3f get_orig_pos() const override { return m_orig_pos; }
+  Vector2f get_pos() const override { return m_pos; }
+  Vector2f get_orig_pos() const override { return m_orig_pos; }
 
   /** Retrieve this object's attribute number */
   unsigned int get_attribs() const override { return m_overrides; }
@@ -131,7 +131,7 @@ public:
   /// Operations
 public:
   /** Set the object's position */
-  void set_pos(const Vector3f& p) override;
+  void set_pos(const Vector2f& p) override;
 
   void set_pos_x(float x) override { }
   float get_pos_x() const override { return 0.0f; }
@@ -143,7 +143,7 @@ public:
   float z_index() const override { return 0.0f; }
 
   /** Original position of the objects before being dragged around */
-  void set_orig_pos(const Vector3f& p) override { m_orig_pos = p; }
+  void set_orig_pos(const Vector2f& p) override { m_orig_pos = p; }
 
   /** Set the object's resource name */
   void set_res_desc(const ResDescriptor& d) override { }

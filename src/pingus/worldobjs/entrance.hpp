@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDOBJS_ENTRANCE_HPP
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_ENTRANCE_HPP
 
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/worldobj.hpp"
 
 namespace WorldObjsData {
@@ -37,7 +37,7 @@ public:
 
 protected:
   EntranceDirection direction;
-  Vector3f          pos;
+  Vector2f          pos;
   float m_z_index;
   int               release_rate;
   int               owner_id;
@@ -53,8 +53,8 @@ public:
 
   float z_index () const override;
   void set_z_index(float z_index) override { m_z_index = z_index; }
-  void set_pos(const Vector3f& p) override { pos = p; }
-  Vector3f get_pos() const override { return pos; }
+  void set_pos(const Vector2f& p) override { pos = p; }
+  Vector2f get_pos() const override { return pos; }
 
   virtual bool   pingu_ready ();
   virtual void   create_pingu ();

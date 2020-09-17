@@ -8,7 +8,7 @@
 #include "engine/display/surface.hpp"
 #include "math/color.hpp"
 #include "math/size.hpp"
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/levelset.hpp"
 #include "pingus/path_manager.hpp"

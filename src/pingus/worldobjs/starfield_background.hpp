@@ -45,8 +45,8 @@ public:
   // FIXME: Make z_pos handling editable via xml
   float z_index() const override { return -10; }
   void set_z_index(float z_index) override { }
-  void set_pos(const Vector3f& p) override {}
-  Vector3f get_pos() const override { return Vector3f(); }
+  void set_pos(const Vector2f& p) override {}
+  Vector2f get_pos() const override { return Vector2f(); }
 
   void update () override;
   void draw (SceneContext& gc) override;

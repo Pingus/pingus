@@ -21,7 +21,7 @@
 
 #include "math/color.hpp"
 #include "math/rect.hpp"
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "util/reader.hpp"
 #include "util/reader_impl.hpp"
@@ -207,12 +207,12 @@ SExprReaderMappingImpl::read_string(const char* key, std::string& value) const
 }
 
 bool
-SExprReaderMappingImpl::read_vector(const char* key, Vector3f& value, float& z_index) const
+SExprReaderMappingImpl::read_vector(const char* key, Vector2f& value, float& z_index) const
 {
   sexp::Value const* sub = get_subsection(key);
   if (sub && sexp::list_length(*sub) == 3)
   {
-    value = Vector3f(sexp::list_ref(*sub, 0).as_float(),
+    value = Vector2f(sexp::list_ref(*sub, 0).as_float(),
                      sexp::list_ref(*sub, 1).as_float());
     z_index = sexp::list_ref(*sub, 2).as_float();
     return true;
@@ -224,7 +224,7 @@ SExprReaderMappingImpl::read_vector(const char* key, Vector3f& value, float& z_i
 }
 
 bool
-SExprReaderMappingImpl::read_vectors(const char* key, std::vector<Vector3f>& values, std::vector<float>& z_indexes) const
+SExprReaderMappingImpl::read_vectors(const char* key, std::vector<Vector2f>& values, std::vector<float>& z_indexes) const
 {
   sexp::Value const* sub_lst = get_subsection(key);
   if (sub_lst)

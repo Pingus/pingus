@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDOBJS_GUILLOTINE_HPP
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_GUILLOTINE_HPP
 
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/direction.hpp"
 #include "pingus/worldobj.hpp"
 
@@ -35,7 +35,7 @@ private:
   Sprite    sprite_kill_right;
   Sprite    sprite_kill_left;
   Sprite    sprite_idle;
-  Vector3f  pos;
+  Vector2f  pos;
   float m_z_index;
   Direction direction;
 
@@ -46,8 +46,8 @@ public:
 
   float z_index() const override;
   void set_z_index(float z_index) override { m_z_index = z_index; }
-  void set_pos(const Vector3f& p) override { pos = p; }
-  Vector3f get_pos() const override { return pos; }
+  void set_pos(const Vector2f& p) override { pos = p; }
+  Vector2f get_pos() const override { return pos; }
 
   void update() override;
   void draw(SceneContext& gc) override;

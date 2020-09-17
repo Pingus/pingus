@@ -22,7 +22,7 @@
 
 #include "engine/display/drawing_request.hpp"
 #include "math/color.hpp"
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 
 class Framebuffer;
 class Font;
@@ -68,7 +68,7 @@ public:
   void draw(DrawingContext& dc, float z = 0);
 
   void draw(const Sprite& sprite, const Vector2i& pos, float z = 0);
-  void draw(const Sprite& sprite, const Vector3f& pos, float z = 0);
+  void draw(const Sprite& sprite, const Vector2f& pos, float z = 0);
 
   /** Fills the screen with a given color, this is different from
       clear() in that it doesn't remove other DrawingRequest from the

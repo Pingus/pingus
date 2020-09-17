@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDOBJS_ICE_BLOCK_HPP
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_ICE_BLOCK_HPP
 
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/worldobj.hpp"
 
@@ -31,7 +31,7 @@ class IceBlock : public WorldObj
 {
 private:
   /// The upper/left position  of the iceblock's
-  Vector3f pos;
+  Vector2f pos;
   float m_z_index;
 
   /** The number of iceblocks, only complete blocks are supported */
@@ -48,8 +48,8 @@ public:
 
   float z_index () const override { return m_z_index; }
   void set_z_index(float z_index) override { m_z_index = z_index; }
-  void set_pos(const Vector3f& p) override { pos = p; }
-  Vector3f get_pos() const override { return pos; }
+  void set_pos(const Vector2f& p) override { pos = p; }
+  Vector2f get_pos() const override { return pos; }
 
   void on_startup () override;
   void draw (SceneContext& gc) override;

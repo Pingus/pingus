@@ -23,7 +23,7 @@
 #include "math/vector2i.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/groundtype.hpp"
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 
 class GroundMap;
 class PinguHolder;
@@ -144,12 +144,12 @@ public:
       going to be ignored) void play_sound (std::string name, const
       @param volume The volume of the sound
   */
-  void play_sound (const std::string& name, const Vector3f& pos, float volume = 0.5f);
+  void play_sound (const std::string& name, const Vector2f& pos, float volume = 0.5f);
 
   PinguHolder* get_pingus(void) const;
 
   /** @return the pingu at the given word coordinates, 0 if none is there */
-  Pingu* get_pingu (const Vector3f& pos);
+  Pingu* get_pingu (const Vector2f& pos);
 
   /** Get the acceleration due to gravity in the world */
   float get_gravity() const;

@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_BRIDGER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_BRIDGER_HPP
 
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/pingu_action.hpp"
 #include "pingus/state_sprite.hpp"

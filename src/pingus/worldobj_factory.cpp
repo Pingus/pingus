@@ -123,7 +123,7 @@ public:
     std::string name;
     reader.read_string("name", name);
 
-    Vector3f pos;
+    Vector2f pos;
     float z_index = 0.0f;
     reader.read_vector("position", pos, z_index);
 

@@ -59,8 +59,8 @@ public:
   bool read_float(const char* key, float&) const override;
   bool read_bool(const char* key, bool&) const override;
   bool read_string(const char* key, std::string&) const override;
-  bool read_vector(const char* key, Vector3f&, float&) const override;
-  bool read_vectors(const char* key, std::vector<Vector3f>&, std::vector<float>& z_indexes) const override;
+  bool read_vector(const char* key, Vector2f&, float&) const override;
+  bool read_vectors(const char* key, std::vector<Vector2f>&, std::vector<float>& z_indexes) const override;
   bool read_size(const char* key, geom::isize&) const override;
   bool read_vector2i(const char* key, Vector2i&) const override;
   bool read_rect(const char* key, Rect&) const override;

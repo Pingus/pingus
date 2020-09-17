@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDMAP_DOT_HPP
 #define HEADER_PINGUS_PINGUS_WORLDMAP_DOT_HPP
 
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/worldmap/drawable.hpp"
 
 namespace WorldmapNS {
@@ -27,7 +27,7 @@ namespace WorldmapNS {
 class Dot : public Drawable
 {
 protected:
-  Vector3f pos;
+  Vector2f pos;
   float m_z_index;
 
 public:
@@ -36,7 +36,7 @@ public:
   /** Draw stuff that should be displayed if the mouse is over the dot */
   virtual void draw_hover(DrawingContext& gc) =0;
 
-  Vector3f get_pos() { return pos; }
+  Vector2f get_pos() { return pos; }
   float z_index() const { return m_z_index; }
 
   virtual void on_click() =0;

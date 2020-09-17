@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDOBJS_GROUNDPIECE_HPP
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_GROUNDPIECE_HPP
 
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/groundtype.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "pingus/worldobj.hpp"
@@ -33,7 +33,7 @@ namespace WorldObjs {
 class Groundpiece : public WorldObj
 {
 private:
-  Vector3f pos;
+  Vector2f pos;
   float m_z_index;
   ResDescriptor desc;
   Groundtype::GPType gptype;
@@ -43,8 +43,8 @@ public:
 
   float z_index () const override { return m_z_index; }
   void set_z_index(float z_index) override { m_z_index = z_index; }
-  void set_pos(const Vector3f& p) override { pos = p; }
-  Vector3f get_pos() const override { return pos; }
+  void set_pos(const Vector2f& p) override { pos = p; }
+  Vector2f get_pos() const override { return pos; }
 
   void draw (SceneContext&) override {}
   void on_startup () override;

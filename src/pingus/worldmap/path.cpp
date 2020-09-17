@@ -25,7 +25,7 @@ Path::Path() :
 {
 }
 
-std::vector<Vector3f >::size_type
+std::vector<Vector2f >::size_type
 Path::size()
 {
   return vec.size();
@@ -66,7 +66,7 @@ Path::calc_length()
   }
 }
 
-Vector3f
+Vector2f
 Path::at(float vec_position)
 {
   assert(!vec.empty());

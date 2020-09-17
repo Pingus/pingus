@@ -209,7 +209,7 @@ EditorLevel::save_prefab(const std::string& filename)
   fw.begin_object("pingus-prefab");
   fw.write_int("version", 3);
 
-  Vector3f level_center(static_cast<float>(get_size().width())/2.0f,
+  Vector2f level_center(static_cast<float>(get_size().width())/2.0f,
                         static_cast<float>(get_size().height())/2.0f);
 
   // Write the objects

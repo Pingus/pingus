@@ -23,7 +23,7 @@
 #include "math/color.hpp"
 #include "math/size.hpp"
 #include "math/vector2i.hpp"
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "util/pathname.hpp"
 
 JsonPrettyWriterImpl::JsonPrettyWriterImpl(std::ostream& out) :
@@ -220,7 +220,7 @@ JsonPrettyWriterImpl::write_string(const char* name, const std::string& value)
 }
 
 void
-JsonPrettyWriterImpl::write_vector(const char* name, const Vector3f& value, float z_index)
+JsonPrettyWriterImpl::write_vector(const char* name, const Vector2f& value, float z_index)
 {
   assert(m_context.back() == Context::Mapping);
 

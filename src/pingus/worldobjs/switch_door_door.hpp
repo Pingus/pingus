@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDOBJS_SWITCH_DOOR_DOOR_HPP
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_SWITCH_DOOR_DOOR_HPP
 
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/worldobj.hpp"
 
@@ -27,7 +27,7 @@ class SwitchDoorDoor : public WorldObj
 {
 private:
   /// The upper/middle pos of the door
-  Vector3f door_pos;
+  Vector2f door_pos;
   float m_z_index;
 
   // The height of the door in graphic tiles
@@ -55,8 +55,8 @@ public:
   /// The switch and the door should stay above the pingus
   float z_index() const override { return 100; }
   void set_z_index(float z_index) override { m_z_index = z_index; }
-  void set_pos(const Vector3f& p) override { door_pos = p; }
-  Vector3f get_pos() const override { return door_pos; }
+  void set_pos(const Vector2f& p) override { door_pos = p; }
+  Vector2f get_pos() const override { return door_pos; }
 
   void open_door();
 

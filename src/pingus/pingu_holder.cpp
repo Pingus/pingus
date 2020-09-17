@@ -35,7 +35,7 @@ PinguHolder::~PinguHolder()
 }
 
 Pingu*
-PinguHolder::create_pingu (const Vector3f& pos, int owner_id)
+PinguHolder::create_pingu (const Vector2f& pos, int owner_id)
 {
   if (number_of_allowed > get_number_of_released())
   {

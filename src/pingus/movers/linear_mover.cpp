@@ -20,7 +20,7 @@
 
 namespace Movers {
 
-LinearMover::LinearMover(World const* world_arg, const Vector3f& pos_arg)
+LinearMover::LinearMover(World const* world_arg, const Vector2f& pos_arg)
   : Mover(world_arg, pos_arg)
 {
 }
@@ -44,12 +44,12 @@ LinearMover::update(glm::vec2 const& move, const Collider& collision_check)
   {
     collision = collision_check(world, pos, step_vector);
 
-    pos = Vector3f(pos.as_vec() + step_vector);
+    pos = Vector2f(pos.as_vec() + step_vector);
   }
 
   // If on a collision pixel, back away from it.
   if (collision) {
-    pos = Vector3f(pos.as_vec() - step_vector);
+    pos = Vector2f(pos.as_vec() - step_vector);
   }
 }
 

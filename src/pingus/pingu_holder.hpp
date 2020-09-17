@@ -20,7 +20,7 @@
 #include <list>
 
 #include "pingus/worldobj.hpp"
-#include "math/vector3f.hpp"
+#include "math/vector2f.hpp"
 
 class PingusLevel;
 class Pingu;
@@ -65,8 +65,8 @@ public:
       @return 50 */
   float z_index() const override;
   void set_z_index(float) override {}
-  void set_pos(const Vector3f& p) override { }
-  Vector3f get_pos() const override { return Vector3f(); }
+  void set_pos(const Vector2f& p) override { }
+  Vector2f get_pos() const override { return Vector2f(); }
   /*@}*/
 
   /** @return the number of pingus that have successfully exit this
@@ -93,7 +93,7 @@ public:
       will take care of the deletion. The caller *must* not delete the
       Pingu. Might return 0 if all available pingus are already
       released */
-  Pingu* create_pingu(const Vector3f& pos, int owner_id);
+  Pingu* create_pingu(const Vector2f& pos, int owner_id);
 
   /** Get a pingu by id, references to dead or exited Pingus are not
       returned, but 0 instead

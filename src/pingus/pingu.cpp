@@ -54,7 +54,7 @@
 using namespace Actions;
 
 // Init a pingu at the given position while falling
-Pingu::Pingu(unsigned int arg_id, const Vector3f& arg_pos, int owner) :
+Pingu::Pingu(unsigned int arg_id, const Vector2f& arg_pos, int owner) :
   action(),
   countdown_action(),
   wall_action(),
@@ -113,7 +113,7 @@ Pingu::set_pos (float x, float y)
 }
 
 void
-Pingu::set_pos (const Vector3f& arg_pos)
+Pingu::set_pos (const Vector2f& arg_pos)
 {
   set_x(arg_pos.x());
   set_y(arg_pos.y());
@@ -280,7 +280,7 @@ Pingu::set_status (PinguStatus s)
 bool
 Pingu::is_over (float x, float y) const
 {
-  Vector3f center = get_center_pos ();
+  Vector2f center = get_center_pos ();
 
   return (center.x() + 16 > x && center.x() - 16 < x &&
           center.y() + 16 > y && center.y() - 16 < y);
@@ -301,7 +301,7 @@ Pingu::is_inside (float x1, float y1, float x2, float y2) const
 float
 Pingu::dist(float x, float y) const
 {
-  Vector3f p = get_center_pos ();
+  Vector2f p = get_center_pos ();
 
   return Math::sqrt(((p.x() - x) * (p.x() - x) +
                      (p.y() - y) * (p.y() - y)));
@@ -408,13 +408,13 @@ Pingu::apply_force (const glm::vec2& arg_v)
   pos_y -= 1;
 }
 
-Vector3f
+Vector2f
 Pingu::get_pos () const
 {
-  return Vector3f(pos_x, pos_y);
+  return Vector2f(pos_x, pos_y);
 }
 
-Vector3f
+Vector2f
 Pingu::get_center_pos () const
 {
   return action->get_center_pos();

@@ -39,7 +39,7 @@ SurfaceBackground::SurfaceBackground(const ReaderMapping& reader) :
   scroll_oy(0)
 {
   if (!reader.read_vector("position", pos, m_z_index)) {
-    pos = Vector3f(0.f, 0.f);
+    pos = Vector2f(0.f, 0.f);
     m_z_index = -150.f;
   }
 

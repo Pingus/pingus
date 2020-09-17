@@ -87,7 +87,7 @@ SnowParticleHolder::update ()
     // skip dead particles
     if (!it->alive)
       continue;
-    it->pos = Vector3f(it->pos.as_vec() + it->velocity);
+    it->pos = Vector2f(it->pos.as_vec() + it->velocity);
 
     if (it->pos.y() > static_cast<float>(world->get_height()))
     {
