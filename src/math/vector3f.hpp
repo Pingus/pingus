@@ -76,6 +76,7 @@ public:
     z += add.z;
     return *this;
   }
+
   Vector3f& operator-= (const Vector3f& sub)
   {
     x -= sub.x;
@@ -83,6 +84,8 @@ public:
     z -= sub.z;
     return *this;
   }
+
+#if 0
   Vector3f& operator*= (float mul)
   {
     x *= mul;
@@ -90,6 +93,7 @@ public:
     z *= mul;
     return *this;
   }
+#endif
 
   void normalize ()
   {
@@ -108,16 +112,6 @@ public:
     return Math::sqrt(x * x + y * y + z * z);
   }
 
-  Vector3f rotate (float angle, const Vector3f& pos) const;
-
-  static float distance(const Vector3f& a, const Vector3f& b)
-  {
-    float x = b.x - a.x;
-    float y = b.y - a.y;
-    float z = b.z - a.z;
-
-    return Math::abs(Math::sqrt((x * x) + (y * y) + (z * z)));
-  }
   static float distance2d(const Vector3f& a, const Vector3f& b)
   {
     float x = b.x - a.x;

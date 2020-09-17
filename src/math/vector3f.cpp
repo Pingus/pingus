@@ -18,26 +18,6 @@
 
 #include <ostream>
 
-Vector3f
-Vector3f::rotate (float angle, const Vector3f& pos) const
-{
-  const float s = Math::sin(angle);
-  const float c = Math::cos(angle);
-
-  return Vector3f(x * (pos.x * pos.x * (1-c) + c)
-                  + y * (pos.x * pos.y * (1-c) - pos.z *s)
-                  + z * (pos.x * pos.z * (1-c) + pos.y *s),
-
-                  x * (pos.y * pos.x * (1-c) + pos.z *s)
-                  + y * (pos.y * pos.y * (1-c) + c)
-                  + z * (pos.y * pos.z * (1-c) - pos.x *s),
-
-                  x * (pos.x * pos.z * (1-c) - pos.y *s)
-                  + y * (pos.y * pos.z * (1-c) + pos.x *s)
-                  + z * (pos.z * pos.z * (1-c) + c)
-    );
-}
-
 std::ostream& operator<<(std::ostream& os, const Vector3f& v)
 {
   return os << "Vector3f(" << v.x << ", " << v.y << ", " << v.z << ")";
