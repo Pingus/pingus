@@ -32,14 +32,6 @@ public:
     return tmp;
   }
 
-  template<class T>
-  static std::string to_string(const T& t)
-  {
-    std::ostringstream str;
-    str << t;
-    return str.str();
-  }
-
 private:
   StringUtil ();
   StringUtil (const StringUtil&);

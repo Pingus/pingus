@@ -16,6 +16,8 @@
 
 #include "pingus/screens/start_screen.hpp"
 
+#include <strut/to_string.hpp>
+
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
@@ -164,10 +166,10 @@ StartScreenComponent::draw(DrawingContext& gc)
   y += 45;
 
   gc.print_left (Fonts::chalk_normal, Vector2i(left_x,  y), _("Number of Pingus: "));
-  gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), StringUtil::to_string(plf.get_number_of_pingus()));
+  gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), strut::to_string(plf.get_number_of_pingus()));
 
   gc.print_left (Fonts::chalk_normal, Vector2i(left_x,  (y += 30)), _("Number to Save: "));
-  gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), StringUtil::to_string(plf.get_number_to_save()));
+  gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), strut::to_string(plf.get_number_to_save()));
 
   gc.print_left (Fonts::chalk_normal, Vector2i(left_x,  (y += 30)), _("Time: "));
   gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), time_str);

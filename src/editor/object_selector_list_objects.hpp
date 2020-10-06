@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_EDITOR_OBJECT_SELECTOR_LIST_OBJECTS_HPP
 #define HEADER_PINGUS_EDITOR_OBJECT_SELECTOR_LIST_OBJECTS_HPP
 
+#include <strut/to_string.hpp>
+
 #include "pingus/resource.hpp"
 #include "util/string_util.hpp"
 #include "util/log.hpp"
@@ -320,7 +322,7 @@ struct TeleporterTarget : public ObjectSelectorList::Object
   LevelObjPtr create(const Vector2i& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("teleporter-target");
     obj->set_pos(Vector2f(static_cast<float>(pos.x()), static_cast<float>(pos.y())));
-    obj->set_id("id" + StringUtil::to_string(rand()));
+    obj->set_id("id" + strut::to_string(rand()));
     return obj;
   }
 };
@@ -382,7 +384,7 @@ struct SwitchDoorDoor : public ObjectSelectorList::Object
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("switchdoor-door");
     obj->set_pos(Vector2f(static_cast<float>(pos.x()), static_cast<float>(pos.y())));
     obj->set_repeat(1);
-    obj->set_id("id" + StringUtil::to_string(rand()));
+    obj->set_id("id" + strut::to_string(rand()));
     return obj;
   }
 };

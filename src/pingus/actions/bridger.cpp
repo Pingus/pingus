@@ -16,6 +16,8 @@
 
 #include "pingus/actions/bridger.hpp"
 
+#include <strut/to_string.hpp>
+
 #include "engine/display/scene_context.hpp"
 #include "engine/sound/sound.hpp"
 #include "pingus/gettext.h"
@@ -35,7 +37,7 @@ Bridger::Bridger (Pingu* p) :
   brick_r("other/brick_right"),
   bricks(MAX_BRICKS),
   block_build(false),
-  name(_("Bridger") + (" (" + StringUtil::to_string(bricks) + ")"))
+  name(_("Bridger") + (" (" + strut::to_string(bricks) + ")"))
 {
   walk_sprite.load (Direction::LEFT,  Sprite("pingus/player" +
                                              pingu->get_owner_str() + "/bridger_walk/left"));
@@ -193,7 +195,7 @@ void
 Bridger::place_a_brick()
 {
   bricks--;
-  name = _("Bridger") + std::string(" (") + StringUtil::to_string(bricks) + ")";
+  name = _("Bridger") + std::string(" (") + strut::to_string(bricks) + ")";
 
   if (bricks < 4)
     Sound::PingusSound::play_sound("ting");

@@ -17,6 +17,7 @@
 #include "editor/level_properties.hpp"
 
 #include <strut/from_string.hpp>
+#include <strut/to_string.hpp>
 
 #include "editor/editor_level.hpp"
 #include "editor/editor_screen.hpp"
@@ -117,12 +118,12 @@ LevelProperties::set_level(EditorLevel* level_)
   levelname->set_text(level->get_levelname());
   author->set_text(level->get_author());
 
-  number_of_pingus->set_text(StringUtil::to_string(level->get_number_of_pingus()));
-  number_to_save->set_text(StringUtil::to_string(level->get_number_to_save()));
+  number_of_pingus->set_text(strut::to_string(level->get_number_of_pingus()));
+  number_to_save->set_text(strut::to_string(level->get_number_to_save()));
 
-  time->set_text(StringUtil::to_string(GameTime::ticks_to_seconds(level->get_time())));
-  width->set_text(StringUtil::to_string(level->get_size().width()));
-  height->set_text(StringUtil::to_string(level->get_size().height()));
+  time->set_text(strut::to_string(GameTime::ticks_to_seconds(level->get_time())));
+  width->set_text(strut::to_string(level->get_size().width()));
+  height->set_text(strut::to_string(level->get_size().height()));
   music->set_text(level->get_music());
 }
 

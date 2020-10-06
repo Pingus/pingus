@@ -16,6 +16,8 @@
 
 #include "pingus/worldobjs/exit.hpp"
 
+#include <strut/to_string.hpp>
+
 #include "engine/display/scene_context.hpp"
 #include "pingus/collision_map.hpp"
 #include "pingus/components/smallmap.hpp"
@@ -42,7 +44,7 @@ Exit::Exit(const ReaderMapping& reader) :
   // Set default owner ID to 0
   if (owner_id < 0 || owner_id > 3) owner_id = 0;
 
-  flag = Sprite("core/misc/flag" + StringUtil::to_string(owner_id));
+  flag = Sprite("core/misc/flag" + strut::to_string(owner_id));
 
   sprite = Sprite(desc);
 }

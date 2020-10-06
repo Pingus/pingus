@@ -16,6 +16,8 @@
 
 #include "pingus/screens/result_screen.hpp"
 
+#include <strut/to_string.hpp>
+
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
@@ -236,11 +238,11 @@ ResultScreenComponent::draw(DrawingContext& gc)
   int y = Display::get_height()/2 + 10;
 
   gc.print_left(Fonts::chalk_normal,  Vector2i(left_x,  y), _("Saved: "));
-  gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), StringUtil::to_string(result.saved)
-                 + "/" + StringUtil::to_string(result.needed));
+  gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), strut::to_string(result.saved)
+                 + "/" + strut::to_string(result.needed));
 
   gc.print_left(Fonts::chalk_normal,  Vector2i(left_x,  (y+=30)), _("Died: "));
-  gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), StringUtil::to_string(result.killed));
+  gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), strut::to_string(result.killed));
 
   gc.print_left(Fonts::chalk_normal,  Vector2i(left_x, (y+=30)), _("Time left: "));
   gc.print_right(Fonts::chalk_normal, Vector2i(right_x, y), time_str);

@@ -16,6 +16,8 @@
 
 #include "pingus/capture_rectangle.hpp"
 
+#include <strut/to_string.hpp>
+
 #include "engine/display/scene_context.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/globals.hpp"
@@ -99,7 +101,7 @@ CaptureRectangle::set_pingu (Pingu* p)
     if (globals::developer_mode)
     {
       action_str += " Id: ";
-      action_str += StringUtil::to_string(pingu->get_id());
+      action_str += strut::to_string(pingu->get_id());
     }
   }
 }

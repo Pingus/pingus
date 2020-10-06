@@ -18,6 +18,8 @@
 
 #include <algorithm>
 
+#include <strut/to_string.hpp>
+
 #include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/globals.hpp"
@@ -83,7 +85,7 @@ ButtonPanel::draw(DrawingContext& gc)
     }
     else
     {
-      std::string str = StringUtil::to_string(aholder->get_available(buttons[i].name));
+      std::string str = strut::to_string(aholder->get_available(buttons[i].name));
       gc.print_center(Fonts::pingus_small, Vector2i(rect.left() + 46, rect.top() + 5 + 38*static_cast<int>(i)), str);
     }
 

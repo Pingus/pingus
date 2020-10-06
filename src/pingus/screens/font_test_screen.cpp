@@ -16,6 +16,8 @@
 
 #include "pingus/screens/font_test_screen.hpp"
 
+#include <strut/to_string.hpp>
+
 #include "engine/display/display.hpp"
 #include "engine/display/drawing_context.hpp"
 #include "engine/display/font_description.hpp"
@@ -72,7 +74,7 @@ FontTestScreen::draw(DrawingContext& gc)
     gc.print_left(reference,
                   Vector2i(x,
                            y + font.get_height()),
-                  StringUtil::to_string(i));
+                  strut::to_string(i));
 
     if (font.get_width(i) > 0.0f)
     {

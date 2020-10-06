@@ -18,6 +18,8 @@
 
 #include <functional>
 
+#include <strut/to_string.hpp>
+
 #include "editor/checkbox.hpp"
 #include "editor/editor_level.hpp"
 #include "editor/gui_style.hpp"
@@ -102,7 +104,7 @@ ActionProperties::set_level(EditorLevel* level_)
     ActionComponents::iterator j = action_comps.find(ActionName::from_string(i->first));
     if (j != action_comps.end())
     {
-      j->second.inputbox->set_text(StringUtil::to_string(i->second));
+      j->second.inputbox->set_text(strut::to_string(i->second));
       j->second.checkbox->set_checked(true);
     }
   }

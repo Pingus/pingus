@@ -19,6 +19,7 @@
 #include <assert.h>
 
 #include <strut/from_string.hpp>
+#include <strut/to_string.hpp>
 
 #include "util/log.hpp"
 #include "util/reader.hpp"
@@ -148,14 +149,14 @@ StatManager::set_string(const std::string& name, const std::string& value)
 void
 StatManager::set_int(const std::string& name, int value)
 {
-  stats[name] = StringUtil::to_string(value);
+  stats[name] = strut::to_string(value);
   flush();
 }
 
 void
 StatManager::set_bool(const std::string& name, bool value)
 {
-  stats[name] = StringUtil::to_string(value);
+  stats[name] = strut::to_string(value);
   flush();
 }
 

@@ -16,6 +16,8 @@
 
 #include "editor/object_properties.hpp"
 
+#include <strut/to_string.hpp>
+
 #include "editor/button.hpp"
 #include "editor/checkbox.hpp"
 #include "editor/combobox.hpp"
@@ -398,22 +400,22 @@ ObjectProperties::set_object(const LevelObjPtr& obj)
 
     if (attr & HAS_REPEAT)
     {
-      repeat_inputbox->set_text(StringUtil::to_string(obj->get_repeat()));
+      repeat_inputbox->set_text(strut::to_string(obj->get_repeat()));
       place(repeat_label, repeat_inputbox);
     }
 
     if (attr & HAS_OWNER)
     {
-      owner_inputbox->set_text(StringUtil::to_string(obj->get_owner()));
+      owner_inputbox->set_text(strut::to_string(obj->get_owner()));
       place(owner_label, owner_inputbox);
     }
 
     if (attr & HAS_COLOR)
     {
-      color_r_inputbox->set_text(StringUtil::to_string(static_cast<int>(obj->get_color().r)));
-      color_g_inputbox->set_text(StringUtil::to_string(static_cast<int>(obj->get_color().g)));
-      color_b_inputbox->set_text(StringUtil::to_string(static_cast<int>(obj->get_color().b)));
-      color_a_inputbox->set_text(StringUtil::to_string(static_cast<int>(obj->get_color().a)));
+      color_r_inputbox->set_text(strut::to_string(static_cast<int>(obj->get_color().r)));
+      color_g_inputbox->set_text(strut::to_string(static_cast<int>(obj->get_color().g)));
+      color_b_inputbox->set_text(strut::to_string(static_cast<int>(obj->get_color().b)));
+      color_a_inputbox->set_text(strut::to_string(static_cast<int>(obj->get_color().a)));
 
       place(color_label);
       place(color_r_inputbox);
@@ -425,8 +427,8 @@ ObjectProperties::set_object(const LevelObjPtr& obj)
 
     if (attr & HAS_SCROLL)
     {
-      scroll_x_inputbox->set_text(StringUtil::to_string(obj->get_scroll_x()));
-      scroll_y_inputbox->set_text(StringUtil::to_string(obj->get_scroll_y()));
+      scroll_x_inputbox->set_text(strut::to_string(obj->get_scroll_x()));
+      scroll_y_inputbox->set_text(strut::to_string(obj->get_scroll_y()));
 
       place(scroll_x_label, scroll_x_inputbox);
       place(scroll_y_label, scroll_y_inputbox);
@@ -434,8 +436,8 @@ ObjectProperties::set_object(const LevelObjPtr& obj)
 
     if (attr & HAS_PARA)
     {
-      para_x_inputbox->set_text(StringUtil::to_string(obj->get_para_x()));
-      para_y_inputbox->set_text(StringUtil::to_string(obj->get_para_y()));
+      para_x_inputbox->set_text(strut::to_string(obj->get_para_x()));
+      para_y_inputbox->set_text(strut::to_string(obj->get_para_y()));
 
       place(para_x_label, para_x_inputbox);
       place(para_y_label, para_y_inputbox);
@@ -459,15 +461,15 @@ ObjectProperties::set_object(const LevelObjPtr& obj)
 
     if (attr & HAS_RELEASE_RATE)
     {
-      release_rate_inputbox->set_text(StringUtil::to_string(obj->get_release_rate()));
+      release_rate_inputbox->set_text(strut::to_string(obj->get_release_rate()));
       place(release_rate_label, release_rate_inputbox);
     }
 
     if (attr & HAS_STARFIELD)
     {
-      small_stars_inputbox->set_text(StringUtil::to_string(obj->get_small_stars()));
-      middle_stars_inputbox->set_text(StringUtil::to_string(obj->get_middle_stars()));
-      large_stars_inputbox->set_text(StringUtil::to_string(obj->get_large_stars()));
+      small_stars_inputbox->set_text(strut::to_string(obj->get_small_stars()));
+      middle_stars_inputbox->set_text(strut::to_string(obj->get_middle_stars()));
+      large_stars_inputbox->set_text(strut::to_string(obj->get_large_stars()));
 
       place(small_stars_label,  small_stars_inputbox);
       place(middle_stars_label, middle_stars_inputbox);
@@ -488,17 +490,17 @@ ObjectProperties::set_object(const LevelObjPtr& obj)
 
     if (attr & HAS_HEIGHT)
     {
-      height_inputbox->set_text(StringUtil::to_string(obj->get_height()));
+      height_inputbox->set_text(strut::to_string(obj->get_height()));
       place(height_label, height_inputbox);
     }
 
     if (1) // everybody has x-pos, y-pos and z-pos
     {
-      pos_x_inputbox->set_text(StringUtil::to_string(obj->get_pos_x()));
+      pos_x_inputbox->set_text(strut::to_string(obj->get_pos_x()));
       place(pos_x_label, pos_x_inputbox);
-      pos_y_inputbox->set_text(StringUtil::to_string(obj->get_pos_y()));
+      pos_y_inputbox->set_text(strut::to_string(obj->get_pos_y()));
       place(pos_y_label, pos_y_inputbox);
-      pos_z_inputbox->set_text(StringUtil::to_string(obj->z_index()));
+      pos_z_inputbox->set_text(strut::to_string(obj->z_index()));
       place(pos_z_label, pos_z_inputbox);
     }
 
