@@ -85,6 +85,7 @@ function(build_dependencies)
   add_subdirectory(external/geomcpp/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/logmich/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/sexp-cpp/ EXCLUDE_FROM_ALL)
+  add_subdirectory(external/strutcpp/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/xdgcpp/ EXCLUDE_FROM_ALL)
 endfunction()
 build_dependencies()
@@ -103,6 +104,7 @@ target_link_libraries(libpingus PUBLIC
   logmich
   tinygettext
   sexp
+  strut
   xdgcpp
   fmt::fmt
   glm::glm

@@ -25,3 +25,6 @@
 [submodule "external/geomcpp"]
 	path = external/geomcpp
 	url = https://gitlab.com/grumbel/geomcpp.git
+[submodule "external/strutcpp"]
+	path = external/strutcpp
+	url = https://gitlab.com/grumbel/strutcpp.git
