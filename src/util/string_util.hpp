@@ -19,25 +19,6 @@
 
 #include <sstream>
 
-class StringUtil
-{
-private:
-public:
-  template<class T>
-  static T to(const std::string& s, const T& val = T())
-  {
-    T tmp = val;
-    std::istringstream str(s);
-    str >> tmp;
-    return tmp;
-  }
-
-private:
-  StringUtil ();
-  StringUtil (const StringUtil&);
-  StringUtil& operator= (const StringUtil&);
-};
-
 #endif
 
 /* EOF */

@@ -19,6 +19,8 @@
 #include <iostream>
 #include <signal.h>
 
+#include <strut/from_string.hpp>
+
 #include "editor/editor_level.hpp"
 #include "editor/editor_screen.hpp"
 #include "engine/input/manager.hpp"
@@ -271,11 +273,11 @@ PingusMain::parse_args(int argc, char** argv)
         break;
 
       case 't': // -t, --set-speed
-        cmd_options.speed.set(StringUtil::to<int>(opt.argument));
+        cmd_options.speed.set(strut::from_string<int>(opt.argument));
         break;
 
       case 'k': // -k, --set-fps
-        cmd_options.desiredfps.set(StringUtil::to<float>(opt.argument));
+        cmd_options.desiredfps.set(strut::from_string<float>(opt.argument));
         break;
 
       case 's': // -s, --disable-sound
@@ -363,7 +365,7 @@ PingusMain::parse_args(int argc, char** argv)
         break;
 
       case 344:
-        cmd_options.tile_size.set(StringUtil::to<int>(opt.argument));
+        cmd_options.tile_size.set(strut::from_string<int>(opt.argument));
         break;
 
       case 346:
