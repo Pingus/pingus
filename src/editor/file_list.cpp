@@ -159,8 +159,9 @@ FileList::on_pointer_move (int x, int y)
   x = x - rect.left();
   y = y - rect.top();
 
-  current_item = Math::clamp(0, y / vspace, rect.height() / vspace - 1)
-    + Math::clamp(0, x / hspace, rect.width() / hspace - 1) * (rect.height()/vspace);
+  current_item = std::clamp(y / vspace, 0, rect.height() / vspace - 1) +
+    std::clamp(x / hspace, 0, rect.width() / hspace - 1) *
+    (rect.height()/vspace);
 
   current_item += page * items_per_page();
 

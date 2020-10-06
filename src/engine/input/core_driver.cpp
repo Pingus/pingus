@@ -70,9 +70,9 @@ public:
     new_pos += geom::foffset(x_axis->get_pos() * c_speed * delta,
                              y_axis->get_pos() * c_speed * delta);
 
-    // FIXME: shouldn't depend on Display
-    new_pos = Vector2f(Math::clamp(0.0f, new_pos.x(), static_cast<float>(Display::get_width())),
-                       Math::clamp(0.0f, new_pos.y(), static_cast<float>(Display::get_height())));
+    // FIXME: shouldn'tx depend on Display
+    new_pos = Vector2f(std::clamp(new_pos.x(), 0.0f, static_cast<float>(Display::get_width())),
+                       std::clamp(new_pos.y(), 0.0f, static_cast<float>(Display::get_height())));
 
     if (new_pos != pos)
     {

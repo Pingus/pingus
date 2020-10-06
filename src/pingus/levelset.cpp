@@ -290,7 +290,7 @@ Levelset::refresh()
 
   if (!m_levels.empty())
   {
-    m_completion = Math::clamp(0, m_completion * 100 / int(m_levels.size()), 100);
+    m_completion = std::clamp(m_completion * 100 / int(m_levels.size()), 0, 100);
   }
 }
 

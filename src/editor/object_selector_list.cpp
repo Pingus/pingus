@@ -190,7 +190,7 @@ ObjectSelectorList::on_pointer_move (int x, int y)
   {
     if (!set->get_objects().empty())
     {
-      int obj_x = Math::clamp(0, mouse_pos.x() / 48, width - 1);
+      int obj_x = std::clamp(mouse_pos.x() / 48, 0, width - 1);
       int obj_y = (mouse_pos.y() - static_cast<int>(offset)) / 48;
 
       current_object = (obj_y * 5) + obj_x;
@@ -211,7 +211,7 @@ ObjectSelectorList::on_pointer_move (int x, int y)
   if (mode == SCROLLING)
   {
     offset = old_offset + static_cast<float>(y - drag_start.y());
-    offset = Math::clamp(std::min(static_cast<float>(rect.height()) - (static_cast<float>(height) * 48.0f), 0.0f), offset, 0.0f);
+    offset = std::clamp(offset, std::min(static_cast<float>(rect.height()) - (static_cast<float>(height) * 48.0f), 0.0f), 0.0f);
   }
 }
 
@@ -226,8 +226,9 @@ ObjectSelectorList::scroll(float y)
     int width = 5;
     int height = (static_cast<int>(set->get_objects().size()) / width) +
       ((static_cast<int>(set->get_objects().size()) % width > 0) ? 1 : 0);
-    offset = Math::clamp(std::min(static_cast<float>(rect.height()) - (static_cast<float>(height) * 48.0f),
-                                  0.0f), offset, 0.0f);
+    offset = std::clamp(offset,
+                        std::min(static_cast<float>(rect.height()) - (static_cast<float>(height) * 48.0f), 0.0f),
+                        0.0f);
   }
 }
 

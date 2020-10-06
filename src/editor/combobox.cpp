@@ -165,7 +165,7 @@ Combobox::on_pointer_move(int x, int y)
     if (geom::contains(list_rect, geom::ipoint(x,y)))
     {
       hover_item = (y - list_rect.top()) / rect.height();
-      hover_item = Math::clamp(0, hover_item, int(item_list.size()-1));
+      hover_item = std::clamp(hover_item, 0, int(item_list.size()-1));
     }
     else
     {

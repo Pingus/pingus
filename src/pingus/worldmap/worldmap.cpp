@@ -98,7 +98,7 @@ Worldmap::draw(DrawingContext& gc)
     min = width - gc.get_width()/2;
     max = gc.get_width()/2;
   }
-  pingu_pos = Vector2i(Math::clamp(min, pingu_pos.x(), max),
+  pingu_pos = Vector2i(std::clamp(pingu_pos.x(), min, max),
                        pingu_pos.y());
 
   if (height >= gc.get_height())
@@ -113,7 +113,7 @@ Worldmap::draw(DrawingContext& gc)
   }
 
   pingu_pos = Vector2i(pingu_pos.x(),
-                       Math::clamp(min, pingu_pos.y(), max));
+                       std::clamp(pingu_pos.y(), min, max));
 
   gc_state.set_size(gc.get_width(), gc.get_height());
   gc_state.set_pos(Vector2i(pingu_pos.x(), pingu_pos.y()));

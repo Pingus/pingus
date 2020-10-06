@@ -152,7 +152,7 @@ void
 ButtonPanel::on_primary_button_press(int x, int y)
 {
   int action = (y - rect.top()) / 38;
-  current_button = static_cast<size_t>(Math::clamp(0, action, int(buttons.size() - 1)));
+  current_button = static_cast<size_t>(std::clamp(action, 0, int(buttons.size() - 1)));
 }
 
 void
@@ -176,7 +176,7 @@ void
 ButtonPanel::on_pointer_move(int x, int y)
 {
   int action = (y - rect.top()) / 38;
-  tip_button = static_cast<size_t>(Math::clamp(0, action, int(buttons.size()-1)));
+  tip_button = static_cast<size_t>(std::clamp(action, 0, int(buttons.size()-1)));
 }
 
 void

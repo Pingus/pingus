@@ -80,7 +80,7 @@ SliderBox::on_pointer_move(int x, int y)
 
     value = m_steps * x / (rect.width() - 12);
 
-    value = Math::clamp(0, value, m_steps);
+    value = std::clamp(value, 0, m_steps);
 
     if (value != old_value)
       on_change(value*5); // scale to [0,100]

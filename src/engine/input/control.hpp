@@ -261,7 +261,7 @@ public:
       new_pos += (*i)->get_pos();
     }
 
-    new_pos = Math::clamp(-1.0f, new_pos, 1.0f);
+    new_pos = std::clamp(new_pos, -1.0f, 1.0f);
 
     set_state(new_pos);
   }
