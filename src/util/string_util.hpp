@@ -33,24 +33,6 @@ public:
   }
 
   template<class T>
-  static bool from_string(const std::string& s, T& t)
-  {
-    std::istringstream str(s);
-    T tmp;
-    str >> tmp;
-    if (str.fail())
-    {
-      return false;
-    }
-    else
-    {
-      t = tmp;
-      return true;
-    }
-    return false;
-  }
-
-  template<class T>
   static std::string to_string(const T& t)
   {
     std::ostringstream str;

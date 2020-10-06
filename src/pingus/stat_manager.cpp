@@ -18,6 +18,8 @@
 
 #include <assert.h>
 
+#include <strut/from_string.hpp>
+
 #include "util/log.hpp"
 #include "util/reader.hpp"
 #include "util/writer.hpp"
@@ -106,7 +108,7 @@ StatManager::get_int(const std::string& name, int& value)
 {
   std::string str;
   if (get_string(name, str))
-    return StringUtil::from_string(str, value);
+    return strut::from_string(str, value);
   else
     return false;
 }
@@ -116,7 +118,7 @@ StatManager::get_bool(const std::string& name, bool& value)
 {
   std::string str;
   if (get_string(name, str))
-    return StringUtil::from_string(str, value);
+    return strut::from_string(str, value);
   else
     return false;
 }
