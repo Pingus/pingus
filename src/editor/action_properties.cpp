@@ -18,6 +18,7 @@
 
 #include <functional>
 
+#include <strut/from_string.hpp>
 #include <strut/to_string.hpp>
 
 #include "editor/checkbox.hpp"
@@ -116,7 +117,7 @@ ActionProperties::on_checkbox_change(bool t, ActionName::Enum id)
   if (t)
   {
     level->set_action(ActionName::to_string(id),
-                      StringUtil::to<int>(action_comps[id].inputbox->get_text()));
+                      strut::from_string<int>(action_comps[id].inputbox->get_text()));
   }
   else
   {
@@ -127,7 +128,7 @@ ActionProperties::on_checkbox_change(bool t, ActionName::Enum id)
 void
 ActionProperties::on_inputbox_change(const std::string& value, ActionName::Enum id)
 {
-  level->set_action(ActionName::to_string(id), StringUtil::to<int>(value));
+  level->set_action(ActionName::to_string(id), strut::from_string<int>(value));
 }
 
 } // namespace Editor

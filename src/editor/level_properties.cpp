@@ -149,7 +149,7 @@ void
 LevelProperties::on_width_change(const std::string& str)
 {
   Size s = level->get_size();
-  level->set_size(Size(StringUtil::to<int>(str), s.height()));
+  level->set_size(Size(strut::from_string<int>(str), s.height()));
   editor->get_viewport()->refresh();
 }
 
@@ -157,7 +157,7 @@ void
 LevelProperties::on_height_change(const std::string& str)
 {
   Size s = level->get_size();
-  level->set_size(Size(s.width(), StringUtil::to<int>(str)));
+  level->set_size(Size(s.width(), strut::from_string<int>(str)));
   editor->get_viewport()->refresh();
 }
 
@@ -193,7 +193,7 @@ LevelProperties::on_number_of_pingus_change(const std::string& str)
 void
 LevelProperties::on_time_change(const std::string& str)
 {
-  level->set_time(GameTime::seconds_to_ticks(StringUtil::to<int>(str)));
+  level->set_time(GameTime::seconds_to_ticks(strut::from_string<int>(str)));
 }
 
 void

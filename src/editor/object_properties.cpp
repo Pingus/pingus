@@ -16,6 +16,7 @@
 
 #include "editor/object_properties.hpp"
 
+#include <strut/from_string.hpp>
 #include <strut/to_string.hpp>
 
 #include "editor/button.hpp"
@@ -604,63 +605,63 @@ void
 ObjectProperties::on_owner_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_owner(StringUtil::to<int>(str));
+    (*i)->set_owner(strut::from_string<int>(str));
 }
 
 void
 ObjectProperties::on_pos_x_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_pos_x(StringUtil::to<float>(str));
+    (*i)->set_pos_x(strut::from_string<float>(str));
 }
 
 void
 ObjectProperties::on_pos_y_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_pos_y(StringUtil::to<float>(str));
+    (*i)->set_pos_y(strut::from_string<float>(str));
 }
 
 void
 ObjectProperties::on_pos_z_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_z_index(StringUtil::to<float>(str));
+    (*i)->set_z_index(strut::from_string<float>(str));
 }
 
 void
 ObjectProperties::on_para_x_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_para_x(StringUtil::to<float>(str));
+    (*i)->set_para_x(strut::from_string<float>(str));
 }
 
 void
 ObjectProperties::on_para_y_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_para_y(StringUtil::to<float>(str));
+    (*i)->set_para_y(strut::from_string<float>(str));
 }
 
 void
 ObjectProperties::on_scroll_x_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_scroll_x(StringUtil::to<float>(str));
+    (*i)->set_scroll_x(strut::from_string<float>(str));
 }
 
 void
 ObjectProperties::on_scroll_y_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_scroll_y(StringUtil::to<float>(str));
+    (*i)->set_scroll_y(strut::from_string<float>(str));
 }
 
 void
 ObjectProperties::on_release_rate_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_release_rate(StringUtil::to<int>(str));
+    (*i)->set_release_rate(strut::from_string<int>(str));
 }
 
 void
@@ -669,7 +670,7 @@ ObjectProperties::on_color_r_change(const std::string& str)
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
     Color color = (*i)->get_color();
-    color.r = static_cast<uint8_t>(StringUtil::to<int>(str));
+    color.r = static_cast<uint8_t>(strut::from_string<int>(str));
     (*i)->set_color(color);
   }
 }
@@ -680,7 +681,7 @@ ObjectProperties::on_color_g_change(const std::string& str)
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
     Color color = (*i)->get_color();
-    color.g = static_cast<uint8_t>(StringUtil::to<int>(str));
+    color.g = static_cast<uint8_t>(strut::from_string<int>(str));
     (*i)->set_color(color);
   }
 }
@@ -691,7 +692,7 @@ ObjectProperties::on_color_b_change(const std::string& str)
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
     Color color = (*i)->get_color();
-    color.b = static_cast<uint8_t>(StringUtil::to<int>(str));
+    color.b = static_cast<uint8_t>(strut::from_string<int>(str));
     (*i)->set_color(color);
   }
 }
@@ -702,7 +703,7 @@ ObjectProperties::on_color_a_change(const std::string& str)
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
     Color color = (*i)->get_color();
-    color.a = static_cast<uint8_t>(StringUtil::to<int>(str));
+    color.a = static_cast<uint8_t>(strut::from_string<int>(str));
     (*i)->set_color(color);
   }
 }
@@ -712,7 +713,7 @@ ObjectProperties::on_small_stars_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
-    (*i)->set_small_stars(StringUtil::to<int>(str));
+    (*i)->set_small_stars(strut::from_string<int>(str));
   }
 }
 
@@ -721,7 +722,7 @@ ObjectProperties::on_middle_stars_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
-    (*i)->set_middle_stars(StringUtil::to<int>(str));
+    (*i)->set_middle_stars(strut::from_string<int>(str));
   }
 }
 
@@ -730,14 +731,14 @@ ObjectProperties::on_large_stars_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
-    (*i)->set_large_stars(StringUtil::to<int>(str));
+    (*i)->set_large_stars(strut::from_string<int>(str));
   }
 }
 
 void
 ObjectProperties::on_repeat_change(const std::string& str)
 {
-  int r = StringUtil::to<int>(str);
+  int r = strut::from_string<int>(str);
   if (r <= 0)
     r = 1;
   for(auto i = objects.begin(); i != objects.end(); ++i)
@@ -792,7 +793,7 @@ void
 ObjectProperties::on_height_change(const std::string& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_height(StringUtil::to<int>(str));
+    (*i)->set_height(strut::from_string<int>(str));
 }
 
 void
