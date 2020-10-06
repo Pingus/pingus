@@ -27,7 +27,6 @@
 #include "pingus/game_time.hpp"
 #include "pingus/gettext.h"
 #include "pingus/screens/game_session.hpp"
-#include "util/string_util.hpp"
 
 class ResultScreenComponent : public GUI::Component
 {

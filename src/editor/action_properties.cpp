@@ -25,7 +25,6 @@
 #include "editor/editor_level.hpp"
 #include "editor/gui_style.hpp"
 #include "editor/inputbox.hpp"
-#include "util/string_util.hpp"
 
 namespace Editor {
 

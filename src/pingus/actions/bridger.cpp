@@ -24,7 +24,6 @@
 #include "pingus/pingu.hpp"
 #include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"
-#include "util/string_util.hpp"
 
 namespace Actions {
 

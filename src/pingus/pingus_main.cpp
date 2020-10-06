@@ -31,7 +31,6 @@
 #include "pingus/screens/level_menu.hpp"
 #include "pingus/worldmap/worldmap_screen.hpp"
 #include "util/log.hpp"
-#include "util/string_util.hpp"
 #include "util/system.hpp"
 
 #if defined(__APPLE__)

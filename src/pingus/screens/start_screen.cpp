@@ -29,7 +29,6 @@
 #include "pingus/globals.hpp"
 #include "pingus/screens/game_session.hpp"
 #include "pingus/string_format.hpp"
-#include "util/string_util.hpp"
 
 class StartScreenComponent : public GUI::Component
 {

@@ -22,7 +22,6 @@
 #include "util/log.hpp"
 #include "util/pathname.hpp"
 #include "util/raise_exception.hpp"
-#include "util/string_util.hpp"
 
 namespace Input {
 

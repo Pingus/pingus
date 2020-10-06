@@ -24,7 +24,6 @@
 #include "pingus/fonts.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/server.hpp"
-#include "util/string_util.hpp"
 
 ButtonPanel::ButtonPanel(Server* s, const Vector2i& pos) :
   RectComponent(Rect()),

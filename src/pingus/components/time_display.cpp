@@ -16,6 +16,8 @@
 
 #include "pingus/components/time_display.hpp"
 
+#include <algorithm>
+
 #include "engine/display/display.hpp"
 #include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
@@ -25,8 +27,6 @@
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
 #include "util/log.hpp"
-#include "util/string_util.hpp"
-#include <algorithm>
 
 TimeDisplay::TimeDisplay (GameSession* c) :
   server(c->get_server()),

@@ -24,7 +24,6 @@
 #include "util/log.hpp"
 #include "util/reader.hpp"
 #include "util/writer.hpp"
-#include "util/string_util.hpp"
 #include "util/system.hpp"
 
 StatManager* StatManager::instance_ = nullptr;

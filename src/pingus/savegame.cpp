@@ -19,7 +19,6 @@
 #include <strut/case.hpp>
 
 #include "util/writer.hpp"
-#include "util/string_util.hpp"
 
 std::string
 Savegame::status_to_string(S_Status status)

@@ -54,7 +54,6 @@
 #include "util/log.hpp"
 #include "util/pathname.hpp"
 #include "util/raise_exception.hpp"
-#include "util/string_util.hpp"
 
 std::string System::userdir;
 std::string System::default_email;

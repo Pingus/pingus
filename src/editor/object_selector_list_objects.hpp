@@ -20,7 +20,6 @@
 #include <strut/to_string.hpp>
 
 #include "pingus/resource.hpp"
-#include "util/string_util.hpp"
 #include "util/log.hpp"
 
 namespace Editor {

@@ -24,7 +24,6 @@
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_action.hpp"
 #include "pingus/screens/game_session.hpp"
-#include "util/string_util.hpp"
 
 CaptureRectangle::CaptureRectangle(GameSession* session_) :
   session(session_),

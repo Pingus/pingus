@@ -29,7 +29,6 @@
 #include "pingus/gettext.h"
 #include "pingus/groundtype.hpp"
 #include "util/log.hpp"
-#include "util/string_util.hpp"
 
 namespace Editor {
 

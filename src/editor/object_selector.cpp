@@ -30,7 +30,6 @@
 #include "pingus/resource.hpp"
 #include "util/log.hpp"
 #include "util/system.hpp"
-#include "util/string_util.hpp"
 
 namespace Editor {
 

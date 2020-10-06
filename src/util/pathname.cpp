@@ -23,7 +23,6 @@
 
 #include "pingus/path_manager.hpp"
 #include "util/log.hpp"
-#include "util/string_util.hpp"
 #include "util/system.hpp"
 
 Pathname Pathname::tmpfile(const std::string& prefix)

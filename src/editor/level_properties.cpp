@@ -26,7 +26,6 @@
 #include "editor/label.hpp"
 #include "editor/viewport.hpp"
 #include "util/log.hpp"
-#include "util/string_util.hpp"
 #include "pingus/game_time.hpp"
 #include "pingus/gettext.h"
 

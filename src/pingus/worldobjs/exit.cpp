@@ -24,7 +24,6 @@
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"
-#include "util/string_util.hpp"
 
 namespace WorldObjs {
 
