@@ -23,9 +23,6 @@ class StringUtil
 {
 private:
 public:
-  static std::string to_lower(const std::string &str);
-  static std::string to_upper(const std::string &str);
-
   template<class T>
   static T to(const std::string& s, const T& val = T())
   {

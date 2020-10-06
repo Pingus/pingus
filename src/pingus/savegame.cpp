@@ -16,6 +16,8 @@
 
 #include "pingus/savegame.hpp"
 
+#include <strut/case.hpp>
+
 #include "util/writer.hpp"
 #include "util/string_util.hpp"
 
@@ -39,7 +41,7 @@ Savegame::status_to_string(S_Status status)
 Savegame::S_Status
 Savegame::string_to_status (std::string str)
 {
-  str = StringUtil::to_lower(str);
+  str = strut::tolower(str);
   if (str == "accessible")
     return ACCESSIBLE;
   else if (str == "finished")
