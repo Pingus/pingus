@@ -20,9 +20,10 @@
 #include <stdexcept>
 #include <fmt/format.h>
 
+#include <logmich/log.hpp>
+
 #include "engine/display/blitter.hpp"
 #include "math/rect.hpp"
-#include "util/log.hpp"
 #include "util/raise_exception.hpp"
 
 class SurfaceImpl

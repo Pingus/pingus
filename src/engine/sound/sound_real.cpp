@@ -19,9 +19,10 @@
 #include <SDL.h>
 #include <stdexcept>
 
+#include <logmich/log.hpp>
+
 #include "engine/sound/sound_res_mgr.hpp"
 #include "pingus/globals.hpp"
-#include "util/log.hpp"
 #include "util/raise_exception.hpp"
 
 namespace Sound {

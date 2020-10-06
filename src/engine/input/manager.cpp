@@ -19,7 +19,6 @@
 #include <stdexcept>
 
 #include "engine/input/driver_factory.hpp"
-#include "util/log.hpp"
 #include "util/pathname.hpp"
 #include "util/raise_exception.hpp"
 

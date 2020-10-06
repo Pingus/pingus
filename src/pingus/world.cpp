@@ -18,6 +18,8 @@
 
 #include <algorithm>
 
+#include <logmich/log.hpp>
+
 #include "engine/display/scene_context.hpp"
 #include "engine/sound/sound.hpp"
 #include "pingus/collision_map.hpp"
@@ -31,7 +33,6 @@
 #include "pingus/pingus_level.hpp"
 #include "pingus/worldobj_factory.hpp"
 #include "pingus/worldobjs/entrance.hpp"
-#include "util/log.hpp"
 
 World::World(const PingusLevel& plf) :
   ambient_light(Color(plf.get_ambient_light())),

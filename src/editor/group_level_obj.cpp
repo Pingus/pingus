@@ -16,9 +16,10 @@
 
 #include "editor/group_level_obj.hpp"
 
+#include <logmich/log.hpp>
+
 #include "pingus/prefab_file.hpp"
 #include "editor/level_obj_factory.hpp"
-#include "util/log.hpp"
 #include "util/reader.hpp"
 
 namespace Editor {

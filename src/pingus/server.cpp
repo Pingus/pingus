@@ -19,10 +19,11 @@
 #include <fstream>
 #include <time.h>
 
+#include <logmich/log.hpp>
+
 #include "pingus/goal_manager.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/world.hpp"
-#include "util/log.hpp"
 #include "util/writer.hpp"
 #include "util/system.hpp"
 

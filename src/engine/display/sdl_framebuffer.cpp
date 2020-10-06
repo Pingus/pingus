@@ -19,8 +19,9 @@
 #include <SDL_image.h>
 #include <sstream>
 
+#include <logmich/log.hpp>
+
 #include "engine/display/sdl_framebuffer_surface_impl.hpp"
-#include "util/log.hpp"
 
 namespace {
 

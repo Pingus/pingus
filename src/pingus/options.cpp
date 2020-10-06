@@ -18,9 +18,10 @@
 
 #include <stdexcept>
 
+#include <logmich/log.hpp>
+
 #include "tinygettext/language.hpp"
 #include "util/reader.hpp"
-#include "util/log.hpp"
 #include "util/pathname.hpp"
 #include "util/raise_exception.hpp"
 #include "util/reader.hpp"

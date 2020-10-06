@@ -16,6 +16,8 @@
 
 #include "pingus/config_manager.hpp"
 
+#include <logmich/log.hpp>
+
 #include "engine/display/display.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "engine/sound/sound.hpp"
@@ -23,7 +25,6 @@
 #include "pingus/globals.hpp"
 #include "pingus/options.hpp"
 #include "tinygettext/dictionary_manager.hpp"
-#include "util/log.hpp"
 #include "util/system.hpp"
 
 ConfigManager config_manager;

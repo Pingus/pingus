@@ -16,6 +16,7 @@
 
 #include "editor/object_properties.hpp"
 
+#include <logmich/log.hpp>
 #include <strut/from_string.hpp>
 #include <strut/to_string.hpp>
 
@@ -28,7 +29,6 @@
 #include "editor/level_obj.hpp"
 #include "pingus/gettext.h"
 #include "pingus/groundtype.hpp"
-#include "util/log.hpp"
 
 namespace Editor {
 

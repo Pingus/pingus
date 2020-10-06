@@ -19,7 +19,6 @@
 #include "editor/gui_style.hpp"
 #include "pingus/gettext.h"
 #include "pingus/fonts.hpp"
-#include "util/log.hpp"
 
 namespace Editor {
 

@@ -21,6 +21,8 @@
 #include <sstream>
 #include <stdexcept>
 
+#include <logmich/log.hpp>
+
 #include "engine/display/opengl/opengl_framebuffer_surface_impl.hpp"
 #include "util/raise_exception.hpp"
 

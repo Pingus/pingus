@@ -20,12 +20,13 @@
 #include <algorithm>
 #include <sstream>
 
+#include <logmich/log.hpp>
+
 #include "editor/level_obj.hpp"
 #include "editor/level_obj_factory.hpp"
 #include "editor/generic_level_obj.hpp"
 #include "pingus/pingus_level.hpp"
 #include "pingus/prefab_file.hpp"
-#include "util/log.hpp"
 #include "util/system.hpp"
 #include "util/writer.hpp"
 

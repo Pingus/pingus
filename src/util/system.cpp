@@ -50,8 +50,9 @@
 #define F_OK   0
 #endif
 
+#include <logmich/log.hpp>
+
 #include "pingus/globals.hpp"
-#include "util/log.hpp"
 #include "util/pathname.hpp"
 #include "util/raise_exception.hpp"
 

@@ -17,12 +17,13 @@
 
 #include "editor/viewport.hpp"
 
+#include <logmich/log.hpp>
+
 #include "editor/editor_level.hpp"
 #include "editor/editor_screen.hpp"
 #include "editor/level_obj.hpp"
 #include "editor/group_level_obj.hpp"
 #include "engine/display/display.hpp"
-#include "util/log.hpp"
 
 namespace Editor {
 

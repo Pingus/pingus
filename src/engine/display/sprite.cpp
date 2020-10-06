@@ -19,7 +19,6 @@
 #include "engine/display/sprite_description.hpp"
 #include "engine/display/sprite_impl.hpp"
 #include "pingus/resource.hpp"
-#include "util/log.hpp"
 
 Sprite::Sprite() :
   impl()

@@ -18,13 +18,13 @@
 
 #include <string_view>
 
+#include <logmich/log.hpp>
 #include <strut/utf8.hpp>
 #include <strut/split.hpp>
 
 #include "engine/display/display.hpp"
 #include "engine/display/font_description.hpp"
 #include "engine/display/framebuffer.hpp"
-#include "util/log.hpp"
 
 class FontImpl
 {

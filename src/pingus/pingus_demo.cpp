@@ -20,7 +20,6 @@
 
 #include "util/reader.hpp"
 #include "util/pathname.hpp"
-#include "util/log.hpp"
 #include "util/raise_exception.hpp"
 
 PingusDemo::PingusDemo(const Pathname& pathname) :

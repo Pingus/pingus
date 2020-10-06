@@ -16,6 +16,7 @@
 
 #include "util/sexpr_reader_impl.hpp"
 
+#include <logmich/log.hpp>
 #include <sexp/util.hpp>
 #include <sexp/io.hpp>
 
@@ -26,7 +27,6 @@
 #include "util/reader.hpp"
 #include "util/reader_impl.hpp"
 #include "util/raise_exception.hpp"
-#include "util/log.hpp"
 
 SExprReaderObjectImpl::SExprReaderObjectImpl(sexp::Value const& sx) :
   m_sx(sx) // FIXME: all this copying is unnecessary

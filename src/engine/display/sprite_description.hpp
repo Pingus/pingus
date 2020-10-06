@@ -23,7 +23,6 @@
 #include "math/size.hpp"
 #include "math/vector2i.hpp"
 #include "util/reader.hpp"
-#include "util/log.hpp"
 #include "util/pathname.hpp"
 
 class SpriteDescription;

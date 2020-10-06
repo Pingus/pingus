@@ -16,6 +16,8 @@
 
 #include "pingus/worldmap/story_dot.hpp"
 
+#include <logmich/log.hpp>
+
 #include "engine/display/drawing_context.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "pingus/fonts.hpp"
@@ -23,7 +25,6 @@
 #include "pingus/screens/story_screen.hpp"
 #include "util/reader.hpp"
 #include "util/reader.hpp"
-#include "util/log.hpp"
 #include "util/pathname.hpp"
 
 namespace WorldmapNS {

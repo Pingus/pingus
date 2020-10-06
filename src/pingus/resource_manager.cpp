@@ -21,7 +21,6 @@
 
 #include "engine/display/sprite_description.hpp"
 #include "pingus/globals.hpp"
-#include "util/log.hpp"
 #include "util/system.hpp"
 
 ResourceManager::ResourceManager() :

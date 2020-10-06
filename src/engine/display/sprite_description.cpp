@@ -15,7 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "engine/display/sprite_description.hpp"
-#include "util/log.hpp"
+
+#include <logmich/log.hpp>
 
 SpriteDescriptionPtr
 SpriteDescription::from_file(const Pathname& path)

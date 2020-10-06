@@ -16,8 +16,9 @@
 
 #include "pingus/collision_mask.hpp"
 
+#include <logmich/log.hpp>
+
 #include "pingus/resource.hpp"
-#include "util/log.hpp"
 
 CollisionMask::CollisionMask() :
   surface(),

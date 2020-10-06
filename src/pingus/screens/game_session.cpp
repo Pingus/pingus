@@ -16,6 +16,8 @@
 
 #include "pingus/screens/game_session.hpp"
 
+#include <logmich/log.hpp>
+
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/screen/screen_manager.hpp"
@@ -32,7 +34,6 @@
 #include "pingus/savegame_manager.hpp"
 #include "pingus/screens/result_screen.hpp"
 #include "pingus/world.hpp"
-#include "util/log.hpp"
 
 GameSession::GameSession(const PingusLevel& arg_plf, bool arg_show_result_screen) :
   plf(arg_plf),

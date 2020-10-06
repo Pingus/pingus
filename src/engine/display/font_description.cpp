@@ -18,6 +18,8 @@
 
 #include <stdexcept>
 
+#include <logmich/log.hpp>
+
 #include "util/reader.hpp"
 #include "util/raise_exception.hpp"
 

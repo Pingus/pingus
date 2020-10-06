@@ -21,7 +21,6 @@
 #include <strut/from_string.hpp>
 #include <strut/to_string.hpp>
 
-#include "util/log.hpp"
 #include "util/reader.hpp"
 #include "util/writer.hpp"
 #include "util/system.hpp"

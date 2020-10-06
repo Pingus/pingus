@@ -14,12 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "editor/object_selector_list.hpp"
+
+#include <logmich/log.hpp>
+
 #include "editor/editor_level.hpp"
 #include "editor/editor_screen.hpp"
 #include "editor/object_selector.hpp"
 #include "editor/object_selector_set.hpp"
 #include "editor/viewport.hpp"
-#include "util/log.hpp"
 
 namespace Editor {
 

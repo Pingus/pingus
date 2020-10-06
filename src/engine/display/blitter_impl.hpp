@@ -17,9 +17,10 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_BLITTER_IMPL_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_BLITTER_IMPL_HPP
 
+#include <logmich/log.hpp>
+
 #include "blitter.hpp"
 #include "engine/display/surface.hpp"
-#include "util/log.hpp"
 
 /** A collection of helper functions for the blitter class */
 namespace BlitterImpl {

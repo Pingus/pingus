@@ -16,11 +16,12 @@
 
 #include "pingus/resource.hpp"
 
+#include <logmich/log.hpp>
+
 #include "engine/display/font_description.hpp"
 #include "engine/display/sprite_description.hpp"
 #include "engine/display/sprite_description.hpp"
 #include "pingus/path_manager.hpp"
-#include "util/log.hpp"
 #include "util/pathname.hpp"
 
 ResourceManager Resource::resmgr;

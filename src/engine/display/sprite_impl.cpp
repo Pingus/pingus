@@ -16,10 +16,11 @@
 
 #include "engine/display/sprite_impl.hpp"
 
+#include <logmich/log.hpp>
+
 #include "engine/display/display.hpp"
 #include "engine/display/framebuffer.hpp"
 #include "engine/display/sprite_description.hpp"
-#include "util/log.hpp"
 
 namespace {
 

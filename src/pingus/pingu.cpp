@@ -19,6 +19,8 @@
 #include <sstream>
 #include <utility>
 
+#include <logmich/log.hpp>
+
 #include "engine/display/scene_context.hpp"
 #include "pingus/collision_map.hpp"
 #include "pingus/fonts.hpp"
@@ -48,8 +50,6 @@
 #include "pingus/actions/superman.hpp"
 #include "pingus/actions/waiter.hpp"
 #include "pingus/actions/walker.hpp"
-
-#include "util/log.hpp"
 
 using namespace Actions;
 

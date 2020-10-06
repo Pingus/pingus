@@ -19,8 +19,10 @@
 #include <sstream>
 #include <fstream>
 #include <json/reader.h>
-#include <sexp/parser.hpp>
 #include <utility>
+
+#include <logmich/log.hpp>
+#include <sexp/parser.hpp>
 
 #include "math/size.hpp"
 #include "pingus/res_descriptor.hpp"
@@ -28,7 +30,6 @@
 #include "util/pathname.hpp"
 #include "util/sexpr_reader_impl.hpp"
 #include "util/json_reader_impl.hpp"
-#include "util/log.hpp"
 
 ReaderMapping::ReaderMapping(std::shared_ptr<ReaderMappingImpl> impl_) :
   m_impl(std::move(impl_))

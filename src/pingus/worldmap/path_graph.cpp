@@ -21,7 +21,6 @@
 #include "pingus/worldmap/dot_factory.hpp"
 #include "pingus/worldmap/path_drawable.hpp"
 #include "pingus/worldmap/worldmap.hpp"
-#include "util/log.hpp"
 #include "util/raise_exception.hpp"
 
 namespace WorldmapNS {

@@ -28,7 +28,6 @@
 #include "pingus/gettext.h"
 #include "pingus/globals.hpp"
 #include "pingus/resource.hpp"
-#include "util/log.hpp"
 #include "util/system.hpp"
 
 namespace Editor {

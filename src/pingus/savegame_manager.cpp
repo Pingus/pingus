@@ -19,7 +19,8 @@
 #include <sstream>
 #include <assert.h>
 
-#include "util/log.hpp"
+#include <logmich/log.hpp>
+
 #include "util/reader.hpp"
 #include "util/writer.hpp"
 #include "util/system.hpp"

@@ -17,13 +17,14 @@
 #include "engine/display/drawing_context.hpp"
 
 #include <algorithm>
+
 #include <geom/offset.hpp>
+#include <logmich/log.hpp>
 
 #include "engine/display/display.hpp"
 #include "engine/display/font.hpp"
 #include "engine/display/framebuffer.hpp"
 #include "engine/display/sprite.hpp"
-#include "util/log.hpp"
 
 struct DrawingRequestsSorter
 {

@@ -21,7 +21,6 @@
 
 #include "engine/display/drawing_context.hpp"
 #include "pingus/resource.hpp"
-#include "util/log.hpp"
 #include "util/raise_exception.hpp"
 
 namespace Editor {

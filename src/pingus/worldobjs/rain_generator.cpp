@@ -16,11 +16,12 @@
 
 #include "pingus/worldobjs/rain_generator.hpp"
 
+#include <logmich/log.hpp>
+
 #include "engine/display/scene_context.hpp"
 #include "engine/sound/sound.hpp"
 #include "pingus/particles/rain_particle_holder.hpp"
 #include "pingus/world.hpp"
-#include "util/log.hpp"
 
 namespace WorldObjs {
 

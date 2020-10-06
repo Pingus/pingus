@@ -21,7 +21,7 @@
 #include <assert.h>
 #include <vector>
 
-#include "util/log.hpp"
+#include <logmich/log.hpp>
 
 namespace WorldmapNS {
 

@@ -16,11 +16,12 @@
 
 #include "pingus/worldobjs/conveyor_belt.hpp"
 
+#include <logmich/log.hpp>
+
 #include "engine/display/scene_context.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"
-#include "util/log.hpp"
 
 namespace WorldObjs {
 

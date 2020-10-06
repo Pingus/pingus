@@ -16,9 +16,10 @@
 
 #include "engine/sound/sound_res_mgr.hpp"
 
+#include <logmich/log.hpp>
+
 #include "pingus/globals.hpp"
 #include "pingus/path_manager.hpp"
-#include "util/log.hpp"
 
 SoundResMgr::SoundMap SoundResMgr::sound_map;
 

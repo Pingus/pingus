@@ -16,8 +16,9 @@
 
 #include "editor/file_list.hpp"
 
+#include <logmich/log.hpp>
+
 #include "editor/gui_style.hpp"
-#include "util/log.hpp"
 #include "pingus/fonts.hpp"
 
 namespace Editor {

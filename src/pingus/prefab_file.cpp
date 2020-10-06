@@ -19,7 +19,6 @@
 #include <stdexcept>
 
 #include "util/reader.hpp"
-#include "util/log.hpp"
 #include "util/raise_exception.hpp"
 #include "util/system.hpp"
 

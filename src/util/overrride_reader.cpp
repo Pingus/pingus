@@ -22,7 +22,6 @@
 
 #include "util/reader.hpp"
 #include "util/reader_impl.hpp"
-#include "util/log.hpp"
 
 class OverrideReaderMappingImpl : public ReaderMappingImpl
 {

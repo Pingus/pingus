@@ -18,6 +18,8 @@
 
 #include <stdexcept>
 
+#include <logmich/log.hpp>
+
 #include "pingus/prefab_file.hpp"
 #include "pingus/worldobjs/conveyor_belt.hpp"
 #include "pingus/worldobjs/entrance.hpp"
@@ -41,7 +43,6 @@
 #include "pingus/worldobjs/switch_door_switch.hpp"
 #include "pingus/worldobjs/teleporter.hpp"
 #include "pingus/worldobjs/teleporter_target.hpp"
-#include "util/log.hpp"
 #include "util/overrride_reader.hpp"
 
 using namespace WorldObjs;

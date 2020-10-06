@@ -21,8 +21,9 @@
 #include <ostream>
 #include <set>
 
+#include <logmich/log.hpp>
+
 #include "pingus/path_manager.hpp"
-#include "util/log.hpp"
 #include "util/system.hpp"
 
 Pathname Pathname::tmpfile(const std::string& prefix)

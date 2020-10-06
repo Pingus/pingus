@@ -18,9 +18,10 @@
 
 #include <stdexcept>
 
+#include <logmich/log.hpp>
+
 #include "pingus/globals.hpp"
 #include "pingus/pingus_level_impl.hpp"
-#include "util/log.hpp"
 #include "util/pathname.hpp"
 #include "util/raise_exception.hpp"
 #include "util/system.hpp"

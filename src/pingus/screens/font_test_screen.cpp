@@ -16,6 +16,7 @@
 
 #include "pingus/screens/font_test_screen.hpp"
 
+#include <logmich/log.hpp>
 #include <strut/to_string.hpp>
 
 #include "engine/display/display.hpp"
@@ -23,7 +24,6 @@
 #include "engine/display/font_description.hpp"
 #include "engine/input/event.hpp"
 #include "pingus/fonts.hpp"
-#include "util/log.hpp"
 
 FontTestScreen::FontTestScreen(const Pathname& fontfile) :
   Screen(Display::get_size()),

@@ -16,7 +16,7 @@
 
 #include "pingus/groundtype.hpp"
 
-#include "util/log.hpp"
+#include <logmich/log.hpp>
 
 Groundtype::GPType
 Groundtype::string_to_type(const std::string& arg_type)

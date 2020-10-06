@@ -17,9 +17,9 @@
 #include "engine/display/null_framebuffer.hpp"
 
 #include <fmt/ostream.h>
-#include <geom/io.hpp>
 
-#include "util/log.hpp"
+#include <geom/io.hpp>
+#include <logmich/log.hpp>
 
 class NullFramebufferSurfaceImpl : public FramebufferSurfaceImpl
 {

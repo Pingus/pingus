@@ -18,9 +18,10 @@
 
 #include <stdexcept>
 
+#include <logmich/log.hpp>
+
 #include "engine/display/scene_context.hpp"
 #include "pingus/collision_map.hpp"
-#include "util/log.hpp"
 
 class MapTile
 {

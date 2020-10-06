@@ -20,6 +20,5 @@
 #include <stdexcept>
 
 #include "engine/display/drawing_context.hpp"
-#include "util/log.hpp"
 
 /* EOF */

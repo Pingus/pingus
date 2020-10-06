@@ -26,7 +26,6 @@
 #include "pingus/screens/game_session.hpp"
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
-#include "util/log.hpp"
 
 TimeDisplay::TimeDisplay (GameSession* c) :
   server(c->get_server()),

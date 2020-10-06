@@ -16,13 +16,14 @@
 
 #include "pingus/worldobjs/switch_door_switch.hpp"
 
+#include <logmich/log.hpp>
+
 #include "engine/display/scene_context.hpp"
 #include "pingus/collision_map.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"
 #include "pingus/worldobjs/switch_door_door.hpp"
-#include "util/log.hpp"
 
 namespace WorldObjs {
 

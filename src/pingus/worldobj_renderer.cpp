@@ -16,9 +16,10 @@
 
 #include "pingus/worldobj_renderer.hpp"
 
+#include <logmich/log.hpp>
+
 #include "pingus/prefab_file.hpp"
 #include "math/vector2f.hpp"
-#include "util/log.hpp"
 
 WorldObjRenderer::WorldObjRenderer() :
   m_draw_op(),

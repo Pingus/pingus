@@ -21,6 +21,8 @@
 #include <functional>
 #include <utility>
 
+#include <logmich/log.hpp>
+
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
 #include "engine/screen/screen_manager.hpp"
@@ -31,7 +33,6 @@
 #include "pingus/pingus_demo.hpp"
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
-#include "util/log.hpp"
 
 static bool false_func() { return false; }
 

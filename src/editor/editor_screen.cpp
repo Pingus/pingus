@@ -19,6 +19,8 @@
 
 #include <sstream>
 
+#include <logmich/log.hpp>
+
 #include "editor/action_properties.hpp"
 #include "editor/editor_level.hpp"
 #include "editor/level_properties.hpp"
@@ -35,7 +37,6 @@
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "pingus/screens/game_session.hpp"
-#include "util/log.hpp"
 
 namespace Editor {
 

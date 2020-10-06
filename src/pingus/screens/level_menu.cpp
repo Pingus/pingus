@@ -20,6 +20,8 @@
 
 #include <utility>
 
+#include <logmich/log.hpp>
+
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
@@ -29,7 +31,6 @@
 #include "pingus/gettext.h"
 #include "pingus/globals.hpp"
 #include "pingus/screens/start_screen.hpp"
-#include "util/log.hpp"
 #include "util/system.hpp"
 
 class LevelMenuAbortButton : public GUI::SurfaceButton

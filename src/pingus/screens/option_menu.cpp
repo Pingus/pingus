@@ -18,6 +18,8 @@
 
 #include <sstream>
 
+#include <logmich/log.hpp>
+
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/screen/screen_manager.hpp"
@@ -29,7 +31,6 @@
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "tinygettext/dictionary_manager.hpp"
-#include "util/log.hpp"
 #include "util/system.hpp"
 
 #define C(x) connections.push_back(x)

@@ -19,6 +19,7 @@
 #include <iostream>
 #include <signal.h>
 
+#include <logmich/log.hpp>
 #include <strut/from_string.hpp>
 
 #include "editor/editor_level.hpp"
@@ -30,7 +31,6 @@
 #include "pingus/screens/pingus_menu.hpp"
 #include "pingus/screens/level_menu.hpp"
 #include "pingus/worldmap/worldmap_screen.hpp"
-#include "util/log.hpp"
 #include "util/system.hpp"
 
 #if defined(__APPLE__)

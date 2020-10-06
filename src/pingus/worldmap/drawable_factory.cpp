@@ -16,8 +16,9 @@
 
 #include "pingus/worldmap/drawable_factory.hpp"
 
+#include <logmich/log.hpp>
+
 #include "pingus/worldmap/sprite_drawable.hpp"
-#include "util/log.hpp"
 
 namespace WorldmapNS {
 

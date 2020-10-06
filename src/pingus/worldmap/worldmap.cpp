@@ -25,7 +25,6 @@
 #include "pingus/worldmap/drawable_factory.hpp"
 #include "pingus/worldmap/level_dot.hpp"
 #include "pingus/worldmap/pingus.hpp"
-#include "util/log.hpp"
 #include "util/writer.hpp"
 #include "util/pathname.hpp"
 

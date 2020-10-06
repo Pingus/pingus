@@ -22,11 +22,12 @@
 
 #include <SDL_opengl.h>
 
+#include <logmich/log.hpp>
+
 #include "engine/display/display.hpp"
 #include "engine/display/framebuffer.hpp"
 #include "engine/display/surface.hpp"
 #include "pingus/gettext.h"
-#include "util/log.hpp"
 #include "util/system.hpp"
 
 // Saves a screenshot to file, it return the filename the screenshot

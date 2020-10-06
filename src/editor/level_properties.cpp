@@ -16,6 +16,7 @@
 
 #include "editor/level_properties.hpp"
 
+#include <logmich/log.hpp>
 #include <strut/from_string.hpp>
 #include <strut/to_string.hpp>
 
@@ -25,7 +26,6 @@
 #include "editor/inputbox.hpp"
 #include "editor/label.hpp"
 #include "editor/viewport.hpp"
-#include "util/log.hpp"
 #include "pingus/game_time.hpp"
 #include "pingus/gettext.h"
 

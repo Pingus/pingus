@@ -19,11 +19,12 @@
 
 #include <vector>
 
+#include <logmich/log.hpp>
+
 #include "engine/input/controller.hpp"
 #include "engine/input/event.hpp"
 #include "math/math.hpp"
 #include "math/vector2f.hpp"
-#include "util/log.hpp"
 
 namespace Input {
 

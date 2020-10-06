@@ -16,8 +16,6 @@
 
 #include "pingus/worldobj.hpp"
 
-#include "util/log.hpp"
-
 World* WorldObj::world;
 
 void

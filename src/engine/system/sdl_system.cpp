@@ -18,10 +18,11 @@
 
 #include <SDL_image.h>
 
+#include <logmich/log.hpp>
+
 #include "engine/display/display.hpp"
 #include "math/size.hpp"
 #include "util/pathname.hpp"
-#include "util/log.hpp"
 
 SDLSystem::SDLSystem()
 {

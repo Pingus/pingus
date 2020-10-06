@@ -21,8 +21,6 @@
 #include <string>
 #include <stdexcept>
 
-#include "util/log.hpp"
-
 inline std::string raise_log_pretty_print(const std::string& str)
 {
   // FIXME: very basic, might not work with complex return types

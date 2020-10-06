@@ -16,9 +16,10 @@
 
 #include "engine/gui/gui_manager.hpp"
 
+#include <logmich/log.hpp>
+
 #include "engine/display/display.hpp"
 #include "pingus/globals.hpp"
-#include "util/log.hpp"
 
 using namespace Input;
 

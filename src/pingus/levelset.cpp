@@ -18,11 +18,12 @@
 
 #include <stdexcept>
 
+#include <logmich/log.hpp>
+
 #include "math/math.hpp"
 #include "pingus/plf_res_mgr.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/savegame_manager.hpp"
-#include "util/log.hpp"
 #include "util/raise_exception.hpp"
 
 std::unique_ptr<Levelset>

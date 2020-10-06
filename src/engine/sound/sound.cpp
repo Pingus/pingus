@@ -18,11 +18,12 @@
 
 #include <assert.h>
 
+#include <logmich/log.hpp>
+
 #include "engine/sound/sound_dummy.hpp"
 #include "engine/sound/sound_real.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/path_manager.hpp"
-#include "util/log.hpp"
 
 namespace Sound {
 

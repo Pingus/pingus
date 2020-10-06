@@ -16,13 +16,14 @@
 
 #include "pingus/global_event.hpp"
 
+#include <logmich/log.hpp>
+
 #include "engine/display/screenshot.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "pingus/config_manager.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/screens/addon_menu.hpp"
 #include "pingus/screens/option_menu.hpp"
-#include "util/log.hpp"
 
 GlobalEvent global_event;
 

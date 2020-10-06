@@ -19,6 +19,8 @@
 #include <fstream>
 #include <sstream>
 
+#include <logmich/log.hpp>
+
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
@@ -27,7 +29,6 @@
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "pingus/stat_manager.hpp"
-#include "util/log.hpp"
 #include "util/pathname.hpp"
 
 class CreditsOkButton

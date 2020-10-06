@@ -18,7 +18,6 @@
 
 #include "engine/display/display.hpp"
 #include "engine/input/manager.hpp"
-#include "util/log.hpp"
 
 namespace Input {
 

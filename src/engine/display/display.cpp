@@ -19,14 +19,15 @@
 #include <stdexcept>
 #include <algorithm>
 #include <fmt/ostream.h>
+
 #include <geom/io.hpp>
+#include <logmich/log.hpp>
 
 #include "engine/display/sdl_framebuffer.hpp"
 #include "engine/screen/screen_manager.hpp"
 #include "pingus/globals.hpp"
 #include "engine/display/opengl/opengl_framebuffer.hpp"
 #include "engine/display/null_framebuffer.hpp"
-#include "util/log.hpp"
 
 std::unique_ptr<Framebuffer> Display::s_framebuffer;
 

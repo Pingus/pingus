@@ -16,12 +16,13 @@
 
 #include "pingus/worldobjs/teleporter.hpp"
 
+#include <logmich/log.hpp>
+
 #include "engine/display/scene_context.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"
 #include "pingus/worldobjs/teleporter_target.hpp"
-#include "util/log.hpp"
 
 namespace WorldObjs {
 
