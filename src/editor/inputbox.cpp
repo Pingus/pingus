@@ -16,6 +16,8 @@
 
 #include "editor/inputbox.hpp"
 
+#include <logmich/log.hpp>
+
 #include "util/utf8.hpp"
 #include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
@@ -63,13 +65,21 @@ Inputbox::on_key_pressed(const Input::KeyboardEvent& ev)
     if (!text.empty())
     {
       text = text.substr(0, text.size()-1);
-      on_change(text);
+      try {
+        on_change(text);
+      } catch(std::exception const& err) {
+        log_error(err.what());
+      }
     }
   }
   else if (ev.keysym.sym == SDLK_RETURN) // enter
   {
-    on_change(text);
-    on_enter(text);
+    try {
+      on_change(text);
+      on_enter(text);
+    } catch(std::exception const& err) {
+      log_error(err.what());
+    }
   }
 }
 
