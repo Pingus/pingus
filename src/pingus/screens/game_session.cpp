@@ -63,10 +63,10 @@ GameSession::GameSession(const PingusLevel& arg_plf, bool arg_show_result_screen
 
   playfield = gui_manager->create<Playfield>(
     get_server(), this,
-    Rect(geom::ipoint(Math::max((Display::get_width()  - world_width)/2,  0),
-                  Math::max((Display::get_height() - world_height)/2, 0)),
-         Size(Math::min(Display::get_width(),  world_width),
-              Math::min(Display::get_height(), world_height))));
+    Rect(geom::ipoint(std::max((Display::get_width()  - world_width)/2,  0),
+                  std::max((Display::get_height() - world_height)/2, 0)),
+         Size(std::min(Display::get_width(),  world_width),
+              std::min(Display::get_height(), world_height))));
 
   pcounter = gui_manager->create<PingusCounter>(get_server());
   small_map = gui_manager->create<SmallMap>(get_server(), playfield, Rect(geom::ipoint(5, size.height() - 105), Size(175, 100)));
@@ -371,10 +371,10 @@ GameSession::resize(const Size& size_)
   int world_width  = server->get_world()->get_width();
   int world_height = server->get_world()->get_height();
 
-  playfield->set_rect(Rect(geom::ipoint(Math::max((size.width()  - world_width)/2,  0),
-                                    Math::max((size.height() - world_height)/2, 0)),
-                           Size(Math::min(size.width(),  world_width),
-                                Math::min(size.height(), world_height))));
+  playfield->set_rect(Rect(geom::ipoint(std::max((size.width()  - world_width)/2,  0),
+                                        std::max((size.height() - world_height)/2, 0)),
+                           Size(std::min(size.width(),  world_width),
+                                std::min(size.height(), world_height))));
 
   armageddon_button->set_rect(Rect(geom::ipoint(size.width() - 40, size.height() - 62),
                                    Size(38, 60)));

@@ -211,7 +211,7 @@ StoryScreenComponent::update(float delta)
     std::string::size_type len = static_cast<std::string::size_type>(20.0f * time_passed);
     std::string::size_type text_len = strut::utf8::length(current_page.text);
 
-    display_text = strut::utf8::substr(current_page.text, 0, Math::min(text_len, len));
+    display_text = strut::utf8::substr(current_page.text, 0, std::min(text_len, len));
 
     if (text_len < len)
     {

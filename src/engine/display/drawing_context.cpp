@@ -198,10 +198,10 @@ DrawingContext::~DrawingContext()
 void
 DrawingContext::render(Framebuffer& fb, const Rect& parent_rect)
 {
-  Rect this_rect(Math::max(rect.left()   + parent_rect.left(), parent_rect.left()),
-                 Math::max(rect.top()    + parent_rect.top(),  parent_rect.top()),
-                 Math::min(rect.right()  + parent_rect.left(), parent_rect.right()),
-                 Math::min(rect.bottom() + parent_rect.top(),  parent_rect.bottom()));
+  Rect this_rect(std::max(rect.left()   + parent_rect.left(), parent_rect.left()),
+                 std::max(rect.top()    + parent_rect.top(),  parent_rect.top()),
+                 std::min(rect.right()  + parent_rect.left(), parent_rect.right()),
+                 std::min(rect.bottom() + parent_rect.top(),  parent_rect.bottom()));
 
   if (do_clipping)
     fb.push_cliprect(this_rect);

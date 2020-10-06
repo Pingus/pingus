@@ -182,10 +182,10 @@ OpenGLFramebuffer::push_cliprect(const Rect& rect)
   }
   else
   {
-    cliprect_stack.push_back(Rect(Math::max(cliprect_stack.back().left(),   rect.left()),
-                                  Math::max(cliprect_stack.back().top(),    rect.top()),
-                                  Math::min(cliprect_stack.back().right(),  rect.right()),
-                                  Math::min(cliprect_stack.back().bottom(), rect.bottom())));
+    cliprect_stack.push_back(Rect(std::max(cliprect_stack.back().left(),   rect.left()),
+                                  std::max(cliprect_stack.back().top(),    rect.top()),
+                                  std::min(cliprect_stack.back().right(),  rect.right()),
+                                  std::min(cliprect_stack.back().bottom(), rect.bottom())));
   }
 
   glScissor(cliprect_stack.back().left(),
