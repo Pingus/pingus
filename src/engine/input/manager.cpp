@@ -110,7 +110,7 @@ Manager::create_controller(const Pathname& filename)
         }
         else
         {
-          if (StringUtil::has_suffix(key, "pointer"))
+          if (key.ends_with("pointer"))
           {
             int id = desc.get_definition(key).id;
             ControllerPointer* ctrl_pointer = controller->get_pointer(id);
@@ -127,7 +127,7 @@ Manager::create_controller(const Pathname& filename)
               }
             }
           }
-          else if (StringUtil::has_suffix(key, "scroller"))
+          else if (key.ends_with("scroller"))
           {
             int id = desc.get_definition(key).id;
             ControllerScroller* ctrl_scroller = controller->get_scroller(id);
@@ -144,7 +144,7 @@ Manager::create_controller(const Pathname& filename)
               }
             }
           }
-          else if (StringUtil::has_suffix(key, "button"))
+          else if (key.ends_with("button"))
           {
             int id = desc.get_definition(key).id;
             ControllerButton* ctrl_button = controller->get_button(id);
@@ -161,7 +161,7 @@ Manager::create_controller(const Pathname& filename)
               }
             }
           }
-          else if (StringUtil::has_suffix(key, "axis"))
+          else if (key.ends_with("axis"))
           {
             int id = desc.get_definition(key).id;
             ControllerAxis* ctrl_axis = controller->get_axis(id);
@@ -178,7 +178,7 @@ Manager::create_controller(const Pathname& filename)
               }
             }
           }
-          else if (StringUtil::has_suffix(key, "keyboard"))
+          else if (key.ends_with("keyboard"))
           {
             int id = desc.get_definition(key).id;
             ControllerKeyboard* ctrl_keyboard = controller->get_keyboard(id);

@@ -61,22 +61,6 @@ public:
     return str.str();
   }
 
-  static bool has_suffix(const std::string& str, const std::string& suffix)
-  {
-    if (str.length() >= suffix.length())
-      return str.compare(str.length() - suffix.length(), suffix.length(), suffix) == 0;
-    else
-      return false;
-  }
-
-  static bool has_prefix(const std::string& str, const std::string& prefix)
-  {
-    if (str.length() < prefix.length())
-      return false;
-    else
-      return str.compare(0, prefix.length(), prefix) == 0;
-  }
-
 private:
   StringUtil ();
   StringUtil (const StringUtil&);

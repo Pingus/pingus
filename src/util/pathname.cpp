@@ -275,7 +275,7 @@ std::ostream& operator<< (std::ostream& os, const Pathname& p)
 bool
 Pathname::has_extension(const std::string& ext) const
 {
-  return StringUtil::has_suffix(pathname, ext);
+  return pathname.ends_with(ext);
 }
 
 bool

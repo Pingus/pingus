@@ -42,7 +42,7 @@ ResourceManager::get_section(const std::string& name)
 
   for (auto i = m_resources.begin(); i != m_resources.end(); ++i)
   {
-    if (StringUtil::has_prefix(*i, name))
+    if (i->starts_with(name))
     {
       lst.push_back(*i);
     }
