@@ -23,7 +23,6 @@
 #include "editor/group_level_obj.hpp"
 #include "engine/display/display.hpp"
 #include "util/log.hpp"
-#include "util/utf8.hpp"
 
 namespace Editor {
 

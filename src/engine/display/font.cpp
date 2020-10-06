@@ -16,13 +16,14 @@
 
 #include "engine/display/font.hpp"
 
+#include <strut/utf8.hpp>
+
 #include "engine/display/display.hpp"
 #include "engine/display/font_description.hpp"
 #include "engine/display/framebuffer.hpp"
 #include "util/line_iterator.hpp"
 #include "util/log.hpp"
 #include "util/mem.hpp"
-#include "util/utf8.hpp"
 
 class FontImpl
 {
@@ -105,7 +106,7 @@ public:
     float dstx = float(x - offset.x());
     float dsty = float(y - offset.y());
 
-    UTF8::iterator i(text);
+    strut::utf8::iterator i(text);
     while(i.next())
     {
       const uint32_t& unicode = *i;
@@ -142,7 +143,7 @@ public:
     float width = 0.0f;
     float last_width = 0;
 
-    UTF8::iterator i(text);
+    strut::utf8::iterator i(text);
     while(i.next())
     {
       const uint32_t& unicode = *i;

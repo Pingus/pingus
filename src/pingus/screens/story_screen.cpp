@@ -16,6 +16,8 @@
 
 #include "pingus/screens/story_screen.hpp"
 
+#include <strut/utf8.hpp>
+
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "engine/gui/surface_button.hpp"
@@ -25,7 +27,6 @@
 #include "pingus/gettext.h"
 #include "pingus/globals.hpp"
 #include "pingus/screens/credits.hpp"
-#include "util/utf8.hpp"
 
 class StoryScreenComponent : public GUI::Component
 {
@@ -208,9 +209,9 @@ StoryScreenComponent::update(float delta)
   if (!page_displayed_completly)
   {
     std::string::size_type len = static_cast<std::string::size_type>(20.0f * time_passed);
-    std::string::size_type text_len = UTF8::length(current_page.text);
+    std::string::size_type text_len = strut::utf8::length(current_page.text);
 
-    display_text = UTF8::substr(current_page.text, 0, Math::min(text_len, len));
+    display_text = strut::utf8::substr(current_page.text, 0, Math::min(text_len, len));
 
     if (text_len < len)
     {

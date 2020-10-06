@@ -18,7 +18,6 @@
 
 #include <logmich/log.hpp>
 
-#include "util/utf8.hpp"
 #include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
 

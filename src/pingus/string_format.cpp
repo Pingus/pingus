@@ -18,25 +18,24 @@
 
 #include <sstream>
 
+#include <strut/utf8.hpp>
+
 #include "engine/display/font.hpp"
-#include "util/utf8.hpp"
 
 std::string
-StringFormat::break_line (const std::string& text_, int width, const Font& font)
+StringFormat::break_line(const std::string& text, int width, const Font& font)
 {
-  std::string text = text_;
-
-  UTF8::iterator beg(text);
+  strut::utf8::iterator beg(text);
   float line_width = 0;
   std::ostringstream out;
 
-  UTF8::iterator it(text);
+  strut::utf8::iterator it(text);
   while(it.next())
   {
-    std::string word = UTF8::substr(beg, it+1);
+    std::string word = strut::utf8::substr(beg, it+1);
     float word_width = font.get_width(word);
 
-    if (UTF8::is_linebreak_character(*it))
+    if (strut::utf8::is_linebreak_character(*it))
     {
       if ((line_width + word_width) > static_cast<float>(width))
       {
@@ -57,7 +56,7 @@ StringFormat::break_line (const std::string& text_, int width, const Font& font)
     }
   }
 
-  std::string word = UTF8::substr(beg, UTF8::iterator(text, text.end()));
+  std::string word = strut::utf8::substr(beg, strut::utf8::iterator(text, text.end()));
   float word_width = font.get_width(word);
   if ((line_width + word_width) > static_cast<float>(width))
   {
