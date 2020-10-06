@@ -23,7 +23,6 @@
 #include "engine/display/framebuffer.hpp"
 #include "util/line_iterator.hpp"
 #include "util/log.hpp"
-#include "util/mem.hpp"
 
 class FontImpl
 {
@@ -66,7 +65,7 @@ public:
         {
           if (glyphs[i->unicode] == nullptr)
           {
-            glyphs[i->unicode] = util::make_unique<GlyphDescription>(*i);
+            glyphs[i->unicode] = std::make_unique<GlyphDescription>(*i);
             glyphs[i->unicode]->image = static_cast<int>(framebuffer_surfaces.size()) - 1;
           }
           else

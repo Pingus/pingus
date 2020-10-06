@@ -28,7 +28,6 @@
 #include "util/log.hpp"
 #include "util/writer.hpp"
 #include "util/pathname.hpp"
-#include "util/mem.hpp"
 
 namespace WorldmapNS {
 
@@ -69,7 +68,7 @@ Worldmap::Worldmap(const Pathname& filename) :
   default_node = path_graph->lookup_node(worldmap.get_default_node());
   final_node   = path_graph->lookup_node(worldmap.get_final_node());
 
-  auto pingus_up = util::make_unique<Pingus>(path_graph.get());
+  auto pingus_up = std::make_unique<Pingus>(path_graph.get());
   pingus = pingus_up.get();
   set_starting_node();
   add_drawable(std::move(pingus_up));

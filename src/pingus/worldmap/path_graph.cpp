@@ -23,7 +23,6 @@
 #include "pingus/worldmap/worldmap.hpp"
 #include "util/log.hpp"
 #include "util/raise_exception.hpp"
-#include "util/mem.hpp"
 
 namespace WorldmapNS {
 
@@ -103,8 +102,8 @@ PathGraph::parse_edges(const ReaderCollection& collection)
       reader.read_string("source", source);
       reader.read_string("destination", destination);
 
-      auto path = util::make_unique<Path>();
-      auto path2 = util::make_unique<Path>();
+      auto path = std::make_unique<Path>();
+      auto path2 = std::make_unique<Path>();
 
       std::vector<Vector2f> positions;
       std::vector<float> z_indexes;
@@ -126,7 +125,7 @@ PathGraph::parse_edges(const ReaderCollection& collection)
       float cost = full_path.length();
 
       if (worldmap && globals::developer_mode)
-        worldmap->add_drawable(util::make_unique<PathDrawable>(full_path));
+        worldmap->add_drawable(std::make_unique<PathDrawable>(full_path));
 
       path2->reverse_insert(*path);
 

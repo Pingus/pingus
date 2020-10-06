@@ -221,13 +221,13 @@ ObjectSelector::scroll_down()
 std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_groundpiece(const std::string& prefix, const std::string& type)
 {
-  auto set = util::make_unique<ObjectSelectorSet>(object_list, 48, 48);
+  auto set = std::make_unique<ObjectSelectorSet>(object_list, 48, 48);
 
   std::vector<std::string> lst = Resource::resmgr.get_section(prefix);
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
   {
     //sprite.scale(48, 48);
-    set->add(util::make_unique<Groundpiece>(*i, type));
+    set->add(std::make_unique<Groundpiece>(*i, type));
   }
 
   return set;
@@ -270,7 +270,7 @@ ObjectSelector::create_hotspot()
 
   std::vector<std::string> lst = Resource::resmgr.get_section("hotspots");
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
-    set->add(util::make_unique<Hotspot>(*i));
+    set->add(std::make_unique<Hotspot>(*i));
 
   return set;
 }
@@ -278,14 +278,14 @@ ObjectSelector::create_hotspot()
 std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_background()
 {
-  auto set = util::make_unique<ObjectSelectorSet>(object_list, 48, 48);
+  auto set = std::make_unique<ObjectSelectorSet>(object_list, 48, 48);
 
-  set->add(util::make_unique<SolidColorBackground>());
-  set->add(util::make_unique<StarfieldBackground>());
+  set->add(std::make_unique<SolidColorBackground>());
+  set->add(std::make_unique<StarfieldBackground>());
 
   std::vector<std::string> lst = Resource::resmgr.get_section("textures");
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
-    set->add(util::make_unique<SurfaceBackground>(*i));
+    set->add(std::make_unique<SurfaceBackground>(*i));
 
   return set;
 }
@@ -293,15 +293,15 @@ ObjectSelector::create_background()
 std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_entrance()
 {
-  auto set = util::make_unique<ObjectSelectorSet>(object_list, 48, 48);
+  auto set = std::make_unique<ObjectSelectorSet>(object_list, 48, 48);
 
-  set->add(util::make_unique<Entrance>());
+  set->add(std::make_unique<Entrance>());
 
   // prefab entrances
   auto directory = Pathname("prefabs/entrances", Pathname::DATA_PATH).opendir("*.prefab");
   for(auto i = directory.begin(); i != directory.end(); ++i)
   {
-    set->add(util::make_unique<Prefab>(System::cut_file_extension(i->get_raw_path())));
+    set->add(std::make_unique<Prefab>(System::cut_file_extension(i->get_raw_path())));
   }
 
   if (globals::developer_mode)
@@ -311,7 +311,7 @@ ObjectSelector::create_entrance()
     for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
     {
       if (*i != "entrances/generic")
-        set->add(util::make_unique<Hotspot>(*i, 100));
+        set->add(std::make_unique<Hotspot>(*i, 100));
     }
   }
 
@@ -321,12 +321,12 @@ ObjectSelector::create_entrance()
 std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_exit()
 {
-  auto set = util::make_unique<ObjectSelectorSet>(object_list, 48, 48);
+  auto set = std::make_unique<ObjectSelectorSet>(object_list, 48, 48);
 
   std::vector<std::string> lst = Resource::resmgr.get_section("exit");
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
   {
-    set->add(util::make_unique<Exit>(*i));
+    set->add(std::make_unique<Exit>(*i));
   }
 
   return set;
@@ -335,19 +335,19 @@ ObjectSelector::create_exit()
 std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_liquid()
 {
-  auto set = util::make_unique<ObjectSelectorSet>(object_list, 48, 48);
+  auto set = std::make_unique<ObjectSelectorSet>(object_list, 48, 48);
 
   std::vector<std::string> lst = Resource::resmgr.get_section("liquids");
   for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
   {
-    set->add(util::make_unique<Liquid>(*i));
+    set->add(std::make_unique<Liquid>(*i));
   }
 
   // prefab liquids
   auto directory = Pathname("prefabs/liquids", Pathname::DATA_PATH).opendir("*.prefab");
   for(auto i = directory.begin(); i != directory.end(); ++i)
   {
-    set->add(util::make_unique<Prefab>(System::cut_file_extension(i->get_raw_path())));
+    set->add(std::make_unique<Prefab>(System::cut_file_extension(i->get_raw_path())));
   }
 
   return set;
@@ -356,48 +356,48 @@ ObjectSelector::create_liquid()
 std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_trap()
 {
-  auto set = util::make_unique<ObjectSelectorSet>(object_list, 48, 48);
-  set->add(util::make_unique<Guillotine>());
-  set->add(util::make_unique<LaserExit>());
-  set->add(util::make_unique<FakeExit>());
-  set->add(util::make_unique<Hammer>());
-  set->add(util::make_unique<Smasher>());
-  set->add(util::make_unique<Spike>());
+  auto set = std::make_unique<ObjectSelectorSet>(object_list, 48, 48);
+  set->add(std::make_unique<Guillotine>());
+  set->add(std::make_unique<LaserExit>());
+  set->add(std::make_unique<FakeExit>());
+  set->add(std::make_unique<Hammer>());
+  set->add(std::make_unique<Smasher>());
+  set->add(std::make_unique<Spike>());
   return set;
 }
 
 std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_weather()
 {
-  auto set = util::make_unique<ObjectSelectorSet>(object_list, 48, 48);
-  set->add(util::make_unique<RainGenerator>());
-  set->add(util::make_unique<SnowGenerator>());
+  auto set = std::make_unique<ObjectSelectorSet>(object_list, 48, 48);
+  set->add(std::make_unique<RainGenerator>());
+  set->add(std::make_unique<SnowGenerator>());
   return set;
 }
 
 std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_worldobj()
 {
-  auto set = util::make_unique<ObjectSelectorSet>(object_list, 48, 48);
-  set->add(util::make_unique<Teleporter>());
-  set->add(util::make_unique<TeleporterTarget>());
-  set->add(util::make_unique<IceBlock>());
-  set->add(util::make_unique<Conveyorbelt>());
-  set->add(util::make_unique<SwitchDoorDoor>());
-  set->add(util::make_unique<SwitchDoorSwitch>());
+  auto set = std::make_unique<ObjectSelectorSet>(object_list, 48, 48);
+  set->add(std::make_unique<Teleporter>());
+  set->add(std::make_unique<TeleporterTarget>());
+  set->add(std::make_unique<IceBlock>());
+  set->add(std::make_unique<Conveyorbelt>());
+  set->add(std::make_unique<SwitchDoorDoor>());
+  set->add(std::make_unique<SwitchDoorSwitch>());
   return set;
 }
 
 std::unique_ptr<ObjectSelectorSet>
 ObjectSelector::create_prefab()
 {
-  auto set = util::make_unique<ObjectSelectorSet>(object_list, 48, 48);
+  auto set = std::make_unique<ObjectSelectorSet>(object_list, 48, 48);
 
   // FIXME: doesn't recurse down the prefabs/ directory
   auto directory = Pathname("prefabs/misc", Pathname::DATA_PATH).opendir("*.prefab");
   for(auto i = directory.begin(); i != directory.end(); ++i)
   {
-    set->add(util::make_unique<Prefab>(System::cut_file_extension(i->get_raw_path())));
+    set->add(std::make_unique<Prefab>(System::cut_file_extension(i->get_raw_path())));
   }
 
   return set;

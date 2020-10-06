@@ -19,28 +19,27 @@
 #include "util/sexpr_writer_impl.hpp"
 #include "util/json_writer_impl.hpp"
 #include "util/jsonpretty_writer_impl.hpp"
-#include "util/mem.hpp"
 
 Writer
 Writer::fastjson(std::ostream& out)
 {
-  return Writer(util::make_unique<JsonWriterImpl>(out));
+  return Writer(std::make_unique<JsonWriterImpl>(out));
 }
 
 Writer
 Writer::json(std::ostream& out)
 {
-  return Writer(util::make_unique<JsonPrettyWriterImpl>(out));
+  return Writer(std::make_unique<JsonPrettyWriterImpl>(out));
 }
 
 Writer
 Writer::sexpr(std::ostream& out)
 {
-  return Writer(util::make_unique<SExprWriterImpl>(out));
+  return Writer(std::make_unique<SExprWriterImpl>(out));
 }
 
 Writer::Writer(std::ostream& out) :
-  m_impl(util::make_unique<SExprWriterImpl>(out))
+  m_impl(std::make_unique<SExprWriterImpl>(out))
 {
 }
 

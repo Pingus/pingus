@@ -19,7 +19,6 @@
 #include "engine/display/display.hpp"
 #include "engine/input/manager.hpp"
 #include "util/log.hpp"
-#include "util/mem.hpp"
 
 namespace Input {
 
@@ -232,7 +231,7 @@ CoreDriver::create_scroller(const ReaderObject& reader_object, Control* parent)
   {
     ReaderMapping reader = reader_object.get_mapping();
 
-    auto axis = util::make_unique<AxisScroller>(parent);
+    auto axis = std::make_unique<AxisScroller>(parent);
 
     ReaderObject x_reader;
     if (!reader.read_object("x-axis", x_reader))
@@ -272,7 +271,7 @@ CoreDriver::create_scroller(const ReaderObject& reader_object, Control* parent)
   {
     ReaderMapping reader = reader_object.get_mapping();
 
-    auto scroller = util::make_unique<ButtonScroller>(parent);
+    auto scroller = std::make_unique<ButtonScroller>(parent);
 
     ReaderObject left_reader;
     if (!reader.read_object("left", left_reader))
@@ -327,7 +326,7 @@ CoreDriver::create_pointer(const ReaderObject& reader_object, Control* parent)
   {
     ReaderMapping reader = reader_object.get_mapping();
 
-    auto axis = util::make_unique<AxisPointer>(parent);
+    auto axis = std::make_unique<AxisPointer>(parent);
 
     ReaderObject x_reader;
     if (!reader.read_object("x-axis", x_reader))

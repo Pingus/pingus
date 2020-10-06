@@ -21,7 +21,6 @@
 #include "pingus/worldmap/level_dot.hpp"
 #include "pingus/worldmap/story_dot.hpp"
 #include "util/raise_exception.hpp"
-#include "util/mem.hpp"
 
 namespace WorldmapNS {
 
@@ -30,11 +29,11 @@ DotFactory::create(const ReaderObject& reader)
 {
   if (reader.get_name() == "storydot")
   {
-    return util::make_unique<StoryDot>(reader.get_mapping());
+    return std::make_unique<StoryDot>(reader.get_mapping());
   }
   else if (reader.get_name() == "leveldot")
   {
-    return util::make_unique<LevelDot>(reader.get_mapping());
+    return std::make_unique<LevelDot>(reader.get_mapping());
   }
   else
   {

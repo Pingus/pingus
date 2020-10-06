@@ -18,7 +18,6 @@
 
 #include "engine/input/core_driver.hpp"
 #include "engine/input/sdl_driver.hpp"
-#include "util/mem.hpp"
 
 namespace Input {
 
@@ -27,11 +26,11 @@ DriverFactory::create(const std::string& name, Manager* manager)
 {
   if (name == "sdl")
   {
-    return util::make_unique<SDLDriver>();
+    return std::make_unique<SDLDriver>();
   }
   else if (name == "core")
   {
-    return util::make_unique<CoreDriver>(manager);
+    return std::make_unique<CoreDriver>(manager);
   }
   else
   {
