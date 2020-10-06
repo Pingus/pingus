@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include <logmich/log.hpp>
+
 #include "engine/sound/sound.hpp"
 #include "engine/display/display.hpp"
 #include "engine/display/font.hpp"
@@ -9,7 +11,6 @@
 #include "pingus/path_manager.hpp"
 #include "pingus/pingus_level.hpp"
 #include "pingus/globals.hpp"
-#include "util/log.hpp"
 
 /** Load a level and create the World for each given level, this
     allows to track missing resources and other problems in level

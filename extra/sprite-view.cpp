@@ -10,7 +10,6 @@
 #include "pingus/pingus_level.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/world.hpp"
-#include "util/log.hpp"
 #include "util/pathname.hpp"
 
 int main(int argc, char** argv)

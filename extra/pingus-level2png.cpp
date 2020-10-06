@@ -2,6 +2,7 @@
 #include <sstream>
 
 #include <argparser.hpp>
+#include <logmich/log.hpp>
 
 #include "engine/display/surface.hpp"
 #include "math/color.hpp"
@@ -11,7 +12,6 @@
 #include "pingus/res_descriptor.hpp"
 #include "pingus/resource.hpp"
 #include "pingus/prefab_file.hpp"
-#include "util/log.hpp"
 #include "util/pathname.hpp"
 #include "util/system.hpp"
 #include "util/writer.hpp"

@@ -3,7 +3,7 @@
 #include <SDL_image.h>
 #include <fmt/format.h>
 
-#include "util/log.hpp"
+#include <logmich/log.hpp>
 
 int main(int argc, char** argv)
 {

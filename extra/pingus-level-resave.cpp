@@ -2,6 +2,7 @@
 #include <fstream>
 
 #include <argparser.hpp>
+#include <logmich/log.hpp>
 
 #include "editor/editor_level.hpp"
 #include "engine/display/display.hpp"
@@ -12,7 +13,6 @@
 #include "pingus/globals.hpp"
 #include "pingus/path_manager.hpp"
 #include "pingus/resource.hpp"
-#include "util/log.hpp"
 #include "util/raise_exception.hpp"
 
 enum class Syntax { FASTJSON, JSON, SEXPR };
