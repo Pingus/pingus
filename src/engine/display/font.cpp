@@ -16,12 +16,14 @@
 
 #include "engine/display/font.hpp"
 
+#include <string_view>
+
 #include <strut/utf8.hpp>
+#include <strut/split.hpp>
 
 #include "engine/display/display.hpp"
 #include "engine/display/font_description.hpp"
 #include "engine/display/framebuffer.hpp"
-#include "util/line_iterator.hpp"
 #include "util/log.hpp"
 
 class FontImpl
@@ -85,21 +87,22 @@ public:
   {
   }
 
-  void render(Origin origin, int x, int y_, const std::string& text, Framebuffer& fb)
+  void render(Origin origin, int x, int y_, const std::string& text, Framebuffer& fb) const
   {
     y_ += get_height();
 
     float y = float(y_);
     // FIXME: only origins top_left, top_right and top_center do work right now
-    LineIterator it(text);
-    while(it.next()) {
-      render_line(origin, x, int(y), it.get(), fb);
+    for(auto const&& line : strut::splitter(text, '\n')) {
+      render_line(origin, x, int(y), line, fb);
       y += vertical_spacing;
     }
   }
 
-  void render_line(Origin origin, int x, int y, const std::string& text, Framebuffer& fb)
+  void render_line(Origin origin, int x, int y, std::string_view text, Framebuffer& fb) const
   {
+    if (text.empty()) { return; }
+
     Vector2i offset = geom::anchor_point(get_size(text), origin);
 
     float dstx = float(x - offset.x());
@@ -137,7 +140,7 @@ public:
       return 0;
   }
 
-  float get_width(const std::string& text) const
+  float get_width(std::string_view text) const
   {
     float width = 0.0f;
     float last_width = 0;
@@ -161,7 +164,7 @@ public:
     return std::max(width, last_width);
   }
 
-  Size get_size(const std::string& text) const
+  Size get_size(std::string_view text) const
   {
     return Size(static_cast<int>(get_width(text)), get_height());
   }

@@ -56,7 +56,7 @@ StringFormat::break_line(const std::string& text, int width, const Font& font)
     }
   }
 
-  std::string word = strut::utf8::substr(beg, strut::utf8::iterator(text, text.end()));
+  std::string word = text.substr(beg.get_index());
   float word_width = font.get_width(word);
   if ((line_width + word_width) > static_cast<float>(width))
   {
