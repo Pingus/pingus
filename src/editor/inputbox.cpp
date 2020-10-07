@@ -24,7 +24,8 @@
 namespace Editor {
 
 Inputbox::Inputbox() :
-  text(),
+  m_text(),
+  m_faulty_input(false),
   on_change(),
   on_enter()
 {
@@ -32,7 +33,8 @@ Inputbox::Inputbox() :
 
 Inputbox::Inputbox(const Rect& rect_) :
   RectComponent(rect_),
-  text(),
+  m_text(),
+  m_faulty_input(false),
   on_change(),
   on_enter()
 {
@@ -41,19 +43,21 @@ Inputbox::Inputbox(const Rect& rect_) :
 void
 Inputbox::draw(DrawingContext& gc)
 {
-  gc.draw_fillrect(rect, Color(255,255,255));
+  Color const bg_color = m_faulty_input ? Color(255, 128, 128) : Color(255, 255, 255);
+
+  gc.draw_fillrect(rect, bg_color);
   gc.draw_rect(rect, has_focus() ? Color(255,128,0) : Color(0,0,0));
 
   gc.print_left(Fonts::verdana11,
                 Vector2i(rect.left() + 5,
                          rect.top() + rect.height()/2 - Fonts::verdana11.get_height()/2),
-                text);
+                m_text);
 }
 
 void
-Inputbox::set_text(const std::string& text_)
+Inputbox::set_text(const std::string& text)
 {
-  text = text_;
+  m_text = text;
 }
 
 void
@@ -61,23 +65,27 @@ Inputbox::on_key_pressed(const Input::KeyboardEvent& ev)
 {
   if (ev.keysym.sym == SDLK_BACKSPACE) // backspace
   {
-    if (!text.empty())
+    if (!m_text.empty())
     {
-      text = text.substr(0, text.size()-1);
+      m_text = m_text.substr(0, m_text.size()-1);
       try {
-        on_change(text);
+        on_change(m_text);
+        m_faulty_input = false;
       } catch(std::exception const& err) {
-        log_error(err.what());
+        m_faulty_input = true;
+        log_debug(err.what());
       }
     }
   }
   else if (ev.keysym.sym == SDLK_RETURN) // enter
   {
     try {
-      on_change(text);
-      on_enter(text);
+      on_change(m_text);
+      on_enter(m_text);
+      m_faulty_input = false;
     } catch(std::exception const& err) {
-      log_error(err.what());
+      m_faulty_input = true;
+      log_debug(err.what());
     }
   }
 }
@@ -85,8 +93,14 @@ Inputbox::on_key_pressed(const Input::KeyboardEvent& ev)
 void
 Inputbox::on_text_input(const Input::TextInputEvent& ev)
 {
-  text += ev.text;
-  on_change(text);
+  m_text += ev.text;
+  try {
+    on_change(m_text);
+    m_faulty_input = false;
+  } catch(std::exception const& err) {
+    m_faulty_input = true;
+    log_debug(err.what());
+  }
 }
 
 } // namespace Editor

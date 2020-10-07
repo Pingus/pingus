@@ -26,7 +26,8 @@ namespace Editor {
 class Inputbox : public GUI::RectComponent
 {
 private:
-  std::string text;
+  std::string m_text;
+  bool m_faulty_input;
 
 public:
   Inputbox(const Rect& rect);
@@ -35,7 +36,7 @@ public:
   void draw(DrawingContext& gc) override;
 
   void set_text(const std::string& text);
-  std::string get_text() const { return text; }
+  std::string get_text() const { return m_text; }
   void on_key_pressed(const Input::KeyboardEvent& ev) override;
   void on_text_input(const Input::TextInputEvent& ev) override;
 
