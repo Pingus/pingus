@@ -66,10 +66,13 @@ file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/pingus/components/*.cpp
   src/pingus/movers/*.cpp
   src/pingus/particles/*.cpp
+  src/pingus/reader/*.cpp
   src/pingus/screens/*.cpp
   src/pingus/worldmap/*.cpp
   src/pingus/worldobjs/*.cpp
-  src/util/*.cpp)
+  src/reader/*.cpp
+  src/util/*.cpp
+  )
 
 # Build dependencies
 function(build_dependencies)

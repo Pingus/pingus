@@ -14,11 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "util/writer.hpp"
+#include "reader/writer.hpp"
 
-#include "util/sexpr_writer_impl.hpp"
-#include "util/json_writer_impl.hpp"
-#include "util/jsonpretty_writer_impl.hpp"
+#include "reader/sexpr_writer_impl.hpp"
+#include "reader/json_writer_impl.hpp"
+#include "reader/jsonpretty_writer_impl.hpp"
 
 Writer
 Writer::fastjson(std::ostream& out)

@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_UTIL_OVERRIDE_FILE_READER_HPP
 #define HEADER_PINGUS_UTIL_OVERRIDE_FILE_READER_HPP
 
-#include "util/reader_impl.hpp"
+#include "reader/reader_impl.hpp"
 
 ReaderMapping make_override_mapping(const ReaderMapping& reader, const ReaderMapping& overrides);
 

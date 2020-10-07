@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_UTIL_JSON_READER_IMPL_HPP
 #define HEADER_PINGUS_UTIL_JSON_READER_IMPL_HPP
 
-#include "util/reader_impl.hpp"
+#include "reader/reader_impl.hpp"
 
 #include <geom/fwd.hpp>
 #include <json/value.h>

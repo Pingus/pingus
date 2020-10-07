@@ -14,7 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "util/json_reader_impl.hpp"
+#include "reader/json_reader_impl.hpp"
 
 #include <logmich/log.hpp>
 
@@ -22,8 +22,8 @@
 #include "math/rect.hpp"
 #include "math/vector2f.hpp"
 #include "pingus/res_descriptor.hpp"
-#include "util/reader.hpp"
-#include "util/reader_impl.hpp"
+#include "reader/reader.hpp"
+#include "reader/reader_impl.hpp"
 
 namespace {
 

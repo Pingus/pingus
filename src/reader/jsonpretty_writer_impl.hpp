@@ -14,29 +14,29 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_UTIL_JSON_FILE_WRITER_HPP
-#define HEADER_PINGUS_UTIL_JSON_FILE_WRITER_HPP
+#ifndef HEADER_PINGUS_UTIL_JSONPRETTY_FILE_WRITER_HPP
+#define HEADER_PINGUS_UTIL_JSONPRETTY_FILE_WRITER_HPP
 
 #include <functional>
 #include <json/json.h>
 #include <iosfwd>
 #include <geom/fwd.hpp>
 
-#include "util/writer_impl.hpp"
+#include "reader/writer_impl.hpp"
 
-class JsonWriterImpl final : public WriterImpl
+class JsonPrettyWriterImpl final : public WriterImpl
 {
 private:
-  std::ostream& m_out;
-  Json::Value m_root;
+  enum class Context { Mapping, Collection };
 
-  // jsoncpp does copy-by-value, even for arrays and objects, so we
-  // have to use std::reference_wrapper<> instead of just Json::Value
-  std::vector<std::reference_wrapper<Json::Value> > m_stack;
+  std::ostream& m_out;
+  int m_depth;
+  std::vector<bool> m_write_seperator;
+  std::vector<Context> m_context;
 
 public:
-  JsonWriterImpl(std::ostream& out);
-  ~JsonWriterImpl() override;
+  JsonPrettyWriterImpl(std::ostream& out);
+  ~JsonPrettyWriterImpl() override;
 
   void begin_collection(const char* name) override;
   void end_collection() override;
@@ -59,11 +59,14 @@ public:
   void write_path(const char* name, const Pathname&) override;
 
 private:
-  void flush();
+  inline void write_indent();
+  inline void write_separator();
+  inline void write_quoted_string(const char* str);
+  inline void write_quoted_string(const std::string& str);
 
 private:
-  JsonWriterImpl(const JsonWriterImpl&) = delete;
-  JsonWriterImpl& operator=(const JsonWriterImpl&) = delete;
+  JsonPrettyWriterImpl(const JsonPrettyWriterImpl&) = delete;
+  JsonPrettyWriterImpl& operator=(const JsonPrettyWriterImpl&) = delete;
 };
 
 #endif

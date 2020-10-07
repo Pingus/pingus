@@ -19,7 +19,7 @@
 
 #include <sexp/value.hpp>
 #include <geom/fwd.hpp>
-#include "util/reader_impl.hpp"
+#include "reader/reader_impl.hpp"
 
 class SExprReaderObjectImpl : public ReaderObjectImpl
 {

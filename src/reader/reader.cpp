@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "util/reader.hpp"
+#include "reader/reader.hpp"
 
 #include <sstream>
 #include <fstream>
@@ -26,10 +26,10 @@
 
 #include "math/size.hpp"
 #include "pingus/res_descriptor.hpp"
-#include "util/reader_impl.hpp"
+#include "reader/reader_impl.hpp"
 #include "util/pathname.hpp"
-#include "util/sexpr_reader_impl.hpp"
-#include "util/json_reader_impl.hpp"
+#include "reader/sexpr_reader_impl.hpp"
+#include "reader/json_reader_impl.hpp"
 
 ReaderMapping::ReaderMapping(std::shared_ptr<ReaderMappingImpl> impl_) :
   m_impl(std::move(impl_))

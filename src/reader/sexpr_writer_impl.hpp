@@ -1,5 +1,5 @@
 // Pingus - A free Lemmings clone
-// Copyright (C) 1998-2015 Ingo Ruhnke <grumbel@gmail.com>
+// Copyright (C) 2007 Jimmy Salmon
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,29 +14,27 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_UTIL_JSONPRETTY_FILE_WRITER_HPP
-#define HEADER_PINGUS_UTIL_JSONPRETTY_FILE_WRITER_HPP
+#ifndef HEADER_PINGUS_UTIL_SEXPR_FILE_WRITER_HPP
+#define HEADER_PINGUS_UTIL_SEXPR_FILE_WRITER_HPP
 
-#include <functional>
-#include <json/json.h>
-#include <iosfwd>
-#include <geom/fwd.hpp>
+#include <ostream>
 
-#include "util/writer_impl.hpp"
+#include "math/color.hpp"
+#include "math/size.hpp"
+#include "math/vector2f.hpp"
+#include "reader/writer_impl.hpp"
 
-class JsonPrettyWriterImpl final : public WriterImpl
+class SExprWriterImpl : public WriterImpl
 {
 private:
-  enum class Context { Mapping, Collection };
-
-  std::ostream& m_out;
-  int m_depth;
-  std::vector<bool> m_write_seperator;
-  std::vector<Context> m_context;
+  /** A reference to the output stream */
+  std::ostream* out;
+  size_t level;
+  std::string indent() const;
 
 public:
-  JsonPrettyWriterImpl(std::ostream& out);
-  ~JsonPrettyWriterImpl() override;
+  SExprWriterImpl(std::ostream& out_);
+  ~SExprWriterImpl() override;
 
   void begin_collection(const char* name) override;
   void end_collection() override;
@@ -54,19 +52,19 @@ public:
   void write_bool(const char* name, bool) override;
   void write_string(const char* name, const std::string&) override;
   void write_vector(const char* name, const Vector2f&, float) override;
-  void write_size(const char* name, const geom::isize&) override;
-  void write_vector2i(const char* name, const geom::ipoint&) override;
+  void write_size(const char* name, const Size&) override;
+  void write_vector2i(const char* name, const Vector2i&) override;
   void write_path(const char* name, const Pathname&) override;
 
-private:
-  inline void write_indent();
-  inline void write_separator();
-  inline void write_quoted_string(const char* str);
-  inline void write_quoted_string(const std::string& str);
+  template<class E, class F>
+  void write_enum(const char* name, E value, F enum2string)
+  {
+    (*out) << "\n" << indent() << "(" << name << " \"" << enum2string(value) << "\")";
+  }
 
 private:
-  JsonPrettyWriterImpl(const JsonPrettyWriterImpl&) = delete;
-  JsonPrettyWriterImpl& operator=(const JsonPrettyWriterImpl&) = delete;
+  SExprWriterImpl(const SExprWriterImpl&);
+  SExprWriterImpl& operator= (const SExprWriterImpl&);
 };
 
 #endif

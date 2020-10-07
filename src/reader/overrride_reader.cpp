@@ -14,14 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "util/overrride_reader.hpp"
+#include "reader/overrride_reader.hpp"
 
 #include <set>
 
 #include <geom/size.hpp>
 
-#include "util/reader.hpp"
-#include "util/reader_impl.hpp"
+#include "reader/reader.hpp"
+#include "reader/reader_impl.hpp"
 
 class OverrideReaderMappingImpl : public ReaderMappingImpl
 {

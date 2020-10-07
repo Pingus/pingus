@@ -43,7 +43,7 @@
 #include "pingus/worldobjs/switch_door_switch.hpp"
 #include "pingus/worldobjs/teleporter.hpp"
 #include "pingus/worldobjs/teleporter_target.hpp"
-#include "util/overrride_reader.hpp"
+#include "reader/overrride_reader.hpp"
 
 using namespace WorldObjs;
 
