@@ -5,6 +5,8 @@
 #include "util/pathname.hpp"
 #include "util/raise_exception.hpp"
 
+namespace {
+
 void
 emit_msgid(const std::string& str)
 {
@@ -60,6 +62,8 @@ int po_extract_main(int argc, char** argv)
 
   return 0;
 }
+
+} // namespace
 
 int main(int argc, char** argv)
 {

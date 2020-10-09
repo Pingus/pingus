@@ -61,7 +61,8 @@ struct DirectorySorter
   {
     if (lhs.type == rhs.type)
     {
-      return lhs.name < rhs.name;
+#pragma GCC diagnostic ignored "-Wzero-as-null-pointer-constant"
+      return lhs.name < rhs.name; // NOLINT
     }
     else
     {

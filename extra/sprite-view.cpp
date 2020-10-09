@@ -39,8 +39,6 @@ int main(int argc, char** argv)
     Display::flip_display();
     SDL_Delay(30);
   }
-
-  return 0;
 }
 
 /* EOF */

@@ -71,7 +71,8 @@ struct LanguageSorter
   bool operator()(const tinygettext::Language& lhs,
                   const tinygettext::Language& rhs)
   {
-    return lhs.get_name() < rhs.get_name();
+#pragma GCC diagnostic ignored "-Wzero-as-null-pointer-constant"
+    return lhs.get_name() < rhs.get_name(); // NOLINT
   }
 };
 
