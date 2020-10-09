@@ -21,7 +21,7 @@
 #include <geom/size.hpp>
 #include <geom/rect.hpp>
 
-using namespace prio;
+using Writer = prio::Writer;
 
 class OutVector2fZ;
 class Color;

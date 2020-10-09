@@ -22,7 +22,10 @@
 #include <prio/fwd.hpp>
 #include <geom/fwd.hpp>
 
-using namespace prio;
+using ReaderCollection = prio::ReaderCollection;
+using ReaderDocument = prio::ReaderDocument;
+using ReaderMapping = prio::ReaderMapping;
+using ReaderObject = prio::ReaderObject;
 
 class Color;
 class Colorf;
