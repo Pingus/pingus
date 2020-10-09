@@ -28,3 +28,6 @@
 [submodule "external/strutcpp"]
 	path = external/strutcpp
 	url = https://gitlab.com/grumbel/strutcpp.git
+[submodule "external/priocpp"]
+	path = external/priocpp
+	url = https://gitlab.com/grumbel/priocpp.git
