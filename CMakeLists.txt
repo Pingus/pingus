@@ -66,11 +66,9 @@ file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/pingus/components/*.cpp
   src/pingus/movers/*.cpp
   src/pingus/particles/*.cpp
-  src/pingus/reader/*.cpp
   src/pingus/screens/*.cpp
   src/pingus/worldmap/*.cpp
   src/pingus/worldobjs/*.cpp
-  src/reader/*.cpp
   src/util/*.cpp
   )
 
@@ -88,6 +86,7 @@ function(build_dependencies)
   add_subdirectory(external/geomcpp/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/logmich/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/sexp-cpp/ EXCLUDE_FROM_ALL)
+  add_subdirectory(external/priocpp/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/strutcpp/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/xdgcpp/ EXCLUDE_FROM_ALL)
 endfunction()
@@ -105,6 +104,7 @@ target_link_libraries(libpingus PUBLIC
   argparser
   geomcpp
   logmich
+  prio
   tinygettext
   sexp
   strut
