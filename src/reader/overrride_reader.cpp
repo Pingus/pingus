@@ -109,18 +109,6 @@ public:
     }
   }
 
-  bool read_vectors(const char* name, std::vector<Vector2f>& vec, std::vector<float>& z_indexes) const override
-  {
-    if (m_overrides.read_vectors(name, vec, z_indexes))
-    {
-      return true;
-    }
-    else
-    {
-      return m_reader.read_vectors(name, vec, z_indexes);
-    }
-  }
-
   bool read_size(const char* name, geom::isize& size) const override
   {
     if (m_overrides.read_size(name, size))

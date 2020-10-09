@@ -72,13 +72,13 @@ public:
 
   std::vector<std::string> get_keys() const;
 
+  bool read_bool(const char* key, bool& value) const;
   bool read_int(const char* key, int& value) const;
   bool read_float(const char* key, float& value) const;
-  bool read_bool(const char* key, bool& value) const;
   bool read_string(const char* key, std::string& value) const;
+
   bool read_path(const char* key, Pathname& value) const;
   bool read_vector(const char* key, Vector2f& value, float& z_index) const;
-  bool read_vectors(const char* key, std::vector<Vector2f>& value, std::vector<float>& z_indexes) const;
   bool read_vector2i(const char* key, Vector2i& value) const;
   bool read_rect(const char* key, Rect& value) const;
   bool read_size(const char* key, geom::isize& value) const;

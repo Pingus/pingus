@@ -168,35 +168,6 @@ JsonReaderMappingImpl::read_string(const char* key, std::string& value) const
 }
 
 bool
-JsonReaderMappingImpl::read_vectors(const char* key, std::vector<Vector2f>& values,
-                                    std::vector<float>& z_indexes) const
-{
-  const Json::Value& element = m_json[key];
-  if (element.isArray())
-  {
-    for(Json::ArrayIndex i = 0; i < element.size(); ++i)
-    {
-      const Json::Value& vec = element[i];
-      if (vec.isArray() && vec.size() >= 3)
-      {
-        values.emplace_back(vec[0u].asFloat(),
-                            vec[1u].asFloat());
-        z_indexes.emplace_back(vec[2u].asFloat());
-      }
-      else
-      {
-        log_warn("ignoring element of '{}'", key);
-      }
-    }
-    return true;
-  }
-  else
-  {
-    return false;
-  }
-}
-
-bool
 JsonReaderMappingImpl::read_vector(const char* key, Vector2f& value, float& z_index) const
 {
   const Json::Value& element = m_json[key];

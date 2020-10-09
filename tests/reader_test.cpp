@@ -70,20 +70,6 @@ TEST_P(ReaderTest, read_vector)
   EXPECT_EQ(3.0f, z_index);
 }
 
-TEST_P(ReaderTest, read_vectors)
-{
-  std::vector<Vector2f> vs;
-  std::vector<float> zs;
-  ASSERT_TRUE(body.read_vectors("vectors", vs, zs));
-  ASSERT_EQ(3, vs.size());
-  EXPECT_EQ(Vector2f(1, 2), vs[0]);
-  EXPECT_EQ(Vector2f(4, 5), vs[1]);
-  EXPECT_EQ(Vector2f(7, 8), vs[2]);
-  EXPECT_EQ(3, zs[0]);
-  EXPECT_EQ(6, zs[1]);
-  EXPECT_EQ(9, zs[2]);
-}
-
 TEST_P(ReaderTest, read_mapping)
 {
   ReaderMapping submap;

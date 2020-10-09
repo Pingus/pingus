@@ -224,29 +224,6 @@ SExprReaderMappingImpl::read_vector(const char* key, Vector2f& value, float& z_i
 }
 
 bool
-SExprReaderMappingImpl::read_vectors(const char* key, std::vector<Vector2f>& values, std::vector<float>& z_indexes) const
-{
-  sexp::Value const* sub_lst = get_subsection(key);
-  if (sub_lst)
-  {
-    for(auto const& sub : sexp::ListAdapter(*sub_lst))
-    {
-      if (sexp::list_length(sub) == 3)
-      {
-        values.emplace_back(sexp::list_ref(sub, 0).as_float(),
-                            sexp::list_ref(sub, 1).as_float());
-        z_indexes.emplace_back(sexp::list_ref(sub, 2).as_float());
-      }
-    }
-    return true;
-  }
-  else
-  {
-    return false;
-  }
-}
-
-bool
 SExprReaderMappingImpl::read_size(const char* key, Size& value) const
 {
   sexp::Value const* sub = get_subsection(key);

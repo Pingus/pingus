@@ -149,7 +149,7 @@
         (source "leveldot_2")
         (destination "leveldot_3")
         (positions 
-          (647 692 0)))
+          (point (pos 647 692 0))))
       (edge 
         (name "egde_3")
         (source "leveldot_3")
@@ -170,7 +170,7 @@
         (source "leveldot_6")
         (destination "leveldot_7")
         (positions 
-          (1015 527 0)))
+          (point (pos 1015 527 0))))
       (edge 
         (name "egde_7")
         (source "leveldot_7")
@@ -186,9 +186,9 @@
         (source "leveldot_8")
         (destination "leveldot_9")
         (positions 
-          (1139 528 0)
-          (1162 555 0)
-          (1196 584 0)))
+          (point (pos 1139 528 0))
+          (point (pos 1162 555 0))
+          (point (pos 1196 584 0))))
       (edge 
         (name "egde_10")
         (source "leveldot_9")
@@ -199,7 +199,7 @@
         (source "leveldot_10")
         (destination "leveldot_11")
         (positions 
-          (1056 646 5000)))
+          (point (pos 1056 646 5000))))
       (edge 
         (name "egde_12")
         (source "leveldot_11")
@@ -210,8 +210,8 @@
         (source "leveldot_12")
         (destination "leveldot_13")
         (positions 
-          (822 678 5000)
-          (767 702 5000)))
+          (point (pos 822 678 5000))
+          (point (pos 767 702 5000))))
       (edge 
         (name "egde_22")
         (source "leveldot_13")
@@ -222,8 +222,8 @@
         (source "leveldot_14")
         (destination "leveldot_15")
         (positions 
-          (881 769 5000)
-          (946 770 250)))
+          (point (pos 881 769 5000))
+          (point (pos 946 770 250))))
       (edge 
         (name "egde_15")
         (source "leveldot_15")
@@ -239,7 +239,7 @@
         (source "leveldot_17")
         (destination "leveldot_18")
         (positions 
-          (1283 716 250)))
+          (point (pos 1283 716 250))))
       (edge 
         (name "egde_18")
         (source "leveldot_18")
@@ -250,13 +250,13 @@
         (source "leveldot_15")
         (destination "leveldot_20")
         (positions 
-          (1056 748 150)))
+          (point (pos 1056 748 150))))
       (edge 
         (name "egde_20")
         (source "leveldot_20")
         (destination "leveldot_21")
         (positions 
-          (1165 683 0)))
+          (point (pos 1165 683 0))))
       (edge 
         (name "egde_21")
         (source "leveldot_21")

@@ -104,14 +104,22 @@ PathGraph::parse_edges(const ReaderCollection& collection)
       auto path = std::make_unique<Path>();
       auto path2 = std::make_unique<Path>();
 
-      std::vector<Vector2f> positions;
-      std::vector<float> z_indexes;
-      if (reader.read_vectors("positions", positions, z_indexes))
+      ReaderCollection positions_col;
+      if (reader.read_collection("positions", positions_col))
       {
-        // FIXME: do something with z_indexes
-        for(auto const& p : positions)
-        {
-          path->push_back(p);
+        for (auto const& obj : positions_col.get_objects()) {
+          if (obj.get_name() == "point") {
+            ReaderMapping data = obj.get_mapping();
+
+            Vector2f pos = {};
+            float z_index = {};
+            data.read_vector("pos", pos, z_index);
+
+            // FIXME: do something with z_indexes
+            path->push_back(pos);
+          } else {
+            log_warn("unknown object in edge.positions: {}", obj.get_name());
+          }
         }
       }
 
