@@ -31,7 +31,7 @@ LevelObjFactory::create(const ReaderObject& reader_object)
 
     ReaderMapping reader = reader_object.get_mapping();
     ReaderCollection collection;
-    reader.read_collection("objects", collection);
+    reader.read("objects", collection);
     std::vector<ReaderObject> objects = collection.get_objects();
     for(auto it = objects.begin(); it != objects.end(); ++it)
     {
@@ -48,11 +48,12 @@ LevelObjFactory::create(const ReaderObject& reader_object)
     ReaderMapping reader = reader_object.get_mapping();
 
     std::string name;
-    reader.read_string("name", name);
+    reader.read("name", name);
 
     Vector2f p;
     float z_index = 0.0f;
-    reader.read_vector("position", p, z_index);
+    InVector2fZ in_vec{p, z_index};
+    reader.read("position", in_vec);
 
     std::shared_ptr<GroupLevelObj> group = GroupLevelObj::from_prefab(name);
     if (!group)
@@ -62,7 +63,7 @@ LevelObjFactory::create(const ReaderObject& reader_object)
     else
     {
       ReaderMapping overrides;
-      if (reader.read_mapping("overrides", overrides))
+      if (reader.read("overrides", overrides))
         group->set_overrides(overrides);
 
       group->set_orig_pos(p);
@@ -90,7 +91,8 @@ LevelObjFactory::create(const ReaderObject& reader_object)
     attribs = obj->get_attribs();
 
     // All objects have a position - get that.
-    if (!reader.read_vector("position", p, z_index))
+    InVector2fZ in_vec{p, z_index};
+    if (!reader.read("position", in_vec))
     { // Workaround for lack of position for background
       if (reader_object.get_name() == "surface-background") {
         p = Vector2f(0.f, 0.f);
@@ -105,7 +107,7 @@ LevelObjFactory::create(const ReaderObject& reader_object)
     // Get optional attributes based on the attribs value
     if (attribs & HAS_SPRITE)
     {
-      if (reader.read_desc("surface", desc))
+      if (reader.read("surface", desc))
       {
         obj->set_res_desc(desc);
       }
@@ -113,7 +115,7 @@ LevelObjFactory::create(const ReaderObject& reader_object)
 
     if (attribs & HAS_TYPE)
     {
-      if (reader.read_string("type", tmp_str))
+      if (reader.read("type", tmp_str))
       {
         obj->set_type(tmp_str);
       }
@@ -121,7 +123,7 @@ LevelObjFactory::create(const ReaderObject& reader_object)
 
     if (attribs & HAS_GPTYPE)
     {
-      if (reader.read_string("type", tmp_str))
+      if (reader.read("type", tmp_str))
       {
         obj->set_ground_type(tmp_str);
       }
@@ -129,7 +131,7 @@ LevelObjFactory::create(const ReaderObject& reader_object)
 
     if (attribs & HAS_SPEED)
     {
-      if (reader.read_int("speed", tmp_int))
+      if (reader.read("speed", tmp_int))
       {
         obj->set_speed(tmp_int);
       }
@@ -137,8 +139,8 @@ LevelObjFactory::create(const ReaderObject& reader_object)
 
     if (attribs & HAS_REPEAT)
     {
-      if (reader.read_int("repeat", tmp_int) ||
-          reader.read_int("width", tmp_int))
+      if (reader.read("repeat", tmp_int) ||
+          reader.read("width", tmp_int))
       {
         obj->set_repeat(tmp_int);
       }
@@ -146,7 +148,7 @@ LevelObjFactory::create(const ReaderObject& reader_object)
 
     if (attribs & HAS_PARALLAX)
     {
-      if (reader.read_float("parallax", tmp_float))
+      if (reader.read("parallax", tmp_float))
       {
         obj->set_parallax(tmp_float);
       }
@@ -154,7 +156,7 @@ LevelObjFactory::create(const ReaderObject& reader_object)
 
     if (attribs & HAS_OWNER)
     {
-      if (reader.read_int("owner-id", tmp_int))
+      if (reader.read("owner-id", tmp_int))
       {
         obj->set_owner(tmp_int);
       }
@@ -162,7 +164,7 @@ LevelObjFactory::create(const ReaderObject& reader_object)
 
     if (attribs & HAS_DIRECTION)
     {
-      if (reader.read_string("direction", tmp_str))
+      if (reader.read("direction", tmp_str))
       {
         obj->set_direction(tmp_str);
       }
@@ -172,22 +174,22 @@ LevelObjFactory::create(const ReaderObject& reader_object)
     {
       Color tmp_color;
       Colorf tmp_colorf;
-      if (reader.read_colori("colori", tmp_color)) {
+      if (reader.read("colori", tmp_color)) {
         obj->set_color(tmp_color);
-      } else if (reader.read_colori("colori", tmp_color)) {
-        reader.read_colorf("color", tmp_colorf);;
+      } else if (reader.read("colori", tmp_color)) {
+        reader.read("color", tmp_colorf);
         obj->set_color(tmp_colorf.to_color());
       }
     }
 
     if (attribs & HAS_SCROLL)
     {
-      if (reader.read_float("scroll-x", tmp_float))
+      if (reader.read("scroll-x", tmp_float))
       {
         obj->set_scroll_x(tmp_float);
       }
 
-      if (reader.read_float("scroll-y", tmp_float))
+      if (reader.read("scroll-y", tmp_float))
       {
         obj->set_scroll_y(tmp_float);
       }
@@ -195,17 +197,17 @@ LevelObjFactory::create(const ReaderObject& reader_object)
 
     if (attribs & HAS_STRETCH)
     {
-      if (reader.read_bool("stretch-x", tmp_bool))
+      if (reader.read("stretch-x", tmp_bool))
       {
         obj->set_stretch_x(tmp_bool);
       }
 
-      if (reader.read_bool("stretch-y", tmp_bool))
+      if (reader.read("stretch-y", tmp_bool))
       {
         obj->set_stretch_y(tmp_bool);
       }
 
-      if (reader.read_bool("keep-aspect", tmp_bool))
+      if (reader.read("keep-aspect", tmp_bool))
       {
         obj->set_keep_aspect(tmp_bool);
       }
@@ -213,12 +215,12 @@ LevelObjFactory::create(const ReaderObject& reader_object)
 
     if (attribs & HAS_PARA)
     {
-      if (reader.read_float("para-x", tmp_float))
+      if (reader.read("para-x", tmp_float))
       {
         obj->set_para_x(tmp_float);
       }
 
-      if (reader.read_float("para-y", tmp_float))
+      if (reader.read("para-y", tmp_float))
       {
         obj->set_para_y(tmp_float);
       }
@@ -226,7 +228,7 @@ LevelObjFactory::create(const ReaderObject& reader_object)
 
     if (attribs & HAS_RELEASE_RATE)
     {
-      if (reader.read_int("release-rate", tmp_int))
+      if (reader.read("release-rate", tmp_int))
       {
         obj->set_release_rate(tmp_int);
       }
@@ -234,7 +236,7 @@ LevelObjFactory::create(const ReaderObject& reader_object)
 
     if (attribs & HAS_ID)
     {
-      if (reader.read_string("id", tmp_str))
+      if (reader.read("id", tmp_str))
       {
         obj->set_id(tmp_str);
       }
@@ -242,7 +244,7 @@ LevelObjFactory::create(const ReaderObject& reader_object)
 
     if (attribs & HAS_TARGET_ID)
     {
-      if (reader.read_string("target-id", tmp_str))
+      if (reader.read("target-id", tmp_str))
       {
         obj->set_target_id(tmp_str);
       }
@@ -250,17 +252,17 @@ LevelObjFactory::create(const ReaderObject& reader_object)
 
     if (attribs & HAS_STARFIELD)
     {
-      if (reader.read_int("small-stars", tmp_int))
+      if (reader.read("small-stars", tmp_int))
       {
         obj->set_small_stars(tmp_int);
       }
 
-      if (reader.read_int("middle-stars", tmp_int))
+      if (reader.read("middle-stars", tmp_int))
       {
         obj->set_middle_stars(tmp_int);
       }
 
-      if (reader.read_int("large-stars", tmp_int))
+      if (reader.read("large-stars", tmp_int))
       {
         obj->set_large_stars(tmp_int);
       }
@@ -268,7 +270,7 @@ LevelObjFactory::create(const ReaderObject& reader_object)
 
     if (attribs & HAS_HEIGHT)
     {
-      if (reader.read_int("height", tmp_int))
+      if (reader.read("height", tmp_int))
       {
         obj->set_height(tmp_int);
       }

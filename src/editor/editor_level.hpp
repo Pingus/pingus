@@ -23,11 +23,12 @@
 #include <memory>
 #include <vector>
 
+#include <prio/fwd.hpp>
+
 #include "math/size.hpp"
 #include "editor/level_obj.hpp"
 
 class Pathname;
-class Writer;
 
 namespace Editor {
 

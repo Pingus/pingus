@@ -73,7 +73,7 @@ public:
   const Color& get_ambient_light() const;
 
   /** Returns the body of this file */
-  const std::vector<ReaderObject>& get_objects() const;
+  ReaderCollection const& get_objects() const;
 
   /** Return the 'resource name' of the level ('snow22-grumbel', etc. ) */
   const std::string& get_resname() const;

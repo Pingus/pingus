@@ -579,8 +579,7 @@ PingusMain::start_game ()
     }
     else if (cmd_options.rest.get().ends_with(".story"))
     {
-      ReaderObject story_desc = Reader::parse(Pathname(cmd_options.rest.get(),
-                                                           Pathname::SYSTEM_PATH));
+      auto story_desc = ReaderDocument::from_file(cmd_options.rest.get(), true);
       screen_manager.push_screen(std::make_shared<StoryScreen>(story_desc.get_mapping()));
     }
     else if (cmd_options.rest.get().ends_with(".levelset"))

@@ -34,11 +34,11 @@ PathGraph::PathGraph(Worldmap* arg_worldmap, const ReaderMapping& reader) :
   edge_lookup()
 {
   ReaderCollection nodes_collection;
-  reader.read_collection("nodes", nodes_collection);
+  reader.read("nodes", nodes_collection);
   parse_nodes(nodes_collection);
 
   ReaderCollection edges_collection;
-  reader.read_collection("edges", edges_collection);
+  reader.read("edges", edges_collection);
   parse_edges(edges_collection);
 
   init_cache();
@@ -97,15 +97,15 @@ PathGraph::parse_edges(const ReaderCollection& collection)
       std::string source;
       std::string destination;
 
-      reader.read_string("name",   name);
-      reader.read_string("source", source);
-      reader.read_string("destination", destination);
+      reader.read("name",   name);
+      reader.read("source", source);
+      reader.read("destination", destination);
 
       auto path = std::make_unique<Path>();
       auto path2 = std::make_unique<Path>();
 
       ReaderCollection positions_col;
-      if (reader.read_collection("positions", positions_col))
+      if (reader.read("positions", positions_col))
       {
         for (auto const& obj : positions_col.get_objects()) {
           if (obj.get_name() == "point") {
@@ -113,7 +113,8 @@ PathGraph::parse_edges(const ReaderCollection& collection)
 
             Vector2f pos = {};
             float z_index = {};
-            data.read_vector("pos", pos, z_index);
+            InVector2fZ in_vec{pos, z_index};
+            data.read("pos", in_vec);
 
             // FIXME: do something with z_indexes
             path->push_back(pos);

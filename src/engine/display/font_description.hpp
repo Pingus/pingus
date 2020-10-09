@@ -19,10 +19,10 @@
 
 #include <vector>
 
+#include <prio/fwd.hpp>
+
 #include "math/rect.hpp"
 #include "util/pathname.hpp"
-
-class ReaderMapping;
 
 class GlyphDescription
 {
@@ -34,7 +34,7 @@ public:
   Rect     rect;
 
   GlyphDescription();
-  GlyphDescription(const ReaderMapping& reader);
+  GlyphDescription(const prio::ReaderMapping& reader);
 };
 
 class GlyphImageDescription

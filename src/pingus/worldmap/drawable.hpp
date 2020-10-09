@@ -53,7 +53,7 @@ public:
     name(),
     visible(true)
   {
-    reader.read_string("name", name);
+    reader.read("name", name);
   }
 
   virtual ~Drawable() {}

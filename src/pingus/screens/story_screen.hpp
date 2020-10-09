@@ -42,7 +42,7 @@ private:
   bool m_credits;
 
 public:
-  StoryScreen(const ReaderMapping& reader, bool credits = false);
+  StoryScreen(const prio::ReaderMapping& reader, bool credits = false);
   ~StoryScreen() override;
 
   void on_startup() override;

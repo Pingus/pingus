@@ -17,11 +17,12 @@
 #ifndef HEADER_PINGUS_PINGUS_WORLDOBJ_HPP
 #define HEADER_PINGUS_PINGUS_WORLDOBJ_HPP
 
+#include <prio/fwd.hpp>
+
 #include "engine/display/sprite.hpp"
 #include "math/vector2f.hpp"
 #include "util/reader.hpp"
 
-class ReaderMapping;
 class SceneContext;
 class SmallMap;
 class World;

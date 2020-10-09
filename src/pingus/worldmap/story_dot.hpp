@@ -19,10 +19,10 @@
 
 #include <string>
 
+#include <prio/fwd.hpp>
+
 #include "engine/display/sprite.hpp"
 #include "pingus/worldmap/dot.hpp"
-
-class ReaderMapping;
 
 namespace WorldmapNS {
 
@@ -37,7 +37,7 @@ private:
   bool m_credits;
 
 public:
-  StoryDot(const ReaderMapping& reader);
+  StoryDot(const prio::ReaderMapping& reader);
 
   void draw(DrawingContext& gc) override;
   void draw_hover(DrawingContext& gc) override;

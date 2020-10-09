@@ -26,7 +26,8 @@ TeleporterTarget::TeleporterTarget(const ReaderMapping& reader) :
   m_z_index(0.0f),
   sprite("worldobjs/teleportertarget")
 {
-  reader.read_vector("position", pos, m_z_index);
+  InVector2fZ in_vec{pos, m_z_index};
+  reader.read("position", in_vec);
 }
 
 float

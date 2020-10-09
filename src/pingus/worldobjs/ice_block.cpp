@@ -35,11 +35,12 @@ IceBlock::IceBlock(const ReaderMapping& reader) :
   block_sur("worldobjs/iceblock"),
   block_sur_cmap("worldobjs/iceblock_cmap")
 {
-  reader.read_vector("position", pos, m_z_index);
-  if (!reader.read_int("repeat", width))
+  InVector2fZ in_vec{pos, m_z_index};
+  reader.read("position", in_vec);
+  if (!reader.read("repeat", width))
   {
     log_warn("old 'width' tag used");
-    reader.read_int("width", width);
+    reader.read("width", width);
   }
 }
 

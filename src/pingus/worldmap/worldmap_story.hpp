@@ -21,9 +21,9 @@
 #include <utility>
 #include <vector>
 
-#include "pingus/res_descriptor.hpp"
+#include <prio/fwd.hpp>
 
-class ReaderMapping;
+#include "pingus/res_descriptor.hpp"
 
 class StoryPage
 {
@@ -48,7 +48,7 @@ namespace WorldmapNS {
 class WorldmapStory
 {
 public:
-  WorldmapStory(const ReaderMapping& reader);
+  WorldmapStory(const prio::ReaderMapping& reader);
   ~WorldmapStory() { }
 
   std::string get_title() const { return title; }

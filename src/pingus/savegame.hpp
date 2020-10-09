@@ -19,9 +19,9 @@
 
 #include <string>
 
-#include "util/reader.hpp"
+#include <prio/fwd.hpp>
 
-class Writer;
+#include "util/reader.hpp"
 
 /** The Savegame class holds savegame informations for a single
     level */
@@ -53,7 +53,7 @@ public:
   ~Savegame();
 
   void read_sexpr(const ReaderMapping& node);
-  void write_sexpr(Writer& xml);
+  void write_sexpr(prio::Writer& xml);
 
   std::string get_filename() const { return filename; }
 

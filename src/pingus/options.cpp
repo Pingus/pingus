@@ -20,12 +20,11 @@
 
 #include <logmich/log.hpp>
 
-#include "tinygettext/language.hpp"
+#include "util/writer.hpp"
 #include "util/reader.hpp"
+#include "tinygettext/language.hpp"
 #include "util/pathname.hpp"
 #include "util/raise_exception.hpp"
-#include "util/reader.hpp"
-#include "util/writer.hpp"
 #include "util/system.hpp"
 
 std::string framebuffer_type_to_string(FramebufferType type)
@@ -71,14 +70,14 @@ FramebufferType framebuffer_type_from_string(const std::string& str)
 Options
 Options::from_file(const Pathname& filename)
 {
-  ReaderObject reader = Reader::parse(filename);
+  auto doc = prio::ReaderDocument::from_file(filename.get_sys_path(), true);
 
-  if (reader.get_name() != "pingus-config")
+  if (doc.get_name() != "pingus-config")
   {
     raise_exception(std::runtime_error, "Error: " << filename << ": not a (pingus-config) file");
   }
 
-  return from_file_reader(reader.get_mapping());
+  return from_file_reader(doc.get_mapping());
 }
 
 Options
@@ -93,77 +92,77 @@ Options::from_file_reader(const ReaderMapping& reader)
 
   FramebufferType fbtype_value = SDL_FRAMEBUFFER;
 
-  if (reader.read_enum("renderer", fbtype_value, framebuffer_type_from_string))
+  if (reader.read("renderer", fbtype_value, framebuffer_type_from_string))
   {
     opts.framebuffer_type.set(fbtype_value);
   }
 
-  if (reader.read_int("master-volume", int_value))
+  if (reader.read("master-volume", int_value))
   {
     opts.master_volume.set(int_value);
   }
 
-  if (reader.read_int("sound-volume", int_value))
+  if (reader.read("sound-volume", int_value))
   {
     opts.sound_volume.set(int_value);
   }
 
-  if (reader.read_int("music-volume", int_value))
+  if (reader.read("music-volume", int_value))
   {
     opts.music_volume.set(int_value);
   }
 
-  if (reader.read_size("geometry", size_value))
+  if (reader.read("geometry", size_value))
   {
     opts.geometry.set(size_value);
   }
 
-  if (reader.read_size("fullscreen-resolution", size_value))
+  if (reader.read("fullscreen-resolution", size_value))
   {
     opts.fullscreen_resolution.set(size_value);
   }
 
-  if (reader.read_bool("fullscreen", bool_value))
+  if (reader.read("fullscreen", bool_value))
   {
     opts.fullscreen.set(bool_value);
   }
 
-  if (reader.read_bool("resizable", bool_value))
+  if (reader.read("resizable", bool_value))
   {
     opts.resizable.set(bool_value);
   }
 
-  if (reader.read_bool("mouse-grab", bool_value))
+  if (reader.read("mouse-grab", bool_value))
   {
     opts.mouse_grab.set(bool_value);
   }
 
-  if (reader.read_bool("print-fps", bool_value))
+  if (reader.read("print-fps", bool_value))
   {
     opts.mouse_grab.set(bool_value);
   }
 
-  if (reader.read_string("controller", string_value))
+  if (reader.read("controller", string_value))
   {
     opts.controller.set(string_value);
   }
 
-  if (reader.read_string("language", string_value))
+  if (reader.read("language", string_value))
   {
     opts.language.set(string_value);
   }
 
-  if (reader.read_bool("software-cursor", bool_value))
+  if (reader.read("software-cursor", bool_value))
   {
     opts.software_cursor.set(bool_value);
   }
 
-  if (reader.read_bool("auto-scrolling", bool_value))
+  if (reader.read("auto-scrolling", bool_value))
   {
     opts.auto_scrolling.set(bool_value);
   }
 
-  if (reader.read_bool("drag-drop-scrolling", bool_value))
+  if (reader.read("drag-drop-scrolling", bool_value))
   {
     opts.drag_drop_scrolling.set(bool_value);
   }
@@ -180,49 +179,49 @@ Options::save(const Pathname& filename) const
   writer.begin_object("pingus-config");
 
   if (framebuffer_type.is_set())
-    writer.write_enum("renderer", framebuffer_type.get(), framebuffer_type_to_string);
+    writer.write("renderer", framebuffer_type.get(), framebuffer_type_to_string);
 
   if (master_volume.is_set())
-    writer.write_int("master-volume", master_volume.get());
+    writer.write("master-volume", master_volume.get());
 
   if (sound_volume.is_set())
-    writer.write_int("sound-volume", sound_volume.get());
+    writer.write("sound-volume", sound_volume.get());
 
   if (music_volume.is_set())
-    writer.write_int("music-volume", music_volume.get());
+    writer.write("music-volume", music_volume.get());
 
   if (geometry.is_set())
-    writer.write_size("geometry", geometry.get());
+    writer.write("geometry", geometry.get());
 
   if (fullscreen_resolution.is_set())
-    writer.write_size("fullscreen-resolution", fullscreen_resolution.get());
+    writer.write("fullscreen-resolution", fullscreen_resolution.get());
 
   if (fullscreen.is_set())
-    writer.write_bool("fullscreen", fullscreen.get());
+    writer.write("fullscreen", fullscreen.get());
 
   if (resizable.is_set())
-    writer.write_bool("resizable", resizable.get());
+    writer.write("resizable", resizable.get());
 
   if (mouse_grab.is_set())
-    writer.write_bool("mouse-grab", mouse_grab.get());
+    writer.write("mouse-grab", mouse_grab.get());
 
   if (print_fps.is_set())
-    writer.write_bool("print-fps", print_fps.get());
+    writer.write("print-fps", print_fps.get());
 
   if (controller.is_set())
-    writer.write_string("controller", controller.get());
+    writer.write("controller", controller.get());
 
   if (language.is_set())
-    writer.write_string("language", language.get());
+    writer.write("language", language.get());
 
   if (software_cursor.is_set())
-    writer.write_bool("software-cursor", software_cursor.get());
+    writer.write("software-cursor", software_cursor.get());
 
   if (auto_scrolling.is_set())
-    writer.write_bool("auto-scrolling", auto_scrolling.get());
+    writer.write("auto-scrolling", auto_scrolling.get());
 
   if (drag_drop_scrolling.is_set())
-    writer.write_bool("drag-drop-scrolling", drag_drop_scrolling.get());
+    writer.write("drag-drop-scrolling", drag_drop_scrolling.get());
 
   writer.end_object(); // pingus-config
 

@@ -25,7 +25,7 @@ namespace WorldObjs {
 SnowGenerator::SnowGenerator(const ReaderMapping& reader) :
   intensity(1.0f)
 {
-  reader.read_float("intensity", intensity);
+  reader.read("intensity", intensity);
 }
 
 SnowGenerator::~SnowGenerator()

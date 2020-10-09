@@ -17,7 +17,33 @@
 #ifndef HEADER_PINGUS_UTIL_READER_HPP
 #define HEADER_PINGUS_UTIL_READER_HPP
 
-#include "reader/reader.hpp"
+#include <string_view>
+
+#include <prio/fwd.hpp>
+#include <geom/fwd.hpp>
+
+using namespace prio;
+
+class Color;
+class Colorf;
+class InVector2fZ;
+class Pathname;
+class ResDescriptor;
+
+namespace prio {
+
+bool read_custom(prio::ReaderMapping const& map, std::string_view key, ResDescriptor& value_out);
+bool read_custom(prio::ReaderMapping const& map, std::string_view key, Pathname& value_out);
+bool read_custom(prio::ReaderMapping const& map, std::string_view key, InVector2fZ& value_out);
+bool read_custom(prio::ReaderMapping const& map, std::string_view key, Color& value_out);
+bool read_custom(prio::ReaderMapping const& map, std::string_view key, Colorf& value_out);
+bool read_custom(prio::ReaderMapping const& map, std::string_view key, geom::ipoint& value_out);
+bool read_custom(prio::ReaderMapping const& map, std::string_view key, geom::isize& value_out);
+bool read_custom(prio::ReaderMapping const& map, std::string_view key, geom::irect& value_out);
+
+} // namespace prio
+
+#include <prio/prio.hpp>
 
 #endif
 

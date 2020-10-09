@@ -32,9 +32,10 @@ SpriteDrawable::SpriteDrawable(const ReaderMapping& reader) :
   auto_uncover = false;
   ResDescriptor desc;
 
-  reader.read_desc  ("surface", desc);
-  reader.read_vector("position", pos, m_z_index);
-  reader.read_bool  ("auto-uncover", auto_uncover);
+  reader.read("surface", desc);
+  InVector2fZ in_vec{pos, m_z_index};
+  reader.read("position", in_vec);
+  reader.read("auto-uncover", auto_uncover);
 
   surface = Sprite(desc);
   //log_info("XXX Desc: " << desc.res_name);

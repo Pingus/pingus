@@ -35,13 +35,14 @@ ConveyorBelt::ConveyorBelt(const ReaderMapping& reader) :
   speed(),
   counter()
 {
-  reader.read_vector("position", pos, m_z_index);
-  if (!reader.read_int   ("repeat",    width))
+  InVector2fZ in_vec{pos, m_z_index};
+  reader.read("position", in_vec);
+  if (!reader.read("repeat",    width))
   {
     log_warn("old 'width' tag used");
-    reader.read_int   ("width",    width);
+    reader.read("width",    width);
   }
-  reader.read_float ("speed",    speed);
+  reader.read("speed",    speed);
 }
 
 void

@@ -81,19 +81,19 @@ Manager::create_controller(const Pathname& filename)
 {
   ControllerPtr controller(new Controller(desc));
 
-  ReaderObject reader_object = Reader::parse(filename);
+  auto doc = ReaderDocument::from_file(filename.get_sys_path(), true);
 
-  if (reader_object.get_name() != "pingus-controller")
+  if (doc.get_name() != "pingus-controller")
   {
     raise_exception(std::runtime_error,
                     "Controller: invalid config file '" << filename.str() << "'");
   }
   else
   {
-    ReaderMapping reader = reader_object.get_mapping();
+    ReaderMapping reader = doc.get_mapping();
 
     ReaderMapping controls_mapping;
-    if (!reader.read_mapping("controls", controls_mapping))
+    if (!reader.read("controls", controls_mapping))
     {
       log_warn("{}: 'controls' section missing", filename);
     }
@@ -102,7 +102,7 @@ Manager::create_controller(const Pathname& filename)
       for (const auto& key : controls_mapping.get_keys())
       {
         ReaderCollection collection;
-        if (!controls_mapping.read_collection(key.c_str(), collection))
+        if (!controls_mapping.read(key.c_str(), collection))
         {
           log_error("{}: mapping must contain object at {}", filename, key);
         }

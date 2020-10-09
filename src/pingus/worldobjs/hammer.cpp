@@ -30,7 +30,8 @@ Hammer::Hammer(const ReaderMapping& reader) :
   m_down(true),
   m_count(0)
 {
-  reader.read_vector("position", pos, m_z_index);
+  InVector2fZ in_vec{pos, m_z_index};
+reader.read("position", in_vec);
 }
 
 float

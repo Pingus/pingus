@@ -62,8 +62,8 @@ SDLDriver::create_button(const ReaderObject& reader_object, Control* parent)
     ReaderMapping reader = reader_object.get_mapping();
     JoystickButtonBinding binding;
 
-    reader.read_int("device", binding.device);
-    reader.read_int("button", binding.button);
+    reader.read("device", binding.device);
+    reader.read("button", binding.button);
 
     if (open_joystick(binding.device))
     {
@@ -84,7 +84,7 @@ SDLDriver::create_button(const ReaderObject& reader_object, Control* parent)
     auto button = std::make_unique<Button>(parent);
 
     MouseButtonBinding binding;
-    reader.read_int("button", binding.button);
+    reader.read("button", binding.button);
     binding.binding = button.get();
     mouse_button_bindings.push_back(binding);
 
@@ -95,7 +95,7 @@ SDLDriver::create_button(const ReaderObject& reader_object, Control* parent)
     ReaderMapping reader = reader_object.get_mapping();
 
     std::string key_str;
-    if (reader.read_string("key", key_str))
+    if (reader.read("key", key_str))
     {
       SDL_Keycode key = SDL_GetKeyFromName(key_str.c_str());
       if (key != SDLK_UNKNOWN)
@@ -136,8 +136,8 @@ SDLDriver::create_axis(const ReaderObject& reader_object, Control* parent)
 
     JoystickAxisBinding binding;
 
-    reader.read_int("device", binding.device);
-    reader.read_int("axis",   binding.axis);
+    reader.read("device", binding.device);
+    reader.read("axis",   binding.axis);
 
     if (open_joystick(binding.device))
     {

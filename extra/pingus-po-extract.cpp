@@ -32,21 +32,21 @@ int po_extract_main(int argc, char** argv)
     }
     else if (filename.has_extension(".story"))
     {
-      ReaderObject reader_object = Reader::parse(filename);
-      ReaderMapping reader = reader_object.get_mapping();
+      auto doc = ReaderDocument::from_file(filename.get_sys_path(), true);
+      ReaderMapping reader = doc.get_mapping();
 
       std::string tmp;
-      if (reader.read_string("title", tmp))
+      if (reader.read("title", tmp))
       {
         emit_msgid(tmp);
       }
 
-      ReaderCollection all_pages = reader.read_collection("pages");
+      ReaderCollection all_pages = reader.get<ReaderCollection>("pages");
       const auto& childs = all_pages.get_objects();
       for(auto it = childs.begin(); it != childs.end(); ++it)
       {
         ReaderMapping r = it->get_mapping();
-        if (r.read_string("text", tmp))
+        if (r.read("text", tmp))
         {
           emit_msgid(tmp);
         }

@@ -29,7 +29,7 @@
 namespace WorldmapNS {
 
 LevelDot::LevelDot(const ReaderMapping& reader) :
-  Dot(reader.read_mapping("dot")),
+  Dot(reader.get<ReaderMapping>("dot")),
   green_dot_sur("core/worldmap/dot_green"),
   red_dot_sur("core/worldmap/dot_red"),
   inaccessible_dot_sur("core/worldmap/dot_invalid"),
@@ -38,7 +38,7 @@ LevelDot::LevelDot(const ReaderMapping& reader) :
   plf()
 {
   std::string resname;
-  reader.read_string("levelname", resname);
+  reader.read("levelname", resname);
 
   plf = PLFResMgr::load_plf(resname);
 }

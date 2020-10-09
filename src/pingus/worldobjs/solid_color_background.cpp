@@ -23,9 +23,9 @@ namespace WorldObjs {
 SolidColorBackground::SolidColorBackground(const ReaderMapping& reader) :
   color()
 {
-  if (!reader.read_colori("colori", color)) {
+  if (!reader.read("colori", color)) {
     Colorf tmp;
-    if (reader.read_colorf("color", tmp)) {
+    if (reader.read("color", tmp)) {
       color = tmp.to_color();
     }
   }

@@ -287,12 +287,12 @@
         (image "worldmaps/tutorial/layer1")
         (modifer ))
       (position 586 608 -50)
-      (auto-uncover 1))
+      (auto-uncover #t))
     (surface 
       (name "mountain_2")
       (surface 
         (image "worldmaps/tutorial/layer2")
         (modifer ))
       (position 1166 642 100)
-      (auto-uncover 0))))
+      (auto-uncover #f))))
 ;; EOF ;;

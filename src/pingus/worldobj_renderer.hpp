@@ -39,8 +39,8 @@ public:
   WorldObjRenderer();
 
   Rect get_clip_rect() const;
-  void process(const std::vector<ReaderObject>& readers);
-  void process(const ReaderObject& reader);
+  void process(ReaderCollection const& collection);
+  void process(ReaderObject const& reader);
   void blit(Surface& out_surface, int off_x = 0, int off_y = 0);
 
   Vector2i get_translate() const;

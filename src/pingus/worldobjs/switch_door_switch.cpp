@@ -35,8 +35,9 @@ SwitchDoorSwitch::SwitchDoorSwitch(const ReaderMapping& reader) :
   is_triggered(false),
   m_door()
 {
-  reader.read_string("target-id", m_target);
-  reader.read_vector("position", switch_pos, m_z_index);
+  reader.read("target-id", m_target);
+  InVector2fZ in_vec{switch_pos, m_z_index};
+  reader.read("position", in_vec);
 }
 
 void

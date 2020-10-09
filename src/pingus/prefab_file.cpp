@@ -25,31 +25,11 @@
 PrefabFile
 PrefabFile::from_path(const Pathname& filename)
 {
-  ReaderObject reader_object = Reader::parse(filename);
-
-  if (reader_object.get_name() != "pingus-prefab")
-  {
+  auto doc = prio::ReaderDocument::from_file(filename.get_sys_path(), true);
+  if (doc.get_name() != "pingus-prefab") {
     raise_exception(std::runtime_error, "Error: " << filename.str() << ": not a 'pingus-prefab' file");
-  }
-  else
-  {
-    ReaderMapping reader = reader_object.get_mapping();
-
-    ReaderMapping overrides;
-    reader.read_mapping("overrides", overrides);
-
-    ReaderCollection objects;
-    if (!reader.read_collection("objects", objects) || objects.get_objects().empty())
-    {
-      raise_exception(std::runtime_error, "Error: " << filename.str() << ": empty prefab file");
-    }
-    else
-    {
-      // FIXME: Hacky way to get the Prefab name
-      PrefabFile prefab(System::cut_file_extension(filename.get_raw_path()),
-                        objects.get_objects(), overrides);
-      return prefab;
-    }
+  } else {
+    return PrefabFile(std::move(doc));
   }
 }
 
@@ -60,16 +40,17 @@ PrefabFile::from_resource(const std::string& name)
   return from_path(filename);
 }
 
-PrefabFile::PrefabFile(const std::string& name,
-                       const std::vector<ReaderObject>& objects,
-                       const ReaderMapping& overrides) :
-  m_name(name),
-  m_objects(objects),
-  m_overrides(overrides)
+PrefabFile::PrefabFile(ReaderDocument doc) :
+  m_doc(std::move(doc)),
+  m_objects(),
+  m_overrides()
 {
+  ReaderMapping reader = m_doc.get_mapping();
+  reader.read("overrides", m_overrides);
+  reader.read("objects", m_objects);
 }
 
-std::vector<ReaderObject> const&
+ReaderCollection const&
 PrefabFile::get_objects() const
 {
   return m_objects;

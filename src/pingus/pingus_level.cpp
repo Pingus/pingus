@@ -56,54 +56,54 @@ PingusLevel::load(const std::string& resname,
   impl->checksum = System::checksum(pathname);
 
   impl->resname = resname;
-  ReaderObject reader_object = Reader::parse(pathname);
+  impl->doc = prio::ReaderDocument::from_file(pathname.get_sys_path(), true);
 
-  if (reader_object.get_name() != "pingus-level")
+  if (impl->doc.get_name() != "pingus-level")
   {
     raise_exception(std::runtime_error, "Error: " << pathname.str() << ": not a 'pingus-level' file");
   }
   else
   {
-    ReaderMapping reader = reader_object.get_mapping();
+    ReaderMapping reader = impl->doc.get_mapping();
 
     int version;
-    if (reader.read_int("version", version))
+    if (reader.read("version", version))
       log_info("Levelfile Version: {}", version);
     else
       log_info("Unknown Levelfile Version: {}", version);
 
     ReaderMapping head;
-    if (!reader.read_mapping("head", head))
+    if (!reader.read("head", head))
     {
       raise_exception(std::runtime_error, "Error: (head) section not found in '" << pathname.str() << "'");
     }
     else
     {
       log_info("Reading head");
-      head.read_string("levelname",        impl->levelname);
-      head.read_string("description",      impl->description);
-      head.read_size  ("levelsize",        impl->size);
-      head.read_string("music",            impl->music);
-      head.read_int   ("time",             impl->time);
-      head.read_int   ("number-of-pingus", impl->number_of_pingus);
-      head.read_int   ("number-to-save",   impl->number_to_save);
+      head.read("levelname",        impl->levelname);
+      head.read("description",      impl->description);
+      head.read("levelsize",        impl->size);
+      head.read("music",            impl->music);
+      head.read("time",             impl->time);
+      head.read("number-of-pingus", impl->number_of_pingus);
+      head.read("number-to-save",   impl->number_to_save);
       Colorf tmp_colorf;
-      if (head.read_colorf("ambient-light", tmp_colorf)) {
+      if (head.read("ambient-light", tmp_colorf)) {
         impl->ambient_light = tmp_colorf.to_color();
       }
-      head.read_string("author",           impl->author);
+      head.read("author",           impl->author);
 
       log_info("Size: {}x{}", impl->size.width(), impl->size.height());
 
       ReaderMapping actions;
-      if (head.read_mapping("actions", actions))
+      if (head.read("actions", actions))
       {
         std::vector<std::string> lst = actions.get_keys();
         for(std::vector<std::string>::iterator i = lst.begin(); i != lst.end(); ++i)
         {
           int count = 0;
           log_info("Actions: {}", i->c_str());
-          if (actions.read_int(i->c_str(), count))
+          if (actions.read(i->c_str(), count))
             impl->actions[*i] = count;
         }
       }
@@ -114,15 +114,7 @@ PingusLevel::load(const std::string& resname,
       }
     }
 
-    ReaderCollection collection;
-    if (reader.read_collection("objects", collection))
-    {
-      std::vector<ReaderObject> object_lst = collection.get_objects();
-      for(auto i = object_lst.begin(); i != object_lst.end(); ++i)
-      {
-        impl->objects.push_back(*i);
-      }
-    }
+    reader.read("objects", impl->objects);
   }
 }
 
@@ -180,7 +172,7 @@ PingusLevel::get_music() const
   return impl->music;
 }
 
-const std::vector<ReaderObject>&
+ReaderCollection const&
 PingusLevel::get_objects() const
 {
   return impl->objects;

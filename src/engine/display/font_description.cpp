@@ -40,11 +40,11 @@ GlyphDescription::GlyphDescription(const ReaderMapping& reader) :
   rect()
 {
   int lazy = 0; // FIXME: implement read_uint32
-  reader.read_int("unicode", lazy);
+  reader.read("unicode", lazy);
   unicode = static_cast<uint32_t>(lazy);
-  reader.read_vector2i("offset", offset);
-  reader.read_int("advance", advance);
-  reader.read_rect("rect", rect);
+  reader.read("offset", offset);
+  reader.read("advance", advance);
+  reader.read("rect", rect);
 }
 
 FontDescription::FontDescription(const Pathname& pathname_) :
@@ -57,22 +57,22 @@ FontDescription::FontDescription(const Pathname& pathname_) :
   char_spacing     = 1.0f;
   vertical_spacing = 1.0f;
 
-  ReaderObject reader_object = Reader::parse(pathname);
+  auto doc = ReaderDocument::from_file(pathname.get_sys_path(), true);
 
-  if (reader_object.get_name() != "pingus-font")
+  if (doc.get_root().get_name() != "pingus-font")
   {
     raise_exception(std::runtime_error, pathname << ": not a pingus-font file");
   }
   else
   {
-    ReaderMapping reader = reader_object.get_mapping();
+    ReaderMapping reader = doc.get_root().get_mapping();
 
-    reader.read_float("char-spacing", char_spacing);
-    reader.read_float("vertical-spacing", vertical_spacing);
-    reader.read_int("size", size);
+    reader.read("char-spacing", char_spacing);
+    reader.read("vertical-spacing", vertical_spacing);
+    reader.read("size", size);
 
     ReaderCollection images_reader;
-    if (reader.read_collection("images", images_reader))
+    if (reader.read("images", images_reader))
     {
       auto images_lst = images_reader.get_objects();
 
@@ -81,10 +81,10 @@ FontDescription::FontDescription(const Pathname& pathname_) :
         ReaderMapping mapping = i->get_mapping();
 
         GlyphImageDescription image_desc;
-        mapping.read_path("filename", image_desc.pathname);
+        mapping.read("filename", image_desc.pathname);
 
         ReaderCollection glyph_collection;
-        if (mapping.read_collection("glyphs", glyph_collection))
+        if (mapping.read("glyphs", glyph_collection))
         {
           std::vector<ReaderObject> glyph_reader = glyph_collection.get_objects();
           for(auto j = glyph_reader.begin(); j != glyph_reader.end(); ++j)

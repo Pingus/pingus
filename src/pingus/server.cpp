@@ -64,8 +64,8 @@ static std::unique_ptr<std::ostream> get_demostream(const PingusLevel& plf)
     // Write file header
     Writer writer(*out);
     writer.begin_mapping("level");
-    writer.write_string("name", plf.get_resname());
-    writer.write_string("checksum", plf.get_checksum());
+    writer.write("name", plf.get_resname());
+    writer.write("checksum", plf.get_checksum());
     writer.end_mapping();
     *out << std::endl;
     return std::unique_ptr<std::ostream>(out.release());

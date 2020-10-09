@@ -33,8 +33,9 @@ Teleporter::Teleporter(const ReaderMapping& reader) :
   target_id(),
   target()
 {
-  reader.read_vector("position", pos, m_z_index);
-  reader.read_string("target-id", target_id);
+  InVector2fZ in_vec{pos, m_z_index};
+  reader.read("position", in_vec);
+  reader.read("target-id", target_id);
 }
 
 float

@@ -110,7 +110,7 @@ int main(int argc, char** argv)
                   << static_cast<int>(plf.get_ambient_light().b) << " "
                   << static_cast<int>(plf.get_ambient_light().a)
                   << std::endl;
-        std::cout << "objects       : " << plf.get_objects().size() << std::endl;
+        std::cout << "objects       : " << plf.get_objects().get_objects().size() << std::endl;
         std::cout << std::endl;
       }
       else

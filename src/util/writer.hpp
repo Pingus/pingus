@@ -17,7 +17,28 @@
 #ifndef HEADER_PINGUS_UTIL_WRITER_HPP
 #define HEADER_PINGUS_UTIL_WRITER_HPP
 
-#include "reader/writer.hpp"
+#include <prio/fwd.hpp>
+#include <geom/size.hpp>
+#include <geom/rect.hpp>
+
+using namespace prio;
+
+class OutVector2fZ;
+class Color;
+class Colorf;
+
+namespace prio {
+
+void write_custom(prio::Writer& writer, std::string_view key, OutVector2fZ const& value);
+void write_custom(prio::Writer& writer, std::string_view key, Color const& value);
+void write_custom(prio::Writer& writer, std::string_view key, Colorf const& value);
+void write_custom(prio::Writer& writer, std::string_view key, geom::ipoint const& value);
+void write_custom(prio::Writer& writer, std::string_view key, geom::isize const& value);
+void write_custom(prio::Writer& writer, std::string_view key, geom::irect const& value);
+
+} // namespace prio
+
+#include <prio/writer.hpp>
 
 #endif
 

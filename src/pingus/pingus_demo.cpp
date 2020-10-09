@@ -27,7 +27,7 @@ PingusDemo::PingusDemo(const Pathname& pathname) :
   m_checksum(),
   m_events()
 {
-  std::vector<ReaderObject> lines = Reader::parse_many(pathname);
+  auto lines = ReaderDocument::parse_many(pathname.get_sys_path());
 
   if (lines.empty())
   {
@@ -38,19 +38,19 @@ PingusDemo::PingusDemo(const Pathname& pathname) :
     if (lines.front().get_name() == "level")
     {
       ReaderMapping reader = lines.front().get_mapping();
-      if (!reader.read_string("name", m_levelname))
+      if (!reader.read("name", m_levelname))
       {
         raise_exception(std::runtime_error, "(level (name ...)) entry missing in demo file '" << pathname.str() << "'");
       }
 
-      reader.read_string("checksum", m_checksum);
+      reader.read("checksum", m_checksum);
     }
 
     for(auto i = lines.begin() + 1; i != lines.end(); ++i)
     {
       if (i->get_name() != "checksum") // workaround for old incorrectly recorded demo files
       {
-        m_events.push_back(ServerEvent(*i));
+        m_events.push_back(ServerEvent(i->get_root()));
       }
     }
   }

@@ -24,8 +24,9 @@ Dot::Dot(const ReaderMapping& reader) :
   pos(),
   m_z_index(0.0f)
 {
-  reader.read_vector("position", pos, m_z_index);
-  reader.read_string("name",     name);
+  InVector2fZ in_vec{pos, m_z_index};
+  reader.read("position", in_vec);
+  reader.read("name",     name);
 
   assert(!name.empty());
 }

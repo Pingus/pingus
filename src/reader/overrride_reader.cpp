@@ -165,16 +165,16 @@ public:
     }
     else
     {
-      return m_reader.read_colori(name, color);
+      return m_reader.read(name, color);
     }
   }
 
   bool read_mapping(const char* name, ReaderMapping& result) const override
   {
     ReaderMapping overwrite_result;
-    if (m_overrides.read_mapping(name, overwrite_result))
+    if (m_overrides.read(name, overwrite_result))
     {
-      if (m_reader.read_mapping(name, result))
+      if (m_reader.read(name, result))
       {
         result = make_override_mapping(result, overwrite_result);
         return true;
@@ -187,7 +187,7 @@ public:
     }
     else
     {
-      return m_reader.read_mapping(name, result);
+      return m_reader.read(name, result);
     }
   }
 
@@ -199,7 +199,7 @@ public:
     }
     else
     {
-      return m_reader.read_collection(key, result);
+      return m_reader.read(key, result);
     }
   }
 
@@ -211,7 +211,7 @@ public:
     }
     else
     {
-      return m_reader.read_object(key, result);
+      return m_reader.read(key, result);
     }
   }
 };

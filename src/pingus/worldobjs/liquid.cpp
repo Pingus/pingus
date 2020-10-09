@@ -31,9 +31,10 @@ Liquid::Liquid(const ReaderMapping& reader) :
 {
   ResDescriptor desc;
 
-  reader.read_vector("position", pos, m_z_index);
-  reader.read_desc  ("surface",  desc);
-  reader.read_int   ("repeat",   width);
+  InVector2fZ in_vec{pos, m_z_index};
+  reader.read("position", in_vec);
+  reader.read ("surface",  desc);
+  reader.read("repeat",   width);
 
   sur = Sprite(desc);
 

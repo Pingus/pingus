@@ -38,31 +38,32 @@ SurfaceBackground::SurfaceBackground(const ReaderMapping& reader) :
   scroll_ox(0),
   scroll_oy(0)
 {
-  if (!reader.read_vector("position", pos, m_z_index)) {
+  InVector2fZ in_vec{pos, m_z_index};
+  if (!reader.read("position", in_vec)) {
     pos = Vector2f(0.f, 0.f);
     m_z_index = -150.f;
   }
 
   ResDescriptor desc;
 
-  reader.read_desc("surface", desc);
-  if (!reader.read_colori("colori", color)) {
+  reader.read("surface", desc);
+  if (!reader.read("colori", color)) {
     Colorf tmp_colorf;
-    if (reader.read_colorf("color", tmp_colorf)) {
+    if (reader.read("color", tmp_colorf)) {
       color = tmp_colorf.to_color();
     }
   }
 
-  reader.read_float("para-x", para_x);
-  reader.read_float("para-y", para_y);
+  reader.read("para-x", para_x);
+  reader.read("para-y", para_y);
 
-  reader.read_float("scroll-x", scroll_x);
-  reader.read_float("scroll-y", scroll_y);
+  reader.read("scroll-x", scroll_x);
+  reader.read("scroll-y", scroll_y);
 
-  reader.read_bool("stretch-x", stretch_x);
-  reader.read_bool("stretch-y", stretch_y);
+  reader.read("stretch-x", stretch_x);
+  reader.read("stretch-y", stretch_y);
 
-  reader.read_bool("keep-aspect", keep_aspect);
+  reader.read("keep-aspect", keep_aspect);
 
   if (!stretch_x && !stretch_y && color.a == 0)
   {

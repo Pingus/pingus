@@ -21,26 +21,26 @@
 SpriteDescriptionPtr
 SpriteDescription::from_file(const Pathname& path)
 {
-  ReaderObject reader_object = Reader::parse(path);
-  ReaderMapping reader = reader_object.get_mapping();
+  auto doc = ReaderDocument::from_file(path.get_sys_path(), true);
+  ReaderMapping reader = doc.get_root().get_mapping();
 
   SpriteDescriptionPtr desc(new SpriteDescription);
 
-  reader.read_int("speed", desc->speed);
-  reader.read_bool("loop", desc->loop);
-  reader.read_vector2i("offset", desc->offset);
+  reader.read("speed", desc->speed);
+  reader.read("loop", desc->loop);
+  reader.read("offset", desc->offset);
 
-  reader.read_enum("origin", desc->origin, string2origin);
+  reader.read("origin", desc->origin, string2origin);
 
-  if (!reader.read_path("image", desc->filename))
+  if (!reader.read("image", desc->filename))
   {
-    log_error("'image' missing for {}", reader_object.get_name());
+    log_error("'image' missing for {}", doc.get_root().get_name());
   }
 
   desc->filename = Pathname(desc->filename.get_raw_path(), Pathname::DATA_PATH); // FIXME: Hack
-  reader.read_size("array", desc->array);
-  reader.read_vector2i("position",   desc->frame_pos);
-  reader.read_size("size",  desc->frame_size);
+  reader.read("array", desc->array);
+  reader.read("position",   desc->frame_pos);
+  reader.read("size",  desc->frame_size);
 
   return desc;
 }

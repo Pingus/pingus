@@ -26,9 +26,9 @@ StarfieldBackground::StarfieldBackground(const ReaderMapping& reader) :
   large_stars_count(25),
   stars()
 {
-  reader.read_int("small-stars",  small_stars_count);
-  reader.read_int("middle-stars", middle_stars_count);
-  reader.read_int("large-stars",  large_stars_count);
+  reader.read("small-stars",  small_stars_count);
+  reader.read("middle-stars", middle_stars_count);
+  reader.read("large-stars",  large_stars_count);
 
   for (int i=0; i < small_stars_count; ++i)
     stars.push_back(new StarfieldBackgroundStars(StarfieldBackgroundStars::SMALL_STAR));

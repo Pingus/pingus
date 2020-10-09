@@ -29,18 +29,20 @@ public:
   static PrefabFile from_path(const Pathname& file);
 
 private:
-  std::string m_name;
-  std::vector<ReaderObject> m_objects;
+  PrefabFile(ReaderDocument doc);
+
+public:
+  ReaderCollection const& get_objects() const;
+  ReaderMapping const& get_overrides() const;
+
+private:
+  ReaderDocument m_doc;
+  ReaderCollection m_objects;
   ReaderMapping m_overrides;
 
 private:
-  PrefabFile(const std::string& filename,
-             const std::vector<ReaderObject>& objects,
-             const ReaderMapping& overrides);
-
-public:
-  std::vector<ReaderObject> const& get_objects() const;
-  ReaderMapping const& get_overrides() const;
+  PrefabFile(const PrefabFile&) = delete;
+  PrefabFile& operator=(const PrefabFile&) = delete;
 };
 
 #endif

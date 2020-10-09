@@ -47,21 +47,17 @@ Worldmap::Worldmap(const Pathname& filename) :
 
   worldmap = PingusWorldmap(filename);
 
-  std::vector<ReaderObject> object_reader = worldmap.get_objects();
-  for(auto i = object_reader.begin(); i != object_reader.end(); ++i)
-  {
-    std::unique_ptr<Drawable> drawable = DrawableFactory::create(*i);
-    if (drawable)
-    {
+  ReaderCollection const& objects = worldmap.get_objects();
+  for (auto const& reader_object : objects.get_objects()) {
+    std::unique_ptr<Drawable> drawable = DrawableFactory::create(reader_object);
+    if (drawable) {
       drawables.push_back(std::move(drawable));
-    }
-    else
-    {
+    } else {
       log_info("Worldmap::parse_objects: Parse Error");
     }
   }
 
-  ReaderMapping path_graph_reader = worldmap.get_graph();
+  ReaderMapping const& path_graph_reader = worldmap.get_graph();
   path_graph.reset(new PathGraph(this, path_graph_reader));
 
   default_node = path_graph->lookup_node(worldmap.get_default_node());
@@ -171,10 +167,10 @@ Worldmap::on_primary_button_press(int x, int y)
   {
     Writer writer(std::cout);
     writer.begin_mapping("leveldot");
-    writer.write_string("levelname", "");
+    writer.write("levelname", "");
     writer.begin_mapping("dot");
-    writer.write_string("name", "leveldot_X");
-    writer.write_vector("position", click_pos, 0.0f);
+    writer.write("name", "leveldot_X");
+    writer.write("position", OutVector2fZ{click_pos, 0.0f});
     writer.end_mapping();
     writer.end_mapping();
     std::cout << std::endl;

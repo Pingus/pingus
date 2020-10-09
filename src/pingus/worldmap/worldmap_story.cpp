@@ -32,11 +32,11 @@ WorldmapStory::WorldmapStory(const ReaderMapping& reader) :
   music(),
   pages()
 {
-  reader.read_string("title", title);
+  reader.read("title", title);
   title = _(title);
-  reader.read_string("music", music);
+  reader.read("music", music);
   ReaderCollection all_pages;
-  reader.read_collection("pages", all_pages);
+  reader.read("pages", all_pages);
 
   // Temporary objects
   ResDescriptor desc;
@@ -49,8 +49,8 @@ WorldmapStory::WorldmapStory(const ReaderMapping& reader) :
   {
     page_name = i->get_name();
     ReaderMapping mapping = i->get_mapping();
-    mapping.read_desc("surface", desc);
-    mapping.read_string("text", text);
+    mapping.read("surface", desc);
+    mapping.read("text", text);
     // Translate the text and break it up.
     text = StringFormat::break_line(_(text), 570, Fonts::chalk_normal);
     pages.push_back(StoryPage(desc, text, page_name));

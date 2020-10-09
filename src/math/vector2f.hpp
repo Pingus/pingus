@@ -26,5 +26,21 @@
 
 using Vector2f = geom::fpoint;
 
+// FIXME: type only exist as workaround for old code
+class InVector2fZ
+{
+public:
+  Vector2f& pos;
+  float& z_index;
+};
+
+// FIXME: type only exist as workaround for old code
+class OutVector2fZ
+{
+public:
+  Vector2f pos;
+  float z_index;
+};
+
 #endif
 

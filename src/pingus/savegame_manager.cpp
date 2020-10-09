@@ -47,15 +47,15 @@ SavegameManager::SavegameManager(const std::string& arg_filename) :
   }
   else
   {
-    ReaderObject reader = Reader::parse(filename);
-    if (reader.get_name() != "pingus-savegame")
+    auto doc = ReaderDocument::from_file(filename, true);
+    if (doc.get_name() != "pingus-savegame")
     {
       log_error("{}: not a 'pingus-savegame' file", filename);
     }
     else
     {
       ReaderCollection levels_collection;
-      reader.get_mapping().read_collection("levels", levels_collection);
+      doc.get_mapping().read("levels", levels_collection);
       for(auto const& level_object : levels_collection.get_objects())
       {
         auto savegame = std::make_unique<Savegame>(level_object.get_mapping());

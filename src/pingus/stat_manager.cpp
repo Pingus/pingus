@@ -59,20 +59,20 @@ StatManager::load(const std::string& filename)
     save(filename);
   }
 
-  ReaderObject reader = Reader::parse(filename);
-  if (reader.get_name() != "pingus-stats")
+  auto doc = ReaderDocument::from_file(filename, true);
+  if (doc.get_name() != "pingus-stats")
   {
     std::cerr << "Error: " << filename << ": not a (pingus-stats) file" << std::endl;
     return;
   }
   else
   {
-    ReaderMapping mapping = reader.get_mapping();
+    ReaderMapping mapping = doc.get_mapping();
     const std::vector<std::string>& section_names = mapping.get_keys();
     for(std::vector<std::string>::const_iterator i = section_names.begin();
         i != section_names.end(); ++i)
     {
-      mapping.read_string(i->c_str(), stats[*i]);
+      mapping.read(i->c_str(), stats[*i]);
     }
   }
 }
@@ -94,7 +94,7 @@ StatManager::save(const std::string& filename)
   for (Table::iterator i = stats.begin(); i != stats.end(); ++i)
   {
     if (!i->second.empty())
-      writer.write_string(i->first.c_str(), i->second);
+      writer.write(i->first.c_str(), i->second);
   }
 
   writer.end_object();

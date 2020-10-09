@@ -36,9 +36,10 @@ Exit::Exit(const ReaderMapping& reader) :
   flag(),
   smallmap_symbol("core/misc/smallmap_exit")
 {
-  reader.read_vector("position", pos, m_z_index);
-  reader.read_desc  ("surface",  desc);
-  reader.read_int   ("owner-id", owner_id);
+  InVector2fZ in_vec{pos, m_z_index};
+  reader.read("position", in_vec);
+  reader.read("surface",  desc);
+  reader.read("owner-id", owner_id);
 
   // Set default owner ID to 0
   if (owner_id < 0 || owner_id > 3) owner_id = 0;

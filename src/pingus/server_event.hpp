@@ -20,8 +20,8 @@
 #include "math/vector2f.hpp"
 #include "pingus/action_name.hpp"
 
-class ReaderMapping;
-class ReaderObject;
+#include <prio/fwd.hpp>
+
 class Server;
 
 /** This class represents an event that the Server can recieve from
@@ -55,7 +55,7 @@ public:
   ServerEvent();
 
   /** Construct an server event from an xml subtree */
-  ServerEvent(const ReaderObject& reader);
+  ServerEvent(const prio::ReaderObject& reader);
 
   void write(std::ostream& out) const;
 

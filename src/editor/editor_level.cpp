@@ -122,12 +122,10 @@ EditorLevel::from_level_file(const Pathname& pathname)
   }
 
   // Get the objects
-  auto objs = plf.get_objects();
-  for (auto i = objs.begin(); i != objs.end(); i++)
-  {
-    LevelObjPtr obj = LevelObjFactory::create(*i);
-    if (obj)
-    {
+  ReaderCollection const& objects = plf.get_objects();
+  for (auto const& reader_object : objects.get_objects()) {
+    LevelObjPtr obj = LevelObjFactory::create(reader_object);
+    if (obj) {
       level->add_object(obj);
     }
   }
@@ -154,7 +152,7 @@ EditorLevel::from_prefab_file(const Pathname& pathname)
   // FIXME: overrides are getting ignored
 
   // Get the objects
-  auto objs = prefab.get_objects();
+  auto const& objs = prefab.get_objects().get_objects();
   for (auto i = objs.begin(); i != objs.end(); i++)
   {
     LevelObjPtr obj = LevelObjFactory::create(*i);
@@ -208,7 +206,7 @@ EditorLevel::save_prefab(const std::string& filename)
 
   // Write header
   fw.begin_object("pingus-prefab");
-  fw.write_int("version", 3);
+  fw.write("version", 3);
 
   Vector2f level_center(static_cast<float>(get_size().width())/2.0f,
                         static_cast<float>(get_size().height())/2.0f);
@@ -251,27 +249,27 @@ EditorLevel::save_level(Writer& fw)
 
   // Write header
   fw.begin_object("pingus-level");
-  fw.write_int("version", 3);
+  fw.write("version", 3);
   fw.begin_mapping("head");
-  fw.write_string("license", "GPLv3+");
-  fw.write_string("levelname", impl->levelname);
-  fw.write_string("description", impl->description);
-  fw.write_string("author", impl->author);
-  fw.write_int("number-of-pingus", impl->number_of_pingus);
-  fw.write_int("number-to-save", impl->number_to_save);
-  fw.write_int("time", impl->time);
-  fw.write_string("music", impl->music);
+  fw.write("license", "GPLv3+");
+  fw.write("levelname", impl->levelname);
+  fw.write("description", impl->description);
+  fw.write("author", impl->author);
+  fw.write("number-of-pingus", impl->number_of_pingus);
+  fw.write("number-to-save", impl->number_to_save);
+  fw.write("time", impl->time);
+  fw.write("music", impl->music);
 
   // Write the list of actions to the file
   fw.begin_mapping("actions");
   for (auto i = impl->actions.begin(); i != impl->actions.end(); i++)
   {
     if (i->second > 0)
-      fw.write_int(i->first.c_str(), i->second);
+      fw.write(i->first.c_str(), i->second);
   }
   fw.end_mapping();     // actions
 
-  fw.write_size("levelsize", impl->size);
+  fw.write("levelsize", impl->size);
   fw.end_mapping();     // head
 
   // Write the objects

@@ -19,7 +19,7 @@
 
 #include "editor/level_obj_ptr.hpp"
 
-class ReaderObject;
+#include <prio/fwd.hpp>
 
 namespace Editor {
 
@@ -27,7 +27,7 @@ class LevelObjFactory
 {
 private:
 public:
-  static LevelObjPtr create(const ReaderObject& reader_object);
+  static LevelObjPtr create(const prio::ReaderObject& reader_object);
 
 private:
   LevelObjFactory(const LevelObjFactory&);

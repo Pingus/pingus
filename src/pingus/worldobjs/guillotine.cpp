@@ -32,7 +32,8 @@ Guillotine::Guillotine(const ReaderMapping& reader) :
   direction(),
   killing(false)
 {
-  reader.read_vector("position", pos, m_z_index);
+  InVector2fZ in_vec{pos, m_z_index};
+  reader.read("position", in_vec);
 
   sprite_kill_right.set_play_loop(false);
   sprite_kill_left.set_play_loop(false);

@@ -28,6 +28,8 @@ class PingusLevelImpl
 public:
   // Set defaults in constructor
   PingusLevelImpl() :
+    doc(),
+    objects(),
     resname(),
     checksum(),
     levelname(),
@@ -39,9 +41,11 @@ public:
     actions(),
     time(0),
     author(),
-    music(),
-    objects()
+    music()
   {}
+
+  ReaderDocument doc;
+  ReaderCollection objects;
 
   std::string resname;
 
@@ -62,8 +66,6 @@ public:
 
   std::string author;
   std::string music;
-
-  std::vector<ReaderObject> objects;
 };
 
 #endif

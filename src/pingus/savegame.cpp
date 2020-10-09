@@ -65,10 +65,10 @@ Savegame::Savegame(const ReaderMapping& reader) :
   needed_time(),
   saved_pingus()
 {
-  reader.read_string("filename", filename);
-  reader.read_enum("status", status, string_to_status);
-  reader.read_int("time", needed_time);
-  reader.read_int("saved-pingus", saved_pingus);
+  reader.read("filename", filename);
+  reader.read("status", status, string_to_status);
+  reader.read("time", needed_time);
+  reader.read("saved-pingus", saved_pingus);
 }
 
 Savegame::Savegame(const std::string& filename_,
@@ -90,10 +90,10 @@ void
 Savegame::write_sexpr(Writer& writer)
 {
   writer.begin_mapping("level");
-  writer.write_string("filename", filename);
-  writer.write_enum("status", status, status_to_string);
-  writer.write_int("time", needed_time);
-  writer.write_int("saved-pingus", saved_pingus);
+  writer.write("filename", filename);
+  writer.write("status", status, status_to_string);
+  writer.write("time", needed_time);
+  writer.write("saved-pingus", saved_pingus);
   writer.end_mapping();
 }
 

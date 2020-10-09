@@ -43,7 +43,7 @@
 #include "pingus/worldobjs/switch_door_switch.hpp"
 #include "pingus/worldobjs/teleporter.hpp"
 #include "pingus/worldobjs/teleporter_target.hpp"
-#include "reader/overrride_reader.hpp"
+#include "util/reader.hpp"
 
 using namespace WorldObjs;
 
@@ -91,7 +91,7 @@ public:
     std::vector<WorldObj*> group;
 
     ReaderCollection collection;
-    reader.read_collection("objects", collection);
+    reader.read("objects", collection);
     std::vector<ReaderObject> sections = collection.get_objects();
     for(auto it = sections.begin(); it != sections.end(); ++it)
     {
@@ -121,18 +121,19 @@ public:
   std::vector<WorldObj*> create(const ReaderMapping& reader) override
   {
     std::string name;
-    reader.read_string("name", name);
+    reader.read("name", name);
 
     Vector2f pos;
     float z_index = 0.0f;
-    reader.read_vector("position", pos, z_index);
+    InVector2fZ in_vec{pos, z_index};
+    reader.read("position", in_vec);
 
     PrefabFile prefab = PrefabFile::from_resource(name);
     ReaderMapping overrides;
-    reader.read_mapping("overrides", overrides);
+    reader.read("overrides", overrides);
 
     std::vector<WorldObj*> group;
-    std::vector<ReaderObject> objects = prefab.get_objects();
+    auto const& objects = prefab.get_objects().get_objects();
     for(auto it = objects.begin(); it != objects.end(); ++it)
     {
       ReaderMapping override_reader = make_override_mapping(it->get_mapping(), overrides);

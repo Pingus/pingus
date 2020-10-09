@@ -134,7 +134,7 @@ private:
   StoryScreenSkipButton & operator=(const StoryScreenSkipButton&);
 };
 
-StoryScreen::StoryScreen(const ReaderMapping& reader, bool credits) :
+StoryScreen::StoryScreen(const prio::ReaderMapping& reader, bool credits) :
   story(new WorldmapNS::WorldmapStory(reader)),
   story_comp(),
   continue_button(nullptr),

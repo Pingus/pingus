@@ -45,32 +45,32 @@ ServerEvent::ServerEvent(const ReaderObject& reader_object) :
   if (reader_object.get_name() == "armageddon")
   {
     type = ARMAGEDDON_EVENT;
-    reader.read_int("time", time_stamp);
+    reader.read("time", time_stamp);
   }
   else if (reader_object.get_name() == "end")
   {
     type = END_EVENT;
-    reader.read_int("time", time_stamp);
+    reader.read("time", time_stamp);
   }
   else if (reader_object.get_name() == "finish")
   {
     type = FINISH_EVENT;
-    reader.read_int("time", time_stamp);
+    reader.read("time", time_stamp);
   }
   else if (reader_object.get_name() == "pingu-action")
   {
     type = PINGU_ACTION_EVENT;
-    reader.read_int ("time",   time_stamp);
+    reader.read ("time",   time_stamp);
     int pingu_id_tmp;
-    reader.read_int ("id", pingu_id_tmp);
+    reader.read ("id", pingu_id_tmp);
     pingu_id = static_cast<unsigned int>(pingu_id_tmp);
 
     std::string raw_x;
     std::string raw_y;
-    pos = Vector2f(reader.read_string("raw-x", raw_x) ? Math::string2float(raw_x) : 0.0f,
-                   reader.read_string("raw-y", raw_y) ? Math::string2float(raw_y) : 0.0f);
+    pos = Vector2f(reader.read("raw-x", raw_x) ? Math::string2float(raw_x) : 0.0f,
+                   reader.read("raw-y", raw_y) ? Math::string2float(raw_y) : 0.0f);
 
-    reader.read_enum("action", pingu_action, &ActionName::from_string);
+    reader.read("action", pingu_action, &ActionName::from_string);
   }
   else
   {

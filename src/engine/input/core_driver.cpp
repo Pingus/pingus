@@ -233,14 +233,14 @@ CoreDriver::create_scroller(const ReaderObject& reader_object, Control* parent)
     auto axis = std::make_unique<AxisScroller>(parent);
 
     ReaderObject x_reader;
-    if (!reader.read_object("x-axis", x_reader))
+    if (!reader.read("x-axis", x_reader))
     {
       log_error("CoreDriver: Couldn't find x-axis");
       return {};
     }
 
     ReaderObject y_reader;
-    if (!reader.read_object("y-axis", y_reader))
+    if (!reader.read("y-axis", y_reader))
     {
       log_error("CoreDriver: Couldn't find y-axis");
       return {};
@@ -251,7 +251,7 @@ CoreDriver::create_scroller(const ReaderObject& reader_object, Control* parent)
 
     std::unique_ptr<Button> button;
     ReaderObject button_reader;
-    if (reader.read_object("button", button_reader))
+    if (reader.read("button", button_reader))
     {
       button = manager->create_button(button_reader, axis.get());
     }
@@ -273,28 +273,28 @@ CoreDriver::create_scroller(const ReaderObject& reader_object, Control* parent)
     auto scroller = std::make_unique<ButtonScroller>(parent);
 
     ReaderObject left_reader;
-    if (!reader.read_object("left", left_reader))
+    if (!reader.read("left", left_reader))
     {
       log_error("CoreDriver: core:button-scroller: Couldn't find 'left'");
       return {};
     }
 
     ReaderObject right_reader;
-    if (!reader.read_object("right", right_reader))
+    if (!reader.read("right", right_reader))
     {
       log_error("CoreDriver: core:button-scroller: Couldn't find 'right'");
       return {};
     }
 
     ReaderObject up_reader;
-    if (!reader.read_object("up", up_reader))
+    if (!reader.read("up", up_reader))
     {
       log_error("CoreDriver: core:button-scroller: Couldn't find 'up'");
       return {};
     }
 
     ReaderObject down_reader;
-    if (!reader.read_object("down", down_reader))
+    if (!reader.read("down", down_reader))
     {
       log_error("CoreDriver: core:button-scroller: Couldn't find 'down'");
       return {};
@@ -328,14 +328,14 @@ CoreDriver::create_pointer(const ReaderObject& reader_object, Control* parent)
     auto axis = std::make_unique<AxisPointer>(parent);
 
     ReaderObject x_reader;
-    if (!reader.read_object("x-axis", x_reader))
+    if (!reader.read("x-axis", x_reader))
     {
       log_error("CoreDriver: Couldn't find x-axis");
       return {};
     }
 
     ReaderObject y_reader;
-    if (!reader.read_object("y-axis", y_reader))
+    if (!reader.read("y-axis", y_reader))
     {
       log_error("CoreDriver: Couldn't find y-axis");
       return {};
@@ -346,7 +346,7 @@ CoreDriver::create_pointer(const ReaderObject& reader_object, Control* parent)
 
     std::unique_ptr<Button> button;
     ReaderObject button_reader;
-    if (reader.read_object("button", button_reader))
+    if (reader.read("button", button_reader))
     {
       button = manager->create_button(button_reader, axis.get());
     }

@@ -37,15 +37,16 @@ Entrance::Entrance(const ReaderMapping& reader) :
   last_release(),
   last_direction(0)
 {
-  reader.read_int   ("owner-id",     owner_id);
-  reader.read_vector("position",     pos, m_z_index);
-  reader.read_int   ("release-rate", release_rate);
+  reader.read("owner-id",     owner_id);
+  InVector2fZ in_vec{pos, m_z_index};
+  reader.read("position", in_vec);
+  reader.read("release-rate", release_rate);
 
   // Set default owner ID to 0
   if (owner_id < 0 || owner_id > 3) owner_id = 0;
 
   std::string direction_str;
-  reader.read_string("direction", direction_str);
+  reader.read("direction", direction_str);
 
   if (direction_str == "left")
     direction = LEFT;

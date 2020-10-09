@@ -34,7 +34,7 @@ GroupLevelObj::from_prefab(const std::string& name)
     std::shared_ptr<GroupLevelObj> group = std::make_shared<GroupLevelObj>();
 
     group->m_name = name;
-    for(auto const& obj_desc : prefab.get_objects())
+    for(auto const& obj_desc : prefab.get_objects().get_objects())
     {
       LevelObjPtr obj = LevelObjFactory::create(obj_desc);
       if (obj)
@@ -93,25 +93,25 @@ GroupLevelObj::add_child(const LevelObjPtr& obj)
 void
 GroupLevelObj::set_overrides(const ReaderMapping& reader)
 {
-  if (reader.read_int("repeat", m_repeat))
+  if (reader.read("repeat", m_repeat))
   {
     set_repeat(m_repeat);
     m_overrides |= HAS_REPEAT;
   }
 
-  if (reader.read_int("owner-id", m_owner_id))
+  if (reader.read("owner-id", m_owner_id))
   {
     set_owner(m_owner_id);
     m_overrides |= HAS_OWNER;
   }
 
-  if (reader.read_int("release-rate", m_release_rate))
+  if (reader.read("release-rate", m_release_rate))
   {
     set_release_rate(m_release_rate);
     m_overrides |= HAS_RELEASE_RATE;
   }
 
-  if (reader.read_string("direction",  m_direction))
+  if (reader.read("direction",  m_direction))
   {
     set_direction(m_direction);
     m_overrides |= HAS_DIRECTION;
@@ -135,13 +135,13 @@ GroupLevelObj::write_properties(Writer& writer)
   else
   {
     writer.begin_object("prefab");
-    writer.write_string("name", m_name);
-    writer.write_vector("position", m_pos, z_index());
+    writer.write("name", m_name);
+    writer.write("position", OutVector2fZ{m_pos, z_index()});
     writer.begin_mapping("overrides");
-    if (m_overrides & HAS_REPEAT)       writer.write_int("repeat", m_repeat);
-    if (m_overrides & HAS_RELEASE_RATE) writer.write_int("release-rate", m_release_rate);
-    if (m_overrides & HAS_DIRECTION)    writer.write_string("direction", m_direction);
-    if (m_overrides & HAS_OWNER)        writer.write_int("owner-id", m_owner_id);
+    if (m_overrides & HAS_REPEAT)       writer.write("repeat", m_repeat);
+    if (m_overrides & HAS_RELEASE_RATE) writer.write("release-rate", m_release_rate);
+    if (m_overrides & HAS_DIRECTION)    writer.write("direction", m_direction);
+    if (m_overrides & HAS_OWNER)        writer.write("owner-id", m_owner_id);
     writer.end_mapping();
     writer.end_object();
   }

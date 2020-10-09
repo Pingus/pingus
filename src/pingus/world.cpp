@@ -78,11 +78,9 @@ World::add_object (WorldObj* obj)
 void
 World::init_worldobjs(const PingusLevel& plf)
 {
-  const std::vector<ReaderObject>& objects = plf.get_objects();
-
-  for (auto i = objects.begin(); i != objects.end (); ++i)
+  for (auto const& reader_object : plf.get_objects().get_objects())
   {
-    std::vector<WorldObj*> objs = WorldObjFactory::instance().create(*i);
+    std::vector<WorldObj*> objs = WorldObjFactory::instance().create(reader_object);
     for(auto obj = objs.begin(); obj != objs.end(); ++obj)
     {
       if (*obj)
@@ -97,10 +95,10 @@ World::init_worldobjs(const PingusLevel& plf)
     if (std::none_of(world_obj.begin(), world_obj.end(),
                      [](WorldObj* obj) { return obj->is_solid_background(); }))
     {
-      auto reader = Reader::parse_string("(solidcolor-background "
-                                         "  (position 0 0 -1000) "
-                                         "  (colori 127 0 127 255))");
-      auto objs = WorldObjFactory::instance().create(reader);
+      auto doc = ReaderDocument::from_string("(solidcolor-background "
+                                             "  (position 0 0 -1000) "
+                                             "  (colori 127 0 127 255))", true);
+      auto objs = WorldObjFactory::instance().create(doc.get_root());
       for(auto obj = objs.begin(); obj != objs.end(); ++obj)
       {
         add_object(*obj);

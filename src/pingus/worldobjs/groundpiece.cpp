@@ -26,11 +26,12 @@ Groundpiece::Groundpiece(const ReaderMapping& reader) :
   desc(),
   gptype()
 {
-  reader.read_vector("position", pos, m_z_index);
-  reader.read_desc  ("surface",  desc);
+  InVector2fZ in_vec{pos, m_z_index};
+  reader.read("position", in_vec);
+  reader.read("surface",  desc);
 
   gptype = Groundtype::GP_GROUND;
-  reader.read_enum("type", gptype, &Groundtype::string_to_type);
+  reader.read("type", gptype, &Groundtype::string_to_type);
 }
 
 void

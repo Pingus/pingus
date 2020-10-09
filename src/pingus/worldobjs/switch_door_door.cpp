@@ -36,8 +36,9 @@ SwitchDoorDoor::SwitchDoorDoor(const ReaderMapping& reader) :
   is_opening(false),
   current_door_height()
 {
-  reader.read_vector("position", door_pos, m_z_index);
-  reader.read_int("height", door_height);
+  InVector2fZ in_vec{door_pos, m_z_index};
+  reader.read("position", in_vec);
+  reader.read("height", door_height);
   current_door_height = door_height;
 }
 

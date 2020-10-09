@@ -124,16 +124,15 @@ WorldObjRenderer::render_surface(const ResDescriptor& desc,
 }
 
 void
-WorldObjRenderer::process(const std::vector<ReaderObject>& readers)
+WorldObjRenderer::process(ReaderCollection const& collection)
 {
-  for(auto it = readers.begin(); it != readers.end(); ++it)
-  {
-    process(*it);
+  for (auto const& obj : collection.get_objects()) {
+    process(obj);
   }
 }
 
 void
-WorldObjRenderer::process(const ReaderObject& reader_object)
+WorldObjRenderer::process(ReaderObject const& reader_object)
 {
   ReaderMapping reader = reader_object.get_mapping();
 
@@ -159,34 +158,38 @@ WorldObjRenderer::process(const ReaderObject& reader_object)
   {
     Vector2f pos;
     float z_index = 0.0f;
-    reader.read_vector("position", pos, z_index);
+    InVector2fZ in_vec{pos, z_index};
+    reader.read("position", in_vec);
     render_sprite(ResDescriptor("entrances/generic"), pos, z_index);
   }
   else if (reader_object.get_name() == "spike")
   {
     Vector2f pos;
     float z_index = 0.0f;
-    reader.read_vector("position", pos, z_index);
+    InVector2fZ in_vec{pos, z_index};
+    reader.read("position", in_vec);
     render_surface(ResDescriptor("traps/spike_editor"), pos, z_index);
   }
   else if (reader_object.get_name() == "switchdoor-switch")
   {
     Vector2f pos;
     float z_index = 0.0f;
-    reader.read_vector("position", pos, z_index);
+    InVector2fZ in_vec{pos, z_index};
+    reader.read("position", in_vec);
     render_surface(ResDescriptor("worldobjs/switchdoor_switch"), pos, z_index);
   }
   else if (reader_object.get_name() == "switchdoor-door")
   {
     Vector2f pos;
     float z_index = 0.0f;
-    reader.read_vector("position", pos, z_index);
+    InVector2fZ in_vec{pos, z_index};
+    reader.read("position", in_vec);
     render_surface(ResDescriptor("worldobjs/switchdoor_box"), pos, z_index);
   }
   else if (reader_object.get_name() == "group")
   {
     ReaderCollection collection;
-    reader.read_collection("objects", collection);
+    reader.read("objects", collection);
     auto objects = collection.get_objects();
     for(const auto& obj : objects)
     {
@@ -196,7 +199,7 @@ WorldObjRenderer::process(const ReaderObject& reader_object)
   else if (reader_object.get_name() == "prefab")
   {
     std::string name;
-    if (!reader.read_string("name", name))
+    if (!reader.read("name", name))
     {
       log_error("'name' tag missing for prefab");
     }
@@ -206,7 +209,8 @@ WorldObjRenderer::process(const ReaderObject& reader_object)
 
       Vector2f position;
       float z_index = 0.0f;
-      reader.read_vector("position", position, z_index);
+      InVector2fZ in_vec{position, z_index};
+      reader.read("position", in_vec);
       push_translate(static_cast<int>(position.x()),
                      static_cast<int>(position.y()));
       process(prefab.get_objects());
@@ -228,8 +232,9 @@ WorldObjRenderer::process_object_with_surface(const ReaderObject& reader_object)
   float z_index = 0.0f;
   ResDescriptor desc;
 
-  if (!(reader.read_vector("position", pos, z_index) &&
-        reader.read_desc("surface", desc)))
+  InVector2fZ in_vec{pos, z_index};
+  if (!(reader.read("position", in_vec) &&
+        reader.read("surface", desc)))
   {
     log_error("object ({}) does not have 'position' and 'surface'", reader_object.get_name());
   }
@@ -243,7 +248,7 @@ WorldObjRenderer::process_object_with_surface(const ReaderObject& reader_object)
     else if (reader_object.get_name() == "groundpiece")
     {
       std::string type;
-      reader.read_string("type", type);
+      reader.read("type", type);
       if (type == "remove")
       {
         // FIXME: don't have blit_remove()
@@ -257,7 +262,7 @@ WorldObjRenderer::process_object_with_surface(const ReaderObject& reader_object)
     else
     {
       int repeat = 1;
-      reader.read_int("repeat", repeat);
+      reader.read("repeat", repeat);
 
       render_surface(desc, pos, z_index, repeat);
     }

@@ -59,52 +59,52 @@ Levelset::from_directory(const std::string& title,
 std::unique_ptr<Levelset>
 Levelset::from_file(const Pathname& pathname)
 {
-  ReaderObject reader_object = Reader::parse(pathname);
-  if (reader_object.get_name() != "pingus-levelset")
+  auto doc = ReaderDocument::from_file(pathname.get_sys_path(), true);
+  if (doc.get_name() != "pingus-levelset")
   {
     raise_exception(std::runtime_error, "Error: " << pathname.str() << ": not a 'pingus-levelset' file");
   }
   else
   {
-    ReaderMapping reader = reader_object.get_mapping();
+    ReaderMapping reader = doc.get_mapping();
     auto levelset = std::make_unique<Levelset>();
 
     std::string tmp;
-    if (reader.read_string("title", tmp))
+    if (reader.read("title", tmp))
     {
       levelset->set_title(tmp);
     }
 
-    if (reader.read_string("description", tmp))
+    if (reader.read("description", tmp))
     {
       levelset->set_description(tmp);
     }
 
-    if (reader.read_string("image", tmp))
+    if (reader.read("image", tmp))
     {
       levelset->set_image(tmp);
     }
 
     bool tmp_bool;
-    if (reader.read_bool("developer-only", tmp_bool))
+    if (reader.read("developer-only", tmp_bool))
     {
       levelset->set_developer_only(tmp_bool);
     }
 
     float tmp_float;
-    if (reader.read_float("priority", tmp_float))
+    if (reader.read("priority", tmp_float))
     {
       levelset->set_priority(tmp_float);
     }
 
     bool locked = true;
-    reader.read_bool("locked", locked);
+    reader.read("locked", locked);
 
     // skip level loading when levels won't be used
     if (!levelset->get_developer_only() || globals::developer_mode)
     {
       ReaderCollection level_reader;
-      reader.read_collection("levels", level_reader);
+      reader.read("levels", level_reader);
       std::vector<ReaderObject> sections = level_reader.get_objects();
       for(auto i = sections.begin(); i != sections.end(); ++i)
       {
@@ -112,7 +112,7 @@ Levelset::from_file(const Pathname& pathname)
         {
           ReaderMapping mapping = i->get_mapping();
 
-          if (!mapping.read_string("filename", tmp))
+          if (!mapping.read("filename", tmp))
           {
             log_error("Levelset: {} is missing filename tag", pathname.str());
           }

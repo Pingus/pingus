@@ -31,7 +31,8 @@ FakeExit::FakeExit(const ReaderMapping& reader) :
   m_z_index(0.0f),
   smashing(false)
 {
-  reader.read_vector("position", pos, m_z_index);
+  InVector2fZ in_vec{pos, m_z_index};
+  reader.read("position", in_vec);
 }
 
 float

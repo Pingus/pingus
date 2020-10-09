@@ -100,8 +100,8 @@ int main(int argc, char** argv)
       std::ostringstream out;
       Writer writer(out);
       writer.begin_mapping("pingus-sprite");
-      writer.write_string("image", System::cut_file_extension(System::basename(files[0].get_raw_path())) + ".png");
-      writer.write_vector2i("offset", offset);
+      writer.write("image", System::cut_file_extension(System::basename(files[0].get_raw_path())) + ".png");
+      writer.write("offset", offset);
       writer.end_mapping();
       out << std::endl;
       log_info("writing: %1%", outfile);

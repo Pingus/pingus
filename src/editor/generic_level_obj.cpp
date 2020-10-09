@@ -287,71 +287,71 @@ GenericLevelObj::write_properties(Writer &fw)
   const unsigned attribs_ = get_attributes(section_name);
 
   if (attribs_ & HAS_TYPE)
-    fw.write_string("type", object_type);
+    fw.write("type", object_type);
 
   if (attribs_ & HAS_GPTYPE)
-    fw.write_string("type", ground_type);
+    fw.write("type", ground_type);
 
   if (attribs_ & HAS_SPRITE)
   {
     fw.begin_mapping("surface");
-    fw.write_string("image", desc.res_name);
-    fw.write_string("modifier", ResourceModifier::to_string(desc.modifier));
+    fw.write("image", desc.res_name);
+    fw.write("modifier", ResourceModifier::to_string(desc.modifier));
     fw.end_mapping();   // surface
   }
 
-  fw.write_vector("position", pos, z_index());
+  fw.write("position", OutVector2fZ{pos, m_z_index});
 
   if (attribs_ & HAS_SPEED)
-    fw.write_int("speed", speed);
+    fw.write("speed", speed);
   if (attribs_ & HAS_PARALLAX)
-    fw.write_float("parallax", parallax);
+    fw.write("parallax", parallax);
   if (attribs_ & HAS_REPEAT)
-    fw.write_int("repeat", repeat);
+    fw.write("repeat", repeat);
   if (attribs_ & HAS_OWNER)
-    fw.write_int("owner-id", owner_id);
+    fw.write("owner-id", owner_id);
   if (attribs_ & HAS_DIRECTION)
-    fw.write_string("direction", direction);
+    fw.write("direction", direction);
   if (attribs_ & HAS_RELEASE_RATE)
-    fw.write_int("release-rate", release_rate);
+    fw.write("release-rate", release_rate);
   if (attribs_ & HAS_COLOR)
-    fw.write_colori("colori", color);
+    fw.write("colori", color);
   if (attribs_ & HAS_STRETCH)
   {
-    fw.write_bool("stretch-x", stretch_x);
-    fw.write_bool("stretch-y", stretch_y);
-    fw.write_bool("keep-aspect", keep_aspect);
+    fw.write("stretch-x", stretch_x);
+    fw.write("stretch-y", stretch_y);
+    fw.write("keep-aspect", keep_aspect);
   }
   if (attribs_ & HAS_SCROLL)
   {
-    fw.write_float("scroll-x", scroll_x);
-    fw.write_float("scroll-y", scroll_y);
+    fw.write("scroll-x", scroll_x);
+    fw.write("scroll-y", scroll_y);
   }
   if (attribs_ & HAS_PARA)
   {
-    fw.write_float("para-x", para_x);
-    fw.write_float("para-y", para_y);
+    fw.write("para-x", para_x);
+    fw.write("para-y", para_y);
   }
 
   if (attribs_ & HAS_STARFIELD)
   {
-    fw.write_int("small-stars", small_stars);
-    fw.write_int("middle-stars", middle_stars);
-    fw.write_int("large-stars", large_stars);
+    fw.write("small-stars", small_stars);
+    fw.write("middle-stars", middle_stars);
+    fw.write("large-stars", large_stars);
   }
 
   if (attribs_ & HAS_ID)
   {
-    fw.write_string("id", id);
+    fw.write("id", id);
   }
 
   if (attribs_ & HAS_TARGET_ID)
   {
-    fw.write_string("target-id", target_id);
+    fw.write("target-id", target_id);
   }
 
   if (attribs_ & HAS_HEIGHT)
-    fw.write_int("height", height);
+    fw.write("height", height);
 
   // Writes any extra properties that may be necessary (virtual function)
   write_extra_properties(fw);

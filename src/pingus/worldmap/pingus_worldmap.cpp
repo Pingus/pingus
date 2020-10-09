@@ -26,6 +26,7 @@ using namespace WorldmapNS;
 class PingusWorldmapImpl
 {
 public:
+  ReaderDocument doc;
   std::string filename;
 
   std::string name;
@@ -40,13 +41,14 @@ public:
   std::string default_node;
   std::string final_node;
 
-  ReaderObject intro_story;
-  ReaderObject end_story;
+  ReaderDocument intro_story;
+  ReaderDocument end_story;
   ReaderMapping path_graph;
 
-  std::vector<ReaderObject> objects;
+  ReaderCollection objects;
 
   PingusWorldmapImpl() :
+    doc(),
     filename(),
     name(),
     short_name(),
@@ -73,7 +75,8 @@ PingusWorldmap::PingusWorldmap() :
 PingusWorldmap::PingusWorldmap(const Pathname& pathname) :
   impl(new PingusWorldmapImpl())
 {
-  parse_file(Reader::parse(pathname));
+  impl->doc = ReaderDocument::from_file(pathname.get_sys_path(), true);
+  parse_file(impl->doc.get_root());
 }
 
 void
@@ -87,26 +90,26 @@ PingusWorldmap::parse_file(const ReaderObject& reader_object)
   {
     ReaderMapping reader = reader_object.get_mapping();
 
-    if (!reader.read_mapping("graph", impl->path_graph))
+    if (!reader.read("graph", impl->path_graph))
     {
       raise_exception(std::runtime_error, "Worldmap: " << impl->filename << " is missed 'graph' section");
     }
 
-    impl->objects = reader.read_collection("objects").get_objects();
+    impl->objects = reader.get<ReaderCollection>("objects");
 
-    parse_properties(reader.read_mapping("head"));
+    parse_properties(reader.get<ReaderMapping>("head"));
 
     std::string intro_story;
     std::string end_story;
 
-    if (reader.read_string("intro-story", intro_story))
+    if (reader.read("intro-story", intro_story))
     {
-      impl->intro_story = Reader::parse(Pathname(intro_story, Pathname::DATA_PATH));
+      impl->intro_story = ReaderDocument::from_file(Pathname(intro_story, Pathname::DATA_PATH).get_sys_path(), true);
     }
 
-    if (reader.read_string("end-story", end_story))
+    if (reader.read("end-story", end_story))
     {
-      impl->end_story = Reader::parse(Pathname(end_story, Pathname::DATA_PATH));
+      impl->end_story = ReaderDocument::from_file(Pathname(end_story, Pathname::DATA_PATH).get_sys_path(), true);
     }
   }
 }
@@ -114,16 +117,16 @@ PingusWorldmap::parse_file(const ReaderObject& reader_object)
 void
 PingusWorldmap::parse_properties(const ReaderMapping& reader)
 {
-  reader.read_string("music",  impl->music);
-  reader.read_string("author", impl->author);
-  reader.read_string("name",   impl->name);
-  reader.read_string("short-name", impl->short_name);
-  reader.read_string("email",  impl->email);
-  reader.read_int("width",     impl->width);
-  reader.read_int("height",    impl->height);
+  reader.read("music",  impl->music);
+  reader.read("author", impl->author);
+  reader.read("name",   impl->name);
+  reader.read("short-name", impl->short_name);
+  reader.read("email",  impl->email);
+  reader.read("width",     impl->width);
+  reader.read("height",    impl->height);
 
-  reader.read_string("default-node", impl->default_node);
-  reader.read_string("final-node",   impl->final_node);
+  reader.read("default-node", impl->default_node);
+  reader.read("final-node",   impl->final_node);
 }
 
 std::string
@@ -186,25 +189,25 @@ PingusWorldmap::get_final_node() const
   return impl->final_node;
 }
 
-ReaderMapping
+ReaderMapping const&
 PingusWorldmap::get_graph() const
 {
   return impl->path_graph;
 }
 
-const std::vector<ReaderObject>&
+ReaderCollection const&
 PingusWorldmap::get_objects() const
 {
   return impl->objects;
 }
 
-ReaderObject
+ReaderDocument const&
 PingusWorldmap::get_intro_story() const
 {
   return impl->intro_story;
 }
 
-ReaderObject
+ReaderDocument const&
 PingusWorldmap::get_end_story() const
 {
   return impl->end_story;

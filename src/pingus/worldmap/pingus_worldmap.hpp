@@ -42,11 +42,11 @@ public:
   std::string get_default_node() const;
   std::string get_final_node() const;
 
-  ReaderObject get_intro_story() const;
-  ReaderObject get_end_story() const;
+  ReaderDocument const& get_intro_story() const;
+  ReaderDocument const& get_end_story() const;
 
-  ReaderMapping get_graph() const;
-  const std::vector<ReaderObject>& get_objects() const;
+  ReaderMapping const& get_graph() const;
+  ReaderCollection const& get_objects() const;
 
 private:
   void parse_file(const ReaderObject& reader);
