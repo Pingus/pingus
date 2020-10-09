@@ -26,6 +26,7 @@
 #include "math/vector2f.hpp"
 
 class Color;
+class Colorf;
 
 class ReaderCollection;
 class ReaderMapping;
@@ -64,7 +65,7 @@ public:
   virtual bool read_size(const char* key, geom::isize&) const = 0;
   virtual bool read_vector2i(const char* key, Vector2i&) const = 0;
   virtual bool read_rect(const char* key, Rect&) const = 0;
-  virtual bool read_colorf(const char* key, Color&) const = 0;
+  virtual bool read_colorf(const char* key, Colorf&) const = 0;
   virtual bool read_colori(const char* key, Color&) const = 0;
 
   virtual bool read_mapping(const char* key, ReaderMapping&) const = 0;

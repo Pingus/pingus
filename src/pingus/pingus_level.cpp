@@ -87,7 +87,10 @@ PingusLevel::load(const std::string& resname,
       head.read_int   ("time",             impl->time);
       head.read_int   ("number-of-pingus", impl->number_of_pingus);
       head.read_int   ("number-to-save",   impl->number_to_save);
-      head.read_colorf("ambient-light",    impl->ambient_light);
+      Colorf tmp_colorf;
+      if (head.read_colorf("ambient-light", tmp_colorf)) {
+        impl->ambient_light = tmp_colorf.to_color();
+      }
       head.read_string("author",           impl->author);
 
       log_info("Size: {}x{}", impl->size.width(), impl->size.height());

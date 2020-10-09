@@ -235,15 +235,15 @@ JsonReaderMappingImpl::read_rect(const char* key, Rect& value) const
 }
 
 bool
-JsonReaderMappingImpl::read_colorf(const char* key, Color& value) const
+JsonReaderMappingImpl::read_colorf(const char* key, Colorf& value) const
 {
   const Json::Value& element = m_json[key];
   if (element.isArray() && element.size() >= 3)
   {
-    value.r = static_cast<uint8_t>(255 * element[0u].asFloat());
-    value.g = static_cast<uint8_t>(255 * element[1u].asFloat());
-    value.b = static_cast<uint8_t>(255 * element[2u].asFloat());
-    value.a = static_cast<uint8_t>(255 * element[3u].asFloat());
+    value.r = element[0u].asFloat();
+    value.g = element[1u].asFloat();
+    value.b = element[2u].asFloat();
+    value.a = element[3u].asFloat();
     return true;
   }
   else

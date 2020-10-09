@@ -63,7 +63,7 @@ public:
   bool read_size(const char* key, geom::isize&) const override;
   bool read_vector2i(const char* key, Vector2i&) const override;
   bool read_rect(const char* key, Rect&) const override;
-  bool read_colorf(const char* key, Color&) const override;
+  bool read_colorf(const char* key, Colorf&) const override;
   bool read_colori(const char* key, Color&) const override;
 
   bool read_mapping(const char* key, ReaderMapping&) const override;

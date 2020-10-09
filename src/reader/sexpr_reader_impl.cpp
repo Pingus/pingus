@@ -274,15 +274,15 @@ SExprReaderMappingImpl::read_rect(const char* key, Rect& rect) const
 }
 
 bool
-SExprReaderMappingImpl::read_colorf(const char* key, Color& value) const
+SExprReaderMappingImpl::read_colorf(const char* key, Colorf& value) const
 {
   sexp::Value const* sub = get_subsection(key);
   if (sub && sexp::list_length(*sub) == 4)
   {
-    value = Color(static_cast<uint8_t>(sexp::list_ref(*sub, 0).as_float() * 255),
-                  static_cast<uint8_t>(sexp::list_ref(*sub, 1).as_float() * 255),
-                  static_cast<uint8_t>(sexp::list_ref(*sub, 2).as_float() * 255),
-                  static_cast<uint8_t>(sexp::list_ref(*sub, 3).as_float() * 255));
+    value = Colorf(sexp::list_ref(*sub, 0).as_float(),
+                   sexp::list_ref(*sub, 1).as_float(),
+                   sexp::list_ref(*sub, 2).as_float(),
+                   sexp::list_ref(*sub, 3).as_float());
     return true;
   }
   else

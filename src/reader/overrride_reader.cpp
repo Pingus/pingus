@@ -145,7 +145,7 @@ public:
     }
   }
 
-  bool read_colorf(const char* name, Color& color) const override
+  bool read_colorf(const char* name, Colorf& color) const override
   {
     if (m_overrides.read_colorf(name, color))
     {

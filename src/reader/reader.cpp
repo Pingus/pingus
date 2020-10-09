@@ -156,7 +156,7 @@ ReaderMapping::read_vector(const char* key, Vector2f& value, float& z_index) con
 }
 
 bool
-ReaderMapping::read_colorf(const char* key, Color& value) const
+ReaderMapping::read_colorf(const char* key, Colorf& value) const
 {
   if (m_impl)
     return m_impl->read_colorf(key, value);

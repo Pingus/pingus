@@ -27,6 +27,7 @@
 #include "math/vector2f.hpp"
 
 class Color;
+class Colorf;
 
 class ResDescriptor;
 class Pathname;
@@ -82,7 +83,7 @@ public:
   bool read_vector2i(const char* key, Vector2i& value) const;
   bool read_rect(const char* key, Rect& value) const;
   bool read_size(const char* key, geom::isize& value) const;
-  bool read_colorf(const char* key, Color& value) const;
+  bool read_colorf(const char* key, Colorf& value) const;
   bool read_colori(const char* key, Color& value) const;
   bool read_desc(const char* key, ResDescriptor& value) const;
 

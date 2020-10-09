@@ -78,7 +78,6 @@ LevelObjFactory::create(const ReaderObject& reader_object)
     unsigned attribs;
     Vector2f p;
     float z_index = 0.0f;
-    Color    tmp_color;
     ResDescriptor desc;
     std::string   tmp_str;
     int   tmp_int;
@@ -171,10 +170,13 @@ LevelObjFactory::create(const ReaderObject& reader_object)
 
     if (attribs & HAS_COLOR)
     {
-      if (reader.read_colori("colori", tmp_color) ||
-          reader.read_colorf("color", tmp_color))
-      {
+      Color tmp_color;
+      Colorf tmp_colorf;
+      if (reader.read_colori("colori", tmp_color)) {
         obj->set_color(tmp_color);
+      } else if (reader.read_colori("colori", tmp_color)) {
+        reader.read_colorf("color", tmp_colorf);;
+        obj->set_color(tmp_colorf.to_color());
       }
     }
 
