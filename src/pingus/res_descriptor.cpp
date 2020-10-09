@@ -47,7 +47,8 @@ ResDescriptor::ResDescriptor(const std::string& arg_res_name,
 bool
 ResDescriptor::operator<(const ResDescriptor& res_desc) const
 {
-  return (res_name < res_desc.res_name) && (modifier < res_desc.modifier);
+#pragma GCC diagnostic ignored "-Wzero-as-null-pointer-constant"
+  return (res_name < res_desc.res_name) && (modifier < res_desc.modifier); // NOLINT
 }
 
 std::ostream& operator<<(std::ostream& s, const ResDescriptor& desc)

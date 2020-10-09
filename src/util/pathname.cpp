@@ -281,8 +281,7 @@ Pathname::has_extension(const std::string& ext) const
 bool
 Pathname::operator<(const Pathname& rhs) const
 {
-#pragma GCC diagnostic ignored "-Wzero-as-null-pointer-constant"
-  if (type < rhs.type) // NOLINT
+  if (type < rhs.type)
   {
     return true;
   }
@@ -292,7 +291,8 @@ Pathname::operator<(const Pathname& rhs) const
   }
   else
   {
-    return pathname < rhs.pathname;
+#pragma GCC diagnostic ignored "-Wzero-as-null-pointer-constant"
+    return pathname < rhs.pathname; // NOLINT
   }
 }
 
