@@ -47,7 +47,7 @@ SavegameManager::SavegameManager(const std::string& arg_filename) :
   }
   else
   {
-    auto doc = ReaderDocument::from_file(filename, true);
+    auto doc = ReaderDocument::from_file(filename);
     if (doc.get_name() != "pingus-savegame")
     {
       log_error("{}: not a 'pingus-savegame' file", filename);

@@ -19,12 +19,12 @@ enum class Syntax { FASTJSON, JSON, SEXPR };
 
 struct ResaveOptions
 {
-  Syntax syntax;
+  prio::Format syntax;
   bool stdout;
   std::vector<std::string> files;
 
   ResaveOptions() :
-    syntax(Syntax::SEXPR),
+    syntax(prio::Format::SEXPR),
     stdout(false),
     files()
   {}
@@ -61,15 +61,15 @@ int main(int argc, char** argv)
         return 1;
 
       case 'j':
-        opts.syntax = Syntax::JSON;
+        opts.syntax = prio::Format::JSON;
         break;
 
       case 'f':
-        opts.syntax = Syntax::FASTJSON;
+        opts.syntax = prio::Format::FASTJSON;
         break;
 
       case 's':
-        opts.syntax = Syntax::SEXPR;
+        opts.syntax = prio::Format::SEXPR;
         break;
 
       case 'S':
@@ -119,33 +119,8 @@ int main(int argc, char** argv)
         stream = &fout;
       }
 
-      switch(opts.syntax)
-      {
-        case Syntax::JSON:
-          {
-            auto writer = Writer::json(*stream);
-            level->save_level(writer);
-          }
-          break;
-
-        case Syntax::FASTJSON:
-          {
-            auto writer = Writer::fastjson(*stream);
-            level->save_level(writer);
-          }
-          break;
-
-        case Syntax::SEXPR:
-          {
-            auto writer = Writer::sexpr(*stream);
-            level->save_level(writer);
-          }
-          break;
-
-        default:
-          assert(false && "never reached");
-          break;
-      }
+      auto writer = Writer::from_stream(opts.syntax, *stream);
+      level->save_level(writer);
     }
     catch(std::exception const& err)
     {

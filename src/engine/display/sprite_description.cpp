@@ -21,7 +21,7 @@
 SpriteDescriptionPtr
 SpriteDescription::from_file(const Pathname& path)
 {
-  auto doc = ReaderDocument::from_file(path.get_sys_path(), true);
+  auto doc = ReaderDocument::from_file(path.get_sys_path());
   ReaderMapping reader = doc.get_root().get_mapping();
 
   SpriteDescriptionPtr desc(new SpriteDescription);

@@ -34,7 +34,7 @@ int po_extract_main(int argc, char** argv)
     }
     else if (filename.has_extension(".story"))
     {
-      auto doc = ReaderDocument::from_file(filename.get_sys_path(), true);
+      auto doc = ReaderDocument::from_file(filename.get_sys_path());
       ReaderMapping reader = doc.get_mapping();
 
       std::string tmp;

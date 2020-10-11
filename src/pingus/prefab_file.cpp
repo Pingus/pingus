@@ -25,7 +25,7 @@
 PrefabFile
 PrefabFile::from_path(const Pathname& filename)
 {
-  auto doc = prio::ReaderDocument::from_file(filename.get_sys_path(), true);
+  auto doc = prio::ReaderDocument::from_file(filename.get_sys_path());
   if (doc.get_name() != "pingus-prefab") {
     raise_exception(std::runtime_error, "Error: " << filename.str() << ": not a 'pingus-prefab' file");
   } else {

@@ -19,8 +19,8 @@
 
 #include <string_view>
 
-#include <prio/fwd.hpp>
 #include <geom/fwd.hpp>
+#include <prio/reader.hpp>
 
 using ReaderCollection = prio::ReaderCollection;
 using ReaderDocument = prio::ReaderDocument;
@@ -35,18 +35,16 @@ class ResDescriptor;
 
 namespace prio {
 
-bool read_custom(prio::ReaderMapping const& map, std::string_view key, ResDescriptor& value_out);
-bool read_custom(prio::ReaderMapping const& map, std::string_view key, Pathname& value_out);
-bool read_custom(prio::ReaderMapping const& map, std::string_view key, InVector2fZ& value_out);
-bool read_custom(prio::ReaderMapping const& map, std::string_view key, Color& value_out);
-bool read_custom(prio::ReaderMapping const& map, std::string_view key, Colorf& value_out);
-bool read_custom(prio::ReaderMapping const& map, std::string_view key, geom::ipoint& value_out);
-bool read_custom(prio::ReaderMapping const& map, std::string_view key, geom::isize& value_out);
-bool read_custom(prio::ReaderMapping const& map, std::string_view key, geom::irect& value_out);
+template<> bool read_custom(prio::ReaderMapping const& map, std::string_view key, ResDescriptor& value_out);
+template<> bool read_custom(prio::ReaderMapping const& map, std::string_view key, Pathname& value_out);
+template<> bool read_custom(prio::ReaderMapping const& map, std::string_view key, InVector2fZ& value_out);
+template<> bool read_custom(prio::ReaderMapping const& map, std::string_view key, Color& value_out);
+template<> bool read_custom(prio::ReaderMapping const& map, std::string_view key, Colorf& value_out);
+template<> bool read_custom(prio::ReaderMapping const& map, std::string_view key, geom::ipoint& value_out);
+template<> bool read_custom(prio::ReaderMapping const& map, std::string_view key, geom::isize& value_out);
+template<> bool read_custom(prio::ReaderMapping const& map, std::string_view key, geom::irect& value_out);
 
 } // namespace prio
-
-#include <prio/prio.hpp>
 
 #endif
 

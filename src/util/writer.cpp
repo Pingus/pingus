@@ -21,32 +21,38 @@
 
 namespace prio {
 
+template<>
 void write_custom(prio::Writer& writer, std::string_view key, OutVector2fZ const& value)
 {
   writer.write(key, std::vector<float>({value.pos.x(), value.pos.y(), value.z_index}));
 }
 
+template<>
 void write_custom(prio::Writer& writer, std::string_view key, Color const& value)
 {
   writer.write(key, std::vector<int>({value.r, value.g, value.b, value.a}));
 }
 
+template<>
 void write_custom(prio::Writer& writer, std::string_view key, Colorf const& value)
 {
   Color const& color = value.to_color();
   writer.write(key, std::vector<int>({color.r, color.g, color.b, color.a}));
 }
 
+template<>
 void write_custom(prio::Writer& writer, std::string_view key, geom::ipoint const& value)
 {
   writer.write(key, std::vector<int>({value.x(), value.y()}));
 }
 
+template<>
 void write_custom(prio::Writer& writer, std::string_view key, geom::isize const& value)
 {
   writer.write(key, std::vector<int>({value.width(), value.height()}));
 }
 
+template<>
 void write_custom(prio::Writer& writer, std::string_view key, geom::irect const& value)
 {
   writer.write(key, std::vector<int>({value.left(), value.top(), value.right(), value.bottom()}));

@@ -57,7 +57,7 @@ FontDescription::FontDescription(const Pathname& pathname_) :
   char_spacing     = 1.0f;
   vertical_spacing = 1.0f;
 
-  auto doc = ReaderDocument::from_file(pathname.get_sys_path(), true);
+  auto doc = ReaderDocument::from_file(pathname.get_sys_path());
 
   if (doc.get_root().get_name() != "pingus-font")
   {

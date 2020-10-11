@@ -70,7 +70,7 @@ StoryDot::on_click()
 {
   try
   {
-    auto doc = ReaderDocument::from_file(Pathname(m_story, Pathname::DATA_PATH).get_sys_path(), true);
+    auto doc = ReaderDocument::from_file(Pathname(m_story, Pathname::DATA_PATH).get_sys_path());
     ScreenManager::instance()->push_screen(std::make_shared<StoryScreen>(doc.get_mapping(), m_credits));
   }
   catch(const std::exception& err)

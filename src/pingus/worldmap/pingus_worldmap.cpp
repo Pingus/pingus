@@ -75,7 +75,7 @@ PingusWorldmap::PingusWorldmap() :
 PingusWorldmap::PingusWorldmap(const Pathname& pathname) :
   impl(new PingusWorldmapImpl())
 {
-  impl->doc = ReaderDocument::from_file(pathname.get_sys_path(), true);
+  impl->doc = ReaderDocument::from_file(pathname.get_sys_path());
   parse_file(impl->doc.get_root());
 }
 
@@ -104,12 +104,12 @@ PingusWorldmap::parse_file(const ReaderObject& reader_object)
 
     if (reader.read("intro-story", intro_story))
     {
-      impl->intro_story = ReaderDocument::from_file(Pathname(intro_story, Pathname::DATA_PATH).get_sys_path(), true);
+      impl->intro_story = ReaderDocument::from_file(Pathname(intro_story, Pathname::DATA_PATH).get_sys_path());
     }
 
     if (reader.read("end-story", end_story))
     {
-      impl->end_story = ReaderDocument::from_file(Pathname(end_story, Pathname::DATA_PATH).get_sys_path(), true);
+      impl->end_story = ReaderDocument::from_file(Pathname(end_story, Pathname::DATA_PATH).get_sys_path());
     }
   }
 }

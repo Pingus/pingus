@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_UTIL_WRITER_HPP
 #define HEADER_PINGUS_UTIL_WRITER_HPP
 
-#include <prio/fwd.hpp>
+#include <prio/writer.hpp>
 #include <geom/size.hpp>
 #include <geom/rect.hpp>
 
@@ -29,16 +29,14 @@ class Colorf;
 
 namespace prio {
 
-void write_custom(prio::Writer& writer, std::string_view key, OutVector2fZ const& value);
-void write_custom(prio::Writer& writer, std::string_view key, Color const& value);
-void write_custom(prio::Writer& writer, std::string_view key, Colorf const& value);
-void write_custom(prio::Writer& writer, std::string_view key, geom::ipoint const& value);
-void write_custom(prio::Writer& writer, std::string_view key, geom::isize const& value);
-void write_custom(prio::Writer& writer, std::string_view key, geom::irect const& value);
+template<> void write_custom(prio::Writer& writer, std::string_view key, OutVector2fZ const& value);
+template<> void write_custom(prio::Writer& writer, std::string_view key, Color const& value);
+template<> void write_custom(prio::Writer& writer, std::string_view key, Colorf const& value);
+template<> void write_custom(prio::Writer& writer, std::string_view key, geom::ipoint const& value);
+template<> void write_custom(prio::Writer& writer, std::string_view key, geom::isize const& value);
+template<> void write_custom(prio::Writer& writer, std::string_view key, geom::irect const& value);
 
 } // namespace prio
-
-#include <prio/writer.hpp>
 
 #endif
 

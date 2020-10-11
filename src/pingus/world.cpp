@@ -97,7 +97,7 @@ World::init_worldobjs(const PingusLevel& plf)
     {
       auto doc = ReaderDocument::from_string("(solidcolor-background "
                                              "  (position 0 0 -1000) "
-                                             "  (colori 127 0 127 255))", true);
+                                             "  (colori 127 0 127 255))");
       auto objs = WorldObjFactory::instance().create(doc.get_root());
       for(auto obj = objs.begin(); obj != objs.end(); ++obj)
       {

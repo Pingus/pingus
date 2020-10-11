@@ -81,7 +81,7 @@ Manager::create_controller(const Pathname& filename)
 {
   ControllerPtr controller(new Controller(desc));
 
-  auto doc = ReaderDocument::from_file(filename.get_sys_path(), true);
+  auto doc = ReaderDocument::from_file(filename.get_sys_path());
 
   if (doc.get_name() != "pingus-controller")
   {

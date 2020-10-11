@@ -23,6 +23,7 @@
 
 namespace prio {
 
+template<>
 bool read_custom(prio::ReaderMapping const& map, std::string_view key, ResDescriptor& value_out)
 {
   ReaderMapping reader;
@@ -35,6 +36,7 @@ bool read_custom(prio::ReaderMapping const& map, std::string_view key, ResDescri
   return true;
 }
 
+template<>
 bool read_custom(prio::ReaderMapping const& map, std::string_view key, Pathname& value_out)
 {
   std::string filename;
@@ -46,6 +48,7 @@ bool read_custom(prio::ReaderMapping const& map, std::string_view key, Pathname&
   return true;
 }
 
+template<>
 bool read_custom(prio::ReaderMapping const& map, std::string_view key, InVector2fZ& value_out)
 {
   std::vector<float> v;
@@ -62,6 +65,7 @@ bool read_custom(prio::ReaderMapping const& map, std::string_view key, InVector2
   return true;
 }
 
+template<>
 bool read_custom(prio::ReaderMapping const& map, std::string_view key, Color& value_out)
 {
   std::vector<int> v;
@@ -80,6 +84,7 @@ bool read_custom(prio::ReaderMapping const& map, std::string_view key, Color& va
   return true;
 }
 
+template<>
 bool read_custom(prio::ReaderMapping const& map, std::string_view key, Colorf& value_out)
 {
   std::vector<float> v;
@@ -98,6 +103,7 @@ bool read_custom(prio::ReaderMapping const& map, std::string_view key, Colorf& v
   return true;
 }
 
+template<>
 bool read_custom(prio::ReaderMapping const& map, std::string_view key, geom::ipoint& value_out)
 {
   std::vector<int> v;
@@ -113,6 +119,7 @@ bool read_custom(prio::ReaderMapping const& map, std::string_view key, geom::ipo
   return true;
 }
 
+template<>
 bool read_custom(prio::ReaderMapping const& map, std::string_view key, geom::isize& value_out)
 {
   std::vector<int> v;
@@ -128,6 +135,7 @@ bool read_custom(prio::ReaderMapping const& map, std::string_view key, geom::isi
   return true;
 }
 
+template<>
 bool read_custom(prio::ReaderMapping const& map, std::string_view key, geom::irect& value_out)
 {
   std::vector<int> v;

@@ -70,7 +70,7 @@ FramebufferType framebuffer_type_from_string(const std::string& str)
 Options
 Options::from_file(const Pathname& filename)
 {
-  auto doc = prio::ReaderDocument::from_file(filename.get_sys_path(), true);
+  auto doc = prio::ReaderDocument::from_file(filename.get_sys_path());
 
   if (doc.get_name() != "pingus-config")
   {

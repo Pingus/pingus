@@ -56,7 +56,7 @@ PingusLevel::load(const std::string& resname,
   impl->checksum = System::checksum(pathname);
 
   impl->resname = resname;
-  impl->doc = prio::ReaderDocument::from_file(pathname.get_sys_path(), true);
+  impl->doc = prio::ReaderDocument::from_file(pathname.get_sys_path());
 
   if (impl->doc.get_name() != "pingus-level")
   {

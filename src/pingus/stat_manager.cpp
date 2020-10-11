@@ -59,7 +59,7 @@ StatManager::load(const std::string& filename)
     save(filename);
   }
 
-  auto doc = ReaderDocument::from_file(filename, true);
+  auto doc = ReaderDocument::from_file(filename);
   if (doc.get_name() != "pingus-stats")
   {
     std::cerr << "Error: " << filename << ": not a (pingus-stats) file" << std::endl;
