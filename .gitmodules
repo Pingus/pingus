@@ -4,9 +4,6 @@
 [submodule "external/tinygettext"]
 	path = external/tinygettext
 	url = https://github.com/tinygettext/tinygettext.git
-[submodule "external/sexp-cpp"]
-	path = external/sexp-cpp
-	url = https://gitlab.com/lispparser/sexp-cpp.git
 [submodule "external/xdgcpp"]
 	path = external/xdgcpp
 	url = https://gitlab.com/grumbel/xdgcpp.git

@@ -85,7 +85,6 @@ function(build_dependencies)
   add_subdirectory(external/argparser/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/geomcpp/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/logmich/ EXCLUDE_FROM_ALL)
-  add_subdirectory(external/sexp-cpp/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/priocpp/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/strutcpp/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/xdgcpp/ EXCLUDE_FROM_ALL)
@@ -106,7 +105,6 @@ target_link_libraries(libpingus PUBLIC
   logmich
   prio
   tinygettext
-  sexp
   strut
   xdgcpp
   fmt::fmt
