@@ -27,6 +27,9 @@ include(GNUInstallDirs)
 include(MaximumWarnings)
 include(ClangTidy)
 
+# FIXME: Move this into GetProjectVersion, get date from git
+string(TIMESTAMP PROJECT_DATE "%Y-%m-%d" UTC)
+
 find_package(PkgConfig REQUIRED)
 set(OpenGL_GL_PREFERENCE "LEGACY")
 find_package(OpenGL REQUIRED)

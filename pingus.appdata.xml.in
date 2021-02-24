@@ -42,6 +42,6 @@
     <screenshot>http://pingus.gitlab.io/images/screen_0.7.0-5.jpg</screenshot>
   </screenshots>
   <releases>
-    <release version="@GIT_REPO_VERSION@" date="@GIT_REPO_DATE@" />
+    <release version="@PROJECT_VERSION@" date="@PROJECT_DATE@" />
   </releases>
 </component>
