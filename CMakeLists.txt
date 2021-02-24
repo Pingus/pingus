@@ -208,9 +208,8 @@ install(FILES
   pingus.desktop
   DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
 
-install(FILES
-  data/images/icons/pingus.svg
-  DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/scalable/apps)
+install(DIRECTORY data/icons/
+  DESTINATION ${CMAKE_INSTALL_DATADIR}/icons)
 
 configure_file(pingus.appdata.xml.in ${CMAKE_CURRENT_BINARY_DIR}/pingus.appdata.xml)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/pingus.appdata.xml
