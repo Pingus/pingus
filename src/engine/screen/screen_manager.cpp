@@ -24,6 +24,7 @@
 #include "engine/display/framebuffer.hpp"
 #include "engine/input/manager.hpp"
 #include "engine/screen/screen.hpp"
+#include "engine/sound/sound.hpp"
 #include "pingus/fps_counter.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/globals.hpp"
@@ -165,6 +166,8 @@ ScreenManager::display()
 void
 ScreenManager::update(float delta, const std::vector<Input::Event>& events)
 {
+  Sound::PingusSound::update(delta);
+
   ScreenPtr last_screen = get_current_screen();
 
   // Will be triggered when pop_all_screens() is called by pressing window close button

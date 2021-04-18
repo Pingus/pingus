@@ -17,7 +17,8 @@
 #ifndef HEADER_PINGUS_ENGINE_SOUND_SOUND_REAL_HPP
 #define HEADER_PINGUS_ENGINE_SOUND_SOUND_REAL_HPP
 
-#include <SDL_mixer.h>
+#include <memory>
+#include <wstsound/fwd.hpp>
 
 #include "engine/sound/sound_impl.hpp"
 
@@ -27,17 +28,11 @@ namespace Sound {
     automatically if a sound is played. */
 class PingusSoundReal : public PingusSoundImpl
 {
-private:
-  /** The current music file */
-  Mix_Music* music_sample;
-
-  float m_music_volume;
-  float m_sound_volume;
-  float m_master_volume;
-
 public:
-  PingusSoundReal ();
-  ~PingusSoundReal () override;
+  PingusSoundReal();
+  ~PingusSoundReal() override;
+
+  void update(float delta) override;
 
   /** Load a music file and play it immediately.
       @param filename The complete filename
@@ -63,6 +58,17 @@ public:
 
 private:
   void apply_volume_changes();
+
+private:
+  std::unique_ptr<wstsound::SoundManager> m_sound_manager;
+
+  /** The current music file */
+  // Mix_Music* music_sample;
+  wstsound::SoundSourcePtr m_music_source;
+
+  float m_music_volume;
+  float m_sound_volume;
+  float m_master_volume;
 
 private:
   PingusSoundReal (const PingusSoundReal&);

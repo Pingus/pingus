@@ -38,6 +38,8 @@ public:
   static void init(std::unique_ptr<PingusSoundImpl> s = {});
   static void deinit();
 
+  static void update(float delta);
+
   /** Load a sound file and play it immediately.
 
       @param name     Name of the sound, aka 'ohno'

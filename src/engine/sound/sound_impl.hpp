@@ -27,6 +27,8 @@ public:
   PingusSoundImpl () { }
   virtual ~PingusSoundImpl () { }
 
+  virtual void update(float delta) = 0;
+
   /** Load a music file and play it immediately.
       @param filename The complete filename
       @param volume   The volume to play the music with  */

@@ -28,3 +28,6 @@
 [submodule "external/priocpp"]
 	path = external/priocpp
 	url = https://gitlab.com/grumbel/priocpp.git
+[submodule "external/wstsound"]
+	path = external/wstsound
+	url = https://gitlab.com/Windstille/wstsound.git

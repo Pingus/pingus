@@ -20,40 +20,35 @@
 #include <stdexcept>
 
 #include <logmich/log.hpp>
+#include <wstsound/sound_source.hpp>
+#include <wstsound/openal_system.hpp>
+#include <wstsound/sound_manager.hpp>
 
-#include "engine/sound/sound_res_mgr.hpp"
 #include "pingus/globals.hpp"
+#include "pingus/path_manager.hpp"
 #include "util/raise_exception.hpp"
 
 namespace Sound {
 
 PingusSoundReal::PingusSoundReal() :
-  music_sample(nullptr),
+  m_sound_manager(),
+  m_music_source(),
   m_music_volume(1.0f),
   m_sound_volume(1.0f),
   m_master_volume(1.0f)
 {
-  log_info("Initializing SDL audio");
-
-  if (SDL_Init(SDL_INIT_AUDIO) == -1)
-  {
-    raise_exception(std::runtime_error, "Unable to initialize SDL: " << SDL_GetError());
-  }
-
-  log_info("Initializing SDL_Mixer");
-
-  if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
-  {
-    raise_exception(std::runtime_error, "Unable to initialize SDL_Mixer: " << Mix_GetError());
-  }
+  m_sound_manager = std::make_unique<wstsound::SoundManager>();
 }
 
 PingusSoundReal::~PingusSoundReal()
 {
   real_stop_music();
-  SoundResMgr::free_sound_map();
+}
 
-  Mix_CloseAudio();
+void
+PingusSoundReal::update(float delta)
+{
+  m_sound_manager->update(delta);
 }
 
 void
@@ -63,37 +58,27 @@ PingusSoundReal::real_play_sound(const std::string& name, float volume, float pa
       m_master_volume > 0 &&
       m_sound_volume > 0)
   {
-    SoundHandle chunk;
+    std::filesystem::path filename = g_path_manager.complete("sounds/" + name + ".wav");
+    wstsound::SoundSourcePtr source = m_sound_manager->sound().prepare(filename, wstsound::SoundSourceType::STREAM);
+    // if (!chunk)
+    // {
+    //   log_error("Can't open sound '{}' -- skipping\n  Mix_Error: {}", name, Mix_GetError());
+    //   return;
+    // }
 
-    chunk = SoundResMgr::load(name);
-    if (!chunk)
-    {
-      log_error("Can't open sound '{}' -- skipping\n  Mix_Error: {}", name, Mix_GetError());
-      return;
-    }
-
-    int channel = Mix_PlayChannel(-1, chunk, 0);
-    if (channel != -1)
-    {
-      Mix_Volume(channel, static_cast<int>(MIX_MAX_VOLUME * volume * m_sound_volume * m_master_volume));
-      if (panning != 0.0f)
-      {
-        Uint8 left  = static_cast<Uint8>((panning < 0.0f) ? 255 : static_cast<Uint8>((panning - 1.0f) * -255));
-        Uint8 right = static_cast<Uint8>((panning > 0.0f) ? 255 : static_cast<Uint8>((panning + 1.0f) * 255));
-        Mix_SetPanning(channel, left, right);
-      }
-    }
+    source->set_position(panning, 0.0f, 0.0f);
+    source->set_gain(volume * m_music_volume * m_master_volume);
+    source->play();
   }
 }
 
 void
 PingusSoundReal::real_stop_music ()
 {
-  if (music_sample)
+  if (m_music_source)
   {
-    Mix_HaltMusic();
-    Mix_FreeMusic(music_sample);
-    music_sample = nullptr;
+    m_music_source->stop();
+    m_music_source = {};
   }
 }
 
@@ -108,15 +93,15 @@ PingusSoundReal::real_play_music(const std::string& filename, float volume, bool
 
     real_stop_music();
 
-    music_sample = Mix_LoadMUS(filename.c_str());
-    if (!music_sample)
-    {
-      log_error("Can't load music: {}' -- skipping\n  Mix_Error: {}", filename, Mix_GetError());
-      return;
-    }
-
-    Mix_PlayMusic(music_sample, loop ? -1 : 0);
-    Mix_VolumeMusic(static_cast<int>(MIX_MAX_VOLUME * volume * m_music_volume * m_master_volume));
+    m_music_source = m_sound_manager->music().prepare(filename, wstsound::SoundSourceType::STREAM);
+    // if (!music_sample)
+    // {
+    //   log_error("Can't load music: {}' -- skipping\n  Mix_Error: {}", filename, Mix_GetError());
+    //   return;
+    // }
+    m_music_source->set_looping(loop);
+    m_music_source->set_gain(volume * m_music_volume * m_master_volume);
+    m_music_source->play();
   }
 }
 
@@ -139,16 +124,7 @@ PingusSoundReal::set_master_volume(float volume)
 {
   m_master_volume = volume;
   apply_volume_changes();
-}
 
-void
-PingusSoundReal::apply_volume_changes() // NOLINT
-{
-  int sound_volume = static_cast<int>(MIX_MAX_VOLUME * m_sound_volume * m_master_volume);
-  int music_volume = static_cast<int>(MIX_MAX_VOLUME * m_music_volume * m_master_volume);
-
-  Mix_Volume(-1, sound_volume);
-  Mix_VolumeMusic(music_volume);
 }
 
 float
@@ -167,6 +143,13 @@ float
 PingusSoundReal::get_master_volume() const
 {
   return m_master_volume;
+}
+
+void
+PingusSoundReal::apply_volume_changes() // NOLINT
+{
+  m_sound_manager->sound().set_gain(m_sound_volume * m_master_volume);
+  m_sound_manager->music().set_gain(m_music_volume * m_master_volume);
 }
 
 } // namespace Sound

@@ -72,6 +72,12 @@ PingusSound::play_sound(const std::string& name, float volume, float panning)
   sound->real_play_sound(name, volume, panning);
 }
 
+void
+PingusSound::update(float delta)
+{
+  sound->update(delta);
+}
+
 /** Load a sound file and play it immediately.
 
     @param name

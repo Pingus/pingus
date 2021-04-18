@@ -38,11 +38,17 @@ before_script:
     libc++-dev
     libsdl2-dev
     libsdl2-image-dev
-    libsdl2-mixer-dev
     libjsoncpp-dev
     libpng-dev
     libgtest-dev
     libglm-dev
+    libopenal-dev
+    libmodplug-dev
+    libmpg123-dev
+    libvorbis-dev
+    libogg-dev
+    libopusfile-dev
+    libopus-dev
     software-properties-common
     flatpak
     flatpak-builder

@@ -15,7 +15,7 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 (set! %load-path
-  (cons* "/ipfs/QmdHSWX34MXZeAgMuDuFwrYzSPf4fknX7E7cYJ7HDxaLrZ/guix-cocfree_0.0.0-62-g3b27118"
+  (cons* "/ipfs/QmcQaosGtaQ6dsb4iykNihZ2ZTie8om2i7pgHucZ9Ranyq/guix-cocfree_0.0.0-64-gd618440"
          %load-path))
 
 (use-modules (guix build-system cmake)
@@ -28,10 +28,12 @@
              (gnu packages glib)
              (gnu packages image)
              (gnu packages maths)
+             (gnu packages mp3)
              (gnu packages pkg-config)
              (gnu packages pretty-print)
              (gnu packages sdl)
              (gnu packages serialization)
+             (gnu packages xiph)
              (guix-cocfree utils))
 
 (define %source-dir (dirname (current-filename)))
@@ -52,14 +54,20 @@
    (inputs
     `(("sdl2" ,sdl2)
       ("sdl2-image" ,sdl2-image)
-      ("sdl2-mixer" ,sdl2-mixer)
       ("mesa" ,mesa)
       ("glu" ,glu)
       ("libpng" ,libpng)
       ("libsigc++" ,libsigc++)
       ("fmt" ,fmt)
       ("glm" ,glm)
-      ("jsoncpp" ,jsoncpp)))
+      ("jsoncpp" ,jsoncpp)
+      ("openal" ,openal)
+      ("opusfile" ,opusfile)
+      ("libmodplug" ,libmodplug)
+      ("libvorbis" ,libvorbis)
+      ("libogg" ,libogg)
+      ("mpg123" ,mpg123)
+      ("opus" ,opus)))
    (synopsis (synopsis-from-source %source-dir))
    (description (description-from-source %source-dir))
    (home-page (homepage-from-source %source-dir))

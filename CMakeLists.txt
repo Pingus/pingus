@@ -35,7 +35,6 @@ set(OpenGL_GL_PREFERENCE "LEGACY")
 find_package(OpenGL REQUIRED)
 pkg_search_module(SDL2 REQUIRED sdl2 IMPORTED_TARGET)
 pkg_search_module(SDL2IMAGE REQUIRED SDL2_image>=2.0.0 IMPORTED_TARGET)
-pkg_search_module(SDL2MIXER REQUIRED SDL2_mixer>=2.0.0 IMPORTED_TARGET)
 pkg_search_module(PNG REQUIRED libpng IMPORTED_TARGET)
 pkg_search_module(JSONCPP REQUIRED jsoncpp IMPORTED_TARGET)
 pkg_search_module(SIGCXX REQUIRED sigc++-2.0 IMPORTED_TARGET)
@@ -91,6 +90,7 @@ function(build_dependencies)
   add_subdirectory(external/priocpp/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/strutcpp/ EXCLUDE_FROM_ALL)
   add_subdirectory(external/xdgcpp/ EXCLUDE_FROM_ALL)
+  add_subdirectory(external/wstsound/ EXCLUDE_FROM_ALL)
 endfunction()
 build_dependencies()
 
@@ -110,11 +110,11 @@ target_link_libraries(libpingus PUBLIC
   tinygettext
   strut
   xdgcpp
+  wstsound
   fmt::fmt
   glm::glm
   PkgConfig::SDL2
   PkgConfig::SDL2IMAGE
-  PkgConfig::SDL2MIXER
   PkgConfig::PNG
   PkgConfig::JSONCPP
   PkgConfig::SIGCXX
