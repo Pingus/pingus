@@ -136,7 +136,8 @@ public:
     auto const& objects = prefab.get_objects().get_objects();
     for(auto it = objects.begin(); it != objects.end(); ++it)
     {
-      ReaderMapping override_reader = make_override_mapping(it->get_mapping(), overrides);
+      ReaderMapping it_mapping = it->get_mapping();
+      ReaderMapping override_reader = make_override_mapping(it_mapping, overrides);
 
       std::vector<WorldObj*> objs = WorldObjFactory::instance().create(it->get_name(), override_reader);
       for(auto obj = objs.begin(); obj != objs.end(); ++obj)
