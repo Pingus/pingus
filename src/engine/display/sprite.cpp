@@ -16,6 +16,8 @@
 
 #include "engine/display/sprite.hpp"
 
+#include <logmich/log.hpp>
+
 #include "engine/display/sprite_description.hpp"
 #include "engine/display/sprite_impl.hpp"
 #include "pingus/resource.hpp"
@@ -35,6 +37,7 @@ Sprite::Sprite(const std::string& name) :
   }
   else
   {
+    log_error("{}: failed to load, using 404 replacement", name);
     SpriteDescription desc_;
     desc_.filename = Pathname("images/core/misc/404.png", Pathname::DATA_PATH);
     impl = std::make_shared<SpriteImpl>(desc_);
@@ -51,6 +54,7 @@ Sprite::Sprite(const ResDescriptor& res_desc) :
   }
   else
   {
+    log_error("{}: failed to load, using 404 replacement", res_desc.res_name);
     SpriteDescription desc_;
     desc_.filename = Pathname("images/core/misc/404.png", Pathname::DATA_PATH);
     impl = std::make_shared<SpriteImpl>(desc_);

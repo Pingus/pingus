@@ -39,7 +39,7 @@ FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceMo
   catch(const std::exception& err)
   {
     // return a dummy surface for cases where the image file can't be found
-    log_error("{}", err.what());
+    log_error("{}: exception on load: {}", filename, err.what());
     Surface surface(Pathname("images/core/misc/404.png", Pathname::DATA_PATH));
     return Display::get_framebuffer()->create_surface(surface);
   }
