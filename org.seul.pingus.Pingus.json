@@ -14,9 +14,12 @@
         "--socket=wayland"
     ],
     "modules": [
+        "shared-modules/sigc++/sigc++-2.0.json",
+        "shared-modules/fmt/fmt.json",
         "shared-modules/jsoncpp/jsoncpp-1.8.json",
-        "shared-modules/fmt/fmt-6.1.2.json",
-        "shared-modules/sigc++/sigc++-2.9.3.json",
+        "shared-modules/glm/glm.json",
+        "shared-modules/libmodplug/libmodplug.json",
+        "shared-modules/mpg123/mpg123.json",
         {
             "name": "pingus",
             "buildsystem": "cmake-ninja",
@@ -27,6 +30,7 @@
             "sources": [
                 {
                     "type": "git",
+                    "disable-shallow-clone": true,
                     "url": "https://gitlab.com/pingus/pingus.git",
                     "branch": "master"
                 }
