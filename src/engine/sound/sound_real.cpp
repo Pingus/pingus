@@ -69,6 +69,7 @@ PingusSoundReal::real_play_sound(const std::string& name, float volume, float pa
     source->set_position(panning, 0.0f, 0.0f);
     source->set_gain(volume * m_music_volume * m_master_volume);
     source->play();
+    m_sound_manager->manage(std::move(source));
   }
 }
 
@@ -77,7 +78,7 @@ PingusSoundReal::real_stop_music ()
 {
   if (m_music_source)
   {
-    m_music_source->stop();
+    m_music_source->finish();
     m_music_source = {};
   }
 }
