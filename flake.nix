@@ -1,4 +1,4 @@
-rec {
+{
   description = "A free Lemmings clone with penguins";
 
   inputs = {
