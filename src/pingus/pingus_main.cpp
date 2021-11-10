@@ -376,15 +376,15 @@ PingusMain::parse_args(int argc, char** argv)
         break;
 
       case 'D':
-        logmich::set_log_level(logmich::kDebug);
+        logmich::set_log_level(logmich::LogLevel::DEBUG);
         break;
 
       case 'v':
-        logmich::set_log_level(logmich::kInfo);
+        logmich::set_log_level(logmich::LogLevel::INFO);
         break;
 
       case 'Q':
-        logmich::set_log_level(logmich::kNone);
+        logmich::set_log_level(logmich::LogLevel::NONE);
         break;
 
       case 360:
@@ -609,7 +609,7 @@ PingusMain::start_game ()
 int
 PingusMain::run(int argc, char** argv)
 {
-  logmich::set_log_level(logmich::kWarning);
+  logmich::set_log_level(logmich::LogLevel::WARNING);
 
   tinygettext::Log::set_log_info_callback(nullptr);
 
