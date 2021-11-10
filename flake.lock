@@ -1,0 +1,377 @@
+{
+  "nodes": {
+    "argparser": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nix": [
+          "nix"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1636563968,
+        "narHash": "sha256-hCCu50xv5EFHlQmhvF3jNmLd+pzyDDbjoIohA7eJxbQ=",
+        "owner": "argparser",
+        "repo": "argparser",
+        "rev": "4c136cf5c92a5d41b80d15ca333e20c812e98363",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "argparser",
+        "ref": "stable",
+        "repo": "argparser",
+        "type": "gitlab"
+      }
+    },
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1634851050,
+        "narHash": "sha256-N83GlSGPJJdcqhUxSCS/WwW5pksYf3VP1M13cDRTSVA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "c91f3de5adaf1de973b797ef7485e441a65b8935",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "geomcpp": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nix": [
+          "nix"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "tinycmmc": [
+          "tinycmmc"
+        ]
+      },
+      "locked": {
+        "lastModified": 1636473227,
+        "narHash": "sha256-YDuk8aGps/c3daAq1TQEPCDCqV44Wr2SSolyGDzvEV0=",
+        "owner": "grumbel",
+        "repo": "geomcpp",
+        "rev": "982d5614d81dbe7c34039a13fd3d702b8997fade",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "grumbel",
+        "repo": "geomcpp",
+        "type": "gitlab"
+      }
+    },
+    "logmich": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nix": [
+          "nix"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "tinycmmc": [
+          "tinycmmc"
+        ]
+      },
+      "locked": {
+        "lastModified": 1636472868,
+        "narHash": "sha256-ye+Qch+grsIFhDo9Sdxc6reG5AG858mDk4x6idwKpPs=",
+        "owner": "logmich",
+        "repo": "logmich",
+        "rev": "4a50822e767cd2571c9f17628c813d7685cc2f6b",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "logmich",
+        "repo": "logmich",
+        "type": "gitlab"
+      }
+    },
+    "lowdown-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1633514407,
+        "narHash": "sha256-Dw32tiMjdK9t3ETl5fzGrutQTzh2rufgZV4A/BbxuD4=",
+        "owner": "kristapsdz",
+        "repo": "lowdown",
+        "rev": "d2c2b44ff6c27b936ec27358a2653caaef8f73b8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kristapsdz",
+        "repo": "lowdown",
+        "type": "github"
+      }
+    },
+    "nix": {
+      "inputs": {
+        "lowdown-src": "lowdown-src",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1636543031,
+        "narHash": "sha256-wCRgxF4+8U5pseHSNLBEGoG8mBzzsL7OeiwDAFrv/qg=",
+        "owner": "NixOS",
+        "repo": "nix",
+        "rev": "a218cfd6c7e1686ee10cb0ef214cf3c624d15765",
+        "type": "github"
+      },
+      "original": {
+        "id": "nix",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1636562849,
+        "narHash": "sha256-pnznPIMdkcQGovkk6eVp0d36tHBCNihlEbeV6FsmLcw=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "6c690b07f728c1b98a823f9e9691f8522934a4ee",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "priocpp": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "logmich": [
+          "logmich"
+        ],
+        "nix": [
+          "nix"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "sexpcpp": [
+          "sexpcpp"
+        ],
+        "tinycmmc": [
+          "tinycmmc"
+        ]
+      },
+      "locked": {
+        "lastModified": 1636563881,
+        "narHash": "sha256-xjPfE6XIQGaLLX9+vdtV6nuIPvvy2tEkQDZhm7gmu+M=",
+        "owner": "grumbel",
+        "repo": "priocpp",
+        "rev": "83580d9c98b0ac9b545beb13035660b464e04e53",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "grumbel",
+        "repo": "priocpp",
+        "type": "gitlab"
+      }
+    },
+    "root": {
+      "inputs": {
+        "argparser": "argparser",
+        "flake-utils": "flake-utils",
+        "geomcpp": "geomcpp",
+        "logmich": "logmich",
+        "nix": "nix",
+        "nixpkgs": "nixpkgs",
+        "priocpp": "priocpp",
+        "sexpcpp": "sexpcpp",
+        "strutcpp": "strutcpp",
+        "tinycmmc": "tinycmmc",
+        "tinygettext": "tinygettext",
+        "wstsound": "wstsound",
+        "xdgcpp": "xdgcpp"
+      }
+    },
+    "sexpcpp": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nix": [
+          "nix"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "tinycmmc": [
+          "tinycmmc"
+        ]
+      },
+      "locked": {
+        "lastModified": 1636472725,
+        "narHash": "sha256-ZmDBU51G45q1kN6VW24vjZ0JM5bRF3rCM+gBi4+xe7E=",
+        "owner": "lispparser",
+        "repo": "sexp-cpp",
+        "rev": "80f20f7fab69ff8477e15cd0b915ed8273b786d3",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "lispparser",
+        "repo": "sexp-cpp",
+        "type": "gitlab"
+      }
+    },
+    "strutcpp": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nix": [
+          "nix"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "tinycmmc": [
+          "tinycmmc"
+        ]
+      },
+      "locked": {
+        "lastModified": 1636564027,
+        "narHash": "sha256-hwSRxU651wbu0BwnMRECHRXUjph2lKUAbH9+I5fhRTE=",
+        "owner": "grumbel",
+        "repo": "strutcpp",
+        "rev": "19ad5b7f8856518a8d11d8d0decc663a39e8dc8b",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "grumbel",
+        "repo": "strutcpp",
+        "type": "gitlab"
+      }
+    },
+    "tinycmmc": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nix": [
+          "nix"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1636472398,
+        "narHash": "sha256-j/HbXbIWjBQNrKOIwpBFCZGp4S1GGdqz6/wmpWT90zE=",
+        "owner": "grumbel",
+        "repo": "cmake-modules",
+        "rev": "36d0a7b7b10c7fa3c0b6776a34eaebfcbe65deb5",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "grumbel",
+        "repo": "cmake-modules",
+        "type": "gitlab"
+      }
+    },
+    "tinygettext": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nix": [
+          "nix"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "tinycmmc": [
+          "tinycmmc"
+        ]
+      },
+      "locked": {
+        "lastModified": 1636564053,
+        "narHash": "sha256-Tk53eMGGpD2dooXqQwLVYUSEJtidRdQMVW+JpGGniuo=",
+        "owner": "tinygettext",
+        "repo": "tinygettext",
+        "rev": "46e3b68f9fa00395db1dc508ed17eb9e59143673",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tinygettext",
+        "repo": "tinygettext",
+        "type": "github"
+      }
+    },
+    "wstsound": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nix": [
+          "nix"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "tinycmmc": [
+          "tinycmmc"
+        ]
+      },
+      "locked": {
+        "lastModified": 1636564069,
+        "narHash": "sha256-hy1i75H8PQK9vrHJDVrj5wRHq9CFv8B+z5h/cgJxTPo=",
+        "owner": "windstille",
+        "repo": "wstsound",
+        "rev": "37d87ffdc880d9107074f542cdcf8c363c6784d2",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "windstille",
+        "repo": "wstsound",
+        "type": "gitlab"
+      }
+    },
+    "xdgcpp": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nix": [
+          "nix"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1636564096,
+        "narHash": "sha256-ESd8HbHzR1kkvjIJ1y1dyPqHBdMCdm1/67I4IE4ufio=",
+        "owner": "grumbel",
+        "repo": "xdgcpp",
+        "rev": "125a88f22a8a5e187af7c97e145959081b91f457",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "grumbel",
+        "repo": "xdgcpp",
+        "type": "gitlab"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
