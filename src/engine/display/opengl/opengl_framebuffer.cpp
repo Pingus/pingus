@@ -80,6 +80,7 @@ OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resiza
     glViewport(0, 0, size.width(), size.height());
 
     glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
     glOrtho(0, size.width(), size.height(), 0, -1, 1);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
