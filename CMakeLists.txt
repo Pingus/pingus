@@ -15,9 +15,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 cmake_minimum_required(VERSION 3.15)
-project(pingus)
+project(pingus VERSION 0.8.0)
 
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/external/cmake-modules/)
+set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/external/cmake-modules/modules/")
+find_package(tinycmmc CONFIG)
+message(STATUS "tinycmmc module path: ${TINYCMMC_MODULE_PATH}")
+list(APPEND CMAKE_MODULE_PATH ${TINYCMMC_MODULE_PATH})
 
 option(BUILD_TESTS "Build test cases" OFF)
 option(BUILD_EXTRA "Build extra stuff" OFF)
@@ -83,14 +86,46 @@ function(build_dependencies)
 
   set(BUILD_TESTS OFF)
   set(TINYGETTEXT_WITH_SDL ON)
-  add_subdirectory(external/tinygettext/ EXCLUDE_FROM_ALL)
-  add_subdirectory(external/argparser/ EXCLUDE_FROM_ALL)
-  add_subdirectory(external/geomcpp/ EXCLUDE_FROM_ALL)
-  add_subdirectory(external/logmich/ EXCLUDE_FROM_ALL)
-  add_subdirectory(external/priocpp/ EXCLUDE_FROM_ALL)
-  add_subdirectory(external/strutcpp/ EXCLUDE_FROM_ALL)
-  add_subdirectory(external/xdgcpp/ EXCLUDE_FROM_ALL)
-  add_subdirectory(external/wstsound/ EXCLUDE_FROM_ALL)
+
+  find_package(tinygettext QUIET)
+  if(NOT TARGET tinygettext)
+    add_subdirectory(external/tinygettext/ EXCLUDE_FROM_ALL)
+  endif()
+
+  find_package(argparser QUIET)
+  if(NOT TARGET argparser)
+    add_subdirectory(external/argparser/ EXCLUDE_FROM_ALL)
+  endif()
+
+  find_package(geomcpp QUIET)
+  if(NOT TARGET geomcpp)
+    add_subdirectory(external/geomcpp/ EXCLUDE_FROM_ALL)
+  endif()
+
+  find_package(logmich QUIET)
+  if(NOT TARGET logmich)
+    add_subdirectory(external/logmich/ EXCLUDE_FROM_ALL)
+  endif()
+
+  find_package(priocpp QUIET)
+  if(NOT TARGET prio)
+    add_subdirectory(external/priocpp/ EXCLUDE_FROM_ALL)
+  endif()
+
+  find_package(strutcpp QUIET)
+  if(NOT TARGET strut)
+    add_subdirectory(external/strutcpp/ EXCLUDE_FROM_ALL)
+  endif()
+
+  find_package(xdgcpp QUIET)
+  if(NOT TARGET xdgcpp)
+    add_subdirectory(external/xdgcpp/ EXCLUDE_FROM_ALL)
+  endif()
+
+  find_package(wstsound QUIET)
+  if(NOT TARGET wstsound)
+    add_subdirectory(external/wstsound/ EXCLUDE_FROM_ALL)
+  endif()
 endfunction()
 build_dependencies()
 
