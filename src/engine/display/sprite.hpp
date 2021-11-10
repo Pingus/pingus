@@ -48,7 +48,7 @@ public:
   void update(float delta = 0.033f);
 
   void set_hotspot(Origin origin, int x, int y);
-  Vector2i get_offset() const;
+  geom::ioffset get_offset() const;
   void set_frame(int i);
   int  get_frame_count() const;
   int  get_current_frame() const;

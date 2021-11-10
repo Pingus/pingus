@@ -103,7 +103,7 @@ public:
   {
     if (text.empty()) { return; }
 
-    Vector2i offset = geom::anchor_point(get_size(text), origin);
+    geom::ioffset offset = (-geom::anchor_offset(get_size(text), origin));
 
     float dstx = float(x - offset.x());
     float dsty = float(y - offset.y());

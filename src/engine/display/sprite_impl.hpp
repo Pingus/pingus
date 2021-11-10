@@ -31,7 +31,7 @@ private:
   Pathname filename;
   FramebufferSurface framebuffer_surface;
 
-  Vector2i offset;
+  geom::ioffset offset;
 
   Vector2i frame_pos;
   Size     frame_size;

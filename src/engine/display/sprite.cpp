@@ -176,13 +176,13 @@ Sprite::finish()
     impl->finish();
 }
 
-Vector2i
+geom::ioffset
 Sprite::get_offset() const
 {
   if (impl.get())
     return impl->offset;
   else
-    return Vector2i();
+    return {};
 }
 
 void
@@ -191,7 +191,7 @@ Sprite::set_hotspot(Origin origin, int x, int y)
   if (impl.get())
   {
     // FIXME: offset and other stuff should be member of the Sprite, not the SpriteImpl
-    impl->offset = geom::anchor_point(impl->frame_size, origin) - geom::ioffset(x, y);
+    impl->offset = (-geom::anchor_offset(impl->frame_size, origin)) - geom::ioffset(x, y);
   }
 }
 

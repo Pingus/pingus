@@ -91,7 +91,7 @@ SpriteImpl::SpriteImpl(const SpriteDescription& desc, ResourceModifier::Enum mod
   loop = desc.loop;
   loop_last_cycle = false;
 
-  offset = geom::anchor_point(frame_size, desc.origin).as_vec() - desc.offset.as_vec();
+  offset = (-geom::anchor_offset(frame_size, desc.origin)).as_vec() - desc.offset.as_vec();
 
 }
 
