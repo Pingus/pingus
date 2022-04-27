@@ -10,9 +10,6 @@
 [submodule "external/uitest"]
 	path = external/uitest
 	url = https://gitlab.com/Grumbel/uitest.git
-[submodule "shared-modules"]
-	path = shared-modules
-	url = https://github.com/Grumbel/shared-modules.git
 [submodule "external/argparser"]
 	branch = stable
 	path = external/argparser
