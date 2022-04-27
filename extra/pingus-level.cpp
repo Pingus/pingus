@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include <argparser.hpp>
+#include <argparser/argparser.hpp>
 
 #include "math/color.hpp"
 #include "math/size.hpp"

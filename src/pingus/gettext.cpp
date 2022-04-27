@@ -16,9 +16,10 @@
 
 #include "pingus/gettext.h"
 
+#include "tinygettext/unix_file_system.hpp"
 #include "tinygettext/dictionary_manager.hpp"
 
-tinygettext::DictionaryManager dictionary_manager;
+tinygettext::DictionaryManager dictionary_manager(std::make_unique<tinygettext::UnixFileSystem>());
 
 std::string _(const std::string& msg) {
   return dictionary_manager.get_dictionary().translate(msg);

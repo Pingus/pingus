@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iostream>
 
-#include <argparser.hpp>
+#include <argparser/argparser.hpp>
 
 #include "engine/display/display.hpp"
 #include "engine/display/screenshot.hpp"

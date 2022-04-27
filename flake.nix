@@ -94,6 +94,8 @@
               pkgs.mpg123
               pkgs.libmodplug
 
+              pkgs.gtest
+
               argparser.defaultPackage.${system}
               logmich.defaultPackage.${system}
               geomcpp.defaultPackage.${system}

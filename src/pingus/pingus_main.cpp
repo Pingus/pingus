@@ -54,7 +54,7 @@ extern "C" {
 #include "gettext.h"
 #include "tinygettext/dictionary_manager.hpp"
 #include "tinygettext/log.hpp"
-#include <argparser.hpp>
+#include <argparser/argparser.hpp>
 
 #include "engine/screen/screen_manager.hpp"
 #include "pingus/globals.hpp"

@@ -93,22 +93,22 @@ function(build_dependencies)
   endif()
 
   find_package(argparser QUIET)
-  if(NOT TARGET argparser)
+  if(NOT TARGET argparser::argparser)
     add_subdirectory(external/argparser/ EXCLUDE_FROM_ALL)
   endif()
 
-  find_package(geomcpp QUIET)
-  if(NOT TARGET geomcpp)
+  find_package(geom QUIET)
+  if(NOT TARGET geom::geom)
     add_subdirectory(external/geomcpp/ EXCLUDE_FROM_ALL)
   endif()
 
   find_package(logmich QUIET)
-  if(NOT TARGET logmich)
+  if(NOT TARGET logmich::logmich)
     add_subdirectory(external/logmich/ EXCLUDE_FROM_ALL)
   endif()
 
-  find_package(priocpp QUIET)
-  if(NOT TARGET prio)
+  find_package(prio QUIET)
+  if(NOT TARGET prio::prio)
     add_subdirectory(external/priocpp/ EXCLUDE_FROM_ALL)
   endif()
 
@@ -138,10 +138,10 @@ target_compile_definitions(libpingus PUBLIC
   -DPROJECT_VERSION="${PROJECT_VERSION}"
   -DPROJECT_NAME="${PROJECT_NAME}")
 target_link_libraries(libpingus PUBLIC
-  argparser
-  geomcpp
-  logmich
-  prio
+  argparser::argparser
+  geom::geom
+  logmich::logmich
+  prio::prio
   tinygettext
   strut
   xdgcpp

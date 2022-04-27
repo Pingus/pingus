@@ -1,7 +1,7 @@
 #include <iostream>
 #include <sstream>
 
-#include <argparser.hpp>
+#include <argparser/argparser.hpp>
 #include <logmich/log.hpp>
 
 #include "engine/display/surface.hpp"
