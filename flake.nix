@@ -73,36 +73,39 @@
             version = pingus_version;
             src = nixpkgs.lib.cleanSource ./.;
             cmakeFlags = [ "-DBUILD_EXTRA=ON" ];
-            nativeBuildInputs = [
-              pkgs.cmake
-              pkgs.ninja
-              pkgs.gcc
-              pkgs.pkgconfig
+            postFixup = ''
+              wrapProgram $out/libexec/pingus \
+                --prefix LIBGL_DRIVERS_PATH ":" "${pkgs.mesa.drivers}/lib/dri" \
+                --prefix LD_LIBRARY_PATH ":" "${pkgs.mesa.drivers}/lib"
+            '';
+            nativeBuildInputs = with pkgs; [
+              cmake
+              makeWrapper
+              pkgconfig
+            ] ++ [
               tinycmmc.defaultPackage.${system}
             ];
-            buildInputs = [
-              pkgs.fmt
-              pkgs.SDL2
-              pkgs.SDL2_image
-              pkgs.boost
-              pkgs.libpng
-              pkgs.libGLU
-              pkgs.libGL
-              pkgs.jsoncpp
-              pkgs.libsigcxx
-
-              pkgs.openal
-              pkgs.libvorbis
-              pkgs.libogg
-              pkgs.opusfile
-              pkgs.mpg123
-              pkgs.libmodplug
-
-              pkgs.gtest
-
+            buildInputs = with pkgs; [
+              SDL2
+              SDL2_image
+              boost
+              fmt
+              gtest
+              jsoncpp
+              libGL
+              libGLU
+              libmodplug
+              libogg
+              libpng
+              libsigcxx
+              libvorbis
+              mpg123
+              openal
+              opusfile
+            ] ++ [
               argparser.defaultPackage.${system}
-              logmich.defaultPackage.${system}
               geomcpp.defaultPackage.${system}
+              logmich.defaultPackage.${system}
               priocpp.defaultPackage.${system}
               sexpcpp.defaultPackage.${system}
               strutcpp.defaultPackage.${system}
