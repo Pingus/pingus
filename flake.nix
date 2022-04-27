@@ -62,11 +62,15 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        version_file = pkgs.lib.fileContents ./VERSION;
+        pingus_version = if (((builtins.substring 0 1) version_file) != "v")
+                         then ("0.8.0-${nixpkgs.lib.substring 0 8 self.lastModifiedDate}-${self.shortRev or "dirty"}")
+                         else (builtins.substring 1 ((builtins.stringLength version_file) - 2) version_file);
       in rec {
         packages = flake-utils.lib.flattenTree {
           pingus = pkgs.stdenv.mkDerivation {
             pname = "pingus";
-            version = "0.8.0";
+            version = pingus_version;
             src = nixpkgs.lib.cleanSource ./.;
             cmakeFlags = [ "-DBUILD_EXTRA=ON" ];
             nativeBuildInputs = [
