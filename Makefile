@@ -14,11 +14,13 @@
 ##  You should have received a copy of the GNU General Public License
 ##  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+PROJECT_NAME = pingus
 DESTDIR = 
 PREFIX  = /usr/local
-DATADIR = $(PREFIX)/share/pingus
+DATADIR = $(PREFIX)/share/$(PROJECT_NAME)
 MANDIR  = $(PREFIX)/share/man
 BINDIR  = $(PREFIX)/bin
+LIBEXECDIR = $(PREFIX)/libexec
 
 build/pingus:
 	mkdir -p build
@@ -38,10 +40,10 @@ install: install-exec install-data install-man
 install-exec: build/pingus
 	install -d "$(DESTDIR)$(BINDIR)"
 
-	install -D build/pingus "$(DESTDIR)$(BINDIR)/pingus.bin"
-	echo "#!/bin/sh" > "$(DESTDIR)$(BINDIR)/pingus"
-	echo "exec \"$(BINDIR)/pingus.bin\" --datadir \"$(DATADIR)\" \"\$$@\"" >> "$(DESTDIR)$(BINDIR)/pingus"
-	chmod 755 "$(DESTDIR)$(BINDIR)/pingus"
+	install -D build/pingus "$(DESTDIR)$(LIBEXECDIR)/$(PROJECT_NAME)"
+	echo "#!/bin/sh" > "$(DESTDIR)$(BINDIR)/$(PROJECT_NAME)"
+	echo "exec \"$(LIBEXECDIR)/$(PROJECT_NAME)\" --datadir \"$(DATADIR)\" \"\$$@\"" >> "$(DESTDIR)$(BINDIR)/$(PROJECT_NAME)"
+	chmod 755 "$(DESTDIR)$(BINDIR)/$(PROJECT_NAME)"
 
 install-data:
 	cd data/ && \
@@ -67,7 +69,7 @@ install-data:
         \) -exec install -D {} $(DESTDIR)$(DATADIR)/{} \;
 
 install-man:
-	install -D doc/man/pingus.6 "$(DESTDIR)$(MANDIR)/man1/pingus.6"
+	install -D doc/man/pingus.6 "$(DESTDIR)$(MANDIR)/man1/$(PROJECT_NAME).6"
 
 .PHONY : clean install install-exec install-data install-man
 
