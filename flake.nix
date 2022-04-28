@@ -35,6 +35,9 @@
           pingus = pkgs.stdenv.mkDerivation rec {
             name = "pingus";
             src = nixpkgs.lib.cleanSource ./.;
+            meta = {
+              mainProgram = "pingus-0.7";
+            };
             patchPhase = ''
               substituteInPlace SConscript \
                  --replace external/tinygettext/include/ "${tinygettext.defaultPackage.${system}}/include/" \
@@ -45,6 +48,7 @@
             enableParallelBuilding = true;
             installPhase = ''
               make install PREFIX=$out
+              mv -vi $out/bin/pingus $out/bin/pingus-0.7
             '';
             nativeBuildInputs = [
               pkgs_old.scons
