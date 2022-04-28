@@ -47,8 +47,7 @@
             '';
             enableParallelBuilding = true;
             installPhase = ''
-              make install PREFIX=$out
-              mv -vi $out/bin/pingus $out/bin/pingus-0.7
+              make install PREFIX=$out PROJECT_NAME=pingus-0.7
             '';
             nativeBuildInputs = [
               pkgs_old.scons
