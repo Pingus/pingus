@@ -1,4 +1,4 @@
-#!/usr/bin/ruby -w
+#!/usr/bin/env ruby
 
 # Takes a list of files and sorts #include directives in them
 # alphabetically, a extra newline will be inserted between system
