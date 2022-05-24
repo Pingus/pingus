@@ -29,11 +29,11 @@
     },
     "flake-utils": {
       "locked": {
-        "lastModified": 1649676176,
-        "narHash": "sha256-OWKJratjt2RW151VUlJPRALb7OU2S5s+f0vLj4o1bHM=",
+        "lastModified": 1652776076,
+        "narHash": "sha256-gzTw/v1vj4dOVbpBSJX4J0DwUR6LIyXo7/SuuTJp1kM=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "a4b154ebbdc88c8498a5c7b01589addc9e9cb678",
+        "rev": "04c1b180862888302ddfb2e3ad9eaa63afc60cf8",
         "type": "github"
       },
       "original": {
@@ -96,11 +96,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1650921206,
-        "narHash": "sha256-RGlfTC2ktqLVw0gBvZeCM//B4ig2CdQJm39sDvm0DBQ=",
+        "lastModified": 1653087707,
+        "narHash": "sha256-zfno3snrzZTWQ2B7K53QHrGZwrjnJLTRPalymrSsziU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3a9e0f239d80fa134e8fcbdee4dfc793902da37e",
+        "rev": "cbd40c72b2603ab54e7208f99f9b35fc158bc009",
         "type": "github"
       },
       "original": {
@@ -129,11 +129,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1651051959,
-        "narHash": "sha256-rVg2zdVGJAoXFnRwwf2kEio1+xg339IHiq+3hDT9sNs=",
+        "lastModified": 1651339641,
+        "narHash": "sha256-Lb0dT8HGA0XJSe/ZsMPrirOF3/SJm7w+kmXQDCy7iM4=",
         "owner": "grumbel",
         "repo": "priocpp",
-        "rev": "e4d3c092a6eed93fb833fbbb0cb4b76c950d54a9",
+        "rev": "2c9d409d64a860e842b5179b84b1e8b0d4b78980",
         "type": "gitlab"
       },
       "original": {
@@ -197,11 +197,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1645977297,
-        "narHash": "sha256-s5RhiA721UlNU6s00gJw/gE/4h0mpjZYlZPNJumi5i8=",
+        "lastModified": 1653399261,
+        "narHash": "sha256-Oe50JkhDT/b3texypfJXMy7Y9TsEBUed39bwt/udYnU=",
         "owner": "grumbel",
         "repo": "strutcpp",
-        "rev": "c304d0cef635445e4ee71d7a427e8f74d1f994e8",
+        "rev": "9d50ddf769dcecba985fca94f97484505561cd9c",
         "type": "gitlab"
       },
       "original": {

@@ -112,8 +112,8 @@ function(build_dependencies)
     add_subdirectory(external/priocpp/ EXCLUDE_FROM_ALL)
   endif()
 
-  find_package(strutcpp QUIET)
-  if(NOT TARGET strut)
+  find_package(strut QUIET)
+  if(NOT TARGET strut::strut)
     add_subdirectory(external/strutcpp/ EXCLUDE_FROM_ALL)
   endif()
 
@@ -143,7 +143,7 @@ target_link_libraries(libpingus PUBLIC
   logmich::logmich
   prio::prio
   tinygettext
-  strut
+  strut::strut
   xdgcpp
   wstsound
   fmt::fmt
